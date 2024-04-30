@@ -12,7 +12,7 @@
 # Text Sections
 #  0x8018D0C0 -> 0x8018E090
 
-glabel func_ovl39_8018D0C0
+glabel mvOpeningFoxLoadFiles
   /* 169AE0 8018D0C0 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 169AE4 8018D0C4 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 169AE8 8018D0C8 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -52,9 +52,9 @@ glabel func_ovl39_8018D0C0
   /* 169B70 8018D150 8FBF0014 */        lw $ra, 0x14($sp)
   /* 169B74 8018D154 27BD0040 */     addiu $sp, $sp, 0x40
   /* 169B78 8018D158 03E00008 */        jr $ra
-  /* 169B7C 8018D15C 00000000 */       nop 
+  /* 169B7C 8018D15C 00000000 */       nop
 
-glabel func_ovl39_8018D160
+glabel mvOpeningFoxSetNameColor
   /* 169B80 8018D160 948E0024 */       lhu $t6, 0x24($a0)
   /* 169B84 8018D164 240200FF */     addiu $v0, $zero, 0xff
   /* 169B88 8018D168 A0820060 */        sb $v0, 0x60($a0)
@@ -69,9 +69,9 @@ glabel func_ovl39_8018D160
   /* 169BAC 8018D18C 03E00008 */        jr $ra
   /* 169BB0 8018D190 A082002A */        sb $v0, 0x2a($a0)
 
-glabel func_ovl39_8018D194
+glabel mvOpeningFoxDrawName
   /* 169BB4 8018D194 27BDFF78 */     addiu $sp, $sp, -0x88
-  /* 169BB8 8018D198 3C0F8019 */       lui $t7, %hi(D_ovl39_8018E0E8)
+  /* 169BB8 8018D198 3C0F8019 */       lui $t7, %hi(dMvOpeningFoxNameOffsets)
   /* 169BBC 8018D19C AFBF0044 */        sw $ra, 0x44($sp)
   /* 169BC0 8018D1A0 AFB40040 */        sw $s4, 0x40($sp)
   /* 169BC4 8018D1A4 AFB3003C */        sw $s3, 0x3c($sp)
@@ -80,30 +80,30 @@ glabel func_ovl39_8018D194
   /* 169BD0 8018D1B0 AFB00030 */        sw $s0, 0x30($sp)
   /* 169BD4 8018D1B4 F7B60028 */      sdc1 $f22, 0x28($sp)
   /* 169BD8 8018D1B8 F7B40020 */      sdc1 $f20, 0x20($sp)
-  /* 169BDC 8018D1BC 25EFE0E8 */     addiu $t7, $t7, %lo(D_ovl39_8018E0E8)
-  /* 169BE0 8018D1C0 8DF90000 */        lw $t9, ($t7) # D_ovl39_8018E0E8 + 0
-  /* 169BE4 8018D1C4 8DF80004 */        lw $t8, 4($t7) # D_ovl39_8018E0E8 + 4
+  /* 169BDC 8018D1BC 25EFE0E8 */     addiu $t7, $t7, %lo(dMvOpeningFoxNameOffsets)
+  /* 169BE0 8018D1C0 8DF90000 */        lw $t9, ($t7) # dMvOpeningFoxNameOffsets + 0
+  /* 169BE4 8018D1C4 8DF80004 */        lw $t8, 4($t7) # dMvOpeningFoxNameOffsets + 4
   /* 169BE8 8018D1C8 27AE0070 */     addiu $t6, $sp, 0x70
   /* 169BEC 8018D1CC ADD90000 */        sw $t9, ($t6)
   /* 169BF0 8018D1D0 ADD80004 */        sw $t8, 4($t6)
-  /* 169BF4 8018D1D4 8DF8000C */        lw $t8, 0xc($t7) # D_ovl39_8018E0E8 + 12
-  /* 169BF8 8018D1D8 8DF90008 */        lw $t9, 8($t7) # D_ovl39_8018E0E8 + 8
-  /* 169BFC 8018D1DC 3C098019 */       lui $t1, %hi(D_ovl39_8018E0F8)
-  /* 169C00 8018D1E0 2529E0F8 */     addiu $t1, $t1, %lo(D_ovl39_8018E0F8)
+  /* 169BF4 8018D1D4 8DF8000C */        lw $t8, 0xc($t7) # dMvOpeningFoxNameOffsets + 12
+  /* 169BF8 8018D1D8 8DF90008 */        lw $t9, 8($t7) # dMvOpeningFoxNameOffsets + 8
+  /* 169BFC 8018D1DC 3C098019 */       lui $t1, %hi(dMvOpeningFoxNameCharPositions)
+  /* 169C00 8018D1E0 2529E0F8 */     addiu $t1, $t1, %lo(dMvOpeningFoxNameCharPositions)
   /* 169C04 8018D1E4 ADD8000C */        sw $t8, 0xc($t6)
   /* 169C08 8018D1E8 ADD90008 */        sw $t9, 8($t6)
-  /* 169C0C 8018D1EC 8D2A0004 */        lw $t2, 4($t1) # D_ovl39_8018E0F8 + 4
-  /* 169C10 8018D1F0 8D2B0000 */        lw $t3, ($t1) # D_ovl39_8018E0F8 + 0
+  /* 169C0C 8018D1EC 8D2A0004 */        lw $t2, 4($t1) # dMvOpeningFoxNameCharPositions + 4
+  /* 169C10 8018D1F0 8D2B0000 */        lw $t3, ($t1) # dMvOpeningFoxNameCharPositions + 0
   /* 169C14 8018D1F4 27A80058 */     addiu $t0, $sp, 0x58
   /* 169C18 8018D1F8 AD0A0004 */        sw $t2, 4($t0)
   /* 169C1C 8018D1FC AD0B0000 */        sw $t3, ($t0)
-  /* 169C20 8018D200 8D2B0008 */        lw $t3, 8($t1) # D_ovl39_8018E0F8 + 8
-  /* 169C24 8018D204 8D2A000C */        lw $t2, 0xc($t1) # D_ovl39_8018E0F8 + 12
+  /* 169C20 8018D200 8D2B0008 */        lw $t3, 8($t1) # dMvOpeningFoxNameCharPositions + 8
+  /* 169C24 8018D204 8D2A000C */        lw $t2, 0xc($t1) # dMvOpeningFoxNameCharPositions + 12
   /* 169C28 8018D208 3C108000 */       lui $s0, %hi(D_NF_80000008)
   /* 169C2C 8018D20C AD0B0008 */        sw $t3, 8($t0)
   /* 169C30 8018D210 AD0A000C */        sw $t2, 0xc($t0)
-  /* 169C34 8018D214 8D2A0014 */        lw $t2, 0x14($t1) # D_ovl39_8018E0F8 + 20
-  /* 169C38 8018D218 8D2B0010 */        lw $t3, 0x10($t1) # D_ovl39_8018E0F8 + 16
+  /* 169C34 8018D214 8D2A0014 */        lw $t2, 0x14($t1) # dMvOpeningFoxNameCharPositions + 20
+  /* 169C38 8018D218 8D2B0010 */        lw $t3, 0x10($t1) # dMvOpeningFoxNameCharPositions + 16
   /* 169C3C 8018D21C 02003825 */        or $a3, $s0, $zero
   /* 169C40 8018D220 00002025 */        or $a0, $zero, $zero
   /* 169C44 8018D224 00002825 */        or $a1, $zero, $zero
@@ -111,10 +111,10 @@ glabel func_ovl39_8018D194
   /* 169C4C 8018D22C AD0A0014 */        sw $t2, 0x14($t0)
   /* 169C50 8018D230 0C00265A */       jal omMakeGObjCommon
   /* 169C54 8018D234 AD0B0010 */        sw $t3, 0x10($t0)
-  /* 169C58 8018D238 3C018019 */       lui $at, %hi(D_ovl39_8018E1FC)
+  /* 169C58 8018D238 3C018019 */       lui $at, %hi(gMvOpeningFoxNameGObj)
   /* 169C5C 8018D23C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 169C60 8018D240 240CFFFF */     addiu $t4, $zero, -1
-  /* 169C64 8018D244 AC22E1FC */        sw $v0, %lo(D_ovl39_8018E1FC)($at)
+  /* 169C64 8018D244 AC22E1FC */        sw $v0, %lo(gMvOpeningFoxNameGObj)($at)
   /* 169C68 8018D248 0040A025 */        or $s4, $v0, $zero
   /* 169C6C 8018D24C AFAC0010 */        sw $t4, 0x10($sp)
   /* 169C70 8018D250 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -150,7 +150,7 @@ glabel func_ovl39_8018D194
   /* 169CE4 8018D2C4 E4460058 */      swc1 $f6, 0x58($v0)
   /* 169CE8 8018D2C8 C6080004 */      lwc1 $f8, %lo(D_NF_80000004)($s0)
   /* 169CEC 8018D2CC 46164280 */     add.s $f10, $f8, $f22
-  /* 169CF0 8018D2D0 0C063458 */       jal func_ovl39_8018D160
+  /* 169CF0 8018D2D0 0C063458 */       jal mvOpeningFoxSetNameColor
   /* 169CF4 8018D2D4 E44A005C */      swc1 $f10, 0x5c($v0)
   /* 169CF8 8018D2D8 8E220004 */        lw $v0, 4($s1)
   /* 169CFC 8018D2DC 26310004 */     addiu $s1, $s1, 4
@@ -169,18 +169,18 @@ glabel func_ovl39_8018D194
   /* 169D2C 8018D30C 03E00008 */        jr $ra
   /* 169D30 8018D310 27BD0088 */     addiu $sp, $sp, 0x88
 
-glabel func_ovl39_8018D314
-  /* 169D34 8018D314 3C0E8019 */       lui $t6, %hi(D_ovl39_8018E1F8)
-  /* 169D38 8018D318 8DCEE1F8 */        lw $t6, %lo(D_ovl39_8018E1F8)($t6)
-  /* 169D3C 8018D31C 3C038019 */       lui $v1, %hi(D_ovl39_8018E238)
+glabel mvOpeningFoxAnimateStageCamera
+  /* 169D34 8018D314 3C0E8019 */       lui $t6, %hi(gMvOpeningFoxFramesElapsed)
+  /* 169D38 8018D318 8DCEE1F8 */        lw $t6, %lo(gMvOpeningFoxFramesElapsed)($t6)
+  /* 169D3C 8018D31C 3C038019 */       lui $v1, %hi(dMvOpeningFoxCameraSettingsAdjustedEnd)
   /* 169D40 8018D320 8C820074 */        lw $v0, 0x74($a0)
   /* 169D44 8018D324 29C1000F */      slti $at, $t6, 0xf
   /* 169D48 8018D328 14200036 */      bnez $at, .L8018D404
-  /* 169D4C 8018D32C 2463E238 */     addiu $v1, $v1, %lo(D_ovl39_8018E238)
-  /* 169D50 8018D330 3C048019 */       lui $a0, %hi(D_ovl39_8018E218)
-  /* 169D54 8018D334 2484E218 */     addiu $a0, $a0, %lo(D_ovl39_8018E218)
-  /* 169D58 8018D338 C4860000 */      lwc1 $f6, ($a0) # D_ovl39_8018E218 + 0
-  /* 169D5C 8018D33C C4640000 */      lwc1 $f4, ($v1) # D_ovl39_8018E238 + 0
+  /* 169D4C 8018D32C 2463E238 */     addiu $v1, $v1, %lo(dMvOpeningFoxCameraSettingsAdjustedEnd)
+  /* 169D50 8018D330 3C048019 */       lui $a0, %hi(dMvOpeningFoxCameraSettingsAdjustedStart)
+  /* 169D54 8018D334 2484E218 */     addiu $a0, $a0, %lo(dMvOpeningFoxCameraSettingsAdjustedStart)
+  /* 169D58 8018D338 C4860000 */      lwc1 $f6, ($a0) # dMvOpeningFoxCameraSettingsAdjustedStart + 0
+  /* 169D5C 8018D33C C4640000 */      lwc1 $f4, ($v1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 0
   /* 169D60 8018D340 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 169D64 8018D344 44810000 */      mtc1 $at, $f0 # 45.0 to cop1
   /* 169D68 8018D348 46062201 */     sub.s $f8, $f4, $f6
@@ -189,50 +189,50 @@ glabel func_ovl39_8018D314
   /* 169D74 8018D354 460A8480 */     add.s $f18, $f16, $f10
   /* 169D78 8018D358 C44A0040 */      lwc1 $f10, 0x40($v0)
   /* 169D7C 8018D35C E452003C */      swc1 $f18, 0x3c($v0)
-  /* 169D80 8018D360 C4860004 */      lwc1 $f6, 4($a0) # D_ovl39_8018E218 + 4
-  /* 169D84 8018D364 C4640004 */      lwc1 $f4, 4($v1) # D_ovl39_8018E238 + 4
+  /* 169D80 8018D360 C4860004 */      lwc1 $f6, 4($a0) # dMvOpeningFoxCameraSettingsAdjustedStart + 4
+  /* 169D84 8018D364 C4640004 */      lwc1 $f4, 4($v1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 4
   /* 169D88 8018D368 46062201 */     sub.s $f8, $f4, $f6
   /* 169D8C 8018D36C 46004403 */     div.s $f16, $f8, $f0
   /* 169D90 8018D370 46105480 */     add.s $f18, $f10, $f16
   /* 169D94 8018D374 C4500044 */      lwc1 $f16, 0x44($v0)
   /* 169D98 8018D378 E4520040 */      swc1 $f18, 0x40($v0)
-  /* 169D9C 8018D37C C4860008 */      lwc1 $f6, 8($a0) # D_ovl39_8018E218 + 8
-  /* 169DA0 8018D380 C4640008 */      lwc1 $f4, 8($v1) # D_ovl39_8018E238 + 8
+  /* 169D9C 8018D37C C4860008 */      lwc1 $f6, 8($a0) # dMvOpeningFoxCameraSettingsAdjustedStart + 8
+  /* 169DA0 8018D380 C4640008 */      lwc1 $f4, 8($v1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 8
   /* 169DA4 8018D384 46062201 */     sub.s $f8, $f4, $f6
   /* 169DA8 8018D388 46004283 */     div.s $f10, $f8, $f0
   /* 169DAC 8018D38C 460A8480 */     add.s $f18, $f16, $f10
   /* 169DB0 8018D390 C44A0048 */      lwc1 $f10, 0x48($v0)
   /* 169DB4 8018D394 E4520044 */      swc1 $f18, 0x44($v0)
-  /* 169DB8 8018D398 C486000C */      lwc1 $f6, 0xc($a0) # D_ovl39_8018E218 + 12
-  /* 169DBC 8018D39C C464000C */      lwc1 $f4, 0xc($v1) # D_ovl39_8018E238 + 12
+  /* 169DB8 8018D398 C486000C */      lwc1 $f6, 0xc($a0) # dMvOpeningFoxCameraSettingsAdjustedStart + 12
+  /* 169DBC 8018D39C C464000C */      lwc1 $f4, 0xc($v1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 12
   /* 169DC0 8018D3A0 46062201 */     sub.s $f8, $f4, $f6
   /* 169DC4 8018D3A4 46004403 */     div.s $f16, $f8, $f0
   /* 169DC8 8018D3A8 46105480 */     add.s $f18, $f10, $f16
   /* 169DCC 8018D3AC C450004C */      lwc1 $f16, 0x4c($v0)
   /* 169DD0 8018D3B0 E4520048 */      swc1 $f18, 0x48($v0)
-  /* 169DD4 8018D3B4 C4860010 */      lwc1 $f6, 0x10($a0) # D_ovl39_8018E218 + 16
-  /* 169DD8 8018D3B8 C4640010 */      lwc1 $f4, 0x10($v1) # D_ovl39_8018E238 + 16
+  /* 169DD4 8018D3B4 C4860010 */      lwc1 $f6, 0x10($a0) # dMvOpeningFoxCameraSettingsAdjustedStart + 16
+  /* 169DD8 8018D3B8 C4640010 */      lwc1 $f4, 0x10($v1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 16
   /* 169DDC 8018D3BC 46062201 */     sub.s $f8, $f4, $f6
   /* 169DE0 8018D3C0 46004283 */     div.s $f10, $f8, $f0
   /* 169DE4 8018D3C4 460A8480 */     add.s $f18, $f16, $f10
   /* 169DE8 8018D3C8 C44A0050 */      lwc1 $f10, 0x50($v0)
   /* 169DEC 8018D3CC E452004C */      swc1 $f18, 0x4c($v0)
-  /* 169DF0 8018D3D0 C4860014 */      lwc1 $f6, 0x14($a0) # D_ovl39_8018E218 + 20
-  /* 169DF4 8018D3D4 C4640014 */      lwc1 $f4, 0x14($v1) # D_ovl39_8018E238 + 20
+  /* 169DF0 8018D3D0 C4860014 */      lwc1 $f6, 0x14($a0) # dMvOpeningFoxCameraSettingsAdjustedStart + 20
+  /* 169DF4 8018D3D4 C4640014 */      lwc1 $f4, 0x14($v1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 20
   /* 169DF8 8018D3D8 46062201 */     sub.s $f8, $f4, $f6
   /* 169DFC 8018D3DC 46004403 */     div.s $f16, $f8, $f0
   /* 169E00 8018D3E0 46105480 */     add.s $f18, $f10, $f16
   /* 169E04 8018D3E4 C4500054 */      lwc1 $f16, 0x54($v0)
   /* 169E08 8018D3E8 E4520050 */      swc1 $f18, 0x50($v0)
-  /* 169E0C 8018D3EC C4860018 */      lwc1 $f6, 0x18($a0) # D_ovl39_8018E218 + 24
-  /* 169E10 8018D3F0 C4640018 */      lwc1 $f4, 0x18($v1) # D_ovl39_8018E238 + 24
+  /* 169E0C 8018D3EC C4860018 */      lwc1 $f6, 0x18($a0) # dMvOpeningFoxCameraSettingsAdjustedStart + 24
+  /* 169E10 8018D3F0 C4640018 */      lwc1 $f4, 0x18($v1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 24
   /* 169E14 8018D3F4 46062201 */     sub.s $f8, $f4, $f6
   /* 169E18 8018D3F8 46004283 */     div.s $f10, $f8, $f0
   /* 169E1C 8018D3FC 460A8480 */     add.s $f18, $f16, $f10
   /* 169E20 8018D400 E4520054 */      swc1 $f18, 0x54($v0)
   .L8018D404:
   /* 169E24 8018D404 03E00008 */        jr $ra
-  /* 169E28 8018D408 00000000 */       nop 
+  /* 169E28 8018D408 00000000 */       nop
 
 glabel func_ovl39_8018D40C
   /* 169E2C 8018D40C 27BDFFD0 */     addiu $sp, $sp, -0x30
@@ -246,41 +246,41 @@ glabel func_ovl39_8018D40C
   /* 169E4C 8018D42C AFA60038 */        sw $a2, 0x38($sp)
   /* 169E50 8018D430 25CEE090 */     addiu $t6, $t6, %lo(D_ovl39_8018E090)
   /* 169E54 8018D434 8DD80000 */        lw $t8, ($t6) # D_ovl39_8018E090 + 0
-  /* 169E58 8018D438 3C108019 */       lui $s0, %hi(D_ovl39_8018E218)
-  /* 169E5C 8018D43C 2610E218 */     addiu $s0, $s0, %lo(D_ovl39_8018E218)
-  /* 169E60 8018D440 AE180000 */        sw $t8, ($s0) # D_ovl39_8018E218 + 0
+  /* 169E58 8018D438 3C108019 */       lui $s0, %hi(dMvOpeningFoxCameraSettingsAdjustedStart)
+  /* 169E5C 8018D43C 2610E218 */     addiu $s0, $s0, %lo(dMvOpeningFoxCameraSettingsAdjustedStart)
+  /* 169E60 8018D440 AE180000 */        sw $t8, ($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 0
   /* 169E64 8018D444 8DCF0004 */        lw $t7, 4($t6) # D_ovl39_8018E090 + 4
   /* 169E68 8018D448 3C198019 */       lui $t9, %hi(D_ovl39_8018E0AC)
   /* 169E6C 8018D44C 2739E0AC */     addiu $t9, $t9, %lo(D_ovl39_8018E0AC)
-  /* 169E70 8018D450 AE0F0004 */        sw $t7, 4($s0) # D_ovl39_8018E218 + 4
+  /* 169E70 8018D450 AE0F0004 */        sw $t7, 4($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 4
   /* 169E74 8018D454 8DD80008 */        lw $t8, 8($t6) # D_ovl39_8018E090 + 8
-  /* 169E78 8018D458 3C118019 */       lui $s1, %hi(D_ovl39_8018E238)
-  /* 169E7C 8018D45C 2631E238 */     addiu $s1, $s1, %lo(D_ovl39_8018E238)
-  /* 169E80 8018D460 AE180008 */        sw $t8, 8($s0) # D_ovl39_8018E218 + 8
+  /* 169E78 8018D458 3C118019 */       lui $s1, %hi(dMvOpeningFoxCameraSettingsAdjustedEnd)
+  /* 169E7C 8018D45C 2631E238 */     addiu $s1, $s1, %lo(dMvOpeningFoxCameraSettingsAdjustedEnd)
+  /* 169E80 8018D460 AE180008 */        sw $t8, 8($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 8
   /* 169E84 8018D464 8DCF000C */        lw $t7, 0xc($t6) # D_ovl39_8018E090 + 12
   /* 169E88 8018D468 00002025 */        or $a0, $zero, $zero
-  /* 169E8C 8018D46C AE0F000C */        sw $t7, 0xc($s0) # D_ovl39_8018E218 + 12
+  /* 169E8C 8018D46C AE0F000C */        sw $t7, 0xc($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 12
   /* 169E90 8018D470 8DD80010 */        lw $t8, 0x10($t6) # D_ovl39_8018E090 + 16
-  /* 169E94 8018D474 AE180010 */        sw $t8, 0x10($s0) # D_ovl39_8018E218 + 16
+  /* 169E94 8018D474 AE180010 */        sw $t8, 0x10($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 16
   /* 169E98 8018D478 8DCF0014 */        lw $t7, 0x14($t6) # D_ovl39_8018E090 + 20
-  /* 169E9C 8018D47C AE0F0014 */        sw $t7, 0x14($s0) # D_ovl39_8018E218 + 20
+  /* 169E9C 8018D47C AE0F0014 */        sw $t7, 0x14($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 20
   /* 169EA0 8018D480 8DD80018 */        lw $t8, 0x18($t6) # D_ovl39_8018E090 + 24
-  /* 169EA4 8018D484 AE180018 */        sw $t8, 0x18($s0) # D_ovl39_8018E218 + 24
+  /* 169EA4 8018D484 AE180018 */        sw $t8, 0x18($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 24
   /* 169EA8 8018D488 8F290000 */        lw $t1, ($t9) # D_ovl39_8018E0AC + 0
-  /* 169EAC 8018D48C AE290000 */        sw $t1, ($s1) # D_ovl39_8018E238 + 0
+  /* 169EAC 8018D48C AE290000 */        sw $t1, ($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 0
   /* 169EB0 8018D490 8F280004 */        lw $t0, 4($t9) # D_ovl39_8018E0AC + 4
-  /* 169EB4 8018D494 AE280004 */        sw $t0, 4($s1) # D_ovl39_8018E238 + 4
+  /* 169EB4 8018D494 AE280004 */        sw $t0, 4($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 4
   /* 169EB8 8018D498 8F290008 */        lw $t1, 8($t9) # D_ovl39_8018E0AC + 8
-  /* 169EBC 8018D49C AE290008 */        sw $t1, 8($s1) # D_ovl39_8018E238 + 8
+  /* 169EBC 8018D49C AE290008 */        sw $t1, 8($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 8
   /* 169EC0 8018D4A0 8F28000C */        lw $t0, 0xc($t9) # D_ovl39_8018E0AC + 12
-  /* 169EC4 8018D4A4 AE28000C */        sw $t0, 0xc($s1) # D_ovl39_8018E238 + 12
+  /* 169EC4 8018D4A4 AE28000C */        sw $t0, 0xc($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 12
   /* 169EC8 8018D4A8 8F290010 */        lw $t1, 0x10($t9) # D_ovl39_8018E0AC + 16
-  /* 169ECC 8018D4AC AE290010 */        sw $t1, 0x10($s1) # D_ovl39_8018E238 + 16
+  /* 169ECC 8018D4AC AE290010 */        sw $t1, 0x10($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 16
   /* 169ED0 8018D4B0 8F280014 */        lw $t0, 0x14($t9) # D_ovl39_8018E0AC + 20
-  /* 169ED4 8018D4B4 AE280014 */        sw $t0, 0x14($s1) # D_ovl39_8018E238 + 20
+  /* 169ED4 8018D4B4 AE280014 */        sw $t0, 0x14($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 20
   /* 169ED8 8018D4B8 8F290018 */        lw $t1, 0x18($t9) # D_ovl39_8018E0AC + 24
   /* 169EDC 8018D4BC 0C0436CB */       jal func_ovl2_8010DB2C
-  /* 169EE0 8018D4C0 AE290018 */        sw $t1, 0x18($s1) # D_ovl39_8018E238 + 24
+  /* 169EE0 8018D4C0 AE290018 */        sw $t1, 0x18($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 24
   /* 169EE4 8018D4C4 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 169EE8 8018D4C8 44810000 */      mtc1 $at, $f0 # 10.0 to cop1
   /* 169EEC 8018D4CC 3C038019 */       lui $v1, %hi(D_ovl39_8018E208)
@@ -302,8 +302,8 @@ glabel func_ovl39_8018D40C
   /* 169F2C 8018D50C 0C002CE7 */       jal func_8000B39C
   /* 169F30 8018D510 8C84E208 */        lw $a0, %lo(D_ovl39_8018E208)($a0)
   /* 169F34 8018D514 3C048019 */       lui $a0, %hi(D_ovl39_8018E208)
-  /* 169F38 8018D518 3C058019 */       lui $a1, %hi(func_ovl39_8018D314)
-  /* 169F3C 8018D51C 24A5D314 */     addiu $a1, $a1, %lo(func_ovl39_8018D314)
+  /* 169F38 8018D518 3C058019 */       lui $a1, %hi(mvOpeningFoxAnimateStageCamera)
+  /* 169F3C 8018D51C 24A5D314 */     addiu $a1, $a1, %lo(mvOpeningFoxAnimateStageCamera)
   /* 169F40 8018D520 8C84E208 */        lw $a0, %lo(D_ovl39_8018E208)($a0)
   /* 169F44 8018D524 24060001 */     addiu $a2, $zero, 1
   /* 169F48 8018D528 0C002062 */       jal omAddGObjCommonProc
@@ -311,55 +311,55 @@ glabel func_ovl39_8018D40C
   /* 169F50 8018D530 C7A00030 */      lwc1 $f0, 0x30($sp)
   /* 169F54 8018D534 C7A20034 */      lwc1 $f2, 0x34($sp)
   /* 169F58 8018D538 C7AC0038 */      lwc1 $f12, 0x38($sp)
-  /* 169F5C 8018D53C C6080000 */      lwc1 $f8, ($s0) # D_ovl39_8018E218 + 0
-  /* 169F60 8018D540 C6100004 */      lwc1 $f16, 4($s0) # D_ovl39_8018E218 + 4
-  /* 169F64 8018D544 C6040008 */      lwc1 $f4, 8($s0) # D_ovl39_8018E218 + 8
+  /* 169F5C 8018D53C C6080000 */      lwc1 $f8, ($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 0
+  /* 169F60 8018D540 C6100004 */      lwc1 $f16, 4($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 4
+  /* 169F64 8018D544 C6040008 */      lwc1 $f4, 8($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 8
   /* 169F68 8018D548 46004280 */     add.s $f10, $f8, $f0
-  /* 169F6C 8018D54C C608000C */      lwc1 $f8, 0xc($s0) # D_ovl39_8018E218 + 12
+  /* 169F6C 8018D54C C608000C */      lwc1 $f8, 0xc($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 12
   /* 169F70 8018D550 46028480 */     add.s $f18, $f16, $f2
-  /* 169F74 8018D554 C6100010 */      lwc1 $f16, 0x10($s0) # D_ovl39_8018E218 + 16
-  /* 169F78 8018D558 E60A0000 */      swc1 $f10, ($s0) # D_ovl39_8018E218 + 0
+  /* 169F74 8018D554 C6100010 */      lwc1 $f16, 0x10($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 16
+  /* 169F78 8018D558 E60A0000 */      swc1 $f10, ($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 0
   /* 169F7C 8018D55C 460C2180 */     add.s $f6, $f4, $f12
-  /* 169F80 8018D560 C6040014 */      lwc1 $f4, 0x14($s0) # D_ovl39_8018E218 + 20
-  /* 169F84 8018D564 E6120004 */      swc1 $f18, 4($s0) # D_ovl39_8018E218 + 4
+  /* 169F80 8018D560 C6040014 */      lwc1 $f4, 0x14($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 20
+  /* 169F84 8018D564 E6120004 */      swc1 $f18, 4($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 4
   /* 169F88 8018D568 46004280 */     add.s $f10, $f8, $f0
-  /* 169F8C 8018D56C E6060008 */      swc1 $f6, 8($s0) # D_ovl39_8018E218 + 8
-  /* 169F90 8018D570 C6280000 */      lwc1 $f8, ($s1) # D_ovl39_8018E238 + 0
+  /* 169F8C 8018D56C E6060008 */      swc1 $f6, 8($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 8
+  /* 169F90 8018D570 C6280000 */      lwc1 $f8, ($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 0
   /* 169F94 8018D574 46028480 */     add.s $f18, $f16, $f2
-  /* 169F98 8018D578 C6300004 */      lwc1 $f16, 4($s1) # D_ovl39_8018E238 + 4
-  /* 169F9C 8018D57C E60A000C */      swc1 $f10, 0xc($s0) # D_ovl39_8018E218 + 12
+  /* 169F98 8018D578 C6300004 */      lwc1 $f16, 4($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 4
+  /* 169F9C 8018D57C E60A000C */      swc1 $f10, 0xc($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 12
   /* 169FA0 8018D580 460C2180 */     add.s $f6, $f4, $f12
-  /* 169FA4 8018D584 C6240008 */      lwc1 $f4, 8($s1) # D_ovl39_8018E238 + 8
-  /* 169FA8 8018D588 E6120010 */      swc1 $f18, 0x10($s0) # D_ovl39_8018E218 + 16
+  /* 169FA4 8018D584 C6240008 */      lwc1 $f4, 8($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 8
+  /* 169FA8 8018D588 E6120010 */      swc1 $f18, 0x10($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 16
   /* 169FAC 8018D58C 46004280 */     add.s $f10, $f8, $f0
-  /* 169FB0 8018D590 E6060014 */      swc1 $f6, 0x14($s0) # D_ovl39_8018E218 + 20
-  /* 169FB4 8018D594 C628000C */      lwc1 $f8, 0xc($s1) # D_ovl39_8018E238 + 12
+  /* 169FB0 8018D590 E6060014 */      swc1 $f6, 0x14($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 20
+  /* 169FB4 8018D594 C628000C */      lwc1 $f8, 0xc($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 12
   /* 169FB8 8018D598 46028480 */     add.s $f18, $f16, $f2
-  /* 169FBC 8018D59C C6300010 */      lwc1 $f16, 0x10($s1) # D_ovl39_8018E238 + 16
-  /* 169FC0 8018D5A0 E62A0000 */      swc1 $f10, ($s1) # D_ovl39_8018E238 + 0
+  /* 169FBC 8018D59C C6300010 */      lwc1 $f16, 0x10($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 16
+  /* 169FC0 8018D5A0 E62A0000 */      swc1 $f10, ($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 0
   /* 169FC4 8018D5A4 460C2180 */     add.s $f6, $f4, $f12
-  /* 169FC8 8018D5A8 C6240014 */      lwc1 $f4, 0x14($s1) # D_ovl39_8018E238 + 20
-  /* 169FCC 8018D5AC E6320004 */      swc1 $f18, 4($s1) # D_ovl39_8018E238 + 4
+  /* 169FC8 8018D5A8 C6240014 */      lwc1 $f4, 0x14($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 20
+  /* 169FCC 8018D5AC E6320004 */      swc1 $f18, 4($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 4
   /* 169FD0 8018D5B0 46004280 */     add.s $f10, $f8, $f0
-  /* 169FD4 8018D5B4 E6260008 */      swc1 $f6, 8($s1) # D_ovl39_8018E238 + 8
-  /* 169FD8 8018D5B8 C6080000 */      lwc1 $f8, ($s0) # D_ovl39_8018E218 + 0
+  /* 169FD4 8018D5B4 E6260008 */      swc1 $f6, 8($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 8
+  /* 169FD8 8018D5B8 C6080000 */      lwc1 $f8, ($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 0
   /* 169FDC 8018D5BC 46028480 */     add.s $f18, $f16, $f2
-  /* 169FE0 8018D5C0 E62A000C */      swc1 $f10, 0xc($s1) # D_ovl39_8018E238 + 12
+  /* 169FE0 8018D5C0 E62A000C */      swc1 $f10, 0xc($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 12
   /* 169FE4 8018D5C4 460C2180 */     add.s $f6, $f4, $f12
-  /* 169FE8 8018D5C8 E6320010 */      swc1 $f18, 0x10($s1) # D_ovl39_8018E238 + 16
-  /* 169FEC 8018D5CC E6260014 */      swc1 $f6, 0x14($s1) # D_ovl39_8018E238 + 20
+  /* 169FE8 8018D5C8 E6320010 */      swc1 $f18, 0x10($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 16
+  /* 169FEC 8018D5CC E6260014 */      swc1 $f6, 0x14($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 20
   /* 169FF0 8018D5D0 E648003C */      swc1 $f8, 0x3c($s2)
-  /* 169FF4 8018D5D4 C60A0004 */      lwc1 $f10, 4($s0) # D_ovl39_8018E218 + 4
+  /* 169FF4 8018D5D4 C60A0004 */      lwc1 $f10, 4($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 4
   /* 169FF8 8018D5D8 E64A0040 */      swc1 $f10, 0x40($s2)
-  /* 169FFC 8018D5DC C6100008 */      lwc1 $f16, 8($s0) # D_ovl39_8018E218 + 8
+  /* 169FFC 8018D5DC C6100008 */      lwc1 $f16, 8($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 8
   /* 16A000 8018D5E0 E6500044 */      swc1 $f16, 0x44($s2)
-  /* 16A004 8018D5E4 C612000C */      lwc1 $f18, 0xc($s0) # D_ovl39_8018E218 + 12
+  /* 16A004 8018D5E4 C612000C */      lwc1 $f18, 0xc($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 12
   /* 16A008 8018D5E8 E6520048 */      swc1 $f18, 0x48($s2)
-  /* 16A00C 8018D5EC C6040010 */      lwc1 $f4, 0x10($s0) # D_ovl39_8018E218 + 16
+  /* 16A00C 8018D5EC C6040010 */      lwc1 $f4, 0x10($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 16
   /* 16A010 8018D5F0 E644004C */      swc1 $f4, 0x4c($s2)
-  /* 16A014 8018D5F4 C6060014 */      lwc1 $f6, 0x14($s0) # D_ovl39_8018E218 + 20
+  /* 16A014 8018D5F4 C6060014 */      lwc1 $f6, 0x14($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 20
   /* 16A018 8018D5F8 E6460050 */      swc1 $f6, 0x50($s2)
-  /* 16A01C 8018D5FC C6080018 */      lwc1 $f8, 0x18($s0) # D_ovl39_8018E218 + 24
+  /* 16A01C 8018D5FC C6080018 */      lwc1 $f8, 0x18($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 24
   /* 16A020 8018D600 E6480054 */      swc1 $f8, 0x54($s2)
   /* 16A024 8018D604 8FBF002C */        lw $ra, 0x2c($sp)
   /* 16A028 8018D608 8FB20028 */        lw $s2, 0x28($sp)
@@ -382,7 +382,7 @@ glabel func_ovl39_8018D61C
   /* 16A064 8018D644 0C0412F7 */       jal grWallpaper_SetGroundWallpaper
   /* 16A068 8018D648 AFB00018 */        sw $s0, 0x18($sp)
   /* 16A06C 8018D64C 0C041580 */       jal grNodeInit_SetGroundFiles
-  /* 16A070 8018D650 00000000 */       nop 
+  /* 16A070 8018D650 00000000 */       nop
   /* 16A074 8018D654 0C03F1E9 */       jal mpCollision_GetMPointCountKind
   /* 16A078 8018D658 24040015 */     addiu $a0, $zero, 0x15
   /* 16A07C 8018D65C 24010001 */     addiu $at, $zero, 1
@@ -394,9 +394,9 @@ glabel func_ovl39_8018D61C
   /* 16A090 8018D670 0C008D89 */       jal gsFatalPrintF
   /* 16A094 8018D674 02002025 */        or $a0, $s0, $zero
   /* 16A098 8018D678 0C028C10 */       jal smCrashPrintGObjStatus
-  /* 16A09C 8018D67C 00000000 */       nop 
+  /* 16A09C 8018D67C 00000000 */       nop
   /* 16A0A0 8018D680 1000FFFB */         b .L8018D670
-  /* 16A0A4 8018D684 00000000 */       nop 
+  /* 16A0A4 8018D684 00000000 */       nop
   .L8018D688:
   /* 16A0A8 8018D688 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 16A0AC 8018D68C 27A5009C */     addiu $a1, $sp, 0x9c
@@ -413,9 +413,9 @@ glabel func_ovl39_8018D61C
   /* 16A0D8 8018D6B8 0C063503 */       jal func_ovl39_8018D40C
   /* 16A0DC 8018D6BC AFA60008 */        sw $a2, 8($sp)
   /* 16A0E0 8018D6C0 0C0455B9 */       jal gmRumble_SetPlayerRumble
-  /* 16A0E4 8018D6C4 00000000 */       nop 
+  /* 16A0E4 8018D6C4 00000000 */       nop
   /* 16A0E8 8018D6C8 0C0594F8 */       jal func_NF_801653E0 # couldn't be resolved
-  /* 16A0EC 8018D6CC 00000000 */       nop 
+  /* 16A0EC 8018D6CC 00000000 */       nop
   /* 16A0F0 8018D6D0 3C168011 */       lui $s6, %hi(dFtDefaultFighterDesc)
   /* 16A0F4 8018D6D4 3C15800A */       lui $s5, %hi(gBattleState)
   /* 16A0F8 8018D6D8 26B550E8 */     addiu $s5, $s5, %lo(gBattleState)
@@ -600,11 +600,11 @@ glabel func_ovl39_8018D94C
   /* 16A3A8 8018D988 8FBF001C */        lw $ra, 0x1c($sp)
   /* 16A3AC 8018D98C 27BD0020 */     addiu $sp, $sp, 0x20
   /* 16A3B0 8018D990 03E00008 */        jr $ra
-  /* 16A3B4 8018D994 00000000 */       nop 
+  /* 16A3B4 8018D994 00000000 */       nop
 
 glabel func_ovl39_8018D998
-  /* 16A3B8 8018D998 3C038019 */       lui $v1, %hi(D_ovl39_8018E1F8)
-  /* 16A3BC 8018D99C 8C63E1F8 */        lw $v1, %lo(D_ovl39_8018E1F8)($v1)
+  /* 16A3B8 8018D998 3C038019 */       lui $v1, %hi(gMvOpeningFoxFramesElapsed)
+  /* 16A3BC 8018D99C 8C63E1F8 */        lw $v1, %lo(gMvOpeningFoxFramesElapsed)($v1)
   /* 16A3C0 8018D9A0 2401000F */     addiu $at, $zero, 0xf
   /* 16A3C4 8018D9A4 3C058019 */       lui $a1, 0x8019
   /* 16A3C8 8018D9A8 10610009 */       beq $v1, $at, .L8018D9D0
@@ -727,7 +727,7 @@ glabel func_ovl39_8018DA68
   /* 16A578 8018DB58 8FB00018 */        lw $s0, 0x18($sp)
   /* 16A57C 8018DB5C 27BD0068 */     addiu $sp, $sp, 0x68
   /* 16A580 8018DB60 03E00008 */        jr $ra
-  /* 16A584 8018DB64 00000000 */       nop 
+  /* 16A584 8018DB64 00000000 */       nop
 
 glabel func_ovl39_8018DB68
   /* 16A588 8018DB68 27BDFFC0 */     addiu $sp, $sp, -0x40
@@ -769,7 +769,7 @@ glabel func_ovl39_8018DB68
   /* 16A618 8018DBF8 8FBF003C */        lw $ra, 0x3c($sp)
   /* 16A61C 8018DBFC 27BD0040 */     addiu $sp, $sp, 0x40
   /* 16A620 8018DC00 03E00008 */        jr $ra
-  /* 16A624 8018DC04 00000000 */       nop 
+  /* 16A624 8018DC04 00000000 */       nop
 
 glabel func_ovl39_8018DC08
   /* 16A628 8018DC08 27BDFFB8 */     addiu $sp, $sp, -0x48
@@ -829,7 +829,7 @@ glabel func_ovl39_8018DC08
   /* 16A700 8018DCE0 8FBF003C */        lw $ra, 0x3c($sp)
   /* 16A704 8018DCE4 27BD0048 */     addiu $sp, $sp, 0x48
   /* 16A708 8018DCE8 03E00008 */        jr $ra
-  /* 16A70C 8018DCEC 00000000 */       nop 
+  /* 16A70C 8018DCEC 00000000 */       nop
 
 glabel func_ovl39_8018DCF0
   /* 16A710 8018DCF0 27BDFFB8 */     addiu $sp, $sp, -0x48
@@ -873,17 +873,17 @@ glabel func_ovl39_8018DCF0
   /* 16A7A8 8018DD88 8FBF003C */        lw $ra, 0x3c($sp)
   /* 16A7AC 8018DD8C 27BD0048 */     addiu $sp, $sp, 0x48
   /* 16A7B0 8018DD90 03E00008 */        jr $ra
-  /* 16A7B4 8018DD94 00000000 */       nop 
+  /* 16A7B4 8018DD94 00000000 */       nop
 
 glabel func_ovl39_8018DD98
-  /* 16A7B8 8018DD98 3C028019 */       lui $v0, %hi(D_ovl39_8018E1F8)
-  /* 16A7BC 8018DD9C 2442E1F8 */     addiu $v0, $v0, %lo(D_ovl39_8018E1F8)
-  /* 16A7C0 8018DDA0 8C4E0000 */        lw $t6, ($v0) # D_ovl39_8018E1F8 + 0
+  /* 16A7B8 8018DD98 3C028019 */       lui $v0, %hi(gMvOpeningFoxFramesElapsed)
+  /* 16A7BC 8018DD9C 2442E1F8 */     addiu $v0, $v0, %lo(gMvOpeningFoxFramesElapsed)
+  /* 16A7C0 8018DDA0 8C4E0000 */        lw $t6, ($v0) # gMvOpeningFoxFramesElapsed + 0
   /* 16A7C4 8018DDA4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 16A7C8 8018DDA8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 16A7CC 8018DDAC AFA40018 */        sw $a0, 0x18($sp)
   /* 16A7D0 8018DDB0 25CF0001 */     addiu $t7, $t6, 1
-  /* 16A7D4 8018DDB4 AC4F0000 */        sw $t7, ($v0) # D_ovl39_8018E1F8 + 0
+  /* 16A7D4 8018DDB4 AC4F0000 */        sw $t7, ($v0) # gMvOpeningFoxFramesElapsed + 0
   /* 16A7D8 8018DDB8 0C0E41DB */       jal func_ovl1_8039076C
   /* 16A7DC 8018DDBC 3404D000 */       ori $a0, $zero, 0xd000
   /* 16A7E0 8018DDC0 10400007 */      beqz $v0, .L8018DDE0
@@ -895,22 +895,22 @@ glabel func_ovl39_8018DD98
   /* 16A7F8 8018DDD8 0C00171D */       jal func_80005C74
   /* 16A7FC 8018DDDC A0580001 */        sb $t8, 1($v0) # gSceneData + 1
   .L8018DDE0:
-  /* 16A800 8018DDE0 3C028019 */       lui $v0, %hi(D_ovl39_8018E1F8)
-  /* 16A804 8018DDE4 8C42E1F8 */        lw $v0, %lo(D_ovl39_8018E1F8)($v0)
+  /* 16A800 8018DDE0 3C028019 */       lui $v0, %hi(gMvOpeningFoxFramesElapsed)
+  /* 16A804 8018DDE4 8C42E1F8 */        lw $v0, %lo(gMvOpeningFoxFramesElapsed)($v0)
   /* 16A808 8018DDE8 2401000F */     addiu $at, $zero, 0xf
-  /* 16A80C 8018DDEC 3C048019 */       lui $a0, %hi(D_ovl39_8018E1FC)
+  /* 16A80C 8018DDEC 3C048019 */       lui $a0, %hi(gMvOpeningFoxNameGObj)
   /* 16A810 8018DDF0 5441000C */      bnel $v0, $at, .L8018DE24
   /* 16A814 8018DDF4 2401003C */     addiu $at, $zero, 0x3c
   /* 16A818 8018DDF8 0C0026A1 */       jal omEjectGObjCommon
-  /* 16A81C 8018DDFC 8C84E1FC */        lw $a0, %lo(D_ovl39_8018E1FC)($a0)
+  /* 16A81C 8018DDFC 8C84E1FC */        lw $a0, %lo(gMvOpeningFoxNameGObj)($a0)
   /* 16A820 8018DE00 0C063587 */       jal func_ovl39_8018D61C
-  /* 16A824 8018DE04 00000000 */       nop 
+  /* 16A824 8018DE04 00000000 */       nop
   /* 16A828 8018DE08 0C063653 */       jal func_ovl39_8018D94C
-  /* 16A82C 8018DE0C 00000000 */       nop 
+  /* 16A82C 8018DE0C 00000000 */       nop
   /* 16A830 8018DE10 0C06369A */       jal func_ovl39_8018DA68
-  /* 16A834 8018DE14 00000000 */       nop 
-  /* 16A838 8018DE18 3C028019 */       lui $v0, %hi(D_ovl39_8018E1F8)
-  /* 16A83C 8018DE1C 8C42E1F8 */        lw $v0, %lo(D_ovl39_8018E1F8)($v0)
+  /* 16A834 8018DE14 00000000 */       nop
+  /* 16A838 8018DE18 3C028019 */       lui $v0, %hi(gMvOpeningFoxFramesElapsed)
+  /* 16A83C 8018DE1C 8C42E1F8 */        lw $v0, %lo(gMvOpeningFoxFramesElapsed)($v0)
   /* 16A840 8018DE20 2401003C */     addiu $at, $zero, 0x3c
   .L8018DE24:
   /* 16A844 8018DE24 14410007 */       bne $v0, $at, .L8018DE44
@@ -925,12 +925,12 @@ glabel func_ovl39_8018DD98
   /* 16A864 8018DE44 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16A868 8018DE48 27BD0018 */     addiu $sp, $sp, 0x18
   /* 16A86C 8018DE4C 03E00008 */        jr $ra
-  /* 16A870 8018DE50 00000000 */       nop 
+  /* 16A870 8018DE50 00000000 */       nop
 
 glabel func_ovl39_8018DE54
-  /* 16A874 8018DE54 3C018019 */       lui $at, %hi(D_ovl39_8018E1F8)
+  /* 16A874 8018DE54 3C018019 */       lui $at, %hi(gMvOpeningFoxFramesElapsed)
   /* 16A878 8018DE58 03E00008 */        jr $ra
-  /* 16A87C 8018DE5C AC20E1F8 */        sw $zero, %lo(D_ovl39_8018E1F8)($at)
+  /* 16A87C 8018DE5C AC20E1F8 */        sw $zero, %lo(gMvOpeningFoxFramesElapsed)($at)
 
 glabel func_ovl39_8018DE60
   /* 16A880 8018DE60 3C048019 */       lui $a0, %hi(D_ovl39_8018E418)
@@ -962,7 +962,7 @@ glabel func_ovl39_8018DE60
   /* 16A8E4 8018DEC4 A0830001 */        sb $v1, 1($a0) # D_ovl39_8018E418 + 1
   /* 16A8E8 8018DEC8 A0830004 */        sb $v1, 4($a0) # D_ovl39_8018E418 + 4
   /* 16A8EC 8018DECC A0830023 */        sb $v1, 0x23($a0) # D_ovl39_8018E418 + 35
-  /* 16A8F0 8018DED0 0C063430 */       jal func_ovl39_8018D0C0
+  /* 16A8F0 8018DED0 0C063430 */       jal mvOpeningFoxLoadFiles
   /* 16A8F4 8018DED4 A0850022 */        sb $a1, 0x22($a0) # D_ovl39_8018E418 + 34
   /* 16A8F8 8018DED8 3C058019 */       lui $a1, %hi(func_ovl39_8018DD98)
   /* 16A8FC 8018DEDC 24A5DD98 */     addiu $a1, $a1, %lo(func_ovl39_8018DD98)
@@ -978,29 +978,29 @@ glabel func_ovl39_8018DE60
   /* 16A924 8018DF04 0C002E7F */       jal func_8000B9FC
   /* 16A928 8018DF08 24070003 */     addiu $a3, $zero, 3
   /* 16A92C 8018DF0C 0C063795 */       jal func_ovl39_8018DE54
-  /* 16A930 8018DF10 00000000 */       nop 
+  /* 16A930 8018DF10 00000000 */       nop
   /* 16A934 8018DF14 0C045624 */       jal func_ovl2_80115890
-  /* 16A938 8018DF18 00000000 */       nop 
+  /* 16A938 8018DF18 00000000 */       nop
   /* 16A93C 8018DF1C 0C03B04C */       jal func_ovl2_800EC130
-  /* 16A940 8018DF20 00000000 */       nop 
+  /* 16A940 8018DF20 00000000 */       nop
   /* 16A944 8018DF24 0C03F0A1 */       jal mpCollision_InitMapCollisionData
-  /* 16A948 8018DF28 00000000 */       nop 
+  /* 16A948 8018DF28 00000000 */       nop
   /* 16A94C 8018DF2C 2404000A */     addiu $a0, $zero, 0xa
   /* 16A950 8018DF30 2405000A */     addiu $a1, $zero, 0xa
   /* 16A954 8018DF34 24060136 */     addiu $a2, $zero, 0x136
   /* 16A958 8018DF38 0C043966 */       jal cmManager_SetViewportCoordinates
   /* 16A95C 8018DF3C 240700E6 */     addiu $a3, $zero, 0xe6
   /* 16A960 8018DF40 0C0436D5 */       jal cmManager_MakeWallpaperCamera
-  /* 16A964 8018DF44 00000000 */       nop 
+  /* 16A964 8018DF44 00000000 */       nop
   /* 16A968 8018DF48 24040003 */     addiu $a0, $zero, 3
   /* 16A96C 8018DF4C 0C035C65 */       jal ftManager_AllocFighterData
   /* 16A970 8018DF50 24050002 */     addiu $a1, $zero, 2
   /* 16A974 8018DF54 0C05952C */       jal func_NF_801654B0 # couldn't be resolved
-  /* 16A978 8018DF58 00000000 */       nop 
+  /* 16A978 8018DF58 00000000 */       nop
   /* 16A97C 8018DF5C 0C05B7A8 */       jal func_NF_8016DEA0 # couldn't be resolved
-  /* 16A980 8018DF60 00000000 */       nop 
+  /* 16A980 8018DF60 00000000 */       nop
   /* 16A984 8018DF64 0C03F4C0 */       jal efManager_AllocUserData
-  /* 16A988 8018DF68 00000000 */       nop 
+  /* 16A988 8018DF68 00000000 */       nop
   /* 16A98C 8018DF6C 0C035E1B */       jal ftManager_SetFileDataKind
   /* 16A990 8018DF70 24040001 */     addiu $a0, $zero, 1
   /* 16A994 8018DF74 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
@@ -1011,27 +1011,27 @@ glabel func_ovl39_8018DE60
   /* 16A9A8 8018DF88 0C0636DA */       jal func_ovl39_8018DB68
   /* 16A9AC 8018DF8C AC22E20C */        sw $v0, %lo(D_ovl39_8018E20C)($at)
   /* 16A9B0 8018DF90 0C06373C */       jal func_ovl39_8018DCF0
-  /* 16A9B4 8018DF94 00000000 */       nop 
+  /* 16A9B4 8018DF94 00000000 */       nop
   /* 16A9B8 8018DF98 0C063702 */       jal func_ovl39_8018DC08
-  /* 16A9BC 8018DF9C 00000000 */       nop 
-  /* 16A9C0 8018DFA0 0C063465 */       jal func_ovl39_8018D194
-  /* 16A9C4 8018DFA4 00000000 */       nop 
+  /* 16A9BC 8018DF9C 00000000 */       nop
+  /* 16A9C0 8018DFA0 0C063465 */       jal mvOpeningFoxDrawName
+  /* 16A9C4 8018DFA4 00000000 */       nop
   /* 16A9C8 8018DFA8 0C00024B */       jal func_8000092C
-  /* 16A9CC 8018DFAC 00000000 */       nop 
+  /* 16A9CC 8018DFAC 00000000 */       nop
   /* 16A9D0 8018DFB0 2C410807 */     sltiu $at, $v0, 0x807
   /* 16A9D4 8018DFB4 50200007 */      beql $at, $zero, .L8018DFD4
   /* 16A9D8 8018DFB8 8FBF001C */        lw $ra, 0x1c($sp)
   .L8018DFBC:
   /* 16A9DC 8018DFBC 0C00024B */       jal func_8000092C
-  /* 16A9E0 8018DFC0 00000000 */       nop 
+  /* 16A9E0 8018DFC0 00000000 */       nop
   /* 16A9E4 8018DFC4 2C410807 */     sltiu $at, $v0, 0x807
   /* 16A9E8 8018DFC8 1420FFFC */      bnez $at, .L8018DFBC
-  /* 16A9EC 8018DFCC 00000000 */       nop 
+  /* 16A9EC 8018DFCC 00000000 */       nop
   /* 16A9F0 8018DFD0 8FBF001C */        lw $ra, 0x1c($sp)
   .L8018DFD4:
   /* 16A9F4 8018DFD4 27BD0020 */     addiu $sp, $sp, 0x20
   /* 16A9F8 8018DFD8 03E00008 */        jr $ra
-  /* 16A9FC 8018DFDC 00000000 */       nop 
+  /* 16A9FC 8018DFDC 00000000 */       nop
 
 glabel func_ovl39_8018DFE0
   /* 16AA00 8018DFE0 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -1052,7 +1052,7 @@ glabel func_ovl39_8018DFE0
   /* 16AA3C 8018E01C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16AA40 8018E020 27BD0018 */     addiu $sp, $sp, 0x18
   /* 16AA44 8018E024 03E00008 */        jr $ra
-  /* 16AA48 8018E028 00000000 */       nop 
+  /* 16AA48 8018E028 00000000 */       nop
 
 glabel intro_focus_fox_entry
   /* 16AA4C 8018E02C 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
@@ -1076,11 +1076,11 @@ glabel intro_focus_fox_entry
   /* 16AA94 8018E074 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16AA98 8018E078 27BD0018 */     addiu $sp, $sp, 0x18
   /* 16AA9C 8018E07C 03E00008 */        jr $ra
-  /* 16AAA0 8018E080 00000000 */       nop 
+  /* 16AAA0 8018E080 00000000 */       nop
 
-  /* 16AAA4 8018E084 00000000 */       nop 
-  /* 16AAA8 8018E088 00000000 */       nop 
-  /* 16AAAC 8018E08C 00000000 */       nop 
+  /* 16AAA4 8018E084 00000000 */       nop
+  /* 16AAA8 8018E088 00000000 */       nop
+  /* 16AAAC 8018E08C 00000000 */       nop
 
 # Likely start of new file
 #glabel D_ovl39_8018E090   # Routine parsed as data

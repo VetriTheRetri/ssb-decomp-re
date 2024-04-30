@@ -5,9 +5,9 @@
 # 0x8018E1F0 -> 0x8018E610 [0x420 bytes]
 # Unreferenced BSS space @ 8018E1F0
     .space 8
-glabel D_ovl39_8018E1F8
+glabel gMvOpeningFoxFramesElapsed
     .space 4
-glabel D_ovl39_8018E1FC
+glabel gMvOpeningFoxNameGObj
     .space 4
 glabel D_ovl39_8018E200
     .space 8
@@ -17,9 +17,9 @@ glabel D_ovl39_8018E20C
     .space 4
 glabel D_ovl39_8018E210
     .space 8
-glabel D_ovl39_8018E218
+glabel dMvOpeningFoxCameraSettingsAdjustedStart
     .space 32
-glabel D_ovl39_8018E238
+glabel dMvOpeningFoxCameraSettingsAdjustedEnd
     .space 32
 glabel D_ovl39_8018E258
     .space 384

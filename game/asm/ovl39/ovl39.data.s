@@ -22,10 +22,10 @@ glabel D_ovl39_8018E0C8
 glabel D_ovl39_8018E0E0
   .incbin "ovl39.raw.bin", 0x1020, 0x8
 
-glabel D_ovl39_8018E0E8
+glabel dMvOpeningFoxNameOffsets
   .incbin "ovl39.raw.bin", 0x1028, 0x10
 
-glabel D_ovl39_8018E0F8
+glabel dMvOpeningFoxNameCharPositions
   .incbin "ovl39.raw.bin", 0x1038, 0x18
 
 glabel D_ovl39_8018E110

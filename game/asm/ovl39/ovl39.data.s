@@ -6,17 +6,17 @@
 #  8018E090 -> 8018E1F0
 
 
-glabel D_ovl39_8018E090
+glabel dMvOpeningFoxCameraSettingsStart
   .incbin "ovl39.raw.bin", 0x0FD0, 0x1C
 
-glabel D_ovl39_8018E0AC
+glabel dMvOpeningFoxCameraSettingsEnd
   .incbin "ovl39.raw.bin", 0x0FEC, 0x8
   /* FF4 16AAD4 8018E0B4 */
   .asciz "Cz"
   .balign 4
   .incbin "ovl39.raw.bin", 0x0FF8, 0x10
 
-glabel D_ovl39_8018E0C8
+glabel dMvOpeningFoxInputSeq
   .incbin "ovl39.raw.bin", 0x1008, 0x18
 
 glabel D_ovl39_8018E0E0
@@ -40,12 +40,12 @@ glabel D_ovl39_8018E12C
   /* 1074 16AB54 8018E134 */  .4byte func_800A26B8
   /* 1078 16AB58 8018E138 */  .4byte D_NF_8018E610
   .incbin "ovl39.raw.bin", 0x107C, 0x28
-  /* 10A4 16AB84 8018E164 */  .4byte func_ovl39_8018DFE0
+  /* 10A4 16AB84 8018E164 */  .4byte mvOpeningFoxSetupDisplayList
   /* 10A8 16AB88 8018E168 */  .4byte update_contdata
   .incbin "ovl39.raw.bin", 0x10AC, 0x20
   /* 10CC 16ABAC 8018E18C */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl39.raw.bin", 0x10D0, 0x24
-  /* 10F4 16ABD4 8018E1B4 */  .4byte func_ovl39_8018DE60
+  /* 10F4 16ABD4 8018E1B4 */  .4byte mvOpeningFoxInit
   .incbin "ovl39.raw.bin", 0x10F8, 0x8
 
 glabel D_ovl39_8018E1C0

@@ -9,13 +9,13 @@ glabel gMvOpeningFoxFramesElapsed
     .space 4
 glabel gMvOpeningFoxNameGObj
     .space 4
-glabel D_ovl39_8018E200
+glabel gMvOpeningFoxStageFighterGObj
     .space 8
-glabel D_ovl39_8018E208
+glabel gMvOpeningFoxStageCameraGObj
     .space 4
-glabel D_ovl39_8018E20C
+glabel gMvOpeningFoxAnimHeap
     .space 4
-glabel D_ovl39_8018E210
+glabel gMvOpeningFoxPosedFighterYSpeed
     .space 8
 glabel dMvOpeningFoxCameraSettingsAdjustedStart
     .space 32
@@ -29,5 +29,5 @@ glabel D_ovl39_8018E410
     .space 4
 glabel D_ovl39_8018E414
     .space 4
-glabel D_ovl39_8018E418
+glabel gMvOpeningFoxBattleState
     .space 504

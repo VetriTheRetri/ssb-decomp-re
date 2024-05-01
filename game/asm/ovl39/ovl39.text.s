@@ -234,9 +234,9 @@ glabel mvOpeningFoxAnimateStageCamera
   /* 169E24 8018D404 03E00008 */        jr $ra
   /* 169E28 8018D408 00000000 */       nop
 
-glabel func_ovl39_8018D40C
+glabel mvOpeningFoxCreateStageViewport
   /* 169E2C 8018D40C 27BDFFD0 */     addiu $sp, $sp, -0x30
-  /* 169E30 8018D410 3C0E8019 */       lui $t6, %hi(D_ovl39_8018E090)
+  /* 169E30 8018D410 3C0E8019 */       lui $t6, %hi(dMvOpeningFoxCameraSettingsStart)
   /* 169E34 8018D414 AFBF002C */        sw $ra, 0x2c($sp)
   /* 169E38 8018D418 AFB20028 */        sw $s2, 0x28($sp)
   /* 169E3C 8018D41C AFB10024 */        sw $s1, 0x24($sp)
@@ -244,48 +244,48 @@ glabel func_ovl39_8018D40C
   /* 169E44 8018D424 AFA40030 */        sw $a0, 0x30($sp)
   /* 169E48 8018D428 AFA50034 */        sw $a1, 0x34($sp)
   /* 169E4C 8018D42C AFA60038 */        sw $a2, 0x38($sp)
-  /* 169E50 8018D430 25CEE090 */     addiu $t6, $t6, %lo(D_ovl39_8018E090)
-  /* 169E54 8018D434 8DD80000 */        lw $t8, ($t6) # D_ovl39_8018E090 + 0
+  /* 169E50 8018D430 25CEE090 */     addiu $t6, $t6, %lo(dMvOpeningFoxCameraSettingsStart)
+  /* 169E54 8018D434 8DD80000 */        lw $t8, ($t6) # dMvOpeningFoxCameraSettingsStart + 0
   /* 169E58 8018D438 3C108019 */       lui $s0, %hi(dMvOpeningFoxCameraSettingsAdjustedStart)
   /* 169E5C 8018D43C 2610E218 */     addiu $s0, $s0, %lo(dMvOpeningFoxCameraSettingsAdjustedStart)
   /* 169E60 8018D440 AE180000 */        sw $t8, ($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 0
-  /* 169E64 8018D444 8DCF0004 */        lw $t7, 4($t6) # D_ovl39_8018E090 + 4
-  /* 169E68 8018D448 3C198019 */       lui $t9, %hi(D_ovl39_8018E0AC)
-  /* 169E6C 8018D44C 2739E0AC */     addiu $t9, $t9, %lo(D_ovl39_8018E0AC)
+  /* 169E64 8018D444 8DCF0004 */        lw $t7, 4($t6) # dMvOpeningFoxCameraSettingsStart + 4
+  /* 169E68 8018D448 3C198019 */       lui $t9, %hi(dMvOpeningFoxCameraSettingsEnd)
+  /* 169E6C 8018D44C 2739E0AC */     addiu $t9, $t9, %lo(dMvOpeningFoxCameraSettingsEnd)
   /* 169E70 8018D450 AE0F0004 */        sw $t7, 4($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 4
-  /* 169E74 8018D454 8DD80008 */        lw $t8, 8($t6) # D_ovl39_8018E090 + 8
+  /* 169E74 8018D454 8DD80008 */        lw $t8, 8($t6) # dMvOpeningFoxCameraSettingsStart + 8
   /* 169E78 8018D458 3C118019 */       lui $s1, %hi(dMvOpeningFoxCameraSettingsAdjustedEnd)
   /* 169E7C 8018D45C 2631E238 */     addiu $s1, $s1, %lo(dMvOpeningFoxCameraSettingsAdjustedEnd)
   /* 169E80 8018D460 AE180008 */        sw $t8, 8($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 8
-  /* 169E84 8018D464 8DCF000C */        lw $t7, 0xc($t6) # D_ovl39_8018E090 + 12
+  /* 169E84 8018D464 8DCF000C */        lw $t7, 0xc($t6) # dMvOpeningFoxCameraSettingsStart + 12
   /* 169E88 8018D468 00002025 */        or $a0, $zero, $zero
   /* 169E8C 8018D46C AE0F000C */        sw $t7, 0xc($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 12
-  /* 169E90 8018D470 8DD80010 */        lw $t8, 0x10($t6) # D_ovl39_8018E090 + 16
+  /* 169E90 8018D470 8DD80010 */        lw $t8, 0x10($t6) # dMvOpeningFoxCameraSettingsStart + 16
   /* 169E94 8018D474 AE180010 */        sw $t8, 0x10($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 16
-  /* 169E98 8018D478 8DCF0014 */        lw $t7, 0x14($t6) # D_ovl39_8018E090 + 20
+  /* 169E98 8018D478 8DCF0014 */        lw $t7, 0x14($t6) # dMvOpeningFoxCameraSettingsStart + 20
   /* 169E9C 8018D47C AE0F0014 */        sw $t7, 0x14($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 20
-  /* 169EA0 8018D480 8DD80018 */        lw $t8, 0x18($t6) # D_ovl39_8018E090 + 24
+  /* 169EA0 8018D480 8DD80018 */        lw $t8, 0x18($t6) # dMvOpeningFoxCameraSettingsStart + 24
   /* 169EA4 8018D484 AE180018 */        sw $t8, 0x18($s0) # dMvOpeningFoxCameraSettingsAdjustedStart + 24
-  /* 169EA8 8018D488 8F290000 */        lw $t1, ($t9) # D_ovl39_8018E0AC + 0
+  /* 169EA8 8018D488 8F290000 */        lw $t1, ($t9) # dMvOpeningFoxCameraSettingsEnd + 0
   /* 169EAC 8018D48C AE290000 */        sw $t1, ($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 0
-  /* 169EB0 8018D490 8F280004 */        lw $t0, 4($t9) # D_ovl39_8018E0AC + 4
+  /* 169EB0 8018D490 8F280004 */        lw $t0, 4($t9) # dMvOpeningFoxCameraSettingsEnd + 4
   /* 169EB4 8018D494 AE280004 */        sw $t0, 4($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 4
-  /* 169EB8 8018D498 8F290008 */        lw $t1, 8($t9) # D_ovl39_8018E0AC + 8
+  /* 169EB8 8018D498 8F290008 */        lw $t1, 8($t9) # dMvOpeningFoxCameraSettingsEnd + 8
   /* 169EBC 8018D49C AE290008 */        sw $t1, 8($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 8
-  /* 169EC0 8018D4A0 8F28000C */        lw $t0, 0xc($t9) # D_ovl39_8018E0AC + 12
+  /* 169EC0 8018D4A0 8F28000C */        lw $t0, 0xc($t9) # dMvOpeningFoxCameraSettingsEnd + 12
   /* 169EC4 8018D4A4 AE28000C */        sw $t0, 0xc($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 12
-  /* 169EC8 8018D4A8 8F290010 */        lw $t1, 0x10($t9) # D_ovl39_8018E0AC + 16
+  /* 169EC8 8018D4A8 8F290010 */        lw $t1, 0x10($t9) # dMvOpeningFoxCameraSettingsEnd + 16
   /* 169ECC 8018D4AC AE290010 */        sw $t1, 0x10($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 16
-  /* 169ED0 8018D4B0 8F280014 */        lw $t0, 0x14($t9) # D_ovl39_8018E0AC + 20
+  /* 169ED0 8018D4B0 8F280014 */        lw $t0, 0x14($t9) # dMvOpeningFoxCameraSettingsEnd + 20
   /* 169ED4 8018D4B4 AE280014 */        sw $t0, 0x14($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 20
-  /* 169ED8 8018D4B8 8F290018 */        lw $t1, 0x18($t9) # D_ovl39_8018E0AC + 24
+  /* 169ED8 8018D4B8 8F290018 */        lw $t1, 0x18($t9) # dMvOpeningFoxCameraSettingsEnd + 24
   /* 169EDC 8018D4BC 0C0436CB */       jal func_ovl2_8010DB2C
   /* 169EE0 8018D4C0 AE290018 */        sw $t1, 0x18($s1) # dMvOpeningFoxCameraSettingsAdjustedEnd + 24
   /* 169EE4 8018D4C4 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 169EE8 8018D4C8 44810000 */      mtc1 $at, $f0 # 10.0 to cop1
-  /* 169EEC 8018D4CC 3C038019 */       lui $v1, %hi(D_ovl39_8018E208)
-  /* 169EF0 8018D4D0 2463E208 */     addiu $v1, $v1, %lo(D_ovl39_8018E208)
-  /* 169EF4 8018D4D4 AC620000 */        sw $v0, ($v1) # D_ovl39_8018E208 + 0
+  /* 169EEC 8018D4CC 3C038019 */       lui $v1, %hi(gMvOpeningFoxStageCameraGObj)
+  /* 169EF0 8018D4D0 2463E208 */     addiu $v1, $v1, %lo(gMvOpeningFoxStageCameraGObj)
+  /* 169EF4 8018D4D4 AC620000 */        sw $v0, ($v1) # gMvOpeningFoxStageCameraGObj + 0
   /* 169EF8 8018D4D8 3C014366 */       lui $at, (0x43660000 >> 16) # 230.0
   /* 169EFC 8018D4DC 8C520074 */        lw $s2, 0x74($v0)
   /* 169F00 8018D4E0 44812000 */      mtc1 $at, $f4 # 230.0 to cop1
@@ -297,14 +297,14 @@ glabel func_ovl39_8018D40C
   /* 169F18 8018D4F8 E7A40010 */      swc1 $f4, 0x10($sp)
   /* 169F1C 8018D4FC 3C018019 */       lui $at, %hi(D_ovl39_8018E1DC)
   /* 169F20 8018D500 C426E1DC */      lwc1 $f6, %lo(D_ovl39_8018E1DC)($at)
-  /* 169F24 8018D504 3C048019 */       lui $a0, %hi(D_ovl39_8018E208)
+  /* 169F24 8018D504 3C048019 */       lui $a0, %hi(gMvOpeningFoxStageCameraGObj)
   /* 169F28 8018D508 E6460024 */      swc1 $f6, 0x24($s2)
   /* 169F2C 8018D50C 0C002CE7 */       jal func_8000B39C
-  /* 169F30 8018D510 8C84E208 */        lw $a0, %lo(D_ovl39_8018E208)($a0)
-  /* 169F34 8018D514 3C048019 */       lui $a0, %hi(D_ovl39_8018E208)
+  /* 169F30 8018D510 8C84E208 */        lw $a0, %lo(gMvOpeningFoxStageCameraGObj)($a0)
+  /* 169F34 8018D514 3C048019 */       lui $a0, %hi(gMvOpeningFoxStageCameraGObj)
   /* 169F38 8018D518 3C058019 */       lui $a1, %hi(mvOpeningFoxAnimateStageCamera)
   /* 169F3C 8018D51C 24A5D314 */     addiu $a1, $a1, %lo(mvOpeningFoxAnimateStageCamera)
-  /* 169F40 8018D520 8C84E208 */        lw $a0, %lo(D_ovl39_8018E208)($a0)
+  /* 169F40 8018D520 8C84E208 */        lw $a0, %lo(gMvOpeningFoxStageCameraGObj)($a0)
   /* 169F44 8018D524 24060001 */     addiu $a2, $zero, 1
   /* 169F48 8018D528 0C002062 */       jal omAddGObjCommonProc
   /* 169F4C 8018D52C 24070001 */     addiu $a3, $zero, 1
@@ -368,7 +368,7 @@ glabel func_ovl39_8018D40C
   /* 16A034 8018D614 03E00008 */        jr $ra
   /* 16A038 8018D618 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl39_8018D61C
+glabel mvOpeningFoxInitFighterStagePanel
   /* 16A03C 8018D61C 27BDFF50 */     addiu $sp, $sp, -0xb0
   /* 16A040 8018D620 AFBF003C */        sw $ra, 0x3c($sp)
   /* 16A044 8018D624 AFBE0038 */        sw $fp, 0x38($sp)
@@ -410,7 +410,7 @@ glabel func_ovl39_8018D61C
   /* 16A0CC 8018D6AC 8FA40000 */        lw $a0, ($sp)
   /* 16A0D0 8018D6B0 AFA50004 */        sw $a1, 4($sp)
   /* 16A0D4 8018D6B4 8E060008 */        lw $a2, 8($s0) # D_ovl39_8018E1C0 + 8
-  /* 16A0D8 8018D6B8 0C063503 */       jal func_ovl39_8018D40C
+  /* 16A0D8 8018D6B8 0C063503 */       jal mvOpeningFoxCreateStageViewport
   /* 16A0DC 8018D6BC AFA60008 */        sw $a2, 8($sp)
   /* 16A0E0 8018D6C0 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 16A0E4 8018D6C4 00000000 */       nop
@@ -488,14 +488,14 @@ glabel func_ovl39_8018D61C
   /* 16A1FC 8018D7DC AFA20088 */        sw $v0, 0x88($sp)
   /* 16A200 8018D7E0 0C035FCF */       jal ftManager_MakeFighter
   /* 16A204 8018D7E4 02802025 */        or $a0, $s4, $zero
-  /* 16A208 8018D7E8 3C018019 */       lui $at, %hi(D_ovl39_8018E200)
-  /* 16A20C 8018D7EC AC22E200 */        sw $v0, %lo(D_ovl39_8018E200)($at)
+  /* 16A208 8018D7E8 3C018019 */       lui $at, %hi(gMvOpeningFoxStageFighterGObj)
+  /* 16A20C 8018D7EC AC22E200 */        sw $v0, %lo(gMvOpeningFoxStageFighterGObj)($at)
   /* 16A210 8018D7F0 00408025 */        or $s0, $v0, $zero
   /* 16A214 8018D7F4 02202025 */        or $a0, $s1, $zero
   /* 16A218 8018D7F8 0C039F13 */       jal ftCommon_ClearPlayerMatchStats
   /* 16A21C 8018D7FC 00402825 */        or $a1, $v0, $zero
-  /* 16A220 8018D800 3C058019 */       lui $a1, %hi(D_ovl39_8018E0C8)
-  /* 16A224 8018D804 24A5E0C8 */     addiu $a1, $a1, %lo(D_ovl39_8018E0C8)
+  /* 16A220 8018D800 3C058019 */       lui $a1, %hi(dMvOpeningFoxInputSeq)
+  /* 16A224 8018D804 24A5E0C8 */     addiu $a1, $a1, %lo(dMvOpeningFoxInputSeq)
   /* 16A228 8018D808 0C03A6CC */       jal ftCommon_SetHowToPlayInputSeq
   /* 16A22C 8018D80C 02002025 */        or $a0, $s0, $zero
   /* 16A230 8018D810 26310001 */     addiu $s1, $s1, 1
@@ -515,7 +515,7 @@ glabel func_ovl39_8018D61C
   /* 16A264 8018D844 03E00008 */        jr $ra
   /* 16A268 8018D848 27BD00B0 */     addiu $sp, $sp, 0xb0
 
-glabel func_ovl39_8018D84C
+glabel mvOpeningFoxRenderPosedFighterBackground
   /* 16A26C 8018D84C 3C0B8004 */       lui $t3, %hi(gDisplayListHead)
   /* 16A270 8018D850 256B65B0 */     addiu $t3, $t3, %lo(gDisplayListHead)
   /* 16A274 8018D854 8D630000 */        lw $v1, ($t3) # gDisplayListHead + 0
@@ -581,7 +581,7 @@ glabel func_ovl39_8018D84C
   /* 16A364 8018D944 03E00008 */        jr $ra
   /* 16A368 8018D948 AC6D0000 */        sw $t5, ($v1)
 
-glabel func_ovl39_8018D94C
+glabel mvOpeningFoxCreatePosedFighterBackground
   /* 16A36C 8018D94C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 16A370 8018D950 AFBF001C */        sw $ra, 0x1c($sp)
   /* 16A374 8018D954 00002025 */        or $a0, $zero, $zero
@@ -589,10 +589,10 @@ glabel func_ovl39_8018D94C
   /* 16A37C 8018D95C 24060013 */     addiu $a2, $zero, 0x13
   /* 16A380 8018D960 0C00265A */       jal omMakeGObjCommon
   /* 16A384 8018D964 3C078000 */       lui $a3, 0x8000
-  /* 16A388 8018D968 3C058019 */       lui $a1, %hi(func_ovl39_8018D84C)
+  /* 16A388 8018D968 3C058019 */       lui $a1, %hi(mvOpeningFoxRenderPosedFighterBackground)
   /* 16A38C 8018D96C 240EFFFF */     addiu $t6, $zero, -1
   /* 16A390 8018D970 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 16A394 8018D974 24A5D84C */     addiu $a1, $a1, %lo(func_ovl39_8018D84C)
+  /* 16A394 8018D974 24A5D84C */     addiu $a1, $a1, %lo(mvOpeningFoxRenderPosedFighterBackground)
   /* 16A398 8018D978 00402025 */        or $a0, $v0, $zero
   /* 16A39C 8018D97C 2406001C */     addiu $a2, $zero, 0x1c
   /* 16A3A0 8018D980 0C00277D */       jal omAddGObjRenderProc
@@ -602,7 +602,7 @@ glabel func_ovl39_8018D94C
   /* 16A3B0 8018D990 03E00008 */        jr $ra
   /* 16A3B4 8018D994 00000000 */       nop
 
-glabel func_ovl39_8018D998
+glabel mvOpeningFoxAnimatePosedFighter
   /* 16A3B8 8018D998 3C038019 */       lui $v1, %hi(gMvOpeningFoxFramesElapsed)
   /* 16A3BC 8018D99C 8C63E1F8 */        lw $v1, %lo(gMvOpeningFoxFramesElapsed)($v1)
   /* 16A3C0 8018D9A0 2401000F */     addiu $at, $zero, 0xf
@@ -614,26 +614,26 @@ glabel func_ovl39_8018D998
   /* 16A3D8 8018D9B8 3C058019 */       lui $a1, 0x8019
   /* 16A3DC 8018D9BC 2401003C */     addiu $at, $zero, 0x3c
   /* 16A3E0 8018D9C0 1041000D */       beq $v0, $at, .L8018D9F8
-  /* 16A3E4 8018D9C4 3C058019 */       lui $a1, %hi(D_ovl39_8018E210)
+  /* 16A3E4 8018D9C4 3C058019 */       lui $a1, %hi(gMvOpeningFoxPosedFighterYSpeed)
   /* 16A3E8 8018D9C8 1000000F */         b .L8018DA08
-  /* 16A3EC 8018D9CC 24A5E210 */     addiu $a1, $a1, %lo(D_ovl39_8018E210)
+  /* 16A3EC 8018D9CC 24A5E210 */     addiu $a1, $a1, %lo(gMvOpeningFoxPosedFighterYSpeed)
   .L8018D9D0:
   /* 16A3F0 8018D9D0 3C014188 */       lui $at, (0x41880000 >> 16) # 17.0
   /* 16A3F4 8018D9D4 44812000 */      mtc1 $at, $f4 # 17.0 to cop1
   /* 16A3F8 8018D9D8 24A5E210 */     addiu $a1, $a1, -0x1df0
   /* 16A3FC 8018D9DC 1000000A */         b .L8018DA08
-  /* 16A400 8018D9E0 E4A40000 */      swc1 $f4, ($a1) # D_ovl39_8018E210 + 0
+  /* 16A400 8018D9E0 E4A40000 */      swc1 $f4, ($a1) # gMvOpeningFoxPosedFighterYSpeed + 0
   .L8018D9E4:
   /* 16A404 8018D9E4 3C014170 */       lui $at, (0x41700000 >> 16) # 15.0
   /* 16A408 8018D9E8 44813000 */      mtc1 $at, $f6 # 15.0 to cop1
   /* 16A40C 8018D9EC 24A5E210 */     addiu $a1, $a1, -0x1df0
   /* 16A410 8018D9F0 10000005 */         b .L8018DA08
-  /* 16A414 8018D9F4 E4A60000 */      swc1 $f6, ($a1) # D_ovl39_8018E210 + 0
+  /* 16A414 8018D9F4 E4A60000 */      swc1 $f6, ($a1) # gMvOpeningFoxPosedFighterYSpeed + 0
   .L8018D9F8:
   /* 16A418 8018D9F8 44804000 */      mtc1 $zero, $f8
-  /* 16A41C 8018D9FC 3C058019 */       lui $a1, %hi(D_ovl39_8018E210)
-  /* 16A420 8018DA00 24A5E210 */     addiu $a1, $a1, %lo(D_ovl39_8018E210)
-  /* 16A424 8018DA04 E4A80000 */      swc1 $f8, ($a1) # D_ovl39_8018E210 + 0
+  /* 16A41C 8018D9FC 3C058019 */       lui $a1, %hi(gMvOpeningFoxPosedFighterYSpeed)
+  /* 16A420 8018DA00 24A5E210 */     addiu $a1, $a1, %lo(gMvOpeningFoxPosedFighterYSpeed)
+  /* 16A424 8018DA04 E4A80000 */      swc1 $f8, ($a1) # gMvOpeningFoxPosedFighterYSpeed + 0
   .L8018DA08:
   /* 16A428 8018DA08 28610010 */      slti $at, $v1, 0x10
   /* 16A42C 8018DA0C 14200007 */      bnez $at, .L8018DA2C
@@ -641,9 +641,9 @@ glabel func_ovl39_8018D998
   /* 16A434 8018DA14 10200005 */      beqz $at, .L8018DA2C
   /* 16A438 8018DA18 3C018019 */       lui $at, %hi(D_ovl39_8018E1E0)
   /* 16A43C 8018DA1C C430E1E0 */      lwc1 $f16, %lo(D_ovl39_8018E1E0)($at)
-  /* 16A440 8018DA20 C4AA0000 */      lwc1 $f10, ($a1) # D_ovl39_8018E210 + 0
+  /* 16A440 8018DA20 C4AA0000 */      lwc1 $f10, ($a1) # gMvOpeningFoxPosedFighterYSpeed + 0
   /* 16A444 8018DA24 46105480 */     add.s $f18, $f10, $f16
-  /* 16A448 8018DA28 E4B20000 */      swc1 $f18, ($a1) # D_ovl39_8018E210 + 0
+  /* 16A448 8018DA28 E4B20000 */      swc1 $f18, ($a1) # gMvOpeningFoxPosedFighterYSpeed + 0
   .L8018DA2C:
   /* 16A44C 8018DA2C 2861002E */      slti $at, $v1, 0x2e
   /* 16A450 8018DA30 14200007 */      bnez $at, .L8018DA50
@@ -651,18 +651,18 @@ glabel func_ovl39_8018D998
   /* 16A458 8018DA38 10200005 */      beqz $at, .L8018DA50
   /* 16A45C 8018DA3C 3C01BF80 */       lui $at, (0xBF800000 >> 16) # -1.0
   /* 16A460 8018DA40 44813000 */      mtc1 $at, $f6 # -1.0 to cop1
-  /* 16A464 8018DA44 C4A40000 */      lwc1 $f4, ($a1) # D_ovl39_8018E210 + 0
+  /* 16A464 8018DA44 C4A40000 */      lwc1 $f4, ($a1) # gMvOpeningFoxPosedFighterYSpeed + 0
   /* 16A468 8018DA48 46062200 */     add.s $f8, $f4, $f6
-  /* 16A46C 8018DA4C E4A80000 */      swc1 $f8, ($a1) # D_ovl39_8018E210 + 0
+  /* 16A46C 8018DA4C E4A80000 */      swc1 $f8, ($a1) # gMvOpeningFoxPosedFighterYSpeed + 0
   .L8018DA50:
   /* 16A470 8018DA50 8C820074 */        lw $v0, 0x74($a0)
-  /* 16A474 8018DA54 C4B00000 */      lwc1 $f16, ($a1) # D_ovl39_8018E210 + 0
+  /* 16A474 8018DA54 C4B00000 */      lwc1 $f16, ($a1) # gMvOpeningFoxPosedFighterYSpeed + 0
   /* 16A478 8018DA58 C44A0020 */      lwc1 $f10, 0x20($v0)
   /* 16A47C 8018DA5C 46105481 */     sub.s $f18, $f10, $f16
   /* 16A480 8018DA60 03E00008 */        jr $ra
   /* 16A484 8018DA64 E4520020 */      swc1 $f18, 0x20($v0)
 
-glabel func_ovl39_8018DA68
+glabel mvOpeningFoxCreatePosedFighter
   /* 16A488 8018DA68 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 16A48C 8018DA6C AFB00018 */        sw $s0, 0x18($sp)
   /* 16A490 8018DA70 3C0E8011 */       lui $t6, %hi(dFtDefaultFighterDesc)
@@ -689,9 +689,9 @@ glabel func_ovl39_8018DA68
   /* 16A4E0 8018DAC0 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 16A4E4 8018DAC4 00002825 */        or $a1, $zero, $zero
   /* 16A4E8 8018DAC8 44800000 */      mtc1 $zero, $f0
-  /* 16A4EC 8018DACC 3C0A8019 */       lui $t2, %hi(D_ovl39_8018E20C)
+  /* 16A4EC 8018DACC 3C0A8019 */       lui $t2, %hi(gMvOpeningFoxAnimHeap)
   /* 16A4F0 8018DAD0 3C014416 */       lui $at, (0x44160000 >> 16) # 600.0
-  /* 16A4F4 8018DAD4 8D4AE20C */        lw $t2, %lo(D_ovl39_8018E20C)($t2)
+  /* 16A4F4 8018DAD4 8D4AE20C */        lw $t2, %lo(gMvOpeningFoxAnimHeap)($t2)
   /* 16A4F8 8018DAD8 44812000 */      mtc1 $at, $f4 # 600.0 to cop1
   /* 16A4FC 8018DADC A3A2003B */        sb $v0, 0x3b($sp)
   /* 16A500 8018DAE0 02002025 */        or $a0, $s0, $zero
@@ -709,8 +709,8 @@ glabel func_ovl39_8018DA68
   /* 16A530 8018DB10 2405001A */     addiu $a1, $zero, 0x1a
   /* 16A534 8018DB14 0C002834 */       jal omMoveGObjDL
   /* 16A538 8018DB18 2406FFFF */     addiu $a2, $zero, -1
-  /* 16A53C 8018DB1C 3C058019 */       lui $a1, %hi(func_ovl39_8018D998)
-  /* 16A540 8018DB20 24A5D998 */     addiu $a1, $a1, %lo(func_ovl39_8018D998)
+  /* 16A53C 8018DB1C 3C058019 */       lui $a1, %hi(mvOpeningFoxAnimatePosedFighter)
+  /* 16A540 8018DB20 24A5D998 */     addiu $a1, $a1, %lo(mvOpeningFoxAnimatePosedFighter)
   /* 16A544 8018DB24 02002025 */        or $a0, $s0, $zero
   /* 16A548 8018DB28 24060001 */     addiu $a2, $zero, 1
   /* 16A54C 8018DB2C 0C002062 */       jal omAddGObjCommonProc
@@ -729,7 +729,7 @@ glabel func_ovl39_8018DA68
   /* 16A580 8018DB60 03E00008 */        jr $ra
   /* 16A584 8018DB64 00000000 */       nop
 
-glabel func_ovl39_8018DB68
+glabel mvOpeningFoxCreateNameViewport
   /* 16A588 8018DB68 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 16A58C 8018DB6C 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 16A590 8018DB70 AFBF003C */        sw $ra, 0x3c($sp)
@@ -771,7 +771,7 @@ glabel func_ovl39_8018DB68
   /* 16A620 8018DC00 03E00008 */        jr $ra
   /* 16A624 8018DC04 00000000 */       nop
 
-glabel func_ovl39_8018DC08
+glabel mvOpeningFoxCreatePosedFighterViewport
   /* 16A628 8018DC08 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 16A62C 8018DC0C 3C0E8001 */       lui $t6, %hi(func_80017EC0)
   /* 16A630 8018DC10 AFBF003C */        sw $ra, 0x3c($sp)
@@ -831,7 +831,7 @@ glabel func_ovl39_8018DC08
   /* 16A708 8018DCE8 03E00008 */        jr $ra
   /* 16A70C 8018DCEC 00000000 */       nop
 
-glabel func_ovl39_8018DCF0
+glabel mvOpeningFoxCreatePosedFighterBackgroundViewport
   /* 16A710 8018DCF0 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 16A714 8018DCF4 3C0E8001 */       lui $t6, %hi(func_80017EC0)
   /* 16A718 8018DCF8 AFBF003C */        sw $ra, 0x3c($sp)
@@ -875,7 +875,7 @@ glabel func_ovl39_8018DCF0
   /* 16A7B0 8018DD90 03E00008 */        jr $ra
   /* 16A7B4 8018DD94 00000000 */       nop
 
-glabel func_ovl39_8018DD98
+glabel mvOpeningFoxMainProc
   /* 16A7B8 8018DD98 3C028019 */       lui $v0, %hi(gMvOpeningFoxFramesElapsed)
   /* 16A7BC 8018DD9C 2442E1F8 */     addiu $v0, $v0, %lo(gMvOpeningFoxFramesElapsed)
   /* 16A7C0 8018DDA0 8C4E0000 */        lw $t6, ($v0) # gMvOpeningFoxFramesElapsed + 0
@@ -903,11 +903,11 @@ glabel func_ovl39_8018DD98
   /* 16A814 8018DDF4 2401003C */     addiu $at, $zero, 0x3c
   /* 16A818 8018DDF8 0C0026A1 */       jal omEjectGObjCommon
   /* 16A81C 8018DDFC 8C84E1FC */        lw $a0, %lo(gMvOpeningFoxNameGObj)($a0)
-  /* 16A820 8018DE00 0C063587 */       jal func_ovl39_8018D61C
+  /* 16A820 8018DE00 0C063587 */       jal mvOpeningFoxInitFighterStagePanel
   /* 16A824 8018DE04 00000000 */       nop
-  /* 16A828 8018DE08 0C063653 */       jal func_ovl39_8018D94C
+  /* 16A828 8018DE08 0C063653 */       jal mvOpeningFoxCreatePosedFighterBackground
   /* 16A82C 8018DE0C 00000000 */       nop
-  /* 16A830 8018DE10 0C06369A */       jal func_ovl39_8018DA68
+  /* 16A830 8018DE10 0C06369A */       jal mvOpeningFoxCreatePosedFighter
   /* 16A834 8018DE14 00000000 */       nop
   /* 16A838 8018DE18 3C028019 */       lui $v0, %hi(gMvOpeningFoxFramesElapsed)
   /* 16A83C 8018DE1C 8C42E1F8 */        lw $v0, %lo(gMvOpeningFoxFramesElapsed)($v0)
@@ -927,15 +927,15 @@ glabel func_ovl39_8018DD98
   /* 16A86C 8018DE4C 03E00008 */        jr $ra
   /* 16A870 8018DE50 00000000 */       nop
 
-glabel func_ovl39_8018DE54
+glabel mvOpeningFoxInitFramesElapsed
   /* 16A874 8018DE54 3C018019 */       lui $at, %hi(gMvOpeningFoxFramesElapsed)
   /* 16A878 8018DE58 03E00008 */        jr $ra
   /* 16A87C 8018DE5C AC20E1F8 */        sw $zero, %lo(gMvOpeningFoxFramesElapsed)($at)
 
-glabel func_ovl39_8018DE60
-  /* 16A880 8018DE60 3C048019 */       lui $a0, %hi(D_ovl39_8018E418)
+glabel mvOpeningFoxInit
+  /* 16A880 8018DE60 3C048019 */       lui $a0, %hi(gMvOpeningFoxBattleState)
   /* 16A884 8018DE64 3C0E800A */       lui $t6, %hi(gDefaultBattleState)
-  /* 16A888 8018DE68 2484E418 */     addiu $a0, $a0, %lo(D_ovl39_8018E418)
+  /* 16A888 8018DE68 2484E418 */     addiu $a0, $a0, %lo(gMvOpeningFoxBattleState)
   /* 16A88C 8018DE6C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 16A890 8018DE70 3C02800A */       lui $v0, %hi(gBattleState)
   /* 16A894 8018DE74 25CE3FC8 */     addiu $t6, $t6, %lo(gDefaultBattleState)
@@ -958,14 +958,14 @@ glabel func_ovl39_8018DE60
   /* 16A8D4 8018DEB4 8DD80000 */        lw $t8, ($t6) # gDefaultBattleState + 0
   /* 16A8D8 8018DEB8 AF380000 */        sw $t8, ($t9)
   /* 16A8DC 8018DEBC AC440000 */        sw $a0, ($v0) # gBattleState + 0
-  /* 16A8E0 8018DEC0 A0850000 */        sb $a1, ($a0) # D_ovl39_8018E418 + 0
-  /* 16A8E4 8018DEC4 A0830001 */        sb $v1, 1($a0) # D_ovl39_8018E418 + 1
-  /* 16A8E8 8018DEC8 A0830004 */        sb $v1, 4($a0) # D_ovl39_8018E418 + 4
-  /* 16A8EC 8018DECC A0830023 */        sb $v1, 0x23($a0) # D_ovl39_8018E418 + 35
+  /* 16A8E0 8018DEC0 A0850000 */        sb $a1, ($a0) # gMvOpeningFoxBattleState + 0
+  /* 16A8E4 8018DEC4 A0830001 */        sb $v1, 1($a0) # gMvOpeningFoxBattleState + 1
+  /* 16A8E8 8018DEC8 A0830004 */        sb $v1, 4($a0) # gMvOpeningFoxBattleState + 4
+  /* 16A8EC 8018DECC A0830023 */        sb $v1, 0x23($a0) # gMvOpeningFoxBattleState + 35
   /* 16A8F0 8018DED0 0C063430 */       jal mvOpeningFoxLoadFiles
-  /* 16A8F4 8018DED4 A0850022 */        sb $a1, 0x22($a0) # D_ovl39_8018E418 + 34
-  /* 16A8F8 8018DED8 3C058019 */       lui $a1, %hi(func_ovl39_8018DD98)
-  /* 16A8FC 8018DEDC 24A5DD98 */     addiu $a1, $a1, %lo(func_ovl39_8018DD98)
+  /* 16A8F4 8018DED4 A0850022 */        sb $a1, 0x22($a0) # gMvOpeningFoxBattleState + 34
+  /* 16A8F8 8018DED8 3C058019 */       lui $a1, %hi(mvOpeningFoxMainProc)
+  /* 16A8FC 8018DEDC 24A5DD98 */     addiu $a1, $a1, %lo(mvOpeningFoxMainProc)
   /* 16A900 8018DEE0 240403F7 */     addiu $a0, $zero, 0x3f7
   /* 16A904 8018DEE4 2406000D */     addiu $a2, $zero, 0xd
   /* 16A908 8018DEE8 0C00265A */       jal omMakeGObjCommon
@@ -977,7 +977,7 @@ glabel func_ovl39_8018DE60
   /* 16A920 8018DF00 24060064 */     addiu $a2, $zero, 0x64
   /* 16A924 8018DF04 0C002E7F */       jal func_8000B9FC
   /* 16A928 8018DF08 24070003 */     addiu $a3, $zero, 3
-  /* 16A92C 8018DF0C 0C063795 */       jal func_ovl39_8018DE54
+  /* 16A92C 8018DF0C 0C063795 */       jal mvOpeningFoxInitFramesElapsed
   /* 16A930 8018DF10 00000000 */       nop
   /* 16A934 8018DF14 0C045624 */       jal func_ovl2_80115890
   /* 16A938 8018DF18 00000000 */       nop
@@ -1007,12 +1007,12 @@ glabel func_ovl39_8018DE60
   /* 16A998 8018DF78 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
   /* 16A99C 8018DF7C 0C001260 */       jal gsMemoryAlloc
   /* 16A9A0 8018DF80 24050010 */     addiu $a1, $zero, 0x10
-  /* 16A9A4 8018DF84 3C018019 */       lui $at, %hi(D_ovl39_8018E20C)
-  /* 16A9A8 8018DF88 0C0636DA */       jal func_ovl39_8018DB68
-  /* 16A9AC 8018DF8C AC22E20C */        sw $v0, %lo(D_ovl39_8018E20C)($at)
-  /* 16A9B0 8018DF90 0C06373C */       jal func_ovl39_8018DCF0
+  /* 16A9A4 8018DF84 3C018019 */       lui $at, %hi(gMvOpeningFoxAnimHeap)
+  /* 16A9A8 8018DF88 0C0636DA */       jal mvOpeningFoxCreateNameViewport
+  /* 16A9AC 8018DF8C AC22E20C */        sw $v0, %lo(gMvOpeningFoxAnimHeap)($at)
+  /* 16A9B0 8018DF90 0C06373C */       jal mvOpeningFoxCreatePosedFighterBackgroundViewport
   /* 16A9B4 8018DF94 00000000 */       nop
-  /* 16A9B8 8018DF98 0C063702 */       jal func_ovl39_8018DC08
+  /* 16A9B8 8018DF98 0C063702 */       jal mvOpeningFoxCreatePosedFighterViewport
   /* 16A9BC 8018DF9C 00000000 */       nop
   /* 16A9C0 8018DFA0 0C063465 */       jal mvOpeningFoxDrawName
   /* 16A9C4 8018DFA4 00000000 */       nop
@@ -1033,7 +1033,7 @@ glabel func_ovl39_8018DE60
   /* 16A9F8 8018DFD8 03E00008 */        jr $ra
   /* 16A9FC 8018DFDC 00000000 */       nop
 
-glabel func_ovl39_8018DFE0
+glabel mvOpeningFoxSetupDisplayList
   /* 16AA00 8018DFE0 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 16AA04 8018DFE4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 16AA08 8018DFE8 8C830000 */        lw $v1, ($a0)
@@ -1083,5 +1083,5 @@ glabel intro_focus_fox_entry
   /* 16AAAC 8018E08C 00000000 */       nop
 
 # Likely start of new file
-#glabel D_ovl39_8018E090   # Routine parsed as data
+#glabel dMvOpeningFoxCameraSettingsStart   # Routine parsed as data
 #  /* 16AAB0 8018E090 C3C80000 */        ll $t0, ($fp)

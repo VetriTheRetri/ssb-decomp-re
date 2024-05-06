@@ -4,7 +4,7 @@
     D_unkmulti_80132100 = 0x80132100; /* in ovl28, ovl13, ovl26, ovl23, ovl22, ovl3, ovl33, ovl55, ovl24, ovl25, ovl31, ovl53, ovl56, ovl27, ovl14, ovl10, ovl54, ovl29 */
     D_unkmulti_801322B0 = 0x801322B0; /* in ovl28, ovl13, ovl26, ovl23, ovl22, ovl3, ovl33, ovl55, ovl24, ovl25, ovl31, ovl53, ovl56, ovl27, ovl14, ovl10, ovl54, ovl29 */
     D_unkmulti_80132300 = 0x80132300; /* in ovl28, ovl13, ovl26, ovl23, ovl22, ovl3, ovl33, ovl55, ovl24, ovl25, ovl31, ovl53, ovl56, ovl27, ovl14, ovl10, ovl54, ovl29 */
-    func_multiple_801323F8 = 0x801323F8; /* could be: overlay_set12_entry, func_ovl56_801323F8 */
+    func_multiple_801323F8 = 0x801323F8; /* could be: overlay_set12_entry, gmStageClearMakeScoreSObjs */
     D_unkmulti_80132480 = 0x80132480; /* in ovl28, ovl13, ovl26, ovl23, ovl22, ovl3, ovl33, ovl55, ovl24, ovl25, ovl31, ovl53, ovl56, ovl27, ovl14, ovl10, ovl54, ovl29 */
     D_unkmulti_80132650 = 0x80132650; /* in ovl28, ovl13, ovl26, ovl23, ovl22, ovl3, ovl33, ovl55, ovl24, ovl25, ovl31, ovl53, ovl56, ovl27, ovl14, ovl10, ovl54, ovl29 */
     D_unkmulti_80132800 = 0x80132800; /* in ovl28, ovl13, ovl26, ovl22, ovl3, ovl33, ovl55, ovl24, ovl25, ovl31, ovl53, ovl56, ovl27, ovl14, ovl10, ovl54, ovl29 */

@@ -99,7 +99,7 @@ void func_ovl5_8018D1A0(void)
     itManagerInitItems();
     efManager_AllocUserData();
     gmRumble_SetPlayerRumble();
-    ftPublicReactSetup();
+    ftPublicitySetup();
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {

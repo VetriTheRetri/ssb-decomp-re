@@ -332,7 +332,7 @@ sb32 itMBallGOpenProcUpdate(GObj *m_ball_gobj)
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemIndex(m_ball_gobj, dItMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemID(m_ball_gobj, dItMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {
@@ -440,7 +440,7 @@ sb32 itMBallAOpenProcUpdate(GObj *m_ball_gobj)
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemIndex(m_ball_gobj, dItMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemID(m_ball_gobj, dItMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {

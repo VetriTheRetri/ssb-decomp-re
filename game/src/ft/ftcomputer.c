@@ -6284,7 +6284,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
 
         switch (ip->type)
         {
-        case It_Type_Container:
+        case It_Type_Damage:
         case It_Type_Shoot:
         case It_Type_Throw:
             ft_com->objective = ftComputer_Objective_UseItem;
@@ -6600,7 +6600,7 @@ void ftComputerFollowObjectiveUseItem(ftStruct *fp)
         }
         ft_com->item_throw_wait++;
         /* fallthrough */
-    case It_Type_Container:
+    case It_Type_Damage:
     case It_Type_Throw:
         ftComputerCheckFindTarget(fp);
 

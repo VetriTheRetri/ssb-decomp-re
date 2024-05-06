@@ -412,7 +412,7 @@ glabel mvOpeningMarioInitFighterStagePanel
   /* 166CE4 8018D6B4 AFA60008 */        sw $a2, 8($sp)
   /* 166CE8 8018D6B8 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 166CEC 8018D6BC 00000000 */       nop
-  /* 166CF0 8018D6C0 0C0594F8 */       jal ftPublicReactSetup
+  /* 166CF0 8018D6C0 0C0594F8 */       jal ftPublicitySetup
   /* 166CF4 8018D6C4 00000000 */       nop
   /* 166CF8 8018D6C8 3C168011 */       lui $s6, %hi(dFtDefaultFighterDesc)
   /* 166CFC 8018D6CC 3C15800A */       lui $s5, %hi(gBattleState)

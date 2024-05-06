@@ -2,13 +2,13 @@ name: Smash Brothers (North America)
 sha1: e2929e10fccc0aa84e5776227e798abc07cedabf
 options:
   basename: smashbrothers
-  target_path: baserom.z64
-  elf_path: bin/smashbrothers.elf
+  target_path: baserom.us.z64
+  elf_path: build/smashbrothers.elf
   base_path: .
   platform: n64
   compiler: IDO
 
-  build_path: bin
+  build_path: build
 
   ld_script_path: .splat/smashbrothers.ld
   ld_dependencies: True
@@ -100,7 +100,7 @@ options:
   rodata_string_guesser_level: 2
   data_string_guesser_level: 2
 
-  # elf_section_list_path: bin/smashbrothers.elf
+  # elf_section_list_path: build/smashbrothers.elf
   # asm_path: asm
   # src_path: src
   # create_asm_dependencies: True

@@ -15,6 +15,11 @@ VERBOSE ?= 0
 # Command for printing messages during the make.
 PRINT ?= printf
 
+VERSION ?= us
+
+BASEROM              := baserom.$(VERSION).z64
+TARGET               := smashbrothers
+
 UNAME_S := $(shell uname -s)
 UNAME_M := $(shell uname -m)
 ifeq ($(OS),Windows_NT)
@@ -67,10 +72,9 @@ DEFINES := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32
 # ----- Output ------
 
 GAME_NAME := smashbrothers
-BUILD_DIR := bin
-ROM       := $(BUILD_DIR)/builtRom.z64
-ELF       := /tmp/smashbrothers.elf
-LD_SCRIPT := ./splat/$(GAME_NAME).ld
+BUILD_DIR := build
+ROM       := $(BUILD_DIR)/$(TARGET).$(VERSION).z64
+ELF       := $(BUILD_DIR)/$(TARGET).$(VERSION).elf
 
 # ----- Tools ------
 
@@ -131,9 +135,9 @@ RODATA_SECTION_FILES := $(foreach f,$(C_FILES:.c=.rodata),$(BUILD_DIR)/$f) \
 DEP_FILES := $(O_FILES:.o=.d)
 
 # create build directories
-$(shell mkdir -p bin/asm)
-$(shell mkdir -p bin/src)
-$(shell mkdir -p bin/assets)
+$(shell mkdir -p $(BUILD_DIR)/asm)
+$(shell mkdir -p $(BUILD_DIR)/src)
+$(shell mkdir -p $(BUILD_DIR)/assets)
 
 # ----- Targets ------
 
@@ -142,9 +146,13 @@ all: rom
 toolchain:
 	@$(MAKE) -s -C tools
 
+SB := COMPLETE!\n
 rom: $(ROM)
 ifneq ($(COMPARE),0)
-	bash $(TOOLS)/compareHashes.sh $(ROM) baserom.z64
+	@md5sum --status -c $(TARGET).$(VERSION).md5 && \
+	$(PRINT) "$(BLUE)$(TARGET).$(VERSION).z64$(NO_COL): $(GREEN)OK$(NO_COL)\n$(YELLOW)$(SB)" || \
+	$(PRINT) "$(BLUE)$(TARGET).$(VERSION).z64 $(RED)FAILED$(NO_COL)\n\
+	$(RED)FAILURE!$(NO_COL)\n"
 endif
 
 nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
@@ -212,7 +220,7 @@ $(BUILD_DIR)/%.o: %.bin
 
 .PRECIOUS: assets/%.bin
 assets/%.bin: assets/%.png
-	$(call print,Assets:,$<,$@)
+	$(call print,Converting Assets:,$<,$@)
 	$(V)$(PYTHON) $(TOOLS)/image_converter.py $< $@
 
 -include $(DEP_FILES)

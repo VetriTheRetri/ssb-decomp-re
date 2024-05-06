@@ -7,3 +7,4 @@ assets
 __pycache__
 bin
 undefined*
+tools/ido-recomp/

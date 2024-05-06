@@ -8,8 +8,35 @@ SHELL = /bin/bash
 COMPARE ?= 1
 FULL_DISASM ?= 0
 
+# Whether to colorize build messages
+COLOR ?= 1
+# Whether to hide commands or not
+VERBOSE ?= 0
+# Command for printing messages during the make.
+PRINT ?= printf
+
+UNAME_S := $(shell uname -s)
+UNAME_M := $(shell uname -m)
+ifeq ($(OS),Windows_NT)
+$(error Native Windows is currently unsupported for building this repository, use WSL instead c:)
+else ifeq ($(UNAME_S),Linux)
+    DETECTED_OS := linux
+    #Detect aarch64 devices (Like Raspberry Pi OS 64-bit)
+    #If it's found, then change the compiler to a version that can compile in 32 bit mode.
+    ifeq ($(UNAME_M),aarch64)
+        CC_CHECK_COMP := arm-linux-gnueabihf-gcc
+    endif
+else ifeq ($(UNAME_S),Darwin)
+    DETECTED_OS := macos
+    MAKE := gmake
+    CPPFLAGS += -xc++
+endif
+
 # ----- Common flags -----
 
+MIPS_BINUTILS_PREFIX := mips-linux-gnu-
+TOOLS	  := tools
+PYTHON	  := python3
 INCLUDES := -Iinclude -Isrc
 DEFINES := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32
 
@@ -23,16 +50,24 @@ LD_SCRIPT := ./splat/$(GAME_NAME).ld
 
 # ----- Tools ------
 
-CC              := ./tools/ido-static-recomp/build7.1/out/cc
-AS              := mips-linux-gnu-as
-LD              := mips-linux-gnu-ld
-OBJCOPY         := mips-linux-gnu-objcopy
-CCFLAGS         := -- mips-linux-gnu-as -32 -- -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,568,624,709 -mips2 -O2
+ifneq ($(shell type $(MIPS_BINUTILS_PREFIX)ld >/dev/null 2>/dev/null; echo $$?), 0)
+$(error Unable to find $(MIPS_BINUTILS_PREFIX)ld. Please install or build MIPS binutils, commonly mips-linux-gnu. (or set MIPS_BINUTILS_PREFIX if your MIPS binutils install uses another prefix))
+endif
+
+CC              := $(TOOLS)/ido-recomp/$(DETECTED_OS)/cc
+AS              := $(MIPS_BINUTILS_PREFIX)as
+LD              := $(MIPS_BINUTILS_PREFIX)ld
+OBJCOPY         := $(MIPS_BINUTILS_PREFIX)objcopy
+OBJDUMP         := $(MIPS_BINUTILS_PREFIX)objdump
+ASM_PROC        := $(PYTHON) $(TOOLS)/asm-processor/build.py
+CCFLAGS         := $(AS) -32 -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,568,624,709 -mips2 -O2
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 LDFLAGS         := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T symbols/not_found.txt -T symbols/linker_constants.txt -T .splat/smashbrothers.ld
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
 
-SPLAT             ?= python3 ./tools/splat/split.py
+ASM_PROC_FLAGS  := --input-enc=utf-8 --output-enc=euc-jp --convert-statics=global-with-filename
+
+SPLAT             ?= $(PYTHON) $(TOOLS)/splat/split.py
 SPLAT_YAML        ?= $(GAME_NAME).yaml
 SPLAT_FLAGS       ?=
 ifneq ($(FULL_DISASM),0)
@@ -40,6 +75,7 @@ ifneq ($(FULL_DISASM),0)
 endif
 
 # ----- Files ------
+CC := $(ASM_PROC) $(ASM_PROC_FLAGS) $(CC) -- $(AS) $(ASFLAGS) --
 
 C_FILES        := $(shell find src -type f | grep \\.c$)
 S_TEXT_FILES   := $(shell find asm -type f | grep \\.s$ | grep -v nonmatchings | grep -v \\.rodata\\.s | grep -v \\.data\\.s | grep -v \\.bss\\.s)
@@ -79,13 +115,16 @@ $(shell mkdir -p bin/assets)
 
 all: rom
 
+toolchain:
+	@$(MAKE) -s -C tools
+
 rom: $(ROM)
 ifneq ($(COMPARE),0)
-	bash ./tools/compareHashes.sh $(ROM) baserom.z64
+	bash $(TOOLS)/compareHashes.sh $(ROM) baserom.z64
 endif
 
 nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
-	bash tools/compareObjects.sh
+	bash $(TOOLS)/compareObjects.sh
 
 clean:
 	rm -r -f $(BUILD_DIR) $(ROM) $(ELF)
@@ -99,10 +138,10 @@ init:
 	make all
 
 format:
-	python3 tools/formatHelper.py -e
+	$(PYTHON) $(TOOLS)/formatHelper.py -e
 	find include -type f | rg "\.h" | xargs clang-format -i
 	find src -type f | rg "\.(c|h)" | xargs clang-format -i
-	python3 tools/formatHelper.py -s
+	$(PYTHON) $(TOOLS)/formatHelper.py -s
 
 # ----- Rules ------
 
@@ -133,10 +172,10 @@ $(BUILD_DIR)/%.o: %.c
 $(BUILD_DIR)/%.o: %.bin
 	@mkdir -p $(@D)
 	$(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
-	@bash tools/createPaletteObjectIfNeeded.sh $(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
+	@bash $(TOOLS)/createPaletteObjectIfNeeded.sh $(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
 
 .PRECIOUS: assets/%.bin
 assets/%.bin: assets/%.png
-	python3 tools/image_converter.py $< $@
+	$(PYTHON) $(TOOLS)/image_converter.py $< $@
 
 -include $(DEP_FILES)

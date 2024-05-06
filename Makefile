@@ -32,6 +32,30 @@ else ifeq ($(UNAME_S),Darwin)
     CPPFLAGS += -xc++
 endif
 
+# Support python venv's if one is installed.
+PYTHON_VENV = .venv/bin/python3
+ifneq "$(wildcard $(PYTHON_VENV) )" ""
+  PYTHON = $(PYTHON_VENV)
+endif
+
+ifeq ($(VERBOSE),0)
+  V := @
+endif
+
+ifeq ($(COLOR),1)
+NO_COL  := \033[0m
+RED     := \033[0;31m
+GREEN   := \033[0;32m
+BLUE    := \033[0;34m
+YELLOW  := \033[0;33m
+BLINK   := \033[33;5m
+endif
+
+# Common build print status function
+define print
+  @$(PRINT) "$(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
+endef
+
 # ----- Common flags -----
 
 MIPS_BINUTILS_PREFIX := mips-linux-gnu-
@@ -145,37 +169,50 @@ format:
 
 # ----- Rules ------
 
+# Making ROM
 $(ROM): $(ELF)
-	$(OBJCOPY) $(OBJCOPYFLAGS) $< $@ -O binary
+	$(call print,ELF->ROM:,$<,$@)
+	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $@ -O binary
 
 $(ELF): $(O_FILES) symbols/not_found.txt
-	$(LD) -o $@ $(LDFLAGS)
+	$(call print,Linking:,$<,$@)
+	$(V)$(LD) -o $@ $(LDFLAGS)
 
 $(BUILD_DIR)/%.text: $(BUILD_DIR)/%.o
-	$(OBJCOPY) -O binary --only-section=.text $< $@
+	$(call print,text:,$<,$@)
+	$(V)$(OBJCOPY) -O binary --only-section=.text $< $@
 
 $(BUILD_DIR)/%.data: $(BUILD_DIR)/%.o
-	$(OBJCOPY) -O binary --only-section=.data $< $@
+	$(call print,data:,$<,$@)
+	$(V)$(OBJCOPY) -O binary --only-section=.data $< $@
 
 $(BUILD_DIR)/%.rodata: $(BUILD_DIR)/%.o
-	$(OBJCOPY) -O binary --only-section=.rodata $< $@
+	$(call print,Rodata:,$<,$@)
+	$(V)$(OBJCOPY) -O binary --only-section=.rodata $< $@
 
+# Assembly
 $(BUILD_DIR)/%.o: %.s
+	$(call print,Assembling:,$<,$@)
 	@mkdir -p $(@D)
-	$(AS) $(ASFLAGS) -o $@ $<
+	$(V)$(AS) $(ASFLAGS) -o $@ $<
 
+# C
 $(BUILD_DIR)/%.o: %.c
+	$(call print,Compiling:,$<,$@)
 	@mkdir -p $(@D)
 	clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $< # d file generation
-	$(CC) $(CCFLAGS) -o $@ $<
+	$(V)$(CC) $(CCFLAGS) -o $@ $<
 
+#Bins
 $(BUILD_DIR)/%.o: %.bin
+	$(call print,Making bin:,$<,$@)
 	@mkdir -p $(@D)
-	$(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
-	@bash $(TOOLS)/createPaletteObjectIfNeeded.sh $(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
+	$(V)$(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
+	$(V)@bash $(TOOLS)/createPaletteObjectIfNeeded.sh $(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
 
 .PRECIOUS: assets/%.bin
 assets/%.bin: assets/%.png
-	$(PYTHON) $(TOOLS)/image_converter.py $< $@
+	$(call print,Assets:,$<,$@)
+	$(V)$(PYTHON) $(TOOLS)/image_converter.py $< $@
 
 -include $(DEP_FILES)

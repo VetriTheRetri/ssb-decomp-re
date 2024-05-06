@@ -661,7 +661,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     gItemMonsterData.monster_prev = gItemMonsterData.monster_curr;
     gItemMonsterData.monster_curr = index;
 
-    monster_gobj = itManagerMakeItemIndex(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+    monster_gobj = itManagerMakeItemID(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
     if (monster_gobj != NULL)
     {

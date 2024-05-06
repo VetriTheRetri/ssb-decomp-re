@@ -149,7 +149,7 @@ struct ftScriptInfo
 
 struct ftScriptInfoArray
 {
-    ftScriptInfo script_info[ftMotion_Common_SpecialStart]; // Array size = last animation ID?
+    ftScriptInfo script_info[1]; // Array size = last animation ID?
 };
 
 struct ftData
@@ -746,34 +746,34 @@ struct ftStruct
     ftKind ft_kind;
     u8 team;
     u8 player;
-    u8 lod_current; // Hi-Poly = 1, Low-Poly = 2
-    u8 lod_match;   // Hi-Poly = 1, Low-Poly = 2
+    u8 lod_current;             // Hi-Poly = 1, Low-Poly = 2
+    u8 lod_match;               // Hi-Poly = 1, Low-Poly = 2
     u8 costume;
-    u8 shade;       // i.e. When multiple instances of the same character costume are in-game
+    u8 shade;                   // i.e. When multiple instances of the same character costume are in-game
     u8 handicap;
     u8 cp_level;
     s8 stock_count;
-    u8 team_order;  // Order number if this fighter is a "VS *character* Team" member; used to check for bonuses such as Yoshi Rainbow
+    u8 team_order;              // Order number if this fighter is a "VS *character* Team" member; used to check for bonuses such as Yoshi Rainbow
     u8 dl_link;
-    s32 player_number; // Player's number? (Note: NOT player port, e.g. if players 2 and 4 are in a match,
-                       // player 2 will be number 1 and player 4 will be number 2; used to match fighters and items?)
+    s32 player_number;          // Player's number? (Note: NOT player port, e.g. if players 2 and 4 are in a match,
+                                // player 2 will be number 1 and player 4 will be number 2; used to match fighters and items?)
 
-    struct ftStatusInfo // Status = Action State
+    struct ftStatusInfo         // Status = Action State
     {
-        u32 status_time_spent; // Frames spent in this action state
+        u32 status_time_spent;  // Frames spent in this action state
         plKind pl_kind;
         s32 status_id;
-        s32 motion_id; // Index of moveset command script to use
+        s32 motion_id;          // Index of moveset command script to use
 
     } status_info;
 
     s32 percent_damage;
-    s32 damage_resist; // Resits a specific amount of % damage before breaking, effectively damage-based armor
+    s32 damage_resist;          // Resits a specific amount of % damage before breaking, effectively damage-based armor
     s32 shield_health;
     f32 unk_ft_0x38;
     s32 x3C_unk;
-    u32 hitlag_timer; // Freeze if TRUE
-    s32 lr; // Facing direction; -1 = LR_Left, 1 = LR_Right
+    u32 hitlag_timer;
+    s32 lr;                     // Facing direction; -1 = LR_Left, 1 = LR_Right
 
     struct ftPhysicsInfo
     {

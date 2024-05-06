@@ -571,7 +571,7 @@ void scExplainProcStart(void)
     efManager_AllocUserData();
     ifScreenFlash_InitInterfaceVars(0xFF);
     gmRumble_SetPlayerRumble();
-    ftPublicReactSetup();
+    ftPublicitySetup();
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {

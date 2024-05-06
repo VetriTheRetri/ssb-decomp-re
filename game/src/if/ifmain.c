@@ -2668,11 +2668,11 @@ void ifPlayer_BattleStats_UpdateScoreStocks(ftStruct *fp)
     {
         if (fp->status_info.pl_kind == Pl_Kind_Man)
         {
-            ftPublicReactDefeatedAddID(ifPlayer_Defeated_AnnounceVoices[fp->player]);
+            ftPublicityDefeatedAddID(ifPlayer_Defeated_AnnounceVoices[fp->player]);
         }
-        else ftPublicReactDefeatedAddID(0x1E0);
+        else ftPublicityDefeatedAddID(0x1E0);
 
-        ftPublicReactDefeatedAddID(0x1FF);
+        ftPublicityDefeatedAddID(0x1FF);
     }
 }
 

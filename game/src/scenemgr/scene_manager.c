@@ -253,7 +253,7 @@ void start_scene_manager(UNUSED u32 set) {
                 break;
             case 29:
                 load_overlay(&D_800A3070[35]);
-                intro_portrait_wipes_entry();
+                mvPortraitsStartScene();
                 break;
             case 30:
                 load_overlay(&D_800A3070[3]);

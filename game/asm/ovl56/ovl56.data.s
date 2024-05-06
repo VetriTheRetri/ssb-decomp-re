@@ -26,7 +26,7 @@ glabel D_ovl56_80134EFC
   .balign 4
   .incbin "ovl56.raw.bin", 0x35F0, 0x10
 
-glabel D_ovl56_80135100
+glabel dGmStageClearDigitSpriteColors
   .incbin "ovl56.raw.bin", 0x3600, 0x14
 
 glabel D_ovl56_80135114

@@ -339,8 +339,8 @@ void func_ovl2_800D67DC(void)
                 {
                     func_ovl2_800D6738(0);
 
-                    gSceneData.scene_previous = 0x34;
-                    gSceneData.scene_current = 0x1B;
+                    gSceneData.scene_previous = scMajor_Kind_1PGame;
+                    gSceneData.scene_current = scMajor_Kind_N64;
 
                     return;
                 }

@@ -161,7 +161,7 @@ glabel func_ovl5_8018D1A0
   /* 10B59C 8018D2EC 00000000 */       nop 
   /* 10B5A0 8018D2F0 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 10B5A4 8018D2F4 00000000 */       nop 
-  /* 10B5A8 8018D2F8 0C0594F8 */       jal ftPublicReactSetup
+  /* 10B5A8 8018D2F8 0C0594F8 */       jal ftPublicitySetup
   /* 10B5AC 8018D2FC 00000000 */       nop 
   /* 10B5B0 8018D300 3C014316 */       lui $at, (0x43160000 >> 16) # 150.0
   /* 10B5B4 8018D304 3C1E8019 */       lui $fp, %hi(gUnkExplainFighterGObj)

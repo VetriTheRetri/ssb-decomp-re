@@ -731,7 +731,7 @@ glabel func_ovl2_800D67DC
   /* 0526B0 800D6EB0 24846CA4 */     addiu $a0, $a0, %lo(D_ovl2_80116CA4)
   /* 0526B4 800D6EB4 240B000C */     addiu $t3, $zero, 0xc
   /* 0526B8 800D6EB8 A25E0001 */        sb $fp, 1($s2) # gSceneData + 1
-  /* 0526BC 800D6EBC 0C04C8FE */       jal func_multiple_801323F8 # possible labels: overlay_set12_entry, func_ovl56_801323F8
+  /* 0526BC 800D6EBC 0C04C8FE */       jal func_multiple_801323F8 # possible labels: overlay_set12_entry, gmStageClearMakeScoreSObjs
   /* 0526C0 800D6EC0 A24B0000 */        sb $t3, ($s2) # gSceneData + 0
   /* 0526C4 800D6EC4 10000007 */         b .L800D6EE4
   /* 0526C8 800D6EC8 924C0017 */       lbu $t4, 0x17($s2) # gSceneData + 23
@@ -792,7 +792,7 @@ glabel func_ovl2_800D67DC
   /* 05278C 800D6F8C 24846CA4 */     addiu $a0, $a0, %lo(D_ovl2_80116CA4)
   /* 052790 800D6F90 240D000C */     addiu $t5, $zero, 0xc
   /* 052794 800D6F94 A25E0001 */        sb $fp, 1($s2) # gSceneData + 1
-  /* 052798 800D6F98 0C04C8FE */       jal func_multiple_801323F8 # possible labels: overlay_set12_entry, func_ovl56_801323F8
+  /* 052798 800D6F98 0C04C8FE */       jal func_multiple_801323F8 # possible labels: overlay_set12_entry, gmStageClearMakeScoreSObjs
   /* 05279C 800D6F9C A24D0000 */        sb $t5, ($s2) # gSceneData + 0
   .L800D6FA0:
   /* 0527A0 800D6FA0 240F001B */     addiu $t7, $zero, 0x1b
@@ -8886,7 +8886,7 @@ glabel ftMap_SetFighterLandingVars
   /* 059BE4 800DE3E4 44802000 */      mtc1 $zero, $f4
   /* 059BE8 800DE3E8 44051000 */      mfc1 $a1, $f2
   .L800DE3EC:
-  /* 059BEC 800DE3EC 0C0593DC */       jal ftPublicReactKnockbackDecide
+  /* 059BEC 800DE3EC 0C0593DC */       jal ftPublicityKnockbackDecide
   /* 059BF0 800DE3F0 AFA2001C */        sw $v0, 0x1c($sp)
   /* 059BF4 800DE3F4 8FA2001C */        lw $v0, 0x1c($sp)
   /* 059BF8 800DE3F8 44802000 */      mtc1 $zero, $f4
@@ -69051,15 +69051,15 @@ glabel ifPlayer_BattleStats_UpdateScoreStocks
   /* 08F26C 80113A6C 3C048013 */       lui $a0, %hi(ifPlayer_Defeated_AnnounceVoices)
   /* 08F270 80113A70 000FC040 */       sll $t8, $t7, 1
   /* 08F274 80113A74 00982021 */      addu $a0, $a0, $t8
-  /* 08F278 80113A78 0C05943E */       jal ftPublicReactDefeatedAddID
+  /* 08F278 80113A78 0C05943E */       jal ftPublicityDefeatedAddID
   /* 08F27C 80113A7C 9484F184 */       lhu $a0, %lo(ifPlayer_Defeated_AnnounceVoices)($a0)
   /* 08F280 80113A80 10000003 */         b .L80113A90
   /* 08F284 80113A84 00000000 */       nop 
   .L80113A88:
-  /* 08F288 80113A88 0C05943E */       jal ftPublicReactDefeatedAddID
+  /* 08F288 80113A88 0C05943E */       jal ftPublicityDefeatedAddID
   /* 08F28C 80113A8C 240401E0 */     addiu $a0, $zero, 0x1e0
   .L80113A90:
-  /* 08F290 80113A90 0C05943E */       jal ftPublicReactDefeatedAddID
+  /* 08F290 80113A90 0C05943E */       jal ftPublicityDefeatedAddID
   /* 08F294 80113A94 240401FF */     addiu $a0, $zero, 0x1ff
   /* 08F298 80113A98 8FBF0014 */        lw $ra, 0x14($sp)
   .L80113A9C:

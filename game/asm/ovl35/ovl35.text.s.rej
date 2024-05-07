@@ -1,0 +1,309 @@
+diff a/game/asm/ovl35/ovl35.text.s b/game/asm/ovl35/ovl35.text.s	(rejected hunks)
+@@ -12,7 +12,7 @@
+ # Text Sections
+ #  0x80131B00 -> 0x801328A0
+ 
+-glabel opPortraitsSetupDisplayList
++glabel mvPortraitsSetupDisplayList
+   /* 165810 80131B00 27BDFFD8 */     addiu $sp, $sp, -0x28
+   /* 165814 80131B04 AFBF0014 */        sw $ra, 0x14($sp)
+   /* 165818 80131B08 8C830000 */        lw $v1, ($a0)
+@@ -36,7 +36,7 @@ glabel opPortraitsSetupDisplayList
+   /* 165860 80131B50 03E00008 */        jr $ra
+   /* 165864 80131B54 00000000 */       nop
+ 
+-glabel opPortraitsCreatePortraitsSet1
++glabel mvPortraitsCreatePortraitsSet1
+   /* 165868 80131B58 27BDFF80 */     addiu $sp, $sp, -0x80
+   /* 16586C 80131B5C 3C0F8013 */       lui $t7, %hi(dIntroPortraitsPortraitOffsetsSet1)
+   /* 165870 80131B60 AFBF0034 */        sw $ra, 0x34($sp)
+@@ -124,7 +124,7 @@ glabel opPortraitsCreatePortraitsSet1
+   /* 1659B4 80131CA4 03E00008 */        jr $ra
+   /* 1659B8 80131CA8 27BD0080 */     addiu $sp, $sp, 0x80
+ 
+-glabel opPortraitsCreatePortraitsSet2
++glabel mvPortraitsCreatePortraitsSet2
+   /* 1659BC 80131CAC 27BDFF80 */     addiu $sp, $sp, -0x80
+   /* 1659C0 80131CB0 3C0F8013 */       lui $t7, %hi(dIntroPortraitsPortraitOffsetsSet2)
+   /* 1659C4 80131CB4 AFBF0034 */        sw $ra, 0x34($sp)
+@@ -212,7 +212,7 @@ glabel opPortraitsCreatePortraitsSet2
+   /* 165B08 80131DF8 03E00008 */        jr $ra
+   /* 165B0C 80131DFC 27BD0080 */     addiu $sp, $sp, 0x80
+ 
+-glabel opPortraitsBlockRow1
++glabel mvPortraitsBlockRow1
+   /* 165B10 80131E00 3C048004 */       lui $a0, %hi(gDisplayListHead)
+   /* 165B14 80131E04 248465B0 */     addiu $a0, $a0, %lo(gDisplayListHead)
+   /* 165B18 80131E08 8C830000 */        lw $v1, ($a0) # gDisplayListHead + 0
+@@ -226,7 +226,7 @@ glabel opPortraitsBlockRow1
+   /* 165B38 80131E28 03E00008 */        jr $ra
+   /* 165B3C 80131E2C AC780004 */        sw $t8, 4($v1)
+ 
+-glabel opPortraitsBlockRow2
++glabel mvPortraitsBlockRow2
+   /* 165B40 80131E30 3C048004 */       lui $a0, %hi(gDisplayListHead)
+   /* 165B44 80131E34 248465B0 */     addiu $a0, $a0, %lo(gDisplayListHead)
+   /* 165B48 80131E38 8C830000 */        lw $v1, ($a0) # gDisplayListHead + 0
+@@ -240,7 +240,7 @@ glabel opPortraitsBlockRow2
+   /* 165B68 80131E58 03E00008 */        jr $ra
+   /* 165B6C 80131E5C AC780004 */        sw $t8, 4($v1)
+ 
+-glabel opPortraitsBlockRow3
++glabel mvPortraitsBlockRow3
+   /* 165B70 80131E60 3C048004 */       lui $a0, %hi(gDisplayListHead)
+   /* 165B74 80131E64 248465B0 */     addiu $a0, $a0, %lo(gDisplayListHead)
+   /* 165B78 80131E68 8C830000 */        lw $v1, ($a0) # gDisplayListHead + 0
+@@ -254,7 +254,7 @@ glabel opPortraitsBlockRow3
+   /* 165B98 80131E88 03E00008 */        jr $ra
+   /* 165B9C 80131E8C AC780004 */        sw $t8, 4($v1)
+ 
+-glabel opPortraitsBlockRow4
++glabel mvPortraitsBlockRow4
+   /* 165BA0 80131E90 3C048004 */       lui $a0, %hi(gDisplayListHead)
+   /* 165BA4 80131E94 248465B0 */     addiu $a0, $a0, %lo(gDisplayListHead)
+   /* 165BA8 80131E98 8C830000 */        lw $v1, ($a0) # gDisplayListHead + 0
+@@ -268,7 +268,7 @@ glabel opPortraitsBlockRow4
+   /* 165BC8 80131EB8 03E00008 */        jr $ra
+   /* 165BCC 80131EBC AC780004 */        sw $t8, 4($v1)
+ 
+-glabel opPortraitsPartiallyBlockRow
++glabel mvPortraitsPartiallyBlockRow
+   /* 165BD0 80131EC0 18A00016 */      blez $a1, .L80131F1C
+   /* 165BD4 80131EC4 24A30290 */     addiu $v1, $a1, 0x290
+   /* 165BD8 80131EC8 24080037 */     addiu $t0, $zero, 0x37
+@@ -338,7 +338,7 @@ glabel opPortraitsPartiallyBlockRow
+   /* 165CCC 80131FBC 03E00008 */        jr $ra
+   /* 165CD0 80131FC0 00000000 */       nop
+ 
+-glabel opPortraitsRenderPortraitOverlay
++glabel mvPortraitsRenderPortraitOverlay
+   /* 165CD4 80131FC4 27BDFFE0 */     addiu $sp, $sp, -0x20
+   /* 165CD8 80131FC8 AFB00018 */        sw $s0, 0x18($sp)
+   /* 165CDC 80131FCC 3C108004 */       lui $s0, %hi(gDisplayListHead)
+@@ -397,11 +397,11 @@ glabel opPortraitsRenderPortraitOverlay
+   /* 165DB0 801320A0 10000040 */         b .L801321A4
+   /* 165DB4 801320A4 8E020000 */        lw $v0, ($s0) # gDisplayListHead + 0
+   .L801320A8:
+-  /* 165DB8 801320A8 0C04C78C */       jal opPortraitsBlockRow2
++  /* 165DB8 801320A8 0C04C78C */       jal mvPortraitsBlockRow2
+   /* 165DBC 801320AC 00000000 */       nop
+-  /* 165DC0 801320B0 0C04C798 */       jal opPortraitsBlockRow3
++  /* 165DC0 801320B0 0C04C798 */       jal mvPortraitsBlockRow3
+   /* 165DC4 801320B4 00000000 */       nop
+-  /* 165DC8 801320B8 0C04C7A4 */       jal opPortraitsBlockRow4
++  /* 165DC8 801320B8 0C04C7A4 */       jal mvPortraitsBlockRow4
+   /* 165DCC 801320BC 00000000 */       nop
+   /* 165DD0 801320C0 8FAB0020 */        lw $t3, 0x20($sp)
+   /* 165DD4 801320C4 00002025 */        or $a0, $zero, $zero
+@@ -409,16 +409,16 @@ glabel opPortraitsRenderPortraitOverlay
+   /* 165DDC 801320CC C5840058 */      lwc1 $f4, 0x58($t4)
+   /* 165DE0 801320D0 4600218D */ trunc.w.s $f6, $f4
+   /* 165DE4 801320D4 44053000 */      mfc1 $a1, $f6
+-  /* 165DE8 801320D8 0C04C7B0 */       jal opPortraitsPartiallyBlockRow
++  /* 165DE8 801320D8 0C04C7B0 */       jal mvPortraitsPartiallyBlockRow
+   /* 165DEC 801320DC 00000000 */       nop
+   /* 165DF0 801320E0 10000030 */         b .L801321A4
+   /* 165DF4 801320E4 8E020000 */        lw $v0, ($s0) # gDisplayListHead + 0
+   .L801320E8:
+-  /* 165DF8 801320E8 0C04C780 */       jal opPortraitsBlockRow1
++  /* 165DF8 801320E8 0C04C780 */       jal mvPortraitsBlockRow1
+   /* 165DFC 801320EC 00000000 */       nop
+-  /* 165E00 801320F0 0C04C798 */       jal opPortraitsBlockRow3
++  /* 165E00 801320F0 0C04C798 */       jal mvPortraitsBlockRow3
+   /* 165E04 801320F4 00000000 */       nop
+-  /* 165E08 801320F8 0C04C7A4 */       jal opPortraitsBlockRow4
++  /* 165E08 801320F8 0C04C7A4 */       jal mvPortraitsBlockRow4
+   /* 165E0C 801320FC 00000000 */       nop
+   /* 165E10 80132100 8FAE0020 */        lw $t6, 0x20($sp)
+   /* 165E14 80132104 24040001 */     addiu $a0, $zero, 1
+@@ -426,16 +426,16 @@ glabel opPortraitsRenderPortraitOverlay
+   /* 165E1C 8013210C C5E80058 */      lwc1 $f8, 0x58($t7)
+   /* 165E20 80132110 4600428D */ trunc.w.s $f10, $f8
+   /* 165E24 80132114 44055000 */      mfc1 $a1, $f10
+-  /* 165E28 80132118 0C04C7B0 */       jal opPortraitsPartiallyBlockRow
++  /* 165E28 80132118 0C04C7B0 */       jal mvPortraitsPartiallyBlockRow
+   /* 165E2C 8013211C 00000000 */       nop
+   /* 165E30 80132120 10000020 */         b .L801321A4
+   /* 165E34 80132124 8E020000 */        lw $v0, ($s0) # gDisplayListHead + 0
+   .L80132128:
+-  /* 165E38 80132128 0C04C780 */       jal opPortraitsBlockRow1
++  /* 165E38 80132128 0C04C780 */       jal mvPortraitsBlockRow1
+   /* 165E3C 8013212C 00000000 */       nop
+-  /* 165E40 80132130 0C04C78C */       jal opPortraitsBlockRow2
++  /* 165E40 80132130 0C04C78C */       jal mvPortraitsBlockRow2
+   /* 165E44 80132134 00000000 */       nop
+-  /* 165E48 80132138 0C04C7A4 */       jal opPortraitsBlockRow4
++  /* 165E48 80132138 0C04C7A4 */       jal mvPortraitsBlockRow4
+   /* 165E4C 8013213C 00000000 */       nop
+   /* 165E50 80132140 8FB90020 */        lw $t9, 0x20($sp)
+   /* 165E54 80132144 24040002 */     addiu $a0, $zero, 2
+@@ -443,16 +443,16 @@ glabel opPortraitsRenderPortraitOverlay
+   /* 165E5C 8013214C C5500058 */      lwc1 $f16, 0x58($t2)
+   /* 165E60 80132150 4600848D */ trunc.w.s $f18, $f16
+   /* 165E64 80132154 44059000 */      mfc1 $a1, $f18
+-  /* 165E68 80132158 0C04C7B0 */       jal opPortraitsPartiallyBlockRow
++  /* 165E68 80132158 0C04C7B0 */       jal mvPortraitsPartiallyBlockRow
+   /* 165E6C 8013215C 00000000 */       nop
+   /* 165E70 80132160 10000010 */         b .L801321A4
+   /* 165E74 80132164 8E020000 */        lw $v0, ($s0) # gDisplayListHead + 0
+   .L80132168:
+-  /* 165E78 80132168 0C04C780 */       jal opPortraitsBlockRow1
++  /* 165E78 80132168 0C04C780 */       jal mvPortraitsBlockRow1
+   /* 165E7C 8013216C 00000000 */       nop
+-  /* 165E80 80132170 0C04C78C */       jal opPortraitsBlockRow2
++  /* 165E80 80132170 0C04C78C */       jal mvPortraitsBlockRow2
+   /* 165E84 80132174 00000000 */       nop
+-  /* 165E88 80132178 0C04C798 */       jal opPortraitsBlockRow3
++  /* 165E88 80132178 0C04C798 */       jal mvPortraitsBlockRow3
+   /* 165E8C 8013217C 00000000 */       nop
+   /* 165E90 80132180 8FAC0020 */        lw $t4, 0x20($sp)
+   /* 165E94 80132184 24040003 */     addiu $a0, $zero, 3
+@@ -460,7 +460,7 @@ glabel opPortraitsRenderPortraitOverlay
+   /* 165E9C 8013218C C5A40058 */      lwc1 $f4, 0x58($t5)
+   /* 165EA0 80132190 4600218D */ trunc.w.s $f6, $f4
+   /* 165EA4 80132194 44053000 */      mfc1 $a1, $f6
+-  /* 165EA8 80132198 0C04C7B0 */       jal opPortraitsPartiallyBlockRow
++  /* 165EA8 80132198 0C04C7B0 */       jal mvPortraitsPartiallyBlockRow
+   /* 165EAC 8013219C 00000000 */       nop
+   /* 165EB0 801321A0 8E020000 */        lw $v0, ($s0) # gDisplayListHead + 0
+   .L801321A4:
+@@ -487,7 +487,7 @@ glabel opPortraitsRenderPortraitOverlay
+   /* 165F04 801321F4 03E00008 */        jr $ra
+   /* 165F08 801321F8 00000000 */       nop
+ 
+-glabel opPortraitsAnimatePortraitOverlay
++glabel mvPortraitsAnimatePortraitOverlay
+   /* 165F0C 801321FC 3C058013 */       lui $a1, %hi(gIntroPotraitsFramesElapsed)
+   /* 165F10 80132200 24A529E8 */     addiu $a1, $a1, %lo(gIntroPotraitsFramesElapsed)
+   /* 165F14 80132204 8CA30000 */        lw $v1, ($a1) # gIntroPotraitsFramesElapsed + 0
+@@ -643,7 +643,7 @@ glabel opPortraitsAnimatePortraitOverlay
+   /* 16611C 8013240C 03E00008 */        jr $ra
+   /* 166120 80132410 00000000 */       nop
+ 
+-glabel opPortraitsCreatePortraitOverlay
++glabel mvPortraitsCreatePortraitOverlay
+   /* 166124 80132414 27BDFFD8 */     addiu $sp, $sp, -0x28
+   /* 166128 80132418 AFBF001C */        sw $ra, 0x1c($sp)
+   /* 16612C 8013241C 00002025 */        or $a0, $zero, $zero
+@@ -651,11 +651,11 @@ glabel opPortraitsCreatePortraitOverlay
+   /* 166134 80132424 24060012 */     addiu $a2, $zero, 0x12
+   /* 166138 80132428 0C00265A */       jal omMakeGObjCommon
+   /* 16613C 8013242C 3C078000 */       lui $a3, 0x8000
+-  /* 166140 80132430 3C058013 */       lui $a1, %hi(opPortraitsRenderPortraitOverlay)
++  /* 166140 80132430 3C058013 */       lui $a1, %hi(mvPortraitsRenderPortraitOverlay)
+   /* 166144 80132434 240EFFFF */     addiu $t6, $zero, -1
+   /* 166148 80132438 AFA20024 */        sw $v0, 0x24($sp)
+   /* 16614C 8013243C AFAE0010 */        sw $t6, 0x10($sp)
+-  /* 166150 80132440 24A51FC4 */     addiu $a1, $a1, %lo(opPortraitsRenderPortraitOverlay)
++  /* 166150 80132440 24A51FC4 */     addiu $a1, $a1, %lo(mvPortraitsRenderPortraitOverlay)
+   /* 166154 80132444 00402025 */        or $a0, $v0, $zero
+   /* 166158 80132448 2406001C */     addiu $a2, $zero, 0x1c
+   /* 16615C 8013244C 0C00277D */       jal omAddGObjRenderProc
+@@ -679,11 +679,11 @@ glabel opPortraitsCreatePortraitOverlay
+   /* 1661A4 80132494 A0400028 */        sb $zero, 0x28($v0)
+   /* 1661A8 80132498 A0400029 */        sb $zero, 0x29($v0)
+   /* 1661AC 8013249C A040002A */        sb $zero, 0x2a($v0)
+-  /* 1661B0 801324A0 3C058013 */       lui $a1, %hi(opPortraitsAnimatePortraitOverlay)
++  /* 1661B0 801324A0 3C058013 */       lui $a1, %hi(mvPortraitsAnimatePortraitOverlay)
+   /* 1661B4 801324A4 E4440058 */      swc1 $f4, 0x58($v0)
+   /* 1661B8 801324A8 E446005C */      swc1 $f6, 0x5c($v0)
+   /* 1661BC 801324AC 8FA40024 */        lw $a0, 0x24($sp)
+-  /* 1661C0 801324B0 24A521FC */     addiu $a1, $a1, %lo(opPortraitsAnimatePortraitOverlay)
++  /* 1661C0 801324B0 24A521FC */     addiu $a1, $a1, %lo(mvPortraitsAnimatePortraitOverlay)
+   /* 1661C4 801324B4 24060001 */     addiu $a2, $zero, 1
+   /* 1661C8 801324B8 0C002062 */       jal omAddGObjCommonProc
+   /* 1661CC 801324BC 24070001 */     addiu $a3, $zero, 1
+@@ -692,7 +692,7 @@ glabel opPortraitsCreatePortraitOverlay
+   /* 1661D8 801324C8 03E00008 */        jr $ra
+   /* 1661DC 801324CC 00000000 */       nop
+ 
+-glabel opPortraitsCreatePortraitViewport
++glabel mvPortraitsCreatePortraitViewport
+   /* 1661E0 801324D0 27BDFFC0 */     addiu $sp, $sp, -0x40
+   /* 1661E4 801324D4 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
+   /* 1661E8 801324D8 AFBF003C */        sw $ra, 0x3c($sp)
+@@ -734,7 +734,7 @@ glabel opPortraitsCreatePortraitViewport
+   /* 166278 80132568 03E00008 */        jr $ra
+   /* 16627C 8013256C 00000000 */       nop
+ 
+-glabel opPortraitsCreatePortraitOverlayViewport
++glabel mvPortraitsCreatePortraitOverlayViewport
+   /* 166280 80132570 27BDFFC0 */     addiu $sp, $sp, -0x40
+   /* 166284 80132574 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
+   /* 166288 80132578 AFBF003C */        sw $ra, 0x3c($sp)
+@@ -776,14 +776,14 @@ glabel opPortraitsCreatePortraitOverlayViewport
+   /* 166318 80132608 03E00008 */        jr $ra
+   /* 16631C 8013260C 00000000 */       nop
+ 
+-glabel opPortraitsInitVariables
++glabel mvPortraitsInitVariables
+   /* 166320 80132610 3C018013 */       lui $at, %hi(gIntroPotraitsFramesElapsed)
+   /* 166324 80132614 AC2029E8 */        sw $zero, %lo(gIntroPotraitsFramesElapsed)($at)
+   /* 166328 80132618 3C018013 */       lui $at, %hi(gIntroPotraitsCurrentRow)
+   /* 16632C 8013261C 03E00008 */        jr $ra
+   /* 166330 80132620 AC2029EC */        sw $zero, %lo(gIntroPotraitsCurrentRow)($at)
+ 
+-glabel opPortraitsMain
++glabel mvPortraitsMain
+   /* 166334 80132624 3C038013 */       lui $v1, %hi(gIntroPotraitsFramesElapsed)
+   /* 166338 80132628 246329E8 */     addiu $v1, $v1, %lo(gIntroPotraitsFramesElapsed)
+   /* 16633C 8013262C 8C6E0000 */        lw $t6, ($v1) # gIntroPotraitsFramesElapsed + 0
+@@ -831,7 +831,7 @@ glabel opPortraitsMain
+   /* 1663D8 801326C8 24010096 */     addiu $at, $zero, 0x96
+   /* 1663DC 801326CC 0C0026A1 */       jal omEjectGObjCommon
+   /* 1663E0 801326D0 8C8429F0 */        lw $a0, %lo(gIntroPortraitsPortraitGObj)($a0)
+-  /* 1663E4 801326D4 0C04C72B */       jal opPortraitsCreatePortraitsSet2
++  /* 1663E4 801326D4 0C04C72B */       jal mvPortraitsCreatePortraitsSet2
+   /* 1663E8 801326D8 00000000 */       nop
+   /* 1663EC 801326DC 3C028013 */       lui $v0, %hi(gIntroPotraitsFramesElapsed)
+   /* 1663F0 801326E0 8C4229E8 */        lw $v0, %lo(gIntroPotraitsFramesElapsed)($v0)
+@@ -851,7 +851,7 @@ glabel opPortraitsMain
+   /* 166420 80132710 03E00008 */        jr $ra
+   /* 166424 80132714 00000000 */       nop
+ 
+-glabel opPortraitsInit
++glabel mvPortraitsInit
+   /* 166428 80132718 27BDFFB0 */     addiu $sp, $sp, -0x50
+   /* 16642C 8013271C 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
+   /* 166430 80132720 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
+@@ -888,8 +888,8 @@ glabel opPortraitsInit
+   /* 1664AC 8013279C 24050002 */     addiu $a1, $zero, 2
+   /* 1664B0 801327A0 0C033781 */       jal rdManagerLoadFiles
+   /* 1664B4 801327A4 00403825 */        or $a3, $v0, $zero
+-  /* 1664B8 801327A8 3C058013 */       lui $a1, %hi(opPortraitsMain)
+-  /* 1664BC 801327AC 24A52624 */     addiu $a1, $a1, %lo(opPortraitsMain)
++  /* 1664B8 801327A8 3C058013 */       lui $a1, %hi(mvPortraitsMain)
++  /* 1664BC 801327AC 24A52624 */     addiu $a1, $a1, %lo(mvPortraitsMain)
+   /* 1664C0 801327B0 00002025 */        or $a0, $zero, $zero
+   /* 1664C4 801327B4 00003025 */        or $a2, $zero, $zero
+   /* 1664C8 801327B8 0C00265A */       jal omMakeGObjCommon
+@@ -901,15 +901,15 @@ glabel opPortraitsInit
+   /* 1664E0 801327D0 24060064 */     addiu $a2, $zero, 0x64
+   /* 1664E4 801327D4 0C002E7F */       jal func_8000B9FC
+   /* 1664E8 801327D8 24070003 */     addiu $a3, $zero, 3
+-  /* 1664EC 801327DC 0C04C984 */       jal opPortraitsInitVariables
++  /* 1664EC 801327DC 0C04C984 */       jal mvPortraitsInitVariables
+   /* 1664F0 801327E0 00000000 */       nop
+-  /* 1664F4 801327E4 0C04C934 */       jal opPortraitsCreatePortraitViewport
++  /* 1664F4 801327E4 0C04C934 */       jal mvPortraitsCreatePortraitViewport
+   /* 1664F8 801327E8 00000000 */       nop
+-  /* 1664FC 801327EC 0C04C95C */       jal opPortraitsCreatePortraitOverlayViewport
++  /* 1664FC 801327EC 0C04C95C */       jal mvPortraitsCreatePortraitOverlayViewport
+   /* 166500 801327F0 00000000 */       nop
+-  /* 166504 801327F4 0C04C6D6 */       jal opPortraitsCreatePortraitsSet1
++  /* 166504 801327F4 0C04C6D6 */       jal mvPortraitsCreatePortraitsSet1
+   /* 166508 801327F8 00000000 */       nop
+-  /* 16650C 801327FC 0C04C905 */       jal opPortraitsCreatePortraitOverlay
++  /* 16650C 801327FC 0C04C905 */       jal mvPortraitsCreatePortraitOverlay
+   /* 166510 80132800 00000000 */       nop
+   /* 166514 80132804 0C00024B */       jal func_8000092C
+   /* 166518 80132808 00000000 */       nop
+@@ -928,7 +928,7 @@ glabel opPortraitsInit
+   /* 166544 80132834 03E00008 */        jr $ra
+   /* 166548 80132838 00000000 */       nop
+ 
+-glabel intro_portrait_wipes_entry
++glabel mvPortraitsStartScene
+   /* 16654C 8013283C 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
+   /* 166550 80132840 27BDFFE8 */     addiu $sp, $sp, -0x18
+   /* 166554 80132844 3C048013 */       lui $a0, %hi(D_ovl35_80132938)

@@ -1,0 +1,28 @@
+diff a/game/src/ft/common/fighter_status_damage.c b/game/src/ft/common/fighter_status_damage.c	(rejected hunks)
+@@ -318,7 +318,7 @@ s32 ftCommon_Damage_GetDamageLevel(f32 hitstun)
+ }
+ 
+ // 0x80140B00
+-void ftCommon_Damage_SetPublicReact(ftStruct *this_fp, f32 knockback, f32 angle)
++void ftCommon_Damage_SetPublicity(ftStruct *this_fp, f32 knockback, f32 angle)
+ {
+     GObj *attacker_gobj = ftCommon_GetPlayerNumGObj(this_fp->damage_player_number);
+     sb32 unk_bool;
+@@ -337,7 +337,7 @@ void ftCommon_Damage_SetPublicReact(ftStruct *this_fp, f32 knockback, f32 angle)
+     }
+     else unk_bool = FALSE;
+ 
+-    ftPublicReactCommonCheck(this_fp->fighter_gobj, this_fp->status_vars.common.damage.publicity_knockback, unk_bool);
++    ftPublicityCommonCheck(this_fp->fighter_gobj, this_fp->status_vars.common.damage.publicity_knockback, unk_bool);
+ }
+ 
+ // 0x80140BCC
+@@ -572,7 +572,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
+     }
+     this_fp->damage_player_number = damage_player_number;
+ 
+-    ftCommon_Damage_SetPublicReact(this_fp, knockback, angle_end);
++    ftCommon_Damage_SetPublicity(this_fp, knockback, angle_end);
+ 
+     if (damage != 0)
+     {

@@ -1,0 +1,159 @@
+diff a/game/asm/ovl36/ovl36.text.s b/game/asm/ovl36/ovl36.text.s	(rejected hunks)
+@@ -12,7 +12,7 @@
+ # Text Sections
+ #  0x8018D0C0 -> 0x8018E090
+ 
+-glabel opMarioInit
++glabel mvMarioInit
+   /* 1666F0 8018D0C0 27BDFFC0 */     addiu $sp, $sp, -0x40
+   /* 1666F4 8018D0C4 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
+   /* 1666F8 8018D0C8 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
+@@ -54,7 +54,7 @@ glabel opMarioInit
+   /* 166788 8018D158 03E00008 */        jr $ra
+   /* 16678C 8018D15C 00000000 */       nop
+ 
+-glabel opMarioSetNameColor
++glabel mvMarioSetNameColor
+   /* 166790 8018D160 948E0024 */       lhu $t6, 0x24($a0)
+   /* 166794 8018D164 240200FF */     addiu $v0, $zero, 0xff
+   /* 166798 8018D168 A0820060 */        sb $v0, 0x60($a0)
+@@ -69,7 +69,7 @@ glabel opMarioSetNameColor
+   /* 1667BC 8018D18C 03E00008 */        jr $ra
+   /* 1667C0 8018D190 A082002A */        sb $v0, 0x2a($a0)
+ 
+-glabel opMarioDrawName
++glabel mvMarioDrawName
+   /* 1667C4 8018D194 27BDFF70 */     addiu $sp, $sp, -0x90
+   /* 1667C8 8018D198 3C0F8019 */       lui $t7, %hi(dIntroMarioNameOffsets)
+   /* 1667CC 8018D19C AFBF0044 */        sw $ra, 0x44($sp)
+@@ -113,10 +113,10 @@ glabel opMarioDrawName
+   /* 166864 8018D234 AD0A000C */        sw $t2, 0xc($t0)
+   /* 166868 8018D238 0C00265A */       jal omMakeGObjCommon
+   /* 16686C 8018D23C AD0B0010 */        sw $t3, 0x10($t0)
+-  /* 166870 8018D240 3C018019 */       lui $at, %hi(gIntroMarioNameGObj)
++  /* 166870 8018D240 3C018019 */       lui $at, %hi(gMvOpeningMarioNameGObj)
+   /* 166874 8018D244 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
+   /* 166878 8018D248 240CFFFF */     addiu $t4, $zero, -1
+-  /* 16687C 8018D24C AC22E20C */        sw $v0, %lo(gIntroMarioNameGObj)($at)
++  /* 16687C 8018D24C AC22E20C */        sw $v0, %lo(gMvOpeningMarioNameGObj)($at)
+   /* 166880 8018D250 0040A025 */        or $s4, $v0, $zero
+   /* 166884 8018D254 AFAC0010 */        sw $t4, 0x10($sp)
+   /* 166888 8018D258 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
+@@ -150,7 +150,7 @@ glabel opMarioDrawName
+   /* 1668F4 8018D2C4 C6240000 */      lwc1 $f4, ($s1)
+   /* 1668F8 8018D2C8 E456005C */      swc1 $f22, 0x5c($v0)
+   /* 1668FC 8018D2CC 46142180 */     add.s $f6, $f4, $f20
+-  /* 166900 8018D2D0 0C063458 */       jal opMarioSetNameColor
++  /* 166900 8018D2D0 0C063458 */       jal mvMarioSetNameColor
+   /* 166904 8018D2D4 E4460058 */      swc1 $f6, 0x58($v0)
+   /* 166908 8018D2D8 8E020004 */        lw $v0, %lo(D_NF_80000004)($s0)
+   /* 16690C 8018D2DC 26100004 */     addiu $s0, $s0, %lo(D_NF_80000004)
+@@ -170,8 +170,8 @@ glabel opMarioDrawName
+   /* 166940 8018D310 27BD0090 */     addiu $sp, $sp, 0x90
+ 
+ glabel func_ovl36_8018D314
+-  /* 166944 8018D314 3C0E8019 */       lui $t6, %hi(gIntroMarioFramesElapsed)
+-  /* 166948 8018D318 8DCEE208 */        lw $t6, %lo(gIntroMarioFramesElapsed)($t6)
++  /* 166944 8018D314 3C0E8019 */       lui $t6, %hi(gMvOpeningMarioFramesElapsed)
++  /* 166948 8018D318 8DCEE208 */        lw $t6, %lo(gMvOpeningMarioFramesElapsed)($t6)
+   /* 16694C 8018D31C 3C038019 */       lui $v1, %hi(D_ovl36_8018E248)
+   /* 166950 8018D320 8C820074 */        lw $v0, 0x74($a0)
+   /* 166954 8018D324 29C1000F */      slti $at, $t6, 0xf
+@@ -412,7 +412,7 @@ glabel func_ovl36_8018D614
+   /* 166CE4 8018D6B4 AFA60008 */        sw $a2, 8($sp)
+   /* 166CE8 8018D6B8 0C0455B9 */       jal gmRumble_SetPlayerRumble
+   /* 166CEC 8018D6BC 00000000 */       nop
+-  /* 166CF0 8018D6C0 0C0594F8 */       jal ftPublicReactSetup
++  /* 166CF0 8018D6C0 0C0594F8 */       jal ftPublicitySetup
+   /* 166CF4 8018D6C4 00000000 */       nop
+   /* 166CF8 8018D6C8 3C168011 */       lui $s6, %hi(dFtDefaultFighterDesc)
+   /* 166CFC 8018D6CC 3C15800A */       lui $s5, %hi(gBattleState)
+@@ -601,8 +601,8 @@ glabel func_ovl36_8018D944
+   /* 166FBC 8018D98C 00000000 */       nop
+ 
+ glabel func_ovl36_8018D990
+-  /* 166FC0 8018D990 3C038019 */       lui $v1, %hi(gIntroMarioFramesElapsed)
+-  /* 166FC4 8018D994 8C63E208 */        lw $v1, %lo(gIntroMarioFramesElapsed)($v1)
++  /* 166FC0 8018D990 3C038019 */       lui $v1, %hi(gMvOpeningMarioFramesElapsed)
++  /* 166FC4 8018D994 8C63E208 */        lw $v1, %lo(gMvOpeningMarioFramesElapsed)($v1)
+   /* 166FC8 8018D998 2401000F */     addiu $at, $zero, 0xf
+   /* 166FCC 8018D99C 3C058019 */       lui $a1, 0x8019
+   /* 166FD0 8018D9A0 10610009 */       beq $v1, $at, .L8018D9C8
+@@ -877,14 +877,14 @@ glabel func_ovl36_8018DCEC
+   /* 1673C8 8018DD98 00000000 */       nop
+ 
+ glabel func_ovl36_8018DD9C
+-  /* 1673CC 8018DD9C 3C028019 */       lui $v0, %hi(gIntroMarioFramesElapsed)
+-  /* 1673D0 8018DDA0 2442E208 */     addiu $v0, $v0, %lo(gIntroMarioFramesElapsed)
+-  /* 1673D4 8018DDA4 8C4E0000 */        lw $t6, ($v0) # gIntroMarioFramesElapsed + 0
++  /* 1673CC 8018DD9C 3C028019 */       lui $v0, %hi(gMvOpeningMarioFramesElapsed)
++  /* 1673D0 8018DDA0 2442E208 */     addiu $v0, $v0, %lo(gMvOpeningMarioFramesElapsed)
++  /* 1673D4 8018DDA4 8C4E0000 */        lw $t6, ($v0) # gMvOpeningMarioFramesElapsed + 0
+   /* 1673D8 8018DDA8 27BDFFE8 */     addiu $sp, $sp, -0x18
+   /* 1673DC 8018DDAC AFBF0014 */        sw $ra, 0x14($sp)
+   /* 1673E0 8018DDB0 AFA40018 */        sw $a0, 0x18($sp)
+   /* 1673E4 8018DDB4 25CF0001 */     addiu $t7, $t6, 1
+-  /* 1673E8 8018DDB8 AC4F0000 */        sw $t7, ($v0) # gIntroMarioFramesElapsed + 0
++  /* 1673E8 8018DDB8 AC4F0000 */        sw $t7, ($v0) # gMvOpeningMarioFramesElapsed + 0
+   /* 1673EC 8018DDBC 0C0E41DB */       jal func_ovl1_8039076C
+   /* 1673F0 8018DDC0 3404D000 */       ori $a0, $zero, 0xd000
+   /* 1673F4 8018DDC4 10400007 */      beqz $v0, .L8018DDE4
+@@ -896,22 +896,22 @@ glabel func_ovl36_8018DD9C
+   /* 16740C 8018DDDC 0C00171D */       jal func_80005C74
+   /* 167410 8018DDE0 A0580001 */        sb $t8, 1($v0) # gSceneData + 1
+   .L8018DDE4:
+-  /* 167414 8018DDE4 3C028019 */       lui $v0, %hi(gIntroMarioFramesElapsed)
+-  /* 167418 8018DDE8 8C42E208 */        lw $v0, %lo(gIntroMarioFramesElapsed)($v0)
++  /* 167414 8018DDE4 3C028019 */       lui $v0, %hi(gMvOpeningMarioFramesElapsed)
++  /* 167418 8018DDE8 8C42E208 */        lw $v0, %lo(gMvOpeningMarioFramesElapsed)($v0)
+   /* 16741C 8018DDEC 2401000F */     addiu $at, $zero, 0xf
+-  /* 167420 8018DDF0 3C048019 */       lui $a0, %hi(gIntroMarioNameGObj)
++  /* 167420 8018DDF0 3C048019 */       lui $a0, %hi(gMvOpeningMarioNameGObj)
+   /* 167424 8018DDF4 5441000C */      bnel $v0, $at, .L8018DE28
+   /* 167428 8018DDF8 2401003C */     addiu $at, $zero, 0x3c
+   /* 16742C 8018DDFC 0C0026A1 */       jal omEjectGObjCommon
+-  /* 167430 8018DE00 8C84E20C */        lw $a0, %lo(gIntroMarioNameGObj)($a0)
++  /* 167430 8018DE00 8C84E20C */        lw $a0, %lo(gMvOpeningMarioNameGObj)($a0)
+   /* 167434 8018DE04 0C063585 */       jal func_ovl36_8018D614
+   /* 167438 8018DE08 00000000 */       nop
+   /* 16743C 8018DE0C 0C063651 */       jal func_ovl36_8018D944
+   /* 167440 8018DE10 00000000 */       nop
+   /* 167444 8018DE14 0C063698 */       jal func_ovl36_8018DA60
+   /* 167448 8018DE18 00000000 */       nop
+-  /* 16744C 8018DE1C 3C028019 */       lui $v0, %hi(gIntroMarioFramesElapsed)
+-  /* 167450 8018DE20 8C42E208 */        lw $v0, %lo(gIntroMarioFramesElapsed)($v0)
++  /* 16744C 8018DE1C 3C028019 */       lui $v0, %hi(gMvOpeningMarioFramesElapsed)
++  /* 167450 8018DE20 8C42E208 */        lw $v0, %lo(gMvOpeningMarioFramesElapsed)($v0)
+   /* 167454 8018DE24 2401003C */     addiu $at, $zero, 0x3c
+   .L8018DE28:
+   /* 167458 8018DE28 14410007 */       bne $v0, $at, .L8018DE48
+@@ -929,9 +929,9 @@ glabel func_ovl36_8018DD9C
+   /* 167484 8018DE54 00000000 */       nop
+ 
+ glabel func_ovl36_8018DE58
+-  /* 167488 8018DE58 3C018019 */       lui $at, %hi(gIntroMarioFramesElapsed)
++  /* 167488 8018DE58 3C018019 */       lui $at, %hi(gMvOpeningMarioFramesElapsed)
+   /* 16748C 8018DE5C 03E00008 */        jr $ra
+-  /* 167490 8018DE60 AC20E208 */        sw $zero, %lo(gIntroMarioFramesElapsed)($at)
++  /* 167490 8018DE60 AC20E208 */        sw $zero, %lo(gMvOpeningMarioFramesElapsed)($at)
+ 
+ glabel func_ovl36_8018DE64
+   /* 167494 8018DE64 3C038019 */       lui $v1, %hi(D_ovl36_8018E428)
+@@ -963,7 +963,7 @@ glabel func_ovl36_8018DE64
+   /* 1674F8 8018DEC8 A0600001 */        sb $zero, 1($v1) # D_ovl36_8018E428 + 1
+   /* 1674FC 8018DECC A06B0004 */        sb $t3, 4($v1) # D_ovl36_8018E428 + 4
+   /* 167500 8018DED0 A0600023 */        sb $zero, 0x23($v1) # D_ovl36_8018E428 + 35
+-  /* 167504 8018DED4 0C063430 */       jal opMarioInit
++  /* 167504 8018DED4 0C063430 */       jal mvMarioInit
+   /* 167508 8018DED8 A0640022 */        sb $a0, 0x22($v1) # D_ovl36_8018E428 + 34
+   /* 16750C 8018DEDC 3C058019 */       lui $a1, %hi(func_ovl36_8018DD9C)
+   /* 167510 8018DEE0 24A5DD9C */     addiu $a1, $a1, %lo(func_ovl36_8018DD9C)
+@@ -1015,7 +1015,7 @@ glabel func_ovl36_8018DE64
+   /* 1675C8 8018DF98 00000000 */       nop
+   /* 1675CC 8018DF9C 0C0636FF */       jal func_ovl36_8018DBFC
+   /* 1675D0 8018DFA0 00000000 */       nop
+-  /* 1675D4 8018DFA4 0C063465 */       jal opMarioDrawName
++  /* 1675D4 8018DFA4 0C063465 */       jal mvMarioDrawName
+   /* 1675D8 8018DFA8 00000000 */       nop
+   /* 1675DC 8018DFAC 0C00024B */       jal func_8000092C
+   /* 1675E0 8018DFB0 00000000 */       nop

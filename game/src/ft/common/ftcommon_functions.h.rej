@@ -1,0 +1,10 @@
+diff a/game/src/ft/common/ftcommon_functions.h b/game/src/ft/common/ftcommon_functions.h	(rejected hunks)
+@@ -191,7 +191,7 @@ extern void func_ovl3_80140934(void);
+ extern void ftCommon_DamageAirCommon_ProcMap(GObj *fighter_gobj);
+ extern f32 gmCommon_Damage_GetKnockbackAngle(s32 angle_i, s32 ground_or_air, f32 knockback);
+ extern s32 ftCommon_Damage_GetDamageLevel(f32 hitstun);
+-extern void ftCommon_Damage_SetPublicReact(ftStruct *this_fp, f32 knockback, f32 angle);
++extern void ftCommon_Damage_SetPublicity(ftStruct *this_fp, f32 knockback, f32 angle);
+ extern sb32 ftCommon_Damage_CheckElementSetColAnim(GObj *fighter_gobj, s32 element, s32 damage_level);
+ extern void ftCommon_Damage_CheckMakeScreenFlash(f32 knockback, s32 element);
+ extern sb32 func_ovl3_80140D30(ftStruct *fp);

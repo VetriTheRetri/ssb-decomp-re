@@ -1,0 +1,10 @@
+diff a/game/asm/ovl6/ovl6.text.s b/game/asm/ovl6/ovl6.text.s	(rejected hunks)
+@@ -1546,7 +1546,7 @@ glabel scBonusGame_InitBonusGame
+   /* 112DE8 8018E6A8 240400FF */     addiu $a0, $zero, 0xff
+   /* 112DEC 8018E6AC 0C0455B9 */       jal gmRumble_SetPlayerRumble
+   /* 112DF0 8018E6B0 00000000 */       nop 
+-  /* 112DF4 8018E6B4 0C0594F8 */       jal ftPublicReactSetup
++  /* 112DF4 8018E6B4 0C0594F8 */       jal ftPublicitySetup
+   /* 112DF8 8018E6B8 00000000 */       nop 
+   /* 112DFC 8018E6BC 3C188011 */       lui $t8, %hi(dFtDefaultFighterDesc)
+   /* 112E00 8018E6C0 27186DD0 */     addiu $t8, $t8, %lo(dFtDefaultFighterDesc)

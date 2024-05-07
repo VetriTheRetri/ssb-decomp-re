@@ -1,0 +1,10 @@
+diff a/game/asm/ovl64/ovl64.text.s b/game/asm/ovl64/ovl64.text.s	(rejected hunks)
+@@ -918,7 +918,7 @@ glabel func_ovl64_8018DCC4
+   /* 18CABC 8018DD7C 240400FF */     addiu $a0, $zero, 0xff
+   /* 18CAC0 8018DD80 0C0455B9 */       jal gmRumble_SetPlayerRumble
+   /* 18CAC4 8018DD84 00000000 */       nop 
+-  /* 18CAC8 8018DD88 0C0594F8 */       jal ftPublicReactSetup
++  /* 18CAC8 8018DD88 0C0594F8 */       jal ftPublicitySetup
+   /* 18CACC 8018DD8C 00000000 */       nop 
+   /* 18CAD0 8018DD90 3C138004 */       lui $s3, %hi(gPlayerControllers)
+   /* 18CAD4 8018DD94 3C12800A */       lui $s2, %hi(gBattleState)

@@ -1,0 +1,22 @@
+diff a/game/src/gm/battle.h b/game/src/gm/battle.h	(rejected hunks)
+@@ -196,6 +196,20 @@ typedef enum gm1PStageKind
+ 
+ } gm1PStageKind;
+ 
++typedef enum gmStageClearKind
++{
++    gmStageClear_Kind_Stage,        // Normal stage clear
++    gmStageClear_Kind_Game,         // Final stage clear
++    gmStageClear_Kind_Result        // Bonus stage results
++};
++
++typedef struct gmStageClearStats
++{
++    s32 bonus_array_id;
++    s32 bonus_id;
++
++} gmStageClearStats;
++
+ typedef enum scMajorScene
+ {
+     scMajor_Kind_NoController,      // "No Controller" screen

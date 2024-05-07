@@ -1,0 +1,10 @@
+diff a/game/src/ovl6/scbonusgame.c b/game/src/ovl6/scbonusgame.c	(rejected hunks)
+@@ -857,7 +857,7 @@ void scBonusGame_InitBonusGame(void)
+     efManager_AllocUserData();
+     ifScreenFlash_InitInterfaceVars(0xFF);
+     gmRumble_SetPlayerRumble();
+-    ftPublicReactSetup();
++    ftPublicitySetup();
+ 
+     for (player = 0, player_spawn = dFtDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->player_block); player++)
+     {

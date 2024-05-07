@@ -1,0 +1,12 @@
+diff a/game/src/gm/gmsound.h b/game/src/gm/gmsound.h	(rejected hunks)
+@@ -196,8 +196,8 @@ typedef enum alSoundEffectID
+     alSound_SFX_PlayerGateClose,    // Plays when player's character portrait is closed on the CSS?
+     alSound_SFX_PlayerGateWhoosh,   // Might be unrelated
+     alSound_SFX_UnkMetallic2,
+-    alSound_SFX_UnkSoftPing1,
+-    alSound_SFX_UnkClick1,          // Samus?
++    alSound_SFX_StageClearScoreRegister,
++    alSound_SFX_StageClearScoreDisplay,
+     alSound_SFX_UnkSwoosh1,
+     alSound_SFX_BossDefeatL,
+     alSound_SFX_UnkGate1,

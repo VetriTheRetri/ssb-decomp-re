@@ -1,0 +1,10 @@
+diff a/game/not-found-sym.ld b/game/not-found-sym.ld	(rejected hunks)
+@@ -213,7 +213,7 @@ D_NF_00002A28 = 0x002A28;
+ D_NF_00002A30 = 0x002A30;
+ D_NF_00002A80 = 0x002A80;
+ D_NF_00002AA8 = 0x002AA8;
+-D_NF_00002B48 = 0x002B48;
++lGmStageClearSpriteTextDamage = 0x002B48;
+ D_NF_00002C20 = 0x002C20;
+ D_NF_00002C30 = 0x002C30;
+ D_NF_00002DF8 = 0x002DF8;

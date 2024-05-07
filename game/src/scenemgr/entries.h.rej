@@ -1,0 +1,10 @@
+diff a/game/src/scenemgr/entries.h b/game/src/scenemgr/entries.h	(rejected hunks)
+@@ -33,7 +33,7 @@ extern void vs_records_entry(void);           // ovl 32
+ extern void char_bkg_info_entry(void);        // ovl 33
+ extern void mnN64StartScene(void);        // ovl 58
+ extern void intro_firstscene_entry(void);     // ovl 34
+-extern void intro_portrait_wipes_entry(void); // ovl 35
++extern void mvPortraitsStartScene(void); // ovl 35
+ extern void intro_focus_mario_entry(void);    // ovl 36
+ extern void intro_focus_dk_entry(void);       // ovl 37
+ extern void intro_focus_samus_entry(void);    // ovl 38

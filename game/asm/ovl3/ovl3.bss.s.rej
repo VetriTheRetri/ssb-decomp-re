@@ -1,0 +1,63 @@
+diff a/game/asm/ovl3/ovl3.bss.s b/game/asm/ovl3/ovl3.bss.s	(rejected hunks)
+@@ -5,43 +5,43 @@
+ # 0x8018CF80 -> 0x8018D0C0 [0x140 bytes]
+ glabel gFighterThrownScriptID
+     .space 16
+-glabel sFtPublicReactCommonFramesSince
++glabel sFtPublicityCommonFramesSince
+     .space 4
+-glabel sFtPublicReactCommonPlayerNum
++glabel sFtPublicityCommonPlayerNum
+     .space 4
+-glabel sFtPublicReactCommonKnockback
++glabel sFtPublicityCommonKnockback
+     .space 4
+-glabel sFtPublicReactCommonALSound
++glabel sFtPublicityCommonALSound
+     .space 4
+-glabel sFtPublicReactCommonOrder
++glabel sFtPublicityCommonOrder
+     .space 4
+-glabel sFtPublicReactChantIsInterrupt
++glabel sFtPublicityChantIsInterrupt
+     .space 4
+-glabel sFtPublicReactChantWait
++glabel sFtPublicityChantWait
+     .space 4
+-glabel sFtPublicReactChantPlayerNum
++glabel sFtPublicityChantPlayerNum
+     .space 4
+-glabel sFtPublicReactChantALSound
++glabel sFtPublicityChantALSound
+     .space 4
+-glabel sFtPublicReactChantOrder
++glabel sFtPublicityChantOrder
+     .space 4
+-glabel sFtPublicReactChantCount
++glabel sFtPublicityChantCount
+     .space 4
+-glabel sFtPublicReactChantID
++glabel sFtPublicityChantID
+     .space 2
+ glabel D_ovl3_8018CFBE
+     .space 2
+-glabel sFtPublicReactPlayersDown
++glabel sFtPublicityPlayersDown
+     .space 8
+-glabel sFtPublicReactDefeatedVoiceIDs
++glabel sFtPublicityDefeatedVoiceIDs
+     .space 20
+-glabel sFtPublicReactDefeatedQueueCurrent
++glabel sFtPublicityDefeatedQueueCurrent
+     .space 4
+-glabel sFtPublicReactDefeatedQueueEnd
++glabel sFtPublicityDefeatedQueueEnd
+     .space 4
+-glabel sFtPublicReactDefeatedALSound
++glabel sFtPublicityDefeatedALSound
+     .space 4
+-glabel sFtPublicReactDefeatedCurrentOrder
++glabel sFtPublicityDefeatedCurrentOrder
+     .space 8
+ glabel sWeaponAllocFree
+     .space 4

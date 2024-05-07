@@ -1,0 +1,10 @@
+diff a/game/src/ovl7/sctrainingmode.c b/game/src/ovl7/sctrainingmode.c	(rejected hunks)
+@@ -1599,7 +1599,7 @@ void scTrainingMode_InitTrainingMode(void)
+     efManager_AllocUserData();
+     ifScreenFlash_InitInterfaceVars(0xFF);
+     gmRumble_SetPlayerRumble();
+-    ftPublicReactSetup();
++    ftPublicitySetup();
+ 
+     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
+     {

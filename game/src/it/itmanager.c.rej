@@ -1,0 +1,54 @@
+diff a/game/src/it/itmanager.c b/game/src/it/itmanager.c	(rejected hunks)
+@@ -243,7 +243,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
+     {
+         return NULL;
+     }
+-    else item_gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, GObj_LinkID_Item, 0x80000000);
++    else item_gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, GObj_LinkID_Item, GOBJ_LINKORDER_DEFAULT);
+ 
+     if (item_gobj == NULL)
+     {
+@@ -709,7 +709,7 @@ void itManagerInitMonsterVars(void)
+ }
+ 
+ // 0x8016F238
+-GObj* itManagerMakeItemIndex(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 flags)
++GObj* itManagerMakeItemID(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 flags)
+ {
+     return dItMakeProcList[index](spawn_gobj, pos, vel, flags);
+ }
+@@ -795,7 +795,6 @@ void itManagerUpdateHitRecord(GObj *item_gobj)
+ void itManagerProcItemMain(GObj *item_gobj)
+ {
+     itStruct *ip = itGetStruct(item_gobj);
+-    Vec3f *translate;
+ 
+     if (ip->hitlag_timer > 0)
+     {
+@@ -844,7 +843,7 @@ void itManagerProcItemMain(GObj *item_gobj)
+ 
+     if (!(ip->is_hold))
+     {
+-        translate = &DObjGetStruct(item_gobj)->translate.vec.f;
++        Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
+ 
+         ip->coll_data.pos_curr = *translate;
+ 
+@@ -1152,7 +1151,7 @@ void itManagerUpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit,
+ 
+     damage = itMainGetDamageOutput(attack_ip);
+ 
+-    is_rehit = ((defend_ip->type == It_Type_Container) && (attack_it_hit->can_rehit_item)) ? TRUE : FALSE;
++    is_rehit = ((defend_ip->type == It_Type_Damage) && (attack_it_hit->can_rehit_item)) ? TRUE : FALSE;
+ 
+     itManagerSetHitInteractStats(attack_it_hit, defend_gobj, (is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt, 0);
+ 
+@@ -1255,7 +1254,7 @@ void itManagerUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_
+ 
+     damage = wpMainGetStaledDamageOutput(wp);
+ 
+-    is_rehit = ((ip->type == It_Type_Container) && (wp_hit->can_rehit_item)) ? TRUE : FALSE;
++    is_rehit = ((ip->type == It_Type_Damage) && (wp_hit->can_rehit_item)) ? TRUE : FALSE;
+ 
+     wpManagerUpdateHitInteractStatsGroupID(wp, wp_hit, item_gobj, ((is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt), 0);
+ 

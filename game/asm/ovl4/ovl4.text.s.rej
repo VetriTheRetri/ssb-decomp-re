@@ -1,0 +1,19 @@
+diff a/game/asm/ovl4/ovl4.text.s b/game/asm/ovl4/ovl4.text.s	(rejected hunks)
+@@ -206,7 +206,7 @@ glabel scBattle_StartStockBattle
+   /* 10A27C 8018D38C 240400FF */     addiu $a0, $zero, 0xff
+   /* 10A280 8018D390 0C0455B9 */       jal gmRumble_SetPlayerRumble
+   /* 10A284 8018D394 00000000 */       nop 
+-  /* 10A288 8018D398 0C0594F8 */       jal ftPublicReactSetup
++  /* 10A288 8018D398 0C0594F8 */       jal ftPublicitySetup
+   /* 10A28C 8018D39C 00000000 */       nop 
+   /* 10A290 8018D3A0 3C12800A */       lui $s2, %hi(gBattleState)
+   /* 10A294 8018D3A4 265250E8 */     addiu $s2, $s2, %lo(gBattleState)
+@@ -1010,7 +1010,7 @@ glabel scBattle_StartSDBattle
+   /* 10ADC8 8018DED8 240400FF */     addiu $a0, $zero, 0xff
+   /* 10ADCC 8018DEDC 0C0455B9 */       jal gmRumble_SetPlayerRumble
+   /* 10ADD0 8018DEE0 00000000 */       nop 
+-  /* 10ADD4 8018DEE4 0C0594F8 */       jal ftPublicReactSetup
++  /* 10ADD4 8018DEE4 0C0594F8 */       jal ftPublicitySetup
+   /* 10ADD8 8018DEE8 00000000 */       nop 
+   /* 10ADDC 8018DEEC 3C12800A */       lui $s2, %hi(gBattleState)
+   /* 10ADE0 8018DEF0 265250E8 */     addiu $s2, $s2, %lo(gBattleState)

@@ -28,9 +28,9 @@ git submodule update --init --recursive
 python3 -m pip install -r ./tools/splat/requirements.txt
 python3 -m pip install charset-normalizer -U
 
-if [ ! -f ./baserom.z64 ]
+if [ ! -f ./baserom.us.z64 ]
 then
-	echo -e ${RED}Rom not found, place it at $(pwd)/baserom.z64${ENDCOLOR}
+	echo -e ${RED}Rom not found, place it at $(pwd)/baserom.us.z64${ENDCOLOR}
 	exit
 fi
 

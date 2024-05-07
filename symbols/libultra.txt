@@ -141,6 +141,8 @@ spX2Init = 0x80024FD4;
 spX2Finish = 0x80025E30;
 spHide = 0x80025F10;
 spScale = 0x80025F50;
+spClearAttribute = 0x80025EF0;
+spSetAttribute = 0x80023870;
 
 __alCSeqNextDelta = 0x80028AF8;
 __alSeqNextDelta = 0x8002F9FC;

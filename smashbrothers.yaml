@@ -266,6 +266,7 @@ segments:
       - [0x036D50, asm, libultra/io/epirawread]
       - [0x036EB0, hasm, libultra/os/maptlbrdb]
       - [0x036F10, asm, libultra/os/yieldthread]
+      - [0x036F60, asm, libultra/Unk_36F60]
       - [0x036FB0, asm, libultra/io/contramwrite]
       - [0x037200, asm, libultra/pfsgetstatus]
       - [0x037430, asm, libultra/contpfs]
@@ -282,6 +283,8 @@ segments:
       - [0x039A40, asm, libultra/vimgr]
       - [0x039D60, hasm, libultra/os/writebackdcacheall]
       - [0x039D90, asm, libultra/os/startthread]
+      - [0x039EE0, asm, libultra/os/visetyscale]
+      - [0x039F40, asm, libultra/libc/llcvt]
       - [0x03A150, asm, libultra/io/aisetnextbuf] # different from sf64
       - [0x03A200, asm, libultra/io/ai]
       - [0x03A270, asm, libultra/io/spsetpc]
@@ -318,6 +321,9 @@ segments:
       - [0x03E530, .rodata, obj_manager]
       - [0x03E980, rodata, system_03]
       - [0x03E9A0, rodata, system_03_1]
+      - [0x03FF80, rodata, libultra/Unk_36F60]
+      - [0x03FF90, rodata, libultra/libc/xldtob]
+      - [0x03FFF0, rodata, libultra/libc/llcvt]
       - { start: 0x0406D0, type: bss, vram: 0x8003FAD0 }
       # - { type: .bss, vram: 0x8003FAD0, name: main }
       # - { type: bss, vram: 0x80044EC0, name: thread3_and_more }

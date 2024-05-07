@@ -247,17 +247,21 @@ segments:
       - [0x0359E0, asm, libultra/os/timerintr]
       - [0x035DE0, asm, libultra/os/setglobalintmask]
       - [0x035E30, asm, libultra/unk35E30]
-      - [0x035F80, asm, libulra/gu/normalize] # Is this really guNormalize?
+      - [0x035F80, asm, libultra/gu/normalize] # Is this really guNormalize?
       - [0x036010, asm, libultra/os/setcompare]
+      - [0x036020, asm, libultra/os/getactivequeue] # __osGetActiveQueue_A Why is this _A?
       - [0x036030, hasm, libultra/libc/bcopy]
+      - [0x036340, asm, libultra/Unk_36340]
       - [0x0363C0, asm, libultra/os/resetglobalintmask]
       - [0x036420, hasm, libultra/os/interrupt]
       - [0x036460, asm, libultra/io/vi]
+      - [0x0365A0, asm, libultra/io/viswapcontext]
       - [0x0368A0, asm, libultra/io/pigetcmdq]
       - [0x0368D0, asm, libultra/gu/cosf]
       - [0x036A40, asm, libultra/os/settime]
       - [0x036A70, asm, libultra/io/visetevent]
       - [0x036AE0, asm, libultra/io/cartrominit]
+      - [0x036CC0, asm, libultra/io/pfsselectbank]
       - [0x036D40, hasm, libultra/os/setfpccsr]
       - [0x036D50, asm, libultra/io/epirawread]
       - [0x036EB0, hasm, libultra/os/maptlbrdb]

@@ -160,10 +160,10 @@ nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
 	bash $(TOOLS)/compareObjects.sh
 
 clean:
-	rm -r $(BUILD_DIR)
+	rm -r -f $(BUILD_DIR)
 
 extract:
-	rm -r asm
+	rm -r -f asm
 	rm -r -f assets
 	$(SPLAT) $(SPLAT_YAML) $(SPLAT_FLAGS)
 

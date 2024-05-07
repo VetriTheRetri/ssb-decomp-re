@@ -165,7 +165,16 @@ segments:
       - [0x024480, asm, libultra/sprite]
       - [0x026AF0, c, libultra/sp/clearattribute]
       - [0x026B10, asm, libultra/io/sptaskyield]
-      - [0x026BC0, asm, libultra/audio]
+      - [0x026BC0, asm, libultra/audio1]
+      - [0x026C10, asm, libultra/audio2]
+      - [0x026C70, asm, libultra/audio3] 
+      - [0x02E220, asm, libultra/audio4] # n_alSynAddSeqPlayer
+      - [0x02E380, asm, libultra/audio5] # n_alSynStopVoice
+      - [0x02E3F0, asm, libultra/audio6]
+      - [0x02E620, asm, libultra/audio7] # n_alSynSetPan
+      - [0x02E6A0, asm, libultra/audio8]
+      - [0x02E870, asm, libultra/audio9]
+      - [0x030B60, asm, libultra/audio10] # n_alSynSetVol
       - [0x030C00, asm, libultra/os/sendmesg]
       - [0x030D50, asm, libultra/os/stopthread]
       - [0x030E10, asm, libultra/os/recvmesg]

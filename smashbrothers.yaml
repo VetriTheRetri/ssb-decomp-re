@@ -165,16 +165,27 @@ segments:
       - [0x024480, asm, libultra/sprite]
       - [0x026AF0, c, libultra/sp/clearattribute]
       - [0x026B10, asm, libultra/io/sptaskyield]
-      - [0x026BC0, asm, libultra/audio1]
-      - [0x026C10, asm, libultra/audio2]
-      - [0x026C70, asm, libultra/audio3] 
-      - [0x02E220, asm, libultra/audio4] # n_alSynAddSeqPlayer
-      - [0x02E380, asm, libultra/audio5] # n_alSynStopVoice
-      - [0x02E3F0, asm, libultra/audio6]
-      - [0x02E620, asm, libultra/audio7] # n_alSynSetPan
-      - [0x02E6A0, asm, libultra/audio8]
-      - [0x02E870, asm, libultra/audio9]
-      - [0x030B60, asm, libultra/audio10] # n_alSynSetVol
+      - [0x026BC0, asm, libultra/audio01]
+      - [0x026C10, asm, libultra/audio02]
+      - [0x026C70, asm, libultra/audio03] 
+      - [0x02E220, asm, libultra/audio04] # n_alSynAddSeqPlayer
+      - [0x02E380, asm, libultra/audio05] # n_alSynStopVoice
+      - [0x02E3F0, asm, libultra/audio06]
+      - [0x02E620, asm, libultra/audio07] # n_alSynSetPan
+      - [0x02E6A0, asm, libultra/audio08]
+      - [0x02E870, asm, libultra/audio09]
+      - [0x0302A0, asm, libultra/audio10]
+      - [0x0302C0, asm, libultra/audio11]
+      - [0x030670, asm, libultra/audio12]
+      - [0x0306B0, asm, libultra/audio13] # n_alSynSetPitch
+      - [0x030730, asm, libultra/audio14]
+      - [0x030810, asm, libultra/audio15]
+      - [0x030850, asm, libultra/audio16]
+      - [0x030980, asm, libultra/audio17]
+      - [0x0309B0, asm, libultra/audio18]
+      - [0x030A30, asm, libultra/audio19]
+      - [0x030A90, asm, libultra/audio20]
+      - [0x030B60, asm, libultra/audio21] # n_alSynSetVol
       - [0x030C00, asm, libultra/os/sendmesg]
       - [0x030D50, asm, libultra/os/stopthread]
       - [0x030E10, asm, libultra/os/recvmesg]
@@ -184,7 +195,7 @@ segments:
       - [0x0314A0, asm, libultra/os/destroythread]
       - [0x0315B0, asm, libultra/libc/ll]
       - [0x031870, hasm, libultra/os/exceptasm]
-      - [0x032160, asm, libultra/os/thread]
+      - [0x032170, asm, libultra/os/thread]
       - [0x0321B0, hasm, libultra/libc/bzero]
       - [0x032250, asm, libultra/motor]
       - [0x032620, asm, libultra/io/siacs]

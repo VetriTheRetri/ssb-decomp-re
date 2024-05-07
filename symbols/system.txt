@@ -161,16 +161,16 @@ unref_80018C14 = 0x80018C14;
 unref_80018CEC = 0x80018CEC;
 unref_80018E1C = 0x80018E1C;
 
-get_thread4_stack_start = 0x80000460;
+gsGetThread4StackStart = 0x80000460;
 unref_8000046C = 0x8000046C;
 unref_80000478 = 0x80000478;
-check_sp_imem = 0x80000480;
-check_sp_dmem = 0x800004B0;
-fatal_stack_overflow_thread = 0x800004E0;
-check_stack_probes = 0x80000510;
-thread5_main = 0x800005D8;
-thread1_idle = 0x800007C8;
-ssb_main = 0x80000870;
+gsCheckSPImemOK = 0x80000480;
+gsCheckSPDmemOK = 0x800004B0;
+gsFatalStackOverflowThread = 0x800004E0;
+gsVerifyStackProbes = 0x80000510;
+gsThread5Main = 0x800005D8;
+gsThread1Idle = 0x800007C8;
+gsGameMainLoop = 0x80000870;
 
 rgba32_to_fill_color = 0x80006D70;
 update_framebuffers = 0x80006DC4;

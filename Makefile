@@ -75,6 +75,7 @@ GAME_NAME := smashbrothers
 BUILD_DIR := build
 ROM       := $(BUILD_DIR)/$(TARGET).$(VERSION).z64
 ELF       := $(BUILD_DIR)/$(TARGET).$(VERSION).elf
+LD_MAP    := $(BUILD_DIR)/$(TARGET).$(VERSION).map
 
 # ----- Tools ------
 
@@ -159,15 +160,22 @@ nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
 	bash $(TOOLS)/compareObjects.sh
 
 clean:
-	rm -r -f $(BUILD_DIR) $(ROM) $(ELF)
+	rm -r $(BUILD_DIR)
 
 extract:
+	rm -r asm
 	rm -r -f assets
 	$(SPLAT) $(SPLAT_YAML) $(SPLAT_FLAGS)
 
 init:
 	make extract
 	make all
+
+# asm-differ expected object files
+expected:
+	mkdir -p expected/build
+	rm -rf expected/build/
+	cp -r build/ expected/build/
 
 format:
 	$(PYTHON) $(TOOLS)/formatHelper.py -e
@@ -184,7 +192,7 @@ $(ROM): $(ELF)
 
 $(ELF): $(O_FILES) symbols/not_found.txt
 	$(call print,Linking:,$<,$@)
-	$(V)$(LD) -o $@ $(LDFLAGS)
+	$(V)$(LD) -Map $(LD_MAP) -o $@ $(LDFLAGS)
 
 $(BUILD_DIR)/%.text: $(BUILD_DIR)/%.o
 	$(call print,text:,$<,$@)
@@ -224,3 +232,5 @@ assets/%.bin: assets/%.png
 	$(V)$(PYTHON) $(TOOLS)/image_converter.py $< $@
 
 -include $(DEP_FILES)
+
+.PHONY: all toolchain rom nolink clean extract init expected format

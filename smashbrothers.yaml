@@ -282,6 +282,8 @@ segments:
       - [0x03E530, .rodata, obj_manager]
       - [0x03E980, rodata, unk_3E980]
       - { start: 0x0406D0, type: bss, vram: 0x8003FAD0 }
+      # - { type: .bss, vram: 0x8003FAD0, name: main }
+      # - { type: bss, vram: 0x80044EC0, name: thread3_and_more }
       - { type: .bss, vram: 0x800466B0, name: obj_manager }
       - { type: bss, vram: 0x80046FA0, name: unk_bss }
       # - [0x0406D0, asm, unk_406D0]

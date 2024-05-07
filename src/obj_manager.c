@@ -93,9 +93,6 @@ OMRotate dOMRotateDefaultRPY = { NULL, 0.0F, { 0.0F, 0.0F, 0.0F } };
 // 8003B914
 OMScale dOMScaleDefault = { NULL, { 1.0F, 1.0F, 1.0F } };
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
-
 // 800073E0
 GObjThread* omGetGObjThread()
 {

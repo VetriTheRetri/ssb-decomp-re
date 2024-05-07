@@ -8,3 +8,5 @@ __pycache__
 bin
 undefined*
 tools/ido-recomp/
+.vscode/
+build/

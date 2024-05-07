@@ -1,8 +1,6 @@
 #ifndef _ULTRATYPES_H_
 #define _ULTRATYPES_H_
 
-#define _LANGUAGE_C
-
 /**************************************************************************
  *                                                                        *
  *               Copyright (C) 1995, Silicon Graphics, Inc.               *

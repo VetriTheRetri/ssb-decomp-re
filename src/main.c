@@ -66,13 +66,13 @@ OSMesg sPIcmdBuf[50];
 OSMesgQueue sPIcmdQ;
 u8 sThreadArgBuf[128];
 
-u64* get_thread4_stack_start() { return sThread4Stack + THREAD4_STACK_SIZE; }
+u64* gsGetThread4StackStart() { return sThread4Stack + THREAD4_STACK_SIZE; }
 
 u8* unref_8000046C() { return sUkn80040E90; }
 
 void* unref_80000478() { return (void*)(0x00003400); }
 
-void check_sp_imem()
+void gsCheckSPImemOK()
 {
 	if (IO_READ(SP_IMEM_START) == 6103)
 		gSPImemOkay = TRUE;
@@ -80,7 +80,7 @@ void check_sp_imem()
 		gSPImemOkay = FALSE;
 }
 
-void check_sp_dmem()
+void gsCheckSPDmemOK()
 {
 	if (IO_READ(SP_DMEM_START) == (u32)-1)
 		gSPDmemOkay = TRUE;
@@ -88,25 +88,25 @@ void check_sp_dmem()
 		gSPDmemOkay = FALSE;
 }
 
-void fatal_stack_overflow_thread(s32 tid)
+void gsFatalStackOverflowThread(s32 tid)
 {
 	fatal_printf("thread stack overflow  id = %d\n", tid);
 	while (TRUE) {}
 }
 
-void check_stack_probes()
+void gsVerifyStackProbes()
 {
 	if (gThread0Stack[0] != STACK_PROBE_MAGIC)
-		fatal_stack_overflow_thread(0);
+		gsFatalStackOverflowThread(0);
 	if (sThread1Stack[0] != STACK_PROBE_MAGIC)
-		fatal_stack_overflow_thread(1);
+		gsFatalStackOverflowThread(1);
 	if (sThread3Stack[0] != STACK_PROBE_MAGIC)
-		fatal_stack_overflow_thread(3);
+		gsFatalStackOverflowThread(3);
 	if (sThread5Stack[0] != STACK_PROBE_MAGIC)
-		fatal_stack_overflow_thread(5);
+		gsFatalStackOverflowThread(5);
 }
 
-void thread5_main(UNUSED void* arg)
+void gsThread5Main(UNUSED void* arg)
 {
 	osCreateViManager(OS_PRIORITY_VIMGR);
 	gRomPiHandle = osCartRomInit();
@@ -115,8 +115,8 @@ void thread5_main(UNUSED void* arg)
 	create_dma_mq();
 	// load IP3 font? rsp boot text
 	dma_rom_read(PHYSICAL_TO_ROM(0xB70), gRspBootCode, sizeof(gRspBootCode));
-	check_sp_imem();
-	check_sp_dmem();
+	gsCheckSPImemOK();
+	gsCheckSPDmemOK();
 	osCreateMesgQueue(&gThreadingQueue, sBlockMsg, ARRAY_COUNT(sBlockMsg));
 
 	osCreateThread(&sThread3, 3, &thread3_scheduler, NULL, sThread3Stack + THREAD3_STACK_SIZE, THREAD3_PRI);
@@ -142,10 +142,10 @@ void thread5_main(UNUSED void* arg)
 	start_scene_manager(0);
 }
 
-void thread1_idle(void* arg)
+void gsThread1Idle(void* arg)
 {
 	start_thread8_rmon();
-	osCreateThread(&gThread5, 5, thread5_main, arg, sThread5Stack + THREAD5_STACK_SIZE, THREAD5_PRI);
+	osCreateThread(&gThread5, 5, gsThread5Main, arg, sThread5Stack + THREAD5_STACK_SIZE, THREAD5_PRI);
 	sThread5Stack[0] = STACK_PROBE_MAGIC;
 	if (!sNoThread5)
 		osStartThread(&gThread5);
@@ -154,11 +154,13 @@ void thread1_idle(void* arg)
 	while (TRUE) {}
 }
 
-void ssb_main()
+void gsGameMainLoop(void) 
 {
-	gThread0Stack[0] = STACK_PROBE_MAGIC;
-	__osSetWatchLo(0x04900000 & WATCHLO_ADDRMASK);
-	osInitialize();
-	osCreateThread(&sThread1, 1, thread1_idle, &sThreadArgBuf, sThread1Stack + THREAD1_STACK_SIZE, OS_PRIORITY_APPMAX);
-	sThread1Stack[0] = STACK_PROBE_MAGIC, osStartThread(&sThread1); // needs to be in the same line to match
+    gThread0Stack[0] = STACK_PROBE_MAGIC;
+    __osSetWatchLo(0x04900000 & WATCHLO_ADDRMASK);
+    osInitialize();
+    osCreateThread(&sThread1, 1, gsThread1Idle, &sThreadArgBuf, sThread1Stack + THREAD1_STACK_SIZE, OS_PRIORITY_APPMAX);
+    // clang-format off
+    sThread1Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sThread1);
+    // clang-format on
 }

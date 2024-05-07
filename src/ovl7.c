@@ -728,7 +728,7 @@ void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 		{
 			while (TRUE)
 			{
-				fatal_printf("Error : wrong item! %d\n", ip->it_kind);
+				gsFatalPrintF("Error : wrong item! %d\n", ip->it_kind);
 				scnmgr_crash_print_gobj_state();
 			}
 		}

@@ -106,7 +106,7 @@ GObjThread* omGetGObjThread()
 
 	if (sOMObjThreadHead == NULL)
 	{
-		fatal_printf("om : couldn't get GObjThread\n");
+		gsFatalPrintF("om : couldn't get GObjThread\n");
 		while (TRUE) {}
 	}
 
@@ -188,7 +188,7 @@ void omEjectStackNode(OMThreadStackNode* node)
 	}
 	if (parent == NULL)
 	{
-		fatal_printf("om : Illegal GObjThreadStack Link\n");
+		gsFatalPrintF("om : Illegal GObjThreadStack Link\n");
 		while (TRUE) {}
 	}
 
@@ -210,7 +210,7 @@ GObjProcess* omGetGObjProcess()
 
 	if (sOMObjProcessHead == NULL)
 	{
-		fatal_printf("om : couldn't get GObjProcess\n");
+		gsFatalPrintF("om : couldn't get GObjProcess\n");
 		while (TRUE) {}
 	}
 
@@ -524,7 +524,7 @@ OMMtx* omGetOMMtxSetNextAlloc()
 
 	if (sOMMtxHead == NULL)
 	{
-		fatal_printf("om : couldn't get OMMtx\n");
+		gsFatalPrintF("om : couldn't get OMMtx\n");
 		while (TRUE) {}
 	}
 
@@ -557,7 +557,7 @@ AObj* omGetAObjSetNextAlloc()
 
 	if (sAObjHead == NULL)
 	{
-		fatal_printf("om : couldn't get AObj\n");
+		gsFatalPrintF("om : couldn't get AObj\n");
 		while (TRUE) {}
 	}
 	aobj = sAObjHead;
@@ -609,7 +609,7 @@ MObj* omGetMObjSetNextAlloc()
 
 	if (sMObjHead == NULL)
 	{
-		fatal_printf("om : couldn't get MObj\n");
+		gsFatalPrintF("om : couldn't get MObj\n");
 		while (TRUE) {}
 	}
 
@@ -642,7 +642,7 @@ DObj* omGetDObjSetNextAlloc()
 
 	if (sDObjHead == NULL)
 	{
-		fatal_printf("om : couldn't get DObj\n");
+		gsFatalPrintF("om : couldn't get DObj\n");
 		while (TRUE) {}
 	}
 
@@ -674,7 +674,7 @@ SObj* omGetSObjSetNextAlloc()
 
 	if (sSObjHead == NULL)
 	{
-		fatal_printf("om : couldn't get SObj\n");
+		gsFatalPrintF("om : couldn't get SObj\n");
 		while (TRUE) {}
 	}
 
@@ -706,7 +706,7 @@ Camera* omGetCameraSetNextAlloc()
 
 	if (sCameraHead == NULL)
 	{
-		fatal_printf("om : couldn't get Camera\n");
+		gsFatalPrintF("om : couldn't get Camera\n");
 		while (TRUE) {}
 	}
 
@@ -738,7 +738,7 @@ GObjProcess* omAddGObjCommonProc(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 p
 
 	if (priority >= 6)
 	{
-		fatal_printf("om : GObjProcess's priority is bad value\n");
+		gsFatalPrintF("om : GObjProcess's priority is bad value\n");
 		while (TRUE) {}
 	}
 	gobjproc->priority = priority;
@@ -771,7 +771,7 @@ GObjProcess* omAddGObjCommonProc(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 p
 		break;
 	}
 	default: {
-		fatal_printf("om : GObjProcess's kind is bad value\n");
+		gsFatalPrintF("om : GObjProcess's kind is bad value\n");
 		while (TRUE) {}
 	}
 	}
@@ -795,7 +795,7 @@ GObjProcess* unref_80008304(GObj* gobj, void (*proc)(GObj*), u32 pri, s32 thread
 
 	if (pri >= 6)
 	{
-		fatal_printf("om : GObjProcess's priority is bad value\n");
+		gsFatalPrintF("om : GObjProcess's priority is bad value\n");
 		while (TRUE) {}
 	}
 
@@ -870,7 +870,7 @@ OMMtx* omAddOMMtxForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 ommtx_id)
 
 	if (dobj->ommtx_len == ARRAY_COUNT(dobj->ommtx))
 	{
-		fatal_printf("om : couldn\'t add OMMtx for DObj\n");
+		gsFatalPrintF("om : couldn\'t add OMMtx for DObj\n");
 		while (TRUE) {}
 	}
 	if (dobj->dynstore != NULL)
@@ -1063,7 +1063,7 @@ OMMtx* omAddOMMtxForCamera(Camera* cam, u8 kind, u8 arg2)
 
 	if (cam->ommtx_len == ARRAY_COUNT(cam->ommtx))
 	{
-		fatal_printf("om : couldn't add OMMtx for Camera\n");
+		gsFatalPrintF("om : couldn't add OMMtx for Camera\n");
 		while (TRUE) {}
 	}
 	ommtx = omGetOMMtxSetNextAlloc();
@@ -1595,7 +1595,7 @@ GObj* omInitGObjCommon(u32 id, void (*proc_eject)(GObj*), u8 link, u32 order)
 
 	if (link >= ARRAY_COUNT(gOMObjCommonLinks))
 	{
-		fatal_printf("omGAddCommon() : link num over : link = %d : id = %d\n", link, id);
+		gsFatalPrintF("omGAddCommon() : link num over : link = %d : id = %d\n", link, id);
 		while (TRUE) {}
 	}
 
@@ -1709,7 +1709,7 @@ void omMoveGObjCommon(s32 sw, GObj* this_gobj, u8 link, u32 order, GObj* other_g
 
 	if (link >= ARRAY_COUNT(gOMObjCommonLinks))
 	{
-		fatal_printf("omGMoveCommon() : link num over : link = %d : id = %d\n", link, this_gobj->gobj_id);
+		gsFatalPrintF("omGMoveCommon() : link num over : link = %d : id = %d\n", link, this_gobj->gobj_id);
 
 		while (TRUE) {}
 	}
@@ -1778,7 +1778,7 @@ void omLinkGObjDLCommon(GObj* gobj, void (*proc_render)(GObj*), u8 dl_link, u32 
 {
 	if (dl_link >= ARRAY_COUNT(gOMObjCommonDLLinks) - 1)
 	{
-		fatal_printf("omGLinkObjDLCommon() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->gobj_id);
+		gsFatalPrintF("omGLinkObjDLCommon() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->gobj_id);
 		while (TRUE) {}
 	}
 
@@ -1884,7 +1884,7 @@ void omMoveGObjDL(GObj* gobj, u8 dl_link, u32 order)
 {
 	if (dl_link >= ARRAY_COUNT(gOMObjCommonDLLinks) - 1)
 	{
-		fatal_printf("omGMoveObjDL() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->gobj_id);
+		gsFatalPrintF("omGMoveObjDL() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->gobj_id);
 		while (TRUE) {}
 	}
 	omRemoveGObjFromDLLinkedList(gobj);
@@ -1900,7 +1900,7 @@ void omMoveGObjDLHead(GObj* gobj, u8 dl_link, u32 order)
 {
 	if (dl_link >= ARRAY_COUNT(gOMObjCommonDLLinks) - 1)
 	{
-		fatal_printf("omGMoveObjDLHead() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->gobj_id);
+		gsFatalPrintF("omGMoveObjDLHead() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->gobj_id);
 		while (TRUE) {}
 	}
 	omRemoveGObjFromDLLinkedList(gobj);

@@ -90,7 +90,7 @@ void gsCheckSPDmemOK()
 
 void gsFatalStackOverflowThread(s32 tid)
 {
-	fatal_printf("thread stack overflow  id = %d\n", tid);
+	gsFatalPrintF("thread stack overflow  id = %d\n", tid);
 	while (TRUE) {}
 }
 

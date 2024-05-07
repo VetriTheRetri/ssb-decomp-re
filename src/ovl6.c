@@ -120,7 +120,7 @@ void scBonusGame_InitBonus1Targets()
 	}
 	if (gGroundStruct.bonus1.target_count != 10)
 	{
-		fatal_printf("Error : not %d targets!\n", 10);
+		gsFatalPrintF("Error : not %d targets!\n", 10);
 		while (TRUE)
 			;
 	}

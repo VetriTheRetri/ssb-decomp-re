@@ -1,6 +1,5 @@
 __osViNext_A = 0x8003AB68;
 __osViNext_B = 0x8003D5B4;
-__osCurrentTime_A = 0x8003D060;
 __osCurrentTime_B = 0x800A0AE4;
 __osContPifRam_A = 0x8009DF7C;
 __osContPifRam_B = 0x8009EFA0;

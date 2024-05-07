@@ -151,7 +151,7 @@ SB := COMPLETE!\n
 rom: $(ROM)
 ifneq ($(COMPARE),0)
 	@md5sum --status -c $(TARGET).$(VERSION).md5 && \
-	$(PRINT) "$(BLUE)$(TARGET).$(VERSION).z64$(NO_COL): $(GREEN)OK$(NO_COL)\n$(YELLOW)$(SB)" || \
+	$(PRINT) "$(BLUE)$(TARGET).$(VERSION).z64$(NO_COL): $(GREEN)OK$(NO_COL)\n$(YELLOW)$(SB)$(NO_COL)" || \
 	$(PRINT) "$(BLUE)$(TARGET).$(VERSION).z64 $(RED)FAILED$(NO_COL)\n\
 	$(RED)FAILURE!$(NO_COL)\n"
 endif
@@ -168,8 +168,9 @@ extract:
 	$(SPLAT) $(SPLAT_YAML) $(SPLAT_FLAGS)
 
 init:
-	make extract
-	make all
+	${MAKE} clean
+	${MAKE} extract
+	${MAKE} all
 
 # asm-differ expected object files
 expected:

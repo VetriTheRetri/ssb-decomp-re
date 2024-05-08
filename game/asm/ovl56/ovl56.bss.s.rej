@@ -14,7 +14,7 @@ diff a/game/asm/ovl56/ovl56.bss.s b/game/asm/ovl56/ovl56.bss.s	(rejected hunks)
 -glabel D_ovl56_801352E0
 +glabel sGmStageClearDamageDealt
      .space 4
- glabel D_ovl56_801352E4
+ glabel sGmStageClearDifficulty
      .space 4
 -glabel D_ovl56_801352E8
 +glabel sGmStageClearScoreTotal

@@ -9,7 +9,7 @@
 glabel D_ovl56_80134EE0
   .incbin "ovl56.raw.bin", 0x33E0, 0x1C
 
-glabel D_ovl56_80134EFC
+glabel dGmStageClearBonusData
   .incbin "ovl56.raw.bin", 0x33FC, 0x1D4
   /* 35D0 17E320 801350D0 */
   .asciz "   "

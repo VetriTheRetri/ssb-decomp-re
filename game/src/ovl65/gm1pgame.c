@@ -43,61 +43,61 @@ extern intptr_t D_NF_00006450;
 // // // // // // // // // // // //
 
 // 0x80192FA0 - Total number of enemies on current stage?
-u8 s1PGameEnemyPlayerCount;
+u8 sGm1PGameEnemyPlayerCount;
 
 // 0x80192FA1 - Remaining stocks of enemy team
-u8 s1PGameEnemyStocksRemaining;
+u8 sGm1PGameEnemyStocksRemaining;
 
 // 0x80192FA4 - Flag to hide stock icons of defeated "VS *character* Team" members
-u32 s1PGameEnemyStockSpriteFlags;
+u32 sGm1PGameEnemyStockSpriteFlags;
 
 // 0x80192FA8 - "VS *character* Team" members defeated?
-u8 s1PGameTeamPlayersRemaining;
+u8 sGm1PGameTeamPlayersRemaining;
 
 // 0x80192FA9 - Current enemy variation?
-u8 s1PGameCurrentEnemyVariation;
+u8 sGm1PGameCurrentEnemyVariation;
 
 // 0x80192FB0 - Number of unique enemy patterns in "VS *character* Team" battles (e.g. 6 randomly selected colors repeated 3 times for Yoshi Team)
-u8 s1PGameEnemyVariations[GM1PGAME_STAGE_MAX_VARIATIONS_COUNT];
+u8 sGm1PGameEnemyVariations[GM1PGAME_STAGE_MAX_VARIATIONS_COUNT];
 
 // 0x80192FD0 - Camera target position when Master Hand is defeated
-Vec3f s1PGameBossDefeatZoomPosition;
+Vec3f sGm1PGameBossDefeatZoomPosition;
 
 // 0x80192FDC
-u16 s1PGameBossDefeatSoundTerminateTemp;
+u16 sGm1PGameBossDefeatSoundTerminateTemp;
 
 // 0x80192FE0
-gm1PGameFighter s1PGamePlayerSetups[GMMATCH_PLAYERS_MAX];
+gm1PGameFighter sGm1PGamePlayerSetups[GMMATCH_PLAYERS_MAX];
 
 // 0x80193060 - Costume ID for all members of Kirby Team?
-s32 s1PGameEnemyKirbyCostume;
+s32 sGm1PGameEnemyKirbyCostume;
 
 // 0x80193064 - Base of Fighting Polygon Team stock sprite file?
-void *s1PGameZakoStockSprite;
+void *sGm1PGameZakoStockSprite;
 
 // 0x80193068
-rdFileNode s1PGameStatusBuf[100];
+rdFileNode sGm1PGameStatusBuf[100];
 
 // 0x80193388
-rdFileNode s1PGameForceBuf[7];
+rdFileNode sGm1PGameForceBuf[7];
 
 // 0x801933C0
-sb32 s1PGameIsEndStage;
+sb32 sGm1PGameIsEndStage;
 
 // 0x801933C4 - Only works on Meta Crystal and Duel Zone?
-sb32 s1PGameIsStartStage;
+sb32 sGm1PGameIsStartStage;
 
 // 0x801933C8
-s32 s1PGameBonusStatEndPlayerStatus;
+s32 sGm1PGameBonusStatEndPlayerStatus;
 
 // 0x801933CC
-s32 s1PGameBonusStatInvincibleTimer;
+s32 sGm1PGameBonusStatInvincibleTimer;
 
 // 0x801933D0 - Specific stats of all enemy players?
-gm1PGameStats s1PGameBonusStatEnemyStats[GM1PGAME_STAGE_MAX_TEAM_COUNT];
+gm1PGameStats sGm1PGameBonusStatEnemyStats[GM1PGAME_STAGE_MAX_TEAM_COUNT];
 
 // 0x801936A4 - Player's number of KOs scored on enemies
-s32 s1PGameBonusStatNumPlayerKOs;
+s32 sGm1PGameBonusStatNumPlayerKOs;
 
 // 0x801936A4
 sb32 g1PGameBonusStatBrosCalamity;
@@ -145,19 +145,19 @@ u32 g1PGameBonusStatDefendGroundAirCount[2];
 u32 g1PGameBonusStatDefendIsProjectileCount[2];
 
 // 0x801938B0
-u32 s1PGameStageTimeSec;
+u32 sGm1PGameStageTimeSec;
 
 // 0x801938B4
-u32 s1PGameTotalTimeSec;
+u32 sGm1PGameTotalTimeSec;
 
 // 0x801938B8
-s32 s1PGamePlayerInterfacePositionsX[GMMATCH_PLAYERS_MAX];
+s32 sGm1PGamePlayerInterfacePositionsX[GMMATCH_PLAYERS_MAX];
 
 // 0x801938C8 - Number of enemy stock icons to display?
-u8 s1PGameEnemyStocksDisplay;
+u8 sGm1PGameEnemyStocksDisplay;
 
 // 0x801938CC
-ftSprites *s1PGameEnemyTeamSprites;
+ftSprites *sGm1PGameEnemyTeamSprites;
 
 // // // // // // // // // // // //
 //                               //
@@ -683,10 +683,10 @@ void func_ovl65_8018D0C0(void)
     rldm_setup.tableFileCount = (uintptr_t)&D_NF_00000854;
     rldm_setup.fileHeap = NULL;
     rldm_setup.fileHeapSize = 0;
-    rldm_setup.statusBuf = s1PGameStatusBuf;
-    rldm_setup.statusBufSize = ARRAY_COUNT(s1PGameStatusBuf);
-    rldm_setup.forceBuf = s1PGameForceBuf;
-    rldm_setup.forceBufSize = ARRAY_COUNT(s1PGameForceBuf);
+    rldm_setup.statusBuf = sGm1PGameStatusBuf;
+    rldm_setup.statusBufSize = ARRAY_COUNT(sGm1PGameStatusBuf);
+    rldm_setup.forceBuf = sGm1PGameForceBuf;
+    rldm_setup.forceBufSize = ARRAY_COUNT(sGm1PGameForceBuf);
 
     rdManagerInitSetup(&rldm_setup);
     rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
@@ -696,7 +696,7 @@ void func_ovl65_8018D0C0(void)
 // 0x8018D160
 void gm1PGameSetGameStart(void)
 {
-    s1PGameIsStartStage = TRUE;
+    sGm1PGameIsStartStage = TRUE;
 
     if ((gSceneData.spgame_stage == gm1PGame_Stage_Metal) || (gSceneData.spgame_stage == gm1PGame_Stage_Zako))
     {
@@ -710,13 +710,13 @@ void gm1PGameSetGameEnd(void)
     GObj *fighter_gobj;
     ftStruct *fp;
 
-    s1PGameIsEndStage = TRUE;
+    sGm1PGameIsEndStage = TRUE;
 
     fighter_gobj = gBattleState->player_block[gSceneData.spgame_player].fighter_gobj;
     fp = ftGetStruct(fighter_gobj);
 
-    s1PGameBonusStatEndPlayerStatus = fp->status_info.status_id;
-    s1PGameBonusStatInvincibleTimer = fp->star_invincible_timer;
+    sGm1PGameBonusStatEndPlayerStatus = fp->status_info.status_id;
+    sGm1PGameBonusStatInvincibleTimer = fp->star_invincible_timer;
 }
 
 // 0x8018D200
@@ -724,11 +724,11 @@ void func_ovl65_8018D200(void)
 {
     func_ovl2_8011485C();
 
-    if ((s1PGameIsStartStage == FALSE) && (gBattleState->game_status == gmMatch_GameStatus_Go))
+    if ((sGm1PGameIsStartStage == FALSE) && (gBattleState->game_status == gmMatch_GameStatus_Go))
     {
         gm1PGameSetGameStart();
     }
-    if ((s1PGameIsEndStage == FALSE) && (gBattleState->game_status == gmMatch_GameStatus_Set))
+    if ((sGm1PGameIsEndStage == FALSE) && (gBattleState->game_status == gmMatch_GameStatus_Set))
     {
         gm1PGameSetGameEnd();
     }
@@ -865,9 +865,9 @@ void gm1PGameSetupEnemyPlayer(gm1PGameStage *stagesetup, gm1PGameCom *comsetup, 
     gBattleState->player_block[player].is_rebirth_multi = TRUE;
     gBattleState->player_block[player].player_kind = Pl_Kind_Com;
 
-    s1PGamePlayerSetups[player].cp_trait = stagesetup->opponent_behavior;
+    sGm1PGamePlayerSetups[player].cp_trait = stagesetup->opponent_behavior;
 
-    s1PGameTeamPlayersRemaining--;
+    sGm1PGameTeamPlayersRemaining--;
 }
 
 // 0x8018D60C
@@ -907,19 +907,19 @@ void gm1PGameStageSetupAll(void)
     gBattleState->item_toggles = stagesetup->item_toggles;
     gBattleState->item_switch = comsetup->item_switch;
 
-    s1PGameEnemyPlayerCount = s1PGameEnemyStocksRemaining = s1PGameTeamPlayersRemaining = stagesetup->opponent_count;
+    sGm1PGameEnemyPlayerCount = sGm1PGameEnemyStocksRemaining = sGm1PGameTeamPlayersRemaining = stagesetup->opponent_count;
 
-    s1PGameEnemyStockSpriteFlags = 0;
+    sGm1PGameEnemyStockSpriteFlags = 0;
 
-    for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(s1PGamePlayerSetups)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(sGm1PGamePlayerSetups)) / 2; i++)
     {
-        s1PGamePlayerSetups[i].anim_bank = NULL;
-        s1PGamePlayerSetups[i].copy_kind = Ft_Kind_Kirby;
-        s1PGamePlayerSetups[i].team_order = 0;
-        s1PGamePlayerSetups[i].is_skip_entry = FALSE;
-        s1PGamePlayerSetups[i].is_skip_magnify = FALSE;
-        s1PGamePlayerSetups[i].cp_trait = 0;
-        s1PGamePlayerSetups[i].cam_frame_mul = 1.0F;
+        sGm1PGamePlayerSetups[i].anim_bank = NULL;
+        sGm1PGamePlayerSetups[i].copy_kind = Ft_Kind_Kirby;
+        sGm1PGamePlayerSetups[i].team_order = 0;
+        sGm1PGamePlayerSetups[i].is_skip_entry = FALSE;
+        sGm1PGamePlayerSetups[i].is_skip_magnify = FALSE;
+        sGm1PGamePlayerSetups[i].cp_trait = 0;
+        sGm1PGamePlayerSetups[i].cam_frame_mul = 1.0F;
 
         if (i != gSceneData.spgame_player)
         {
@@ -929,22 +929,22 @@ void gm1PGameStageSetupAll(void)
     if (gSceneData.spgame_stage < gm1PGame_Stage_ChallengerStart)
     {
         D_800A4B18.player_block[gSceneData.spgame_player].is_permanent_stock = FALSE;
-        s1PGamePlayerSetups[gSceneData.spgame_player].mpoint_kind = mpMPoint_Kind_1PGamePlayerSpawn;
+        sGm1PGamePlayerSetups[gSceneData.spgame_player].mpoint_kind = mpMPoint_Kind_1PGamePlayerSpawn;
     }
     else
     {
         D_800A4B18.player_block[gSceneData.spgame_player].is_permanent_stock = TRUE;
-        s1PGamePlayerSetups[gSceneData.spgame_player].mpoint_kind = mpMPoint_Kind_1PGameChallengerPlayerSpawn;
+        sGm1PGamePlayerSetups[gSceneData.spgame_player].mpoint_kind = mpMPoint_Kind_1PGameChallengerPlayerSpawn;
     }
     switch (gSceneData.spgame_stage)
     {
     case gm1PGame_Stage_Boss:
     case gm1PGame_Stage_Bonus3:
-        s1PGamePlayerSetups[gSceneData.spgame_player].is_skip_entry = TRUE;
+        sGm1PGamePlayerSetups[gSceneData.spgame_player].is_skip_entry = TRUE;
         break;
 
     default:
-        s1PGamePlayerSetups[gSceneData.spgame_player].is_skip_entry = FALSE;
+        sGm1PGamePlayerSetups[gSceneData.spgame_player].is_skip_entry = FALSE;
         break;
     }
     player = gSceneData.spgame_player;
@@ -977,8 +977,8 @@ void gm1PGameStageSetupAll(void)
 
             player = gSceneData.cpu_port[i];
 
-            s1PGamePlayerSetups[gSceneData.cpu_port[i]].mpoint_kind = i + mpMPoint_Kind_1PGameAllySpawnStart;
-            s1PGamePlayerSetups[gSceneData.cpu_port[i]].cp_trait = stagesetup->ally_behavior;
+            sGm1PGamePlayerSetups[gSceneData.cpu_port[i]].mpoint_kind = i + mpMPoint_Kind_1PGameAllySpawnStart;
+            sGm1PGamePlayerSetups[gSceneData.cpu_port[i]].cp_trait = stagesetup->ally_behavior;
         }
         for (i = 0; i < stagesetup->opponent_count; i++)
         {
@@ -990,11 +990,11 @@ void gm1PGameStageSetupAll(void)
 
             if (gSceneData.spgame_stage < gm1PGame_Stage_ChallengerStart)
             {
-                s1PGamePlayerSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
+                sGm1PGamePlayerSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
             }
             else
             {
-                s1PGamePlayerSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameChallengerEnemySpawnStart;
+                sGm1PGamePlayerSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameChallengerEnemySpawnStart;
 
                 level = gBattleState->player_block[player].level - gSceneData.unk43;
 
@@ -1002,7 +1002,7 @@ void gm1PGameStageSetupAll(void)
             }
             if (gSceneData.spgame_stage == gm1PGame_Stage_Boss)
             {
-                s1PGamePlayerSetups[player].is_skip_magnify = TRUE;
+                sGm1PGamePlayerSetups[player].is_skip_magnify = TRUE;
             }
         }
         break;
@@ -1013,15 +1013,15 @@ void gm1PGameStageSetupAll(void)
 
         for (i = 0; i < GM1PGAME_STAGE_YOSHI_VARIATIONS_COUNT; i++)
         {
-            s1PGameEnemyVariations[i] = gm1PGameGetShuffledVariation(flags, lbRandom_GetIntRange(variations));
+            sGm1PGameEnemyVariations[i] = gm1PGameGetShuffledVariation(flags, lbRandom_GetIntRange(variations));
 
-            flags |= (1 << s1PGameEnemyVariations[i]);
+            flags |= (1 << sGm1PGameEnemyVariations[i]);
 
             variations--;
         }
         for (costume = 0, i = GM1PGAME_STAGE_YOSHI_VARIATIONS_COUNT; i < stagesetup->opponent_count; i++)
         {
-            s1PGameEnemyVariations[i] = s1PGameEnemyVariations[costume];
+            sGm1PGameEnemyVariations[i] = sGm1PGameEnemyVariations[costume];
 
             if (costume == (GM1PGAME_STAGE_YOSHI_VARIATIONS_COUNT - 1))
             {
@@ -1029,7 +1029,7 @@ void gm1PGameStageSetupAll(void)
             }
             else costume++;
         }
-        s1PGameCurrentEnemyVariation = 0;
+        sGm1PGameCurrentEnemyVariation = 0;
 
         for (i = 0; i < GM1PGAME_STAGE_MAX_OPPONENT_COUNT; i++)
         {
@@ -1037,7 +1037,7 @@ void gm1PGameStageSetupAll(void)
 
             gm1PGameSetupEnemyPlayer(stagesetup, comsetup, player, 0);
 
-            gBattleState->player_block[player].costume_index = s1PGameEnemyVariations[s1PGameCurrentEnemyVariation];
+            gBattleState->player_block[player].costume_index = sGm1PGameEnemyVariations[sGm1PGameCurrentEnemyVariation];
 
             if ((gSceneData.ft_kind == Ft_Kind_Yoshi) && (gSceneData.costume_index == gBattleState->player_block[player].costume_index))
             {
@@ -1045,12 +1045,12 @@ void gm1PGameStageSetupAll(void)
             }
             else gBattleState->player_block[player].shade_index = 0;
 
-            s1PGamePlayerSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
-            s1PGamePlayerSetups[player].team_order = s1PGameCurrentEnemyVariation;
-            s1PGamePlayerSetups[player].cam_frame_mul = 0.3F;
-            s1PGamePlayerSetups[player].is_skip_magnify = TRUE;
+            sGm1PGamePlayerSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
+            sGm1PGamePlayerSetups[player].team_order = sGm1PGameCurrentEnemyVariation;
+            sGm1PGamePlayerSetups[player].cam_frame_mul = 0.3F;
+            sGm1PGamePlayerSetups[player].is_skip_magnify = TRUE;
 
-            s1PGameCurrentEnemyVariation++;
+            sGm1PGameCurrentEnemyVariation++;
         }
         break;
 
@@ -1060,17 +1060,17 @@ void gm1PGameStageSetupAll(void)
 
         for (i = 0; i < GM1PGAME_STAGE_MAX_VARIATIONS_COUNT; i++)
         {
-            s1PGameEnemyVariations[i] = gm1PGameGetShuffledVariation(flags, lbRandom_GetIntRange(variations));
+            sGm1PGameEnemyVariations[i] = gm1PGameGetShuffledVariation(flags, lbRandom_GetIntRange(variations));
 
-            flags |= (1 << s1PGameEnemyVariations[i]);
+            flags |= (1 << sGm1PGameEnemyVariations[i]);
 
-            s1PGameEnemyVariations[i] += Ft_Kind_PolyStart;
+            sGm1PGameEnemyVariations[i] += Ft_Kind_PolyStart;
 
             variations--;
         }
         for (kind = 0, i = GM1PGAME_STAGE_MAX_VARIATIONS_COUNT; i < stagesetup->opponent_count; i++)
         {
-            s1PGameEnemyVariations[i] = s1PGameEnemyVariations[kind];
+            sGm1PGameEnemyVariations[i] = sGm1PGameEnemyVariations[kind];
 
             if (kind == (GM1PGAME_STAGE_MAX_VARIATIONS_COUNT - 1))
             {
@@ -1078,7 +1078,7 @@ void gm1PGameStageSetupAll(void)
             }
             else kind++;
         }
-        s1PGameCurrentEnemyVariation = 0;
+        sGm1PGameCurrentEnemyVariation = 0;
 
         for (i = 0; i < GM1PGAME_STAGE_MAX_OPPONENT_COUNT; i++)
         {
@@ -1086,19 +1086,19 @@ void gm1PGameStageSetupAll(void)
 
             gm1PGameSetupEnemyPlayer(stagesetup, comsetup, player, 0);
 
-            gBattleState->player_block[player].character_kind = s1PGameEnemyVariations[s1PGameCurrentEnemyVariation];
+            gBattleState->player_block[player].character_kind = sGm1PGameEnemyVariations[sGm1PGameCurrentEnemyVariation];
 
-            s1PGamePlayerSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
-            s1PGamePlayerSetups[player].team_order = s1PGameCurrentEnemyVariation;
-            s1PGamePlayerSetups[player].cam_frame_mul = 0.3F;
-            s1PGamePlayerSetups[player].is_skip_magnify = TRUE;
+            sGm1PGamePlayerSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
+            sGm1PGamePlayerSetups[player].team_order = sGm1PGameCurrentEnemyVariation;
+            sGm1PGamePlayerSetups[player].cam_frame_mul = 0.3F;
+            sGm1PGamePlayerSetups[player].is_skip_magnify = TRUE;
 
-            s1PGameCurrentEnemyVariation++;
+            sGm1PGameCurrentEnemyVariation++;
         }
         break;
 
     case gm1PGame_Stage_Kirby:
-        s1PGameCurrentEnemyVariation = 0;
+        sGm1PGameCurrentEnemyVariation = 0;
 
         for (i = 0; i < GM1PGAME_STAGE_KIRBY_SIM_COUNT; i++)
         {
@@ -1106,18 +1106,18 @@ void gm1PGameStageSetupAll(void)
 
             gm1PGameSetupEnemyPlayer(stagesetup, comsetup, player, 0);
 
-            s1PGameEnemyKirbyCostume = gBattleState->player_block[player].costume_index =
+            sGm1PGameEnemyKirbyCostume = gBattleState->player_block[player].costume_index =
 
             ((gSceneData.ft_kind == Ft_Kind_Kirby) && (gSceneData.costume_index == gBattleState->player_block[player].costume_index)) ? ftCostume_GetIndexFFA(Ft_Kind_Kirby, 1) : 0;
 
-            s1PGamePlayerSetups[player].team_order = s1PGameCurrentEnemyVariation;
-            s1PGamePlayerSetups[player].copy_kind = d1PGameKirbyTeamCopyIDs[s1PGameCurrentEnemyVariation];
-            s1PGamePlayerSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
+            sGm1PGamePlayerSetups[player].team_order = sGm1PGameCurrentEnemyVariation;
+            sGm1PGamePlayerSetups[player].copy_kind = d1PGameKirbyTeamCopyIDs[sGm1PGameCurrentEnemyVariation];
+            sGm1PGamePlayerSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
 
-            s1PGamePlayerSetups[player].cam_frame_mul = 0.3F;
-            s1PGamePlayerSetups[player].is_skip_magnify = TRUE;
+            sGm1PGamePlayerSetups[player].cam_frame_mul = 0.3F;
+            sGm1PGamePlayerSetups[player].is_skip_magnify = TRUE;
 
-            s1PGameCurrentEnemyVariation++;
+            sGm1PGameCurrentEnemyVariation++;
         }
         break;
 
@@ -1127,15 +1127,15 @@ void gm1PGameStageSetupAll(void)
 
         for (i = 0; i < GM1PGAME_STAGE_MAX_OPPONENT_COUNT; i++)
         {
-            s1PGameEnemyVariations[i] = gm1PGameGetShuffledVariation(flags, lbRandom_GetIntRange(variations));
+            sGm1PGameEnemyVariations[i] = gm1PGameGetShuffledVariation(flags, lbRandom_GetIntRange(variations));
 
-            flags |= (1 << s1PGameEnemyVariations[i]);
+            flags |= (1 << sGm1PGameEnemyVariations[i]);
 
-            s1PGameEnemyVariations[i] += 14;
+            sGm1PGameEnemyVariations[i] += 14;
 
             variations--;
         }
-        s1PGameCurrentEnemyVariation = 0;
+        sGm1PGameCurrentEnemyVariation = 0;
 
         for (i = 0; i < GM1PGAME_STAGE_MAX_OPPONENT_COUNT; i++)
         {
@@ -1143,12 +1143,12 @@ void gm1PGameStageSetupAll(void)
 
             gm1PGameSetupEnemyPlayer(stagesetup, comsetup, player, 0);
 
-            gBattleState->player_block[player].character_kind = s1PGameEnemyVariations[s1PGameCurrentEnemyVariation];
+            gBattleState->player_block[player].character_kind = sGm1PGameEnemyVariations[sGm1PGameCurrentEnemyVariation];
 
-            s1PGamePlayerSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
-            s1PGamePlayerSetups[player].is_skip_magnify = s1PGamePlayerSetups[player].is_skip_entry = TRUE;
+            sGm1PGamePlayerSetups[player].mpoint_kind = i + mpMPoint_Kind_1PGameEnemySpawnStart;
+            sGm1PGamePlayerSetups[player].is_skip_magnify = sGm1PGamePlayerSetups[player].is_skip_entry = TRUE;
 
-            s1PGameCurrentEnemyVariation++;
+            sGm1PGameCurrentEnemyVariation++;
         }
         break;
 
@@ -1177,12 +1177,12 @@ void gm1PGameStageSetupAll(void)
     g1PGameBonusStatGiantImpact = FALSE;
     g1PGameBonusStatMewCatcher = FALSE;
 
-    s1PGameIsStartStage = FALSE;
-    s1PGameIsEndStage = FALSE;
+    sGm1PGameIsStartStage = FALSE;
+    sGm1PGameIsEndStage = FALSE;
 
-    s1PGameBonusStatNumPlayerKOs = 0;
-    s1PGameBonusStatEndPlayerStatus = -1;
-    s1PGameBonusStatInvincibleTimer = 0;
+    sGm1PGameBonusStatNumPlayerKOs = 0;
+    sGm1PGameBonusStatEndPlayerStatus = -1;
+    sGm1PGameBonusStatInvincibleTimer = 0;
     g1PGameBonusStatBrosCalamity = FALSE;
 
     for (i = 0; i < ((ARRAY_COUNT(g1PGameBonusStatAttackIDCount) + ARRAY_COUNT(g1PGameBonusStatDefendIDCount)) / 2); i++)
@@ -1220,13 +1220,13 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
     player = fp->player;
     anim_bank = fp->anim_load;
 
-    if (s1PGameTeamPlayersRemaining == 0)
+    if (sGm1PGameTeamPlayersRemaining == 0)
     {
         ftCommon_Sleep_SetStatus(player_gobj);
     }
     else
     {
-        s1PGameTeamPlayersRemaining--;
+        sGm1PGameTeamPlayersRemaining--;
 
         func_ovl2_800D78E8(player_gobj);
 
@@ -1235,7 +1235,7 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
         switch (gSceneData.spgame_stage)
         {
         case gm1PGame_Stage_Yoshi:
-            gBattleState->player_block[player].costume_index = s1PGameEnemyVariations[s1PGameCurrentEnemyVariation];
+            gBattleState->player_block[player].costume_index = sGm1PGameEnemyVariations[sGm1PGameCurrentEnemyVariation];
 
             gBattleState->player_block[player].shade_index = ((gSceneData.ft_kind == Ft_Kind_Yoshi) && (gSceneData.costume_index == gBattleState->player_block[player].costume_index)) ? 1 : 0;
 
@@ -1243,14 +1243,14 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
             break;
 
         case gm1PGame_Stage_Zako:
-            gBattleState->player_block[player].character_kind = s1PGameEnemyVariations[s1PGameCurrentEnemyVariation];
+            gBattleState->player_block[player].character_kind = sGm1PGameEnemyVariations[sGm1PGameCurrentEnemyVariation];
             break;
 
         case gm1PGame_Stage_Kirby:
-            s1PGamePlayerSetups[player].copy_kind = (s1PGameCurrentEnemyVariation == GM1PGAME_STAGE_KIRBY_VARIATIONS_COUNT) ? g1PGameKirbyTeamFinalCopy : d1PGameKirbyTeamCopyIDs[s1PGameCurrentEnemyVariation];
+            sGm1PGamePlayerSetups[player].copy_kind = (sGm1PGameCurrentEnemyVariation == GM1PGAME_STAGE_KIRBY_VARIATIONS_COUNT) ? g1PGameKirbyTeamFinalCopy : d1PGameKirbyTeamCopyIDs[sGm1PGameCurrentEnemyVariation];
             break;
         }
-        s1PGamePlayerSetups[player].team_order = s1PGameCurrentEnemyVariation++;
+        sGm1PGamePlayerSetups[player].team_order = sGm1PGameCurrentEnemyVariation++;
 
         player_spawn = dFtDefaultFighterDesc;
 
@@ -1286,11 +1286,11 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         player_spawn.anim_heap = anim_bank;
 
-        player_spawn.copy_kind = s1PGamePlayerSetups[player].copy_kind;
-        player_spawn.team_order = s1PGamePlayerSetups[player].team_order;
+        player_spawn.copy_kind = sGm1PGamePlayerSetups[player].copy_kind;
+        player_spawn.team_order = sGm1PGamePlayerSetups[player].team_order;
 
         player_spawn.is_skip_entry = TRUE;
-        player_spawn.is_skip_magnify = s1PGamePlayerSetups[player].is_skip_magnify;
+        player_spawn.is_skip_magnify = sGm1PGamePlayerSetups[player].is_skip_magnify;
         player_spawn.is_skip_shadow_setup = TRUE;
 
         com_gobj = ftManager_MakeFighter(&player_spawn);
@@ -1300,11 +1300,11 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
         ftCommon_ClearPlayerMatchStats(player, com_gobj);
         ftCommon_SetAllowPlayerControl(com_gobj);
 
-        fp->fighter_com.trait = s1PGamePlayerSetups[player].cp_trait;
+        fp->fighter_com.trait = sGm1PGamePlayerSetups[player].cp_trait;
 
         ifPlayer_Damage_StopBreakAnim(fp);
 
-        fp->cam_zoom_frame *= s1PGamePlayerSetups[player].cam_frame_mul;
+        fp->cam_zoom_frame *= sGm1PGamePlayerSetups[player].cam_frame_mul;
     }
 }
 
@@ -1317,12 +1317,12 @@ void gm1PGameSetPlayerInterfacePositions(void)
 
     for (i = 0; i < (gBattleState->pl_count + gBattleState->cp_count); i++)
     {
-        s1PGamePlayerInterfacePositionsX[player] = *pos;
+        sGm1PGamePlayerInterfacePositionsX[player] = *pos;
         player = gm1PGameGetNextFreePlayerPort(player);
 
         pos++;
     }
-    gPlayerCommonInterface.ifplayers_pos_x = s1PGamePlayerInterfacePositionsX;
+    gPlayerCommonInterface.ifplayers_pos_x = sGm1PGamePlayerInterfacePositionsX;
     gPlayerCommonInterface.ifplayers_pos_y = 210;
 }
 
@@ -1526,17 +1526,17 @@ void gmUpdate1PGameTeamStockDisplay(GObj *interface_gobj)
     s32 stock_num;
     s32 ix, iy;
 
-    if (s1PGameEnemyStocksRemaining != 0)
+    if (sGm1PGameEnemyStocksRemaining != 0)
     {
-        if (s1PGameEnemyStocksRemaining != s1PGameEnemyStocksDisplay)
+        if (sGm1PGameEnemyStocksRemaining != sGm1PGameEnemyStocksDisplay)
         {
-            s1PGameEnemyStocksDisplay = s1PGameEnemyStocksRemaining;
+            sGm1PGameEnemyStocksDisplay = sGm1PGameEnemyStocksRemaining;
 
             sobj = SObjGetStruct(interface_gobj);
 
-            for (stock_num = s1PGameEnemyPlayerCount - 1, ix = iy = 0; sobj != NULL; sobj = sobj->next, stock_num--)
+            for (stock_num = sGm1PGameEnemyPlayerCount - 1, ix = iy = 0; sobj != NULL; sobj = sobj->next, stock_num--)
             {
-                if ((1 << stock_num) & s1PGameEnemyStockSpriteFlags)
+                if ((1 << stock_num) & sGm1PGameEnemyStockSpriteFlags)
                 {
                     sobj->sprite.attr |= SP_HIDDEN;
                 }
@@ -1554,17 +1554,17 @@ void gmUpdate1PGameTeamStockDisplay(GObj *interface_gobj)
                     switch (gSceneData.spgame_stage)
                     {
                     case gm1PGame_Stage_Yoshi:
-                        sobj->sprite = *s1PGameEnemyTeamSprites->stock_spr;
-                        sobj->sprite.LUT = s1PGameEnemyTeamSprites->stock_lut[s1PGameEnemyVariations[stock_num]];
+                        sobj->sprite = *sGm1PGameEnemyTeamSprites->stock_spr;
+                        sobj->sprite.LUT = sGm1PGameEnemyTeamSprites->stock_lut[sGm1PGameEnemyVariations[stock_num]];
                         break;
 
                     case gm1PGame_Stage_Kirby:
-                        sobj->sprite = *s1PGameEnemyTeamSprites->stock_spr;
-                        sobj->sprite.LUT = s1PGameEnemyTeamSprites->stock_lut[s1PGameEnemyKirbyCostume];
+                        sobj->sprite = *sGm1PGameEnemyTeamSprites->stock_spr;
+                        sobj->sprite.LUT = sGm1PGameEnemyTeamSprites->stock_lut[sGm1PGameEnemyKirbyCostume];
                         break;
 
                     case gm1PGame_Stage_Zako:
-                        sobj->sprite = *spGetSpriteFromFile(s1PGameZakoStockSprite, &D_NF_00000080);
+                        sobj->sprite = *spGetSpriteFromFile(sGm1PGameZakoStockSprite, &D_NF_00000080);
                         break;
                     }
                     sobj->sprite.attr &= ~SP_HIDDEN;
@@ -1600,18 +1600,18 @@ void func_ovl65_8018EE44(void)
                 break;
             }
         }
-        s1PGameEnemyTeamSprites = fp->attributes->sprites;
+        sGm1PGameEnemyTeamSprites = fp->attributes->sprites;
 
-        sprite = s1PGameEnemyTeamSprites->stock_spr;
+        sprite = sGm1PGameEnemyTeamSprites->stock_spr;
 
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
         goto make_gobj;
 
     case gm1PGame_Stage_Zako:
-        s1PGameZakoStockSprite = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_00000019, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_00000019), 0x10));
+        sGm1PGameZakoStockSprite = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_00000019, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_00000019), 0x10));
 
-        sprite = spGetSpriteFromFile(s1PGameZakoStockSprite, &D_NF_00000080);
+        sprite = spGetSpriteFromFile(sGm1PGameZakoStockSprite, &D_NF_00000080);
 
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -1620,11 +1620,11 @@ void func_ovl65_8018EE44(void)
 
         omAddGObjRenderProc(interface_gobj, gmUpdate1PGameTeamStockDisplay, 0x17, 0x80000000, -1);
 
-        for (i = 0; i < s1PGameEnemyStocksRemaining; i++)
+        for (i = 0; i < sGm1PGameEnemyStocksRemaining; i++)
         {
             gcAppendSObjWithSprite(interface_gobj, spGetSpriteFromFile(gCommonFiles[4], &D_NF_00000068));
         }
-        s1PGameEnemyStocksDisplay = s1PGameEnemyStocksRemaining + 1;
+        sGm1PGameEnemyStocksDisplay = sGm1PGameEnemyStocksRemaining + 1;
 
         break;
     }
@@ -1643,10 +1643,10 @@ void gmSet1PGamePlayerDefeatStats(s32 player, s32 stock_num)
     }
     else if (gBattleState->player_block[player].is_rebirth_multi != FALSE)
     {
-        s1PGameEnemyStocksRemaining--;
-        s1PGameEnemyStockSpriteFlags |= (1 << stock_num);
+        sGm1PGameEnemyStocksRemaining--;
+        sGm1PGameEnemyStockSpriteFlags |= (1 << stock_num);
 
-        enemy_stats = &s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs];
+        enemy_stats = &sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs];
 
         enemy_stats->team_order = fp->team_order;
         enemy_stats->damage_status_id = fp->status_info.status_id;
@@ -1656,16 +1656,16 @@ void gmSet1PGamePlayerDefeatStats(s32 player, s32 stock_num)
         enemy_stats->damage_stat_flags = fp->damage_stat_flags;
         enemy_stats->damage_stat_count = fp->damage_stat_count;
 
-        s1PGameBonusStatNumPlayerKOs++;
+        sGm1PGameBonusStatNumPlayerKOs++;
 
-        if ((gSceneData.spgame_stage == gm1PGame_Stage_MarioBros) && (fp->ft_kind == Ft_Kind_Luigi) && (s1PGameEnemyStocksRemaining != 0) && (fp->damage_player == gSceneData.spgame_player))
+        if ((gSceneData.spgame_stage == gm1PGame_Stage_MarioBros) && (fp->ft_kind == Ft_Kind_Luigi) && (sGm1PGameEnemyStocksRemaining != 0) && (fp->damage_player == gSceneData.spgame_player))
         {
             if (gBattleState->player_block[(fp->player == 0) ? (GMMATCH_PLAYERS_MAX - 1) : fp->player - 1].total_damage_player[gSceneData.spgame_player] == 0)
             {
                 g1PGameBonusStatBrosCalamity = TRUE; // Bros. Calamity bonus
             }
         }
-        if (s1PGameEnemyStocksRemaining == 0)
+        if (sGm1PGameEnemyStocksRemaining == 0)
         {
             ifAnnounce_GameEnd_DisplayMessage();
         }
@@ -1706,9 +1706,9 @@ s32 gm1PGameEnemyGetSpawnLR(s32 target_player)
     closest_dist = 65536.0F;
     lr_dist = 0.0F;
 
-    gm1PGameGetSpawnPosition(&target_pos, s1PGamePlayerSetups[target_player].mpoint_kind);
+    gm1PGameGetSpawnPosition(&target_pos, sGm1PGamePlayerSetups[target_player].mpoint_kind);
 
-    for (current_player = 0; current_player < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(s1PGamePlayerSetups)) / 2; current_player++)
+    for (current_player = 0; current_player < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(sGm1PGamePlayerSetups)) / 2; current_player++)
     {
         if (current_player == target_player) continue;
 
@@ -1716,7 +1716,7 @@ s32 gm1PGameEnemyGetSpawnLR(s32 target_player)
 
         else if (gBattleState->player_block[current_player].team_index != gBattleState->player_block[target_player].team_index)
         {
-            gm1PGameGetSpawnPosition(&current_pos, s1PGamePlayerSetups[current_player].mpoint_kind);
+            gm1PGameGetSpawnPosition(&current_pos, sGm1PGamePlayerSetups[current_player].mpoint_kind);
 
             current_dist = (current_pos.x < target_pos.x) ? -(current_pos.x - target_pos.x) : (current_pos.x - target_pos.x);
 
@@ -1761,7 +1761,7 @@ void gm1PGameBossSetZoomCamera(ftStruct *fp)
 
     ftParts_GetDObjWorldPosition(fp->joint[fp->damage_joint_index], &world_pos);
 
-    s1PGameBossDefeatZoomPosition = world_pos;
+    sGm1PGameBossDefeatZoomPosition = world_pos;
 
     zoom.x = world_pos.x;
     zoom.y = world_pos.y;
@@ -1836,14 +1836,14 @@ void func_ovl65_8018F5EC(void)
     func_800269C0(0x1EC);
     func_800269C0(alSound_SFX_BossDefeatL);
 
-    s1PGameBossDefeatSoundTerminateTemp = D_8009EDD0.sfx_max;
+    sGm1PGameBossDefeatSoundTerminateTemp = D_8009EDD0.sfx_max;
     D_8009EDD0.sfx_max = 0;
 }
 
 // 0x8018F6DC
 void func_ovl65_8018F6DC(void)
 {
-    D_8009EDD0.sfx_max = s1PGameBossDefeatSoundTerminateTemp;
+    D_8009EDD0.sfx_max = sGm1PGameBossDefeatSoundTerminateTemp;
 }
 
 // 0x8018F6F0
@@ -1851,7 +1851,7 @@ void func_ovl65_8018F6F0(void)
 {
     func_8000AF58(func_ovl2_8011366C, 0);
     gm1PGameBossSetChangeBackground();
-    func_ovl2_8010D030((void*) (((uintptr_t)gGroundInfo->gr_desc[1].dobj_desc - (intptr_t)&D_NF_00004D48) + (intptr_t)&D_NF_00006450), 0.0F, &s1PGameBossDefeatZoomPosition);
+    func_ovl2_8010D030((void*) (((uintptr_t)gGroundInfo->gr_desc[1].dobj_desc - (intptr_t)&D_NF_00004D48) + (intptr_t)&D_NF_00006450), 0.0F, &sGm1PGameBossDefeatZoomPosition);
     func_ovl2_80114BE4();
 }
 
@@ -1942,17 +1942,17 @@ void gm1PGameStageInitAll(void)
                 largest_size = dFtManagerFtDataFiles[i]->anim_file_size;
             }
         }
-        for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(s1PGamePlayerSetups)) / 2; i++)
+        for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(sGm1PGamePlayerSetups)) / 2; i++)
         {
             if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
 
             else if (gBattleState->player_block[i].is_rebirth_multi == FALSE) continue;
 
-            else s1PGamePlayerSetups[i].anim_bank = gsMemoryAlloc(largest_size, 0x10);
+            else sGm1PGamePlayerSetups[i].anim_bank = gsMemoryAlloc(largest_size, 0x10);
         }
         break;
     }
-    for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(s1PGamePlayerSetups)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(sGm1PGamePlayerSetups)) / 2; i++)
     {
         player_spawn = dFtDefaultFighterDesc;
 
@@ -1962,7 +1962,7 @@ void gm1PGameStageInitAll(void)
 
         player_spawn.ft_kind = gBattleState->player_block[i].character_kind;
 
-        gm1PGameGetSpawnPosition(&player_spawn.pos, s1PGamePlayerSetups[i].mpoint_kind);
+        gm1PGameGetSpawnPosition(&player_spawn.pos, sGm1PGamePlayerSetups[i].mpoint_kind);
 
         player_spawn.lr_spawn = gm1PGameEnemyGetSpawnLR(i);
 
@@ -1988,23 +1988,23 @@ void gm1PGameStageInitAll(void)
 
         player_spawn.controller = &gPlayerControllers[i];
 
-        player_spawn.anim_heap = (s1PGamePlayerSetups[i].anim_bank != NULL) ? s1PGamePlayerSetups[i].anim_bank : ftManager_AllocAnimHeapKind(gBattleState->player_block[i].character_kind);
+        player_spawn.anim_heap = (sGm1PGamePlayerSetups[i].anim_bank != NULL) ? sGm1PGamePlayerSetups[i].anim_bank : ftManager_AllocAnimHeapKind(gBattleState->player_block[i].character_kind);
 
-        player_spawn.copy_kind = s1PGamePlayerSetups[i].copy_kind;
+        player_spawn.copy_kind = sGm1PGamePlayerSetups[i].copy_kind;
 
-        player_spawn.team_order = s1PGamePlayerSetups[i].team_order;
+        player_spawn.team_order = sGm1PGamePlayerSetups[i].team_order;
 
-        player_spawn.is_skip_entry = s1PGamePlayerSetups[i].is_skip_entry;
+        player_spawn.is_skip_entry = sGm1PGamePlayerSetups[i].is_skip_entry;
 
-        player_spawn.is_skip_magnify = s1PGamePlayerSetups[i].is_skip_magnify;
+        player_spawn.is_skip_magnify = sGm1PGamePlayerSetups[i].is_skip_magnify;
 
         fighter_gobj = ftManager_MakeFighter(&player_spawn), fp = ftGetStruct(fighter_gobj);
 
         ftCommon_ClearPlayerMatchStats(i, fighter_gobj);
 
-        fp->fighter_com.trait = s1PGamePlayerSetups[i].cp_trait;
+        fp->fighter_com.trait = sGm1PGamePlayerSetups[i].cp_trait;
 
-        fp->cam_zoom_frame *= s1PGamePlayerSetups[i].cam_frame_mul;
+        fp->cam_zoom_frame *= sGm1PGamePlayerSetups[i].cam_frame_mul;
     }
     ftManager_SetFileDataPlayables();
     func_ovl2_80114958();
@@ -2054,18 +2054,18 @@ void gm1PGameAppendBonusStats(void)
     u8 variation_order[GM1PGAME_STAGE_MAX_VARIATIONS_COUNT]; // Full array of 12? Almost half of this goes unused, but stack suggests this is correct.
     s32 i;
 
-    s1PGameStageTimeSec = I_FRAMES_TO_SEC(gBattleState->match_time_current);
-    s1PGameTotalTimeSec = I_FRAMES_TO_SEC(g1PGameTotalTimeFrames);
+    sGm1PGameStageTimeSec = I_FRAMES_TO_SEC(gBattleState->match_time_current);
+    sGm1PGameTotalTimeSec = I_FRAMES_TO_SEC(g1PGameTotalTimeFrames);
 
-    if (s1PGameBonusStatNumPlayerKOs != 0)
+    if (sGm1PGameBonusStatNumPlayerKOs != 0)
     {
-        for (i = 0; i < s1PGameBonusStatNumPlayerKOs; i++)
+        for (i = 0; i < sGm1PGameBonusStatNumPlayerKOs; i++)
         {
             if
             (
-                 (s1PGameBonusStatEnemyStats[i].damage_player != gSceneData.spgame_player) ||
-                 (s1PGameBonusStatEnemyStats[i].damage_status_id != ftStatus_Common_DeadUpStar) &&
-                 (s1PGameBonusStatEnemyStats[i].damage_status_id != ftStatus_Common_DeadUpFall)
+                 (sGm1PGameBonusStatEnemyStats[i].damage_player != gSceneData.spgame_player) ||
+                 (sGm1PGameBonusStatEnemyStats[i].damage_status_id != ftStatus_Common_DeadUpStar) &&
+                 (sGm1PGameBonusStatEnemyStats[i].damage_status_id != ftStatus_Common_DeadUpFall)
             )
             {
                 goto loop_item_strike;
@@ -2126,7 +2126,7 @@ check_item_strike:
                     // Item Throw?
                     gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NOITEM;
 
-                    if (s1PGameBonusStatNumPlayerKOs); // Bogus, but it matches
+                    if (sGm1PGameBonusStatNumPlayerKOs); // Bogus, but it matches
                 }
             }
         }
@@ -2344,7 +2344,7 @@ check_heavy_damage:
     {
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_HEAVYDAMAGE;
     }
-    if (s1PGameStageTimeSec <= 30)
+    if (sGm1PGameStageTimeSec <= 30)
     {
         // Speedster
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_SPEEDSTER;
@@ -2368,7 +2368,7 @@ check_heavy_damage:
         // Full Power?
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_FULLPOWER;
     }
-    if (s1PGameBonusStatInvincibleTimer != 0)
+    if (sGm1PGameBonusStatInvincibleTimer != 0)
     {
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_STARCLEAR;
     }
@@ -2389,19 +2389,19 @@ check_heavy_damage:
     }
     if
     (
-        (s1PGameBonusStatNumPlayerKOs != 0) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
+        (sGm1PGameBonusStatNumPlayerKOs != 0) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
         (
             (
-                (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Item) &&
-                (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_kind >= It_Kind_MbMonsterStart) &&
-                (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_kind <= It_Kind_MbMonsterEnd)
+                (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Item) &&
+                (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_kind >= It_Kind_MbMonsterStart) &&
+                (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_kind <= It_Kind_MbMonsterEnd)
             )
             ||
             (
-                (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Weapon) &&
-                (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_kind >= Wp_Kind_MonsterStart) &&
-                (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_kind <= Wp_Kind_MonsterEnd)
+                (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Weapon) &&
+                (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_kind >= Wp_Kind_MonsterStart) &&
+                (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_kind <= Wp_Kind_MonsterEnd)
             )
         )
     )
@@ -2411,11 +2411,11 @@ check_heavy_damage:
     }
     if
     (
-        (s1PGameBonusStatNumPlayerKOs != 0) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Item) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == It_Kind_MSBomb) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == ftStatus_AttackIndex_Null)
+        (sGm1PGameBonusStatNumPlayerKOs != 0) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Item) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == It_Kind_MSBomb) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == ftStatus_AttackIndex_Null)
     )
     {
         // Booby Trap
@@ -2423,38 +2423,38 @@ check_heavy_damage:
     }
     if
     (
-        (s1PGameBonusStatNumPlayerKOs != 0) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
+        (sGm1PGameBonusStatNumPlayerKOs != 0) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
         (
-            (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == ftStatus_AttackIndex_ThrowF) ||
-            (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == ftStatus_AttackIndex_ThrowB)
+            (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == ftStatus_AttackIndex_ThrowF) ||
+            (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == ftStatus_AttackIndex_ThrowB)
         )
     )
     {
         // Throw Down
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_THROWDOWN;
     }
-    if (s1PGameBonusStatEndPlayerStatus == ftStatus_Common_Appeal)
+    if (sGm1PGameBonusStatEndPlayerStatus == ftStatus_Common_Appeal)
     {
         // Fighter Stance
         gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_FIGHTERSTANCE;
     }
-    if ((s1PGameBonusStatEndPlayerStatus == ftStatus_Common_DeadDown) || (s1PGameBonusStatEndPlayerStatus == ftStatus_Common_DeadLeftRight))
+    if ((sGm1PGameBonusStatEndPlayerStatus == ftStatus_Common_DeadDown) || (sGm1PGameBonusStatEndPlayerStatus == ftStatus_Common_DeadLeftRight))
     {
         // Mystic
         gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_MYSTIC;
     }
-    if (s1PGameBonusStatEndPlayerStatus == ftStatus_Common_DeadUpStar)
+    if (sGm1PGameBonusStatEndPlayerStatus == ftStatus_Common_DeadUpStar)
     {
-        // Star Finish
-        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_SHOOTINGSTAR;
+        // Comet Mystic
+        gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_COMETMYSTIC;
     }
     if
     (
-        (s1PGameBonusStatNumPlayerKOs != 0) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Ground) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == gmHitEnvironment_Kind_Acid)
+        (sGm1PGameBonusStatNumPlayerKOs != 0) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Ground) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == gmHitEnvironment_Kind_Acid)
     )
     {
         // Acid Clear
@@ -2463,16 +2463,16 @@ check_heavy_damage:
     if
     (
         (
-            (s1PGameBonusStatNumPlayerKOs != 0) &&
-            (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
-            (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Item) &&
-            (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == It_Kind_GBumper)
+            (sGm1PGameBonusStatNumPlayerKOs != 0) &&
+            (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
+            (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Item) &&
+            (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == It_Kind_GBumper)
         )
         ||
         (
-            (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
-            (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Item) &&
-            (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == It_Kind_NBumper)
+            (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
+            (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Item) &&
+            (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == It_Kind_NBumper)
         )
     )
     {
@@ -2482,10 +2482,10 @@ check_heavy_damage:
 
     if
     (
-        (s1PGameBonusStatNumPlayerKOs != 0) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Ground) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == gmHitEnvironment_Kind_Twister)
+        (sGm1PGameBonusStatNumPlayerKOs != 0) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Ground) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == gmHitEnvironment_Kind_Twister)
     )
     {
         // Twister Clear
@@ -2493,12 +2493,12 @@ check_heavy_damage:
     }
     if
     (
-        (s1PGameBonusStatNumPlayerKOs != 0) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
-        (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Weapon) &&
+        (sGm1PGameBonusStatNumPlayerKOs != 0) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
+        (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_class == ftHitlog_ObjectClass_Weapon) &&
         (
-            (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == Wp_Kind_ArwingLaser2D) ||
-            (s1PGameBonusStatEnemyStats[s1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == Wp_Kind_ArwingLaser3D)
+            (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == Wp_Kind_ArwingLaser2D) ||
+            (sGm1PGameBonusStatEnemyStats[sGm1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == Wp_Kind_ArwingLaser3D)
         )
     )
     {
@@ -2547,17 +2547,17 @@ check_heavy_damage:
         // Jackpot
         gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_JACKPOT;
     }
-    if ((gSceneData.spgame_stage == gm1PGame_Stage_Yoshi) && (s1PGameEnemyStocksRemaining == 0))
+    if ((gSceneData.spgame_stage == gm1PGame_Stage_Yoshi) && (sGm1PGameEnemyStocksRemaining == 0))
     {
         is_ordered_variation = TRUE;
 
         for (i = 0; i < GM1PGAME_STAGE_YOSHI_VARIATIONS_COUNT; i++)
         {
-            variation_order[i] = s1PGameEnemyVariations[s1PGameBonusStatEnemyStats[i].team_order];
+            variation_order[i] = sGm1PGameEnemyVariations[sGm1PGameBonusStatEnemyStats[i].team_order];
         }
-        for (variation = 0; i < s1PGameBonusStatNumPlayerKOs; i++, variation = (variation == (GM1PGAME_STAGE_YOSHI_VARIATIONS_COUNT - 1)) ? 0 : variation++)
+        for (variation = 0; i < sGm1PGameBonusStatNumPlayerKOs; i++, variation = (variation == (GM1PGAME_STAGE_YOSHI_VARIATIONS_COUNT - 1)) ? 0 : variation++)
         {
-            if (s1PGameEnemyVariations[s1PGameBonusStatEnemyStats[i].team_order] != variation_order[variation])
+            if (sGm1PGameEnemyVariations[sGm1PGameBonusStatEnemyStats[i].team_order] != variation_order[variation])
             {
                 is_ordered_variation = FALSE;
             }
@@ -2568,13 +2568,13 @@ check_heavy_damage:
             gSceneData.bonus_get_mask[1] |= GM1PGAME_BONUS_MASK1_YOSHIRAINBOW;
         }
     }
-    if ((gSceneData.spgame_stage == gm1PGame_Stage_Kirby) && (s1PGameEnemyStocksRemaining == 0))
+    if ((gSceneData.spgame_stage == gm1PGame_Stage_Kirby) && (sGm1PGameEnemyStocksRemaining == 0))
     {
         is_ordered_variation = TRUE;
 
         for (i = 0; i < GM1PGAME_STAGE_KIRBY_VARIATIONS_COUNT; i++)
         {
-            if (d1PGameKirbyTeamCopyIDs[s1PGameBonusStatEnemyStats[i].team_order] != d1PGameKirbyTeamCopyIDs[i])
+            if (d1PGameKirbyTeamCopyIDs[sGm1PGameBonusStatEnemyStats[i].team_order] != d1PGameKirbyTeamCopyIDs[i])
             {
                 is_ordered_variation = FALSE;
             }
@@ -2621,7 +2621,7 @@ check_heavy_damage:
     }
     if (gSceneData.spgame_stage == gm1PGame_Stage_Boss)
     {
-        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_BOSSCLEAR;
+        gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_GAMECLEAR;
 
         if (g1PGameTotalFalls == 0)
         {
@@ -2633,12 +2633,12 @@ check_heavy_damage:
             // No Damage Clear
             gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NODAMAGECLEAR;
         }
-        if (s1PGameTotalTimeSec <= I_MIN_TO_SEC(8))
+        if (sGm1PGameTotalTimeSec <= I_MIN_TO_SEC(8))
         {
             // Speed Demon
             gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_SPEEDDEMON;
         }
-        else if (s1PGameTotalTimeSec <= I_MIN_TO_SEC(12)) // 12 minutes? Wiki claims this should be 20 minutes
+        else if (sGm1PGameTotalTimeSec <= I_MIN_TO_SEC(12)) // 12 minutes? Wiki claims this should be 20 minutes
         {
             // Speed King
             gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_SPEEDKING;

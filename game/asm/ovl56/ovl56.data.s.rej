@@ -1,5 +1,5 @@
 diff a/game/asm/ovl56/ovl56.data.s b/game/asm/ovl56/ovl56.data.s	(rejected hunks)
-@@ -26,7 +26,7 @@ glabel D_ovl56_80134EFC
+@@ -26,7 +26,7 @@ glabel dGmStageClearBonusData
    .balign 4
    .incbin "ovl56.raw.bin", 0x35F0, 0x10
  

@@ -17,7 +17,7 @@ glabel sGmStageClearSecondsRemaining
     .space 4
 glabel sGmStageClearDamageDealt
     .space 4
-glabel D_ovl56_801352E4
+glabel sGmStageClearDifficulty
     .space 4
 glabel sGmStageClearScoreTotal
     .space 4
@@ -55,7 +55,7 @@ glabel D_ovl56_80135344
     .space 4
 glabel D_ovl56_80135348
     .space 8
-glabel D_ovl56_80135350
+glabel sGmStageClearBonusStatGObjs
     .space 4
 glabel D_ovl56_80135354
     .space 4

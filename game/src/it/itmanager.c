@@ -579,7 +579,7 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     gItemSpawnActor.item_mpoints[i] = item_mpoint_ids[i];
                 }
-                gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, 2, 0x80000000);
+                gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, 2, GOBJ_LINKORDER_DEFAULT);
 
                 omAddGObjCommonProc(gobj, itManagerMakeRandomItem, GObjProcess_Kind_Proc, 3);
 

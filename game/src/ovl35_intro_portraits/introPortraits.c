@@ -4,7 +4,7 @@
 #include <gm/battle.h>
 #include <gr/ground.h>
 #include <ovl0/reloc_data_mgr.h>
-#include <mvPortraits.h>
+#include <introPortraits.h>
 
 // // ovl35 stuff
 extern RldmFileId D_ovl35_801328A0[2];

@@ -1,12 +1,12 @@
-#include <sys/main.h>
+#include "sys/main.h"
 
-// #include <scenemgr/scene_manager.h>
-#include <sys/crash.h>
-#include <sys/dma.h>
-#include <sys/gtl.h>
-#include <sys/hal_audio.h>
-#include <sys/thread3.h>
-#include <sys/thread6.h>
+// #include "scenemgr/scene_manager.h"
+#include "sys/crash.h"
+#include "sys/dma.h"
+#include "sys/gtl.h"
+#include "sys/hal_audio.h"
+#include "sys/thread3.h"
+#include "sys/thread6.h"
 
 // #include <linkersegs.h>
 #include <macros.h>
@@ -76,92 +76,103 @@ OSMesg sPIcmdBuf[50];
 OSMesgQueue sPIcmdQ;
 u8 sThreadArgBuf[128];
 
-u64* gsGetThread4StackStart() { return sThread4Stack + THREAD4_STACK_SIZE; }
-
-u8* unref_8000046C() { return sUkn80040E90; }
-
-void* unref_80000478() { return (void*)(0x00003400); }
-
-void gsCheckSPImemOK()
+u64* gsGetThread4StackStart(void) 
 {
-	if (IO_READ(SP_IMEM_START) == 6103)
-		gSPImemOkay = TRUE;
-	else
-		gSPImemOkay = FALSE;
+    return sThread4Stack + THREAD4_STACK_SIZE;
 }
 
-void gsCheckSPDmemOK()
+u8* unref_8000046C(void) 
 {
-	if (IO_READ(SP_DMEM_START) == (u32)-1)
-		gSPDmemOkay = TRUE;
-	else
-		gSPDmemOkay = FALSE;
+    return sUkn80040E90;
+}
+
+void* unref_80000478(void) 
+{
+    return (void*)(0x00003400);
+}
+
+void gsCheckSPImemOK(void)
+{
+    if (IO_READ(SP_IMEM_START) == 6103) 
+    {
+        gSPImemOkay = TRUE;
+    }
+    else gSPImemOkay = FALSE;
+}
+
+void gsCheckSPDmemOK(void) 
+{
+    if (IO_READ(SP_DMEM_START) == (u32)-1) 
+    {
+        gSPDmemOkay = TRUE;
+    } 
+    else gSPDmemOkay = FALSE;
 }
 
 void gsFatalStackOverflowThread(s32 tid)
 {
-	gsFatalPrintF("thread stack overflow  id = %d\n", tid);
-	while (TRUE) {}
+    gsFatalPrintF("thread stack overflow  id = %d\n", tid);
+
+    while (TRUE); // { }
 }
 
-void gsVerifyStackProbes()
+void gsVerifyStackProbes(void) 
 {
-	if (gThread0Stack[0] != STACK_PROBE_MAGIC)
-		gsFatalStackOverflowThread(0);
-	if (sThread1Stack[0] != STACK_PROBE_MAGIC)
-		gsFatalStackOverflowThread(1);
-	if (sThread3Stack[0] != STACK_PROBE_MAGIC)
-		gsFatalStackOverflowThread(3);
-	if (sThread5Stack[0] != STACK_PROBE_MAGIC)
-		gsFatalStackOverflowThread(5);
+    if (gThread0Stack[0] != STACK_PROBE_MAGIC) { gsFatalStackOverflowThread(0); }
+    if (sThread1Stack[0] != STACK_PROBE_MAGIC) { gsFatalStackOverflowThread(1); }
+    if (sThread3Stack[0] != STACK_PROBE_MAGIC) { gsFatalStackOverflowThread(3); }
+    if (sThread5Stack[0] != STACK_PROBE_MAGIC) { gsFatalStackOverflowThread(5); }
 }
 
-void gsThread5Main(UNUSED void* arg)
+void gsThread5Main(UNUSED void *arg) 
 {
-	osCreateViManager(OS_PRIORITY_VIMGR);
-	gRomPiHandle = osCartRomInit();
-	sram_pi_init();
-	osCreatePiManager(OS_PRIORITY_PIMGR, &sPIcmdQ, sPIcmdBuf, ARRAY_COUNT(sPIcmdBuf));
-	create_dma_mq();
-	// load IP3 font? rsp boot text
-	dma_rom_read(PHYSICAL_TO_ROM(0xB70), gRspBootCode, sizeof(gRspBootCode));
-	gsCheckSPImemOK();
-	gsCheckSPDmemOK();
-	osCreateMesgQueue(&gThreadingQueue, sBlockMsg, ARRAY_COUNT(sBlockMsg));
+    osCreateViManager(OS_PRIORITY_VIMGR);
+    gRomPiHandle = osCartRomInit();
+    gsSramPiInit();
+    osCreatePiManager(OS_PRIORITY_PIMGR, &sPIcmdQ, sPIcmdBuf, ARRAY_COUNT(sPIcmdBuf));
+    gsCreateDmaMesgQueue();
+    // load IP3 font? rsp boot text
+    gsDmaRomRead(PHYSICAL_TO_ROM(0xB70), gRspBootCode, sizeof(gRspBootCode));
+    gsCheckSPImemOK();
+    gsCheckSPDmemOK();
+    osCreateMesgQueue(&gThreadingQueue, sBlockMsg, ARRAY_COUNT(sBlockMsg));
 
-	osCreateThread(&sThread3, 3, &thread3_scheduler, NULL, sThread3Stack + THREAD3_STACK_SIZE, THREAD3_PRI);
-	// clang-format off
+    osCreateThread(&sThread3, 3, &thread3_scheduler, NULL, sThread3Stack + THREAD3_STACK_SIZE, THREAD3_PRI);
+    // clang-format off
     sThread3Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sThread3);
-	// clang-format on
-	osRecvMesg(&gThreadingQueue, NULL, OS_MESG_BLOCK);
+    // clang-format on
+    osRecvMesg(&gThreadingQueue, NULL, OS_MESG_BLOCK);
 
-	osCreateThread(&sThread4, 4, thread4_audio, NULL, sThread4Stack + THREAD4_STACK_SIZE, THREAD4_PRI);
-	// clang-format off
+    osCreateThread(&sThread4, 4, thread4_audio, NULL, sThread4Stack + THREAD4_STACK_SIZE, THREAD4_PRI);
+    // clang-format off
     sThread4Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sThread4);
-	// clang-format on
-	osRecvMesg(&gThreadingQueue, NULL, OS_MESG_BLOCK);
+    // clang-format on
+    osRecvMesg(&gThreadingQueue, NULL, OS_MESG_BLOCK);
 
-	osCreateThread(&sThread6, 6, thread6_controllers, NULL, sThread6Stack + THREAD6_STACK_SIZE, THREAD6_PRI);
-	// clang-format off
+    osCreateThread(&sThread6, 6, thread6_controllers, NULL, sThread6Stack + THREAD6_STACK_SIZE, THREAD6_PRI);
+    // clang-format off
     sThread6Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sThread6);
-	// clang-format on
-	osRecvMesg(&gThreadingQueue, NULL, OS_MESG_BLOCK);
+    // clang-format on
+    osRecvMesg(&gThreadingQueue, NULL, OS_MESG_BLOCK);
 
-	func_80006B80();
-	load_overlay(&OverlayManager);
-	start_scene_manager(0);
+    func_80006B80();
+    gsLoadOverlay(&OverlayManager);
+    start_scene_manager(0);
 }
 
-void gsThread1Idle(void* arg)
+void gsThread1Idle(void *arg) 
 {
-	start_thread8_rmon();
-	osCreateThread(&gThread5, 5, gsThread5Main, arg, sThread5Stack + THREAD5_STACK_SIZE, THREAD5_PRI);
-	sThread5Stack[0] = STACK_PROBE_MAGIC;
-	if (!sNoThread5)
-		osStartThread(&gThread5);
-	osSetThreadPri(NULL, OS_PRIORITY_IDLE);
+    gsStartRmonThread8();
+    osCreateThread(&gThread5, 5, gsThread5Main, arg, sThread5Stack + THREAD5_STACK_SIZE, THREAD5_PRI);
+    sThread5Stack[0] = STACK_PROBE_MAGIC;
 
-	while (TRUE) {}
+    if (!sNoThread5) 
+    { 
+        osStartThread(&gThread5);
+    }
+    osSetThreadPri(NULL, OS_PRIORITY_IDLE);
+
+    while (TRUE); // { }
 }
 
 void gsGameMainLoop(void) 

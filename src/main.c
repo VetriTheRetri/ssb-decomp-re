@@ -35,8 +35,18 @@ void __osSetWatchLo(u32);
 #define THREAD5_PRI 50
 #define THREAD6_PRI 115
 
+
 // data, fake values for now
-static struct Overlay OverlayManager = { (u32)0x0, (u32)0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8 };
+static struct Overlay OverlayManager = {
+    (u32)0x000406D0,
+    (u32)0x00043220,
+    (u32)0x800A1980,
+    (u32)0x800A1980,
+    (u32)0x800A3070,
+    (u32)0x800A3070,
+    (u32)0x800A44D0,
+    (u32)0x800A44D0,
+    (u32)0x800A5240};
 u32 sNoThread5 = 0;
 
 // bss

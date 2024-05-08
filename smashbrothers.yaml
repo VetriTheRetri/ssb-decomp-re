@@ -295,16 +295,15 @@ segments:
       - [0x03A200, asm, libultra/io/ai]
       - [0x03A270, asm, libultra/io/spsetpc]
       - [0x03A2B0, hasm, libultra/unk_3A2B0_hasm]
-      - [0x03A3E0, data, libultra_data]
-      - [0x03B350, data, rdp_reset]
-      - [0x03B530, data, system_04]
-      - [0x03B540, data, trig_rand]
-      - [0x03B550, data, hal_gu]
+      - [0x03A3E0, data, libultra_data] # Not sure what this is yet.
+      - [0x03C2B0, data, main]
+      - [0x03C2E0, data, gtl]
       - [0x03C470, .data, obj_manager]
-      - [0x03C530, data, unk_3C530]
+      - [0x03C530, data, system_04]
+      - [0x03C540, data, trig_rand]
       - [0x03C550, data, gSinTable]
       - [0x03D550, data, hal_audio]
-      - [0x03D7B0, rodata, gserror]
+      - [0x03D7B0, data, gserror]
       - [0x03DC70, rodata, libultra/sprite]
       - [0x03DC80, rodata, libultra/audio03]
       - [0x03DF30, rodata, libultra/io/vi]
@@ -328,11 +327,10 @@ segments:
       - [0x03FF80, rodata, libultra/Unk_36F60]
       - [0x03FF90, rodata, libultra/libc/xldtob]
       - [0x03FFF0, rodata, libultra/libc/llcvt]
-      - { start: 0x0406D0, type: bss, vram: 0x8003FAD0 }
-      # - { type: .bss, vram: 0x8003FAD0, name: main }
-      # - { type: bss, vram: 0x80044EC0, name: thread3_and_more }
-      - { type: .bss, vram: 0x800466B0, name: obj_manager }
-      - { type: bss, vram: 0x80046FA0, name: unk_bss }
+      - { start: auto, name: main, type: bss, vram: 0x8003FAD0 }
+      - { start: auto, name: thread3_and_more, type: bss, vram: 0x80044EC0 }
+      - { start: auto, type: .bss, name: obj_manager, vram: 0x800466B0 }
+      - { start: auto, type: bss, name: unk_bss, vram: 0x80046FA0 }
       # - [0x0406D0, asm, unk_406D0]
       # - [0x049A20, asm, halbitmap]
       # - [0x04F860]

@@ -653,3 +653,32 @@ dCrashMesgPositionX = 0x8003D05C;
 dCrashMesgPositionY = 0x8003D060;
 
 gSinTable = 0x8003B950; // size:0x1000
+
+OverlayManager = 0x8003B6B0;
+sNoThread5 = 0x8003B6D4; // size:0x4
+
+sUnref8003FAD0 = 0x8003FAD0; // size:0x38
+gThread0Stack = 0x8003FB08; // size:0x1C8 type:u64
+sThread1 = 0x8003FCD0; // size:0x1B0
+sUnref8003FE80 = 0x8003FE80; // size:0x38
+sThread1Stack = 0x8003FEB8; // size:0xC8 type:u64
+sThread3 = 0x8003FF80; // size:0x1B0
+sUnref80040130 = 0x80040130; // size:0x38
+sThread3Stack = 0x80040168; // size:0x3C8 type:u64
+sThread4 = 0x80040530; // size:0x1B0
+sUnref800406E0 = 0x800406E0; // size:0x38
+sThread4Stack = 0x80040718; // size:0x5C8 type:u64
+sThread5 = 0x80040CE0; // size:0x1B0
+sUkn80040E90 = 0x80040E90; // size:0x38
+sThread5Stack = 0x80040EC8; // size:0x33C8 type:u64
+sThread6 = 0x80044290; // size:0x1B0
+sUnref8004440 = 0x80044440; // size:0x38
+sThread6Stack = 0x80044478; // size:0x7C8 type:u64
+gRspBootCode = 0x80044C40; // size:0x100 type:u64
+gSPImemOkay = 0x80044D40; // size:0x1 
+gSPDmemOkay = 0x80044D41; // size:0x1
+sBlockMsg = 0x80044D44; // size:0x4
+gThreadingQueue = 0x80044D48; // size:0x18
+sPIcmdBuf = 0x80044D60; // size:0xC8
+sPIcmdQ = 0x80044E28; // size:0x18
+sThreadArgBuf = 0x80044E40; // size=0x80

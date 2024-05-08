@@ -232,7 +232,6 @@ genld_rodata_zerostring = 0x8003F3E0;
 xldtob_rodata_0058 = 0x8003F3E8;
 llcvt_rodata_0000 = 0x8003F3F0;
 llcvt_rodata_0008 = 0x8003F3F8;
-n_alSeqpDelete = 0x800407E8;
 leomecha_bss_0004 = 0x800465D0;
 n_alSynFreeFX = 0x80087D4C;
 sprite_bss_0000 = 0x8009EDC0;

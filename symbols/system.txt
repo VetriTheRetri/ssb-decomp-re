@@ -651,3 +651,5 @@ dCPUExceptionCauses = 0x8003CFFC;
 dFPUExceptionCauses = 0x8003D044;
 dCrashMesgPositionX = 0x8003D05C;
 dCrashMesgPositionY = 0x8003D060;
+
+gSinTable = 0x8003B950; // size:0x1000

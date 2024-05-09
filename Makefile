@@ -147,13 +147,13 @@ all: rom
 toolchain:
 	@$(MAKE) -s -C tools
 
-SB := COMPLETE!\n
+SB := $(BLUE)ROM MATCH: $(GREEN)Complete!\n
 rom: $(ROM)
 ifneq ($(COMPARE),0)
 	@md5sum --status -c $(TARGET).$(VERSION).md5 && \
 	$(PRINT) "$(BLUE)$(TARGET).$(VERSION).z64$(NO_COL): $(GREEN)OK$(NO_COL)\n$(YELLOW)$(SB)$(NO_COL)" || \
 	$(PRINT) "$(BLUE)$(TARGET).$(VERSION).z64 $(RED)FAILED$(NO_COL)\n\
-	$(RED)FAILURE!$(NO_COL)\n"
+	$(BLUE)ROM MATCH: $(RED)FAILURE$(NO_COL)\n"
 endif
 
 nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
@@ -192,7 +192,7 @@ $(ROM): $(ELF)
 	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $@ -O binary
 
 $(ELF): $(O_FILES) symbols/not_found.txt
-	$(call print,Linking:,$<,$@)
+	@$(PRINT) "$(GREEN)Linking: $(YELLOW)$@$(NO_COL)\n"
 	$(V)$(LD) -Map $(LD_MAP) -o $@ $(LDFLAGS)
 
 $(BUILD_DIR)/%.text: $(BUILD_DIR)/%.o

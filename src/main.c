@@ -35,9 +35,8 @@ void __osSetWatchLo(u32);
 #define THREAD5_PRI 50
 #define THREAD6_PRI 115
 
-
 // data, fake values for now
-static struct Overlay OverlayManager = {
+static struct gsOverlay OverlayManager = {
     (u32)0x000406D0,
     (u32)0x00043220,
     (u32)0x800A1980,

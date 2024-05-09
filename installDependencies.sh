@@ -34,4 +34,7 @@ then
 	exit
 fi
 
+# Run the toolchain script automatically, which currently sets up recomp. 
+make toolchain
+
 echo -e ${GREEN}All requirements satisfied${ENDCOLOR}

@@ -8,18 +8,19 @@
 
 // loadovl.h? or a generic overlay header?
 // all ends are exclusive [start..end)
-struct Overlay
+typedef struct gsOverlay
 {
-	u32 romStart;
-	u32 romEnd;
-	void* ramLoadStart;
-	void* ramTextStart;
-	void* ramTextEnd;
-	void* ramDataStart;
-	void* ramDataEnd;
-	void* ramNoloadStart;
-	void* ramNoloadEnd;
-}; // size == 0x24
+    u32 romStart;
+    u32 romEnd;
+    void *ramLoadStart;
+    void *ramTextStart;
+    void *ramTextEnd;
+    void *ramDataStart;
+    void *ramDataEnd;
+    void *ramNoloadStart;
+    void *ramNoloadEnd;
+
+} gsOverlay; // size == 0x24
 
 extern OSPiHandle* gRomPiHandle;
 

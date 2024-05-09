@@ -41,9 +41,10 @@ def calculateCodePercentage(splatYamlFilePath, includeLibultra = False):
 	totalByteCount = cByteCount + asmByteCount
 
 	print()
-	print(f"       C bytes: {cByteCount}")
-	print(f"Assembly bytes: {asmByteCount}")
-	print(f"    Percentage: {cByteCount / totalByteCount * 100.0}% of code decompiled")
+	print(f"Total code bytes: {totalByteCount}")
+	print(f"         C bytes: {cByteCount}")
+	print(f"  Assembly bytes: {asmByteCount}")
+	print(f"      Percentage: {cByteCount / totalByteCount * 100.0}% of code decompiled")
 
 if __name__ == "__main__":
 	calculateCodePercentage("smashbrothers.yaml", 'l' in sys.argv)

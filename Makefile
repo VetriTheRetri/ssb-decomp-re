@@ -68,6 +68,7 @@ TOOLS	  := tools
 PYTHON	  := python3
 INCLUDES := -Iinclude -Isrc -Iinclude/PR
 DEFINES := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32
+OPTFLAGS := -O2
 
 # ----- Output ------
 
@@ -89,7 +90,7 @@ LD              := $(MIPS_BINUTILS_PREFIX)ld
 OBJCOPY         := $(MIPS_BINUTILS_PREFIX)objcopy
 OBJDUMP         := $(MIPS_BINUTILS_PREFIX)objdump
 ASM_PROC        := $(PYTHON) $(TOOLS)/asm-processor/build.py
-CCFLAGS         := -- $(AS) -32 -- -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516 -mips2 -O2
+CCFLAGS         := -- $(AS) -32 -- -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516 -mips2
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 LDFLAGS         := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T symbols/not_found.txt -T symbols/linker_constants.txt -T .splat/smashbrothers.ld
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
@@ -131,6 +132,12 @@ DATA_SECTION_FILES := $(foreach f,$(C_FILES:.c=.data),$(BUILD_DIR)/$f) \
 RODATA_SECTION_FILES := $(foreach f,$(C_FILES:.c=.rodata),$(BUILD_DIR)/$f) \
                         $(foreach f,$(S_RODATA_FILES:.s=.rodata),$(BUILD_DIR)/$f)
 
+# directory flags
+build/src/libultra/io/%.o: 		OPTFLAGS := -O1 -g0
+build/src/libultra/os/%.o: 		OPTFLAGS := -O1 -g0
+build/src/libultra/rmon/%.o: 	OPTFLAGS := -O1 -g0
+build/src/libultra/debug/%.o: 	OPTFLAGS := -O1 -g0
+build/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)
@@ -218,7 +225,7 @@ $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	@mkdir -p $(@D)
 	clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $< # d file generation
-	$(V)$(CC) $(CCFLAGS) -o $@ $<
+	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $<
 
 #Bins
 $(BUILD_DIR)/%.o: %.bin

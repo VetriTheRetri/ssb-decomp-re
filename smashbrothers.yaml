@@ -254,7 +254,7 @@ segments:
       - [0x036340, asm, libultra/Unk_36340]
       - [0x0363C0, asm, libultra/os/resetglobalintmask]
       - [0x036420, hasm, libultra/os/interrupt]
-      - [0x036460, asm, libultra/io/vi]
+      - [0x036460, c, libultra/io/vi]
       - [0x0365A0, asm, libultra/io/viswapcontext]
       - [0x0368A0, asm, libultra/io/pigetcmdq]
       - [0x0368D0, asm, libultra/gu/cosf]
@@ -315,7 +315,7 @@ segments:
       - [0x03E0A0, data, libultra/os/timerintr]
       - [0x03E0B0, data, libultra/vimodentsclan1] # osViModeNtscLan1
       - [0x03E100, data, libultra/vimodempallan1] # osViModeMpalLan1
-      - [0x03E150, data, libultra/io/vi]
+      - [0x03E150, .data, libultra/io/vi]
       - [0x03E1C0, rodata, libultra/io/cartrominit]
       - [0x03E250, .rodata, main]
       - [0x03E270, rodata, thread3]

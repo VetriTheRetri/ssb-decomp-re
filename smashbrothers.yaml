@@ -316,7 +316,12 @@ segments:
       - [0x03E0B0, data, libultra/vimodentsclan1] # osViModeNtscLan1
       - [0x03E100, data, libultra/vimodempallan1] # osViModeMpalLan1
       - [0x03E150, .data, libultra/io/vi]
-      - [0x03E1C0, rodata, libultra/io/cartrominit]
+      - [0x03E1C0, data, libultra/io/cartrominit]
+      - [0x03E1D0, data, libultra/io/contpfs]
+      - [0x03E1E0, data, libultra/io/contramread]
+      - [0x03E1F0, data, libultra/libc/xlitob]
+      - [0x03E220, data, libultra/io/vimgr]
+      - [0x3E240, data, libultra/io/aisetnextbuf]
       - [0x03E250, .rodata, main]
       - [0x03E270, rodata, thread3]
       - [0x03E2F0, rodata, gtl]

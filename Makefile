@@ -31,6 +31,7 @@ CCFLAGS         := -- mips-linux-gnu-as -32 -- -c -G 0 -non_shared -Xfullwarn -X
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 LDFLAGS         := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T symbols/not_found.txt -T symbols/linker_constants.txt -T .splat/smashbrothers.ld
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
+ASM_PROC        := python3 ./tools/asm-processor/build.py
 
 SPLAT             ?= python3 ./tools/splat/split.py
 SPLAT_YAML        ?= $(GAME_NAME).yaml
@@ -128,7 +129,7 @@ $(BUILD_DIR)/%.o: %.s
 $(BUILD_DIR)/%.o: %.c
 	@mkdir -p $(@D)
 	clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $< # d file generation
-	$(CC) $(CCFLAGS) -o $@ $<
+	$(ASM_PROC) $(CC) -- $(AS) $(ASFLAGS) -- $(CCFLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.o: %.bin
 	@mkdir -p $(@D)

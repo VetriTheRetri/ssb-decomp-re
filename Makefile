@@ -7,6 +7,7 @@ SHELL = /bin/bash
 
 COMPARE ?= 1
 FULL_DISASM ?= 0
+VERBOSE ?= 0
 
 # ----- Common flags -----
 
@@ -76,17 +77,23 @@ $(shell mkdir -p bin/asm)
 $(shell mkdir -p bin/src)
 $(shell mkdir -p bin/assets)
 
+ifeq ($(VERBOSE),0)
+  V := @
+endif
+
 # ----- Targets ------
 
 all: rom
 
 rom: $(ROM)
 ifneq ($(COMPARE),0)
-	bash ./tools/compareHashes.sh $(ROM) baserom.z64
+	@echo "Comparing generated ROM with original:"
+	$(V)bash ./tools/compareHashes.sh $(ROM) baserom.z64
 endif
 
 nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
-	bash tools/compareObjects.sh
+	@echo "Comparing object files:"
+	$(V)bash tools/compareObjects.sh
 
 clean:
 	rm -r -f $(BUILD_DIR) $(ROM) $(ELF)
@@ -108,36 +115,45 @@ format:
 # ----- Rules ------
 
 $(ROM): $(ELF)
-	$(OBJCOPY) $(OBJCOPYFLAGS) $< $@ -O binary
+	@echo "Making final ROM: $< -> $@"
+	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $@ -O binary
 
 $(ELF): $(O_FILES) symbols/not_found.txt
-	$(LD) -o $@ $(LDFLAGS)
+	@echo "Linking: $@"
+	$(V)$(LD) -o $@ $(LDFLAGS)
 
 $(BUILD_DIR)/%.text: $(BUILD_DIR)/%.o
-	$(OBJCOPY) -O binary --only-section=.text $< $@
+	@echo "Extracting text section: $< -> $@"
+	$(V)$(OBJCOPY) -O binary --only-section=.text $< $@
 
 $(BUILD_DIR)/%.data: $(BUILD_DIR)/%.o
-	$(OBJCOPY) -O binary --only-section=.data $< $@
+	@echo "Extracting data section: $< -> $@"
+	$(V)$(OBJCOPY) -O binary --only-section=.data $< $@
 
 $(BUILD_DIR)/%.rodata: $(BUILD_DIR)/%.o
-	$(OBJCOPY) -O binary --only-section=.rodata $< $@
+	@echo "Extracting rodata section: $< -> $@"
+	$(V)$(OBJCOPY) -O binary --only-section=.rodata $< $@
 
 $(BUILD_DIR)/%.o: %.s
+	@echo "Assembling: $< -> $@"
 	@mkdir -p $(@D)
-	$(AS) $(ASFLAGS) -o $@ $<
+	$(V)$(AS) $(ASFLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.o: %.c
+	@echo "Compiling: $< -> $@"
 	@mkdir -p $(@D)
 	clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $< # d file generation
-	$(ASM_PROC) $(CC) -- $(AS) $(ASFLAGS) -- $(CCFLAGS) -o $@ $<
+	$(V)$(ASM_PROC) $(CC) -- $(AS) $(ASFLAGS) -- $(CCFLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.o: %.bin
+	@echo "Making binary: $< -> $@"
 	@mkdir -p $(@D)
-	$(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
+	$(V)$(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
 	@bash tools/createPaletteObjectIfNeeded.sh $(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
 
 .PRECIOUS: assets/%.bin
 assets/%.bin: assets/%.png
-	python3 tools/image_converter.py $< $@
+	@echo "Converting image: $< -> $@"
+	$(V)python3 tools/image_converter.py $< $@
 
 -include $(DEP_FILES)

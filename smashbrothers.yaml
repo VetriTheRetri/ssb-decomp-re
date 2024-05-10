@@ -155,7 +155,7 @@ segments:
       - [0x00B8D0, asm, system_03]
       - [0x00BAF0, asm, system_03_1]
       - [0x00C7B0, asm, system_04]
-      - [0x011970, asm, obj_renderer]
+      - [0x011970, asm, objdraw]
       - [0x0190E0, asm, trig_rand]
       - [0x019AE0, asm, vec_math]
       - [0x01A870, asm, hal_gu]
@@ -207,7 +207,6 @@ segments:
       - [0x032D50, asm, libultra/os/virtualtophysical]
       - [0x032DD0, hasm, libultra/os/writebackdcache]
       - [0x032E50, asm, libultra/os/initialize]
-      - [0x033110, asm, libultra/createspeedparam]
       - [0x0331B0, asm, libultra/io/pirawread]
       - [0x033210, asm, libultra/nops_33210]
       - [0x033270, hasm, libultra/os/setsr]
@@ -335,7 +334,7 @@ segments:
       - [0x03E980, rodata, system_03]
       - [0x03E9A0, rodata, system_03_1]
       - [0x03E9D0, rodata, system_04]
-      - [0x03ED10, rodata, obj_renderer]
+      - [0x03ED10, rodata, objdraw]
       - [0x03EFA0, rodata, hal_gu]
       - [0x03EFF0, rodata, interpolation]
       - [0x03F010, rodata, hal_audio]
@@ -362,7 +361,23 @@ segments:
       - { start: auto, type:  bss, name: system_00,    vram: 0x80046670 }
       - { start: auto, type:  bss, name: rdp_reset,    vram: 0x800466A0 }
       - { start: auto, type: .bss, name: obj_manager,  vram: 0x800466B0 }
-      - { start: auto, type:  bss, name: unk_bss,      vram: 0x80046FA0 }
+      - { start: auto, type:  bss, name: objdraw,      vram: 0x80046FA0 }
+      - { start: auto, type:  bss, name: hal_audio,    vram: 0x800472D0 }
+      - { start: auto, type:  bss, name: gserror,      vram: 0x8009DA00 }
+      - { start: auto, type:  bss, name: sprite,       vram: 0x8009EDC0 }
+      - { start: auto, type:  bss, name: libultra/audio03,       vram: 0x8009EDD0 }
+      - { start: auto, type:  bss, name: libultra/io/sptask,     vram: 0x8009EE40 }
+      - { start: auto, type:  bss, name: libultra/io/motor,      vram: 0x8009EE80 }
+      - { start: auto, type:  bss, name: libultra/io/siacs,      vram: 0x8009EF80 }
+      - { start: auto, type:  bss, name: libultra/io/controller, vram: 0x8009EFA0 }
+      - { start: auto, type:  bss, name: libultra/os/initialize, vram: 0x8009F030 }
+      - { start: auto, type:  bss, name: libultra/io/pimgr, vram: 0x8009F2E0 }
+      - { start: auto, type:  bss, name: libultra/io/piacs, vram: 0x800A04B0 }
+      - { start: auto, type:  bss, name: libultra/os/seteventmesg, vram: 0x800A04D0 }
+      - { start: auto, type:  bss, name: libultra/os/timerintr, vram: 0x800A0550 }
+      - { start: auto, type:  bss, name: libultra/io/cartrominit, vram: 0x800A0590 }
+      - { start: auto, type:  bss, name: libultra/io/contpfs, vram: 0x800A0610 }
+      
       # - [0x0406D0, asm, unk_406D0]
       # - [0x049A20, asm, halbitmap]
       # - [0x04F860]

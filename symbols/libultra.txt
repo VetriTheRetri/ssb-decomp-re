@@ -202,7 +202,6 @@ __d_to_ll = 0x80039340;
 __f_to_ll = 0x8003935C;
 __d_to_ull = 0x80039378;
 __f_to_ull = 0x80039418;
-n_aspMainTextStart = 0x800396C0;
 gzip_data_0000 = 0x8003CB24;
 spriteEX2_data_0004 = 0x8003D074;
 n_alGlobals = 0x8003D310;
@@ -290,3 +289,8 @@ __osFaultedThread = 0x8003D3C4;
 __osShutdown = 0x8003D3FC;
 osViClock = 0x8003D3F8;
 osClockRate = 0x8003D3F0; // type:u64
+
+n_aspMainTextStart = 0x800396C0; // name_end:n_aspMainTextEnd
+n_aspMainDataStart = 0x8003F400; // name_end:n_aspMainDataEnd
+gspF3DEX2_fifoTextStart = 0x8003A320; // name_end:gspF3DEX2_fifoTextEnd
+gspF3DEX2_fifoDataStart = 0x8003F6B0; // name_end:gspF3DEX2_fifoDataEnd

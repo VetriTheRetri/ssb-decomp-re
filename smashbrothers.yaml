@@ -297,8 +297,9 @@ segments:
       - [0x03A200, asm, libultra/io/ai]
       - [0x03A270, asm, libultra/io/spsetpc]
       - [0x03A2B0, hasm, libultra/os/getwatchlo]
-      - [0x03A2C0, bin, rsp/n_aspmain]
-      - [0x03AF20, bin, rsp/rsp] # other rsp files
+      - [0x03A2C0, textbin, rsp/n_aspmain]
+      - [0x03AF20, textbin, rsp/gspF3DEX2_fifo] # L3DEX2_2.04H.code
+      - [0x03C0B0, bin, unk_3C0B0] # other rsp files?
       - [0x03C2B0, .data, main]
       - [0x03C2E0, data, gtl]
       - [0x03C470, .data, obj_manager]
@@ -351,7 +352,8 @@ segments:
       - [0x03FF80, rodata, libultra/Unk_36F60]
       - [0x03FF90, rodata, libultra/libc/xldtob]
       - [0x03FFF0, rodata, libultra/libc/llcvt]
-      - [0x040000, rodata, hal_audio_thread4]
+      - { start: 0x040000, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
+      - { start: 0x0402B0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
       - { start: auto, name: main, type: .bss, vram: 0x8003FAD0 }
       - { start: auto, name: thread3_and_more, type: bss, vram: 0x80044EC0 }
       - { start: auto, type: .bss, name: obj_manager, vram: 0x800466B0 }
@@ -371,7 +373,7 @@ segments:
   - name: scene_manager
     type: code
     start: 0x0406D0
-    vram: 0x800a1980
+    vram: 0x800A1980
     subsegments:
       - [0x0406D0, asm, scene_manager]
       - [0x041db0, data, scene_manager]
@@ -380,7 +382,7 @@ segments:
   - name: ovl0
     type: code
     start: 0x043220
-    vram: 0x800c7840
+    vram: 0x800C7840
     subsegments:
       - [0x043220, asm, ovl0/hal_bitmap]
       - [0x049000, asm, ovl0/rldm]

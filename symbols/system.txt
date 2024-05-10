@@ -682,3 +682,6 @@ gThreadingQueue = 0x80044D48; // size:0x18
 sPIcmdBuf = 0x80044D60; // size:0xC8
 sPIcmdQ = 0x80044E28; // size:0x18
 sThreadArgBuf = 0x80044E40; // size=0x80
+
+sLcgSeed = 0x8003B940; // type:s32
+sLcgSeedPtr = 0x8003B944;

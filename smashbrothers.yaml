@@ -89,6 +89,7 @@ options:
     - symbols/ovl8.txt
     - symbols/ovl9.txt
     - symbols/not_found.txt
+    - symbols/splatignore.txt
   reloc_addrs_path:
     - reloc_addrs.txt
 
@@ -301,7 +302,7 @@ segments:
       - [0x03C470, .data, obj_manager]
       - [0x03C530, data, system_04]
       - [0x03C540, data, trig_rand]
-      - [0x03C550, data, gSinTable]
+      - [0x03C550, .data, sys/sintable]
       - [0x03D550, data, hal_audio]
       - [0x03D7B0, data, gserror]
       - [0x03DC70, data, libultra/sprite]

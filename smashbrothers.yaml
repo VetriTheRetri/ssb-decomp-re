@@ -145,9 +145,9 @@ segments:
       - [0x001060, c, main]
       - [0x001510, pad, padding_1510]
       - [0x001520, asm, thread3]
-      - [0x003660, asm, dma]
+      - [0x003660, asm, gsdma]
       - [0x004800, asm, thread6]
-      - [0x0054D0, asm, gtl]
+      - [0x0054D0, asm, gsgtl]
       - [0x0078E0, asm, ml]
       - [0x007970, asm, system_00]
       - [0x007C80, asm, rdp_reset]
@@ -301,7 +301,7 @@ segments:
       - [0x03AF20, textbin, rsp/gspF3DEX2_fifo] # L3DEX2_2.04H.code
       - [0x03C0B0, bin, unk_3C0B0] # other rsp files?
       - [0x03C2B0, .data, main]
-      - [0x03C2E0, data, gtl]
+      - [0x03C2E0, data, gsgtl]
       - [0x03C470, .data, obj_manager]
       - [0x03C530, data, system_04]
       - [0x03C540, data, trig_rand]
@@ -329,7 +329,7 @@ segments:
       - [0x03E250, .rodata, main]
       - [0x03E270, rodata, thread3]
       - [0x03E2D0, rodata, thread6]
-      - [0x03E2F0, rodata, gtl]
+      - [0x03E2F0, rodata, gsgtl]
       - [0x03E510, rodata, ml]
       - [0x03E530, .rodata, obj_manager]
       - [0x03E980, rodata, system_03]
@@ -354,10 +354,15 @@ segments:
       - [0x03FFF0, rodata, libultra/libc/llcvt]
       - { start: 0x040000, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
       - { start: 0x0402B0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
-      - { start: auto, type: .bss, name: main,             vram: 0x8003FAD0 }
-      - { start: auto, type:  bss, name: thread3_and_more, vram: 0x80044EC0 }
-      - { start: auto, type: .bss, name: obj_manager,      vram: 0x800466B0 }
-      - { start: auto, type:  bss, name: unk_bss,          vram: 0x80046FA0 }
+      - { start: auto, type: .bss, name: main,         vram: 0x8003FAD0 }
+      - { start: auto, type:  bss, name: thread3,      vram: 0x80044EC0 }
+      - { start: auto, type:  bss, name: gsdma,        vram: 0x80045040 }
+      - { start: auto, type:  bss, name: thread6,      vram: 0x800450F0 }
+      - { start: auto, type:  bss, name: gsgtl,        vram: 0x80045490 }
+      - { start: auto, type:  bss, name: system_00,    vram: 0x80046670 }
+      - { start: auto, type:  bss, name: rdp_reset,    vram: 0x800466A0 }
+      - { start: auto, type: .bss, name: obj_manager,  vram: 0x800466B0 }
+      - { start: auto, type:  bss, name: unk_bss,      vram: 0x80046FA0 }
       # - [0x0406D0, asm, unk_406D0]
       # - [0x049A20, asm, halbitmap]
       # - [0x04F860]

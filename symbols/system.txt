@@ -685,3 +685,10 @@ sThreadArgBuf = 0x80044E40; // size=0x80
 
 sLcgSeed = 0x8003B940; // type:s32
 sLcgSeedPtr = 0x8003B944;
+gZBuffer = 0x80046670;
+sViewport = 0x800466A0;
+sResetRdp = 0x8003B798;
+gPixelComponentSize = 0x80046674;
+gCurrScreenWidth = 0x80046678;
+gCurrScreenHeight = 0x8004667C;
+sFrameBuffers = 0x80046688;

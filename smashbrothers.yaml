@@ -354,7 +354,7 @@ segments:
       - { start: 0x040000, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
       - { start: 0x0402B0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
       - { start: auto, type: .bss, name: main,                     vram: 0x8003FAD0 }
-      - { start: auto, type:  bss, name: thread3,                  vram: 0x80044EC0 }
+      - { start: auto, type: .bss, name: thread3,                  vram: 0x80044EC0 }
       - { start: auto, type:  bss, name: gsdma,                    vram: 0x80045040 }
       - { start: auto, type:  bss, name: thread6,                  vram: 0x800450F0 }
       - { start: auto, type:  bss, name: gsgtl,                    vram: 0x80045490 }

@@ -663,7 +663,7 @@ struct ftAttributes
 	u16 throw_heavy_sfx;
 	u16 unk_0xEA;
 	f32 halo_size; // Respawn platform size?
-	ColorRGBA shade_color[4];
+	gsColorRGBA shade_color[4];
 	ub32 is_have_attack11 : 1;
 	ub32 is_have_attack12 : 1;
 	ub32 is_have_attackdash : 1;
@@ -1064,9 +1064,9 @@ struct ftStruct
 
 	caStruct colanim;
 
-	ColorRGBA fog_color;   // Used only by Master Hand, when in the
+	gsColorRGBA fog_color;   // Used only by Master Hand, when in the
 						   // background on the -Z plane?
-	ColorRGBA shade_color; // Shade colors of character costume
+	gsColorRGBA shade_color; // Shade colors of character costume
 
 	ftExplainInput explain; // "How To Play" tutorial command struct
 

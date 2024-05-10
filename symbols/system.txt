@@ -698,5 +698,5 @@ sSysThread8CPUStack = 0x8009DBB8; // size:0x800
 sSysMesgQueueCPUFault = 0x8009E3B8;
 sSysThread8Hang = 0x8009E408; // size:0x1B0
 sSysThread8HangStack = 0x8009E5B8; // size:0x800
-D_8004501C = 0x8004501C;
-D_80045018 = 0x80045018;
+gScheduleTaskQueue = 0x80044FF8;
+D_80044F38_40748 = 0x80044F38; // size:0x50

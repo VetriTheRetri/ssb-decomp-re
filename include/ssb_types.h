@@ -17,79 +17,89 @@ typedef f32 Mtx44f[4][4]; // Same thing as above but I'm terrible at matrices an
 
 typedef struct Vec3h
 {
-	s16 x, y, z;
+    s16 x, y, z;
 
 } Vec3h;
 
 typedef struct Vec3i
 {
-	s32 x, y, z;
+    s32 x, y, z;
 
 } Vec3i;
 
 typedef struct Vec3f
 {
-	f32 x, y, z;
+    f32 x, y, z;
 
 } Vec3f;
 
 typedef struct Vec2b
 {
-	s8 x, y;
+    s8 x, y;
 
 } Vec2b;
 
 typedef struct Vec2f
 {
-	f32 x, y;
+    f32 x, y;
 
 } Vec2f;
 
 typedef struct Vec2h
 {
-	s16 x, y;
+    s16 x, y;
 
 } Vec2h;
 
 typedef struct Vec2i
 {
-	s32 x, y;
+    s32 x, y;
 
 } Vec2i;
 
 // boolean quick types
 
-typedef s8 sb8;	  // Signed  8-bit boolean
+typedef  s8  sb8; // Signed  8-bit boolean
 typedef s16 sb16; // Signed 16-bit boolean
 typedef s32 sb32; // Signed 32-bit boolean
 
-typedef u8 ub8;	  // Unsigned  8-bit boolean
+typedef u8   ub8; // Unsigned  8-bit boolean
 typedef u16 ub16; // Unsigned 16-bit boolean
 typedef u32 ub32; // Unsigned 32-bit boolean
 
-typedef struct ColorRGB
+// Gfx color types
+
+enum gsColorRGBIndex
 {
-	u8 r, g, b;
+    gsColorRGBIndexR,
+    gsColorRGBIndexG,
+    gsColorRGBIndexB,
+    gsColorRGBIndexA
+};
 
-} ColorRGB;
-
-typedef struct ColorRGBPair
+typedef struct gsColorRGB
 {
-	ColorRGB prim, env;
+    u8 r, g, b;
 
-} ColorRGBPair;
+} gsColorRGB;
 
-typedef struct ColorRGBA
+typedef struct gsColorRGBPair
 {
-	u8 r, g, b, a;
+    gsColorRGB prim, env;
 
-} ColorRGBA;
+} gsColorRGBPair;
 
-typedef struct Rectangle
+typedef struct gsColorRGBA
 {
-	s32 ulx, uly;
-	s32 lrx, lry;
+    u8 r, g, b, a;
 
-} Rectangle;
+} gsColorRGBA;
+
+typedef struct gsRectangle
+{
+    s32 ulx, uly;
+    s32 lrx, lry;
+
+} gsRectangle;
 
 #endif /* SSB64_TYPES_H */

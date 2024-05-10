@@ -575,7 +575,7 @@ void mnUpdatePanel(GObj* panel_gobj, s32 color_id, s32 player_type)
 	SObj* panel_sobj;
 	intptr_t panel_offsets[4] = dMnBattlePanelOffsets;
 	intptr_t panel_offsets_cpu[4] = dMnBattlePanelCPUOffsets;
-	ColorRGB colors[4] = dMnBattleUnusedColors;
+	gsColorRGB colors[4] = dMnBattleUnusedColors;
 
 	panel_sobj = SObjGetStruct(panel_gobj);
 
@@ -897,7 +897,7 @@ void mnBattleDrawTitleAndBack()
 	GObj* title_gobj;
 	void* unused;
 	intptr_t title_offsets[2] = dMnBattleTitleOffsets;
-	ColorRGB title_colors[2] = dMnBattleTitleColors;
+	gsColorRGB title_colors[2] = dMnBattleTitleColors;
 
 	title_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1,
 									GetAddressFromOffset(gFile012, title_offsets[gMnBattleIsTeamBattle]), 1, NULL, 1);
@@ -1122,7 +1122,7 @@ void mnBattleRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 {
 	SObj* cursor_sobj;
 	f32 current_x, current_y;
-	ColorRGBPair type_colors[4] = dMnBattleCursorTypeColors;
+	gsColorRGBPair type_colors[4] = dMnBattleCursorTypeColors;
 	intptr_t type_offsets[4] = dMnBattleCursorTypeOffsets;
 	intptr_t cursor_offsets[3] = dMnBattleCursorOffsets;
 	Vec2i type_positions[3] = dMnBattleCursorTypePositions;
@@ -1274,7 +1274,7 @@ void mnHandleFFATeamBattleTogglePress()
 	SObj* title_sobj;
 	int i;
 	intptr_t offsets[2] = dMnBattleTitleOffsetsDuplicate;
-	ColorRGB colors[2] = dMnBattleTitleColorsDuplicate;
+	gsColorRGB colors[2] = dMnBattleTitleColorsDuplicate;
 
 	title_gobj = gMnBattleTitleGObj;
 

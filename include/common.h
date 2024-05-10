@@ -3,5 +3,6 @@
 
 #include "ultra64.h"
 #include "macros.h"
+#include "ssb_types.h"
 
 #endif

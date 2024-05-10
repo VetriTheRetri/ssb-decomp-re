@@ -293,7 +293,7 @@ struct SObj
 	/* 0x10 */ Sprite sprite;
 	/* 0x54 */ void* sobj_user_data;
 	/* 0x58 */ Vec2f pos; // Position / offset? Causes a ghosting effect if out of bounds
-	/* 0x60 */ ColorRGB sobj_color;
+	/* 0x60 */ gsColorRGB sobj_color;
 }; // size >= 0x58 (0x6C?)
 
 // replace `struct TempUnkA6E0` with this

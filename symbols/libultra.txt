@@ -3,10 +3,8 @@ __osContPifRam_B = 0x8009EFA0;
 __osPfsPifRam = 0x800A0710;
 __osPfsPifRam_B = 0x800A074C;
 __osActiveQueue_A = 0x8003D3BC;
-__osActiveQueue_B = 0x8004501C;
 __osSiAccessQueue_A = 0x800454C8;
 __additional_scanline = 0x8003D63C;
-__additional_scanline_B = 0x80045018;
 
 __osExceptionPreamble = 0x80030C70;
 __osException = 0x80030C80;

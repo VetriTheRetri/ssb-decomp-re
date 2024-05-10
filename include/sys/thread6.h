@@ -26,7 +26,7 @@ typedef struct gmController
 
 extern u32 D_800451A0;
 extern u32 gUpdateContData;
-extern s8 D_800451A4[MAXCONTROLLERS];
+extern s8 D_800451A4_409B4[MAXCONTROLLERS];
 extern struct ControllerInput gPlayerControllers[MAXCONTROLLERS];
 extern struct ControllerInput D_80045470;
 

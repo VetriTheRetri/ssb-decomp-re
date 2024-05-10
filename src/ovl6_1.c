@@ -68,7 +68,7 @@ sb32 itTargetSDefaultProcDamage(GObj* item_gobj)
 	efParticle_ShieldBreak_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 	efParticle_FireGrind_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
-	func_800269C0(alSound_SFX_Bonus1TargetBreak);
+	func_800269C0_275C0(alSound_SFX_Bonus1TargetBreak);
 
 	scBonusGame_UpdateBonus1TargetCount();
 

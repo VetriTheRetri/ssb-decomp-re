@@ -23,7 +23,7 @@ GObjProcess* sOMObjProcessQueue[6];
 u32 sOMObjProcessesActive;
 
 GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
-s32 D_80046774; // used by system_03_1
+s32 D_80046774_40794; // used by system_03_1
 GObj* sOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 GObj* sOMObjCommonHead;
 GObj* gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
@@ -57,7 +57,7 @@ u16 sCameraSize;
 
 GObj* D_80046A54;
 GObj* gOMObjCurrentRendering; // Is this exclusively a camera GObj?
-GObj* D_80046A5C;
+GObj* D_80046A5C_40A7C;
 
 GObjProcess* D_80046A60;
 u32 D_80046A64;
@@ -70,7 +70,7 @@ u8 D_80046F88[24];
 // DATA
 
 OSId sProcessThreadID = 10000000;
-s32 D_8003B874 = 0;
+s32 D_8003B874_3C474 = 0;
 
 // 8003B878
 OMPersp dOMPerspDefault = { NULL, 0, 30.0F, 4.0F / 3.0F, 100.0F, 12800.0F, 1.0F };
@@ -1786,7 +1786,7 @@ void omLinkGObjDLCommon(GObj* gobj, void (*proc_render)(GObj*), u8 dl_link, u32 
 	gobj->dl_link_order = dl_order;
 	gobj->proc_render = proc_render;
 	gobj->unk_gobj_0x38 = arg4;
-	gobj->unk_gobj_0xE = D_8003B6E8.word - 1;
+	gobj->unk_gobj_0xE = D_8003B6E8_3C2E8.word - 1;
 }
 
 // 80009DF4
@@ -1838,7 +1838,7 @@ void func_80009F28(GObj* gobj, void (*proc_render)(GObj*), u32 order, u64 arg3, 
 	gobj->unk_gobj_0x30 = arg3;
 	gobj->unk_gobj_0x38 = arg4;
 	gobj->unk_gobj_0x40 = 0;
-	gobj->unk_gobj_0xE = D_8003B6E8.word - 1;
+	gobj->unk_gobj_0xE = D_8003B6E8_3C2E8.word - 1;
 }
 
 // 80009F74
@@ -1973,9 +1973,9 @@ void func_8000A340()
 	GObj* gobj;
 
 	gOMObjCurrentRendering = NULL;
-	D_80046A5C = NULL;
+	D_80046A5C_40A7C = NULL;
 
-	for (i = 0, v1 = D_8003B6E8.word - 1; i < ARRAY_COUNT(D_80046A88); i++)
+	for (i = 0, v1 = D_8003B6E8_3C2E8.word - 1; i < ARRAY_COUNT(D_80046A88); i++)
 		D_80046A88[i].id = v1;
 
 	gobj = gOMObjCommonDLLinks[ARRAY_COUNT(gOMObjCommonDLLinks) - 1];
@@ -1984,10 +1984,10 @@ void func_8000A340()
 	{
 		if (!(gobj->flags & GOBJ_FLAG_NORENDER))
 		{
-			D_8003B874 = 3;
+			D_8003B874_3C474 = 3;
 			gOMObjCurrentRendering = gobj;
 			gobj->proc_render(gobj);
-			D_8003B874 = 0;
+			D_8003B874_3C474 = 0;
 		}
 		gobj = gobj->dl_link_next;
 	}
@@ -1998,7 +1998,7 @@ GObj* func_8000A40C(GObj* gobj)
 {
 	GObj* return_gobj;
 
-	D_8003B874 = 1;
+	D_8003B874_3C474 = 1;
 	D_80046A54 = gobj;
 
 	gobj->proc_eject(gobj);
@@ -2006,7 +2006,7 @@ GObj* func_8000A40C(GObj* gobj)
 	return_gobj = gobj->link_next;
 
 	D_80046A54 = NULL;
-	D_8003B874 = 0;
+	D_8003B874_3C474 = 0;
 
 	switch (D_80046A64)
 	{
@@ -2027,7 +2027,7 @@ GObjProcess* func_8000A49C(GObjProcess* gobjproc)
 {
 	GObjProcess* return_gobjproc;
 
-	D_8003B874 = 2;
+	D_8003B874_3C474 = 2;
 	D_80046A54 = gobjproc->parent_gobj;
 	D_80046A60 = gobjproc;
 
@@ -2045,7 +2045,7 @@ GObjProcess* func_8000A49C(GObjProcess* gobjproc)
 
 	D_80046A54 = NULL;
 	D_80046A60 = NULL;
-	D_8003B874 = 0;
+	D_8003B874_3C474 = 0;
 
 	switch (D_80046A64)
 	{
@@ -2310,5 +2310,5 @@ void omSetupObjectManager(OMSetup* setup)
 
 	func_80017830(0);
 
-	D_8003B874 = 0;
+	D_8003B874_3C474 = 0;
 }

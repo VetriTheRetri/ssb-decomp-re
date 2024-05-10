@@ -114,7 +114,7 @@ void scBonusGame_InitBonus1Targets()
 		if (*atrack != NULL)
 		{
 			omAddDObjAnimAll(DObjGetStruct(item_gobj), *atrack, 0.0F);
-			func_8000DF34(item_gobj);
+			func_8000DF34_EB34(item_gobj);
 		}
 		dobj_desc++, atrack++, gGroundStruct.bonus1.target_count++;
 	}
@@ -266,7 +266,7 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 	gGroundStruct.bonus2.platform_count--;
 
 	scBonusGame_UpdateBonus2PlatformInterface();
-	func_800269C0(alSound_SFX_Bonus2PlatformLanding);
+	func_800269C0_275C0(alSound_SFX_Bonus2PlatformLanding);
 
 	if (gGroundStruct.bonus2.platform_count == 0)
 	{
@@ -339,7 +339,7 @@ void scBonusGame_InitBonus2Bumpers()
 			if (*atrack != NULL)
 			{
 				omAddDObjAnimAll(DObjGetStruct(item_gobj), *atrack, 0.0F);
-				func_8000DF34(item_gobj);
+				func_8000DF34_EB34(item_gobj);
 			}
 			dobj_desc++, atrack++;
 		}
@@ -361,7 +361,7 @@ void scBonusGame_InitInterface(GObj* interface_gobj)
 	stop_current_process(60);
 	func_ovl2_801120D4();
 	ifPlayer_Damage_InitInterface();
-	func_800269C0(0x1EA);
+	func_800269C0_275C0(0x1EA);
 	func_ovl2_801121C4();
 	omEjectGObjCommon(NULL);
 	stop_current_process(1);
@@ -643,7 +643,7 @@ void scBonusGame_InitBonusGame()
 	scBonusGame_InitBonusGameSprites();
 	scBonusGame_MakeInterface();
 	mpCollision_SetPlayMusicID();
-	func_800269C0(0x272U);
+	func_800269C0_275C0(0x272U);
 	func_ovl6_8018E344();
 	scBonusGame_InitCameraVars();
 
@@ -756,7 +756,7 @@ void scManager_BonusGame_InitScene()
 		continue;
 	};
 	func_80020B38(0, 0x7800);
-	func_800266A0();
+	func_800266A0_272A0();
 	func_ovl2_801157EC();
 
 	if (gBattleState->game_status != gmMatch_GameStatus_Pause)

@@ -349,7 +349,7 @@ void itLinkBombNExplodeInitItemVars(GObj* item_gobj)
 
 	itMainClearOwnerStats(item_gobj);
 	itLinkBombNExplodeMakeEffectGotoSetStatus(item_gobj);
-	func_800269C0(alSound_SFX_ExplodeL);
+	func_800269C0_275C0(alSound_SFX_ExplodeL);
 }
 
 // 801863AC

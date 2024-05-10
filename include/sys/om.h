@@ -338,7 +338,7 @@ struct Unk80046A88
 // globals
 
 /// Something to do with GObjCommon handling
-extern s32 D_8003B874;
+extern s32 D_8003B874_3C474;
 extern struct Mtx6Float D_8003B878;
 extern struct Mtx7Float D_8003B894;
 extern struct Mtx3x3Float D_8003B8B4;
@@ -355,7 +355,7 @@ extern struct Mtx3Float D_8003B914;
 // Something to do with an initial object to be passed to a new GObjProcess
 // extern struct GObjCommon* D_80046A54;
 // extern struct GObjCommon* D_80046A58;
-// extern struct GObjCommon* D_80046A5C;
+// extern struct GObjCommon* D_80046A5C_40A7C;
 // extern struct GObjProcess* D_80046A60;
 extern OSMesgQueue gOMMq;
 

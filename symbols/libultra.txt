@@ -282,3 +282,11 @@ guNormalize = 0x80035380;
 guSqrtf = 0x80033510;
 
 fcos = 0x80035CD0;
+__osIntOffTable = 0x8003F1B0;
+__osIntTable = 0x8003F1D0;
+send_mesg = 0x800311A4; // type:func
+__osHwIntTable = 0x8003D380;
+__osFaultedThread = 0x8003D3C4;
+__osShutdown = 0x8003D3FC;
+osViClock = 0x8003D3F8;
+osClockRate = 0x8003D3F0; // type:u64

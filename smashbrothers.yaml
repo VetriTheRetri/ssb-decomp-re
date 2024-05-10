@@ -354,10 +354,10 @@ segments:
       - [0x03FFF0, rodata, libultra/libc/llcvt]
       - { start: 0x040000, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
       - { start: 0x0402B0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
-      - { start: auto, name: main, type: .bss, vram: 0x8003FAD0 }
-      - { start: auto, name: thread3_and_more, type: bss, vram: 0x80044EC0 }
-      - { start: auto, type: .bss, name: obj_manager, vram: 0x800466B0 }
-      - { start: auto, type: bss, name: unk_bss, vram: 0x80046FA0 }
+      - { start: auto, type: .bss, name: main,             vram: 0x8003FAD0 }
+      - { start: auto, type:  bss, name: thread3_and_more, vram: 0x80044EC0 }
+      - { start: auto, type: .bss, name: obj_manager,      vram: 0x800466B0 }
+      - { start: auto, type:  bss, name: unk_bss,          vram: 0x80046FA0 }
       # - [0x0406D0, asm, unk_406D0]
       # - [0x049A20, asm, halbitmap]
       # - [0x04F860]

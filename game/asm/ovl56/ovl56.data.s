@@ -6,7 +6,7 @@
 #  80134EE0 -> 801352C0
 
 
-glabel D_ovl56_80134EE0
+glabel dGmStageClearFileIDs
   .incbin "ovl56.raw.bin", 0x33E0, 0x1C
 
 glabel dGmStageClearBonusData

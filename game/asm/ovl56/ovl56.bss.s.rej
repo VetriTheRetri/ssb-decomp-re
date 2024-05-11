@@ -46,14 +46,14 @@ diff a/game/asm/ovl56/ovl56.bss.s b/game/asm/ovl56/ovl56.bss.s	(rejected hunks)
 -glabel D_ovl56_80135320
 +glabel sGmStageClearBonusMasks
      .space 12
- glabel D_ovl56_8013532C
+ glabel sGmStageClearBonusID
      .space 4
 @@ -63,7 +63,7 @@ glabel D_ovl56_80135358
      .space 28
- glabel D_ovl56_80135374
+ glabel sGmStageClearBonusPageArrowGObj
      .space 4
 -glabel D_ovl56_80135378
-+glabel sGmStageClearBonusObjectiveGObj
++glabel sGmStageClearBonusObjectiveGObjs
      .space 4
  glabel D_ovl56_8013537C
      .space 4
@@ -66,9 +66,9 @@ diff a/game/asm/ovl56/ovl56.bss.s b/game/asm/ovl56/ovl56.bss.s	(rejected hunks)
      .space 4
  glabel D_ovl56_801353A8
      .space 4
-@@ -93,7 +93,7 @@ glabel D_ovl56_801353D0
+@@ -93,7 +93,7 @@ glabel sGmStageClearStatusBuf
      .space 384
- glabel D_ovl56_80135550
+ glabel sGmStageClearForceBuf
      .space 56
 -glabel D_ovl56_80135588
 +glabel sGmStageClearFiles

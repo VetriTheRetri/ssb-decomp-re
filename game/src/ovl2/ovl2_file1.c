@@ -180,7 +180,7 @@ void func_ovl2_800D67DC(void)
     D_800A4B18.match_rules = (GMMATCH_GAMERULE_1PGAME | GMMATCH_GAMERULE_TIME);
     D_800A4B18.damage_ratio = 100;
     D_800A4B18.is_display_score = FALSE;
-    D_800A4B18.is_ignore_teamshadow = TRUE;
+    D_800A4B18.is_not_teamshadows = TRUE;
 
     if (gSaveData.mprotect_fail & GMSAVE_PROTECTFAIL_1PGAMEMARIO)
     {
@@ -371,7 +371,7 @@ void func_ovl2_800D67DC(void)
                 gSceneData.scene_previous = 0x34;
                 gSceneData.scene_current = 0x33;
 
-                overlay_set50_51_entry();
+                gmStageClearStartScene();
             }
             gSceneData.spgame_stage++;
         }

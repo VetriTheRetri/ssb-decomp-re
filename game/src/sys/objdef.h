@@ -110,6 +110,97 @@ typedef enum OMMtxTransformKind
 
 } OMMtxTransformKind;
 
+typedef enum AObjInterpolateKind
+{
+    AOBJ_INTERPOLATE_NONE, 
+    AOBJ_INTERPOLATE_STEP,
+    AOBJ_INTERPOLATE_LINEAR, 
+    AOBJ_INTERPOLATE_CUBIC
+
+} AObjInterpolateKind;
+
+typedef enum AObjCommandKind
+{
+    AOBJ_COMMAND_END,
+    AOBJ_COMMAND_JUMP,
+    AOBJ_COMMAND_WAIT,
+    AOBJ_COMMAND_SETVAL_LAST,
+    AOBJ_COMMAND_SETVAL,
+    AOBJ_COMMAND_SETVAL_RATE_LAST,
+    AOBJ_COMMAND_SETVAL_RATE,
+    AOBJ_COMMAND_SETTARGET_RATE,
+    AOBJ_COMMAND_SETVAL_ZERO_RATE_LAST,
+    AOBJ_COMMAND_SETVAL_ZERO_RATE,
+    AOBJ_COMMAND_SETVAL_AFTER_LAST,
+    AOBJ_COMMAND_SETVAL_AFTER,
+    ANIM_CMD_12 = 12,
+    ANIM_CMD_13 = 13,
+    AOBJ_COMMAND_SETANIM,
+    AOBJ_COMMAND_SETFLAGS,
+    ANIM_CMD_16 = 16,
+    ANIM_CMD_17 = 17,
+    AOBJ_COMMAND_SETEXTVAL_AFTER_LAST,
+    AOBJ_COMMAND_SETEXTVAL_AFTER,
+    AOBJ_COMMAND_SETEXTVAL_LAST,
+    AOBJ_COMMAND_SETEXTVAL,
+    ANIM_CMD_22 = 22,
+    ANIM_CMD_23 = 23
+
+} AObjCommandKind;
+
+typedef enum AObjTrackKind
+{
+    // model
+    AOBJ_TRACK_NONE,
+    AOBJ_TRACK_MESH_START,                      // Start of Mesh tracks
+    AOBJ_TRACK_ROTX = AOBJ_TRACK_MESH_START,    // Rotation X (Roll)
+    AOBJ_TRACK_ROTY,                            // Rotation Y (Pitch)
+    AOBJ_TRACK_ROTZ,                            // Rotation Z (Yaw)
+    AOBJ_TRACK_ROTA,                            // Rotation angle?
+    AOBJ_TRACK_TRAX,                            // Translation X 
+    AOBJ_TRACK_TRAY,                            // Translation Y
+    AOBJ_TRACK_TRAZ,                            // Translation Z
+    AOBJ_TRACK_SCAX,                            // Scale X
+    AOBJ_TRACK_SCAY,                            // Scale Y
+    AOBJ_TRACK_SCAZ,                            // Scale Z
+    AOBJ_TRACK_MESH_END = AOBJ_TRACK_SCAZ,      // End of Mesh tracks
+    // texture
+    AOBJ_TRACK_TEXTURE_MIN = 13,
+    AOBJ_TRACK_TEXTURE_13 = 13,
+    AOBJ_TRACK_TEXTURE_14 = 14,
+    AOBJ_TRACK_TEXTURE_15 = 15,
+    AOBJ_TRACK_TEXTURE_16 = 16,
+    AOBJ_TRACK_TEXTURE_17 = 17,
+    AOBJ_TRACK_TEXTURE_18 = 18,
+    AOBJ_TRACK_TEXTURE_19 = 19,
+    AOBJ_TRACK_TEXTURE_20 = 20,
+    AOBJ_TRACK_TEXTURE_21 = 21,
+    AOBJ_TRACK_TEXTURE_22 = 22,
+    AOBJ_TRACK_TEXTURE_MAX = 22,
+    // camera
+    AOBJ_TRACK_CAMERA_START = 25,
+    AOBJ_TRACK_CAMERA_XEYE = AOBJ_TRACK_CAMERA_START,
+    AOBJ_TRACK_CAMERA_YEYE,
+    AOBJ_TRACK_CAMERA_ZEYE,
+    AOBJ_TRACK_CAMERA_28,
+    AOBJ_TRACK_CAMERA_XAT,
+    AOBJ_TRACK_CAMERA_YAT,
+    AOBJ_TRACK_CAMERA_ZAT,
+    AOBJ_TRACK_CAMERA_32,
+    AOBJ_TRACK_CAMERA_ROLL,
+    AOBJ_TRACK_CAMERA_FOVY,
+    AOBJ_TRACK_CAMERA_MAX = AOBJ_TRACK_CAMERA_FOVY,
+    // texture extra
+    AOBJ_TRACK_TEXTURE_EXTRA_MIN = 37,
+    AOBJ_TRACK_TEXTURE_EXTRA_37 = 37,
+    AOBJ_TRACK_TEXTURE_EXTRA_38 = 38,
+    AOBJ_TRACK_TEXTURE_EXTRA_39 = 39,
+    AOBJ_TRACK_TEXTURE_EXTRA_40 = 40,
+    AOBJ_TRACK_TEXTURE_EXTRA_41 = 41,
+    AOBJ_TRACK_TEXTURE_EXTRA_MAX = 41
+
+} AObjTrackKind;
+
 typedef union  ATrack               ATrack;
 typedef union  ACommand             ACommand;
 typedef struct GObj                 GObj;

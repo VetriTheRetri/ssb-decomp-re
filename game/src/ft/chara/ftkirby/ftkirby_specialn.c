@@ -560,7 +560,7 @@ void ftKirbySpecialAirNEndSwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialNEnd, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162ABC
@@ -588,7 +588,7 @@ void ftKirbySpecialNEndSwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirNEnd, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162BA0
@@ -598,7 +598,7 @@ void ftKirby_SpecialNEat_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirNEat, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162BF0
@@ -608,7 +608,7 @@ void ftKirby_SpecialNCatch_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162C40
@@ -618,7 +618,7 @@ void ftKirby_SpecialAirNCatch_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162C90
@@ -628,7 +628,7 @@ void ftKirby_SpecialAirNEat_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialNEat, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162CE0
@@ -638,7 +638,7 @@ void ftKirby_SpecialNThrow_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirNThrow, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162D30
@@ -648,7 +648,7 @@ void ftKirby_SpecialAirNThrow_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialNThrow, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162D80
@@ -658,7 +658,7 @@ void ftKirby_SpecialNWait_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirNWait, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162DD0
@@ -668,7 +668,7 @@ void ftKirby_SpecialAirNWait_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialNWait, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162E20
@@ -678,7 +678,7 @@ void ftKirby_SpecialNTurn_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirNTurn, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162E70
@@ -688,7 +688,7 @@ void ftKirby_SpecialAirNTurn_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialNTurn, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162EC0
@@ -698,7 +698,7 @@ void ftKirby_SpecialNCopy_SwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirNCopy, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162F10
@@ -708,7 +708,7 @@ void ftKirby_SpecialAirNCopy_SwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialNCopy, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x80162F60
@@ -747,7 +747,7 @@ void ftKirby_SpecialNEat_SetStatusParam(GObj *fighter_gobj, s32 status_id)
     Vec3f pos = ftKirbySpecialNUnusedVec; // Never used???
 
     ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_SLOPECONTOUR_PRESERVE);
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 
     if (fp->proc_slope != NULL)
     {
@@ -763,7 +763,7 @@ void ftKirby_SpecialNCatchEat_SetStatusParam(GObj *fighter_gobj, s32 status_id)
     Vec3f pos;
 
     ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, (FTSTATUPDATE_LOOPSFX_PRESERVE | FTSTATUPDATE_SLOPECONTOUR_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 
     fp->catch_gobj = fp->search_gobj;
 
@@ -815,7 +815,7 @@ void ftKirby_SpecialNThrow_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialNThrow, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
@@ -825,7 +825,7 @@ void ftKirby_SpecialNWait_SetStatusFromEat(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialNWait, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
@@ -835,7 +835,7 @@ void ftKirby_SpecialNTurn_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialNTurn, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
@@ -845,7 +845,7 @@ void ftKirby_SpecialNCopy_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialNCopy, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
@@ -891,7 +891,7 @@ void ftKirby_SpecialAirNThrow_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirNThrow, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
@@ -901,7 +901,7 @@ void ftKirby_SpecialAirNWait_SetStatusFromEat(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirNWait, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
@@ -911,7 +911,7 @@ void ftKirby_SpecialAirNTurn_SetStatus(GObj *fighter_gobj) // Unused
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirNTurn, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 
@@ -921,7 +921,7 @@ void ftKirby_SpecialAirNCopy_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirNCopy, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
 }
 

@@ -371,13 +371,13 @@ void start_scene_manager(UNUSED u32 set) {
                 load_overlay(&D_800A3070[2]);
                 load_overlay(&D_800A3070[1]);
                 load_overlay(&D_800A3070[56]);
-                overlay_set50_51_entry();
+                gmStageClearStartScene();
                 break;
             case 51:
                 load_overlay(&D_800A3070[2]);
                 load_overlay(&D_800A3070[1]);
                 load_overlay(&D_800A3070[56]);
-                overlay_set50_51_entry();
+                gmStageClearStartScene();
                 break;
             case 56:
                 load_overlay(&D_800A3070[59]);

@@ -1343,12 +1343,12 @@ glabel func_ovl56_80132E40
   /* 17C0B4 80132E64 0C00265A */       jal omMakeGObjCommon
   /* 17C0B8 80132E68 3C078000 */       lui $a3, 0x8000
   /* 17C0BC 80132E6C 8FAE0038 */        lw $t6, 0x38($sp)
-  /* 17C0C0 80132E70 3C018013 */       lui $at, %hi(sGmStageClearBonusObjectiveGObj)
+  /* 17C0C0 80132E70 3C018013 */       lui $at, %hi(sGmStageClearBonusObjectiveGObjs)
   /* 17C0C4 80132E74 3C058013 */       lui $a1, %hi(gmStageClearTextProcRender)
   /* 17C0C8 80132E78 000E7880 */       sll $t7, $t6, 2
   /* 17C0CC 80132E7C 002F0821 */      addu $at, $at, $t7
   /* 17C0D0 80132E80 2418FFFF */     addiu $t8, $zero, -1
-  /* 17C0D4 80132E84 AC225378 */        sw $v0, %lo(sGmStageClearBonusObjectiveGObj)($at)
+  /* 17C0D4 80132E84 AC225378 */        sw $v0, %lo(sGmStageClearBonusObjectiveGObjs)($at)
   /* 17C0D8 80132E88 00408025 */        or $s0, $v0, $zero
   /* 17C0DC 80132E8C AFB80010 */        sw $t8, 0x10($sp)
   /* 17C0E0 80132E90 24A520E0 */     addiu $a1, $a1, %lo(gmStageClearTextProcRender)
@@ -1567,7 +1567,7 @@ glabel gmStageClearGetNoMissMultiplier
   /* 17C3D0 80133180 03E00008 */        jr $ra
   /* 17C3D4 80133184 27BD0038 */     addiu $sp, $sp, 0x38
 
-glabel func_ovl56_80133188
+glabel gmStageClearCommonProcUpdate
   /* 17C3D8 80133188 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 17C3DC 8013318C AFBF0014 */        sw $ra, 0x14($sp)
   /* 17C3E0 80133190 3C028013 */       lui $v0, %hi(D_ovl56_801352CC)
@@ -1645,8 +1645,8 @@ glabel gmStageClearAppendBonusStatGetPoints
   /* 17C4EC 8013329C 2406001A */     addiu $a2, $zero, 0x1a
   /* 17C4F0 801332A0 0C00277D */       jal omAddGObjRenderProc
   /* 17C4F4 801332A4 3C078000 */       lui $a3, 0x8000
-  /* 17C4F8 801332A8 3C058013 */       lui $a1, %hi(func_ovl56_80133188)
-  /* 17C4FC 801332AC 24A53188 */     addiu $a1, $a1, %lo(func_ovl56_80133188)
+  /* 17C4F8 801332A8 3C058013 */       lui $a1, %hi(gmStageClearCommonProcUpdate)
+  /* 17C4FC 801332AC 24A53188 */     addiu $a1, $a1, %lo(gmStageClearCommonProcUpdate)
   /* 17C500 801332B0 02002025 */        or $a0, $s0, $zero
   /* 17C504 801332B4 24060001 */     addiu $a2, $zero, 1
   /* 17C508 801332B8 0C002062 */       jal omAddGObjCommonProc
@@ -1845,7 +1845,7 @@ glabel gmStageClearAppendBonusStatGetPoints
   /* 17C7E8 80133598 03E00008 */        jr $ra
   /* 17C7EC 8013359C 27BD0070 */     addiu $sp, $sp, 0x70
 
-glabel func_ovl56_801335A0
+glabel gmStageClearMakeBonusPageArrow
   /* 17C7F0 801335A0 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 17C7F4 801335A4 AFBF001C */        sw $ra, 0x1c($sp)
   /* 17C7F8 801335A8 00002025 */        or $a0, $zero, $zero
@@ -1853,10 +1853,10 @@ glabel func_ovl56_801335A0
   /* 17C800 801335B0 24060011 */     addiu $a2, $zero, 0x11
   /* 17C804 801335B4 0C00265A */       jal omMakeGObjCommon
   /* 17C808 801335B8 3C078000 */       lui $a3, 0x8000
-  /* 17C80C 801335BC 3C018013 */       lui $at, %hi(D_ovl56_80135374)
+  /* 17C80C 801335BC 3C018013 */       lui $at, %hi(sGmStageClearBonusPageArrowGObj)
   /* 17C810 801335C0 3C058013 */       lui $a1, %hi(gmStageClearTextProcRender)
   /* 17C814 801335C4 240EFFFF */     addiu $t6, $zero, -1
-  /* 17C818 801335C8 AC225374 */        sw $v0, %lo(D_ovl56_80135374)($at)
+  /* 17C818 801335C8 AC225374 */        sw $v0, %lo(sGmStageClearBonusPageArrowGObj)($at)
   /* 17C81C 801335CC AFA20024 */        sw $v0, 0x24($sp)
   /* 17C820 801335D0 AFAE0010 */        sw $t6, 0x10($sp)
   /* 17C824 801335D4 24A520E0 */     addiu $a1, $a1, %lo(gmStageClearTextProcRender)
@@ -1864,8 +1864,8 @@ glabel func_ovl56_801335A0
   /* 17C82C 801335DC 2406001A */     addiu $a2, $zero, 0x1a
   /* 17C830 801335E0 0C00277D */       jal omAddGObjRenderProc
   /* 17C834 801335E4 3C078000 */       lui $a3, 0x8000
-  /* 17C838 801335E8 3C058013 */       lui $a1, %hi(func_ovl56_80133188)
-  /* 17C83C 801335EC 24A53188 */     addiu $a1, $a1, %lo(func_ovl56_80133188)
+  /* 17C838 801335E8 3C058013 */       lui $a1, %hi(gmStageClearCommonProcUpdate)
+  /* 17C83C 801335EC 24A53188 */     addiu $a1, $a1, %lo(gmStageClearCommonProcUpdate)
   /* 17C840 801335F0 8FA40024 */        lw $a0, 0x24($sp)
   /* 17C844 801335F4 24060001 */     addiu $a2, $zero, 1
   /* 17C848 801335F8 0C002062 */       jal omAddGObjCommonProc
@@ -1897,7 +1897,7 @@ glabel func_ovl56_801335A0
   /* 17C8B0 80133660 03E00008 */        jr $ra
   /* 17C8B4 80133664 00000000 */       nop 
 
-glabel func_ovl56_80133668
+glabel gmStageClearCheckHaveBonusID
   /* 17C8B8 80133668 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 17C8BC 8013366C AFB00018 */        sw $s0, 0x18($sp)
   /* 17C8C0 80133670 28810060 */      slti $at, $a0, 0x60
@@ -1939,12 +1939,12 @@ glabel func_ovl56_80133668
   /* 17C940 801336F0 03E00008 */        jr $ra
   /* 17C944 801336F4 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl56_801336F8
+glabel gmStageClearUpdateGetBonusStatPointsAll
   /* 17C948 801336F8 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 17C94C 801336FC 3C018013 */       lui $at, %hi(D_ovl56_80135354)
   /* 17C950 80133700 AFB20024 */        sw $s2, 0x24($sp)
   /* 17C954 80133704 3C028013 */       lui $v0, %hi(D_ovl56_80135358)
-  /* 17C958 80133708 3C038013 */       lui $v1, %hi(sGmStageClearBonusObjectiveGObj)
+  /* 17C958 80133708 3C038013 */       lui $v1, %hi(sGmStageClearBonusObjectiveGObjs)
   /* 17C95C 8013370C AFBF003C */        sw $ra, 0x3c($sp)
   /* 17C960 80133710 AFB70038 */        sw $s7, 0x38($sp)
   /* 17C964 80133714 AFB60034 */        sw $s6, 0x34($sp)
@@ -1955,7 +1955,7 @@ glabel func_ovl56_801336F8
   /* 17C978 80133728 AFB0001C */        sw $s0, 0x1c($sp)
   /* 17C97C 8013372C F7B40010 */      sdc1 $f20, 0x10($sp)
   /* 17C980 80133730 00009025 */        or $s2, $zero, $zero
-  /* 17C984 80133734 24635378 */     addiu $v1, $v1, %lo(sGmStageClearBonusObjectiveGObj)
+  /* 17C984 80133734 24635378 */     addiu $v1, $v1, %lo(sGmStageClearBonusObjectiveGObjs)
   /* 17C988 80133738 24425358 */     addiu $v0, $v0, %lo(D_ovl56_80135358)
   /* 17C98C 8013373C AC205350 */        sw $zero, %lo(sGmStageClearBonusStatGObjs)($at)
   /* 17C990 80133740 AC205354 */        sw $zero, %lo(D_ovl56_80135354)($at)
@@ -1968,41 +1968,41 @@ glabel func_ovl56_801336F8
   /* 17C9A8 80133758 AC40FFF0 */        sw $zero, -0x10($v0) # D_ovl56_80135358 + -16
   /* 17C9AC 8013375C 3C018013 */       lui $at, %hi(D_ovl56_80135334)
   /* 17C9B0 80133760 AC205334 */        sw $zero, %lo(D_ovl56_80135334)($at)
-  /* 17C9B4 80133764 3C108013 */       lui $s0, %hi(D_ovl56_80135330)
+  /* 17C9B4 80133764 3C108013 */       lui $s0, %hi(sGmStageClearBonusNum)
   /* 17C9B8 80133768 3C0142A0 */       lui $at, (0x42A00000 >> 16) # 80.0
-  /* 17C9BC 8013376C 26105330 */     addiu $s0, $s0, %lo(D_ovl56_80135330)
+  /* 17C9BC 8013376C 26105330 */     addiu $s0, $s0, %lo(sGmStageClearBonusNum)
   /* 17C9C0 80133770 3C168013 */       lui $s6, %hi(sGmStageClearBonusMasks)
-  /* 17C9C4 80133774 3C118013 */       lui $s1, %hi(D_ovl56_8013532C)
+  /* 17C9C4 80133774 3C118013 */       lui $s1, %hi(sGmStageClearBonusID)
   /* 17C9C8 80133778 4481A000 */      mtc1 $at, $f20 # 80.0 to cop1
-  /* 17C9CC 8013377C AE000000 */        sw $zero, ($s0) # D_ovl56_80135330 + 0
-  /* 17C9D0 80133780 2631532C */     addiu $s1, $s1, %lo(D_ovl56_8013532C)
+  /* 17C9CC 8013377C AE000000 */        sw $zero, ($s0) # sGmStageClearBonusNum + 0
+  /* 17C9D0 80133780 2631532C */     addiu $s1, $s1, %lo(sGmStageClearBonusID)
   /* 17C9D4 80133784 26D65320 */     addiu $s6, $s6, %lo(sGmStageClearBonusMasks)
   /* 17C9D8 80133788 2417000B */     addiu $s7, $zero, 0xb
   /* 17C9DC 8013378C 27B50048 */     addiu $s5, $sp, 0x48
   /* 17C9E0 80133790 24140009 */     addiu $s4, $zero, 9
   /* 17C9E4 80133794 24130060 */     addiu $s3, $zero, 0x60
   .L80133798:
-  /* 17C9E8 80133798 8E250000 */        lw $a1, ($s1) # D_ovl56_8013532C + 0
+  /* 17C9E8 80133798 8E250000 */        lw $a1, ($s1) # sGmStageClearBonusID + 0
   /* 17C9EC 8013379C 16650005 */       bne $s3, $a1, .L801337B4
   /* 17C9F0 801337A0 240E0001 */     addiu $t6, $zero, 1
-  /* 17C9F4 801337A4 3C018013 */       lui $at, %hi(D_ovl56_80135338)
-  /* 17C9F8 801337A8 AC2E5338 */        sw $t6, %lo(D_ovl56_80135338)($at)
+  /* 17C9F4 801337A4 3C018013 */       lui $at, %hi(sGmStageClearIsAdvance)
+  /* 17C9F8 801337A8 AC2E5338 */        sw $t6, %lo(sGmStageClearIsAdvance)($at)
   /* 17C9FC 801337AC 10000030 */         b .L80133870
   /* 17CA00 801337B0 02401025 */        or $v0, $s2, $zero
   .L801337B4:
-  /* 17CA04 801337B4 8E0F0000 */        lw $t7, ($s0) # D_ovl56_80135330 + 0
+  /* 17CA04 801337B4 8E0F0000 */        lw $t7, ($s0) # sGmStageClearBonusNum + 0
   /* 17CA08 801337B8 168F000D */       bne $s4, $t7, .L801337F0
   /* 17CA0C 801337BC 00000000 */       nop 
-  /* 17CA10 801337C0 0C04CD9A */       jal func_ovl56_80133668
+  /* 17CA10 801337C0 0C04CD9A */       jal gmStageClearCheckHaveBonusID
   /* 17CA14 801337C4 00A02025 */        or $a0, $a1, $zero
   /* 17CA18 801337C8 14400005 */      bnez $v0, .L801337E0
   /* 17CA1C 801337CC 24180001 */     addiu $t8, $zero, 1
-  /* 17CA20 801337D0 3C018013 */       lui $at, %hi(D_ovl56_80135338)
-  /* 17CA24 801337D4 AC385338 */        sw $t8, %lo(D_ovl56_80135338)($at)
+  /* 17CA20 801337D0 3C018013 */       lui $at, %hi(sGmStageClearIsAdvance)
+  /* 17CA24 801337D4 AC385338 */        sw $t8, %lo(sGmStageClearIsAdvance)($at)
   /* 17CA28 801337D8 10000025 */         b .L80133870
   /* 17CA2C 801337DC 02401025 */        or $v0, $s2, $zero
   .L801337E0:
-  /* 17CA30 801337E0 0C04CD68 */       jal func_ovl56_801335A0
+  /* 17CA30 801337E0 0C04CD68 */       jal gmStageClearMakeBonusPageArrow
   /* 17CA34 801337E4 00000000 */       nop 
   /* 17CA38 801337E8 10000021 */         b .L80133870
   /* 17CA3C 801337EC 02401025 */        or $v0, $s2, $zero
@@ -2018,10 +2018,10 @@ glabel func_ovl56_801336F8
   /* 17CA60 80133810 016C6804 */      sllv $t5, $t4, $t3
   /* 17CA64 80133814 014D7024 */       and $t6, $t2, $t5
   /* 17CA68 80133818 51C00012 */      beql $t6, $zero, .L80133864
-  /* 17CA6C 8013381C 8E290000 */        lw $t1, ($s1) # D_ovl56_8013532C + 0
-  /* 17CA70 80133820 8E050000 */        lw $a1, ($s0) # D_ovl56_80135330 + 0
+  /* 17CA6C 8013381C 8E290000 */        lw $t1, ($s1) # sGmStageClearBonusID + 0
+  /* 17CA70 80133820 8E050000 */        lw $a1, ($s0) # sGmStageClearBonusNum + 0
   /* 17CA74 80133824 4406A000 */      mfc1 $a2, $f20
-  /* 17CA78 80133828 8E240000 */        lw $a0, ($s1) # D_ovl56_8013532C + 0
+  /* 17CA78 80133828 8E240000 */        lw $a0, ($s1) # sGmStageClearBonusID + 0
   /* 17CA7C 8013382C 00B70019 */     multu $a1, $s7
   /* 17CA80 80133830 00007812 */      mflo $t7
   /* 17CA84 80133834 25F80056 */     addiu $t8, $t7, 0x56
@@ -2031,15 +2031,15 @@ glabel func_ovl56_801336F8
   /* 17CA94 80133844 44072000 */      mfc1 $a3, $f4
   /* 17CA98 80133848 0C04CC7B */       jal gmStageClearAppendBonusStatGetPoints
   /* 17CA9C 8013384C 00000000 */       nop 
-  /* 17CAA0 80133850 8E190000 */        lw $t9, ($s0) # D_ovl56_80135330 + 0
+  /* 17CAA0 80133850 8E190000 */        lw $t9, ($s0) # sGmStageClearBonusNum + 0
   /* 17CAA4 80133854 02429021 */      addu $s2, $s2, $v0
   /* 17CAA8 80133858 27280001 */     addiu $t0, $t9, 1
-  /* 17CAAC 8013385C AE080000 */        sw $t0, ($s0) # D_ovl56_80135330 + 0
-  /* 17CAB0 80133860 8E290000 */        lw $t1, ($s1) # D_ovl56_8013532C + 0
+  /* 17CAAC 8013385C AE080000 */        sw $t0, ($s0) # sGmStageClearBonusNum + 0
+  /* 17CAB0 80133860 8E290000 */        lw $t1, ($s1) # sGmStageClearBonusID + 0
   .L80133864:
   /* 17CAB4 80133864 252C0001 */     addiu $t4, $t1, 1
   /* 17CAB8 80133868 1000FFCB */         b .L80133798
-  /* 17CABC 8013386C AE2C0000 */        sw $t4, ($s1) # D_ovl56_8013532C + 0
+  /* 17CABC 8013386C AE2C0000 */        sw $t4, ($s1) # sGmStageClearBonusID + 0
   .L80133870:
   /* 17CAC0 80133870 8FBF003C */        lw $ra, 0x3c($sp)
   /* 17CAC4 80133874 D7B40010 */      ldc1 $f20, 0x10($sp)
@@ -2054,7 +2054,7 @@ glabel func_ovl56_801336F8
   /* 17CAE8 80133898 03E00008 */        jr $ra
   /* 17CAEC 8013389C 27BD0060 */     addiu $sp, $sp, 0x60
 
-glabel func_ovl56_801338A0
+glabel gmStageClearMakeBonusTable
   /* 17CAF0 801338A0 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 17CAF4 801338A4 AFBF001C */        sw $ra, 0x1c($sp)
   /* 17CAF8 801338A8 00002025 */        or $a0, $zero, $zero
@@ -2128,7 +2128,7 @@ glabel func_ovl56_801338A0
   /* 17CC08 801339B8 03E00008 */        jr $ra
   /* 17CC0C 801339BC 00000000 */       nop 
 
-glabel func_ovl56_801339C0
+glabel gmStageClearFrameCopyBackgroundProcRender
   /* 17CC10 801339C0 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 17CC14 801339C4 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 17CC18 801339C8 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
@@ -2194,7 +2194,7 @@ glabel func_ovl56_801339C0
   /* 17CD08 80133AB8 03E00008 */        jr $ra
   /* 17CD0C 80133ABC 00000000 */       nop 
 
-glabel func_ovl56_80133AC0
+glabel gmStageClearMakeFrameCopyBackground
   /* 17CD10 80133AC0 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 17CD14 80133AC4 AFBF001C */        sw $ra, 0x1c($sp)
   /* 17CD18 80133AC8 00002025 */        or $a0, $zero, $zero
@@ -2202,11 +2202,11 @@ glabel func_ovl56_80133AC0
   /* 17CD20 80133AD0 24060012 */     addiu $a2, $zero, 0x12
   /* 17CD24 80133AD4 0C00265A */       jal omMakeGObjCommon
   /* 17CD28 80133AD8 3C078000 */       lui $a3, 0x8000
-  /* 17CD2C 80133ADC 3C058013 */       lui $a1, %hi(func_ovl56_801339C0)
+  /* 17CD2C 80133ADC 3C058013 */       lui $a1, %hi(gmStageClearFrameCopyBackgroundProcRender)
   /* 17CD30 80133AE0 240EFFFF */     addiu $t6, $zero, -1
   /* 17CD34 80133AE4 AFA20024 */        sw $v0, 0x24($sp)
   /* 17CD38 80133AE8 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 17CD3C 80133AEC 24A539C0 */     addiu $a1, $a1, %lo(func_ovl56_801339C0)
+  /* 17CD3C 80133AEC 24A539C0 */     addiu $a1, $a1, %lo(gmStageClearFrameCopyBackgroundProcRender)
   /* 17CD40 80133AF0 00402025 */        or $a0, $v0, $zero
   /* 17CD44 80133AF4 2406001B */     addiu $a2, $zero, 0x1b
   /* 17CD48 80133AF8 0C00277D */       jal omAddGObjRenderProc
@@ -2384,14 +2384,14 @@ glabel func_ovl56_80133C88
   /* 17CFD4 80133D84 AC580008 */        sw $t8, 8($v0) # sGmStageClearBonusMasks + 8
   /* 17CFD8 80133D88 3C018013 */       lui $at, %hi(D_ovl56_801352D8)
   /* 17CFDC 80133D8C AC2252D8 */        sw $v0, %lo(D_ovl56_801352D8)($at)
-  /* 17CFE0 80133D90 3C018013 */       lui $at, %hi(D_ovl56_8013532C)
-  /* 17CFE4 80133D94 AC20532C */        sw $zero, %lo(D_ovl56_8013532C)($at)
+  /* 17CFE0 80133D90 3C018013 */       lui $at, %hi(sGmStageClearBonusID)
+  /* 17CFE4 80133D94 AC20532C */        sw $zero, %lo(sGmStageClearBonusID)($at)
   /* 17CFE8 80133D98 3C018013 */       lui $at, %hi(D_ovl56_801353A0)
-  /* 17CFEC 80133D9C 3C028013 */       lui $v0, %hi(sGmStageClearBonusObjectiveGObj)
+  /* 17CFEC 80133D9C 3C028013 */       lui $v0, %hi(sGmStageClearBonusObjectiveGObjs)
   /* 17CFF0 80133DA0 3C038013 */       lui $v1, %hi(sGmStageClearBonusStatGObjs)
   /* 17CFF4 80133DA4 AC2053A0 */        sw $zero, %lo(D_ovl56_801353A0)($at)
   /* 17CFF8 80133DA8 24635350 */     addiu $v1, $v1, %lo(sGmStageClearBonusStatGObjs)
-  /* 17CFFC 80133DAC 24425378 */     addiu $v0, $v0, %lo(sGmStageClearBonusObjectiveGObj)
+  /* 17CFFC 80133DAC 24425378 */     addiu $v0, $v0, %lo(sGmStageClearBonusObjectiveGObjs)
   .L80133DB0:
   /* 17D000 80133DB0 24630004 */     addiu $v1, $v1, 4
   /* 17D004 80133DB4 0062082B */      sltu $at, $v1, $v0
@@ -2402,7 +2402,7 @@ glabel func_ovl56_80133C88
   /* 17D018 80133DC8 3C038013 */       lui $v1, %hi(D_ovl56_801353A0)
   /* 17D01C 80133DCC 246353A0 */     addiu $v1, $v1, %lo(D_ovl56_801353A0)
   /* 17D020 80133DD0 24425380 */     addiu $v0, $v0, %lo(D_ovl56_80135380)
-  /* 17D024 80133DD4 AC205378 */        sw $zero, %lo(sGmStageClearBonusObjectiveGObj)($at)
+  /* 17D024 80133DD4 AC205378 */        sw $zero, %lo(sGmStageClearBonusObjectiveGObjs)($at)
   /* 17D028 80133DD8 AC20537C */        sw $zero, %lo(D_ovl56_8013537C)($at)
   .L80133DDC:
   /* 17D02C 80133DDC 24420010 */     addiu $v0, $v0, 0x10
@@ -2421,8 +2421,8 @@ glabel func_ovl56_80133C88
   /* 17D060 80133E10 AC205334 */        sw $zero, %lo(D_ovl56_80135334)($at)
   /* 17D064 80133E14 3C028013 */       lui $v0, %hi(sGmStageClearKind)
   /* 17D068 80133E18 8C4252D4 */        lw $v0, %lo(sGmStageClearKind)($v0)
-  /* 17D06C 80133E1C 3C018013 */       lui $at, %hi(D_ovl56_80135338)
-  /* 17D070 80133E20 AC205338 */        sw $zero, %lo(D_ovl56_80135338)($at)
+  /* 17D06C 80133E1C 3C018013 */       lui $at, %hi(sGmStageClearIsAdvance)
+  /* 17D070 80133E20 AC205338 */        sw $zero, %lo(sGmStageClearIsAdvance)($at)
   /* 17D074 80133E24 3C018013 */       lui $at, %hi(D_ovl56_8013533C)
   /* 17D078 80133E28 10400004 */      beqz $v0, .L80133E3C
   /* 17D07C 80133E2C AC20533C */        sw $zero, %lo(D_ovl56_8013533C)($at)
@@ -2430,7 +2430,7 @@ glabel func_ovl56_80133C88
   /* 17D084 80133E34 5441002A */      bnel $v0, $at, .L80133EE0
   /* 17D088 80133E38 8FBF0014 */        lw $ra, 0x14($sp)
   .L80133E3C:
-  /* 17D08C 80133E3C 0C04CFCA */       jal func_ovl56_80133F28
+  /* 17D08C 80133E3C 0C04CFCA */       jal gmStageClearCheckHaveTimer
   /* 17D090 80133E40 00000000 */       nop 
   /* 17D094 80133E44 1040000E */      beqz $v0, .L80133E80
   /* 17D098 80133E48 240B000A */     addiu $t3, $zero, 0xa
@@ -2478,7 +2478,7 @@ glabel func_ovl56_80133C88
   /* 17D134 80133EE4 03E00008 */        jr $ra
   /* 17D138 80133EE8 00000000 */       nop 
 
-glabel func_ovl56_80133EEC
+glabel gmStageClearUpdateTotal1PGameScore
   /* 17D13C 80133EEC 3C0E8013 */       lui $t6, %hi(sGmStageClearScoreTotal)
   /* 17D140 80133EF0 8DCE52E8 */        lw $t6, %lo(sGmStageClearScoreTotal)($t6)
   /* 17D144 80133EF4 3C01800A */       lui $at, %hi((gSceneData + 0x20))
@@ -2497,7 +2497,7 @@ glabel func_ovl56_80133F00
   /* 17D170 80133F20 03E00008 */        jr $ra
   /* 17D174 80133F24 00000000 */       nop 
 
-glabel func_ovl56_80133F28
+glabel gmStageClearCheckHaveTimer
   /* 17D178 80133F28 3C0E800A */       lui $t6, %hi((gSceneData + 0x16))
   /* 17D17C 80133F2C 91CE4AE6 */       lbu $t6, %lo((gSceneData + 0x16))($t6)
   /* 17D180 80133F30 24010064 */     addiu $at, $zero, 0x64
@@ -2522,8 +2522,8 @@ glabel func_ovl56_80133F50
   /* 17D1BC 80133F6C 144E0022 */       bne $v0, $t6, .L80133FF8
   /* 17D1C0 80133F70 AFB00014 */        sw $s0, 0x14($sp)
   /* 17D1C4 80133F74 3C108013 */       lui $s0, %hi(sGmStageClearBonusStatGObjs)
-  /* 17D1C8 80133F78 3C118013 */       lui $s1, %hi(sGmStageClearBonusObjectiveGObj)
-  /* 17D1CC 80133F7C 26315378 */     addiu $s1, $s1, %lo(sGmStageClearBonusObjectiveGObj)
+  /* 17D1C8 80133F78 3C118013 */       lui $s1, %hi(sGmStageClearBonusObjectiveGObjs)
+  /* 17D1CC 80133F7C 26315378 */     addiu $s1, $s1, %lo(sGmStageClearBonusObjectiveGObjs)
   /* 17D1D0 80133F80 26105350 */     addiu $s0, $s0, %lo(sGmStageClearBonusStatGObjs)
   /* 17D1D4 80133F84 8E040000 */        lw $a0, ($s0) # sGmStageClearBonusStatGObjs + 0
   .L80133F88:
@@ -2535,19 +2535,19 @@ glabel func_ovl56_80133F50
   .L80133F9C:
   /* 17D1EC 80133F9C 5611FFFA */      bnel $s0, $s1, .L80133F88
   /* 17D1F0 80133FA0 8E040000 */        lw $a0, ($s0) # sGmStageClearBonusStatGObjs + 0
-  /* 17D1F4 80133FA4 0C04CDBE */       jal func_ovl56_801336F8
+  /* 17D1F4 80133FA4 0C04CDBE */       jal gmStageClearUpdateGetBonusStatPointsAll
   /* 17D1F8 80133FA8 00000000 */       nop 
   /* 17D1FC 80133FAC 3C038013 */       lui $v1, %hi(sGmStageClearScoreTotal)
   /* 17D200 80133FB0 246352E8 */     addiu $v1, $v1, %lo(sGmStageClearScoreTotal)
   /* 17D204 80133FB4 8C6F0000 */        lw $t7, ($v1) # sGmStageClearScoreTotal + 0
-  /* 17D208 80133FB8 3C088013 */       lui $t0, %hi(D_ovl56_80135330)
+  /* 17D208 80133FB8 3C088013 */       lui $t0, %hi(sGmStageClearBonusNum)
   /* 17D20C 80133FBC 3C0A8013 */       lui $t2, %hi(D_ovl56_801352CC)
   /* 17D210 80133FC0 01E2C021 */      addu $t8, $t7, $v0
   /* 17D214 80133FC4 07010002 */      bgez $t8, .L80133FD0
   /* 17D218 80133FC8 AC780000 */        sw $t8, ($v1) # sGmStageClearScoreTotal + 0
   /* 17D21C 80133FCC AC600000 */        sw $zero, ($v1) # sGmStageClearScoreTotal + 0
   .L80133FD0:
-  /* 17D220 80133FD0 8D085330 */        lw $t0, %lo(D_ovl56_80135330)($t0)
+  /* 17D220 80133FD0 8D085330 */        lw $t0, %lo(sGmStageClearBonusNum)($t0)
   /* 17D224 80133FD4 8D4A52CC */        lw $t2, %lo(D_ovl56_801352CC)($t2)
   /* 17D228 80133FD8 3C018013 */       lui $at, %hi(D_ovl56_80135344)
   /* 17D22C 80133FDC 00084880 */       sll $t1, $t0, 2
@@ -2568,8 +2568,8 @@ glabel func_ovl56_80133F50
   /* 17D264 80134014 8C845310 */        lw $a0, %lo(sGmStageClearScoreTextGObj)($a0)
   /* 17D268 80134018 0C04CFC0 */       jal func_ovl56_80133F00
   /* 17D26C 8013401C 00000000 */       nop 
-  /* 17D270 80134020 3C0F8013 */       lui $t7, %hi(D_ovl56_80135338)
-  /* 17D274 80134024 8DEF5338 */        lw $t7, %lo(D_ovl56_80135338)($t7)
+  /* 17D270 80134020 3C0F8013 */       lui $t7, %hi(sGmStageClearIsAdvance)
+  /* 17D274 80134024 8DEF5338 */        lw $t7, %lo(sGmStageClearIsAdvance)($t7)
   /* 17D278 80134028 240E0001 */     addiu $t6, $zero, 1
   /* 17D27C 8013402C 3C018013 */       lui $at, %hi(D_ovl56_80135334)
   /* 17D280 80134030 11E0000D */      beqz $t7, .L80134068
@@ -2595,10 +2595,10 @@ glabel func_ovl56_80133F50
   /* 17D2C4 80134074 03E00008 */        jr $ra
   /* 17D2C8 80134078 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl56_8013407C
+glabel gmStageClearUpdateGameClearScore
   /* 17D2CC 8013407C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 17D2D0 80134080 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 17D2D4 80134084 0C04CFCA */       jal func_ovl56_80133F28
+  /* 17D2D4 80134084 0C04CFCA */       jal gmStageClearCheckHaveTimer
   /* 17D2D8 80134088 00000000 */       nop 
   /* 17D2DC 8013408C 14400031 */      bnez $v0, .L80134154
   /* 17D2E0 80134090 3C038013 */       lui $v1, %hi(D_ovl56_801352CC)
@@ -2654,7 +2654,7 @@ glabel func_ovl56_8013407C
   /* 17D39C 8013414C 0C04CFC0 */       jal func_ovl56_80133F00
   /* 17D3A0 80134150 00000000 */       nop 
   .L80134154:
-  /* 17D3A4 80134154 0C04CFCA */       jal func_ovl56_80133F28
+  /* 17D3A4 80134154 0C04CFCA */       jal gmStageClearCheckHaveTimer
   /* 17D3A8 80134158 00000000 */       nop 
   /* 17D3AC 8013415C 14400005 */      bnez $v0, .L80134174
   /* 17D3B0 80134160 3C038013 */       lui $v1, %hi(D_ovl56_801352CC)
@@ -2773,7 +2773,7 @@ glabel func_ovl56_8013407C
   /* 17D554 80134304 0C0026A1 */       jal omEjectGObjCommon
   /* 17D558 80134308 8C845304 */        lw $a0, %lo(sGmStageClearDamageMultiplierGObj)($a0)
   /* 17D55C 8013430C 3C018013 */       lui $at, %hi(sGmStageClearDamageMultiplierGObj)
-  /* 17D560 80134310 0C04CE28 */       jal func_ovl56_801338A0
+  /* 17D560 80134310 0C04CE28 */       jal gmStageClearMakeBonusTable
   /* 17D564 80134314 AC205304 */        sw $zero, %lo(sGmStageClearDamageMultiplierGObj)($at)
   /* 17D568 80134318 3C028013 */       lui $v0, %hi(D_ovl56_801352D8)
   /* 17D56C 8013431C 8C4252D8 */        lw $v0, %lo(D_ovl56_801352D8)($v0)
@@ -2788,10 +2788,10 @@ glabel func_ovl56_8013407C
   /* 17D588 80134338 03E00008 */        jr $ra
   /* 17D58C 8013433C 00000000 */       nop 
 
-glabel func_ovl56_80134340
+glabel gmStageClearUpdateStageClearScore
   /* 17D590 80134340 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 17D594 80134344 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 17D598 80134348 0C04CFCA */       jal func_ovl56_80133F28
+  /* 17D598 80134348 0C04CFCA */       jal gmStageClearCheckHaveTimer
   /* 17D59C 8013434C 00000000 */       nop 
   /* 17D5A0 80134350 14400031 */      bnez $v0, .L80134418
   /* 17D5A4 80134354 3C038013 */       lui $v1, %hi(D_ovl56_801352CC)
@@ -2847,7 +2847,7 @@ glabel func_ovl56_80134340
   /* 17D660 80134410 0C04CFC0 */       jal func_ovl56_80133F00
   /* 17D664 80134414 00000000 */       nop 
   .L80134418:
-  /* 17D668 80134418 0C04CFCA */       jal func_ovl56_80133F28
+  /* 17D668 80134418 0C04CFCA */       jal gmStageClearCheckHaveTimer
   /* 17D66C 8013441C 00000000 */       nop 
   /* 17D670 80134420 14400005 */      bnez $v0, .L80134438
   /* 17D674 80134424 3C038013 */       lui $v1, %hi(D_ovl56_801352CC)
@@ -2966,7 +2966,7 @@ glabel func_ovl56_80134340
   /* 17D818 801345C8 0C0026A1 */       jal omEjectGObjCommon
   /* 17D81C 801345CC 8C845304 */        lw $a0, %lo(sGmStageClearDamageMultiplierGObj)($a0)
   /* 17D820 801345D0 3C018013 */       lui $at, %hi(sGmStageClearDamageMultiplierGObj)
-  /* 17D824 801345D4 0C04CE28 */       jal func_ovl56_801338A0
+  /* 17D824 801345D4 0C04CE28 */       jal gmStageClearMakeBonusTable
   /* 17D828 801345D8 AC205304 */        sw $zero, %lo(sGmStageClearDamageMultiplierGObj)($at)
   /* 17D82C 801345DC 3C028013 */       lui $v0, %hi(D_ovl56_801352D8)
   /* 17D830 801345E0 8C4252D8 */        lw $v0, %lo(D_ovl56_801352D8)($v0)
@@ -2981,7 +2981,7 @@ glabel func_ovl56_80134340
   /* 17D84C 801345FC 03E00008 */        jr $ra
   /* 17D850 80134600 00000000 */       nop 
 
-glabel func_ovl56_80134604
+glabel gmStageClearUpdateResultScore
   /* 17D854 80134604 3C058013 */       lui $a1, %hi(sGmStageClear1PGameStage)
   /* 17D858 80134608 24A552EC */     addiu $a1, $a1, %lo(sGmStageClear1PGameStage)
   /* 17D85C 8013460C 8CAE0000 */        lw $t6, ($a1) # sGmStageClear1PGameStage + 0
@@ -3030,7 +3030,7 @@ glabel func_ovl56_80134604
   /* 17D8F8 801346A8 8D2953A0 */        lw $t1, %lo(D_ovl56_801353A0)($t1)
   /* 17D8FC 801346AC 11200090 */      beqz $t1, .L801348F0
   /* 17D900 801346B0 00000000 */       nop 
-  /* 17D904 801346B4 0C04CFCA */       jal func_ovl56_80133F28
+  /* 17D904 801346B4 0C04CFCA */       jal gmStageClearCheckHaveTimer
   /* 17D908 801346B8 00000000 */       nop 
   /* 17D90C 801346BC 3C058013 */       lui $a1, %hi(sGmStageClear1PGameStage)
   /* 17D910 801346C0 3C078013 */       lui $a3, %hi(sGmStageClearBonusObjectivesCleared)
@@ -3209,10 +3209,10 @@ glabel func_ovl56_80134604
   /* 17DB94 80134944 0C0026A1 */       jal omEjectGObjCommon
   /* 17DB98 80134948 00000000 */       nop 
   /* 17DB9C 8013494C 3C018013 */       lui $at, %hi(sGmStageClearTargetGObj)
-  /* 17DBA0 80134950 3C028013 */       lui $v0, %hi(sGmStageClearBonusObjectiveGObj)
+  /* 17DBA0 80134950 3C028013 */       lui $v0, %hi(sGmStageClearBonusObjectiveGObjs)
   /* 17DBA4 80134954 AC205318 */        sw $zero, %lo(sGmStageClearTargetGObj)($at)
-  /* 17DBA8 80134958 24425378 */     addiu $v0, $v0, %lo(sGmStageClearBonusObjectiveGObj)
-  /* 17DBAC 8013495C 8C440000 */        lw $a0, ($v0) # sGmStageClearBonusObjectiveGObj + 0
+  /* 17DBA8 80134958 24425378 */     addiu $v0, $v0, %lo(sGmStageClearBonusObjectiveGObjs)
+  /* 17DBAC 8013495C 8C440000 */        lw $a0, ($v0) # sGmStageClearBonusObjectiveGObjs + 0
   .L80134960:
   /* 17DBB0 80134960 10800005 */      beqz $a0, .L80134978
   /* 17DBB4 80134964 00000000 */       nop 
@@ -3241,7 +3241,7 @@ glabel func_ovl56_80134604
   /* 17DC08 801349B8 3C018013 */       lui $at, %hi(sGmStageClearTimerMultiplierGObj)
   /* 17DC0C 801349BC AC2052FC */        sw $zero, %lo(sGmStageClearTimerMultiplierGObj)($at)
   .L801349C0:
-  /* 17DC10 801349C0 0C04CE28 */       jal func_ovl56_801338A0
+  /* 17DC10 801349C0 0C04CE28 */       jal gmStageClearMakeBonusTable
   /* 17DC14 801349C4 00000000 */       nop 
   /* 17DC18 801349C8 3C028013 */       lui $v0, %hi(D_ovl56_801352D8)
   /* 17DC1C 801349CC 8C4252D8 */        lw $v0, %lo(D_ovl56_801352D8)($v0)
@@ -3281,7 +3281,7 @@ glabel func_ovl56_801349F0
   /* 17DC94 80134A44 90480000 */       lbu $t0, ($v0) # gSceneData + 0
   /* 17DC98 80134A48 24090001 */     addiu $t1, $zero, 1
   /* 17DC9C 80134A4C A0490000 */        sb $t1, ($v0) # gSceneData + 0
-  /* 17DCA0 80134A50 0C04CFBB */       jal func_ovl56_80133EEC
+  /* 17DCA0 80134A50 0C04CFBB */       jal gmStageClearUpdateTotal1PGameScore
   /* 17DCA4 80134A54 A0480001 */        sb $t0, 1($v0) # gSceneData + 1
   /* 17DCA8 80134A58 0C00171D */       jal func_80005C74
   /* 17DCAC 80134A5C 00000000 */       nop 
@@ -3289,10 +3289,10 @@ glabel func_ovl56_801349F0
   /* 17DCB4 80134A64 00000000 */       nop 
   .L80134A68:
   /* 17DCB8 80134A68 8D4A5334 */        lw $t2, 0x5334($t2)
-  /* 17DCBC 80134A6C 3C0B8013 */       lui $t3, %hi(D_ovl56_80135338)
+  /* 17DCBC 80134A6C 3C0B8013 */       lui $t3, %hi(sGmStageClearIsAdvance)
   /* 17DCC0 80134A70 11400007 */      beqz $t2, .L80134A90
   /* 17DCC4 80134A74 00000000 */       nop 
-  /* 17DCC8 80134A78 8D6B5338 */        lw $t3, %lo(D_ovl56_80135338)($t3)
+  /* 17DCC8 80134A78 8D6B5338 */        lw $t3, %lo(sGmStageClearIsAdvance)($t3)
   /* 17DCCC 80134A7C 15600004 */      bnez $t3, .L80134A90
   /* 17DCD0 80134A80 00000000 */       nop 
   /* 17DCD4 80134A84 8C6C0000 */        lw $t4, ($v1)
@@ -3311,17 +3311,17 @@ glabel func_ovl56_801349F0
   /* 17DD04 80134AB4 1000000C */         b .L80134AE8
   /* 17DD08 80134AB8 8FBF0014 */        lw $ra, 0x14($sp)
   .L80134ABC:
-  /* 17DD0C 80134ABC 0C04D01F */       jal func_ovl56_8013407C
+  /* 17DD0C 80134ABC 0C04D01F */       jal gmStageClearUpdateGameClearScore
   /* 17DD10 80134AC0 00000000 */       nop 
   /* 17DD14 80134AC4 10000008 */         b .L80134AE8
   /* 17DD18 80134AC8 8FBF0014 */        lw $ra, 0x14($sp)
   .L80134ACC:
-  /* 17DD1C 80134ACC 0C04D0D0 */       jal func_ovl56_80134340
+  /* 17DD1C 80134ACC 0C04D0D0 */       jal gmStageClearUpdateStageClearScore
   /* 17DD20 80134AD0 00000000 */       nop 
   /* 17DD24 80134AD4 10000004 */         b .L80134AE8
   /* 17DD28 80134AD8 8FBF0014 */        lw $ra, 0x14($sp)
   .L80134ADC:
-  /* 17DD2C 80134ADC 0C04D181 */       jal func_ovl56_80134604
+  /* 17DD2C 80134ADC 0C04D181 */       jal gmStageClearUpdateResultScore
   /* 17DD30 80134AE0 00000000 */       nop 
   .L80134AE4:
   /* 17DD34 80134AE4 8FBF0014 */        lw $ra, 0x14($sp)
@@ -3471,14 +3471,14 @@ glabel func_ovl56_80134CC4
   /* 17DF14 80134CC4 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 17DF18 80134CC8 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 17DF1C 80134CCC 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
-  /* 17DF20 80134CD0 3C188013 */       lui $t8, %hi(D_ovl56_801353D0)
-  /* 17DF24 80134CD4 3C088013 */       lui $t0, %hi(D_ovl56_80135550)
+  /* 17DF20 80134CD0 3C188013 */       lui $t8, %hi(sGmStageClearStatusBuf)
+  /* 17DF24 80134CD4 3C088013 */       lui $t0, %hi(sGmStageClearForceBuf)
   /* 17DF28 80134CD8 AFBF001C */        sw $ra, 0x1c($sp)
   /* 17DF2C 80134CDC 25CEC870 */     addiu $t6, $t6, %lo(D_NF_001AC870)
   /* 17DF30 80134CE0 25EF0854 */     addiu $t7, $t7, %lo(D_NF_00000854)
-  /* 17DF34 80134CE4 271853D0 */     addiu $t8, $t8, %lo(D_ovl56_801353D0)
+  /* 17DF34 80134CE4 271853D0 */     addiu $t8, $t8, %lo(sGmStageClearStatusBuf)
   /* 17DF38 80134CE8 24190030 */     addiu $t9, $zero, 0x30
-  /* 17DF3C 80134CEC 25085550 */     addiu $t0, $t0, %lo(D_ovl56_80135550)
+  /* 17DF3C 80134CEC 25085550 */     addiu $t0, $t0, %lo(sGmStageClearForceBuf)
   /* 17DF40 80134CF0 24090007 */     addiu $t1, $zero, 7
   /* 17DF44 80134CF4 AFAE002C */        sw $t6, 0x2c($sp)
   /* 17DF48 80134CF8 AFAF0030 */        sw $t7, 0x30($sp)
@@ -3490,17 +3490,17 @@ glabel func_ovl56_80134CC4
   /* 17DF60 80134D10 AFA90048 */        sw $t1, 0x48($sp)
   /* 17DF64 80134D14 0C0337DE */       jal rdManagerInitSetup
   /* 17DF68 80134D18 27A4002C */     addiu $a0, $sp, 0x2c
-  /* 17DF6C 80134D1C 3C048013 */       lui $a0, %hi(D_ovl56_80134EE0)
-  /* 17DF70 80134D20 24844EE0 */     addiu $a0, $a0, %lo(D_ovl56_80134EE0)
+  /* 17DF6C 80134D1C 3C048013 */       lui $a0, %hi(dGmStageClearFileIDs)
+  /* 17DF70 80134D20 24844EE0 */     addiu $a0, $a0, %lo(dGmStageClearFileIDs)
   /* 17DF74 80134D24 0C0337BB */       jal rdManagerGetAllocSize
   /* 17DF78 80134D28 24050007 */     addiu $a1, $zero, 7
   /* 17DF7C 80134D2C 00402025 */        or $a0, $v0, $zero
   /* 17DF80 80134D30 0C001260 */       jal gsMemoryAlloc
   /* 17DF84 80134D34 24050010 */     addiu $a1, $zero, 0x10
-  /* 17DF88 80134D38 3C048013 */       lui $a0, %hi(D_ovl56_80134EE0)
+  /* 17DF88 80134D38 3C048013 */       lui $a0, %hi(dGmStageClearFileIDs)
   /* 17DF8C 80134D3C 3C068013 */       lui $a2, %hi(sGmStageClearFiles)
   /* 17DF90 80134D40 24C65588 */     addiu $a2, $a2, %lo(sGmStageClearFiles)
-  /* 17DF94 80134D44 24844EE0 */     addiu $a0, $a0, %lo(D_ovl56_80134EE0)
+  /* 17DF94 80134D44 24844EE0 */     addiu $a0, $a0, %lo(dGmStageClearFileIDs)
   /* 17DF98 80134D48 24050007 */     addiu $a1, $zero, 7
   /* 17DF9C 80134D4C 0C033781 */       jal rdManagerLoadFiles
   /* 17DFA0 80134D50 00403825 */        or $a3, $v0, $zero
@@ -3524,7 +3524,7 @@ glabel func_ovl56_80134CC4
   /* 17DFE8 80134D98 00000000 */       nop 
   /* 17DFEC 80134D9C 0C04CEFA */       jal func_ovl56_80133BE8
   /* 17DFF0 80134DA0 00000000 */       nop 
-  /* 17DFF4 80134DA4 0C04CEB0 */       jal func_ovl56_80133AC0
+  /* 17DFF4 80134DA4 0C04CEB0 */       jal gmStageClearMakeFrameCopyBackground
   /* 17DFF8 80134DA8 00000000 */       nop 
   /* 17DFFC 80134DAC 0C04C84F */       jal gmStageClearMakeTextSObjs
   /* 17E000 80134DB0 00000000 */       nop 
@@ -3587,7 +3587,7 @@ glabel func_ovl56_80134CC4
   /* 17E0CC 80134E7C 03E00008 */        jr $ra
   /* 17E0D0 80134E80 00000000 */       nop 
 
-glabel overlay_set50_51_entry
+glabel gmStageClearStartScene
   /* 17E0D4 80134E84 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
   /* 17E0D8 80134E88 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 17E0DC 80134E8C 3C048013 */       lui $a0, %hi(D_ovl56_801351EC)

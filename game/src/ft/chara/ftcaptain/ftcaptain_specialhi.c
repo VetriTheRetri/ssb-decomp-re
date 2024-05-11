@@ -154,7 +154,7 @@ void ftCaptainSpecialHiProcCatch(GObj *fighter_gobj)
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Captain_SpecialHiCatch, 0.0F, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
     ftPhysics_StopVelAll(fighter_gobj);
 
     search_gobj = fp->search_gobj;
@@ -177,7 +177,7 @@ void ftCaptain_SpecialHiThrow_SetStatus(GObj *fighter_gobj)
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Captain_SpecialHiThrow, 0.0F, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_NONE);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_NONE);
 
     if ((fp->x192_flag_b3 == TRUE) && (fp->catch_gobj != NULL))
     {

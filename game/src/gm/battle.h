@@ -202,7 +202,8 @@ typedef enum gmStageClearKind
     gmStageClear_Kind_Stage,        // Normal stage clear
     gmStageClear_Kind_Game,         // Final stage clear
     gmStageClear_Kind_Result        // Bonus stage results
-};
+
+} gmStageClearKind;
 
 typedef enum gm1PGameBonus
 {
@@ -792,7 +793,7 @@ typedef struct gmBattleState
     u32 match_time_current; // Current match frame, counts up from 0
     u8 item_switch; // Has various settings (0x0 on Master Hand and Giant DK (?), 0x1 on Metal Mario battle, 0x2 on Hyrule Castle, 0x3 on various stages, 0x4 on Polygon Team?
     ub32 is_display_score : 1;      // Displays score when a fighter falls
-    ub32 is_ignore_teamshadow : 1;  // If FALSE, shadows are colored based on players' team affiliation, otherwise use default shadow color
+    ub32 is_not_teamshadows : 1;  // If FALSE, shadows are colored based on players' team affiliation, otherwise use default shadow color
     gmPlayerBlock player_block[GMMATCH_PLAYERS_MAX]; // Holds data for each player
 
 } gmBattleState;

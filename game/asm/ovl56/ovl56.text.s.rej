@@ -710,13 +710,13 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17C0BC 80132E6C 8FAE0038 */        lw $t6, 0x38($sp)
 -  /* 17C0C0 80132E70 3C018013 */       lui $at, %hi(D_ovl56_80135378)
 -  /* 17C0C4 80132E74 3C058013 */       lui $a1, %hi(func_ovl56_801320E0)
-+  /* 17C0C0 80132E70 3C018013 */       lui $at, %hi(sGmStageClearBonusObjectiveGObj)
++  /* 17C0C0 80132E70 3C018013 */       lui $at, %hi(sGmStageClearBonusObjectiveGObjs)
 +  /* 17C0C4 80132E74 3C058013 */       lui $a1, %hi(gmStageClearTextProcRender)
    /* 17C0C8 80132E78 000E7880 */       sll $t7, $t6, 2
    /* 17C0CC 80132E7C 002F0821 */      addu $at, $at, $t7
    /* 17C0D0 80132E80 2418FFFF */     addiu $t8, $zero, -1
 -  /* 17C0D4 80132E84 AC225378 */        sw $v0, %lo(D_ovl56_80135378)($at)
-+  /* 17C0D4 80132E84 AC225378 */        sw $v0, %lo(sGmStageClearBonusObjectiveGObj)($at)
++  /* 17C0D4 80132E84 AC225378 */        sw $v0, %lo(sGmStageClearBonusObjectiveGObjs)($at)
    /* 17C0D8 80132E88 00408025 */        or $s0, $v0, $zero
    /* 17C0DC 80132E8C AFB80010 */        sw $t8, 0x10($sp)
 -  /* 17C0E0 80132E90 24A520E0 */     addiu $a1, $a1, %lo(func_ovl56_801320E0)
@@ -879,14 +879,14 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17C7D4 80133584 AFA50064 */        sw $a1, 0x64($sp)
    /* 17C7D8 80133588 8FBF0034 */        lw $ra, 0x34($sp)
    /* 17C7DC 8013358C 8FA20064 */        lw $v0, 0x64($sp)
-@@ -1854,12 +1854,12 @@ glabel func_ovl56_801335A0
+@@ -1854,12 +1854,12 @@ glabel gmStageClearMakeBonusPageArrow
    /* 17C804 801335B4 0C00265A */       jal omMakeGObjCommon
    /* 17C808 801335B8 3C078000 */       lui $a3, 0x8000
-   /* 17C80C 801335BC 3C018013 */       lui $at, %hi(D_ovl56_80135374)
+   /* 17C80C 801335BC 3C018013 */       lui $at, %hi(sGmStageClearBonusPageArrowGObj)
 -  /* 17C810 801335C0 3C058013 */       lui $a1, %hi(func_ovl56_801320E0)
 +  /* 17C810 801335C0 3C058013 */       lui $a1, %hi(gmStageClearTextProcRender)
    /* 17C814 801335C4 240EFFFF */     addiu $t6, $zero, -1
-   /* 17C818 801335C8 AC225374 */        sw $v0, %lo(D_ovl56_80135374)($at)
+   /* 17C818 801335C8 AC225374 */        sw $v0, %lo(sGmStageClearBonusPageArrowGObj)($at)
    /* 17C81C 801335CC AFA20024 */        sw $v0, 0x24($sp)
    /* 17C820 801335D0 AFAE0010 */        sw $t6, 0x10($sp)
 -  /* 17C824 801335D4 24A520E0 */     addiu $a1, $a1, %lo(func_ovl56_801320E0)
@@ -894,7 +894,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17C828 801335D8 00402025 */        or $a0, $v0, $zero
    /* 17C82C 801335DC 2406001A */     addiu $a2, $zero, 0x1a
    /* 17C830 801335E0 0C00277D */       jal omAddGObjRenderProc
-@@ -1873,10 +1873,10 @@ glabel func_ovl56_801335A0
+@@ -1873,10 +1873,10 @@ glabel gmStageClearMakeBonusPageArrow
    /* 17C850 80133600 3C0F8013 */       lui $t7, %hi(D_ovl56_801352CC)
    /* 17C854 80133604 8DEF52CC */        lw $t7, %lo(D_ovl56_801352CC)($t7)
    /* 17C858 80133608 8FA40024 */        lw $a0, 0x24($sp)
@@ -907,7 +907,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17C86C 8013361C 3C080001 */       lui $t0, %hi(D_NF_0000B6A8)
    /* 17C870 80133620 2508B6A8 */     addiu $t0, $t0, %lo(D_NF_0000B6A8)
    /* 17C874 80133624 0C0333F7 */       jal gcAppendSObjWithSprite
-@@ -1906,12 +1906,12 @@ glabel func_ovl56_80133668
+@@ -1906,12 +1906,12 @@ glabel gmStageClearCheckHaveBonusID
    /* 17C8CC 8013367C AFB20020 */        sw $s2, 0x20($sp)
    /* 17C8D0 80133680 10200016 */      beqz $at, .L801336DC
    /* 17C8D4 80133684 AFB1001C */        sw $s1, 0x1c($sp)
@@ -923,40 +923,40 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17C8EC 8013369C 02002825 */        or $a1, $s0, $zero
    /* 17C8F0 801336A0 8FAE0028 */        lw $t6, 0x28($sp)
    /* 17C8F4 801336A4 8FA8002C */        lw $t0, 0x2c($sp)
-@@ -1944,7 +1944,7 @@ glabel func_ovl56_801336F8
+@@ -1944,7 +1944,7 @@ glabel gmStageClearUpdateGetBonusStatPointsAll
    /* 17C94C 801336FC 3C018013 */       lui $at, %hi(D_ovl56_80135354)
    /* 17C950 80133700 AFB20024 */        sw $s2, 0x24($sp)
    /* 17C954 80133704 3C028013 */       lui $v0, %hi(D_ovl56_80135358)
 -  /* 17C958 80133708 3C038013 */       lui $v1, %hi(D_ovl56_80135378)
-+  /* 17C958 80133708 3C038013 */       lui $v1, %hi(sGmStageClearBonusObjectiveGObj)
++  /* 17C958 80133708 3C038013 */       lui $v1, %hi(sGmStageClearBonusObjectiveGObjs)
    /* 17C95C 8013370C AFBF003C */        sw $ra, 0x3c($sp)
    /* 17C960 80133710 AFB70038 */        sw $s7, 0x38($sp)
    /* 17C964 80133714 AFB60034 */        sw $s6, 0x34($sp)
-@@ -1955,7 +1955,7 @@ glabel func_ovl56_801336F8
+@@ -1955,7 +1955,7 @@ glabel gmStageClearUpdateGetBonusStatPointsAll
    /* 17C978 80133728 AFB0001C */        sw $s0, 0x1c($sp)
    /* 17C97C 8013372C F7B40010 */      sdc1 $f20, 0x10($sp)
    /* 17C980 80133730 00009025 */        or $s2, $zero, $zero
 -  /* 17C984 80133734 24635378 */     addiu $v1, $v1, %lo(D_ovl56_80135378)
-+  /* 17C984 80133734 24635378 */     addiu $v1, $v1, %lo(sGmStageClearBonusObjectiveGObj)
++  /* 17C984 80133734 24635378 */     addiu $v1, $v1, %lo(sGmStageClearBonusObjectiveGObjs)
    /* 17C988 80133738 24425358 */     addiu $v0, $v0, %lo(D_ovl56_80135358)
    /* 17C98C 8013373C AC205350 */        sw $zero, %lo(sGmStageClearBonusStatGObjs)($at)
    /* 17C990 80133740 AC205354 */        sw $zero, %lo(D_ovl56_80135354)($at)
-@@ -1971,12 +1971,12 @@ glabel func_ovl56_801336F8
-   /* 17C9B4 80133764 3C108013 */       lui $s0, %hi(D_ovl56_80135330)
+@@ -1971,12 +1971,12 @@ glabel gmStageClearUpdateGetBonusStatPointsAll
+   /* 17C9B4 80133764 3C108013 */       lui $s0, %hi(sGmStageClearBonusNum)
    /* 17C9B8 80133768 3C0142A0 */       lui $at, (0x42A00000 >> 16) # 80.0
-   /* 17C9BC 8013376C 26105330 */     addiu $s0, $s0, %lo(D_ovl56_80135330)
+   /* 17C9BC 8013376C 26105330 */     addiu $s0, $s0, %lo(sGmStageClearBonusNum)
 -  /* 17C9C0 80133770 3C168013 */       lui $s6, %hi(D_ovl56_80135320)
 +  /* 17C9C0 80133770 3C168013 */       lui $s6, %hi(sGmStageClearBonusMasks)
-   /* 17C9C4 80133774 3C118013 */       lui $s1, %hi(D_ovl56_8013532C)
+   /* 17C9C4 80133774 3C118013 */       lui $s1, %hi(sGmStageClearBonusID)
    /* 17C9C8 80133778 4481A000 */      mtc1 $at, $f20 # 80.0 to cop1
-   /* 17C9CC 8013377C AE000000 */        sw $zero, ($s0) # D_ovl56_80135330 + 0
-   /* 17C9D0 80133780 2631532C */     addiu $s1, $s1, %lo(D_ovl56_8013532C)
+   /* 17C9CC 8013377C AE000000 */        sw $zero, ($s0) # sGmStageClearBonusNum + 0
+   /* 17C9D0 80133780 2631532C */     addiu $s1, $s1, %lo(sGmStageClearBonusID)
 -  /* 17C9D4 80133784 26D65320 */     addiu $s6, $s6, %lo(D_ovl56_80135320)
 +  /* 17C9D4 80133784 26D65320 */     addiu $s6, $s6, %lo(sGmStageClearBonusMasks)
    /* 17C9D8 80133788 2417000B */     addiu $s7, $zero, 0xb
    /* 17C9DC 8013378C 27B50048 */     addiu $s5, $sp, 0x48
    /* 17C9E0 80133790 24140009 */     addiu $s4, $zero, 9
-@@ -2007,7 +2007,7 @@ glabel func_ovl56_801336F8
+@@ -2007,7 +2007,7 @@ glabel gmStageClearUpdateGetBonusStatPointsAll
    /* 17CA38 801337E8 10000021 */         b .L80133870
    /* 17CA3C 801337EC 02401025 */        or $v0, $s2, $zero
    .L801337F0:
@@ -965,7 +965,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17CA44 801337F4 02A02025 */        or $a0, $s5, $zero
    /* 17CA48 801337F8 8FB90048 */        lw $t9, 0x48($sp)
    /* 17CA4C 801337FC 8FAB004C */        lw $t3, 0x4c($sp)
-@@ -2062,17 +2062,17 @@ glabel func_ovl56_801338A0
+@@ -2062,17 +2062,17 @@ glabel gmStageClearMakeBonusTable
    /* 17CB00 801338B0 24060011 */     addiu $a2, $zero, 0x11
    /* 17CB04 801338B4 0C00265A */       jal omMakeGObjCommon
    /* 17CB08 801338B8 3C078000 */       lui $a3, 0x8000
@@ -987,7 +987,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17CB38 801338E8 3C180001 */       lui $t8, %hi(D_NF_0000A4B8)
    /* 17CB3C 801338EC 2718A4B8 */     addiu $t8, $t8, %lo(D_NF_0000A4B8)
    /* 17CB40 801338F0 8FA40024 */        lw $a0, 0x24($sp)
-@@ -2096,10 +2096,10 @@ glabel func_ovl56_801338A0
+@@ -2096,10 +2096,10 @@ glabel gmStageClearMakeBonusTable
    /* 17CB88 80133938 A04B0028 */        sb $t3, 0x28($v0)
    /* 17CB8C 8013393C A04C0029 */        sb $t4, 0x29($v0)
    /* 17CB90 80133940 A04D002A */        sb $t5, 0x2a($v0)
@@ -1086,16 +1086,16 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
 +  /* 17CFD4 80133D84 AC580008 */        sw $t8, 8($v0) # sGmStageClearBonusMasks + 8
    /* 17CFD8 80133D88 3C018013 */       lui $at, %hi(D_ovl56_801352D8)
    /* 17CFDC 80133D8C AC2252D8 */        sw $v0, %lo(D_ovl56_801352D8)($at)
-   /* 17CFE0 80133D90 3C018013 */       lui $at, %hi(D_ovl56_8013532C)
-   /* 17CFE4 80133D94 AC20532C */        sw $zero, %lo(D_ovl56_8013532C)($at)
+   /* 17CFE0 80133D90 3C018013 */       lui $at, %hi(sGmStageClearBonusID)
+   /* 17CFE4 80133D94 AC20532C */        sw $zero, %lo(sGmStageClearBonusID)($at)
    /* 17CFE8 80133D98 3C018013 */       lui $at, %hi(D_ovl56_801353A0)
 -  /* 17CFEC 80133D9C 3C028013 */       lui $v0, %hi(D_ovl56_80135378)
-+  /* 17CFEC 80133D9C 3C028013 */       lui $v0, %hi(sGmStageClearBonusObjectiveGObj)
++  /* 17CFEC 80133D9C 3C028013 */       lui $v0, %hi(sGmStageClearBonusObjectiveGObjs)
    /* 17CFF0 80133DA0 3C038013 */       lui $v1, %hi(sGmStageClearBonusStatGObjs)
    /* 17CFF4 80133DA4 AC2053A0 */        sw $zero, %lo(D_ovl56_801353A0)($at)
    /* 17CFF8 80133DA8 24635350 */     addiu $v1, $v1, %lo(sGmStageClearBonusStatGObjs)
 -  /* 17CFFC 80133DAC 24425378 */     addiu $v0, $v0, %lo(D_ovl56_80135378)
-+  /* 17CFFC 80133DAC 24425378 */     addiu $v0, $v0, %lo(sGmStageClearBonusObjectiveGObj)
++  /* 17CFFC 80133DAC 24425378 */     addiu $v0, $v0, %lo(sGmStageClearBonusObjectiveGObjs)
    .L80133DB0:
    /* 17D000 80133DB0 24630004 */     addiu $v1, $v1, 4
    /* 17D004 80133DB4 0062082B */      sltu $at, $v1, $v0
@@ -1104,7 +1104,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D01C 80133DCC 246353A0 */     addiu $v1, $v1, %lo(D_ovl56_801353A0)
    /* 17D020 80133DD0 24425380 */     addiu $v0, $v0, %lo(D_ovl56_80135380)
 -  /* 17D024 80133DD4 AC205378 */        sw $zero, %lo(D_ovl56_80135378)($at)
-+  /* 17D024 80133DD4 AC205378 */        sw $zero, %lo(sGmStageClearBonusObjectiveGObj)($at)
++  /* 17D024 80133DD4 AC205378 */        sw $zero, %lo(sGmStageClearBonusObjectiveGObjs)($at)
    /* 17D028 80133DD8 AC20537C */        sw $zero, %lo(D_ovl56_8013537C)($at)
    .L80133DDC:
    /* 17D02C 80133DDC 24420010 */     addiu $v0, $v0, 0x10
@@ -1130,13 +1130,13 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
 -  /* 17D068 80133E18 8C4252D4 */        lw $v0, %lo(D_ovl56_801352D4)($v0)
 +  /* 17D064 80133E14 3C028013 */       lui $v0, %hi(sGmStageClearKind)
 +  /* 17D068 80133E18 8C4252D4 */        lw $v0, %lo(sGmStageClearKind)($v0)
-   /* 17D06C 80133E1C 3C018013 */       lui $at, %hi(D_ovl56_80135338)
-   /* 17D070 80133E20 AC205338 */        sw $zero, %lo(D_ovl56_80135338)($at)
+   /* 17D06C 80133E1C 3C018013 */       lui $at, %hi(sGmStageClearIsAdvance)
+   /* 17D070 80133E20 AC205338 */        sw $zero, %lo(sGmStageClearIsAdvance)($at)
    /* 17D074 80133E24 3C018013 */       lui $at, %hi(D_ovl56_8013533C)
 @@ -2479,8 +2479,8 @@ glabel func_ovl56_80133C88
    /* 17D138 80133EE8 00000000 */       nop 
  
- glabel func_ovl56_80133EEC
+ glabel gmStageClearUpdateTotal1PGameScore
 -  /* 17D13C 80133EEC 3C0E8013 */       lui $t6, %hi(D_ovl56_801352E8)
 -  /* 17D140 80133EF0 8DCE52E8 */        lw $t6, %lo(D_ovl56_801352E8)($t6)
 +  /* 17D13C 80133EEC 3C0E8013 */       lui $t6, %hi(sGmStageClearScoreTotal)
@@ -1144,7 +1144,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D144 80133EF4 3C01800A */       lui $at, %hi((gSceneData + 0x20))
    /* 17D148 80133EF8 03E00008 */        jr $ra
    /* 17D14C 80133EFC AC2E4AF0 */        sw $t6, %lo((gSceneData + 0x20))($at)
-@@ -2488,7 +2488,7 @@ glabel func_ovl56_80133EEC
+@@ -2488,7 +2488,7 @@ glabel gmStageClearUpdateTotal1PGameScore
  glabel func_ovl56_80133F00
    /* 17D150 80133F00 27BDFFE8 */     addiu $sp, $sp, -0x18
    /* 17D154 80133F04 AFBF0014 */        sw $ra, 0x14($sp)
@@ -1159,14 +1159,14 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D1C4 80133F74 3C108013 */       lui $s0, %hi(sGmStageClearBonusStatGObjs)
 -  /* 17D1C8 80133F78 3C118013 */       lui $s1, %hi(D_ovl56_80135378)
 -  /* 17D1CC 80133F7C 26315378 */     addiu $s1, $s1, %lo(D_ovl56_80135378)
-+  /* 17D1C8 80133F78 3C118013 */       lui $s1, %hi(sGmStageClearBonusObjectiveGObj)
-+  /* 17D1CC 80133F7C 26315378 */     addiu $s1, $s1, %lo(sGmStageClearBonusObjectiveGObj)
++  /* 17D1C8 80133F78 3C118013 */       lui $s1, %hi(sGmStageClearBonusObjectiveGObjs)
++  /* 17D1CC 80133F7C 26315378 */     addiu $s1, $s1, %lo(sGmStageClearBonusObjectiveGObjs)
    /* 17D1D0 80133F80 26105350 */     addiu $s0, $s0, %lo(sGmStageClearBonusStatGObjs)
    /* 17D1D4 80133F84 8E040000 */        lw $a0, ($s0) # sGmStageClearBonusStatGObjs + 0
    .L80133F88:
 @@ -2537,15 +2537,15 @@ glabel func_ovl56_80133F50
    /* 17D1F0 80133FA0 8E040000 */        lw $a0, ($s0) # sGmStageClearBonusStatGObjs + 0
-   /* 17D1F4 80133FA4 0C04CDBE */       jal func_ovl56_801336F8
+   /* 17D1F4 80133FA4 0C04CDBE */       jal gmStageClearUpdateGetBonusStatPointsAll
    /* 17D1F8 80133FA8 00000000 */       nop 
 -  /* 17D1FC 80133FAC 3C038013 */       lui $v1, %hi(D_ovl56_801352E8)
 -  /* 17D200 80133FB0 246352E8 */     addiu $v1, $v1, %lo(D_ovl56_801352E8)
@@ -1174,7 +1174,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
 +  /* 17D1FC 80133FAC 3C038013 */       lui $v1, %hi(sGmStageClearScoreTotal)
 +  /* 17D200 80133FB0 246352E8 */     addiu $v1, $v1, %lo(sGmStageClearScoreTotal)
 +  /* 17D204 80133FB4 8C6F0000 */        lw $t7, ($v1) # sGmStageClearScoreTotal + 0
-   /* 17D208 80133FB8 3C088013 */       lui $t0, %hi(D_ovl56_80135330)
+   /* 17D208 80133FB8 3C088013 */       lui $t0, %hi(sGmStageClearBonusNum)
    /* 17D20C 80133FBC 3C0A8013 */       lui $t2, %hi(D_ovl56_801352CC)
    /* 17D210 80133FC0 01E2C021 */      addu $t8, $t7, $v0
    /* 17D214 80133FC4 07010002 */      bgez $t8, .L80133FD0
@@ -1183,7 +1183,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
 +  /* 17D218 80133FC8 AC780000 */        sw $t8, ($v1) # sGmStageClearScoreTotal + 0
 +  /* 17D21C 80133FCC AC600000 */        sw $zero, ($v1) # sGmStageClearScoreTotal + 0
    .L80133FD0:
-   /* 17D220 80133FD0 8D085330 */        lw $t0, %lo(D_ovl56_80135330)($t0)
+   /* 17D220 80133FD0 8D085330 */        lw $t0, %lo(sGmStageClearBonusNum)($t0)
    /* 17D224 80133FD4 8D4A52CC */        lw $t2, %lo(D_ovl56_801352CC)($t2)
 @@ -2560,12 +2560,12 @@ glabel func_ovl56_80133F50
    .L80133FF8:
@@ -1199,8 +1199,8 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
 +  /* 17D264 80134014 8C845310 */        lw $a0, %lo(sGmStageClearScoreTextGObj)($a0)
    /* 17D268 80134018 0C04CFC0 */       jal func_ovl56_80133F00
    /* 17D26C 8013401C 00000000 */       nop 
-   /* 17D270 80134020 3C0F8013 */       lui $t7, %hi(D_ovl56_80135338)
-@@ -2609,7 +2609,7 @@ glabel func_ovl56_8013407C
+   /* 17D270 80134020 3C0F8013 */       lui $t7, %hi(sGmStageClearIsAdvance)
+@@ -2609,7 +2609,7 @@ glabel gmStageClearUpdateGameClearScore
    /* 17D2F4 801340A4 146E0006 */       bne $v1, $t6, .L801340C0
    /* 17D2F8 801340A8 00000000 */       nop 
    /* 17D2FC 801340AC 44816000 */      mtc1 $at, $f12 # 94.0 to cop1
@@ -1209,7 +1209,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D304 801340B4 00000000 */       nop 
    /* 17D308 801340B8 3C038013 */       lui $v1, %hi(D_ovl56_801352CC)
    /* 17D30C 801340BC 8C6352CC */        lw $v1, %lo(D_ovl56_801352CC)($v1)
-@@ -2620,37 +2620,37 @@ glabel func_ovl56_8013407C
+@@ -2620,37 +2620,37 @@ glabel gmStageClearUpdateGameClearScore
    /* 17D31C 801340CC 146F0006 */       bne $v1, $t7, .L801340E8
    /* 17D320 801340D0 00000000 */       nop 
    /* 17D324 801340D4 44816000 */      mtc1 $at, $f12 # 94.0 to cop1
@@ -1257,7 +1257,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D39C 8013414C 0C04CFC0 */       jal func_ovl56_80133F00
    /* 17D3A0 80134150 00000000 */       nop 
    .L80134154:
-@@ -2673,7 +2673,7 @@ glabel func_ovl56_8013407C
+@@ -2673,7 +2673,7 @@ glabel gmStageClearUpdateGameClearScore
    /* 17D3DC 8013418C 8C6352CC */        lw $v1, %lo(D_ovl56_801352CC)($v1)
    /* 17D3E0 80134190 146A0005 */       bne $v1, $t2, .L801341A8
    /* 17D3E4 80134194 00000000 */       nop 
@@ -1266,7 +1266,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D3EC 8013419C C7AC0018 */      lwc1 $f12, 0x18($sp)
    /* 17D3F0 801341A0 3C038013 */       lui $v1, %hi(D_ovl56_801352CC)
    /* 17D3F4 801341A4 8C6352CC */        lw $v1, %lo(D_ovl56_801352CC)($v1)
-@@ -2682,35 +2682,35 @@ glabel func_ovl56_8013407C
+@@ -2682,35 +2682,35 @@ glabel gmStageClearUpdateGameClearScore
    /* 17D3FC 801341AC 8D6B53BC */        lw $t3, %lo(D_ovl56_801353BC)($t3)
    /* 17D400 801341B0 146B0005 */       bne $v1, $t3, .L801341C8
    /* 17D404 801341B4 00000000 */       nop 
@@ -1312,7 +1312,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D474 80134224 0C04CFC0 */       jal func_ovl56_80133F00
    /* 17D478 80134228 00000000 */       nop 
    /* 17D47C 8013422C 3C188013 */       lui $t8, %hi(D_ovl56_801352D8)
-@@ -2736,8 +2736,8 @@ glabel func_ovl56_8013407C
+@@ -2736,8 +2736,8 @@ glabel gmStageClearUpdateGameClearScore
    /* 17D4C4 80134274 3C028013 */       lui $v0, %hi(D_ovl56_801352D8)
    /* 17D4C8 80134278 8C4252D8 */        lw $v0, %lo(D_ovl56_801352D8)($v0)
    /* 17D4CC 8013427C 10400028 */      beqz $v0, .L80134320
@@ -1323,7 +1323,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D4D8 80134288 3C0C8013 */       lui $t4, %hi(D_ovl56_801352CC)
    /* 17D4DC 8013428C 3C0D8013 */       lui $t5, %hi(D_ovl56_80135340)
    /* 17D4E0 80134290 10800023 */      beqz $a0, .L80134320
-@@ -2748,33 +2748,33 @@ glabel func_ovl56_8013407C
+@@ -2748,33 +2748,33 @@ glabel gmStageClearUpdateGameClearScore
    /* 17D4F4 801342A4 00000000 */       nop 
    /* 17D4F8 801342A8 0C0026A1 */       jal omEjectGObjCommon
    /* 17D4FC 801342AC 00000000 */       nop 
@@ -1369,13 +1369,13 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
 -  /* 17D55C 8013430C 3C018013 */       lui $at, %hi(D_ovl56_80135304)
 +  /* 17D558 80134308 8C845304 */        lw $a0, %lo(sGmStageClearDamageMultiplierGObj)($a0)
 +  /* 17D55C 8013430C 3C018013 */       lui $at, %hi(sGmStageClearDamageMultiplierGObj)
-   /* 17D560 80134310 0C04CE28 */       jal func_ovl56_801338A0
+   /* 17D560 80134310 0C04CE28 */       jal gmStageClearMakeBonusTable
 -  /* 17D564 80134314 AC205304 */        sw $zero, %lo(D_ovl56_80135304)($at)
 +  /* 17D564 80134314 AC205304 */        sw $zero, %lo(sGmStageClearDamageMultiplierGObj)($at)
    /* 17D568 80134318 3C028013 */       lui $v0, %hi(D_ovl56_801352D8)
    /* 17D56C 8013431C 8C4252D8 */        lw $v0, %lo(D_ovl56_801352D8)($v0)
    .L80134320:
-@@ -2802,7 +2802,7 @@ glabel func_ovl56_80134340
+@@ -2802,7 +2802,7 @@ glabel gmStageClearUpdateStageClearScore
    /* 17D5B8 80134368 146E0006 */       bne $v1, $t6, .L80134384
    /* 17D5BC 8013436C 00000000 */       nop 
    /* 17D5C0 80134370 44816000 */      mtc1 $at, $f12 # 94.0 to cop1
@@ -1384,7 +1384,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D5C8 80134378 00000000 */       nop 
    /* 17D5CC 8013437C 3C038013 */       lui $v1, %hi(D_ovl56_801352CC)
    /* 17D5D0 80134380 8C6352CC */        lw $v1, %lo(D_ovl56_801352CC)($v1)
-@@ -2813,37 +2813,37 @@ glabel func_ovl56_80134340
+@@ -2813,37 +2813,37 @@ glabel gmStageClearUpdateStageClearScore
    /* 17D5E0 80134390 146F0006 */       bne $v1, $t7, .L801343AC
    /* 17D5E4 80134394 00000000 */       nop 
    /* 17D5E8 80134398 44816000 */      mtc1 $at, $f12 # 94.0 to cop1
@@ -1432,7 +1432,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D660 80134410 0C04CFC0 */       jal func_ovl56_80133F00
    /* 17D664 80134414 00000000 */       nop 
    .L80134418:
-@@ -2866,7 +2866,7 @@ glabel func_ovl56_80134340
+@@ -2866,7 +2866,7 @@ glabel gmStageClearUpdateStageClearScore
    /* 17D6A0 80134450 8C6352CC */        lw $v1, %lo(D_ovl56_801352CC)($v1)
    /* 17D6A4 80134454 146A0005 */       bne $v1, $t2, .L8013446C
    /* 17D6A8 80134458 00000000 */       nop 
@@ -1441,7 +1441,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D6B0 80134460 C7AC0018 */      lwc1 $f12, 0x18($sp)
    /* 17D6B4 80134464 3C038013 */       lui $v1, %hi(D_ovl56_801352CC)
    /* 17D6B8 80134468 8C6352CC */        lw $v1, %lo(D_ovl56_801352CC)($v1)
-@@ -2875,35 +2875,35 @@ glabel func_ovl56_80134340
+@@ -2875,35 +2875,35 @@ glabel gmStageClearUpdateStageClearScore
    /* 17D6C0 80134470 8D6B53BC */        lw $t3, %lo(D_ovl56_801353BC)($t3)
    /* 17D6C4 80134474 146B0005 */       bne $v1, $t3, .L8013448C
    /* 17D6C8 80134478 00000000 */       nop 
@@ -1487,7 +1487,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D738 801344E8 0C04CFC0 */       jal func_ovl56_80133F00
    /* 17D73C 801344EC 00000000 */       nop 
    /* 17D740 801344F0 3C188013 */       lui $t8, %hi(D_ovl56_801352D8)
-@@ -2929,8 +2929,8 @@ glabel func_ovl56_80134340
+@@ -2929,8 +2929,8 @@ glabel gmStageClearUpdateStageClearScore
    /* 17D788 80134538 3C028013 */       lui $v0, %hi(D_ovl56_801352D8)
    /* 17D78C 8013453C 8C4252D8 */        lw $v0, %lo(D_ovl56_801352D8)($v0)
    /* 17D790 80134540 10400028 */      beqz $v0, .L801345E4
@@ -1498,7 +1498,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D79C 8013454C 3C0C8013 */       lui $t4, %hi(D_ovl56_801352CC)
    /* 17D7A0 80134550 3C0D8013 */       lui $t5, %hi(D_ovl56_80135340)
    /* 17D7A4 80134554 10800023 */      beqz $a0, .L801345E4
-@@ -2941,33 +2941,33 @@ glabel func_ovl56_80134340
+@@ -2941,33 +2941,33 @@ glabel gmStageClearUpdateStageClearScore
    /* 17D7B8 80134568 00000000 */       nop 
    /* 17D7BC 8013456C 0C0026A1 */       jal omEjectGObjCommon
    /* 17D7C0 80134570 00000000 */       nop 
@@ -1544,16 +1544,16 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
 -  /* 17D820 801345D0 3C018013 */       lui $at, %hi(D_ovl56_80135304)
 +  /* 17D81C 801345CC 8C845304 */        lw $a0, %lo(sGmStageClearDamageMultiplierGObj)($a0)
 +  /* 17D820 801345D0 3C018013 */       lui $at, %hi(sGmStageClearDamageMultiplierGObj)
-   /* 17D824 801345D4 0C04CE28 */       jal func_ovl56_801338A0
+   /* 17D824 801345D4 0C04CE28 */       jal gmStageClearMakeBonusTable
 -  /* 17D828 801345D8 AC205304 */        sw $zero, %lo(D_ovl56_80135304)($at)
 +  /* 17D828 801345D8 AC205304 */        sw $zero, %lo(sGmStageClearDamageMultiplierGObj)($at)
    /* 17D82C 801345DC 3C028013 */       lui $v0, %hi(D_ovl56_801352D8)
    /* 17D830 801345E0 8C4252D8 */        lw $v0, %lo(D_ovl56_801352D8)($v0)
    .L801345E4:
-@@ -2982,9 +2982,9 @@ glabel func_ovl56_80134340
+@@ -2982,9 +2982,9 @@ glabel gmStageClearUpdateStageClearScore
    /* 17D850 80134600 00000000 */       nop 
  
- glabel func_ovl56_80134604
+ glabel gmStageClearUpdateResultScore
 -  /* 17D854 80134604 3C058013 */       lui $a1, %hi(D_ovl56_801352EC)
 -  /* 17D858 80134608 24A552EC */     addiu $a1, $a1, %lo(D_ovl56_801352EC)
 -  /* 17D85C 8013460C 8CAE0000 */        lw $t6, ($a1) # D_ovl56_801352EC + 0
@@ -1563,7 +1563,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D860 80134610 27BDFFD8 */     addiu $sp, $sp, -0x28
    /* 17D864 80134614 2404000B */     addiu $a0, $zero, 0xb
    /* 17D868 80134618 108E001C */       beq $a0, $t6, .L8013468C
-@@ -2994,7 +2994,7 @@ glabel func_ovl56_80134604
+@@ -2994,7 +2994,7 @@ glabel gmStageClearUpdateResultScore
    /* 17D878 80134628 2401000A */     addiu $at, $zero, 0xa
    /* 17D87C 8013462C 54410006 */      bnel $v0, $at, .L80134648
    /* 17D880 80134630 24010014 */     addiu $at, $zero, 0x14
@@ -1572,7 +1572,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D888 80134638 00000000 */       nop 
    /* 17D88C 8013463C 10000019 */         b .L801346A4
    /* 17D890 80134640 00000000 */       nop 
-@@ -3004,9 +3004,9 @@ glabel func_ovl56_80134604
+@@ -3004,9 +3004,9 @@ glabel gmStageClearUpdateResultScore
    /* 17D89C 8013464C 00000000 */       nop 
    /* 17D8A0 80134650 0C04CBDE */       jal func_ovl56_80132F78
    /* 17D8A4 80134654 00000000 */       nop 
@@ -1585,9 +1585,9 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D8B4 80134664 2406000A */     addiu $a2, $zero, 0xa
    /* 17D8B8 80134668 3C198013 */       lui $t9, %hi(D_ovl56_801352CC)
    /* 17D8BC 8013466C 01E60019 */     multu $t7, $a2
-@@ -3032,14 +3032,14 @@ glabel func_ovl56_80134604
+@@ -3032,14 +3032,14 @@ glabel gmStageClearUpdateResultScore
    /* 17D900 801346B0 00000000 */       nop 
-   /* 17D904 801346B4 0C04CFCA */       jal func_ovl56_80133F28
+   /* 17D904 801346B4 0C04CFCA */       jal gmStageClearCheckHaveTimer
    /* 17D908 801346B8 00000000 */       nop 
 -  /* 17D90C 801346BC 3C058013 */       lui $a1, %hi(D_ovl56_801352EC)
 -  /* 17D910 801346C0 3C078013 */       lui $a3, %hi(D_ovl56_801353A4)
@@ -1605,7 +1605,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D92C 801346DC 3C028013 */       lui $v0, %hi(D_ovl56_801352CC)
    /* 17D930 801346E0 3C0B8013 */       lui $t3, %hi(D_ovl56_801353A0)
    /* 17D934 801346E4 108A0016 */       beq $a0, $t2, .L80134740
-@@ -3075,12 +3075,12 @@ glabel func_ovl56_80134604
+@@ -3075,12 +3075,12 @@ glabel gmStageClearUpdateResultScore
    /* 17D9A4 80134754 246A001E */     addiu $t2, $v1, 0x1e
    /* 17D9A8 80134758 14590013 */       bne $v0, $t9, .L801347A8
    /* 17D9AC 8013475C 00000000 */       nop 
@@ -1621,7 +1621,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D9C8 80134778 00000000 */       nop 
    /* 17D9CC 8013477C 1000005C */         b .L801348F0
    /* 17D9D0 80134780 00000000 */       nop 
-@@ -3090,7 +3090,7 @@ glabel func_ovl56_80134604
+@@ -3090,7 +3090,7 @@ glabel gmStageClearUpdateResultScore
    /* 17D9DC 8013478C 14C90058 */       bne $a2, $t1, .L801348F0
    /* 17D9E0 80134790 00000000 */       nop 
    /* 17D9E4 80134794 44816000 */      mtc1 $at, $f12 # 126.0 to cop1
@@ -1630,7 +1630,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17D9EC 8013479C 00000000 */       nop 
    /* 17D9F0 801347A0 10000053 */         b .L801348F0
    /* 17D9F4 801347A4 00000000 */       nop 
-@@ -3102,7 +3102,7 @@ glabel func_ovl56_80134604
+@@ -3102,7 +3102,7 @@ glabel gmStageClearUpdateResultScore
    /* 17DA08 801347B8 548B0007 */      bnel $a0, $t3, .L801347D8
    /* 17DA0C 801347BC 8CEC0000 */        lw $t4, ($a3)
    /* 17DA10 801347C0 44816000 */      mtc1 $at, $f12 # 94.0 to cop1
@@ -1639,7 +1639,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17DA18 801347C8 00000000 */       nop 
    /* 17DA1C 801347CC 10000048 */         b .L801348F0
    /* 17DA20 801347D0 00000000 */       nop 
-@@ -3112,7 +3112,7 @@ glabel func_ovl56_80134604
+@@ -3112,7 +3112,7 @@ glabel gmStageClearUpdateResultScore
    /* 17DA2C 801347DC 14CC0044 */       bne $a2, $t4, .L801348F0
    /* 17DA30 801347E0 00000000 */       nop 
    /* 17DA34 801347E4 44816000 */      mtc1 $at, $f12 # 126.0 to cop1
@@ -1648,7 +1648,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17DA3C 801347EC 00000000 */       nop 
    /* 17DA40 801347F0 1000003F */         b .L801348F0
    /* 17DA44 801347F4 00000000 */       nop 
-@@ -3121,35 +3121,35 @@ glabel func_ovl56_80134604
+@@ -3121,35 +3121,35 @@ glabel gmStageClearUpdateResultScore
    /* 17DA4C 801347FC 246A0046 */     addiu $t2, $v1, 0x46
    /* 17DA50 80134800 8CAE0000 */        lw $t6, ($a1)
    /* 17DA54 80134804 148E000D */       bne $a0, $t6, .L8013483C
@@ -1698,7 +1698,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    .L80134878:
    /* 17DAC8 80134878 144A001D */       bne $v0, $t2, .L801348F0
    /* 17DACC 8013487C 00000000 */       nop 
-@@ -3159,9 +3159,9 @@ glabel func_ovl56_80134604
+@@ -3159,9 +3159,9 @@ glabel gmStageClearUpdateResultScore
    /* 17DADC 8013488C 8CAC0000 */        lw $t4, ($a1)
    /* 17DAE0 80134890 148C0005 */       bne $a0, $t4, .L801348A8
    .L80134894:
@@ -1710,7 +1710,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17DAF0 801348A0 0C04CFC0 */       jal func_ovl56_80133F00
    /* 17DAF4 801348A4 00000000 */       nop 
    .L801348A8:
-@@ -3188,8 +3188,8 @@ glabel func_ovl56_80134604
+@@ -3188,8 +3188,8 @@ glabel gmStageClearUpdateResultScore
    /* 17DB40 801348F0 3C028013 */       lui $v0, %hi(D_ovl56_801352D8)
    /* 17DB44 801348F4 8C4252D8 */        lw $v0, %lo(D_ovl56_801352D8)($v0)
    /* 17DB48 801348F8 10400035 */      beqz $v0, .L801349D0
@@ -1721,7 +1721,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17DB54 80134904 3C098013 */       lui $t1, %hi(D_ovl56_801352CC)
    /* 17DB58 80134908 3C0A8013 */       lui $t2, %hi(D_ovl56_80135340)
    /* 17DB5C 8013490C 10800030 */      beqz $a0, .L801349D0
-@@ -3200,19 +3200,19 @@ glabel func_ovl56_80134604
+@@ -3200,19 +3200,19 @@ glabel gmStageClearUpdateResultScore
    /* 17DB70 80134920 00000000 */       nop 
    /* 17DB74 80134924 0C0026A1 */       jal omEjectGObjCommon
    /* 17DB78 80134928 00000000 */       nop 
@@ -1743,14 +1743,14 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
 -  /* 17DBA8 80134958 24425378 */     addiu $v0, $v0, %lo(D_ovl56_80135378)
 -  /* 17DBAC 8013495C 8C440000 */        lw $a0, ($v0) # D_ovl56_80135378 + 0
 +  /* 17DB9C 8013494C 3C018013 */       lui $at, %hi(sGmStageClearTargetGObj)
-+  /* 17DBA0 80134950 3C028013 */       lui $v0, %hi(sGmStageClearBonusObjectiveGObj)
++  /* 17DBA0 80134950 3C028013 */       lui $v0, %hi(sGmStageClearBonusObjectiveGObjs)
 +  /* 17DBA4 80134954 AC205318 */        sw $zero, %lo(sGmStageClearTargetGObj)($at)
-+  /* 17DBA8 80134958 24425378 */     addiu $v0, $v0, %lo(sGmStageClearBonusObjectiveGObj)
-+  /* 17DBAC 8013495C 8C440000 */        lw $a0, ($v0) # sGmStageClearBonusObjectiveGObj + 0
++  /* 17DBA8 80134958 24425378 */     addiu $v0, $v0, %lo(sGmStageClearBonusObjectiveGObjs)
++  /* 17DBAC 8013495C 8C440000 */        lw $a0, ($v0) # sGmStageClearBonusObjectiveGObjs + 0
    .L80134960:
    /* 17DBB0 80134960 10800005 */      beqz $a0, .L80134978
    /* 17DBB4 80134964 00000000 */       nop 
-@@ -3227,19 +3227,19 @@ glabel func_ovl56_80134604
+@@ -3227,19 +3227,19 @@ glabel gmStageClearUpdateResultScore
    /* 17DBD4 80134984 544BFFF6 */      bnel $v0, $t3, .L80134960
    /* 17DBD8 80134988 8C440000 */        lw $a0, ($v0)
    .L8013498C:
@@ -1776,7 +1776,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
 +  /* 17DC08 801349B8 3C018013 */       lui $at, %hi(sGmStageClearTimerMultiplierGObj)
 +  /* 17DC0C 801349BC AC2052FC */        sw $zero, %lo(sGmStageClearTimerMultiplierGObj)($at)
    .L801349C0:
-   /* 17DC10 801349C0 0C04CE28 */       jal func_ovl56_801338A0
+   /* 17DC10 801349C0 0C04CE28 */       jal gmStageClearMakeBonusTable
    /* 17DC14 801349C4 00000000 */       nop 
 @@ -3299,8 +3299,8 @@ glabel func_ovl56_801349F0
    /* 17DCD8 80134A88 3C018013 */       lui $at, %hi(D_ovl56_80135340)
@@ -1792,17 +1792,17 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
 @@ -3498,8 +3498,8 @@ glabel func_ovl56_80134CC4
    /* 17DF80 80134D30 0C001260 */       jal gsMemoryAlloc
    /* 17DF84 80134D34 24050010 */     addiu $a1, $zero, 0x10
-   /* 17DF88 80134D38 3C048013 */       lui $a0, %hi(D_ovl56_80134EE0)
+   /* 17DF88 80134D38 3C048013 */       lui $a0, %hi(dGmStageClearFileIDs)
 -  /* 17DF8C 80134D3C 3C068013 */       lui $a2, %hi(D_ovl56_80135588)
 -  /* 17DF90 80134D40 24C65588 */     addiu $a2, $a2, %lo(D_ovl56_80135588)
 +  /* 17DF8C 80134D3C 3C068013 */       lui $a2, %hi(sGmStageClearFiles)
 +  /* 17DF90 80134D40 24C65588 */     addiu $a2, $a2, %lo(sGmStageClearFiles)
-   /* 17DF94 80134D44 24844EE0 */     addiu $a0, $a0, %lo(D_ovl56_80134EE0)
+   /* 17DF94 80134D44 24844EE0 */     addiu $a0, $a0, %lo(dGmStageClearFileIDs)
    /* 17DF98 80134D48 24050007 */     addiu $a1, $zero, 7
    /* 17DF9C 80134D4C 0C033781 */       jal rdManagerLoadFiles
 @@ -3526,12 +3526,12 @@ glabel func_ovl56_80134CC4
    /* 17DFF0 80134DA0 00000000 */       nop 
-   /* 17DFF4 80134DA4 0C04CEB0 */       jal func_ovl56_80133AC0
+   /* 17DFF4 80134DA4 0C04CEB0 */       jal gmStageClearMakeFrameCopyBackground
    /* 17DFF8 80134DA8 00000000 */       nop 
 -  /* 17DFFC 80134DAC 0C04C84F */       jal func_ovl56_8013213C
 +  /* 17DFFC 80134DAC 0C04C84F */       jal gmStageClearMakeTextSObjs

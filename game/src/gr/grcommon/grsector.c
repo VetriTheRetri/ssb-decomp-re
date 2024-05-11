@@ -181,7 +181,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 
     while (aobj != NULL)
     {
-        if ((aobj->unk_aobj_0x5 != 0) && !(arg0->parent_gobj->flags & 2) && (aobj->unk_aobj_0x4 == 4))
+        if ((aobj->kind != 0) && !(arg0->parent_gobj->flags & 2) && (aobj->param == 4))
         {
             vlen = func_8000CB94(aobj);
 
@@ -203,7 +203,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 
         while (aobj != NULL)
         {
-            if ((aobj->unk_aobj_0x5 != 0) && !(arg0->parent_gobj->flags & 2) && (aobj->unk_aobj_0x4 == 4))
+            if ((aobj->kind != 0) && !(arg0->parent_gobj->flags & 2) && (aobj->param == 4))
             {
                 hal_interpolation_cubic(vec3, aobj->interpolate, vlen);
             }

@@ -186,7 +186,7 @@ void ftMain_MakeRumble(ftStruct *fp, s32 rumble_id, s32 duration)
 }
 
 // 0x800E8098
-void ftCommon_SetCaptureIgnoreMask(ftStruct *fp, u8 capture_ignore_mask)
+void ftSetCaptureIgnoreMask(ftStruct *fp, u8 capture_ignore_mask)
 {
     fp->capture_ignore_mask = capture_ignore_mask;
 }

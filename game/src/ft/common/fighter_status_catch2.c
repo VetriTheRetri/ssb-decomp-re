@@ -28,7 +28,7 @@ void ftCommon_CatchPull_SetStatus(GObj *fighter_gobj)
 
     fp->x192_flag_b3 = FALSE;
 
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 
     if (fp->proc_slope != NULL)
     {
@@ -62,7 +62,7 @@ void ftCommon_CatchWait_SetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.catchwait.throw_wait = FTCOMMON_CATCH_THROW_WAIT;
 
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
 
     if ((fp->ft_kind == Ft_Kind_Link) || (fp->ft_kind == Ft_Kind_PolyLink))
     {

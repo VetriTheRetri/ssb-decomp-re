@@ -23,7 +23,7 @@ void ftCommon_Throw_ProcUpdate(GObj *fighter_gobj)
 
         fp->catch_gobj = NULL;
 
-        ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_NONE);
+        ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_NONE);
     }
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -71,7 +71,7 @@ void ftCommon_Throw_SetStatus(GObj *fighter_gobj, sb32 is_throwf)
     }
     ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    ftCommon_SetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
 
     this_fp->command_vars.flags.flag2 = 0;
     this_fp->command_vars.flags.flag1 = 0;

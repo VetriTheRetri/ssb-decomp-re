@@ -59,7 +59,7 @@ void ftCommon_CliffCatch_SetStatus(GObj *fighter_gobj)
 
     fp->proc_damage = ftCommon_CliffCommon_ProcDamage;
 
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_TARUCANN);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_TARUCANN);
 }
 
 // 0x80144CF8
@@ -111,7 +111,7 @@ void ftCommon_CliffWait_SetStatus(GObj *fighter_gobj)
 
     fp->proc_damage = ftCommon_CliffCommon_ProcDamage;
 
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_TARUCANN);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_TARUCANN);
 }
 
 // 0x80144E84

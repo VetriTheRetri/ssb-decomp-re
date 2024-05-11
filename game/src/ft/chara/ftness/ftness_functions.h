@@ -11,10 +11,10 @@
 void ftNess_JumpAerial_ProcPhysics(GObj *fighter_gobj);	// Same story as Yoshi's JumpAerial physics
 
 // Appear
-void ftNess_AppearStart_ProcUpdate(GObj *fighter_gobj);
-void ftNess_AppearWait_ProcUpdate(GObj *fighter_gobj);
-void ftNess_AppearWait_SetStatus(GObj *fighter_gobj);
-void ftNess_AppearEnd_SetStatus(GObj *fighter_gobj);
+void ftNessAppearStartProcUpdate(GObj *fighter_gobj);
+void ftNessAppearWaitProcUpdate(GObj *fighter_gobj);
+void ftNessAppearWaitSetStatus(GObj *fighter_gobj);
+void ftNessAppearEndSetStatus(GObj *fighter_gobj);
 
 // SpecialN / SpecialAirN
 void ftNessSpecialNProcAccessory(GObj *fighter_gobj);

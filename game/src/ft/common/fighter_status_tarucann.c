@@ -87,7 +87,7 @@ void ftCommon_TaruCann_SetStatus(GObj *fighter_gobj, GObj *tarucann_gobj)
 
     fp->is_invisible = TRUE;
 
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
     func_800269C0(0x11AU);
 }
 

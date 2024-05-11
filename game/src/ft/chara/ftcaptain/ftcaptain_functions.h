@@ -6,8 +6,8 @@
 #include <sys/objdef.h>
 
 // Appear
-void ftCaptain_AppearStart_ProcUpdate(GObj *fighter_gobj);
-void ftCaptain_AppearEnd_SetStatus(GObj *fighter_gobj);
+void ftCaptainAppearStartProcUpdate(GObj *fighter_gobj);
+void ftCaptainAppearEndSetStatus(GObj *fighter_gobj);
 
 // SpecialN / SpecialAirN
 void ftCaptainSpecialNUpdateGFX(GObj *fighter_gobj);

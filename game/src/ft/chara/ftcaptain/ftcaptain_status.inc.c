@@ -100,7 +100,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCaptain_AppearStart_ProcUpdate,		// Proc Update
+		ftCaptainAppearStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -120,7 +120,7 @@ ftStatusDesc ftStatus_SpecialDesc_Captain[/* */] =
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCaptain_AppearStart_ProcUpdate,		// Proc Update
+		ftCaptainAppearStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map

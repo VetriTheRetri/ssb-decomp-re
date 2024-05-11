@@ -52,7 +52,7 @@
 
 /* Count how many bits are in a type of a certain number
 (WARNING: includes padding in structs that are not byte-aligned) */
-#define GS_BITCOUNT(t, n) ((sizeof(t) * 8) * (n))
+#define GS_BITCOUNT(t) ((int) (sizeof(t) * 8) )
 
 #define GS_DISTANCE(a, b) (((a) < (b)) ? -((a) - (b)) : ((a) - (b)))
 

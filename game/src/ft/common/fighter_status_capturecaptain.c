@@ -88,7 +88,7 @@ void ftCommon_CaptureCaptain_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     ftMap_SetAir(this_fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_CaptureCaptain, FTCOMMON_CAPTURECAPTAIN_FRAME_BEGIN, FTCOMMON_CAPTURECAPTAIN_ANIM_SPEED, FTSTATUPDATE_NONE_PRESERVE);
-    ftCommon_SetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
     ftPhysics_StopVelAll(fighter_gobj);
     ftCommon_CaptureCaptain_ProcPhysics(fighter_gobj);
@@ -100,5 +100,5 @@ void ftCommon_CaptureCaptain_Release(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommon_Thrown_ReleaseThrownUpdateStats(fighter_gobj, fp->lr, 0, 0);
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_NONE);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_NONE);
 }

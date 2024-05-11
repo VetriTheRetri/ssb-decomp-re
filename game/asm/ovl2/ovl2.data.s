@@ -33,8 +33,8 @@ glabel D_ovl2_80116C38
   .incbin "ovl2.raw.bin", 0x407A8, 0x8
   /* 407B0 092440 80116C40 */  .4byte D_unkmulti_80131B00
   /* 407B4 092444 80116C44 */  .4byte D_unkmulti_80131B00
-  /* 407B8 092448 80116C48 */  .4byte D_ovl56_80134EE0
-  /* 407BC 09244C 80116C4C */  .4byte D_ovl56_80134EE0
+  /* 407B8 092448 80116C48 */  .4byte dGmStageClearFileIDs
+  /* 407BC 09244C 80116C4C */  .4byte dGmStageClearFileIDs
   /* 407C0 092450 80116C50 */  .4byte D_unkmulti_801352C0
   /* 407C4 092454 80116C54 */  .4byte D_unkmulti_801352C0
   /* 407C8 092458 80116C58 */  .4byte D_unkmulti_801355B0
@@ -4810,14 +4810,14 @@ glabel jtbl_ovl2_8012ADC4
   /* 54934 0A65C4 8012ADC4 */  .4byte ftPhysics_ApplyGroundVelTransN
   /* 54938 0A65C8 8012ADC8 */  .4byte ftMap_CheckGroundStopEdgeFall
   .incbin "ovl2.raw.bin", 0x5493C, 0x4
-  /* 54940 0A65D0 8012ADD0 */  .4byte ftCaptain_AppearStart_ProcUpdate
+  /* 54940 0A65D0 8012ADD0 */  .4byte ftCaptainAppearStartProcUpdate
   .incbin "ovl2.raw.bin", 0x54944, 0x4
   /* 54948 0A65D8 8012ADD8 */  .4byte ftCommon_Appear_ProcPhysics
   /* 5494C 0A65DC 8012ADDC */  .4byte ftMap_UpdateProjectGroundID
   /* 54950 0A65E0 8012ADE0 */
   .asciz "2"
   .balign 4
-  /* 54954 0A65E4 8012ADE4 */  .4byte ftCaptain_AppearStart_ProcUpdate
+  /* 54954 0A65E4 8012ADE4 */  .4byte ftCaptainAppearStartProcUpdate
   .incbin "ovl2.raw.bin", 0x54958, 0x4
   /* 5495C 0A65EC 8012ADEC */  .4byte ftCommon_Appear_ProcPhysics
   /* 54960 0A65F0 8012ADF0 */  .4byte ftMap_UpdateProjectGroundID
@@ -5164,19 +5164,19 @@ glabel jtbl_ovl2_8012B2C4
   /* 54E3C 0A6ACC 8012B2CC */
   .asciz "1"
   .balign 4
-  /* 54E40 0A6AD0 8012B2D0 */  .4byte ftNess_AppearStart_ProcUpdate
+  /* 54E40 0A6AD0 8012B2D0 */  .4byte ftNessAppearStartProcUpdate
   .incbin "ovl2.raw.bin", 0x54E44, 0x4
   /* 54E48 0A6AD8 8012B2D8 */  .4byte ftCommon_Appear_ProcPhysics
   /* 54E4C 0A6ADC 8012B2DC */  .4byte ftMap_UpdateProjectGroundID
   /* 54E50 0A6AE0 8012B2E0 */
   .asciz "1@"
   .balign 4
-  /* 54E54 0A6AE4 8012B2E4 */  .4byte ftNess_AppearStart_ProcUpdate
+  /* 54E54 0A6AE4 8012B2E4 */  .4byte ftNessAppearStartProcUpdate
   .incbin "ovl2.raw.bin", 0x54E58, 0x4
   /* 54E5C 0A6AEC 8012B2EC */  .4byte ftCommon_Appear_ProcPhysics
   /* 54E60 0A6AF0 8012B2F0 */  .4byte ftMap_UpdateProjectGroundID
   .incbin "ovl2.raw.bin", 0x54E64, 0x4
-  /* 54E68 0A6AF8 8012B2F8 */  .4byte ftNess_AppearWait_ProcUpdate
+  /* 54E68 0A6AF8 8012B2F8 */  .4byte ftNessAppearWaitProcUpdate
   .incbin "ovl2.raw.bin", 0x54E6C, 0x4
   /* 54E70 0A6B00 8012B300 */  .4byte ftCommon_Appear_ProcPhysics
   /* 54E74 0A6B04 8012B304 */  .4byte ftMap_UpdateProjectGroundID
@@ -5772,10 +5772,10 @@ glabel ftCommon_ItemThrow_ThrowDesc
   .balign 4
   .incbin "ovl2.raw.bin", 0x565D4, 0x14
 
-glabel gDefaultShadowColor
+glabel dFtShadowColorDefault
   .incbin "ovl2.raw.bin", 0x565E8, 0x4
 
-glabel gTeamShadowColors
+glabel dFtShadowColorsTeam
   .incbin "ovl2.raw.bin", 0x565EC, 0x14
 
 glabel D_ovl2_8012CA90

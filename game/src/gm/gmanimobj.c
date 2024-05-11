@@ -96,9 +96,9 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
         while (current_aobj != NULL)
         {
-            if ((current_aobj->unk_aobj_0x4 > 0) && (current_aobj->unk_aobj_0x4 <= ARRAY_COUNT(setup_aobj)))
+            if ((current_aobj->param > 0) && (current_aobj->param <= ARRAY_COUNT(setup_aobj)))
             {
-                setup_aobj[current_aobj->unk_aobj_0x4 - 1] = current_aobj;
+                setup_aobj[current_aobj->param - 1] = current_aobj;
             }
             current_aobj = current_aobj->next;
         }
@@ -110,9 +110,9 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
                 while (current_aobj != NULL)
                 {
-                    if (current_aobj->unk_aobj_0x5 != 0)
+                    if (current_aobj->kind != 0)
                     {
-                        current_aobj->unk_aobj_0xC += root_dobj->dobj_f1 + root_dobj->dobj_f0;
+                        current_aobj->length += root_dobj->dobj_f1 + root_dobj->dobj_f0;
                     }
                     current_aobj = current_aobj->next;
                 }
@@ -142,19 +142,19 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         {
                             setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->unk_aobj_0x10 = setup_aobj[i]->unk_aobj_0x14;
+                        setup_aobj[i]->value_base = setup_aobj[i]->value_target;
 
-                        setup_aobj[i]->unk_aobj_0x14 = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
+                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
 
-                        setup_aobj[i]->unk_aobj_0x18 = setup_aobj[i]->unk_aobj_0x1C;
-                        setup_aobj[i]->unk_aobj_0x1C = 0.0F;
-                        setup_aobj[i]->unk_aobj_0x5 = 3;
+                        setup_aobj[i]->rate_base = setup_aobj[i]->rate_target;
+                        setup_aobj[i]->rate_target = 0.0F;
+                        setup_aobj[i]->kind = 3;
 
                         if (var_f20 != 0.0F)
                         {
-                            setup_aobj[i]->unk_aobj_0x8 = 1.0F / var_f20;
+                            setup_aobj[i]->length_invert = 1.0F / var_f20;
                         }
-                        setup_aobj[i]->unk_aobj_0xC = -root_dobj->dobj_f0 - root_dobj->dobj_f1;
+                        setup_aobj[i]->length = -root_dobj->dobj_f0 - root_dobj->dobj_f1;
                     }
                 }
                 if (command_kind == 7)
@@ -179,18 +179,18 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         {
                             setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->unk_aobj_0x10 = setup_aobj[i]->unk_aobj_0x14;
+                        setup_aobj[i]->value_base = setup_aobj[i]->value_target;
 
-                        setup_aobj[i]->unk_aobj_0x14 = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
+                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
 
-                        setup_aobj[i]->unk_aobj_0x5 = 2;
+                        setup_aobj[i]->kind = 2;
 
                         if (var_f20 != 0.0F)
                         {
-                            setup_aobj[i]->unk_aobj_0x18 = (setup_aobj[i]->unk_aobj_0x14 - setup_aobj[i]->unk_aobj_0x10) / var_f20;
+                            setup_aobj[i]->rate_base = (setup_aobj[i]->value_target - setup_aobj[i]->value_base) / var_f20;
                         }
-                        setup_aobj[i]->unk_aobj_0xC = -root_dobj->dobj_f0 - root_dobj->dobj_f1;
-                        setup_aobj[i]->unk_aobj_0x1C = 0.0F;
+                        setup_aobj[i]->length = -root_dobj->dobj_f0 - root_dobj->dobj_f1;
+                        setup_aobj[i]->rate_target = 0.0F;
                     }
                 }
                 if (command_kind == 2)
@@ -215,21 +215,21 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         {
                             setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->unk_aobj_0x10 = setup_aobj[i]->unk_aobj_0x14;
+                        setup_aobj[i]->value_base = setup_aobj[i]->value_target;
 
-                        setup_aobj[i]->unk_aobj_0x14 = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
+                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
 
-                        setup_aobj[i]->unk_aobj_0x18 = setup_aobj[i]->unk_aobj_0x1C;
+                        setup_aobj[i]->rate_base = setup_aobj[i]->rate_target;
 
-                        setup_aobj[i]->unk_aobj_0x1C = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 1);
+                        setup_aobj[i]->rate_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 1);
 
-                        setup_aobj[i]->unk_aobj_0x5 = 3;
+                        setup_aobj[i]->kind = 3;
 
                         if (var_f20 != 0.0F)
                         {
-                            setup_aobj[i]->unk_aobj_0x8 = 1.0F / var_f20;
+                            setup_aobj[i]->length_invert = 1.0F / var_f20;
                         }
-                        setup_aobj[i]->unk_aobj_0xC = -root_dobj->dobj_f0 - root_dobj->dobj_f1;
+                        setup_aobj[i]->length = -root_dobj->dobj_f0 - root_dobj->dobj_f1;
                     }
                 }
                 if (command_kind == 4)
@@ -253,7 +253,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         {
                             setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->unk_aobj_0x1C = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 1);
+                        setup_aobj[i]->rate_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 1);
                     }
                 }
                 break;
@@ -281,17 +281,17 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         {
                             setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->unk_aobj_0x10 = setup_aobj[i]->unk_aobj_0x14;
+                        setup_aobj[i]->value_base = setup_aobj[i]->value_target;
 
-                        setup_aobj[i]->unk_aobj_0x14 = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
+                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
 
-                        setup_aobj[i]->unk_aobj_0x5 = 1;
+                        setup_aobj[i]->kind = 1;
 
-                        setup_aobj[i]->unk_aobj_0x8 = var_f20;
+                        setup_aobj[i]->length_invert = var_f20;
 
-                        setup_aobj[i]->unk_aobj_0xC = -root_dobj->dobj_f0 - root_dobj->dobj_f1;
+                        setup_aobj[i]->length = -root_dobj->dobj_f0 - root_dobj->dobj_f1;
 
-                        setup_aobj[i]->unk_aobj_0x1C = 0.0F;
+                        setup_aobj[i]->rate_target = 0.0F;
                     }
                 }
                 if (command_kind == 9)
@@ -332,7 +332,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         {
                             setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->unk_aobj_0xC += var_f20;
+                        setup_aobj[i]->length += var_f20;
                     }
                 }
                 break;
@@ -354,9 +354,9 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
                 while (current_aobj != NULL)
                 {
-                    if (current_aobj->unk_aobj_0x5 != 0)
+                    if (current_aobj->kind != 0)
                     {
-                        current_aobj->unk_aobj_0xC += root_dobj->dobj_f1 + root_dobj->dobj_f0;
+                        current_aobj->length += root_dobj->dobj_f1 + root_dobj->dobj_f0;
                     }
                     current_aobj = current_aobj->next;
                 }

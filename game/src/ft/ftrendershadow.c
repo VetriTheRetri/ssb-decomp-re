@@ -1,14 +1,7 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
 
-#include <sys/obj_renderer.h>
 #include <sys/obj.h>
-
-#include <PR/gbi.h>
-#include <PR/gu.h>
-#include <PR/mbi.h>
-#include <PR/sp.h>
-#include <PR/ultratypes.h>
 
 f32 func_ovl3_8013AE10(Vec3f *a, Vec3f *b, f32 f)
 {
@@ -19,10 +12,9 @@ f32 func_ovl3_8013AE10(Vec3f *a, Vec3f *b, f32 f)
     else return (((f - a->x) * (b->y - a->y)) / (b->x - a->x)) + a->y;
 }
 
-extern Gfx *gDisplayListHead[4];
 extern intptr_t D_NF_00003A68;
-extern gsColorRGBA gDefaultShadowColor;
-extern gsColorRGBA gTeamShadowColors[3];
+extern gsColorRGBA dFtShadowColorDefault;
+extern gsColorRGBA dFtShadowColorsTeam[3];
 extern void *D_ovl2_801313B4;
 extern Gfx D_ovl3_80188410;
 extern Gfx D_ovl3_80188458;
@@ -217,7 +209,6 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
 
                         for (i = 1; i < spD4; i++)
                         {
-
                             mpCollision_GetVertexPositionID(ground_line_id, i, &sp118);
 
                             if ((sp118.x <= var_f22) && (var_f22 <= sp10C.x))
@@ -271,16 +262,19 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
 
                 if (spD8 != 0)
                 {
-                    if (gGtlTaskId != 0) shadow_vertex = &sp->shadow_vertex2[0];
+                    if (gGtlTaskId != 0)
+                    {
+                        shadow_vertex = &sp->shadow_vertex2[0];
+                    }
                     else shadow_vertex = &sp->shadow_vertex1[0];
 
                     gDPPipeSync(gDisplayListHead[0]++);
 
-                    if ((gBattleState->is_team_battle == TRUE) && !(gBattleState->is_ignore_teamshadow))
+                    if ((gBattleState->is_team_battle == TRUE) && !(gBattleState->is_not_teamshadows))
                     {
-                        gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, gTeamShadowColors[fp->team].r, gTeamShadowColors[fp->team].g, gTeamShadowColors[fp->team].b, gTeamShadowColors[fp->team].a);
+                        gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dFtShadowColorsTeam[fp->team].r, dFtShadowColorsTeam[fp->team].g, dFtShadowColorsTeam[fp->team].b, dFtShadowColorsTeam[fp->team].a);
                     }
-                    else gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, gDefaultShadowColor.r, gDefaultShadowColor.g, gDefaultShadowColor.b, gDefaultShadowColor.a);
+                    else gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dFtShadowColorDefault.r, dFtShadowColorDefault.g, dFtShadowColorDefault.b, dFtShadowColorDefault.a);
 
                     sv = shadow_vertex;
 

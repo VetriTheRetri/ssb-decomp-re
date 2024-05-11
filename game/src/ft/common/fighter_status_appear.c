@@ -1,21 +1,21 @@
 #include <ft/fighter.h>
 
 // 0x8013DE60
-void ftNess_AppearStart_ProcUpdate(GObj *fighter_gobj)
+void ftNessAppearStartProcUpdate(GObj *fighter_gobj)
 {
     ftCommon_Appear_UpdateEffects(fighter_gobj);
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_AppearWait_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNessAppearWaitSetStatus);
 }
 
 // 0x8013DE90
-void ftNess_AppearWait_ProcUpdate(GObj *fighter_gobj)
+void ftNessAppearWaitProcUpdate(GObj *fighter_gobj)
 {
     ftCommon_Appear_UpdateEffects(fighter_gobj);
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNess_AppearEnd_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftNessAppearEndSetStatus);
 }
 
 // 0x8013DEC0
-void ftNess_AppearWait_SetStatus(GObj *fighter_gobj)
+void ftNessAppearWaitSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -26,7 +26,7 @@ void ftNess_AppearWait_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8013DF14
-void ftNess_AppearEnd_SetStatus(GObj *fighter_gobj)
+void ftNessAppearEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -37,7 +37,7 @@ void ftNess_AppearEnd_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x8013DF7C
-void ftCaptain_AppearStart_ProcUpdate(GObj *fighter_gobj)
+void ftCaptainAppearStartProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -47,11 +47,11 @@ void ftCaptain_AppearStart_ProcUpdate(GObj *fighter_gobj)
     {
         ftRenderSwapDLLink(fighter_gobj, 9);
     }
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCaptain_AppearEnd_SetStatus);
+    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCaptainAppearEndSetStatus);
 }
 
 // 0x8013E008
-void ftCaptain_AppearEnd_SetStatus(GObj *fighter_gobj)
+void ftCaptainAppearEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

@@ -40,7 +40,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_AppearStart_ProcUpdate,			// Proc Update
+		ftNessAppearStartProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -60,7 +60,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_AppearStart_ProcUpdate,			// Proc Update
+		ftNessAppearStartProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -80,7 +80,7 @@ ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
 		ftStatus_AttackIndex_None,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNess_AppearWait_ProcUpdate,			// Proc Update
+		ftNessAppearWaitProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommon_Appear_ProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map

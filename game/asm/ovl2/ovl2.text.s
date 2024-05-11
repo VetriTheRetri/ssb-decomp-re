@@ -622,7 +622,7 @@ glabel func_ovl2_800D67DC
   /* 05250C 800D6D0C 24846C38 */     addiu $a0, $a0, %lo(D_ovl2_80116C38)
   /* 052510 800D6D10 240F0033 */     addiu $t7, $zero, 0x33
   /* 052514 800D6D14 A25E0001 */        sb $fp, 1($s2) # gSceneData + 1
-  /* 052518 800D6D18 0C04D3A1 */       jal overlay_set50_51_entry
+  /* 052518 800D6D18 0C04D3A1 */       jal gmStageClearStartScene
   /* 05251C 800D6D1C A24F0000 */        sb $t7, ($s2) # gSceneData + 0
   .L800D6D20:
   /* 052520 800D6D20 92580017 */       lbu $t8, 0x17($s2) # gSceneData + 23
@@ -18978,7 +18978,7 @@ glabel ftMain_SetFighterStatus
   /* 062A24 800E7224 A22E0190 */        sb $t6, 0x190($s1)
   /* 062A28 800E7228 31CF00FE */      andi $t7, $t6, 0xfe
   /* 062A2C 800E722C A22F0190 */        sb $t7, 0x190($s1)
-  /* 062A30 800E7230 0C03A026 */       jal ftCommon_SetCaptureIgnoreMask
+  /* 062A30 800E7230 0C03A026 */       jal ftSetCaptureIgnoreMask
   /* 062A34 800E7234 00002825 */        or $a1, $zero, $zero
   /* 062A38 800E7238 92380191 */       lbu $t8, 0x191($s1)
   /* 062A3C 800E723C 24010003 */     addiu $at, $zero, 3
@@ -20007,7 +20007,7 @@ glabel ftMain_MakeRumble
   /* 063890 800E8090 03E00008 */        jr $ra
   /* 063894 800E8094 00000000 */       nop 
 
-glabel ftCommon_SetCaptureIgnoreMask
+glabel ftSetCaptureIgnoreMask
   /* 063898 800E8098 AFA50004 */        sw $a1, 4($sp)
   /* 06389C 800E809C 03E00008 */        jr $ra
   /* 0638A0 800E80A0 A0850193 */        sb $a1, 0x193($a0)

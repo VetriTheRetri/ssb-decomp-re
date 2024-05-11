@@ -3768,14 +3768,14 @@ void mnBattleDestroyCursorAndTokenProcesses()
 
         if (cursor_gobj != NULL)
         {
-            func_8000B2EC(cursor_gobj->gobjproc_next);
+            func_8000B2EC(cursor_gobj->gobjproc_head);
         }
 
         token_gobj = gMnBattlePanels[i].token;
 
         if (token_gobj != NULL)
         {
-            func_8000B2EC(token_gobj->gobjproc_next);
+            func_8000B2EC(token_gobj->gobjproc_head);
         }
     };
 }

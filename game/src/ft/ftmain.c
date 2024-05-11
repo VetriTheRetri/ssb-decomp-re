@@ -4388,7 +4388,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
     fp->is_show_item = TRUE;
     fp->x190_flag_b7 = FALSE;
 
-    ftCommon_SetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_NONE);
+    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_NONE);
 
     fp->is_nullstatus = FALSE;
     fp->is_damage_resist = FALSE;

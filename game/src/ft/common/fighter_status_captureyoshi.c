@@ -104,7 +104,7 @@ void ftCommon_CaptureYoshi_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     this_fp->status_vars.common.captureyoshi.stage = 0;
     this_fp->status_vars.common.captureyoshi.breakout_wait = 0;
 
-    ftCommon_SetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
     ftPhysics_StopVelAll(fighter_gobj);
     ftCommon_CaptureYoshi_ProcPhysics(fighter_gobj);
     ftMap_UpdateProjectGroundID(fighter_gobj);
@@ -348,7 +348,7 @@ void ftCommon_YoshiEgg_SetStatus(GObj *fighter_gobj)
 
     ftMap_SetAir(this_fp);
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_YoshiEgg, 0.0F, 0.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftCommon_SetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
+    ftSetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
 
     this_fp->is_invisible = TRUE;
 

@@ -211,7 +211,7 @@ segments:
       - [0x033210, asm, libultra/nops_33210]
       - [0x033270, hasm, libultra/os/setsr]
       - [0x033280, hasm, libultra/os/getsr]
-      - [0x033290, asm, libultra/io/vigetcurrframebuf]
+      - [0x033290, c, libultra/io/vigetnextframebuf]
       - [0x0332D0, asm, libultra/io/sprawdma]
       - [0x033360, asm, libultra/io/sirawdma]
       - [0x033410, asm, libultra/io/epilinkhandle]
@@ -293,7 +293,8 @@ segments:
       - [0x039EE0, asm, libultra/os/visetyscale]
       - [0x039F40, asm, libultra/libc/llcvt]
       - [0x03A150, asm, libultra/io/aisetnextbuf] # different from sf64
-      - [0x03A200, asm, libultra/io/ai]
+      - [0x03A200, c, libultra/io/ai]
+      - [0x03A230, c, libultra/io/vigetcurrframebuf]
       - [0x03A270, asm, libultra/io/spsetpc]
       - [0x03A2B0, hasm, libultra/os/getwatchlo]
       - [0x03A2C0, textbin, rsp/n_aspmain]

@@ -1,4 +1,19 @@
 #include "common.h"
+#include "sys/thread3.h"
+
+#include "sys/crash.h"
+#include "sys/main.h"
+#include "sys/thread6.h"
+
+#include <config.h>
+#include <macros.h>
+#include <missing_libultra.h>
+#include <ssb_types.h>
+
+#include <PR/os.h>
+#include <PR/rcp.h>
+#include <PR/sptask.h>
+#include <PR/ultratypes.h>
 
 /*
     28 00 u32	type;
@@ -88,15 +103,81 @@ void func_80000920(s32 val) {
     D_8004501C_4082C = val;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_8000092C.s")
+s32 func_8000092C(void) {
+    return D_8004501C_4082C;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/unref_80000938.s")
+void unref_80000938(void) {
+    struct SCTaskGfx *i = D_80044ECC_406DC, *j = D_80044EE4_406F4, *k = D_80044EDC_406EC;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80000970.s")
+    do {
+    } while (i || j || k);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_800009D8.s")
+    return;
+}
 
+void func_80000970(struct SCTaskInfo *task) {
+    OSMesg msgs[1];
+    OSMesgQueue mq;
+
+    osCreateMesgQueue(&mq, msgs, ARRAY_COUNT(msgs));
+    task->func  = NULL;
+    task->unk1C = 1;
+    task->unk20 = &mq;
+    osSendMesg(&gScheduleTaskQueue, (OSMesg)task, OS_MESG_NOBLOCK);
+    osRecvMesg(&mq, NULL, OS_MESG_BLOCK);
+}
+
+void func_800009D8(struct MqListNode *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count) {
+    struct SCTaskType3 t;
+
+    osCreateMesgQueue(mq, msg, count);
+    arg0->mq     = mq;
+    t.info.unk00 = 3;
+    t.info.unk04 = 100;
+    t.unk24      = arg0;
+    func_80000970(&t.info);
+}
+
+#ifdef NON_MATCHING
+s32 unref_80000A34(struct SCTaskGfx *t) {
+    s32 idx;
+    s32 i;
+    void *nextFb; // 1c
+    void *curFb;  // temp_v0
+
+    if (D_80044F9C_407AC != NULL) { return 1; }
+    if (D_80044FA0_407B0 != NULL) { return 0; }
+
+    nextFb = osViGetNextFramebuffer();
+    curFb  = osViGetCurrentFramebuffer();
+
+    // nonmatching: register swap around `idx` and the pointer from `D_80044F90_407A0[idx]`
+    idx = t->unk70;
+    if (idx != -1 && D_80044F90_407A0[idx] && D_80044F90_407A0[idx] != curFb && D_80044F90_407A0[idx] != nextFb) {
+        D_80044FA0_407B0 = D_80044F9C_407AC = D_80044F90_407A0[idx];
+        D_80044FC8_407D8                    = 0;
+        D_80044FAC_407BC                    = osGetCount();
+
+        return 1;
+    }
+    // L80000AE8
+
+    for (i = 0; i < ARRAY_COUNT(D_80044F90_407A0); i++) {
+        if (D_80044F90_407A0[i] && D_80044F90_407A0[i] != curFb && D_80044F90_407A0[i] != nextFb) {
+            D_80044F9C_407AC = D_80044F90_407A0[i];
+            D_80044FC8_407D8 = 0;
+            D_80044FAC_407BC = osGetCount();
+
+            return 1;
+        }
+    }
+
+    return 0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/thread3/unref_80000A34.s")
+#endif /* NON_MATCHING */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80000B54.s")
 

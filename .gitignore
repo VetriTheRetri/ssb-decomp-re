@@ -10,3 +10,6 @@ undefined*
 tools/ido-recomp/
 .vscode/
 build/
+ctx.c
+ctx.c.m2c
+m2cfiles/

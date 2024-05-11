@@ -95,9 +95,6 @@ s32 D_80045024_40834; // return of osAfterPreNMI
 void *D_80045028_40838[3];
 u8 D_80045034_40844;
 u8 D_80045035_40845;
-u8 extend_D_80045036;
-u8 extend_D_80045037;
-u8 extend_D_80045038[8];
 
 void func_80000920(s32 val) {
     D_8004501C_4082C = val;
@@ -179,9 +176,35 @@ s32 unref_80000A34(struct SCTaskGfx *t) {
 #pragma GLOBAL_ASM("asm/nonmatchings/thread3/unref_80000A34.s")
 #endif /* NON_MATCHING */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80000B54.s")
+s32 func_80000B54(struct SCTaskInfo *t) {
+    struct SCTaskInfo *cur;
+    const s32 TYPE_TO_CHECK = 1;
 
-void __dummy_80000C5C(void) {
+    if (D_80044ECC_406DC != NULL && D_80044ECC_406DC->info.unk00 == TYPE_TO_CHECK) { return 0; }
+
+    cur = &D_80044ED4_406E4->info;
+    while (cur != NULL) {
+        if (cur->unk00 == TYPE_TO_CHECK) { return 0; }
+        cur = cur->unk0C;
+    }
+
+    cur = D_80044EC4_406D4;
+    while (cur != NULL) {
+        if (cur->unk00 == TYPE_TO_CHECK) { return 0; }
+        cur = cur->unk0C;
+    }
+
+    if (D_80044EE4_406F4 != NULL && D_80044EE4_406F4->info.unk00 == TYPE_TO_CHECK) { return 0; }
+
+    cur = &D_80044EDC_406EC->info;
+    while (cur != NULL) {
+        if (cur->unk00 == TYPE_TO_CHECK) { return 0; }
+        cur = cur->unk0C;
+    }
+
+    if (D_80045034_40844 != D_80045035_40845) { return 0; }
+
+    return 1;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80000C64.s")

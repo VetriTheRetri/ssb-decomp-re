@@ -176,7 +176,7 @@ s32 unref_80000A34(struct SCTaskGfx *t) {
 #pragma GLOBAL_ASM("asm/nonmatchings/thread3/unref_80000A34.s")
 #endif /* NON_MATCHING */
 
-s32 func_80000B54(struct SCTaskInfo *t) {
+s32 func_80000B54(UNUSED struct SCTaskInfo *t) {
     struct SCTaskInfo *cur;
     const s32 TYPE_TO_CHECK = 1;
 
@@ -207,13 +207,85 @@ s32 func_80000B54(struct SCTaskInfo *t) {
     return 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80000C64.s")
+// insert into task (command?) priority queue?
+void func_80000C64(struct SCTaskInfo *newTask) {
+    struct SCTaskInfo *csr;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80000CF4.s")
+    // find task with priority higher than arg0
+    csr = D_80044EC8_406D8;
+    while (csr != NULL && csr->unk04 < newTask->unk04) { csr = csr->unk10; }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80000D44.s")
+    // insert new task into queue
+    newTask->unk10 = csr;
+    if (csr != NULL) {
+        newTask->unk0C = csr->unk0C;
+        csr->unk0C     = newTask;
+    } else {
+        newTask->unk0C   = D_80044EC4_406D4;
+        D_80044EC4_406D4 = newTask;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80000DD4.s")
+    csr = newTask->unk0C;
+    if (csr != NULL) {
+        csr->unk10 = newTask;
+    } else {
+        D_80044EC8_406D8 = newTask;
+    }
+}
+
+// remove from priority queue?
+void func_80000CF4(struct SCTaskInfo *task) {
+    if (task->unk10 != NULL) {
+        task->unk10->unk0C = task->unk0C;
+    } else {
+        D_80044EC4_406D4 = task->unk0C;
+    }
+
+    if (task->unk0C != NULL) {
+        task->unk0C->unk10 = task->unk10;
+    } else {
+        D_80044EC8_406D8 = task->unk10;
+    }
+}
+
+// add to D_80044ED4_406E4/D_80044ED8_406E8 priorirty queue
+void func_80000D44(struct SCTaskGfx *arg0) {
+    struct SCTaskInfo *temp_v0;
+
+    temp_v0 = &D_80044ED8_406E8->info;
+    while (temp_v0 != NULL && temp_v0->unk04 < arg0->info.unk04) { temp_v0 = temp_v0->unk10; }
+
+    arg0->info.unk10 = temp_v0;
+    if (temp_v0 != NULL) {
+        arg0->info.unk0C = temp_v0->unk0C;
+        temp_v0->unk0C   = &arg0->info;
+    } else {
+        arg0->info.unk0C = &D_80044ED4_406E4->info;
+        D_80044ED4_406E4 = arg0;
+    }
+
+    temp_v0 = arg0->info.unk0C;
+    if (temp_v0 != NULL) {
+        temp_v0->unk10 = &arg0->info;
+    } else {
+        D_80044ED8_406E8 = arg0;
+    }
+}
+
+// remove from D_80044ED4_406E4/D_80044ED8_406E8 queue
+void func_80000DD4(struct SCTaskGfx *arg0) {
+    if (arg0->info.unk10 != NULL) {
+        arg0->info.unk10->unk0C = arg0->info.unk0C;
+    } else {
+        D_80044ED4_406E4 = (void *)arg0->info.unk0C;
+    }
+
+    if (arg0->info.unk0C != NULL) {
+        arg0->info.unk0C->unk10 = arg0->info.unk10;
+    } else {
+        D_80044ED8_406E8 = (void *)arg0->info.unk10;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80000E24.s")
 

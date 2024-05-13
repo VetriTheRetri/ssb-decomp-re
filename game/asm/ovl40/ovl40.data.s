@@ -6,7 +6,7 @@
 #  8018E070 -> 8018E1C0
 
 
-glabel D_ovl40_8018E070
+glabel dMvOpeningLinkCameraSettingsStart
   .incbin "ovl40.raw.bin", 0x0FB0, 0x4
   /* FB4 16BBC4 8018E074 */
   .asciz "C4"
@@ -20,7 +20,7 @@ glabel D_ovl40_8018E070
   .balign 4
   .incbin "ovl40.raw.bin", 0x0FC4, 0x8
 
-glabel D_ovl40_8018E08C
+glabel dMvOpeningLinkCameraSettingsEnd
   /* FCC 16BBDC 8018E08C */
   .asciz "CH"
   .balign 4
@@ -30,16 +30,16 @@ glabel D_ovl40_8018E08C
   .balign 4
   .incbin "ovl40.raw.bin", 0x0FE0, 0x8
 
-glabel D_ovl40_8018E0A8
+glabel dMvOpeningLinkInputSeq
   .incbin "ovl40.raw.bin", 0x0FE8, 0x8
 
 glabel D_ovl40_8018E0B0
   .incbin "ovl40.raw.bin", 0x0FF0, 0x8
 
-glabel D_ovl40_8018E0B8
+glabel dMvOpeningLinkNameOffsets
   .incbin "ovl40.raw.bin", 0x0FF8, 0x14
 
-glabel D_ovl40_8018E0CC
+glabel dMvOpeningLinkNameCharXPositions
   .incbin "ovl40.raw.bin", 0x100C, 0x8
   /* 1014 16BC24 8018E0D4 */
   .asciz "B4"
@@ -58,12 +58,12 @@ glabel D_ovl40_8018E0F8
   /* 1040 16BC50 8018E100 */  .4byte func_800A26B8
   /* 1044 16BC54 8018E104 */  .4byte D_NF_8018E5E0
   .incbin "ovl40.raw.bin", 0x1048, 0x28
-  /* 1070 16BC80 8018E130 */  .4byte func_ovl40_8018DFCC
+  /* 1070 16BC80 8018E130 */  .4byte gMvOpeningLinkSetupDisplayList
   /* 1074 16BC84 8018E134 */  .4byte update_contdata
   .incbin "ovl40.raw.bin", 0x1078, 0x20
   /* 1098 16BCA8 8018E158 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl40.raw.bin", 0x109C, 0x24
-  /* 10C0 16BCD0 8018E180 */  .4byte func_ovl40_8018DE48
+  /* 10C0 16BCD0 8018E180 */  .4byte mvOpeningLinkInit
   .incbin "ovl40.raw.bin", 0x10C4, 0xC
 
 glabel D_ovl40_8018E190

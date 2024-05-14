@@ -8,10 +8,10 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItNyarsItemAttributes;     // 0x00000880
+extern intptr_t lITNyarsItemAttributes;     // 0x00000880
 extern intptr_t
-lItNyarsWeaponCoinWeaponAttributes;         // 0x000008C8
-extern intptr_t lItNyarsAnimJoint;          // 0x0000C130
+lITNyarsWeaponCoinWeaponAttributes;         // 0x000008C8
+extern intptr_t lITNyarsAnimJoint;          // 0x0000C130
 
 // // // // // // // // // // // //
 //                               //
@@ -20,11 +20,11 @@ extern intptr_t lItNyarsAnimJoint;          // 0x0000C130
 // // // // // // // // // // // //
 
 // 0x8018ACA0
-itCreateDesc dItNyarsItemDesc =
+itCreateDesc dITNyarsItemDesc =
 {
     It_Kind_Nyars,                          // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItNyarsItemAttributes,                // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITNyarsItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -45,7 +45,7 @@ itCreateDesc dItNyarsItemDesc =
 };
 
 // 0x8018ACD4
-itStatusDesc dItNyarsStatusDesc[/* */] =
+itStatusDesc dITNyarsStatusDesc[/* */] =
 {
     // Status 0 (Neutral Attack)
     {
@@ -61,12 +61,12 @@ itStatusDesc dItNyarsStatusDesc[/* */] =
 };
 
 // 0x8018ACF4
-wpCreateDesc dItNyarsWeaponCoinWeaponDesc =
+wpCreateDesc dITNyarsWeaponCoinWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_NyarsCoin,                      // Weapon Kind
-    &gItemFileData,                         // Pointer to character's loaded files?
-    &lItNyarsWeaponCoinWeaponAttributes,    // Offset of weapon attributes in loaded files
+    &gITemFileData,                         // Pointer to character's loaded files?
+    &lITNyarsWeaponCoinWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -151,7 +151,7 @@ void itNyarsNAttackInitItemVars(GObj *item_gobj)
 void itNyarsNAttackSetStatus(GObj *item_gobj)
 {
     itNyarsNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItNyarsStatusDesc, itStatus_Nyars_NAttack);
+    itMainSetItemStatus(item_gobj, dITNyarsStatusDesc, itStatus_Nyars_NAttack);
 }
 
 // 0x8017EFF8
@@ -185,7 +185,7 @@ sb32 itNyarsSDefaultProcMap(GObj *item_gobj)
 // 0x8017F08C
 GObj* itNyarsMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItNyarsItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITNyarsItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 
@@ -206,7 +206,7 @@ GObj* itNyarsMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lItNyarsAnimJoint), 0.0F);
+        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITNyarsAnimJoint), 0.0F);
     }
     return item_gobj;
 }
@@ -272,7 +272,7 @@ sb32 itNyarsWeaponCoinProcReflector(GObj *weapon_gobj)
 GObj* itNyarsWeaponCoinMakeWeapon(GObj *item_gobj, u8 coin_number, f32 rotate_angle)
 {
     wpStruct *wp;
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dItNyarsWeaponCoinWeaponDesc, &DObjGetStruct(item_gobj)->translate.vec.f, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITNyarsWeaponCoinWeaponDesc, &DObjGetStruct(item_gobj)->translate.vec.f, WEAPON_MASK_SPAWN_ITEM);
     DObj *dobj;
 
     if (weapon_gobj == NULL)

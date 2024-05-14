@@ -193,7 +193,7 @@ void mvOpeningMarioInitFighterStagePanel()
 
     for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
     {
-        ftCreateDesc spawn_info = dFtDefaultFighterDesc;
+        ftCreateDesc spawn_info = dFTDefaultFighterDesc;
 
         if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
 
@@ -276,7 +276,7 @@ void mvOpeningMarioAnimatePosedFighter(GObj* fighter_gobj)
 void mvOpeningMarioCreatePosedFighter()
 {
     GObj* fighter_gobj;
-    ftCreateDesc spawn_info = dFtDefaultFighterDesc;
+    ftCreateDesc spawn_info = dFTDefaultFighterDesc;
 
     spawn_info.ft_kind = Ft_Kind_Mario;
     spawn_info.costume = ftCostume_GetIndexFFA(Ft_Kind_Mario, 0);

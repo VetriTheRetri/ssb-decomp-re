@@ -6,7 +6,7 @@
 #  80133620 -> 801337A0
 
 
-glabel dMnOptionFileIDs
+glabel dMNOptionFileIDs
   .incbin "ovl60.raw.bin", 0x1B20, 0x8
 
 glabel D_ovl60_80133628
@@ -24,20 +24,20 @@ glabel D_ovl60_80133630
   .balign 4
   .incbin "ovl60.raw.bin", 0x1B3C, 0x4
 
-glabel dMnOptionDisplayList
+glabel dMNOptionDisplayList
   .incbin "ovl60.raw.bin", 0x1B40, 0x14
   /* 1B54 120E04 80133654 */  .4byte D_ovl60_80133630
   .incbin "ovl60.raw.bin", 0x1B58, 0x4
   /* 1B5C 120E0C 8013365C */  .4byte D_ovl60_80133628
   .incbin "ovl60.raw.bin", 0x1B60, 0x8
 
-glabel dMnOptionSelectedColors
+glabel dMNOptionSelectedColors
   .incbin "ovl60.raw.bin", 0x1B68, 0x8
 
-glabel dMnOptionHighlightColors
+glabel dMNOptionHighlightColors
   .incbin "ovl60.raw.bin", 0x1B70, 0x8
 
-glabel dMnOptionNotColors
+glabel dMNOptionNotColors
   .incbin "ovl60.raw.bin", 0x1B78, 0x8
 
 glabel D_ovl60_80133680
@@ -67,10 +67,10 @@ glabel D_ovl60_801336AC
 glabel D_ovl60_801336CC
   .incbin "ovl60.raw.bin", 0x1BCC, 0x20
 
-glabel sMnOptionOptionGObjs
-  /* 1BEC 120E9C 801336EC */  .4byte sMnOptionSoundGObj
-  /* 1BF0 120EA0 801336F0 */  .4byte sMnOptionScreenAdjustGObj
-  /* 1BF4 120EA4 801336F4 */  .4byte sMnOptionBackupClearGObj
+glabel sMNOptionOptionGObjs
+  /* 1BEC 120E9C 801336EC */  .4byte sMNOptionSoundGObj
+  /* 1BF0 120EA0 801336F0 */  .4byte sMNOptionScreenAdjustGObj
+  /* 1BF4 120EA4 801336F4 */  .4byte sMNOptionBackupClearGObj
 
 glabel D_ovl60_801336F8
   /* 1BF8 120EA8 801336F8 */  .4byte D_NF_80392A00

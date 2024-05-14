@@ -6,12 +6,12 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItBombHeiItemAttributes;       // 0x00000424
-extern intptr_t lItBombHeiHitboxEvents;         // 0x0000046C
-extern intptr_t lItBombHeiDataStart;            // 0x000033F8
-extern intptr_t lItBombHeiWalkRightDisplayList; // 0x00003310
-extern intptr_t lItBombHeiWalkLeftDisplayList;  // 0x000034C0         
-extern intptr_t lItBombHeiWalkMatAnimJoint;     // 0x000035B8
+extern intptr_t lITBombHeiItemAttributes;       // 0x00000424
+extern intptr_t lITBombHeiHitboxEvents;         // 0x0000046C
+extern intptr_t lITBombHeiDataStart;            // 0x000033F8
+extern intptr_t lITBombHeiWalkRightDisplayList; // 0x00003310
+extern intptr_t lITBombHeiWalkLeftDisplayList;  // 0x000034C0         
+extern intptr_t lITBombHeiWalkMatAnimJoint;     // 0x000035B8
 
 // // // // // // // // // // // //
 //                               //
@@ -20,14 +20,14 @@ extern intptr_t lItBombHeiWalkMatAnimJoint;     // 0x000035B8
 // // // // // // // // // // // //
 
 // 0x80189F90 - unused?
-intptr_t dItBombHeiDisplayListOffsets[/* */] = { 0x3310, 0x34C0 };
+intptr_t dITBombHeiDisplayListOffsets[/* */] = { 0x3310, 0x34C0 };
 
 // 0x80189F98
-itCreateDesc dItBombHeiItemDesc =
+itCreateDesc dITBombHeiItemDesc =
 {
     It_Kind_BombHei,                        // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItBombHeiItemAttributes,              // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITBombHeiItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -48,7 +48,7 @@ itCreateDesc dItBombHeiItemDesc =
 };
 
 // 0x80189FCC
-itStatusDesc dItBombHeiStatusDesc[/* */] =
+itStatusDesc dITBombHeiStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -219,8 +219,8 @@ void itBombHeiSDefaultSetWalkDirection(GObj *item_gobj, ub8 lr)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    Gfx *dll = itGetPData(ip, lItBombHeiDataStart, lItBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lItBombHeiDataStart) + &lItBombHeiWalkLeftDisplayList); // Linker thing
-    Gfx *dlr = itGetPData(ip, lItBombHeiDataStart, lItBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lItBombHeiDataStart) + &lItBombHeiWalkRightDisplayList); // Linker thing
+    Gfx *dll = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkLeftDisplayList); // Linker thing
+    Gfx *dlr = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkRightDisplayList); // Linker thing
 
     if (lr != 0)
     {
@@ -316,7 +316,7 @@ sb32 itBombHeiGWaitProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    void *dll = itGetPData(ip, lItBombHeiDataStart, lItBombHeiWalkLeftDisplayList); // Linker thing
+    void *dll = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkLeftDisplayList); // Linker thing
     s32 lr;
 
     if (ip->it_multi == ITBOMBHEI_WALK_WAIT)
@@ -374,7 +374,7 @@ void itBombHeiGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dItBombHeiStatusDesc, itStatus_BombHei_GWait);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_GWait);
 }
 
 // 0x801774B0
@@ -386,14 +386,14 @@ void itBombHeiAFallSetStatus(GObj *item_gobj)
 
     itMapSetAir(ip);
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dItBombHeiStatusDesc, itStatus_BombHei_AFall);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_AFall);
 }
 
 // 0x801774FC
 void itBombHeiFHoldSetStatus(GObj *item_gobj)
 {
     itBombHeiSDefaultSetHitStatusNone(item_gobj);
-    itMainSetItemStatus(item_gobj, dItBombHeiStatusDesc, itStatus_BombHei_FHold);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_FHold);
 }
 
 // 0x80177530
@@ -417,7 +417,7 @@ sb32 itBombHeiFThrowProcMap(GObj *item_gobj)
 void itBombHeiFThrowSetStatus(GObj *item_gobj)
 {
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dItBombHeiStatusDesc, itStatus_BombHei_FThrow);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_FThrow);
 }
 
 // 0x801775C4
@@ -430,7 +430,7 @@ sb32 itBombHeiFDropProcMap(GObj *item_gobj)
 void itBombHeiFDropSetStatus(GObj *item_gobj)
 {
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dItBombHeiStatusDesc, itStatus_BombHei_FDrop);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_FDrop);
 }
 
 // 0x8017761C
@@ -530,7 +530,7 @@ void itBombHeiGWalkInitItemVars(GObj *item_gobj)
 
     itMainRefreshHit(item_gobj);
 
-    matanim = itGetPData(ip, lItBombHeiDataStart, lItBombHeiWalkMatAnimJoint); // ((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lItBombHeiDataStart) + &lItBombHeiWalkMatAnimJoint; // Linker thing
+    matanim = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkMatAnimJoint); // ((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkMatAnimJoint; // Linker thing
 
     omAddMObjAnimAll(dobj->mobj, matanim, 0.0F); // Set texture animation?
 
@@ -567,7 +567,7 @@ void itBombHeiGWalkSetStatus(GObj *item_gobj)
 {
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
     itBombHeiGWalkInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItBombHeiStatusDesc, itStatus_BombHei_GWalk);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_GWalk);
 }
 
 // 0x801779E4
@@ -586,7 +586,7 @@ void itBombHeiSDefaultClearVelSetExplode(GObj *item_gobj, u8 unused)
 void itBombHeiSDefaultUpdateHitEvent(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    itHitEvent *ev = itGetHitEvent(dItBombHeiItemDesc, lItBombHeiHitboxEvents); // Linker thing
+    itHitEvent *ev = itGetHitEvent(dITBombHeiItemDesc, lITBombHeiHitboxEvents); // Linker thing
 
     if (ip->it_multi == ev[ip->item_event_index].timer)
     {
@@ -632,7 +632,7 @@ sb32 itBombHeiMExplodeProcHit(GObj *item_gobj)
 void itBombHeiMExplodeSetStatus(GObj *item_gobj)
 {
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dItBombHeiStatusDesc, itStatus_BombHei_MExplode);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_MExplode);
 }
 
 // 0x80177BAC
@@ -669,7 +669,7 @@ sb32 itBombHeiNExplodeProcUpdate(GObj *item_gobj)
 void itBombHeiNExplodeSetStatus(GObj *item_gobj)
 {
     itBombHeiNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItBombHeiStatusDesc, itStatus_BombHei_NExplode);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_NExplode);
 }
 
 // 0x80177C64
@@ -716,13 +716,13 @@ void itBombHeiGExplodeWaitSetStatus(GObj *item_gobj)
 {
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
     itBombHeiGExplodeWaitInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItBombHeiStatusDesc, itStatus_BombHei_GExplodeWait);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_GExplodeWait);
 }
 
 // 0x80177D9C
 GObj* itBombHeiMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItBombHeiItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITBombHeiItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
     Vec3f translate;

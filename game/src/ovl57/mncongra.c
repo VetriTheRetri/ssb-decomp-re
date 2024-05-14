@@ -15,7 +15,7 @@ extern s8 gPlayerControllerPortStatuses[4];
 extern intptr_t D_NF_001AC870;
 extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_800A5240;
-extern intptr_t lMnCongraArenaLo;       // 0x80132300
+extern intptr_t lMNCongraArenaLo;       // 0x80132300
 extern intptr_t lSubSystemArenaLo;
 
 // // // // // // // // // // // //
@@ -25,22 +25,22 @@ extern intptr_t lSubSystemArenaLo;
 // // // // // // // // // // // //
 
 // 0x801322B8
-rdFileNode sMnCongraStatusBuf[5];
+rdFileNode sMNCongraStatusBuf[5];
 
 // 0x801322E0
-s32 sMnCongraFighterKind;
+s32 sMNCongraFighterKind;
 
 // 0x801322E4
-s32 sMnCongraSkipWait;
+s32 sMNCongraSkipWait;
 
 // 0x801322E8
-s32 sMnCongraSceneChangeWait;
+s32 sMNCongraSceneChangeWait;
 
 // 0x801322EC
-sb32 sMnCongraIsProceed;
+sb32 sMNCongraIsProceed;
 
 // 0x801322F0
-sb32 sMnCongraIsSceneChange;
+sb32 sMNCongraIsSceneChange;
 
 // // // // // // // // // // // //
 //                               //
@@ -49,7 +49,7 @@ sb32 sMnCongraIsSceneChange;
 // // // // // // // // // // // //
 
 // 0x80132100
-mnCongraFile dMnCongraFileInfo[/* */];
+mnCongraFile dMNCongraFileInfo[/* */];
 
 // 0x801321C0
 Unk800D4060 D_ovl57_801321C0;
@@ -58,13 +58,13 @@ Unk800D4060 D_ovl57_801321C0;
 Unk800D4060 D_ovl57_801321C4;
 
 // 0x801321C8
-Lights1 dMnCongraLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
+Lights1 dMNCongraLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
 
 // 0x801321E0
-Gfx dMnCongraDisplayList[/* */] =
+Gfx dMNCongraDisplayList[/* */] =
 {
     gsSPSetGeometryMode(G_LIGHTING),
-    gsSPSetLights1(dMnCongraLights1),
+    gsSPSetLights1(dMNCongraLights1),
     gsSPEndDisplayList()
 };
 
@@ -115,17 +115,17 @@ void mnCongraActorProcUpdate(GObj *gobj)
 {
     Unk800D4060 sp2C;
 
-    if (sMnCongraSkipWait != 0)
+    if (sMNCongraSkipWait != 0)
     {
-        sMnCongraSkipWait--;
+        sMNCongraSkipWait--;
     }
-    if ((sMnCongraSkipWait == 0) && (sMnCongraIsProceed == FALSE) && (mnCongraGetPlayerControllerInterrupt(A_BUTTON | B_BUTTON | START_BUTTON) != 0))
+    if ((sMNCongraSkipWait == 0) && (sMNCongraIsProceed == FALSE) && (mnCongraGetPlayerControllerInterrupt(A_BUTTON | B_BUTTON | START_BUTTON) != 0))
     {
-        sMnCongraIsProceed = TRUE;
+        sMNCongraIsProceed = TRUE;
 
         sp2C = D_ovl57_801321C0;
 
-        func_ovl0_800D4060(0x3FD, 0xD, 0xA, &sp2C, 0x5A, 0, &sMnCongraIsSceneChange);
+        func_ovl0_800D4060(0x3FD, 0xD, 0xA, &sp2C, 0x5A, 0, &sMNCongraIsSceneChange);
     }
 }
 
@@ -137,17 +137,17 @@ void mnCongraInitAll(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMnCongraSkipWait = 8;
-    sMnCongraSceneChangeWait = 0;
-    sMnCongraIsProceed = FALSE;
-    sMnCongraIsSceneChange = 0;
+    sMNCongraSkipWait = 8;
+    sMNCongraSceneChangeWait = 0;
+    sMNCongraIsProceed = FALSE;
+    sMNCongraIsSceneChange = 0;
 
     rldm_setup.tableRomAddr = &D_NF_001AC870;
     rldm_setup.tableFileCount = &D_NF_00000854;
     rldm_setup.fileHeap = 0;
     rldm_setup.fileHeapSize = 0;
-    rldm_setup.statusBuf = sMnCongraStatusBuf;
-    rldm_setup.statusBufSize = ARRAY_COUNT(sMnCongraStatusBuf);
+    rldm_setup.statusBuf = sMNCongraStatusBuf;
+    rldm_setup.statusBufSize = ARRAY_COUNT(sMNCongraStatusBuf);
     rldm_setup.forceBuf = NULL;
     rldm_setup.forceBufSize = 0;
 
@@ -169,11 +169,11 @@ void mnCongraInitAll(void)
         (
             (uintptr_t)rdManagerGetFileWithExternHeap
             (
-                dMnCongraFileInfo[sMnCongraFighterKind].image1_file_id,
-                gsMemoryAlloc(rdManagerGetFileSize(dMnCongraFileInfo[sMnCongraFighterKind].image1_file_id), 0x10)
+                dMNCongraFileInfo[sMNCongraFighterKind].image1_file_id,
+                gsMemoryAlloc(rdManagerGetFileSize(dMNCongraFileInfo[sMNCongraFighterKind].image1_file_id), 0x10)
             )
             +
-            dMnCongraFileInfo[sMnCongraFighterKind].image1_offset
+            dMNCongraFileInfo[sMNCongraFighterKind].image1_offset
         )
     );
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -187,11 +187,11 @@ void mnCongraInitAll(void)
         (
             (uintptr_t)rdManagerGetFileWithExternHeap
             (
-                dMnCongraFileInfo[sMnCongraFighterKind].image2_file_id,
-                gsMemoryAlloc(rdManagerGetFileSize(dMnCongraFileInfo[sMnCongraFighterKind].image2_file_id), 0x10)
+                dMNCongraFileInfo[sMNCongraFighterKind].image2_file_id,
+                gsMemoryAlloc(rdManagerGetFileSize(dMNCongraFileInfo[sMNCongraFighterKind].image2_file_id), 0x10)
             )
             +
-            dMnCongraFileInfo[sMnCongraFighterKind].image2_offset
+            dMNCongraFileInfo[sMNCongraFighterKind].image2_offset
         )
     );
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -207,19 +207,19 @@ void mnCongraUpdateScene(void)
 {
     func_8000A340();
 
-    if (sMnCongraIsSceneChange != FALSE)
+    if (sMNCongraIsSceneChange != FALSE)
     {
-        sMnCongraIsSceneChange = FALSE;
+        sMNCongraIsSceneChange = FALSE;
 
         func_80006E18(0x100);
 
-        sMnCongraSceneChangeWait = 5;
+        sMNCongraSceneChangeWait = 5;
     }
-    if (sMnCongraSceneChangeWait != 0)
+    if (sMNCongraSceneChangeWait != 0)
     {
-        sMnCongraSceneChangeWait--;
+        sMNCongraSceneChangeWait--;
 
-        if (sMnCongraSceneChangeWait == 0)
+        if (sMNCongraSceneChangeWait == 0)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = scMajor_Kind_Title;
@@ -232,7 +232,7 @@ void mnCongraUpdateScene(void)
 // 0x80131FE8
 void mnCongraAddLightsDisplayList(Gfx **dl)
 {
-    gSPDisplayList(dl[0]++, dMnCongraDisplayList);
+    gSPDisplayList(dl[0]++, dMNCongraDisplayList);
 }
 
 // 0x80131FE8
@@ -248,20 +248,20 @@ void mnCongraStartScene(void)
     switch (gSceneData.scene_previous)
     {
     default:
-        sMnCongraFighterKind = Ft_Kind_Mario;
+        sMNCongraFighterKind = Ft_Kind_Mario;
         break;
 
     case scMajor_Kind_1PGame:
-        sMnCongraFighterKind = gSceneData.ft_kind;
+        sMNCongraFighterKind = gSceneData.ft_kind;
         break;
 
     case scMajor_Kind_DebugMapSel:
-        sMnCongraFighterKind = gTransferBattleState.player_block[0].character_kind;
+        sMNCongraFighterKind = gTransferBattleState.player_block[0].character_kind;
         break;
     }
     D_ovl57_80132208.unk_scdatabounds_0xC = ((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl57_80132208);
-    D_ovl57_80132224.arena_size = (0x80325400 - (intptr_t)&lMnCongraArenaLo);
+    D_ovl57_80132224.arena_size = (0x80325400 - (intptr_t)&lMNCongraArenaLo);
     func_8000683C(&D_ovl57_80132224); subsys_arena_lo = (uintptr_t)&lSubSystemArenaLo; // WARNING: Newline memes!
     while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = 0x0001; }
 }

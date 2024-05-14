@@ -7,9 +7,9 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItPowerBlockItemAttributes;// 0x000000D8
-extern intptr_t lItPowerBlockDataStart;     // 0x000011F8
-extern intptr_t lItPowerBlockAnimJoint;     // 0x00001288
+extern intptr_t lITPowerBlockItemAttributes;// 0x000000D8
+extern intptr_t lITPowerBlockDataStart;     // 0x000011F8
+extern intptr_t lITPowerBlockAnimJoint;     // 0x00001288
 
 // // // // // // // // // // // //
 //                               //
@@ -17,11 +17,11 @@ extern intptr_t lItPowerBlockAnimJoint;     // 0x00001288
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItPowerBlockItemDesc =
+itCreateDesc dITPowerBlockItemDesc =
 {
     It_Kind_PowerBlock,                     // Item Kind
     &gGroundStruct.inishie.item_head,       // Pointer to item file data?
-    &lItPowerBlockItemAttributes,           // Offset of item attributes in file?
+    &lITPowerBlockItemAttributes,           // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -41,7 +41,7 @@ itCreateDesc dItPowerBlockItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dItPowerBlockStatusDesc[/* */] =
+itStatusDesc dITPowerBlockStatusDesc[/* */] =
 {
     // Status 0 (Neutral Wait)
     {
@@ -89,7 +89,7 @@ void itPowerBlockNWaitSetStatus(GObj *item_gobj)
 {
     itStruct *ip;
 
-    itMainSetItemStatus(item_gobj, dItPowerBlockStatusDesc, itStatus_PowerBlock_NWait);
+    itMainSetItemStatus(item_gobj, dITPowerBlockStatusDesc, itStatus_PowerBlock_NWait);
 
     ip = itGetStruct(item_gobj), ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
 }
@@ -114,7 +114,7 @@ sb32 itPowerBlockNWaitProcDamage(GObj *item_gobj)
     ip->proc_update = itPowerBlockNDamageProcUpdate;
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
-    omAddDObjAnimAll(DObjGetStruct(item_gobj), itGetPData(ip, lItPowerBlockDataStart, lItPowerBlockAnimJoint), 0.0F); // Linker thing
+    omAddDObjAnimAll(DObjGetStruct(item_gobj), itGetPData(ip, lITPowerBlockDataStart, lITPowerBlockAnimJoint), 0.0F); // Linker thing
     func_8000DF34(item_gobj);
     func_800269C0(alSound_SFX_InishiePowerBlock);
     efParticle_Quake_MakeEffect(3);
@@ -126,7 +126,7 @@ sb32 itPowerBlockNWaitProcDamage(GObj *item_gobj)
 // 0x8017C1E0
 GObj* itPowerBlockMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItPowerBlockItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITPowerBlockItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

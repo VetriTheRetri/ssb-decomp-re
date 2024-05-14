@@ -1,8 +1,8 @@
 #include <ft/fighter.h>
 #include <ef/effect.h>
 
-extern intptr_t lFtFoxSpecialLwReflector;
-extern void *gFtDataFoxBattleMotion;
+extern intptr_t lFTFoxSpecialLwReflector;
+extern void *gFTDataFoxBattleMotion;
 
 // 0x8015CB80
 void ftFoxSpecialLwCheckSetRelease(ftStruct *fp)
@@ -286,7 +286,7 @@ void ftFoxSpecialLwStartInitStatusVars(GObj *fighter_gobj)
     {
         fp->is_attach_effect = TRUE;
     }
-    fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFtDataFoxBattleMotion + (intptr_t)&lFtFoxSpecialLwReflector); // Another linker thing
+    fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFTDataFoxBattleMotion + (intptr_t)&lFTFoxSpecialLwReflector); // Another linker thing
 }
 
 // 0x8015D250

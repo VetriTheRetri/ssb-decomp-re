@@ -1,18 +1,18 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFtDataPikachuMain;
+extern void *gFTDataPikachuMain;
 extern
-intptr_t lWpPikachuThunderHeadWeaponAttributes; // 0x0000000C
+intptr_t lWPPikachuThunderHeadWeaponAttributes; // 0x0000000C
 extern
-intptr_t lWpPikachuThunderTrailWeaponAttributes;// 0x00000040
+intptr_t lWPPikachuThunderTrailWeaponAttributes;// 0x00000040
 
-wpCreateDesc dWpPikachuThunderHeadWeaponDesc =
+wpCreateDesc dWPPikachuThunderHeadWeaponDesc =
 {
     0x00,                                       // Render flags?
     Wp_Kind_ThunderHead,                        // Weapon Kind
-    &gFtDataPikachuMain,                        // Pointer to character's loaded files?
-    &lWpPikachuThunderHeadWeaponAttributes,     // Offset of weapon attributes in loaded files
+    &gFTDataPikachuMain,                        // Pointer to character's loaded files?
+    &lWPPikachuThunderHeadWeaponAttributes,     // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -31,12 +31,12 @@ wpCreateDesc dWpPikachuThunderHeadWeaponDesc =
     NULL                                        // Proc Absorb
 };
 
-wpCreateDesc dWpPikachuThunderTrailWeaponDesc =
+wpCreateDesc dWPPikachuThunderTrailWeaponDesc =
 {
     0x02,                                       // Render flags?
     Wp_Kind_ThunderTrail,                       // Weapon Kind
-    &gFtDataPikachuMain,                        // Pointer to character's loaded files?
-    &lWpPikachuThunderTrailWeaponAttributes,    // Offset of weapon attributes in loaded files
+    &gFTDataPikachuMain,                        // Pointer to character's loaded files?
+    &lWPPikachuThunderTrailWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -142,7 +142,7 @@ sb32 wpPikachuThunderHeadProcDead(GObj *weapon_gobj)
 GObj* wpPikachuThunderHeadMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
     s32 unused;
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpPikachuThunderHeadWeaponDesc, pos, WEAPON_MASK_SPAWN_FIGHTER);
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPPikachuThunderHeadWeaponDesc, pos, WEAPON_MASK_SPAWN_FIGHTER);
     wpStruct *wp;
 
     if (weapon_gobj == NULL)
@@ -206,7 +206,7 @@ GObj* wpPikachuThunderTrailMakeWeapon(GObj *weapon_gobj, Vec3f *pos)
 {
     s32 unused[2];
     wpStruct *spawn_wp = wpGetStruct(weapon_gobj);
-    GObj *trail_gobj = wpManagerMakeWeapon(weapon_gobj, &dWpPikachuThunderTrailWeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
+    GObj *trail_gobj = wpManagerMakeWeapon(weapon_gobj, &dWPPikachuThunderTrailWeaponDesc, pos, WEAPON_MASK_SPAWN_WEAPON);
     wpStruct *trail_wp;
     s32 i;
 

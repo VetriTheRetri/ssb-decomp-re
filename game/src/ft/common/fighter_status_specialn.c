@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 
-void (*dFtKirbySpecialNStatusList[/* */])(GObj*) = 
+void (*dFTKirbySpecialNStatusList[/* */])(GObj*) = 
 {
     ftKirbyCopyMarioSpecialNSetStatus,
     ftKirbyCopyFoxSpecialNSetStatus,
@@ -31,7 +31,7 @@ void (*dFtKirbySpecialNStatusList[/* */])(GObj*) =
     ftKirbySpecialNStartSetStatus
 };
 
-void (*dFtCommonSpecialNStatusList[/* */])(GObj*) = 
+void (*dFTCommonSpecialNStatusList[/* */])(GObj*) = 
 {
     ftMarioSpecialNSetStatus,
     ftFoxSpecialNSetStatus,
@@ -67,7 +67,7 @@ void ftKirbySpecialNSetStatusIndex(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    dFtKirbySpecialNStatusList[fp->fighter_vars.kirby.copy_id](fighter_gobj);
+    dFTKirbySpecialNStatusList[fp->fighter_vars.kirby.copy_id](fighter_gobj);
 }
 
 // 0x80151098
@@ -84,7 +84,7 @@ sb32 ftCommonSpecialNCheckInterruptCommon(GObj *fighter_gobj)
             {
                 ftCommon_StickInputSetLR(fp);
             }
-            dFtCommonSpecialNStatusList[fp->ft_kind](fighter_gobj);
+            dFTCommonSpecialNStatusList[fp->ft_kind](fighter_gobj);
 
             return TRUE;
         }

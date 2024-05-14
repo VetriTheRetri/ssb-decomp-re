@@ -23,7 +23,7 @@ u16 gEntityStatUpdateCount;
 rdFileNode D_ovl2_80130DA0;
 
 // 0x80116E10
-ftData *dFtManagerFtDataFiles[/* */] =
+ftData *dFTManagerFtDataFiles[/* */] =
 {
     D_ovl2_80117810,
     D_ovl2_801196F4,
@@ -76,10 +76,10 @@ void func_ovl2_800D6FE0(void)
 
     rdManagerInitSetup(&rldm_setup);
 
-    for (i = 0; i < ARRAY_COUNT(dFtManagerFtDataFiles); i++)
+    for (i = 0; i < ARRAY_COUNT(dFTManagerFtDataFiles); i++)
     {
         rldm_size = &D_800A50F8[i];
-        ft_data = dFtManagerFtDataFiles[i];
+        ft_data = dFTManagerFtDataFiles[i];
 
         largest_size = 0;
 
@@ -167,9 +167,9 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
 
     rdManagerGetFileWithExternHeap((u32)&D_NF_000000C9, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000C9), 0x10));
 
-    for (i = 0; i < (ARRAY_COUNT(dFtManagerFtDataFiles) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(dFTManagerFtDataFiles) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
     {
-        ft_data = dFtManagerFtDataFiles[i];
+        ft_data = dFTManagerFtDataFiles[i];
         rldm_size = &D_800A50F8[i];
 
         largest_size = 0;
@@ -286,7 +286,7 @@ void ftManager_SetFighterPartsPrevAlloc(ftParts *ft_parts)
 // 0x800D7694
 void ftManager_SetMainFileData(s32 ft_kind)
 {
-    ftData *ft_data = dFtManagerFtDataFiles[ft_kind];
+    ftData *ft_data = dFTManagerFtDataFiles[ft_kind];
 
     *ft_data->p_file_main = rdManagerGetFileWithExternHeap(ft_data->file_main_id, gsMemoryAlloc(rdManagerGetFileSize(ft_data->file_main_id), 0x10));
 
@@ -299,7 +299,7 @@ void ftManager_SetMainFileData(s32 ft_kind)
 // 0x800D7710
 void func_ovl2_800D7710(s32 ft_kind)
 {
-    ftData *ft_data = dFtManagerFtDataFiles[ft_kind];
+    ftData *ft_data = dFTManagerFtDataFiles[ft_kind];
 
     if (ft_data->file_battlemotion_id != 0)
     {
@@ -353,7 +353,7 @@ void ftManager_SetFileDataPlayables(void)
 // 0x800D786C
 void ftManager_SetFileDataKind(s32 ft_kind)
 {
-    ftData *ft_data = dFtManagerFtDataFiles[ft_kind];
+    ftData *ft_data = dFTManagerFtDataFiles[ft_kind];
 
     if (*ft_data->p_file_main == NULL)
     {
@@ -365,7 +365,7 @@ void ftManager_SetFileDataKind(s32 ft_kind)
 // 0x800D78B4
 void* ftManager_AllocAnimHeapKind(s32 ft_kind)
 {
-    ftData *ft_data = dFtManagerFtDataFiles[ft_kind];
+    ftData *ft_data = dFTManagerFtDataFiles[ft_kind];
 
     return gsMemoryAlloc(ft_data->anim_file_size, 0x10);
 }
@@ -419,7 +419,7 @@ void func_ovl2_800D7994(GObj *fighter_gobj)
 
 extern intptr_t lKirbySpecialNCopyData;
 extern s32 gBattlePlayerCount;
-extern void *gFtDataKirbyBattleMotion; // Pointer to fighter files?
+extern void *gFTDataKirbyBattleMotion; // Pointer to fighter files?
 
 // 0x800D79F0
 void func_ovl2_800D79F0(GObj *fighter_gobj, ftCreateDesc *spawn)
@@ -614,7 +614,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftCreateDesc *spawn)
 
         if (fp->ft_kind == Ft_Kind_Kirby)
         {
-            ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFtDataKirbyBattleMotion + (intptr_t)&lKirbySpecialNCopyData);
+            ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lKirbySpecialNCopyData);
 
             ftCommon_SetModelPartRenderStateIndex(fighter_gobj, 6, copy_data[fp->fighter_vars.kirby.copy_id].copy_hat_rs);
         }
@@ -675,7 +675,7 @@ GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
     fp->status_info.pl_kind = spawn->pl_kind;
     fp->fighter_gobj = fighter_gobj;
     fp->ft_kind = spawn->ft_kind;
-    fp->ft_data = dFtManagerFtDataFiles[fp->ft_kind];
+    fp->ft_data = dFTManagerFtDataFiles[fp->ft_kind];
     attributes = fp->attributes = (ftAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
     fp->anim_load = spawn->anim_heap;
     fp->team = spawn->team;

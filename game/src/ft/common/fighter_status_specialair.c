@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 
-void (*dFtKirbySpecialAirNStatusList[/* */])(GObj*) = 
+void (*dFTKirbySpecialAirNStatusList[/* */])(GObj*) = 
 { 
     ftKirbyCopyMarioSpecialAirNSetStatus, // Mario
     ftKirbyCopyFoxSpecialAirNSetStatus, // Fox
@@ -31,7 +31,7 @@ void (*dFtKirbySpecialAirNStatusList[/* */])(GObj*) =
     ftKirbySpecialAirNStartSetStatus, // Giant Donkey Kong (This is actually inaccessible, Kirby's copy ID for Giant DK is always 2)
 };
 
-void (*dFtCommonSpecialAirNStatusList[/* */])(GObj*) =
+void (*dFTCommonSpecialAirNStatusList[/* */])(GObj*) =
 {
     ftMarioSpecialAirNSetStatus,
     ftFoxSpecialAirNSetStatus,
@@ -62,7 +62,7 @@ void (*dFtCommonSpecialAirNStatusList[/* */])(GObj*) =
     ftDonkeySpecialAirNStartSetStatus
 };
 
-void (*dFtCommonSpecialAirHiStatusList[/* */])(GObj*) =
+void (*dFTCommonSpecialAirHiStatusList[/* */])(GObj*) =
 {
     ftMarioSpecialAirHiSetStatus,
     ftFoxSpecialAirHiStartSetStatus,
@@ -93,7 +93,7 @@ void (*dFtCommonSpecialAirHiStatusList[/* */])(GObj*) =
     ftDonkeySpecialAirHiSetStatus
 };
 
-void (*dFtCommonSpecialAirLwStatusList[/* */])(GObj*) =
+void (*dFTCommonSpecialAirLwStatusList[/* */])(GObj*) =
 {
     ftMarioSpecialAirLwSetStatus,
     ftFoxSpecialAirLwStartSetStatus,
@@ -129,7 +129,7 @@ void ftKirbySpecialAirNSetStatusIndex(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    dFtKirbySpecialAirNStatusList[fp->fighter_vars.kirby.copy_id](fighter_gobj);
+    dFTKirbySpecialAirNStatusList[fp->fighter_vars.kirby.copy_id](fighter_gobj);
 }
 
 // 0x80150F08
@@ -146,7 +146,7 @@ sb32 ftCommon_SpecialAir_CheckInterruptCommon(GObj *fighter_gobj)
             {
                 if (attributes->is_have_specialairhi)
                 {
-                    dFtCommonSpecialAirHiStatusList[fp->ft_kind](fighter_gobj);
+                    dFTCommonSpecialAirHiStatusList[fp->ft_kind](fighter_gobj);
 
                     return TRUE;
                 }
@@ -155,7 +155,7 @@ sb32 ftCommon_SpecialAir_CheckInterruptCommon(GObj *fighter_gobj)
             {
                 if (attributes->is_have_specialairlw)
                 {
-                    dFtCommonSpecialAirLwStatusList[fp->ft_kind](fighter_gobj);
+                    dFTCommonSpecialAirLwStatusList[fp->ft_kind](fighter_gobj);
 
                     return TRUE;
                 }
@@ -166,7 +166,7 @@ sb32 ftCommon_SpecialAir_CheckInterruptCommon(GObj *fighter_gobj)
                 {
                     ftCommon_StickInputSetLR(fp);
                 }
-                dFtCommonSpecialAirNStatusList[fp->ft_kind](fighter_gobj);
+                dFTCommonSpecialAirNStatusList[fp->ft_kind](fighter_gobj);
 
                 return TRUE;
             }

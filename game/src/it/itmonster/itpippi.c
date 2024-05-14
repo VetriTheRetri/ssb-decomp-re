@@ -8,8 +8,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItPippiItemAttributes;     // 0x00000C74
-extern intptr_t lItPippiDataStart;          // 0x00013598
+extern intptr_t lITPippiItemAttributes;     // 0x00000C74
+extern intptr_t lITPippiDataStart;          // 0x00013598
 
 // // // // // // // // // // // //
 //                               //
@@ -18,7 +18,7 @@ extern intptr_t lItPippiDataStart;          // 0x00013598
 // // // // // // // // // // // //
 
 // 0x8018B370
-void (*dItPippiStatusProcList[/* */])(GObj*) =
+void (*dITPippiStatusProcList[/* */])(GObj*) =
 {
     itIwarkNAttackSetStatus, 
     itKabigonNJumpSetStatus, 
@@ -35,11 +35,11 @@ void (*dItPippiStatusProcList[/* */])(GObj*) =
 };
 
 // 0x8018B3A0
-itCreateDesc dItPippiItemDesc = 
+itCreateDesc dITPippiItemDesc = 
 {
     It_Kind_Pippi,                          // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItPippiItemAttributes,                // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITPippiItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -73,7 +73,7 @@ void itPippiSDefaultSelectMonster(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    index = lbRandom_GetIntRange(ARRAY_COUNT(dItPippiStatusProcList));
+    index = lbRandom_GetIntRange(ARRAY_COUNT(dITPippiStatusProcList));
 
     it_kind = index + It_Kind_MbMonsterStart;
 
@@ -105,7 +105,7 @@ void itPippiSDefaultSelectMonster(GObj *item_gobj)
     {
         ip->it_multi = ITLIZARDON_LIFETIME;
     }
-    dItPippiStatusProcList[index](item_gobj);
+    dITPippiStatusProcList[index](item_gobj);
 }
 
 // 0x80183344
@@ -205,7 +205,7 @@ sb32 itPippiSDefaultProcMap(GObj *item_gobj)
 // 0x80183690
 GObj* itPippiMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItPippiItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITPippiItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -223,7 +223,7 @@ GObj* itPippiMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lItPippiDataStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITPippiDataStart), 0.0F); // Linker thing
         func_800269C0(alSound_Voice_MBallPippiSpawn);
 
         item_gobj->proc_render = itPippiSDefaultProcRender;

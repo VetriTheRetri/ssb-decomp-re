@@ -188,7 +188,7 @@ void mvOpeningKirbyInitFighterStagePanel()
 
     for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
     {
-        ftCreateDesc spawn_info = dFtDefaultFighterDesc;
+        ftCreateDesc spawn_info = dFTDefaultFighterDesc;
 
         if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
 
@@ -271,7 +271,7 @@ void mvOpeningKirbyAnimatePosedFighter(GObj* fighter_gobj)
 void mvOpeningKirbyCreatePosedFighter()
 {
     GObj* fighter_gobj;
-    ftCreateDesc spawn_info = dFtDefaultFighterDesc;
+    ftCreateDesc spawn_info = dFTDefaultFighterDesc;
 
     spawn_info.ft_kind = Ft_Kind_Kirby;
     spawn_info.costume = ftCostume_GetIndexFFA(Ft_Kind_Kirby, 0);

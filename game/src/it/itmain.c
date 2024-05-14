@@ -8,7 +8,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItContainerSpawnVelY;  // 0x00000000
+extern intptr_t lITContainerSpawnVelY;  // 0x00000000
 extern ub8 g1PGameBonusStatMewCatcher;
 
 // // // // // // // // // // // //
@@ -18,7 +18,7 @@ extern ub8 g1PGameBonusStatMewCatcher;
 // // // // // // // // // // // //
 
 // 0x80189520
-void (*dItDropProcList[/* */])(GObj*) =
+void (*dITDropProcList[/* */])(GObj*) =
 {
     // Containers
     itBoxFDropSetStatus,                // Box
@@ -50,7 +50,7 @@ void (*dItDropProcList[/* */])(GObj*) =
 };
 
 // 0x80189578
-void (*dItThrowProcList[/* */])(GObj*) =
+void (*dITThrowProcList[/* */])(GObj*) =
 {
     // Containers
     itBoxFThrowSetStatus,               // Box
@@ -82,7 +82,7 @@ void (*dItThrowProcList[/* */])(GObj*) =
 };
 
 // 0x801895D0
-void (*dItPickupProcList[/* */])(GObj*) =
+void (*dITPickupProcList[/* */])(GObj*) =
 {
     // Containers
     itBoxFHoldSetStatus,                // Box
@@ -202,7 +202,7 @@ void itMainResetPlayerVars(GObj *item_gobj)
     ip->player_number = 0;
     ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
 
-    ip->display_mode = gItemDisplayMode;
+    ip->display_mode = gITemDisplayMode;
 }
 
 // 0x801725F8
@@ -363,7 +363,7 @@ void itMainSetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 stale)
     itStruct *ip = itGetStruct(item_gobj);
     GObj *owner_gobj = ip->owner_gobj;
     ftStruct *fp = ftGetStruct(owner_gobj);
-    void (*proc_drop)(GObj*) = dItDropProcList[ip->it_kind];
+    void (*proc_drop)(GObj*) = dITDropProcList[ip->it_kind];
 
     if (proc_drop != NULL)
     {
@@ -391,7 +391,7 @@ void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash
     }
     else ftMain_MakeRumble(fp, (is_smash_throw != FALSE) ? 9 : 6, 0);
     
-    proc_throw = dItThrowProcList[ip->it_kind];
+    proc_throw = dITThrowProcList[ip->it_kind];
 
     if (proc_throw != NULL)
     {
@@ -461,7 +461,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     func_8000F988(item_gobj, ip->attributes->model_desc);
 
-    proc_pickup = dItPickupProcList[ip->it_kind];
+    proc_pickup = dITPickupProcList[ip->it_kind];
 
     if (proc_pickup != NULL)
     {
@@ -548,7 +548,7 @@ void itMainVelSetRebound(GObj *item_gobj)
 }
 
 // 0x8017301C - Binary search function to get item ID for container drop?
-s32 itMainSearchWeightedItemID(s32 random, itRandomWeights *weights, u32 min, u32 max) // Recursive!
+s32 itMainSearchWeightedITemID(s32 random, itRandomWeights *weights, u32 min, u32 max) // Recursive!
 {
     s32 avg;
 
@@ -560,19 +560,19 @@ s32 itMainSearchWeightedItemID(s32 random, itRandomWeights *weights, u32 min, u3
 
     if (random < weights->item_totals[avg])
     {
-        itMainSearchWeightedItemID(random, weights, min, avg);
+        itMainSearchWeightedITemID(random, weights, min, avg);
     }
     else if (random < weights->item_totals[avg + 1])
     {
         return avg;
     }
-    else itMainSearchWeightedItemID(random, weights, avg, max);
+    else itMainSearchWeightedITemID(random, weights, avg, max);
 }
 
 // 0x80173090
-s32 itMainGetWeightedItemID(itRandomWeights *weights)
+s32 itMainGetWeightedITemID(itRandomWeights *weights)
 {
-    return weights->item_ids[itMainSearchWeightedItemID(lbRandom_GetIntRange(weights->item_num), weights, 0, weights->item_count)];
+    return weights->item_ids[itMainSearchWeightedITemID(lbRandom_GetIntRange(weights->item_num), weights, 0, weights->item_count)];
 }
 
 // 0x801730D4
@@ -582,14 +582,14 @@ sb32 itMainMakeContainerItem(GObj *spawn_gobj)
     s32 index;
     Vec3f vel; // Item's spawn velocity when falling out of a container
 
-    if (gItemRandomWeights.item_num != 0)
+    if (gITemRandomWeights.item_num != 0)
     {
-        index = itMainGetWeightedItemID(&gItemRandomWeights);
+        index = itMainGetWeightedITemID(&gITemRandomWeights);
 
         if (index <= It_Kind_CommonEnd)
         {
             vel.x = 0.0F;
-            vel.y = *(f32*) ((intptr_t)&lItContainerSpawnVelY + ((uintptr_t)&gItemFileData[index])); // Linker thing; quite ridiculous especially since lItContainerSpawnVelY is 0
+            vel.y = *(f32*) ((intptr_t)&lITContainerSpawnVelY + ((uintptr_t)&gITemFileData[index])); // Linker thing; quite ridiculous especially since lITContainerSpawnVelY is 0
             vel.z = 0;
 
             if (itManagerMakeItemSetupCommon(spawn_gobj, index, &DObjGetStruct(spawn_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM)) != NULL)
@@ -638,7 +638,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     vel.z = 0.0F;
 
     // Is this checking to spawn Mew? Can only spawn once at least one character has been unlocked.
-    if ((gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NEWCOMERS) && (lbRandom_GetIntRange(151) == 0) && (gItemMonsterData.monster_curr != It_Kind_Mew) && (gItemMonsterData.monster_prev != It_Kind_Mew))
+    if ((gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NEWCOMERS) && (lbRandom_GetIntRange(151) == 0) && (gITemMonsterData.monster_curr != It_Kind_Mew) && (gITemMonsterData.monster_prev != It_Kind_Mew))
     {
         index = It_Kind_Mew;
     }
@@ -646,20 +646,20 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     {
         for (i = j = It_Kind_MbMonsterStart; i < It_Kind_MbMonsterEnd; i++) // Pokémon IDs
         {
-            if ((i != gItemMonsterData.monster_curr) && (i != gItemMonsterData.monster_prev))
+            if ((i != gITemMonsterData.monster_curr) && (i != gITemMonsterData.monster_prev))
             {
-                gItemMonsterData.monster_index[j - It_Kind_MbMonsterStart] = i;
+                gITemMonsterData.monster_index[j - It_Kind_MbMonsterStart] = i;
                 j++;
             }
         }
-        index = gItemMonsterData.monster_index[lbRandom_GetIntRange(gItemMonsterData.monster_count)];
+        index = gITemMonsterData.monster_index[lbRandom_GetIntRange(gITemMonsterData.monster_count)];
     }
-    if (gItemMonsterData.monster_count != 10)
+    if (gITemMonsterData.monster_count != 10)
     {
-        gItemMonsterData.monster_count--;
+        gITemMonsterData.monster_count--;
     }
-    gItemMonsterData.monster_prev = gItemMonsterData.monster_curr;
-    gItemMonsterData.monster_curr = index;
+    gITemMonsterData.monster_prev = gITemMonsterData.monster_curr;
+    gITemMonsterData.monster_curr = index;
 
     monster_gobj = itManagerMakeItemID(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 

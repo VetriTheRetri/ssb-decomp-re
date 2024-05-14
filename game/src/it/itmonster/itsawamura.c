@@ -8,9 +8,9 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItSawamuraItemAttributes;  // 0x00000BB0
-extern intptr_t lItSawamuraDataStart;       // 0x00011F40
-extern intptr_t lItSawamuraDisplayList;     // 0x00012340
+extern intptr_t lITSawamuraItemAttributes;  // 0x00000BB0
+extern intptr_t lITSawamuraDataStart;       // 0x00011F40
+extern intptr_t lITSawamuraDisplayList;     // 0x00012340
 
 // // // // // // // // // // // //
 //                               //
@@ -19,11 +19,11 @@ extern intptr_t lItSawamuraDisplayList;     // 0x00012340
 // // // // // // // // // // // //
 
 // 0x8018B220
-itCreateDesc dItSawamuraItemDesc =
+itCreateDesc dITSawamuraItemDesc =
 {
     It_Kind_Sawamura,                       // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItSawamuraItemAttributes,             // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITSawamuraItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -44,7 +44,7 @@ itCreateDesc dItSawamuraItemDesc =
 };
 
 // 0x8018B254
-itStatusDesc dItSawamuraStatusDesc[/* */] =
+itStatusDesc dITSawamuraStatusDesc[/* */] =
 {
     // Status 0 (Air Fall)
     {
@@ -130,7 +130,7 @@ sb32 itSawamuraAFallProcMap(GObj *item_gobj)
 // 0x801826A8
 void itSawamuraAFallSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItSawamuraStatusDesc, itStatus_Sawamura_AFall);
+    itMainSetItemStatus(item_gobj, dITSawamuraStatusDesc, itStatus_Sawamura_AFall);
 }
 
 // 0x801826D0
@@ -158,7 +158,7 @@ sb32 itSawamuraGWaitProcMap(GObj *item_gobj)
 // 0x8018273C
 void itSawamuraGWaitSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItSawamuraStatusDesc, itStatus_Sawamura_GWait);
+    itMainSetItemStatus(item_gobj, dITSawamuraStatusDesc, itStatus_Sawamura_GWait);
 }
 
 // 0x80182764
@@ -259,7 +259,7 @@ void itSawamuraNAttackInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == It_Kind_Sawamura)
     {
-        Gfx *dl = (Gfx*)itGetPData(ip, lItSawamuraDataStart, lItSawamuraDisplayList); // Linker thing
+        Gfx *dl = (Gfx*)itGetPData(ip, lITSawamuraDataStart, lITSawamuraDisplayList); // Linker thing
 
         dobj->display_list = dl;
 
@@ -274,7 +274,7 @@ void itSawamuraNAttackInitItemVars(GObj *item_gobj)
 void itSawamuraNAttackSetStatus(GObj *item_gobj)
 {
     itSawamuraNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItSawamuraStatusDesc, itStatus_Sawamura_NAttack);
+    itMainSetItemStatus(item_gobj, dITSawamuraStatusDesc, itStatus_Sawamura_NAttack);
 }
 
 // 0x80182AE0
@@ -310,7 +310,7 @@ sb32 itSawamuraSDefaultProcMap(GObj *item_gobj)
 // 0x80182B74
 GObj* itSawamuraMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItSawamuraItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITSawamuraItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -328,7 +328,7 @@ GObj* itSawamuraMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lItSawamuraDataStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITSawamuraDataStart), 0.0F); // Linker thing
 
         func_800269C0(alSound_Voice_MBallSawamuraSpawn);
 

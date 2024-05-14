@@ -8,11 +8,11 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItStarRodItemAttributes;   // 0x0000048C     
+extern intptr_t lITStarRodITemAttributes;   // 0x0000048C     
 extern intptr_t
-lItStarRodWeaponStarWeaponAttributes;       // 0x000004D4
+lITStarRodWeaponStarWeaponAttributes;       // 0x000004D4
 extern intptr_t 
-lItStarRodWeaponStarSmashAttributes;        // 0x00000508
+lITStarRodWeaponStarSmashAttributes;        // 0x00000508
 
 // // // // // // // // // // // //
 //                               //
@@ -20,11 +20,11 @@ lItStarRodWeaponStarSmashAttributes;        // 0x00000508
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItStarRodItemDesc =
+itCreateDesc dITStarRodITemDesc =
 {
     It_Kind_StarRod,                        // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItStarRodItemAttributes,              // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITStarRodITemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -44,7 +44,7 @@ itCreateDesc dItStarRodItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dItStarRodStatusDesc[/* */] =
+itStatusDesc dITStarRodStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -107,12 +107,12 @@ itStatusDesc dItStarRodStatusDesc[/* */] =
     }
 };
 
-wpCreateDesc dItStarRodWeaponStarWeaponDesc =
+wpCreateDesc dITStarRodWeaponStarWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_StarRodStar,                    // Weapon Kind
-    &gItemFileData,                         // Pointer to character's loaded files?
-    &lItStarRodWeaponStarWeaponAttributes,  // Offset of weapon attributes in loaded files
+    &gITemFileData,                         // Pointer to character's loaded files?
+    &lITStarRodWeaponStarWeaponAttributes,  // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -184,7 +184,7 @@ sb32 itStarRodAFallProcMap(GObj *item_gobj)
 void itStarRodGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dItStarRodStatusDesc, itStatus_StarRod_GWait);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDesc, itStatus_StarRod_GWait);
 }
 
 // 0x80177F4C
@@ -195,7 +195,7 @@ void itStarRodAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dItStarRodStatusDesc, itStatus_StarRod_AFall);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDesc, itStatus_StarRod_AFall);
 }
 
 // 0x80177F90
@@ -203,7 +203,7 @@ void itStarRodFHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dItStarRodStatusDesc, itStatus_StarRod_FHold);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDesc, itStatus_StarRod_FHold);
 }
 
 // 0x80177FC4
@@ -238,7 +238,7 @@ sb32 itStarRodFThrowProcHit(GObj *item_gobj)
 // 0x80178058
 void itStarRodFThrowSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItStarRodStatusDesc, itStatus_StarRod_FThrow);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDesc, itStatus_StarRod_FThrow);
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(180.0F); // HALF_PI32
 }
 
@@ -257,14 +257,14 @@ sb32 itStarRodFDropProcMap(GObj *item_gobj)
 // 0x801780F0
 void itStarRodFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItStarRodStatusDesc, itStatus_StarRod_FDrop);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDesc, itStatus_StarRod_FDrop);
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(180.0F); // HALF_PI32
 }
 
 // 0x80178134
 GObj* itStarRodMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItStarRodItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITStarRodITemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -383,9 +383,9 @@ GObj* itStarRodWeaponStarMakeWeapon(GObj *fighter_gobj, Vec3f *pos, u8 is_smash)
 
     if (is_smash == TRUE)
     {
-        dItStarRodWeaponStarWeaponDesc.offset = (intptr_t)&lItStarRodWeaponStarSmashAttributes; // Set attribute data on smash input - Linker thing
+        dITStarRodWeaponStarWeaponDesc.offset = (intptr_t)&lITStarRodWeaponStarSmashAttributes; // Set attribute data on smash input - Linker thing
     }
-    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dItStarRodWeaponStarWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dITStarRodWeaponStarWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
 
     if (weapon_gobj == NULL)
     {

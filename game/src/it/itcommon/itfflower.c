@@ -8,10 +8,10 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItFFlowerItemAttributes;   // 0x000002E4
+extern intptr_t lITFFlowerItemAttributes;   // 0x000002E4
 extern intptr_t
-lItFFlowerWeaponFlameWeaponAttributes;      // 0x0000032C
-extern intptr_t lItFFlowerFlameAngles;      // 0x00000360
+lITFFlowerWeaponFlameWeaponAttributes;      // 0x0000032C
+extern intptr_t lITFFlowerFlameAngles;      // 0x00000360
 
 // // // // // // // // // // // //
 //                               //
@@ -19,11 +19,11 @@ extern intptr_t lItFFlowerFlameAngles;      // 0x00000360
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItFFlowerItemDesc = 
+itCreateDesc dITFFlowerItemDesc = 
 {
     It_Kind_FFlower,                        // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItFFlowerItemAttributes,              // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITFFlowerItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -43,7 +43,7 @@ itCreateDesc dItFFlowerItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dItFFlowerStatusDesc[/* */] =
+itStatusDesc dITFFlowerStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -106,12 +106,12 @@ itStatusDesc dItFFlowerStatusDesc[/* */] =
     }
 };
 
-wpCreateDesc dItFFlowerWeaponFlameWeaponDesc =
+wpCreateDesc dITFFlowerWeaponFlameWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_FFlowerFlame,                   // Weapon Kind
-    &gItemFileData,                         // Pointer to character's loaded files?
-    &lItFFlowerWeaponFlameWeaponAttributes, // Offset of weapon attributes in loaded files
+    &gITemFileData,                         // Pointer to character's loaded files?
+    &lITFFlowerWeaponFlameWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -181,7 +181,7 @@ sb32 itFFlowerAFallProcMap(GObj *item_gobj)
 void itFFlowerGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dItFFlowerStatusDesc, itStatus_FFlower_GWait);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDesc, itStatus_FFlower_GWait);
 }
 
 // 0x80175BE4
@@ -192,13 +192,13 @@ void itFFlowerAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dItFFlowerStatusDesc, itStatus_FFlower_AFall);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDesc, itStatus_FFlower_AFall);
 }
 
 // 0x80175C28
 void itFFlowerFHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItFFlowerStatusDesc, itStatus_FFlower_FHold);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDesc, itStatus_FFlower_FHold);
 }
 
 // 0x80175C50
@@ -228,7 +228,7 @@ sb32 itFFlowerSDefaultProcHit(GObj *item_gobj)
 // 0x80175CC4
 void itFFlowerFThrowSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItFFlowerStatusDesc, itStatus_FFlower_FThrow);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDesc, itStatus_FFlower_FThrow);
 }
 
 // 0x80175CEC
@@ -246,13 +246,13 @@ sb32 itFFlowerFDropProcMap(GObj *item_gobj)
 // 0x80175D38
 void itFFlowerFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItFFlowerStatusDesc, itStatus_FFlower_FDrop);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDesc, itStatus_FFlower_FDrop);
 }
 
 // 0x80175D60
 GObj* itFFlowerMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItFFlowerItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITFFlowerItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -313,8 +313,8 @@ sb32 itFFlowerWeaponFlameProcReflector(GObj *weapon_gobj)
 
     translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
-    func_ovl0_800CE8C0(gItemEffectBank | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(gItemEffectBank | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITemEffectBank | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITemEffectBank | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return FALSE;
 }
@@ -322,7 +322,7 @@ sb32 itFFlowerWeaponFlameProcReflector(GObj *weapon_gobj)
 // 0x80175F48
 GObj* itFFlowerWeaponFlameMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dItFFlowerWeaponFlameWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dITFFlowerWeaponFlameWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)
@@ -337,8 +337,8 @@ GObj* itFFlowerWeaponFlameMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->lifetime = ITFFLOWER_AMMO_LIFETIME;
 
-    func_ovl0_800CE8C0(gItemEffectBank | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(gItemEffectBank | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITemEffectBank | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITemEffectBank | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return weapon_gobj;
 }
@@ -348,7 +348,7 @@ void itFFlowerShootFlame(GObj *fighter_gobj, Vec3f *pos, s32 index, s32 ammo_sub
 {
     itStruct *ip = itGetStruct(ftGetStruct(fighter_gobj)->item_hold);
     Vec3f vel;
-    f32 *angle = (f32*) ((uintptr_t)*dItFFlowerItemDesc.p_file + (intptr_t)&lItFFlowerFlameAngles); // Linker thing
+    f32 *angle = (f32*) ((uintptr_t)*dITFFlowerItemDesc.p_file + (intptr_t)&lITFFlowerFlameAngles); // Linker thing
 
     vel.x = cosf(angle[index]) * ITFFLOWER_AMMO_VEL;
     vel.y = __sinf(angle[index]) * ITFFLOWER_AMMO_VEL;

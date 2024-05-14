@@ -7,7 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItStarItemAttributes;      // 0x00000148
+extern intptr_t lITStarItemAttributes;      // 0x00000148
 
 // // // // // // // // // // // //
 //                               //
@@ -15,11 +15,11 @@ extern intptr_t lItStarItemAttributes;      // 0x00000148
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItStarItemDesc =
+itCreateDesc dITStarItemDesc =
 {
     It_Kind_Star,                           // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItStarItemAttributes,                 // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITStarItemAttributes,                 // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -103,7 +103,7 @@ GObj* itStarMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     vel_real.y = ITSTAR_BOUNCE_Y;
     vel_real.z = 0.0F;
 
-    item_gobj = itManagerMakeItem(spawn_gobj, &dItStarItemDesc, pos, &vel_real, flags);
+    item_gobj = itManagerMakeItem(spawn_gobj, &dITStarItemDesc, pos, &vel_real, flags);
 
     if (item_gobj != NULL)
     {

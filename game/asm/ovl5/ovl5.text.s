@@ -165,10 +165,10 @@ glabel func_ovl5_8018D1A0
   /* 10B5AC 8018D2FC 00000000 */       nop 
   /* 10B5B0 8018D300 3C014316 */       lui $at, (0x43160000 >> 16) # 150.0
   /* 10B5B4 8018D304 3C1E8019 */       lui $fp, %hi(gUnkExplainFighterGObj)
-  /* 10B5B8 8018D308 3C158011 */       lui $s5, %hi(dFtDefaultFighterDesc)
+  /* 10B5B8 8018D308 3C158011 */       lui $s5, %hi(dFTDefaultFighterDesc)
   /* 10B5BC 8018D30C 4481B000 */      mtc1 $at, $f22 # 150.0 to cop1
   /* 10B5C0 8018D310 4480A000 */      mtc1 $zero, $f20
-  /* 10B5C4 8018D314 26B56DD0 */     addiu $s5, $s5, %lo(dFtDefaultFighterDesc)
+  /* 10B5C4 8018D314 26B56DD0 */     addiu $s5, $s5, %lo(dFTDefaultFighterDesc)
   /* 10B5C8 8018D318 27DED750 */     addiu $fp, $fp, %lo(gUnkExplainFighterGObj)
   /* 10B5CC 8018D31C 00008825 */        or $s1, $zero, $zero
   /* 10B5D0 8018D320 00009025 */        or $s2, $zero, $zero

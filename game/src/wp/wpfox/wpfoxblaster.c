@@ -1,16 +1,16 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFtDataFoxExtra1;
+extern void *gFTDataFoxExtra1;
 extern 
-intptr_t lWpFoxBlasterWeaponAttributes;     // 0x00000000
+intptr_t lWPFoxBlasterWeaponAttributes;     // 0x00000000
 
-wpCreateDesc dWpFoxBlasterWeaponDesc = 
+wpCreateDesc dWPFoxBlasterWeaponDesc = 
 {
     0x00,                                   // Render flags?
     Wp_Kind_Blaster,                        // Weapon Kind
-    &gFtDataFoxExtra1,                      // Pointer to character's loaded files?
-    &lWpFoxBlasterWeaponAttributes,         // Offset of weapon attributes in loaded files
+    &gFTDataFoxExtra1,                      // Pointer to character's loaded files?
+    &lWPFoxBlasterWeaponAttributes,         // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -97,7 +97,7 @@ sb32 wpFoxBlasterProcReflector(GObj *weapon_gobj)
 GObj* wpFoxBlasterMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     wpStruct *wp;
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpFoxBlasterWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPFoxBlasterWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
 
     if (weapon_gobj == NULL)
     {

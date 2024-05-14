@@ -6,19 +6,19 @@
 #  801339E0 -> 80134300
 
 
-glabel dMnSoundTestMusicIDs
+glabel dMNSoundTestMusicIDs
   .incbin "ovl62.raw.bin", 0x1EE0, 0xB6
 
-glabel dMnSoundTestSoundIDs
+glabel dMNSoundTestSoundIDs
   .incbin "ovl62.raw.bin", 0x1F96, 0x308
 
-glabel dMnSoundTestVoiceIDs
+glabel dMNSoundTestVoiceIDs
   .incbin "ovl62.raw.bin", 0x229E, 0x3CE
 
-glabel dMnSoundTestFileIDs
+glabel dMNSoundTestFileIDs
   .incbin "ovl62.raw.bin", 0x266C, 0x14
 
-glabel dMnSoundTestArrowSpritePositions
+glabel dMNSoundTestArrowSpritePositions
   /* 2680 18A550 80134180 */
   .asciz "C\""
   .balign 4
@@ -41,13 +41,13 @@ glabel dMnSoundTestArrowSpritePositions
   .balign 4
   .incbin "ovl62.raw.bin", 0x26A0, 0x4
 
-glabel dMnSoundTestDigitSpriteOffsets
+glabel dMNSoundTestDigitSpriteOffsets
   .incbin "ovl62.raw.bin", 0x26A4, 0x28
 
-glabel dMnSoundTestDigitSpriteWidths
+glabel dMNSoundTestDigitSpriteWidths
   .incbin "ovl62.raw.bin", 0x26CC, 0x34
 
-glabel dMnSoundTestLights1
+glabel dMNSoundTestLights1
   /* 2700 18A5D0 80134200 */
   .asciz "   "
   .balign 4
@@ -62,11 +62,11 @@ glabel D_ovl62_80134208
   .balign 4
   .incbin "ovl62.raw.bin", 0x2714, 0x4
 
-glabel dMnSoundTestDisplayList
+glabel dMNSoundTestDisplayList
   .incbin "ovl62.raw.bin", 0x2718, 0x14
   /* 272C 18A5FC 8013422C */  .4byte D_ovl62_80134208
   .incbin "ovl62.raw.bin", 0x2730, 0x4
-  /* 2734 18A604 80134234 */  .4byte dMnSoundTestLights1
+  /* 2734 18A604 80134234 */  .4byte dMNSoundTestLights1
   .incbin "ovl62.raw.bin", 0x2738, 0x8
 
 glabel D_ovl62_80134240

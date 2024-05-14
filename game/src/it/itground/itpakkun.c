@@ -9,13 +9,13 @@
 // // // // // // // // // // // //
 
 extern
-intptr_t lItPakkunItemAttributes;           // 0x00000120
+intptr_t lITPakkunItemAttributes;           // 0x00000120
 extern 
-intptr_t lItPakkunDAppearAnimJoint;         // 0x00000CC8
+intptr_t lITPakkunDAppearAnimJoint;         // 0x00000CC8
 extern 
-intptr_t lItPakkunDAppearMatAnimJoint;      // 0x00000CF8
+intptr_t lITPakkunDAppearMatAnimJoint;      // 0x00000CF8
 extern 
-intptr_t lItPakkunNDamageMatAnimJoint;      // 0x00000E04
+intptr_t lITPakkunNDamageMatAnimJoint;      // 0x00000E04
 
 // // // // // // // // // // // //
 //                               //
@@ -23,11 +23,11 @@ intptr_t lItPakkunNDamageMatAnimJoint;      // 0x00000E04
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItPakkunItemDesc =
+itCreateDesc dITPakkunItemDesc =
 {
     It_Kind_Pakkun,                         // Item Kind
     &gGroundStruct.inishie.item_head,       // Pointer to item file data?
-    &lItPakkunItemAttributes,               // Offset of item attributes in file?
+    &lITPakkunItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -47,7 +47,7 @@ itCreateDesc dItPakkunItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dItPakkunStatusDesc[/* */] = 
+itStatusDesc dITPakkunStatusDesc[/* */] = 
 {
     // Status 0 (Dokan Wait)
     {
@@ -109,7 +109,7 @@ enum itPakkunStatus
 // 0x8017CF20
 void itPakkunDWaitSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItPakkunStatusDesc, itStatus_Pakkun_DWait);
+    itMainSetItemStatus(item_gobj, dITPakkunStatusDesc, itStatus_Pakkun_DWait);
 
     itGetStruct(item_gobj)->proc_dead = NULL;
 
@@ -120,13 +120,13 @@ void itPakkunDWaitSetStatus(GObj *item_gobj)
 // 0x8017CF58
 void itPakkunDAppearSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItPakkunStatusDesc, itStatus_Pakkun_DAppear);
+    itMainSetItemStatus(item_gobj, dITPakkunStatusDesc, itStatus_Pakkun_DAppear);
 }
 
 // 0x8017CF80
 void itPakkunNDamageSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItPakkunStatusDesc, itStatus_Pakkun_NDamage);
+    itMainSetItemStatus(item_gobj, dITPakkunStatusDesc, itStatus_Pakkun_NDamage);
 
     itGetStruct(item_gobj)->proc_dead = itPakkunNDamageProcDead;
 }
@@ -194,8 +194,8 @@ sb32 itPakkunDWaitProcUpdate(GObj *item_gobj)
         {
             DObj *dobj = DObjGetStruct(item_gobj);
 
-            omAddDObjAnimAll(dobj, (uintptr_t)gGroundStruct.inishie.map_head + (intptr_t)&lItPakkunDAppearAnimJoint, 0.0F);
-            omAddMObjAnimAll(dobj->mobj, (uintptr_t)gGroundStruct.inishie.map_head + (intptr_t)&lItPakkunDAppearMatAnimJoint, 0.0F);
+            omAddDObjAnimAll(dobj, (uintptr_t)gGroundStruct.inishie.map_head + (intptr_t)&lITPakkunDAppearAnimJoint, 0.0F);
+            omAddMObjAnimAll(dobj->mobj, (uintptr_t)gGroundStruct.inishie.map_head + (intptr_t)&lITPakkunDAppearMatAnimJoint, 0.0F);
             func_8000DF34(item_gobj);
 
             dobj->translate.vec.f.y += ip->item_vars.pakkun.pos.y;
@@ -300,7 +300,7 @@ sb32 itPakkunDAppearProcDamage(GObj *item_gobj)
 
         dobj->dobj_f0 = AOBJ_FRAME_NULL;
 
-        omAddMObjAnimAll(dobj->mobj, (uintptr_t)gGroundStruct.inishie.map_head + (intptr_t)&lItPakkunNDamageMatAnimJoint, 0.0F);
+        omAddMObjAnimAll(dobj->mobj, (uintptr_t)gGroundStruct.inishie.map_head + (intptr_t)&lITPakkunNDamageMatAnimJoint, 0.0F);
         func_8000DF34(item_gobj);
     }
     return FALSE;
@@ -344,7 +344,7 @@ sb32 itPakkunNDamageProcDead(GObj *item_gobj)
 // 0x8017D4D8
 GObj* itPakkunMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItPakkunItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITPakkunItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

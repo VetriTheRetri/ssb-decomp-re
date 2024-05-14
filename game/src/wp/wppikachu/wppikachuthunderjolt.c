@@ -1,23 +1,23 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFtDataPikachuExtra1, *gFtDataPikachuExtra3;
+extern void *gFTDataPikachuExtra1, *gFTDataPikachuExtra3;
 
 extern 
-intptr_t lWpPikachuThunderJoltAirWeaponAttributes;      // 0x00000000
+intptr_t lWPPikachuThunderJoltAirWeaponAttributes;      // 0x00000000
 extern 
-intptr_t lWpPikachuThunderJoltGroundWeaponAttributes;   // 0x00000034
+intptr_t lWPPikachuThunderJoltGroundWeaponAttributes;   // 0x00000034
 extern 
-intptr_t lWpPikachuThunderJoltAnimJoint;                // 0x00001A20
+intptr_t lWPPikachuThunderJoltAnimJoint;                // 0x00001A20
 extern 
-intptr_t lWpPikachuThunderJoltMatAnimJoint;             // 0x00001AE0
+intptr_t lWPPikachuThunderJoltMatAnimJoint;             // 0x00001AE0
 
-wpCreateDesc dWpPikachuThunderJoltAirWeaponDesc =
+wpCreateDesc dWPPikachuThunderJoltAirWeaponDesc =
 {
     0x00,                                               // Render flags?
     Wp_Kind_ThunderJoltAir,                             // Weapon Kind
-    &gFtDataPikachuExtra1,                              // Pointer to character's loaded files?
-    &lWpPikachuThunderJoltAirWeaponAttributes,          // Offset of weapon attributes in loaded files
+    &gFTDataPikachuExtra1,                              // Pointer to character's loaded files?
+    &lWPPikachuThunderJoltAirWeaponAttributes,          // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -36,12 +36,12 @@ wpCreateDesc dWpPikachuThunderJoltAirWeaponDesc =
     wpPikachuThunderJoltAirProcHit                      // Proc Absorb
 };
 
-wpCreateDesc dWpPikachuThunderJoltGroundWeaponDesc =
+wpCreateDesc dWPPikachuThunderJoltGroundWeaponDesc =
 {
     0x03,                                               // Render flags?
     Wp_Kind_ThunderJoltGround,                          // Weapon Kind
-    &gFtDataPikachuExtra1,                              // Pointer to character's loaded files?
-    &lWpPikachuThunderJoltGroundWeaponAttributes,       // Offset of weapon attributes in loaded files
+    &gFTDataPikachuExtra1,                              // Pointer to character's loaded files?
+    &lWPPikachuThunderJoltGroundWeaponAttributes,       // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -167,7 +167,7 @@ sb32 wpPikachuThunderJoltAirProcReflector(GObj *weapon_gobj)
 // 0x801695E4
 GObj* wpPikachuThunderJoltAirMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpPikachuThunderJoltAirWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPPikachuThunderJoltAirWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)
@@ -189,8 +189,8 @@ void wpPikachuThunderJoltGroundAddAnim(GObj *weapon_gobj)
     func_8000BED8
     (
         weapon_gobj, 
-        (uintptr_t)gFtDataPikachuExtra3 + (intptr_t)&lWpPikachuThunderJoltAnimJoint, 
-        (uintptr_t)gFtDataPikachuExtra3 + (intptr_t)&lWpPikachuThunderJoltMatAnimJoint, 
+        (uintptr_t)gFTDataPikachuExtra3 + (intptr_t)&lWPPikachuThunderJoltAnimJoint, 
+        (uintptr_t)gFTDataPikachuExtra3 + (intptr_t)&lWPPikachuThunderJoltMatAnimJoint, 
         0.0F
     ); // Linker thing
     func_8000DF34(weapon_gobj);
@@ -688,7 +688,7 @@ GObj* wpPikachuThunderJoltGroundMakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 coll
     s32 unused[2];
     wpStruct *prev_wp = wpGetStruct(prev_gobj);
     wpStruct *new_wp;
-    GObj *new_gobj = wpManagerMakeWeapon(prev_gobj, &dWpPikachuThunderJoltGroundWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_WEAPON));
+    GObj *new_gobj = wpManagerMakeWeapon(prev_gobj, &dWPPikachuThunderJoltGroundWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_WEAPON));
 
     if (new_gobj == NULL)
     {

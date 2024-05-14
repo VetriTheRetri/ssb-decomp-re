@@ -6,7 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItBatItemAttributes;       // 0x000001D8
+extern intptr_t lITBatItemAttributes;       // 0x000001D8
 
 // // // // // // // // // // // //
 //                               //
@@ -15,11 +15,11 @@ extern intptr_t lItBatItemAttributes;       // 0x000001D8
 // // // // // // // // // // // //
 
 // 0x80189990
-itCreateDesc dItBatItemDesc =
+itCreateDesc dITBatItemDesc =
 {
     It_Kind_Bat,                            // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItBatItemAttributes,                  // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITBatItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -40,7 +40,7 @@ itCreateDesc dItBatItemDesc =
 };
 
 // 0x801899C4
-itStatusDesc dItBatStatusDesc[/* */] =
+itStatusDesc dITBatStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -156,7 +156,7 @@ sb32 itBatAFallProcMap(GObj *item_gobj)
 void itBatGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dItBatStatusDesc, itStatus_Bat_GWait);
+    itMainSetItemStatus(item_gobj, dITBatStatusDesc, itStatus_Bat_GWait);
 }
 
 // 0x80174EF8
@@ -167,7 +167,7 @@ void itBatAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dItBatStatusDesc, itStatus_Bat_AFall);
+    itMainSetItemStatus(item_gobj, dITBatStatusDesc, itStatus_Bat_AFall);
 }
 
 // 0x80174F3C
@@ -175,7 +175,7 @@ void itBatFHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = F_DEG_TO_RAD(0.0F);
 
-    itMainSetItemStatus(item_gobj, dItBatStatusDesc, itStatus_Bat_FHold);
+    itMainSetItemStatus(item_gobj, dITBatStatusDesc, itStatus_Bat_FHold);
 }
 
 // 0x80174F70
@@ -208,7 +208,7 @@ sb32 itBatFThrowProcHit(GObj *item_gobj)
 // 0x80175000
 void itBatFThrowSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItBatStatusDesc, itStatus_Bat_FThrow);
+    itMainSetItemStatus(item_gobj, dITBatStatusDesc, itStatus_Bat_FThrow);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 }
@@ -222,7 +222,7 @@ sb32 itBatFDropProcMap(GObj *item_gobj)
 // 0x80175074
 void itBatFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItBatStatusDesc, itStatus_Bat_FDrop);
+    itMainSetItemStatus(item_gobj, dITBatStatusDesc, itStatus_Bat_FDrop);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 }
@@ -230,7 +230,7 @@ void itBatFDropSetStatus(GObj *item_gobj)
 // 0x801750B8
 GObj* itBatMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItBatItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITBatItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

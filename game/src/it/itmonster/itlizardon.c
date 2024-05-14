@@ -9,15 +9,15 @@
 // // // // // // // // // // // //
 
 extern intptr_t 
-lItLizardonItemAttributes;                  // 0x000008FC
+lITLizardonItemAttributes;                  // 0x000008FC
 extern intptr_t
-lItLizardonWeaponFlameWeaponAttributes;     // 0x00000944
+lITLizardonWeaponFlameWeaponAttributes;     // 0x00000944
 extern intptr_t
-lItLizardonDataStart;                       // 0x0000D5C0
+lITLizardonDataStart;                       // 0x0000D5C0
 extern intptr_t 
-lItLizardonAnimJoint;                       // 0x0000D658
+lITLizardonAnimJoint;                       // 0x0000D658
 extern intptr_t 
-lItLizardonMatAnimJoint;                    // 0x0000D688
+lITLizardonMatAnimJoint;                    // 0x0000D688
 
 // // // // // // // // // // // //
 //                               //
@@ -26,11 +26,11 @@ lItLizardonMatAnimJoint;                    // 0x0000D688
 // // // // // // // // // // // //
 
 // 0x8018AD30
-itCreateDesc dItLizardonItemDesc = 
+itCreateDesc dITLizardonItemDesc = 
 {
     It_Kind_Lizardon,                       // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItLizardonItemAttributes,             // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITLizardonItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -51,7 +51,7 @@ itCreateDesc dItLizardonItemDesc =
 };
 
 // 0x8018AD64
-itStatusDesc dItLizardonStatusDesc[/* */] = 
+itStatusDesc dITLizardonStatusDesc[/* */] = 
 {
     // Status 0 (Unused Fall)
     {
@@ -91,12 +91,12 @@ itStatusDesc dItLizardonStatusDesc[/* */] =
 };
 
 // 0x8018ADC4
-wpCreateDesc dItLizardonWeaponFlameWeaponDesc = 
+wpCreateDesc dITLizardonWeaponFlameWeaponDesc = 
 {
     0x00,                                   // Render flags?
     Wp_Kind_LizardonFlame,                  // Weapon Kind
-    &gItemFileData,                         // Pointer to character's loaded files?
-    &lItLizardonWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
+    &gITemFileData,                         // Pointer to character's loaded files?
+    &lITLizardonWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -167,7 +167,7 @@ sb32 itLizardonUFallSetStatus(GObj *item_gobj) // Unused
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dItLizardonStatusDesc, itStatus_Lizardon_UFall);
+    itMainSetItemStatus(item_gobj, dITLizardonStatusDesc, itStatus_Lizardon_UFall);
 }
 
 // 0x8017F53C
@@ -200,7 +200,7 @@ sb32 itLizardonAFallProcMap(GObj *item_gobj)
 // 0x8017F5C4
 void itLizardonAFallSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItLizardonStatusDesc, itStatus_Lizardon_AFall);
+    itMainSetItemStatus(item_gobj, dITLizardonStatusDesc, itStatus_Lizardon_AFall);
 }
 
 // 0x8017F5EC
@@ -285,10 +285,10 @@ void itLizardonNAttackInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == It_Kind_Lizardon)
     {
-        addr = (void*) ((uintptr_t)ip->attributes->model_desc - (intptr_t)&lItLizardonDataStart); // Linker thing
+        addr = (void*) ((uintptr_t)ip->attributes->model_desc - (intptr_t)&lITLizardonDataStart); // Linker thing
 
-        omAddDObjAnimAll(dobj, (void*) ((uintptr_t)addr + (intptr_t)&lItLizardonAnimJoint), 0.0F); // Linker thing
-        omAddMObjAnimAll(dobj->mobj, (void*) ((uintptr_t)addr + (intptr_t)&lItLizardonMatAnimJoint), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonAnimJoint), 0.0F); // Linker thing
+        omAddMObjAnimAll(dobj->mobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonMatAnimJoint), 0.0F); // Linker thing
         func_8000DF34(item_gobj);
     }
 }
@@ -296,7 +296,7 @@ void itLizardonNAttackInitItemVars(GObj *item_gobj)
 // 0x8017F8E4
 void itLizardonNAttackSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItLizardonStatusDesc, itStatus_Lizardon_NAttack);
+    itMainSetItemStatus(item_gobj, dITLizardonStatusDesc, itStatus_Lizardon_NAttack);
 }
 
 // 0x8017F90C
@@ -336,7 +336,7 @@ sb32 itLizardonSDefaultProcMap(GObj *item_gobj)
 // 0x8017F9CC
 GObj* itLizardonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItLizardonItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITLizardonItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 
@@ -358,7 +358,7 @@ GObj* itLizardonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lItLizardonDataStart), 0.0F);
+        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITLizardonDataStart), 0.0F);
     }
     return item_gobj;
 }
@@ -409,8 +409,8 @@ sb32 itLizardonWeaponFlameProcReflector(GObj *weapon_gobj)
 
     translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
-    func_ovl0_800CE8C0(gItemEffectBank | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(gItemEffectBank | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITemEffectBank | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITemEffectBank | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return FALSE;
 }
@@ -418,7 +418,7 @@ sb32 itLizardonWeaponFlameProcReflector(GObj *weapon_gobj)
 // 0x8017FC38
 GObj* itLizardonWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dItLizardonWeaponFlameWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITLizardonWeaponFlameWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     wpStruct *ip;
 
     if (weapon_gobj == NULL)
@@ -431,8 +431,8 @@ GObj* itLizardonWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     ip->lifetime = ITLIZARDON_FLAME_LIFETIME;
 
-    func_ovl0_800CE8C0(gItemEffectBank | 8, 2, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F); // This needs to something in v0 to match
-    func_ovl0_800CE8C0(gItemEffectBank | 8, 0, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITemEffectBank | 8, 2, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F); // This needs to something in v0 to match
+    func_ovl0_800CE8C0(gITemEffectBank | 8, 0, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F);
 
     return weapon_gobj;
 }

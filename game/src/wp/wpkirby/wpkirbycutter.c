@@ -1,16 +1,16 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFtDataKirbyMain;
+extern void *gFTDataKirbyMain;
 extern
-intptr_t lWpKirbyCutterWeaponAttributes;    // 0x00000008
+intptr_t lWPKirbyCutterWeaponAttributes;    // 0x00000008
 
-wpCreateDesc dWpKirbyCutterWeaponDesc =
+wpCreateDesc dWPKirbyCutterWeaponDesc =
 {
     0x03,                                   // Render flags?
     Wp_Kind_Cutter,                         // Weapon Kind
-    &gFtDataKirbyMain,                      // Pointer to character's loaded files?
-    &lWpKirbyCutterWeaponAttributes,        // Offset of weapon attributes in loaded files
+    &gFTDataKirbyMain,                      // Pointer to character's loaded files?
+    &lWPKirbyCutterWeaponAttributes,        // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -124,7 +124,7 @@ sb32 wpKirbyCutterProcReflector(GObj *weapon_gobj)
 GObj* wpKirbyCutterMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpKirbyCutterWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPKirbyCutterWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

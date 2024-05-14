@@ -3660,7 +3660,7 @@ GObj* efParticle_MBallThrown_MakeEffect(Vec3f *pos, s32 lr) // Many linker thing
 
     D_ovl2_8012E584.file_head = &sp18;
 
-    pvec = (void**)((uintptr_t)gItemFileData + (intptr_t)&D_NF_000006E4);
+    pvec = (void**)((uintptr_t)gITemFileData + (intptr_t)&D_NF_000006E4);
 
     sp18 = ((uintptr_t)*pvec - (intptr_t)&D_NF_00009430);
 
@@ -4276,7 +4276,7 @@ efParticle* efParticle_YoshiEggExplode_MakeEffect(Vec3f *pos)
 }
 
 extern intptr_t lKirbySpecialNCopyData;
-extern void *gFtDataKirbyBattleMotion;
+extern void *gFTDataKirbyBattleMotion;
 
 // 0x80103B28
 void efParticle_CaptureKirbyStar_ProcUpdate(GObj *effect_gobj)
@@ -4292,7 +4292,7 @@ void efParticle_CaptureKirbyStar_ProcUpdate(GObj *effect_gobj)
     fp = ftGetStruct(ep->fighter_gobj);
     topn_dobj = DObjGetStruct(effect_gobj);
 
-    copy_data = (ftKirbyCopy*) ((uintptr_t)gFtDataKirbyBattleMotion + (intptr_t)&lKirbySpecialNCopyData);
+    copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lKirbySpecialNCopyData);
 
     child_dobj = topn_dobj->child;
 
@@ -4323,7 +4323,7 @@ void efParticle_CaptureKirbyStar_ProcUpdate(GObj *effect_gobj)
 extern intptr_t D_NF_000004D4;
 extern intptr_t D_NF_00005458;
 extern efCreateDesc D_ovl2_8012E720;
-extern void *gFtDataKirbyBattleMotion;
+extern void *gFTDataKirbyBattleMotion;
 
 // 0x80103CF8
 GObj* efParticle_CaptureKirbyStar_MakeEffect(GObj *fighter_gobj)
@@ -4335,11 +4335,11 @@ GObj* efParticle_CaptureKirbyStar_MakeEffect(GObj *fighter_gobj)
     DObj *dobj;
     ftKirbyCopy *copy_data;
 
-    copy_data = (ftKirbyCopy*) ((uintptr_t)gFtDataKirbyBattleMotion + (intptr_t)&lKirbySpecialNCopyData);
+    copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lKirbySpecialNCopyData);
 
     D_ovl2_8012E720.file_head = &aobj;
 
-    p_aobj = (void**) ((uintptr_t)gItemFileData + (intptr_t)&D_NF_000004D4);
+    p_aobj = (void**) ((uintptr_t)gITemFileData + (intptr_t)&D_NF_000004D4);
 
     aobj = ((uintptr_t)*p_aobj - (intptr_t)&D_NF_00005458);
 
@@ -4417,7 +4417,7 @@ GObj* efParticle_LoseKirbyStar_MakeEffect(GObj *fighter_gobj)
 
     D_ovl2_8012E748.file_head = &aobj;
 
-    p_aobj = (void**)((uintptr_t)gItemFileData + (intptr_t)&D_NF_000004D4);
+    p_aobj = (void**)((uintptr_t)gITemFileData + (intptr_t)&D_NF_000004D4);
 
     aobj = ((uintptr_t)*p_aobj - (intptr_t)&D_NF_00005458);
 

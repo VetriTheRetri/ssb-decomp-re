@@ -4,56 +4,56 @@ diff a/game/asm/ovl56/ovl56.bss.s b/game/asm/ovl56/ovl56.bss.s	(rejected hunks)
  glabel D_ovl56_801352D0
      .space 4
 -glabel D_ovl56_801352D4
-+glabel sGmStageClearKind
++glabel sGMStageClearKind
      .space 4
  glabel D_ovl56_801352D8
      .space 4
 -glabel D_ovl56_801352DC
-+glabel sGmStageClearSecondsRemaining
++glabel sGMStageClearSecondsRemaining
      .space 4
 -glabel D_ovl56_801352E0
-+glabel sGmStageClearDamageDealt
++glabel sGMStageClearDamageDealt
      .space 4
- glabel sGmStageClearDifficulty
+ glabel sGMStageClearDifficulty
      .space 4
 -glabel D_ovl56_801352E8
-+glabel sGmStageClearScoreTotal
++glabel sGMStageClearScoreTotal
      .space 4
 -glabel D_ovl56_801352EC
-+glabel sGmStageClear1PGameStage
++glabel sGMStageClear1PGameStage
      .space 12
 -glabel D_ovl56_801352F8
-+glabel sGmStageClearTimerTextGObj
++glabel sGMStageClearTimerTextGObj
      .space 4
 -glabel D_ovl56_801352FC
-+glabel sGmStageClearTimerMultiplierGObj
++glabel sGMStageClearTimerMultiplierGObj
      .space 4
 -glabel D_ovl56_80135300
-+glabel sGmStageClearDamageTextGObj
++glabel sGMStageClearDamageTextGObj
      .space 4
 -glabel D_ovl56_80135304
-+glabel sGmStageClearDamageMultiplierGObj
++glabel sGMStageClearDamageMultiplierGObj
      .space 12
 -glabel D_ovl56_80135310
-+glabel sGmStageClearScoreTextGObj
++glabel sGMStageClearScoreTextGObj
      .space 4
 -glabel D_ovl56_80135314
-+glabel sGmStageClearBonusTextGObj
++glabel sGMStageClearBonusTextGObj
      .space 4
 -glabel D_ovl56_80135318
-+glabel sGmStageClearTargetGObj
++glabel sGMStageClearTargetGObj
      .space 8
 -glabel D_ovl56_80135320
-+glabel sGmStageClearBonusMasks
++glabel sGMStageClearBonusMasks
      .space 12
- glabel sGmStageClearBonusID
+ glabel sGMStageClearBonusID
      .space 4
 @@ -63,7 +63,7 @@ glabel D_ovl56_80135358
      .space 28
- glabel sGmStageClearBonusPageArrowGObj
+ glabel sGMStageClearBonusPageArrowGObj
      .space 4
 -glabel D_ovl56_80135378
-+glabel sGmStageClearBonusObjectiveGObjs
++glabel sGMStageClearBonusObjectiveGObjs
      .space 4
  glabel D_ovl56_8013537C
      .space 4
@@ -62,16 +62,16 @@ diff a/game/asm/ovl56/ovl56.bss.s b/game/asm/ovl56/ovl56.bss.s	(rejected hunks)
  glabel D_ovl56_801353A0
      .space 4
 -glabel D_ovl56_801353A4
-+glabel sGmStageClearBonusObjectivesCleared
++glabel sGMStageClearBonusObjectivesCleared
      .space 4
  glabel D_ovl56_801353A8
      .space 4
-@@ -93,7 +93,7 @@ glabel sGmStageClearStatusBuf
+@@ -93,7 +93,7 @@ glabel sGMStageClearStatusBuf
      .space 384
- glabel sGmStageClearForceBuf
+ glabel sGMStageClearForceBuf
      .space 56
 -glabel D_ovl56_80135588
-+glabel sGmStageClearFiles
++glabel sGMStageClearFiles
      .space 4
  glabel D_ovl56_8013558C
      .space 8

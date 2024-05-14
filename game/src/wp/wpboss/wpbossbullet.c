@@ -1,19 +1,19 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFtDataBossBattleMotion;
+extern void *gFTDataBossBattleMotion;
 
 extern intptr_t 
-lWpBossBulletNormalWeaponAttributes;        // 0x00000774
+lWPBossBulletNormalWeaponAttributes;        // 0x00000774
 extern intptr_t
-lWpBossBulletHardWeaponAttributes;          // 0x000007A8
+lWPBossBulletHardWeaponAttributes;          // 0x000007A8
 
-wpCreateDesc dWpBossBulletNormalWeaponDesc =
+wpCreateDesc dWPBossBulletNormalWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_BulletNormal,                   // Weapon Kind
-    &gFtDataBossBattleMotion,               // Pointer to character's loaded files?
-    &lWpBossBulletNormalWeaponAttributes,   // Offset of weapon attributes in loaded files
+    &gFTDataBossBattleMotion,               // Pointer to character's loaded files?
+    &lWPBossBulletNormalWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -32,12 +32,12 @@ wpCreateDesc dWpBossBulletNormalWeaponDesc =
     wpBossBulletProcHit                     // Proc Absorb
 };
 
-wpCreateDesc dWpBossBulletHardWeaponDesc =
+wpCreateDesc dWPBossBulletHardWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_BulletHard,                     // Weapon Kind
-    &gFtDataBossBattleMotion,               // Pointer to character's loaded files?
-    &lWpBossBulletHardWeaponAttributes,     // Offset of weapon attributes in loaded files
+    &gFTDataBossBattleMotion,               // Pointer to character's loaded files?
+    &lWPBossBulletHardWeaponAttributes,     // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -144,7 +144,7 @@ sb32 wpBossBulletProcReflector(GObj *weapon_gobj)
 // 0x8016DDB4
 GObj* wpBossBulletNormalMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpBossBulletNormalWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPBossBulletNormalWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)
@@ -164,7 +164,7 @@ GObj* wpBossBulletNormalMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 // 0x8016DE28
 GObj* wpBossBulletHardMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpBossBulletHardWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPBossBulletHardWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

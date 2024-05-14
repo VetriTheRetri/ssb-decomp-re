@@ -6,8 +6,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItCapsuleItemAttributes;   // 0x00000050
-extern intptr_t lItCapsuleHitEvents;        // 0x00000098
+extern intptr_t lITCapsuleItemAttributes;   // 0x00000050
+extern intptr_t lITCapsuleHitEvents;        // 0x00000098
 
 // // // // // // // // // // // //
 //                               //
@@ -15,11 +15,11 @@ extern intptr_t lItCapsuleHitEvents;        // 0x00000098
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItCapsuleItemDesc = 
+itCreateDesc dITCapsuleItemDesc = 
 {
     It_Kind_Capsule,                        // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItCapsuleItemAttributes,              // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITCapsuleItemAttributes,              // Offset of item attributes in file?
     
     // DObj transformation struct
     {
@@ -39,7 +39,7 @@ itCreateDesc dItCapsuleItemDesc =
     itCapsuleSDefaultProcHit                // Proc Damage
 };
 
-itStatusDesc dItCapsuleStatusDesc[/* */] =
+itStatusDesc dITCapsuleStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -178,7 +178,7 @@ sb32 itCapsuleAFallProcMap(GObj *item_gobj)
 void itCapsuleGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dItCapsuleStatusDesc, itStatus_Capsule_GWait);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_GWait);
 }
 
 // 0x80174098
@@ -194,13 +194,13 @@ void itCapsuleAFallSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
 
-    itMainSetItemStatus(item_gobj, dItCapsuleStatusDesc, itStatus_Capsule_AFall);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_AFall);
 }
 
 // 0x801740FC
 void itCapsuleFHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItCapsuleStatusDesc, itStatus_Capsule_FHold);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_FHold);
 }
 
 // 0x80174124
@@ -237,7 +237,7 @@ void itCapsuleFThrowSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
 
-    itMainSetItemStatus(item_gobj, dItCapsuleStatusDesc, itStatus_Capsule_FThrow);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_FThrow);
 }
 
 // 0x801741F0
@@ -257,7 +257,7 @@ sb32 itCapsuleFDropProcMap(GObj *item_gobj)
 // 0x80174248
 void itCapsuleFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItCapsuleStatusDesc, itStatus_Capsule_FDrop);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_FDrop);
 }
 
 // 0x80174270
@@ -271,14 +271,14 @@ sb32 itCapsuleNExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dItCapsuleItemDesc, lItCapsuleHitEvents)); // (itHitEvent*) ((uintptr_t)*dItCapsuleItemDesc.p_file + (intptr_t)&D_NF_00000098); Linker thing
+    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITCapsuleItemDesc, lITCapsuleHitEvents)); // (itHitEvent*) ((uintptr_t)*dITCapsuleItemDesc.p_file + (intptr_t)&D_NF_00000098); Linker thing
 
     return FALSE;
 }
 
 GObj* itCapsuleMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItCapsuleItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITCapsuleItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -316,14 +316,14 @@ void itCapsuleNExplodeInitItemVars(GObj *item_gobj)
     itMainClearOwnerStats(item_gobj);
     itMainRefreshHit(item_gobj);
 
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dItCapsuleItemDesc, lItCapsuleHitEvents)); // Linker thing
+    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITCapsuleItemDesc, lITCapsuleHitEvents)); // Linker thing
 }
 
 // 0x801743F4
 void itCapsuleNExplodeSetStatus(GObj *item_gobj)
 {
     itCapsuleNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItCapsuleStatusDesc, itStatus_Capsule_NExplode);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_NExplode);
 }
 
 // 0x80174428

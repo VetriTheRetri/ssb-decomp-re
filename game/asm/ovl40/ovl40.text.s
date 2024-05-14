@@ -406,10 +406,10 @@ glabel mvOpeningLinkInitFighterStagePanel
   /* 16B1EC 8018D69C 00000000 */       nop
   /* 16B1F0 8018D6A0 0C0594F8 */       jal func_NF_801653E0 # couldn't be resolved
   /* 16B1F4 8018D6A4 00000000 */       nop
-  /* 16B1F8 8018D6A8 3C168011 */       lui $s6, %hi(dFtDefaultFighterDesc)
+  /* 16B1F8 8018D6A8 3C168011 */       lui $s6, %hi(dFTDefaultFighterDesc)
   /* 16B1FC 8018D6AC 3C15800A */       lui $s5, %hi(gBattleState)
   /* 16B200 8018D6B0 26B550E8 */     addiu $s5, $s5, %lo(gBattleState)
-  /* 16B204 8018D6B4 26D66DD0 */     addiu $s6, $s6, %lo(dFtDefaultFighterDesc)
+  /* 16B204 8018D6B4 26D66DD0 */     addiu $s6, $s6, %lo(dFTDefaultFighterDesc)
   /* 16B208 8018D6B8 00008825 */        or $s1, $zero, $zero
   /* 16B20C 8018D6BC 00009025 */        or $s2, $zero, $zero
   /* 16B210 8018D6C0 241E0004 */     addiu $fp, $zero, 4
@@ -655,23 +655,23 @@ glabel mvOpeningLinkAnimatePosedFighter
 glabel mvOpeningLinkCreatePosedFighter
   /* 16B590 8018DA40 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 16B594 8018DA44 AFB00018 */        sw $s0, 0x18($sp)
-  /* 16B598 8018DA48 3C0E8011 */       lui $t6, %hi(dFtDefaultFighterDesc)
+  /* 16B598 8018DA48 3C0E8011 */       lui $t6, %hi(dFTDefaultFighterDesc)
   /* 16B59C 8018DA4C 27B00024 */     addiu $s0, $sp, 0x24
-  /* 16B5A0 8018DA50 25CE6DD0 */     addiu $t6, $t6, %lo(dFtDefaultFighterDesc)
+  /* 16B5A0 8018DA50 25CE6DD0 */     addiu $t6, $t6, %lo(dFTDefaultFighterDesc)
   /* 16B5A4 8018DA54 AFBF001C */        sw $ra, 0x1c($sp)
   /* 16B5A8 8018DA58 25C8003C */     addiu $t0, $t6, 0x3c
   /* 16B5AC 8018DA5C 0200C825 */        or $t9, $s0, $zero
   .L8018DA60:
-  /* 16B5B0 8018DA60 8DD80000 */        lw $t8, ($t6) # dFtDefaultFighterDesc + 0
+  /* 16B5B0 8018DA60 8DD80000 */        lw $t8, ($t6) # dFTDefaultFighterDesc + 0
   /* 16B5B4 8018DA64 25CE000C */     addiu $t6, $t6, 0xc
   /* 16B5B8 8018DA68 2739000C */     addiu $t9, $t9, 0xc
   /* 16B5BC 8018DA6C AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 16B5C0 8018DA70 8DCFFFF8 */        lw $t7, -8($t6) # dFtDefaultFighterDesc + -8
+  /* 16B5C0 8018DA70 8DCFFFF8 */        lw $t7, -8($t6) # dFTDefaultFighterDesc + -8
   /* 16B5C4 8018DA74 AF2FFFF8 */        sw $t7, -8($t9)
-  /* 16B5C8 8018DA78 8DD8FFFC */        lw $t8, -4($t6) # dFtDefaultFighterDesc + -4
+  /* 16B5C8 8018DA78 8DD8FFFC */        lw $t8, -4($t6) # dFTDefaultFighterDesc + -4
   /* 16B5CC 8018DA7C 15C8FFF8 */       bne $t6, $t0, .L8018DA60
   /* 16B5D0 8018DA80 AF38FFFC */        sw $t8, -4($t9)
-  /* 16B5D4 8018DA84 8DD80000 */        lw $t8, ($t6) # dFtDefaultFighterDesc + 0
+  /* 16B5D4 8018DA84 8DD80000 */        lw $t8, ($t6) # dFTDefaultFighterDesc + 0
   /* 16B5D8 8018DA88 24090005 */     addiu $t1, $zero, 5
   /* 16B5DC 8018DA8C 24040005 */     addiu $a0, $zero, 5
   /* 16B5E0 8018DA90 AF380000 */        sw $t8, ($t9)

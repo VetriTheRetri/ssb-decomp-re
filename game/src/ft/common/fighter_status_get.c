@@ -111,7 +111,7 @@ void ftCommon_Get_ApplyItemStats(GObj *fighter_gobj)
             case It_Kind_Hammer:
                 fp->hammer_timer = ITHAMMER_TIME;
 
-                ftSpecialItem_BGMSetPlay(ITHAMMER_BGM_ID);
+                ftSpecialITem_BGMSetPlay(ITHAMMER_BGM_ID);
                 break;
 
             default:

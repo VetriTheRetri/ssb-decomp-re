@@ -1,16 +1,16 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFtDataYoshiMain;
+extern void *gFTDataYoshiMain;
 extern
-intptr_t lWpYoshiEggThrowWeaponAttributes;  // 0x0000000C
+intptr_t lWPYoshiEggThrowWeaponAttributes;  // 0x0000000C
 
-wpCreateDesc dWpYoshiEggThrowWeaponDesc =
+wpCreateDesc dWPYoshiEggThrowWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_EggThrow,                       // Weapon Kind
-    &gFtDataYoshiMain,                      // Pointer to character's loaded files?
-    &lWpYoshiEggThrowWeaponAttributes,      // Offset of weapon attributes in loaded files
+    &gFTDataYoshiMain,                      // Pointer to character's loaded files?
+    &lWPYoshiEggThrowWeaponAttributes,      // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -246,7 +246,7 @@ void wpYoshiEggThrowProcRender(GObj *weapon_gobj)
 GObj* wpYoshiEggThrowMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpYoshiEggThrowWeaponDesc, pos, WEAPON_MASK_SPAWN_FIGHTER);
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPYoshiEggThrowWeaponDesc, pos, WEAPON_MASK_SPAWN_FIGHTER);
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

@@ -7,9 +7,9 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItMLuckyItemAttributes;    // 0x00000A84
-extern intptr_t lItLuckyDataStart;          // 0x00010000
-extern intptr_t lItLuckyAnimJoint;          // 0x000100BC
+extern intptr_t lITMLuckyItemAttributes;    // 0x00000A84
+extern intptr_t lITLuckyDataStart;          // 0x00010000
+extern intptr_t lITLuckyAnimJoint;          // 0x000100BC
 
 // // // // // // // // // // // //
 //                               //
@@ -18,11 +18,11 @@ extern intptr_t lItLuckyAnimJoint;          // 0x000100BC
 // // // // // // // // // // // //
 
 // 0x8018AFB0
-itCreateDesc dItMLuckyItemDesc = 
+itCreateDesc dITMLuckyItemDesc = 
 {
     It_Kind_MLucky,                         // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItMLuckyItemAttributes,               // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITMLuckyItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -43,7 +43,7 @@ itCreateDesc dItMLuckyItemDesc =
 };
 
 // 0x8018AFE4
-itStatusDesc dItMLuckyStatusDesc[/* */] =
+itStatusDesc dITMLuckyStatusDesc[/* */] =
 {
     // Status 0 (Air Fall)
     {
@@ -123,7 +123,7 @@ void itMLuckyNSpawnInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == It_Kind_MLucky)
     {
-        omAddDObjAnimAll(dobj->child, itGetPData(ip, lItLuckyDataStart, lItLuckyAnimJoint), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj->child, itGetPData(ip, lITLuckyDataStart, lITLuckyAnimJoint), 0.0F); // Linker thing
         func_8000DF34(item_gobj);
     }
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
@@ -171,7 +171,7 @@ void itMLuckyAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dItMLuckyStatusDesc, itStatus_MLucky_AFall);
+    itMainSetItemStatus(item_gobj, dITMLuckyStatusDesc, itStatus_MLucky_AFall);
 }
 
 // 0x80181124
@@ -211,7 +211,7 @@ void itMLuckyNAppearSetStatus(GObj *item_gobj)
     {
         func_800269C0(alSound_Voice_MBallLuckySpawn);
     }
-    itMainSetItemStatus(item_gobj, dItMLuckyStatusDesc, itStatus_MLucky_NAppear);
+    itMainSetItemStatus(item_gobj, dITMLuckyStatusDesc, itStatus_MLucky_NAppear);
 }
 
 // 0x80181200
@@ -291,7 +291,7 @@ sb32 itMLuckyNSpawnProcDamage(GObj *item_gobj)
 // 0x801813A8
 void itMLuckyNSpawnSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItMLuckyStatusDesc, itStatus_MLucky_NSpawn);
+    itMainSetItemStatus(item_gobj, dITMLuckyStatusDesc, itStatus_MLucky_NSpawn);
 }
 
 // 0x801813D0
@@ -317,7 +317,7 @@ void itMLuckyNDisappearSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
-    itMainSetItemStatus(item_gobj, dItMLuckyStatusDesc, itStatus_MLucky_NDisappear);
+    itMainSetItemStatus(item_gobj, dITMLuckyStatusDesc, itStatus_MLucky_NDisappear);
 }
 
 // 0x80181430
@@ -351,7 +351,7 @@ sb32 itMLuckySDefaultProcMap(GObj *item_gobj)
 // 0x801814C0
 GObj* itMLuckyMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItMLuckyItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITMLuckyItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 
@@ -372,7 +372,7 @@ GObj* itMLuckyMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj->next, itGetMonsterAnimNode(ip, lItLuckyDataStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj->next, itGetMonsterAnimNode(ip, lITLuckyDataStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

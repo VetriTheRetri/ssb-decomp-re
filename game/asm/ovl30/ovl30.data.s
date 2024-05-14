@@ -9,16 +9,16 @@
 glabel D_ovl30_801344D0
   .incbin "ovl30.raw.bin", 0x29D0, 0x14
 
-glabel dMnStageFileInfoArray
+glabel dMNStageFileInfoArray
   .incbin "ovl30.raw.bin", 0x29E4, 0x48
 
-glabel dMnStageBackgroundFileOffsets
+glabel dMNStageBackgroundFileOffsets
   .incbin "ovl30.raw.bin", 0x2A2C, 0x24
 
-glabel dMnStageTrainingBackgroundFileNodes
+glabel dMNStageTrainingBackgroundFileNodes
   .incbin "ovl30.raw.bin", 0x2A50, 0x18
 
-glabel dMnStageTrainingBackgroundIDs
+glabel dMNStageTrainingBackgroundIDs
   .incbin "ovl30.raw.bin", 0x2A68, 0x28
 
 glabel D_ovl30_80134590
@@ -39,16 +39,16 @@ glabel D_ovl30_801345A8
   /* 2AC4 150134 801345C4 */  .4byte D_ovl30_80134590
   .incbin "ovl30.raw.bin", 0x2AC8, 0x8
 
-glabel dMnStageChrOffsets
+glabel dMNStageChrOffsets
   .incbin "ovl30.raw.bin", 0x2AD0, 0x74
 
-glabel dMnStageIDOrder
+glabel dMNStageIDOrder
   .incbin "ovl30.raw.bin", 0x2B44, 0x28
 
-glabel dMnStageImageOffsets
+glabel dMNStageImageOffsets
   .incbin "ovl30.raw.bin", 0x2B6C, 0x28
 
-glabel dMnStageNamePositions
+glabel dMNStageNamePositions
   /* 2B94 150204 80134694 */
   .asciz "CC"
   .balign 4
@@ -104,7 +104,7 @@ glabel dMnStageNamePositions
   .asciz "CD"
   .balign 4
 
-glabel dMnStageNameImageOffsets
+glabel dMNStageNameImageOffsets
   .incbin "ovl30.raw.bin", 0x2BDC, 0x24
   /* 2C00 150270 80134700 */  .4byte D_ovl30_801349C0
   /* 2C04 150274 80134704 */  .4byte D_ovl30_801349D0
@@ -200,7 +200,7 @@ glabel dMnStageNameImageOffsets
   .balign 4
   .incbin "ovl30.raw.bin", 0x2CD8, 0xC
 
-glabel dMnStageLogoPositions
+glabel dMNStageLogoPositions
   /* 2CE4 150354 801347E4 */
   .asciz "@@"
   .balign 4
@@ -226,10 +226,10 @@ glabel dMnStageLogoPositions
   .balign 4
   .incbin "ovl30.raw.bin", 0x2D28, 0xC
 
-glabel dMnStageLogoOffsets
+glabel dMNStageLogoOffsets
   .incbin "ovl30.raw.bin", 0x2D34, 0x24
 
-glabel dMnStagePreviewScale
+glabel dMNStagePreviewScale
   /* 2D58 1503C8 80134858 */
   .asciz "?"
   .balign 4
@@ -243,7 +243,7 @@ glabel dMnStagePreviewScale
   .balign 4
   .incbin "ovl30.raw.bin", 0x2D74, 0x8
 
-glabel dMnStagePreviewTranslations
+glabel dMNStagePreviewTranslations
   .incbin "ovl30.raw.bin", 0x2D7C, 0x6C
 
 glabel D_ovl30_801348E8

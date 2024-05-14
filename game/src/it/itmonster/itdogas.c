@@ -7,11 +7,11 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItDogasItemAttributes;     // 0x00000BF8
+extern intptr_t lITDogasItemAttributes;     // 0x00000BF8
 extern intptr_t
-lItDogasWeaponSmogWeaponAttributes;         // 0x00000C40
-extern intptr_t lItDogasDataStart;          // 0x00012820
-extern intptr_t lItDogasAnimJoint;          // 0x000128DC
+lITDogasWeaponSmogWeaponAttributes;         // 0x00000C40
+extern intptr_t lITDogasDataStart;          // 0x00012820
+extern intptr_t lITDogasAnimJoint;          // 0x000128DC
 
 // // // // // // // // // // // //
 //                               //
@@ -20,11 +20,11 @@ extern intptr_t lItDogasAnimJoint;          // 0x000128DC
 // // // // // // // // // // // //
 
 // 0x8018B2C0
-itCreateDesc dItDogasItemDesc =
+itCreateDesc dITDogasItemDesc =
 {
     It_Kind_Dogas,                          // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItDogasItemAttributes,                // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITDogasItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -45,7 +45,7 @@ itCreateDesc dItDogasItemDesc =
 };
 
 // 0x80182BF4
-itStatusDesc dItDogasStatusDesc[/* */] =
+itStatusDesc dITDogasStatusDesc[/* */] =
 {
     // Status 0 (Neutral Active)
     {
@@ -73,12 +73,12 @@ itStatusDesc dItDogasStatusDesc[/* */] =
 };
 
 // 0x8018B334
-wpCreateDesc dItDogasWeaponSmogWeaponDesc = 
+wpCreateDesc dITDogasWeaponSmogWeaponDesc = 
 {
     0x03,                                   // Render flags?
     Wp_Kind_DogasSmog,                      // Weapon Kind
-    &gItemFileData,                         // Pointer to weapon's loaded files?
-    &lItDogasWeaponSmogWeaponAttributes,    // Offset of weapon attributes in loaded files
+    &gITemFileData,                         // Pointer to weapon's loaded files?
+    &lITDogasWeaponSmogWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -137,7 +137,7 @@ void itDogasNDisappearSetStatus(GObj *item_gobj)
 
     ip->it_multi = ITDOGAS_DESPAWN_WAIT;
 
-    itMainSetItemStatus(item_gobj, dItDogasStatusDesc, itStatus_Dogas_NDisappear);
+    itMainSetItemStatus(item_gobj, dITDogasStatusDesc, itStatus_Dogas_NDisappear);
 }
 
 // 0x80182CDC
@@ -208,7 +208,7 @@ void itDogasNAttackInitItemVars(GObj *item_gobj)
     {
         ip->item_vars.dogas.pos = dobj->translate.vec.f;
 
-        omAddDObjAnimAll(dobj->child, itGetPData(ip, lItDogasDataStart, lItDogasAnimJoint), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj->child, itGetPData(ip, lITDogasDataStart, lITDogasAnimJoint), 0.0F); // Linker thing
 
         func_8000DF34(item_gobj);
         func_800269C0(alSound_Voice_MBallDogasSpawn);
@@ -219,7 +219,7 @@ void itDogasNAttackInitItemVars(GObj *item_gobj)
 void itDogasNAttackSetStatus(GObj *item_gobj)
 {
     itDogasNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItDogasStatusDesc, itStatus_Dogas_NAttack);
+    itMainSetItemStatus(item_gobj, dITDogasStatusDesc, itStatus_Dogas_NAttack);
 }
 
 // 0x80182F40
@@ -253,7 +253,7 @@ sb32 itDogasSDefaultProcMap(GObj *item_gobj)
 // 0x80182FD4
 GObj* itDogasMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItDogasItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITDogasItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 
@@ -276,7 +276,7 @@ GObj* itDogasMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        omAddDObjAnimAll(dobj->child, itGetMonsterAnimNode(ip, lItDogasDataStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj->child, itGetMonsterAnimNode(ip, lITDogasDataStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }
@@ -299,8 +299,8 @@ sb32 itDogasWeaponSmogProcUpdate(GObj *weapon_gobj)
 // 0x80183144
 GObj* itDogasWeaponSmogMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
-    wpCreateDesc *weapon_desc = &dItDogasWeaponSmogWeaponDesc;
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dItDogasWeaponSmogWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    wpCreateDesc *weapon_desc = &dITDogasWeaponSmogWeaponDesc;
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITDogasWeaponSmogWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *dobj;
     wpStruct *wp;
 

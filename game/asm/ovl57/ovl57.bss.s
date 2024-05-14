@@ -5,15 +5,15 @@
 # 0x801322B0 -> 0x80132300 [0x50 bytes]
 # Unreferenced BSS space @ 801322B0
     .space 8
-glabel sMnCongraStatusBuf
+glabel sMNCongraStatusBuf
     .space 40
-glabel sMnCongraFighterKind
+glabel sMNCongraFighterKind
     .space 4
-glabel sMnCongraSkipWait
+glabel sMNCongraSkipWait
     .space 4
-glabel sMnCongraSceneChangeWait
+glabel sMNCongraSceneChangeWait
     .space 4
-glabel sMnCongraIsProceed
+glabel sMNCongraIsProceed
     .space 4
-glabel sMnCongraIsSceneChange
+glabel sMNCongraIsSceneChange
     .space 16

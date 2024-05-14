@@ -6,7 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItTomatoItemAttributes;    // 0x000000B8
+extern intptr_t lITTomatoItemAttributes;    // 0x000000B8
 
 // // // // // // // // // // // //
 //                               //
@@ -14,11 +14,11 @@ extern intptr_t lItTomatoItemAttributes;    // 0x000000B8
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItTomatoItemDesc =
+itCreateDesc dITTomatoItemDesc =
 {
     It_Kind_Tomato,                         // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItTomatoItemAttributes,               // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITTomatoItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -38,7 +38,7 @@ itCreateDesc dItTomatoItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dItTomatoStatusDesc[/* */] =
+itStatusDesc dITTomatoStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -126,7 +126,7 @@ sb32 itTomatoAFallProcMap(GObj *item_gobj)
 void itTomatoGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dItTomatoStatusDesc, itStatus_Tomato_GWait);
+    itMainSetItemStatus(item_gobj, dITTomatoStatusDesc, itStatus_Tomato_GWait);
 }
 
 // 0x80174588
@@ -137,7 +137,7 @@ void itTomatoAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dItTomatoStatusDesc, itStatus_Tomato_AFall);
+    itMainSetItemStatus(item_gobj, dITTomatoStatusDesc, itStatus_Tomato_AFall);
 }
 
 // 0x801745CC
@@ -149,13 +149,13 @@ sb32 itTomatoFDropProcMap(GObj *item_gobj)
 // 0x801745FC
 void itTomatoFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItTomatoStatusDesc, itStatus_Tomato_FDrop);
+    itMainSetItemStatus(item_gobj, dITTomatoStatusDesc, itStatus_Tomato_FDrop);
 }
 
 // 0x80174624
 GObj* itTomatoMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItTomatoItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITTomatoItemDesc, pos, vel, flags);
     DObj *joint;
     Vec3f translate;
     itStruct *ip;

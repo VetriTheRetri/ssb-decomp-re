@@ -13,17 +13,17 @@
 #  0x80131B00 -> 0x801339E0
 
 glabel mnSoundTestUpdateOptionColors
-  /* 187ED0 80131B00 3C038013 */       lui $v1, %hi(sMnSoundTestOption)
-  /* 187ED4 80131B04 8C634308 */        lw $v1, %lo(sMnSoundTestOption)($v1)
+  /* 187ED0 80131B00 3C038013 */       lui $v1, %hi(sMNSoundTestOption)
+  /* 187ED4 80131B04 8C634308 */        lw $v1, %lo(sMNSoundTestOption)($v1)
   /* 187ED8 80131B08 3C0F8013 */       lui $t7, 0x8013
   /* 187EDC 80131B0C 25E74330 */     addiu $a3, $t7, 0x4330
   /* 187EE0 80131B10 00037080 */       sll $t6, $v1, 2
-  /* 187EE4 80131B14 3C058013 */       lui $a1, %hi(sMnSoundTestOptionColorR)
-  /* 187EE8 80131B18 3C068013 */       lui $a2, %hi(sMnSoundTestOptionColorG)
-  /* 187EEC 80131B1C 3C088013 */       lui $t0, %hi(sMnSoundTestOptionChangeWait)
-  /* 187EF0 80131B20 2508433C */     addiu $t0, $t0, %lo(sMnSoundTestOptionChangeWait)
-  /* 187EF4 80131B24 24C64320 */     addiu $a2, $a2, %lo(sMnSoundTestOptionColorG)
-  /* 187EF8 80131B28 24A54310 */     addiu $a1, $a1, %lo(sMnSoundTestOptionColorR)
+  /* 187EE4 80131B14 3C058013 */       lui $a1, %hi(sMNSoundTestOptionColorR)
+  /* 187EE8 80131B18 3C068013 */       lui $a2, %hi(sMNSoundTestOptionColorG)
+  /* 187EEC 80131B1C 3C088013 */       lui $t0, %hi(sMNSoundTestOptionChangeWait)
+  /* 187EF0 80131B20 2508433C */     addiu $t0, $t0, %lo(sMNSoundTestOptionChangeWait)
+  /* 187EF4 80131B24 24C64320 */     addiu $a2, $a2, %lo(sMNSoundTestOptionColorG)
+  /* 187EF8 80131B28 24A54310 */     addiu $a1, $a1, %lo(sMNSoundTestOptionColorR)
   /* 187EFC 80131B2C 01C72021 */      addu $a0, $t6, $a3
   /* 187F00 80131B30 240300A8 */     addiu $v1, $zero, 0xa8
   /* 187F04 80131B34 240B0007 */     addiu $t3, $zero, 7
@@ -32,14 +32,14 @@ glabel mnSoundTestUpdateOptionColors
   /* 187F10 80131B40 240200FF */     addiu $v0, $zero, 0xff
   .L80131B44:
   /* 187F14 80131B44 54E40006 */      bnel $a3, $a0, .L80131B60
-  /* 187F18 80131B48 ACA90000 */        sw $t1, ($a1) # sMnSoundTestOptionColorR + 0
-  /* 187F1C 80131B4C ACA20000 */        sw $v0, ($a1) # sMnSoundTestOptionColorR + 0
-  /* 187F20 80131B50 ACC30000 */        sw $v1, ($a2) # sMnSoundTestOptionColorG + 0
+  /* 187F18 80131B48 ACA90000 */        sw $t1, ($a1) # sMNSoundTestOptionColorR + 0
+  /* 187F1C 80131B4C ACA20000 */        sw $v0, ($a1) # sMNSoundTestOptionColorR + 0
+  /* 187F20 80131B50 ACC30000 */        sw $v1, ($a2) # sMNSoundTestOptionColorG + 0
   /* 187F24 80131B54 10000004 */         b .L80131B68
   /* 187F28 80131B58 ACE00000 */        sw $zero, ($a3)
-  /* 187F2C 80131B5C ACA90000 */        sw $t1, ($a1) # sMnSoundTestOptionColorR + 0
+  /* 187F2C 80131B5C ACA90000 */        sw $t1, ($a1) # sMNSoundTestOptionColorR + 0
   .L80131B60:
-  /* 187F30 80131B60 ACCA0000 */        sw $t2, ($a2) # sMnSoundTestOptionColorG + 0
+  /* 187F30 80131B60 ACCA0000 */        sw $t2, ($a2) # sMNSoundTestOptionColorG + 0
   /* 187F34 80131B64 ACEB0000 */        sw $t3, ($a3)
   .L80131B68:
   /* 187F38 80131B68 24E70004 */     addiu $a3, $a3, 4
@@ -50,71 +50,71 @@ glabel mnSoundTestUpdateOptionColors
   /* 187F4C 80131B7C 00000000 */       nop 
 
 glabel mnSoundTestUpdateControllerInputs
-  /* 187F50 80131B80 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
-  /* 187F54 80131B84 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
-  /* 187F58 80131B88 8CC20000 */        lw $v0, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 187F50 80131B80 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
+  /* 187F54 80131B84 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
+  /* 187F58 80131B88 8CC20000 */        lw $v0, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 187F5C 80131B8C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 187F60 80131B90 AFBF0014 */        sw $ra, 0x14($sp)
   /* 187F64 80131B94 10400003 */      beqz $v0, .L80131BA4
   /* 187F68 80131B98 2404FFE0 */     addiu $a0, $zero, -0x20
   /* 187F6C 80131B9C 244EFFFF */     addiu $t6, $v0, -1
-  /* 187F70 80131BA0 ACCE0000 */        sw $t6, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 187F70 80131BA0 ACCE0000 */        sw $t6, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131BA4:
   /* 187F74 80131BA4 0C0E4281 */       jal func_ovl1_80390A04
   /* 187F78 80131BA8 24050020 */     addiu $a1, $zero, 0x20
-  /* 187F7C 80131BAC 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
+  /* 187F7C 80131BAC 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
   /* 187F80 80131BB0 10400014 */      beqz $v0, .L80131C04
-  /* 187F84 80131BB4 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
+  /* 187F84 80131BB4 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
   /* 187F88 80131BB8 2404FFE0 */     addiu $a0, $zero, -0x20
   /* 187F8C 80131BBC 0C0E42B0 */       jal func_ovl1_80390AC0
   /* 187F90 80131BC0 24050020 */     addiu $a1, $zero, 0x20
-  /* 187F94 80131BC4 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
+  /* 187F94 80131BC4 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
   /* 187F98 80131BC8 1040000E */      beqz $v0, .L80131C04
-  /* 187F9C 80131BCC 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
+  /* 187F9C 80131BCC 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
   /* 187FA0 80131BD0 0C0E4201 */       jal func_ovl1_80390804
   /* 187FA4 80131BD4 24040919 */     addiu $a0, $zero, 0x919
-  /* 187FA8 80131BD8 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
+  /* 187FA8 80131BD8 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
   /* 187FAC 80131BDC 14400009 */      bnez $v0, .L80131C04
-  /* 187FB0 80131BE0 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
+  /* 187FB0 80131BE0 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
   /* 187FB4 80131BE4 0C0E4201 */       jal func_ovl1_80390804
   /* 187FB8 80131BE8 24040626 */     addiu $a0, $zero, 0x626
-  /* 187FBC 80131BEC 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
+  /* 187FBC 80131BEC 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
   /* 187FC0 80131BF0 14400004 */      bnez $v0, .L80131C04
-  /* 187FC4 80131BF4 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
-  /* 187FC8 80131BF8 ACC00000 */        sw $zero, ($a2) # sMnSoundTestOptionChangeWait + 0
-  /* 187FCC 80131BFC 3C018013 */       lui $at, %hi(sMnSoundTestDirectionInputKind)
-  /* 187FD0 80131C00 AC204340 */        sw $zero, %lo(sMnSoundTestDirectionInputKind)($at)
+  /* 187FC4 80131BF4 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
+  /* 187FC8 80131BF8 ACC00000 */        sw $zero, ($a2) # sMNSoundTestOptionChangeWait + 0
+  /* 187FCC 80131BFC 3C018013 */       lui $at, %hi(sMNSoundTestDirectionInputKind)
+  /* 187FD0 80131C00 AC204340 */        sw $zero, %lo(sMNSoundTestDirectionInputKind)($at)
   .L80131C04:
-  /* 187FD4 80131C04 8CC20000 */        lw $v0, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 187FD4 80131C04 8CC20000 */        lw $v0, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 187FD8 80131C08 14400008 */      bnez $v0, .L80131C2C
   /* 187FDC 80131C0C 00000000 */       nop 
   /* 187FE0 80131C10 0C0E4201 */       jal func_ovl1_80390804
   /* 187FE4 80131C14 24040808 */     addiu $a0, $zero, 0x808
-  /* 187FE8 80131C18 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
-  /* 187FEC 80131C1C 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
+  /* 187FE8 80131C18 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
+  /* 187FEC 80131C1C 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
   /* 187FF0 80131C20 1440000A */      bnez $v0, .L80131C4C
   /* 187FF4 80131C24 AFA20018 */        sw $v0, 0x18($sp)
-  /* 187FF8 80131C28 8CC20000 */        lw $v0, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 187FF8 80131C28 8CC20000 */        lw $v0, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131C2C:
   /* 187FFC 80131C2C 14400028 */      bnez $v0, .L80131CD0
   /* 188000 80131C30 24040020 */     addiu $a0, $zero, 0x20
   /* 188004 80131C34 0C0E4254 */       jal func_ovl1_80390950
   /* 188008 80131C38 24050001 */     addiu $a1, $zero, 1
-  /* 18800C 80131C3C 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
-  /* 188010 80131C40 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
+  /* 18800C 80131C3C 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
+  /* 188010 80131C40 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
   /* 188014 80131C44 10400022 */      beqz $v0, .L80131CD0
   /* 188018 80131C48 AFA2001C */        sw $v0, 0x1c($sp)
   .L80131C4C:
   /* 18801C 80131C4C 0C009A70 */       jal func_800269C0
   /* 188020 80131C50 240400A4 */     addiu $a0, $zero, 0xa4
   /* 188024 80131C54 8FAF0018 */        lw $t7, 0x18($sp)
-  /* 188028 80131C58 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
-  /* 18802C 80131C5C 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
+  /* 188028 80131C58 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
+  /* 18802C 80131C5C 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
   /* 188030 80131C60 11E00004 */      beqz $t7, .L80131C74
-  /* 188034 80131C64 3C078013 */       lui $a3, %hi(sMnSoundTestOption)
+  /* 188034 80131C64 3C078013 */       lui $a3, %hi(sMNSoundTestOption)
   /* 188038 80131C68 2418000C */     addiu $t8, $zero, 0xc
   /* 18803C 80131C6C 10000009 */         b .L80131C94
-  /* 188040 80131C70 ACD80000 */        sw $t8, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188040 80131C70 ACD80000 */        sw $t8, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131C74:
   /* 188044 80131C74 8FB9001C */        lw $t9, 0x1c($sp)
   /* 188048 80131C78 240800A0 */     addiu $t0, $zero, 0xa0
@@ -124,57 +124,57 @@ glabel mnSoundTestUpdateControllerInputs
   /* 188058 80131C88 25210007 */     addiu $at, $t1, 7
   /* 18805C 80131C8C 000150C3 */       sra $t2, $at, 3
   .L80131C90:
-  /* 188060 80131C90 ACCA0000 */        sw $t2, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188060 80131C90 ACCA0000 */        sw $t2, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131C94:
-  /* 188064 80131C94 24E74308 */     addiu $a3, $a3, %lo(sMnSoundTestOption)
-  /* 188068 80131C98 8CEB0000 */        lw $t3, ($a3) # sMnSoundTestOption + 0
+  /* 188064 80131C94 24E74308 */     addiu $a3, $a3, %lo(sMNSoundTestOption)
+  /* 188068 80131C98 8CEB0000 */        lw $t3, ($a3) # sMNSoundTestOption + 0
   /* 18806C 80131C9C 24180003 */     addiu $t8, $zero, 3
-  /* 188070 80131CA0 3C018013 */       lui $at, %hi(sMnSoundTestDirectionInputKind)
+  /* 188070 80131CA0 3C018013 */       lui $at, %hi(sMNSoundTestDirectionInputKind)
   /* 188074 80131CA4 2562FFFF */     addiu $v0, $t3, -1
   /* 188078 80131CA8 04410003 */      bgez $v0, .L80131CB8
-  /* 18807C 80131CAC ACE20000 */        sw $v0, ($a3) # sMnSoundTestOption + 0
+  /* 18807C 80131CAC ACE20000 */        sw $v0, ($a3) # sMNSoundTestOption + 0
   /* 188080 80131CB0 24020002 */     addiu $v0, $zero, 2
-  /* 188084 80131CB4 ACE20000 */        sw $v0, ($a3) # sMnSoundTestOption + 0
+  /* 188084 80131CB4 ACE20000 */        sw $v0, ($a3) # sMNSoundTestOption + 0
   .L80131CB8:
   /* 188088 80131CB8 14400004 */      bnez $v0, .L80131CCC
   /* 18808C 80131CBC 00000000 */       nop 
-  /* 188090 80131CC0 8CCE0000 */        lw $t6, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188090 80131CC0 8CCE0000 */        lw $t6, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 188094 80131CC4 25CF000A */     addiu $t7, $t6, 0xa
-  /* 188098 80131CC8 ACCF0000 */        sw $t7, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188098 80131CC8 ACCF0000 */        sw $t7, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131CCC:
-  /* 18809C 80131CCC AC384340 */        sw $t8, %lo(sMnSoundTestDirectionInputKind)($at)
+  /* 18809C 80131CCC AC384340 */        sw $t8, %lo(sMNSoundTestDirectionInputKind)($at)
   .L80131CD0:
-  /* 1880A0 80131CD0 8CC20000 */        lw $v0, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 1880A0 80131CD0 8CC20000 */        lw $v0, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 1880A4 80131CD4 14400008 */      bnez $v0, .L80131CF8
   /* 1880A8 80131CD8 00000000 */       nop 
   /* 1880AC 80131CDC 0C0E4201 */       jal func_ovl1_80390804
   /* 1880B0 80131CE0 24040404 */     addiu $a0, $zero, 0x404
-  /* 1880B4 80131CE4 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
-  /* 1880B8 80131CE8 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
+  /* 1880B4 80131CE4 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
+  /* 1880B8 80131CE8 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
   /* 1880BC 80131CEC 1440000A */      bnez $v0, .L80131D18
   /* 1880C0 80131CF0 AFA20018 */        sw $v0, 0x18($sp)
-  /* 1880C4 80131CF4 8CC20000 */        lw $v0, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 1880C4 80131CF4 8CC20000 */        lw $v0, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131CF8:
   /* 1880C8 80131CF8 14400029 */      bnez $v0, .L80131DA0
   /* 1880CC 80131CFC 2404FFE0 */     addiu $a0, $zero, -0x20
   /* 1880D0 80131D00 0C0E4254 */       jal func_ovl1_80390950
   /* 1880D4 80131D04 00002825 */        or $a1, $zero, $zero
-  /* 1880D8 80131D08 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
-  /* 1880DC 80131D0C 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
+  /* 1880D8 80131D08 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
+  /* 1880DC 80131D0C 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
   /* 1880E0 80131D10 10400023 */      beqz $v0, .L80131DA0
   /* 1880E4 80131D14 AFA2001C */        sw $v0, 0x1c($sp)
   .L80131D18:
   /* 1880E8 80131D18 0C009A70 */       jal func_800269C0
   /* 1880EC 80131D1C 240400A4 */     addiu $a0, $zero, 0xa4
   /* 1880F0 80131D20 8FA80018 */        lw $t0, 0x18($sp)
-  /* 1880F4 80131D24 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
-  /* 1880F8 80131D28 3C078013 */       lui $a3, %hi(sMnSoundTestOption)
-  /* 1880FC 80131D2C 24E74308 */     addiu $a3, $a3, %lo(sMnSoundTestOption)
+  /* 1880F4 80131D24 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
+  /* 1880F8 80131D28 3C078013 */       lui $a3, %hi(sMNSoundTestOption)
+  /* 1880FC 80131D2C 24E74308 */     addiu $a3, $a3, %lo(sMNSoundTestOption)
   /* 188100 80131D30 11000004 */      beqz $t0, .L80131D44
-  /* 188104 80131D34 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
+  /* 188104 80131D34 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
   /* 188108 80131D38 2419000C */     addiu $t9, $zero, 0xc
   /* 18810C 80131D3C 10000008 */         b .L80131D60
-  /* 188110 80131D40 ACD90000 */        sw $t9, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188110 80131D40 ACD90000 */        sw $t9, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131D44:
   /* 188114 80131D44 8FA9001C */        lw $t1, 0x1c($sp)
   /* 188118 80131D48 252A00A0 */     addiu $t2, $t1, 0xa0
@@ -183,48 +183,48 @@ glabel mnSoundTestUpdateControllerInputs
   /* 188124 80131D54 25410007 */     addiu $at, $t2, 7
   /* 188128 80131D58 000158C3 */       sra $t3, $at, 3
   .L80131D5C:
-  /* 18812C 80131D5C ACCB0000 */        sw $t3, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 18812C 80131D5C ACCB0000 */        sw $t3, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131D60:
-  /* 188130 80131D60 8CEC0000 */        lw $t4, ($a3) # sMnSoundTestOption + 0
+  /* 188130 80131D60 8CEC0000 */        lw $t4, ($a3) # sMNSoundTestOption + 0
   /* 188134 80131D64 24180004 */     addiu $t8, $zero, 4
   /* 188138 80131D68 25820001 */     addiu $v0, $t4, 1
   /* 18813C 80131D6C 28410003 */      slti $at, $v0, 3
   /* 188140 80131D70 14200003 */      bnez $at, .L80131D80
-  /* 188144 80131D74 ACE20000 */        sw $v0, ($a3) # sMnSoundTestOption + 0
-  /* 188148 80131D78 ACE00000 */        sw $zero, ($a3) # sMnSoundTestOption + 0
+  /* 188144 80131D74 ACE20000 */        sw $v0, ($a3) # sMNSoundTestOption + 0
+  /* 188148 80131D78 ACE00000 */        sw $zero, ($a3) # sMNSoundTestOption + 0
   /* 18814C 80131D7C 00001025 */        or $v0, $zero, $zero
   .L80131D80:
   /* 188150 80131D80 24010002 */     addiu $at, $zero, 2
   /* 188154 80131D84 14410004 */       bne $v0, $at, .L80131D98
   /* 188158 80131D88 00000000 */       nop 
-  /* 18815C 80131D8C 8CCE0000 */        lw $t6, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 18815C 80131D8C 8CCE0000 */        lw $t6, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 188160 80131D90 25CF000A */     addiu $t7, $t6, 0xa
-  /* 188164 80131D94 ACCF0000 */        sw $t7, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188164 80131D94 ACCF0000 */        sw $t7, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131D98:
-  /* 188168 80131D98 3C018013 */       lui $at, %hi(sMnSoundTestDirectionInputKind)
-  /* 18816C 80131D9C AC384340 */        sw $t8, %lo(sMnSoundTestDirectionInputKind)($at)
+  /* 188168 80131D98 3C018013 */       lui $at, %hi(sMNSoundTestDirectionInputKind)
+  /* 18816C 80131D9C AC384340 */        sw $t8, %lo(sMNSoundTestDirectionInputKind)($at)
   .L80131DA0:
-  /* 188170 80131DA0 8CC20000 */        lw $v0, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188170 80131DA0 8CC20000 */        lw $v0, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 188174 80131DA4 1440000A */      bnez $v0, .L80131DD0
   /* 188178 80131DA8 00000000 */       nop 
   /* 18817C 80131DAC 0C0E4201 */       jal func_ovl1_80390804
   /* 188180 80131DB0 24040222 */     addiu $a0, $zero, 0x222
-  /* 188184 80131DB4 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
-  /* 188188 80131DB8 3C078013 */       lui $a3, %hi(sMnSoundTestOption)
-  /* 18818C 80131DBC 24E74308 */     addiu $a3, $a3, %lo(sMnSoundTestOption)
-  /* 188190 80131DC0 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
+  /* 188184 80131DB4 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
+  /* 188188 80131DB8 3C078013 */       lui $a3, %hi(sMNSoundTestOption)
+  /* 18818C 80131DBC 24E74308 */     addiu $a3, $a3, %lo(sMNSoundTestOption)
+  /* 188190 80131DC0 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
   /* 188194 80131DC4 1440000C */      bnez $v0, .L80131DF8
   /* 188198 80131DC8 AFA20018 */        sw $v0, 0x18($sp)
-  /* 18819C 80131DCC 8CC20000 */        lw $v0, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 18819C 80131DCC 8CC20000 */        lw $v0, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131DD0:
   /* 1881A0 80131DD0 14400050 */      bnez $v0, .L80131F14
   /* 1881A4 80131DD4 2404FFE0 */     addiu $a0, $zero, -0x20
   /* 1881A8 80131DD8 0C0E4227 */       jal func_ovl1_8039089C
   /* 1881AC 80131DDC 00002825 */        or $a1, $zero, $zero
-  /* 1881B0 80131DE0 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
-  /* 1881B4 80131DE4 3C078013 */       lui $a3, %hi(sMnSoundTestOption)
-  /* 1881B8 80131DE8 24E74308 */     addiu $a3, $a3, %lo(sMnSoundTestOption)
-  /* 1881BC 80131DEC 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
+  /* 1881B0 80131DE0 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
+  /* 1881B4 80131DE4 3C078013 */       lui $a3, %hi(sMNSoundTestOption)
+  /* 1881B8 80131DE8 24E74308 */     addiu $a3, $a3, %lo(sMNSoundTestOption)
+  /* 1881BC 80131DEC 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
   /* 1881C0 80131DF0 10400048 */      beqz $v0, .L80131F14
   /* 1881C4 80131DF4 AFA2001C */        sw $v0, 0x1c($sp)
   .L80131DF8:
@@ -234,18 +234,18 @@ glabel mnSoundTestUpdateControllerInputs
   /* 1881D4 80131E04 11000003 */      beqz $t0, .L80131E14
   /* 1881D8 80131E08 252A00A0 */     addiu $t2, $t1, 0xa0
   /* 1881DC 80131E0C 10000006 */         b .L80131E28
-  /* 1881E0 80131E10 ACD90000 */        sw $t9, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 1881E0 80131E10 ACD90000 */        sw $t9, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131E14:
   /* 1881E4 80131E14 05410003 */      bgez $t2, .L80131E24
   /* 1881E8 80131E18 000A5903 */       sra $t3, $t2, 4
   /* 1881EC 80131E1C 2541000F */     addiu $at, $t2, 0xf
   /* 1881F0 80131E20 00015903 */       sra $t3, $at, 4
   .L80131E24:
-  /* 1881F4 80131E24 ACCB0000 */        sw $t3, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 1881F4 80131E24 ACCB0000 */        sw $t3, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131E28:
-  /* 1881F8 80131E28 8CE20000 */        lw $v0, ($a3) # sMnSoundTestOption + 0
-  /* 1881FC 80131E2C 3C0D8013 */       lui $t5, %hi(sMnSoundTestOptionSelectID)
-  /* 188200 80131E30 25AD4348 */     addiu $t5, $t5, %lo(sMnSoundTestOptionSelectID)
+  /* 1881F8 80131E28 8CE20000 */        lw $v0, ($a3) # sMNSoundTestOption + 0
+  /* 1881FC 80131E2C 3C0D8013 */       lui $t5, %hi(sMNSoundTestOptionSelectID)
+  /* 188200 80131E30 25AD4348 */     addiu $t5, $t5, %lo(sMNSoundTestOptionSelectID)
   /* 188204 80131E34 00026080 */       sll $t4, $v0, 2
   /* 188208 80131E38 018D1821 */      addu $v1, $t4, $t5
   /* 18820C 80131E3C 8C6E0000 */        lw $t6, ($v1)
@@ -268,10 +268,10 @@ glabel mnSoundTestUpdateControllerInputs
   .L80131E7C:
   /* 18824C 80131E7C 1440001A */      bnez $v0, .L80131EE8
   /* 188250 80131E80 00000000 */       nop 
-  /* 188254 80131E84 8CC80000 */        lw $t0, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188254 80131E84 8CC80000 */        lw $t0, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 188258 80131E88 25190014 */     addiu $t9, $t0, 0x14
   /* 18825C 80131E8C 10000016 */         b .L80131EE8
-  /* 188260 80131E90 ACD90000 */        sw $t9, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188260 80131E90 ACD90000 */        sw $t9, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131E94:
   /* 188264 80131E94 8C620000 */        lw $v0, ($v1)
   /* 188268 80131E98 04410003 */      bgez $v0, .L80131EA8
@@ -281,10 +281,10 @@ glabel mnSoundTestUpdateControllerInputs
   .L80131EA8:
   /* 188278 80131EA8 1440000F */      bnez $v0, .L80131EE8
   /* 18827C 80131EAC 00000000 */       nop 
-  /* 188280 80131EB0 8CCA0000 */        lw $t2, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188280 80131EB0 8CCA0000 */        lw $t2, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 188284 80131EB4 254B0014 */     addiu $t3, $t2, 0x14
   /* 188288 80131EB8 1000000B */         b .L80131EE8
-  /* 18828C 80131EBC ACCB0000 */        sw $t3, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 18828C 80131EBC ACCB0000 */        sw $t3, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 188290 80131EC0 8C620000 */        lw $v0, ($v1)
   .L80131EC4:
   /* 188294 80131EC4 04410003 */      bgez $v0, .L80131ED4
@@ -294,44 +294,44 @@ glabel mnSoundTestUpdateControllerInputs
   .L80131ED4:
   /* 1882A4 80131ED4 14400004 */      bnez $v0, .L80131EE8
   /* 1882A8 80131ED8 00000000 */       nop 
-  /* 1882AC 80131EDC 8CCD0000 */        lw $t5, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 1882AC 80131EDC 8CCD0000 */        lw $t5, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 1882B0 80131EE0 25AE0014 */     addiu $t6, $t5, 0x14
-  /* 1882B4 80131EE4 ACCE0000 */        sw $t6, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 1882B4 80131EE4 ACCE0000 */        sw $t6, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131EE8:
-  /* 1882B8 80131EE8 3C0F8013 */       lui $t7, %hi(sMnSoundTestDirectionInputKind)
-  /* 1882BC 80131EEC 8DEF4340 */        lw $t7, %lo(sMnSoundTestDirectionInputKind)($t7)
+  /* 1882B8 80131EE8 3C0F8013 */       lui $t7, %hi(sMNSoundTestDirectionInputKind)
+  /* 1882BC 80131EEC 8DEF4340 */        lw $t7, %lo(sMNSoundTestDirectionInputKind)($t7)
   /* 1882C0 80131EF0 24010001 */     addiu $at, $zero, 1
   /* 1882C4 80131EF4 24190001 */     addiu $t9, $zero, 1
   /* 1882C8 80131EF8 11E10004 */       beq $t7, $at, .L80131F0C
   /* 1882CC 80131EFC 00000000 */       nop 
-  /* 1882D0 80131F00 8CD80000 */        lw $t8, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 1882D0 80131F00 8CD80000 */        lw $t8, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 1882D4 80131F04 00184040 */       sll $t0, $t8, 1
-  /* 1882D8 80131F08 ACC80000 */        sw $t0, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 1882D8 80131F08 ACC80000 */        sw $t0, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131F0C:
-  /* 1882DC 80131F0C 3C018013 */       lui $at, %hi(sMnSoundTestDirectionInputKind)
-  /* 1882E0 80131F10 AC394340 */        sw $t9, %lo(sMnSoundTestDirectionInputKind)($at)
+  /* 1882DC 80131F0C 3C018013 */       lui $at, %hi(sMNSoundTestDirectionInputKind)
+  /* 1882E0 80131F10 AC394340 */        sw $t9, %lo(sMNSoundTestDirectionInputKind)($at)
   .L80131F14:
-  /* 1882E4 80131F14 8CC20000 */        lw $v0, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 1882E4 80131F14 8CC20000 */        lw $v0, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 1882E8 80131F18 1440000A */      bnez $v0, .L80131F44
   /* 1882EC 80131F1C 00000000 */       nop 
   /* 1882F0 80131F20 0C0E4201 */       jal func_ovl1_80390804
   /* 1882F4 80131F24 24040111 */     addiu $a0, $zero, 0x111
-  /* 1882F8 80131F28 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
-  /* 1882FC 80131F2C 3C078013 */       lui $a3, %hi(sMnSoundTestOption)
-  /* 188300 80131F30 24E74308 */     addiu $a3, $a3, %lo(sMnSoundTestOption)
-  /* 188304 80131F34 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
+  /* 1882F8 80131F28 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
+  /* 1882FC 80131F2C 3C078013 */       lui $a3, %hi(sMNSoundTestOption)
+  /* 188300 80131F30 24E74308 */     addiu $a3, $a3, %lo(sMNSoundTestOption)
+  /* 188304 80131F34 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
   /* 188308 80131F38 1440000C */      bnez $v0, .L80131F6C
   /* 18830C 80131F3C AFA20018 */        sw $v0, 0x18($sp)
-  /* 188310 80131F40 8CC20000 */        lw $v0, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188310 80131F40 8CC20000 */        lw $v0, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131F44:
   /* 188314 80131F44 14400057 */      bnez $v0, .L801320A4
   /* 188318 80131F48 24040020 */     addiu $a0, $zero, 0x20
   /* 18831C 80131F4C 0C0E4227 */       jal func_ovl1_8039089C
   /* 188320 80131F50 24050001 */     addiu $a1, $zero, 1
-  /* 188324 80131F54 3C068013 */       lui $a2, %hi(sMnSoundTestOptionChangeWait)
-  /* 188328 80131F58 3C078013 */       lui $a3, %hi(sMnSoundTestOption)
-  /* 18832C 80131F5C 24E74308 */     addiu $a3, $a3, %lo(sMnSoundTestOption)
-  /* 188330 80131F60 24C6433C */     addiu $a2, $a2, %lo(sMnSoundTestOptionChangeWait)
+  /* 188324 80131F54 3C068013 */       lui $a2, %hi(sMNSoundTestOptionChangeWait)
+  /* 188328 80131F58 3C078013 */       lui $a3, %hi(sMNSoundTestOption)
+  /* 18832C 80131F5C 24E74308 */     addiu $a3, $a3, %lo(sMNSoundTestOption)
+  /* 188330 80131F60 24C6433C */     addiu $a2, $a2, %lo(sMNSoundTestOptionChangeWait)
   /* 188334 80131F64 1040004F */      beqz $v0, .L801320A4
   /* 188338 80131F68 AFA2001C */        sw $v0, 0x1c($sp)
   .L80131F6C:
@@ -342,23 +342,23 @@ glabel mnSoundTestUpdateControllerInputs
   /* 18834C 80131F7C 018B6823 */      subu $t5, $t4, $t3
   /* 188350 80131F80 240A000C */     addiu $t2, $zero, 0xc
   /* 188354 80131F84 10000006 */         b .L80131FA0
-  /* 188358 80131F88 ACCA0000 */        sw $t2, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188358 80131F88 ACCA0000 */        sw $t2, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131F8C:
   /* 18835C 80131F8C 05A10003 */      bgez $t5, .L80131F9C
   /* 188360 80131F90 000D7103 */       sra $t6, $t5, 4
   /* 188364 80131F94 25A1000F */     addiu $at, $t5, 0xf
   /* 188368 80131F98 00017103 */       sra $t6, $at, 4
   .L80131F9C:
-  /* 18836C 80131F9C ACCE0000 */        sw $t6, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 18836C 80131F9C ACCE0000 */        sw $t6, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80131FA0:
-  /* 188370 80131FA0 8CE20000 */        lw $v0, ($a3) # sMnSoundTestOption + 0
-  /* 188374 80131FA4 3C188013 */       lui $t8, %hi(sMnSoundTestOptionSelectID)
-  /* 188378 80131FA8 27184348 */     addiu $t8, $t8, %lo(sMnSoundTestOptionSelectID)
+  /* 188370 80131FA0 8CE20000 */        lw $v0, ($a3) # sMNSoundTestOption + 0
+  /* 188374 80131FA4 3C188013 */       lui $t8, %hi(sMNSoundTestOptionSelectID)
+  /* 188378 80131FA8 27184348 */     addiu $t8, $t8, %lo(sMNSoundTestOptionSelectID)
   /* 18837C 80131FAC 00027880 */       sll $t7, $v0, 2
   /* 188380 80131FB0 01F81821 */      addu $v1, $t7, $t8
   /* 188384 80131FB4 8C680000 */        lw $t0, ($v1)
   /* 188388 80131FB8 24010001 */     addiu $at, $zero, 1
-  /* 18838C 80131FBC 3C0F8013 */       lui $t7, %hi(sMnSoundTestDirectionInputKind)
+  /* 18838C 80131FBC 3C0F8013 */       lui $t7, %hi(sMNSoundTestDirectionInputKind)
   /* 188390 80131FC0 25190001 */     addiu $t9, $t0, 1
   /* 188394 80131FC4 10400007 */      beqz $v0, .L80131FE4
   /* 188398 80131FC8 AC790000 */        sw $t9, ($v1)
@@ -379,10 +379,10 @@ glabel mnSoundTestUpdateControllerInputs
   .L80132000:
   /* 1883D0 80132000 1441001E */       bne $v0, $at, .L8013207C
   /* 1883D4 80132004 00000000 */       nop 
-  /* 1883D8 80132008 8CC90000 */        lw $t1, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 1883D8 80132008 8CC90000 */        lw $t1, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 1883DC 8013200C 252A0014 */     addiu $t2, $t1, 0x14
   /* 1883E0 80132010 1000001A */         b .L8013207C
-  /* 1883E4 80132014 ACCA0000 */        sw $t2, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 1883E4 80132014 ACCA0000 */        sw $t2, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L80132018:
   /* 1883E8 80132018 8C620000 */        lw $v0, ($v1)
   /* 1883EC 8013201C 284100C2 */      slti $at, $v0, 0xc2
@@ -394,10 +394,10 @@ glabel mnSoundTestUpdateControllerInputs
   .L80132034:
   /* 188404 80132034 14410011 */       bne $v0, $at, .L8013207C
   /* 188408 80132038 00000000 */       nop 
-  /* 18840C 8013203C 8CCC0000 */        lw $t4, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 18840C 8013203C 8CCC0000 */        lw $t4, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 188410 80132040 258B0014 */     addiu $t3, $t4, 0x14
   /* 188414 80132044 1000000D */         b .L8013207C
-  /* 188418 80132048 ACCB0000 */        sw $t3, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188418 80132048 ACCB0000 */        sw $t3, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 18841C 8013204C 8C620000 */        lw $v0, ($v1)
   .L80132050:
   /* 188420 80132050 284100F4 */      slti $at, $v0, 0xf4
@@ -409,21 +409,21 @@ glabel mnSoundTestUpdateControllerInputs
   .L80132068:
   /* 188438 80132068 14410004 */       bne $v0, $at, .L8013207C
   /* 18843C 8013206C 00000000 */       nop 
-  /* 188440 80132070 8CCD0000 */        lw $t5, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188440 80132070 8CCD0000 */        lw $t5, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 188444 80132074 25AE0014 */     addiu $t6, $t5, 0x14
-  /* 188448 80132078 ACCE0000 */        sw $t6, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188448 80132078 ACCE0000 */        sw $t6, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L8013207C:
-  /* 18844C 8013207C 8DEF4340 */        lw $t7, %lo(sMnSoundTestDirectionInputKind)($t7)
+  /* 18844C 8013207C 8DEF4340 */        lw $t7, %lo(sMNSoundTestDirectionInputKind)($t7)
   /* 188450 80132080 24010002 */     addiu $at, $zero, 2
   /* 188454 80132084 24190002 */     addiu $t9, $zero, 2
   /* 188458 80132088 11E10004 */       beq $t7, $at, .L8013209C
   /* 18845C 8013208C 00000000 */       nop 
-  /* 188460 80132090 8CD80000 */        lw $t8, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188460 80132090 8CD80000 */        lw $t8, ($a2) # sMNSoundTestOptionChangeWait + 0
   /* 188464 80132094 00184040 */       sll $t0, $t8, 1
-  /* 188468 80132098 ACC80000 */        sw $t0, ($a2) # sMnSoundTestOptionChangeWait + 0
+  /* 188468 80132098 ACC80000 */        sw $t0, ($a2) # sMNSoundTestOptionChangeWait + 0
   .L8013209C:
-  /* 18846C 8013209C 3C018013 */       lui $at, %hi(sMnSoundTestDirectionInputKind)
-  /* 188470 801320A0 AC394340 */        sw $t9, %lo(sMnSoundTestDirectionInputKind)($at)
+  /* 18846C 8013209C 3C018013 */       lui $at, %hi(sMNSoundTestDirectionInputKind)
+  /* 188470 801320A0 AC394340 */        sw $t9, %lo(sMNSoundTestDirectionInputKind)($at)
   .L801320A4:
   /* 188474 801320A4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 188478 801320A8 27BD0020 */     addiu $sp, $sp, 0x20
@@ -431,24 +431,24 @@ glabel mnSoundTestUpdateControllerInputs
   /* 188480 801320B0 00000000 */       nop 
 
 glabel mnSoundTestUpdateFunctions
-  /* 188484 801320B4 3C028013 */       lui $v0, %hi(sMnSoundTestFadeOutWait)
-  /* 188488 801320B8 8C424364 */        lw $v0, %lo(sMnSoundTestFadeOutWait)($v0)
+  /* 188484 801320B4 3C028013 */       lui $v0, %hi(sMNSoundTestFadeOutWait)
+  /* 188488 801320B8 8C424364 */        lw $v0, %lo(sMNSoundTestFadeOutWait)($v0)
   /* 18848C 801320BC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 188490 801320C0 2401FFFF */     addiu $at, $zero, -1
   /* 188494 801320C4 1041000C */       beq $v0, $at, .L801320F8
   /* 188498 801320C8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18849C 801320CC 10400004 */      beqz $v0, .L801320E0
   /* 1884A0 801320D0 244EFFFF */     addiu $t6, $v0, -1
-  /* 1884A4 801320D4 3C018013 */       lui $at, %hi(sMnSoundTestFadeOutWait)
+  /* 1884A4 801320D4 3C018013 */       lui $at, %hi(sMNSoundTestFadeOutWait)
   /* 1884A8 801320D8 1000000A */         b .L80132104
-  /* 1884AC 801320DC AC2E4364 */        sw $t6, %lo(sMnSoundTestFadeOutWait)($at)
+  /* 1884AC 801320DC AC2E4364 */        sw $t6, %lo(sMNSoundTestFadeOutWait)($at)
   .L801320E0:
   /* 1884B0 801320E0 0C00829D */       jal func_80020A74
   /* 1884B4 801320E4 00000000 */       nop 
   /* 1884B8 801320E8 240FFFFF */     addiu $t7, $zero, -1
-  /* 1884BC 801320EC 3C018013 */       lui $at, %hi(sMnSoundTestFadeOutWait)
+  /* 1884BC 801320EC 3C018013 */       lui $at, %hi(sMNSoundTestFadeOutWait)
   /* 1884C0 801320F0 10000004 */         b .L80132104
-  /* 1884C4 801320F4 AC2F4364 */        sw $t7, %lo(sMnSoundTestFadeOutWait)($at)
+  /* 1884C4 801320F4 AC2F4364 */        sw $t7, %lo(sMNSoundTestFadeOutWait)($at)
   .L801320F8:
   /* 1884C8 801320F8 00002025 */        or $a0, $zero, $zero
   /* 1884CC 801320FC 0C0082CE */       jal func_80020B38
@@ -457,8 +457,8 @@ glabel mnSoundTestUpdateFunctions
   /* 1884D4 80132104 0C0E41DB */       jal func_ovl1_8039076C
   /* 1884D8 80132108 34048000 */       ori $a0, $zero, 0x8000
   /* 1884DC 8013210C 10400034 */      beqz $v0, .L801321E0
-  /* 1884E0 80132110 3C028013 */       lui $v0, %hi(sMnSoundTestOption)
-  /* 1884E4 80132114 8C424308 */        lw $v0, %lo(sMnSoundTestOption)($v0)
+  /* 1884E0 80132110 3C028013 */       lui $v0, %hi(sMNSoundTestOption)
+  /* 1884E4 80132114 8C424308 */        lw $v0, %lo(sMNSoundTestOption)($v0)
   /* 1884E8 80132118 24010001 */     addiu $at, $zero, 1
   /* 1884EC 8013211C 10400007 */      beqz $v0, .L8013213C
   /* 1884F0 80132120 00000000 */       nop 
@@ -469,24 +469,24 @@ glabel mnSoundTestUpdateFunctions
   /* 188504 80132134 10000040 */         b .L80132238
   /* 188508 80132138 8FBF0014 */        lw $ra, 0x14($sp)
   .L8013213C:
-  /* 18850C 8013213C 3C028013 */       lui $v0, %hi(sMnSoundTestFadeOutWait)
-  /* 188510 80132140 24424364 */     addiu $v0, $v0, %lo(sMnSoundTestFadeOutWait)
-  /* 188514 80132144 8C580000 */        lw $t8, ($v0) # sMnSoundTestFadeOutWait + 0
+  /* 18850C 8013213C 3C028013 */       lui $v0, %hi(sMNSoundTestFadeOutWait)
+  /* 188510 80132140 24424364 */     addiu $v0, $v0, %lo(sMNSoundTestFadeOutWait)
+  /* 188514 80132144 8C580000 */        lw $t8, ($v0) # sMNSoundTestFadeOutWait + 0
   /* 188518 80132148 2419FFFF */     addiu $t9, $zero, -1
   /* 18851C 8013214C 1B000002 */      blez $t8, .L80132158
   /* 188520 80132150 00000000 */       nop 
-  /* 188524 80132154 AC590000 */        sw $t9, ($v0) # sMnSoundTestFadeOutWait + 0
+  /* 188524 80132154 AC590000 */        sw $t9, ($v0) # sMNSoundTestFadeOutWait + 0
   .L80132158:
   /* 188528 80132158 0C00829D */       jal func_80020A74
   /* 18852C 8013215C 00000000 */       nop 
-  /* 188530 80132160 3C088013 */       lui $t0, %hi(sMnSoundTestOptionSelectID)
-  /* 188534 80132164 8D084348 */        lw $t0, %lo(sMnSoundTestOptionSelectID)($t0)
-  /* 188538 80132168 3C058013 */       lui $a1, %hi(dMnSoundTestMusicIDs)
+  /* 188530 80132160 3C088013 */       lui $t0, %hi(sMNSoundTestOptionSelectID)
+  /* 188534 80132164 8D084348 */        lw $t0, %lo(sMNSoundTestOptionSelectID)($t0)
+  /* 188538 80132168 3C058013 */       lui $a1, %hi(dMNSoundTestMusicIDs)
   /* 18853C 8013216C 00002025 */        or $a0, $zero, $zero
   /* 188540 80132170 00084880 */       sll $t1, $t0, 2
   /* 188544 80132174 00A92821 */      addu $a1, $a1, $t1
   /* 188548 80132178 0C0082AD */       jal func_80020AB4
-  /* 18854C 8013217C 8CA539E0 */        lw $a1, %lo(dMnSoundTestMusicIDs)($a1)
+  /* 18854C 8013217C 8CA539E0 */        lw $a1, %lo(dMNSoundTestMusicIDs)($a1)
   /* 188550 80132180 1000002D */         b .L80132238
   /* 188554 80132184 8FBF0014 */        lw $ra, 0x14($sp)
   .L80132188:
@@ -494,11 +494,11 @@ glabel mnSoundTestUpdateFunctions
   /* 18855C 8013218C 00000000 */       nop 
   /* 188560 80132190 3C0A8013 */       lui $t2, %hi(D_ovl62_8013434C)
   /* 188564 80132194 8D4A434C */        lw $t2, %lo(D_ovl62_8013434C)($t2)
-  /* 188568 80132198 3C048013 */       lui $a0, %hi(dMnSoundTestSoundIDs)
+  /* 188568 80132198 3C048013 */       lui $a0, %hi(dMNSoundTestSoundIDs)
   /* 18856C 8013219C 000A5880 */       sll $t3, $t2, 2
   /* 188570 801321A0 008B2021 */      addu $a0, $a0, $t3
   /* 188574 801321A4 0C009A70 */       jal func_800269C0
-  /* 188578 801321A8 94843A96 */       lhu $a0, %lo(dMnSoundTestSoundIDs)($a0)
+  /* 188578 801321A8 94843A96 */       lhu $a0, %lo(dMNSoundTestSoundIDs)($a0)
   /* 18857C 801321AC 10000022 */         b .L80132238
   /* 188580 801321B0 8FBF0014 */        lw $ra, 0x14($sp)
   .L801321B4:
@@ -506,11 +506,11 @@ glabel mnSoundTestUpdateFunctions
   /* 188588 801321B8 00000000 */       nop 
   /* 18858C 801321BC 3C0C8013 */       lui $t4, %hi(D_ovl62_80134350)
   /* 188590 801321C0 8D8C4350 */        lw $t4, %lo(D_ovl62_80134350)($t4)
-  /* 188594 801321C4 3C048013 */       lui $a0, %hi(dMnSoundTestVoiceIDs)
+  /* 188594 801321C4 3C048013 */       lui $a0, %hi(dMNSoundTestVoiceIDs)
   /* 188598 801321C8 000C6880 */       sll $t5, $t4, 2
   /* 18859C 801321CC 008D2021 */      addu $a0, $a0, $t5
   /* 1885A0 801321D0 0C009A70 */       jal func_800269C0
-  /* 1885A4 801321D4 94843D9E */       lhu $a0, %lo(dMnSoundTestVoiceIDs)($a0)
+  /* 1885A4 801321D4 94843D9E */       lhu $a0, %lo(dMNSoundTestVoiceIDs)($a0)
   /* 1885A8 801321D8 10000017 */         b .L80132238
   /* 1885AC 801321DC 8FBF0014 */        lw $ra, 0x14($sp)
   .L801321E0:
@@ -533,9 +533,9 @@ glabel mnSoundTestUpdateFunctions
   /* 1885EC 8013221C 0C0082F0 */       jal func_80020BC0
   /* 1885F0 80132220 24060078 */     addiu $a2, $zero, 0x78
   /* 1885F4 80132224 240E0078 */     addiu $t6, $zero, 0x78
-  /* 1885F8 80132228 3C018013 */       lui $at, %hi(sMnSoundTestFadeOutWait)
+  /* 1885F8 80132228 3C018013 */       lui $at, %hi(sMNSoundTestFadeOutWait)
   /* 1885FC 8013222C 0C0099A8 */       jal func_800266A0
-  /* 188600 80132230 AC2E4364 */        sw $t6, %lo(sMnSoundTestFadeOutWait)($at)
+  /* 188600 80132230 AC2E4364 */        sw $t6, %lo(sMNSoundTestFadeOutWait)($at)
   .L80132234:
   /* 188604 80132234 8FBF0014 */        lw $ra, 0x14($sp)
   .L80132238:
@@ -595,17 +595,17 @@ glabel func_ovl62_801322B8
   /* 1886C8 801322F8 AFA0003C */        sw $zero, 0x3c($sp)
   /* 1886CC 801322FC 0C0337DE */       jal rdManagerInitSetup
   /* 1886D0 80132300 27A40020 */     addiu $a0, $sp, 0x20
-  /* 1886D4 80132304 3C048013 */       lui $a0, %hi(dMnSoundTestFileIDs)
-  /* 1886D8 80132308 2484416C */     addiu $a0, $a0, %lo(dMnSoundTestFileIDs)
+  /* 1886D4 80132304 3C048013 */       lui $a0, %hi(dMNSoundTestFileIDs)
+  /* 1886D8 80132308 2484416C */     addiu $a0, $a0, %lo(dMNSoundTestFileIDs)
   /* 1886DC 8013230C 0C0337BB */       jal rdManagerGetAllocSize
   /* 1886E0 80132310 24050005 */     addiu $a1, $zero, 5
   /* 1886E4 80132314 00402025 */        or $a0, $v0, $zero
   /* 1886E8 80132318 0C001260 */       jal gsMemoryAlloc
   /* 1886EC 8013231C 24050010 */     addiu $a1, $zero, 0x10
-  /* 1886F0 80132320 3C048013 */       lui $a0, %hi(dMnSoundTestFileIDs)
-  /* 1886F4 80132324 3C068013 */       lui $a2, %hi(sMnSoundTestFiles)
-  /* 1886F8 80132328 24C64468 */     addiu $a2, $a2, %lo(sMnSoundTestFiles)
-  /* 1886FC 8013232C 2484416C */     addiu $a0, $a0, %lo(dMnSoundTestFileIDs)
+  /* 1886F0 80132320 3C048013 */       lui $a0, %hi(dMNSoundTestFileIDs)
+  /* 1886F4 80132324 3C068013 */       lui $a2, %hi(sMNSoundTestFiles)
+  /* 1886F8 80132328 24C64468 */     addiu $a2, $a2, %lo(sMNSoundTestFiles)
+  /* 1886FC 8013232C 2484416C */     addiu $a0, $a0, %lo(dMNSoundTestFileIDs)
   /* 188700 80132330 24050005 */     addiu $a1, $zero, 5
   /* 188704 80132334 0C033781 */       jal rdManagerLoadFiles
   /* 188708 80132338 00403825 */        or $a3, $v0, $zero
@@ -689,13 +689,13 @@ glabel mnSoundTestOptionProcUpdate
   /* 188830 80132460 AFB10018 */        sw $s1, 0x18($sp)
   /* 188834 80132464 AFB00014 */        sw $s0, 0x14($sp)
   /* 188838 80132468 8C830084 */        lw $v1, 0x84($a0)
-  /* 18883C 8013246C 3C0E8013 */       lui $t6, %hi(sMnSoundTestOptionColorR)
-  /* 188840 80132470 3C0F8013 */       lui $t7, %hi(sMnSoundTestOptionColorG)
+  /* 18883C 8013246C 3C0E8013 */       lui $t6, %hi(sMNSoundTestOptionColorR)
+  /* 188840 80132470 3C0F8013 */       lui $t7, %hi(sMNSoundTestOptionColorG)
   /* 188844 80132474 00031080 */       sll $v0, $v1, 2
-  /* 188848 80132478 3C188013 */       lui $t8, %hi(sMnSoundTestOptionColorB)
-  /* 18884C 8013247C 27184330 */     addiu $t8, $t8, %lo(sMnSoundTestOptionColorB)
-  /* 188850 80132480 25EF4320 */     addiu $t7, $t7, %lo(sMnSoundTestOptionColorG)
-  /* 188854 80132484 25CE4310 */     addiu $t6, $t6, %lo(sMnSoundTestOptionColorR)
+  /* 188848 80132478 3C188013 */       lui $t8, %hi(sMNSoundTestOptionColorB)
+  /* 18884C 8013247C 27184330 */     addiu $t8, $t8, %lo(sMNSoundTestOptionColorB)
+  /* 188850 80132480 25EF4320 */     addiu $t7, $t7, %lo(sMNSoundTestOptionColorG)
+  /* 188854 80132484 25CE4310 */     addiu $t6, $t6, %lo(sMNSoundTestOptionColorR)
   /* 188858 80132488 8C900074 */        lw $s0, 0x74($a0)
   /* 18885C 8013248C 004E8821 */      addu $s1, $v0, $t6
   /* 188860 80132490 004F9021 */      addu $s2, $v0, $t7
@@ -755,16 +755,16 @@ glabel mnSoundTestMusicProcRender
   /* 188928 80132558 AC4F0000 */        sw $t7, ($v0)
   /* 18892C 8013255C 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
   /* 188930 80132560 3C19F700 */       lui $t9, 0xf700
-  /* 188934 80132564 3C0E8013 */       lui $t6, %hi(sMnSoundTestOptionColorB)
+  /* 188934 80132564 3C0E8013 */       lui $t6, %hi(sMNSoundTestOptionColorB)
   /* 188938 80132568 24580008 */     addiu $t8, $v0, 8
   /* 18893C 8013256C AC780000 */        sw $t8, ($v1) # gDisplayListHead + 0
-  /* 188940 80132570 3C188013 */       lui $t8, %hi(sMnSoundTestOptionColorR)
+  /* 188940 80132570 3C188013 */       lui $t8, %hi(sMNSoundTestOptionColorR)
   /* 188944 80132574 AC590000 */        sw $t9, ($v0)
-  /* 188948 80132578 8F184310 */        lw $t8, %lo(sMnSoundTestOptionColorR)($t8)
-  /* 18894C 8013257C 8DCE4330 */        lw $t6, %lo(sMnSoundTestOptionColorB)($t6)
+  /* 188948 80132578 8F184310 */        lw $t8, %lo(sMNSoundTestOptionColorR)($t8)
+  /* 18894C 8013257C 8DCE4330 */        lw $t6, %lo(sMNSoundTestOptionColorB)($t6)
   /* 188950 80132580 0018CE00 */       sll $t9, $t8, 0x18
-  /* 188954 80132584 3C188013 */       lui $t8, %hi(sMnSoundTestOptionColorG)
-  /* 188958 80132588 8F184320 */        lw $t8, %lo(sMnSoundTestOptionColorG)($t8)
+  /* 188954 80132584 3C188013 */       lui $t8, %hi(sMNSoundTestOptionColorG)
+  /* 188958 80132588 8F184320 */        lw $t8, %lo(sMNSoundTestOptionColorG)($t8)
   /* 18895C 8013258C 000E7A00 */       sll $t7, $t6, 8
   /* 188960 80132590 01F97025 */        or $t6, $t7, $t9
   /* 188964 80132594 00187C00 */       sll $t7, $t8, 0x10
@@ -1194,8 +1194,8 @@ glabel mnSoundTestMakeVoiceSObjs
   /* 188FDC 80132C0C 00000000 */       nop 
 
 glabel mnSoundTestMakeAButtonSObj
-  /* 188FE0 80132C10 3C0E8013 */       lui $t6, %hi(sMnSoundTestFiles)
-  /* 188FE4 80132C14 8DCE4468 */        lw $t6, %lo(sMnSoundTestFiles)($t6)
+  /* 188FE0 80132C10 3C0E8013 */       lui $t6, %hi(sMNSoundTestFiles)
+  /* 188FE4 80132C14 8DCE4468 */        lw $t6, %lo(sMNSoundTestFiles)($t6)
   /* 188FE8 80132C18 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 188FEC 80132C1C 3C0F0000 */       lui $t7, %hi(D_NF_00000958)
   /* 188FF0 80132C20 AFBF0014 */        sw $ra, 0x14($sp)
@@ -1228,8 +1228,8 @@ glabel mnSoundTestMakeAButtonSObj
   /* 18905C 80132C8C 00000000 */       nop 
 
 glabel mnSoundTestMakeBButtonSObj
-  /* 189060 80132C90 3C0E8013 */       lui $t6, %hi(sMnSoundTestFiles)
-  /* 189064 80132C94 8DCE4468 */        lw $t6, %lo(sMnSoundTestFiles)($t6)
+  /* 189060 80132C90 3C0E8013 */       lui $t6, %hi(sMNSoundTestFiles)
+  /* 189064 80132C94 8DCE4468 */        lw $t6, %lo(sMNSoundTestFiles)($t6)
   /* 189068 80132C98 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 18906C 80132C9C 3C0F0000 */       lui $t7, %hi(D_NF_00000A88)
   /* 189070 80132CA0 AFBF0014 */        sw $ra, 0x14($sp)
@@ -1433,21 +1433,21 @@ glabel mnSoundTestMakeNumberSObj
   /* 189358 80132F88 AFB4003C */        sw $s4, 0x3c($sp)
   /* 18935C 80132F8C AFB10030 */        sw $s1, 0x30($sp)
   /* 189360 80132F90 AFB0002C */        sw $s0, 0x2c($sp)
-  /* 189364 80132F94 3C128013 */       lui $s2, %hi(dMnSoundTestDigitSpriteOffsets)
-  /* 189368 80132F98 3C138013 */       lui $s3, %hi(sMnSoundTestFiles)
+  /* 189364 80132F94 3C128013 */       lui $s2, %hi(dMNSoundTestDigitSpriteOffsets)
+  /* 189368 80132F98 3C138013 */       lui $s3, %hi(sMNSoundTestFiles)
   /* 18936C 80132F9C 4481A000 */      mtc1 $at, $f20 # 163.0 to cop1
   /* 189370 80132FA0 00808825 */        or $s1, $a0, $zero
   /* 189374 80132FA4 AFBF004C */        sw $ra, 0x4c($sp)
-  /* 189378 80132FA8 26734468 */     addiu $s3, $s3, %lo(sMnSoundTestFiles)
-  /* 18937C 80132FAC 265241A4 */     addiu $s2, $s2, %lo(dMnSoundTestDigitSpriteOffsets)
+  /* 189378 80132FA8 26734468 */     addiu $s3, $s3, %lo(sMNSoundTestFiles)
+  /* 18937C 80132FAC 265241A4 */     addiu $s2, $s2, %lo(dMNSoundTestDigitSpriteOffsets)
   /* 189380 80132FB0 00008025 */        or $s0, $zero, $zero
   /* 189384 80132FB4 24140004 */     addiu $s4, $zero, 4
   /* 189388 80132FB8 24150001 */     addiu $s5, $zero, 1
   /* 18938C 80132FBC 24160002 */     addiu $s6, $zero, 2
   /* 189390 80132FC0 24170003 */     addiu $s7, $zero, 3
-  /* 189394 80132FC4 8E4E0000 */        lw $t6, ($s2) # dMnSoundTestDigitSpriteOffsets + 0
+  /* 189394 80132FC4 8E4E0000 */        lw $t6, ($s2) # dMNSoundTestDigitSpriteOffsets + 0
   .L80132FC8:
-  /* 189398 80132FC8 8E6F0004 */        lw $t7, 4($s3) # sMnSoundTestFiles + 4
+  /* 189398 80132FC8 8E6F0004 */        lw $t7, 4($s3) # sMNSoundTestFiles + 4
   /* 18939C 80132FCC 02202025 */        or $a0, $s1, $zero
   /* 1893A0 80132FD0 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 1893A4 80132FD4 01CF2821 */      addu $a1, $t6, $t7
@@ -1471,7 +1471,7 @@ glabel mnSoundTestMakeNumberSObj
   /* 1893E4 80133014 E454005C */      swc1 $f20, 0x5c($v0)
   .L80133018:
   /* 1893E8 80133018 5617FFEB */      bnel $s0, $s7, .L80132FC8
-  /* 1893EC 8013301C 8E4E0000 */        lw $t6, ($s2) # dMnSoundTestDigitSpriteOffsets + 0
+  /* 1893EC 8013301C 8E4E0000 */        lw $t6, ($s2) # dMNSoundTestDigitSpriteOffsets + 0
   /* 1893F0 80133020 8FBF004C */        lw $ra, 0x4c($sp)
   /* 1893F4 80133024 D7B40010 */      ldc1 $f20, 0x10($sp)
   /* 1893F8 80133028 D7B60018 */      ldc1 $f22, 0x18($sp)
@@ -1527,8 +1527,8 @@ glabel mnSoundTestUpdateNumberPositions
   /* 1894A8 801330D8 8C850074 */        lw $a1, 0x74($a0)
   .L801330DC:
   /* 1894AC 801330DC 460A6102 */     mul.s $f4, $f12, $f10
-  /* 1894B0 801330E0 3C0B8013 */       lui $t3, %hi(sMnSoundTestSelectIDPositionsX)
-  /* 1894B4 801330E4 256B4358 */     addiu $t3, $t3, %lo(sMnSoundTestSelectIDPositionsX)
+  /* 1894B0 801330E0 3C0B8013 */       lui $t3, %hi(sMNSoundTestSelectIDPositionsX)
+  /* 1894B4 801330E4 256B4358 */     addiu $t3, $t3, %lo(sMNSoundTestSelectIDPositionsX)
   /* 1894B8 801330E8 00025080 */       sll $t2, $v0, 2
   /* 1894BC 801330EC 014B2021 */      addu $a0, $t2, $t3
   /* 1894C0 801330F0 C4880000 */      lwc1 $f8, ($a0)
@@ -1544,9 +1544,9 @@ glabel mnSoundTestUpdateNumberPositions
   /* 1894E8 80133118 3C01433E */       lui $at, (0x433E0000 >> 16) # 190.0
   /* 1894EC 8013311C 44818000 */      mtc1 $at, $f16 # 190.0 to cop1
   /* 1894F0 80133120 3C01432B */       lui $at, (0x432B0000 >> 16) # 171.0
-  /* 1894F4 80133124 3C028013 */       lui $v0, %hi(sMnSoundTestSelectIDPositionsX)
+  /* 1894F4 80133124 3C028013 */       lui $v0, %hi(sMNSoundTestSelectIDPositionsX)
   /* 1894F8 80133128 44817000 */      mtc1 $at, $f14 # 171.0 to cop1
-  /* 1894FC 8013312C 24424358 */     addiu $v0, $v0, %lo(sMnSoundTestSelectIDPositionsX)
+  /* 1894FC 8013312C 24424358 */     addiu $v0, $v0, %lo(sMNSoundTestSelectIDPositionsX)
   .L80133130:
   /* 189500 80133130 14820003 */       bne $a0, $v0, .L80133140
   /* 189504 80133134 00000000 */       nop 
@@ -1583,11 +1583,11 @@ glabel mnSoundTestUpdateNumberSprites
   /* 189568 80133198 AFBF0014 */        sw $ra, 0x14($sp)
   /* 18956C 8013319C AFA40018 */        sw $a0, 0x18($sp)
   /* 189570 801331A0 8C830084 */        lw $v1, 0x84($a0)
-  /* 189574 801331A4 3C058013 */       lui $a1, %hi(sMnSoundTestOptionSelectID)
+  /* 189574 801331A4 3C058013 */       lui $a1, %hi(sMNSoundTestOptionSelectID)
   /* 189578 801331A8 8C820074 */        lw $v0, 0x74($a0)
   /* 18957C 801331AC 00037880 */       sll $t7, $v1, 2
   /* 189580 801331B0 00AF2821 */      addu $a1, $a1, $t7
-  /* 189584 801331B4 8CA54348 */        lw $a1, %lo(sMnSoundTestOptionSelectID)($a1)
+  /* 189584 801331B4 8CA54348 */        lw $a1, %lo(sMNSoundTestOptionSelectID)($a1)
   /* 189588 801331B8 44800000 */      mtc1 $zero, $f0
   /* 18958C 801331BC 00807025 */        or $t6, $a0, $zero
   /* 189590 801331C0 10400008 */      beqz $v0, .L801331E4
@@ -1602,12 +1602,12 @@ glabel mnSoundTestUpdateNumberSprites
   /* 1895B0 801331E0 8F020074 */        lw $v0, 0x74($t8)
   .L801331E4:
   /* 1895B4 801331E4 3C018013 */       lui $at, %hi(D_ovl62_801342F0)
-  /* 1895B8 801331E8 3C088013 */       lui $t0, %hi(dMnSoundTestDigitSpriteWidths)
-  /* 1895BC 801331EC 3C078013 */       lui $a3, %hi(sMnSoundTestFiles)
-  /* 1895C0 801331F0 3C048013 */       lui $a0, %hi(dMnSoundTestDigitSpriteOffsets)
-  /* 1895C4 801331F4 248441A4 */     addiu $a0, $a0, %lo(dMnSoundTestDigitSpriteOffsets)
-  /* 1895C8 801331F8 24E74468 */     addiu $a3, $a3, %lo(sMnSoundTestFiles)
-  /* 1895CC 801331FC 250841CC */     addiu $t0, $t0, %lo(dMnSoundTestDigitSpriteWidths)
+  /* 1895B8 801331E8 3C088013 */       lui $t0, %hi(dMNSoundTestDigitSpriteWidths)
+  /* 1895BC 801331EC 3C078013 */       lui $a3, %hi(sMNSoundTestFiles)
+  /* 1895C0 801331F0 3C048013 */       lui $a0, %hi(dMNSoundTestDigitSpriteOffsets)
+  /* 1895C4 801331F4 248441A4 */     addiu $a0, $a0, %lo(dMNSoundTestDigitSpriteOffsets)
+  /* 1895C8 801331F8 24E74468 */     addiu $a3, $a3, %lo(sMNSoundTestFiles)
+  /* 1895CC 801331FC 250841CC */     addiu $t0, $t0, %lo(dMNSoundTestDigitSpriteWidths)
   /* 1895D0 80133200 C42242F0 */      lwc1 $f2, %lo(D_ovl62_801342F0)($at)
   /* 1895D4 80133204 240A00FF */     addiu $t2, $zero, 0xff
   /* 1895D8 80133208 24090001 */     addiu $t1, $zero, 1
@@ -1618,7 +1618,7 @@ glabel mnSoundTestUpdateNumberSprites
   /* 1895E8 80133218 00031880 */       sll $v1, $v1, 2
   /* 1895EC 8013321C 0083C821 */      addu $t9, $a0, $v1
   /* 1895F0 80133220 8F2B0000 */        lw $t3, ($t9)
-  /* 1895F4 80133224 8CEC0004 */        lw $t4, 4($a3) # sMnSoundTestFiles + 4
+  /* 1895F4 80133224 8CEC0004 */        lw $t4, 4($a3) # sMNSoundTestFiles + 4
   /* 1895F8 80133228 14C00002 */      bnez $a2, .L80133234
   /* 1895FC 8013322C 00000000 */       nop 
   /* 189600 80133230 0007000D */     break 7
@@ -1691,8 +1691,8 @@ glabel mnSoundTestSelectIDProcUpdate
   /* 1896F4 80133324 0C04CBD4 */       jal mnSoundTestMakeNumberSObj
   /* 1896F8 80133328 AFAE002C */        sw $t6, 0x2c($sp)
   /* 1896FC 8013332C 8FAF002C */        lw $t7, 0x2c($sp)
-  /* 189700 80133330 3C198013 */       lui $t9, %hi(sMnSoundTestOptionSelectID)
-  /* 189704 80133334 27394348 */     addiu $t9, $t9, %lo(sMnSoundTestOptionSelectID)
+  /* 189700 80133330 3C198013 */       lui $t9, %hi(sMNSoundTestOptionSelectID)
+  /* 189704 80133334 27394348 */     addiu $t9, $t9, %lo(sMNSoundTestOptionSelectID)
   /* 189708 80133338 000FC080 */       sll $t8, $t7, 2
   /* 18970C 8013333C 03199021 */      addu $s2, $t8, $t9
   /* 189710 80133340 8E420000 */        lw $v0, ($s2)
@@ -1800,9 +1800,9 @@ glabel mnSoundTestMakeSelectIDGObjs
 glabel mnSoundTestArrowsProcUpdate
   /* 18988C 801334BC 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 189890 801334C0 AFB40028 */        sw $s4, 0x28($sp)
-  /* 189894 801334C4 3C148013 */       lui $s4, %hi(sMnSoundTestOption)
-  /* 189898 801334C8 26944308 */     addiu $s4, $s4, %lo(sMnSoundTestOption)
-  /* 18989C 801334CC 8E820000 */        lw $v0, ($s4) # sMnSoundTestOption + 0
+  /* 189894 801334C4 3C148013 */       lui $s4, %hi(sMNSoundTestOption)
+  /* 189898 801334C8 26944308 */     addiu $s4, $s4, %lo(sMNSoundTestOption)
+  /* 18989C 801334CC 8E820000 */        lw $v0, ($s4) # sMNSoundTestOption + 0
   /* 1898A0 801334D0 AFB60030 */        sw $s6, 0x30($sp)
   /* 1898A4 801334D4 AFB5002C */        sw $s5, 0x2c($sp)
   /* 1898A8 801334D8 AFB30024 */        sw $s3, 0x24($sp)
@@ -1810,11 +1810,11 @@ glabel mnSoundTestArrowsProcUpdate
   /* 1898B0 801334E0 AFB00018 */        sw $s0, 0x18($sp)
   /* 1898B4 801334E4 AFBF0034 */        sw $ra, 0x34($sp)
   /* 1898B8 801334E8 AFB1001C */        sw $s1, 0x1c($sp)
-  /* 1898BC 801334EC 3C168013 */       lui $s6, %hi(dMnSoundTestArrowSpritePositions)
+  /* 1898BC 801334EC 3C168013 */       lui $s6, %hi(dMNSoundTestArrowSpritePositions)
   /* 1898C0 801334F0 00809025 */        or $s2, $a0, $zero
   /* 1898C4 801334F4 8C910074 */        lw $s1, 0x74($a0)
   /* 1898C8 801334F8 2410001E */     addiu $s0, $zero, 0x1e
-  /* 1898CC 801334FC 26D64180 */     addiu $s6, $s6, %lo(dMnSoundTestArrowSpritePositions)
+  /* 1898CC 801334FC 26D64180 */     addiu $s6, $s6, %lo(dMNSoundTestArrowSpritePositions)
   /* 1898D0 80133500 24150003 */     addiu $s5, $zero, 3
   /* 1898D4 80133504 00409825 */        or $s3, $v0, $zero
   .L80133508:
@@ -1825,12 +1825,12 @@ glabel mnSoundTestArrowsProcUpdate
   /* 1898E8 80133518 AE40007C */        sw $zero, 0x7c($s2)
   .L8013351C:
   /* 1898EC 8013351C 56000006 */      bnel $s0, $zero, .L80133538
-  /* 1898F0 80133520 8E980000 */        lw $t8, ($s4) # sMnSoundTestOption + 0
+  /* 1898F0 80133520 8E980000 */        lw $t8, ($s4) # sMNSoundTestOption + 0
   /* 1898F4 80133524 8E4E007C */        lw $t6, 0x7c($s2)
   /* 1898F8 80133528 2410001E */     addiu $s0, $zero, 0x1e
   /* 1898FC 8013352C 39CF0001 */      xori $t7, $t6, 1
   /* 189900 80133530 AE4F007C */        sw $t7, 0x7c($s2)
-  /* 189904 80133534 8E980000 */        lw $t8, ($s4) # sMnSoundTestOption + 0
+  /* 189904 80133534 8E980000 */        lw $t8, ($s4) # sMNSoundTestOption + 0
   .L80133538:
   /* 189908 80133538 8E280008 */        lw $t0, 8($s1)
   /* 18990C 8013353C 2610FFFF */     addiu $s0, $s0, -1
@@ -1850,7 +1850,7 @@ glabel mnSoundTestArrowsProcUpdate
   /* 189944 80133574 0C002C7A */       jal gsStopCurrentProcess
   /* 189948 80133578 E52A005C */      swc1 $f10, 0x5c($t1)
   /* 18994C 8013357C 1000FFE2 */         b .L80133508
-  /* 189950 80133580 8E820000 */        lw $v0, ($s4) # sMnSoundTestOption + 0
+  /* 189950 80133580 8E820000 */        lw $v0, ($s4) # sMNSoundTestOption + 0
   /* 189954 80133584 00000000 */       nop 
   /* 189958 80133588 00000000 */       nop 
   /* 18995C 8013358C 00000000 */       nop 
@@ -1901,15 +1901,15 @@ glabel mnSoundTestMakeArrowSObjs
   /* 189A00 80133630 8FA40024 */        lw $a0, 0x24($sp)
   /* 189A04 80133634 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 189A08 80133638 01F82821 */      addu $a1, $t7, $t8
-  /* 189A0C 8013363C 3C038013 */       lui $v1, %hi(dMnSoundTestArrowSpritePositions)
+  /* 189A0C 8013363C 3C038013 */       lui $v1, %hi(dMNSoundTestArrowSpritePositions)
   /* 189A10 80133640 24190001 */     addiu $t9, $zero, 1
-  /* 189A14 80133644 24634180 */     addiu $v1, $v1, %lo(dMnSoundTestArrowSpritePositions)
+  /* 189A14 80133644 24634180 */     addiu $v1, $v1, %lo(dMNSoundTestArrowSpritePositions)
   /* 189A18 80133648 A4590024 */        sh $t9, 0x24($v0)
-  /* 189A1C 8013364C C4640000 */      lwc1 $f4, ($v1) # dMnSoundTestArrowSpritePositions + 0
+  /* 189A1C 8013364C C4640000 */      lwc1 $f4, ($v1) # dMNSoundTestArrowSpritePositions + 0
   /* 189A20 80133650 240800FF */     addiu $t0, $zero, 0xff
   /* 189A24 80133654 240900C3 */     addiu $t1, $zero, 0xc3
   /* 189A28 80133658 E4440058 */      swc1 $f4, 0x58($v0)
-  /* 189A2C 8013365C C4660004 */      lwc1 $f6, 4($v1) # dMnSoundTestArrowSpritePositions + 4
+  /* 189A2C 8013365C C4660004 */      lwc1 $f6, 4($v1) # dMNSoundTestArrowSpritePositions + 4
   /* 189A30 80133660 240A0026 */     addiu $t2, $zero, 0x26
   /* 189A34 80133664 A0480028 */        sb $t0, 0x28($v0)
   /* 189A38 80133668 A0490029 */        sb $t1, 0x29($v0)
@@ -1922,15 +1922,15 @@ glabel mnSoundTestMakeArrowSObjs
   /* 189A54 80133684 8FA40024 */        lw $a0, 0x24($sp)
   /* 189A58 80133688 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 189A5C 8013368C 016C2821 */      addu $a1, $t3, $t4
-  /* 189A60 80133690 3C038013 */       lui $v1, %hi(dMnSoundTestArrowSpritePositions)
+  /* 189A60 80133690 3C038013 */       lui $v1, %hi(dMNSoundTestArrowSpritePositions)
   /* 189A64 80133694 240D0001 */     addiu $t5, $zero, 1
-  /* 189A68 80133698 24634180 */     addiu $v1, $v1, %lo(dMnSoundTestArrowSpritePositions)
+  /* 189A68 80133698 24634180 */     addiu $v1, $v1, %lo(dMNSoundTestArrowSpritePositions)
   /* 189A6C 8013369C A44D0024 */        sh $t5, 0x24($v0)
-  /* 189A70 801336A0 C4680008 */      lwc1 $f8, 8($v1) # dMnSoundTestArrowSpritePositions + 8
+  /* 189A70 801336A0 C4680008 */      lwc1 $f8, 8($v1) # dMNSoundTestArrowSpritePositions + 8
   /* 189A74 801336A4 240E00FF */     addiu $t6, $zero, 0xff
   /* 189A78 801336A8 240F00C3 */     addiu $t7, $zero, 0xc3
   /* 189A7C 801336AC E4480058 */      swc1 $f8, 0x58($v0)
-  /* 189A80 801336B0 C46A000C */      lwc1 $f10, 0xc($v1) # dMnSoundTestArrowSpritePositions + 12
+  /* 189A80 801336B0 C46A000C */      lwc1 $f10, 0xc($v1) # dMNSoundTestArrowSpritePositions + 12
   /* 189A84 801336B4 24180026 */     addiu $t8, $zero, 0x26
   /* 189A88 801336B8 A04E0028 */        sb $t6, 0x28($v0)
   /* 189A8C 801336BC A04F0029 */        sb $t7, 0x29($v0)
@@ -2042,46 +2042,46 @@ glabel func_ovl62_80133728
   /* 189C24 80133854 00000000 */       nop 
 
 glabel mnSoundTestInitVars
-  /* 189C28 80133858 3C038013 */       lui $v1, %hi(sMnSoundTestOptionColorR)
-  /* 189C2C 8013385C 3C048013 */       lui $a0, %hi(sMnSoundTestOptionColorG)
-  /* 189C30 80133860 3C058013 */       lui $a1, %hi(sMnSoundTestOptionColorB)
-  /* 189C34 80133864 24A54330 */     addiu $a1, $a1, %lo(sMnSoundTestOptionColorB)
-  /* 189C38 80133868 24844320 */     addiu $a0, $a0, %lo(sMnSoundTestOptionColorG)
-  /* 189C3C 8013386C 24634310 */     addiu $v1, $v1, %lo(sMnSoundTestOptionColorR)
+  /* 189C28 80133858 3C038013 */       lui $v1, %hi(sMNSoundTestOptionColorR)
+  /* 189C2C 8013385C 3C048013 */       lui $a0, %hi(sMNSoundTestOptionColorG)
+  /* 189C30 80133860 3C058013 */       lui $a1, %hi(sMNSoundTestOptionColorB)
+  /* 189C34 80133864 24A54330 */     addiu $a1, $a1, %lo(sMNSoundTestOptionColorB)
+  /* 189C38 80133868 24844320 */     addiu $a0, $a0, %lo(sMNSoundTestOptionColorG)
+  /* 189C3C 8013386C 24634310 */     addiu $v1, $v1, %lo(sMNSoundTestOptionColorR)
   /* 189C40 80133870 240E007D */     addiu $t6, $zero, 0x7d
   /* 189C44 80133874 240F0045 */     addiu $t7, $zero, 0x45
   /* 189C48 80133878 24180007 */     addiu $t8, $zero, 7
   /* 189C4C 8013387C 3C0141D4 */       lui $at, (0x41D40000 >> 16) # 26.5
   /* 189C50 80133880 44810000 */      mtc1 $at, $f0 # 26.5 to cop1
-  /* 189C54 80133884 AC6E0008 */        sw $t6, 8($v1) # sMnSoundTestOptionColorR + 8
-  /* 189C58 80133888 AC6E0004 */        sw $t6, 4($v1) # sMnSoundTestOptionColorR + 4
-  /* 189C5C 8013388C AC6E0000 */        sw $t6, ($v1) # sMnSoundTestOptionColorR + 0
-  /* 189C60 80133890 AC8F0008 */        sw $t7, 8($a0) # sMnSoundTestOptionColorG + 8
-  /* 189C64 80133894 AC8F0004 */        sw $t7, 4($a0) # sMnSoundTestOptionColorG + 4
-  /* 189C68 80133898 AC8F0000 */        sw $t7, ($a0) # sMnSoundTestOptionColorG + 0
-  /* 189C6C 8013389C ACB80008 */        sw $t8, 8($a1) # sMnSoundTestOptionColorB + 8
-  /* 189C70 801338A0 ACB80004 */        sw $t8, 4($a1) # sMnSoundTestOptionColorB + 4
-  /* 189C74 801338A4 ACB80000 */        sw $t8, ($a1) # sMnSoundTestOptionColorB + 0
-  /* 189C78 801338A8 3C018013 */       lui $at, %hi(sMnSoundTestOption)
-  /* 189C7C 801338AC AC204308 */        sw $zero, %lo(sMnSoundTestOption)($at)
-  /* 189C80 801338B0 3C018013 */       lui $at, %hi(sMnSoundTestOptionChangeWait)
-  /* 189C84 801338B4 AC20433C */        sw $zero, %lo(sMnSoundTestOptionChangeWait)($at)
-  /* 189C88 801338B8 3C018013 */       lui $at, %hi(sMnSoundTestDirectionInputKind)
-  /* 189C8C 801338BC AC204340 */        sw $zero, %lo(sMnSoundTestDirectionInputKind)($at)
-  /* 189C90 801338C0 3C068013 */       lui $a2, %hi(sMnSoundTestOptionSelectID)
-  /* 189C94 801338C4 3C078013 */       lui $a3, %hi(sMnSoundTestSelectIDPositionsX)
-  /* 189C98 801338C8 24E74358 */     addiu $a3, $a3, %lo(sMnSoundTestSelectIDPositionsX)
-  /* 189C9C 801338CC 24C64348 */     addiu $a2, $a2, %lo(sMnSoundTestOptionSelectID)
-  /* 189CA0 801338D0 ACC00008 */        sw $zero, 8($a2) # sMnSoundTestOptionSelectID + 8
-  /* 189CA4 801338D4 ACC00004 */        sw $zero, 4($a2) # sMnSoundTestOptionSelectID + 4
-  /* 189CA8 801338D8 ACC00000 */        sw $zero, ($a2) # sMnSoundTestOptionSelectID + 0
-  /* 189CAC 801338DC 3C018013 */       lui $at, %hi(sMnSoundTestFadeOutWait)
+  /* 189C54 80133884 AC6E0008 */        sw $t6, 8($v1) # sMNSoundTestOptionColorR + 8
+  /* 189C58 80133888 AC6E0004 */        sw $t6, 4($v1) # sMNSoundTestOptionColorR + 4
+  /* 189C5C 8013388C AC6E0000 */        sw $t6, ($v1) # sMNSoundTestOptionColorR + 0
+  /* 189C60 80133890 AC8F0008 */        sw $t7, 8($a0) # sMNSoundTestOptionColorG + 8
+  /* 189C64 80133894 AC8F0004 */        sw $t7, 4($a0) # sMNSoundTestOptionColorG + 4
+  /* 189C68 80133898 AC8F0000 */        sw $t7, ($a0) # sMNSoundTestOptionColorG + 0
+  /* 189C6C 8013389C ACB80008 */        sw $t8, 8($a1) # sMNSoundTestOptionColorB + 8
+  /* 189C70 801338A0 ACB80004 */        sw $t8, 4($a1) # sMNSoundTestOptionColorB + 4
+  /* 189C74 801338A4 ACB80000 */        sw $t8, ($a1) # sMNSoundTestOptionColorB + 0
+  /* 189C78 801338A8 3C018013 */       lui $at, %hi(sMNSoundTestOption)
+  /* 189C7C 801338AC AC204308 */        sw $zero, %lo(sMNSoundTestOption)($at)
+  /* 189C80 801338B0 3C018013 */       lui $at, %hi(sMNSoundTestOptionChangeWait)
+  /* 189C84 801338B4 AC20433C */        sw $zero, %lo(sMNSoundTestOptionChangeWait)($at)
+  /* 189C88 801338B8 3C018013 */       lui $at, %hi(sMNSoundTestDirectionInputKind)
+  /* 189C8C 801338BC AC204340 */        sw $zero, %lo(sMNSoundTestDirectionInputKind)($at)
+  /* 189C90 801338C0 3C068013 */       lui $a2, %hi(sMNSoundTestOptionSelectID)
+  /* 189C94 801338C4 3C078013 */       lui $a3, %hi(sMNSoundTestSelectIDPositionsX)
+  /* 189C98 801338C8 24E74358 */     addiu $a3, $a3, %lo(sMNSoundTestSelectIDPositionsX)
+  /* 189C9C 801338CC 24C64348 */     addiu $a2, $a2, %lo(sMNSoundTestOptionSelectID)
+  /* 189CA0 801338D0 ACC00008 */        sw $zero, 8($a2) # sMNSoundTestOptionSelectID + 8
+  /* 189CA4 801338D4 ACC00004 */        sw $zero, 4($a2) # sMNSoundTestOptionSelectID + 4
+  /* 189CA8 801338D8 ACC00000 */        sw $zero, ($a2) # sMNSoundTestOptionSelectID + 0
+  /* 189CAC 801338DC 3C018013 */       lui $at, %hi(sMNSoundTestFadeOutWait)
   /* 189CB0 801338E0 2419FFFF */     addiu $t9, $zero, -1
-  /* 189CB4 801338E4 E4E00000 */      swc1 $f0, ($a3) # sMnSoundTestSelectIDPositionsX + 0
-  /* 189CB8 801338E8 E4E00004 */      swc1 $f0, 4($a3) # sMnSoundTestSelectIDPositionsX + 4
-  /* 189CBC 801338EC E4E00008 */      swc1 $f0, 8($a3) # sMnSoundTestSelectIDPositionsX + 8
+  /* 189CB4 801338E4 E4E00000 */      swc1 $f0, ($a3) # sMNSoundTestSelectIDPositionsX + 0
+  /* 189CB8 801338E8 E4E00004 */      swc1 $f0, 4($a3) # sMNSoundTestSelectIDPositionsX + 4
+  /* 189CBC 801338EC E4E00008 */      swc1 $f0, 8($a3) # sMNSoundTestSelectIDPositionsX + 8
   /* 189CC0 801338F0 03E00008 */        jr $ra
-  /* 189CC4 801338F4 AC394364 */        sw $t9, %lo(sMnSoundTestFadeOutWait)($at)
+  /* 189CC4 801338F4 AC394364 */        sw $t9, %lo(sMNSoundTestFadeOutWait)($at)
 
 glabel func_ovl62_801338F8
   /* 189CC8 801338F8 27BDFFE0 */     addiu $sp, $sp, -0x20
@@ -2114,8 +2114,8 @@ glabel func_ovl62_801338F8
 
 glabel mnSoundTestAddLightsDisplayList
   /* 189D34 80133964 8C830000 */        lw $v1, ($a0)
-  /* 189D38 80133968 3C188013 */       lui $t8, %hi(dMnSoundTestDisplayList)
-  /* 189D3C 8013396C 27184218 */     addiu $t8, $t8, %lo(dMnSoundTestDisplayList)
+  /* 189D38 80133968 3C188013 */       lui $t8, %hi(dMNSoundTestDisplayList)
+  /* 189D3C 8013396C 27184218 */     addiu $t8, $t8, %lo(dMNSoundTestDisplayList)
   /* 189D40 80133970 246E0008 */     addiu $t6, $v1, 8
   /* 189D44 80133974 AC8E0000 */        sw $t6, ($a0)
   /* 189D48 80133978 3C0FDE00 */       lui $t7, 0xde00
@@ -2147,7 +2147,7 @@ glabel mnSoundTestStartScene
   /* 189DA8 801339D8 03E00008 */        jr $ra
   /* 189DAC 801339DC 00000000 */       nop 
 #
-#glabel dMnSoundTestMusicIDs   # Routine parsed as data
+#glabel dMNSoundTestMusicIDs   # Routine parsed as data
 #  /* 189DB0 801339E0 00000021 */      addu $zero, $zero, $zero
 #  /* 189DB4 801339E4 00000022 */       neg $zero, $zero
 #  /* 189DB8 801339E8 0000002B */      sltu $zero, $zero, $zero

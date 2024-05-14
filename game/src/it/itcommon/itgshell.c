@@ -6,10 +6,10 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItGShellItemAttributes;    // 0x0000053C
-extern intptr_t lItGShellDataStart;         // 0x00005F88
-extern intptr_t lItGShellAnimJoint;         // 0x00006018
-extern intptr_t lItGShellMatAnimJoint;      // 0x00006048
+extern intptr_t lITGShellITemAttributes;    // 0x0000053C
+extern intptr_t lITGShellDataStart;         // 0x00005F88
+extern intptr_t lITGShellAnimJoint;         // 0x00006018
+extern intptr_t lITGShellMatAnimJoint;      // 0x00006048
 
 // // // // // // // // // // // //
 //                               //
@@ -17,11 +17,11 @@ extern intptr_t lItGShellMatAnimJoint;      // 0x00006048
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItGShellItemDesc =
+itCreateDesc dITGShellITemDesc =
 {
     It_Kind_GShell,                         // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItGShellItemAttributes,               // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITGShellITemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -41,7 +41,7 @@ itCreateDesc dItGShellItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dItGShellStatusDesc[/* */] =
+itStatusDesc dITGShellStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -179,8 +179,8 @@ void itGShellGSpinAddAnim(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 unused[2];
 
-    omAddDObjAnimAll(dobj, itGetPData(ip, lItGShellDataStart, lItGShellAnimJoint), 0.0F); // Linker thing
-    omAddMObjAnimAll(dobj->mobj, itGetPData(ip, lItGShellDataStart, lItGShellMatAnimJoint), 0.0F); // Linker thing
+    omAddDObjAnimAll(dobj, itGetPData(ip, lITGShellDataStart, lITGShellAnimJoint), 0.0F); // Linker thing
+    omAddMObjAnimAll(dobj->mobj, itGetPData(ip, lITGShellDataStart, lITGShellMatAnimJoint), 0.0F); // Linker thing
     func_8000DF34(item_gobj);
 }
 
@@ -244,7 +244,7 @@ void itGShellGWaitInitItemVars(GObj *item_gobj)
         ip->phys_info.vel_air.x = 0.0F;
 
         itGShellSDefaultClearAnim(item_gobj);
-        itMainSetItemStatus(item_gobj, dItGShellStatusDesc, itStatus_GShell_GWait);
+        itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_GWait);
     }
     else if (ip->item_vars.shell.is_damage != FALSE)
     {
@@ -265,7 +265,7 @@ void itGShellGWaitInitItemVars(GObj *item_gobj)
         ip->phys_info.vel_air.x = 0.0F;
 
         itGShellSDefaultClearAnim(item_gobj);
-        itMainSetItemStatus(item_gobj, dItGShellStatusDesc, itStatus_GShell_GWait);
+        itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_GWait);
     }
 }
 
@@ -287,7 +287,7 @@ void itGShellAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dItGShellStatusDesc, itStatus_GShell_AFall);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_AFall);
 }
 
 // 0x8017897C
@@ -333,7 +333,7 @@ void itGShellFHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dItGShellStatusDesc, itStatus_GShell_FHold);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_FHold);
 }
 
 // 0x80178AC4
@@ -362,7 +362,7 @@ void itGShellFThrowSetStatus(GObj *item_gobj)
     ip->item_vars.shell.health = 1;
     ip->item_vars.shell.is_damage = TRUE;
 
-    itMainSetItemStatus(item_gobj, dItGShellStatusDesc, itStatus_GShell_FThrow);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_FThrow);
 }
 
 // 0x80178B60
@@ -373,7 +373,7 @@ void itGShellFDropSetStatus(GObj *item_gobj)
     ip->item_vars.shell.health = 1;
     ip->item_vars.shell.is_damage = TRUE;
 
-    itMainSetItemStatus(item_gobj, dItGShellStatusDesc, itStatus_GShell_FDrop);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_FDrop);
 }
 
 // 0x80178B98
@@ -508,7 +508,7 @@ void itGShellGSpinInitItemVars(GObj *item_gobj)
 void itGShellGSpinSetStatus(GObj *item_gobj)
 {
     itGShellGSpinInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItGShellStatusDesc, itStatus_GShell_GSpin);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_GSpin);
 }
 
 // 0x80178F10
@@ -539,13 +539,13 @@ void itGShellASpinInitItemVars(GObj *item_gobj)
 void itGShellASpinSetStatus(GObj *item_gobj)
 {
     itGShellASpinInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItGShellStatusDesc, itStatus_GShell_ASpin);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_ASpin);
 }
 
 // 0x80178FDC
 GObj* itGShellMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItGShellItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITGShellITemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

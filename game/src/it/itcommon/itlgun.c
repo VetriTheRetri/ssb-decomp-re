@@ -8,9 +8,9 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItLGunItemAttributes;      // 0x00000268
+extern intptr_t lITLGunItemAttributes;      // 0x00000268
 extern intptr_t 
-lItLGunWeaponAmmoWeaponAttributes;          // 0x000002B0
+lITLGunWeaponAmmoWeaponAttributes;          // 0x000002B0
 
 // // // // // // // // // // // //
 //                               //
@@ -18,11 +18,11 @@ lItLGunWeaponAmmoWeaponAttributes;          // 0x000002B0
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItLGunItemDesc =
+itCreateDesc dITLGunItemDesc =
 {
     It_Kind_LGun,                           // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItLGunItemAttributes,                 // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITLGunItemAttributes,                 // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -42,7 +42,7 @@ itCreateDesc dItLGunItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dItLGunStatusDesc[/* */] =
+itStatusDesc dITLGunStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -109,8 +109,8 @@ wpCreateDesc itLGunWeaponAmmoWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_LGunAmmo,                       // Weapon Kind
-    &gItemFileData,                         // Pointer to character's loaded files?
-    &lItLGunWeaponAmmoWeaponAttributes,     // Offset of weapon attributes in loaded files
+    &gITemFileData,                         // Pointer to character's loaded files?
+    &lITLGunWeaponAmmoWeaponAttributes,     // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -180,7 +180,7 @@ sb32 itLGunAFallProcMap(GObj *item_gobj)
 void itLGunGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dItLGunStatusDesc, itStatus_LGun_GWait);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDesc, itStatus_LGun_GWait);
 }
 
 // 0x801755B8
@@ -191,7 +191,7 @@ void itLGunAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dItLGunStatusDesc, itStatus_LGun_AFall);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDesc, itStatus_LGun_AFall);
 }
 
 // 0x801755FC
@@ -199,7 +199,7 @@ void itLGunFHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dItLGunStatusDesc, itStatus_LGun_FHold);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDesc, itStatus_LGun_FHold);
 }
 
 // 0x80175630
@@ -231,7 +231,7 @@ void itLGunFThrowSetStatus(GObj *item_gobj)
 {
     s32 lr = ftGetStruct(itGetStruct(item_gobj)->owner_gobj)->lr;
 
-    itMainSetItemStatus(item_gobj, dItLGunStatusDesc, itStatus_LGun_FThrow);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDesc, itStatus_LGun_FThrow);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == LR_Left) ? F_DEG_TO_RAD(-90.0F) : F_DEG_TO_RAD(90.0F); // -HALF_PI32, HALF_PI32
 }
@@ -253,7 +253,7 @@ void itLGunFDropSetStatus(GObj *item_gobj)
 {
     s32 lr = ftGetStruct(itGetStruct(item_gobj)->owner_gobj)->lr;
 
-    itMainSetItemStatus(item_gobj, dItLGunStatusDesc, itStatus_LGun_FDrop);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDesc, itStatus_LGun_FDrop);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == LR_Left) ? F_DEG_TO_RAD(-90.0F) : F_DEG_TO_RAD(90.0F); // -HALF_PI32, HALF_PI32
 }
@@ -261,7 +261,7 @@ void itLGunFDropSetStatus(GObj *item_gobj)
 // 0x80175800
 GObj* itLGunMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItLGunItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITLGunItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

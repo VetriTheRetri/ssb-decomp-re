@@ -630,7 +630,7 @@ glabel D_ovl3_80187E94
   .balign 4
   .incbin "ovl3.raw.bin", 0x56568, 0x5C
 
-glabel dFtComputerAttackList
+glabel dFTComputerAttackList
   /* 565C4 102B04 801880C4 */  .4byte D_ovl3_80186684
   /* 565C8 102B08 801880C8 */  .4byte D_ovl3_801868B4
   /* 565CC 102B0C 801880CC */  .4byte D_ovl3_80186AE4
@@ -806,7 +806,7 @@ glabel D_ovl3_80188324
 glabel D_ovl3_8018833C
   .incbin "ovl3.raw.bin", 0x5683C, 0x4
 
-glabel dFtComputerPlayerInputScripts
+glabel dFTComputerPlayerInputScripts
   /* 56840 102D80 80188340 */  .4byte D_ovl3_80188130
   /* 56844 102D84 80188344 */  .4byte D_ovl3_80188138
   /* 56848 102D88 80188348 */  .4byte D_ovl3_8018813C
@@ -1329,7 +1329,7 @@ glabel ftCommon_Catch_ReleaseKnockback
 glabel ftCommon_Capture_ReleaseKnockback
   .incbin "ovl3.raw.bin", 0x56F40, 0x10
 
-glabel dFtKirbySpecialAirNStatusList
+glabel dFTKirbySpecialAirNStatusList
   /* 56F50 103490 80188A50 */  .4byte ftKirbyCopyMarioSpecialAirNSetStatus
   /* 56F54 103494 80188A54 */  .4byte ftKirbyCopyFoxSpecialAirNSetStatus
   /* 56F58 103498 80188A58 */  .4byte ftKirbyCopyDonkeySpecialAirNStartSetStatus
@@ -1358,7 +1358,7 @@ glabel dFtKirbySpecialAirNStatusList
   /* 56FB4 1034F4 80188AB4 */  .4byte ftKirbySpecialAirNStartSetStatus
   /* 56FB8 1034F8 80188AB8 */  .4byte ftKirbySpecialAirNStartSetStatus
 
-glabel dFtCommonSpecialAirNStatusList
+glabel dFTCommonSpecialAirNStatusList
   /* 56FBC 1034FC 80188ABC */  .4byte ftMarioSpecialAirNSetStatus
   /* 56FC0 103500 80188AC0 */  .4byte ftFoxSpecialAirNSetStatus
   /* 56FC4 103504 80188AC4 */  .4byte ftDonkeySpecialAirNStartSetStatus
@@ -1387,7 +1387,7 @@ glabel dFtCommonSpecialAirNStatusList
   /* 57020 103560 80188B20 */  .4byte ftNessSpecialAirNSetStatus
   /* 57024 103564 80188B24 */  .4byte ftDonkeySpecialAirNStartSetStatus
 
-glabel dFtCommonSpecialAirHiStatusList
+glabel dFTCommonSpecialAirHiStatusList
   /* 57028 103568 80188B28 */  .4byte ftMarioSpecialAirHiSetStatus
   /* 5702C 10356C 80188B2C */  .4byte ftFoxSpecialAirHiStartSetStatus
   /* 57030 103570 80188B30 */  .4byte ftDonkeySpecialAirHiSetStatus
@@ -1416,7 +1416,7 @@ glabel dFtCommonSpecialAirHiStatusList
   /* 5708C 1035CC 80188B8C */  .4byte ftNessSpecialAirHiStartSetStatus
   /* 57090 1035D0 80188B90 */  .4byte ftDonkeySpecialAirHiSetStatus
 
-glabel dFtCommonSpecialAirLwStatusList
+glabel dFTCommonSpecialAirLwStatusList
   /* 57094 1035D4 80188B94 */  .4byte ftMarioSpecialAirLwSetStatus
   /* 57098 1035D8 80188B98 */  .4byte ftFoxSpecialAirLwStartSetStatus
   .incbin "ovl3.raw.bin", 0x5709C, 0x4
@@ -1449,7 +1449,7 @@ glabel jtbl_ovl3_80188BD8
   /* 570F8 103638 80188BF8 */  .4byte ftNessSpecialAirLwStartSetStatus
   .incbin "ovl3.raw.bin", 0x570FC, 0x4
 
-glabel dFtKirbySpecialNStatusList
+glabel dFTKirbySpecialNStatusList
   /* 57100 103640 80188C00 */  .4byte ftKirbyCopyMarioSpecialNSetStatus
   /* 57104 103644 80188C04 */  .4byte ftKirbyCopyFoxSpecialNSetStatus
   /* 57108 103648 80188C08 */  .4byte ftKirbyCopyDonkeySpecialNStartSetStatus
@@ -1478,7 +1478,7 @@ glabel dFtKirbySpecialNStatusList
   /* 57164 1036A4 80188C64 */  .4byte ftKirbySpecialNStartSetStatus
   /* 57168 1036A8 80188C68 */  .4byte ftKirbySpecialNStartSetStatus
 
-glabel dFtCommonSpecialNStatusList
+glabel dFTCommonSpecialNStatusList
   /* 5716C 1036AC 80188C6C */  .4byte ftMarioSpecialNSetStatus
   /* 57170 1036B0 80188C70 */  .4byte ftFoxSpecialNSetStatus
   /* 57174 1036B4 80188C74 */  .4byte ftDonkeySpecialNStartSetStatus
@@ -1508,7 +1508,7 @@ glabel dFtCommonSpecialNStatusList
   /* 571D4 103714 80188CD4 */  .4byte ftDonkeySpecialNStartSetStatus
   .incbin "ovl3.raw.bin", 0x571D8, 0x8
 
-glabel dFtCommonSpecialHiStatusList
+glabel dFTCommonSpecialHiStatusList
   /* 571E0 103720 80188CE0 */  .4byte ftMarioSpecialHiSetStatus
   /* 571E4 103724 80188CE4 */  .4byte ftFoxSpecialHiStartSetStatus
   /* 571E8 103728 80188CE8 */  .4byte ftDonkeySpecialHiSetStatus
@@ -1538,7 +1538,7 @@ glabel dFtCommonSpecialHiStatusList
   /* 57248 103788 80188D48 */  .4byte ftDonkeySpecialHiSetStatus
   .incbin "ovl3.raw.bin", 0x5724C, 0x4
 
-glabel dFtCommonSpecialLwStatusList
+glabel dFTCommonSpecialLwStatusList
   /* 57250 103790 80188D50 */  .4byte ftMarioSpecialLwSetStatus
   /* 57254 103794 80188D54 */  .4byte ftFoxSpecialLwStartSetStatus
   /* 57258 103798 80188D58 */  .4byte ftDonkeySpecialLwStartSetStatus
@@ -1586,13 +1586,13 @@ glabel D_ovl3_80188DEC
 glabel ftKirbySpecialNUnusedVec
   .incbin "ovl3.raw.bin", 0x57300, 0x10
 
-glabel dWpRenderPKThunderPrimColor
+glabel dWPRenderPKThunderPrimColor
   .incbin "ovl3.raw.bin", 0x57310, 0xC
 
-glabel dWpRenderPKThunderEnvColor
+glabel dWPRenderPKThunderEnvColor
   .incbin "ovl3.raw.bin", 0x5731C, 0x14
 
-glabel dWpMarioFireballWeaponAttributes
+glabel dWPMarioFireballWeaponAttributes
   .incbin "ovl3.raw.bin", 0x57330, 0x4
   /* 57334 103874 80188E34 */
   .asciz "B\\"
@@ -1613,16 +1613,16 @@ glabel D_ovl3_80188E44
   /* 57350 103890 80188E50 */
   .asciz "BH"
   .balign 4
-  /* 57354 103894 80188E54 */  .4byte gFtDataMarioExtra1
+  /* 57354 103894 80188E54 */  .4byte gFTDataMarioExtra1
   .incbin "ovl3.raw.bin", 0x57358, 0xC
   /* 57364 1038A4 80188E64 */
   .asciz "B\\"
   .balign 4
   .incbin "ovl3.raw.bin", 0x57368, 0x1C
-  /* 57384 1038C4 80188E84 */  .4byte gFtDataLuigiExtra1
+  /* 57384 1038C4 80188E84 */  .4byte gFTDataLuigiExtra1
   .incbin "ovl3.raw.bin", 0x57388, 0x8
 
-glabel dWpMarioFireballWeaponDesc
+glabel dWPMarioFireballWeaponDesc
   .incbin "ovl3.raw.bin", 0x57390, 0x8
   /* 57398 1038D8 80188E98 */  .4byte D_ovl2_80130E30
   .incbin "ovl3.raw.bin", 0x5739C, 0x8
@@ -1638,9 +1638,9 @@ glabel jtbl_ovl3_80188EA4
   /* 573C0 103900 80188EC0 */  .4byte wpMarioFireballProcHit
   .incbin "ovl3.raw.bin", 0x573C4, 0xC
 
-glabel dWpFoxBlasterWeaponDesc
+glabel dWPFoxBlasterWeaponDesc
   .incbin "ovl3.raw.bin", 0x573D0, 0x8
-  /* 573D8 103918 80188ED8 */  .4byte gFtDataFoxExtra1
+  /* 573D8 103918 80188ED8 */  .4byte gFTDataFoxExtra1
   .incbin "ovl3.raw.bin", 0x573DC, 0x8
 
 glabel jtbl_ovl3_80188EE4
@@ -1654,7 +1654,7 @@ glabel jtbl_ovl3_80188EE4
   /* 57400 103940 80188F00 */  .4byte wpFoxBlasterProcHit
   .incbin "ovl3.raw.bin", 0x57404, 0xC
 
-glabel dWpSamusChargeShotWeaponAttributes
+glabel dWPSamusChargeShotWeaponAttributes
   /* 57410 103950 80188F10 */
   .4byte 0x43160000 # .float 150.0
   /* 57414 103954 80188F14 */
@@ -1673,9 +1673,9 @@ glabel dWpSamusChargeShotWeaponAttributes
   .balign 4
   .incbin "ovl3.raw.bin", 0x57510, 0x20
 
-glabel dWpSamusChargeShotWeaponDesc
+glabel dWPSamusChargeShotWeaponDesc
   .incbin "ovl3.raw.bin", 0x57530, 0x8
-  /* 57538 103A78 80189038 */  .4byte gFtDataSamusExtra1
+  /* 57538 103A78 80189038 */  .4byte gFTDataSamusExtra1
   .incbin "ovl3.raw.bin", 0x5753C, 0x8
 
 glabel jtbl_ovl3_80189044
@@ -1689,9 +1689,9 @@ glabel jtbl_ovl3_80189044
   /* 57560 103AA0 80189060 */  .4byte wpSamusChargeShotProcHit
   .incbin "ovl3.raw.bin", 0x57564, 0xC
 
-glabel dWpSamusBombWeaponDesc
+glabel dWPSamusBombWeaponDesc
   .incbin "ovl3.raw.bin", 0x57570, 0x8
-  /* 57578 103AB8 80189078 */  .4byte gFtDataSamusMain
+  /* 57578 103AB8 80189078 */  .4byte gFTDataSamusMain
   .incbin "ovl3.raw.bin", 0x5757C, 0x8
 
 glabel jtbl_ovl3_80189084
@@ -1705,9 +1705,9 @@ glabel jtbl_ovl3_80189084
   /* 575A0 103AE0 801890A0 */  .4byte wpSamusBombProcAbsorb
   .incbin "ovl3.raw.bin", 0x575A4, 0xC
 
-glabel dWpPikachuThunderJoltAirWeaponDesc
+glabel dWPPikachuThunderJoltAirWeaponDesc
   .incbin "ovl3.raw.bin", 0x575B0, 0x8
-  /* 575B8 103AF8 801890B8 */  .4byte gFtDataPikachuExtra1
+  /* 575B8 103AF8 801890B8 */  .4byte gFTDataPikachuExtra1
   .incbin "ovl3.raw.bin", 0x575BC, 0x8
 
 glabel jtbl_ovl3_801890C4
@@ -1720,9 +1720,9 @@ glabel jtbl_ovl3_801890C4
   /* 575DC 103B1C 801890DC */  .4byte wpPikachuThunderJoltAirProcReflector
   /* 575E0 103B20 801890E0 */  .4byte wpPikachuThunderJoltAirProcHit
 
-glabel dWpPikachuThunderJoltGroundWeaponDesc
+glabel dWPPikachuThunderJoltGroundWeaponDesc
   .incbin "ovl3.raw.bin", 0x575E4, 0x8
-  /* 575EC 103B2C 801890EC */  .4byte gFtDataPikachuExtra1
+  /* 575EC 103B2C 801890EC */  .4byte gFTDataPikachuExtra1
   .incbin "ovl3.raw.bin", 0x575F0, 0x8
 
 glabel jtbl_ovl3_801890F8
@@ -1738,9 +1738,9 @@ glabel jtbl_ovl3_8018910C
   /* 57614 103B54 80189114 */  .4byte wpPikachuThunderJoltGroundProcHit
   .incbin "ovl3.raw.bin", 0x57618, 0x8
 
-glabel dWpPikachuThunderHeadWeaponDesc
+glabel dWPPikachuThunderHeadWeaponDesc
   .incbin "ovl3.raw.bin", 0x57620, 0x8
-  /* 57628 103B68 80189128 */  .4byte gFtDataPikachuMain
+  /* 57628 103B68 80189128 */  .4byte gFTDataPikachuMain
   .incbin "ovl3.raw.bin", 0x5762C, 0x8
 
 glabel jtbl_ovl3_80189134
@@ -1748,9 +1748,9 @@ glabel jtbl_ovl3_80189134
   /* 57638 103B78 80189138 */  .4byte wpPikachuThunderHeadProcMap
   .incbin "ovl3.raw.bin", 0x5763C, 0x18
 
-glabel dWpPikachuThunderTrailWeaponDesc
+glabel dWPPikachuThunderTrailWeaponDesc
   .incbin "ovl3.raw.bin", 0x57654, 0x8
-  /* 5765C 103B9C 8018915C */  .4byte gFtDataPikachuMain
+  /* 5765C 103B9C 8018915C */  .4byte gFTDataPikachuMain
   .incbin "ovl3.raw.bin", 0x57660, 0x8
   /* 57668 103BA8 80189168 */  .4byte wpPikachuThunderTrailProcUpdate
   .incbin "ovl3.raw.bin", 0x5766C, 0x4
@@ -1764,9 +1764,9 @@ glabel jtbl_ovl3_80189170
   /* 57684 103BC4 80189184 */  .4byte wpPikachuThunderTrailProcHit
   .incbin "ovl3.raw.bin", 0x57688, 0x8
 
-glabel dWpNessPKFireWeaponDesc
+glabel dWPNessPKFireWeaponDesc
   .incbin "ovl3.raw.bin", 0x57690, 0x8
-  /* 57698 103BD8 80189198 */  .4byte gFtDataNessExtra1
+  /* 57698 103BD8 80189198 */  .4byte gFTDataNessExtra1
   .incbin "ovl3.raw.bin", 0x5769C, 0x8
 
 glabel jtbl_ovl3_801891A4
@@ -1780,9 +1780,9 @@ glabel jtbl_ovl3_801891A4
   /* 576C0 103C00 801891C0 */  .4byte wpNessPKFireProcAbsorb
   .incbin "ovl3.raw.bin", 0x576C4, 0xC
 
-glabel dWpNessPKThunderHeadWeaponDesc
+glabel dWPNessPKThunderHeadWeaponDesc
   .incbin "ovl3.raw.bin", 0x576D0, 0x8
-  /* 576D8 103C18 801891D8 */  .4byte gFtDataNessMain
+  /* 576D8 103C18 801891D8 */  .4byte gFTDataNessMain
   .incbin "ovl3.raw.bin", 0x576DC, 0x8
 
 glabel jtbl_ovl3_801891E4
@@ -1797,9 +1797,9 @@ glabel jtbl_ovl3_801891F8
   /* 576FC 103C3C 801891FC */  .4byte wpNessPKThunderHeadProcReflector
   /* 57700 103C40 80189200 */  .4byte wpNessPKThunderHeadProcHit
 
-glabel dWpNessPKThunderTrailWeaponDesc
+glabel dWPNessPKThunderTrailWeaponDesc
   .incbin "ovl3.raw.bin", 0x57704, 0x8
-  /* 5770C 103C4C 8018920C */  .4byte gFtDataNessMain
+  /* 5770C 103C4C 8018920C */  .4byte gFTDataNessMain
   .incbin "ovl3.raw.bin", 0x57710, 0x8
   /* 57718 103C58 80189218 */  .4byte wpNessPKThunderTrailProcUpdate
   .incbin "ovl3.raw.bin", 0x5771C, 0x4
@@ -1812,9 +1812,9 @@ glabel jtbl_ovl3_80189220
   .incbin "ovl3.raw.bin", 0x57730, 0x4
   /* 57734 103C74 80189234 */  .4byte wpNessPKThunderTrailProcHit
 
-glabel dWpNessPKReflectHeadWeaponDesc
+glabel dWPNessPKReflectHeadWeaponDesc
   .incbin "ovl3.raw.bin", 0x57738, 0x8
-  /* 57740 103C80 80189240 */  .4byte gFtDataNessMain
+  /* 57740 103C80 80189240 */  .4byte gFTDataNessMain
   .incbin "ovl3.raw.bin", 0x57744, 0x8
 
 glabel jtbl_ovl3_8018924C
@@ -1829,9 +1829,9 @@ glabel jtbl_ovl3_80189260
   /* 57764 103CA4 80189264 */  .4byte wpNessPKReflectHeadProcReflector
   /* 57768 103CA8 80189268 */  .4byte wpNessPKReflectHeadProcHit
 
-glabel dWpNessPKReflectTrailWeaponDesc
+glabel dWPNessPKReflectTrailWeaponDesc
   .incbin "ovl3.raw.bin", 0x5776C, 0x8
-  /* 57774 103CB4 80189274 */  .4byte gFtDataNessMain
+  /* 57774 103CB4 80189274 */  .4byte gFTDataNessMain
   .incbin "ovl3.raw.bin", 0x57778, 0x8
   /* 57780 103CC0 80189280 */  .4byte wpNessPKReflectTrailProcUpdate
   .incbin "ovl3.raw.bin", 0x57784, 0x4
@@ -1844,9 +1844,9 @@ glabel jtbl_ovl3_80189288
   .incbin "ovl3.raw.bin", 0x57798, 0x4
   /* 5779C 103CDC 8018929C */  .4byte wpNessPKReflectTrailProcHit
 
-glabel dWpKirbyCutterWeaponDesc
+glabel dWPKirbyCutterWeaponDesc
   .incbin "ovl3.raw.bin", 0x577A0, 0x8
-  /* 577A8 103CE8 801892A8 */  .4byte gFtDataKirbyMain
+  /* 577A8 103CE8 801892A8 */  .4byte gFTDataKirbyMain
   .incbin "ovl3.raw.bin", 0x577AC, 0x8
 
 glabel jtbl_ovl3_801892B4
@@ -1862,9 +1862,9 @@ glabel jtbl_ovl3_801892C8
   /* 577D0 103D10 801892D0 */  .4byte wpKirbyCutterProcShield
   .incbin "ovl3.raw.bin", 0x577D4, 0xC
 
-glabel dWpYoshiEggThrowWeaponDesc
+glabel dWPYoshiEggThrowWeaponDesc
   .incbin "ovl3.raw.bin", 0x577E0, 0x8
-  /* 577E8 103D28 801892E8 */  .4byte gFtDataYoshiMain
+  /* 577E8 103D28 801892E8 */  .4byte gFTDataYoshiMain
   .incbin "ovl3.raw.bin", 0x577EC, 0x8
 
 glabel jtbl_ovl3_801892F4
@@ -1877,9 +1877,9 @@ glabel jtbl_ovl3_801892F4
   /* 5780C 103D4C 8018930C */  .4byte wpYoshiEggThrowProcReflector
   .incbin "ovl3.raw.bin", 0x57810, 0x10
 
-glabel dWpYoshiStarWeaponDesc
+glabel dWPYoshiStarWeaponDesc
   .incbin "ovl3.raw.bin", 0x57820, 0x8
-  /* 57828 103D68 80189328 */  .4byte gFtDataYoshiMain
+  /* 57828 103D68 80189328 */  .4byte gFTDataYoshiMain
   .incbin "ovl3.raw.bin", 0x5782C, 0x8
 
 glabel jtbl_ovl3_80189334
@@ -1893,9 +1893,9 @@ glabel jtbl_ovl3_80189334
   /* 57850 103D90 80189350 */  .4byte wpYoshiStarProcShield
   .incbin "ovl3.raw.bin", 0x57854, 0xC
 
-glabel dWpLinkSpinAttackWeaponDesc
+glabel dWPLinkSpinAttackWeaponDesc
   .incbin "ovl3.raw.bin", 0x57860, 0x8
-  /* 57868 103DA8 80189368 */  .4byte gFtDataLinkMain
+  /* 57868 103DA8 80189368 */  .4byte gFTDataLinkMain
   .incbin "ovl3.raw.bin", 0x5786C, 0x8
 
 glabel jtbl_ovl3_80189374
@@ -1909,7 +1909,7 @@ glabel jtbl_ovl3_80189374
 
 glabel wpLink_Boomerang_CreateDesc
   .incbin "ovl3.raw.bin", 0x578A0, 0x8
-  /* 578A8 103DE8 801893A8 */  .4byte gFtDataLinkExtra1
+  /* 578A8 103DE8 801893A8 */  .4byte gFTDataLinkExtra1
   .incbin "ovl3.raw.bin", 0x578AC, 0x8
 
 glabel jtbl_ovl3_801893B4
@@ -1923,9 +1923,9 @@ glabel jtbl_ovl3_801893B4
   /* 578D0 103E10 801893D0 */  .4byte wpLinkBoomerangProcHit
   .incbin "ovl3.raw.bin", 0x578D4, 0xC
 
-glabel dWpBossBulletNormalWeaponDesc
+glabel dWPBossBulletNormalWeaponDesc
   .incbin "ovl3.raw.bin", 0x578E0, 0x8
-  /* 578E8 103E28 801893E8 */  .4byte gFtDataBossBattleMotion
+  /* 578E8 103E28 801893E8 */  .4byte gFTDataBossBattleMotion
   .incbin "ovl3.raw.bin", 0x578EC, 0xC
 
 glabel jtbl_ovl3_801893F8
@@ -1937,9 +1937,9 @@ glabel jtbl_ovl3_801893F8
   /* 5790C 103E4C 8018940C */  .4byte wpBossBulletProcReflector
   /* 57910 103E50 80189410 */  .4byte wpBossBulletProcHit
 
-glabel dWpBossBulletHardWeaponDesc
+glabel dWPBossBulletHardWeaponDesc
   .incbin "ovl3.raw.bin", 0x57914, 0x8
-  /* 5791C 103E5C 8018941C */  .4byte gFtDataBossBattleMotion
+  /* 5791C 103E5C 8018941C */  .4byte gFTDataBossBattleMotion
   .incbin "ovl3.raw.bin", 0x57920, 0xC
 
 glabel jtbl_ovl3_8018942C
@@ -1952,16 +1952,16 @@ glabel jtbl_ovl3_8018942C
   /* 57944 103E84 80189444 */  .4byte wpBossBulletProcHit
   .incbin "ovl3.raw.bin", 0x57948, 0x8
 
-glabel dItMonsterSpawnID
+glabel dITMonsterSpawnID
   .incbin "ovl3.raw.bin", 0x57950, 0x4
 
-glabel dItCommonAppearanceRatesMin
+glabel dITCommonAppearanceRatesMin
   .incbin "ovl3.raw.bin", 0x57954, 0xC
 
-glabel dItCommonAppearanceRatesMax
+glabel dITCommonAppearanceRatesMax
   .incbin "ovl3.raw.bin", 0x57960, 0xC
 
-glabel dItMakeProcList
+glabel dITMakeProcList
   /* 5796C 103EAC 8018946C */  .4byte itBoxMakeItem
   /* 57970 103EB0 80189470 */  .4byte itTaruMakeItem
   /* 57974 103EB4 80189474 */  .4byte itCapsuleMakeItem
@@ -2013,7 +2013,7 @@ glabel jtbl_ovl3_801894D4
   /* 57A18 103F58 80189518 */  .4byte itPippiMakeItem
   /* 57A1C 103F5C 8018951C */  .4byte itMewMakeItem
 
-glabel dItDropProcList
+glabel dITDropProcList
   /* 57A20 103F60 80189520 */  .4byte itBoxFDropSetStatus
   /* 57A24 103F64 80189524 */  .4byte itTaruFDropSetStatus
   /* 57A28 103F68 80189528 */  .4byte itCapsuleFDropSetStatus
@@ -2041,7 +2041,7 @@ glabel jtbl_ovl3_8018953C
 glabel jtbl_ovl3_80189574
   /* 57A74 103FB4 80189574 */  .4byte itLinkBombFDropSetStatus
 
-glabel dItThrowProcList
+glabel dITThrowProcList
   /* 57A78 103FB8 80189578 */  .4byte itBoxFThrowSetStatus
   /* 57A7C 103FBC 8018957C */  .4byte itTaruFThrowSetStatus
   /* 57A80 103FC0 80189580 */  .4byte itCapsuleFThrowSetStatus
@@ -2067,7 +2067,7 @@ glabel jtbl_ovl3_80189594
 glabel jtbl_ovl3_801895CC
   /* 57ACC 10400C 801895CC */  .4byte itLinkBombFThrowSetStatus
 
-glabel dItPickupProcList
+glabel dITPickupProcList
   /* 57AD0 104010 801895D0 */  .4byte itBoxFHoldSetStatus
   /* 57AD4 104014 801895D4 */  .4byte itTaruFHoldSetStatus
   /* 57AD8 104018 801895D8 */  .4byte itCapsuleFHoldSetStatus
@@ -2092,11 +2092,11 @@ glabel jtbl_ovl3_801895EC
   /* 57B24 104064 80189624 */  .4byte itLinkBombFHoldSetStatus
   .incbin "ovl3.raw.bin", 0x57B28, 0x8
 
-glabel dItCapsuleItemDesc
+glabel dITCapsuleItemDesc
   .incbin "ovl3.raw.bin", 0x57B30, 0x4
 
 glabel D_ovl3_80189634
-  /* 57B34 104074 80189634 */  .4byte gItemFileData
+  /* 57B34 104074 80189634 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x57B38, 0xC
 
 glabel jtbl_ovl3_80189644
@@ -2105,7 +2105,7 @@ glabel jtbl_ovl3_80189644
   .incbin "ovl3.raw.bin", 0x57B4C, 0x14
   /* 57B60 1040A0 80189660 */  .4byte itCapsuleSDefaultProcHit
 
-glabel dItCapsuleStatusDesc
+glabel dITCapsuleStatusDesc
   .incbin "ovl3.raw.bin", 0x57B64, 0x4
   /* 57B68 1040A8 80189668 */  .4byte itCapsuleGWaitProcMap
   .incbin "ovl3.raw.bin", 0x57B6C, 0x14
@@ -2138,9 +2138,9 @@ glabel jtbl_ovl3_801896C4
   /* 57C04 104144 80189704 */  .4byte itCapsuleNExplodeProcUpdate
   .incbin "ovl3.raw.bin", 0x57C08, 0x28
 
-glabel dItTomatoItemDesc
+glabel dITTomatoItemDesc
   .incbin "ovl3.raw.bin", 0x57C30, 0x4
-  /* 57C34 104174 80189734 */  .4byte gItemFileData
+  /* 57C34 104174 80189734 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x57C38, 0xC
 
 glabel jtbl_ovl3_80189744
@@ -2148,7 +2148,7 @@ glabel jtbl_ovl3_80189744
   /* 57C48 104188 80189748 */  .4byte itTomatoAFallProcMap
   .incbin "ovl3.raw.bin", 0x57C4C, 0x18
 
-glabel dItTomatoStatusDesc
+glabel dITTomatoStatusDesc
   .incbin "ovl3.raw.bin", 0x57C64, 0x4
   /* 57C68 1041A8 80189768 */  .4byte itTomatoGWaitProcMap
   .incbin "ovl3.raw.bin", 0x57C6C, 0x18
@@ -2163,9 +2163,9 @@ glabel jtbl_ovl3_801897A4
   /* 57CA8 1041E8 801897A8 */  .4byte itTomatoFDropProcMap
   .incbin "ovl3.raw.bin", 0x57CAC, 0x24
 
-glabel dItHeartItemDesc
+glabel dITHeartItemDesc
   .incbin "ovl3.raw.bin", 0x57CD0, 0x4
-  /* 57CD4 104214 801897D4 */  .4byte gItemFileData
+  /* 57CD4 104214 801897D4 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x57CD8, 0xC
 
 glabel jtbl_ovl3_801897E4
@@ -2173,7 +2173,7 @@ glabel jtbl_ovl3_801897E4
   /* 57CE8 104228 801897E8 */  .4byte itHeartAFallProcMap
   .incbin "ovl3.raw.bin", 0x57CEC, 0x18
 
-glabel dItHeartStatusDesc
+glabel dITHeartStatusDesc
   .incbin "ovl3.raw.bin", 0x57D04, 0x4
   /* 57D08 104248 80189808 */  .4byte itHeartGWaitProcMap
   .incbin "ovl3.raw.bin", 0x57D0C, 0x18
@@ -2188,9 +2188,9 @@ glabel jtbl_ovl3_80189844
   /* 57D48 104288 80189848 */  .4byte itHeartFDropProcMap
   .incbin "ovl3.raw.bin", 0x57D4C, 0x24
 
-glabel dItStarItemDesc
+glabel dITStarItemDesc
   .incbin "ovl3.raw.bin", 0x57D70, 0x4
-  /* 57D74 1042B4 80189874 */  .4byte gItemFileData
+  /* 57D74 1042B4 80189874 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x57D78, 0xC
 
 glabel jtbl_ovl3_80189884
@@ -2199,9 +2199,9 @@ glabel jtbl_ovl3_80189884
   /* 57D8C 1042CC 8018988C */  .4byte itStarSDefaultProcHit
   .incbin "ovl3.raw.bin", 0x57D90, 0x20
 
-glabel dItSwordItemDesc
+glabel dITSwordITemDesc
   .incbin "ovl3.raw.bin", 0x57DB0, 0x4
-  /* 57DB4 1042F4 801898B4 */  .4byte gItemFileData
+  /* 57DB4 1042F4 801898B4 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x57DB8, 0xC
 
 glabel jtbl_ovl3_801898C4
@@ -2209,7 +2209,7 @@ glabel jtbl_ovl3_801898C4
   /* 57DC8 104308 801898C8 */  .4byte itSwordAFallProcMap
   .incbin "ovl3.raw.bin", 0x57DCC, 0x18
 
-glabel dItSwordStatusDesc
+glabel dITSwordStatusDesc
   .incbin "ovl3.raw.bin", 0x57DE4, 0x4
   /* 57DE8 104328 801898E8 */  .4byte itSwordGWaitProcMap
   .incbin "ovl3.raw.bin", 0x57DEC, 0x18
@@ -2241,7 +2241,7 @@ glabel jtbl_ovl3_80189964
 
 glabel itCommon_Bat_ItemDesc
   .incbin "ovl3.raw.bin", 0x57E90, 0x4
-  /* 57E94 1043D4 80189994 */  .4byte gItemFileData
+  /* 57E94 1043D4 80189994 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x57E98, 0xC
 
 glabel jtbl_ovl3_801899A4
@@ -2282,9 +2282,9 @@ glabel jtbl_ovl3_80189A44
 glabel D_ovl3_80189A70
   .incbin "ovl3.raw.bin", 0x57F70, 0x8
 
-glabel dItHarisenItemDesc
+glabel dITHarisenItemDesc
   .incbin "ovl3.raw.bin", 0x57F78, 0x4
-  /* 57F7C 1044BC 80189A7C */  .4byte gItemFileData
+  /* 57F7C 1044BC 80189A7C */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x57F80, 0xC
 
 glabel jtbl_ovl3_80189A8C
@@ -2292,7 +2292,7 @@ glabel jtbl_ovl3_80189A8C
   /* 57F90 1044D0 80189A90 */  .4byte itHarisenAFallProcMap
   .incbin "ovl3.raw.bin", 0x57F94, 0x18
 
-glabel dItHarisenStatusDesc
+glabel dITHarisenStatusDesc
   .incbin "ovl3.raw.bin", 0x57FAC, 0x4
   /* 57FB0 1044F0 80189AB0 */  .4byte itHarisenGWaitProcMap
   .incbin "ovl3.raw.bin", 0x57FB4, 0x18
@@ -2322,9 +2322,9 @@ glabel jtbl_ovl3_80189B2C
   /* 58044 104584 80189B44 */  .4byte itCommonSDefaultProcReflector
   .incbin "ovl3.raw.bin", 0x58048, 0x8
 
-glabel dItLGunItemDesc
+glabel dITLGunItemDesc
   .incbin "ovl3.raw.bin", 0x58050, 0x4
-  /* 58054 104594 80189B54 */  .4byte gItemFileData
+  /* 58054 104594 80189B54 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58058, 0xC
 
 glabel jtbl_ovl3_80189B64
@@ -2332,7 +2332,7 @@ glabel jtbl_ovl3_80189B64
   /* 58068 1045A8 80189B68 */  .4byte itLGunAFallProcMap
   .incbin "ovl3.raw.bin", 0x5806C, 0x18
 
-glabel dItLGunStatusDesc
+glabel dITLGunStatusDesc
   .incbin "ovl3.raw.bin", 0x58084, 0x4
   /* 58088 1045C8 80189B88 */  .4byte itLGunGWaitProcMap
   .incbin "ovl3.raw.bin", 0x5808C, 0x18
@@ -2364,7 +2364,7 @@ glabel jtbl_ovl3_80189C04
 
 glabel itLGunWeaponAmmoWeaponDesc
   .incbin "ovl3.raw.bin", 0x58124, 0x8
-  /* 5812C 10466C 80189C2C */  .4byte gItemFileData
+  /* 5812C 10466C 80189C2C */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58130, 0x8
 
 glabel jtbl_ovl3_80189C38
@@ -2378,11 +2378,11 @@ glabel jtbl_ovl3_80189C38
   /* 58154 104694 80189C54 */  .4byte itLGunWeaponAmmoProcHit
   .incbin "ovl3.raw.bin", 0x58158, 0x8
 
-glabel dItFFlowerItemDesc
+glabel dITFFlowerItemDesc
   .incbin "ovl3.raw.bin", 0x58160, 0x4
 
 glabel D_ovl3_80189C64
-  /* 58164 1046A4 80189C64 */  .4byte gItemFileData
+  /* 58164 1046A4 80189C64 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58168, 0xC
 
 glabel jtbl_ovl3_80189C74
@@ -2390,7 +2390,7 @@ glabel jtbl_ovl3_80189C74
   /* 58178 1046B8 80189C78 */  .4byte itFFlowerAFallProcMap
   .incbin "ovl3.raw.bin", 0x5817C, 0x18
 
-glabel dItFFlowerStatusDesc
+glabel dITFFlowerStatusDesc
   .incbin "ovl3.raw.bin", 0x58194, 0x4
   /* 58198 1046D8 80189C98 */  .4byte itFFlowerGWaitProcMap
   .incbin "ovl3.raw.bin", 0x5819C, 0x18
@@ -2420,9 +2420,9 @@ glabel jtbl_ovl3_80189D14
   /* 5822C 10476C 80189D2C */  .4byte itCommonSDefaultProcReflector
   .incbin "ovl3.raw.bin", 0x58230, 0x4
 
-glabel dItFFlowerWeaponFlameWeaponDesc
+glabel dITFFlowerWeaponFlameWeaponDesc
   .incbin "ovl3.raw.bin", 0x58234, 0x8
-  /* 5823C 10477C 80189D3C */  .4byte gItemFileData
+  /* 5823C 10477C 80189D3C */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58240, 0x8
 
 glabel jtbl_ovl3_80189D48
@@ -2437,9 +2437,9 @@ glabel jtbl_ovl3_80189D5C
   /* 58260 1047A0 80189D60 */  .4byte itFFlowerWeaponFlameProcReflector
   .incbin "ovl3.raw.bin", 0x58264, 0xC
 
-glabel dItHammerItemDesc
+glabel dITHammerItemDesc
   .incbin "ovl3.raw.bin", 0x58270, 0x4
-  /* 58274 1047B4 80189D74 */  .4byte gItemFileData
+  /* 58274 1047B4 80189D74 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58278, 0xC
 
 glabel jtbl_ovl3_80189D84
@@ -2447,7 +2447,7 @@ glabel jtbl_ovl3_80189D84
   /* 58288 1047C8 80189D88 */  .4byte itHammerAFallProcMap
   .incbin "ovl3.raw.bin", 0x5828C, 0x18
 
-glabel dItHammerStatusDesc
+glabel dITHammerStatusDesc
   .incbin "ovl3.raw.bin", 0x582A4, 0x4
   /* 582A8 1047E8 80189DA8 */  .4byte itHammerGWaitProcMap
   .incbin "ovl3.raw.bin", 0x582AC, 0x18
@@ -2478,8 +2478,8 @@ glabel jtbl_ovl3_80189E24
 glabel D_ovl3_80189E50
   .incbin "ovl3.raw.bin", 0x58350, 0x4
 
-glabel dItMSBombItemDesc
-  /* 58354 104894 80189E54 */  .4byte gItemFileData
+glabel dITMSBombItemDesc
+  /* 58354 104894 80189E54 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58358, 0xC
 
 glabel jtbl_ovl3_80189E64
@@ -2487,7 +2487,7 @@ glabel jtbl_ovl3_80189E64
   /* 58368 1048A8 80189E68 */  .4byte itMSBombAFallProcMap
   .incbin "ovl3.raw.bin", 0x5836C, 0x18
 
-glabel dItMSBombStatusDesc
+glabel dITMSBombStatusDesc
   .incbin "ovl3.raw.bin", 0x58384, 0x4
   /* 58388 1048C8 80189E88 */  .4byte itMSBombGWaitProcMap
   .incbin "ovl3.raw.bin", 0x5838C, 0x18
@@ -2537,7 +2537,7 @@ glabel itCommon_BombHei_ItemDesc
   .incbin "ovl3.raw.bin", 0x58498, 0x4
 
 glabel D_ovl3_80189F9C
-  /* 5849C 1049DC 80189F9C */  .4byte gItemFileData
+  /* 5849C 1049DC 80189F9C */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x584A0, 0xC
 
 glabel jtbl_ovl3_80189FAC
@@ -2613,9 +2613,9 @@ glabel jtbl_ovl3_8018A0E0
   /* 585E8 104B28 8018A0E8 */  .4byte itBombHei_MExplode_ProcHit
   .incbin "ovl3.raw.bin", 0x585EC, 0x4
 
-glabel dItStarRodItemDesc
+glabel dITStarRodITemDesc
   .incbin "ovl3.raw.bin", 0x585F0, 0x4
-  /* 585F4 104B34 8018A0F4 */  .4byte gItemFileData
+  /* 585F4 104B34 8018A0F4 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x585F8, 0xC
 
 glabel jtbl_ovl3_8018A104
@@ -2623,7 +2623,7 @@ glabel jtbl_ovl3_8018A104
   /* 58608 104B48 8018A108 */  .4byte itStarRodAFallProcMap
   .incbin "ovl3.raw.bin", 0x5860C, 0x18
 
-glabel dItStarRodStatusDesc
+glabel dITStarRodStatusDesc
   .incbin "ovl3.raw.bin", 0x58624, 0x4
   /* 58628 104B68 8018A128 */  .4byte itStarRodGWaitProcMap
   .incbin "ovl3.raw.bin", 0x5862C, 0x18
@@ -2653,9 +2653,9 @@ glabel jtbl_ovl3_8018A1A4
   /* 586BC 104BFC 8018A1BC */  .4byte itCommonSDefaultProcReflector
   .incbin "ovl3.raw.bin", 0x586C0, 0x4
 
-glabel dItStarRodWeaponStarWeaponDesc
+glabel dITStarRodWeaponStarWeaponDesc
   .incbin "ovl3.raw.bin", 0x586C4, 0x8
-  /* 586CC 104C0C 8018A1CC */  .4byte gItemFileData
+  /* 586CC 104C0C 8018A1CC */  .4byte gITemFileData
 
 glabel D_ovl3_8018A1D0
   .incbin "ovl3.raw.bin", 0x586D0, 0x8
@@ -2671,9 +2671,9 @@ glabel jtbl_ovl3_8018A1D8
   /* 586F4 104C34 8018A1F4 */  .4byte itStarRodWeaponStarProcHit
   .incbin "ovl3.raw.bin", 0x586F8, 0x8
 
-glabel dItGShellItemDesc
+glabel dITGShellITemDesc
   .incbin "ovl3.raw.bin", 0x58700, 0x4
-  /* 58704 104C44 8018A204 */  .4byte gItemFileData
+  /* 58704 104C44 8018A204 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58708, 0xC
 
 glabel jtbl_ovl3_8018A214
@@ -2681,7 +2681,7 @@ glabel jtbl_ovl3_8018A214
   /* 58718 104C58 8018A218 */  .4byte itGShellAFallProcMap
   .incbin "ovl3.raw.bin", 0x5871C, 0x18
 
-glabel dItGShellStatusDesc
+glabel dITGShellStatusDesc
   .incbin "ovl3.raw.bin", 0x58734, 0x4
   /* 58738 104C78 8018A238 */  .4byte itGShellGWaitProcMap
   .incbin "ovl3.raw.bin", 0x5873C, 0x14
@@ -2729,7 +2729,7 @@ glabel jtbl_ovl3_8018A30C
   /* 58810 104D50 8018A310 */  .4byte itGShellGASpinProcDamage
   .incbin "ovl3.raw.bin", 0x58814, 0xC
 
-glabel dItBoxItemSpawnVelocities
+glabel dITBoxItemSpawnVelocities
   .incbin "ovl3.raw.bin", 0x58820, 0x4
   /* 58824 104D64 8018A324 */
   .asciz "B@"
@@ -2750,11 +2750,11 @@ glabel D_ovl3_8018A328
 glabel D_ovl3_8018A338
   .incbin "ovl3.raw.bin", 0x58838, 0x18
 
-glabel dItBoxItemDesc
+glabel dITBoxItemDesc
   .incbin "ovl3.raw.bin", 0x58850, 0x4
 
 glabel D_ovl3_8018A354
-  /* 58854 104D94 8018A354 */  .4byte gItemFileData
+  /* 58854 104D94 8018A354 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58858, 0xC
 
 glabel jtbl_ovl3_8018A364
@@ -2762,7 +2762,7 @@ glabel jtbl_ovl3_8018A364
   /* 58868 104DA8 8018A368 */  .4byte itBoxAFallProcMap
   .incbin "ovl3.raw.bin", 0x5886C, 0x18
 
-glabel dItBoxStatusDesc
+glabel dITBoxStatusDesc
   .incbin "ovl3.raw.bin", 0x58884, 0x4
   /* 58888 104DC8 8018A388 */  .4byte itBoxGWaitProcMap
   .incbin "ovl3.raw.bin", 0x5888C, 0x14
@@ -2797,11 +2797,11 @@ glabel jtbl_ovl3_8018A418
   /* 58924 104E64 8018A424 */  .4byte itBoxNExplodeProcUpdate
   .incbin "ovl3.raw.bin", 0x58928, 0x28
 
-glabel dItTaruItemDesc
+glabel dITTaruItemDesc
   .incbin "ovl3.raw.bin", 0x58950, 0x4
 
 glabel D_ovl3_8018A454
-  /* 58954 104E94 8018A454 */  .4byte gItemFileData
+  /* 58954 104E94 8018A454 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58958, 0xC
 
 glabel jtbl_ovl3_8018A464
@@ -2809,7 +2809,7 @@ glabel jtbl_ovl3_8018A464
   /* 58968 104EA8 8018A468 */  .4byte itTaruAFallProcMap
   .incbin "ovl3.raw.bin", 0x5896C, 0x18
 
-glabel dItTaruStatusDesc
+glabel dITTaruStatusDesc
   .incbin "ovl3.raw.bin", 0x58984, 0x4
   /* 58988 104EC8 8018A488 */  .4byte itTaruGWaitProcMap
   .incbin "ovl3.raw.bin", 0x5898C, 0x14
@@ -2859,7 +2859,7 @@ glabel jtbl_ovl3_8018A558
 
 glabel itCommon_RShell_ItemDesc
   .incbin "ovl3.raw.bin", 0x58A70, 0x4
-  /* 58A74 104FB4 8018A574 */  .4byte gItemFileData
+  /* 58A74 104FB4 8018A574 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58A78, 0xC
 
 glabel jtbl_ovl3_8018A584
@@ -2868,7 +2868,7 @@ glabel jtbl_ovl3_8018A584
   .incbin "ovl3.raw.bin", 0x58A8C, 0x14
   /* 58AA0 104FE0 8018A5A0 */  .4byte itRShellSDefaultProcDamage
 
-glabel dItRShellStatusDesc
+glabel dITRShellStatusDesc
   .incbin "ovl3.raw.bin", 0x58AA4, 0x4
   /* 58AA8 104FE8 8018A5A8 */  .4byte itRShellGWaitProcMap
   .incbin "ovl3.raw.bin", 0x58AAC, 0x14
@@ -2916,9 +2916,9 @@ glabel jtbl_ovl3_8018A67C
   /* 58B80 1050C0 8018A680 */  .4byte itRShellSDefaultProcDamage
   .incbin "ovl3.raw.bin", 0x58B84, 0xC
 
-glabel dItNBumperItemDesc
+glabel dITNBumperItemDesc
   .incbin "ovl3.raw.bin", 0x58B90, 0x4
-  /* 58B94 1050D4 8018A694 */  .4byte gItemFileData
+  /* 58B94 1050D4 8018A694 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58B98, 0xC
 
 glabel jtbl_ovl3_8018A6A4
@@ -2926,7 +2926,7 @@ glabel jtbl_ovl3_8018A6A4
   /* 58BA8 1050E8 8018A6A8 */  .4byte itNBumperAFallProcMap
   .incbin "ovl3.raw.bin", 0x58BAC, 0x18
 
-glabel dItNBumperStatusDesc
+glabel dITNBumperStatusDesc
   .incbin "ovl3.raw.bin", 0x58BC4, 0x4
   /* 58BC8 105108 8018A6C8 */  .4byte itNBumperGWaitProcMap
   .incbin "ovl3.raw.bin", 0x58BCC, 0x18
@@ -2975,7 +2975,7 @@ glabel jtbl_ovl3_8018A784
   /* 58CA4 1051E4 8018A7A4 */  .4byte itNBumperGDisappearProcUpdate
   .incbin "ovl3.raw.bin", 0x58CA8, 0x28
 
-glabel dItPowerBlockItemDesc
+glabel dITPowerBlockItemDesc
   .incbin "ovl3.raw.bin", 0x58CD0, 0x4
   /* 58CD4 105214 8018A7D4 */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x58CD8, 0x4
@@ -2986,12 +2986,12 @@ glabel dItPowerBlockItemDesc
   /* 58CE4 105224 8018A7E4 */  .4byte itPowerBlockSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x58CE8, 0x1C
 
-glabel dItPowerBlockStatusDesc
+glabel dITPowerBlockStatusDesc
   .incbin "ovl3.raw.bin", 0x58D04, 0x1C
   /* 58D20 105260 8018A820 */  .4byte itPowerBlockNWaitProcDamage
   .incbin "ovl3.raw.bin", 0x58D24, 0xC
 
-glabel dItGLuckyItemDesc
+glabel dITGLuckyItemDesc
   .incbin "ovl3.raw.bin", 0x58D30, 0x4
   /* 58D34 105274 8018A834 */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x58D38, 0xC
@@ -3003,13 +3003,13 @@ glabel dItGLuckyItemDesc
 glabel jtbl_ovl3_8018A860
   /* 58D60 1052A0 8018A860 */  .4byte itGLuckySDefaultProcDamage
 
-glabel dItGLuckyStatusDesc
+glabel dITGLuckyStatusDesc
   /* 58D64 1052A4 8018A864 */  .4byte itGLuckyNDamageProcUpdate
   .incbin "ovl3.raw.bin", 0x58D68, 0x28
 
-glabel dItMBallItemDesc
+glabel dITMBallITemDesc
   .incbin "ovl3.raw.bin", 0x58D90, 0x4
-  /* 58D94 1052D4 8018A894 */  .4byte gItemFileData
+  /* 58D94 1052D4 8018A894 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58D98, 0xC
 
 glabel jtbl_ovl3_8018A8A4
@@ -3017,7 +3017,7 @@ glabel jtbl_ovl3_8018A8A4
   /* 58DA8 1052E8 8018A8A8 */  .4byte itMBallAFallProcMap
   .incbin "ovl3.raw.bin", 0x58DAC, 0x18
 
-glabel dItMBallStatusDesc
+glabel dITMBallStatusDesc
   .incbin "ovl3.raw.bin", 0x58DC4, 0x4
   /* 58DC8 105308 8018A8C8 */  .4byte itMBallGWaitProcMap
   .incbin "ovl3.raw.bin", 0x58DCC, 0x18
@@ -3059,14 +3059,14 @@ glabel jtbl_ovl3_8018A984
   /* 58E9C 1053DC 8018A99C */  .4byte itMBallSDefaultProcReflector
   .incbin "ovl3.raw.bin", 0x58EA0, 0x10
 
-glabel dItPakkunItemDesc
+glabel dITPakkunItemDesc
   .incbin "ovl3.raw.bin", 0x58EB0, 0x4
   /* 58EB4 1053F4 8018A9B4 */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x58EB8, 0xC
   /* 58EC4 105404 8018A9C4 */  .4byte itPakkunDWaitProcUpdate
   .incbin "ovl3.raw.bin", 0x58EC8, 0x1C
 
-glabel dItPakkunStatusDesc
+glabel dITPakkunStatusDesc
   /* 58EE4 105424 8018A9E4 */  .4byte itPakkunDWaitProcUpdate
   .incbin "ovl3.raw.bin", 0x58EE8, 0x1C
   /* 58F04 105444 8018AA04 */  .4byte itPakkunDAppearProcUpdate
@@ -3077,18 +3077,18 @@ glabel jtbl_ovl3_8018AA20
   /* 58F24 105464 8018AA24 */  .4byte itPakkunNDamageProcUpdate
   .incbin "ovl3.raw.bin", 0x58F28, 0x28
 
-glabel dItGBumperItemDesc
+glabel dITGBumperItemDesc
   .incbin "ovl3.raw.bin", 0x58F50, 0x4
-  /* 58F54 105494 8018AA54 */  .4byte gItemFileData
+  /* 58F54 105494 8018AA54 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58F58, 0xC
   /* 58F64 1054A4 8018AA64 */  .4byte itGBumperSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x58F68, 0x4
   /* 58F6C 1054AC 8018AA6C */  .4byte itGBumperSDefaultProcHit
   .incbin "ovl3.raw.bin", 0x58F70, 0x20
 
-glabel dItIwarkItemDesc
+glabel dITIwarkItemDesc
   .incbin "ovl3.raw.bin", 0x58F90, 0x4
-  /* 58F94 1054D4 8018AA94 */  .4byte gItemFileData
+  /* 58F94 1054D4 8018AA94 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x58F98, 0xC
 
 glabel jtbl_ovl3_8018AAA4
@@ -3096,15 +3096,15 @@ glabel jtbl_ovl3_8018AAA4
   /* 58FA8 1054E8 8018AAA8 */  .4byte itIwarkSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x58FAC, 0x18
 
-glabel dItIwarkStatusDesc
+glabel dITIwarkStatusDesc
   /* 58FC4 105504 8018AAC4 */  .4byte itIwarkNFlyProcUpdate
   .incbin "ovl3.raw.bin", 0x58FC8, 0x1C
   /* 58FE4 105524 8018AAE4 */  .4byte itIwarkNAttackProcUpdate
   .incbin "ovl3.raw.bin", 0x58FE8, 0x1C
 
-glabel dItIwarkWeaponRockWeaponDesc
+glabel dITIwarkWeaponRockWeaponDesc
   .incbin "ovl3.raw.bin", 0x59004, 0x8
-  /* 5900C 10554C 8018AB0C */  .4byte gItemFileData
+  /* 5900C 10554C 8018AB0C */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x59010, 0x8
 
 glabel jtbl_ovl3_8018AB18
@@ -3116,22 +3116,22 @@ glabel jtbl_ovl3_8018AB18
   /* 59030 105570 8018AB30 */  .4byte itIwarkWeaponRockProcReflector
   .incbin "ovl3.raw.bin", 0x59034, 0xC
 
-glabel dItKabigonItemDesc
+glabel dITKabigonItemDesc
   .incbin "ovl3.raw.bin", 0x59040, 0x4
-  /* 59044 105584 8018AB44 */  .4byte gItemFileData
+  /* 59044 105584 8018AB44 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x59048, 0xC
   /* 59054 105594 8018AB54 */  .4byte itKabigonSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x59058, 0x1C
 
-glabel dItKabigonStatusDesc
+glabel dITKabigonStatusDesc
   /* 59074 1055B4 8018AB74 */  .4byte itKabigonNJumpProcUpdate
   .incbin "ovl3.raw.bin", 0x59078, 0x1C
   /* 59094 1055D4 8018AB94 */  .4byte itKabigonNFallProcUpdate
   .incbin "ovl3.raw.bin", 0x59098, 0x28
 
-glabel dItTosakintoItemDesc
+glabel dITTosakintoItemDesc
   .incbin "ovl3.raw.bin", 0x590C0, 0x4
-  /* 590C4 105604 8018ABC4 */  .4byte gItemFileData
+  /* 590C4 105604 8018ABC4 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x590C8, 0xC
 
 glabel jtbl_ovl3_8018ABD4
@@ -3139,7 +3139,7 @@ glabel jtbl_ovl3_8018ABD4
   /* 590D8 105618 8018ABD8 */  .4byte itTosakintoSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x590DC, 0x18
 
-glabel dItTosakintoStatusDesc
+glabel dITTosakintoStatusDesc
   /* 590F4 105634 8018ABF4 */  .4byte itTosakintoNAppearProcUpdate
   /* 590F8 105638 8018ABF8 */  .4byte itTosakintoNAppearProcMap
   .incbin "ovl3.raw.bin", 0x590FC, 0x18
@@ -3149,9 +3149,9 @@ glabel jtbl_ovl3_8018AC14
   /* 59118 105658 8018AC18 */  .4byte itTosakintoNSplashProcMap
   .incbin "ovl3.raw.bin", 0x5911C, 0x24
 
-glabel dItMewItemDesc
+glabel dITMewItemDesc
   .incbin "ovl3.raw.bin", 0x59140, 0x4
-  /* 59144 105684 8018AC44 */  .4byte gItemFileData
+  /* 59144 105684 8018AC44 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x59148, 0xC
 
 glabel jtbl_ovl3_8018AC54
@@ -3159,13 +3159,13 @@ glabel jtbl_ovl3_8018AC54
   /* 59158 105698 8018AC58 */  .4byte itMewSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x5915C, 0x18
 
-glabel dItMewStatusDesc
+glabel dITMewStatusDesc
   /* 59174 1056B4 8018AC74 */  .4byte itMewNFlyProcUpdate
   .incbin "ovl3.raw.bin", 0x59178, 0x28
 
-glabel dItNyarsItemDesc
+glabel dITNyarsItemDesc
   .incbin "ovl3.raw.bin", 0x591A0, 0x4
-  /* 591A4 1056E4 8018ACA4 */  .4byte gItemFileData
+  /* 591A4 1056E4 8018ACA4 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x591A8, 0xC
 
 glabel jtbl_ovl3_8018ACB4
@@ -3173,13 +3173,13 @@ glabel jtbl_ovl3_8018ACB4
   /* 591B8 1056F8 8018ACB8 */  .4byte itNyarsSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x591BC, 0x18
 
-glabel dItNyarsStatusDesc
+glabel dITNyarsStatusDesc
   /* 591D4 105714 8018ACD4 */  .4byte itNyarsNAttackProcUpdate
   .incbin "ovl3.raw.bin", 0x591D8, 0x1C
 
-glabel dItNyarsWeaponCoinWeaponDesc
+glabel dITNyarsWeaponCoinWeaponDesc
   .incbin "ovl3.raw.bin", 0x591F4, 0x8
-  /* 591FC 10573C 8018ACFC */  .4byte gItemFileData
+  /* 591FC 10573C 8018ACFC */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x59200, 0x8
   /* 59208 105748 8018AD08 */  .4byte itNyarsWeaponCoinProcUpdate
   .incbin "ovl3.raw.bin", 0x5920C, 0x4
@@ -3193,9 +3193,9 @@ glabel jtbl_ovl3_8018AD10
   /* 59224 105764 8018AD24 */  .4byte itNyarsWeaponCoinProcHit
   .incbin "ovl3.raw.bin", 0x59228, 0x8
 
-glabel dItLizardonItemDesc
+glabel dITLizardonItemDesc
   .incbin "ovl3.raw.bin", 0x59230, 0x4
-  /* 59234 105774 8018AD34 */  .4byte gItemFileData
+  /* 59234 105774 8018AD34 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x59238, 0xC
 
 glabel jtbl_ovl3_8018AD44
@@ -3203,7 +3203,7 @@ glabel jtbl_ovl3_8018AD44
   /* 59248 105788 8018AD48 */  .4byte itLizardonSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x5924C, 0x18
 
-glabel dItLizardonStatusDesc
+glabel dITLizardonStatusDesc
   /* 59264 1057A4 8018AD64 */  .4byte itLizardonUFallProcUpdate
   /* 59268 1057A8 8018AD68 */  .4byte itLizardonUFallProcMap
   .incbin "ovl3.raw.bin", 0x5926C, 0x18
@@ -3218,9 +3218,9 @@ glabel jtbl_ovl3_8018ADA4
   /* 592A8 1057E8 8018ADA8 */  .4byte itLizardonNAttackProcMap
   .incbin "ovl3.raw.bin", 0x592AC, 0x18
 
-glabel dItLizardonWeaponFlameWeaponDesc
+glabel dITLizardonWeaponFlameWeaponDesc
   .incbin "ovl3.raw.bin", 0x592C4, 0x8
-  /* 592CC 10580C 8018ADCC */  .4byte gItemFileData
+  /* 592CC 10580C 8018ADCC */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x592D0, 0x8
 
 glabel jtbl_ovl3_8018ADD8
@@ -3235,9 +3235,9 @@ glabel jtbl_ovl3_8018ADEC
   /* 592F0 105830 8018ADF0 */  .4byte itLizardonWeaponFlameProcReflector
   .incbin "ovl3.raw.bin", 0x592F4, 0xC
 
-glabel dItSpearItemDesc
+glabel dITSpearItemDesc
   .incbin "ovl3.raw.bin", 0x59300, 0x4
-  /* 59304 105844 8018AE04 */  .4byte gItemFileData
+  /* 59304 105844 8018AE04 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x59308, 0xC
 
 glabel jtbl_ovl3_8018AE14
@@ -3245,29 +3245,29 @@ glabel jtbl_ovl3_8018AE14
   /* 59318 105858 8018AE18 */  .4byte itSpearSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x5931C, 0x18
 
-glabel dItSpearStatusDesc
+glabel dITSpearStatusDesc
   /* 59334 105874 8018AE34 */  .4byte itSpearNAppearProcUpdate
   .incbin "ovl3.raw.bin", 0x59338, 0x1C
   /* 59354 105894 8018AE54 */  .4byte itSpearNFlyProcUpdate
   .incbin "ovl3.raw.bin", 0x59358, 0x1C
 
-glabel dItSpearWeaponSwarmWeaponDesc
+glabel dITSpearWeaponSwarmWeaponDesc
   .incbin "ovl3.raw.bin", 0x59374, 0x8
-  /* 5937C 1058BC 8018AE7C */  .4byte gItemFileData
+  /* 5937C 1058BC 8018AE7C */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x59380, 0x8
   /* 59388 1058C8 8018AE88 */  .4byte itSpearWeaponSwarmProcUpdate
   .incbin "ovl3.raw.bin", 0x5938C, 0x1C
 
-glabel dItPippiWeaponSwarmWeaponDesc
+glabel dITPippiWeaponSwarmWeaponDesc
   .incbin "ovl3.raw.bin", 0x593A8, 0x8
-  /* 593B0 1058F0 8018AEB0 */  .4byte gItemFileData
+  /* 593B0 1058F0 8018AEB0 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x593B4, 0x8
   /* 593BC 1058FC 8018AEBC */  .4byte itSpearWeaponSwarmProcUpdate
   .incbin "ovl3.raw.bin", 0x593C0, 0x20
 
-glabel dItKamexItemDesc
+glabel dITKamexItemDesc
   .incbin "ovl3.raw.bin", 0x593E0, 0x4
-  /* 593E4 105924 8018AEE4 */  .4byte gItemFileData
+  /* 593E4 105924 8018AEE4 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x593E8, 0xC
 
 glabel jtbl_ovl3_8018AEF4
@@ -3275,7 +3275,7 @@ glabel jtbl_ovl3_8018AEF4
   /* 593F8 105938 8018AEF8 */  .4byte itKamexSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x593FC, 0x18
 
-glabel dItKamexStatusDesc
+glabel dITKamexStatusDesc
   /* 59414 105954 8018AF14 */  .4byte itKamexAFallProcUpdate
   /* 59418 105958 8018AF18 */  .4byte itKamexAFallProcMap
   .incbin "ovl3.raw.bin", 0x5941C, 0x18
@@ -3290,9 +3290,9 @@ glabel jtbl_ovl3_8018AF54
   /* 59458 105998 8018AF58 */  .4byte itKamexNAttackProcMap
   .incbin "ovl3.raw.bin", 0x5945C, 0x18
 
-glabel dItKamexWeaponHydroWeaponDesc
+glabel dITKamexWeaponHydroWeaponDesc
   .incbin "ovl3.raw.bin", 0x59474, 0x8
-  /* 5947C 1059BC 8018AF7C */  .4byte gItemFileData
+  /* 5947C 1059BC 8018AF7C */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x59480, 0x8
   /* 59488 1059C8 8018AF88 */  .4byte itKamexWeaponHydroProcUpdate
   .incbin "ovl3.raw.bin", 0x5948C, 0x4
@@ -3308,9 +3308,9 @@ glabel jtbl_ovl3_8018AF9C
   /* 594A4 1059E4 8018AFA4 */  .4byte itKamexWeaponHydroProcHit
   .incbin "ovl3.raw.bin", 0x594A8, 0x8
 
-glabel dItMLuckyItemDesc
+glabel dITMLuckyItemDesc
   .incbin "ovl3.raw.bin", 0x594B0, 0x4
-  /* 594B4 1059F4 8018AFB4 */  .4byte gItemFileData
+  /* 594B4 1059F4 8018AFB4 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x594B8, 0xC
 
 glabel jtbl_ovl3_8018AFC4
@@ -3318,7 +3318,7 @@ glabel jtbl_ovl3_8018AFC4
   /* 594C8 105A08 8018AFC8 */  .4byte itMLuckySDefaultProcMap
   .incbin "ovl3.raw.bin", 0x594CC, 0x18
 
-glabel dItMLuckyStatusDesc
+glabel dITMLuckyStatusDesc
   /* 594E4 105A24 8018AFE4 */  .4byte itMLuckyAFallProcUpdate
   /* 594E8 105A28 8018AFE8 */  .4byte itMLuckyAFallProcMap
   .incbin "ovl3.raw.bin", 0x594EC, 0x18
@@ -3339,11 +3339,11 @@ glabel jtbl_ovl3_8018B040
   /* 59548 105A88 8018B048 */  .4byte itMLuckyNSpawnProcMap
   .incbin "ovl3.raw.bin", 0x5954C, 0x24
 
-glabel dItEggItemDesc
+glabel dITEggITemDesc
   .incbin "ovl3.raw.bin", 0x59570, 0x4
 
 glabel D_ovl3_8018B074
-  /* 59574 105AB4 8018B074 */  .4byte gItemFileData
+  /* 59574 105AB4 8018B074 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x59578, 0xC
 
 glabel jtbl_ovl3_8018B084
@@ -3352,7 +3352,7 @@ glabel jtbl_ovl3_8018B084
   .incbin "ovl3.raw.bin", 0x5958C, 0x14
   /* 595A0 105AE0 8018B0A0 */  .4byte itEggSDefaultProcHit
 
-glabel dItEggStatusDesc
+glabel dITEggStatusDesc
   .incbin "ovl3.raw.bin", 0x595A4, 0x4
   /* 595A8 105AE8 8018B0A8 */  .4byte itEggGWaitProcMap
   .incbin "ovl3.raw.bin", 0x595AC, 0x14
@@ -3385,9 +3385,9 @@ glabel jtbl_ovl3_8018B104
   /* 59644 105B84 8018B144 */  .4byte itEggNExplodeProcUpdate
   .incbin "ovl3.raw.bin", 0x59648, 0x28
 
-glabel dItStarmieItemDesc
+glabel dITStarmieItemDesc
   .incbin "ovl3.raw.bin", 0x59670, 0x4
-  /* 59674 105BB4 8018B174 */  .4byte gItemFileData
+  /* 59674 105BB4 8018B174 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x59678, 0xC
 
 glabel jtbl_ovl3_8018B184
@@ -3395,15 +3395,15 @@ glabel jtbl_ovl3_8018B184
   /* 59688 105BC8 8018B188 */  .4byte itStarmieSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x5968C, 0x18
 
-glabel dItStarmieStatusDesc
+glabel dITStarmieStatusDesc
   /* 596A4 105BE4 8018B1A4 */  .4byte itStarmieNFollowProcUpdate
   .incbin "ovl3.raw.bin", 0x596A8, 0x1C
   /* 596C4 105C04 8018B1C4 */  .4byte itStarmieNAttackProcUpdate
   .incbin "ovl3.raw.bin", 0x596C8, 0x1C
 
-glabel dItStarmieWeaponSwiftWeaponDesc
+glabel dITStarmieWeaponSwiftWeaponDesc
   .incbin "ovl3.raw.bin", 0x596E4, 0x8
-  /* 596EC 105C2C 8018B1EC */  .4byte gItemFileData
+  /* 596EC 105C2C 8018B1EC */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x596F0, 0x8
   /* 596F8 105C38 8018B1F8 */  .4byte itStarmieWeaponSwiftProcUpdate
   .incbin "ovl3.raw.bin", 0x596FC, 0x4
@@ -3417,9 +3417,9 @@ glabel jtbl_ovl3_8018B200
   /* 59714 105C54 8018B214 */  .4byte itStarmieWeaponSwiftProcHit
   .incbin "ovl3.raw.bin", 0x59718, 0x8
 
-glabel dItSawamuraItemDesc
+glabel dITSawamuraItemDesc
   .incbin "ovl3.raw.bin", 0x59720, 0x4
-  /* 59724 105C64 8018B224 */  .4byte gItemFileData
+  /* 59724 105C64 8018B224 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x59728, 0xC
 
 glabel jtbl_ovl3_8018B234
@@ -3427,7 +3427,7 @@ glabel jtbl_ovl3_8018B234
   /* 59738 105C78 8018B238 */  .4byte itSawamuraSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x5973C, 0x18
 
-glabel dItSawamuraStatusDesc
+glabel dITSawamuraStatusDesc
   /* 59754 105C94 8018B254 */  .4byte itSawamuraAFallProcUpdate
   /* 59758 105C98 8018B258 */  .4byte itSawamuraAFallProcMap
   .incbin "ovl3.raw.bin", 0x5975C, 0x18
@@ -3439,9 +3439,9 @@ glabel jtbl_ovl3_8018B274
   /* 59794 105CD4 8018B294 */  .4byte itSawamuraNAttackProcUpdate
   .incbin "ovl3.raw.bin", 0x59798, 0x28
 
-glabel dItDogasItemDesc
+glabel dITDogasItemDesc
   .incbin "ovl3.raw.bin", 0x597C0, 0x4
-  /* 597C4 105D04 8018B2C4 */  .4byte gItemFileData
+  /* 597C4 105D04 8018B2C4 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x597C8, 0xC
 
 glabel jtbl_ovl3_8018B2D4
@@ -3449,24 +3449,24 @@ glabel jtbl_ovl3_8018B2D4
   /* 597D8 105D18 8018B2D8 */  .4byte itDogasSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x597DC, 0x18
 
-glabel dItDogasStatusDesc
+glabel dITDogasStatusDesc
   /* 597F4 105D34 8018B2F4 */  .4byte itDogasNAttackProcUpdate
   .incbin "ovl3.raw.bin", 0x597F8, 0x1C
   /* 59814 105D54 8018B314 */  .4byte itDogasNDisappearProcUpdate
   .incbin "ovl3.raw.bin", 0x59818, 0x1C
 
-glabel dItDogasWeaponSmogWeaponDesc
+glabel dITDogasWeaponSmogWeaponDesc
   .incbin "ovl3.raw.bin", 0x59834, 0x8
 
 glabel D_ovl3_8018B33C
-  /* 5983C 105D7C 8018B33C */  .4byte gItemFileData
+  /* 5983C 105D7C 8018B33C */  .4byte gITemFileData
 
 glabel D_ovl3_8018B340
   .incbin "ovl3.raw.bin", 0x59840, 0x8
   /* 59848 105D88 8018B348 */  .4byte itDogasWeaponSmogProcUpdate
   .incbin "ovl3.raw.bin", 0x5984C, 0x24
 
-glabel dItPippiStatusProcList
+glabel dITPippiStatusProcList
   /* 59870 105DB0 8018B370 */  .4byte itIwarkNAttackSetStatus
   /* 59874 105DB4 8018B374 */  .4byte itKabigonNJumpSetStatus
   /* 59878 105DB8 8018B378 */  .4byte itTosakintoNAppearSetStatus
@@ -3480,9 +3480,9 @@ glabel dItPippiStatusProcList
   /* 59898 105DD8 8018B398 */  .4byte itDogasNAttackSetStatus
   /* 5989C 105DDC 8018B39C */  .4byte itMewNFlySetStatus
 
-glabel dItPippiItemDesc
+glabel dITPippiItemDesc
   .incbin "ovl3.raw.bin", 0x598A0, 0x4
-  /* 598A4 105DE4 8018B3A4 */  .4byte gItemFileData
+  /* 598A4 105DE4 8018B3A4 */  .4byte gITemFileData
   .incbin "ovl3.raw.bin", 0x598A8, 0xC
 
 glabel jtbl_ovl3_8018B3B4
@@ -3490,7 +3490,7 @@ glabel jtbl_ovl3_8018B3B4
   /* 598B8 105DF8 8018B3B8 */  .4byte itPippiSDefaultProcMap
   .incbin "ovl3.raw.bin", 0x598BC, 0x44
 
-glabel dItMarumineItemDesc
+glabel dITMarumineItemDesc
   .incbin "ovl3.raw.bin", 0x59900, 0x4
 
 glabel D_ovl3_8018B404
@@ -3499,11 +3499,11 @@ glabel D_ovl3_8018B404
   /* 59914 105E54 8018B414 */  .4byte itMarumineSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x59918, 0x1C
 
-glabel dItMarumineStatusDesc
+glabel dITMarumineStatusDesc
   /* 59934 105E74 8018B434 */  .4byte itMarumineNExplodeProcUpdate
   .incbin "ovl3.raw.bin", 0x59938, 0x28
 
-glabel dItPorygonItemDesc
+glabel dITPorygonItemDesc
   .incbin "ovl3.raw.bin", 0x59960, 0x4
 
 glabel D_ovl3_8018B464
@@ -3512,7 +3512,7 @@ glabel D_ovl3_8018B464
   /* 59974 105EB4 8018B474 */  .4byte itPorygonSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x59978, 0x28
 
-glabel dItHitokageItemDesc
+glabel dITHitokageItemDesc
   .incbin "ovl3.raw.bin", 0x599A0, 0x4
   /* 599A4 105EE4 8018B4A4 */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x599A8, 0xC
@@ -3522,11 +3522,11 @@ glabel dItHitokageItemDesc
 glabel jtbl_ovl3_8018B4D0
   /* 599D0 105F10 8018B4D0 */  .4byte itHitokageSDefaultProcDamage
 
-glabel dItHitokageStatusDesc
+glabel dITHitokageStatusDesc
   /* 599D4 105F14 8018B4D4 */  .4byte itHitokageNDamageProcUpdate
   .incbin "ovl3.raw.bin", 0x599D8, 0x1C
 
-glabel dItHitokageWeaponFlameWeaponDesc
+glabel dITHitokageWeaponFlameWeaponDesc
   .incbin "ovl3.raw.bin", 0x599F4, 0x8
   /* 599FC 105F3C 8018B4FC */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x59A00, 0x8
@@ -3543,7 +3543,7 @@ glabel jtbl_ovl3_8018B51C
   /* 59A20 105F60 8018B520 */  .4byte itHitokageWeaponFlameProcReflector
   .incbin "ovl3.raw.bin", 0x59A24, 0xC
 
-glabel dItFushigibanaItemDesc
+glabel dITFushigibanaItemDesc
   .incbin "ovl3.raw.bin", 0x59A30, 0x4
 
 glabel D_ovl3_8018B534
@@ -3552,7 +3552,7 @@ glabel D_ovl3_8018B534
   /* 59A44 105F84 8018B544 */  .4byte itFushigibanaSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x59A48, 0x1C
 
-glabel dItFushigibanaWeaponRazorWeaponDesc
+glabel dITFushigibanaWeaponRazorWeaponDesc
   .incbin "ovl3.raw.bin", 0x59A64, 0x8
   /* 59A6C 105FAC 8018B56C */  .4byte D_ovl2_801313F4
   .incbin "ovl3.raw.bin", 0x59A70, 0x8
@@ -3568,7 +3568,7 @@ glabel jtbl_ovl3_8018B580
   /* 59A94 105FD4 8018B594 */  .4byte itFushigibanaWeaponRazorProcHit
   .incbin "ovl3.raw.bin", 0x59A98, 0x8
 
-glabel dItRBombItemDesc
+glabel dITRBombItemDesc
   .incbin "ovl3.raw.bin", 0x59AA0, 0x4
 
 glabel D_ovl3_8018B5A4
@@ -3587,7 +3587,7 @@ glabel jtbl_ovl3_8018B5C8
   /* 59ACC 10600C 8018B5CC */  .4byte itRBombSDefaultProcHit
   /* 59AD0 106010 8018B5D0 */  .4byte itRBombSDefaultProcDamage
 
-glabel dItRBombStatusDesc
+glabel dITRBombStatusDesc
   /* 59AD4 106014 8018B5D4 */  .4byte itRBombAFallProcUpdate
   /* 59AD8 106018 8018B5D8 */  .4byte itRBombAFallProcMap
   /* 59ADC 10601C 8018B5DC */  .4byte itRBombSDefaultProcHit
@@ -3614,14 +3614,14 @@ glabel jtbl_ovl3_8018B628
   /* 59B30 106070 8018B630 */  .4byte itRBombSDefaultProcDamage
   .incbin "ovl3.raw.bin", 0x59B34, 0xC
 
-glabel dItNessPKFireItemDesc
+glabel dITNessPKFireItemDesc
   .incbin "ovl3.raw.bin", 0x59B40, 0x4
-  /* 59B44 106084 8018B644 */  .4byte gFtDataNessExtra1
+  /* 59B44 106084 8018B644 */  .4byte gFTDataNessExtra1
   .incbin "ovl3.raw.bin", 0x59B48, 0xC
   /* 59B54 106094 8018B654 */  .4byte itNessPKFireSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x59B58, 0x1C
 
-glabel dItNessPKFireStatusDesc
+glabel dITNessPKFireStatusDesc
   /* 59B74 1060B4 8018B674 */  .4byte itNessPKFireGWaitProcUpdate
   /* 59B78 1060B8 8018B678 */  .4byte itNessPKFireGWaitProcMap
   .incbin "ovl3.raw.bin", 0x59B7C, 0x14
@@ -3634,16 +3634,16 @@ glabel jtbl_ovl3_8018B690
   /* 59BB0 1060F0 8018B6B0 */  .4byte itNessPKFireSDefaultProcDamage
   .incbin "ovl3.raw.bin", 0x59BB4, 0xC
 
-glabel dItLinkBombItemDesc
+glabel dITLinkBombItemDesc
   .incbin "ovl3.raw.bin", 0x59BC0, 0x4
 
 glabel D_ovl3_8018B6C4
-  /* 59BC4 106104 8018B6C4 */  .4byte gFtDataLinkMain
+  /* 59BC4 106104 8018B6C4 */  .4byte gFTDataLinkMain
   .incbin "ovl3.raw.bin", 0x59BC8, 0xC
   /* 59BD4 106114 8018B6D4 */  .4byte itLinkBombFHoldProcUpdate
   .incbin "ovl3.raw.bin", 0x59BD8, 0x1C
 
-glabel dItLinkBombStatusDesc
+glabel dITLinkBombStatusDesc
   /* 59BF4 106134 8018B6F4 */  .4byte itLinkBombGWaitProcUpdate
   /* 59BF8 106138 8018B6F8 */  .4byte itLinkBombGWaitProcMap
   .incbin "ovl3.raw.bin", 0x59BFC, 0x14

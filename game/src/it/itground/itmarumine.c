@@ -7,8 +7,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItMarumineItemAttributes;  // 0x00000104
-extern intptr_t lItMarumineHitEvents;       // 0x0000014C
+extern intptr_t lITMarumineItemAttributes;  // 0x00000104
+extern intptr_t lITMarumineHitEvents;       // 0x0000014C
 
 // // // // // // // // // // // //
 //                               //
@@ -16,11 +16,11 @@ extern intptr_t lItMarumineHitEvents;       // 0x0000014C
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItMarumineItemDesc = 
+itCreateDesc dITMarumineItemDesc = 
 {
     It_Kind_Marumine,                       // Item Kind
     &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
-    &lItMarumineItemAttributes,             // Offset of item attributes in file?
+    &lITMarumineItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -40,7 +40,7 @@ itCreateDesc dItMarumineItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dItMarumineStatusDesc[/* */] = 
+itStatusDesc dITMarumineStatusDesc[/* */] = 
 {
     // Status 0 (Neutral Explosion)
     {
@@ -105,7 +105,7 @@ void itMarumineNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 void itMarumineNExplodeUpdateHitEvent(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    itHitEvent *ev = itGetHitEvent(dItMarumineItemDesc, lItMarumineHitEvents); // (itHitEvent*) ((uintptr_t)*dItMarumineItemDesc.p_file + (intptr_t)&lItMarumineHitEvents); // Linker thing
+    itHitEvent *ev = itGetHitEvent(dITMarumineItemDesc, lITMarumineHitEvents); // (itHitEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&lITMarumineHitEvents); // Linker thing
 
     if (ip->it_multi == ev[ip->item_event_index].timer)
     {
@@ -186,13 +186,13 @@ void itMarumineNExplodeSetStatus(GObj *item_gobj)
     ip->item_event_index = 0;
 
     itMarumineNExplodeUpdateHitEvent(item_gobj);
-    itMainSetItemStatus(item_gobj, dItMarumineStatusDesc, itStatus_Marumine_NExplode);
+    itMainSetItemStatus(item_gobj, dITMarumineStatusDesc, itStatus_Marumine_NExplode);
 }
 
 // 0x80183A74
 GObj* itMarumineMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItMarumineItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITMarumineItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

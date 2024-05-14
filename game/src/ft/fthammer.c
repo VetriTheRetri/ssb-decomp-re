@@ -20,7 +20,7 @@ void ftHammer_UpdateStats(GObj *fighter_gobj)
         sb32 is_colanim_reset = FALSE;
 
         itMainDestroyItem(fp->item_hold);
-        ftSpecialItem_BGMCheckFighters();
+        ftSpecialITem_BGMCheckFighters();
 
         if (fp->colanim.colanim_id == FTCOMMON_HAMMER_COLANIM_ID)
         {

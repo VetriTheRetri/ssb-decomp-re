@@ -3,9 +3,9 @@
 #include <gm/battle.h>
 
 // 0x80130FBC
-extern void *gFtDataLinkExtra1;
+extern void *gFTDataLinkExtra1;
 extern
-intptr_t lWpLinkBoomerangWeaponAttributes;  // 0x00000000
+intptr_t lWPLinkBoomerangWeaponAttributes;  // 0x00000000
 
 typedef enum wpLinkBoomerangFlags
 {
@@ -25,12 +25,12 @@ typedef enum wpLinkBoomerangFlags
 #define WPLINK_BOOMERANG_MASK_UNK3          (1 << wpLink_Boomerang_Flags_Unk3)
 #define WPLINK_BOOMERANG_MASK_REFLECT       (1 << wpLink_Boomerang_Flags_Reflect)
 
-wpCreateDesc dWpLinkBoomerangWeaponDesc =
+wpCreateDesc dWPLinkBoomerangWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_Boomerang,                      // Weapon Kind
-    &gFtDataLinkExtra1,                     // Pointer to character's loaded files?
-    &lWpLinkBoomerangWeaponAttributes,      // Offset of weapon attributes in loaded files
+    &gFTDataLinkExtra1,                     // Pointer to character's loaded files?
+    &lWPLinkBoomerangWeaponAttributes,      // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -544,7 +544,7 @@ GObj* wpLinkBoomerangMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     offset.x = (fp->lr == LR_Right) ? offset.x + WPBOOMERANG_OFF_X : offset.x - WPBOOMERANG_OFF_X;
 
-    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpLinkBoomerangWeaponDesc, &offset, WEAPON_MASK_SPAWN_FIGHTER);
+    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPLinkBoomerangWeaponDesc, &offset, WEAPON_MASK_SPAWN_FIGHTER);
 
     if (weapon_gobj == NULL)
     {

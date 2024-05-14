@@ -8,12 +8,12 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItSpearItemAttributes;     // 0x0000098C
+extern intptr_t lITSpearItemAttributes;     // 0x0000098C
 extern intptr_t 
-lItSpearWeaponSwarmWeaponAttributes;        // 0x000009D4
-extern intptr_t lItSpearDataStart;          // 0x0000DF38
-extern intptr_t lItSpearAnimJoint;          // 0x0000DFFC
-extern intptr_t lItSpearMatAnimJoint;       // 0x0000E12C
+lITSpearWeaponSwarmWeaponAttributes;        // 0x000009D4
+extern intptr_t lITSpearDataStart;          // 0x0000DF38
+extern intptr_t lITSpearAnimJoint;          // 0x0000DFFC
+extern intptr_t lITSpearMatAnimJoint;       // 0x0000E12C
 
 // // // // // // // // // // // //
 //                               //
@@ -22,11 +22,11 @@ extern intptr_t lItSpearMatAnimJoint;       // 0x0000E12C
 // // // // // // // // // // // //
 
 // 0x8018AE00
-itCreateDesc dItSpearItemDesc =
+itCreateDesc dITSpearItemDesc =
 {
     It_Kind_Spear,                          // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItSpearItemAttributes,                // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITSpearItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -47,7 +47,7 @@ itCreateDesc dItSpearItemDesc =
 };
 
 // 0x8018AE34
-itStatusDesc dItSpearStatusDesc[/* */] =
+itStatusDesc dITSpearStatusDesc[/* */] =
 {
     // Status 0 (Neutral Appear)
     {
@@ -75,12 +75,12 @@ itStatusDesc dItSpearStatusDesc[/* */] =
 };
 
 // 0x8018AE74
-wpCreateDesc dItSpearWeaponSwarmWeaponDesc =
+wpCreateDesc dITSpearWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_SpearSwarm,                     // Weapon Kind
-    &gItemFileData,                         // Pointer to character's loaded files?
-    &lItSpearWeaponSwarmWeaponAttributes,   // Offset of weapon attributes in loaded files
+    &gITemFileData,                         // Pointer to character's loaded files?
+    &lITSpearWeaponSwarmWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -100,11 +100,11 @@ wpCreateDesc dItSpearWeaponSwarmWeaponDesc =
 };
 
 // 0x8018AEA8
-wpCreateDesc dItPippiWeaponSwarmWeaponDesc =
+wpCreateDesc dITPippiWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_SpearSwarm,                     // Weapon Kind
-    &gItemFileData,                         // Pointer to character's loaded files?
+    &gITemFileData,                         // Pointer to character's loaded files?
     0xCBC,                                  // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
@@ -194,11 +194,11 @@ void itSpearNAppearInitItemVars(GObj *item_gobj)
         void *anim_joint; 
         void *matanim_joint;
 
-        anim_joint = itGetPData(ip, lItSpearDataStart, lItSpearAnimJoint); // Linker thing
+        anim_joint = itGetPData(ip, lITSpearDataStart, lITSpearAnimJoint); // Linker thing
 
         omAddDObjAnimAll(dobj->child, anim_joint, 0.0F);
 
-        matanim_joint = itGetPData(ip, lItSpearDataStart, lItSpearMatAnimJoint); // Linker thing
+        matanim_joint = itGetPData(ip, lITSpearDataStart, lITSpearMatAnimJoint); // Linker thing
 
         omAddMObjAnimAll(dobj->child->mobj, matanim_joint, 0.0F);
         func_8000DF34(item_gobj);
@@ -210,7 +210,7 @@ void itSpearNAppearInitItemVars(GObj *item_gobj)
 void itSpearNAppearSetStatus(GObj *item_gobj)
 {
     itSpearNAppearInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItSpearStatusDesc, itStatus_Spear_NAppear);
+    itMainSetItemStatus(item_gobj, dITSpearStatusDesc, itStatus_Spear_NAppear);
 }
 
 // 0x8017FFA8
@@ -271,7 +271,7 @@ void itSpearNFlyInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == It_Kind_Spear)
     {
-        func_800269C0(alSound_Voice_MBallItSpearSwarm);
+        func_800269C0(alSound_Voice_MBallITSpearSwarm);
     }
 }
 
@@ -279,7 +279,7 @@ void itSpearNFlyInitItemVars(GObj *item_gobj)
 void itSpearNFlySetStatus(GObj *item_gobj)
 {
     itSpearNFlyInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItSpearStatusDesc, itStatus_Spear_NFly);
+    itMainSetItemStatus(item_gobj, dITSpearStatusDesc, itStatus_Spear_NFly);
 }
 
 // 0x80180194
@@ -311,7 +311,7 @@ sb32 itSpearSDefaultProcMap(GObj *item_gobj)
 // 0x80180218
 GObj* itSpearMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItSpearItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITSpearItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 
@@ -345,7 +345,7 @@ GObj* itSpearMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj->child, itGetMonsterAnimNode(ip, lItSpearDataStart), 0.0F);
+        omAddDObjAnimAll(dobj->child, itGetMonsterAnimNode(ip, lITSpearDataStart), 0.0F);
     }
     return item_gobj;
 }
@@ -389,7 +389,7 @@ void itPippiWeaponSwarmProcRender(GObj *item_gobj)
 GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 {
     itStruct *ap = itGetStruct(item_gobj);
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, ((it_kind == It_Kind_Spear) ? &dItSpearWeaponSwarmWeaponDesc : &dItPippiWeaponSwarmWeaponDesc), pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, ((it_kind == It_Kind_Spear) ? &dITSpearWeaponSwarmWeaponDesc : &dITPippiWeaponSwarmWeaponDesc), pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *dobj;
     s32 unused;
     wpStruct *wp;

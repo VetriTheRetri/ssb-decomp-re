@@ -23,7 +23,7 @@ glabel D_ovl29_80136F50
   .balign 4
   .incbin "ovl29.raw.bin", 0x54A0, 0x10
 
-glabel dMnBonusSmallerNumberOffsets
+glabel dMNBonusSmallerNumberOffsets
   .incbin "ovl29.raw.bin", 0x54B0, 0xBC
   /* 556C 14D09C 8013706C */
   .asciz "@@"
@@ -37,7 +37,7 @@ glabel dMnBonusSmallerNumberOffsets
   .asciz "@@"
   .balign 4
 
-glabel dMnBonusPortraitPositionsX
+glabel dMNBonusPortraitPositionsX
   .incbin "ovl29.raw.bin", 0x55C0, 0xC
   /* 55CC 14D0FC 801370CC */
   .asciz "C "
@@ -59,25 +59,25 @@ glabel dMnBonusPortraitPositionsX
   .asciz "Cz"
   .balign 4
 
-glabel dMnBonusPortraitVelocities
+glabel dMNBonusPortraitVelocities
   .incbin "ovl29.raw.bin", 0x55F0, 0x30
 
-glabel dMnBonusPortraitPositionsXY
+glabel dMNBonusPortraitPositionsXY
   .incbin "ovl29.raw.bin", 0x5620, 0x84
 
-glabel dMnBonusFtKindOrder
+glabel dMNBonusFTKindOrder
   .incbin "ovl29.raw.bin", 0x56A4, 0x30
 
-glabel dMnBonusPortraitOrder
+glabel dMNBonusPortraitOrder
   .incbin "ovl29.raw.bin", 0x56D4, 0x30
 
-glabel dMnBonusLockedPortraitOffsets
+glabel dMNBonusLockedPortraitOffsets
   .incbin "ovl29.raw.bin", 0x5704, 0x30
 
-glabel dMnBonusPortraitOffsets
+glabel dMNBonusPortraitOffsets
   .incbin "ovl29.raw.bin", 0x5734, 0x30
 
-glabel dMnBonusUnusedPositions
+glabel dMNBonusUnusedPositions
   /* 5764 14D294 80137264 */
   .asciz "AP"
   .balign 4
@@ -111,19 +111,19 @@ glabel dMnBonusUnusedPositions
   .balign 4
   .incbin "ovl29.raw.bin", 0x57C0, 0x4
 
-glabel dMnBonusLogoOffsets
+glabel dMNBonusLogoOffsets
   .incbin "ovl29.raw.bin", 0x57C4, 0x30
 
-glabel dMnBonusNameOffsets
+glabel dMNBonusNameOffsets
   .incbin "ovl29.raw.bin", 0x57F4, 0x30
 
-glabel dMnBonusPanelOffsets
+glabel dMNBonusPanelOffsets
   .incbin "ovl29.raw.bin", 0x5824, 0x10
 
-glabel dMnBonusTypeOffsets
+glabel dMNBonusTypeOffsets
   .incbin "ovl29.raw.bin", 0x5834, 0x10
 
-glabel dMnBonusTypeOffsetsX
+glabel dMNBonusTypeOffsetsX
   /* 5844 14D374 80137344 */
   .asciz "A"
   .balign 4
@@ -150,61 +150,61 @@ glabel dMnBonusTypeOffsetsX
   .balign 4
   .incbin "ovl29.raw.bin", 0x58A0, 0x4
 
-glabel dMnBonusBestTimeColorsUnused
+glabel dMNBonusBestTimeColorsUnused
   .incbin "ovl29.raw.bin", 0x58A4, 0xC
 
-glabel dMnBonusBestTimeColors
+glabel dMNBonusBestTimeColors
   .incbin "ovl29.raw.bin", 0x58B0, 0x18
 
-glabel dMnBonusBestCountColorsUnused
+glabel dMNBonusBestCountColorsUnused
   .incbin "ovl29.raw.bin", 0x58C8, 0xC
 
-glabel dMnBonusBestCountColors
+glabel dMNBonusBestCountColors
   .incbin "ovl29.raw.bin", 0x58D4, 0x18
 
-glabel dMnBonusTotalTimeColorsUnused
+glabel dMNBonusTotalTimeColorsUnused
   .incbin "ovl29.raw.bin", 0x58EC, 0xC
 
-glabel dMnBonusTotalTimeColors
+glabel dMNBonusTotalTimeColors
   .incbin "ovl29.raw.bin", 0x58F8, 0x18
 
-glabel dMnBonusCursorTypeColors
+glabel dMNBonusCursorTypeColors
   .incbin "ovl29.raw.bin", 0x5910, 0x18
 
-glabel dMnBonusCursorTypeOffsets
+glabel dMNBonusCursorTypeOffsets
   .incbin "ovl29.raw.bin", 0x5928, 0x10
 
-glabel dMnBonusCursorOffsets
+glabel dMNBonusCursorOffsets
   .incbin "ovl29.raw.bin", 0x5938, 0xC
 
-glabel dMnBonusCursorTypePositions
+glabel dMNBonusCursorTypePositions
   .incbin "ovl29.raw.bin", 0x5944, 0x18
 
-glabel dMnBonusAnnouncerNames
+glabel dMNBonusAnnouncerNames
   .incbin "ovl29.raw.bin", 0x595C, 0x18
 
-glabel dMnBonusTokenPickupDisplayOrders
+glabel dMNBonusTokenPickupDisplayOrders
   .incbin "ovl29.raw.bin", 0x5974, 0x10
 
-glabel dMnBonusTokenPlaceUnheldDisplayOrders
+glabel dMNBonusTokenPlaceUnheldDisplayOrders
   .incbin "ovl29.raw.bin", 0x5984, 0x10
 
-glabel dMnBonusCursorTypePositions2
+glabel dMNBonusCursorTypePositions2
   .incbin "ovl29.raw.bin", 0x5994, 0x2C
 
-glabel dMnBonusCursorTypeOffsetsUnused
+glabel dMNBonusCursorTypeOffsetsUnused
   .incbin "ovl29.raw.bin", 0x59C0, 0x10
 
-glabel dMnBonusCursorStartingDisplayOrders
+glabel dMNBonusCursorStartingDisplayOrders
   .incbin "ovl29.raw.bin", 0x59D0, 0x10
 
-glabel dMnBonusTokenOffsetsNoCPU
+glabel dMNBonusTokenOffsetsNoCPU
   .incbin "ovl29.raw.bin", 0x59E0, 0x10
 
-glabel dMnBonusTokenStartingDisplayOrders
+glabel dMNBonusTokenStartingDisplayOrders
   .incbin "ovl29.raw.bin", 0x59F0, 0x10
 
-glabel dMnBonusWhiteCircleSizes
+glabel dMNBonusWhiteCircleSizes
   .incbin "ovl29.raw.bin", 0x5A00, 0x8
   /* 5A08 14D538 80137508 */
   .asciz "@"

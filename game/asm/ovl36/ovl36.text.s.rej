@@ -66,7 +66,7 @@ diff a/game/asm/ovl36/ovl36.text.s b/game/asm/ovl36/ovl36.text.s	(rejected hunks
 -  /* 166CF0 8018D6C0 0C0594F8 */       jal ftPublicReactSetup
 +  /* 166CF0 8018D6C0 0C0594F8 */       jal ftPublicitySetup
    /* 166CF4 8018D6C4 00000000 */       nop
-   /* 166CF8 8018D6C8 3C168011 */       lui $s6, %hi(dFtDefaultFighterDesc)
+   /* 166CF8 8018D6C8 3C168011 */       lui $s6, %hi(dFTDefaultFighterDesc)
    /* 166CFC 8018D6CC 3C15800A */       lui $s5, %hi(gBattleState)
 @@ -601,8 +601,8 @@ glabel func_ovl36_8018D944
    /* 166FBC 8018D98C 00000000 */       nop

@@ -6,8 +6,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItHarisenItemAttributes;   // 0x00000220
-extern intptr_t lItHarisenDataStart;        // 0x00002198
+extern intptr_t lITHarisenItemAttributes;   // 0x00000220
+extern intptr_t lITHarisenDataStart;        // 0x00002198
 
 // // // // // // // // // // // //
 //                               //
@@ -17,11 +17,11 @@ extern intptr_t lItHarisenDataStart;        // 0x00002198
 
 intptr_t D_ovl3_80189A70[2] = { 0x2250, 0x2270 };
 
-itCreateDesc dItHarisenItemDesc =
+itCreateDesc dITHarisenItemDesc =
 {
     It_Kind_Harisen,                        // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItHarisenItemAttributes,              // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITHarisenItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -41,7 +41,7 @@ itCreateDesc dItHarisenItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dItHarisenStatusDesc[/* */] =
+itStatusDesc dITHarisenStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -165,7 +165,7 @@ sb32 itHarisenAFallProcMap(GObj *item_gobj)
 void itHarisenGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dItHarisenStatusDesc, itStatus_Harisen_GWait);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDesc, itStatus_Harisen_GWait);
 }
 
 // 0x80175228
@@ -176,7 +176,7 @@ void itHarisenAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dItHarisenStatusDesc, itStatus_Harisen_AFall);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDesc, itStatus_Harisen_AFall);
 }
 
 // 0x8017526C
@@ -188,7 +188,7 @@ void itHarisenFHoldSetStatus(GObj *item_gobj)
 
     dobj->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dItHarisenStatusDesc, itStatus_Harisen_FHold);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDesc, itStatus_Harisen_FHold);
 }
 
 // 0x801752C0
@@ -223,7 +223,7 @@ sb32 itHarisenSDefaultProcHit(GObj *item_gobj)
 // 0x80175350
 void itHarisenFThrowSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItHarisenStatusDesc, itStatus_Harisen_FThrow);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDesc, itStatus_Harisen_FThrow);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(-90.0F); // HALF_PI32
 }
@@ -237,7 +237,7 @@ sb32 itHarisenFDropProcMap(GObj *item_gobj)
 // 0x801753C4
 void itHarisenFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItHarisenStatusDesc, itStatus_Harisen_FDrop);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDesc, itStatus_Harisen_FDrop);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(-90.0F);
 }
@@ -247,14 +247,14 @@ void func_ovl3_80175408(GObj *item_gobj, s32 index) // Unused
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    func_8000BD8C(item_gobj, (((uintptr_t)ip->attributes->model_desc + D_ovl3_80189A70[index]) - (intptr_t)&lItHarisenDataStart), 0.0F); // Linker thing
+    func_8000BD8C(item_gobj, (((uintptr_t)ip->attributes->model_desc + D_ovl3_80189A70[index]) - (intptr_t)&lITHarisenDataStart), 0.0F); // Linker thing
     func_8000DF34(item_gobj);
 }
 
 // 0x80175460
 GObj* itHarisenMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItHarisenItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITHarisenItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

@@ -11,7 +11,7 @@
 // // // // // // // // // // // //
 
 // 0x80186684
-ftComputerAttack dFtComputerAttacksMario[/* */] =
+ftComputerAttack dFTComputerAttacksMario[/* */] =
 {
     // Attack11
     {
@@ -235,7 +235,7 @@ ftComputerAttack dFtComputerAttacksMario[/* */] =
 };
 
 // 0x801868B4
-ftComputerAttack dFtComputerAttacksFox[/* */] =
+ftComputerAttack dFTComputerAttacksFox[/* */] =
 {
     // Attack11
     {
@@ -459,7 +459,7 @@ ftComputerAttack dFtComputerAttacksFox[/* */] =
 };
 
 // 0x80186AE4
-ftComputerAttack dFtComputerAttacksDonkey[/* */] =
+ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 {
     // Attack11
     {
@@ -683,7 +683,7 @@ ftComputerAttack dFtComputerAttacksDonkey[/* */] =
 };
 
 // 0x80186D14
-ftComputerAttack dFtComputerAttacksSamus[/* */] =
+ftComputerAttack dFTComputerAttacksSamus[/* */] =
 {
     // Attack11
     {
@@ -907,7 +907,7 @@ ftComputerAttack dFtComputerAttacksSamus[/* */] =
 };
 
 // 0x80186F44
-ftComputerAttack dFtComputerAttacksLuigi[/* */] =
+ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 {
     // Attack11
     {
@@ -1131,7 +1131,7 @@ ftComputerAttack dFtComputerAttacksLuigi[/* */] =
 };
 
 // 0x80187174
-ftComputerAttack dFtComputerAttacksLink[/* */] =
+ftComputerAttack dFTComputerAttacksLink[/* */] =
 {
     // Attack11
     {
@@ -1355,7 +1355,7 @@ ftComputerAttack dFtComputerAttacksLink[/* */] =
 };
 
 // 0x801873A4
-ftComputerAttack dFtComputerAttacksYoshi[/* */] =
+ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 {
     // Attack11
     {
@@ -1579,7 +1579,7 @@ ftComputerAttack dFtComputerAttacksYoshi[/* */] =
 };
 
 // 0x801875D4
-ftComputerAttack dFtComputerAttacksKirby[/* */] =
+ftComputerAttack dFTComputerAttacksKirby[/* */] =
 {
     // Attack11
     {
@@ -1803,7 +1803,7 @@ ftComputerAttack dFtComputerAttacksKirby[/* */] =
 };
 
 // 0x80187804
-ftComputerAttack dFtComputerAttacksPikachu[/* */] =
+ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 {
     // Attack11
     {
@@ -2027,7 +2027,7 @@ ftComputerAttack dFtComputerAttacksPikachu[/* */] =
 };
 
 // 0x80187A34
-ftComputerAttack dFtComputerAttacksCaptain[/* */] =
+ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 {
     // Attack11
     {
@@ -2251,7 +2251,7 @@ ftComputerAttack dFtComputerAttacksCaptain[/* */] =
 };
 
 // 0x80187C64
-ftComputerAttack dFtComputerAttacksPurin[/* */] =
+ftComputerAttack dFTComputerAttacksPurin[/* */] =
 {
     // Attack11
     {
@@ -2475,7 +2475,7 @@ ftComputerAttack dFtComputerAttacksPurin[/* */] =
 };
 
 // 0x80187E94
-ftComputerAttack dFtComputerAttacksNess[/* */] =
+ftComputerAttack dFTComputerAttacksNess[/* */] =
 {
     // Attack11
     {
@@ -2699,39 +2699,39 @@ ftComputerAttack dFtComputerAttacksNess[/* */] =
 };
 
 // 0x801880C4
-ftComputerAttack *dFtComputerAttackList[/* */] =
+ftComputerAttack *dFTComputerAttackList[/* */] =
 {
-    dFtComputerAttacksMario,            // Mario
-    dFtComputerAttacksFox,              // Fox
-    dFtComputerAttacksDonkey,           // Donkey Kong
-    dFtComputerAttacksSamus,            // Samus
-    dFtComputerAttacksLuigi,            // Luigi
-    dFtComputerAttacksLink,             // Link
-    dFtComputerAttacksYoshi,            // Yoshi
-    dFtComputerAttacksCaptain,          // Captain Falcon
-    dFtComputerAttacksKirby,            // Kirby
-    dFtComputerAttacksPikachu,          // Pikachu
-    dFtComputerAttacksPurin,            // Jigglypuff
-    dFtComputerAttacksNess,             // Ness
+    dFTComputerAttacksMario,            // Mario
+    dFTComputerAttacksFox,              // Fox
+    dFTComputerAttacksDonkey,           // Donkey Kong
+    dFTComputerAttacksSamus,            // Samus
+    dFTComputerAttacksLuigi,            // Luigi
+    dFTComputerAttacksLink,             // Link
+    dFTComputerAttacksYoshi,            // Yoshi
+    dFTComputerAttacksCaptain,          // Captain Falcon
+    dFTComputerAttacksKirby,            // Kirby
+    dFTComputerAttacksPikachu,          // Pikachu
+    dFTComputerAttacksPurin,            // Jigglypuff
+    dFTComputerAttacksNess,             // Ness
     NULL,                               // Master Hand
-    dFtComputerAttacksMario,            // Metal Mario
-    dFtComputerAttacksMario,            // Poly Mario
-    dFtComputerAttacksFox,              // Poly Fox
-    dFtComputerAttacksDonkey,           // Poly Donkey Kong
-    dFtComputerAttacksSamus,            // Poly Samus
-    dFtComputerAttacksLuigi,            // Poly Luigi
-    dFtComputerAttacksLink,             // Poly Link
-    dFtComputerAttacksYoshi,            // Poly Yoshi
-    dFtComputerAttacksCaptain,          // Poly Captain Falcon
-    dFtComputerAttacksKirby,            // Poly Kirby
-    dFtComputerAttacksPikachu,          // Poly Pikachu
-    dFtComputerAttacksPurin,            // Poly Jigglypuff
-    dFtComputerAttacksNess,             // Poly Ness
-    dFtComputerAttacksDonkey            // Giant Donkey Kong
+    dFTComputerAttacksMario,            // Metal Mario
+    dFTComputerAttacksMario,            // Poly Mario
+    dFTComputerAttacksFox,              // Poly Fox
+    dFTComputerAttacksDonkey,           // Poly Donkey Kong
+    dFTComputerAttacksSamus,            // Poly Samus
+    dFTComputerAttacksLuigi,            // Poly Luigi
+    dFTComputerAttacksLink,             // Poly Link
+    dFTComputerAttacksYoshi,            // Poly Yoshi
+    dFTComputerAttacksCaptain,          // Poly Captain Falcon
+    dFTComputerAttacksKirby,            // Poly Kirby
+    dFTComputerAttacksPikachu,          // Poly Pikachu
+    dFTComputerAttacksPurin,            // Poly Jigglypuff
+    dFTComputerAttacksNess,             // Poly Ness
+    dFTComputerAttacksDonkey            // Giant Donkey Kong
 };
 
 // 0x80188130
-u8 dFtComputerPlayerInputScript0[/* */] =
+u8 dFTComputerPlayerInputScript0[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
@@ -2739,14 +2739,14 @@ u8 dFtComputerPlayerInputScript0[/* */] =
 };
 
 // 0x80188138
-u8 dFtComputerPlayerInputScript1[/* */] =
+u8 dFTComputerPlayerInputScript1[/* */] =
 {
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 0),
     FTCOMPUTER_EVENT_END()
 };
 
 // 0x8018813C
-u8 dFtComputerPlayerInputScript2[/* */] =
+u8 dFTComputerPlayerInputScript2[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
@@ -2755,7 +2755,7 @@ u8 dFtComputerPlayerInputScript2[/* */] =
 };
 
 // 0x80188144
-u8 dFtComputerPlayerInputScript3[/* */] =
+u8 dFTComputerPlayerInputScript3[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
@@ -2764,7 +2764,7 @@ u8 dFtComputerPlayerInputScript3[/* */] =
 };
 
 // 0x8018814C
-u8 dFtComputerPlayerInputScript4[/* */] =
+u8 dFTComputerPlayerInputScript4[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
@@ -2775,7 +2775,7 @@ u8 dFtComputerPlayerInputScript4[/* */] =
 };
 
 // 0x80188158
-u8 dFtComputerPlayerInputScript5[/* */] =
+u8 dFTComputerPlayerInputScript5[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
@@ -2785,7 +2785,7 @@ u8 dFtComputerPlayerInputScript5[/* */] =
 };
 
 // 0x80188160
-u8 dFtComputerPlayerInputScript6[/* */] =
+u8 dFTComputerPlayerInputScript6[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
@@ -2796,7 +2796,7 @@ u8 dFtComputerPlayerInputScript6[/* */] =
 };
 
 // 0x8018816C
-u8 dFtComputerPlayerInputScript7[/* */] =
+u8 dFTComputerPlayerInputScript7[/* */] =
 {
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 0),
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
@@ -2805,7 +2805,7 @@ u8 dFtComputerPlayerInputScript7[/* */] =
 };
 
 // 0x80188170
-u8 dFtComputerPlayerInputScript8[/* */] =
+u8 dFTComputerPlayerInputScript8[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOFULL, 0),
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
@@ -2815,7 +2815,7 @@ u8 dFtComputerPlayerInputScript8[/* */] =
 };
 
 // 0x80188178
-u8 dFtComputerPlayerInputScript9[/* */] =
+u8 dFTComputerPlayerInputScript9[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOFULL, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
@@ -2826,7 +2826,7 @@ u8 dFtComputerPlayerInputScript9[/* */] =
 };
 
 // 0x80188184
-u8 dFtComputerPlayerInputScript10[/* */] =
+u8 dFTComputerPlayerInputScript10[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
@@ -2838,7 +2838,7 @@ u8 dFtComputerPlayerInputScript10[/* */] =
 };
 
 // 0x80188190
-u8 dFtComputerPlayerInputScript11[/* */] =
+u8 dFTComputerPlayerInputScript11[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
@@ -2849,7 +2849,7 @@ u8 dFtComputerPlayerInputScript11[/* */] =
 };
 
 // 0x8018819C
-u8 dFtComputerPlayerInputScript12[/* */] =
+u8 dFTComputerPlayerInputScript12[/* */] =
 {
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZPress, 1),
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 1),
@@ -2857,7 +2857,7 @@ u8 dFtComputerPlayerInputScript12[/* */] =
 };
 
 // 0x801881A0
-u8 dFtComputerPlayerInputScript13[/* */] =
+u8 dFTComputerPlayerInputScript13[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(I_CONTROLLER_RANGE_MAX, 0),
@@ -2868,7 +2868,7 @@ u8 dFtComputerPlayerInputScript13[/* */] =
 };
 
 // 0x801881AC
-u8 dFtComputerPlayerInputScript14[/* */] =
+u8 dFTComputerPlayerInputScript14[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
@@ -2881,7 +2881,7 @@ u8 dFtComputerPlayerInputScript14[/* */] =
 };
 
 // 0x801881BC
-u8 dFtComputerPlayerInputScript15[/* */] =
+u8 dFTComputerPlayerInputScript15[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
@@ -2893,7 +2893,7 @@ u8 dFtComputerPlayerInputScript15[/* */] =
 };
 
 // 0x801881C8
-u8 dFtComputerPlayerInputScript16[/* */] =
+u8 dFTComputerPlayerInputScript16[/* */] =
 {
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZPress, 1),
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 1),
@@ -2901,7 +2901,7 @@ u8 dFtComputerPlayerInputScript16[/* */] =
 };
 
 // 0x801881CC
-u8 dFtComputerPlayerInputScript17[/* */] =
+u8 dFTComputerPlayerInputScript17[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
@@ -2909,7 +2909,7 @@ u8 dFtComputerPlayerInputScript17[/* */] =
 };
 
 // 0x801881D4
-u8 dFtComputerPlayerInputScript18[/* */] =
+u8 dFTComputerPlayerInputScript18[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
@@ -2917,7 +2917,7 @@ u8 dFtComputerPlayerInputScript18[/* */] =
 };
 
 // 0x801881DC
-u8 dFtComputerPlayerInputScript19[/* */] =
+u8 dFTComputerPlayerInputScript19[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
@@ -2927,7 +2927,7 @@ u8 dFtComputerPlayerInputScript19[/* */] =
 };
 
 // 0x801881E4
-u8 dFtComputerPlayerInputScript20[/* */] =
+u8 dFTComputerPlayerInputScript20[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
@@ -2938,7 +2938,7 @@ u8 dFtComputerPlayerInputScript20[/* */] =
 };
 
 // 0x801881F0
-u8 dFtComputerPlayerInputScript21[/* */] =
+u8 dFTComputerPlayerInputScript21[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOFULL, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
@@ -2949,7 +2949,7 @@ u8 dFtComputerPlayerInputScript21[/* */] =
 };
 
 // 0x801881FC
-u8 dFtComputerPlayerInputScript22[/* */] =
+u8 dFTComputerPlayerInputScript22[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
@@ -2961,7 +2961,7 @@ u8 dFtComputerPlayerInputScript22[/* */] =
 };
 
 // 0x80188208
-u8 dFtComputerPlayerInputScript23[/* */] =
+u8 dFTComputerPlayerInputScript23[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(I_CONTROLLER_RANGE_MAX / 2, 0),
@@ -2972,7 +2972,7 @@ u8 dFtComputerPlayerInputScript23[/* */] =
 };
 
 // 0x80188214
-u8 dFtComputerPlayerInputScript24[/* */] =
+u8 dFTComputerPlayerInputScript24[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(I_CONTROLLER_RANGE_MAX, 0),
@@ -2983,7 +2983,7 @@ u8 dFtComputerPlayerInputScript24[/* */] =
 };
 
 // 0x80188220
-u8 dFtComputerPlayerInputScript25[/* */] =
+u8 dFTComputerPlayerInputScript25[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
@@ -2996,7 +2996,7 @@ u8 dFtComputerPlayerInputScript25[/* */] =
 };
 
 // 0x80188230
-u8 dFtComputerPlayerInputScript26[/* */] =
+u8 dFTComputerPlayerInputScript26[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
@@ -3009,7 +3009,7 @@ u8 dFtComputerPlayerInputScript26[/* */] =
 };
 
 // 0x80188240
-u8 dFtComputerPlayerInputScript27[/* */] =
+u8 dFTComputerPlayerInputScript27[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(-I_CONTROLLER_RANGE_MAX, 0),
@@ -3020,7 +3020,7 @@ u8 dFtComputerPlayerInputScript27[/* */] =
 };
 
 // 0x8018824C
-u8 dFtComputerPlayerInputScript28[/* */] =
+u8 dFTComputerPlayerInputScript28[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
@@ -3032,7 +3032,7 @@ u8 dFtComputerPlayerInputScript28[/* */] =
 };
 
 // 0x80188258
-u8 dFtComputerPlayerInputScript29[/* */] =
+u8 dFTComputerPlayerInputScript29[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
@@ -3045,7 +3045,7 @@ u8 dFtComputerPlayerInputScript29[/* */] =
 };
 
 // 0x80188264
-u8 dFtComputerPlayerInputScript30[/* */] =
+u8 dFTComputerPlayerInputScript30[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 1),
     FTCOMPUTER_EVENT_STICK_X(-I_CONTROLLER_RANGE_MAX, 2),
@@ -3054,7 +3054,7 @@ u8 dFtComputerPlayerInputScript30[/* */] =
 };
 
 // 0x8018826C
-u8 dFtComputerPlayerInputScript31[/* */] =
+u8 dFTComputerPlayerInputScript31[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 1),
     FTCOMPUTER_EVENT_STICK_X(I_CONTROLLER_RANGE_MAX, 2),
@@ -3063,7 +3063,7 @@ u8 dFtComputerPlayerInputScript31[/* */] =
 };
 
 // 0x80188274
-u8 dFtComputerPlayerInputScript32[/* */] =
+u8 dFTComputerPlayerInputScript32[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(-I_CONTROLLER_RANGE_MAX / 2, 0),
@@ -3074,7 +3074,7 @@ u8 dFtComputerPlayerInputScript32[/* */] =
 };
 
 // 0x80188280
-u8 dFtComputerPlayerInputScript33[/* */] =
+u8 dFTComputerPlayerInputScript33[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
@@ -3087,7 +3087,7 @@ u8 dFtComputerPlayerInputScript33[/* */] =
 };
 
 // 0x80188290
-u8 dFtComputerPlayerInputScript34[/* */] =
+u8 dFTComputerPlayerInputScript34[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
@@ -3099,7 +3099,7 @@ u8 dFtComputerPlayerInputScript34[/* */] =
 };
 
 // 0x8018829C
-u8 dFtComputerPlayerInputScript35[/* */] =
+u8 dFTComputerPlayerInputScript35[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
@@ -3108,14 +3108,14 @@ u8 dFtComputerPlayerInputScript35[/* */] =
 };
 
 // 0x801882A4
-u8 dFtComputerPlayerInputScript36[/* */] =
+u8 dFTComputerPlayerInputScript36[/* */] =
 {
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
 // 0x801882A8
-u8 dFtComputerPlayerInputScript37[/* */] =
+u8 dFTComputerPlayerInputScript37[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 1),
@@ -3125,7 +3125,7 @@ u8 dFtComputerPlayerInputScript37[/* */] =
 };
 
 // 0x801882B0
-u8 dFtComputerPlayerInputScript38[/* */] =
+u8 dFTComputerPlayerInputScript38[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 0),
@@ -3133,7 +3133,7 @@ u8 dFtComputerPlayerInputScript38[/* */] =
 };
 
 // 0x801882B4
-u8 dFtComputerPlayerInputScript39[/* */] =
+u8 dFTComputerPlayerInputScript39[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
@@ -3143,7 +3143,7 @@ u8 dFtComputerPlayerInputScript39[/* */] =
 };
 
 // 0x801882BC
-u8 dFtComputerPlayerInputScript40[/* */] =
+u8 dFTComputerPlayerInputScript40[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
@@ -3155,7 +3155,7 @@ u8 dFtComputerPlayerInputScript40[/* */] =
 };
 
 // 0x801882C8
-u8 dFtComputerPlayerInputScript41[/* */] =
+u8 dFTComputerPlayerInputScript41[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
@@ -3167,7 +3167,7 @@ u8 dFtComputerPlayerInputScript41[/* */] =
 };
 
 // 0x801882D4
-u8 dFtComputerPlayerInputScript42[/* */] =
+u8 dFTComputerPlayerInputScript42[/* */] =
 {
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 0),
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 0),
@@ -3181,7 +3181,7 @@ u8 dFtComputerPlayerInputScript42[/* */] =
 };
 
 // 0x801882E0
-u8 dFtComputerPlayerInputScript43[/* */] =
+u8 dFTComputerPlayerInputScript43[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
@@ -3199,7 +3199,7 @@ u8 dFtComputerPlayerInputScript43[/* */] =
 };
 
 // 0x801882F4
-u8 dFtComputerPlayerInputScript44[/* */] =
+u8 dFTComputerPlayerInputScript44[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(I_CONTROLLER_RANGE_MAX, 0),
     FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 0),
@@ -3219,7 +3219,7 @@ u8 dFtComputerPlayerInputScript44[/* */] =
 };
 
 // 0x8018830C
-u8 dFtComputerPlayerInputScript45[/* */] =
+u8 dFTComputerPlayerInputScript45[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
@@ -3231,7 +3231,7 @@ u8 dFtComputerPlayerInputScript45[/* */] =
 };
 
 // 0x80188318
-u8 dFtComputerPlayerInputScript46[/* */] =
+u8 dFTComputerPlayerInputScript46[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
@@ -3243,7 +3243,7 @@ u8 dFtComputerPlayerInputScript46[/* */] =
 };
 
 // 0x80188324
-u8 dFtComputerPlayerInputScript47[/* */] =
+u8 dFTComputerPlayerInputScript47[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(I_CONTROLLER_RANGE_MAX, 0),
@@ -3267,64 +3267,64 @@ u8 dFtComputerPlayerInputScript47[/* */] =
 };
 
 // 0x8018833C
-u8 dFtComputerPlayerInputScript48[/* */] =
+u8 dFTComputerPlayerInputScript48[/* */] =
 {
     FTCOMPUTER_EVENT_PKTHUNDER(),
     FTCOMPUTER_EVENT_END()
 };
 
 // 0x80188340 - CPU player input events
-u8 *dFtComputerPlayerInputScripts[/* */] =
+u8 *dFTComputerPlayerInputScripts[/* */] =
 {
-    dFtComputerPlayerInputScript0,
-    dFtComputerPlayerInputScript1,
-    dFtComputerPlayerInputScript2,
-    dFtComputerPlayerInputScript3,
-    dFtComputerPlayerInputScript4,
-    dFtComputerPlayerInputScript5,
-    dFtComputerPlayerInputScript6,
-    dFtComputerPlayerInputScript7,
-    dFtComputerPlayerInputScript8,
-    dFtComputerPlayerInputScript9,
-    dFtComputerPlayerInputScript10,
-    dFtComputerPlayerInputScript11,
-    dFtComputerPlayerInputScript12,
-    dFtComputerPlayerInputScript13,
-    dFtComputerPlayerInputScript14,
-    dFtComputerPlayerInputScript15,
-    dFtComputerPlayerInputScript16,
-    dFtComputerPlayerInputScript17,
-    dFtComputerPlayerInputScript18,
-    dFtComputerPlayerInputScript19,
-    dFtComputerPlayerInputScript20,
-    dFtComputerPlayerInputScript21,
-    dFtComputerPlayerInputScript22,
-    dFtComputerPlayerInputScript23,
-    dFtComputerPlayerInputScript25,     // WARNING: 25 and 24 are swapped!
-    dFtComputerPlayerInputScript24,     // WARNING: 25 and 24 are swapped!
-    dFtComputerPlayerInputScript26,
-    dFtComputerPlayerInputScript27,
-    dFtComputerPlayerInputScript28,
-    dFtComputerPlayerInputScript29,
-    dFtComputerPlayerInputScript30,
-    dFtComputerPlayerInputScript31,
-    dFtComputerPlayerInputScript32,
-    dFtComputerPlayerInputScript33,
-    dFtComputerPlayerInputScript34,
-    dFtComputerPlayerInputScript35,
-    dFtComputerPlayerInputScript36,
-    dFtComputerPlayerInputScript37,
-    dFtComputerPlayerInputScript38,
-    dFtComputerPlayerInputScript39,
-    dFtComputerPlayerInputScript40,
-    dFtComputerPlayerInputScript41,
-    dFtComputerPlayerInputScript42,
-    dFtComputerPlayerInputScript43,
-    dFtComputerPlayerInputScript44,
-    dFtComputerPlayerInputScript45,
-    dFtComputerPlayerInputScript46,
-    dFtComputerPlayerInputScript47,
-    dFtComputerPlayerInputScript48
+    dFTComputerPlayerInputScript0,
+    dFTComputerPlayerInputScript1,
+    dFTComputerPlayerInputScript2,
+    dFTComputerPlayerInputScript3,
+    dFTComputerPlayerInputScript4,
+    dFTComputerPlayerInputScript5,
+    dFTComputerPlayerInputScript6,
+    dFTComputerPlayerInputScript7,
+    dFTComputerPlayerInputScript8,
+    dFTComputerPlayerInputScript9,
+    dFTComputerPlayerInputScript10,
+    dFTComputerPlayerInputScript11,
+    dFTComputerPlayerInputScript12,
+    dFTComputerPlayerInputScript13,
+    dFTComputerPlayerInputScript14,
+    dFTComputerPlayerInputScript15,
+    dFTComputerPlayerInputScript16,
+    dFTComputerPlayerInputScript17,
+    dFTComputerPlayerInputScript18,
+    dFTComputerPlayerInputScript19,
+    dFTComputerPlayerInputScript20,
+    dFTComputerPlayerInputScript21,
+    dFTComputerPlayerInputScript22,
+    dFTComputerPlayerInputScript23,
+    dFTComputerPlayerInputScript25,     // WARNING: 25 and 24 are swapped!
+    dFTComputerPlayerInputScript24,     // WARNING: 25 and 24 are swapped!
+    dFTComputerPlayerInputScript26,
+    dFTComputerPlayerInputScript27,
+    dFTComputerPlayerInputScript28,
+    dFTComputerPlayerInputScript29,
+    dFTComputerPlayerInputScript30,
+    dFTComputerPlayerInputScript31,
+    dFTComputerPlayerInputScript32,
+    dFTComputerPlayerInputScript33,
+    dFTComputerPlayerInputScript34,
+    dFTComputerPlayerInputScript35,
+    dFTComputerPlayerInputScript36,
+    dFTComputerPlayerInputScript37,
+    dFTComputerPlayerInputScript38,
+    dFTComputerPlayerInputScript39,
+    dFTComputerPlayerInputScript40,
+    dFTComputerPlayerInputScript41,
+    dFTComputerPlayerInputScript42,
+    dFTComputerPlayerInputScript43,
+    dFTComputerPlayerInputScript44,
+    dFTComputerPlayerInputScript45,
+    dFTComputerPlayerInputScript46,
+    dFTComputerPlayerInputScript47,
+    dFTComputerPlayerInputScript48
 };
 
 // // // // // // // // // // // //
@@ -3672,7 +3672,7 @@ void ftComputerSetCommandWaitShort(ftStruct *fp, s32 index)
     }
     else ft_com->input_wait = ((lbRandom_GetFloat() * (FTCOMPUTER_LEVEL_MAX - fp->cp_level)) + ((FTCOMPUTER_LEVEL_MAX - fp->cp_level) / 2) + 1.0F);
     
-    ft_com->p_command = dFtComputerPlayerInputScripts[index];
+    ft_com->p_command = dFTComputerPlayerInputScripts[index];
 }
 
 // 0x80132758
@@ -3681,7 +3681,7 @@ void ftComputerSetCommandImmediate(ftStruct *fp, s32 index)
     ftComputer *ft_com = &fp->fighter_com;
 
     ft_com->input_wait = 1;
-    ft_com->p_command = dFtComputerPlayerInputScripts[index];
+    ft_com->p_command = dFTComputerPlayerInputScripts[index];
 }
 
 // 0x80132778
@@ -3695,7 +3695,7 @@ void ftComputerSetCommandWaitLong(ftStruct *fp, s32 index)
     }
     else ft_com->input_wait = ((lbRandom_GetFloat() * (FTCOMPUTER_LEVEL_MAX - fp->cp_level)) + (FTCOMPUTER_LEVEL_MAX - fp->cp_level) + 1.0F);
     
-    ft_com->p_command = dFtComputerPlayerInputScripts[index];
+    ft_com->p_command = dFTComputerPlayerInputScripts[index];
 }
 
 // 0x8013295C
@@ -3973,7 +3973,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
     this_fall_speed_max = -this_fp->attributes->fall_speed_max;
     this_gravity = this_fp->attributes->gravity;
 
-    ft_comattack = dFtComputerAttackList[this_fp->ft_kind];
+    ft_comattack = dFTComputerAttackList[this_fp->ft_kind];
 
     if (this_fp->ground_or_air != GA_Ground)
     {
@@ -5496,7 +5496,7 @@ void func_ovl3_801361BC(ftStruct *fp)
 }
 
 // 0x80136310
-sb32 ftComputerCheckFindItem(ftStruct *fp)
+sb32 ftComputerCheckFindITem(ftStruct *fp)
 {
     ftComputer *ft_com = &fp->fighter_com;
     GObj *item_gobj;
@@ -6261,7 +6261,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
         ft_com->objective = ftComputer_Objective_Attack;
         return TRUE;
     }
-    else if (ftComputerCheckFindItem(fp) != FALSE)
+    else if (ftComputerCheckFindITem(fp) != FALSE)
     {
         if (ft_com->target_dist < (400.0F * (fp->cp_level + 3)))
         {
@@ -6769,7 +6769,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
     else
     {
         ft_com->input_wait = 1;
-        ft_com->p_command = dFtComputerPlayerInputScripts[ftComputer_Input_StickN];
+        ft_com->p_command = dFTComputerPlayerInputScripts[ftComputer_Input_StickN];
 
         if ((ft_com->walk_stop_wait == ((-this_fp->cp_level * 2) + 18)) && (this_fp->ground_or_air == GA_Ground))
         {
@@ -7505,7 +7505,7 @@ void ftComputerProcessObjective(ftStruct *fp)
         {
         case ftComputer_Objective_Stand:
             ft_com->input_wait = 1;
-            ft_com->p_command = dFtComputerPlayerInputScripts[ftComputer_Input_StickN];
+            ft_com->p_command = dFTComputerPlayerInputScripts[ftComputer_Input_StickN];
             break;
 
         case ftComputer_Objective_Walk:

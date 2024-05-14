@@ -27,7 +27,7 @@ glabel D_ovl58_80131F60
   .balign 4
   .incbin "ovl58.raw.bin", 0x046C, 0x4
 
-glabel dMnN64DisplayList
+glabel dMNN64DisplayList
   .incbin "ovl58.raw.bin", 0x0470, 0x14
   /* 484 17F144 80131F84 */  .4byte D_ovl58_80131F60
   .incbin "ovl58.raw.bin", 0x0488, 0x4

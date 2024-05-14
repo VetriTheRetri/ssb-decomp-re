@@ -93,20 +93,20 @@ glabel mnCongraGetPlayerControllerInterrupt
   /* 17E610 80131C00 27BD0030 */     addiu $sp, $sp, 0x30
 
 glabel mnCongraActorProcUpdate
-  /* 17E614 80131C04 3C038013 */       lui $v1, %hi(sMnCongraSkipWait)
-  /* 17E618 80131C08 246322E4 */     addiu $v1, $v1, %lo(sMnCongraSkipWait)
-  /* 17E61C 80131C0C 8C620000 */        lw $v0, ($v1) # sMnCongraSkipWait + 0
+  /* 17E614 80131C04 3C038013 */       lui $v1, %hi(sMNCongraSkipWait)
+  /* 17E618 80131C08 246322E4 */     addiu $v1, $v1, %lo(sMNCongraSkipWait)
+  /* 17E61C 80131C0C 8C620000 */        lw $v0, ($v1) # sMNCongraSkipWait + 0
   /* 17E620 80131C10 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 17E624 80131C14 AFBF0024 */        sw $ra, 0x24($sp)
   /* 17E628 80131C18 10400004 */      beqz $v0, .L80131C2C
   /* 17E62C 80131C1C AFA40030 */        sw $a0, 0x30($sp)
   /* 17E630 80131C20 244EFFFF */     addiu $t6, $v0, -1
-  /* 17E634 80131C24 AC6E0000 */        sw $t6, ($v1) # sMnCongraSkipWait + 0
+  /* 17E634 80131C24 AC6E0000 */        sw $t6, ($v1) # sMNCongraSkipWait + 0
   /* 17E638 80131C28 01C01025 */        or $v0, $t6, $zero
   .L80131C2C:
   /* 17E63C 80131C2C 14400019 */      bnez $v0, .L80131C94
-  /* 17E640 80131C30 3C0F8013 */       lui $t7, %hi(sMnCongraIsProceed)
-  /* 17E644 80131C34 8DEF22EC */        lw $t7, %lo(sMnCongraIsProceed)($t7)
+  /* 17E640 80131C30 3C0F8013 */       lui $t7, %hi(sMNCongraIsProceed)
+  /* 17E644 80131C34 8DEF22EC */        lw $t7, %lo(sMNCongraIsProceed)($t7)
   /* 17E648 80131C38 55E00017 */      bnel $t7, $zero, .L80131C98
   /* 17E64C 80131C3C 8FBF0024 */        lw $ra, 0x24($sp)
   /* 17E650 80131C40 0C04C6DB */       jal mnCongraGetPlayerControllerInterrupt
@@ -114,13 +114,13 @@ glabel mnCongraActorProcUpdate
   /* 17E658 80131C48 10400012 */      beqz $v0, .L80131C94
   /* 17E65C 80131C4C 27A7002C */     addiu $a3, $sp, 0x2c
   /* 17E660 80131C50 24180001 */     addiu $t8, $zero, 1
-  /* 17E664 80131C54 3C018013 */       lui $at, %hi(sMnCongraIsProceed)
+  /* 17E664 80131C54 3C018013 */       lui $at, %hi(sMNCongraIsProceed)
   /* 17E668 80131C58 3C198013 */       lui $t9, %hi(D_ovl57_801321C0)
-  /* 17E66C 80131C5C AC3822EC */        sw $t8, %lo(sMnCongraIsProceed)($at)
+  /* 17E66C 80131C5C AC3822EC */        sw $t8, %lo(sMNCongraIsProceed)($at)
   /* 17E670 80131C60 273921C0 */     addiu $t9, $t9, %lo(D_ovl57_801321C0)
   /* 17E674 80131C64 8F290000 */        lw $t1, ($t9) # D_ovl57_801321C0 + 0
-  /* 17E678 80131C68 3C0B8013 */       lui $t3, %hi(sMnCongraIsSceneChange)
-  /* 17E67C 80131C6C 256B22F0 */     addiu $t3, $t3, %lo(sMnCongraIsSceneChange)
+  /* 17E678 80131C68 3C0B8013 */       lui $t3, %hi(sMNCongraIsSceneChange)
+  /* 17E67C 80131C6C 256B22F0 */     addiu $t3, $t3, %lo(sMNCongraIsSceneChange)
   /* 17E680 80131C70 ACE90000 */        sw $t1, ($a3)
   /* 17E684 80131C74 240A005A */     addiu $t2, $zero, 0x5a
   /* 17E688 80131C78 AFAA0010 */        sw $t2, 0x10($sp)
@@ -139,22 +139,22 @@ glabel mnCongraActorProcUpdate
 
   /* 17E6B4 80131CA4 27BDFF88 */     addiu $sp, $sp, -0x78
   /* 17E6B8 80131CA8 240E0008 */     addiu $t6, $zero, 8
-  /* 17E6BC 80131CAC 3C018013 */       lui $at, %hi(sMnCongraSkipWait)
-  /* 17E6C0 80131CB0 AC2E22E4 */        sw $t6, %lo(sMnCongraSkipWait)($at)
-  /* 17E6C4 80131CB4 3C018013 */       lui $at, %hi(sMnCongraSceneChangeWait)
-  /* 17E6C8 80131CB8 AC2022E8 */        sw $zero, %lo(sMnCongraSceneChangeWait)($at)
-  /* 17E6CC 80131CBC 3C018013 */       lui $at, %hi(sMnCongraIsProceed)
-  /* 17E6D0 80131CC0 AC2022EC */        sw $zero, %lo(sMnCongraIsProceed)($at)
+  /* 17E6BC 80131CAC 3C018013 */       lui $at, %hi(sMNCongraSkipWait)
+  /* 17E6C0 80131CB0 AC2E22E4 */        sw $t6, %lo(sMNCongraSkipWait)($at)
+  /* 17E6C4 80131CB4 3C018013 */       lui $at, %hi(sMNCongraSceneChangeWait)
+  /* 17E6C8 80131CB8 AC2022E8 */        sw $zero, %lo(sMNCongraSceneChangeWait)($at)
+  /* 17E6CC 80131CBC 3C018013 */       lui $at, %hi(sMNCongraIsProceed)
+  /* 17E6D0 80131CC0 AC2022EC */        sw $zero, %lo(sMNCongraIsProceed)($at)
   /* 17E6D4 80131CC4 3C0F001B */       lui $t7, %hi(D_NF_001AC870)
   /* 17E6D8 80131CC8 3C180000 */       lui $t8, %hi(D_NF_00000854)
-  /* 17E6DC 80131CCC 3C198013 */       lui $t9, %hi(sMnCongraStatusBuf)
+  /* 17E6DC 80131CCC 3C198013 */       lui $t9, %hi(sMNCongraStatusBuf)
   /* 17E6E0 80131CD0 AFBF003C */        sw $ra, 0x3c($sp)
-  /* 17E6E4 80131CD4 3C018013 */       lui $at, %hi(sMnCongraIsSceneChange)
+  /* 17E6E4 80131CD4 3C018013 */       lui $at, %hi(sMNCongraIsSceneChange)
   /* 17E6E8 80131CD8 25EFC870 */     addiu $t7, $t7, %lo(D_NF_001AC870)
   /* 17E6EC 80131CDC 27180854 */     addiu $t8, $t8, %lo(D_NF_00000854)
-  /* 17E6F0 80131CE0 273922B8 */     addiu $t9, $t9, %lo(sMnCongraStatusBuf)
+  /* 17E6F0 80131CE0 273922B8 */     addiu $t9, $t9, %lo(sMNCongraStatusBuf)
   /* 17E6F4 80131CE4 24080005 */     addiu $t0, $zero, 5
-  /* 17E6F8 80131CE8 AC2022F0 */        sw $zero, %lo(sMnCongraIsSceneChange)($at)
+  /* 17E6F8 80131CE8 AC2022F0 */        sw $zero, %lo(sMNCongraIsSceneChange)($at)
   /* 17E6FC 80131CEC AFAF0058 */        sw $t7, 0x58($sp)
   /* 17E700 80131CF0 AFB8005C */        sw $t8, 0x5c($sp)
   /* 17E704 80131CF4 AFA00060 */        sw $zero, 0x60($sp)
@@ -226,26 +226,26 @@ glabel mnCongraActorProcUpdate
   /* 17E80C 80131DFC 00003025 */        or $a2, $zero, $zero
   /* 17E810 80131E00 0C00277D */       jal omAddGObjRenderProc
   /* 17E814 80131E04 3C078000 */       lui $a3, 0x8000
-  /* 17E818 80131E08 3C088013 */       lui $t0, %hi(sMnCongraFighterKind)
-  /* 17E81C 80131E0C 8D0822E0 */        lw $t0, %lo(sMnCongraFighterKind)($t0)
-  /* 17E820 80131E10 3C048013 */       lui $a0, %hi(dMnCongraFileInfo)
+  /* 17E818 80131E08 3C088013 */       lui $t0, %hi(sMNCongraFighterKind)
+  /* 17E81C 80131E0C 8D0822E0 */        lw $t0, %lo(sMNCongraFighterKind)($t0)
+  /* 17E820 80131E10 3C048013 */       lui $a0, %hi(dMNCongraFileInfo)
   /* 17E824 80131E14 00084900 */       sll $t1, $t0, 4
   /* 17E828 80131E18 00892021 */      addu $a0, $a0, $t1
   /* 17E82C 80131E1C 0C0336F4 */       jal rdManagerGetFileSize
-  /* 17E830 80131E20 8C842100 */        lw $a0, %lo(dMnCongraFileInfo)($a0)
+  /* 17E830 80131E20 8C842100 */        lw $a0, %lo(dMNCongraFileInfo)($a0)
   /* 17E834 80131E24 00402025 */        or $a0, $v0, $zero
   /* 17E838 80131E28 0C001260 */       jal gsMemoryAlloc
   /* 17E83C 80131E2C 24050010 */     addiu $a1, $zero, 0x10
-  /* 17E840 80131E30 3C0A8013 */       lui $t2, %hi(sMnCongraFighterKind)
-  /* 17E844 80131E34 8D4A22E0 */        lw $t2, %lo(sMnCongraFighterKind)($t2)
-  /* 17E848 80131E38 3C048013 */       lui $a0, %hi(dMnCongraFileInfo)
+  /* 17E840 80131E30 3C0A8013 */       lui $t2, %hi(sMNCongraFighterKind)
+  /* 17E844 80131E34 8D4A22E0 */        lw $t2, %lo(sMNCongraFighterKind)($t2)
+  /* 17E848 80131E38 3C048013 */       lui $a0, %hi(dMNCongraFileInfo)
   /* 17E84C 80131E3C 00402825 */        or $a1, $v0, $zero
   /* 17E850 80131E40 000A5900 */       sll $t3, $t2, 4
   /* 17E854 80131E44 008B2021 */      addu $a0, $a0, $t3
   /* 17E858 80131E48 0C033722 */       jal rdManagerGetFileWithExternHeap
-  /* 17E85C 80131E4C 8C842100 */        lw $a0, %lo(dMnCongraFileInfo)($a0)
-  /* 17E860 80131E50 3C0C8013 */       lui $t4, %hi(sMnCongraFighterKind)
-  /* 17E864 80131E54 8D8C22E0 */        lw $t4, %lo(sMnCongraFighterKind)($t4)
+  /* 17E85C 80131E4C 8C842100 */        lw $a0, %lo(dMNCongraFileInfo)($a0)
+  /* 17E860 80131E50 3C0C8013 */       lui $t4, %hi(sMNCongraFighterKind)
+  /* 17E864 80131E54 8D8C22E0 */        lw $t4, %lo(sMNCongraFighterKind)($t4)
   /* 17E868 80131E58 3C0E8013 */       lui $t6, %hi(D_ovl57_80132104)
   /* 17E86C 80131E5C 8FA40050 */        lw $a0, 0x50($sp)
   /* 17E870 80131E60 000C6900 */       sll $t5, $t4, 4
@@ -260,10 +260,10 @@ glabel mnCongraActorProcUpdate
   /* 17E894 80131E84 44814000 */      mtc1 $at, $f8 # 120.0 to cop1
   /* 17E898 80131E88 31F8FFDF */      andi $t8, $t7, 0xffdf
   /* 17E89C 80131E8C A4580024 */        sh $t8, 0x24($v0)
-  /* 17E8A0 80131E90 3C198013 */       lui $t9, %hi(sMnCongraFighterKind)
+  /* 17E8A0 80131E90 3C198013 */       lui $t9, %hi(sMNCongraFighterKind)
   /* 17E8A4 80131E94 E4460058 */      swc1 $f6, 0x58($v0)
   /* 17E8A8 80131E98 E448005C */      swc1 $f8, 0x5c($v0)
-  /* 17E8AC 80131E9C 8F3922E0 */        lw $t9, %lo(sMnCongraFighterKind)($t9)
+  /* 17E8AC 80131E9C 8F3922E0 */        lw $t9, %lo(sMNCongraFighterKind)($t9)
   /* 17E8B0 80131EA0 3C048013 */       lui $a0, %hi(D_ovl57_80132108)
   /* 17E8B4 80131EA4 00194100 */       sll $t0, $t9, 4
   /* 17E8B8 80131EA8 00882021 */      addu $a0, $a0, $t0
@@ -272,16 +272,16 @@ glabel mnCongraActorProcUpdate
   /* 17E8C4 80131EB4 00402025 */        or $a0, $v0, $zero
   /* 17E8C8 80131EB8 0C001260 */       jal gsMemoryAlloc
   /* 17E8CC 80131EBC 24050010 */     addiu $a1, $zero, 0x10
-  /* 17E8D0 80131EC0 3C098013 */       lui $t1, %hi(sMnCongraFighterKind)
-  /* 17E8D4 80131EC4 8D2922E0 */        lw $t1, %lo(sMnCongraFighterKind)($t1)
+  /* 17E8D0 80131EC0 3C098013 */       lui $t1, %hi(sMNCongraFighterKind)
+  /* 17E8D4 80131EC4 8D2922E0 */        lw $t1, %lo(sMNCongraFighterKind)($t1)
   /* 17E8D8 80131EC8 3C048013 */       lui $a0, %hi(D_ovl57_80132108)
   /* 17E8DC 80131ECC 00402825 */        or $a1, $v0, $zero
   /* 17E8E0 80131ED0 00095100 */       sll $t2, $t1, 4
   /* 17E8E4 80131ED4 008A2021 */      addu $a0, $a0, $t2
   /* 17E8E8 80131ED8 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 17E8EC 80131EDC 8C842108 */        lw $a0, %lo(D_ovl57_80132108)($a0)
-  /* 17E8F0 80131EE0 3C0B8013 */       lui $t3, %hi(sMnCongraFighterKind)
-  /* 17E8F4 80131EE4 8D6B22E0 */        lw $t3, %lo(sMnCongraFighterKind)($t3)
+  /* 17E8F0 80131EE0 3C0B8013 */       lui $t3, %hi(sMNCongraFighterKind)
+  /* 17E8F4 80131EE4 8D6B22E0 */        lw $t3, %lo(sMNCongraFighterKind)($t3)
   /* 17E8F8 80131EE8 3C0D8013 */       lui $t5, %hi(D_ovl57_8013210C)
   /* 17E8FC 80131EEC 8FA40050 */        lw $a0, 0x50($sp)
   /* 17E900 80131EF0 000B6100 */       sll $t4, $t3, 4
@@ -319,26 +319,26 @@ glabel mnCongraUpdateScene
   /* 17E974 80131F64 AFBF0014 */        sw $ra, 0x14($sp)
   /* 17E978 80131F68 0C0028D0 */       jal func_8000A340
   /* 17E97C 80131F6C 00000000 */       nop 
-  /* 17E980 80131F70 3C028013 */       lui $v0, %hi(sMnCongraIsSceneChange)
-  /* 17E984 80131F74 244222F0 */     addiu $v0, $v0, %lo(sMnCongraIsSceneChange)
-  /* 17E988 80131F78 8C4E0000 */        lw $t6, ($v0) # sMnCongraIsSceneChange + 0
+  /* 17E980 80131F70 3C028013 */       lui $v0, %hi(sMNCongraIsSceneChange)
+  /* 17E984 80131F74 244222F0 */     addiu $v0, $v0, %lo(sMNCongraIsSceneChange)
+  /* 17E988 80131F78 8C4E0000 */        lw $t6, ($v0) # sMNCongraIsSceneChange + 0
   /* 17E98C 80131F7C 24040100 */     addiu $a0, $zero, 0x100
   /* 17E990 80131F80 11C00007 */      beqz $t6, .L80131FA0
   /* 17E994 80131F84 00000000 */       nop 
   /* 17E998 80131F88 0C001B86 */       jal func_80006E18
-  /* 17E99C 80131F8C AC400000 */        sw $zero, ($v0) # sMnCongraIsSceneChange + 0
-  /* 17E9A0 80131F90 3C038013 */       lui $v1, %hi(sMnCongraSceneChangeWait)
-  /* 17E9A4 80131F94 246322E8 */     addiu $v1, $v1, %lo(sMnCongraSceneChangeWait)
+  /* 17E99C 80131F8C AC400000 */        sw $zero, ($v0) # sMNCongraIsSceneChange + 0
+  /* 17E9A0 80131F90 3C038013 */       lui $v1, %hi(sMNCongraSceneChangeWait)
+  /* 17E9A4 80131F94 246322E8 */     addiu $v1, $v1, %lo(sMNCongraSceneChangeWait)
   /* 17E9A8 80131F98 240F0005 */     addiu $t7, $zero, 5
-  /* 17E9AC 80131F9C AC6F0000 */        sw $t7, ($v1) # sMnCongraSceneChangeWait + 0
+  /* 17E9AC 80131F9C AC6F0000 */        sw $t7, ($v1) # sMNCongraSceneChangeWait + 0
   .L80131FA0:
-  /* 17E9B0 80131FA0 3C038013 */       lui $v1, %hi(sMnCongraSceneChangeWait)
-  /* 17E9B4 80131FA4 246322E8 */     addiu $v1, $v1, %lo(sMnCongraSceneChangeWait)
-  /* 17E9B8 80131FA8 8C620000 */        lw $v0, ($v1) # sMnCongraSceneChangeWait + 0
+  /* 17E9B0 80131FA0 3C038013 */       lui $v1, %hi(sMNCongraSceneChangeWait)
+  /* 17E9B4 80131FA4 246322E8 */     addiu $v1, $v1, %lo(sMNCongraSceneChangeWait)
+  /* 17E9B8 80131FA8 8C620000 */        lw $v0, ($v1) # sMNCongraSceneChangeWait + 0
   /* 17E9BC 80131FAC 1040000A */      beqz $v0, .L80131FD8
   /* 17E9C0 80131FB0 2458FFFF */     addiu $t8, $v0, -1
   /* 17E9C4 80131FB4 17000008 */      bnez $t8, .L80131FD8
-  /* 17E9C8 80131FB8 AC780000 */        sw $t8, ($v1) # sMnCongraSceneChangeWait + 0
+  /* 17E9C8 80131FB8 AC780000 */        sw $t8, ($v1) # sMNCongraSceneChangeWait + 0
   /* 17E9CC 80131FBC 3C02800A */       lui $v0, %hi(gSceneData)
   /* 17E9D0 80131FC0 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
   /* 17E9D4 80131FC4 90480000 */       lbu $t0, ($v0) # gSceneData + 0
@@ -354,8 +354,8 @@ glabel mnCongraUpdateScene
 
 glabel mnCongraAddLightsDisplayList
   /* 17E9F8 80131FE8 8C830000 */        lw $v1, ($a0)
-  /* 17E9FC 80131FEC 3C188013 */       lui $t8, %hi(dMnCongraDisplayList)
-  /* 17EA00 80131FF0 271821E0 */     addiu $t8, $t8, %lo(dMnCongraDisplayList)
+  /* 17E9FC 80131FEC 3C188013 */       lui $t8, %hi(dMNCongraDisplayList)
+  /* 17EA00 80131FF0 271821E0 */     addiu $t8, $t8, %lo(dMNCongraDisplayList)
   /* 17EA04 80131FF4 246E0008 */     addiu $t6, $v1, 8
   /* 17EA08 80131FF8 AC8E0000 */        sw $t6, ($a0)
   /* 17EA0C 80131FFC 3C0FDE00 */       lui $t7, 0xde00
@@ -384,19 +384,19 @@ glabel mnCongraStartScene
   /* 17EA5C 8013204C 10410009 */       beq $v0, $at, .L80132074
   /* 17EA60 80132050 24010034 */     addiu $at, $zero, 0x34
   /* 17EA64 80132054 10410003 */       beq $v0, $at, .L80132064
-  /* 17EA68 80132058 3C018013 */       lui $at, %hi(sMnCongraFighterKind)
+  /* 17EA68 80132058 3C018013 */       lui $at, %hi(sMNCongraFighterKind)
   /* 17EA6C 8013205C 10000009 */         b .L80132084
-  /* 17EA70 80132060 AC2022E0 */        sw $zero, %lo(sMnCongraFighterKind)($at)
+  /* 17EA70 80132060 AC2022E0 */        sw $zero, %lo(sMNCongraFighterKind)($at)
   .L80132064:
   /* 17EA74 80132064 906E0014 */       lbu $t6, 0x14($v1) # gSceneData + 20
-  /* 17EA78 80132068 3C018013 */       lui $at, %hi(sMnCongraFighterKind)
+  /* 17EA78 80132068 3C018013 */       lui $at, %hi(sMNCongraFighterKind)
   /* 17EA7C 8013206C 10000005 */         b .L80132084
-  /* 17EA80 80132070 AC2E22E0 */        sw $t6, %lo(sMnCongraFighterKind)($at)
+  /* 17EA80 80132070 AC2E22E0 */        sw $t6, %lo(sMNCongraFighterKind)($at)
   .L80132074:
   /* 17EA84 80132074 3C0F800A */       lui $t7, %hi((gTransferBattleState + 0x23))
   /* 17EA88 80132078 91EF4D2B */       lbu $t7, %lo((gTransferBattleState + 0x23))($t7)
-  /* 17EA8C 8013207C 3C018013 */       lui $at, %hi(sMnCongraFighterKind)
-  /* 17EA90 80132080 AC2F22E0 */        sw $t7, %lo(sMnCongraFighterKind)($at)
+  /* 17EA8C 8013207C 3C018013 */       lui $at, %hi(sMNCongraFighterKind)
+  /* 17EA90 80132080 AC2F22E0 */        sw $t7, %lo(sMNCongraFighterKind)($at)
   .L80132084:
   /* 17EA94 80132084 3C18800A */       lui $t8, %hi(D_NF_800A5240)
   /* 17EA98 80132088 3C048013 */       lui $a0, %hi(D_ovl57_80132208)
@@ -434,5 +434,5 @@ glabel mnCongraStartScene
   /* 17EB0C 801320FC 00000000 */       nop 
 
 # Likely start of new file
-#glabel dMnCongraFileInfo   # Routine parsed as data
+#glabel dMNCongraFileInfo   # Routine parsed as data
 #  /* 17EB10 80132100 000000BA */      dsrl $zero, $zero, 2

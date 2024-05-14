@@ -67,7 +67,7 @@ void ftCommon_Attack100Start_SetStatus(GObj *fighter_gobj)
 }
 
 extern intptr_t lKirbyAttack100Effect;  // 0x00001220
-extern void *gFtDataKirbyBattleMotion;
+extern void *gFTDataKirbyBattleMotion;
 
 // 0x8014F1BC
 void ftCommon_Attack100Loop_KirbyUpdateGFX(ftStruct *fp)
@@ -78,7 +78,7 @@ void ftCommon_Attack100Loop_KirbyUpdateGFX(ftStruct *fp)
     {
         if (fp->command_vars.flags.flag2 != 0)
         {
-            ftKirbyAttack100Gfx *attack_gfx = ((uintptr_t)gFtDataKirbyBattleMotion + (intptr_t)&lKirbyAttack100Effect); // Linker thing
+            ftKirbyAttack100Gfx *attack_gfx = ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lKirbyAttack100Effect); // Linker thing
 
             pos.x = attack_gfx[fp->command_vars.flags.flag2 - 1].offset.x;
             pos.y = attack_gfx[fp->command_vars.flags.flag2 - 1].offset.y;

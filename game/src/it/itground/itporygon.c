@@ -7,8 +7,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItPorygonItemAttributes;   // 0x0000016C
-extern intptr_t lItPorygonHitParties;       // 0x000001B4
+extern intptr_t lITPorygonItemAttributes;   // 0x0000016C
+extern intptr_t lITPorygonHitParties;       // 0x000001B4
 
 // // // // // // // // // // // //
 //                               //
@@ -16,11 +16,11 @@ extern intptr_t lItPorygonHitParties;       // 0x000001B4
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItPorygonItemDesc = 
+itCreateDesc dITPorygonItemDesc = 
 {
     It_Kind_Porygon,                        // Item Kind
     &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
-    &lItPorygonItemAttributes,              // Offset of item attributes in file?
+    &lITPorygonItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -50,7 +50,7 @@ itCreateDesc dItPorygonItemDesc =
 void itPorygonSDefaultUpdateHitParty(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    itHitParty *hit_party = itGetHitParty(dItPorygonItemDesc, lItPorygonHitParties); // (itHitParty*) ((uintptr_t)*dItPorygonItemDesc.p_file + (intptr_t)&Porygon_Event); // Linker thing
+    itHitParty *hit_party = itGetHitParty(dITPorygonItemDesc, lITPorygonHitParties); // (itHitParty*) ((uintptr_t)*dITPorygonItemDesc.p_file + (intptr_t)&Porygon_Event); // Linker thing
 
     if (ip->it_multi == hit_party[ip->item_event_index].timer)
     {
@@ -107,7 +107,7 @@ sb32 itPorygonSDefaultProcUpdate(GObj *item_gobj)
 // 0x80183D00
 GObj* itPorygonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItPorygonItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITPorygonItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

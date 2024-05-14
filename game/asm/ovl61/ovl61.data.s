@@ -6,10 +6,10 @@
 #  80132F20 -> 80133060
 
 
-glabel dMnDataFileIDs
+glabel dMNDataFileIDs
   .incbin "ovl61.raw.bin", 0x1420, 0x8
 
-glabel dMnDataLights1
+glabel dMNDataLights1
   /* 1428 122378 80132F28 */
   .asciz "   "
   .balign 4
@@ -24,20 +24,20 @@ glabel D_ovl61_80132F30
   .balign 4
   .incbin "ovl61.raw.bin", 0x143C, 0x4
 
-glabel dMnDataDisplayList
+glabel dMNDataDisplayList
   .incbin "ovl61.raw.bin", 0x1440, 0x14
   /* 1454 1223A4 80132F54 */  .4byte D_ovl61_80132F30
   .incbin "ovl61.raw.bin", 0x1458, 0x4
-  /* 145C 1223AC 80132F5C */  .4byte dMnDataLights1
+  /* 145C 1223AC 80132F5C */  .4byte dMNDataLights1
   .incbin "ovl61.raw.bin", 0x1460, 0x8
 
-glabel dMnDataSelectedColors
+glabel dMNDataSelectedColors
   .incbin "ovl61.raw.bin", 0x1468, 0x8
 
-glabel dMnDataHighlightColors
+glabel dMNDataHighlightColors
   .incbin "ovl61.raw.bin", 0x1470, 0x8
 
-glabel dMnDataNotColors
+glabel dMNDataNotColors
   .incbin "ovl61.raw.bin", 0x1478, 0x8
 
 glabel D_ovl61_80132F80
@@ -57,10 +57,10 @@ glabel D_ovl61_80132F8C
   .asciz "CB"
   .balign 4
 
-glabel dMnDataOptionGObjs
-  /* 14A4 1223F4 80132FA4 */  .4byte sMnDataCharactersGObj
-  /* 14A8 1223F8 80132FA8 */  .4byte sMnDataVSRecordGObj
-  /* 14AC 1223FC 80132FAC */  .4byte sMnDataSoundTestGObj
+glabel dMNDataOptionGObjs
+  /* 14A4 1223F4 80132FA4 */  .4byte sMNDataCharactersGObj
+  /* 14A8 1223F8 80132FA8 */  .4byte sMNDataVSRecordGObj
+  /* 14AC 1223FC 80132FAC */  .4byte sMNDataSoundTestGObj
 
 glabel D_ovl61_80132FB0
   /* 14B0 122400 80132FB0 */  .4byte D_NF_80392A00

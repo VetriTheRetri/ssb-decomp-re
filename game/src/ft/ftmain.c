@@ -40,7 +40,7 @@ grHitbox dGroundHitCollisionAttributes[/* */] =
 };
 
 // 0x8012C4E0
-f32 dFtMapSurfaceFrictions[/* */] = { 4.0F, 3.0F, 3.0F, 1.0F, 2.0F, 2.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F };
+f32 dFTMapSurfaceFrictions[/* */] = { 4.0F, 3.0F, 3.0F, 1.0F, 2.0F, 2.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F };
 
 // 0x800DF0F0
 void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent *p_event, u32 ev_kind)
@@ -1336,7 +1336,7 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
         }
         else if (this_fp->star_invincible_timer == ITSTAR_WARN_BEGIN_FRAME)
         {
-            ftSpecialItem_BGMCheckFighters();
+            ftSpecialITem_BGMCheckFighters();
         }
     }
     if (this_fp->damage_heal != 0)
@@ -1675,7 +1675,7 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
                 {
                     fp->phys_info.vel_damage_ground = fp->phys_info.vel_damage_air.x;
                 }
-                ftMain_UpdateVelDamageGround(fp, dFtMapSurfaceFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * fp->attributes->traction * 0.25F);
+                ftMain_UpdateVelDamageGround(fp, dFTMapSurfaceFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * fp->attributes->traction * 0.25F);
 
                 vel_damage_air->x = (ground_angle->y * fp->phys_info.vel_damage_ground);
                 vel_damage_air->y = (-ground_angle->x * fp->phys_info.vel_damage_ground);
@@ -2390,7 +2390,7 @@ void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
             ip->hit_normal_damage = 1;
 
             ftCommon_ApplyStarInvincibleTimer(fp, ITSTAR_INVINCIBLE_TIME);
-            ftSpecialItem_BGMSetPlay(alSound_Music_Starman);
+            ftSpecialITem_BGMSetPlay(alSound_Music_Starman);
             func_800269C0(alSound_SFX_StarCollect);
 
             if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.spgame_player) && (g1PGameBonusStatStarCount < U8_MAX))

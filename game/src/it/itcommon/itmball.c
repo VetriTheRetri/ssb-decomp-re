@@ -8,9 +8,9 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItMBallItemAttributes;     // 0x000006E4
-extern intptr_t lItMBallDataStart;          // 0x00009430
-extern intptr_t lItMBallMatAnimJoint;       // 0x00009520
+extern intptr_t lITMBallITemAttributes;     // 0x000006E4
+extern intptr_t lITMBallDataStart;          // 0x00009430
+extern intptr_t lITMBallMatAnimJoint;       // 0x00009520
 
 // // // // // // // // // // // //
 //                               //
@@ -18,11 +18,11 @@ extern intptr_t lItMBallMatAnimJoint;       // 0x00009520
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItMBallItemDesc =
+itCreateDesc dITMBallITemDesc =
 {
     It_Kind_MBall,                          // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItMBallItemAttributes,                // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITMBallITemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -42,7 +42,7 @@ itCreateDesc dItMBallItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dItMBallStatusDesc[/* */] =
+itStatusDesc dITMBallStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -158,7 +158,7 @@ void itMBallGOpenAddAnim(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    void *matanim = itGetPData(ip, lItMBallDataStart, lItMBallMatAnimJoint); // Linker thing
+    void *matanim = itGetPData(ip, lITMBallDataStart, lITMBallMatAnimJoint); // Linker thing
 
     omAddMObjAnimAll(dobj->child->child->sib_next->mobj, matanim, 0.0F);
     func_8000DF34(item_gobj);
@@ -206,7 +206,7 @@ sb32 itMBallAFallProcMap(GObj *item_gobj)
 void itMBallGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dItMBallStatusDesc, itStatus_MBall_GWait);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDesc, itStatus_MBall_GWait);
 }
 
 // 0x8017C7FC
@@ -217,7 +217,7 @@ void itMBallAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dItMBallStatusDesc, itStatus_MBall_AFall);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDesc, itStatus_MBall_AFall);
 }
 
 // 0x8017C840
@@ -229,7 +229,7 @@ void itMBallFHoldSetStatus(GObj *item_gobj)
 
     ip->item_vars.m_ball.owner_gobj = ip->owner_gobj;
 
-    itMainSetItemStatus(item_gobj, dItMBallStatusDesc, itStatus_MBall_FHold);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDesc, itStatus_MBall_FHold);
 }
 
 // 0x8017C880
@@ -303,14 +303,14 @@ sb32 itMBallSDefaultProcReflector(GObj *item_gobj)
 void itMBallFThrowSetStatus(GObj *item_gobj)
 {
     itMBallGOpenAddAnim(item_gobj);
-    itMainSetItemStatus(item_gobj, dItMBallStatusDesc, itStatus_MBall_FThrow);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDesc, itStatus_MBall_FThrow);
 }
 
 // 0x8017CA14
 void itMBallFDropSetStatus(GObj *item_gobj)
 {
     itMBallGOpenAddAnim(item_gobj);
-    itMainSetItemStatus(item_gobj, dItMBallStatusDesc, itStatus_MBall_FDrop);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDesc, itStatus_MBall_FDrop);
 }
 
 // 0x8017CA48
@@ -326,13 +326,13 @@ sb32 itMBallGOpenProcUpdate(GObj *m_ball_gobj)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
-        if (dItMonsterSpawnID == 0)
+        if (dITMonsterSpawnID == 0)
         {
             itMainMakeMonster(m_ball_gobj);
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemID(m_ball_gobj, dItMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemID(m_ball_gobj, dITMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {
@@ -418,7 +418,7 @@ void itMBallGOpenInitItemVars(GObj *item_gobj)
 void itMBallGOpenSetStatus(GObj *item_gobj)
 {
     itMBallGOpenInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItMBallStatusDesc, itStatus_MBall_GOpen);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDesc, itStatus_MBall_GOpen);
 }
 
 // 0x8017CCBC
@@ -434,13 +434,13 @@ sb32 itMBallAOpenProcUpdate(GObj *m_ball_gobj)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
-        if (dItMonsterSpawnID == 0)
+        if (dITMonsterSpawnID == 0)
         {
             itMainMakeMonster(m_ball_gobj);
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemID(m_ball_gobj, dItMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemID(m_ball_gobj, dITMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {
@@ -475,13 +475,13 @@ sb32 itMBallAOpenProcMap(GObj *item_gobj)
 // 0x8017CDE4
 void itMBallAOpenSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItMBallStatusDesc, itStatus_MBall_AOpen);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDesc, itStatus_MBall_AOpen);
 }
 
 // 0x8017CE0C
 GObj* itMBallMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItMBallItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITMBallITemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

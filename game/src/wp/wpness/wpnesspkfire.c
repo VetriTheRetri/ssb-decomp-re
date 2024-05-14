@@ -2,16 +2,16 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 
-extern void *gFtDataNessExtra1;
+extern void *gFTDataNessExtra1;
 extern
-intptr_t lWpNessPKFireWeaponAttributes;     // 0x00000000
+intptr_t lWPNessPKFireWeaponAttributes;     // 0x00000000
 
-wpCreateDesc dWpNessPKFireWeaponDesc =
+wpCreateDesc dWPNessPKFireWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_PKFire,                         // Weapon Kind
-    &gFtDataNessExtra1,                     // Pointer to character's loaded files?
-    &lWpNessPKFireWeaponAttributes,         // Offset of weapon attributes in loaded files
+    &gFTDataNessExtra1,                     // Pointer to character's loaded files?
+    &lWPNessPKFireWeaponAttributes,         // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -119,7 +119,7 @@ sb32 wpNessPKFireProcAbsorb(GObj *weapon_gobj)
 GObj* wpNessPKFireMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel, f32 angle)
 {
     s32 unused;
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpNessPKFireWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPNessPKFireWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

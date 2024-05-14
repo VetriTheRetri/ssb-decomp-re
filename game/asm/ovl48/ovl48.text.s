@@ -71,22 +71,22 @@ glabel func_ovl48_80131B58
 
 glabel func_ovl48_80131BD4
   /* 1722B4 80131BD4 27BDFFA0 */     addiu $sp, $sp, -0x60
-  /* 1722B8 80131BD8 3C0F8011 */       lui $t7, %hi(dFtDefaultFighterDesc)
-  /* 1722BC 80131BDC 25EF6DD0 */     addiu $t7, $t7, %lo(dFtDefaultFighterDesc)
+  /* 1722B8 80131BD8 3C0F8011 */       lui $t7, %hi(dFTDefaultFighterDesc)
+  /* 1722BC 80131BDC 25EF6DD0 */     addiu $t7, $t7, %lo(dFTDefaultFighterDesc)
   /* 1722C0 80131BE0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1722C4 80131BE4 25E8003C */     addiu $t0, $t7, 0x3c
   /* 1722C8 80131BE8 27AE001C */     addiu $t6, $sp, 0x1c
   .L80131BEC:
-  /* 1722CC 80131BEC 8DF90000 */        lw $t9, ($t7) # dFtDefaultFighterDesc + 0
+  /* 1722CC 80131BEC 8DF90000 */        lw $t9, ($t7) # dFTDefaultFighterDesc + 0
   /* 1722D0 80131BF0 25EF000C */     addiu $t7, $t7, 0xc
   /* 1722D4 80131BF4 25CE000C */     addiu $t6, $t6, 0xc
   /* 1722D8 80131BF8 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 1722DC 80131BFC 8DF8FFF8 */        lw $t8, -8($t7) # dFtDefaultFighterDesc + -8
+  /* 1722DC 80131BFC 8DF8FFF8 */        lw $t8, -8($t7) # dFTDefaultFighterDesc + -8
   /* 1722E0 80131C00 ADD8FFF8 */        sw $t8, -8($t6)
-  /* 1722E4 80131C04 8DF9FFFC */        lw $t9, -4($t7) # dFtDefaultFighterDesc + -4
+  /* 1722E4 80131C04 8DF9FFFC */        lw $t9, -4($t7) # dFTDefaultFighterDesc + -4
   /* 1722E8 80131C08 15E8FFF8 */       bne $t7, $t0, .L80131BEC
   /* 1722EC 80131C0C ADD9FFFC */        sw $t9, -4($t6)
-  /* 1722F0 80131C10 8DF90000 */        lw $t9, ($t7) # dFtDefaultFighterDesc + 0
+  /* 1722F0 80131C10 8DF90000 */        lw $t9, ($t7) # dFTDefaultFighterDesc + 0
   /* 1722F4 80131C14 24090009 */     addiu $t1, $zero, 9
   /* 1722F8 80131C18 24040009 */     addiu $a0, $zero, 9
   /* 1722FC 80131C1C ADD90000 */        sw $t9, ($t6)

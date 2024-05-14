@@ -6,8 +6,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItMewItemAttributes;       // 0x00000838
-extern intptr_t lItMewDataStart;            // 0x0000BCC0
+extern intptr_t lITMewItemAttributes;       // 0x00000838
+extern intptr_t lITMewDataStart;            // 0x0000BCC0
 
 // // // // // // // // // // // //
 //                               //
@@ -16,11 +16,11 @@ extern intptr_t lItMewDataStart;            // 0x0000BCC0
 // // // // // // // // // // // //
 
 // 0x8018AC40
-itCreateDesc dItMewItemDesc =
+itCreateDesc dITMewItemDesc =
 {
     It_Kind_Mew,                            // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItMewItemAttributes,                  // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITMewItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -41,7 +41,7 @@ itCreateDesc dItMewItemDesc =
 };
 
 // 0x8018AC74
-itStatusDesc dItMewStatusDesc[/* */] =
+itStatusDesc dITMewStatusDesc[/* */] =
 {
     // Status 0 (Neutral FLy)
     {
@@ -129,7 +129,7 @@ void itMewNFlyInitItemVars(GObj *item_gobj)
 void itMewNFlySetStatus(GObj *item_gobj)
 {
     itMewNFlyInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItMewStatusDesc, itStatus_Mew_NFly);
+    itMainSetItemStatus(item_gobj, dITMewStatusDesc, itStatus_Mew_NFly);
 }
 
 // 0x8017ED54
@@ -163,7 +163,7 @@ sb32 itMewSDefaultProcMap(GObj *item_gobj)
 // 0x8017EDE4
 GObj* itMewMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItMewItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITMewItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -178,7 +178,7 @@ GObj* itMewMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
             
         // This ptr stuff is likely also a macro
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lItMewDataStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITMewDataStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

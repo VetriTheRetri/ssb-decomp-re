@@ -9,11 +9,11 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItIwarkItemAttributes;     // 0x0000072C
+extern intptr_t lITIwarkItemAttributes;     // 0x0000072C
 extern intptr_t
-lItIwarkWeaponRockWeaponAttributes;         // 0x00000774
-extern intptr_t lItIwarkDataStart;          // 0x0000A140
-extern intptr_t lItIwarkDisplayList;        // 0x0000A640
+lITIwarkWeaponRockWeaponAttributes;         // 0x00000774
+extern intptr_t lITIwarkDataStart;          // 0x0000A140
+extern intptr_t lITIwarkDisplayList;        // 0x0000A640
 
 // // // // // // // // // // // //
 //                               //
@@ -22,11 +22,11 @@ extern intptr_t lItIwarkDisplayList;        // 0x0000A640
 // // // // // // // // // // // //
 
 // 0x8018AA90
-itCreateDesc dItIwarkItemDesc =
+itCreateDesc dITIwarkItemDesc =
 {
     It_Kind_Iwark,                          // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItIwarkItemAttributes,                // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITIwarkItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -47,7 +47,7 @@ itCreateDesc dItIwarkItemDesc =
 };
 
 // 0x8018AAC4
-itStatusDesc dItIwarkStatusDesc[/* */] = 
+itStatusDesc dITIwarkStatusDesc[/* */] = 
 {
     // Status 0 (Neutral Fly)
     {
@@ -75,12 +75,12 @@ itStatusDesc dItIwarkStatusDesc[/* */] =
 };
 
 // 0x8018AB04
-wpCreateDesc dItIwarkWeaponRockWeaponDesc =
+wpCreateDesc dITIwarkWeaponRockWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_IwarkRock,                      // Weapon Kind
-    &gItemFileData,                         // Pointer to weapon's loaded files?
-    &lItIwarkWeaponRockWeaponAttributes,    // Offset of weapon attributes in loaded files
+    &gITemFileData,                         // Pointer to weapon's loaded files?
+    &lITIwarkWeaponRockWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -220,7 +220,7 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == It_Kind_Iwark)
     {
-        dobj->display_list = dl = (Gfx*)itGetPData(ip, lItIwarkDataStart, lItIwarkDisplayList); // Linker thing
+        dobj->display_list = dl = (Gfx*)itGetPData(ip, lITIwarkDataStart, lITIwarkDisplayList); // Linker thing
 
         pos.y += ITIWARK_IWARK_ADD_POS_Y;
     }
@@ -230,7 +230,7 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == It_Kind_Iwark)
     {
-        func_800269C0(alSound_Voice_MBallItIwarkSpawn);
+        func_800269C0(alSound_Voice_MBallITIwarkSpawn);
     }
 }
 
@@ -238,7 +238,7 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
 void itIwarkNAttackSetStatus(GObj *item_gobj)
 {
     itIwarkNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItIwarkStatusDesc, itStatus_Iwark_NAttack);
+    itMainSetItemStatus(item_gobj, dITIwarkStatusDesc, itStatus_Iwark_NAttack);
 }
 
 // 0x8017DA94
@@ -264,7 +264,7 @@ void itIwarkNFlySetStatus(GObj *item_gobj)
 
     ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dItIwarkStatusDesc, itStatus_Iwark_NFly);
+    itMainSetItemStatus(item_gobj, dITIwarkStatusDesc, itStatus_Iwark_NFly);
 }
 
 // 0x8017DB18
@@ -298,7 +298,7 @@ sb32 itIwarkSDefaultProcMap(GObj *item_gobj)
 // 0x8017DBA0
 GObj* itIwarkMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItIwarkItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITIwarkItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 
@@ -324,7 +324,7 @@ GObj* itIwarkMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj, itGetPData(ip, lItIwarkDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj, itGetPData(ip, lITIwarkDataStart, lMonsterAnimBankStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }
@@ -429,7 +429,7 @@ sb32 itIwarkWeaponRockProcReflector(GObj *weapon_gobj)
 GObj* itIwarkWeaponRockMakeWeapon(GObj *spawn_gobj, Vec3f *pos, u8 random)
 {
     u32 random32;
-    GObj *weapon_gobj = wpManagerMakeWeapon(spawn_gobj, &dItIwarkWeaponRockWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(spawn_gobj, &dITIwarkWeaponRockWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *dobj;
     f32 vel_y;
     wpStruct *wp;

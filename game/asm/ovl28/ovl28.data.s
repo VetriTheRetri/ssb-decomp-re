@@ -23,7 +23,7 @@ glabel D_ovl28_80137F60
   .balign 4
   .incbin "ovl28.raw.bin", 0x64A0, 0x10
 
-glabel dMnTrainingPortraitPositionsX
+glabel dMNTrainingPortraitPositionsX
   .incbin "ovl28.raw.bin", 0x64B0, 0xC
   /* 64BC 14759C 80137FBC */
   .asciz "C "
@@ -45,25 +45,25 @@ glabel dMnTrainingPortraitPositionsX
   .asciz "Cz"
   .balign 4
 
-glabel dMnTrainingPortraitVelocities
+glabel dMNTrainingPortraitVelocities
   .incbin "ovl28.raw.bin", 0x64E0, 0x30
 
-glabel dMnTrainingPortraitPositionsXY
+glabel dMNTrainingPortraitPositionsXY
   .incbin "ovl28.raw.bin", 0x6510, 0x84
 
-glabel dMnTrainingFtKindOrder
+glabel dMNTrainingFTKindOrder
   .incbin "ovl28.raw.bin", 0x6594, 0x30
 
-glabel dMnTrainingPortraitOrder
+glabel dMNTrainingPortraitOrder
   .incbin "ovl28.raw.bin", 0x65C4, 0x30
 
-glabel dMnTrainingLockedPortraitOffsets
+glabel dMNTrainingLockedPortraitOffsets
   .incbin "ovl28.raw.bin", 0x65F4, 0x30
 
-glabel dMnTrainingPortraitOffsets
+glabel dMNTrainingPortraitOffsets
   .incbin "ovl28.raw.bin", 0x6624, 0x30
 
-glabel dMnTrainingUnusedPositions
+glabel dMNTrainingUnusedPositions
   /* 6654 147734 80138154 */
   .asciz "AP"
   .balign 4
@@ -97,28 +97,28 @@ glabel dMnTrainingUnusedPositions
   .balign 4
   .incbin "ovl28.raw.bin", 0x66B0, 0x4
 
-glabel dMnTrainingLogoOffsets
+glabel dMNTrainingLogoOffsets
   .incbin "ovl28.raw.bin", 0x66B4, 0x30
 
-glabel dMnTrainingNameOffsets
+glabel dMNTrainingNameOffsets
   .incbin "ovl28.raw.bin", 0x66E4, 0x30
 
-glabel dMnTrainingPanelLUTOffsets
+glabel dMNTrainingPanelLUTOffsets
   .incbin "ovl28.raw.bin", 0x6714, 0x10
 
-glabel dMnTrainingTypeOffsets
+glabel dMNTrainingTypeOffsets
   .incbin "ovl28.raw.bin", 0x6724, 0x10
 
-glabel dMnTrainingTypeOffsetsX
+glabel dMNTrainingTypeOffsetsX
   /* 6734 147814 80138234 */
   .asciz "A"
   .balign 4
   .incbin "ovl28.raw.bin", 0x6738, 0xC
 
-glabel dMnTrainingTypeOffsetsDuplicate
+glabel dMNTrainingTypeOffsetsDuplicate
   .incbin "ovl28.raw.bin", 0x6744, 0x10
 
-glabel dMnTrainingTypeOffsetsXDuplicate
+glabel dMNTrainingTypeOffsetsXDuplicate
   /* 6754 147834 80138254 */
   .asciz "A"
   .balign 4
@@ -145,55 +145,55 @@ glabel dMnTrainingTypeOffsetsXDuplicate
   .balign 4
   .incbin "ovl28.raw.bin", 0x67B0, 0x4
 
-glabel dMnTrainingCursorTypeColors
+glabel dMNTrainingCursorTypeColors
   .incbin "ovl28.raw.bin", 0x67B4, 0x18
 
-glabel dMnTrainingCursorTypeOffsets
+glabel dMNTrainingCursorTypeOffsets
   .incbin "ovl28.raw.bin", 0x67CC, 0x10
 
-glabel dMnTrainingCursorOffsets
+glabel dMNTrainingCursorOffsets
   .incbin "ovl28.raw.bin", 0x67DC, 0xC
 
-glabel dMnTrainingCursorTypePositions
+glabel dMNTrainingCursorTypePositions
   .incbin "ovl28.raw.bin", 0x67E8, 0x18
 
-glabel dMnTrainingPanelColorIndexesUnused
+glabel dMNTrainingPanelColorIndexesUnused
   .incbin "ovl28.raw.bin", 0x6800, 0x10
 
-glabel dMnTrainingAnnouncerNames
+glabel dMNTrainingAnnouncerNames
   .incbin "ovl28.raw.bin", 0x6810, 0x40
 
-glabel dMnTrainingTokenPickupDisplayOrders
+glabel dMNTrainingTokenPickupDisplayOrders
   .incbin "ovl28.raw.bin", 0x6850, 0x10
 
-glabel dMnTrainingTokenPlaceHeldDisplayOrders
+glabel dMNTrainingTokenPlaceHeldDisplayOrders
   .incbin "ovl28.raw.bin", 0x6860, 0x10
 
-glabel dMnTrainingTokenPlaceUnheldDisplayOrders
+glabel dMNTrainingTokenPlaceUnheldDisplayOrders
   .incbin "ovl28.raw.bin", 0x6870, 0x10
 
-glabel dMnTrainingCursorTypePositions2
+glabel dMNTrainingCursorTypePositions2
   .incbin "ovl28.raw.bin", 0x6880, 0x18
 
-glabel dMnTrainingTokenOffsets
+glabel dMNTrainingTokenOffsets
   .incbin "ovl28.raw.bin", 0x6898, 0x14
 
-glabel dMnTrainingCursorTypeOffsetsUnused
+glabel dMNTrainingCursorTypeOffsetsUnused
   .incbin "ovl28.raw.bin", 0x68AC, 0x10
 
-glabel dMnTrainingCursorStartingDisplayOrders
+glabel dMNTrainingCursorStartingDisplayOrders
   .incbin "ovl28.raw.bin", 0x68BC, 0x10
 
-glabel dMnTrainingTokenOffsetsNoCPU
+glabel dMNTrainingTokenOffsetsNoCPU
   .incbin "ovl28.raw.bin", 0x68CC, 0x10
 
-glabel dMnTrainingTokenStartingDisplayOrders
+glabel dMNTrainingTokenStartingDisplayOrders
   .incbin "ovl28.raw.bin", 0x68DC, 0x10
 
-glabel dMnTrainingTokenHoldingDisplayOrders
+glabel dMNTrainingTokenHoldingDisplayOrders
   .incbin "ovl28.raw.bin", 0x68EC, 0x10
 
-glabel dMnTrainingWhiteCircleSizes
+glabel dMNTrainingWhiteCircleSizes
   .incbin "ovl28.raw.bin", 0x68FC, 0x8
   /* 6904 1479E4 80138404 */
   .asciz "@"

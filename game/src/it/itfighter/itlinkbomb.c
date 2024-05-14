@@ -10,11 +10,11 @@
 // WARNING: Intentionally erroneous declaration. Missing two u16 arguments after f32. HAL's mistake, not mine.
 extern void itMainSetFighterRelease(GObj*, Vec3f*, f32);
 
-extern void *gFtDataLinkMain;
+extern void *gFTDataLinkMain;
 
-extern intptr_t lItLinkBombItemAttributes;  // 0x00000040
-extern intptr_t lItLinkBombHitEvents;       // 0x00000088
-extern intptr_t lItLinkBombBloatScale;      // 0x000000A8
+extern intptr_t lITLinkBombItemAttributes;  // 0x00000040
+extern intptr_t lITLinkBombHitEvents;       // 0x00000088
+extern intptr_t lITLinkBombBloatScale;      // 0x000000A8
 
 // // // // // // // // // // // //
 //                               //
@@ -22,11 +22,11 @@ extern intptr_t lItLinkBombBloatScale;      // 0x000000A8
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItLinkBombItemDesc = 
+itCreateDesc dITLinkBombItemDesc = 
 {   
     It_Kind_LinkBomb,                       // Item Kind
-    &gFtDataLinkMain,                       // Pointer to item file data?
-    &lItLinkBombItemAttributes,             // Offset of item attributes in file?
+    &gFTDataLinkMain,                       // Pointer to item file data?
+    &lITLinkBombItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -46,7 +46,7 @@ itCreateDesc dItLinkBombItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dItLinkBombStatusDesc[/* */] =
+itStatusDesc dITLinkBombStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -152,7 +152,7 @@ void itLinkBombNExplodeWaitUpdateScale(GObj *item_gobj)
 
     if (ip->item_vars.link_bomb.scale_int == 0)
     {
-        f32 *scale = (f32*) ((uintptr_t)*dItLinkBombItemDesc.p_file + (intptr_t)&lItLinkBombBloatScale); // Linker thing
+        f32 *scale = (f32*) ((uintptr_t)*dITLinkBombItemDesc.p_file + (intptr_t)&lITLinkBombBloatScale); // Linker thing
         s32 index = (ip->item_vars.link_bomb.scale_index > ITLINKBOMB_SCALE_INDEX_REWIND) ? 
                     (ITLINKBOMB_SCALE_INDEX_MAX - ip->item_vars.link_bomb.scale_index) : ip->item_vars.link_bomb.scale_index;
 
@@ -362,7 +362,7 @@ void itLinkBombGWaitSetStatus(GObj *item_gobj)
 
     itMapSetGround(ip);
     itLinkBombSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_GWait);
+    itMainSetItemStatus(item_gobj, dITLinkBombStatusDesc, itStatus_LinkBomb_GWait);
 }
 
 // 0x80185FD8
@@ -374,7 +374,7 @@ void itLinkBombAFallSetStatus(GObj *item_gobj)
 
     itMapSetAir(ip);
     itLinkBombSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_AFall);
+    itMainSetItemStatus(item_gobj, dITLinkBombStatusDesc, itStatus_LinkBomb_AFall);
 }
 
 // 0x80186024
@@ -419,7 +419,7 @@ sb32 itLinkBombFHoldProcUpdate(GObj *item_gobj)
 void itLinkBombFHoldSetStatus(GObj *item_gobj)
 {
     itLinkBombSDefaultSetHitStatusNone(item_gobj);
-    itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_FHold);
+    itMainSetItemStatus(item_gobj, dITLinkBombStatusDesc, itStatus_LinkBomb_FHold);
 }
 
 // 0x80186150
@@ -448,7 +448,7 @@ void itLinkBombFThrowSetStatus(GObj *item_gobj)
 
     ip->is_damage_all = TRUE;
 
-    itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_FThrow);
+    itMainSetItemStatus(item_gobj, dITLinkBombStatusDesc, itStatus_LinkBomb_FThrow);
 }
 
 // 0x80186270
@@ -500,7 +500,7 @@ void itLinkBombFDropSetStatus(GObj *item_gobj)
 
     ip->is_damage_all = TRUE;
 
-    itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_FDrop);
+    itMainSetItemStatus(item_gobj, dITLinkBombStatusDesc, itStatus_LinkBomb_FDrop);
 }
 
 void itLinkBombNExplodeInitItemVars(GObj *item_gobj)
@@ -518,7 +518,7 @@ void itLinkBombNExplodeInitItemVars(GObj *item_gobj)
 void itLinkBombNExplodeUpdateHitEvent(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    itHitEvent *ev = itGetHitEvent(dItLinkBombItemDesc, lItLinkBombHitEvents); // (itHitEvent*) ((uintptr_t)*dItLinkBombItemDesc.p_file + (intptr_t)&lItLinkBombHitEvents); Linker thing
+    itHitEvent *ev = itGetHitEvent(dITLinkBombItemDesc, lITLinkBombHitEvents); // (itHitEvent*) ((uintptr_t)*dITLinkBombItemDesc.p_file + (intptr_t)&lITLinkBombHitEvents); Linker thing
 
     if (ip->it_multi == ev[ip->item_event_index].timer)
     {
@@ -592,13 +592,13 @@ sb32 itLinkBombNExplodeProcUpdate(GObj *item_gobj)
 void itLinkBombNExplodeSetStatus(GObj *item_gobj)
 {
     itLinkBombNExplodeInitHitbox(item_gobj);
-    itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_NExplode);
+    itMainSetItemStatus(item_gobj, dITLinkBombStatusDesc, itStatus_LinkBomb_NExplode);
 }
 
 // 0x801865A0
 GObj* itLinkBombMakeItem(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *item_gobj = itManagerMakeItem(fighter_gobj, &dItLinkBombItemDesc, pos, vel, ITEM_MASK_SPAWN_FIGHTER);
+    GObj *item_gobj = itManagerMakeItem(fighter_gobj, &dITLinkBombItemDesc, pos, vel, ITEM_MASK_SPAWN_FIGHTER);
     DObj *dobj;
     itStruct *ip;
 

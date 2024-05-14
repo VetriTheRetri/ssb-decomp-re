@@ -294,25 +294,25 @@ glabel func_ovl54_80131E74
 glabel func_ovl54_80131F24
   /* 1778C4 80131F24 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 1778C8 80131F28 00802825 */        or $a1, $a0, $zero
-  /* 1778CC 80131F2C 3C0E8011 */       lui $t6, %hi(dFtDefaultFighterDesc)
+  /* 1778CC 80131F2C 3C0E8011 */       lui $t6, %hi(dFTDefaultFighterDesc)
   /* 1778D0 80131F30 27A4001C */     addiu $a0, $sp, 0x1c
   /* 1778D4 80131F34 3C028013 */       lui $v0, %hi(D_ovl54_80132C08)
-  /* 1778D8 80131F38 25CE6DD0 */     addiu $t6, $t6, %lo(dFtDefaultFighterDesc)
+  /* 1778D8 80131F38 25CE6DD0 */     addiu $t6, $t6, %lo(dFTDefaultFighterDesc)
   /* 1778DC 80131F3C 24422C08 */     addiu $v0, $v0, %lo(D_ovl54_80132C08)
   /* 1778E0 80131F40 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1778E4 80131F44 25C8003C */     addiu $t0, $t6, 0x3c
   /* 1778E8 80131F48 0080C825 */        or $t9, $a0, $zero
   .L80131F4C:
-  /* 1778EC 80131F4C 8DD80000 */        lw $t8, ($t6) # dFtDefaultFighterDesc + 0
+  /* 1778EC 80131F4C 8DD80000 */        lw $t8, ($t6) # dFTDefaultFighterDesc + 0
   /* 1778F0 80131F50 25CE000C */     addiu $t6, $t6, 0xc
   /* 1778F4 80131F54 2739000C */     addiu $t9, $t9, 0xc
   /* 1778F8 80131F58 AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 1778FC 80131F5C 8DCFFFF8 */        lw $t7, -8($t6) # dFtDefaultFighterDesc + -8
+  /* 1778FC 80131F5C 8DCFFFF8 */        lw $t7, -8($t6) # dFTDefaultFighterDesc + -8
   /* 177900 80131F60 AF2FFFF8 */        sw $t7, -8($t9)
-  /* 177904 80131F64 8DD8FFFC */        lw $t8, -4($t6) # dFtDefaultFighterDesc + -4
+  /* 177904 80131F64 8DD8FFFC */        lw $t8, -4($t6) # dFTDefaultFighterDesc + -4
   /* 177908 80131F68 15C8FFF8 */       bne $t6, $t0, .L80131F4C
   /* 17790C 80131F6C AF38FFFC */        sw $t8, -4($t9)
-  /* 177910 80131F70 8DD80000 */        lw $t8, ($t6) # dFtDefaultFighterDesc + 0
+  /* 177910 80131F70 8DD80000 */        lw $t8, ($t6) # dFTDefaultFighterDesc + 0
   /* 177914 80131F74 3C018013 */       lui $at, %hi(D_ovl54_80132BB0)
   /* 177918 80131F78 3C0B8013 */       lui $t3, %hi(D_ovl54_80132BC8)
   /* 17791C 80131F7C AF380000 */        sw $t8, ($t9)

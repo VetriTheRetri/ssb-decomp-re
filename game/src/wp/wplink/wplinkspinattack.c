@@ -1,16 +1,16 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFtDataLinkMain;
+extern void *gFTDataLinkMain;
 extern
-intptr_t lWpLinkSpinAttackWeaponAttributes; // 0x0000000C
+intptr_t lWPLinkSpinAttackWeaponAttributes; // 0x0000000C
 
-wpCreateDesc dWpLinkSpinAttackWeaponDesc =
+wpCreateDesc dWPLinkSpinAttackWeaponDesc =
 {
     0x03,                                   // Render flags?
     Wp_Kind_SpinAttack,                     // Weapon Kind
-    &gFtDataLinkMain,                       // Pointer to character's loaded files?
-    &lWpLinkSpinAttackWeaponAttributes,     // Offset of weapon attributes in loaded files
+    &gFTDataLinkMain,                       // Pointer to character's loaded files?
+    &lWPLinkSpinAttackWeaponAttributes,     // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -108,7 +108,7 @@ GObj* wpLinkSpinAttackMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     offset.y += WPSPINATTACK_OFF_Y;
 
-    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpLinkSpinAttackWeaponDesc, &offset, WEAPON_MASK_SPAWN_FIGHTER);
+    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPLinkSpinAttackWeaponDesc, &offset, WEAPON_MASK_SPAWN_FIGHTER);
 
     if (weapon_gobj == NULL)
     {

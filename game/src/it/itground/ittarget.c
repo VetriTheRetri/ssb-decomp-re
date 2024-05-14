@@ -10,7 +10,7 @@
 
 extern void *gBonusGameFileData[/* */];
 
-extern intptr_t lItTargetItemAttributes;    // 0x00000000
+extern intptr_t lITTargetItemAttributes;    // 0x00000000
 
 // // // // // // // // // // // //
 //                               //
@@ -19,11 +19,11 @@ extern intptr_t lItTargetItemAttributes;    // 0x00000000
 // // // // // // // // // // // //
 
 // 0x8018F130
-itCreateDesc dItTargetItemDesc =
+itCreateDesc dITTargetItemDesc =
 {
     It_Kind_GBumper,                        // Item Kind
     &gBonusGameFileData[0],                 // Pointer to item file data?
-    &lItTargetItemAttributes,               // Offset of item attributes in file?
+    &lITTargetItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -65,7 +65,7 @@ sb32 itTargetSDefaultProcDamage(GObj *item_gobj)
 // 0x8018EE5C
 GObj* itTargetMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItTargetItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITTargetItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

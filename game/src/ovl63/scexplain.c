@@ -575,7 +575,7 @@ void scExplainProcStart(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = dFtDefaultFighterDesc;
+        player_spawn = dFTDefaultFighterDesc;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 

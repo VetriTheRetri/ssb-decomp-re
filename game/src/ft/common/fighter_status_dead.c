@@ -142,7 +142,7 @@ void ftCommon_Dead_ClearSpecialStats(GObj *fighter_gobj)
     fp->is_nullstatus = TRUE;
     fp->x18E_flag_b0 = TRUE;
 
-    ftSpecialItem_BGMCheckFighters(fighter_gobj);
+    ftSpecialITem_BGMCheckFighters(fighter_gobj);
 }
 
 // 0x8013C0EC

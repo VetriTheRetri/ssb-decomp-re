@@ -13,8 +13,8 @@ f32 func_ovl3_8013AE10(Vec3f *a, Vec3f *b, f32 f)
 }
 
 extern intptr_t D_NF_00003A68;
-extern gsColorRGBA dFtShadowColorDefault;
-extern gsColorRGBA dFtShadowColorsTeam[3];
+extern gsColorRGBA dFTShadowColorDefault;
+extern gsColorRGBA dFTShadowColorsTeam[3];
 extern void *D_ovl2_801313B4;
 extern Gfx D_ovl3_80188410;
 extern Gfx D_ovl3_80188458;
@@ -272,9 +272,9 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
 
                     if ((gBattleState->is_team_battle == TRUE) && !(gBattleState->is_not_teamshadows))
                     {
-                        gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dFtShadowColorsTeam[fp->team].r, dFtShadowColorsTeam[fp->team].g, dFtShadowColorsTeam[fp->team].b, dFtShadowColorsTeam[fp->team].a);
+                        gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dFTShadowColorsTeam[fp->team].r, dFTShadowColorsTeam[fp->team].g, dFTShadowColorsTeam[fp->team].b, dFTShadowColorsTeam[fp->team].a);
                     }
-                    else gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dFtShadowColorDefault.r, dFtShadowColorDefault.g, dFtShadowColorDefault.b, dFtShadowColorDefault.a);
+                    else gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dFTShadowColorDefault.r, dFTShadowColorDefault.g, dFTShadowColorDefault.b, dFTShadowColorDefault.a);
 
                     sv = shadow_vertex;
 

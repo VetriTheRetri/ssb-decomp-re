@@ -73,8 +73,8 @@ glabel mnN64LogoProcUpdate
   /* 17ED98 80131BD8 1611FFFC */       bne $s0, $s1, .L80131BCC
   /* 17ED9C 80131BDC 00000000 */       nop 
   /* 17EDA0 80131BE0 24090001 */     addiu $t1, $zero, 1
-  /* 17EDA4 80131BE4 3C018013 */       lui $at, %hi(sMnN64IsProceedOpening)
-  /* 17EDA8 80131BE8 AC292074 */        sw $t1, %lo(sMnN64IsProceedOpening)($at)
+  /* 17EDA4 80131BE4 3C018013 */       lui $at, %hi(sMNN64IsProceedOpening)
+  /* 17EDA8 80131BE8 AC292074 */        sw $t1, %lo(sMNN64IsProceedOpening)($at)
   .L80131BEC:
   /* 17EDAC 80131BEC 0C002C7A */       jal gsStopCurrentProcess
   /* 17EDB0 80131BF0 24040001 */     addiu $a0, $zero, 1
@@ -92,15 +92,15 @@ glabel mnN64LogoProcUpdate
   /* 17EDDC 80131C1C 27BD0060 */     addiu $sp, $sp, 0x60
 
 glabel mnN64ActorProcUpdate
-  /* 17EDE0 80131C20 3C038013 */       lui $v1, %hi(sMnN64SkipAllowWait)
-  /* 17EDE4 80131C24 24632070 */     addiu $v1, $v1, %lo(sMnN64SkipAllowWait)
-  /* 17EDE8 80131C28 8C620000 */        lw $v0, ($v1) # sMnN64SkipAllowWait + 0
+  /* 17EDE0 80131C20 3C038013 */       lui $v1, %hi(sMNN64SkipAllowWait)
+  /* 17EDE4 80131C24 24632070 */     addiu $v1, $v1, %lo(sMNN64SkipAllowWait)
+  /* 17EDE8 80131C28 8C620000 */        lw $v0, ($v1) # sMNN64SkipAllowWait + 0
   /* 17EDEC 80131C2C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 17EDF0 80131C30 AFBF0014 */        sw $ra, 0x14($sp)
   /* 17EDF4 80131C34 10400004 */      beqz $v0, .L80131C48
   /* 17EDF8 80131C38 AFA40018 */        sw $a0, 0x18($sp)
   /* 17EDFC 80131C3C 244EFFFF */     addiu $t6, $v0, -1
-  /* 17EE00 80131C40 AC6E0000 */        sw $t6, ($v1) # sMnN64SkipAllowWait + 0
+  /* 17EE00 80131C40 AC6E0000 */        sw $t6, ($v1) # sMNN64SkipAllowWait + 0
   /* 17EE04 80131C44 01C01025 */        or $v0, $t6, $zero
   .L80131C48:
   /* 17EE08 80131C48 1440000D */      bnez $v0, .L80131C80
@@ -118,8 +118,8 @@ glabel mnN64ActorProcUpdate
   /* 17EE38 80131C78 1000000C */         b .L80131CAC
   /* 17EE3C 80131C7C 8FBF0014 */        lw $ra, 0x14($sp)
   .L80131C80:
-  /* 17EE40 80131C80 3C198013 */       lui $t9, %hi(sMnN64IsProceedOpening)
-  /* 17EE44 80131C84 8F392074 */        lw $t9, %lo(sMnN64IsProceedOpening)($t9)
+  /* 17EE40 80131C80 3C198013 */       lui $t9, %hi(sMNN64IsProceedOpening)
+  /* 17EE44 80131C84 8F392074 */        lw $t9, %lo(sMNN64IsProceedOpening)($t9)
   /* 17EE48 80131C88 3C02800A */       lui $v0, %hi(gSceneData)
   /* 17EE4C 80131C8C 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
   /* 17EE50 80131C90 13200005 */      beqz $t9, .L80131CA8
@@ -137,18 +137,18 @@ glabel mnN64ActorProcUpdate
 
   /* 17EE78 80131CB8 27BDFF80 */     addiu $sp, $sp, -0x80
   /* 17EE7C 80131CBC 240E0008 */     addiu $t6, $zero, 8
-  /* 17EE80 80131CC0 3C018013 */       lui $at, %hi(sMnN64SkipAllowWait)
-  /* 17EE84 80131CC4 AC2E2070 */        sw $t6, %lo(sMnN64SkipAllowWait)($at)
+  /* 17EE80 80131CC0 3C018013 */       lui $at, %hi(sMNN64SkipAllowWait)
+  /* 17EE84 80131CC4 AC2E2070 */        sw $t6, %lo(sMNN64SkipAllowWait)($at)
   /* 17EE88 80131CC8 3C0F001B */       lui $t7, %hi(D_NF_001AC870)
   /* 17EE8C 80131CCC 3C180000 */       lui $t8, %hi(D_NF_00000854)
-  /* 17EE90 80131CD0 3C198013 */       lui $t9, %hi(sMnN64StatusBuf)
+  /* 17EE90 80131CD0 3C198013 */       lui $t9, %hi(sMNN64StatusBuf)
   /* 17EE94 80131CD4 AFBF003C */        sw $ra, 0x3c($sp)
-  /* 17EE98 80131CD8 3C018013 */       lui $at, %hi(sMnN64IsProceedOpening)
+  /* 17EE98 80131CD8 3C018013 */       lui $at, %hi(sMNN64IsProceedOpening)
   /* 17EE9C 80131CDC 25EFC870 */     addiu $t7, $t7, %lo(D_NF_001AC870)
   /* 17EEA0 80131CE0 27180854 */     addiu $t8, $t8, %lo(D_NF_00000854)
-  /* 17EEA4 80131CE4 27392048 */     addiu $t9, $t9, %lo(sMnN64StatusBuf)
+  /* 17EEA4 80131CE4 27392048 */     addiu $t9, $t9, %lo(sMNN64StatusBuf)
   /* 17EEA8 80131CE8 24080005 */     addiu $t0, $zero, 5
-  /* 17EEAC 80131CEC AC202074 */        sw $zero, %lo(sMnN64IsProceedOpening)($at)
+  /* 17EEAC 80131CEC AC202074 */        sw $zero, %lo(sMNN64IsProceedOpening)($at)
   /* 17EEB0 80131CF0 AFAF0060 */        sw $t7, 0x60($sp)
   /* 17EEB4 80131CF4 AFB80064 */        sw $t8, 0x64($sp)
   /* 17EEB8 80131CF8 AFA00068 */        sw $zero, 0x68($sp)
@@ -271,8 +271,8 @@ glabel mnN64ActorProcUpdate
 
 glabel mnN64AddLightsDisplayList
   /* 17F08C 80131ECC 8C830000 */        lw $v1, ($a0)
-  /* 17F090 80131ED0 3C188013 */       lui $t8, %hi(dMnN64DisplayList)
-  /* 17F094 80131ED4 27181F70 */     addiu $t8, $t8, %lo(dMnN64DisplayList)
+  /* 17F090 80131ED0 3C188013 */       lui $t8, %hi(dMNN64DisplayList)
+  /* 17F094 80131ED4 27181F70 */     addiu $t8, $t8, %lo(dMNN64DisplayList)
   /* 17F098 80131ED8 246E0008 */     addiu $t6, $v1, 8
   /* 17F09C 80131EDC AC8E0000 */        sw $t6, ($a0)
   /* 17F0A0 80131EE0 3C0FDE00 */       lui $t7, 0xde00
@@ -319,7 +319,7 @@ glabel mnN64StartScene
 #  /* 17F128 80131F68 0A323200 */         j func_NF_88C8C800 # couldn't be resolved
 #  /* 17F12C 80131F6C 00000000 */       nop 
 #
-#glabel dMnN64DisplayList   # Routine parsed as data
+#glabel dMNN64DisplayList   # Routine parsed as data
 #  /* 17F130 80131F70 D9FFFFFF */   bbit032 $t7, 0x1f, 0x80131f70 # branch target not found
 #  /* 17F134 80131F74 00020000 */       sll $zero, $v0, 0
 #  /* 17F138 80131F78 DB020000 */   bbit032 $t8, 2, 0x80131f7c # branch target not found

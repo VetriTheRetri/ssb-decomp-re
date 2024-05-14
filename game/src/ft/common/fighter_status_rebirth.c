@@ -2,14 +2,14 @@
 #include <gm/battle.h>
 #include <gr/ground.h>
 
-extern ftCreateDesc dFtDefaultFighterDesc;
+extern ftCreateDesc dFTDefaultFighterDesc;
 extern f32 ftCommon_Rebirth_OffsetX[GMMATCH_PLAYERS_MAX];
 
 // 0x8013CF60
 void ftCommon_RebirthDown_SetStatus(GObj *this_gobj)
 {
     ftStruct *this_fp = ftGetStruct(this_gobj);
-    ftCreateDesc rebirth_vars = dFtDefaultFighterDesc;
+    ftCreateDesc rebirth_vars = dFTDefaultFighterDesc;
     GObj *other_gobj;
     ftStruct *other_fp;
     s32 halo_number;

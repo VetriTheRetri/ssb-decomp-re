@@ -83,7 +83,7 @@ f32 gPauseYawOrigin;
 f32 gPausePitchOrigin;
 
 // 0x801317F0 - Sprite of red arrow indicator for grabbable items
-Sprite *gItemArrowSprite;
+Sprite *gITemArrowSprite;
 
 // 0x801317F4 - Number of unique teams in-game minus one?
 s32 gBattlePlacement;
@@ -1862,7 +1862,7 @@ GObj* ifItem_PickupArrow_MakeInterface(itStruct *ip)
     {
         omAddGObjRenderProc(interface_gobj, func_ovl2_80111D64, 0x17, 0x80000000U, -1);
 
-        if (gcAppendSObjWithSprite(interface_gobj, gItemArrowSprite) != NULL)
+        if (gcAppendSObjWithSprite(interface_gobj, gITemArrowSprite) != NULL)
         {
             interface_gobj->user_data.p = ip; // Give it up for... the GObj with the most flexible user_data assignments ever?
 
@@ -1880,7 +1880,7 @@ GObj* ifItem_PickupArrow_MakeInterface(itStruct *ip)
 // 0x80111F80
 void func_ovl2_80111F80(void)
 {
-    Sprite *sprite = gItemArrowSprite =
+    Sprite *sprite = gITemArrowSprite =
 
     (Sprite*) ((uintptr_t)rdManagerGetFileWithExternHeap((intptr_t)&D_NF_00000057, gsMemoryAlloc(rdManagerGetFileSize((intptr_t)&D_NF_00000057), 0x10)) + (intptr_t)&D_NF_00000050);
 
@@ -2444,7 +2444,7 @@ void func_ovl2_80113104(GObj *interface_gobj)
                     {
                         gMusicIndexDefault = 3;
 
-                        ftSpecialItem_BGMCheckFighters();
+                        ftSpecialITem_BGMCheckFighters();
                     }
                     if (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(5))
                     {

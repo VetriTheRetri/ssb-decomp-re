@@ -593,7 +593,7 @@ void func_ovl64_8018DCC4(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = dFtDefaultFighterDesc;
+        player_spawn = dFTDefaultFighterDesc;
 
         ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
 

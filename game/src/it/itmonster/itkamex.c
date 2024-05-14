@@ -8,11 +8,11 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItKamexItemAttributes;     // 0x00000A08
+extern intptr_t lITKamexItemAttributes;     // 0x00000A08
 extern intptr_t
-lItKamexWeaponHydroWeaponAttributes;        // 0x00000A50
-extern intptr_t lItKamexDataStart;          // 0x0000EA60
-extern intptr_t lItKamexDisplayList;        // 0x0000ED60
+lITKamexWeaponHydroWeaponAttributes;        // 0x00000A50
+extern intptr_t lITKamexDataStart;          // 0x0000EA60
+extern intptr_t lITKamexDisplayList;        // 0x0000ED60
 
 // // // // // // // // // // // //
 //                               //
@@ -21,11 +21,11 @@ extern intptr_t lItKamexDisplayList;        // 0x0000ED60
 // // // // // // // // // // // //
 
 // 0x8018AEE0
-itCreateDesc dItKamexItemDesc = 
+itCreateDesc dITKamexItemDesc = 
 {
     It_Kind_Kamex,                          // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItKamexItemAttributes,                // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITKamexItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -46,7 +46,7 @@ itCreateDesc dItKamexItemDesc =
 };
 
 // 0x8018AF14
-itStatusDesc dItKamexStatusDesc[/* */] =
+itStatusDesc dITKamexStatusDesc[/* */] =
 {
     // Status 0 (Air Fall)
     {
@@ -86,12 +86,12 @@ itStatusDesc dItKamexStatusDesc[/* */] =
 };
 
 // 0x8018AF74
-wpCreateDesc dItKamexWeaponHydroWeaponDesc =
+wpCreateDesc dITKamexWeaponHydroWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_KamexHydro,                     // Weapon Kind
-    &gItemFileData,                         // Pointer to weapon's loaded files?
-    &lItKamexWeaponHydroWeaponAttributes,   // Offset of weapon attributes in loaded files
+    &gITemFileData,                         // Pointer to weapon's loaded files?
+    &lITKamexWeaponHydroWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -211,7 +211,7 @@ void itKamexAFallInitItemVars(GObj *item_gobj)
 void itKamexAFallSetStatus(GObj *item_gobj)
 {
     itKamexAFallInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItKamexStatusDesc, itStatus_Kamex_AFall);
+    itMainSetItemStatus(item_gobj, dITKamexStatusDesc, itStatus_Kamex_AFall);
 }
 
 // 0x801808D8
@@ -252,7 +252,7 @@ void itKamexNAppearSetStatus(GObj *item_gobj)
     {
         func_800269C0(alSound_Voice_MBallKamexSpawn);
     }
-    itMainSetItemStatus(item_gobj, dItKamexStatusDesc, itStatus_Kamex_NAppear);
+    itMainSetItemStatus(item_gobj, dITKamexStatusDesc, itStatus_Kamex_NAppear);
 }
 
 // 0x801809BC
@@ -297,7 +297,7 @@ void itKamexNAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
 
         if (ip->it_kind == It_Kind_Kamex)
         {
-            Gfx *dl = (Gfx*)itGetPData(ip, lItKamexDataStart, lItKamexDisplayList); // Linker thing
+            Gfx *dl = (Gfx*)itGetPData(ip, lITKamexDataStart, lITKamexDisplayList); // Linker thing
 
             dobj->display_list = dl;
 
@@ -317,7 +317,7 @@ void itKamexNAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
 // 0x80180AF4
 void itKamexNAttackSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItKamexStatusDesc, itStatus_Kamex_NAttack);
+    itMainSetItemStatus(item_gobj, dITKamexStatusDesc, itStatus_Kamex_NAttack);
 }
 
 // 0x80180B1C
@@ -396,7 +396,7 @@ void itKamexSDefaultFindTargetsSetLR(GObj *item_gobj)
 // 0x80180CDC
 GObj* itKamexMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItKamexItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITKamexItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *kamex_ip;
     itStruct *mball_ip;
@@ -429,7 +429,7 @@ GObj* itKamexMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         }
         dobj->translate.vec.f.y -= kamex_ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(kamex_ip, lItKamexDataStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(kamex_ip, lITKamexDataStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }
@@ -475,7 +475,7 @@ sb32 itKamexWeaponHydroProcReflector(GObj *weapon_gobj)
 GObj* itKamexWeaponHydroMakeWeapon(GObj *item_gobj, Vec3f *pos)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dItKamexWeaponHydroWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITKamexWeaponHydroWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *dobj;
     s32 unused;
     wpStruct *wp;

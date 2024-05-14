@@ -15,55 +15,55 @@ extern intptr_t lGmContinueSpriteShadow;                    // 0x000224F8
 // GLOBAL / STATIC
 
 // 0x801342F8
-void *sGmContinueFighterAnimHeap;
+void *sGMContinueFighterAnimHeap;
 
 // 0x80134300
-GObj *sGmContinueFighterGObj;
+GObj *sGMContinueFighterGObj;
 
 // 0x80134304
-GObj *sGmContinueContinueGObj;
+GObj *sGMContinueContinueGObj;
 
 // 0x80134308
-GObj *sGmContinueShadowGObj;
+GObj *sGMContinueShadowGObj;
 
 // 0x8013430C
-GObj *sGmContinueSpotlightGObj;
+GObj *sGMContinueSpotlightGObj;
 
 // 0x80134314
-GObj *sGmContinueOptionGObj;
+GObj *sGMContinueOptionGObj;
 
 // 0x80134318
-GObj *sGmContinueRoomGObj;
+GObj *sGMContinueRoomGObj;
 
 // 0x8013431C
-s32 sGmContinueRoomFadeInAlpha;
+s32 sGMContinueRoomFadeInAlpha;
 
 // 0x80134320
-GObj *sGmContinueRoomFadeInGObj;
+GObj *sGMContinueRoomFadeInGObj;
 
 // 0x80134324
-s32 sGmContinueSpotlightFadeAlpha;
+s32 sGMContinueSpotlightFadeAlpha;
 
 // 0x80134328
-GObj *sGmContinueSpotlightFadeGObj;
+GObj *sGMContinueSpotlightFadeGObj;
 
 // 0x8013432C
-s32 sGmContinueRoomFadeOutAlpha;
+s32 sGMContinueRoomFadeOutAlpha;
 
 // 0x80134330
-GObj *sGmContinueRoomFadeOutGObj;
+GObj *sGMContinueRoomFadeOutGObj;
 
 // 0x80134338
-s32 sGmContinueOptionSelect;
+s32 sGMContinueOptionSelect;
 
 // 0x80134348
-gmContinueFighter sGmContinueFighterAttributes;
+gmContinueFighter sGMContinueFighterAttributes;
 
 // 0x80134368
-GObj *sGmContinueScoreGObj;
+GObj *sGMContinueScoreGObj;
 
 // 0x80134528
-void *sGmContinueFiles[5];
+void *sGMContinueFiles[5];
 
 // 0x80131B00
 void func_ovl55_80131B00(Gfx **dl)
@@ -143,7 +143,7 @@ s32 gmContinueGetScoreDigitSprite(s32 digit)
         0x1040,
         0x1270
     };
-    return spGetSpriteFromFile(sGmContinueFiles[3], offsets[digit]);
+    return spGetSpriteFromFile(sGMContinueFiles[3], offsets[digit]);
 }
 
 // 0x80131D40
@@ -186,10 +186,10 @@ void gmContinueMakeScoreDisplay(s32 points)
     GObj *gobj;
     SObj *sobj;
 
-    sGmContinueScoreGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueScoreGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1C, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGmContinueFiles[1], &lGmContinueSpriteTextScore));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[1], &lGmContinueSpriteTextScore));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -228,41 +228,41 @@ void gmContinueMakeFighter(s32 ft_kind)
     GObj *fighter_gobj;
     ftCreateDesc player_spawn;
 
-    player_spawn = dFtDefaultFighterDesc;
+    player_spawn = dFTDefaultFighterDesc;
 
     player_spawn.ft_kind = ft_kind;
 
     player_spawn.pos.x = 90.0F;
 
-    player_spawn.costume = sGmContinueFighterAttributes.costume;
-    player_spawn.shade = sGmContinueFighterAttributes.shade;
-    player_spawn.anim_heap = sGmContinueFighterAnimHeap;
+    player_spawn.costume = sGMContinueFighterAttributes.costume;
+    player_spawn.shade = sGMContinueFighterAttributes.shade;
+    player_spawn.anim_heap = sGMContinueFighterAnimHeap;
 
     player_spawn.pos.y = 2070.0F;
     player_spawn.pos.z = 0.0F;
 
-    sGmContinueFighterGObj = fighter_gobj = ftManager_MakeFighter(&player_spawn);
+    sGMContinueFighterGObj = fighter_gobj = ftManager_MakeFighter(&player_spawn);
 
     func_ovl1_803905CC(fighter_gobj, 0x10009);
 
-    gmContinueSetFighterScale(fighter_gobj, sGmContinueFighterAttributes.ft_kind);
+    gmContinueSetFighterScale(fighter_gobj, sGMContinueFighterAttributes.ft_kind);
 }
 
 // 0x801321A8
 void gmContinueRoomFadeOutProcRender(GObj *gobj)
 {
-    if (sGmContinueRoomFadeOutAlpha < 0xFF)
+    if (sGMContinueRoomFadeOutAlpha < 0xFF)
     {
-        sGmContinueRoomFadeOutAlpha += 5;
+        sGMContinueRoomFadeOutAlpha += 5;
 
-        if (sGmContinueRoomFadeOutAlpha > 0xFF)
+        if (sGMContinueRoomFadeOutAlpha > 0xFF)
         {
-            sGmContinueRoomFadeOutAlpha = 0xFF;
+            sGMContinueRoomFadeOutAlpha = 0xFF;
         }
     }
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, sGmContinueRoomFadeOutAlpha);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, sGMContinueRoomFadeOutAlpha);
     gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 230);
@@ -275,26 +275,26 @@ void gmContinueMakeRoomFadeOut(void)
 {
     GObj *gobj;
 
-    sGmContinueRoomFadeOutAlpha = 0x00;
-    sGmContinueRoomFadeOutGObj = gobj = omMakeGObjCommon(0, NULL, 0x17, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueRoomFadeOutAlpha = 0x00;
+    sGMContinueRoomFadeOutGObj = gobj = omMakeGObjCommon(0, NULL, 0x17, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, gmContinueRoomFadeOutProcRender, 0x20, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x80132338
 void gmContinueRoomFadeInProcRender(GObj *gobj)
 {
-    if (sGmContinueRoomFadeInAlpha > 0)
+    if (sGMContinueRoomFadeInAlpha > 0)
     {
-        sGmContinueRoomFadeInAlpha -= 5;
+        sGMContinueRoomFadeInAlpha -= 5;
 
-        if (sGmContinueRoomFadeInAlpha < 0)
+        if (sGMContinueRoomFadeInAlpha < 0)
         {
-            sGmContinueRoomFadeInAlpha = 0;
+            sGMContinueRoomFadeInAlpha = 0;
         }
     }
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, sGmContinueRoomFadeInAlpha);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, sGMContinueRoomFadeInAlpha);
     gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 230);
@@ -307,26 +307,26 @@ void gmContinueMakeRoomFadeIn(void)
 {
     GObj *gobj;
 
-    sGmContinueRoomFadeInAlpha = 0xFF;
-    sGmContinueRoomFadeInGObj = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueRoomFadeInAlpha = 0xFF;
+    sGMContinueRoomFadeInGObj = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, gmContinueRoomFadeInProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x801324C0
 void gmContinueSpotlightFadeProcRender(GObj *gobj)
 {
-    if (sGmContinueSpotlightFadeAlpha > 0)
+    if (sGMContinueSpotlightFadeAlpha > 0)
     {
-        sGmContinueSpotlightFadeAlpha -= 5;
+        sGMContinueSpotlightFadeAlpha -= 5;
 
-        if (sGmContinueSpotlightFadeAlpha < 0)
+        if (sGMContinueSpotlightFadeAlpha < 0)
         {
-            sGmContinueSpotlightFadeAlpha = 0;
+            sGMContinueSpotlightFadeAlpha = 0;
         }
     }
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, sGmContinueSpotlightFadeAlpha);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, sGMContinueSpotlightFadeAlpha);
     gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 230);
@@ -339,8 +339,8 @@ void gmContinueMakeSpotlightSObjsFade(void)
 {
     GObj *gobj;
 
-    sGmContinueSpotlightFadeAlpha = 0xFF;
-    sGmContinueSpotlightFadeGObj = gobj = omMakeGObjCommon(0, NULL, 0x16, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueSpotlightFadeAlpha = 0xFF;
+    sGMContinueSpotlightFadeGObj = gobj = omMakeGObjCommon(0, NULL, 0x16, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, gmContinueSpotlightFadeProcRender, 0x1F, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
@@ -350,10 +350,10 @@ void gmContinueMakeRoom(void)
     GObj *gobj;
     SObj *sobj;
 
-    sGmContinueRoomGObj = gobj = omMakeGObjCommon(0, NULL, 0x13, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueRoomGObj = gobj = omMakeGObjCommon(0, NULL, 0x13, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1D, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGmContinueFiles[0], &lGmContinueSpriteRoom));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGmContinueSpriteRoom));
 
     sobj->pos.x = 30.0F;
     sobj->pos.y = 28.0F;
@@ -365,9 +365,9 @@ void gmContinueMakeSpotlightSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    sGmContinueShadowGObj = gobj = omMakeGObjCommon(0, NULL, 0x15, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueShadowGObj = gobj = omMakeGObjCommon(0, NULL, 0x15, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1E, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGmContinueFiles[0], &lGmContinueSpriteShadow));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGmContinueSpriteShadow));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -379,9 +379,9 @@ void gmContinueMakeSpotlightSObjs(void)
     sobj->pos.x = 80.0F;
     sobj->pos.y = 156.0F;
 
-    sGmContinueSpotlightGObj = gobj = omMakeGObjCommon(0, NULL, 0x15, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueSpotlightGObj = gobj = omMakeGObjCommon(0, NULL, 0x15, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1E, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGmContinueFiles[0], &lGmContinueSpriteSpotlight));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGmContinueSpriteSpotlight));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -400,9 +400,9 @@ void gmContinueMakeContinueSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sGmContinueContinueGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueContinueGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1C, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGmContinueFiles[0], &lGmContinueSpriteTextContinue));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGmContinueSpriteTextContinue));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -460,7 +460,7 @@ void gmContinueOptionSetHighlightColors(GObj *gobj, s32 option)
 // 0x801329AC
 void gmContinueOptionProcUpdate(GObj *gobj)
 {
-    gmContinueOptionSetHighlightColors(gobj, sGmContinueOptionSelect);
+    gmContinueOptionSetHighlightColors(gobj, sGMContinueOptionSelect);
 }
 
 // 0x801329D0
@@ -469,11 +469,11 @@ void gmContinueMakeOptionSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    sGmContinueOptionGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueOptionGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1C, GOBJ_DLLINKORDER_DEFAULT, -1);
     omAddGObjCommonProc(gobj, gmContinueOptionProcUpdate, 1, 1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGmContinueFiles[0], &lGmContinueSpriteTextYes));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGmContinueSpriteTextYes));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -481,7 +481,7 @@ void gmContinueMakeOptionSObjs(void)
     sobj->pos.x = 84.0F;
     sobj->pos.y = 129.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGmContinueFiles[0], &lGmContinueSpriteTextNo));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGmContinueSpriteTextNo));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -489,7 +489,7 @@ void gmContinueMakeOptionSObjs(void)
     sobj->pos.x = 189.0F;
     sobj->pos.y = 129.0F;
 
-    gmContinueOptionSetHighlightColors(gobj, sGmContinueOptionSelect);
+    gmContinueOptionSetHighlightColors(gobj, sGMContinueOptionSelect);
 }
 
 // 0x80132AE8
@@ -512,5 +512,5 @@ void gmContinueCursorSetPosition(GObj *gobj, s32 option)
 // 0x80132B2C
 void gmContinueCursorProcUpdate(GObj *gobj)
 {
-    gmContinueCursorSetPosition(gobj, sGmContinueOptionSelect);
+    gmContinueCursorSetPosition(gobj, sGMContinueOptionSelect);
 }

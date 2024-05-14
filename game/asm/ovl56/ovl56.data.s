@@ -6,10 +6,10 @@
 #  80134EE0 -> 801352C0
 
 
-glabel dGmStageClearFileIDs
+glabel dGMStageClearFileIDs
   .incbin "ovl56.raw.bin", 0x33E0, 0x1C
 
-glabel dGmStageClearBonusData
+glabel dGMStageClearBonusData
   .incbin "ovl56.raw.bin", 0x33FC, 0x1D4
   /* 35D0 17E320 801350D0 */
   .asciz "   "
@@ -26,7 +26,7 @@ glabel dGmStageClearBonusData
   .balign 4
   .incbin "ovl56.raw.bin", 0x35F0, 0x10
 
-glabel dGmStageClearDigitSpriteColors
+glabel dGMStageClearDigitSpriteColors
   .incbin "ovl56.raw.bin", 0x3600, 0x14
 
 glabel D_ovl56_80135114

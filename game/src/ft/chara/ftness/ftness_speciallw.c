@@ -8,8 +8,8 @@
 
 // PSI Magnet (SpecialLw/SpecialAirLw)
 
-extern intptr_t lFtNessSpecialLwAbsorb;
-extern void *gFtDataNessBattleMotion;
+extern intptr_t lFTNessSpecialLwAbsorb;
+extern void *gFTDataNessBattleMotion;
 
 // 0x801551E0
 void ftNessSpecialLwCheckRelease(ftStruct *fp) // PSI Magnet interrupt?
@@ -232,7 +232,7 @@ void ftNessSpecialLwInitVars(GObj *fighter_gobj)
     }
     fp->is_absorb = TRUE;
 
-    fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFtDataNessBattleMotion + (intptr_t)&lFtNessSpecialLwAbsorb); // Linker thing (attempt uintptr_t for 64-bit compatibility?)
+    fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFTDataNessBattleMotion + (intptr_t)&lFTNessSpecialLwAbsorb); // Linker thing (attempt uintptr_t for 64-bit compatibility?)
 
     fp->command_vars.flags.flag1 = 0;
 }

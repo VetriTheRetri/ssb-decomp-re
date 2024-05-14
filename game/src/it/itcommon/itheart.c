@@ -6,7 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItHeartItemAttributes;     // 0x00000100
+extern intptr_t lITHeartItemAttributes;     // 0x00000100
 
 // // // // // // // // // // // //
 //                               //
@@ -14,11 +14,11 @@ extern intptr_t lItHeartItemAttributes;     // 0x00000100
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItHeartItemDesc =
+itCreateDesc dITHeartItemDesc =
 {
     It_Kind_Heart,                          // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItHeartItemAttributes,                // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITHeartItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -38,7 +38,7 @@ itCreateDesc dItHeartItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dItHeartStatusDesc[/* */] =
+itStatusDesc dITHeartStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -126,7 +126,7 @@ sb32 itHeartAFallProcMap(GObj *item_gobj)
 void itHeartGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dItHeartStatusDesc, itStatus_Heart_GWait);
+    itMainSetItemStatus(item_gobj, dITHeartStatusDesc, itStatus_Heart_GWait);
 }
 
 // 0x801747B4
@@ -137,7 +137,7 @@ void itHeartAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dItHeartStatusDesc, itStatus_Heart_AFall);
+    itMainSetItemStatus(item_gobj, dITHeartStatusDesc, itStatus_Heart_AFall);
 }
 
 // 0x801747F8
@@ -149,13 +149,13 @@ sb32 itHeartFDropProcMap(GObj *item_gobj)
 // 0x80174828
 void itHeartFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItHeartStatusDesc, itStatus_Heart_FDrop);
+    itMainSetItemStatus(item_gobj, dITHeartStatusDesc, itStatus_Heart_FDrop);
 }
 
 // 0x80174850
 GObj* itHeartMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItHeartItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITHeartItemDesc, pos, vel, flags);
     DObj *dobj;
     Vec3f translate;
     itStruct *ip;

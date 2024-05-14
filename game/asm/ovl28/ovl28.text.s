@@ -40,8 +40,8 @@ glabel mnTrainingSelectCharWithToken
   /* 141138 80131B58 240300B8 */     addiu $v1, $zero, 0xb8
   /* 14113C 80131B5C 00830019 */     multu $a0, $v1
   /* 141140 80131B60 27BDFFD0 */     addiu $sp, $sp, -0x30
-  /* 141144 80131B64 3C028014 */       lui $v0, %hi(gMnTrainingPanels)
-  /* 141148 80131B68 24428558 */     addiu $v0, $v0, %lo(gMnTrainingPanels)
+  /* 141144 80131B64 3C028014 */       lui $v0, %hi(gMNTrainingPanels)
+  /* 141148 80131B68 24428558 */     addiu $v0, $v0, %lo(gMNTrainingPanels)
   /* 14114C 80131B6C AFB20020 */        sw $s2, 0x20($sp)
   /* 141150 80131B70 AFB1001C */        sw $s1, 0x1c($sp)
   /* 141154 80131B74 24010004 */     addiu $at, $zero, 4
@@ -73,8 +73,8 @@ glabel mnTrainingSelectCharWithToken
   /* 1411B8 80131BD8 0C03A492 */       jal func_ovl2_800E9248
   /* 1411BC 80131BDC 00003025 */        or $a2, $zero, $zero
   /* 1411C0 80131BE0 8FB90028 */        lw $t9, 0x28($sp)
-  /* 1411C4 80131BE4 3C028014 */       lui $v0, %hi(gMnTrainingPanels)
-  /* 1411C8 80131BE8 24428558 */     addiu $v0, $v0, %lo(gMnTrainingPanels)
+  /* 1411C4 80131BE4 3C028014 */       lui $v0, %hi(gMNTrainingPanels)
+  /* 1411C8 80131BE8 24428558 */     addiu $v0, $v0, %lo(gMNTrainingPanels)
   /* 1411CC 80131BEC 240300B8 */     addiu $v1, $zero, 0xb8
   /* 1411D0 80131BF0 AE19004C */        sw $t9, 0x4c($s0)
   .L80131BF4:
@@ -113,35 +113,35 @@ glabel mnTrainingSelectCharWithToken
 
 glabel mnTrainingGetNextPortraitX
   /* 141250 80131C70 27BDFF90 */     addiu $sp, $sp, -0x70
-  /* 141254 80131C74 3C0E8013 */       lui $t6, %hi(dMnTrainingPortraitPositionsX)
+  /* 141254 80131C74 3C0E8013 */       lui $t6, %hi(dMNTrainingPortraitPositionsX)
   /* 141258 80131C78 27A30040 */     addiu $v1, $sp, 0x40
   /* 14125C 80131C7C 44856000 */      mtc1 $a1, $f12
-  /* 141260 80131C80 25CE7FB0 */     addiu $t6, $t6, %lo(dMnTrainingPortraitPositionsX)
+  /* 141260 80131C80 25CE7FB0 */     addiu $t6, $t6, %lo(dMNTrainingPortraitPositionsX)
   /* 141264 80131C84 27A50010 */     addiu $a1, $sp, 0x10
   /* 141268 80131C88 25C80030 */     addiu $t0, $t6, 0x30
   /* 14126C 80131C8C 0060C825 */        or $t9, $v1, $zero
   .L80131C90:
-  /* 141270 80131C90 8DD80000 */        lw $t8, ($t6) # dMnTrainingPortraitPositionsX + 0
+  /* 141270 80131C90 8DD80000 */        lw $t8, ($t6) # dMNTrainingPortraitPositionsX + 0
   /* 141274 80131C94 25CE000C */     addiu $t6, $t6, 0xc
   /* 141278 80131C98 2739000C */     addiu $t9, $t9, 0xc
   /* 14127C 80131C9C AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 141280 80131CA0 8DCFFFF8 */        lw $t7, -8($t6) # dMnTrainingPortraitPositionsX + -8
+  /* 141280 80131CA0 8DCFFFF8 */        lw $t7, -8($t6) # dMNTrainingPortraitPositionsX + -8
   /* 141284 80131CA4 AF2FFFF8 */        sw $t7, -8($t9)
-  /* 141288 80131CA8 8DD8FFFC */        lw $t8, -4($t6) # dMnTrainingPortraitPositionsX + -4
+  /* 141288 80131CA8 8DD8FFFC */        lw $t8, -4($t6) # dMNTrainingPortraitPositionsX + -4
   /* 14128C 80131CAC 15C8FFF8 */       bne $t6, $t0, .L80131C90
   /* 141290 80131CB0 AF38FFFC */        sw $t8, -4($t9)
-  /* 141294 80131CB4 3C098013 */       lui $t1, %hi(dMnTrainindMnTrainingPortraitVelocities)
-  /* 141298 80131CB8 25297FE0 */     addiu $t1, $t1, %lo(dMnTrainindMnTrainingPortraitVelocities)
+  /* 141294 80131CB4 3C098013 */       lui $t1, %hi(dMNTrainindMNTrainingPortraitVelocities)
+  /* 141298 80131CB8 25297FE0 */     addiu $t1, $t1, %lo(dMNTrainindMNTrainingPortraitVelocities)
   /* 14129C 80131CBC 252D0030 */     addiu $t5, $t1, 0x30
   /* 1412A0 80131CC0 00A06025 */        or $t4, $a1, $zero
   .L80131CC4:
-  /* 1412A4 80131CC4 8D2B0000 */        lw $t3, ($t1) # dMnTrainindMnTrainingPortraitVelocities + 0
+  /* 1412A4 80131CC4 8D2B0000 */        lw $t3, ($t1) # dMNTrainindMNTrainingPortraitVelocities + 0
   /* 1412A8 80131CC8 2529000C */     addiu $t1, $t1, 0xc
   /* 1412AC 80131CCC 258C000C */     addiu $t4, $t4, 0xc
   /* 1412B0 80131CD0 AD8BFFF4 */        sw $t3, -0xc($t4)
-  /* 1412B4 80131CD4 8D2AFFF8 */        lw $t2, -8($t1) # dMnTrainindMnTrainingPortraitVelocities + -8
+  /* 1412B4 80131CD4 8D2AFFF8 */        lw $t2, -8($t1) # dMNTrainindMNTrainingPortraitVelocities + -8
   /* 1412B8 80131CD8 AD8AFFF8 */        sw $t2, -8($t4)
-  /* 1412BC 80131CDC 8D2BFFFC */        lw $t3, -4($t1) # dMnTrainindMnTrainingPortraitVelocities + -4
+  /* 1412BC 80131CDC 8D2BFFFC */        lw $t3, -4($t1) # dMNTrainindMNTrainingPortraitVelocities + -4
   /* 1412C0 80131CE0 152DFFF8 */       bne $t1, $t5, .L80131CC4
   /* 1412C4 80131CE4 AD8BFFFC */        sw $t3, -4($t4)
   /* 1412C8 80131CE8 00041080 */       sll $v0, $a0, 2
@@ -161,7 +161,7 @@ glabel mnTrainingGetNextPortraitX
   /* 1412FC 80131D1C 00A2C821 */      addu $t9, $a1, $v0
   /* 141300 80131D20 4502000D */     bc1fl .L80131D58
   /* 141304 80131D24 C7260000 */      lwc1 $f6, ($t9)
-  /* 141308 80131D28 C5C40000 */      lwc1 $f4, ($t6) # dMnTrainingPortraitPositionsX + 0
+  /* 141308 80131D28 C5C40000 */      lwc1 $f4, ($t6) # dMNTrainingPortraitPositionsX + 0
   /* 14130C 80131D2C 46046080 */     add.s $f2, $f12, $f4
   /* 141310 80131D30 4600103E */    c.le.s $f2, $f0
   /* 141314 80131D34 00000000 */       nop
@@ -230,19 +230,19 @@ glabel mnTrainingSetPortraitX
 
 glabel mnTrainingInitializePortraitBackgroundPosition
   /* 1413EC 80131E0C 27BDFFA0 */     addiu $sp, $sp, -0x60
-  /* 1413F0 80131E10 3C0E8014 */       lui $t6, %hi(dMnTrainingPortraitPositionsXY)
+  /* 1413F0 80131E10 3C0E8014 */       lui $t6, %hi(dMNTrainingPortraitPositionsXY)
   /* 1413F4 80131E14 27A30000 */     addiu $v1, $sp, 0
-  /* 1413F8 80131E18 25CE8010 */     addiu $t6, $t6, %lo(dMnTrainingPortraitPositionsXY)
+  /* 1413F8 80131E18 25CE8010 */     addiu $t6, $t6, %lo(dMNTrainingPortraitPositionsXY)
   /* 1413FC 80131E1C 25C80060 */     addiu $t0, $t6, 0x60
   /* 141400 80131E20 0060C825 */        or $t9, $v1, $zero
   .L80131E24:
-  /* 141404 80131E24 8DD80000 */        lw $t8, ($t6) # dMnTrainingPortraitPositionsXY + 0
+  /* 141404 80131E24 8DD80000 */        lw $t8, ($t6) # dMNTrainingPortraitPositionsXY + 0
   /* 141408 80131E28 25CE000C */     addiu $t6, $t6, 0xc
   /* 14140C 80131E2C 2739000C */     addiu $t9, $t9, 0xc
   /* 141410 80131E30 AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 141414 80131E34 8DCFFFF8 */        lw $t7, -8($t6) # dMnTrainingPortraitPositionsXY + -8
+  /* 141414 80131E34 8DCFFFF8 */        lw $t7, -8($t6) # dMNTrainingPortraitPositionsXY + -8
   /* 141418 80131E38 AF2FFFF8 */        sw $t7, -8($t9)
-  /* 14141C 80131E3C 8DD8FFFC */        lw $t8, -4($t6) # dMnTrainingPortraitPositionsXY + -4
+  /* 14141C 80131E3C 8DD8FFFC */        lw $t8, -4($t6) # dMNTrainingPortraitPositionsXY + -4
   /* 141420 80131E40 15C8FFF8 */       bne $t6, $t0, .L80131E24
   /* 141424 80131E44 AF38FFFC */        sw $t8, -4($t9)
   /* 141428 80131E48 000548C0 */       sll $t1, $a1, 3
@@ -306,8 +306,8 @@ glabel mnTrainingGetIsLocked
   /* 141500 80131F20 2401000B */     addiu $at, $zero, 0xb
   /* 141504 80131F24 14810026 */       bne $a0, $at, .L80131FC0
   /* 141508 80131F28 00001025 */        or $v0, $zero, $zero
-  /* 14150C 80131F2C 3C0E8014 */       lui $t6, %hi(gMnTrainingCharacterUnlockedMask)
-  /* 141510 80131F30 95CE887C */       lhu $t6, %lo(gMnTrainingCharacterUnlockedMask)($t6)
+  /* 14150C 80131F2C 3C0E8014 */       lui $t6, %hi(gMNTrainingCharacterUnlockedMask)
+  /* 141510 80131F30 95CE887C */       lhu $t6, %lo(gMNTrainingCharacterUnlockedMask)($t6)
   /* 141514 80131F34 24030001 */     addiu $v1, $zero, 1
   /* 141518 80131F38 31CF0800 */      andi $t7, $t6, 0x800
   /* 14151C 80131F3C 11E00003 */      beqz $t7, .L80131F4C
@@ -367,19 +367,19 @@ glabel mnTrainingGetIsLocked
 
 glabel mnTrainingGetFtKind
   /* 1415B0 80131FD0 27BDFFD0 */     addiu $sp, $sp, -0x30
-  /* 1415B4 80131FD4 3C0E8014 */       lui $t6, %hi(dMnTrainingFtKindOrder)
+  /* 1415B4 80131FD4 3C0E8014 */       lui $t6, %hi(dMNTrainingFTKindOrder)
   /* 1415B8 80131FD8 27A30000 */     addiu $v1, $sp, 0
-  /* 1415BC 80131FDC 25CE8094 */     addiu $t6, $t6, %lo(dMnTrainingFtKindOrder)
+  /* 1415BC 80131FDC 25CE8094 */     addiu $t6, $t6, %lo(dMNTrainingFTKindOrder)
   /* 1415C0 80131FE0 25C80030 */     addiu $t0, $t6, 0x30
   /* 1415C4 80131FE4 0060C825 */        or $t9, $v1, $zero
   .L80131FE8:
-  /* 1415C8 80131FE8 8DD80000 */        lw $t8, ($t6) # dMnTrainingFtKindOrder + 0
+  /* 1415C8 80131FE8 8DD80000 */        lw $t8, ($t6) # dMNTrainingFTKindOrder + 0
   /* 1415CC 80131FEC 25CE000C */     addiu $t6, $t6, 0xc
   /* 1415D0 80131FF0 2739000C */     addiu $t9, $t9, 0xc
   /* 1415D4 80131FF4 AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 1415D8 80131FF8 8DCFFFF8 */        lw $t7, -8($t6) # dMnTrainingFtKindOrder + -8
+  /* 1415D8 80131FF8 8DCFFFF8 */        lw $t7, -8($t6) # dMNTrainingFTKindOrder + -8
   /* 1415DC 80131FFC AF2FFFF8 */        sw $t7, -8($t9)
-  /* 1415E0 80132000 8DD8FFFC */        lw $t8, -4($t6) # dMnTrainingFtKindOrder + -4
+  /* 1415E0 80132000 8DD8FFFC */        lw $t8, -4($t6) # dMNTrainingFTKindOrder + -4
   /* 1415E4 80132004 15C8FFF8 */       bne $t6, $t0, .L80131FE8
   /* 1415E8 80132008 AF38FFFC */        sw $t8, -4($t9)
   /* 1415EC 8013200C 00044880 */       sll $t1, $a0, 2
@@ -390,19 +390,19 @@ glabel mnTrainingGetFtKind
 
 glabel mnTrainingGetPortraitId
   /* 141600 80132020 27BDFFD0 */     addiu $sp, $sp, -0x30
-  /* 141604 80132024 3C0E8014 */       lui $t6, %hi(dMnTrainingPortraitOrder)
+  /* 141604 80132024 3C0E8014 */       lui $t6, %hi(dMNTrainingPortraitOrder)
   /* 141608 80132028 27A30000 */     addiu $v1, $sp, 0
-  /* 14160C 8013202C 25CE80C4 */     addiu $t6, $t6, %lo(dMnTrainingPortraitOrder)
+  /* 14160C 8013202C 25CE80C4 */     addiu $t6, $t6, %lo(dMNTrainingPortraitOrder)
   /* 141610 80132030 25C80030 */     addiu $t0, $t6, 0x30
   /* 141614 80132034 0060C825 */        or $t9, $v1, $zero
   .L80132038:
-  /* 141618 80132038 8DD80000 */        lw $t8, ($t6) # dMnTrainingPortraitOrder + 0
+  /* 141618 80132038 8DD80000 */        lw $t8, ($t6) # dMNTrainingPortraitOrder + 0
   /* 14161C 8013203C 25CE000C */     addiu $t6, $t6, 0xc
   /* 141620 80132040 2739000C */     addiu $t9, $t9, 0xc
   /* 141624 80132044 AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 141628 80132048 8DCFFFF8 */        lw $t7, -8($t6) # dMnTrainingPortraitOrder + -8
+  /* 141628 80132048 8DCFFFF8 */        lw $t7, -8($t6) # dMNTrainingPortraitOrder + -8
   /* 14162C 8013204C AF2FFFF8 */        sw $t7, -8($t9)
-  /* 141630 80132050 8DD8FFFC */        lw $t8, -4($t6) # dMnTrainingPortraitOrder + -4
+  /* 141630 80132050 8DD8FFFC */        lw $t8, -4($t6) # dMNTrainingPortraitOrder + -4
   /* 141634 80132054 15C8FFF8 */       bne $t6, $t0, .L80132038
   /* 141638 80132058 AF38FFFC */        sw $t8, -4($t9)
   /* 14163C 8013205C 00044880 */       sll $t1, $a0, 2
@@ -463,22 +463,22 @@ glabel mnTrainingRenderPortraitWithNoise
 
 glabel mnTrainingCreateLockedPortrait
   /* 141710 80132130 27BDFF90 */     addiu $sp, $sp, -0x70
-  /* 141714 80132134 3C0F8014 */       lui $t7, %hi(dMnTrainingLockedPortraitOffsets)
+  /* 141714 80132134 3C0F8014 */       lui $t7, %hi(dMNTrainingLockedPortraitOffsets)
   /* 141718 80132138 AFB10020 */        sw $s1, 0x20($sp)
-  /* 14171C 8013213C 25EF80F4 */     addiu $t7, $t7, %lo(dMnTrainingLockedPortraitOffsets)
+  /* 14171C 8013213C 25EF80F4 */     addiu $t7, $t7, %lo(dMNTrainingLockedPortraitOffsets)
   /* 141720 80132140 00808825 */        or $s1, $a0, $zero
   /* 141724 80132144 AFBF0024 */        sw $ra, 0x24($sp)
   /* 141728 80132148 AFB0001C */        sw $s0, 0x1c($sp)
   /* 14172C 8013214C 25E80030 */     addiu $t0, $t7, 0x30
   /* 141730 80132150 27AE0038 */     addiu $t6, $sp, 0x38
   .L80132154:
-  /* 141734 80132154 8DF90000 */        lw $t9, ($t7) # dMnTrainingLockedPortraitOffsets + 0
+  /* 141734 80132154 8DF90000 */        lw $t9, ($t7) # dMNTrainingLockedPortraitOffsets + 0
   /* 141738 80132158 25EF000C */     addiu $t7, $t7, 0xc
   /* 14173C 8013215C 25CE000C */     addiu $t6, $t6, 0xc
   /* 141740 80132160 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 141744 80132164 8DF8FFF8 */        lw $t8, -8($t7) # dMnTrainingLockedPortraitOffsets + -8
+  /* 141744 80132164 8DF8FFF8 */        lw $t8, -8($t7) # dMNTrainingLockedPortraitOffsets + -8
   /* 141748 80132168 ADD8FFF8 */        sw $t8, -8($t6)
-  /* 14174C 8013216C 8DF9FFFC */        lw $t9, -4($t7) # dMnTrainingLockedPortraitOffsets + -4
+  /* 14174C 8013216C 8DF9FFFC */        lw $t9, -4($t7) # dMNTrainingLockedPortraitOffsets + -4
   /* 141750 80132170 15E8FFF8 */       bne $t7, $t0, .L80132154
   /* 141754 80132174 ADD9FFFC */        sw $t9, -4($t6)
   /* 141758 80132178 00002025 */        or $a0, $zero, $zero
@@ -640,21 +640,21 @@ glabel mnTrainingCreateLockedPortrait
 
 glabel mnTrainingCreatePortrait
   /* 1419B8 801323D8 27BDFF90 */     addiu $sp, $sp, -0x70
-  /* 1419BC 801323DC 3C0F8014 */       lui $t7, %hi(dMnTrainingPortraitOffsets)
+  /* 1419BC 801323DC 3C0F8014 */       lui $t7, %hi(dMNTrainingPortraitOffsets)
   /* 1419C0 801323E0 AFB00020 */        sw $s0, 0x20($sp)
-  /* 1419C4 801323E4 25EF8124 */     addiu $t7, $t7, %lo(dMnTrainingPortraitOffsets)
+  /* 1419C4 801323E4 25EF8124 */     addiu $t7, $t7, %lo(dMNTrainingPortraitOffsets)
   /* 1419C8 801323E8 00808025 */        or $s0, $a0, $zero
   /* 1419CC 801323EC AFBF0024 */        sw $ra, 0x24($sp)
   /* 1419D0 801323F0 25E80030 */     addiu $t0, $t7, 0x30
   /* 1419D4 801323F4 27AE0034 */     addiu $t6, $sp, 0x34
   .L801323F8:
-  /* 1419D8 801323F8 8DF90000 */        lw $t9, ($t7) # dMnTrainingPortraitOffsets + 0
+  /* 1419D8 801323F8 8DF90000 */        lw $t9, ($t7) # dMNTrainingPortraitOffsets + 0
   /* 1419DC 801323FC 25EF000C */     addiu $t7, $t7, 0xc
   /* 1419E0 80132400 25CE000C */     addiu $t6, $t6, 0xc
   /* 1419E4 80132404 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 1419E8 80132408 8DF8FFF8 */        lw $t8, -8($t7) # dMnTrainingPortraitOffsets + -8
+  /* 1419E8 80132408 8DF8FFF8 */        lw $t8, -8($t7) # dMNTrainingPortraitOffsets + -8
   /* 1419EC 8013240C ADD8FFF8 */        sw $t8, -8($t6)
-  /* 1419F0 80132410 8DF9FFFC */        lw $t9, -4($t7) # dMnTrainingPortraitOffsets + -4
+  /* 1419F0 80132410 8DF9FFFC */        lw $t9, -4($t7) # dMNTrainingPortraitOffsets + -4
   /* 1419F4 80132414 15E8FFF8 */       bne $t7, $t0, .L801323F8
   /* 1419F8 80132418 ADD9FFFC */        sw $t9, -4($t6)
   /* 1419FC 8013241C 0C04C7F4 */       jal mnTrainingGetFtKind
@@ -776,8 +776,8 @@ glabel mnTrainingCreatePortraits
 
 glabel mnTrainingSetNameAndLogo
   /* 141BB4 801325D4 27BDFF20 */     addiu $sp, $sp, -0xe0
-  /* 141BB8 801325D8 3C0F8014 */       lui $t7, %hi(dMnTrainingUnusedPositions)
-  /* 141BBC 801325DC 25EF8154 */     addiu $t7, $t7, %lo(dMnTrainingUnusedPositions)
+  /* 141BB8 801325D8 3C0F8014 */       lui $t7, %hi(dMNTrainingUnusedPositions)
+  /* 141BBC 801325DC 25EF8154 */     addiu $t7, $t7, %lo(dMNTrainingUnusedPositions)
   /* 141BC0 801325E0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 141BC4 801325E4 AFA400E0 */        sw $a0, 0xe0($sp)
   /* 141BC8 801325E8 AFA500E4 */        sw $a1, 0xe4($sp)
@@ -785,41 +785,41 @@ glabel mnTrainingSetNameAndLogo
   /* 141BD0 801325F0 25E80060 */     addiu $t0, $t7, 0x60
   /* 141BD4 801325F4 27AE007C */     addiu $t6, $sp, 0x7c
   .L801325F8:
-  /* 141BD8 801325F8 8DF90000 */        lw $t9, ($t7) # dMnTrainingUnusedPositions + 0
+  /* 141BD8 801325F8 8DF90000 */        lw $t9, ($t7) # dMNTrainingUnusedPositions + 0
   /* 141BDC 801325FC 25EF000C */     addiu $t7, $t7, 0xc
   /* 141BE0 80132600 25CE000C */     addiu $t6, $t6, 0xc
   /* 141BE4 80132604 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 141BE8 80132608 8DF8FFF8 */        lw $t8, -8($t7) # dMnTrainingUnusedPositions + -8
+  /* 141BE8 80132608 8DF8FFF8 */        lw $t8, -8($t7) # dMNTrainingUnusedPositions + -8
   /* 141BEC 8013260C ADD8FFF8 */        sw $t8, -8($t6)
-  /* 141BF0 80132610 8DF9FFFC */        lw $t9, -4($t7) # dMnTrainingUnusedPositions + -4
+  /* 141BF0 80132610 8DF9FFFC */        lw $t9, -4($t7) # dMNTrainingUnusedPositions + -4
   /* 141BF4 80132614 15E8FFF8 */       bne $t7, $t0, .L801325F8
   /* 141BF8 80132618 ADD9FFFC */        sw $t9, -4($t6)
-  /* 141BFC 8013261C 3C0A8014 */       lui $t2, %hi(dMnTrainingLogoOffsets)
-  /* 141C00 80132620 254A81B4 */     addiu $t2, $t2, %lo(dMnTrainingLogoOffsets)
+  /* 141BFC 8013261C 3C0A8014 */       lui $t2, %hi(dMNTrainingLogoOffsets)
+  /* 141C00 80132620 254A81B4 */     addiu $t2, $t2, %lo(dMNTrainingLogoOffsets)
   /* 141C04 80132624 254D0030 */     addiu $t5, $t2, 0x30
   /* 141C08 80132628 27A9004C */     addiu $t1, $sp, 0x4c
   .L8013262C:
-  /* 141C0C 8013262C 8D4C0000 */        lw $t4, ($t2) # dMnTrainingLogoOffsets + 0
+  /* 141C0C 8013262C 8D4C0000 */        lw $t4, ($t2) # dMNTrainingLogoOffsets + 0
   /* 141C10 80132630 254A000C */     addiu $t2, $t2, 0xc
   /* 141C14 80132634 2529000C */     addiu $t1, $t1, 0xc
   /* 141C18 80132638 AD2CFFF4 */        sw $t4, -0xc($t1)
-  /* 141C1C 8013263C 8D4BFFF8 */        lw $t3, -8($t2) # dMnTrainingLogoOffsets + -8
+  /* 141C1C 8013263C 8D4BFFF8 */        lw $t3, -8($t2) # dMNTrainingLogoOffsets + -8
   /* 141C20 80132640 AD2BFFF8 */        sw $t3, -8($t1)
-  /* 141C24 80132644 8D4CFFFC */        lw $t4, -4($t2) # dMnTrainingLogoOffsets + -4
+  /* 141C24 80132644 8D4CFFFC */        lw $t4, -4($t2) # dMNTrainingLogoOffsets + -4
   /* 141C28 80132648 154DFFF8 */       bne $t2, $t5, .L8013262C
   /* 141C2C 8013264C AD2CFFFC */        sw $t4, -4($t1)
-  /* 141C30 80132650 3C0F8014 */       lui $t7, %hi(dMnTrainingNameOffsets)
-  /* 141C34 80132654 25EF81E4 */     addiu $t7, $t7, %lo(dMnTrainingNameOffsets)
+  /* 141C30 80132650 3C0F8014 */       lui $t7, %hi(dMNTrainingNameOffsets)
+  /* 141C34 80132654 25EF81E4 */     addiu $t7, $t7, %lo(dMNTrainingNameOffsets)
   /* 141C38 80132658 25F90030 */     addiu $t9, $t7, 0x30
   /* 141C3C 8013265C 27A8001C */     addiu $t0, $sp, 0x1c
   .L80132660:
-  /* 141C40 80132660 8DF80000 */        lw $t8, ($t7) # dMnTrainingNameOffsets + 0
+  /* 141C40 80132660 8DF80000 */        lw $t8, ($t7) # dMNTrainingNameOffsets + 0
   /* 141C44 80132664 25EF000C */     addiu $t7, $t7, 0xc
   /* 141C48 80132668 2508000C */     addiu $t0, $t0, 0xc
   /* 141C4C 8013266C AD18FFF4 */        sw $t8, -0xc($t0)
-  /* 141C50 80132670 8DEEFFF8 */        lw $t6, -8($t7) # dMnTrainingNameOffsets + -8
+  /* 141C50 80132670 8DEEFFF8 */        lw $t6, -8($t7) # dMNTrainingNameOffsets + -8
   /* 141C54 80132674 AD0EFFF8 */        sw $t6, -8($t0)
-  /* 141C58 80132678 8DF8FFFC */        lw $t8, -4($t7) # dMnTrainingNameOffsets + -4
+  /* 141C58 80132678 8DF8FFFC */        lw $t8, -4($t7) # dMNTrainingNameOffsets + -4
   /* 141C5C 8013267C 15F9FFF8 */       bne $t7, $t9, .L80132660
   /* 141C60 80132680 AD18FFFC */        sw $t8, -4($t0)
   /* 141C64 80132684 2401001C */     addiu $at, $zero, 0x1c
@@ -839,12 +839,12 @@ glabel mnTrainingSetNameAndLogo
   /* 141C9C 801326BC 01AA2821 */      addu $a1, $t5, $t2
   /* 141CA0 801326C0 94490024 */       lhu $t1, 0x24($v0)
   /* 141CA4 801326C4 8FA60018 */        lw $a2, 0x18($sp)
-  /* 141CA8 801326C8 3C088014 */       lui $t0, %hi(gMnTrainingHumanPanelPort)
+  /* 141CA8 801326C8 3C088014 */       lui $t0, %hi(gMNTrainingHumanPanelPort)
   /* 141CAC 801326CC 312CFFDF */      andi $t4, $t1, 0xffdf
   /* 141CB0 801326D0 A44C0024 */        sh $t4, 0x24($v0)
   /* 141CB4 801326D4 35990001 */       ori $t9, $t4, 1
   /* 141CB8 801326D8 A4590024 */        sh $t9, 0x24($v0)
-  /* 141CBC 801326DC 8D088894 */        lw $t0, %lo(gMnTrainingHumanPanelPort)($t0)
+  /* 141CBC 801326DC 8D088894 */        lw $t0, %lo(gMNTrainingHumanPanelPort)($t0)
   /* 141CC0 801326E0 8FAF00E4 */        lw $t7, 0xe4($sp)
   /* 141CC4 801326E4 24030044 */     addiu $v1, $zero, 0x44
   /* 141CC8 801326E8 3C188014 */       lui $t8, %hi(D_ovl28_80138C98)
@@ -878,13 +878,13 @@ glabel mnTrainingSetNameAndLogo
   /* 141D30 80132750 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 141D34 80132754 01D82821 */      addu $a1, $t6, $t8
   /* 141D38 80132758 944D0024 */       lhu $t5, 0x24($v0)
-  /* 141D3C 8013275C 3C198014 */       lui $t9, %hi(gMnTrainingHumanPanelPort)
+  /* 141D3C 8013275C 3C198014 */       lui $t9, %hi(gMNTrainingHumanPanelPort)
   /* 141D40 80132760 3C014341 */       lui $at, (0x43410000 >> 16) # 193.0
   /* 141D44 80132764 31A9FFDF */      andi $t1, $t5, 0xffdf
   /* 141D48 80132768 A4490024 */        sh $t1, 0x24($v0)
   /* 141D4C 8013276C 352B0001 */       ori $t3, $t1, 1
   /* 141D50 80132770 A44B0024 */        sh $t3, 0x24($v0)
-  /* 141D54 80132774 8F398894 */        lw $t9, %lo(gMnTrainingHumanPanelPort)($t9)
+  /* 141D54 80132774 8F398894 */        lw $t9, %lo(gMNTrainingHumanPanelPort)($t9)
   /* 141D58 80132778 8FAC00E4 */        lw $t4, 0xe4($sp)
   /* 141D5C 8013277C 55990009 */      bnel $t4, $t9, .L801327A4
   /* 141D60 80132780 44812000 */      mtc1 $at, $f4 # 193.0 to cop1
@@ -1202,21 +1202,21 @@ glabel mnTrainingCreateTeamButtonViewPort
   /* 142200 80132C20 00000000 */       nop
 
 glabel mnTrainingUpdatePanel
-  /* 142204 80132C24 3C0E8014 */       lui $t6, %hi(dMnTrainingPanelLUTOffsets)
-  /* 142208 80132C28 25CE8214 */     addiu $t6, $t6, %lo(dMnTrainingPanelLUTOffsets)
-  /* 14220C 80132C2C 8DD80000 */        lw $t8, ($t6) # dMnTrainingPanelLUTOffsets + 0
+  /* 142204 80132C24 3C0E8014 */       lui $t6, %hi(dMNTrainingPanelLUTOffsets)
+  /* 142208 80132C28 25CE8214 */     addiu $t6, $t6, %lo(dMNTrainingPanelLUTOffsets)
+  /* 14220C 80132C2C 8DD80000 */        lw $t8, ($t6) # dMNTrainingPanelLUTOffsets + 0
   /* 142210 80132C30 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 142214 80132C34 27A60004 */     addiu $a2, $sp, 4
   /* 142218 80132C38 ACD80000 */        sw $t8, ($a2)
-  /* 14221C 80132C3C 8DCF0004 */        lw $t7, 4($t6) # dMnTrainingPanelLUTOffsets + 4
-  /* 142220 80132C40 3C038014 */       lui $v1, %hi(gMnTrainingHumanPanelPort)
+  /* 14221C 80132C3C 8DCF0004 */        lw $t7, 4($t6) # dMNTrainingPanelLUTOffsets + 4
+  /* 142220 80132C40 3C038014 */       lui $v1, %hi(gMNTrainingHumanPanelPort)
   /* 142224 80132C44 3C0A8014 */       lui $t2, %hi(D_ovl28_80138C98)
   /* 142228 80132C48 ACCF0004 */        sw $t7, 4($a2)
-  /* 14222C 80132C4C 8DD80008 */        lw $t8, 8($t6) # dMnTrainingPanelLUTOffsets + 8
+  /* 14222C 80132C4C 8DD80008 */        lw $t8, 8($t6) # dMNTrainingPanelLUTOffsets + 8
   /* 142230 80132C50 ACD80008 */        sw $t8, 8($a2)
-  /* 142234 80132C54 8DCF000C */        lw $t7, 0xc($t6) # dMnTrainingPanelLUTOffsets + 12
+  /* 142234 80132C54 8DCF000C */        lw $t7, 0xc($t6) # dMNTrainingPanelLUTOffsets + 12
   /* 142238 80132C58 ACCF000C */        sw $t7, 0xc($a2)
-  /* 14223C 80132C5C 8C638894 */        lw $v1, %lo(gMnTrainingHumanPanelPort)($v1)
+  /* 14223C 80132C5C 8C638894 */        lw $v1, %lo(gMNTrainingHumanPanelPort)($v1)
   /* 142240 80132C60 8C820074 */        lw $v0, 0x74($a0)
   /* 142244 80132C64 14A30007 */       bne $a1, $v1, .L80132C84
   /* 142248 80132C68 0003C880 */       sll $t9, $v1, 2
@@ -1239,28 +1239,28 @@ glabel mnTrainingUpdatePanel
 
 glabel mnTrainingCreateTypeImage
   /* 142284 80132CA4 27BDFFB0 */     addiu $sp, $sp, -0x50
-  /* 142288 80132CA8 3C0F8014 */       lui $t7, %hi(dMnTrainingTypeOffsets)
+  /* 142288 80132CA8 3C0F8014 */       lui $t7, %hi(dMNTrainingTypeOffsets)
   /* 14228C 80132CAC AFBF001C */        sw $ra, 0x1c($sp)
   /* 142290 80132CB0 AFA40050 */        sw $a0, 0x50($sp)
-  /* 142294 80132CB4 25EF8224 */     addiu $t7, $t7, %lo(dMnTrainingTypeOffsets)
-  /* 142298 80132CB8 8DF90000 */        lw $t9, ($t7) # dMnTrainingTypeOffsets + 0
-  /* 14229C 80132CBC 8DF80004 */        lw $t8, 4($t7) # dMnTrainingTypeOffsets + 4
+  /* 142294 80132CB4 25EF8224 */     addiu $t7, $t7, %lo(dMNTrainingTypeOffsets)
+  /* 142298 80132CB8 8DF90000 */        lw $t9, ($t7) # dMNTrainingTypeOffsets + 0
+  /* 14229C 80132CBC 8DF80004 */        lw $t8, 4($t7) # dMNTrainingTypeOffsets + 4
   /* 1422A0 80132CC0 27AE0038 */     addiu $t6, $sp, 0x38
   /* 1422A4 80132CC4 ADD90000 */        sw $t9, ($t6)
   /* 1422A8 80132CC8 ADD80004 */        sw $t8, 4($t6)
-  /* 1422AC 80132CCC 8DF8000C */        lw $t8, 0xc($t7) # dMnTrainingTypeOffsets + 12
-  /* 1422B0 80132CD0 8DF90008 */        lw $t9, 8($t7) # dMnTrainingTypeOffsets + 8
-  /* 1422B4 80132CD4 3C098014 */       lui $t1, %hi(dMnTrainingTypeOffsetsX)
-  /* 1422B8 80132CD8 25298234 */     addiu $t1, $t1, %lo(dMnTrainingTypeOffsetsX)
+  /* 1422AC 80132CCC 8DF8000C */        lw $t8, 0xc($t7) # dMNTrainingTypeOffsets + 12
+  /* 1422B0 80132CD0 8DF90008 */        lw $t9, 8($t7) # dMNTrainingTypeOffsets + 8
+  /* 1422B4 80132CD4 3C098014 */       lui $t1, %hi(dMNTrainingTypeOffsetsX)
+  /* 1422B8 80132CD8 25298234 */     addiu $t1, $t1, %lo(dMNTrainingTypeOffsetsX)
   /* 1422BC 80132CDC ADD8000C */        sw $t8, 0xc($t6)
   /* 1422C0 80132CE0 ADD90008 */        sw $t9, 8($t6)
-  /* 1422C4 80132CE4 8D2A0004 */        lw $t2, 4($t1) # dMnTrainingTypeOffsetsX + 4
-  /* 1422C8 80132CE8 8D2B0000 */        lw $t3, ($t1) # dMnTrainingTypeOffsetsX + 0
+  /* 1422C4 80132CE4 8D2A0004 */        lw $t2, 4($t1) # dMNTrainingTypeOffsetsX + 4
+  /* 1422C8 80132CE8 8D2B0000 */        lw $t3, ($t1) # dMNTrainingTypeOffsetsX + 0
   /* 1422CC 80132CEC 27A80028 */     addiu $t0, $sp, 0x28
   /* 1422D0 80132CF0 AD0A0004 */        sw $t2, 4($t0)
   /* 1422D4 80132CF4 AD0B0000 */        sw $t3, ($t0)
-  /* 1422D8 80132CF8 8D2B0008 */        lw $t3, 8($t1) # dMnTrainingTypeOffsetsX + 8
-  /* 1422DC 80132CFC 8D2A000C */        lw $t2, 0xc($t1) # dMnTrainingTypeOffsetsX + 12
+  /* 1422D8 80132CF8 8D2B0008 */        lw $t3, 8($t1) # dMNTrainingTypeOffsetsX + 8
+  /* 1422DC 80132CFC 8D2A000C */        lw $t2, 0xc($t1) # dMNTrainingTypeOffsetsX + 12
   /* 1422E0 80132D00 00002025 */        or $a0, $zero, $zero
   /* 1422E4 80132D04 00002825 */        or $a1, $zero, $zero
   /* 1422E8 80132D08 24060016 */     addiu $a2, $zero, 0x16
@@ -1286,8 +1286,8 @@ glabel mnTrainingCreateTypeImage
   /* 142338 80132D58 2406001C */     addiu $a2, $zero, 0x1c
   /* 14233C 80132D5C 0C00277D */       jal omAddGObjRenderProc
   /* 142340 80132D60 3C078000 */       lui $a3, 0x8000
-  /* 142344 80132D64 3C028014 */       lui $v0, %hi(gMnTrainingHumanPanelPort)
-  /* 142348 80132D68 8C428894 */        lw $v0, %lo(gMnTrainingHumanPanelPort)($v0)
+  /* 142344 80132D64 3C028014 */       lui $v0, %hi(gMNTrainingHumanPanelPort)
+  /* 142348 80132D68 8C428894 */        lw $v0, %lo(gMNTrainingHumanPanelPort)($v0)
   /* 14234C 80132D6C 8FAF0050 */        lw $t7, 0x50($sp)
   /* 142350 80132D70 8FA4004C */        lw $a0, 0x4c($sp)
   /* 142354 80132D74 3C0C8014 */       lui $t4, 0x8014
@@ -1339,28 +1339,28 @@ glabel mnTrainingCreateTypeImage
 
 glabel mnTrainingCreatePanel
   /* 142404 80132E24 27BDFF90 */     addiu $sp, $sp, -0x70
-  /* 142408 80132E28 3C0F8014 */       lui $t7, %hi(dMnTrainingTypeOffsetsDuplicate)
+  /* 142408 80132E28 3C0F8014 */       lui $t7, %hi(dMNTrainingTypeOffsetsDuplicate)
   /* 14240C 80132E2C AFBF003C */        sw $ra, 0x3c($sp)
   /* 142410 80132E30 AFB00038 */        sw $s0, 0x38($sp)
-  /* 142414 80132E34 25EF8244 */     addiu $t7, $t7, %lo(dMnTrainingTypeOffsetsDuplicate)
-  /* 142418 80132E38 8DF90000 */        lw $t9, ($t7) # dMnTrainingTypeOffsetsDuplicate + 0
-  /* 14241C 80132E3C 8DF80004 */        lw $t8, 4($t7) # dMnTrainingTypeOffsetsDuplicate + 4
+  /* 142414 80132E34 25EF8244 */     addiu $t7, $t7, %lo(dMNTrainingTypeOffsetsDuplicate)
+  /* 142418 80132E38 8DF90000 */        lw $t9, ($t7) # dMNTrainingTypeOffsetsDuplicate + 0
+  /* 14241C 80132E3C 8DF80004 */        lw $t8, 4($t7) # dMNTrainingTypeOffsetsDuplicate + 4
   /* 142420 80132E40 27AE0058 */     addiu $t6, $sp, 0x58
   /* 142424 80132E44 ADD90000 */        sw $t9, ($t6)
   /* 142428 80132E48 ADD80004 */        sw $t8, 4($t6)
-  /* 14242C 80132E4C 8DF8000C */        lw $t8, 0xc($t7) # dMnTrainingTypeOffsetsDuplicate + 12
-  /* 142430 80132E50 8DF90008 */        lw $t9, 8($t7) # dMnTrainingTypeOffsetsDuplicate + 8
-  /* 142434 80132E54 3C098014 */       lui $t1, %hi(dMnTrainingTypeOffsetsXDuplicate)
-  /* 142438 80132E58 25298254 */     addiu $t1, $t1, %lo(dMnTrainingTypeOffsetsXDuplicate)
+  /* 14242C 80132E4C 8DF8000C */        lw $t8, 0xc($t7) # dMNTrainingTypeOffsetsDuplicate + 12
+  /* 142430 80132E50 8DF90008 */        lw $t9, 8($t7) # dMNTrainingTypeOffsetsDuplicate + 8
+  /* 142434 80132E54 3C098014 */       lui $t1, %hi(dMNTrainingTypeOffsetsXDuplicate)
+  /* 142438 80132E58 25298254 */     addiu $t1, $t1, %lo(dMNTrainingTypeOffsetsXDuplicate)
   /* 14243C 80132E5C ADD8000C */        sw $t8, 0xc($t6)
   /* 142440 80132E60 ADD90008 */        sw $t9, 8($t6)
-  /* 142444 80132E64 8D2A0004 */        lw $t2, 4($t1) # dMnTrainingTypeOffsetsXDuplicate + 4
-  /* 142448 80132E68 8D2B0000 */        lw $t3, ($t1) # dMnTrainingTypeOffsetsXDuplicate + 0
+  /* 142444 80132E64 8D2A0004 */        lw $t2, 4($t1) # dMNTrainingTypeOffsetsXDuplicate + 4
+  /* 142448 80132E68 8D2B0000 */        lw $t3, ($t1) # dMNTrainingTypeOffsetsXDuplicate + 0
   /* 14244C 80132E6C 27A80048 */     addiu $t0, $sp, 0x48
   /* 142450 80132E70 AD0A0004 */        sw $t2, 4($t0)
   /* 142454 80132E74 AD0B0000 */        sw $t3, ($t0)
-  /* 142458 80132E78 8D2B0008 */        lw $t3, 8($t1) # dMnTrainingTypeOffsetsXDuplicate + 8
-  /* 14245C 80132E7C 8D2A000C */        lw $t2, 0xc($t1) # dMnTrainingTypeOffsetsXDuplicate + 12
+  /* 142458 80132E78 8D2B0008 */        lw $t3, 8($t1) # dMNTrainingTypeOffsetsXDuplicate + 8
+  /* 14245C 80132E7C 8D2A000C */        lw $t2, 0xc($t1) # dMNTrainingTypeOffsetsXDuplicate + 12
   /* 142460 80132E80 3C0E8014 */       lui $t6, %hi(D_ovl28_80138C9C)
   /* 142464 80132E84 AD0B0008 */        sw $t3, 8($t0)
   /* 142468 80132E88 AD0A000C */        sw $t2, 0xc($t0)
@@ -1393,13 +1393,13 @@ glabel mnTrainingCreatePanel
   /* 1424D4 80132EF4 01304823 */      subu $t1, $t1, $s0
   /* 1424D8 80132EF8 000948C0 */       sll $t1, $t1, 3
   /* 1424DC 80132EFC 01304823 */      subu $t1, $t1, $s0
-  /* 1424E0 80132F00 3C0A8014 */       lui $t2, %hi(gMnTrainingPanels)
-  /* 1424E4 80132F04 254A8558 */     addiu $t2, $t2, %lo(gMnTrainingPanels)
+  /* 1424E0 80132F00 3C0A8014 */       lui $t2, %hi(gMNTrainingPanels)
+  /* 1424E4 80132F04 254A8558 */     addiu $t2, $t2, %lo(gMNTrainingPanels)
   /* 1424E8 80132F08 000948C0 */       sll $t1, $t1, 3
   /* 1424EC 80132F0C 012A3021 */      addu $a2, $t1, $t2
   /* 1424F0 80132F10 ACC20018 */        sw $v0, 0x18($a2)
   /* 1424F4 80132F14 8C430074 */        lw $v1, 0x74($v0)
-  /* 1424F8 80132F18 3C0F8014 */       lui $t7, %hi(gMnTrainingHumanPanelPort)
+  /* 1424F8 80132F18 3C0F8014 */       lui $t7, %hi(gMNTrainingHumanPanelPort)
   /* 1424FC 80132F1C 00402025 */        or $a0, $v0, $zero
   /* 142500 80132F20 946B0024 */       lhu $t3, 0x24($v1)
   /* 142504 80132F24 3C014339 */       lui $at, (0x43390000 >> 16) # 185.0
@@ -1410,7 +1410,7 @@ glabel mnTrainingCreatePanel
   /* 142518 80132F38 946D0024 */       lhu $t5, 0x24($v1)
   /* 14251C 80132F3C 35AE0001 */       ori $t6, $t5, 1
   /* 142520 80132F40 A46E0024 */        sh $t6, 0x24($v1)
-  /* 142524 80132F44 8DEF8894 */        lw $t7, %lo(gMnTrainingHumanPanelPort)($t7)
+  /* 142524 80132F44 8DEF8894 */        lw $t7, %lo(gMNTrainingHumanPanelPort)($t7)
   /* 142528 80132F48 560F000B */      bnel $s0, $t7, .L80132F78
   /* 14252C 80132F4C 44814000 */      mtc1 $at, $f8 # 185.0 to cop1
   /* 142530 80132F50 3C014254 */       lui $at, (0x42540000 >> 16) # 53.0
@@ -1589,7 +1589,7 @@ glabel mnTrainingDrawTitleAndBack
   /* 1427BC 801331DC 240D0004 */     addiu $t5, $zero, 4
   /* 1427C0 801331E0 3C078000 */       lui $a3, 0x8000
   /* 1427C4 801331E4 946E0024 */       lhu $t6, 0x24($v1)
-  /* 1427C8 801331E8 3C018014 */       lui $at, %hi(gMnTrainingTitleGObj)
+  /* 1427C8 801331E8 3C018014 */       lui $at, %hi(gMNTrainingTitleGObj)
   /* 1427CC 801331EC 00002025 */        or $a0, $zero, $zero
   /* 1427D0 801331F0 31CFFFDF */      andi $t7, $t6, 0xffdf
   /* 1427D4 801331F4 A46F0024 */        sh $t7, 0x24($v1)
@@ -1613,7 +1613,7 @@ glabel mnTrainingDrawTitleAndBack
   /* 14281C 8013323C 240C0001 */     addiu $t4, $zero, 1
   /* 142820 80133240 A1CD002A */        sb $t5, 0x2a($t6)
   /* 142824 80133244 8F398C98 */        lw $t9, %lo(D_ovl28_80138C98)($t9)
-  /* 142828 80133248 AC228870 */        sw $v0, %lo(gMnTrainingTitleGObj)($at)
+  /* 142828 80133248 AC228870 */        sw $v0, %lo(gMNTrainingTitleGObj)($at)
   /* 14282C 8013324C AFAC002C */        sw $t4, 0x2c($sp)
   /* 142830 80133250 03295021 */      addu $t2, $t9, $t1
   /* 142834 80133254 AFAA0020 */        sw $t2, 0x20($sp)
@@ -1655,14 +1655,14 @@ glabel mnTrainingDrawTitleAndBack
   /* 1428B8 801332D8 00000000 */       nop
 
 glabel mnTrainingGetAdditionalSelectedCount
-  /* 1428BC 801332DC 3C0E8014 */       lui $t6, %hi(gMnTrainingHumanPanelPort)
-  /* 1428C0 801332E0 8DCE8894 */        lw $t6, %lo(gMnTrainingHumanPanelPort)($t6)
+  /* 1428BC 801332DC 3C0E8014 */       lui $t6, %hi(gMNTrainingHumanPanelPort)
+  /* 1428C0 801332E0 8DCE8894 */        lw $t6, %lo(gMNTrainingHumanPanelPort)($t6)
   /* 1428C4 801332E4 240500B8 */     addiu $a1, $zero, 0xb8
-  /* 1428C8 801332E8 3C038014 */       lui $v1, %hi(gMnTrainingPanels)
+  /* 1428C8 801332E8 3C038014 */       lui $v1, %hi(gMNTrainingPanels)
   /* 1428CC 801332EC 01C50019 */     multu $t6, $a1
-  /* 1428D0 801332F0 24638558 */     addiu $v1, $v1, %lo(gMnTrainingPanels)
+  /* 1428D0 801332F0 24638558 */     addiu $v1, $v1, %lo(gMNTrainingPanels)
   /* 1428D4 801332F4 00001025 */        or $v0, $zero, $zero
-  /* 1428D8 801332F8 3C088014 */       lui $t0, %hi(gMnTrainingCPUPanelPort)
+  /* 1428D8 801332F8 3C088014 */       lui $t0, %hi(gMNTrainingCPUPanelPort)
   /* 1428DC 801332FC 00007812 */      mflo $t7
   /* 1428E0 80133300 006FC021 */      addu $t8, $v1, $t7
   /* 1428E4 80133304 8F190048 */        lw $t9, 0x48($t8)
@@ -1670,7 +1670,7 @@ glabel mnTrainingGetAdditionalSelectedCount
   /* 1428EC 8013330C 00000000 */       nop
   /* 1428F0 80133310 24020001 */     addiu $v0, $zero, 1
   .L80133314:
-  /* 1428F4 80133314 8D088898 */        lw $t0, %lo(gMnTrainingCPUPanelPort)($t0)
+  /* 1428F4 80133314 8D088898 */        lw $t0, %lo(gMNTrainingCPUPanelPort)($t0)
   /* 1428F8 80133318 01050019 */     multu $t0, $a1
   /* 1428FC 8013331C 00004812 */      mflo $t1
   /* 142900 80133320 00695021 */      addu $t2, $v1, $t1
@@ -1690,15 +1690,15 @@ glabel mnTrainingGetAdditionalSelectedCount
   /* 14292C 8013334C 00601025 */        or $v0, $v1, $zero
 
 glabel mnTrainingIsCostumeInUse
-  /* 142930 80133350 3C028014 */       lui $v0, %hi(gMnTrainingHumanPanelPort)
-  /* 142934 80133354 8C428894 */        lw $v0, %lo(gMnTrainingHumanPanelPort)($v0)
-  /* 142938 80133358 3C0E8014 */       lui $t6, %hi(gMnTrainingCPUPanelPort)
+  /* 142930 80133350 3C028014 */       lui $v0, %hi(gMNTrainingHumanPanelPort)
+  /* 142934 80133354 8C428894 */        lw $v0, %lo(gMNTrainingHumanPanelPort)($v0)
+  /* 142938 80133358 3C0E8014 */       lui $t6, %hi(gMNTrainingCPUPanelPort)
   /* 14293C 8013335C 3C098014 */       lui $t1, 0x8014
   /* 142940 80133360 14A20014 */       bne $a1, $v0, .L801333B4
   /* 142944 80133364 00000000 */       nop
-  /* 142948 80133368 8DCE8898 */        lw $t6, %lo(gMnTrainingCPUPanelPort)($t6)
-  /* 14294C 8013336C 3C188014 */       lui $t8, %hi(gMnTrainingPanels)
-  /* 142950 80133370 27188558 */     addiu $t8, $t8, %lo(gMnTrainingPanels)
+  /* 142948 80133368 8DCE8898 */        lw $t6, %lo(gMNTrainingCPUPanelPort)($t6)
+  /* 14294C 8013336C 3C188014 */       lui $t8, %hi(gMNTrainingPanels)
+  /* 142950 80133370 27188558 */     addiu $t8, $t8, %lo(gMNTrainingPanels)
   /* 142954 80133374 000E7880 */       sll $t7, $t6, 2
   /* 142958 80133378 01EE7823 */      subu $t7, $t7, $t6
   /* 14295C 8013337C 000F78C0 */       sll $t7, $t7, 3
@@ -1725,8 +1725,8 @@ glabel mnTrainingIsCostumeInUse
   /* 1429A0 801333C0 14A9000F */       bne $a1, $t1, .L80133400
   /* 1429A4 801333C4 000A50C0 */       sll $t2, $t2, 3
   /* 1429A8 801333C8 01425023 */      subu $t2, $t2, $v0
-  /* 1429AC 801333CC 3C0B8014 */       lui $t3, %hi(gMnTrainingPanels)
-  /* 1429B0 801333D0 256B8558 */     addiu $t3, $t3, %lo(gMnTrainingPanels)
+  /* 1429AC 801333CC 3C0B8014 */       lui $t3, %hi(gMNTrainingPanels)
+  /* 1429B0 801333D0 256B8558 */     addiu $t3, $t3, %lo(gMNTrainingPanels)
   /* 1429B4 801333D4 000A50C0 */       sll $t2, $t2, 3
   /* 1429B8 801333D8 014B1821 */      addu $v1, $t2, $t3
   /* 1429BC 801333DC 8C6C0048 */        lw $t4, 0x48($v1)
@@ -1746,9 +1746,9 @@ glabel mnTrainingIsCostumeInUse
 glabel mnTrainingGetAvailableCostumeFFA
   /* 1429E8 80133408 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 1429EC 8013340C AFB70030 */        sw $s7, 0x30($sp)
-  /* 1429F0 80133410 3C178014 */       lui $s7, %hi(gMnTrainingHumanPanelPort)
-  /* 1429F4 80133414 26F78894 */     addiu $s7, $s7, %lo(gMnTrainingHumanPanelPort)
-  /* 1429F8 80133418 8EE60000 */        lw $a2, ($s7) # gMnTrainingHumanPanelPort + 0
+  /* 1429F0 80133410 3C178014 */       lui $s7, %hi(gMNTrainingHumanPanelPort)
+  /* 1429F4 80133414 26F78894 */     addiu $s7, $s7, %lo(gMNTrainingHumanPanelPort)
+  /* 1429F8 80133418 8EE60000 */        lw $a2, ($s7) # gMNTrainingHumanPanelPort + 0
   /* 1429FC 8013341C AFB6002C */        sw $s6, 0x2c($sp)
   /* 142A00 80133420 00A03825 */        or $a3, $a1, $zero
   /* 142A04 80133424 0080B025 */        or $s6, $a0, $zero
@@ -1764,13 +1764,13 @@ glabel mnTrainingGetAvailableCostumeFFA
   /* 142A2C 8013344C 00001825 */        or $v1, $zero, $zero
   /* 142A30 80133450 14A60029 */       bne $a1, $a2, .L801334F8
   /* 142A34 80133454 00002825 */        or $a1, $zero, $zero
-  /* 142A38 80133458 3C178014 */       lui $s7, %hi(gMnTrainingCPUPanelPort)
-  /* 142A3C 8013345C 26F78898 */     addiu $s7, $s7, %lo(gMnTrainingCPUPanelPort)
-  /* 142A40 80133460 8EEE0000 */        lw $t6, ($s7) # gMnTrainingCPUPanelPort + 0
+  /* 142A38 80133458 3C178014 */       lui $s7, %hi(gMNTrainingCPUPanelPort)
+  /* 142A3C 8013345C 26F78898 */     addiu $s7, $s7, %lo(gMNTrainingCPUPanelPort)
+  /* 142A40 80133460 8EEE0000 */        lw $t6, ($s7) # gMNTrainingCPUPanelPort + 0
   /* 142A44 80133464 241500B8 */     addiu $s5, $zero, 0xb8
-  /* 142A48 80133468 3C148014 */       lui $s4, %hi(gMnTrainingPanels)
+  /* 142A48 80133468 3C148014 */       lui $s4, %hi(gMNTrainingPanels)
   /* 142A4C 8013346C 01D50019 */     multu $t6, $s5
-  /* 142A50 80133470 26948558 */     addiu $s4, $s4, %lo(gMnTrainingPanels)
+  /* 142A50 80133470 26948558 */     addiu $s4, $s4, %lo(gMNTrainingPanels)
   /* 142A54 80133474 AFA20044 */        sw $v0, 0x44($sp)
   /* 142A58 80133478 AFA30040 */        sw $v1, 0x40($sp)
   /* 142A5C 8013347C AFA4004C */        sw $a0, 0x4c($sp)
@@ -1787,7 +1787,7 @@ glabel mnTrainingGetAvailableCostumeFFA
   .L801334A8:
   /* 142A88 801334A8 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 142A8C 801334AC 02002825 */        or $a1, $s0, $zero
-  /* 142A90 801334B0 8EE80000 */        lw $t0, ($s7) # gMnTrainingCPUPanelPort + 0
+  /* 142A90 801334B0 8EE80000 */        lw $t0, ($s7) # gMNTrainingCPUPanelPort + 0
   /* 142A94 801334B4 00106080 */       sll $t4, $s0, 2
   /* 142A98 801334B8 022C6821 */      addu $t5, $s1, $t4
   /* 142A9C 801334BC 01150019 */     multu $t0, $s5
@@ -1810,8 +1810,8 @@ glabel mnTrainingGetAvailableCostumeFFA
   .L801334F8:
   /* 142AD8 801334F8 241500B8 */     addiu $s5, $zero, 0xb8
   /* 142ADC 801334FC 00D50019 */     multu $a2, $s5
-  /* 142AE0 80133500 3C148014 */       lui $s4, %hi(gMnTrainingPanels)
-  /* 142AE4 80133504 26948558 */     addiu $s4, $s4, %lo(gMnTrainingPanels)
+  /* 142AE0 80133500 3C148014 */       lui $s4, %hi(gMNTrainingPanels)
+  /* 142AE4 80133504 26948558 */     addiu $s4, $s4, %lo(gMNTrainingPanels)
   /* 142AE8 80133508 00008025 */        or $s0, $zero, $zero
   /* 142AEC 8013350C 24130004 */     addiu $s3, $zero, 4
   /* 142AF0 80133510 24120001 */     addiu $s2, $zero, 1
@@ -1829,7 +1829,7 @@ glabel mnTrainingGetAvailableCostumeFFA
   .L80133540:
   /* 142B20 80133540 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 142B24 80133544 02002825 */        or $a1, $s0, $zero
-  /* 142B28 80133548 8EF90000 */        lw $t9, ($s7) # gMnTrainingCPUPanelPort + 0
+  /* 142B28 80133548 8EF90000 */        lw $t9, ($s7) # gMNTrainingCPUPanelPort + 0
   /* 142B2C 8013354C 00105880 */       sll $t3, $s0, 2
   /* 142B30 80133550 022B6021 */      addu $t4, $s1, $t3
   /* 142B34 80133554 03350019 */     multu $t9, $s5
@@ -1932,8 +1932,8 @@ glabel mnTrainingRotateFighter
   /* 142C60 80133680 AFBF001C */        sw $ra, 0x1c($sp)
   /* 142C64 80133684 AFB00018 */        sw $s0, 0x18($sp)
   /* 142C68 80133688 8C820084 */        lw $v0, 0x84($a0)
-  /* 142C6C 8013368C 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 142C70 80133690 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 142C6C 8013368C 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 142C70 80133690 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 142C74 80133694 9043000D */       lbu $v1, 0xd($v0)
   /* 142C78 80133698 24010001 */     addiu $at, $zero, 1
   /* 142C7C 8013369C 00037080 */       sll $t6, $v1, 2
@@ -2015,9 +2015,9 @@ glabel mnTrainingRotateFighter
 
 glabel mnTrainingSpawnFighter
   /* 142D9C 801337BC 27BDFF98 */     addiu $sp, $sp, -0x68
-  /* 142DA0 801337C0 3C0F8011 */       lui $t7, %hi(dFtDefaultFighterDesc)
+  /* 142DA0 801337C0 3C0F8011 */       lui $t7, %hi(dFTDefaultFighterDesc)
   /* 142DA4 801337C4 AFB00018 */        sw $s0, 0x18($sp)
-  /* 142DA8 801337C8 25EF6DD0 */     addiu $t7, $t7, %lo(dFtDefaultFighterDesc)
+  /* 142DA8 801337C8 25EF6DD0 */     addiu $t7, $t7, %lo(dFTDefaultFighterDesc)
   /* 142DAC 801337CC 00808025 */        or $s0, $a0, $zero
   /* 142DB0 801337D0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 142DB4 801337D4 AFA5006C */        sw $a1, 0x6c($sp)
@@ -2025,16 +2025,16 @@ glabel mnTrainingSpawnFighter
   /* 142DBC 801337DC 25E8003C */     addiu $t0, $t7, 0x3c
   /* 142DC0 801337E0 27AE0024 */     addiu $t6, $sp, 0x24
   .L801337E4:
-  /* 142DC4 801337E4 8DF90000 */        lw $t9, ($t7) # dFtDefaultFighterDesc + 0
+  /* 142DC4 801337E4 8DF90000 */        lw $t9, ($t7) # dFTDefaultFighterDesc + 0
   /* 142DC8 801337E8 25EF000C */     addiu $t7, $t7, 0xc
   /* 142DCC 801337EC 25CE000C */     addiu $t6, $t6, 0xc
   /* 142DD0 801337F0 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 142DD4 801337F4 8DF8FFF8 */        lw $t8, -8($t7) # dFtDefaultFighterDesc + -8
+  /* 142DD4 801337F4 8DF8FFF8 */        lw $t8, -8($t7) # dFTDefaultFighterDesc + -8
   /* 142DD8 801337F8 ADD8FFF8 */        sw $t8, -8($t6)
-  /* 142DDC 801337FC 8DF9FFFC */        lw $t9, -4($t7) # dFtDefaultFighterDesc + -4
+  /* 142DDC 801337FC 8DF9FFFC */        lw $t9, -4($t7) # dFTDefaultFighterDesc + -4
   /* 142DE0 80133800 15E8FFF8 */       bne $t7, $t0, .L801337E4
   /* 142DE4 80133804 ADD9FFFC */        sw $t9, -4($t6)
-  /* 142DE8 80133808 8DF90000 */        lw $t9, ($t7) # dFtDefaultFighterDesc + 0
+  /* 142DE8 80133808 8DF90000 */        lw $t9, ($t7) # dFTDefaultFighterDesc + 0
   /* 142DEC 8013380C 2401001C */     addiu $at, $zero, 0x1c
   /* 142DF0 80133810 ADD90000 */        sw $t9, ($t6)
   /* 142DF4 80133814 8FA90070 */        lw $t1, 0x70($sp)
@@ -2056,8 +2056,8 @@ glabel mnTrainingSpawnFighter
   /* 142E30 80133850 E7A60064 */      swc1 $f6, 0x64($sp)
   .L80133854:
   /* 142E34 80133854 8FAC006C */        lw $t4, 0x6c($sp)
-  /* 142E38 80133858 3C088014 */       lui $t0, %hi(gMnTrainingPanels)
-  /* 142E3C 8013385C 25088558 */     addiu $t0, $t0, %lo(gMnTrainingPanels)
+  /* 142E38 80133858 3C088014 */       lui $t0, %hi(gMNTrainingPanels)
+  /* 142E3C 8013385C 25088558 */     addiu $t0, $t0, %lo(gMNTrainingPanels)
   /* 142E40 80133860 000C6880 */       sll $t5, $t4, 2
   /* 142E44 80133864 01AC6823 */      subu $t5, $t5, $t4
   /* 142E48 80133868 000D68C0 */       sll $t5, $t5, 3
@@ -2086,8 +2086,8 @@ glabel mnTrainingSpawnFighter
   /* 142EA4 801338C4 24070001 */     addiu $a3, $zero, 1
   /* 142EA8 801338C8 0C002062 */       jal omAddGObjCommonProc
   /* 142EAC 801338CC AC620008 */        sw $v0, 8($v1)
-  /* 142EB0 801338D0 3C098014 */       lui $t1, %hi(gMnTrainingHumanPanelPort)
-  /* 142EB4 801338D4 8D298894 */        lw $t1, %lo(gMnTrainingHumanPanelPort)($t1)
+  /* 142EB0 801338D0 3C098014 */       lui $t1, %hi(gMNTrainingHumanPanelPort)
+  /* 142EB4 801338D4 8D298894 */        lw $t1, %lo(gMNTrainingHumanPanelPort)($t1)
   /* 142EB8 801338D8 8FB9006C */        lw $t9, 0x6c($sp)
   /* 142EBC 801338DC 3C018014 */       lui $at, 0x8014
   /* 142EC0 801338E0 02002025 */        or $a0, $s0, $zero
@@ -2118,7 +2118,7 @@ glabel mnTrainingSpawnFighter
   /* 142F1C 8013393C E5040034 */      swc1 $f4, 0x34($t0)
   /* 142F20 80133940 8FAF0070 */        lw $t7, 0x70($sp)
   /* 142F24 80133944 8E190074 */        lw $t9, 0x74($s0)
-  /* 142F28 80133948 3C0C8014 */       lui $t4, %hi(gMnTrainingCPUPanelPort)
+  /* 142F28 80133948 3C0C8014 */       lui $t4, %hi(gMNTrainingCPUPanelPort)
   /* 142F2C 8013394C 000F7080 */       sll $t6, $t7, 2
   /* 142F30 80133950 01D81021 */      addu $v0, $t6, $t8
   /* 142F34 80133954 C4460000 */      lwc1 $f6, ($v0)
@@ -2129,7 +2129,7 @@ glabel mnTrainingSpawnFighter
   /* 142F48 80133968 8E0A0074 */        lw $t2, 0x74($s0)
   /* 142F4C 8013396C C44A0000 */      lwc1 $f10, ($v0)
   /* 142F50 80133970 E54A0048 */      swc1 $f10, 0x48($t2)
-  /* 142F54 80133974 8D8C8898 */        lw $t4, %lo(gMnTrainingCPUPanelPort)($t4)
+  /* 142F54 80133974 8D8C8898 */        lw $t4, %lo(gMNTrainingCPUPanelPort)($t4)
   /* 142F58 80133978 8FAB006C */        lw $t3, 0x6c($sp)
   /* 142F5C 8013397C 556C0004 */      bnel $t3, $t4, .L80133990
   /* 142F60 80133980 8FBF001C */        lw $ra, 0x1c($sp)
@@ -2206,57 +2206,57 @@ glabel mnTrainingCreateFighterViewport
 
 glabel mnTrainingRedrawCursor
   /* 143070 80133A90 27BDFF88 */     addiu $sp, $sp, -0x78
-  /* 143074 80133A94 3C0F8014 */       lui $t7, %hi(dMnTrainingCursorTypeColors)
+  /* 143074 80133A94 3C0F8014 */       lui $t7, %hi(dMNTrainingCursorTypeColors)
   /* 143078 80133A98 AFBF0014 */        sw $ra, 0x14($sp)
   /* 14307C 80133A9C AFA5007C */        sw $a1, 0x7c($sp)
   /* 143080 80133AA0 AFA60080 */        sw $a2, 0x80($sp)
-  /* 143084 80133AA4 25EF82B4 */     addiu $t7, $t7, %lo(dMnTrainingCursorTypeColors)
-  /* 143088 80133AA8 8DF90000 */        lw $t9, ($t7) # dMnTrainingCursorTypeColors + 0
-  /* 14308C 80133AAC 8DF80004 */        lw $t8, 4($t7) # dMnTrainingCursorTypeColors + 4
+  /* 143084 80133AA4 25EF82B4 */     addiu $t7, $t7, %lo(dMNTrainingCursorTypeColors)
+  /* 143088 80133AA8 8DF90000 */        lw $t9, ($t7) # dMNTrainingCursorTypeColors + 0
+  /* 14308C 80133AAC 8DF80004 */        lw $t8, 4($t7) # dMNTrainingCursorTypeColors + 4
   /* 143090 80133AB0 27AE0054 */     addiu $t6, $sp, 0x54
   /* 143094 80133AB4 ADD90000 */        sw $t9, ($t6)
   /* 143098 80133AB8 ADD80004 */        sw $t8, 4($t6)
-  /* 14309C 80133ABC 8DF8000C */        lw $t8, 0xc($t7) # dMnTrainingCursorTypeColors + 12
-  /* 1430A0 80133AC0 8DF90008 */        lw $t9, 8($t7) # dMnTrainingCursorTypeColors + 8
-  /* 1430A4 80133AC4 3C098014 */       lui $t1, %hi(dMnTrainingCursorTypeOffsets)
+  /* 14309C 80133ABC 8DF8000C */        lw $t8, 0xc($t7) # dMNTrainingCursorTypeColors + 12
+  /* 1430A0 80133AC0 8DF90008 */        lw $t9, 8($t7) # dMNTrainingCursorTypeColors + 8
+  /* 1430A4 80133AC4 3C098014 */       lui $t1, %hi(dMNTrainingCursorTypeOffsets)
   /* 1430A8 80133AC8 ADD8000C */        sw $t8, 0xc($t6)
   /* 1430AC 80133ACC ADD90008 */        sw $t9, 8($t6)
-  /* 1430B0 80133AD0 8DF90010 */        lw $t9, 0x10($t7) # dMnTrainingCursorTypeColors + 16
-  /* 1430B4 80133AD4 8DF80014 */        lw $t8, 0x14($t7) # dMnTrainingCursorTypeColors + 20
-  /* 1430B8 80133AD8 252982CC */     addiu $t1, $t1, %lo(dMnTrainingCursorTypeOffsets)
+  /* 1430B0 80133AD0 8DF90010 */        lw $t9, 0x10($t7) # dMNTrainingCursorTypeColors + 16
+  /* 1430B4 80133AD4 8DF80014 */        lw $t8, 0x14($t7) # dMNTrainingCursorTypeColors + 20
+  /* 1430B8 80133AD8 252982CC */     addiu $t1, $t1, %lo(dMNTrainingCursorTypeOffsets)
   /* 1430BC 80133ADC ADD90010 */        sw $t9, 0x10($t6)
   /* 1430C0 80133AE0 ADD80014 */        sw $t8, 0x14($t6)
-  /* 1430C4 80133AE4 8D2A0004 */        lw $t2, 4($t1) # dMnTrainingCursorTypeOffsets + 4
-  /* 1430C8 80133AE8 8D2B0000 */        lw $t3, ($t1) # dMnTrainingCursorTypeOffsets + 0
+  /* 1430C4 80133AE4 8D2A0004 */        lw $t2, 4($t1) # dMNTrainingCursorTypeOffsets + 4
+  /* 1430C8 80133AE8 8D2B0000 */        lw $t3, ($t1) # dMNTrainingCursorTypeOffsets + 0
   /* 1430CC 80133AEC 27A80044 */     addiu $t0, $sp, 0x44
   /* 1430D0 80133AF0 AD0A0004 */        sw $t2, 4($t0)
   /* 1430D4 80133AF4 AD0B0000 */        sw $t3, ($t0)
-  /* 1430D8 80133AF8 8D2B0008 */        lw $t3, 8($t1) # dMnTrainingCursorTypeOffsets + 8
-  /* 1430DC 80133AFC 8D2A000C */        lw $t2, 0xc($t1) # dMnTrainingCursorTypeOffsets + 12
-  /* 1430E0 80133B00 3C0D8014 */       lui $t5, %hi(dMnTrainingCursorOffsets)
-  /* 1430E4 80133B04 25AD82DC */     addiu $t5, $t5, %lo(dMnTrainingCursorOffsets)
+  /* 1430D8 80133AF8 8D2B0008 */        lw $t3, 8($t1) # dMNTrainingCursorTypeOffsets + 8
+  /* 1430DC 80133AFC 8D2A000C */        lw $t2, 0xc($t1) # dMNTrainingCursorTypeOffsets + 12
+  /* 1430E0 80133B00 3C0D8014 */       lui $t5, %hi(dMNTrainingCursorOffsets)
+  /* 1430E4 80133B04 25AD82DC */     addiu $t5, $t5, %lo(dMNTrainingCursorOffsets)
   /* 1430E8 80133B08 AD0B0008 */        sw $t3, 8($t0)
   /* 1430EC 80133B0C AD0A000C */        sw $t2, 0xc($t0)
-  /* 1430F0 80133B10 8DAF0000 */        lw $t7, ($t5) # dMnTrainingCursorOffsets + 0
+  /* 1430F0 80133B10 8DAF0000 */        lw $t7, ($t5) # dMNTrainingCursorOffsets + 0
   /* 1430F4 80133B14 27AC0038 */     addiu $t4, $sp, 0x38
-  /* 1430F8 80133B18 8DAE0004 */        lw $t6, 4($t5) # dMnTrainingCursorOffsets + 4
+  /* 1430F8 80133B18 8DAE0004 */        lw $t6, 4($t5) # dMNTrainingCursorOffsets + 4
   /* 1430FC 80133B1C AD8F0000 */        sw $t7, ($t4)
-  /* 143100 80133B20 8DAF0008 */        lw $t7, 8($t5) # dMnTrainingCursorOffsets + 8
-  /* 143104 80133B24 3C198014 */       lui $t9, %hi(dMnTrainingCursorTypePositions)
-  /* 143108 80133B28 273982E8 */     addiu $t9, $t9, %lo(dMnTrainingCursorTypePositions)
+  /* 143100 80133B20 8DAF0008 */        lw $t7, 8($t5) # dMNTrainingCursorOffsets + 8
+  /* 143104 80133B24 3C198014 */       lui $t9, %hi(dMNTrainingCursorTypePositions)
+  /* 143108 80133B28 273982E8 */     addiu $t9, $t9, %lo(dMNTrainingCursorTypePositions)
   /* 14310C 80133B2C AD8E0004 */        sw $t6, 4($t4)
   /* 143110 80133B30 AD8F0008 */        sw $t7, 8($t4)
-  /* 143114 80133B34 8F280004 */        lw $t0, 4($t9) # dMnTrainingCursorTypePositions + 4
-  /* 143118 80133B38 8F290000 */        lw $t1, ($t9) # dMnTrainingCursorTypePositions + 0
+  /* 143114 80133B34 8F280004 */        lw $t0, 4($t9) # dMNTrainingCursorTypePositions + 4
+  /* 143118 80133B38 8F290000 */        lw $t1, ($t9) # dMNTrainingCursorTypePositions + 0
   /* 14311C 80133B3C 27B80020 */     addiu $t8, $sp, 0x20
   /* 143120 80133B40 AF080004 */        sw $t0, 4($t8)
   /* 143124 80133B44 AF090000 */        sw $t1, ($t8)
-  /* 143128 80133B48 8F290008 */        lw $t1, 8($t9) # dMnTrainingCursorTypePositions + 8
-  /* 14312C 80133B4C 8F28000C */        lw $t0, 0xc($t9) # dMnTrainingCursorTypePositions + 12
+  /* 143128 80133B48 8F290008 */        lw $t1, 8($t9) # dMNTrainingCursorTypePositions + 8
+  /* 14312C 80133B4C 8F28000C */        lw $t0, 0xc($t9) # dMNTrainingCursorTypePositions + 12
   /* 143130 80133B50 AF090008 */        sw $t1, 8($t8)
   /* 143134 80133B54 AF08000C */        sw $t0, 0xc($t8)
-  /* 143138 80133B58 8F280014 */        lw $t0, 0x14($t9) # dMnTrainingCursorTypePositions + 20
-  /* 14313C 80133B5C 8F290010 */        lw $t1, 0x10($t9) # dMnTrainingCursorTypePositions + 16
+  /* 143138 80133B58 8F280014 */        lw $t0, 0x14($t9) # dMNTrainingCursorTypePositions + 20
+  /* 14313C 80133B5C 8F290010 */        lw $t1, 0x10($t9) # dMNTrainingCursorTypePositions + 16
   /* 143140 80133B60 AF080014 */        sw $t0, 0x14($t8)
   /* 143144 80133B64 AF090010 */        sw $t1, 0x10($t8)
   /* 143148 80133B68 8C820074 */        lw $v0, 0x74($a0)
@@ -2343,20 +2343,20 @@ glabel mnTrainingRedrawCursor
 
 glabel mnTrainingUpdatePanels
   /* 143288 80133CA8 27BDFFD0 */     addiu $sp, $sp, -0x30
-  /* 14328C 80133CAC 3C0F8014 */       lui $t7, %hi(dMnTrainingPanelColorIndexesUnused)
+  /* 14328C 80133CAC 3C0F8014 */       lui $t7, %hi(dMNTrainingPanelColorIndexesUnused)
   /* 143290 80133CB0 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 143294 80133CB4 25EF8300 */     addiu $t7, $t7, %lo(dMnTrainingPanelColorIndexesUnused)
-  /* 143298 80133CB8 8DF90000 */        lw $t9, ($t7) # dMnTrainingPanelColorIndexesUnused + 0
-  /* 14329C 80133CBC 8DF80004 */        lw $t8, 4($t7) # dMnTrainingPanelColorIndexesUnused + 4
+  /* 143294 80133CB4 25EF8300 */     addiu $t7, $t7, %lo(dMNTrainingPanelColorIndexesUnused)
+  /* 143298 80133CB8 8DF90000 */        lw $t9, ($t7) # dMNTrainingPanelColorIndexesUnused + 0
+  /* 14329C 80133CBC 8DF80004 */        lw $t8, 4($t7) # dMNTrainingPanelColorIndexesUnused + 4
   /* 1432A0 80133CC0 27AE001C */     addiu $t6, $sp, 0x1c
   /* 1432A4 80133CC4 ADD90000 */        sw $t9, ($t6)
   /* 1432A8 80133CC8 ADD80004 */        sw $t8, 4($t6)
-  /* 1432AC 80133CCC 8DF8000C */        lw $t8, 0xc($t7) # dMnTrainingPanelColorIndexesUnused + 12
-  /* 1432B0 80133CD0 8DF90008 */        lw $t9, 8($t7) # dMnTrainingPanelColorIndexesUnused + 8
-  /* 1432B4 80133CD4 3C058014 */       lui $a1, %hi(gMnTrainingHumanPanelPort)
+  /* 1432AC 80133CCC 8DF8000C */        lw $t8, 0xc($t7) # dMNTrainingPanelColorIndexesUnused + 12
+  /* 1432B0 80133CD0 8DF90008 */        lw $t9, 8($t7) # dMNTrainingPanelColorIndexesUnused + 8
+  /* 1432B4 80133CD4 3C058014 */       lui $a1, %hi(gMNTrainingHumanPanelPort)
   /* 1432B8 80133CD8 ADD8000C */        sw $t8, 0xc($t6)
   /* 1432BC 80133CDC ADD90008 */        sw $t9, 8($t6)
-  /* 1432C0 80133CE0 8CA58894 */        lw $a1, %lo(gMnTrainingHumanPanelPort)($a1)
+  /* 1432C0 80133CE0 8CA58894 */        lw $a1, %lo(gMNTrainingHumanPanelPort)($a1)
   /* 1432C4 80133CE4 3C048014 */       lui $a0, %hi(D_ovl28_80138570)
   /* 1432C8 80133CE8 00054080 */       sll $t0, $a1, 2
   /* 1432CC 80133CEC 01054023 */      subu $t0, $t0, $a1
@@ -2366,8 +2366,8 @@ glabel mnTrainingUpdatePanels
   /* 1432DC 80133CFC 00882021 */      addu $a0, $a0, $t0
   /* 1432E0 80133D00 0C04CB09 */       jal mnTrainingUpdatePanel
   /* 1432E4 80133D04 8C848570 */        lw $a0, %lo(D_ovl28_80138570)($a0)
-  /* 1432E8 80133D08 3C058014 */       lui $a1, %hi(gMnTrainingCPUPanelPort)
-  /* 1432EC 80133D0C 8CA58898 */        lw $a1, %lo(gMnTrainingCPUPanelPort)($a1)
+  /* 1432E8 80133D08 3C058014 */       lui $a1, %hi(gMNTrainingCPUPanelPort)
+  /* 1432EC 80133D0C 8CA58898 */        lw $a1, %lo(gMNTrainingCPUPanelPort)($a1)
   /* 1432F0 80133D10 3C048014 */       lui $a0, %hi(D_ovl28_80138570)
   /* 1432F4 80133D14 00054880 */       sll $t1, $a1, 2
   /* 1432F8 80133D18 01254823 */      subu $t1, $t1, $a1
@@ -2453,8 +2453,8 @@ glabel mnTrainingSyncFighterDisplay
   /* 143414 80133E34 01C47023 */      subu $t6, $t6, $a0
   /* 143418 80133E38 000E70C0 */       sll $t6, $t6, 3
   /* 14341C 80133E3C 01C47023 */      subu $t6, $t6, $a0
-  /* 143420 80133E40 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 143424 80133E44 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 143420 80133E40 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 143424 80133E44 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 143428 80133E48 000E70C0 */       sll $t6, $t6, 3
   /* 14342C 80133E4C 01CF1821 */      addu $v1, $t6, $t7
   /* 143430 80133E50 8C650008 */        lw $a1, 8($v1)
@@ -2502,8 +2502,8 @@ glabel mnTrainingSyncNameAndLogo
   /* 1434C4 80133EE4 01C47023 */      subu $t6, $t6, $a0
   /* 1434C8 80133EE8 000E70C0 */       sll $t6, $t6, 3
   /* 1434CC 80133EEC 01C47023 */      subu $t6, $t6, $a0
-  /* 1434D0 80133EF0 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 1434D4 80133EF4 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 1434D0 80133EF0 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 1434D4 80133EF4 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 1434D8 80133EF8 000E70C0 */       sll $t6, $t6, 3
   /* 1434DC 80133EFC 01CF1021 */      addu $v0, $t6, $t7
   /* 1434E0 80133F00 8C580080 */        lw $t8, 0x80($v0)
@@ -2541,8 +2541,8 @@ glabel mnTrainingRemoveWhiteSquare
   /* 14354C 80133F6C 01C47023 */      subu $t6, $t6, $a0
   /* 143550 80133F70 000E70C0 */       sll $t6, $t6, 3
   /* 143554 80133F74 01C47023 */      subu $t6, $t6, $a0
-  /* 143558 80133F78 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 14355C 80133F7C 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 143558 80133F78 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 14355C 80133F7C 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 143560 80133F80 000E70C0 */       sll $t6, $t6, 3
   /* 143564 80133F84 01CF1021 */      addu $v0, $t6, $t7
   /* 143568 80133F88 8C45002C */        lw $a1, 0x2c($v0)
@@ -2613,8 +2613,8 @@ glabel mnTrainingCreateWhiteSquare
   /* 143644 80134064 000F78C0 */       sll $t7, $t7, 3
   /* 143648 80134068 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 14364C 8013406C 01E47823 */      subu $t7, $t7, $a0
-  /* 143650 80134070 3C188014 */       lui $t8, %hi(gMnTrainingPanels)
-  /* 143654 80134074 27188558 */     addiu $t8, $t8, %lo(gMnTrainingPanels)
+  /* 143650 80134070 3C188014 */       lui $t8, %hi(gMNTrainingPanels)
+  /* 143654 80134074 27188558 */     addiu $t8, $t8, %lo(gMNTrainingPanels)
   /* 143658 80134078 000F78C0 */       sll $t7, $t7, 3
   /* 14365C 8013407C AFBF0024 */        sw $ra, 0x24($sp)
   /* 143660 80134080 AFA40040 */        sw $a0, 0x40($sp)
@@ -2698,27 +2698,27 @@ glabel mnTrainingCreateWhiteSquare
 
 glabel mnTrainingAnnounceFighter
   /* 143790 801341B0 27BDFFC0 */     addiu $sp, $sp, -0x40
-  /* 143794 801341B4 3C0F8014 */       lui $t7, %hi(dMnTrainingAnnouncerNames)
+  /* 143794 801341B4 3C0F8014 */       lui $t7, %hi(dMNTrainingAnnouncerNames)
   /* 143798 801341B8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 14379C 801341BC AFA50044 */        sw $a1, 0x44($sp)
-  /* 1437A0 801341C0 25EF8310 */     addiu $t7, $t7, %lo(dMnTrainingAnnouncerNames)
-  /* 1437A4 801341C4 8DF90000 */        lw $t9, ($t7) # dMnTrainingAnnouncerNames + 0
-  /* 1437A8 801341C8 8DF80004 */        lw $t8, 4($t7) # dMnTrainingAnnouncerNames + 4
+  /* 1437A0 801341C0 25EF8310 */     addiu $t7, $t7, %lo(dMNTrainingAnnouncerNames)
+  /* 1437A4 801341C4 8DF90000 */        lw $t9, ($t7) # dMNTrainingAnnouncerNames + 0
+  /* 1437A8 801341C8 8DF80004 */        lw $t8, 4($t7) # dMNTrainingAnnouncerNames + 4
   /* 1437AC 801341CC 27AE0028 */     addiu $t6, $sp, 0x28
   /* 1437B0 801341D0 ADD90000 */        sw $t9, ($t6)
   /* 1437B4 801341D4 ADD80004 */        sw $t8, 4($t6)
-  /* 1437B8 801341D8 8DF8000C */        lw $t8, 0xc($t7) # dMnTrainingAnnouncerNames + 12
-  /* 1437BC 801341DC 8DF90008 */        lw $t9, 8($t7) # dMnTrainingAnnouncerNames + 8
+  /* 1437B8 801341D8 8DF8000C */        lw $t8, 0xc($t7) # dMNTrainingAnnouncerNames + 12
+  /* 1437BC 801341DC 8DF90008 */        lw $t9, 8($t7) # dMNTrainingAnnouncerNames + 8
   /* 1437C0 801341E0 00044080 */       sll $t0, $a0, 2
   /* 1437C4 801341E4 01044023 */      subu $t0, $t0, $a0
   /* 1437C8 801341E8 ADD8000C */        sw $t8, 0xc($t6)
   /* 1437CC 801341EC ADD90008 */        sw $t9, 8($t6)
-  /* 1437D0 801341F0 8DF90010 */        lw $t9, 0x10($t7) # dMnTrainingAnnouncerNames + 16
-  /* 1437D4 801341F4 8DF80014 */        lw $t8, 0x14($t7) # dMnTrainingAnnouncerNames + 20
+  /* 1437D0 801341F0 8DF90010 */        lw $t9, 0x10($t7) # dMNTrainingAnnouncerNames + 16
+  /* 1437D4 801341F4 8DF80014 */        lw $t8, 0x14($t7) # dMNTrainingAnnouncerNames + 20
   /* 1437D8 801341F8 000840C0 */       sll $t0, $t0, 3
   /* 1437DC 801341FC 01044023 */      subu $t0, $t0, $a0
-  /* 1437E0 80134200 3C098014 */       lui $t1, %hi(gMnTrainingPanels)
-  /* 1437E4 80134204 25298558 */     addiu $t1, $t1, %lo(gMnTrainingPanels)
+  /* 1437E0 80134200 3C098014 */       lui $t1, %hi(gMNTrainingPanels)
+  /* 1437E4 80134204 25298558 */     addiu $t1, $t1, %lo(gMNTrainingPanels)
   /* 1437E8 80134208 000840C0 */       sll $t0, $t0, 3
   /* 1437EC 8013420C 01091821 */      addu $v1, $t0, $t1
   /* 1437F0 80134210 ADD90010 */        sw $t9, 0x10($t6)
@@ -2772,8 +2772,8 @@ glabel mnTrainingRemoveHandicapCPULevel
   /* 14389C 801342BC 01C47023 */      subu $t6, $t6, $a0
   /* 1438A0 801342C0 000E70C0 */       sll $t6, $t6, 3
   /* 1438A4 801342C4 01C47023 */      subu $t6, $t6, $a0
-  /* 1438A8 801342C8 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 1438AC 801342CC 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 1438A8 801342C8 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 1438AC 801342CC 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 1438B0 801342D0 000E70C0 */       sll $t6, $t6, 3
   /* 1438B4 801342D4 01CF1021 */      addu $v0, $t6, $t7
   /* 1438B8 801342D8 8C450020 */        lw $a1, 0x20($v0)
@@ -2847,12 +2847,12 @@ glabel mnTrainingSyncAndBlinkArrows
   /* 14399C 801343BC AFB1002C */        sw $s1, 0x2c($sp)
   /* 1439A0 801343C0 F7B40018 */      sdc1 $f20, 0x18($sp)
   /* 1439A4 801343C4 3C168014 */       lui $s6, %hi(D_ovl28_80138C98)
-  /* 1439A8 801343C8 3C1E8014 */       lui $fp, %hi(gMnTrainingPanels)
+  /* 1439A8 801343C8 3C1E8014 */       lui $fp, %hi(gMNTrainingPanels)
   /* 1439AC 801343CC 4481B000 */      mtc1 $at, $f22 # 201.0 to cop1
   /* 1439B0 801343D0 00808025 */        or $s0, $a0, $zero
   /* 1439B4 801343D4 8C930084 */        lw $s3, 0x84($a0)
   /* 1439B8 801343D8 2412000A */     addiu $s2, $zero, 0xa
-  /* 1439BC 801343DC 27DE8558 */     addiu $fp, $fp, %lo(gMnTrainingPanels)
+  /* 1439BC 801343DC 27DE8558 */     addiu $fp, $fp, %lo(gMNTrainingPanels)
   /* 1439C0 801343E0 26D68C98 */     addiu $s6, $s6, %lo(D_ovl28_80138C98)
   /* 1439C4 801343E4 24140001 */     addiu $s4, $zero, 1
   /* 1439C8 801343E8 24150001 */     addiu $s5, $zero, 1
@@ -2985,8 +2985,8 @@ glabel mnTrainingSyncHandicapCPULevelDisplay
   /* 143B98 801345B8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 143B9C 801345BC AFBF0014 */        sw $ra, 0x14($sp)
   /* 143BA0 801345C0 8C850084 */        lw $a1, 0x84($a0)
-  /* 143BA4 801345C4 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 143BA8 801345C8 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 143BA4 801345C4 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 143BA8 801345C8 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 143BAC 801345CC 00057080 */       sll $t6, $a1, 2
   /* 143BB0 801345D0 01C57023 */      subu $t6, $t6, $a1
   /* 143BB4 801345D4 000E70C0 */       sll $t6, $t6, 3
@@ -3020,9 +3020,9 @@ glabel mnTrainingDrawHandicapCPULevel
   /* 143C14 80134634 000F78C0 */       sll $t7, $t7, 3
   /* 143C18 80134638 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 143C1C 8013463C 01E47823 */      subu $t7, $t7, $a0
-  /* 143C20 80134640 3C188014 */       lui $t8, %hi(gMnTrainingPanels)
+  /* 143C20 80134640 3C188014 */       lui $t8, %hi(gMNTrainingPanels)
   /* 143C24 80134644 AFB10020 */        sw $s1, 0x20($sp)
-  /* 143C28 80134648 27188558 */     addiu $t8, $t8, %lo(gMnTrainingPanels)
+  /* 143C28 80134648 27188558 */     addiu $t8, $t8, %lo(gMNTrainingPanels)
   /* 143C2C 8013464C 000F78C0 */       sll $t7, $t7, 3
   /* 143C30 80134650 01F88821 */      addu $s1, $t7, $t8
   /* 143C34 80134654 8E250020 */        lw $a1, 0x20($s1)
@@ -3162,8 +3162,8 @@ glabel mnTrainingSelectChar
   /* 143E2C 8013484C AFA60028 */        sw $a2, 0x28($sp)
   /* 143E30 80134850 240600B8 */     addiu $a2, $zero, 0xb8
   /* 143E34 80134854 00A60019 */     multu $a1, $a2
-  /* 143E38 80134858 3C028014 */       lui $v0, %hi(gMnTrainingPanels)
-  /* 143E3C 8013485C 24428558 */     addiu $v0, $v0, %lo(gMnTrainingPanels)
+  /* 143E38 80134858 3C028014 */       lui $v0, %hi(gMNTrainingPanels)
+  /* 143E3C 8013485C 24428558 */     addiu $v0, $v0, %lo(gMNTrainingPanels)
   /* 143E40 80134860 AFA40020 */        sw $a0, 0x20($sp)
   /* 143E44 80134864 24010001 */     addiu $at, $zero, 1
   /* 143E48 80134868 00A02025 */        or $a0, $a1, $zero
@@ -3187,8 +3187,8 @@ glabel mnTrainingSelectChar
   /* 143E8C 801348AC 00000000 */       nop
   /* 143E90 801348B0 0C04C6D6 */       jal mnTrainingSelectCharWithToken
   /* 143E94 801348B4 AFA30018 */        sw $v1, 0x18($sp)
-  /* 143E98 801348B8 3C0A8014 */       lui $t2, %hi(gMnTrainingFramesElapsed)
-  /* 143E9C 801348BC 8D4A888C */        lw $t2, %lo(gMnTrainingFramesElapsed)($t2)
+  /* 143E98 801348B8 3C0A8014 */       lui $t2, %hi(gMNTrainingFramesElapsed)
+  /* 143E9C 801348BC 8D4A888C */        lw $t2, %lo(gMNTrainingFramesElapsed)($t2)
   /* 143EA0 801348C0 8FA30018 */        lw $v1, 0x18($sp)
   /* 143EA4 801348C4 24020001 */     addiu $v0, $zero, 1
   /* 143EA8 801348C8 254B001E */     addiu $t3, $t2, 0x1e
@@ -3206,7 +3206,7 @@ glabel mnTrainingSelectChar
 
 glabel mnTrainingReorderCursorsOnPickup
   /* 143ED0 801348F0 27BDFFA0 */     addiu $sp, $sp, -0x60
-  /* 143ED4 801348F4 3C0E8014 */       lui $t6, %hi(dMnTrainingTokenPickupDisplayOrders)
+  /* 143ED4 801348F4 3C0E8014 */       lui $t6, %hi(dMNTrainingTokenPickupDisplayOrders)
   /* 143ED8 801348F8 AFBF003C */        sw $ra, 0x3c($sp)
   /* 143EDC 801348FC AFBE0038 */        sw $fp, 0x38($sp)
   /* 143EE0 80134900 AFB70034 */        sw $s7, 0x34($sp)
@@ -3217,21 +3217,21 @@ glabel mnTrainingReorderCursorsOnPickup
   /* 143EF4 80134914 AFB20020 */        sw $s2, 0x20($sp)
   /* 143EF8 80134918 AFB1001C */        sw $s1, 0x1c($sp)
   /* 143EFC 8013491C AFB00018 */        sw $s0, 0x18($sp)
-  /* 143F00 80134920 25CE8350 */     addiu $t6, $t6, %lo(dMnTrainingTokenPickupDisplayOrders)
-  /* 143F04 80134924 8DD80000 */        lw $t8, ($t6) # dMnTrainingTokenPickupDisplayOrders + 0
+  /* 143F00 80134920 25CE8350 */     addiu $t6, $t6, %lo(dMNTrainingTokenPickupDisplayOrders)
+  /* 143F04 80134924 8DD80000 */        lw $t8, ($t6) # dMNTrainingTokenPickupDisplayOrders + 0
   /* 143F08 80134928 27B50050 */     addiu $s5, $sp, 0x50
   /* 143F0C 8013492C 241400B8 */     addiu $s4, $zero, 0xb8
   /* 143F10 80134930 AEB80000 */        sw $t8, ($s5)
   /* 143F14 80134934 00940019 */     multu $a0, $s4
-  /* 143F18 80134938 8DCF0004 */        lw $t7, 4($t6) # dMnTrainingTokenPickupDisplayOrders + 4
-  /* 143F1C 8013493C 3C138014 */       lui $s3, %hi(gMnTrainingPanels)
-  /* 143F20 80134940 26738558 */     addiu $s3, $s3, %lo(gMnTrainingPanels)
+  /* 143F18 80134938 8DCF0004 */        lw $t7, 4($t6) # dMNTrainingTokenPickupDisplayOrders + 4
+  /* 143F1C 8013493C 3C138014 */       lui $s3, %hi(gMNTrainingPanels)
+  /* 143F20 80134940 26738558 */     addiu $s3, $s3, %lo(gMNTrainingPanels)
   /* 143F24 80134944 AEAF0004 */        sw $t7, 4($s5)
-  /* 143F28 80134948 8DD80008 */        lw $t8, 8($t6) # dMnTrainingTokenPickupDisplayOrders + 8
+  /* 143F28 80134948 8DD80008 */        lw $t8, 8($t6) # dMNTrainingTokenPickupDisplayOrders + 8
   /* 143F2C 8013494C 00A08025 */        or $s0, $a1, $zero
   /* 143F30 80134950 0080F025 */        or $fp, $a0, $zero
   /* 143F34 80134954 AEB80008 */        sw $t8, 8($s5)
-  /* 143F38 80134958 8DCF000C */        lw $t7, 0xc($t6) # dMnTrainingTokenPickupDisplayOrders + 12
+  /* 143F38 80134958 8DCF000C */        lw $t7, 0xc($t6) # dMNTrainingTokenPickupDisplayOrders + 12
   /* 143F3C 8013495C 0000C812 */      mflo $t9
   /* 143F40 80134960 02794021 */      addu $t0, $s3, $t9
   /* 143F44 80134964 AEAF000C */        sw $t7, 0xc($s5)
@@ -3298,7 +3298,7 @@ glabel mnTrainingReorderCursorsOnPickup
 
 glabel mnTrainingReorderCursorsOnPlacement
   /* 14402C 80134A4C 27BDFF80 */     addiu $sp, $sp, -0x80
-  /* 144030 80134A50 3C0F8014 */       lui $t7, %hi(dMnTrainingTokenPlaceHeldDisplayOrders)
+  /* 144030 80134A50 3C0F8014 */       lui $t7, %hi(dMNTrainingTokenPlaceHeldDisplayOrders)
   /* 144034 80134A54 AFBF0034 */        sw $ra, 0x34($sp)
   /* 144038 80134A58 AFB60030 */        sw $s6, 0x30($sp)
   /* 14403C 80134A5C AFB5002C */        sw $s5, 0x2c($sp)
@@ -3308,28 +3308,28 @@ glabel mnTrainingReorderCursorsOnPlacement
   /* 14404C 80134A6C AFB1001C */        sw $s1, 0x1c($sp)
   /* 144050 80134A70 AFB00018 */        sw $s0, 0x18($sp)
   /* 144054 80134A74 AFA50084 */        sw $a1, 0x84($sp)
-  /* 144058 80134A78 25EF8360 */     addiu $t7, $t7, %lo(dMnTrainingTokenPlaceHeldDisplayOrders)
-  /* 14405C 80134A7C 8DF90000 */        lw $t9, ($t7) # dMnTrainingTokenPlaceHeldDisplayOrders + 0
-  /* 144060 80134A80 8DF80004 */        lw $t8, 4($t7) # dMnTrainingTokenPlaceHeldDisplayOrders + 4
+  /* 144058 80134A78 25EF8360 */     addiu $t7, $t7, %lo(dMNTrainingTokenPlaceHeldDisplayOrders)
+  /* 14405C 80134A7C 8DF90000 */        lw $t9, ($t7) # dMNTrainingTokenPlaceHeldDisplayOrders + 0
+  /* 144060 80134A80 8DF80004 */        lw $t8, 4($t7) # dMNTrainingTokenPlaceHeldDisplayOrders + 4
   /* 144064 80134A84 27AE0070 */     addiu $t6, $sp, 0x70
   /* 144068 80134A88 ADD90000 */        sw $t9, ($t6)
   /* 14406C 80134A8C ADD80004 */        sw $t8, 4($t6)
-  /* 144070 80134A90 8DF8000C */        lw $t8, 0xc($t7) # dMnTrainingTokenPlaceHeldDisplayOrders + 12
-  /* 144074 80134A94 8DF90008 */        lw $t9, 8($t7) # dMnTrainingTokenPlaceHeldDisplayOrders + 8
-  /* 144078 80134A98 3C098014 */       lui $t1, %hi(dMnTrainingTokenPlaceUnheldDisplayOrders)
-  /* 14407C 80134A9C 25298370 */     addiu $t1, $t1, %lo(dMnTrainingTokenPlaceUnheldDisplayOrders)
+  /* 144070 80134A90 8DF8000C */        lw $t8, 0xc($t7) # dMNTrainingTokenPlaceHeldDisplayOrders + 12
+  /* 144074 80134A94 8DF90008 */        lw $t9, 8($t7) # dMNTrainingTokenPlaceHeldDisplayOrders + 8
+  /* 144078 80134A98 3C098014 */       lui $t1, %hi(dMNTrainingTokenPlaceUnheldDisplayOrders)
+  /* 14407C 80134A9C 25298370 */     addiu $t1, $t1, %lo(dMNTrainingTokenPlaceUnheldDisplayOrders)
   /* 144080 80134AA0 ADD8000C */        sw $t8, 0xc($t6)
   /* 144084 80134AA4 ADD90008 */        sw $t9, 8($t6)
-  /* 144088 80134AA8 8D2A0004 */        lw $t2, 4($t1) # dMnTrainingTokenPlaceUnheldDisplayOrders + 4
-  /* 14408C 80134AAC 8D2B0000 */        lw $t3, ($t1) # dMnTrainingTokenPlaceUnheldDisplayOrders + 0
+  /* 144088 80134AA8 8D2A0004 */        lw $t2, 4($t1) # dMNTrainingTokenPlaceUnheldDisplayOrders + 4
+  /* 14408C 80134AAC 8D2B0000 */        lw $t3, ($t1) # dMNTrainingTokenPlaceUnheldDisplayOrders + 0
   /* 144090 80134AB0 27A80060 */     addiu $t0, $sp, 0x60
   /* 144094 80134AB4 AD0A0004 */        sw $t2, 4($t0)
   /* 144098 80134AB8 AD0B0000 */        sw $t3, ($t0)
-  /* 14409C 80134ABC 8D2B0008 */        lw $t3, 8($t1) # dMnTrainingTokenPlaceUnheldDisplayOrders + 8
-  /* 1440A0 80134AC0 8D2A000C */        lw $t2, 0xc($t1) # dMnTrainingTokenPlaceUnheldDisplayOrders + 12
+  /* 14409C 80134ABC 8D2B0008 */        lw $t3, 8($t1) # dMNTrainingTokenPlaceUnheldDisplayOrders + 8
+  /* 1440A0 80134AC0 8D2A000C */        lw $t2, 0xc($t1) # dMNTrainingTokenPlaceUnheldDisplayOrders + 12
   /* 1440A4 80134AC4 0080B025 */        or $s6, $a0, $zero
-  /* 1440A8 80134AC8 3C118014 */       lui $s1, %hi(gMnTrainingPanels)
-  /* 1440AC 80134ACC 26318558 */     addiu $s1, $s1, %lo(gMnTrainingPanels)
+  /* 1440A8 80134AC8 3C118014 */       lui $s1, %hi(gMNTrainingPanels)
+  /* 1440AC 80134ACC 26318558 */     addiu $s1, $s1, %lo(gMNTrainingPanels)
   /* 1440B0 80134AD0 27A40058 */     addiu $a0, $sp, 0x58
   /* 1440B4 80134AD4 24050001 */     addiu $a1, $zero, 1
   /* 1440B8 80134AD8 27A20048 */     addiu $v0, $sp, 0x48
@@ -3337,7 +3337,7 @@ glabel mnTrainingReorderCursorsOnPlacement
   /* 1440C0 80134AE0 AD0B0008 */        sw $t3, 8($t0)
   /* 1440C4 80134AE4 AD0A000C */        sw $t2, 0xc($t0)
   .L80134AE8:
-  /* 1440C8 80134AE8 8E2C007C */        lw $t4, 0x7c($s1) # gMnTrainingPanels + 124
+  /* 1440C8 80134AE8 8E2C007C */        lw $t4, 0x7c($s1) # gMNTrainingPanels + 124
   /* 1440CC 80134AEC 546C0004 */      bnel $v1, $t4, .L80134B00
   /* 1440D0 80134AF0 AC450000 */        sw $a1, ($v0)
   /* 1440D4 80134AF4 10000002 */         b .L80134B00
@@ -3348,8 +3348,8 @@ glabel mnTrainingReorderCursorsOnPlacement
   /* 1440E4 80134B04 0044082B */      sltu $at, $v0, $a0
   /* 1440E8 80134B08 1420FFF7 */      bnez $at, .L80134AE8
   /* 1440EC 80134B0C 263100B8 */     addiu $s1, $s1, 0xb8
-  /* 1440F0 80134B10 3C138014 */       lui $s3, %hi(gMnTrainingPanels)
-  /* 1440F4 80134B14 26738558 */     addiu $s3, $s3, %lo(gMnTrainingPanels)
+  /* 1440F0 80134B10 3C138014 */       lui $s3, %hi(gMNTrainingPanels)
+  /* 1440F4 80134B14 26738558 */     addiu $s3, $s3, %lo(gMNTrainingPanels)
   /* 1440F8 80134B18 00008025 */        or $s0, $zero, $zero
   /* 1440FC 80134B1C 27B2006C */     addiu $s2, $sp, 0x6c
   /* 144100 80134B20 27B50048 */     addiu $s5, $sp, 0x48
@@ -3365,12 +3365,12 @@ glabel mnTrainingReorderCursorsOnPlacement
   /* 144124 80134B44 24050020 */     addiu $a1, $zero, 0x20
   /* 144128 80134B48 0000C012 */      mflo $t8
   /* 14412C 80134B4C 02788821 */      addu $s1, $s3, $t8
-  /* 144130 80134B50 8E240000 */        lw $a0, ($s1) # gMnTrainingPanels + 0
+  /* 144130 80134B50 8E240000 */        lw $a0, ($s1) # gMNTrainingPanels + 0
   /* 144134 80134B54 50800004 */      beql $a0, $zero, .L80134B68
-  /* 144138 80134B58 8E39007C */        lw $t9, 0x7c($s1) # gMnTrainingPanels + 124
+  /* 144138 80134B58 8E39007C */        lw $t9, 0x7c($s1) # gMNTrainingPanels + 124
   /* 14413C 80134B5C 0C002834 */       jal omMoveGObjDL
   /* 144140 80134B60 8E460000 */        lw $a2, ($s2)
-  /* 144144 80134B64 8E39007C */        lw $t9, 0x7c($s1) # gMnTrainingPanels + 124
+  /* 144144 80134B64 8E39007C */        lw $t9, 0x7c($s1) # gMNTrainingPanels + 124
   .L80134B68:
   /* 144148 80134B68 8E460000 */        lw $a2, ($s2)
   /* 14414C 80134B6C 24050020 */     addiu $a1, $zero, 0x20
@@ -3445,8 +3445,8 @@ glabel mnTrainingReorderCursorsOnPlacement
 glabel mnTrainingSetCursorCoordinatesFromToken
   /* 144244 80134C64 240600B8 */     addiu $a2, $zero, 0xb8
   /* 144248 80134C68 00860019 */     multu $a0, $a2
-  /* 14424C 80134C6C 3C058014 */       lui $a1, %hi(gMnTrainingPanels)
-  /* 144250 80134C70 24A58558 */     addiu $a1, $a1, %lo(gMnTrainingPanels)
+  /* 14424C 80134C6C 3C058014 */       lui $a1, %hi(gMNTrainingPanels)
+  /* 144250 80134C70 24A58558 */     addiu $a1, $a1, %lo(gMNTrainingPanels)
   /* 144254 80134C74 3C014130 */       lui $at, (0x41300000 >> 16) # 11.0
   /* 144258 80134C78 44813000 */      mtc1 $at, $f6 # 11.0 to cop1
   /* 14425C 80134C7C 3C01C160 */       lui $at, (0xC1600000 >> 16) # -14.0
@@ -3472,8 +3472,8 @@ glabel mnTrainingSetCursorCoordinatesFromToken
 glabel mnTrainingHandleCursorPickup
   /* 1442A8 80134CC8 240600B8 */     addiu $a2, $zero, 0xb8
   /* 1442AC 80134CCC 00A60019 */     multu $a1, $a2
-  /* 1442B0 80134CD0 3C038014 */       lui $v1, %hi(gMnTrainingPanels)
-  /* 1442B4 80134CD4 24638558 */     addiu $v1, $v1, %lo(gMnTrainingPanels)
+  /* 1442B0 80134CD0 3C038014 */       lui $v1, %hi(gMNTrainingPanels)
+  /* 1442B4 80134CD4 24638558 */     addiu $v1, $v1, %lo(gMNTrainingPanels)
   /* 1442B8 80134CD8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 1442BC 80134CDC AFB00018 */        sw $s0, 0x18($sp)
   /* 1442C0 80134CE0 AFB1001C */        sw $s1, 0x1c($sp)
@@ -3526,12 +3526,12 @@ glabel mnTrainingCheckAndHandleTokenPickup
   /* 144374 80134D94 000E70C0 */       sll $t6, $t6, 3
   /* 144378 80134D98 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 14437C 80134D9C 01C57023 */      subu $t6, $t6, $a1
-  /* 144380 80134DA0 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 144384 80134DA4 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 144380 80134DA0 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 144384 80134DA4 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 144388 80134DA8 000E70C0 */       sll $t6, $t6, 3
   /* 14438C 80134DAC 01CF1021 */      addu $v0, $t6, $t7
-  /* 144390 80134DB0 3C188014 */       lui $t8, %hi(gMnTrainingFramesElapsed)
-  /* 144394 80134DB4 8F18888C */        lw $t8, %lo(gMnTrainingFramesElapsed)($t8)
+  /* 144390 80134DB0 3C188014 */       lui $t8, %hi(gMNTrainingFramesElapsed)
+  /* 144394 80134DB4 8F18888C */        lw $t8, %lo(gMNTrainingFramesElapsed)($t8)
   /* 144398 80134DB8 8C59005C */        lw $t9, 0x5c($v0)
   /* 14439C 80134DBC AFB40028 */        sw $s4, 0x28($sp)
   /* 1443A0 80134DC0 AFB20020 */        sw $s2, 0x20($sp)
@@ -3730,30 +3730,30 @@ glabel mnTrainingGetFtKindFromTokenPosition
   /* 144650 80135070 00000000 */       nop
 
 glabel mnTrainingAutoPositionCursor
-  /* 144654 80135074 3C0E8014 */       lui $t6, %hi(dMnTrainingCursorTypePositions2)
-  /* 144658 80135078 25CE8380 */     addiu $t6, $t6, %lo(dMnTrainingCursorTypePositions2)
-  /* 14465C 8013507C 8DD80000 */        lw $t8, ($t6) # dMnTrainingCursorTypePositions2 + 0
+  /* 144654 80135074 3C0E8014 */       lui $t6, %hi(dMNTrainingCursorTypePositions2)
+  /* 144658 80135078 25CE8380 */     addiu $t6, $t6, %lo(dMNTrainingCursorTypePositions2)
+  /* 14465C 8013507C 8DD80000 */        lw $t8, ($t6) # dMNTrainingCursorTypePositions2 + 0
   /* 144660 80135080 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 144664 80135084 27A8001C */     addiu $t0, $sp, 0x1c
   /* 144668 80135088 AD180000 */        sw $t8, ($t0)
-  /* 14466C 8013508C 8DCF0004 */        lw $t7, 4($t6) # dMnTrainingCursorTypePositions2 + 4
+  /* 14466C 8013508C 8DCF0004 */        lw $t7, 4($t6) # dMNTrainingCursorTypePositions2 + 4
   /* 144670 80135090 0005C880 */       sll $t9, $a1, 2
   /* 144674 80135094 0325C823 */      subu $t9, $t9, $a1
   /* 144678 80135098 AD0F0004 */        sw $t7, 4($t0)
-  /* 14467C 8013509C 8DD80008 */        lw $t8, 8($t6) # dMnTrainingCursorTypePositions2 + 8
+  /* 14467C 8013509C 8DD80008 */        lw $t8, 8($t6) # dMNTrainingCursorTypePositions2 + 8
   /* 144680 801350A0 0019C8C0 */       sll $t9, $t9, 3
   /* 144684 801350A4 0325C823 */      subu $t9, $t9, $a1
   /* 144688 801350A8 AD180008 */        sw $t8, 8($t0)
-  /* 14468C 801350AC 8DCF000C */        lw $t7, 0xc($t6) # dMnTrainingCursorTypePositions2 + 12
-  /* 144690 801350B0 3C098014 */       lui $t1, %hi(gMnTrainingPanels)
-  /* 144694 801350B4 25298558 */     addiu $t1, $t1, %lo(gMnTrainingPanels)
+  /* 14468C 801350AC 8DCF000C */        lw $t7, 0xc($t6) # dMNTrainingCursorTypePositions2 + 12
+  /* 144690 801350B0 3C098014 */       lui $t1, %hi(gMNTrainingPanels)
+  /* 144694 801350B4 25298558 */     addiu $t1, $t1, %lo(gMNTrainingPanels)
   /* 144698 801350B8 AD0F000C */        sw $t7, 0xc($t0)
-  /* 14469C 801350BC 8DD80010 */        lw $t8, 0x10($t6) # dMnTrainingCursorTypePositions2 + 16
+  /* 14469C 801350BC 8DD80010 */        lw $t8, 0x10($t6) # dMNTrainingCursorTypePositions2 + 16
   /* 1446A0 801350C0 0019C8C0 */       sll $t9, $t9, 3
   /* 1446A4 801350C4 03291021 */      addu $v0, $t9, $t1
   /* 1446A8 801350C8 8C4A009C */        lw $t2, 0x9c($v0)
   /* 1446AC 801350CC AD180010 */        sw $t8, 0x10($t0)
-  /* 1446B0 801350D0 8DCF0014 */        lw $t7, 0x14($t6) # dMnTrainingCursorTypePositions2 + 20
+  /* 1446B0 801350D0 8DCF0014 */        lw $t7, 0x14($t6) # dMNTrainingCursorTypePositions2 + 20
   /* 1446B4 801350D4 00803025 */        or $a2, $a0, $zero
   /* 1446B8 801350D8 11400060 */      beqz $t2, .L8013525C
   /* 1446BC 801350DC AD0F0014 */        sw $t7, 0x14($t0)
@@ -3861,10 +3861,10 @@ glabel mnTrainingAutoPositionCursor
   /* 144838 80135258 E5C8005C */      swc1 $f8, 0x5c($t6)
   .L8013525C:
   /* 14483C 8013525C 8C4F0058 */        lw $t7, 0x58($v0)
-  /* 144840 80135260 3C188014 */       lui $t8, %hi(gMnTrainingHumanPanelPort)
+  /* 144840 80135260 3C188014 */       lui $t8, %hi(gMNTrainingHumanPanelPort)
   /* 144844 80135264 15E00070 */      bnez $t7, .L80135428
   /* 144848 80135268 00000000 */       nop
-  /* 14484C 8013526C 8F188894 */        lw $t8, %lo(gMnTrainingHumanPanelPort)($t8)
+  /* 14484C 8013526C 8F188894 */        lw $t8, %lo(gMNTrainingHumanPanelPort)($t8)
   /* 144850 80135270 3C098004 */       lui $t1, %hi(gPlayerControllers)
   /* 144854 80135274 25295228 */     addiu $t1, $t1, %lo(gPlayerControllers)
   /* 144858 80135278 0018C880 */       sll $t9, $t8, 2
@@ -3912,7 +3912,7 @@ glabel mnTrainingAutoPositionCursor
   /* 1448F4 80135314 E4600058 */      swc1 $f0, 0x58($v1)
   /* 1448F8 80135318 8C4A0050 */        lw $t2, 0x50($v0)
   /* 1448FC 8013531C 8CC30074 */        lw $v1, 0x74($a2)
-  /* 144900 80135320 3C0F8014 */       lui $t7, %hi(gMnTrainingHumanPanelPort)
+  /* 144900 80135320 3C0F8014 */       lui $t7, %hi(gMNTrainingHumanPanelPort)
   /* 144904 80135324 000A58C0 */       sll $t3, $t2, 3
   /* 144908 80135328 010B6021 */      addu $t4, $t0, $t3
   /* 14490C 8013532C 8D8D0000 */        lw $t5, ($t4)
@@ -3924,7 +3924,7 @@ glabel mnTrainingAutoPositionCursor
   /* 144924 80135344 468021A0 */   cvt.s.w $f6, $f4
   /* 144928 80135348 46083280 */     add.s $f10, $f6, $f8
   /* 14492C 8013534C E5CA0058 */      swc1 $f10, 0x58($t6)
-  /* 144930 80135350 8DEF8894 */        lw $t7, %lo(gMnTrainingHumanPanelPort)($t7)
+  /* 144930 80135350 8DEF8894 */        lw $t7, %lo(gMNTrainingHumanPanelPort)($t7)
   /* 144934 80135354 000FC080 */       sll $t8, $t7, 2
   /* 144938 80135358 030FC021 */      addu $t8, $t8, $t7
   /* 14493C 8013535C 0018C040 */       sll $t8, $t8, 1
@@ -4019,8 +4019,8 @@ glabel mnTrainingSyncCursorDisplay
   /* 144A84 801354A4 3C088014 */       lui $t0, 0x8014
   .L801354A8:
   /* 144A88 801354A8 01F57823 */      subu $t7, $t7, $s5
-  /* 144A8C 801354AC 3C188014 */       lui $t8, %hi(gMnTrainingPanels)
-  /* 144A90 801354B0 27188558 */     addiu $t8, $t8, %lo(gMnTrainingPanels)
+  /* 144A8C 801354AC 3C188014 */       lui $t8, %hi(gMNTrainingPanels)
+  /* 144A90 801354B0 27188558 */     addiu $t8, $t8, %lo(gMNTrainingPanels)
   /* 144A94 801354B4 000F78C0 */       sll $t7, $t7, 3
   /* 144A98 801354B8 01F8A021 */      addu $s4, $t7, $t8
   /* 144A9C 801354BC 8E820050 */        lw $v0, 0x50($s4)
@@ -4068,13 +4068,13 @@ glabel mnTrainingSyncCursorDisplay
   /* 144B30 80135550 5440001A */      bnel $v0, $zero, .L801355BC
   /* 144B34 80135554 8FBF0034 */        lw $ra, 0x34($sp)
   /* 144B38 80135558 8E8B0054 */        lw $t3, 0x54($s4)
-  /* 144B3C 8013555C 3C118014 */       lui $s1, %hi(gMnTrainingPanels)
-  /* 144B40 80135560 26318558 */     addiu $s1, $s1, %lo(gMnTrainingPanels)
+  /* 144B3C 8013555C 3C118014 */       lui $s1, %hi(gMNTrainingPanels)
+  /* 144B40 80135560 26318558 */     addiu $s1, $s1, %lo(gMNTrainingPanels)
   /* 144B44 80135564 11600014 */      beqz $t3, .L801355B8
   /* 144B48 80135568 00008025 */        or $s0, $zero, $zero
   /* 144B4C 8013556C 24120004 */     addiu $s2, $zero, 4
   .L80135570:
-  /* 144B50 80135570 8E2C0054 */        lw $t4, 0x54($s1) # gMnTrainingPanels + 84
+  /* 144B50 80135570 8E2C0054 */        lw $t4, 0x54($s1) # gMNTrainingPanels + 84
   /* 144B54 80135574 02C02025 */        or $a0, $s6, $zero
   /* 144B58 80135578 02A02825 */        or $a1, $s5, $zero
   /* 144B5C 8013557C 566C000C */      bnel $s3, $t4, .L801355B0
@@ -4113,9 +4113,9 @@ glabel mnTrainingTryCostumeChange
   /* 144BC8 801355E8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 144BCC 801355EC 000F78C0 */       sll $t7, $t7, 3
   /* 144BD0 801355F0 01E47823 */      subu $t7, $t7, $a0
-  /* 144BD4 801355F4 3C188014 */       lui $t8, %hi(gMnTrainingPanels)
+  /* 144BD4 801355F4 3C188014 */       lui $t8, %hi(gMNTrainingPanels)
   /* 144BD8 801355F8 AFB00018 */        sw $s0, 0x18($sp)
-  /* 144BDC 801355FC 27188558 */     addiu $t8, $t8, %lo(gMnTrainingPanels)
+  /* 144BDC 801355FC 27188558 */     addiu $t8, $t8, %lo(gMNTrainingPanels)
   /* 144BE0 80135600 000F78C0 */       sll $t7, $t7, 3
   /* 144BE4 80135604 AFBF001C */        sw $ra, 0x1c($sp)
   /* 144BE8 80135608 AFA40028 */        sw $a0, 0x28($sp)
@@ -4153,8 +4153,8 @@ glabel mnTrainingIsHumanWithCharacterSelected
   /* 144C58 80135678 01C47023 */      subu $t6, $t6, $a0
   /* 144C5C 8013567C 000E70C0 */       sll $t6, $t6, 3
   /* 144C60 80135680 01C47023 */      subu $t6, $t6, $a0
-  /* 144C64 80135684 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 144C68 80135688 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 144C64 80135684 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 144C68 80135688 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 144C6C 8013568C 000E70C0 */       sll $t6, $t6, 3
   /* 144C70 80135690 01CF1021 */      addu $v0, $t6, $t7
   /* 144C74 80135694 8C580054 */        lw $t8, 0x54($v0)
@@ -4180,8 +4180,8 @@ glabel mnTrainingRecallToken
   /* 144CB4 801356D4 01C47023 */      subu $t6, $t6, $a0
   /* 144CB8 801356D8 000E70C0 */       sll $t6, $t6, 3
   /* 144CBC 801356DC 01C47023 */      subu $t6, $t6, $a0
-  /* 144CC0 801356E0 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 144CC4 801356E4 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 144CC0 801356E0 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 144CC4 801356E4 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 144CC8 801356E8 000E70C0 */       sll $t6, $t6, 3
   /* 144CCC 801356EC 01CF1021 */      addu $v0, $t6, $t7
   /* 144CD0 801356F0 8C430004 */        lw $v1, 4($v0)
@@ -4266,8 +4266,8 @@ glabel mnTrainingGoBackTo1PMenu
   /* 144DF4 80135814 00000000 */       nop
 
 glabel mnTrainingExitIfBButtonPressed
-  /* 144DF8 80135818 3C0E8014 */       lui $t6, %hi(gMnTrainingFramesElapsed)
-  /* 144DFC 8013581C 8DCE888C */        lw $t6, %lo(gMnTrainingFramesElapsed)($t6)
+  /* 144DF8 80135818 3C0E8014 */       lui $t6, %hi(gMNTrainingFramesElapsed)
+  /* 144DFC 8013581C 8DCE888C */        lw $t6, %lo(gMNTrainingFramesElapsed)($t6)
   /* 144E00 80135820 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 144E04 80135824 AFBF0014 */        sw $ra, 0x14($sp)
   /* 144E08 80135828 29C1000A */      slti $at, $t6, 0xa
@@ -4357,8 +4357,8 @@ glabel mnTrainingHandleButtonPresses
   /* 144F24 80135944 AFA40040 */        sw $a0, 0x40($sp)
   /* 144F28 80135948 0C04D41D */       jal mnTrainingAutoPositionCursor
   /* 144F2C 8013594C 02002825 */        or $a1, $s0, $zero
-  /* 144F30 80135950 3C0E8014 */       lui $t6, %hi(gMnTrainingHumanPanelPort)
-  /* 144F34 80135954 8DCE8894 */        lw $t6, %lo(gMnTrainingHumanPanelPort)($t6)
+  /* 144F30 80135950 3C0E8014 */       lui $t6, %hi(gMNTrainingHumanPanelPort)
+  /* 144F34 80135954 8DCE8894 */        lw $t6, %lo(gMNTrainingHumanPanelPort)($t6)
   /* 144F38 80135958 3C188004 */       lui $t8, %hi(gPlayerControllers + 2)
   /* 144F3C 8013595C 00104080 */       sll $t0, $s0, 2
   /* 144F40 80135960 000E7880 */       sll $t7, $t6, 2
@@ -4398,17 +4398,17 @@ glabel mnTrainingHandleButtonPresses
   .L801359E4:
   /* 144FC4 801359E4 01304823 */      subu $t1, $t1, $s0
   /* 144FC8 801359E8 000948C0 */       sll $t1, $t1, 3
-  /* 144FCC 801359EC 3C0C8014 */       lui $t4, %hi(gMnTrainingDefaultCostumeOnly)
-  /* 144FD0 801359F0 8D8C8868 */        lw $t4, %lo(gMnTrainingDefaultCostumeOnly)($t4)
+  /* 144FCC 801359EC 3C0C8014 */       lui $t4, %hi(gMNTrainingDefaultCostumeOnly)
+  /* 144FD0 801359F0 8D8C8868 */        lw $t4, %lo(gMNTrainingDefaultCostumeOnly)($t4)
   /* 144FD4 801359F4 01304823 */      subu $t1, $t1, $s0
-  /* 144FD8 801359F8 3C0A8014 */       lui $t2, %hi(gMnTrainingPanels)
-  /* 144FDC 801359FC 254A8558 */     addiu $t2, $t2, %lo(gMnTrainingPanels)
+  /* 144FD8 801359F8 3C0A8014 */       lui $t2, %hi(gMNTrainingPanels)
+  /* 144FDC 801359FC 254A8558 */     addiu $t2, $t2, %lo(gMNTrainingPanels)
   /* 144FE0 80135A00 000948C0 */       sll $t1, $t1, 3
   /* 144FE4 80135A04 012A5821 */      addu $t3, $t1, $t2
   /* 144FE8 80135A08 15800061 */      bnez $t4, .L80135B90
   /* 144FEC 80135A0C AFAB0024 */        sw $t3, 0x24($sp)
-  /* 144FF0 80135A10 3C0D8014 */       lui $t5, %hi(gMnTrainingHumanPanelPort)
-  /* 144FF4 80135A14 8DAD8894 */        lw $t5, %lo(gMnTrainingHumanPanelPort)($t5)
+  /* 144FF0 80135A10 3C0D8014 */       lui $t5, %hi(gMNTrainingHumanPanelPort)
+  /* 144FF4 80135A14 8DAD8894 */        lw $t5, %lo(gMNTrainingHumanPanelPort)($t5)
   /* 144FF8 80135A18 3C0F8004 */       lui $t7, %hi(gPlayerControllers + 2)
   /* 144FFC 80135A1C 8FA40040 */        lw $a0, 0x40($sp)
   /* 145000 80135A20 000D7080 */       sll $t6, $t5, 2
@@ -4432,8 +4432,8 @@ glabel mnTrainingHandleButtonPresses
   /* 145048 80135A68 0C04D578 */       jal mnTrainingTryCostumeChange
   /* 14504C 80135A6C 00002825 */        or $a1, $zero, $zero
   .L80135A70:
-  /* 145050 80135A70 3C098014 */       lui $t1, %hi(gMnTrainingHumanPanelPort)
-  /* 145054 80135A74 8D298894 */        lw $t1, %lo(gMnTrainingHumanPanelPort)($t1)
+  /* 145050 80135A70 3C098014 */       lui $t1, %hi(gMNTrainingHumanPanelPort)
+  /* 145054 80135A74 8D298894 */        lw $t1, %lo(gMNTrainingHumanPanelPort)($t1)
   /* 145058 80135A78 3C0C8004 */       lui $t4, %hi(gPlayerControllers + 2)
   /* 14505C 80135A7C 8FA40040 */        lw $a0, 0x40($sp)
   /* 145060 80135A80 00095080 */       sll $t2, $t1, 2
@@ -4457,8 +4457,8 @@ glabel mnTrainingHandleButtonPresses
   /* 1450A8 80135AC8 0C04D578 */       jal mnTrainingTryCostumeChange
   /* 1450AC 80135ACC 24050001 */     addiu $a1, $zero, 1
   .L80135AD0:
-  /* 1450B0 80135AD0 3C0B8014 */       lui $t3, %hi(gMnTrainingHumanPanelPort)
-  /* 1450B4 80135AD4 8D6B8894 */        lw $t3, %lo(gMnTrainingHumanPanelPort)($t3)
+  /* 1450B0 80135AD0 3C0B8014 */       lui $t3, %hi(gMNTrainingHumanPanelPort)
+  /* 1450B4 80135AD4 8D6B8894 */        lw $t3, %lo(gMNTrainingHumanPanelPort)($t3)
   /* 1450B8 80135AD8 3C088004 */       lui $t0, %hi(gPlayerControllers + 2)
   /* 1450BC 80135ADC 8FA40040 */        lw $a0, 0x40($sp)
   /* 1450C0 80135AE0 000BC880 */       sll $t9, $t3, 2
@@ -4482,8 +4482,8 @@ glabel mnTrainingHandleButtonPresses
   /* 145108 80135B28 0C04D578 */       jal mnTrainingTryCostumeChange
   /* 14510C 80135B2C 24050002 */     addiu $a1, $zero, 2
   .L80135B30:
-  /* 145110 80135B30 3C0E8014 */       lui $t6, %hi(gMnTrainingHumanPanelPort)
-  /* 145114 80135B34 8DCE8894 */        lw $t6, %lo(gMnTrainingHumanPanelPort)($t6)
+  /* 145110 80135B30 3C0E8014 */       lui $t6, %hi(gMNTrainingHumanPanelPort)
+  /* 145114 80135B34 8DCE8894 */        lw $t6, %lo(gMNTrainingHumanPanelPort)($t6)
   /* 145118 80135B38 3C188004 */       lui $t8, %hi(gPlayerControllers + 2)
   /* 14511C 80135B3C 8FA40040 */        lw $a0, 0x40($sp)
   /* 145120 80135B40 000E7880 */       sll $t7, $t6, 2
@@ -4507,8 +4507,8 @@ glabel mnTrainingHandleButtonPresses
   /* 145168 80135B88 0C04D578 */       jal mnTrainingTryCostumeChange
   /* 14516C 80135B8C 24050003 */     addiu $a1, $zero, 3
   .L80135B90:
-  /* 145170 80135B90 3C0A8014 */       lui $t2, %hi(gMnTrainingHumanPanelPort)
-  /* 145174 80135B94 8D4A8894 */        lw $t2, %lo(gMnTrainingHumanPanelPort)($t2)
+  /* 145170 80135B90 3C0A8014 */       lui $t2, %hi(gMNTrainingHumanPanelPort)
+  /* 145174 80135B94 8D4A8894 */        lw $t2, %lo(gMNTrainingHumanPanelPort)($t2)
   /* 145178 80135B98 3C0D8004 */       lui $t5, %hi(gPlayerControllers + 2)
   /* 14517C 80135B9C 000A6080 */       sll $t4, $t2, 2
   /* 145180 80135BA0 018A6021 */      addu $t4, $t4, $t2
@@ -4547,19 +4547,19 @@ glabel mnTrainingHandleButtonPresses
 
 glabel mnTrainingRedrawToken
   /* 1451F8 80135C18 27BDFFC0 */     addiu $sp, $sp, -0x40
-  /* 1451FC 80135C1C 3C0F8014 */       lui $t7, %hi(dMnTrainingTokenOffsets)
+  /* 1451FC 80135C1C 3C0F8014 */       lui $t7, %hi(dMNTrainingTokenOffsets)
   /* 145200 80135C20 AFBF0014 */        sw $ra, 0x14($sp)
   /* 145204 80135C24 AFA50044 */        sw $a1, 0x44($sp)
-  /* 145208 80135C28 25EF8398 */     addiu $t7, $t7, %lo(dMnTrainingTokenOffsets)
-  /* 14520C 80135C2C 8DF90000 */        lw $t9, ($t7) # dMnTrainingTokenOffsets + 0
+  /* 145208 80135C28 25EF8398 */     addiu $t7, $t7, %lo(dMNTrainingTokenOffsets)
+  /* 14520C 80135C2C 8DF90000 */        lw $t9, ($t7) # dMNTrainingTokenOffsets + 0
   /* 145210 80135C30 27AE0020 */     addiu $t6, $sp, 0x20
-  /* 145214 80135C34 8DF80004 */        lw $t8, 4($t7) # dMnTrainingTokenOffsets + 4
+  /* 145214 80135C34 8DF80004 */        lw $t8, 4($t7) # dMNTrainingTokenOffsets + 4
   /* 145218 80135C38 ADD90000 */        sw $t9, ($t6)
-  /* 14521C 80135C3C 8DF90008 */        lw $t9, 8($t7) # dMnTrainingTokenOffsets + 8
+  /* 14521C 80135C3C 8DF90008 */        lw $t9, 8($t7) # dMNTrainingTokenOffsets + 8
   /* 145220 80135C40 ADD80004 */        sw $t8, 4($t6)
-  /* 145224 80135C44 8DF8000C */        lw $t8, 0xc($t7) # dMnTrainingTokenOffsets + 12
+  /* 145224 80135C44 8DF8000C */        lw $t8, 0xc($t7) # dMNTrainingTokenOffsets + 12
   /* 145228 80135C48 ADD90008 */        sw $t9, 8($t6)
-  /* 14522C 80135C4C 8DF90010 */        lw $t9, 0x10($t7) # dMnTrainingTokenOffsets + 16
+  /* 14522C 80135C4C 8DF90010 */        lw $t9, 0x10($t7) # dMNTrainingTokenOffsets + 16
   /* 145230 80135C50 ADD8000C */        sw $t8, 0xc($t6)
   /* 145234 80135C54 ADD90010 */        sw $t9, 0x10($t6)
   /* 145238 80135C58 8C820074 */        lw $v0, 0x74($a0)
@@ -4648,8 +4648,8 @@ glabel mnTrainingMoveToken
   /* 145368 80135D88 01C47023 */      subu $t6, $t6, $a0
   /* 14536C 80135D8C 000E70C0 */       sll $t6, $t6, 3
   /* 145370 80135D90 01C47023 */      subu $t6, $t6, $a0
-  /* 145374 80135D94 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 145378 80135D98 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 145374 80135D94 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 145378 80135D98 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 14537C 80135D9C 000E70C0 */       sll $t6, $t6, 3
   /* 145380 80135DA0 01CF1021 */      addu $v0, $t6, $t7
   /* 145384 80135DA4 8C580004 */        lw $t8, 4($v0)
@@ -4667,8 +4667,8 @@ glabel mnTrainingMoveToken
   /* 1453B4 80135DD4 E472005C */      swc1 $f18, 0x5c($v1)
 
 glabel mnTrainingSyncTokenAndFighter
-  /* 1453B8 80135DD8 3C0E8014 */       lui $t6, %hi(gMnTrainingFramesElapsed)
-  /* 1453BC 80135DDC 8DCE888C */        lw $t6, %lo(gMnTrainingFramesElapsed)($t6)
+  /* 1453B8 80135DD8 3C0E8014 */       lui $t6, %hi(gMNTrainingFramesElapsed)
+  /* 1453BC 80135DDC 8DCE888C */        lw $t6, %lo(gMNTrainingFramesElapsed)($t6)
   /* 1453C0 80135DE0 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 1453C4 80135DE4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1453C8 80135DE8 29C1001E */      slti $at, $t6, 0x1e
@@ -4679,12 +4679,12 @@ glabel mnTrainingSyncTokenAndFighter
   /* 1453DC 80135DFC 0306C023 */      subu $t8, $t8, $a2
   /* 1453E0 80135E00 0018C0C0 */       sll $t8, $t8, 3
   /* 1453E4 80135E04 0306C023 */      subu $t8, $t8, $a2
-  /* 1453E8 80135E08 3C198014 */       lui $t9, %hi(gMnTrainingPanels)
-  /* 1453EC 80135E0C 27398558 */     addiu $t9, $t9, %lo(gMnTrainingPanels)
+  /* 1453E8 80135E08 3C198014 */       lui $t9, %hi(gMNTrainingPanels)
+  /* 1453EC 80135E0C 27398558 */     addiu $t9, $t9, %lo(gMNTrainingPanels)
   /* 1453F0 80135E10 0018C0C0 */       sll $t8, $t8, 3
   /* 1453F4 80135E14 240F0001 */     addiu $t7, $zero, 1
-  /* 1453F8 80135E18 3C078014 */       lui $a3, %hi(gMnTrainingPanels)
-  /* 1453FC 80135E1C 24E78558 */     addiu $a3, $a3, %lo(gMnTrainingPanels)
+  /* 1453F8 80135E18 3C078014 */       lui $a3, %hi(gMNTrainingPanels)
+  /* 1453FC 80135E1C 24E78558 */     addiu $a3, $a3, %lo(gMNTrainingPanels)
   /* 145400 80135E20 AC8F007C */        sw $t7, 0x7c($a0)
   /* 145404 80135E24 03191821 */      addu $v1, $t8, $t9
   /* 145408 80135E28 1000001B */         b .L80135E98
@@ -4692,8 +4692,8 @@ glabel mnTrainingSyncTokenAndFighter
   .L80135E30:
   /* 145410 80135E30 240800B8 */     addiu $t0, $zero, 0xb8
   /* 145414 80135E34 00C80019 */     multu $a2, $t0
-  /* 145418 80135E38 3C078014 */       lui $a3, %hi(gMnTrainingPanels)
-  /* 14541C 80135E3C 24E78558 */     addiu $a3, $a3, %lo(gMnTrainingPanels)
+  /* 145418 80135E38 3C078014 */       lui $a3, %hi(gMNTrainingPanels)
+  /* 14541C 80135E3C 24E78558 */     addiu $a3, $a3, %lo(gMNTrainingPanels)
   /* 145420 80135E40 24010001 */     addiu $at, $zero, 1
   /* 145424 80135E44 00004812 */      mflo $t1
   /* 145428 80135E48 00E91821 */      addu $v1, $a3, $t1
@@ -4979,34 +4979,34 @@ glabel mnTrainingCreateReadyToFightViewport
 
 glabel mnTrainingCreateCursor
   /* 145848 80136268 27BDFFA0 */     addiu $sp, $sp, -0x60
-  /* 14584C 8013626C 3C0F8014 */       lui $t7, %hi(dMnTrainingCursorTypeOffsetsUnused)
+  /* 14584C 8013626C 3C0F8014 */       lui $t7, %hi(dMNTrainingCursorTypeOffsetsUnused)
   /* 145850 80136270 AFBF0034 */        sw $ra, 0x34($sp)
   /* 145854 80136274 AFA40060 */        sw $a0, 0x60($sp)
-  /* 145858 80136278 25EF83AC */     addiu $t7, $t7, %lo(dMnTrainingCursorTypeOffsetsUnused)
-  /* 14585C 8013627C 8DF90000 */        lw $t9, ($t7) # dMnTrainingCursorTypeOffsetsUnused + 0
-  /* 145860 80136280 8DF80004 */        lw $t8, 4($t7) # dMnTrainingCursorTypeOffsetsUnused + 4
+  /* 145858 80136278 25EF83AC */     addiu $t7, $t7, %lo(dMNTrainingCursorTypeOffsetsUnused)
+  /* 14585C 8013627C 8DF90000 */        lw $t9, ($t7) # dMNTrainingCursorTypeOffsetsUnused + 0
+  /* 145860 80136280 8DF80004 */        lw $t8, 4($t7) # dMNTrainingCursorTypeOffsetsUnused + 4
   /* 145864 80136284 27AE0048 */     addiu $t6, $sp, 0x48
   /* 145868 80136288 ADD90000 */        sw $t9, ($t6)
   /* 14586C 8013628C ADD80004 */        sw $t8, 4($t6)
-  /* 145870 80136290 8DF8000C */        lw $t8, 0xc($t7) # dMnTrainingCursorTypeOffsetsUnused + 12
-  /* 145874 80136294 8DF90008 */        lw $t9, 8($t7) # dMnTrainingCursorTypeOffsetsUnused + 8
-  /* 145878 80136298 3C088014 */       lui $t0, %hi(dMnTrainingCursorStartingDisplayOrders)
-  /* 14587C 8013629C 250883BC */     addiu $t0, $t0, %lo(dMnTrainingCursorStartingDisplayOrders)
+  /* 145870 80136290 8DF8000C */        lw $t8, 0xc($t7) # dMNTrainingCursorTypeOffsetsUnused + 12
+  /* 145874 80136294 8DF90008 */        lw $t9, 8($t7) # dMNTrainingCursorTypeOffsetsUnused + 8
+  /* 145878 80136298 3C088014 */       lui $t0, %hi(dMNTrainingCursorStartingDisplayOrders)
+  /* 14587C 8013629C 250883BC */     addiu $t0, $t0, %lo(dMNTrainingCursorStartingDisplayOrders)
   /* 145880 801362A0 ADD8000C */        sw $t8, 0xc($t6)
   /* 145884 801362A4 ADD90008 */        sw $t9, 8($t6)
-  /* 145888 801362A8 8D0A0000 */        lw $t2, ($t0) # dMnTrainingCursorStartingDisplayOrders + 0
+  /* 145888 801362A8 8D0A0000 */        lw $t2, ($t0) # dMNTrainingCursorStartingDisplayOrders + 0
   /* 14588C 801362AC 27A20038 */     addiu $v0, $sp, 0x38
   /* 145890 801362B0 3C0B800D */       lui $t3, %hi(func_ovl0_800CCF00)
   /* 145894 801362B4 AC4A0000 */        sw $t2, ($v0)
-  /* 145898 801362B8 8D090004 */        lw $t1, 4($t0) # dMnTrainingCursorStartingDisplayOrders + 4
+  /* 145898 801362B8 8D090004 */        lw $t1, 4($t0) # dMNTrainingCursorStartingDisplayOrders + 4
   /* 14589C 801362BC 256BCF00 */     addiu $t3, $t3, %lo(func_ovl0_800CCF00)
   /* 1458A0 801362C0 240C0020 */     addiu $t4, $zero, 0x20
   /* 1458A4 801362C4 AC490004 */        sw $t1, 4($v0)
-  /* 1458A8 801362C8 8D0A0008 */        lw $t2, 8($t0) # dMnTrainingCursorStartingDisplayOrders + 8
+  /* 1458A8 801362C8 8D0A0008 */        lw $t2, 8($t0) # dMNTrainingCursorStartingDisplayOrders + 8
   /* 1458AC 801362CC 2419FFFF */     addiu $t9, $zero, -1
   /* 1458B0 801362D0 00002025 */        or $a0, $zero, $zero
   /* 1458B4 801362D4 AC4A0008 */        sw $t2, 8($v0)
-  /* 1458B8 801362D8 8D09000C */        lw $t1, 0xc($t0) # dMnTrainingCursorStartingDisplayOrders + 12
+  /* 1458B8 801362D8 8D09000C */        lw $t1, 0xc($t0) # dMNTrainingCursorStartingDisplayOrders + 12
   /* 1458BC 801362DC 3C088014 */       lui $t0, %hi(D_ovl28_80138C98)
   /* 1458C0 801362E0 00002825 */        or $a1, $zero, $zero
   /* 1458C4 801362E4 AC49000C */        sw $t1, 0xc($v0)
@@ -5015,7 +5015,7 @@ glabel mnTrainingCreateCursor
   /* 1458D0 801362F0 AFAB0010 */        sw $t3, 0x10($sp)
   /* 1458D4 801362F4 000D7080 */       sll $t6, $t5, 2
   /* 1458D8 801362F8 004E7821 */      addu $t7, $v0, $t6
-  /* 1458DC 801362FC 8DF80000 */        lw $t8, ($t7) # dMnTrainingCursorTypeOffsetsUnused + 0
+  /* 1458DC 801362FC 8DF80000 */        lw $t8, ($t7) # dMNTrainingCursorTypeOffsetsUnused + 0
   /* 1458E0 80136300 8D088C98 */        lw $t0, %lo(D_ovl28_80138C98)($t0)
   /* 1458E4 80136304 3C090000 */       lui $t1, %hi(D_NF_000076E8)
   /* 1458E8 80136308 252976E8 */     addiu $t1, $t1, %lo(D_NF_000076E8)
@@ -5034,7 +5034,7 @@ glabel mnTrainingCreateCursor
   /* 14591C 8013633C 0C033414 */       jal func_ovl0_800CD050
   /* 145920 80136340 AFB80018 */        sw $t8, 0x18($sp)
   /* 145924 80136344 8FA50060 */        lw $a1, 0x60($sp)
-  /* 145928 80136348 3C018014 */       lui $at, %hi(gMnTrainingPanels)
+  /* 145928 80136348 3C018014 */       lui $at, %hi(gMNTrainingPanels)
   /* 14592C 8013634C 00402025 */        or $a0, $v0, $zero
   /* 145930 80136350 00057080 */       sll $t6, $a1, 2
   /* 145934 80136354 01C57023 */      subu $t6, $t6, $a1
@@ -5042,7 +5042,7 @@ glabel mnTrainingCreateCursor
   /* 14593C 8013635C 01C57023 */      subu $t6, $t6, $a1
   /* 145940 80136360 000E70C0 */       sll $t6, $t6, 3
   /* 145944 80136364 002E0821 */      addu $at, $at, $t6
-  /* 145948 80136368 AC228558 */        sw $v0, %lo(gMnTrainingPanels)($at)
+  /* 145948 80136368 AC228558 */        sw $v0, %lo(gMNTrainingPanels)($at)
   /* 14594C 8013636C 3C01428C */       lui $at, (0x428C0000 >> 16) # 70.0
   /* 145950 80136370 44812000 */      mtc1 $at, $f4 # 70.0 to cop1
   /* 145954 80136374 8C4F0074 */        lw $t7, 0x74($v0)
@@ -5094,11 +5094,11 @@ glabel mnTrainingRenderToken
   /* 145A04 80136424 AC4D0000 */        sw $t5, ($v0)
   /* 145A08 80136428 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
   /* 145A0C 8013642C 3C18FB00 */       lui $t8, 0xfb00
-  /* 145A10 80136430 3C058014 */       lui $a1, %hi(gMnTrainingTokenShinePulseColor)
+  /* 145A10 80136430 3C058014 */       lui $a1, %hi(gMNTrainingTokenShinePulseColor)
   /* 145A14 80136434 244F0008 */     addiu $t7, $v0, 8
   /* 145A18 80136438 AC6F0000 */        sw $t7, ($v1) # gDisplayListHead + 0
   /* 145A1C 8013643C AC580000 */        sw $t8, ($v0)
-  /* 145A20 80136440 8CA58874 */        lw $a1, %lo(gMnTrainingTokenShinePulseColor)($a1)
+  /* 145A20 80136440 8CA58874 */        lw $a1, %lo(gMNTrainingTokenShinePulseColor)($a1)
   /* 145A24 80136444 30A500FF */      andi $a1, $a1, 0xff
   /* 145A28 80136448 0005CE00 */       sll $t9, $a1, 0x18
   /* 145A2C 8013644C 00056400 */       sll $t4, $a1, 0x10
@@ -5133,48 +5133,48 @@ glabel mnTrainingRenderToken
 
 glabel mnTrainingCreateToken
   /* 145AA0 801364C0 27BDFF78 */     addiu $sp, $sp, -0x88
-  /* 145AA4 801364C4 3C0E8014 */       lui $t6, %hi(dMnTrainingTokenOffsetsNoCPU)
+  /* 145AA4 801364C4 3C0E8014 */       lui $t6, %hi(dMNTrainingTokenOffsetsNoCPU)
   /* 145AA8 801364C8 AFBF003C */        sw $ra, 0x3c($sp)
   /* 145AAC 801364CC AFB00038 */        sw $s0, 0x38($sp)
   /* 145AB0 801364D0 AFA40088 */        sw $a0, 0x88($sp)
-  /* 145AB4 801364D4 25CE83CC */     addiu $t6, $t6, %lo(dMnTrainingTokenOffsetsNoCPU)
-  /* 145AB8 801364D8 8DD80000 */        lw $t8, ($t6) # dMnTrainingTokenOffsetsNoCPU + 0
+  /* 145AB4 801364D4 25CE83CC */     addiu $t6, $t6, %lo(dMNTrainingTokenOffsetsNoCPU)
+  /* 145AB8 801364D8 8DD80000 */        lw $t8, ($t6) # dMNTrainingTokenOffsetsNoCPU + 0
   /* 145ABC 801364DC 27A20070 */     addiu $v0, $sp, 0x70
-  /* 145AC0 801364E0 3C198014 */       lui $t9, %hi(dMnTrainingTokenStartingDisplayOrders)
+  /* 145AC0 801364E0 3C198014 */       lui $t9, %hi(dMNTrainingTokenStartingDisplayOrders)
   /* 145AC4 801364E4 AC580000 */        sw $t8, ($v0)
-  /* 145AC8 801364E8 8DCF0004 */        lw $t7, 4($t6) # dMnTrainingTokenOffsetsNoCPU + 4
-  /* 145ACC 801364EC 273983DC */     addiu $t9, $t9, %lo(dMnTrainingTokenStartingDisplayOrders)
+  /* 145AC8 801364E8 8DCF0004 */        lw $t7, 4($t6) # dMNTrainingTokenOffsetsNoCPU + 4
+  /* 145ACC 801364EC 273983DC */     addiu $t9, $t9, %lo(dMNTrainingTokenStartingDisplayOrders)
   /* 145AD0 801364F0 27A30060 */     addiu $v1, $sp, 0x60
   /* 145AD4 801364F4 AC4F0004 */        sw $t7, 4($v0)
-  /* 145AD8 801364F8 8DD80008 */        lw $t8, 8($t6) # dMnTrainingTokenOffsetsNoCPU + 8
-  /* 145ADC 801364FC 3C0C8014 */       lui $t4, %hi(dMnTrainingTokenHoldingDisplayOrders)
-  /* 145AE0 80136500 258C83EC */     addiu $t4, $t4, %lo(dMnTrainingTokenHoldingDisplayOrders)
+  /* 145AD8 801364F8 8DD80008 */        lw $t8, 8($t6) # dMNTrainingTokenOffsetsNoCPU + 8
+  /* 145ADC 801364FC 3C0C8014 */       lui $t4, %hi(dMNTrainingTokenHoldingDisplayOrders)
+  /* 145AE0 80136500 258C83EC */     addiu $t4, $t4, %lo(dMNTrainingTokenHoldingDisplayOrders)
   /* 145AE4 80136504 AC580008 */        sw $t8, 8($v0)
-  /* 145AE8 80136508 8DCF000C */        lw $t7, 0xc($t6) # dMnTrainingTokenOffsetsNoCPU + 12
+  /* 145AE8 80136508 8DCF000C */        lw $t7, 0xc($t6) # dMNTrainingTokenOffsetsNoCPU + 12
   /* 145AEC 8013650C 27AB0050 */     addiu $t3, $sp, 0x50
   /* 145AF0 80136510 24180021 */     addiu $t8, $zero, 0x21
   /* 145AF4 80136514 AC4F000C */        sw $t7, 0xc($v0)
-  /* 145AF8 80136518 8F2A0000 */        lw $t2, ($t9) # dMnTrainingTokenStartingDisplayOrders + 0
+  /* 145AF8 80136518 8F2A0000 */        lw $t2, ($t9) # dMNTrainingTokenStartingDisplayOrders + 0
   /* 145AFC 8013651C 3C0F8013 */       lui $t7, %hi(mnTrainingRenderToken)
   /* 145B00 80136520 25EF63C8 */     addiu $t7, $t7, %lo(mnTrainingRenderToken)
   /* 145B04 80136524 AC6A0000 */        sw $t2, ($v1)
-  /* 145B08 80136528 8F290004 */        lw $t1, 4($t9) # dMnTrainingTokenStartingDisplayOrders + 4
+  /* 145B08 80136528 8F290004 */        lw $t1, 4($t9) # dMNTrainingTokenStartingDisplayOrders + 4
   /* 145B0C 8013652C 00002025 */        or $a0, $zero, $zero
   /* 145B10 80136530 00002825 */        or $a1, $zero, $zero
   /* 145B14 80136534 AC690004 */        sw $t1, 4($v1)
-  /* 145B18 80136538 8F2A0008 */        lw $t2, 8($t9) # dMnTrainingTokenStartingDisplayOrders + 8
+  /* 145B18 80136538 8F2A0008 */        lw $t2, 8($t9) # dMNTrainingTokenStartingDisplayOrders + 8
   /* 145B1C 8013653C 24060014 */     addiu $a2, $zero, 0x14
   /* 145B20 80136540 3C078000 */       lui $a3, 0x8000
   /* 145B24 80136544 AC6A0008 */        sw $t2, 8($v1)
-  /* 145B28 80136548 8F29000C */        lw $t1, 0xc($t9) # dMnTrainingTokenStartingDisplayOrders + 12
+  /* 145B28 80136548 8F29000C */        lw $t1, 0xc($t9) # dMNTrainingTokenStartingDisplayOrders + 12
   /* 145B2C 8013654C 240AFFFF */     addiu $t2, $zero, -1
   /* 145B30 80136550 AC69000C */        sw $t1, 0xc($v1)
-  /* 145B34 80136554 8D8D0004 */        lw $t5, 4($t4) # dMnTrainingTokenHoldingDisplayOrders + 4
-  /* 145B38 80136558 8D8E0000 */        lw $t6, ($t4) # dMnTrainingTokenHoldingDisplayOrders + 0
+  /* 145B34 80136554 8D8D0004 */        lw $t5, 4($t4) # dMNTrainingTokenHoldingDisplayOrders + 4
+  /* 145B38 80136558 8D8E0000 */        lw $t6, ($t4) # dMNTrainingTokenHoldingDisplayOrders + 0
   /* 145B3C 8013655C AD6D0004 */        sw $t5, 4($t3)
   /* 145B40 80136560 AD6E0000 */        sw $t6, ($t3)
-  /* 145B44 80136564 8D8E0008 */        lw $t6, 8($t4) # dMnTrainingTokenHoldingDisplayOrders + 8
-  /* 145B48 80136568 8D8D000C */        lw $t5, 0xc($t4) # dMnTrainingTokenHoldingDisplayOrders + 12
+  /* 145B44 80136564 8D8E0008 */        lw $t6, 8($t4) # dMNTrainingTokenHoldingDisplayOrders + 8
+  /* 145B48 80136568 8D8D000C */        lw $t5, 0xc($t4) # dMNTrainingTokenHoldingDisplayOrders + 12
   /* 145B4C 8013656C AD6E0008 */        sw $t6, 8($t3)
   /* 145B50 80136570 AD6D000C */        sw $t5, 0xc($t3)
   /* 145B54 80136574 8FA80088 */        lw $t0, 0x88($sp)
@@ -5182,7 +5182,7 @@ glabel mnTrainingCreateToken
   /* 145B5C 8013657C AFAF0010 */        sw $t7, 0x10($sp)
   /* 145B60 80136580 00084080 */       sll $t0, $t0, 2
   /* 145B64 80136584 0068C821 */      addu $t9, $v1, $t0
-  /* 145B68 80136588 8F290000 */        lw $t1, ($t9) # dMnTrainingTokenStartingDisplayOrders + 0
+  /* 145B68 80136588 8F290000 */        lw $t1, ($t9) # dMNTrainingTokenStartingDisplayOrders + 0
   /* 145B6C 8013658C AFAA001C */        sw $t2, 0x1c($sp)
   /* 145B70 80136590 00485821 */      addu $t3, $v0, $t0
   /* 145B74 80136594 AFA90018 */        sw $t1, 0x18($sp)
@@ -5201,8 +5201,8 @@ glabel mnTrainingCreateToken
   /* 145BA8 801365C8 0C033414 */       jal func_ovl0_800CD050
   /* 145BAC 801365CC AFA8004C */        sw $t0, 0x4c($sp)
   /* 145BB0 801365D0 8FA50088 */        lw $a1, 0x88($sp)
-  /* 145BB4 801365D4 3C0A8014 */       lui $t2, %hi(gMnTrainingPanels)
-  /* 145BB8 801365D8 254A8558 */     addiu $t2, $t2, %lo(gMnTrainingPanels)
+  /* 145BB4 801365D4 3C0A8014 */       lui $t2, %hi(gMNTrainingPanels)
+  /* 145BB8 801365D8 254A8558 */     addiu $t2, $t2, %lo(gMNTrainingPanels)
   /* 145BBC 801365DC 00054880 */       sll $t1, $a1, 2
   /* 145BC0 801365E0 01254823 */      subu $t1, $t1, $a1
   /* 145BC4 801365E4 000948C0 */       sll $t1, $t1, 3
@@ -5273,8 +5273,8 @@ glabel mnTrainingCreateToken
 glabel getTrainingTokenDistance
   /* 145CB0 801366D0 240700B8 */     addiu $a3, $zero, 0xb8
   /* 145CB4 801366D4 00A70019 */     multu $a1, $a3
-  /* 145CB8 801366D8 3C068014 */       lui $a2, %hi(gMnTrainingPanels)
-  /* 145CBC 801366DC 24C68558 */     addiu $a2, $a2, %lo(gMnTrainingPanels)
+  /* 145CB8 801366D8 3C068014 */       lui $a2, %hi(gMNTrainingPanels)
+  /* 145CBC 801366DC 24C68558 */     addiu $a2, $a2, %lo(gMNTrainingPanels)
   /* 145CC0 801366E0 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 145CC4 801366E4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 145CC8 801366E8 00007012 */      mflo $t6
@@ -5305,8 +5305,8 @@ glabel getTrainingTokenDistance
 glabel mnTrainingAutopositionOverlappedTokens
   /* 145D28 80136748 240800B8 */     addiu $t0, $zero, 0xb8
   /* 145D2C 8013674C 00880019 */     multu $a0, $t0
-  /* 145D30 80136750 3C028014 */       lui $v0, %hi(gMnTrainingPanels)
-  /* 145D34 80136754 24428558 */     addiu $v0, $v0, %lo(gMnTrainingPanels)
+  /* 145D30 80136750 3C028014 */       lui $v0, %hi(gMNTrainingPanels)
+  /* 145D34 80136754 24428558 */     addiu $v0, $v0, %lo(gMNTrainingPanels)
   /* 145D38 80136758 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 145D3C 8013675C AFA60038 */        sw $a2, 0x38($sp)
   /* 145D40 80136760 AFBF0014 */        sw $ra, 0x14($sp)
@@ -5393,9 +5393,9 @@ glabel mnTrainingAutopositionTokenFromPortraitEdges
   /* 145E6C 8013688C 01C47023 */      subu $t6, $t6, $a0
   /* 145E70 80136890 000E70C0 */       sll $t6, $t6, 3
   /* 145E74 80136894 01C47023 */      subu $t6, $t6, $a0
-  /* 145E78 80136898 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
+  /* 145E78 80136898 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
   /* 145E7C 8013689C 27BDFFC8 */     addiu $sp, $sp, -0x38
-  /* 145E80 801368A0 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 145E80 801368A0 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 145E84 801368A4 000E70C0 */       sll $t6, $t6, 3
   /* 145E88 801368A8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 145E8C 801368AC 01CF1821 */      addu $v1, $t6, $t7
@@ -5510,15 +5510,15 @@ glabel mnTrainingAutopositionTokenFromPortraitEdges
   /* 146020 80136A40 00000000 */       nop
 
 glabel mnTrainingAutopositionPlacedToken
-  /* 146024 80136A44 3C028014 */       lui $v0, %hi(gMnTrainingHumanPanelPort)
-  /* 146028 80136A48 8C428894 */        lw $v0, %lo(gMnTrainingHumanPanelPort)($v0)
+  /* 146024 80136A44 3C028014 */       lui $v0, %hi(gMNTrainingHumanPanelPort)
+  /* 146028 80136A48 8C428894 */        lw $v0, %lo(gMNTrainingHumanPanelPort)($v0)
   /* 14602C 80136A4C 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 146030 80136A50 AFBF0014 */        sw $ra, 0x14($sp)
   /* 146034 80136A54 14820004 */       bne $a0, $v0, .L80136A68
   /* 146038 80136A58 00803825 */        or $a3, $a0, $zero
-  /* 14603C 80136A5C 3C058014 */       lui $a1, %hi(gMnTrainingCPUPanelPort)
+  /* 14603C 80136A5C 3C058014 */       lui $a1, %hi(gMNTrainingCPUPanelPort)
   /* 146040 80136A60 10000002 */         b .L80136A6C
-  /* 146044 80136A64 8CA58898 */        lw $a1, %lo(gMnTrainingCPUPanelPort)($a1)
+  /* 146044 80136A64 8CA58898 */        lw $a1, %lo(gMNTrainingCPUPanelPort)($a1)
   .L80136A68:
   /* 146048 80136A68 00402825 */        or $a1, $v0, $zero
   .L80136A6C:
@@ -5528,8 +5528,8 @@ glabel mnTrainingAutopositionPlacedToken
   /* 146058 80136A78 01C77023 */      subu $t6, $t6, $a3
   /* 14605C 80136A7C 000E70C0 */       sll $t6, $t6, 3
   /* 146060 80136A80 01C77023 */      subu $t6, $t6, $a3
-  /* 146064 80136A84 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 146068 80136A88 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 146064 80136A84 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 146068 80136A88 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 14606C 80136A8C 000E70C0 */       sll $t6, $t6, 3
   /* 146070 80136A90 01CF1821 */      addu $v1, $t6, $t7
   /* 146074 80136A94 8C780054 */        lw $t8, 0x54($v1)
@@ -5559,8 +5559,8 @@ glabel mnTrainingAutopositionPlacedToken
   /* 1460CC 80136AEC 000D68C0 */       sll $t5, $t5, 3
   /* 1460D0 80136AF0 01A76823 */      subu $t5, $t5, $a3
   /* 1460D4 80136AF4 27AC002C */     addiu $t4, $sp, 0x2c
-  /* 1460D8 80136AF8 3C0E8014 */       lui $t6, %hi(gMnTrainingPanels)
-  /* 1460DC 80136AFC 25CE8558 */     addiu $t6, $t6, %lo(gMnTrainingPanels)
+  /* 1460D8 80136AF8 3C0E8014 */       lui $t6, %hi(gMNTrainingPanels)
+  /* 1460DC 80136AFC 25CE8558 */     addiu $t6, $t6, %lo(gMNTrainingPanels)
   /* 1460E0 80136B00 016C1021 */      addu $v0, $t3, $t4
   /* 1460E4 80136B04 000D68C0 */       sll $t5, $t5, 3
   /* 1460E8 80136B08 01AE1821 */      addu $v1, $t5, $t6
@@ -5592,8 +5592,8 @@ glabel mnTrainingAutopositionPlacedToken
   .L80136B64:
   /* 146144 80136B64 10400018 */      beqz $v0, .L80136BC8
   /* 146148 80136B68 01E57823 */      subu $t7, $t7, $a1
-  /* 14614C 80136B6C 3C188014 */       lui $t8, %hi(gMnTrainingPanels)
-  /* 146150 80136B70 27188558 */     addiu $t8, $t8, %lo(gMnTrainingPanels)
+  /* 14614C 80136B6C 3C188014 */       lui $t8, %hi(gMNTrainingPanels)
+  /* 146150 80136B70 27188558 */     addiu $t8, $t8, %lo(gMNTrainingPanels)
   /* 146154 80136B74 000F78C0 */       sll $t7, $t7, 3
   /* 146158 80136B78 01F82021 */      addu $a0, $t7, $t8
   /* 14615C 80136B7C 8C990048 */        lw $t9, 0x48($a0)
@@ -5628,8 +5628,8 @@ glabel mnTrainingAutopositionRecalledToken
   /* 1461C4 80136BE4 01C47023 */      subu $t6, $t6, $a0
   /* 1461C8 80136BE8 000E70C0 */       sll $t6, $t6, 3
   /* 1461CC 80136BEC 01C47023 */      subu $t6, $t6, $a0
-  /* 1461D0 80136BF0 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 1461D4 80136BF4 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 1461D0 80136BF0 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 1461D4 80136BF4 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 1461D8 80136BF8 000E70C0 */       sll $t6, $t6, 3
   /* 1461DC 80136BFC 01CF1021 */      addu $v0, $t6, $t7
   /* 1461E0 80136C00 8C580074 */        lw $t8, 0x74($v0)
@@ -5692,10 +5692,10 @@ glabel mnTrainingAutopositionRecalledToken
 glabel mnTrainingAutopositionToken
   /* 1462AC 80136CCC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1462B0 80136CD0 AFA40018 */        sw $a0, 0x18($sp)
-  /* 1462B4 80136CD4 3C048014 */       lui $a0, %hi(gMnTrainingHumanPanelPort)
-  /* 1462B8 80136CD8 8C848894 */        lw $a0, %lo(gMnTrainingHumanPanelPort)($a0)
-  /* 1462BC 80136CDC 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 1462C0 80136CE0 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 1462B4 80136CD4 3C048014 */       lui $a0, %hi(gMNTrainingHumanPanelPort)
+  /* 1462B8 80136CD8 8C848894 */        lw $a0, %lo(gMNTrainingHumanPanelPort)($a0)
+  /* 1462BC 80136CDC 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 1462C0 80136CE0 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 1462C4 80136CE4 00047080 */       sll $t6, $a0, 2
   /* 1462C8 80136CE8 01C47023 */      subu $t6, $t6, $a0
   /* 1462CC 80136CEC 000E70C0 */       sll $t6, $t6, 3
@@ -5708,10 +5708,10 @@ glabel mnTrainingAutopositionToken
   /* 1462E8 80136D08 8C490054 */        lw $t1, 0x54($v0)
   /* 1462EC 80136D0C 0C04DAF8 */       jal mnTrainingAutopositionRecalledToken
   /* 1462F0 80136D10 00000000 */       nop
-  /* 1462F4 80136D14 3C048014 */       lui $a0, %hi(gMnTrainingHumanPanelPort)
-  /* 1462F8 80136D18 8C848894 */        lw $a0, %lo(gMnTrainingHumanPanelPort)($a0)
-  /* 1462FC 80136D1C 3C088014 */       lui $t0, %hi(gMnTrainingPanels)
-  /* 146300 80136D20 25088558 */     addiu $t0, $t0, %lo(gMnTrainingPanels)
+  /* 1462F4 80136D14 3C048014 */       lui $a0, %hi(gMNTrainingHumanPanelPort)
+  /* 1462F8 80136D18 8C848894 */        lw $a0, %lo(gMNTrainingHumanPanelPort)($a0)
+  /* 1462FC 80136D1C 3C088014 */       lui $t0, %hi(gMNTrainingPanels)
+  /* 146300 80136D20 25088558 */     addiu $t0, $t0, %lo(gMNTrainingPanels)
   /* 146304 80136D24 0004C880 */       sll $t9, $a0, 2
   /* 146308 80136D28 0324C823 */      subu $t9, $t9, $a0
   /* 14630C 80136D2C 0019C8C0 */       sll $t9, $t9, 3
@@ -5725,10 +5725,10 @@ glabel mnTrainingAutopositionToken
   /* 146328 80136D48 0C04DA91 */       jal mnTrainingAutopositionPlacedToken
   /* 14632C 80136D4C 00000000 */       nop
   .L80136D50:
-  /* 146330 80136D50 3C048014 */       lui $a0, %hi(gMnTrainingCPUPanelPort)
-  /* 146334 80136D54 8C848898 */        lw $a0, %lo(gMnTrainingCPUPanelPort)($a0)
-  /* 146338 80136D58 3C0B8014 */       lui $t3, %hi(gMnTrainingPanels)
-  /* 14633C 80136D5C 256B8558 */     addiu $t3, $t3, %lo(gMnTrainingPanels)
+  /* 146330 80136D50 3C048014 */       lui $a0, %hi(gMNTrainingCPUPanelPort)
+  /* 146334 80136D54 8C848898 */        lw $a0, %lo(gMNTrainingCPUPanelPort)($a0)
+  /* 146338 80136D58 3C0B8014 */       lui $t3, %hi(gMNTrainingPanels)
+  /* 14633C 80136D5C 256B8558 */     addiu $t3, $t3, %lo(gMNTrainingPanels)
   /* 146340 80136D60 00045080 */       sll $t2, $a0, 2
   /* 146344 80136D64 01445023 */      subu $t2, $t2, $a0
   /* 146348 80136D68 000A50C0 */       sll $t2, $t2, 3
@@ -5740,10 +5740,10 @@ glabel mnTrainingAutopositionToken
   /* 146360 80136D80 8C4F0054 */        lw $t7, 0x54($v0)
   /* 146364 80136D84 0C04DAF8 */       jal mnTrainingAutopositionRecalledToken
   /* 146368 80136D88 00000000 */       nop
-  /* 14636C 80136D8C 3C048014 */       lui $a0, %hi(gMnTrainingCPUPanelPort)
-  /* 146370 80136D90 8C848898 */        lw $a0, %lo(gMnTrainingCPUPanelPort)($a0)
-  /* 146374 80136D94 3C0E8014 */       lui $t6, %hi(gMnTrainingPanels)
-  /* 146378 80136D98 25CE8558 */     addiu $t6, $t6, %lo(gMnTrainingPanels)
+  /* 14636C 80136D8C 3C048014 */       lui $a0, %hi(gMNTrainingCPUPanelPort)
+  /* 146370 80136D90 8C848898 */        lw $a0, %lo(gMNTrainingCPUPanelPort)($a0)
+  /* 146374 80136D94 3C0E8014 */       lui $t6, %hi(gMNTrainingPanels)
+  /* 146378 80136D98 25CE8558 */     addiu $t6, $t6, %lo(gMNTrainingPanels)
   /* 14637C 80136D9C 00046880 */       sll $t5, $a0, 2
   /* 146380 80136DA0 01A46823 */      subu $t5, $t5, $a0
   /* 146384 80136DA4 000D68C0 */       sll $t5, $t5, 3
@@ -5782,35 +5782,35 @@ glabel mnTrainingCreateTokenAutopositionRoutine
   /* 1463F8 80136E18 00000000 */       nop
 
 glabel mnTrainingUpdateTokenShinePulseColor
-  /* 1463FC 80136E1C 3C038014 */       lui $v1, %hi(gMnTrainingIsTokenShineIncreasing)
-  /* 146400 80136E20 24638878 */     addiu $v1, $v1, %lo(gMnTrainingIsTokenShineIncreasing)
-  /* 146404 80136E24 8C620000 */        lw $v0, ($v1) # gMnTrainingIsTokenShineIncreasing + 0
+  /* 1463FC 80136E1C 3C038014 */       lui $v1, %hi(gMNTrainingIsTokenShineIncreasing)
+  /* 146400 80136E20 24638878 */     addiu $v1, $v1, %lo(gMNTrainingIsTokenShineIncreasing)
+  /* 146404 80136E24 8C620000 */        lw $v0, ($v1) # gMNTrainingIsTokenShineIncreasing + 0
   /* 146408 80136E28 AFA40000 */        sw $a0, ($sp)
-  /* 14640C 80136E2C 3C048014 */       lui $a0, %hi(gMnTrainingTokenShinePulseColor)
+  /* 14640C 80136E2C 3C048014 */       lui $a0, %hi(gMNTrainingTokenShinePulseColor)
   /* 146410 80136E30 1440000A */      bnez $v0, .L80136E5C
-  /* 146414 80136E34 24848874 */     addiu $a0, $a0, %lo(gMnTrainingTokenShinePulseColor)
-  /* 146418 80136E38 8C8E0000 */        lw $t6, ($a0) # gMnTrainingTokenShinePulseColor + 0
+  /* 146414 80136E34 24848874 */     addiu $a0, $a0, %lo(gMNTrainingTokenShinePulseColor)
+  /* 146418 80136E38 8C8E0000 */        lw $t6, ($a0) # gMNTrainingTokenShinePulseColor + 0
   /* 14641C 80136E3C 241900FF */     addiu $t9, $zero, 0xff
   /* 146420 80136E40 25CF0009 */     addiu $t7, $t6, 9
   /* 146424 80136E44 29E10100 */      slti $at, $t7, 0x100
   /* 146428 80136E48 14200004 */      bnez $at, .L80136E5C
-  /* 14642C 80136E4C AC8F0000 */        sw $t7, ($a0) # gMnTrainingTokenShinePulseColor + 0
+  /* 14642C 80136E4C AC8F0000 */        sw $t7, ($a0) # gMNTrainingTokenShinePulseColor + 0
   /* 146430 80136E50 24020001 */     addiu $v0, $zero, 1
-  /* 146434 80136E54 AC990000 */        sw $t9, ($a0) # gMnTrainingTokenShinePulseColor + 0
-  /* 146438 80136E58 AC620000 */        sw $v0, ($v1) # gMnTrainingIsTokenShineIncreasing + 0
+  /* 146434 80136E54 AC990000 */        sw $t9, ($a0) # gMNTrainingTokenShinePulseColor + 0
+  /* 146438 80136E58 AC620000 */        sw $v0, ($v1) # gMNTrainingIsTokenShineIncreasing + 0
   .L80136E5C:
-  /* 14643C 80136E5C 3C048014 */       lui $a0, %hi(gMnTrainingTokenShinePulseColor)
+  /* 14643C 80136E5C 3C048014 */       lui $a0, %hi(gMNTrainingTokenShinePulseColor)
   /* 146440 80136E60 24010001 */     addiu $at, $zero, 1
   /* 146444 80136E64 14410009 */       bne $v0, $at, .L80136E8C
-  /* 146448 80136E68 24848874 */     addiu $a0, $a0, %lo(gMnTrainingTokenShinePulseColor)
-  /* 14644C 80136E6C 8C890000 */        lw $t1, ($a0) # gMnTrainingTokenShinePulseColor + 0
+  /* 146448 80136E68 24848874 */     addiu $a0, $a0, %lo(gMNTrainingTokenShinePulseColor)
+  /* 14644C 80136E6C 8C890000 */        lw $t1, ($a0) # gMNTrainingTokenShinePulseColor + 0
   /* 146450 80136E70 240C0080 */     addiu $t4, $zero, 0x80
   /* 146454 80136E74 252AFFF7 */     addiu $t2, $t1, -9
   /* 146458 80136E78 29410080 */      slti $at, $t2, 0x80
   /* 14645C 80136E7C 10200003 */      beqz $at, .L80136E8C
-  /* 146460 80136E80 AC8A0000 */        sw $t2, ($a0) # gMnTrainingTokenShinePulseColor + 0
-  /* 146464 80136E84 AC8C0000 */        sw $t4, ($a0) # gMnTrainingTokenShinePulseColor + 0
-  /* 146468 80136E88 AC600000 */        sw $zero, ($v1) # gMnTrainingIsTokenShineIncreasing + 0
+  /* 146460 80136E80 AC8A0000 */        sw $t2, ($a0) # gMNTrainingTokenShinePulseColor + 0
+  /* 146464 80136E84 AC8C0000 */        sw $t4, ($a0) # gMNTrainingTokenShinePulseColor + 0
+  /* 146468 80136E88 AC600000 */        sw $zero, ($v1) # gMNTrainingIsTokenShineIncreasing + 0
   .L80136E8C:
   /* 14646C 80136E8C 03E00008 */        jr $ra
   /* 146470 80136E90 00000000 */       nop
@@ -5839,15 +5839,15 @@ glabel mnTrainingSyncShadeAndCostume
   /* 1464BC 80136EDC AFB30020 */        sw $s3, 0x20($sp)
   /* 1464C0 80136EE0 AFB00014 */        sw $s0, 0x14($sp)
   /* 1464C4 80136EE4 AFB2001C */        sw $s2, 0x1c($sp)
-  /* 1464C8 80136EE8 3C108014 */       lui $s0, %hi(gMnTrainingPanels)
+  /* 1464C8 80136EE8 3C108014 */       lui $s0, %hi(gMNTrainingPanels)
   /* 1464CC 80136EEC 3C138014 */       lui $s3, %hi(D_ovl28_80138838)
   /* 1464D0 80136EF0 AFBF0024 */        sw $ra, 0x24($sp)
   /* 1464D4 80136EF4 AFB10018 */        sw $s1, 0x18($sp)
   /* 1464D8 80136EF8 AFA40028 */        sw $a0, 0x28($sp)
   /* 1464DC 80136EFC 26738838 */     addiu $s3, $s3, %lo(D_ovl28_80138838)
-  /* 1464E0 80136F00 26108558 */     addiu $s0, $s0, %lo(gMnTrainingPanels)
+  /* 1464E0 80136F00 26108558 */     addiu $s0, $s0, %lo(gMNTrainingPanels)
   /* 1464E4 80136F04 2412001C */     addiu $s2, $zero, 0x1c
-  /* 1464E8 80136F08 8E040048 */        lw $a0, 0x48($s0) # gMnTrainingPanels + 72
+  /* 1464E8 80136F08 8E040048 */        lw $a0, 0x48($s0) # gMNTrainingPanels + 72
   .L80136F0C:
   /* 1464EC 80136F0C 52440014 */      beql $s2, $a0, .L80136F60
   /* 1464F0 80136F10 261000B8 */     addiu $s0, $s0, 0xb8
@@ -5856,24 +5856,24 @@ glabel mnTrainingSyncShadeAndCostume
   /* 1464FC 80136F1C 1440000F */      bnez $v0, .L80136F5C
   /* 146500 80136F20 00002825 */        or $a1, $zero, $zero
   /* 146504 80136F24 0C03B03B */       jal ftCostume_GetIndexFFA
-  /* 146508 80136F28 8E040048 */        lw $a0, 0x48($s0) # gMnTrainingPanels + 72
-  /* 14650C 80136F2C 8E0E004C */        lw $t6, 0x4c($s0) # gMnTrainingPanels + 76
+  /* 146508 80136F28 8E040048 */        lw $a0, 0x48($s0) # gMNTrainingPanels + 72
+  /* 14650C 80136F2C 8E0E004C */        lw $t6, 0x4c($s0) # gMNTrainingPanels + 76
   /* 146510 80136F30 00408825 */        or $s1, $v0, $zero
   /* 146514 80136F34 504E000A */      beql $v0, $t6, .L80136F60
   /* 146518 80136F38 261000B8 */     addiu $s0, $s0, 0xb8
-  /* 14651C 80136F3C 8E0F0084 */        lw $t7, 0x84($s0) # gMnTrainingPanels + 132
+  /* 14651C 80136F3C 8E0F0084 */        lw $t7, 0x84($s0) # gMNTrainingPanels + 132
   /* 146520 80136F40 00402825 */        or $a1, $v0, $zero
   /* 146524 80136F44 00003025 */        or $a2, $zero, $zero
   /* 146528 80136F48 55E00005 */      bnel $t7, $zero, .L80136F60
   /* 14652C 80136F4C 261000B8 */     addiu $s0, $s0, 0xb8
   /* 146530 80136F50 0C03A492 */       jal func_ovl2_800E9248
-  /* 146534 80136F54 8E040008 */        lw $a0, 8($s0) # gMnTrainingPanels + 8
-  /* 146538 80136F58 AE11004C */        sw $s1, 0x4c($s0) # gMnTrainingPanels + 76
+  /* 146534 80136F54 8E040008 */        lw $a0, 8($s0) # gMNTrainingPanels + 8
+  /* 146538 80136F58 AE11004C */        sw $s1, 0x4c($s0) # gMNTrainingPanels + 76
   .L80136F5C:
   /* 14653C 80136F5C 261000B8 */     addiu $s0, $s0, 0xb8
   .L80136F60:
   /* 146540 80136F60 5613FFEA */      bnel $s0, $s3, .L80136F0C
-  /* 146544 80136F64 8E040048 */        lw $a0, 0x48($s0) # gMnTrainingPanels + 72
+  /* 146544 80136F64 8E040048 */        lw $a0, 0x48($s0) # gMNTrainingPanels + 72
   /* 146548 80136F68 8FBF0024 */        lw $ra, 0x24($sp)
   /* 14654C 80136F6C 8FB00014 */        lw $s0, 0x14($sp)
   /* 146550 80136F70 8FB10018 */        lw $s1, 0x18($sp)
@@ -5903,28 +5903,28 @@ glabel mnTrainingCreateSyncShadeAndCostumeRoutine
 
 glabel mnTrainingSyncWhiteCircleSizeAndDisplay
   /* 1465A8 80136FC8 27BDFFC8 */     addiu $sp, $sp, -0x38
-  /* 1465AC 80136FCC 3C0E8014 */       lui $t6, %hi(dMnTrainingWhiteCircleSizes)
+  /* 1465AC 80136FCC 3C0E8014 */       lui $t6, %hi(dMNTrainingWhiteCircleSizes)
   /* 1465B0 80136FD0 27A50004 */     addiu $a1, $sp, 4
-  /* 1465B4 80136FD4 25CE83FC */     addiu $t6, $t6, %lo(dMnTrainingWhiteCircleSizes)
+  /* 1465B4 80136FD4 25CE83FC */     addiu $t6, $t6, %lo(dMNTrainingWhiteCircleSizes)
   /* 1465B8 80136FD8 8C820084 */        lw $v0, 0x84($a0)
   /* 1465BC 80136FDC 25C80030 */     addiu $t0, $t6, 0x30
   /* 1465C0 80136FE0 00A0C825 */        or $t9, $a1, $zero
   .L80136FE4:
-  /* 1465C4 80136FE4 8DD80000 */        lw $t8, ($t6) # dMnTrainingWhiteCircleSizes + 0
+  /* 1465C4 80136FE4 8DD80000 */        lw $t8, ($t6) # dMNTrainingWhiteCircleSizes + 0
   /* 1465C8 80136FE8 25CE000C */     addiu $t6, $t6, 0xc
   /* 1465CC 80136FEC 2739000C */     addiu $t9, $t9, 0xc
   /* 1465D0 80136FF0 AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 1465D4 80136FF4 8DCFFFF8 */        lw $t7, -8($t6) # dMnTrainingWhiteCircleSizes + -8
+  /* 1465D4 80136FF4 8DCFFFF8 */        lw $t7, -8($t6) # dMNTrainingWhiteCircleSizes + -8
   /* 1465D8 80136FF8 AF2FFFF8 */        sw $t7, -8($t9)
-  /* 1465DC 80136FFC 8DD8FFFC */        lw $t8, -4($t6) # dMnTrainingWhiteCircleSizes + -4
+  /* 1465DC 80136FFC 8DD8FFFC */        lw $t8, -4($t6) # dMNTrainingWhiteCircleSizes + -4
   /* 1465E0 80137000 15C8FFF8 */       bne $t6, $t0, .L80136FE4
   /* 1465E4 80137004 AF38FFFC */        sw $t8, -4($t9)
   /* 1465E8 80137008 00024880 */       sll $t1, $v0, 2
   /* 1465EC 8013700C 01224823 */      subu $t1, $t1, $v0
   /* 1465F0 80137010 000948C0 */       sll $t1, $t1, 3
   /* 1465F4 80137014 01224823 */      subu $t1, $t1, $v0
-  /* 1465F8 80137018 3C0A8014 */       lui $t2, %hi(gMnTrainingPanels)
-  /* 1465FC 8013701C 254A8558 */     addiu $t2, $t2, %lo(gMnTrainingPanels)
+  /* 1465F8 80137018 3C0A8014 */       lui $t2, %hi(gMNTrainingPanels)
+  /* 1465FC 8013701C 254A8558 */     addiu $t2, $t2, %lo(gMNTrainingPanels)
   /* 146600 80137020 000948C0 */       sll $t1, $t1, 3
   /* 146604 80137024 012A1821 */      addu $v1, $t1, $t2
   /* 146608 80137028 8C6B0084 */        lw $t3, 0x84($v1)
@@ -5952,7 +5952,7 @@ glabel mnTrainingSyncWhiteCircleSizeAndDisplay
   /* 14665C 8013707C 8C8B0074 */        lw $t3, 0x74($a0)
   /* 146660 80137080 00184880 */       sll $t1, $t8, 2
   /* 146664 80137084 00A95021 */      addu $t2, $a1, $t1
-  /* 146668 80137088 C5460000 */      lwc1 $f6, ($t2) # gMnTrainingPanels + 0
+  /* 146668 80137088 C5460000 */      lwc1 $f6, ($t2) # gMNTrainingPanels + 0
   /* 14666C 8013708C E5660044 */      swc1 $f6, 0x44($t3)
   /* 146670 80137090 8C6C0048 */        lw $t4, 0x48($v1)
   /* 146674 80137094 8C8E0074 */        lw $t6, 0x74($a0)
@@ -5992,11 +5992,11 @@ glabel mnTrainingCreateWhiteCircles
   /* 1466EC 8013710C 3C158001 */       lui $s5, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 1466F0 80137110 3C160000 */       lui $s6, %hi(D_NF_00000408)
   /* 1466F4 80137114 3C178013 */       lui $s7, %hi(mnTrainingSyncWhiteCircleSizeAndDisplay)
-  /* 1466F8 80137118 3C1E8014 */       lui $fp, %hi(gMnTrainingHumanPanelPort)
+  /* 1466F8 80137118 3C1E8014 */       lui $fp, %hi(gMNTrainingHumanPanelPort)
   /* 1466FC 8013711C 4480B000 */      mtc1 $zero, $f22
   /* 146700 80137120 AFBF0064 */        sw $ra, 0x64($sp)
   /* 146704 80137124 AFB00040 */        sw $s0, 0x40($sp)
-  /* 146708 80137128 27DE8894 */     addiu $fp, $fp, %lo(gMnTrainingHumanPanelPort)
+  /* 146708 80137128 27DE8894 */     addiu $fp, $fp, %lo(gMNTrainingHumanPanelPort)
   /* 14670C 8013712C 26F76FC8 */     addiu $s7, $s7, %lo(mnTrainingSyncWhiteCircleSizeAndDisplay)
   /* 146710 80137130 26D60408 */     addiu $s6, $s6, %lo(D_NF_00000408)
   /* 146714 80137134 26B54768 */     addiu $s5, $s5, %lo(odRenderDObjTreeDLLinksForGObj)
@@ -6036,7 +6036,7 @@ glabel mnTrainingCreateWhiteCircles
   /* 146798 801371B8 24070001 */     addiu $a3, $zero, 1
   /* 14679C 801371BC 0C0037CD */       jal func_8000DF34
   /* 1467A0 801371C0 02002025 */        or $a0, $s0, $zero
-  /* 1467A4 801371C4 8FD90000 */        lw $t9, ($fp) # gMnTrainingHumanPanelPort + 0
+  /* 1467A4 801371C4 8FD90000 */        lw $t9, ($fp) # gMNTrainingHumanPanelPort + 0
   /* 1467A8 801371C8 24010004 */     addiu $at, $zero, 4
   /* 1467AC 801371CC 56390009 */      bnel $s1, $t9, .L801371F4
   /* 1467B0 801371D0 8E0B0074 */        lw $t3, 0x74($s0)
@@ -6086,19 +6086,19 @@ glabel mnTrainingRenderReadyToFightObject
   /* 146850 80137270 00000000 */       nop
 
 glabel mnTrainingIsReadyToFight
-  /* 146854 80137274 3C0E8014 */       lui $t6, %hi(gMnTrainingHumanPanelPort)
-  /* 146858 80137278 8DCE8894 */        lw $t6, %lo(gMnTrainingHumanPanelPort)($t6)
+  /* 146854 80137274 3C0E8014 */       lui $t6, %hi(gMNTrainingHumanPanelPort)
+  /* 146858 80137278 8DCE8894 */        lw $t6, %lo(gMNTrainingHumanPanelPort)($t6)
   /* 14685C 8013727C 240300B8 */     addiu $v1, $zero, 0xb8
-  /* 146860 80137280 3C028014 */       lui $v0, %hi(gMnTrainingPanels)
+  /* 146860 80137280 3C028014 */       lui $v0, %hi(gMNTrainingPanels)
   /* 146864 80137284 01C30019 */     multu $t6, $v1
-  /* 146868 80137288 24428558 */     addiu $v0, $v0, %lo(gMnTrainingPanels)
-  /* 14686C 8013728C 3C088014 */       lui $t0, %hi(gMnTrainingCPUPanelPort)
+  /* 146868 80137288 24428558 */     addiu $v0, $v0, %lo(gMNTrainingPanels)
+  /* 14686C 8013728C 3C088014 */       lui $t0, %hi(gMNTrainingCPUPanelPort)
   /* 146870 80137290 00007812 */      mflo $t7
   /* 146874 80137294 004FC021 */      addu $t8, $v0, $t7
   /* 146878 80137298 8F190084 */        lw $t9, 0x84($t8)
   /* 14687C 8013729C 5320000B */      beql $t9, $zero, .L801372CC
   /* 146880 801372A0 00001025 */        or $v0, $zero, $zero
-  /* 146884 801372A4 8D088898 */        lw $t0, %lo(gMnTrainingCPUPanelPort)($t0)
+  /* 146884 801372A4 8D088898 */        lw $t0, %lo(gMNTrainingCPUPanelPort)($t0)
   /* 146888 801372A8 01030019 */     multu $t0, $v1
   /* 14688C 801372AC 00004812 */      mflo $t1
   /* 146890 801372B0 00495021 */      addu $t2, $v0, $t1
@@ -6120,15 +6120,15 @@ glabel mnTrainingBlinkIfReadyToFight
   /* 1468C0 801372E0 AFA40018 */        sw $a0, 0x18($sp)
   /* 1468C4 801372E4 10400012 */      beqz $v0, .L80137330
   /* 1468C8 801372E8 8FA40018 */        lw $a0, 0x18($sp)
-  /* 1468CC 801372EC 3C038014 */       lui $v1, %hi(gMnTrainingPressStartFlashTimer)
-  /* 1468D0 801372F0 24638884 */     addiu $v1, $v1, %lo(gMnTrainingPressStartFlashTimer)
-  /* 1468D4 801372F4 8C6E0000 */        lw $t6, ($v1) # gMnTrainingPressStartFlashTimer + 0
+  /* 1468CC 801372EC 3C038014 */       lui $v1, %hi(gMNTrainingPressStartFlashTimer)
+  /* 1468D0 801372F0 24638884 */     addiu $v1, $v1, %lo(gMNTrainingPressStartFlashTimer)
+  /* 1468D4 801372F4 8C6E0000 */        lw $t6, ($v1) # gMNTrainingPressStartFlashTimer + 0
   /* 1468D8 801372F8 24010028 */     addiu $at, $zero, 0x28
   /* 1468DC 801372FC 24180001 */     addiu $t8, $zero, 1
   /* 1468E0 80137300 25C20001 */     addiu $v0, $t6, 1
   /* 1468E4 80137304 14410003 */       bne $v0, $at, .L80137314
-  /* 1468E8 80137308 AC620000 */        sw $v0, ($v1) # gMnTrainingPressStartFlashTimer + 0
-  /* 1468EC 8013730C AC600000 */        sw $zero, ($v1) # gMnTrainingPressStartFlashTimer + 0
+  /* 1468E8 80137308 AC620000 */        sw $v0, ($v1) # gMNTrainingPressStartFlashTimer + 0
+  /* 1468EC 8013730C AC600000 */        sw $zero, ($v1) # gMNTrainingPressStartFlashTimer + 0
   /* 1468F0 80137310 00001025 */        or $v0, $zero, $zero
   .L80137314:
   /* 1468F4 80137314 2841001E */      slti $at, $v0, 0x1e
@@ -6140,11 +6140,11 @@ glabel mnTrainingBlinkIfReadyToFight
   /* 146908 80137328 10000006 */         b .L80137344
   /* 14690C 8013732C AC98007C */        sw $t8, 0x7c($a0)
   .L80137330:
-  /* 146910 80137330 3C038014 */       lui $v1, %hi(gMnTrainingPressStartFlashTimer)
+  /* 146910 80137330 3C038014 */       lui $v1, %hi(gMNTrainingPressStartFlashTimer)
   /* 146914 80137334 24190001 */     addiu $t9, $zero, 1
-  /* 146918 80137338 24638884 */     addiu $v1, $v1, %lo(gMnTrainingPressStartFlashTimer)
+  /* 146918 80137338 24638884 */     addiu $v1, $v1, %lo(gMNTrainingPressStartFlashTimer)
   /* 14691C 8013733C AC99007C */        sw $t9, 0x7c($a0)
-  /* 146920 80137340 AC600000 */        sw $zero, ($v1) # gMnTrainingPressStartFlashTimer + 0
+  /* 146920 80137340 AC600000 */        sw $zero, ($v1) # gMNTrainingPressStartFlashTimer + 0
   .L80137344:
   /* 146924 80137344 8FBF0014 */        lw $ra, 0x14($sp)
   /* 146928 80137348 27BD0018 */     addiu $sp, $sp, 0x18
@@ -6316,22 +6316,22 @@ glabel mnTrainingCreateReadyToFightObjects
   /* 146BB4 801375D4 00000000 */       nop
 
 glabel mnTrainingSaveMatchInfo
-  /* 146BB8 801375D8 3C0E8014 */       lui $t6, %hi(gMnTrainingHumanPanelPort)
-  /* 146BBC 801375DC 8DCE8894 */        lw $t6, %lo(gMnTrainingHumanPanelPort)($t6)
+  /* 146BB8 801375D8 3C0E8014 */       lui $t6, %hi(gMNTrainingHumanPanelPort)
+  /* 146BBC 801375DC 8DCE8894 */        lw $t6, %lo(gMNTrainingHumanPanelPort)($t6)
   /* 146BC0 801375E0 240600B8 */     addiu $a2, $zero, 0xb8
-  /* 146BC4 801375E4 3C058014 */       lui $a1, %hi(gMnTrainingPanels)
+  /* 146BC4 801375E4 3C058014 */       lui $a1, %hi(gMNTrainingPanels)
   /* 146BC8 801375E8 01C60019 */     multu $t6, $a2
-  /* 146BCC 801375EC 24A58558 */     addiu $a1, $a1, %lo(gMnTrainingPanels)
+  /* 146BCC 801375EC 24A58558 */     addiu $a1, $a1, %lo(gMNTrainingPanels)
   /* 146BD0 801375F0 3C04800A */       lui $a0, %hi(gSceneData)
   /* 146BD4 801375F4 24844AD0 */     addiu $a0, $a0, %lo(gSceneData)
-  /* 146BD8 801375F8 3C088014 */       lui $t0, %hi(gMnTrainingCPUPanelPort)
+  /* 146BD8 801375F8 3C088014 */       lui $t0, %hi(gMNTrainingCPUPanelPort)
   /* 146BDC 801375FC 00007812 */      mflo $t7
   /* 146BE0 80137600 00AF1021 */      addu $v0, $a1, $t7
   /* 146BE4 80137604 8C580048 */        lw $t8, 0x48($v0)
   /* 146BE8 80137608 8C59004C */        lw $t9, 0x4c($v0)
   /* 146BEC 8013760C A098003B */        sb $t8, 0x3b($a0) # gSceneData + 59
   /* 146BF0 80137610 A099003C */        sb $t9, 0x3c($a0) # gSceneData + 60
-  /* 146BF4 80137614 8D088898 */        lw $t0, %lo(gMnTrainingCPUPanelPort)($t0)
+  /* 146BF4 80137614 8D088898 */        lw $t0, %lo(gMNTrainingCPUPanelPort)($t0)
   /* 146BF8 80137618 01060019 */     multu $t0, $a2
   /* 146BFC 8013761C 00004812 */      mflo $t1
   /* 146C00 80137620 00A91821 */      addu $v1, $a1, $t1
@@ -6342,10 +6342,10 @@ glabel mnTrainingSaveMatchInfo
   /* 146C14 80137634 A08B003E */        sb $t3, 0x3e($a0) # gSceneData + 62
 
 glabel mnTrainingDestroyCursorAndTokenProcesses
-  /* 146C18 80137638 3C0E8014 */       lui $t6, %hi(gMnTrainingHumanPanelPort)
-  /* 146C1C 8013763C 8DCE8894 */        lw $t6, %lo(gMnTrainingHumanPanelPort)($t6)
-  /* 146C20 80137640 3C188014 */       lui $t8, %hi(gMnTrainingPanels)
-  /* 146C24 80137644 27188558 */     addiu $t8, $t8, %lo(gMnTrainingPanels)
+  /* 146C18 80137638 3C0E8014 */       lui $t6, %hi(gMNTrainingHumanPanelPort)
+  /* 146C1C 8013763C 8DCE8894 */        lw $t6, %lo(gMNTrainingHumanPanelPort)($t6)
+  /* 146C20 80137640 3C188014 */       lui $t8, %hi(gMNTrainingPanels)
+  /* 146C24 80137644 27188558 */     addiu $t8, $t8, %lo(gMNTrainingPanels)
   /* 146C28 80137648 000E7880 */       sll $t7, $t6, 2
   /* 146C2C 8013764C 01EE7823 */      subu $t7, $t7, $t6
   /* 146C30 80137650 000F78C0 */       sll $t7, $t7, 3
@@ -6359,10 +6359,10 @@ glabel mnTrainingDestroyCursorAndTokenProcesses
   /* 146C50 80137670 8C430004 */        lw $v1, 4($v0)
   /* 146C54 80137674 0C002CBB */       jal func_8000B2EC
   /* 146C58 80137678 8C640018 */        lw $a0, 0x18($v1)
-  /* 146C5C 8013767C 3C198014 */       lui $t9, %hi(gMnTrainingHumanPanelPort)
-  /* 146C60 80137680 8F398894 */        lw $t9, %lo(gMnTrainingHumanPanelPort)($t9)
-  /* 146C64 80137684 3C098014 */       lui $t1, %hi(gMnTrainingPanels)
-  /* 146C68 80137688 25298558 */     addiu $t1, $t1, %lo(gMnTrainingPanels)
+  /* 146C5C 8013767C 3C198014 */       lui $t9, %hi(gMNTrainingHumanPanelPort)
+  /* 146C60 80137680 8F398894 */        lw $t9, %lo(gMNTrainingHumanPanelPort)($t9)
+  /* 146C64 80137684 3C098014 */       lui $t1, %hi(gMNTrainingPanels)
+  /* 146C68 80137688 25298558 */     addiu $t1, $t1, %lo(gMNTrainingPanels)
   /* 146C6C 8013768C 00194080 */       sll $t0, $t9, 2
   /* 146C70 80137690 01194023 */      subu $t0, $t0, $t9
   /* 146C74 80137694 000840C0 */       sll $t0, $t0, 3
@@ -6376,8 +6376,8 @@ glabel mnTrainingDestroyCursorAndTokenProcesses
   /* 146C90 801376B0 0C002CBB */       jal func_8000B2EC
   /* 146C94 801376B4 8C640018 */        lw $a0, 0x18($v1)
   .L801376B8:
-  /* 146C98 801376B8 3C0A8014 */       lui $t2, %hi(gMnTrainingCPUPanelPort)
-  /* 146C9C 801376BC 8D4A8898 */        lw $t2, %lo(gMnTrainingCPUPanelPort)($t2)
+  /* 146C98 801376B8 3C0A8014 */       lui $t2, %hi(gMNTrainingCPUPanelPort)
+  /* 146C9C 801376BC 8D4A8898 */        lw $t2, %lo(gMNTrainingCPUPanelPort)($t2)
   /* 146CA0 801376C0 3C028014 */       lui $v0, %hi(D_ovl28_8013855C)
   /* 146CA4 801376C4 000A5880 */       sll $t3, $t2, 2
   /* 146CA8 801376C8 016A5823 */      subu $t3, $t3, $t2
@@ -6397,14 +6397,14 @@ glabel mnTrainingDestroyCursorAndTokenProcesses
   /* 146CDC 801376FC 00000000 */       nop
 
 glabel mnTrainingMain
-  /* 146CE0 80137700 3C038014 */       lui $v1, %hi(gMnTrainingFramesElapsed)
-  /* 146CE4 80137704 2463888C */     addiu $v1, $v1, %lo(gMnTrainingFramesElapsed)
-  /* 146CE8 80137708 8C6E0000 */        lw $t6, ($v1) # gMnTrainingFramesElapsed + 0
-  /* 146CEC 8013770C 3C188014 */       lui $t8, %hi(gMnTrainingMaxFramesElapsed)
+  /* 146CE0 80137700 3C038014 */       lui $v1, %hi(gMNTrainingFramesElapsed)
+  /* 146CE4 80137704 2463888C */     addiu $v1, $v1, %lo(gMNTrainingFramesElapsed)
+  /* 146CE8 80137708 8C6E0000 */        lw $t6, ($v1) # gMNTrainingFramesElapsed + 0
+  /* 146CEC 8013770C 3C188014 */       lui $t8, %hi(gMNTrainingMaxFramesElapsed)
   /* 146CF0 80137710 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 146CF4 80137714 25CF0001 */     addiu $t7, $t6, 1
-  /* 146CF8 80137718 AC6F0000 */        sw $t7, ($v1) # gMnTrainingFramesElapsed + 0
-  /* 146CFC 8013771C 8F188890 */        lw $t8, %lo(gMnTrainingMaxFramesElapsed)($t8)
+  /* 146CF8 80137718 AC6F0000 */        sw $t7, ($v1) # gMNTrainingFramesElapsed + 0
+  /* 146CFC 8013771C 8F188890 */        lw $t8, %lo(gMNTrainingMaxFramesElapsed)($t8)
   /* 146D00 80137720 AFBF0014 */        sw $ra, 0x14($sp)
   /* 146D04 80137724 AFA40018 */        sw $a0, 0x18($sp)
   /* 146D08 80137728 170F000B */       bne $t8, $t7, .L80137758
@@ -6422,26 +6422,26 @@ glabel mnTrainingMain
   .L80137758:
   /* 146D38 80137758 0C0E42DF */       jal func_ovl1_80390B7C
   /* 146D3C 8013775C 00000000 */       nop
-  /* 146D40 80137760 3C038014 */       lui $v1, %hi(gMnTrainingFramesElapsed)
+  /* 146D40 80137760 3C038014 */       lui $v1, %hi(gMNTrainingFramesElapsed)
   /* 146D44 80137764 14400005 */      bnez $v0, .L8013777C
-  /* 146D48 80137768 2463888C */     addiu $v1, $v1, %lo(gMnTrainingFramesElapsed)
-  /* 146D4C 8013776C 8C6A0000 */        lw $t2, ($v1) # gMnTrainingFramesElapsed + 0
-  /* 146D50 80137770 3C018014 */       lui $at, %hi(gMnTrainingMaxFramesElapsed)
+  /* 146D48 80137768 2463888C */     addiu $v1, $v1, %lo(gMNTrainingFramesElapsed)
+  /* 146D4C 8013776C 8C6A0000 */        lw $t2, ($v1) # gMNTrainingFramesElapsed + 0
+  /* 146D50 80137770 3C018014 */       lui $at, %hi(gMNTrainingMaxFramesElapsed)
   /* 146D54 80137774 254B4650 */     addiu $t3, $t2, 0x4650
-  /* 146D58 80137778 AC2B8890 */        sw $t3, %lo(gMnTrainingMaxFramesElapsed)($at)
+  /* 146D58 80137778 AC2B8890 */        sw $t3, %lo(gMNTrainingMaxFramesElapsed)($at)
   .L8013777C:
-  /* 146D5C 8013777C 3C0C8014 */       lui $t4, %hi(gMnTrainingIsStartTriggered)
-  /* 146D60 80137780 8D8C8864 */        lw $t4, %lo(gMnTrainingIsStartTriggered)($t4)
-  /* 146D64 80137784 3C038014 */       lui $v1, %hi(gMnTrainingStartDelayTimer)
-  /* 146D68 80137788 24638860 */     addiu $v1, $v1, %lo(gMnTrainingStartDelayTimer)
+  /* 146D5C 8013777C 3C0C8014 */       lui $t4, %hi(gMNTrainingIsStartTriggered)
+  /* 146D60 80137780 8D8C8864 */        lw $t4, %lo(gMNTrainingIsStartTriggered)($t4)
+  /* 146D64 80137784 3C038014 */       lui $v1, %hi(gMNTrainingStartDelayTimer)
+  /* 146D68 80137788 24638860 */     addiu $v1, $v1, %lo(gMNTrainingStartDelayTimer)
   /* 146D6C 8013778C 11800010 */      beqz $t4, .L801377D0
   /* 146D70 80137790 00000000 */       nop
-  /* 146D74 80137794 8C6D0000 */        lw $t5, ($v1) # gMnTrainingStartDelayTimer + 0
+  /* 146D74 80137794 8C6D0000 */        lw $t5, ($v1) # gMNTrainingStartDelayTimer + 0
   /* 146D78 80137798 3C02800A */       lui $v0, %hi(gSceneData)
   /* 146D7C 8013779C 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
   /* 146D80 801377A0 25AEFFFF */     addiu $t6, $t5, -1
   /* 146D84 801377A4 15C00025 */      bnez $t6, .L8013783C
-  /* 146D88 801377A8 AC6E0000 */        sw $t6, ($v1) # gMnTrainingStartDelayTimer + 0
+  /* 146D88 801377A8 AC6E0000 */        sw $t6, ($v1) # gMNTrainingStartDelayTimer + 0
   /* 146D8C 801377AC 90580000 */       lbu $t8, ($v0) # gSceneData + 0
   /* 146D90 801377B0 24190015 */     addiu $t9, $zero, 0x15
   /* 146D94 801377B4 A0590000 */        sb $t9, ($v0) # gSceneData + 0
@@ -6454,10 +6454,10 @@ glabel mnTrainingMain
   .L801377D0:
   /* 146DB0 801377D0 0C0E41DB */       jal func_ovl1_8039076C
   /* 146DB4 801377D4 24041000 */     addiu $a0, $zero, 0x1000
-  /* 146DB8 801377D8 3C038014 */       lui $v1, %hi(gMnTrainingFramesElapsed)
+  /* 146DB8 801377D8 3C038014 */       lui $v1, %hi(gMNTrainingFramesElapsed)
   /* 146DBC 801377DC 10400017 */      beqz $v0, .L8013783C
-  /* 146DC0 801377E0 2463888C */     addiu $v1, $v1, %lo(gMnTrainingFramesElapsed)
-  /* 146DC4 801377E4 8C680000 */        lw $t0, ($v1) # gMnTrainingFramesElapsed + 0
+  /* 146DC0 801377E0 2463888C */     addiu $v1, $v1, %lo(gMNTrainingFramesElapsed)
+  /* 146DC4 801377E4 8C680000 */        lw $t0, ($v1) # gMNTrainingFramesElapsed + 0
   /* 146DC8 801377E8 2901003D */      slti $at, $t0, 0x3d
   /* 146DCC 801377EC 54200014 */      bnel $at, $zero, .L80137840
   /* 146DD0 801377F0 8FBF0014 */        lw $ra, 0x14($sp)
@@ -6467,14 +6467,14 @@ glabel mnTrainingMain
   /* 146DE0 80137800 00000000 */       nop
   /* 146DE4 80137804 0C009A70 */       jal func_800269C0
   /* 146DE8 80137808 2404026A */     addiu $a0, $zero, 0x26a
-  /* 146DEC 8013780C 3C038014 */       lui $v1, %hi(gMnTrainingStartDelayTimer)
-  /* 146DF0 80137810 24638860 */     addiu $v1, $v1, %lo(gMnTrainingStartDelayTimer)
+  /* 146DEC 8013780C 3C038014 */       lui $v1, %hi(gMNTrainingStartDelayTimer)
+  /* 146DF0 80137810 24638860 */     addiu $v1, $v1, %lo(gMNTrainingStartDelayTimer)
   /* 146DF4 80137814 2409001E */     addiu $t1, $zero, 0x1e
-  /* 146DF8 80137818 AC690000 */        sw $t1, ($v1) # gMnTrainingStartDelayTimer + 0
+  /* 146DF8 80137818 AC690000 */        sw $t1, ($v1) # gMNTrainingStartDelayTimer + 0
   /* 146DFC 8013781C 240A0001 */     addiu $t2, $zero, 1
-  /* 146E00 80137820 3C018014 */       lui $at, %hi(gMnTrainingIsStartTriggered)
+  /* 146E00 80137820 3C018014 */       lui $at, %hi(gMNTrainingIsStartTriggered)
   /* 146E04 80137824 0C04DD8E */       jal mnTrainingDestroyCursorAndTokenProcesses
-  /* 146E08 80137828 AC2A8864 */        sw $t2, %lo(gMnTrainingIsStartTriggered)($at)
+  /* 146E08 80137828 AC2A8864 */        sw $t2, %lo(gMNTrainingIsStartTriggered)($at)
   /* 146E0C 8013782C 10000004 */         b .L80137840
   /* 146E10 80137830 8FBF0014 */        lw $ra, 0x14($sp)
   .L80137834:
@@ -6492,8 +6492,8 @@ glabel mnTrainingInitPort
   /* 146E30 80137850 01C47023 */      subu $t6, $t6, $a0
   /* 146E34 80137854 000E70C0 */       sll $t6, $t6, 3
   /* 146E38 80137858 01C47023 */      subu $t6, $t6, $a0
-  /* 146E3C 8013785C 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 146E40 80137860 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 146E3C 8013785C 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 146E40 80137860 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 146E44 80137864 000E70C0 */       sll $t6, $t6, 3
   /* 146E48 80137868 01CF1021 */      addu $v0, $t6, $t7
   /* 146E4C 8013786C AC40001C */        sw $zero, 0x1c($v0)
@@ -6504,8 +6504,8 @@ glabel mnTrainingInitPort
   /* 146E60 80137880 AC4000A4 */        sw $zero, 0xa4($v0)
   /* 146E64 80137884 A44000A8 */        sh $zero, 0xa8($v0)
   /* 146E68 80137888 AC400008 */        sw $zero, 8($v0)
-  /* 146E6C 8013788C 3C188014 */       lui $t8, %hi(gMnTrainingHumanPanelPort)
-  /* 146E70 80137890 8F188894 */        lw $t8, %lo(gMnTrainingHumanPanelPort)($t8)
+  /* 146E6C 8013788C 3C188014 */       lui $t8, %hi(gMNTrainingHumanPanelPort)
+  /* 146E70 80137890 8F188894 */        lw $t8, %lo(gMNTrainingHumanPanelPort)($t8)
   /* 146E74 80137894 3C03800A */       lui $v1, %hi(gSceneData)
   /* 146E78 80137898 24634AD0 */     addiu $v1, $v1, %lo(gSceneData)
   /* 146E7C 8013789C 1498000E */       bne $a0, $t8, .L801378D8
@@ -6541,8 +6541,8 @@ glabel mnTrainingResetPort
   /* 146EE4 80137904 01C47023 */      subu $t6, $t6, $a0
   /* 146EE8 80137908 000E70C0 */       sll $t6, $t6, 3
   /* 146EEC 8013790C 01C47023 */      subu $t6, $t6, $a0
-  /* 146EF0 80137910 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 146EF4 80137914 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 146EF0 80137910 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 146EF4 80137914 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 146EF8 80137918 000E70C0 */       sll $t6, $t6, 3
   /* 146EFC 8013791C 01CF1021 */      addu $v0, $t6, $t7
   /* 146F00 80137920 2418001C */     addiu $t8, $zero, 0x1c
@@ -6567,8 +6567,8 @@ glabel mnTrainingResetPortToNA
   /* 146F44 80137964 01C47023 */      subu $t6, $t6, $a0
   /* 146F48 80137968 000E70C0 */       sll $t6, $t6, 3
   /* 146F4C 8013796C 01C47023 */      subu $t6, $t6, $a0
-  /* 146F50 80137970 3C0F8014 */       lui $t7, %hi(gMnTrainingPanels)
-  /* 146F54 80137974 25EF8558 */     addiu $t7, $t7, %lo(gMnTrainingPanels)
+  /* 146F50 80137970 3C0F8014 */       lui $t7, %hi(gMNTrainingPanels)
+  /* 146F54 80137974 25EF8558 */     addiu $t7, $t7, %lo(gMNTrainingPanels)
   /* 146F58 80137978 000E70C0 */       sll $t6, $t6, 3
   /* 146F5C 8013797C 01CF1021 */      addu $v0, $t6, $t7
   /* 146F60 80137980 2418001C */     addiu $t8, $zero, 0x1c
@@ -6592,42 +6592,42 @@ glabel mnTrainingResetPortToNA
   /* 146FA8 801379C8 AC49007C */        sw $t1, 0x7c($v0)
 
 glabel mnTrainingLoadMatchInfo
-  /* 146FAC 801379CC 3C028014 */       lui $v0, %hi(gMnTrainingFramesElapsed)
-  /* 146FB0 801379D0 2442888C */     addiu $v0, $v0, %lo(gMnTrainingFramesElapsed)
-  /* 146FB4 801379D4 AC400000 */        sw $zero, ($v0) # gMnTrainingFramesElapsed + 0
-  /* 146FB8 801379D8 3C018014 */       lui $at, %hi(gMnTrainingIsStartTriggered)
-  /* 146FBC 801379DC AC208864 */        sw $zero, %lo(gMnTrainingIsStartTriggered)($at)
-  /* 146FC0 801379E0 8C4E0000 */        lw $t6, ($v0) # gMnTrainingFramesElapsed + 0
+  /* 146FAC 801379CC 3C028014 */       lui $v0, %hi(gMNTrainingFramesElapsed)
+  /* 146FB0 801379D0 2442888C */     addiu $v0, $v0, %lo(gMNTrainingFramesElapsed)
+  /* 146FB4 801379D4 AC400000 */        sw $zero, ($v0) # gMNTrainingFramesElapsed + 0
+  /* 146FB8 801379D8 3C018014 */       lui $at, %hi(gMNTrainingIsStartTriggered)
+  /* 146FBC 801379DC AC208864 */        sw $zero, %lo(gMNTrainingIsStartTriggered)($at)
+  /* 146FC0 801379E0 8C4E0000 */        lw $t6, ($v0) # gMNTrainingFramesElapsed + 0
   /* 146FC4 801379E4 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 146FC8 801379E8 AFB10018 */        sw $s1, 0x18($sp)
   /* 146FCC 801379EC 3C11800A */       lui $s1, %hi(gSceneData)
-  /* 146FD0 801379F0 3C018014 */       lui $at, %hi(gMnTrainingMaxFramesElapsed)
+  /* 146FD0 801379F0 3C018014 */       lui $at, %hi(gMNTrainingMaxFramesElapsed)
   /* 146FD4 801379F4 25CF4650 */     addiu $t7, $t6, 0x4650
   /* 146FD8 801379F8 26314AD0 */     addiu $s1, $s1, %lo(gSceneData)
-  /* 146FDC 801379FC AC2F8890 */        sw $t7, %lo(gMnTrainingMaxFramesElapsed)($at)
+  /* 146FDC 801379FC AC2F8890 */        sw $t7, %lo(gMNTrainingMaxFramesElapsed)($at)
   /* 146FE0 80137A00 92240013 */       lbu $a0, 0x13($s1) # gSceneData + 19
   /* 146FE4 80137A04 AFB2001C */        sw $s2, 0x1c($sp)
-  /* 146FE8 80137A08 3C128014 */       lui $s2, %hi(gMnTrainingHumanPanelPort)
-  /* 146FEC 80137A0C 26528894 */     addiu $s2, $s2, %lo(gMnTrainingHumanPanelPort)
+  /* 146FE8 80137A08 3C128014 */       lui $s2, %hi(gMNTrainingHumanPanelPort)
+  /* 146FEC 80137A0C 26528894 */     addiu $s2, $s2, %lo(gMNTrainingHumanPanelPort)
   /* 146FF0 80137A10 AFBF0024 */        sw $ra, 0x24($sp)
   /* 146FF4 80137A14 AFB30020 */        sw $s3, 0x20($sp)
   /* 146FF8 80137A18 AFB00014 */        sw $s0, 0x14($sp)
   /* 146FFC 80137A1C 14800006 */      bnez $a0, .L80137A38
-  /* 147000 80137A20 AE440000 */        sw $a0, ($s2) # gMnTrainingHumanPanelPort + 0
-  /* 147004 80137A24 3C138014 */       lui $s3, %hi(gMnTrainingCPUPanelPort)
-  /* 147008 80137A28 26738898 */     addiu $s3, $s3, %lo(gMnTrainingCPUPanelPort)
+  /* 147000 80137A20 AE440000 */        sw $a0, ($s2) # gMNTrainingHumanPanelPort + 0
+  /* 147004 80137A24 3C138014 */       lui $s3, %hi(gMNTrainingCPUPanelPort)
+  /* 147008 80137A28 26738898 */     addiu $s3, $s3, %lo(gMNTrainingCPUPanelPort)
   /* 14700C 80137A2C 24190001 */     addiu $t9, $zero, 1
   /* 147010 80137A30 10000004 */         b .L80137A44
-  /* 147014 80137A34 AE790000 */        sw $t9, ($s3) # gMnTrainingCPUPanelPort + 0
+  /* 147014 80137A34 AE790000 */        sw $t9, ($s3) # gMNTrainingCPUPanelPort + 0
   .L80137A38:
-  /* 147018 80137A38 3C138014 */       lui $s3, %hi(gMnTrainingCPUPanelPort)
-  /* 14701C 80137A3C 26738898 */     addiu $s3, $s3, %lo(gMnTrainingCPUPanelPort)
-  /* 147020 80137A40 AE600000 */        sw $zero, ($s3) # gMnTrainingCPUPanelPort + 0
+  /* 147018 80137A38 3C138014 */       lui $s3, %hi(gMNTrainingCPUPanelPort)
+  /* 14701C 80137A3C 26738898 */     addiu $s3, $s3, %lo(gMNTrainingCPUPanelPort)
+  /* 147020 80137A40 AE600000 */        sw $zero, ($s3) # gMNTrainingCPUPanelPort + 0
   .L80137A44:
   /* 147024 80137A44 3C08800A */       lui $t0, %hi((gSaveData + 0x458))
   /* 147028 80137A48 95084938 */       lhu $t0, %lo((gSaveData + 0x458))($t0)
-  /* 14702C 80137A4C 3C018014 */       lui $at, %hi(gMnTrainingCharacterUnlockedMask)
-  /* 147030 80137A50 A428887C */        sh $t0, %lo(gMnTrainingCharacterUnlockedMask)($at)
+  /* 14702C 80137A4C 3C018014 */       lui $at, %hi(gMNTrainingCharacterUnlockedMask)
+  /* 147030 80137A50 A428887C */        sh $t0, %lo(gMNTrainingCharacterUnlockedMask)($at)
   /* 147034 80137A54 9229003B */       lbu $t1, 0x3b($s1) # gSceneData + 59
   /* 147038 80137A58 2401001C */     addiu $at, $zero, 0x1c
   /* 14703C 80137A5C 15210005 */       bne $t1, $at, .L80137A74
@@ -6635,11 +6635,11 @@ glabel mnTrainingLoadMatchInfo
   /* 147044 80137A64 0C04DE40 */       jal mnTrainingResetPort
   /* 147048 80137A68 00000000 */       nop
   /* 14704C 80137A6C 10000004 */         b .L80137A80
-  /* 147050 80137A70 8E4A0000 */        lw $t2, ($s2) # gMnTrainingHumanPanelPort + 0
+  /* 147050 80137A70 8E4A0000 */        lw $t2, ($s2) # gMNTrainingHumanPanelPort + 0
   .L80137A74:
   /* 147054 80137A74 0C04DE13 */       jal mnTrainingInitPort
   /* 147058 80137A78 00000000 */       nop
-  /* 14705C 80137A7C 8E4A0000 */        lw $t2, ($s2) # gMnTrainingHumanPanelPort + 0
+  /* 14705C 80137A7C 8E4A0000 */        lw $t2, ($s2) # gMNTrainingHumanPanelPort + 0
   .L80137A80:
   /* 147060 80137A80 3C018014 */       lui $at, %hi(D_ovl28_801385B4)
   /* 147064 80137A84 000A5880 */       sll $t3, $t2, 2
@@ -6669,7 +6669,7 @@ glabel mnTrainingLoadMatchInfo
   /* 1470C0 80137AE0 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 1470C4 80137AE4 00002825 */        or $a1, $zero, $zero
   /* 1470C8 80137AE8 02002025 */        or $a0, $s0, $zero
-  /* 1470CC 80137AEC 8E650000 */        lw $a1, ($s3) # gMnTrainingCPUPanelPort + 0
+  /* 1470CC 80137AEC 8E650000 */        lw $a1, ($s3) # gMNTrainingCPUPanelPort + 0
   /* 1470D0 80137AF0 0C04CCD4 */       jal mnTrainingIsCostumeInUse
   /* 1470D4 80137AF4 00403025 */        or $a2, $v0, $zero
   /* 1470D8 80137AF8 10400006 */      beqz $v0, .L80137B14
@@ -6686,9 +6686,9 @@ glabel mnTrainingLoadMatchInfo
   /* 147100 80137B20 00401825 */        or $v1, $v0, $zero
   /* 147104 80137B24 9223003E */       lbu $v1, 0x3e($s1) # gSceneData + 62
   .L80137B28:
-  /* 147108 80137B28 8E640000 */        lw $a0, ($s3) # gMnTrainingCPUPanelPort + 0
-  /* 14710C 80137B2C 3C0D8014 */       lui $t5, %hi(gMnTrainingPanels)
-  /* 147110 80137B30 25AD8558 */     addiu $t5, $t5, %lo(gMnTrainingPanels)
+  /* 147108 80137B28 8E640000 */        lw $a0, ($s3) # gMNTrainingCPUPanelPort + 0
+  /* 14710C 80137B2C 3C0D8014 */       lui $t5, %hi(gMNTrainingPanels)
+  /* 147110 80137B30 25AD8558 */     addiu $t5, $t5, %lo(gMNTrainingPanels)
   /* 147114 80137B34 00046080 */       sll $t4, $a0, 2
   /* 147118 80137B38 01846023 */      subu $t4, $t4, $a0
   /* 14711C 80137B3C 000C60C0 */       sll $t4, $t4, 3
@@ -6702,11 +6702,11 @@ glabel mnTrainingLoadMatchInfo
   /* 14713C 80137B5C AC4E0080 */        sw $t6, 0x80($v0)
   /* 147140 80137B60 00008025 */        or $s0, $zero, $zero
   /* 147144 80137B64 24110004 */     addiu $s1, $zero, 4
-  /* 147148 80137B68 8E4F0000 */        lw $t7, ($s2) # gMnTrainingHumanPanelPort + 0
+  /* 147148 80137B68 8E4F0000 */        lw $t7, ($s2) # gMNTrainingHumanPanelPort + 0
   .L80137B6C:
   /* 14714C 80137B6C 520F0007 */      beql $s0, $t7, .L80137B8C
   /* 147150 80137B70 26100001 */     addiu $s0, $s0, 1
-  /* 147154 80137B74 8E780000 */        lw $t8, ($s3) # gMnTrainingCPUPanelPort + 0
+  /* 147154 80137B74 8E780000 */        lw $t8, ($s3) # gMNTrainingCPUPanelPort + 0
   /* 147158 80137B78 52180004 */      beql $s0, $t8, .L80137B8C
   /* 14715C 80137B7C 26100001 */     addiu $s0, $s0, 1
   /* 147160 80137B80 0C04DE58 */       jal mnTrainingResetPortToNA
@@ -6714,7 +6714,7 @@ glabel mnTrainingLoadMatchInfo
   /* 147168 80137B88 26100001 */     addiu $s0, $s0, 1
   .L80137B8C:
   /* 14716C 80137B8C 5611FFF7 */      bnel $s0, $s1, .L80137B6C
-  /* 147170 80137B90 8E4F0000 */        lw $t7, ($s2) # gMnTrainingHumanPanelPort + 0
+  /* 147170 80137B90 8E4F0000 */        lw $t7, ($s2) # gMNTrainingHumanPanelPort + 0
   /* 147174 80137B94 8FBF0024 */        lw $ra, 0x24($sp)
   /* 147178 80137B98 8FB00014 */        lw $s0, 0x14($sp)
   /* 14717C 80137B9C 8FB10018 */        lw $s1, 0x18($sp)
@@ -6724,8 +6724,8 @@ glabel mnTrainingLoadMatchInfo
   /* 14718C 80137BAC 27BD0028 */     addiu $sp, $sp, 0x28
 
 glabel mnTrainingInitPanel
-  /* 147190 80137BB0 3C0E8014 */       lui $t6, %hi(gMnTrainingHumanPanelPort)
-  /* 147194 80137BB4 8DCE8894 */        lw $t6, %lo(gMnTrainingHumanPanelPort)($t6)
+  /* 147190 80137BB0 3C0E8014 */       lui $t6, %hi(gMNTrainingHumanPanelPort)
+  /* 147194 80137BB4 8DCE8894 */        lw $t6, %lo(gMNTrainingHumanPanelPort)($t6)
   /* 147198 80137BB8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 14719C 80137BBC AFB00018 */        sw $s0, 0x18($sp)
   /* 1471A0 80137BC0 00808025 */        or $s0, $a0, $zero
@@ -6737,8 +6737,8 @@ glabel mnTrainingInitPanel
   /* 1471B8 80137BD8 01F07823 */      subu $t7, $t7, $s0
   /* 1471BC 80137BDC 000F78C0 */       sll $t7, $t7, 3
   /* 1471C0 80137BE0 01F07823 */      subu $t7, $t7, $s0
-  /* 1471C4 80137BE4 3C188014 */       lui $t8, %hi(gMnTrainingPanels)
-  /* 1471C8 80137BE8 27188558 */     addiu $t8, $t8, %lo(gMnTrainingPanels)
+  /* 1471C4 80137BE4 3C188014 */       lui $t8, %hi(gMNTrainingPanels)
+  /* 1471C8 80137BE8 27188558 */     addiu $t8, $t8, %lo(gMNTrainingPanels)
   /* 1471CC 80137BEC 000F78C0 */       sll $t7, $t7, 3
   /* 1471D0 80137BF0 1000000A */         b .L80137C1C
   /* 1471D4 80137BF4 01F81021 */      addu $v0, $t7, $t8
@@ -6747,8 +6747,8 @@ glabel mnTrainingInitPanel
   /* 1471DC 80137BFC 0330C823 */      subu $t9, $t9, $s0
   /* 1471E0 80137C00 0019C8C0 */       sll $t9, $t9, 3
   /* 1471E4 80137C04 0330C823 */      subu $t9, $t9, $s0
-  /* 1471E8 80137C08 3C088014 */       lui $t0, %hi(gMnTrainingPanels)
-  /* 1471EC 80137C0C 25088558 */     addiu $t0, $t0, %lo(gMnTrainingPanels)
+  /* 1471E8 80137C08 3C088014 */       lui $t0, %hi(gMNTrainingPanels)
+  /* 1471EC 80137C0C 25088558 */     addiu $t0, $t0, %lo(gMNTrainingPanels)
   /* 1471F0 80137C10 0019C8C0 */       sll $t9, $t9, 3
   /* 1471F4 80137C14 03281021 */      addu $v0, $t9, $t0
   /* 1471F8 80137C18 AC400000 */        sw $zero, ($v0)
@@ -6780,12 +6780,12 @@ glabel mnTrainingInitPanel
 glabel mnTrainingInitPanels
   /* 147254 80137C74 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 147258 80137C78 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 14725C 80137C7C 3C048014 */       lui $a0, %hi(gMnTrainingHumanPanelPort)
+  /* 14725C 80137C7C 3C048014 */       lui $a0, %hi(gMNTrainingHumanPanelPort)
   /* 147260 80137C80 0C04DEEC */       jal mnTrainingInitPanel
-  /* 147264 80137C84 8C848894 */        lw $a0, %lo(gMnTrainingHumanPanelPort)($a0)
-  /* 147268 80137C88 3C048014 */       lui $a0, %hi(gMnTrainingCPUPanelPort)
+  /* 147264 80137C84 8C848894 */        lw $a0, %lo(gMNTrainingHumanPanelPort)($a0)
+  /* 147268 80137C88 3C048014 */       lui $a0, %hi(gMNTrainingCPUPanelPort)
   /* 14726C 80137C8C 0C04DEEC */       jal mnTrainingInitPanel
-  /* 147270 80137C90 8C848898 */        lw $a0, %lo(gMnTrainingCPUPanelPort)($a0)
+  /* 147270 80137C90 8C848898 */        lw $a0, %lo(gMNTrainingCPUPanelPort)($a0)
   /* 147274 80137C94 0C04CF2A */       jal mnTrainingUpdatePanels
   /* 147278 80137C98 00000000 */       nop
   /* 14727C 80137C9C 8FBF0014 */        lw $ra, 0x14($sp)
@@ -6861,10 +6861,10 @@ glabel mnTrainingInitCSS
   /* 147388 80137DA8 2A01000C */      slti $at, $s0, 0xc
   /* 14738C 80137DAC 1420FFFB */      bnez $at, .L80137D9C
   /* 147390 80137DB0 00000000 */       nop
-  /* 147394 80137DB4 3C038014 */       lui $v1, %hi(gMnTrainingPanels)
+  /* 147394 80137DB4 3C038014 */       lui $v1, %hi(gMNTrainingPanels)
   /* 147398 80137DB8 3C108013 */       lui $s0, %hi(D_ovl2_80130D9C)
   /* 14739C 80137DBC 26100D9C */     addiu $s0, $s0, %lo(D_ovl2_80130D9C)
-  /* 1473A0 80137DC0 24638558 */     addiu $v1, $v1, %lo(gMnTrainingPanels)
+  /* 1473A0 80137DC0 24638558 */     addiu $v1, $v1, %lo(gMNTrainingPanels)
   .L80137DC4:
   /* 1473A4 80137DC4 8E040000 */        lw $a0, ($s0) # D_ovl2_80130D9C + 0
   /* 1473A8 80137DC8 24050010 */     addiu $a1, $zero, 0x10

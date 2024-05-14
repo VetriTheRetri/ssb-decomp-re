@@ -859,7 +859,7 @@ void scBonusGame_InitBonusGame(void)
     gmRumble_SetPlayerRumble();
     ftPublicitySetup();
 
-    for (player = 0, player_spawn = dFtDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->player_block); player++)
+    for (player = 0, player_spawn = dFTDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 

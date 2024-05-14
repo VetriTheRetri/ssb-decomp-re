@@ -7,10 +7,10 @@
 //                               //
 // // // // // // // // // // // //
 
-extern void *gFtDataNessExtra1;
-extern void *gFtDataNessExtra4;
+extern void *gFTDataNessExtra1;
+extern void *gFTDataNessExtra4;
 
-extern intptr_t lItNessPKFireItemAttributes;// 0x00000034
+extern intptr_t lITNessPKFireItemAttributes;// 0x00000034
 
 // // // // // // // // // // // //
 //                               //
@@ -18,11 +18,11 @@ extern intptr_t lItNessPKFireItemAttributes;// 0x00000034
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItNessPKFireItemDesc = 
+itCreateDesc dITNessPKFireItemDesc = 
 {
     It_Kind_NessPKFire,                     // Item Kind
-    &gFtDataNessExtra1,                     // Pointer to item file data?
-    &lItNessPKFireItemAttributes,           // Offset of item attributes in file?
+    &gFTDataNessExtra1,                     // Pointer to item file data?
+    &lITNessPKFireItemAttributes,           // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -42,7 +42,7 @@ itCreateDesc dItNessPKFireItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dItNessPKFireStatusDesc[/* */] =
+itStatusDesc dITNessPKFireStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -220,7 +220,7 @@ void itNessPKFireGWaitSetStatus(GObj *item_gobj)
     stat_flags = ip->item_hit.stat_flags;
     stat_count = ip->item_hit.stat_count;
 
-    itMainSetItemStatus(item_gobj, dItNessPKFireStatusDesc, itStatus_PKFire_GWait);
+    itMainSetItemStatus(item_gobj, dITNessPKFireStatusDesc, itStatus_PKFire_GWait);
 
     ip->item_hit.stat_flags = stat_flags;
     ip->item_hit.stat_count = stat_count;
@@ -240,7 +240,7 @@ void itNessPKFireAFallSetStatus(GObj *item_gobj)
     stat_flags = ip->item_hit.stat_flags;
     stat_count = ip->item_hit.stat_count;
 
-    itMainSetItemStatus(item_gobj, dItNessPKFireStatusDesc, itStatus_PKFire_AFall);
+    itMainSetItemStatus(item_gobj, dITNessPKFireStatusDesc, itStatus_PKFire_AFall);
 
     ip->item_hit.stat_flags = stat_flags;
     ip->item_hit.stat_count = stat_count;
@@ -255,7 +255,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
     efParticle *efpart;
     efTransform *eftrans;
 
-    item_gobj = itManagerMakeItem(weapon_gobj, &dItNessPKFireItemDesc, pos, vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_WEAPON));
+    item_gobj = itManagerMakeItem(weapon_gobj, &dITNessPKFireItemDesc, pos, vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_WEAPON));
 
     if (item_gobj == NULL)
     {
@@ -286,7 +286,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
 
     ip->lifetime = ITPKFIRE_LIFETIME;
 
-    efpart = func_ovl0_800CE9E8(gFtDataNessExtra4, 0);
+    efpart = func_ovl0_800CE9E8(gFTDataNessExtra4, 0);
 
     if (efpart != NULL)
     {

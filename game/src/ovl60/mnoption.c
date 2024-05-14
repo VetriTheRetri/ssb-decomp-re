@@ -12,11 +12,11 @@
 //                               //
 // // // // // // // // // // // //
 
-#define mnOptionCheckGetOptionButtonInput(is_button, mask) mnCommonCheckGetOptionButtonInput(sMnOptionOptionChangeWait, is_button, mask)
-#define mnOptionCheckGetOptionStickInputUD(stick_range, min, b) mnCommonCheckGetOptionStickInputUD(sMnOptionOptionChangeWait, stick_range, min, b)
-#define mnOptionCheckGetOptionStickInputLR(stick_range, min, b) mnCommonCheckGetOptionStickInputLR(sMnOptionOptionChangeWait, stick_range, min, b)
-#define mnOptionSetOptionChangeWaitP(is_button, stick_range, div) mnCommonSetOptionChangeWaitP(sMnOptionOptionChangeWait, is_button, stick_range, div)
-#define mnOptionSetOptionChangeWaitN(is_button, stick_range, div) mnCommonSetOptionChangeWaitN(sMnOptionOptionChangeWait, is_button, stick_range, div)
+#define mnOptionCheckGetOptionButtonInput(is_button, mask) mnCommonCheckGetOptionButtonInput(sMNOptionOptionChangeWait, is_button, mask)
+#define mnOptionCheckGetOptionStickInputUD(stick_range, min, b) mnCommonCheckGetOptionStickInputUD(sMNOptionOptionChangeWait, stick_range, min, b)
+#define mnOptionCheckGetOptionStickInputLR(stick_range, min, b) mnCommonCheckGetOptionStickInputLR(sMNOptionOptionChangeWait, stick_range, min, b)
+#define mnOptionSetOptionChangeWaitP(is_button, stick_range, div) mnCommonSetOptionChangeWaitP(sMNOptionOptionChangeWait, is_button, stick_range, div)
+#define mnOptionSetOptionChangeWaitN(is_button, stick_range, div) mnCommonSetOptionChangeWaitN(sMNOptionOptionChangeWait, is_button, stick_range, div)
 
 // // // // // // // // // // // //
 //                               //
@@ -27,7 +27,7 @@
 extern intptr_t D_NF_001AC870;
 extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_800A5240;
-extern intptr_t D_NF_801338C0;
+extern intptr_t lMNOptionArenaLo;               // 0x801338C0
 extern intptr_t func_ovl1_803903E0;
 extern sb32 D_8003CB24;
 
@@ -38,31 +38,31 @@ extern sb32 D_8003CB24;
 // // // // // // // // // // // //
 
 // 0x801337A0
-GObj *sMnOptionSoundGObj;
+GObj *sMNOptionSoundGObj;
 
 // 0x801337A4
-GObj *sMnOptionScreenAdjustGObj;
+GObj *sMNOptionScreenAdjustGObj;
 
 // 0x801337A8
-GObj *sMnOptionBackupClearGObj;
+GObj *sMNOptionBackupClearGObj;
 
 // 0x801337AC - Padding?
 s32 D_ovl60_801337AC[3];
 
 // 0x801337B8
-s32 sMnOptionOption;
+s32 sMNOptionOption;
 
 // 0x801337BC - 0 = mono, 1 = stereo
-sb32 sMnOptionSoundIsMonoOrStereo;
+sb32 sMNOptionSoundIsMonoOrStereo;
 
 // 0x801337C0
-sb32 sMnOptionIsScreenFlash;
+sb32 sMNOptionIsScreenFlash;
 
 // 0x801337C8
-GObj *sMnOptionSoundOptionGObj;
+GObj *sMNOptionSoundOptionGObj;
 
 // 0x801337D0
-GObj *sMnOptionMenuGObj;
+GObj *sMNOptionMenuGObj;
 
 // 0x801337D4
 GObj *D_ovl60_801337D4;
@@ -71,25 +71,25 @@ GObj *D_ovl60_801337D4;
 s32 D_ovl60_801337D8;
 
 // 0x801337DC
-s32 sMnOptionIsOptionSelected;
+s32 sMNOptionIsOptionSelected;
 
 // 0x801337E0
-s32 sMnOptionOptionChangeWait;
+s32 sMNOptionOptionChangeWait;
 
 // 0x801337E4
-s32 sMnOptionTotalTimeFrames;
+s32 sMNOptionTotalTimeFrames;
 
 // 0x801337E8
-s32 sMnOptionReturnFrame;
+s32 sMNOptionReturnFrame;
 
 // 0x801337EC - Padding?
 s32 D_ovl60_801337EC;
 
 // 0x801337F0
-rdFileNode sMnOptionStatusBuf[24];
+rdFileNode sMNOptionStatusBuf[24];
 
 // 0x801338B0
-void *sMnOptionFiles[2];
+void *sMNOptionFiles[2];
 
 // // // // // // // // // // // //
 //                               //
@@ -98,27 +98,27 @@ void *sMnOptionFiles[2];
 // // // // // // // // // // // //
 
 // 0x80133620
-u32 dMnOptionFileIDs[/* */] = { 0x0, 0x4 };
+u32 dMNOptionFileIDs[/* */] = { 0x0, 0x4 };
 
 // 0x80133628
-Lights1 dMnOptionLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
+Lights1 dMNOptionLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
 
 // 0x80133640
-Gfx dMnOptionDisplayList[/* */] =
+Gfx dMNOptionDisplayList[/* */] =
 {
     gsSPSetGeometryMode(G_LIGHTING),
-    gsSPSetLights1(dMnOptionLights1),
+    gsSPSetLights1(dMNOptionLights1),
     gsSPEndDisplayList()
 };
 
 // 0x80133668
-gsColorRGBPair dMnOptionSelectedColors = { 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF };
+gsColorRGBPair dMNOptionSelectedColors = { 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF };
 
 // 0x80133670
-gsColorRGBPair dMnOptionHighlightColors = { 0x82, 0x00, 0x28, 0xFF, 0x00, 0x28 };
+gsColorRGBPair dMNOptionHighlightColors = { 0x82, 0x00, 0x28, 0xFF, 0x00, 0x28 };
 
 // 0x80133678
-gsColorRGBPair dMnOptionNotColors = { 0x00, 0x00, 0x00, 0x82, 0x82, 0xAA };
+gsColorRGBPair dMNOptionNotColors = { 0x00, 0x00, 0x00, 0x82, 0x82, 0xAA };
 
 // 0x80133680
 intptr_t D_ovl60_80133680[/* */] = { 0x6A8, 0x1580, 0x1CF0 };
@@ -147,7 +147,7 @@ u32 D_ovl60_801336CC[/* */][4] =
 };
 
 // 0x801336EC
-GObj **sMnOptionOptionGObjs[/* */] = { &sMnOptionSoundGObj, &sMnOptionScreenAdjustGObj, &sMnOptionBackupClearGObj };
+GObj **sMNOptionOptionGObjs[/* */] = { &sMNOptionSoundGObj, &sMNOptionScreenAdjustGObj, &sMNOptionBackupClearGObj };
 
 // 0x801336F8
 scUnkDataBounds D_ovl60_801336F8;
@@ -164,15 +164,15 @@ scRuntimeInfo D_ovl60_80133714;
 // 0x80131B00
 void mnOptionAddLightsDisplayList(Gfx **display_list)
 {
-    gSPDisplayList(display_list[0]++, dMnOptionDisplayList);
+    gSPDisplayList(display_list[0]++, dMNOptionDisplayList);
 }
 
 // 0x80131B24
 void mnOptionUpdateOptionTabSObjs(GObj *gobj, s32 status)
 {
-    gsColorRGBPair selcolors = dMnOptionSelectedColors;
-    gsColorRGBPair hicolors  = dMnOptionHighlightColors;
-    gsColorRGBPair notcolors = dMnOptionNotColors;
+    gsColorRGBPair selcolors = dMNOptionSelectedColors;
+    gsColorRGBPair hicolors  = dMNOptionHighlightColors;
+    gsColorRGBPair notcolors = dMNOptionNotColors;
     gsColorRGBPair *colors;
     SObj *sobj;
     s32 i;
@@ -213,7 +213,7 @@ void mnOptionUpdateOptionTabSObjs(GObj *gobj, s32 status)
 // 0x80131BFC
 void mnOptionMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
 {
-    SObj *sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[0], &D_NF_000001E8));
+    SObj *sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &D_NF_000001E8));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -221,7 +221,7 @@ void mnOptionMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->pos.x = posx;
     sobj->pos.y = posy;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[0], &D_NF_00000330));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &D_NF_00000330));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -238,7 +238,7 @@ void mnOptionMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->lrs = lrs * 8;
     sobj->lrt = 29;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[0], &D_NF_00000568));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &D_NF_00000568));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -280,10 +280,10 @@ void mnOptionMakeSoundOptionSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMnOptionSoundOptionGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMNOptionSoundOptionGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[1], &lMnOptionMonoTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionMonoTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -291,7 +291,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     sobj->pos.x = 179.0F;
     sobj->pos.y = 48.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[1], &lMnOptionStereoTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionStereoTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -299,7 +299,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     sobj->pos.x = 236.0F;
     sobj->pos.y = 48.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[0], &lMnOptionSoundSlashSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNOptionSoundSlashSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -311,7 +311,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     sobj->pos.x = 229.0F;
     sobj->pos.y = 48.0F;
 
-    mnOptionUpdateSoundOptionSObjs(gobj, sMnOptionSoundIsMonoOrStereo);
+    mnOptionUpdateSoundOptionSObjs(gobj, sMNOptionSoundIsMonoOrStereo);
 }
 
 // 0x80131EF0
@@ -320,15 +320,15 @@ void mnOptionMakeSoundTextSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMnOptionSoundGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMNOptionSoundGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
 
     mnOptionMakeOptionTabSObjs(gobj, 113.0F, 42.0F, 17);
 
-    mnOptionUpdateOptionTabSObjs(gobj, sMnOptionOption == mnOption_Option_Sound);
+    mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == mnOption_Option_Sound);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[1], &lMnOptionSoundTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionSoundTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -347,15 +347,15 @@ void mnOptionMakeScreenAdjustSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMnOptionScreenAdjustGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMNOptionScreenAdjustGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
 
     mnOptionMakeOptionTabSObjs(gobj, 91.0F, 89.0F, 17);
 
-    mnOptionUpdateOptionTabSObjs(gobj, sMnOptionOption == mnOption_Option_ScreenAdjust);
+    mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == mnOption_Option_ScreenAdjust);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[1], &lMnOptionScreenAdjustTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionScreenAdjustTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -374,13 +374,13 @@ void mnOptionMakeBackupClearSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMnOptionBackupClearGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMNOptionBackupClearGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
     mnOptionMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 17);
-    mnOptionUpdateOptionTabSObjs(gobj, sMnOptionOption == mnOption_Option_BackupClear);
+    mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == mnOption_Option_BackupClear);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[1], &lMnOptionBackupClearTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionBackupClearTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -415,7 +415,7 @@ void mnOptionMakeMenuGObj(void)
     intptr_t sp1C[ARRAY_COUNT(D_ovl60_80133680)] = D_ovl60_80133680;
     Vec2f sp3C[ARRAY_COUNT(D_ovl60_8013368C)] = D_ovl60_8013368C;
 
-    sMnOptionMenuGObj = omMakeGObjCommon(0, NULL, 5, 0x80000000);
+    sMNOptionMenuGObj = omMakeGObjCommon(0, NULL, 5, 0x80000000);
 }
 
 // 0x80132248
@@ -445,7 +445,7 @@ void mnOptionMakeHeaderSObjs(void)
 
     omAddGObjRenderProc(gobj, mnOptionHeaderProcRender, 1, 0x80000000, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[0], &lMnCommonSmashLogoSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNCommonSmashLogoSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -457,7 +457,7 @@ void mnOptionMakeHeaderSObjs(void)
     sobj->pos.x = 235.0F;
     sobj->pos.y = 158.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[1], &lMnOptionHeaderTextSprite);
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionHeaderTextSprite);
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -479,12 +479,12 @@ void mnOptionMakeDecalSObjs(void)
     gobj = omMakeGObjCommon(0, NULL, 2, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[0], &lMnCommonCircleSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNCommonCircleSprite));
 
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[0], &lMnCommonPaperTearSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNCommonPaperTearSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -496,7 +496,7 @@ void mnOptionMakeDecalSObjs(void)
     sobj->pos.x = 140.0F;
     sobj->pos.y = 143.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[0], &lMnCommonPaperTearSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNCommonPaperTearSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -508,7 +508,7 @@ void mnOptionMakeDecalSObjs(void)
     sobj->pos.x = 225.0F;
     sobj->pos.y = 56.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMnOptionFiles[1], &lMnOptionKnobSprite));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionKnobSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -551,7 +551,7 @@ void func_ovl60_8013275C(void)
 // 0x80132794 - Unused?
 void func_ovl60_80132794(GObj *gobj)
 {
-    if (sMnOptionTotalTimeFrames == D_ovl60_801337D8)
+    if (sMNOptionTotalTimeFrames == D_ovl60_801337D8)
     {
         func_ovl60_8013275C();
     }
@@ -574,15 +574,15 @@ void mnOptionSoundUnderlineProcRender(GObj *gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
     gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 
-    if (sMnOptionOption == mnOption_Option_Sound)
+    if (sMNOptionOption == mnOption_Option_Sound)
     {
         gDPFillRectangle
         (
             gDisplayListHead[0]++,
-            rect[sMnOptionSoundIsMonoOrStereo][0],
-            rect[sMnOptionSoundIsMonoOrStereo][1],
-            rect[sMnOptionSoundIsMonoOrStereo][2],
-            rect[sMnOptionSoundIsMonoOrStereo][3]
+            rect[sMNOptionSoundIsMonoOrStereo][0],
+            rect[sMNOptionSoundIsMonoOrStereo][1],
+            rect[sMNOptionSoundIsMonoOrStereo][2],
+            rect[sMNOptionSoundIsMonoOrStereo][3]
         );
     }
     gDPPipeSync(gDisplayListHead[0]++);
@@ -643,33 +643,33 @@ void mnOptionInitVars(void)
     switch (gSceneData.scene_previous)
     {
     case scMajor_Kind_ScreenAdjust:
-        sMnOptionOption = mnOption_Option_ScreenAdjust;
+        sMNOptionOption = mnOption_Option_ScreenAdjust;
         break;
 
     case scMajor_Kind_BackupClear:
-        sMnOptionOption = mnOption_Option_BackupClear;
+        sMNOptionOption = mnOption_Option_BackupClear;
         break;
 
     default:
-        sMnOptionOption = mnOption_Option_Sound;
+        sMNOptionOption = mnOption_Option_Sound;
         break;
     }
-    sMnOptionOptionChangeWait = 0;
+    sMNOptionOptionChangeWait = 0;
 
-    sMnOptionSoundIsMonoOrStereo = (D_8003CB24 == 1) ? 1 : 0;
+    sMNOptionSoundIsMonoOrStereo = (D_8003CB24 == 1) ? 1 : 0;
 
-    sMnOptionIsScreenFlash = gSaveData.is_allow_screenflash;
-    sMnOptionTotalTimeFrames = 0;
+    sMNOptionIsScreenFlash = gSaveData.is_allow_screenflash;
+    sMNOptionTotalTimeFrames = 0;
     D_ovl60_801337D4 = NULL;
-    sMnOptionIsOptionSelected = FALSE;
-    sMnOptionReturnFrame = sMnOptionTotalTimeFrames + I_MIN_TO_FRAMES(5);
+    sMNOptionIsOptionSelected = FALSE;
+    sMNOptionReturnFrame = sMNOptionTotalTimeFrames + I_MIN_TO_FRAMES(5);
 }
 
 // 0x80132E10
 void mnOptionSaveDataToSRAM(void)
 {
-    gSaveData.is_allow_screenflash = sMnOptionIsScreenFlash;
-    gSaveData.sound_mono_or_stereo = sMnOptionSoundIsMonoOrStereo;
+    gSaveData.is_allow_screenflash = sMNOptionIsScreenFlash;
+    gSaveData.sound_mono_or_stereo = sMNOptionSoundIsMonoOrStereo;
 
     lbMemory_SaveData_WriteSRAM();
 }
@@ -679,14 +679,14 @@ void mnOptionMainProcUpdate(GObj *gobj)
 {
     GObj *select_gobj;
     sb32 stick_range;
-    GObj **option_gobj[ARRAY_COUNT(sMnOptionOptionGObjs)] = sMnOptionOptionGObjs;
+    GObj **option_gobj[ARRAY_COUNT(sMNOptionOptionGObjs)] = sMNOptionOptionGObjs;
     s32 is_button;
 
-    sMnOptionTotalTimeFrames++;
+    sMNOptionTotalTimeFrames++;
 
-    if (sMnOptionTotalTimeFrames >= 10)
+    if (sMNOptionTotalTimeFrames >= 10)
     {
-        if (sMnOptionTotalTimeFrames == sMnOptionReturnFrame)
+        if (sMNOptionTotalTimeFrames == sMNOptionReturnFrame)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = scMajor_Kind_Title;
@@ -697,15 +697,15 @@ void mnOptionMainProcUpdate(GObj *gobj)
         }
         if (func_ovl1_80390B7C() == FALSE)
         {
-            sMnOptionReturnFrame = sMnOptionTotalTimeFrames + I_MIN_TO_FRAMES(5);
+            sMNOptionReturnFrame = sMNOptionTotalTimeFrames + I_MIN_TO_FRAMES(5);
         }
-        if (sMnOptionIsOptionSelected != FALSE)
+        if (sMNOptionIsOptionSelected != FALSE)
         {
             func_80005C74();
         }
-        if (sMnOptionOptionChangeWait != 0)
+        if (sMNOptionOptionChangeWait != 0)
         {
-            sMnOptionOptionChangeWait--;
+            sMNOptionOptionChangeWait--;
         }
         if
         (
@@ -715,23 +715,23 @@ void mnOptionMainProcUpdate(GObj *gobj)
             (func_ovl1_80390804(D_JPAD | D_CBUTTONS) == FALSE)
         )
         {
-            sMnOptionOptionChangeWait = 0;
+            sMNOptionOptionChangeWait = 0;
         }
         if (func_ovl1_8039076C(A_BUTTON | START_BUTTON) != FALSE)
         {
-            switch (sMnOptionOption)
+            switch (sMNOptionOption)
             {
             case mnOption_Option_ScreenAdjust:
                 mnOptionSaveDataToSRAM();
 
                 func_800269C0(alSound_SFX_MenuSelect);
 
-                mnOptionUpdateOptionTabSObjs(*option_gobj[sMnOptionOption], mnOptionTab_Status_Selected);
+                mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], mnOptionTab_Status_Selected);
 
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = scMajor_Kind_ScreenAdjust;
 
-                sMnOptionIsOptionSelected = TRUE;
+                sMNOptionIsOptionSelected = TRUE;
                 return;
 
             case mnOption_Option_BackupClear:
@@ -739,12 +739,12 @@ void mnOptionMainProcUpdate(GObj *gobj)
 
                 func_800269C0(alSound_SFX_MenuSelect);
 
-                mnOptionUpdateOptionTabSObjs(*option_gobj[sMnOptionOption], mnOptionTab_Status_Selected);
+                mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], mnOptionTab_Status_Selected);
 
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = scMajor_Kind_BackupClear;
 
-                sMnOptionIsOptionSelected = TRUE;
+                sMNOptionIsOptionSelected = TRUE;
                 return;
             }
         }
@@ -766,16 +766,16 @@ void mnOptionMainProcUpdate(GObj *gobj)
 
             mnOptionSetOptionChangeWaitP(is_button, stick_range, 7);
 
-            mnOptionUpdateOptionTabSObjs(*option_gobj[sMnOptionOption], mnOptionTab_Status_Not);
+            mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], mnOptionTab_Status_Not);
 
-            if (sMnOptionOption == mnOption_Option_Start)
+            if (sMNOptionOption == mnOption_Option_Start)
             {
-                sMnOptionOption = mnOption_Option_End;
+                sMNOptionOption = mnOption_Option_End;
             }
-            else sMnOptionOption--;
+            else sMNOptionOption--;
 
-            mnOptionUpdateOptionTabSObjs(*option_gobj[sMnOptionOption], mnOptionTab_Status_Highlight);
-            omEjectGObjCommon(sMnOptionMenuGObj);
+            mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], mnOptionTab_Status_Highlight);
+            omEjectGObjCommon(sMNOptionMenuGObj);
             mnOptionMakeMenuGObj();
         }
         if
@@ -788,23 +788,23 @@ void mnOptionMainProcUpdate(GObj *gobj)
 
             mnOptionSetOptionChangeWaitN(is_button, stick_range, 7);
 
-            if (sMnOptionOption == mnOption_Option_ScreenAdjust)
+            if (sMNOptionOption == mnOption_Option_ScreenAdjust)
             {
-                sMnOptionOptionChangeWait += 8;
+                sMNOptionOptionChangeWait += 8;
             }
-            mnOptionUpdateOptionTabSObjs(*option_gobj[sMnOptionOption], mnOptionTab_Status_Not);
+            mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], mnOptionTab_Status_Not);
 
-            if (sMnOptionOption == mnOption_Option_End)
+            if (sMNOptionOption == mnOption_Option_End)
             {
-                sMnOptionOption = mnOption_Option_Start;
+                sMNOptionOption = mnOption_Option_Start;
             }
-            else sMnOptionOption++;
+            else sMNOptionOption++;
 
-            mnOptionUpdateOptionTabSObjs(*option_gobj[sMnOptionOption], mnOptionTab_Status_Highlight);
-            omEjectGObjCommon(sMnOptionMenuGObj);
+            mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], mnOptionTab_Status_Highlight);
+            omEjectGObjCommon(sMNOptionMenuGObj);
             mnOptionMakeMenuGObj();
         }
-        if (sMnOptionOption == mnOption_Option_Sound)
+        if (sMNOptionOption == mnOption_Option_Sound)
         {
             if
             (
@@ -812,20 +812,20 @@ void mnOptionMainProcUpdate(GObj *gobj)
                 (mnOptionCheckGetOptionStickInputLR(stick_range, -20, 0))
             )
             {
-                if (sMnOptionSoundIsMonoOrStereo == 0)
+                if (sMNOptionSoundIsMonoOrStereo == 0)
                 {
                     func_800269C0(alSound_SFX_MenuScroll1);
 
-                    sMnOptionSoundIsMonoOrStereo = 1;
+                    sMNOptionSoundIsMonoOrStereo = 1;
 
-                    omEjectGObjCommon(sMnOptionSoundOptionGObj);
+                    omEjectGObjCommon(sMNOptionSoundOptionGObj);
                     mnOptionMakeSoundOptionSObjs();
 
-                    sMnOptionOptionChangeWait = mnCommonGetOptionChangeWaitN(stick_range, 7);
+                    sMNOptionOptionChangeWait = mnCommonGetOptionChangeWaitN(stick_range, 7);
 
-                    omEjectGObjCommon(sMnOptionMenuGObj);
+                    omEjectGObjCommon(sMNOptionMenuGObj);
                     mnOptionMakeMenuGObj();
-                    func_80020A34(sMnOptionSoundIsMonoOrStereo);
+                    func_80020A34(sMNOptionSoundIsMonoOrStereo);
                 }
             }
             if
@@ -834,37 +834,37 @@ void mnOptionMainProcUpdate(GObj *gobj)
                 (mnOptionCheckGetOptionStickInputLR(stick_range, 20, 1))
             )
             {
-                if (sMnOptionSoundIsMonoOrStereo == 1)
+                if (sMNOptionSoundIsMonoOrStereo == 1)
                 {
                     func_800269C0(alSound_SFX_MenuScroll1);
 
-                    sMnOptionSoundIsMonoOrStereo = 0;
+                    sMNOptionSoundIsMonoOrStereo = 0;
 
-                    omEjectGObjCommon(sMnOptionSoundOptionGObj);
+                    omEjectGObjCommon(sMNOptionSoundOptionGObj);
                     mnOptionMakeSoundOptionSObjs();
 
-                    sMnOptionOptionChangeWait = mnCommonGetOptionChangeWaitP(stick_range, 7);
+                    sMNOptionOptionChangeWait = mnCommonGetOptionChangeWaitP(stick_range, 7);
 
-                    omEjectGObjCommon(sMnOptionMenuGObj);
+                    omEjectGObjCommon(sMNOptionMenuGObj);
                     mnOptionMakeMenuGObj();
-                    func_80020A34(sMnOptionSoundIsMonoOrStereo);
+                    func_80020A34(sMNOptionSoundIsMonoOrStereo);
                 }
             }
             if (func_ovl1_8039076C(A_BUTTON) != FALSE)
             {
                 func_800269C0(alSound_SFX_MenuScroll1);
 
-                if (sMnOptionSoundIsMonoOrStereo == 1)
+                if (sMNOptionSoundIsMonoOrStereo == 1)
                 {
-                    sMnOptionSoundIsMonoOrStereo = 0;
+                    sMNOptionSoundIsMonoOrStereo = 0;
                 }
-                else sMnOptionSoundIsMonoOrStereo = 1;
+                else sMNOptionSoundIsMonoOrStereo = 1;
 
-                omEjectGObjCommon(sMnOptionSoundOptionGObj);
+                omEjectGObjCommon(sMNOptionSoundOptionGObj);
                 mnOptionMakeSoundOptionSObjs();
-                omEjectGObjCommon(sMnOptionMenuGObj);
+                omEjectGObjCommon(sMNOptionMenuGObj);
                 mnOptionMakeMenuGObj();
-                func_80020A34(sMnOptionSoundIsMonoOrStereo);
+                func_80020A34(sMNOptionSoundIsMonoOrStereo);
             }
         }
     }
@@ -879,13 +879,13 @@ void func_ovl60_8013346C(void)
     rldm_setup.tableFileCount = (uintptr_t)&D_NF_00000854;
     rldm_setup.fileHeap = NULL;
     rldm_setup.fileHeapSize = 0;
-    rldm_setup.statusBuf = sMnOptionStatusBuf;
-    rldm_setup.statusBufSize = ARRAY_COUNT(sMnOptionStatusBuf);
+    rldm_setup.statusBuf = sMNOptionStatusBuf;
+    rldm_setup.statusBufSize = ARRAY_COUNT(sMNOptionStatusBuf);
     rldm_setup.forceBuf = NULL;
     rldm_setup.forceBufSize = 0;
 
     rdManagerInitSetup(&rldm_setup);
-    rdManagerLoadFiles(dMnOptionFileIDs, ARRAY_COUNT(dMnOptionFileIDs), sMnOptionFiles, gsMemoryAlloc(rdManagerGetAllocSize(dMnOptionFileIDs, ARRAY_COUNT(dMnOptionFileIDs)), 0x10));
+    rdManagerLoadFiles(dMNOptionFileIDs, ARRAY_COUNT(dMNOptionFileIDs), sMNOptionFiles, gsMemoryAlloc(rdManagerGetAllocSize(dMNOptionFileIDs, ARRAY_COUNT(dMNOptionFileIDs)), 0x10));
     omMakeGObjCommon(0, mnOptionMainProcUpdate, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
     mnOptionInitVars();
@@ -914,6 +914,6 @@ void mnOptionStartScene(void)
 {
     D_ovl60_801336F8.unk_scdatabounds_0xC = ((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl60_801336F8);
-    D_ovl60_80133714.arena_size = ((uintptr_t)&func_ovl1_803903E0 - (uintptr_t)&D_NF_801338C0);
+    D_ovl60_80133714.arena_size = ((uintptr_t)&func_ovl1_803903E0 - (uintptr_t)&lMNOptionArenaLo);
     func_8000683C(&D_ovl60_80133714);
 }

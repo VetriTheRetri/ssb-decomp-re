@@ -8,7 +8,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItGBumperItemAttributes;   // 0x00000CF0
+extern intptr_t lITGBumperItemAttributes;   // 0x00000CF0
 
 // // // // // // // // // // // //
 //                               //
@@ -16,11 +16,11 @@ extern intptr_t lItGBumperItemAttributes;   // 0x00000CF0
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItGBumperItemDesc =
+itCreateDesc dITGBumperItemDesc =
 {
     It_Kind_GBumper,                        // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItGBumperItemAttributes,              // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITGBumperItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -90,7 +90,7 @@ sb32 itGBumperSDefaultProcHit(GObj *item_gobj)
 // 0x8017D67C
 GObj* itGBumperMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItGBumperItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITGBumperItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

@@ -7,10 +7,10 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItNBumperItemAttributes;   // 0x0000069C
-extern intptr_t lItNBumperDataStart;        // 0x00007648
-extern intptr_t lItNBumperGWaitMObjSub;     // 0x00007A38
-extern intptr_t lItNBumperGWaitDisplayList; // 0x00007AF8
+extern intptr_t lITNBumperItemAttributes;   // 0x0000069C
+extern intptr_t lITNBumperDataStart;        // 0x00007648
+extern intptr_t lITNBumperGWaitMObjSub;     // 0x00007A38
+extern intptr_t lITNBumperGWaitDisplayList; // 0x00007AF8
 
 // // // // // // // // // // // //
 //                               //
@@ -19,11 +19,11 @@ extern intptr_t lItNBumperGWaitDisplayList; // 0x00007AF8
 // // // // // // // // // // // //
 
 // 0x8018A690
-itCreateDesc dItNBumperItemDesc =
+itCreateDesc dITNBumperItemDesc =
 {
     It_Kind_NBumper,                        // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItNBumperItemAttributes,              // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITNBumperItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -44,7 +44,7 @@ itCreateDesc dItNBumperItemDesc =
 };
 
 // 0x8018A6C4
-itStatusDesc dItNBumperStatusDesc[/* */] =
+itStatusDesc dITNBumperStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -241,7 +241,7 @@ sb32 itNBumperFThrowProcHit(GObj *item_gobj)
 void itNBumperGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dItNBumperStatusDesc, itStatus_NBumper_GWait);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDesc, itStatus_NBumper_GWait);
 }
 
 // 0x8017B634
@@ -252,13 +252,13 @@ void itNBumperAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dItNBumperStatusDesc, itStatus_NBumper_AFall);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDesc, itStatus_NBumper_AFall);
 }
 
 // 0x8017B678
 void itNBumperFHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItNBumperStatusDesc, itStatus_NBumper_FHold);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDesc, itStatus_NBumper_FHold);
 }
 
 // 0x8017B6A0
@@ -323,7 +323,7 @@ void itNBumperFThrowSetStatus(GObj *item_gobj)
     ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
     ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
 
-    itMainSetItemStatus(item_gobj, dItNBumperStatusDesc, itStatus_NBumper_FThrow);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDesc, itStatus_NBumper_FThrow);
 }
 
 // 0x8017B828
@@ -336,7 +336,7 @@ void itNBumperFDropSetStatus(GObj *item_gobj)
     ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
     ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
 
-    itMainSetItemStatus(item_gobj, dItNBumperStatusDesc, itStatus_NBumper_FDrop);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDesc, itStatus_NBumper_FDrop);
 }
 
 // 0x8017B874
@@ -370,11 +370,11 @@ void itNBumperGWaitHitInitItemVars(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    dl = itGetPData(ip, lItNBumperDataStart, lItNBumperGWaitDisplayList); // (uintptr_t)((uintptr_t)ip->attributes->model_desc - (intptr_t)&lItNBumperDataStart) + (intptr_t)&lItNBumperGWaitDisplayList; Linker thing
+    dl = itGetPData(ip, lITNBumperDataStart, lITNBumperGWaitDisplayList); // (uintptr_t)((uintptr_t)ip->attributes->model_desc - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperGWaitDisplayList; Linker thing
 
     dobj->display_list = dl;
 
-    mobjsub = itGetPData(ip, lItNBumperDataStart, lItNBumperGWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attributes->model_desc - (intptr_t)&lItNBumperDataStart) + (intptr_t)&lItNBumperGWaitMObjSub); // Linker thing
+    mobjsub = itGetPData(ip, lITNBumperDataStart, lITNBumperGWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attributes->model_desc - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperGWaitMObjSub); // Linker thing
 
     omRemoveMObjFromDObj(dobj);
     omAddMObjForDObj(dobj, mobjsub);
@@ -526,7 +526,7 @@ sb32 itNBumperGWaitHitProcReflector(GObj *item_gobj)
 void itNBumperGWaitHitSetStatus(GObj *item_gobj)
 {
     itNBumperGWaitHitInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItNBumperStatusDesc, itStatus_NBumper_GWaitHit);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDesc, itStatus_NBumper_GWaitHit);
 }
 
 // 0x8017BD80
@@ -571,7 +571,7 @@ void itNBumperAHitSetStatus(GObj *item_gobj)
 
     ip->item_vars.bumper.damage_all_delay = ITBUMPER_DAMAGE_ALL_WAIT;
 
-    itMainSetItemStatus(item_gobj, dItNBumperStatusDesc, itStatus_NBumper_AHit);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDesc, itStatus_NBumper_AHit);
 }
 
 // 0x8017BED4
@@ -616,13 +616,13 @@ void itNBumperGDisappearSetStatus(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dItNBumperStatusDesc, itStatus_NBumper_GDisappear);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDesc, itStatus_NBumper_GDisappear);
 }
 
 // 0x8017BF8C
 GObj* itNBumperMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItNBumperItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITNBumperItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

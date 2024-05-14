@@ -10,9 +10,9 @@
 // // // // // // // // // // // //
 
 extern intptr_t
-lItHitokageItemAttributes;                  // 0x000001FC
+lITHitokageItemAttributes;                  // 0x000001FC
 extern intptr_t
-lItHitokageWeaponFlameWeaponAttributes;     // 0x00000244
+lITHitokageWeaponFlameWeaponAttributes;     // 0x00000244
 
 extern s32 dGrYamabukiMonsterAttackType;
 
@@ -22,11 +22,11 @@ extern s32 dGrYamabukiMonsterAttackType;
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItHitokageItemDesc =
+itCreateDesc dITHitokageItemDesc =
 {
     It_Kind_Hitokage,                       // Item Kind
     &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
-    &lItHitokageItemAttributes,             // Offset of item attributes in file?
+    &lITHitokageItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -46,7 +46,7 @@ itCreateDesc dItHitokageItemDesc =
     itHitokageSDefaultProcDamage            // Proc Damage
 };
 
-itStatusDesc dItHitokageStatusDesc[/* */] =
+itStatusDesc dITHitokageStatusDesc[/* */] =
 {
     // Status 0 (Neutral Damage)
     {
@@ -61,12 +61,12 @@ itStatusDesc dItHitokageStatusDesc[/* */] =
     }
 };
 
-wpCreateDesc dItHitokageWeaponFlameWeaponDesc =
+wpCreateDesc dITHitokageWeaponFlameWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_HitokageFlame,                  // Weapon Kind
     &gGroundStruct.yamabuki.item_head,      // Pointer to character's loaded files?
-    &lItHitokageWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
+    &lITHitokageWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -106,7 +106,7 @@ enum itHitokageStatus
 // 0x80183DA0
 void itHitokageNDamageSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItHitokageStatusDesc, itStatus_Hitokage_NDamage);
+    itMainSetItemStatus(item_gobj, dITHitokageStatusDesc, itStatus_Hitokage_NDamage);
 
     itGetStruct(item_gobj)->proc_dead = itHitokageNDamageProcDead;
 }
@@ -201,7 +201,7 @@ sb32 itHitokageSDefaultProcDamage(GObj *item_gobj)
 // 0x80184058
 GObj* itHitokageMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItHitokageItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITHitokageItemDesc, pos, vel, flags);
     s32 unused;
     DObj *dobj;
     itStruct *ip;
@@ -281,8 +281,8 @@ sb32 itHitokageWeaponFlameProcReflector(GObj *weapon_gobj)
 
     translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
-    func_ovl0_800CE8C0(gItemEffectBank | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(gItemEffectBank | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITemEffectBank | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITemEffectBank | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return FALSE;
 }
@@ -290,7 +290,7 @@ sb32 itHitokageWeaponFlameProcReflector(GObj *weapon_gobj)
 // 0x801842C8
 GObj* itHitokageWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dItHitokageWeaponFlameWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITHitokageWeaponFlameWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     wpStruct *wp;
 
     if (weapon_gobj == NULL)
@@ -305,8 +305,8 @@ GObj* itHitokageWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->lr = LR_Left;
 
-    func_ovl0_800CE8C0(gItemEffectBank | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(gItemEffectBank | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITemEffectBank | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITemEffectBank | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return weapon_gobj;
 }

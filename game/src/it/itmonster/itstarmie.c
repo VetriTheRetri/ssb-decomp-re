@@ -8,11 +8,11 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItStarmieItemAttributes;   // 0x00000B34
+extern intptr_t lITStarmieItemAttributes;   // 0x00000B34
 extern intptr_t
-lItStarmieWeaponSwiftWeaponAttributes;      // 0x00000B7C
-extern intptr_t lItStarmieDataStart;        // 0x000112A0
-extern intptr_t lItStarmieMatAnimJoint;     // 0x00011338
+lITStarmieWeaponSwiftWeaponAttributes;      // 0x00000B7C
+extern intptr_t lITStarmieDataStart;        // 0x000112A0
+extern intptr_t lITStarmieMatAnimJoint;     // 0x00011338
 
 // // // // // // // // // // // //
 //                               //
@@ -21,11 +21,11 @@ extern intptr_t lItStarmieMatAnimJoint;     // 0x00011338
 // // // // // // // // // // // //
 
 // 0x8018B170
-itCreateDesc dItStarmieItemDesc = 
+itCreateDesc dITStarmieItemDesc = 
 {
     It_Kind_Starmie,                        // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItStarmieItemAttributes,              // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITStarmieItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -46,7 +46,7 @@ itCreateDesc dItStarmieItemDesc =
 };
 
 // 0x8018B1A4
-itStatusDesc dItStarmieStatusDesc[/* */] =
+itStatusDesc dITStarmieStatusDesc[/* */] =
 {
     // Status 0 (Neutral Follow)
     {
@@ -74,12 +74,12 @@ itStatusDesc dItStarmieStatusDesc[/* */] =
 };
 
 // 0x8018B1E4
-wpCreateDesc dItStarmieWeaponSwiftWeaponDesc = 
+wpCreateDesc dITStarmieWeaponSwiftWeaponDesc = 
 {
     0x03,                                   // Render flags?
     Wp_Kind_StarmieSwift,                   // Weapon Kind
-    &gItemFileData,                         // Pointer to character's loaded files?
-    &lItStarmieWeaponSwiftWeaponAttributes, // Offset of weapon attributes in loaded files
+    &gITemFileData,                         // Pointer to character's loaded files?
+    &lITStarmieWeaponSwiftWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -187,7 +187,7 @@ void itStarmieNAttackInitItemVars(GObj *item_gobj)
 void itStarmieNAttackSetStatus(GObj *item_gobj)
 {
     itStarmieNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItStarmieStatusDesc, itStatus_Starmie_NAttack);
+    itMainSetItemStatus(item_gobj, dITStarmieStatusDesc, itStatus_Starmie_NAttack);
 }
 
 // 0x80181E40
@@ -253,7 +253,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
     }
     if (ip->it_kind == It_Kind_Starmie)
     {
-        omAddMObjAnimAll(item_dobj->mobj, itGetPData(ip, lItStarmieDataStart, lItStarmieMatAnimJoint), 0); // Linker thing
+        omAddMObjAnimAll(item_dobj->mobj, itGetPData(ip, lITStarmieDataStart, lITStarmieMatAnimJoint), 0); // Linker thing
 
         func_8000DF34(item_gobj);
     }
@@ -310,7 +310,7 @@ void itStarmieNFollowInitItemVars(GObj *item_gobj)
 void itStarmieNFollowSetStatus(GObj *item_gobj)
 {
     itStarmieNFollowInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItStarmieStatusDesc, itStatus_Starmie_NFollow);
+    itMainSetItemStatus(item_gobj, dITStarmieStatusDesc, itStatus_Starmie_NFollow);
 }
 
 // 0x8018221C
@@ -344,7 +344,7 @@ sb32 itStarmieSDefaultProcMap(GObj *item_gobj)
 // 0x801822B0
 GObj* itStarmieMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItStarmieItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITStarmieItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -362,7 +362,7 @@ GObj* itStarmieMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lItStarmieDataStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITStarmieDataStart), 0.0F); // Linker thing
 
         omMoveGObjDLHead(item_gobj, 0x12, item_gobj->dl_link_order);
     }
@@ -432,7 +432,7 @@ sb32 itStarmieWeaponSwiftProcReflector(GObj *weapon_gobj)
 GObj* itStarmieWeaponSwiftMakeWeapon(GObj *item_gobj, Vec3f *pos)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dItStarmieWeaponSwiftWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITStarmieWeaponSwiftWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *dobj;
     s32 unused;
     wpStruct *wp;

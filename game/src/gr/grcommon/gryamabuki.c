@@ -74,7 +74,7 @@ void grYamabukiGateMakeMonster(void)
 
     vel.x = vel.y = vel.z = 0.0F;
 
-    if ((dItMonsterSpawnID == 0) || (dItMonsterSpawnID > (It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1)))
+    if ((dITMonsterSpawnID == 0) || (dITMonsterSpawnID > (It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1)))
     {
         item_id = lbRandom_GetIntRange(It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1);
 
@@ -84,7 +84,7 @@ void grYamabukiGateMakeMonster(void)
         }
         gGroundStruct.yamabuki.monster_id_prev = item_id;
     }
-    else item_id = dItMonsterSpawnID - 1;
+    else item_id = dITMonsterSpawnID - 1;
 
     gGroundStruct.yamabuki.monster_gobj = itManagerMakeItemSetupCommon(NULL, item_id + It_Kind_GrMonsterStart, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
 }

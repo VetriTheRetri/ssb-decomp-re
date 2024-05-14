@@ -3,7 +3,7 @@
 #include <gr/ground.h>
 #include <gm/battle.h>
 
-extern ftCreateDesc dFtDefaultFighterDesc;
+extern ftCreateDesc dFTDefaultFighterDesc;
 
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000030;
@@ -106,7 +106,7 @@ void scBattle_StartStockBattle(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = dFtDefaultFighterDesc;
+        player_spawn = dFTDefaultFighterDesc;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 
@@ -368,7 +368,7 @@ void scBattle_StartSDBattle(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        player_spawn = dFtDefaultFighterDesc;
+        player_spawn = dFTDefaultFighterDesc;
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 

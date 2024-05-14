@@ -10,11 +10,11 @@
 // // // // // // // // // // // //
 
 extern intptr_t
-lItFushigibanaItemAttributes;                   // 0x00000278
+lITFushigibanaItemAttributes;                   // 0x00000278
 extern intptr_t 
-lItFushigibanaHitParties;                       // 0x000002C0
+lITFushigibanaHitParties;                       // 0x000002C0
 extern intptr_t
-lItFushigibanaWeaponRazorWeaponAttributes;      // 0x00000308
+lITFushigibanaWeaponRazorWeaponAttributes;      // 0x00000308
 
 extern s32 dGrYamabukiMonsterAttackType;
 
@@ -24,11 +24,11 @@ extern s32 dGrYamabukiMonsterAttackType;
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItFushigibanaItemDesc =
+itCreateDesc dITFushigibanaItemDesc =
 {
     It_Kind_Fushigibana,                        // Item Kind
     &gGroundStruct.yamabuki.item_head,          // Pointer to item file data?
-    &lItFushigibanaItemAttributes,              // Offset of item attributes in file?
+    &lITFushigibanaItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -48,12 +48,12 @@ itCreateDesc dItFushigibanaItemDesc =
     NULL                                        // Proc Damage
 };
 
-wpCreateDesc dItFushigibanaWeaponRazorWeaponDesc =
+wpCreateDesc dITFushigibanaWeaponRazorWeaponDesc =
 {
     0x03,                                       // Render flags?
     Wp_Kind_FushigibanaRazor,                   // Weapon Kind
     &gGroundStruct.yamabuki.item_head,          // Pointer to item's loaded files?
-    &lItFushigibanaWeaponRazorWeaponAttributes, // Offset of weapon attributes in loaded files
+    &lITFushigibanaWeaponRazorWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -82,7 +82,7 @@ wpCreateDesc dItFushigibanaWeaponRazorWeaponDesc =
 void itFushigibanaSDefaultUpdateHitParty(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    itHitParty *hit_party = itGetHitParty(dItFushigibanaItemDesc, lItFushigibanaHitParties); // (itHitParty*) ((uintptr_t)*dItFushigibanaItemDesc.p_file + (intptr_t)&Fushigibana_Event); // Linker thing
+    itHitParty *hit_party = itGetHitParty(dITFushigibanaItemDesc, lITFushigibanaHitParties); // (itHitParty*) ((uintptr_t)*dITFushigibanaItemDesc.p_file + (intptr_t)&Fushigibana_Event); // Linker thing
 
     if (ip->it_multi == hit_party[ip->item_event_index].timer)
     {
@@ -170,7 +170,7 @@ sb32 itFushigibanaSDefaultProcUpdate(GObj *item_gobj)
 // 0x8018470C
 GObj* itFushigibanaMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItFushigibanaItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITFushigibanaItemDesc, pos, vel, flags);
     s32 unused;
     DObj *dobj;
     itStruct *ip;
@@ -270,7 +270,7 @@ sb32 itFushigibanaWeaponRazorProcReflector(GObj *weapon_gobj)
 // 0x801849EC
 GObj* itFushigibanaWeaponRazorMakeWeapon(GObj *item_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dItFushigibanaWeaponRazorWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITFushigibanaWeaponRazorWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *dobj;
     wpStruct *wp;
 

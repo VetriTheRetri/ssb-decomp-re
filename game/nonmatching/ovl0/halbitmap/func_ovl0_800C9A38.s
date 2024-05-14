@@ -375,8 +375,8 @@ glabel func_ovl0_800C9A38
   /* 045974 800C9F94 0C03268E */       jal func_ovl0_800C9A38
   /* 045978 800C9F98 AFA20058 */        sw $v0, 0x58($sp)
   /* 04597C 800C9F9C 8FA20058 */        lw $v0, 0x58($sp)
-  /* 045980 800C9FA0 3C038013 */       lui $v1, %hi(dFtRenderHitShuffleOffsets)
-  /* 045984 800C9FA4 2463B930 */     addiu $v1, $v1, %lo(dFtRenderHitShuffleOffsets)
+  /* 045980 800C9FA0 3C038013 */       lui $v1, %hi(dFTRenderHitShuffleOffsets)
+  /* 045984 800C9FA4 2463B930 */     addiu $v1, $v1, %lo(dFTRenderHitShuffleOffsets)
   /* 045988 800C9FA8 944F0276 */       lhu $t7, 0x276($v0)
   /* 04598C 800C9FAC 27A40018 */     addiu $a0, $sp, 0x18
   /* 045990 800C9FB0 11E00015 */      beqz $t7, .L800CA008

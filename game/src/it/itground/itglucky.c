@@ -8,7 +8,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItGLuckyItemAttributes;    // 0x000000BC
+extern intptr_t lITGLuckyItemAttributes;    // 0x000000BC
 
 // // // // // // // // // // // //
 //                               //
@@ -16,11 +16,11 @@ extern intptr_t lItGLuckyItemAttributes;    // 0x000000BC
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItGLuckyItemDesc =
+itCreateDesc dITGLuckyItemDesc =
 {
     It_Kind_GLucky,                         // Item Kind
     &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
-    &lItGLuckyItemAttributes,               // Offset of item attributes in file?
+    &lITGLuckyItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -40,7 +40,7 @@ itCreateDesc dItGLuckyItemDesc =
     itGLuckySDefaultProcDamage              // Proc Damage
 };
 
-itStatusDesc dItGLuckyStatusDesc[/* */] =
+itStatusDesc dITGLuckyStatusDesc[/* */] =
 {
     // Status 0 (Neutral Damage)
     {
@@ -76,7 +76,7 @@ enum itGLuckyStatus
 // 0x8017C240
 void itGLuckyNDamageSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dItGLuckyStatusDesc, itStatus_GLucky_NDamage);
+    itMainSetItemStatus(item_gobj, dITGLuckyStatusDesc, itStatus_GLucky_NDamage);
 
     itGetStruct(item_gobj)->proc_dead = itGLuckyNDamageProcDead;
 }
@@ -217,7 +217,7 @@ sb32 itGLuckySDefaultProcDamage(GObj *item_gobj)
 // 0x8017C5F4
 GObj* itGLuckyMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItGLuckyItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITGLuckyItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

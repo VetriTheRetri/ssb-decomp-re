@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 
-void (*dFtCommonSpecialLwStatusList[/* */])(GObj*) = 
+void (*dFTCommonSpecialLwStatusList[/* */])(GObj*) = 
 {
     ftMarioSpecialLwSetStatus,
     ftFoxSpecialLwStartSetStatus,
@@ -39,7 +39,7 @@ sb32 ftCommonSpecialLwCheckInterruptCommon(GObj *fighter_gobj)
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_b) && (attributes->is_have_speciallw) && (fp->input.pl.stick_range.y <= FTCOMMON_SPECIALLW_STICK_RANGE_MIN))
     {
-        dFtCommonSpecialLwStatusList[fp->ft_kind](fighter_gobj);
+        dFTCommonSpecialLwStatusList[fp->ft_kind](fighter_gobj);
 
         return TRUE;
     }

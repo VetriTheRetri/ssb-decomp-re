@@ -1,16 +1,16 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFtDataYoshiMain;
+extern void *gFTDataYoshiMain;
 extern
-intptr_t lWpYoshiStarWeaponAttributes;      // 0x00000040
+intptr_t lWPYoshiStarWeaponAttributes;      // 0x00000040
 
-wpCreateDesc dWpYoshiStarWeaponDesc =
+wpCreateDesc dWPYoshiStarWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_YoshiStar,                      // Weapon Kind
-    &gFtDataYoshiMain,                      // Pointer to character's loaded files?
-    &lWpYoshiStarWeaponAttributes,          // Offset of weapon attributes in loaded files
+    &gFTDataYoshiMain,                      // Pointer to character's loaded files?
+    &lWPYoshiStarWeaponAttributes,          // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -159,7 +159,7 @@ GObj* wpYoshiStarMakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 lr)
     }
     else offset.x -= WPYOSHISTAR_OFF_X;
     
-    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpYoshiStarWeaponDesc, &offset, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPYoshiStarWeaponDesc, &offset, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
 
     if (weapon_gobj == NULL)
     {

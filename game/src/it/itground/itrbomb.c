@@ -7,10 +7,10 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItRBombItemAttributes;     // 0x000000A8
-extern intptr_t lItRBombHitEvents;          // 0x000000F0
-extern intptr_t lItRBombDataStart;          // 0x00000788
-extern intptr_t lItRBombEffectDisplayList;  // 0x000008A0
+extern intptr_t lITRBombItemAttributes;     // 0x000000A8
+extern intptr_t lITRBombHitEvents;          // 0x000000F0
+extern intptr_t lITRBombDataStart;          // 0x00000788
+extern intptr_t lITRBombEffectDisplayList;  // 0x000008A0
 
 // // // // // // // // // // // //
 //                               //
@@ -18,11 +18,11 @@ extern intptr_t lItRBombEffectDisplayList;  // 0x000008A0
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItRBombItemDesc =
+itCreateDesc dITRBombItemDesc =
 {
     It_Kind_RBomb,                          // Item Kind
     &gGroundStruct.bonus3.item_head,        // Pointer to item file data?
-    &lItRBombItemAttributes,                // Offset of item attributes in file?
+    &lITRBombItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -42,7 +42,7 @@ itCreateDesc dItRBombItemDesc =
     itRBombSDefaultProcDamage               // Proc Damage
 };
 
-itStatusDesc dItRBombStatusDesc[/* */] =
+itStatusDesc dITRBombStatusDesc[/* */] =
 {
     // Status 0 (Air Wait Fall)
     {
@@ -147,7 +147,7 @@ void itRBombContainerSmashMakeEffect(Vec3f *pos)
         {
             omAddGObjRenderProc(effect_gobj, odRenderDObjTreeForGObj, 0xB, 0x80000000, -1);
 
-            dl = (Gfx*) (*(uintptr_t*)((uintptr_t)*dItRBombItemDesc.p_file + dItRBombItemDesc.offset) - (uintptr_t)&lItRBombDataStart) + (uintptr_t)&lItRBombEffectDisplayList; // Linker thing
+            dl = (Gfx*) (*(uintptr_t*)((uintptr_t)*dITRBombItemDesc.p_file + dITRBombItemDesc.offset) - (uintptr_t)&lITRBombDataStart) + (uintptr_t)&lITRBombEffectDisplayList; // Linker thing
 
             for (i = 0; i < ITRBOMB_GFX_COUNT; i++)
             {
@@ -217,7 +217,7 @@ void itRBombGRollSetStatus(GObj *item_gobj)
 
     ip->phys_info.vel_air.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dItRBombStatusDesc, itStatus_RBomb_GRoll);
+    itMainSetItemStatus(item_gobj, dITRBombStatusDesc, itStatus_RBomb_GRoll);
 }
 
 // 0x80184E78
@@ -292,7 +292,7 @@ sb32 itRBombNExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateHitEvent(item_gobj, itGetHitEvent(dItRBombItemDesc, lItRBombHitEvents)); // Linker thing
+    else itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITRBombItemDesc, lITRBombHitEvents)); // Linker thing
 
     return FALSE;
 }
@@ -326,7 +326,7 @@ sb32 itRBombGRollProcMap(GObj *item_gobj)
 
     if (itMapTestLRWallCheckGround(item_gobj) == FALSE)
     {
-        itMainSetItemStatus(item_gobj, dItRBombStatusDesc, itStatus_RBomb_AFall);
+        itMainSetItemStatus(item_gobj, dITRBombStatusDesc, itStatus_RBomb_AFall);
     }
     else if (ip->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
@@ -338,7 +338,7 @@ sb32 itRBombGRollProcMap(GObj *item_gobj)
 // 0x8018518C
 GObj* itRBombMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItRBombItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITRBombItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -372,14 +372,14 @@ void itRBombNExplodeInitItemVars(GObj *item_gobj)
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
     itMainRefreshHit(item_gobj);
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dItRBombItemDesc, lItRBombHitEvents));
+    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITRBombItemDesc, lITRBombHitEvents));
 }
 
 // 0x80185284
 void itRBombNExplodeSetStatus(GObj *item_gobj)
 {
     itRBombNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItRBombStatusDesc, itStatus_RBomb_NExplode);
+    itMainSetItemStatus(item_gobj, dITRBombStatusDesc, itStatus_RBomb_NExplode);
 }
 
 // 0x801852B8

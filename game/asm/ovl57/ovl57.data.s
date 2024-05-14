@@ -6,7 +6,7 @@
 #  80132100 -> 801322B0
 
 
-glabel dMnCongraFileInfo
+glabel dMNCongraFileInfo
   .incbin "ovl57.raw.bin", 0x0600, 0x4
 
 glabel D_ovl57_80132104
@@ -36,7 +36,7 @@ glabel D_ovl57_801321D0
   .balign 4
   .incbin "ovl57.raw.bin", 0x06DC, 0x4
 
-glabel dMnCongraDisplayList
+glabel dMNCongraDisplayList
   .incbin "ovl57.raw.bin", 0x06E0, 0x14
   /* 6F4 17EC04 801321F4 */  .4byte D_ovl57_801321D0
   .incbin "ovl57.raw.bin", 0x06F8, 0x4

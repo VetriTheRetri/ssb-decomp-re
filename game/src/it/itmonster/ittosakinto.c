@@ -6,10 +6,10 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItTosakintoItemAttributes; // 0x000007F0
-extern intptr_t lItTosakintoDataStart;      // 0x0000B708
-extern intptr_t lItTosakintoAnimJoint;      // 0x0000B7CC
-extern intptr_t lItTosakintoMatAnimJoint;   // 0x0000B90C
+extern intptr_t lITTosakintoItemAttributes; // 0x000007F0
+extern intptr_t lITTosakintoDataStart;      // 0x0000B708
+extern intptr_t lITTosakintoAnimJoint;      // 0x0000B7CC
+extern intptr_t lITTosakintoMatAnimJoint;   // 0x0000B90C
 
 // // // // // // // // // // // //
 //                               //
@@ -18,11 +18,11 @@ extern intptr_t lItTosakintoMatAnimJoint;   // 0x0000B90C
 // // // // // // // // // // // //
 
 // 0x8018ABC0
-itCreateDesc dItTosakintoItemDesc =
+itCreateDesc dITTosakintoItemDesc =
 {
     It_Kind_Tosakinto,                      // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItTosakintoItemAttributes,            // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITTosakintoItemAttributes,            // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -43,7 +43,7 @@ itCreateDesc dItTosakintoItemDesc =
 };
 
 // 0x8018ABF4 
-itStatusDesc dItTosakintoStatusDesc[/* */] =
+itStatusDesc dITTosakintoStatusDesc[/* */] =
 {
     // Status 0 (Neutral Appear)
     {
@@ -128,7 +128,7 @@ void itTosakintoNAppearSetStatus(GObj *item_gobj)
     {
         func_800269C0(alSound_Voice_MBallTosakintoSpawn);
     }
-    itMainSetItemStatus(item_gobj, dItTosakintoStatusDesc, itStatus_Tosakinto_NAppear);
+    itMainSetItemStatus(item_gobj, dITTosakintoStatusDesc, itStatus_Tosakinto_NAppear);
 }
 
 // 0x8017E880
@@ -183,11 +183,11 @@ void itTosakintoNSplashInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == It_Kind_Tosakinto)
     {
-        anim_joint = itGetPData(ip, lItTosakintoDataStart, lItTosakintoAnimJoint); // Linker thing
+        anim_joint = itGetPData(ip, lITTosakintoDataStart, lITTosakintoAnimJoint); // Linker thing
 
         omAddDObjAnimAll(dobj->child, anim_joint, 0.0F);
 
-        matanim_joint = itGetPData(ip, lItTosakintoDataStart, lItTosakintoMatAnimJoint); // Linker thing
+        matanim_joint = itGetPData(ip, lITTosakintoDataStart, lITTosakintoMatAnimJoint); // Linker thing
 
         omAddMObjAnimAll(dobj->child->mobj, matanim_joint, 0.0F);
 
@@ -199,7 +199,7 @@ void itTosakintoNSplashInitItemVars(GObj *item_gobj)
 void itTosakintoNSplashSetStatus(GObj *item_gobj)
 {
     itTosakintoNSplashInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItTosakintoStatusDesc, itStatus_Tosakinto_NSplash);
+    itMainSetItemStatus(item_gobj, dITTosakintoStatusDesc, itStatus_Tosakinto_NSplash);
 }
 
 // 0x8017EA48
@@ -233,7 +233,7 @@ sb32 itTosakintoSDefaultProcMap(GObj *item_gobj)
 // 0x8017EAD8
 GObj* itTosakintoMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItTosakintoItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITTosakintoItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 
@@ -257,7 +257,7 @@ GObj* itTosakintoMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lItTosakintoDataStart), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITTosakintoDataStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

@@ -7,32 +7,32 @@
 // Global variables declared here as extern for easy access
 
 // 0x8018D040
-extern u32 *gItemFileData;
+extern u32 *gITemFileData;
 
 // 0x8018D044
-extern s32 gItemEffectBank;
+extern s32 gITemEffectBank;
 
 // 0x8018D048
-extern itRandomWeights gItemRandomWeights;
+extern itRandomWeights gITemRandomWeights;
 
 // 0x8018D060
-extern itMonsterInfo gItemMonsterData;
+extern itMonsterInfo gITemMonsterData;
 
 // 0x8018D090
-extern s32 gItemDisplayMode;
+extern s32 gITemDisplayMode;
 
 // 0x8018D094
-extern itStruct *gItemAllocFree;
+extern itStruct *gITemAllocFree;
 
 // 0x8018D098
-extern itSpawnActor gItemSpawnActor;
+extern itSpawnActor gITemSpawnActor;
 
 // Global data
 
-extern s32 dItMonsterSpawnID;
+extern s32 dITMonsterSpawnID;
 
 // Linker variable, points to base of animation bank in item file? 0x00013624
-extern intptr_t lItMonsterAnimBankStart;
+extern intptr_t lITMonsterAnimBankStart;
 
 #define itGetStruct(item_gobj) \
 ((itStruct*) (item_gobj)->user_data.p)
@@ -42,7 +42,7 @@ extern intptr_t lItMonsterAnimBankStart;
 ( (void*) ( ( (uintptr_t)(ip)->attributes->model_desc - (intptr_t)&(off1) ) + (intptr_t)&(off2) ) )
 
 #define itGetMonsterAnimNode(ip, off) \
-( (void*) ( ( (uintptr_t)(ip)->attributes->model_desc - (intptr_t)&(off) ) + (intptr_t)&lItMonsterAnimBankStart ) )
+( (void*) ( ( (uintptr_t)(ip)->attributes->model_desc - (intptr_t)&(off) ) + (intptr_t)&lITMonsterAnimBankStart ) )
 
 #define itGetHitEvent(it_desc, off) \
 ( (itHitEvent*) ( (uintptr_t)*(it_desc).p_file + (intptr_t)&(off) ) )

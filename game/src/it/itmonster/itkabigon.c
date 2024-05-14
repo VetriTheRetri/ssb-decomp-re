@@ -8,8 +8,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItKabigonItemAttributes;   // 0x000007A8
-extern intptr_t lItKabigonAnimJoint;        // 0x0000B158
+extern intptr_t lITKabigonItemAttributes;   // 0x000007A8
+extern intptr_t lITKabigonAnimJoint;        // 0x0000B158
 
 // // // // // // // // // // // //
 //                               //
@@ -18,11 +18,11 @@ extern intptr_t lItKabigonAnimJoint;        // 0x0000B158
 // // // // // // // // // // // //
 
 // 0x8018AB40
-itCreateDesc dItKabigonItemDesc = 
+itCreateDesc dITKabigonItemDesc = 
 {
     It_Kind_Kabigon,                        // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItKabigonItemAttributes,              // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITKabigonItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -43,7 +43,7 @@ itCreateDesc dItKabigonItemDesc =
 };
 
 // 0x8018AB74
-itStatusDesc dItKabigonStatusDesc[/* */] = 
+itStatusDesc dITKabigonStatusDesc[/* */] = 
 {
     // Status 0 (Neutral Jump)
     {
@@ -182,7 +182,7 @@ void itKabigonNFallInitItemVars(GObj *item_gobj)
 void itKabigonNFallSetStatus(GObj *item_gobj)
 {
     itKabigonNFallInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItKabigonStatusDesc, itStatus_Kabigon_NFall);
+    itMainSetItemStatus(item_gobj, dITKabigonStatusDesc, itStatus_Kabigon_NFall);
 }
 
 // 0x8017E384
@@ -269,7 +269,7 @@ void itKabigonNJumpInitItemVars(GObj *item_gobj)
 void itKabigonNJumpSetStatus(GObj *item_gobj)
 {
     itKabigonNJumpInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItKabigonStatusDesc, itStatus_Kabigon_NJump);
+    itMainSetItemStatus(item_gobj, dITKabigonStatusDesc, itStatus_Kabigon_NJump);
 }
 
 // 0x8017E67C
@@ -289,7 +289,7 @@ sb32 itKabigonSDefaultProcUpdate(GObj *item_gobj)
 // 0x8017E6C0
 GObj* itKabigonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItKabigonItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITKabigonItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -303,7 +303,7 @@ GObj* itKabigonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lItKabigonAnimJoint), 0.0F); // Linker thing
+        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITKabigonAnimJoint), 0.0F); // Linker thing
 
         if (ip->it_kind == It_Kind_Kabigon)
         {

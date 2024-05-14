@@ -78,7 +78,7 @@ glabel D_ovl6_8018F09C
   /* 2064 113864 8018F124 */  .4byte scBonusGame_InitBonusGame
   .incbin "ovl6.raw.bin", 0x2068, 0x8
 
-glabel dItTargetItemDesc
+glabel dITTargetItemDesc
   .incbin "ovl6.raw.bin", 0x2070, 0x4
   /* 2074 113874 8018F134 */  .4byte gBonusGameFileData
   .incbin "ovl6.raw.bin", 0x2078, 0x28

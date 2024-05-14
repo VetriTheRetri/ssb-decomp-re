@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 
 // 0x80188CE0
-void (*dFtCommonSpecialHiStatusList[/* */])(GObj*) =
+void (*dFTCommonSpecialHiStatusList[/* */])(GObj*) =
 {
     ftMarioSpecialHiSetStatus,
     ftFoxSpecialHiStartSetStatus,
@@ -40,7 +40,7 @@ sb32 ftCommonSpecialHiCheckInterruptCommon(GObj *fighter_gobj)
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_b) && (attributes->is_have_specialhi) && (fp->input.pl.stick_range.y >= FTCOMMON_SPECIALHI_STICK_RANGE_MIN))
     {
-        dFtCommonSpecialHiStatusList[fp->ft_kind](fighter_gobj);
+        dFTCommonSpecialHiStatusList[fp->ft_kind](fighter_gobj);
 
         return TRUE;
     }

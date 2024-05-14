@@ -1,16 +1,16 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFtDataSamusMain;
+extern void *gFTDataSamusMain;
 extern
-intptr_t lWpSamusBombWeaponAttributes;      // 0x0000000C
+intptr_t lWPSamusBombWeaponAttributes;      // 0x0000000C
 
-wpCreateDesc dWpSamusBombWeaponDesc =
+wpCreateDesc dWPSamusBombWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_SamusBomb,                      // Weapon Kind
-    &gFtDataSamusMain,                      // Pointer to character's loaded files?
-    &lWpSamusBombWeaponAttributes,          // Offset of weapon attributes in loaded files
+    &gFTDataSamusMain,                      // Pointer to character's loaded files?
+    &lWPSamusBombWeaponAttributes,          // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -198,7 +198,7 @@ sb32 wpSamusBombProcReflector(GObj *weapon_gobj)
 // 0x80169328
 GObj* wpSamusBombMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWpSamusBombWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPSamusBombWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

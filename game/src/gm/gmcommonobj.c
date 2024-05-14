@@ -15,7 +15,7 @@ extern u32 g1PGameBonusStatDefendGroundAirCount[2];                       // Gro
 extern u32 g1PGameBonusStatDefendIsProjectileCount[2];                    // Special attacks successfully landed on opponent
 
 // 0x800E7AD0 - Get duration of special music in seconds
-s32 ftSpecialItem_BGMGetDuration(s32 bgm_id)
+s32 ftSpecialITem_BGMGetDuration(s32 bgm_id)
 {
     switch (bgm_id)
     {
@@ -31,9 +31,9 @@ s32 ftSpecialItem_BGMGetDuration(s32 bgm_id)
 }
 
 // 0x800E7AFC
-void ftSpecialItem_BGMSetPlay(s32 bgm_id)
+void ftSpecialITem_BGMSetPlay(s32 bgm_id)
 {
-    if (ftSpecialItem_BGMGetDuration(bgm_id) >= ftSpecialItem_BGMGetDuration(gMusicIndexCurrent))
+    if (ftSpecialITem_BGMGetDuration(bgm_id) >= ftSpecialITem_BGMGetDuration(gMusicIndexCurrent))
     {
         func_80020AB4(0, bgm_id);
 
@@ -42,10 +42,10 @@ void ftSpecialItem_BGMSetPlay(s32 bgm_id)
 }
 
 // 0x800E7B54
-void ftSpecialItem_BGMCheckFighters(void)
+void ftSpecialITem_BGMCheckFighters(void)
 {
     s32 bgm_play = gMusicIndexDefault;
-    s32 duration = ftSpecialItem_BGMGetDuration(bgm_play);
+    s32 duration = ftSpecialITem_BGMGetDuration(bgm_play);
     GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     while (fighter_gobj != NULL)
@@ -62,7 +62,7 @@ void ftSpecialItem_BGMCheckFighters(void)
         {
             bgm_id = alSound_Music_Starman;
         }
-        duration_new = ftSpecialItem_BGMGetDuration(bgm_id);
+        duration_new = ftSpecialITem_BGMGetDuration(bgm_id);
 
         if (duration < duration_new)
         {
@@ -490,7 +490,7 @@ void ftCommon_GetHammerSetBGM(GObj *fighter_gobj)
         ftCommon_SetModelPartRenderStateIndex(fighter_gobj, 0x15, -1);
         ftCommon_SetModelPartRenderStateIndex(fighter_gobj, 0x13, 0);
     }
-    ftSpecialItem_BGMCheckFighters();
+    ftSpecialITem_BGMCheckFighters();
 }
 
 // 0x800E87A0

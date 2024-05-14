@@ -1548,22 +1548,22 @@ glabel scBonusGame_InitBonusGame
   /* 112DF0 8018E6B0 00000000 */       nop 
   /* 112DF4 8018E6B4 0C0594F8 */       jal ftPublicitySetup
   /* 112DF8 8018E6B8 00000000 */       nop 
-  /* 112DFC 8018E6BC 3C188011 */       lui $t8, %hi(dFtDefaultFighterDesc)
-  /* 112E00 8018E6C0 27186DD0 */     addiu $t8, $t8, %lo(dFtDefaultFighterDesc)
+  /* 112DFC 8018E6BC 3C188011 */       lui $t8, %hi(dFTDefaultFighterDesc)
+  /* 112E00 8018E6C0 27186DD0 */     addiu $t8, $t8, %lo(dFTDefaultFighterDesc)
   /* 112E04 8018E6C4 2709003C */     addiu $t1, $t8, 0x3c
   /* 112E08 8018E6C8 00003025 */        or $a2, $zero, $zero
   /* 112E0C 8018E6CC 27AF0034 */     addiu $t7, $sp, 0x34
   .L8018E6D0:
-  /* 112E10 8018E6D0 8F080000 */        lw $t0, ($t8) # dFtDefaultFighterDesc + 0
+  /* 112E10 8018E6D0 8F080000 */        lw $t0, ($t8) # dFTDefaultFighterDesc + 0
   /* 112E14 8018E6D4 2718000C */     addiu $t8, $t8, 0xc
   /* 112E18 8018E6D8 25EF000C */     addiu $t7, $t7, 0xc
   /* 112E1C 8018E6DC ADE8FFF4 */        sw $t0, -0xc($t7)
-  /* 112E20 8018E6E0 8F19FFF8 */        lw $t9, -8($t8) # dFtDefaultFighterDesc + -8
+  /* 112E20 8018E6E0 8F19FFF8 */        lw $t9, -8($t8) # dFTDefaultFighterDesc + -8
   /* 112E24 8018E6E4 ADF9FFF8 */        sw $t9, -8($t7)
-  /* 112E28 8018E6E8 8F08FFFC */        lw $t0, -4($t8) # dFtDefaultFighterDesc + -4
+  /* 112E28 8018E6E8 8F08FFFC */        lw $t0, -4($t8) # dFTDefaultFighterDesc + -4
   /* 112E2C 8018E6EC 1709FFF8 */       bne $t8, $t1, .L8018E6D0
   /* 112E30 8018E6F0 ADE8FFFC */        sw $t0, -4($t7)
-  /* 112E34 8018E6F4 8F080000 */        lw $t0, ($t8) # dFtDefaultFighterDesc + 0
+  /* 112E34 8018E6F4 8F080000 */        lw $t0, ($t8) # dFTDefaultFighterDesc + 0
   /* 112E38 8018E6F8 3C02800A */       lui $v0, %hi(gBattleState)
   /* 112E3C 8018E6FC 00001825 */        or $v1, $zero, $zero
   /* 112E40 8018E700 ADE80000 */        sw $t0, ($t7)
@@ -2085,9 +2085,9 @@ glabel itTargetSDefaultProcDamage
   /* 1135AC 8018EE6C 00A03025 */        or $a2, $a1, $zero
   /* 1135B0 8018EE70 AFA50024 */        sw $a1, 0x24($sp)
   /* 1135B4 8018EE74 AFBF001C */        sw $ra, 0x1c($sp)
-  /* 1135B8 8018EE78 3C058019 */       lui $a1, %hi(dItTargetItemDesc)
+  /* 1135B8 8018EE78 3C058019 */       lui $a1, %hi(dITTargetItemDesc)
   /* 1135BC 8018EE7C 8FA70028 */        lw $a3, 0x28($sp)
-  /* 1135C0 8018EE80 24A5F130 */     addiu $a1, $a1, %lo(dItTargetItemDesc)
+  /* 1135C0 8018EE80 24A5F130 */     addiu $a1, $a1, %lo(dITTargetItemDesc)
   /* 1135C4 8018EE84 0C05B85D */       jal itManagerMakeItem
   /* 1135C8 8018EE88 AFAE0010 */        sw $t6, 0x10($sp)
   /* 1135CC 8018EE8C 10400005 */      beqz $v0, .L8018EEA4

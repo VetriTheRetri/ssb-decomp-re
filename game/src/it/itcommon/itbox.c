@@ -7,10 +7,10 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lItBoxItemAttributes;       // 0x000005CC
-extern intptr_t lItBoxHitEvents;            // 0x00000614
-extern intptr_t lItBoxDataStart;            // 0x00006778
-extern intptr_t lItBoxEffectDisplayList;    // 0x000068F0
+extern intptr_t lITBoxItemAttributes;       // 0x000005CC
+extern intptr_t lITBoxHitEvents;            // 0x00000614
+extern intptr_t lITBoxDataStart;            // 0x00006778
+extern intptr_t lITBoxEffectDisplayList;    // 0x000068F0
 
 // // // // // // // // // // // //
 //                               //
@@ -19,7 +19,7 @@ extern intptr_t lItBoxEffectDisplayList;    // 0x000068F0
 // // // // // // // // // // // //
 
 // 0x8018A320
-Vec2f dItBoxItemSpawnVelocities[/* */] =
+Vec2f dITBoxItemSpawnVelocities[/* */] =
 {
     {  0.0F, 48.0F },
     { -2.0F, 48.0F },
@@ -30,11 +30,11 @@ Vec2f dItBoxItemSpawnVelocities[/* */] =
 };
 
 // 0x8018A350
-itCreateDesc dItBoxItemDesc = 
+itCreateDesc dITBoxItemDesc = 
 {
     It_Kind_Box,                            // Item Kind
-    &gItemFileData,                         // Pointer to item file data?
-    &lItBoxItemAttributes,                  // Offset of item attributes in file?
+    &gITemFileData,                         // Pointer to item file data?
+    &lITBoxItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -55,7 +55,7 @@ itCreateDesc dItBoxItemDesc =
 };
 
 // 0x8018A384
-itStatusDesc dItBoxStatusDesc[/* */] =
+itStatusDesc dITBoxStatusDesc[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -199,7 +199,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
         {
             omAddGObjRenderProc(effect_gobj, odRenderDObjTreeForGObj, 0xB, 0x80000000, -1);
 
-            dl = (Gfx*) (*(uintptr_t*) ((uintptr_t)*dItBoxItemDesc.p_file + dItBoxItemDesc.o_attributes) - (intptr_t)&lItBoxDataStart) + (intptr_t)&lItBoxEffectDisplayList; // Linker thing
+            dl = (Gfx*) (*(uintptr_t*) ((uintptr_t)*dITBoxItemDesc.p_file + dITBoxItemDesc.o_attributes) - (intptr_t)&lITBoxDataStart) + (intptr_t)&lITBoxEffectDisplayList; // Linker thing
 
             for (i = 0; i < ITCONTAINER_GFX_COUNT; i++)
             {
@@ -242,9 +242,9 @@ sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj)
 
     itBoxContainerSmashMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
-    if (gItemRandomWeights.item_num != 0)
+    if (gITemRandomWeights.item_num != 0)
     {
-        index = itMainGetWeightedItemID(&gItemRandomWeights);
+        index = itMainGetWeightedITemID(&gITemRandomWeights);
 
         if (index <= It_Kind_CommonEnd)
         {
@@ -254,19 +254,19 @@ sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj)
             {
                 spawn_item_num = 1;
 
-                spawn_pos = &dItBoxItemSpawnVelocities[0];
+                spawn_pos = &dITBoxItemSpawnVelocities[0];
             }
             else if (random < 3)
             {
                 spawn_item_num = 2;
 
-                spawn_pos = &dItBoxItemSpawnVelocities[1];
+                spawn_pos = &dITBoxItemSpawnVelocities[1];
             }
             else
             {
                 spawn_item_num = 3;
 
-                spawn_pos = &dItBoxItemSpawnVelocities[3];
+                spawn_pos = &dITBoxItemSpawnVelocities[3];
             }
             if (lbRandom_GetIntRange(32) == 0) // 1 in 32 chance to spawn identical items
             {
@@ -282,11 +282,11 @@ sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj)
             }
             else
             {
-                bak = gItemRandomWeights.item_num;
-                item_count = gItemRandomWeights.item_count - 1;
+                bak = gITemRandomWeights.item_num;
+                item_count = gITemRandomWeights.item_count - 1;
 
-                gItemRandomWeights.item_num = gItemRandomWeights.item_totals[item_count];
-                gItemRandomWeights.item_count--;
+                gITemRandomWeights.item_num = gITemRandomWeights.item_totals[item_count];
+                gITemRandomWeights.item_count--;
 
                 vel_different.z = 0.0F;
 
@@ -294,15 +294,15 @@ sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj)
                 {
                     if (j != 0)
                     {
-                        index = itMainGetWeightedItemID(&gItemRandomWeights);
+                        index = itMainGetWeightedITemID(&gITemRandomWeights);
                     }
                     vel_different.x = spawn_pos[j].x;
                     vel_different.y = spawn_pos[j].y;
 
                     itManagerMakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel_different, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
                 }
-                gItemRandomWeights.item_count++;
-                gItemRandomWeights.item_num = bak;
+                gITemRandomWeights.item_count++;
+                gITemRandomWeights.item_num = bak;
             }
             func_800269C0(alSound_SFX_FireFlowerShoot);
 
@@ -369,7 +369,7 @@ void itBoxGWaitSetStatus(GObj *item_gobj)
     DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_DEG_TO_RAD(90.0F); // HALF_PI32
 
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dItBoxStatusDesc, itStatus_Box_GWait);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_GWait);
 }
 
 // 0x801797A4
@@ -380,7 +380,7 @@ void itBoxAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dItBoxStatusDesc, itStatus_Box_AFall);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_AFall);
 }
 
 // 0x801797E8
@@ -389,7 +389,7 @@ void itBoxFHoldSetStatus(GObj *item_gobj)
     DObjGetStruct(item_gobj)->child->rotate.vec.f.z = 0.0F;
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dItBoxStatusDesc, itStatus_Box_FHold);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_FHold);
 }
 
 // 0x8017982C
@@ -411,7 +411,7 @@ void itBoxFThrowSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
-    itMainSetItemStatus(item_gobj, dItBoxStatusDesc, itStatus_Box_FThrow);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_FThrow);
 }
 
 // 0x801798B8
@@ -433,7 +433,7 @@ void itBoxFDropSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DEG_TO_RAD(90.0F); // HALF_PI32
 
-    itMainSetItemStatus(item_gobj, dItBoxStatusDesc, itStatus_Box_FDrop);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_FDrop);
 }
 
 // 0x80179948
@@ -447,7 +447,7 @@ sb32 itBoxNExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateHitEvent(item_gobj, itGetHitEvent(dItBoxItemDesc, lItBoxHitEvents)); // Linker thing
+    else itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITBoxItemDesc, lITBoxHitEvents)); // Linker thing
 
     return FALSE;
 }
@@ -455,7 +455,7 @@ sb32 itBoxNExplodeProcUpdate(GObj *item_gobj)
 // 0x801799A4
 GObj* itBoxMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dItBoxItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITBoxItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -494,14 +494,14 @@ void itBoxNExplodeInitItemVars(GObj *item_gobj)
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshHit(item_gobj);
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dItBoxItemDesc, lItBoxHitEvents)); // Linker thing
+    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITBoxItemDesc, lITBoxHitEvents)); // Linker thing
 }
 
 // 0x80179AD4
 void itBoxNExplodeSetStatus(GObj *item_gobj)
 {
     itBoxNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dItBoxStatusDesc, itStatus_Box_NExplode);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_NExplode);
 }
 
 // 0x80179B08

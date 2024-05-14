@@ -191,7 +191,7 @@ void mvOpeningYoshiInitFighterStagePanel()
 
     for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
     {
-        ftCreateDesc spawn_info = dFtDefaultFighterDesc;
+        ftCreateDesc spawn_info = dFTDefaultFighterDesc;
 
         if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
 
@@ -274,7 +274,7 @@ void mvOpeningYoshiAnimatePosedFighter(GObj* fighter_gobj)
 void mvOpeningYoshiCreatePosedFighter()
 {
     GObj* fighter_gobj;
-    ftCreateDesc spawn_info = dFtDefaultFighterDesc;
+    ftCreateDesc spawn_info = dFTDefaultFighterDesc;
 
     spawn_info.ft_kind = Ft_Kind_Yoshi;
     spawn_info.costume = ftCostume_GetIndexFFA(Ft_Kind_Yoshi, 0);

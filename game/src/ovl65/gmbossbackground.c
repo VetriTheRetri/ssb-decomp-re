@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
+#include <gr/ground.h>
 
 #include "gm1pgame.h"
 
@@ -63,7 +64,7 @@ void gm1PGameBossSetChangeBackground(void)
 // 0x80191120
 void gm1PGameBossMakeCamera(void)
 {
-    Camera *cam = CameraGetStruct(func_8000B93C(GObj_Kind_UnkCamera3, NULL, 9, 0x80000000U, func_80017EC0, 0x28, 0x20, 1, 1, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(func_8000B93C(GObj_Kind_UnkCamera3, NULL, 9, 0x80000000, func_80017EC0, 0x28, 0x20, 1, 1, 1, 0, 1, 0));
     func_80007080(&cam->viewport, gCameraStruct.canvas_ulx, gCameraStruct.canvas_uly, gCameraStruct.canvas_lrx, gCameraStruct.canvas_lry);
 
     cam->projection.persp.aspect = (f32)(gCameraStruct.canvas_lrx - gCameraStruct.canvas_ulx) / (f32)(gCameraStruct.canvas_lry - gCameraStruct.canvas_uly);
@@ -620,7 +621,7 @@ void gm1PGameBossInitBackgroundMain(void)
 {
     GObj *gobj;
 
-    sGm1PGameBossBackgroundGObj = gobj = omMakeGObjCommon(GObj_Kind_Wallpaper, NULL, 0xD, 0x80000000);
+    sGm1PGameBossBackgroundGObj = gobj = omMakeGObjCommon(GObj_Kind_Wallpaper, NULL, 0xD, GOBJ_LINKORDER_DEFAULT);
 
     if (gobj != NULL)
     {

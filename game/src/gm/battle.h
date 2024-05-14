@@ -347,6 +347,21 @@ typedef struct gmStageClearScore
 
 } gmStageClearScore;
 
+typedef struct gmContinueFighter
+{
+    s32 ft_kind;
+    s32 costume;
+    s32 shade;
+
+} gmContinueFighter;
+
+typedef enum gmContinueOption
+{
+    gmContinue_Option_Yes,
+    gmContinue_Option_No,
+    gmContinue_Option_EnumMax
+};
+
 typedef enum scMajorScene
 {
     scMajor_Kind_NoController,      // "No Controller" screen

@@ -200,7 +200,7 @@ void func_ovl2_8010BC54(Vec3f *vec, f32 *hz, f32 *vt)
     s32 lr;
     Vec3f weapon_pos;
 
-    fighter_gobj = gOMObjCommonLinks[gOMObjLinkIndexFighter];
+    fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
     player_num = 0;
 
@@ -338,7 +338,7 @@ void func_ovl2_8010BC54(Vec3f *vec, f32 *hz, f32 *vt)
             }
             ft_cam[cam_num].unk_ftcam_0x10 = adjust;
         }
-        weapon_gobj = gOMObjCommonLinks[gOMObjLinkIndexWeapon];
+        weapon_gobj = gOMObjCommonLinks[GObj_LinkID_Weapon];
 
         while (weapon_gobj != NULL)
         {

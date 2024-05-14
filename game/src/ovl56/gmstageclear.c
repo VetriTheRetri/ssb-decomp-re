@@ -482,7 +482,7 @@ void gmStageClearSetDigitSpriteColor(SObj *sobj, s32 file_id, gsColorRGBPair *co
 }
 
 // 0x80131CC4
-s32 gmStageClearGetDigitCount(s32 points, s32 digit_count_max)
+s32 gmStageClearGetScoreDigitCount(s32 points, s32 digit_count_max)
 {
     s32 digit_count_current = digit_count_max;
 
@@ -500,10 +500,14 @@ s32 gmStageClearGetDigitCount(s32 points, s32 digit_count_max)
 }
 
 // 0x80131D70
-Sprite* gmStageClearGetSprite(s32 file_id, s32 offset_id)
+Sprite* gmStageClearGetScoreDigitSprite(s32 digit_kind, s32 offset_id)
 {
     // Three different sets of digit sprites on the Stage Clear screen
-    s32 files[3] = { 0, 4, 2 };
+
+    // 0x80135114
+    s32 file_array_ids[3] = { 0, 4, 2 };
+
+    // 0x80135120
     intptr_t offsets[10][3] =
     {
         { 0xB808, 0x68, 0x148 },
@@ -517,11 +521,11 @@ Sprite* gmStageClearGetSprite(s32 file_id, s32 offset_id)
         { 0xC308, 0x5E8, 0x1040 },
         { 0xC468, 0x698, 0x1270 }
     };
-    return spGetSpriteFromFile(sGmStageClearFiles[files[file_id]], offsets[offset_id][file_id]);
+    return spGetSpriteFromFile(sGmStageClearFiles[file_array_ids[digit_kind]], offsets[offset_id][digit_kind]);
 }
 
 // 0x80131E10
-void gmStageClearMakeDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, gsColorRGBPair *colors, s32 offset_x, s32 file_id, s32 sub, s32 digit_count_max, sb32 is_fixed_digit_count)
+void gmStageClearMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, gsColorRGBPair *colors, s32 offset_x, s32 file_id, s32 sub, s32 digit_count_max, sb32 is_fixed_digit_count)
 {
     SObj *sobj;
     f32 calc_x;
@@ -543,7 +547,7 @@ void gmStageClearMakeDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, gsColorRGB
             is_negative = TRUE;
         }
     }
-    sobj = gcAppendSObjWithSprite(gobj, gmStageClearGetSprite(file_id, points % 10));
+    sobj = gcAppendSObjWithSprite(gobj, gmStageClearGetScoreDigitSprite(file_id, points % 10));
 
     gmStageClearSetDigitSpriteColor(sobj, file_id, colors);
 
@@ -552,11 +556,11 @@ void gmStageClearMakeDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, gsColorRGB
     sobj->pos.x = calc_x;
     sobj->pos.y = y;
 
-    for (i = 1; i < ((is_fixed_digit_count != FALSE) ? digit_count_max : gmStageClearGetDigitCount(points, digit_count_max)); i++)
+    for (i = 1; i < ((is_fixed_digit_count != FALSE) ? digit_count_max : gmStageClearGetScoreDigitCount(points, digit_count_max)); i++)
     {
         digit = (func_ovl56_80131B58(10, i) != 0) ? points / func_ovl56_80131B58(10, i) : 0;
 
-        sobj = gcAppendSObjWithSprite(gobj, gmStageClearGetSprite(file_id, digit % 10));
+        sobj = gcAppendSObjWithSprite(gobj, gmStageClearGetScoreDigitSprite(file_id, digit % 10));
 
         gmStageClearSetDigitSpriteColor(sobj, file_id, colors);
 
@@ -707,7 +711,7 @@ void gmStageClearMakeScoreSObjs(void)
     sobj->pos.x = 90.0F;
     sobj->pos.y = 200.0F;
 
-    gmStageClearMakeDigitSObjs(gobj, sGmStageClearScoreTotal, 295.0F, 197.0F, NULL, 0, 2, 16, 8, TRUE);
+    gmStageClearMakeScoreDigitSObjs(gobj, sGmStageClearScoreTotal, 295.0F, 197.0F, NULL, 0, 2, 16, 8, TRUE);
 }
 
 // 0x801324FC
@@ -799,8 +803,8 @@ void gmStageClearMakeTimerDigitSObjs(f32 y)
         x = 233.0F;
         multiplier = 50;
     }
-    gmStageClearMakeDigitSObjs(gobj, multiplier, x, y - 1.0F, NULL, 1, 0, 0, 4, FALSE);
-    gmStageClearMakeDigitSObjs(gobj, sGmStageClearSecondsRemaining, 171.0F, y - 1.0F, NULL, 1, 0, 0, 3, FALSE);
+    gmStageClearMakeScoreDigitSObjs(gobj, multiplier, x, y - 1.0F, NULL, 1, 0, 0, 4, FALSE);
+    gmStageClearMakeScoreDigitSObjs(gobj, sGmStageClearSecondsRemaining, 171.0F, y - 1.0F, NULL, 1, 0, 0, 3, FALSE);
 }
 
 // 0x801327D4
@@ -831,7 +835,7 @@ s32 gmStageClearGetAppendTotalTimeScore(f32 y)
     }
     time_score_total = sGmStageClearSecondsRemaining * multiplier;
 
-    gmStageClearMakeDigitSObjs(gobj, time_score_total, 200.0F, y - 1.0F, NULL, 1, 0, 0, 5, FALSE);
+    gmStageClearMakeScoreDigitSObjs(gobj, time_score_total, 200.0F, y - 1.0F, NULL, 1, 0, 0, 5, FALSE);
     func_800269C0(alSound_SFX_StageClearScoreRegister);
 
     return time_score_total;
@@ -896,7 +900,7 @@ void gmStageClearMakeDamageDigitSObjs(f32 y)
 
     omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    gmStageClearMakeDigitSObjs(gobj, sGmStageClearDamageDealt, x, (s32)y - 1, NULL, 1, 0, 0, 4, FALSE);
+    gmStageClearMakeScoreDigitSObjs(gobj, sGmStageClearDamageDealt, x, (s32)y - 1, NULL, 1, 0, 0, 4, FALSE);
     sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGmStageClearFiles[3], &lGmStageClearSpriteTextMultiplySign));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -913,7 +917,7 @@ void gmStageClearMakeDamageDigitSObjs(f32 y)
     sobj->sprite.green = 0xFF;
     sobj->sprite.blue = 0xFF;
 
-    gmStageClearMakeDigitSObjs(gobj, 10, x + 55, (s32)y - 1, NULL, 1, 0, 0, 2, TRUE);
+    gmStageClearMakeScoreDigitSObjs(gobj, 10, x + 55, (s32)y - 1, NULL, 1, 0, 0, 2, TRUE);
 }
 
 // 0x80132BB4
@@ -928,7 +932,7 @@ s32 gmStageClearGetAppendTotalDamageScore(f32 y)
     omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_LINKORDER_DEFAULT, -1);
     damage_score_total = sGmStageClearDamageDealt * 10;
 
-    gmStageClearMakeDigitSObjs(gobj, damage_score_total, 200.0F, (s32)y - 1, NULL, 1, 0, 0, 5, FALSE);
+    gmStageClearMakeScoreDigitSObjs(gobj, damage_score_total, 200.0F, (s32)y - 1, NULL, 1, 0, 0, 5, FALSE);
     func_800269C0(alSound_SFX_StageClearScoreRegister);
 
     return damage_score_total;
@@ -1193,7 +1197,7 @@ s32 gmStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32
         sobj->sprite.green = 0xFF;
         sobj->sprite.blue = 0x00;
 
-        gmStageClearMakeDigitSObjs(gobj, gmStageClearGetNoMissMultiplier(sGmStageClear1PGameStage), (x + 40.0F) + 26.0F, y - 1.0F, &colors, 0, 1, 0, 2, FALSE);
+        gmStageClearMakeScoreDigitSObjs(gobj, gmStageClearGetNoMissMultiplier(sGmStageClear1PGameStage), (x + 40.0F) + 26.0F, y - 1.0F, &colors, 0, 1, 0, 2, FALSE);
     }
     sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGmStageClearFiles[4], &lGmStageClearSpriteBonusColon));
 
@@ -1220,7 +1224,7 @@ s32 gmStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32
     default:
         points = dGmStageClearBonusData[bonus_id].points;
     }
-    gmStageClearMakeDigitSObjs(gobj, points, 241.0F, y - 1.0F, NULL, 0, 1, 0, 6, FALSE);
+    gmStageClearMakeScoreDigitSObjs(gobj, points, 241.0F, y - 1.0F, NULL, 0, 1, 0, 6, FALSE);
 
     return points;
 }
@@ -1825,7 +1829,7 @@ void gmStageClearUpdateResultScore(void)
 }
 
 // 0x801349F0
-void func_ovl56_801349F0(GObj *gobj)
+void gmStageClearSceneProcUpdate(GObj *gobj)
 {
     D_ovl56_801352CC++;
 
@@ -1927,7 +1931,7 @@ void func_ovl56_80134CC4(void)
 
     rdManagerInitSetup(&rldm_setup);
     rdManagerLoadFiles(dGmStageClearFileIDs, ARRAY_COUNT(dGmStageClearFileIDs), sGmStageClearFiles, gsMemoryAlloc(rdManagerGetAllocSize(dGmStageClearFileIDs, ARRAY_COUNT(dGmStageClearFileIDs)), 0x10));
-    omMakeGObjCommon(0, func_ovl56_801349F0, 0, GOBJ_LINKORDER_DEFAULT);
+    omMakeGObjCommon(0, gmStageClearSceneProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
     func_ovl56_80134AF4();
     func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
     func_ovl56_80133C88();

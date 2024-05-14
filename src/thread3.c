@@ -966,7 +966,102 @@ void func_8000205C(void) {
     func_80001E64();
 }
 
+void func_800020D0(void);
+#ifdef NON_MATCHING
+void func_800020D0(void) {
+    s32 t6;
+
+    if (D_80044ED0_406E0 != NULL && D_80044ED0_406E0->info.unk08 == 2) {
+        osSendMesg(D_80044ED0_406E0->info.unk20, (OSMesg)0, OS_MESG_NOBLOCK);
+        D_80044ED0_406E0 = NULL;
+        func_80001E64();
+        D_80044FB8_407C8 = (osGetCount() - D_80044FB0_407C0) / 2971;
+
+        return;
+    }
+    // L8000213C
+    if (D_80044ECC_406DC != NULL && D_80044ECC_406DC->info.unk08 == 4) {
+        if (osSpTaskYielded(&D_80044ECC_406DC->task) == OS_TASK_YIELDED) {
+            D_80044ECC_406DC->info.unk08 = 5;
+            func_80000D44(D_80044ECC_406DC);
+            D_80044ECC_406DC = NULL;
+        } else {
+            // L80002198
+            D_80044ECC_406DC->info.unk08 = 6;
+        }
+        // L800021A4
+        osSpTaskStart(&D_80044ED0_406E0->task);
+        D_80044ED0_406E0->info.unk08 = 2;
+    }
+    // L800021DC
+    if (D_80044ECC_406DC != NULL && D_80044ECC_406DC->info.unk18 == 1 && D_80044ECC_406DC->info.unk08 != 5) {
+        if (D_80044ECC_406DC->info.unk00 == 1 && D_80044ECC_406DC->unk74 == 1) {
+            osInvalDCache(&D_80044FC0_407D0, sizeof(D_80044FC0_407D0));
+            D_80044ECC_406DC->unk78 = D_80044FC0_407D0;
+            /*
+            t5 = D_80044FC8_407D8[0];
+            t6 = D_80044FC0_407D0 upper;
+            t7 = D_80044FC0_407D0 lower;
+            a2 = 1;
+            t2 = t5 + t7;
+            t1 = t2 + 15;
+            // store t6 to stack sp + 18
+            t0 = (sp + 18);
+            t4 = t1 >> 4;
+            t6 = t4 << 4;
+            t8 = t6 >> 0x1f;
+            *D_80044FC8_407D8 = t2;
+            *D_80044FC8_407D8 = t6;
+            // store t7 to stack (sp + 1c)
+            */
+
+            // sp18 = D_80044FC0_407D0.pad00;
+            // t6 = ((((u32)D_80044FC8_407D8 + D_80044FC0_407D0.unk04 + 15) << 4) >> 4);
+            // sp1C = D_80044FC0_407D0.unk04;
+            // sp1C = *((u64 *)&D_80044FC0_407D0);
+            // t6          = (((*D_80044FC8_407D8 + (u32)D_80044FC0_407D0) + 15) << 4) >> 4;
+            //*D_80044FC8_407D8 = *D_80044FC8_407D8 + (u32)D_80044FC0_407D0;
+            //*D_80044FC8_407D8 = t6;
+
+            t6 = 0; // this is to silence clang checks
+            if (D_80044FC0_407D0 < t6) {
+                gsFatalPrintF("rdp_output_buff over !! size = %d\n byte", t6);
+                while (TRUE) { }
+            }
+            /*
+            if ( sp18 >= (t6 >> 31)) {
+                if (sp18 >= (t6 >> 31)) {
+                    if (t6 < sp1C) {
+                        gsFatalPrintF("rdp_output_buff over !! size = %d\n byte", t6);
+                        while (TRUE) { }
+                    }
+
+                }
+                // L800022BC
+            }*/
+
+            // L800022BC
+            D_80044ECC_406DC->info.unk08 = 1;
+            func_80000E24(D_80044ECC_406DC);
+            func_80001FF4();
+        }
+        // L800022D4
+        D_80044ECC_406DC = NULL;
+        func_80001E64();
+        return;
+    }
+    // L800022E8
+    if (D_80044ECC_406DC != NULL && D_80044ECC_406DC->info.unk18 == 2) {
+        if (D_80044ECC_406DC->info.unk00 == 1) {
+            D_80044ECC_406DC->info.unk08 = 6;
+            if (D_80044ECC_406DC->unk7C & 2) { D_80044ECC_406DC->unk7C |= 1; }
+        }
+    }
+    // L80002330
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_800020D0.s")
+#endif /* NON_MATCHING */
 
 void func_80002340(void) {
     union CheckedPtr checked; // could just be a void *temp
@@ -1109,6 +1204,21 @@ void thread3_scheduler(UNUSED void *arg) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_800029D8.s")
+void func_800029D8(void) {
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/osViExtendVStart.s")
+    D_80045020_40830 = 1;
+    osViSetYScale(1.0);
+    osViBlack(TRUE);
+
+    for (i = 0; i < 4; i++) {
+        func_800044B4(i);
+        func_80004494(i);
+    }
+
+    D_80045024_40834 = osAfterPreNMI();
+}
+
+void unref_80002A50(void (*fn)(void)) {
+    D_80045018_40828 = fn;
+}

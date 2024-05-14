@@ -96,11 +96,11 @@ struct SCTaskType9 {
 }; // size >= 0x28
 
 extern OSMesgQueue gScheduleTaskQueue;
-extern u32 D_80044FA4;
-extern u32 D_80044FB4;
-extern u32 D_80044FB8;
-extern s64 D_80044FC0;
-extern s32 D_80045020;
+extern u32 D_80044FA4_407B4;
+extern u32 D_80044FB4_407C4;
+extern u32 D_80044FB8_407C8;
+extern s64 D_80044FC0_407D0;
+extern s32 D_80045020_40830;
 
 extern void func_80000970(struct SCTaskInfo *arg0);
 extern void func_800009D8(struct MqListNode *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count);

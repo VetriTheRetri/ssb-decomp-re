@@ -884,19 +884,230 @@ s32 func_80001A00(struct SCTaskInfo *task) {
 #pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80001A00.s")
 #endif /* NON_MATCHING */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80001E64.s")
+void func_80001E64(void) {
+    s32 phi_a0;
+    s32 phi_v0; // cur "priority"
+    s32 phi_v1;
+    struct SCTaskInfo *phi_s0;  // cur
+    struct SCTaskInfo *temp_s1; // temp for cur
+    s32 phi_s2 = 0;
+    s32 phi_s4; // "priority" of D_80044ED4_406E4
+    s32 phi_s7; // "priority" of D_80044ECC_406DC or D_80044ED0_406E0
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80001FF4.s")
+    phi_s7 = D_80044ECC_406DC != NULL ? D_80044ECC_406DC->info.unk04 : -1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_8000205C.s")
+    if (D_80044ED0_406E0 != NULL) { phi_s7 = D_80044ED0_406E0->info.unk04; }
+
+    phi_s4 = D_80044ED4_406E4 != NULL ? D_80044ED4_406E4->info.unk04 : -1;
+
+    phi_s0 = D_80044EC4_406D4;
+    while (phi_s2 == 0) {
+        phi_v0 = phi_s0 != NULL ? phi_s0->unk04 : -1;
+
+        if (phi_s4 >= phi_v0) {
+            phi_v1 = 0;
+            phi_a0 = phi_s4;
+        } else {
+            phi_v1 = 1;
+            phi_a0 = phi_v0;
+        }
+
+        if (phi_s7 >= phi_a0) {
+            phi_s2 = 1;
+        } else {
+            switch (phi_v1) {
+                case 0:
+                    osSpTaskStart(&D_80044ED4_406E4->task);
+                    phi_s2                       = 1;
+                    D_80044ED4_406E4->info.unk08 = 2;
+                    D_80044ECC_406DC             = D_80044ED4_406E4;
+                    func_80000DD4(D_80044ED4_406E4);
+                    break;
+                case 1:
+                    if (phi_s0->func == NULL || phi_s0->func(phi_s0) != 0) {
+                        phi_s2  = func_80001A00(phi_s0);
+                        temp_s1 = phi_s0->unk0C;
+                        func_80000CF4(phi_s0);
+                        phi_s0 = temp_s1;
+                    } else {
+                        phi_s0 = phi_s0->unk0C;
+                    }
+                    break;
+            }
+        }
+    }
+}
+
+void func_80001FF4(void) {
+    if (D_80044EE4_406F4 == NULL && D_80044EDC_406EC != NULL) {
+        D_80044EE4_406F4 = D_80044EDC_406EC;
+        func_80000E5C(D_80044EDC_406EC);
+        D_80044EE4_406F4->info.unk08 = 2;
+        osDpSetNextBuffer(D_80044EE4_406F4->task.t.output_buff, D_80044EE4_406F4->unk78);
+    }
+}
+
+void func_8000205C(void) {
+    struct MqListNode *cur;
+    // temp usages are needed to match
+    struct MqListNode *temp;
+
+    D_8004501C_4082C += 1;
+    cur = D_80044EC0_406D0;
+    while (cur != NULL) {
+        temp = cur;
+        osSendMesg(temp->mq, (OSMesg)1, 0);
+        cur = cur->next;
+
+        if (temp->mq) { }
+    }
+
+    func_800016D8();
+    func_80001E64();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_800020D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80002340.s")
+void func_80002340(void) {
+    union CheckedPtr checked; // could just be a void *temp
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_800024EC.s")
+    if (D_80044ECC_406DC != NULL && D_80044ECC_406DC->info.unk18 == 2) {
+        if (D_80044ECC_406DC->info.unk00 == 1) {
+            checked.ptr = D_80044ECC_406DC->unk6C;
+            if (checked.ptr != NULL) { func_800017B8(checked.ptr); }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/thread3_scheduler.s")
+            if (D_80044ECC_406DC->info.unk20 != NULL) {
+                osSendMesg(D_80044ECC_406DC->info.unk20, (OSMesg)D_80044ECC_406DC->info.unk1C, OS_MESG_NOBLOCK);
+            }
+
+            if (D_80044ECC_406DC->info.unk08 == 4) {
+                osSpTaskStart(&D_80044ED0_406E0->task);
+                D_80044ED0_406E0->info.unk08 = 2;
+            }
+        }
+
+        D_80044ECC_406DC = NULL;
+        func_80001E64();
+    } else if (D_80044EE4_406F4 != NULL) {
+        checked.ptr = D_80044EE4_406F4->unk6C;
+        if (checked.ptr != NULL) { func_800017B8(checked.ptr); }
+
+        if (D_80044EE4_406F4->info.unk20 != NULL) {
+            osSendMesg(D_80044EE4_406F4->info.unk20, (OSMesg)D_80044EE4_406F4->info.unk1C, OS_MESG_NOBLOCK);
+        }
+
+        D_80044EE4_406F4 = NULL;
+        func_80001FF4();
+    } else if (D_80044ED4_406E4 != NULL && D_80044ED4_406E4->info.unk18 == 2) {
+        if (D_80044ED4_406E4->info.unk00 == 1) {
+            checked.ptr = D_80044ED4_406E4->unk6C;
+            if (checked.ptr != NULL) { func_800017B8(checked.ptr); }
+
+            if (D_80044ED4_406E4->info.unk20 != NULL) {
+                osSendMesg(D_80044ED4_406E4->info.unk20, (OSMesg)D_80044ED4_406E4->info.unk1C, OS_MESG_NOBLOCK);
+            }
+
+            func_80000DD4(D_80044ED4_406E4);
+        }
+        func_80001E64();
+    }
+}
+
+// might only take a struct SpTaskInfo *
+void func_800024EC(struct SCTaskInfo *task) {
+    task->unk08 = 1;
+    func_80000C64(task);
+    func_80001E64();
+}
+
+// forward dec
+void func_800029D8(void);
+
+#define INTR_VRETRACE     1
+#define INTR_SP_TASK_DONE 2
+#define INTR_DP_FULL_SYNC 3
+#define INTR_SOFT_RESET   99
+
+void thread3_scheduler(UNUSED void *arg) {
+    OSMesg intrMsg;
+    UNUSED u32 pad;
+    OSViMode mode;
+
+    // the wonders of matching
+    D_80044EC0_406D0= NULL;
+    D_80044EC4_406D4 = D_80044EC8_406D8 = D_80044ECC_406DC = D_80044ED0_406E0 = D_80044ED4_406E4 = D_80044ED8_406E8 = NULL;
+    D_80044EE4_406F4 = D_80044EDC_406EC = D_80044EE0_406F0 = NULL;
+    D_80044F88_40798[0]                                    = 0;
+    D_80044FA8_407B8 = D_80044F9C_407AC = D_80044FA0_407B0 = NULL;
+    D_80045010_40820                                       = 0;
+    D_80045018_40828                                       = func_800029D8;
+    D_80045020_40830                                       = 0;
+    D_80045024_40834                                       = -1;
+    D_8004501C_4082C                                       = 0;
+    D_80045034_40844 = D_80045035_40845 = 0;
+
+    switch (osTvType) {
+        case OS_TV_NTSC:
+            mode             = osViModeNtscLan1;
+            D_80044EE8_406F8 = mode;
+            D_80044F38_40748 = mode;
+            break;
+        case OS_TV_PAL:
+            while (TRUE) { }
+            break;
+        case OS_TV_MPAL:
+            mode             = osViModeMpalLan1;
+            D_80044EE8_406F8 = mode;
+            D_80044F38_40748 = mode;
+            break;
+    }
+    // 0x10016
+    D_80044EE8_406F8.comRegs.ctrl =
+        VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_DIVOT_ON | VI_CTRL_DITHER_FILTER_ON;
+    D_80044F38_40748.comRegs.ctrl =
+        VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_DIVOT_ON | VI_CTRL_DITHER_FILTER_ON;
+    osViSetMode(&D_80044EE8_406F8);
+    osViBlack(TRUE);
+
+    D_80044FBC_407CC.unk_b80      = TRUE;
+    D_80044FBC_407CC.serrate      = FALSE;
+    D_80044FBC_407CC.pixelSize32  = FALSE;
+    D_80044FBC_407CC.gamma        = FALSE;
+    D_80044FBC_407CC.blackout     = TRUE;
+    D_80044FBC_407CC.unk_b04      = FALSE;
+    D_80044FBC_407CC.gammaDither  = TRUE;
+    D_80044FBC_407CC.ditherFilter = TRUE;
+    D_80044FBC_407CC.divot        = TRUE;
+
+    osCreateMesgQueue(&gScheduleTaskQueue, D_80044FD8_407E8, ARRAY_COUNT(D_80044FD8_407E8));
+    osViSetEvent(&gScheduleTaskQueue, (OSMesg)INTR_VRETRACE, 1);
+    osSetEventMesg(OS_EVENT_SP, &gScheduleTaskQueue, (OSMesg)INTR_SP_TASK_DONE);
+    osSetEventMesg(OS_EVENT_DP, &gScheduleTaskQueue, (OSMesg)INTR_DP_FULL_SYNC);
+    osSetEventMesg(OS_EVENT_PRENMI, &gScheduleTaskQueue, (OSMesg)INTR_SOFT_RESET);
+
+    osSendMesg(&gThreadingQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+
+    while (TRUE) {
+        osRecvMesg(&gScheduleTaskQueue, &intrMsg, OS_MESG_BLOCK);
+
+        switch ((uintptr_t)intrMsg) {
+            case INTR_VRETRACE: func_8000205C(); break;
+            case INTR_SP_TASK_DONE:
+                func_800020D0();
+                if (D_80045020_40830 == 1 && D_80045024_40834 == -1) { D_80045024_40834 = osAfterPreNMI(); }
+                break;
+            case INTR_DP_FULL_SYNC: func_80002340(); break;
+            case INTR_SOFT_RESET:
+                if (D_80045018_40828 != NULL) { D_80045018_40828(); }
+                break;
+            default:
+                if (D_80045020_40830 == 0) {
+                    // is this a pointer to only the info struct?
+                    func_800024EC((struct SCTaskInfo *)intrMsg);
+                }
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_800029D8.s")
 

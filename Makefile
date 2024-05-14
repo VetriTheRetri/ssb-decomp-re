@@ -224,7 +224,8 @@ $(BUILD_DIR)/%.o: %.s
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	@mkdir -p $(@D)
-	clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $< # d file generation
+#   d file generation
+	clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $<
 	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $<
 
 #Bins

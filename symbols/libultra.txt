@@ -260,6 +260,9 @@ __osSumcalc = 0x80036830;
 __osRepairPackId = 0x800369A0;
 __osAiDeviceBusy = 0x80039600;
 osViGetCurrentFramebuffer = 0x80039630;
+osWritebackDCache = 0x800321D0;
+osInvalDCache = 0x80034530;
+osWritebackDCacheAll = 0x80039160;
 
 __ull_rshift = 0x800309B0;
 __ull_rem = 0x800309DC;

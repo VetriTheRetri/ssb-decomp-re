@@ -662,11 +662,227 @@ void func_800017B8(void *arg0) {
     D_80044FB4_407C4 = (u32)((u32)(osGetCount() - D_80044FAC_407BC) / 0xB9BU);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_800018E0.s")
+void func_800018E0(struct SCTaskGfx *arg0) {
+    if (D_80044ECC_406DC != 0) {
+        osSpTaskYield();
+        D_80044ECC_406DC->info.unk08 = 4;
+        func_80000D44(D_80044ECC_406DC);
+        arg0->info.unk08 = 3;
+    } else {
+        osSpTaskStart(&arg0->task);
+        arg0->info.unk08 = 2;
+    }
+    D_80044ECC_406DC = arg0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80001968.s")
+void func_80001968(struct SCTaskGfx *arg0) {
+    D_80044FB0_407C0 = osGetCount();
 
+    if ((D_80044ECC_406DC != NULL) && (D_80044ECC_406DC->info.unk08 == 2)) {
+        osSpTaskYield();
+        D_80044ECC_406DC->info.unk08 = 4;
+        arg0->info.unk08       = 3;
+    } else {
+        osSpTaskStart(&arg0->task);
+        arg0->info.unk08 = 2;
+    }
+    D_80044ED0_406E0 = arg0;
+}
+
+s32 func_80001A00(struct SCTaskInfo *task);
+#ifdef NON_MATCHING
+// execute task?
+s32 func_80001A00(struct SCTaskInfo *task) {
+    /* Nonmatching: reg alloc, likely branches, stack too big */
+
+    s32 sp4C = 0;
+
+    switch (task->unk00) {
+        case 1:
+        {
+            struct SCTaskGfx *t = (void *)task;
+
+            if (t->unk68 != NULL) {
+                *t->unk68 = (*t->unk68) | ((uintptr_t)D_80044F9C_407AC);
+                osWritebackDCache(t->unk68, sizeof(s32 *));
+            }
+            // L80001A6C
+            if ((uintptr_t)t->task.t.output_buff == (uintptr_t)-1) {
+                t->task.t.output_buff = (u64 *)((uintptr_t)D_80044FCC_407DC + D_80044FC8_407D8);
+                osWritebackDCache(&t->task.t.output_buff, sizeof(u64 *));
+            }
+            // L80001A98
+            if (t->unk74 == 1) { osInvalDCache(&D_80044FC0_407D0, sizeof(D_80044FC0_407D0)); }
+            // L80001AB4
+            func_800018E0(t);
+            sp4C = 1;
+            break;
+        }
+        case 2:
+        {
+            // or is this a separate type with an OSTask at the same location?
+            struct SCTaskGfx *t = (void *)task;
+
+            osWritebackDCacheAll();
+            func_80001968(t);
+            sp4C = 1;
+            break;
+        }
+        case 3:
+        {
+            struct SCTaskType3 *t   = (void *)task;
+            struct MqListNode *temp = t->unk24;
+
+            t->unk24->next = D_80044EC0_406D0;
+            D_80044EC0_406D0     = temp;
+
+            if (t->info.unk20 != NULL) {
+                osSendMesg(t->info.unk20, (OSMesg)t->info.unk1C, OS_MESG_NOBLOCK);
+            }
+            break;
+        }
+        case 4:
+        {
+            struct SCTaskType4 *t = (void *)task;
+
+            func_80000F30(t->unk24, t->unk28, t->unk2C, t->unk30, t->unk32, t->unk34, t->unk36);
+
+            if (t->info.unk20 != NULL) {
+                osSendMesg(t->info.unk20, (OSMesg)t->info.unk1C, OS_MESG_NOBLOCK);
+            }
+            break;
+        }
+        case 5:
+        {
+            s32 i;
+            struct SCTaskType5 *t = (void *)task;
+
+            for (i = 0; i < ARRAY_COUNT(D_80044F90_407A0); i++) { D_80044F90_407A0[i] = t->unk24[i]; }
+
+            if (t->info.unk20 != NULL) {
+                osSendMesg(t->info.unk20, (OSMesg)t->info.unk1C, OS_MESG_NOBLOCK);
+            }
+            break;
+        }
+        case 6:
+        {
+            struct SCTaskGfxEnd *t = (void *)task;
+            struct SCTaskGfx *v1   = NULL; // found
+            struct SCTaskInfo *v0;         // csr
+            // a0 = D_80044ECC_406DC;
+            if (D_80044ECC_406DC != NULL && D_80044ECC_406DC->info.unk00 == 1
+                && D_80044ECC_406DC->unk80 == t->unk28) {
+                v1 = D_80044ECC_406DC;
+            }
+            // L80001BEC
+            v0 = &D_80044ED4_406E4->info;
+            while (v0 != NULL) {
+                if (v0->unk00 == 1) {
+                    if (((struct SCTaskGfx *)v0)->unk80 == t->unk28) { v1 = (void *)v0; }
+                }
+                // L80001C20
+                v0 = v0->unk0C;
+            }
+            // L80001C28
+            v0 = D_80044EC4_406D4;
+            while (v0 != NULL) {
+                if (v0->unk00 == 1) {
+                    if (((struct SCTaskGfx *)v0)->unk80 == t->unk28) { v1 = (void *)v0; }
+                }
+                // L80001C5C
+                v0 = v0->unk0C;
+            }
+            // L80001C64
+            v0 = &D_80044EE4_406F4->info;
+            if (v0 != NULL) {
+                if (v0->unk00 == 1) {
+                    if (D_80044ECC_406DC->unk80 == t->unk28) { v1 = (void *)v0; }
+                }
+            }
+            // L80001C94
+            v0 = &D_80044EDC_406EC->info;
+            while (v0 != NULL) {
+                if (v0->unk00 == 1) {
+                    if (((struct SCTaskGfx *)v0)->unk80 == t->unk28) { v1 = (void *)v0; }
+                }
+                v0 = v0->unk0C;
+            }
+            // L80001CD0
+            if (v1 != NULL) {
+                v1->info.unk1C = t->info.unk1C;
+                v1->info.unk20 = t->info.unk20;
+                v1->unk6C      = t->unk24;
+            } else {
+                // L80001CF8
+                if (t->unk24 != NULL) { func_800017B8(t->unk24); }
+                // L80001D0C
+                if (t->info.unk20 != NULL) {
+                    osSendMesg(t->info.unk20, (OSMesg)t->info.unk1C, OS_MESG_NOBLOCK);
+                }
+            }
+            break;
+        }
+        case 7:
+            if (task->unk20 != NULL) {
+                osSendMesg(task->unk20, (OSMesg)task->unk1C, OS_MESG_NOBLOCK);
+            }
+            break;
+        case 8:
+        {
+            struct SCTaskType8 *t = (void *)task;
+
+            D_80044FCC_407DC = t->unk24;
+            D_80044FD0_407E0 = t->unk28;
+            if (t->info.unk20 != NULL) {
+                osSendMesg(t->info.unk20, (OSMesg)t->info.unk1C, OS_MESG_NOBLOCK);
+            }
+            break;
+        }
+        case 9:
+        {
+            struct SCTaskType9 *t = (void *)task;
+
+            D_80045010_40820 = 1;
+            D_80045014_40824 = t->unk24;
+            if (t->info.unk20 != NULL) {
+                osSendMesg(t->info.unk20, (OSMesg)t->info.unk1C, OS_MESG_NOBLOCK);
+            }
+            break;
+        }
+        case 10:
+            D_80045010_40820 = 0;
+            if (task->unk20 != NULL) {
+                osSendMesg(task->unk20, (OSMesg)task->unk1C, OS_MESG_NOBLOCK);
+            }
+            break;
+        case 11:
+        {
+            struct SCTaskInfo *a0 = D_80044EC4_406D4;
+            // struct SCTaskGfx *sp34;
+            while (a0 != NULL) {
+                if (a0->unk00 == 1 || a0->unk00 == 4) {
+                    // sp34 = a0->unk0C;
+                    func_80000CF4(a0);
+                    // a0 = sp34;
+                }
+                // L80001E28
+                a0 = a0->unk0C;
+            }
+            // L80001E30
+            D_80044FA0_407B0 = NULL;
+            if (task->unk20 != NULL) {
+                osSendMesg(task->unk20, (OSMesg)task->unk1C, OS_MESG_NOBLOCK);
+            }
+            break;
+        }
+    }
+    // L80001E50
+
+    return sp4C;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80001A00.s")
+#endif /* NON_MATCHING */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/thread3/func_80001E64.s")
 

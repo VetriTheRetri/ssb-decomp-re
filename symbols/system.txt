@@ -699,3 +699,10 @@ sSysThread8Hang = 0x8009E408; // size:0x1B0
 sSysThread8HangStack = 0x8009E5B8; // size:0x800
 gScheduleTaskQueue = 0x80044FF8;
 D_80044F38_40748 = 0x80044F38; // size:0x50
+
+sSramPiHandle = 0x80045048; // size:0x74
+sDmaMesg = 0x800450BC;  // size:0x4
+sDmaMesgQ = 0x800450C0; // size:0x18
+sVpkBufRamAddr = 0x800450D8; // size:0x4
+sVpkBufSize = 0x800450DC; // size:0x4
+sVpkBufRomAddr = 0x800450E0; // size:0x4

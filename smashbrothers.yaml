@@ -145,7 +145,7 @@ segments:
       - [0x001060, c, main]
       - [0x001510, pad, padding_1510]
       - [0x001520, c, thread3]
-      - [0x003660, asm, gsdma]
+      - [0x003660, c, gsdma]
       - [0x004800, asm, thread6]
       - [0x0054D0, asm, gsgtl]
       - [0x0078E0, asm, ml]
@@ -356,7 +356,7 @@ segments:
       - { start: 0x0402B0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
       - { start: auto, type: .bss, name: main,                     vram: 0x8003FAD0 }
       - { start: auto, type: .bss, name: thread3,                  vram: 0x80044EC0 }
-      - { start: auto, type:  bss, name: gsdma,                    vram: 0x80045040 }
+      - { start: auto, type: .bss, name: gsdma,                    vram: 0x80045040 }
       - { start: auto, type:  bss, name: thread6,                  vram: 0x800450F0 }
       - { start: auto, type:  bss, name: gsgtl,                    vram: 0x80045490 }
       - { start: auto, type:  bss, name: system_00,                vram: 0x80046670 }

@@ -263,6 +263,7 @@ osWritebackDCache = 0x800321D0;
 osInvalDCache = 0x80034530;
 osWritebackDCacheAll = 0x80039160;
 osPiGetCmdQueue = 0x80035CA0;
+__osPiRawReadIo = 0x800325B0;
 
 __ull_rshift = 0x800309B0;
 __ull_rem = 0x800309DC;

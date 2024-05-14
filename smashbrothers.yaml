@@ -207,7 +207,7 @@ segments:
       - [0x032D50, asm, libultra/os/virtualtophysical]
       - [0x032DD0, hasm, libultra/os/writebackdcache]
       - [0x032E50, asm, libultra/os/initialize]
-      - [0x0331B0, asm, libultra/io/pirawread]
+      - [0x0331B0, c, libultra/io/pirawread]
       - [0x033210, asm, libultra/nops_33210]
       - [0x033270, hasm, libultra/os/setsr]
       - [0x033280, hasm, libultra/os/getsr]

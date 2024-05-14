@@ -67,7 +67,7 @@ MIPS_BINUTILS_PREFIX := mips-linux-gnu-
 TOOLS	  := tools
 PYTHON	  := python3
 INCLUDES := -Iinclude -Isrc -Iinclude/PR
-DEFINES := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32
+DEFINES := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32 -DNDEBUG
 OPTFLAGS := -O2
 
 # ----- Output ------

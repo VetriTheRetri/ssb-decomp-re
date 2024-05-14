@@ -13,7 +13,7 @@ extern CameraVec7 dMvOpeningDKCameraSettingsEnd; // 0x8018E08C
 // 0x8018E0A8
 ftExplainCommand dMvOpeningDKInputSeq[/* */] =
 {
-    FTEXPLAIN_EVENT_STICK(0, -50, 0),                     // 0x2000, 0x00B0
+    FTEXPLAIN_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0), // 0x2000, 0x00B0
     FTEXPLAIN_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
     FTEXPLAIN_EVENT_BUTTON(0, 1),                         // 0x1001, 0x0000
     FTEXPLAIN_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000

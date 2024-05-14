@@ -322,7 +322,6 @@ void mvOpeningLinkCreatePosedFighterBackgroundViewport()
 // 0x8018DD80
 void mvOpeningLinkMainProc(GObj* arg0)
 {
-
     gMvOpeningLinkFramesElapsed += 1;
 
     if (func_ovl1_8039076C(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
@@ -360,7 +359,7 @@ void mvOpeningLinkInit()
     gMvOpeningLinkBattleState = gDefaultBattleState;
     gBattleState = &gMvOpeningLinkBattleState;
 
-    gBattleState->game_type = 4; // gmMatch_GameType_Intro;
+    gBattleState->game_type = gmMatch_GameType_Intro;
 
     gBattleState->gr_kind = Gr_Kind_Hyrule;
     gBattleState->pl_count = 1;

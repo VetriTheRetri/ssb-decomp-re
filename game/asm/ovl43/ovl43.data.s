@@ -6,22 +6,22 @@
 #  8018E0B0 -> 8018E220
 
 
-glabel D_ovl43_8018E0B0
+glabel dMvOpeningKirbyCameraSettingsStart
   .incbin "ovl43.raw.bin", 0x0FF0, 0x1C
 
-glabel D_ovl43_8018E0CC
+glabel dMvOpeningKirbyCameraSettingsEnd
   .incbin "ovl43.raw.bin", 0x100C, 0x1C
 
-glabel D_ovl43_8018E0E8
+glabel dMvOpeningKirbyInputSeq
   .incbin "ovl43.raw.bin", 0x1028, 0xC
 
 glabel D_ovl43_8018E0F4
   .incbin "ovl43.raw.bin", 0x1034, 0x8
 
-glabel D_ovl43_8018E0FC
+glabel dMvOpeningKirbyNameOffsets
   .incbin "ovl43.raw.bin", 0x103C, 0x18
 
-glabel D_ovl43_8018E114
+glabel dMvOpeningKirbyNameCharPositions
   .incbin "ovl43.raw.bin", 0x1054, 0x10
   /* 1064 16F034 8018E124 */
   .asciz "BH"
@@ -45,7 +45,7 @@ glabel D_ovl43_8018E158
   .incbin "ovl43.raw.bin", 0x10D8, 0x20
   /* 10F8 16F0C8 8018E1B8 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl43.raw.bin", 0x10FC, 0x24
-  /* 1120 16F0F0 8018E1E0 */  .4byte func_ovl43_8018DE84
+  /* 1120 16F0F0 8018E1E0 */  .4byte mvOpeningKirbyInit
   .incbin "ovl43.raw.bin", 0x1124, 0xC
 
 glabel D_ovl43_8018E1F0

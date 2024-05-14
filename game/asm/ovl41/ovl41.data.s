@@ -6,7 +6,7 @@
 #  8018E0C0 -> 8018E220
 
 
-glabel D_ovl41_8018E0C0
+glabel dMvOpeningYoshiCameraSettingsStart
   .incbin "ovl41.raw.bin", 0x1000, 0x8
   /* 1008 16CD18 8018E0C8 */
   .asciz "Dz"
@@ -17,19 +17,19 @@ glabel D_ovl41_8018E0C0
   .balign 4
   .incbin "ovl41.raw.bin", 0x1014, 0x8
 
-glabel D_ovl41_8018E0DC
+glabel dMvOpeningYoshiCameraSettingsEnd
   .incbin "ovl41.raw.bin", 0x101C, 0x1C
 
-glabel D_ovl41_8018E0F8
+glabel dMvOpeningYoshiInputSeq
   .incbin "ovl41.raw.bin", 0x1038, 0x10
 
 glabel D_ovl41_8018E108
   .incbin "ovl41.raw.bin", 0x1048, 0x8
 
-glabel D_ovl41_8018E110
+glabel dMvOpeningYoshiNameOffsets
   .incbin "ovl41.raw.bin", 0x1050, 0x18
 
-glabel D_ovl41_8018E128
+glabel dMvOpeningYoshiNameCharPositions
   .incbin "ovl41.raw.bin", 0x1068, 0x10
   /* 1078 16CD88 8018E138 */
   .asciz "C"
@@ -47,12 +47,12 @@ glabel D_ovl41_8018E158
   /* 10A0 16CDB0 8018E160 */  .4byte func_800A26B8
   /* 10A4 16CDB4 8018E164 */  .4byte D_NF_8018E640
   .incbin "ovl41.raw.bin", 0x10A8, 0x28
-  /* 10D0 16CDE0 8018E190 */  .4byte func_ovl41_8018E010
+  /* 10D0 16CDE0 8018E190 */  .4byte gMvOpeningYoshiSetupDisplayList
   /* 10D4 16CDE4 8018E194 */  .4byte update_contdata
   .incbin "ovl41.raw.bin", 0x10D8, 0x20
   /* 10F8 16CE08 8018E1B8 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl41.raw.bin", 0x10FC, 0x24
-  /* 1120 16CE30 8018E1E0 */  .4byte func_ovl41_8018DE88
+  /* 1120 16CE30 8018E1E0 */  .4byte mvOpeningYoshiInit
   .incbin "ovl41.raw.bin", 0x1124, 0xC
 
 glabel D_ovl41_8018E1F0

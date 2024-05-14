@@ -12,7 +12,7 @@
 # Text Sections
 #  0x8018D0C0 -> 0x8018E0C0
 
-glabel func_ovl42_8018D0C0
+glabel mvOpeningPikachuLoadFiles
   /* 16CE70 8018D0C0 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 16CE74 8018D0C4 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 16CE78 8018D0C8 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -52,9 +52,9 @@ glabel func_ovl42_8018D0C0
   /* 16CF00 8018D150 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16CF04 8018D154 27BD0040 */     addiu $sp, $sp, 0x40
   /* 16CF08 8018D158 03E00008 */        jr $ra
-  /* 16CF0C 8018D15C 00000000 */       nop 
+  /* 16CF0C 8018D15C 00000000 */       nop
 
-glabel func_ovl42_8018D160
+glabel mvOpeningPikachuSetNameColor
   /* 16CF10 8018D160 948E0024 */       lhu $t6, 0x24($a0)
   /* 16CF14 8018D164 240200FF */     addiu $v0, $zero, 0xff
   /* 16CF18 8018D168 A0820060 */        sb $v0, 0x60($a0)
@@ -69,9 +69,9 @@ glabel func_ovl42_8018D160
   /* 16CF3C 8018D18C 03E00008 */        jr $ra
   /* 16CF40 8018D190 A082002A */        sb $v0, 0x2a($a0)
 
-glabel func_ovl42_8018D194
+glabel mvOpeningPikachuDrawName
   /* 16CF44 8018D194 27BDFF60 */     addiu $sp, $sp, -0xa0
-  /* 16CF48 8018D198 3C0F8019 */       lui $t7, %hi(D_ovl42_8018E104)
+  /* 16CF48 8018D198 3C0F8019 */       lui $t7, %hi(dMvOpeningPikachuNameOffsets)
   /* 16CF4C 8018D19C AFBF0044 */        sw $ra, 0x44($sp)
   /* 16CF50 8018D1A0 AFB40040 */        sw $s4, 0x40($sp)
   /* 16CF54 8018D1A4 AFB3003C */        sw $s3, 0x3c($sp)
@@ -80,40 +80,40 @@ glabel func_ovl42_8018D194
   /* 16CF60 8018D1B0 AFB00030 */        sw $s0, 0x30($sp)
   /* 16CF64 8018D1B4 F7B60028 */      sdc1 $f22, 0x28($sp)
   /* 16CF68 8018D1B8 F7B40020 */      sdc1 $f20, 0x20($sp)
-  /* 16CF6C 8018D1BC 25EFE104 */     addiu $t7, $t7, %lo(D_ovl42_8018E104)
-  /* 16CF70 8018D1C0 8DF90000 */        lw $t9, ($t7) # D_ovl42_8018E104 + 0
-  /* 16CF74 8018D1C4 8DF80004 */        lw $t8, 4($t7) # D_ovl42_8018E104 + 4
+  /* 16CF6C 8018D1BC 25EFE104 */     addiu $t7, $t7, %lo(dMvOpeningPikachuNameOffsets)
+  /* 16CF70 8018D1C0 8DF90000 */        lw $t9, ($t7) # dMvOpeningPikachuNameOffsets + 0
+  /* 16CF74 8018D1C4 8DF80004 */        lw $t8, 4($t7) # dMvOpeningPikachuNameOffsets + 4
   /* 16CF78 8018D1C8 27AE0078 */     addiu $t6, $sp, 0x78
   /* 16CF7C 8018D1CC ADD90000 */        sw $t9, ($t6)
   /* 16CF80 8018D1D0 ADD80004 */        sw $t8, 4($t6)
-  /* 16CF84 8018D1D4 8DF8000C */        lw $t8, 0xc($t7) # D_ovl42_8018E104 + 12
-  /* 16CF88 8018D1D8 8DF90008 */        lw $t9, 8($t7) # D_ovl42_8018E104 + 8
-  /* 16CF8C 8018D1DC 3C098019 */       lui $t1, %hi(D_ovl42_8018E124)
+  /* 16CF84 8018D1D4 8DF8000C */        lw $t8, 0xc($t7) # dMvOpeningPikachuNameOffsets + 12
+  /* 16CF88 8018D1D8 8DF90008 */        lw $t9, 8($t7) # dMvOpeningPikachuNameOffsets + 8
+  /* 16CF8C 8018D1DC 3C098019 */       lui $t1, %hi(dMvOpeningPikachuNameCharPositions)
   /* 16CF90 8018D1E0 ADD8000C */        sw $t8, 0xc($t6)
   /* 16CF94 8018D1E4 ADD90008 */        sw $t9, 8($t6)
-  /* 16CF98 8018D1E8 8DF90010 */        lw $t9, 0x10($t7) # D_ovl42_8018E104 + 16
-  /* 16CF9C 8018D1EC 8DF80014 */        lw $t8, 0x14($t7) # D_ovl42_8018E104 + 20
-  /* 16CFA0 8018D1F0 2529E124 */     addiu $t1, $t1, %lo(D_ovl42_8018E124)
+  /* 16CF98 8018D1E8 8DF90010 */        lw $t9, 0x10($t7) # dMvOpeningPikachuNameOffsets + 16
+  /* 16CF9C 8018D1EC 8DF80014 */        lw $t8, 0x14($t7) # dMvOpeningPikachuNameOffsets + 20
+  /* 16CFA0 8018D1F0 2529E124 */     addiu $t1, $t1, %lo(dMvOpeningPikachuNameCharPositions)
   /* 16CFA4 8018D1F4 ADD90010 */        sw $t9, 0x10($t6)
   /* 16CFA8 8018D1F8 ADD80014 */        sw $t8, 0x14($t6)
-  /* 16CFAC 8018D1FC 8DF8001C */        lw $t8, 0x1c($t7) # D_ovl42_8018E104 + 28
-  /* 16CFB0 8018D200 8DF90018 */        lw $t9, 0x18($t7) # D_ovl42_8018E104 + 24
+  /* 16CFAC 8018D1FC 8DF8001C */        lw $t8, 0x1c($t7) # dMvOpeningPikachuNameOffsets + 28
+  /* 16CFB0 8018D200 8DF90018 */        lw $t9, 0x18($t7) # dMvOpeningPikachuNameOffsets + 24
   /* 16CFB4 8018D204 27A8005C */     addiu $t0, $sp, 0x5c
   /* 16CFB8 8018D208 ADD8001C */        sw $t8, 0x1c($t6)
   /* 16CFBC 8018D20C ADD90018 */        sw $t9, 0x18($t6)
-  /* 16CFC0 8018D210 8D2B0000 */        lw $t3, ($t1) # D_ovl42_8018E124 + 0
-  /* 16CFC4 8018D214 8D2A0004 */        lw $t2, 4($t1) # D_ovl42_8018E124 + 4
+  /* 16CFC0 8018D210 8D2B0000 */        lw $t3, ($t1) # dMvOpeningPikachuNameCharPositions + 0
+  /* 16CFC4 8018D214 8D2A0004 */        lw $t2, 4($t1) # dMvOpeningPikachuNameCharPositions + 4
   /* 16CFC8 8018D218 3C108000 */       lui $s0, %hi(D_NF_80000004)
   /* 16CFCC 8018D21C AD0B0000 */        sw $t3, ($t0)
-  /* 16CFD0 8018D220 8D2B0008 */        lw $t3, 8($t1) # D_ovl42_8018E124 + 8
+  /* 16CFD0 8018D220 8D2B0008 */        lw $t3, 8($t1) # dMvOpeningPikachuNameCharPositions + 8
   /* 16CFD4 8018D224 AD0A0004 */        sw $t2, 4($t0)
-  /* 16CFD8 8018D228 8D2A000C */        lw $t2, 0xc($t1) # D_ovl42_8018E124 + 12
+  /* 16CFD8 8018D228 8D2A000C */        lw $t2, 0xc($t1) # dMvOpeningPikachuNameCharPositions + 12
   /* 16CFDC 8018D22C AD0B0008 */        sw $t3, 8($t0)
-  /* 16CFE0 8018D230 8D2B0010 */        lw $t3, 0x10($t1) # D_ovl42_8018E124 + 16
+  /* 16CFE0 8018D230 8D2B0010 */        lw $t3, 0x10($t1) # dMvOpeningPikachuNameCharPositions + 16
   /* 16CFE4 8018D234 AD0A000C */        sw $t2, 0xc($t0)
-  /* 16CFE8 8018D238 8D2A0014 */        lw $t2, 0x14($t1) # D_ovl42_8018E124 + 20
+  /* 16CFE8 8018D238 8D2A0014 */        lw $t2, 0x14($t1) # dMvOpeningPikachuNameCharPositions + 20
   /* 16CFEC 8018D23C AD0B0010 */        sw $t3, 0x10($t0)
-  /* 16CFF0 8018D240 8D2B0018 */        lw $t3, 0x18($t1) # D_ovl42_8018E124 + 24
+  /* 16CFF0 8018D240 8D2B0018 */        lw $t3, 0x18($t1) # dMvOpeningPikachuNameCharPositions + 24
   /* 16CFF4 8018D244 02003825 */        or $a3, $s0, $zero
   /* 16CFF8 8018D248 00002025 */        or $a0, $zero, $zero
   /* 16CFFC 8018D24C 00002825 */        or $a1, $zero, $zero
@@ -121,10 +121,10 @@ glabel func_ovl42_8018D194
   /* 16D004 8018D254 AD0A0014 */        sw $t2, 0x14($t0)
   /* 16D008 8018D258 0C00265A */       jal omMakeGObjCommon
   /* 16D00C 8018D25C AD0B0018 */        sw $t3, 0x18($t0)
-  /* 16D010 8018D260 3C018019 */       lui $at, %hi(D_ovl42_8018E22C)
+  /* 16D010 8018D260 3C018019 */       lui $at, %hi(gMvOpeningPikachuNameGObj)
   /* 16D014 8018D264 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 16D018 8018D268 240CFFFF */     addiu $t4, $zero, -1
-  /* 16D01C 8018D26C AC22E22C */        sw $v0, %lo(D_ovl42_8018E22C)($at)
+  /* 16D01C 8018D26C AC22E22C */        sw $v0, %lo(gMvOpeningPikachuNameGObj)($at)
   /* 16D020 8018D270 0040A025 */        or $s4, $v0, $zero
   /* 16D024 8018D274 AFAC0010 */        sw $t4, 0x10($sp)
   /* 16D028 8018D278 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -158,7 +158,7 @@ glabel func_ovl42_8018D194
   /* 16D094 8018D2E4 C6240000 */      lwc1 $f4, ($s1)
   /* 16D098 8018D2E8 E456005C */      swc1 $f22, 0x5c($v0)
   /* 16D09C 8018D2EC 46142180 */     add.s $f6, $f4, $f20
-  /* 16D0A0 8018D2F0 0C063458 */       jal func_ovl42_8018D160
+  /* 16D0A0 8018D2F0 0C063458 */       jal mvOpeningPikachuSetNameColor
   /* 16D0A4 8018D2F4 E4460058 */      swc1 $f6, 0x58($v0)
   /* 16D0A8 8018D2F8 8E020004 */        lw $v0, %lo(D_NF_80000004)($s0)
   /* 16D0AC 8018D2FC 26100004 */     addiu $s0, $s0, %lo(D_NF_80000004)
@@ -177,18 +177,18 @@ glabel func_ovl42_8018D194
   /* 16D0DC 8018D32C 03E00008 */        jr $ra
   /* 16D0E0 8018D330 27BD00A0 */     addiu $sp, $sp, 0xa0
 
-glabel func_ovl42_8018D334
-  /* 16D0E4 8018D334 3C0E8019 */       lui $t6, %hi(D_ovl42_8018E228)
-  /* 16D0E8 8018D338 8DCEE228 */        lw $t6, %lo(D_ovl42_8018E228)($t6)
-  /* 16D0EC 8018D33C 3C038019 */       lui $v1, %hi(D_ovl42_8018E268)
+glabel mvOpeningPikachuAnimateStageCamera
+  /* 16D0E4 8018D334 3C0E8019 */       lui $t6, %hi(gMvOpeningPikachuFramesElapsed)
+  /* 16D0E8 8018D338 8DCEE228 */        lw $t6, %lo(gMvOpeningPikachuFramesElapsed)($t6)
+  /* 16D0EC 8018D33C 3C038019 */       lui $v1, %hi(dMvOpeningPikachuCameraSettingsAdjustedEnd)
   /* 16D0F0 8018D340 8C820074 */        lw $v0, 0x74($a0)
   /* 16D0F4 8018D344 29C1000F */      slti $at, $t6, 0xf
   /* 16D0F8 8018D348 14200036 */      bnez $at, .L8018D424
-  /* 16D0FC 8018D34C 2463E268 */     addiu $v1, $v1, %lo(D_ovl42_8018E268)
-  /* 16D100 8018D350 3C048019 */       lui $a0, %hi(D_ovl42_8018E248)
-  /* 16D104 8018D354 2484E248 */     addiu $a0, $a0, %lo(D_ovl42_8018E248)
-  /* 16D108 8018D358 C4860000 */      lwc1 $f6, ($a0) # D_ovl42_8018E248 + 0
-  /* 16D10C 8018D35C C4640000 */      lwc1 $f4, ($v1) # D_ovl42_8018E268 + 0
+  /* 16D0FC 8018D34C 2463E268 */     addiu $v1, $v1, %lo(dMvOpeningPikachuCameraSettingsAdjustedEnd)
+  /* 16D100 8018D350 3C048019 */       lui $a0, %hi(dMvOpeningPikachuCameraSettingsAdjustedStart)
+  /* 16D104 8018D354 2484E248 */     addiu $a0, $a0, %lo(dMvOpeningPikachuCameraSettingsAdjustedStart)
+  /* 16D108 8018D358 C4860000 */      lwc1 $f6, ($a0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 0
+  /* 16D10C 8018D35C C4640000 */      lwc1 $f4, ($v1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 0
   /* 16D110 8018D360 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 16D114 8018D364 44810000 */      mtc1 $at, $f0 # 45.0 to cop1
   /* 16D118 8018D368 46062201 */     sub.s $f8, $f4, $f6
@@ -197,54 +197,54 @@ glabel func_ovl42_8018D334
   /* 16D124 8018D374 460A8480 */     add.s $f18, $f16, $f10
   /* 16D128 8018D378 C44A0040 */      lwc1 $f10, 0x40($v0)
   /* 16D12C 8018D37C E452003C */      swc1 $f18, 0x3c($v0)
-  /* 16D130 8018D380 C4860004 */      lwc1 $f6, 4($a0) # D_ovl42_8018E248 + 4
-  /* 16D134 8018D384 C4640004 */      lwc1 $f4, 4($v1) # D_ovl42_8018E268 + 4
+  /* 16D130 8018D380 C4860004 */      lwc1 $f6, 4($a0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 4
+  /* 16D134 8018D384 C4640004 */      lwc1 $f4, 4($v1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 4
   /* 16D138 8018D388 46062201 */     sub.s $f8, $f4, $f6
   /* 16D13C 8018D38C 46004403 */     div.s $f16, $f8, $f0
   /* 16D140 8018D390 46105480 */     add.s $f18, $f10, $f16
   /* 16D144 8018D394 C4500044 */      lwc1 $f16, 0x44($v0)
   /* 16D148 8018D398 E4520040 */      swc1 $f18, 0x40($v0)
-  /* 16D14C 8018D39C C4860008 */      lwc1 $f6, 8($a0) # D_ovl42_8018E248 + 8
-  /* 16D150 8018D3A0 C4640008 */      lwc1 $f4, 8($v1) # D_ovl42_8018E268 + 8
+  /* 16D14C 8018D39C C4860008 */      lwc1 $f6, 8($a0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 8
+  /* 16D150 8018D3A0 C4640008 */      lwc1 $f4, 8($v1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 8
   /* 16D154 8018D3A4 46062201 */     sub.s $f8, $f4, $f6
   /* 16D158 8018D3A8 46004283 */     div.s $f10, $f8, $f0
   /* 16D15C 8018D3AC 460A8480 */     add.s $f18, $f16, $f10
   /* 16D160 8018D3B0 C44A0048 */      lwc1 $f10, 0x48($v0)
   /* 16D164 8018D3B4 E4520044 */      swc1 $f18, 0x44($v0)
-  /* 16D168 8018D3B8 C486000C */      lwc1 $f6, 0xc($a0) # D_ovl42_8018E248 + 12
-  /* 16D16C 8018D3BC C464000C */      lwc1 $f4, 0xc($v1) # D_ovl42_8018E268 + 12
+  /* 16D168 8018D3B8 C486000C */      lwc1 $f6, 0xc($a0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 12
+  /* 16D16C 8018D3BC C464000C */      lwc1 $f4, 0xc($v1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 12
   /* 16D170 8018D3C0 46062201 */     sub.s $f8, $f4, $f6
   /* 16D174 8018D3C4 46004403 */     div.s $f16, $f8, $f0
   /* 16D178 8018D3C8 46105480 */     add.s $f18, $f10, $f16
   /* 16D17C 8018D3CC C450004C */      lwc1 $f16, 0x4c($v0)
   /* 16D180 8018D3D0 E4520048 */      swc1 $f18, 0x48($v0)
-  /* 16D184 8018D3D4 C4860010 */      lwc1 $f6, 0x10($a0) # D_ovl42_8018E248 + 16
-  /* 16D188 8018D3D8 C4640010 */      lwc1 $f4, 0x10($v1) # D_ovl42_8018E268 + 16
+  /* 16D184 8018D3D4 C4860010 */      lwc1 $f6, 0x10($a0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 16
+  /* 16D188 8018D3D8 C4640010 */      lwc1 $f4, 0x10($v1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 16
   /* 16D18C 8018D3DC 46062201 */     sub.s $f8, $f4, $f6
   /* 16D190 8018D3E0 46004283 */     div.s $f10, $f8, $f0
   /* 16D194 8018D3E4 460A8480 */     add.s $f18, $f16, $f10
   /* 16D198 8018D3E8 C44A0050 */      lwc1 $f10, 0x50($v0)
   /* 16D19C 8018D3EC E452004C */      swc1 $f18, 0x4c($v0)
-  /* 16D1A0 8018D3F0 C4860014 */      lwc1 $f6, 0x14($a0) # D_ovl42_8018E248 + 20
-  /* 16D1A4 8018D3F4 C4640014 */      lwc1 $f4, 0x14($v1) # D_ovl42_8018E268 + 20
+  /* 16D1A0 8018D3F0 C4860014 */      lwc1 $f6, 0x14($a0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 20
+  /* 16D1A4 8018D3F4 C4640014 */      lwc1 $f4, 0x14($v1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 20
   /* 16D1A8 8018D3F8 46062201 */     sub.s $f8, $f4, $f6
   /* 16D1AC 8018D3FC 46004403 */     div.s $f16, $f8, $f0
   /* 16D1B0 8018D400 46105480 */     add.s $f18, $f10, $f16
   /* 16D1B4 8018D404 C4500054 */      lwc1 $f16, 0x54($v0)
   /* 16D1B8 8018D408 E4520050 */      swc1 $f18, 0x50($v0)
-  /* 16D1BC 8018D40C C4860018 */      lwc1 $f6, 0x18($a0) # D_ovl42_8018E248 + 24
-  /* 16D1C0 8018D410 C4640018 */      lwc1 $f4, 0x18($v1) # D_ovl42_8018E268 + 24
+  /* 16D1BC 8018D40C C4860018 */      lwc1 $f6, 0x18($a0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 24
+  /* 16D1C0 8018D410 C4640018 */      lwc1 $f4, 0x18($v1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 24
   /* 16D1C4 8018D414 46062201 */     sub.s $f8, $f4, $f6
   /* 16D1C8 8018D418 46004283 */     div.s $f10, $f8, $f0
   /* 16D1CC 8018D41C 460A8480 */     add.s $f18, $f16, $f10
   /* 16D1D0 8018D420 E4520054 */      swc1 $f18, 0x54($v0)
   .L8018D424:
   /* 16D1D4 8018D424 03E00008 */        jr $ra
-  /* 16D1D8 8018D428 00000000 */       nop 
+  /* 16D1D8 8018D428 00000000 */       nop
 
-glabel func_ovl42_8018D42C
+glabel mvOpeningPikachuCreateStageViewport
   /* 16D1DC 8018D42C 27BDFFD0 */     addiu $sp, $sp, -0x30
-  /* 16D1E0 8018D430 3C0E8019 */       lui $t6, %hi(D_ovl42_8018E0C0)
+  /* 16D1E0 8018D430 3C0E8019 */       lui $t6, %hi(dMvOpeningPikachuCameraSettingsStart)
   /* 16D1E4 8018D434 AFBF002C */        sw $ra, 0x2c($sp)
   /* 16D1E8 8018D438 AFB20028 */        sw $s2, 0x28($sp)
   /* 16D1EC 8018D43C AFB10024 */        sw $s1, 0x24($sp)
@@ -252,46 +252,46 @@ glabel func_ovl42_8018D42C
   /* 16D1F4 8018D444 AFA40030 */        sw $a0, 0x30($sp)
   /* 16D1F8 8018D448 AFA50034 */        sw $a1, 0x34($sp)
   /* 16D1FC 8018D44C AFA60038 */        sw $a2, 0x38($sp)
-  /* 16D200 8018D450 25CEE0C0 */     addiu $t6, $t6, %lo(D_ovl42_8018E0C0)
-  /* 16D204 8018D454 8DD80000 */        lw $t8, ($t6) # D_ovl42_8018E0C0 + 0
-  /* 16D208 8018D458 3C108019 */       lui $s0, %hi(D_ovl42_8018E248)
-  /* 16D20C 8018D45C 2610E248 */     addiu $s0, $s0, %lo(D_ovl42_8018E248)
-  /* 16D210 8018D460 AE180000 */        sw $t8, ($s0) # D_ovl42_8018E248 + 0
-  /* 16D214 8018D464 8DCF0004 */        lw $t7, 4($t6) # D_ovl42_8018E0C0 + 4
-  /* 16D218 8018D468 3C198019 */       lui $t9, %hi(D_ovl42_8018E0DC)
-  /* 16D21C 8018D46C 2739E0DC */     addiu $t9, $t9, %lo(D_ovl42_8018E0DC)
-  /* 16D220 8018D470 AE0F0004 */        sw $t7, 4($s0) # D_ovl42_8018E248 + 4
-  /* 16D224 8018D474 8DD80008 */        lw $t8, 8($t6) # D_ovl42_8018E0C0 + 8
-  /* 16D228 8018D478 3C118019 */       lui $s1, %hi(D_ovl42_8018E268)
-  /* 16D22C 8018D47C 2631E268 */     addiu $s1, $s1, %lo(D_ovl42_8018E268)
-  /* 16D230 8018D480 AE180008 */        sw $t8, 8($s0) # D_ovl42_8018E248 + 8
-  /* 16D234 8018D484 8DCF000C */        lw $t7, 0xc($t6) # D_ovl42_8018E0C0 + 12
+  /* 16D200 8018D450 25CEE0C0 */     addiu $t6, $t6, %lo(dMvOpeningPikachuCameraSettingsStart)
+  /* 16D204 8018D454 8DD80000 */        lw $t8, ($t6) # dMvOpeningPikachuCameraSettingsStart + 0
+  /* 16D208 8018D458 3C108019 */       lui $s0, %hi(dMvOpeningPikachuCameraSettingsAdjustedStart)
+  /* 16D20C 8018D45C 2610E248 */     addiu $s0, $s0, %lo(dMvOpeningPikachuCameraSettingsAdjustedStart)
+  /* 16D210 8018D460 AE180000 */        sw $t8, ($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 0
+  /* 16D214 8018D464 8DCF0004 */        lw $t7, 4($t6) # dMvOpeningPikachuCameraSettingsStart + 4
+  /* 16D218 8018D468 3C198019 */       lui $t9, %hi(dMvOpeningPikachuCameraSettingsEnd)
+  /* 16D21C 8018D46C 2739E0DC */     addiu $t9, $t9, %lo(dMvOpeningPikachuCameraSettingsEnd)
+  /* 16D220 8018D470 AE0F0004 */        sw $t7, 4($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 4
+  /* 16D224 8018D474 8DD80008 */        lw $t8, 8($t6) # dMvOpeningPikachuCameraSettingsStart + 8
+  /* 16D228 8018D478 3C118019 */       lui $s1, %hi(dMvOpeningPikachuCameraSettingsAdjustedEnd)
+  /* 16D22C 8018D47C 2631E268 */     addiu $s1, $s1, %lo(dMvOpeningPikachuCameraSettingsAdjustedEnd)
+  /* 16D230 8018D480 AE180008 */        sw $t8, 8($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 8
+  /* 16D234 8018D484 8DCF000C */        lw $t7, 0xc($t6) # dMvOpeningPikachuCameraSettingsStart + 12
   /* 16D238 8018D488 00002025 */        or $a0, $zero, $zero
-  /* 16D23C 8018D48C AE0F000C */        sw $t7, 0xc($s0) # D_ovl42_8018E248 + 12
-  /* 16D240 8018D490 8DD80010 */        lw $t8, 0x10($t6) # D_ovl42_8018E0C0 + 16
-  /* 16D244 8018D494 AE180010 */        sw $t8, 0x10($s0) # D_ovl42_8018E248 + 16
-  /* 16D248 8018D498 8DCF0014 */        lw $t7, 0x14($t6) # D_ovl42_8018E0C0 + 20
-  /* 16D24C 8018D49C AE0F0014 */        sw $t7, 0x14($s0) # D_ovl42_8018E248 + 20
-  /* 16D250 8018D4A0 8DD80018 */        lw $t8, 0x18($t6) # D_ovl42_8018E0C0 + 24
-  /* 16D254 8018D4A4 AE180018 */        sw $t8, 0x18($s0) # D_ovl42_8018E248 + 24
-  /* 16D258 8018D4A8 8F290000 */        lw $t1, ($t9) # D_ovl42_8018E0DC + 0
-  /* 16D25C 8018D4AC AE290000 */        sw $t1, ($s1) # D_ovl42_8018E268 + 0
-  /* 16D260 8018D4B0 8F280004 */        lw $t0, 4($t9) # D_ovl42_8018E0DC + 4
-  /* 16D264 8018D4B4 AE280004 */        sw $t0, 4($s1) # D_ovl42_8018E268 + 4
-  /* 16D268 8018D4B8 8F290008 */        lw $t1, 8($t9) # D_ovl42_8018E0DC + 8
-  /* 16D26C 8018D4BC AE290008 */        sw $t1, 8($s1) # D_ovl42_8018E268 + 8
-  /* 16D270 8018D4C0 8F28000C */        lw $t0, 0xc($t9) # D_ovl42_8018E0DC + 12
-  /* 16D274 8018D4C4 AE28000C */        sw $t0, 0xc($s1) # D_ovl42_8018E268 + 12
-  /* 16D278 8018D4C8 8F290010 */        lw $t1, 0x10($t9) # D_ovl42_8018E0DC + 16
-  /* 16D27C 8018D4CC AE290010 */        sw $t1, 0x10($s1) # D_ovl42_8018E268 + 16
-  /* 16D280 8018D4D0 8F280014 */        lw $t0, 0x14($t9) # D_ovl42_8018E0DC + 20
-  /* 16D284 8018D4D4 AE280014 */        sw $t0, 0x14($s1) # D_ovl42_8018E268 + 20
-  /* 16D288 8018D4D8 8F290018 */        lw $t1, 0x18($t9) # D_ovl42_8018E0DC + 24
+  /* 16D23C 8018D48C AE0F000C */        sw $t7, 0xc($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 12
+  /* 16D240 8018D490 8DD80010 */        lw $t8, 0x10($t6) # dMvOpeningPikachuCameraSettingsStart + 16
+  /* 16D244 8018D494 AE180010 */        sw $t8, 0x10($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 16
+  /* 16D248 8018D498 8DCF0014 */        lw $t7, 0x14($t6) # dMvOpeningPikachuCameraSettingsStart + 20
+  /* 16D24C 8018D49C AE0F0014 */        sw $t7, 0x14($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 20
+  /* 16D250 8018D4A0 8DD80018 */        lw $t8, 0x18($t6) # dMvOpeningPikachuCameraSettingsStart + 24
+  /* 16D254 8018D4A4 AE180018 */        sw $t8, 0x18($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 24
+  /* 16D258 8018D4A8 8F290000 */        lw $t1, ($t9) # dMvOpeningPikachuCameraSettingsEnd + 0
+  /* 16D25C 8018D4AC AE290000 */        sw $t1, ($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 0
+  /* 16D260 8018D4B0 8F280004 */        lw $t0, 4($t9) # dMvOpeningPikachuCameraSettingsEnd + 4
+  /* 16D264 8018D4B4 AE280004 */        sw $t0, 4($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 4
+  /* 16D268 8018D4B8 8F290008 */        lw $t1, 8($t9) # dMvOpeningPikachuCameraSettingsEnd + 8
+  /* 16D26C 8018D4BC AE290008 */        sw $t1, 8($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 8
+  /* 16D270 8018D4C0 8F28000C */        lw $t0, 0xc($t9) # dMvOpeningPikachuCameraSettingsEnd + 12
+  /* 16D274 8018D4C4 AE28000C */        sw $t0, 0xc($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 12
+  /* 16D278 8018D4C8 8F290010 */        lw $t1, 0x10($t9) # dMvOpeningPikachuCameraSettingsEnd + 16
+  /* 16D27C 8018D4CC AE290010 */        sw $t1, 0x10($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 16
+  /* 16D280 8018D4D0 8F280014 */        lw $t0, 0x14($t9) # dMvOpeningPikachuCameraSettingsEnd + 20
+  /* 16D284 8018D4D4 AE280014 */        sw $t0, 0x14($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 20
+  /* 16D288 8018D4D8 8F290018 */        lw $t1, 0x18($t9) # dMvOpeningPikachuCameraSettingsEnd + 24
   /* 16D28C 8018D4DC 0C0436CB */       jal func_ovl2_8010DB2C
-  /* 16D290 8018D4E0 AE290018 */        sw $t1, 0x18($s1) # D_ovl42_8018E268 + 24
-  /* 16D294 8018D4E4 3C038019 */       lui $v1, %hi(D_ovl42_8018E238)
-  /* 16D298 8018D4E8 2463E238 */     addiu $v1, $v1, %lo(D_ovl42_8018E238)
-  /* 16D29C 8018D4EC AC620000 */        sw $v0, ($v1) # D_ovl42_8018E238 + 0
+  /* 16D290 8018D4E0 AE290018 */        sw $t1, 0x18($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 24
+  /* 16D294 8018D4E4 3C038019 */       lui $v1, %hi(gMvOpeningPikachuStageCameraGObj)
+  /* 16D298 8018D4E8 2463E238 */     addiu $v1, $v1, %lo(gMvOpeningPikachuStageCameraGObj)
+  /* 16D29C 8018D4EC AC620000 */        sw $v0, ($v1) # gMvOpeningPikachuStageCameraGObj + 0
   /* 16D2A0 8018D4F0 3C014366 */       lui $at, (0x43660000 >> 16) # 230.0
   /* 16D2A4 8018D4F4 8C520074 */        lw $s2, 0x74($v0)
   /* 16D2A8 8018D4F8 44812000 */      mtc1 $at, $f4 # 230.0 to cop1
@@ -303,69 +303,69 @@ glabel func_ovl42_8018D42C
   /* 16D2C0 8018D510 E7A40010 */      swc1 $f4, 0x10($sp)
   /* 16D2C4 8018D514 3C018019 */       lui $at, %hi(D_ovl42_8018E20C)
   /* 16D2C8 8018D518 C426E20C */      lwc1 $f6, %lo(D_ovl42_8018E20C)($at)
-  /* 16D2CC 8018D51C 3C048019 */       lui $a0, %hi(D_ovl42_8018E238)
+  /* 16D2CC 8018D51C 3C048019 */       lui $a0, %hi(gMvOpeningPikachuStageCameraGObj)
   /* 16D2D0 8018D520 E6460024 */      swc1 $f6, 0x24($s2)
   /* 16D2D4 8018D524 0C002CE7 */       jal func_8000B39C
-  /* 16D2D8 8018D528 8C84E238 */        lw $a0, %lo(D_ovl42_8018E238)($a0)
-  /* 16D2DC 8018D52C 3C048019 */       lui $a0, %hi(D_ovl42_8018E238)
-  /* 16D2E0 8018D530 3C058019 */       lui $a1, %hi(func_ovl42_8018D334)
-  /* 16D2E4 8018D534 24A5D334 */     addiu $a1, $a1, %lo(func_ovl42_8018D334)
-  /* 16D2E8 8018D538 8C84E238 */        lw $a0, %lo(D_ovl42_8018E238)($a0)
+  /* 16D2D8 8018D528 8C84E238 */        lw $a0, %lo(gMvOpeningPikachuStageCameraGObj)($a0)
+  /* 16D2DC 8018D52C 3C048019 */       lui $a0, %hi(gMvOpeningPikachuStageCameraGObj)
+  /* 16D2E0 8018D530 3C058019 */       lui $a1, %hi(mvOpeningPikachuAnimateStageCamera)
+  /* 16D2E4 8018D534 24A5D334 */     addiu $a1, $a1, %lo(mvOpeningPikachuAnimateStageCamera)
+  /* 16D2E8 8018D538 8C84E238 */        lw $a0, %lo(gMvOpeningPikachuStageCameraGObj)($a0)
   /* 16D2EC 8018D53C 24060001 */     addiu $a2, $zero, 1
   /* 16D2F0 8018D540 0C002062 */       jal omAddGObjCommonProc
   /* 16D2F4 8018D544 24070001 */     addiu $a3, $zero, 1
   /* 16D2F8 8018D548 C7A00030 */      lwc1 $f0, 0x30($sp)
   /* 16D2FC 8018D54C C7A20034 */      lwc1 $f2, 0x34($sp)
   /* 16D300 8018D550 C7AC0038 */      lwc1 $f12, 0x38($sp)
-  /* 16D304 8018D554 C6080000 */      lwc1 $f8, ($s0) # D_ovl42_8018E248 + 0
-  /* 16D308 8018D558 C6100004 */      lwc1 $f16, 4($s0) # D_ovl42_8018E248 + 4
-  /* 16D30C 8018D55C C6040008 */      lwc1 $f4, 8($s0) # D_ovl42_8018E248 + 8
+  /* 16D304 8018D554 C6080000 */      lwc1 $f8, ($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 0
+  /* 16D308 8018D558 C6100004 */      lwc1 $f16, 4($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 4
+  /* 16D30C 8018D55C C6040008 */      lwc1 $f4, 8($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 8
   /* 16D310 8018D560 46004280 */     add.s $f10, $f8, $f0
-  /* 16D314 8018D564 C608000C */      lwc1 $f8, 0xc($s0) # D_ovl42_8018E248 + 12
+  /* 16D314 8018D564 C608000C */      lwc1 $f8, 0xc($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 12
   /* 16D318 8018D568 46028480 */     add.s $f18, $f16, $f2
-  /* 16D31C 8018D56C C6100010 */      lwc1 $f16, 0x10($s0) # D_ovl42_8018E248 + 16
-  /* 16D320 8018D570 E60A0000 */      swc1 $f10, ($s0) # D_ovl42_8018E248 + 0
+  /* 16D31C 8018D56C C6100010 */      lwc1 $f16, 0x10($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 16
+  /* 16D320 8018D570 E60A0000 */      swc1 $f10, ($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 0
   /* 16D324 8018D574 460C2180 */     add.s $f6, $f4, $f12
-  /* 16D328 8018D578 C6040014 */      lwc1 $f4, 0x14($s0) # D_ovl42_8018E248 + 20
-  /* 16D32C 8018D57C E6120004 */      swc1 $f18, 4($s0) # D_ovl42_8018E248 + 4
+  /* 16D328 8018D578 C6040014 */      lwc1 $f4, 0x14($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 20
+  /* 16D32C 8018D57C E6120004 */      swc1 $f18, 4($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 4
   /* 16D330 8018D580 46004280 */     add.s $f10, $f8, $f0
-  /* 16D334 8018D584 E6060008 */      swc1 $f6, 8($s0) # D_ovl42_8018E248 + 8
-  /* 16D338 8018D588 C6280000 */      lwc1 $f8, ($s1) # D_ovl42_8018E268 + 0
+  /* 16D334 8018D584 E6060008 */      swc1 $f6, 8($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 8
+  /* 16D338 8018D588 C6280000 */      lwc1 $f8, ($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 0
   /* 16D33C 8018D58C 46028480 */     add.s $f18, $f16, $f2
-  /* 16D340 8018D590 C6300004 */      lwc1 $f16, 4($s1) # D_ovl42_8018E268 + 4
-  /* 16D344 8018D594 E60A000C */      swc1 $f10, 0xc($s0) # D_ovl42_8018E248 + 12
+  /* 16D340 8018D590 C6300004 */      lwc1 $f16, 4($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 4
+  /* 16D344 8018D594 E60A000C */      swc1 $f10, 0xc($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 12
   /* 16D348 8018D598 460C2180 */     add.s $f6, $f4, $f12
-  /* 16D34C 8018D59C C6240008 */      lwc1 $f4, 8($s1) # D_ovl42_8018E268 + 8
-  /* 16D350 8018D5A0 E6120010 */      swc1 $f18, 0x10($s0) # D_ovl42_8018E248 + 16
+  /* 16D34C 8018D59C C6240008 */      lwc1 $f4, 8($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 8
+  /* 16D350 8018D5A0 E6120010 */      swc1 $f18, 0x10($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 16
   /* 16D354 8018D5A4 46004280 */     add.s $f10, $f8, $f0
-  /* 16D358 8018D5A8 E6060014 */      swc1 $f6, 0x14($s0) # D_ovl42_8018E248 + 20
-  /* 16D35C 8018D5AC C628000C */      lwc1 $f8, 0xc($s1) # D_ovl42_8018E268 + 12
+  /* 16D358 8018D5A8 E6060014 */      swc1 $f6, 0x14($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 20
+  /* 16D35C 8018D5AC C628000C */      lwc1 $f8, 0xc($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 12
   /* 16D360 8018D5B0 46028480 */     add.s $f18, $f16, $f2
-  /* 16D364 8018D5B4 C6300010 */      lwc1 $f16, 0x10($s1) # D_ovl42_8018E268 + 16
-  /* 16D368 8018D5B8 E62A0000 */      swc1 $f10, ($s1) # D_ovl42_8018E268 + 0
+  /* 16D364 8018D5B4 C6300010 */      lwc1 $f16, 0x10($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 16
+  /* 16D368 8018D5B8 E62A0000 */      swc1 $f10, ($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 0
   /* 16D36C 8018D5BC 460C2180 */     add.s $f6, $f4, $f12
-  /* 16D370 8018D5C0 C6240014 */      lwc1 $f4, 0x14($s1) # D_ovl42_8018E268 + 20
-  /* 16D374 8018D5C4 E6320004 */      swc1 $f18, 4($s1) # D_ovl42_8018E268 + 4
+  /* 16D370 8018D5C0 C6240014 */      lwc1 $f4, 0x14($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 20
+  /* 16D374 8018D5C4 E6320004 */      swc1 $f18, 4($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 4
   /* 16D378 8018D5C8 46004280 */     add.s $f10, $f8, $f0
-  /* 16D37C 8018D5CC E6260008 */      swc1 $f6, 8($s1) # D_ovl42_8018E268 + 8
-  /* 16D380 8018D5D0 C6080000 */      lwc1 $f8, ($s0) # D_ovl42_8018E248 + 0
+  /* 16D37C 8018D5CC E6260008 */      swc1 $f6, 8($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 8
+  /* 16D380 8018D5D0 C6080000 */      lwc1 $f8, ($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 0
   /* 16D384 8018D5D4 46028480 */     add.s $f18, $f16, $f2
-  /* 16D388 8018D5D8 E62A000C */      swc1 $f10, 0xc($s1) # D_ovl42_8018E268 + 12
+  /* 16D388 8018D5D8 E62A000C */      swc1 $f10, 0xc($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 12
   /* 16D38C 8018D5DC 460C2180 */     add.s $f6, $f4, $f12
-  /* 16D390 8018D5E0 E6320010 */      swc1 $f18, 0x10($s1) # D_ovl42_8018E268 + 16
-  /* 16D394 8018D5E4 E6260014 */      swc1 $f6, 0x14($s1) # D_ovl42_8018E268 + 20
+  /* 16D390 8018D5E0 E6320010 */      swc1 $f18, 0x10($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 16
+  /* 16D394 8018D5E4 E6260014 */      swc1 $f6, 0x14($s1) # dMvOpeningPikachuCameraSettingsAdjustedEnd + 20
   /* 16D398 8018D5E8 E648003C */      swc1 $f8, 0x3c($s2)
-  /* 16D39C 8018D5EC C60A0004 */      lwc1 $f10, 4($s0) # D_ovl42_8018E248 + 4
+  /* 16D39C 8018D5EC C60A0004 */      lwc1 $f10, 4($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 4
   /* 16D3A0 8018D5F0 E64A0040 */      swc1 $f10, 0x40($s2)
-  /* 16D3A4 8018D5F4 C6100008 */      lwc1 $f16, 8($s0) # D_ovl42_8018E248 + 8
+  /* 16D3A4 8018D5F4 C6100008 */      lwc1 $f16, 8($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 8
   /* 16D3A8 8018D5F8 E6500044 */      swc1 $f16, 0x44($s2)
-  /* 16D3AC 8018D5FC C612000C */      lwc1 $f18, 0xc($s0) # D_ovl42_8018E248 + 12
+  /* 16D3AC 8018D5FC C612000C */      lwc1 $f18, 0xc($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 12
   /* 16D3B0 8018D600 E6520048 */      swc1 $f18, 0x48($s2)
-  /* 16D3B4 8018D604 C6040010 */      lwc1 $f4, 0x10($s0) # D_ovl42_8018E248 + 16
+  /* 16D3B4 8018D604 C6040010 */      lwc1 $f4, 0x10($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 16
   /* 16D3B8 8018D608 E644004C */      swc1 $f4, 0x4c($s2)
-  /* 16D3BC 8018D60C C6060014 */      lwc1 $f6, 0x14($s0) # D_ovl42_8018E248 + 20
+  /* 16D3BC 8018D60C C6060014 */      lwc1 $f6, 0x14($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 20
   /* 16D3C0 8018D610 E6460050 */      swc1 $f6, 0x50($s2)
-  /* 16D3C4 8018D614 C6080018 */      lwc1 $f8, 0x18($s0) # D_ovl42_8018E248 + 24
+  /* 16D3C4 8018D614 C6080018 */      lwc1 $f8, 0x18($s0) # dMvOpeningPikachuCameraSettingsAdjustedStart + 24
   /* 16D3C8 8018D618 E6480054 */      swc1 $f8, 0x54($s2)
   /* 16D3CC 8018D61C 8FBF002C */        lw $ra, 0x2c($sp)
   /* 16D3D0 8018D620 8FB20028 */        lw $s2, 0x28($sp)
@@ -374,7 +374,7 @@ glabel func_ovl42_8018D42C
   /* 16D3DC 8018D62C 03E00008 */        jr $ra
   /* 16D3E0 8018D630 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl42_8018D634
+glabel mvOpeningPikachuInitFighterStagePanel
   /* 16D3E4 8018D634 27BDFF50 */     addiu $sp, $sp, -0xb0
   /* 16D3E8 8018D638 AFBF003C */        sw $ra, 0x3c($sp)
   /* 16D3EC 8018D63C AFBE0038 */        sw $fp, 0x38($sp)
@@ -388,7 +388,7 @@ glabel func_ovl42_8018D634
   /* 16D40C 8018D65C 0C0412F7 */       jal grWallpaper_SetGroundWallpaper
   /* 16D410 8018D660 AFB00018 */        sw $s0, 0x18($sp)
   /* 16D414 8018D664 0C041580 */       jal grNodeInit_SetGroundFiles
-  /* 16D418 8018D668 00000000 */       nop 
+  /* 16D418 8018D668 00000000 */       nop
   /* 16D41C 8018D66C 0C03F1E9 */       jal mpCollision_GetMPointCountKind
   /* 16D420 8018D670 24040015 */     addiu $a0, $zero, 0x15
   /* 16D424 8018D674 24010001 */     addiu $at, $zero, 1
@@ -400,9 +400,9 @@ glabel func_ovl42_8018D634
   /* 16D438 8018D688 0C008D89 */       jal gsFatalPrintF
   /* 16D43C 8018D68C 02002025 */        or $a0, $s0, $zero
   /* 16D440 8018D690 0C028C10 */       jal smCrashPrintGObjStatus
-  /* 16D444 8018D694 00000000 */       nop 
+  /* 16D444 8018D694 00000000 */       nop
   /* 16D448 8018D698 1000FFFB */         b .L8018D688
-  /* 16D44C 8018D69C 00000000 */       nop 
+  /* 16D44C 8018D69C 00000000 */       nop
   .L8018D6A0:
   /* 16D450 8018D6A0 0C03F205 */       jal mpCollision_GetMPointIDsKind
   /* 16D454 8018D6A4 27A5009C */     addiu $a1, $sp, 0x9c
@@ -416,12 +416,12 @@ glabel func_ovl42_8018D634
   /* 16D474 8018D6C4 8FA40000 */        lw $a0, ($sp)
   /* 16D478 8018D6C8 AFA50004 */        sw $a1, 4($sp)
   /* 16D47C 8018D6CC 8E060008 */        lw $a2, 8($s0) # D_ovl42_8018E1F0 + 8
-  /* 16D480 8018D6D0 0C06350B */       jal func_ovl42_8018D42C
+  /* 16D480 8018D6D0 0C06350B */       jal mvOpeningPikachuCreateStageViewport
   /* 16D484 8018D6D4 AFA60008 */        sw $a2, 8($sp)
   /* 16D488 8018D6D8 0C0455B9 */       jal gmRumble_SetPlayerRumble
-  /* 16D48C 8018D6DC 00000000 */       nop 
+  /* 16D48C 8018D6DC 00000000 */       nop
   /* 16D490 8018D6E0 0C0594F8 */       jal func_NF_801653E0 # couldn't be resolved
-  /* 16D494 8018D6E4 00000000 */       nop 
+  /* 16D494 8018D6E4 00000000 */       nop
   /* 16D498 8018D6E8 3C168011 */       lui $s6, %hi(dFtDefaultFighterDesc)
   /* 16D49C 8018D6EC 3C15800A */       lui $s5, %hi(gBattleState)
   /* 16D4A0 8018D6F0 26B550E8 */     addiu $s5, $s5, %lo(gBattleState)
@@ -494,14 +494,14 @@ glabel func_ovl42_8018D634
   /* 16D5A4 8018D7F4 AFA20088 */        sw $v0, 0x88($sp)
   /* 16D5A8 8018D7F8 0C035FCF */       jal ftManager_MakeFighter
   /* 16D5AC 8018D7FC 02802025 */        or $a0, $s4, $zero
-  /* 16D5B0 8018D800 3C018019 */       lui $at, %hi(D_ovl42_8018E230)
-  /* 16D5B4 8018D804 AC22E230 */        sw $v0, %lo(D_ovl42_8018E230)($at)
+  /* 16D5B0 8018D800 3C018019 */       lui $at, %hi(gMvOpeningPikachuStageFighterGObj)
+  /* 16D5B4 8018D804 AC22E230 */        sw $v0, %lo(gMvOpeningPikachuStageFighterGObj)($at)
   /* 16D5B8 8018D808 00408025 */        or $s0, $v0, $zero
   /* 16D5BC 8018D80C 02202025 */        or $a0, $s1, $zero
   /* 16D5C0 8018D810 0C039F13 */       jal ftCommon_ClearPlayerMatchStats
   /* 16D5C4 8018D814 00402825 */        or $a1, $v0, $zero
-  /* 16D5C8 8018D818 3C058019 */       lui $a1, %hi(D_ovl42_8018E0F8)
-  /* 16D5CC 8018D81C 24A5E0F8 */     addiu $a1, $a1, %lo(D_ovl42_8018E0F8)
+  /* 16D5C8 8018D818 3C058019 */       lui $a1, %hi(dMvOpeningPikachuInputSeq)
+  /* 16D5CC 8018D81C 24A5E0F8 */     addiu $a1, $a1, %lo(dMvOpeningPikachuInputSeq)
   /* 16D5D0 8018D820 0C03A6CC */       jal ftCommon_SetHowToPlayInputSeq
   /* 16D5D4 8018D824 02002025 */        or $a0, $s0, $zero
   /* 16D5D8 8018D828 26310001 */     addiu $s1, $s1, 1
@@ -521,7 +521,7 @@ glabel func_ovl42_8018D634
   /* 16D60C 8018D85C 03E00008 */        jr $ra
   /* 16D610 8018D860 27BD00B0 */     addiu $sp, $sp, 0xb0
 
-glabel func_ovl42_8018D864
+glabel mvOpeningPikachuRenderPosedFighterBackground
   /* 16D614 8018D864 3C0B8004 */       lui $t3, %hi(gDisplayListHead)
   /* 16D618 8018D868 256B65B0 */     addiu $t3, $t3, %lo(gDisplayListHead)
   /* 16D61C 8018D86C 8D630000 */        lw $v1, ($t3) # gDisplayListHead + 0
@@ -587,7 +587,7 @@ glabel func_ovl42_8018D864
   /* 16D70C 8018D95C 03E00008 */        jr $ra
   /* 16D710 8018D960 AC6D0000 */        sw $t5, ($v1)
 
-glabel func_ovl42_8018D964
+glabel mvOpeningPikachuCreatePosedFighterBackground
   /* 16D714 8018D964 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 16D718 8018D968 AFBF001C */        sw $ra, 0x1c($sp)
   /* 16D71C 8018D96C 00002025 */        or $a0, $zero, $zero
@@ -595,10 +595,10 @@ glabel func_ovl42_8018D964
   /* 16D724 8018D974 24060013 */     addiu $a2, $zero, 0x13
   /* 16D728 8018D978 0C00265A */       jal omMakeGObjCommon
   /* 16D72C 8018D97C 3C078000 */       lui $a3, 0x8000
-  /* 16D730 8018D980 3C058019 */       lui $a1, %hi(func_ovl42_8018D864)
+  /* 16D730 8018D980 3C058019 */       lui $a1, %hi(mvOpeningPikachuRenderPosedFighterBackground)
   /* 16D734 8018D984 240EFFFF */     addiu $t6, $zero, -1
   /* 16D738 8018D988 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 16D73C 8018D98C 24A5D864 */     addiu $a1, $a1, %lo(func_ovl42_8018D864)
+  /* 16D73C 8018D98C 24A5D864 */     addiu $a1, $a1, %lo(mvOpeningPikachuRenderPosedFighterBackground)
   /* 16D740 8018D990 00402025 */        or $a0, $v0, $zero
   /* 16D744 8018D994 2406001C */     addiu $a2, $zero, 0x1c
   /* 16D748 8018D998 0C00277D */       jal omAddGObjRenderProc
@@ -606,11 +606,11 @@ glabel func_ovl42_8018D964
   /* 16D750 8018D9A0 8FBF001C */        lw $ra, 0x1c($sp)
   /* 16D754 8018D9A4 27BD0020 */     addiu $sp, $sp, 0x20
   /* 16D758 8018D9A8 03E00008 */        jr $ra
-  /* 16D75C 8018D9AC 00000000 */       nop 
+  /* 16D75C 8018D9AC 00000000 */       nop
 
-glabel func_ovl42_8018D9B0
-  /* 16D760 8018D9B0 3C038019 */       lui $v1, %hi(D_ovl42_8018E228)
-  /* 16D764 8018D9B4 8C63E228 */        lw $v1, %lo(D_ovl42_8018E228)($v1)
+glabel mvOpeningPikachuAnimatePosedFighter
+  /* 16D760 8018D9B0 3C038019 */       lui $v1, %hi(gMvOpeningPikachuFramesElapsed)
+  /* 16D764 8018D9B4 8C63E228 */        lw $v1, %lo(gMvOpeningPikachuFramesElapsed)($v1)
   /* 16D768 8018D9B8 2401000F */     addiu $at, $zero, 0xf
   /* 16D76C 8018D9BC 3C058019 */       lui $a1, 0x8019
   /* 16D770 8018D9C0 10610009 */       beq $v1, $at, .L8018D9E8
@@ -620,26 +620,26 @@ glabel func_ovl42_8018D9B0
   /* 16D780 8018D9D0 3C058019 */       lui $a1, 0x8019
   /* 16D784 8018D9D4 2401003C */     addiu $at, $zero, 0x3c
   /* 16D788 8018D9D8 1041000D */       beq $v0, $at, .L8018DA10
-  /* 16D78C 8018D9DC 3C058019 */       lui $a1, %hi(D_ovl42_8018E240)
+  /* 16D78C 8018D9DC 3C058019 */       lui $a1, %hi(gMvOpeningPikachuPosedFighterYSpeed)
   /* 16D790 8018D9E0 1000000F */         b .L8018DA20
-  /* 16D794 8018D9E4 24A5E240 */     addiu $a1, $a1, %lo(D_ovl42_8018E240)
+  /* 16D794 8018D9E4 24A5E240 */     addiu $a1, $a1, %lo(gMvOpeningPikachuPosedFighterYSpeed)
   .L8018D9E8:
   /* 16D798 8018D9E8 3C014188 */       lui $at, (0x41880000 >> 16) # 17.0
   /* 16D79C 8018D9EC 44812000 */      mtc1 $at, $f4 # 17.0 to cop1
   /* 16D7A0 8018D9F0 24A5E240 */     addiu $a1, $a1, -0x1dc0
   /* 16D7A4 8018D9F4 1000000A */         b .L8018DA20
-  /* 16D7A8 8018D9F8 E4A40000 */      swc1 $f4, ($a1) # D_ovl42_8018E240 + 0
+  /* 16D7A8 8018D9F8 E4A40000 */      swc1 $f4, ($a1) # gMvOpeningPikachuPosedFighterYSpeed + 0
   .L8018D9FC:
   /* 16D7AC 8018D9FC 3C014170 */       lui $at, (0x41700000 >> 16) # 15.0
   /* 16D7B0 8018DA00 44813000 */      mtc1 $at, $f6 # 15.0 to cop1
   /* 16D7B4 8018DA04 24A5E240 */     addiu $a1, $a1, -0x1dc0
   /* 16D7B8 8018DA08 10000005 */         b .L8018DA20
-  /* 16D7BC 8018DA0C E4A60000 */      swc1 $f6, ($a1) # D_ovl42_8018E240 + 0
+  /* 16D7BC 8018DA0C E4A60000 */      swc1 $f6, ($a1) # gMvOpeningPikachuPosedFighterYSpeed + 0
   .L8018DA10:
   /* 16D7C0 8018DA10 44804000 */      mtc1 $zero, $f8
-  /* 16D7C4 8018DA14 3C058019 */       lui $a1, %hi(D_ovl42_8018E240)
-  /* 16D7C8 8018DA18 24A5E240 */     addiu $a1, $a1, %lo(D_ovl42_8018E240)
-  /* 16D7CC 8018DA1C E4A80000 */      swc1 $f8, ($a1) # D_ovl42_8018E240 + 0
+  /* 16D7C4 8018DA14 3C058019 */       lui $a1, %hi(gMvOpeningPikachuPosedFighterYSpeed)
+  /* 16D7C8 8018DA18 24A5E240 */     addiu $a1, $a1, %lo(gMvOpeningPikachuPosedFighterYSpeed)
+  /* 16D7CC 8018DA1C E4A80000 */      swc1 $f8, ($a1) # gMvOpeningPikachuPosedFighterYSpeed + 0
   .L8018DA20:
   /* 16D7D0 8018DA20 28610010 */      slti $at, $v1, 0x10
   /* 16D7D4 8018DA24 14200007 */      bnez $at, .L8018DA44
@@ -647,9 +647,9 @@ glabel func_ovl42_8018D9B0
   /* 16D7DC 8018DA2C 10200005 */      beqz $at, .L8018DA44
   /* 16D7E0 8018DA30 3C018019 */       lui $at, %hi(D_ovl42_8018E210)
   /* 16D7E4 8018DA34 C430E210 */      lwc1 $f16, %lo(D_ovl42_8018E210)($at)
-  /* 16D7E8 8018DA38 C4AA0000 */      lwc1 $f10, ($a1) # D_ovl42_8018E240 + 0
+  /* 16D7E8 8018DA38 C4AA0000 */      lwc1 $f10, ($a1) # gMvOpeningPikachuPosedFighterYSpeed + 0
   /* 16D7EC 8018DA3C 46105480 */     add.s $f18, $f10, $f16
-  /* 16D7F0 8018DA40 E4B20000 */      swc1 $f18, ($a1) # D_ovl42_8018E240 + 0
+  /* 16D7F0 8018DA40 E4B20000 */      swc1 $f18, ($a1) # gMvOpeningPikachuPosedFighterYSpeed + 0
   .L8018DA44:
   /* 16D7F4 8018DA44 2861002E */      slti $at, $v1, 0x2e
   /* 16D7F8 8018DA48 14200007 */      bnez $at, .L8018DA68
@@ -657,18 +657,18 @@ glabel func_ovl42_8018D9B0
   /* 16D800 8018DA50 10200005 */      beqz $at, .L8018DA68
   /* 16D804 8018DA54 3C01BF80 */       lui $at, (0xBF800000 >> 16) # -1.0
   /* 16D808 8018DA58 44813000 */      mtc1 $at, $f6 # -1.0 to cop1
-  /* 16D80C 8018DA5C C4A40000 */      lwc1 $f4, ($a1) # D_ovl42_8018E240 + 0
+  /* 16D80C 8018DA5C C4A40000 */      lwc1 $f4, ($a1) # gMvOpeningPikachuPosedFighterYSpeed + 0
   /* 16D810 8018DA60 46062200 */     add.s $f8, $f4, $f6
-  /* 16D814 8018DA64 E4A80000 */      swc1 $f8, ($a1) # D_ovl42_8018E240 + 0
+  /* 16D814 8018DA64 E4A80000 */      swc1 $f8, ($a1) # gMvOpeningPikachuPosedFighterYSpeed + 0
   .L8018DA68:
   /* 16D818 8018DA68 8C820074 */        lw $v0, 0x74($a0)
-  /* 16D81C 8018DA6C C4B00000 */      lwc1 $f16, ($a1) # D_ovl42_8018E240 + 0
+  /* 16D81C 8018DA6C C4B00000 */      lwc1 $f16, ($a1) # gMvOpeningPikachuPosedFighterYSpeed + 0
   /* 16D820 8018DA70 C44A0020 */      lwc1 $f10, 0x20($v0)
   /* 16D824 8018DA74 46105480 */     add.s $f18, $f10, $f16
   /* 16D828 8018DA78 03E00008 */        jr $ra
   /* 16D82C 8018DA7C E4520020 */      swc1 $f18, 0x20($v0)
 
-glabel func_ovl42_8018DA80
+glabel mvOpeningPikachuCreatePosedFighter
   /* 16D830 8018DA80 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 16D834 8018DA84 AFB00018 */        sw $s0, 0x18($sp)
   /* 16D838 8018DA88 3C0E8011 */       lui $t6, %hi(dFtDefaultFighterDesc)
@@ -695,9 +695,9 @@ glabel func_ovl42_8018DA80
   /* 16D888 8018DAD8 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 16D88C 8018DADC 00002825 */        or $a1, $zero, $zero
   /* 16D890 8018DAE0 44800000 */      mtc1 $zero, $f0
-  /* 16D894 8018DAE4 3C0A8019 */       lui $t2, %hi(D_ovl42_8018E23C)
+  /* 16D894 8018DAE4 3C0A8019 */       lui $t2, %hi(gMvOpeningPikachuAnimHeap)
   /* 16D898 8018DAE8 3C01C416 */       lui $at, (0xC4160000 >> 16) # -600.0
-  /* 16D89C 8018DAEC 8D4AE23C */        lw $t2, %lo(D_ovl42_8018E23C)($t2)
+  /* 16D89C 8018DAEC 8D4AE23C */        lw $t2, %lo(gMvOpeningPikachuAnimHeap)($t2)
   /* 16D8A0 8018DAF0 44812000 */      mtc1 $at, $f4 # -600.0 to cop1
   /* 16D8A4 8018DAF4 A3A2003B */        sb $v0, 0x3b($sp)
   /* 16D8A8 8018DAF8 02002025 */        or $a0, $s0, $zero
@@ -715,8 +715,8 @@ glabel func_ovl42_8018DA80
   /* 16D8D8 8018DB28 2405001A */     addiu $a1, $zero, 0x1a
   /* 16D8DC 8018DB2C 0C002834 */       jal omMoveGObjDL
   /* 16D8E0 8018DB30 2406FFFF */     addiu $a2, $zero, -1
-  /* 16D8E4 8018DB34 3C058019 */       lui $a1, %hi(func_ovl42_8018D9B0)
-  /* 16D8E8 8018DB38 24A5D9B0 */     addiu $a1, $a1, %lo(func_ovl42_8018D9B0)
+  /* 16D8E4 8018DB34 3C058019 */       lui $a1, %hi(mvOpeningPikachuAnimatePosedFighter)
+  /* 16D8E8 8018DB38 24A5D9B0 */     addiu $a1, $a1, %lo(mvOpeningPikachuAnimatePosedFighter)
   /* 16D8EC 8018DB3C 02002025 */        or $a0, $s0, $zero
   /* 16D8F0 8018DB40 24060001 */     addiu $a2, $zero, 1
   /* 16D8F4 8018DB44 0C002062 */       jal omAddGObjCommonProc
@@ -733,9 +733,9 @@ glabel func_ovl42_8018DA80
   /* 16D920 8018DB70 8FB00018 */        lw $s0, 0x18($sp)
   /* 16D924 8018DB74 27BD0068 */     addiu $sp, $sp, 0x68
   /* 16D928 8018DB78 03E00008 */        jr $ra
-  /* 16D92C 8018DB7C 00000000 */       nop 
+  /* 16D92C 8018DB7C 00000000 */       nop
 
-glabel func_ovl42_8018DB80
+glabel mvOpeningPikachuCreateNameViewport
   /* 16D930 8018DB80 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 16D934 8018DB84 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 16D938 8018DB88 AFBF003C */        sw $ra, 0x3c($sp)
@@ -775,9 +775,9 @@ glabel func_ovl42_8018DB80
   /* 16D9C0 8018DC10 8FBF003C */        lw $ra, 0x3c($sp)
   /* 16D9C4 8018DC14 27BD0040 */     addiu $sp, $sp, 0x40
   /* 16D9C8 8018DC18 03E00008 */        jr $ra
-  /* 16D9CC 8018DC1C 00000000 */       nop 
+  /* 16D9CC 8018DC1C 00000000 */       nop
 
-glabel func_ovl42_8018DC20
+glabel mvOpeningPikachuCreatePosedFighterViewport
   /* 16D9D0 8018DC20 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 16D9D4 8018DC24 3C0E8001 */       lui $t6, %hi(func_80017EC0)
   /* 16D9D8 8018DC28 AFBF003C */        sw $ra, 0x3c($sp)
@@ -837,9 +837,9 @@ glabel func_ovl42_8018DC20
   /* 16DAB0 8018DD00 8FBF003C */        lw $ra, 0x3c($sp)
   /* 16DAB4 8018DD04 27BD0048 */     addiu $sp, $sp, 0x48
   /* 16DAB8 8018DD08 03E00008 */        jr $ra
-  /* 16DABC 8018DD0C 00000000 */       nop 
+  /* 16DABC 8018DD0C 00000000 */       nop
 
-glabel func_ovl42_8018DD10
+glabel mvOpeningPikachuCreatePosedFighterBackgroundViewport
   /* 16DAC0 8018DD10 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 16DAC4 8018DD14 3C0E8001 */       lui $t6, %hi(func_80017EC0)
   /* 16DAC8 8018DD18 AFBF003C */        sw $ra, 0x3c($sp)
@@ -883,17 +883,17 @@ glabel func_ovl42_8018DD10
   /* 16DB60 8018DDB0 8FBF003C */        lw $ra, 0x3c($sp)
   /* 16DB64 8018DDB4 27BD0048 */     addiu $sp, $sp, 0x48
   /* 16DB68 8018DDB8 03E00008 */        jr $ra
-  /* 16DB6C 8018DDBC 00000000 */       nop 
+  /* 16DB6C 8018DDBC 00000000 */       nop
 
-glabel func_ovl42_8018DDC0
-  /* 16DB70 8018DDC0 3C028019 */       lui $v0, %hi(D_ovl42_8018E228)
-  /* 16DB74 8018DDC4 2442E228 */     addiu $v0, $v0, %lo(D_ovl42_8018E228)
-  /* 16DB78 8018DDC8 8C4E0000 */        lw $t6, ($v0) # D_ovl42_8018E228 + 0
+glabel mvOpeningPikachuMainProc
+  /* 16DB70 8018DDC0 3C028019 */       lui $v0, %hi(gMvOpeningPikachuFramesElapsed)
+  /* 16DB74 8018DDC4 2442E228 */     addiu $v0, $v0, %lo(gMvOpeningPikachuFramesElapsed)
+  /* 16DB78 8018DDC8 8C4E0000 */        lw $t6, ($v0) # gMvOpeningPikachuFramesElapsed + 0
   /* 16DB7C 8018DDCC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 16DB80 8018DDD0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 16DB84 8018DDD4 AFA40018 */        sw $a0, 0x18($sp)
   /* 16DB88 8018DDD8 25CF0001 */     addiu $t7, $t6, 1
-  /* 16DB8C 8018DDDC AC4F0000 */        sw $t7, ($v0) # D_ovl42_8018E228 + 0
+  /* 16DB8C 8018DDDC AC4F0000 */        sw $t7, ($v0) # gMvOpeningPikachuFramesElapsed + 0
   /* 16DB90 8018DDE0 0C0E41DB */       jal func_ovl1_8039076C
   /* 16DB94 8018DDE4 3404D000 */       ori $a0, $zero, 0xd000
   /* 16DB98 8018DDE8 10400007 */      beqz $v0, .L8018DE08
@@ -905,22 +905,22 @@ glabel func_ovl42_8018DDC0
   /* 16DBB0 8018DE00 0C00171D */       jal func_80005C74
   /* 16DBB4 8018DE04 A0580001 */        sb $t8, 1($v0) # gSceneData + 1
   .L8018DE08:
-  /* 16DBB8 8018DE08 3C028019 */       lui $v0, %hi(D_ovl42_8018E228)
-  /* 16DBBC 8018DE0C 8C42E228 */        lw $v0, %lo(D_ovl42_8018E228)($v0)
+  /* 16DBB8 8018DE08 3C028019 */       lui $v0, %hi(gMvOpeningPikachuFramesElapsed)
+  /* 16DBBC 8018DE0C 8C42E228 */        lw $v0, %lo(gMvOpeningPikachuFramesElapsed)($v0)
   /* 16DBC0 8018DE10 2401000F */     addiu $at, $zero, 0xf
-  /* 16DBC4 8018DE14 3C048019 */       lui $a0, %hi(D_ovl42_8018E22C)
+  /* 16DBC4 8018DE14 3C048019 */       lui $a0, %hi(gMvOpeningPikachuNameGObj)
   /* 16DBC8 8018DE18 5441000C */      bnel $v0, $at, .L8018DE4C
   /* 16DBCC 8018DE1C 2401003C */     addiu $at, $zero, 0x3c
   /* 16DBD0 8018DE20 0C0026A1 */       jal omEjectGObjCommon
-  /* 16DBD4 8018DE24 8C84E22C */        lw $a0, %lo(D_ovl42_8018E22C)($a0)
-  /* 16DBD8 8018DE28 0C06358D */       jal func_ovl42_8018D634
-  /* 16DBDC 8018DE2C 00000000 */       nop 
-  /* 16DBE0 8018DE30 0C063659 */       jal func_ovl42_8018D964
-  /* 16DBE4 8018DE34 00000000 */       nop 
-  /* 16DBE8 8018DE38 0C0636A0 */       jal func_ovl42_8018DA80
-  /* 16DBEC 8018DE3C 00000000 */       nop 
-  /* 16DBF0 8018DE40 3C028019 */       lui $v0, %hi(D_ovl42_8018E228)
-  /* 16DBF4 8018DE44 8C42E228 */        lw $v0, %lo(D_ovl42_8018E228)($v0)
+  /* 16DBD4 8018DE24 8C84E22C */        lw $a0, %lo(gMvOpeningPikachuNameGObj)($a0)
+  /* 16DBD8 8018DE28 0C06358D */       jal mvOpeningPikachuInitFighterStagePanel
+  /* 16DBDC 8018DE2C 00000000 */       nop
+  /* 16DBE0 8018DE30 0C063659 */       jal mvOpeningPikachuCreatePosedFighterBackground
+  /* 16DBE4 8018DE34 00000000 */       nop
+  /* 16DBE8 8018DE38 0C0636A0 */       jal mvOpeningPikachuCreatePosedFighter
+  /* 16DBEC 8018DE3C 00000000 */       nop
+  /* 16DBF0 8018DE40 3C028019 */       lui $v0, %hi(gMvOpeningPikachuFramesElapsed)
+  /* 16DBF4 8018DE44 8C42E228 */        lw $v0, %lo(gMvOpeningPikachuFramesElapsed)($v0)
   /* 16DBF8 8018DE48 2401003C */     addiu $at, $zero, 0x3c
   .L8018DE4C:
   /* 16DBFC 8018DE4C 14410007 */       bne $v0, $at, .L8018DE6C
@@ -935,17 +935,17 @@ glabel func_ovl42_8018DDC0
   /* 16DC1C 8018DE6C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16DC20 8018DE70 27BD0018 */     addiu $sp, $sp, 0x18
   /* 16DC24 8018DE74 03E00008 */        jr $ra
-  /* 16DC28 8018DE78 00000000 */       nop 
+  /* 16DC28 8018DE78 00000000 */       nop
 
-glabel func_ovl42_8018DE7C
-  /* 16DC2C 8018DE7C 3C018019 */       lui $at, %hi(D_ovl42_8018E228)
+glabel mvOpeningPikachuInitFramesElapsed
+  /* 16DC2C 8018DE7C 3C018019 */       lui $at, %hi(gMvOpeningPikachuFramesElapsed)
   /* 16DC30 8018DE80 03E00008 */        jr $ra
-  /* 16DC34 8018DE84 AC20E228 */        sw $zero, %lo(D_ovl42_8018E228)($at)
+  /* 16DC34 8018DE84 AC20E228 */        sw $zero, %lo(gMvOpeningPikachuFramesElapsed)($at)
 
-glabel func_ovl42_8018DE88
-  /* 16DC38 8018DE88 3C038019 */       lui $v1, %hi(D_ovl42_8018E448)
+glabel mvOpeningPikachuInit
+  /* 16DC38 8018DE88 3C038019 */       lui $v1, %hi(gMvOpeningPikachuBattleState)
   /* 16DC3C 8018DE8C 3C0E800A */       lui $t6, %hi(gDefaultBattleState)
-  /* 16DC40 8018DE90 2463E448 */     addiu $v1, $v1, %lo(D_ovl42_8018E448)
+  /* 16DC40 8018DE90 2463E448 */     addiu $v1, $v1, %lo(gMvOpeningPikachuBattleState)
   /* 16DC44 8018DE94 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 16DC48 8018DE98 3C02800A */       lui $v0, %hi(gBattleState)
   /* 16DC4C 8018DE9C 25CE3FC8 */     addiu $t6, $t6, %lo(gDefaultBattleState)
@@ -970,14 +970,14 @@ glabel func_ovl42_8018DE88
   /* 16DC94 8018DEE4 AF380000 */        sw $t8, ($t9)
   /* 16DC98 8018DEE8 24080009 */     addiu $t0, $zero, 9
   /* 16DC9C 8018DEEC AC430000 */        sw $v1, ($v0) # gBattleState + 0
-  /* 16DCA0 8018DEF0 A0640000 */        sb $a0, ($v1) # D_ovl42_8018E448 + 0
-  /* 16DCA4 8018DEF4 A06A0001 */        sb $t2, 1($v1) # D_ovl42_8018E448 + 1
-  /* 16DCA8 8018DEF8 A06C0004 */        sb $t4, 4($v1) # D_ovl42_8018E448 + 4
-  /* 16DCAC 8018DEFC A0680023 */        sb $t0, 0x23($v1) # D_ovl42_8018E448 + 35
-  /* 16DCB0 8018DF00 0C063430 */       jal func_ovl42_8018D0C0
-  /* 16DCB4 8018DF04 A0640022 */        sb $a0, 0x22($v1) # D_ovl42_8018E448 + 34
-  /* 16DCB8 8018DF08 3C058019 */       lui $a1, %hi(func_ovl42_8018DDC0)
-  /* 16DCBC 8018DF0C 24A5DDC0 */     addiu $a1, $a1, %lo(func_ovl42_8018DDC0)
+  /* 16DCA0 8018DEF0 A0640000 */        sb $a0, ($v1) # gMvOpeningPikachuBattleState + 0
+  /* 16DCA4 8018DEF4 A06A0001 */        sb $t2, 1($v1) # gMvOpeningPikachuBattleState + 1
+  /* 16DCA8 8018DEF8 A06C0004 */        sb $t4, 4($v1) # gMvOpeningPikachuBattleState + 4
+  /* 16DCAC 8018DEFC A0680023 */        sb $t0, 0x23($v1) # gMvOpeningPikachuBattleState + 35
+  /* 16DCB0 8018DF00 0C063430 */       jal mvOpeningPikachuLoadFiles
+  /* 16DCB4 8018DF04 A0640022 */        sb $a0, 0x22($v1) # gMvOpeningPikachuBattleState + 34
+  /* 16DCB8 8018DF08 3C058019 */       lui $a1, %hi(mvOpeningPikachuMainProc)
+  /* 16DCBC 8018DF0C 24A5DDC0 */     addiu $a1, $a1, %lo(mvOpeningPikachuMainProc)
   /* 16DCC0 8018DF10 240403F7 */     addiu $a0, $zero, 0x3f7
   /* 16DCC4 8018DF14 2406000D */     addiu $a2, $zero, 0xd
   /* 16DCC8 8018DF18 0C00265A */       jal omMakeGObjCommon
@@ -989,63 +989,63 @@ glabel func_ovl42_8018DE88
   /* 16DCE0 8018DF30 24060064 */     addiu $a2, $zero, 0x64
   /* 16DCE4 8018DF34 0C002E7F */       jal func_8000B9FC
   /* 16DCE8 8018DF38 24070003 */     addiu $a3, $zero, 3
-  /* 16DCEC 8018DF3C 0C06379F */       jal func_ovl42_8018DE7C
-  /* 16DCF0 8018DF40 00000000 */       nop 
+  /* 16DCEC 8018DF3C 0C06379F */       jal mvOpeningPikachuInitFramesElapsed
+  /* 16DCF0 8018DF40 00000000 */       nop
   /* 16DCF4 8018DF44 0C045624 */       jal func_ovl2_80115890
-  /* 16DCF8 8018DF48 00000000 */       nop 
+  /* 16DCF8 8018DF48 00000000 */       nop
   /* 16DCFC 8018DF4C 0C03B04C */       jal func_ovl2_800EC130
-  /* 16DD00 8018DF50 00000000 */       nop 
+  /* 16DD00 8018DF50 00000000 */       nop
   /* 16DD04 8018DF54 0C03F0A1 */       jal mpCollision_InitMapCollisionData
-  /* 16DD08 8018DF58 00000000 */       nop 
+  /* 16DD08 8018DF58 00000000 */       nop
   /* 16DD0C 8018DF5C 2404000A */     addiu $a0, $zero, 0xa
   /* 16DD10 8018DF60 2405000A */     addiu $a1, $zero, 0xa
   /* 16DD14 8018DF64 24060136 */     addiu $a2, $zero, 0x136
   /* 16DD18 8018DF68 0C043966 */       jal cmManager_SetViewportCoordinates
   /* 16DD1C 8018DF6C 240700E6 */     addiu $a3, $zero, 0xe6
   /* 16DD20 8018DF70 0C0436D5 */       jal cmManager_MakeWallpaperCamera
-  /* 16DD24 8018DF74 00000000 */       nop 
+  /* 16DD24 8018DF74 00000000 */       nop
   /* 16DD28 8018DF78 24040003 */     addiu $a0, $zero, 3
   /* 16DD2C 8018DF7C 0C035C65 */       jal ftManager_AllocFighterData
   /* 16DD30 8018DF80 24050002 */     addiu $a1, $zero, 2
   /* 16DD34 8018DF84 0C05952C */       jal func_NF_801654B0 # couldn't be resolved
-  /* 16DD38 8018DF88 00000000 */       nop 
+  /* 16DD38 8018DF88 00000000 */       nop
   /* 16DD3C 8018DF8C 0C05B7A8 */       jal func_NF_8016DEA0 # couldn't be resolved
-  /* 16DD40 8018DF90 00000000 */       nop 
+  /* 16DD40 8018DF90 00000000 */       nop
   /* 16DD44 8018DF94 0C03F4C0 */       jal efManager_AllocUserData
-  /* 16DD48 8018DF98 00000000 */       nop 
+  /* 16DD48 8018DF98 00000000 */       nop
   /* 16DD4C 8018DF9C 0C035E1B */       jal ftManager_SetFileDataKind
   /* 16DD50 8018DFA0 24040009 */     addiu $a0, $zero, 9
   /* 16DD54 8018DFA4 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
   /* 16DD58 8018DFA8 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
   /* 16DD5C 8018DFAC 0C001260 */       jal gsMemoryAlloc
   /* 16DD60 8018DFB0 24050010 */     addiu $a1, $zero, 0x10
-  /* 16DD64 8018DFB4 3C018019 */       lui $at, %hi(D_ovl42_8018E23C)
-  /* 16DD68 8018DFB8 0C0636E0 */       jal func_ovl42_8018DB80
-  /* 16DD6C 8018DFBC AC22E23C */        sw $v0, %lo(D_ovl42_8018E23C)($at)
-  /* 16DD70 8018DFC0 0C063744 */       jal func_ovl42_8018DD10
-  /* 16DD74 8018DFC4 00000000 */       nop 
-  /* 16DD78 8018DFC8 0C063708 */       jal func_ovl42_8018DC20
-  /* 16DD7C 8018DFCC 00000000 */       nop 
-  /* 16DD80 8018DFD0 0C063465 */       jal func_ovl42_8018D194
-  /* 16DD84 8018DFD4 00000000 */       nop 
+  /* 16DD64 8018DFB4 3C018019 */       lui $at, %hi(gMvOpeningPikachuAnimHeap)
+  /* 16DD68 8018DFB8 0C0636E0 */       jal mvOpeningPikachuCreateNameViewport
+  /* 16DD6C 8018DFBC AC22E23C */        sw $v0, %lo(gMvOpeningPikachuAnimHeap)($at)
+  /* 16DD70 8018DFC0 0C063744 */       jal mvOpeningPikachuCreatePosedFighterBackgroundViewport
+  /* 16DD74 8018DFC4 00000000 */       nop
+  /* 16DD78 8018DFC8 0C063708 */       jal mvOpeningPikachuCreatePosedFighterViewport
+  /* 16DD7C 8018DFCC 00000000 */       nop
+  /* 16DD80 8018DFD0 0C063465 */       jal mvOpeningPikachuDrawName
+  /* 16DD84 8018DFD4 00000000 */       nop
   /* 16DD88 8018DFD8 0C00024B */       jal func_8000092C
-  /* 16DD8C 8018DFDC 00000000 */       nop 
+  /* 16DD8C 8018DFDC 00000000 */       nop
   /* 16DD90 8018DFE0 2C410861 */     sltiu $at, $v0, 0x861
   /* 16DD94 8018DFE4 50200007 */      beql $at, $zero, .L8018E004
   /* 16DD98 8018DFE8 8FBF001C */        lw $ra, 0x1c($sp)
   .L8018DFEC:
   /* 16DD9C 8018DFEC 0C00024B */       jal func_8000092C
-  /* 16DDA0 8018DFF0 00000000 */       nop 
+  /* 16DDA0 8018DFF0 00000000 */       nop
   /* 16DDA4 8018DFF4 2C410861 */     sltiu $at, $v0, 0x861
   /* 16DDA8 8018DFF8 1420FFFC */      bnez $at, .L8018DFEC
-  /* 16DDAC 8018DFFC 00000000 */       nop 
+  /* 16DDAC 8018DFFC 00000000 */       nop
   /* 16DDB0 8018E000 8FBF001C */        lw $ra, 0x1c($sp)
   .L8018E004:
   /* 16DDB4 8018E004 27BD0020 */     addiu $sp, $sp, 0x20
   /* 16DDB8 8018E008 03E00008 */        jr $ra
-  /* 16DDBC 8018E00C 00000000 */       nop 
+  /* 16DDBC 8018E00C 00000000 */       nop
 
-glabel func_ovl42_8018E010
+glabel gMvOpeningPikachuSetupDisplayList
   /* 16DDC0 8018E010 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 16DDC4 8018E014 AFBF0014 */        sw $ra, 0x14($sp)
   /* 16DDC8 8018E018 8C830000 */        lw $v1, ($a0)
@@ -1064,7 +1064,7 @@ glabel func_ovl42_8018E010
   /* 16DDFC 8018E04C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16DE00 8018E050 27BD0018 */     addiu $sp, $sp, 0x18
   /* 16DE04 8018E054 03E00008 */        jr $ra
-  /* 16DE08 8018E058 00000000 */       nop 
+  /* 16DE08 8018E058 00000000 */       nop
 
 glabel intro_focus_pikachu_entry
   /* 16DE0C 8018E05C 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
@@ -1088,13 +1088,13 @@ glabel intro_focus_pikachu_entry
   /* 16DE54 8018E0A4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16DE58 8018E0A8 27BD0018 */     addiu $sp, $sp, 0x18
   /* 16DE5C 8018E0AC 03E00008 */        jr $ra
-  /* 16DE60 8018E0B0 00000000 */       nop 
+  /* 16DE60 8018E0B0 00000000 */       nop
 
-  /* 16DE64 8018E0B4 00000000 */       nop 
-  /* 16DE68 8018E0B8 00000000 */       nop 
-  /* 16DE6C 8018E0BC 00000000 */       nop 
+  /* 16DE64 8018E0B4 00000000 */       nop
+  /* 16DE68 8018E0B8 00000000 */       nop
+  /* 16DE6C 8018E0BC 00000000 */       nop
 
 # Likely start of new file
-#glabel D_ovl42_8018E0C0   # Routine parsed as data
-#  /* 16DE70 8018E0C0 00000000 */       nop 
-#  /* 16DE74 8018E0C4 00000000 */       nop 
+#glabel dMvOpeningPikachuCameraSettingsStart   # Routine parsed as data
+#  /* 16DE70 8018E0C0 00000000 */       nop
+#  /* 16DE74 8018E0C4 00000000 */       nop

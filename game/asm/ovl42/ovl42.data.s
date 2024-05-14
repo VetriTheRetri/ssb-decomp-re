@@ -6,10 +6,10 @@
 #  8018E0C0 -> 8018E220
 
 
-glabel D_ovl42_8018E0C0
+glabel dMvOpeningPikachuCameraSettingsStart
   .incbin "ovl42.raw.bin", 0x1000, 0x1C
 
-glabel D_ovl42_8018E0DC
+glabel dMvOpeningPikachuCameraSettingsEnd
   /* 101C 16DE8C 8018E0DC */
   .asciz "BH"
   .balign 4
@@ -22,16 +22,16 @@ glabel D_ovl42_8018E0DC
   .balign 4
   .incbin "ovl42.raw.bin", 0x102C, 0xC
 
-glabel D_ovl42_8018E0F8
+glabel dMvOpeningPikachuInputSeq
   .incbin "ovl42.raw.bin", 0x1038, 0x4
 
 glabel D_ovl42_8018E0FC
   .incbin "ovl42.raw.bin", 0x103C, 0x8
 
-glabel D_ovl42_8018E104
+glabel dMvOpeningPikachuNameOffsets
   .incbin "ovl42.raw.bin", 0x1044, 0x20
 
-glabel D_ovl42_8018E124
+glabel dMvOpeningPikachuNameCharPositions
   .incbin "ovl42.raw.bin", 0x1064, 0x8
   /* 106C 16DEDC 8018E12C */
   .asciz "B4"
@@ -53,12 +53,12 @@ glabel D_ovl42_8018E15C
   /* 10A4 16DF14 8018E164 */  .4byte func_800A26B8
   /* 10A8 16DF18 8018E168 */  .4byte D_NF_8018E640
   .incbin "ovl42.raw.bin", 0x10AC, 0x28
-  /* 10D4 16DF44 8018E194 */  .4byte func_ovl42_8018E010
+  /* 10D4 16DF44 8018E194 */  .4byte gMvOpeningPikachuSetupDisplayList
   /* 10D8 16DF48 8018E198 */  .4byte update_contdata
   .incbin "ovl42.raw.bin", 0x10DC, 0x20
   /* 10FC 16DF6C 8018E1BC */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl42.raw.bin", 0x1100, 0x24
-  /* 1124 16DF94 8018E1E4 */  .4byte func_ovl42_8018DE88
+  /* 1124 16DF94 8018E1E4 */  .4byte mvOpeningPikachuInit
   .incbin "ovl42.raw.bin", 0x1128, 0x8
 
 glabel D_ovl42_8018E1F0

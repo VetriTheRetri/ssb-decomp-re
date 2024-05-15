@@ -6,7 +6,7 @@
 #  80134160 -> 801342F0
 
 
-glabel D_ovl55_80134160
+glabel dGMContinueFileIDs
   .incbin "ovl55.raw.bin", 0x2660, 0x18
   /* 2678 17ABD8 80134178 */
   .asciz "   "
@@ -81,7 +81,7 @@ glabel D_ovl55_80134254
   .incbin "ovl55.raw.bin", 0x2794, 0x20
   /* 27B4 17AD14 801342B4 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl55.raw.bin", 0x27B8, 0x24
-  /* 27DC 17AD3C 801342DC */  .4byte func_ovl55_80133F58
+  /* 27DC 17AD3C 801342DC */  .4byte gmContinueInitAll
 
 glabel D_ovl55_801342E0
   /* 27E0 17AD40 801342E0 */

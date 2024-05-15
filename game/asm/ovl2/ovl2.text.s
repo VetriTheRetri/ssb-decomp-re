@@ -551,7 +551,7 @@ glabel func_ovl2_800D67DC
   /* 052404 800D6C04 3C048011 */       lui $a0, %hi(D_ovl2_80116D7C)
   /* 052408 800D6C08 0C000AF9 */       jal load_overlay
   /* 05240C 800D6C0C 24846D7C */     addiu $a0, $a0, %lo(D_ovl2_80116D7C)
-  /* 052410 800D6C10 0C04D03F */       jal overlay_set49_entry
+  /* 052410 800D6C10 0C04D03F */       jal gmContinueStartScene
   /* 052414 800D6C14 00000000 */       nop 
   /* 052418 800D6C18 92490011 */       lbu $t1, 0x11($s2) # gSceneData + 17
   /* 05241C 800D6C1C 1120001D */      beqz $t1, .L800D6C94

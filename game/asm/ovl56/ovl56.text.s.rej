@@ -1789,7 +1789,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17DCE8 80134A98 24010001 */     addiu $at, $zero, 1
    /* 17DCEC 80134A9C 1040000B */      beqz $v0, .L80134ACC
    /* 17DCF0 80134AA0 00000000 */       nop 
-@@ -3498,8 +3498,8 @@ glabel func_ovl56_80134CC4
+@@ -3498,8 +3498,8 @@ glabel gmStageClearInitAll
    /* 17DF80 80134D30 0C001260 */       jal gsMemoryAlloc
    /* 17DF84 80134D34 24050010 */     addiu $a1, $zero, 0x10
    /* 17DF88 80134D38 3C048013 */       lui $a0, %hi(dGMStageClearFileIDs)
@@ -1800,7 +1800,7 @@ diff a/game/asm/ovl56/ovl56.text.s b/game/asm/ovl56/ovl56.text.s	(rejected hunks
    /* 17DF94 80134D44 24844EE0 */     addiu $a0, $a0, %lo(dGMStageClearFileIDs)
    /* 17DF98 80134D48 24050007 */     addiu $a1, $zero, 7
    /* 17DF9C 80134D4C 0C033781 */       jal rdManagerLoadFiles
-@@ -3526,12 +3526,12 @@ glabel func_ovl56_80134CC4
+@@ -3526,12 +3526,12 @@ glabel gmStageClearInitAll
    /* 17DFF0 80134DA0 00000000 */       nop 
    /* 17DFF4 80134DA4 0C04CEB0 */       jal gmStageClearMakeFrameCopyBackground
    /* 17DFF8 80134DA8 00000000 */       nop 

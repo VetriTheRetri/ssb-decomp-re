@@ -127,8 +127,8 @@ glabel D_ovl2_80116D7C
 glabel D_ovl2_80116D84
   /* 408F4 092584 80116D84 */  .4byte D_unkmulti_80131B00
   /* 408F8 092588 80116D88 */  .4byte D_unkmulti_80131B00
-  /* 408FC 09258C 80116D8C */  .4byte D_ovl55_80134160
-  /* 40900 092590 80116D90 */  .4byte D_ovl55_80134160
+  /* 408FC 09258C 80116D8C */  .4byte dGMContinueFileIDs
+  /* 40900 092590 80116D90 */  .4byte dGMContinueFileIDs
   /* 40904 092594 80116D94 */  .4byte D_ovl33_801342F0
   /* 40908 092598 80116D98 */  .4byte D_ovl33_801342F0
   /* 4090C 09259C 80116D9C */  .4byte D_unkmulti_80134540

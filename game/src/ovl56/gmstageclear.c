@@ -1915,7 +1915,7 @@ void func_ovl56_80134AF4(void)
 }
 
 // 0x80134CC4
-void func_ovl56_80134CC4(void)
+void gmStageClearInitAll(void)
 {
     s32 unused;
     rdSetup rldm_setup;

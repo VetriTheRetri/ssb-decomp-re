@@ -312,7 +312,7 @@ void func_ovl2_800D67DC(void)
             {
                 load_overlay(&D_ovl2_80116BF0);
                 load_overlay(&D_ovl2_80116D7C);
-                overlay_set49_entry();
+                gmContinueStartScene();
 
                 if (gSceneData.is_select_continue != FALSE)
                 {

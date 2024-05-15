@@ -42,7 +42,7 @@
 // Camera defines
 
 // Create mask of draw layer (known in Smash Remix lingo as "room") to render
-#define CAMERA_MASK_DLLINK(r) (1 << (r))
+#define CAMERA_MASK_DLLINK(r) (1ULL << (r))
 
 union OMUserData
 {

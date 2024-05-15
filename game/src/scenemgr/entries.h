@@ -56,7 +56,7 @@ extern void training_css_entry(void);         // ovl 28
 extern void bonus_css_entry(void);            // ovl 29
 extern void menu_backup_clear_entry(void);    // ovl 53
 extern void overlay_set48_entry(void);        // ovl 54
-extern void overlay_set49_entry(void);        // ovl 55
+extern void gmContinueStartScene(void);        // ovl 55
 extern void gmStageClearStartScene(void);     // ovl 56
 extern void gmCreditsStartScene(void);        // ovl 59
 extern void mnCongraStartScene(void);        // ovl 57

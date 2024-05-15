@@ -61,7 +61,7 @@ glabel D_ovl56_80135208
   .incbin "ovl56.raw.bin", 0x3748, 0x20
   /* 3768 17E4B8 80135268 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl56.raw.bin", 0x376C, 0x24
-  /* 3790 17E4E0 80135290 */  .4byte func_ovl56_80134CC4
+  /* 3790 17E4E0 80135290 */  .4byte gmStageClearInitAll
   .incbin "ovl56.raw.bin", 0x3794, 0xC
 
 glabel jtbl_ovl56_801352A0

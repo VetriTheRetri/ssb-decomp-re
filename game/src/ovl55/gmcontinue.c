@@ -1,13 +1,30 @@
 #include <ft/fighter.h>
+#include <mn/menu.h>
 #include <gm/battle.h>
+#include <ovl0/reloc_data_mgr.h>
+
+// MACROS
+#define gmContinueCheckGetOptionButtonInput(is_button, mask) mnCommonCheckGetOptionButtonInput(sGMContinueOptionChangeWait, is_button, mask)
+#define gmContinueCheckGetOptionStickInputUD(stick_range, min, b) mnCommonCheckGetOptionStickInputUD(sGMContinueOptionChangeWait, stick_range, min, b)
+#define gmContinueCheckGetOptionStickInputLR(stick_range, min, b) mnCommonCheckGetOptionStickInputLR(sGMContinueOptionChangeWait, stick_range, min, b)
+#define gmContinueSetOptionChangeWaitP(stick_range) (sGMContinueOptionChangeWait = (160 - (stick_range)) / 5)
+#define gmContinueSetOptionChangeWaitN(stick_range) (sGMContinueOptionChangeWait = ((stick_range) + 160) / 5)
 
 // EXTERN
 extern f32 D_ovl1_80390D90[];
+extern u32 D_ovl2_80130D9C;
+
+extern intptr_t D_NF_001AC870;
+extern intptr_t D_NF_00000854;
+extern intptr_t D_NF_800A5240;
+
+extern intptr_t D_NF_80134540;
 
 extern intptr_t lGMContinueSpriteTextScore;                 // 0x00000408
 extern intptr_t lGMContinueSpriteTextContinue;              // 0x000018F0
 extern intptr_t lGMContinueSpriteTextYes;                   // 0x00001E08
 extern intptr_t lGMContinueSpriteTextNo;                    // 0x00002318
+extern intptr_t lGMContinueSpriteCursor;                    // 0x00002DF8
 extern intptr_t lGMContinueSpriteRoom;                      // 0x0001E3D8
 extern intptr_t lGMContinueSpriteSpotlight;                 // 0x00021900
 extern intptr_t lGMContinueSpriteShadow;                    // 0x000224F8
@@ -16,6 +33,9 @@ extern intptr_t lGMContinueSpriteShadow;                    // 0x000224F8
 
 // 0x801342F8
 void *sGMContinueFighterAnimHeap;
+
+// 0x801342FC
+s32 sGMContinueFramesPassed;
 
 // 0x80134300
 GObj *sGMContinueFighterGObj;
@@ -28,6 +48,9 @@ GObj *sGMContinueShadowGObj;
 
 // 0x8013430C
 GObj *sGMContinueSpotlightGObj;
+
+// 0x80134310
+GObj *sGMContinueCursorGObj;
 
 // 0x80134314
 GObj *sGMContinueOptionGObj;
@@ -53,17 +76,58 @@ s32 sGMContinueRoomFadeOutAlpha;
 // 0x80134330
 GObj *sGMContinueRoomFadeOutGObj;
 
+// 0x80134334
+GObj *sGMContinueGameOverGObj;
+
 // 0x80134338
 s32 sGMContinueOptionSelect;
+
+// 0x8013433C
+s32 sGMContinueStatus;
+
+// 0x80134340
+f32 sGMContinueGameOverFadeOutScale;
+
+// 0x80134344
+f32 sGMContinueGameOverColorStep;
 
 // 0x80134348
 gmContinueFighter sGMContinueFighterAttributes;
 
+// 0x80134354 - ??? set but never used?
+s32 D_ovl55_80134354;
+
+// 0x80134358
+s32 sGMContinueOptionNoGameOverInputWait;
+
+// 0x8013435C
+s32 sGMContinueOptionYesRetryWait;
+
+// 0x80134360
+s32 sGMContinueIsSelectContinue;
+
+// 0x80134364
+s32 sGMContinueOptionNoGameOverAutoWait;
+
 // 0x80134368
 GObj *sGMContinueScoreGObj;
 
+// 0x8013436C
+s32 sGMContinueOptionChangeWait;
+
+// 0x80134370
+rdFileNode sGMContinueStatusBuf[48];
+
+// 0x801344F0
+rdFileNode sGMContinueForceBuf[7];
+
 // 0x80134528
 void *sGMContinueFiles[5];
+
+// DATA
+
+// 0x80134160
+u32 dGMContinueFileIDs[/* */] = { 0x4F, 0x51, 0x25, 0xA4, 0x50 };
 
 // 0x80131B00
 void func_ovl55_80131B00(Gfx **dl)
@@ -94,7 +158,7 @@ s32 func_ovl55_80131B58(s32 arg0, s32 arg1)
 }
 
 // 0x80131BF8
-void func_ovl55_80131BF8(SObj *sobj)
+void gmContinueScoreDigitInitSprite(SObj *sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -127,10 +191,10 @@ s32 gmContinueGetScoreDigitCount(s32 points, s32 digit_count_max)
 }
 
 // 0x80131CDC
-s32 gmContinueGetScoreDigitSprite(s32 digit)
+Sprite* gmContinueScoreDigitGetSprite(s32 digit)
 {
     // 0x80134534
-    intptr_t offsets[10] =
+    intptr_t offsets[/* */] =
     {
         0x148,
         0x2D8,
@@ -158,8 +222,8 @@ void gmContinueMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, f32 off
     {
         points = 0;
     }
-    sobj = gcAppendSObjWithSprite(gobj, gmContinueGetScoreDigitSprite(points % 10));
-    func_ovl55_80131BF8(sobj);
+    sobj = gcAppendSObjWithSprite(gobj, gmContinueScoreDigitGetSprite(points % 10));
+    gmContinueScoreDigitInitSprite(sobj);
 
     calc_x = (sub != 0) ? x - sub : x - (sobj->sprite.width + offset_x);
 
@@ -170,8 +234,8 @@ void gmContinueMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, f32 off
     {
         digit = (func_ovl55_80131B58(10, i) != 0) ? points / func_ovl55_80131B58(10, i) : 0;
 
-        sobj = gcAppendSObjWithSprite(gobj, gmContinueGetScoreDigitSprite(digit % 10));
-        func_ovl55_80131BF8(sobj);
+        sobj = gcAppendSObjWithSprite(gobj, gmContinueScoreDigitGetSprite(digit % 10));
+        gmContinueScoreDigitInitSprite(sobj);
 
         calc_x = (sub != 0) ? calc_x - sub : calc_x - (sobj->sprite.width + offset_x);
 
@@ -335,7 +399,7 @@ void gmContinueSpotlightFadeProcRender(GObj *gobj)
 }
 
 // 0x801325E8
-void gmContinueMakeSpotlightSObjsFade(void)
+void gmContinueMakeSpotlightFadeSObjs(void)
 {
     GObj *gobj;
 
@@ -513,4 +577,478 @@ void gmContinueCursorSetPosition(GObj *gobj, s32 option)
 void gmContinueCursorProcUpdate(GObj *gobj)
 {
     gmContinueCursorSetPosition(gobj, sGMContinueOptionSelect);
+}
+
+// 0x80132B50
+void gmContinueMakeCursorSObj(void)
+{
+    GObj *gobj;
+    SObj *sobj;
+
+    sGMContinueCursorGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
+
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1C, GOBJ_DLLINKORDER_DEFAULT, -1);
+    omAddGObjCommonProc(gobj, gmContinueCursorProcUpdate, 1, 1);
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGMContinueSpriteCursor));
+
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+
+    sobj->shadow_color.r = 0x00;
+    sobj->shadow_color.g = 0x00;
+    sobj->shadow_color.b = 0x00;
+
+    sobj->sprite.red = 0xFF;
+    sobj->sprite.green = 0x00;
+    sobj->sprite.blue = 0x00;
+
+    gmContinueCursorSetPosition(gobj, sGMContinueOptionSelect);
+}
+
+// 0x80132C1C
+void gmContinueGameOverInitSprites(SObj *sobj)
+{
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+
+    sobj->shadow_color.r = 0x1A;
+    sobj->shadow_color.g = 0x00;
+    sobj->shadow_color.b = 0xE6;
+
+    sobj->sprite.red = 0xFF;
+    sobj->sprite.green = 0xFF;
+    sobj->sprite.blue = 0xFF;
+}
+
+// 0x80132C58
+void gmContinueGameOverStepColors(GObj *gobj)
+{
+    SObj *sobj = SObjGetStruct(gobj);
+
+    // 0x801341E0
+    f32 values[/* */] = { 26.0F, 0.0F, 230.0F, 255.0F, 255.0F, 255.0F };
+
+    if (sGMContinueGameOverColorStep < 1.0F)
+    {
+        sGMContinueGameOverColorStep += F_PCT_TO_DEC(1.0F);
+
+        if (sGMContinueGameOverColorStep > 1.0F)
+        {
+            sGMContinueGameOverColorStep = 1.0F;
+        }
+        while (sobj != NULL)
+        {
+            sobj->shadow_color.r = values[0] * sGMContinueGameOverColorStep;
+            sobj->shadow_color.g = values[1] * sGMContinueGameOverColorStep;
+            sobj->shadow_color.b = values[2] * sGMContinueGameOverColorStep;
+
+            sobj->sprite.red = values[3] * sGMContinueGameOverColorStep;
+            sobj->sprite.green = values[4] * sGMContinueGameOverColorStep;
+            sobj->sprite.blue = values[5] * sGMContinueGameOverColorStep;
+
+            sobj = sobj->next;
+        }
+    }
+}
+
+// 0x8013307C
+void gmContinueMakeGameOverSObjs(void)
+{
+    GObj *gobj;
+    SObj *sobj;
+
+    // 0x801341F8
+    intptr_t letters[/* */] = { 0x1F08, 0x5E0, 0x3980, 0x1628, 0x44B0, 0x665D8, 0x1628, 0x5418 };
+
+    // 0x80134218
+    f32 positions_x[/* */] = { 30.0F, 60.0F, 95.0F, 133.0F, 166.0F, 200.0F, 230.0F, 254.0F };
+    s32 i;
+
+    sGMContinueGameOverColorStep = 0.0F;
+
+    sGMContinueGameOverGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
+    omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1C, GOBJ_DLLINKORDER_DEFAULT, -1);
+    omAddGObjCommonProc(gobj, gmContinueGameOverStepColors, 1, 1);
+
+    for (i = 0; i < (ARRAY_COUNT(letters) + ARRAY_COUNT(positions_x)) / 2; i++)
+    {
+        sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[2], letters[i]));
+
+        sobj->pos.x = positions_x[i];
+        sobj->pos.y = 50.0F;
+
+        gmContinueGameOverInitSprites(sobj);
+    }
+}
+
+// 0x80133210
+void gmContinueGameOverProcUpdate(GObj *gobj)
+{
+    SObj *sobj = SObjGetStruct(sGMContinueRoomGObj);
+
+    if (sGMContinueGameOverFadeOutScale > F_PCT_TO_DEC(1.0F))
+    {
+        sGMContinueGameOverFadeOutScale -= F_PCT_TO_DEC(1.0F);
+
+        if (sGMContinueGameOverFadeOutScale < F_PCT_TO_DEC(1.0F))
+        {
+            sGMContinueGameOverFadeOutScale = F_PCT_TO_DEC(1.0F);
+        }
+        sobj->sprite.scalex = sGMContinueGameOverFadeOutScale;
+        sobj->sprite.scaley = sGMContinueGameOverFadeOutScale;
+
+        sobj->pos.x = 160.0F - ((260.0F * sGMContinueGameOverFadeOutScale) / 2);
+        sobj->pos.y = 120.0F - ((184.0F * sGMContinueGameOverFadeOutScale) / 2);
+
+        DObjGetStruct(sGMContinueFighterGObj)->translate.vec.f.y += 3.0F;
+
+        DObjGetStruct(sGMContinueFighterGObj)->scale.vec.f.x = D_ovl1_80390D90[sGMContinueFighterAttributes.ft_kind] * sGMContinueGameOverFadeOutScale;
+        DObjGetStruct(sGMContinueFighterGObj)->scale.vec.f.y = D_ovl1_80390D90[sGMContinueFighterAttributes.ft_kind] * sGMContinueGameOverFadeOutScale;
+        DObjGetStruct(sGMContinueFighterGObj)->scale.vec.f.z = D_ovl1_80390D90[sGMContinueFighterAttributes.ft_kind] * sGMContinueGameOverFadeOutScale;
+    }
+}
+
+// 0x80133368
+void gmContinueMakeGameOver(void)
+{
+    GObj *gobj;
+
+    sGMContinueGameOverFadeOutScale = 1.0F;
+    sGMContinueGameOverGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
+
+    omAddGObjCommonProc(gobj, gmContinueGameOverProcUpdate, 1, 1);
+}
+
+// 0x801333C4
+void func_ovl55_801333C4(void)
+{
+    Camera *cam = CameraGetStruct(func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x50, CAMERA_MASK_DLLINK(26), -1, 0, 1, 0, 1, 0));
+
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+
+    cam->flags = 4;
+}
+
+// 0x80133474
+void func_ovl55_80133474(void)
+{
+    Camera *cam = CameraGetStruct(func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x3C, CAMERA_MASK_DLLINK(31), -1, 0, 1, 0, 1, 0));
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+
+    cam->flags = 4;
+}
+
+// 0x80133524
+void func_ovl55_80133524(void)
+{
+    Camera *cam = CameraGetStruct(func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x28, CAMERA_MASK_DLLINK(32), -1, 0, 1, 0, 1, 0));
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+
+    cam->flags = 4;
+}
+
+// 0x801335D4
+void func_ovl55_801335D4(Camera *cam)
+{
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+
+    cam->vec.eye.y = 1000.0F;
+    cam->vec.eye.z = 2000.0F;
+    cam->vec.at.y = 400.0F;
+
+    cam->vec.eye.x = 0.0F;
+    cam->vec.at.x = 0.0F;
+    cam->vec.at.z = 0.0F;
+    cam->vec.up.x = 0.0F;
+    cam->vec.up.z = 0.0F;
+
+    cam->vec.up.y = 1.0F;
+
+    cam->projection.persp.fovy = 30.0F;
+    cam->projection.persp.near = 100.0F;
+    cam->projection.persp.far = 5000.0F;
+
+    cam->flags = 4;
+}
+
+// 0x80133694
+void func_ovl55_80133694(void)
+{
+    // 0x08048600
+    Camera *cam = CameraGetStruct
+    (
+        func_8000B93C
+        (
+            0x401,
+            NULL,
+            0x10,
+            0x80000000,
+            func_80017EC0,
+            0x32,
+            CAMERA_MASK_DLLINK(27) | CAMERA_MASK_DLLINK(18) | CAMERA_MASK_DLLINK(15) | CAMERA_MASK_DLLINK(10) | CAMERA_MASK_DLLINK(9),
+            -1,
+            1,
+            1,
+            0,
+            1,
+            0
+        )
+    );
+    func_ovl55_801335D4(cam);
+}
+
+// 0x80133718
+void func_ovl55_80133718(void)
+{
+    Camera *cam = CameraGetStruct(func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x5A, CAMERA_MASK_DLLINK(29), -1, 0, 1, 0, 1, 0));
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x801337B8
+void func_ovl55_801337B8(void)
+{
+    Camera *cam = CameraGetStruct(func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x46, CAMERA_MASK_DLLINK(30), -1, 0, 1, 0, 1, 0));
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+
+    cam->flags = 4;
+}
+
+// 0x80133868
+void func_ovl55_80133868(void)
+{
+    Camera *cam = CameraGetStruct(func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x1E, CAMERA_MASK_DLLINK(28), -1, 0, 1, 0, 1, 0));
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+
+    cam->flags = 4;
+}
+
+// 0x80133918
+void func_ovl55_80133918(void)
+{
+    sGMContinueFramesPassed = 0;
+    sGMContinueFighterAttributes.ft_kind = D_800A4B18.player_block[gSceneData.spgame_player].character_kind;
+    sGMContinueFighterAttributes.costume = D_800A4B18.player_block[gSceneData.spgame_player].costume_index;
+    sGMContinueFighterAttributes.shade = D_800A4B18.player_block[gSceneData.spgame_player].shade_index;
+    sGMContinueOptionSelect = 0;
+    sGMContinueStatus = 0;
+    D_ovl55_80134354 = 0;
+    sGMContinueOptionNoGameOverAutoWait = -1;
+}
+
+// 0x80133990 - real
+void gmContinueAbsolutelyNothingWhichSmartassLeftThisInHereBruh(void)
+{
+    return;
+}
+
+// 0x80133998
+void gmContinueActorProcUpdate(GObj *gobj)
+{
+    s32 unused;
+    s32 stick_range;
+
+    sGMContinueFramesPassed++;
+
+    if (sGMContinueFramesPassed >= 10)
+    {
+        if (sGMContinueFramesPassed == sGMContinueOptionYesRetryWait)
+        {
+            // Why though?
+            gSceneData.scene_previous = gSceneData.scene_current;
+            gSceneData.scene_current = scMajor_Kind_Title;
+
+            sGMContinueIsSelectContinue = TRUE;
+
+            func_80005C74();
+        }
+        if (D_ovl55_80134354 != 0)
+        {
+            D_ovl55_80134354--;
+        }
+        if (sGMContinueOptionChangeWait != 0)
+        {
+            sGMContinueOptionChangeWait--;
+        }
+        if ((func_ovl1_80390A04(-15, 15) != FALSE) && (func_ovl1_80390AC0(-15, 15) != FALSE))
+        {
+            sGMContinueOptionChangeWait = 0;
+        }
+        if ((sGMContinueFramesPassed == I_SEC_TO_FRAMES(40)) && (sGMContinueStatus == 0))
+        {
+            omEjectGObjCommon(sGMContinueShadowGObj);
+            omEjectGObjCommon(sGMContinueSpotlightGObj);
+            omEjectGObjCommon(sGMContinueContinueGObj);
+            omEjectGObjCommon(sGMContinueOptionGObj);
+            omEjectGObjCommon(sGMContinueCursorGObj);
+
+            gmContinueMakeRoomFadeOut();
+            gmContinueMakeGameOverSObjs();
+            gmContinueMakeGameOver();
+
+            sGMContinueStatus = 2;
+            sGMContinueOptionNoGameOverInputWait = sGMContinueFramesPassed + I_SEC_TO_FRAMES(1.5);
+            sGMContinueOptionNoGameOverAutoWait = sGMContinueFramesPassed + I_SEC_TO_FRAMES(30);
+
+            func_80020AB4(0, 0x20);
+            func_800269C0(0x1E7);
+        }
+        if (sGMContinueStatus == 0)
+        {
+            if ((sGMContinueFramesPassed > I_SEC_TO_FRAMES(2.5)) && (func_ovl1_8039076C(A_BUTTON | START_BUTTON) != FALSE))
+            {
+                switch (sGMContinueOptionSelect)
+                {
+                case gmContinue_Option_Yes:
+                    omEjectGObjCommon(sGMContinueShadowGObj);
+                    omEjectGObjCommon(sGMContinueSpotlightGObj);
+                    omEjectGObjCommon(sGMContinueContinueGObj);
+                    omEjectGObjCommon(sGMContinueOptionGObj);
+                    omEjectGObjCommon(sGMContinueCursorGObj);
+
+                    gSceneData.spgame_score *= 0.5F;
+
+                    omEjectGObjCommon(sGMContinueScoreGObj);
+                    gmContinueMakeScoreDisplay(gSceneData.spgame_score);
+                    func_ovl1_803905CC(sGMContinueFighterGObj, 0x1000A);
+
+                    sGMContinueStatus = 1;
+                    sGMContinueOptionYesRetryWait = sGMContinueFramesPassed + I_SEC_TO_FRAMES(4);
+
+                    func_800269C0(0xA0);
+                    break;
+
+                case gmContinue_Option_No:
+                    omEjectGObjCommon(sGMContinueShadowGObj);
+                    omEjectGObjCommon(sGMContinueSpotlightGObj);
+                    omEjectGObjCommon(sGMContinueContinueGObj);
+                    omEjectGObjCommon(sGMContinueOptionGObj);
+                    omEjectGObjCommon(sGMContinueCursorGObj);
+                    gmContinueMakeRoomFadeOut();
+                    gmContinueMakeGameOverSObjs();
+                    gmContinueMakeGameOver();
+
+                    sGMContinueStatus = 2;
+                    sGMContinueOptionNoGameOverInputWait = sGMContinueFramesPassed + I_SEC_TO_FRAMES(1.5);
+                    sGMContinueOptionNoGameOverAutoWait = sGMContinueFramesPassed + I_SEC_TO_FRAMES(30);
+
+                    func_80020AB4(0, 0x20);
+                    func_800269C0(0x1E7);
+                    break;
+                }
+            }
+            if (sGMContinueFramesPassed > 120)
+            {
+                if (((func_ovl1_8039076C(L_TRIG | L_JPAD | L_CBUTTONS) != FALSE) || gmContinueCheckGetOptionStickInputLR(stick_range, -15, FALSE)) && (sGMContinueOptionSelect == gmContinue_Option_No))
+                {
+                    func_800269C0(0xA3);
+                    sGMContinueOptionSelect = gmContinue_Option_Yes;
+                    gmContinueSetOptionChangeWaitN(stick_range);
+                }
+                if (((func_ovl1_8039076C(R_TRIG | R_JPAD | R_CBUTTONS) != FALSE) || gmContinueCheckGetOptionStickInputLR(stick_range, 15, TRUE)) && (sGMContinueOptionSelect == gmContinue_Option_Yes))
+                {
+                    func_800269C0(0xA3);
+                    sGMContinueOptionSelect = gmContinue_Option_No;
+                    gmContinueSetOptionChangeWaitP(stick_range);
+                }
+            }
+        }
+        if ((sGMContinueStatus == 2) && (sGMContinueOptionNoGameOverInputWait < sGMContinueFramesPassed) && (func_ovl1_8039076C(A_BUTTON | START_BUTTON) != FALSE))
+        {
+            gSceneData.scene_previous = gSceneData.scene_current;
+            gSceneData.scene_current = scMajor_Kind_Title;
+
+        #if !defined(DAIRANTOU_OPT0)
+            gmContinueAbsolutelyNothingWhichSmartassLeftThisInHereBruh();
+        #endif
+            sGMContinueIsSelectContinue = FALSE;
+            func_80005C74();
+        }
+        if (sGMContinueFramesPassed == sGMContinueOptionNoGameOverAutoWait)
+        {
+            gSceneData.scene_previous = gSceneData.scene_current;
+            gSceneData.scene_current = scMajor_Kind_Title;
+
+        #if !defined(DAIRANTOU_OPT0)
+            gmContinueAbsolutelyNothingWhichSmartassLeftThisInHereBruh();
+        #endif
+            sGMContinueIsSelectContinue = FALSE;
+            func_80005C74();
+        }
+        if (sGMContinueFramesPassed == 40)
+        {
+            gmContinueMakeSpotlightSObjs();
+            gmContinueMakeSpotlightFadeSObjs();
+        }
+        if (sGMContinueFramesPassed == 60)
+        {
+            gmContinueMakeRoomFadeIn();
+            gmContinueMakeRoom();
+            gmContinueMakeContinueSObj();
+            func_800269C0(0x1E1);
+        }
+        if (sGMContinueFramesPassed == 120)
+        {
+            gmContinueMakeOptionSObjs();
+            gmContinueMakeCursorSObj();
+        }
+    }
+}
+
+// 0x80133F58
+void gmContinueInitAll(void)
+{
+    s32 unused;
+    rdSetup rldm_setup;
+
+    rldm_setup.tableRomAddr = &D_NF_001AC870;
+    rldm_setup.tableFileCount = &D_NF_00000854;
+    rldm_setup.fileHeap = NULL;
+    rldm_setup.fileHeapSize = 0;
+    rldm_setup.statusBuf = sGMContinueStatusBuf;
+    rldm_setup.statusBufSize = ARRAY_COUNT(sGMContinueStatusBuf);
+    rldm_setup.forceBuf = sGMContinueForceBuf;
+    rldm_setup.forceBufSize = ARRAY_COUNT(sGMContinueForceBuf);
+
+    rdManagerInitSetup(&rldm_setup);
+    rdManagerLoadFiles(dGMContinueFileIDs, ARRAY_COUNT(dGMContinueFileIDs), sGMContinueFiles, gsMemoryAlloc(rdManagerGetAllocSize(dGMContinueFileIDs, ARRAY_COUNT(dGMContinueFileIDs)), 0x10));
+    omMakeGObjCommon(0, gmContinueActorProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
+    func_8000B9FC(0, 0x80000000, 0x64, 3, 0xFF);
+    func_ovl2_80115890();
+    func_ovl55_80133918();
+    efManager_AllocUserData();
+    ftManager_AllocFighterData(1, 1);
+    ftManager_SetFileDataKind(sGMContinueFighterAttributes.ft_kind);
+    sGMContinueFighterAnimHeap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10);
+    func_ovl55_80133694();
+    func_ovl55_801333C4();
+    func_ovl55_80133474();
+    func_ovl55_80133524();
+    func_ovl55_80133718();
+    func_ovl55_801337B8();
+    func_ovl55_80133868();
+    gmContinueMakeFighter(sGMContinueFighterAttributes.ft_kind);
+    gmContinueMakeScoreDisplay(gSceneData.spgame_score);
+    func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
+    func_80020A74();
+    func_80020AB4(0, 0x1F);
+}
+
+// 0x80134238
+scUnkDataBounds D_ovl55_80134238;
+
+// 0x80134254
+scRuntimeInfo D_ovl55_80134254;
+
+// 0x801340FC
+void gmContinueStartScene(void)
+{
+    D_ovl55_80134238.unk_scdatabounds_0xC = ((uintptr_t)&D_NF_800A5240 - 0x1900);
+
+    func_80007024(&D_ovl55_80134238);
+
+    D_ovl55_80134254.arena_size = ((uintptr_t)&func_ovl1_803903E0 - (uintptr_t)&D_NF_80134540);
+
+    func_800A2698(&D_ovl55_80134254);
+
+    gSceneData.is_select_continue = sGMContinueIsSelectContinue;
 }

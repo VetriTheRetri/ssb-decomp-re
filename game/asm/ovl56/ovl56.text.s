@@ -3467,7 +3467,7 @@ glabel func_ovl56_80134AF4
   /* 17DF0C 80134CBC 03E00008 */        jr $ra
   /* 17DF10 80134CC0 00000000 */       nop 
 
-glabel func_ovl56_80134CC4
+glabel gmStageClearInitAll
   /* 17DF14 80134CC4 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 17DF18 80134CC8 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 17DF1C 80134CCC 3C0F0000 */       lui $t7, %hi(D_NF_00000854)

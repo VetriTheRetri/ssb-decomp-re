@@ -71,7 +71,7 @@ GObj *D_ovl60_801337D4;
 s32 D_ovl60_801337D8;
 
 // 0x801337DC
-s32 sMNOptionIsOptionSelected;
+sb32 sMNOptionIsOptionSelected;
 
 // 0x801337E0
 s32 sMNOptionOptionChangeWait;

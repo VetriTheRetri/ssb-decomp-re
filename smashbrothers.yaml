@@ -147,7 +147,7 @@ segments:
       - [0x001520, c, sys/thread3]
       - [0x003660, c, sys/gsdma]
       - [0x004800, c, sys/thread6]
-      - [0x0054D0, asm, sys/gsgtl]
+      - [0x0054D0, c, sys/gsgtl]
       - [0x0078E0, asm, sys/ml]
       - [0x007970, asm, sys/system_00]
       - [0x007C80, asm, sys/rdp_reset]
@@ -329,7 +329,7 @@ segments:
       - [0x03E250, .rodata, sys/main]
       - [0x03E270, .rodata, sys/thread3]
       - [0x03E2D0, .rodata, sys/thread6]
-      - [0x03E2F0, rodata, sys/gsgtl]
+      - [0x03E2F0, .rodata, sys/gsgtl]
       - [0x03E510, rodata, sys/ml]
       - [0x03E530, .rodata, sys/obj_manager]
       - [0x03E980, rodata, sys/system_03]
@@ -358,7 +358,7 @@ segments:
       - { start: auto, type: .bss, name: sys/thread3,              vram: 0x80044EC0 }
       - { start: auto, type: .bss, name: sys/gsdma,                vram: 0x80045040 }
       - { start: auto, type: .bss, name: sys/thread6,              vram: 0x800450F0 }
-      - { start: auto, type:  bss, name: sys/gsgtl,                vram: 0x80045480 }
+      - { start: auto, type: .bss, name: sys/gsgtl,                vram: 0x80045480 }
       - { start: auto, type:  bss, name: sys/system_00,            vram: 0x80046670 }
       - { start: auto, type:  bss, name: sys/rdp_reset,            vram: 0x800466A0 }
       - { start: auto, type: .bss, name: sys/obj_manager,          vram: 0x800466B0 }

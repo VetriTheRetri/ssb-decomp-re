@@ -26,9 +26,9 @@ typedef struct gmController
 
 extern u32 D_800451A0;
 extern u32 gUpdateContData;
-extern s8 D_800451A4_40784[MAXCONTROLLERS];
+extern s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
 extern struct ControllerInput gPlayerControllers[MAXCONTROLLERS];
-extern struct ControllerInput D_80045470;
+extern struct ControllerInput gSysController;
 
 extern void schedule_contread(void);
 extern void update_contdata(void);

@@ -357,8 +357,8 @@ segments:
       - { start: auto, type: .bss, name: main,                     vram: 0x8003FAD0 }
       - { start: auto, type: .bss, name: thread3,                  vram: 0x80044EC0 }
       - { start: auto, type: .bss, name: gsdma,                    vram: 0x80045040 }
-      - { start: auto, type:  bss, name: thread6,                  vram: 0x800450F0 }
-      - { start: auto, type:  bss, name: gsgtl,                    vram: 0x80045490 }
+      - { start: auto, type: .bss, name: thread6,                  vram: 0x800450F0 }
+      - { start: auto, type:  bss, name: gsgtl,                    vram: 0x80045480 }
       - { start: auto, type:  bss, name: system_00,                vram: 0x80046670 }
       - { start: auto, type:  bss, name: rdp_reset,                vram: 0x800466A0 }
       - { start: auto, type: .bss, name: obj_manager,              vram: 0x800466B0 }

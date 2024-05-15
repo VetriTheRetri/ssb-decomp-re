@@ -679,7 +679,6 @@ gDefaultBattleState = 0x800A3fc8;
 gDisplayListHead = 0x800465B0;
 gCommonSpriteFiles = 0x80130D40;
 gMapLightAngleY = 0x80131394;
-gPlayerControllers = 0x80045228;
 gBattleState = 0x800A50e8;
 gSceneData = 0x800A4AD0;
 gMapLightAngleX = 0x80131390;

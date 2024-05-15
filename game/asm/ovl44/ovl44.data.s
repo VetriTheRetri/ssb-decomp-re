@@ -23,10 +23,10 @@ glabel D_ovl44_801325D0
   .balign 4
   .incbin "ovl44.raw.bin", 0x0B00, 0x10
 
-glabel D_ovl44_80132610
+glabel dMvOpeningRunningFighterKinds
   .incbin "ovl44.raw.bin", 0x0B10, 0x20
 
-glabel D_ovl44_80132630
+glabel dMvOpeningRunningFighterAnims
   .incbin "ovl44.raw.bin", 0x0B30, 0x20
 
 glabel D_ovl44_80132650
@@ -41,12 +41,12 @@ glabel D_ovl44_8013266C
   /* B74 16FCA4 80132674 */  .4byte func_8000A340
   /* B78 16FCA8 80132678 */  .4byte D_NF_80132AB0
   .incbin "ovl44.raw.bin", 0x0B7C, 0x28
-  /* BA4 16FCD4 801326A4 */  .4byte func_ovl44_80131B00
+  /* BA4 16FCD4 801326A4 */  .4byte mvOpeningRunningSetupDisplayList
   /* BA8 16FCD8 801326A8 */  .4byte update_contdata
   .incbin "ovl44.raw.bin", 0x0BAC, 0x20
   /* BCC 16FCFC 801326CC */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl44.raw.bin", 0x0BD0, 0x24
-  /* BF4 16FD24 801326F4 */  .4byte func_ovl44_8013237C
+  /* BF4 16FD24 801326F4 */  .4byte mvOpeningRunningInit
   .incbin "ovl44.raw.bin", 0x0BF8, 0x8
 
 glabel D_ovl44_80132700

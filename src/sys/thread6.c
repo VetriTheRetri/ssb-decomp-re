@@ -139,7 +139,7 @@ void func_80003C00(void) {
     // L80003CBC
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/thread6/func_80003C00.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/thread6/func_80003C00.s")
 #endif
 
 // func_80003CC4
@@ -240,7 +240,7 @@ void update_global_contdata(void) {
     gUpdateContData = FALSE;
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/thread6/update_global_contdata.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/thread6/update_global_contdata.s")
 #endif
 
 // initialize controllers
@@ -304,7 +304,7 @@ void initialize_controllers(void) {
     sLeftUntilStatus = sStatusUpdateDelay = 1;
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/thread6/initialize_controllers.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/thread6/initialize_controllers.s")
 #endif
 
 // func_80004284

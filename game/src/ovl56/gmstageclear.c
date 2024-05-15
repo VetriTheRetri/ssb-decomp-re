@@ -10,95 +10,95 @@ extern void *D_80044FA8;
 extern void func_ovl1_803903E0();
 
 extern intptr_t D_NF_800A5240;
-extern intptr_t lGmStageClearArenaLo;                       // 0x801355B0
+extern intptr_t lGMStageClearArenaLo;                       // 0x801355B0
 extern intptr_t D_NF_001AC870;
 extern intptr_t D_NF_00000854;
 
-extern intptr_t lGmStageClearSpritePlatform;                // 0x000000C0
-extern intptr_t lGmStageClearSpriteTarget;                  // 0x000001D0
-extern intptr_t lGmStageClearSpriteTextScore;               // 0x00000408
-extern intptr_t lGmStageClearSpritePointsNSign;             // 0x00000710
-extern intptr_t lGmStageClearSpriteBonusMultiplySign;       // 0x00000828
-extern intptr_t lGmStageClearSpriteBonusColon;              // 0x000008D8
-extern intptr_t lGmStageClearSpriteTextStage;               // 0x000009D8
-extern intptr_t lGmStageClearSpriteTextMultiplySign;        // 0x00001018
-extern intptr_t lGmStageClearSpriteTextGame;                // 0x00001338
-extern intptr_t lGmStageClearSpriteTextClear;               // 0x00001D58
-extern intptr_t lGmStageClearSpriteTextSpecialBonus;        // 0x00002060
-extern intptr_t lGmStageClearSpriteTextColon;               // 0x00002120
-extern intptr_t lGmStageClearSpriteTextTimer;               // 0x000025E8
-extern intptr_t lGmStageClearSpriteTextDamage;              // 0x00002B48
-extern intptr_t lGmStageClearSpriteBonusBorder;             // 0x0000A4B8
-extern intptr_t lGmStageClearSpriteTextResult;              // 0x0000AF98
-extern intptr_t lGmStageClearSpriteTextTarget;              // 0x0000B4F8
+extern intptr_t lGMStageClearSpritePlatform;                // 0x000000C0
+extern intptr_t lGMStageClearSpriteTarget;                  // 0x000001D0
+extern intptr_t lGMStageClearSpriteTextScore;               // 0x00000408
+extern intptr_t lGMStageClearSpritePointsNSign;             // 0x00000710
+extern intptr_t lGMStageClearSpriteBonusMultiplySign;       // 0x00000828
+extern intptr_t lGMStageClearSpriteBonusColon;              // 0x000008D8
+extern intptr_t lGMStageClearSpriteTextStage;               // 0x000009D8
+extern intptr_t lGMStageClearSpriteTextMultiplySign;        // 0x00001018
+extern intptr_t lGMStageClearSpriteTextGame;                // 0x00001338
+extern intptr_t lGMStageClearSpriteTextClear;               // 0x00001D58
+extern intptr_t lGMStageClearSpriteTextSpecialBonus;        // 0x00002060
+extern intptr_t lGMStageClearSpriteTextColon;               // 0x00002120
+extern intptr_t lGMStageClearSpriteTextTimer;               // 0x000025E8
+extern intptr_t lGMStageClearSpriteTextDamage;              // 0x00002B48
+extern intptr_t lGMStageClearSpriteBonusBorder;             // 0x0000A4B8
+extern intptr_t lGMStageClearSpriteTextResult;              // 0x0000AF98
+extern intptr_t lGMStageClearSpriteTextTarget;              // 0x0000B4F8
 extern intptr_t sGMStageClearSpriteBonusPageArrow;          // 0x0000B6A8
-extern intptr_t lGmStageClearSpriteTextShadow;              // 0x0000D1C8
-extern intptr_t lGmStageClearSpriteTextBonus;               // 0x0000D340
+extern intptr_t lGMStageClearSpriteTextShadow;              // 0x0000D1C8
+extern intptr_t lGMStageClearSpriteTextBonus;               // 0x0000D340
 
 // Bonus stat text sprites
-extern intptr_t lGmStageClearSpriteBonusCheapShot;          // 0x0000D528
-extern intptr_t lGmStageClearSpriteBonusStarFinish;         // 0x0000D708
-extern intptr_t lGmStageClearSpriteBonusNoItem;             // 0x0000D8E8
-extern intptr_t lGmStageClearSpriteBonusShieldBreaker;      // 0x0000DAC8
-extern intptr_t lGmStageClearSpriteBonusJudoWarrior;        // 0x0000DCA8
-extern intptr_t lGmStageClearSpriteBonusHawk;               // 0x0000DE88
-extern intptr_t lGmStageClearSpriteBonusShooter;            // 0x0000E068
-extern intptr_t lGmStageClearSpriteBonusHeavyDamage;        // 0x0000E248
-extern intptr_t lGmStageClearSpriteBonusAllVariations;      // 0x0000E428
-extern intptr_t lGmStageClearSpriteBonusItemStrike;         // 0x0000E608
-extern intptr_t lGmStageClearSpriteBonusDoubleKO;           // 0x0000E7E8
-extern intptr_t lGmStageClearSpriteBonusTrickster;          // 0x0000E9C8
-extern intptr_t lGmStageClearSpriteBonusGiantImpact;        // 0x0000EBA8
-extern intptr_t lGmStageClearSpriteBonusSpeedster;          // 0x0000ED88
-extern intptr_t lGmStageClearSpriteBonusItemThrow;          // 0x0000EF68
-extern intptr_t lGmStageClearSpriteBonusTripleKO;           // 0x0000F148
-extern intptr_t lGmStageClearSpriteBonusLastChance;         // 0x0000F328
-extern intptr_t lGmStageClearSpriteBonusPacifist;           // 0x0000F508
-extern intptr_t lGmStageClearSpriteBonusPerfect;            // 0x0000F6E8
-extern intptr_t lGmStageClearSpriteBonusNoMiss;             // 0x0000F8C8
-extern intptr_t lGmStageClearSpriteBonusNoDamage;           // 0x0000FAA8
-extern intptr_t lGmStageClearSpriteBonusFullPower;          // 0x0000FC88
-extern intptr_t lGmStageClearSpriteBonusGameClear;          // 0x00014008
-extern intptr_t lGmStageClearSpriteBonusNoMissClear;        // 0x00013888
-extern intptr_t lGmStageClearSpriteBonusNoDamageClear;      // 0x00013A68
-extern intptr_t lGmStageClearSpriteBonusSpeedKing;          // 0x00013C48
-extern intptr_t lGmStageClearSpriteBonusSpeedDemon;         // 0x00013E28
-extern intptr_t lGmStageClearSpriteBonusMewCatcher;         // 0x0000FE68
-extern intptr_t lGmStageClearSpriteBonusStarClear;          // 0x00010048
-extern intptr_t lGmStageClearSpriteBonusVegetarian;         // 0x00010228
-extern intptr_t lGmStageClearSpriteBonusHeartThrob;         // 0x00010408
-extern intptr_t lGmStageClearSpriteBonusThrowDown;          // 0x000105E8
-extern intptr_t lGmStageClearSpriteBonusSmashMania;         // 0x000107C8
-extern intptr_t lGmStageClearSpriteBonusSmashless;          // 0x000109A8
-extern intptr_t lGmStageClearSpriteBonusSpecialMove;        // 0x00010B88
-extern intptr_t lGmStageClearSpriteBonusSingleMove;         // 0x00010D68
-extern intptr_t lGmStageClearSpriteBonusPokemonFinish;      // 0x00010F48
-extern intptr_t lGmStageClearSpriteBonusBoobyTrap;          // 0x00011128
-extern intptr_t lGmStageClearSpriteBonusFighterStance;      // 0x00011308
-extern intptr_t lGmStageClearSpriteBonusMystic;             // 0x000114E8
-extern intptr_t lGmStageClearSpriteBonusCometMystic;        // 0x000116C8
-extern intptr_t lGmStageClearSpriteBonusAcidClear;          // 0x000118A8
-extern intptr_t lGmStageClearSpriteBonusBumperClear;        // 0x00011A88
-extern intptr_t lGmStageClearSpriteBonusTornadoClear;       // 0x00011C68
-extern intptr_t lGmStageClearSpriteBonusArwingClear;        // 0x00011E48
-extern intptr_t lGmStageClearSpriteBonusCounterAttack;      // 0x00012028
-extern intptr_t lGmStageClearSpriteBonusMeteorSmash;        // 0x00012208
-extern intptr_t lGmStageClearSpriteBonusAerial;             // 0x000123E8
-extern intptr_t lGmStageClearSpriteBonusLastSecond;         // 0x000125C8 
-extern intptr_t lGmStageClearSpriteBonusLucky3;             // 0x000127A8 
-extern intptr_t lGmStageClearSpriteBonusJackpot;            // 0x00012988 
-extern intptr_t lGmStageClearSpriteBonusYoshiRainbow;       // 0x00012B68 
-extern intptr_t lGmStageClearSpriteBonusKirbyRanks;         // 0x00012D48 
-extern intptr_t lGmStageClearSpriteBonusBrosCalamity;       // 0x00012F28 
-extern intptr_t lGmStageClearSpriteBonusDKDefender;         // 0x00013108 
-extern intptr_t lGmStageClearSpriteBonusDKPerfect;          // 0x000132E8 
-extern intptr_t lGmStageClearSpriteBonusGoodFriend;         // 0x000134C8 
-extern intptr_t lGmStageClearSpriteBonusTrueFriend;         // 0x000136A8
-extern intptr_t lGmStageClearSpriteBonusVeryEasyClear;      // 0x00014008
-extern intptr_t lGmStageClearSpriteBonusEasyClear;          // 0x000141E8
-extern intptr_t lGmStageClearSpriteBonusNormalClear;        // 0x000143C8
-extern intptr_t lGmStageClearSpriteBonusHardClear;          // 0x000145A8
-extern intptr_t lGmStageClearSpriteBonusVeryHardClear;      // 0x00014788
+extern intptr_t lGMStageClearSpriteBonusCheapShot;          // 0x0000D528
+extern intptr_t lGMStageClearSpriteBonusStarFinish;         // 0x0000D708
+extern intptr_t lGMStageClearSpriteBonusNoItem;             // 0x0000D8E8
+extern intptr_t lGMStageClearSpriteBonusShieldBreaker;      // 0x0000DAC8
+extern intptr_t lGMStageClearSpriteBonusJudoWarrior;        // 0x0000DCA8
+extern intptr_t lGMStageClearSpriteBonusHawk;               // 0x0000DE88
+extern intptr_t lGMStageClearSpriteBonusShooter;            // 0x0000E068
+extern intptr_t lGMStageClearSpriteBonusHeavyDamage;        // 0x0000E248
+extern intptr_t lGMStageClearSpriteBonusAllVariations;      // 0x0000E428
+extern intptr_t lGMStageClearSpriteBonusItemStrike;         // 0x0000E608
+extern intptr_t lGMStageClearSpriteBonusDoubleKO;           // 0x0000E7E8
+extern intptr_t lGMStageClearSpriteBonusTrickster;          // 0x0000E9C8
+extern intptr_t lGMStageClearSpriteBonusGiantImpact;        // 0x0000EBA8
+extern intptr_t lGMStageClearSpriteBonusSpeedster;          // 0x0000ED88
+extern intptr_t lGMStageClearSpriteBonusItemThrow;          // 0x0000EF68
+extern intptr_t lGMStageClearSpriteBonusTripleKO;           // 0x0000F148
+extern intptr_t lGMStageClearSpriteBonusLastChance;         // 0x0000F328
+extern intptr_t lGMStageClearSpriteBonusPacifist;           // 0x0000F508
+extern intptr_t lGMStageClearSpriteBonusPerfect;            // 0x0000F6E8
+extern intptr_t lGMStageClearSpriteBonusNoMiss;             // 0x0000F8C8
+extern intptr_t lGMStageClearSpriteBonusNoDamage;           // 0x0000FAA8
+extern intptr_t lGMStageClearSpriteBonusFullPower;          // 0x0000FC88
+extern intptr_t lGMStageClearSpriteBonusGameClear;          // 0x00014008
+extern intptr_t lGMStageClearSpriteBonusNoMissClear;        // 0x00013888
+extern intptr_t lGMStageClearSpriteBonusNoDamageClear;      // 0x00013A68
+extern intptr_t lGMStageClearSpriteBonusSpeedKing;          // 0x00013C48
+extern intptr_t lGMStageClearSpriteBonusSpeedDemon;         // 0x00013E28
+extern intptr_t lGMStageClearSpriteBonusMewCatcher;         // 0x0000FE68
+extern intptr_t lGMStageClearSpriteBonusStarClear;          // 0x00010048
+extern intptr_t lGMStageClearSpriteBonusVegetarian;         // 0x00010228
+extern intptr_t lGMStageClearSpriteBonusHeartThrob;         // 0x00010408
+extern intptr_t lGMStageClearSpriteBonusThrowDown;          // 0x000105E8
+extern intptr_t lGMStageClearSpriteBonusSmashMania;         // 0x000107C8
+extern intptr_t lGMStageClearSpriteBonusSmashless;          // 0x000109A8
+extern intptr_t lGMStageClearSpriteBonusSpecialMove;        // 0x00010B88
+extern intptr_t lGMStageClearSpriteBonusSingleMove;         // 0x00010D68
+extern intptr_t lGMStageClearSpriteBonusPokemonFinish;      // 0x00010F48
+extern intptr_t lGMStageClearSpriteBonusBoobyTrap;          // 0x00011128
+extern intptr_t lGMStageClearSpriteBonusFighterStance;      // 0x00011308
+extern intptr_t lGMStageClearSpriteBonusMystic;             // 0x000114E8
+extern intptr_t lGMStageClearSpriteBonusCometMystic;        // 0x000116C8
+extern intptr_t lGMStageClearSpriteBonusAcidClear;          // 0x000118A8
+extern intptr_t lGMStageClearSpriteBonusBumperClear;        // 0x00011A88
+extern intptr_t lGMStageClearSpriteBonusTornadoClear;       // 0x00011C68
+extern intptr_t lGMStageClearSpriteBonusArwingClear;        // 0x00011E48
+extern intptr_t lGMStageClearSpriteBonusCounterAttack;      // 0x00012028
+extern intptr_t lGMStageClearSpriteBonusMeteorSmash;        // 0x00012208
+extern intptr_t lGMStageClearSpriteBonusAerial;             // 0x000123E8
+extern intptr_t lGMStageClearSpriteBonusLastSecond;         // 0x000125C8 
+extern intptr_t lGMStageClearSpriteBonusLucky3;             // 0x000127A8 
+extern intptr_t lGMStageClearSpriteBonusJackpot;            // 0x00012988 
+extern intptr_t lGMStageClearSpriteBonusYoshiRainbow;       // 0x00012B68 
+extern intptr_t lGMStageClearSpriteBonusKirbyRanks;         // 0x00012D48 
+extern intptr_t lGMStageClearSpriteBonusBrosCalamity;       // 0x00012F28 
+extern intptr_t lGMStageClearSpriteBonusDKDefender;         // 0x00013108 
+extern intptr_t lGMStageClearSpriteBonusDKPerfect;          // 0x000132E8 
+extern intptr_t lGMStageClearSpriteBonusGoodFriend;         // 0x000134C8 
+extern intptr_t lGMStageClearSpriteBonusTrueFriend;         // 0x000136A8
+extern intptr_t lGMStageClearSpriteBonusVeryEasyClear;      // 0x00014008
+extern intptr_t lGMStageClearSpriteBonusEasyClear;          // 0x000141E8
+extern intptr_t lGMStageClearSpriteBonusNormalClear;        // 0x000143C8
+extern intptr_t lGMStageClearSpriteBonusHardClear;          // 0x000145A8
+extern intptr_t lGMStageClearSpriteBonusVeryHardClear;      // 0x00014788
 
 extern intptr_t D_NF_00020718;                              // 0x00020718
 extern intptr_t D_NF_0002074C;                              // 0x0002074C
@@ -231,178 +231,178 @@ u32 dGMStageClearFileIDs[/* */] = { 0x50, 0x51, 0xA4, 0xA5, 0x24, 0x97, 0x1A };
 gmStageClearScore dGMStageClearBonusData[/* */] =
 {
     // Cheap Shot
-    { &lGmStageClearSpriteBonusCheapShot, -99 },
+    { &lGMStageClearSpriteBonusCheapShot, -99 },
 
     // Star Finish
-    { &lGmStageClearSpriteBonusStarFinish, 10000 },
+    { &lGMStageClearSpriteBonusStarFinish, 10000 },
 
     // No Item
-    { &lGmStageClearSpriteBonusNoItem, 1000 },
+    { &lGMStageClearSpriteBonusNoItem, 1000 },
 
     // Shield Breaker
-    { &lGmStageClearSpriteBonusShieldBreaker, 8000 },
+    { &lGMStageClearSpriteBonusShieldBreaker, 8000 },
 
     // Judo Warrior
-    { &lGmStageClearSpriteBonusJudoWarrior, 5000 },
+    { &lGMStageClearSpriteBonusJudoWarrior, 5000 },
 
     // Hawk
-    { &lGmStageClearSpriteBonusHawk, 18000 },
+    { &lGMStageClearSpriteBonusHawk, 18000 },
 
     // Shooter
-    { &lGmStageClearSpriteBonusShooter, 12000 },
+    { &lGMStageClearSpriteBonusShooter, 12000 },
 
     // Heavy Damage
-    { &lGmStageClearSpriteBonusHeavyDamage, 28000 },
+    { &lGMStageClearSpriteBonusHeavyDamage, 28000 },
 
     // All Variations
-    { &lGmStageClearSpriteBonusAllVariations, 30000 },
+    { &lGMStageClearSpriteBonusAllVariations, 30000 },
 
     // Item Strike
-    { &lGmStageClearSpriteBonusItemStrike, 20000 },
+    { &lGMStageClearSpriteBonusItemStrike, 20000 },
 
     // Double KO
-    { &lGmStageClearSpriteBonusDoubleKO, 0 },
+    { &lGMStageClearSpriteBonusDoubleKO, 0 },
 
     // Trickster
-    { &lGmStageClearSpriteBonusTrickster, 11000 },
+    { &lGMStageClearSpriteBonusTrickster, 11000 },
 
     // Giant Impact
-    { &lGmStageClearSpriteBonusGiantImpact, 0 },
+    { &lGMStageClearSpriteBonusGiantImpact, 0 },
 
     // Speedster
-    { &lGmStageClearSpriteBonusSpeedster, 10000 },
+    { &lGMStageClearSpriteBonusSpeedster, 10000 },
 
     // Item Throw
-    { &lGmStageClearSpriteBonusItemThrow, 16000 },
+    { &lGMStageClearSpriteBonusItemThrow, 16000 },
 
     // Triple KO
-    { &lGmStageClearSpriteBonusTripleKO, 0 },
+    { &lGMStageClearSpriteBonusTripleKO, 0 },
 
     // Last Chance
-    { &lGmStageClearSpriteBonusLastChance, 0 },
+    { &lGMStageClearSpriteBonusLastChance, 0 },
 
     // Pacifist
-    { &lGmStageClearSpriteBonusPacifist, 60000 },
+    { &lGMStageClearSpriteBonusPacifist, 60000 },
 
     // Perfect
-    { &lGmStageClearSpriteBonusPerfect, 30000 },
+    { &lGMStageClearSpriteBonusPerfect, 30000 },
 
     // No Miss
-    { &lGmStageClearSpriteBonusNoMiss, 5000 },
+    { &lGMStageClearSpriteBonusNoMiss, 5000 },
 
     // No Damage
-    { &lGmStageClearSpriteBonusNoDamage, 15000 },
+    { &lGMStageClearSpriteBonusNoDamage, 15000 },
 
     // Full Power
-    { &lGmStageClearSpriteBonusFullPower, 5000 },
+    { &lGMStageClearSpriteBonusFullPower, 5000 },
 
     // Final Stage Clear
-    { &lGmStageClearSpriteBonusGameClear, 70000 },
+    { &lGMStageClearSpriteBonusGameClear, 70000 },
 
     // No Miss Clear
-    { &lGmStageClearSpriteBonusNoMissClear, 70000 },
+    { &lGMStageClearSpriteBonusNoMissClear, 70000 },
 
     // No Damage Clear
-    { &lGmStageClearSpriteBonusNoDamageClear, 400000 },
+    { &lGMStageClearSpriteBonusNoDamageClear, 400000 },
 
     // Speed King
-    { &lGmStageClearSpriteBonusSpeedKing, 40000 },
+    { &lGMStageClearSpriteBonusSpeedKing, 40000 },
 
     // Speed Demon
-    { &lGmStageClearSpriteBonusSpeedDemon, 80000 },
+    { &lGMStageClearSpriteBonusSpeedDemon, 80000 },
 
     // Mew Catcher
-    { &lGmStageClearSpriteBonusMewCatcher, 15000 },
+    { &lGMStageClearSpriteBonusMewCatcher, 15000 },
 
     // Star Clear
-    { &lGmStageClearSpriteBonusStarClear, 12000 },
+    { &lGMStageClearSpriteBonusStarClear, 12000 },
 
     // Vegetarian
-    { &lGmStageClearSpriteBonusVegetarian, 9000 },
+    { &lGMStageClearSpriteBonusVegetarian, 9000 },
 
     // Heart Throb
-    { &lGmStageClearSpriteBonusHeartThrob, 17000 },
+    { &lGMStageClearSpriteBonusHeartThrob, 17000 },
 
     // Throw Down
-    { &lGmStageClearSpriteBonusThrowDown, 2000 },
+    { &lGMStageClearSpriteBonusThrowDown, 2000 },
 
     // Smash Mania
-    { &lGmStageClearSpriteBonusSmashMania, 3500 },
+    { &lGMStageClearSpriteBonusSmashMania, 3500 },
 
     // Smashless
-    { &lGmStageClearSpriteBonusSmashless, 5000 },
+    { &lGMStageClearSpriteBonusSmashless, 5000 },
 
     // Special Move
-    { &lGmStageClearSpriteBonusSpecialMove, 5000 },
+    { &lGMStageClearSpriteBonusSpecialMove, 5000 },
 
     // Single Move
-    { &lGmStageClearSpriteBonusSingleMove, 8000 },
+    { &lGMStageClearSpriteBonusSingleMove, 8000 },
 
     // Pokémon Finish
-    { &lGmStageClearSpriteBonusPokemonFinish, 11000 },
+    { &lGMStageClearSpriteBonusPokemonFinish, 11000 },
 
     // Booby Trap
-    { &lGmStageClearSpriteBonusBoobyTrap, 12000 },
+    { &lGMStageClearSpriteBonusBoobyTrap, 12000 },
 
     // Fighter Stance
-    { &lGmStageClearSpriteBonusFighterStance, 100 },
+    { &lGMStageClearSpriteBonusFighterStance, 100 },
 
     // Mystic
-    { &lGmStageClearSpriteBonusMystic, 7000 },
+    { &lGMStageClearSpriteBonusMystic, 7000 },
 
     // Comet Mystic
-    { &lGmStageClearSpriteBonusCometMystic, 10000 },
+    { &lGMStageClearSpriteBonusCometMystic, 10000 },
 
     // Acid Clear
-    { &lGmStageClearSpriteBonusAcidClear, 1500 },
+    { &lGMStageClearSpriteBonusAcidClear, 1500 },
 
     // Bumper Clear
-    { &lGmStageClearSpriteBonusBumperClear, 10000 },
+    { &lGMStageClearSpriteBonusBumperClear, 10000 },
 
     // Tornado Clear
-    { &lGmStageClearSpriteBonusTornadoClear, 3000 },
+    { &lGMStageClearSpriteBonusTornadoClear, 3000 },
 
     // ARWING Clear
-    { &lGmStageClearSpriteBonusArwingClear, 4000 },
+    { &lGMStageClearSpriteBonusArwingClear, 4000 },
 
     // Counter Attack
-    { &lGmStageClearSpriteBonusCounterAttack, 0 },
+    { &lGMStageClearSpriteBonusCounterAttack, 0 },
 
     // Meteor Smash
-    { &lGmStageClearSpriteBonusMeteorSmash, 0 },
+    { &lGMStageClearSpriteBonusMeteorSmash, 0 },
 
     // Aerial
-    { &lGmStageClearSpriteBonusAerial, 0 },
+    { &lGMStageClearSpriteBonusAerial, 0 },
 
     // Last Second
-    { &lGmStageClearSpriteBonusLastSecond, 8000 },
+    { &lGMStageClearSpriteBonusLastSecond, 8000 },
 
     // Lucky 3
-    { &lGmStageClearSpriteBonusLucky3, 9990 },
+    { &lGMStageClearSpriteBonusLucky3, 9990 },
 
     // Jackpot
-    { &lGmStageClearSpriteBonusJackpot, 3330 },
+    { &lGMStageClearSpriteBonusJackpot, 3330 },
 
     // Yoshi Rainbow
-    { &lGmStageClearSpriteBonusYoshiRainbow, 50000 },
+    { &lGMStageClearSpriteBonusYoshiRainbow, 50000 },
 
     // Kirby Ranks
-    { &lGmStageClearSpriteBonusKirbyRanks, 25000 },
+    { &lGMStageClearSpriteBonusKirbyRanks, 25000 },
 
     // Bros. Calamity
-    { &lGmStageClearSpriteBonusBrosCalamity, 25000 },
+    { &lGMStageClearSpriteBonusBrosCalamity, 25000 },
 
     // DK Defender
-    { &lGmStageClearSpriteBonusDKDefender, 10000 },
+    { &lGMStageClearSpriteBonusDKDefender, 10000 },
 
     // DK Perfect
-    { &lGmStageClearSpriteBonusDKPerfect, 50000 },
+    { &lGMStageClearSpriteBonusDKPerfect, 50000 },
 
     // Good Friend
-    { &lGmStageClearSpriteBonusGoodFriend, 8000 },
+    { &lGMStageClearSpriteBonusGoodFriend, 8000 },
 
     // True Friend
-    { &lGmStageClearSpriteBonusTrueFriend, 25000 }
+    { &lGMStageClearSpriteBonusTrueFriend, 25000 }
 };
 
 // 0x80135100
@@ -573,7 +573,7 @@ void gmStageClearMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, gsCol
     {
         if (file_id == 1)
         {
-            sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[4], &lGmStageClearSpritePointsNSign));
+            sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[4], &lGMStageClearSpritePointsNSign));
         }
         gmStageClearSetDigitSpriteColor(sobj, file_id, colors);
 
@@ -603,7 +603,7 @@ void gmStageClearMakeTextSObjs(void)
     gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteTextShadow));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextShadow));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -617,7 +617,7 @@ void gmStageClearMakeTextSObjs(void)
 
     if (sGMStageClearKind == gmStageClear_Kind_Result)
     {
-        sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteTextResult));
+        sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextResult));
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
 
@@ -634,7 +634,7 @@ void gmStageClearMakeTextSObjs(void)
     }
     else
     {
-        sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteTextClear));
+        sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextClear));
 
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -652,9 +652,9 @@ void gmStageClearMakeTextSObjs(void)
 
         if (sGMStageClearKind == gmStageClear_Kind_Stage)
         {
-            sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteTextStage));
+            sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextStage));
         }
-        else sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteTextGame));
+        else sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextGame));
 
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -673,7 +673,7 @@ void gmStageClearMakeTextSObjs(void)
     sGMStageClearBonusTextGObj = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteTextBonus));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextBonus));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -695,7 +695,7 @@ void gmStageClearMakeScoreSObjs(void)
     sGMStageClearScoreTextGObj = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[1], &lGmStageClearSpriteTextScore));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[1], &lGMStageClearSpriteTextScore));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -723,7 +723,7 @@ void gmStageClearMakeTimerTextSObjs(f32 y)
     sGMStageClearTimerTextGObj = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteTextTimer));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextTimer));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -739,7 +739,7 @@ void gmStageClearMakeTimerTextSObjs(f32 y)
     sobj->sprite.green = 0xE4;
     sobj->sprite.blue = 0xFF;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteTextColon));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextColon));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -770,7 +770,7 @@ void gmStageClearMakeTimerDigitSObjs(f32 y)
     sGMStageClearTimerMultiplierGObj = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[3], &lGmStageClearSpriteTextMultiplySign));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[3], &lGMStageClearSpriteTextMultiplySign));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -851,7 +851,7 @@ void gmStageClearMakeDamageTextSObjs(f32 y)
     sGMStageClearDamageTextGObj = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteTextDamage));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextDamage));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -867,7 +867,7 @@ void gmStageClearMakeDamageTextSObjs(f32 y)
     sobj->sprite.green = 0xE4;
     sobj->sprite.blue = 0xFF;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteTextColon));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextColon));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -901,7 +901,7 @@ void gmStageClearMakeDamageDigitSObjs(f32 y)
     omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     gmStageClearMakeScoreDigitSObjs(gobj, sGMStageClearDamageDealt, x, (s32)y - 1, NULL, 1, 0, 0, 4, FALSE);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[3], &lGmStageClearSpriteTextMultiplySign));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[3], &lGMStageClearSpriteTextMultiplySign));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -948,7 +948,7 @@ void gmStageClearMakeTargetTextSObjs(void)
     sGMStageClearTargetGObj = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteTextTarget));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextTarget));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -964,7 +964,7 @@ void gmStageClearMakeTargetTextSObjs(void)
     sobj->sprite.green = 0xE4;
     sobj->sprite.blue = 0xFF;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteTextColon));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextColon));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1016,11 +1016,11 @@ void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
     switch (sGMStageClear1PGameStage)
     {
     case gm1PGame_Stage_Bonus1:
-        sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[5], &lGmStageClearSpriteTarget));
+        sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[5], &lGMStageClearSpriteTarget));
         break;
 
     case gm1PGame_Stage_Bonus2:
-        sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[5], &lGmStageClearSpritePlatform));
+        sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[5], &lGMStageClearSpritePlatform));
         break;
     }
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1142,11 +1142,11 @@ s32 gmStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32
     // 0x801351D0
     intptr_t offsets[/* */] = 
     { 
-        &lGmStageClearSpriteBonusVeryEasyClear,
-        &lGmStageClearSpriteBonusEasyClear,
-        &lGmStageClearSpriteBonusNormalClear,
-        &lGmStageClearSpriteBonusHardClear,
-        &lGmStageClearSpriteBonusVeryHardClear
+        &lGMStageClearSpriteBonusVeryEasyClear,
+        &lGMStageClearSpriteBonusEasyClear,
+        &lGMStageClearSpriteBonusNormalClear,
+        &lGMStageClearSpriteBonusHardClear,
+        &lGMStageClearSpriteBonusVeryHardClear
     }; 
 
     // 0x801351E4
@@ -1185,7 +1185,7 @@ s32 gmStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32
     }
     if (bonus_id == GM1PGAME_BONUS_KIND_NOMISS)
     {
-        sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[4], &lGmStageClearSpriteBonusMultiplySign));
+        sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[4], &lGMStageClearSpriteBonusMultiplySign));
 
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1199,7 +1199,7 @@ s32 gmStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32
 
         gmStageClearMakeScoreDigitSObjs(gobj, gmStageClearGetNoMissMultiplier(sGMStageClear1PGameStage), (x + 40.0F) + 26.0F, y - 1.0F, &colors, 0, 1, 0, 2, FALSE);
     }
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[4], &lGmStageClearSpriteBonusColon));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[4], &lGMStageClearSpriteBonusColon));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1328,7 +1328,7 @@ void gmStageClearMakeBonusTable(void)
     gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteBonusBorder));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteBonusBorder));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1344,7 +1344,7 @@ void gmStageClearMakeBonusTable(void)
     sobj->pos.x = 52.0F;
     sobj->pos.y = 62.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGmStageClearSpriteTextSpecialBonus));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextSpecialBonus));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1983,7 +1983,7 @@ void gmStageClearStartScene(void)
 
     func_80007024(&D_ovl56_801351EC);
 
-    D_ovl56_80135208.arena_size = ((uintptr_t)&func_ovl1_803903E0 - (uintptr_t)&lGmStageClearArenaLo);
+    D_ovl56_80135208.arena_size = ((uintptr_t)&func_ovl1_803903E0 - (uintptr_t)&lGMStageClearArenaLo);
 
     func_8000683C(&D_ovl56_80135208);
 }

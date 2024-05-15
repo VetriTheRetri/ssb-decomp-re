@@ -4,13 +4,13 @@
 // EXTERN
 extern f32 D_ovl1_80390D90[];
 
-extern intptr_t lGmContinueSpriteTextScore;                 // 0x00000408
-extern intptr_t lGmContinueSpriteTextContinue;              // 0x000018F0
-extern intptr_t lGmContinueSpriteTextYes;                   // 0x00001E08
-extern intptr_t lGmContinueSpriteTextNo;                    // 0x00002318
-extern intptr_t lGmContinueSpriteRoom;                      // 0x0001E3D8
-extern intptr_t lGmContinueSpriteSpotlight;                 // 0x00021900
-extern intptr_t lGmContinueSpriteShadow;                    // 0x000224F8
+extern intptr_t lGMContinueSpriteTextScore;                 // 0x00000408
+extern intptr_t lGMContinueSpriteTextContinue;              // 0x000018F0
+extern intptr_t lGMContinueSpriteTextYes;                   // 0x00001E08
+extern intptr_t lGMContinueSpriteTextNo;                    // 0x00002318
+extern intptr_t lGMContinueSpriteRoom;                      // 0x0001E3D8
+extern intptr_t lGMContinueSpriteSpotlight;                 // 0x00021900
+extern intptr_t lGMContinueSpriteShadow;                    // 0x000224F8
 
 // GLOBAL / STATIC
 
@@ -189,7 +189,7 @@ void gmContinueMakeScoreDisplay(s32 points)
     sGMContinueScoreGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1C, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[1], &lGmContinueSpriteTextScore));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[1], &lGMContinueSpriteTextScore));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -353,7 +353,7 @@ void gmContinueMakeRoom(void)
     sGMContinueRoomGObj = gobj = omMakeGObjCommon(0, NULL, 0x13, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1D, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGmContinueSpriteRoom));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGMContinueSpriteRoom));
 
     sobj->pos.x = 30.0F;
     sobj->pos.y = 28.0F;
@@ -367,7 +367,7 @@ void gmContinueMakeSpotlightSObjs(void)
 
     sGMContinueShadowGObj = gobj = omMakeGObjCommon(0, NULL, 0x15, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1E, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGmContinueSpriteShadow));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGMContinueSpriteShadow));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -381,7 +381,7 @@ void gmContinueMakeSpotlightSObjs(void)
 
     sGMContinueSpotlightGObj = gobj = omMakeGObjCommon(0, NULL, 0x15, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1E, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGmContinueSpriteSpotlight));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGMContinueSpriteSpotlight));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -402,7 +402,7 @@ void gmContinueMakeContinueSObj(void)
 
     sGMContinueContinueGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1C, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGmContinueSpriteTextContinue));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGMContinueSpriteTextContinue));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -473,7 +473,7 @@ void gmContinueMakeOptionSObjs(void)
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1C, GOBJ_DLLINKORDER_DEFAULT, -1);
     omAddGObjCommonProc(gobj, gmContinueOptionProcUpdate, 1, 1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGmContinueSpriteTextYes));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGMContinueSpriteTextYes));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -481,7 +481,7 @@ void gmContinueMakeOptionSObjs(void)
     sobj->pos.x = 84.0F;
     sobj->pos.y = 129.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGmContinueSpriteTextNo));
+    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGMContinueSpriteTextNo));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;

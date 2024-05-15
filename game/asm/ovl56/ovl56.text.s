@@ -989,8 +989,8 @@ glabel gmStageClearMakeDamageTextSObjs
   /* 17BB64 80132914 3C078000 */       lui $a3, 0x8000
   /* 17BB68 80132918 3C0F8013 */       lui $t7, %hi(sGMStageClearFiles)
   /* 17BB6C 8013291C 8DEF5588 */        lw $t7, %lo(sGMStageClearFiles)($t7)
-  /* 17BB70 80132920 3C180000 */       lui $t8, %hi(lGmStageClearSpriteTextDamage)
-  /* 17BB74 80132924 27182B48 */     addiu $t8, $t8, %lo(lGmStageClearSpriteTextDamage)
+  /* 17BB70 80132920 3C180000 */       lui $t8, %hi(lGMStageClearSpriteTextDamage)
+  /* 17BB74 80132924 27182B48 */     addiu $t8, $t8, %lo(lGMStageClearSpriteTextDamage)
   /* 17BB78 80132928 8FA4002C */        lw $a0, 0x2c($sp)
   /* 17BB7C 8013292C 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 17BB80 80132930 01F82821 */      addu $a1, $t7, $t8

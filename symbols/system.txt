@@ -116,7 +116,7 @@ gsReadVpkDma = 0x80003690;
 unref_800036B4 = 0x800036B4;
 
 func_80007080 = 0x80007080;
-setup_viewport = 0x8000711C;
+dpSetViewport = 0x8000711C;
 set_scissor_callback = 0x80007168;
 reset_rdp_settings = 0x80007174;
 
@@ -235,7 +235,7 @@ func_800048F8 = 0x800048F8;
 unref_80004928 = 0x80004928;
 unref_80004934 = 0x80004934;
 init_general_heap = 0x80004950;
-hal_alloc = 0x80004980;
+gsMemoryAlloc = 0x80004980;
 func_800049B0 = 0x800049B0;
 func_80004A0C = 0x80004A0C;
 func_80004AB0 = 0x80004AB0;
@@ -496,7 +496,7 @@ func_80014068 = 0x80014068;
 func_800143FC = 0x800143FC;
 func_80014430 = 0x80014430;
 func_8001445C = 0x8001445C;
-func_80014768 = 0x80014768;
+odRenderDObjTreeDLLinksForGObj = 0x80014768;
 func_80014798 = 0x80014798;
 unref_800147E0 = 0x800147E0;
 func_8001490C = 0x8001490C;

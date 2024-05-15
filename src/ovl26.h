@@ -2,7 +2,7 @@
 #define _OVL26_H_
 
 #include <ssb_types.h>
-#include <sys/obj_renderer.h>
+#include <sys/objdraw.h>
 
 typedef struct mnCharPanelBattle
 {
@@ -339,7 +339,7 @@ s32 gMnBattleFramesElapsed;		   // 8013BDCC; // frames elapsed on CSS
 s32 gMnBattleMaxFramesElapsed;	   // 8013BDD0; // frames to wait until exiting the CSS
 
 u8 unused_ovl26_bss_3[0x2d0];
-RldmFileNode D_ovl26_8013C0A8; // 8013C0A8
+rdFileNode D_ovl26_8013C0A8; // 8013C0A8
 u8 unused_ovl26_bss_4[0x30];
 u32 D_ovl26_8013C0E0[240];
 

@@ -133,9 +133,9 @@ gmBattleState gTrainingModeBattleState;
 scTrainingMenu gTrainingModeStruct;
 
 // 80190C40
-RldmFileNode gOverlay7StatusBuf[100];
+rdFileNode gOverlay7StatusBuf[100];
 // 80190F60
-RldmFileNode gOverlay7ForceBuf[7];
+rdFileNode gOverlay7ForceBuf[7];
 
 extern u32 dCommonFileIDs[8];
 extern intptr_t D_NF_00000000;
@@ -153,8 +153,5 @@ extern intptr_t D_NF_001AC870;
 
 extern void* gCommonSpriteFiles[/* */];
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
-
-extern void
-omAddGObjRenderProc(struct GObjCommon* arg0, void (*arg1)(struct GObjCommon*), u8 dlLink, u32 arg3, s32 arg4);
 
 #endif

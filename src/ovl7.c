@@ -5,8 +5,8 @@
 #include <gm/battle.h>
 #include <sc/scene.h>
 #include <buttons.h>
-#include <sys/om.h>
-#include <sys/rldm.h>
+#include <sys/objtypes.h>
+#include <reloc_data_mgr.h>
 
 #include "ovl7.h"
 
@@ -423,8 +423,8 @@ void func_ovl7_8018DA98()
 // 8018DD0C
 void scTrainingMode_LoadFiles()
 {
-	void* addr = rldm_get_file_with_external_heap((u32)&D_NF_000000FE,
-												  hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FE), 0x10));
+	void* addr = rdManagerGetFileWithExternHeap((u32)&D_NF_000000FE,
+												  gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000FE), 0x10));
 	gTrainingModeStruct.display_label_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_00000000);
 	gTrainingModeStruct.display_option_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_00000020);
 	gTrainingModeStruct.menu_label_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_000000BC);
@@ -1445,7 +1445,7 @@ void scManager_TrainingMode_InitScene()
 // 801906D0
 void func_ovl7_801906D0()
 {
-	RldmSetup rldm_setup;
+	rdSetup rldm_setup;
 
 	rldm_setup.tableRomAddr = &D_NF_001AC870;
 	rldm_setup.tableFileCount = &D_NF_00000854;
@@ -1458,5 +1458,5 @@ void func_ovl7_801906D0()
 
 	rldm_initialize(&rldm_setup);
 	rldm_load_files_into(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonSpriteFiles,
-						 hal_alloc(rldm_bytes_need_to_load(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
+						 gsMemoryAlloc(rldm_bytes_need_to_load(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }

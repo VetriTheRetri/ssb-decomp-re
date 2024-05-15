@@ -3,7 +3,7 @@
 #include <sys/objtypes.h>
 #include <sys/crash.h>
 #include <sys/gtl.h>
-#include <sys/obj_renderer.h>
+#include <sys/objdraw.h>
 #include <sys/rdp_reset.h>
 #include <sys/system_03_1.h>
 #include <stddef.h>
@@ -100,7 +100,7 @@ GObjThread* omGetGObjThread()
 
 	if (sOMObjThreadHead == NULL)
 	{
-		sOMObjThreadHead = hal_alloc(sizeof(GObjThread), 0x8);
+		sOMObjThreadHead = gsMemoryAlloc(sizeof(GObjThread), 0x8);
 		sOMObjThreadHead->next = NULL;
 	}
 
@@ -145,7 +145,7 @@ OMThreadStackNode* omGetStackOfSize(u32 size)
 
 	if (curr == NULL)
 	{
-		curr = hal_alloc(sizeof(OMThreadStackList), 0x4);
+		curr = gsMemoryAlloc(sizeof(OMThreadStackList), 0x4);
 		curr->next = NULL;
 		curr->stack = NULL;
 		curr->size = size;
@@ -163,7 +163,7 @@ OMThreadStackNode* omGetStackOfSize(u32 size)
 	}
 	else
 	{
-		ret = hal_alloc(size + offsetof(OMThreadStackNode, stack), 0x8);
+		ret = gsMemoryAlloc(size + offsetof(OMThreadStackNode, stack), 0x8);
 		ret->stack_size = size;
 	}
 
@@ -204,7 +204,7 @@ GObjProcess* omGetGObjProcess()
 
 	if (sOMObjProcessHead == NULL)
 	{
-		sOMObjProcessHead = hal_alloc(sizeof(GObjProcess), 4);
+		sOMObjProcessHead = gsMemoryAlloc(sizeof(GObjProcess), 4);
 		sOMObjProcessHead->unk_gobjproc_0x0 = NULL;
 	}
 
@@ -364,7 +364,7 @@ GObj* omGetGObjSetNextAlloc()
 
 		if (gobj == NULL)
 		{
-			sOMObjCommonHead = hal_alloc(sOMObjCommonSize, 0x8);
+			sOMObjCommonHead = gsMemoryAlloc(sOMObjCommonSize, 0x8);
 			sOMObjCommonHead->link_next = NULL;
 			gobj = sOMObjCommonHead;
 		}
@@ -518,7 +518,7 @@ OMMtx* omGetOMMtxSetNextAlloc()
 
 	if (sOMMtxHead == NULL)
 	{
-		sOMMtxHead = hal_alloc(sizeof(OMMtx), 0x8);
+		sOMMtxHead = gsMemoryAlloc(sizeof(OMMtx), 0x8);
 		sOMMtxHead->next = NULL;
 	}
 
@@ -550,7 +550,7 @@ AObj* omGetAObjSetNextAlloc()
 
 	if (sAObjHead == NULL)
 	{
-		sAObjHead = hal_alloc(sizeof(AObj), 0x4);
+		sAObjHead = gsMemoryAlloc(sizeof(AObj), 0x4);
 
 		sAObjHead->next = NULL;
 	}
@@ -603,7 +603,7 @@ MObj* omGetMObjSetNextAlloc()
 
 	if (sMObjHead == NULL)
 	{
-		sMObjHead = hal_alloc(sizeof(MObj), 0x4);
+		sMObjHead = gsMemoryAlloc(sizeof(MObj), 0x4);
 		sMObjHead->next = NULL;
 	}
 
@@ -635,7 +635,7 @@ DObj* omGetDObjSetNextAlloc()
 
 	if (sDObjHead == NULL)
 	{
-		sDObjHead = hal_alloc(sDObjSize, 0x8);
+		sDObjHead = gsMemoryAlloc(sDObjSize, 0x8);
 
 		sDObjHead->alloc_free = NULL;
 	}
@@ -668,7 +668,7 @@ SObj* omGetSObjSetNextAlloc()
 
 	if (sSObjHead == NULL)
 	{
-		sSObjHead = hal_alloc(sSObjSize, 0x8);
+		sSObjHead = gsMemoryAlloc(sSObjSize, 0x8);
 		sSObjHead->alloc_free = NULL;
 	}
 
@@ -700,7 +700,7 @@ Camera* omGetCameraSetNextAlloc()
 
 	if (sCameraHead == NULL)
 	{
-		sCameraHead = hal_alloc(sCameraSize, 0x8);
+		sCameraHead = gsMemoryAlloc(sCameraSize, 0x8);
 		sCameraHead->next = NULL;
 	}
 
@@ -1524,7 +1524,6 @@ void omEjectSObj(SObj* sobj)
 	omSetSObjPrevAlloc(sobj);
 }
 
-// 80009760
 Camera* omAddCameraForGObj(GObj* gobj)
 {
 	s32 i;
@@ -1538,7 +1537,7 @@ Camera* omAddCameraForGObj(GObj* gobj)
 	gobj->obj = new_cam;
 	new_cam->parent_gobj = gobj;
 
-	setup_viewport(&new_cam->viewport);
+	dpSetViewport(&new_cam->viewport);
 
 	new_cam->ommtx_len = 0;
 
@@ -1790,7 +1789,7 @@ void omLinkGObjDLCommon(GObj* gobj, void (*proc_render)(GObj*), u8 dl_link, u32 
 }
 
 // 80009DF4
-void omAddGObjRenderProc(GObj* gobj, void (*proc_render)(GObj*), u8 dl_link, u32 order, s32 arg4)
+void omAddGObjRenderProc(GObj *gobj, void (*proc_render)(GObj*), u8 dl_link, u32 order, s32 arg4)
 {
 	if (gobj == NULL)
 		gobj = D_80046A54;
@@ -2136,7 +2135,7 @@ void omSetupObjectManager(OMSetup* setup)
 	{
 		OMThreadStackNode* current_stack;
 
-		sOMThreadStackHead = hal_alloc(sizeof(OMThreadStackList), 0x4);
+		sOMThreadStackHead = gsMemoryAlloc(sizeof(OMThreadStackList), 0x4);
 		sOMThreadStackHead->next = NULL;
 		sOMThreadStackHead->size = sOMThreadStackSize;
 		sOMThreadStackHead->stack = current_stack = setup->threadstacks;

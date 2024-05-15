@@ -1,7 +1,7 @@
 #ifndef SYS_SYSTEM_03_1_H
 #define SYS_SYSTEM_03_1_H
 
-#include "sys/om.h"
+#include "sys/objtypes.h"
 
 #include <macros.h>
 

@@ -313,6 +313,7 @@ struct _MObj
     f32 mobj_f0;            // Animation frames remaining, multi-purpose?
     f32 mobj_f1;            // Animation playback rate / interpolation, multi-purpose?
     f32 mobj_f2;            // Current animation frame, multi-purpose?
+	u32 padA4;
 };
 
 struct DObjTransformTypes
@@ -369,7 +370,7 @@ struct DObjDistDLLink
 
 struct OMGfxLink
 {
-    s32 id;
+    u8 id;
     Gfx *dls[4];
 };
 

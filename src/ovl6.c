@@ -5,10 +5,10 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <gm/gmsound.h>
-#include <sys/om.h>
+#include <sys/objtypes.h>
 #include <mp/mpcollision.h>
 #include <it/ittypes.h>
-#include <sys/rldm.h>
+#include <reloc_data_mgr.h>
 
 #include "ovl6.h"
 
@@ -86,8 +86,8 @@ void func_ovl6_8018D0F0()
 // 8018D330
 void func_ovl6_8018D330()
 {
-	gBonusGameFileData[0] = rldm_get_file_with_external_heap(
-		(u32)&D_NF_000000FD, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FD), 0x10));
+	gBonusGameFileData[0] = rdManagerGetFileWithExternHeap(
+		(u32)&D_NF_000000FD, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000FD), 0x10));
 }
 
 // 8018D374
@@ -161,8 +161,8 @@ void func_ovl6_8018D5C8() { scBonusGame_InitBonus1Targets(); }
 // 8018D5E8
 void func_ovl6_8018D5E8()
 {
-	D_ovl2_801313F4 = rldm_get_file_with_external_heap(
-		(u32)&D_NF_00000088, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_00000088), 0x10U));
+	D_ovl2_801313F4 = rdManagerGetFileWithExternHeap(
+		(u32)&D_NF_00000088, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_00000088), 0x10U));
 }
 
 // 8018D62C
@@ -405,7 +405,7 @@ void scBonusGame_InitBonus1TargetSprites()
 	s32 i;
 
 	sprites
-		= rldm_get_file_with_external_heap(&D_NF_00000097, hal_alloc(rldm_bytes_needed_to_load(&D_NF_00000097), 0x10));
+		= rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
 	gGroundStruct.bonus1.interface_gobj = interface_gobj
 		= omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
@@ -428,7 +428,7 @@ void scBonusGame_InitBonus2PlatformSprites()
 	s32 i;
 
 	sprites
-		= rldm_get_file_with_external_heap(&D_NF_00000097, hal_alloc(rldm_bytes_needed_to_load(&D_NF_00000097), 0x10));
+		= rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
 	gGroundStruct.bonus2.interface_gobj = interface_gobj
 		= omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);

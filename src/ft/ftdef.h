@@ -649,7 +649,7 @@ typedef enum ftItemSwingKind
 	ftItemSwing_Kind_Harisen,
 	ftItemSwing_Kind_StarRod,
 	ftItemSwing_Kind_EnumMax
-};
+} ftItemSwingKind;
 
 typedef enum ftItemSwingType
 {
@@ -658,7 +658,7 @@ typedef enum ftItemSwingType
 	ftItemSwing_Type_Attack4,
 	ftItemSwing_Type_AttackDash,
 	ftItemSwing_Type_EnumMax
-};
+} ftItemSwingType;
 
 typedef enum ftCatchKind
 {

@@ -4,7 +4,7 @@
 #include <ssb_types.h>
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
-#include <sys/obj_renderer.h>
+#include <sys/objdraw.h>
 #include <mp/mpcoll.h>
 
 typedef struct gmGroundUnkBytes

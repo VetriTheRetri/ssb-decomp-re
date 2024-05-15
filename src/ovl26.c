@@ -1,6 +1,7 @@
-#include <sys/rldm.h>
+#include <ssb_types.h>
+#include <reloc_data_mgr.h>
 #include <sys/develop.h>
-#include <sys/om.h>
+#include <sys/objtypes.h>
 #include <ft/ftdef.h>
 #include <ft/fighter.h>
 #include <gm/battle.h>
@@ -2341,7 +2342,7 @@ s32 mnBattleGetFtKindFromTokenPosition(s32 port_id)
 // 801379B8
 void mnBattleAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 {
-	gmController* controller;
+	gsController* controller;
 	Vec2i coords[3] = dMnBattleCursorTypePositions2;
 	f32 delta;
 	sb32 is_within_bounds;
@@ -2540,7 +2541,7 @@ void mnGoBackToVSMenu()
 void mnExitIfBButtonHeld(s32 port_id)
 {
 	mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
-	gmController* controller = &gPlayerControllers[port_id];
+	gsController* controller = &gPlayerControllers[port_id];
 
 	if (panel_info->is_b_held != FALSE)
 	{
@@ -2598,7 +2599,7 @@ s32 mnCheckBackButtonPress(GObj* cursor_gobj)
 // 801382E0
 void mnBattleHandleButtonPresses(GObj* cursor_gobj)
 {
-	gmController* controller;
+	gsController* controller;
 	mnCharPanelBattle* panel_info;
 	s32 foo, bar, baz;
 	s32 port_id = cursor_gobj->user_data.s;
@@ -3192,7 +3193,7 @@ void mnBattleCreateWhiteCircles()
 		func_8000F120_FD20(white_circle_gobj, GetAddressFromOffset(gMnBattleFilesArray[6], &FILE_016_WHITE_CIRCLE_OFFSET_2),
 					  0);
 
-		omAddGObjRenderProc(white_circle_gobj, func_80014768, 9U, 0x80000000U, -1);
+		omAddGObjRenderProc(white_circle_gobj, odRenderDObjTreeDLLinksForGObj, 9U, 0x80000000U, -1);
 
 		white_circle_gobj->user_data.s = i;
 
@@ -3816,7 +3817,7 @@ void mnBattleInitPanels()
 void mnBattleInitCSS()
 {
 	s32 bar, baz;
-	RldmSetup rldmSetup;
+	rdSetup rldmSetup;
 	f32 foo;
 	s32 i;
 	s32 j;
@@ -3825,13 +3826,13 @@ void mnBattleInitCSS()
 	rldmSetup.tableFileCount = &D_NF_00000854;
 	rldmSetup.fileHeap = 0;
 	rldmSetup.fileHeapSize = 0;
-	rldmSetup.statusBuf = (RldmFileNode*)&D_ovl26_8013C0E0;
+	rldmSetup.statusBuf = (rdFileNode*)&D_ovl26_8013C0E0;
 	rldmSetup.statusBufSize = 0x78;
-	rldmSetup.forceBuf = (RldmFileNode*)&D_ovl26_8013C0A8;
+	rldmSetup.forceBuf = (rdFileNode*)&D_ovl26_8013C0A8;
 	rldmSetup.forceBufSize = 7;
 	rldm_initialize(&rldmSetup);
 	rldm_load_files_into(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray,
-						 hal_alloc(rldm_bytes_need_to_load(D_ovl26_8013B3A0, 7U), 0x10U));
+						 gsMemoryAlloc(rldm_bytes_need_to_load(D_ovl26_8013B3A0, 7U), 0x10U));
 
 	omMakeGObjCommon(0x400U, mnBattleMain, 0xFU, 0x80000000U);
 
@@ -3847,7 +3848,7 @@ void mnBattleInitCSS()
 		ftManager_SetFileDataKind(i);
 
 	for (i = 0; i < 4; i++)
-		gMnBattlePanels[i].anim_heap = hal_alloc(D_ovl2_80130D9C, 0x10U);
+		gMnBattlePanels[i].anim_heap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10U);
 
 	mnBattleCreatePortraitViewport();
 	mnBattleCreateCursorViewport();

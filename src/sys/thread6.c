@@ -2,6 +2,7 @@
 
 #include "sys/main.h"
 #include "sys/thread3.h"
+#include "sys/thread6.h"
 
 #include <macros.h>
 #include <missing_libultra.h>
@@ -87,7 +88,7 @@ OSContPad sContData[MAXCONTROLLERS];      // 80045188
 u32 D_800451A0;
 s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
 struct ControllerInfo sContInfo[MAXCONTROLLERS];   // 800451A8
-struct ControllerInput gPlayerControllers[MAXCONTROLLERS]; // 80045228
+gsController gPlayerControllers[MAXCONTROLLERS]; // 80045228
 u32 gUpdateContData;                               // bool [80045250]
 struct ControllerEvent *sDelayedContUpdate;        // 80045254
 /// bool [80045258] if true, always update controller data when a thread6 loop runs
@@ -100,7 +101,7 @@ u32 sLeftUntilStatus;
 struct Unk80045268 D_80045268[MAXCONTROLLERS];
 OSPfs sMotorPfs[MAXCONTROLLERS]; // 800452C8
 UNUSED u32 unref80045468[2];
-struct ControllerInput gSysController;
+gsController gSysController;
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"

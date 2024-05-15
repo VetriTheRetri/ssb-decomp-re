@@ -66,7 +66,7 @@ endef
 MIPS_BINUTILS_PREFIX := mips-linux-gnu-
 TOOLS	  := tools
 PYTHON	  := python3
-INCLUDES := -Iinclude -Isrc -Iinclude/PR
+INCLUDES := -Iinclude -Iinclude/PR -Isrc -Isrc/sys -Isrc/ovl0
 DEFINES := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32 -DNDEBUG
 OPTFLAGS := -O2
 
@@ -90,7 +90,7 @@ LD              := $(MIPS_BINUTILS_PREFIX)ld
 OBJCOPY         := $(MIPS_BINUTILS_PREFIX)objcopy
 OBJDUMP         := $(MIPS_BINUTILS_PREFIX)objdump
 ASM_PROC        := $(PYTHON) $(TOOLS)/asm-processor/build.py
-CCFLAGS         := -- $(AS) -32 -- -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516 -mips2
+CCFLAGS         := -- $(AS) -32 -- -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624 -mips2
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 LDFLAGS         := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T symbols/not_found.txt -T symbols/linker_constants.txt -T .splat/smashbrothers.ld
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
@@ -225,7 +225,7 @@ $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	@mkdir -p $(@D)
 #   d file generation
-	clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $<
+#	$(V)clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $<
 	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $<
 
 #Bins

@@ -3830,9 +3830,9 @@ void mnBattleInitCSS()
 	rldmSetup.statusBufSize = 0x78;
 	rldmSetup.forceBuf = (rdFileNode*)&D_ovl26_8013C0A8;
 	rldmSetup.forceBufSize = 7;
-	rldm_initialize(&rldmSetup);
-	rldm_load_files_into(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray,
-						 gsMemoryAlloc(rldm_bytes_need_to_load(D_ovl26_8013B3A0, 7U), 0x10U));
+	rdManagerInitSetup(&rldmSetup);
+	rdManagerLoadFiles(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray,
+						 gsMemoryAlloc(rdManagerGetAllocSize(D_ovl26_8013B3A0, 7U), 0x10U));
 
 	omMakeGObjCommon(0x400U, mnBattleMain, 0xFU, 0x80000000U);
 

@@ -57,9 +57,9 @@ void func_ovl6_8018ED70()
 	rldm_setup.forceBuf = gOverlay6ForceBuf;
 	rldm_setup.forceBufSize = ARRAY_COUNT(gOverlay6ForceBuf);
 
-	rldm_initialize(&rldm_setup);
-	rldm_load_files_into(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonSpriteFiles,
-						 gsMemoryAlloc(rldm_bytes_need_to_load(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
+	rdManagerInitSetup(&rldm_setup);
+	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonSpriteFiles,
+						 gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }
 
 // 8018EE10

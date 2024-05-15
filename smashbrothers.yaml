@@ -301,7 +301,8 @@ segments:
       - [0x03AF20, textbin, rsp/gspF3DEX2_fifo] # L3DEX2_2.04H.code
       - [0x03C0B0, bin, unk_3C0B0] # other rsp files?
       - [0x03C2B0, .data, sys/main]
-      - [0x03C2E0, data, sys/gsgtl]
+      - [0x03C2E0, .data, sys/gsgtl]
+      - [0x03C350, data, sys/rdp_reset]
       - [0x03C470, .data, sys/obj_manager]
       - [0x03C530, data, sys/system_04]
       - [0x03C540, data, sys/trig_rand]

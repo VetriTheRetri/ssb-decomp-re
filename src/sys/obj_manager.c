@@ -1785,7 +1785,7 @@ void omLinkGObjDLCommon(GObj* gobj, void (*proc_render)(GObj*), u8 dl_link, u32 
 	gobj->dl_link_order = dl_order;
 	gobj->proc_render = proc_render;
 	gobj->unk_gobj_0x38 = arg4;
-	gobj->unk_gobj_0xE = D_8003B6E8_3C2E8.word - 1;
+	gobj->unk_gobj_0xE = D_8003B6E8.word - 1;
 }
 
 // 80009DF4
@@ -1837,7 +1837,7 @@ void func_80009F28(GObj* gobj, void (*proc_render)(GObj*), u32 order, u64 arg3, 
 	gobj->unk_gobj_0x30 = arg3;
 	gobj->unk_gobj_0x38 = arg4;
 	gobj->unk_gobj_0x40 = 0;
-	gobj->unk_gobj_0xE = D_8003B6E8_3C2E8.word - 1;
+	gobj->unk_gobj_0xE = D_8003B6E8.word - 1;
 }
 
 // 80009F74
@@ -1974,7 +1974,7 @@ void func_8000A340()
 	gOMObjCurrentRendering = NULL;
 	D_80046A5C_40A7C = NULL;
 
-	for (i = 0, v1 = D_8003B6E8_3C2E8.word - 1; i < ARRAY_COUNT(D_80046A88); i++)
+	for (i = 0, v1 = D_8003B6E8.word - 1; i < ARRAY_COUNT(D_80046A88); i++)
 		D_80046A88[i].id = v1;
 
 	gobj = gOMObjCommonDLLinks[ARRAY_COUNT(gOMObjCommonDLLinks) - 1];

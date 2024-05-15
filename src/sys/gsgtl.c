@@ -20,11 +20,11 @@
 #include <PR/ucode.h>
 #include <PR/ultratypes.h>
 
-// // structures
-// struct gsUcode {
-//     /* 0x00 */ u64 *text;
-//     /* 0x04 */ u64 *data;
-// };
+// structures
+struct gsUcode {
+    /* 0x00 */ u64 *text;
+    /* 0x04 */ u64 *data;
+};
 
 struct FnBundle {
     /* 0x00 */ u16 unk00;
@@ -34,35 +34,35 @@ struct FnBundle {
     /* 0x10 */ void (*fn10)(struct FnBundle *);
 }; // size == 0x14 (D_800465F8)
 
-// // data
-// s32 D_8003B6E0 = 0;
-// u32 D_8003B6E4 = 0;
+// data
+s32 D_8003B6E0 = 0;
+u32 D_8003B6E4 = 0;
 
-// union WeirdBytewise D_8003B6E8 = {0};
+union WeirdBytewise D_8003B6E8 = {0};
 
-// // match Nintendo's name to make the text and data symbols
-// #define NewUcodeInfo(ucode) \
-//     { (u64 *)ucode##TextStart, (u64 *)ucode##DataStart }
-// #define NullUcodeInfo \
-//     { NULL, NULL }
-// #define EndUncodeInfoArray NullUcodeInfo
+// match Nintendo's name to make the text and data symbols
+#define NewUcodeInfo(ucode) \
+    { (u64 *)ucode##TextStart, (u64 *)ucode##DataStart }
+#define NullUcodeInfo \
+    { NULL, NULL }
+#define EndUncodeInfoArray NullUcodeInfo
 
-// // Ten total ucodes + a terminator?
-// struct gsUcode D_8003B6EC[11] = {
-//     NewUcodeInfo(gspF3DEX2_fifo),
-//     NullUcodeInfo,
-//     NullUcodeInfo,
-//     NullUcodeInfo,
-//     NullUcodeInfo,
-//     NullUcodeInfo,
-//     NullUcodeInfo,
-//     NullUcodeInfo,
-//     NullUcodeInfo,
-//     NullUcodeInfo,
-//     EndUncodeInfoArray,
-// };
+// Ten total ucodes + a terminator?
+struct gsUcode D_8003B6EC[11] = {
+    NewUcodeInfo(gspF3DEX2_fifo),
+    NullUcodeInfo,
+    NullUcodeInfo,
+    NullUcodeInfo,
+    NullUcodeInfo,
+    NullUcodeInfo,
+    NullUcodeInfo,
+    NullUcodeInfo,
+    NullUcodeInfo,
+    NullUcodeInfo,
+    EndUncodeInfoArray,
+};
 
-// // bss
+// bss
 
 UNUSED u8 unref80045480[0x10];
 OSMesg D_80045490[4];

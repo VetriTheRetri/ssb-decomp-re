@@ -5,13 +5,13 @@
 # 0x80132710 -> 0x80132AB0 [0x3a0 bytes]
 # Unreferenced BSS space @ 80132710
     .space 8
-glabel D_ovl44_80132718
+glabel gMvOpeningRunningFighterAnimHeaps
     .space 32
-glabel D_ovl44_80132738
+glabel gMvOpeningRunningLinkFighterGObj
     .space 4
-glabel D_ovl44_8013273C
+glabel gMvOpeningRunningFramesElapsed
     .space 4
-glabel D_ovl44_80132740
+glabel gMvOpeningRunningUnusedCounter
     .space 8
 glabel D_ovl44_80132748
     .space 800

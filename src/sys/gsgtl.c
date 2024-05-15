@@ -125,11 +125,11 @@ SCTaskCallback D_8004666C;  // function pointer?
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/unref_80004934.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/init_general_heap.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/gsInitGeneralHeap.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/gsMemoryAlloc.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/func_800049B0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/gsResetGraphicsHeapAlloc.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/func_80004A0C.s")
 
@@ -153,7 +153,7 @@ SCTaskCallback D_8004666C;  // function pointer?
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/func_80005018.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/func_800051E4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/gsGetUcodeId.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/func_80005240.s")
 

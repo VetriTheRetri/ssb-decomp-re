@@ -26,9 +26,5 @@ There's a few handy scripts to help with debugging non matches after making chan
 | Tool           | Details                                                                |
 |----------------|------------------------------------------------------------------------|
 |`first_diff.py` | Finds the location, and cause of most diffs from the baserom           |
-|`livediff.sh`   | Run it with the function you're looking to do some decomp work on      |
-|                | and it will set up a live diffing session where all changes saved will |
-|                | automatically build and udpate the session.                            |
-|`mips_to_c.sh`  | Pass a file, and function to this and have it generate all required    |
-|                | context, and a file in m2cfiles folder with the m2c output to start    |
-|                | working with for matching purposes.                                    |
+|`livediff.sh`   | Run it with the function you're looking to do some decomp work on<br />and it will set up a live diffing session where all changes saved will<br />automatically build and udpate the session. |
+|`mips_to_c.sh`  | Pass a file, and function to this and have it generate all required<br />context, and a file in m2cfiles folder with the m2c output to start<br  />working with for matching purposes.         |

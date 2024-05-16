@@ -12,7 +12,7 @@
 # Text Sections
 #  0x80131B00 -> 0x80132330
 
-glabel func_ovl45_80131B00
+glabel mvOpeningYoshiNestSetupDisplayList
   /* 16FD40 80131B00 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 16FD44 80131B04 AFBF0014 */        sw $ra, 0x14($sp)
   /* 16FD48 80131B08 8C830000 */        lw $v1, ($a0)
@@ -34,9 +34,9 @@ glabel func_ovl45_80131B00
   /* 16FD88 80131B48 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16FD8C 80131B4C 27BD0028 */     addiu $sp, $sp, 0x28
   /* 16FD90 80131B50 03E00008 */        jr $ra
-  /* 16FD94 80131B54 00000000 */       nop 
+  /* 16FD94 80131B54 00000000 */       nop
 
-glabel func_ovl45_80131B58
+glabel mvOpeningYoshiNestCreateNest
   /* 16FD98 80131B58 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 16FD9C 80131B5C AFBF0024 */        sw $ra, 0x24($sp)
   /* 16FDA0 80131B60 AFB00020 */        sw $s0, 0x20($sp)
@@ -73,11 +73,11 @@ glabel func_ovl45_80131B58
   /* 16FE1C 80131BDC 8FB00020 */        lw $s0, 0x20($sp)
   /* 16FE20 80131BE0 27BD0028 */     addiu $sp, $sp, 0x28
   /* 16FE24 80131BE4 03E00008 */        jr $ra
-  /* 16FE28 80131BE8 00000000 */       nop 
+  /* 16FE28 80131BE8 00000000 */       nop
 
-glabel func_ovl45_80131BEC
+glabel mvOpeningYoshiNestCreateFighters
   /* 16FE2C 80131BEC 27BDFF60 */     addiu $sp, $sp, -0xa0
-  /* 16FE30 80131BF0 3C0F8013 */       lui $t7, %hi(D_ovl45_80132368)
+  /* 16FE30 80131BF0 3C0F8013 */       lui $t7, %hi(dMvOpeningYoshiNestFighterAnims)
   /* 16FE34 80131BF4 AFBF003C */        sw $ra, 0x3c($sp)
   /* 16FE38 80131BF8 AFB50038 */        sw $s5, 0x38($sp)
   /* 16FE3C 80131BFC AFB40034 */        sw $s4, 0x34($sp)
@@ -87,14 +87,14 @@ glabel func_ovl45_80131BEC
   /* 16FE4C 80131C0C AFB00024 */        sw $s0, 0x24($sp)
   /* 16FE50 80131C10 F7B60018 */      sdc1 $f22, 0x18($sp)
   /* 16FE54 80131C14 F7B40010 */      sdc1 $f20, 0x10($sp)
-  /* 16FE58 80131C18 25EF2368 */     addiu $t7, $t7, %lo(D_ovl45_80132368)
-  /* 16FE5C 80131C1C 8DF90000 */        lw $t9, ($t7) # D_ovl45_80132368 + 0
-  /* 16FE60 80131C20 8DF80004 */        lw $t8, 4($t7) # D_ovl45_80132368 + 4
+  /* 16FE58 80131C18 25EF2368 */     addiu $t7, $t7, %lo(dMvOpeningYoshiNestFighterAnims)
+  /* 16FE5C 80131C1C 8DF90000 */        lw $t9, ($t7) # dMvOpeningYoshiNestFighterAnims + 0
+  /* 16FE60 80131C20 8DF80004 */        lw $t8, 4($t7) # dMvOpeningYoshiNestFighterAnims + 4
   /* 16FE64 80131C24 27AE008C */     addiu $t6, $sp, 0x8c
   /* 16FE68 80131C28 ADD90000 */        sw $t9, ($t6)
   /* 16FE6C 80131C2C ADD80004 */        sw $t8, 4($t6)
-  /* 16FE70 80131C30 8DF8000C */        lw $t8, 0xc($t7) # D_ovl45_80132368 + 12
-  /* 16FE74 80131C34 8DF90008 */        lw $t9, 8($t7) # D_ovl45_80132368 + 8
+  /* 16FE70 80131C30 8DF8000C */        lw $t8, 0xc($t7) # dMvOpeningYoshiNestFighterAnims + 12
+  /* 16FE74 80131C34 8DF90008 */        lw $t9, 8($t7) # dMvOpeningYoshiNestFighterAnims + 8
   /* 16FE78 80131C38 3C088011 */       lui $t0, %hi(dFTDefaultFighterDesc)
   /* 16FE7C 80131C3C 27B40048 */     addiu $s4, $sp, 0x48
   /* 16FE80 80131C40 25086DD0 */     addiu $t0, $t0, %lo(dFTDefaultFighterDesc)
@@ -114,10 +114,10 @@ glabel func_ovl45_80131BEC
   /* 16FEB4 80131C74 AD6AFFFC */        sw $t2, -4($t3)
   /* 16FEB8 80131C78 8D0A0000 */        lw $t2, ($t0) # dFTDefaultFighterDesc + 0
   /* 16FEBC 80131C7C 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
-  /* 16FEC0 80131C80 3C128013 */       lui $s2, %hi(D_ovl45_80132428)
+  /* 16FEC0 80131C80 3C128013 */       lui $s2, %hi(gMvOpeningYoshiNestFighterAnimHeaps)
   /* 16FEC4 80131C84 4481B000 */      mtc1 $at, $f22 # 1.0 to cop1
   /* 16FEC8 80131C88 4480A000 */      mtc1 $zero, $f20
-  /* 16FECC 80131C8C 26522428 */     addiu $s2, $s2, %lo(D_ovl45_80132428)
+  /* 16FECC 80131C8C 26522428 */     addiu $s2, $s2, %lo(gMvOpeningYoshiNestFighterAnimHeaps)
   /* 16FED0 80131C90 00008025 */        or $s0, $zero, $zero
   /* 16FED4 80131C94 27B3008C */     addiu $s3, $sp, 0x8c
   /* 16FED8 80131C98 24150004 */     addiu $s5, $zero, 4
@@ -128,7 +128,7 @@ glabel func_ovl45_80131BEC
   /* 16FEE8 80131CA8 24040006 */     addiu $a0, $zero, 6
   /* 16FEEC 80131CAC 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 16FEF0 80131CB0 02002825 */        or $a1, $s0, $zero
-  /* 16FEF4 80131CB4 8E4E0000 */        lw $t6, ($s2) # D_ovl45_80132428 + 0
+  /* 16FEF4 80131CB4 8E4E0000 */        lw $t6, ($s2) # gMvOpeningYoshiNestFighterAnimHeaps + 0
   /* 16FEF8 80131CB8 A3A2005F */        sb $v0, 0x5f($sp)
   /* 16FEFC 80131CBC E7B4004C */      swc1 $f20, 0x4c($sp)
   /* 16FF00 80131CC0 E7B40050 */      swc1 $f20, 0x50($sp)
@@ -162,7 +162,7 @@ glabel func_ovl45_80131BEC
   /* 16FF70 80131D30 03E00008 */        jr $ra
   /* 16FF74 80131D34 27BD00A0 */     addiu $sp, $sp, 0xa0
 
-glabel func_ovl45_80131D38
+glabel mvOpeningYoshiNestCreateBackground
   /* 16FF78 80131D38 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 16FF7C 80131D3C AFBF001C */        sw $ra, 0x1c($sp)
   /* 16FF80 80131D40 00002025 */        or $a0, $zero, $zero
@@ -188,15 +188,15 @@ glabel func_ovl45_80131D38
   /* 16FFD0 80131D90 01F82821 */      addu $a1, $t7, $t8
   /* 16FFD4 80131D94 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 16FFD8 80131D98 44810000 */      mtc1 $at, $f0 # 10.0 to cop1
-  /* 16FFDC 80131D9C 00000000 */       nop 
+  /* 16FFDC 80131D9C 00000000 */       nop
   /* 16FFE0 80131DA0 E4400058 */      swc1 $f0, 0x58($v0)
   /* 16FFE4 80131DA4 E440005C */      swc1 $f0, 0x5c($v0)
   /* 16FFE8 80131DA8 8FBF001C */        lw $ra, 0x1c($sp)
   /* 16FFEC 80131DAC 27BD0028 */     addiu $sp, $sp, 0x28
   /* 16FFF0 80131DB0 03E00008 */        jr $ra
-  /* 16FFF4 80131DB4 00000000 */       nop 
+  /* 16FFF4 80131DB4 00000000 */       nop
 
-glabel func_ovl45_80131DB8
+glabel mvOpeningYoshiNestCreateStageObjects
   /* 16FFF8 80131DB8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 16FFFC 80131DBC AFBF0024 */        sw $ra, 0x24($sp)
   /* 170000 80131DC0 AFB00020 */        sw $s0, 0x20($sp)
@@ -247,9 +247,9 @@ glabel func_ovl45_80131DB8
   /* 1700B4 80131E74 8FB00020 */        lw $s0, 0x20($sp)
   /* 1700B8 80131E78 27BD0028 */     addiu $sp, $sp, 0x28
   /* 1700BC 80131E7C 03E00008 */        jr $ra
-  /* 1700C0 80131E80 00000000 */       nop 
+  /* 1700C0 80131E80 00000000 */       nop
 
-glabel func_ovl45_80131E84
+glabel mvOpeningYoshiNestCreateMainViewport
   /* 1700C4 80131E84 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 1700C8 80131E88 3C0E8001 */       lui $t6, %hi(func_80017EC0)
   /* 1700CC 80131E8C 3C190004 */       lui $t9, (0x48640 >> 16) # 296512
@@ -316,9 +316,9 @@ glabel func_ovl45_80131E84
   /* 1701C0 80131F80 8FB00040 */        lw $s0, 0x40($sp)
   /* 1701C4 80131F84 27BD0050 */     addiu $sp, $sp, 0x50
   /* 1701C8 80131F88 03E00008 */        jr $ra
-  /* 1701CC 80131F8C 00000000 */       nop 
+  /* 1701CC 80131F8C 00000000 */       nop
 
-glabel func_ovl45_80131F90
+glabel mvOpeningYoshiNestCreateBackgroundViewport
   /* 1701D0 80131F90 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 1701D4 80131F94 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 1701D8 80131F98 AFBF003C */        sw $ra, 0x3c($sp)
@@ -358,31 +358,31 @@ glabel func_ovl45_80131F90
   /* 170260 80132020 8FBF003C */        lw $ra, 0x3c($sp)
   /* 170264 80132024 27BD0040 */     addiu $sp, $sp, 0x40
   /* 170268 80132028 03E00008 */        jr $ra
-  /* 17026C 8013202C 00000000 */       nop 
+  /* 17026C 8013202C 00000000 */       nop
 
-glabel func_ovl45_80132030
-  /* 170270 80132030 3C018013 */       lui $at, %hi(D_ovl45_80132438)
+glabel mvOpeningYoshiNestInitFramesElapsed
+  /* 170270 80132030 3C018013 */       lui $at, %hi(gMvOpeningYoshiNestFramesElapsed)
   /* 170274 80132034 03E00008 */        jr $ra
-  /* 170278 80132038 AC202438 */        sw $zero, %lo(D_ovl45_80132438)($at)
+  /* 170278 80132038 AC202438 */        sw $zero, %lo(gMvOpeningYoshiNestFramesElapsed)($at)
 
-glabel func_ovl45_8013203C
-  /* 17027C 8013203C 3C038013 */       lui $v1, %hi(D_ovl45_80132438)
-  /* 170280 80132040 24632438 */     addiu $v1, $v1, %lo(D_ovl45_80132438)
-  /* 170284 80132044 8C6E0000 */        lw $t6, ($v1) # D_ovl45_80132438 + 0
+glabel mvOpeningYoshiNestMainProc
+  /* 17027C 8013203C 3C038013 */       lui $v1, %hi(gMvOpeningYoshiNestFramesElapsed)
+  /* 170280 80132040 24632438 */     addiu $v1, $v1, %lo(gMvOpeningYoshiNestFramesElapsed)
+  /* 170284 80132044 8C6E0000 */        lw $t6, ($v1) # gMvOpeningYoshiNestFramesElapsed + 0
   /* 170288 80132048 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 17028C 8013204C AFBF0014 */        sw $ra, 0x14($sp)
   /* 170290 80132050 25CF0001 */     addiu $t7, $t6, 1
   /* 170294 80132054 29E1000A */      slti $at, $t7, 0xa
   /* 170298 80132058 AFA40018 */        sw $a0, 0x18($sp)
   /* 17029C 8013205C 14200026 */      bnez $at, .L801320F8
-  /* 1702A0 80132060 AC6F0000 */        sw $t7, ($v1) # D_ovl45_80132438 + 0
-  /* 1702A4 80132064 3C068013 */       lui $a2, %hi(D_ovl45_8013243C)
-  /* 1702A8 80132068 24C6243C */     addiu $a2, $a2, %lo(D_ovl45_8013243C)
-  /* 1702AC 8013206C 8CC20000 */        lw $v0, ($a2) # D_ovl45_8013243C + 0
+  /* 1702A0 80132060 AC6F0000 */        sw $t7, ($v1) # gMvOpeningYoshiNestFramesElapsed + 0
+  /* 1702A4 80132064 3C068013 */       lui $a2, %hi(gMvOpeningYoshiNestUnusedCounter)
+  /* 1702A8 80132068 24C6243C */     addiu $a2, $a2, %lo(gMvOpeningYoshiNestUnusedCounter)
+  /* 1702AC 8013206C 8CC20000 */        lw $v0, ($a2) # gMvOpeningYoshiNestUnusedCounter + 0
   /* 1702B0 80132070 2404FFF1 */     addiu $a0, $zero, -0xf
   /* 1702B4 80132074 10400002 */      beqz $v0, .L80132080
   /* 1702B8 80132078 2459FFFF */     addiu $t9, $v0, -1
-  /* 1702BC 8013207C ACD90000 */        sw $t9, ($a2) # D_ovl45_8013243C + 0
+  /* 1702BC 8013207C ACD90000 */        sw $t9, ($a2) # gMvOpeningYoshiNestUnusedCounter + 0
   .L80132080:
   /* 1702C0 80132080 0C0E4281 */       jal func_ovl1_80390A04
   /* 1702C4 80132084 2405000F */     addiu $a1, $zero, 0xf
@@ -391,8 +391,8 @@ glabel func_ovl45_8013203C
   /* 1702D0 80132090 0C0E42B0 */       jal func_ovl1_80390AC0
   /* 1702D4 80132094 2405000F */     addiu $a1, $zero, 0xf
   /* 1702D8 80132098 10400002 */      beqz $v0, .L801320A4
-  /* 1702DC 8013209C 3C018013 */       lui $at, %hi(D_ovl45_8013243C)
-  /* 1702E0 801320A0 AC20243C */        sw $zero, %lo(D_ovl45_8013243C)($at)
+  /* 1702DC 8013209C 3C018013 */       lui $at, %hi(gMvOpeningYoshiNestUnusedCounter)
+  /* 1702E0 801320A0 AC20243C */        sw $zero, %lo(gMvOpeningYoshiNestUnusedCounter)($at)
   .L801320A4:
   /* 1702E4 801320A4 0C0E41DB */       jal func_ovl1_8039076C
   /* 1702E8 801320A8 3404D000 */       ori $a0, $zero, 0xd000
@@ -405,8 +405,8 @@ glabel func_ovl45_8013203C
   /* 170304 801320C4 0C00171D */       jal func_80005C74
   /* 170308 801320C8 A0480001 */        sb $t0, 1($v0) # gSceneData + 1
   .L801320CC:
-  /* 17030C 801320CC 3C0A8013 */       lui $t2, %hi(D_ovl45_80132438)
-  /* 170310 801320D0 8D4A2438 */        lw $t2, %lo(D_ovl45_80132438)($t2)
+  /* 17030C 801320CC 3C0A8013 */       lui $t2, %hi(gMvOpeningYoshiNestFramesElapsed)
+  /* 170310 801320D0 8D4A2438 */        lw $t2, %lo(gMvOpeningYoshiNestFramesElapsed)($t2)
   /* 170314 801320D4 3C02800A */       lui $v0, %hi(gSceneData)
   /* 170318 801320D8 240100A0 */     addiu $at, $zero, 0xa0
   /* 17031C 801320DC 15410006 */       bne $t2, $at, .L801320F8
@@ -420,8 +420,9 @@ glabel func_ovl45_8013203C
   /* 170338 801320F8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 17033C 801320FC 27BD0018 */     addiu $sp, $sp, 0x18
   /* 170340 80132100 03E00008 */        jr $ra
-  /* 170344 80132104 00000000 */       nop 
+  /* 170344 80132104 00000000 */       nop
 
+glabel mvOpeningYoshiNestInit
   /* 170348 80132108 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 17034C 8013210C 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 170350 80132110 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -462,8 +463,8 @@ glabel func_ovl45_8013203C
   /* 1703DC 8013219C 0C033781 */       jal rdManagerLoadFiles
   /* 1703E0 801321A0 00403825 */        or $a3, $v0, $zero
   /* 1703E4 801321A4 3C108000 */       lui $s0, 0x8000
-  /* 1703E8 801321A8 3C058013 */       lui $a1, %hi(func_ovl45_8013203C)
-  /* 1703EC 801321AC 24A5203C */     addiu $a1, $a1, %lo(func_ovl45_8013203C)
+  /* 1703E8 801321A8 3C058013 */       lui $a1, %hi(mvOpeningYoshiNestMainProc)
+  /* 1703EC 801321AC 24A5203C */     addiu $a1, $a1, %lo(mvOpeningYoshiNestMainProc)
   /* 1703F0 801321B0 02003825 */        or $a3, $s0, $zero
   /* 1703F4 801321B4 00002025 */        or $a0, $zero, $zero
   /* 1703F8 801321B8 0C00265A */       jal omMakeGObjCommon
@@ -475,41 +476,41 @@ glabel func_ovl45_8013203C
   /* 170410 801321D0 0C002E7F */       jal func_8000B9FC
   /* 170414 801321D4 AFA00010 */        sw $zero, 0x10($sp)
   /* 170418 801321D8 0C045624 */       jal func_ovl2_80115890
-  /* 17041C 801321DC 00000000 */       nop 
-  /* 170420 801321E0 0C04C80C */       jal func_ovl45_80132030
-  /* 170424 801321E4 00000000 */       nop 
+  /* 17041C 801321DC 00000000 */       nop
+  /* 170420 801321E0 0C04C80C */       jal mvOpeningYoshiNestInitFramesElapsed
+  /* 170424 801321E4 00000000 */       nop
   /* 170428 801321E8 0C03F4C0 */       jal efManager_AllocUserData
-  /* 17042C 801321EC 00000000 */       nop 
+  /* 17042C 801321EC 00000000 */       nop
   /* 170430 801321F0 24040001 */     addiu $a0, $zero, 1
   /* 170434 801321F4 0C035C65 */       jal ftManager_AllocFighterData
   /* 170438 801321F8 24050004 */     addiu $a1, $zero, 4
   /* 17043C 801321FC 0C035E1B */       jal ftManager_SetFileDataKind
   /* 170440 80132200 24040006 */     addiu $a0, $zero, 6
-  /* 170444 80132204 3C108013 */       lui $s0, %hi(D_ovl45_80132428)
-  /* 170448 80132208 3C128013 */       lui $s2, %hi(D_ovl45_80132438)
+  /* 170444 80132204 3C108013 */       lui $s0, %hi(gMvOpeningYoshiNestFighterAnimHeaps)
+  /* 170448 80132208 3C128013 */       lui $s2, %hi(gMvOpeningYoshiNestFramesElapsed)
   /* 17044C 8013220C 3C118013 */       lui $s1, %hi(D_ovl2_80130D9C)
   /* 170450 80132210 26310D9C */     addiu $s1, $s1, %lo(D_ovl2_80130D9C)
-  /* 170454 80132214 26522438 */     addiu $s2, $s2, %lo(D_ovl45_80132438)
-  /* 170458 80132218 26102428 */     addiu $s0, $s0, %lo(D_ovl45_80132428)
+  /* 170454 80132214 26522438 */     addiu $s2, $s2, %lo(gMvOpeningYoshiNestFramesElapsed)
+  /* 170458 80132218 26102428 */     addiu $s0, $s0, %lo(gMvOpeningYoshiNestFighterAnimHeaps)
   .L8013221C:
   /* 17045C 8013221C 8E240000 */        lw $a0, ($s1) # D_ovl2_80130D9C + 0
   /* 170460 80132220 0C001260 */       jal gsMemoryAlloc
   /* 170464 80132224 24050010 */     addiu $a1, $zero, 0x10
   /* 170468 80132228 26100004 */     addiu $s0, $s0, 4
   /* 17046C 8013222C 1612FFFB */       bne $s0, $s2, .L8013221C
-  /* 170470 80132230 AE02FFFC */        sw $v0, -4($s0) # D_ovl45_80132428 + -4
-  /* 170474 80132234 0C04C7A1 */       jal func_ovl45_80131E84
-  /* 170478 80132238 00000000 */       nop 
-  /* 17047C 8013223C 0C04C7E4 */       jal func_ovl45_80131F90
-  /* 170480 80132240 00000000 */       nop 
-  /* 170484 80132244 0C04C74E */       jal func_ovl45_80131D38
-  /* 170488 80132248 00000000 */       nop 
-  /* 17048C 8013224C 0C04C6D6 */       jal func_ovl45_80131B58
-  /* 170490 80132250 00000000 */       nop 
-  /* 170494 80132254 0C04C76E */       jal func_ovl45_80131DB8
-  /* 170498 80132258 00000000 */       nop 
-  /* 17049C 8013225C 0C04C6FB */       jal func_ovl45_80131BEC
-  /* 1704A0 80132260 00000000 */       nop 
+  /* 170470 80132230 AE02FFFC */        sw $v0, -4($s0) # gMvOpeningYoshiNestFighterAnimHeaps + -4
+  /* 170474 80132234 0C04C7A1 */       jal mvOpeningYoshiNestCreateMainViewport
+  /* 170478 80132238 00000000 */       nop
+  /* 17047C 8013223C 0C04C7E4 */       jal mvOpeningYoshiNestCreateBackgroundViewport
+  /* 170480 80132240 00000000 */       nop
+  /* 170484 80132244 0C04C74E */       jal mvOpeningYoshiNestCreateBackground
+  /* 170488 80132248 00000000 */       nop
+  /* 17048C 8013224C 0C04C6D6 */       jal mvOpeningYoshiNestCreateNest
+  /* 170490 80132250 00000000 */       nop
+  /* 170494 80132254 0C04C76E */       jal mvOpeningYoshiNestCreateStageObjects
+  /* 170498 80132258 00000000 */       nop
+  /* 17049C 8013225C 0C04C6FB */       jal mvOpeningYoshiNestCreateFighters
+  /* 1704A0 80132260 00000000 */       nop
   /* 1704A4 80132264 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 1704A8 80132268 44816000 */      mtc1 $at, $f12 # 45.0 to cop1
   /* 1704AC 8013226C 240A00FF */     addiu $t2, $zero, 0xff
@@ -521,16 +522,16 @@ glabel func_ovl45_8013203C
   /* 1704C4 80132284 0C0E4138 */       jal func_ovl1_803904E0
   /* 1704C8 80132288 46006386 */     mov.s $f14, $f12
   /* 1704CC 8013228C 0C00024B */       jal func_8000092C
-  /* 1704D0 80132290 00000000 */       nop 
+  /* 1704D0 80132290 00000000 */       nop
   /* 1704D4 80132294 2C410C9E */     sltiu $at, $v0, 0xc9e
   /* 1704D8 80132298 50200007 */      beql $at, $zero, .L801322B8
   /* 1704DC 8013229C 8FBF002C */        lw $ra, 0x2c($sp)
   .L801322A0:
   /* 1704E0 801322A0 0C00024B */       jal func_8000092C
-  /* 1704E4 801322A4 00000000 */       nop 
+  /* 1704E4 801322A4 00000000 */       nop
   /* 1704E8 801322A8 2C410C9E */     sltiu $at, $v0, 0xc9e
   /* 1704EC 801322AC 1420FFFC */      bnez $at, .L801322A0
-  /* 1704F0 801322B0 00000000 */       nop 
+  /* 1704F0 801322B0 00000000 */       nop
   /* 1704F4 801322B4 8FBF002C */        lw $ra, 0x2c($sp)
   .L801322B8:
   /* 1704F8 801322B8 8FB00020 */        lw $s0, 0x20($sp)
@@ -561,11 +562,11 @@ glabel intro_yoshi_nest_entry
   /* 170554 80132314 8FBF0014 */        lw $ra, 0x14($sp)
   /* 170558 80132318 27BD0018 */     addiu $sp, $sp, 0x18
   /* 17055C 8013231C 03E00008 */        jr $ra
-  /* 170560 80132320 00000000 */       nop 
+  /* 170560 80132320 00000000 */       nop
 
-  /* 170564 80132324 00000000 */       nop 
-  /* 170568 80132328 00000000 */       nop 
-  /* 17056C 8013232C 00000000 */       nop 
+  /* 170564 80132324 00000000 */       nop
+  /* 170568 80132328 00000000 */       nop
+  /* 17056C 8013232C 00000000 */       nop
 
 # Likely start of new file
 #glabel D_ovl45_80132330   # Routine parsed as data

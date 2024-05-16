@@ -5,11 +5,11 @@
 # 0x80132420 -> 0x80132600 [0x1e0 bytes]
 # Unreferenced BSS space @ 80132420
     .space 8
-glabel D_ovl45_80132428
+glabel gMvOpeningYoshiNestFighterAnimHeaps
     .space 16
-glabel D_ovl45_80132438
+glabel gMvOpeningYoshiNestFramesElapsed
     .space 4
-glabel D_ovl45_8013243C
+glabel gMvOpeningYoshiNestUnusedCounter
     .space 4
 glabel D_ovl45_80132440
     .space 384

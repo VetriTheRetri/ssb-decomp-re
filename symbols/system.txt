@@ -172,7 +172,7 @@ gsThread5Main = 0x800005D8;
 gsThread1Idle = 0x800007C8;
 gsGameMainLoop = 0x80000870;
 
-rgba32_to_fill_color = 0x80006D70;
+gsGetFillColor = 0x80006D70;
 update_framebuffers = 0x80006DC4;
 func_80006E18 = 0x80006E18;
 set_screen_width = 0x80006E64;
@@ -685,12 +685,19 @@ sThreadArgBuf = 0x80044E40; // size=0x80
 sLcgSeed = 0x8003B940; // type:s32
 sLcgSeedPtr = 0x8003B944;
 gZBuffer = 0x80046670;
-sViewport = 0x800466A0;
-sResetRdp = 0x8003B798;
 gPixelComponentSize = 0x80046674;
 gCurrScreenWidth = 0x80046678;
 gCurrScreenHeight = 0x8004667C;
+D_80046680 = 0x80046680;
+D_80046684 = 0x80046684;
 sFrameBuffers = 0x80046688;
+D_80046694 = 0x80046694;
+D_80046696 = 0x80046696;
+D_80046698 = 0x80046698;
+D_8004669A = 0x8004669A;
+
+sViewport = 0x800466A0;
+sResetRdp = 0x8003B798;
 gSpriteLayerScale = 0x80046FA4;
 sSysThread8CPUFault = 0x8009DA08; // size:0x1B0
 sSysThread8CPUStack = 0x8009DBB8; // size:0x800

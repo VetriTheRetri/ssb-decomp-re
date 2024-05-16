@@ -149,7 +149,7 @@ segments:
       - [0x004800, c, sys/thread6]
       - [0x0054D0, c, sys/gsgtl]
       - [0x0078E0, c, sys/ml]
-      - [0x007970, asm, sys/system_00]
+      - [0x007970, c, sys/system_00]
       - [0x007C80, asm, sys/rdp_reset]
       - [0x007FE0, c, sys/obj_manager]
       - [0x00B8D0, asm, sys/system_03]
@@ -360,7 +360,7 @@ segments:
       - { start: auto, type: .bss, name: sys/gsdma,                vram: 0x80045040 }
       - { start: auto, type: .bss, name: sys/thread6,              vram: 0x800450F0 }
       - { start: auto, type: .bss, name: sys/gsgtl,                vram: 0x80045480 }
-      - { start: auto, type:  bss, name: sys/system_00,            vram: 0x80046670 }
+      - { start: auto, type: .bss, name: sys/system_00,            vram: 0x80046670 }
       - { start: auto, type:  bss, name: sys/rdp_reset,            vram: 0x800466A0 }
       - { start: auto, type: .bss, name: sys/obj_manager,          vram: 0x800466B0 }
       - { start: auto, type:  bss, name: sys/objdraw,              vram: 0x80046FA0 }

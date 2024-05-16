@@ -155,7 +155,7 @@ segments:
       - [0x00B8D0, c, sys/system_03]
       - [0x00BAF0, c, sys/system_03_1]
       - [0x00C7B0, c, sys/system_04]
-      - [0x011970, asm, sys/objdraw]
+      - [0x011970, c, sys/objdraw]
       - [0x0190E0, asm, sys/trig_rand]
       - [0x019AE0, asm, sys/vec_math]
       - [0x01A870, asm, sys/hal_gu]
@@ -336,7 +336,8 @@ segments:
       - [0x03E980, .rodata, sys/system_03]
       - [0x03E9A0, .rodata, sys/system_03_1]
       - [0x03E9D0, .rodata, sys/system_04]
-      - [0x03ED10, rodata, sys/objdraw]
+      - [0x03ED10, .rodata, sys/objdraw]
+      - [0x03EF50, rodata, sys/trig_rand]
       - [0x03EFA0, rodata, sys/hal_gu]
       - [0x03EFF0, rodata, sys/interpolation]
       - [0x03F010, rodata, sys/hal_audio]
@@ -363,7 +364,7 @@ segments:
       - { start: auto, type: .bss, name: sys/system_00,            vram: 0x80046670 }
       - { start: auto, type: .bss, name: sys/rdp_reset,            vram: 0x800466A0 }
       - { start: auto, type: .bss, name: sys/obj_manager,          vram: 0x800466B0 }
-      - { start: auto, type:  bss, name: sys/objdraw,              vram: 0x80046FA0 }
+      - { start: auto, type: .bss, name: sys/objdraw,              vram: 0x80046FA0 }
       - { start: auto, type:  bss, name: sys/hal_audio,            vram: 0x800472D0 }
       - { start: auto, type:  bss, name: sys/gserror,              vram: 0x8009DA00 }
       - { start: auto, type:  bss, name: sys/sprite,               vram: 0x8009EDC0 }

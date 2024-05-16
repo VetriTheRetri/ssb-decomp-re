@@ -142,19 +142,11 @@ osSyncPrintf = 0x8018F810;
 __osSpSetStatus = 0x80038E10;
 __osSpGetStatus = 0x80038E20;
 
-spMove = 0x80023888;
-spScissor = 0x80023894;
-spX2Init = 0x80024FD4;
-spX2Finish = 0x80025E30;
-spHide = 0x80025F10;
-spScale = 0x80025F50;
-spClearAttribute = 0x80025EF0;
-spSetAttribute = 0x80023870;
+
 
 __alCSeqNextDelta = 0x80028AF8;
 __alSeqNextDelta = 0x8002F9FC;
 
-n_alSynSetPriority = 0x80023880;
 alCSeqNewMarker = 0x8002898C;
 alLink = 0x80028C60;
 alUnlink = 0x80028C84;
@@ -303,3 +295,15 @@ n_aspMainTextStart = 0x800396C0; // name_end:n_aspMainTextEnd
 n_aspMainDataStart = 0x8003F400; // name_end:n_aspMainDataEnd
 gspF3DEX2_fifoTextStart = 0x8003A320; // name_end:gspF3DEX2_fifoTextEnd
 gspF3DEX2_fifoDataStart = 0x8003F6B0; // name_end:gspF3DEX2_fifoDataEnd
+
+spSetAttribute = 0x80023870;
+
+spSetZ = 0x80023880;
+spMove = 0x80023888;
+spScissor = 0x80023894;
+spInit = 0x80024FD4;
+spDraw = 0x80025100;
+spFinish = 0x80025E30;
+spHide = 0x80025F10;
+spScale = 0x80025F50;
+spClearAttribute = 0x80025EF0;

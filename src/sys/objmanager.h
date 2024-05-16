@@ -3,7 +3,7 @@
 
 #include "objtypes.h"
 
-extern s32 D_8003B874;
+extern s32 D_8003B874_3C474;
 extern OMPersp dOMPerspDefault;
 extern OMOrtho dOMOrthoDefault;
 extern CameraVec dCameraVecDefault;
@@ -16,7 +16,7 @@ extern GObj *gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 extern GObj *gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
 extern GObj *D_80046A54; // Something to do with an initial object to be passed to a new GObjProcess
 extern GObj *gOMObjCurrentRendering; // Is this exclusively a camera GObj?
-extern GObj *D_80046A5C;
+extern GObj *D_80046A5C_40A7C;
 extern GObjProcess *D_80046A60;
 extern OSMesgQueue gOMMesgQueue;
 extern OMGfxLink D_80046A88[64];

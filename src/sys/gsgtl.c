@@ -157,7 +157,7 @@ SCTaskCallback D_8004666C;  // function pointer?
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/func_80005240.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/append_ucode_load.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/gsAppendGfxUcodeLoad.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/func_800053CC.s")
 

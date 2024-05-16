@@ -11,6 +11,8 @@
 #include "sys/objmanager.h"
 #include "PR/sp.h"
 
+extern f32 guSqrtf(f32);
+
 /* These should no longer be required as they're included in obj.h
 #include <macros.h>
 #include <ssb_types.h>
@@ -1409,7 +1411,6 @@ void odRenderDObjDLLinksForGObj(GObj *gobj)
     odRenderDObjDLLinks(dobj, dobj->dl_link);
 }
 
-#ifdef NON_MATCHING
 // 0x80014430
 void func_80014430(void)
 {
@@ -1417,15 +1418,8 @@ void func_80014430(void)
 
     D_800470B0 = D_800470C8;
 
-    for (i = 0; i < ARRAY_COUNT(D_800470B8); i++)
-    { 
-        D_800470B8[i] = D_800470C8;
-    }
+    for (i = 0; i < ARRAY_COUNT(D_800470B8); i++) { D_800470B8[i] = D_800470C8; } // needs one line
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80014430.s")
-#endif
-
 
 // 0x8001445C
 void odRenderDObjTreeDLLinks(DObj *dobj)
@@ -1950,7 +1944,6 @@ void unref_800154F0(GObj *gobj)
     odRenderDObjTreeDLArray(DObjGetStruct(gobj));
 }
 
-#ifdef NON_MATCHING
 // 0x80015520
 void func_80015520(DObj *dobj)
 {
@@ -2005,7 +1998,7 @@ void func_80015520(DObj *dobj)
         }
         if (dobj->child != NULL)
         {
-            odRenderDObjTreeMultiList(dobj->child);
+            func_80015520(dobj->child);
         }
         D_800470B0 = dl;
 
@@ -2033,14 +2026,11 @@ void func_80015520(DObj *dobj)
 
         while (current_dobj != NULL)
         {
-            odRenderDObjTreeMultiList(current_dobj);
+            func_80015520(current_dobj);
             current_dobj = current_dobj->sib_next;
         }
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80015520.s")
-#endif
 
 // 0x80015860
 void unref_80015860(GObj *gobj) 
@@ -2572,7 +2562,6 @@ void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, 
     dls[0] = dl;
 }
 
-#ifdef NON_MATCHING
 // 0x80016EDC
 void odRenderCameraMain(Gfx **dls, Camera *cam)
 {
@@ -2837,13 +2826,13 @@ void odRenderCameraMain(Gfx **dls, Camera *cam)
             switch (var_s3)
             {
             case 1:
-                var3 = sqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
+                var3 = guSqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
                 var1 = cam->vec.eye.y;
                 var2 = cam->vec.at.y;
                 break;
 
             case 2:
-                var3 = sqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
+                var3 = guSqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
                 var1 = cam->vec.eye.z;
                 var2 = cam->vec.at.z;
                 break;
@@ -2865,13 +2854,13 @@ void odRenderCameraMain(Gfx **dls, Camera *cam)
             switch (spC8)
             {
             case 1:
-                var3 = sqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.z - cam->vec.eye.z));
+                var3 = guSqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.z - cam->vec.eye.z));
                 var1 = cam->vec.eye.x;
                 var2 = cam->vec.at.x;
                 break;
 
             case 2:
-                var3 = sqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
+                var3 = guSqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
                 var1 = cam->vec.eye.y;
                 var2 = cam->vec.at.y;
                 break;
@@ -2889,9 +2878,6 @@ void odRenderCameraMain(Gfx **dls, Camera *cam)
         dls[0] = dl;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderCameraMain.s")
-#endif
 
 // 0x80017830
 void func_80017830(s32 val) 

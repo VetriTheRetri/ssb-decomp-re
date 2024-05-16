@@ -697,6 +697,8 @@ D_80046698 = 0x80046698;
 D_8004669A = 0x8004669A;
 
 sViewport = 0x800466A0;
+sScissorCallback = 0x8003B750;
+sIdentityMatrix = 0x8003B758;
 sResetRdp = 0x8003B798;
 gSpriteLayerScale = 0x80046FA4;
 sSysThread8CPUFault = 0x8009DA08; // size:0x1B0

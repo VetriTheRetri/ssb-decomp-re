@@ -8,19 +8,19 @@ A very WIP dissassembly of the first Smash Bros. game for the Nintendo 64.
 
 To setup and build the rom, see below
 
-# Install dependencies
+## Install dependencies
 
 `bash ./installDependencies.sh`
 
-# Extract files, and run the initial build
+## Extract files, and run the initial build
 
 `make init`
 
-# Build any changes
+## Build any changes
 
 `make`
 
-# Debugging
+## Debugging
 There's a few handy scripts to help with debugging non matches after making changes.
 
 | Tool           | Details                                                                |

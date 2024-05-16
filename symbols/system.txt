@@ -117,8 +117,8 @@ unref_800036B4 = 0x800036B4;
 
 func_80007080 = 0x80007080;
 dpSetViewport = 0x8000711C;
-set_scissor_callback = 0x80007168;
-reset_rdp_settings = 0x80007174;
+dpSetScissorFunction = 0x80007168;
+dpResetSettings = 0x80007174;
 
 func_80003C00 = 0x80003C00;
 update_controller_status = 0x80003CC4;

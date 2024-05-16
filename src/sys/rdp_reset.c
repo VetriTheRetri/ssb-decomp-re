@@ -61,10 +61,54 @@ DIAGNOSTIC_RESTORE()
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
+#ifdef NON_MATCHING
+void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+    vp->vp.vscale[0] = ((arg3 - ((arg1 + arg3) / 2.0f)) * 4.0f);
+    vp->vp.vscale[1] = ((arg4 - ((arg2 + arg4) / 2.0f)) * 4.0f);
+    vp->vp.vtrans[0] = (((arg1 + arg3) / 2.0f) * 4.0f);
+    vp->vp.vtrans[1] = (((arg2 + arg4) / 2.0f) * 4.0f);
+    vp->vp.vscale[2] = vp->vp.vtrans[2] = G_MAXZ / 2;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/rdp_reset/func_80007080.s")
+#endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/rdp_reset/dpSetViewport.s")
+#pragma GCC diagnostic pop
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/rdp_reset/set_scissor_callback.s")
+void dpSetViewport(Vp *vp)
+{
+    vp->vp.vscale[0] = vp->vp.vtrans[0] = gCurrScreenWidth * 2;
+    vp->vp.vscale[1] = vp->vp.vtrans[1] = gCurrScreenHeight * 2;
+    vp->vp.vscale[2] = vp->vp.vtrans[2] = G_MAXZ / 2;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/rdp_reset/reset_rdp_settings.s")
+void dpSetScissorFunction(void (*cb)(Gfx**)) 
+{
+    sScissorCallback = cb;
+}
+
+void dpResetSettings(Gfx **dlist)
+{
+    Gfx *dl_head = dlist[0];
+
+    gSPSegment(dl_head++, G_MWO_SEGMENT_0, 0x00000000);
+    func_800048F8(&dl_head);
+    gDPSetDepthImage(dl_head++, gZBuffer);
+    dpSetViewport(&sViewport);
+    gSPDisplayList(dl_head++, sResetRdp);
+
+    gDPSetScissor
+    (
+        dl_head++,
+        G_SC_NON_INTERLACE,
+        10 * (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT),
+        10 * (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT),
+        gCurrScreenWidth - 10 * (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT),
+        gCurrScreenHeight - 10 * (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT)
+    );
+    if (sScissorCallback != NULL)
+    { 
+        sScissorCallback(&dl_head);
+    }
+    dlist[0] = dl_head;
+}

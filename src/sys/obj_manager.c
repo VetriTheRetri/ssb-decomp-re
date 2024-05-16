@@ -834,7 +834,7 @@ void func_8000848C(GObjProcess* gobjproc)
 		D_80046A64 = 1;
 
 		if (D_80046A60->kind == GObjProcess_Kind_OSThread)
-			stop_current_process(1);
+			gsStopCurrentProcess(1);
 		return;
 	}
 

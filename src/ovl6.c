@@ -358,13 +358,13 @@ void func_ovl6_8018DC38()
 // 8018DC70
 void scBonusGame_InitInterface(GObj* interface_gobj)
 {
-	stop_current_process(60);
+	gsStopCurrentProcess(60);
 	func_ovl2_801120D4();
 	ifPlayer_Damage_InitInterface();
 	func_800269C0_275C0(0x1EA);
 	func_ovl2_801121C4();
 	omEjectGObjCommon(NULL);
-	stop_current_process(1);
+	gsStopCurrentProcess(1);
 }
 
 // 8018DCC4

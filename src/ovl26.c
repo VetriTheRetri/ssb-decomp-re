@@ -1782,7 +1782,7 @@ void mnBattleFlashWhiteSquare(GObj* white_square_gobj)
 			white_square_gobj->flags = (white_square_gobj->flags == 1) ? 0 : 1;
 		}
 
-		stop_current_process(1);
+		gsStopCurrentProcess(1);
 	}
 }
 
@@ -1994,7 +1994,7 @@ void mnBattleSyncAndBlinkArrows(GObj* arrow_gobj)
 			arrow_sobj->sprite.attr |= SP_TRANSPARENT;
 			arrow_sobj->user_data.s = 1;
 		}
-		stop_current_process(1);
+		gsStopCurrentProcess(1);
 	}
 }
 

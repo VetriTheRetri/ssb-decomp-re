@@ -10585,11 +10585,11 @@ glabel mnBattleInitCSS
   /* 139450 8013B1D0 1420FFFB */      bnez $at, .L8013B1C0
   /* 139454 8013B1D4 00000000 */       nop
   /* 139458 8013B1D8 3C038014 */       lui $v1, %hi(gMNBattlePanels)
-  /* 13945C 8013B1DC 3C108013 */       lui $s0, %hi(D_ovl2_80130D9C)
-  /* 139460 8013B1E0 26100D9C */     addiu $s0, $s0, %lo(D_ovl2_80130D9C)
+  /* 13945C 8013B1DC 3C108013 */       lui $s0, %hi(gFTAnimHeapSize)
+  /* 139460 8013B1E0 26100D9C */     addiu $s0, $s0, %lo(gFTAnimHeapSize)
   /* 139464 8013B1E4 2463BA88 */     addiu $v1, $v1, %lo(gMNBattlePanels)
   .L8013B1E8:
-  /* 139468 8013B1E8 8E040000 */        lw $a0, ($s0) # D_ovl2_80130D9C + 0
+  /* 139468 8013B1E8 8E040000 */        lw $a0, ($s0) # gFTAnimHeapSize + 0
   /* 13946C 8013B1EC 24050010 */     addiu $a1, $zero, 0x10
   /* 139470 8013B1F0 0C001260 */       jal gsMemoryAlloc
   /* 139474 8013B1F4 AFA30028 */        sw $v1, 0x28($sp)

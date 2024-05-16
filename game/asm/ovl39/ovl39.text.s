@@ -1003,8 +1003,8 @@ glabel mvOpeningFoxInit
   /* 16A988 8018DF68 00000000 */       nop
   /* 16A98C 8018DF6C 0C035E1B */       jal ftManager_SetFileDataKind
   /* 16A990 8018DF70 24040001 */     addiu $a0, $zero, 1
-  /* 16A994 8018DF74 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
-  /* 16A998 8018DF78 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
+  /* 16A994 8018DF74 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
+  /* 16A998 8018DF78 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 16A99C 8018DF7C 0C001260 */       jal gsMemoryAlloc
   /* 16A9A0 8018DF80 24050010 */     addiu $a1, $zero, 0x10
   /* 16A9A4 8018DF84 3C018019 */       lui $at, %hi(gMvOpeningFoxAnimHeap)

@@ -5822,8 +5822,8 @@ glabel mnBonusInitCSS
   /* 14CDFC 80136DCC 2401000C */     addiu $at, $zero, 0xc
   /* 14CE00 80136DD0 1601FFFB */       bne $s0, $at, .L80136DC0
   /* 14CE04 80136DD4 00000000 */       nop
-  /* 14CE08 80136DD8 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
-  /* 14CE0C 80136DDC 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
+  /* 14CE08 80136DD8 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
+  /* 14CE0C 80136DDC 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 14CE10 80136DE0 0C001260 */       jal gsMemoryAlloc
   /* 14CE14 80136DE4 24050010 */     addiu $a1, $zero, 0x10
   /* 14CE18 80136DE8 3C018013 */       lui $at, %hi(gMNBonusAnimHeap)

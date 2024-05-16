@@ -382,7 +382,7 @@ void mvOpeningLinkInit()
     efManager_AllocUserData();
     ftManager_SetFileDataKind(Ft_Kind_Link);
 
-    gMvOpeningLinkAnimHeap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10);
+    gMvOpeningLinkAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
     mvOpeningLinkCreateNameViewport();
     mvOpeningLinkCreatePosedFighterBackgroundViewport();
     mvOpeningLinkCreatePosedFighterViewport();

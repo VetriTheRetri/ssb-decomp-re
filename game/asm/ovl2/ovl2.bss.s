@@ -45,7 +45,7 @@ glabel gEntityStatUpdateCount
     .space 2
 glabel D_ovl2_80130D98
     .space 4
-glabel D_ovl2_80130D9C
+glabel gFTAnimHeapSize
     .space 4
 glabel D_ovl2_80130DA0
     .space 64

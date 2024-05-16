@@ -1015,8 +1015,8 @@ glabel mvOpeningKirbyInit
   /* 16EEA4 8018DF94 00000000 */       nop
   /* 16EEA8 8018DF98 0C035E1B */       jal ftManager_SetFileDataKind
   /* 16EEAC 8018DF9C 24040008 */     addiu $a0, $zero, 8
-  /* 16EEB0 8018DFA0 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
-  /* 16EEB4 8018DFA4 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
+  /* 16EEB0 8018DFA0 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
+  /* 16EEB4 8018DFA4 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 16EEB8 8018DFA8 0C001260 */       jal gsMemoryAlloc
   /* 16EEBC 8018DFAC 24050010 */     addiu $a1, $zero, 0x10
   /* 16EEC0 8018DFB0 3C018019 */       lui $at, %hi(gMvOpeningKirbyAnimHeap)

@@ -2671,7 +2671,7 @@ void mnTrainingInitCSS() {
 
     for (i = 0; i < 4; i++)
     {
-        gMNTrainingPanels[i].anim_heap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10U);
+        gMNTrainingPanels[i].anim_heap = gsMemoryAlloc(gFTAnimHeapSize, 0x10U);
     }
 
     mnTrainingCreatePortraitViewport();

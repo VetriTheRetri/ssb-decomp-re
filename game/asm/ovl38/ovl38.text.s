@@ -1047,8 +1047,8 @@ glabel mvOpeningSamusInit
   /* 169874 8018E004 46006386 */     mov.s $f14, $f12
   /* 169878 8018E008 0C035E1B */       jal ftManager_SetFileDataKind
   /* 16987C 8018E00C 24040003 */     addiu $a0, $zero, 3
-  /* 169880 8018E010 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
-  /* 169884 8018E014 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
+  /* 169880 8018E010 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
+  /* 169884 8018E014 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 169888 8018E018 0C001260 */       jal gsMemoryAlloc
   /* 16988C 8018E01C 24050010 */     addiu $a1, $zero, 0x10
   /* 169890 8018E020 3C018019 */       lui $at, %hi(gMvOpeningSamusAnimHeap)

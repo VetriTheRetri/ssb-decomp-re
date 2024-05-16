@@ -861,12 +861,12 @@ glabel func_ovl49_8013255C
   /* 173810 801327B0 24040009 */     addiu $a0, $zero, 9
   /* 173814 801327B4 3C108013 */       lui $s0, %hi(D_ovl49_801329D8)
   /* 173818 801327B8 3C128013 */       lui $s2, %hi(D_ovl49_801329F8)
-  /* 17381C 801327BC 3C118013 */       lui $s1, %hi(D_ovl2_80130D9C)
-  /* 173820 801327C0 26310D9C */     addiu $s1, $s1, %lo(D_ovl2_80130D9C)
+  /* 17381C 801327BC 3C118013 */       lui $s1, %hi(gFTAnimHeapSize)
+  /* 173820 801327C0 26310D9C */     addiu $s1, $s1, %lo(gFTAnimHeapSize)
   /* 173824 801327C4 265229F8 */     addiu $s2, $s2, %lo(D_ovl49_801329F8)
   /* 173828 801327C8 261029D8 */     addiu $s0, $s0, %lo(D_ovl49_801329D8)
   .L801327CC:
-  /* 17382C 801327CC 8E240000 */        lw $a0, ($s1) # D_ovl2_80130D9C + 0
+  /* 17382C 801327CC 8E240000 */        lw $a0, ($s1) # gFTAnimHeapSize + 0
   /* 173830 801327D0 0C001260 */       jal gsMemoryAlloc
   /* 173834 801327D4 24050010 */     addiu $a1, $zero, 0x10
   /* 173838 801327D8 26100004 */     addiu $s0, $s0, 4

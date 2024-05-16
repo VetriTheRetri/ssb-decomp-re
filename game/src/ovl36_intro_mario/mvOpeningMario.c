@@ -389,7 +389,7 @@ void mvOpeningMarioInit()
     efManager_AllocUserData();
     ftManager_SetFileDataKind(Ft_Kind_Mario);
 
-    gMvOpeningMarioAnimHeap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10);
+    gMvOpeningMarioAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
     mvOpeningMarioCreateNameViewport();
     mvOpeningMarioCreatePosedFighterBackgroundViewport();
     mvOpeningMarioCreatePosedFighterViewport();

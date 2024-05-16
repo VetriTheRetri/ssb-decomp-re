@@ -439,9 +439,9 @@ glabel gmContinueMakeFighter
   /* 178B38 801320D8 00802825 */        or $a1, $a0, $zero
   /* 178B3C 801320DC 3C0E8011 */       lui $t6, %hi(dFTDefaultFighterDesc)
   /* 178B40 801320E0 27A4001C */     addiu $a0, $sp, 0x1c
-  /* 178B44 801320E4 3C028013 */       lui $v0, %hi(sGMContinueFighterAttributes)
+  /* 178B44 801320E4 3C028013 */       lui $v0, %hi(sGMContinueFighterDesc)
   /* 178B48 801320E8 25CE6DD0 */     addiu $t6, $t6, %lo(dFTDefaultFighterDesc)
-  /* 178B4C 801320EC 24424348 */     addiu $v0, $v0, %lo(sGMContinueFighterAttributes)
+  /* 178B4C 801320EC 24424348 */     addiu $v0, $v0, %lo(sGMContinueFighterDesc)
   /* 178B50 801320F0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 178B54 801320F4 25C8003C */     addiu $t0, $t6, 0x3c
   /* 178B58 801320F8 0080C825 */        or $t9, $a0, $zero
@@ -461,8 +461,8 @@ glabel gmContinueMakeFighter
   /* 178B8C 8013212C AF380000 */        sw $t8, ($t9)
   /* 178B90 80132130 3C0B8013 */       lui $t3, %hi(sGMContinueFighterAnimHeap)
   /* 178B94 80132134 3C018013 */       lui $at, %hi(D_ovl55_801342E0)
-  /* 178B98 80132138 8C490004 */        lw $t1, 4($v0) # sGMContinueFighterAttributes + 4
-  /* 178B9C 8013213C 8C4A0008 */        lw $t2, 8($v0) # sGMContinueFighterAttributes + 8
+  /* 178B98 80132138 8C490004 */        lw $t1, 4($v0) # sGMContinueFighterDesc + 4
+  /* 178B9C 8013213C 8C4A0008 */        lw $t2, 8($v0) # sGMContinueFighterDesc + 8
   /* 178BA0 80132140 8D6B42F8 */        lw $t3, %lo(sGMContinueFighterAnimHeap)($t3)
   /* 178BA4 80132144 C42642E0 */      lwc1 $f6, %lo(D_ovl55_801342E0)($at)
   /* 178BA8 80132148 44804000 */      mtc1 $zero, $f8
@@ -481,8 +481,8 @@ glabel gmContinueMakeFighter
   /* 178BDC 8013217C 34A50009 */       ori $a1, $a1, (0x10009 & 0xFFFF) # 65545
   /* 178BE0 80132180 0C0E4173 */       jal func_ovl1_803905CC
   /* 178BE4 80132184 00402025 */        or $a0, $v0, $zero
-  /* 178BE8 80132188 3C058013 */       lui $a1, %hi(sGMContinueFighterAttributes)
-  /* 178BEC 8013218C 8CA54348 */        lw $a1, %lo(sGMContinueFighterAttributes)($a1)
+  /* 178BE8 80132188 3C058013 */       lui $a1, %hi(sGMContinueFighterDesc)
+  /* 178BEC 8013218C 8CA54348 */        lw $a1, %lo(sGMContinueFighterDesc)($a1)
   /* 178BF0 80132190 0C04C827 */       jal gmContinueSetFighterScale
   /* 178BF4 80132194 8FA4005C */        lw $a0, 0x5c($sp)
   /* 178BF8 80132198 8FBF0014 */        lw $ra, 0x14($sp)
@@ -1645,9 +1645,9 @@ glabel gmContinueGameOverProcUpdate
   /* 179CF8 80133298 3C0142F0 */       lui $at, (0x42F00000 >> 16) # 120.0
   /* 179CFC 8013329C 3C058013 */       lui $a1, %hi(sGMContinueFighterGObj)
   /* 179D00 801332A0 24A54300 */     addiu $a1, $a1, %lo(sGMContinueFighterGObj)
-  /* 179D04 801332A4 3C078013 */       lui $a3, %hi(sGMContinueFighterAttributes)
+  /* 179D04 801332A4 3C078013 */       lui $a3, %hi(sGMContinueFighterDesc)
   /* 179D08 801332A8 46028483 */     div.s $f18, $f16, $f2
-  /* 179D0C 801332AC 24E74348 */     addiu $a3, $a3, %lo(sGMContinueFighterAttributes)
+  /* 179D0C 801332AC 24E74348 */     addiu $a3, $a3, %lo(sGMContinueFighterDesc)
   /* 179D10 801332B0 3C068039 */       lui $a2, %hi(D_ovl1_80390D90)
   /* 179D14 801332B4 24C60D90 */     addiu $a2, $a2, %lo(D_ovl1_80390D90)
   /* 179D18 801332B8 46122181 */     sub.s $f6, $f4, $f18
@@ -1665,7 +1665,7 @@ glabel gmContinueGameOverProcUpdate
   /* 179D48 801332E8 C4680020 */      lwc1 $f8, 0x20($v1)
   /* 179D4C 801332EC 460A4400 */     add.s $f16, $f8, $f10
   /* 179D50 801332F0 E4700020 */      swc1 $f16, 0x20($v1)
-  /* 179D54 801332F4 8CF80000 */        lw $t8, ($a3) # sGMContinueFighterAttributes + 0
+  /* 179D54 801332F4 8CF80000 */        lw $t8, ($a3) # sGMContinueFighterDesc + 0
   /* 179D58 801332F8 C4840000 */      lwc1 $f4, ($a0) # sGMContinueGameOverFadeOutScale + 0
   /* 179D5C 801332FC 8CA90000 */        lw $t1, ($a1) # sGMContinueFighterGObj + 0
   /* 179D60 80133300 0018C880 */       sll $t9, $t8, 2
@@ -1674,7 +1674,7 @@ glabel gmContinueGameOverProcUpdate
   /* 179D6C 8013330C 8D2A0074 */        lw $t2, 0x74($t1)
   /* 179D70 80133310 46049182 */     mul.s $f6, $f18, $f4
   /* 179D74 80133314 E5460040 */      swc1 $f6, 0x40($t2)
-  /* 179D78 80133318 8CEB0000 */        lw $t3, ($a3) # sGMContinueFighterAttributes + 0
+  /* 179D78 80133318 8CEB0000 */        lw $t3, ($a3) # sGMContinueFighterDesc + 0
   /* 179D7C 8013331C C48A0000 */      lwc1 $f10, ($a0) # sGMContinueGameOverFadeOutScale + 0
   /* 179D80 80133320 8CAE0000 */        lw $t6, ($a1) # sGMContinueFighterGObj + 0
   /* 179D84 80133324 000B6080 */       sll $t4, $t3, 2
@@ -1683,7 +1683,7 @@ glabel gmContinueGameOverProcUpdate
   /* 179D90 80133330 8DCF0074 */        lw $t7, 0x74($t6)
   /* 179D94 80133334 460A4402 */     mul.s $f16, $f8, $f10
   /* 179D98 80133338 E5F00044 */      swc1 $f16, 0x44($t7)
-  /* 179D9C 8013333C 8CF80000 */        lw $t8, ($a3) # sGMContinueFighterAttributes + 0
+  /* 179D9C 8013333C 8CF80000 */        lw $t8, ($a3) # sGMContinueFighterDesc + 0
   /* 179DA0 80133340 C4840000 */      lwc1 $f4, ($a0) # sGMContinueGameOverFadeOutScale + 0
   /* 179DA4 80133344 8CA90000 */        lw $t1, ($a1) # sGMContinueFighterGObj + 0
   /* 179DA8 80133348 0018C880 */       sll $t9, $t8, 2
@@ -2091,15 +2091,15 @@ glabel func_ovl55_80133918
   /* 17A39C 8013393C 000F7880 */       sll $t7, $t7, 2
   /* 17A3A0 80133940 27184B18 */     addiu $t8, $t8, %lo(D_800A4B18)
   /* 17A3A4 80133944 01F81021 */      addu $v0, $t7, $t8
-  /* 17A3A8 80133948 3C038013 */       lui $v1, %hi(sGMContinueFighterAttributes)
+  /* 17A3A8 80133948 3C038013 */       lui $v1, %hi(sGMContinueFighterDesc)
   /* 17A3AC 8013394C 90590023 */       lbu $t9, 0x23($v0)
   /* 17A3B0 80133950 90480026 */       lbu $t0, 0x26($v0)
   /* 17A3B4 80133954 90490027 */       lbu $t1, 0x27($v0)
-  /* 17A3B8 80133958 24634348 */     addiu $v1, $v1, %lo(sGMContinueFighterAttributes)
+  /* 17A3B8 80133958 24634348 */     addiu $v1, $v1, %lo(sGMContinueFighterDesc)
   /* 17A3BC 8013395C 3C018013 */       lui $at, %hi(sGMContinueOptionSelect)
-  /* 17A3C0 80133960 AC790000 */        sw $t9, ($v1) # sGMContinueFighterAttributes + 0
-  /* 17A3C4 80133964 AC680004 */        sw $t0, 4($v1) # sGMContinueFighterAttributes + 4
-  /* 17A3C8 80133968 AC690008 */        sw $t1, 8($v1) # sGMContinueFighterAttributes + 8
+  /* 17A3C0 80133960 AC790000 */        sw $t9, ($v1) # sGMContinueFighterDesc + 0
+  /* 17A3C4 80133964 AC680004 */        sw $t0, 4($v1) # sGMContinueFighterDesc + 4
+  /* 17A3C8 80133968 AC690008 */        sw $t1, 8($v1) # sGMContinueFighterDesc + 8
   /* 17A3CC 8013396C AC204338 */        sw $zero, %lo(sGMContinueOptionSelect)($at)
   /* 17A3D0 80133970 3C018013 */       lui $at, %hi(sGMContinueStatus)
   /* 17A3D4 80133974 AC20433C */        sw $zero, %lo(sGMContinueStatus)($at)
@@ -2565,11 +2565,11 @@ glabel gmContinueInitAll
   /* 17AA94 80134034 24040001 */     addiu $a0, $zero, 1
   /* 17AA98 80134038 0C035C65 */       jal ftManager_AllocFighterData
   /* 17AA9C 8013403C 24050001 */     addiu $a1, $zero, 1
-  /* 17AAA0 80134040 3C048013 */       lui $a0, %hi(sGMContinueFighterAttributes)
+  /* 17AAA0 80134040 3C048013 */       lui $a0, %hi(sGMContinueFighterDesc)
   /* 17AAA4 80134044 0C035E1B */       jal ftManager_SetFileDataKind
-  /* 17AAA8 80134048 8C844348 */        lw $a0, %lo(sGMContinueFighterAttributes)($a0)
-  /* 17AAAC 8013404C 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
-  /* 17AAB0 80134050 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
+  /* 17AAA8 80134048 8C844348 */        lw $a0, %lo(sGMContinueFighterDesc)($a0)
+  /* 17AAAC 8013404C 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
+  /* 17AAB0 80134050 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 17AAB4 80134054 0C001260 */       jal gsMemoryAlloc
   /* 17AAB8 80134058 24050010 */     addiu $a1, $zero, 0x10
   /* 17AABC 8013405C 3C018013 */       lui $at, %hi(sGMContinueFighterAnimHeap)
@@ -2587,9 +2587,9 @@ glabel gmContinueInitAll
   /* 17AAEC 8013408C 00000000 */       nop 
   /* 17AAF0 80134090 0C04CE1A */       jal func_ovl55_80133868
   /* 17AAF4 80134094 00000000 */       nop 
-  /* 17AAF8 80134098 3C048013 */       lui $a0, %hi(sGMContinueFighterAttributes)
+  /* 17AAF8 80134098 3C048013 */       lui $a0, %hi(sGMContinueFighterDesc)
   /* 17AAFC 8013409C 0C04C835 */       jal gmContinueMakeFighter
-  /* 17AB00 801340A0 8C844348 */        lw $a0, %lo(sGMContinueFighterAttributes)($a0)
+  /* 17AB00 801340A0 8C844348 */        lw $a0, %lo(sGMContinueFighterDesc)($a0)
   /* 17AB04 801340A4 3C04800A */       lui $a0, %hi((gSceneData + 0x20))
   /* 17AB08 801340A8 0C04C7E6 */       jal gmContinueMakeScoreDisplay
   /* 17AB0C 801340AC 8C844AF0 */        lw $a0, %lo((gSceneData + 0x20))($a0)

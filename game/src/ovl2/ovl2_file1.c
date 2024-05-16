@@ -382,7 +382,7 @@ void func_ovl2_800D67DC(void)
         gSceneData.scene_previous = 0x34;
         gSceneData.scene_current = 0x30;
 
-        overlay_set48_entry();
+        mvEndingStartScene();
         load_overlay(&D_ovl2_80116CEC);
 
         gSceneData.scene_previous = 0x34;

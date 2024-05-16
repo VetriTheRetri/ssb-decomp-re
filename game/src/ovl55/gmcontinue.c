@@ -12,7 +12,7 @@
 
 // EXTERN
 extern f32 D_ovl1_80390D90[];
-extern u32 D_ovl2_80130D9C;
+extern u32 gFTAnimHeapSize;
 
 extern intptr_t D_NF_001AC870;
 extern intptr_t D_NF_00000854;
@@ -92,7 +92,7 @@ f32 sGMContinueGameOverFadeOutScale;
 f32 sGMContinueGameOverColorStep;
 
 // 0x80134348
-gmContinueFighter sGMContinueFighterAttributes;
+mvFighterDesc sGMContinueFighterDesc;
 
 // 0x80134354 - ??? set but never used?
 s32 D_ovl55_80134354;
@@ -128,6 +128,12 @@ void *sGMContinueFiles[5];
 
 // 0x80134160
 u32 dGMContinueFileIDs[/* */] = { 0x4F, 0x51, 0x25, 0xA4, 0x50 };
+
+// 0x80134178
+Lights1 dGMContinueLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
+
+// 0x80134190
+Lights1 dGMContinueLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x80131B00
 void func_ovl55_80131B00(Gfx **dl)
@@ -298,8 +304,8 @@ void gmContinueMakeFighter(s32 ft_kind)
 
     player_spawn.pos.x = 90.0F;
 
-    player_spawn.costume = sGMContinueFighterAttributes.costume;
-    player_spawn.shade = sGMContinueFighterAttributes.shade;
+    player_spawn.costume = sGMContinueFighterDesc.costume;
+    player_spawn.shade = sGMContinueFighterDesc.shade;
     player_spawn.anim_heap = sGMContinueFighterAnimHeap;
 
     player_spawn.pos.y = 2070.0F;
@@ -309,7 +315,7 @@ void gmContinueMakeFighter(s32 ft_kind)
 
     func_ovl1_803905CC(fighter_gobj, 0x10009);
 
-    gmContinueSetFighterScale(fighter_gobj, sGMContinueFighterAttributes.ft_kind);
+    gmContinueSetFighterScale(fighter_gobj, sGMContinueFighterDesc.ft_kind);
 }
 
 // 0x801321A8
@@ -702,9 +708,9 @@ void gmContinueGameOverProcUpdate(GObj *gobj)
 
         DObjGetStruct(sGMContinueFighterGObj)->translate.vec.f.y += 3.0F;
 
-        DObjGetStruct(sGMContinueFighterGObj)->scale.vec.f.x = D_ovl1_80390D90[sGMContinueFighterAttributes.ft_kind] * sGMContinueGameOverFadeOutScale;
-        DObjGetStruct(sGMContinueFighterGObj)->scale.vec.f.y = D_ovl1_80390D90[sGMContinueFighterAttributes.ft_kind] * sGMContinueGameOverFadeOutScale;
-        DObjGetStruct(sGMContinueFighterGObj)->scale.vec.f.z = D_ovl1_80390D90[sGMContinueFighterAttributes.ft_kind] * sGMContinueGameOverFadeOutScale;
+        DObjGetStruct(sGMContinueFighterGObj)->scale.vec.f.x = D_ovl1_80390D90[sGMContinueFighterDesc.ft_kind] * sGMContinueGameOverFadeOutScale;
+        DObjGetStruct(sGMContinueFighterGObj)->scale.vec.f.y = D_ovl1_80390D90[sGMContinueFighterDesc.ft_kind] * sGMContinueGameOverFadeOutScale;
+        DObjGetStruct(sGMContinueFighterGObj)->scale.vec.f.z = D_ovl1_80390D90[sGMContinueFighterDesc.ft_kind] * sGMContinueGameOverFadeOutScale;
     }
 }
 
@@ -826,9 +832,9 @@ void func_ovl55_80133868(void)
 void func_ovl55_80133918(void)
 {
     sGMContinueFramesPassed = 0;
-    sGMContinueFighterAttributes.ft_kind = D_800A4B18.player_block[gSceneData.spgame_player].character_kind;
-    sGMContinueFighterAttributes.costume = D_800A4B18.player_block[gSceneData.spgame_player].costume_index;
-    sGMContinueFighterAttributes.shade = D_800A4B18.player_block[gSceneData.spgame_player].shade_index;
+    sGMContinueFighterDesc.ft_kind = D_800A4B18.player_block[gSceneData.spgame_player].character_kind;
+    sGMContinueFighterDesc.costume = D_800A4B18.player_block[gSceneData.spgame_player].costume_index;
+    sGMContinueFighterDesc.shade = D_800A4B18.player_block[gSceneData.spgame_player].shade_index;
     sGMContinueOptionSelect = 0;
     sGMContinueStatus = 0;
     D_ovl55_80134354 = 0;
@@ -1017,8 +1023,8 @@ void gmContinueInitAll(void)
     func_ovl55_80133918();
     efManager_AllocUserData();
     ftManager_AllocFighterData(1, 1);
-    ftManager_SetFileDataKind(sGMContinueFighterAttributes.ft_kind);
-    sGMContinueFighterAnimHeap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10);
+    ftManager_SetFileDataKind(sGMContinueFighterDesc.ft_kind);
+    sGMContinueFighterAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
     func_ovl55_80133694();
     func_ovl55_801333C4();
     func_ovl55_80133474();
@@ -1026,7 +1032,7 @@ void gmContinueInitAll(void)
     func_ovl55_80133718();
     func_ovl55_801337B8();
     func_ovl55_80133868();
-    gmContinueMakeFighter(sGMContinueFighterAttributes.ft_kind);
+    gmContinueMakeFighter(sGMContinueFighterDesc.ft_kind);
     gmContinueMakeScoreDisplay(gSceneData.spgame_score);
     func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
     func_80020A74();

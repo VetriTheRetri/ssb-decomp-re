@@ -643,7 +643,7 @@ glabel func_ovl2_800D67DC
   /* 052558 800D6D58 24846C80 */     addiu $a0, $a0, %lo(D_ovl2_80116C80)
   /* 05255C 800D6D5C 240E0030 */     addiu $t6, $zero, 0x30
   /* 052560 800D6D60 A25E0001 */        sb $fp, 1($s2) # gSceneData + 1
-  /* 052564 800D6D64 0C04CA9E */       jal overlay_set48_entry
+  /* 052564 800D6D64 0C04CA9E */       jal mvEndingStartScene
   /* 052568 800D6D68 A24E0000 */        sb $t6, ($s2) # gSceneData + 0
   /* 05256C 800D6D6C 3C048011 */       lui $a0, %hi(D_ovl2_80116CEC)
   /* 052570 800D6D70 0C000AF9 */       jal load_overlay
@@ -1188,9 +1188,9 @@ glabel ftManager_AllocFighterData
   /* 052D44 800D7544 24A5000C */     addiu $a1, $a1, 0xc
   /* 052D48 800D7548 14A7FFE8 */       bne $a1, $a3, .L800D74EC
   /* 052D4C 800D754C 24C60004 */     addiu $a2, $a2, 4
-  /* 052D50 800D7550 3C018013 */       lui $at, %hi(D_ovl2_80130D9C)
+  /* 052D50 800D7550 3C018013 */       lui $at, %hi(gFTAnimHeapSize)
   /* 052D54 800D7554 1100000B */      beqz $t0, .L800D7584
-  /* 052D58 800D7558 AC2A0D9C */        sw $t2, %lo(D_ovl2_80130D9C)($at)
+  /* 052D58 800D7558 AC2A0D9C */        sw $t2, %lo(gFTAnimHeapSize)($at)
   /* 052D5C 800D755C 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 052D60 800D7560 44816000 */      mtc1 $at, $f12 # 45.0 to cop1
   /* 052D64 800D7564 241900FF */     addiu $t9, $zero, 0xff

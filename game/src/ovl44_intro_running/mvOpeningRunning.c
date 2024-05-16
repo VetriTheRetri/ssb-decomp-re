@@ -273,7 +273,7 @@ void mvOpeningRunningInit()
 
     for (i = 0; i < ARRAY_COUNT(gMvOpeningRunningFighterAnimHeaps); i++)
     {
-        gMvOpeningRunningFighterAnimHeaps[i] = gsMemoryAlloc(D_ovl2_80130D9C, 0x10);
+        gMvOpeningRunningFighterAnimHeaps[i] = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
     }
 
     mvOpeningRunningCreateTransitionGfxViewport();

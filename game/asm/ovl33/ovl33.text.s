@@ -2514,8 +2514,8 @@ glabel func_ovl33_80133E28
   /* 15FF78 80133F28 2401000C */     addiu $at, $zero, 0xc
   /* 15FF7C 80133F2C 1601FFFB */       bne $s0, $at, .L80133F1C
   /* 15FF80 80133F30 00000000 */       nop 
-  /* 15FF84 80133F34 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
-  /* 15FF88 80133F38 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
+  /* 15FF84 80133F34 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
+  /* 15FF88 80133F38 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 15FF8C 80133F3C 0C001260 */       jal gsMemoryAlloc
   /* 15FF90 80133F40 24050010 */     addiu $a1, $zero, 0x10
   /* 15FF94 80133F44 3C018013 */       lui $at, %hi(D_ovl33_801366EC)

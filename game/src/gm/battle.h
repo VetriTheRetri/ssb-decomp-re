@@ -347,13 +347,13 @@ typedef struct gmStageClearScore
 
 } gmStageClearScore;
 
-typedef struct gmContinueFighter
+typedef struct mvFighterDesc
 {
     s32 ft_kind;
     s32 costume;
     s32 shade;
 
-} gmContinueFighter;
+} mvFighterDesc;
 
 typedef enum gmContinueOption
 {
@@ -391,6 +391,7 @@ typedef enum scMajorScene
     scMajor_Kind_OpeningRoom,       // Room with Master Hand and figures coming to life
     scMajor_Kind_BackupClear = 47,  // Save data clear
     scMajor_Kind_Ending,            // Ending cutscene
+    scMajor_Kind_1PContinue,        // "Continue?" screen
     scMajor_Kind_1PScoreUnk = 50,   // Stage clear bonus thing?
     scMajor_Kind_1PStageClearScore, // Stage clear bonus score page 1?
     scMajor_Kind_1PGame,            // 1P Game logic loop

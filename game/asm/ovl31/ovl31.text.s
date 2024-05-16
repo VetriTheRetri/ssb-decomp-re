@@ -8028,11 +8028,11 @@ glabel mnResultsInit
   /* 157E0C 80138C6C 1420FFFB */      bnez $at, .L80138C5C
   /* 157E10 80138C70 00000000 */       nop
   /* 157E14 80138C74 3C038014 */       lui $v1, %hi(gMNResultsAnimHeaps)
-  /* 157E18 80138C78 3C108013 */       lui $s0, %hi(D_ovl2_80130D9C)
-  /* 157E1C 80138C7C 26100D9C */     addiu $s0, $s0, %lo(D_ovl2_80130D9C)
+  /* 157E18 80138C78 3C108013 */       lui $s0, %hi(gFTAnimHeapSize)
+  /* 157E1C 80138C7C 26100D9C */     addiu $s0, $s0, %lo(gFTAnimHeapSize)
   /* 157E20 80138C80 24639C00 */     addiu $v1, $v1, %lo(gMNResultsAnimHeaps)
   .L80138C84:
-  /* 157E24 80138C84 8E040000 */        lw $a0, ($s0) # D_ovl2_80130D9C + 0
+  /* 157E24 80138C84 8E040000 */        lw $a0, ($s0) # gFTAnimHeapSize + 0
   /* 157E28 80138C88 24050010 */     addiu $a1, $zero, 0x10
   /* 157E2C 80138C8C 0C001260 */       jal gsMemoryAlloc
   /* 157E30 80138C90 AFA30028 */        sw $v1, 0x28($sp)

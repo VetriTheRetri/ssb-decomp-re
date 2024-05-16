@@ -386,7 +386,7 @@ void mvOpeningYoshiInit()
     efManager_AllocUserData();
     ftManager_SetFileDataKind(Ft_Kind_Yoshi);
 
-    gMvOpeningYoshiAnimHeap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10);
+    gMvOpeningYoshiAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
     mvOpeningYoshiCreateNameViewport();
     mvOpeningYoshiCreatePosedFighterBackgroundViewport();
     mvOpeningYoshiCreatePosedFighterViewport();

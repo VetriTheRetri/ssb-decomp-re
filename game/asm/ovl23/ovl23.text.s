@@ -531,8 +531,8 @@ glabel func_ovl23_801321C0
   /* 12AC68 801322A8 3C048013 */       lui $a0, %hi(D_ovl23_80132488)
   /* 12AC6C 801322AC 0C035E1B */       jal ftManager_SetFileDataKind
   /* 12AC70 801322B0 8C842488 */        lw $a0, %lo(D_ovl23_80132488)($a0)
-  /* 12AC74 801322B4 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
-  /* 12AC78 801322B8 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
+  /* 12AC74 801322B4 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
+  /* 12AC78 801322B8 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 12AC7C 801322BC 0C001260 */       jal gsMemoryAlloc
   /* 12AC80 801322C0 24050010 */     addiu $a1, $zero, 0x10
   /* 12AC84 801322C4 3C018013 */       lui $at, %hi(D_ovl23_8013248C)

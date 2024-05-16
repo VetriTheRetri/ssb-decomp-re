@@ -15,7 +15,7 @@ ftParts *gMainFighterPartsCurrent;
 ftParts *gFighterPartsCurrent;
 void *D_ovl2_80130D98;
 
-u32 D_ovl2_80130D9C;
+u32 gFTAnimHeapSize;
 u32 gBattlePlayerCount;
 u16 gEntityMotionCount;
 u16 gEntityStatUpdateCount;
@@ -209,7 +209,7 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
 
         }
     }
-    D_ovl2_80130D9C = var_t2;
+    gFTAnimHeapSize = var_t2;
 
     if (data_flags & 1)
     {
@@ -458,7 +458,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftCreateDesc *spawn)
     fp->unk_ft_0x7AC = 0;
     fp->attack_damage = 0;
     fp->attack_hit_count = 0;
-    fp->shield_attack_damage = 0;
+    fp->attack_shield_push = 0;
     fp->shield_damage = 0;
     fp->damage_lag = 0;
     fp->damage_queue = 0;

@@ -162,7 +162,7 @@ struct mpCollData
     u16 coll_mask_stat;         // Used exclusively by object to transition between action states? Also, persists unlike the above three.
     u16 coll_update_frame;      // Updates each frame? 
     s32 ewall_line_id;          // Line ID of wall that is right under the ledge the object is standing on?
-    sb32 is_coll_end;      // Collision task completion bool? Main collision loop's second condition is that this is FALSE
+    sb32 is_coll_end;           // Collision task completion bool? Main collision loop's second condition is that this is FALSE
     Vec3f line_collision_dist;  // Distance to nearest collision?
 
     s32 ground_line_id;         // Ground collision line ID

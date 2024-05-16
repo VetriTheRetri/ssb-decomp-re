@@ -359,7 +359,7 @@ void start_scene_manager(UNUSED u32 set) {
                 load_overlay(&D_800A3070[2]);
                 load_overlay(&D_800A3070[1]);
                 load_overlay(&D_800A3070[54]);
-                overlay_set48_entry();
+                mvEndingStartScene();
                 break;
             case 49:
                 load_overlay(&D_800A3070[2]);

@@ -2950,7 +2950,7 @@ void mn1PInitCSS()
         ftManager_SetFileDataKind(i);
     }
 
-    gMN1PAnimHeap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10U);
+    gMN1PAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10U);
 
     mn1PLoadMatchInfo();
     mn1PCreatePortraitViewport();

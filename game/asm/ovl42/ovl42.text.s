@@ -1015,8 +1015,8 @@ glabel mvOpeningPikachuInit
   /* 16DD48 8018DF98 00000000 */       nop
   /* 16DD4C 8018DF9C 0C035E1B */       jal ftManager_SetFileDataKind
   /* 16DD50 8018DFA0 24040009 */     addiu $a0, $zero, 9
-  /* 16DD54 8018DFA4 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
-  /* 16DD58 8018DFA8 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
+  /* 16DD54 8018DFA4 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
+  /* 16DD58 8018DFA8 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 16DD5C 8018DFAC 0C001260 */       jal gsMemoryAlloc
   /* 16DD60 8018DFB0 24050010 */     addiu $a1, $zero, 0x10
   /* 16DD64 8018DFB4 3C018019 */       lui $at, %hi(gMvOpeningPikachuAnimHeap)

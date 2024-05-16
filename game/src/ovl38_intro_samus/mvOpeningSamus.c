@@ -406,7 +406,7 @@ void mvOpeningSamusInit()
     func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
     ftManager_SetFileDataKind(Ft_Kind_Samus);
 
-    gMvOpeningSamusAnimHeap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10);
+    gMvOpeningSamusAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
     mvOpeningSamusCreateNameViewport();
     mvOpeningSamusCreatePosedFighterBackgroundViewport();
     mvOpeningSamusCreatePosedFighterViewport();

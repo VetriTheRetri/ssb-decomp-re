@@ -2782,7 +2782,7 @@ void mnResultsInit()
 
     for (i = 0; i < ARRAY_COUNT(gMNResultsAnimHeaps); i++)
     {
-        gMNResultsAnimHeaps[i] = gsMemoryAlloc(D_ovl2_80130D9C, 0x10);
+        gMNResultsAnimHeaps[i] = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
     }
 
     mnResultsSaveDataToSRAM();

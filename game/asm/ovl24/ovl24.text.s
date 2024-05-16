@@ -3417,8 +3417,8 @@ glabel func_ovl24_801349F8
   /* 12DFA0 80134C60 00115880 */       sll $t3, $s1, 2
   /* 12DFA4 80134C64 016C8021 */      addu $s0, $t3, $t4
   .L80134C68:
-  /* 12DFA8 80134C68 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
-  /* 12DFAC 80134C6C 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
+  /* 12DFA8 80134C68 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
+  /* 12DFAC 80134C6C 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 12DFB0 80134C70 0C001260 */       jal gsMemoryAlloc
   /* 12DFB4 80134C74 24050010 */     addiu $a1, $zero, 0x10
   /* 12DFB8 80134C78 26310001 */     addiu $s1, $s1, 1

@@ -720,11 +720,11 @@ glabel func_ovl14_8013239C
   /* 11C35C 801324EC 3C0143C8 */       lui $at, (0x43C80000 >> 16) # 400.0
   /* 11C360 801324F0 3C11800A */       lui $s1, %hi(gTransferBattleState)
   /* 11C364 801324F4 3C128013 */       lui $s2, %hi(D_ovl14_80133110)
-  /* 11C368 801324F8 3C158013 */       lui $s5, %hi(D_ovl2_80130D9C)
+  /* 11C368 801324F8 3C158013 */       lui $s5, %hi(gFTAnimHeapSize)
   /* 11C36C 801324FC 3C148011 */       lui $s4, %hi(dFTDefaultFighterDesc)
   /* 11C370 80132500 4481A000 */      mtc1 $at, $f20 # 400.0 to cop1
   /* 11C374 80132504 26946DD0 */     addiu $s4, $s4, %lo(dFTDefaultFighterDesc)
-  /* 11C378 80132508 26B50D9C */     addiu $s5, $s5, %lo(D_ovl2_80130D9C)
+  /* 11C378 80132508 26B50D9C */     addiu $s5, $s5, %lo(gFTAnimHeapSize)
   /* 11C37C 8013250C 26523110 */     addiu $s2, $s2, %lo(D_ovl14_80133110)
   /* 11C380 80132510 26314D08 */     addiu $s1, $s1, %lo(gTransferBattleState)
   /* 11C384 80132514 00008025 */        or $s0, $zero, $zero
@@ -751,7 +751,7 @@ glabel func_ovl14_8013239C
   /* 11C3D0 80132560 ADED0000 */        sw $t5, ($t7)
   /* 11C3D4 80132564 92390023 */       lbu $t9, 0x23($s1) # gTransferBattleState + 35
   /* 11C3D8 80132568 92280026 */       lbu $t0, 0x26($s1) # gTransferBattleState + 38
-  /* 11C3DC 8013256C 8EA40000 */        lw $a0, ($s5) # D_ovl2_80130D9C + 0
+  /* 11C3DC 8013256C 8EA40000 */        lw $a0, ($s5) # gFTAnimHeapSize + 0
   /* 11C3E0 80132570 AFB90058 */        sw $t9, 0x58($sp)
   /* 11C3E4 80132574 46143202 */     mul.s $f8, $f6, $f20
   /* 11C3E8 80132578 A3A8006F */        sb $t0, 0x6f($sp)

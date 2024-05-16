@@ -6,7 +6,7 @@
 #  80132AD0 -> 80132BC0
 
 
-glabel D_ovl54_80132AD0
+glabel dMVEndingFileIDs
   .incbin "ovl54.raw.bin", 0x0FD0, 0x8
   /* FD8 178478 80132AD8 */
   .asciz "   "
@@ -40,7 +40,7 @@ glabel D_ovl54_80132B24
   .incbin "ovl54.raw.bin", 0x1064, 0x20
   /* 1084 178524 80132B84 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl54.raw.bin", 0x1088, 0x24
-  /* 10AC 17854C 80132BAC */  .4byte func_ovl54_801328D0
+  /* 10AC 17854C 80132BAC */  .4byte mvEndingInitAll
 
 glabel D_ovl54_80132BB0
   /* 10B0 178550 80132BB0 */

@@ -1004,8 +1004,8 @@ glabel mvOpeningMarioInit
   /* 16759C 8018DF6C 00000000 */       nop
   /* 1675A0 8018DF70 0C035E1B */       jal ftManager_SetFileDataKind
   /* 1675A4 8018DF74 00002025 */        or $a0, $zero, $zero
-  /* 1675A8 8018DF78 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
-  /* 1675AC 8018DF7C 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
+  /* 1675A8 8018DF78 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
+  /* 1675AC 8018DF7C 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 1675B0 8018DF80 0C001260 */       jal gsMemoryAlloc
   /* 1675B4 8018DF84 24050010 */     addiu $a1, $zero, 0x10
   /* 1675B8 8018DF88 3C018019 */       lui $at, %hi(gMvOpeningMarioAnimHeap)

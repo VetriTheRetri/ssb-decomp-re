@@ -380,7 +380,7 @@ void mvOpeningPikachuInit()
     efManager_AllocUserData();
     ftManager_SetFileDataKind(Ft_Kind_Pikachu);
 
-    gMvOpeningPikachuAnimHeap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10);
+    gMvOpeningPikachuAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
     mvOpeningPikachuCreateNameViewport();
     mvOpeningPikachuCreatePosedFighterBackgroundViewport();
     mvOpeningPikachuCreatePosedFighterViewport();

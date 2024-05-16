@@ -667,12 +667,12 @@ glabel mvOpeningRunningInit
   /* 16FADC 801324AC 24040009 */     addiu $a0, $zero, 9
   /* 16FAE0 801324B0 3C108013 */       lui $s0, %hi(gMvOpeningRunningFighterAnimHeaps)
   /* 16FAE4 801324B4 3C128013 */       lui $s2, %hi(gMvOpeningRunningLinkFighterGObj)
-  /* 16FAE8 801324B8 3C118013 */       lui $s1, %hi(D_ovl2_80130D9C)
-  /* 16FAEC 801324BC 26310D9C */     addiu $s1, $s1, %lo(D_ovl2_80130D9C)
+  /* 16FAE8 801324B8 3C118013 */       lui $s1, %hi(gFTAnimHeapSize)
+  /* 16FAEC 801324BC 26310D9C */     addiu $s1, $s1, %lo(gFTAnimHeapSize)
   /* 16FAF0 801324C0 26522738 */     addiu $s2, $s2, %lo(gMvOpeningRunningLinkFighterGObj)
   /* 16FAF4 801324C4 26102718 */     addiu $s0, $s0, %lo(gMvOpeningRunningFighterAnimHeaps)
   .L801324C8:
-  /* 16FAF8 801324C8 8E240000 */        lw $a0, ($s1) # D_ovl2_80130D9C + 0
+  /* 16FAF8 801324C8 8E240000 */        lw $a0, ($s1) # gFTAnimHeapSize + 0
   /* 16FAFC 801324CC 0C001260 */       jal gsMemoryAlloc
   /* 16FB00 801324D0 24050010 */     addiu $a1, $zero, 0x10
   /* 16FB04 801324D4 26100004 */     addiu $s0, $s0, 4

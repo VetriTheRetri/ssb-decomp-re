@@ -998,8 +998,8 @@ glabel mvOpeningLinkInit
   /* 16BAA4 8018DF54 00000000 */       nop
   /* 16BAA8 8018DF58 0C035E1B */       jal ftManager_SetFileDataKind
   /* 16BAAC 8018DF5C 24040005 */     addiu $a0, $zero, 5
-  /* 16BAB0 8018DF60 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
-  /* 16BAB4 8018DF64 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
+  /* 16BAB0 8018DF60 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
+  /* 16BAB4 8018DF64 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 16BAB8 8018DF68 0C001260 */       jal gsMemoryAlloc
   /* 16BABC 8018DF6C 24050010 */     addiu $a1, $zero, 0x10
   /* 16BAC0 8018DF70 3C018019 */       lui $at, %hi(gMvOpeningLinkAnimHeap)

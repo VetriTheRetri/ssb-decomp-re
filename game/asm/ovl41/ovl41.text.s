@@ -1015,8 +1015,8 @@ glabel mvOpeningYoshiInit
   /* 16CBE8 8018DF98 00000000 */       nop
   /* 16CBEC 8018DF9C 0C035E1B */       jal ftManager_SetFileDataKind
   /* 16CBF0 8018DFA0 24040006 */     addiu $a0, $zero, 6
-  /* 16CBF4 8018DFA4 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
-  /* 16CBF8 8018DFA8 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
+  /* 16CBF4 8018DFA4 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
+  /* 16CBF8 8018DFA8 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 16CBFC 8018DFAC 0C001260 */       jal gsMemoryAlloc
   /* 16CC00 8018DFB0 24050010 */     addiu $a1, $zero, 0x10
   /* 16CC04 8018DFB4 3C018019 */       lui $at, %hi(gMvOpeningYoshiAnimHeap)

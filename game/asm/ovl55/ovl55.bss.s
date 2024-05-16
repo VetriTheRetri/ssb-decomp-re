@@ -45,7 +45,7 @@ glabel sGMContinueGameOverFadeOutScale
     .space 4
 glabel sGMContinueGameOverColorStep
     .space 4
-glabel sGMContinueFighterAttributes
+glabel sGMContinueFighterDesc
     .space 12
 glabel D_ovl55_80134354
     .space 4

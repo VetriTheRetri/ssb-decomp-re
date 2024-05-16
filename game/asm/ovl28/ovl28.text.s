@@ -6862,11 +6862,11 @@ glabel mnTrainingInitCSS
   /* 14738C 80137DAC 1420FFFB */      bnez $at, .L80137D9C
   /* 147390 80137DB0 00000000 */       nop
   /* 147394 80137DB4 3C038014 */       lui $v1, %hi(gMNTrainingPanels)
-  /* 147398 80137DB8 3C108013 */       lui $s0, %hi(D_ovl2_80130D9C)
-  /* 14739C 80137DBC 26100D9C */     addiu $s0, $s0, %lo(D_ovl2_80130D9C)
+  /* 147398 80137DB8 3C108013 */       lui $s0, %hi(gFTAnimHeapSize)
+  /* 14739C 80137DBC 26100D9C */     addiu $s0, $s0, %lo(gFTAnimHeapSize)
   /* 1473A0 80137DC0 24638558 */     addiu $v1, $v1, %lo(gMNTrainingPanels)
   .L80137DC4:
-  /* 1473A4 80137DC4 8E040000 */        lw $a0, ($s0) # D_ovl2_80130D9C + 0
+  /* 1473A4 80137DC4 8E040000 */        lw $a0, ($s0) # gFTAnimHeapSize + 0
   /* 1473A8 80137DC8 24050010 */     addiu $a1, $zero, 0x10
   /* 1473AC 80137DCC 0C001260 */       jal gsMemoryAlloc
   /* 1473B0 80137DD0 AFA30028 */        sw $v1, 0x28($sp)

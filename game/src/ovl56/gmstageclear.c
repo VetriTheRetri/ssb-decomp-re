@@ -405,6 +405,12 @@ gmStageClearScore dGMStageClearBonusData[/* */] =
     { &lGMStageClearSpriteBonusTrueFriend, 25000 }
 };
 
+// 0x801350D0
+Lights1 dGMStageClearLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
+
+// 0x801350E8
+Lights1 dGMStageClearLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
+
 // 0x80135100
 gsColorRGBPair dGMStageClearDigitSpriteColors[/* */] =
 {

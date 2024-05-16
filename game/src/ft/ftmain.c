@@ -1897,13 +1897,13 @@ void ftMain_SetHitVictimInteractStats(ftStruct *fp, u32 attack_group_id, GObj *v
 // 0x800E287C
 void ftMain_SetHitCollisionRebound(GObj *attacker_gobj, ftStruct *fp, ftHitbox *ft_hit, GObj *victim_gobj)
 {
-    if (fp->shield_attack_damage < ft_hit->damage)
+    if (fp->attack_shield_push < ft_hit->damage)
     {
-        fp->shield_attack_damage = ft_hit->damage;
+        fp->attack_shield_push = ft_hit->damage;
 
         if ((ft_hit->can_rebound) && (fp->ground_or_air == GA_Ground))
         {
-            fp->attack_rebound = (fp->shield_attack_damage * 1.62F) + 4.0F;
+            fp->attack_rebound = (fp->attack_shield_push * 1.62F) + 4.0F;
 
             fp->lr_attack = (DObjGetStruct(attacker_gobj)->translate.vec.f.x < DObjGetStruct(victim_gobj)->translate.vec.f.x) ? LR_Right : LR_Left;
         }
@@ -1950,9 +1950,9 @@ void ftMain_UpdateShieldStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hi
 
     ftMain_SetHitVictimInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, gmHitCollision_Type_Shield, 0, 0);
 
-    if (attacker_fp->shield_attack_damage < attacker_hit->damage)
+    if (attacker_fp->attack_shield_push < attacker_hit->damage)
     {
-        attacker_fp->shield_attack_damage = attacker_hit->damage;
+        attacker_fp->attack_shield_push = attacker_hit->damage;
     }
     victim_fp->shield_damage_total += (attacker_hit->damage + attacker_hit->shield_damage);
 
@@ -3742,7 +3742,7 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
 
         damage = fp->shield_damage;
     }
-    else if (fp->shield_attack_damage != 0)
+    else if (fp->attack_shield_push != 0)
     {
         if (fp->proc_shield != NULL)
         {
@@ -3753,7 +3753,7 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
             ftCommon_ProcDamageStopVoice(fighter_gobj);
             ftCommon_ReboundWait_SetStatus(fighter_gobj);
         }
-        damage = fp->shield_attack_damage;
+        damage = fp->attack_shield_push;
     }
     else if (fp->attack_damage != 0)
     {
@@ -3810,7 +3810,7 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
     }
     fp->unk_ft_0x7AC = 0;
     fp->attack_damage = 0;
-    fp->shield_attack_damage = 0;
+    fp->attack_shield_push = 0;
     fp->shield_damage = 0;
     fp->shield_damage_total = 0;
     fp->damage_lag = 0;

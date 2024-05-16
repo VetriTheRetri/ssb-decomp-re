@@ -7379,8 +7379,8 @@ glabel mn1PInitCSS
   /* 140628 80138428 2401000C */     addiu $at, $zero, 0xc
   /* 14062C 8013842C 1601FFFB */       bne $s0, $at, .L8013841C
   /* 140630 80138430 00000000 */       nop
-  /* 140634 80138434 3C048013 */       lui $a0, %hi(D_ovl2_80130D9C)
-  /* 140638 80138438 8C840D9C */        lw $a0, %lo(D_ovl2_80130D9C)($a0)
+  /* 140634 80138434 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
+  /* 140638 80138438 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 14063C 8013843C 0C001260 */       jal gsMemoryAlloc
   /* 140640 80138440 24050010 */     addiu $a1, $zero, 0x10
   /* 140644 80138444 3C018014 */       lui $at, %hi(gMN1PAnimHeap)

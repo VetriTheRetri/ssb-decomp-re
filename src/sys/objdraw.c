@@ -44,39 +44,39 @@ Gfx *D_800472C0;
 #define gSPMvpRecalc(pkt) gImmp21(pkt, G_SPECIAL_1, 0, 1, 0)
 #define gsSPMvpRecalc()   gsImmp21(G_SPECIAL_1, 0, 1, 0)
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80010D70.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjMain.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80012D90.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderMObjForDObj.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80013D90.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjForGObj.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80013E68.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjDLHead0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80013E8C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjDLHead1.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/unref_80013EB0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/unref_80013ED4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80013EF8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjTree.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80014038.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjTreeForGObj.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80014068.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjDLLinks.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_800143FC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjDLLinksForGObj.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80014430.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_8001445C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjTreeDLLinks.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjTreeDLLinksForGObj.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80014798.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odGetDObjDistFromEye.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/unref_800147E0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_8001490C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjTreeMultiList.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/unref_80014A84.s")
 
@@ -86,7 +86,7 @@ Gfx *D_800472C0;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/unref_80014FFC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80015358.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjTreeDLArray.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/unref_800154F0.s")
 
@@ -94,7 +94,7 @@ Gfx *D_800472C0;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/unref_80015860.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80015890.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjTreeDLDoubleArray.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/unref_80015A58.s")
 
@@ -110,7 +110,7 @@ Gfx *D_800472C0;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/unref_80016AE4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80016EDC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderCameraMain.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/func_80017830.s")
 

@@ -3,7 +3,7 @@
 
 #define scGetTrainingModeItemKind(kind) ((kind) - (It_Kind_UtilityStart - 1))
 
-void func_80020B38(s32, s32);
+void auSetBGMVolume(s32 playerID, u32 vol);
 void func_ovl2_8010CF44(void*, f32, f32, f32, f32, f32); /* extern */
 void scTrainingMode_InitViewOptionSprite();				 /* extern */
 void func_ovl0_800CCF00(GObj*);							 /* extern */

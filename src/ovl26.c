@@ -2533,7 +2533,7 @@ void mnGoBackToVSMenu()
 
 	mnBattleSaveMatchInfo();
 	mnBattleDestroyCursorAndTokenProcesses();
-	func_80020A74();
+	auStopBGM();
 	leoInitUnit_atten();
 }
 
@@ -3876,7 +3876,7 @@ void mnBattleInitCSS()
 	func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
 	if (gSceneData.scene_previous != 0x15)
-		func_80020AB4(0, 0xA);
+		auPlaySong(0, 0xA);
 
 	if (D_800A4D08.is_team_battle == 0)
 		func_800269C0_275C0(0x200U);

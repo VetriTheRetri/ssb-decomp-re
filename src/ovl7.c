@@ -43,7 +43,7 @@ void scTrainingMode_CheckEnterTrainingMenu()
 			gBattleState->game_status = 2;
 
 			func_800269C0_275C0(0x116U);
-			func_80020B38(0, 0x3C00);
+			auSetBGMVolume(0, 0x3C00);
 
 			gTrainingModeStruct.is_read_menu_inputs = 0;
 		}
@@ -71,7 +71,7 @@ void scTrainingMode_CheckLeaveTrainingMenu()
 			ftStruct* fp = ftGetStruct(fighter_gobj);
 			fp->input.pl.button_hold |= HAL_BUTTON_B;
 		}
-		func_80020B38(0, 0x7800);
+		auSetBGMVolume(0, 0x7800);
 	}
 }
 
@@ -264,7 +264,7 @@ sb32 scTrainingMode_UpdateResetOption()
 		gTrainingModeStruct.exit_or_reset = 1;
 		func_800266A0_272A0();
 		func_800269C0_275C0(0xA2U);
-		func_80020B38(0, 0x7800);
+		auSetBGMVolume(0, 0x7800);
 		leoInitUnit_atten();
 		return TRUE;
 	}
@@ -1298,7 +1298,7 @@ void scTrainingMode_InitTrainingMenuAll()
 void scTrainingMode_SetPlayDefaultMusicID()
 {
 	gMusicIndexDefault = 0x2A;
-	func_80020AB4(0, gMusicIndexDefault);
+	auPlaySong(0, gMusicIndexDefault);
 	gMusicIndexCurrent = gMusicIndexDefault;
 }
 
@@ -1432,11 +1432,11 @@ void scManager_TrainingMode_InitScene()
 		func_ovl2_801157EC();
 	} while (gTrainingModeStruct.exit_or_reset != 0);
 
-	func_80020A74();
+	auStopBGM();
 
-	while (func_80020D58(0) != FALSE)
+	while (auIsBGMPlaying(0) != FALSE)
 		continue;
-	func_80020B38(0, 0x7800);
+	auSetBGMVolume(0, 0x7800);
 
 	gSceneData.scene_previous = gSceneData.scene_current;
 	gSceneData.scene_current = 0x12;

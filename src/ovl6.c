@@ -749,13 +749,13 @@ void scManager_BonusGame_InitScene()
 	D_ovl6_8018F09C.proc_start = scBonusGame_InitBonusGame;
 
 	func_8000683C(&D_ovl6_8018F09C);
-	func_80020A74();
+	auStopBGM();
 
-	while (func_80020D58(0) != FALSE)
+	while (auIsBGMPlaying(0) != FALSE)
 	{
 		continue;
 	};
-	func_80020B38(0, 0x7800);
+	auSetBGMVolume(0, 0x7800);
 	func_800266A0_272A0();
 	func_ovl2_801157EC();
 

@@ -162,7 +162,7 @@ segments:
       - [0x01E210, asm, sys/interpolation]
       - [0x01F1C0, asm, sys/hal_audio]
       - [0x021CC0, asm, sys/gserror]
-      - [0x024440, asm, unk_24440]
+      - [0x024440, c, unref24440] # One func, that's entirely unreferenced.
       - [0x024470, asm, libultra/sp/setattribute]
       - [0x024480, asm, libultra/sprite]
       - [0x026AF0, c, libultra/sp/clearattribute]

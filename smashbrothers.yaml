@@ -161,7 +161,7 @@ segments:
       - [0x01A870, c, sys/hal_gu]
       - [0x01E210, c, sys/interpolation]
       - [0x01F1C0, asm, sys/hal_audio]
-      - [0x021CC0, asm, sys/gserror]
+      - [0x021CC0, c, sys/gserror]
       - [0x024440, c, unref24440] # One func, that's entirely unreferenced.
       - [0x024470, asm, libultra/sp/setattribute]
       - [0x024480, asm, libultra/sprite]
@@ -308,7 +308,7 @@ segments:
       - [0x03C540, .data, sys/trig_rand]
       - [0x03C550, .data, sys/sintable]
       - [0x03D550, data, sys/hal_audio]
-      - [0x03D7B0, data, sys/gserror]
+      - [0x03D7B0, .data, sys/gserror]
       - [0x03DC70, data, libultra/sprite]
       - [0x03DC80, data, libultra/audio03]
       - [0x03DF30, data, libultra/io/vimodepallan1] # osViModePalLan1
@@ -341,7 +341,7 @@ segments:
       - [0x03EFA0, .rodata, sys/hal_gu]
       - [0x03EFF0, .rodata, sys/interpolation]
       - [0x03F010, rodata, sys/hal_audio]
-      - [0x03F020, rodata, sys/gserror]
+      - [0x03F020, .rodata, sys/gserror]
       - [0x03F460, rodata, libultra/sprite]
       - [0x03F470, rodata, libultra/audio03]
       - [0x03FAA0, rodata, libultra/audio09]
@@ -366,7 +366,7 @@ segments:
       - { start: auto, type: .bss, name: sys/obj_manager,          vram: 0x800466B0 }
       - { start: auto, type: .bss, name: sys/objdraw,              vram: 0x80046FA0 }
       - { start: auto, type:  bss, name: sys/hal_audio,            vram: 0x800472D0 }
-      - { start: auto, type:  bss, name: sys/gserror,              vram: 0x8009DA00 }
+      - { start: auto, type: .bss, name: sys/gserror,              vram: 0x8009DA00 }
       - { start: auto, type:  bss, name: sys/sprite,               vram: 0x8009EDC0 }
       - { start: auto, type:  bss, name: libultra/audio03,         vram: 0x8009EDD0 }
       - { start: auto, type:  bss, name: libultra/io/sptask,       vram: 0x8009EE40 }

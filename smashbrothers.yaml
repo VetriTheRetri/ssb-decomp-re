@@ -159,7 +159,7 @@ segments:
       - [0x0190E0, c, sys/trig_rand]
       - [0x019AE0, c, sys/vec]
       - [0x01A870, c, sys/hal_gu]
-      - [0x01E210, asm, sys/interpolation]
+      - [0x01E210, c, sys/interpolation]
       - [0x01F1C0, asm, sys/hal_audio]
       - [0x021CC0, asm, sys/gserror]
       - [0x024440, c, unref24440] # One func, that's entirely unreferenced.
@@ -339,7 +339,7 @@ segments:
       - [0x03ED10, .rodata, sys/objdraw]
       - [0x03EF50, .rodata, sys/trig_rand]
       - [0x03EFA0, .rodata, sys/hal_gu]
-      - [0x03EFF0, rodata, sys/interpolation]
+      - [0x03EFF0, .rodata, sys/interpolation]
       - [0x03F010, rodata, sys/hal_audio]
       - [0x03F020, rodata, sys/gserror]
       - [0x03F460, rodata, libultra/sprite]

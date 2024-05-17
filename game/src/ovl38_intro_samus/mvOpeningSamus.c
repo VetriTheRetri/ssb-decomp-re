@@ -431,5 +431,5 @@ void intro_focus_samus_entry()
     D_ovl38_8018E198.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl38_8018E198);
     D_ovl38_8018E1B4.arena_size = (u32) ((uintptr_t)&lOverlay38ArenaHi - (uintptr_t)&lOverlay38ArenaLo);
-    func_8000683C(&D_ovl38_8018E1B4);
+    gsGTLSceneInit(&D_ovl38_8018E1B4);
 }

@@ -7471,7 +7471,7 @@ glabel classic_css_entry
   /* 14078C 8013858C 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 140790 80138590 24848CAC */     addiu $a0, $a0, %lo(D_ovl27_80138CAC)
   /* 140794 80138594 03194023 */      subu $t0, $t8, $t9
-  /* 140798 80138598 0C001A0F */       jal func_8000683C
+  /* 140798 80138598 0C001A0F */       jal gsGTLSceneInit
   /* 14079C 8013859C AC880010 */        sw $t0, 0x10($a0) # D_ovl27_80138CAC + 16
   /* 1407A0 801385A0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1407A4 801385A4 27BD0018 */     addiu $sp, $sp, 0x18

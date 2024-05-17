@@ -322,7 +322,7 @@ struct Camera {
 }; // size >= 0x90
 
 // replace `struct TempUnkA6E0` with this
-// and replace raw struct sizes in `func_8000683C`
+// and replace raw struct sizes in `gsGTLSceneInit`
 struct OMSetup {
     /* 0x00 */ struct GObjThread *threads;
     /* 0x04 */ s32 numThreads;
@@ -349,7 +349,7 @@ struct OMSetup {
     /* 0x58 */ s32 numSObjs;
     /* 0x5C */ s32 sobjSize;
     /* 0x60 */ struct Camera *cameras;
-    /* 0x64 */ s32 numCameras;
+    /* 0x64 */ s32 num_cameras;
     /* 0x68 */ s32 cameraSize;
 }; // size == 0x6C
 

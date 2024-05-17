@@ -945,7 +945,7 @@ glabel mvPortraitsStartScene
   /* 166580 80132870 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 166584 80132874 24842954 */     addiu $a0, $a0, %lo(D_ovl35_80132954)
   /* 166588 80132878 03194023 */      subu $t0, $t8, $t9
-  /* 16658C 8013287C 0C001A0F */       jal func_8000683C
+  /* 16658C 8013287C 0C001A0F */       jal gsGTLSceneInit
   /* 166590 80132880 AC880010 */        sw $t0, 0x10($a0) # D_ovl35_80132954 + 16
   /* 166594 80132884 8FBF0014 */        lw $ra, 0x14($sp)
   /* 166598 80132888 27BD0018 */     addiu $sp, $sp, 0x18

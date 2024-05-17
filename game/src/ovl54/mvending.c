@@ -236,7 +236,7 @@ void mvEndingRoomFadeInProcRender(GObj *gobj)
 
             if (sMVEndingRoomFadeInAlpha < 0)
             {
-                sMVEndingRoomFadeInAlpha = 0;
+                sMVEndingRoomFadeInAlpha = 0x00;
             }
         }
     }
@@ -451,5 +451,5 @@ void mvEndingStartScene(void)
 
     D_ovl54_80132B24.arena_size = ((uintptr_t)&func_ovl1_803903E0 - (uintptr_t)&lMVEndingArenaLo);
 
-    func_8000683C(&D_ovl54_80132B24);
+    gsGTLSceneInit(&D_ovl54_80132B24);
 }

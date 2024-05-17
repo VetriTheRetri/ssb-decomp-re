@@ -3025,7 +3025,7 @@ glabel options_vs_entry
   /* 127E7C 8013469C 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 127E80 801346A0 2484482C */     addiu $a0, $a0, %lo(D_ovl20_8013482C)
   /* 127E84 801346A4 03194023 */      subu $t0, $t8, $t9
-  /* 127E88 801346A8 0C001A0F */       jal func_8000683C
+  /* 127E88 801346A8 0C001A0F */       jal gsGTLSceneInit
   /* 127E8C 801346AC AC880010 */        sw $t0, 0x10($a0) # D_ovl20_8013482C + 16
   /* 127E90 801346B0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 127E94 801346B4 27BD0018 */     addiu $sp, $sp, 0x18

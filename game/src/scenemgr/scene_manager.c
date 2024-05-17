@@ -409,8 +409,8 @@ void start_scene_manager(UNUSED u32 set) {
 }
 
 // set up gtl and om systems
-void func_800A2698(struct Wrapper683C *arg) {
-    func_8000683C(arg);
+void func_800A2698(struct gsGTLSetupDesc *arg) {
+    gsGTLSceneInit(arg);
 }
 
 void func_800A26B8(void) {

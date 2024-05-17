@@ -5263,7 +5263,7 @@ glabel vs_records_entry
   /* 15D544 80136604 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 15D548 80136608 248469E8 */     addiu $a0, $a0, %lo(D_ovl32_801369E8)
   /* 15D54C 8013660C 03194023 */      subu $t0, $t8, $t9
-  /* 15D550 80136610 0C001A0F */       jal func_8000683C
+  /* 15D550 80136610 0C001A0F */       jal gsGTLSceneInit
   /* 15D554 80136614 AC880010 */        sw $t0, 0x10($a0) # D_ovl32_801369E8 + 16
   /* 15D558 80136618 8FBF0014 */        lw $ra, 0x14($sp)
   /* 15D55C 8013661C 27BD0018 */     addiu $sp, $sp, 0x18

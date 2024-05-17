@@ -1615,7 +1615,7 @@ glabel overlay_set11_entry
   /* 129784 801331E4 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 129788 801331E8 2484333C */     addiu $a0, $a0, %lo(D_ovl21_8013333C)
   /* 12978C 801331EC 03194023 */      subu $t0, $t8, $t9
-  /* 129790 801331F0 0C001A0F */       jal func_8000683C
+  /* 129790 801331F0 0C001A0F */       jal gsGTLSceneInit
   /* 129794 801331F4 AC880010 */        sw $t0, 0x10($a0) # D_ovl21_8013333C + 16
   /* 129798 801331F8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 12979C 801331FC 27BD0018 */     addiu $sp, $sp, 0x18

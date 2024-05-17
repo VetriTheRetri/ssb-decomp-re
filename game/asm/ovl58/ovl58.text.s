@@ -299,7 +299,7 @@ glabel mnN64StartScene
   /* 17F0EC 80131F2C 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 17F0F0 80131F30 24841FB4 */     addiu $a0, $a0, %lo(D_ovl58_80131FB4)
   /* 17F0F4 80131F34 03194023 */      subu $t0, $t8, $t9
-  /* 17F0F8 80131F38 0C001A0F */       jal func_8000683C
+  /* 17F0F8 80131F38 0C001A0F */       jal gsGTLSceneInit
   /* 17F0FC 80131F3C AC880010 */        sw $t0, 0x10($a0) # D_ovl58_80131FB4 + 16
   /* 17F100 80131F40 8FBF0014 */        lw $ra, 0x14($sp)
   /* 17F104 80131F44 27BD0018 */     addiu $sp, $sp, 0x18

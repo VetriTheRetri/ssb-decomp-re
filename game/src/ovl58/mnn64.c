@@ -198,5 +198,5 @@ void mnN64StartScene(void)
     D_ovl58_80131F98.unk_scdatabounds_0xC = ((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl58_80131F98);
     D_ovl58_80131FB4.arena_size = ((uintptr_t)&lMNN64ArenaHi - (uintptr_t)&lMNN64ArenaLo);
-    func_8000683C(&D_ovl58_80131FB4);
+    gsGTLSceneInit(&D_ovl58_80131FB4);
 }

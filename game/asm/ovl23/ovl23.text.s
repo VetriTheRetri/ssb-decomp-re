@@ -572,7 +572,7 @@ glabel overlay_set13_entry
   /* 12AD04 80132344 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 12AD08 80132348 248423D4 */     addiu $a0, $a0, %lo(D_ovl23_801323D4)
   /* 12AD0C 8013234C 03194023 */      subu $t0, $t8, $t9
-  /* 12AD10 80132350 0C001A0F */       jal func_8000683C
+  /* 12AD10 80132350 0C001A0F */       jal gsGTLSceneInit
   /* 12AD14 80132354 AC880010 */        sw $t0, 0x10($a0) # D_ovl23_801323D4 + 16
   /* 12AD18 80132358 8FBF0014 */        lw $ra, 0x14($sp)
   /* 12AD1C 8013235C 27BD0018 */     addiu $sp, $sp, 0x18

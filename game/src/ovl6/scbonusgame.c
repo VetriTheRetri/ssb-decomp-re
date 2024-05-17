@@ -1006,7 +1006,7 @@ void scManager_BonusGame_InitScene(void)
     D_ovl6_8018F09C.arena_size = ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
     D_ovl6_8018F09C.proc_start = scBonusGame_InitBonusGame;
 
-    func_8000683C(&D_ovl6_8018F09C);
+    gsGTLSceneInit(&D_ovl6_8018F09C);
     func_80020A74();
 
     while (func_80020D58(0) != FALSE)

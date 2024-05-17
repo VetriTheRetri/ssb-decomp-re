@@ -1136,7 +1136,7 @@ glabel menu_main_entry
   /* 11DAF8 80132B68 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 11DAFC 80132B6C 24842BF4 */     addiu $a0, $a0, %lo(D_ovl17_80132BF4)
   /* 11DB00 80132B70 03194023 */      subu $t0, $t8, $t9
-  /* 11DB04 80132B74 0C001A0F */       jal func_8000683C
+  /* 11DB04 80132B74 0C001A0F */       jal gsGTLSceneInit
   /* 11DB08 80132B78 AC880010 */        sw $t0, 0x10($a0) # D_ovl17_80132BF4 + 16
   /* 11DB0C 80132B7C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 11DB10 80132B80 27BD0018 */     addiu $sp, $sp, 0x18

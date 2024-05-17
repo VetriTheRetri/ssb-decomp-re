@@ -412,7 +412,7 @@ glabel mnCongraStartScene
   /* 17EAC0 801320B0 35085400 */       ori $t0, $t0, (0x80325400 & 0xFFFF) # 2150781952
   /* 17EAC4 801320B4 24842224 */     addiu $a0, $a0, %lo(D_ovl57_80132224)
   /* 17EAC8 801320B8 01095023 */      subu $t2, $t0, $t1
-  /* 17EACC 801320BC 0C001A0F */       jal func_8000683C
+  /* 17EACC 801320BC 0C001A0F */       jal gsGTLSceneInit
   /* 17EAD0 801320C0 AC8A0010 */        sw $t2, 0x10($a0) # D_ovl57_80132224 + 16
   /* 17EAD4 801320C4 3C038039 */       lui $v1, 0x8039
   /* 17EAD8 801320C8 24622A00 */     addiu $v0, $v1, 0x2a00

@@ -1991,5 +1991,5 @@ void gmStageClearStartScene(void)
 
     D_ovl56_80135208.arena_size = ((uintptr_t)&func_ovl1_803903E0 - (uintptr_t)&lGMStageClearArenaLo);
 
-    func_8000683C(&D_ovl56_80135208);
+    gsGTLSceneInit(&D_ovl56_80135208);
 }

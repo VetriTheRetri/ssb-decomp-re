@@ -1839,7 +1839,7 @@ glabel mnOptionStartScene
   /* 120DA4 801335F4 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 120DA8 801335F8 24843714 */     addiu $a0, $a0, %lo(D_ovl60_80133714)
   /* 120DAC 801335FC 03194023 */      subu $t0, $t8, $t9
-  /* 120DB0 80133600 0C001A0F */       jal func_8000683C
+  /* 120DB0 80133600 0C001A0F */       jal gsGTLSceneInit
   /* 120DB4 80133604 AC880010 */        sw $t0, 0x10($a0) # D_ovl60_80133714 + 16
   /* 120DB8 80133608 8FBF0014 */        lw $ra, 0x14($sp)
   /* 120DBC 8013360C 27BD0018 */     addiu $sp, $sp, 0x18

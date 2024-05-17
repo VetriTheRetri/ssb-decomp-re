@@ -757,7 +757,7 @@ glabel debug_button_test_entry
   /* 18DB84 800D6FE4 27182A00 */     addiu $t8, $t8, %lo(D_NF_80392A00)
   /* 18DB88 800D6FE8 24847074 */     addiu $a0, $a0, %lo(D_ovl16_800D7074)
   /* 18DB8C 800D6FEC 03194023 */      subu $t0, $t8, $t9
-  /* 18DB90 800D6FF0 0C001A0F */       jal func_8000683C
+  /* 18DB90 800D6FF0 0C001A0F */       jal gsGTLSceneInit
   /* 18DB94 800D6FF4 AC880010 */        sw $t0, 0x10($a0) # D_ovl16_800D7074 + 16
   /* 18DB98 800D6FF8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 18DB9C 800D6FFC 27BD0018 */     addiu $sp, $sp, 0x18

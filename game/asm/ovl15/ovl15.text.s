@@ -169,7 +169,7 @@ glabel debug_falls_entry
   /* 15096C 800D66BC 27182A00 */     addiu $t8, $t8, %lo(D_NF_80392A00)
   /* 150970 800D66C0 248468C0 */     addiu $a0, $a0, %lo(D_ovl15_800D68C0)
   /* 150974 800D66C4 03194023 */      subu $t0, $t8, $t9
-  /* 150978 800D66C8 0C001A0F */       jal func_8000683C
+  /* 150978 800D66C8 0C001A0F */       jal gsGTLSceneInit
   /* 15097C 800D66CC AC880010 */        sw $t0, 0x10($a0) # D_ovl15_800D68C0 + 16
   /* 150980 800D66D0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 150984 800D66D4 27BD0018 */     addiu $sp, $sp, 0x18

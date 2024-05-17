@@ -504,9 +504,9 @@ struct _OMSetup
     GObjThread *gobjthreads;
     s32 num_gobjthreads;
 
-    u32 thread_stack_size;
-    OMThreadStackNode *threadstacks;
-    u32 num_stacks;
+    u32 omthreadstack_size;
+    OMThreadStackNode *omthreadstacks;
+    u32 num_omthreadstacks;
 
     s32 unk_omsetup_0x14;
 

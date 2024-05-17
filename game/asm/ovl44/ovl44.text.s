@@ -733,7 +733,7 @@ glabel intro_chars_running_entry
   /* 16FBD0 801325A0 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 16FBD4 801325A4 2484266C */     addiu $a0, $a0, %lo(D_ovl44_8013266C)
   /* 16FBD8 801325A8 03194023 */      subu $t0, $t8, $t9
-  /* 16FBDC 801325AC 0C001A0F */       jal func_8000683C
+  /* 16FBDC 801325AC 0C001A0F */       jal gsGTLSceneInit
   /* 16FBE0 801325B0 AC880010 */        sw $t0, 0x10($a0) # D_ovl44_8013266C + 16
   /* 16FBE4 801325B4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16FBE8 801325B8 27BD0018 */     addiu $sp, $sp, 0x18

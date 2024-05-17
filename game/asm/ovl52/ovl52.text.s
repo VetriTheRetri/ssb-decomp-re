@@ -788,7 +788,7 @@ glabel intro_hidden_chars_entry
   /* 175DD4 80132614 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 175DD8 80132618 24842694 */     addiu $a0, $a0, %lo(D_ovl52_80132694)
   /* 175DDC 8013261C 03194023 */      subu $t0, $t8, $t9
-  /* 175DE0 80132620 0C001A0F */       jal func_8000683C
+  /* 175DE0 80132620 0C001A0F */       jal gsGTLSceneInit
   /* 175DE4 80132624 AC880010 */        sw $t0, 0x10($a0) # D_ovl52_80132694 + 16
   /* 175DE8 80132628 8FBF0014 */        lw $ra, 0x14($sp)
   /* 175DEC 8013262C 27BD0018 */     addiu $sp, $sp, 0x18

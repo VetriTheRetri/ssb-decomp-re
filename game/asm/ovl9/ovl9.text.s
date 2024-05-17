@@ -775,9 +775,9 @@ glabel func_ovl9_8036975C
   /* 1AC164 80369CF4 AC201420 */        sw $zero, %lo(D_ovl9_80371420)($at)
   /* 1AC168 80369CF8 01EE7823 */      subu $t7, $t7, $t6
   /* 1AC16C 80369CFC 000F7880 */       sll $t7, $t7, 2
-  /* 1AC170 80369D00 3C018004 */       lui $at, %hi(D_80046640)
+  /* 1AC170 80369D00 3C018004 */       lui $at, %hi(sGSGTLNumTasks)
   /* 1AC174 80369D04 030F1821 */      addu $v1, $t8, $t7
-  /* 1AC178 80369D08 AC2D6640 */        sw $t5, %lo(D_80046640)($at)
+  /* 1AC178 80369D08 AC2D6640 */        sw $t5, %lo(sGSGTLNumTasks)($at)
   /* 1AC17C 80369D0C 8C620004 */        lw $v0, 4($v1)
   .L80369D10:
   /* 1AC180 80369D10 10400007 */      beqz $v0, .L80369D30
@@ -801,8 +801,8 @@ glabel func_ovl9_8036975C
   /* 1AC1C4 80369D54 8D6B1424 */        lw $t3, %lo(D_ovl9_80371424)($t3)
   /* 1AC1C8 80369D58 3C018037 */       lui $at, %hi(D_ovl9_80371420)
   /* 1AC1CC 80369D5C AC201420 */        sw $zero, %lo(D_ovl9_80371420)($at)
-  /* 1AC1D0 80369D60 3C018004 */       lui $at, %hi(D_80046640)
-  /* 1AC1D4 80369D64 AC2B6640 */        sw $t3, %lo(D_80046640)($at)
+  /* 1AC1D0 80369D60 3C018004 */       lui $at, %hi(sGSGTLNumTasks)
+  /* 1AC1D4 80369D64 AC2B6640 */        sw $t3, %lo(sGSGTLNumTasks)($at)
   /* 1AC1D8 80369D68 8FBF0014 */        lw $ra, 0x14($sp)
   .L80369D6C:
   /* 1AC1DC 80369D6C 27BD0018 */     addiu $sp, $sp, 0x18
@@ -881,13 +881,13 @@ glabel func_ovl9_80369D78
   /* 1AC2F8 80369E88 24060001 */     addiu $a2, $zero, 1
   /* 1AC2FC 80369E8C 0C002062 */       jal omAddGObjCommonProc
   /* 1AC300 80369E90 24070001 */     addiu $a3, $zero, 1
-  /* 1AC304 80369E94 3C038004 */       lui $v1, %hi(D_80046640)
-  /* 1AC308 80369E98 24636640 */     addiu $v1, $v1, %lo(D_80046640)
-  /* 1AC30C 80369E9C 8C6F0000 */        lw $t7, ($v1) # D_80046640 + 0
+  /* 1AC304 80369E94 3C038004 */       lui $v1, %hi(sGSGTLNumTasks)
+  /* 1AC308 80369E98 24636640 */     addiu $v1, $v1, %lo(sGSGTLNumTasks)
+  /* 1AC30C 80369E9C 8C6F0000 */        lw $t7, ($v1) # sGSGTLNumTasks + 0
   /* 1AC310 80369EA0 3C018037 */       lui $at, %hi(D_ovl9_80371424)
   /* 1AC314 80369EA4 24180001 */     addiu $t8, $zero, 1
   /* 1AC318 80369EA8 AC2F1424 */        sw $t7, %lo(D_ovl9_80371424)($at)
-  /* 1AC31C 80369EAC AC780000 */        sw $t8, ($v1) # D_80046640 + 0
+  /* 1AC31C 80369EAC AC780000 */        sw $t8, ($v1) # sGSGTLNumTasks + 0
   .L80369EB0:
   /* 1AC320 80369EB0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1AC324 80369EB4 27BD0018 */     addiu $sp, $sp, 0x18

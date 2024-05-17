@@ -491,7 +491,7 @@ glabel debug_system_entry
   /* 11A9EC 801321AC AE400000 */        sw $zero, ($s2) # D_ovl13_80133138 + 0
   .L801321B0:
   /* 11A9F0 801321B0 AE000000 */        sw $zero, ($s0) # D_ovl13_8013313C + 0
-  /* 11A9F4 801321B4 0C001A0F */       jal func_8000683C
+  /* 11A9F4 801321B4 0C001A0F */       jal gsGTLSceneInit
   /* 11A9F8 801321B8 02202025 */        or $a0, $s1, $zero
   /* 11A9FC 801321BC 8E090000 */        lw $t1, ($s0) # D_ovl13_8013313C + 0
   /* 11AA00 801321C0 5520FFFB */      bnel $t1, $zero, .L801321B0

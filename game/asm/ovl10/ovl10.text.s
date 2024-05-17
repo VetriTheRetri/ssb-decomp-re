@@ -2679,7 +2679,7 @@ glabel title_screen_entry
   /* 11979C 8013411C 25089240 */     addiu $t0, $t0, %lo(func_ovl9_80369240)
   /* 1197A0 80134120 2484438C */     addiu $a0, $a0, %lo(D_ovl10_8013438C)
   /* 1197A4 80134124 01095023 */      subu $t2, $t0, $t1
-  /* 1197A8 80134128 0C001A0F */       jal func_8000683C
+  /* 1197A8 80134128 0C001A0F */       jal gsGTLSceneInit
   /* 1197AC 8013412C AC8A0010 */        sw $t2, 0x10($a0) # D_ovl10_8013438C + 16
   /* 1197B0 80134130 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1197B4 80134134 27BD0018 */     addiu $sp, $sp, 0x18

@@ -1060,5 +1060,5 @@ void mnSoundTestStartScene(void)
     D_ovl62_80134240.unk_scdatabounds_0xC = ((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl62_80134240);
     D_ovl62_8013425C.arena_size = ((uintptr_t)&func_ovl1_803903E0 - (uintptr_t)&D_NF_80134480);
-    func_8000683C(&D_ovl62_8013425C);
+    gsGTLSceneInit(&D_ovl62_8013425C);
 }

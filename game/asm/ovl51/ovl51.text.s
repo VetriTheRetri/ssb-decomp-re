@@ -530,7 +530,7 @@ glabel intro_dk_vs_samus_entry
   /* 1750CC 8018D84C 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 1750D0 8018D850 2484D958 */     addiu $a0, $a0, %lo(D_ovl51_8018D958)
   /* 1750D4 8018D854 03194023 */      subu $t0, $t8, $t9
-  /* 1750D8 8018D858 0C001A0F */       jal func_8000683C
+  /* 1750D8 8018D858 0C001A0F */       jal gsGTLSceneInit
   /* 1750DC 8018D85C AC880010 */        sw $t0, 0x10($a0) # D_ovl51_8018D958 + 16
   /* 1750E0 8018D860 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1750E4 8018D864 27BD0018 */     addiu $sp, $sp, 0x18

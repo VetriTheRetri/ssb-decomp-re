@@ -211,5 +211,5 @@ void intro_yoshi_nest_entry()
     D_ovl45_80132378.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl45_80132378);
     D_ovl45_80132394.arena_size = (u32) ((uintptr_t)&lOverlay45ArenaHi - (uintptr_t)&lOverlay45ArenaLo);
-    func_8000683C(&D_ovl45_80132394);
+    gsGTLSceneInit(&D_ovl45_80132394);
 }

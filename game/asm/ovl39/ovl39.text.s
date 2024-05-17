@@ -1071,7 +1071,7 @@ glabel intro_focus_fox_entry
   /* 16AA80 8018E060 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 16AA84 8018E064 2484E12C */     addiu $a0, $a0, %lo(D_ovl39_8018E12C)
   /* 16AA88 8018E068 03194023 */      subu $t0, $t8, $t9
-  /* 16AA8C 8018E06C 0C001A0F */       jal func_8000683C
+  /* 16AA8C 8018E06C 0C001A0F */       jal gsGTLSceneInit
   /* 16AA90 8018E070 AC880010 */        sw $t0, 0x10($a0) # D_ovl39_8018E12C + 16
   /* 16AA94 8018E074 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16AA98 8018E078 27BD0018 */     addiu $sp, $sp, 0x18

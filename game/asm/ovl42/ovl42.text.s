@@ -1083,7 +1083,7 @@ glabel intro_focus_pikachu_entry
   /* 16DE40 8018E090 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 16DE44 8018E094 2484E15C */     addiu $a0, $a0, %lo(D_ovl42_8018E15C)
   /* 16DE48 8018E098 03194023 */      subu $t0, $t8, $t9
-  /* 16DE4C 8018E09C 0C001A0F */       jal func_8000683C
+  /* 16DE4C 8018E09C 0C001A0F */       jal gsGTLSceneInit
   /* 16DE50 8018E0A0 AC880010 */        sw $t0, 0x10($a0) # D_ovl42_8018E15C + 16
   /* 16DE54 8018E0A4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16DE58 8018E0A8 27BD0018 */     addiu $sp, $sp, 0x18

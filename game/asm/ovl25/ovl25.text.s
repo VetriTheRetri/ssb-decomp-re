@@ -895,7 +895,7 @@ glabel screen_adjust_entry
   /* 12FC6C 8013280C 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 12FC70 80132810 24842894 */     addiu $a0, $a0, %lo(D_ovl25_80132894)
   /* 12FC74 80132814 03194023 */      subu $t0, $t8, $t9
-  /* 12FC78 80132818 0C001A0F */       jal func_8000683C
+  /* 12FC78 80132818 0C001A0F */       jal gsGTLSceneInit
   /* 12FC7C 8013281C AC880010 */        sw $t0, 0x10($a0) # D_ovl25_80132894 + 16
   /* 12FC80 80132820 8FBF0014 */        lw $ra, 0x14($sp)
   /* 12FC84 80132824 27BD0018 */     addiu $sp, $sp, 0x18

@@ -586,7 +586,7 @@ glabel intro_pika_pokeball_entry
   /* 172A58 80132378 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 172A5C 8013237C 248423F4 */     addiu $a0, $a0, %lo(D_ovl48_801323F4)
   /* 172A60 80132380 03194023 */      subu $t0, $t8, $t9
-  /* 172A64 80132384 0C001A0F */       jal func_8000683C
+  /* 172A64 80132384 0C001A0F */       jal gsGTLSceneInit
   /* 172A68 80132388 AC880010 */        sw $t0, 0x10($a0) # D_ovl48_801323F4 + 16
   /* 172A6C 8013238C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 172A70 80132390 27BD0018 */     addiu $sp, $sp, 0x18

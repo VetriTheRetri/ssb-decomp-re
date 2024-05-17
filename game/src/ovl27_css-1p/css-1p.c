@@ -2989,5 +2989,5 @@ void classic_css_entry()
     D_ovl27_80138C90.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl27_80138C90);
     D_ovl27_80138CAC.arena_size = (u32) ((uintptr_t)&lOverlay27ArenaHi - (uintptr_t)&lOverlay27ArenaLo);
-    func_8000683C(&D_ovl27_80138CAC);
+    gsGTLSceneInit(&D_ovl27_80138CAC);
 }

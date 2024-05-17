@@ -2282,7 +2282,7 @@ void omSetupObjectManager(OMSetup *setup)
 {
     s32 i;
 
-    sOMThreadStackSize = setup->thread_stack_size;
+    sOMThreadStackSize = setup->omthreadstack_size;
     sUnkUnusedSetup  = setup->unk_omsetup_0x14;
 
     if (setup->num_gobjthreads != 0)
@@ -2302,16 +2302,16 @@ void omSetupObjectManager(OMSetup *setup)
     }
     else sOMObjThreadHead = NULL;
 
-    if ((setup->num_stacks != 0) && (setup->threadStackSize != NULL))
+    if ((setup->num_omthreadstacks != 0) && (setup->threadStackSize != NULL))
     {
         OMThreadStackNode *current_stack;
 
         sOMThreadStackHead        = gsMemoryAlloc(sizeof(OMThreadStackList), 0x4);
         sOMThreadStackHead->next  = NULL;
         sOMThreadStackHead->size  = sOMThreadStackSize;
-        sOMThreadStackHead->stack = csr = setup->threadstacks;
+        sOMThreadStackHead->stack = csr = setup->omthreadstacks;
 
-        for (i = 0; (u32)i < setup->num_stacks - 1; i++)
+        for (i = 0; (u32)i < setup->num_omthreadstacks - 1; i++)
         {
             current_stack->next = (OMThreadStackNode*) ((uintptr_t)current_stack + sOMThreadStackSize + offsetof(OMThreadStackNode, stack));
             current_stack->stack_size = sOMThreadStackSize;

@@ -1083,7 +1083,7 @@ glabel intro_focus_kirby_entry
   /* 16EF9C 8018E08C 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 16EFA0 8018E090 2484E158 */     addiu $a0, $a0, %lo(D_ovl43_8018E158)
   /* 16EFA4 8018E094 03194023 */      subu $t0, $t8, $t9
-  /* 16EFA8 8018E098 0C001A0F */       jal func_8000683C
+  /* 16EFA8 8018E098 0C001A0F */       jal gsGTLSceneInit
   /* 16EFAC 8018E09C AC880010 */        sw $t0, 0x10($a0) # D_ovl43_8018E158 + 16
   /* 16EFB0 8018E0A0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16EFB4 8018E0A4 27BD0018 */     addiu $sp, $sp, 0x18

@@ -411,5 +411,5 @@ void intro_focus_yoshi_entry()
     D_ovl41_8018E13C.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl41_8018E13C);
     D_ovl41_8018E158.arena_size = (u32) ((uintptr_t)&lOverlay41ArenaHi - (uintptr_t)&lOverlay41ArenaLo);
-    func_8000683C(&D_ovl41_8018E158);
+    gsGTLSceneInit(&D_ovl41_8018E158);
 }

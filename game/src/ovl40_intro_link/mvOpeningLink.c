@@ -407,5 +407,5 @@ void intro_focus_link_entry()
     D_ovl40_8018E0DC.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl40_8018E0DC);
     D_ovl40_8018E0F8.arena_size = (u32) ((uintptr_t)&lOverlay40ArenaHi - (uintptr_t)&lOverlay40ArenaLo);
-    func_8000683C(&D_ovl40_8018E0F8);
+    gsGTLSceneInit(&D_ovl40_8018E0F8);
 }

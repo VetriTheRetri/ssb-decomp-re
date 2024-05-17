@@ -1848,7 +1848,7 @@ glabel scManager_BonusGame_InitScene
   /* 11324C 8018EB0C 03194023 */      subu $t0, $t8, $t9
   /* 113250 8018EB10 2529E5F8 */     addiu $t1, $t1, %lo(scBonusGame_InitBonusGame)
   /* 113254 8018EB14 AC880010 */        sw $t0, 0x10($a0) # D_ovl6_8018F09C + 16
-  /* 113258 8018EB18 0C001A0F */       jal func_8000683C
+  /* 113258 8018EB18 0C001A0F */       jal gsGTLSceneInit
   /* 11325C 8018EB1C AC890088 */        sw $t1, 0x88($a0) # D_ovl6_8018F09C + 136
   /* 113260 8018EB20 0C00829D */       jal func_80020A74
   /* 113264 8018EB24 00000000 */       nop 

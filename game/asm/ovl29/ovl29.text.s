@@ -5913,7 +5913,7 @@ glabel bonus_css_entry
   /* 14CF58 80136F28 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 14CF5C 80136F2C 2484754C */     addiu $a0, $a0, %lo(D_ovl29_8013754C)
   /* 14CF60 80136F30 03194023 */      subu $t0, $t8, $t9
-  /* 14CF64 80136F34 0C001A0F */       jal func_8000683C
+  /* 14CF64 80136F34 0C001A0F */       jal gsGTLSceneInit
   /* 14CF68 80136F38 AC880010 */        sw $t0, 0x10($a0) # D_ovl29_8013754C + 16
   /* 14CF6C 80136F3C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 14CF70 80136F40 27BD0018 */     addiu $sp, $sp, 0x18

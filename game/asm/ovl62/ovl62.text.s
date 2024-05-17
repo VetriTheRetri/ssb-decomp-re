@@ -2140,7 +2140,7 @@ glabel mnSoundTestStartScene
   /* 189D8C 801339BC 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 189D90 801339C0 2484425C */     addiu $a0, $a0, %lo(D_ovl62_8013425C)
   /* 189D94 801339C4 03194023 */      subu $t0, $t8, $t9
-  /* 189D98 801339C8 0C001A0F */       jal func_8000683C
+  /* 189D98 801339C8 0C001A0F */       jal gsGTLSceneInit
   /* 189D9C 801339CC AC880010 */        sw $t0, 0x10($a0) # D_ovl62_8013425C + 16
   /* 189DA0 801339D0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 189DA4 801339D4 27BD0018 */     addiu $sp, $sp, 0x18

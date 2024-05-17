@@ -820,7 +820,7 @@ glabel debug_battle_entry
   /* 11C4DC 8013266C 27189240 */     addiu $t8, $t8, %lo(func_ovl9_80369240)
   /* 11C4E0 80132670 24842950 */     addiu $a0, $a0, %lo(D_ovl14_80132950)
   /* 11C4E4 80132674 03194023 */      subu $t0, $t8, $t9
-  /* 11C4E8 80132678 0C001A0F */       jal func_8000683C
+  /* 11C4E8 80132678 0C001A0F */       jal gsGTLSceneInit
   /* 11C4EC 8013267C AC880010 */        sw $t0, 0x10($a0) # D_ovl14_80132950 + 16
   /* 11C4F0 80132680 8FBF0014 */        lw $ra, 0x14($sp)
   /* 11C4F4 80132684 27BD0018 */     addiu $sp, $sp, 0x18

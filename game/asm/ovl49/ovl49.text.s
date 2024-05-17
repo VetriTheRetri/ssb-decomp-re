@@ -928,7 +928,7 @@ glabel intro_sex_kicks_entry
   /* 173908 801328A8 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 17390C 801328AC 24842944 */     addiu $a0, $a0, %lo(D_ovl49_80132944)
   /* 173910 801328B0 03194023 */      subu $t0, $t8, $t9
-  /* 173914 801328B4 0C001A0F */       jal func_8000683C
+  /* 173914 801328B4 0C001A0F */       jal gsGTLSceneInit
   /* 173918 801328B8 AC880010 */        sw $t0, 0x10($a0) # D_ovl49_80132944 + 16
   /* 17391C 801328BC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 173920 801328C0 27BD0018 */     addiu $sp, $sp, 0x18

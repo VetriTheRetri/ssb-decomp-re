@@ -7,19 +7,22 @@
 #include <PR/mbi.h>
 #include <PR/ultratypes.h>
 
-struct DLBuffer {
-    /* 0x00 */ Gfx *start;
-    /* 0x04 */ u32 length;
-}; // size = 0x08
+typedef struct gsDLBuffer 
+{
+    Gfx *start;
+    u32 length;
 
-struct gsBufferSetup {
+} gsDLBuffer;
+
+typedef struct gsBufferSetup 
+{
     /* 0x00 */ u16 unk00;
     /* 0x04 */ void (*fn04)(void);
     /* 0x08 */ void (*fn08)(void);
-    /* 0x0C */ void *unk0C;
-    /* 0x10 */ u32 unk10;
+    /* 0x0C */ void *arena_start;           // Start of free memory
+    /* 0x10 */ u32 arena_size;              // Size of free memory for heap; usually from end of last overlay's .bss section to start of submanager (ovl1)
     /* 0x14 */ u32 unk14; // count?
-    /* 0x18 */ s32 unk18;
+    /* 0x18 */ s32 num_tasks;               // Number of tasks? (what even is a task?)
     /* 0x1C */ u32 unk1C;
     /* 0x20 */ u32 unk20;
     /* 0x24 */ u32 unk24;
@@ -29,30 +32,34 @@ struct gsBufferSetup {
     /* 0x34 */ s32 unk34;
     /* 0x38 */ void (*fn38)(Gfx **); // scissor callback?
     /* 0x3C */ void (*fn3C)(void *); // controller read callback?
-};                                   // size == 0x40
+    // size == 0x40
 
-struct Wrapper683C {
-    /* 0x00 */ struct gsBufferSetup setup;
-    /* 0x40 */ u32 numOMThreads;
-    /* 0x44 */ u32 omThreadStackSize;
-    /* 0x48 */ u32 numOMStacks;
+} gsBufferSetup;
+
+typedef struct gsGTLSetupDesc
+{
+    /* 0x00 */ gsBufferSetup setup;
+    /* 0x40 */ u32 num_gobjthreads;
+    /* 0x44 */ u32 omthreadstack_size;
+    /* 0x48 */ u32 num_omthreadstacks;
     /* 0x4C */ s32 unk4C;
-    /* 0x50 */ u32 numOMProcesses;
-    /* 0x54 */ u32 numOMCommons;
-    /* 0x58 */ u32 omCommonSize;
-    /* 0x5C */ u32 numOMMtx;
+    /* 0x50 */ u32 num_gobjprocs;
+    /* 0x54 */ u32 num_gobjs;
+    /* 0x58 */ u32 gobj_size;
+    /* 0x5C */ u32 num_ommtxes;
     /* 0x60 */ void *unk60;
-    /* 0x64 */ void *unk64; // fn pointer void(*)(struct DObjDynamicStore *)
-    /* 0x68 */ u32 numOMAobjs;
-    /* 0x6C */ u32 numOMMobjs;
-    /* 0x70 */ u32 numOMDobjs;
-    /* 0x74 */ u32 omDobjSize;
-    /* 0x78 */ u32 numOMSobjs;
-    /* 0x7C */ u32 omSobjSize;
-    /* 0x80 */ u32 numCameras;
-    /* 0x84 */ u32 omCameraSize;
-    /* 0x88 */ void (*unk88)(void);
-}; // size >= 0x8C
+    /* 0x64 */ void (*proc_cleanup)(DObjDynamicStore*); // fn pointer void(*)(struct DObjDynamicStore *)
+    /* 0x68 */ u32 num_aobjs;
+    /* 0x6C */ u32 num_mobjs;
+    /* 0x70 */ u32 num_dobjs;
+    /* 0x74 */ u32 dobj_size;
+    /* 0x78 */ u32 num_sobjs;
+    /* 0x7C */ u32 sobj_size;
+    /* 0x80 */ u32 num_cameras;
+    /* 0x84 */ u32 camera_size;
+    /* 0x88 */ void (*proc_init)(void);                 // Scene init function
+
+} gsGTLSetupDesc; // size >= 0x8C
 
 union WeirdBytewise
 {
@@ -83,11 +90,11 @@ extern void func_800048D0(SCTaskGfxCallback arg0);
 extern void func_800048F8(Gfx **dl);
 extern void *gsMemoryAlloc(u32 size, u32 alignment);
 extern void func_80004F78(void);
-extern void gsAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
+extern void gsGTLAppendGfxUcodeLoad(Gfx **dls, u32 ucode_id);
 extern void func_800053CC(void);
 extern void func_800057C8(void);
 extern void func_80005C74(void);
-extern void func_8000683C(struct Wrapper683C *arg);
+extern void gsGTLSceneInit(struct gsGTLSetupDesc *arg);
 extern void func_80006B80(void);
 
 #endif /* SYS_GTL_H */

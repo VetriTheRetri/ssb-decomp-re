@@ -141,7 +141,7 @@ glabel debug_sss_entry
   /* 119FB4 800D6654 27189240 */     addiu $t8, $t8, %lo(func_ovl9_80369240)
   /* 119FB8 800D6658 24846780 */     addiu $a0, $a0, %lo(D_ovl12_800D6780)
   /* 119FBC 800D665C 03194023 */      subu $t0, $t8, $t9
-  /* 119FC0 800D6660 0C001A0F */       jal func_8000683C
+  /* 119FC0 800D6660 0C001A0F */       jal gsGTLSceneInit
   /* 119FC4 800D6664 AC880010 */        sw $t0, 0x10($a0) # D_ovl12_800D6780 + 16
   /* 119FC8 800D6668 8FBF0014 */        lw $ra, 0x14($sp)
   /* 119FCC 800D666C 27BD0018 */     addiu $sp, $sp, 0x18

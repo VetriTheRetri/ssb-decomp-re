@@ -957,7 +957,7 @@ glabel intro_great_fox_entry
   /* 1747FC 801328CC 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 174800 801328D0 24842958 */     addiu $a0, $a0, %lo(D_ovl50_80132958)
   /* 174804 801328D4 03194023 */      subu $t0, $t8, $t9
-  /* 174808 801328D8 0C001A0F */       jal func_8000683C
+  /* 174808 801328D8 0C001A0F */       jal gsGTLSceneInit
   /* 17480C 801328DC AC880010 */        sw $t0, 0x10($a0) # D_ovl50_80132958 + 16
   /* 174810 801328E0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 174814 801328E4 27BD0018 */     addiu $sp, $sp, 0x18

@@ -727,5 +727,5 @@ void mnDataStartScene(void)
     D_ovl61_80132FB0.unk_scdatabounds_0xC = ((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl61_80132FB0);
     D_ovl61_80132FCC.arena_size = ((uintptr_t)&func_ovl1_803903E0 - (uintptr_t)&D_NF_80133170);
-    func_8000683C(&D_ovl61_80132FCC);
+    gsGTLSceneInit(&D_ovl61_80132FCC);
 }

@@ -1942,7 +1942,7 @@ void unref_800154F0(GObj *gobj)
 }
 
 // 0x80015520
-void odRenderDObjTreeMultiList(DObj *dobj)
+void odRenderDObjTreeMultiList2(DObj *dobj)
 {
     s32 unused;
     s32 num;
@@ -1995,7 +1995,7 @@ void odRenderDObjTreeMultiList(DObj *dobj)
         }
         if (dobj->child != NULL)
         {
-            odRenderDObjTreeMultiList(dobj->child);
+            odRenderDObjTreeMultiList2(dobj->child);
         }
         D_800470B0 = dl;
 
@@ -2023,7 +2023,7 @@ void odRenderDObjTreeMultiList(DObj *dobj)
 
         while (current_dobj != NULL)
         {
-            odRenderDObjTreeMultiList(current_dobj);
+            odRenderDObjTreeMultiList2(current_dobj);
             current_dobj = current_dobj->sib_next;
         }
     }
@@ -2033,7 +2033,7 @@ void odRenderDObjTreeMultiList(DObj *dobj)
 void unref_80015860(GObj *gobj) 
 {
     gSpriteLayerScale = 1.0F;
-    odRenderDObjTreeMultiList(DObjGetStruct(gobj));
+    odRenderDObjTreeMultiList2(DObjGetStruct(gobj));
 }
 
 // 0x80015890
@@ -2374,7 +2374,7 @@ void func_80016338(Gfx **dls, Camera *cam, s32 arg2)
     {
         if (cam->flags & 0x20)
         {
-            gsAppendGfxUcodeLoad(dls, D_80046626);
+            gsGTLAppendGfxUcodeLoad(dls, D_80046626);
             D_80046628 = 1;
 
             dl = dls[0];
@@ -2429,7 +2429,7 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
     {
         if (cam->flags & 0x20)
         {
-            gsAppendGfxUcodeLoad(dls, D_80046626);
+            gsGTLAppendGfxUcodeLoad(dls, D_80046626);
             D_80046628 = 1;
 
             dl = dls[0];

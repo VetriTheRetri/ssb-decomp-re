@@ -655,7 +655,7 @@ glabel overlay_set12_entry
   /* 12A2E0 80132470 124A000C */       beq $s2, $t2, .L801324A4
   /* 12A2E4 80132474 00000000 */       nop 
   .L80132478:
-  /* 12A2E8 80132478 0C001A0F */       jal func_8000683C
+  /* 12A2E8 80132478 0C001A0F */       jal gsGTLSceneInit
   /* 12A2EC 8013247C 02602025 */        or $a0, $s3, $zero
   /* 12A2F0 80132480 8E0B0000 */        lw $t3, ($s0) # D_ovl22_8013265C + 0
   /* 12A2F4 80132484 256C0001 */     addiu $t4, $t3, 1

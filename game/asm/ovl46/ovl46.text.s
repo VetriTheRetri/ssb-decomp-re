@@ -807,7 +807,7 @@ glabel intro_link_hill_entry
   /* 171208 801326A8 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 17120C 801326AC 24842724 */     addiu $a0, $a0, %lo(D_ovl46_80132724)
   /* 171210 801326B0 03194023 */      subu $t0, $t8, $t9
-  /* 171214 801326B4 0C001A0F */       jal func_8000683C
+  /* 171214 801326B4 0C001A0F */       jal gsGTLSceneInit
   /* 171218 801326B8 AC880010 */        sw $t0, 0x10($a0) # D_ovl46_80132724 + 16
   /* 17121C 801326BC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 171220 801326C0 27BD0018 */     addiu $sp, $sp, 0x18

@@ -1353,7 +1353,7 @@ glabel menu_backup_clear_entry
   /* 17725C 80132E5C 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 177260 80132E60 24842FE4 */     addiu $a0, $a0, %lo(D_ovl53_80132FE4)
   /* 177264 80132E64 03194023 */      subu $t0, $t8, $t9
-  /* 177268 80132E68 0C001A0F */       jal func_8000683C
+  /* 177268 80132E68 0C001A0F */       jal gsGTLSceneInit
   /* 17726C 80132E6C AC880010 */        sw $t0, 0x10($a0) # D_ovl53_80132FE4 + 16
   /* 177270 80132E70 8FBF0014 */        lw $ra, 0x14($sp)
   /* 177274 80132E74 27BD0018 */     addiu $sp, $sp, 0x18

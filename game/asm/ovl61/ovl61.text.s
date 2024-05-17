@@ -1376,7 +1376,7 @@ glabel mnDataStartScene
   /* 122344 80132EF4 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 122348 80132EF8 24842FCC */     addiu $a0, $a0, %lo(D_ovl61_80132FCC)
   /* 12234C 80132EFC 03194023 */      subu $t0, $t8, $t9
-  /* 122350 80132F00 0C001A0F */       jal func_8000683C
+  /* 122350 80132F00 0C001A0F */       jal gsGTLSceneInit
   /* 122354 80132F04 AC880010 */        sw $t0, 0x10($a0) # D_ovl61_80132FCC + 16
   /* 122358 80132F08 8FBF0014 */        lw $ra, 0x14($sp)
   /* 12235C 80132F0C 27BD0018 */     addiu $sp, $sp, 0x18

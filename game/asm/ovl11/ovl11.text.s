@@ -128,7 +128,7 @@ glabel n64_logo_entry
   /* 119C68 800D6638 27182A00 */     addiu $t8, $t8, %lo(D_NF_80392A00)
   /* 119C6C 800D663C 2484671C */     addiu $a0, $a0, %lo(D_ovl11_800D671C)
   /* 119C70 800D6640 03194023 */      subu $t0, $t8, $t9
-  /* 119C74 800D6644 0C001A0F */       jal func_8000683C
+  /* 119C74 800D6644 0C001A0F */       jal gsGTLSceneInit
   /* 119C78 800D6648 AC880010 */        sw $t0, 0x10($a0) # D_ovl11_800D671C + 16
   /* 119C7C 800D664C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 119C80 800D6650 27BD0018 */     addiu $sp, $sp, 0x18

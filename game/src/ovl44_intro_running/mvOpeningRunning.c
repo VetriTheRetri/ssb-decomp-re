@@ -295,5 +295,5 @@ void intro_chars_running_entry()
     D_ovl44_80132650.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl44_80132650);
     D_ovl44_8013266C.arena_size = (u32) ((uintptr_t)&lOverlay44ArenaHi - (uintptr_t)&lOverlay44ArenaLo);
-    func_8000683C(&D_ovl44_8013266C);
+    gsGTLSceneInit(&D_ovl44_8013266C);
 }

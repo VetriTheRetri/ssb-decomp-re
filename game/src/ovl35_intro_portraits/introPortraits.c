@@ -373,5 +373,5 @@ void mvPortraitsStartScene()
     D_ovl35_80132938.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl35_80132938);
     D_ovl35_80132954.arena_size = (u32) ((uintptr_t)&lOverlay35ArenaHi - (uintptr_t)&lOverlay35ArenaLo);
-    func_8000683C(&D_ovl35_80132954);
+    gsGTLSceneInit(&D_ovl35_80132954);
 }

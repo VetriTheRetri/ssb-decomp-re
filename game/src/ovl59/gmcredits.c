@@ -1889,7 +1889,7 @@ void gmCreditsStartScene(void)
     func_80007024(&D_ovl59_8013A708);
 
     D_ovl59_8013A724.arena_size = ((uintptr_t)0x8023E000 - (uintptr_t)&lCreditsArenaLo);
-    func_8000683C(&D_ovl59_8013A724);
+    gsGTLSceneInit(&D_ovl59_8013A724);
 
     arena16 = (u16*)&D_NF_80392A00;
 

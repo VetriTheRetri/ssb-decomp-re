@@ -84,8 +84,8 @@ DObj *D_80046550[2];
 DObj *D_80046558[2];
 struct SCTaskGfxEnd *D_80046560[2];
 struct SCTaskType4 *D_80046568[2];
-// is the collection of four `DLBuffer`s something worthy of a typedef?
-struct DLBuffer D_80046570[2][4];
+// is the collection of four `gsDLBuffer`s something worthy of a typedef?
+struct gsDLBuffer D_80046570[2][4];
 Gfx *gDisplayListHead[4];
 Gfx *D_800465C0[4];
 
@@ -109,7 +109,9 @@ Gfx *D_8004662C;
 u32 gGtlTaskId;
 s32 D_80046634;
 s32 D_80046638[2];
-s32 D_80046640;
+
+// 0x80046640
+s32 sGSGTLNumTasks;
 mlBumpAllocRegion sMtxTaskHeaps[2];
 void (*D_80046668)(void *); // takes function bundle struct?
 SCTaskCallback D_8004666C;  // function pointer?
@@ -166,7 +168,7 @@ void gsResetGraphicsHeapAlloc(void)
     mlResetBumpAlloc(&gGraphicsHeap);
 }
 
-void func_80004A0C(struct DLBuffer (*src)[4]) 
+void func_80004A0C(struct gsDLBuffer (*src)[4]) 
 {
     s32 i;
 
@@ -210,7 +212,7 @@ void gsCheckGtlBufferLengths(void)
     {
         if (D_80046570[gGtlTaskId][i].length + (uintptr_t)D_80046570[gGtlTaskId][i].start < (uintptr_t)gDisplayListHead[i])
         {
-            gsFatalPrintF("gtl : DLBuffer over flow !  kind = %d  vol = %d byte\n", i, (uintptr_t)gDisplayListHead[i] - (uintptr_t)D_80046570[gGtlTaskId][i].start);
+            gsFatalPrintF("gtl : gsDLBuffer over flow !  kind = %d  vol = %d byte\n", i, (uintptr_t)gDisplayListHead[i] - (uintptr_t)D_80046570[gGtlTaskId][i].start);
             while (TRUE); // {}
         }
     }
@@ -289,7 +291,7 @@ void func_80004DB4(DObj *arg0, s32 arg1, struct SCTaskGfxEnd *arg2, struct SCTas
 {
     s32 i;
 
-    for (i = 0; i < D_80046640; i++)
+    for (i = 0; i < sGSGTLNumTasks; i++)
     {
         sDObjTasks[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * i);
         D_80046550[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * i);
@@ -502,7 +504,7 @@ void func_80005240(s32 arg0, u64 *arg1)
     }
 }
 
-void gsAppendGfxUcodeLoad(Gfx **dl, u32 ucode_id) 
+void gsGTLAppendGfxUcodeLoad(Gfx **dl, u32 ucode_id) 
 {
     switch (ucode_id)
     {
@@ -556,20 +558,20 @@ void func_800053CC(void)
         {
             if (diffs & 4)
             {
-                gsAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
+                gsGTLAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
                 gSPBranchList(gDisplayListHead[0]++, D_800465C0[2]);
             } 
             else if (diffs & 2) 
             {
                 if (D_80046628 != 0) 
                 { 
-                    gsAppendGfxUcodeLoad(&gDisplayListHead[0], D_80046624);
+                    gsGTLAppendGfxUcodeLoad(&gDisplayListHead[0], D_80046624);
                 }
                 gSPBranchList(gDisplayListHead[0]++, D_800465C0[1]);
             } 
             else if (diffs & 8) 
             {
-                gsAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
+                gsGTLAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
                 gSPBranchList(gDisplayListHead[0]++, D_800465C0[3]);
             } 
             else
@@ -582,7 +584,7 @@ void func_800053CC(void)
         {
             if (diffs & 2)
             {
-                gsAppendGfxUcodeLoad(&gDisplayListHead[2], D_80046624);
+                gsGTLAppendGfxUcodeLoad(&gDisplayListHead[2], D_80046624);
                 gSPBranchList(gDisplayListHead[2]++, D_800465C0[1]);
             }
             else if (diffs & 8)
@@ -599,7 +601,7 @@ void func_800053CC(void)
         {
             if (diffs & 8) 
             {
-                gsAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
+                gsGTLAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
                 gSPBranchList(gDisplayListHead[1]++, D_800465C0[3]);
             } 
             else 
@@ -671,20 +673,20 @@ void func_800057C8(void)
         {
             if (diffs & 4) 
             {
-                gsAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
+                gsGTLAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
                 gSPBranchList(gDisplayListHead[0]++, D_800465C0[2]);
             } 
             else if (diffs & 2)
             {
                 if (D_80046628 != 0)
                 { 
-                    gsAppendGfxUcodeLoad(&gDisplayListHead[0], D_80046624);
+                    gsGTLAppendGfxUcodeLoad(&gDisplayListHead[0], D_80046624);
                 }
                 gSPBranchList(gDisplayListHead[0]++, D_800465C0[1]);
             }
             else if (diffs & 8)
             {
-                gsAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
+                gsGTLAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
                 gSPBranchList(gDisplayListHead[0]++, D_800465C0[3]);
             }
         }
@@ -692,7 +694,7 @@ void func_800057C8(void)
         {
             if (diffs & 2) 
             {
-                gsAppendGfxUcodeLoad(&gDisplayListHead[2], D_80046624);
+                gsGTLAppendGfxUcodeLoad(&gDisplayListHead[2], D_80046624);
                 gSPBranchList(gDisplayListHead[2]++, D_800465C0[1]);
             } 
             else if (diffs & 8) 
@@ -701,7 +703,7 @@ void func_800057C8(void)
             } 
             else 
             {
-                gsAppendGfxUcodeLoad(&gDisplayListHead[2], D_80046624);
+                gsGTLAppendGfxUcodeLoad(&gDisplayListHead[2], D_80046624);
                 gSPBranchList(gDisplayListHead[2]++, gDisplayListHead[0]);
             }
             D_800465C0[2] = gDisplayListHead[2];
@@ -710,14 +712,14 @@ void func_800057C8(void)
         {
             if (diffs & 8)
             {
-                gsAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
+                gsGTLAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
                 gSPBranchList(gDisplayListHead[1]++, D_800465C0[3]);
             } 
             else
             {
                 if (D_80046628 != 0)
                 {
-                    gsAppendGfxUcodeLoad(&gDisplayListHead[1], D_80046624); 
+                    gsGTLAppendGfxUcodeLoad(&gDisplayListHead[1], D_80046624); 
                 }
                 gSPBranchList(gDisplayListHead[1]++, gDisplayListHead[0]);
             }
@@ -725,7 +727,7 @@ void func_800057C8(void)
         }
         if (diffs & 8)
         {
-            gsAppendGfxUcodeLoad(&gDisplayListHead[3], D_80046624);
+            gsGTLAppendGfxUcodeLoad(&gDisplayListHead[3], D_80046624);
             gSPBranchList(gDisplayListHead[3]++, gDisplayListHead[0]);
             D_800465C0[3] = gDisplayListHead[3];
         }
@@ -747,7 +749,7 @@ u32 func_80005AE4(s32 arg0)
 
     do 
     {
-        for (i = 0; i < D_80046640; i++) 
+        for (i = 0; i < sGSGTLNumTasks; i++) 
         {
             if (D_80046638[i] == 0)
             {
@@ -1037,37 +1039,37 @@ void unref_8000641C(struct Temp8000641C *arg0)
     D_8003B6E8.word++; // += 1
 }
 
-void func_80006548(struct gsBufferSetup *arg0, void (*arg1)(void)) 
+void func_80006548(gsBufferSetup *arg0, void (*arg1)(void)) 
 {
     s32 i;
-    struct DLBuffer sp44[2][4];
+    gsDLBuffer sp44[2][4];
 
-    D_80046640       = arg0->unk18;
+    sGSGTLNumTasks   = arg0->num_tasks;
     D_800465F8.unk00 = arg0->unk00;
     D_800465F8.fn04  = arg0->fn04;
     D_800465F8.fn0C  = arg0->fn08;
 
     func_80004DB4
     (
-        gsMemoryAlloc(arg0->unk14 * sizeof(struct DObj) * D_80046640, 8),
+        gsMemoryAlloc(arg0->unk14 * sizeof(DObj) * sGSGTLNumTasks, 8),
         arg0->unk14,
-        gsMemoryAlloc(sizeof(struct SCTaskGfxEnd) * D_80046640, 8),
-        gsMemoryAlloc(sizeof(struct SCTaskType4) * D_80046640, 8)
+        gsMemoryAlloc(sizeof(struct SCTaskGfxEnd) * sGSGTLNumTasks, 8),
+        gsMemoryAlloc(sizeof(struct SCTaskType4) * sGSGTLNumTasks, 8)
     );
-    for (i = 0; i < D_80046640; i++) 
+    for (i = 0; i < sGSGTLNumTasks; i++) 
     {
-        sp44[i][0].start  = gsMemoryAlloc(arg0->unk1C, 8);
+        sp44[i][0].start  = gsMemoryAlloc(arg0->unk1C, 0x8);
         sp44[i][0].length = arg0->unk1C;
-        sp44[i][1].start  = gsMemoryAlloc(arg0->unk20, 8);
+        sp44[i][1].start  = gsMemoryAlloc(arg0->unk20, 0x8);
         sp44[i][1].length = arg0->unk20;
-        sp44[i][2].start  = gsMemoryAlloc(arg0->unk24, 8);
+        sp44[i][2].start  = gsMemoryAlloc(arg0->unk24, 0x8);
         sp44[i][2].length = arg0->unk24;
-        sp44[i][3].start  = gsMemoryAlloc(arg0->unk28, 8);
+        sp44[i][3].start  = gsMemoryAlloc(arg0->unk28, 0x8);
         sp44[i][3].length = arg0->unk28;
     }
     func_80004A0C(sp44);
 
-    for (i = 0; i < D_80046640; i++) 
+    for (i = 0; i < sGSGTLNumTasks; i++) 
     {
         mlInitBumpAlloc(&gGraphicsHeap, 0x10002, gsMemoryAlloc(arg0->unk2C, 8), arg0->unk2C);
         sMtxTaskHeaps[i].id    = gGraphicsHeap.id;
@@ -1084,7 +1086,7 @@ void func_80006548(struct gsBufferSetup *arg0, void (*arg1)(void))
     func_80004CB4(arg0->unk30, gsMemoryAlloc(arg0->unk34, 16), arg0->unk34);
     dpSetScissorFunction(arg0->fn38);
     D_80046668 = arg0->fn3C;
-    enable_auto_contread((uintptr_t)schedule_contread != (uintptr_t)D_80046668 ? 1 : 0);
+    enable_auto_contread((uintptr_t)schedule_contread != (uintptr_t)D_80046668 ? TRUE : FALSE);
 
     D_8003B6E4 = D_8003B6E8.word = 0;
 
@@ -1096,67 +1098,71 @@ void func_80006548(struct gsBufferSetup *arg0, void (*arg1)(void))
     func_80005DA0(&D_800465F8);
 }
 
-void unref_800067E4(struct gsBufferSetup *arg)
+void unref_800067E4(gsBufferSetup *arg)
 {
-    gsInitGeneralHeap(arg->unk0C, arg->unk10);
+    gsInitGeneralHeap(arg->arena_start, arg->arena_size);
     D_800465F8.fn08 = func_800062B4;
     D_800465F8.fn10 = func_800062EC;
     func_80006548(arg, NULL);
 }
 
-void func_8000683C(struct Wrapper683C *arg) 
+// 0x8000683C
+void gsGTLSceneInit(gsGTLSetupDesc *gtl_desc)
 {
-    struct OMSetup omSetup;
+    OMSetup omsetup;
 
-    gsInitGeneralHeap(arg->setup.unk0C, arg->setup.unk10);
+    gsInitGeneralHeap(gtl_desc->setup.arena_start, gtl_desc->setup.arena_size);
 
-    omSetup.threads         = gsMemoryAlloc(sizeof(struct GObjThread) * arg->numOMThreads, 8);
-    omSetup.numThreads      = arg->numOMThreads;
-    omSetup.threadStackSize = arg->omThreadStackSize;
-    if (arg->omThreadStackSize != 0)
+    omsetup.gobjthreads        = gsMemoryAlloc(sizeof(GObjThread) * gtl_desc->num_gobjthreads, 0x8);
+    omsetup.num_gobjthreads    = gtl_desc->num_gobjthreads;
+    omsetup.omthreadstack_size = gtl_desc->omthreadstack_size;
+
+    if (gtl_desc->omthreadstack_size != 0)
     {
-        omSetup.stacks = gsMemoryAlloc((arg->omThreadStackSize + offsetof(struct OMThreadStackNode, stack)) * arg->numOMStacks, 8);
+        omsetup.omthreadstacks = gsMemoryAlloc((gtl_desc->omthreadstack_size + offsetof(OMThreadStackNode, stack)) * gtl_desc->num_omthreadstacks, 0x8);
     }
-    else omSetup.stacks = NULL;
+    else omsetup.omthreadstacks = NULL;
     
-    omSetup.numStacks = arg->numOMStacks;
-    omSetup.unk14     = arg->unk4C;
+    omsetup.num_omthreadstacks = gtl_desc->num_omthreadstacks;
+    omsetup.unk_omsetup_0x14   = gtl_desc->unk4C;
 
-    omSetup.processes    = gsMemoryAlloc(sizeof(struct GObjProcess) * arg->numOMProcesses, 4);
-    omSetup.numProcesses = arg->numOMProcesses;
+    omsetup.gobjprocs     = gsMemoryAlloc(sizeof(GObjProcess) * gtl_desc->num_gobjprocs, 0x4);
+    omsetup.num_gobjprocs = gtl_desc->num_gobjprocs;
 
-    omSetup.commons    = gsMemoryAlloc(arg->omCommonSize * arg->numOMCommons, 8);
-    omSetup.numCommons = arg->numOMCommons;
-    omSetup.commonSize = arg->omCommonSize;
+    omsetup.gobjs     = gsMemoryAlloc(gtl_desc->gobj_size * gtl_desc->num_gobjs, 0x8);
+    omsetup.num_gobjs = gtl_desc->num_gobjs;
+    omsetup.gobj_size = gtl_desc->gobj_size;
 
-    omSetup.matrices    = gsMemoryAlloc(sizeof(struct OMMtx) * arg->numOMMtx, 8);
-    omSetup.numMatrices = arg->numOMMtx;
+    omsetup.ommtxes     = gsMemoryAlloc(sizeof(OMMtx) * gtl_desc->num_ommtxes, 0x8);
+    omsetup.num_ommtxes = gtl_desc->num_ommtxes;
 
-    func_80010734(arg->unk60);
-    omSetup.cleanupFn = arg->unk64;
+    func_80010734(gtl_desc->unk60);
+    omsetup.proc_cleanup = gtl_desc->proc_cleanup;
 
-    omSetup.aobjs    = gsMemoryAlloc(sizeof(struct AObj) * arg->numOMAobjs, 4);
-    omSetup.numAObjs = arg->numOMAobjs;
+    omsetup.aobjs    = gsMemoryAlloc(sizeof(AObj) * gtl_desc->num_aobjs, 0x4);
+    omsetup.numAObjs = gtl_desc->num_aobjs;
 
-    omSetup.mobjs    = gsMemoryAlloc(sizeof(struct MObj) * arg->numOMMobjs, 4);
-    omSetup.numMObjs = arg->numOMMobjs;
+    omsetup.mobjs     = gsMemoryAlloc(sizeof(MObj) * gtl_desc->num_mobjs, 0x4);
+    omsetup.num_mobjs = gtl_desc->num_mobjs;
 
-    omSetup.dobjs    = gsMemoryAlloc(arg->omDobjSize * arg->numOMDobjs, 8);
-    omSetup.numDObjs = arg->numOMDobjs;
-    omSetup.dobjSize = arg->omDobjSize;
+    omsetup.dobjs     = gsMemoryAlloc(gtl_desc->dobj_size * gtl_desc->num_dobjs, 0x8);
+    omsetup.num_dobjs = gtl_desc->num_dobjs;
+    omsetup.dobj_size = gtl_desc->dobj_size;
 
-    omSetup.sobjs    = gsMemoryAlloc(arg->omSobjSize * arg->numOMSobjs, 8);
-    omSetup.numSObjs = arg->numOMSobjs;
-    omSetup.sobjSize = arg->omSobjSize;
+    omsetup.sobjs     = gsMemoryAlloc(gtl_desc->sobj_size * gtl_desc->num_sobjs, 0x8);
+    omsetup.num_sobjs = gtl_desc->num_sobjs;
+    omsetup.sobj_size = gtl_desc->sobj_size;
 
-    omSetup.cameras    = gsMemoryAlloc(arg->omCameraSize * arg->numCameras, 8);
-    omSetup.numCameras = arg->numCameras;
-    omSetup.cameraSize = arg->omCameraSize;
+    omsetup.cameras     = gsMemoryAlloc(gtl_desc->camera_size * gtl_desc->num_cameras, 0x8);
+    omsetup.num_cameras = gtl_desc->num_cameras;
+    omsetup.camera_size = gtl_desc->camera_size;
 
-    omSetupObjectManager(&omSetup);
+    omsetupObjectManager(&omsetup);
+
     D_800465F8.fn08 = func_80006350;
     D_800465F8.fn10 = func_800063A0;
-    func_80006548(&arg->setup, arg->unk88);
+
+    func_80006548(&gtl_desc->setup, gtl_desc->proc_init);
 }
 
 void unref_80006A8C(u16 arg0, u16 arg1) 
@@ -1191,7 +1197,7 @@ void unref_80006B24(s32 arg0)
 {
     if ((arg0 == 1) || (arg0 == 2))
     { 
-        D_80046640 = arg0; 
+        sGSGTLNumTasks = arg0; 
     }
 }
 

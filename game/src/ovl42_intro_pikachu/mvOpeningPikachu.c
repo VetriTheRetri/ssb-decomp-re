@@ -405,5 +405,5 @@ void intro_focus_pikachu_entry()
     D_ovl42_8018E140.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl42_8018E140);
     D_ovl42_8018E15C.arena_size = (u32) ((uintptr_t)&lOverlay42ArenaHi - (uintptr_t)&lOverlay42ArenaLo);
-    func_8000683C(&D_ovl42_8018E15C);
+    gsGTLSceneInit(&D_ovl42_8018E15C);
 }

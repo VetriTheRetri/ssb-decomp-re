@@ -414,5 +414,5 @@ void intro_focus_mario_entry()
     D_ovl36_8018E11C.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&D_ovl36_8018E11C);
     D_ovl36_8018E138.arena_size = (u32) ((uintptr_t)&lOverlay36ArenaHi - (uintptr_t)&lOverlay36ArenaLo);
-    func_8000683C(&D_ovl36_8018E138);
+    gsGTLSceneInit(&D_ovl36_8018E138);
 }

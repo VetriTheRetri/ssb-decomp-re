@@ -950,7 +950,7 @@ glabel intro_mario_vs_kirby_entry
   /* 1720C0 801328A0 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 1720C4 801328A4 24842924 */     addiu $a0, $a0, %lo(D_ovl47_80132924)
   /* 1720C8 801328A8 03194023 */      subu $t0, $t8, $t9
-  /* 1720CC 801328AC 0C001A0F */       jal func_8000683C
+  /* 1720CC 801328AC 0C001A0F */       jal gsGTLSceneInit
   /* 1720D0 801328B0 AC880010 */        sw $t0, 0x10($a0) # D_ovl47_80132924 + 16
   /* 1720D4 801328B4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1720D8 801328B8 27BD0018 */     addiu $sp, $sp, 0x18

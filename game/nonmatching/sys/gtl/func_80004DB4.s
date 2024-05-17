@@ -1,8 +1,8 @@
 .section .text
 glabel func_80004DB4
   /* 0059B4 80004DB4 27BDFFF0 */     addiu $sp, $sp, -0x10
-  /* 0059B8 80004DB8 3C038004 */       lui $v1, %hi(D_80046640)
-  /* 0059BC 80004DBC 8C636640 */        lw $v1, %lo(D_80046640)($v1)
+  /* 0059B8 80004DB8 3C038004 */       lui $v1, %hi(sGSGTLNumTasks)
+  /* 0059BC 80004DBC 8C636640 */        lw $v1, %lo(sGSGTLNumTasks)($v1)
   /* 0059C0 80004DC0 AFB00004 */        sw $s0, 4($sp)
   /* 0059C4 80004DC4 00808025 */        or $s0, $a0, $zero
   /* 0059C8 80004DC8 AFB2000C */        sw $s2, 0xc($sp)

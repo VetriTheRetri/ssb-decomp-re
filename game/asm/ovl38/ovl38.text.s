@@ -1115,7 +1115,7 @@ glabel intro_focus_samus_entry
   /* 16996C 8018E0FC 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 169970 8018E100 2484E1B4 */     addiu $a0, $a0, %lo(D_ovl38_8018E1B4)
   /* 169974 8018E104 03194023 */      subu $t0, $t8, $t9
-  /* 169978 8018E108 0C001A0F */       jal func_8000683C
+  /* 169978 8018E108 0C001A0F */       jal gsGTLSceneInit
   /* 16997C 8018E10C AC880010 */        sw $t0, 0x10($a0) # D_ovl38_8018E1B4 + 16
   /* 169980 8018E110 8FBF0014 */        lw $ra, 0x14($sp)
   /* 169984 8018E114 27BD0018 */     addiu $sp, $sp, 0x18

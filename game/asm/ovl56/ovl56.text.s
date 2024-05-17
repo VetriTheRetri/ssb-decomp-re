@@ -3604,7 +3604,7 @@ glabel gmStageClearStartScene
   /* 17E108 80134EB8 271803E0 */     addiu $t8, $t8, %lo(func_ovl1_803903E0)
   /* 17E10C 80134EBC 24845208 */     addiu $a0, $a0, %lo(D_ovl56_80135208)
   /* 17E110 80134EC0 03194023 */      subu $t0, $t8, $t9
-  /* 17E114 80134EC4 0C001A0F */       jal func_8000683C
+  /* 17E114 80134EC4 0C001A0F */       jal gsGTLSceneInit
   /* 17E118 80134EC8 AC880010 */        sw $t0, 0x10($a0) # D_ovl56_80135208 + 16
   /* 17E11C 80134ECC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 17E120 80134ED0 27BD0018 */     addiu $sp, $sp, 0x18

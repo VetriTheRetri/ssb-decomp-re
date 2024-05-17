@@ -1,15 +1,5 @@
 entry = 0x80000400;
 
-
-func_boot_A40004C0 = 0xA40004C0;
-func_boot_A4000768 = 0xA4000768;
-func_boot_A400076C = 0xA400076C;
-func_boot_A4000874 = 0xA4000874;
-func_boot_A4000900 = 0xA4000900;
-func_boot_A4000974 = 0xA4000974;
-func_boot_A4000A34 = 0xA4000A34;
-func_boot_A4000AC4 = 0xA4000AC4;
-
 hlMtxF2L = 0x80019C70;
 hlMtxF2LFixedW = 0x80019EA0;
 fast_sinf = 0x8001A054;
@@ -76,28 +66,28 @@ hal_rotate_rpy_degrees = 0x8001D4A4;
 hal_rotate_rpy_translate_f_degrees = 0x8001D51C;
 hal_rotate_rpy_translate_degrees = 0x8001D58C;
 
-vec3f_normalize = 0x80018EE0;
-vec3f_mag = 0x80018F7C;
-vec3f_add_to = 0x80018FBC;
-vec3f_sub_from = 0x80018FF4;
-vec3f_sub = 0x8001902C;
-vec3f_sub_normalize = 0x80019064;
-vec3f_scale = 0x800190B0;
-vec3f_div_scale = 0x800190E4;
-vec3f_add_scaled = 0x8001912C;
-vec3f_scale_add_scaled_normalize = 0x80019174;
-vec3f_angle_diff = 0x800191FC;
-vec3_get_euler_rotation = 0x800192D0;
-vec3f_negate = 0x8001940C;
+lbVector_Vec3fNormalize = 0x80018EE0;
+lbVector_Vec3fMagnitude = 0x80018F7C;
+lbVector_Vec3fAddTo = 0x80018FBC;
+lbVector_Vec3fSubtractFrom = 0x80018FF4;
+lbVector_Vec3fSubtract = 0x8001902C;
+lbVector_Vec3fSubtractNormalize = 0x80019064;
+lbVector_Vec3fScale = 0x800190B0;
+lbVector_Vec3fDivideScale = 0x800190E4;
+lbVector_Vec3fAddScaled = 0x8001912C;
+lbVector_Vec3fScaleAddScaledNormalize = 0x80019174;
+lbVector_Vec3fAngleDiff = 0x800191FC;
+lbVector_Vec3fGetEulerRotation = 0x800192D0;
+lbVector_Vec3fNegate = 0x8001940C;
 func_80019438 = 0x80019438;
-vec3_negate_by_axis = 0x800195C0;
+lbVector_Vec3fNegateByAxis = 0x800195C0;
 unref_80019608 = 0x80019608;
 unref_80019818 = 0x80019818;
 unref_80019888 = 0x80019888;
-vec3f_compare_directions = 0x80019914;
-vec3f_normalized_cross_product = 0x80019980;
-vec3f_subtract_compare_directions = 0x80019A2C;
-vec3f_diff_mag = 0x80019AB0;
+lbVector_Vec3fCompareDirection = 0x80019914;
+lbVector_Vec3fNormalizedCross = 0x80019980;
+lbVector_Vec3fSubtractCompareDirection = 0x80019A2C;
+lbVector_Vec3fDiffMagnitude = 0x80019AB0;
 unref_80019B00 = 0x80019B00;
 
 gsCreateDmaMesgQueue = 0x80002A60;

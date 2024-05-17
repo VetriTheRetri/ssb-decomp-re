@@ -157,7 +157,7 @@ segments:
       - [0x00C7B0, c, sys/system_04]
       - [0x011970, c, sys/objdraw]
       - [0x0190E0, c, sys/trig_rand]
-      - [0x019AE0, asm, sys/vec_math]
+      - [0x019AE0, c, sys/vec]
       - [0x01A870, asm, sys/hal_gu]
       - [0x01E210, asm, sys/interpolation]
       - [0x01F1C0, asm, sys/hal_audio]

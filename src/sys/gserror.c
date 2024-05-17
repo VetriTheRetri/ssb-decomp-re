@@ -426,24 +426,21 @@ GObj* func_80022368(s32 link, u32 arg1, s32 arg2)
     );
 }
 
-#ifdef NON_MATCHING
 void gsFramebufferDrawBlackRect(s32 ulx, s32 uly, s32 width, s32 height) 
 {
     u16 *fb = (u16*)osViGetCurrentFramebuffer() + (gCurrScreenWidth * uly) + (ulx);
     s32 i;
     s32 j;
 
-    for (i = 0; i < height; i++, fb += (gCurrScreenWidth - width))
+    for (i = 0; i < height; i++)
     {
         for (j = 0; j < width; j++, fb++)
         {
             *fb = GPACK_RGBA5551(0, 0, 0, 1);
         }
+        fb += (gCurrScreenWidth - width);
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/gserror/gsFramebufferDrawBlackRect.s")
-#endif
 
 // 0x800224C0 - write glyph to frame buffer?
 void gsFramebufferWriteGlyph(s32 ulx, s32 uly, s32 char_index)

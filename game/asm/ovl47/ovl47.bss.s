@@ -5,15 +5,15 @@
 # 0x801329C0 -> 0x80132BA0 [0x1e0 bytes]
 # Unreferenced BSS space @ 801329C0
     .space 8
-glabel D_ovl47_801329C8
+glabel gMvOpeningMarioVsKirbyAnimHeapMario
     .space 4
-glabel D_ovl47_801329CC
+glabel gMvOpeningMarioVsKirbyAnimHeapKirby
     .space 4
-glabel D_ovl47_801329D0
+glabel gMvOpeningMarioVsKirbyFramesElapsed
     .space 4
-glabel D_ovl47_801329D4
+glabel gMvOpeningMarioVsKirbyBackgroundScrollSpeed
     .space 8
-glabel D_ovl47_801329DC
+glabel gMvOpeningMarioVsKirbyUnusedCounter
     .space 4
 glabel D_ovl47_801329E0
     .space 384

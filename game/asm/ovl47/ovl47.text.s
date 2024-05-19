@@ -12,7 +12,7 @@
 # Text Sections
 #  0x80131B00 -> 0x801328D0
 
-glabel func_ovl47_80131B00
+glabel mvOpeningMarioVsKirbySetupDisplayList
   /* 171320 80131B00 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 171324 80131B04 AFBF0014 */        sw $ra, 0x14($sp)
   /* 171328 80131B08 8C830000 */        lw $v1, ($a0)
@@ -34,7 +34,7 @@ glabel func_ovl47_80131B00
   /* 171368 80131B48 8FBF0014 */        lw $ra, 0x14($sp)
   /* 17136C 80131B4C 27BD0028 */     addiu $sp, $sp, 0x28
   /* 171370 80131B50 03E00008 */        jr $ra
-  /* 171374 80131B54 00000000 */       nop 
+  /* 171374 80131B54 00000000 */       nop
 
 glabel func_ovl47_80131B58
   /* 171378 80131B58 27BDFFD8 */     addiu $sp, $sp, -0x28
@@ -76,12 +76,12 @@ glabel func_ovl47_80131B58
   /* 171408 80131BE8 8FB00020 */        lw $s0, 0x20($sp)
   /* 17140C 80131BEC 27BD0028 */     addiu $sp, $sp, 0x28
   /* 171410 80131BF0 03E00008 */        jr $ra
-  /* 171414 80131BF4 00000000 */       nop 
+  /* 171414 80131BF4 00000000 */       nop
 
   /* 171418 80131BF8 03E00008 */        jr $ra
-  /* 17141C 80131BFC 00000000 */       nop 
+  /* 17141C 80131BFC 00000000 */       nop
 
-glabel func_ovl47_80131C00
+glabel mvOpeningMarioVsKirbyCreateFighters
   /* 171420 80131C00 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 171424 80131C04 3C0F8011 */       lui $t7, %hi(dFTDefaultFighterDesc)
   /* 171428 80131C08 25EF6DD0 */     addiu $t7, $t7, %lo(dFTDefaultFighterDesc)
@@ -105,8 +105,8 @@ glabel func_ovl47_80131C00
   /* 17146C 80131C4C 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 171470 80131C50 AFA0001C */        sw $zero, 0x1c($sp)
   /* 171474 80131C54 44800000 */      mtc1 $zero, $f0
-  /* 171478 80131C58 3C098013 */       lui $t1, %hi(D_ovl47_801329C8)
-  /* 17147C 80131C5C 8D2929C8 */        lw $t1, %lo(D_ovl47_801329C8)($t1)
+  /* 171478 80131C58 3C098013 */       lui $t1, %hi(gMvOpeningMarioVsKirbyAnimHeapMario)
+  /* 17147C 80131C5C 8D2929C8 */        lw $t1, %lo(gMvOpeningMarioVsKirbyAnimHeapMario)($t1)
   /* 171480 80131C60 A3A20033 */        sb $v0, 0x33($sp)
   /* 171484 80131C64 27A4001C */     addiu $a0, $sp, 0x1c
   /* 171488 80131C68 E7A00020 */      swc1 $f0, 0x20($sp)
@@ -134,8 +134,8 @@ glabel func_ovl47_80131C00
   /* 1714E0 80131CC0 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 1714E4 80131CC4 AFAD001C */        sw $t5, 0x1c($sp)
   /* 1714E8 80131CC8 44800000 */      mtc1 $zero, $f0
-  /* 1714EC 80131CCC 3C088013 */       lui $t0, %hi(D_ovl47_801329CC)
-  /* 1714F0 80131CD0 8D0829CC */        lw $t0, %lo(D_ovl47_801329CC)($t0)
+  /* 1714EC 80131CCC 3C088013 */       lui $t0, %hi(gMvOpeningMarioVsKirbyAnimHeapKirby)
+  /* 1714F0 80131CD0 8D0829CC */        lw $t0, %lo(gMvOpeningMarioVsKirbyAnimHeapKirby)($t0)
   /* 1714F4 80131CD4 A3A20033 */        sb $v0, 0x33($sp)
   /* 1714F8 80131CD8 27A4001C */     addiu $a0, $sp, 0x1c
   /* 1714FC 80131CDC E7A00020 */      swc1 $f0, 0x20($sp)
@@ -160,12 +160,12 @@ glabel func_ovl47_80131C00
   /* 171548 80131D28 8FBF0014 */        lw $ra, 0x14($sp)
   /* 17154C 80131D2C 27BD0060 */     addiu $sp, $sp, 0x60
   /* 171550 80131D30 03E00008 */        jr $ra
-  /* 171554 80131D34 00000000 */       nop 
+  /* 171554 80131D34 00000000 */       nop
 
-glabel func_ovl47_80131D38
-  /* 171558 80131D38 3C068013 */       lui $a2, %hi(D_ovl47_801329D0)
-  /* 17155C 80131D3C 24C629D0 */     addiu $a2, $a2, %lo(D_ovl47_801329D0)
-  /* 171560 80131D40 8CC50000 */        lw $a1, ($a2) # D_ovl47_801329D0 + 0
+glabel mvOpeningMarioVsKirbyScrollBackground
+  /* 171558 80131D38 3C068013 */       lui $a2, %hi(gMvOpeningMarioVsKirbyFramesElapsed)
+  /* 17155C 80131D3C 24C629D0 */     addiu $a2, $a2, %lo(gMvOpeningMarioVsKirbyFramesElapsed)
+  /* 171560 80131D40 8CC50000 */        lw $a1, ($a2) # gMvOpeningMarioVsKirbyFramesElapsed + 0
   /* 171564 80131D44 24010001 */     addiu $at, $zero, 1
   /* 171568 80131D48 8C820074 */        lw $v0, 0x74($a0)
   /* 17156C 80131D4C 10A10012 */       beq $a1, $at, .L80131D98
@@ -184,63 +184,63 @@ glabel func_ovl47_80131D38
   /* 1715A0 80131D80 1061002D */       beq $v1, $at, .L80131E38
   /* 1715A4 80131D84 3C014000 */       lui $at, (0x40000000 >> 16) # 2.0
   /* 1715A8 80131D88 44816000 */      mtc1 $at, $f12 # 2.0 to cop1
-  /* 1715AC 80131D8C 3C038013 */       lui $v1, %hi(D_ovl47_801329D4)
+  /* 1715AC 80131D8C 3C038013 */       lui $v1, %hi(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
   /* 1715B0 80131D90 10000030 */         b .L80131E54
-  /* 1715B4 80131D94 246329D4 */     addiu $v1, $v1, %lo(D_ovl47_801329D4)
+  /* 1715B4 80131D94 246329D4 */     addiu $v1, $v1, %lo(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
   .L80131D98:
   /* 1715B8 80131D98 3C014000 */       lui $at, (0x40000000 >> 16) # 2.0
   /* 1715BC 80131D9C 44816000 */      mtc1 $at, $f12 # 2.0 to cop1
-  /* 1715C0 80131DA0 3C038013 */       lui $v1, %hi(D_ovl47_801329D4)
-  /* 1715C4 80131DA4 246329D4 */     addiu $v1, $v1, %lo(D_ovl47_801329D4)
+  /* 1715C0 80131DA0 3C038013 */       lui $v1, %hi(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
+  /* 1715C4 80131DA4 246329D4 */     addiu $v1, $v1, %lo(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
   /* 1715C8 80131DA8 1000002A */         b .L80131E54
-  /* 1715CC 80131DAC E46C0000 */      swc1 $f12, ($v1) # D_ovl47_801329D4 + 0
+  /* 1715CC 80131DAC E46C0000 */      swc1 $f12, ($v1) # gMvOpeningMarioVsKirbyBackgroundScrollSpeed + 0
   .L80131DB0:
   /* 1715D0 80131DB0 3C014100 */       lui $at, (0x41000000 >> 16) # 8.0
   /* 1715D4 80131DB4 44812000 */      mtc1 $at, $f4 # 8.0 to cop1
-  /* 1715D8 80131DB8 3C038013 */       lui $v1, %hi(D_ovl47_801329D4)
+  /* 1715D8 80131DB8 3C038013 */       lui $v1, %hi(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
   /* 1715DC 80131DBC 3C014000 */       lui $at, (0x40000000 >> 16) # 2.0
-  /* 1715E0 80131DC0 246329D4 */     addiu $v1, $v1, %lo(D_ovl47_801329D4)
+  /* 1715E0 80131DC0 246329D4 */     addiu $v1, $v1, %lo(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
   /* 1715E4 80131DC4 44816000 */      mtc1 $at, $f12 # 2.0 to cop1
   /* 1715E8 80131DC8 10000022 */         b .L80131E54
-  /* 1715EC 80131DCC E4640000 */      swc1 $f4, ($v1) # D_ovl47_801329D4 + 0
+  /* 1715EC 80131DCC E4640000 */      swc1 $f4, ($v1) # gMvOpeningMarioVsKirbyBackgroundScrollSpeed + 0
   .L80131DD0:
   /* 1715F0 80131DD0 3C014000 */       lui $at, (0x40000000 >> 16) # 2.0
   /* 1715F4 80131DD4 44816000 */      mtc1 $at, $f12 # 2.0 to cop1
-  /* 1715F8 80131DD8 3C038013 */       lui $v1, %hi(D_ovl47_801329D4)
-  /* 1715FC 80131DDC 246329D4 */     addiu $v1, $v1, %lo(D_ovl47_801329D4)
+  /* 1715F8 80131DD8 3C038013 */       lui $v1, %hi(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
+  /* 1715FC 80131DDC 246329D4 */     addiu $v1, $v1, %lo(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
   /* 171600 80131DE0 1000001C */         b .L80131E54
-  /* 171604 80131DE4 E46C0000 */      swc1 $f12, ($v1) # D_ovl47_801329D4 + 0
+  /* 171604 80131DE4 E46C0000 */      swc1 $f12, ($v1) # gMvOpeningMarioVsKirbyBackgroundScrollSpeed + 0
   .L80131DE8:
   /* 171608 80131DE8 3C014100 */       lui $at, (0x41000000 >> 16) # 8.0
   /* 17160C 80131DEC 44813000 */      mtc1 $at, $f6 # 8.0 to cop1
-  /* 171610 80131DF0 3C038013 */       lui $v1, %hi(D_ovl47_801329D4)
+  /* 171610 80131DF0 3C038013 */       lui $v1, %hi(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
   /* 171614 80131DF4 3C014000 */       lui $at, (0x40000000 >> 16) # 2.0
-  /* 171618 80131DF8 246329D4 */     addiu $v1, $v1, %lo(D_ovl47_801329D4)
+  /* 171618 80131DF8 246329D4 */     addiu $v1, $v1, %lo(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
   /* 17161C 80131DFC 44816000 */      mtc1 $at, $f12 # 2.0 to cop1
   /* 171620 80131E00 10000014 */         b .L80131E54
-  /* 171624 80131E04 E4660000 */      swc1 $f6, ($v1) # D_ovl47_801329D4 + 0
+  /* 171624 80131E04 E4660000 */      swc1 $f6, ($v1) # gMvOpeningMarioVsKirbyBackgroundScrollSpeed + 0
   .L80131E08:
   /* 171628 80131E08 3C014000 */       lui $at, (0x40000000 >> 16) # 2.0
   /* 17162C 80131E0C 44816000 */      mtc1 $at, $f12 # 2.0 to cop1
-  /* 171630 80131E10 3C038013 */       lui $v1, %hi(D_ovl47_801329D4)
-  /* 171634 80131E14 246329D4 */     addiu $v1, $v1, %lo(D_ovl47_801329D4)
+  /* 171630 80131E10 3C038013 */       lui $v1, %hi(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
+  /* 171634 80131E14 246329D4 */     addiu $v1, $v1, %lo(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
   /* 171638 80131E18 1000000E */         b .L80131E54
-  /* 17163C 80131E1C E46C0000 */      swc1 $f12, ($v1) # D_ovl47_801329D4 + 0
+  /* 17163C 80131E1C E46C0000 */      swc1 $f12, ($v1) # gMvOpeningMarioVsKirbyBackgroundScrollSpeed + 0
   .L80131E20:
   /* 171640 80131E20 3C014000 */       lui $at, (0x40000000 >> 16) # 2.0
   /* 171644 80131E24 44816000 */      mtc1 $at, $f12 # 2.0 to cop1
-  /* 171648 80131E28 3C038013 */       lui $v1, %hi(D_ovl47_801329D4)
-  /* 17164C 80131E2C 246329D4 */     addiu $v1, $v1, %lo(D_ovl47_801329D4)
+  /* 171648 80131E28 3C038013 */       lui $v1, %hi(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
+  /* 17164C 80131E2C 246329D4 */     addiu $v1, $v1, %lo(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
   /* 171650 80131E30 10000008 */         b .L80131E54
-  /* 171654 80131E34 E46C0000 */      swc1 $f12, ($v1) # D_ovl47_801329D4 + 0
+  /* 171654 80131E34 E46C0000 */      swc1 $f12, ($v1) # gMvOpeningMarioVsKirbyBackgroundScrollSpeed + 0
   .L80131E38:
   /* 171658 80131E38 3C0140E0 */       lui $at, (0x40E00000 >> 16) # 7.0
   /* 17165C 80131E3C 44814000 */      mtc1 $at, $f8 # 7.0 to cop1
-  /* 171660 80131E40 3C038013 */       lui $v1, %hi(D_ovl47_801329D4)
+  /* 171660 80131E40 3C038013 */       lui $v1, %hi(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
   /* 171664 80131E44 3C014000 */       lui $at, (0x40000000 >> 16) # 2.0
-  /* 171668 80131E48 246329D4 */     addiu $v1, $v1, %lo(D_ovl47_801329D4)
+  /* 171668 80131E48 246329D4 */     addiu $v1, $v1, %lo(gMvOpeningMarioVsKirbyBackgroundScrollSpeed)
   /* 17166C 80131E4C 44816000 */      mtc1 $at, $f12 # 2.0 to cop1
-  /* 171670 80131E50 E4680000 */      swc1 $f8, ($v1) # D_ovl47_801329D4 + 0
+  /* 171670 80131E50 E4680000 */      swc1 $f8, ($v1) # gMvOpeningMarioVsKirbyBackgroundScrollSpeed + 0
   .L80131E54:
   /* 171674 80131E54 28A10119 */      slti $at, $a1, 0x119
   /* 171678 80131E58 14200007 */      bnez $at, .L80131E78
@@ -248,9 +248,9 @@ glabel func_ovl47_80131D38
   /* 171680 80131E60 10200005 */      beqz $at, .L80131E78
   /* 171684 80131E64 3C018013 */       lui $at, %hi(D_ovl47_801329B0)
   /* 171688 80131E68 C43029B0 */      lwc1 $f16, %lo(D_ovl47_801329B0)($at)
-  /* 17168C 80131E6C C46A0000 */      lwc1 $f10, ($v1) # D_ovl47_801329D4 + 0
+  /* 17168C 80131E6C C46A0000 */      lwc1 $f10, ($v1) # gMvOpeningMarioVsKirbyBackgroundScrollSpeed + 0
   /* 171690 80131E70 46105480 */     add.s $f18, $f10, $f16
-  /* 171694 80131E74 E4720000 */      swc1 $f18, ($v1) # D_ovl47_801329D4 + 0
+  /* 171694 80131E74 E4720000 */      swc1 $f18, ($v1) # gMvOpeningMarioVsKirbyBackgroundScrollSpeed + 0
   .L80131E78:
   /* 171698 80131E78 28A1012D */      slti $at, $a1, 0x12d
   /* 17169C 80131E7C 14200007 */      bnez $at, .L80131E9C
@@ -258,15 +258,15 @@ glabel func_ovl47_80131D38
   /* 1716A4 80131E84 10200005 */      beqz $at, .L80131E9C
   /* 1716A8 80131E88 3C018013 */       lui $at, %hi(D_ovl47_801329B4)
   /* 1716AC 80131E8C C42629B4 */      lwc1 $f6, %lo(D_ovl47_801329B4)($at)
-  /* 1716B0 80131E90 C4640000 */      lwc1 $f4, ($v1) # D_ovl47_801329D4 + 0
+  /* 1716B0 80131E90 C4640000 */      lwc1 $f4, ($v1) # gMvOpeningMarioVsKirbyBackgroundScrollSpeed + 0
   /* 1716B4 80131E94 46062200 */     add.s $f8, $f4, $f6
-  /* 1716B8 80131E98 E4680000 */      swc1 $f8, ($v1) # D_ovl47_801329D4 + 0
+  /* 1716B8 80131E98 E4680000 */      swc1 $f8, ($v1) # gMvOpeningMarioVsKirbyBackgroundScrollSpeed + 0
   .L80131E9C:
   /* 1716BC 80131E9C 28A1012D */      slti $at, $a1, 0x12d
   /* 1716C0 80131EA0 5420000A */      bnel $at, $zero, .L80131ECC
   /* 1716C4 80131EA4 C4440058 */      lwc1 $f4, 0x58($v0)
   /* 1716C8 80131EA8 C44A005C */      lwc1 $f10, 0x5c($v0)
-  /* 1716CC 80131EAC C4700000 */      lwc1 $f16, ($v1) # D_ovl47_801329D4 + 0
+  /* 1716CC 80131EAC C4700000 */      lwc1 $f16, ($v1) # gMvOpeningMarioVsKirbyBackgroundScrollSpeed + 0
   /* 1716D0 80131EB0 3C0143A0 */       lui $at, (0x43A00000 >> 16) # 320.0
   /* 1716D4 80131EB4 44811000 */      mtc1 $at, $f2 # 320.0 to cop1
   /* 1716D8 80131EB8 46105480 */     add.s $f18, $f10, $f16
@@ -275,21 +275,21 @@ glabel func_ovl47_80131D38
   /* 1716E4 80131EC4 E452005C */      swc1 $f18, 0x5c($v0)
   /* 1716E8 80131EC8 C4440058 */      lwc1 $f4, 0x58($v0)
   .L80131ECC:
-  /* 1716EC 80131ECC C4660000 */      lwc1 $f6, ($v1) # D_ovl47_801329D4 + 0
+  /* 1716EC 80131ECC C4660000 */      lwc1 $f6, ($v1) # gMvOpeningMarioVsKirbyBackgroundScrollSpeed + 0
   /* 1716F0 80131ED0 3C0143A0 */       lui $at, (0x43A00000 >> 16) # 320.0
   /* 1716F4 80131ED4 44811000 */      mtc1 $at, $f2 # 320.0 to cop1
   /* 1716F8 80131ED8 46062200 */     add.s $f8, $f4, $f6
   /* 1716FC 80131EDC E4480058 */      swc1 $f8, 0x58($v0)
   /* 171700 80131EE0 C4400058 */      lwc1 $f0, 0x58($v0)
   /* 171704 80131EE4 4600103C */    c.lt.s $f2, $f0
-  /* 171708 80131EE8 00000000 */       nop 
+  /* 171708 80131EE8 00000000 */       nop
   /* 17170C 80131EEC 45020005 */     bc1fl .L80131F04
-  /* 171710 80131EF0 8CC50000 */        lw $a1, ($a2) # D_ovl47_801329D0 + 0
+  /* 171710 80131EF0 8CC50000 */        lw $a1, ($a2) # gMvOpeningMarioVsKirbyFramesElapsed + 0
   /* 171714 80131EF4 46020281 */     sub.s $f10, $f0, $f2
   /* 171718 80131EF8 E44A0058 */      swc1 $f10, 0x58($v0)
   /* 17171C 80131EFC C4400058 */      lwc1 $f0, 0x58($v0)
   .L80131F00:
-  /* 171720 80131F00 8CC50000 */        lw $a1, ($a2) # D_ovl47_801329D0 + 0
+  /* 171720 80131F00 8CC50000 */        lw $a1, ($a2) # gMvOpeningMarioVsKirbyFramesElapsed + 0
   .L80131F04:
   /* 171724 80131F04 28A1005B */      slti $at, $a1, 0x5b
   /* 171728 80131F08 14200002 */      bnez $at, .L80131F14
@@ -338,15 +338,15 @@ glabel func_ovl47_80131D38
   /* 1717C4 80131FA4 8CCC0000 */        lw $t4, ($a2)
   /* 1717C8 80131FA8 2981012C */      slti $at, $t4, 0x12c
   /* 1717CC 80131FAC 10200004 */      beqz $at, .L80131FC0
-  /* 1717D0 80131FB0 00000000 */       nop 
+  /* 1717D0 80131FB0 00000000 */       nop
   /* 1717D4 80131FB4 44808000 */      mtc1 $zero, $f16
-  /* 1717D8 80131FB8 00000000 */       nop 
+  /* 1717D8 80131FB8 00000000 */       nop
   /* 1717DC 80131FBC E450005C */      swc1 $f16, 0x5c($v0)
   .L80131FC0:
   /* 1717E0 80131FC0 03E00008 */        jr $ra
-  /* 1717E4 80131FC4 00000000 */       nop 
+  /* 1717E4 80131FC4 00000000 */       nop
 
-glabel func_ovl47_80131FC8
+glabel mvOpeningMarioVsKirbyCreateBackground
   /* 1717E8 80131FC8 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 1717EC 80131FCC AFBF001C */        sw $ra, 0x1c($sp)
   /* 1717F0 80131FD0 00002025 */        or $a0, $zero, $zero
@@ -363,8 +363,8 @@ glabel func_ovl47_80131FC8
   /* 17181C 80131FFC 2406001B */     addiu $a2, $zero, 0x1b
   /* 171820 80132000 0C00277D */       jal omAddGObjRenderProc
   /* 171824 80132004 3C078000 */       lui $a3, 0x8000
-  /* 171828 80132008 3C058013 */       lui $a1, %hi(func_ovl47_80131D38)
-  /* 17182C 8013200C 24A51D38 */     addiu $a1, $a1, %lo(func_ovl47_80131D38)
+  /* 171828 80132008 3C058013 */       lui $a1, %hi(mvOpeningMarioVsKirbyScrollBackground)
+  /* 17182C 8013200C 24A51D38 */     addiu $a1, $a1, %lo(mvOpeningMarioVsKirbyScrollBackground)
   /* 171830 80132010 8FA4002C */        lw $a0, 0x2c($sp)
   /* 171834 80132014 24060001 */     addiu $a2, $zero, 1
   /* 171838 80132018 0C002062 */       jal omAddGObjCommonProc
@@ -408,7 +408,7 @@ glabel func_ovl47_80131FC8
   /* 1718D0 801320B0 8FBF001C */        lw $ra, 0x1c($sp)
   /* 1718D4 801320B4 27BD0030 */     addiu $sp, $sp, 0x30
   /* 1718D8 801320B8 03E00008 */        jr $ra
-  /* 1718DC 801320BC 00000000 */       nop 
+  /* 1718DC 801320BC 00000000 */       nop
 
 glabel func_ovl47_801320C0
   /* 1718E0 801320C0 27BDFFD8 */     addiu $sp, $sp, -0x28
@@ -480,7 +480,7 @@ glabel func_ovl47_801320C0
   /* 1719E8 801321C8 8FB00020 */        lw $s0, 0x20($sp)
   /* 1719EC 801321CC 27BD0028 */     addiu $sp, $sp, 0x28
   /* 1719F0 801321D0 03E00008 */        jr $ra
-  /* 1719F4 801321D4 00000000 */       nop 
+  /* 1719F4 801321D4 00000000 */       nop
 
 glabel func_ovl47_801321D8
   /* 1719F8 801321D8 3C038004 */       lui $v1, %hi(gDisplayListHead)
@@ -497,10 +497,10 @@ glabel func_ovl47_801321D8
   /* 171A24 80132204 37180A01 */       ori $t8, $t8, (0xE3000A01 & 0xFFFF) # 3808430593
   /* 171A28 80132208 244F0008 */     addiu $t7, $v0, 8
   /* 171A2C 8013220C AC6F0004 */        sw $t7, 4($v1) # gDisplayListHead + 4
-  /* 171A30 80132210 3C078013 */       lui $a3, %hi(D_ovl47_801329D0)
+  /* 171A30 80132210 3C078013 */       lui $a3, %hi(gMvOpeningMarioVsKirbyFramesElapsed)
   /* 171A34 80132214 AC400004 */        sw $zero, 4($v0)
   /* 171A38 80132218 AC580000 */        sw $t8, ($v0)
-  /* 171A3C 8013221C 8CE729D0 */        lw $a3, %lo(D_ovl47_801329D0)($a3)
+  /* 171A3C 8013221C 8CE729D0 */        lw $a3, %lo(gMvOpeningMarioVsKirbyFramesElapsed)($a3)
   /* 171A40 80132220 3C0AE200 */       lui $t2, (0xE200001C >> 16) # 3791650844
   /* 171A44 80132224 354A001C */       ori $t2, $t2, (0xE200001C & 0xFFFF) # 3791650844
   /* 171A48 80132228 28E10014 */      slti $at, $a3, 0x14
@@ -577,7 +577,7 @@ glabel func_ovl47_801321D8
   /* 171B4C 8013232C AC4A0000 */        sw $t2, ($v0)
 
   /* 171B50 80132330 03E00008 */        jr $ra
-  /* 171B54 80132334 00000000 */       nop 
+  /* 171B54 80132334 00000000 */       nop
 
 glabel func_ovl47_80132338
   /* 171B58 80132338 27BDFFE0 */     addiu $sp, $sp, -0x20
@@ -598,7 +598,7 @@ glabel func_ovl47_80132338
   /* 171B94 80132374 8FBF001C */        lw $ra, 0x1c($sp)
   /* 171B98 80132378 27BD0020 */     addiu $sp, $sp, 0x20
   /* 171B9C 8013237C 03E00008 */        jr $ra
-  /* 171BA0 80132380 00000000 */       nop 
+  /* 171BA0 80132380 00000000 */       nop
 
 glabel func_ovl47_80132384
   /* 171BA4 80132384 27BDFFC0 */     addiu $sp, $sp, -0x40
@@ -640,10 +640,10 @@ glabel func_ovl47_80132384
   /* 171C34 80132414 8FBF003C */        lw $ra, 0x3c($sp)
   /* 171C38 80132418 27BD0040 */     addiu $sp, $sp, 0x40
   /* 171C3C 8013241C 03E00008 */        jr $ra
-  /* 171C40 80132420 00000000 */       nop 
+  /* 171C40 80132420 00000000 */       nop
 
   /* 171C44 80132424 03E00008 */        jr $ra
-  /* 171C48 80132428 00000000 */       nop 
+  /* 171C48 80132428 00000000 */       nop
 
 glabel func_ovl47_8013242C
   /* 171C4C 8013242C 27BDFFB0 */     addiu $sp, $sp, -0x50
@@ -710,7 +710,7 @@ glabel func_ovl47_8013242C
   /* 171D40 80132520 8FB00040 */        lw $s0, 0x40($sp)
   /* 171D44 80132524 27BD0050 */     addiu $sp, $sp, 0x50
   /* 171D48 80132528 03E00008 */        jr $ra
-  /* 171D4C 8013252C 00000000 */       nop 
+  /* 171D4C 8013252C 00000000 */       nop
 
 glabel func_ovl47_80132530
   /* 171D50 80132530 27BDFFC0 */     addiu $sp, $sp, -0x40
@@ -752,31 +752,31 @@ glabel func_ovl47_80132530
   /* 171DE0 801325C0 8FBF003C */        lw $ra, 0x3c($sp)
   /* 171DE4 801325C4 27BD0040 */     addiu $sp, $sp, 0x40
   /* 171DE8 801325C8 03E00008 */        jr $ra
-  /* 171DEC 801325CC 00000000 */       nop 
+  /* 171DEC 801325CC 00000000 */       nop
 
-glabel func_ovl47_801325D0
-  /* 171DF0 801325D0 3C018013 */       lui $at, %hi(D_ovl47_801329D0)
+glabel mvOpeningMarioVsKirbyInitFramesElapsed
+  /* 171DF0 801325D0 3C018013 */       lui $at, %hi(gMvOpeningMarioVsKirbyFramesElapsed)
   /* 171DF4 801325D4 03E00008 */        jr $ra
-  /* 171DF8 801325D8 AC2029D0 */        sw $zero, %lo(D_ovl47_801329D0)($at)
+  /* 171DF8 801325D8 AC2029D0 */        sw $zero, %lo(gMvOpeningMarioVsKirbyFramesElapsed)($at)
 
-glabel func_ovl47_801325DC
-  /* 171DFC 801325DC 3C038013 */       lui $v1, %hi(D_ovl47_801329D0)
-  /* 171E00 801325E0 246329D0 */     addiu $v1, $v1, %lo(D_ovl47_801329D0)
-  /* 171E04 801325E4 8C6E0000 */        lw $t6, ($v1) # D_ovl47_801329D0 + 0
+glabel mvOpeningMarioVsKirbyMainProc
+  /* 171DFC 801325DC 3C038013 */       lui $v1, %hi(gMvOpeningMarioVsKirbyFramesElapsed)
+  /* 171E00 801325E0 246329D0 */     addiu $v1, $v1, %lo(gMvOpeningMarioVsKirbyFramesElapsed)
+  /* 171E04 801325E4 8C6E0000 */        lw $t6, ($v1) # gMvOpeningMarioVsKirbyFramesElapsed + 0
   /* 171E08 801325E8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 171E0C 801325EC AFBF0014 */        sw $ra, 0x14($sp)
   /* 171E10 801325F0 25CF0001 */     addiu $t7, $t6, 1
   /* 171E14 801325F4 29E1000A */      slti $at, $t7, 0xa
   /* 171E18 801325F8 AFA40018 */        sw $a0, 0x18($sp)
   /* 171E1C 801325FC 14200026 */      bnez $at, .L80132698
-  /* 171E20 80132600 AC6F0000 */        sw $t7, ($v1) # D_ovl47_801329D0 + 0
-  /* 171E24 80132604 3C068013 */       lui $a2, %hi(D_ovl47_801329DC)
-  /* 171E28 80132608 24C629DC */     addiu $a2, $a2, %lo(D_ovl47_801329DC)
-  /* 171E2C 8013260C 8CC20000 */        lw $v0, ($a2) # D_ovl47_801329DC + 0
+  /* 171E20 80132600 AC6F0000 */        sw $t7, ($v1) # gMvOpeningMarioVsKirbyFramesElapsed + 0
+  /* 171E24 80132604 3C068013 */       lui $a2, %hi(gMvOpeningMarioVsKirbyUnusedCounter)
+  /* 171E28 80132608 24C629DC */     addiu $a2, $a2, %lo(gMvOpeningMarioVsKirbyUnusedCounter)
+  /* 171E2C 8013260C 8CC20000 */        lw $v0, ($a2) # gMvOpeningMarioVsKirbyUnusedCounter + 0
   /* 171E30 80132610 2404FFF1 */     addiu $a0, $zero, -0xf
   /* 171E34 80132614 10400002 */      beqz $v0, .L80132620
   /* 171E38 80132618 2459FFFF */     addiu $t9, $v0, -1
-  /* 171E3C 8013261C ACD90000 */        sw $t9, ($a2) # D_ovl47_801329DC + 0
+  /* 171E3C 8013261C ACD90000 */        sw $t9, ($a2) # gMvOpeningMarioVsKirbyUnusedCounter + 0
   .L80132620:
   /* 171E40 80132620 0C0E4281 */       jal func_ovl1_80390A04
   /* 171E44 80132624 2405000F */     addiu $a1, $zero, 0xf
@@ -785,8 +785,8 @@ glabel func_ovl47_801325DC
   /* 171E50 80132630 0C0E42B0 */       jal func_ovl1_80390AC0
   /* 171E54 80132634 2405000F */     addiu $a1, $zero, 0xf
   /* 171E58 80132638 10400002 */      beqz $v0, .L80132644
-  /* 171E5C 8013263C 3C018013 */       lui $at, %hi(D_ovl47_801329DC)
-  /* 171E60 80132640 AC2029DC */        sw $zero, %lo(D_ovl47_801329DC)($at)
+  /* 171E5C 8013263C 3C018013 */       lui $at, %hi(gMvOpeningMarioVsKirbyUnusedCounter)
+  /* 171E60 80132640 AC2029DC */        sw $zero, %lo(gMvOpeningMarioVsKirbyUnusedCounter)($at)
   .L80132644:
   /* 171E64 80132644 0C0E41DB */       jal func_ovl1_8039076C
   /* 171E68 80132648 3404D000 */       ori $a0, $zero, 0xd000
@@ -799,8 +799,8 @@ glabel func_ovl47_801325DC
   /* 171E84 80132664 0C00171D */       jal func_80005C74
   /* 171E88 80132668 A0480001 */        sb $t0, 1($v0) # gSceneData + 1
   .L8013266C:
-  /* 171E8C 8013266C 3C0A8013 */       lui $t2, %hi(D_ovl47_801329D0)
-  /* 171E90 80132670 8D4A29D0 */        lw $t2, %lo(D_ovl47_801329D0)($t2)
+  /* 171E8C 8013266C 3C0A8013 */       lui $t2, %hi(gMvOpeningMarioVsKirbyFramesElapsed)
+  /* 171E90 80132670 8D4A29D0 */        lw $t2, %lo(gMvOpeningMarioVsKirbyFramesElapsed)($t2)
   /* 171E94 80132674 3C02800A */       lui $v0, %hi(gSceneData)
   /* 171E98 80132678 24010140 */     addiu $at, $zero, 0x140
   /* 171E9C 8013267C 15410006 */       bne $t2, $at, .L80132698
@@ -814,7 +814,7 @@ glabel func_ovl47_801325DC
   /* 171EB8 80132698 8FBF0014 */        lw $ra, 0x14($sp)
   /* 171EBC 8013269C 27BD0018 */     addiu $sp, $sp, 0x18
   /* 171EC0 801326A0 03E00008 */        jr $ra
-  /* 171EC4 801326A4 00000000 */       nop 
+  /* 171EC4 801326A4 00000000 */       nop
 
 glabel func_ovl47_801326A8
   /* 171EC8 801326A8 27BDFFB0 */     addiu $sp, $sp, -0x50
@@ -853,8 +853,8 @@ glabel func_ovl47_801326A8
   /* 171F4C 8013272C 24050002 */     addiu $a1, $zero, 2
   /* 171F50 80132730 0C033781 */       jal rdManagerLoadFiles
   /* 171F54 80132734 00403825 */        or $a3, $v0, $zero
-  /* 171F58 80132738 3C058013 */       lui $a1, %hi(func_ovl47_801325DC)
-  /* 171F5C 8013273C 24A525DC */     addiu $a1, $a1, %lo(func_ovl47_801325DC)
+  /* 171F58 80132738 3C058013 */       lui $a1, %hi(mvOpeningMarioVsKirbyMainProc)
+  /* 171F5C 8013273C 24A525DC */     addiu $a1, $a1, %lo(mvOpeningMarioVsKirbyMainProc)
   /* 171F60 80132740 00002025 */        or $a0, $zero, $zero
   /* 171F64 80132744 00003025 */        or $a2, $zero, $zero
   /* 171F68 80132748 0C00265A */       jal omMakeGObjCommon
@@ -867,11 +867,11 @@ glabel func_ovl47_801326A8
   /* 171F84 80132764 0C002E7F */       jal func_8000B9FC
   /* 171F88 80132768 24070003 */     addiu $a3, $zero, 3
   /* 171F8C 8013276C 0C045624 */       jal func_ovl2_80115890
-  /* 171F90 80132770 00000000 */       nop 
-  /* 171F94 80132774 0C04C974 */       jal func_ovl47_801325D0
-  /* 171F98 80132778 00000000 */       nop 
+  /* 171F90 80132770 00000000 */       nop
+  /* 171F94 80132774 0C04C974 */       jal mvOpeningMarioVsKirbyInitFramesElapsed
+  /* 171F98 80132778 00000000 */       nop
   /* 171F9C 8013277C 0C03F4C0 */       jal efManager_AllocUserData
-  /* 171FA0 80132780 00000000 */       nop 
+  /* 171FA0 80132780 00000000 */       nop
   /* 171FA4 80132784 24040001 */     addiu $a0, $zero, 1
   /* 171FA8 80132788 0C035C65 */       jal ftManager_AllocFighterData
   /* 171FAC 8013278C 24050002 */     addiu $a1, $zero, 2
@@ -883,29 +883,29 @@ glabel func_ovl47_801326A8
   /* 171FC4 801327A4 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 171FC8 801327A8 0C001260 */       jal gsMemoryAlloc
   /* 171FCC 801327AC 24050010 */     addiu $a1, $zero, 0x10
-  /* 171FD0 801327B0 3C018013 */       lui $at, %hi(D_ovl47_801329C8)
+  /* 171FD0 801327B0 3C018013 */       lui $at, %hi(gMvOpeningMarioVsKirbyAnimHeapMario)
   /* 171FD4 801327B4 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
-  /* 171FD8 801327B8 AC2229C8 */        sw $v0, %lo(D_ovl47_801329C8)($at)
+  /* 171FD8 801327B8 AC2229C8 */        sw $v0, %lo(gMvOpeningMarioVsKirbyAnimHeapMario)($at)
   /* 171FDC 801327BC 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 171FE0 801327C0 0C001260 */       jal gsMemoryAlloc
   /* 171FE4 801327C4 24050010 */     addiu $a1, $zero, 0x10
-  /* 171FE8 801327C8 3C018013 */       lui $at, %hi(D_ovl47_801329CC)
+  /* 171FE8 801327C8 3C018013 */       lui $at, %hi(gMvOpeningMarioVsKirbyAnimHeapKirby)
   /* 171FEC 801327CC 0C04C90B */       jal func_ovl47_8013242C
-  /* 171FF0 801327D0 AC2229CC */        sw $v0, %lo(D_ovl47_801329CC)($at)
+  /* 171FF0 801327D0 AC2229CC */        sw $v0, %lo(gMvOpeningMarioVsKirbyAnimHeapKirby)($at)
   /* 171FF4 801327D4 0C04C94C */       jal func_ovl47_80132530
-  /* 171FF8 801327D8 00000000 */       nop 
+  /* 171FF8 801327D8 00000000 */       nop
   /* 171FFC 801327DC 0C04C8E1 */       jal func_ovl47_80132384
-  /* 172000 801327E0 00000000 */       nop 
-  /* 172004 801327E4 0C04C7F2 */       jal func_ovl47_80131FC8
-  /* 172008 801327E8 00000000 */       nop 
-  /* 17200C 801327EC 0C04C700 */       jal func_ovl47_80131C00
-  /* 172010 801327F0 00000000 */       nop 
+  /* 172000 801327E0 00000000 */       nop
+  /* 172004 801327E4 0C04C7F2 */       jal mvOpeningMarioVsKirbyCreateBackground
+  /* 172008 801327E8 00000000 */       nop
+  /* 17200C 801327EC 0C04C700 */       jal mvOpeningMarioVsKirbyCreateFighters
+  /* 172010 801327F0 00000000 */       nop
   /* 172014 801327F4 0C04C6D6 */       jal func_ovl47_80131B58
-  /* 172018 801327F8 00000000 */       nop 
+  /* 172018 801327F8 00000000 */       nop
   /* 17201C 801327FC 0C04C830 */       jal func_ovl47_801320C0
-  /* 172020 80132800 00000000 */       nop 
+  /* 172020 80132800 00000000 */       nop
   /* 172024 80132804 0C04C8CE */       jal func_ovl47_80132338
-  /* 172028 80132808 00000000 */       nop 
+  /* 172028 80132808 00000000 */       nop
   /* 17202C 8013280C 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 172030 80132810 44816000 */      mtc1 $at, $f12 # 45.0 to cop1
   /* 172034 80132814 240B00FF */     addiu $t3, $zero, 0xff
@@ -917,21 +917,21 @@ glabel func_ovl47_801326A8
   /* 17204C 8013282C 0C0E4138 */       jal func_ovl1_803904E0
   /* 172050 80132830 46006386 */     mov.s $f14, $f12
   /* 172054 80132834 0C00024B */       jal func_8000092C
-  /* 172058 80132838 00000000 */       nop 
+  /* 172058 80132838 00000000 */       nop
   /* 17205C 8013283C 2C410E1A */     sltiu $at, $v0, 0xe1a
   /* 172060 80132840 50200007 */      beql $at, $zero, .L80132860
   /* 172064 80132844 8FBF001C */        lw $ra, 0x1c($sp)
   .L80132848:
   /* 172068 80132848 0C00024B */       jal func_8000092C
-  /* 17206C 8013284C 00000000 */       nop 
+  /* 17206C 8013284C 00000000 */       nop
   /* 172070 80132850 2C410E1A */     sltiu $at, $v0, 0xe1a
   /* 172074 80132854 1420FFFC */      bnez $at, .L80132848
-  /* 172078 80132858 00000000 */       nop 
+  /* 172078 80132858 00000000 */       nop
   /* 17207C 8013285C 8FBF001C */        lw $ra, 0x1c($sp)
   .L80132860:
   /* 172080 80132860 27BD0050 */     addiu $sp, $sp, 0x50
   /* 172084 80132864 03E00008 */        jr $ra
-  /* 172088 80132868 00000000 */       nop 
+  /* 172088 80132868 00000000 */       nop
 
 glabel intro_mario_vs_kirby_entry
   /* 17208C 8013286C 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
@@ -955,11 +955,11 @@ glabel intro_mario_vs_kirby_entry
   /* 1720D4 801328B4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1720D8 801328B8 27BD0018 */     addiu $sp, $sp, 0x18
   /* 1720DC 801328BC 03E00008 */        jr $ra
-  /* 1720E0 801328C0 00000000 */       nop 
+  /* 1720E0 801328C0 00000000 */       nop
 
-  /* 1720E4 801328C4 00000000 */       nop 
-  /* 1720E8 801328C8 00000000 */       nop 
-  /* 1720EC 801328CC 00000000 */       nop 
+  /* 1720E4 801328C4 00000000 */       nop
+  /* 1720E8 801328C8 00000000 */       nop
+  /* 1720EC 801328CC 00000000 */       nop
 
 # Likely start of new file
 #glabel D_ovl47_801328D0   # Routine parsed as data
@@ -970,17 +970,17 @@ glabel intro_mario_vs_kirby_entry
 #  /* 172100 801328E0 FFFFFF00 */        sd $ra, -0x100($ra)
 #  /* 172104 801328E4 FFFFFF00 */        sd $ra, -0x100($ra)
 #  /* 172108 801328E8 14141400 */       bne $zero, $s4, 0x801378ec # branch target not found
-#  /* 17210C 801328EC 00000000 */       nop 
+#  /* 17210C 801328EC 00000000 */       nop
 #  /* 172110 801328F0 20202000 */      addi $zero, $at, 0x2000
 #  /* 172114 801328F4 20202000 */      addi $zero, $at, 0x2000
 #  /* 172118 801328F8 FFFFFF00 */        sd $ra, -0x100($ra)
 #  /* 17211C 801328FC FFFFFF00 */        sd $ra, -0x100($ra)
 #  /* 172120 80132900 00140000 */       sll $zero, $s4, 0
-#  /* 172124 80132904 00000000 */       nop 
+#  /* 172124 80132904 00000000 */       nop
 #glabel D_ovl47_80132908   # Routine parsed as data
 #  /* 172128 80132908 80392A00 */        lb $t9, 0x2a00($at)
 #  /* 17212C 8013290C 803B6900 */        lb $k1, 0x6900($at)
 #  /* 172130 80132910 803DA800 */        lb $sp, -0x5800($at)
-#  /* 172134 80132914 00000000 */       nop 
-#  /* 172138 80132918 00000140 */     pause 
+#  /* 172134 80132914 00000000 */       nop
+#  /* 172138 80132918 00000140 */     pause
 #  /* 17213C 8013291C 000000F0 */       tge $zero, $zero, 3

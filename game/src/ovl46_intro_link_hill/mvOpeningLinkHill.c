@@ -36,7 +36,7 @@ extern intptr_t FILE_044_CAMERA_PARAMETERS_OFFSET = 0x8910; // file 0x044 offset
 extern intptr_t FILE_046_BACKGROUND_IMAGE_OFFSET = 0xB500; // file 0x046 offset for background image footer
 
 // 0x80131B00
-void gMvOpeningLinkHillSetupDisplayList(Gfx **display_list)
+void mvOpeningLinkHillSetupDisplayList(Gfx **display_list)
 {
     gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
     ftRender_Lights_DisplayLightReflect(display_list, func_ovl1_8039051C(), func_ovl1_80390528());
@@ -241,7 +241,7 @@ void mvOpeningLinkHillInitFramesElapsed()
 }
 
 // 0x80132414
-void mvOpeningLinkHillMainProc(s32 arg0)
+void mvOpeningLinkHillMainProc(GObj* arg0)
 {
     gMvOpeningLinkHillFramesElapsed += 1;
 

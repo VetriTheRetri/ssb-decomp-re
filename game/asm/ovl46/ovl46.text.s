@@ -12,7 +12,7 @@
 # Text Sections
 #  0x80131B00 -> 0x801326D0
 
-glabel gMvOpeningLinkHillSetupDisplayList
+glabel mvOpeningLinkHillSetupDisplayList
   /* 170660 80131B00 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 170664 80131B04 AFBF0014 */        sw $ra, 0x14($sp)
   /* 170668 80131B08 8C830000 */        lw $v1, ($a0)

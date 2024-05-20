@@ -303,6 +303,7 @@ spInit = 0x80024FD4;
 spDraw = 0x80025100;
 spFinish = 0x80025E30;
 spHide = 0x80025F10;
+spShow = 0x80025F30;
 spScale = 0x80025F50;
 spClearAttribute = 0x80025EF0;
 
@@ -310,3 +311,8 @@ alCSPSetVol = 0x8002FC10;
 alEvtqPostEvent = 0x80028D70;
 osSetIntMask = 0x80030350;
 osSetTime = 0x80035E40;
+
+alCents2Ratio = 0x80036360;
+alCopy = 0x80035740;
+osAiSetFrequency = 0x80035230;
+osUnmapTLBAll = 0x800342B0;

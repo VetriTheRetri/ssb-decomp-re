@@ -353,7 +353,7 @@ segments:
       - [0x03FE20, rodata, libultra/libc/xprintf]
       - [0x03FF20, rodata, libultra/gu/cosf]
       - [0x03FF70, rodata, libultra/gu/libm_vals]
-      - [0x03FF80, rodata, libultra/Unk_36F60]
+      - [0x03FF80, rodata, libultra/audio/cents2ratio]
       - [0x03FF90, rodata, libultra/libc/xldtob]
       - [0x03FFF0, rodata, libultra/libc/llcvt]
       - { start: 0x040000, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }

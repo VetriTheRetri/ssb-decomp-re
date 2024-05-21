@@ -2947,7 +2947,7 @@ f32 getBattleTokenDistance(s32 port_id_1, s32 port_id_2)
 	delta_y = token_sobj_2->pos.y - token_sobj_1->pos.y;
 	delta_x = token_sobj_2->pos.x - token_sobj_1->pos.x;
 
-	return guSqrtf((delta_y * delta_y) + (delta_x * delta_x));
+	return sqrtf((delta_y * delta_y) + (delta_x * delta_x));
 }
 
 // 80139320

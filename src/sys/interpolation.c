@@ -294,7 +294,7 @@ f32 func_8001E1A8(f32 x, f32 *cof) {
 
     if ((sum < 0.0f) && (sum > -0.001f)) { sum = 0.0f; }
 
-    return guSqrtf(sum);
+    return sqrtf(sum);
 }
 
 f32 func_8001E240(f32 arg0, f32 arg1, f32 *cof) {

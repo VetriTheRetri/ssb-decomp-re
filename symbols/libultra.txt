@@ -278,7 +278,7 @@ guMtxL2F = 0x80032AF8;
 guMtxXFMF = 0x800348E0;
 guMtxCatF = 0x80034980;
 guNormalize = 0x80035380;
-guSqrtf = 0x80033510;
+sqrtf = 0x80033510;
 
 fcos = 0x80035CD0;
 __osIntOffTable = 0x8003F1B0;

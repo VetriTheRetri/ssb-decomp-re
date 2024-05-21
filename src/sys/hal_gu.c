@@ -139,7 +139,7 @@ void hlMtxLookAtF(
     zLook = zAt - zEye;
 
     /* Negate because positive Z is behind us: */
-    len = -1.0f / guSqrtf(xLook * xLook + yLook * yLook + zLook * zLook);
+    len = -1.0f / sqrtf(xLook * xLook + yLook * yLook + zLook * zLook);
     xLook *= len;
     yLook *= len;
     zLook *= len;
@@ -149,7 +149,7 @@ void hlMtxLookAtF(
     xRight = yUp * zLook - zUp * yLook;
     yRight = zUp * xLook - xUp * zLook;
     zRight = xUp * yLook - yUp * xLook;
-    len    = 1.0f / guSqrtf(xRight * xRight + yRight * yRight + zRight * zRight);
+    len    = 1.0f / sqrtf(xRight * xRight + yRight * yRight + zRight * zRight);
     xRight *= len;
     yRight *= len;
     zRight *= len;
@@ -159,7 +159,7 @@ void hlMtxLookAtF(
     xUp = yLook * zRight - zLook * yRight;
     yUp = zLook * xRight - xLook * zRight;
     zUp = xLook * yRight - yLook * xRight;
-    len = 1.0f / guSqrtf(xUp * xUp + yUp * yUp + zUp * zUp);
+    len = 1.0f / sqrtf(xUp * xUp + yUp * yUp + zUp * zUp);
     xUp *= len;
     yUp *= len;
     zUp *= len;
@@ -225,7 +225,7 @@ void hlMtxModLookAt_f(
     look.z = zAt - zEye;
 
     /* Negate because positive Z is behind us: */
-    len = -1.0f / guSqrtf(look.x * look.x + look.y * look.y + look.z * look.z);
+    len = -1.0f / sqrtf(look.x * look.x + look.y * look.y + look.z * look.z);
     look.x *= len;
     look.y *= len;
     look.z *= len;
@@ -235,7 +235,7 @@ void hlMtxModLookAt_f(
     right.x = yUp * look.z - zUp * look.y;
     right.y = zUp * look.x - xUp * look.z;
     right.z = xUp * look.y - yUp * look.x;
-    len     = 1.0f / guSqrtf(right.x * right.x + right.y * right.y + right.z * right.z);
+    len     = 1.0f / sqrtf(right.x * right.x + right.y * right.y + right.z * right.z);
     right.x *= len;
     right.y *= len;
     right.z *= len;
@@ -244,7 +244,7 @@ void hlMtxModLookAt_f(
     xUp = (look.y * right.z) - (look.z * right.y);
     yUp = (look.z * right.x) - (look.x * right.z);
     zUp = (look.x * right.y) - (look.y * right.x);
-    len = 1.0f / guSqrtf(((xUp * xUp) + (yUp * yUp)) + (zUp * zUp));
+    len = 1.0f / sqrtf(((xUp * xUp) + (yUp * yUp)) + (zUp * zUp));
     xUp = xUp * len;
     yUp = yUp * len;
     zUp = zUp * len;
@@ -309,7 +309,7 @@ void hlMtxLookAtReflectF(
     zLook = zAt - zEye;
 
     /* Negate because positive Z is behind us: */
-    len = -1.0f / guSqrtf(xLook * xLook + yLook * yLook + zLook * zLook);
+    len = -1.0f / sqrtf(xLook * xLook + yLook * yLook + zLook * zLook);
     xLook *= len;
     yLook *= len;
     zLook *= len;
@@ -319,7 +319,7 @@ void hlMtxLookAtReflectF(
     xRight = yUp * zLook - zUp * yLook;
     yRight = zUp * xLook - xUp * zLook;
     zRight = xUp * yLook - yUp * xLook;
-    len    = 1.0f / guSqrtf(xRight * xRight + yRight * yRight + zRight * zRight);
+    len    = 1.0f / sqrtf(xRight * xRight + yRight * yRight + zRight * zRight);
     xRight *= len;
     yRight *= len;
     zRight *= len;
@@ -329,7 +329,7 @@ void hlMtxLookAtReflectF(
     xUp = yLook * zRight - zLook * yRight;
     yUp = zLook * xRight - xLook * zRight;
     zUp = xLook * yRight - yLook * xRight;
-    len = 1.0f / guSqrtf(xUp * xUp + yUp * yUp + zUp * zUp);
+    len = 1.0f / sqrtf(xUp * xUp + yUp * yUp + zUp * zUp);
     xUp *= len;
     yUp *= len;
     zUp *= len;
@@ -421,7 +421,7 @@ void hlMtxModLookAtReflect_f(
     look.z = zAt - zEye;
 
     /* Negate because positive Z is behind us: */
-    len = -1.0f / guSqrtf(look.x * look.x + look.y * look.y + look.z * look.z);
+    len = -1.0f / sqrtf(look.x * look.x + look.y * look.y + look.z * look.z);
     look.x *= len;
     look.y *= len;
     look.z *= len;
@@ -431,7 +431,7 @@ void hlMtxModLookAtReflect_f(
     right.x = yUp * look.z - zUp * look.y;
     right.y = zUp * look.x - xUp * look.z;
     right.z = xUp * look.y - yUp * look.x;
-    len     = 1.0f / guSqrtf(right.x * right.x + right.y * right.y + right.z * right.z);
+    len     = 1.0f / sqrtf(right.x * right.x + right.y * right.y + right.z * right.z);
     right.x *= len;
     right.y *= len;
     right.z *= len;
@@ -442,7 +442,7 @@ void hlMtxModLookAtReflect_f(
     xUp = look.y * right.z - look.z * right.y;
     yUp = look.z * right.x - look.x * right.z;
     zUp = look.x * right.y - look.y * right.x;
-    len = 1.0f / guSqrtf(xUp * xUp + yUp * yUp + zUp * zUp);
+    len = 1.0f / sqrtf(xUp * xUp + yUp * yUp + zUp * zUp);
     xUp *= len;
     yUp *= len;
     zUp *= len;

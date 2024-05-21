@@ -81,14 +81,14 @@ f32 asinf(f32 x) {
     if (x > 0.99999f) { return M_PI_F / 2.0f; }
     if (x < -0.99999f) { return -(M_PI_F / 2.0f); }
 
-    return atanf(x / guSqrtf(1.0f - SQUARE(x)));
+    return atanf(x / sqrtf(1.0f - SQUARE(x)));
 }
 
 f32 acosf(f32 x) {
     if (x > 0.99999f) { return 0.0f; }
     if (x < -0.99999f) { return M_PI_F; }
 
-    return (M_PI_F / 2.0f) - atanf(x / guSqrtf(1.0f - SQUARE(x)));
+    return (M_PI_F / 2.0f) - atanf(x / sqrtf(1.0f - SQUARE(x)));
 }
 
 f32 cscf(f32 x) {

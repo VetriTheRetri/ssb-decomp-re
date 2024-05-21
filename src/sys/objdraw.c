@@ -11,7 +11,7 @@
 #include "sys/objmanager.h"
 #include "PR/sp.h"
 
-extern f32 guSqrtf(f32);
+extern f32 sqrtf(f32);
 
 /* These should no longer be required as they're included in obj.h
 #include <macros.h>
@@ -2826,13 +2826,13 @@ void odRenderCameraMain(Gfx **dls, Camera *cam)
             switch (var_s3)
             {
             case 1:
-                var3 = guSqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
+                var3 = sqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
                 var1 = cam->vec.eye.y;
                 var2 = cam->vec.at.y;
                 break;
 
             case 2:
-                var3 = guSqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
+                var3 = sqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
                 var1 = cam->vec.eye.z;
                 var2 = cam->vec.at.z;
                 break;
@@ -2854,13 +2854,13 @@ void odRenderCameraMain(Gfx **dls, Camera *cam)
             switch (spC8)
             {
             case 1:
-                var3 = guSqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.z - cam->vec.eye.z));
+                var3 = sqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.z - cam->vec.eye.z));
                 var1 = cam->vec.eye.x;
                 var2 = cam->vec.at.x;
                 break;
 
             case 2:
-                var3 = guSqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
+                var3 = sqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
                 var1 = cam->vec.eye.y;
                 var2 = cam->vec.at.y;
                 break;

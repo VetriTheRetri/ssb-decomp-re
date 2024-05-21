@@ -16,7 +16,7 @@
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
 f32 lbVector_Vec3fNormalize(struct Vec3f *v) {
-    f32 mag = guSqrtf(SQUARE(v->x) + SQUARE(v->y) + SQUARE(v->z));
+    f32 mag = sqrtf(SQUARE(v->x) + SQUARE(v->y) + SQUARE(v->z));
     if (mag == 0.0f) { return 0.0f; }
     v->x *= 1.0f / mag;
     v->y *= 1.0f / mag;
@@ -26,7 +26,7 @@ f32 lbVector_Vec3fNormalize(struct Vec3f *v) {
 }
 
 f32 lbVector_Vec3fMagnitude(const struct Vec3f *v) {
-    return guSqrtf(SQUARE(v->x) + SQUARE(v->y) + SQUARE(v->z));
+    return sqrtf(SQUARE(v->x) + SQUARE(v->y) + SQUARE(v->z));
 }
 
 struct Vec3f *lbVector_Vec3fAddTo(struct Vec3f *dst, const struct Vec3f *addend) {
@@ -168,7 +168,7 @@ struct Vec3f *func_80019438(struct Vec3f *arg0, struct Vec3f *arg1, f32 arg2) {
     f32 phiF20;
     f32 resX, resY, resZ;
 
-    sp3C = guSqrtf(SQUARE(arg1->y) + SQUARE(arg1->z));
+    sp3C = sqrtf(SQUARE(arg1->y) + SQUARE(arg1->z));
     sp2C = __sinf(arg2);
     sp30 = __cosf(arg2);
 
@@ -364,5 +364,5 @@ f32 unref_80019B00(struct Vec3f *arg0, struct Vec3f *arg1, struct Vec3f *arg2, s
     numerator =
         ABSF(((arg3->x * crossx) + (crossy * arg3->y) + (crossz * arg3->z)) + crossdotarg0_neg);
 
-    return numerator / guSqrtf((crossx * crossx) + (crossy * crossy) + (crossz * crossz));
+    return numerator / sqrtf((crossx * crossx) + (crossy * crossy) + (crossz * crossz));
 }

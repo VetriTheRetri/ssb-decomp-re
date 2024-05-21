@@ -229,7 +229,7 @@ segments:
       - [0x033FB0, asm, libultra/io/pirawdma]
       - [0x034090, asm, libultra/os/getcount]
       - [0x0340A0, asm, libultra/os/seteventmesg]
-      - [0x034110, c, libultra/gu/sqrtf]
+      - [0x034110, hasm, libultra/gu/sqrtf]
       - [0x034120, asm, libultra/os/afterprenmi]
       - [0x034140, asm, libultra/io/contquery]
       - [0x0341F0, asm, libultra/libc/xprintf]

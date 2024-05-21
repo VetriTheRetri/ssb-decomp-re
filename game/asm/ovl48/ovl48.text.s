@@ -12,7 +12,7 @@
 # Text Sections
 #  0x80131B00 -> 0x801323A0
 
-glabel func_ovl48_80131B00
+glabel mvOpeningPikachuPokeballSetupDisplayList
   /* 1721E0 80131B00 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 1721E4 80131B04 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1721E8 80131B08 8C830000 */        lw $v1, ($a0)
@@ -34,7 +34,7 @@ glabel func_ovl48_80131B00
   /* 172228 80131B48 8FBF0014 */        lw $ra, 0x14($sp)
   /* 17222C 80131B4C 27BD0028 */     addiu $sp, $sp, 0x28
   /* 172230 80131B50 03E00008 */        jr $ra
-  /* 172234 80131B54 00000000 */       nop 
+  /* 172234 80131B54 00000000 */       nop
 
 glabel func_ovl48_80131B58
   /* 172238 80131B58 27BDFFD8 */     addiu $sp, $sp, -0x28
@@ -61,15 +61,15 @@ glabel func_ovl48_80131B58
   /* 17228C 80131BAC 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 172290 80131BB0 01F82821 */      addu $a1, $t7, $t8
   /* 172294 80131BB4 44800000 */      mtc1 $zero, $f0
-  /* 172298 80131BB8 00000000 */       nop 
+  /* 172298 80131BB8 00000000 */       nop
   /* 17229C 80131BBC E4400058 */      swc1 $f0, 0x58($v0)
   /* 1722A0 80131BC0 E440005C */      swc1 $f0, 0x5c($v0)
   /* 1722A4 80131BC4 8FBF001C */        lw $ra, 0x1c($sp)
   /* 1722A8 80131BC8 27BD0028 */     addiu $sp, $sp, 0x28
   /* 1722AC 80131BCC 03E00008 */        jr $ra
-  /* 1722B0 80131BD0 00000000 */       nop 
+  /* 1722B0 80131BD0 00000000 */       nop
 
-glabel func_ovl48_80131BD4
+glabel mvOpeningPikachuPokeballCreateFighter
   /* 1722B4 80131BD4 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 1722B8 80131BD8 3C0F8011 */       lui $t7, %hi(dFTDefaultFighterDesc)
   /* 1722BC 80131BDC 25EF6DD0 */     addiu $t7, $t7, %lo(dFTDefaultFighterDesc)
@@ -94,8 +94,8 @@ glabel func_ovl48_80131BD4
   /* 172304 80131C24 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 172308 80131C28 00002825 */        or $a1, $zero, $zero
   /* 17230C 80131C2C 44800000 */      mtc1 $zero, $f0
-  /* 172310 80131C30 3C0A8013 */       lui $t2, %hi(D_ovl48_80132488)
-  /* 172314 80131C34 8D4A2488 */        lw $t2, %lo(D_ovl48_80132488)($t2)
+  /* 172310 80131C30 3C0A8013 */       lui $t2, %hi(gMvOpeningPikachuPokeballFighterAnimHeap)
+  /* 172314 80131C34 8D4A2488 */        lw $t2, %lo(gMvOpeningPikachuPokeballFighterAnimHeap)($t2)
   /* 172318 80131C38 A3A20033 */        sb $v0, 0x33($sp)
   /* 17231C 80131C3C 27A4001C */     addiu $a0, $sp, 0x1c
   /* 172320 80131C40 E7A00020 */      swc1 $f0, 0x20($sp)
@@ -103,9 +103,9 @@ glabel func_ovl48_80131BD4
   /* 172328 80131C48 E7A00028 */      swc1 $f0, 0x28($sp)
   /* 17232C 80131C4C 0C035FCF */       jal ftManager_MakeFighter
   /* 172330 80131C50 AFAA0054 */        sw $t2, 0x54($sp)
-  /* 172334 80131C54 3C018013 */       lui $at, %hi(D_ovl48_80132494)
+  /* 172334 80131C54 3C018013 */       lui $at, %hi(gMvOpeningPikachuPokeballFighterGObj)
   /* 172338 80131C58 3C050001 */       lui $a1, (0x1000F >> 16) # 65551
-  /* 17233C 80131C5C AC222494 */        sw $v0, %lo(D_ovl48_80132494)($at)
+  /* 17233C 80131C5C AC222494 */        sw $v0, %lo(gMvOpeningPikachuPokeballFighterGObj)($at)
   /* 172340 80131C60 34A5000F */       ori $a1, $a1, (0x1000F & 0xFFFF) # 65551
   /* 172344 80131C64 00402025 */        or $a0, $v0, $zero
   /* 172348 80131C68 0C0E4173 */       jal func_ovl1_803905CC
@@ -122,7 +122,7 @@ glabel func_ovl48_80131BD4
   /* 172374 80131C94 8FBF0014 */        lw $ra, 0x14($sp)
   /* 172378 80131C98 27BD0060 */     addiu $sp, $sp, 0x60
   /* 17237C 80131C9C 03E00008 */        jr $ra
-  /* 172380 80131CA0 00000000 */       nop 
+  /* 172380 80131CA0 00000000 */       nop
 
 glabel func_ovl48_80131CA4
   /* 172384 80131CA4 27BDFFD8 */     addiu $sp, $sp, -0x28
@@ -178,7 +178,7 @@ glabel func_ovl48_80131CA4
   /* 17244C 80131D6C 8FB00020 */        lw $s0, 0x20($sp)
   /* 172450 80131D70 27BD0028 */     addiu $sp, $sp, 0x28
   /* 172454 80131D74 03E00008 */        jr $ra
-  /* 172458 80131D78 00000000 */       nop 
+  /* 172458 80131D78 00000000 */       nop
 
 glabel func_ovl48_80131D7C
   /* 17245C 80131D7C 27BDFFD8 */     addiu $sp, $sp, -0x28
@@ -234,7 +234,7 @@ glabel func_ovl48_80131D7C
   /* 172524 80131E44 8FB00020 */        lw $s0, 0x20($sp)
   /* 172528 80131E48 27BD0028 */     addiu $sp, $sp, 0x28
   /* 17252C 80131E4C 03E00008 */        jr $ra
-  /* 172530 80131E50 00000000 */       nop 
+  /* 172530 80131E50 00000000 */       nop
 
 glabel func_ovl48_80131E54
   /* 172534 80131E54 27BDFFD8 */     addiu $sp, $sp, -0x28
@@ -290,7 +290,7 @@ glabel func_ovl48_80131E54
   /* 1725FC 80131F1C 8FB00020 */        lw $s0, 0x20($sp)
   /* 172600 80131F20 27BD0028 */     addiu $sp, $sp, 0x28
   /* 172604 80131F24 03E00008 */        jr $ra
-  /* 172608 80131F28 00000000 */       nop 
+  /* 172608 80131F28 00000000 */       nop
 
 glabel func_ovl48_80131F2C
   /* 17260C 80131F2C 27BDFFB0 */     addiu $sp, $sp, -0x50
@@ -357,9 +357,9 @@ glabel func_ovl48_80131F2C
   /* 172700 80132020 8FB00040 */        lw $s0, 0x40($sp)
   /* 172704 80132024 27BD0050 */     addiu $sp, $sp, 0x50
   /* 172708 80132028 03E00008 */        jr $ra
-  /* 17270C 8013202C 00000000 */       nop 
+  /* 17270C 8013202C 00000000 */       nop
 
-glabel func_ovl48_80132030
+glabel mvOpeningPikachuPokeballCreateBackgroundViewport
   /* 172710 80132030 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 172714 80132034 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 172718 80132038 AFBF003C */        sw $ra, 0x3c($sp)
@@ -399,31 +399,31 @@ glabel func_ovl48_80132030
   /* 1727A0 801320C0 8FBF003C */        lw $ra, 0x3c($sp)
   /* 1727A4 801320C4 27BD0040 */     addiu $sp, $sp, 0x40
   /* 1727A8 801320C8 03E00008 */        jr $ra
-  /* 1727AC 801320CC 00000000 */       nop 
+  /* 1727AC 801320CC 00000000 */       nop
 
-glabel func_ovl48_801320D0
-  /* 1727B0 801320D0 3C018013 */       lui $at, %hi(D_ovl48_8013248C)
+glabel mvOpeningPikachuPokeballInitFramesElapsed
+  /* 1727B0 801320D0 3C018013 */       lui $at, %hi(gMvOpeningPikachuPokeballFramesElapsed)
   /* 1727B4 801320D4 03E00008 */        jr $ra
-  /* 1727B8 801320D8 AC20248C */        sw $zero, %lo(D_ovl48_8013248C)($at)
+  /* 1727B8 801320D8 AC20248C */        sw $zero, %lo(gMvOpeningPikachuPokeballFramesElapsed)($at)
 
-glabel func_ovl48_801320DC
-  /* 1727BC 801320DC 3C038013 */       lui $v1, %hi(D_ovl48_8013248C)
-  /* 1727C0 801320E0 2463248C */     addiu $v1, $v1, %lo(D_ovl48_8013248C)
-  /* 1727C4 801320E4 8C6E0000 */        lw $t6, ($v1) # D_ovl48_8013248C + 0
+glabel mvOpeningPikachuPokeballMainProc
+  /* 1727BC 801320DC 3C038013 */       lui $v1, %hi(gMvOpeningPikachuPokeballFramesElapsed)
+  /* 1727C0 801320E0 2463248C */     addiu $v1, $v1, %lo(gMvOpeningPikachuPokeballFramesElapsed)
+  /* 1727C4 801320E4 8C6E0000 */        lw $t6, ($v1) # gMvOpeningPikachuPokeballFramesElapsed + 0
   /* 1727C8 801320E8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1727CC 801320EC AFBF0014 */        sw $ra, 0x14($sp)
   /* 1727D0 801320F0 25CF0001 */     addiu $t7, $t6, 1
   /* 1727D4 801320F4 29E1000A */      slti $at, $t7, 0xa
   /* 1727D8 801320F8 AFA40018 */        sw $a0, 0x18($sp)
   /* 1727DC 801320FC 14200026 */      bnez $at, .L80132198
-  /* 1727E0 80132100 AC6F0000 */        sw $t7, ($v1) # D_ovl48_8013248C + 0
-  /* 1727E4 80132104 3C068013 */       lui $a2, %hi(D_ovl48_8013249C)
-  /* 1727E8 80132108 24C6249C */     addiu $a2, $a2, %lo(D_ovl48_8013249C)
-  /* 1727EC 8013210C 8CC20000 */        lw $v0, ($a2) # D_ovl48_8013249C + 0
+  /* 1727E0 80132100 AC6F0000 */        sw $t7, ($v1) # gMvOpeningPikachuPokeballFramesElapsed + 0
+  /* 1727E4 80132104 3C068013 */       lui $a2, %hi(gMvOpeningPikachuPokeballUnusedCounter)
+  /* 1727E8 80132108 24C6249C */     addiu $a2, $a2, %lo(gMvOpeningPikachuPokeballUnusedCounter)
+  /* 1727EC 8013210C 8CC20000 */        lw $v0, ($a2) # gMvOpeningPikachuPokeballUnusedCounter + 0
   /* 1727F0 80132110 2404FFF1 */     addiu $a0, $zero, -0xf
   /* 1727F4 80132114 10400002 */      beqz $v0, .L80132120
   /* 1727F8 80132118 2459FFFF */     addiu $t9, $v0, -1
-  /* 1727FC 8013211C ACD90000 */        sw $t9, ($a2) # D_ovl48_8013249C + 0
+  /* 1727FC 8013211C ACD90000 */        sw $t9, ($a2) # gMvOpeningPikachuPokeballUnusedCounter + 0
   .L80132120:
   /* 172800 80132120 0C0E4281 */       jal func_ovl1_80390A04
   /* 172804 80132124 2405000F */     addiu $a1, $zero, 0xf
@@ -432,8 +432,8 @@ glabel func_ovl48_801320DC
   /* 172810 80132130 0C0E42B0 */       jal func_ovl1_80390AC0
   /* 172814 80132134 2405000F */     addiu $a1, $zero, 0xf
   /* 172818 80132138 10400002 */      beqz $v0, .L80132144
-  /* 17281C 8013213C 3C018013 */       lui $at, %hi(D_ovl48_8013249C)
-  /* 172820 80132140 AC20249C */        sw $zero, %lo(D_ovl48_8013249C)($at)
+  /* 17281C 8013213C 3C018013 */       lui $at, %hi(gMvOpeningPikachuPokeballUnusedCounter)
+  /* 172820 80132140 AC20249C */        sw $zero, %lo(gMvOpeningPikachuPokeballUnusedCounter)($at)
   .L80132144:
   /* 172824 80132144 0C0E41DB */       jal func_ovl1_8039076C
   /* 172828 80132148 3404D000 */       ori $a0, $zero, 0xd000
@@ -446,8 +446,8 @@ glabel func_ovl48_801320DC
   /* 172844 80132164 0C00171D */       jal func_80005C74
   /* 172848 80132168 A0480001 */        sb $t0, 1($v0) # gSceneData + 1
   .L8013216C:
-  /* 17284C 8013216C 3C0A8013 */       lui $t2, %hi(D_ovl48_8013248C)
-  /* 172850 80132170 8D4A248C */        lw $t2, %lo(D_ovl48_8013248C)($t2)
+  /* 17284C 8013216C 3C0A8013 */       lui $t2, %hi(gMvOpeningPikachuPokeballFramesElapsed)
+  /* 172850 80132170 8D4A248C */        lw $t2, %lo(gMvOpeningPikachuPokeballFramesElapsed)($t2)
   /* 172854 80132174 3C02800A */       lui $v0, %hi(gSceneData)
   /* 172858 80132178 240100A0 */     addiu $at, $zero, 0xa0
   /* 17285C 8013217C 15410006 */       bne $t2, $at, .L80132198
@@ -461,8 +461,9 @@ glabel func_ovl48_801320DC
   /* 172878 80132198 8FBF0014 */        lw $ra, 0x14($sp)
   /* 17287C 8013219C 27BD0018 */     addiu $sp, $sp, 0x18
   /* 172880 801321A0 03E00008 */        jr $ra
-  /* 172884 801321A4 00000000 */       nop 
+  /* 172884 801321A4 00000000 */       nop
 
+glabel mvOpeningPikachuPokeballInit
   /* 172888 801321A8 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 17288C 801321AC 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 172890 801321B0 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -499,8 +500,8 @@ glabel func_ovl48_801320DC
   /* 17290C 8013222C 24050001 */     addiu $a1, $zero, 1
   /* 172910 80132230 0C033781 */       jal rdManagerLoadFiles
   /* 172914 80132234 00403825 */        or $a3, $v0, $zero
-  /* 172918 80132238 3C058013 */       lui $a1, %hi(func_ovl48_801320DC)
-  /* 17291C 8013223C 24A520DC */     addiu $a1, $a1, %lo(func_ovl48_801320DC)
+  /* 172918 80132238 3C058013 */       lui $a1, %hi(mvOpeningPikachuPokeballMainProc)
+  /* 17291C 8013223C 24A520DC */     addiu $a1, $a1, %lo(mvOpeningPikachuPokeballMainProc)
   /* 172920 80132240 00002025 */        or $a0, $zero, $zero
   /* 172924 80132244 00003025 */        or $a2, $zero, $zero
   /* 172928 80132248 0C00265A */       jal omMakeGObjCommon
@@ -513,11 +514,11 @@ glabel func_ovl48_801320DC
   /* 172944 80132264 0C002E7F */       jal func_8000B9FC
   /* 172948 80132268 24070003 */     addiu $a3, $zero, 3
   /* 17294C 8013226C 0C045624 */       jal func_ovl2_80115890
-  /* 172950 80132270 00000000 */       nop 
-  /* 172954 80132274 0C04C834 */       jal func_ovl48_801320D0
-  /* 172958 80132278 00000000 */       nop 
+  /* 172950 80132270 00000000 */       nop
+  /* 172954 80132274 0C04C834 */       jal mvOpeningPikachuPokeballInitFramesElapsed
+  /* 172958 80132278 00000000 */       nop
   /* 17295C 8013227C 0C03F4C0 */       jal efManager_AllocUserData
-  /* 172960 80132280 00000000 */       nop 
+  /* 172960 80132280 00000000 */       nop
   /* 172964 80132284 24040001 */     addiu $a0, $zero, 1
   /* 172968 80132288 0C035C65 */       jal ftManager_AllocFighterData
   /* 17296C 8013228C 24050001 */     addiu $a1, $zero, 1
@@ -527,21 +528,21 @@ glabel func_ovl48_801320DC
   /* 17297C 8013229C 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 172980 801322A0 0C001260 */       jal gsMemoryAlloc
   /* 172984 801322A4 24050010 */     addiu $a1, $zero, 0x10
-  /* 172988 801322A8 3C018013 */       lui $at, %hi(D_ovl48_80132488)
+  /* 172988 801322A8 3C018013 */       lui $at, %hi(gMvOpeningPikachuPokeballFighterAnimHeap)
   /* 17298C 801322AC 0C04C7CB */       jal func_ovl48_80131F2C
-  /* 172990 801322B0 AC222488 */        sw $v0, %lo(D_ovl48_80132488)($at)
-  /* 172994 801322B4 0C04C80C */       jal func_ovl48_80132030
-  /* 172998 801322B8 00000000 */       nop 
+  /* 172990 801322B0 AC222488 */        sw $v0, %lo(gMvOpeningPikachuPokeballFighterAnimHeap)($at)
+  /* 172994 801322B4 0C04C80C */       jal mvOpeningPikachuPokeballCreateBackgroundViewport
+  /* 172998 801322B8 00000000 */       nop
   /* 17299C 801322BC 0C04C6D6 */       jal func_ovl48_80131B58
-  /* 1729A0 801322C0 00000000 */       nop 
-  /* 1729A4 801322C4 0C04C6F5 */       jal func_ovl48_80131BD4
-  /* 1729A8 801322C8 00000000 */       nop 
+  /* 1729A0 801322C0 00000000 */       nop
+  /* 1729A4 801322C4 0C04C6F5 */       jal mvOpeningPikachuPokeballCreateFighter
+  /* 1729A8 801322C8 00000000 */       nop
   /* 1729AC 801322CC 0C04C729 */       jal func_ovl48_80131CA4
-  /* 1729B0 801322D0 00000000 */       nop 
+  /* 1729B0 801322D0 00000000 */       nop
   /* 1729B4 801322D4 0C04C75F */       jal func_ovl48_80131D7C
-  /* 1729B8 801322D8 00000000 */       nop 
+  /* 1729B8 801322D8 00000000 */       nop
   /* 1729BC 801322DC 0C04C795 */       jal func_ovl48_80131E54
-  /* 1729C0 801322E0 00000000 */       nop 
+  /* 1729C0 801322E0 00000000 */       nop
   /* 1729C4 801322E4 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 1729C8 801322E8 44816000 */      mtc1 $at, $f12 # 45.0 to cop1
   /* 1729CC 801322EC 240B00FF */     addiu $t3, $zero, 0xff
@@ -553,21 +554,21 @@ glabel func_ovl48_801320DC
   /* 1729E4 80132304 0C0E4138 */       jal func_ovl1_803904E0
   /* 1729E8 80132308 46006386 */     mov.s $f14, $f12
   /* 1729EC 8013230C 0C00024B */       jal func_8000092C
-  /* 1729F0 80132310 00000000 */       nop 
+  /* 1729F0 80132310 00000000 */       nop
   /* 1729F4 80132314 2C410A82 */     sltiu $at, $v0, 0xa82
   /* 1729F8 80132318 50200007 */      beql $at, $zero, .L80132338
   /* 1729FC 8013231C 8FBF001C */        lw $ra, 0x1c($sp)
   .L80132320:
   /* 172A00 80132320 0C00024B */       jal func_8000092C
-  /* 172A04 80132324 00000000 */       nop 
+  /* 172A04 80132324 00000000 */       nop
   /* 172A08 80132328 2C410A82 */     sltiu $at, $v0, 0xa82
   /* 172A0C 8013232C 1420FFFC */      bnez $at, .L80132320
-  /* 172A10 80132330 00000000 */       nop 
+  /* 172A10 80132330 00000000 */       nop
   /* 172A14 80132334 8FBF001C */        lw $ra, 0x1c($sp)
   .L80132338:
   /* 172A18 80132338 27BD0050 */     addiu $sp, $sp, 0x50
   /* 172A1C 8013233C 03E00008 */        jr $ra
-  /* 172A20 80132340 00000000 */       nop 
+  /* 172A20 80132340 00000000 */       nop
 
 glabel intro_pika_pokeball_entry
   /* 172A24 80132344 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
@@ -591,6 +592,6 @@ glabel intro_pika_pokeball_entry
   /* 172A6C 8013238C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 172A70 80132390 27BD0018 */     addiu $sp, $sp, 0x18
   /* 172A74 80132394 03E00008 */        jr $ra
-  /* 172A78 80132398 00000000 */       nop 
+  /* 172A78 80132398 00000000 */       nop
 
-  /* 172A7C 8013239C 00000000 */       nop 
+  /* 172A7C 8013239C 00000000 */       nop

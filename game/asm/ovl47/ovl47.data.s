@@ -40,7 +40,7 @@ glabel D_ovl47_80132924
   .incbin "ovl47.raw.bin", 0x0E64, 0x20
   /* E84 1721A4 80132984 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl47.raw.bin", 0x0E88, 0x24
-  /* EAC 1721CC 801329AC */  .4byte func_ovl47_801326A8
+  /* EAC 1721CC 801329AC */  .4byte mvOpeningMarioVsKirbyInit
 
 glabel D_ovl47_801329B0
   /* EB0 1721D0 801329B0 */

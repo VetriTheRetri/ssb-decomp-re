@@ -24,16 +24,18 @@ extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
 
 extern uintptr_t gMvOpeningMarioVsKirbyFilesArray[2]; // 0x80132B98[2]
-// gMvOpeningMarioVsKirbyFilesArray[0] - D_ovl47_80132B98; // file 0x044 pointer
+// gMvOpeningMarioVsKirbyFilesArray[0] - D_ovl47_80132B98; // file 0x045 pointer
 // gMvOpeningMarioVsKirbyFilesArray[1] - D_ovl47_80132B9C; // file 0x046 pointer
 
 // // Offsets
-// extern intptr_t FILE_044_HILL_OBJECT_OFFSET = 0x37A0; // file 0x044 offset for Link Hill's Hills
-// extern intptr_t FILE_044_OCARINA_OFFSET_1 = 0x67A0; // file 0x044 offset for Link Hill ocarina
-// extern intptr_t FILE_044_OCARINA_OFFSET_2 = 0x6850; // file 0x044 offset for Link Hill ocarina
-// extern intptr_t FILE_044_CAMERA_PARAMETERS_OFFSET = 0x8910; // file 0x044 offset for camera parameters
+extern intptr_t FILE_045_STAGE_GEOMETRY_OFFSET = 0x1C10; // file 0x045 offset for stage geometry
+extern intptr_t FILE_045_LIGHTNING_OFFSET_1 = 0x6140; // file 0x045 offset for lightning
+extern intptr_t FILE_045_LIGHTNING_OFFSET_2 = 0x6950; // file 0x045 offset for lightning
+extern intptr_t FILE_045_LIGHTNING_OFFSET_3 = 0x6BB8; // file 0x045 offset for lightning
+extern intptr_t FILE_045_LIGHTNING_OFFSET_4 = 0x6D60; // file 0x045 offset for lightning
+extern intptr_t FILE_045_CAMERA_PARAMETERS_OFFSET = 0x7250; // file 0x045 offset for camera parameters
 
-// extern intptr_t FILE_046_BACKGROUND_IMAGE_OFFSET = 0xB500; // file 0x046 offset for background image footer
+extern intptr_t FILE_046_BACKGROUND_IMAGE_OFFSET = 0xB500; // file 0x046 offset for background image footer
 
 // 0x80131B00
 void mvOpeningMarioVsKirbySetupDisplayList(Gfx **display_list)
@@ -43,12 +45,10 @@ void mvOpeningMarioVsKirbySetupDisplayList(Gfx **display_list)
 }
 
 // 0x80131B58
-void func_ovl47_80131B58()
+void mvOpeningMarioVsKirbyCreateStageGeometry()
 {
-    GObj* temp_v0;
-
-    temp_v0 = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
-    omAddDObjForGObj(temp_v0, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &D_NF_00001C10));
+    GObj* temp_v0 = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    omAddDObjForGObj(temp_v0, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &FILE_045_STAGE_GEOMETRY_OFFSET));
     omAddOMMtxForDObjFixed(DObjGetStruct(temp_v0), 0x1C, 0);
     omAddGObjRenderProc(temp_v0, odRenderDObjDLHead0, 0x1A, 0x80000000, -1);
 
@@ -187,14 +187,14 @@ void mvOpeningMarioVsKirbyCreateBackground()
     omAddGObjRenderProc(bg_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
     omAddGObjCommonProc(bg_gobj, mvOpeningMarioVsKirbyScrollBackground, 1, 1);
 
-    bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[1], &D_NF_0000B500));
+    bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[1], &FILE_046_BACKGROUND_IMAGE_OFFSET));
     bg_sobj->sprite.attr &= ~SP_FASTCOPY;
     bg_sobj->sprite.scalex = 2.0F;
     bg_sobj->sprite.scaley = 2.0F;
     bg_sobj->pos.x = 0.0F;
     bg_sobj->pos.y = 0.0F;
 
-    bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[1], &D_NF_0000B500));
+    bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[1], &FILE_046_BACKGROUND_IMAGE_OFFSET));
     bg_sobj->sprite.attr &= ~SP_FASTCOPY;
     bg_sobj->sprite.scalex = 2.0F;
     bg_sobj->sprite.scaley = 2.0F;
@@ -203,26 +203,26 @@ void mvOpeningMarioVsKirbyCreateBackground()
 }
 
 // 0x801320C0
-void func_ovl47_801320C0()
+void mvOpeningMarioVsKirbyCreateLightning()
 {
-    GObj* temp_v0;
+    GObj* lightning_gobj;
 
-    temp_v0 = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
-    func_8000F590(temp_v0, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &D_NF_00006950), 0, 0x1C, 0, 0);
-    func_8000F8F4(temp_v0, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &D_NF_00006140));
-    func_8000BE28(temp_v0, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &D_NF_00006BB8), 0.0F);
-    omAddGObjRenderProc(temp_v0, &odRenderDObjTreeDLLinksForGObj, 0x1A, 0x80000000, -1);
+    lightning_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    func_8000F590(lightning_gobj, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &FILE_045_LIGHTNING_OFFSET_2), 0, 0x1C, 0, 0);
+    func_8000F8F4(lightning_gobj, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &FILE_045_LIGHTNING_OFFSET_1));
+    func_8000BE28(lightning_gobj, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &FILE_045_LIGHTNING_OFFSET_3), 0.0F);
+    omAddGObjRenderProc(lightning_gobj, odRenderDObjTreeDLLinksForGObj, 0x1A, 0x80000000, -1);
 
-    DObjGetStruct(temp_v0)->translate.vec.f.x = 0.0F;
-    DObjGetStruct(temp_v0)->translate.vec.f.y = 0.0F;
-    DObjGetStruct(temp_v0)->translate.vec.f.z = 0.0F;
+    DObjGetStruct(lightning_gobj)->translate.vec.f.x = 0.0F;
+    DObjGetStruct(lightning_gobj)->translate.vec.f.y = 0.0F;
+    DObjGetStruct(lightning_gobj)->translate.vec.f.z = 0.0F;
 
-    func_8000BD8C(temp_v0, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &D_NF_00006D60), 0.0F);
-    omAddGObjCommonProc(temp_v0, func_8000DF34, 1, 1);
+    func_8000BD8C(lightning_gobj, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &FILE_045_LIGHTNING_OFFSET_4), 0.0F);
+    omAddGObjCommonProc(lightning_gobj, func_8000DF34, 1, 1);
 }
 
 // 0x801321D8
-void func_ovl47_801321D8(s32 arg0)
+void mvOpeningMarioVsKirbyRenderLightningFlash(GObj* arg0)
 {
     gDPPipeSync(gDisplayListHead[1]++);
     gDPSetCycleType(gDisplayListHead[1]++, G_CYC_1CYCLE);
@@ -251,13 +251,13 @@ void func_ovl147_80132330() {
 }
 
 // 0x80132338
-void func_ovl47_80132338()
+void mvOpeningMarioVsKirbyCreateLightningFlash()
 {
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x12, 0x80000000), func_ovl47_801321D8, 0x1C, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x12, 0x80000000), mvOpeningMarioVsKirbyRenderLightningFlash, 0x1C, 0x80000000, -1);
 }
 
 // 0x80132384
-void func_ovl47_80132384()
+void mvOpeningMarioVsKirbyCreateLightningFlashViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
@@ -270,7 +270,7 @@ void func_ovl147_80132424() {
 }
 
 // 0x8013242C
-void func_ovl47_8013242C()
+void mvOpeningMarioVsKirbyCreateMainViewport()
 {
     GObj* camera_gobj;
     Camera* cam;
@@ -280,12 +280,12 @@ void func_ovl47_8013242C()
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0f);
     cam->projection.persp.near = 128.0F;
     cam->projection.persp.far = 16384.0F;
-    func_8000FA3C(cam, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &D_NF_00007250), 0.0F);
+    func_8000FA3C(cam, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &FILE_045_CAMERA_PARAMETERS_OFFSET), 0.0F);
     omAddGObjCommonProc(camera_gobj, func_80010580, 1, 1);
 }
 
 // 0x80132530
-void func_ovl47_80132530()
+void mvOpeningMarioVsKirbyCreateBackgroundViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x5A, 0x08000000, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
@@ -332,7 +332,7 @@ void mvOpeningMarioVsKirbyMainProc(GObj* arg0)
 }
 
 // 0x801326A8
-void func_ovl47_801326A8()
+void mvOpeningMarioVsKirbyInit()
 {
     s32 foo;
     rdSetup rldmSetup;
@@ -359,14 +359,14 @@ void func_ovl47_801326A8()
 
     gMvOpeningMarioVsKirbyAnimHeapMario = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
     gMvOpeningMarioVsKirbyAnimHeapKirby = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
-    func_ovl47_8013242C();
-    func_ovl47_80132530();
-    func_ovl47_80132384();
+    mvOpeningMarioVsKirbyCreateMainViewport();
+    mvOpeningMarioVsKirbyCreateBackgroundViewport();
+    mvOpeningMarioVsKirbyCreateLightningFlashViewport();
     mvOpeningMarioVsKirbyCreateBackground();
     mvOpeningMarioVsKirbyCreateFighters();
-    func_ovl47_80131B58();
-    func_ovl47_801320C0();
-    func_ovl47_80132338();
+    mvOpeningMarioVsKirbyCreateStageGeometry();
+    mvOpeningMarioVsKirbyCreateLightning();
+    mvOpeningMarioVsKirbyCreateLightningFlash();
     func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
     while (func_8000092C() < 3610U)

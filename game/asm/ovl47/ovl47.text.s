@@ -36,7 +36,7 @@ glabel mvOpeningMarioVsKirbySetupDisplayList
   /* 171370 80131B50 03E00008 */        jr $ra
   /* 171374 80131B54 00000000 */       nop
 
-glabel func_ovl47_80131B58
+glabel mvOpeningMarioVsKirbyCreateStageGeometry
   /* 171378 80131B58 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 17137C 80131B5C AFBF0024 */        sw $ra, 0x24($sp)
   /* 171380 80131B60 AFB00020 */        sw $s0, 0x20($sp)
@@ -410,7 +410,7 @@ glabel mvOpeningMarioVsKirbyCreateBackground
   /* 1718D8 801320B8 03E00008 */        jr $ra
   /* 1718DC 801320BC 00000000 */       nop
 
-glabel func_ovl47_801320C0
+glabel mvOpeningMarioVsKirbyCreateLightning
   /* 1718E0 801320C0 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 1718E4 801320C4 AFBF0024 */        sw $ra, 0x24($sp)
   /* 1718E8 801320C8 AFB00020 */        sw $s0, 0x20($sp)
@@ -482,7 +482,7 @@ glabel func_ovl47_801320C0
   /* 1719F0 801321D0 03E00008 */        jr $ra
   /* 1719F4 801321D4 00000000 */       nop
 
-glabel func_ovl47_801321D8
+glabel mvOpeningMarioVsKirbyRenderLightningFlash
   /* 1719F8 801321D8 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 1719FC 801321DC 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 171A00 801321E0 8C620004 */        lw $v0, 4($v1) # gDisplayListHead + 4
@@ -579,7 +579,7 @@ glabel func_ovl47_801321D8
   /* 171B50 80132330 03E00008 */        jr $ra
   /* 171B54 80132334 00000000 */       nop
 
-glabel func_ovl47_80132338
+glabel mvOpeningMarioVsKirbyCreateLightningFlash
   /* 171B58 80132338 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 171B5C 8013233C AFBF001C */        sw $ra, 0x1c($sp)
   /* 171B60 80132340 00002025 */        or $a0, $zero, $zero
@@ -587,10 +587,10 @@ glabel func_ovl47_80132338
   /* 171B68 80132348 24060012 */     addiu $a2, $zero, 0x12
   /* 171B6C 8013234C 0C00265A */       jal omMakeGObjCommon
   /* 171B70 80132350 3C078000 */       lui $a3, 0x8000
-  /* 171B74 80132354 3C058013 */       lui $a1, %hi(func_ovl47_801321D8)
+  /* 171B74 80132354 3C058013 */       lui $a1, %hi(mvOpeningMarioVsKirbyRenderLightningFlash)
   /* 171B78 80132358 240EFFFF */     addiu $t6, $zero, -1
   /* 171B7C 8013235C AFAE0010 */        sw $t6, 0x10($sp)
-  /* 171B80 80132360 24A521D8 */     addiu $a1, $a1, %lo(func_ovl47_801321D8)
+  /* 171B80 80132360 24A521D8 */     addiu $a1, $a1, %lo(mvOpeningMarioVsKirbyRenderLightningFlash)
   /* 171B84 80132364 00402025 */        or $a0, $v0, $zero
   /* 171B88 80132368 2406001C */     addiu $a2, $zero, 0x1c
   /* 171B8C 8013236C 0C00277D */       jal omAddGObjRenderProc
@@ -600,7 +600,7 @@ glabel func_ovl47_80132338
   /* 171B9C 8013237C 03E00008 */        jr $ra
   /* 171BA0 80132380 00000000 */       nop
 
-glabel func_ovl47_80132384
+glabel mvOpeningMarioVsKirbyCreateLightningFlashViewport
   /* 171BA4 80132384 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 171BA8 80132388 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 171BAC 8013238C AFBF003C */        sw $ra, 0x3c($sp)
@@ -645,7 +645,7 @@ glabel func_ovl47_80132384
   /* 171C44 80132424 03E00008 */        jr $ra
   /* 171C48 80132428 00000000 */       nop
 
-glabel func_ovl47_8013242C
+glabel mvOpeningMarioVsKirbyCreateMainViewport
   /* 171C4C 8013242C 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 171C50 80132430 3C0E8001 */       lui $t6, %hi(func_80017EC0)
   /* 171C54 80132434 3C190400 */       lui $t9, (0x4000200 >> 16) # 67109376
@@ -712,7 +712,7 @@ glabel func_ovl47_8013242C
   /* 171D48 80132528 03E00008 */        jr $ra
   /* 171D4C 8013252C 00000000 */       nop
 
-glabel func_ovl47_80132530
+glabel mvOpeningMarioVsKirbyCreateBackgroundViewport
   /* 171D50 80132530 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 171D54 80132534 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 171D58 80132538 AFBF003C */        sw $ra, 0x3c($sp)
@@ -816,7 +816,7 @@ glabel mvOpeningMarioVsKirbyMainProc
   /* 171EC0 801326A0 03E00008 */        jr $ra
   /* 171EC4 801326A4 00000000 */       nop
 
-glabel func_ovl47_801326A8
+glabel mvOpeningMarioVsKirbyInit
   /* 171EC8 801326A8 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 171ECC 801326AC 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 171ED0 801326B0 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -890,21 +890,21 @@ glabel func_ovl47_801326A8
   /* 171FE0 801327C0 0C001260 */       jal gsMemoryAlloc
   /* 171FE4 801327C4 24050010 */     addiu $a1, $zero, 0x10
   /* 171FE8 801327C8 3C018013 */       lui $at, %hi(gMvOpeningMarioVsKirbyAnimHeapKirby)
-  /* 171FEC 801327CC 0C04C90B */       jal func_ovl47_8013242C
+  /* 171FEC 801327CC 0C04C90B */       jal mvOpeningMarioVsKirbyCreateMainViewport
   /* 171FF0 801327D0 AC2229CC */        sw $v0, %lo(gMvOpeningMarioVsKirbyAnimHeapKirby)($at)
-  /* 171FF4 801327D4 0C04C94C */       jal func_ovl47_80132530
+  /* 171FF4 801327D4 0C04C94C */       jal mvOpeningMarioVsKirbyCreateBackgroundViewport
   /* 171FF8 801327D8 00000000 */       nop
-  /* 171FFC 801327DC 0C04C8E1 */       jal func_ovl47_80132384
+  /* 171FFC 801327DC 0C04C8E1 */       jal mvOpeningMarioVsKirbyCreateLightningFlashViewport
   /* 172000 801327E0 00000000 */       nop
   /* 172004 801327E4 0C04C7F2 */       jal mvOpeningMarioVsKirbyCreateBackground
   /* 172008 801327E8 00000000 */       nop
   /* 17200C 801327EC 0C04C700 */       jal mvOpeningMarioVsKirbyCreateFighters
   /* 172010 801327F0 00000000 */       nop
-  /* 172014 801327F4 0C04C6D6 */       jal func_ovl47_80131B58
+  /* 172014 801327F4 0C04C6D6 */       jal mvOpeningMarioVsKirbyCreateStageGeometry
   /* 172018 801327F8 00000000 */       nop
-  /* 17201C 801327FC 0C04C830 */       jal func_ovl47_801320C0
+  /* 17201C 801327FC 0C04C830 */       jal mvOpeningMarioVsKirbyCreateLightning
   /* 172020 80132800 00000000 */       nop
-  /* 172024 80132804 0C04C8CE */       jal func_ovl47_80132338
+  /* 172024 80132804 0C04C8CE */       jal mvOpeningMarioVsKirbyCreateLightningFlash
   /* 172028 80132808 00000000 */       nop
   /* 17202C 8013280C 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 172030 80132810 44816000 */      mtc1 $at, $f12 # 45.0 to cop1

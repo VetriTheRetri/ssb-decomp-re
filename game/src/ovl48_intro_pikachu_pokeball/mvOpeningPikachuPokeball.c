@@ -14,9 +14,9 @@ extern scRuntimeInfo D_ovl48_801323F4;
 
 uintptr_t gMvOpeningPikachuPokeballFighterAnimHeap; // 0x80132488
 extern s32 gMvOpeningPikachuPokeballFramesElapsed; // 0x8013248C
-// extern GObj* gMvOpeningPikachuPokeballOcarinaGObj; // 0x80132490
+
 extern GObj* gMvOpeningPikachuPokeballFighterGObj; // 0x80132494
-// extern f32 gMvOpeningPikachuPokeballBackgroundScrollSpeed; // 0x801327D8
+
 extern s32 gMvOpeningPikachuPokeballUnusedCounter; // 0x8013249C
 extern rdFileNode D_ovl48_801324A0[48];
 extern rdFileNode D_ovl48_80132620[7];
@@ -27,10 +27,14 @@ extern uintptr_t gMvOpeningPikachuPokeballFilesArray[1]; // 0x80132658[1]
 // gMvOpeningPikachuPokeballFilesArray[0] - D_ovl48_80132658; // file 0x047 pointer
 
 // // Offsets
-// extern intptr_t FILE_047_HILL_OBJECT_OFFSET = 0x37A0; // file 0x047 offset for Link Hill's Hills
-// extern intptr_t FILE_047_OCARINA_OFFSET_1 = 0x67A0; // file 0x047 offset for Link Hill ocarina
-// extern intptr_t FILE_047_OCARINA_OFFSET_2 = 0x6850; // file 0x047 offset for Link Hill ocarina
-// extern intptr_t FILE_047_CAMERA_PARAMETERS_OFFSET = 0x8910; // file 0x047 offset for camera parameters
+extern intptr_t FILE_047_LEGS_OFFSET_1 = 0x9548; // file 0x047 offset for legs
+extern intptr_t FILE_047_LEGS_OFFSET_2 = 0x98C0; // file 0x047 offset for legs
+extern intptr_t FILE_047_LEGS_SHADOW_OFFSET_1 = 0xB2B0; // file 0x047 offset for legs shadow
+extern intptr_t FILE_047_LEGS_SHADOW_OFFSET_2 = 0xB390; // file 0x047 offset for legs shadow
+extern intptr_t FILE_047_POKEBALL_OFFSET_1 = 0xC9E0; // file 0x047 offset for pokeball
+extern intptr_t FILE_047_POKEBALL_OFFSET_2 = 0xCAC0; // file 0x047 offset for pokeball
+extern intptr_t FILE_047_CAMERA_PARAMETERS_OFFSET = 0xD330; // file 0x047 offset for camera parameters
+extern intptr_t FILE_047_BACKGROUND_IMAGE_OFFSET = 0x3EE58; // file 0x047 offset for background
 
 // 0x80131B00
 void mvOpeningPikachuPokeballSetupDisplayList(Gfx **display_list)
@@ -40,7 +44,7 @@ void mvOpeningPikachuPokeballSetupDisplayList(Gfx **display_list)
 }
 
 // 0x80131B58
-void func_ovl48_80131B58()
+void mvOpeningPikachuPokeballCreateBackground()
 {
     GObj* temp_v0;
     SObj* temp_v0_2;
@@ -48,7 +52,7 @@ void func_ovl48_80131B58()
     temp_v0 = omMakeGObjCommon(0, 0, 0x14, 0x80000000);
     omAddGObjRenderProc(temp_v0, func_ovl0_800CCF00, 0x1C, 0x80000000, -1);
 
-    temp_v0_2 = gcAppendSObjWithSprite(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &D_NF_0003EE58));
+    temp_v0_2 = gcAppendSObjWithSprite(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &FILE_047_BACKGROUND_IMAGE_OFFSET));
     temp_v0_2->pos.x = 0.0F;
     temp_v0_2->pos.y = 0.0F;
 }
@@ -75,59 +79,59 @@ void mvOpeningPikachuPokeballCreateFighter()
 }
 
 // 0x80131CA4
-void func_ovl48_80131CA4()
+void mvOpeningPikachuPokeballCreateLegs()
 {
     GObj* temp_v0 = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
-    func_8000F590(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &D_NF_00009548), 0, 0x1C, 0, 0);
+    func_8000F590(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &FILE_047_LEGS_OFFSET_1), 0, 0x1C, 0, 0);
     omAddGObjRenderProc(temp_v0, odRenderDObjTreeForGObj, 0x1B, 0x80000000, -1);
 
     DObjGetStruct(temp_v0)->translate.vec.f.x = 0.0F;
     DObjGetStruct(temp_v0)->translate.vec.f.y = 0.0F;
     DObjGetStruct(temp_v0)->translate.vec.f.z = 0.0F;
 
-    func_8000BD8C(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &D_NF_000098C0), 0.0F);
+    func_8000BD8C(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &FILE_047_LEGS_OFFSET_2), 0.0F);
     omAddGObjCommonProc(temp_v0, func_8000DF34, 1, 1);
 }
 
 // 0x80131D7C
-void func_ovl48_80131D7C()
+void mvOpeningPikachuPokeballCreateLegsShadow()
 {
     GObj* temp_v0 = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
-    func_8000F590(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &D_NF_0000B2B0), 0, 0x1C, 0, 0);
+    func_8000F590(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &FILE_047_LEGS_SHADOW_OFFSET_1), 0, 0x1C, 0, 0);
     omAddGObjRenderProc(temp_v0, odRenderDObjTreeDLLinksForGObj, 0x1B, 0x80000000, -1);
 
     DObjGetStruct(temp_v0)->translate.vec.f.x = 0.0F;
     DObjGetStruct(temp_v0)->translate.vec.f.y = 0.0F;
     DObjGetStruct(temp_v0)->translate.vec.f.z = 0.0F;
 
-    func_8000BD8C(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &D_NF_0000B390), 0.0F);
+    func_8000BD8C(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &FILE_047_LEGS_SHADOW_OFFSET_2), 0.0F);
     omAddGObjCommonProc(temp_v0, func_8000DF34, 1, 1);
 }
 
 // 0x80131E54
-void func_ovl48_80131E54()
+void mvOpeningPikachuPokeballCreatePokeball()
 {
     GObj* temp_v0 = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
-    func_8000F590(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &D_NF_0000C9E0), 0, 0x1C, 0, 0);
+    func_8000F590(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &FILE_047_POKEBALL_OFFSET_1), 0, 0x1C, 0, 0);
     omAddGObjRenderProc(temp_v0, odRenderDObjTreeDLLinksForGObj, 0x1B, 0x80000000, -1);
 
     DObjGetStruct(temp_v0)->translate.vec.f.x = 0.0F;
     DObjGetStruct(temp_v0)->translate.vec.f.y = 0.0F;
     DObjGetStruct(temp_v0)->translate.vec.f.z = 0.0F;
 
-    func_8000BD8C(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &D_NF_0000CAC0), 0.0F);
+    func_8000BD8C(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &FILE_047_POKEBALL_OFFSET_2), 0.0F);
     omAddGObjCommonProc(temp_v0, func_8000DF34, 1, 1);
 }
 
 // 0x80131F2C
-void func_ovl48_80131F2C()
+void mvOpeningPikachuPokeballCreateMainViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x50, 0x8000200, -1, 1, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     cam->projection.persp.near = 128.0F;
     cam->projection.persp.far = 16384.0F;
-    func_8000FA3C(cam, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &D_NF_0000D330), 0.0F);
+    func_8000FA3C(cam, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &FILE_047_CAMERA_PARAMETERS_OFFSET), 0.0F);
     omAddGObjCommonProc(camera_gobj, func_80010580, 1, 1);
 }
 
@@ -204,13 +208,13 @@ void mvOpeningPikachuPokeballInit()
     ftManager_SetFileDataKind(Ft_Kind_Pikachu);
 
     gMvOpeningPikachuPokeballFighterAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
-    func_ovl48_80131F2C();
+    mvOpeningPikachuPokeballCreateMainViewport();
     mvOpeningPikachuPokeballCreateBackgroundViewport();
-    func_ovl48_80131B58();
+    mvOpeningPikachuPokeballCreateBackground();
     mvOpeningPikachuPokeballCreateFighter();
-    func_ovl48_80131CA4();
-    func_ovl48_80131D7C();
-    func_ovl48_80131E54();
+    mvOpeningPikachuPokeballCreateLegs();
+    mvOpeningPikachuPokeballCreateLegsShadow();
+    mvOpeningPikachuPokeballCreatePokeball();
     func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
     while (func_8000092C() < 2690U)

@@ -36,7 +36,7 @@ glabel mvOpeningPikachuPokeballSetupDisplayList
   /* 172230 80131B50 03E00008 */        jr $ra
   /* 172234 80131B54 00000000 */       nop
 
-glabel func_ovl48_80131B58
+glabel mvOpeningPikachuPokeballCreateBackground
   /* 172238 80131B58 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 17223C 80131B5C AFBF001C */        sw $ra, 0x1c($sp)
   /* 172240 80131B60 00002025 */        or $a0, $zero, $zero
@@ -124,7 +124,7 @@ glabel mvOpeningPikachuPokeballCreateFighter
   /* 17237C 80131C9C 03E00008 */        jr $ra
   /* 172380 80131CA0 00000000 */       nop
 
-glabel func_ovl48_80131CA4
+glabel mvOpeningPikachuPokeballCreateLegs
   /* 172384 80131CA4 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 172388 80131CA8 AFBF0024 */        sw $ra, 0x24($sp)
   /* 17238C 80131CAC AFB00020 */        sw $s0, 0x20($sp)
@@ -180,7 +180,7 @@ glabel func_ovl48_80131CA4
   /* 172454 80131D74 03E00008 */        jr $ra
   /* 172458 80131D78 00000000 */       nop
 
-glabel func_ovl48_80131D7C
+glabel mvOpeningPikachuPokeballCreateLegsShadow
   /* 17245C 80131D7C 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 172460 80131D80 AFBF0024 */        sw $ra, 0x24($sp)
   /* 172464 80131D84 AFB00020 */        sw $s0, 0x20($sp)
@@ -236,7 +236,7 @@ glabel func_ovl48_80131D7C
   /* 17252C 80131E4C 03E00008 */        jr $ra
   /* 172530 80131E50 00000000 */       nop
 
-glabel func_ovl48_80131E54
+glabel mvOpeningPikachuPokeballCreatePokeball
   /* 172534 80131E54 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 172538 80131E58 AFBF0024 */        sw $ra, 0x24($sp)
   /* 17253C 80131E5C AFB00020 */        sw $s0, 0x20($sp)
@@ -292,7 +292,7 @@ glabel func_ovl48_80131E54
   /* 172604 80131F24 03E00008 */        jr $ra
   /* 172608 80131F28 00000000 */       nop
 
-glabel func_ovl48_80131F2C
+glabel mvOpeningPikachuPokeballCreateMainViewport
   /* 17260C 80131F2C 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 172610 80131F30 3C0E8001 */       lui $t6, %hi(func_80017EC0)
   /* 172614 80131F34 3C190800 */       lui $t9, (0x8000200 >> 16) # 134218240
@@ -529,19 +529,19 @@ glabel mvOpeningPikachuPokeballInit
   /* 172980 801322A0 0C001260 */       jal gsMemoryAlloc
   /* 172984 801322A4 24050010 */     addiu $a1, $zero, 0x10
   /* 172988 801322A8 3C018013 */       lui $at, %hi(gMvOpeningPikachuPokeballFighterAnimHeap)
-  /* 17298C 801322AC 0C04C7CB */       jal func_ovl48_80131F2C
+  /* 17298C 801322AC 0C04C7CB */       jal mvOpeningPikachuPokeballCreateMainViewport
   /* 172990 801322B0 AC222488 */        sw $v0, %lo(gMvOpeningPikachuPokeballFighterAnimHeap)($at)
   /* 172994 801322B4 0C04C80C */       jal mvOpeningPikachuPokeballCreateBackgroundViewport
   /* 172998 801322B8 00000000 */       nop
-  /* 17299C 801322BC 0C04C6D6 */       jal func_ovl48_80131B58
+  /* 17299C 801322BC 0C04C6D6 */       jal mvOpeningPikachuPokeballCreateBackground
   /* 1729A0 801322C0 00000000 */       nop
   /* 1729A4 801322C4 0C04C6F5 */       jal mvOpeningPikachuPokeballCreateFighter
   /* 1729A8 801322C8 00000000 */       nop
-  /* 1729AC 801322CC 0C04C729 */       jal func_ovl48_80131CA4
+  /* 1729AC 801322CC 0C04C729 */       jal mvOpeningPikachuPokeballCreateLegs
   /* 1729B0 801322D0 00000000 */       nop
-  /* 1729B4 801322D4 0C04C75F */       jal func_ovl48_80131D7C
+  /* 1729B4 801322D4 0C04C75F */       jal mvOpeningPikachuPokeballCreateLegsShadow
   /* 1729B8 801322D8 00000000 */       nop
-  /* 1729BC 801322DC 0C04C795 */       jal func_ovl48_80131E54
+  /* 1729BC 801322DC 0C04C795 */       jal mvOpeningPikachuPokeballCreatePokeball
   /* 1729C0 801322E0 00000000 */       nop
   /* 1729C4 801322E4 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 1729C8 801322E8 44816000 */      mtc1 $at, $f12 # 45.0 to cop1

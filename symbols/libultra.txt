@@ -1,7 +1,7 @@
 __osViNext_A = 0x8003AB68;
-__osContPifRam_B = 0x8009EFA0;
+__osContPifRam = 0x8009EFA0;
 __osPfsPifRam = 0x800A0710;
-__osPfsPifRam_B = 0x800A074C;
+__osPfsPifRampifstatus = 0x800A074C;
 __osActiveQueue = 0x8003D3BC;
 __additional_scanline = 0x8003D63C;
 
@@ -102,6 +102,7 @@ osContInit = 0x80031AE0;
 osCreateThread = 0x80031E20;
 osContStartReadData = 0x80031F70;
 osContGetReadData = 0x80031FF4;
+__osPackReadData = 0x80032080;
 osVirtualToPhysical = 0x80032150;
 osViGetNextFramebuffer = 0x80032690; 
 osEPiLinkHandle = 0x80032810;

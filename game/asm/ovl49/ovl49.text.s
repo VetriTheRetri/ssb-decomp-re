@@ -12,7 +12,7 @@
 # Text Sections
 #  0x80131B00 -> 0x801328D0
 
-glabel func_ovl49_80131B00
+glabel mvOpeningKickEntrySetupDisplayList
   /* 172B60 80131B00 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 172B64 80131B04 AFBF0014 */        sw $ra, 0x14($sp)
   /* 172B68 80131B08 8C830000 */        lw $v1, ($a0)
@@ -34,14 +34,14 @@ glabel func_ovl49_80131B00
   /* 172BA8 80131B48 8FBF0014 */        lw $ra, 0x14($sp)
   /* 172BAC 80131B4C 27BD0028 */     addiu $sp, $sp, 0x28
   /* 172BB0 80131B50 03E00008 */        jr $ra
-  /* 172BB4 80131B54 00000000 */       nop 
+  /* 172BB4 80131B54 00000000 */       nop
 
   /* 172BB8 80131B58 03E00008 */        jr $ra
-  /* 172BBC 80131B5C 00000000 */       nop 
+  /* 172BBC 80131B5C 00000000 */       nop
 
-glabel func_ovl49_80131B60
+glabel mvOpeningKickEntryCreateFighters
   /* 172BC0 80131B60 27BDFF50 */     addiu $sp, $sp, -0xb0
-  /* 172BC4 80131B64 3C0F8013 */       lui $t7, %hi(D_ovl49_80132908)
+  /* 172BC4 80131B64 3C0F8013 */       lui $t7, %hi(dMvOpeningKickEntryFighterKinds)
   /* 172BC8 80131B68 AFBF003C */        sw $ra, 0x3c($sp)
   /* 172BCC 80131B6C AFB50038 */        sw $s5, 0x38($sp)
   /* 172BD0 80131B70 AFB40034 */        sw $s4, 0x34($sp)
@@ -51,24 +51,24 @@ glabel func_ovl49_80131B60
   /* 172BE0 80131B80 AFB00024 */        sw $s0, 0x24($sp)
   /* 172BE4 80131B84 F7B60018 */      sdc1 $f22, 0x18($sp)
   /* 172BE8 80131B88 F7B40010 */      sdc1 $f20, 0x10($sp)
-  /* 172BEC 80131B8C 25EF2908 */     addiu $t7, $t7, %lo(D_ovl49_80132908)
-  /* 172BF0 80131B90 8DF90000 */        lw $t9, ($t7) # D_ovl49_80132908 + 0
-  /* 172BF4 80131B94 8DF80004 */        lw $t8, 4($t7) # D_ovl49_80132908 + 4
+  /* 172BEC 80131B8C 25EF2908 */     addiu $t7, $t7, %lo(dMvOpeningKickEntryFighterKinds)
+  /* 172BF0 80131B90 8DF90000 */        lw $t9, ($t7) # dMvOpeningKickEntryFighterKinds + 0
+  /* 172BF4 80131B94 8DF80004 */        lw $t8, 4($t7) # dMvOpeningKickEntryFighterKinds + 4
   /* 172BF8 80131B98 27AE008C */     addiu $t6, $sp, 0x8c
   /* 172BFC 80131B9C ADD90000 */        sw $t9, ($t6)
   /* 172C00 80131BA0 ADD80004 */        sw $t8, 4($t6)
-  /* 172C04 80131BA4 8DF8000C */        lw $t8, 0xc($t7) # D_ovl49_80132908 + 12
-  /* 172C08 80131BA8 8DF90008 */        lw $t9, 8($t7) # D_ovl49_80132908 + 8
+  /* 172C04 80131BA4 8DF8000C */        lw $t8, 0xc($t7) # dMvOpeningKickEntryFighterKinds + 12
+  /* 172C08 80131BA8 8DF90008 */        lw $t9, 8($t7) # dMvOpeningKickEntryFighterKinds + 8
   /* 172C0C 80131BAC 3C088011 */       lui $t0, %hi(dFTDefaultFighterDesc)
   /* 172C10 80131BB0 ADD8000C */        sw $t8, 0xc($t6)
   /* 172C14 80131BB4 ADD90008 */        sw $t9, 8($t6)
-  /* 172C18 80131BB8 8DF90010 */        lw $t9, 0x10($t7) # D_ovl49_80132908 + 16
-  /* 172C1C 80131BBC 8DF80014 */        lw $t8, 0x14($t7) # D_ovl49_80132908 + 20
+  /* 172C18 80131BB8 8DF90010 */        lw $t9, 0x10($t7) # dMvOpeningKickEntryFighterKinds + 16
+  /* 172C1C 80131BBC 8DF80014 */        lw $t8, 0x14($t7) # dMvOpeningKickEntryFighterKinds + 20
   /* 172C20 80131BC0 27B30048 */     addiu $s3, $sp, 0x48
   /* 172C24 80131BC4 ADD90010 */        sw $t9, 0x10($t6)
   /* 172C28 80131BC8 ADD80014 */        sw $t8, 0x14($t6)
-  /* 172C2C 80131BCC 8DF8001C */        lw $t8, 0x1c($t7) # D_ovl49_80132908 + 28
-  /* 172C30 80131BD0 8DF90018 */        lw $t9, 0x18($t7) # D_ovl49_80132908 + 24
+  /* 172C2C 80131BCC 8DF8001C */        lw $t8, 0x1c($t7) # dMvOpeningKickEntryFighterKinds + 28
+  /* 172C30 80131BD0 8DF90018 */        lw $t9, 0x18($t7) # dMvOpeningKickEntryFighterKinds + 24
   /* 172C34 80131BD4 25086DD0 */     addiu $t0, $t0, %lo(dFTDefaultFighterDesc)
   /* 172C38 80131BD8 250C003C */     addiu $t4, $t0, 0x3c
   /* 172C3C 80131BDC 02605825 */        or $t3, $s3, $zero
@@ -86,14 +86,14 @@ glabel func_ovl49_80131B60
   /* 172C68 80131C08 AD6AFFFC */        sw $t2, -4($t3)
   /* 172C6C 80131C0C 8D0A0000 */        lw $t2, ($t0) # dFTDefaultFighterDesc + 0
   /* 172C70 80131C10 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
-  /* 172C74 80131C14 3C108013 */       lui $s0, %hi(D_ovl49_801329D8)
+  /* 172C74 80131C14 3C108013 */       lui $s0, %hi(gMvOpeningKickEntryFighterAnimHeaps)
   /* 172C78 80131C18 3C158013 */       lui $s5, %hi(D_ovl49_801329F8)
   /* 172C7C 80131C1C 3C140001 */       lui $s4, (0x1000B >> 16) # 65547
   /* 172C80 80131C20 4481B000 */      mtc1 $at, $f22 # 1.0 to cop1
   /* 172C84 80131C24 4480A000 */      mtc1 $zero, $f20
   /* 172C88 80131C28 3694000B */       ori $s4, $s4, (0x1000B & 0xFFFF) # 65547
   /* 172C8C 80131C2C 26B529F8 */     addiu $s5, $s5, %lo(D_ovl49_801329F8)
-  /* 172C90 80131C30 261029D8 */     addiu $s0, $s0, %lo(D_ovl49_801329D8)
+  /* 172C90 80131C30 261029D8 */     addiu $s0, $s0, %lo(gMvOpeningKickEntryFighterAnimHeaps)
   /* 172C94 80131C34 27B2008C */     addiu $s2, $sp, 0x8c
   /* 172C98 80131C38 AD6A0000 */        sw $t2, ($t3)
   .L80131C3C:
@@ -101,7 +101,7 @@ glabel func_ovl49_80131B60
   /* 172CA0 80131C40 00002825 */        or $a1, $zero, $zero
   /* 172CA4 80131C44 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 172CA8 80131C48 AFA40048 */        sw $a0, 0x48($sp)
-  /* 172CAC 80131C4C 8E0D0000 */        lw $t5, ($s0) # D_ovl49_801329D8 + 0
+  /* 172CAC 80131C4C 8E0D0000 */        lw $t5, ($s0) # gMvOpeningKickEntryFighterAnimHeaps + 0
   /* 172CB0 80131C50 A3A2005F */        sb $v0, 0x5f($sp)
   /* 172CB4 80131C54 E7B4004C */      swc1 $f20, 0x4c($sp)
   /* 172CB8 80131C58 E7B40050 */      swc1 $f20, 0x50($sp)
@@ -135,9 +135,9 @@ glabel func_ovl49_80131B60
   /* 172D28 80131CC8 27BD00B0 */     addiu $sp, $sp, 0xb0
 
 glabel func_ovl49_80131CCC
-  /* 172D2C 80131CCC 3C028013 */       lui $v0, %hi(D_ovl49_80132A0C)
-  /* 172D30 80131CD0 24422A0C */     addiu $v0, $v0, %lo(D_ovl49_80132A0C)
-  /* 172D34 80131CD4 8C430000 */        lw $v1, ($v0) # D_ovl49_80132A0C + 0
+  /* 172D2C 80131CCC 3C028013 */       lui $v0, %hi(gMvOpeningKickEntryWhiteOverlayAlpha)
+  /* 172D30 80131CD0 24422A0C */     addiu $v0, $v0, %lo(gMvOpeningKickEntryWhiteOverlayAlpha)
+  /* 172D34 80131CD4 8C430000 */        lw $v1, ($v0) # gMvOpeningKickEntryWhiteOverlayAlpha + 0
   /* 172D38 80131CD8 3C0C8004 */       lui $t4, %hi(gDisplayListHead)
   /* 172D3C 80131CDC AFA40000 */        sw $a0, ($sp)
   /* 172D40 80131CE0 286100FF */      slti $at, $v1, 0xff
@@ -146,9 +146,9 @@ glabel func_ovl49_80131CCC
   /* 172D4C 80131CEC 246E001E */     addiu $t6, $v1, 0x1e
   /* 172D50 80131CF0 29C10100 */      slti $at, $t6, 0x100
   /* 172D54 80131CF4 14200003 */      bnez $at, .L80131D04
-  /* 172D58 80131CF8 AC4E0000 */        sw $t6, ($v0) # D_ovl49_80132A0C + 0
+  /* 172D58 80131CF8 AC4E0000 */        sw $t6, ($v0) # gMvOpeningKickEntryWhiteOverlayAlpha + 0
   /* 172D5C 80131CFC 241800FF */     addiu $t8, $zero, 0xff
-  /* 172D60 80131D00 AC580000 */        sw $t8, ($v0) # D_ovl49_80132A0C + 0
+  /* 172D60 80131D00 AC580000 */        sw $t8, ($v0) # gMvOpeningKickEntryWhiteOverlayAlpha + 0
   .L80131D04:
   /* 172D64 80131D04 8D840000 */        lw $a0, ($t4) # gDisplayListHead + 0
   /* 172D68 80131D08 3C0DE700 */       lui $t5, 0xe700
@@ -169,7 +169,7 @@ glabel func_ovl49_80131CCC
   /* 172DA4 80131D44 24980008 */     addiu $t8, $a0, 8
   /* 172DA8 80131D48 AD980000 */        sw $t8, ($t4) # gDisplayListHead + 0
   /* 172DAC 80131D4C AC990000 */        sw $t9, ($a0)
-  /* 172DB0 80131D50 8C4E0000 */        lw $t6, ($v0) # D_ovl49_80132A0C + 0
+  /* 172DB0 80131D50 8C4E0000 */        lw $t6, ($v0) # gMvOpeningKickEntryWhiteOverlayAlpha + 0
   /* 172DB4 80131D54 31CF00FF */      andi $t7, $t6, 0xff
   /* 172DB8 80131D58 01E1C025 */        or $t8, $t7, $at
   /* 172DBC 80131D5C AC980004 */        sw $t8, 4($a0)
@@ -216,11 +216,11 @@ glabel func_ovl49_80131CCC
   /* 172E60 80131E00 03E00008 */        jr $ra
   /* 172E64 80131E04 AC980000 */        sw $t8, ($a0)
 
-glabel func_ovl49_80131E08
+glabel mvOpeningKickEntryCreateWhiteOverlay
   /* 172E68 80131E08 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 172E6C 80131E0C AFBF001C */        sw $ra, 0x1c($sp)
-  /* 172E70 80131E10 3C018013 */       lui $at, %hi(D_ovl49_80132A0C)
-  /* 172E74 80131E14 AC202A0C */        sw $zero, %lo(D_ovl49_80132A0C)($at)
+  /* 172E70 80131E10 3C018013 */       lui $at, %hi(gMvOpeningKickEntryWhiteOverlayAlpha)
+  /* 172E74 80131E14 AC202A0C */        sw $zero, %lo(gMvOpeningKickEntryWhiteOverlayAlpha)($at)
   /* 172E78 80131E18 00002025 */        or $a0, $zero, $zero
   /* 172E7C 80131E1C 00002825 */        or $a1, $zero, $zero
   /* 172E80 80131E20 24060012 */     addiu $a2, $zero, 0x12
@@ -237,9 +237,9 @@ glabel func_ovl49_80131E08
   /* 172EAC 80131E4C 8FBF001C */        lw $ra, 0x1c($sp)
   /* 172EB0 80131E50 27BD0020 */     addiu $sp, $sp, 0x20
   /* 172EB4 80131E54 03E00008 */        jr $ra
-  /* 172EB8 80131E58 00000000 */       nop 
+  /* 172EB8 80131E58 00000000 */       nop
 
-glabel func_ovl49_80131E5C
+glabel mvOpeningKickEntryCreateBackground
   /* 172EBC 80131E5C 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 172EC0 80131E60 AFBF002C */        sw $ra, 0x2c($sp)
   /* 172EC4 80131E64 AFB10028 */        sw $s1, 0x28($sp)
@@ -475,7 +475,7 @@ glabel func_ovl49_80131E5C
   /* 17325C 801321FC 03E00008 */        jr $ra
   /* 173260 80132200 27BD0040 */     addiu $sp, $sp, 0x40
 
-glabel func_ovl49_80132204
+glabel mvOpeningKickEntryCreateFighterViewport
   /* 173264 80132204 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 173268 80132208 3C0E8001 */       lui $t6, %hi(func_80017EC0)
   /* 17326C 8013220C 3C190800 */       lui $t9, (0x8000200 >> 16) # 134218240
@@ -543,9 +543,9 @@ glabel func_ovl49_80132204
   /* 173364 80132304 8FB00040 */        lw $s0, 0x40($sp)
   /* 173368 80132308 27BD0050 */     addiu $sp, $sp, 0x50
   /* 17336C 8013230C 03E00008 */        jr $ra
-  /* 173370 80132310 00000000 */       nop 
+  /* 173370 80132310 00000000 */       nop
 
-glabel func_ovl49_80132314
+glabel mvOpeningKickEntryCreateWhiteOverlayViewport
   /* 173374 80132314 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 173378 80132318 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 17337C 8013231C AFBF003C */        sw $ra, 0x3c($sp)
@@ -590,9 +590,9 @@ glabel func_ovl49_80132314
   /* 173418 801323B8 8FBF003C */        lw $ra, 0x3c($sp)
   /* 17341C 801323BC 27BD0048 */     addiu $sp, $sp, 0x48
   /* 173420 801323C0 03E00008 */        jr $ra
-  /* 173424 801323C4 00000000 */       nop 
+  /* 173424 801323C4 00000000 */       nop
 
-glabel func_ovl49_801323C8
+glabel mvOpeningKickEntryRenderBackgroundViewport
   /* 173428 801323C8 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 17342C 801323CC 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 173430 801323D0 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
@@ -633,13 +633,13 @@ glabel func_ovl49_801323C8
   /* 1734BC 8013245C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1734C0 80132460 27BD0018 */     addiu $sp, $sp, 0x18
   /* 1734C4 80132464 03E00008 */        jr $ra
-  /* 1734C8 80132468 00000000 */       nop 
+  /* 1734C8 80132468 00000000 */       nop
 
-glabel func_ovl49_8013246C
+glabel mvOpeningKickEntryCreateBackgroundViewport
   /* 1734CC 8013246C 27BDFFB8 */     addiu $sp, $sp, -0x48
-  /* 1734D0 80132470 3C0E8013 */       lui $t6, %hi(func_ovl49_801323C8)
+  /* 1734D0 80132470 3C0E8013 */       lui $t6, %hi(mvOpeningKickEntryRenderBackgroundViewport)
   /* 1734D4 80132474 AFBF003C */        sw $ra, 0x3c($sp)
-  /* 1734D8 80132478 25CE23C8 */     addiu $t6, $t6, %lo(func_ovl49_801323C8)
+  /* 1734D8 80132478 25CE23C8 */     addiu $t6, $t6, %lo(mvOpeningKickEntryRenderBackgroundViewport)
   /* 1734DC 8013247C 240F005A */     addiu $t7, $zero, 0x5a
   /* 1734E0 80132480 24180000 */     addiu $t8, $zero, 0
   /* 1734E4 80132484 3C192000 */       lui $t9, 0x2000
@@ -692,31 +692,31 @@ glabel func_ovl49_8013246C
   /* 1735A0 80132540 8FBF003C */        lw $ra, 0x3c($sp)
   /* 1735A4 80132544 27BD0048 */     addiu $sp, $sp, 0x48
   /* 1735A8 80132548 03E00008 */        jr $ra
-  /* 1735AC 8013254C 00000000 */       nop 
+  /* 1735AC 8013254C 00000000 */       nop
 
-glabel func_ovl49_80132550
-  /* 1735B0 80132550 3C018013 */       lui $at, %hi(D_ovl49_80132A08)
+glabel mvOpeningKickEntryInitFramesElapsed
+  /* 1735B0 80132550 3C018013 */       lui $at, %hi(gMvOpeningKickEntryFramesElapsed)
   /* 1735B4 80132554 03E00008 */        jr $ra
-  /* 1735B8 80132558 AC202A08 */        sw $zero, %lo(D_ovl49_80132A08)($at)
+  /* 1735B8 80132558 AC202A08 */        sw $zero, %lo(gMvOpeningKickEntryFramesElapsed)($at)
 
-glabel func_ovl49_8013255C
-  /* 1735BC 8013255C 3C038013 */       lui $v1, %hi(D_ovl49_80132A08)
-  /* 1735C0 80132560 24632A08 */     addiu $v1, $v1, %lo(D_ovl49_80132A08)
-  /* 1735C4 80132564 8C6E0000 */        lw $t6, ($v1) # D_ovl49_80132A08 + 0
+glabel mvOpeningKickEntryMainProc
+  /* 1735BC 8013255C 3C038013 */       lui $v1, %hi(gMvOpeningKickEntryFramesElapsed)
+  /* 1735C0 80132560 24632A08 */     addiu $v1, $v1, %lo(gMvOpeningKickEntryFramesElapsed)
+  /* 1735C4 80132564 8C6E0000 */        lw $t6, ($v1) # gMvOpeningKickEntryFramesElapsed + 0
   /* 1735C8 80132568 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1735CC 8013256C AFBF0014 */        sw $ra, 0x14($sp)
   /* 1735D0 80132570 25CF0001 */     addiu $t7, $t6, 1
   /* 1735D4 80132574 29E1000A */      slti $at, $t7, 0xa
   /* 1735D8 80132578 AFA40018 */        sw $a0, 0x18($sp)
   /* 1735DC 8013257C 1420003B */      bnez $at, .L8013266C
-  /* 1735E0 80132580 AC6F0000 */        sw $t7, ($v1) # D_ovl49_80132A08 + 0
-  /* 1735E4 80132584 3C068013 */       lui $a2, %hi(D_ovl49_80132A10)
-  /* 1735E8 80132588 24C62A10 */     addiu $a2, $a2, %lo(D_ovl49_80132A10)
-  /* 1735EC 8013258C 8CC20000 */        lw $v0, ($a2) # D_ovl49_80132A10 + 0
+  /* 1735E0 80132580 AC6F0000 */        sw $t7, ($v1) # gMvOpeningKickEntryFramesElapsed + 0
+  /* 1735E4 80132584 3C068013 */       lui $a2, %hi(gMvOpeningKickEntryUnusedCounter)
+  /* 1735E8 80132588 24C62A10 */     addiu $a2, $a2, %lo(gMvOpeningKickEntryUnusedCounter)
+  /* 1735EC 8013258C 8CC20000 */        lw $v0, ($a2) # gMvOpeningKickEntryUnusedCounter + 0
   /* 1735F0 80132590 2404FFF1 */     addiu $a0, $zero, -0xf
   /* 1735F4 80132594 10400002 */      beqz $v0, .L801325A0
   /* 1735F8 80132598 2459FFFF */     addiu $t9, $v0, -1
-  /* 1735FC 8013259C ACD90000 */        sw $t9, ($a2) # D_ovl49_80132A10 + 0
+  /* 1735FC 8013259C ACD90000 */        sw $t9, ($a2) # gMvOpeningKickEntryUnusedCounter + 0
   .L801325A0:
   /* 173600 801325A0 0C0E4281 */       jal func_ovl1_80390A04
   /* 173604 801325A4 2405000F */     addiu $a1, $zero, 0xf
@@ -725,8 +725,8 @@ glabel func_ovl49_8013255C
   /* 173610 801325B0 0C0E42B0 */       jal func_ovl1_80390AC0
   /* 173614 801325B4 2405000F */     addiu $a1, $zero, 0xf
   /* 173618 801325B8 10400002 */      beqz $v0, .L801325C4
-  /* 17361C 801325BC 3C018013 */       lui $at, %hi(D_ovl49_80132A10)
-  /* 173620 801325C0 AC202A10 */        sw $zero, %lo(D_ovl49_80132A10)($at)
+  /* 17361C 801325BC 3C018013 */       lui $at, %hi(gMvOpeningKickEntryUnusedCounter)
+  /* 173620 801325C0 AC202A10 */        sw $zero, %lo(gMvOpeningKickEntryUnusedCounter)($at)
   .L801325C4:
   /* 173624 801325C4 0C0E41DB */       jal func_ovl1_8039076C
   /* 173628 801325C8 3404D000 */       ori $a0, $zero, 0xd000
@@ -739,17 +739,17 @@ glabel func_ovl49_8013255C
   /* 173644 801325E4 0C00171D */       jal func_80005C74
   /* 173648 801325E8 A0680001 */        sb $t0, 1($v1) # gSceneData + 1
   .L801325EC:
-  /* 17364C 801325EC 3C028013 */       lui $v0, %hi(D_ovl49_80132A08)
-  /* 173650 801325F0 8C422A08 */        lw $v0, %lo(D_ovl49_80132A08)($v0)
+  /* 17364C 801325EC 3C028013 */       lui $v0, %hi(gMvOpeningKickEntryFramesElapsed)
+  /* 173650 801325F0 8C422A08 */        lw $v0, %lo(gMvOpeningKickEntryFramesElapsed)($v0)
   /* 173654 801325F4 3C03800A */       lui $v1, %hi(gSceneData)
   /* 173658 801325F8 24010090 */     addiu $at, $zero, 0x90
   /* 17365C 801325FC 14410007 */       bne $v0, $at, .L8013261C
   /* 173660 80132600 24634AD0 */     addiu $v1, $v1, %lo(gSceneData)
-  /* 173664 80132604 0C04C782 */       jal func_ovl49_80131E08
-  /* 173668 80132608 00000000 */       nop 
+  /* 173664 80132604 0C04C782 */       jal mvOpeningKickEntryCreateWhiteOverlay
+  /* 173668 80132608 00000000 */       nop
   /* 17366C 8013260C 3C03800A */       lui $v1, %hi(gSceneData)
-  /* 173670 80132610 3C028013 */       lui $v0, %hi(D_ovl49_80132A08)
-  /* 173674 80132614 8C422A08 */        lw $v0, %lo(D_ovl49_80132A08)($v0)
+  /* 173670 80132610 3C028013 */       lui $v0, %hi(gMvOpeningKickEntryFramesElapsed)
+  /* 173674 80132614 8C422A08 */        lw $v0, %lo(gMvOpeningKickEntryFramesElapsed)($v0)
   /* 173678 80132618 24634AD0 */     addiu $v1, $v1, %lo(gSceneData)
   .L8013261C:
   /* 17367C 8013261C 240100A0 */     addiu $at, $zero, 0xa0
@@ -759,8 +759,8 @@ glabel func_ovl49_8013255C
   /* 17368C 8013262C A06B0000 */        sb $t3, ($v1) # gSceneData + 0
   /* 173690 80132630 0C00171D */       jal func_80005C74
   /* 173694 80132634 A06A0001 */        sb $t2, 1($v1) # gSceneData + 1
-  /* 173698 80132638 3C028013 */       lui $v0, %hi(D_ovl49_80132A08)
-  /* 17369C 8013263C 8C422A08 */        lw $v0, %lo(D_ovl49_80132A08)($v0)
+  /* 173698 80132638 3C028013 */       lui $v0, %hi(gMvOpeningKickEntryFramesElapsed)
+  /* 17369C 8013263C 8C422A08 */        lw $v0, %lo(gMvOpeningKickEntryFramesElapsed)($v0)
   .L80132640:
   /* 1736A0 80132640 2401000F */     addiu $at, $zero, 0xf
   /* 1736A4 80132644 10410007 */       beq $v0, $at, .L80132664
@@ -779,8 +779,9 @@ glabel func_ovl49_8013255C
   .L80132670:
   /* 1736D0 80132670 27BD0018 */     addiu $sp, $sp, 0x18
   /* 1736D4 80132674 03E00008 */        jr $ra
-  /* 1736D8 80132678 00000000 */       nop 
+  /* 1736D8 80132678 00000000 */       nop
 
+glabel mvOpeningKickEntryInit
   /* 1736DC 8013267C 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 1736E0 80132680 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 1736E4 80132684 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -821,8 +822,8 @@ glabel func_ovl49_8013255C
   /* 173770 80132710 0C033781 */       jal rdManagerLoadFiles
   /* 173774 80132714 00403825 */        or $a3, $v0, $zero
   /* 173778 80132718 3C108000 */       lui $s0, 0x8000
-  /* 17377C 8013271C 3C058013 */       lui $a1, %hi(func_ovl49_8013255C)
-  /* 173780 80132720 24A5255C */     addiu $a1, $a1, %lo(func_ovl49_8013255C)
+  /* 17377C 8013271C 3C058013 */       lui $a1, %hi(mvOpeningKickEntryMainProc)
+  /* 173780 80132720 24A5255C */     addiu $a1, $a1, %lo(mvOpeningKickEntryMainProc)
   /* 173784 80132724 02003825 */        or $a3, $s0, $zero
   /* 173788 80132728 00002025 */        or $a0, $zero, $zero
   /* 17378C 8013272C 0C00265A */       jal omMakeGObjCommon
@@ -835,11 +836,11 @@ glabel func_ovl49_8013255C
   /* 1737A8 80132748 0C002E7F */       jal func_8000B9FC
   /* 1737AC 8013274C 24070003 */     addiu $a3, $zero, 3
   /* 1737B0 80132750 0C045624 */       jal func_ovl2_80115890
-  /* 1737B4 80132754 00000000 */       nop 
-  /* 1737B8 80132758 0C04C954 */       jal func_ovl49_80132550
-  /* 1737BC 8013275C 00000000 */       nop 
+  /* 1737B4 80132754 00000000 */       nop
+  /* 1737B8 80132758 0C04C954 */       jal mvOpeningKickEntryInitFramesElapsed
+  /* 1737BC 8013275C 00000000 */       nop
   /* 1737C0 80132760 0C03F4C0 */       jal efManager_AllocUserData
-  /* 1737C4 80132764 00000000 */       nop 
+  /* 1737C4 80132764 00000000 */       nop
   /* 1737C8 80132768 24040001 */     addiu $a0, $zero, 1
   /* 1737CC 8013276C 0C035C65 */       jal ftManager_AllocFighterData
   /* 1737D0 80132770 24050008 */     addiu $a1, $zero, 8
@@ -859,29 +860,29 @@ glabel func_ovl49_8013255C
   /* 173808 801327A8 24040008 */     addiu $a0, $zero, 8
   /* 17380C 801327AC 0C035E1B */       jal ftManager_SetFileDataKind
   /* 173810 801327B0 24040009 */     addiu $a0, $zero, 9
-  /* 173814 801327B4 3C108013 */       lui $s0, %hi(D_ovl49_801329D8)
+  /* 173814 801327B4 3C108013 */       lui $s0, %hi(gMvOpeningKickEntryFighterAnimHeaps)
   /* 173818 801327B8 3C128013 */       lui $s2, %hi(D_ovl49_801329F8)
   /* 17381C 801327BC 3C118013 */       lui $s1, %hi(gFTAnimHeapSize)
   /* 173820 801327C0 26310D9C */     addiu $s1, $s1, %lo(gFTAnimHeapSize)
   /* 173824 801327C4 265229F8 */     addiu $s2, $s2, %lo(D_ovl49_801329F8)
-  /* 173828 801327C8 261029D8 */     addiu $s0, $s0, %lo(D_ovl49_801329D8)
+  /* 173828 801327C8 261029D8 */     addiu $s0, $s0, %lo(gMvOpeningKickEntryFighterAnimHeaps)
   .L801327CC:
   /* 17382C 801327CC 8E240000 */        lw $a0, ($s1) # gFTAnimHeapSize + 0
   /* 173830 801327D0 0C001260 */       jal gsMemoryAlloc
   /* 173834 801327D4 24050010 */     addiu $a1, $zero, 0x10
   /* 173838 801327D8 26100004 */     addiu $s0, $s0, 4
   /* 17383C 801327DC 1612FFFB */       bne $s0, $s2, .L801327CC
-  /* 173840 801327E0 AE02FFFC */        sw $v0, -4($s0) # D_ovl49_801329D8 + -4
-  /* 173844 801327E4 0C04C881 */       jal func_ovl49_80132204
-  /* 173848 801327E8 00000000 */       nop 
-  /* 17384C 801327EC 0C04C8C5 */       jal func_ovl49_80132314
-  /* 173850 801327F0 00000000 */       nop 
-  /* 173854 801327F4 0C04C91B */       jal func_ovl49_8013246C
-  /* 173858 801327F8 00000000 */       nop 
-  /* 17385C 801327FC 0C04C6D8 */       jal func_ovl49_80131B60
-  /* 173860 80132800 00000000 */       nop 
-  /* 173864 80132804 0C04C797 */       jal func_ovl49_80131E5C
-  /* 173868 80132808 00000000 */       nop 
+  /* 173840 801327E0 AE02FFFC */        sw $v0, -4($s0) # gMvOpeningKickEntryFighterAnimHeaps + -4
+  /* 173844 801327E4 0C04C881 */       jal mvOpeningKickEntryCreateFighterViewport
+  /* 173848 801327E8 00000000 */       nop
+  /* 17384C 801327EC 0C04C8C5 */       jal mvOpeningKickEntryCreateWhiteOverlayViewport
+  /* 173850 801327F0 00000000 */       nop
+  /* 173854 801327F4 0C04C91B */       jal mvOpeningKickEntryCreateBackgroundViewport
+  /* 173858 801327F8 00000000 */       nop
+  /* 17385C 801327FC 0C04C6D8 */       jal mvOpeningKickEntryCreateFighters
+  /* 173860 80132800 00000000 */       nop
+  /* 173864 80132804 0C04C797 */       jal mvOpeningKickEntryCreateBackground
+  /* 173868 80132808 00000000 */       nop
   /* 17386C 8013280C 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 173870 80132810 44816000 */      mtc1 $at, $f12 # 45.0 to cop1
   /* 173874 80132814 240B00FF */     addiu $t3, $zero, 0xff
@@ -893,16 +894,16 @@ glabel func_ovl49_8013255C
   /* 17388C 8013282C 0C0E4138 */       jal func_ovl1_803904E0
   /* 173890 80132830 46006386 */     mov.s $f14, $f12
   /* 173894 80132834 0C00024B */       jal func_8000092C
-  /* 173898 80132838 00000000 */       nop 
+  /* 173898 80132838 00000000 */       nop
   /* 17389C 8013283C 2C410F87 */     sltiu $at, $v0, 0xf87
   /* 1738A0 80132840 50200007 */      beql $at, $zero, .L80132860
   /* 1738A4 80132844 8FBF002C */        lw $ra, 0x2c($sp)
   .L80132848:
   /* 1738A8 80132848 0C00024B */       jal func_8000092C
-  /* 1738AC 8013284C 00000000 */       nop 
+  /* 1738AC 8013284C 00000000 */       nop
   /* 1738B0 80132850 2C410F87 */     sltiu $at, $v0, 0xf87
   /* 1738B4 80132854 1420FFFC */      bnez $at, .L80132848
-  /* 1738B8 80132858 00000000 */       nop 
+  /* 1738B8 80132858 00000000 */       nop
   /* 1738BC 8013285C 8FBF002C */        lw $ra, 0x2c($sp)
   .L80132860:
   /* 1738C0 80132860 8FB00020 */        lw $s0, 0x20($sp)
@@ -933,6 +934,6 @@ glabel intro_sex_kicks_entry
   /* 17391C 801328BC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 173920 801328C0 27BD0018 */     addiu $sp, $sp, 0x18
   /* 173924 801328C4 03E00008 */        jr $ra
-  /* 173928 801328C8 00000000 */       nop 
+  /* 173928 801328C8 00000000 */       nop
 
-  /* 17392C 801328CC 00000000 */       nop 
+  /* 17392C 801328CC 00000000 */       nop

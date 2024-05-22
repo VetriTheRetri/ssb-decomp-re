@@ -135,7 +135,7 @@ void mvOpeningYoshiNestInitFramesElapsed()
 }
 
 // 0x8013203C
-void mvOpeningYoshiNestMainProc(s32 arg0)
+void mvOpeningYoshiNestMainProc(GObj* arg0)
 {
     gMvOpeningYoshiNestFramesElapsed += 1;
 

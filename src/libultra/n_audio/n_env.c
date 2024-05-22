@@ -310,4 +310,12 @@ void _init_lpfilter(ALLowPass *lp)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__leoSetReset.s")
 
+extern s32 SMALLROOM_PARAMS_N[26];
+extern s32 BIGROOM_PARAMS_N[34];
+extern s32 ECHO_PARAMS_N[10];
+extern s32 CHORUS_PARAMS_N[10];
+extern s32 FLANGE_PARAMS_N[10];
+extern s32 NULL_PARAMS_N[10];
+
+
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alFxNew.s")

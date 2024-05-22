@@ -282,4 +282,4 @@ void n_alInit(N_ALGlobals *g, ALSynConfig *c)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__leoSetReset.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002D218_2DE18.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alFxNew.s")

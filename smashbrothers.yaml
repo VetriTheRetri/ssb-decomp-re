@@ -187,7 +187,7 @@ segments:
       - [0x030850, asm, libultra/n_audio/audio16]
       - [0x030980, asm, libultra/n_audio/audio17]
       - [0x0309B0, asm, libultra/n_audio/audio18]
-      - [0x030A30, asm, libultra/n_audio/audio19]
+      - [0x030A30, c, libultra/n_audio/n_synallocfx]
       - [0x030A90, asm, libultra/n_audio/audio20]
       - [0x030B60, asm, libultra/n_audio/audio21] # n_alSynSetVol
       - [0x030C00, asm, libultra/os/sendmesg]

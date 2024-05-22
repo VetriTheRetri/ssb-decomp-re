@@ -329,3 +329,5 @@ osUnmapTLBAll = 0x800342B0;
 
 n_alSynDelete = 0x8002FD80;
 n_alSynNew = 0x8002CB48;
+n_alSynAllocFX = 0x8002FE30;
+n_alFxNew = 0x8002D218;

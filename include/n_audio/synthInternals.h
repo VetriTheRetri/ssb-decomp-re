@@ -195,9 +195,9 @@ typedef struct {
 		s16		fccoef[16];
 		s64             force_aligned;
 	} fcvec;
-	s32			first;
-	POLEF_STATE *fstate[2];
-	s32 unk34;
+    s32 pad28; // Unsure of this pads location
+	s32			first; //0x2C
+	POLEF_STATE *fstate[2]; //0x30
 } ALLowPass;
 
 typedef struct {

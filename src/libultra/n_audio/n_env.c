@@ -276,7 +276,35 @@ void n_alInit(N_ALGlobals *g, ALSynConfig *c)
 	}
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002CED4_2DAD4.s")
+/*
+ * WARNING: THE FOLLOWING CONSTANT MUST BE KEPT IN SYNC
+ * WITH SCALING IN MICROCODE!!!
+ */
+#define	SCALE 16384.0f
+
+
+void _init_lpfilter(ALLowPass *lp)
+{
+    s32		i, temp;
+    s16		fc;
+    f64		ffc, fcoef;
+
+    temp = lp->fc * SCALE;
+    fc = temp >> 15;
+    lp->fgain = SCALE - fc;
+
+    lp->first = 1;
+    for (i=0; i<8; i++)
+	lp->fcvec.fccoef[i] = 0;
+    
+    lp->fcvec.fccoef[i++] = fc;
+    fcoef = ffc = (f64)fc/SCALE;
+
+    for (; i<16; i++){
+	fcoef *= ffc;
+	lp->fcvec.fccoef[i] = (s16)(fcoef * SCALE);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002CFA0_2DBA0.s")
 

@@ -34,73 +34,61 @@
 #define MIN_RATIO	0.0001
 
 typedef enum {
-	AL_SNDP_PLAY_EVT  = 0x0001,
-	AL_SNDP_STOP_EVT  = 0x0002,
-	AL_SNDP_PAN_EVT   = 0x0004,
-	AL_SNDP_VOL_EVT   = 0x0008,
-	AL_SNDP_PITCH_EVT = 0x0010,
-	AL_SNDP_API_EVT   = 0x0020,
-	AL_SNDP_DECAY_EVT = 0x0040,
-	AL_SNDP_END_EVT   = 0x0080,
-	AL_SNDP_FX_EVT    = 0x0100,
-	AL_SNDP_0200_EVT  = 0x0200,
-	AL_SNDP_0400_EVT  = 0x0400,
-	AL_SNDP_0800_EVT  = 0x0800,
-	AL_SNDP_1000_EVT  = 0x1000,
-	AL_SNDP_FXBUS_EVT = 0x2000,
-	AL_SNDP_4000_EVT  = 0x4000
+    AL_SNDP_PLAY_EVT,
+    AL_SNDP_STOP_EVT,
+    AL_SNDP_PAN_EVT,
+    AL_SNDP_VOL_EVT,
+    AL_SNDP_PITCH_EVT,
+    AL_SNDP_API_EVT,
+    AL_SNDP_DECAY_EVT,
+    AL_SNDP_END_EVT,
+    AL_SNDP_FX_EVT
 } ALSndpMsgType;
 
 typedef struct {
-	N_ALVoice     voice;
-	ALSound     *sound;         /* sound referenced here */
-	s16         priority;
-	f32         pitch;          /* current playback pitch                    */
-	s32         state;          /* play state for this sound                 */
-	s16         vol;            /* volume - combined with volume from bank   */
-	ALPan       pan;            /* pan - 0 = left, 127 = right               */
-	u8          fxMix;          /* wet/dry mix - 0 = dry, 127 = wet          */
+    N_ALVoice     voice;     
+    ALSound     *sound;         /* sound referenced here */
+    s16         priority;
+    f32         pitch;          /* current playback pitch                    */
+    s32         state;          /* play state for this sound                 */
+    s16         vol;            /* volume - combined with volume from bank   */
+    ALPan       pan;            /* pan - 0 = left, 127 = right               */
+    u8          fxMix;          /* wet/dry mix - 0 = dry, 127 = wet          */
 } N_ALSoundState;
 
 typedef union {
 
-	N_ALEvent             msg;
+    N_ALEvent             msg;
 
-	struct {
-		u16              type;
-		N_ALSoundState  *state;
-		u32 unk08;
-	} common;
-
-	struct {
-		s16             type;
-		N_ALSoundState *state;
-		s16             vol;
-	} vol;
-
-	struct {
-		s16             type;
-		N_ALSoundState *state;
-		f32             pitch;
-	} pitch;
-
-	struct {
-		s16             type;
-		N_ALSoundState *state;
-		ALPan           pan;
-	} pan;
-
-	struct {
-		s16             type;
-		N_ALSoundState *state;
-		u8              mix;
-	} fx;
-
+    struct {
+        s16              type;
+        N_ALSoundState  *state;
+    } common;
+    
+    struct {
+        s16             type;
+        N_ALSoundState *state;
+        s16             vol;
+    } vol;
+    
+    struct {
+        s16             type;
+        N_ALSoundState *state;
+        f32             pitch;
+    } pitch;
+    
+    struct {
+        s16             type;
+        N_ALSoundState *state;
+        ALPan           pan;
+    } pan;
+    
+    struct {
+        s16             type;
+        N_ALSoundState *state;
+        u8              mix;
+    } fx;
+    
 } N_ALSndpEvent;
-
-ALMicroTime     _n_sndpVoiceHandler(void *node);
-void            _n_handleEvent(N_ALSndpEvent *event);
-void		_removeEvents(ALEventQueue *evtq, N_ALSoundState *state, u16 typemask);
-s32		_DivS32ByF32 (s32 i, f32 f);
 
 #endif /* __N_SNDP__ */

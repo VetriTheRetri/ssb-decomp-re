@@ -22,8 +22,7 @@
 
 #include <n_libaudio.h>
 #include <synthInternals.h>
-#include "n_abi.h"
-#include "ultratypes.h"
+#include <n_abi.h>
 
 #define SAMPLE_ROUND
 #undef  SAMPLE_ROUND
@@ -53,49 +52,6 @@ typedef struct {
     s16                 type;
     struct N_PVoice_s     *pvoice;
 } N_ALFreeParam;
-
-typedef struct N_ALParam_s {
-    struct N_ALParam_s  *next;
-    s64                 delta;
-    s16                 type;
-    union {
-        f32             f;
-        s32             i;
-    } data;
-    union {
-        f32             f;
-        s32             i;
-    } moredata;
-    union {
-        f32             f;
-        s32             i;
-    } stillmoredata;
-    union {
-        f32             f;
-        s32             i;
-    } yetstillmoredata;
-} N_ALParam;
-
-typedef struct {
-    struct ALParam_s            *next;
-    s64                         delta;
-    s16                         type;
-    s16                         unity;  /* disable resampler */
-    f32                         pitch;
-    s16                         volume;
-    ALPan                       pan;
-    u8                          fxMix;
-    s32                         samples;
-    struct ALWaveTable_s        *wave;
-} N_ALStartParamAlt;
-
-typedef struct {
-    struct N_ALParam_s            *next;
-    s64                         delta;
-    s16                         type;
-    s16                         unity;  /* disable resampler */
-    struct ALWaveTable_s        *wave;
-} N_ALStartParam;
 
 typedef struct N_PVoice_s {
     ALLink               node;
@@ -135,14 +91,14 @@ typedef struct N_PVoice_s {
     s32                 em_delta;
     s32                 em_segEnd;
     s32			em_first;
-    N_ALParam		*em_ctrlList;
-    N_ALParam		*em_ctrlTail;
+    ALParam		*em_ctrlList;
+    ALParam		*em_ctrlTail;
     s32                 em_motion;
     s32                 offset;
 } N_PVoice;
 
 
-typedef Acmd *(*N_ALCmdHandler)(s64, Acmd *);
+typedef Acmd *(*N_ALCmdHandler)(s32, Acmd *);
 
 typedef struct N_ALFilter_s {
     struct N_ALFilter_s   *source;
@@ -170,8 +126,8 @@ typedef struct N_ALAuxBus_s {
 
 void alN_PVoiceNew(N_PVoice *mv, ALDMANew dmaNew, ALHeap *hp);
 
-N_ALParam       *__n_allocParam(void);
-void            _n_freeParam(N_ALParam *param);
+ALParam         *__n_allocParam(void);
+void            _n_freeParam(ALParam *param);
 void            _n_freePVoice(N_PVoice *pvoice);
 void            _n_collectPVoices(void);
 s32             _n_timeToSamples(s32 micros);
@@ -202,10 +158,7 @@ s32 n_alSaveParam( s32 paramID, void *param);
 
 void n_alSaveNew(void);
 
-void init_lpfilter(ALLowPass *lp);
-
 void n_alSynNew(ALSynConfig *c);
 void n_alSynDelete(void);
 
 #endif /*  __N_SYNTHINTERNALS__ */
-

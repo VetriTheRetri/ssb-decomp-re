@@ -29,18 +29,7 @@ extern "C" {
 #include <PR/ultratypes.h>
 #include <PR/mbi.h>
 
-struct var8009c340 {
-	u8 surround;
-	u8 mono;
-	u8 headphone;
-	u8 unk03;
-};
-
-extern struct var8009c340 var8009c340;
-extern u8 var8009c344[2];
-extern u8 var8009c346[2];
-extern u8 var8009c348[4];
-
+    
 /*
  * Synthesis driver stuff
  */
@@ -57,6 +46,10 @@ typedef struct N_ALVoice_s {
 
 typedef struct {
     ALPlayer    *head;          /* client list head                     */
+    ALPlayer    *n_seqp1;	/* for fade in / fade out */
+    ALPlayer    *n_seqp2;
+    ALPlayer    *n_sndp;
+
     ALLink      pFreeList;      /* list of free physical voices         */
     ALLink      pAllocList;     /* list of allocated physical voices    */
     ALLink      pLameList;      /* list of voices ready to be freed     */
@@ -66,7 +59,6 @@ typedef struct {
     ALHeap      *heap;
     struct ALParam_s    *paramList;
     struct N_ALMainBus_s  *mainBus;
-    u8 pad[0xC]; // This padding could be anywhere!
     struct N_ALAuxBus_s   *auxBus;
     s32                 numPVoices;
     s32                 maxAuxBusses;
@@ -98,12 +90,8 @@ void    n_alSynSetPriority( N_ALVoice *voice, s16 priority);
 void    n_alSynSetVol( N_ALVoice *v, s16 volume, ALMicroTime t);
 void    n_alSynStartVoice(N_ALVoice *v, ALWaveTable *table);
 void    n_alSynStartVoiceParams(N_ALVoice *v, ALWaveTable *w,f32 pitch, s16 vol,
-				ALPan pan, u8 fxmix, u8 arg6, f32 arg7, u8 arg8, ALMicroTime t);
+				ALPan pan, u8 fxmix, ALMicroTime t);
 void    n_alSynStopVoice( N_ALVoice *v);
-
-void    n_alSynFilter11(N_ALVoice *v, u8 channel);
-void    n_alSynFilter12(N_ALVoice *v, u8 arg1);
-void    n_alSynFilter13(N_ALVoice *v, f32 arg1);
 
 void    n_alSynNew(ALSynConfig *c);
 void    n_alSynDelete(void);
@@ -146,42 +134,21 @@ typedef struct {
     u8                         chan;
 } N_ALOscEvent;
 
-typedef struct {
-    f32 unk00;
-    f32 unk04;
-} N_AL18Event;
-
-typedef struct {
-    u8 unk00;
-    u8 unk01;
-    u8 unk02;
-    u8 unk03;
-    u8 param;
-} N_AL19Event;
-
-typedef struct {
-    struct sndstate *sndstate;
-    s32 data;
-    s32 data2;
-} N_ALGenericEvent;
 
 typedef struct {
     s16                 	type;
     union {
-		ALMIDIEvent     	midi;
-		ALTempoEvent    	tempo;
-		ALEndEvent      	end;
-		N_ALNoteEvent     	note;
-		N_ALVolumeEvent   	vol;
-		ALSeqpLoopEvent 	loop;
-		ALSeqpVolEvent  	spvol;
-		ALSeqpPriorityEvent	sppriority;
-		ALSeqpSeqEvent		spseq;
-		ALSeqpBankEvent		spbank;
-		N_ALOscEvent      	osc;
-		N_AL18Event      	evt18;
-		N_AL19Event      	evt19;
-		N_ALGenericEvent    generic;
+        ALMIDIEvent     	midi;
+        ALTempoEvent    	tempo;
+        ALEndEvent      	end;
+        N_ALNoteEvent     	note;
+        N_ALVolumeEvent   	vol;
+        ALSeqpLoopEvent 	loop;
+        ALSeqpVolEvent  	spvol;
+        ALSeqpPriorityEvent	sppriority;
+        ALSeqpSeqEvent		spseq;
+        ALSeqpBankEvent		spbank;
+        N_ALOscEvent      	osc;
     } msg;
 } N_ALEvent;
 
@@ -194,23 +161,9 @@ typedef struct {
 
 void            n_alEvtqNew(ALEventQueue *evtq, N_ALEventListItem *items, s32 itemCount);
 ALMicroTime     n_alEvtqNextEvent(ALEventQueue *evtq, N_ALEvent *evt);
-void            n_alEvtqPostEvent(ALEventQueue *evtq, N_ALEvent *evt, ALMicroTime delta, s32 arg3);
+void            n_alEvtqPostEvent(ALEventQueue *evtq, N_ALEvent *evt, ALMicroTime delta);
 void        	n_alEvtqFlushType(ALEventQueue *evtq, s16 type);
 
-struct oscstate {
-	u32 unk00;
-	u8 unk04;
-	u32 unk08;
-	f32 unk0c;
-	f32 unk10;
-};
-
-struct fx {
-	s16 unk00;
-	s16 unk02;
-	s32 unk04;
-	s16 unk08[8];
-};
 
 typedef struct N_ALVoiceState_s {
     struct N_ALVoiceState_s *next;/* MUST be first                */
@@ -228,8 +181,6 @@ typedef struct N_ALVoiceState_s {
     u8          tremelo;        /* current value of the tremelo */
     u8          flags;          /* bit 0 tremelo flag
                                    bit 1 vibrato flag           */
-	void *oscState;
-	struct oscstate *oscState2;
 } N_ALVoiceState;
 
 typedef struct {
@@ -258,8 +209,6 @@ typedef struct {
     ALSeqMarker        *loopStart;
     ALSeqMarker        *loopEnd;
     s32                 loopCount;      /* -1 = loop forever, 0 = no loop   */
-    u8 unk88;
-    u8 unk89;
 } N_ALSeqPlayer;
 
 typedef struct {
@@ -285,11 +234,6 @@ typedef struct {
     ALOscInit           initOsc;
     ALOscUpdate         updateOsc;
     ALOscStop           stopOsc;
-    f32 unk7c;
-    f32 unk80;
-    void *queue;
-    u8 unk88;
-    u8 unk89;
 } N_ALCSPlayer;
 
 
@@ -300,7 +244,7 @@ void    n_alSeqNextEvent(ALSeq *seq, N_ALEvent *event);
 void    n_alSeqNewMarker(ALSeq *seq, ALSeqMarker *m, u32 ticks);
 
 void    n_alCSeqNew(ALCSeq *seq, u8 *ptr);
-void    n_alCSeqNextEvent(ALCSeq *seq, N_ALEvent *evt, s32 arg2);
+void    n_alCSeqNextEvent(ALCSeq *seq, N_ALEvent *evt);
 void    n_alCSeqNewMarker(ALCSeq *seq, ALCSeqMarker *m, u32 ticks);
 
 
@@ -331,7 +275,6 @@ void    n_alSeqpSetTempo(N_ALSeqPlayer *seqp, s32 tempo);
 void    n_alSeqpSetVol(N_ALSeqPlayer *seqp, s16 vol);
 void    n_alSeqpStop(N_ALSeqPlayer *seqp);
 void    n_alSeqpLoop(N_ALSeqPlayer *seqp, ALSeqMarker *start, ALSeqMarker *end, s32 count);
-void    n_alSeqpSetFilter11(N_ALSeqPlayer *seqp);
 
 
 /*
@@ -370,7 +313,7 @@ typedef struct {
     ALEventQueue        evtq;
     N_ALEvent           nextEvent;
     N_ALSynth           *drvr;          /* reference to the client driver   */
-    struct sndstate     *target;
+    s32                 target;
     void                *sndState;
     s32                 maxSounds;
     ALMicroTime         frameTime;
@@ -378,7 +321,7 @@ typedef struct {
     ALMicroTime         curTime;
 } N_ALSndPlayer;
 
-void     n_alSndpNew(ALSndpConfig *c);
+void     n_alSndpNew(N_ALSndPlayer *sndp, ALSndpConfig *c);
 void     n_alSndpDelete(void);
 ALSndId  n_alSndpAllocate(ALSound *sound);
 void     n_alSndpDeallocate(ALSndId id);
@@ -401,10 +344,6 @@ void     n_alSndpSetSound(ALSndId id);
 extern long long int    n_aspMainTextStart[], n_aspMainTextEnd[];
 extern long long int    n_aspMainDataStart[], n_aspMainDataEnd[];
 
-f32 func0003b9d4(s32 arg0);
-void func0003ba64(struct fx *fx, f32 outputrate);
-s16 _getRate(f32 vol, f32 tgt, s32 count, u16 *ratel);
-s16 _getVol(s16 ivol, s32 samples, s16 ratem, u16 ratel);
 
 #ifdef _LANGUAGE_C_PLUS_PLUS
 }

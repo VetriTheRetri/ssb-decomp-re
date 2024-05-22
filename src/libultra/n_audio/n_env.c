@@ -118,9 +118,23 @@ void func_80027458_28058(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__alCSeqNextDelta.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alLink.s")
+/* might want to make these macros */
+void alLink(ALLink *ln, ALLink *to)
+{					
+    ln->next = to->next;     
+    ln->prev = to;           
+    if (to->next)            
+        to->next->prev = ln; 
+    to->next = ln;           
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alUnlink.s")
+void alUnlink(ALLink *ln)			
+{					
+    if (ln->next)                   
+        ln->next->prev = ln->prev;  
+    if (ln->prev)                   
+        ln->prev->next = ln->next;  
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80028CB4_298B4.s")
 
@@ -239,11 +253,28 @@ void func_8002C544_2D144(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alN_PVoiceNew.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002CB48_2D748.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alSynNew.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alClose.s")
+void n_alClose(N_ALGlobals *g)
+{
+	if (n_alGlobals) {
+		n_alSynDelete();
+		n_alGlobals = NULL;
+		n_syn = NULL;
+	}
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alInit.s")
+void n_alInit(N_ALGlobals *g, ALSynConfig *c)
+{
+	if (!n_alGlobals) {
+		n_alGlobals = g;
+
+		if (!n_syn) {
+			n_syn = &n_alGlobals->drvr;
+			n_alSynNew(c);
+		}
+	}
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002CED4_2DAD4.s")
 

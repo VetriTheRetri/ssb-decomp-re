@@ -325,3 +325,7 @@ alCents2Ratio = 0x80036360;
 alCopy = 0x80035740;
 osAiSetFrequency = 0x80035230;
 osUnmapTLBAll = 0x800342B0;
+
+
+n_alSynDelete = 0x8002FD80;
+n_alSynNew = 0x8002CB48;

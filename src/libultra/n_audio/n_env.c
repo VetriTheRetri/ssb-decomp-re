@@ -160,7 +160,28 @@ void func_80027458_28058(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002A2D0_2AED0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002A320_2AF20.s")
+static  s16 __n_getVol(s16 ivol, s32 samples, s16 ratem, u16 ratel);
+#ifdef NON_MATCHING
+static
+s16 __n_getVol(s16 ivol, s32 samples, s16 ratem, u16 ratel)
+{
+    s32 r;
+    s32 m;
+    s32 l;
+
+    samples >>= 3;
+    if (samples == 0) {
+        return (s16) ivol;
+    }
+    m = ((ratel * samples));
+    m >>= 0x10;
+    m += (ratem * samples);
+    ivol += m;
+    return (s16) ivol;
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__n_getVol.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alEnvmixerPull.s")
 

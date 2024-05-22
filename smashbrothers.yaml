@@ -169,27 +169,27 @@ segments:
       - [0x026B10, asm, libultra/sp/hide]
       - [0x026B30, asm, libultra/sp/show]
       - [0x026B50, asm, libultra/sp/spscale]
-      - [0x026BC0, asm, libultra/audio01]
-      - [0x026C10, asm, libultra/audio02]
-      - [0x026C70, asm, libultra/audio03] 
-      - [0x02E220, asm, libultra/audio04] # n_alSynAddSeqPlayer
-      - [0x02E380, asm, libultra/audio05] # n_alSynStopVoice
-      - [0x02E3F0, asm, libultra/audio06]
-      - [0x02E620, asm, libultra/audio07] # n_alSynSetPan
-      - [0x02E6A0, asm, libultra/audio08]
-      - [0x02E870, asm, libultra/audio09]
-      - [0x0302A0, asm, libultra/audio10]
-      - [0x0302C0, asm, libultra/audio11]
-      - [0x030670, asm, libultra/audio12]
-      - [0x0306B0, asm, libultra/audio13] # n_alSynSetPitch
-      - [0x030730, asm, libultra/audio14]
-      - [0x030810, asm, libultra/audio15]
-      - [0x030850, asm, libultra/audio16]
-      - [0x030980, asm, libultra/audio17]
-      - [0x0309B0, asm, libultra/audio18]
-      - [0x030A30, asm, libultra/audio19]
-      - [0x030A90, asm, libultra/audio20]
-      - [0x030B60, asm, libultra/audio21] # n_alSynSetVol
+      - [0x026BC0, asm, libultra/n_audio/audio01]
+      - [0x026C10, asm, libultra/n_audio/audio02]
+      - [0x026C70, c, libultra/n_audio/n_env] 
+      - [0x02E220, asm, libultra/n_audio/audio04] # n_alSynAddSeqPlayer
+      - [0x02E380, asm, libultra/n_audio/n_synstopvoice]
+      - [0x02E3F0, asm, libultra/n_audio/audio06]
+      - [0x02E620, asm, libultra/n_audio/audio07] # n_alSynSetPan
+      - [0x02E6A0, asm, libultra/n_audio/audio08]
+      - [0x02E870, asm, libultra/n_audio/audio09]
+      - [0x0302A0, asm, libultra/n_audio/audio10]
+      - [0x0302C0, asm, libultra/n_audio/audio11]
+      - [0x030670, asm, libultra/n_audio/audio12]
+      - [0x0306B0, asm, libultra/n_audio/audio13] # n_alSynSetPitch
+      - [0x030730, asm, libultra/n_audio/audio14]
+      - [0x030810, asm, libultra/n_audio/audio15]
+      - [0x030850, asm, libultra/n_audio/audio16]
+      - [0x030980, asm, libultra/n_audio/audio17]
+      - [0x0309B0, asm, libultra/n_audio/audio18]
+      - [0x030A30, asm, libultra/n_audio/audio19]
+      - [0x030A90, asm, libultra/n_audio/audio20]
+      - [0x030B60, asm, libultra/n_audio/audio21] # n_alSynSetVol
       - [0x030C00, asm, libultra/os/sendmesg]
       - [0x030D50, asm, libultra/os/stopthread]
       - [0x030E10, asm, libultra/os/recvmesg]
@@ -312,7 +312,7 @@ segments:
       - [0x03D550, data, sys/hal_audio]
       - [0x03D7B0, .data, sys/gserror]
       - [0x03DC70, data, libultra/sp/sprite]
-      - [0x03DC80, data, libultra/audio03]
+      - [0x03DC80, data, libultra/n_audio/n_env]
       - [0x03DF30, data, libultra/io/vimodepallan1] # osViModePalLan1
       - [0x03DF80, data, libultra/os/exceptasm]
       - [0x03DFB0, data, libultra/os/thread]
@@ -345,8 +345,8 @@ segments:
       - [0x03F010, rodata, sys/hal_audio]
       - [0x03F020, .rodata, sys/gserror]
       - [0x03F460, rodata, libultra/sp/sprite]
-      - [0x03F470, rodata, libultra/audio03]
-      - [0x03FAA0, rodata, libultra/audio09]
+      - [0x03F470, .rodata, libultra/n_audio/n_env]
+      - [0x03FAA0, rodata, libultra/n_audio/audio09]
       - [0x03FCE0, rodata, libultra/os/setintmask]
       - [0x03FDB0, rodata, libultra/os/exceptasm]
       - [0x03FE00, rodata, libultra/io/devmgr]
@@ -370,7 +370,7 @@ segments:
       - { start: auto, type:  bss, name: sys/hal_audio,            vram: 0x800472D0 }
       - { start: auto, type: .bss, name: sys/gserror,              vram: 0x8009DA00 }
       - { start: auto, type:  bss, name: libultra/sp/sprite,       vram: 0x8009EDC0 }
-      - { start: auto, type:  bss, name: libultra/audio03,         vram: 0x8009EDD0 }
+      - { start: auto, type:  bss, name: libultra/n_audio/n_env,   vram: 0x8009EDD0 }
       - { start: auto, type:  bss, name: libultra/io/sptask,       vram: 0x8009EE40 }
       - { start: auto, type:  bss, name: libultra/io/motor,        vram: 0x8009EE80 }
       - { start: auto, type:  bss, name: libultra/io/siacs,        vram: 0x8009EF80 }

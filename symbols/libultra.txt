@@ -154,6 +154,7 @@ alUnlink = 0x80028C84;
 _n_freeParam = 0x8002A050;
 n_alLoadParam = 0x8002A070;
 n_alAuxBusPull = 0x8002A9C4;
+n_alEnvmixerPull = 0x8002A380;
 _n_filterBuffer = 0x8002AB94;
 __n_allocParam = 0x8002C618;
 n_alMainBusPull = 0x8002C648;

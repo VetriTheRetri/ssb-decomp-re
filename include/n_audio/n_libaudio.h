@@ -66,6 +66,7 @@ typedef struct {
     ALHeap      *heap;
     struct ALParam_s    *paramList;
     struct N_ALMainBus_s  *mainBus;
+    u8 pad[0xC]; // This padding could be anywhere!
     struct N_ALAuxBus_s   *auxBus;
     s32                 numPVoices;
     s32                 maxAuxBusses;

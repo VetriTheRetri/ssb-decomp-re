@@ -14,9 +14,11 @@ src_dir = root_dir + "src/"
 CPP_FLAGS = [
     "-Iinclude",
     "-Ibuild/include",
-    "-Iultralib/include",
-    "-Iultralib/include/PR",
+    "-Iinclude/PR",
+    "-Iinclude/n_audio",
     "-Isrc",
+    "-Isrc/sys",
+    "-Isrc/ovl0",
     "-D_LANGUAGE_C",
     "-DF3DEX_GBI_2",
     "-D_MIPS_SZLONG=32",

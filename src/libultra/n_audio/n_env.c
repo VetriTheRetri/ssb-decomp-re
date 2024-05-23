@@ -306,9 +306,88 @@ void _init_lpfilter(ALLowPass *lp)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002CFA0_2DBA0.s")
+#define RANGE 2
+/*
+ * This routine gets called by alSynSetFXParam. No checking takes place to 
+ * verify the validity of the paramID or the param value. input and output 
+ * values must be 8 byte aligned, so round down any param passed. 
+ */
+s32 n_alFxParamHdl(void *filter, s32 paramID, void *param)
+{
+    ALFx   *f = (ALFx *) filter;    
+    s32    p = (paramID - 2) % 8; 
+    s32    s = (paramID - 2) / 8;
+    s32    val = *(s32*)param;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__leoSetReset.s")
+#define INPUT_PARAM         0
+#define OUTPUT_PARAM        1
+#define FBCOEF_PARAM        2
+#define FFCOEF_PARAM        3
+#define GAIN_PARAM          4
+#define CHORUSRATE_PARAM    5
+#define CHORUSDEPTH_PARAM   6
+#define LPFILT_PARAM        7
+
+    switch(p)
+    {
+        case INPUT_PARAM:
+            f->delay[s].input = (u32)val & 0xFFFFFFF8;
+            break;
+        case OUTPUT_PARAM:
+            f->delay[s].output = (u32)val & 0xFFFFFFF8;
+            break;
+        case FFCOEF_PARAM:
+            f->delay[s].ffcoef = (s16)val;
+            break;
+        case FBCOEF_PARAM:
+            f->delay[s].fbcoef = (s16)val;
+            break;
+        case GAIN_PARAM:
+            f->delay[s].gain = (s16)val;
+            break;
+        case CHORUSRATE_PARAM:
+            /* f->delay[s].rsinc = ((f32)val)/0xffffff; */
+            f->delay[s].rsinc = ((((f32)val)/1000) * RANGE)/n_syn->outputRate; 
+            break;
+
+/*
+ * the following constant is derived from:
+ *
+ *      ratio = 2^(cents/1200)
+ *
+ * and therefore for hundredths of a cent
+ *                     x
+ *      ln(ratio) = ---------------
+ *              (120,000)/ln(2)
+ * where
+ *      120,000/ln(2) = 173123.40...
+ */
+#define CONVERT 173123.404906676f
+#define LENGTH  (f->delay[s].output - f->delay[s].input)
+
+        case CHORUSDEPTH_PARAM:
+            /*f->delay[s].rsgain = (((f32)val) / CONVERT) * LENGTH; */
+            f->delay[s].rsgain = (((f32)val) / CONVERT) * LENGTH;
+            break;
+        case LPFILT_PARAM:
+            if(f->delay[s].lp)
+            {
+                f->delay[s].lp->fc = (s16)val;
+                _init_lpfilter(f->delay[s].lp);
+            }
+            break;
+    }
+    return 0;
+}
+
+#undef RANGE
+#undef CONVERT
+#undef LENGTH
+
+s32 func_8002D1F4_2DDF4(N_PVoice* filter, s32 paramID, void* param) {
+    n_alLoadParam(filter, paramID, param);
+    return 0;
+}
 
 extern s32 SMALLROOM_PARAMS_N[26];
 extern s32 BIGROOM_PARAMS_N[34];

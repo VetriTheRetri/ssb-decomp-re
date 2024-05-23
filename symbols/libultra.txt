@@ -163,7 +163,6 @@ n_alSavePull = 0x8002C6BC;
 alN_PVoiceNew = 0x8002CA20;
 n_alClose = 0x8002CE48;
 n_alInit = 0x8002CE88;
-__leoSetReset = 0x8002D1F4;
 n_alSynAddSeqPlayer = 0x8002D620;
 n_alSynAddSndPlayer = 0x8002D6A8;
 n_alSynAddPlayer = 0x8002D71C;
@@ -339,3 +338,4 @@ FLANGE_PARAMS_N = 0x8003D1C0;
 NULL_PARAMS_N = 0x8003D1E8;
 
 _init_lpfilter = 0x8002CED4;
+n_alFxParamHdl = 0x8002CFA0;

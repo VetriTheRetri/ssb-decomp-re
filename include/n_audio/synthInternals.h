@@ -177,27 +177,26 @@ Acmd    *alRaw16Pull(void *f, s16 *outp, s32 byteCount, s32 sampleOffset, Acmd *
 s32     alLoadParam(void *filter, s32 paramID, void *param);
 
 typedef struct ALResampler_s {
-	ALFilter            filter;
-	RESAMPLE_STATE      *state[2];
-	f32                 ratio;
-	s32			upitch;
-	f32		        delta;
-	s32			first;
-	ALParam		*ctrlList;
-	ALParam		*ctrlTail;
-	s32                 motion;
+    ALFilter            filter;
+    RESAMPLE_STATE      *state;
+    f32                 ratio;
+    s32			upitch;
+    f32		        delta;
+    s32			first;
+    ALParam		*ctrlList;
+    ALParam		*ctrlTail;
+    s32                 motion;
 } ALResampler;
 
 typedef struct {
-	s16		        fc;
-	s16		        fgain;
-	union {
-		s16		fccoef[16];
-		s64             force_aligned;
-	} fcvec;
-    s32 pad28; // Unsure of this pads location
-	s32			first; //0x2C
-	POLEF_STATE *fstate[2]; //0x30
+    s16		        fc;
+    s16		        fgain;
+    union {
+        s16		fccoef[16];
+        s64             force_aligned;
+    } fcvec;
+    POLEF_STATE		*fstate;
+    s32			first;
 } ALLowPass;
 
 typedef struct {
@@ -216,12 +215,13 @@ typedef struct {
 
 typedef s32   (*ALSetFXParam)(void *, s32, void *);
 typedef struct {
-	u32			length; // 0
-	ALDelay		*delay; // 4
-	u8			section_count; // 8
-	struct ALFilter_s   filter;
-	s16			*base[2]; // 20
-	s16			*input[2]; // 28
+    struct ALFilter_s   filter;
+    s16			*base;
+    s16			*input;
+    u32			length;
+    ALDelay		*delay;
+    u8			section_count;
+    ALSetFXParam        paramHdl;
 } ALFx;
 
 void    alFxNew(ALFx *r, ALSynConfig *c, ALHeap *hp);

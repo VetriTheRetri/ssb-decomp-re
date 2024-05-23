@@ -5,21 +5,21 @@
 # 0x80132A10 -> 0x80132C10 [0x200 bytes]
 # Unreferenced BSS space @ 80132A10
     .space 8
-glabel D_ovl50_80132A18
+glabel gMvOpeningGreatFoxFramesElapsed
     .space 4
 glabel D_ovl50_80132A1C
     .space 4
-glabel D_ovl50_80132A20
+glabel gMvOpeningGreatFoxBackgroundGObj
     .space 8
 glabel D_ovl50_80132A28
     .space 12
-glabel D_ovl50_80132A34
+glabel gMvOpeningGreatFoxBackgroundScrollSpeedX
     .space 4
-glabel D_ovl50_80132A38
+glabel gMvOpeningGreatFoxBackgroundScrollSpeedY
     .space 4
 glabel D_ovl50_80132A3C
     .space 4
-glabel D_ovl50_80132A40
+glabel gMvOpeningGreatFoxUnusedCounter
     .space 8
 glabel D_ovl50_80132A48
     .space 384

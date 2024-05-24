@@ -57,7 +57,8 @@ void mvOpeningKickEntrySetupDisplayList(Gfx **display_list)
 }
 
 // 0x80131B58 - Unused?
-void func_ovl49_80131B58() {
+void func_ovl49_80131B58()
+{
     return;
 }
 

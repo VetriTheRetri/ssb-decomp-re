@@ -23,7 +23,7 @@ glabel D_ovl50_801328F0
   .balign 4
   .incbin "ovl50.raw.bin", 0x0E20, 0x10
 
-glabel D_ovl50_80132930
+glabel dMvOpeningGreatFoxArwingAnimOffsets
   .incbin "ovl50.raw.bin", 0x0E30, 0xC
 
 glabel D_ovl50_8013293C

@@ -6,7 +6,7 @@
 #  8018D870 -> 8018DA40
 
 
-glabel D_ovl51_8018D870
+glabel dMvOpeningDKVsSamusCameraSettingsStart
   /* 7B0 1750F0 8018D870 */
   .asciz "Dz"
   .balign 4
@@ -24,7 +24,7 @@ glabel D_ovl51_8018D87C
   .balign 4
   .incbin "ovl51.raw.bin", 0x07C4, 0x8
 
-glabel D_ovl51_8018D88C
+glabel dMvOpeningDKVsSamusCameraSettingsEnd
   .incbin "ovl51.raw.bin", 0x07CC, 0x4
   /* 7D0 175110 8018D890 */
   .asciz "DH"
@@ -38,7 +38,7 @@ glabel D_ovl51_8018D88C
   .balign 4
   .incbin "ovl51.raw.bin", 0x07E0, 0x8
 
-glabel D_ovl51_8018D8A8
+glabel dMvOpeningDKVsSamusInputSeqDonkey
   .incbin "ovl51.raw.bin", 0x07E8, 0xC
 
 glabel D_ovl51_8018D8B4
@@ -95,12 +95,12 @@ glabel D_ovl51_8018D958
   /* 8A0 1751E0 8018D960 */  .4byte func_800A26B8
   /* 8A4 1751E4 8018D964 */  .4byte D_NF_8018DE60
   .incbin "ovl51.raw.bin", 0x08A8, 0x28
-  /* 8D0 175210 8018D990 */  .4byte func_ovl51_8018D7CC
+  /* 8D0 175210 8018D990 */  .4byte mvOpeningDKVsSamusSetupDisplayList
   /* 8D4 175214 8018D994 */  .4byte update_contdata
   .incbin "ovl51.raw.bin", 0x08D8, 0x20
   /* 8F8 175238 8018D9B8 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl51.raw.bin", 0x08FC, 0x24
-  /* 920 175260 8018D9E0 */  .4byte func_ovl51_8018D670
+  /* 920 175260 8018D9E0 */  .4byte mvOpeningDKVsSamusInit
   .incbin "ovl51.raw.bin", 0x0924, 0xC
 
 glabel D_ovl51_8018D9F0

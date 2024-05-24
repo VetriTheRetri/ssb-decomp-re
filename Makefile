@@ -138,6 +138,7 @@ build/src/libultra/os/%.o: 		OPTFLAGS := -O1 -g0
 build/src/libultra/rmon/%.o: 	OPTFLAGS := -O1 -g0
 build/src/libultra/debug/%.o: 	OPTFLAGS := -O1 -g0
 build/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0
+# build/src/libultra/n_audio/%.o:	OPTFLAGS := -O3 -g0
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

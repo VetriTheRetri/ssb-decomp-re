@@ -97,22 +97,217 @@ void func_80027338_27F38(void) {
     osSetIntMask(mask);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80027390_27F90.s")
+extern s32 sRandSeed1;
+extern s32 sRandSeed2;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_800273F4_27FF4.s")
+//split 0x27F90?
+f32 randFloat1(void) {
+    sRandSeed2 = (sRandSeed2 * 0x343FD) + 0x269EC3;
+    return ((sRandSeed2 >> 16) & 0xFFFF) / 65536.0f;
+}
+
+
+f32 randFloat2(void) {
+    sRandSeed1 = (sRandSeed1 * 0x343FD) + 0x269EC3;
+    return ((sRandSeed1 >> 16) & 0xFFFF) / 65536.0f;
+}
 
 void func_80027458_28058(void) {
 }
 
+//split 0x28060?
+
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80027460_28060.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80028468_29068.s")
+// This should be a file split, and compiled with -O3. File: n_csq.c
+#if 0
+static u32 __readVarLen(ALCSeq *s,u32 track);
+static u8  __getTrackByte(ALCSeq *s,u32 track);
+static u32 __n_alCSeqGetTrackEvent(ALCSeq *seq, u32 track, N_ALEvent *event); 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002852C_2912C.s")
+void n_alCSeqNew(ALCSeq *seq, u8 *ptr)
+{
+    u32         i,tmpOff,flagTmp;
+    
+    /* load the seqence pointed to by ptr   */
+    seq->base = (ALCMidiHdr*)ptr;
+    seq->validTracks = 0;
+    seq->lastDeltaTicks = 0;
+    seq->lastTicks = 0;
+    seq->deltaFlag = 1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alCSeqNextEvent.s")
+    for(i = 0; i < 16; i++)
+    {
+        seq->lastStatus[i] = 0;
+        seq->curBUPtr[i] = 0;
+        seq->curBULen[i] = 0;
+        tmpOff = seq->base->trackOffset[i];
+        if(tmpOff) /* if the track is valid */
+        {
+            flagTmp = 1 << i;
+            seq->validTracks |= flagTmp;
+            seq->curLoc[i] = (u8*)((u32)ptr + tmpOff);
+            seq->evtDeltaTicks[i] = __readVarLen(seq,i);
+            /*__n_alCSeqGetTrackEvent(seq,i); prime the event buffers  */
+        }
+        else
+            seq->curLoc[i] = 0;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alCSeqNew.s")
+    seq->qnpt = 1.0f/(f32)seq->base->division;
+}
+
+void n_alCSeqNextEvent(ALCSeq *seq,N_ALEvent *evt)
+{
+    u32     i;
+    u32     firstTime = 0xFFFFFFFF;
+    u32     firstTrack;
+    u32     lastTicks = seq->lastDeltaTicks;
+
+#ifdef _DEBUG
+    /* sct 1/17/96 - Warn if we are beyond the end of sequence. */
+    if (!seq->validTracks)
+	__osError(ERR_ALSEQOVERRUN, 0);
+#endif
+    
+
+    for(i = 0; i < 16 ; i++)
+    {
+	if((seq->validTracks >> i) & 1)
+        {
+	    if(seq->deltaFlag)
+		seq->evtDeltaTicks[i] -= lastTicks;
+	    if(seq->evtDeltaTicks[i] < firstTime)
+            {
+		firstTime = seq->evtDeltaTicks[i];
+		firstTrack = i;
+            }
+        }
+    }
+ 
+    __n_alCSeqGetTrackEvent(seq,firstTrack,evt);
+
+    evt->msg.midi.ticks = firstTime;
+    seq->lastTicks += firstTime;
+    seq->lastDeltaTicks = firstTime;
+    if(evt->type != AL_TRACK_END)
+	seq->evtDeltaTicks[firstTrack] += __readVarLen(seq,firstTrack);
+    seq->deltaFlag = 1;
+
+}
+
+
+/* only call n_alCSeqGetTrackEvent with a valid track !! */
+static u32 __n_alCSeqGetTrackEvent(ALCSeq *seq, u32 track, N_ALEvent *event) 
+{
+    u32     offset;
+    u8      status, loopCt, curLpCt, *tmpPtr;
+    
+
+    status = __getTrackByte(seq,track);     /* read the status byte */
+
+    if (status == AL_MIDI_Meta) /* running status not allowed on meta events!! */
+    {
+        u8 type = __getTrackByte(seq,track);
+        
+        if (type == AL_MIDI_META_TEMPO)
+        {
+            event->type = AL_TEMPO_EVT;
+            event->msg.tempo.status = status;
+            event->msg.tempo.type = type;
+            event->msg.tempo.byte1 = __getTrackByte(seq,track);
+            event->msg.tempo.byte2 = __getTrackByte(seq,track);
+            event->msg.tempo.byte3 = __getTrackByte(seq,track);
+            seq->lastStatus[track] = 0;  /* lastStatus not supported after meta */
+        }
+        else if (type == AL_MIDI_META_EOT)
+        {
+            u32     flagMask;
+            
+            flagMask = 0x01 << track;
+            seq->validTracks = seq->validTracks ^ flagMask;
+            
+            if(seq->validTracks) /* there is music left don't end */
+                event->type = AL_TRACK_END;
+            else         /* no more music send AL_SEQ_END_EVT msg */
+                event->type = AL_SEQ_END_EVT;
+        }
+        else if (type == AL_CMIDI_LOOPSTART_CODE)
+        {
+            status = __getTrackByte(seq,track); /* get next two bytes, ignore them */
+            status = __getTrackByte(seq,track);
+            seq->lastStatus[track] = 0;
+            event->type = AL_CSP_LOOPSTART;
+        }
+        else if (type == AL_CMIDI_LOOPEND_CODE)
+        {
+            tmpPtr = seq->curLoc[track];
+            loopCt = *tmpPtr++;
+            curLpCt = *tmpPtr;
+            if(curLpCt == 0) /* done looping */
+            {
+                *tmpPtr = loopCt; /* reset current loop count */
+                seq->curLoc[track] = tmpPtr + 5; /* move pointer to end of event */
+            }
+            else 
+            {
+                if(curLpCt != 0xFF) /* not a loop forever */
+                    *tmpPtr = curLpCt - 1;   /* decrement current loop count */
+                tmpPtr++;                    /* get offset from end of event */
+                offset = (*tmpPtr++) << 24;
+                offset += (*tmpPtr++) << 16;
+                offset += (*tmpPtr++) << 8;
+                offset += *tmpPtr++;
+                seq->curLoc[track] = tmpPtr - offset;
+            }
+            seq->lastStatus[track] = 0;
+            event->type = AL_CSP_LOOPEND;
+        }
+
+#ifdef _DEBUG        
+        else
+            __osError(ERR_ALSEQMETA, 1, type);
+#endif
+        
+    }
+    else
+    {
+        event->type = AL_SEQ_MIDI_EVT;
+        if (status & 0x80)  /* if high bit is set, then new status */
+        {
+            event->msg.midi.status = status;
+            event->msg.midi.byte1 = __getTrackByte(seq,track);
+            seq->lastStatus[track] = status;
+        }
+        else     /* running status */
+        {
+#ifdef _DEBUG
+            if(seq->lastStatus[track] == 0)
+                __osError(ERR_ALCSEQZEROSTATUS, 1, track);
+#endif
+            event->msg.midi.status = seq->lastStatus[track];
+            event->msg.midi.byte1 = status;
+        }
+        
+        if (((event->msg.midi.status & 0xf0) != AL_MIDI_ProgramChange) &&
+            ((event->msg.midi.status & 0xf0) != AL_MIDI_ChannelPressure))
+        {
+            event->msg.midi.byte2 = __getTrackByte(seq,track);
+            if((event->msg.midi.status & 0xf0) == AL_MIDI_NoteOn)
+            {
+                event->msg.midi.duration = __readVarLen(seq,track);
+#ifdef _DEBUG                
+                if(event->msg.midi.byte2 == 0)
+                    __osError( ERR_ALCSEQZEROVEL, 1, track);
+#endif                
+            }
+        }
+        else
+            event->msg.midi.byte2 = 0;
+    }
+    return TRUE;
+}
+
 
 void n_alCSeqNewMarker(ALCSeq *seq, ALCSeqMarker *m, u32 ticks)
 {
@@ -146,7 +341,116 @@ void n_alCSeqNewMarker(ALCSeq *seq, ALCSeqMarker *m, u32 ticks)
 
 }
 
+
+/* non-aligned byte reading routines */
+static u8 __getTrackByte(ALCSeq *seq,u32 track)
+{
+    u8      theByte;
+
+    
+    if(seq->curBULen[track])  
+    {
+        theByte = *seq->curBUPtr[track];
+        seq->curBUPtr[track]++;
+        seq->curBULen[track]--;
+    }
+    else  /* need to handle backup mode */
+    {
+        theByte = *seq->curLoc[track];
+        seq->curLoc[track]++;
+        if(theByte == AL_CMIDI_BLOCK_CODE)
+        {
+            u8   loBackUp,hiBackUp,theLen,nextByte;
+            u32  backup;
+            
+            nextByte = *seq->curLoc[track];
+            seq->curLoc[track]++;
+            if(nextByte != AL_CMIDI_BLOCK_CODE)
+            {
+                /* if here, then got a backup section. get the amount of
+                   backup, and the len of the section. Subtract the amount of
+                   backup from the curLoc ptr, and subtract four more, since
+                   curLoc has been advanced by four while reading the codes. */
+                hiBackUp = nextByte;
+                loBackUp = *seq->curLoc[track];
+                seq->curLoc[track]++;
+                theLen = *seq->curLoc[track];
+                seq->curLoc[track]++;
+                backup = (u32)hiBackUp;
+                backup = backup << 8;
+                backup += loBackUp;
+                seq->curBUPtr[track] = seq->curLoc[track] - (backup + 4);
+                seq->curBULen[track] = (u32)theLen;
+
+                /* now get the byte */
+                theByte = *seq->curBUPtr[track];
+                seq->curBUPtr[track]++;
+                seq->curBULen[track]--;
+            }
+        }
+    }
+
+    return theByte;    
+}
+
+static u32 __readVarLen(ALCSeq *seq,u32 track)
+{
+    u32 value;
+    u32 c;
+
+    value = (u32)__getTrackByte(seq,track);
+    if ( value & 0x00000080 )
+    {
+        value &= 0x7f;
+        do
+        {
+            c = (u32)__getTrackByte(seq,track);
+            value = (value << 7) + (c & 0x7f);
+        } while (c & 0x80);
+    }
+    return (value);
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__getTrackByte.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__readVarLen.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alCSeqNextEvent.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alCSeqNew.s")
+void n_alCSeqNewMarker(ALCSeq *seq, ALCSeqMarker *m, u32 ticks)
+{
+    N_ALEvent     evt;
+    ALCSeq      tempSeq;
+    s32         i;
+    
+
+    n_alCSeqNew(&tempSeq, (u8*)seq->base);
+    
+    do {
+        m->validTracks    = tempSeq.validTracks;
+        m->lastTicks      = tempSeq.lastTicks;
+        m->lastDeltaTicks = tempSeq.lastDeltaTicks;
+        
+        for(i=0;i<16;i++)
+        {
+            m->curLoc[i]        = tempSeq.curLoc[i];
+            m->curBUPtr[i]      = tempSeq.curBUPtr[i];
+            m->curBULen[i]      = tempSeq.curBULen[i];
+            m->lastStatus[i]    = tempSeq.lastStatus[i];
+            m->evtDeltaTicks[i] = tempSeq.evtDeltaTicks[i];
+        }
+        
+        n_alCSeqNextEvent(&tempSeq, &evt);
+        
+        if (evt.type == AL_SEQ_END_EVT)
+            break;
+        
+    } while (tempSeq.lastTicks < ticks);
+
+}
+#endif
+
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__alCSeqNextDelta.s")
+
+//split 0x29860
 
 /* might want to make these macros */
 void alLink(ALLink *ln, ALLink *to)
@@ -181,6 +485,8 @@ void alUnlink(ALLink *ln)
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80028CB4_298B4.s")
+
+//split 0x29970
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alEvtqPostEvent.s")
 
@@ -295,8 +601,10 @@ void func_8002C544_2D144(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002C708_2D308.s")
 
+// 0x8002CA20
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alN_PVoiceNew.s")
 
+// 0x8002CB48
 /***********************************************************************
  * Synthesis driver public interfaces
  ***********************************************************************/
@@ -379,6 +687,7 @@ void n_alSynNew(ALSynConfig *c)
     n_syn->heap = hp;
 }
 
+// 0x0x8002CE48
 void n_alClose(N_ALGlobals *g)
 {
 	if (n_alGlobals) {
@@ -388,6 +697,7 @@ void n_alClose(N_ALGlobals *g)
 	}
 }
 
+// 0x8002CE88
 void n_alInit(N_ALGlobals *g, ALSynConfig *c)
 {
 	if (!n_alGlobals) {
@@ -508,6 +818,7 @@ s32 n_alFxParamHdl(void *filter, s32 paramID, void *param)
 #undef CONVERT
 #undef LENGTH
 
+// 0x8002D1F4
 s32 func_8002D1F4_2DDF4(N_PVoice* filter, s32 paramID, void* param) {
     n_alLoadParam(filter, paramID, param);
     return 0;
@@ -520,6 +831,7 @@ extern s32 CHORUS_PARAMS_N[10];
 extern s32 FLANGE_PARAMS_N[10];
 extern s32 NULL_PARAMS_N[10];
 
+// 0x8002D218
 void n_alFxNew(ALFx **fx_ar, ALSynConfig *c, ALHeap *hp)
 {
     u16		i, j, k;

@@ -148,7 +148,7 @@ __osSpGetStatus = 0x80038E20;
 __alCSeqNextDelta = 0x80028AF8;
 __alSeqNextDelta = 0x8002F9FC;
 
-alCSeqNewMarker = 0x8002898C;
+n_alCSeqNewMarker = 0x8002898C;
 alLink = 0x80028C60;
 alUnlink = 0x80028C84;
 _n_freeParam = 0x8002A050;
@@ -340,3 +340,5 @@ NULL_PARAMS_N = 0x8003D1E8;
 _init_lpfilter = 0x8002CED4;
 n_alFxParamHdl = 0x8002CFA0;
 n_alFxPull = 0x8002B028;
+n_alCSeqNew = 0x80028884;
+n_alCSeqNextEvent = 0x8002858C;

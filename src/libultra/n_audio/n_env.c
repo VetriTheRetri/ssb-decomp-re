@@ -110,11 +110,41 @@ void func_80027458_28058(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002852C_2912C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002858C_2918C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alCSeqNextEvent.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80028884_29484.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alCSeqNew.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alCSeqNewMarker.s")
+void n_alCSeqNewMarker(ALCSeq *seq, ALCSeqMarker *m, u32 ticks)
+{
+    N_ALEvent     evt;
+    ALCSeq      tempSeq;
+    s32         i;
+    
+
+    n_alCSeqNew(&tempSeq, (u8*)seq->base);
+    
+    do {
+        m->validTracks    = tempSeq.validTracks;
+        m->lastTicks      = tempSeq.lastTicks;
+        m->lastDeltaTicks = tempSeq.lastDeltaTicks;
+        
+        for(i=0;i<16;i++)
+        {
+            m->curLoc[i]        = tempSeq.curLoc[i];
+            m->curBUPtr[i]      = tempSeq.curBUPtr[i];
+            m->curBULen[i]      = tempSeq.curBULen[i];
+            m->lastStatus[i]    = tempSeq.lastStatus[i];
+            m->evtDeltaTicks[i] = tempSeq.evtDeltaTicks[i];
+        }
+        
+        n_alCSeqNextEvent(&tempSeq, &evt);
+        
+        if (evt.type == AL_SEQ_END_EVT)
+            break;
+        
+    } while (tempSeq.lastTicks < ticks);
+
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__alCSeqNextDelta.s")
 

@@ -45,6 +45,7 @@
 #define	N_AL_AUX_R_OUT	        2352
 
 #define N_AL_DIVIDED            368
+#define N_AL_MAX_RSP_SAMPLES      184
 
 typedef struct {
     struct ALParam_s    *next;

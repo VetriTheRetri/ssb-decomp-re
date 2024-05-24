@@ -127,6 +127,20 @@ void alLink(ALLink *ln, ALLink *to)
         to->next->prev = ln; 
     to->next = ln;           
 }
+// They DID make this a macro and it's used in n_alSynNew
+#define alLinkMacro(ln, to)       \
+{                                 \
+    ALLink *_ln = (ALLink *)(ln); \
+    ALLink *_to = (ALLink *)(to); \
+    _ln->next = _to->next;        \
+	_ln->prev = _to;              \
+                                  \
+	if (_to->next) {              \
+		_to->next->prev = _ln;    \
+	}                             \
+                                  \
+	_to->next = _ln;              \
+}
 
 void alUnlink(ALLink *ln)			
 {					
@@ -228,7 +242,7 @@ Acmd *n_alAuxBusPull(s32 sampleOffset, Acmd *p)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002AE1C_2BA1C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002B028_2BC28.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alFxPull.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002B308_2BF08.s")
 
@@ -253,7 +267,87 @@ void func_8002C544_2D144(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alN_PVoiceNew.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alSynNew.s")
+/***********************************************************************
+ * Synthesis driver public interfaces
+ ***********************************************************************/
+void n_alSynNew(ALSynConfig *c)
+{
+    s32         i;
+    N_ALVoice  *vv;
+    N_PVoice   *pv;
+    N_ALVoice  *vvoices;
+    N_PVoice   *pvoices;
+    ALHeap      *hp = c->heap;
+    ALSave      *save;
+    ALFilter    *sources;
+    N_PVoice   *m_sources;
+    ALParam     *params;
+    ALParam     *paramPtr;
+    
+    n_syn->head            = NULL;
+    n_syn->n_seqp1         = NULL;
+    n_syn->n_seqp2         = NULL;
+    n_syn->n_sndp          = NULL;
+    n_syn->numPVoices      = c->maxPVoices;
+    n_syn->curSamples      = 0;
+    n_syn->paramSamples    = 0;
+    n_syn->outputRate      = c->outputRate;
+#ifndef N_MICRO
+    n_syn->maxOutSamples   = AL_MAX_RSP_SAMPLES;
+#else
+    n_syn->maxOutSamples   = FIXED_SAMPLE;
+#endif
+    n_syn->dma             = (ALDMANew) c->dmaproc;
+
+/******* save new *******************************/
+    n_syn->sv_dramout = 0;
+    n_syn->sv_first = 1;
+
+/******* aux new *******************************/
+    n_syn->auxBus = (N_ALAuxBus *)alHeapAlloc(hp, 1, sizeof(N_ALAuxBus));
+
+    n_syn->auxBus->sourceCount = 0;
+    n_syn->auxBus->maxSources = c->maxPVoices;
+    n_syn->auxBus->sources = (N_PVoice **)
+      alHeapAlloc(hp, c->maxPVoices, sizeof(N_PVoice *));
+
+/******* main new *******************************/
+    n_syn->mainBus = (N_ALMainBus *)alHeapAlloc(hp, 1, sizeof(N_ALMainBus));
+
+/******* fx new *******************************/
+
+    if (c->fxType != AL_FX_NONE){
+      n_syn->auxBus->fx = n_alSynAllocFX(0, c, hp);
+      n_syn->mainBus->filter.handler = (N_ALCmdHandler)n_alFxPull;
+    } else {
+      n_syn->mainBus->filter.handler = (N_ALCmdHandler)n_alAuxBusPull;
+    }
+
+    n_syn->pFreeList.next = 0;
+    n_syn->pFreeList.prev = 0;
+    n_syn->pLameList.next = 0;
+    n_syn->pLameList.prev = 0;
+    n_syn->pAllocList.next = 0;
+    n_syn->pAllocList.prev = 0;
+
+    pvoices = alHeapAlloc(hp, c->maxPVoices, sizeof(N_PVoice));
+    for (i = 0; i < c->maxPVoices; i++) {
+      pv = &pvoices[i];
+      alLinkMacro((ALLink *)pv, &n_syn->pFreeList);
+      pv->vvoice = 0;
+      alN_PVoiceNew(pv, n_syn->dma, hp);
+      n_syn->auxBus->sources[n_syn->auxBus->sourceCount++] = pv;
+    }
+
+    params = alHeapAlloc(hp, c->maxUpdates, sizeof(ALParam));
+    n_syn->paramList = 0;
+    for (i = 0; i < c->maxUpdates; i++) {
+        paramPtr= &params[i];
+        paramPtr->next = n_syn->paramList;
+        n_syn->paramList = paramPtr;
+    }
+    n_syn->heap = hp;
+}
 
 void n_alClose(N_ALGlobals *g)
 {

@@ -12,7 +12,7 @@
 # Text Sections
 #  0x80131B00 -> 0x80132640
 
-glabel func_ovl52_80131B00
+glabel mvOpeningHiddenCharsSetupDisplayList
   /* 1752C0 80131B00 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 1752C4 80131B04 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1752C8 80131B08 8C830000 */        lw $v1, ($a0)
@@ -34,15 +34,15 @@ glabel func_ovl52_80131B00
   /* 175308 80131B48 8FBF0014 */        lw $ra, 0x14($sp)
   /* 17530C 80131B4C 27BD0028 */     addiu $sp, $sp, 0x28
   /* 175310 80131B50 03E00008 */        jr $ra
-  /* 175314 80131B54 00000000 */       nop 
+  /* 175314 80131B54 00000000 */       nop
 
-glabel func_ovl52_80131B58
+glabel mvOpeningHiddenCharsIsLocked
   /* 175318 80131B58 24010004 */     addiu $at, $zero, 4
   /* 17531C 80131B5C 10810027 */       beq $a0, $at, .L80131BFC
   /* 175320 80131B60 3C0A8013 */       lui $t2, 0x8013
   /* 175324 80131B64 24010007 */     addiu $at, $zero, 7
   /* 175328 80131B68 10810009 */       beq $a0, $at, .L80131B90
-  /* 17532C 80131B6C 3C0E8013 */       lui $t6, %hi(D_ovl52_80132750)
+  /* 17532C 80131B6C 3C0E8013 */       lui $t6, %hi(gMvOpeningHiddenCharsCharacterMask)
   /* 175330 80131B70 2401000A */     addiu $at, $zero, 0xa
   /* 175334 80131B74 10810018 */       beq $a0, $at, .L80131BD8
   /* 175338 80131B78 3C088013 */       lui $t0, 0x8013
@@ -52,11 +52,11 @@ glabel func_ovl52_80131B58
   /* 175348 80131B88 10000025 */         b .L80131C20
   /* 17534C 80131B8C 00001025 */        or $v0, $zero, $zero
   .L80131B90:
-  /* 175350 80131B90 95CE2750 */       lhu $t6, %lo(D_ovl52_80132750)($t6)
+  /* 175350 80131B90 95CE2750 */       lhu $t6, %lo(gMvOpeningHiddenCharsCharacterMask)($t6)
   /* 175354 80131B94 24030001 */     addiu $v1, $zero, 1
   /* 175358 80131B98 31CF0080 */      andi $t7, $t6, 0x80
   /* 17535C 80131B9C 11E00003 */      beqz $t7, .L80131BAC
-  /* 175360 80131BA0 00000000 */       nop 
+  /* 175360 80131BA0 00000000 */       nop
   /* 175364 80131BA4 03E00008 */        jr $ra
   /* 175368 80131BA8 00001025 */        or $v0, $zero, $zero
 
@@ -69,7 +69,7 @@ glabel func_ovl52_80131B58
   /* 175378 80131BB8 24030001 */     addiu $v1, $zero, 1
   /* 17537C 80131BBC 33190800 */      andi $t9, $t8, 0x800
   /* 175380 80131BC0 13200003 */      beqz $t9, .L80131BD0
-  /* 175384 80131BC4 00000000 */       nop 
+  /* 175384 80131BC4 00000000 */       nop
   /* 175388 80131BC8 03E00008 */        jr $ra
   /* 17538C 80131BCC 00001025 */        or $v0, $zero, $zero
 
@@ -82,7 +82,7 @@ glabel func_ovl52_80131B58
   /* 17539C 80131BDC 24030001 */     addiu $v1, $zero, 1
   /* 1753A0 80131BE0 31090400 */      andi $t1, $t0, 0x400
   /* 1753A4 80131BE4 11200003 */      beqz $t1, .L80131BF4
-  /* 1753A8 80131BE8 00000000 */       nop 
+  /* 1753A8 80131BE8 00000000 */       nop
   /* 1753AC 80131BEC 03E00008 */        jr $ra
   /* 1753B0 80131BF0 00001025 */        or $v0, $zero, $zero
 
@@ -95,7 +95,7 @@ glabel func_ovl52_80131B58
   /* 1753C0 80131C00 24030001 */     addiu $v1, $zero, 1
   /* 1753C4 80131C04 314B0010 */      andi $t3, $t2, 0x10
   /* 1753C8 80131C08 11600003 */      beqz $t3, .L80131C18
-  /* 1753CC 80131C0C 00000000 */       nop 
+  /* 1753CC 80131C0C 00000000 */       nop
   /* 1753D0 80131C10 03E00008 */        jr $ra
   /* 1753D4 80131C14 00001025 */        or $v0, $zero, $zero
 
@@ -105,15 +105,15 @@ glabel func_ovl52_80131B58
 
   .L80131C20:
   /* 1753E0 80131C20 03E00008 */        jr $ra
-  /* 1753E4 80131C24 00000000 */       nop 
+  /* 1753E4 80131C24 00000000 */       nop
 
   /* 1753E8 80131C28 03E00008 */        jr $ra
-  /* 1753EC 80131C2C 00000000 */       nop 
+  /* 1753EC 80131C2C 00000000 */       nop
 
   /* 1753F0 80131C30 03E00008 */        jr $ra
-  /* 1753F4 80131C34 00000000 */       nop 
+  /* 1753F4 80131C34 00000000 */       nop
 
-glabel func_ovl52_80131C38
+glabel mvOpeningHiddenCreatePurin
   /* 1753F8 80131C38 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 1753FC 80131C3C AFBF0024 */        sw $ra, 0x24($sp)
   /* 175400 80131C40 AFB00020 */        sw $s0, 0x20($sp)
@@ -123,7 +123,7 @@ glabel func_ovl52_80131C38
   /* 175410 80131C50 0C00265A */       jal omMakeGObjCommon
   /* 175414 80131C54 3C078000 */       lui $a3, 0x8000
   /* 175418 80131C58 00408025 */        or $s0, $v0, $zero
-  /* 17541C 80131C5C 0C04C6D6 */       jal func_ovl52_80131B58
+  /* 17541C 80131C5C 0C04C6D6 */       jal mvOpeningHiddenCharsIsLocked
   /* 175420 80131C60 2404000A */     addiu $a0, $zero, 0xa
   /* 175424 80131C64 1040000A */      beqz $v0, .L80131C90
   /* 175428 80131C68 02002025 */        or $a0, $s0, $zero
@@ -175,9 +175,9 @@ glabel func_ovl52_80131C38
   /* 1754D8 80131D18 8FB00020 */        lw $s0, 0x20($sp)
   /* 1754DC 80131D1C 27BD0030 */     addiu $sp, $sp, 0x30
   /* 1754E0 80131D20 03E00008 */        jr $ra
-  /* 1754E4 80131D24 00000000 */       nop 
+  /* 1754E4 80131D24 00000000 */       nop
 
-glabel func_ovl52_80131D28
+glabel mvOpeningHiddenCreateCaptain
   /* 1754E8 80131D28 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 1754EC 80131D2C AFBF0024 */        sw $ra, 0x24($sp)
   /* 1754F0 80131D30 AFB00020 */        sw $s0, 0x20($sp)
@@ -187,7 +187,7 @@ glabel func_ovl52_80131D28
   /* 175500 80131D40 0C00265A */       jal omMakeGObjCommon
   /* 175504 80131D44 3C078000 */       lui $a3, 0x8000
   /* 175508 80131D48 00408025 */        or $s0, $v0, $zero
-  /* 17550C 80131D4C 0C04C6D6 */       jal func_ovl52_80131B58
+  /* 17550C 80131D4C 0C04C6D6 */       jal mvOpeningHiddenCharsIsLocked
   /* 175510 80131D50 24040007 */     addiu $a0, $zero, 7
   /* 175514 80131D54 1040000A */      beqz $v0, .L80131D80
   /* 175518 80131D58 02002025 */        or $a0, $s0, $zero
@@ -239,9 +239,9 @@ glabel func_ovl52_80131D28
   /* 1755C8 80131E08 8FB00020 */        lw $s0, 0x20($sp)
   /* 1755CC 80131E0C 27BD0030 */     addiu $sp, $sp, 0x30
   /* 1755D0 80131E10 03E00008 */        jr $ra
-  /* 1755D4 80131E14 00000000 */       nop 
+  /* 1755D4 80131E14 00000000 */       nop
 
-glabel func_ovl52_80131E18
+glabel mvOpeningHiddenCreateLuigi
   /* 1755D8 80131E18 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 1755DC 80131E1C AFBF0024 */        sw $ra, 0x24($sp)
   /* 1755E0 80131E20 AFB00020 */        sw $s0, 0x20($sp)
@@ -251,7 +251,7 @@ glabel func_ovl52_80131E18
   /* 1755F0 80131E30 0C00265A */       jal omMakeGObjCommon
   /* 1755F4 80131E34 3C078000 */       lui $a3, 0x8000
   /* 1755F8 80131E38 00408025 */        or $s0, $v0, $zero
-  /* 1755FC 80131E3C 0C04C6D6 */       jal func_ovl52_80131B58
+  /* 1755FC 80131E3C 0C04C6D6 */       jal mvOpeningHiddenCharsIsLocked
   /* 175600 80131E40 24040004 */     addiu $a0, $zero, 4
   /* 175604 80131E44 1040000A */      beqz $v0, .L80131E70
   /* 175608 80131E48 02002025 */        or $a0, $s0, $zero
@@ -303,9 +303,9 @@ glabel func_ovl52_80131E18
   /* 1756B8 80131EF8 8FB00020 */        lw $s0, 0x20($sp)
   /* 1756BC 80131EFC 27BD0030 */     addiu $sp, $sp, 0x30
   /* 1756C0 80131F00 03E00008 */        jr $ra
-  /* 1756C4 80131F04 00000000 */       nop 
+  /* 1756C4 80131F04 00000000 */       nop
 
-glabel func_ovl52_80131F08
+glabel mvOpeningHiddenCreateNess
   /* 1756C8 80131F08 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 1756CC 80131F0C AFBF0024 */        sw $ra, 0x24($sp)
   /* 1756D0 80131F10 AFB00020 */        sw $s0, 0x20($sp)
@@ -315,7 +315,7 @@ glabel func_ovl52_80131F08
   /* 1756E0 80131F20 0C00265A */       jal omMakeGObjCommon
   /* 1756E4 80131F24 3C078000 */       lui $a3, 0x8000
   /* 1756E8 80131F28 00408025 */        or $s0, $v0, $zero
-  /* 1756EC 80131F2C 0C04C6D6 */       jal func_ovl52_80131B58
+  /* 1756EC 80131F2C 0C04C6D6 */       jal mvOpeningHiddenCharsIsLocked
   /* 1756F0 80131F30 2404000B */     addiu $a0, $zero, 0xb
   /* 1756F4 80131F34 1040000A */      beqz $v0, .L80131F60
   /* 1756F8 80131F38 02002025 */        or $a0, $s0, $zero
@@ -367,28 +367,28 @@ glabel func_ovl52_80131F08
   /* 1757A8 80131FE8 8FB00020 */        lw $s0, 0x20($sp)
   /* 1757AC 80131FEC 27BD0030 */     addiu $sp, $sp, 0x30
   /* 1757B0 80131FF0 03E00008 */        jr $ra
-  /* 1757B4 80131FF4 00000000 */       nop 
+  /* 1757B4 80131FF4 00000000 */       nop
 
-glabel func_ovl52_80131FF8
+glabel mvOpeningHiddenCreateCharacters
   /* 1757B8 80131FF8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1757BC 80131FFC AFBF0014 */        sw $ra, 0x14($sp)
-  /* 1757C0 80132000 0C04C70E */       jal func_ovl52_80131C38
-  /* 1757C4 80132004 00000000 */       nop 
-  /* 1757C8 80132008 0C04C74A */       jal func_ovl52_80131D28
-  /* 1757CC 8013200C 00000000 */       nop 
-  /* 1757D0 80132010 0C04C786 */       jal func_ovl52_80131E18
-  /* 1757D4 80132014 00000000 */       nop 
-  /* 1757D8 80132018 0C04C7C2 */       jal func_ovl52_80131F08
-  /* 1757DC 8013201C 00000000 */       nop 
+  /* 1757C0 80132000 0C04C70E */       jal mvOpeningHiddenCreatePurin
+  /* 1757C4 80132004 00000000 */       nop
+  /* 1757C8 80132008 0C04C74A */       jal mvOpeningHiddenCreateCaptain
+  /* 1757CC 8013200C 00000000 */       nop
+  /* 1757D0 80132010 0C04C786 */       jal mvOpeningHiddenCreateLuigi
+  /* 1757D4 80132014 00000000 */       nop
+  /* 1757D8 80132018 0C04C7C2 */       jal mvOpeningHiddenCreateNess
+  /* 1757DC 8013201C 00000000 */       nop
   /* 1757E0 80132020 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1757E4 80132024 27BD0018 */     addiu $sp, $sp, 0x18
   /* 1757E8 80132028 03E00008 */        jr $ra
-  /* 1757EC 8013202C 00000000 */       nop 
+  /* 1757EC 8013202C 00000000 */       nop
 
-glabel func_ovl52_80132030
-  /* 1757F0 80132030 3C028013 */       lui $v0, %hi(D_ovl52_8013274C)
-  /* 1757F4 80132034 2442274C */     addiu $v0, $v0, %lo(D_ovl52_8013274C)
-  /* 1757F8 80132038 8C430000 */        lw $v1, ($v0) # D_ovl52_8013274C + 0
+glabel mvOpeningHiddenRenderOverlay
+  /* 1757F0 80132030 3C028013 */       lui $v0, %hi(gMvOpeningHiddenCharsOverlayAlpha)
+  /* 1757F4 80132034 2442274C */     addiu $v0, $v0, %lo(gMvOpeningHiddenCharsOverlayAlpha)
+  /* 1757F8 80132038 8C430000 */        lw $v1, ($v0) # gMvOpeningHiddenCharsOverlayAlpha + 0
   /* 1757FC 8013203C 3C0C8004 */       lui $t4, %hi(gDisplayListHead)
   /* 175800 80132040 AFA40000 */        sw $a0, ($sp)
   /* 175804 80132044 286100FF */      slti $at, $v1, 0xff
@@ -397,9 +397,9 @@ glabel func_ovl52_80132030
   /* 175810 80132050 246E0028 */     addiu $t6, $v1, 0x28
   /* 175814 80132054 29C10100 */      slti $at, $t6, 0x100
   /* 175818 80132058 14200003 */      bnez $at, .L80132068
-  /* 17581C 8013205C AC4E0000 */        sw $t6, ($v0) # D_ovl52_8013274C + 0
+  /* 17581C 8013205C AC4E0000 */        sw $t6, ($v0) # gMvOpeningHiddenCharsOverlayAlpha + 0
   /* 175820 80132060 241800FF */     addiu $t8, $zero, 0xff
-  /* 175824 80132064 AC580000 */        sw $t8, ($v0) # D_ovl52_8013274C + 0
+  /* 175824 80132064 AC580000 */        sw $t8, ($v0) # gMvOpeningHiddenCharsOverlayAlpha + 0
   .L80132068:
   /* 175828 80132068 8D840004 */        lw $a0, 4($t4) # gDisplayListHead + 4
   /* 17582C 8013206C 3C0DE700 */       lui $t5, 0xe700
@@ -419,7 +419,7 @@ glabel func_ovl52_80132030
   /* 175864 801320A4 24980008 */     addiu $t8, $a0, 8
   /* 175868 801320A8 AD980004 */        sw $t8, 4($t4) # gDisplayListHead + 4
   /* 17586C 801320AC AC990000 */        sw $t9, ($a0)
-  /* 175870 801320B0 8C4E0000 */        lw $t6, ($v0) # D_ovl52_8013274C + 0
+  /* 175870 801320B0 8C4E0000 */        lw $t6, ($v0) # gMvOpeningHiddenCharsOverlayAlpha + 0
   /* 175874 801320B4 3C19FCFF */       lui $t9, (0xFCFFFFFF >> 16) # 4244635647
   /* 175878 801320B8 3739FFFF */       ori $t9, $t9, (0xFCFFFFFF & 0xFFFF) # 4244635647
   /* 17587C 801320BC 31CF00FF */      andi $t7, $t6, 0xff
@@ -465,20 +465,20 @@ glabel func_ovl52_80132030
   /* 17591C 8013215C 03E00008 */        jr $ra
   /* 175920 80132160 AC8F0000 */        sw $t7, ($a0)
 
-glabel func_ovl52_80132164
+glabel mvOpeningHiddenCreateOverlay
   /* 175924 80132164 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 175928 80132168 AFBF001C */        sw $ra, 0x1c($sp)
-  /* 17592C 8013216C 3C018013 */       lui $at, %hi(D_ovl52_8013274C)
-  /* 175930 80132170 AC20274C */        sw $zero, %lo(D_ovl52_8013274C)($at)
+  /* 17592C 8013216C 3C018013 */       lui $at, %hi(gMvOpeningHiddenCharsOverlayAlpha)
+  /* 175930 80132170 AC20274C */        sw $zero, %lo(gMvOpeningHiddenCharsOverlayAlpha)($at)
   /* 175934 80132174 00002025 */        or $a0, $zero, $zero
   /* 175938 80132178 00002825 */        or $a1, $zero, $zero
   /* 17593C 8013217C 24060012 */     addiu $a2, $zero, 0x12
   /* 175940 80132180 0C00265A */       jal omMakeGObjCommon
   /* 175944 80132184 3C078000 */       lui $a3, 0x8000
-  /* 175948 80132188 3C058013 */       lui $a1, %hi(func_ovl52_80132030)
+  /* 175948 80132188 3C058013 */       lui $a1, %hi(mvOpeningHiddenRenderOverlay)
   /* 17594C 8013218C 240EFFFF */     addiu $t6, $zero, -1
   /* 175950 80132190 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 175954 80132194 24A52030 */     addiu $a1, $a1, %lo(func_ovl52_80132030)
+  /* 175954 80132194 24A52030 */     addiu $a1, $a1, %lo(mvOpeningHiddenRenderOverlay)
   /* 175958 80132198 00402025 */        or $a0, $v0, $zero
   /* 17595C 8013219C 2406001A */     addiu $a2, $zero, 0x1a
   /* 175960 801321A0 0C00277D */       jal omAddGObjRenderProc
@@ -486,9 +486,9 @@ glabel func_ovl52_80132164
   /* 175968 801321A8 8FBF001C */        lw $ra, 0x1c($sp)
   /* 17596C 801321AC 27BD0020 */     addiu $sp, $sp, 0x20
   /* 175970 801321B0 03E00008 */        jr $ra
-  /* 175974 801321B4 00000000 */       nop 
+  /* 175974 801321B4 00000000 */       nop
 
-glabel func_ovl52_801321B8
+glabel mvOpeningHiddenCreateCharacterViewport
   /* 175978 801321B8 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 17597C 801321BC 3C0E8001 */       lui $t6, %hi(func_80017EC0)
   /* 175980 801321C0 AFBF003C */        sw $ra, 0x3c($sp)
@@ -564,9 +564,9 @@ glabel func_ovl52_801321B8
   /* 175A98 801322D8 8FBF003C */        lw $ra, 0x3c($sp)
   /* 175A9C 801322DC 27BD0048 */     addiu $sp, $sp, 0x48
   /* 175AA0 801322E0 03E00008 */        jr $ra
-  /* 175AA4 801322E4 00000000 */       nop 
+  /* 175AA4 801322E4 00000000 */       nop
 
-glabel func_ovl52_801322E8
+glabel mvOpeningHiddenCreateOverlayViewport
   /* 175AA8 801322E8 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 175AAC 801322EC 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 175AB0 801322F0 AFBF003C */        sw $ra, 0x3c($sp)
@@ -606,35 +606,35 @@ glabel func_ovl52_801322E8
   /* 175B38 80132378 8FBF003C */        lw $ra, 0x3c($sp)
   /* 175B3C 8013237C 27BD0040 */     addiu $sp, $sp, 0x40
   /* 175B40 80132380 03E00008 */        jr $ra
-  /* 175B44 80132384 00000000 */       nop 
+  /* 175B44 80132384 00000000 */       nop
 
-glabel func_ovl52_80132388
-  /* 175B48 80132388 3C018013 */       lui $at, %hi(D_ovl52_80132748)
+glabel mvOpeningHiddenCharsInitGlobals
+  /* 175B48 80132388 3C018013 */       lui $at, %hi(gMvOpeningHiddenCharsFramesElapsed)
   /* 175B4C 8013238C 3C0E800A */       lui $t6, %hi((gSaveData + 0x458))
   /* 175B50 80132390 95CE4938 */       lhu $t6, %lo((gSaveData + 0x458))($t6)
-  /* 175B54 80132394 AC202748 */        sw $zero, %lo(D_ovl52_80132748)($at)
-  /* 175B58 80132398 3C018013 */       lui $at, %hi(D_ovl52_80132750)
+  /* 175B54 80132394 AC202748 */        sw $zero, %lo(gMvOpeningHiddenCharsFramesElapsed)($at)
+  /* 175B58 80132398 3C018013 */       lui $at, %hi(gMvOpeningHiddenCharsCharacterMask)
   /* 175B5C 8013239C 03E00008 */        jr $ra
-  /* 175B60 801323A0 A42E2750 */        sh $t6, %lo(D_ovl52_80132750)($at)
+  /* 175B60 801323A0 A42E2750 */        sh $t6, %lo(gMvOpeningHiddenCharsCharacterMask)($at)
 
-glabel func_ovl52_801323A4
-  /* 175B64 801323A4 3C038013 */       lui $v1, %hi(D_ovl52_80132748)
-  /* 175B68 801323A8 24632748 */     addiu $v1, $v1, %lo(D_ovl52_80132748)
-  /* 175B6C 801323AC 8C6E0000 */        lw $t6, ($v1) # D_ovl52_80132748 + 0
+glabel mvOpeningHiddenCharsMainProc
+  /* 175B64 801323A4 3C038013 */       lui $v1, %hi(gMvOpeningHiddenCharsFramesElapsed)
+  /* 175B68 801323A8 24632748 */     addiu $v1, $v1, %lo(gMvOpeningHiddenCharsFramesElapsed)
+  /* 175B6C 801323AC 8C6E0000 */        lw $t6, ($v1) # gMvOpeningHiddenCharsFramesElapsed + 0
   /* 175B70 801323B0 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 175B74 801323B4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 175B78 801323B8 25CF0001 */     addiu $t7, $t6, 1
   /* 175B7C 801323BC 29E1000A */      slti $at, $t7, 0xa
   /* 175B80 801323C0 AFA40018 */        sw $a0, 0x18($sp)
   /* 175B84 801323C4 1420002E */      bnez $at, .L80132480
-  /* 175B88 801323C8 AC6F0000 */        sw $t7, ($v1) # D_ovl52_80132748 + 0
-  /* 175B8C 801323CC 3C068013 */       lui $a2, %hi(D_ovl52_80132754)
-  /* 175B90 801323D0 24C62754 */     addiu $a2, $a2, %lo(D_ovl52_80132754)
-  /* 175B94 801323D4 8CC20000 */        lw $v0, ($a2) # D_ovl52_80132754 + 0
+  /* 175B88 801323C8 AC6F0000 */        sw $t7, ($v1) # gMvOpeningHiddenCharsFramesElapsed + 0
+  /* 175B8C 801323CC 3C068013 */       lui $a2, %hi(gMvOpeningHiddenCharsUnusedCounter)
+  /* 175B90 801323D0 24C62754 */     addiu $a2, $a2, %lo(gMvOpeningHiddenCharsUnusedCounter)
+  /* 175B94 801323D4 8CC20000 */        lw $v0, ($a2) # gMvOpeningHiddenCharsUnusedCounter + 0
   /* 175B98 801323D8 2404FFF1 */     addiu $a0, $zero, -0xf
   /* 175B9C 801323DC 10400002 */      beqz $v0, .L801323E8
   /* 175BA0 801323E0 2459FFFF */     addiu $t9, $v0, -1
-  /* 175BA4 801323E4 ACD90000 */        sw $t9, ($a2) # D_ovl52_80132754 + 0
+  /* 175BA4 801323E4 ACD90000 */        sw $t9, ($a2) # gMvOpeningHiddenCharsUnusedCounter + 0
   .L801323E8:
   /* 175BA8 801323E8 0C0E4281 */       jal func_ovl1_80390A04
   /* 175BAC 801323EC 2405000F */     addiu $a1, $zero, 0xf
@@ -643,8 +643,8 @@ glabel func_ovl52_801323A4
   /* 175BB8 801323F8 0C0E42B0 */       jal func_ovl1_80390AC0
   /* 175BBC 801323FC 2405000F */     addiu $a1, $zero, 0xf
   /* 175BC0 80132400 10400002 */      beqz $v0, .L8013240C
-  /* 175BC4 80132404 3C018013 */       lui $at, %hi(D_ovl52_80132754)
-  /* 175BC8 80132408 AC202754 */        sw $zero, %lo(D_ovl52_80132754)($at)
+  /* 175BC4 80132404 3C018013 */       lui $at, %hi(gMvOpeningHiddenCharsUnusedCounter)
+  /* 175BC8 80132408 AC202754 */        sw $zero, %lo(gMvOpeningHiddenCharsUnusedCounter)($at)
   .L8013240C:
   /* 175BCC 8013240C 0C0E41DB */       jal func_ovl1_8039076C
   /* 175BD0 80132410 3404D000 */       ori $a0, $zero, 0xd000
@@ -657,17 +657,17 @@ glabel func_ovl52_801323A4
   /* 175BEC 8013242C 0C00171D */       jal func_80005C74
   /* 175BF0 80132430 A0680001 */        sb $t0, 1($v1) # gSceneData + 1
   .L80132434:
-  /* 175BF4 80132434 3C028013 */       lui $v0, %hi(D_ovl52_80132748)
-  /* 175BF8 80132438 8C422748 */        lw $v0, %lo(D_ovl52_80132748)($v0)
+  /* 175BF4 80132434 3C028013 */       lui $v0, %hi(gMvOpeningHiddenCharsFramesElapsed)
+  /* 175BF8 80132438 8C422748 */        lw $v0, %lo(gMvOpeningHiddenCharsFramesElapsed)($v0)
   /* 175BFC 8013243C 3C03800A */       lui $v1, %hi(gSceneData)
   /* 175C00 80132440 2401001E */     addiu $at, $zero, 0x1e
   /* 175C04 80132444 14410007 */       bne $v0, $at, .L80132464
   /* 175C08 80132448 24634AD0 */     addiu $v1, $v1, %lo(gSceneData)
-  /* 175C0C 8013244C 0C04C859 */       jal func_ovl52_80132164
-  /* 175C10 80132450 00000000 */       nop 
+  /* 175C0C 8013244C 0C04C859 */       jal mvOpeningHiddenCreateOverlay
+  /* 175C10 80132450 00000000 */       nop
   /* 175C14 80132454 3C03800A */       lui $v1, %hi(gSceneData)
-  /* 175C18 80132458 3C028013 */       lui $v0, %hi(D_ovl52_80132748)
-  /* 175C1C 8013245C 8C422748 */        lw $v0, %lo(D_ovl52_80132748)($v0)
+  /* 175C18 80132458 3C028013 */       lui $v0, %hi(gMvOpeningHiddenCharsFramesElapsed)
+  /* 175C1C 8013245C 8C422748 */        lw $v0, %lo(gMvOpeningHiddenCharsFramesElapsed)($v0)
   /* 175C20 80132460 24634AD0 */     addiu $v1, $v1, %lo(gSceneData)
   .L80132464:
   /* 175C24 80132464 24010028 */     addiu $at, $zero, 0x28
@@ -681,9 +681,9 @@ glabel func_ovl52_801323A4
   /* 175C40 80132480 8FBF0014 */        lw $ra, 0x14($sp)
   /* 175C44 80132484 27BD0018 */     addiu $sp, $sp, 0x18
   /* 175C48 80132488 03E00008 */        jr $ra
-  /* 175C4C 8013248C 00000000 */       nop 
+  /* 175C4C 8013248C 00000000 */       nop
 
-glabel func_ovl52_80132490
+glabel mvOpeningHiddenCharsInit
   /* 175C50 80132490 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 175C54 80132494 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 175C58 80132498 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -720,8 +720,8 @@ glabel func_ovl52_80132490
   /* 175CD4 80132514 24050002 */     addiu $a1, $zero, 2
   /* 175CD8 80132518 0C033781 */       jal rdManagerLoadFiles
   /* 175CDC 8013251C 00403825 */        or $a3, $v0, $zero
-  /* 175CE0 80132520 3C058013 */       lui $a1, %hi(func_ovl52_801323A4)
-  /* 175CE4 80132524 24A523A4 */     addiu $a1, $a1, %lo(func_ovl52_801323A4)
+  /* 175CE0 80132520 3C058013 */       lui $a1, %hi(mvOpeningHiddenCharsMainProc)
+  /* 175CE4 80132524 24A523A4 */     addiu $a1, $a1, %lo(mvOpeningHiddenCharsMainProc)
   /* 175CE8 80132528 00002025 */        or $a0, $zero, $zero
   /* 175CEC 8013252C 00003025 */        or $a2, $zero, $zero
   /* 175CF0 80132530 0C00265A */       jal omMakeGObjCommon
@@ -733,14 +733,14 @@ glabel func_ovl52_80132490
   /* 175D08 80132548 24060064 */     addiu $a2, $zero, 0x64
   /* 175D0C 8013254C 0C002E7F */       jal func_8000B9FC
   /* 175D10 80132550 24070003 */     addiu $a3, $zero, 3
-  /* 175D14 80132554 0C04C8E2 */       jal func_ovl52_80132388
-  /* 175D18 80132558 00000000 */       nop 
-  /* 175D1C 8013255C 0C04C86E */       jal func_ovl52_801321B8
-  /* 175D20 80132560 00000000 */       nop 
-  /* 175D24 80132564 0C04C8BA */       jal func_ovl52_801322E8
-  /* 175D28 80132568 00000000 */       nop 
-  /* 175D2C 8013256C 0C04C7FE */       jal func_ovl52_80131FF8
-  /* 175D30 80132570 00000000 */       nop 
+  /* 175D14 80132554 0C04C8E2 */       jal mvOpeningHiddenCharsInitGlobals
+  /* 175D18 80132558 00000000 */       nop
+  /* 175D1C 8013255C 0C04C86E */       jal mvOpeningHiddenCreateCharacterViewport
+  /* 175D20 80132560 00000000 */       nop
+  /* 175D24 80132564 0C04C8BA */       jal mvOpeningHiddenCreateOverlayViewport
+  /* 175D28 80132568 00000000 */       nop
+  /* 175D2C 8013256C 0C04C7FE */       jal mvOpeningHiddenCreateCharacters
+  /* 175D30 80132570 00000000 */       nop
   /* 175D34 80132574 44806000 */      mtc1 $zero, $f12
   /* 175D38 80132578 240B00FF */     addiu $t3, $zero, 0xff
   /* 175D3C 8013257C 240C00FF */     addiu $t4, $zero, 0xff
@@ -755,21 +755,21 @@ glabel func_ovl52_80132490
   /* 175D60 801325A0 0C009A70 */       jal func_800269C0
   /* 175D64 801325A4 240401CF */     addiu $a0, $zero, 0x1cf
   /* 175D68 801325A8 0C00024B */       jal func_8000092C
-  /* 175D6C 801325AC 00000000 */       nop 
+  /* 175D6C 801325AC 00000000 */       nop
   /* 175D70 801325B0 2C41103B */     sltiu $at, $v0, 0x103b
   /* 175D74 801325B4 50200007 */      beql $at, $zero, .L801325D4
   /* 175D78 801325B8 8FBF001C */        lw $ra, 0x1c($sp)
   .L801325BC:
   /* 175D7C 801325BC 0C00024B */       jal func_8000092C
-  /* 175D80 801325C0 00000000 */       nop 
+  /* 175D80 801325C0 00000000 */       nop
   /* 175D84 801325C4 2C41103B */     sltiu $at, $v0, 0x103b
   /* 175D88 801325C8 1420FFFC */      bnez $at, .L801325BC
-  /* 175D8C 801325CC 00000000 */       nop 
+  /* 175D8C 801325CC 00000000 */       nop
   /* 175D90 801325D0 8FBF001C */        lw $ra, 0x1c($sp)
   .L801325D4:
   /* 175D94 801325D4 27BD0050 */     addiu $sp, $sp, 0x50
   /* 175D98 801325D8 03E00008 */        jr $ra
-  /* 175D9C 801325DC 00000000 */       nop 
+  /* 175D9C 801325DC 00000000 */       nop
 
 glabel intro_hidden_chars_entry
   /* 175DA0 801325E0 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
@@ -793,7 +793,7 @@ glabel intro_hidden_chars_entry
   /* 175DE8 80132628 8FBF0014 */        lw $ra, 0x14($sp)
   /* 175DEC 8013262C 27BD0018 */     addiu $sp, $sp, 0x18
   /* 175DF0 80132630 03E00008 */        jr $ra
-  /* 175DF4 80132634 00000000 */       nop 
+  /* 175DF4 80132634 00000000 */       nop
 
-  /* 175DF8 80132638 00000000 */       nop 
-  /* 175DFC 8013263C 00000000 */       nop 
+  /* 175DF8 80132638 00000000 */       nop
+  /* 175DFC 8013263C 00000000 */       nop

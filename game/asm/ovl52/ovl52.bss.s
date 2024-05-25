@@ -5,13 +5,13 @@
 # 0x80132740 -> 0x80132920 [0x1e0 bytes]
 # Unreferenced BSS space @ 80132740
     .space 8
-glabel D_ovl52_80132748
+glabel gMvOpeningHiddenCharsFramesElapsed
     .space 4
-glabel D_ovl52_8013274C
+glabel gMvOpeningHiddenCharsOverlayAlpha
     .space 4
-glabel D_ovl52_80132750
+glabel gMvOpeningHiddenCharsCharacterMask
     .space 4
-glabel D_ovl52_80132754
+glabel gMvOpeningHiddenCharsUnusedCounter
     .space 4
 glabel D_ovl52_80132758
     .space 384

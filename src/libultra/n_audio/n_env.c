@@ -1,5 +1,6 @@
 #include "common.h"
 #include "n_synthInternals.h"
+#include "n_seqp.h"
 
 typedef struct alSoundEffect
 {
@@ -593,7 +594,7 @@ ALMicroTime alEvtqNextEvent(ALEventQueue *evtq, ALEvent *evt)
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alEvtqNextEvent.s")
 #endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80028F70_29B70.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alEvtqNew.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002909C_29C9C.s")
 
@@ -735,12 +736,19 @@ Acmd *n_alAuxBusPull(s32 sampleOffset, Acmd *p)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002AE1C_2BA1C.s")
 
+// 0x2BC28
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alFxPull.s")
 
+// 0x2BF08
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002B308_2BF08.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__CSPVoiceHandler.s")
+// 0x2C92C
+ALMicroTime __n_CSPVoiceHandler(void *node);
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__n_CSPVoiceHandler.s")
 
+//n_alCSPNew?
+// Split? 0x2CFD0
+void func_8002C3D0_2CFD(N_ALCSPlayer *seqp, ALSeqpConfig *c);
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002C3D0_2CFD0.s")
 
 // Needs -O3
@@ -762,8 +770,10 @@ s32 _n_timeToSamples(s32 micros) {
     return _n_timeToSamplesNoRound(micros) & ~0xF;
 }
 #else
+// 0x2D144
 void _n_timeToSamplesNoRound(void) {
 }
+// 0x2D14C
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/_n_timeToSamples.s")
 #endif
 
@@ -786,7 +796,31 @@ void _n_collectPVoices()
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alMainBusPull.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alSavePull.s")
+// 0x2D2BC
+Acmd *n_alSavePull( s32 sampleOffset, Acmd *p) 
+{
+    Acmd        *ptr = p;
+
+    ptr = n_alMainBusPull(sampleOffset, ptr);
+    
+#ifndef N_MICRO
+    aSetBuffer (ptr++, 0, 0, 0, FIXED_SAMPLE<<1);
+    aInterleave(ptr++, AL_MAIN_L_OUT, AL_MAIN_R_OUT);
+    aSetBuffer (ptr++, 0, 0, 0, FIXED_SAMPLE<<2);
+    aSaveBuffer(ptr++, n_syn->sv_dramout);
+#else
+    // Oneliner
+    n_aInterleave(ptr++); \
+    n_aSaveBuffer(ptr++, FIXED_SAMPLE<<2, 0, n_syn->sv_dramout);
+#endif
+    return ptr;
+}
+
+// split 0x2D300?
+
+// Static func?
+void func_8002C700_2D300() {
+}
 
 // Modified n_alAudioFrame?
 // Maybe has static inline func_8025C370 from BK?

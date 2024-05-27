@@ -671,7 +671,15 @@ s16 __n_getRate(f32 vol, f32 tgt, s32 count, u16* ratel)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alEnvmixerParam.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002A2D0_2AED0.s")
+// 0x8002A2D0 - 0x4260 split?
+void _n_freePVoice(N_PVoice *pvoice) 
+{
+    /*
+     * move the voice from the allocated list to the lame list
+     */
+    alUnlink((ALLink *)pvoice);
+    alLinkMacro((ALLink *)pvoice, &n_syn->pLameList);
+}
 
 static  s16 __n_getVol(s16 ivol, s32 samples, s16 ratem, u16 ratel);
 #ifdef NON_MATCHING
@@ -735,12 +743,44 @@ Acmd *n_alAuxBusPull(s32 sampleOffset, Acmd *p)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002C3D0_2CFD0.s")
 
-void func_8002C544_2D144(void) {
+// Needs -O3
+#if 0
+static s32 _n_timeToSamplesNoRound(s32 micros);
+/*
+  Add 0.5 to adjust the average affect of
+  the truncation error produced by casting
+  a float to an int.
+*/
+s32 _n_timeToSamplesNoRound(s32 micros)
+{
+    f32 tmp = ((f32)micros) * n_syn->outputRate / 1000000.0f + 0.5f;
+
+    return (s32)tmp;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002C54C_2D14C.s")
+s32 _n_timeToSamples(s32 micros) {
+    return _n_timeToSamplesNoRound(micros) & ~0xF;
+}
+#else
+void _n_timeToSamplesNoRound(void) {
+}
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/_n_timeToSamples.s")
+#endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002C598_2D198.s")
+void _n_collectPVoices() 
+{
+    ALLink       *dl;
+    N_PVoice      *pv;
+
+    while ((dl = n_syn->pLameList.next) != 0) {
+        pv = (N_PVoice *)dl;
+
+        /* ### remove from mixer */
+
+        alUnlink(dl);
+        alLinkMacro(dl, &n_syn->pFreeList);        
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__n_allocParam.s")
 
@@ -748,10 +788,46 @@ void func_8002C544_2D144(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alSavePull.s")
 
+// Modified n_alAudioFrame?
+// Maybe has static inline func_8025C370 from BK?
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002C708_2D308.s")
 
 // 0x8002CA20
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alN_PVoiceNew.s")
+void alN_PVoiceNew(N_PVoice *mv, ALDMANew dmaNew, ALHeap *hp)
+{
+  mv->dc_state = alHeapAlloc(hp, 1, sizeof(ADPCM_STATE));
+  mv->dc_lstate = alHeapAlloc(hp, 1, sizeof(ADPCM_STATE));
+  mv->dc_dma = dmaNew(&mv->dc_dmaState);
+  mv->dc_lastsam = 0;
+  mv->dc_first = 1;
+  mv->dc_memin = 0;
+
+  mv->rs_state = alHeapAlloc(hp, 1, sizeof(RESAMPLE_STATE));
+  mv->rs_delta  = 0.0;
+  mv->rs_first  = 1;
+  mv->rs_ratio = 1.0;
+  mv->rs_upitch = 0;
+
+  mv->em_state = alHeapAlloc(hp, 1, sizeof(ENVMIX_STATE));
+  mv->em_first = 1;
+  mv->em_motion = AL_STOPPED;
+  mv->em_volume = 1;
+  mv->em_ltgt = 1;
+  mv->em_rtgt = 1;
+  mv->em_cvolL = 1;
+  mv->em_cvolR = 1;
+  mv->em_dryamt = 0;
+  mv->em_wetamt = 0;
+  mv->em_lratm = 1;
+  mv->em_lratl = 0;
+  mv->em_lratm = 1;
+  mv->em_lratl = 0;
+  mv->em_delta = 0;
+  mv->em_segEnd = 0;
+  mv->em_pan = 0;
+  mv->em_ctrlList = 0;
+  mv->em_ctrlTail = 0;
+}
 
 // 0x8002CB48
 /***********************************************************************

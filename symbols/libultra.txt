@@ -357,3 +357,6 @@ sRandSeed2 = 0x8003D324; // size:0x4
 alEvtqNextEvent = 0x80028EC0;
 __CSPVoiceHandler = 0x8002BD2C;
 alEvtqFlushType = 0x80028CB4;
+_n_collectPVoices = 0x8002C598;
+_n_timeToSamples = 0x8002C54C;
+_n_freePVoice = 0x8002A2D0;

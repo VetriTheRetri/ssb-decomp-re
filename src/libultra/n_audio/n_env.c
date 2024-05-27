@@ -415,6 +415,7 @@ static u32 __readVarLen(ALCSeq *seq,u32 track)
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__readVarLen.s")
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alCSeqNextEvent.s")
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alCSeqNew.s")
+
 void n_alCSeqNewMarker(ALCSeq *seq, ALCSeqMarker *m, u32 ticks)
 {
     N_ALEvent     evt;
@@ -448,7 +449,42 @@ void n_alCSeqNewMarker(ALCSeq *seq, ALCSeqMarker *m, u32 ticks)
 }
 #endif
 
+// NEEDS -O3 to match - https://decomp.me/scratch/9Ao34
+#ifdef NON_MATCHING
+/*
+  Note: If there are no valid tracks (ie. all tracks have
+  reached the end of their data stream), then return FALSE
+  to indicate that there is no next event.
+*/
+char __alCSeqNextDelta(ALCSeq *seq, s32 *pDeltaTicks)
+{
+    u32     i;
+    u32	    firstTime = 0xFFFFFFFF;
+    u32     lastTicks = seq->lastDeltaTicks;
+
+    if (!seq->validTracks)
+	return FALSE;
+
+    for(i = 0; i < 16 ; i++)
+    {
+	if((seq->validTracks >> i) & 1)
+        {
+	    if(seq->deltaFlag)
+		seq->evtDeltaTicks[i] -= lastTicks;
+
+	    if(seq->evtDeltaTicks[i] < firstTime)
+		firstTime = seq->evtDeltaTicks[i];
+        }
+    }
+ 
+    seq->deltaFlag = 0;
+    *pDeltaTicks = firstTime;
+
+    return TRUE;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__alCSeqNextDelta.s")
+#endif
 
 //split 0x29860
 
@@ -484,13 +520,78 @@ void alUnlink(ALLink *ln)
         ln->prev->next = ln->next;  
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80028CB4_298B4.s")
+/*
+  This routine flushes events according their type.
+*/
+void alEvtqFlushType(ALEventQueue *evtq, s16 type)
+{
+    ALLink      	*thisNode;
+    ALLink      	*nextNode;
+    ALEventListItem     *thisItem, *nextItem;
+    OSIntMask   	mask;
+
+    mask = osSetIntMask(OS_IM_NONE);
+
+    thisNode = evtq->allocList.next;
+    while( thisNode != 0 )
+    {
+	nextNode = thisNode->next;
+	thisItem = (ALEventListItem *)thisNode;
+	nextItem = (ALEventListItem *)nextNode;
+	if (thisItem->evt.type == type)
+	{
+	    if (nextItem)
+		nextItem->delta += thisItem->delta;
+	    alUnlink(thisNode);
+	    alLinkMacro(thisNode, &evtq->freeList);
+	}
+	thisNode = nextNode;
+    }
+
+    osSetIntMask(mask);
+}
 
 //split 0x29970
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alEvtqPostEvent.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80028EC0_29AC0.s")
+#ifdef NON_MATCHING
+// Stack issues
+ALMicroTime alEvtqNextEvent(ALEventQueue *evtq, ALEvent *evt) 
+{
+    ALEventListItem *item;
+    ALMicroTime delta;
+    OSIntMask mask;
+
+    mask = osSetIntMask(OS_IM_NONE);
+    
+    item = (ALEventListItem *)evtq->allocList.next;
+
+    if (item)
+    {
+        alUnlink((ALLink *)item);
+        alCopy(&item->evt, evt, sizeof(*evt));
+        alLinkMacro((ALLink *)item, &evtq->freeList);
+	delta = item->delta;
+    }
+    else
+    {
+        /* sct 11/28/95 - If we get here, most like we overflowed the event queue */
+	/* with non-self-perpetuating events.  Eg. if we filled the evtq with volume */
+	/* events, then when the seqp is told to play it will handle all the events */
+	/* at once completely emptying out the queue.  At this point this problem */
+	/* must be treated as an out of resource error and the evtq should be increased. */
+	evt->type = -1;
+	delta = 0;	    
+    }
+
+    osSetIntMask(mask);
+    
+    return delta;
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alEvtqNextEvent.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80028F70_29B70.s")
 
@@ -506,7 +607,55 @@ void alUnlink(ALLink *ln)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_800293A8_29FA8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/_getRate.s")
+#if 0
+// Close to matching, but not quite
+//static
+s16 __n_getRate(f32 vol, f32 tgt, s32 count, u16* ratel)
+{
+	s16 s;
+	s16 tmp;
+	f32 invn;
+	f32 a;
+	f32 f;
+
+	if (count == 0) {
+		if (tgt >= vol) {
+			*ratel = 0xffff;
+			return 0x7fff;
+		} else {
+			*ratel = -0;
+			return 0;
+		}
+	}
+
+	invn = 1.0f / count;
+
+	if (tgt < 1.0f) {
+		tgt = 1.0f;
+	}
+
+	if (vol <= 0.0f) {
+		vol = 1.0f;
+	}
+
+	a = (tgt - vol) * invn * 8.0f;
+	s = a;
+
+	f = a - s;
+    //s--;
+	f += 1.0f;
+
+	tmp = f;
+	s += tmp;
+	f -= tmp;
+
+	*ratel = 65535.0f * f;
+
+	return s;
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__n_getRate.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/_decodeChunk.s")
 
@@ -582,7 +731,7 @@ Acmd *n_alAuxBusPull(s32 sampleOffset, Acmd *p)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002B308_2BF08.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002BD2C_2C92C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__CSPVoiceHandler.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002C3D0_2CFD0.s")
 

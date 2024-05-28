@@ -13,4 +13,3 @@ build/
 ctx.c
 ctx.c.m2c
 m2cfiles/
-tools/asm-processor/

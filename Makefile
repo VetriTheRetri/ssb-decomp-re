@@ -94,7 +94,6 @@ CCFLAGS         := -- $(AS) -32 -- -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 LDFLAGS         := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T symbols/not_found.txt -T symbols/linker_constants.txt -T .splat/smashbrothers.ld
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
-
 ASM_PROC_FLAGS  := --input-enc=utf-8 --output-enc=euc-jp --convert-statics=global-with-filename
 
 SPLAT             ?= $(PYTHON) $(TOOLS)/splat/split.py
@@ -165,7 +164,8 @@ ifneq ($(COMPARE),0)
 endif
 
 nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
-	bash $(TOOLS)/compareObjects.sh
+	@echo "Comparing object files:"
+	$(V)bash tools/compareObjects.sh
 
 clean:
 	rm -r -f $(BUILD_DIR)
@@ -231,14 +231,14 @@ $(BUILD_DIR)/%.o: %.c
 
 #Bins
 $(BUILD_DIR)/%.o: %.bin
-	$(call print,Making bin:,$<,$@)
+	$(call print,Making binary:,$<,$@)
 	@mkdir -p $(@D)
 	$(V)$(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
 	$(V)@bash $(TOOLS)/createPaletteObjectIfNeeded.sh $(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
 
 .PRECIOUS: assets/%.bin
 assets/%.bin: assets/%.png
-	$(call print,Converting Assets:,$<,$@)
+	$(call print,Converting Image:,$<,$@)
 	$(V)$(PYTHON) $(TOOLS)/image_converter.py $< $@
 
 -include $(DEP_FILES)

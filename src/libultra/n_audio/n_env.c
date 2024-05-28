@@ -792,9 +792,48 @@ void _n_collectPVoices()
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__n_allocParam.s")
+// 0x2D218
+/***********************************************************************
+ * Synthesis driver private interfaces
+ ***********************************************************************/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alMainBusPull.s")
+ALParam *__n_allocParam(void)
+{
+    ALParam *update = 0;
+
+    if (n_syn->paramList) {        
+        update = n_syn->paramList;
+        n_syn->paramList = n_syn->paramList->next;
+        update->next = 0;
+    }
+    return update;
+}
+
+//0x2D248
+Acmd *n_alMainBusPull( s32 sampleOffset, Acmd *p) 
+{
+  Acmd        *ptr = p;
+  
+#ifndef N_MICRO
+  aClearBuffer(ptr++, AL_MAIN_L_OUT, FIXED_SAMPLE<<1);
+  aClearBuffer(ptr++, AL_MAIN_R_OUT, FIXED_SAMPLE<<1);
+#else
+  aClearBuffer(ptr++, N_AL_MAIN_L_OUT, N_AL_DIVIDED<<1);
+#endif
+
+  ptr = (n_syn->mainBus->filter.handler)(sampleOffset,ptr);
+
+#ifndef N_MICRO
+  aSetBuffer(ptr++, 0, 0, 0, FIXED_SAMPLE<<1);
+  aMix(ptr++, 0, 0x7fff, AL_AUX_L_OUT, AL_MAIN_L_OUT);
+  aMix(ptr++, 0, 0x7fff, AL_AUX_R_OUT, AL_MAIN_R_OUT);
+#else
+  aMix(ptr++, 0, 0x7fff, N_AL_AUX_L_OUT, N_AL_MAIN_L_OUT);
+  aMix(ptr++, 0, 0x7fff, N_AL_AUX_R_OUT, N_AL_MAIN_R_OUT);
+#endif
+  
+  return ptr;
+}
 
 // 0x2D2BC
 Acmd *n_alSavePull( s32 sampleOffset, Acmd *p) 

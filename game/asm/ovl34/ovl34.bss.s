@@ -11,7 +11,7 @@ glabel D_ovl34_80134CDC
     .space 4
 glabel D_ovl34_80134CE0
     .space 4
-glabel D_ovl34_80134CE4
+glabel gMvOpeningFirstDestinationFramesElapsed
     .space 4
 glabel D_ovl34_80134CE8
     .space 4

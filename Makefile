@@ -84,13 +84,13 @@ ifneq ($(shell type $(MIPS_BINUTILS_PREFIX)ld >/dev/null 2>/dev/null; echo $$?),
 $(error Unable to find $(MIPS_BINUTILS_PREFIX)ld. Please install or build MIPS binutils, commonly mips-linux-gnu. (or set MIPS_BINUTILS_PREFIX if your MIPS binutils install uses another prefix))
 endif
 
-CC              := $(TOOLS)/ido-recomp/$(DETECTED_OS)/cc
+IDO             := $(TOOLS)/ido-recomp/$(DETECTED_OS)/cc
 AS              := $(MIPS_BINUTILS_PREFIX)as
 LD              := $(MIPS_BINUTILS_PREFIX)ld
 OBJCOPY         := $(MIPS_BINUTILS_PREFIX)objcopy
 OBJDUMP         := $(MIPS_BINUTILS_PREFIX)objdump
 ASM_PROC        := $(PYTHON) $(TOOLS)/asm-processor/build.py
-CCFLAGS         := -- $(AS) -32 -- -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624 -mips2
+CCFLAGS         := -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624 -mips2
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 LDFLAGS         := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T symbols/not_found.txt -T symbols/linker_constants.txt -T .splat/smashbrothers.ld
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
@@ -104,7 +104,7 @@ ifneq ($(FULL_DISASM),0)
 endif
 
 # ----- Files ------
-CC := $(ASM_PROC) $(ASM_PROC_FLAGS) $(CC) -- $(AS) $(ASFLAGS) --
+CC := $(ASM_PROC) $(ASM_PROC_FLAGS) $(IDO) -- $(AS) $(ASFLAGS) --
 
 C_FILES        := $(shell find src -type f | grep \\.c$)
 S_TEXT_FILES   := $(shell find asm -type f | grep \\.s$ | grep -v nonmatchings | grep -v \\.rodata\\.s | grep -v \\.data\\.s | grep -v \\.bss\\.s)
@@ -138,6 +138,10 @@ build/src/libultra/rmon/%.o: 	OPTFLAGS := -O1 -g0
 build/src/libultra/debug/%.o: 	OPTFLAGS := -O1 -g0
 build/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0
 # build/src/libultra/n_audio/%.o:	OPTFLAGS := -O3 -g0
+
+# per file flags
+# build/src/libultra/n_audio/cspsetvol.o:	OPTFLAGS := -O3 -g0
+# build/src/libultra/n_audio/cspsetvol.o: CC := $(IDO)
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

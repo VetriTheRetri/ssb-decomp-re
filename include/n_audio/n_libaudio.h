@@ -81,6 +81,7 @@ void    n_alSynFreeVoice(N_ALVoice *voice);
 ALFxRef n_alSynGetFXRef( s16 bus, s16 index);
 s16     n_alSynGetPriority( N_ALVoice *voice);
 void    n_alSynRemovePlayer( ALPlayer *client);
+void    n_alSynSetFXMix_Alt(N_ALVoice *v, u8 fxmix, u8 arg2);
 void    n_alSynSetFXMix(N_ALVoice *v, u8 fxmix);
 void    n_alSynSetFXParam(ALFxRef fx, s16 paramID, void *param);
 void    n_alSynFreeFX(ALFxRef *fx);

@@ -49,7 +49,8 @@ enum {
     AL_FILTER_START_VOICE_ALT,
     AL_FILTER_START_VOICE,
     AL_FILTER_STOP_VOICE,
-    AL_FILTER_SET_FXAMT
+    AL_FILTER_SET_FXAMT,
+    AL_FILTER_SET_FXAMT_ALT // Added for this game only?
 };
 
 #define AL_MAX_RSP_SAMPLES      160

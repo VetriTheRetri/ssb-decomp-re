@@ -775,6 +775,7 @@ Acmd *n_alAuxBusPull(s32 sampleOffset, Acmd *p)
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alFxPull.s")
 
 // 0x2BF08
+static void __n_CSPHandleMIDIMsg(N_ALCSPlayer *seqp, ALEvent *event);
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__n_CSPHandleMIDIMsg.s")
 
 // 0x2C92C

@@ -175,7 +175,7 @@ segments:
       - [0x02E220, asm, libultra/n_audio/audio04] # n_alSynAddSeqPlayer
       - [0x02E380, asm, libultra/n_audio/n_synstopvoice]
       - [0x02E3F0, asm, libultra/n_audio/audio06]
-      - [0x02E620, asm, libultra/n_audio/audio07] # n_alSynSetPan
+      - [0x02E620, c, libultra/n_audio/n_synsetpan]
       - [0x02E6A0, asm, libultra/n_audio/audio08]
       - [0x02E870, asm, libultra/n_audio/audio09]
       - [0x0302A0, asm, libultra/n_audio/audio10]

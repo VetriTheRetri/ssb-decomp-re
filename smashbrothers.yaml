@@ -185,9 +185,9 @@ segments:
       - [0x030730, asm, libultra/n_audio/audio14]
       - [0x030810, asm, libultra/n_audio/audio15]
       - [0x030850, asm, libultra/n_audio/audio16]
-      - [0x030980, asm, libultra/n_audio/audio17]
+      - [0x030980, c, libultra/n_audio/n_syndelete]
       - [0x0309B0, c, libultra/n_audio/cspplay]
-      - [0x0309E0, asm, libultra/n_audio/audio19]
+      - [0x0309E0, c, libultra/n_audio/audio19] # One func, not matched
       - [0x030A30, c, libultra/n_audio/n_synallocfx]
       - [0x030A90, c, libultra/n_audio/cspstop]
       - [0x030AC0, c, libultra/n_audio/n_synfreevoice]

@@ -363,3 +363,7 @@ _n_freePVoice = 0x8002A2D0;
 __n_initChanState = 0x8002F4A0;
 __n_resetPerfChanState = 0x8002DDB8;
 alEvtqNew = 0x80028F70;
+__n_vsVol = 0x8002DF48;
+__n_CSPHandleMIDIMsg = 0x8002B308;
+__CSPHandleMetaMsg = 0x800291AC;
+__setUsptFromTempo = 0x80029170;

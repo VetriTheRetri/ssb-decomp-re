@@ -451,6 +451,7 @@ void n_alCSeqNewMarker(ALCSeq *seq, ALCSeqMarker *m, u32 ticks)
 #endif
 
 // NEEDS -O3 to match - https://decomp.me/scratch/9Ao34
+// 0x296F8
 #ifdef NON_MATCHING
 /*
   Note: If there are no valid tracks (ie. all tracks have
@@ -521,6 +522,7 @@ void alUnlink(ALLink *ln)
         ln->prev->next = ln->next;  
 }
 
+//0x298B4
 /*
   This routine flushes events according their type.
 */
@@ -556,6 +558,7 @@ void alEvtqFlushType(ALEventQueue *evtq, s16 type)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alEvtqPostEvent.s")
 
+// 0x29AC0
 #ifdef NON_MATCHING
 // Stack issues
 ALMicroTime alEvtqNextEvent(ALEventQueue *evtq, ALEvent *evt) 
@@ -594,18 +597,50 @@ ALMicroTime alEvtqNextEvent(ALEventQueue *evtq, ALEvent *evt)
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alEvtqNextEvent.s")
 #endif
 
+//0x29B70
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alEvtqNew.s")
 
+//0x29C9C
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002909C_29C9C.s")
 
+//0x29CAC
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_800290AC_29CAC.s")
 
+//0x29D00
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80029100_29D00.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80029170_29D70.s")
+void __setUsptFromTempo (ALCSPlayer *seqp, f32 tempo);
+#if 0
+// Needs -O3
+/*
+  This routine safely calculates the sequence player's
+  uspt value based on the given tempo.  It does this safely
+  by making sure that the player has a target sequence and
+  therefore a qnpt value which is needed for the calculation.
+  Compact sequence player needs its own version of this routine
+  since the ALCSeq's qnpt field is at a different offset.
+*/
+static void __setUsptFromTempo (ALCSPlayer *seqp, f32 tempo)
+{
+    if (seqp->target)
+	seqp->uspt = (s32)((f32)tempo * seqp->target->qnpt);
+    else
+	seqp->uspt = 488;		/* This is the initial value set by alSeqpNew. */
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_800291AC_29DAC.s")
+// static?
+void func_800291A4_29DA4() {
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__setUsptFromTempo.s")
+#endif
 
+static void __CSPHandleMetaMsg(ALCSPlayer *seqp, ALEvent *event);
+// 0x29DAC
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__CSPHandleMetaMsg.s")
+
+// Uses sRandSeed2
+// 0x29FA8
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_800293A8_29FA8.s")
 
 #if 0
@@ -740,14 +775,14 @@ Acmd *n_alAuxBusPull(s32 sampleOffset, Acmd *p)
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alFxPull.s")
 
 // 0x2BF08
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002B308_2BF08.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__n_CSPHandleMIDIMsg.s")
 
 // 0x2C92C
 ALMicroTime __n_CSPVoiceHandler(void *node);
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__n_CSPVoiceHandler.s")
 
 //n_alCSPNew?
-// Split? 0x2CFD0
+// Split? 0x2CFD0 Splittable on Rodata here as well. 3FA50
 void func_8002C3D0_2CFD(N_ALCSPlayer *seqp, ALSeqpConfig *c);
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002C3D0_2CFD0.s")
 

@@ -54,6 +54,29 @@ typedef struct {
     struct N_PVoice_s     *pvoice;
 } N_ALFreeParam;
 
+typedef struct N_ALParam_s {
+    struct N_ALParam_s    *next;
+    s32                 delta;
+    s16                 type;
+    union {
+        f32             f;
+        s32             i;
+    } data;
+    union {
+        f32             f;
+        s32             i;
+    } moredata;
+    union {
+        f32             f;
+        s32             i;
+    } stillmoredata;
+    union {
+        f32             f;
+        s32             i;
+    } yetstillmoredata;
+	s32 unk1C;
+} N_ALParam;
+
 typedef struct N_PVoice_s {
     ALLink               node;
     struct N_ALVoice_s    *vvoice;

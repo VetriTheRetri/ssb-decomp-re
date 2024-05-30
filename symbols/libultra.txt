@@ -367,3 +367,4 @@ __n_vsVol = 0x8002DF48;
 __n_CSPHandleMIDIMsg = 0x8002B308;
 __CSPHandleMetaMsg = 0x800291AC;
 __setUsptFromTempo = 0x80029170;
+alCSPStop = 0x8002FE90;

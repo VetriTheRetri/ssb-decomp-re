@@ -146,6 +146,8 @@ build/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0
 # build/src/libultra/n_audio/cspsetbank.o: CC := $(IDO)
 # build/src/libultra/n_audio/cspsetpriority.o:	OPTFLAGS := -O3 -g0
 # build/src/libultra/n_audio/cspsetpriority.o: CC := $(IDO)
+# build/src/libultra/n_audio/cspsetfxmix.o:	OPTFLAGS := -O3 -g0
+# build/src/libultra/n_audio/cspsetfxmix.o: CC := $(IDO)
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

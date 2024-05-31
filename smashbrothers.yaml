@@ -169,7 +169,7 @@ segments:
       - [0x026B10, asm, libultra/sp/hide]
       - [0x026B30, asm, libultra/sp/show]
       - [0x026B50, asm, libultra/sp/spscale]
-      - [0x026BC0, asm, libultra/n_audio/audio01]
+      - [0x026BC0, c, libultra/n_audio/cspsetpriority]
       - [0x026C10, asm, libultra/n_audio/audio02]
       - [0x026C70, c, libultra/n_audio/n_env] 
       - [0x02E220, asm, libultra/n_audio/audio04] # n_alSynAddSeqPlayer

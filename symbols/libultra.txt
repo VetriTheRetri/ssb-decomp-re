@@ -376,3 +376,4 @@ alCSPSetSeq = 0x8002FA70;
 alCSPSetBank = 0x8002FBD0;
 alCSPSetBank_Alt = 0x8002FB30;
 n_alSynSetPriority = 0x8002F6A0;
+alCSPSetChlPriority = 0x80025FC0;

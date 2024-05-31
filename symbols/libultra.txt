@@ -372,3 +372,4 @@ alCSPPlay = 0x8002FDB0;
 n_alSynSetFXMix_Alt = 0x8002FC50;
 n_alSynSetFXMix = 0x8002FCF4;
 __n_setInstChanState = 0x8002E2AC;
+alCSPSetSeq = 0x8002FA70;

@@ -150,6 +150,8 @@ build/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0
 # build/src/libultra/n_audio/cspsetfxmix.o: CC := $(IDO)
 build/src/libultra/n_audio/n_synaddplayer.o: OPTFLAGS := -O3 -g0
 build/src/libultra/n_audio/n_synaddplayer.o: CC := $(IDO)
+build/src/libultra/n_audio/n_synallocvoice.o: OPTFLAGS := -O3 -g0
+build/src/libultra/n_audio/n_synallocvoice.o: CC := $(IDO)
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

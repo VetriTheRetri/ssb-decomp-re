@@ -174,7 +174,7 @@ segments:
       - [0x026C70, c, libultra/n_audio/n_env] 
       - [0x02E220, c, libultra/n_audio/n_synaddplayer]
       - [0x02E380, c, libultra/n_audio/n_synstopvoice]
-      - [0x02E3F0, asm, libultra/n_audio/audio06]
+      - [0x02E3F0, c, libultra/n_audio/n_synallocvoice]
       - [0x02E620, c, libultra/n_audio/n_synsetpan]
       - [0x02E6A0, asm, libultra/n_audio/audio08]
       - [0x02E870, asm, libultra/n_audio/audio09]

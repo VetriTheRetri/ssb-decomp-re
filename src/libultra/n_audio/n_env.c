@@ -41,6 +41,7 @@ extern u16 D_8009EE1E_4071E;
 extern u16 D_8009EE20_40720;
 extern u8 unref8009EE22[0x8];
 extern u8 D_8009EE2A_4072A;
+extern u16 D_8003D31C_3DF1C;
 
 void func_80026070_26C70(u8 arg0) {
     if (arg0 > 0x7F) {
@@ -601,7 +602,9 @@ ALMicroTime alEvtqNextEvent(ALEventQueue *evtq, ALEvent *evt)
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alEvtqNew.s")
 
 //0x29C9C
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002909C_29C9C.s")
+void func_8002909C_29C9C(u16 arg0) {
+    D_8003D31C_3DF1C = arg0;
+}
 
 //0x29CAC
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_800290AC_29CAC.s")

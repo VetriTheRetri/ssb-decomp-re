@@ -152,6 +152,9 @@ build/src/libultra/n_audio/n_synaddplayer.o: OPTFLAGS := -O3 -g0
 build/src/libultra/n_audio/n_synaddplayer.o: CC := $(IDO)
 build/src/libultra/n_audio/n_synallocvoice.o: OPTFLAGS := -O3 -g0
 build/src/libultra/n_audio/n_synallocvoice.o: CC := $(IDO)
+build/src/libultra/n_audio/n_synstartvoiceparam.o: OPTFLAGS := -O3 -g0
+build/src/libultra/n_audio/n_synstartvoiceparam.o: CC := $(IDO)
+
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

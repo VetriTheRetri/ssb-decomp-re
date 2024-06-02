@@ -117,6 +117,8 @@ typedef struct {
     u8                          fxMix;
     s32                         samples;
     struct ALWaveTable_s        *wave;
+    u8 unk1C;
+    u8 unk1D;
 } ALStartParamAlt;
 
 typedef struct {

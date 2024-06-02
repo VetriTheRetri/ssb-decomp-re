@@ -774,6 +774,6 @@ void ftNessJibakuAirBoundSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 
     ftMain_SetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialAirHiBound, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
-    efParticle_ImpactSW_MakeEffect(pos, 4, atan2f(-angle->x, angle->y));
+    efParticle_ImpactWave_MakeEffect(pos, 4, atan2f(-angle->x, angle->y));
     efParticle_Quake_MakeEffect(2);
 }

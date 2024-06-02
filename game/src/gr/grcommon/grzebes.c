@@ -65,7 +65,7 @@ GObj* grCommon_Zebes_MakeAcid(void)
     map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&D_NF_00000B08);
     gGroundStruct.sector.map_head = map_head;
 
-    map_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
+    map_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000);
     gGroundStruct.sector.map_gobj = map_gobj;
 
     omAddGObjRenderProc(map_gobj, odRenderDObjTreeDLLinksForGObj, 0xC, 0x80000000U, -1);
@@ -186,7 +186,7 @@ void grCommon_Zebes_ProcUpdate(GObj *ground_gobj)
 // 0x80108448
 GObj* grCommon_Zebes_MakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
+    GObj *ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000);
     GObj *acid_gobj = grCommon_Zebes_MakeAcid();
 
     omAddGObjCommonProc(ground_gobj, grCommon_Zebes_ProcUpdate, 1, 4);

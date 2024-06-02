@@ -88,7 +88,7 @@ void mvOpeningLinkDrawName()
     f32 x_positions[4] = dMvOpeningLinkNameCharXPositions;
     s32 i;
 
-    gMvOpeningLinkNameGObj = name_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    gMvOpeningLinkNameGObj = name_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     omAddGObjRenderProc(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
 
     for (i = 0; offsets[i] != 0; i++)
@@ -233,7 +233,7 @@ void mvOpeningLinkRenderPosedFighterBackground(GObj *gobj)
 // 0x8018D924
 void mvOpeningLinkCreatePosedFighterBackground()
 {
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x13, 0x80000000), mvOpeningLinkRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningLinkRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
 // 0x8018D970
@@ -333,7 +333,7 @@ void mvOpeningLinkMainProc(GObj* arg0)
 
     if (gMvOpeningLinkFramesElapsed == 15)
     {
-        omEjectGObjCommon(gMvOpeningLinkNameGObj);
+        omEjectGObj(gMvOpeningLinkNameGObj);
         mvOpeningLinkInitFighterStagePanel();
         mvOpeningLinkCreatePosedFighterBackground();
         mvOpeningLinkCreatePosedFighter();
@@ -368,7 +368,7 @@ void mvOpeningLinkInit()
     gBattleState->player_block[0].player_kind = Pl_Kind_Key;
 
     mvOpeningLinkLoadFiles();
-    omMakeGObjCommon(0x3F7, mvOpeningLinkMainProc, 0xD, 0x80000000);
+    omMakeGObjSPAfter(0x3F7, mvOpeningLinkMainProc, 0xD, 0x80000000);
     func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
     mvOpeningLinkInitFramesElapsed();
     func_ovl2_80115890();

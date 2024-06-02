@@ -26,7 +26,7 @@ intptr_t dITBombHeiDisplayListOffsets[/* */] = { 0x3310, 0x34C0 };
 itCreateDesc dITBombHeiItemDesc =
 {
     It_Kind_BombHei,                        // Item Kind
-    &gITemFileData,                         // Pointer to item file data?
+    &gITFileData,                         // Pointer to item file data?
     &lITBombHeiItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct

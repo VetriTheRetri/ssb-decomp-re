@@ -61,7 +61,7 @@ void ifScreenFlash_InitInterfaceVars(u8 alpha)
 
     if (gSaveData.is_allow_screenflash != FALSE)
     {
-        GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+        GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
         omAddGObjRenderProc(interface_gobj, func_ovl2_80115C20, 0x16, 0x80000000U, -1);
         omAddGObjCommonProc(interface_gobj, func_ovl2_80115DA8, 1, 1);

@@ -84,7 +84,7 @@ void func_ovl5_8018D1A0(void)
     gBattleState->player_block[0].player_kind = Pl_Kind_Key;
 
     func_ovl5_8018D0C0();
-    omMakeGObjCommon(0x3F7U, func_ovl5_8018D160, 0xDU, GOBJ_LINKORDER_DEFAULT);
+    omMakeGObjSPAfter(0x3F7U, func_ovl5_8018D160, 0xDU, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
     func_ovl2_80115890();
     func_ovl2_800EC130();

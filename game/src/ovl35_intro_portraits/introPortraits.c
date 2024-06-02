@@ -49,7 +49,7 @@ void mvPortraitsCreatePortraitsSet1()
     intptr_t offsets[4] = dIntroPortraitsPortraitOffsetsSet1;
     Vec2f positions[4] = dIntroPortraitsPortraitPositionsSet1;
 
-    gIntroPortraitsPortraitGObj = portraits_gobj = omMakeGObjCommon(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
+    gIntroPortraitsPortraitGObj = portraits_gobj = omMakeGObjSPAfter(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(portraits_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000U, -1);
 
     for (i = 0; i < ARRAY_COUNT(offsets); i++)
@@ -70,7 +70,7 @@ void mvPortraitsCreatePortraitsSet2()
     intptr_t offsets[4] = dIntroPortraitsPortraitOffsetsSet2;
     Vec2f positions[4] = dIntroPortraitsPortraitPositionsSet2;
 
-    gIntroPortraitsPortraitGObj = portraits_gobj = omMakeGObjCommon(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
+    gIntroPortraitsPortraitGObj = portraits_gobj = omMakeGObjSPAfter(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(portraits_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000U, -1);
 
     for (i = 0; i < ARRAY_COUNT(offsets); i++)
@@ -258,7 +258,7 @@ void mvPortraitsCreatePortraitOverlay()
     GObj* portrait_overlay_gobj;
     SObj* portrait_overlay_sobj;
 
-    portrait_overlay_gobj = omMakeGObjCommon(0, 0, 0x12, 0x80000000);
+    portrait_overlay_gobj = omMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
     omAddGObjRenderProc(portrait_overlay_gobj, &mvPortraitsRenderPortraitOverlay, 0x1C, 0x80000000, -1);
 
     portrait_overlay_sobj = gcAppendSObjWithSprite(portrait_overlay_gobj, GetAddressFromOffset(gIntroPortraitsFilesArray[0], &FILE_035_PORTRAIT_OVERLAY_IMAGE_OFFSET));
@@ -323,7 +323,7 @@ void mvPortraitsMain(GObj* arg0)
 
         if (gIntroPotraitsFramesElapsed == 75)
         {
-            omEjectGObjCommon(gIntroPortraitsPortraitGObj);
+            omEjectGObj(gIntroPortraitsPortraitGObj);
             mvPortraitsCreatePortraitsSet2();
         }
 
@@ -353,7 +353,7 @@ void mvPortraitsInit()
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
 
-    omMakeGObjCommon(0, mvPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);
+    omMakeGObjSPAfter(0, mvPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(0, 0x80000000, 0x64, 3, 0xFF);
     mvPortraitsInitVariables();
     mvPortraitsCreatePortraitViewport();

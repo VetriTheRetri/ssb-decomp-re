@@ -527,7 +527,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
                 this_fp->phys_info.vel_damage_air.y = -vel_damage.y * 0.8F;
                 this_fp->phys_info.vel_damage_ground = 0.0F;
 
-                ftParticle_MakeEffectKind(this_gobj, Ef_Kind_ImpactSW, 0, NULL, NULL, this_fp->lr, 0, 0);
+                ftParticle_MakeEffectKind(this_gobj, Ef_Kind_ImpactWave, 0, NULL, NULL, this_fp->lr, 0, 0);
                 ftParticle_MakeEffectKind(this_gobj, Ef_Kind_QuakeM0, 0, NULL, NULL, this_fp->lr, 0, 0);
             }
             else
@@ -849,7 +849,7 @@ void ftCommon_WallDamage_SetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
     Vec3f vel_air;
     f32 knockback;
 
-    efParticle_ImpactSW_MakeEffect(pos, 4, atan2f(-angle->x, angle->y));
+    efParticle_ImpactWave_MakeEffect(pos, 4, atan2f(-angle->x, angle->y));
     efParticle_Quake_MakeEffect(2);
 
     vel_air = fp->phys_info.vel_air;

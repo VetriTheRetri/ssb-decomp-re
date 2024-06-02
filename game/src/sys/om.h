@@ -401,10 +401,10 @@ extern void omEjectDObj(struct DObj *);
 extern struct SObj *omAddSObjForGObj(struct GObjCommon *, Sprite *);
 extern void omEjectSObj(struct SObj *);
 extern struct Camera *omAddCameraForGObj(struct GObjCommon *);
-extern struct GObjCommon* omMakeGObjCommon(u32 id, void (*arg1)(struct GObjCommon *), u8 link, u32 arg3);
+extern struct GObjCommon* omMakeGObjSPAfter(u32 id, void (*arg1)(struct GObjCommon *), u8 link, u32 arg3);
 extern struct GObjCommon *
-func_800099A8(u32 id, void (*arg1)(struct GObjCommon *), u8 link, u32 arg3);
-extern void omEjectGObjCommon(struct GObjCommon *);
+omMakeGObjSPBefore(u32 id, void (*arg1)(struct GObjCommon *), u8 link, u32 arg3);
+extern void omEjectGObj(struct GObjCommon *);
 extern void func_80009C90(struct GObjCommon *arg0, u8 link, u32 arg2);
 extern void func_80009CC8(struct GObjCommon *arg0, u8 link, u32 arg2);
 extern void omAddGObjRenderProc(

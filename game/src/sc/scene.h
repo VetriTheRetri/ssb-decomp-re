@@ -65,7 +65,7 @@ typedef enum scTrainingCP
 
 } scTrainingCP;
 
-typedef enum scTrainingITem
+typedef enum scTrainingIT
 {
     scTrainingMenu_Item_EnumStart,
     scTrainingMenu_Item_None = scTrainingMenu_Item_EnumStart,
@@ -87,7 +87,7 @@ typedef enum scTrainingITem
     scTrainingMenu_Item_PokeBall,
     scTrainingMenu_Item_EnumMax
 
-} scTrainingITem;
+} scTrainingIT;
 
 typedef enum scTrainingSpeed
 {

@@ -329,7 +329,7 @@ void grInishie_Scale_MakeGround(void)
     Vec3f yakumono_pos;
 
     map_head = gGroundStruct.inishie.map_head;
-    ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
+    ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     omAddGObjRenderProc(ground_gobj, odRenderDObjTreeForGObj, 6, 0x80000000, -1);
     grSetupDObj(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&D_NF_00000380), map_dobj, grCommon_Inishie_ScaleDObjIndex);
@@ -342,7 +342,7 @@ void grInishie_Scale_MakeGround(void)
 
     for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.scale); i++)
     {
-        ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
+        ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000);
         omAddGObjRenderProc(ground_gobj, odRenderDObjDLHead0, 6, 0x80000000, -1);
 
         platform_dobj = omAddDObjForGObj(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&D_NF_000005F0));
@@ -483,7 +483,7 @@ void grInishie_PowerBlock_MakeGround(void)
 {
     s32 pos_count, i, pos_ids[10];
 
-    omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U), grInishie_PowerBlock_ProcUpdate, 1, 4);
+    omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000U), grInishie_PowerBlock_ProcUpdate, 1, 4);
 
     gGroundStruct.inishie.pblock_pos_count = pos_count = mpCollision_GetMPointCountKind(mpMPoint_Kind_PowerBlock);
 

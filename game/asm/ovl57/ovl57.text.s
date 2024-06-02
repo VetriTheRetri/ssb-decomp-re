@@ -169,7 +169,7 @@ glabel mnCongraActorProcUpdate
   /* 17E728 80131D18 24A51C04 */     addiu $a1, $a1, %lo(mnCongraActorProcUpdate)
   /* 17E72C 80131D1C 00002025 */        or $a0, $zero, $zero
   /* 17E730 80131D20 00003025 */        or $a2, $zero, $zero
-  /* 17E734 80131D24 0C00265A */       jal omMakeGObjCommon
+  /* 17E734 80131D24 0C00265A */       jal omMakeGObjSPAfter
   /* 17E738 80131D28 3C078000 */       lui $a3, 0x8000
   /* 17E73C 80131D2C 240900FF */     addiu $t1, $zero, 0xff
   /* 17E740 80131D30 AFA90010 */        sw $t1, 0x10($sp)
@@ -215,7 +215,7 @@ glabel mnCongraActorProcUpdate
   /* 17E7E0 80131DD0 240403F0 */     addiu $a0, $zero, 0x3f0
   /* 17E7E4 80131DD4 00002825 */        or $a1, $zero, $zero
   /* 17E7E8 80131DD8 2406000D */     addiu $a2, $zero, 0xd
-  /* 17E7EC 80131DDC 0C00265A */       jal omMakeGObjCommon
+  /* 17E7EC 80131DDC 0C00265A */       jal omMakeGObjSPAfter
   /* 17E7F0 80131DE0 3C078000 */       lui $a3, 0x8000
   /* 17E7F4 80131DE4 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 17E7F8 80131DE8 2419FFFF */     addiu $t9, $zero, -1

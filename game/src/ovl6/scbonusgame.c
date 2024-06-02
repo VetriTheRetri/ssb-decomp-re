@@ -556,7 +556,7 @@ void scBonusGame_CheckBonus2PlatformLanding(GObj *ground_gobj)
 // 0x8018DAE0
 void grBonus_Bonus2_MakeGround(void)
 {
-    omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Ground, NULL, 1U, 0x80000000U), scBonusGame_CheckBonus2PlatformLanding, 1, 4);
+    omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1U, 0x80000000U), scBonusGame_CheckBonus2PlatformLanding, 1, 4);
 }
 
 // 0x8018DB24
@@ -601,14 +601,14 @@ void scBonusGame_InitInterface(GObj *interface_gobj)
     ifPlayer_Damage_InitInterface();
     func_800269C0(0x1EA);
     func_ovl2_801121C4();
-    omEjectGObjCommon(NULL);
+    omEjectGObj(NULL);
     gsStopCurrentProcess(1);
 }
 
 // 0x8018DCC4
 void scBonusGame_MakeInterface(void)
 {
-    omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xAU, 0x80000000U), scBonusGame_InitInterface, 0, 5);
+    omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xAU, 0x80000000U), scBonusGame_InitInterface, 0, 5);
 
     gBattleState->game_status = gmMatch_GameStatus_Wait;
 }
@@ -644,7 +644,7 @@ void scBonusGame_InitBonus1TargetSprites(void)
 
     sprites = rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
 
-    gGroundStruct.bonus1.interface_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
+    gGroundStruct.bonus1.interface_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -669,7 +669,7 @@ void scBonusGame_InitBonus2PlatformSprites(void)
 
     sprites = rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
 
-    gGroundStruct.bonus2.interface_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
+    gGroundStruct.bonus2.interface_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -759,7 +759,7 @@ void scBonusGame_CheckTimeUpEjectInterface(GObj *interface_gobj)
 
         gIsBonusGameTimeUp = FALSE;
 
-        omEjectGObjCommon(interface_gobj);
+        omEjectGObj(interface_gobj);
     }
 }
 
@@ -770,7 +770,7 @@ void scBonusGame_MakeBonusTimerGObj(void)
 
     if (gSceneData.scene_previous == 0x34)
     {
-        omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000U), scBonusGame_CheckTimeUpEjectInterface, 1, 0);
+        omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xBU, 0x80000000U), scBonusGame_CheckTimeUpEjectInterface, 1, 0);
     }
 }
 
@@ -786,7 +786,7 @@ void func_ovl6_8018E344(void)
         ifTimer_BattleTime_SetInterface(NULL);
         func_ovl2_80112EBC();
 
-        interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000U);
+        interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xBU, 0x80000000U);
 
         omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17U, 0x80000000U, -1);
 

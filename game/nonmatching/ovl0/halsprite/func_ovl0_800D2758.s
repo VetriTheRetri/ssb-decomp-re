@@ -36,7 +36,7 @@ glabel func_ovl0_800D2758
   /* 04E1B0 800D27D0 24A52C4C */     addiu $a1, $a1, %lo(func_ovl0_800D2C4C)
   /* 04E1B4 800D27D4 2404FFF9 */     addiu $a0, $zero, -7
   /* 04E1B8 800D27D8 00003025 */        or $a2, $zero, $zero
-  /* 04E1BC 800D27DC 0C00265A */       jal omMakeGObjCommon
+  /* 04E1BC 800D27DC 0C00265A */       jal omMakeGObjSPAfter
   /* 04E1C0 800D27E0 3C078000 */       lui $a3, 0x8000
   .L800D27E4:
   /* 04E1C4 800D27E4 8FBF001C */        lw $ra, 0x1c($sp)

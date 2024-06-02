@@ -66,7 +66,7 @@ void wpMainDestroyWeapon(GObj *weapon_gobj) // Destroy weapon?
 
     wpMainStopSFX(wp);              // Stop weapon's SFX
     wpManagerSetPrevWeaponAlloc(wp);// Eject weapon's user_data from memory?
-    omEjectGObjCommon(weapon_gobj); // Eject GObj from memory?
+    omEjectGObj(weapon_gobj); // Eject GObj from memory?
 }
 
 // 0x80168044

@@ -470,7 +470,7 @@ glabel scAutoDemoMakeFocusInterface
   /* 18C450 8018D710 24A5D6DC */     addiu $a1, $a1, %lo(scAutoDemoProcUpdateMain)
   /* 18C454 8018D714 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 18C458 8018D718 2406000A */     addiu $a2, $zero, 0xa
-  /* 18C45C 8018D71C 0C00265A */       jal omMakeGObjCommon
+  /* 18C45C 8018D71C 0C00265A */       jal omMakeGObjSPAfter
   /* 18C460 8018D720 3C078000 */       lui $a3, 0x8000
   /* 18C464 8018D724 3C0E8019 */       lui $t6, %hi(dAutoDemoProcList)
   /* 18C468 8018D728 25CEE180 */     addiu $t6, $t6, %lo(dAutoDemoProcList)
@@ -787,7 +787,7 @@ glabel func_ovl64_8018DB18
   /* 18C8BC 8018DB7C 02003825 */        or $a3, $s0, $zero
   /* 18C8C0 8018DB80 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 18C8C4 8018DB84 00002825 */        or $a1, $zero, $zero
-  /* 18C8C8 8018DB88 0C00265A */       jal omMakeGObjCommon
+  /* 18C8C8 8018DB88 0C00265A */       jal omMakeGObjSPAfter
   /* 18C8CC 8018DB8C 2406000B */     addiu $a2, $zero, 0xb
   /* 18C8D0 8018DB90 3C018019 */       lui $at, %hi(sAutoDemoFighterNameGObj)
   /* 18C8D4 8018DB94 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)

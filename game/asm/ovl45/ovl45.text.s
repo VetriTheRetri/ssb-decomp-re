@@ -43,7 +43,7 @@ glabel mvOpeningYoshiNestCreateNest
   /* 16FDA4 80131B64 00002025 */        or $a0, $zero, $zero
   /* 16FDA8 80131B68 00002825 */        or $a1, $zero, $zero
   /* 16FDAC 80131B6C 24060011 */     addiu $a2, $zero, 0x11
-  /* 16FDB0 80131B70 0C00265A */       jal omMakeGObjCommon
+  /* 16FDB0 80131B70 0C00265A */       jal omMakeGObjSPAfter
   /* 16FDB4 80131B74 3C078000 */       lui $a3, 0x8000
   /* 16FDB8 80131B78 3C0E8013 */       lui $t6, %hi(D_ovl45_801325F8)
   /* 16FDBC 80131B7C 8DCE25F8 */        lw $t6, %lo(D_ovl45_801325F8)($t6)
@@ -168,7 +168,7 @@ glabel mvOpeningYoshiNestCreateBackground
   /* 16FF80 80131D40 00002025 */        or $a0, $zero, $zero
   /* 16FF84 80131D44 00002825 */        or $a1, $zero, $zero
   /* 16FF88 80131D48 24060014 */     addiu $a2, $zero, 0x14
-  /* 16FF8C 80131D4C 0C00265A */       jal omMakeGObjCommon
+  /* 16FF8C 80131D4C 0C00265A */       jal omMakeGObjSPAfter
   /* 16FF90 80131D50 3C078000 */       lui $a3, 0x8000
   /* 16FF94 80131D54 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 16FF98 80131D58 240EFFFF */     addiu $t6, $zero, -1
@@ -203,7 +203,7 @@ glabel mvOpeningYoshiNestCreateStageObjects
   /* 170004 80131DC4 00002025 */        or $a0, $zero, $zero
   /* 170008 80131DC8 00002825 */        or $a1, $zero, $zero
   /* 17000C 80131DCC 24060011 */     addiu $a2, $zero, 0x11
-  /* 170010 80131DD0 0C00265A */       jal omMakeGObjCommon
+  /* 170010 80131DD0 0C00265A */       jal omMakeGObjSPAfter
   /* 170014 80131DD4 3C078000 */       lui $a3, 0x8000
   /* 170018 80131DD8 3C0E8013 */       lui $t6, %hi(D_ovl45_801325F8)
   /* 17001C 80131DDC 8DCE25F8 */        lw $t6, %lo(D_ovl45_801325F8)($t6)
@@ -467,7 +467,7 @@ glabel mvOpeningYoshiNestInit
   /* 1703EC 801321AC 24A5203C */     addiu $a1, $a1, %lo(mvOpeningYoshiNestMainProc)
   /* 1703F0 801321B0 02003825 */        or $a3, $s0, $zero
   /* 1703F4 801321B4 00002025 */        or $a0, $zero, $zero
-  /* 1703F8 801321B8 0C00265A */       jal omMakeGObjCommon
+  /* 1703F8 801321B8 0C00265A */       jal omMakeGObjSPAfter
   /* 1703FC 801321BC 00003025 */        or $a2, $zero, $zero
   /* 170400 801321C0 00002025 */        or $a0, $zero, $zero
   /* 170404 801321C4 02002825 */        or $a1, $s0, $zero

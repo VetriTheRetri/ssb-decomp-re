@@ -119,7 +119,7 @@ glabel mvOpeningPikachuDrawName
   /* 16CFFC 8018D24C 00002825 */        or $a1, $zero, $zero
   /* 16D000 8018D250 24060011 */     addiu $a2, $zero, 0x11
   /* 16D004 8018D254 AD0A0014 */        sw $t2, 0x14($t0)
-  /* 16D008 8018D258 0C00265A */       jal omMakeGObjCommon
+  /* 16D008 8018D258 0C00265A */       jal omMakeGObjSPAfter
   /* 16D00C 8018D25C AD0B0018 */        sw $t3, 0x18($t0)
   /* 16D010 8018D260 3C018019 */       lui $at, %hi(gMvOpeningPikachuNameGObj)
   /* 16D014 8018D264 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -593,7 +593,7 @@ glabel mvOpeningPikachuCreatePosedFighterBackground
   /* 16D71C 8018D96C 00002025 */        or $a0, $zero, $zero
   /* 16D720 8018D970 00002825 */        or $a1, $zero, $zero
   /* 16D724 8018D974 24060013 */     addiu $a2, $zero, 0x13
-  /* 16D728 8018D978 0C00265A */       jal omMakeGObjCommon
+  /* 16D728 8018D978 0C00265A */       jal omMakeGObjSPAfter
   /* 16D72C 8018D97C 3C078000 */       lui $a3, 0x8000
   /* 16D730 8018D980 3C058019 */       lui $a1, %hi(mvOpeningPikachuRenderPosedFighterBackground)
   /* 16D734 8018D984 240EFFFF */     addiu $t6, $zero, -1
@@ -911,7 +911,7 @@ glabel mvOpeningPikachuMainProc
   /* 16DBC4 8018DE14 3C048019 */       lui $a0, %hi(gMvOpeningPikachuNameGObj)
   /* 16DBC8 8018DE18 5441000C */      bnel $v0, $at, .L8018DE4C
   /* 16DBCC 8018DE1C 2401003C */     addiu $at, $zero, 0x3c
-  /* 16DBD0 8018DE20 0C0026A1 */       jal omEjectGObjCommon
+  /* 16DBD0 8018DE20 0C0026A1 */       jal omEjectGObj
   /* 16DBD4 8018DE24 8C84E22C */        lw $a0, %lo(gMvOpeningPikachuNameGObj)($a0)
   /* 16DBD8 8018DE28 0C06358D */       jal mvOpeningPikachuInitFighterStagePanel
   /* 16DBDC 8018DE2C 00000000 */       nop
@@ -980,7 +980,7 @@ glabel mvOpeningPikachuInit
   /* 16DCBC 8018DF0C 24A5DDC0 */     addiu $a1, $a1, %lo(mvOpeningPikachuMainProc)
   /* 16DCC0 8018DF10 240403F7 */     addiu $a0, $zero, 0x3f7
   /* 16DCC4 8018DF14 2406000D */     addiu $a2, $zero, 0xd
-  /* 16DCC8 8018DF18 0C00265A */       jal omMakeGObjCommon
+  /* 16DCC8 8018DF18 0C00265A */       jal omMakeGObjSPAfter
   /* 16DCCC 8018DF1C 3C078000 */       lui $a3, 0x8000
   /* 16DCD0 8018DF20 240F00FF */     addiu $t7, $zero, 0xff
   /* 16DCD4 8018DF24 AFAF0010 */        sw $t7, 0x10($sp)

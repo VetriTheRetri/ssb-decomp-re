@@ -100,7 +100,7 @@ glabel func_ovl12_800D65AC
   /* 119F18 800D65B8 24A564A0 */     addiu $a1, $a1, %lo(func_ovl12_800D64A0)
   /* 119F1C 800D65BC 00002025 */        or $a0, $zero, $zero
   /* 119F20 800D65C0 00003025 */        or $a2, $zero, $zero
-  /* 119F24 800D65C4 0C00265A */       jal omMakeGObjCommon
+  /* 119F24 800D65C4 0C00265A */       jal omMakeGObjSPAfter
   /* 119F28 800D65C8 3C078000 */       lui $a3, 0x8000
   /* 119F2C 800D65CC 240E00FF */     addiu $t6, $zero, 0xff
   /* 119F30 800D65D0 AFAE0010 */        sw $t6, 0x10($sp)

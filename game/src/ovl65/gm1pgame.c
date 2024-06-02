@@ -1416,7 +1416,7 @@ void func_ovl65_8018E8F8(void)
     ifPlayer_Damage_InitInterface();
     func_800269C0(0x1EA);
     func_ovl2_801121C4();
-    omEjectGObjCommon(NULL);
+    omEjectGObj(NULL);
     gsStopCurrentProcess(1);
 }
 
@@ -1508,14 +1508,14 @@ void gm1PGameThreadUpdate(GObj *gobj)
         func_ovl65_8018E9A4();
         break;
     }
-    omEjectGObjCommon(NULL);
+    omEjectGObj(NULL);
     gsStopCurrentProcess(1);
 }
 
 // 0x8018EB68
 void func_ovl65_8018EB68(void)
 {
-    omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xA, 0x80000000), gm1PGameThreadUpdate, GObjProcess_Kind_OSThread, 5);
+    omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xA, 0x80000000), gm1PGameThreadUpdate, GObjProcess_Kind_OSThread, 5);
     gBattleState->game_status = gmMatch_GameStatus_Wait;
 }
 
@@ -1616,7 +1616,7 @@ void func_ovl65_8018EE44(void)
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
     make_gobj:
-        interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+        interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
         omAddGObjRenderProc(interface_gobj, gmUpdate1PGameTeamStockDisplay, 0x17, 0x80000000, -1);
 

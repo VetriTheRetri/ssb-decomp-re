@@ -484,7 +484,7 @@ glabel mnTrainingCreateLockedPortrait
   /* 141758 80132178 00002025 */        or $a0, $zero, $zero
   /* 14175C 8013217C 00002825 */        or $a1, $zero, $zero
   /* 141760 80132180 24060012 */     addiu $a2, $zero, 0x12
-  /* 141764 80132184 0C00265A */       jal omMakeGObjCommon
+  /* 141764 80132184 0C00265A */       jal omMakeGObjSPAfter
   /* 141768 80132188 3C078000 */       lui $a3, 0x8000
   /* 14176C 8013218C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 141770 80132190 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -551,7 +551,7 @@ glabel mnTrainingCreateLockedPortrait
   /* 141854 80132274 00002025 */        or $a0, $zero, $zero
   /* 141858 80132278 00002825 */        or $a1, $zero, $zero
   /* 14185C 8013227C 24060012 */     addiu $a2, $zero, 0x12
-  /* 141860 80132280 0C00265A */       jal omMakeGObjCommon
+  /* 141860 80132280 0C00265A */       jal omMakeGObjSPAfter
   /* 141864 80132284 3C078000 */       lui $a3, 0x8000
   /* 141868 80132288 3C058013 */       lui $a1, %hi(mnTrainingRenderPortraitWithNoise)
   /* 14186C 8013228C 240EFFFF */     addiu $t6, $zero, -1
@@ -589,7 +589,7 @@ glabel mnTrainingCreateLockedPortrait
   /* 1418EC 8013230C 00002025 */        or $a0, $zero, $zero
   /* 1418F0 80132310 00002825 */        or $a1, $zero, $zero
   /* 1418F4 80132314 24060012 */     addiu $a2, $zero, 0x12
-  /* 1418F8 80132318 0C00265A */       jal omMakeGObjCommon
+  /* 1418F8 80132318 0C00265A */       jal omMakeGObjSPAfter
   /* 1418FC 8013231C 3C078000 */       lui $a3, 0x8000
   /* 141900 80132320 2408FFFF */     addiu $t0, $zero, -1
   /* 141904 80132324 00408025 */        or $s0, $v0, $zero
@@ -670,7 +670,7 @@ glabel mnTrainingCreatePortrait
   .L80132444:
   /* 141A24 80132444 00002825 */        or $a1, $zero, $zero
   /* 141A28 80132448 2406001D */     addiu $a2, $zero, 0x1d
-  /* 141A2C 8013244C 0C00265A */       jal omMakeGObjCommon
+  /* 141A2C 8013244C 0C00265A */       jal omMakeGObjSPAfter
   /* 141A30 80132450 3C078000 */       lui $a3, 0x8000
   /* 141A34 80132454 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 141A38 80132458 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -703,7 +703,7 @@ glabel mnTrainingCreatePortrait
   /* 141AA4 801324C4 00002025 */        or $a0, $zero, $zero
   /* 141AA8 801324C8 00002825 */        or $a1, $zero, $zero
   /* 141AAC 801324CC 24060012 */     addiu $a2, $zero, 0x12
-  /* 141AB0 801324D0 0C00265A */       jal omMakeGObjCommon
+  /* 141AB0 801324D0 0C00265A */       jal omMakeGObjSPAfter
   /* 141AB4 801324D4 3C078000 */       lui $a3, 0x8000
   /* 141AB8 801324D8 240CFFFF */     addiu $t4, $zero, -1
   /* 141ABC 801324DC AFA2006C */        sw $v0, 0x6c($sp)
@@ -1266,7 +1266,7 @@ glabel mnTrainingCreateTypeImage
   /* 1422E8 80132D08 24060016 */     addiu $a2, $zero, 0x16
   /* 1422EC 80132D0C 3C078000 */       lui $a3, 0x8000
   /* 1422F0 80132D10 AD0B0008 */        sw $t3, 8($t0)
-  /* 1422F4 80132D14 0C00265A */       jal omMakeGObjCommon
+  /* 1422F4 80132D14 0C00265A */       jal omMakeGObjSPAfter
   /* 1422F8 80132D18 AD0A000C */        sw $t2, 0xc($t0)
   /* 1422FC 80132D1C 8FAC0050 */        lw $t4, 0x50($sp)
   /* 142300 80132D20 3C018014 */       lui $at, %hi(D_ovl28_80138588)
@@ -1438,7 +1438,7 @@ glabel mnTrainingCreatePanel
   /* 142580 80132FA0 00002025 */        or $a0, $zero, $zero
   /* 142584 80132FA4 00002825 */        or $a1, $zero, $zero
   /* 142588 80132FA8 24060016 */     addiu $a2, $zero, 0x16
-  /* 14258C 80132FAC 0C00265A */       jal omMakeGObjCommon
+  /* 14258C 80132FAC 0C00265A */       jal omMakeGObjSPAfter
   /* 142590 80132FB0 3C078000 */       lui $a3, 0x8000
   /* 142594 80132FB4 8FAA0040 */        lw $t2, 0x40($sp)
   /* 142598 80132FB8 240BFFFF */     addiu $t3, $zero, -1
@@ -1509,7 +1509,7 @@ glabel mnTrainingCreateBackground
   /* 142684 801330A4 00002025 */        or $a0, $zero, $zero
   /* 142688 801330A8 00002825 */        or $a1, $zero, $zero
   /* 14268C 801330AC 24060011 */     addiu $a2, $zero, 0x11
-  /* 142690 801330B0 0C00265A */       jal omMakeGObjCommon
+  /* 142690 801330B0 0C00265A */       jal omMakeGObjSPAfter
   /* 142694 801330B4 3C078000 */       lui $a3, 0x8000
   /* 142698 801330B8 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 14269C 801330BC 240BFFFF */     addiu $t3, $zero, -1
@@ -2550,7 +2550,7 @@ glabel mnTrainingRemoveWhiteSquare
   /* 143570 80133F90 AFBF0014 */        sw $ra, 0x14($sp)
   /* 143574 80133F94 10A00003 */      beqz $a1, .L80133FA4
   /* 143578 80133F98 00A02025 */        or $a0, $a1, $zero
-  /* 14357C 80133F9C 0C0026A1 */       jal omEjectGObjCommon
+  /* 14357C 80133F9C 0C0026A1 */       jal omEjectGObj
   /* 143580 80133FA0 AC40002C */        sw $zero, 0x2c($v0)
   .L80133FA4:
   /* 143584 80133FA4 8FBF0014 */        lw $ra, 0x14($sp)
@@ -2629,7 +2629,7 @@ glabel mnTrainingCreateWhiteSquare
   /* 143684 801340A4 00002025 */        or $a0, $zero, $zero
   /* 143688 801340A8 00002825 */        or $a1, $zero, $zero
   /* 14368C 801340AC 2406001E */     addiu $a2, $zero, 0x1e
-  /* 143690 801340B0 0C00265A */       jal omMakeGObjCommon
+  /* 143690 801340B0 0C00265A */       jal omMakeGObjSPAfter
   /* 143694 801340B4 3C078000 */       lui $a3, 0x8000
   /* 143698 801340B8 8FB9002C */        lw $t9, 0x2c($sp)
   /* 14369C 801340BC AFA2003C */        sw $v0, 0x3c($sp)
@@ -2781,21 +2781,21 @@ glabel mnTrainingRemoveHandicapCPULevel
   /* 1438C0 801342E0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1438C4 801342E4 10A00004 */      beqz $a1, .L801342F8
   /* 1438C8 801342E8 00A02025 */        or $a0, $a1, $zero
-  /* 1438CC 801342EC 0C0026A1 */       jal omEjectGObjCommon
+  /* 1438CC 801342EC 0C0026A1 */       jal omEjectGObj
   /* 1438D0 801342F0 AFA2001C */        sw $v0, 0x1c($sp)
   /* 1438D4 801342F4 8FA2001C */        lw $v0, 0x1c($sp)
   .L801342F8:
   /* 1438D8 801342F8 8C440024 */        lw $a0, 0x24($v0)
   /* 1438DC 801342FC 50800005 */      beql $a0, $zero, .L80134314
   /* 1438E0 80134300 8C440028 */        lw $a0, 0x28($v0)
-  /* 1438E4 80134304 0C0026A1 */       jal omEjectGObjCommon
+  /* 1438E4 80134304 0C0026A1 */       jal omEjectGObj
   /* 1438E8 80134308 AFA2001C */        sw $v0, 0x1c($sp)
   /* 1438EC 8013430C 8FA2001C */        lw $v0, 0x1c($sp)
   /* 1438F0 80134310 8C440028 */        lw $a0, 0x28($v0)
   .L80134314:
   /* 1438F4 80134314 50800005 */      beql $a0, $zero, .L8013432C
   /* 1438F8 80134318 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 1438FC 8013431C 0C0026A1 */       jal omEjectGObjCommon
+  /* 1438FC 8013431C 0C0026A1 */       jal omEjectGObj
   /* 143900 80134320 AFA2001C */        sw $v0, 0x1c($sp)
   /* 143904 80134324 8FA2001C */        lw $v0, 0x1c($sp)
   /* 143908 80134328 8FBF0014 */        lw $ra, 0x14($sp)
@@ -3030,14 +3030,14 @@ glabel mnTrainingDrawHandicapCPULevel
   /* 143C3C 8013465C AFB0001C */        sw $s0, 0x1c($sp)
   /* 143C40 80134660 10A00004 */      beqz $a1, .L80134674
   /* 143C44 80134664 AFA40038 */        sw $a0, 0x38($sp)
-  /* 143C48 80134668 0C0026A1 */       jal omEjectGObjCommon
+  /* 143C48 80134668 0C0026A1 */       jal omEjectGObj
   /* 143C4C 8013466C 00A02025 */        or $a0, $a1, $zero
   /* 143C50 80134670 AE200020 */        sw $zero, 0x20($s1)
   .L80134674:
   /* 143C54 80134674 00002025 */        or $a0, $zero, $zero
   /* 143C58 80134678 00002825 */        or $a1, $zero, $zero
   /* 143C5C 8013467C 2406001C */     addiu $a2, $zero, 0x1c
-  /* 143C60 80134680 0C00265A */       jal omMakeGObjCommon
+  /* 143C60 80134680 0C00265A */       jal omMakeGObjSPAfter
   /* 143C64 80134684 3C078000 */       lui $a3, 0x8000
   /* 143C68 80134688 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 143C6C 8013468C 2419FFFF */     addiu $t9, $zero, -1
@@ -5768,7 +5768,7 @@ glabel mnTrainingCreateTokenAutopositionRoutine
   /* 1463C0 80136DE0 00002025 */        or $a0, $zero, $zero
   /* 1463C4 80136DE4 00002825 */        or $a1, $zero, $zero
   /* 1463C8 80136DE8 2406001A */     addiu $a2, $zero, 0x1a
-  /* 1463CC 80136DEC 0C00265A */       jal omMakeGObjCommon
+  /* 1463CC 80136DEC 0C00265A */       jal omMakeGObjSPAfter
   /* 1463D0 80136DF0 3C078000 */       lui $a3, 0x8000
   /* 1463D4 80136DF4 3C058013 */       lui $a1, %hi(mnTrainingAutopositionToken)
   /* 1463D8 80136DF8 24A56CCC */     addiu $a1, $a1, %lo(mnTrainingAutopositionToken)
@@ -5821,7 +5821,7 @@ glabel mnTrainingCreateTokenShinePulseRoutine
   /* 14647C 80136E9C 00002025 */        or $a0, $zero, $zero
   /* 146480 80136EA0 00002825 */        or $a1, $zero, $zero
   /* 146484 80136EA4 2406001A */     addiu $a2, $zero, 0x1a
-  /* 146488 80136EA8 0C00265A */       jal omMakeGObjCommon
+  /* 146488 80136EA8 0C00265A */       jal omMakeGObjSPAfter
   /* 14648C 80136EAC 3C078000 */       lui $a3, 0x8000
   /* 146490 80136EB0 3C058013 */       lui $a1, %hi(mnTrainingUpdateTokenShinePulseColor)
   /* 146494 80136EB4 24A56E1C */     addiu $a1, $a1, %lo(mnTrainingUpdateTokenShinePulseColor)
@@ -5888,7 +5888,7 @@ glabel mnTrainingCreateSyncShadeAndCostumeRoutine
   /* 14656C 80136F8C 00002025 */        or $a0, $zero, $zero
   /* 146570 80136F90 00002825 */        or $a1, $zero, $zero
   /* 146574 80136F94 2406001F */     addiu $a2, $zero, 0x1f
-  /* 146578 80136F98 0C00265A */       jal omMakeGObjCommon
+  /* 146578 80136F98 0C00265A */       jal omMakeGObjSPAfter
   /* 14657C 80136F9C 3C078000 */       lui $a3, 0x8000
   /* 146580 80136FA0 3C058013 */       lui $a1, %hi(mnTrainingSyncShadeAndCostume)
   /* 146584 80136FA4 24A56ED8 */     addiu $a1, $a1, %lo(mnTrainingSyncShadeAndCostume)
@@ -6009,7 +6009,7 @@ glabel mnTrainingCreateWhiteCircles
   .L80137150:
   /* 146730 80137150 00002825 */        or $a1, $zero, $zero
   /* 146734 80137154 24060015 */     addiu $a2, $zero, 0x15
-  /* 146738 80137158 0C00265A */       jal omMakeGObjCommon
+  /* 146738 80137158 0C00265A */       jal omMakeGObjSPAfter
   /* 14673C 8013715C 02403825 */        or $a3, $s2, $zero
   /* 146740 80137160 8E6E001C */        lw $t6, 0x1c($s3) # D_ovl28_80138C98 + 28
   /* 146744 80137164 00408025 */        or $s0, $v0, $zero
@@ -6158,7 +6158,7 @@ glabel mnTrainingCreateReadyToFightObjects
   /* 146940 80137360 00002025 */        or $a0, $zero, $zero
   /* 146944 80137364 00002825 */        or $a1, $zero, $zero
   /* 146948 80137368 24060020 */     addiu $a2, $zero, 0x20
-  /* 14694C 8013736C 0C00265A */       jal omMakeGObjCommon
+  /* 14694C 8013736C 0C00265A */       jal omMakeGObjSPAfter
   /* 146950 80137370 3C078000 */       lui $a3, 0x8000
   /* 146954 80137374 3C058013 */       lui $a1, %hi(mnTrainingRenderReadyToFightObject)
   /* 146958 80137378 24A57254 */     addiu $a1, $a1, %lo(mnTrainingRenderReadyToFightObject)
@@ -6243,7 +6243,7 @@ glabel mnTrainingCreateReadyToFightObjects
   /* 146A94 801374B4 24060016 */     addiu $a2, $zero, 0x16
   /* 146A98 801374B8 3C078000 */       lui $a3, 0x8000
   /* 146A9C 801374BC E4480058 */      swc1 $f8, 0x58($v0)
-  /* 146AA0 801374C0 0C00265A */       jal omMakeGObjCommon
+  /* 146AA0 801374C0 0C00265A */       jal omMakeGObjSPAfter
   /* 146AA4 801374C4 E44A005C */      swc1 $f10, 0x5c($v0)
   /* 146AA8 801374C8 2418FFFF */     addiu $t8, $zero, -1
   /* 146AAC 801374CC 00408025 */        or $s0, $v0, $zero
@@ -6836,7 +6836,7 @@ glabel mnTrainingInitCSS
   /* 147328 80137D48 24A57700 */     addiu $a1, $a1, %lo(mnTrainingMain)
   /* 14732C 80137D4C 02003825 */        or $a3, $s0, $zero
   /* 147330 80137D50 24040400 */     addiu $a0, $zero, 0x400
-  /* 147334 80137D54 0C00265A */       jal omMakeGObjCommon
+  /* 147334 80137D54 0C00265A */       jal omMakeGObjSPAfter
   /* 147338 80137D58 2406000F */     addiu $a2, $zero, 0xf
   /* 14733C 80137D5C 24040010 */     addiu $a0, $zero, 0x10
   /* 147340 80137D60 02002825 */        or $a1, $s0, $zero

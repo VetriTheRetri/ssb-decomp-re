@@ -43,7 +43,7 @@ glabel func_ovl54_80131B58
   /* 177504 80131B64 00002025 */        or $a0, $zero, $zero
   /* 177508 80131B68 00002825 */        or $a1, $zero, $zero
   /* 17750C 80131B6C 24060011 */     addiu $a2, $zero, 0x11
-  /* 177510 80131B70 0C00265A */       jal omMakeGObjCommon
+  /* 177510 80131B70 0C00265A */       jal omMakeGObjSPAfter
   /* 177514 80131B74 3C078000 */       lui $a3, 0x8000
   /* 177518 80131B78 3C0E8013 */       lui $t6, %hi(sMVEndingFiles)
   /* 17751C 80131B7C 8DCE2F70 */        lw $t6, %lo(sMVEndingFiles)($t6)
@@ -93,7 +93,7 @@ glabel func_ovl54_80131C1C
   /* 1775C4 80131C24 00002025 */        or $a0, $zero, $zero
   /* 1775C8 80131C28 00002825 */        or $a1, $zero, $zero
   /* 1775CC 80131C2C 24060011 */     addiu $a2, $zero, 0x11
-  /* 1775D0 80131C30 0C00265A */       jal omMakeGObjCommon
+  /* 1775D0 80131C30 0C00265A */       jal omMakeGObjSPAfter
   /* 1775D4 80131C34 3C078000 */       lui $a3, 0x8000
   /* 1775D8 80131C38 3C0E8013 */       lui $t6, %hi(sMVEndingFiles)
   /* 1775DC 80131C3C 8DCE2F70 */        lw $t6, %lo(sMVEndingFiles)($t6)
@@ -125,7 +125,7 @@ glabel func_ovl54_80131C94
   /* 17763C 80131C9C 00002025 */        or $a0, $zero, $zero
   /* 177640 80131CA0 00002825 */        or $a1, $zero, $zero
   /* 177644 80131CA4 24060011 */     addiu $a2, $zero, 0x11
-  /* 177648 80131CA8 0C00265A */       jal omMakeGObjCommon
+  /* 177648 80131CA8 0C00265A */       jal omMakeGObjSPAfter
   /* 17764C 80131CAC 3C078000 */       lui $a3, 0x8000
   /* 177650 80131CB0 3C0E8013 */       lui $t6, %hi(sMVEndingFiles)
   /* 177654 80131CB4 8DCE2F70 */        lw $t6, %lo(sMVEndingFiles)($t6)
@@ -167,7 +167,7 @@ glabel func_ovl54_80131D34
   /* 1776DC 80131D3C 00002025 */        or $a0, $zero, $zero
   /* 1776E0 80131D40 00002825 */        or $a1, $zero, $zero
   /* 1776E4 80131D44 24060011 */     addiu $a2, $zero, 0x11
-  /* 1776E8 80131D48 0C00265A */       jal omMakeGObjCommon
+  /* 1776E8 80131D48 0C00265A */       jal omMakeGObjSPAfter
   /* 1776EC 80131D4C 3C078000 */       lui $a3, 0x8000
   /* 1776F0 80131D50 3C0E8013 */       lui $t6, %hi(sMVEndingFiles)
   /* 1776F4 80131D54 8DCE2F70 */        lw $t6, %lo(sMVEndingFiles)($t6)
@@ -209,7 +209,7 @@ glabel func_ovl54_80131DD4
   /* 17777C 80131DDC 00002025 */        or $a0, $zero, $zero
   /* 177780 80131DE0 00002825 */        or $a1, $zero, $zero
   /* 177784 80131DE4 24060011 */     addiu $a2, $zero, 0x11
-  /* 177788 80131DE8 0C00265A */       jal omMakeGObjCommon
+  /* 177788 80131DE8 0C00265A */       jal omMakeGObjSPAfter
   /* 17778C 80131DEC 3C078000 */       lui $a3, 0x8000
   /* 177790 80131DF0 3C0E8013 */       lui $t6, %hi(sMVEndingFiles)
   /* 177794 80131DF4 8DCE2F70 */        lw $t6, %lo(sMVEndingFiles)($t6)
@@ -251,7 +251,7 @@ glabel func_ovl54_80131E74
   /* 17781C 80131E7C 00002025 */        or $a0, $zero, $zero
   /* 177820 80131E80 00002825 */        or $a1, $zero, $zero
   /* 177824 80131E84 24060011 */     addiu $a2, $zero, 0x11
-  /* 177828 80131E88 0C00265A */       jal omMakeGObjCommon
+  /* 177828 80131E88 0C00265A */       jal omMakeGObjSPAfter
   /* 17782C 80131E8C 3C078000 */       lui $a3, 0x8000
   /* 177830 80131E90 3C0E8013 */       lui $t6, %hi(sMVEndingFiles)
   /* 177834 80131E94 8DCE2F70 */        lw $t6, %lo(sMVEndingFiles)($t6)
@@ -444,7 +444,7 @@ glabel mvEndingMakeRoomFadeIn
   /* 177AF8 80132158 00002025 */        or $a0, $zero, $zero
   /* 177AFC 8013215C 00002825 */        or $a1, $zero, $zero
   /* 177B00 80132160 24060012 */     addiu $a2, $zero, 0x12
-  /* 177B04 80132164 0C00265A */       jal omMakeGObjCommon
+  /* 177B04 80132164 0C00265A */       jal omMakeGObjSPAfter
   /* 177B08 80132168 3C078000 */       lui $a3, 0x8000
   /* 177B0C 8013216C 3C018013 */       lui $at, %hi(sMVEndingRoomFadeInGObj)
   /* 177B10 80132170 3C058013 */       lui $a1, %hi(mvEndingRoomFadeInProcRender)
@@ -645,7 +645,7 @@ glabel mvEndingMakeRoomLight
   /* 177DF0 80132450 00002825 */        or $a1, $zero, $zero
   /* 177DF4 80132454 24060015 */     addiu $a2, $zero, 0x15
   /* 177DF8 80132458 3C078000 */       lui $a3, 0x8000
-  /* 177DFC 8013245C 0C00265A */       jal omMakeGObjCommon
+  /* 177DFC 8013245C 0C00265A */       jal omMakeGObjSPAfter
   /* 177E00 80132460 E4242BFC */      swc1 $f4, %lo(sMVEndingRoomLightAlpha)($at)
   /* 177E04 80132464 3C018013 */       lui $at, %hi(sMVEndingRoomLightGObj)
   /* 177E08 80132468 3C058013 */       lui $a1, %hi(mvEndingRoomLightProcRender)
@@ -708,19 +708,19 @@ glabel func_ovl54_8013253C
   /* 177EDC 8013253C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 177EE0 80132540 AFBF0014 */        sw $ra, 0x14($sp)
   /* 177EE4 80132544 3C048013 */       lui $a0, %hi(D_ovl54_80132BE0)
-  /* 177EE8 80132548 0C0026A1 */       jal omEjectGObjCommon
+  /* 177EE8 80132548 0C0026A1 */       jal omEjectGObj
   /* 177EEC 8013254C 8C842BE0 */        lw $a0, %lo(D_ovl54_80132BE0)($a0)
   /* 177EF0 80132550 3C048013 */       lui $a0, %hi(D_ovl54_80132BE8)
-  /* 177EF4 80132554 0C0026A1 */       jal omEjectGObjCommon
+  /* 177EF4 80132554 0C0026A1 */       jal omEjectGObj
   /* 177EF8 80132558 8C842BE8 */        lw $a0, %lo(D_ovl54_80132BE8)($a0)
   /* 177EFC 8013255C 3C048013 */       lui $a0, %hi(D_ovl54_80132BEC)
-  /* 177F00 80132560 0C0026A1 */       jal omEjectGObjCommon
+  /* 177F00 80132560 0C0026A1 */       jal omEjectGObj
   /* 177F04 80132564 8C842BEC */        lw $a0, %lo(D_ovl54_80132BEC)($a0)
   /* 177F08 80132568 3C048013 */       lui $a0, %hi(D_ovl54_80132BF0)
-  /* 177F0C 8013256C 0C0026A1 */       jal omEjectGObjCommon
+  /* 177F0C 8013256C 0C0026A1 */       jal omEjectGObj
   /* 177F10 80132570 8C842BF0 */        lw $a0, %lo(D_ovl54_80132BF0)($a0)
   /* 177F14 80132574 3C048013 */       lui $a0, %hi(D_ovl54_80132BF4)
-  /* 177F18 80132578 0C0026A1 */       jal omEjectGObjCommon
+  /* 177F18 80132578 0C0026A1 */       jal omEjectGObj
   /* 177F1C 8013257C 8C842BF4 */        lw $a0, %lo(D_ovl54_80132BF4)($a0)
   /* 177F20 80132580 8FBF0014 */        lw $ra, 0x14($sp)
   /* 177F24 80132584 27BD0018 */     addiu $sp, $sp, 0x18
@@ -926,7 +926,7 @@ glabel mvEndingActorProcUpdate
   /* 178218 80132878 0C035E3A */       jal func_ovl2_800D78E8
   /* 17821C 8013287C 8C842BDC */        lw $a0, %lo(sMVEndingFighterGObj)($a0)
   /* 178220 80132880 3C048013 */       lui $a0, %hi(sMVEndingRoomLightGObj)
-  /* 178224 80132884 0C0026A1 */       jal omEjectGObjCommon
+  /* 178224 80132884 0C0026A1 */       jal omEjectGObj
   /* 178228 80132888 8C842C04 */        lw $a0, %lo(sMVEndingRoomLightGObj)($a0)
   /* 17822C 8013288C 0C009A70 */       jal func_800269C0
   /* 178230 80132890 24040014 */     addiu $a0, $zero, 0x14
@@ -989,7 +989,7 @@ glabel mvEndingInitAll
   /* 178304 80132964 24A527C8 */     addiu $a1, $a1, %lo(mvEndingActorProcUpdate)
   /* 178308 80132968 00002025 */        or $a0, $zero, $zero
   /* 17830C 8013296C 00003025 */        or $a2, $zero, $zero
-  /* 178310 80132970 0C00265A */       jal omMakeGObjCommon
+  /* 178310 80132970 0C00265A */       jal omMakeGObjSPAfter
   /* 178314 80132974 3C078000 */       lui $a3, 0x8000
   /* 178318 80132978 240AFFFF */     addiu $t2, $zero, -1
   /* 17831C 8013297C AFAA0010 */        sw $t2, 0x10($sp)

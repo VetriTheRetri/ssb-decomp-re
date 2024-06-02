@@ -3,7 +3,7 @@ glabel func_ovl0_800CD050
   /* 048A30 800CD050 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 048A34 800CD054 AFBF0024 */        sw $ra, 0x24($sp)
   /* 048A38 800CD058 AFB00020 */        sw $s0, 0x20($sp)
-  /* 048A3C 800CD05C 0C00265A */       jal omMakeGObjCommon
+  /* 048A3C 800CD05C 0C00265A */       jal omMakeGObjSPAfter
   /* 048A40 800CD060 30C600FF */      andi $a2, $a2, 0xff
   /* 048A44 800CD064 14400003 */      bnez $v0, .L800CD074
   /* 048A48 800CD068 00408025 */        or $s0, $v0, $zero

@@ -1137,7 +1137,7 @@ void gsGTLSceneInit(gsGTLSetupDesc *gtl_desc)
     omsetup.num_ommtxes = gtl_desc->num_ommtxes;
 
     func_80010734(gtl_desc->unk60);
-    omsetup.proc_cleanup = gtl_desc->proc_cleanup;
+    omsetup.proc_eject = gtl_desc->proc_eject;
 
     omsetup.aobjs    = gsMemoryAlloc(sizeof(AObj) * gtl_desc->num_aobjs, 0x4);
     omsetup.numAObjs = gtl_desc->num_aobjs;

@@ -150,7 +150,7 @@ glabel func_ovl25_80131D00
   /* 12F168 80131D08 00002025 */        or $a0, $zero, $zero
   /* 12F16C 80131D0C 00002825 */        or $a1, $zero, $zero
   /* 12F170 80131D10 24060002 */     addiu $a2, $zero, 2
-  /* 12F174 80131D14 0C00265A */       jal omMakeGObjCommon
+  /* 12F174 80131D14 0C00265A */       jal omMakeGObjSPAfter
   /* 12F178 80131D18 3C078000 */       lui $a3, 0x8000
   /* 12F17C 80131D1C 3C058013 */       lui $a1, %hi(func_ovl25_80131B24)
   /* 12F180 80131D20 240EFFFF */     addiu $t6, $zero, -1
@@ -171,7 +171,7 @@ glabel func_ovl25_80131D4C
   /* 12F1B4 80131D54 00002025 */        or $a0, $zero, $zero
   /* 12F1B8 80131D58 00002825 */        or $a1, $zero, $zero
   /* 12F1BC 80131D5C 24060003 */     addiu $a2, $zero, 3
-  /* 12F1C0 80131D60 0C00265A */       jal omMakeGObjCommon
+  /* 12F1C0 80131D60 0C00265A */       jal omMakeGObjSPAfter
   /* 12F1C4 80131D64 3C078000 */       lui $a3, 0x8000
   /* 12F1C8 80131D68 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 12F1CC 80131D6C 240EFFFF */     addiu $t6, $zero, -1
@@ -205,7 +205,7 @@ glabel func_ovl25_80131DCC
   /* 12F234 80131DD4 00002025 */        or $a0, $zero, $zero
   /* 12F238 80131DD8 00002825 */        or $a1, $zero, $zero
   /* 12F23C 80131DDC 24060003 */     addiu $a2, $zero, 3
-  /* 12F240 80131DE0 0C00265A */       jal omMakeGObjCommon
+  /* 12F240 80131DE0 0C00265A */       jal omMakeGObjSPAfter
   /* 12F244 80131DE4 3C078000 */       lui $a3, 0x8000
   /* 12F248 80131DE8 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 12F24C 80131DEC 240EFFFF */     addiu $t6, $zero, -1
@@ -850,7 +850,7 @@ glabel func_ovl25_8013209C
   /* 12FBC0 80132760 24A5209C */     addiu $a1, $a1, %lo(func_ovl25_8013209C)
   /* 12FBC4 80132764 00002025 */        or $a0, $zero, $zero
   /* 12FBC8 80132768 00003025 */        or $a2, $zero, $zero
-  /* 12FBCC 8013276C 0C00265A */       jal omMakeGObjCommon
+  /* 12FBCC 8013276C 0C00265A */       jal omMakeGObjSPAfter
   /* 12FBD0 80132770 3C078000 */       lui $a3, 0x8000
   /* 12FBD4 80132774 240A00FF */     addiu $t2, $zero, 0xff
   /* 12FBD8 80132778 AFAA0010 */        sw $t2, 0x10($sp)

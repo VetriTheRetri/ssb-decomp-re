@@ -13,7 +13,7 @@ ftStruct *gMainFighterStructCurrent;
 ftStruct *gFighterStructCurrent;
 ftParts *gMainFighterPartsCurrent;
 ftParts *gFighterPartsCurrent;
-void *D_ovl2_80130D98;
+void *gFTCommonFile;
 
 u32 gFTAnimHeapSize;
 u32 gBattlePlayerCount;
@@ -163,7 +163,7 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
     gEntityMotionCount = 1;
     gEntityStatUpdateCount = 1;
 
-    D_ovl2_80130D98 = rdManagerGetFileWithExternHeap((u32)&D_NF_000000A3, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000A3), 0x10));
+    gFTCommonFile = rdManagerGetFileWithExternHeap((u32)&D_NF_000000A3, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000A3), 0x10));
 
     rdManagerGetFileWithExternHeap((u32)&D_NF_000000C9, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000C9), 0x10));
 
@@ -389,13 +389,13 @@ void func_ovl2_800D78E8(GObj *fighter_gobj)
 
             if (ft_parts->unk_gobj != NULL)
             {
-                omEjectGObjCommon(ft_parts->unk_gobj);
+                omEjectGObj(ft_parts->unk_gobj);
             }
             ftManager_SetFighterPartsPrevAlloc(ft_parts);
         }
     }
     ftManager_SetPrevAlloc(fp);
-    omEjectGObjCommon(fighter_gobj);
+    omEjectGObj(fighter_gobj);
 }
 
 // 0x800D7994
@@ -664,7 +664,7 @@ GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
     DObj *topn_joint;
     ftMesh *ftmesh;
 
-    fighter_gobj = omMakeGObjCommon(GObj_Kind_Fighter, NULL, GObj_LinkID_Fighter, 0x80000000);
+    fighter_gobj = omMakeGObjSPAfter(GObj_Kind_Fighter, NULL, GObj_LinkID_Fighter, 0x80000000);
 
     omAddGObjRenderProc(fighter_gobj, spawn->proc_render, 9, 0x80000000, -1);
 
@@ -766,7 +766,7 @@ GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
                 {
                     ftmesh = attributes->mesh;
 
-                    ftparts->unk_gobj = omMakeGObjCommon(GObj_Kind_FighterParts, NULL, 0xD, 0x80000000);
+                    ftparts->unk_gobj = omMakeGObjSPAfter(GObj_Kind_FighterParts, NULL, 0xD, 0x80000000);
 
                     omAddDObjForGObj(ftparts->unk_gobj, ftmesh->dl);
                     func_ovl0_800C8CB8(ftparts->unk_gobj->obj, ftmesh->unk_ftdobj_0x8, ftmesh->unk_ftdobj_0xC, 0, fp->costume);

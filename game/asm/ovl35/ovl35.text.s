@@ -79,7 +79,7 @@ glabel mvPortraitsCreatePortraitsSet1
   /* 165904 80131BF4 00002825 */        or $a1, $zero, $zero
   /* 165908 80131BF8 24060011 */     addiu $a2, $zero, 0x11
   /* 16590C 80131BFC AD0B0018 */        sw $t3, 0x18($t0)
-  /* 165910 80131C00 0C00265A */       jal omMakeGObjCommon
+  /* 165910 80131C00 0C00265A */       jal omMakeGObjSPAfter
   /* 165914 80131C04 AD0A001C */        sw $t2, 0x1c($t0)
   /* 165918 80131C08 3C018013 */       lui $at, %hi(gIntroPortraitsPortraitGObj)
   /* 16591C 80131C0C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -167,7 +167,7 @@ glabel mvPortraitsCreatePortraitsSet2
   /* 165A58 80131D48 00002825 */        or $a1, $zero, $zero
   /* 165A5C 80131D4C 24060011 */     addiu $a2, $zero, 0x11
   /* 165A60 80131D50 AD0B0018 */        sw $t3, 0x18($t0)
-  /* 165A64 80131D54 0C00265A */       jal omMakeGObjCommon
+  /* 165A64 80131D54 0C00265A */       jal omMakeGObjSPAfter
   /* 165A68 80131D58 AD0A001C */        sw $t2, 0x1c($t0)
   /* 165A6C 80131D5C 3C018013 */       lui $at, %hi(gIntroPortraitsPortraitGObj)
   /* 165A70 80131D60 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -649,7 +649,7 @@ glabel mvPortraitsCreatePortraitOverlay
   /* 16612C 8013241C 00002025 */        or $a0, $zero, $zero
   /* 166130 80132420 00002825 */        or $a1, $zero, $zero
   /* 166134 80132424 24060012 */     addiu $a2, $zero, 0x12
-  /* 166138 80132428 0C00265A */       jal omMakeGObjCommon
+  /* 166138 80132428 0C00265A */       jal omMakeGObjSPAfter
   /* 16613C 8013242C 3C078000 */       lui $a3, 0x8000
   /* 166140 80132430 3C058013 */       lui $a1, %hi(mvPortraitsRenderPortraitOverlay)
   /* 166144 80132434 240EFFFF */     addiu $t6, $zero, -1
@@ -829,7 +829,7 @@ glabel mvPortraitsMain
   /* 1663D0 801326C0 3C048013 */       lui $a0, %hi(gIntroPortraitsPortraitGObj)
   /* 1663D4 801326C4 54410008 */      bnel $v0, $at, .L801326E8
   /* 1663D8 801326C8 24010096 */     addiu $at, $zero, 0x96
-  /* 1663DC 801326CC 0C0026A1 */       jal omEjectGObjCommon
+  /* 1663DC 801326CC 0C0026A1 */       jal omEjectGObj
   /* 1663E0 801326D0 8C8429F0 */        lw $a0, %lo(gIntroPortraitsPortraitGObj)($a0)
   /* 1663E4 801326D4 0C04C72B */       jal mvPortraitsCreatePortraitsSet2
   /* 1663E8 801326D8 00000000 */       nop
@@ -892,7 +892,7 @@ glabel mvPortraitsInit
   /* 1664BC 801327AC 24A52624 */     addiu $a1, $a1, %lo(mvPortraitsMain)
   /* 1664C0 801327B0 00002025 */        or $a0, $zero, $zero
   /* 1664C4 801327B4 00003025 */        or $a2, $zero, $zero
-  /* 1664C8 801327B8 0C00265A */       jal omMakeGObjCommon
+  /* 1664C8 801327B8 0C00265A */       jal omMakeGObjSPAfter
   /* 1664CC 801327BC 3C078000 */       lui $a3, 0x8000
   /* 1664D0 801327C0 240A00FF */     addiu $t2, $zero, 0xff
   /* 1664D4 801327C4 AFAA0010 */        sw $t2, 0x10($sp)

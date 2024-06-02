@@ -475,14 +475,14 @@ void unref_800A2BA8(s32 link, u32 arg1, s32 arg2) {
 
     com = find_gobj_with_id(0xFFFFFFFE);
     if (com != NULL) {
-        omEjectGObjCommon(com);
+        omEjectGObj(com);
     } else {
         func_80022368(link, arg1, arg2);
     }
 
     com = find_gobj_with_id(0xEFFFFFFF);
     if (com != NULL) {
-        omEjectGObjCommon(com);
+        omEjectGObj(com);
     } else {
         func_800A2B18(link, arg1, arg2);
     }

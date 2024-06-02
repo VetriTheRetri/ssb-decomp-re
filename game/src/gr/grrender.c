@@ -177,7 +177,7 @@ GObj* func_ovl2_8010547C(grCreateDesc *gr_desc, s32 index, void *arg2)
     {
         return NULL;
     }
-    ground_gobj = omMakeGObjCommon(GObj_Kind_GrRender, NULL, 2, 0x80000000);
+    ground_gobj = omMakeGObjSPAfter(GObj_Kind_GrRender, NULL, 2, 0x80000000);
 
     if (gGroundInfo->unk_0x44 & (1 << index))
     {

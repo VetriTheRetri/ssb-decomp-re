@@ -1056,7 +1056,7 @@ void grCommon_Sector_InitGroundVars(void)
 
     gGroundStruct.sector.map_file = map_file;
 
-    map_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
+    map_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     gGroundStruct.sector.map_gobj = map_gobj;
 
@@ -1083,7 +1083,7 @@ void grCommon_Sector_InitGroundVars(void)
 // 0x80107FCC
 GObj* grCommon_Sector_MakeGround(void)
 {
-    GObj *map_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
+    GObj *map_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     grCommon_Sector_InitGroundVars();
     omAddGObjCommonProc(map_gobj, func_ovl2_80107E08, 1, 4);

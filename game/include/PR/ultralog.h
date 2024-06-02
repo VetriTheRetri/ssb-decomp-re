@@ -53,7 +53,7 @@ typedef struct {
     u32 timeStamp;
     u16 argCount;
     u16 eventID;
-} OSLogITem;
+} OSLogIT;
 
 typedef struct {
     u32 magic;          /* log identifier */

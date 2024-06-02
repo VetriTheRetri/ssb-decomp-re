@@ -36,7 +36,7 @@ efParticle* efParticle_Twister_MakeEffect(Vec3f *pos, s32 effect_id)
         {
             return NULL;
         }
-        eftrans->translate.vec.f = *pos;
+        eftrans->translate = *pos;
     }
     return efpart;
 }
@@ -56,7 +56,7 @@ GObj* grHyrule_Twister_MakeGround(Vec3f *pos)
     {
         return NULL;
     }
-    twister_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U);
+    twister_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000U);
 
     if (twister_gobj != NULL)
     {
@@ -72,7 +72,7 @@ GObj* grHyrule_Twister_MakeGround(Vec3f *pos)
         {
             gGroundStruct.hyrule.twister_eftrans = NULL;
 
-            omEjectGObjCommon(twister_gobj);
+            omEjectGObj(twister_gobj);
 
             return NULL;
         }
@@ -272,7 +272,7 @@ void grHyrule_Twister_UpdateMove(void)
 
         pos->y += ground_level;
 
-        gGroundStruct.hyrule.twister_eftrans->translate.vec.f = *pos;
+        gGroundStruct.hyrule.twister_eftrans->translate = *pos;
     }
 }
 
@@ -316,7 +316,7 @@ void grHyrule_Twister_UpdateStop(void)
     {
         efParticle_Twister_MakeEffect(&gGroundStruct.hyrule.twister_eftrans->translate.vec.f, 7);
     }
-    omEjectGObjCommon(gGroundStruct.hyrule.twister_gobj);
+    omEjectGObj(gGroundStruct.hyrule.twister_gobj);
 }
 
 // 0x8010A8B4
@@ -409,7 +409,7 @@ void grHyrule_Twister_InitGroundVars(void)
 // 0x8010AB20
 GObj* grCommon_Hyrule_MakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
+    GObj *ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     omAddGObjCommonProc(ground_gobj, grHyrule_Twister_ProcUpdate, 1, 4);
     grHyrule_Twister_InitGroundVars();

@@ -955,13 +955,13 @@ void func_ovl2_800E9248(GObj *fighter_gobj, s32 costume, s32 shade)
 
                 if (unk_dobj->unk_gobj != NULL)
                 {
-                    omEjectGObjCommon(unk_dobj->unk_gobj);
+                    omEjectGObj(unk_dobj->unk_gobj);
 
                     unk_dobj->unk_gobj = NULL;
                 }
                 if (costume != 0)
                 {
-                    unk_gobj = omMakeGObjCommon(0x3E9U, NULL, 0xDU, 0x80000000U);
+                    unk_gobj = omMakeGObjSPAfter(0x3E9U, NULL, 0xDU, 0x80000000U);
                     unk_dobj->unk_gobj = unk_gobj;
 
                     omAddDObjForGObj(unk_gobj, unk_ftdobj->dl);
@@ -1333,7 +1333,7 @@ void efDestroyGFX(GObj *effect_gobj, efStruct *ep)
         func_ovl0_800D39D4(einfo->unk_effect_0xB8, ep->unk_effectstruct_0x8 >> 3);
     }
     efManager_SetPrevAlloc(ep);
-    omEjectGObjCommon(effect_gobj);
+    omEjectGObj(effect_gobj);
 }
 
 // 0x800E9C3C
@@ -1977,12 +1977,12 @@ void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index,
         p_effect = efParticle_DamageSpawnOrbs_MakeEffect(&pos);
         break;
 
-    case Ef_Kind_ImpactSW:
+    case Ef_Kind_ImpactWave:
         if ((fp->ground_or_air == GA_Ground) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2))
         {
-            p_effect = efParticle_ImpactSW_MakeEffect(&pos, 4, atan2f(-fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y));
+            p_effect = efParticle_ImpactWave_MakeEffect(&pos, 4, atan2f(-fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y));
         }
-        else p_effect = efParticle_ImpactAirSW_MakeEffect(&pos, 4);
+        else p_effect = efParticle_ImpactAirWave_MakeEffect(&pos, 4);
         break;
 
     case Ef_Kind_StarRodSpark:

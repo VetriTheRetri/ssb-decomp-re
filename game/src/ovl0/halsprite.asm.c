@@ -359,7 +359,7 @@ struct GObjCommon *func_ovl0_800CE418(s32 arg0) {
     D_ovl0_800D644E = 0;
     if (find_gobj_with_id(-6)) { return NULL; }
 
-    return omMakeGObjCommon(-6, func_ovl0_800D0C74, 0, 0x80000000);
+    return omMakeGObjSPAfter(-6, func_ovl0_800D0C74, 0, 0x80000000);
 }
 
 // Formerly nonmatching
@@ -1820,7 +1820,7 @@ struct GObjCommon *func_ovl0_800D2758(s32 arg0) {
     D_ovl0_800D644A = 0;
     D_ovl0_800D6450 = 0;
 
-    return omMakeGObjCommon(-7, func_ovl0_800D2C4C, 0, 0x80000000);
+    return omMakeGObjSPAfter(-7, func_ovl0_800D2C4C, 0, 0x80000000);
 }
 #else
 #pragma GLOBAL_ASM("game/nonmatching/ovl0/halsprite/func_ovl0_800D2758.s")

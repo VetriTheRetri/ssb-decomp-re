@@ -334,7 +334,7 @@ void func_8000B7B4(void) {
         curr = gOMObjCommonLinks[i];
         while (curr != NULL) {
             next = curr->unk04;
-            omEjectGObjCommon(curr);
+            omEjectGObj(curr);
             curr = next;
         }
     }
@@ -357,7 +357,7 @@ struct GObjCommon *func_8000B824(
     struct GObjCommon *gobj;
     struct DObj *dobj;
 
-    gobj = omMakeGObjCommon(arg0, arg1, arg2, arg3);
+    gobj = omMakeGObjSPAfter(arg0, arg1, arg2, arg3);
 
     if (gobj == NULL) { return NULL; }
 
@@ -384,7 +384,7 @@ struct GObjCommon *func_8000B8BC(
     u32 argB) {
     struct GObjCommon *gobj;
 
-    gobj = omMakeGObjCommon(arg0, arg1, arg2, arg3);
+    gobj = omMakeGObjSPAfter(arg0, arg1, arg2, arg3);
     if (gobj == 0) { return NULL; }
     omAddGObjRenderProc(gobj, arg4, arg5, arg6, arg7);
     omAddSObjForGObj(gobj, arg8);
@@ -410,7 +410,7 @@ struct GObjCommon *func_8000B93C(
     struct GObjCommon *gobj;
     struct Camera *cam;
 
-    gobj = omMakeGObjCommon(id, arg1, link, arg3);
+    gobj = omMakeGObjSPAfter(id, arg1, link, arg3);
     if (gobj == NULL) { return NULL; }
     func_80009F74(gobj, arg4, arg5, arg7, arg8);
     cam = omAddCameraForGObj(gobj);

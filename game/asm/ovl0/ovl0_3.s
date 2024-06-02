@@ -50,7 +50,7 @@ glabel func_ovl0_800D4130
   /* 04FB20 800D4140 AFA60040 */        sw $a2, 0x40($sp)
   /* 04FB24 800D4144 320600FF */      andi $a2, $s0, 0xff
   /* 04FB28 800D4148 00002825 */        or $a1, $zero, $zero
-  /* 04FB2C 800D414C 0C00265A */       jal omMakeGObjCommon
+  /* 04FB2C 800D414C 0C00265A */       jal omMakeGObjSPAfter
   /* 04FB30 800D4150 3C078000 */       lui $a3, 0x8000
   /* 04FB34 800D4154 8FAE0048 */        lw $t6, 0x48($sp)
   /* 04FB38 800D4158 8FAF004C */        lw $t7, 0x4c($sp)
@@ -160,7 +160,7 @@ glabel func_ovl0_800D42C8
   /* 04FCC8 800D42E8 00000000 */       nop 
   /* 04FCCC 800D42EC 45020004 */     bc1fl .L800D4300
   /* 04FCD0 800D42F0 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 04FCD4 800D42F4 0C0026A1 */       jal omEjectGObjCommon
+  /* 04FCD4 800D42F4 0C0026A1 */       jal omEjectGObj
   /* 04FCD8 800D42F8 00000000 */       nop 
   /* 04FCDC 800D42FC 8FBF0014 */        lw $ra, 0x14($sp)
   .L800D4300:
@@ -187,7 +187,7 @@ glabel func_ovl0_800D430C
   /* 04FD28 800D4348 8FA4002C */        lw $a0, 0x2c($sp)
   /* 04FD2C 800D434C 00002825 */        or $a1, $zero, $zero
   /* 04FD30 800D4350 93A60033 */       lbu $a2, 0x33($sp)
-  /* 04FD34 800D4354 0C00265A */       jal omMakeGObjCommon
+  /* 04FD34 800D4354 0C00265A */       jal omMakeGObjSPAfter
   /* 04FD38 800D4358 3C078000 */       lui $a3, 0x8000
   /* 04FD3C 800D435C 8E18000C */        lw $t8, 0xc($s0)
   /* 04FD40 800D4360 2419FFFF */     addiu $t9, $zero, -1

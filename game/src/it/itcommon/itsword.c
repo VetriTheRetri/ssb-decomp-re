@@ -17,7 +17,7 @@ extern intptr_t lITSwordITemAttributes;     // 0x00000190
 itCreateDesc dITSwordITemDesc =
 {
     It_Kind_Sword,                          // Item Kind
-    &gITemFileData,                         // Pointer to item file data?
+    &gITFileData,                         // Pointer to item file data?
     &lITSwordITemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct

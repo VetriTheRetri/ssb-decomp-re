@@ -125,8 +125,8 @@ void efParticle_WhispyLeaves_MakeEffect(void)
             }
             else
             {
-                eftrans->translate.vec.f = grPupupu_WhispyLeaves_EffectPos[gGroundStruct.pupupu.lr_players].pos;
-                eftrans->rotate.vec.f.y = grPupupu_WhispyLeaves_EffectPos[gGroundStruct.pupupu.lr_players].rotate;
+                eftrans->translate = grPupupu_WhispyLeaves_EffectPos[gGroundStruct.pupupu.lr_players].pos;
+                eftrans->rotate.y = grPupupu_WhispyLeaves_EffectPos[gGroundStruct.pupupu.lr_players].rotate;
             }
         }
     }
@@ -391,9 +391,9 @@ void efParticle_WhispyDust_MakeEffect(void)
             }
             else
             {
-                eftrans->translate.vec.f = grPupupu_WhispyDust_EffectPos[gGroundStruct.pupupu.lr_players];
+                eftrans->translate = grPupupu_WhispyDust_EffectPos[gGroundStruct.pupupu.lr_players];
 
-                eftrans->rotate.vec.f.y = (gGroundStruct.pupupu.lr_players == 1) ? 0.0F : F_DEG_TO_RAD(180.0F);
+                eftrans->rotate.y = (gGroundStruct.pupupu.lr_players == 1) ? 0.0F : F_DEG_TO_RAD(180.0F);
             }
         }
     }
@@ -571,7 +571,7 @@ void grCommon_Pupupu_ProcUpdate(GObj *ground_gobj)
 // 0x801064C8
 GObj* grCommon_Pupupu_MakeMapGObj(intptr_t offset1, intptr_t offset2, void (*proc_render)(GObj*), u8 dl_link)
 {
-    GObj *ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
+    GObj *ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     omAddGObjRenderProc(ground_gobj, proc_render, dl_link, 0x80000000U, -1);
 
@@ -633,7 +633,7 @@ void grCommon_Pupupu_InitGroundVars(void)
 // 0x801066D4
 GObj* grCommon_Pupupu_MakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
+    GObj *ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     omAddGObjCommonProc(ground_gobj, grCommon_Pupupu_ProcUpdate, 1, 4);
     grCommon_Pupupu_InitGroundVars();

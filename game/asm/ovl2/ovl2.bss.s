@@ -43,7 +43,7 @@ glabel gEntityMotionCount
     .space 2
 glabel gEntityStatUpdateCount
     .space 2
-glabel D_ovl2_80130D98
+glabel gFTCommonFile
     .space 4
 glabel gFTAnimHeapSize
     .space 4
@@ -109,7 +109,7 @@ glabel D_ovl2_80130E98
     .space 4
 glabel gFTDataFoxExtra1
     .space 4
-glabel D_ovl2_80130EA0
+glabel gFTDataFoxExtra2
     .space 4
 glabel D_ovl2_80130EA4
     .space 4
@@ -161,7 +161,7 @@ glabel D_ovl2_80130F38
     .space 4
 glabel gFTDataSamusExtra1
     .space 4
-glabel D_ovl2_80130F40
+glabel gFTDataSamusExtra2
     .space 4
 glabel D_ovl2_80130F44
     .space 4
@@ -223,7 +223,7 @@ glabel gFTDataYoshiMain
     .space 4
 glabel D_ovl2_80130FF4
     .space 4
-glabel D_ovl2_80130FF8
+glabel gFTDataYoshiModel
     .space 4
 glabel D_ovl2_80130FFC
     .space 4
@@ -265,7 +265,7 @@ glabel gFTDataKirbyBattleMotion
     .space 4
 glabel D_ovl2_80131078
     .space 4
-glabel D_ovl2_8013107C
+glabel gFTDataKirbyExtra2
     .space 4
 glabel D_ovl2_80131080
     .space 16
@@ -285,7 +285,7 @@ glabel D_ovl2_801310B8
     .space 4
 glabel gFTDataPikachuExtra1
     .space 4
-glabel D_ovl2_801310C0
+glabel gFTDataPikachuExtra2
     .space 4
 glabel gFTDataPikachuExtra3
     .space 4
@@ -419,17 +419,17 @@ glabel gMusicIndexCurrent
     .space 4
 glabel gMusicIndexDefault
     .space 16
-glabel D_ovl2_801313B0
+glabel sEFTexturesFile1
     .space 4
-glabel D_ovl2_801313B4
+glabel sEFTexturesFile2
     .space 4
-glabel D_ovl2_801313B8
+glabel sEFTexturesFile3
     .space 4
-glabel gEffectAllocFree
+glabel sEFStructsAllocFree
     .space 4
-glabel gEffectStructsFree
+glabel sEFStructsNumFree
     .space 4
-glabel gEffectBankIndex
+glabel sEFBankIndex
     .space 12
 glabel D_ovl2_801313D0
     .space 8
@@ -599,7 +599,7 @@ glabel gPauseYawOrigin
     .space 4
 glabel gPausePitchOrigin
     .space 4
-glabel gITemArrowSprite
+glabel gITArrowSprite
     .space 4
 glabel gBattlePlacement
     .space 8

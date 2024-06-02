@@ -235,7 +235,7 @@ void grYamabukiMakeGate(void)
 {
     GObj *gate_gobj;
 
-    gGroundStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
+    gGroundStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     omAddGObjRenderProc(gate_gobj, odRenderDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
     func_8000F590(gate_gobj, (DObjDesc*) ((uintptr_t)gGroundStruct.yamabuki.map_head + (intptr_t)&D_NF_000008A0), NULL, OMMtx_Transform_TraRotRpyR, 0, 0);
@@ -268,7 +268,7 @@ void grYamabukiInitGroundVars(void)
 // 0x8010B2EC
 GObj* grYamabukiMakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, 0x80000000);
+    GObj *ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, 0x80000000);
 
     omAddGObjCommonProc(ground_gobj, grYamabukiGateProcUpdate, 1, 4);
     grYamabukiInitGroundVars();

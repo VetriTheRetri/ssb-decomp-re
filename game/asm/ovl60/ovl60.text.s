@@ -199,7 +199,7 @@ glabel mnOptionMakeSoundOptionSObjs
   /* 11F554 80131DA4 00002025 */        or $a0, $zero, $zero
   /* 11F558 80131DA8 00002825 */        or $a1, $zero, $zero
   /* 11F55C 80131DAC 24060004 */     addiu $a2, $zero, 4
-  /* 11F560 80131DB0 0C00265A */       jal omMakeGObjCommon
+  /* 11F560 80131DB0 0C00265A */       jal omMakeGObjSPAfter
   /* 11F564 80131DB4 3C078000 */       lui $a3, 0x8000
   /* 11F568 80131DB8 3C018013 */       lui $at, %hi(sMNOptionSoundOptionGObj)
   /* 11F56C 80131DBC 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -286,7 +286,7 @@ glabel mnOptionMakeSoundTextSObj
   /* 11F6A8 80131EF8 00002025 */        or $a0, $zero, $zero
   /* 11F6AC 80131EFC 00002825 */        or $a1, $zero, $zero
   /* 11F6B0 80131F00 24060004 */     addiu $a2, $zero, 4
-  /* 11F6B4 80131F04 0C00265A */       jal omMakeGObjCommon
+  /* 11F6B4 80131F04 0C00265A */       jal omMakeGObjSPAfter
   /* 11F6B8 80131F08 3C078000 */       lui $a3, 0x8000
   /* 11F6BC 80131F0C 3C018013 */       lui $at, %hi(sMNOptionSoundGObj)
   /* 11F6C0 80131F10 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -341,7 +341,7 @@ glabel mnOptionMakeScreenAdjustSObj
   /* 11F77C 80131FCC 00002025 */        or $a0, $zero, $zero
   /* 11F780 80131FD0 00002825 */        or $a1, $zero, $zero
   /* 11F784 80131FD4 24060004 */     addiu $a2, $zero, 4
-  /* 11F788 80131FD8 0C00265A */       jal omMakeGObjCommon
+  /* 11F788 80131FD8 0C00265A */       jal omMakeGObjSPAfter
   /* 11F78C 80131FDC 3C078000 */       lui $a3, 0x8000
   /* 11F790 80131FE0 3C018013 */       lui $at, %hi(sMNOptionScreenAdjustGObj)
   /* 11F794 80131FE4 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -397,7 +397,7 @@ glabel mnOptionMakeBackupClearSObj
   /* 11F854 801320A4 00002025 */        or $a0, $zero, $zero
   /* 11F858 801320A8 00002825 */        or $a1, $zero, $zero
   /* 11F85C 801320AC 24060004 */     addiu $a2, $zero, 4
-  /* 11F860 801320B0 0C00265A */       jal omMakeGObjCommon
+  /* 11F860 801320B0 0C00265A */       jal omMakeGObjSPAfter
   /* 11F864 801320B4 3C078000 */       lui $a3, 0x8000
   /* 11F868 801320B8 3C018013 */       lui $at, %hi(sMNOptionBackupClearGObj)
   /* 11F86C 801320BC 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -495,7 +495,7 @@ glabel mnOptionMakeMenuGObj
   /* 11F9D0 80132220 24060005 */     addiu $a2, $zero, 5
   /* 11F9D4 80132224 3C078000 */       lui $a3, 0x8000
   /* 11F9D8 80132228 AD0B0018 */        sw $t3, 0x18($t0)
-  /* 11F9DC 8013222C 0C00265A */       jal omMakeGObjCommon
+  /* 11F9DC 8013222C 0C00265A */       jal omMakeGObjSPAfter
   /* 11F9E0 80132230 AD0A001C */        sw $t2, 0x1c($t0)
   /* 11F9E4 80132234 8FBF0014 */        lw $ra, 0x14($sp)
   /* 11F9E8 80132238 3C018013 */       lui $at, %hi(sMNOptionMenuGObj)
@@ -592,7 +592,7 @@ glabel mnOptionMakeHeaderSObjs
   /* 11FB44 80132394 00002025 */        or $a0, $zero, $zero
   /* 11FB48 80132398 00002825 */        or $a1, $zero, $zero
   /* 11FB4C 8013239C 24060003 */     addiu $a2, $zero, 3
-  /* 11FB50 801323A0 0C00265A */       jal omMakeGObjCommon
+  /* 11FB50 801323A0 0C00265A */       jal omMakeGObjSPAfter
   /* 11FB54 801323A4 3C078000 */       lui $a3, 0x8000
   /* 11FB58 801323A8 3C058013 */       lui $a1, %hi(mnOptionHeaderProcRender)
   /* 11FB5C 801323AC 240EFFFF */     addiu $t6, $zero, -1
@@ -657,7 +657,7 @@ glabel mnOptionMakeDecalSObjs
   /* 11FC40 80132490 00002025 */        or $a0, $zero, $zero
   /* 11FC44 80132494 00002825 */        or $a1, $zero, $zero
   /* 11FC48 80132498 24060002 */     addiu $a2, $zero, 2
-  /* 11FC4C 8013249C 0C00265A */       jal omMakeGObjCommon
+  /* 11FC4C 8013249C 0C00265A */       jal omMakeGObjSPAfter
   /* 11FC50 801324A0 3C078000 */       lui $a3, 0x8000
   /* 11FC54 801324A4 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 11FC58 801324A8 240EFFFF */     addiu $t6, $zero, -1
@@ -842,7 +842,7 @@ glabel func_ovl60_8013275C
   /* 11FF18 80132768 AFBF0014 */        sw $ra, 0x14($sp)
   /* 11FF1C 8013276C 50800006 */      beql $a0, $zero, .L80132788
   /* 11FF20 80132770 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 11FF24 80132774 0C0026A1 */       jal omEjectGObjCommon
+  /* 11FF24 80132774 0C0026A1 */       jal omEjectGObj
   /* 11FF28 80132778 00000000 */       nop 
   /* 11FF2C 8013277C 3C018013 */       lui $at, %hi(D_ovl60_801337D4)
   /* 11FF30 80132780 AC2037D4 */        sw $zero, %lo(D_ovl60_801337D4)($at)
@@ -1016,7 +1016,7 @@ glabel mnOptionMakeSoundUnderlineGObj
   /* 1201AC 801329FC 00002025 */        or $a0, $zero, $zero
   /* 1201B0 80132A00 00002825 */        or $a1, $zero, $zero
   /* 1201B4 80132A04 24060005 */     addiu $a2, $zero, 5
-  /* 1201B8 80132A08 0C00265A */       jal omMakeGObjCommon
+  /* 1201B8 80132A08 0C00265A */       jal omMakeGObjSPAfter
   /* 1201BC 80132A0C 3C078000 */       lui $a3, 0x8000
   /* 1201C0 80132A10 3C058013 */       lui $a1, %hi(mnOptionSoundUnderlineProcRender)
   /* 1201C4 80132A14 240EFFFF */     addiu $t6, $zero, -1
@@ -1523,7 +1523,7 @@ glabel mnOptionMainProcUpdate
   /* 120908 80133158 0C04C6C9 */       jal mnOptionUpdateOptionTabSObjs
   /* 12090C 8013315C 8DA40000 */        lw $a0, ($t5)
   /* 120910 80133160 3C048013 */       lui $a0, %hi(sMNOptionMenuGObj)
-  /* 120914 80133164 0C0026A1 */       jal omEjectGObjCommon
+  /* 120914 80133164 0C0026A1 */       jal omEjectGObj
   /* 120918 80133168 8C8437D0 */        lw $a0, %lo(sMNOptionMenuGObj)($a0)
   /* 12091C 8013316C 0C04C86A */       jal mnOptionMakeMenuGObj
   /* 120920 80133170 00000000 */       nop 
@@ -1599,7 +1599,7 @@ glabel mnOptionMainProcUpdate
   /* 120A18 80133268 0C04C6C9 */       jal mnOptionUpdateOptionTabSObjs
   /* 120A1C 8013326C 8F240000 */        lw $a0, ($t9)
   /* 120A20 80133270 3C048013 */       lui $a0, %hi(sMNOptionMenuGObj)
-  /* 120A24 80133274 0C0026A1 */       jal omEjectGObjCommon
+  /* 120A24 80133274 0C0026A1 */       jal omEjectGObj
   /* 120A28 80133278 8C8437D0 */        lw $a0, %lo(sMNOptionMenuGObj)($a0)
   /* 120A2C 8013327C 0C04C86A */       jal mnOptionMakeMenuGObj
   /* 120A30 80133280 00000000 */       nop 
@@ -1636,7 +1636,7 @@ glabel mnOptionMainProcUpdate
   /* 120AA4 801332F4 3C018013 */       lui $at, %hi(sMNOptionSoundIsMonoOrStereo)
   /* 120AA8 801332F8 3C048013 */       lui $a0, %hi(sMNOptionSoundOptionGObj)
   /* 120AAC 801332FC AC2D37BC */        sw $t5, %lo(sMNOptionSoundIsMonoOrStereo)($at)
-  /* 120AB0 80133300 0C0026A1 */       jal omEjectGObjCommon
+  /* 120AB0 80133300 0C0026A1 */       jal omEjectGObj
   /* 120AB4 80133304 8C8437C8 */        lw $a0, %lo(sMNOptionSoundOptionGObj)($a0)
   /* 120AB8 80133308 0C04C766 */       jal mnOptionMakeSoundOptionSObjs
   /* 120ABC 8013330C 00000000 */       nop 
@@ -1644,7 +1644,7 @@ glabel mnOptionMainProcUpdate
   /* 120AC4 80133314 3C018013 */       lui $at, %hi(sMNOptionOptionChangeWait)
   /* 120AC8 80133318 3C048013 */       lui $a0, %hi(sMNOptionMenuGObj)
   /* 120ACC 8013331C 8C8437D0 */        lw $a0, %lo(sMNOptionMenuGObj)($a0)
-  /* 120AD0 80133320 0C0026A1 */       jal omEjectGObjCommon
+  /* 120AD0 80133320 0C0026A1 */       jal omEjectGObj
   /* 120AD4 80133324 AC2F37E0 */        sw $t7, %lo(sMNOptionOptionChangeWait)($at)
   /* 120AD8 80133328 0C04C86A */       jal mnOptionMakeMenuGObj
   /* 120ADC 8013332C 00000000 */       nop 
@@ -1681,7 +1681,7 @@ glabel mnOptionMainProcUpdate
   /* 120B50 801333A0 3C018013 */       lui $at, %hi(sMNOptionSoundIsMonoOrStereo)
   /* 120B54 801333A4 3C048013 */       lui $a0, %hi(sMNOptionSoundOptionGObj)
   /* 120B58 801333A8 AC2037BC */        sw $zero, %lo(sMNOptionSoundIsMonoOrStereo)($at)
-  /* 120B5C 801333AC 0C0026A1 */       jal omEjectGObjCommon
+  /* 120B5C 801333AC 0C0026A1 */       jal omEjectGObj
   /* 120B60 801333B0 8C8437C8 */        lw $a0, %lo(sMNOptionSoundOptionGObj)($a0)
   /* 120B64 801333B4 0C04C766 */       jal mnOptionMakeSoundOptionSObjs
   /* 120B68 801333B8 00000000 */       nop 
@@ -1689,7 +1689,7 @@ glabel mnOptionMainProcUpdate
   /* 120B70 801333C0 3C018013 */       lui $at, %hi(sMNOptionOptionChangeWait)
   /* 120B74 801333C4 3C048013 */       lui $a0, %hi(sMNOptionMenuGObj)
   /* 120B78 801333C8 8C8437D0 */        lw $a0, %lo(sMNOptionMenuGObj)($a0)
-  /* 120B7C 801333CC 0C0026A1 */       jal omEjectGObjCommon
+  /* 120B7C 801333CC 0C0026A1 */       jal omEjectGObj
   /* 120B80 801333D0 AC2C37E0 */        sw $t4, %lo(sMNOptionOptionChangeWait)($at)
   /* 120B84 801333D4 0C04C86A */       jal mnOptionMakeMenuGObj
   /* 120B88 801333D8 00000000 */       nop 
@@ -1716,12 +1716,12 @@ glabel mnOptionMainProcUpdate
   /* 120BD4 80133424 3C018013 */       lui $at, %hi(sMNOptionSoundIsMonoOrStereo)
   /* 120BD8 80133428 AC2D37BC */        sw $t5, %lo(sMNOptionSoundIsMonoOrStereo)($at)
   .L8013342C:
-  /* 120BDC 8013342C 0C0026A1 */       jal omEjectGObjCommon
+  /* 120BDC 8013342C 0C0026A1 */       jal omEjectGObj
   /* 120BE0 80133430 8C8437C8 */        lw $a0, %lo(sMNOptionSoundOptionGObj)($a0)
   /* 120BE4 80133434 0C04C766 */       jal mnOptionMakeSoundOptionSObjs
   /* 120BE8 80133438 00000000 */       nop 
   /* 120BEC 8013343C 3C048013 */       lui $a0, %hi(sMNOptionMenuGObj)
-  /* 120BF0 80133440 0C0026A1 */       jal omEjectGObjCommon
+  /* 120BF0 80133440 0C0026A1 */       jal omEjectGObj
   /* 120BF4 80133444 8C8437D0 */        lw $a0, %lo(sMNOptionMenuGObj)($a0)
   /* 120BF8 80133448 0C04C86A */       jal mnOptionMakeMenuGObj
   /* 120BFC 8013344C 00000000 */       nop 
@@ -1772,7 +1772,7 @@ glabel mnOptionMainProcUpdate
   /* 120CA4 801334F4 24A52E4C */     addiu $a1, $a1, %lo(mnOptionMainProcUpdate)
   /* 120CA8 801334F8 00002025 */        or $a0, $zero, $zero
   /* 120CAC 801334FC 00003025 */        or $a2, $zero, $zero
-  /* 120CB0 80133500 0C00265A */       jal omMakeGObjCommon
+  /* 120CB0 80133500 0C00265A */       jal omMakeGObjSPAfter
   /* 120CB4 80133504 3C078000 */       lui $a3, 0x8000
   /* 120CB8 80133508 00002025 */        or $a0, $zero, $zero
   /* 120CBC 8013350C 3C058000 */       lui $a1, 0x8000

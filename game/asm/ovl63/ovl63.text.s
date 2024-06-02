@@ -464,7 +464,7 @@ glabel scExplainMakeControlStickInterface
   /* 18AD64 8018D754 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 18AD68 8018D758 00002825 */        or $a1, $zero, $zero
   /* 18AD6C 8018D75C 2406000B */     addiu $a2, $zero, 0xb
-  /* 18AD70 8018D760 0C00265A */       jal omMakeGObjCommon
+  /* 18AD70 8018D760 0C00265A */       jal omMakeGObjSPAfter
   /* 18AD74 8018D764 3C078000 */       lui $a3, 0x8000
   /* 18AD78 8018D768 3C058019 */       lui $a1, %hi(scExplainProcRenderControlStickSprite)
   /* 18AD7C 8018D76C 240EFFFF */     addiu $t6, $zero, -1
@@ -650,7 +650,7 @@ glabel scExplainMakeTapSpark
   /* 18B020 8018DA10 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 18B024 8018DA14 00002825 */        or $a1, $zero, $zero
   /* 18B028 8018DA18 2406000B */     addiu $a2, $zero, 0xb
-  /* 18B02C 8018DA1C 0C00265A */       jal omMakeGObjCommon
+  /* 18B02C 8018DA1C 0C00265A */       jal omMakeGObjSPAfter
   /* 18B030 8018DA20 3C078000 */       lui $a3, 0x8000
   /* 18B034 8018DA24 3C058019 */       lui $a1, %hi(scExplainProcRenderTapSpark)
   /* 18B038 8018DA28 240EFFFF */     addiu $t6, $zero, -1
@@ -736,7 +736,7 @@ glabel scExplainMakeSpecialMoveRGBOverlay
   /* 18B160 8018DB50 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 18B164 8018DB54 00002825 */        or $a1, $zero, $zero
   /* 18B168 8018DB58 2406000B */     addiu $a2, $zero, 0xb
-  /* 18B16C 8018DB5C 0C00265A */       jal omMakeGObjCommon
+  /* 18B16C 8018DB5C 0C00265A */       jal omMakeGObjSPAfter
   /* 18B170 8018DB60 3C078000 */       lui $a3, 0x8000
   /* 18B174 8018DB64 3C058019 */       lui $a1, %hi(scExplainProcRenderTapSpark)
   /* 18B178 8018DB68 240EFFFF */     addiu $t6, $zero, -1
@@ -790,7 +790,7 @@ glabel scExplainMakeSObjOffset
   /* 18B228 8018DC18 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 18B22C 8018DC1C 00002825 */        or $a1, $zero, $zero
   /* 18B230 8018DC20 2406000B */     addiu $a2, $zero, 0xb
-  /* 18B234 8018DC24 0C00265A */       jal omMakeGObjCommon
+  /* 18B234 8018DC24 0C00265A */       jal omMakeGObjSPAfter
   /* 18B238 8018DC28 3C078000 */       lui $a3, 0x8000
   /* 18B23C 8018DC2C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 18B240 8018DC30 240EFFFF */     addiu $t6, $zero, -1
@@ -1155,7 +1155,7 @@ glabel scExplainMakeSceneUpdateGObj
   /* 18B754 8018E144 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 18B758 8018E148 00002825 */        or $a1, $zero, $zero
   /* 18B75C 8018E14C 2406000B */     addiu $a2, $zero, 0xb
-  /* 18B760 8018E150 0C00265A */       jal omMakeGObjCommon
+  /* 18B760 8018E150 0C00265A */       jal omMakeGObjSPAfter
   /* 18B764 8018E154 3C078000 */       lui $a3, 0x8000
   /* 18B768 8018E158 3C058019 */       lui $a1, %hi(scExplainProcUpdateScene)
   /* 18B76C 8018E15C AFA2001C */        sw $v0, 0x1c($sp)

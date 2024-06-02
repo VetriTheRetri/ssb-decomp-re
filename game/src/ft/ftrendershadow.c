@@ -15,7 +15,7 @@ f32 func_ovl3_8013AE10(Vec3f *a, Vec3f *b, f32 f)
 extern intptr_t D_NF_00003A68;
 extern gsColorRGBA dFTShadowColorDefault;
 extern gsColorRGBA dFTShadowColorsTeam[3];
-extern void *D_ovl2_801313B4;
+extern void *sEFTexturesFile2;
 extern Gfx D_ovl3_80188410;
 extern Gfx D_ovl3_80188458;
 extern s32 gGtlTaskId;
@@ -64,7 +64,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
         gSPDisplayList(gDisplayListHead[0]++, &D_ovl3_80188410);
 
         // Linker thing here
-        gDPLoadTextureBlock_4b(gDisplayListHead[0]++, ((uintptr_t)D_ovl2_801313B4 + (intptr_t)&D_NF_00003A68), G_IM_FMT_I, 16, 16, 0, G_TX_MIRROR | G_TX_WRAP, G_TX_MIRROR | G_TX_WRAP, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
+        gDPLoadTextureBlock_4b(gDisplayListHead[0]++, ((uintptr_t)sEFTexturesFile2 + (intptr_t)&D_NF_00003A68), G_IM_FMT_I, 16, 16, 0, G_TX_MIRROR | G_TX_WRAP, G_TX_MIRROR | G_TX_WRAP, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
     }
     sp = (swStruct*)shadow_gobj->user_data.p;
 
@@ -409,7 +409,7 @@ void func_ovl3_8013AE60(GObj *shadow_gobj)
 // 0x8013BB88
 GObj* ftShadowMakeShadowForFighter(GObj *fighter_gobj)
 {
-    GObj *shadow_gobj = omMakeGObjCommon(0x3FC, 0, 0xD, 0x80000000);
+    GObj *shadow_gobj = omMakeGObjSPAfter(0x3FC, 0, 0xD, 0x80000000);
     ftStruct *fp;
     swStruct *sp = gsMemoryAlloc(sizeof(swStruct), 0x8);
     s32 i;

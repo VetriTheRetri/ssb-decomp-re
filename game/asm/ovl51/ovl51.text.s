@@ -440,7 +440,7 @@ glabel func_ovl51_8018D670
   /* 174F7C 8018D6FC 24A5D5E4 */     addiu $a1, $a1, %lo(func_ovl51_8018D5E4)
   /* 174F80 8018D700 240403F7 */     addiu $a0, $zero, 0x3f7
   /* 174F84 8018D704 2406000D */     addiu $a2, $zero, 0xd
-  /* 174F88 8018D708 0C00265A */       jal omMakeGObjCommon
+  /* 174F88 8018D708 0C00265A */       jal omMakeGObjSPAfter
   /* 174F8C 8018D70C 3C078000 */       lui $a3, 0x8000
   /* 174F90 8018D710 241800FF */     addiu $t8, $zero, 0xff
   /* 174F94 8018D714 AFB80010 */        sw $t8, 0x10($sp)

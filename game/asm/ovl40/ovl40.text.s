@@ -106,7 +106,7 @@ glabel mvOpeningLinkDrawName
   /* 16AD68 8018D218 00002825 */        or $a1, $zero, $zero
   /* 16AD6C 8018D21C 24060011 */     addiu $a2, $zero, 0x11
   /* 16AD70 8018D220 AD0B0008 */        sw $t3, 8($t0)
-  /* 16AD74 8018D224 0C00265A */       jal omMakeGObjCommon
+  /* 16AD74 8018D224 0C00265A */       jal omMakeGObjSPAfter
   /* 16AD78 8018D228 AD0A000C */        sw $t2, 0xc($t0)
   /* 16AD7C 8018D22C 3C018019 */       lui $at, %hi(gMvOpeningLinkNameGObj)
   /* 16AD80 8018D230 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -577,7 +577,7 @@ glabel mvOpeningLinkCreatePosedFighterBackground
   /* 16B47C 8018D92C 00002025 */        or $a0, $zero, $zero
   /* 16B480 8018D930 00002825 */        or $a1, $zero, $zero
   /* 16B484 8018D934 24060013 */     addiu $a2, $zero, 0x13
-  /* 16B488 8018D938 0C00265A */       jal omMakeGObjCommon
+  /* 16B488 8018D938 0C00265A */       jal omMakeGObjSPAfter
   /* 16B48C 8018D93C 3C078000 */       lui $a3, 0x8000
   /* 16B490 8018D940 3C058019 */       lui $a1, %hi(mvOpeningLinkRenderPosedFighterBackground)
   /* 16B494 8018D944 240EFFFF */     addiu $t6, $zero, -1
@@ -895,7 +895,7 @@ glabel mvOpeningLinkMainProc
   /* 16B924 8018DDD4 3C048019 */       lui $a0, %hi(gMvOpeningLinkNameGObj)
   /* 16B928 8018DDD8 5441000C */      bnel $v0, $at, .L8018DE0C
   /* 16B92C 8018DDDC 2401003C */     addiu $at, $zero, 0x3c
-  /* 16B930 8018DDE0 0C0026A1 */       jal omEjectGObjCommon
+  /* 16B930 8018DDE0 0C0026A1 */       jal omEjectGObj
   /* 16B934 8018DDE4 8C84E1CC */        lw $a0, %lo(gMvOpeningLinkNameGObj)($a0)
   /* 16B938 8018DDE8 0C06357D */       jal mvOpeningLinkInitFighterStagePanel
   /* 16B93C 8018DDEC 00000000 */       nop
@@ -963,7 +963,7 @@ glabel mvOpeningLinkInit
   /* 16BA18 8018DEC8 24A5DD80 */     addiu $a1, $a1, %lo(mvOpeningLinkMainProc)
   /* 16BA1C 8018DECC 240403F7 */     addiu $a0, $zero, 0x3f7
   /* 16BA20 8018DED0 2406000D */     addiu $a2, $zero, 0xd
-  /* 16BA24 8018DED4 0C00265A */       jal omMakeGObjCommon
+  /* 16BA24 8018DED4 0C00265A */       jal omMakeGObjSPAfter
   /* 16BA28 8018DED8 3C078000 */       lui $a3, 0x8000
   /* 16BA2C 8018DEDC 241900FF */     addiu $t9, $zero, 0xff
   /* 16BA30 8018DEE0 AFB90010 */        sw $t9, 0x10($sp)

@@ -88,7 +88,7 @@ void mvOpeningKirbyDrawName()
     Vec2f positions[5] = dMvOpeningKirbyNameCharPositions;
     s32 i;
 
-    gMvOpeningKirbyNameGObj = name_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    gMvOpeningKirbyNameGObj = name_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     omAddGObjRenderProc(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
 
     for (i = 0; offsets[i] != 0; i++)
@@ -234,7 +234,7 @@ void mvOpeningKirbyRenderPosedFighterBackground(GObj *gobj)
 // 0x8018D970
 void mvOpeningKirbyCreatePosedFighterBackground()
 {
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x13, 0x80000000), mvOpeningKirbyRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningKirbyRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
 // 0x8018D9BC
@@ -334,7 +334,7 @@ void mvOpeningKirbyMainProc(GObj* arg0)
 
     if (gMvOpeningKirbyFramesElapsed == 15)
     {
-        omEjectGObjCommon(gMvOpeningKirbyNameGObj);
+        omEjectGObj(gMvOpeningKirbyNameGObj);
         mvOpeningKirbyInitFighterStagePanel();
         mvOpeningKirbyCreatePosedFighterBackground();
         mvOpeningKirbyCreatePosedFighter();
@@ -369,7 +369,7 @@ void mvOpeningKirbyInit()
     gBattleState->player_block[0].player_kind = Pl_Kind_Key;
 
     mvOpeningKirbyLoadFiles();
-    omMakeGObjCommon(0x3F7, mvOpeningKirbyMainProc, 0xD, 0x80000000);
+    omMakeGObjSPAfter(0x3F7, mvOpeningKirbyMainProc, 0xD, 0x80000000);
     func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
     mvOpeningKirbyInitFramesElapsed();
     func_ovl2_80115890();

@@ -580,7 +580,7 @@ glabel func_ovl26_80132278
   /* 130540 801322C0 00002025 */        or $a0, $zero, $zero
   /* 130544 801322C4 00002825 */        or $a1, $zero, $zero
   /* 130548 801322C8 24060012 */     addiu $a2, $zero, 0x12
-  /* 13054C 801322CC 0C00265A */       jal omMakeGObjCommon
+  /* 13054C 801322CC 0C00265A */       jal omMakeGObjSPAfter
   /* 130550 801322D0 3C078000 */       lui $a3, 0x8000
   /* 130554 801322D4 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 130558 801322D8 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -647,7 +647,7 @@ glabel func_ovl26_80132278
   /* 13063C 801323BC 00002025 */        or $a0, $zero, $zero
   /* 130640 801323C0 00002825 */        or $a1, $zero, $zero
   /* 130644 801323C4 24060012 */     addiu $a2, $zero, 0x12
-  /* 130648 801323C8 0C00265A */       jal omMakeGObjCommon
+  /* 130648 801323C8 0C00265A */       jal omMakeGObjSPAfter
   /* 13064C 801323CC 3C078000 */       lui $a3, 0x8000
   /* 130650 801323D0 3C058013 */       lui $a1, %hi(mnBattleRenderPortraitWithNoise)
   /* 130654 801323D4 240EFFFF */     addiu $t6, $zero, -1
@@ -685,7 +685,7 @@ glabel func_ovl26_80132278
   /* 1306D4 80132454 00002025 */        or $a0, $zero, $zero
   /* 1306D8 80132458 00002825 */        or $a1, $zero, $zero
   /* 1306DC 8013245C 24060012 */     addiu $a2, $zero, 0x12
-  /* 1306E0 80132460 0C00265A */       jal omMakeGObjCommon
+  /* 1306E0 80132460 0C00265A */       jal omMakeGObjSPAfter
   /* 1306E4 80132464 3C078000 */       lui $a3, 0x8000
   /* 1306E8 80132468 2408FFFF */     addiu $t0, $zero, -1
   /* 1306EC 8013246C 00408025 */        or $s0, $v0, $zero
@@ -766,7 +766,7 @@ glabel mnBattleCreatePortrait
   .L8013258C:
   /* 13080C 8013258C 00002825 */        or $a1, $zero, $zero
   /* 130810 80132590 2406001D */     addiu $a2, $zero, 0x1d
-  /* 130814 80132594 0C00265A */       jal omMakeGObjCommon
+  /* 130814 80132594 0C00265A */       jal omMakeGObjSPAfter
   /* 130818 80132598 3C078000 */       lui $a3, 0x8000
   /* 13081C 8013259C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 130820 801325A0 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -799,7 +799,7 @@ glabel mnBattleCreatePortrait
   /* 13088C 8013260C 00002025 */        or $a0, $zero, $zero
   /* 130890 80132610 00002825 */        or $a1, $zero, $zero
   /* 130894 80132614 24060012 */     addiu $a2, $zero, 0x12
-  /* 130898 80132618 0C00265A */       jal omMakeGObjCommon
+  /* 130898 80132618 0C00265A */       jal omMakeGObjSPAfter
   /* 13089C 8013261C 3C078000 */       lui $a3, 0x8000
   /* 1308A0 80132620 240CFFFF */     addiu $t4, $zero, -1
   /* 1308A4 80132624 AFA2006C */        sw $v0, 0x6c($sp)
@@ -887,7 +887,7 @@ glabel func_ovl26_8013271C
   /* 1309D0 80132750 2406001B */     addiu $a2, $zero, 0x1b
   /* 1309D4 80132754 3C078000 */       lui $a3, 0x8000
   /* 1309D8 80132758 ADD80004 */        sw $t8, 4($t6)
-  /* 1309DC 8013275C 0C00265A */       jal omMakeGObjCommon
+  /* 1309DC 8013275C 0C00265A */       jal omMakeGObjSPAfter
   /* 1309E0 80132760 ADD90008 */        sw $t9, 8($t6)
   /* 1309E4 80132764 8FA8003C */        lw $t0, 0x3c($sp)
   /* 1309E8 80132768 3C018014 */       lui $at, %hi(D_ovl26_8013BAA4)
@@ -952,7 +952,7 @@ glabel func_ovl26_80132824
   /* 130ACC 8013284C AFBF0014 */        sw $ra, 0x14($sp)
   /* 130AD0 80132850 10A00005 */      beqz $a1, .L80132868
   /* 130AD4 80132854 00A02025 */        or $a0, $a1, $zero
-  /* 130AD8 80132858 0C0026A1 */       jal omEjectGObjCommon
+  /* 130AD8 80132858 0C0026A1 */       jal omEjectGObj
   /* 130ADC 8013285C AFA2001C */        sw $v0, 0x1c($sp)
   /* 130AE0 80132860 8FA2001C */        lw $v0, 0x1c($sp)
   /* 130AE4 80132864 AC40001C */        sw $zero, 0x1c($v0)
@@ -990,7 +990,7 @@ glabel func_ovl26_801328AC
   .L801328D0:
   /* 130B50 801328D0 50800005 */      beql $a0, $zero, .L801328E8
   /* 130B54 801328D4 261000BC */     addiu $s0, $s0, 0xbc
-  /* 130B58 801328D8 0C0026A1 */       jal omEjectGObjCommon
+  /* 130B58 801328D8 0C0026A1 */       jal omEjectGObj
   /* 130B5C 801328DC 00000000 */       nop
   /* 130B60 801328E0 AE00001C */        sw $zero, 0x1c($s0) # gMNBattlePanels + 28
   /* 130B64 801328E4 261000BC */     addiu $s0, $s0, 0xbc
@@ -1827,7 +1827,7 @@ glabel mnBattleCreateTypeImage
   /* 13178C 8013350C 24060016 */     addiu $a2, $zero, 0x16
   /* 131790 80133510 3C078000 */       lui $a3, 0x8000
   /* 131794 80133514 AD0B0008 */        sw $t3, 8($t0)
-  /* 131798 80133518 0C00265A */       jal omMakeGObjCommon
+  /* 131798 80133518 0C00265A */       jal omMakeGObjSPAfter
   /* 13179C 8013351C AD0A000C */        sw $t2, 0xc($t0)
   /* 1317A0 80133520 8FAC0050 */        lw $t4, 0x50($sp)
   /* 1317A4 80133524 3C0E8014 */       lui $t6, %hi(gMNBattlePanels)
@@ -2120,7 +2120,7 @@ glabel mnBattleCreatePanel
   /* 131C04 80133984 00002025 */        or $a0, $zero, $zero
   /* 131C08 80133988 00002825 */        or $a1, $zero, $zero
   /* 131C0C 8013398C 24060016 */     addiu $a2, $zero, 0x16
-  /* 131C10 80133990 0C00265A */       jal omMakeGObjCommon
+  /* 131C10 80133990 0C00265A */       jal omMakeGObjSPAfter
   /* 131C14 80133994 3C078000 */       lui $a3, 0x8000
   /* 131C18 80133998 240FFFFF */     addiu $t7, $zero, -1
   /* 131C1C 8013399C AE220010 */        sw $v0, 0x10($s1)
@@ -2570,7 +2570,7 @@ glabel mnBattleDrawTimerPicker
   /* 13223C 80133FBC AFBF0034 */        sw $ra, 0x34($sp)
   /* 132240 80133FC0 10800003 */      beqz $a0, .L80133FD0
   /* 132244 80133FC4 00000000 */       nop
-  /* 132248 80133FC8 0C0026A1 */       jal omEjectGObjCommon
+  /* 132248 80133FC8 0C0026A1 */       jal omEjectGObj
   /* 13224C 80133FCC 00000000 */       nop
   .L80133FD0:
   /* 132250 80133FD0 3C198014 */       lui $t9, %hi(D_ovl26_8013C4A0)
@@ -2702,7 +2702,7 @@ glabel func_ovl26_80134198
   /* 132428 801341A8 AFBF0034 */        sw $ra, 0x34($sp)
   /* 13242C 801341AC 10800003 */      beqz $a0, .L801341BC
   /* 132430 801341B0 00000000 */       nop
-  /* 132434 801341B4 0C0026A1 */       jal omEjectGObjCommon
+  /* 132434 801341B4 0C0026A1 */       jal omEjectGObj
   /* 132438 801341B8 00000000 */       nop
   .L801341BC:
   /* 13243C 801341BC 3C198014 */       lui $t9, %hi(D_ovl26_8013C4A0)
@@ -2796,7 +2796,7 @@ glabel mnBattleCreateBackground
   /* 132594 80134314 00002025 */        or $a0, $zero, $zero
   /* 132598 80134318 00002825 */        or $a1, $zero, $zero
   /* 13259C 8013431C 24060011 */     addiu $a2, $zero, 0x11
-  /* 1325A0 80134320 0C00265A */       jal omMakeGObjCommon
+  /* 1325A0 80134320 0C00265A */       jal omMakeGObjSPAfter
   /* 1325A4 80134324 3C078000 */       lui $a3, 0x8000
   /* 1325A8 80134328 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 1325AC 8013432C 240BFFFF */     addiu $t3, $zero, -1
@@ -4658,7 +4658,7 @@ glabel func_ovl26_80135C84
   /* 133FF0 80135D70 AE0000A0 */        sw $zero, 0xa0($s0)
   /* 133FF4 80135D74 10800005 */      beqz $a0, .L80135D8C
   /* 133FF8 80135D78 00000000 */       nop
-  /* 133FFC 80135D7C 0C0026A1 */       jal omEjectGObjCommon
+  /* 133FFC 80135D7C 0C0026A1 */       jal omEjectGObj
   /* 134000 80135D80 00000000 */       nop
   /* 134004 80135D84 0C04CD2A */       jal mnBattleCreateTypeImage
   /* 134008 80135D88 8FA40020 */        lw $a0, 0x20($sp)
@@ -4736,7 +4736,7 @@ glabel func_ovl26_80135C84
   /* 134110 80135E90 AE0000A0 */        sw $zero, 0xa0($s0)
   /* 134114 80135E94 10800005 */      beqz $a0, .L80135EAC
   /* 134118 80135E98 00000000 */       nop
-  /* 13411C 80135E9C 0C0026A1 */       jal omEjectGObjCommon
+  /* 13411C 80135E9C 0C0026A1 */       jal omEjectGObj
   /* 134120 80135EA0 00000000 */       nop
   /* 134124 80135EA4 0C04CD2A */       jal mnBattleCreateTypeImage
   /* 134128 80135EA8 8FA40020 */        lw $a0, 0x20($sp)
@@ -5100,7 +5100,7 @@ glabel mnBattleRemoveWhiteSquare
   /* 134630 801363B0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 134634 801363B4 10A00005 */      beqz $a1, .L801363CC
   /* 134638 801363B8 00A02025 */        or $a0, $a1, $zero
-  /* 13463C 801363BC 0C0026A1 */       jal omEjectGObjCommon
+  /* 13463C 801363BC 0C0026A1 */       jal omEjectGObj
   /* 134640 801363C0 AFA20018 */        sw $v0, 0x18($sp)
   /* 134644 801363C4 8FA20018 */        lw $v0, 0x18($sp)
   /* 134648 801363C8 AC40002C */        sw $zero, 0x2c($v0)
@@ -5178,7 +5178,7 @@ glabel mnBattleCreateWhiteSquare
   /* 134744 801364C4 00002025 */        or $a0, $zero, $zero
   /* 134748 801364C8 00002825 */        or $a1, $zero, $zero
   /* 13474C 801364CC 2406001E */     addiu $a2, $zero, 0x1e
-  /* 134750 801364D0 0C00265A */       jal omMakeGObjCommon
+  /* 134750 801364D0 0C00265A */       jal omMakeGObjSPAfter
   /* 134754 801364D4 3C078000 */       lui $a3, 0x8000
   /* 134758 801364D8 8FB9002C */        lw $t9, 0x2c($sp)
   /* 13475C 801364DC AFA2003C */        sw $v0, 0x3c($sp)
@@ -5490,21 +5490,21 @@ glabel mnBattleRemoveHandicapCPULevel
   /* 134BB8 80136938 AFBF0014 */        sw $ra, 0x14($sp)
   /* 134BBC 8013693C 10A00004 */      beqz $a1, .L80136950
   /* 134BC0 80136940 00A02025 */        or $a0, $a1, $zero
-  /* 134BC4 80136944 0C0026A1 */       jal omEjectGObjCommon
+  /* 134BC4 80136944 0C0026A1 */       jal omEjectGObj
   /* 134BC8 80136948 AFA2001C */        sw $v0, 0x1c($sp)
   /* 134BCC 8013694C 8FA2001C */        lw $v0, 0x1c($sp)
   .L80136950:
   /* 134BD0 80136950 8C440024 */        lw $a0, 0x24($v0)
   /* 134BD4 80136954 50800005 */      beql $a0, $zero, .L8013696C
   /* 134BD8 80136958 8C440028 */        lw $a0, 0x28($v0)
-  /* 134BDC 8013695C 0C0026A1 */       jal omEjectGObjCommon
+  /* 134BDC 8013695C 0C0026A1 */       jal omEjectGObj
   /* 134BE0 80136960 AFA2001C */        sw $v0, 0x1c($sp)
   /* 134BE4 80136964 8FA2001C */        lw $v0, 0x1c($sp)
   /* 134BE8 80136968 8C440028 */        lw $a0, 0x28($v0)
   .L8013696C:
   /* 134BEC 8013696C 50800005 */      beql $a0, $zero, .L80136984
   /* 134BF0 80136970 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 134BF4 80136974 0C0026A1 */       jal omEjectGObjCommon
+  /* 134BF4 80136974 0C0026A1 */       jal omEjectGObj
   /* 134BF8 80136978 AFA2001C */        sw $v0, 0x1c($sp)
   /* 134BFC 8013697C 8FA2001C */        lw $v0, 0x1c($sp)
   /* 134C00 80136980 8FBF0014 */        lw $ra, 0x14($sp)
@@ -5741,14 +5741,14 @@ glabel mnBattleDrawHandicapCPULevel
   /* 134F3C 80136CBC AFB0001C */        sw $s0, 0x1c($sp)
   /* 134F40 80136CC0 10A00004 */      beqz $a1, .L80136CD4
   /* 134F44 80136CC4 AFA40038 */        sw $a0, 0x38($sp)
-  /* 134F48 80136CC8 0C0026A1 */       jal omEjectGObjCommon
+  /* 134F48 80136CC8 0C0026A1 */       jal omEjectGObj
   /* 134F4C 80136CCC 00A02025 */        or $a0, $a1, $zero
   /* 134F50 80136CD0 AE200020 */        sw $zero, 0x20($s1)
   .L80136CD4:
   /* 134F54 80136CD4 00002025 */        or $a0, $zero, $zero
   /* 134F58 80136CD8 00002825 */        or $a1, $zero, $zero
   /* 134F5C 80136CDC 2406001C */     addiu $a2, $zero, 0x1c
-  /* 134F60 80136CE0 0C00265A */       jal omMakeGObjCommon
+  /* 134F60 80136CE0 0C00265A */       jal omMakeGObjSPAfter
   /* 134F64 80136CE4 3C078000 */       lui $a3, 0x8000
   /* 134F68 80136CE8 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 134F6C 80136CEC 2419FFFF */     addiu $t9, $zero, -1
@@ -5901,7 +5901,7 @@ glabel func_ovl26_80136E90
   /* 13519C 80136F1C 8C640028 */        lw $a0, 0x28($v1)
   /* 1351A0 80136F20 50800006 */      beql $a0, $zero, .L80136F3C
   /* 1351A4 80136F24 00002025 */        or $a0, $zero, $zero
-  /* 1351A8 80136F28 0C0026A1 */       jal omEjectGObjCommon
+  /* 1351A8 80136F28 0C0026A1 */       jal omEjectGObj
   /* 1351AC 80136F2C AFA30028 */        sw $v1, 0x28($sp)
   /* 1351B0 80136F30 8FA30028 */        lw $v1, 0x28($sp)
   /* 1351B4 80136F34 AC600028 */        sw $zero, 0x28($v1)
@@ -5910,7 +5910,7 @@ glabel func_ovl26_80136E90
   /* 1351BC 80136F3C 00002825 */        or $a1, $zero, $zero
   /* 1351C0 80136F40 2406001C */     addiu $a2, $zero, 0x1c
   /* 1351C4 80136F44 3C078000 */       lui $a3, 0x8000
-  /* 1351C8 80136F48 0C00265A */       jal omMakeGObjCommon
+  /* 1351C8 80136F48 0C00265A */       jal omMakeGObjSPAfter
   /* 1351CC 80136F4C AFA30028 */        sw $v1, 0x28($sp)
   /* 1351D0 80136F50 8FA30028 */        lw $v1, 0x28($sp)
   /* 1351D4 80136F54 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -5994,7 +5994,7 @@ glabel func_ovl26_80137004
   /* 135300 80137080 00002025 */        or $a0, $zero, $zero
   /* 135304 80137084 00002825 */        or $a1, $zero, $zero
   /* 135308 80137088 2406001C */     addiu $a2, $zero, 0x1c
-  /* 13530C 8013708C 0C00265A */       jal omMakeGObjCommon
+  /* 13530C 8013708C 0C00265A */       jal omMakeGObjSPAfter
   /* 135310 80137090 3C078000 */       lui $a3, 0x8000
   /* 135314 80137094 8FA90028 */        lw $t1, 0x28($sp)
   /* 135318 80137098 AFA2002C */        sw $v0, 0x2c($sp)
@@ -8833,7 +8833,7 @@ glabel mnBattleCreateTokenAutopositionRoutine
   /* 137BB4 80139934 00002025 */        or $a0, $zero, $zero
   /* 137BB8 80139938 00002825 */        or $a1, $zero, $zero
   /* 137BBC 8013993C 2406001A */     addiu $a2, $zero, 0x1a
-  /* 137BC0 80139940 0C00265A */       jal omMakeGObjCommon
+  /* 137BC0 80139940 0C00265A */       jal omMakeGObjSPAfter
   /* 137BC4 80139944 3C078000 */       lui $a3, 0x8000
   /* 137BC8 80139948 3C058014 */       lui $a1, %hi(mnBattleAutopositionToken)
   /* 137BCC 8013994C 24A598B8 */     addiu $a1, $a1, %lo(mnBattleAutopositionToken)
@@ -8886,7 +8886,7 @@ glabel mnBattleCreateTokenShinePulseRoutine
   /* 137C70 801399F0 00002025 */        or $a0, $zero, $zero
   /* 137C74 801399F4 00002825 */        or $a1, $zero, $zero
   /* 137C78 801399F8 2406001A */     addiu $a2, $zero, 0x1a
-  /* 137C7C 801399FC 0C00265A */       jal omMakeGObjCommon
+  /* 137C7C 801399FC 0C00265A */       jal omMakeGObjSPAfter
   /* 137C80 80139A00 3C078000 */       lui $a3, 0x8000
   /* 137C84 80139A04 3C058014 */       lui $a1, %hi(mnBattleUpdateTokenShinePulseColor)
   /* 137C88 80139A08 24A59970 */     addiu $a1, $a1, %lo(mnBattleUpdateTokenShinePulseColor)
@@ -8986,7 +8986,7 @@ glabel mnBattleCreateSyncShadeAndCostumeRoutine
   /* 137DD4 80139B54 00002025 */        or $a0, $zero, $zero
   /* 137DD8 80139B58 00002825 */        or $a1, $zero, $zero
   /* 137DDC 80139B5C 2406001F */     addiu $a2, $zero, 0x1f
-  /* 137DE0 80139B60 0C00265A */       jal omMakeGObjCommon
+  /* 137DE0 80139B60 0C00265A */       jal omMakeGObjSPAfter
   /* 137DE4 80139B64 3C078000 */       lui $a3, 0x8000
   /* 137DE8 80139B68 3C058014 */       lui $a1, %hi(mnBattleSyncShadeAndCostume)
   /* 137DEC 80139B6C 24A59A2C */     addiu $a1, $a1, %lo(mnBattleSyncShadeAndCostume)
@@ -9100,7 +9100,7 @@ glabel mnBattleCreateWhiteCircles
   /* 137F78 80139CF8 00002025 */        or $a0, $zero, $zero
   /* 137F7C 80139CFC 00002825 */        or $a1, $zero, $zero
   /* 137F80 80139D00 24060015 */     addiu $a2, $zero, 0x15
-  /* 137F84 80139D04 0C00265A */       jal omMakeGObjCommon
+  /* 137F84 80139D04 0C00265A */       jal omMakeGObjSPAfter
   /* 137F88 80139D08 02603825 */        or $a3, $s3, $zero
   /* 137F8C 80139D0C 8E8E0018 */        lw $t6, 0x18($s4) # D_ovl26_8013C4A0 + 24
   /* 137F90 80139D10 00408025 */        or $s0, $v0, $zero
@@ -9202,7 +9202,7 @@ glabel mnBattleCreateReadyToFightObjects
   /* 1380EC 80139E6C 00002025 */        or $a0, $zero, $zero
   /* 1380F0 80139E70 00002825 */        or $a1, $zero, $zero
   /* 1380F4 80139E74 24060020 */     addiu $a2, $zero, 0x20
-  /* 1380F8 80139E78 0C00265A */       jal omMakeGObjCommon
+  /* 1380F8 80139E78 0C00265A */       jal omMakeGObjSPAfter
   /* 1380FC 80139E7C 3C078000 */       lui $a3, 0x8000
   /* 138100 80139E80 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 138104 80139E84 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -9287,7 +9287,7 @@ glabel mnBattleCreateReadyToFightObjects
   /* 138240 80139FC0 24060016 */     addiu $a2, $zero, 0x16
   /* 138244 80139FC4 3C078000 */       lui $a3, 0x8000
   /* 138248 80139FC8 E4480058 */      swc1 $f8, 0x58($v0)
-  /* 13824C 80139FCC 0C00265A */       jal omMakeGObjCommon
+  /* 13824C 80139FCC 0C00265A */       jal omMakeGObjSPAfter
   /* 138250 80139FD0 E44A005C */      swc1 $f10, 0x5c($v0)
   /* 138254 80139FD4 2418FFFF */     addiu $t8, $zero, -1
   /* 138258 80139FD8 00408025 */        or $s0, $v0, $zero
@@ -9445,7 +9445,7 @@ glabel func_ovl26_8013A0DC
   /* 1384A8 8013A228 8FA30024 */        lw $v1, 0x24($sp)
   /* 1384AC 8013A22C AC620048 */        sw $v0, 0x48($v1)
   .L8013A230:
-  /* 1384B0 8013A230 0C0026A1 */       jal omEjectGObjCommon
+  /* 1384B0 8013A230 0C0026A1 */       jal omEjectGObj
   /* 1384B4 8013A234 8E040000 */        lw $a0, ($s0)
   /* 1384B8 8013A238 8E0F0084 */        lw $t7, 0x84($s0)
   /* 1384BC 8013A23C 24010001 */     addiu $at, $zero, 1
@@ -10557,7 +10557,7 @@ glabel mnBattleInitCSS
   /* 1393E4 8013B164 24A5A920 */     addiu $a1, $a1, %lo(mnBattleMain)
   /* 1393E8 8013B168 02003825 */        or $a3, $s0, $zero
   /* 1393EC 8013B16C 24040400 */     addiu $a0, $zero, 0x400
-  /* 1393F0 8013B170 0C00265A */       jal omMakeGObjCommon
+  /* 1393F0 8013B170 0C00265A */       jal omMakeGObjSPAfter
   /* 1393F4 8013B174 2406000F */     addiu $a2, $zero, 0xf
   /* 1393F8 8013B178 24040010 */     addiu $a0, $zero, 0x10
   /* 1393FC 8013B17C 02002825 */        or $a1, $s0, $zero

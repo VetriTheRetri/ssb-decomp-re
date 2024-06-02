@@ -6,7 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lITEggITemAttributes;       // 0x00000ACC
+extern intptr_t lITEggITAttributes;       // 0x00000ACC
 extern intptr_t lITCapsuleHitEvents;        // 0x00000098
 extern intptr_t lITEggHitEvents;            // 0x00000B14
 
@@ -16,11 +16,11 @@ extern intptr_t lITEggHitEvents;            // 0x00000B14
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITEggITemDesc =
+itCreateDesc dITEggITDesc =
 {
     It_Kind_Egg,                            // Item Kind
-    &gITemFileData,                         // Pointer to item file data?
-    &lITEggITemAttributes,                  // Offset of item attributes in file?
+    &gITFileData,                         // Pointer to item file data?
+    &lITEggITAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -301,7 +301,7 @@ sb32 itEggNExplodeProcUpdate(GObj *item_gobj)
 
         return TRUE;
     }
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITEggITemDesc, lITEggHitEvents)); // Linker thing
+    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITEggITDesc, lITEggHitEvents)); // Linker thing
 
     return FALSE;
 }
@@ -309,7 +309,7 @@ sb32 itEggNExplodeProcUpdate(GObj *item_gobj)
 // 0x80181998
 GObj* itEggMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITEggITemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITEggITDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -365,7 +365,7 @@ void itEggNExplodeInitItemVars(GObj *item_gobj)
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshHit(item_gobj);
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITEggITemDesc, lITCapsuleHitEvents)); // Linker thing - should this be lITEggHitEvents?
+    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITEggITDesc, lITCapsuleHitEvents)); // Linker thing - should this be lITEggHitEvents?
 }
 
 // 0x80181B5C

@@ -126,7 +126,7 @@ glabel func_ovl15_800D660C
   /* 1508C8 800D6618 24A564C4 */     addiu $a1, $a1, %lo(func_ovl15_800D64C4)
   /* 1508CC 800D661C 00002025 */        or $a0, $zero, $zero
   /* 1508D0 800D6620 00003025 */        or $a2, $zero, $zero
-  /* 1508D4 800D6624 0C00265A */       jal omMakeGObjCommon
+  /* 1508D4 800D6624 0C00265A */       jal omMakeGObjSPAfter
   /* 1508D8 800D6628 3C078000 */       lui $a3, 0x8000
   /* 1508DC 800D662C 240E00FF */     addiu $t6, $zero, 0xff
   /* 1508E0 800D6630 AFAE0010 */        sw $t6, 0x10($sp)

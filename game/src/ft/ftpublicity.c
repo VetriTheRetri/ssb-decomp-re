@@ -386,7 +386,7 @@ void ftPublicityProcUpdate(GObj *public_gobj)
 // 0x801653E0
 GObj* ftPublicitySetup(void)
 {
-    GObj *public_gobj = omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Publicity, NULL, 0xD, GOBJ_LINKORDER_DEFAULT), ftPublicityProcUpdate, 1, 0);
+    GObj *public_gobj = omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Publicity, NULL, 0xD, GOBJ_LINKORDER_DEFAULT), ftPublicityProcUpdate, 1, 0);
 
     sFTPublicityCommonFramesSince = U16_MAX + 1;
     sFTPublicityCommonPlayerNum = -1;

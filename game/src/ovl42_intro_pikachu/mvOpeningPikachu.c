@@ -87,7 +87,7 @@ void mvOpeningPikachuDrawName()
     f32 x_positions[7] = dMvOpeningPikachuNameCharPositions;
     s32 i;
 
-    gMvOpeningPikachuNameGObj = name_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    gMvOpeningPikachuNameGObj = name_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     omAddGObjRenderProc(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
 
     for (i = 0; offsets[i] != 0; i++)
@@ -231,7 +231,7 @@ void mvOpeningPikachuRenderPosedFighterBackground(GObj *gobj)
 
 // 0x8018D964
 void mvOpeningPikachuCreatePosedFighterBackground() {
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x13, 0x80000000), mvOpeningPikachuRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningPikachuRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
 // 0x8018D9B0
@@ -331,7 +331,7 @@ void mvOpeningPikachuMainProc(GObj* arg0)
 
     if (gMvOpeningPikachuFramesElapsed == 15)
     {
-        omEjectGObjCommon(gMvOpeningPikachuNameGObj);
+        omEjectGObj(gMvOpeningPikachuNameGObj);
         mvOpeningPikachuInitFighterStagePanel();
         mvOpeningPikachuCreatePosedFighterBackground();
         mvOpeningPikachuCreatePosedFighter();
@@ -366,7 +366,7 @@ void mvOpeningPikachuInit()
     gBattleState->player_block[0].player_kind = Pl_Kind_Key;
 
     mvOpeningPikachuLoadFiles();
-    omMakeGObjCommon(0x3F7, mvOpeningPikachuMainProc, 0xD, 0x80000000);
+    omMakeGObjSPAfter(0x3F7, mvOpeningPikachuMainProc, 0xD, 0x80000000);
     func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
     mvOpeningPikachuInitFramesElapsed();
     func_ovl2_80115890();

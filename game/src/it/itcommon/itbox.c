@@ -33,7 +33,7 @@ Vec2f dITBoxItemSpawnVelocities[/* */] =
 itCreateDesc dITBoxItemDesc = 
 {
     It_Kind_Box,                            // Item Kind
-    &gITemFileData,                         // Pointer to item file data?
+    &gITFileData,                         // Pointer to item file data?
     &lITBoxItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -164,7 +164,7 @@ void itBoxContainerSmashUpdateEffect(GObj *effect_gobj) // Barrel/Crate smash GF
     if (ep->effect_vars.container.lifetime == 0)
     {
         efManager_SetPrevAlloc(ep);
-        omEjectGObjCommon(effect_gobj);
+        omEjectGObj(effect_gobj);
     }
     else while (dobj != NULL)
     {
@@ -193,7 +193,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
 
     if (ep != NULL)
     {
-        effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
+        effect_gobj = omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
         if (effect_gobj != NULL)
         {
@@ -242,9 +242,9 @@ sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj)
 
     itBoxContainerSmashMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
-    if (gITemRandomWeights.item_num != 0)
+    if (gITRandomWeights.item_num != 0)
     {
-        index = itMainGetWeightedITemID(&gITemRandomWeights);
+        index = itMainGetWeightedITemID(&gITRandomWeights);
 
         if (index <= It_Kind_CommonEnd)
         {
@@ -282,11 +282,11 @@ sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj)
             }
             else
             {
-                bak = gITemRandomWeights.item_num;
-                item_count = gITemRandomWeights.item_count - 1;
+                bak = gITRandomWeights.item_num;
+                item_count = gITRandomWeights.item_count - 1;
 
-                gITemRandomWeights.item_num = gITemRandomWeights.item_totals[item_count];
-                gITemRandomWeights.item_count--;
+                gITRandomWeights.item_num = gITRandomWeights.item_totals[item_count];
+                gITRandomWeights.item_count--;
 
                 vel_different.z = 0.0F;
 
@@ -294,15 +294,15 @@ sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj)
                 {
                     if (j != 0)
                     {
-                        index = itMainGetWeightedITemID(&gITemRandomWeights);
+                        index = itMainGetWeightedITemID(&gITRandomWeights);
                     }
                     vel_different.x = spawn_pos[j].x;
                     vel_different.y = spawn_pos[j].y;
 
                     itManagerMakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel_different, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
                 }
-                gITemRandomWeights.item_count++;
-                gITemRandomWeights.item_num = bak;
+                gITRandomWeights.item_count++;
+                gITRandomWeights.item_num = bak;
             }
             func_800269C0(alSound_SFX_FireFlowerShoot);
 

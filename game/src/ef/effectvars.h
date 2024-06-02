@@ -159,13 +159,13 @@ typedef struct efParticle_EffectVars_DamageSpawnOrbs
 
 } efParticle_EffectVars_DamageSpawnOrbs;
 
-typedef struct efParticle_EffectVars_ImpactSW
+typedef struct efParticle_EffectVars_ImpactWave
 {
     u8 index;
     f32 alpha;
     f32 decay;
 
-} efParticle_EffectVars_ImpactSW;
+} efParticle_EffectVars_ImpactWave;
 
 typedef struct efParticle_EffectVars_StarRodSpark
 {

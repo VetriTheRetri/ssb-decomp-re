@@ -20,7 +20,7 @@ extern intptr_t lITGShellMatAnimJoint;      // 0x00006048
 itCreateDesc dITGShellITemDesc =
 {
     It_Kind_GShell,                         // Item Kind
-    &gITemFileData,                         // Pointer to item file data?
+    &gITFileData,                         // Pointer to item file data?
     &lITGShellITemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct

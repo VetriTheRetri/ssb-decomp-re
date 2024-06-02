@@ -23,25 +23,25 @@ extern intptr_t D_NF_00B1E640;
 // // // // // // // // // // // //
 
 // 0x8018D040
-u32 *gITemFileData;
+u32 *gITFileData;
 
 // 0x8018D044
-s32 gITemEffectBank;
+s32 gITEffectBank;
 
 // 0x8018D048
-itRandomWeights gITemRandomWeights;
+itRandomWeights gITRandomWeights;
 
 // 0x8018D060
-itMonsterInfo gITemMonsterData;
+itMonsterInfo gITMonsterData;
 
 // 0x8018D090
-s32 gITemDisplayMode;
+s32 gITDisplayMode;
 
 // 0x8018D094 - points to next available item struct
-itStruct *gITemAllocFree;
+itStruct *gITAllocFree;
 
 // 0x8018D098
-itSpawnActor gITemSpawnActor;
+itSpawnActor gITSpawnActor;
 
 // // // // // // // // // // // //
 //                               //
@@ -145,7 +145,7 @@ void itManagerInitItems(void) // Many linker things here
     itStruct *ip;
     s32 i;
 
-    gITemAllocFree = ip = gsMemoryAlloc(sizeof(itStruct) * ITEM_ALLOC_MAX, 0x8);
+    gITAllocFree = ip = gsMemoryAlloc(sizeof(itStruct) * ITEM_ALLOC_MAX, 0x8);
 
     for (i = 0; i < (ITEM_ALLOC_MAX - 1); i++)
     {
@@ -155,21 +155,21 @@ void itManagerInitItems(void) // Many linker things here
     {
         ip[i].alloc_next = NULL;
     }
-    gITemFileData = (u32*)rdManagerGetFileWithExternHeap(&D_NF_000000FB, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_000000FB), 0x10));
+    gITFileData = (u32*)rdManagerGetFileWithExternHeap(&D_NF_000000FB, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_000000FB), 0x10));
 
-    gITemEffectBank = efAlloc_SetParticleBank(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
+    gITEffectBank = efAlloc_SetParticleBank(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
 
     itManagerSetupContainerDrops();
     itManagerInitMonsterVars();
     func_ovl2_80111F80();
 
-    gITemDisplayMode = dbObject_DisplayMode_Master;
+    gITDisplayMode = dbObject_DisplayMode_Master;
 }
 
 // 0x8016DFAC
 itStruct* itManagerGetItemSetNextAlloc(void) // Set global Item user_data link pointer to next member
 {
-    itStruct *new_item = gITemAllocFree;
+    itStruct *new_item = gITAllocFree;
     itStruct *get_item;
 
     if (new_item == NULL)
@@ -178,7 +178,7 @@ itStruct* itManagerGetItemSetNextAlloc(void) // Set global Item user_data link p
     }
     get_item = new_item;
 
-    gITemAllocFree = new_item->alloc_next;
+    gITAllocFree = new_item->alloc_next;
 
     return get_item;
 }
@@ -186,9 +186,9 @@ itStruct* itManagerGetItemSetNextAlloc(void) // Set global Item user_data link p
 // 0x8016DFDC
 void itManagerSetPrevAlloc(itStruct *ip) // Set global Item user_data link pointer to previous member
 {
-    ip->alloc_next = gITemAllocFree;
+    ip->alloc_next = gITAllocFree;
 
-    gITemAllocFree = ip;
+    gITAllocFree = ip;
 }
 
 // 0x8016DFF4
@@ -243,7 +243,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     {
         return NULL;
     }
-    else item_gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, GObj_LinkID_Item, GOBJ_LINKORDER_DEFAULT);
+    else item_gobj = omMakeGObjSPAfter(GObj_Kind_Item, NULL, GObj_LinkID_Item, GOBJ_LINKORDER_DEFAULT);
 
     if (item_gobj == NULL)
     {
@@ -472,13 +472,13 @@ GObj* itManagerMakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3
 // 0x8016EB00
 itStruct* itManagerGetAllocFree(void)
 {
-    return gITemAllocFree;
+    return gITAllocFree;
 }
 
 // 0x8016EB0C
 void itManagerSetItemSpawnWait(void)
 {
-    gITemSpawnActor.item_spawn_wait = 
+    gITSpawnActor.item_spawn_wait = 
     dITCommonAppearanceRatesMin[gBattleState->item_switch] + 
     lbRandom_GetIntRange(dITCommonAppearanceRatesMax[gBattleState->item_switch] - dITCommonAppearanceRatesMin[gBattleState->item_switch]);
 }
@@ -493,17 +493,17 @@ void itManagerMakeRandomItem(GObj *item_gobj)
 
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
-        if (gITemSpawnActor.item_spawn_wait > 0)
+        if (gITSpawnActor.item_spawn_wait > 0)
         {
-            gITemSpawnActor.item_spawn_wait--;
+            gITSpawnActor.item_spawn_wait--;
 
             return;
         }
         if (itManagerGetAllocFree() != NULL)
         {
-            index = itMainGetWeightedITemID(&gITemSpawnActor.weights);
+            index = itMainGetWeightedITemID(&gITSpawnActor.weights);
 
-            mpCollision_GetMPointPositionID(gITemSpawnActor.item_mpoints[lbRandom_GetIntRange(gITemSpawnActor.item_mpoint_count)], &pos);
+            mpCollision_GetMPointPositionID(gITSpawnActor.item_mpoints[lbRandom_GetIntRange(gITSpawnActor.item_mpoint_count)], &pos);
 
             vel.x = vel.y = vel.z = 0.0F;
 
@@ -554,7 +554,7 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     return NULL;
                 }
-                gITemSpawnActor.item_num = item_count;
+                gITSpawnActor.item_num = item_count;
 
                 item_mpoint_count = mpCollision_GetMPointCountKind(mpMPoint_Kind_ItemSpawn);
 
@@ -570,16 +570,16 @@ GObj* itManagerMakeItemSpawnActor(void)
                         smCrashPrintGObjStatus();
                     }
                 }
-                gITemSpawnActor.item_mpoint_count = item_mpoint_count;
-                gITemSpawnActor.item_mpoints = (u8*)gsMemoryAlloc(item_mpoint_count * sizeof(*gITemSpawnActor.item_mpoints), 0);
+                gITSpawnActor.item_mpoint_count = item_mpoint_count;
+                gITSpawnActor.item_mpoints = (u8*)gsMemoryAlloc(item_mpoint_count * sizeof(*gITSpawnActor.item_mpoints), 0);
 
                 mpCollision_GetMPointIDsKind(mpMPoint_Kind_ItemSpawn, item_mpoint_ids);
 
                 for (i = 0; i < item_mpoint_count; i++)
                 {
-                    gITemSpawnActor.item_mpoints[i] = item_mpoint_ids[i];
+                    gITSpawnActor.item_mpoints[i] = item_mpoint_ids[i];
                 }
-                gobj = omMakeGObjCommon(GObj_Kind_Item, NULL, 2, GOBJ_LINKORDER_DEFAULT);
+                gobj = omMakeGObjSPAfter(GObj_Kind_Item, NULL, 2, GOBJ_LINKORDER_DEFAULT);
 
                 omAddGObjCommonProc(gobj, itManagerMakeRandomItem, GObjProcess_Kind_Proc, 3);
 
@@ -594,9 +594,9 @@ GObj* itManagerMakeItemSpawnActor(void)
                         j++;
                     }
                 }
-                gITemSpawnActor.weights.item_count = j;
-                gITemSpawnActor.weights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gITemSpawnActor.item_ids), 0x0);
-                gITemSpawnActor.weights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gITemSpawnActor.item_totals), 0x2);
+                gITSpawnActor.weights.item_count = j;
+                gITSpawnActor.weights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gITSpawnActor.item_ids), 0x0);
+                gITSpawnActor.weights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gITSpawnActor.item_totals), 0x2);
 
                 item_id_toggles = gBattleState->item_toggles;
 
@@ -606,8 +606,8 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                     {
-                        gITemSpawnActor.weights.item_ids[j] = i;
-                        gITemSpawnActor.weights.item_totals[j] = item_weights;
+                        gITSpawnActor.weights.item_ids[j] = i;
+                        gITSpawnActor.weights.item_totals[j] = item_weights;
                         item_weights += item_weight_qty->byte[i];
 
                         j++;
@@ -650,7 +650,7 @@ void itManagerSetupContainerDrops(void)
                 item_count += item_count_qty->item_quantities[i];
             }
         }
-        gITemRandomWeights.item_num = item_count;
+        gITRandomWeights.item_num = item_count;
 
         if (item_count != 0)
         {
@@ -666,9 +666,9 @@ void itManagerSetupContainerDrops(void)
             }
             j++;
 
-            gITemRandomWeights.item_count = j;
-            gITemRandomWeights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gITemRandomWeights.item_ids), 0x0);
-            gITemRandomWeights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gITemRandomWeights.item_totals), 0x2);
+            gITRandomWeights.item_count = j;
+            gITRandomWeights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gITRandomWeights.item_ids), 0x0);
+            gITRandomWeights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gITRandomWeights.item_totals), 0x2);
 
             item_id_toggles = gBattleState->item_toggles >> It_Kind_UtilityStart;
 
@@ -678,16 +678,16 @@ void itManagerSetupContainerDrops(void)
             {
                 if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                 {
-                    gITemRandomWeights.item_ids[j] = i;
-                    gITemRandomWeights.item_totals[j] = item_weights;
+                    gITRandomWeights.item_ids[j] = i;
+                    gITRandomWeights.item_totals[j] = item_weights;
                     item_weights += item_weight_qty->item_quantities[i];
                     j++;
                 }
             }
-            gITemRandomWeights.item_ids[j] = It_Kind_MbMonsterStart;
-            gITemRandomWeights.item_totals[j] = item_weights;
+            gITRandomWeights.item_ids[j] = It_Kind_MbMonsterStart;
+            gITRandomWeights.item_totals[j] = item_weights;
 
-            item_tenth_round = (gITemRandomWeights.item_num * 0.1F);
+            item_tenth_round = (gITRandomWeights.item_num * 0.1F);
 
             if (item_tenth_round != 0)
             {
@@ -695,17 +695,17 @@ void itManagerSetupContainerDrops(void)
             }
             else item_tenth_floor = 1;
 
-            gITemRandomWeights.item_num += item_tenth_floor;
+            gITRandomWeights.item_num += item_tenth_floor;
         }
     }
-    else gITemRandomWeights.item_num = 0;
+    else gITRandomWeights.item_num = 0;
 }
 
 // 0x8016F218
 void itManagerInitMonsterVars(void)
 {
-    gITemMonsterData.monster_curr = gITemMonsterData.monster_prev = U8_MAX;
-    gITemMonsterData.monster_count = (It_Kind_MbMonsterEnd - It_Kind_MbMonsterStart);
+    gITMonsterData.monster_curr = gITMonsterData.monster_prev = U8_MAX;
+    gITMonsterData.monster_count = (It_Kind_MbMonsterEnd - It_Kind_MbMonsterStart);
 }
 
 // 0x8016F238

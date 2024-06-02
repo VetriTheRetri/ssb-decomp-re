@@ -429,7 +429,7 @@ SObj* mnSoundTestMakeHeaderSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = omMakeGObjCommon(1, NULL, 2, 0x80000000);
+    gobj = omMakeGObjSPAfter(1, NULL, 2, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
 
@@ -509,13 +509,13 @@ SObj* mnSoundTestMakeMusicSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = omMakeGObjCommon(1, NULL, 3, 0x80000000);
+    gobj = omMakeGObjSPAfter(1, NULL, 3, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
 
     gobj->user_data.s = mnSoundTest_Option_Music;
 
     omAddGObjCommonProc(gobj, mnSoundTestOptionProcUpdate, 0, 1);
-    omAddGObjRenderProc(omMakeGObjCommon(1, NULL, 3, 0x80000000), mnSoundTestMusicProcRender, 2, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(1, NULL, 3, 0x80000000), mnSoundTestMusicProcRender, 2, 0x80000000, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNSoundTestFiles[4], &lMNSoundTestMusicTextSprite));
     sobj->sprite.attr = SP_TRANSPARENT;
@@ -564,13 +564,13 @@ SObj* mnSoundTestMakeSoundSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = omMakeGObjCommon(1, NULL, 3, 0x80000000);
+    gobj = omMakeGObjSPAfter(1, NULL, 3, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
     omAddGObjCommonProc(gobj, mnSoundTestOptionProcUpdate, 0, 1);
 
     gobj->user_data.s = mnSoundTest_Option_Sound;
 
-    omAddGObjRenderProc(omMakeGObjCommon(1, NULL, 3, 0x80000000), mnSoundTestSoundProcRender, 2, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(1, NULL, 3, 0x80000000), mnSoundTestSoundProcRender, 2, 0x80000000, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNSoundTestFiles[4], &lMNSoundTestSoundTextSprite));
     sobj->sprite.attr = SP_TRANSPARENT;
@@ -619,13 +619,13 @@ SObj* mnSoundTestMakeVoiceSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = omMakeGObjCommon(1, NULL, 3, 0x80000000);
+    gobj = omMakeGObjSPAfter(1, NULL, 3, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
     omAddGObjCommonProc(gobj, mnSoundTestOptionProcUpdate, 0, 1);
 
     gobj->user_data.s = mnSoundTest_Option_Voice;
 
-    omAddGObjRenderProc(omMakeGObjCommon(1, NULL, 3, 0x80000000), mnSoundTestVoiceProcRender, 2, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(1, NULL, 3, 0x80000000), mnSoundTestVoiceProcRender, 2, 0x80000000, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNSoundTestFiles[4], &lMNSoundTestVoiceTextSprite));
     sobj->sprite.attr = SP_TRANSPARENT;
@@ -757,7 +757,7 @@ SObj* mnSoundTestMakeBFunctionSObj(GObj *gobj)
 // 0x80132EC8
 void mnSoundTestMakeButtonSObjs(void)
 {
-    GObj *gobj = omMakeGObjCommon(1, NULL, 3, 0x80000000);
+    GObj *gobj = omMakeGObjSPAfter(1, NULL, 3, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
     mnSoundTestMakeAButtonSObj(gobj);
@@ -903,20 +903,20 @@ void mnSoundTestSelectIDProcUpdate(GObj *gobj)
 // 0x80133398
 void mnSoundTestMakeSelectIDGObjs(void)
 {
-    GObj *gobj = omMakeGObjCommon(1, NULL, 5, 0x80000000);
+    GObj *gobj = omMakeGObjSPAfter(1, NULL, 5, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
     omAddGObjCommonProc(gobj, mnSoundTestSelectIDProcUpdate, 0, 1);
 
     gobj->user_data.s = mnSoundTest_Option_Music;
 
-    gobj = omMakeGObjCommon(1, NULL, 6, 0x80000000);
+    gobj = omMakeGObjSPAfter(1, NULL, 6, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
     omAddGObjCommonProc(gobj, mnSoundTestSelectIDProcUpdate, 0, 1);
 
     gobj->user_data.s = mnSoundTest_Option_Sound;
 
-    gobj = omMakeGObjCommon(1, NULL, 7, 0x80000000);
+    gobj = omMakeGObjSPAfter(1, NULL, 7, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
     omAddGObjCommonProc(gobj, mnSoundTestSelectIDProcUpdate, 0, 1);
@@ -964,7 +964,7 @@ void mnSoundTestArrowsProcUpdate(GObj *gobj)
 // 0x801335C8
 void mnSoundTestMakeArrowSObjs(void)
 {
-    GObj *gobj = omMakeGObjCommon(1, NULL, 2, 0x80000000);
+    GObj *gobj = omMakeGObjSPAfter(1, NULL, 2, 0x80000000);
     SObj *sobj;
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
@@ -1040,7 +1040,7 @@ void mnSoundTestInitVars(void)
 // 0x801338F8
 void func_ovl62_801338F8(void)
 {
-    omMakeGObjCommon(0, mnSoundTestMenuProcUpdate, 1, 0x80000000);
+    omMakeGObjSPAfter(0, mnSoundTestMenuProcUpdate, 1, 0x80000000);
     func_8000B9FC(4, 0x80000000, 0x64, 2, 0xFF);
     func_ovl62_801322B8();
     mnSoundTestInitVars();

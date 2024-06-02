@@ -92,7 +92,7 @@ void mvOpeningFoxDrawName()
     Vec2f positions[3] = dMvOpeningFoxNameCharPositions;
     s32 i;
 
-    gMvOpeningFoxNameGObj = name_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    gMvOpeningFoxNameGObj = name_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     omAddGObjRenderProc(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
 
     for (i = 0; offsets[i] != 0; i++)
@@ -237,7 +237,7 @@ void mvOpeningFoxRenderPosedFighterBackground(GObj *gobj)
 // 0x8018D94C
 void mvOpeningFoxCreatePosedFighterBackground()
 {
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x13, 0x80000000), &mvOpeningFoxRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x13, 0x80000000), &mvOpeningFoxRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
 // 0x8018D998
@@ -337,7 +337,7 @@ void mvOpeningFoxMainProc(GObj* arg0)
 
     if (gMvOpeningFoxFramesElapsed == 15)
     {
-        omEjectGObjCommon(gMvOpeningFoxNameGObj);
+        omEjectGObj(gMvOpeningFoxNameGObj);
         mvOpeningFoxInitFighterStagePanel();
         mvOpeningFoxCreatePosedFighterBackground();
         mvOpeningFoxCreatePosedFighter();
@@ -372,7 +372,7 @@ void mvOpeningFoxInit()
     gBattleState->player_block[0].player_kind = Pl_Kind_Key;
 
     mvOpeningFoxLoadFiles();
-    omMakeGObjCommon(0x3F7, mvOpeningFoxMainProc, 0xD, 0x80000000);
+    omMakeGObjSPAfter(0x3F7, mvOpeningFoxMainProc, 0xD, 0x80000000);
     func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
     mvOpeningFoxInitFramesElapsed();
     func_ovl2_80115890();

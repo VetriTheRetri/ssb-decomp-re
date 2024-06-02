@@ -44,7 +44,7 @@ void mvOpeningYoshiNestSetupDisplayList(Gfx **display_list)
 // 0x80131B58
 void mvOpeningYoshiNestCreateNest()
 {
-    GObj* nest_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    GObj* nest_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     func_8000F120(nest_gobj, GetAddressFromOffset(gMvOpeningYoshiNestFilesArray[0], &FILE_043_NEST_IMAGE_OFFSET), 0);
     omAddGObjRenderProc(nest_gobj, odRenderDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
     DObjGetStruct(nest_gobj)->translate.vec.f.x = 0.0F;
@@ -84,7 +84,7 @@ void mvOpeningYoshiNestCreateBackground()
     GObj* bg_gobj;
     SObj* bg_sobj;
 
-    bg_gobj = omMakeGObjCommon(0, 0, 0x14, 0x80000000);
+    bg_gobj = omMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
     omAddGObjRenderProc(bg_gobj, func_ovl0_800CCF00, 0x1C, 0x80000000, -1);
 
     bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(gMvOpeningYoshiNestFilesArray[1], &FILE_05D_YOSHI_BACKGROUND_IMAGE_OFFSET));
@@ -95,7 +95,7 @@ void mvOpeningYoshiNestCreateBackground()
 // 0x80131DB8
 void mvOpeningYoshiNestCreateStageObjects()
 {
-    GObj* temp_v0 = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    GObj* temp_v0 = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     func_8000F120(temp_v0, GetAddressFromOffset(gMvOpeningYoshiNestFilesArray[0], &FILE_043_STAGE_OBJECTS_OFFSET_1), 0);
     omAddGObjRenderProc(temp_v0, &odRenderDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
 
@@ -179,7 +179,7 @@ void mvOpeningYoshiNestInit()
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl45_80132330, ARRAY_COUNT(D_ovl45_80132330), gMvOpeningYoshiNestFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl45_80132330, ARRAY_COUNT(D_ovl45_80132330)), 0x10));
 
-    omMakeGObjCommon(0, mvOpeningYoshiNestMainProc, 0, 0x80000000);
+    omMakeGObjSPAfter(0, mvOpeningYoshiNestMainProc, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 1, 0);
     func_ovl2_80115890();
     mvOpeningYoshiNestInitFramesElapsed();

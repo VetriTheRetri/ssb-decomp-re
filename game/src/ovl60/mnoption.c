@@ -280,7 +280,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNOptionSoundOptionGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMNOptionSoundOptionGObj = gobj = omMakeGObjSPAfter(0, NULL, 4, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionMonoTextSprite));
@@ -320,7 +320,7 @@ void mnOptionMakeSoundTextSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNOptionSoundGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMNOptionSoundGObj = gobj = omMakeGObjSPAfter(0, NULL, 4, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
 
@@ -347,7 +347,7 @@ void mnOptionMakeScreenAdjustSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNOptionScreenAdjustGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMNOptionScreenAdjustGObj = gobj = omMakeGObjSPAfter(0, NULL, 4, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
 
@@ -374,7 +374,7 @@ void mnOptionMakeBackupClearSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNOptionBackupClearGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMNOptionBackupClearGObj = gobj = omMakeGObjSPAfter(0, NULL, 4, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
     mnOptionMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 17);
@@ -415,7 +415,7 @@ void mnOptionMakeMenuGObj(void)
     intptr_t sp1C[ARRAY_COUNT(D_ovl60_80133680)] = D_ovl60_80133680;
     Vec2f sp3C[ARRAY_COUNT(D_ovl60_8013368C)] = D_ovl60_8013368C;
 
-    sMNOptionMenuGObj = omMakeGObjCommon(0, NULL, 5, 0x80000000);
+    sMNOptionMenuGObj = omMakeGObjSPAfter(0, NULL, 5, 0x80000000);
 }
 
 // 0x80132248
@@ -441,7 +441,7 @@ void mnOptionMakeHeaderSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = omMakeGObjCommon(0, NULL, 3, 0x80000000);
+    gobj = omMakeGObjSPAfter(0, NULL, 3, 0x80000000);
 
     omAddGObjRenderProc(gobj, mnOptionHeaderProcRender, 1, 0x80000000, -1);
 
@@ -476,7 +476,7 @@ void mnOptionMakeDecalSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = omMakeGObjCommon(0, NULL, 2, 0x80000000);
+    gobj = omMakeGObjSPAfter(0, NULL, 2, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNCommonCircleSprite));
@@ -542,7 +542,7 @@ void func_ovl60_8013275C(void)
 {
     if (D_ovl60_801337D4 != NULL)
     {
-        omEjectGObjCommon(D_ovl60_801337D4);
+        omEjectGObj(D_ovl60_801337D4);
 
         D_ovl60_801337D4 = NULL;
     }
@@ -594,7 +594,7 @@ void mnOptionSoundUnderlineProcRender(GObj *gobj)
 // 0x801329F4
 void mnOptionMakeSoundUnderlineGObj(void)
 {
-    omAddGObjRenderProc(omMakeGObjCommon(0, NULL, 5, 0x80000000), mnOptionSoundUnderlineProcRender, 3, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, NULL, 5, 0x80000000), mnOptionSoundUnderlineProcRender, 3, 0x80000000, -1);
 }
 
 // 0x80132A40
@@ -775,7 +775,7 @@ void mnOptionMainProcUpdate(GObj *gobj)
             else sMNOptionOption--;
 
             mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], mnOptionTab_Status_Highlight);
-            omEjectGObjCommon(sMNOptionMenuGObj);
+            omEjectGObj(sMNOptionMenuGObj);
             mnOptionMakeMenuGObj();
         }
         if
@@ -801,7 +801,7 @@ void mnOptionMainProcUpdate(GObj *gobj)
             else sMNOptionOption++;
 
             mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], mnOptionTab_Status_Highlight);
-            omEjectGObjCommon(sMNOptionMenuGObj);
+            omEjectGObj(sMNOptionMenuGObj);
             mnOptionMakeMenuGObj();
         }
         if (sMNOptionOption == mnOption_Option_Sound)
@@ -818,12 +818,12 @@ void mnOptionMainProcUpdate(GObj *gobj)
 
                     sMNOptionSoundIsMonoOrStereo = 1;
 
-                    omEjectGObjCommon(sMNOptionSoundOptionGObj);
+                    omEjectGObj(sMNOptionSoundOptionGObj);
                     mnOptionMakeSoundOptionSObjs();
 
                     sMNOptionOptionChangeWait = mnCommonGetOptionChangeWaitN(stick_range, 7);
 
-                    omEjectGObjCommon(sMNOptionMenuGObj);
+                    omEjectGObj(sMNOptionMenuGObj);
                     mnOptionMakeMenuGObj();
                     func_80020A34(sMNOptionSoundIsMonoOrStereo);
                 }
@@ -840,12 +840,12 @@ void mnOptionMainProcUpdate(GObj *gobj)
 
                     sMNOptionSoundIsMonoOrStereo = 0;
 
-                    omEjectGObjCommon(sMNOptionSoundOptionGObj);
+                    omEjectGObj(sMNOptionSoundOptionGObj);
                     mnOptionMakeSoundOptionSObjs();
 
                     sMNOptionOptionChangeWait = mnCommonGetOptionChangeWaitP(stick_range, 7);
 
-                    omEjectGObjCommon(sMNOptionMenuGObj);
+                    omEjectGObj(sMNOptionMenuGObj);
                     mnOptionMakeMenuGObj();
                     func_80020A34(sMNOptionSoundIsMonoOrStereo);
                 }
@@ -860,9 +860,9 @@ void mnOptionMainProcUpdate(GObj *gobj)
                 }
                 else sMNOptionSoundIsMonoOrStereo = 1;
 
-                omEjectGObjCommon(sMNOptionSoundOptionGObj);
+                omEjectGObj(sMNOptionSoundOptionGObj);
                 mnOptionMakeSoundOptionSObjs();
-                omEjectGObjCommon(sMNOptionMenuGObj);
+                omEjectGObj(sMNOptionMenuGObj);
                 mnOptionMakeMenuGObj();
                 func_80020A34(sMNOptionSoundIsMonoOrStereo);
             }
@@ -886,7 +886,7 @@ void func_ovl60_8013346C(void)
 
     rdManagerInitSetup(&rldm_setup);
     rdManagerLoadFiles(dMNOptionFileIDs, ARRAY_COUNT(dMNOptionFileIDs), sMNOptionFiles, gsMemoryAlloc(rdManagerGetAllocSize(dMNOptionFileIDs, ARRAY_COUNT(dMNOptionFileIDs)), 0x10));
-    omMakeGObjCommon(0, mnOptionMainProcUpdate, 0, 0x80000000);
+    omMakeGObjSPAfter(0, mnOptionMainProcUpdate, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
     mnOptionInitVars();
     func_ovl60_80132CC0();

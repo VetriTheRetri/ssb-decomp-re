@@ -83,7 +83,7 @@ f32 gPauseYawOrigin;
 f32 gPausePitchOrigin;
 
 // 0x801317F0 - Sprite of red arrow indicator for grabbable items
-Sprite *gITemArrowSprite;
+Sprite *gITArrowSprite;
 
 // 0x801317F4 - Number of unique teams in-game minus one?
 s32 gBattlePlacement;
@@ -863,7 +863,7 @@ void func_ovl2_8010F3C0(void)
         }
         else
         {
-            interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+            interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
             gPlayerDamageInterface[player].interface_gobj = interface_gobj;
 
@@ -1070,7 +1070,7 @@ void func_ovl2_8010FDD4(s32 player)
 
     if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_spr != NULL))
     {
-        GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+        GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
         omAddGObjRenderProc(interface_gobj, func_ovl2_8010F878, 0x17, 0x80000000U, -1);
 
         gcAppendSObjWithSprite(interface_gobj, (uintptr_t)gCommonFiles[4] + (intptr_t)&D_NF_00000068);
@@ -1116,7 +1116,7 @@ void func_ovl2_8010FFA8(s32 player)
 
     if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_spr != NULL))
     {
-        gPlayerStocksGObj[player] = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+        gPlayerStocksGObj[player] = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
         omAddGObjRenderProc(interface_gobj, func_ovl2_8010FF24, 0x17, 0x80000000U, -1);
 
@@ -1146,7 +1146,7 @@ void func_ovl2_80110138(GObj *interface_gobj)
     if (s_steal->anim_frames == 0)
     {
         func_ovl2_801039B4(gPlayerCommonInterface.ifplayers_pos_x[ifGetPlayer(interface_gobj)] + ifPlayer_Stocks_IconOffsetsX[ifGetPlayer(interface_gobj)], gPlayerCommonInterface.ifplayers_pos_y - 20);
-        omEjectGObjCommon(interface_gobj);
+        omEjectGObj(interface_gobj);
 
         return;
     }
@@ -1170,7 +1170,7 @@ void func_ovl2_80110138(GObj *interface_gobj)
 void func_ovl2_801102B0(s32 thief, s32 stolen)
 {
     ftStruct *fp = ftGetStruct(gBattleState->player_block[stolen].fighter_gobj);
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     if (interface_gobj != NULL)
     {
@@ -1184,7 +1184,7 @@ void func_ovl2_801102B0(s32 thief, s32 stolen)
 
         if (check_sobj == NULL)
         {
-            omEjectGObjCommon(interface_gobj);
+            omEjectGObj(interface_gobj);
 
             return;
         }
@@ -1566,7 +1566,7 @@ void ifPlayer_MagnifyGlass_SetInterface(void)
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
-        GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xC, 0x80000000U);
+        GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xC, 0x80000000U);
 
         omAddOMMtxForDObjFixed(omAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)gCommonFiles[0] + (intptr_t)&D_NF_00000030)), OMMtx_Transform_TraRotRpyRSca, 0);
 
@@ -1644,7 +1644,7 @@ void func_ovl2_80111640(GObj *interface_gobj)
 // 0x80111684
 GObj* func_ovl2_80111684(void (*proc0)(GObj*), void (*proc1)(GObj*))
 {
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, proc0, 8, 0x80000000U, -1);
     func_8000F590(interface_gobj, (void*) ((uintptr_t)gCommonFiles[0] + (intptr_t)&D_NF_00000188), NULL, 0x1B, 0, 0);
@@ -1724,7 +1724,7 @@ void ifPlayer_MagnifyArrows_SetInterface(void)
 {
     DObj *dobj;
 
-    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_Interface, func_ovl2_8011171C, 0xB, 0x80000000U), ifMagnify_WarnArrowsGfx_ProcRender, 8, 0x80000000U, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(GObj_Kind_Interface, func_ovl2_8011171C, 0xB, 0x80000000U), ifMagnify_WarnArrowsGfx_ProcRender, 8, 0x80000000U, -1);
 
     dobj = DObjGetStruct(func_ovl2_80111684(func_ovl2_80111554, func_ovl2_801115FC));
 
@@ -1801,7 +1801,7 @@ void ifPlayer_Tag_SetInterface(void)
     {
         if (gBattleState->player_block[player].player_kind != Pl_Kind_Not)
         {
-            interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+            interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
             omAddGObjRenderProc(interface_gobj, func_ovl2_80111A3C, 0x17, 0x80000000U, -1);
 
@@ -1856,13 +1856,13 @@ void func_ovl2_80111D64(GObj *interface_gobj)
 // 0x80111EC0
 GObj* ifItem_PickupArrow_MakeInterface(itStruct *ip)
 {
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     if (interface_gobj != NULL)
     {
         omAddGObjRenderProc(interface_gobj, func_ovl2_80111D64, 0x17, 0x80000000U, -1);
 
-        if (gcAppendSObjWithSprite(interface_gobj, gITemArrowSprite) != NULL)
+        if (gcAppendSObjWithSprite(interface_gobj, gITArrowSprite) != NULL)
         {
             interface_gobj->user_data.p = ip; // Give it up for... the GObj with the most flexible user_data assignments ever?
 
@@ -1872,7 +1872,7 @@ GObj* ifItem_PickupArrow_MakeInterface(itStruct *ip)
             }
             return interface_gobj;
         }
-        else omEjectGObjCommon(interface_gobj);
+        else omEjectGObj(interface_gobj);
     }
     return NULL;
 }
@@ -1880,7 +1880,7 @@ GObj* ifItem_PickupArrow_MakeInterface(itStruct *ip)
 // 0x80111F80
 void func_ovl2_80111F80(void)
 {
-    Sprite *sprite = gITemArrowSprite =
+    Sprite *sprite = gITArrowSprite =
 
     (Sprite*) ((uintptr_t)rdManagerGetFileWithExternHeap((intptr_t)&D_NF_00000057, gsMemoryAlloc(rdManagerGetFileSize((intptr_t)&D_NF_00000057), 0x10)) + (intptr_t)&D_NF_00000050);
 
@@ -1896,7 +1896,7 @@ void func_ovl2_80111FF0(GObj *interface_gobj)
 {
     gsStopCurrentProcess(0x3C);
 
-    omEjectGObjCommon(NULL);
+    omEjectGObj(NULL);
 
     gsStopCurrentProcess(1);
 }
@@ -1924,7 +1924,7 @@ void func_ovl2_801120D4(void)
 {
 
     void *sprite_head = gCommonFiles[1];
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
     s32 i;
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
@@ -2127,7 +2127,7 @@ finish:
         }
         gsStopCurrentProcess(1);
     }
-    omEjectGObjCommon(NULL);
+    omEjectGObj(NULL);
     gsStopCurrentProcess(1);
 }
 
@@ -2138,7 +2138,7 @@ SObj* func_ovl2_80112668(void)
     SObj *sobj;
     s32 i;
 
-    interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -2186,7 +2186,7 @@ SObj* func_ovl2_80112668(void)
 // 0x80112814
 GObj* func_ovl2_80112814(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
 
@@ -2235,14 +2235,14 @@ void func_ovl2_80112880(GObj *interface_gobj)
         gsStopCurrentProcess(0x1E);
         func_ovl2_8010CF20();
     }
-    omEjectGObjCommon(NULL);
+    omEjectGObj(NULL);
     gsStopCurrentProcess(1);
 }
 
 // 0x801129DC
 void func_ovl2_801129DC(s32 index)
 {
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xA, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xA, 0x80000000U);
 
     omAddGObjCommonProc(interface_gobj, func_ovl2_80112880, 0, 5);
 
@@ -2255,14 +2255,14 @@ void func_ovl2_80112A34(s32 arg0)
     gsStopCurrentProcess(0x5A);
     func_ovl2_80112668();
     func_ovl2_801129DC(lbRandom_GetIntRange(3));
-    omEjectGObjCommon(NULL);
+    omEjectGObj(NULL);
     gsStopCurrentProcess(1);
 }
 
 // 0x80112A80
 void ifStart_TrafficLamp_SetInterface(void)
 {
-    omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xA, 0x80000000U), func_ovl2_80112A34, 0, 5);
+    omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xA, 0x80000000U), func_ovl2_80112A34, 0, 5);
 
     gBattleState->game_status = gmMatch_GameStatus_Wait;
 }
@@ -2275,7 +2275,7 @@ void func_ovl2_80112AD0(s32 arg0)
     ifPlayer_Damage_InitInterface();
     func_ovl2_801121C4();
     func_800269C0(0x1EA);
-    omEjectGObjCommon(NULL);
+    omEjectGObj(NULL);
     gsStopCurrentProcess(1);
 }
 
@@ -2300,7 +2300,7 @@ void func_ovl2_80112B24(GObj *interface_gobj, u8 *colors)
 // 0x80112B74
 void func_ovl2_80112B74(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, &func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
     omAddGObjCommonProc(interface_gobj, func_ovl2_80112AD0, 0, 5);
@@ -2393,7 +2393,7 @@ SObj* ifTimer_BattleTime_SetTimerDigits(void)
 
     func_ovl2_80112EBC();
 
-    interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, func_ovl2_80112C18, 0x17, 0x80000000U, -1);
 
@@ -2452,7 +2452,7 @@ void func_ovl2_80113104(GObj *interface_gobj)
                         {
                             ifGetProc(interface_gobj)();
 
-                            omEjectGObjCommon(NULL);
+                            omEjectGObj(NULL);
                         }
                         else for (i = 0; i < ARRAY_COUNT(gIsAnnouncedCountSecond); i++)
                         {
@@ -2480,13 +2480,13 @@ void ifTimer_BattleTime_SetInterface(void (*proc)(void))
     D_ovl2_80131800 = 0;
 
     func_ovl2_80112F3C();
-    ifSetProc(omMakeGObjCommon(GObj_Kind_Interface, func_ovl2_80113104, 0xA, 0x80000000U), proc);
+    ifSetProc(omMakeGObjSPAfter(GObj_Kind_Interface, func_ovl2_80113104, 0xA, 0x80000000U), proc);
 }
 
 // 0x8011341C
 GObj* func_ovl2_8011341C(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
 
@@ -2755,9 +2755,9 @@ void func_ovl2_80113EB4(s32 player)
 {
     GObj *interface_gobj;
 
-    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_PauseMenu, NULL, 0xE, 0x80000000), func_ovl2_80113AA8, 0x18, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(GObj_Kind_PauseMenu, NULL, 0xE, 0x80000000), func_ovl2_80113AA8, 0x18, 0x80000000, -1);
 
-    interface_gobj = omMakeGObjCommon(GObj_Kind_PauseMenu, NULL, 0xE, 0x80000000);
+    interface_gobj = omMakeGObjSPAfter(GObj_Kind_PauseMenu, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x18, 0x80000000, -1);
 
@@ -3154,7 +3154,7 @@ void ifDisplayScoreFighter(ftStruct *fp)
 // 0x80114A48
 GObj* func_ovl2_80114A48(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
     func_ovl2_80112024(interface_gobj, 7, ifAnnounce_Failure_SpriteData, ARRAY_COUNT(ifAnnounce_Failure_SpriteData));
@@ -3166,7 +3166,7 @@ GObj* func_ovl2_80114A48(void)
 // 0x8014AC4
 GObj* func_ovl2_80114AC4(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000U);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
     func_ovl2_80112024(interface_gobj, 7, ifAnnounce_Complete_SpriteData, ARRAY_COUNT(ifAnnounce_Complete_SpriteData));

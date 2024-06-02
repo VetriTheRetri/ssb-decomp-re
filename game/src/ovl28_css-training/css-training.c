@@ -289,7 +289,7 @@ void mnTrainingCreateLockedPortrait(s32 portrait_id)
     intptr_t locked_portrait_offsets[12] = dMNTrainingLockedPortraitOffsets;
 
     // portrait bg (fire)
-    texture_gobj = omMakeGObjCommon(0U, NULL, 0x12U, 0x80000000U);
+    texture_gobj = omMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
     omAddGObjRenderProc(texture_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
     omAddGObjCommonProc(texture_gobj, mnTrainingSetPortraitX, 1, 1);
 
@@ -301,7 +301,7 @@ void mnTrainingCreateLockedPortrait(s32 portrait_id)
     texture_gobj->user_data.s = portrait_id;
 
     // portrait
-    texture_gobj = omMakeGObjCommon(0U, NULL, 0x12U, 0x80000000U);
+    texture_gobj = omMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
     omAddGObjRenderProc(texture_gobj, mnTrainingRenderPortraitWithNoise, 0x1BU, 0x80000000U, -1);
     omAddGObjCommonProc(texture_gobj, mnTrainingSetPortraitX, 1, 1);
 
@@ -313,7 +313,7 @@ void mnTrainingCreateLockedPortrait(s32 portrait_id)
     mnTrainingInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
 
     // question mark
-    texture_gobj = omMakeGObjCommon(0U, NULL, 0x12U, 0x80000000U);
+    texture_gobj = omMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
     omAddGObjRenderProc(texture_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
     omAddGObjCommonProc(texture_gobj, mnTrainingSetPortraitX, 1, 1);
 
@@ -346,7 +346,7 @@ void mnTrainingCreatePortrait(s32 portrait_id)
     else
     {
         // portrait bg (fire)
-        portrait_bg_gobj = omMakeGObjCommon(0U, NULL, 0x1DU, 0x80000000U);
+        portrait_bg_gobj = omMakeGObjSPAfter(0U, NULL, 0x1DU, 0x80000000U);
         omAddGObjRenderProc(portrait_bg_gobj, func_ovl0_800CCF00, 0x24U, 0x80000000U, -1);
         portrait_bg_gobj->user_data.p = portrait_id;
         omAddGObjCommonProc(portrait_bg_gobj, mnTrainingSetPortraitX, 1, 1);
@@ -355,7 +355,7 @@ void mnTrainingCreatePortrait(s32 portrait_id)
         mnTrainingInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
 
         // portrait
-        portrait_gobj = omMakeGObjCommon(0U, NULL, 0x12U, 0x80000000U);
+        portrait_gobj = omMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
         omAddGObjRenderProc(portrait_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
         omAddGObjCommonProc(portrait_gobj, mnTrainingSetPortraitX, 1, 1);
 
@@ -517,7 +517,7 @@ void mnTrainingCreateTypeImage(s32 port_id)
     intptr_t offsets[4] = dMNTrainingTypeOffsets;
     f32 floats[4] = dMNTrainingTypeOffsetsX;
 
-    gMNTrainingPanels[port_id].type = type_gobj = omMakeGObjCommon(0U, NULL, 0x16U, 0x80000000U);
+    gMNTrainingPanels[port_id].type = type_gobj = omMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
     omAddGObjRenderProc(type_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
 
     if (port_id == gMNTrainingHumanPanelPort)
@@ -566,7 +566,7 @@ void mnTrainingCreatePanel(s32 port_id)
     mnTrainingCreateTypeImage(port_id);
 
     // name/logo
-    namelogo_gobj = omMakeGObjCommon(0U, NULL, 0x16U, 0x80000000U);
+    namelogo_gobj = omMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
     gMNTrainingPanels[port_id].name_logo = namelogo_gobj;
     omAddGObjRenderProc(namelogo_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
 
@@ -607,7 +607,7 @@ void mnTrainingCreateBackground()
     Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    background_gobj = omMakeGObjCommon(0U, NULL, 0x11U, 0x80000000U);
+    background_gobj = omMakeGObjSPAfter(0U, NULL, 0x11U, 0x80000000U);
     omAddGObjRenderProc(background_gobj, func_ovl0_800CCF00, 0x1AU, 0x80000000U, -1);
     background_sobj = gcAppendSObjWithSprite(background_gobj, GetAddressFromOffset(gMNTrainingFilesArray[4], &FILE_015_BACKGROUND_IMAGE_OFFSET));
     background_sobj->cmt = G_TX_WRAP;
@@ -1012,7 +1012,7 @@ void mnTrainingRemoveWhiteSquare(s32 port_id)
     if (white_square_gobj != NULL)
     {
         panel_info->white_square = NULL;
-        omEjectGObjCommon(white_square_gobj);
+        omEjectGObj(white_square_gobj);
     }
 }
 
@@ -1047,7 +1047,7 @@ void mnTrainingCreateWhiteSquare(s32 port_id)
 
     mnTrainingRemoveWhiteSquare(port_id);
 
-    white_square_gobj = omMakeGObjCommon(0U, NULL, 0x1EU, 0x80000000U);
+    white_square_gobj = omMakeGObjSPAfter(0U, NULL, 0x1EU, 0x80000000U);
     gMNTrainingPanels[port_id].white_square = white_square_gobj;
     omAddGObjRenderProc(white_square_gobj, func_ovl0_800CCF00, 0x25U, 0x80000000U, -1);
     white_square_gobj->user_data.p = port_id;
@@ -1092,15 +1092,15 @@ void mnTrainingRemoveHandicapCPULevel(s32 port_id)
 {
     if (gMNTrainingPanels[port_id].handicap_cpu_level != NULL)
     {
-        omEjectGObjCommon(gMNTrainingPanels[port_id].handicap_cpu_level);
+        omEjectGObj(gMNTrainingPanels[port_id].handicap_cpu_level);
     }
     if (gMNTrainingPanels[port_id].arrows != NULL)
     {
-        omEjectGObjCommon(gMNTrainingPanels[port_id].arrows);
+        omEjectGObj(gMNTrainingPanels[port_id].arrows);
     }
     if (gMNTrainingPanels[port_id].handicap_cpu_level_value != NULL)
     {
-        omEjectGObjCommon(gMNTrainingPanels[port_id].handicap_cpu_level_value);
+        omEjectGObj(gMNTrainingPanels[port_id].handicap_cpu_level_value);
     }
 
     gMNTrainingPanels[port_id].handicap_cpu_level = NULL;
@@ -1215,11 +1215,11 @@ void mnTrainingDrawHandicapCPULevel(s32 port_id)
 
     if (gMNTrainingPanels[port_id].handicap_cpu_level != NULL)
     {
-        omEjectGObjCommon(gMNTrainingPanels[port_id].handicap_cpu_level);
+        omEjectGObj(gMNTrainingPanels[port_id].handicap_cpu_level);
         gMNTrainingPanels[port_id].handicap_cpu_level = NULL;
     }
 
-    handicap_cpu_level_gobj = omMakeGObjCommon(0U, NULL, 0x1CU, 0x80000000U);
+    handicap_cpu_level_gobj = omMakeGObjSPAfter(0U, NULL, 0x1CU, 0x80000000U);
     gMNTrainingPanels[port_id].handicap_cpu_level = handicap_cpu_level_gobj;
     omAddGObjRenderProc(handicap_cpu_level_gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
     handicap_cpu_level_gobj->user_data.p = port_id;
@@ -2159,7 +2159,7 @@ void mnTrainingAutopositionToken(s32 port_id)
 
 // 0x80136DD8
 void mnTrainingCreateTokenAutopositionRoutine() {
-    omAddGObjCommonProc(omMakeGObjCommon(0U, NULL, 0x1AU, 0x80000000U), mnTrainingAutopositionToken, 1, 1);
+    omAddGObjCommonProc(omMakeGObjSPAfter(0U, NULL, 0x1AU, 0x80000000U), mnTrainingAutopositionToken, 1, 1);
 }
 
 // 0x80136E1C
@@ -2189,7 +2189,7 @@ void mnTrainingUpdateTokenShinePulseColor(GObj* unused)
 
 // 0x80136E94
 void mnTrainingCreateTokenShinePulseRoutine() {
-    omAddGObjCommonProc(omMakeGObjCommon(0U, NULL, 0x1AU, 0x80000000U), mnTrainingUpdateTokenShinePulseColor, 1, 1);
+    omAddGObjCommonProc(omMakeGObjSPAfter(0U, NULL, 0x1AU, 0x80000000U), mnTrainingUpdateTokenShinePulseColor, 1, 1);
 }
 
 // 0x80136ED8
@@ -2214,7 +2214,7 @@ void mnTrainingSyncShadeAndCostume(s32 unused) {
 
 // 0x80136F84
 void mnTrainingCreateSyncShadeAndCostumeRoutine() {
-    omAddGObjCommonProc(omMakeGObjCommon(0U, NULL, 0x1FU, 0x80000000U), mnTrainingSyncShadeAndCostume, 1, 1);
+    omAddGObjCommonProc(omMakeGObjSPAfter(0U, NULL, 0x1FU, 0x80000000U), mnTrainingSyncShadeAndCostume, 1, 1);
 }
 
 // 0x80136FC8
@@ -2242,7 +2242,7 @@ void mnTrainingCreateWhiteCircles()
 
     for (i = 0; i < 4; i++)
     {
-        white_circle_gobj = omMakeGObjCommon(0U, NULL, 0x15U, 0x80000000U);
+        white_circle_gobj = omMakeGObjSPAfter(0U, NULL, 0x15U, 0x80000000U);
 
         func_8000F120(white_circle_gobj, GetAddressFromOffset(gMNTrainingFilesArray[7], &FILE_016_WHITE_CIRCLE_OFFSET_2), 0);
 
@@ -2314,7 +2314,7 @@ void mnTrainingCreateReadyToFightObjects()
     SObj* sobj;
 
     // Ready to Fight banner
-    gobj = omMakeGObjCommon(0U, NULL, 0x20U, 0x80000000U);
+    gobj = omMakeGObjSPAfter(0U, NULL, 0x20U, 0x80000000U);
     omAddGObjRenderProc(gobj, mnTrainingRenderReadyToFightObject, 0x26U, 0x80000000U, -1);
     omAddGObjCommonProc(gobj, mnTrainingBlinkIfReadyToFight, 1, 1);
 
@@ -2351,7 +2351,7 @@ void mnTrainingCreateReadyToFightObjects()
     sobj->pos.y = 76.0f;
 
     // Press Start indicator
-    gobj = omMakeGObjCommon(0U, NULL, 0x16U, 0x80000000U);
+    gobj = omMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
     omAddGObjRenderProc(gobj, mnTrainingRenderReadyToFightObject, 0x1CU, 0x80000000U, -1);
     omAddGObjCommonProc(gobj, mnTrainingBlinkIfReadyToFight, 1, 1);
 
@@ -2657,7 +2657,7 @@ void mnTrainingInitCSS() {
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl28_80137F60, 8U, gMNTrainingFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl28_80137F60, 8U), 0x10U));
 
-    omMakeGObjCommon(0x400U, &mnTrainingMain, 0xFU, 0x80000000U);
+    omMakeGObjSPAfter(0x400U, &mnTrainingMain, 0xFU, 0x80000000U);
     func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
     func_ovl2_80115890();
     efManager_AllocUserData();

@@ -15,6 +15,9 @@
 // 0x80130D6C
 extern s32 g1PGameTotalDamageTaken; // 1P Game / Bonus damage total?
 
+// 0x80130D98
+extern void *gFTCommonFile;
+
 extern sb32 gFighterIsHurtDetect[/* */];
 extern sb32 gFighterIsHitDetect[/* */];
 

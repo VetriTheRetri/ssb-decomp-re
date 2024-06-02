@@ -7,25 +7,25 @@
 // Global variables declared here as extern for easy access
 
 // 0x8018D040
-extern u32 *gITemFileData;
+extern u32 *gITFileData;
 
 // 0x8018D044
-extern s32 gITemEffectBank;
+extern s32 gITEffectBank;
 
 // 0x8018D048
-extern itRandomWeights gITemRandomWeights;
+extern itRandomWeights gITRandomWeights;
 
 // 0x8018D060
-extern itMonsterInfo gITemMonsterData;
+extern itMonsterInfo gITMonsterData;
 
 // 0x8018D090
-extern s32 gITemDisplayMode;
+extern s32 gITDisplayMode;
 
 // 0x8018D094
-extern itStruct *gITemAllocFree;
+extern itStruct *gITAllocFree;
 
 // 0x8018D098
-extern itSpawnActor gITemSpawnActor;
+extern itSpawnActor gITSpawnActor;
 
 // Global data
 

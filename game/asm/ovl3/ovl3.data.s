@@ -2096,7 +2096,7 @@ glabel dITCapsuleItemDesc
   .incbin "ovl3.raw.bin", 0x57B30, 0x4
 
 glabel D_ovl3_80189634
-  /* 57B34 104074 80189634 */  .4byte gITemFileData
+  /* 57B34 104074 80189634 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x57B38, 0xC
 
 glabel jtbl_ovl3_80189644
@@ -2140,7 +2140,7 @@ glabel jtbl_ovl3_801896C4
 
 glabel dITTomatoItemDesc
   .incbin "ovl3.raw.bin", 0x57C30, 0x4
-  /* 57C34 104174 80189734 */  .4byte gITemFileData
+  /* 57C34 104174 80189734 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x57C38, 0xC
 
 glabel jtbl_ovl3_80189744
@@ -2165,7 +2165,7 @@ glabel jtbl_ovl3_801897A4
 
 glabel dITHeartItemDesc
   .incbin "ovl3.raw.bin", 0x57CD0, 0x4
-  /* 57CD4 104214 801897D4 */  .4byte gITemFileData
+  /* 57CD4 104214 801897D4 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x57CD8, 0xC
 
 glabel jtbl_ovl3_801897E4
@@ -2190,7 +2190,7 @@ glabel jtbl_ovl3_80189844
 
 glabel dITStarItemDesc
   .incbin "ovl3.raw.bin", 0x57D70, 0x4
-  /* 57D74 1042B4 80189874 */  .4byte gITemFileData
+  /* 57D74 1042B4 80189874 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x57D78, 0xC
 
 glabel jtbl_ovl3_80189884
@@ -2201,7 +2201,7 @@ glabel jtbl_ovl3_80189884
 
 glabel dITSwordITemDesc
   .incbin "ovl3.raw.bin", 0x57DB0, 0x4
-  /* 57DB4 1042F4 801898B4 */  .4byte gITemFileData
+  /* 57DB4 1042F4 801898B4 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x57DB8, 0xC
 
 glabel jtbl_ovl3_801898C4
@@ -2241,7 +2241,7 @@ glabel jtbl_ovl3_80189964
 
 glabel itCommon_Bat_ItemDesc
   .incbin "ovl3.raw.bin", 0x57E90, 0x4
-  /* 57E94 1043D4 80189994 */  .4byte gITemFileData
+  /* 57E94 1043D4 80189994 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x57E98, 0xC
 
 glabel jtbl_ovl3_801899A4
@@ -2284,7 +2284,7 @@ glabel D_ovl3_80189A70
 
 glabel dITHarisenItemDesc
   .incbin "ovl3.raw.bin", 0x57F78, 0x4
-  /* 57F7C 1044BC 80189A7C */  .4byte gITemFileData
+  /* 57F7C 1044BC 80189A7C */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x57F80, 0xC
 
 glabel jtbl_ovl3_80189A8C
@@ -2324,7 +2324,7 @@ glabel jtbl_ovl3_80189B2C
 
 glabel dITLGunItemDesc
   .incbin "ovl3.raw.bin", 0x58050, 0x4
-  /* 58054 104594 80189B54 */  .4byte gITemFileData
+  /* 58054 104594 80189B54 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58058, 0xC
 
 glabel jtbl_ovl3_80189B64
@@ -2364,7 +2364,7 @@ glabel jtbl_ovl3_80189C04
 
 glabel itLGunWeaponAmmoWeaponDesc
   .incbin "ovl3.raw.bin", 0x58124, 0x8
-  /* 5812C 10466C 80189C2C */  .4byte gITemFileData
+  /* 5812C 10466C 80189C2C */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58130, 0x8
 
 glabel jtbl_ovl3_80189C38
@@ -2382,7 +2382,7 @@ glabel dITFFlowerItemDesc
   .incbin "ovl3.raw.bin", 0x58160, 0x4
 
 glabel D_ovl3_80189C64
-  /* 58164 1046A4 80189C64 */  .4byte gITemFileData
+  /* 58164 1046A4 80189C64 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58168, 0xC
 
 glabel jtbl_ovl3_80189C74
@@ -2422,7 +2422,7 @@ glabel jtbl_ovl3_80189D14
 
 glabel dITFFlowerWeaponFlameWeaponDesc
   .incbin "ovl3.raw.bin", 0x58234, 0x8
-  /* 5823C 10477C 80189D3C */  .4byte gITemFileData
+  /* 5823C 10477C 80189D3C */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58240, 0x8
 
 glabel jtbl_ovl3_80189D48
@@ -2439,7 +2439,7 @@ glabel jtbl_ovl3_80189D5C
 
 glabel dITHammerItemDesc
   .incbin "ovl3.raw.bin", 0x58270, 0x4
-  /* 58274 1047B4 80189D74 */  .4byte gITemFileData
+  /* 58274 1047B4 80189D74 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58278, 0xC
 
 glabel jtbl_ovl3_80189D84
@@ -2479,7 +2479,7 @@ glabel D_ovl3_80189E50
   .incbin "ovl3.raw.bin", 0x58350, 0x4
 
 glabel dITMSBombItemDesc
-  /* 58354 104894 80189E54 */  .4byte gITemFileData
+  /* 58354 104894 80189E54 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58358, 0xC
 
 glabel jtbl_ovl3_80189E64
@@ -2537,7 +2537,7 @@ glabel itCommon_BombHei_ItemDesc
   .incbin "ovl3.raw.bin", 0x58498, 0x4
 
 glabel D_ovl3_80189F9C
-  /* 5849C 1049DC 80189F9C */  .4byte gITemFileData
+  /* 5849C 1049DC 80189F9C */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x584A0, 0xC
 
 glabel jtbl_ovl3_80189FAC
@@ -2615,7 +2615,7 @@ glabel jtbl_ovl3_8018A0E0
 
 glabel dITStarRodITemDesc
   .incbin "ovl3.raw.bin", 0x585F0, 0x4
-  /* 585F4 104B34 8018A0F4 */  .4byte gITemFileData
+  /* 585F4 104B34 8018A0F4 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x585F8, 0xC
 
 glabel jtbl_ovl3_8018A104
@@ -2655,7 +2655,7 @@ glabel jtbl_ovl3_8018A1A4
 
 glabel dITStarRodWeaponStarWeaponDesc
   .incbin "ovl3.raw.bin", 0x586C4, 0x8
-  /* 586CC 104C0C 8018A1CC */  .4byte gITemFileData
+  /* 586CC 104C0C 8018A1CC */  .4byte gITFileData
 
 glabel D_ovl3_8018A1D0
   .incbin "ovl3.raw.bin", 0x586D0, 0x8
@@ -2673,7 +2673,7 @@ glabel jtbl_ovl3_8018A1D8
 
 glabel dITGShellITemDesc
   .incbin "ovl3.raw.bin", 0x58700, 0x4
-  /* 58704 104C44 8018A204 */  .4byte gITemFileData
+  /* 58704 104C44 8018A204 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58708, 0xC
 
 glabel jtbl_ovl3_8018A214
@@ -2754,7 +2754,7 @@ glabel dITBoxItemDesc
   .incbin "ovl3.raw.bin", 0x58850, 0x4
 
 glabel D_ovl3_8018A354
-  /* 58854 104D94 8018A354 */  .4byte gITemFileData
+  /* 58854 104D94 8018A354 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58858, 0xC
 
 glabel jtbl_ovl3_8018A364
@@ -2801,7 +2801,7 @@ glabel dITTaruItemDesc
   .incbin "ovl3.raw.bin", 0x58950, 0x4
 
 glabel D_ovl3_8018A454
-  /* 58954 104E94 8018A454 */  .4byte gITemFileData
+  /* 58954 104E94 8018A454 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58958, 0xC
 
 glabel jtbl_ovl3_8018A464
@@ -2859,7 +2859,7 @@ glabel jtbl_ovl3_8018A558
 
 glabel itCommon_RShell_ItemDesc
   .incbin "ovl3.raw.bin", 0x58A70, 0x4
-  /* 58A74 104FB4 8018A574 */  .4byte gITemFileData
+  /* 58A74 104FB4 8018A574 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58A78, 0xC
 
 glabel jtbl_ovl3_8018A584
@@ -2918,7 +2918,7 @@ glabel jtbl_ovl3_8018A67C
 
 glabel dITNBumperItemDesc
   .incbin "ovl3.raw.bin", 0x58B90, 0x4
-  /* 58B94 1050D4 8018A694 */  .4byte gITemFileData
+  /* 58B94 1050D4 8018A694 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58B98, 0xC
 
 glabel jtbl_ovl3_8018A6A4
@@ -3009,7 +3009,7 @@ glabel dITGLuckyStatusDesc
 
 glabel dITMBallITemDesc
   .incbin "ovl3.raw.bin", 0x58D90, 0x4
-  /* 58D94 1052D4 8018A894 */  .4byte gITemFileData
+  /* 58D94 1052D4 8018A894 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58D98, 0xC
 
 glabel jtbl_ovl3_8018A8A4
@@ -3079,7 +3079,7 @@ glabel jtbl_ovl3_8018AA20
 
 glabel dITGBumperItemDesc
   .incbin "ovl3.raw.bin", 0x58F50, 0x4
-  /* 58F54 105494 8018AA54 */  .4byte gITemFileData
+  /* 58F54 105494 8018AA54 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58F58, 0xC
   /* 58F64 1054A4 8018AA64 */  .4byte itGBumperSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x58F68, 0x4
@@ -3088,7 +3088,7 @@ glabel dITGBumperItemDesc
 
 glabel dITIwarkItemDesc
   .incbin "ovl3.raw.bin", 0x58F90, 0x4
-  /* 58F94 1054D4 8018AA94 */  .4byte gITemFileData
+  /* 58F94 1054D4 8018AA94 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x58F98, 0xC
 
 glabel jtbl_ovl3_8018AAA4
@@ -3104,7 +3104,7 @@ glabel dITIwarkStatusDesc
 
 glabel dITIwarkWeaponRockWeaponDesc
   .incbin "ovl3.raw.bin", 0x59004, 0x8
-  /* 5900C 10554C 8018AB0C */  .4byte gITemFileData
+  /* 5900C 10554C 8018AB0C */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x59010, 0x8
 
 glabel jtbl_ovl3_8018AB18
@@ -3118,7 +3118,7 @@ glabel jtbl_ovl3_8018AB18
 
 glabel dITKabigonItemDesc
   .incbin "ovl3.raw.bin", 0x59040, 0x4
-  /* 59044 105584 8018AB44 */  .4byte gITemFileData
+  /* 59044 105584 8018AB44 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x59048, 0xC
   /* 59054 105594 8018AB54 */  .4byte itKabigonSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x59058, 0x1C
@@ -3131,7 +3131,7 @@ glabel dITKabigonStatusDesc
 
 glabel dITTosakintoItemDesc
   .incbin "ovl3.raw.bin", 0x590C0, 0x4
-  /* 590C4 105604 8018ABC4 */  .4byte gITemFileData
+  /* 590C4 105604 8018ABC4 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x590C8, 0xC
 
 glabel jtbl_ovl3_8018ABD4
@@ -3151,7 +3151,7 @@ glabel jtbl_ovl3_8018AC14
 
 glabel dITMewItemDesc
   .incbin "ovl3.raw.bin", 0x59140, 0x4
-  /* 59144 105684 8018AC44 */  .4byte gITemFileData
+  /* 59144 105684 8018AC44 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x59148, 0xC
 
 glabel jtbl_ovl3_8018AC54
@@ -3165,7 +3165,7 @@ glabel dITMewStatusDesc
 
 glabel dITNyarsItemDesc
   .incbin "ovl3.raw.bin", 0x591A0, 0x4
-  /* 591A4 1056E4 8018ACA4 */  .4byte gITemFileData
+  /* 591A4 1056E4 8018ACA4 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x591A8, 0xC
 
 glabel jtbl_ovl3_8018ACB4
@@ -3179,7 +3179,7 @@ glabel dITNyarsStatusDesc
 
 glabel dITNyarsWeaponCoinWeaponDesc
   .incbin "ovl3.raw.bin", 0x591F4, 0x8
-  /* 591FC 10573C 8018ACFC */  .4byte gITemFileData
+  /* 591FC 10573C 8018ACFC */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x59200, 0x8
   /* 59208 105748 8018AD08 */  .4byte itNyarsWeaponCoinProcUpdate
   .incbin "ovl3.raw.bin", 0x5920C, 0x4
@@ -3195,7 +3195,7 @@ glabel jtbl_ovl3_8018AD10
 
 glabel dITLizardonItemDesc
   .incbin "ovl3.raw.bin", 0x59230, 0x4
-  /* 59234 105774 8018AD34 */  .4byte gITemFileData
+  /* 59234 105774 8018AD34 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x59238, 0xC
 
 glabel jtbl_ovl3_8018AD44
@@ -3220,7 +3220,7 @@ glabel jtbl_ovl3_8018ADA4
 
 glabel dITLizardonWeaponFlameWeaponDesc
   .incbin "ovl3.raw.bin", 0x592C4, 0x8
-  /* 592CC 10580C 8018ADCC */  .4byte gITemFileData
+  /* 592CC 10580C 8018ADCC */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x592D0, 0x8
 
 glabel jtbl_ovl3_8018ADD8
@@ -3237,7 +3237,7 @@ glabel jtbl_ovl3_8018ADEC
 
 glabel dITSpearItemDesc
   .incbin "ovl3.raw.bin", 0x59300, 0x4
-  /* 59304 105844 8018AE04 */  .4byte gITemFileData
+  /* 59304 105844 8018AE04 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x59308, 0xC
 
 glabel jtbl_ovl3_8018AE14
@@ -3253,21 +3253,21 @@ glabel dITSpearStatusDesc
 
 glabel dITSpearWeaponSwarmWeaponDesc
   .incbin "ovl3.raw.bin", 0x59374, 0x8
-  /* 5937C 1058BC 8018AE7C */  .4byte gITemFileData
+  /* 5937C 1058BC 8018AE7C */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x59380, 0x8
   /* 59388 1058C8 8018AE88 */  .4byte itSpearWeaponSwarmProcUpdate
   .incbin "ovl3.raw.bin", 0x5938C, 0x1C
 
 glabel dITPippiWeaponSwarmWeaponDesc
   .incbin "ovl3.raw.bin", 0x593A8, 0x8
-  /* 593B0 1058F0 8018AEB0 */  .4byte gITemFileData
+  /* 593B0 1058F0 8018AEB0 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x593B4, 0x8
   /* 593BC 1058FC 8018AEBC */  .4byte itSpearWeaponSwarmProcUpdate
   .incbin "ovl3.raw.bin", 0x593C0, 0x20
 
 glabel dITKamexItemDesc
   .incbin "ovl3.raw.bin", 0x593E0, 0x4
-  /* 593E4 105924 8018AEE4 */  .4byte gITemFileData
+  /* 593E4 105924 8018AEE4 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x593E8, 0xC
 
 glabel jtbl_ovl3_8018AEF4
@@ -3292,7 +3292,7 @@ glabel jtbl_ovl3_8018AF54
 
 glabel dITKamexWeaponHydroWeaponDesc
   .incbin "ovl3.raw.bin", 0x59474, 0x8
-  /* 5947C 1059BC 8018AF7C */  .4byte gITemFileData
+  /* 5947C 1059BC 8018AF7C */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x59480, 0x8
   /* 59488 1059C8 8018AF88 */  .4byte itKamexWeaponHydroProcUpdate
   .incbin "ovl3.raw.bin", 0x5948C, 0x4
@@ -3310,7 +3310,7 @@ glabel jtbl_ovl3_8018AF9C
 
 glabel dITMLuckyItemDesc
   .incbin "ovl3.raw.bin", 0x594B0, 0x4
-  /* 594B4 1059F4 8018AFB4 */  .4byte gITemFileData
+  /* 594B4 1059F4 8018AFB4 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x594B8, 0xC
 
 glabel jtbl_ovl3_8018AFC4
@@ -3339,11 +3339,11 @@ glabel jtbl_ovl3_8018B040
   /* 59548 105A88 8018B048 */  .4byte itMLuckyNSpawnProcMap
   .incbin "ovl3.raw.bin", 0x5954C, 0x24
 
-glabel dITEggITemDesc
+glabel dITEggITDesc
   .incbin "ovl3.raw.bin", 0x59570, 0x4
 
 glabel D_ovl3_8018B074
-  /* 59574 105AB4 8018B074 */  .4byte gITemFileData
+  /* 59574 105AB4 8018B074 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x59578, 0xC
 
 glabel jtbl_ovl3_8018B084
@@ -3387,7 +3387,7 @@ glabel jtbl_ovl3_8018B104
 
 glabel dITStarmieItemDesc
   .incbin "ovl3.raw.bin", 0x59670, 0x4
-  /* 59674 105BB4 8018B174 */  .4byte gITemFileData
+  /* 59674 105BB4 8018B174 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x59678, 0xC
 
 glabel jtbl_ovl3_8018B184
@@ -3403,7 +3403,7 @@ glabel dITStarmieStatusDesc
 
 glabel dITStarmieWeaponSwiftWeaponDesc
   .incbin "ovl3.raw.bin", 0x596E4, 0x8
-  /* 596EC 105C2C 8018B1EC */  .4byte gITemFileData
+  /* 596EC 105C2C 8018B1EC */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x596F0, 0x8
   /* 596F8 105C38 8018B1F8 */  .4byte itStarmieWeaponSwiftProcUpdate
   .incbin "ovl3.raw.bin", 0x596FC, 0x4
@@ -3419,7 +3419,7 @@ glabel jtbl_ovl3_8018B200
 
 glabel dITSawamuraItemDesc
   .incbin "ovl3.raw.bin", 0x59720, 0x4
-  /* 59724 105C64 8018B224 */  .4byte gITemFileData
+  /* 59724 105C64 8018B224 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x59728, 0xC
 
 glabel jtbl_ovl3_8018B234
@@ -3441,7 +3441,7 @@ glabel jtbl_ovl3_8018B274
 
 glabel dITDogasItemDesc
   .incbin "ovl3.raw.bin", 0x597C0, 0x4
-  /* 597C4 105D04 8018B2C4 */  .4byte gITemFileData
+  /* 597C4 105D04 8018B2C4 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x597C8, 0xC
 
 glabel jtbl_ovl3_8018B2D4
@@ -3459,7 +3459,7 @@ glabel dITDogasWeaponSmogWeaponDesc
   .incbin "ovl3.raw.bin", 0x59834, 0x8
 
 glabel D_ovl3_8018B33C
-  /* 5983C 105D7C 8018B33C */  .4byte gITemFileData
+  /* 5983C 105D7C 8018B33C */  .4byte gITFileData
 
 glabel D_ovl3_8018B340
   .incbin "ovl3.raw.bin", 0x59840, 0x8
@@ -3482,7 +3482,7 @@ glabel dITPippiStatusProcList
 
 glabel dITPippiItemDesc
   .incbin "ovl3.raw.bin", 0x598A0, 0x4
-  /* 598A4 105DE4 8018B3A4 */  .4byte gITemFileData
+  /* 598A4 105DE4 8018B3A4 */  .4byte gITFileData
   .incbin "ovl3.raw.bin", 0x598A8, 0xC
 
 glabel jtbl_ovl3_8018B3B4

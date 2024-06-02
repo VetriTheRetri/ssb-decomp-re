@@ -583,7 +583,7 @@ void mnResultsCreateLogo()
         color = colors[mnResultsGetWinningTeam()];
     }
 
-    logo_gobj = omMakeGObjCommon(0, 0, 0x17, 0x80000000);
+    logo_gobj = omMakeGObjSPAfter(0, 0, 0x17, 0x80000000);
 
     func_8000F120(logo_gobj, GetAddressFromOffset(gMNResultsFilesArray[4], offsets1[winner_char_id]), 0);
     omAddGObjRenderProc(logo_gobj, odRenderDObjTreeForGObj, 0x21, 0x80000000, -1);
@@ -649,7 +649,7 @@ void mnResultsCreateBackground()
         }
     }
 
-    bg_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    bg_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     omAddGObjRenderProc(bg_gobj, mnResultsRenderBackground, 0x1A, 0x80000000, -1);
 
     bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_BACKGROUND_IMAGE_OFFSET));
@@ -906,7 +906,7 @@ void mnResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
     gsColorRGBPair colors[4] = dMNResultsUnusedIndicatorColors;
     intptr_t offsets[4] = dMNResultsIndicatorOffsets;
 
-    indicator_gobj = omMakeGObjCommon(0, 0, 0x12, 0x80000000);
+    indicator_gobj = omMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
     omAddGObjRenderProc(indicator_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
 
     if (gTransferBattleState.player_block[port_id].player_kind == 0)
@@ -974,7 +974,7 @@ void mnResultsDrawString(const char *str, f32 x, f32 y, s32 color_index, f32 sca
     gsColorRGBPair colors[5] = dMNResultsCharColors;
 
     current_x = x;
-    string_gobj = omMakeGObjCommon(0, 0, 0x14, 0x80000000);
+    string_gobj = omMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
     omAddGObjRenderProc(string_gobj, func_ovl0_800CCF00, 0x1D, 0x80000000, -1);
 
     for (i = 0; str[i] != 0; i++)
@@ -1293,7 +1293,7 @@ void mnResultsRenderOverlay(GObj* overlay_gobj)
 void mnResultsCreateOverlay()
 {
     gMNResultsOverlayAlpha = 0;
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x15, 0x80000000), mnResultsRenderOverlay, 0x1E, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x15, 0x80000000), mnResultsRenderOverlay, 0x1E, 0x80000000, -1);
 }
 
 // 0x80134DF4
@@ -1313,7 +1313,7 @@ void mnResultsRenderBackgroundOverlay(GObj* bg_overlay_gobj)
 
         if (gMNResultsBackgroundOverlayAlpha < 0)
         {
-            omEjectGObjCommon(bg_overlay_gobj);
+            omEjectGObj(bg_overlay_gobj);
         }
     }
 
@@ -1331,7 +1331,7 @@ void mnResultsRenderBackgroundOverlay(GObj* bg_overlay_gobj)
 void mnResultsCreateBackgroundOverlay()
 {
     gMNResultsBackgroundOverlayAlpha = 0xFF;
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x19, 0x80000000), mnResultsRenderBackgroundOverlay, 0x23, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x19, 0x80000000), mnResultsRenderBackgroundOverlay, 0x23, 0x80000000, -1);
 }
 
 // 0x80135028
@@ -1351,7 +1351,7 @@ void mnResultsRenderBackgroundOverlay2(GObj* bg_overlay_gobj)
 
         if (gMNResultsBackgroundOverlay2Alpha < 0)
         {
-            omEjectGObjCommon(bg_overlay_gobj);
+            omEjectGObj(bg_overlay_gobj);
         }
     }
 
@@ -1369,7 +1369,7 @@ void mnResultsRenderBackgroundOverlay2(GObj* bg_overlay_gobj)
 void mnResultsCreateBackgroundOverlay2()
 {
     gMNResultsBackgroundOverlay2Alpha = 0xFF;
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x18, 0x80000000), mnResultsRenderBackgroundOverlay2, 0x22, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x18, 0x80000000), mnResultsRenderBackgroundOverlay2, 0x22, 0x80000000, -1);
 }
 
 // 0x8013525C
@@ -1436,7 +1436,7 @@ void mnResultsCreateColumnHeaders()
     s32 i;
     ftStruct* ft_struct;
 
-    column_header_gobj = omMakeGObjCommon(0, 0, 0x16, 0x80000000);
+    column_header_gobj = omMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
     omAddGObjRenderProc(column_header_gobj, func_ovl0_800CCF00, 0x1F, 0x80000000, -1);
 
     for (i = 0; i < 4; i++)
@@ -1593,7 +1593,7 @@ void mnResultsCreateHorizontalLine(s32 y)
 {
     GObj* horizontal_line_gobj;
 
-    horizontal_line_gobj = omMakeGObjCommon(0, 0, 0x16, 0x80000000);
+    horizontal_line_gobj = omMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
     omAddGObjRenderProc(horizontal_line_gobj, mnResultsRenderHorizontalLine, 0x1F, 0x80000000, -1);
     horizontal_line_gobj->user_data.s = y;
 }
@@ -2274,7 +2274,7 @@ void func_ovl31_801377C0(s32 arg0)
         if (D_8009D960->unk34 == 0)
         {
             func_80020AB4(0, 0x16);
-            omEjectGObjCommon(0);
+            omEjectGObj(0);
         }
         gsStopCurrentProcess(1);
     }
@@ -2283,7 +2283,7 @@ void func_ovl31_801377C0(s32 arg0)
 // 0x80137854
 void func_ovl31_80137854()
 {
-    omAddGObjCommonProc(omMakeGObjCommon(0, 0, 0x11, 0x80000000), func_ovl31_801377C0, 0, 1);
+    omAddGObjCommonProc(omMakeGObjSPAfter(0, 0, 0x11, 0x80000000), func_ovl31_801377C0, 0, 1);
 }
 
 // 0x80137898
@@ -2300,7 +2300,7 @@ void func_ovl31_80137898(s32 arg0)
         {
             func_800044B4(winner);
             func_80004494(winner);
-            omEjectGObjCommon(0);
+            omEjectGObj(0);
             gsStopCurrentProcess(1);
         }
 
@@ -2320,7 +2320,7 @@ void func_ovl31_80137898(s32 arg0)
 // 0x80137938
 void func_ovl31_80137938()
 {
-    omAddGObjCommonProc(omMakeGObjCommon(0, 0, 0xF, 0x80000000), func_ovl31_80137898, 0, 1);
+    omAddGObjCommonProc(omMakeGObjSPAfter(0, 0, 0xF, 0x80000000), func_ovl31_80137898, 0, 1);
 }
 
 // 0x8013797C
@@ -2769,7 +2769,7 @@ void mnResultsInit()
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70), gMNResultsFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70)), 0x10));
 
-    omMakeGObjCommon(0, mnResultsMain, 0, 0x80000000U);
+    omMakeGObjSPAfter(0, mnResultsMain, 0, 0x80000000U);
     func_8000B9FC(0, 0x80000000U, 0x64, 3, 0xFF);
     func_ovl2_80115890();
     efManager_AllocUserData();

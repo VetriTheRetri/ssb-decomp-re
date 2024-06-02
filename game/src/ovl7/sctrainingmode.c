@@ -645,7 +645,7 @@ SObj* scTrainingMode_MakeStatDisplaySObj(GObj *interface_gobj, scTrainingSprites
 void scTrainingMode_InitStatDisplayTextInterface(void)
 {
     s32 i;
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -756,7 +756,7 @@ void scTrainingMode_MakeDamageDisplayInterface(void)
     SObj *sobj;
     s32 i;
 
-    gTrainingModeStruct.damage_display_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    gTrainingModeStruct.damage_display_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateDamageInfo, 0x17, 0x80000000, -1);
     omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateDamageResetWait, 1, 4);
@@ -843,7 +843,7 @@ void scTrainingMode_MakeComboDisplayInterface(void)
     GObj *interface_gobj;
     s32 i;
 
-    gTrainingModeStruct.combo_display_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    gTrainingModeStruct.combo_display_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateComboInfo, 0x17, 0x80000000, -1);
     omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateComboResetWait, 1, 4);
@@ -873,7 +873,7 @@ void scTrainingMode_MakeSpeedDisplayInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.speed_display_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    gTrainingModeStruct.speed_display_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -899,7 +899,7 @@ void scTrainingMode_MakeCPDisplayInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.cp_display_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    gTrainingModeStruct.cp_display_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
 
@@ -963,7 +963,7 @@ void scTrainingMode_MakeItemDisplayInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.item_display_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    gTrainingModeStruct.item_display_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateItemDisplay, 0x17, 0x80000000, -1);
 
@@ -1004,7 +1004,7 @@ void scTrainingMode_MakeMenuLabelsInterface(void)
     GObj *interface_gobj;
     s32 i;
 
-    gTrainingModeStruct.menu_label_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.menu_label_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1058,7 +1058,7 @@ void scTrainingMode_RenderMainMenu(GObj *interface_gobj)
 // 0x8018EE10
 void scTrainingMode_MakeMainMenuInterface(void)
 {
-    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000), scTrainingMode_RenderMainMenu, 0x16, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000), scTrainingMode_RenderMainMenu, 0x16, 0x80000000, -1);
 }
 
 // 0x8018EE5C
@@ -1092,7 +1092,7 @@ void scTrainingMode_MakeCPOptionInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.cp_option_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.cp_option_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1139,7 +1139,7 @@ void scTrainingMode_MakeItemOptionInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.item_option_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.item_option_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1184,7 +1184,7 @@ void scTrainingMode_MakeSpeedOptionInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.speed_option_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.speed_option_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1234,7 +1234,7 @@ void scTrainingMode_MakeViewOptionInterface(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    gTrainingModeStruct.view_option_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.view_option_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1305,7 +1305,7 @@ void scTrainingMode_MakeOptionArrowInterface(void)
 {
     GObj *interface_gobj;
 
-    gTrainingModeStruct.arrow_option_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.arrow_option_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1351,7 +1351,7 @@ void func_ovl7_8018F8FC(void) // Unused?
 {
     GObj *interface_gobj;
 
-    gTrainingModeStruct.unk_trainmenu_0x7C = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.unk_trainmenu_0x7C = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
     func_ovl7_8018F7C8(interface_gobj, &gTrainingModeStruct.unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option])->pos.y = 182.0F;
@@ -1420,7 +1420,7 @@ void func_ovl7_8018FB40(void) // Unused?
 {
     GObj *interface_gobj;
 
-    gTrainingModeStruct.unk_trainmenu_0x80 = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.unk_trainmenu_0x80 = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
     func_ovl7_8018F7C8(interface_gobj, gTrainingModeStruct.unk_trainmenu_0x38);
@@ -1441,7 +1441,7 @@ void scTrainingMode_MakeMenuCursorInterface(void)
 {
     GObj *interface_gobj;
 
-    gTrainingModeStruct.cursor_gobj = interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+    gTrainingModeStruct.cursor_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1511,7 +1511,7 @@ void scTrainingMode_UpdateCursorUnderline(void)
 // 0x80190070
 void scTrainingMode_MakeCursorUnderlineInterface(void)
 {
-    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xE, 0x80000000), scTrainingMode_RenderCursorUnderline, 0x16, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000), scTrainingMode_RenderCursorUnderline, 0x16, 0x80000000, -1);
     scTrainingMode_UpdateCursorUnderline();
 }
 

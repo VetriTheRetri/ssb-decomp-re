@@ -10,7 +10,7 @@ glabel func_ovl0_800CB608
   /* 047004 800CB624 AFA60018 */        sw $a2, 0x18($sp)
   /* 047008 800CB628 8FA60018 */        lw $a2, 0x18($sp)
   .L800CB62C:
-  /* 04700C 800CB62C 0C0026A1 */       jal omEjectGObjCommon
+  /* 04700C 800CB62C 0C0026A1 */       jal omEjectGObj
   /* 047010 800CB630 00C02025 */        or $a0, $a2, $zero
   /* 047014 800CB634 8FBF0014 */        lw $ra, 0x14($sp)
   /* 047018 800CB638 27BD0018 */     addiu $sp, $sp, 0x18

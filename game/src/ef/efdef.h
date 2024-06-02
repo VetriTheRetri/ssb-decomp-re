@@ -19,7 +19,7 @@ typedef enum efKind
     Ef_Kind_DustDashSmall,              // Small (actually pretty large) dust kickup behind user
     Ef_Kind_DustDashLarge,              // Large dust kickup behind user
     Ef_Kind_DamageFlyOrbs,              // Cyan orbs that fly outward
-    Ef_Kind_ImpactSW,                   // Green impact shockwave that is created when a character slams into collision
+    Ef_Kind_ImpactWave,                   // Green impact shockwave that is created when a character slams into collision
     Ef_Kind_StarRodSpark,               // Star Rod / Star projectile sparkles 
     Ef_Kind_DamageFlySparks,            // Shows sometimes when getting hit
     Ef_Kind_DamageFlySparksReverse,     // LR-inverted version

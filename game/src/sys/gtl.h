@@ -48,7 +48,7 @@ typedef struct gsGTLSetupDesc
     /* 0x58 */ u32 gobj_size;
     /* 0x5C */ u32 num_ommtxes;
     /* 0x60 */ void *unk60;
-    /* 0x64 */ void (*proc_cleanup)(DObjDynamicStore*); // fn pointer void(*)(struct DObjDynamicStore *)
+    /* 0x64 */ void (*proc_eject)(DObjDynamicStore*); // fn pointer void(*)(struct DObjDynamicStore *)
     /* 0x68 */ u32 num_aobjs;
     /* 0x6C */ u32 num_mobjs;
     /* 0x70 */ u32 num_dobjs;

@@ -17,7 +17,7 @@ struct efCreateDesc
 {
     u8 flags;
     u8 dl_link;
-    void *file_head;
+    void **file_head;
     DObjTransformTypes transform_types1;
     DObjTransformTypes transform_types2;
     void (*proc_update)(GObj*);
@@ -129,7 +129,7 @@ struct efStruct
         efParticle_EffectVars_DustHeavy dust_heavy;
         efParticle_EffectVars_DamageFlyOrbs damage_fly_orbs;
         efParticle_EffectVars_DamageSpawnOrbs damage_spawn_orbs;
-        efParticle_EffectVars_ImpactSW impact_sw;
+        efParticle_EffectVars_ImpactWave impact_wave;
         efParticle_EffectVars_StarRodSpark star_rod_spark;
         efParticle_EffectVars_DamageFlySpark damage_fly_sparks;
         efParticle_EffectVars_DamageSpawnSpark damage_spawn_sparks;

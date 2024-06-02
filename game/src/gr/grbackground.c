@@ -172,7 +172,7 @@ void func_ovl2_80104ABC(void)
     GObj *bg_gobj;
     SObj *bg_sobj;
 
-    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(GObj_Kind_Wallpaper, NULL, 0xD, 0x80000000);
+    D_ovl2_801313D8 = bg_gobj = omMakeGObjSPAfter(GObj_Kind_Wallpaper, NULL, 0xD, 0x80000000);
 
     omAddGObjRenderProc(bg_gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
 
@@ -209,7 +209,7 @@ void func_ovl2_80104B88(void)
 {
     GObj *bg_gobj;
 
-    D_ovl2_801313D8 = bg_gobj = omMakeGObjCommon(GObj_Kind_Wallpaper, NULL, 0xD, 0x80000000);
+    D_ovl2_801313D8 = bg_gobj = omMakeGObjSPAfter(GObj_Kind_Wallpaper, NULL, 0xD, 0x80000000);
 
     omAddGObjRenderProc(bg_gobj, func_ovl2_80104B58, 0, 0x80000000, -1);
 }
@@ -275,9 +275,9 @@ void func_ovl2_80104CD0(void)
     {
         if (gobjproc->is_paused == FALSE)
         {
-            if (gobjproc->proc_thread != NULL)
+            if (gobjproc->proc_common != NULL)
             {
-                gobjproc->proc_thread(gobjproc->parent_gobj);
+                gobjproc->proc_common(gobjproc->parent_gobj);
             }
         }
         gobjproc = gobjproc->link_next;

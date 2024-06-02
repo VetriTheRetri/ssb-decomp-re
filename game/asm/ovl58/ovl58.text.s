@@ -163,7 +163,7 @@ glabel mnN64ActorProcUpdate
   /* 17EEDC 80131D1C 24A51C20 */     addiu $a1, $a1, %lo(mnN64ActorProcUpdate)
   /* 17EEE0 80131D20 00002025 */        or $a0, $zero, $zero
   /* 17EEE4 80131D24 00003025 */        or $a2, $zero, $zero
-  /* 17EEE8 80131D28 0C00265A */       jal omMakeGObjCommon
+  /* 17EEE8 80131D28 0C00265A */       jal omMakeGObjSPAfter
   /* 17EEEC 80131D2C 3C078000 */       lui $a3, 0x8000
   /* 17EEF0 80131D30 240900FF */     addiu $t1, $zero, 0xff
   /* 17EEF4 80131D34 AFA90010 */        sw $t1, 0x10($sp)
@@ -209,7 +209,7 @@ glabel mnN64ActorProcUpdate
   /* 17EF94 80131DD4 240403F0 */     addiu $a0, $zero, 0x3f0
   /* 17EF98 80131DD8 00002825 */        or $a1, $zero, $zero
   /* 17EF9C 80131DDC 2406000D */     addiu $a2, $zero, 0xd
-  /* 17EFA0 80131DE0 0C00265A */       jal omMakeGObjCommon
+  /* 17EFA0 80131DE0 0C00265A */       jal omMakeGObjSPAfter
   /* 17EFA4 80131DE4 3C078000 */       lui $a3, 0x8000
   /* 17EFA8 80131DE8 3C058013 */       lui $a1, %hi(mnN64LogoProcUpdate)
   /* 17EFAC 80131DEC AFA20058 */        sw $v0, 0x58($sp)

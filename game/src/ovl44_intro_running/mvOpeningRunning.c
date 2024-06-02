@@ -88,7 +88,7 @@ void mvOpeningRunningCreateFighters()
 
         func_ovl1_803905CC(fighter_proxy_gobj, 0x10006);
 
-        fighter_proxy_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+        fighter_proxy_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
         fighter_proxy_gobj->user_data.p = fighter_gobj;
 
         fighter_proxy_dobj = omAddDObjForGObj(fighter_proxy_gobj, NULL);
@@ -122,7 +122,7 @@ void mvOpeningRunningCreateBackground()
     SObj* left_bg_sobj;
     SObj* right_bg_sobj;
 
-    bg_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    bg_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     omAddGObjRenderProc(bg_gobj, func_ovl0_800CCF00, 0x1C, 0x80000000, -1);
 
     left_bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(gMvOpeningRunningFilesArray[0], &FILE_037_BACKGROUND_IMAGE_OFFSET));
@@ -145,7 +145,7 @@ void mvOpeningRunningCreateBackground()
 // 0x80131F80
 void mvOpeningRunningCreateTransitionGfx()
 {
-    GObj* gfx_gobj = omMakeGObjCommon(0, 0, 0x13, 0x80000000);
+    GObj* gfx_gobj = omMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
     func_8000F120(gfx_gobj, GetAddressFromOffset(gMvOpeningRunningFilesArray[2], &FILE_04B_TRANSITION_GFX_OFFSET_2), 0);
     omAddGObjRenderProc(gfx_gobj, odRenderDObjTreeForGObj, 6, 0x80000000, -1);
 
@@ -253,7 +253,7 @@ void mvOpeningRunningInit()
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0), gMvOpeningRunningFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0)), 0x10));
 
-    omMakeGObjCommon(0, mvOpeningRunningMainProc, 0, 0x80000000);
+    omMakeGObjSPAfter(0, mvOpeningRunningMainProc, 0, 0x80000000);
 
     func_8000B9FC(0, 0x80000000, 0x64, 1, 0);
 

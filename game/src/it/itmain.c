@@ -202,7 +202,7 @@ void itMainResetPlayerVars(GObj *item_gobj)
     ip->player_number = 0;
     ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
 
-    ip->display_mode = gITemDisplayMode;
+    ip->display_mode = gITDisplayMode;
 }
 
 // 0x801725F8
@@ -308,10 +308,10 @@ void itMainDestroyItem(GObj *item_gobj)
     }
     if (ip->indicator_gobj != NULL)
     {
-        omEjectGObjCommon(ip->indicator_gobj);
+        omEjectGObj(ip->indicator_gobj);
     }
     itManagerSetPrevAlloc(ip);
-    omEjectGObjCommon(item_gobj);
+    omEjectGObj(item_gobj);
 }
 
 // 0x80172984
@@ -582,14 +582,14 @@ sb32 itMainMakeContainerItem(GObj *spawn_gobj)
     s32 index;
     Vec3f vel; // Item's spawn velocity when falling out of a container
 
-    if (gITemRandomWeights.item_num != 0)
+    if (gITRandomWeights.item_num != 0)
     {
-        index = itMainGetWeightedITemID(&gITemRandomWeights);
+        index = itMainGetWeightedITemID(&gITRandomWeights);
 
         if (index <= It_Kind_CommonEnd)
         {
             vel.x = 0.0F;
-            vel.y = *(f32*) ((intptr_t)&lITContainerSpawnVelY + ((uintptr_t)&gITemFileData[index])); // Linker thing; quite ridiculous especially since lITContainerSpawnVelY is 0
+            vel.y = *(f32*) ((intptr_t)&lITContainerSpawnVelY + ((uintptr_t)&gITFileData[index])); // Linker thing; quite ridiculous especially since lITContainerSpawnVelY is 0
             vel.z = 0;
 
             if (itManagerMakeItemSetupCommon(spawn_gobj, index, &DObjGetStruct(spawn_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM)) != NULL)
@@ -638,7 +638,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     vel.z = 0.0F;
 
     // Is this checking to spawn Mew? Can only spawn once at least one character has been unlocked.
-    if ((gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NEWCOMERS) && (lbRandom_GetIntRange(151) == 0) && (gITemMonsterData.monster_curr != It_Kind_Mew) && (gITemMonsterData.monster_prev != It_Kind_Mew))
+    if ((gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NEWCOMERS) && (lbRandom_GetIntRange(151) == 0) && (gITMonsterData.monster_curr != It_Kind_Mew) && (gITMonsterData.monster_prev != It_Kind_Mew))
     {
         index = It_Kind_Mew;
     }
@@ -646,20 +646,20 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     {
         for (i = j = It_Kind_MbMonsterStart; i < It_Kind_MbMonsterEnd; i++) // Pokémon IDs
         {
-            if ((i != gITemMonsterData.monster_curr) && (i != gITemMonsterData.monster_prev))
+            if ((i != gITMonsterData.monster_curr) && (i != gITMonsterData.monster_prev))
             {
-                gITemMonsterData.monster_index[j - It_Kind_MbMonsterStart] = i;
+                gITMonsterData.monster_index[j - It_Kind_MbMonsterStart] = i;
                 j++;
             }
         }
-        index = gITemMonsterData.monster_index[lbRandom_GetIntRange(gITemMonsterData.monster_count)];
+        index = gITMonsterData.monster_index[lbRandom_GetIntRange(gITMonsterData.monster_count)];
     }
-    if (gITemMonsterData.monster_count != 10)
+    if (gITMonsterData.monster_count != 10)
     {
-        gITemMonsterData.monster_count--;
+        gITMonsterData.monster_count--;
     }
-    gITemMonsterData.monster_prev = gITemMonsterData.monster_curr;
-    gITemMonsterData.monster_curr = index;
+    gITMonsterData.monster_prev = gITMonsterData.monster_curr;
+    gITMonsterData.monster_curr = index;
 
     monster_gobj = itManagerMakeItemID(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 

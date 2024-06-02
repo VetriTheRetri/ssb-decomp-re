@@ -111,7 +111,7 @@ glabel mvOpeningMarioDrawName
   /* 16685C 8018D22C 00002825 */        or $a1, $zero, $zero
   /* 166860 8018D230 24060011 */     addiu $a2, $zero, 0x11
   /* 166864 8018D234 AD0A000C */        sw $t2, 0xc($t0)
-  /* 166868 8018D238 0C00265A */       jal omMakeGObjCommon
+  /* 166868 8018D238 0C00265A */       jal omMakeGObjSPAfter
   /* 16686C 8018D23C AD0B0010 */        sw $t3, 0x10($t0)
   /* 166870 8018D240 3C018019 */       lui $at, %hi(gMvOpeningMarioNameGObj)
   /* 166874 8018D244 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -585,7 +585,7 @@ glabel mvOpeningMarioCreatePosedFighterBackground
   /* 166F7C 8018D94C 00002025 */        or $a0, $zero, $zero
   /* 166F80 8018D950 00002825 */        or $a1, $zero, $zero
   /* 166F84 8018D954 24060013 */     addiu $a2, $zero, 0x13
-  /* 166F88 8018D958 0C00265A */       jal omMakeGObjCommon
+  /* 166F88 8018D958 0C00265A */       jal omMakeGObjSPAfter
   /* 166F8C 8018D95C 3C078000 */       lui $a3, 0x8000
   /* 166F90 8018D960 3C058019 */       lui $a1, %hi(mvOpeningMarioRenderPosedFighterBackground)
   /* 166F94 8018D964 240EFFFF */     addiu $t6, $zero, -1
@@ -902,7 +902,7 @@ glabel mvOpeningMarioMainProc
   /* 167420 8018DDF0 3C048019 */       lui $a0, %hi(gMvOpeningMarioNameGObj)
   /* 167424 8018DDF4 5441000C */      bnel $v0, $at, .L8018DE28
   /* 167428 8018DDF8 2401003C */     addiu $at, $zero, 0x3c
-  /* 16742C 8018DDFC 0C0026A1 */       jal omEjectGObjCommon
+  /* 16742C 8018DDFC 0C0026A1 */       jal omEjectGObj
   /* 167430 8018DE00 8C84E20C */        lw $a0, %lo(gMvOpeningMarioNameGObj)($a0)
   /* 167434 8018DE04 0C063585 */       jal mvOpeningMarioInitFighterStagePanel
   /* 167438 8018DE08 00000000 */       nop
@@ -969,7 +969,7 @@ glabel mvOpeningMarioInit
   /* 167510 8018DEE0 24A5DD9C */     addiu $a1, $a1, %lo(mvOpeningMarioMainProc)
   /* 167514 8018DEE4 240403F7 */     addiu $a0, $zero, 0x3f7
   /* 167518 8018DEE8 2406000D */     addiu $a2, $zero, 0xd
-  /* 16751C 8018DEEC 0C00265A */       jal omMakeGObjCommon
+  /* 16751C 8018DEEC 0C00265A */       jal omMakeGObjSPAfter
   /* 167520 8018DEF0 3C078000 */       lui $a3, 0x8000
   /* 167524 8018DEF4 240E00FF */     addiu $t6, $zero, 0xff
   /* 167528 8018DEF8 AFAE0010 */        sw $t6, 0x10($sp)

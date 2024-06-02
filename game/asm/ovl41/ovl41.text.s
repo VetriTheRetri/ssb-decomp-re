@@ -111,7 +111,7 @@ glabel mvOpeningYoshiDrawName
   /* 16BE7C 8018D22C 00002825 */        or $a1, $zero, $zero
   /* 16BE80 8018D230 24060011 */     addiu $a2, $zero, 0x11
   /* 16BE84 8018D234 AD0A000C */        sw $t2, 0xc($t0)
-  /* 16BE88 8018D238 0C00265A */       jal omMakeGObjCommon
+  /* 16BE88 8018D238 0C00265A */       jal omMakeGObjSPAfter
   /* 16BE8C 8018D23C AD0B0010 */        sw $t3, 0x10($t0)
   /* 16BE90 8018D240 3C018019 */       lui $at, %hi(gMvOpeningYoshiNameGObj)
   /* 16BE94 8018D244 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -597,7 +597,7 @@ glabel mvOpeningYoshiCreatePosedFighterBackground
   /* 16C5CC 8018D97C 00002025 */        or $a0, $zero, $zero
   /* 16C5D0 8018D980 00002825 */        or $a1, $zero, $zero
   /* 16C5D4 8018D984 24060013 */     addiu $a2, $zero, 0x13
-  /* 16C5D8 8018D988 0C00265A */       jal omMakeGObjCommon
+  /* 16C5D8 8018D988 0C00265A */       jal omMakeGObjSPAfter
   /* 16C5DC 8018D98C 3C078000 */       lui $a3, 0x8000
   /* 16C5E0 8018D990 3C058019 */       lui $a1, %hi(mvOpeningYoshiRenderPosedFighterBackground)
   /* 16C5E4 8018D994 240EFFFF */     addiu $t6, $zero, -1
@@ -911,7 +911,7 @@ glabel mvOpeningYoshiMainProc
   /* 16CA64 8018DE14 3C048019 */       lui $a0, %hi(gMvOpeningYoshiNameGObj)
   /* 16CA68 8018DE18 5441000C */      bnel $v0, $at, .L8018DE4C
   /* 16CA6C 8018DE1C 2401003C */     addiu $at, $zero, 0x3c
-  /* 16CA70 8018DE20 0C0026A1 */       jal omEjectGObjCommon
+  /* 16CA70 8018DE20 0C0026A1 */       jal omEjectGObj
   /* 16CA74 8018DE24 8C84E22C */        lw $a0, %lo(gMvOpeningYoshiNameGObj)($a0)
   /* 16CA78 8018DE28 0C063587 */       jal mvOpeningYoshiInitFighterStagePanel
   /* 16CA7C 8018DE2C 00000000 */       nop
@@ -980,7 +980,7 @@ glabel mvOpeningYoshiInit
   /* 16CB5C 8018DF0C 24A5DDC0 */     addiu $a1, $a1, %lo(mvOpeningYoshiMainProc)
   /* 16CB60 8018DF10 240403F7 */     addiu $a0, $zero, 0x3f7
   /* 16CB64 8018DF14 2406000D */     addiu $a2, $zero, 0xd
-  /* 16CB68 8018DF18 0C00265A */       jal omMakeGObjCommon
+  /* 16CB68 8018DF18 0C00265A */       jal omMakeGObjSPAfter
   /* 16CB6C 8018DF1C 3C078000 */       lui $a3, 0x8000
   /* 16CB70 8018DF20 240F00FF */     addiu $t7, $zero, 0xff
   /* 16CB74 8018DF24 AFAF0010 */        sw $t7, 0x10($sp)

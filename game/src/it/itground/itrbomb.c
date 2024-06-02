@@ -112,7 +112,7 @@ void itRBombContainerSmashUpdateEffect(GObj *effect_gobj) // RTTF bomb explode G
     if (ep->effect_vars.container.lifetime == 0)
     {
         efManager_SetPrevAlloc(ep);
-        omEjectGObjCommon(effect_gobj);
+        omEjectGObj(effect_gobj);
     }
     else while (dobj != NULL)
     {
@@ -141,7 +141,7 @@ void itRBombContainerSmashMakeEffect(Vec3f *pos)
 
     if (ep != NULL)
     {
-        effect_gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6, 0x80000000);
+        effect_gobj = omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 6, 0x80000000);
 
         if (effect_gobj != NULL)
         {

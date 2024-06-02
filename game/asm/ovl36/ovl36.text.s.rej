@@ -28,7 +28,7 @@ diff a/game/asm/ovl36/ovl36.text.s b/game/asm/ovl36/ovl36.text.s	(rejected hunks
    /* 1667CC 8018D19C AFBF0044 */        sw $ra, 0x44($sp)
 @@ -113,10 +113,10 @@ glabel opMarioDrawName
    /* 166864 8018D234 AD0A000C */        sw $t2, 0xc($t0)
-   /* 166868 8018D238 0C00265A */       jal omMakeGObjCommon
+   /* 166868 8018D238 0C00265A */       jal omMakeGObjSPAfter
    /* 16686C 8018D23C AD0B0010 */        sw $t3, 0x10($t0)
 -  /* 166870 8018D240 3C018019 */       lui $at, %hi(gIntroMarioNameGObj)
 +  /* 166870 8018D240 3C018019 */       lui $at, %hi(gMvOpeningMarioNameGObj)
@@ -111,7 +111,7 @@ diff a/game/asm/ovl36/ovl36.text.s b/game/asm/ovl36/ovl36.text.s	(rejected hunks
 +  /* 167420 8018DDF0 3C048019 */       lui $a0, %hi(gMvOpeningMarioNameGObj)
    /* 167424 8018DDF4 5441000C */      bnel $v0, $at, .L8018DE28
    /* 167428 8018DDF8 2401003C */     addiu $at, $zero, 0x3c
-   /* 16742C 8018DDFC 0C0026A1 */       jal omEjectGObjCommon
+   /* 16742C 8018DDFC 0C0026A1 */       jal omEjectGObj
 -  /* 167430 8018DE00 8C84E20C */        lw $a0, %lo(gIntroMarioNameGObj)($a0)
 +  /* 167430 8018DE00 8C84E20C */        lw $a0, %lo(gMvOpeningMarioNameGObj)($a0)
    /* 167434 8018DE04 0C063585 */       jal func_ovl36_8018D614

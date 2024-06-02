@@ -302,7 +302,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
             {
                 ip->item_vars.pkfire.effect = NULL;
             }
-            else eftrans->translate.vec.f = *pos;
+            else eftrans->translate = *pos;
         }
         else
         {

@@ -178,7 +178,7 @@ glabel mvOpeningRunningCreateFighters
   /* 16F39C 80131D6C 00002025 */        or $a0, $zero, $zero
   /* 16F3A0 80131D70 00002825 */        or $a1, $zero, $zero
   /* 16F3A4 80131D74 24060011 */     addiu $a2, $zero, 0x11
-  /* 16F3A8 80131D78 0C00265A */       jal omMakeGObjCommon
+  /* 16F3A8 80131D78 0C00265A */       jal omMakeGObjSPAfter
   /* 16F3AC 80131D7C 3C078000 */       lui $a3, 0x8000
   /* 16F3B0 80131D80 00408025 */        or $s0, $v0, $zero
   /* 16F3B4 80131D84 AC530084 */        sw $s3, 0x84($v0)
@@ -256,7 +256,7 @@ glabel mvOpeningRunningCreateBackground
   /* 16F4C0 80131E90 00002025 */        or $a0, $zero, $zero
   /* 16F4C4 80131E94 00002825 */        or $a1, $zero, $zero
   /* 16F4C8 80131E98 24060011 */     addiu $a2, $zero, 0x11
-  /* 16F4CC 80131E9C 0C00265A */       jal omMakeGObjCommon
+  /* 16F4CC 80131E9C 0C00265A */       jal omMakeGObjSPAfter
   /* 16F4D0 80131EA0 3C078000 */       lui $a3, 0x8000
   /* 16F4D4 80131EA4 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 16F4D8 80131EA8 240EFFFF */     addiu $t6, $zero, -1
@@ -321,7 +321,7 @@ glabel mvOpeningRunningCreateTransitionGfx
   /* 16F5BC 80131F8C 00002025 */        or $a0, $zero, $zero
   /* 16F5C0 80131F90 00002825 */        or $a1, $zero, $zero
   /* 16F5C4 80131F94 24060013 */     addiu $a2, $zero, 0x13
-  /* 16F5C8 80131F98 0C00265A */       jal omMakeGObjCommon
+  /* 16F5C8 80131F98 0C00265A */       jal omMakeGObjSPAfter
   /* 16F5CC 80131F9C 3C078000 */       lui $a3, 0x8000
   /* 16F5D0 80131FA0 3C0E8013 */       lui $t6, %hi(D_ovl44_80132AA8)
   /* 16F5D4 80131FA4 8DCE2AA8 */        lw $t6, %lo(D_ovl44_80132AA8)($t6)
@@ -632,7 +632,7 @@ glabel mvOpeningRunningInit
   /* 16FA50 80132420 24A52268 */     addiu $a1, $a1, %lo(mvOpeningRunningMainProc)
   /* 16FA54 80132424 02003825 */        or $a3, $s0, $zero
   /* 16FA58 80132428 00002025 */        or $a0, $zero, $zero
-  /* 16FA5C 8013242C 0C00265A */       jal omMakeGObjCommon
+  /* 16FA5C 8013242C 0C00265A */       jal omMakeGObjSPAfter
   /* 16FA60 80132430 00003025 */        or $a2, $zero, $zero
   /* 16FA64 80132434 00002025 */        or $a0, $zero, $zero
   /* 16FA68 80132438 02002825 */        or $a1, $s0, $zero

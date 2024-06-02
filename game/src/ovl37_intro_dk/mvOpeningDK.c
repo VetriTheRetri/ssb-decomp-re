@@ -91,7 +91,7 @@ void mvOpeningDKDrawName()
     Vec2f positions[2] = dMvOpeningDKNameCharPositions;
     s32 i;
 
-    gMvOpeningDKNameGObj = name_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    gMvOpeningDKNameGObj = name_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     omAddGObjRenderProc(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
 
     for (i = 0; offsets[i] != 0; i++)
@@ -236,7 +236,7 @@ void mvOpeningDKRenderPosedFighterBackground(GObj *gobj)
 // 0x8018D934
 void mvOpeningDKCreatePosedFighterBackground()
 {
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x13, 0x80000000), mvOpeningDKRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningDKRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
 // 0x8018D980
@@ -336,7 +336,7 @@ void mvOpeningDKMainProc(GObj* arg0)
 
     if (gMvOpeningDKFramesElapsed == 15)
     {
-        omEjectGObjCommon(gMvOpeningDKNameGObj);
+        omEjectGObj(gMvOpeningDKNameGObj);
         mvOpeningDKInitFighterStagePanel();
         mvOpeningDKCreatePosedFighterBackground();
         mvOpeningDKCreatePosedFighter();
@@ -371,7 +371,7 @@ void mvOpeningDKInit()
     gBattleState->player_block[0].player_kind = Pl_Kind_Key;
 
     mvOpeningDKLoadFiles();
-    omMakeGObjCommon(0x3F7, mvOpeningDKMainProc, 0xD, 0x80000000);
+    omMakeGObjSPAfter(0x3F7, mvOpeningDKMainProc, 0xD, 0x80000000);
     func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
     mvOpeningDKInitFramesElapsed();
     func_ovl2_80115890();

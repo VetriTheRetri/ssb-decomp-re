@@ -2,7 +2,7 @@
 
 extern Gfx *gDisplayListHead[4];
 
-s32 gEffectBankIndex;
+s32 sEFBankIndex;
 
 extern intptr_t D_NF_00AC7340;
 extern intptr_t D_NF_00AC9DE0;
@@ -35,14 +35,14 @@ void func_ovl2_800FCD64(GObj *effect_gobj)
 
 void func_ovl2_800FCDEC(void)
 {
-    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_Effect, NULL, 6U, 0x80000000U), func_ovl2_800FCCC0, 0xF, 3, -1);
-    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_Effect, NULL, 6U, 0x80000000U), func_ovl2_800FCCC0, 0x12, 3, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 6U, 0x80000000U), func_ovl2_800FCCC0, 0xF, 3, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 6U, 0x80000000U), func_ovl2_800FCCC0, 0x12, 3, -1);
 }
 
 void func_ovl2_800FCE6C(void)
 {
-    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_Effect, NULL, 6U, 0x80000000U), func_ovl2_800FCD64, 0xF, 0, -1);
-    omAddGObjRenderProc(omMakeGObjCommon(GObj_Kind_Effect, NULL, 6U, 0x80000000U), func_ovl2_800FCD64, 0x12, 0, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 6U, 0x80000000U), func_ovl2_800FCD64, 0xF, 0, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 6U, 0x80000000U), func_ovl2_800FCD64, 0x12, 0, -1);
 }
 
 void func_ovl2_800FCEEC(GObj *effect_gobj)
@@ -100,21 +100,21 @@ void func_ovl2_800FD18C(void)
 {
     GObj *gobj;
 
-    gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6U, 0x80000000);
+    gobj = omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 6U, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl2_800FCFCC, 0x12, 1, -1);
     gobj->unk_gobj_0x30 = 5;
 
-    gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6U, 0x80000000);
+    gobj = omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 6U, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl2_800FCFCC, 0xF, 1, -1);
     gobj->unk_gobj_0x30 = 2;
 
-    gobj = omMakeGObjCommon(0x3F8U, NULL, 0xBU, 0x80000000);
+    gobj = omMakeGObjSPAfter(0x3F8U, NULL, 0xBU, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl2_800FCEEC, 0x19, 0x80000000U, -1);
     gobj->unk_gobj_0x30 = 8;
 
-    gobj = omMakeGObjCommon(GObj_Kind_Effect, NULL, 6U, 0x80000000);
+    gobj = omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 6U, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl2_800FD0AC, 0xA, 0x80000000U, -1);
     gobj->unk_gobj_0x30 = 16;
 
-    gEffectBankIndex = efAlloc_SetParticleBank(&D_NF_00AC7340, &D_NF_00AC9DE0, &D_NF_00AC9DE0_other, &D_NF_00B16C80);
+    sEFBankIndex = efAlloc_SetParticleBank(&D_NF_00AC7340, &D_NF_00AC9DE0, &D_NF_00AC9DE0_other, &D_NF_00B16C80);
 }

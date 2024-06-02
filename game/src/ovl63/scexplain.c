@@ -239,7 +239,7 @@ void scExplainProcUpdateControlStickSprite(GObj *gobj)
 // 0x8018D748
 GObj* scExplainMakeControlStickInterface(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, scExplainProcRenderControlStickSprite, 0x1B, 0x80000000, -1);
     func_8000F590(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005300), NULL, 0x12, 0, 0);
@@ -302,7 +302,7 @@ void scExplainProcUpdateTapSpark(GObj *gobj)
 // 0x8018DA04
 GObj* scExplainMakeTapSpark(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, scExplainProcRenderTapSpark, 0x1B, 0x80000000, -1);
     omAddDObjForGObj(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&D_NF_00005B68));
@@ -340,7 +340,7 @@ void scExplainProcUpdateSpecialMoveRGBOverlay(void)
 // 0x8018DB44
 GObj* scExplainMakeSpecialMoveRGBOverlay(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, scExplainProcRenderTapSpark, 0x1B, 0x80000000, -1);
     omAddDObjForGObj(interface_gobj, ((uintptr_t)sExplainAnimFileHead + (intptr_t)&lExplainSpecialMoveRGBOverlayDisplayList));
@@ -365,7 +365,7 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
     GObj *interface_gobj;
     SObj *sobj;
 
-    interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x1A, 0x80000000, -1);
 
@@ -532,7 +532,7 @@ void scExplainProcUpdateScene(GObj *gobj)
 // 0x8018E13C
 GObj* scExplainMakeSceneUpdateGObj(void)
 {
-    GObj *interface_gobj = omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+    GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
     omAddGObjCommonProc(interface_gobj, scExplainProcUpdateScene, GObjProcess_Kind_Proc, 5);
 

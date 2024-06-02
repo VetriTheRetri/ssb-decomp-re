@@ -144,7 +144,7 @@ diff a/game/src/ovl35_intro_portraits/introPortraits.c b/game/src/ovl35_intro_po
      GObj* portrait_overlay_gobj;
      SObj* portrait_overlay_sobj;
  
-     portrait_overlay_gobj = omMakeGObjCommon(0, 0, 0x12, 0x80000000);
+     portrait_overlay_gobj = omMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
 -    omAddGObjRenderProc(portrait_overlay_gobj, &opPortraitsRenderPortraitOverlay, 0x1C, 0x80000000, -1);
 +    omAddGObjRenderProc(portrait_overlay_gobj, &mvPortraitsRenderPortraitOverlay, 0x1C, 0x80000000, -1);
  
@@ -193,7 +193,7 @@ diff a/game/src/ovl35_intro_portraits/introPortraits.c b/game/src/ovl35_intro_po
 @@ -324,7 +324,7 @@ void opPortraitsMain(GObj* arg0)
          if (gIntroPotraitsFramesElapsed == 75)
          {
-             omEjectGObjCommon(gIntroPortraitsPortraitGObj);
+             omEjectGObj(gIntroPortraitsPortraitGObj);
 -            opPortraitsCreatePortraitsSet2();
 +            mvPortraitsCreatePortraitsSet2();
          }
@@ -212,8 +212,8 @@ diff a/game/src/ovl35_intro_portraits/introPortraits.c b/game/src/ovl35_intro_po
      rdManagerInitSetup(&rldmSetup);
      rdManagerLoadFiles(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
  
--    omMakeGObjCommon(0, opPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);
-+    omMakeGObjCommon(0, mvPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);
+-    omMakeGObjSPAfter(0, opPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);
++    omMakeGObjSPAfter(0, mvPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);
      func_8000B9FC(0, 0x80000000, 0x64, 3, 0xFF);
 -    opPortraitsInitVariables();
 -    opPortraitsCreatePortraitViewport();

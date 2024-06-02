@@ -102,7 +102,7 @@ void grJungle_TaruCann_MakeGround(void)
     map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&D_NF_00000A98);
     gGroundStruct.jungle.map_head = map_head;
 
-    gGroundStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000U);
+    gGroundStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000U);
 
     omAddGObjRenderProc(tarucann_gobj, odRenderDObjTreeForGObj, 6, 0x80000000U, -1);
 

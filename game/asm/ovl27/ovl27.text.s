@@ -1068,7 +1068,7 @@ glabel mn1PCreateLockedPortrait
   /* 13AB44 80132944 00002025 */        or $a0, $zero, $zero
   /* 13AB48 80132948 00002825 */        or $a1, $zero, $zero
   /* 13AB4C 8013294C 24060012 */     addiu $a2, $zero, 0x12
-  /* 13AB50 80132950 0C00265A */       jal omMakeGObjCommon
+  /* 13AB50 80132950 0C00265A */       jal omMakeGObjSPAfter
   /* 13AB54 80132954 3C078000 */       lui $a3, 0x8000
   /* 13AB58 80132958 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 13AB5C 8013295C 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -1135,7 +1135,7 @@ glabel mn1PCreateLockedPortrait
   /* 13AC40 80132A40 00002025 */        or $a0, $zero, $zero
   /* 13AC44 80132A44 00002825 */        or $a1, $zero, $zero
   /* 13AC48 80132A48 24060012 */     addiu $a2, $zero, 0x12
-  /* 13AC4C 80132A4C 0C00265A */       jal omMakeGObjCommon
+  /* 13AC4C 80132A4C 0C00265A */       jal omMakeGObjSPAfter
   /* 13AC50 80132A50 3C078000 */       lui $a3, 0x8000
   /* 13AC54 80132A54 3C058013 */       lui $a1, %hi(mn1PRenderPortraitWithNoise)
   /* 13AC58 80132A58 240EFFFF */     addiu $t6, $zero, -1
@@ -1173,7 +1173,7 @@ glabel mn1PCreateLockedPortrait
   /* 13ACD8 80132AD8 00002025 */        or $a0, $zero, $zero
   /* 13ACDC 80132ADC 00002825 */        or $a1, $zero, $zero
   /* 13ACE0 80132AE0 24060012 */     addiu $a2, $zero, 0x12
-  /* 13ACE4 80132AE4 0C00265A */       jal omMakeGObjCommon
+  /* 13ACE4 80132AE4 0C00265A */       jal omMakeGObjSPAfter
   /* 13ACE8 80132AE8 3C078000 */       lui $a3, 0x8000
   /* 13ACEC 80132AEC 2408FFFF */     addiu $t0, $zero, -1
   /* 13ACF0 80132AF0 00408025 */        or $s0, $v0, $zero
@@ -1254,7 +1254,7 @@ glabel mn1PCreatePortrait
   .L80132C10:
   /* 13AE10 80132C10 00002825 */        or $a1, $zero, $zero
   /* 13AE14 80132C14 24060019 */     addiu $a2, $zero, 0x19
-  /* 13AE18 80132C18 0C00265A */       jal omMakeGObjCommon
+  /* 13AE18 80132C18 0C00265A */       jal omMakeGObjSPAfter
   /* 13AE1C 80132C1C 3C078000 */       lui $a3, 0x8000
   /* 13AE20 80132C20 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 13AE24 80132C24 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -1287,7 +1287,7 @@ glabel mn1PCreatePortrait
   /* 13AE90 80132C90 00002025 */        or $a0, $zero, $zero
   /* 13AE94 80132C94 00002825 */        or $a1, $zero, $zero
   /* 13AE98 80132C98 24060012 */     addiu $a2, $zero, 0x12
-  /* 13AE9C 80132C9C 0C00265A */       jal omMakeGObjCommon
+  /* 13AE9C 80132C9C 0C00265A */       jal omMakeGObjSPAfter
   /* 13AEA0 80132CA0 3C078000 */       lui $a3, 0x8000
   /* 13AEA4 80132CA4 240CFFFF */     addiu $t4, $zero, -1
   /* 13AEA8 80132CA8 AFA2006C */        sw $v0, 0x6c($sp)
@@ -1755,7 +1755,7 @@ glabel mn1PCreatePanel
   /* 13B584 80133384 00002025 */        or $a0, $zero, $zero
   /* 13B588 80133388 00002825 */        or $a1, $zero, $zero
   /* 13B58C 8013338C 24060016 */     addiu $a2, $zero, 0x16
-  /* 13B590 80133390 0C00265A */       jal omMakeGObjCommon
+  /* 13B590 80133390 0C00265A */       jal omMakeGObjSPAfter
   /* 13B594 80133394 3C078000 */       lui $a3, 0x8000
   /* 13B598 80133398 3C018014 */       lui $at, %hi(D_ovl27_80138EF4)
   /* 13B59C 8013339C 240CFFFF */     addiu $t4, $zero, -1
@@ -2075,7 +2075,7 @@ glabel mn1PDrawTimerPicker
   /* 13BA14 80133814 AFBF0034 */        sw $ra, 0x34($sp)
   /* 13BA18 80133818 10800003 */      beqz $a0, .L80133828
   /* 13BA1C 8013381C 00000000 */       nop
-  /* 13BA20 80133820 0C0026A1 */       jal omEjectGObjCommon
+  /* 13BA20 80133820 0C0026A1 */       jal omEjectGObj
   /* 13BA24 80133824 00000000 */       nop
   .L80133828:
   /* 13BA28 80133828 3C198014 */       lui $t9, %hi(D_ovl27_801396A0)
@@ -2134,7 +2134,7 @@ glabel mn1PCreateBackground
   /* 13BAF4 801338F4 00002025 */        or $a0, $zero, $zero
   /* 13BAF8 801338F8 00002825 */        or $a1, $zero, $zero
   /* 13BAFC 801338FC 24060011 */     addiu $a2, $zero, 0x11
-  /* 13BB00 80133900 0C00265A */       jal omMakeGObjCommon
+  /* 13BB00 80133900 0C00265A */       jal omMakeGObjSPAfter
   /* 13BB04 80133904 3C078000 */       lui $a3, 0x8000
   /* 13BB08 80133908 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 13BB0C 8013390C 240EFFFF */     addiu $t6, $zero, -1
@@ -2497,13 +2497,13 @@ glabel gMN1PDrawLevel
   /* 13C048 80133E48 8CA58FBC */        lw $a1, %lo(gMN1PLevelGObj)($a1)
   /* 13C04C 80133E4C 50A00004 */      beql $a1, $zero, .L80133E60
   /* 13C050 80133E50 00002025 */        or $a0, $zero, $zero
-  /* 13C054 80133E54 0C0026A1 */       jal omEjectGObjCommon
+  /* 13C054 80133E54 0C0026A1 */       jal omEjectGObj
   /* 13C058 80133E58 00A02025 */        or $a0, $a1, $zero
   /* 13C05C 80133E5C 00002025 */        or $a0, $zero, $zero
   .L80133E60:
   /* 13C060 80133E60 00002825 */        or $a1, $zero, $zero
   /* 13C064 80133E64 24060017 */     addiu $a2, $zero, 0x17
-  /* 13C068 80133E68 0C00265A */       jal omMakeGObjCommon
+  /* 13C068 80133E68 0C00265A */       jal omMakeGObjSPAfter
   /* 13C06C 80133E6C 3C078000 */       lui $a3, 0x8000
   /* 13C070 80133E70 3C018014 */       lui $at, %hi(gMN1PLevelGObj)
   /* 13C074 80133E74 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -2560,7 +2560,7 @@ glabel mn1PCreateLevelAndArrows
   /* 13C138 80133F38 00002025 */        or $a0, $zero, $zero
   /* 13C13C 80133F3C 00002825 */        or $a1, $zero, $zero
   /* 13C140 80133F40 24060017 */     addiu $a2, $zero, 0x17
-  /* 13C144 80133F44 0C00265A */       jal omMakeGObjCommon
+  /* 13C144 80133F44 0C00265A */       jal omMakeGObjSPAfter
   /* 13C148 80133F48 3C078000 */       lui $a3, 0x8000
   /* 13C14C 80133F4C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 13C150 80133F50 240EFFFF */     addiu $t6, $zero, -1
@@ -2743,14 +2743,14 @@ glabel mn1PDrawStock
   /* 13C3E0 801341E0 F7B60028 */      sdc1 $f22, 0x28($sp)
   /* 13C3E4 801341E4 10C00003 */      beqz $a2, .L801341F4
   /* 13C3E8 801341E8 F7B40020 */      sdc1 $f20, 0x20($sp)
-  /* 13C3EC 801341EC 0C0026A1 */       jal omEjectGObjCommon
+  /* 13C3EC 801341EC 0C0026A1 */       jal omEjectGObj
   /* 13C3F0 801341F0 00C02025 */        or $a0, $a2, $zero
   .L801341F4:
   /* 13C3F4 801341F4 3C138000 */       lui $s3, 0x8000
   /* 13C3F8 801341F8 02603825 */        or $a3, $s3, $zero
   /* 13C3FC 801341FC 00002025 */        or $a0, $zero, $zero
   /* 13C400 80134200 00002825 */        or $a1, $zero, $zero
-  /* 13C404 80134204 0C00265A */       jal omMakeGObjCommon
+  /* 13C404 80134204 0C00265A */       jal omMakeGObjSPAfter
   /* 13C408 80134208 24060017 */     addiu $a2, $zero, 0x17
   /* 13C40C 8013420C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 13C410 80134210 240EFFFF */     addiu $t6, $zero, -1
@@ -2843,7 +2843,7 @@ glabel mn1PCreateStockAndArrows
   /* 13C554 80134354 00002025 */        or $a0, $zero, $zero
   /* 13C558 80134358 00002825 */        or $a1, $zero, $zero
   /* 13C55C 8013435C 24060017 */     addiu $a2, $zero, 0x17
-  /* 13C560 80134360 0C00265A */       jal omMakeGObjCommon
+  /* 13C560 80134360 0C00265A */       jal omMakeGObjSPAfter
   /* 13C564 80134364 3C078000 */       lui $a3, 0x8000
   /* 13C568 80134368 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 13C56C 8013436C 240EFFFF */     addiu $t6, $zero, -1
@@ -3153,7 +3153,7 @@ glabel mn1PDrawHighscore
   /* 13CA0C 8013480C AFA20034 */        sw $v0, 0x34($sp)
   /* 13CA10 80134810 50800006 */      beql $a0, $zero, .L8013482C
   /* 13CA14 80134814 8FB80034 */        lw $t8, 0x34($sp)
-  /* 13CA18 80134818 0C0026A1 */       jal omEjectGObjCommon
+  /* 13CA18 80134818 0C0026A1 */       jal omEjectGObj
   /* 13CA1C 8013481C 00000000 */       nop
   /* 13CA20 80134820 3C018014 */       lui $at, %hi(gMN1PHighscoreGObj)
   /* 13CA24 80134824 AC208FAC */        sw $zero, %lo(gMN1PHighscoreGObj)($at)
@@ -3164,7 +3164,7 @@ glabel mn1PDrawHighscore
   /* 13CA34 80134834 13010048 */       beq $t8, $at, .L80134958
   /* 13CA38 80134838 00002825 */        or $a1, $zero, $zero
   /* 13CA3C 8013483C 24060017 */     addiu $a2, $zero, 0x17
-  /* 13CA40 80134840 0C00265A */       jal omMakeGObjCommon
+  /* 13CA40 80134840 0C00265A */       jal omMakeGObjSPAfter
   /* 13CA44 80134844 3C078000 */       lui $a3, 0x8000
   /* 13CA48 80134848 3C018014 */       lui $at, %hi(gMN1PHighscoreGObj)
   /* 13CA4C 8013484C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -3271,7 +3271,7 @@ glabel mn1PDrawBonuses
   /* 13CBCC 801349CC AFA20034 */        sw $v0, 0x34($sp)
   /* 13CBD0 801349D0 50800006 */      beql $a0, $zero, .L801349EC
   /* 13CBD4 801349D4 8FA80034 */        lw $t0, 0x34($sp)
-  /* 13CBD8 801349D8 0C0026A1 */       jal omEjectGObjCommon
+  /* 13CBD8 801349D8 0C0026A1 */       jal omEjectGObj
   /* 13CBDC 801349DC 00000000 */       nop
   /* 13CBE0 801349E0 3C018014 */       lui $at, %hi(gMN1PBonusesGObj)
   /* 13CBE4 801349E4 AC208FB0 */        sw $zero, %lo(gMN1PBonusesGObj)($at)
@@ -3282,7 +3282,7 @@ glabel mn1PDrawBonuses
   /* 13CBF4 801349F4 1101004D */       beq $t0, $at, .L80134B2C
   /* 13CBF8 801349F8 00002825 */        or $a1, $zero, $zero
   /* 13CBFC 801349FC 24060017 */     addiu $a2, $zero, 0x17
-  /* 13CC00 80134A00 0C00265A */       jal omMakeGObjCommon
+  /* 13CC00 80134A00 0C00265A */       jal omMakeGObjSPAfter
   /* 13CC04 80134A04 3C078000 */       lui $a3, 0x8000
   /* 13CC08 80134A08 3C018014 */       lui $at, %hi(gMN1PBonusesGObj)
   /* 13CC0C 80134A0C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -3428,7 +3428,7 @@ glabel mn1PDrawTotalHighscore
   /* 13CE1C 80134C1C 24060017 */     addiu $a2, $zero, 0x17
   /* 13CE20 80134C20 3C078000 */       lui $a3, 0x8000
   /* 13CE24 80134C24 AD0A0014 */        sw $t2, 0x14($t0)
-  /* 13CE28 80134C28 0C00265A */       jal omMakeGObjCommon
+  /* 13CE28 80134C28 0C00265A */       jal omMakeGObjSPAfter
   /* 13CE2C 80134C2C AD0B0010 */        sw $t3, 0x10($t0)
   /* 13CE30 80134C30 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 13CE34 80134C34 240CFFFF */     addiu $t4, $zero, -1
@@ -3509,7 +3509,7 @@ glabel mn1PDrawTotalBonuses
   /* 13CF4C 80134D4C 24060017 */     addiu $a2, $zero, 0x17
   /* 13CF50 80134D50 3C078000 */       lui $a3, 0x8000
   /* 13CF54 80134D54 ADD90010 */        sw $t9, 0x10($t6)
-  /* 13CF58 80134D58 0C00265A */       jal omMakeGObjCommon
+  /* 13CF58 80134D58 0C00265A */       jal omMakeGObjSPAfter
   /* 13CF5C 80134D5C ADD80014 */        sw $t8, 0x14($t6)
   /* 13CF60 80134D60 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 13CF64 80134D64 2408FFFF */     addiu $t0, $zero, -1
@@ -4352,7 +4352,7 @@ glabel mn1PRemoveWhiteSquare
   /* 13DB38 80135938 AFBF0014 */        sw $ra, 0x14($sp)
   /* 13DB3C 8013593C 50800004 */      beql $a0, $zero, .L80135950
   /* 13DB40 80135940 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 13DB44 80135944 0C0026A1 */       jal omEjectGObjCommon
+  /* 13DB44 80135944 0C0026A1 */       jal omEjectGObj
   /* 13DB48 80135948 AC400018 */        sw $zero, 0x18($v0) # gMN1PPanel + 24
   /* 13DB4C 8013594C 8FBF0014 */        lw $ra, 0x14($sp)
   .L80135950:
@@ -4420,7 +4420,7 @@ glabel mn1PCreateWhiteSquare
   /* 13DC24 80135A24 00002025 */        or $a0, $zero, $zero
   /* 13DC28 80135A28 00002825 */        or $a1, $zero, $zero
   /* 13DC2C 80135A2C 2406001A */     addiu $a2, $zero, 0x1a
-  /* 13DC30 80135A30 0C00265A */       jal omMakeGObjCommon
+  /* 13DC30 80135A30 0C00265A */       jal omMakeGObjSPAfter
   /* 13DC34 80135A34 3C078000 */       lui $a3, 0x8000
   /* 13DC38 80135A38 3C018014 */       lui $at, %hi(D_ovl27_80138F00)
   /* 13DC3C 80135A3C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -6668,7 +6668,7 @@ glabel mn1PCreateTokenAutopositionRoutine
   /* 13FBF0 801379F0 00002025 */        or $a0, $zero, $zero
   /* 13FBF4 801379F4 00002825 */        or $a1, $zero, $zero
   /* 13FBF8 801379F8 24060018 */     addiu $a2, $zero, 0x18
-  /* 13FBFC 801379FC 0C00265A */       jal omMakeGObjCommon
+  /* 13FBFC 801379FC 0C00265A */       jal omMakeGObjSPAfter
   /* 13FC00 80137A00 3C078000 */       lui $a3, 0x8000
   /* 13FC04 80137A04 3C058013 */       lui $a1, %hi(mn1PAutopositionToken)
   /* 13FC08 80137A08 24A5799C */     addiu $a1, $a1, %lo(mn1PAutopositionToken)
@@ -6748,7 +6748,7 @@ glabel mn1PCreateWhiteCircles
   /* 13FD10 80137B10 00002025 */        or $a0, $zero, $zero
   /* 13FD14 80137B14 00002825 */        or $a1, $zero, $zero
   /* 13FD18 80137B18 24060015 */     addiu $a2, $zero, 0x15
-  /* 13FD1C 80137B1C 0C00265A */       jal omMakeGObjCommon
+  /* 13FD1C 80137B1C 0C00265A */       jal omMakeGObjSPAfter
   /* 13FD20 80137B20 3C078000 */       lui $a3, 0x8000
   /* 13FD24 80137B24 3C0E8014 */       lui $t6, %hi(D_ovl27_801396C8)
   /* 13FD28 80137B28 8DCE96C8 */        lw $t6, %lo(D_ovl27_801396C8)($t6)
@@ -6844,7 +6844,7 @@ glabel mn1PCreateReadyToFightObjects
   /* 13FE70 80137C70 00002025 */        or $a0, $zero, $zero
   /* 13FE74 80137C74 00002825 */        or $a1, $zero, $zero
   /* 13FE78 80137C78 2406001C */     addiu $a2, $zero, 0x1c
-  /* 13FE7C 80137C7C 0C00265A */       jal omMakeGObjCommon
+  /* 13FE7C 80137C7C 0C00265A */       jal omMakeGObjSPAfter
   /* 13FE80 80137C80 3C078000 */       lui $a3, 0x8000
   /* 13FE84 80137C84 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 13FE88 80137C88 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -6929,7 +6929,7 @@ glabel mn1PCreateReadyToFightObjects
   /* 13FFC4 80137DC4 24060016 */     addiu $a2, $zero, 0x16
   /* 13FFC8 80137DC8 3C078000 */       lui $a3, 0x8000
   /* 13FFCC 80137DCC E4480058 */      swc1 $f8, 0x58($v0)
-  /* 13FFD0 80137DD0 0C00265A */       jal omMakeGObjCommon
+  /* 13FFD0 80137DD0 0C00265A */       jal omMakeGObjSPAfter
   /* 13FFD4 80137DD4 E44A005C */      swc1 $f10, 0x5c($v0)
   /* 13FFD8 80137DD8 2418FFFF */     addiu $t8, $zero, -1
   /* 13FFDC 80137DDC 00408025 */        or $s0, $v0, $zero
@@ -7356,7 +7356,7 @@ glabel mn1PInitCSS
   /* 1405D0 801383D0 24A57FCC */     addiu $a1, $a1, %lo(mn1PMain)
   /* 1405D4 801383D4 02003825 */        or $a3, $s0, $zero
   /* 1405D8 801383D8 24040400 */     addiu $a0, $zero, 0x400
-  /* 1405DC 801383DC 0C00265A */       jal omMakeGObjCommon
+  /* 1405DC 801383DC 0C00265A */       jal omMakeGObjSPAfter
   /* 1405E0 801383E0 2406000F */     addiu $a2, $zero, 0xf
   /* 1405E4 801383E4 24040010 */     addiu $a0, $zero, 0x10
   /* 1405E8 801383E8 02002825 */        or $a1, $s0, $zero

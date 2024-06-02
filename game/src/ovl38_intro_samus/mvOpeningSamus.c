@@ -89,7 +89,7 @@ void mvOpeningSamusDrawName()
     f32 positions[5] = dMvOpeningSamusNameCharPositions;
     s32 i;
 
-    gMvOpeningSamusNameGObj = name_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    gMvOpeningSamusNameGObj = name_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     omAddGObjRenderProc(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
 
     for (i = 0; offsets[i] != 0; i++)
@@ -255,7 +255,7 @@ void mvOpeningSamusRenderPosedFighterBackground(GObj *gobj)
 // 0x8018D9AC
 void mvOpeningSamusCreatePosedFighterBackground()
 {
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x13, 0x80000000), mvOpeningSamusRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningSamusRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
 // 0x8018D9F8
@@ -356,7 +356,7 @@ void mvOpeningSamusMainProc(GObj* arg0)
 
     if (gMvOpeningSamusFramesElapsed == 15)
     {
-        omEjectGObjCommon(gMvOpeningSamusNameGObj);
+        omEjectGObj(gMvOpeningSamusNameGObj);
         mvOpeningSamusInitFighterStagePanel();
         mvOpeningSamusCreatePosedFighterBackground();
         mvOpeningSamusCreatePosedFighter();
@@ -391,7 +391,7 @@ void mvOpeningSamusInit()
     gBattleState->player_block[0].player_kind = Pl_Kind_Key;
 
     mvOpeningSamusLoadFiles();
-    omMakeGObjCommon(0x3F7, mvOpeningSamusMainProc, 0xD, 0x80000000);
+    omMakeGObjSPAfter(0x3F7, mvOpeningSamusMainProc, 0xD, 0x80000000);
     func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
     mvOpeningSamusInitFramesElapsed();
     func_ovl2_80115890();

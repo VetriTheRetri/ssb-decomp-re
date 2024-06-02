@@ -24,7 +24,7 @@ extern intptr_t lITStarmieMatAnimJoint;     // 0x00011338
 itCreateDesc dITStarmieItemDesc = 
 {
     It_Kind_Starmie,                        // Item Kind
-    &gITemFileData,                         // Pointer to item file data?
+    &gITFileData,                         // Pointer to item file data?
     &lITStarmieItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -78,7 +78,7 @@ wpCreateDesc dITStarmieWeaponSwiftWeaponDesc =
 {
     0x03,                                   // Render flags?
     Wp_Kind_StarmieSwift,                   // Weapon Kind
-    &gITemFileData,                         // Pointer to character's loaded files?
+    &gITFileData,                         // Pointer to character's loaded files?
     &lITStarmieWeaponSwiftWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

@@ -19,7 +19,7 @@ extern intptr_t lITGBumperItemAttributes;   // 0x00000CF0
 itCreateDesc dITGBumperItemDesc =
 {
     It_Kind_GBumper,                        // Item Kind
-    &gITemFileData,                         // Pointer to item file data?
+    &gITFileData,                         // Pointer to item file data?
     &lITGBumperItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct

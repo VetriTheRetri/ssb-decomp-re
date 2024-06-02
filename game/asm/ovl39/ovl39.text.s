@@ -109,7 +109,7 @@ glabel mvOpeningFoxDrawName
   /* 169C44 8018D224 00002825 */        or $a1, $zero, $zero
   /* 169C48 8018D228 24060011 */     addiu $a2, $zero, 0x11
   /* 169C4C 8018D22C AD0A0014 */        sw $t2, 0x14($t0)
-  /* 169C50 8018D230 0C00265A */       jal omMakeGObjCommon
+  /* 169C50 8018D230 0C00265A */       jal omMakeGObjSPAfter
   /* 169C54 8018D234 AD0B0010 */        sw $t3, 0x10($t0)
   /* 169C58 8018D238 3C018019 */       lui $at, %hi(gMvOpeningFoxNameGObj)
   /* 169C5C 8018D23C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -587,7 +587,7 @@ glabel mvOpeningFoxCreatePosedFighterBackground
   /* 16A374 8018D954 00002025 */        or $a0, $zero, $zero
   /* 16A378 8018D958 00002825 */        or $a1, $zero, $zero
   /* 16A37C 8018D95C 24060013 */     addiu $a2, $zero, 0x13
-  /* 16A380 8018D960 0C00265A */       jal omMakeGObjCommon
+  /* 16A380 8018D960 0C00265A */       jal omMakeGObjSPAfter
   /* 16A384 8018D964 3C078000 */       lui $a3, 0x8000
   /* 16A388 8018D968 3C058019 */       lui $a1, %hi(mvOpeningFoxRenderPosedFighterBackground)
   /* 16A38C 8018D96C 240EFFFF */     addiu $t6, $zero, -1
@@ -901,7 +901,7 @@ glabel mvOpeningFoxMainProc
   /* 16A80C 8018DDEC 3C048019 */       lui $a0, %hi(gMvOpeningFoxNameGObj)
   /* 16A810 8018DDF0 5441000C */      bnel $v0, $at, .L8018DE24
   /* 16A814 8018DDF4 2401003C */     addiu $at, $zero, 0x3c
-  /* 16A818 8018DDF8 0C0026A1 */       jal omEjectGObjCommon
+  /* 16A818 8018DDF8 0C0026A1 */       jal omEjectGObj
   /* 16A81C 8018DDFC 8C84E1FC */        lw $a0, %lo(gMvOpeningFoxNameGObj)($a0)
   /* 16A820 8018DE00 0C063587 */       jal mvOpeningFoxInitFighterStagePanel
   /* 16A824 8018DE04 00000000 */       nop
@@ -968,7 +968,7 @@ glabel mvOpeningFoxInit
   /* 16A8FC 8018DEDC 24A5DD98 */     addiu $a1, $a1, %lo(mvOpeningFoxMainProc)
   /* 16A900 8018DEE0 240403F7 */     addiu $a0, $zero, 0x3f7
   /* 16A904 8018DEE4 2406000D */     addiu $a2, $zero, 0xd
-  /* 16A908 8018DEE8 0C00265A */       jal omMakeGObjCommon
+  /* 16A908 8018DEE8 0C00265A */       jal omMakeGObjSPAfter
   /* 16A90C 8018DEEC 3C078000 */       lui $a3, 0x8000
   /* 16A910 8018DEF0 240800FF */     addiu $t0, $zero, 0xff
   /* 16A914 8018DEF4 AFA80010 */        sw $t0, 0x10($sp)

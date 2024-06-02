@@ -1724,7 +1724,7 @@ glabel func_ovl65_8018E8F8
   /* 10D1D8 8018E978 240401EA */     addiu $a0, $zero, 0x1ea
   /* 10D1DC 8018E97C 0C044871 */       jal func_ovl2_801121C4
   /* 10D1E0 8018E980 00000000 */       nop 
-  /* 10D1E4 8018E984 0C0026A1 */       jal omEjectGObjCommon
+  /* 10D1E4 8018E984 0C0026A1 */       jal omEjectGObj
   /* 10D1E8 8018E988 00002025 */        or $a0, $zero, $zero
   /* 10D1EC 8018E98C 0C002C7A */       jal gsStopCurrentProcess
   /* 10D1F0 8018E990 24040001 */     addiu $a0, $zero, 1
@@ -1849,7 +1849,7 @@ glabel gm1PGameThreadUpdate
   /* 10D3A0 8018EB40 0C063A69 */       jal func_ovl65_8018E9A4
   /* 10D3A4 8018EB44 00000000 */       nop 
   glabel jtgt_ovl65_8018EB48
-  /* 10D3A8 8018EB48 0C0026A1 */       jal omEjectGObjCommon
+  /* 10D3A8 8018EB48 0C0026A1 */       jal omEjectGObj
   /* 10D3AC 8018EB4C 00002025 */        or $a0, $zero, $zero
   /* 10D3B0 8018EB50 0C002C7A */       jal gsStopCurrentProcess
   /* 10D3B4 8018EB54 24040001 */     addiu $a0, $zero, 1
@@ -1864,7 +1864,7 @@ glabel func_ovl65_8018EB68
   /* 10D3D0 8018EB70 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 10D3D4 8018EB74 00002825 */        or $a1, $zero, $zero
   /* 10D3D8 8018EB78 2406000A */     addiu $a2, $zero, 0xa
-  /* 10D3DC 8018EB7C 0C00265A */       jal omMakeGObjCommon
+  /* 10D3DC 8018EB7C 0C00265A */       jal omMakeGObjSPAfter
   /* 10D3E0 8018EB80 3C078000 */       lui $a3, 0x8000
   /* 10D3E4 8018EB84 3C058019 */       lui $a1, %hi(gm1PGameThreadUpdate)
   /* 10D3E8 8018EB88 24A5EADC */     addiu $a1, $a1, %lo(gm1PGameThreadUpdate)
@@ -2137,7 +2137,7 @@ glabel func_ovl65_8018EE44
   /* 10D7B4 8018EF54 02403825 */        or $a3, $s2, $zero
   /* 10D7B8 8018EF58 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 10D7BC 8018EF5C 00002825 */        or $a1, $zero, $zero
-  /* 10D7C0 8018EF60 0C00265A */       jal omMakeGObjCommon
+  /* 10D7C0 8018EF60 0C00265A */       jal omMakeGObjSPAfter
   /* 10D7C4 8018EF64 2406000B */     addiu $a2, $zero, 0xb
   /* 10D7C8 8018EF68 3C058019 */       lui $a1, %hi(gmUpdate1PGameTeamStockDisplay)
   /* 10D7CC 8018EF6C 2418FFFF */     addiu $t8, $zero, -1
@@ -5193,7 +5193,7 @@ glabel func_ovl65_80191AEC
   /* 110360 80191B00 01CF1821 */      addu $v1, $t6, $t7
   /* 110364 80191B04 04610005 */      bgez $v1, .L80191B1C
   /* 110368 80191B08 AC830084 */        sw $v1, 0x84($a0)
-  /* 11036C 80191B0C 0C0026A1 */       jal omEjectGObjCommon
+  /* 11036C 80191B0C 0C0026A1 */       jal omEjectGObj
   /* 110370 80191B10 00000000 */       nop 
   /* 110374 80191B14 10000008 */         b .L80191B38
   /* 110378 80191B18 8FBF0014 */        lw $ra, 0x14($sp)
@@ -5762,7 +5762,7 @@ glabel gm1PGameBossMakeBackgroundEffect
   /* 110B60 80192300 00002825 */        or $a1, $zero, $zero
   /* 110B64 80192304 240403FF */     addiu $a0, $zero, 0x3ff
   /* 110B68 80192308 3C078000 */       lui $a3, 0x8000
-  /* 110B6C 8019230C 0C00265A */       jal omMakeGObjCommon
+  /* 110B6C 8019230C 0C00265A */       jal omMakeGObjSPAfter
   /* 110B70 80192310 AFAF003C */        sw $t7, 0x3c($sp)
   /* 110B74 80192314 14400003 */      bnez $v0, .L80192324
   /* 110B78 80192318 00408025 */        or $s0, $v0, $zero
@@ -6076,7 +6076,7 @@ glabel gm1PGameBossInitBackgroundMain
   /* 110FCC 8019276C 240403F0 */     addiu $a0, $zero, 0x3f0
   /* 110FD0 80192770 00002825 */        or $a1, $zero, $zero
   /* 110FD4 80192774 2406000D */     addiu $a2, $zero, 0xd
-  /* 110FD8 80192778 0C00265A */       jal omMakeGObjCommon
+  /* 110FD8 80192778 0C00265A */       jal omMakeGObjSPAfter
   /* 110FDC 8019277C 3C078000 */       lui $a3, 0x8000
   /* 110FE0 80192780 3C018019 */       lui $at, %hi(sGM1PGameBossBackgroundGObj)
   /* 110FE4 80192784 AC2238D0 */        sw $v0, %lo(sGM1PGameBossBackgroundGObj)($at)

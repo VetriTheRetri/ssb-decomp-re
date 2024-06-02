@@ -1138,9 +1138,9 @@ glabel ftManager_AllocFighterData
   /* 052C8C 800D748C 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 052C90 800D7490 00402825 */        or $a1, $v0, $zero
   /* 052C94 800D7494 3C040000 */       lui $a0, %hi(D_NF_000000C9)
-  /* 052C98 800D7498 3C018013 */       lui $at, %hi(D_ovl2_80130D98)
+  /* 052C98 800D7498 3C018013 */       lui $at, %hi(gFTCommonFile)
   /* 052C9C 800D749C 248400C9 */     addiu $a0, $a0, %lo(D_NF_000000C9)
-  /* 052CA0 800D74A0 AC220D98 */        sw $v0, %lo(D_ovl2_80130D98)($at)
+  /* 052CA0 800D74A0 AC220D98 */        sw $v0, %lo(gFTCommonFile)($at)
   /* 052CA4 800D74A4 0C0336F4 */       jal rdManagerGetFileSize
   /* 052CA8 800D74A8 AFA40024 */        sw $a0, 0x24($sp)
   /* 052CAC 800D74AC 00402025 */        or $a0, $v0, $zero
@@ -1481,7 +1481,7 @@ glabel func_ovl2_800D78E8
   /* 053140 800D7940 8E0400DC */        lw $a0, 0xdc($s0)
   /* 053144 800D7944 10800003 */      beqz $a0, .L800D7954
   /* 053148 800D7948 00000000 */       nop 
-  /* 05314C 800D794C 0C0026A1 */       jal omEjectGObjCommon
+  /* 05314C 800D794C 0C0026A1 */       jal omEjectGObj
   /* 053150 800D7950 00000000 */       nop 
   .L800D7954:
   /* 053154 800D7954 0C035D9F */       jal ftManager_SetFighterPartsPrevAlloc
@@ -1492,7 +1492,7 @@ glabel func_ovl2_800D78E8
   /* 053164 800D7964 26520004 */     addiu $s2, $s2, 4
   /* 053168 800D7968 0C035D7B */       jal ftManager_SetPrevAlloc
   /* 05316C 800D796C 8FA4002C */        lw $a0, 0x2c($sp)
-  /* 053170 800D7970 0C0026A1 */       jal omEjectGObjCommon
+  /* 053170 800D7970 0C0026A1 */       jal omEjectGObj
   /* 053174 800D7974 8FA40030 */        lw $a0, 0x30($sp)
   /* 053178 800D7978 8FBF0024 */        lw $ra, 0x24($sp)
   /* 05317C 800D797C 8FB00014 */        lw $s0, 0x14($sp)
@@ -1907,7 +1907,7 @@ glabel ftManager_MakeFighter
   /* 053764 800D7F64 240403E8 */     addiu $a0, $zero, 0x3e8
   /* 053768 800D7F68 00002825 */        or $a1, $zero, $zero
   /* 05376C 800D7F6C 24060003 */     addiu $a2, $zero, 3
-  /* 053770 800D7F70 0C00265A */       jal omMakeGObjCommon
+  /* 053770 800D7F70 0C00265A */       jal omMakeGObjSPAfter
   /* 053774 800D7F74 3C078000 */       lui $a3, 0x8000
   /* 053778 800D7F78 AFA20060 */        sw $v0, 0x60($sp)
   /* 05377C 800D7F7C 8EC5003C */        lw $a1, 0x3c($s6)
@@ -2177,7 +2177,7 @@ glabel ftManager_MakeFighter
   /* 053B6C 800D836C 160A0017 */       bne $s0, $t2, .L800D83CC
   /* 053B70 800D8370 00002825 */        or $a1, $zero, $zero
   /* 053B74 800D8374 2406000D */     addiu $a2, $zero, 0xd
-  /* 053B78 800D8378 0C00265A */       jal omMakeGObjCommon
+  /* 053B78 800D8378 0C00265A */       jal omMakeGObjSPAfter
   /* 053B7C 800D837C 3C078000 */       lui $a3, 0x8000
   /* 053B80 800D8380 AE4200DC */        sw $v0, 0xdc($s2)
   /* 053B84 800D8384 8E250004 */        lw $a1, 4($s1)
@@ -21410,7 +21410,7 @@ glabel func_ovl2_800E9248
   /* 064BE4 800E93E4 8E0400DC */        lw $a0, 0xdc($s0)
   /* 064BE8 800E93E8 10800004 */      beqz $a0, .L800E93FC
   /* 064BEC 800E93EC 00000000 */       nop 
-  /* 064BF0 800E93F0 0C0026A1 */       jal omEjectGObjCommon
+  /* 064BF0 800E93F0 0C0026A1 */       jal omEjectGObj
   /* 064BF4 800E93F4 00000000 */       nop 
   /* 064BF8 800E93F8 AE0000DC */        sw $zero, 0xdc($s0)
   .L800E93FC:
@@ -21421,7 +21421,7 @@ glabel func_ovl2_800E9248
   /* 064C0C 800E940C 00002825 */        or $a1, $zero, $zero
   /* 064C10 800E9410 2406000D */     addiu $a2, $zero, 0xd
   /* 064C14 800E9414 3C078000 */       lui $a3, 0x8000
-  /* 064C18 800E9418 0C00265A */       jal omMakeGObjCommon
+  /* 064C18 800E9418 0C00265A */       jal omMakeGObjSPAfter
   /* 064C1C 800E941C 46803520 */   cvt.s.w $f20, $f6
   /* 064C20 800E9420 AE0200DC */        sw $v0, 0xdc($s0)
   /* 064C24 800E9424 8E650004 */        lw $a1, 4($s3)
@@ -22009,7 +22009,7 @@ glabel efDestroyGFX
   .L800E9C1C:
   /* 06541C 800E9C1C 0C03F53E */       jal efManager_SetPrevAlloc
   /* 065420 800E9C20 00C02025 */        or $a0, $a2, $zero
-  /* 065424 800E9C24 0C0026A1 */       jal omEjectGObjCommon
+  /* 065424 800E9C24 0C0026A1 */       jal omEjectGObj
   /* 065428 800E9C28 8FA40018 */        lw $a0, 0x18($sp)
   /* 06542C 800E9C2C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 065430 800E9C30 27BD0018 */     addiu $sp, $sp, 0x18
@@ -23474,12 +23474,12 @@ glabel ftParticle_MakeEffectKind
   /* 0668DC 800EB0DC 46006307 */     neg.s $f12, $f12
   /* 0668E0 800EB0E0 44060000 */      mfc1 $a2, $f0
   /* 0668E4 800EB0E4 02002025 */        or $a0, $s0, $zero
-  /* 0668E8 800EB0E8 0C03FF56 */       jal efParticle_ImpactSW_MakeEffect
+  /* 0668E8 800EB0E8 0C03FF56 */       jal efParticle_ImpactWave_MakeEffect
   /* 0668EC 800EB0EC 24050004 */     addiu $a1, $zero, 4
   /* 0668F0 800EB0F0 100000A5 */         b jtgt_ovl2_800EB388
   /* 0668F4 800EB0F4 00401825 */        or $v1, $v0, $zero
   .L800EB0F8:
-  /* 0668F8 800EB0F8 0C03FF7A */       jal efParticle_ImpactAirSW_MakeEffect
+  /* 0668F8 800EB0F8 0C03FF7A */       jal efParticle_ImpactAirWave_MakeEffect
   /* 0668FC 800EB0FC 24050004 */     addiu $a1, $zero, 4
   /* 066900 800EB100 100000A1 */         b jtgt_ovl2_800EB388
   /* 066904 800EB104 00401825 */        or $v1, $v0, $zero
@@ -43423,7 +43423,7 @@ glabel func_ovl2_800FCDEC
   /* 0785F4 800FCDF4 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 0785F8 800FCDF8 00002825 */        or $a1, $zero, $zero
   /* 0785FC 800FCDFC 24060006 */     addiu $a2, $zero, 6
-  /* 078600 800FCE00 0C00265A */       jal omMakeGObjCommon
+  /* 078600 800FCE00 0C00265A */       jal omMakeGObjSPAfter
   /* 078604 800FCE04 3C078000 */       lui $a3, 0x8000
   /* 078608 800FCE08 3C058010 */       lui $a1, %hi(func_ovl2_800FCCC0)
   /* 07860C 800FCE0C 24A5CCC0 */     addiu $a1, $a1, %lo(func_ovl2_800FCCC0)
@@ -43437,7 +43437,7 @@ glabel func_ovl2_800FCDEC
   /* 07862C 800FCE2C 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 078630 800FCE30 00002825 */        or $a1, $zero, $zero
   /* 078634 800FCE34 24060006 */     addiu $a2, $zero, 6
-  /* 078638 800FCE38 0C00265A */       jal omMakeGObjCommon
+  /* 078638 800FCE38 0C00265A */       jal omMakeGObjSPAfter
   /* 07863C 800FCE3C 3C078000 */       lui $a3, 0x8000
   /* 078640 800FCE40 240FFFFF */     addiu $t7, $zero, -1
   /* 078644 800FCE44 AFAF0010 */        sw $t7, 0x10($sp)
@@ -43457,7 +43457,7 @@ glabel func_ovl2_800FCE6C
   /* 078674 800FCE74 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 078678 800FCE78 00002825 */        or $a1, $zero, $zero
   /* 07867C 800FCE7C 24060006 */     addiu $a2, $zero, 6
-  /* 078680 800FCE80 0C00265A */       jal omMakeGObjCommon
+  /* 078680 800FCE80 0C00265A */       jal omMakeGObjSPAfter
   /* 078684 800FCE84 3C078000 */       lui $a3, 0x8000
   /* 078688 800FCE88 3C058010 */       lui $a1, %hi(func_ovl2_800FCD64)
   /* 07868C 800FCE8C 24A5CD64 */     addiu $a1, $a1, %lo(func_ovl2_800FCD64)
@@ -43471,7 +43471,7 @@ glabel func_ovl2_800FCE6C
   /* 0786AC 800FCEAC 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 0786B0 800FCEB0 00002825 */        or $a1, $zero, $zero
   /* 0786B4 800FCEB4 24060006 */     addiu $a2, $zero, 6
-  /* 0786B8 800FCEB8 0C00265A */       jal omMakeGObjCommon
+  /* 0786B8 800FCEB8 0C00265A */       jal omMakeGObjSPAfter
   /* 0786BC 800FCEBC 3C078000 */       lui $a3, 0x8000
   /* 0786C0 800FCEC0 240FFFFF */     addiu $t7, $zero, -1
   /* 0786C4 800FCEC4 AFAF0010 */        sw $t7, 0x10($sp)
@@ -43668,7 +43668,7 @@ glabel func_ovl2_800FD18C
   /* 0789A0 800FD1A0 02203825 */        or $a3, $s1, $zero
   /* 0789A4 800FD1A4 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 0789A8 800FD1A8 00002825 */        or $a1, $zero, $zero
-  /* 0789AC 800FD1AC 0C00265A */       jal omMakeGObjCommon
+  /* 0789AC 800FD1AC 0C00265A */       jal omMakeGObjSPAfter
   /* 0789B0 800FD1B0 24060006 */     addiu $a2, $zero, 6
   /* 0789B4 800FD1B4 3C058010 */       lui $a1, %hi(func_ovl2_800FCFCC)
   /* 0789B8 800FD1B8 24A5CFCC */     addiu $a1, $a1, %lo(func_ovl2_800FCFCC)
@@ -43687,7 +43687,7 @@ glabel func_ovl2_800FD18C
   /* 0789EC 800FD1EC 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 0789F0 800FD1F0 00002825 */        or $a1, $zero, $zero
   /* 0789F4 800FD1F4 24060006 */     addiu $a2, $zero, 6
-  /* 0789F8 800FD1F8 0C00265A */       jal omMakeGObjCommon
+  /* 0789F8 800FD1F8 0C00265A */       jal omMakeGObjSPAfter
   /* 0789FC 800FD1FC 02203825 */        or $a3, $s1, $zero
   /* 078A00 800FD200 240FFFFF */     addiu $t7, $zero, -1
   /* 078A04 800FD204 00408025 */        or $s0, $v0, $zero
@@ -43704,7 +43704,7 @@ glabel func_ovl2_800FD18C
   /* 078A30 800FD230 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 078A34 800FD234 00002825 */        or $a1, $zero, $zero
   /* 078A38 800FD238 2406000B */     addiu $a2, $zero, 0xb
-  /* 078A3C 800FD23C 0C00265A */       jal omMakeGObjCommon
+  /* 078A3C 800FD23C 0C00265A */       jal omMakeGObjSPAfter
   /* 078A40 800FD240 02203825 */        or $a3, $s1, $zero
   /* 078A44 800FD244 3C058010 */       lui $a1, %hi(func_ovl2_800FCEEC)
   /* 078A48 800FD248 240AFFFF */     addiu $t2, $zero, -1
@@ -43722,7 +43722,7 @@ glabel func_ovl2_800FD18C
   /* 078A78 800FD278 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 078A7C 800FD27C 00002825 */        or $a1, $zero, $zero
   /* 078A80 800FD280 24060006 */     addiu $a2, $zero, 6
-  /* 078A84 800FD284 0C00265A */       jal omMakeGObjCommon
+  /* 078A84 800FD284 0C00265A */       jal omMakeGObjSPAfter
   /* 078A88 800FD288 02203825 */        or $a3, $s1, $zero
   /* 078A8C 800FD28C 3C058010 */       lui $a1, %hi(func_ovl2_800FD0AC)
   /* 078A90 800FD290 240BFFFF */     addiu $t3, $zero, -1
@@ -43747,10 +43747,10 @@ glabel func_ovl2_800FD18C
   /* 078ADC 800FD2DC 0C04567E */       jal efAlloc_SetParticleBank
   /* 078AE0 800FD2E0 24847340 */     addiu $a0, $a0, %lo(D_NF_00AC7340)
   /* 078AE4 800FD2E4 8FBF0024 */        lw $ra, 0x24($sp)
-  /* 078AE8 800FD2E8 3C018013 */       lui $at, %hi(gEffectBankIndex)
+  /* 078AE8 800FD2E8 3C018013 */       lui $at, %hi(sEFBankIndex)
   /* 078AEC 800FD2EC 8FB0001C */        lw $s0, 0x1c($sp)
   /* 078AF0 800FD2F0 8FB10020 */        lw $s1, 0x20($sp)
-  /* 078AF4 800FD2F4 AC2213C4 */        sw $v0, %lo(gEffectBankIndex)($at)
+  /* 078AF4 800FD2F4 AC2213C4 */        sw $v0, %lo(sEFBankIndex)($at)
   /* 078AF8 800FD2F8 03E00008 */        jr $ra
   /* 078AFC 800FD2FC 27BD0030 */     addiu $sp, $sp, 0x30
 
@@ -43761,11 +43761,11 @@ glabel efManager_AllocUserData
   /* 078B0C 800FD30C 0C001260 */       jal gsMemoryAlloc
   /* 078B10 800FD310 24050008 */     addiu $a1, $zero, 8
   /* 078B14 800FD314 2449003C */     addiu $t1, $v0, 0x3c
-  /* 078B18 800FD318 3C018013 */       lui $at, %hi(gEffectAllocFree)
-  /* 078B1C 800FD31C AC2213BC */        sw $v0, %lo(gEffectAllocFree)($at)
-  /* 078B20 800FD320 3C018013 */       lui $at, %hi(gEffectStructsFree)
+  /* 078B18 800FD318 3C018013 */       lui $at, %hi(sEFStructsAllocFree)
+  /* 078B1C 800FD31C AC2213BC */        sw $v0, %lo(sEFStructsAllocFree)($at)
+  /* 078B20 800FD320 3C018013 */       lui $at, %hi(sEFStructsNumFree)
   /* 078B24 800FD324 240E0026 */     addiu $t6, $zero, 0x26
-  /* 078B28 800FD328 AC2E13C0 */        sw $t6, %lo(gEffectStructsFree)($at)
+  /* 078B28 800FD328 AC2E13C0 */        sw $t6, %lo(sEFStructsNumFree)($at)
   /* 078B2C 800FD32C 2525003C */     addiu $a1, $t1, 0x3c
   /* 078B30 800FD330 25260078 */     addiu $a2, $t1, 0x78
   /* 078B34 800FD334 252700B4 */     addiu $a3, $t1, 0xb4
@@ -43806,9 +43806,9 @@ glabel efManager_AllocUserData
   /* 078BB8 800FD3B8 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 078BBC 800FD3BC 00402825 */        or $a1, $v0, $zero
   /* 078BC0 800FD3C0 3C040000 */       lui $a0, %hi(D_NF_00000054)
-  /* 078BC4 800FD3C4 3C018013 */       lui $at, %hi(D_ovl2_801313B0)
+  /* 078BC4 800FD3C4 3C018013 */       lui $at, %hi(sEFTexturesFile1)
   /* 078BC8 800FD3C8 24840054 */     addiu $a0, $a0, %lo(D_NF_00000054)
-  /* 078BCC 800FD3CC AC2213B0 */        sw $v0, %lo(D_ovl2_801313B0)($at)
+  /* 078BCC 800FD3CC AC2213B0 */        sw $v0, %lo(sEFTexturesFile1)($at)
   /* 078BD0 800FD3D0 0C0336F4 */       jal rdManagerGetFileSize
   /* 078BD4 800FD3D4 AFA40018 */        sw $a0, 0x18($sp)
   /* 078BD8 800FD3D8 00402025 */        or $a0, $v0, $zero
@@ -43818,9 +43818,9 @@ glabel efManager_AllocUserData
   /* 078BE8 800FD3E8 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 078BEC 800FD3EC 00402825 */        or $a1, $v0, $zero
   /* 078BF0 800FD3F0 3C040000 */       lui $a0, %hi(D_NF_00000055)
-  /* 078BF4 800FD3F4 3C018013 */       lui $at, %hi(D_ovl2_801313B4)
+  /* 078BF4 800FD3F4 3C018013 */       lui $at, %hi(sEFTexturesFile2)
   /* 078BF8 800FD3F8 24840055 */     addiu $a0, $a0, %lo(D_NF_00000055)
-  /* 078BFC 800FD3FC AC2213B4 */        sw $v0, %lo(D_ovl2_801313B4)($at)
+  /* 078BFC 800FD3FC AC2213B4 */        sw $v0, %lo(sEFTexturesFile2)($at)
   /* 078C00 800FD400 0C0336F4 */       jal rdManagerGetFileSize
   /* 078C04 800FD404 AFA40018 */        sw $a0, 0x18($sp)
   /* 078C08 800FD408 00402025 */        or $a0, $v0, $zero
@@ -43829,9 +43829,9 @@ glabel efManager_AllocUserData
   /* 078C14 800FD414 8FA40018 */        lw $a0, 0x18($sp)
   /* 078C18 800FD418 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 078C1C 800FD41C 00402825 */        or $a1, $v0, $zero
-  /* 078C20 800FD420 3C018013 */       lui $at, %hi(D_ovl2_801313B8)
+  /* 078C20 800FD420 3C018013 */       lui $at, %hi(sEFTexturesFile3)
   /* 078C24 800FD424 0C03F463 */       jal func_ovl2_800FD18C
-  /* 078C28 800FD428 AC2213B8 */        sw $v0, %lo(D_ovl2_801313B8)($at)
+  /* 078C28 800FD428 AC2213B8 */        sw $v0, %lo(sEFTexturesFile3)($at)
   /* 078C2C 800FD42C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 078C30 800FD430 27BD0030 */     addiu $sp, $sp, 0x30
   /* 078C34 800FD434 03E00008 */        jr $ra
@@ -43840,9 +43840,9 @@ glabel efManager_AllocUserData
 glabel efManager_GetEffectStruct
   /* 078C3C 800FD43C 14800009 */      bnez $a0, .L800FD464
   /* 078C40 800FD440 3C058013 */       lui $a1, 0x8013
-  /* 078C44 800FD444 3C048013 */       lui $a0, %hi(gEffectStructsFree)
-  /* 078C48 800FD448 248413C0 */     addiu $a0, $a0, %lo(gEffectStructsFree)
-  /* 078C4C 800FD44C 8C8E0000 */        lw $t6, ($a0) # gEffectStructsFree + 0
+  /* 078C44 800FD444 3C048013 */       lui $a0, %hi(sEFStructsNumFree)
+  /* 078C48 800FD448 248413C0 */     addiu $a0, $a0, %lo(sEFStructsNumFree)
+  /* 078C4C 800FD44C 8C8E0000 */        lw $t6, ($a0) # sEFStructsNumFree + 0
   /* 078C50 800FD450 29C10005 */      slti $at, $t6, 5
   /* 078C54 800FD454 10200003 */      beqz $at, .L800FD464
   /* 078C58 800FD458 00000000 */       nop 
@@ -43852,8 +43852,8 @@ glabel efManager_GetEffectStruct
   .L800FD464:
   /* 078C64 800FD464 24A513BC */     addiu $a1, $a1, 0x13bc
   /* 078C68 800FD468 8CA30000 */        lw $v1, ($a1)
-  /* 078C6C 800FD46C 3C048013 */       lui $a0, %hi(gEffectStructsFree)
-  /* 078C70 800FD470 248413C0 */     addiu $a0, $a0, %lo(gEffectStructsFree)
+  /* 078C6C 800FD46C 3C048013 */       lui $a0, %hi(sEFStructsNumFree)
+  /* 078C70 800FD470 248413C0 */     addiu $a0, $a0, %lo(sEFStructsNumFree)
   /* 078C74 800FD474 54600004 */      bnel $v1, $zero, .L800FD488
   /* 078C78 800FD478 8C6F0000 */        lw $t7, ($v1)
   /* 078C7C 800FD47C 03E00008 */        jr $ra
@@ -43895,17 +43895,17 @@ glabel efManager_GetStructForceReturn
   /* 078CF4 800FD4F4 00000000 */       nop 
 
 glabel efManager_SetPrevAlloc
-  /* 078CF8 800FD4F8 3C028013 */       lui $v0, %hi(gEffectAllocFree)
-  /* 078CFC 800FD4FC 244213BC */     addiu $v0, $v0, %lo(gEffectAllocFree)
-  /* 078D00 800FD500 8C4E0000 */        lw $t6, ($v0) # gEffectAllocFree + 0
-  /* 078D04 800FD504 3C038013 */       lui $v1, %hi(gEffectStructsFree)
-  /* 078D08 800FD508 246313C0 */     addiu $v1, $v1, %lo(gEffectStructsFree)
+  /* 078CF8 800FD4F8 3C028013 */       lui $v0, %hi(sEFStructsAllocFree)
+  /* 078CFC 800FD4FC 244213BC */     addiu $v0, $v0, %lo(sEFStructsAllocFree)
+  /* 078D00 800FD500 8C4E0000 */        lw $t6, ($v0) # sEFStructsAllocFree + 0
+  /* 078D04 800FD504 3C038013 */       lui $v1, %hi(sEFStructsNumFree)
+  /* 078D08 800FD508 246313C0 */     addiu $v1, $v1, %lo(sEFStructsNumFree)
   /* 078D0C 800FD50C AC8E0000 */        sw $t6, ($a0)
-  /* 078D10 800FD510 8C6F0000 */        lw $t7, ($v1) # gEffectStructsFree + 0
-  /* 078D14 800FD514 AC440000 */        sw $a0, ($v0) # gEffectAllocFree + 0
+  /* 078D10 800FD510 8C6F0000 */        lw $t7, ($v1) # sEFStructsNumFree + 0
+  /* 078D14 800FD514 AC440000 */        sw $a0, ($v0) # sEFStructsAllocFree + 0
   /* 078D18 800FD518 25F80001 */     addiu $t8, $t7, 1
   /* 078D1C 800FD51C 03E00008 */        jr $ra
-  /* 078D20 800FD520 AC780000 */        sw $t8, ($v1) # gEffectStructsFree + 0
+  /* 078D20 800FD520 AC780000 */        sw $t8, ($v1) # sEFStructsNumFree + 0
 
 glabel func_ovl2_800FD524
   /* 078D24 800FD524 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -43919,7 +43919,7 @@ glabel func_ovl2_800FD524
   /* 078D44 800FD544 00000000 */       nop 
   /* 078D48 800FD548 45020004 */     bc1fl .L800FD55C
   /* 078D4C 800FD54C 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 078D50 800FD550 0C0026A1 */       jal omEjectGObjCommon
+  /* 078D50 800FD550 0C0026A1 */       jal omEjectGObj
   /* 078D54 800FD554 00000000 */       nop 
   /* 078D58 800FD558 8FBF0014 */        lw $ra, 0x14($sp)
   .L800FD55C:
@@ -43927,7 +43927,7 @@ glabel func_ovl2_800FD524
   /* 078D60 800FD560 03E00008 */        jr $ra
   /* 078D64 800FD564 00000000 */       nop 
 
-glabel func_ovl2_800FD568
+glabel efManagerDefaultEndEjectProcUpdate
   /* 078D68 800FD568 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 078D6C 800FD56C AFBF0014 */        sw $ra, 0x14($sp)
   /* 078D70 800FD570 8C820084 */        lw $v0, 0x84($a0)
@@ -43948,7 +43948,7 @@ glabel func_ovl2_800FD568
   /* 078DAC 800FD5AC 8CA40084 */        lw $a0, 0x84($a1)
   /* 078DB0 800FD5B0 0C03F53E */       jal efManager_SetPrevAlloc
   /* 078DB4 800FD5B4 AFA50018 */        sw $a1, 0x18($sp)
-  /* 078DB8 800FD5B8 0C0026A1 */       jal omEjectGObjCommon
+  /* 078DB8 800FD5B8 0C0026A1 */       jal omEjectGObj
   /* 078DBC 800FD5BC 8FA40018 */        lw $a0, 0x18($sp)
   /* 078DC0 800FD5C0 8FBF0014 */        lw $ra, 0x14($sp)
   .L800FD5C4:
@@ -43975,7 +43975,7 @@ glabel func_ovl2_800FD5D8
   /* 078E04 800FD604 03E00008 */        jr $ra
   /* 078E08 800FD608 00000000 */       nop 
 
-glabel func_ovl2_800FD60C
+glabel efManagerSortZNeg
   /* 078E0C 800FD60C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 078E10 800FD610 AFBF0014 */        sw $ra, 0x14($sp)
   /* 078E14 800FD614 3C01C47A */       lui $at, (0xC47A0000 >> 16) # -1000.0
@@ -44011,7 +44011,7 @@ glabel func_ovl2_800FD60C
   /* 078E84 800FD684 03E00008 */        jr $ra
   /* 078E88 800FD688 00000000 */       nop 
 
-glabel func_ovl2_800FD68C
+glabel efManagerSortZPos
   /* 078E8C 800FD68C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 078E90 800FD690 AFBF0014 */        sw $ra, 0x14($sp)
   /* 078E94 800FD694 3C01447A */       lui $at, (0x447A0000 >> 16) # 1000.0
@@ -44116,7 +44116,7 @@ glabel efManagerMakeEffect
   /* 078FEC 800FD7EC 24A5D714 */     addiu $a1, $a1, %lo(efManagerProcEject)
   /* 078FF0 800FD7F0 320600FF */      andi $a2, $s0, 0xff
   /* 078FF4 800FD7F4 3C078000 */       lui $a3, 0x8000
-  /* 078FF8 800FD7F8 0C00265A */       jal omMakeGObjCommon
+  /* 078FF8 800FD7F8 0C00265A */       jal omMakeGObjSPAfter
   /* 078FFC 800FD7FC AFA80030 */        sw $t0, 0x30($sp)
   /* 079000 800FD800 8FA80030 */        lw $t0, 0x30($sp)
   /* 079004 800FD804 14400007 */      bnez $v0, .L800FD824
@@ -44367,7 +44367,7 @@ glabel efManagerDestroyParticleGObj
   /* 079364 800FDB64 0C03F53E */       jal efManager_SetPrevAlloc
   /* 079368 800FDB68 00402025 */        or $a0, $v0, $zero
   .L800FDB6C:
-  /* 07936C 800FDB6C 0C0026A1 */       jal omEjectGObjCommon
+  /* 07936C 800FDB6C 0C0026A1 */       jal omEjectGObj
   /* 079370 800FDB70 8FA4001C */        lw $a0, 0x1c($sp)
   /* 079374 800FDB74 8FBF0014 */        lw $ra, 0x14($sp)
   /* 079378 800FDB78 27BD0018 */     addiu $sp, $sp, 0x18
@@ -44388,14 +44388,14 @@ glabel efTransform_Default_ProcDead
   /* 0793AC 800FDBAC 8FA60018 */        lw $a2, 0x18($sp)
   /* 0793B0 800FDBB0 8CC500BC */        lw $a1, 0xbc($a2)
   .L800FDBB4:
-  /* 0793B4 800FDBB4 0C0026A1 */       jal omEjectGObjCommon
+  /* 0793B4 800FDBB4 0C0026A1 */       jal omEjectGObj
   /* 0793B8 800FDBB8 00A02025 */        or $a0, $a1, $zero
   /* 0793BC 800FDBBC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0793C0 800FDBC0 27BD0018 */     addiu $sp, $sp, 0x18
   /* 0793C4 800FDBC4 03E00008 */        jr $ra
   /* 0793C8 800FDBC8 00000000 */       nop 
 
-glabel efParticle_Default_ProcUpdate
+glabel efDefaultProcUpdate
   /* 0793CC 800FDBCC 8C820084 */        lw $v0, 0x84($a0)
   /* 0793D0 800FDBD0 8C430028 */        lw $v1, 0x28($v0)
   /* 0793D4 800FDBD4 C4460018 */      lwc1 $f6, 0x18($v0)
@@ -44428,7 +44428,7 @@ glabel efParticle_DamageNormalLight_MakeEffect
   /* 079430 800FDC30 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 079434 800FDC34 00002825 */        or $a1, $zero, $zero
   /* 079438 800FDC38 24060006 */     addiu $a2, $zero, 6
-  /* 07943C 800FDC3C 0C00265A */       jal omMakeGObjCommon
+  /* 07943C 800FDC3C 0C00265A */       jal omMakeGObjSPAfter
   /* 079440 800FDC40 3C078000 */       lui $a3, 0x8000
   /* 079444 800FDC44 14400005 */      bnez $v0, .L800FDC5C
   /* 079448 800FDC48 00401825 */        or $v1, $v0, $zero
@@ -44439,11 +44439,11 @@ glabel efParticle_DamageNormalLight_MakeEffect
   .L800FDC5C:
   /* 07945C 800FDC5C 8FAE0020 */        lw $t6, 0x20($sp)
   /* 079460 800FDC60 3C058013 */       lui $a1, %hi(D_ovl2_8012DF20)
-  /* 079464 800FDC64 3C048013 */       lui $a0, %hi(gEffectBankIndex)
+  /* 079464 800FDC64 3C048013 */       lui $a0, %hi(sEFBankIndex)
   /* 079468 800FDC68 AC6E0084 */        sw $t6, 0x84($v1)
   /* 07946C 800FDC6C 8FAF0034 */        lw $t7, 0x34($sp)
   /* 079470 800FDC70 AFA3002C */        sw $v1, 0x2c($sp)
-  /* 079474 800FDC74 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 079474 800FDC74 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 079478 800FDC78 00AF2821 */      addu $a1, $a1, $t7
   /* 07947C 800FDC7C 0C033A7A */       jal func_ovl0_800CE9E8
   /* 079480 800FDC80 90A5DF20 */       lbu $a1, %lo(D_ovl2_8012DF20)($a1)
@@ -44463,8 +44463,8 @@ glabel efParticle_DamageNormalLight_MakeEffect
   /* 0794B8 800FDCB8 0C033A85 */       jal func_ovl0_800CEA14
   /* 0794BC 800FDCBC 8FA40028 */        lw $a0, 0x28($sp)
   /* 0794C0 800FDCC0 8FA30024 */        lw $v1, 0x24($sp)
-  /* 0794C4 800FDCC4 3C058010 */       lui $a1, %hi(efParticle_Default_ProcUpdate)
-  /* 0794C8 800FDCC8 24A5DBCC */     addiu $a1, $a1, %lo(efParticle_Default_ProcUpdate)
+  /* 0794C4 800FDCC4 3C058010 */       lui $a1, %hi(efDefaultProcUpdate)
+  /* 0794C8 800FDCC8 24A5DBCC */     addiu $a1, $a1, %lo(efDefaultProcUpdate)
   /* 0794CC 800FDCCC 9468002A */       lhu $t0, 0x2a($v1)
   /* 0794D0 800FDCD0 8FA4002C */        lw $a0, 0x2c($sp)
   /* 0794D4 800FDCD4 24060001 */     addiu $a2, $zero, 1
@@ -44590,7 +44590,7 @@ glabel efTransform_DamageNormalHeavy_ProcDead
   /* 079688 800FDE88 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07968C 800FDE8C 8D240084 */        lw $a0, 0x84($t1)
   /* 079690 800FDE90 8FAA0028 */        lw $t2, 0x28($sp)
-  /* 079694 800FDE94 0C0026A1 */       jal omEjectGObjCommon
+  /* 079694 800FDE94 0C0026A1 */       jal omEjectGObj
   /* 079698 800FDE98 8D4400BC */        lw $a0, 0xbc($t2)
   /* 07969C 800FDE9C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 0796A0 800FDEA0 27BD0028 */     addiu $sp, $sp, 0x28
@@ -44615,7 +44615,7 @@ glabel efParticle_DamageNormalHeavy_MakeEffect
   /* 0796E0 800FDEE0 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 0796E4 800FDEE4 00002825 */        or $a1, $zero, $zero
   /* 0796E8 800FDEE8 24060006 */     addiu $a2, $zero, 6
-  /* 0796EC 800FDEEC 0C00265A */       jal omMakeGObjCommon
+  /* 0796EC 800FDEEC 0C00265A */       jal omMakeGObjSPAfter
   /* 0796F0 800FDEF0 3C078000 */       lui $a3, 0x8000
   /* 0796F4 800FDEF4 14400005 */      bnez $v0, .L800FDF0C
   /* 0796F8 800FDEF8 00403025 */        or $a2, $v0, $zero
@@ -44625,8 +44625,8 @@ glabel efParticle_DamageNormalHeavy_MakeEffect
   /* 079708 800FDF08 00001025 */        or $v0, $zero, $zero
   .L800FDF0C:
   /* 07970C 800FDF0C ACD10084 */        sw $s1, 0x84($a2)
-  /* 079710 800FDF10 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 079714 800FDF14 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 079710 800FDF10 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 079714 800FDF14 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 079718 800FDF18 AFA60034 */        sw $a2, 0x34($sp)
   /* 07971C 800FDF1C 0C033A7A */       jal func_ovl0_800CE9E8
   /* 079720 800FDF20 24050064 */     addiu $a1, $zero, 0x64
@@ -44656,45 +44656,45 @@ glabel efParticle_DamageNormalHeavy_MakeEffect
   /* 079780 800FDF80 AE230028 */        sw $v1, 0x28($s1)
   .L800FDF84:
   /* 079784 800FDF84 8C590000 */        lw $t9, ($v0)
-  /* 079788 800FDF88 3C0B8013 */       lui $t3, %hi(efParticle_DamageNormalHeavy_Color1R)
+  /* 079788 800FDF88 3C0B8013 */       lui $t3, %hi(dEFDamageNormalHeavyPrimColorR)
   /* 07978C 800FDF8C 01725821 */      addu $t3, $t3, $s2
   /* 079790 800FDF90 AC790004 */        sw $t9, 4($v1)
   /* 079794 800FDF94 8C580004 */        lw $t8, 4($v0)
-  /* 079798 800FDF98 3C0C8013 */       lui $t4, %hi(efParticle_DamageNormalHeavy_Color1G)
+  /* 079798 800FDF98 3C0C8013 */       lui $t4, %hi(dEFDamageNormalHeavyPrimColorG)
   /* 07979C 800FDF9C 01926021 */      addu $t4, $t4, $s2
   /* 0797A0 800FDFA0 AC780008 */        sw $t8, 8($v1)
   /* 0797A4 800FDFA4 8C590008 */        lw $t9, 8($v0)
-  /* 0797A8 800FDFA8 3C0D8013 */       lui $t5, %hi(efParticle_DamageNormalHeavy_Color1B)
+  /* 0797A8 800FDFA8 3C0D8013 */       lui $t5, %hi(dEFDamageNormalHeavyPrimColorB)
   /* 0797AC 800FDFAC 01B26821 */      addu $t5, $t5, $s2
   /* 0797B0 800FDFB0 AC79000C */        sw $t9, 0xc($v1)
   /* 0797B4 800FDFB4 8C490000 */        lw $t1, ($v0)
   /* 0797B8 800FDFB8 240E00FF */     addiu $t6, $zero, 0xff
-  /* 0797BC 800FDFBC 3C0F8013 */       lui $t7, %hi(efParticle_DamageNormalHeavy_Color2R)
+  /* 0797BC 800FDFBC 3C0F8013 */       lui $t7, %hi(dEFDamageNormalHeavyEnvColorR)
   /* 0797C0 800FDFC0 AE290018 */        sw $t1, 0x18($s1)
   /* 0797C4 800FDFC4 8C480004 */        lw $t0, 4($v0)
   /* 0797C8 800FDFC8 01F27821 */      addu $t7, $t7, $s2
-  /* 0797CC 800FDFCC 3C188013 */       lui $t8, %hi(efParticle_DamageNormalHeavy_Color2G)
+  /* 0797CC 800FDFCC 3C188013 */       lui $t8, %hi(dEFDamageNormalHeavyEnvColorG)
   /* 0797D0 800FDFD0 AE28001C */        sw $t0, 0x1c($s1)
   /* 0797D4 800FDFD4 8C490008 */        lw $t1, 8($v0)
   /* 0797D8 800FDFD8 A2320024 */        sb $s2, 0x24($s1)
   /* 0797DC 800FDFDC 0312C021 */      addu $t8, $t8, $s2
   /* 0797E0 800FDFE0 AE290020 */        sw $t1, 0x20($s1)
   /* 0797E4 800FDFE4 8FAA0040 */        lw $t2, 0x40($sp)
-  /* 0797E8 800FDFE8 3C198013 */       lui $t9, %hi(efParticle_DamageNormalHeavy_Color2B)
+  /* 0797E8 800FDFE8 3C198013 */       lui $t9, %hi(dEFDamageNormalHeavyEnvColorB)
   /* 0797EC 800FDFEC 0332C821 */      addu $t9, $t9, $s2
   /* 0797F0 800FDFF0 AE2A0028 */        sw $t2, 0x28($s1)
-  /* 0797F4 800FDFF4 916BDE98 */       lbu $t3, %lo(efParticle_DamageNormalHeavy_Color1R)($t3)
+  /* 0797F4 800FDFF4 916BDE98 */       lbu $t3, %lo(dEFDamageNormalHeavyPrimColorR)($t3)
   /* 0797F8 800FDFF8 A20B0048 */        sb $t3, 0x48($s0)
-  /* 0797FC 800FDFFC 918CDEA0 */       lbu $t4, %lo(efParticle_DamageNormalHeavy_Color1G)($t4)
+  /* 0797FC 800FDFFC 918CDEA0 */       lbu $t4, %lo(dEFDamageNormalHeavyPrimColorG)($t4)
   /* 079800 800FE000 A20C0049 */        sb $t4, 0x49($s0)
-  /* 079804 800FE004 91ADDEA8 */       lbu $t5, %lo(efParticle_DamageNormalHeavy_Color1B)($t5)
+  /* 079804 800FE004 91ADDEA8 */       lbu $t5, %lo(dEFDamageNormalHeavyPrimColorB)($t5)
   /* 079808 800FE008 A20E004B */        sb $t6, 0x4b($s0)
   /* 07980C 800FE00C A20D004A */        sb $t5, 0x4a($s0)
-  /* 079810 800FE010 91EFDEB0 */       lbu $t7, %lo(efParticle_DamageNormalHeavy_Color2R)($t7)
+  /* 079810 800FE010 91EFDEB0 */       lbu $t7, %lo(dEFDamageNormalHeavyEnvColorR)($t7)
   /* 079814 800FE014 A20F0050 */        sb $t7, 0x50($s0)
-  /* 079818 800FE018 9318DEB8 */       lbu $t8, %lo(efParticle_DamageNormalHeavy_Color2G)($t8)
+  /* 079818 800FE018 9318DEB8 */       lbu $t8, %lo(dEFDamageNormalHeavyEnvColorG)($t8)
   /* 07981C 800FE01C A2180051 */        sb $t8, 0x51($s0)
-  /* 079820 800FE020 9339DEC0 */       lbu $t9, %lo(efParticle_DamageNormalHeavy_Color2B)($t9)
+  /* 079820 800FE020 9339DEC0 */       lbu $t9, %lo(dEFDamageNormalHeavyEnvColorB)($t9)
   /* 079824 800FE024 10000009 */         b .L800FE04C
   /* 079828 800FE028 A2190052 */        sb $t9, 0x52($s0)
   .L800FE02C:
@@ -44732,7 +44732,7 @@ glabel func_ovl2_800FE068
   /* 079890 800FE090 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 079894 800FE094 00002825 */        or $a1, $zero, $zero
   /* 079898 800FE098 24060006 */     addiu $a2, $zero, 6
-  /* 07989C 800FE09C 0C00265A */       jal omMakeGObjCommon
+  /* 07989C 800FE09C 0C00265A */       jal omMakeGObjSPAfter
   /* 0798A0 800FE0A0 3C078000 */       lui $a3, 0x8000
   /* 0798A4 800FE0A4 14400005 */      bnez $v0, .L800FE0BC
   /* 0798A8 800FE0A8 00401825 */        or $v1, $v0, $zero
@@ -44742,12 +44742,12 @@ glabel func_ovl2_800FE068
   /* 0798B8 800FE0B8 00001025 */        or $v0, $zero, $zero
   .L800FE0BC:
   /* 0798BC 800FE0BC 8FAE0028 */        lw $t6, 0x28($sp)
-  /* 0798C0 800FE0C0 3C048013 */       lui $a0, %hi(gEffectBankIndex)
+  /* 0798C0 800FE0C0 3C048013 */       lui $a0, %hi(sEFBankIndex)
   /* 0798C4 800FE0C4 24050025 */     addiu $a1, $zero, 0x25
   /* 0798C8 800FE0C8 AC6E0084 */        sw $t6, 0x84($v1)
   /* 0798CC 800FE0CC AFA30034 */        sw $v1, 0x34($sp)
   /* 0798D0 800FE0D0 0C033A7A */       jal func_ovl0_800CE9E8
-  /* 0798D4 800FE0D4 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 0798D4 800FE0D4 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 0798D8 800FE0D8 10400058 */      beqz $v0, .L800FE23C
   /* 0798DC 800FE0DC AFA20030 */        sw $v0, 0x30($sp)
   /* 0798E0 800FE0E0 00402025 */        or $a0, $v0, $zero
@@ -44763,8 +44763,8 @@ glabel func_ovl2_800FE068
   /* 079908 800FE108 0C033A85 */       jal func_ovl0_800CEA14
   /* 07990C 800FE10C 8FA40030 */        lw $a0, 0x30($sp)
   /* 079910 800FE110 9619002A */       lhu $t9, 0x2a($s0)
-  /* 079914 800FE114 3C058010 */       lui $a1, %hi(efParticle_Default_ProcUpdate)
-  /* 079918 800FE118 24A5DBCC */     addiu $a1, $a1, %lo(efParticle_Default_ProcUpdate)
+  /* 079914 800FE114 3C058010 */       lui $a1, %hi(efDefaultProcUpdate)
+  /* 079918 800FE118 24A5DBCC */     addiu $a1, $a1, %lo(efDefaultProcUpdate)
   /* 07991C 800FE11C 17200003 */      bnez $t9, .L800FE12C
   /* 079920 800FE120 8FA40034 */        lw $a0, 0x34($sp)
   /* 079924 800FE124 10000049 */         b .L800FE24C
@@ -44854,7 +44854,7 @@ glabel func_ovl2_800FE068
   /* 079A58 800FE258 03E00008 */        jr $ra
   /* 079A5C 800FE25C 00000000 */       nop 
 
-glabel func_ovl2_800FE260
+glabel efCommonVelAddDestroyAnimEnd
   /* 079A60 800FE260 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 079A64 800FE264 AFBF0014 */        sw $ra, 0x14($sp)
   /* 079A68 800FE268 8C850084 */        lw $a1, 0x84($a0)
@@ -44876,7 +44876,7 @@ glabel func_ovl2_800FE260
   /* 079AA8 800FE2A8 C448001C */      lwc1 $f8, 0x1c($v0)
   /* 079AAC 800FE2AC 0C03F53E */       jal efManager_SetPrevAlloc
   /* 079AB0 800FE2B0 AFA60020 */        sw $a2, 0x20($sp)
-  /* 079AB4 800FE2B4 0C0026A1 */       jal omEjectGObjCommon
+  /* 079AB4 800FE2B4 0C0026A1 */       jal omEjectGObj
   /* 079AB8 800FE2B8 8FA40020 */        lw $a0, 0x20($sp)
   /* 079ABC 800FE2BC 1000000A */         b .L800FE2E8
   /* 079AC0 800FE2C0 8FBF0014 */        lw $ra, 0x14($sp)
@@ -44910,7 +44910,7 @@ glabel efParticle_DamageFire_MakeEffect
   /* 079B1C 800FE31C 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 079B20 800FE320 00002825 */        or $a1, $zero, $zero
   /* 079B24 800FE324 24060006 */     addiu $a2, $zero, 6
-  /* 079B28 800FE328 0C00265A */       jal omMakeGObjCommon
+  /* 079B28 800FE328 0C00265A */       jal omMakeGObjSPAfter
   /* 079B2C 800FE32C 3C078000 */       lui $a3, 0x8000
   /* 079B30 800FE330 14400005 */      bnez $v0, .L800FE348
   /* 079B34 800FE334 00401825 */        or $v1, $v0, $zero
@@ -44920,12 +44920,12 @@ glabel efParticle_DamageFire_MakeEffect
   /* 079B44 800FE344 00001025 */        or $v0, $zero, $zero
   .L800FE348:
   /* 079B48 800FE348 8FAE0028 */        lw $t6, 0x28($sp)
-  /* 079B4C 800FE34C 3C048013 */       lui $a0, %hi(gEffectBankIndex)
+  /* 079B4C 800FE34C 3C048013 */       lui $a0, %hi(sEFBankIndex)
   /* 079B50 800FE350 2405004D */     addiu $a1, $zero, 0x4d
   /* 079B54 800FE354 AC6E0084 */        sw $t6, 0x84($v1)
   /* 079B58 800FE358 AFA30034 */        sw $v1, 0x34($sp)
   /* 079B5C 800FE35C 0C033A7A */       jal func_ovl0_800CE9E8
-  /* 079B60 800FE360 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 079B60 800FE360 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 079B64 800FE364 10400058 */      beqz $v0, .L800FE4C8
   /* 079B68 800FE368 AFA20030 */        sw $v0, 0x30($sp)
   /* 079B6C 800FE36C 00402025 */        or $a0, $v0, $zero
@@ -44941,8 +44941,8 @@ glabel efParticle_DamageFire_MakeEffect
   /* 079B94 800FE394 0C033A85 */       jal func_ovl0_800CEA14
   /* 079B98 800FE398 8FA40030 */        lw $a0, 0x30($sp)
   /* 079B9C 800FE39C 9619002A */       lhu $t9, 0x2a($s0)
-  /* 079BA0 800FE3A0 3C058010 */       lui $a1, %hi(efParticle_Default_ProcUpdate)
-  /* 079BA4 800FE3A4 24A5DBCC */     addiu $a1, $a1, %lo(efParticle_Default_ProcUpdate)
+  /* 079BA0 800FE3A0 3C058010 */       lui $a1, %hi(efDefaultProcUpdate)
+  /* 079BA4 800FE3A4 24A5DBCC */     addiu $a1, $a1, %lo(efDefaultProcUpdate)
   /* 079BA8 800FE3A8 17200003 */      bnez $t9, .L800FE3B8
   /* 079BAC 800FE3AC 8FA40034 */        lw $a0, 0x34($sp)
   /* 079BB0 800FE3B0 10000049 */         b .L800FE4D8
@@ -45047,7 +45047,7 @@ glabel func_ovl2_800FE4EC
   /* 079D14 800FE514 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 079D18 800FE518 00002825 */        or $a1, $zero, $zero
   /* 079D1C 800FE51C 24060006 */     addiu $a2, $zero, 6
-  /* 079D20 800FE520 0C00265A */       jal omMakeGObjCommon
+  /* 079D20 800FE520 0C00265A */       jal omMakeGObjSPAfter
   /* 079D24 800FE524 3C078000 */       lui $a3, 0x8000
   /* 079D28 800FE528 14400005 */      bnez $v0, .L800FE540
   /* 079D2C 800FE52C 00401825 */        or $v1, $v0, $zero
@@ -45057,12 +45057,12 @@ glabel func_ovl2_800FE4EC
   /* 079D3C 800FE53C 00001025 */        or $v0, $zero, $zero
   .L800FE540:
   /* 079D40 800FE540 8FAE0028 */        lw $t6, 0x28($sp)
-  /* 079D44 800FE544 3C048013 */       lui $a0, %hi(gEffectBankIndex)
+  /* 079D44 800FE544 3C048013 */       lui $a0, %hi(sEFBankIndex)
   /* 079D48 800FE548 24050053 */     addiu $a1, $zero, 0x53
   /* 079D4C 800FE54C AC6E0084 */        sw $t6, 0x84($v1)
   /* 079D50 800FE550 AFA30034 */        sw $v1, 0x34($sp)
   /* 079D54 800FE554 0C033A7A */       jal func_ovl0_800CE9E8
-  /* 079D58 800FE558 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 079D58 800FE558 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 079D5C 800FE55C 10400058 */      beqz $v0, .L800FE6C0
   /* 079D60 800FE560 AFA20030 */        sw $v0, 0x30($sp)
   /* 079D64 800FE564 00402025 */        or $a0, $v0, $zero
@@ -45078,8 +45078,8 @@ glabel func_ovl2_800FE4EC
   /* 079D8C 800FE58C 0C033A85 */       jal func_ovl0_800CEA14
   /* 079D90 800FE590 8FA40030 */        lw $a0, 0x30($sp)
   /* 079D94 800FE594 9619002A */       lhu $t9, 0x2a($s0)
-  /* 079D98 800FE598 3C058010 */       lui $a1, %hi(efParticle_Default_ProcUpdate)
-  /* 079D9C 800FE59C 24A5DBCC */     addiu $a1, $a1, %lo(efParticle_Default_ProcUpdate)
+  /* 079D98 800FE598 3C058010 */       lui $a1, %hi(efDefaultProcUpdate)
+  /* 079D9C 800FE59C 24A5DBCC */     addiu $a1, $a1, %lo(efDefaultProcUpdate)
   /* 079DA0 800FE5A0 17200003 */      bnez $t9, .L800FE5B0
   /* 079DA4 800FE5A4 8FA40034 */        lw $a0, 0x34($sp)
   /* 079DA8 800FE5A8 10000049 */         b .L800FE6D0
@@ -45173,9 +45173,9 @@ glabel efParticle_DamageSlash_MakeEffect
   /* 079EE4 800FE6E4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 079EE8 800FE6E8 AFA40018 */        sw $a0, 0x18($sp)
   /* 079EEC 800FE6EC AFBF0014 */        sw $ra, 0x14($sp)
-  /* 079EF0 800FE6F0 3C048013 */       lui $a0, %hi(D_ovl2_8012DF24)
+  /* 079EF0 800FE6F0 3C048013 */       lui $a0, %hi(dEFDamageSlashEffectDesc)
   /* 079EF4 800FE6F4 AFA60020 */        sw $a2, 0x20($sp)
-  /* 079EF8 800FE6F8 2484DF24 */     addiu $a0, $a0, %lo(D_ovl2_8012DF24)
+  /* 079EF8 800FE6F8 2484DF24 */     addiu $a0, $a0, %lo(dEFDamageSlashEffectDesc)
   /* 079EFC 800FE6FC 0C03F6BF */       jal efManagerMakeEffectNoForce
   /* 079F00 800FE700 AFA5001C */        sw $a1, 0x1c($sp)
   /* 079F04 800FE704 8FA5001C */        lw $a1, 0x1c($sp)
@@ -45242,7 +45242,7 @@ glabel efParticle_FlameLR_MakeEffect
   /* 079FDC 800FE7DC 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 079FE0 800FE7E0 00002825 */        or $a1, $zero, $zero
   /* 079FE4 800FE7E4 24060006 */     addiu $a2, $zero, 6
-  /* 079FE8 800FE7E8 0C00265A */       jal omMakeGObjCommon
+  /* 079FE8 800FE7E8 0C00265A */       jal omMakeGObjSPAfter
   /* 079FEC 800FE7EC 3C078000 */       lui $a3, 0x8000
   /* 079FF0 800FE7F0 14400005 */      bnez $v0, .L800FE808
   /* 079FF4 800FE7F4 00401825 */        or $v1, $v0, $zero
@@ -45252,12 +45252,12 @@ glabel efParticle_FlameLR_MakeEffect
   /* 07A004 800FE804 00001025 */        or $v0, $zero, $zero
   .L800FE808:
   /* 07A008 800FE808 8FAE0028 */        lw $t6, 0x28($sp)
-  /* 07A00C 800FE80C 3C048013 */       lui $a0, %hi(gEffectBankIndex)
+  /* 07A00C 800FE80C 3C048013 */       lui $a0, %hi(sEFBankIndex)
   /* 07A010 800FE810 24050012 */     addiu $a1, $zero, 0x12
   /* 07A014 800FE814 AC6E0084 */        sw $t6, 0x84($v1)
   /* 07A018 800FE818 AFA30034 */        sw $v1, 0x34($sp)
   /* 07A01C 800FE81C 0C033A7A */       jal func_ovl0_800CE9E8
-  /* 07A020 800FE820 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07A020 800FE820 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07A024 800FE824 1040005A */      beqz $v0, .L800FE990
   /* 07A028 800FE828 AFA20030 */        sw $v0, 0x30($sp)
   /* 07A02C 800FE82C 00402025 */        or $a0, $v0, $zero
@@ -45273,8 +45273,8 @@ glabel efParticle_FlameLR_MakeEffect
   /* 07A054 800FE854 0C033A85 */       jal func_ovl0_800CEA14
   /* 07A058 800FE858 8FA40030 */        lw $a0, 0x30($sp)
   /* 07A05C 800FE85C 9619002A */       lhu $t9, 0x2a($s0)
-  /* 07A060 800FE860 3C058010 */       lui $a1, %hi(efParticle_Default_ProcUpdate)
-  /* 07A064 800FE864 24A5DBCC */     addiu $a1, $a1, %lo(efParticle_Default_ProcUpdate)
+  /* 07A060 800FE860 3C058010 */       lui $a1, %hi(efDefaultProcUpdate)
+  /* 07A064 800FE864 24A5DBCC */     addiu $a1, $a1, %lo(efDefaultProcUpdate)
   /* 07A068 800FE868 17200003 */      bnez $t9, .L800FE878
   /* 07A06C 800FE86C 8FA40034 */        lw $a0, 0x34($sp)
   /* 07A070 800FE870 1000004B */         b .L800FE9A0
@@ -45378,7 +45378,7 @@ glabel efParticle_FlameRandom_MakeEffect
   /* 07A1D8 800FE9D8 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 07A1DC 800FE9DC 00002825 */        or $a1, $zero, $zero
   /* 07A1E0 800FE9E0 24060006 */     addiu $a2, $zero, 6
-  /* 07A1E4 800FE9E4 0C00265A */       jal omMakeGObjCommon
+  /* 07A1E4 800FE9E4 0C00265A */       jal omMakeGObjSPAfter
   /* 07A1E8 800FE9E8 3C078000 */       lui $a3, 0x8000
   /* 07A1EC 800FE9EC 14400005 */      bnez $v0, .L800FEA04
   /* 07A1F0 800FE9F0 00401825 */        or $v1, $v0, $zero
@@ -45388,12 +45388,12 @@ glabel efParticle_FlameRandom_MakeEffect
   /* 07A200 800FEA00 00001025 */        or $v0, $zero, $zero
   .L800FEA04:
   /* 07A204 800FEA04 8FAE0028 */        lw $t6, 0x28($sp)
-  /* 07A208 800FEA08 3C048013 */       lui $a0, %hi(gEffectBankIndex)
+  /* 07A208 800FEA08 3C048013 */       lui $a0, %hi(sEFBankIndex)
   /* 07A20C 800FEA0C 24050055 */     addiu $a1, $zero, 0x55
   /* 07A210 800FEA10 AC6E0084 */        sw $t6, 0x84($v1)
   /* 07A214 800FEA14 AFA30034 */        sw $v1, 0x34($sp)
   /* 07A218 800FEA18 0C033A7A */       jal func_ovl0_800CE9E8
-  /* 07A21C 800FEA1C 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07A21C 800FEA1C 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07A220 800FEA20 10400044 */      beqz $v0, .L800FEB34
   /* 07A224 800FEA24 AFA20030 */        sw $v0, 0x30($sp)
   /* 07A228 800FEA28 00402025 */        or $a0, $v0, $zero
@@ -45409,8 +45409,8 @@ glabel efParticle_FlameRandom_MakeEffect
   /* 07A250 800FEA50 0C033A85 */       jal func_ovl0_800CEA14
   /* 07A254 800FEA54 8FA40030 */        lw $a0, 0x30($sp)
   /* 07A258 800FEA58 9619002A */       lhu $t9, 0x2a($s0)
-  /* 07A25C 800FEA5C 3C058010 */       lui $a1, %hi(efParticle_Default_ProcUpdate)
-  /* 07A260 800FEA60 24A5DBCC */     addiu $a1, $a1, %lo(efParticle_Default_ProcUpdate)
+  /* 07A25C 800FEA5C 3C058010 */       lui $a1, %hi(efDefaultProcUpdate)
+  /* 07A260 800FEA60 24A5DBCC */     addiu $a1, $a1, %lo(efDefaultProcUpdate)
   /* 07A264 800FEA64 17200003 */      bnez $t9, .L800FEA74
   /* 07A268 800FEA68 8FA40034 */        lw $a0, 0x34($sp)
   /* 07A26C 800FEA6C 10000035 */         b .L800FEB44
@@ -45492,7 +45492,7 @@ glabel efParticle_FlameStatic_MakeEffect
   /* 07A37C 800FEB7C 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 07A380 800FEB80 00002825 */        or $a1, $zero, $zero
   /* 07A384 800FEB84 24060006 */     addiu $a2, $zero, 6
-  /* 07A388 800FEB88 0C00265A */       jal omMakeGObjCommon
+  /* 07A388 800FEB88 0C00265A */       jal omMakeGObjSPAfter
   /* 07A38C 800FEB8C 3C078000 */       lui $a3, 0x8000
   /* 07A390 800FEB90 14400005 */      bnez $v0, .L800FEBA8
   /* 07A394 800FEB94 00401825 */        or $v1, $v0, $zero
@@ -45502,8 +45502,8 @@ glabel efParticle_FlameStatic_MakeEffect
   /* 07A3A4 800FEBA4 00001025 */        or $v0, $zero, $zero
   .L800FEBA8:
   /* 07A3A8 800FEBA8 AC700084 */        sw $s0, 0x84($v1)
-  /* 07A3AC 800FEBAC 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07A3B0 800FEBB0 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07A3AC 800FEBAC 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07A3B0 800FEBB0 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07A3B4 800FEBB4 AFA3002C */        sw $v1, 0x2c($sp)
   /* 07A3B8 800FEBB8 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07A3BC 800FEBBC 24050055 */     addiu $a1, $zero, 0x55
@@ -45523,8 +45523,8 @@ glabel efParticle_FlameStatic_MakeEffect
   /* 07A3F4 800FEBF4 0C033A85 */       jal func_ovl0_800CEA14
   /* 07A3F8 800FEBF8 8FA40028 */        lw $a0, 0x28($sp)
   /* 07A3FC 800FEBFC 8FA30024 */        lw $v1, 0x24($sp)
-  /* 07A400 800FEC00 3C058010 */       lui $a1, %hi(efParticle_Default_ProcUpdate)
-  /* 07A404 800FEC04 24A5DBCC */     addiu $a1, $a1, %lo(efParticle_Default_ProcUpdate)
+  /* 07A400 800FEC00 3C058010 */       lui $a1, %hi(efDefaultProcUpdate)
+  /* 07A404 800FEC04 24A5DBCC */     addiu $a1, $a1, %lo(efDefaultProcUpdate)
   /* 07A408 800FEC08 9478002A */       lhu $t8, 0x2a($v1)
   /* 07A40C 800FEC0C 8FA4002C */        lw $a0, 0x2c($sp)
   /* 07A410 800FEC10 24060001 */     addiu $a2, $zero, 1
@@ -45590,7 +45590,7 @@ glabel efParticle_DustCollision_MakeEffect
   /* 07A4E0 800FECE0 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 07A4E4 800FECE4 00002825 */        or $a1, $zero, $zero
   /* 07A4E8 800FECE8 24060006 */     addiu $a2, $zero, 6
-  /* 07A4EC 800FECEC 0C00265A */       jal omMakeGObjCommon
+  /* 07A4EC 800FECEC 0C00265A */       jal omMakeGObjSPAfter
   /* 07A4F0 800FECF0 3C078000 */       lui $a3, 0x8000
   /* 07A4F4 800FECF4 14400005 */      bnez $v0, .L800FED0C
   /* 07A4F8 800FECF8 00401825 */        or $v1, $v0, $zero
@@ -45600,12 +45600,12 @@ glabel efParticle_DustCollision_MakeEffect
   /* 07A508 800FED08 00001025 */        or $v0, $zero, $zero
   .L800FED0C:
   /* 07A50C 800FED0C 8FAE0028 */        lw $t6, 0x28($sp)
-  /* 07A510 800FED10 3C048013 */       lui $a0, %hi(gEffectBankIndex)
+  /* 07A510 800FED10 3C048013 */       lui $a0, %hi(sEFBankIndex)
   /* 07A514 800FED14 24050055 */     addiu $a1, $zero, 0x55
   /* 07A518 800FED18 AC6E0084 */        sw $t6, 0x84($v1)
   /* 07A51C 800FED1C AFA30034 */        sw $v1, 0x34($sp)
   /* 07A520 800FED20 0C033A7A */       jal func_ovl0_800CE9E8
-  /* 07A524 800FED24 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07A524 800FED24 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07A528 800FED28 10400058 */      beqz $v0, .L800FEE8C
   /* 07A52C 800FED2C AFA20030 */        sw $v0, 0x30($sp)
   /* 07A530 800FED30 00402025 */        or $a0, $v0, $zero
@@ -45621,8 +45621,8 @@ glabel efParticle_DustCollision_MakeEffect
   /* 07A558 800FED58 0C033A85 */       jal func_ovl0_800CEA14
   /* 07A55C 800FED5C 8FA40030 */        lw $a0, 0x30($sp)
   /* 07A560 800FED60 9619002A */       lhu $t9, 0x2a($s0)
-  /* 07A564 800FED64 3C058010 */       lui $a1, %hi(efParticle_Default_ProcUpdate)
-  /* 07A568 800FED68 24A5DBCC */     addiu $a1, $a1, %lo(efParticle_Default_ProcUpdate)
+  /* 07A564 800FED64 3C058010 */       lui $a1, %hi(efDefaultProcUpdate)
+  /* 07A568 800FED68 24A5DBCC */     addiu $a1, $a1, %lo(efDefaultProcUpdate)
   /* 07A56C 800FED6C 17200003 */      bnez $t9, .L800FED7C
   /* 07A570 800FED70 8FA40034 */        lw $a0, 0x34($sp)
   /* 07A574 800FED74 10000049 */         b .L800FEE9C
@@ -45715,10 +45715,10 @@ glabel efParticle_ShockSmall_MakeEffect
   /* 07A6B4 800FEEB4 AFB00014 */        sw $s0, 0x14($sp)
   /* 07A6B8 800FEEB8 00808025 */        or $s0, $a0, $zero
   /* 07A6BC 800FEEBC AFBF001C */        sw $ra, 0x1c($sp)
-  /* 07A6C0 800FEEC0 3C048013 */       lui $a0, %hi(D_ovl2_8012DF4C)
+  /* 07A6C0 800FEEC0 3C048013 */       lui $a0, %hi(dEFShockSmallEffectDesc)
   /* 07A6C4 800FEEC4 AFB10018 */        sw $s1, 0x18($sp)
   /* 07A6C8 800FEEC8 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07A6CC 800FEECC 2484DF4C */     addiu $a0, $a0, %lo(D_ovl2_8012DF4C)
+  /* 07A6CC 800FEECC 2484DF4C */     addiu $a0, $a0, %lo(dEFShockSmallEffectDesc)
   /* 07A6D0 800FEED0 14400003 */      bnez $v0, .L800FEEE0
   /* 07A6D4 800FEED4 00401825 */        or $v1, $v0, $zero
   /* 07A6D8 800FEED8 1000003C */         b .L800FEFCC
@@ -45835,7 +45835,7 @@ glabel efParticle_DustLight_MakeEffect
   /* 07A874 800FF074 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 07A878 800FF078 00002825 */        or $a1, $zero, $zero
   /* 07A87C 800FF07C 24060006 */     addiu $a2, $zero, 6
-  /* 07A880 800FF080 0C00265A */       jal omMakeGObjCommon
+  /* 07A880 800FF080 0C00265A */       jal omMakeGObjSPAfter
   /* 07A884 800FF084 3C078000 */       lui $a3, 0x8000
   /* 07A888 800FF088 14400005 */      bnez $v0, .L800FF0A0
   /* 07A88C 800FF08C AFA20034 */        sw $v0, 0x34($sp)
@@ -45853,8 +45853,8 @@ glabel efParticle_DustLight_MakeEffect
   /* 07A8B8 800FF0B8 00000000 */       nop 
   /* 07A8BC 800FF0BC 45000008 */      bc1f .L800FF0E0
   /* 07A8C0 800FF0C0 00000000 */       nop 
-  /* 07A8C4 800FF0C4 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07A8C8 800FF0C8 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07A8C4 800FF0C4 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07A8C8 800FF0C8 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07A8CC 800FF0CC 24050056 */     addiu $a1, $zero, 0x56
   /* 07A8D0 800FF0D0 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07A8D4 800FF0D4 34840008 */       ori $a0, $a0, 8
@@ -45980,7 +45980,7 @@ glabel efParticle_DustHeavy_MakeEffect
   /* 07AA8C 800FF28C 00002825 */        or $a1, $zero, $zero
   /* 07AA90 800FF290 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 07AA94 800FF294 24060006 */     addiu $a2, $zero, 6
-  /* 07AA98 800FF298 0C00265A */       jal omMakeGObjCommon
+  /* 07AA98 800FF298 0C00265A */       jal omMakeGObjSPAfter
   /* 07AA9C 800FF29C 3C078000 */       lui $a3, 0x8000
   /* 07AAA0 800FF2A0 14400003 */      bnez $v0, .L800FF2B0
   /* 07AAA4 800FF2A4 00403025 */        or $a2, $v0, $zero
@@ -45988,8 +45988,8 @@ glabel efParticle_DustHeavy_MakeEffect
   /* 07AAAC 800FF2AC 00001025 */        or $v0, $zero, $zero
   .L800FF2B0:
   /* 07AAB0 800FF2B0 ACC00084 */        sw $zero, 0x84($a2)
-  /* 07AAB4 800FF2B4 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07AAB8 800FF2B8 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07AAB4 800FF2B4 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07AAB8 800FF2B8 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07AABC 800FF2BC AFA60024 */        sw $a2, 0x24($sp)
   /* 07AAC0 800FF2C0 24050058 */     addiu $a1, $zero, 0x58
   /* 07AAC4 800FF2C4 0C033A7A */       jal func_ovl0_800CE9E8
@@ -46093,7 +46093,7 @@ glabel efParticle_DustHeavyDouble_MakeEffect
   /* 07AC20 800FF420 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 07AC24 800FF424 00002825 */        or $a1, $zero, $zero
   /* 07AC28 800FF428 24060006 */     addiu $a2, $zero, 6
-  /* 07AC2C 800FF42C 0C00265A */       jal omMakeGObjCommon
+  /* 07AC2C 800FF42C 0C00265A */       jal omMakeGObjSPAfter
   /* 07AC30 800FF430 3C078000 */       lui $a3, 0x8000
   /* 07AC34 800FF434 14400005 */      bnez $v0, .L800FF44C
   /* 07AC38 800FF438 AFA2002C */        sw $v0, 0x2c($sp)
@@ -46111,8 +46111,8 @@ glabel efParticle_DustHeavyDouble_MakeEffect
   /* 07AC64 800FF464 00000000 */       nop 
   /* 07AC68 800FF468 45000008 */      bc1f .L800FF48C
   /* 07AC6C 800FF46C 00000000 */       nop 
-  /* 07AC70 800FF470 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07AC74 800FF474 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07AC70 800FF470 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07AC74 800FF474 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07AC78 800FF478 24050059 */     addiu $a1, $zero, 0x59
   /* 07AC7C 800FF47C 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07AC80 800FF480 34840008 */       ori $a0, $a0, 8
@@ -46194,8 +46194,8 @@ glabel efParticle_DustHeavyDouble_MakeEffect
 glabel efParticle_DustExpandLarge_MakeEffect
   /* 07AD90 800FF590 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07AD94 800FF594 AFA40028 */        sw $a0, 0x28($sp)
-  /* 07AD98 800FF598 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07AD9C 800FF59C 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07AD98 800FF598 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07AD9C 800FF59C 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07ADA0 800FF5A0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 07ADA4 800FF5A4 AFB00018 */        sw $s0, 0x18($sp)
   /* 07ADA8 800FF5A8 24050057 */     addiu $a1, $zero, 0x57
@@ -46258,7 +46258,7 @@ glabel efParticle_DustExpandSmall_MakeEffect
   /* 07AE70 800FF670 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 07AE74 800FF674 00002825 */        or $a1, $zero, $zero
   /* 07AE78 800FF678 24060006 */     addiu $a2, $zero, 6
-  /* 07AE7C 800FF67C 0C00265A */       jal omMakeGObjCommon
+  /* 07AE7C 800FF67C 0C00265A */       jal omMakeGObjSPAfter
   /* 07AE80 800FF680 3C078000 */       lui $a3, 0x8000
   /* 07AE84 800FF684 14400005 */      bnez $v0, .L800FF69C
   /* 07AE88 800FF688 AFA2002C */        sw $v0, 0x2c($sp)
@@ -46277,8 +46277,8 @@ glabel efParticle_DustExpandSmall_MakeEffect
   /* 07AEB8 800FF6B8 00000000 */       nop 
   /* 07AEBC 800FF6BC 45000008 */      bc1f .L800FF6E0
   /* 07AEC0 800FF6C0 00000000 */       nop 
-  /* 07AEC4 800FF6C4 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07AEC8 800FF6C8 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07AEC4 800FF6C4 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07AEC8 800FF6C8 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07AECC 800FF6CC 24050056 */     addiu $a1, $zero, 0x56
   /* 07AED0 800FF6D0 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07AED4 800FF6D4 34840008 */       ori $a0, $a0, 8
@@ -46307,8 +46307,8 @@ glabel efParticle_DustExpandSmall_MakeEffect
   /* 07AF28 800FF728 0C033A85 */       jal func_ovl0_800CEA14
   /* 07AF2C 800FF72C 02002025 */        or $a0, $s0, $zero
   /* 07AF30 800FF730 8FA30024 */        lw $v1, 0x24($sp)
-  /* 07AF34 800FF734 3C058010 */       lui $a1, %hi(efParticle_Default_ProcUpdate)
-  /* 07AF38 800FF738 24A5DBCC */     addiu $a1, $a1, %lo(efParticle_Default_ProcUpdate)
+  /* 07AF34 800FF734 3C058010 */       lui $a1, %hi(efDefaultProcUpdate)
+  /* 07AF38 800FF738 24A5DBCC */     addiu $a1, $a1, %lo(efDefaultProcUpdate)
   /* 07AF3C 800FF73C 9479002A */       lhu $t9, 0x2a($v1)
   /* 07AF40 800FF740 8FA4002C */        lw $a0, 0x2c($sp)
   /* 07AF44 800FF744 24060001 */     addiu $a2, $zero, 1
@@ -46357,8 +46357,8 @@ glabel efParticle_DustExpandSmall_MakeEffect
 glabel efParticle_DustDash_MakeEffect
   /* 07AFD8 800FF7D8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07AFDC 800FF7DC AFA40028 */        sw $a0, 0x28($sp)
-  /* 07AFE0 800FF7E0 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07AFE4 800FF7E4 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07AFE0 800FF7E0 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07AFE4 800FF7E4 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07AFE8 800FF7E8 AFBF001C */        sw $ra, 0x1c($sp)
   /* 07AFEC 800FF7EC AFA5002C */        sw $a1, 0x2c($sp)
   /* 07AFF0 800FF7F0 AFB00018 */        sw $s0, 0x18($sp)
@@ -46437,7 +46437,7 @@ glabel efParticle_DamageFlyOrbs_ProcUpdate
   /* 07B0FC 800FF8FC ACAF0024 */        sw $t7, 0x24($a1)
   /* 07B100 800FF900 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07B104 800FF904 AFA60020 */        sw $a2, 0x20($sp)
-  /* 07B108 800FF908 0C0026A1 */       jal omEjectGObjCommon
+  /* 07B108 800FF908 0C0026A1 */       jal omEjectGObj
   /* 07B10C 800FF90C 8FA40020 */        lw $a0, 0x20($sp)
   /* 07B110 800FF910 1000000F */         b .L800FF950
   /* 07B114 800FF914 8FBF0014 */        lw $ra, 0x14($sp)
@@ -46468,7 +46468,7 @@ glabel efParticle_DamageSpawnOrbs_ProcUpdate
   /* 07B168 800FF968 AFA40038 */        sw $a0, 0x38($sp)
   /* 07B16C 800FF96C 8C900084 */        lw $s0, 0x84($a0)
   /* 07B170 800FF970 00807025 */        or $t6, $a0, $zero
-  /* 07B174 800FF974 3C048013 */       lui $a0, %hi(D_ovl2_8012DF74)
+  /* 07B174 800FF974 3C048013 */       lui $a0, %hi(dEFDamageFlyOrbsEffectDesc)
   /* 07B178 800FF978 8E0F0018 */        lw $t7, 0x18($s0)
   /* 07B17C 800FF97C 05E10004 */      bgez $t7, .L800FF990
   /* 07B180 800FF980 31F80003 */      andi $t8, $t7, 3
@@ -46479,7 +46479,7 @@ glabel efParticle_DamageSpawnOrbs_ProcUpdate
   /* 07B190 800FF990 5700003D */      bnel $t8, $zero, .L800FFA88
   /* 07B194 800FF994 8E0E0018 */        lw $t6, 0x18($s0)
   /* 07B198 800FF998 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07B19C 800FF99C 2484DF74 */     addiu $a0, $a0, %lo(D_ovl2_8012DF74)
+  /* 07B19C 800FF99C 2484DF74 */     addiu $a0, $a0, %lo(dEFDamageFlyOrbsEffectDesc)
   /* 07B1A0 800FF9A0 10400038 */      beqz $v0, .L800FFA84
   /* 07B1A4 800FF9A4 00401825 */        or $v1, $v0, $zero
   /* 07B1A8 800FF9A8 8C790084 */        lw $t9, 0x84($v1)
@@ -46545,7 +46545,7 @@ glabel efParticle_DamageSpawnOrbs_ProcUpdate
   /* 07B290 800FFA90 AE0F0018 */        sw $t7, 0x18($s0)
   /* 07B294 800FFA94 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07B298 800FFA98 02002025 */        or $a0, $s0, $zero
-  /* 07B29C 800FFA9C 0C0026A1 */       jal omEjectGObjCommon
+  /* 07B29C 800FFA9C 0C0026A1 */       jal omEjectGObj
   /* 07B2A0 800FFAA0 8FA40038 */        lw $a0, 0x38($sp)
   .L800FFAA4:
   /* 07B2A4 800FFAA4 8FBF001C */        lw $ra, 0x1c($sp)
@@ -46558,9 +46558,9 @@ glabel efParticle_DamageSpawnOrbs_MakeEffect
   /* 07B2B8 800FFAB8 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 07B2BC 800FFABC AFA40020 */        sw $a0, 0x20($sp)
   /* 07B2C0 800FFAC0 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07B2C4 800FFAC4 3C048013 */       lui $a0, %hi(D_ovl2_8012DF9C)
+  /* 07B2C4 800FFAC4 3C048013 */       lui $a0, %hi(dEFDamageSpawnOrbsEffectDesc)
   /* 07B2C8 800FFAC8 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07B2CC 800FFACC 2484DF9C */     addiu $a0, $a0, %lo(D_ovl2_8012DF9C)
+  /* 07B2CC 800FFACC 2484DF9C */     addiu $a0, $a0, %lo(dEFDamageSpawnOrbsEffectDesc)
   /* 07B2D0 800FFAD0 14400003 */      bnez $v0, .L800FFAE0
   /* 07B2D4 800FFAD4 00401825 */        or $v1, $v0, $zero
   /* 07B2D8 800FFAD8 10000013 */         b .L800FFB28
@@ -46609,7 +46609,7 @@ glabel efParticle_DamageSpawnOrbs_CheckRandomMakeEffect
   /* 07B36C 800FFB6C 03E00008 */        jr $ra
   /* 07B370 800FFB70 00000000 */       nop 
 
-  glabel efParticle_ImpactSW_ProcRender
+  glabel efParticle_ImpactWave_ProcRender
   /* 07B374 800FFB74 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07B378 800FFB78 3C058004 */       lui $a1, %hi(gDisplayListHead)
   /* 07B37C 800FFB7C 24A565B0 */     addiu $a1, $a1, %lo(gDisplayListHead)
@@ -46632,22 +46632,22 @@ glabel efParticle_DamageSpawnOrbs_CheckRandomMakeEffect
   /* 07B3C0 800FFBC0 AC590000 */        sw $t9, ($v0)
   /* 07B3C4 800FFBC4 AC4B0004 */        sw $t3, 4($v0)
   /* 07B3C8 800FFBC8 8CA20000 */        lw $v0, ($a1) # gDisplayListHead + 0
-  /* 07B3CC 800FFBCC 3C0E8013 */       lui $t6, %hi(efParticle_ImpactSW_PrimColorB)
+  /* 07B3CC 800FFBCC 3C0E8013 */       lui $t6, %hi(dEFImpactWavePrimColorB)
   /* 07B3D0 800FFBD0 3C0DFA00 */       lui $t5, 0xfa00
   /* 07B3D4 800FFBD4 244C0008 */     addiu $t4, $v0, 8
   /* 07B3D8 800FFBD8 ACAC0000 */        sw $t4, ($a1) # gDisplayListHead + 0
   /* 07B3DC 800FFBDC 01C37021 */      addu $t6, $t6, $v1
   /* 07B3E0 800FFBE0 AC4D0000 */        sw $t5, ($v0)
-  /* 07B3E4 800FFBE4 91CEDED8 */       lbu $t6, %lo(efParticle_ImpactSW_PrimColorB)($t6)
+  /* 07B3E4 800FFBE4 91CEDED8 */       lbu $t6, %lo(dEFImpactWavePrimColorB)($t6)
   /* 07B3E8 800FFBE8 C4C4001C */      lwc1 $f4, 0x1c($a2)
-  /* 07B3EC 800FFBEC 3C198013 */       lui $t9, %hi(efParticle_ImpactSW_PrimColorR)
+  /* 07B3EC 800FFBEC 3C198013 */       lui $t9, %hi(dEFImpactWavePrimColorR)
   /* 07B3F0 800FFBF0 0323C821 */      addu $t9, $t9, $v1
-  /* 07B3F4 800FFBF4 932BDEC8 */       lbu $t3, %lo(efParticle_ImpactSW_PrimColorR)($t9)
+  /* 07B3F4 800FFBF4 932BDEC8 */       lbu $t3, %lo(dEFImpactWavePrimColorR)($t9)
   /* 07B3F8 800FFBF8 31CF00FF */      andi $t7, $t6, 0xff
   /* 07B3FC 800FFBFC 4600218D */ trunc.w.s $f6, $f4
-  /* 07B400 800FFC00 3C0E8013 */       lui $t6, %hi(efParticle_ImpactSW_PrimColorG)
+  /* 07B400 800FFC00 3C0E8013 */       lui $t6, %hi(dEFImpactWavePrimColorG)
   /* 07B404 800FFC04 01C37021 */      addu $t6, $t6, $v1
-  /* 07B408 800FFC08 91CEDED0 */       lbu $t6, %lo(efParticle_ImpactSW_PrimColorG)($t6)
+  /* 07B408 800FFC08 91CEDED0 */       lbu $t6, %lo(dEFImpactWavePrimColorG)($t6)
   /* 07B40C 800FFC0C 000FC200 */       sll $t8, $t7, 8
   /* 07B410 800FFC10 000B6600 */       sll $t4, $t3, 0x18
   /* 07B414 800FFC14 030C6825 */        or $t5, $t8, $t4
@@ -46660,19 +46660,19 @@ glabel efParticle_DamageSpawnOrbs_CheckRandomMakeEffect
   /* 07B430 800FFC30 AC4F0004 */        sw $t7, 4($v0)
   /* 07B434 800FFC34 8CA20000 */        lw $v0, ($a1) # gDisplayListHead + 0
   /* 07B438 800FFC38 3C19FB00 */       lui $t9, 0xfb00
-  /* 07B43C 800FFC3C 3C188013 */       lui $t8, %hi(efParticle_ImpactSW_EnvColorB)
+  /* 07B43C 800FFC3C 3C188013 */       lui $t8, %hi(dEFImpactWaveEnvColorB)
   /* 07B440 800FFC40 244D0008 */     addiu $t5, $v0, 8
   /* 07B444 800FFC44 ACAD0000 */        sw $t5, ($a1) # gDisplayListHead + 0
   /* 07B448 800FFC48 0303C021 */      addu $t8, $t8, $v1
   /* 07B44C 800FFC4C AC590000 */        sw $t9, ($v0)
-  /* 07B450 800FFC50 9318DEF0 */       lbu $t8, %lo(efParticle_ImpactSW_EnvColorB)($t8)
-  /* 07B454 800FFC54 3C0E8013 */       lui $t6, %hi(efParticle_ImpactSW_EnvColorR)
+  /* 07B450 800FFC50 9318DEF0 */       lbu $t8, %lo(dEFImpactWaveEnvColorB)($t8)
+  /* 07B454 800FFC54 3C0E8013 */       lui $t6, %hi(dEFImpactWaveEnvColorR)
   /* 07B458 800FFC58 01C37021 */      addu $t6, $t6, $v1
   /* 07B45C 800FFC5C 330C00FF */      andi $t4, $t8, 0xff
-  /* 07B460 800FFC60 3C188013 */       lui $t8, %hi(efParticle_ImpactSW_EnvColorG)
+  /* 07B460 800FFC60 3C188013 */       lui $t8, %hi(dEFImpactWaveEnvColorG)
   /* 07B464 800FFC64 0303C021 */      addu $t8, $t8, $v1
-  /* 07B468 800FFC68 9318DEE8 */       lbu $t8, %lo(efParticle_ImpactSW_EnvColorG)($t8)
-  /* 07B46C 800FFC6C 91CFDEE0 */       lbu $t7, %lo(efParticle_ImpactSW_EnvColorR)($t6)
+  /* 07B468 800FFC68 9318DEE8 */       lbu $t8, %lo(dEFImpactWaveEnvColorG)($t8)
+  /* 07B46C 800FFC6C 91CFDEE0 */       lbu $t7, %lo(dEFImpactWaveEnvColorR)($t6)
   /* 07B470 800FFC70 000C5A00 */       sll $t3, $t4, 8
   /* 07B474 800FFC74 330C00FF */      andi $t4, $t8, 0xff
   /* 07B478 800FFC78 000F6E00 */       sll $t5, $t7, 0x18
@@ -46687,7 +46687,7 @@ glabel efParticle_DamageSpawnOrbs_CheckRandomMakeEffect
   /* 07B49C 800FFC9C 03E00008 */        jr $ra
   /* 07B4A0 800FFCA0 00000000 */       nop 
 
-  glabel efParticle_ImpactSW_ProcUpdate
+  glabel efParticle_ImpactWave_ProcUpdate
   /* 07B4A4 800FFCA4 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 07B4A8 800FFCA8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 07B4AC 800FFCAC 8C820084 */        lw $v0, 0x84($a0)
@@ -46705,7 +46705,7 @@ glabel efParticle_DamageSpawnOrbs_CheckRandomMakeEffect
   /* 07B4DC 800FFCDC 8CA40084 */        lw $a0, 0x84($a1)
   /* 07B4E0 800FFCE0 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07B4E4 800FFCE4 AFA50020 */        sw $a1, 0x20($sp)
-  /* 07B4E8 800FFCE8 0C0026A1 */       jal omEjectGObjCommon
+  /* 07B4E8 800FFCE8 0C0026A1 */       jal omEjectGObj
   /* 07B4EC 800FFCEC 8FA40020 */        lw $a0, 0x20($sp)
   /* 07B4F0 800FFCF0 10000016 */         b .L800FFD4C
   /* 07B4F4 800FFCF4 8FBF0014 */        lw $ra, 0x14($sp)
@@ -46738,15 +46738,15 @@ glabel efParticle_DamageSpawnOrbs_CheckRandomMakeEffect
   /* 07B550 800FFD50 03E00008 */        jr $ra
   /* 07B554 800FFD54 00000000 */       nop 
 
-glabel efParticle_ImpactSW_MakeEffect
+glabel efParticle_ImpactWave_MakeEffect
   /* 07B558 800FFD58 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07B55C 800FFD5C AFA40018 */        sw $a0, 0x18($sp)
   /* 07B560 800FFD60 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07B564 800FFD64 3C048013 */       lui $a0, %hi(D_ovl2_8012DFC4)
+  /* 07B564 800FFD64 3C048013 */       lui $a0, %hi(dEFImpactWaveEffectDesc)
   /* 07B568 800FFD68 AFA5001C */        sw $a1, 0x1c($sp)
   /* 07B56C 800FFD6C AFA60020 */        sw $a2, 0x20($sp)
   /* 07B570 800FFD70 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07B574 800FFD74 2484DFC4 */     addiu $a0, $a0, %lo(D_ovl2_8012DFC4)
+  /* 07B574 800FFD74 2484DFC4 */     addiu $a0, $a0, %lo(dEFImpactWaveEffectDesc)
   /* 07B578 800FFD78 14400003 */      bnez $v0, .L800FFD88
   /* 07B57C 800FFD7C 00402825 */        or $a1, $v0, $zero
   /* 07B580 800FFD80 10000015 */         b .L800FFDD8
@@ -46778,10 +46778,10 @@ glabel efParticle_ImpactSW_MakeEffect
   /* 07B5E0 800FFDE0 03E00008 */        jr $ra
   /* 07B5E4 800FFDE4 00000000 */       nop 
 
-glabel efParticle_ImpactAirSW_MakeEffect
+glabel efParticle_ImpactAirWave_MakeEffect
   /* 07B5E8 800FFDE8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07B5EC 800FFDEC AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07B5F0 800FFDF0 0C03FF56 */       jal efParticle_ImpactSW_MakeEffect
+  /* 07B5F0 800FFDF0 0C03FF56 */       jal efParticle_ImpactWave_MakeEffect
   /* 07B5F4 800FFDF4 24060000 */     addiu $a2, $zero, 0
   /* 07B5F8 800FFDF8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 07B5FC 800FFDFC 27BD0018 */     addiu $sp, $sp, 0x18
@@ -46806,7 +46806,7 @@ glabel efParticle_StarRodSpark_ProcUpdate
   /* 07B640 800FFE40 8CA20030 */        lw $v0, 0x30($a1)
   /* 07B644 800FFE44 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07B648 800FFE48 AFA60020 */        sw $a2, 0x20($sp)
-  /* 07B64C 800FFE4C 0C0026A1 */       jal omEjectGObjCommon
+  /* 07B64C 800FFE4C 0C0026A1 */       jal omEjectGObj
   /* 07B650 800FFE50 8FA40020 */        lw $a0, 0x20($sp)
   /* 07B654 800FFE54 10000010 */         b .L800FFE98
   /* 07B658 800FFE58 8FBF0014 */        lw $ra, 0x14($sp)
@@ -46836,10 +46836,10 @@ glabel efParticle_StarRodSpark_MakeEffect
   /* 07B6A4 800FFEA4 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07B6A8 800FFEA8 AFA40028 */        sw $a0, 0x28($sp)
   /* 07B6AC 800FFEAC AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07B6B0 800FFEB0 3C048013 */       lui $a0, %hi(D_ovl2_8012DFEC)
+  /* 07B6B0 800FFEB0 3C048013 */       lui $a0, %hi(dEFStarRodSparkEffectDesc)
   /* 07B6B4 800FFEB4 AFA5002C */        sw $a1, 0x2c($sp)
   /* 07B6B8 800FFEB8 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07B6BC 800FFEBC 2484DFEC */     addiu $a0, $a0, %lo(D_ovl2_8012DFEC)
+  /* 07B6BC 800FFEBC 2484DFEC */     addiu $a0, $a0, %lo(dEFStarRodSparkEffectDesc)
   /* 07B6C0 800FFEC0 10400027 */      beqz $v0, .L800FFF60
   /* 07B6C4 800FFEC4 00401825 */        or $v1, $v0, $zero
   /* 07B6C8 800FFEC8 8FAE0028 */        lw $t6, 0x28($sp)
@@ -46905,7 +46905,7 @@ glabel efParticle_DamageFlySparks_ProcUpdate
   /* 07B7AC 800FFFAC 8CC20074 */        lw $v0, 0x74($a2)
   /* 07B7B0 800FFFB0 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07B7B4 800FFFB4 AFA60020 */        sw $a2, 0x20($sp)
-  /* 07B7B8 800FFFB8 0C0026A1 */       jal omEjectGObjCommon
+  /* 07B7B8 800FFFB8 0C0026A1 */       jal omEjectGObj
   /* 07B7BC 800FFFBC 8FA40020 */        lw $a0, 0x20($sp)
   /* 07B7C0 800FFFC0 10000018 */         b .L80100024
   /* 07B7C4 800FFFC4 8FBF0014 */        lw $ra, 0x14($sp)
@@ -46946,9 +46946,9 @@ glabel efParticle_DamageSpawnSparks_ProcUpdate
   /* 07B840 80100040 AFA40048 */        sw $a0, 0x48($sp)
   /* 07B844 80100044 8C910084 */        lw $s1, 0x84($a0)
   /* 07B848 80100048 00807025 */        or $t6, $a0, $zero
-  /* 07B84C 8010004C 3C048013 */       lui $a0, %hi(D_ovl2_8012E014)
+  /* 07B84C 8010004C 3C048013 */       lui $a0, %hi(dEFDamageFlySparksEffectDesc)
   /* 07B850 80100050 8E230018 */        lw $v1, 0x18($s1)
-  /* 07B854 80100054 2484E014 */     addiu $a0, $a0, %lo(D_ovl2_8012E014)
+  /* 07B854 80100054 2484E014 */     addiu $a0, $a0, %lo(dEFDamageFlySparksEffectDesc)
   /* 07B858 80100058 04610004 */      bgez $v1, .L8010006C
   /* 07B85C 8010005C 306F0003 */      andi $t7, $v1, 3
   /* 07B860 80100060 11E00002 */      beqz $t7, .L8010006C
@@ -46986,9 +46986,9 @@ glabel efParticle_DamageSpawnSparks_ProcUpdate
   .L801000DC:
   /* 07B8DC 801000DC 00084823 */      negu $t1, $t0
   /* 07B8E0 801000E0 00095080 */       sll $t2, $t1, 2
-  /* 07B8E4 801000E4 3C018013 */       lui $at, %hi(efParticle_DamageSpawnSparks_Angles)
+  /* 07B8E4 801000E4 3C018013 */       lui $at, %hi(dEFDamageSpawnSparksAngles)
   /* 07B8E8 801000E8 002A0821 */      addu $at, $at, $t2
-  /* 07B8EC 801000EC C422DE88 */      lwc1 $f2, %lo(efParticle_DamageSpawnSparks_Angles)($at)
+  /* 07B8EC 801000EC C422DE88 */      lwc1 $f2, %lo(dEFDamageSpawnSparksAngles)($at)
   /* 07B8F0 801000F0 3C018013 */       lui $at, %hi(D_ovl2_801309B4)
   /* 07B8F4 801000F4 C42809B4 */      lwc1 $f8, %lo(D_ovl2_801309B4)($at)
   /* 07B8F8 801000F8 3C014334 */       lui $at, (0x43340000 >> 16) # 180.0
@@ -47030,7 +47030,7 @@ glabel efParticle_DamageSpawnSparks_ProcUpdate
   /* 07B980 80100180 AE2E0018 */        sw $t6, 0x18($s1)
   /* 07B984 80100184 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07B988 80100188 02202025 */        or $a0, $s1, $zero
-  /* 07B98C 8010018C 0C0026A1 */       jal omEjectGObjCommon
+  /* 07B98C 8010018C 0C0026A1 */       jal omEjectGObj
   /* 07B990 80100190 8FA40048 */        lw $a0, 0x48($sp)
   .L80100194:
   /* 07B994 80100194 8FBF001C */        lw $ra, 0x1c($sp)
@@ -47043,10 +47043,10 @@ glabel efParticle_DamageSpawnSparks_MakeEffect
   /* 07B9A8 801001A8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07B9AC 801001AC AFA40018 */        sw $a0, 0x18($sp)
   /* 07B9B0 801001B0 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07B9B4 801001B4 3C048013 */       lui $a0, %hi(D_ovl2_8012E03C)
+  /* 07B9B4 801001B4 3C048013 */       lui $a0, %hi(dEFDamageSpawnSparksEffectDesc)
   /* 07B9B8 801001B8 AFA5001C */        sw $a1, 0x1c($sp)
   /* 07B9BC 801001BC 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07B9C0 801001C0 2484E03C */     addiu $a0, $a0, %lo(D_ovl2_8012E03C)
+  /* 07B9C0 801001C0 2484E03C */     addiu $a0, $a0, %lo(dEFDamageSpawnSparksEffectDesc)
   /* 07B9C4 801001C4 14400003 */      bnez $v0, .L801001D4
   /* 07B9C8 801001C8 00402025 */        or $a0, $v0, $zero
   /* 07B9CC 801001CC 1000000E */         b .L80100208
@@ -47099,9 +47099,9 @@ glabel efParticle_DamageSpawnMDust_ProcUpdate
   /* 07BA68 80100268 AFA40048 */        sw $a0, 0x48($sp)
   /* 07BA6C 8010026C 8C910084 */        lw $s1, 0x84($a0)
   /* 07BA70 80100270 00807025 */        or $t6, $a0, $zero
-  /* 07BA74 80100274 3C048013 */       lui $a0, %hi(D_ovl2_8012E064)
+  /* 07BA74 80100274 3C048013 */       lui $a0, %hi(dEFDamageFlyMDustEffectDesc)
   /* 07BA78 80100278 8E230018 */        lw $v1, 0x18($s1)
-  /* 07BA7C 8010027C 2484E064 */     addiu $a0, $a0, %lo(D_ovl2_8012E064)
+  /* 07BA7C 8010027C 2484E064 */     addiu $a0, $a0, %lo(dEFDamageFlyMDustEffectDesc)
   /* 07BA80 80100280 04610004 */      bgez $v1, .L80100294
   /* 07BA84 80100284 306F0003 */      andi $t7, $v1, 3
   /* 07BA88 80100288 11E00002 */      beqz $t7, .L80100294
@@ -47139,9 +47139,9 @@ glabel efParticle_DamageSpawnMDust_ProcUpdate
   .L80100304:
   /* 07BB04 80100304 00084823 */      negu $t1, $t0
   /* 07BB08 80100308 00095080 */       sll $t2, $t1, 2
-  /* 07BB0C 8010030C 3C018013 */       lui $at, %hi(efParticle_DamageSpawnMDust_Angles)
+  /* 07BB0C 8010030C 3C018013 */       lui $at, %hi(dEFDamageSpawnMDustAngles)
   /* 07BB10 80100310 002A0821 */      addu $at, $at, $t2
-  /* 07BB14 80100314 C422DE94 */      lwc1 $f2, %lo(efParticle_DamageSpawnMDust_Angles)($at)
+  /* 07BB14 80100314 C422DE94 */      lwc1 $f2, %lo(dEFDamageSpawnMDustAngles)($at)
   /* 07BB18 80100318 3C018013 */       lui $at, %hi(D_ovl2_801309C0)
   /* 07BB1C 8010031C C42809C0 */      lwc1 $f8, %lo(D_ovl2_801309C0)($at)
   /* 07BB20 80100320 3C014334 */       lui $at, (0x43340000 >> 16) # 180.0
@@ -47183,7 +47183,7 @@ glabel efParticle_DamageSpawnMDust_ProcUpdate
   /* 07BBA8 801003A8 AE2E0018 */        sw $t6, 0x18($s1)
   /* 07BBAC 801003AC 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07BBB0 801003B0 02202025 */        or $a0, $s1, $zero
-  /* 07BBB4 801003B4 0C0026A1 */       jal omEjectGObjCommon
+  /* 07BBB4 801003B4 0C0026A1 */       jal omEjectGObj
   /* 07BBB8 801003B8 8FA40048 */        lw $a0, 0x48($sp)
   .L801003BC:
   /* 07BBBC 801003BC 8FBF001C */        lw $ra, 0x1c($sp)
@@ -47196,10 +47196,10 @@ glabel efParticle_DamageSpawnMDust_MakeEffect
   /* 07BBD0 801003D0 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07BBD4 801003D4 AFA40018 */        sw $a0, 0x18($sp)
   /* 07BBD8 801003D8 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07BBDC 801003DC 3C048013 */       lui $a0, %hi(D_ovl2_8012E08C)
+  /* 07BBDC 801003DC 3C048013 */       lui $a0, %hi(dEFDamageSpawnMDustEffectDesc)
   /* 07BBE0 801003E0 AFA5001C */        sw $a1, 0x1c($sp)
   /* 07BBE4 801003E4 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07BBE8 801003E8 2484E08C */     addiu $a0, $a0, %lo(D_ovl2_8012E08C)
+  /* 07BBE8 801003E8 2484E08C */     addiu $a0, $a0, %lo(dEFDamageSpawnMDustEffectDesc)
   /* 07BBEC 801003EC 14400003 */      bnez $v0, .L801003FC
   /* 07BBF0 801003F0 00402025 */        or $a0, $v0, $zero
   /* 07BBF4 801003F4 1000000E */         b .L80100430
@@ -47247,8 +47247,8 @@ glabel efParticle_DamageSpawnMDust_CheckRandomMakeEffect
 glabel efParticle_SparkleWhite_MakeEffect
   /* 07BC80 80100480 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07BC84 80100484 AFA40028 */        sw $a0, 0x28($sp)
-  /* 07BC88 80100488 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07BC8C 8010048C 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07BC88 80100488 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07BC8C 8010048C 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07BC90 80100490 AFBF001C */        sw $ra, 0x1c($sp)
   /* 07BC94 80100494 AFB00018 */        sw $s0, 0x18($sp)
   /* 07BC98 80100498 24050073 */     addiu $a1, $zero, 0x73
@@ -47294,8 +47294,8 @@ glabel efParticle_SparkleWhite_MakeEffect
 glabel efParticle_SparkleWhiteMulti_MakeEffect
   /* 07BD24 80100524 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07BD28 80100528 AFA40028 */        sw $a0, 0x28($sp)
-  /* 07BD2C 8010052C 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07BD30 80100530 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07BD2C 8010052C 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07BD30 80100530 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07BD34 80100534 AFBF001C */        sw $ra, 0x1c($sp)
   /* 07BD38 80100538 AFB00018 */        sw $s0, 0x18($sp)
   /* 07BD3C 8010053C 2405001A */     addiu $a1, $zero, 0x1a
@@ -47341,8 +47341,8 @@ glabel efParticle_SparkleWhiteMulti_MakeEffect
 glabel efParticle_SparkleWhiteMultiExplode_MakeEffect
   /* 07BDC8 801005C8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07BDCC 801005CC AFA40028 */        sw $a0, 0x28($sp)
-  /* 07BDD0 801005D0 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07BDD4 801005D4 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07BDD0 801005D0 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07BDD4 801005D4 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07BDD8 801005D8 AFBF001C */        sw $ra, 0x1c($sp)
   /* 07BDDC 801005DC AFB00018 */        sw $s0, 0x18($sp)
   /* 07BDE0 801005E0 24050022 */     addiu $a1, $zero, 0x22
@@ -47390,9 +47390,9 @@ glabel efParticle_SparkleWhiteScale_MakeEffect
   /* 07BE70 80100670 AFA40028 */        sw $a0, 0x28($sp)
   /* 07BE74 80100674 AFBF001C */        sw $ra, 0x1c($sp)
   /* 07BE78 80100678 AFA5002C */        sw $a1, 0x2c($sp)
-  /* 07BE7C 8010067C 3C048013 */       lui $a0, %hi(gEffectBankIndex)
+  /* 07BE7C 8010067C 3C048013 */       lui $a0, %hi(sEFBankIndex)
   /* 07BE80 80100680 AFB00018 */        sw $s0, 0x18($sp)
-  /* 07BE84 80100684 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07BE84 80100684 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07BE88 80100688 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07BE8C 8010068C 2405005B */     addiu $a1, $zero, 0x5b
   /* 07BE90 80100690 1040001D */      beqz $v0, .L80100708
@@ -47439,8 +47439,8 @@ glabel efParticle_SparkleWhiteScale_MakeEffect
 glabel efParticle_SparkleWhiteDead_MakeEffect
   /* 07BF20 80100720 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07BF24 80100724 AFA40028 */        sw $a0, 0x28($sp)
-  /* 07BF28 80100728 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07BF2C 8010072C 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07BF28 80100728 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07BF2C 8010072C 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07BF30 80100730 AFBF001C */        sw $ra, 0x1c($sp)
   /* 07BF34 80100734 AFA5002C */        sw $a1, 0x2c($sp)
   /* 07BF38 80100738 AFB00018 */        sw $s0, 0x18($sp)
@@ -47504,7 +47504,7 @@ glabel efParticle_Quake_ProcUpdate
   /* 07C008 80100808 8CE40084 */        lw $a0, 0x84($a3)
   /* 07C00C 8010080C 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07C010 80100810 AFA70040 */        sw $a3, 0x40($sp)
-  /* 07C014 80100814 0C0026A1 */       jal omEjectGObjCommon
+  /* 07C014 80100814 0C0026A1 */       jal omEjectGObj
   /* 07C018 80100818 8FA40040 */        lw $a0, 0x40($sp)
   /* 07C01C 8010081C 10000023 */         b .L801008AC
   /* 07C020 80100820 8FBF0014 */        lw $ra, 0x14($sp)
@@ -47582,7 +47582,7 @@ glabel efParticle_Quake_MakeEffect
   /* 07C11C 8010091C 24A508B8 */     addiu $a1, $a1, %lo(efParticle_Quake_AddProcUpdate)
   /* 07C120 80100920 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 07C124 80100924 24060006 */     addiu $a2, $zero, 6
-  /* 07C128 80100928 0C00265A */       jal omMakeGObjCommon
+  /* 07C128 80100928 0C00265A */       jal omMakeGObjSPAfter
   /* 07C12C 8010092C 3C078000 */       lui $a3, 0x8000
   /* 07C130 80100930 14400003 */      bnez $v0, .L80100940
   /* 07C134 80100934 00408025 */        or $s0, $v0, $zero
@@ -47600,7 +47600,7 @@ glabel efParticle_Quake_MakeEffect
   /* 07C160 80100960 00003025 */        or $a2, $zero, $zero
   /* 07C164 80100964 8FA30030 */        lw $v1, 0x30($sp)
   /* 07C168 80100968 02002025 */        or $a0, $s0, $zero
-  /* 07C16C 8010096C 3C0F8013 */       lui $t7, %hi(D_ovl2_801313B0)
+  /* 07C16C 8010096C 3C0F8013 */       lui $t7, %hi(sEFTexturesFile1)
   /* 07C170 80100970 1060000C */      beqz $v1, .L801009A4
   /* 07C174 80100974 3C180001 */       lui $t8, %hi(D_NF_0000CBC0)
   /* 07C178 80100978 24010001 */     addiu $at, $zero, 1
@@ -47615,7 +47615,7 @@ glabel efParticle_Quake_MakeEffect
   /* 07C19C 8010099C 10000021 */         b .L80100A24
   /* 07C1A0 801009A0 00000000 */       nop 
   .L801009A4:
-  /* 07C1A4 801009A4 8DEF13B0 */        lw $t7, %lo(D_ovl2_801313B0)($t7)
+  /* 07C1A4 801009A4 8DEF13B0 */        lw $t7, %lo(sEFTexturesFile1)($t7)
   /* 07C1A8 801009A8 2718CBC0 */     addiu $t8, $t8, %lo(D_NF_0000CBC0)
   /* 07C1AC 801009AC 24060000 */     addiu $a2, $zero, 0
   /* 07C1B0 801009B0 0C002F63 */       jal func_8000BD8C
@@ -47623,8 +47623,8 @@ glabel efParticle_Quake_MakeEffect
   /* 07C1B8 801009B8 1000001A */         b .L80100A24
   /* 07C1BC 801009BC 00000000 */       nop 
   .L801009C0:
-  /* 07C1C0 801009C0 3C198013 */       lui $t9, %hi(D_ovl2_801313B0)
-  /* 07C1C4 801009C4 8F3913B0 */        lw $t9, %lo(D_ovl2_801313B0)($t9)
+  /* 07C1C0 801009C0 3C198013 */       lui $t9, %hi(sEFTexturesFile1)
+  /* 07C1C4 801009C4 8F3913B0 */        lw $t9, %lo(sEFTexturesFile1)($t9)
   /* 07C1C8 801009C8 3C080001 */       lui $t0, %hi(D_NF_0000CC20)
   /* 07C1CC 801009CC 2508CC20 */     addiu $t0, $t0, %lo(D_NF_0000CC20)
   /* 07C1D0 801009D0 24060000 */     addiu $a2, $zero, 0
@@ -47633,8 +47633,8 @@ glabel efParticle_Quake_MakeEffect
   /* 07C1DC 801009DC 10000011 */         b .L80100A24
   /* 07C1E0 801009E0 00000000 */       nop 
   .L801009E4:
-  /* 07C1E4 801009E4 3C098013 */       lui $t1, %hi(D_ovl2_801313B0)
-  /* 07C1E8 801009E8 8D2913B0 */        lw $t1, %lo(D_ovl2_801313B0)($t1)
+  /* 07C1E4 801009E4 3C098013 */       lui $t1, %hi(sEFTexturesFile1)
+  /* 07C1E8 801009E8 8D2913B0 */        lw $t1, %lo(sEFTexturesFile1)($t1)
   /* 07C1EC 801009EC 3C0A0001 */       lui $t2, %hi(D_NF_0000CCF0)
   /* 07C1F0 801009F0 254ACCF0 */     addiu $t2, $t2, %lo(D_NF_0000CCF0)
   /* 07C1F4 801009F4 24060000 */     addiu $a2, $zero, 0
@@ -47643,8 +47643,8 @@ glabel efParticle_Quake_MakeEffect
   /* 07C200 80100A00 10000008 */         b .L80100A24
   /* 07C204 80100A04 00000000 */       nop 
   .L80100A08:
-  /* 07C208 80100A08 3C0B8013 */       lui $t3, %hi(D_ovl2_801313B0)
-  /* 07C20C 80100A0C 8D6B13B0 */        lw $t3, %lo(D_ovl2_801313B0)($t3)
+  /* 07C208 80100A08 3C0B8013 */       lui $t3, %hi(sEFTexturesFile1)
+  /* 07C20C 80100A0C 8D6B13B0 */        lw $t3, %lo(sEFTexturesFile1)($t3)
   /* 07C210 80100A10 3C0C0001 */       lui $t4, %hi(D_NF_0000CDC0)
   /* 07C214 80100A14 258CCDC0 */     addiu $t4, $t4, %lo(D_NF_0000CDC0)
   /* 07C218 80100A18 24060000 */     addiu $a2, $zero, 0
@@ -47690,7 +47690,7 @@ glabel efTransform_DamageCoin_ProcDead
   /* 07C2A8 80100AA8 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07C2AC 80100AAC 8D040084 */        lw $a0, 0x84($t0)
   /* 07C2B0 80100AB0 8FA90028 */        lw $t1, 0x28($sp)
-  /* 07C2B4 80100AB4 0C0026A1 */       jal omEjectGObjCommon
+  /* 07C2B4 80100AB4 0C0026A1 */       jal omEjectGObj
   /* 07C2B8 80100AB8 8D2400BC */        lw $a0, 0xbc($t1)
   /* 07C2BC 80100ABC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 07C2C0 80100AC0 27BD0028 */     addiu $sp, $sp, 0x28
@@ -47711,7 +47711,7 @@ glabel efParticle_DamageCoin_MakeEffect
   /* 07C2F0 80100AF0 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 07C2F4 80100AF4 00002825 */        or $a1, $zero, $zero
   /* 07C2F8 80100AF8 24060006 */     addiu $a2, $zero, 6
-  /* 07C2FC 80100AFC 0C00265A */       jal omMakeGObjCommon
+  /* 07C2FC 80100AFC 0C00265A */       jal omMakeGObjSPAfter
   /* 07C300 80100B00 3C078000 */       lui $a3, 0x8000
   /* 07C304 80100B04 14400005 */      bnez $v0, .L80100B1C
   /* 07C308 80100B08 00403025 */        or $a2, $v0, $zero
@@ -47721,12 +47721,12 @@ glabel efParticle_DamageCoin_MakeEffect
   /* 07C318 80100B18 00001025 */        or $v0, $zero, $zero
   .L80100B1C:
   /* 07C31C 80100B1C 8FAE0020 */        lw $t6, 0x20($sp)
-  /* 07C320 80100B20 3C048013 */       lui $a0, %hi(gEffectBankIndex)
+  /* 07C320 80100B20 3C048013 */       lui $a0, %hi(sEFBankIndex)
   /* 07C324 80100B24 24050060 */     addiu $a1, $zero, 0x60
   /* 07C328 80100B28 ACCE0084 */        sw $t6, 0x84($a2)
   /* 07C32C 80100B2C AFA6002C */        sw $a2, 0x2c($sp)
   /* 07C330 80100B30 0C033A7A */       jal func_ovl0_800CE9E8
-  /* 07C334 80100B34 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07C334 80100B34 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07C338 80100B38 8FA6002C */        lw $a2, 0x2c($sp)
   /* 07C33C 80100B3C 10400023 */      beqz $v0, .L80100BCC
   /* 07C340 80100B40 00408025 */        or $s0, $v0, $zero
@@ -47794,7 +47794,7 @@ glabel efParticle_SetOff_MakeEffect
   /* 07C418 80100C18 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 07C41C 80100C1C 00002825 */        or $a1, $zero, $zero
   /* 07C420 80100C20 24060006 */     addiu $a2, $zero, 6
-  /* 07C424 80100C24 0C00265A */       jal omMakeGObjCommon
+  /* 07C424 80100C24 0C00265A */       jal omMakeGObjSPAfter
   /* 07C428 80100C28 3C078000 */       lui $a3, 0x8000
   /* 07C42C 80100C2C 14400005 */      bnez $v0, .L80100C44
   /* 07C430 80100C30 00401825 */        or $v1, $v0, $zero
@@ -47804,10 +47804,10 @@ glabel efParticle_SetOff_MakeEffect
   /* 07C440 80100C40 00001025 */        or $v0, $zero, $zero
   .L80100C44:
   /* 07C444 80100C44 8FAE0028 */        lw $t6, 0x28($sp)
-  /* 07C448 80100C48 3C048013 */       lui $a0, %hi(gEffectBankIndex)
+  /* 07C448 80100C48 3C048013 */       lui $a0, %hi(sEFBankIndex)
   /* 07C44C 80100C4C 24050065 */     addiu $a1, $zero, 0x65
   /* 07C450 80100C50 AC6E0084 */        sw $t6, 0x84($v1)
-  /* 07C454 80100C54 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07C454 80100C54 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07C458 80100C58 AFA30034 */        sw $v1, 0x34($sp)
   /* 07C45C 80100C5C 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07C460 80100C60 34840008 */       ori $a0, $a0, 8
@@ -47826,8 +47826,8 @@ glabel efParticle_SetOff_MakeEffect
   /* 07C494 80100C94 0C033A85 */       jal func_ovl0_800CEA14
   /* 07C498 80100C98 8FA40030 */        lw $a0, 0x30($sp)
   /* 07C49C 80100C9C 9619002A */       lhu $t9, 0x2a($s0)
-  /* 07C4A0 80100CA0 3C058010 */       lui $a1, %hi(efParticle_Default_ProcUpdate)
-  /* 07C4A4 80100CA4 24A5DBCC */     addiu $a1, $a1, %lo(efParticle_Default_ProcUpdate)
+  /* 07C4A0 80100CA0 3C058010 */       lui $a1, %hi(efDefaultProcUpdate)
+  /* 07C4A4 80100CA4 24A5DBCC */     addiu $a1, $a1, %lo(efDefaultProcUpdate)
   /* 07C4A8 80100CA8 17200003 */      bnez $t9, .L80100CB8
   /* 07C4AC 80100CAC 8FA40034 */        lw $a0, 0x34($sp)
   /* 07C4B0 80100CB0 10000049 */         b .L80100DD8
@@ -47922,8 +47922,8 @@ glabel efParticle_FireSpark_MakeEffect
   /* 07C5F0 80100DF0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 07C5F4 80100DF4 AFA40028 */        sw $a0, 0x28($sp)
   /* 07C5F8 80100DF8 8C830084 */        lw $v1, 0x84($a0)
-  /* 07C5FC 80100DFC 3C048013 */       lui $a0, %hi(D_ovl2_8012E0B4)
-  /* 07C600 80100E00 2484E0B4 */     addiu $a0, $a0, %lo(D_ovl2_8012E0B4)
+  /* 07C5FC 80100DFC 3C048013 */       lui $a0, %hi(dEFFireSparkEffectDesc)
+  /* 07C600 80100E00 2484E0B4 */     addiu $a0, $a0, %lo(dEFFireSparkEffectDesc)
   /* 07C604 80100E04 0C03F6BF */       jal efManagerMakeEffectNoForce
   /* 07C608 80100E08 AFA30024 */        sw $v1, 0x24($sp)
   /* 07C60C 80100E0C 8FA30024 */        lw $v1, 0x24($sp)
@@ -47939,7 +47939,7 @@ glabel efParticle_FireSpark_MakeEffect
   /* 07C630 80100E30 A079018F */        sb $t9, 0x18f($v1)
   /* 07C634 80100E34 8CC70084 */        lw $a3, 0x84($a2)
   /* 07C638 80100E38 8FA80028 */        lw $t0, 0x28($sp)
-  /* 07C63C 80100E3C 3C0A8013 */       lui $t2, %hi(D_ovl2_801313B4)
+  /* 07C63C 80100E3C 3C0A8013 */       lui $t2, %hi(sEFTexturesFile2)
   /* 07C640 80100E40 3C0B0000 */       lui $t3, %hi(D_NF_00002040)
   /* 07C644 80100E44 ACE80004 */        sw $t0, 4($a3)
   /* 07C648 80100E48 8CC20074 */        lw $v0, 0x74($a2)
@@ -47948,7 +47948,7 @@ glabel efParticle_FireSpark_MakeEffect
   /* 07C654 80100E54 8C690928 */        lw $t1, 0x928($v1)
   /* 07C658 80100E58 8C440010 */        lw $a0, 0x10($v0)
   /* 07C65C 80100E5C AC490084 */        sw $t1, 0x84($v0)
-  /* 07C660 80100E60 8D4A13B4 */        lw $t2, %lo(D_ovl2_801313B4)($t2)
+  /* 07C660 80100E60 8D4A13B4 */        lw $t2, %lo(sEFTexturesFile2)($t2)
   /* 07C664 80100E64 AFA6001C */        sw $a2, 0x1c($sp)
   /* 07C668 80100E68 0C0324C5 */       jal func_ovl0_800C9314
   /* 07C66C 80100E6C 014B2821 */      addu $a1, $t2, $t3
@@ -47964,12 +47964,12 @@ glabel efTransform_Reflector_SetImageIndex
   /* 07C688 80100E88 AFBF0014 */        sw $ra, 0x14($sp)
   /* 07C68C 80100E8C 8C820084 */        lw $v0, 0x84($a0)
   /* 07C690 80100E90 00057080 */       sll $t6, $a1, 2
-  /* 07C694 80100E94 3C0F8013 */       lui $t7, %hi(D_ovl2_8012E0DC)
+  /* 07C694 80100E94 3C0F8013 */       lui $t7, %hi(dEFReflectorAnimJointOffsets)
   /* 07C698 80100E98 AC450018 */        sw $a1, 0x18($v0)
   /* 07C69C 80100E9C 01EE7821 */      addu $t7, $t7, $t6
-  /* 07C6A0 80100EA0 3C188013 */       lui $t8, %hi(D_ovl2_80130EA0)
-  /* 07C6A4 80100EA4 8F180EA0 */        lw $t8, %lo(D_ovl2_80130EA0)($t8)
-  /* 07C6A8 80100EA8 8DEFE0DC */        lw $t7, %lo(D_ovl2_8012E0DC)($t7)
+  /* 07C6A0 80100EA0 3C188013 */       lui $t8, %hi(gFTDataFoxExtra2)
+  /* 07C6A4 80100EA4 8F180EA0 */        lw $t8, %lo(gFTDataFoxExtra2)($t8)
+  /* 07C6A8 80100EA8 8DEFE0DC */        lw $t7, %lo(dEFReflectorAnimJointOffsets)($t7)
   /* 07C6AC 80100EAC AFA40018 */        sw $a0, 0x18($sp)
   /* 07C6B0 80100EB0 24060000 */     addiu $a2, $zero, 0
   /* 07C6B4 80100EB4 0C002F63 */       jal func_8000BD8C
@@ -48017,7 +48017,7 @@ glabel efParticle_Reflector_ProcUpdate
   .L80100F50:
   /* 07C750 80100F50 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07C754 80100F54 00C02025 */        or $a0, $a2, $zero
-  /* 07C758 80100F58 0C0026A1 */       jal omEjectGObjCommon
+  /* 07C758 80100F58 0C0026A1 */       jal omEjectGObj
   /* 07C75C 80100F5C 02002025 */        or $a0, $s0, $zero
   /* 07C760 80100F60 1000000C */         b .L80100F94
   /* 07C764 80100F64 8FBF001C */        lw $ra, 0x1c($sp)
@@ -48044,9 +48044,9 @@ glabel efParticle_Reflector_MakeEffect
   /* 07C7A4 80100FA4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07C7A8 80100FA8 AFA40018 */        sw $a0, 0x18($sp)
   /* 07C7AC 80100FAC AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07C7B0 80100FB0 3C048013 */       lui $a0, %hi(D_ovl2_8012E0EC)
+  /* 07C7B0 80100FB0 3C048013 */       lui $a0, %hi(dEFReflectorEffectDesc)
   /* 07C7B4 80100FB4 0C03F6C7 */       jal efManagerMakeEffectForce
-  /* 07C7B8 80100FB8 2484E0EC */     addiu $a0, $a0, %lo(D_ovl2_8012E0EC)
+  /* 07C7B8 80100FB8 2484E0EC */     addiu $a0, $a0, %lo(dEFReflectorEffectDesc)
   /* 07C7BC 80100FBC 8FA50018 */        lw $a1, 0x18($sp)
   /* 07C7C0 80100FC0 14400003 */      bnez $v0, .L80100FD0
   /* 07C7C4 80100FC4 00402025 */        or $a0, $v0, $zero
@@ -48069,7 +48069,7 @@ glabel efParticle_Reflector_MakeEffect
   /* 07C800 80101000 03E00008 */        jr $ra
   /* 07C804 80101004 00000000 */       nop 
 
-  glabel jtgt_ovl2_80101008
+  glabel efShieldProcUpdate
   /* 07C808 80101008 8C820084 */        lw $v0, 0x84($a0)
   /* 07C80C 8010100C 8C4E001C */        lw $t6, 0x1c($v0)
   /* 07C810 80101010 11C00002 */      beqz $t6, .L8010101C
@@ -48079,7 +48079,7 @@ glabel efParticle_Reflector_MakeEffect
   /* 07C81C 8010101C 03E00008 */        jr $ra
   /* 07C820 80101020 00000000 */       nop 
 
-  glabel efParticle_Shield_ProcUpdate
+  glabel efShieldProcRender
   /* 07C824 80101024 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07C828 80101028 AFBF0014 */        sw $ra, 0x14($sp)
   /* 07C82C 8010102C 8C820084 */        lw $v0, 0x84($a0)
@@ -48089,7 +48089,7 @@ glabel efParticle_Reflector_MakeEffect
   /* 07C83C 8010103C 3C18E700 */       lui $t8, 0xe700
   /* 07C840 80101040 3C0AFA00 */       lui $t2, 0xfa00
   /* 07C844 80101044 11C00003 */      beqz $t6, .L80101054
-  /* 07C848 80101048 3C0C8013 */       lui $t4, %hi(efParticle_Shield_gsColorRGBs)
+  /* 07C848 80101048 3C0C8013 */       lui $t4, %hi(dEFShieldColors)
   /* 07C84C 8010104C 10000002 */         b .L80101058
   /* 07C850 80101050 24090004 */     addiu $t1, $zero, 4
   .L80101054:
@@ -48104,7 +48104,7 @@ glabel efParticle_Reflector_MakeEffect
   /* 07C870 80101070 AC580000 */        sw $t8, ($v0)
   /* 07C874 80101074 8CA20004 */        lw $v0, 4($a1) # gDisplayListHead + 4
   /* 07C878 80101078 000B5840 */       sll $t3, $t3, 1
-  /* 07C87C 8010107C 258CE114 */     addiu $t4, $t4, %lo(efParticle_Shield_gsColorRGBs)
+  /* 07C87C 8010107C 258CE114 */     addiu $t4, $t4, %lo(dEFShieldColors)
   /* 07C880 80101080 24590008 */     addiu $t9, $v0, 8
   /* 07C884 80101084 ACB90004 */        sw $t9, 4($a1) # gDisplayListHead + 4
   /* 07C888 80101088 016C1821 */      addu $v1, $t3, $t4
@@ -48145,8 +48145,8 @@ glabel efParticle_Shield_MakeEffect
   /* 07C90C 8010110C AFBF0014 */        sw $ra, 0x14($sp)
   /* 07C910 80101110 AFA40028 */        sw $a0, 0x28($sp)
   /* 07C914 80101114 8C850084 */        lw $a1, 0x84($a0)
-  /* 07C918 80101118 3C048013 */       lui $a0, %hi(D_ovl2_8012E134)
-  /* 07C91C 8010111C 2484E134 */     addiu $a0, $a0, %lo(D_ovl2_8012E134)
+  /* 07C918 80101118 3C048013 */       lui $a0, %hi(dEFShieldEffectDesc)
+  /* 07C91C 8010111C 2484E134 */     addiu $a0, $a0, %lo(dEFShieldEffectDesc)
   /* 07C920 80101120 0C03F6C7 */       jal efManagerMakeEffectForce
   /* 07C924 80101124 AFA5001C */        sw $a1, 0x1c($sp)
   /* 07C928 80101128 8FA5001C */        lw $a1, 0x1c($sp)
@@ -48174,7 +48174,7 @@ glabel efParticle_Shield_MakeEffect
   /* 07C978 80101178 03E00008 */        jr $ra
   /* 07C97C 8010117C 00000000 */       nop 
 
-  glabel efParticle_YoshiShield_ProcUpdate
+  glabel efYoshiShieldProcRender
   /* 07C980 80101180 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07C984 80101184 AFBF0014 */        sw $ra, 0x14($sp)
   /* 07C988 80101188 8C820084 */        lw $v0, 0x84($a0)
@@ -48313,8 +48313,8 @@ glabel efParticle_YoshiShield_MakeEffect
   /* 07CB78 80101378 AFBF0014 */        sw $ra, 0x14($sp)
   /* 07CB7C 8010137C AFA40028 */        sw $a0, 0x28($sp)
   /* 07CB80 80101380 8C860084 */        lw $a2, 0x84($a0)
-  /* 07CB84 80101384 3C048013 */       lui $a0, %hi(D_ovl2_8012E15C)
-  /* 07CB88 80101388 2484E15C */     addiu $a0, $a0, %lo(D_ovl2_8012E15C)
+  /* 07CB84 80101384 3C048013 */       lui $a0, %hi(dEFYoshiShieldEffectDesc)
+  /* 07CB88 80101388 2484E15C */     addiu $a0, $a0, %lo(dEFYoshiShieldEffectDesc)
   /* 07CB8C 8010138C 0C03F6C7 */       jal efManagerMakeEffectForce
   /* 07CB90 80101390 AFA6001C */        sw $a2, 0x1c($sp)
   /* 07CB94 80101394 8FA6001C */        lw $a2, 0x1c($sp)
@@ -48353,9 +48353,9 @@ glabel efParticle_ThunderHit_MakeEffect
   /* 07CC08 80101408 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07CC0C 8010140C AFA40028 */        sw $a0, 0x28($sp)
   /* 07CC10 80101410 AFBF001C */        sw $ra, 0x1c($sp)
-  /* 07CC14 80101414 3C048013 */       lui $a0, %hi(gEffectBankIndex)
+  /* 07CC14 80101414 3C048013 */       lui $a0, %hi(sEFBankIndex)
   /* 07CC18 80101418 AFB00018 */        sw $s0, 0x18($sp)
-  /* 07CC1C 8010141C 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07CC1C 8010141C 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07CC20 80101420 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07CC24 80101424 24050074 */     addiu $a1, $zero, 0x74
   /* 07CC28 80101428 10400019 */      beqz $v0, .L80101490
@@ -48399,8 +48399,8 @@ glabel efParticle_Ripple_MakeEffect
   /* 07CCA8 801014A8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07CCAC 801014AC 00803025 */        or $a2, $a0, $zero
   /* 07CCB0 801014B0 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07CCB4 801014B4 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07CCB8 801014B8 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07CCB4 801014B4 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07CCB8 801014B8 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07CCBC 801014BC AFA60018 */        sw $a2, 0x18($sp)
   /* 07CCC0 801014C0 0C034D77 */       jal func_ovl0_800D35DC
   /* 07CCC4 801014C4 24050061 */     addiu $a1, $zero, 0x61
@@ -48424,9 +48424,9 @@ glabel efParticle_CatchSwirl_MakeEffect
   /* 07CD00 80101500 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07CD04 80101504 AFA40018 */        sw $a0, 0x18($sp)
   /* 07CD08 80101508 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07CD0C 8010150C 3C048013 */       lui $a0, %hi(D_ovl2_8012E184)
+  /* 07CD0C 8010150C 3C048013 */       lui $a0, %hi(dEFCatchSwirlEffectDesc)
   /* 07CD10 80101510 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07CD14 80101514 2484E184 */     addiu $a0, $a0, %lo(D_ovl2_8012E184)
+  /* 07CD14 80101514 2484E184 */     addiu $a0, $a0, %lo(dEFCatchSwirlEffectDesc)
   /* 07CD18 80101518 14400003 */      bnez $v0, .L80101528
   /* 07CD1C 8010151C 00402025 */        or $a0, $v0, $zero
   /* 07CD20 80101520 1000000A */         b .L8010154C
@@ -48451,10 +48451,10 @@ glabel efParticle_ReflectBreak_MakeEffect
   /* 07CD5C 8010155C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07CD60 80101560 AFA40018 */        sw $a0, 0x18($sp)
   /* 07CD64 80101564 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07CD68 80101568 3C048013 */       lui $a0, %hi(D_ovl2_8012E1AC)
+  /* 07CD68 80101568 3C048013 */       lui $a0, %hi(dEFReflectBreakEffectDesc)
   /* 07CD6C 8010156C AFA5001C */        sw $a1, 0x1c($sp)
   /* 07CD70 80101570 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07CD74 80101574 2484E1AC */     addiu $a0, $a0, %lo(D_ovl2_8012E1AC)
+  /* 07CD74 80101574 2484E1AC */     addiu $a0, $a0, %lo(dEFReflectBreakEffectDesc)
   /* 07CD78 80101578 14400003 */      bnez $v0, .L80101588
   /* 07CD7C 8010157C 00402025 */        or $a0, $v0, $zero
   /* 07CD80 80101580 10000010 */         b .L801015C4
@@ -48483,8 +48483,8 @@ glabel efParticle_ReflectBreak_MakeEffect
 
 glabel efParticle_FuraSparkle_MakeEffect
   /* 07CDD4 801015D4 00803025 */        or $a2, $a0, $zero
-  /* 07CDD8 801015D8 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07CDDC 801015DC 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07CDD8 801015D8 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07CDDC 801015DC 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07CDE0 801015E0 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07CDE4 801015E4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 07CDE8 801015E8 AFA60018 */        sw $a2, 0x18($sp)
@@ -48511,8 +48511,8 @@ glabel efParticle_Psionic_MakeEffect
   /* 07CE30 80101630 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07CE34 80101634 00803025 */        or $a2, $a0, $zero
   /* 07CE38 80101638 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07CE3C 8010163C 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07CE40 80101640 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07CE3C 8010163C 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07CE40 80101640 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07CE44 80101644 AFA60018 */        sw $a2, 0x18($sp)
   /* 07CE48 80101648 0C033A1C */       jal func_ovl0_800CE870
   /* 07CE4C 8010164C 24050007 */     addiu $a1, $zero, 7
@@ -48536,8 +48536,8 @@ glabel efParticle_FlashSmall_MakeEffect
   /* 07CE88 80101688 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07CE8C 8010168C 00803025 */        or $a2, $a0, $zero
   /* 07CE90 80101690 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07CE94 80101694 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07CE98 80101698 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07CE94 80101694 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07CE98 80101698 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07CE9C 8010169C AFA60018 */        sw $a2, 0x18($sp)
   /* 07CEA0 801016A0 0C033A1C */       jal func_ovl0_800CE870
   /* 07CEA4 801016A4 24050004 */     addiu $a1, $zero, 4
@@ -48561,8 +48561,8 @@ glabel efParticle_FlashMiddle_MakeEffect
   /* 07CEE0 801016E0 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07CEE4 801016E4 00803025 */        or $a2, $a0, $zero
   /* 07CEE8 801016E8 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07CEEC 801016EC 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07CEF0 801016F0 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07CEEC 801016EC 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07CEF0 801016F0 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07CEF4 801016F4 AFA60018 */        sw $a2, 0x18($sp)
   /* 07CEF8 801016F8 0C033A1C */       jal func_ovl0_800CE870
   /* 07CEFC 801016FC 24050005 */     addiu $a1, $zero, 5
@@ -48586,8 +48586,8 @@ glabel efParticle_FlashLarge_MakeEffect
   /* 07CF38 80101738 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07CF3C 8010173C 00803025 */        or $a2, $a0, $zero
   /* 07CF40 80101740 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07CF44 80101744 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07CF48 80101748 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07CF44 80101744 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07CF48 80101748 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07CF4C 8010174C AFA60018 */        sw $a2, 0x18($sp)
   /* 07CF50 80101750 0C033A1C */       jal func_ovl0_800CE870
   /* 07CF54 80101754 24050006 */     addiu $a1, $zero, 6
@@ -48611,8 +48611,8 @@ glabel efParticle_ShieldBreak_MakeEffect
   /* 07CF90 80101790 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07CF94 80101794 00803025 */        or $a2, $a0, $zero
   /* 07CF98 80101798 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07CF9C 8010179C 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07CFA0 801017A0 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07CF9C 8010179C 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07CFA0 801017A0 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07CFA4 801017A4 AFA60018 */        sw $a2, 0x18($sp)
   /* 07CFA8 801017A8 0C034D77 */       jal func_ovl0_800D35DC
   /* 07CFAC 801017AC 24050003 */     addiu $a1, $zero, 3
@@ -48645,7 +48645,7 @@ glabel func_ovl2_801017E8
   /* 07D00C 8010180C 244EFFFF */     addiu $t6, $v0, -1
   /* 07D010 80101810 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07D014 80101814 00A02025 */        or $a0, $a1, $zero
-  /* 07D018 80101818 0C0026A1 */       jal omEjectGObjCommon
+  /* 07D018 80101818 0C0026A1 */       jal omEjectGObj
   /* 07D01C 8010181C 8FA40020 */        lw $a0, 0x20($sp)
   /* 07D020 80101820 10000003 */         b .L80101830
   /* 07D024 80101824 8FBF0014 */        lw $ra, 0x14($sp)
@@ -48661,10 +48661,10 @@ glabel func_ovl2_8010183C
   /* 07D03C 8010183C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07D040 80101840 AFA40018 */        sw $a0, 0x18($sp)
   /* 07D044 80101844 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07D048 80101848 3C048013 */       lui $a0, %hi(D_ovl2_8012E1D4)
+  /* 07D048 80101848 3C048013 */       lui $a0, %hi(dEFPikachuUnkEffectDesc)
   /* 07D04C 8010184C AFA5001C */        sw $a1, 0x1c($sp)
   /* 07D050 80101850 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07D054 80101854 2484E1D4 */     addiu $a0, $a0, %lo(D_ovl2_8012E1D4)
+  /* 07D054 80101854 2484E1D4 */     addiu $a0, $a0, %lo(dEFPikachuUnkEffectDesc)
   /* 07D058 80101858 14400003 */      bnez $v0, .L80101868
   /* 07D05C 8010185C 00401825 */        or $v1, $v0, $zero
   /* 07D060 80101860 1000000D */         b .L80101898
@@ -48692,10 +48692,10 @@ glabel efParticle_ThunderShock_MakeEffect
   /* 07D0A8 801018A8 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 07D0AC 801018AC 00803825 */        or $a3, $a0, $zero
   /* 07D0B0 801018B0 AFBF001C */        sw $ra, 0x1c($sp)
-  /* 07D0B4 801018B4 3C048013 */       lui $a0, %hi(D_ovl2_8012E1FC)
+  /* 07D0B4 801018B4 3C048013 */       lui $a0, %hi(dEFThunderShockEffectDesc)
   /* 07D0B8 801018B8 AFB00018 */        sw $s0, 0x18($sp)
   /* 07D0BC 801018BC AFA60028 */        sw $a2, 0x28($sp)
-  /* 07D0C0 801018C0 2484E1FC */     addiu $a0, $a0, %lo(D_ovl2_8012E1FC)
+  /* 07D0C0 801018C0 2484E1FC */     addiu $a0, $a0, %lo(dEFThunderShockEffectDesc)
   /* 07D0C4 801018C4 AFA70020 */        sw $a3, 0x20($sp)
   /* 07D0C8 801018C8 0C03F6BF */       jal efManagerMakeEffectNoForce
   /* 07D0CC 801018CC AFA50024 */        sw $a1, 0x24($sp)
@@ -48743,14 +48743,14 @@ glabel efParticle_ThunderShock_MakeEffect
   /* 07D168 80101968 24010001 */     addiu $at, $zero, 1
   /* 07D16C 8010196C 02002025 */        or $a0, $s0, $zero
   /* 07D170 80101970 10610006 */       beq $v1, $at, .L8010198C
-  /* 07D174 80101974 3C028013 */       lui $v0, %hi(D_ovl2_801310C0)
+  /* 07D174 80101974 3C028013 */       lui $v0, %hi(gFTDataPikachuExtra2)
   /* 07D178 80101978 24010002 */     addiu $at, $zero, 2
   /* 07D17C 8010197C 10610010 */       beq $v1, $at, .L801019C0
   /* 07D180 80101980 02002025 */        or $a0, $s0, $zero
   /* 07D184 80101984 1000001B */         b .L801019F4
   /* 07D188 80101988 02001025 */        or $v0, $s0, $zero
   .L8010198C:
-  /* 07D18C 8010198C 8C4210C0 */        lw $v0, %lo(D_ovl2_801310C0)($v0)
+  /* 07D18C 8010198C 8C4210C0 */        lw $v0, %lo(gFTDataPikachuExtra2)($v0)
   /* 07D190 80101990 3C0E0000 */       lui $t6, %hi(D_NF_00001850)
   /* 07D194 80101994 3C0F0000 */       lui $t7, %hi(D_NF_00001AC0)
   /* 07D198 80101998 25EF1AC0 */     addiu $t7, $t7, %lo(D_NF_00001AC0)
@@ -48764,8 +48764,8 @@ glabel efParticle_ThunderShock_MakeEffect
   /* 07D1B8 801019B8 1000000E */         b .L801019F4
   /* 07D1BC 801019BC 02001025 */        or $v0, $s0, $zero
   .L801019C0:
-  /* 07D1C0 801019C0 3C028013 */       lui $v0, %hi(D_ovl2_801310C0)
-  /* 07D1C4 801019C4 8C4210C0 */        lw $v0, %lo(D_ovl2_801310C0)($v0)
+  /* 07D1C0 801019C0 3C028013 */       lui $v0, %hi(gFTDataPikachuExtra2)
+  /* 07D1C4 801019C4 8C4210C0 */        lw $v0, %lo(gFTDataPikachuExtra2)($v0)
   /* 07D1C8 801019C8 3C180000 */       lui $t8, %hi(D_NF_00001970)
   /* 07D1CC 801019CC 3C190000 */       lui $t9, %hi(D_NF_00001B10)
   /* 07D1D0 801019D0 27391B10 */     addiu $t9, $t9, %lo(D_NF_00001B10)
@@ -48795,7 +48795,7 @@ glabel efParticle_ThunderShock_MakeEffect
   /* 07D224 80101A24 244EFFFF */     addiu $t6, $v0, -1
   /* 07D228 80101A28 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07D22C 80101A2C AFA60018 */        sw $a2, 0x18($sp)
-  /* 07D230 80101A30 0C0026A1 */       jal omEjectGObjCommon
+  /* 07D230 80101A30 0C0026A1 */       jal omEjectGObj
   /* 07D234 80101A34 8FA40018 */        lw $a0, 0x18($sp)
   /* 07D238 80101A38 10000018 */         b .L80101A9C
   /* 07D23C 80101A3C 8FBF0014 */        lw $ra, 0x14($sp)
@@ -48892,11 +48892,11 @@ glabel efParticle_ThunderTrail_MakeEffect
   /* 07D388 80101B88 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07D38C 80101B8C AFA40018 */        sw $a0, 0x18($sp)
   /* 07D390 80101B90 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07D394 80101B94 3C048013 */       lui $a0, %hi(D_ovl2_8012E224)
+  /* 07D394 80101B94 3C048013 */       lui $a0, %hi(dEFThunderTrailEffectDesc)
   /* 07D398 80101B98 AFA5001C */        sw $a1, 0x1c($sp)
   /* 07D39C 80101B9C AFA60020 */        sw $a2, 0x20($sp)
   /* 07D3A0 80101BA0 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07D3A4 80101BA4 2484E224 */     addiu $a0, $a0, %lo(D_ovl2_8012E224)
+  /* 07D3A4 80101BA4 2484E224 */     addiu $a0, $a0, %lo(dEFThunderTrailEffectDesc)
   /* 07D3A8 80101BA8 14400003 */      bnez $v0, .L80101BB8
   /* 07D3AC 80101BAC 00402825 */        or $a1, $v0, $zero
   /* 07D3B0 80101BB0 1000001C */         b .L80101C24
@@ -48940,10 +48940,10 @@ glabel efParticle_ThunderJolt_MakeEffect
   /* 07D434 80101C34 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07D438 80101C38 AFA40018 */        sw $a0, 0x18($sp)
   /* 07D43C 80101C3C AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07D440 80101C40 3C048013 */       lui $a0, %hi(D_ovl2_8012E24C)
+  /* 07D440 80101C40 3C048013 */       lui $a0, %hi(dEFThunderJoltEffectDesc)
   /* 07D444 80101C44 AFA5001C */        sw $a1, 0x1c($sp)
   /* 07D448 80101C48 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07D44C 80101C4C 2484E24C */     addiu $a0, $a0, %lo(D_ovl2_8012E24C)
+  /* 07D44C 80101C4C 2484E24C */     addiu $a0, $a0, %lo(dEFThunderJoltEffectDesc)
   /* 07D450 80101C50 14400003 */      bnez $v0, .L80101C60
   /* 07D454 80101C54 00401825 */        or $v1, $v0, $zero
   /* 07D458 80101C58 1000000D */         b .L80101C90
@@ -49000,7 +49000,7 @@ glabel efParticle_VulcanJab_ProcUpdate
   .L80101D14:
   /* 07D514 80101D14 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07D518 80101D18 AFA60018 */        sw $a2, 0x18($sp)
-  /* 07D51C 80101D1C 0C0026A1 */       jal omEjectGObjCommon
+  /* 07D51C 80101D1C 0C0026A1 */       jal omEjectGObj
   /* 07D520 80101D20 8FA40018 */        lw $a0, 0x18($sp)
   .L80101D24:
   /* 07D524 80101D24 8FBF0014 */        lw $ra, 0x14($sp)
@@ -49012,12 +49012,12 @@ glabel efParticle_VulcanJab_MakeEffect
   /* 07D534 80101D34 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07D538 80101D38 AFA40028 */        sw $a0, 0x28($sp)
   /* 07D53C 80101D3C AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07D540 80101D40 3C048013 */       lui $a0, %hi(D_ovl2_8012E274)
+  /* 07D540 80101D40 3C048013 */       lui $a0, %hi(dEFVulcanJabEffectDesc)
   /* 07D544 80101D44 AFA5002C */        sw $a1, 0x2c($sp)
   /* 07D548 80101D48 AFA60030 */        sw $a2, 0x30($sp)
   /* 07D54C 80101D4C AFA70034 */        sw $a3, 0x34($sp)
   /* 07D550 80101D50 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07D554 80101D54 2484E274 */     addiu $a0, $a0, %lo(D_ovl2_8012E274)
+  /* 07D554 80101D54 2484E274 */     addiu $a0, $a0, %lo(dEFVulcanJabEffectDesc)
   /* 07D558 80101D58 C7A00030 */      lwc1 $f0, 0x30($sp)
   /* 07D55C 80101D5C 14400003 */      bnez $v0, .L80101D6C
   /* 07D560 80101D60 AFA20024 */        sw $v0, 0x24($sp)
@@ -49100,9 +49100,9 @@ glabel efParticle_GrappleBeamGlow_MakeEffect
   /* 07D680 80101E80 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07D684 80101E84 AFA40018 */        sw $a0, 0x18($sp)
   /* 07D688 80101E88 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07D68C 80101E8C 3C048013 */       lui $a0, %hi(D_ovl2_8012E29C)
+  /* 07D68C 80101E8C 3C048013 */       lui $a0, %hi(dEFGrappleBeamEffectDesc)
   /* 07D690 80101E90 0C03F6BF */       jal efManagerMakeEffectNoForce
-  /* 07D694 80101E94 2484E29C */     addiu $a0, $a0, %lo(D_ovl2_8012E29C)
+  /* 07D694 80101E94 2484E29C */     addiu $a0, $a0, %lo(dEFGrappleBeamEffectDesc)
   /* 07D698 80101E98 8FA60018 */        lw $a2, 0x18($sp)
   /* 07D69C 80101E9C 14400003 */      bnez $v0, .L80101EAC
   /* 07D6A0 80101EA0 00401825 */        or $v1, $v0, $zero
@@ -49216,8 +49216,8 @@ glabel efParticle_KirbyStar_MakeEffect
   /* 07D818 80102018 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07D81C 8010201C 00803025 */        or $a2, $a0, $zero
   /* 07D820 80102020 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07D824 80102024 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07D828 80102028 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07D824 80102024 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07D828 80102028 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07D82C 8010202C AFA60018 */        sw $a2, 0x18($sp)
   /* 07D830 80102030 0C034D77 */       jal func_ovl0_800D35DC
   /* 07D834 80102034 2405000F */     addiu $a1, $zero, 0xf
@@ -49243,8 +49243,8 @@ glabel efParticle_StarSplash_MakeEffect
   /* 07D878 80102078 AFBF0014 */        sw $ra, 0x14($sp)
   /* 07D87C 8010207C 14A10009 */       bne $a1, $at, .L801020A4
   /* 07D880 80102080 00803025 */        or $a2, $a0, $zero
-  /* 07D884 80102084 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07D888 80102088 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07D884 80102084 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07D888 80102088 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07D88C 8010208C 24050010 */     addiu $a1, $zero, 0x10
   /* 07D890 80102090 0C034D77 */       jal func_ovl0_800D35DC
   /* 07D894 80102094 AFA60018 */        sw $a2, 0x18($sp)
@@ -49252,8 +49252,8 @@ glabel efParticle_StarSplash_MakeEffect
   /* 07D89C 8010209C 10000008 */         b .L801020C0
   /* 07D8A0 801020A0 00401825 */        or $v1, $v0, $zero
   .L801020A4:
-  /* 07D8A4 801020A4 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07D8A8 801020A8 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07D8A4 801020A4 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07D8A8 801020A8 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07D8AC 801020AC 24050011 */     addiu $a1, $zero, 0x11
   /* 07D8B0 801020B0 0C034D77 */       jal func_ovl0_800D35DC
   /* 07D8B4 801020B4 AFA60018 */        sw $a2, 0x18($sp)
@@ -49338,8 +49338,8 @@ glabel efParticle_DeadBlast_MakeEffect
   /* 07D9D0 801021D0 AFA40040 */        sw $a0, 0x40($sp)
   /* 07D9D4 801021D4 0305C821 */      addu $t9, $t8, $a1
   /* 07D9D8 801021D8 00A08025 */        or $s0, $a1, $zero
-  /* 07D9DC 801021DC 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07D9E0 801021E0 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07D9DC 801021DC 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07D9E0 801021E0 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07D9E4 801021E4 3C058013 */       lui $a1, %hi(efParticle_DeadBlast_GenIndex)
   /* 07D9E8 801021E8 332900FF */      andi $t1, $t9, 0xff
   /* 07D9EC 801021EC AFBF001C */        sw $ra, 0x1c($sp)
@@ -49654,7 +49654,7 @@ glabel efParticle_PKThunderTrail_ProcUpdate
   /* 07DE50 80102650 8CB8001C */        lw $t8, 0x1c($a1)
   /* 07DE54 80102654 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07DE58 80102658 AFA60018 */        sw $a2, 0x18($sp)
-  /* 07DE5C 8010265C 0C0026A1 */       jal omEjectGObjCommon
+  /* 07DE5C 8010265C 0C0026A1 */       jal omEjectGObj
   /* 07DE60 80102660 8FA40018 */        lw $a0, 0x18($sp)
   /* 07DE64 80102664 1000003D */         b .L8010275C
   /* 07DE68 80102668 8FBF0014 */        lw $ra, 0x14($sp)
@@ -49831,7 +49831,7 @@ glabel efParticle_PKReflectTrail_ProcUpdate
   /* 07E0E0 801028E0 8CA3001C */        lw $v1, 0x1c($a1)
   /* 07E0E4 801028E4 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07E0E8 801028E8 AFA60018 */        sw $a2, 0x18($sp)
-  /* 07E0EC 801028EC 0C0026A1 */       jal omEjectGObjCommon
+  /* 07E0EC 801028EC 0C0026A1 */       jal omEjectGObj
   /* 07E0F0 801028F0 8FA40018 */        lw $a0, 0x18($sp)
   /* 07E0F4 801028F4 10000019 */         b .L8010295C
   /* 07E0F8 801028F8 8FBF0014 */        lw $ra, 0x14($sp)
@@ -50126,7 +50126,7 @@ glabel func_ovl2_80102C84
   /* 07E4F4 80102CF4 0C002834 */       jal omMoveGObjDL
   /* 07E4F8 80102CF8 24060002 */     addiu $a2, $zero, 2
   .L80102CFC:
-  /* 07E4FC 80102CFC 0C03F55A */       jal func_ovl2_800FD568
+  /* 07E4FC 80102CFC 0C03F55A */       jal efManagerDefaultEndEjectProcUpdate
   /* 07E500 80102D00 8FA40018 */        lw $a0, 0x18($sp)
   /* 07E504 80102D04 8FBF0014 */        lw $ra, 0x14($sp)
   /* 07E508 80102D08 27BD0018 */     addiu $sp, $sp, 0x18
@@ -50139,8 +50139,8 @@ glabel efParticle_MBallThrown_MakeEffect
   /* 07E51C 80102D1C 24C6E584 */     addiu $a2, $a2, %lo(D_ovl2_8012E584)
   /* 07E520 80102D20 27AE0018 */     addiu $t6, $sp, 0x18
   /* 07E524 80102D24 ACCE0004 */        sw $t6, 4($a2) # D_ovl2_8012E584 + 4
-  /* 07E528 80102D28 3C0F8019 */       lui $t7, %hi(gITemFileData)
-  /* 07E52C 80102D2C 8DEFD040 */        lw $t7, %lo(gITemFileData)($t7)
+  /* 07E528 80102D28 3C0F8019 */       lui $t7, %hi(gITFileData)
+  /* 07E52C 80102D2C 8DEFD040 */        lw $t7, %lo(gITFileData)($t7)
   /* 07E530 80102D30 3C180000 */       lui $t8, %hi(D_NF_000006E4)
   /* 07E534 80102D34 271806E4 */     addiu $t8, $t8, %lo(D_NF_000006E4)
   /* 07E538 80102D38 AFBF0014 */        sw $ra, 0x14($sp)
@@ -50184,7 +50184,7 @@ glabel efParticle_MBallThrown_MakeEffect
   /* 07E5C4 80102DC4 AC4F0020 */        sw $t7, 0x20($v0)
   /* 07E5C8 80102DC8 8DD80008 */        lw $t8, 8($t6)
   /* 07E5CC 80102DCC AC580024 */        sw $t8, 0x24($v0)
-  /* 07E5D0 80102DD0 0C03F583 */       jal func_ovl2_800FD60C
+  /* 07E5D0 80102DD0 0C03F583 */       jal efManagerSortZNeg
   /* 07E5D4 80102DD4 AFA30024 */        sw $v1, 0x24($sp)
   /* 07E5D8 80102DD8 8FA20024 */        lw $v0, 0x24($sp)
   .L80102DDC:
@@ -50196,8 +50196,8 @@ glabel efParticle_MBallThrown_MakeEffect
 glabel efParticle_FireGrind_MakeEffect
   /* 07E5EC 80102DEC 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07E5F0 80102DF0 AFA40028 */        sw $a0, 0x28($sp)
-  /* 07E5F4 80102DF4 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07E5F8 80102DF8 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07E5F4 80102DF4 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07E5F8 80102DF8 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07E5FC 80102DFC AFBF001C */        sw $ra, 0x1c($sp)
   /* 07E600 80102E00 AFB00018 */        sw $s0, 0x18($sp)
   /* 07E604 80102E04 2405000B */     addiu $a1, $zero, 0xb
@@ -50243,8 +50243,8 @@ glabel efParticle_FireGrind_MakeEffect
 glabel efParticle_HealSparkles_MakeEffect
   /* 07E690 80102E90 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07E694 80102E94 AFA40028 */        sw $a0, 0x28($sp)
-  /* 07E698 80102E98 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07E69C 80102E9C 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07E698 80102E98 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07E69C 80102E9C 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07E6A0 80102EA0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 07E6A4 80102EA4 AFB00018 */        sw $s0, 0x18($sp)
   /* 07E6A8 80102EA8 2405000E */     addiu $a1, $zero, 0xe
@@ -50572,8 +50572,8 @@ glabel efParticle_FoxBlasterGlow_MakeEffect
   /* 07EB20 80103320 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07EB24 80103324 00803025 */        or $a2, $a0, $zero
   /* 07EB28 80103328 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 07EB2C 8010332C 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07EB30 80103330 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07EB2C 8010332C 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07EB30 80103330 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07EB34 80103334 AFA60018 */        sw $a2, 0x18($sp)
   /* 07EB38 80103338 0C033A1C */       jal func_ovl0_800CE870
   /* 07EB3C 8010333C 24050062 */     addiu $a1, $zero, 0x62
@@ -50711,7 +50711,7 @@ glabel func_ovl2_801034D0
   /* 07ED0C 8010350C 8CA40084 */        lw $a0, 0x84($a1)
   /* 07ED10 80103510 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07ED14 80103514 AFA50020 */        sw $a1, 0x20($sp)
-  /* 07ED18 80103518 0C0026A1 */       jal omEjectGObjCommon
+  /* 07ED18 80103518 0C0026A1 */       jal omEjectGObj
   /* 07ED1C 8010351C 8FA40020 */        lw $a0, 0x20($sp)
   /* 07ED20 80103520 1000000F */         b .L80103560
   /* 07ED24 80103524 8FBF0014 */        lw $ra, 0x14($sp)
@@ -50723,12 +50723,12 @@ glabel func_ovl2_801034D0
   /* 07ED38 80103538 00000000 */       nop 
   /* 07ED3C 8010353C 45000005 */      bc1f .L80103554
   /* 07ED40 80103540 00000000 */       nop 
-  /* 07ED44 80103544 0C03F583 */       jal func_ovl2_800FD60C
+  /* 07ED44 80103544 0C03F583 */       jal efManagerSortZNeg
   /* 07ED48 80103548 00C02025 */        or $a0, $a2, $zero
   /* 07ED4C 8010354C 10000004 */         b .L80103560
   /* 07ED50 80103550 8FBF0014 */        lw $ra, 0x14($sp)
   .L80103554:
-  /* 07ED54 80103554 0C03F5A3 */       jal func_ovl2_800FD68C
+  /* 07ED54 80103554 0C03F5A3 */       jal efManagerSortZPos
   /* 07ED58 80103558 00C02025 */        or $a0, $a2, $zero
   /* 07ED5C 8010355C 8FBF0014 */        lw $ra, 0x14($sp)
   .L80103560:
@@ -50818,12 +50818,12 @@ glabel efParticle_CaptainEntryCar_MakeEffect
   /* 07EE98 80103698 00000000 */       nop 
   /* 07EE9C 8010369C 45000005 */      bc1f .L801036B4
   /* 07EEA0 801036A0 00000000 */       nop 
-  /* 07EEA4 801036A4 0C03F583 */       jal func_ovl2_800FD60C
+  /* 07EEA4 801036A4 0C03F583 */       jal efManagerSortZNeg
   /* 07EEA8 801036A8 8EA40010 */        lw $a0, 0x10($s5)
   /* 07EEAC 801036AC 10000004 */         b .L801036C0
   /* 07EEB0 801036B0 02C01025 */        or $v0, $s6, $zero
   .L801036B4:
-  /* 07EEB4 801036B4 0C03F5A3 */       jal func_ovl2_800FD68C
+  /* 07EEB4 801036B4 0C03F5A3 */       jal efManagerSortZPos
   /* 07EEB8 801036B8 8EA40010 */        lw $a0, 0x10($s5)
   /* 07EEBC 801036BC 02C01025 */        or $v0, $s6, $zero
   .L801036C0:
@@ -50901,12 +50901,12 @@ glabel func_ovl2_80103780
   /* 07EFB8 801037B8 00000000 */       nop 
   /* 07EFBC 801037BC 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07EFC0 801037C0 8DE40084 */        lw $a0, 0x84($t7)
-  /* 07EFC4 801037C4 0C0026A1 */       jal omEjectGObjCommon
+  /* 07EFC4 801037C4 0C0026A1 */       jal omEjectGObj
   /* 07EFC8 801037C8 8FA40020 */        lw $a0, 0x20($sp)
   /* 07EFCC 801037CC 10000004 */         b .L801037E0
   /* 07EFD0 801037D0 8FBF0014 */        lw $ra, 0x14($sp)
   .L801037D4:
-  /* 07EFD4 801037D4 0C03F583 */       jal func_ovl2_800FD60C
+  /* 07EFD4 801037D4 0C03F583 */       jal efManagerSortZNeg
   /* 07EFD8 801037D8 00A02025 */        or $a0, $a1, $zero
   /* 07EFDC 801037DC 8FBF0014 */        lw $ra, 0x14($sp)
   .L801037E0:
@@ -50957,8 +50957,8 @@ glabel efParticle_FoxEntryArwing_MakeEffect
   /* 07F084 80103884 24010001 */     addiu $at, $zero, 1
   /* 07F088 80103888 15E1000B */       bne $t7, $at, .L801038B8
   /* 07F08C 8010388C 3C088013 */       lui $t0, 0x8013
-  /* 07F090 80103890 3C188013 */       lui $t8, %hi(D_ovl2_80130EA0)
-  /* 07F094 80103894 8F180EA0 */        lw $t8, %lo(D_ovl2_80130EA0)($t8)
+  /* 07F090 80103890 3C188013 */       lui $t8, %hi(gFTDataFoxExtra2)
+  /* 07F094 80103894 8F180EA0 */        lw $t8, %lo(gFTDataFoxExtra2)($t8)
   /* 07F098 80103898 3C190000 */       lui $t9, %hi(D_NF_000009E0)
   /* 07F09C 8010389C 273909E0 */     addiu $t9, $t9, %lo(D_NF_000009E0)
   /* 07F0A0 801038A0 44060000 */      mfc1 $a2, $f0
@@ -50985,7 +50985,7 @@ glabel efParticle_FoxEntryArwing_MakeEffect
   /* 07F0EC 801038EC 8D4B0004 */        lw $t3, 4($t2)
   /* 07F0F0 801038F0 AE0B0020 */        sw $t3, 0x20($s0)
   /* 07F0F4 801038F4 8D4C0008 */        lw $t4, 8($t2)
-  /* 07F0F8 801038F8 0C03F583 */       jal func_ovl2_800FD60C
+  /* 07F0F8 801038F8 0C03F583 */       jal efManagerSortZNeg
   /* 07F0FC 801038FC AE0C0024 */        sw $t4, 0x24($s0)
   /* 07F100 80103900 8FA2002C */        lw $v0, 0x2c($sp)
   .L80103904:
@@ -51001,8 +51001,8 @@ glabel func_ovl2_80103918
   /* 07F120 80103920 44800000 */      mtc1 $zero, $f0
   /* 07F124 80103924 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07F128 80103928 46026302 */     mul.s $f12, $f12, $f2
-  /* 07F12C 8010392C 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07F130 80103930 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07F12C 8010392C 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07F130 80103930 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07F134 80103934 46027382 */     mul.s $f14, $f14, $f2
   /* 07F138 80103938 AFA60030 */        sw $a2, 0x30($sp)
   /* 07F13C 8010393C 00C02825 */        or $a1, $a2, $zero
@@ -51057,8 +51057,8 @@ glabel efParticle_SingNote_MakeEffect
   /* 07F1E0 801039E0 AFB00018 */        sw $s0, 0x18($sp)
   /* 07F1E4 801039E4 0C006265 */       jal lbRandom_GetIntRange
   /* 07F1E8 801039E8 24040003 */     addiu $a0, $zero, 3
-  /* 07F1EC 801039EC 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07F1F0 801039F0 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07F1EC 801039EC 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07F1F0 801039F0 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07F1F4 801039F4 3C058013 */       lui $a1, %hi(efManager_Purin_SingNoteIDs)
   /* 07F1F8 801039F8 00A22821 */      addu $a1, $a1, $v0
   /* 07F1FC 801039FC 90A5E71C */       lbu $a1, %lo(efManager_Purin_SingNoteIDs)($a1)
@@ -51278,8 +51278,8 @@ glabel efParticle_CaptureKirbyStar_MakeEffect
   /* 07F50C 80103D0C 2484E720 */     addiu $a0, $a0, %lo(D_ovl2_8012E720)
   /* 07F510 80103D10 27B9002C */     addiu $t9, $sp, 0x2c
   /* 07F514 80103D14 AC990004 */        sw $t9, 4($a0) # D_ovl2_8012E720 + 4
-  /* 07F518 80103D18 3C088019 */       lui $t0, %hi(gITemFileData)
-  /* 07F51C 80103D1C 8D08D040 */        lw $t0, %lo(gITemFileData)($t0)
+  /* 07F518 80103D18 3C088019 */       lui $t0, %hi(gITFileData)
+  /* 07F51C 80103D1C 8D08D040 */        lw $t0, %lo(gITFileData)($t0)
   /* 07F520 80103D20 3C0F0000 */       lui $t7, %hi(D_NF_00000000)
   /* 07F524 80103D24 25EF0000 */     addiu $t7, $t7, %lo(D_NF_00000000)
   /* 07F528 80103D28 3C090000 */       lui $t1, %hi(D_NF_000004D4)
@@ -51386,7 +51386,7 @@ glabel efParticle_LoseKirbyStar_ProcUpdate
   /* 07F6A8 80103EA8 84C50022 */        lh $a1, 0x22($a2)
   /* 07F6AC 80103EAC 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07F6B0 80103EB0 8FA4001C */        lw $a0, 0x1c($sp)
-  /* 07F6B4 80103EB4 0C0026A1 */       jal omEjectGObjCommon
+  /* 07F6B4 80103EB4 0C0026A1 */       jal omEjectGObj
   /* 07F6B8 80103EB8 8FA40020 */        lw $a0, 0x20($sp)
   /* 07F6BC 80103EBC 1000002B */         b .L80103F6C
   /* 07F6C0 80103EC0 8FBF0014 */        lw $ra, 0x14($sp)
@@ -51431,7 +51431,7 @@ glabel efParticle_LoseKirbyStar_ProcUpdate
   .L80103F58:
   /* 07F758 80103F58 0C03F53E */       jal efManager_SetPrevAlloc
   /* 07F75C 80103F5C 00C02025 */        or $a0, $a2, $zero
-  /* 07F760 80103F60 0C0026A1 */       jal omEjectGObjCommon
+  /* 07F760 80103F60 0C0026A1 */       jal omEjectGObj
   /* 07F764 80103F64 8FA40020 */        lw $a0, 0x20($sp)
   /* 07F768 80103F68 8FBF0014 */        lw $ra, 0x14($sp)
   .L80103F6C:
@@ -51446,8 +51446,8 @@ glabel efParticle_LoseKirbyStar_MakeEffect
   /* 07F784 80103F84 2484E748 */     addiu $a0, $a0, %lo(D_ovl2_8012E748)
   /* 07F788 80103F88 27AE0024 */     addiu $t6, $sp, 0x24
   /* 07F78C 80103F8C AC8E0004 */        sw $t6, 4($a0) # D_ovl2_8012E748 + 4
-  /* 07F790 80103F90 3C0F8019 */       lui $t7, %hi(gITemFileData)
-  /* 07F794 80103F94 8DEFD040 */        lw $t7, %lo(gITemFileData)($t7)
+  /* 07F790 80103F90 3C0F8019 */       lui $t7, %hi(gITFileData)
+  /* 07F794 80103F94 8DEFD040 */        lw $t7, %lo(gITFileData)($t7)
   /* 07F798 80103F98 3C180000 */       lui $t8, %hi(D_NF_000004D4)
   /* 07F79C 80103F9C 271804D4 */     addiu $t8, $t8, %lo(D_NF_000004D4)
   /* 07F7A0 80103FA0 AFBF0014 */        sw $ra, 0x14($sp)
@@ -51547,8 +51547,8 @@ glabel efParticle_BattleScoreDisplay_MakeEffect
   .L801040F8:
   /* 07F8F8 801040F8 24050044 */     addiu $a1, $zero, 0x44
   .L801040FC:
-  /* 07F8FC 801040FC 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07F900 80104100 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07F8FC 801040FC 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07F900 80104100 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07F904 80104104 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07F908 80104108 34840018 */       ori $a0, $a0, 0x18
   /* 07F90C 8010410C 1040001F */      beqz $v0, .L8010418C
@@ -51597,9 +51597,9 @@ glabel efParticle_EggBreak_MakeEffect
   /* 07F9A0 801041A0 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07F9A4 801041A4 AFA40028 */        sw $a0, 0x28($sp)
   /* 07F9A8 801041A8 AFBF001C */        sw $ra, 0x1c($sp)
-  /* 07F9AC 801041AC 3C048013 */       lui $a0, %hi(gEffectBankIndex)
+  /* 07F9AC 801041AC 3C048013 */       lui $a0, %hi(sEFBankIndex)
   /* 07F9B0 801041B0 AFB00018 */        sw $s0, 0x18($sp)
-  /* 07F9B4 801041B4 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07F9B4 801041B4 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07F9B8 801041B8 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07F9BC 801041BC 24050054 */     addiu $a1, $zero, 0x54
   /* 07F9C0 801041C0 10400019 */      beqz $v0, .L80104228
@@ -51685,7 +51685,7 @@ glabel efParticle_KirbyInhaleWind_MakeEffect
   /* 07FADC 801042DC 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 07FAE0 801042E0 00002825 */        or $a1, $zero, $zero
   /* 07FAE4 801042E4 24060006 */     addiu $a2, $zero, 6
-  /* 07FAE8 801042E8 0C00265A */       jal omMakeGObjCommon
+  /* 07FAE8 801042E8 0C00265A */       jal omMakeGObjSPAfter
   /* 07FAEC 801042EC 3C078000 */       lui $a3, 0x8000
   /* 07FAF0 801042F0 14400005 */      bnez $v0, .L80104308
   /* 07FAF4 801042F4 00401825 */        or $v1, $v0, $zero
@@ -51816,9 +51816,9 @@ glabel efParticle_ItemSpawnSwirl_MakeEffect
   /* 07FCB4 801044B4 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07FCB8 801044B8 AFA40028 */        sw $a0, 0x28($sp)
   /* 07FCBC 801044BC AFBF001C */        sw $ra, 0x1c($sp)
-  /* 07FCC0 801044C0 3C048013 */       lui $a0, %hi(gEffectBankIndex)
+  /* 07FCC0 801044C0 3C048013 */       lui $a0, %hi(sEFBankIndex)
   /* 07FCC4 801044C4 AFB00018 */        sw $s0, 0x18($sp)
-  /* 07FCC8 801044C8 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07FCC8 801044C8 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07FCCC 801044CC 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07FCD0 801044D0 24050069 */     addiu $a1, $zero, 0x69
   /* 07FCD4 801044D4 10400019 */      beqz $v0, .L8010453C
@@ -51864,15 +51864,15 @@ glabel func_ovl2_80104554
   /* 07FD5C 8010455C AFB00018 */        sw $s0, 0x18($sp)
   /* 07FD60 80104560 10A00007 */      beqz $a1, .L80104580
   /* 07FD64 80104564 AFA40028 */        sw $a0, 0x28($sp)
-  /* 07FD68 80104568 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07FD6C 8010456C 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07FD68 80104568 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07FD6C 8010456C 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07FD70 80104570 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07FD74 80104574 24050070 */     addiu $a1, $zero, 0x70
   /* 07FD78 80104578 10000007 */         b .L80104598
   /* 07FD7C 8010457C 00408025 */        or $s0, $v0, $zero
   .L80104580:
-  /* 07FD80 80104580 3C048013 */       lui $a0, %hi(gEffectBankIndex)
-  /* 07FD84 80104584 8C8413C4 */        lw $a0, %lo(gEffectBankIndex)($a0)
+  /* 07FD80 80104580 3C048013 */       lui $a0, %hi(sEFBankIndex)
+  /* 07FD84 80104584 8C8413C4 */        lw $a0, %lo(sEFBankIndex)($a0)
   /* 07FD88 80104588 24050070 */     addiu $a1, $zero, 0x70
   /* 07FD8C 8010458C 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07FD90 80104590 34840020 */       ori $a0, $a0, 0x20
@@ -52245,7 +52245,7 @@ glabel func_ovl2_80104ABC
   /* 0802C4 80104AC4 240403F0 */     addiu $a0, $zero, 0x3f0
   /* 0802C8 80104AC8 00002825 */        or $a1, $zero, $zero
   /* 0802CC 80104ACC 2406000D */     addiu $a2, $zero, 0xd
-  /* 0802D0 80104AD0 0C00265A */       jal omMakeGObjCommon
+  /* 0802D0 80104AD0 0C00265A */       jal omMakeGObjSPAfter
   /* 0802D4 80104AD4 3C078000 */       lui $a3, 0x8000
   /* 0802D8 80104AD8 3C018013 */       lui $at, %hi(D_ovl2_801313D8)
   /* 0802DC 80104ADC 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -52300,7 +52300,7 @@ glabel func_ovl2_80104B88
   /* 080390 80104B90 240403F0 */     addiu $a0, $zero, 0x3f0
   /* 080394 80104B94 00002825 */        or $a1, $zero, $zero
   /* 080398 80104B98 2406000D */     addiu $a2, $zero, 0xd
-  /* 08039C 80104B9C 0C00265A */       jal omMakeGObjCommon
+  /* 08039C 80104B9C 0C00265A */       jal omMakeGObjSPAfter
   /* 0803A0 80104BA0 3C078000 */       lui $a3, 0x8000
   /* 0803A4 80104BA4 3C018013 */       lui $at, %hi(D_ovl2_801313D8)
   /* 0803A8 80104BA8 3C058010 */       lui $a1, %hi(func_ovl2_80104B58)
@@ -52933,7 +52933,7 @@ glabel func_ovl2_8010547C
   /* 080CAC 801054AC 00001025 */        or $v0, $zero, $zero
   .L801054B0:
   /* 080CB0 801054B0 24060002 */     addiu $a2, $zero, 2
-  /* 080CB4 801054B4 0C00265A */       jal omMakeGObjCommon
+  /* 080CB4 801054B4 0C00265A */       jal omMakeGObjSPAfter
   /* 080CB8 801054B8 3C078000 */       lui $a3, 0x8000
   /* 080CBC 801054BC 3C0F8013 */       lui $t7, %hi(gGroundInfo)
   /* 080CC0 801054C0 8DEF1300 */        lw $t7, %lo(gGroundInfo)($t7)
@@ -54118,7 +54118,7 @@ glabel grCommon_Pupupu_MakeMapGObj
   /* 081CE4 801064E4 3C078000 */       lui $a3, 0x8000
   /* 081CE8 801064E8 24060001 */     addiu $a2, $zero, 1
   /* 081CEC 801064EC 00002825 */        or $a1, $zero, $zero
-  /* 081CF0 801064F0 0C00265A */       jal omMakeGObjCommon
+  /* 081CF0 801064F0 0C00265A */       jal omMakeGObjSPAfter
   /* 081CF4 801064F4 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 081CF8 801064F8 240EFFFF */     addiu $t6, $zero, -1
   /* 081CFC 801064FC 00408025 */        or $s0, $v0, $zero
@@ -54249,7 +54249,7 @@ glabel grCommon_Pupupu_InitGroundVars
   /* 081EDC 801066DC 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 081EE0 801066E0 00002825 */        or $a1, $zero, $zero
   /* 081EE4 801066E4 24060001 */     addiu $a2, $zero, 1
-  /* 081EE8 801066E8 0C00265A */       jal omMakeGObjCommon
+  /* 081EE8 801066E8 0C00265A */       jal omMakeGObjSPAfter
   /* 081EEC 801066EC 3C078000 */       lui $a3, 0x8000
   /* 081EF0 801066F0 3C058010 */       lui $a1, %hi(grCommon_Pupupu_ProcUpdate)
   /* 081EF4 801066F4 AFA2001C */        sw $v0, 0x1c($sp)
@@ -55946,7 +55946,7 @@ glabel grCommon_Sector_InitGroundVars
   /* 0836C4 80107EC4 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 0836C8 80107EC8 00002825 */        or $a1, $zero, $zero
   /* 0836CC 80107ECC 24060001 */     addiu $a2, $zero, 1
-  /* 0836D0 80107ED0 0C00265A */       jal omMakeGObjCommon
+  /* 0836D0 80107ED0 0C00265A */       jal omMakeGObjSPAfter
   /* 0836D4 80107ED4 3C078000 */       lui $a3, 0x8000
   /* 0836D8 80107ED8 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 0836DC 80107EDC 2408FFFF */     addiu $t0, $zero, -1
@@ -56016,7 +56016,7 @@ glabel grCommon_Sector_InitGroundVars
   /* 0837D4 80107FD4 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 0837D8 80107FD8 00002825 */        or $a1, $zero, $zero
   /* 0837DC 80107FDC 24060001 */     addiu $a2, $zero, 1
-  /* 0837E0 80107FE0 0C00265A */       jal omMakeGObjCommon
+  /* 0837E0 80107FE0 0C00265A */       jal omMakeGObjSPAfter
   /* 0837E4 80107FE4 3C078000 */       lui $a3, 0x8000
   /* 0837E8 80107FE8 0C041F9F */       jal grCommon_Sector_InitGroundVars
   /* 0837EC 80107FEC AFA2001C */        sw $v0, 0x1c($sp)
@@ -56109,7 +56109,7 @@ glabel grCommon_Zebes_MakeAcid
   /* 083928 80108128 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 08392C 8010812C 00002825 */        or $a1, $zero, $zero
   /* 083930 80108130 24060001 */     addiu $a2, $zero, 1
-  /* 083934 80108134 0C00265A */       jal omMakeGObjCommon
+  /* 083934 80108134 0C00265A */       jal omMakeGObjSPAfter
   /* 083938 80108138 3C078000 */       lui $a3, 0x8000
   /* 08393C 8010813C 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
   /* 083940 80108140 2418FFFF */     addiu $t8, $zero, -1
@@ -56336,7 +56336,7 @@ glabel grCommon_Zebes_ProcUpdate
   /* 083C50 80108450 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 083C54 80108454 00002825 */        or $a1, $zero, $zero
   /* 083C58 80108458 24060001 */     addiu $a2, $zero, 1
-  /* 083C5C 8010845C 0C00265A */       jal omMakeGObjCommon
+  /* 083C5C 8010845C 0C00265A */       jal omMakeGObjSPAfter
   /* 083C60 80108460 3C078000 */       lui $a3, 0x8000
   /* 083C64 80108464 0C04203B */       jal grCommon_Zebes_MakeAcid
   /* 083C68 80108468 AFA2001C */        sw $v0, 0x1c($sp)
@@ -56792,7 +56792,7 @@ glabel grCommon_Yoster_InitGroundVars
   /* 0842B4 80108AB4 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 0842B8 80108AB8 00002825 */        or $a1, $zero, $zero
   /* 0842BC 80108ABC 24060001 */     addiu $a2, $zero, 1
-  /* 0842C0 80108AC0 0C00265A */       jal omMakeGObjCommon
+  /* 0842C0 80108AC0 0C00265A */       jal omMakeGObjSPAfter
   /* 0842C4 80108AC4 3C078000 */       lui $a3, 0x8000
   /* 0842C8 80108AC8 240FFFFF */     addiu $t7, $zero, -1
   /* 0842CC 80108ACC 0040F025 */        or $fp, $v0, $zero
@@ -56912,7 +56912,7 @@ glabel grCommon_Yoster_InitGroundVars
   /* 084488 80108C88 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 08448C 80108C8C 00002825 */        or $a1, $zero, $zero
   /* 084490 80108C90 24060001 */     addiu $a2, $zero, 1
-  /* 084494 80108C94 0C00265A */       jal omMakeGObjCommon
+  /* 084494 80108C94 0C00265A */       jal omMakeGObjSPAfter
   /* 084498 80108C98 3C078000 */       lui $a3, 0x8000
   /* 08449C 80108C9C 0C04227D */       jal grCommon_Yoster_InitGroundVars
   /* 0844A0 80108CA0 AFA2001C */        sw $v0, 0x1c($sp)
@@ -57496,7 +57496,7 @@ glabel grInishie_Scale_MakeGround
   /* 084CD8 801094D8 02C03825 */        or $a3, $s6, $zero
   /* 084CDC 801094DC 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 084CE0 801094E0 00002825 */        or $a1, $zero, $zero
-  /* 084CE4 801094E4 0C00265A */       jal omMakeGObjCommon
+  /* 084CE4 801094E4 0C00265A */       jal omMakeGObjSPAfter
   /* 084CE8 801094E8 24060001 */     addiu $a2, $zero, 1
   /* 084CEC 801094EC 3C058001 */       lui $a1, %hi(odRenderDObjTreeForGObj)
   /* 084CF0 801094F0 240EFFFF */     addiu $t6, $zero, -1
@@ -57557,7 +57557,7 @@ glabel grInishie_Scale_MakeGround
   /* 084DC8 801095C8 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 084DCC 801095CC 00002825 */        or $a1, $zero, $zero
   /* 084DD0 801095D0 24060001 */     addiu $a2, $zero, 1
-  /* 084DD4 801095D4 0C00265A */       jal omMakeGObjCommon
+  /* 084DD4 801095D4 0C00265A */       jal omMakeGObjSPAfter
   /* 084DD8 801095D8 02C03825 */        or $a3, $s6, $zero
   /* 084DDC 801095DC 2418FFFF */     addiu $t8, $zero, -1
   /* 084DE0 801095E0 00409825 */        or $s3, $v0, $zero
@@ -57845,7 +57845,7 @@ glabel grInishie_PowerBlock_MakeGround
   /* 0851E0 801099E0 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 0851E4 801099E4 00002825 */        or $a1, $zero, $zero
   /* 0851E8 801099E8 24060001 */     addiu $a2, $zero, 1
-  /* 0851EC 801099EC 0C00265A */       jal omMakeGObjCommon
+  /* 0851EC 801099EC 0C00265A */       jal omMakeGObjSPAfter
   /* 0851F0 801099F0 3C078000 */       lui $a3, 0x8000
   /* 0851F4 801099F4 3C058011 */       lui $a1, %hi(grInishie_PowerBlock_ProcUpdate)
   /* 0851F8 801099F8 24A59968 */     addiu $a1, $a1, %lo(grInishie_PowerBlock_ProcUpdate)
@@ -58198,7 +58198,7 @@ glabel grJungle_TaruCann_MakeGround
   /* 0856B8 80109EB8 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 0856BC 80109EBC 00002825 */        or $a1, $zero, $zero
   /* 0856C0 80109EC0 24060001 */     addiu $a2, $zero, 1
-  /* 0856C4 80109EC4 0C00265A */       jal omMakeGObjCommon
+  /* 0856C4 80109EC4 0C00265A */       jal omMakeGObjSPAfter
   /* 0856C8 80109EC8 3C078000 */       lui $a3, 0x8000
   /* 0856CC 80109ECC 3C018013 */       lui $at, %hi(D_ovl2_801313F4)
   /* 0856D0 80109ED0 3C058001 */       lui $a1, %hi(odRenderDObjTreeForGObj)
@@ -58435,7 +58435,7 @@ glabel grHyrule_Twister_MakeGround
   .L8010A214:
   /* 085A14 8010A214 00002825 */        or $a1, $zero, $zero
   /* 085A18 8010A218 24060001 */     addiu $a2, $zero, 1
-  /* 085A1C 8010A21C 0C00265A */       jal omMakeGObjCommon
+  /* 085A1C 8010A21C 0C00265A */       jal omMakeGObjSPAfter
   /* 085A20 8010A220 3C078000 */       lui $a3, 0x8000
   /* 085A24 8010A224 1040004C */      beqz $v0, .L8010A358
   /* 085A28 8010A228 AFA2003C */        sw $v0, 0x3c($sp)
@@ -58460,7 +58460,7 @@ glabel grHyrule_Twister_MakeGround
   /* 085A74 8010A274 AFA20034 */        sw $v0, 0x34($sp)
   /* 085A78 8010A278 3C018013 */       lui $at, %hi(D_ovl2_801313F8)
   /* 085A7C 8010A27C AC2013F8 */        sw $zero, %lo(D_ovl2_801313F8)($at)
-  /* 085A80 8010A280 0C0026A1 */       jal omEjectGObjCommon
+  /* 085A80 8010A280 0C0026A1 */       jal omEjectGObj
   /* 085A84 8010A284 8FA4003C */        lw $a0, 0x3c($sp)
   /* 085A88 8010A288 10000034 */         b .L8010A35C
   /* 085A8C 8010A28C 00001025 */        or $v0, $zero, $zero
@@ -58905,7 +58905,7 @@ glabel grHyrule_Twister_UpdateStop
   /* 086094 8010A894 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 086098 8010A898 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
   .L8010A89C:
-  /* 08609C 8010A89C 0C0026A1 */       jal omEjectGObjCommon
+  /* 08609C 8010A89C 0C0026A1 */       jal omEjectGObj
   /* 0860A0 8010A8A0 8C440004 */        lw $a0, 4($v0) # gGroundStruct + 4
   /* 0860A4 8010A8A4 8FBF0014 */        lw $ra, 0x14($sp)
   .L8010A8A8:
@@ -59097,7 +59097,7 @@ glabel grHyrule_Twister_InitGroundVars
   /* 086328 8010AB28 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 08632C 8010AB2C 00002825 */        or $a1, $zero, $zero
   /* 086330 8010AB30 24060001 */     addiu $a2, $zero, 1
-  /* 086334 8010AB34 0C00265A */       jal omMakeGObjCommon
+  /* 086334 8010AB34 0C00265A */       jal omMakeGObjSPAfter
   /* 086338 8010AB38 3C078000 */       lui $a3, 0x8000
   /* 08633C 8010AB3C 3C058011 */       lui $a1, %hi(grHyrule_Twister_ProcUpdate)
   /* 086340 8010AB40 AFA2001C */        sw $v0, 0x1c($sp)
@@ -59581,7 +59581,7 @@ glabel grYamabukiMakeGate
   /* 0869B4 8010B1B4 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 0869B8 8010B1B8 00002825 */        or $a1, $zero, $zero
   /* 0869BC 8010B1BC 24060001 */     addiu $a2, $zero, 1
-  /* 0869C0 8010B1C0 0C00265A */       jal omMakeGObjCommon
+  /* 0869C0 8010B1C0 0C00265A */       jal omMakeGObjSPAfter
   /* 0869C4 8010B1C4 3C078000 */       lui $a3, 0x8000
   /* 0869C8 8010B1C8 3C018013 */       lui $at, %hi(D_ovl2_801313FC)
   /* 0869CC 8010B1CC 3C058001 */       lui $a1, %hi(odRenderDObjTreeDLLinksForGObj)
@@ -59665,7 +59665,7 @@ glabel grYamabukiInitGroundVars
   /* 086AF4 8010B2F4 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 086AF8 8010B2F8 00002825 */        or $a1, $zero, $zero
   /* 086AFC 8010B2FC 24060001 */     addiu $a2, $zero, 1
-  /* 086B00 8010B300 0C00265A */       jal omMakeGObjCommon
+  /* 086B00 8010B300 0C00265A */       jal omMakeGObjSPAfter
   /* 086B04 8010B304 3C078000 */       lui $a3, 0x8000
   /* 086B08 8010B308 3C058011 */       lui $a1, %hi(grYamabukiGateProcUpdate)
   /* 086B0C 8010B30C AFA2001C */        sw $v0, 0x1c($sp)
@@ -59715,7 +59715,7 @@ glabel grCommon_Castle_InitGroundVars
   /* 086BA8 8010B3A8 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 086BAC 8010B3AC 00002825 */        or $a1, $zero, $zero
   /* 086BB0 8010B3B0 24060001 */     addiu $a2, $zero, 1
-  /* 086BB4 8010B3B4 0C00265A */       jal omMakeGObjCommon
+  /* 086BB4 8010B3B4 0C00265A */       jal omMakeGObjSPAfter
   /* 086BB8 8010B3B8 3C078000 */       lui $a3, 0x8000
   /* 086BBC 8010B3BC 3C058011 */       lui $a1, %hi(grCastle_Bumper_ProcUpdate)
   /* 086BC0 8010B3C0 00408025 */        or $s0, $v0, $zero
@@ -59906,7 +59906,7 @@ glabel grBonus3_RBomb_MakeGround
   /* 086E6C 8010B66C 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 086E70 8010B670 00002825 */        or $a1, $zero, $zero
   /* 086E74 8010B674 24060001 */     addiu $a2, $zero, 1
-  /* 086E78 8010B678 0C00265A */       jal omMakeGObjCommon
+  /* 086E78 8010B678 0C00265A */       jal omMakeGObjSPAfter
   /* 086E7C 8010B67C 3C078000 */       lui $a3, 0x8000
   /* 086E80 8010B680 3C058011 */       lui $a1, %hi(grBonus3_RBomb_ProcUpdate)
   /* 086E84 8010B684 24A5B5F0 */     addiu $a1, $a1, %lo(grBonus3_RBomb_ProcUpdate)
@@ -59985,7 +59985,7 @@ glabel grBonus3_Finish_MakeGround
   /* 086F8C 8010B78C 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 086F90 8010B790 00002825 */        or $a1, $zero, $zero
   /* 086F94 8010B794 24060001 */     addiu $a2, $zero, 1
-  /* 086F98 8010B798 0C00265A */       jal omMakeGObjCommon
+  /* 086F98 8010B798 0C00265A */       jal omMakeGObjSPAfter
   /* 086F9C 8010B79C 3C078000 */       lui $a3, 0x8000
   /* 086FA0 8010B7A0 3C058011 */       lui $a1, %hi(grBonus3_Finish_ProcUpdate)
   /* 086FA4 8010B7A4 24A5B700 */     addiu $a1, $a1, %lo(grBonus3_Finish_ProcUpdate)
@@ -64233,7 +64233,7 @@ glabel func_ovl2_8010F3C0
   /* 08AC78 8010F478 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08AC7C 8010F47C 00002825 */        or $a1, $zero, $zero
   /* 08AC80 8010F480 2406000B */     addiu $a2, $zero, 0xb
-  /* 08AC84 8010F484 0C00265A */       jal omMakeGObjCommon
+  /* 08AC84 8010F484 0C00265A */       jal omMakeGObjSPAfter
   /* 08AC88 8010F488 3C078000 */       lui $a3, 0x8000
   /* 08AC8C 8010F48C 240CFFFF */     addiu $t4, $zero, -1
   /* 08AC90 8010F490 00408825 */        or $s1, $v0, $zero
@@ -64888,7 +64888,7 @@ glabel func_ovl2_8010FDD4
   /* 08B634 8010FE34 00002825 */        or $a1, $zero, $zero
   /* 08B638 8010FE38 2406000B */     addiu $a2, $zero, 0xb
   /* 08B63C 8010FE3C 02203825 */        or $a3, $s1, $zero
-  /* 08B640 8010FE40 0C00265A */       jal omMakeGObjCommon
+  /* 08B640 8010FE40 0C00265A */       jal omMakeGObjSPAfter
   /* 08B644 8010FE44 AFA30034 */        sw $v1, 0x34($sp)
   /* 08B648 8010FE48 3C058011 */       lui $a1, %hi(func_ovl2_8010F878)
   /* 08B64C 8010FE4C 240BFFFF */     addiu $t3, $zero, -1
@@ -65010,7 +65010,7 @@ glabel func_ovl2_8010FFA8
   /* 08B7F8 8010FFF8 1160004B */      beqz $t3, .L80110128
   /* 08B7FC 8010FFFC 2406000B */     addiu $a2, $zero, 0xb
   /* 08B800 80110000 3C078000 */       lui $a3, 0x8000
-  /* 08B804 80110004 0C00265A */       jal omMakeGObjCommon
+  /* 08B804 80110004 0C00265A */       jal omMakeGObjSPAfter
   /* 08B808 80110008 AFA8002C */        sw $t0, 0x2c($sp)
   /* 08B80C 8011000C 8FA30030 */        lw $v1, 0x30($sp)
   /* 08B810 80110010 3C018013 */       lui $at, %hi(gPlayerStocksGObj)
@@ -65122,7 +65122,7 @@ glabel func_ovl2_80110138
   /* 08B9A8 801101A8 468033A0 */   cvt.s.w $f14, $f6
   /* 08B9AC 801101AC 0C040E6D */       jal func_ovl2_801039B4
   /* 08B9B0 801101B0 46802320 */   cvt.s.w $f12, $f4
-  /* 08B9B4 801101B4 0C0026A1 */       jal omEjectGObjCommon
+  /* 08B9B4 801101B4 0C0026A1 */       jal omEjectGObj
   /* 08B9B8 801101B8 8FA40018 */        lw $a0, 0x18($sp)
   /* 08B9BC 801101BC 10000039 */         b .L801102A4
   /* 08B9C0 801101C0 8FBF0014 */        lw $ra, 0x14($sp)
@@ -65212,7 +65212,7 @@ glabel func_ovl2_801102B0
   /* 08BAF0 801102F0 8D6C0084 */        lw $t4, 0x84($t3)
   /* 08BAF4 801102F4 2406000B */     addiu $a2, $zero, 0xb
   /* 08BAF8 801102F8 3C078000 */       lui $a3, 0x8000
-  /* 08BAFC 801102FC 0C00265A */       jal omMakeGObjCommon
+  /* 08BAFC 801102FC 0C00265A */       jal omMakeGObjSPAfter
   /* 08BB00 80110300 AFAC002C */        sw $t4, 0x2c($sp)
   /* 08BB04 80110304 1040007E */      beqz $v0, .L80110500
   /* 08BB08 80110308 00408025 */        or $s0, $v0, $zero
@@ -65238,7 +65238,7 @@ glabel func_ovl2_801102B0
   /* 08BB58 80110358 8F050000 */        lw $a1, ($t8)
   /* 08BB5C 8011035C 14400005 */      bnez $v0, .L80110374
   /* 08BB60 80110360 00401825 */        or $v1, $v0, $zero
-  /* 08BB64 80110364 0C0026A1 */       jal omEjectGObjCommon
+  /* 08BB64 80110364 0C0026A1 */       jal omEjectGObj
   /* 08BB68 80110368 02002025 */        or $a0, $s0, $zero
   /* 08BB6C 8011036C 10000065 */         b .L80110504
   /* 08BB70 80110370 8FBF0024 */        lw $ra, 0x24($sp)
@@ -66406,7 +66406,7 @@ glabel ifPlayer_MagnifyGlass_SetInterface
   /* 08CCA4 801114A4 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08CCA8 801114A8 00002825 */        or $a1, $zero, $zero
   /* 08CCAC 801114AC 2406000C */     addiu $a2, $zero, 0xc
-  /* 08CCB0 801114B0 0C00265A */       jal omMakeGObjCommon
+  /* 08CCB0 801114B0 0C00265A */       jal omMakeGObjSPAfter
   /* 08CCB4 801114B4 02A03825 */        or $a3, $s5, $zero
   /* 08CCB8 801114B8 8ECE0000 */        lw $t6, ($s6) # gCommonFiles + 0
   /* 08CCBC 801114BC 00409025 */        or $s2, $v0, $zero
@@ -66549,7 +66549,7 @@ glabel func_ovl2_80111684
   /* 08CE94 80111694 00002825 */        or $a1, $zero, $zero
   /* 08CE98 80111698 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08CE9C 8011169C 2406000B */     addiu $a2, $zero, 0xb
-  /* 08CEA0 801116A0 0C00265A */       jal omMakeGObjCommon
+  /* 08CEA0 801116A0 0C00265A */       jal omMakeGObjSPAfter
   /* 08CEA4 801116A4 3C078000 */       lui $a3, 0x8000
   /* 08CEA8 801116A8 240EFFFF */     addiu $t6, $zero, -1
   /* 08CEAC 801116AC AFA20024 */        sw $v0, 0x24($sp)
@@ -66720,7 +66720,7 @@ glabel ifPlayer_MagnifyArrows_SetInterface
   /* 08D0F0 801118F0 24A5171C */     addiu $a1, $a1, %lo(func_ovl2_8011171C)
   /* 08D0F4 801118F4 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08D0F8 801118F8 2406000B */     addiu $a2, $zero, 0xb
-  /* 08D0FC 801118FC 0C00265A */       jal omMakeGObjCommon
+  /* 08D0FC 801118FC 0C00265A */       jal omMakeGObjSPAfter
   /* 08D100 80111900 3C078000 */       lui $a3, 0x8000
   /* 08D104 80111904 3C058011 */       lui $a1, %hi(ifMagnify_WarnArrowsGfx_ProcRender)
   /* 08D108 80111908 240EFFFF */     addiu $t6, $zero, -1
@@ -66951,7 +66951,7 @@ glabel ifPlayer_Tag_SetInterface
   /* 08D450 80111C50 02A03825 */        or $a3, $s5, $zero
   /* 08D454 80111C54 12D80033 */       beq $s6, $t8, .L80111D24
   /* 08D458 80111C58 3C138011 */       lui $s3, %hi(func_ovl2_80111A3C)
-  /* 08D45C 80111C5C 0C00265A */       jal omMakeGObjCommon
+  /* 08D45C 80111C5C 0C00265A */       jal omMakeGObjSPAfter
   /* 08D460 80111C60 26731A3C */     addiu $s3, $s3, %lo(func_ovl2_80111A3C)
   /* 08D464 80111C64 2419FFFF */     addiu $t9, $zero, -1
   /* 08D468 80111C68 00408825 */        or $s1, $v0, $zero
@@ -67117,7 +67117,7 @@ glabel ifItem_PickupArrow_MakeInterface
   /* 08D6CC 80111ECC 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08D6D0 80111ED0 00002825 */        or $a1, $zero, $zero
   /* 08D6D4 80111ED4 2406000B */     addiu $a2, $zero, 0xb
-  /* 08D6D8 80111ED8 0C00265A */       jal omMakeGObjCommon
+  /* 08D6D8 80111ED8 0C00265A */       jal omMakeGObjSPAfter
   /* 08D6DC 80111EDC 3C078000 */       lui $a3, 0x8000
   /* 08D6E0 80111EE0 10400022 */      beqz $v0, .L80111F6C
   /* 08D6E4 80111EE4 00402025 */        or $a0, $v0, $zero
@@ -67129,10 +67129,10 @@ glabel ifItem_PickupArrow_MakeInterface
   /* 08D6FC 80111EFC 3C078000 */       lui $a3, 0x8000
   /* 08D700 80111F00 0C00277D */       jal omAddGObjRenderProc
   /* 08D704 80111F04 AFA20024 */        sw $v0, 0x24($sp)
-  /* 08D708 80111F08 3C058013 */       lui $a1, %hi(gITemArrowSprite)
+  /* 08D708 80111F08 3C058013 */       lui $a1, %hi(gITArrowSprite)
   /* 08D70C 80111F0C 8FA40024 */        lw $a0, 0x24($sp)
   /* 08D710 80111F10 0C0333F7 */       jal gcAppendSObjWithSprite
-  /* 08D714 80111F14 8CA517F0 */        lw $a1, %lo(gITemArrowSprite)($a1)
+  /* 08D714 80111F14 8CA517F0 */        lw $a1, %lo(gITArrowSprite)($a1)
   /* 08D718 80111F18 10400012 */      beqz $v0, .L80111F64
   /* 08D71C 80111F1C 8FA40024 */        lw $a0, 0x24($sp)
   /* 08D720 80111F20 8FAF0028 */        lw $t7, 0x28($sp)
@@ -67154,7 +67154,7 @@ glabel ifItem_PickupArrow_MakeInterface
   /* 08D75C 80111F5C 10000004 */         b .L80111F70
   /* 08D760 80111F60 00801025 */        or $v0, $a0, $zero
   .L80111F64:
-  /* 08D764 80111F64 0C0026A1 */       jal omEjectGObjCommon
+  /* 08D764 80111F64 0C0026A1 */       jal omEjectGObj
   /* 08D768 80111F68 00000000 */       nop 
   .L80111F6C:
   /* 08D76C 80111F6C 00001025 */        or $v0, $zero, $zero
@@ -67179,10 +67179,10 @@ glabel func_ovl2_80111F80
   /* 08D7AC 80111FAC 00402825 */        or $a1, $v0, $zero
   /* 08D7B0 80111FB0 3C0E0000 */       lui $t6, %hi(D_NF_00000050)
   /* 08D7B4 80111FB4 25CE0050 */     addiu $t6, $t6, %lo(D_NF_00000050)
-  /* 08D7B8 80111FB8 3C048013 */       lui $a0, %hi(gITemArrowSprite)
-  /* 08D7BC 80111FBC 248417F0 */     addiu $a0, $a0, %lo(gITemArrowSprite)
+  /* 08D7B8 80111FB8 3C048013 */       lui $a0, %hi(gITArrowSprite)
+  /* 08D7BC 80111FBC 248417F0 */     addiu $a0, $a0, %lo(gITArrowSprite)
   /* 08D7C0 80111FC0 004E7821 */      addu $t7, $v0, $t6
-  /* 08D7C4 80111FC4 AC8F0000 */        sw $t7, ($a0) # gITemArrowSprite + 0
+  /* 08D7C4 80111FC4 AC8F0000 */        sw $t7, ($a0) # gITArrowSprite + 0
   /* 08D7C8 80111FC8 24180201 */     addiu $t8, $zero, 0x201
   /* 08D7CC 80111FCC 241900FF */     addiu $t9, $zero, 0xff
   /* 08D7D0 80111FD0 A5F80014 */        sh $t8, 0x14($t7)
@@ -67200,7 +67200,7 @@ glabel func_ovl2_80111FF0
   /* 08D7F8 80111FF8 AFA40018 */        sw $a0, 0x18($sp)
   /* 08D7FC 80111FFC 0C002C7A */       jal gsStopCurrentProcess
   /* 08D800 80112000 2404003C */     addiu $a0, $zero, 0x3c
-  /* 08D804 80112004 0C0026A1 */       jal omEjectGObjCommon
+  /* 08D804 80112004 0C0026A1 */       jal omEjectGObj
   /* 08D808 80112008 00002025 */        or $a0, $zero, $zero
   /* 08D80C 8011200C 0C002C7A */       jal gsStopCurrentProcess
   /* 08D810 80112010 24040001 */     addiu $a0, $zero, 1
@@ -67271,7 +67271,7 @@ glabel func_ovl2_801120D4
   /* 08D8FC 801120FC 02003825 */        or $a3, $s0, $zero
   /* 08D900 80112100 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08D904 80112104 00002825 */        or $a1, $zero, $zero
-  /* 08D908 80112108 0C00265A */       jal omMakeGObjCommon
+  /* 08D908 80112108 0C00265A */       jal omMakeGObjSPAfter
   /* 08D90C 8011210C 2406000B */     addiu $a2, $zero, 0xb
   /* 08D910 80112110 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 08D914 80112114 240EFFFF */     addiu $t6, $zero, -1
@@ -67627,7 +67627,7 @@ glabel func_ovl2_801122F4
   /* 08DE1C 8011261C 5420FFF1 */      bnel $at, $zero, .L801125E4
   /* 08DE20 80112620 8EB00074 */        lw $s0, 0x74($s5)
   .L80112624:
-  /* 08DE24 80112624 0C0026A1 */       jal omEjectGObjCommon
+  /* 08DE24 80112624 0C0026A1 */       jal omEjectGObj
   /* 08DE28 80112628 00002025 */        or $a0, $zero, $zero
   /* 08DE2C 8011262C 0C002C7A */       jal gsStopCurrentProcess
   /* 08DE30 80112630 24040001 */     addiu $a0, $zero, 1
@@ -67655,7 +67655,7 @@ glabel func_ovl2_80112668
   /* 08DE80 80112680 02003825 */        or $a3, $s0, $zero
   /* 08DE84 80112684 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08DE88 80112688 00002825 */        or $a1, $zero, $zero
-  /* 08DE8C 8011268C 0C00265A */       jal omMakeGObjCommon
+  /* 08DE8C 8011268C 0C00265A */       jal omMakeGObjSPAfter
   /* 08DE90 80112690 2406000B */     addiu $a2, $zero, 0xb
   /* 08DE94 80112694 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 08DE98 80112698 240EFFFF */     addiu $t6, $zero, -1
@@ -67761,7 +67761,7 @@ glabel func_ovl2_80112814
   /* 08E01C 8011281C 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08E020 80112820 00002825 */        or $a1, $zero, $zero
   /* 08E024 80112824 2406000B */     addiu $a2, $zero, 0xb
-  /* 08E028 80112828 0C00265A */       jal omMakeGObjCommon
+  /* 08E028 80112828 0C00265A */       jal omMakeGObjSPAfter
   /* 08E02C 8011282C 3C078000 */       lui $a3, 0x8000
   /* 08E030 80112830 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 08E034 80112834 240EFFFF */     addiu $t6, $zero, -1
@@ -67864,7 +67864,7 @@ glabel func_ovl2_80112880
   /* 08E198 80112998 0C0433C8 */       jal func_ovl2_8010CF20
   /* 08E19C 8011299C 00000000 */       nop 
   .L801129A0:
-  /* 08E1A0 801129A0 0C0026A1 */       jal omEjectGObjCommon
+  /* 08E1A0 801129A0 0C0026A1 */       jal omEjectGObj
   /* 08E1A4 801129A4 00002025 */        or $a0, $zero, $zero
   /* 08E1A8 801129A8 0C002C7A */       jal gsStopCurrentProcess
   /* 08E1AC 801129AC 24040001 */     addiu $a0, $zero, 1
@@ -67887,7 +67887,7 @@ glabel func_ovl2_801129DC
   /* 08E1E8 801129E8 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08E1EC 801129EC 00002825 */        or $a1, $zero, $zero
   /* 08E1F0 801129F0 2406000A */     addiu $a2, $zero, 0xa
-  /* 08E1F4 801129F4 0C00265A */       jal omMakeGObjCommon
+  /* 08E1F4 801129F4 0C00265A */       jal omMakeGObjSPAfter
   /* 08E1F8 801129F8 3C078000 */       lui $a3, 0x8000
   /* 08E1FC 801129FC 3C058011 */       lui $a1, %hi(func_ovl2_80112880)
   /* 08E200 80112A00 AFA2001C */        sw $v0, 0x1c($sp)
@@ -67916,7 +67916,7 @@ glabel func_ovl2_80112A34
   /* 08E254 80112A54 24040003 */     addiu $a0, $zero, 3
   /* 08E258 80112A58 0C044A77 */       jal func_ovl2_801129DC
   /* 08E25C 80112A5C 00402025 */        or $a0, $v0, $zero
-  /* 08E260 80112A60 0C0026A1 */       jal omEjectGObjCommon
+  /* 08E260 80112A60 0C0026A1 */       jal omEjectGObj
   /* 08E264 80112A64 00002025 */        or $a0, $zero, $zero
   /* 08E268 80112A68 0C002C7A */       jal gsStopCurrentProcess
   /* 08E26C 80112A6C 24040001 */     addiu $a0, $zero, 1
@@ -67931,7 +67931,7 @@ glabel ifStart_TrafficLamp_SetInterface
   /* 08E288 80112A88 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08E28C 80112A8C 00002825 */        or $a1, $zero, $zero
   /* 08E290 80112A90 2406000A */     addiu $a2, $zero, 0xa
-  /* 08E294 80112A94 0C00265A */       jal omMakeGObjCommon
+  /* 08E294 80112A94 0C00265A */       jal omMakeGObjSPAfter
   /* 08E298 80112A98 3C078000 */       lui $a3, 0x8000
   /* 08E29C 80112A9C 3C058011 */       lui $a1, %hi(func_ovl2_80112A34)
   /* 08E2A0 80112AA0 24A52A34 */     addiu $a1, $a1, %lo(func_ovl2_80112A34)
@@ -67961,7 +67961,7 @@ glabel func_ovl2_80112AD0
   /* 08E2F8 80112AF8 00000000 */       nop 
   /* 08E2FC 80112AFC 0C009A70 */       jal func_800269C0
   /* 08E300 80112B00 240401EA */     addiu $a0, $zero, 0x1ea
-  /* 08E304 80112B04 0C0026A1 */       jal omEjectGObjCommon
+  /* 08E304 80112B04 0C0026A1 */       jal omEjectGObj
   /* 08E308 80112B08 00002025 */        or $a0, $zero, $zero
   /* 08E30C 80112B0C 0C002C7A */       jal gsStopCurrentProcess
   /* 08E310 80112B10 24040001 */     addiu $a0, $zero, 1
@@ -68000,7 +68000,7 @@ glabel func_ovl2_80112B74
   /* 08E37C 80112B7C 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08E380 80112B80 00002825 */        or $a1, $zero, $zero
   /* 08E384 80112B84 2406000B */     addiu $a2, $zero, 0xb
-  /* 08E388 80112B88 0C00265A */       jal omMakeGObjCommon
+  /* 08E388 80112B88 0C00265A */       jal omMakeGObjSPAfter
   /* 08E38C 80112B8C 3C078000 */       lui $a3, 0x8000
   /* 08E390 80112B90 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 08E394 80112B94 240EFFFF */     addiu $t6, $zero, -1
@@ -68291,7 +68291,7 @@ glabel ifTimer_BattleTime_SetTimerDigits
   /* 08E7B4 80112FB4 02003825 */        or $a3, $s0, $zero
   /* 08E7B8 80112FB8 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08E7BC 80112FBC 00002825 */        or $a1, $zero, $zero
-  /* 08E7C0 80112FC0 0C00265A */       jal omMakeGObjCommon
+  /* 08E7C0 80112FC0 0C00265A */       jal omMakeGObjSPAfter
   /* 08E7C4 80112FC4 2406000B */     addiu $a2, $zero, 0xb
   /* 08E7C8 80112FC8 3C058011 */       lui $a1, %hi(func_ovl2_80112C18)
   /* 08E7CC 80112FCC 2419FFFF */     addiu $t9, $zero, -1
@@ -68449,7 +68449,7 @@ glabel func_ovl2_80113104
   /* 08EA14 80113214 8E190084 */        lw $t9, 0x84($s0)
   /* 08EA18 80113218 0320F809 */      jalr $t9
   /* 08EA1C 8011321C 00000000 */       nop 
-  /* 08EA20 80113220 0C0026A1 */       jal omEjectGObjCommon
+  /* 08EA20 80113220 0C0026A1 */       jal omEjectGObj
   /* 08EA24 80113224 00002025 */        or $a0, $zero, $zero
   /* 08EA28 80113228 3C0F800A */       lui $t7, %hi(gBattleState)
   /* 08EA2C 8011322C 8DEF50E8 */        lw $t7, %lo(gBattleState)($t7)
@@ -68580,7 +68580,7 @@ glabel ifTimer_BattleTime_SetInterface
   /* 08EBF0 801133F0 24A53104 */     addiu $a1, $a1, %lo(func_ovl2_80113104)
   /* 08EBF4 801133F4 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08EBF8 801133F8 2406000A */     addiu $a2, $zero, 0xa
-  /* 08EBFC 801133FC 0C00265A */       jal omMakeGObjCommon
+  /* 08EBFC 801133FC 0C00265A */       jal omMakeGObjSPAfter
   /* 08EC00 80113400 3C078000 */       lui $a3, 0x8000
   /* 08EC04 80113404 8FA80018 */        lw $t0, 0x18($sp)
   /* 08EC08 80113408 AC480084 */        sw $t0, 0x84($v0)
@@ -68595,7 +68595,7 @@ glabel func_ovl2_8011341C
   /* 08EC24 80113424 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 08EC28 80113428 00002825 */        or $a1, $zero, $zero
   /* 08EC2C 8011342C 2406000B */     addiu $a2, $zero, 0xb
-  /* 08EC30 80113430 0C00265A */       jal omMakeGObjCommon
+  /* 08EC30 80113430 0C00265A */       jal omMakeGObjSPAfter
   /* 08EC34 80113434 3C078000 */       lui $a3, 0x8000
   /* 08EC38 80113438 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 08EC3C 8011343C 240EFFFF */     addiu $t6, $zero, -1
@@ -69348,7 +69348,7 @@ glabel func_ovl2_80113EB4
   /* 08F6C0 80113EC0 240403FB */     addiu $a0, $zero, 0x3fb
   /* 08F6C4 80113EC4 00002825 */        or $a1, $zero, $zero
   /* 08F6C8 80113EC8 2406000E */     addiu $a2, $zero, 0xe
-  /* 08F6CC 80113ECC 0C00265A */       jal omMakeGObjCommon
+  /* 08F6CC 80113ECC 0C00265A */       jal omMakeGObjSPAfter
   /* 08F6D0 80113ED0 3C078000 */       lui $a3, 0x8000
   /* 08F6D4 80113ED4 3C058011 */       lui $a1, %hi(func_ovl2_80113AA8)
   /* 08F6D8 80113ED8 240EFFFF */     addiu $t6, $zero, -1
@@ -69361,7 +69361,7 @@ glabel func_ovl2_80113EB4
   /* 08F6F4 80113EF4 240403FB */     addiu $a0, $zero, 0x3fb
   /* 08F6F8 80113EF8 00002825 */        or $a1, $zero, $zero
   /* 08F6FC 80113EFC 2406000E */     addiu $a2, $zero, 0xe
-  /* 08F700 80113F00 0C00265A */       jal omMakeGObjCommon
+  /* 08F700 80113F00 0C00265A */       jal omMakeGObjSPAfter
   /* 08F704 80113F04 3C078000 */       lui $a3, 0x8000
   /* 08F708 80113F08 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 08F70C 80113F0C 240FFFFF */     addiu $t7, $zero, -1
@@ -70170,7 +70170,7 @@ glabel func_ovl2_80114A48
   /* 090250 80114A50 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 090254 80114A54 00002825 */        or $a1, $zero, $zero
   /* 090258 80114A58 2406000B */     addiu $a2, $zero, 0xb
-  /* 09025C 80114A5C 0C00265A */       jal omMakeGObjCommon
+  /* 09025C 80114A5C 0C00265A */       jal omMakeGObjSPAfter
   /* 090260 80114A60 3C078000 */       lui $a3, 0x8000
   /* 090264 80114A64 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 090268 80114A68 240EFFFF */     addiu $t6, $zero, -1
@@ -70203,7 +70203,7 @@ glabel func_ovl2_80114AC4
   /* 0902CC 80114ACC 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 0902D0 80114AD0 00002825 */        or $a1, $zero, $zero
   /* 0902D4 80114AD4 2406000B */     addiu $a2, $zero, 0xb
-  /* 0902D8 80114AD8 0C00265A */       jal omMakeGObjCommon
+  /* 0902D8 80114AD8 0C00265A */       jal omMakeGObjSPAfter
   /* 0902DC 80114ADC 3C078000 */       lui $a3, 0x8000
   /* 0902E0 80114AE0 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 0902E4 80114AE4 240EFFFF */     addiu $t6, $zero, -1
@@ -71106,7 +71106,7 @@ glabel gmRumble_SetPlayerRumble
   /* 090EEC 801156EC 240403F9 */     addiu $a0, $zero, 0x3f9
   /* 090EF0 801156F0 00002825 */        or $a1, $zero, $zero
   /* 090EF4 801156F4 2406000D */     addiu $a2, $zero, 0xd
-  /* 090EF8 801156F8 0C00265A */       jal omMakeGObjCommon
+  /* 090EF8 801156F8 0C00265A */       jal omMakeGObjSPAfter
   /* 090EFC 801156FC 3C078000 */       lui $a3, 0x8000
   /* 090F00 80115700 3C058011 */       lui $a1, %hi(func_ovl2_80115298)
   /* 090F04 80115704 24A55298 */     addiu $a1, $a1, %lo(func_ovl2_80115298)
@@ -71620,7 +71620,7 @@ glabel ifScreenFlash_InitInterfaceVars
   /* 091618 80115E18 00002825 */        or $a1, $zero, $zero
   /* 09161C 80115E1C 11C00012 */      beqz $t6, .L80115E68
   /* 091620 80115E20 2406000B */     addiu $a2, $zero, 0xb
-  /* 091624 80115E24 0C00265A */       jal omMakeGObjCommon
+  /* 091624 80115E24 0C00265A */       jal omMakeGObjSPAfter
   /* 091628 80115E28 3C078000 */       lui $a3, 0x8000
   /* 09162C 80115E2C 3C058011 */       lui $a1, %hi(func_ovl2_80115C20)
   /* 091630 80115E30 240FFFFF */     addiu $t7, $zero, -1
@@ -71674,7 +71674,7 @@ glabel func_ovl2_80115E80
   /* 0916DC 80115EDC 24020001 */     addiu $v0, $zero, 1
   /* 0916E0 80115EE0 0C03F53E */       jal efManager_SetPrevAlloc
   /* 0916E4 80115EE4 AFA60018 */        sw $a2, 0x18($sp)
-  /* 0916E8 80115EE8 0C0026A1 */       jal omEjectGObjCommon
+  /* 0916E8 80115EE8 0C0026A1 */       jal omEjectGObj
   /* 0916EC 80115EEC 8FA40018 */        lw $a0, 0x18($sp)
   /* 0916F0 80115EF0 10000016 */         b .L80115F4C
   /* 0916F4 80115EF4 00001025 */        or $v0, $zero, $zero
@@ -71695,7 +71695,7 @@ glabel func_ovl2_80115E80
   /* 09172C 80115F2C 24020001 */     addiu $v0, $zero, 1
   /* 091730 80115F30 0C03F53E */       jal efManager_SetPrevAlloc
   /* 091734 80115F34 AFA60018 */        sw $a2, 0x18($sp)
-  /* 091738 80115F38 0C0026A1 */       jal omEjectGObjCommon
+  /* 091738 80115F38 0C0026A1 */       jal omEjectGObj
   /* 09173C 80115F3C 8FA40018 */        lw $a0, 0x18($sp)
   /* 091740 80115F40 10000002 */         b .L80115F4C
   /* 091744 80115F44 00001025 */        or $v0, $zero, $zero
@@ -72140,7 +72140,7 @@ glabel func_ovl2_8011652C
   /* 091D7C 8011657C 24A5D714 */     addiu $a1, $a1, %lo(efManagerProcEject)
   /* 091D80 80116580 240403F3 */     addiu $a0, $zero, 0x3f3
   /* 091D84 80116584 24060006 */     addiu $a2, $zero, 6
-  /* 091D88 80116588 0C00265A */       jal omMakeGObjCommon
+  /* 091D88 80116588 0C00265A */       jal omMakeGObjSPAfter
   /* 091D8C 8011658C 3C078000 */       lui $a3, 0x8000
   /* 091D90 80116590 8FA40060 */        lw $a0, 0x60($sp)
   /* 091D94 80116594 14400007 */      bnez $v0, .L801165B4
@@ -72540,7 +72540,7 @@ glabel func_ovl2_80116AD0
   /* 092314 80116B14 00002825 */        or $a1, $zero, $zero
   /* 092318 80116B18 13200029 */      beqz $t9, .L80116BC0
   /* 09231C 80116B1C 24060007 */     addiu $a2, $zero, 7
-  /* 092320 80116B20 0C00265A */       jal omMakeGObjCommon
+  /* 092320 80116B20 0C00265A */       jal omMakeGObjSPAfter
   /* 092324 80116B24 3C078000 */       lui $a3, 0x8000
   /* 092328 80116B28 10400025 */      beqz $v0, .L80116BC0
   /* 09232C 80116B2C 00402025 */        or $a0, $v0, $zero

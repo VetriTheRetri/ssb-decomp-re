@@ -88,7 +88,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     {
         return NULL;
     }
-    weapon_gobj = omMakeGObjCommon(GObj_Kind_Weapon, NULL, GObj_LinkID_Weapon, 0x80000000);
+    weapon_gobj = omMakeGObjSPAfter(GObj_Kind_Weapon, NULL, GObj_LinkID_Weapon, 0x80000000);
 
     if (weapon_gobj == NULL)
     {

@@ -121,7 +121,7 @@ void ftCommon_DownBounce_UpdateEffects(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_ImpactSW, ftParts_Joint_TopN, NULL, NULL, fp->lr, FALSE, FALSE);
+    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_ImpactWave, ftParts_Joint_TopN, NULL, NULL, fp->lr, FALSE, FALSE);
     func_800269C0(ftCommon_DownBounce_SFX[fp->ft_kind]);
     ftMain_MakeRumble(fp, 4, 0);
 }

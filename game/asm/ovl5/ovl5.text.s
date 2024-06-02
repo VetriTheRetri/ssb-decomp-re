@@ -122,7 +122,7 @@ glabel func_ovl5_8018D1A0
   /* 10B500 8018D250 24A5D160 */     addiu $a1, $a1, %lo(func_ovl5_8018D160)
   /* 10B504 8018D254 02003825 */        or $a3, $s0, $zero
   /* 10B508 8018D258 240403F7 */     addiu $a0, $zero, 0x3f7
-  /* 10B50C 8018D25C 0C00265A */       jal omMakeGObjCommon
+  /* 10B50C 8018D25C 0C00265A */       jal omMakeGObjSPAfter
   /* 10B510 8018D260 2406000D */     addiu $a2, $zero, 0xd
   /* 10B514 8018D264 241900FF */     addiu $t9, $zero, 0xff
   /* 10B518 8018D268 AFB90010 */        sw $t9, 0x10($sp)

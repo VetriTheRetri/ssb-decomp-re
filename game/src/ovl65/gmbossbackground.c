@@ -252,7 +252,7 @@ void func_ovl65_80191AEC(GObj *gobj)
 
     if (gobj->user_data.s < 0)
     {
-        omEjectGObjCommon(gobj);
+        omEjectGObj(gobj);
     }
     else
     {
@@ -493,7 +493,7 @@ GObj* gm1PGameBossMakeBackgroundEffect(s32 effect_id, s32 anim_id, s32 vec_id)
     sp3C = sGM1PGameBossMain.bossbackground->unk_gm1pbossbackground_0x10;
     sp40 = 0;
 
-    effect_gobj = omMakeGObjCommon(GObj_Kind_BossWallpaper, NULL, 0xD, 0x80000000);
+    effect_gobj = omMakeGObjSPAfter(GObj_Kind_BossWallpaper, NULL, 0xD, 0x80000000);
 
     if (effect_gobj == NULL)
     {
@@ -621,7 +621,7 @@ void gm1PGameBossInitBackgroundMain(void)
 {
     GObj *gobj;
 
-    sGM1PGameBossBackgroundGObj = gobj = omMakeGObjCommon(GObj_Kind_Wallpaper, NULL, 0xD, GOBJ_LINKORDER_DEFAULT);
+    sGM1PGameBossBackgroundGObj = gobj = omMakeGObjSPAfter(GObj_Kind_Wallpaper, NULL, 0xD, GOBJ_LINKORDER_DEFAULT);
 
     if (gobj != NULL)
     {

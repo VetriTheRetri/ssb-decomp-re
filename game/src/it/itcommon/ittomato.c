@@ -17,7 +17,7 @@ extern intptr_t lITTomatoItemAttributes;    // 0x000000B8
 itCreateDesc dITTomatoItemDesc =
 {
     It_Kind_Tomato,                         // Item Kind
-    &gITemFileData,                         // Pointer to item file data?
+    &gITFileData,                         // Pointer to item file data?
     &lITTomatoItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct

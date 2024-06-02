@@ -4908,7 +4908,7 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
 }
 
 // 0x80134E98
-void func_ovl3_80134E98(ftStruct *fp)
+void ftComputerFollowObjectiveWalk(ftStruct *fp)
 {
     s32 unused;
     Vec3f target_pos;
@@ -5903,14 +5903,17 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             if (lbRandom_GetFloat() < 0.4F)
             {
                 ftComputerSetCommandWaitShort(this_fp, 0x28);
+
                 return 0;
             }
             else if (lbRandom_GetFloat() < 0.5F)
             {
                 ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_ButtonZ1);
+
                 return 0;
             }
             else ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickTiltAutoX);
+
             return 0;
         }
     }
@@ -5929,13 +5932,16 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
                     if (ft_com->target_pos.x < this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x)
                     {
                         ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_EscapeL);
+
                         return 0;
                     }
                     ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_EscapeR);
+
                     return 0;
                 }
             }
             ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickNButtonBZReleaseAPress);
+
             return 0;
         }
     }
@@ -5947,6 +5953,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     )
     {
         ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+
         return 0;
     }
     if (this_fp->status_info.status_id == ftStatus_Common_TaruCann)
@@ -5962,6 +5969,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             if (fvar < 0.05F)
             {
                 ftComputerSetCommandImmediate(this_fp, ftComputer_Input_StickNButtonBZReleaseAPress);
+
                 return 0;
             }
         }
@@ -5974,6 +5982,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             return 0;
         }
         else ftComputerSetCommandImmediate(this_fp, ftComputer_Input_StickSmashR);
+
         return 0;
     }
 
@@ -5991,6 +6000,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         if (((FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 15) < ft_com->wiggle_wait)
         {
             ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_Wiggle);
+
             return 0;
         }
     }
@@ -6012,6 +6022,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         else if ((this_fp->status_info.status_id == ftStatus_Kirby_SpecialNWait) || (this_fp->status_info.status_id == ftStatus_Kirby_SpecialAirNWait))
         {
             ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickSmashLwButtonB);
+
             return 0;
         }
     }
@@ -6034,6 +6045,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             else ftComputerCheckFindTarget(this_fp);
 
             ftComputerSetCommandImmediate(this_fp, ftComputer_Input_NessSpecialHiAim);
+
             return 0;
         }
     }
@@ -6043,7 +6055,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         (
             (
                 SQUARE(this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x - ft_com->stand_pos.x) + 
-                SQUARE(this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y - ft_com->stand_pos.y) > 10000.0F
+                SQUARE(this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y - ft_com->stand_pos.y) > SQUARE(100.0F)
             ) 
             ||
             (ft_com->behavior == ftComputer_Behavior_Stand)
@@ -6072,6 +6084,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     if (ft_com->is_stop_stand)
     {
         ftComputerSetCommandImmediate(this_fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+
         return 0;
     }
     if (this_fp->percent_damage != 0)
@@ -6113,6 +6126,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             ft_com->is_attempt_specialhi_recovery = FALSE;
         }
         ft_com->objective = ftComputer_Objective_Recover;
+
         return 1;
     }
     if (gBattleState->gr_kind == Gr_Kind_Zebes)
@@ -6126,6 +6140,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         )
         {
             ft_com->objective = ftComputer_Objective_Recover;
+
             return 1;
         }
     }
@@ -6149,6 +6164,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
                 {
                     ft_com->objective = ftComputer_Objective_CounterAttack;
                     ft_com->is_counterattack = TRUE;
+
                     return 1;
                 }
             }
@@ -6197,7 +6213,9 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             case ftStatus_Common_OttottoWait:
             case ftStatus_Common_Ottotto:
                 ft_com->appeal_attempt_frames = 0;
+
                 ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickNButtonL);
+
                 return 0;
             }
         }
@@ -6373,7 +6391,7 @@ s32 ftComputerProcWalk(GObj *fighter_gobj)
 
     dist = SQUARE(ft_com->target_pos.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joint[ftParts_Joint_TopN]->translate.vec.f.y);
 
-    if (dist < 10000.0F)
+    if (dist < SQUARE(100.0F))
     {
         ft_com->objective = ftComputer_Objective_Stand;
     }
@@ -6430,7 +6448,7 @@ s32 ftComputerProcJump(GObj *fighter_gobj)
 
     dist = SQUARE(ft_com->target_pos.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joint[ftParts_Joint_TopN]->translate.vec.f.y);
 
-    if (dist < 10000.0F)
+    if (dist < SQUARE(100.0F))
     {
         ft_com->objective = ftComputer_Objective_Stand;
     }
@@ -6459,7 +6477,7 @@ s32 func_ovl3_80137E70(GObj *fighter_gobj)
 
     dist = SQUARE(ft_com->target_pos.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joint[ftParts_Joint_TopN]->translate.vec.f.y);
 
-    if (dist < 10000.0F)
+    if (dist < SQUARE(100.0F))
     {
         ft_com->objective = ftComputer_Objective_Stand;
     }
@@ -6489,7 +6507,7 @@ void ftComputerFollowObjectiveRecover(ftStruct *fp)
                 break;
             }
         }
-        func_ovl3_80134E98(fp);
+        ftComputerFollowObjectiveWalk(fp);
     }
 }
 
@@ -6538,7 +6556,7 @@ void ftComputerFollowObjectiveCounterAttack(ftStruct *fp)
             ftComputerSetCommandImmediate(fp, ftComputer_Input_StickNButtonZHold);
         }
     }
-    else func_ovl3_80134E98(fp);
+    else ftComputerFollowObjectiveWalk(fp);
 }
 
 // 0x80138104 - Try to navigate to target item
@@ -6552,7 +6570,7 @@ void ftComputerFollowObjectiveTrackItem(ftStruct *fp)
             return;
         }
     }
-    func_ovl3_80134E98(fp);
+    ftComputerFollowObjectiveWalk(fp);
 }
 
 // 0x8013815C - Try to use shootable, throwable and ground (?) items
@@ -6589,11 +6607,11 @@ void ftComputerFollowObjectiveUseItem(ftStruct *fp)
                     )
                 )
                 {
-                    func_ovl3_80134E98(fp);
+                    ftComputerFollowObjectiveWalk(fp);
                 }
                 else ftComputerSetCommandWaitShort(fp, ftComputer_Input_StickTiltAutoXButtonBZReleaseAPress);
             }
-            else func_ovl3_80134E98(fp);
+            else ftComputerFollowObjectiveWalk(fp);
 
             ft_com->item_throw_wait = 0;
             return;
@@ -6620,7 +6638,7 @@ void ftComputerFollowObjectiveEvade(ftStruct *fp)
 {
     if (ftComputerCheckSetEvadeTarget(fp) != FALSE)
     {
-        func_ovl3_80134E98(fp);
+        ftComputerFollowObjectiveWalk(fp);
     }
 }
 
@@ -6730,7 +6748,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
         {
             if (ftComputerCheckFindTarget(this_fp) != FALSE)
             {
-                func_ovl3_80134E98(this_fp);
+                ftComputerFollowObjectiveWalk(this_fp);
             }
         }
         else
@@ -6758,7 +6776,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
 
             ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-            func_ovl3_80134E98(this_fp);
+            ftComputerFollowObjectiveWalk(this_fp);
 
             if (ft_com->walk_stop_wait > 150)
             {
@@ -6863,7 +6881,7 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 is_delay)
 
             if (ft_com->unk_ftcom_0x35 >= 5)
             {
-                func_ovl3_80134E98(this_fp);
+                ftComputerFollowObjectiveWalk(this_fp);
                 return TRUE;
             }
             pos = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f;
@@ -7084,7 +7102,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
                 }
                 if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[ftParts_Joint_TopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
-                    func_ovl3_80134E98(fp);
+                    ftComputerFollowObjectiveWalk(fp);
 
                     ft_com->walk_stop_wait = 0;
 
@@ -7099,7 +7117,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
                     {
                         ft_com->unk_ftcom_0x20 = (lbRandom_GetFloat() * 60.0F) + 30.0F;
 
-                        func_ovl3_80134E98(fp);
+                        ftComputerFollowObjectiveWalk(fp);
 
                         ft_com->walk_stop_wait = 0;
 
@@ -7119,7 +7137,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
                 }
                 if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == It_Kind_Hammer)))
                 {
-                    func_ovl3_80134E98(fp);
+                    ftComputerFollowObjectiveWalk(fp);
 
                     ft_com->walk_stop_wait = 0;
 
@@ -7127,7 +7145,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
                 }
                 if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[ftParts_Joint_TopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
-                    func_ovl3_80134E98(fp);
+                    ftComputerFollowObjectiveWalk(fp);
 
                     ft_com->walk_stop_wait = 0;
 
@@ -7142,7 +7160,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
                     {
                         ft_com->unk_ftcom_0x20 = (lbRandom_GetFloat(fp) * 60.0F) + 30.0F;
 
-                        func_ovl3_80134E98(fp);
+                        ftComputerFollowObjectiveWalk(fp);
 
                         ft_com->walk_stop_wait = 0;
 
@@ -7213,7 +7231,7 @@ void func_ovl3_801397F4(ftStruct *fp)
                         }
                     }
                 }
-                func_ovl3_80134E98(fp);
+                ftComputerFollowObjectiveWalk(fp);
                 ft_com->walk_stop_wait = 0;
             }
             else
@@ -7226,7 +7244,7 @@ void func_ovl3_801397F4(ftStruct *fp)
                 }
                 else if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == It_Kind_Hammer)))
                 {
-                    func_ovl3_80134E98(fp);
+                    ftComputerFollowObjectiveWalk(fp);
 
                     ft_com->walk_stop_wait = 0;
                 }
@@ -7234,7 +7252,7 @@ void func_ovl3_801397F4(ftStruct *fp)
                 {
                     ft_com->unk_ftcom_0x35 = 0;
 
-                    func_ovl3_80134E98(fp);
+                    ftComputerFollowObjectiveWalk(fp);
 
                     ft_com->walk_stop_wait = 0;
                 }
@@ -7291,14 +7309,14 @@ void ftComputerFollowObjectiveAlly(ftStruct *fp)
             }
             if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == It_Kind_Hammer)))
             {
-                func_ovl3_80134E98(fp);
+                ftComputerFollowObjectiveWalk(fp);
 
                 ft_com->walk_stop_wait = 0;
                 return;
             }
             if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[ftParts_Joint_TopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
             {
-                func_ovl3_80134E98(fp);
+                ftComputerFollowObjectiveWalk(fp);
 
                 ft_com->walk_stop_wait = 0;
 
@@ -7313,7 +7331,7 @@ void ftComputerFollowObjectiveAlly(ftStruct *fp)
                 {
                     ft_com->unk_ftcom_0x20 = (lbRandom_GetFloat() * 60.0F) + 30.0F;
 
-                    func_ovl3_80134E98(fp);
+                    ftComputerFollowObjectiveWalk(fp);
 
                     ft_com->walk_stop_wait = 0;
                     return;
@@ -7384,7 +7402,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
                 }
                 if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[ftParts_Joint_TopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
-                    func_ovl3_80134E98(fp);
+                    ftComputerFollowObjectiveWalk(fp);
 
                     ft_com->walk_stop_wait = 0;
 
@@ -7399,7 +7417,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
                     {
                         ft_com->unk_ftcom_0x20 = (lbRandom_GetFloat() * 60.0F) + 15.0F;
 
-                        func_ovl3_80134E98(fp);
+                        ftComputerFollowObjectiveWalk(fp);
 
                         ft_com->walk_stop_wait = 0;
                         return;
@@ -7418,14 +7436,14 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
                 }
                 if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == It_Kind_Hammer)))
                 {
-                    func_ovl3_80134E98(fp);
+                    ftComputerFollowObjectiveWalk(fp);
 
                     ft_com->walk_stop_wait = 0;
                     return;
                 }
                 if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[ftParts_Joint_TopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
-                    func_ovl3_80134E98(fp);
+                    ftComputerFollowObjectiveWalk(fp);
 
                     ft_com->walk_stop_wait = 0;
 
@@ -7440,7 +7458,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
                     {
                         ft_com->unk_ftcom_0x20 = (lbRandom_GetFloat() * 60.0F) + 30.0F;
 
-                        func_ovl3_80134E98(fp);
+                        ftComputerFollowObjectiveWalk(fp);
 
                         ft_com->walk_stop_wait = 0;
                         return;
@@ -7481,13 +7499,13 @@ void ftComputerFollowObjectiveRush(ftStruct *fp)
             }
             else
             {
-                func_ovl3_80134E98(fp);
+                ftComputerFollowObjectiveWalk(fp);
                 ft_com->walk_stop_wait = 0;
             }
         }
         else if (TRUE)
         {
-            func_ovl3_80134E98(fp);
+            ftComputerFollowObjectiveWalk(fp);
             ft_com->walk_stop_wait = 0;
         }
     }
@@ -7509,7 +7527,7 @@ void ftComputerProcessObjective(ftStruct *fp)
             break;
 
         case ftComputer_Objective_Walk:
-            func_ovl3_80134E98(fp);
+            ftComputerFollowObjectiveWalk(fp);
             break;
 
         case ftComputer_Objective_Attack:

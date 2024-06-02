@@ -25,7 +25,7 @@ extern intptr_t lITIwarkDisplayList;        // 0x0000A640
 itCreateDesc dITIwarkItemDesc =
 {
     It_Kind_Iwark,                          // Item Kind
-    &gITemFileData,                         // Pointer to item file data?
+    &gITFileData,                         // Pointer to item file data?
     &lITIwarkItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -79,7 +79,7 @@ wpCreateDesc dITIwarkWeaponRockWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_IwarkRock,                      // Weapon Kind
-    &gITemFileData,                         // Pointer to weapon's loaded files?
+    &gITFileData,                         // Pointer to weapon's loaded files?
     &lITIwarkWeaponRockWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

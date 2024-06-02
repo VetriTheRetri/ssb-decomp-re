@@ -21,7 +21,7 @@ extern intptr_t lITTosakintoMatAnimJoint;   // 0x0000B90C
 itCreateDesc dITTosakintoItemDesc =
 {
     It_Kind_Tosakinto,                      // Item Kind
-    &gITemFileData,                         // Pointer to item file data?
+    &gITFileData,                         // Pointer to item file data?
     &lITTosakintoItemAttributes,            // Offset of item attributes in file?
 
     // DObj transformation struct

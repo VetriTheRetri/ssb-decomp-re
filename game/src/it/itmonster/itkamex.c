@@ -24,7 +24,7 @@ extern intptr_t lITKamexDisplayList;        // 0x0000ED60
 itCreateDesc dITKamexItemDesc = 
 {
     It_Kind_Kamex,                          // Item Kind
-    &gITemFileData,                         // Pointer to item file data?
+    &gITFileData,                         // Pointer to item file data?
     &lITKamexItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -90,7 +90,7 @@ wpCreateDesc dITKamexWeaponHydroWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_KamexHydro,                     // Weapon Kind
-    &gITemFileData,                         // Pointer to weapon's loaded files?
+    &gITFileData,                         // Pointer to weapon's loaded files?
     &lITKamexWeaponHydroWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

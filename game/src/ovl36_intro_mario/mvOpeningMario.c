@@ -94,7 +94,7 @@ void mvOpeningMarioDrawName()
     f32 x_positions[5] = dMvOpeningMarioNameCharXPositions;
     s32 i;
 
-    gMvOpeningMarioNameGObj = name_gobj = omMakeGObjCommon(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
+    gMvOpeningMarioNameGObj = name_gobj = omMakeGObjSPAfter(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
 
     for (i = 0; offsets[i] != 0; i++)
@@ -239,7 +239,7 @@ void mvOpeningMarioRenderPosedFighterBackground(GObj *gobj)
 // 0x8018D944
 void mvOpeningMarioCreatePosedFighterBackground()
 {
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x13, 0x80000000), mvOpeningMarioRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningMarioRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
 // 0x8018D990
@@ -340,7 +340,7 @@ void mvOpeningMarioMainProc(GObj* arg0)
 
     if (gMvOpeningMarioFramesElapsed == 15)
     {
-        omEjectGObjCommon(gMvOpeningMarioNameGObj);
+        omEjectGObj(gMvOpeningMarioNameGObj);
         mvOpeningMarioInitFighterStagePanel();
         mvOpeningMarioCreatePosedFighterBackground();
         mvOpeningMarioCreatePosedFighter();
@@ -375,7 +375,7 @@ void mvOpeningMarioInit()
     gBattleState->player_block[0].player_kind = Pl_Kind_Key;
 
     mvOpeningMarioLoadFiles();
-    omMakeGObjCommon(0x3F7, mvOpeningMarioMainProc, 0xD, 0x80000000);
+    omMakeGObjSPAfter(0x3F7, mvOpeningMarioMainProc, 0xD, 0x80000000);
     func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
     mvOpeningMarioInitFramesElapsed();
     func_ovl2_80115890();

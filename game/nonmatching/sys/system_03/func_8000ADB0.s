@@ -42,7 +42,7 @@ glabel func_8000ADB0
   /* 00BA18 8000AE18 01E00008 */        jr $t7
   /* 00BA1C 8000AE1C 00000000 */       nop 
   glabel L8000AE20 # 4
-  /* 00BA20 8000AE20 0C0026A1 */       jal omEjectGObjCommon
+  /* 00BA20 8000AE20 0C0026A1 */       jal omEjectGObj
   /* 00BA24 8000AE24 00002025 */        or $a0, $zero, $zero
   /* 00BA28 8000AE28 10000028 */         b .L8000AECC
   /* 00BA2C 8000AE2C 24020001 */     addiu $v0, $zero, 1

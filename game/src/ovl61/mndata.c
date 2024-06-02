@@ -257,7 +257,7 @@ void mnDataMakeCharactersSObj(void)
         posy = 57;
     }
 
-    sMNDataCharactersGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMNDataCharactersGObj = gobj = omMakeGObjSPAfter(0, NULL, 4, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
 
@@ -297,7 +297,7 @@ void mnDataMakeVSRecordSObj(void)
         posy = 126;
     }
 
-    sMNDataVSRecordGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMNDataVSRecordGObj = gobj = omMakeGObjSPAfter(0, NULL, 4, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
 
@@ -324,7 +324,7 @@ void mnDataMakeSoundTestSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNDataSoundTestGObj = gobj = omMakeGObjCommon(0, NULL, 4, 0x80000000);
+    sMNDataSoundTestGObj = gobj = omMakeGObjSPAfter(0, NULL, 4, 0x80000000);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, 0x80000000, -1);
 
@@ -367,7 +367,7 @@ void mnDataMakeMenuGObj(void)
     intptr_t sp34[ARRAY_COUNT(D_ovl61_80132F80)] = D_ovl61_80132F80;
     Vec2f sp1C[ARRAY_COUNT(D_ovl61_80132F8C)] = D_ovl61_80132F8C;
 
-    sMNDataMenuGObj = omMakeGObjCommon(0, NULL, 5, 0x80000000);
+    sMNDataMenuGObj = omMakeGObjSPAfter(0, NULL, 5, 0x80000000);
 }
 
 // 0x80132164
@@ -393,7 +393,7 @@ void mnDataMakeHeaderSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = omMakeGObjCommon(0, NULL, 3, 0x80000000);
+    gobj = omMakeGObjSPAfter(0, NULL, 3, 0x80000000);
 
     omAddGObjRenderProc(gobj, mnDataHeaderProcRender, 1, 0x80000000, -1);
 
@@ -428,7 +428,7 @@ void mnDataMakeDecalSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = omMakeGObjCommon(0, NULL, 2, 0x80000000);
+    gobj = omMakeGObjSPAfter(0, NULL, 2, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNDataFiles[0], &lMNCommonCircleSprite));
@@ -647,7 +647,7 @@ void mnDataMainProcUpdate(GObj *gobj)
             {
                 sMNDataOptionChangeWait += 8;
             }
-            omEjectGObjCommon(sMNDataMenuGObj);
+            omEjectGObj(sMNDataMenuGObj);
             mnDataMakeMenuGObj();
         }
         if
@@ -674,7 +674,7 @@ void mnDataMainProcUpdate(GObj *gobj)
             {
                 sMNDataOptionChangeWait += 8;
             }
-            omEjectGObjCommon(sMNDataMenuGObj);
+            omEjectGObj(sMNDataMenuGObj);
             mnDataMakeMenuGObj();
         }
     }
@@ -696,7 +696,7 @@ void mnDataInitMenuAll(void)
 
     rdManagerInitSetup(&rldm_setup);
     rdManagerLoadFiles(dMNDataFileIDs, ARRAY_COUNT(dMNDataFileIDs), sMNDataFiles, gsMemoryAlloc(rdManagerGetAllocSize(dMNDataFileIDs, ARRAY_COUNT(dMNDataFileIDs)), 0x10));
-    omMakeGObjCommon(0, mnDataMainProcUpdate, 0, 0x80000000);
+    omMakeGObjSPAfter(0, mnDataMainProcUpdate, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
 
     mnDataInitVars();

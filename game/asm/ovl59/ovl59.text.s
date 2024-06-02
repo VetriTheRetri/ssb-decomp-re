@@ -318,13 +318,13 @@ glabel func_ovl59_80131F34
   /* 17F664 80131F64 00000000 */       nop 
   /* 17F668 80131F68 4502000C */     bc1fl .L80131F9C
   /* 17F66C 80131F6C 8C6E0074 */        lw $t6, 0x74($v1)
-  /* 17F670 80131F70 0C0026A1 */       jal omEjectGObjCommon
+  /* 17F670 80131F70 0C0026A1 */       jal omEjectGObj
   /* 17F674 80131F74 00002025 */        or $a0, $zero, $zero
   /* 17F678 80131F78 3C048014 */       lui $a0, %hi(gCreditsStaffRoleTextGObj)
-  /* 17F67C 80131F7C 0C0026A1 */       jal omEjectGObjCommon
+  /* 17F67C 80131F7C 0C0026A1 */       jal omEjectGObj
   /* 17F680 80131F80 8C84A8F8 */        lw $a0, %lo(gCreditsStaffRoleTextGObj)($a0)
   /* 17F684 80131F84 3C048014 */       lui $a0, %hi(gCreditsCompanyTextGObj)
-  /* 17F688 80131F88 0C0026A1 */       jal omEjectGObjCommon
+  /* 17F688 80131F88 0C0026A1 */       jal omEjectGObj
   /* 17F68C 80131F8C 8C84A8FC */        lw $a0, %lo(gCreditsCompanyTextGObj)($a0)
   /* 17F690 80131F90 10000023 */         b .L80132020
   /* 17F694 80131F94 8FBF0014 */        lw $ra, 0x14($sp)
@@ -382,7 +382,7 @@ glabel func_ovl59_8013202C
   /* 17F750 80132050 00002825 */        or $a1, $zero, $zero
   /* 17F754 80132054 24060002 */     addiu $a2, $zero, 2
   /* 17F758 80132058 3C078000 */       lui $a3, 0x8000
-  /* 17F75C 8013205C 0C00265A */       jal omMakeGObjCommon
+  /* 17F75C 8013205C 0C00265A */       jal omMakeGObjSPAfter
   /* 17F760 80132060 AFA20028 */        sw $v0, 0x28($sp)
   /* 17F764 80132064 3C058001 */       lui $a1, %hi(odRenderDObjTreeForGObj)
   /* 17F768 80132068 240FFFFF */     addiu $t7, $zero, -1
@@ -853,7 +853,7 @@ glabel gmCreditsHighlightProcUpdate
   /* 17FE68 80132768 26520001 */     addiu $s2, $s2, 1
   /* 17FE6C 8013276C 5654FFF5 */      bnel $s2, $s4, .L80132744
   /* 17FE70 80132770 AE330000 */        sw $s3, ($s1) # gCreditsHighlightSize + 0
-  /* 17FE74 80132774 0C0026A1 */       jal omEjectGObjCommon
+  /* 17FE74 80132774 0C0026A1 */       jal omEjectGObj
   /* 17FE78 80132778 00002025 */        or $a0, $zero, $zero
   /* 17FE7C 8013277C 0C002C7A */       jal gsStopCurrentProcess
   /* 17FE80 80132780 24040001 */     addiu $a0, $zero, 1
@@ -880,7 +880,7 @@ glabel gmCreditsMakeHighlightGObj
   /* 17FECC 801327CC AFAF0024 */        sw $t7, 0x24($sp)
   /* 17FED0 801327D0 00002825 */        or $a1, $zero, $zero
   /* 17FED4 801327D4 24060009 */     addiu $a2, $zero, 9
-  /* 17FED8 801327D8 0C00265A */       jal omMakeGObjCommon
+  /* 17FED8 801327D8 0C00265A */       jal omMakeGObjSPAfter
   /* 17FEDC 801327DC 3C078000 */       lui $a3, 0x8000
   /* 17FEE0 801327E0 3C058013 */       lui $a1, %hi(gmCreditsHighlightProcRender)
   /* 17FEE4 801327E4 2418FFFF */     addiu $t8, $zero, -1
@@ -1347,13 +1347,13 @@ glabel gmCreditsMakeStaffRoleTextGObj
   /* 180580 80132E80 AFBF001C */        sw $ra, 0x1c($sp)
   /* 180584 80132E84 10A00003 */      beqz $a1, .L80132E94
   /* 180588 80132E88 AFA40028 */        sw $a0, 0x28($sp)
-  /* 18058C 80132E8C 0C0026A1 */       jal omEjectGObjCommon
+  /* 18058C 80132E8C 0C0026A1 */       jal omEjectGObj
   /* 180590 80132E90 00A02025 */        or $a0, $a1, $zero
   .L80132E94:
   /* 180594 80132E94 24040006 */     addiu $a0, $zero, 6
   /* 180598 80132E98 00002825 */        or $a1, $zero, $zero
   /* 18059C 80132E9C 2406000A */     addiu $a2, $zero, 0xa
-  /* 1805A0 80132EA0 0C00265A */       jal omMakeGObjCommon
+  /* 1805A0 80132EA0 0C00265A */       jal omMakeGObjSPAfter
   /* 1805A4 80132EA4 3C078000 */       lui $a3, 0x8000
   /* 1805A8 80132EA8 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 1805AC 80132EAC 240EFFFF */     addiu $t6, $zero, -1
@@ -1561,13 +1561,13 @@ glabel gmCreditsMakeCompanyTextGObj
   /* 180890 80133190 AFBF001C */        sw $ra, 0x1c($sp)
   /* 180894 80133194 10A00003 */      beqz $a1, .L801331A4
   /* 180898 80133198 AFA40028 */        sw $a0, 0x28($sp)
-  /* 18089C 8013319C 0C0026A1 */       jal omEjectGObjCommon
+  /* 18089C 8013319C 0C0026A1 */       jal omEjectGObj
   /* 1808A0 801331A0 00A02025 */        or $a0, $a1, $zero
   .L801331A4:
   /* 1808A4 801331A4 24040007 */     addiu $a0, $zero, 7
   /* 1808A8 801331A8 00002825 */        or $a1, $zero, $zero
   /* 1808AC 801331AC 2406000B */     addiu $a2, $zero, 0xb
-  /* 1808B0 801331B0 0C00265A */       jal omMakeGObjCommon
+  /* 1808B0 801331B0 0C00265A */       jal omMakeGObjSPAfter
   /* 1808B4 801331B4 3C078000 */       lui $a3, 0x8000
   /* 1808B8 801331B8 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 1808BC 801331BC 240EFFFF */     addiu $t6, $zero, -1
@@ -2012,7 +2012,7 @@ glabel gmCreditsJobAndNameProcUpdate
   .L80133804:
   /* 180F04 80133804 0C04CDA1 */       jal gmCreditsNameSetPrevAlloc
   /* 180F08 80133808 02002025 */        or $a0, $s0, $zero
-  /* 180F0C 8013380C 0C0026A1 */       jal omEjectGObjCommon
+  /* 180F0C 8013380C 0C0026A1 */       jal omEjectGObj
   /* 180F10 80133810 00002025 */        or $a0, $zero, $zero
   /* 180F14 80133814 0C002C7A */       jal gsStopCurrentProcess
   /* 180F18 80133818 24040001 */     addiu $a0, $zero, 1
@@ -2462,7 +2462,7 @@ glabel gmCreditsMakeJobGObj
   /* 181580 80133E80 00002825 */        or $a1, $zero, $zero
   /* 181584 80133E84 24060004 */     addiu $a2, $zero, 4
   /* 181588 80133E88 3C078000 */       lui $a3, 0x8000
-  /* 18158C 80133E8C 0C00265A */       jal omMakeGObjCommon
+  /* 18158C 80133E8C 0C00265A */       jal omMakeGObjSPAfter
   /* 181590 80133E90 E7A4002C */      swc1 $f4, 0x2c($sp)
   /* 181594 80133E94 3C058013 */       lui $a1, %hi(gmCreditsJobProcRender)
   /* 181598 80133E98 240EFFFF */     addiu $t6, $zero, -1
@@ -2542,7 +2542,7 @@ glabel gmCreditsMakeNameGObjAndDObjs
   /* 1816B4 80133FB4 02203825 */        or $a3, $s1, $zero
   /* 1816B8 80133FB8 24040001 */     addiu $a0, $zero, 1
   /* 1816BC 80133FBC 00002825 */        or $a1, $zero, $zero
-  /* 1816C0 80133FC0 0C00265A */       jal omMakeGObjCommon
+  /* 1816C0 80133FC0 0C00265A */       jal omMakeGObjSPAfter
   /* 1816C4 80133FC4 24060003 */     addiu $a2, $zero, 3
   /* 1816C8 80133FC8 3C058013 */       lui $a1, %hi(gmCreditsNameProcRender)
   /* 1816CC 80133FCC 240EFFFF */     addiu $t6, $zero, -1
@@ -2986,7 +2986,7 @@ glabel gmCreditsMakeCrosshairGObj
   /* 181D04 80134604 24040003 */     addiu $a0, $zero, 3
   /* 181D08 80134608 00002825 */        or $a1, $zero, $zero
   /* 181D0C 8013460C 24060006 */     addiu $a2, $zero, 6
-  /* 181D10 80134610 0C00265A */       jal omMakeGObjCommon
+  /* 181D10 80134610 0C00265A */       jal omMakeGObjSPAfter
   /* 181D14 80134614 3C078000 */       lui $a3, 0x8000
   /* 181D18 80134618 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 181D1C 8013461C 240EFFFF */     addiu $t6, $zero, -1
@@ -3034,7 +3034,7 @@ glabel gmCreditsMakeTextBoxBracketSObjs
   /* 181DBC 801346BC 24040003 */     addiu $a0, $zero, 3
   /* 181DC0 801346C0 00002825 */        or $a1, $zero, $zero
   /* 181DC4 801346C4 24060008 */     addiu $a2, $zero, 8
-  /* 181DC8 801346C8 0C00265A */       jal omMakeGObjCommon
+  /* 181DC8 801346C8 0C00265A */       jal omMakeGObjSPAfter
   /* 181DCC 801346CC 3C078000 */       lui $a3, 0x8000
   /* 181DD0 801346D0 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 181DD4 801346D4 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -3057,7 +3057,7 @@ glabel gmCreditsMakeTextBoxBracketSObjs
   /* 181E18 80134718 00002825 */        or $a1, $zero, $zero
   /* 181E1C 8013471C 24060008 */     addiu $a2, $zero, 8
   /* 181E20 80134720 3C078000 */       lui $a3, 0x8000
-  /* 181E24 80134724 0C00265A */       jal omMakeGObjCommon
+  /* 181E24 80134724 0C00265A */       jal omMakeGObjSPAfter
   /* 181E28 80134728 AFA20028 */        sw $v0, 0x28($sp)
   /* 181E2C 8013472C 2419FFFF */     addiu $t9, $zero, -1
   /* 181E30 80134730 AFA2002C */        sw $v0, 0x2c($sp)
@@ -3116,7 +3116,7 @@ glabel gmCreditsMakeTextBoxGObj
   /* 181EFC 801347FC 24040004 */     addiu $a0, $zero, 4
   /* 181F00 80134800 00002825 */        or $a1, $zero, $zero
   /* 181F04 80134804 24060007 */     addiu $a2, $zero, 7
-  /* 181F08 80134808 0C00265A */       jal omMakeGObjCommon
+  /* 181F08 80134808 0C00265A */       jal omMakeGObjSPAfter
   /* 181F0C 8013480C 3C078000 */       lui $a3, 0x8000
   /* 181F10 80134810 3C058001 */       lui $a1, %hi(odRenderDObjTreeForGObj)
   /* 181F14 80134814 240EFFFF */     addiu $t6, $zero, -1
@@ -3207,7 +3207,7 @@ glabel gmCreditsStaffRollProcUpdate
   /* 18204C 8013494C 8D500084 */        lw $s0, 0x84($t2)
   /* 182050 80134950 00002025 */        or $a0, $zero, $zero
   /* 182054 80134954 AE0B0018 */        sw $t3, 0x18($s0)
-  /* 182058 80134958 0C0026A1 */       jal omEjectGObjCommon
+  /* 182058 80134958 0C0026A1 */       jal omEjectGObj
   /* 18205C 8013495C AC20A8C8 */        sw $zero, %lo(gCreditsStaffRollGObj)($at)
   /* 182060 80134960 0C002C7A */       jal gsStopCurrentProcess
   /* 182064 80134964 24040001 */     addiu $a0, $zero, 1
@@ -3227,7 +3227,7 @@ glabel gmCreditsMakeStaffRollGObj
   /* 182094 80134994 00002025 */        or $a0, $zero, $zero
   /* 182098 80134998 00002825 */        or $a1, $zero, $zero
   /* 18209C 8013499C 24060001 */     addiu $a2, $zero, 1
-  /* 1820A0 801349A0 0C00265A */       jal omMakeGObjCommon
+  /* 1820A0 801349A0 0C00265A */       jal omMakeGObjSPAfter
   /* 1820A4 801349A4 3C078000 */       lui $a3, 0x8000
   /* 1820A8 801349A8 3C058013 */       lui $a1, %hi(gmCreditsStaffRollProcUpdate)
   /* 1820AC 801349AC AFA2001C */        sw $v0, 0x1c($sp)
@@ -3699,7 +3699,7 @@ glabel gmCreditsInitAll
   /* 182768 80135068 24A534E4 */     addiu $a1, $a1, %lo(func_ovl59_801334E4)
   /* 18276C 8013506C 00002025 */        or $a0, $zero, $zero
   /* 182770 80135070 24060001 */     addiu $a2, $zero, 1
-  /* 182774 80135074 0C00265A */       jal omMakeGObjCommon
+  /* 182774 80135074 0C00265A */       jal omMakeGObjSPAfter
   /* 182778 80135078 3C078000 */       lui $a3, 0x8000
   /* 18277C 8013507C 240E00FF */     addiu $t6, $zero, 0xff
   /* 182780 80135080 AFAE0010 */        sw $t6, 0x10($sp)

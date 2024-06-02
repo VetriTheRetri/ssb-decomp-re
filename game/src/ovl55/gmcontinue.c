@@ -256,7 +256,7 @@ void gmContinueMakeScoreDisplay(s32 points)
     GObj *gobj;
     SObj *sobj;
 
-    sGMContinueScoreGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueScoreGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1C, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[1], &lGMContinueSpriteTextScore));
@@ -346,7 +346,7 @@ void gmContinueMakeRoomFadeOut(void)
     GObj *gobj;
 
     sGMContinueRoomFadeOutAlpha = 0x00;
-    sGMContinueRoomFadeOutGObj = gobj = omMakeGObjCommon(0, NULL, 0x17, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueRoomFadeOutGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x17, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, gmContinueRoomFadeOutProcRender, 0x20, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
@@ -378,7 +378,7 @@ void gmContinueMakeRoomFadeIn(void)
     GObj *gobj;
 
     sGMContinueRoomFadeInAlpha = 0xFF;
-    sGMContinueRoomFadeInGObj = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueRoomFadeInGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, gmContinueRoomFadeInProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
@@ -410,7 +410,7 @@ void gmContinueMakeSpotlightFadeSObjs(void)
     GObj *gobj;
 
     sGMContinueSpotlightFadeAlpha = 0xFF;
-    sGMContinueSpotlightFadeGObj = gobj = omMakeGObjCommon(0, NULL, 0x16, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueSpotlightFadeGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x16, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, gmContinueSpotlightFadeProcRender, 0x1F, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
@@ -420,7 +420,7 @@ void gmContinueMakeRoom(void)
     GObj *gobj;
     SObj *sobj;
 
-    sGMContinueRoomGObj = gobj = omMakeGObjCommon(0, NULL, 0x13, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueRoomGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x13, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1D, GOBJ_DLLINKORDER_DEFAULT, -1);
     sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGMContinueSpriteRoom));
@@ -435,7 +435,7 @@ void gmContinueMakeSpotlightSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    sGMContinueShadowGObj = gobj = omMakeGObjCommon(0, NULL, 0x15, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueShadowGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x15, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1E, GOBJ_DLLINKORDER_DEFAULT, -1);
     sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGMContinueSpriteShadow));
 
@@ -449,7 +449,7 @@ void gmContinueMakeSpotlightSObjs(void)
     sobj->pos.x = 80.0F;
     sobj->pos.y = 156.0F;
 
-    sGMContinueSpotlightGObj = gobj = omMakeGObjCommon(0, NULL, 0x15, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueSpotlightGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x15, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1E, GOBJ_DLLINKORDER_DEFAULT, -1);
     sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGMContinueSpriteSpotlight));
 
@@ -470,7 +470,7 @@ void gmContinueMakeContinueSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sGMContinueContinueGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueContinueGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1C, GOBJ_DLLINKORDER_DEFAULT, -1);
     sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMContinueFiles[0], &lGMContinueSpriteTextContinue));
 
@@ -539,7 +539,7 @@ void gmContinueMakeOptionSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    sGMContinueOptionGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueOptionGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1C, GOBJ_DLLINKORDER_DEFAULT, -1);
     omAddGObjCommonProc(gobj, gmContinueOptionProcUpdate, 1, 1);
 
@@ -591,7 +591,7 @@ void gmContinueMakeCursorSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sGMContinueCursorGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueCursorGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1C, GOBJ_DLLINKORDER_DEFAULT, -1);
     omAddGObjCommonProc(gobj, gmContinueCursorProcUpdate, 1, 1);
@@ -672,7 +672,7 @@ void gmContinueMakeGameOverSObjs(void)
 
     sGMContinueGameOverColorStep = 0.0F;
 
-    sGMContinueGameOverGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueGameOverGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1C, GOBJ_DLLINKORDER_DEFAULT, -1);
     omAddGObjCommonProc(gobj, gmContinueGameOverStepColors, 1, 1);
 
@@ -720,7 +720,7 @@ void gmContinueMakeGameOver(void)
     GObj *gobj;
 
     sGMContinueGameOverFadeOutScale = 1.0F;
-    sGMContinueGameOverGObj = gobj = omMakeGObjCommon(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
+    sGMContinueGameOverGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x14, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjCommonProc(gobj, gmContinueGameOverProcUpdate, 1, 1);
 }
@@ -881,11 +881,11 @@ void gmContinueActorProcUpdate(GObj *gobj)
         }
         if ((sGMContinueFramesPassed == I_SEC_TO_FRAMES(40)) && (sGMContinueStatus == 0))
         {
-            omEjectGObjCommon(sGMContinueShadowGObj);
-            omEjectGObjCommon(sGMContinueSpotlightGObj);
-            omEjectGObjCommon(sGMContinueContinueGObj);
-            omEjectGObjCommon(sGMContinueOptionGObj);
-            omEjectGObjCommon(sGMContinueCursorGObj);
+            omEjectGObj(sGMContinueShadowGObj);
+            omEjectGObj(sGMContinueSpotlightGObj);
+            omEjectGObj(sGMContinueContinueGObj);
+            omEjectGObj(sGMContinueOptionGObj);
+            omEjectGObj(sGMContinueCursorGObj);
 
             gmContinueMakeRoomFadeOut();
             gmContinueMakeGameOverSObjs();
@@ -905,15 +905,15 @@ void gmContinueActorProcUpdate(GObj *gobj)
                 switch (sGMContinueOptionSelect)
                 {
                 case gmContinue_Option_Yes:
-                    omEjectGObjCommon(sGMContinueShadowGObj);
-                    omEjectGObjCommon(sGMContinueSpotlightGObj);
-                    omEjectGObjCommon(sGMContinueContinueGObj);
-                    omEjectGObjCommon(sGMContinueOptionGObj);
-                    omEjectGObjCommon(sGMContinueCursorGObj);
+                    omEjectGObj(sGMContinueShadowGObj);
+                    omEjectGObj(sGMContinueSpotlightGObj);
+                    omEjectGObj(sGMContinueContinueGObj);
+                    omEjectGObj(sGMContinueOptionGObj);
+                    omEjectGObj(sGMContinueCursorGObj);
 
                     gSceneData.spgame_score *= 0.5F;
 
-                    omEjectGObjCommon(sGMContinueScoreGObj);
+                    omEjectGObj(sGMContinueScoreGObj);
                     gmContinueMakeScoreDisplay(gSceneData.spgame_score);
                     func_ovl1_803905CC(sGMContinueFighterGObj, 0x1000A);
 
@@ -924,11 +924,11 @@ void gmContinueActorProcUpdate(GObj *gobj)
                     break;
 
                 case gmContinue_Option_No:
-                    omEjectGObjCommon(sGMContinueShadowGObj);
-                    omEjectGObjCommon(sGMContinueSpotlightGObj);
-                    omEjectGObjCommon(sGMContinueContinueGObj);
-                    omEjectGObjCommon(sGMContinueOptionGObj);
-                    omEjectGObjCommon(sGMContinueCursorGObj);
+                    omEjectGObj(sGMContinueShadowGObj);
+                    omEjectGObj(sGMContinueSpotlightGObj);
+                    omEjectGObj(sGMContinueContinueGObj);
+                    omEjectGObj(sGMContinueOptionGObj);
+                    omEjectGObj(sGMContinueCursorGObj);
                     gmContinueMakeRoomFadeOut();
                     gmContinueMakeGameOverSObjs();
                     gmContinueMakeGameOver();
@@ -1017,7 +1017,7 @@ void gmContinueInitAll(void)
 
     rdManagerInitSetup(&rldm_setup);
     rdManagerLoadFiles(dGMContinueFileIDs, ARRAY_COUNT(dGMContinueFileIDs), sGMContinueFiles, gsMemoryAlloc(rdManagerGetAllocSize(dGMContinueFileIDs, ARRAY_COUNT(dGMContinueFileIDs)), 0x10));
-    omMakeGObjCommon(0, gmContinueActorProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
+    omMakeGObjSPAfter(0, gmContinueActorProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(0, 0x80000000, 0x64, 3, 0xFF);
     func_ovl2_80115890();
     func_ovl55_80133918();

@@ -20,7 +20,7 @@ intptr_t D_ovl3_80189A70[2] = { 0x2250, 0x2270 };
 itCreateDesc dITHarisenItemDesc =
 {
     It_Kind_Harisen,                        // Item Kind
-    &gITemFileData,                         // Pointer to item file data?
+    &gITFileData,                         // Pointer to item file data?
     &lITHarisenItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct

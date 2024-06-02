@@ -393,7 +393,7 @@ glabel func_ovl13_80131FDC
   /* 11A86C 8013202C 24A51E00 */     addiu $a1, $a1, %lo(func_ovl13_80131E00)
   /* 11A870 80132030 00002025 */        or $a0, $zero, $zero
   /* 11A874 80132034 00003025 */        or $a2, $zero, $zero
-  /* 11A878 80132038 0C00265A */       jal omMakeGObjCommon
+  /* 11A878 80132038 0C00265A */       jal omMakeGObjSPAfter
   /* 11A87C 8013203C 3C078000 */       lui $a3, 0x8000
   /* 11A880 80132040 0C006265 */       jal lbRandom_GetIntRange
   /* 11A884 80132044 24040080 */     addiu $a0, $zero, 0x80

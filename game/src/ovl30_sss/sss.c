@@ -271,7 +271,7 @@ void mnStageCreateBackground()
     GObj* background_gobj;
     SObj* background_sobj;
 
-    background_gobj = omMakeGObjCommon(0U, NULL, 0x2U, 0x80000000U);
+    background_gobj = omMakeGObjSPAfter(0U, NULL, 0x2U, 0x80000000U);
     omAddGObjRenderProc(background_gobj, func_ovl0_800CCF00, 0x0U, 0x80000000U, -1);
     background_sobj = gcAppendSObjWithSprite(background_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_015_BACKGROUND_IMAGE_OFFSET));
     background_sobj->cmt = G_TX_WRAP;
@@ -290,7 +290,7 @@ void mnStageCreateWoodenCircle()
     GObj* wooden_circle_gobj;
     SObj* wooden_circle_sobj;
 
-    wooden_circle_gobj = omMakeGObjCommon(0U, NULL, 8U, 0x80000000U);
+    wooden_circle_gobj = omMakeGObjSPAfter(0U, NULL, 8U, 0x80000000U);
     omAddGObjRenderProc(wooden_circle_gobj, func_ovl0_800CCF00, 6U, 0x80000000U, -1);
 
     wooden_circle_sobj = gcAppendSObjWithSprite(wooden_circle_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_WOODEN_CIRCLE_IMAGE_OFFSET));
@@ -328,7 +328,7 @@ void mnStageCreateStageSelectGfx()
     SObj* yellow_oval_right_sobj;
     s32 x;
 
-    stage_select_gobj = omMakeGObjCommon(0U, NULL, 6U, 0x80000000U);
+    stage_select_gobj = omMakeGObjSPAfter(0U, NULL, 6U, 0x80000000U);
     omAddGObjRenderProc(stage_select_gobj, mnStageRenderStageSelectGfx, 4U, 0x80000000U, -1);
 
     // Stage Select texture
@@ -417,7 +417,7 @@ void mnStageCreateStageImages()
     s32 x;
     s32 i;
 
-    stage_image_gobj = omMakeGObjCommon(0U, NULL, 3U, 0x80000000U);
+    stage_image_gobj = omMakeGObjSPAfter(0U, NULL, 3U, 0x80000000U);
     omAddGObjRenderProc(stage_image_gobj, func_ovl0_800CCF00, 1U, 0x80000000U, -1);
 
     for (i = 0; i < ARRAY_COUNT(offsets); i++)
@@ -538,10 +538,10 @@ void mnStageCreateStageNameAndLogo(s32 slot_id)
 
     if (gMNStageNameLogoGobj != NULL)
     {
-        omEjectGObjCommon(gMNStageNameLogoGobj);
+        omEjectGObj(gMNStageNameLogoGobj);
     }
 
-    name_logo_gobj = omMakeGObjCommon(0U, NULL, 4U, 0x80000000U);
+    name_logo_gobj = omMakeGObjSPAfter(0U, NULL, 4U, 0x80000000U);
     gMNStageNameLogoGobj = name_logo_gobj;
     omAddGObjRenderProc(name_logo_gobj, func_ovl0_800CCF00, 2U, 0x80000000U, -1);
     mnStageCreateLogo(gMNStageNameLogoGobj, mnStageGetStageID(slot_id));
@@ -574,7 +574,7 @@ void mnStageCreateCursor()
     GObj* cursor_gobj;
     SObj* cursor_sobj;
 
-    gMNStageCursorGobj = cursor_gobj = omMakeGObjCommon(0U, NULL, 7U, 0x80000000U);
+    gMNStageCursorGobj = cursor_gobj = omMakeGObjSPAfter(0U, NULL, 7U, 0x80000000U);
     omAddGObjRenderProc(cursor_gobj, func_ovl0_800CCF00, 5U, 0x80000000U, -1);
 
     cursor_sobj = gcAppendSObjWithSprite(cursor_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_CURSOR_IMAGE_OFFSET));
@@ -616,7 +616,7 @@ GObj* mnStageCreateStagePreviewBackground(s32 stage_id) {
     SObj* stage_preview_bg_sobj;
     s32 x;
 
-    stage_preview_bg_gobj = omMakeGObjCommon(0U, NULL, 9U, 0x80000000U);
+    stage_preview_bg_gobj = omMakeGObjSPAfter(0U, NULL, 9U, 0x80000000U);
     omAddGObjRenderProc(stage_preview_bg_gobj, mnStageRenderStagePreviewBackground, 7U, 0x80000000U, -1);
 
     // draw patterned bg
@@ -693,7 +693,7 @@ GObj* mnStageCreateStageGeo(s32 stage_id, gmGroundInfo* stage_info, grCreateDesc
         return NULL;
     }
 
-    stage_geo_gobj = omMakeGObjCommon(0U, NULL, 5U, 0x80000000U);
+    stage_geo_gobj = omMakeGObjSPAfter(0U, NULL, 5U, 0x80000000U);
     omAddGObjRenderProc(stage_geo_gobj, (stage_info->unk_0x44 & (1 << stage_geo_id)) ? mnStageRenderStagePreviewSecondary : mnStageRenderStagePreviewPrimary, 3U, 0x80000000U, -1);
     func_8000F590(stage_geo_gobj, stage_geo->dobj_desc, NULL, 0x1CU, 0, 0);
 
@@ -753,7 +753,7 @@ void mnStageDestroyStagePreview(s32 heap_id)
     {
         if (gMNStageHeap0BackgroundGobj != NULL)
         {
-            omEjectGObjCommon(gMNStageHeap0BackgroundGobj);
+            omEjectGObj(gMNStageHeap0BackgroundGobj);
             gMNStageHeap0BackgroundGobj = NULL;
         }
 
@@ -761,7 +761,7 @@ void mnStageDestroyStagePreview(s32 heap_id)
         {
             if (gMNStageHeap0StageInfoArray[i] != NULL)
             {
-                omEjectGObjCommon(gMNStageHeap0StageInfoArray[i]);
+                omEjectGObj(gMNStageHeap0StageInfoArray[i]);
                 gMNStageHeap0StageInfoArray[i] = NULL;
             }
         }
@@ -770,7 +770,7 @@ void mnStageDestroyStagePreview(s32 heap_id)
     {
         if (gMNStageHeap1BackgroundGobj != NULL)
         {
-            omEjectGObjCommon(gMNStageHeap1BackgroundGobj);
+            omEjectGObj(gMNStageHeap1BackgroundGobj);
             gMNStageHeap1BackgroundGobj = NULL;
         }
 
@@ -778,7 +778,7 @@ void mnStageDestroyStagePreview(s32 heap_id)
         {
             if (gMNStageHeap1StageInfoArray[i] != NULL)
             {
-                omEjectGObjCommon(gMNStageHeap1StageInfoArray[i]);
+                omEjectGObj(gMNStageHeap1StageInfoArray[i]);
                 gMNStageHeap1StageInfoArray[i] = NULL;
             }
         }
@@ -1224,7 +1224,7 @@ void mnStageInitSSS()
 
     mnStageAllocateStageModelHeaps();
 
-    omMakeGObjCommon(0U, mnStageHandleButtonPresses, 0U, 0x80000000U);
+    omMakeGObjSPAfter(0U, mnStageHandleButtonPresses, 0U, 0x80000000U);
     func_8000B9FC(1, 0x80000000U, 0x64, 1, 0);
     mnStageLoadSceneData();
     mnStageCreateBackgroundViewport();

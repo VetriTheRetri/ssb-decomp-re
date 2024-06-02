@@ -735,7 +735,7 @@ glabel grBonus_Bonus2_MakeGround
   /* 112228 8018DAE8 240403F2 */     addiu $a0, $zero, 0x3f2
   /* 11222C 8018DAEC 00002825 */        or $a1, $zero, $zero
   /* 112230 8018DAF0 24060001 */     addiu $a2, $zero, 1
-  /* 112234 8018DAF4 0C00265A */       jal omMakeGObjCommon
+  /* 112234 8018DAF4 0C00265A */       jal omMakeGObjSPAfter
   /* 112238 8018DAF8 3C078000 */       lui $a3, 0x8000
   /* 11223C 8018DAFC 3C058019 */       lui $a1, %hi(scBonusGame_CheckBonus2PlatformLanding)
   /* 112240 8018DB00 24A5DA2C */     addiu $a1, $a1, %lo(scBonusGame_CheckBonus2PlatformLanding)
@@ -852,7 +852,7 @@ glabel scBonusGame_InitInterface
   /* 1123D8 8018DC98 240401EA */     addiu $a0, $zero, 0x1ea
   /* 1123DC 8018DC9C 0C044871 */       jal func_ovl2_801121C4
   /* 1123E0 8018DCA0 00000000 */       nop 
-  /* 1123E4 8018DCA4 0C0026A1 */       jal omEjectGObjCommon
+  /* 1123E4 8018DCA4 0C0026A1 */       jal omEjectGObj
   /* 1123E8 8018DCA8 00002025 */        or $a0, $zero, $zero
   /* 1123EC 8018DCAC 0C002C7A */       jal gsStopCurrentProcess
   /* 1123F0 8018DCB0 24040001 */     addiu $a0, $zero, 1
@@ -867,7 +867,7 @@ glabel scBonusGame_MakeInterface
   /* 11240C 8018DCCC 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 112410 8018DCD0 00002825 */        or $a1, $zero, $zero
   /* 112414 8018DCD4 2406000A */     addiu $a2, $zero, 0xa
-  /* 112418 8018DCD8 0C00265A */       jal omMakeGObjCommon
+  /* 112418 8018DCD8 0C00265A */       jal omMakeGObjSPAfter
   /* 11241C 8018DCDC 3C078000 */       lui $a3, 0x8000
   /* 112420 8018DCE0 3C058019 */       lui $a1, %hi(scBonusGame_InitInterface)
   /* 112424 8018DCE4 24A5DC70 */     addiu $a1, $a1, %lo(scBonusGame_InitInterface)
@@ -964,7 +964,7 @@ glabel scBonusGame_InitBonus1TargetSprites
   /* 112570 8018DE30 02003825 */        or $a3, $s0, $zero
   /* 112574 8018DE34 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 112578 8018DE38 00002825 */        or $a1, $zero, $zero
-  /* 11257C 8018DE3C 0C00265A */       jal omMakeGObjCommon
+  /* 11257C 8018DE3C 0C00265A */       jal omMakeGObjSPAfter
   /* 112580 8018DE40 2406000B */     addiu $a2, $zero, 0xb
   /* 112584 8018DE44 3C138013 */       lui $s3, %hi(gGroundStruct)
   /* 112588 8018DE48 267313F0 */     addiu $s3, $s3, %lo(gGroundStruct)
@@ -1057,7 +1057,7 @@ glabel scBonusGame_InitBonus2PlatformSprites
   /* 1126CC 8018DF8C 02003825 */        or $a3, $s0, $zero
   /* 1126D0 8018DF90 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 1126D4 8018DF94 00002825 */        or $a1, $zero, $zero
-  /* 1126D8 8018DF98 0C00265A */       jal omMakeGObjCommon
+  /* 1126D8 8018DF98 0C00265A */       jal omMakeGObjSPAfter
   /* 1126DC 8018DF9C 2406000B */     addiu $a2, $zero, 0xb
   /* 1126E0 8018DFA0 3C138013 */       lui $s3, %hi(gGroundStruct)
   /* 1126E4 8018DFA4 267313F0 */     addiu $s3, $s3, %lo(gGroundStruct)
@@ -1284,7 +1284,7 @@ glabel scBonusGame_CheckTimeUpEjectInterface
   /* 112A04 8018E2C4 00000000 */       nop 
   /* 112A08 8018E2C8 3C018019 */       lui $at, %hi(gIsBonusGameTimeUp)
   /* 112A0C 8018E2CC AC20F3A8 */        sw $zero, %lo(gIsBonusGameTimeUp)($at)
-  /* 112A10 8018E2D0 0C0026A1 */       jal omEjectGObjCommon
+  /* 112A10 8018E2D0 0C0026A1 */       jal omEjectGObj
   /* 112A14 8018E2D4 8FA40018 */        lw $a0, 0x18($sp)
   .L8018E2D8:
   /* 112A18 8018E2D8 8FBF0014 */        lw $ra, 0x14($sp)
@@ -1304,7 +1304,7 @@ glabel scBonusGame_MakeBonusTimerGObj
   /* 112A48 8018E308 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 112A4C 8018E30C 00002825 */        or $a1, $zero, $zero
   /* 112A50 8018E310 2406000B */     addiu $a2, $zero, 0xb
-  /* 112A54 8018E314 0C00265A */       jal omMakeGObjCommon
+  /* 112A54 8018E314 0C00265A */       jal omMakeGObjSPAfter
   /* 112A58 8018E318 3C078000 */       lui $a3, 0x8000
   /* 112A5C 8018E31C 3C058019 */       lui $a1, %hi(scBonusGame_CheckTimeUpEjectInterface)
   /* 112A60 8018E320 24A5E2A8 */     addiu $a1, $a1, %lo(scBonusGame_CheckTimeUpEjectInterface)
@@ -1341,7 +1341,7 @@ glabel func_ovl6_8018E344
   /* 112AD0 8018E390 02003825 */        or $a3, $s0, $zero
   /* 112AD4 8018E394 240403F8 */     addiu $a0, $zero, 0x3f8
   /* 112AD8 8018E398 00002825 */        or $a1, $zero, $zero
-  /* 112ADC 8018E39C 0C00265A */       jal omMakeGObjCommon
+  /* 112ADC 8018E39C 0C00265A */       jal omMakeGObjSPAfter
   /* 112AE0 8018E3A0 2406000B */     addiu $a2, $zero, 0xb
   /* 112AE4 8018E3A4 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 112AE8 8018E3A8 240FFFFF */     addiu $t7, $zero, -1

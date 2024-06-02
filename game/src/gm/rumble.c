@@ -576,7 +576,7 @@ void gmRumble_SetPlayerRumble(void)
     s32 l;
     s32 player;
 
-    omAddGObjCommonProc(omMakeGObjCommon(GObj_Kind_Rumble, NULL, 0xD, 0x80000000U), func_ovl2_80115298, 1, 0);
+    omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Rumble, NULL, 0xD, 0x80000000U), func_ovl2_80115298, 1, 0);
 
     /* DEBUGGER NOTES */
 

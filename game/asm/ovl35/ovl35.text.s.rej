@@ -187,7 +187,7 @@ diff a/game/asm/ovl35/ovl35.text.s b/game/asm/ovl35/ovl35.text.s	(rejected hunks
    /* 16612C 8013241C 00002025 */        or $a0, $zero, $zero
 @@ -651,11 +651,11 @@ glabel opPortraitsCreatePortraitOverlay
    /* 166134 80132424 24060012 */     addiu $a2, $zero, 0x12
-   /* 166138 80132428 0C00265A */       jal omMakeGObjCommon
+   /* 166138 80132428 0C00265A */       jal omMakeGObjSPAfter
    /* 16613C 8013242C 3C078000 */       lui $a3, 0x8000
 -  /* 166140 80132430 3C058013 */       lui $a1, %hi(opPortraitsRenderPortraitOverlay)
 +  /* 166140 80132430 3C058013 */       lui $a1, %hi(mvPortraitsRenderPortraitOverlay)
@@ -250,7 +250,7 @@ diff a/game/asm/ovl35/ovl35.text.s b/game/asm/ovl35/ovl35.text.s	(rejected hunks
    /* 16633C 8013262C 8C6E0000 */        lw $t6, ($v1) # gIntroPotraitsFramesElapsed + 0
 @@ -831,7 +831,7 @@ glabel opPortraitsMain
    /* 1663D8 801326C8 24010096 */     addiu $at, $zero, 0x96
-   /* 1663DC 801326CC 0C0026A1 */       jal omEjectGObjCommon
+   /* 1663DC 801326CC 0C0026A1 */       jal omEjectGObj
    /* 1663E0 801326D0 8C8429F0 */        lw $a0, %lo(gIntroPortraitsPortraitGObj)($a0)
 -  /* 1663E4 801326D4 0C04C72B */       jal opPortraitsCreatePortraitsSet2
 +  /* 1663E4 801326D4 0C04C72B */       jal mvPortraitsCreatePortraitsSet2
@@ -276,7 +276,7 @@ diff a/game/asm/ovl35/ovl35.text.s b/game/asm/ovl35/ovl35.text.s	(rejected hunks
 +  /* 1664BC 801327AC 24A52624 */     addiu $a1, $a1, %lo(mvPortraitsMain)
    /* 1664C0 801327B0 00002025 */        or $a0, $zero, $zero
    /* 1664C4 801327B4 00003025 */        or $a2, $zero, $zero
-   /* 1664C8 801327B8 0C00265A */       jal omMakeGObjCommon
+   /* 1664C8 801327B8 0C00265A */       jal omMakeGObjSPAfter
 @@ -901,15 +901,15 @@ glabel opPortraitsInit
    /* 1664E0 801327D0 24060064 */     addiu $a2, $zero, 0x64
    /* 1664E4 801327D4 0C002E7F */       jal func_8000B9FC

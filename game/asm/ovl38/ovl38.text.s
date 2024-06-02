@@ -111,7 +111,7 @@ glabel mvOpeningSamusDrawName
   /* 168A9C 8018D22C 00002825 */        or $a1, $zero, $zero
   /* 168AA0 8018D230 24060011 */     addiu $a2, $zero, 0x11
   /* 168AA4 8018D234 AD0A000C */        sw $t2, 0xc($t0)
-  /* 168AA8 8018D238 0C00265A */       jal omMakeGObjCommon
+  /* 168AA8 8018D238 0C00265A */       jal omMakeGObjSPAfter
   /* 168AAC 8018D23C AD0B0010 */        sw $t3, 0x10($t0)
   /* 168AB0 8018D240 3C018019 */       lui $at, %hi(gMvOpeningSamusNameGObj)
   /* 168AB4 8018D244 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -616,7 +616,7 @@ glabel mvOpeningSamusCreatePosedFighterBackground
   /* 169224 8018D9B4 00002025 */        or $a0, $zero, $zero
   /* 169228 8018D9B8 00002825 */        or $a1, $zero, $zero
   /* 16922C 8018D9BC 24060013 */     addiu $a2, $zero, 0x13
-  /* 169230 8018D9C0 0C00265A */       jal omMakeGObjCommon
+  /* 169230 8018D9C0 0C00265A */       jal omMakeGObjSPAfter
   /* 169234 8018D9C4 3C078000 */       lui $a3, 0x8000
   /* 169238 8018D9C8 3C058019 */       lui $a1, %hi(mvOpeningSamusRenderPosedFighterBackground)
   /* 16923C 8018D9CC 240EFFFF */     addiu $t6, $zero, -1
@@ -934,7 +934,7 @@ glabel mvOpeningSamusMainProc
   /* 1696CC 8018DE5C 3C048019 */       lui $a0, %hi(gMvOpeningSamusNameGObj)
   /* 1696D0 8018DE60 5441000C */      bnel $v0, $at, .L8018DE94
   /* 1696D4 8018DE64 2401003C */     addiu $at, $zero, 0x3c
-  /* 1696D8 8018DE68 0C0026A1 */       jal omEjectGObjCommon
+  /* 1696D8 8018DE68 0C0026A1 */       jal omEjectGObj
   /* 1696DC 8018DE6C 8C84E27C */        lw $a0, %lo(gMvOpeningSamusNameGObj)($a0)
   /* 1696E0 8018DE70 0C063585 */       jal mvOpeningSamusInitFighterStagePanel
   /* 1696E4 8018DE74 00000000 */       nop
@@ -1002,7 +1002,7 @@ glabel mvOpeningSamusInit
   /* 1697C0 8018DF50 24A5DE08 */     addiu $a1, $a1, %lo(mvOpeningSamusMainProc)
   /* 1697C4 8018DF54 240403F7 */     addiu $a0, $zero, 0x3f7
   /* 1697C8 8018DF58 2406000D */     addiu $a2, $zero, 0xd
-  /* 1697CC 8018DF5C 0C00265A */       jal omMakeGObjCommon
+  /* 1697CC 8018DF5C 0C00265A */       jal omMakeGObjSPAfter
   /* 1697D0 8018DF60 3C078000 */       lui $a3, 0x8000
   /* 1697D4 8018DF64 240E00FF */     addiu $t6, $zero, 0xff
   /* 1697D8 8018DF68 AFAE0010 */        sw $t6, 0x10($sp)

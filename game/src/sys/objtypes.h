@@ -122,18 +122,19 @@ struct _GObjProcess
 {
     GObjProcess *link_next;
     GObjProcess *link_prev;
-    GObjProcess *priority_next; // This is more than likely not an array, doing this only to get the correct offsets
+    GObjProcess *priority_next;
     GObjProcess *priority_prev;
     s32 priority;
     u8 kind;
     ub8 is_paused;
     GObj *parent_gobj;
+
     union // These are based on 0x14
     {
         GObjThread *gobjthread; // GObjThread
-        void(*proc_thread)(GObj*);
+        void(*proc_common)(GObj*);
     };
-    void (*proc_common)(GObj*);
+    void (*proc_unused)(GObj*);
 };
 
 struct GObjLink
@@ -152,7 +153,7 @@ struct GObj
     u8 fd_last;                         // Last frame drawn?
     u8 obj_kind;                        // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = Camera
     u32 link_order;
-    void (*proc_eject)(GObj*);
+    void (*proc_run)(GObj*);
     GObjProcess *gobjproc_head;
 
     union
@@ -520,7 +521,7 @@ struct _OMSetup
     OMMtx *ommtxes;
     s32 num_ommtxes;
 
-    void (*proc_cleanup)(DObjDynamicStore*);
+    void (*proc_eject)(DObjDynamicStore*);
 
     AObj *aobjs;
     s32 num_aobjs;

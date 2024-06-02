@@ -123,7 +123,7 @@ void func_ovl54_80131B58(void)
 {
     GObj *gobj;
 
-    D_ovl54_80132BE0 = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+    D_ovl54_80132BE0 = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
     func_8000F120(gobj, ((uintptr_t)sMVEndingFiles[0] + (intptr_t)&D_NF_00007E98), 0);
     omAddGObjRenderProc(gobj, odRenderDObjTreeDLLinksForGObj, 0x1D, GOBJ_DLLINKORDER_DEFAULT, -1);
@@ -137,7 +137,7 @@ void func_ovl54_80131C1C(void)
 {
     GObj *gobj;
 
-    D_ovl54_80132BE4 = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+    D_ovl54_80132BE4 = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
     func_8000F120(gobj, ((uintptr_t)sMVEndingFiles[0] + (intptr_t)&D_NF_00008DF8), 0);
     omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 0x1D, GOBJ_DLLINKORDER_DEFAULT, -1);
@@ -148,7 +148,7 @@ void func_ovl54_80131C94(void)
 {
     GObj *gobj;
 
-    D_ovl54_80132BE8 = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+    D_ovl54_80132BE8 = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
     func_8000F120(gobj, ((uintptr_t)sMVEndingFiles[0] + (intptr_t)&D_NF_0000A6F8), 0);
     omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 0x1D, GOBJ_DLLINKORDER_DEFAULT, -1);
@@ -161,7 +161,7 @@ void func_ovl54_80131D34(void)
 {
     GObj *gobj;
 
-    D_ovl54_80132BEC = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+    D_ovl54_80132BEC = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
     func_8000F120(gobj, ((uintptr_t)sMVEndingFiles[0] + (intptr_t)&D_NF_0000AEB8), 0);
     omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 0x1D, GOBJ_DLLINKORDER_DEFAULT, -1);
@@ -174,7 +174,7 @@ void func_ovl54_80131DD4(void)
 {
     GObj *gobj;
 
-    D_ovl54_80132BF0 = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+    D_ovl54_80132BF0 = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
     func_8000F120(gobj, ((uintptr_t)sMVEndingFiles[0] + (intptr_t)&D_NF_0000BDC0), 0);
     omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 0x1D, GOBJ_DLLINKORDER_DEFAULT, -1);
@@ -188,7 +188,7 @@ void func_ovl54_80131E74(void)
     GObj *gobj;
     DObj *dobj;
 
-    D_ovl54_80132BF4 = gobj = omMakeGObjCommon(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+    D_ovl54_80132BF4 = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
     dobj = omAddDObjForGObj(gobj, ((uintptr_t)sMVEndingFiles[0] + (intptr_t)&D_NF_0000C690));
 
@@ -257,7 +257,7 @@ void mvEndingMakeRoomFadeIn(void)
 
     sMVEndingRoomFadeInAlpha = 0xFF;
 
-    sMVEndingRoomFadeInGObj = gobj = omMakeGObjCommon(0, NULL, 0x12, GOBJ_LINKORDER_DEFAULT);
+    sMVEndingRoomFadeInGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x12, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gobj, mvEndingRoomFadeInProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
@@ -298,7 +298,7 @@ void mvEndingMakeRoomLight(void)
 
     sMVEndingRoomLightAlpha = 0.0F;
 
-    sMVEndingRoomLightGObj = gobj = omMakeGObjCommon(0, NULL, 0x15, GOBJ_LINKORDER_DEFAULT);
+    sMVEndingRoomLightGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x15, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gobj, mvEndingRoomLightProcRender, 30, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
@@ -313,11 +313,11 @@ void mvEndingMakeRoomLightCamera(void)
 // 0x8013253C
 void func_ovl54_8013253C(void)
 {
-    omEjectGObjCommon(D_ovl54_80132BE0);
-    omEjectGObjCommon(D_ovl54_80132BE8);
-    omEjectGObjCommon(D_ovl54_80132BEC);
-    omEjectGObjCommon(D_ovl54_80132BF0);
-    omEjectGObjCommon(D_ovl54_80132BF4);
+    omEjectGObj(D_ovl54_80132BE0);
+    omEjectGObj(D_ovl54_80132BE8);
+    omEjectGObj(D_ovl54_80132BEC);
+    omEjectGObj(D_ovl54_80132BF0);
+    omEjectGObj(D_ovl54_80132BF4);
 }
 
 // 0x80132590
@@ -387,7 +387,7 @@ void mvEndingActorProcUpdate(GObj *gobj)
         {
             func_ovl54_8013253C();
             func_ovl2_800D78E8(sMVEndingFighterGObj);
-            omEjectGObjCommon(sMVEndingRoomLightGObj);
+            omEjectGObj(sMVEndingRoomLightGObj);
             func_800269C0(0x14);
         }
         if (sMVEndingRoomTimer == 660)
@@ -417,7 +417,7 @@ void mvEndingInitAll(void)
 
     rdManagerInitSetup(&rldm_setup);
     rdManagerLoadFiles(dMVEndingFileIDs, ARRAY_COUNT(dMVEndingFileIDs), sMVEndingFiles, gsMemoryAlloc(rdManagerGetAllocSize(dMVEndingFileIDs, ARRAY_COUNT(dMVEndingFileIDs)), 0x10));
-    omMakeGObjCommon(0, mvEndingActorProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
+    omMakeGObjSPAfter(0, mvEndingActorProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(0, 0x80000000, 0x64, 3, -1);
     func_ovl2_80115890();
     mvEndingInitVars();

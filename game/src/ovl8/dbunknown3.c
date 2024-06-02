@@ -87,11 +87,11 @@ void func_ovl8_803720D4(dbTestMenu *arg0, u32 arg1)
 
         if (arg0->unk_dbtestmenu_0x0 != NULL)
         {
-            omEjectGObjCommon(arg0->unk_dbtestmenu_0x0);
+            omEjectGObj(arg0->unk_dbtestmenu_0x0);
         }
         if (arg0->unk_dbtestmenu_0x4 != NULL)
         {
-            omEjectGObjCommon(arg0->unk_dbtestmenu_0x4);
+            omEjectGObj(arg0->unk_dbtestmenu_0x4);
         }
         if (arg1 != 0)
         {

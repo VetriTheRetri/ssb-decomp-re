@@ -197,7 +197,7 @@ void grCommon_Yoster_InitGroundVars(void)
 
     for (i = 0; i < ARRAY_COUNT(gGroundStruct.yoster.clouds); i++)
     {
-        map_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
+        map_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
         gGroundStruct.yoster.clouds[i].gobj = map_gobj;
 
@@ -241,7 +241,7 @@ void grCommon_Yoster_InitGroundVars(void)
 // 0x80108C80
 GObj* grCommon_Yoster_MakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjCommon(GObj_Kind_Ground, NULL, 1, 0x80000000);
+    GObj *ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, 1, 0x80000000);
 
     grCommon_Yoster_InitGroundVars();
     omAddGObjCommonProc(ground_gobj, grCommon_Yoster_ProcUpdate, 1, 4);

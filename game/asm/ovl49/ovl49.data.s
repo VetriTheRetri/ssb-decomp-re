@@ -23,7 +23,7 @@ glabel D_ovl49_801328D0
   .balign 4
   .incbin "ovl49.raw.bin", 0x0DF8, 0x10
 
-glabel D_ovl49_80132908
+glabel dMvOpeningKickEntryFighterKinds
   .incbin "ovl49.raw.bin", 0x0E08, 0x20
 
 glabel D_ovl49_80132928
@@ -38,7 +38,7 @@ glabel D_ovl49_80132944
   /* E4C 1739AC 8013294C */  .4byte func_8000A340
   /* E50 1739B0 80132950 */  .4byte D_NF_80132D80
   .incbin "ovl49.raw.bin", 0x0E54, 0x28
-  /* E7C 1739DC 8013297C */  .4byte func_ovl49_80131B00
+  /* E7C 1739DC 8013297C */  .4byte mvOpeningKickEntrySetupDisplayList
   /* E80 1739E0 80132980 */  .4byte update_contdata
   .incbin "ovl49.raw.bin", 0x0E84, 0x20
   /* EA4 173A04 801329A4 */  .4byte jtbl_ovl0_800D5CAC

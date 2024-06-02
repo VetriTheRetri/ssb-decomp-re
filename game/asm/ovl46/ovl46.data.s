@@ -35,12 +35,12 @@ glabel D_ovl46_80132724
   /* C2C 17128C 8013272C */  .4byte func_8000A340
   /* C30 171290 80132730 */  .4byte D_NF_801329A0
   .incbin "ovl46.raw.bin", 0x0C34, 0x28
-  /* C5C 1712BC 8013275C */  .4byte func_ovl46_80131B00
+  /* C5C 1712BC 8013275C */  .4byte mvOpeningLinkHillSetupDisplayList
   /* C60 1712C0 80132760 */  .4byte update_contdata
   .incbin "ovl46.raw.bin", 0x0C64, 0x20
   /* C84 1712E4 80132784 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl46.raw.bin", 0x0C88, 0x24
-  /* CAC 17130C 801327AC */  .4byte func_ovl46_801324E0
+  /* CAC 17130C 801327AC */  .4byte mvOpeningLinkHillInit
 
 glabel D_ovl46_801327B0
   /* CB0 171310 801327B0 */

@@ -35,12 +35,12 @@ glabel D_ovl47_80132924
   /* E2C 17214C 8013292C */  .4byte func_8000A340
   /* E30 172150 80132930 */  .4byte D_NF_80132BA0
   .incbin "ovl47.raw.bin", 0x0E34, 0x28
-  /* E5C 17217C 8013295C */  .4byte func_ovl47_80131B00
+  /* E5C 17217C 8013295C */  .4byte mvOpeningMarioVsKirbySetupDisplayList
   /* E60 172180 80132960 */  .4byte update_contdata
   .incbin "ovl47.raw.bin", 0x0E64, 0x20
   /* E84 1721A4 80132984 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl47.raw.bin", 0x0E88, 0x24
-  /* EAC 1721CC 801329AC */  .4byte func_ovl47_801326A8
+  /* EAC 1721CC 801329AC */  .4byte mvOpeningMarioVsKirbyInit
 
 glabel D_ovl47_801329B0
   /* EB0 1721D0 801329B0 */

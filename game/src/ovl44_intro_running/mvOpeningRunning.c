@@ -108,7 +108,8 @@ void mvOpeningRunningScrollBackground(GObj* arg0)
     temp_v0 = SObjGetStruct(arg0);
     temp_v0->pos.x = temp_v0->pos.x + 30.0F;
 
-    if (temp_v0->pos.x > 0.0F) {
+    if (temp_v0->pos.x > 0.0F)
+    {
         temp_v0->pos.x += -320.0F;
     }
 

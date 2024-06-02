@@ -5,15 +5,15 @@
 # 0x801329D0 -> 0x80132D80 [0x3b0 bytes]
 # Unreferenced BSS space @ 801329D0
     .space 8
-glabel D_ovl49_801329D8
+glabel gMvOpeningKickEntryFighterAnimHeaps
     .space 32
 glabel D_ovl49_801329F8
     .space 16
-glabel D_ovl49_80132A08
+glabel gMvOpeningKickEntryFramesElapsed
     .space 4
-glabel D_ovl49_80132A0C
+glabel gMvOpeningKickEntryWhiteOverlayAlpha
     .space 4
-glabel D_ovl49_80132A10
+glabel gMvOpeningKickEntryUnusedCounter
     .space 8
 glabel D_ovl49_80132A18
     .space 800

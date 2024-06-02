@@ -5,17 +5,17 @@
 # 0x801327C0 -> 0x801329A0 [0x1e0 bytes]
 # Unreferenced BSS space @ 801327C0
     .space 8
-glabel D_ovl46_801327C8
+glabel gMvOpeningLinkHillFighterAnimHeap
     .space 4
-glabel D_ovl46_801327CC
+glabel gMvOpeningLinkHillFramesElapsed
     .space 4
-glabel D_ovl46_801327D0
+glabel gMvOpeningLinkHillOcarinaGObj
     .space 4
-glabel D_ovl46_801327D4
+glabel gMvOpeningLinkHillFighterGObj
     .space 4
-glabel D_ovl46_801327D8
+glabel gMvOpeningLinkHillBackgroundScrollSpeed
     .space 4
-glabel D_ovl46_801327DC
+glabel gMvOpeningLinkHillUnusedCounter
     .space 4
 glabel D_ovl46_801327E0
     .space 384

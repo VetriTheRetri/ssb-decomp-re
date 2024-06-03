@@ -404,9 +404,9 @@ segments:
     start: 0x0406D0
     vram: 0x800A1980
     subsegments:
-      - [0x0406D0, asm, scene_manager]
-      - [0x041db0, data, scene_manager]
-      - [0x042F30, rodata, scene_manager]
+      - [0x0406D0, c, scenemgr/scene_manager]
+      - [0x041db0, data, scenemgr/scene_manager]
+      - [0x042F30, .rodata, scenemgr/scene_manager]
 
   - name: ovl0
     type: code

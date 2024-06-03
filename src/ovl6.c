@@ -363,7 +363,7 @@ void scBonusGame_InitInterface(GObj* interface_gobj)
 	ifPlayer_Damage_InitInterface();
 	func_800269C0_275C0(0x1EA);
 	func_ovl2_801121C4();
-	omEjectGObjCommon(NULL);
+	omEjectGObj(NULL);
 	gsStopCurrentProcess(1);
 }
 
@@ -505,7 +505,7 @@ void scBonusGame_CheckTimeUpEjectInterface(GObj* interface_gobj)
 	{
 		func_ovl2_80114DD4();
 		gIsBonusGameTimeUp = FALSE;
-		omEjectGObjCommon(interface_gobj);
+		omEjectGObj(interface_gobj);
 	}
 }
 
@@ -748,7 +748,7 @@ void scManager_BonusGame_InitScene()
 	D_ovl6_8018F09C.arena_size = ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
 	D_ovl6_8018F09C.proc_start = scBonusGame_InitBonusGame;
 
-	func_8000683C(&D_ovl6_8018F09C);
+	gsGTLSceneInit(&D_ovl6_8018F09C);
 	auStopBGM();
 
 	while (auIsBGMPlaying(0) != FALSE)

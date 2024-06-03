@@ -87,7 +87,7 @@ extern void gsAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
 extern void func_800053CC(void);
 extern void func_800057C8(void);
 extern void func_80005C74(void);
-extern void func_8000683C(struct Wrapper683C *arg);
+extern void gsGTLSceneInit(struct gsGTLSetupDesc *arg);
 extern void func_80006B80(void);
 
 #endif /* SYS_GTL_H */

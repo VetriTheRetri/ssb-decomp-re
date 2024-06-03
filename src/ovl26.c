@@ -326,7 +326,7 @@ void mnDestroyTeamButton(s32 port_id)
 {
 	if (gMnBattlePanels[port_id].team_color_button != NULL)
 	{
-		omEjectGObjCommon(gMnBattlePanels[port_id].team_color_button);
+		omEjectGObj(gMnBattlePanels[port_id].team_color_button);
 		gMnBattlePanels[port_id].team_color_button = NULL;
 	}
 }
@@ -347,7 +347,7 @@ void mnDestroyTeamButtons()
 	{
 		if (gMnBattlePanels[port_id].team_color_button != NULL)
 		{
-			omEjectGObjCommon(gMnBattlePanels[port_id].team_color_button);
+			omEjectGObj(gMnBattlePanels[port_id].team_color_button);
 			gMnBattlePanels[port_id].team_color_button = NULL;
 		}
 	}
@@ -818,7 +818,7 @@ void mnDrawTimerPicker(s32 num)
 	GObj* picker_gobj;
 
 	if (gMnBattlePickerGObj != NULL)
-		omEjectGObjCommon(gMnBattlePickerGObj);
+		omEjectGObj(gMnBattlePickerGObj);
 
 	picker_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1,
 									 GetAddressFromOffset(gFile011, &FILE_011_PICKER_TIME_IMAGE_OFFSET), 1, NULL, 1);
@@ -852,7 +852,7 @@ void mnDrawStockPicker(s32 num)
 	GObj* picker_gobj;
 
 	if (gMnBattlePickerGObj != NULL)
-		omEjectGObjCommon(gMnBattlePickerGObj);
+		omEjectGObj(gMnBattlePickerGObj);
 
 	picker_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1,
 									 GetAddressFromOffset(gFile011, &FILE_011_PICKER_STOCK_IMAGE_OFFSET), 1, NULL, 1);
@@ -1551,7 +1551,7 @@ void mnHandlePlayerTypeButtonPress(s32 port_id)
 
 		if (gMnBattlePanels[port_id].type != NULL)
 		{
-			omEjectGObjCommon(gMnBattlePanels[port_id].type);
+			omEjectGObj(gMnBattlePanels[port_id].type);
 			mnBattleCreateTypeImage(port_id);
 		}
 
@@ -1591,7 +1591,7 @@ void mnHandlePlayerTypeButtonPress(s32 port_id)
 		gMnBattlePanels[port_id].unk_0xA0 = FALSE;
 		if (gMnBattlePanels[port_id].type != NULL)
 		{
-			omEjectGObjCommon(gMnBattlePanels[port_id].type);
+			omEjectGObj(gMnBattlePanels[port_id].type);
 			mnBattleCreateTypeImage(port_id);
 		}
 
@@ -1758,7 +1758,7 @@ void mnBattleRemoveWhiteSquare(s32 port_id)
 
 	if (panel_info->white_square != NULL)
 	{
-		omEjectGObjCommon(panel_info->white_square);
+		omEjectGObj(panel_info->white_square);
 		panel_info->white_square = NULL;
 	}
 }
@@ -1908,11 +1908,11 @@ void mnHideFighterName(s32 port_id)
 void mnBattleRemoveHandicapCPULevel(s32 port_id)
 {
 	if (gMnBattlePanels[port_id].handicap_cpu_level != NULL)
-		omEjectGObjCommon(gMnBattlePanels[port_id].handicap_cpu_level);
+		omEjectGObj(gMnBattlePanels[port_id].handicap_cpu_level);
 	if (gMnBattlePanels[port_id].arrows != NULL)
-		omEjectGObjCommon(gMnBattlePanels[port_id].arrows);
+		omEjectGObj(gMnBattlePanels[port_id].arrows);
 	if (gMnBattlePanels[port_id].handicap_cpu_level_value != NULL)
-		omEjectGObjCommon(gMnBattlePanels[port_id].handicap_cpu_level_value);
+		omEjectGObj(gMnBattlePanels[port_id].handicap_cpu_level_value);
 
 	gMnBattlePanels[port_id].handicap_cpu_level = NULL;
 	gMnBattlePanels[port_id].arrows = NULL;
@@ -2017,7 +2017,7 @@ void mnBattleDrawHandicapCPULevel(s32 port_id)
 
 	if (gMnBattlePanels[port_id].handicap_cpu_level != NULL)
 	{
-		omEjectGObjCommon(gMnBattlePanels[port_id].handicap_cpu_level);
+		omEjectGObj(gMnBattlePanels[port_id].handicap_cpu_level);
 		gMnBattlePanels[port_id].handicap_cpu_level = NULL;
 	}
 
@@ -2071,7 +2071,7 @@ void mnDrawHandicapCPULevelValue(s32 port_id)
 
 	if (gMnBattlePanels[port_id].handicap_cpu_level_value != NULL)
 	{
-		omEjectGObjCommon(gMnBattlePanels[port_id].handicap_cpu_level_value);
+		omEjectGObj(gMnBattlePanels[port_id].handicap_cpu_level_value);
 		gMnBattlePanels[port_id].handicap_cpu_level_value = NULL;
 	}
 
@@ -3338,7 +3338,7 @@ void mnSyncPanelDisplay(s32 port_id)
 				gMnBattlePanels[held_port_id].char_id = mnSelectRandomFighter(gMnBattlePanels[held_port_id].token);
 			}
 
-			omEjectGObjCommon(gMnBattlePanels[port_id].cursor);
+			omEjectGObj(gMnBattlePanels[port_id].cursor);
 			gMnBattlePanels[port_id].cursor = NULL;
 
 			if (gMnBattlePanels[port_id].player_type != 1)

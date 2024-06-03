@@ -89,8 +89,8 @@ extern GObj *omInitGObjCommon(u32 id, void (*proc_eject)(GObj*), u8 link, u32 or
 extern GObj *omMakeGObjCommon(u32 id, void (*proc_eject)(GObj*), u8 link, u32 order);
 extern GObj *func_800099A8(u32 id, void (*proc_eject)(GObj*), u8 link, u32 order);
 extern GObj *unref_800099E8(u32 id, void (*proc_eject)(GObj*), GObj *link_gobj);
-extern GObj *unref_80009A34(u32 id, void (*proc_eject)(GObj*), GObj *link_gobj);
-extern void omEjectGObjCommon(GObj *gobj);
+extern GObj *omMakeGObjBefore(u32 id, void (*proc_eject)(GObj*), GObj *link_gobj);
+extern void omEjectGObj(GObj *gobj);
 extern void omMoveGObjCommon(s32 sw, GObj *this_gobj, u8 link, u32 order, GObj *other_gobj);
 extern void func_80009C90(GObj *gobj, u8 link, u32 order);
 extern void func_80009CC8(GObj *gobj, u8 link, u32 order);

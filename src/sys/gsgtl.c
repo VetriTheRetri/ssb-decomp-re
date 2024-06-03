@@ -135,7 +135,7 @@ SCTaskCallback D_8004666C;  // function pointer?
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/func_80004AB0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/check_buffer_lengths.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/gsCheckGtlBufferLengths.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/func_80004C5C.s")
 
@@ -145,7 +145,7 @@ SCTaskCallback D_8004666C;  // function pointer?
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/func_80004DB4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/schedule_gfx_end.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/gsScheduleGfxEnd.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/func_80004EFC.s")
 
@@ -191,7 +191,7 @@ SCTaskCallback D_8004666C;  // function pointer?
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/unref_800067E4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/func_8000683C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/gsGTLSceneInit.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/unref_80006A8C.s")
 

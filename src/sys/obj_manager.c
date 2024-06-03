@@ -1661,7 +1661,7 @@ GObj* unref_800099E8(u32 id, void (*proc_eject)(GObj*), GObj* link_gobj)
 }
 
 // 80009A34
-GObj* unref_80009A34(u32 id, void (*proc_eject)(GObj*), GObj* link_gobj)
+GObj* omMakeGObjBefore(u32 id, void (*proc_eject)(GObj*), GObj* link_gobj)
 {
 	GObj* new_gobj = omInitGObjCommon(id, proc_eject, link_gobj->link_id, link_gobj->link_order);
 
@@ -1673,7 +1673,7 @@ GObj* unref_80009A34(u32 id, void (*proc_eject)(GObj*), GObj* link_gobj)
 }
 
 // 80009A84
-void omEjectGObjCommon(GObj* gobj)
+void omEjectGObj(GObj* gobj)
 {
 	if ((gobj == NULL) || (gobj == D_80046A54))
 	{
@@ -2013,7 +2013,7 @@ GObj* func_8000A40C(GObj* gobj)
 
 	case 2:
 		D_80046A64 = 0;
-		omEjectGObjCommon(gobj);
+		omEjectGObj(gobj);
 		break;
 
 	default: D_80046A64 = 0; break;
@@ -2054,7 +2054,7 @@ GObjProcess* func_8000A49C(GObjProcess* gobjproc)
 		while ((return_gobjproc != NULL) && (return_gobjproc->parent_gobj == gobjproc->parent_gobj))
 			return_gobjproc = return_gobjproc->unk_gobjproc_0x8;
 
-		omEjectGObjCommon(gobjproc->parent_gobj);
+		omEjectGObj(gobjproc->parent_gobj);
 		break;
 
 	case 1:

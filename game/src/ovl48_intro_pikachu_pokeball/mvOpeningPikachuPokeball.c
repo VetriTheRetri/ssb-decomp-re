@@ -49,7 +49,7 @@ void mvOpeningPikachuPokeballCreateBackground()
     GObj* temp_v0;
     SObj* temp_v0_2;
 
-    temp_v0 = omMakeGObjCommon(0, 0, 0x14, 0x80000000);
+    temp_v0 = omMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
     omAddGObjRenderProc(temp_v0, func_ovl0_800CCF00, 0x1C, 0x80000000, -1);
 
     temp_v0_2 = gcAppendSObjWithSprite(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &FILE_047_BACKGROUND_IMAGE_OFFSET));
@@ -81,7 +81,7 @@ void mvOpeningPikachuPokeballCreateFighter()
 // 0x80131CA4
 void mvOpeningPikachuPokeballCreateLegs()
 {
-    GObj* temp_v0 = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    GObj* temp_v0 = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     func_8000F590(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &FILE_047_LEGS_OFFSET_1), 0, 0x1C, 0, 0);
     omAddGObjRenderProc(temp_v0, odRenderDObjTreeForGObj, 0x1B, 0x80000000, -1);
 
@@ -96,7 +96,7 @@ void mvOpeningPikachuPokeballCreateLegs()
 // 0x80131D7C
 void mvOpeningPikachuPokeballCreateLegsShadow()
 {
-    GObj* temp_v0 = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    GObj* temp_v0 = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     func_8000F590(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &FILE_047_LEGS_SHADOW_OFFSET_1), 0, 0x1C, 0, 0);
     omAddGObjRenderProc(temp_v0, odRenderDObjTreeDLLinksForGObj, 0x1B, 0x80000000, -1);
 
@@ -111,7 +111,7 @@ void mvOpeningPikachuPokeballCreateLegsShadow()
 // 0x80131E54
 void mvOpeningPikachuPokeballCreatePokeball()
 {
-    GObj* temp_v0 = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    GObj* temp_v0 = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     func_8000F590(temp_v0, GetAddressFromOffset(gMvOpeningPikachuPokeballFilesArray[1], &FILE_047_POKEBALL_OFFSET_1), 0, 0x1C, 0, 0);
     omAddGObjRenderProc(temp_v0, odRenderDObjTreeDLLinksForGObj, 0x1B, 0x80000000, -1);
 
@@ -199,7 +199,7 @@ void mvOpeningPikachuPokeballInit()
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl48_801323A0, ARRAY_COUNT(D_ovl48_801323A0), gMvOpeningPikachuPokeballFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl48_801323A0, ARRAY_COUNT(D_ovl48_801323A0)), 0x10));
 
-    omMakeGObjCommon(0, &mvOpeningPikachuPokeballMainProc, 0, 0x80000000);
+    omMakeGObjSPAfter(0, &mvOpeningPikachuPokeballMainProc, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 3, 0xFF);
     func_ovl2_80115890();
     mvOpeningPikachuPokeballInitFramesElapsed();

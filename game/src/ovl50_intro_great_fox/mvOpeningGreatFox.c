@@ -130,7 +130,7 @@ void mvOpeningGreatFoxCreateBackground()
     GObj* bg_gobj;
     SObj* bg_sobj;
 
-    gMvOpeningGreatFoxBackgroundGObj = bg_gobj = omMakeGObjCommon(0, 0, 0x14, 0x80000000);
+    gMvOpeningGreatFoxBackgroundGObj = bg_gobj = omMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
     omAddGObjRenderProc(bg_gobj, func_ovl0_800CCF00, 0x1C, 0x80000000, -1);
     omAddGObjCommonProc(bg_gobj, mvOpeningGreatFoxScrollBackground, 1, 1);
 
@@ -160,7 +160,7 @@ void mvOpeningGreatFoxCreateGreatFox()
 {
     GObj* great_fox_gobj;
 
-    gMvOpeningGreatFoxGreatFoxGObj = great_fox_gobj = omMakeGObjCommon(0, 0, 0x13, 0x80000000);
+    gMvOpeningGreatFoxGreatFoxGObj = great_fox_gobj = omMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
 
     func_8000F590(great_fox_gobj, GetAddressFromOffset(gMvOpeningGreatFoxFilesArray[0], &FILE_049_GREAT_FOX_OFFSET_1), 0, 0x1C, 0, 0);
     omAddGObjRenderProc(great_fox_gobj, odRenderDObjTreeDLLinksForGObj, 0x1B, 0x80000000, -1);
@@ -224,7 +224,7 @@ void mvOpeningGreatFoxCreateCockpit()
     SObj* cockpit_sobj;
 
     gMvOpeningGreatFoxCockpitAlpha = 0;
-    cockpit_gobj = omMakeGObjCommon(0, 0, 0x15, 0x80000000);
+    cockpit_gobj = omMakeGObjSPAfter(0, 0, 0x15, 0x80000000);
     omAddGObjRenderProc(cockpit_gobj, mvOpeningGreatFoxRenderCockpit, 0x1D, 0x80000000, -1);
     omAddGObjCommonProc(cockpit_gobj, mvOpeningGreatFoxAnimateCockpit, 1, 1);
 
@@ -244,7 +244,7 @@ void mvOpeningGreatFoxCreateArwings()
 
     for (i = 0; i < ARRAY_COUNT(dMvOpeningGreatFoxArwingAnimOffsets); i++)
     {
-        gMvOpeningGreatFoxArwingGObjs[i] = arwing_gobj = omMakeGObjCommon(0, 0, 0x13, 0x80000000);
+        gMvOpeningGreatFoxArwingGObjs[i] = arwing_gobj = omMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
         func_8000F590(arwing_gobj, GetAddressFromOffset(gMvOpeningGreatFoxFilesArray[1], &FILE_0A1_ARWING_OFFSET), 0, 0x1C, 0, 0);
         omAddGObjRenderProc(arwing_gobj, odRenderDObjTreeDLLinksForGObj, 0x1B, 0x80000000, -1);
         func_8000BD8C(arwing_gobj, GetAddressFromOffset(gMvOpeningGreatFoxFilesArray[0], offsets[i]), 0.0F);
@@ -348,7 +348,7 @@ void mvOpeningGreatFoxInit()
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl50_801328F0, ARRAY_COUNT(D_ovl50_801328F0), gMvOpeningGreatFoxFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl50_801328F0, ARRAY_COUNT(D_ovl50_801328F0)), 0x10));
 
-    omMakeGObjCommon(0, &mvOpeningGreatFoxMainProc, 0, 0x80000000);
+    omMakeGObjSPAfter(0, &mvOpeningGreatFoxMainProc, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 1, 0);
     mvOpeningGreatFoxInitFramesElapsed();
     mvOpeningGreatFoxCreateMainViewport();

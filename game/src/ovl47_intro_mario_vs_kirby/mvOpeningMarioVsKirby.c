@@ -47,7 +47,7 @@ void mvOpeningMarioVsKirbySetupDisplayList(Gfx **display_list)
 // 0x80131B58
 void mvOpeningMarioVsKirbyCreateStageGeometry()
 {
-    GObj* temp_v0 = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    GObj* temp_v0 = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     omAddDObjForGObj(temp_v0, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &FILE_045_STAGE_GEOMETRY_OFFSET));
     omAddOMMtxForDObjFixed(DObjGetStruct(temp_v0), 0x1C, 0);
     omAddGObjRenderProc(temp_v0, odRenderDObjDLHead0, 0x1A, 0x80000000, -1);
@@ -183,7 +183,7 @@ void mvOpeningMarioVsKirbyCreateBackground()
     GObj* bg_gobj;
     SObj* bg_sobj;
 
-    bg_gobj = omMakeGObjCommon(0, 0, 0x13, 0x80000000);
+    bg_gobj = omMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
     omAddGObjRenderProc(bg_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
     omAddGObjCommonProc(bg_gobj, mvOpeningMarioVsKirbyScrollBackground, 1, 1);
 
@@ -207,7 +207,7 @@ void mvOpeningMarioVsKirbyCreateLightning()
 {
     GObj* lightning_gobj;
 
-    lightning_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    lightning_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     func_8000F590(lightning_gobj, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &FILE_045_LIGHTNING_OFFSET_2), 0, 0x1C, 0, 0);
     func_8000F8F4(lightning_gobj, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &FILE_045_LIGHTNING_OFFSET_1));
     func_8000BE28(lightning_gobj, GetAddressFromOffset(gMvOpeningMarioVsKirbyFilesArray[0], &FILE_045_LIGHTNING_OFFSET_3), 0.0F);
@@ -253,7 +253,7 @@ void func_ovl147_80132330() {
 // 0x80132338
 void mvOpeningMarioVsKirbyCreateLightningFlash()
 {
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x12, 0x80000000), mvOpeningMarioVsKirbyRenderLightningFlash, 0x1C, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x12, 0x80000000), mvOpeningMarioVsKirbyRenderLightningFlash, 0x1C, 0x80000000, -1);
 }
 
 // 0x80132384
@@ -348,7 +348,7 @@ void mvOpeningMarioVsKirbyInit()
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl47_801328D0, ARRAY_COUNT(D_ovl47_801328D0), gMvOpeningMarioVsKirbyFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl47_801328D0, ARRAY_COUNT(D_ovl47_801328D0)), 0x10));
 
-    omMakeGObjCommon(0, mvOpeningMarioVsKirbyMainProc, 0, 0x80000000);
+    omMakeGObjSPAfter(0, mvOpeningMarioVsKirbyMainProc, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 3, 0xFF);
     func_ovl2_80115890();
     mvOpeningMarioVsKirbyInitFramesElapsed();

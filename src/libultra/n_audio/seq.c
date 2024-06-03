@@ -32,6 +32,64 @@ static u8  read8(ALSeq *s);
 static s16 read16(ALSeq *s);
 static s32 read32(ALSeq *s);
 
+#if 0
+void alSeqNew(ALSeq *seq, u8 *ptr, s32 len)
+{
+    /*
+     * load the seqence pointed to by ptr
+     */
+    seq->base           = ptr;
+    seq->len            = len;
+    seq->lastStatus     = 0;
+    seq->lastTicks      = 0;
+    seq->curPtr         = ptr;
+    
+    if (read32(seq) != IFF_FILE_HDR) {
+#ifdef _DEBUG
+        __osError(ERR_ALSEQNOTMIDI, 1, ptr);
+#endif        
+        return;
+    }
+
+    read32(seq);        /* skip the length field */
+
+    if (read16(seq) != 0) {
+#ifdef _DEBUG        
+        __osError(ERR_ALSEQNOTMIDI0, 1, ptr);
+#endif        
+        return;
+    }
+
+    if (read16(seq) != 1) {
+#ifdef _DEBUG        
+        __osError(ERR_ALSEQNUMTRACKS, 1, ptr);
+#endif        
+        return;
+    }
+
+    seq->division = read16(seq);
+    if (seq->division & 0x8000) {
+#ifdef _DEBUG        
+        __osError(ERR_ALSEQTIME, 1, ptr);
+#endif        
+        return;
+    }
+    
+    seq->qnpt = 1.0/(f32)seq->division;
+
+    if (read32(seq) != IFF_TRACK_HDR) {
+#ifdef _DEBUG        
+        __osError(ERR_ALSEQTRACKHDR, 1, ptr);
+#endif        
+        return;
+    }
+
+    read32(seq);                /* skip the length field */
+
+    seq->trackStart = seq->curPtr;
+}
+#endif
+
 void alSeqNextEvent(ALSeq *seq, ALEvent *event)
 {
     u8          status;
@@ -143,7 +201,20 @@ char __alSeqNextDelta (ALSeq *seq, s32 *pDeltaTicks)
   seq->curPtr = savedPtr;
 
   return TRUE;
+}  
+
+#if 0
+f32 alSeqTicksToSec(ALSeq *seq, s32 ticks, u32 tempo)
+{
+    return ((f32) (((f32)(ticks) * (f32)(tempo)) /
+                     ((f32)(seq->division) * 1000000.0)));
 }
+
+u32 alSeqSecToTicks(ALSeq *seq, f32 sec, u32 tempo)
+{
+    return (u32)(((sec * 1000000.0) * seq->division) / tempo);
+}
+#endif
 
 void alSeqNewMarker(ALSeq *seq, ALSeqMarker *m, u32 ticks)
 {
@@ -209,6 +280,15 @@ void alSeqSetLoc(ALSeq *seq, ALSeqMarker *m)
     seq->lastStatus = m->lastStatus;
     seq->lastTicks  = m->lastTicks;
 }
+
+#if 0
+void alSeqGetLoc(ALSeq *seq, ALSeqMarker *m)
+{
+    m->curPtr = seq->curPtr;
+    m->lastStatus = seq->lastStatus;
+    m->lastTicks = seq->lastTicks;
+}
+#endif
 
 /* non-aligned byte reading routines */
 static u8 read8(ALSeq *seq)

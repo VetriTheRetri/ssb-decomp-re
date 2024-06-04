@@ -23,16 +23,16 @@ glabel D_ovl34_80134A20
   .balign 4
   .incbin "ovl34.raw.bin", 0x2F60, 0x10
 
-glabel D_ovl34_80134A70
+glabel dMvOpeningFirstDestinationSpotlightPositions
   .incbin "ovl34.raw.bin", 0x2F70, 0x90
 
-glabel D_ovl34_80134B00
+glabel dMvOpeningFirstDestinationSpotlightScales
   .incbin "ovl34.raw.bin", 0x3000, 0x90
 
-glabel D_ovl34_80134B90
+glabel dMvOpeningFirstDestinationFighterKinds
   .incbin "ovl34.raw.bin", 0x3090, 0x20
 
-glabel D_ovl34_80134BB0
+glabel dMvOpeningFirstDestinationFighterKindsDuplicate
   .incbin "ovl34.raw.bin", 0x30B0, 0x20
 
 glabel D_ovl34_80134BD0

@@ -85,7 +85,7 @@ void mvOpeningHiddenCreatePurin()
     GObj* char_gobj;
     DObj* char_dobj;
 
-    char_gobj = omMakeGObjCommon(0, 0, 0x13, 0x80000000);
+    char_gobj = omMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
 
     if (mvOpeningHiddenCharsIsLocked(Ft_Kind_Purin) != FALSE)
     {
@@ -108,7 +108,7 @@ void mvOpeningHiddenCreateCaptain()
     GObj* char_gobj;
     DObj* char_dobj;
 
-    char_gobj = omMakeGObjCommon(0, 0, 0x13, 0x80000000);
+    char_gobj = omMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
 
     if (mvOpeningHiddenCharsIsLocked(Ft_Kind_Captain) != FALSE)
     {
@@ -131,7 +131,7 @@ void mvOpeningHiddenCreateLuigi()
     GObj* char_gobj;
     DObj* char_dobj;
 
-    char_gobj = omMakeGObjCommon(0, 0, 0x13, 0x80000000);
+    char_gobj = omMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
 
     if (mvOpeningHiddenCharsIsLocked(Ft_Kind_Luigi) != FALSE)
     {
@@ -154,7 +154,7 @@ void mvOpeningHiddenCreateNess()
     GObj* char_gobj;
     DObj* char_dobj;
 
-    char_gobj = omMakeGObjCommon(0, 0, 0x13, 0x80000000);
+    char_gobj = omMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
 
     if (mvOpeningHiddenCharsIsLocked(Ft_Kind_Ness) != FALSE)
     {
@@ -207,7 +207,7 @@ void mvOpeningHiddenRenderOverlay(GObj* arg0)
 void mvOpeningHiddenCreateOverlay()
 {
     gMvOpeningHiddenCharsOverlayAlpha = 0;
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x12, 0x80000000), mvOpeningHiddenRenderOverlay, 0x1A, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x12, 0x80000000), mvOpeningHiddenRenderOverlay, 0x1A, 0x80000000, -1);
 }
 
 // 0x801321B8
@@ -302,7 +302,7 @@ void mvOpeningHiddenCharsInit()
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl52_80132640, ARRAY_COUNT(D_ovl52_80132640), gMvOpeningHiddenCharsFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl52_80132640, ARRAY_COUNT(D_ovl52_80132640)), 0x10));
 
-    omMakeGObjCommon(0, mvOpeningHiddenCharsMainProc, 0, 0x80000000);
+    omMakeGObjSPAfter(0, mvOpeningHiddenCharsMainProc, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 3, -1);
     mvOpeningHiddenCharsInitGlobals();
     mvOpeningHiddenCreateCharacterViewport();

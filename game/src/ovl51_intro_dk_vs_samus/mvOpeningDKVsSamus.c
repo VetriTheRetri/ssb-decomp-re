@@ -275,7 +275,7 @@ void mvOpeningDKVsSamusInit()
     gBattleState->player_block[1].player_kind = Pl_Kind_Key;
 
     mvOpeningDKVsSamusLoadFiles();
-    omMakeGObjCommon(0x3F7, mvOpeningDKVsSamusMainProc, 0xD, 0x80000000);
+    omMakeGObjSPAfter(0x3F7, mvOpeningDKVsSamusMainProc, 0xD, 0x80000000);
     func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
     func_ovl2_80115890();
     func_ovl2_800EC130();

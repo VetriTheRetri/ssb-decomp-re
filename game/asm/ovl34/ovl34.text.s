@@ -631,7 +631,7 @@ glabel mvOpeningFirstDestinationCreatePluckedFighter
   /* 162F3C 801323FC 03E00008 */        jr $ra
   /* 162F40 80132400 00000000 */       nop
 
-glabel mvOpeningFirstDestinationFadeHALLogoBackground
+glabel mvOpeningFirstDestinationRenderHALLogoBackground
   /* 162F44 80132404 3C0E8013 */       lui $t6, %hi(gMvOpeningFirstDestinationFramesElapsed)
   /* 162F48 80132408 8DCE4CE4 */        lw $t6, %lo(gMvOpeningFirstDestinationFramesElapsed)($t6)
   /* 162F4C 8013240C 3C0C8004 */       lui $t4, %hi(gDisplayListHead)
@@ -726,11 +726,11 @@ glabel mvOpeningFirstDestinationCreateHALLogoBackground
   /* 1630A4 80132564 0C00265A */       jal omMakeGObjSPAfter
   /* 1630A8 80132568 3C078000 */       lui $a3, 0x8000
   /* 1630AC 8013256C 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationHALLogoBackgroundGObj)
-  /* 1630B0 80132570 3C058013 */       lui $a1, %hi(mvOpeningFirstDestinationFadeHALLogoBackground)
+  /* 1630B0 80132570 3C058013 */       lui $a1, %hi(mvOpeningFirstDestinationRenderHALLogoBackground)
   /* 1630B4 80132574 240FFFFF */     addiu $t7, $zero, -1
   /* 1630B8 80132578 AC224D3C */        sw $v0, %lo(gMvOpeningFirstDestinationHALLogoBackgroundGObj)($at)
   /* 1630BC 8013257C AFAF0010 */        sw $t7, 0x10($sp)
-  /* 1630C0 80132580 24A52404 */     addiu $a1, $a1, %lo(mvOpeningFirstDestinationFadeHALLogoBackground)
+  /* 1630C0 80132580 24A52404 */     addiu $a1, $a1, %lo(mvOpeningFirstDestinationRenderHALLogoBackground)
   /* 1630C4 80132584 00402025 */        or $a0, $v0, $zero
   /* 1630C8 80132588 2406001A */     addiu $a2, $zero, 0x1a
   /* 1630CC 8013258C 0C00277D */       jal omAddGObjRenderProc
@@ -845,7 +845,7 @@ glabel mvOpeningFirstDestinationCreateSnapGFX
   /* 163270 80132730 03E00008 */        jr $ra
   /* 163274 80132734 00000000 */       nop
 
-glabel func_ovl34_80132738
+glabel mvOpeningFirstDestinationCreateCloseUpGFX
   /* 163278 80132738 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 16327C 8013273C AFBF002C */        sw $ra, 0x2c($sp)
   /* 163280 80132740 AFB10028 */        sw $s1, 0x28($sp)
@@ -971,7 +971,7 @@ glabel func_ovl34_80132738
   /* 163460 80132920 03E00008 */        jr $ra
   /* 163464 80132924 27BD0040 */     addiu $sp, $sp, 0x40
 
-glabel func_ovl34_80132928
+glabel mvOpeningFirstDestinationCreateDroppedFighter
   /* 163468 80132928 27BDFFA0 */     addiu $sp, $sp, -0x60
   /* 16346C 8013292C 3C0F8011 */       lui $t7, %hi(dFTDefaultFighterDesc)
   /* 163470 80132930 25EF6DD0 */     addiu $t7, $t7, %lo(dFTDefaultFighterDesc)
@@ -997,9 +997,9 @@ glabel func_ovl34_80132928
   /* 1634BC 8013297C C4244C80 */      lwc1 $f4, %lo(D_ovl34_80134C80)($at)
   /* 1634C0 80132980 3C018013 */       lui $at, %hi(D_ovl34_80134C84)
   /* 1634C4 80132984 C4264C84 */      lwc1 $f6, %lo(D_ovl34_80134C84)($at)
-  /* 1634C8 80132988 3C098013 */       lui $t1, %hi(D_ovl34_80134CE0)
+  /* 1634C8 80132988 3C098013 */       lui $t1, %hi(gMvOpeningFirstDestinationDroppedFighterAnimHeap)
   /* 1634CC 8013298C 3C018013 */       lui $at, %hi(D_ovl34_80134C88)
-  /* 1634D0 80132990 8D294CE0 */        lw $t1, %lo(D_ovl34_80134CE0)($t1)
+  /* 1634D0 80132990 8D294CE0 */        lw $t1, %lo(gMvOpeningFirstDestinationDroppedFighterAnimHeap)($t1)
   /* 1634D4 80132994 C4284C88 */      lwc1 $f8, %lo(D_ovl34_80134C88)($at)
   /* 1634D8 80132998 A3A20033 */        sb $v0, 0x33($sp)
   /* 1634DC 8013299C 27A4001C */     addiu $a0, $sp, 0x1c
@@ -1008,9 +1008,9 @@ glabel func_ovl34_80132928
   /* 1634E8 801329A8 AFA90054 */        sw $t1, 0x54($sp)
   /* 1634EC 801329AC 0C035FCF */       jal ftManager_MakeFighter
   /* 1634F0 801329B0 E7A80028 */      swc1 $f8, 0x28($sp)
-  /* 1634F4 801329B4 3C018013 */       lui $at, %hi(D_ovl34_80134D08)
+  /* 1634F4 801329B4 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationDroppedFighterGObj)
   /* 1634F8 801329B8 3C050001 */       lui $a1, (0x10009 >> 16) # 65545
-  /* 1634FC 801329BC AC224D08 */        sw $v0, %lo(D_ovl34_80134D08)($at)
+  /* 1634FC 801329BC AC224D08 */        sw $v0, %lo(gMvOpeningFirstDestinationDroppedFighterGObj)($at)
   /* 163500 801329C0 AFA2005C */        sw $v0, 0x5c($sp)
   /* 163504 801329C4 34A50009 */       ori $a1, $a1, (0x10009 & 0xFFFF) # 65545
   /* 163508 801329C8 0C0E4173 */       jal func_ovl1_803905CC
@@ -1024,7 +1024,7 @@ glabel func_ovl34_80132928
   /* 163528 801329E8 03E00008 */        jr $ra
   /* 16352C 801329EC 00000000 */       nop
 
-glabel func_ovl34_801329F0
+glabel mvOpeningFirstDestinationCreateMasterHandShadow
   /* 163530 801329F0 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 163534 801329F4 AFBF001C */        sw $ra, 0x1c($sp)
   /* 163538 801329F8 00002025 */        or $a0, $zero, $zero
@@ -1035,9 +1035,9 @@ glabel func_ovl34_801329F0
   /* 16354C 80132A0C 3C0E8013 */       lui $t6, %hi(D_ovl34_801350B0)
   /* 163550 80132A10 8DCE50B0 */        lw $t6, %lo(D_ovl34_801350B0)($t6)
   /* 163554 80132A14 3C0F0002 */       lui $t7, %hi(D_NF_0001F790)
-  /* 163558 80132A18 3C018013 */       lui $at, %hi(D_ovl34_80134D30)
+  /* 163558 80132A18 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationMasterHandShadowGObj)
   /* 16355C 80132A1C 25EFF790 */     addiu $t7, $t7, %lo(D_NF_0001F790)
-  /* 163560 80132A20 AC224D30 */        sw $v0, %lo(D_ovl34_80134D30)($at)
+  /* 163560 80132A20 AC224D30 */        sw $v0, %lo(gMvOpeningFirstDestinationMasterHandShadowGObj)($at)
   /* 163564 80132A24 AFA20024 */        sw $v0, 0x24($sp)
   /* 163568 80132A28 00402025 */        or $a0, $v0, $zero
   /* 16356C 80132A2C 0C0024B4 */       jal omAddDObjForGObj
@@ -1074,7 +1074,7 @@ glabel func_ovl34_801329F0
   /* 1635E8 80132AA8 03E00008 */        jr $ra
   /* 1635EC 80132AAC 00000000 */       nop
 
-glabel func_ovl34_80132AB0
+glabel mvOpeningFirstDestinationAnimateDeskStage
   /* 1635F0 80132AB0 3C0E8013 */       lui $t6, %hi(gMvOpeningFirstDestinationFramesElapsed)
   /* 1635F4 80132AB4 8DCE4CE4 */        lw $t6, %lo(gMvOpeningFirstDestinationFramesElapsed)($t6)
   /* 1635F8 80132AB8 27BDFFE8 */     addiu $sp, $sp, -0x18
@@ -1090,7 +1090,7 @@ glabel func_ovl34_80132AB0
   /* 16361C 80132ADC 03E00008 */        jr $ra
   /* 163620 80132AE0 00000000 */       nop
 
-glabel func_ovl34_80132AE4
+glabel mvOpeningFirstDestinationCreateDeskStage
   /* 163624 80132AE4 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 163628 80132AE8 AFBF0024 */        sw $ra, 0x24($sp)
   /* 16362C 80132AEC AFB00020 */        sw $s0, 0x20($sp)
@@ -1131,8 +1131,8 @@ glabel func_ovl34_80132AE4
   /* 1636B8 80132B78 24060000 */     addiu $a2, $zero, 0
   /* 1636BC 80132B7C 0C002F8A */       jal func_8000BE28
   /* 1636C0 80132B80 012A2821 */      addu $a1, $t1, $t2
-  /* 1636C4 80132B84 3C058013 */       lui $a1, %hi(func_ovl34_80132AB0)
-  /* 1636C8 80132B88 24A52AB0 */     addiu $a1, $a1, %lo(func_ovl34_80132AB0)
+  /* 1636C4 80132B84 3C058013 */       lui $a1, %hi(mvOpeningFirstDestinationAnimateDeskStage)
+  /* 1636C8 80132B88 24A52AB0 */     addiu $a1, $a1, %lo(mvOpeningFirstDestinationAnimateDeskStage)
   /* 1636CC 80132B8C 02002025 */        or $a0, $s0, $zero
   /* 1636D0 80132B90 24060001 */     addiu $a2, $zero, 1
   /* 1636D4 80132B94 0C002062 */       jal omAddGObjCommonProc
@@ -1145,7 +1145,7 @@ glabel func_ovl34_80132AE4
   /* 1636F0 80132BB0 03E00008 */        jr $ra
   /* 1636F4 80132BB4 00000000 */       nop
 
-glabel func_ovl34_80132BB8
+glabel mvOpeningFirstDestinationRenderCloseupOverlay
   /* 1636F8 80132BB8 3C028013 */       lui $v0, %hi(gMvOpeningFirstDestinationHALLogoBackgroundAlpha)
   /* 1636FC 80132BBC 24424D38 */     addiu $v0, $v0, %lo(gMvOpeningFirstDestinationHALLogoBackgroundAlpha)
   /* 163700 80132BC0 8C430000 */        lw $v1, ($v0) # gMvOpeningFirstDestinationHALLogoBackgroundAlpha + 0
@@ -1225,7 +1225,7 @@ glabel func_ovl34_80132BB8
   /* 163824 80132CE4 03E00008 */        jr $ra
   /* 163828 80132CE8 AC8F0000 */        sw $t7, ($a0)
 
-glabel func_ovl34_80132CEC
+glabel mvOpeningFirstDestinationCreateCloseupOverlay
   /* 16382C 80132CEC 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 163830 80132CF0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 163834 80132CF4 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationHALLogoBackgroundAlpha)
@@ -1236,11 +1236,11 @@ glabel func_ovl34_80132CEC
   /* 163848 80132D08 0C00265A */       jal omMakeGObjSPAfter
   /* 16384C 80132D0C 3C078000 */       lui $a3, 0x8000
   /* 163850 80132D10 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationHALLogoBackgroundGObj)
-  /* 163854 80132D14 3C058013 */       lui $a1, %hi(func_ovl34_80132BB8)
+  /* 163854 80132D14 3C058013 */       lui $a1, %hi(mvOpeningFirstDestinationRenderCloseupOverlay)
   /* 163858 80132D18 240EFFFF */     addiu $t6, $zero, -1
   /* 16385C 80132D1C AC224D3C */        sw $v0, %lo(gMvOpeningFirstDestinationHALLogoBackgroundGObj)($at)
   /* 163860 80132D20 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 163864 80132D24 24A52BB8 */     addiu $a1, $a1, %lo(func_ovl34_80132BB8)
+  /* 163864 80132D24 24A52BB8 */     addiu $a1, $a1, %lo(mvOpeningFirstDestinationRenderCloseupOverlay)
   /* 163868 80132D28 00402025 */        or $a0, $v0, $zero
   /* 16386C 80132D2C 2406001A */     addiu $a2, $zero, 0x1a
   /* 163870 80132D30 0C00277D */       jal omAddGObjRenderProc
@@ -1250,7 +1250,7 @@ glabel func_ovl34_80132CEC
   /* 163880 80132D40 03E00008 */        jr $ra
   /* 163884 80132D44 00000000 */       nop
 
-glabel func_ovl34_80132D48
+glabel mvOpeningFirstDestinationCreateOverlayViewport
   /* 163888 80132D48 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 16388C 80132D4C 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 163890 80132D50 AFBF003C */        sw $ra, 0x3c($sp)
@@ -1292,7 +1292,7 @@ glabel func_ovl34_80132D48
   /* 163920 80132DE0 03E00008 */        jr $ra
   /* 163924 80132DE4 00000000 */       nop
 
-glabel func_ovl34_80132DE8
+glabel mvOpeningFirstDestinationRenderBackground
   /* 163928 80132DE8 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 16392C 80132DEC 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 163930 80132DF0 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
@@ -1381,7 +1381,7 @@ glabel func_ovl34_80132DE8
   /* 163A7C 80132F3C 03E00008 */        jr $ra
   /* 163A80 80132F40 00000000 */       nop
 
-glabel func_ovl34_80132F44
+glabel mvOpeningFirstDestinationCreateBackground
   /* 163A84 80132F44 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 163A88 80132F48 AFBF001C */        sw $ra, 0x1c($sp)
   /* 163A8C 80132F4C 00002025 */        or $a0, $zero, $zero
@@ -1389,13 +1389,13 @@ glabel func_ovl34_80132F44
   /* 163A94 80132F54 24060014 */     addiu $a2, $zero, 0x14
   /* 163A98 80132F58 0C00265A */       jal omMakeGObjSPAfter
   /* 163A9C 80132F5C 3C078000 */       lui $a3, 0x8000
-  /* 163AA0 80132F60 3C018013 */       lui $at, %hi(D_ovl34_80134D44)
-  /* 163AA4 80132F64 3C058013 */       lui $a1, %hi(func_ovl34_80132DE8)
+  /* 163AA0 80132F60 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationBackgroundGObj)
+  /* 163AA4 80132F64 3C058013 */       lui $a1, %hi(mvOpeningFirstDestinationRenderBackground)
   /* 163AA8 80132F68 240EFFFF */     addiu $t6, $zero, -1
-  /* 163AAC 80132F6C AC224D44 */        sw $v0, %lo(D_ovl34_80134D44)($at)
+  /* 163AAC 80132F6C AC224D44 */        sw $v0, %lo(gMvOpeningFirstDestinationBackgroundGObj)($at)
   /* 163AB0 80132F70 AFA20024 */        sw $v0, 0x24($sp)
   /* 163AB4 80132F74 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 163AB8 80132F78 24A52DE8 */     addiu $a1, $a1, %lo(func_ovl34_80132DE8)
+  /* 163AB8 80132F78 24A52DE8 */     addiu $a1, $a1, %lo(mvOpeningFirstDestinationRenderBackground)
   /* 163ABC 80132F7C 00402025 */        or $a0, $v0, $zero
   /* 163AC0 80132F80 2406001C */     addiu $a2, $zero, 0x1c
   /* 163AC4 80132F84 0C00277D */       jal omAddGObjRenderProc
@@ -1417,38 +1417,38 @@ glabel func_ovl34_80132F44
   /* 163B04 80132FC4 03E00008 */        jr $ra
   /* 163B08 80132FC8 00000000 */       nop
 
-glabel func_ovl34_80132FCC
+glabel mvOpeningFirstDestinationPositionSpotlight
   /* 163B0C 80132FCC 27BDFEE0 */     addiu $sp, $sp, -0x120
   /* 163B10 80132FD0 3C0141F0 */       lui $at, (0x41F00000 >> 16) # 30.0
-  /* 163B14 80132FD4 3C0E8013 */       lui $t6, %hi(D_ovl34_80134A70)
+  /* 163B14 80132FD4 3C0E8013 */       lui $t6, %hi(dMvOpeningFirstDestinationSpotlightPositions)
   /* 163B18 80132FD8 27A70090 */     addiu $a3, $sp, 0x90
-  /* 163B1C 80132FDC 25CE4A70 */     addiu $t6, $t6, %lo(D_ovl34_80134A70)
+  /* 163B1C 80132FDC 25CE4A70 */     addiu $t6, $t6, %lo(dMvOpeningFirstDestinationSpotlightPositions)
   /* 163B20 80132FE0 44810000 */      mtc1 $at, $f0 # 30.0 to cop1
   /* 163B24 80132FE4 27A80000 */     addiu $t0, $sp, 0
   /* 163B28 80132FE8 25C90090 */     addiu $t1, $t6, 0x90
   /* 163B2C 80132FEC 00E0C825 */        or $t9, $a3, $zero
   .L80132FF0:
-  /* 163B30 80132FF0 8DD80000 */        lw $t8, ($t6) # D_ovl34_80134A70 + 0
+  /* 163B30 80132FF0 8DD80000 */        lw $t8, ($t6) # dMvOpeningFirstDestinationSpotlightPositions + 0
   /* 163B34 80132FF4 25CE000C */     addiu $t6, $t6, 0xc
   /* 163B38 80132FF8 2739000C */     addiu $t9, $t9, 0xc
   /* 163B3C 80132FFC AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 163B40 80133000 8DCFFFF8 */        lw $t7, -8($t6) # D_ovl34_80134A70 + -8
+  /* 163B40 80133000 8DCFFFF8 */        lw $t7, -8($t6) # dMvOpeningFirstDestinationSpotlightPositions + -8
   /* 163B44 80133004 AF2FFFF8 */        sw $t7, -8($t9)
-  /* 163B48 80133008 8DD8FFFC */        lw $t8, -4($t6) # D_ovl34_80134A70 + -4
+  /* 163B48 80133008 8DD8FFFC */        lw $t8, -4($t6) # dMvOpeningFirstDestinationSpotlightPositions + -4
   /* 163B4C 8013300C 15C9FFF8 */       bne $t6, $t1, .L80132FF0
   /* 163B50 80133010 AF38FFFC */        sw $t8, -4($t9)
-  /* 163B54 80133014 3C0A8013 */       lui $t2, %hi(D_ovl34_80134B00)
-  /* 163B58 80133018 254A4B00 */     addiu $t2, $t2, %lo(D_ovl34_80134B00)
+  /* 163B54 80133014 3C0A8013 */       lui $t2, %hi(dMvOpeningFirstDestinationSpotlightScales)
+  /* 163B58 80133018 254A4B00 */     addiu $t2, $t2, %lo(dMvOpeningFirstDestinationSpotlightScales)
   /* 163B5C 8013301C 25490090 */     addiu $t1, $t2, 0x90
   /* 163B60 80133020 01006825 */        or $t5, $t0, $zero
   .L80133024:
-  /* 163B64 80133024 8D4C0000 */        lw $t4, ($t2) # D_ovl34_80134B00 + 0
+  /* 163B64 80133024 8D4C0000 */        lw $t4, ($t2) # dMvOpeningFirstDestinationSpotlightScales + 0
   /* 163B68 80133028 254A000C */     addiu $t2, $t2, 0xc
   /* 163B6C 8013302C 25AD000C */     addiu $t5, $t5, 0xc
   /* 163B70 80133030 ADACFFF4 */        sw $t4, -0xc($t5)
-  /* 163B74 80133034 8D4BFFF8 */        lw $t3, -8($t2) # D_ovl34_80134B00 + -8
+  /* 163B74 80133034 8D4BFFF8 */        lw $t3, -8($t2) # dMvOpeningFirstDestinationSpotlightScales + -8
   /* 163B78 80133038 ADABFFF8 */        sw $t3, -8($t5)
-  /* 163B7C 8013303C 8D4CFFFC */        lw $t4, -4($t2) # D_ovl34_80134B00 + -4
+  /* 163B7C 8013303C 8D4CFFFC */        lw $t4, -4($t2) # dMvOpeningFirstDestinationSpotlightScales + -4
   /* 163B80 80133040 1549FFF8 */       bne $t2, $t1, .L80133024
   /* 163B84 80133044 ADACFFFC */        sw $t4, -4($t5)
   /* 163B88 80133048 00051080 */       sll $v0, $a1, 2
@@ -1480,7 +1480,7 @@ glabel func_ovl34_80132FCC
   /* 163BF0 801330B0 03E00008 */        jr $ra
   /* 163BF4 801330B4 E5480048 */      swc1 $f8, 0x48($t2)
 
-glabel func_ovl34_801330B8
+glabel mvOpeningFirstDestinationCreateSpotlight
   /* 163BF8 801330B8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 163BFC 801330BC AFBF0024 */        sw $ra, 0x24($sp)
   /* 163C00 801330C0 AFB00020 */        sw $s0, 0x20($sp)
@@ -1492,9 +1492,9 @@ glabel func_ovl34_801330B8
   /* 163C18 801330D8 3C0E8013 */       lui $t6, %hi(D_ovl34_801350B0)
   /* 163C1C 801330DC 8DCE50B0 */        lw $t6, %lo(D_ovl34_801350B0)($t6)
   /* 163C20 801330E0 3C0F0002 */       lui $t7, %hi(D_NF_00022E18)
-  /* 163C24 801330E4 3C018013 */       lui $at, %hi(D_ovl34_80134D40)
+  /* 163C24 801330E4 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationSpotlightGObj)
   /* 163C28 801330E8 25EF2E18 */     addiu $t7, $t7, %lo(D_NF_00022E18)
-  /* 163C2C 801330EC AC224D40 */        sw $v0, %lo(D_ovl34_80134D40)($at)
+  /* 163C2C 801330EC AC224D40 */        sw $v0, %lo(gMvOpeningFirstDestinationSpotlightGObj)($at)
   /* 163C30 801330F0 00408025 */        or $s0, $v0, $zero
   /* 163C34 801330F4 00402025 */        or $a0, $v0, $zero
   /* 163C38 801330F8 0C0024B4 */       jal omAddDObjForGObj
@@ -1534,9 +1534,9 @@ glabel func_ovl34_801330B8
   /* 163CC0 80133180 24070001 */     addiu $a3, $zero, 1
   /* 163CC4 80133184 0C0037CD */       jal func_8000DF34
   /* 163CC8 80133188 02002025 */        or $a0, $s0, $zero
-  /* 163CCC 8013318C 3C058013 */       lui $a1, %hi(D_ovl34_80134CF8)
-  /* 163CD0 80133190 8CA54CF8 */        lw $a1, %lo(D_ovl34_80134CF8)($a1)
-  /* 163CD4 80133194 0C04CBF3 */       jal func_ovl34_80132FCC
+  /* 163CCC 8013318C 3C058013 */       lui $a1, %hi(gMvOpeningFirstDestinationPluckedFighterKind)
+  /* 163CD0 80133190 8CA54CF8 */        lw $a1, %lo(gMvOpeningFirstDestinationPluckedFighterKind)($a1)
+  /* 163CD4 80133194 0C04CBF3 */       jal mvOpeningFirstDestinationPositionSpotlight
   /* 163CD8 80133198 02002025 */        or $a0, $s0, $zero
   /* 163CDC 8013319C 8FBF0024 */        lw $ra, 0x24($sp)
   /* 163CE0 801331A0 8FB00020 */        lw $s0, 0x20($sp)
@@ -1544,7 +1544,7 @@ glabel func_ovl34_801330B8
   /* 163CE8 801331A8 03E00008 */        jr $ra
   /* 163CEC 801331AC 00000000 */       nop
 
-glabel func_ovl34_801331B0
+glabel mvOpeningFirstDestinationDestroyDeskObjects
   /* 163CF0 801331B0 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 163CF4 801331B4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 163CF8 801331B8 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationOutsideGObj)
@@ -1570,7 +1570,7 @@ glabel func_ovl34_801331B0
   /* 163D48 80133208 03E00008 */        jr $ra
   /* 163D4C 8013320C 00000000 */       nop
 
-glabel func_ovl34_80133210
+glabel mvOpeningFirstDestinationConfigureFirstSceneViewport
   /* 163D50 80133210 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 163D54 80133214 44810000 */      mtc1 $at, $f0 # 10.0 to cop1
   /* 163D58 80133218 27BDFFD8 */     addiu $sp, $sp, -0x28
@@ -1615,7 +1615,7 @@ glabel func_ovl34_80133210
   /* 163DF4 801332B4 03E00008 */        jr $ra
   /* 163DF8 801332B8 00000000 */       nop
 
-glabel func_ovl34_801332BC
+glabel mvOpeningFirstDestinationCreateFirstSceneViewports
   /* 163DFC 801332BC 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 163E00 801332C0 3C028001 */       lui $v0, %hi(func_80017EC0)
   /* 163E04 801332C4 AFBF003C */        sw $ra, 0x3c($sp)
@@ -1642,8 +1642,8 @@ glabel func_ovl34_801332BC
   /* 163E58 80133318 24060010 */     addiu $a2, $zero, 0x10
   /* 163E5C 8013331C 0C002E4F */       jal func_8000B93C
   /* 163E60 80133320 3C078000 */       lui $a3, 0x8000
-  /* 163E64 80133324 3C018013 */       lui $at, %hi(D_ovl34_80134CE8)
-  /* 163E68 80133328 AC224CE8 */        sw $v0, %lo(D_ovl34_80134CE8)($at)
+  /* 163E64 80133324 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationMainCameraGObj)
+  /* 163E68 80133328 AC224CE8 */        sw $v0, %lo(gMvOpeningFirstDestinationMainCameraGObj)($at)
   /* 163E6C 8013332C AFA20044 */        sw $v0, 0x44($sp)
   /* 163E70 80133330 8C440074 */        lw $a0, 0x74($v0)
   /* 163E74 80133334 24050003 */     addiu $a1, $zero, 3
@@ -1654,7 +1654,7 @@ glabel func_ovl34_801332BC
   /* 163E88 80133348 00003025 */        or $a2, $zero, $zero
   /* 163E8C 8013334C 0C00233C */       jal omAddOMMtxForCamera
   /* 163E90 80133350 8D440074 */        lw $a0, 0x74($t2)
-  /* 163E94 80133354 0C04CC84 */       jal func_ovl34_80133210
+  /* 163E94 80133354 0C04CC84 */       jal mvOpeningFirstDestinationConfigureFirstSceneViewport
   /* 163E98 80133358 8FA40044 */        lw $a0, 0x44($sp)
   /* 163E9C 8013335C 8FAB0040 */        lw $t3, 0x40($sp)
   /* 163EA0 80133360 3C0F0800 */       lui $t7, (0x8000200 >> 16) # 134218240
@@ -1680,16 +1680,16 @@ glabel func_ovl34_801332BC
   /* 163EF0 801333B0 AFA00034 */        sw $zero, 0x34($sp)
   /* 163EF4 801333B4 0C002E4F */       jal func_8000B93C
   /* 163EF8 801333B8 AFAB0010 */        sw $t3, 0x10($sp)
-  /* 163EFC 801333BC 3C018013 */       lui $at, %hi(D_ovl34_80134CEC)
-  /* 163F00 801333C0 AC224CEC */        sw $v0, %lo(D_ovl34_80134CEC)($at)
-  /* 163F04 801333C4 0C04CC84 */       jal func_ovl34_80133210
+  /* 163EFC 801333BC 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationFighterCameraGObj)
+  /* 163F00 801333C0 AC224CEC */        sw $v0, %lo(gMvOpeningFirstDestinationFighterCameraGObj)($at)
+  /* 163F04 801333C4 0C04CC84 */       jal mvOpeningFirstDestinationConfigureFirstSceneViewport
   /* 163F08 801333C8 00402025 */        or $a0, $v0, $zero
   /* 163F0C 801333CC 8FBF003C */        lw $ra, 0x3c($sp)
   /* 163F10 801333D0 27BD0048 */     addiu $sp, $sp, 0x48
   /* 163F14 801333D4 03E00008 */        jr $ra
   /* 163F18 801333D8 00000000 */       nop
 
-glabel func_ovl34_801333DC
+glabel mvOpeningFirstDestinationConfigureSecondSceneViewport
   /* 163F1C 801333DC 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 163F20 801333E0 44810000 */      mtc1 $at, $f0 # 10.0 to cop1
   /* 163F24 801333E4 27BDFFD8 */     addiu $sp, $sp, -0x28
@@ -1728,7 +1728,7 @@ glabel func_ovl34_801333DC
   /* 163FA8 80133468 03E00008 */        jr $ra
   /* 163FAC 8013346C 00000000 */       nop
 
-glabel func_ovl34_80133470
+glabel mvOpeningFirstDestinationCreateSecondSceneViewports
   /* 163FB0 80133470 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 163FB4 80133474 3C028001 */       lui $v0, %hi(func_80017EC0)
   /* 163FB8 80133478 AFBF003C */        sw $ra, 0x3c($sp)
@@ -1755,8 +1755,8 @@ glabel func_ovl34_80133470
   /* 16400C 801334CC 24060010 */     addiu $a2, $zero, 0x10
   /* 164010 801334D0 0C002E4F */       jal func_8000B93C
   /* 164014 801334D4 3C078000 */       lui $a3, 0x8000
-  /* 164018 801334D8 3C018013 */       lui $at, %hi(D_ovl34_80134CE8)
-  /* 16401C 801334DC AC224CE8 */        sw $v0, %lo(D_ovl34_80134CE8)($at)
+  /* 164018 801334D8 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationMainCameraGObj)
+  /* 16401C 801334DC AC224CE8 */        sw $v0, %lo(gMvOpeningFirstDestinationMainCameraGObj)($at)
   /* 164020 801334E0 AFA20044 */        sw $v0, 0x44($sp)
   /* 164024 801334E4 8C440074 */        lw $a0, 0x74($v0)
   /* 164028 801334E8 24050003 */     addiu $a1, $zero, 3
@@ -1767,7 +1767,7 @@ glabel func_ovl34_80133470
   /* 16403C 801334FC 00003025 */        or $a2, $zero, $zero
   /* 164040 80133500 0C00233C */       jal omAddOMMtxForCamera
   /* 164044 80133504 8D440074 */        lw $a0, 0x74($t2)
-  /* 164048 80133508 0C04CCF7 */       jal func_ovl34_801333DC
+  /* 164048 80133508 0C04CCF7 */       jal mvOpeningFirstDestinationConfigureSecondSceneViewport
   /* 16404C 8013350C 8FA40044 */        lw $a0, 0x44($sp)
   /* 164050 80133510 8FAB0040 */        lw $t3, 0x40($sp)
   /* 164054 80133514 3C0F0800 */       lui $t7, (0x8000200 >> 16) # 134218240
@@ -1793,16 +1793,16 @@ glabel func_ovl34_80133470
   /* 1640A4 80133564 AFA00034 */        sw $zero, 0x34($sp)
   /* 1640A8 80133568 0C002E4F */       jal func_8000B93C
   /* 1640AC 8013356C AFAB0010 */        sw $t3, 0x10($sp)
-  /* 1640B0 80133570 3C018013 */       lui $at, %hi(D_ovl34_80134CEC)
-  /* 1640B4 80133574 AC224CEC */        sw $v0, %lo(D_ovl34_80134CEC)($at)
-  /* 1640B8 80133578 0C04CCF7 */       jal func_ovl34_801333DC
+  /* 1640B0 80133570 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationFighterCameraGObj)
+  /* 1640B4 80133574 AC224CEC */        sw $v0, %lo(gMvOpeningFirstDestinationFighterCameraGObj)($at)
+  /* 1640B8 80133578 0C04CCF7 */       jal mvOpeningFirstDestinationConfigureSecondSceneViewport
   /* 1640BC 8013357C 00402025 */        or $a0, $v0, $zero
   /* 1640C0 80133580 8FBF003C */        lw $ra, 0x3c($sp)
   /* 1640C4 80133584 27BD0048 */     addiu $sp, $sp, 0x48
   /* 1640C8 80133588 03E00008 */        jr $ra
   /* 1640CC 8013358C 00000000 */       nop
 
-glabel func_ovl34_80133590
+glabel mvOpeningFirstDestinationConfigureThirdSceneViewport
   /* 1640D0 80133590 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 1640D4 80133594 44810000 */      mtc1 $at, $f0 # 10.0 to cop1
   /* 1640D8 80133598 27BDFFD8 */     addiu $sp, $sp, -0x28
@@ -1874,7 +1874,7 @@ glabel func_ovl34_80133590
   /* 1641E0 801336A0 03E00008 */        jr $ra
   /* 1641E4 801336A4 00000000 */       nop
 
-glabel func_ovl34_801336A8
+glabel mvOpeningFirstDestinationCreateThirdSceneViewports
   /* 1641E8 801336A8 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 1641EC 801336AC 3C028001 */       lui $v0, %hi(func_80017EC0)
   /* 1641F0 801336B0 AFBF003C */        sw $ra, 0x3c($sp)
@@ -1901,8 +1901,8 @@ glabel func_ovl34_801336A8
   /* 164244 80133704 24060010 */     addiu $a2, $zero, 0x10
   /* 164248 80133708 0C002E4F */       jal func_8000B93C
   /* 16424C 8013370C 3C078000 */       lui $a3, 0x8000
-  /* 164250 80133710 3C018013 */       lui $at, %hi(D_ovl34_80134CE8)
-  /* 164254 80133714 AC224CE8 */        sw $v0, %lo(D_ovl34_80134CE8)($at)
+  /* 164250 80133710 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationMainCameraGObj)
+  /* 164254 80133714 AC224CE8 */        sw $v0, %lo(gMvOpeningFirstDestinationMainCameraGObj)($at)
   /* 164258 80133718 AFA2004C */        sw $v0, 0x4c($sp)
   /* 16425C 8013371C 8C440074 */        lw $a0, 0x74($v0)
   /* 164260 80133720 24050003 */     addiu $a1, $zero, 3
@@ -1913,7 +1913,7 @@ glabel func_ovl34_801336A8
   /* 164274 80133734 00003025 */        or $a2, $zero, $zero
   /* 164278 80133738 0C00233C */       jal omAddOMMtxForCamera
   /* 16427C 8013373C 8D440074 */        lw $a0, 0x74($t2)
-  /* 164280 80133740 0C04CD64 */       jal func_ovl34_80133590
+  /* 164280 80133740 0C04CD64 */       jal mvOpeningFirstDestinationConfigureThirdSceneViewport
   /* 164284 80133744 8FA4004C */        lw $a0, 0x4c($sp)
   /* 164288 80133748 8FAB0044 */        lw $t3, 0x44($sp)
   /* 16428C 8013374C 3C0F0800 */       lui $t7, (0x8000200 >> 16) # 134218240
@@ -1939,16 +1939,16 @@ glabel func_ovl34_801336A8
   /* 1642DC 8013379C AFA00034 */        sw $zero, 0x34($sp)
   /* 1642E0 801337A0 0C002E4F */       jal func_8000B93C
   /* 1642E4 801337A4 AFAB0010 */        sw $t3, 0x10($sp)
-  /* 1642E8 801337A8 3C018013 */       lui $at, %hi(D_ovl34_80134CEC)
-  /* 1642EC 801337AC AC224CEC */        sw $v0, %lo(D_ovl34_80134CEC)($at)
-  /* 1642F0 801337B0 0C04CD64 */       jal func_ovl34_80133590
+  /* 1642E8 801337A8 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationFighterCameraGObj)
+  /* 1642EC 801337AC AC224CEC */        sw $v0, %lo(gMvOpeningFirstDestinationFighterCameraGObj)($at)
+  /* 1642F0 801337B0 0C04CD64 */       jal mvOpeningFirstDestinationConfigureThirdSceneViewport
   /* 1642F4 801337B4 00402025 */        or $a0, $v0, $zero
   /* 1642F8 801337B8 8FBF003C */        lw $ra, 0x3c($sp)
   /* 1642FC 801337BC 27BD0050 */     addiu $sp, $sp, 0x50
   /* 164300 801337C0 03E00008 */        jr $ra
   /* 164304 801337C4 00000000 */       nop
 
-glabel func_ovl34_801337C8
+glabel mvOpeningFirstDestinationConfigureFourthSceneViewport
   /* 164308 801337C8 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 16430C 801337CC 44810000 */      mtc1 $at, $f0 # 10.0 to cop1
   /* 164310 801337D0 27BDFFD8 */     addiu $sp, $sp, -0x28
@@ -2017,7 +2017,7 @@ glabel func_ovl34_801337C8
   /* 16440C 801338CC 03E00008 */        jr $ra
   /* 164410 801338D0 00000000 */       nop
 
-glabel func_ovl34_801338D4
+glabel mvOpeningFirstDestinationCreateFourthSceneViewports
   /* 164414 801338D4 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 164418 801338D8 3C028001 */       lui $v0, %hi(func_80017EC0)
   /* 16441C 801338DC AFBF003C */        sw $ra, 0x3c($sp)
@@ -2045,9 +2045,9 @@ glabel func_ovl34_801338D4
   /* 164474 80133934 24060010 */     addiu $a2, $zero, 0x10
   /* 164478 80133938 0C002E4F */       jal func_8000B93C
   /* 16447C 8013393C 3C078000 */       lui $a3, 0x8000
-  /* 164480 80133940 3C018013 */       lui $at, %hi(D_ovl34_80134CE8)
-  /* 164484 80133944 AC224CE8 */        sw $v0, %lo(D_ovl34_80134CE8)($at)
-  /* 164488 80133948 0C04CDF2 */       jal func_ovl34_801337C8
+  /* 164480 80133940 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationMainCameraGObj)
+  /* 164484 80133944 AC224CE8 */        sw $v0, %lo(gMvOpeningFirstDestinationMainCameraGObj)($at)
+  /* 164488 80133948 0C04CDF2 */       jal mvOpeningFirstDestinationConfigureFourthSceneViewport
   /* 16448C 8013394C 00402025 */        or $a0, $v0, $zero
   /* 164490 80133950 8FAB0044 */        lw $t3, 0x44($sp)
   /* 164494 80133954 240C0028 */     addiu $t4, $zero, 0x28
@@ -2072,16 +2072,16 @@ glabel func_ovl34_801338D4
   /* 1644E0 801339A0 AFA00034 */        sw $zero, 0x34($sp)
   /* 1644E4 801339A4 0C002E4F */       jal func_8000B93C
   /* 1644E8 801339A8 AFAB0010 */        sw $t3, 0x10($sp)
-  /* 1644EC 801339AC 3C018013 */       lui $at, %hi(D_ovl34_80134CEC)
-  /* 1644F0 801339B0 AC224CEC */        sw $v0, %lo(D_ovl34_80134CEC)($at)
-  /* 1644F4 801339B4 0C04CDF2 */       jal func_ovl34_801337C8
+  /* 1644EC 801339AC 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationFighterCameraGObj)
+  /* 1644F0 801339B0 AC224CEC */        sw $v0, %lo(gMvOpeningFirstDestinationFighterCameraGObj)($at)
+  /* 1644F4 801339B4 0C04CDF2 */       jal mvOpeningFirstDestinationConfigureFourthSceneViewport
   /* 1644F8 801339B8 00402025 */        or $a0, $v0, $zero
   /* 1644FC 801339BC 8FBF003C */        lw $ra, 0x3c($sp)
   /* 164500 801339C0 27BD0050 */     addiu $sp, $sp, 0x50
   /* 164504 801339C4 03E00008 */        jr $ra
   /* 164508 801339C8 00000000 */       nop
 
-glabel func_ovl34_801339CC
+glabel mvOpeningFirstDestinationCreateBackgroundViewport
   /* 16450C 801339CC 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 164510 801339D0 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 164514 801339D4 AFBF003C */        sw $ra, 0x3c($sp)
@@ -2123,7 +2123,7 @@ glabel func_ovl34_801339CC
   /* 1645A4 80133A64 03E00008 */        jr $ra
   /* 1645A8 80133A68 00000000 */       nop
 
-glabel func_ovl34_80133A6C
+glabel mvOpeningFirstDestinationCreateHALLogoViewport
   /* 1645AC 80133A6C 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 1645B0 80133A70 3C0E8001 */       lui $t6, %hi(func_80017EC0)
   /* 1645B4 80133A74 AFBF003C */        sw $ra, 0x3c($sp)
@@ -2152,8 +2152,8 @@ glabel func_ovl34_80133A6C
   /* 164610 80133AD0 3C078000 */       lui $a3, 0x8000
   /* 164614 80133AD4 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 164618 80133AD8 44810000 */      mtc1 $at, $f0 # 10.0 to cop1
-  /* 16461C 80133ADC 3C018013 */       lui $at, %hi(D_ovl34_80134CF0)
-  /* 164620 80133AE0 AC224CF0 */        sw $v0, %lo(D_ovl34_80134CF0)($at)
+  /* 16461C 80133ADC 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationHALLogoCameraGObj)
+  /* 164620 80133AE0 AC224CF0 */        sw $v0, %lo(gMvOpeningFirstDestinationHALLogoCameraGObj)($at)
   /* 164624 80133AE4 AFA20044 */        sw $v0, 0x44($sp)
   /* 164628 80133AE8 8C430074 */        lw $v1, 0x74($v0)
   /* 16462C 80133AEC 3C014366 */       lui $at, (0x43660000 >> 16) # 230.0
@@ -2184,7 +2184,7 @@ glabel func_ovl34_80133A6C
   /* 164690 80133B50 03E00008 */        jr $ra
   /* 164694 80133B54 00000000 */       nop
 
-glabel func_ovl34_80133B58
+glabel mvOpeningFirstDestinationRenderTransitionGFXOverlay
   /* 164698 80133B58 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 16469C 80133B5C 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 1646A0 80133B60 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
@@ -2287,7 +2287,7 @@ glabel func_ovl34_80133B58
   /* 164824 80133CE4 03E00008 */        jr $ra
   /* 164828 80133CE8 00000000 */       nop
 
-glabel func_ovl34_80133CEC
+glabel mvOpeningFirstDestinationRenderTransitionGFXOutline
   /* 16482C 80133CEC 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 164830 80133CF0 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 164834 80133CF4 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
@@ -2421,7 +2421,7 @@ glabel func_ovl34_80133CEC
   /* 164A34 80133EF4 03E00008 */        jr $ra
   /* 164A38 80133EF8 00000000 */       nop
 
-glabel func_ovl34_80133EFC
+glabel mvOpeningFirstDestinationCreateTransitionGFX
   /* 164A3C 80133EFC 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 164A40 80133F00 AFBF0024 */        sw $ra, 0x24($sp)
   /* 164A44 80133F04 AFB00020 */        sw $s0, 0x20($sp)
@@ -2433,9 +2433,9 @@ glabel func_ovl34_80133EFC
   /* 164A5C 80133F1C 3C0E8013 */       lui $t6, %hi(D_ovl34_801350B4)
   /* 164A60 80133F20 8DCE50B4 */        lw $t6, %lo(D_ovl34_801350B4)($t6)
   /* 164A64 80133F24 3C0F0000 */       lui $t7, %hi(D_NF_00000F40)
-  /* 164A68 80133F28 3C018013 */       lui $at, %hi(D_ovl34_80134D48)
+  /* 164A68 80133F28 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationTransitionGFXOutlineGObj)
   /* 164A6C 80133F2C 25EF0F40 */     addiu $t7, $t7, %lo(D_NF_00000F40)
-  /* 164A70 80133F30 AC224D48 */        sw $v0, %lo(D_ovl34_80134D48)($at)
+  /* 164A70 80133F30 AC224D48 */        sw $v0, %lo(gMvOpeningFirstDestinationTransitionGFXOutlineGObj)($at)
   /* 164A74 80133F34 00408025 */        or $s0, $v0, $zero
   /* 164A78 80133F38 00402025 */        or $a0, $v0, $zero
   /* 164A7C 80133F3C 0C0024B4 */       jal omAddDObjForGObj
@@ -2445,10 +2445,10 @@ glabel func_ovl34_80133EFC
   /* 164A8C 80133F4C 2405001C */     addiu $a1, $zero, 0x1c
   /* 164A90 80133F50 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 164A94 80133F54 00003025 */        or $a2, $zero, $zero
-  /* 164A98 80133F58 3C058013 */       lui $a1, %hi(func_ovl34_80133CEC)
+  /* 164A98 80133F58 3C058013 */       lui $a1, %hi(mvOpeningFirstDestinationRenderTransitionGFXOutline)
   /* 164A9C 80133F5C 2418FFFF */     addiu $t8, $zero, -1
   /* 164AA0 80133F60 AFB80010 */        sw $t8, 0x10($sp)
-  /* 164AA4 80133F64 24A53CEC */     addiu $a1, $a1, %lo(func_ovl34_80133CEC)
+  /* 164AA4 80133F64 24A53CEC */     addiu $a1, $a1, %lo(mvOpeningFirstDestinationRenderTransitionGFXOutline)
   /* 164AA8 80133F68 02002025 */        or $a0, $s0, $zero
   /* 164AAC 80133F6C 2406001E */     addiu $a2, $zero, 0x1e
   /* 164AB0 80133F70 0C00277D */       jal omAddGObjRenderProc
@@ -2478,9 +2478,9 @@ glabel func_ovl34_80133EFC
   /* 164B10 80133FD0 3C098013 */       lui $t1, %hi(D_ovl34_801350B4)
   /* 164B14 80133FD4 8D2950B4 */        lw $t1, %lo(D_ovl34_801350B4)($t1)
   /* 164B18 80133FD8 3C0A0000 */       lui $t2, %hi(D_NF_000005A0)
-  /* 164B1C 80133FDC 3C018013 */       lui $at, %hi(D_ovl34_80134D4C)
+  /* 164B1C 80133FDC 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationTransitionGFXOverlayGObj)
   /* 164B20 80133FE0 254A05A0 */     addiu $t2, $t2, %lo(D_NF_000005A0)
-  /* 164B24 80133FE4 AC224D4C */        sw $v0, %lo(D_ovl34_80134D4C)($at)
+  /* 164B24 80133FE4 AC224D4C */        sw $v0, %lo(gMvOpeningFirstDestinationTransitionGFXOverlayGObj)($at)
   /* 164B28 80133FE8 00408025 */        or $s0, $v0, $zero
   /* 164B2C 80133FEC 00402025 */        or $a0, $v0, $zero
   /* 164B30 80133FF0 0C0024B4 */       jal omAddDObjForGObj
@@ -2490,10 +2490,10 @@ glabel func_ovl34_80133EFC
   /* 164B40 80134000 2405001C */     addiu $a1, $zero, 0x1c
   /* 164B44 80134004 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 164B48 80134008 00003025 */        or $a2, $zero, $zero
-  /* 164B4C 8013400C 3C058013 */       lui $a1, %hi(func_ovl34_80133B58)
+  /* 164B4C 8013400C 3C058013 */       lui $a1, %hi(mvOpeningFirstDestinationRenderTransitionGFXOverlay)
   /* 164B50 80134010 240BFFFF */     addiu $t3, $zero, -1
   /* 164B54 80134014 AFAB0010 */        sw $t3, 0x10($sp)
-  /* 164B58 80134018 24A53B58 */     addiu $a1, $a1, %lo(func_ovl34_80133B58)
+  /* 164B58 80134018 24A53B58 */     addiu $a1, $a1, %lo(mvOpeningFirstDestinationRenderTransitionGFXOverlay)
   /* 164B5C 8013401C 02002025 */        or $a0, $s0, $zero
   /* 164B60 80134020 2406001E */     addiu $a2, $zero, 0x1e
   /* 164B64 80134024 0C00277D */       jal omAddGObjRenderProc
@@ -2519,7 +2519,7 @@ glabel func_ovl34_80133EFC
   /* 164BB4 80134074 03E00008 */        jr $ra
   /* 164BB8 80134078 00000000 */       nop
 
-glabel func_ovl34_8013407C
+glabel mvOpeningFirstDestinationCreateTransitionGFXViewport
   /* 164BBC 8013407C 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 164BC0 80134080 3C0E8001 */       lui $t6, %hi(func_80017EC0)
   /* 164BC4 80134084 AFBF003C */        sw $ra, 0x3c($sp)
@@ -2587,51 +2587,51 @@ glabel func_ovl34_8013407C
   /* 164CBC 8013417C 03E00008 */        jr $ra
   /* 164CC0 80134180 00000000 */       nop
 
-glabel func_ovl34_80134184
+glabel mvOpeningFirstDestinationDestroyViewports
   /* 164CC4 80134184 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 164CC8 80134188 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 164CCC 8013418C 3C048013 */       lui $a0, %hi(D_ovl34_80134CE8)
+  /* 164CCC 8013418C 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationMainCameraGObj)
   /* 164CD0 80134190 0C0026A1 */       jal omEjectGObj
-  /* 164CD4 80134194 8C844CE8 */        lw $a0, %lo(D_ovl34_80134CE8)($a0)
-  /* 164CD8 80134198 3C048013 */       lui $a0, %hi(D_ovl34_80134CEC)
+  /* 164CD4 80134194 8C844CE8 */        lw $a0, %lo(gMvOpeningFirstDestinationMainCameraGObj)($a0)
+  /* 164CD8 80134198 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationFighterCameraGObj)
   /* 164CDC 8013419C 0C0026A1 */       jal omEjectGObj
-  /* 164CE0 801341A0 8C844CEC */        lw $a0, %lo(D_ovl34_80134CEC)($a0)
+  /* 164CE0 801341A0 8C844CEC */        lw $a0, %lo(gMvOpeningFirstDestinationFighterCameraGObj)($a0)
   /* 164CE4 801341A4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 164CE8 801341A8 27BD0018 */     addiu $sp, $sp, 0x18
   /* 164CEC 801341AC 03E00008 */        jr $ra
   /* 164CF0 801341B0 00000000 */       nop
 
-glabel func_ovl34_801341B4
+glabel mvOpeningFirstDestinationGetDroppedFighterKind
   /* 164CF4 801341B4 27BDFFB8 */     addiu $sp, $sp, -0x48
-  /* 164CF8 801341B8 3C0E8013 */       lui $t6, %hi(D_ovl34_80134B90)
+  /* 164CF8 801341B8 3C0E8013 */       lui $t6, %hi(dMvOpeningFirstDestinationFighterKinds)
   /* 164CFC 801341BC AFBF001C */        sw $ra, 0x1c($sp)
   /* 164D00 801341C0 AFB10018 */        sw $s1, 0x18($sp)
   /* 164D04 801341C4 AFB00014 */        sw $s0, 0x14($sp)
-  /* 164D08 801341C8 25CE4B90 */     addiu $t6, $t6, %lo(D_ovl34_80134B90)
-  /* 164D0C 801341CC 8DD80000 */        lw $t8, ($t6) # D_ovl34_80134B90 + 0
+  /* 164D08 801341C8 25CE4B90 */     addiu $t6, $t6, %lo(dMvOpeningFirstDestinationFighterKinds)
+  /* 164D0C 801341CC 8DD80000 */        lw $t8, ($t6) # dMvOpeningFirstDestinationFighterKinds + 0
   /* 164D10 801341D0 27B00028 */     addiu $s0, $sp, 0x28
   /* 164D14 801341D4 24040008 */     addiu $a0, $zero, 8
   /* 164D18 801341D8 AE180000 */        sw $t8, ($s0)
-  /* 164D1C 801341DC 8DCF0004 */        lw $t7, 4($t6) # D_ovl34_80134B90 + 4
+  /* 164D1C 801341DC 8DCF0004 */        lw $t7, 4($t6) # dMvOpeningFirstDestinationFighterKinds + 4
   /* 164D20 801341E0 AE0F0004 */        sw $t7, 4($s0)
-  /* 164D24 801341E4 8DD80008 */        lw $t8, 8($t6) # D_ovl34_80134B90 + 8
+  /* 164D24 801341E4 8DD80008 */        lw $t8, 8($t6) # dMvOpeningFirstDestinationFighterKinds + 8
   /* 164D28 801341E8 AE180008 */        sw $t8, 8($s0)
-  /* 164D2C 801341EC 8DCF000C */        lw $t7, 0xc($t6) # D_ovl34_80134B90 + 12
+  /* 164D2C 801341EC 8DCF000C */        lw $t7, 0xc($t6) # dMvOpeningFirstDestinationFighterKinds + 12
   /* 164D30 801341F0 AE0F000C */        sw $t7, 0xc($s0)
-  /* 164D34 801341F4 8DD80010 */        lw $t8, 0x10($t6) # D_ovl34_80134B90 + 16
+  /* 164D34 801341F4 8DD80010 */        lw $t8, 0x10($t6) # dMvOpeningFirstDestinationFighterKinds + 16
   /* 164D38 801341F8 AE180010 */        sw $t8, 0x10($s0)
-  /* 164D3C 801341FC 8DCF0014 */        lw $t7, 0x14($t6) # D_ovl34_80134B90 + 20
+  /* 164D3C 801341FC 8DCF0014 */        lw $t7, 0x14($t6) # dMvOpeningFirstDestinationFighterKinds + 20
   /* 164D40 80134200 AE0F0014 */        sw $t7, 0x14($s0)
-  /* 164D44 80134204 8DD80018 */        lw $t8, 0x18($t6) # D_ovl34_80134B90 + 24
+  /* 164D44 80134204 8DD80018 */        lw $t8, 0x18($t6) # dMvOpeningFirstDestinationFighterKinds + 24
   /* 164D48 80134208 AE180018 */        sw $t8, 0x18($s0)
-  /* 164D4C 8013420C 8DCF001C */        lw $t7, 0x1c($t6) # D_ovl34_80134B90 + 28
+  /* 164D4C 8013420C 8DCF001C */        lw $t7, 0x1c($t6) # dMvOpeningFirstDestinationFighterKinds + 28
   /* 164D50 80134210 0C00628C */       jal lbRandom_GetTimeByteRange
   /* 164D54 80134214 AE0F001C */        sw $t7, 0x1c($s0)
-  /* 164D58 80134218 3C118013 */       lui $s1, %hi(D_ovl34_80134CF8)
+  /* 164D58 80134218 3C118013 */       lui $s1, %hi(gMvOpeningFirstDestinationPluckedFighterKind)
   /* 164D5C 8013421C 0002C880 */       sll $t9, $v0, 2
   /* 164D60 80134220 02194021 */      addu $t0, $s0, $t9
-  /* 164D64 80134224 26314CF8 */     addiu $s1, $s1, %lo(D_ovl34_80134CF8)
-  /* 164D68 80134228 8E290000 */        lw $t1, ($s1) # D_ovl34_80134CF8 + 0
+  /* 164D64 80134224 26314CF8 */     addiu $s1, $s1, %lo(gMvOpeningFirstDestinationPluckedFighterKind)
+  /* 164D68 80134228 8E290000 */        lw $t1, ($s1) # gMvOpeningFirstDestinationPluckedFighterKind + 0
   /* 164D6C 8013422C 8D030000 */        lw $v1, ($t0)
   /* 164D70 80134230 5469000A */      bnel $v1, $t1, .L8013425C
   /* 164D74 80134234 8FBF001C */        lw $ra, 0x1c($sp)
@@ -2641,7 +2641,7 @@ glabel func_ovl34_801341B4
   /* 164D80 80134240 00025080 */       sll $t2, $v0, 2
   /* 164D84 80134244 020A5821 */      addu $t3, $s0, $t2
   /* 164D88 80134248 8D630000 */        lw $v1, ($t3)
-  /* 164D8C 8013424C 8E2C0000 */        lw $t4, ($s1) # D_ovl34_80134CF8 + 0
+  /* 164D8C 8013424C 8E2C0000 */        lw $t4, ($s1) # gMvOpeningFirstDestinationPluckedFighterKind + 0
   /* 164D90 80134250 106CFFF9 */       beq $v1, $t4, .L80134238
   /* 164D94 80134254 00000000 */       nop
   /* 164D98 80134258 8FBF001C */        lw $ra, 0x1c($sp)
@@ -2652,27 +2652,27 @@ glabel func_ovl34_801341B4
   /* 164DA8 80134268 03E00008 */        jr $ra
   /* 164DAC 8013426C 00601025 */        or $v0, $v1, $zero
 
-glabel func_ovl34_80134270
+glabel mvOpeningFirstDestinationGetPluckedFighterKind
   /* 164DB0 80134270 27BDFFC0 */     addiu $sp, $sp, -0x40
-  /* 164DB4 80134274 3C0F8013 */       lui $t7, %hi(D_ovl34_80134BB0)
+  /* 164DB4 80134274 3C0F8013 */       lui $t7, %hi(dMvOpeningFirstDestinationFighterKindsDuplicate)
   /* 164DB8 80134278 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 164DBC 8013427C 25EF4BB0 */     addiu $t7, $t7, %lo(D_ovl34_80134BB0)
-  /* 164DC0 80134280 8DF90000 */        lw $t9, ($t7) # D_ovl34_80134BB0 + 0
-  /* 164DC4 80134284 8DF80004 */        lw $t8, 4($t7) # D_ovl34_80134BB0 + 4
+  /* 164DBC 8013427C 25EF4BB0 */     addiu $t7, $t7, %lo(dMvOpeningFirstDestinationFighterKindsDuplicate)
+  /* 164DC0 80134280 8DF90000 */        lw $t9, ($t7) # dMvOpeningFirstDestinationFighterKindsDuplicate + 0
+  /* 164DC4 80134284 8DF80004 */        lw $t8, 4($t7) # dMvOpeningFirstDestinationFighterKindsDuplicate + 4
   /* 164DC8 80134288 27AE0020 */     addiu $t6, $sp, 0x20
   /* 164DCC 8013428C ADD90000 */        sw $t9, ($t6)
   /* 164DD0 80134290 ADD80004 */        sw $t8, 4($t6)
-  /* 164DD4 80134294 8DF8000C */        lw $t8, 0xc($t7) # D_ovl34_80134BB0 + 12
-  /* 164DD8 80134298 8DF90008 */        lw $t9, 8($t7) # D_ovl34_80134BB0 + 8
+  /* 164DD4 80134294 8DF8000C */        lw $t8, 0xc($t7) # dMvOpeningFirstDestinationFighterKindsDuplicate + 12
+  /* 164DD8 80134298 8DF90008 */        lw $t9, 8($t7) # dMvOpeningFirstDestinationFighterKindsDuplicate + 8
   /* 164DDC 8013429C 24040008 */     addiu $a0, $zero, 8
   /* 164DE0 801342A0 ADD8000C */        sw $t8, 0xc($t6)
   /* 164DE4 801342A4 ADD90008 */        sw $t9, 8($t6)
-  /* 164DE8 801342A8 8DF90010 */        lw $t9, 0x10($t7) # D_ovl34_80134BB0 + 16
-  /* 164DEC 801342AC 8DF80014 */        lw $t8, 0x14($t7) # D_ovl34_80134BB0 + 20
+  /* 164DE8 801342A8 8DF90010 */        lw $t9, 0x10($t7) # dMvOpeningFirstDestinationFighterKindsDuplicate + 16
+  /* 164DEC 801342AC 8DF80014 */        lw $t8, 0x14($t7) # dMvOpeningFirstDestinationFighterKindsDuplicate + 20
   /* 164DF0 801342B0 ADD90010 */        sw $t9, 0x10($t6)
   /* 164DF4 801342B4 ADD80014 */        sw $t8, 0x14($t6)
-  /* 164DF8 801342B8 8DF8001C */        lw $t8, 0x1c($t7) # D_ovl34_80134BB0 + 28
-  /* 164DFC 801342BC 8DF90018 */        lw $t9, 0x18($t7) # D_ovl34_80134BB0 + 24
+  /* 164DF8 801342B8 8DF8001C */        lw $t8, 0x1c($t7) # dMvOpeningFirstDestinationFighterKindsDuplicate + 28
+  /* 164DFC 801342BC 8DF90018 */        lw $t9, 0x18($t7) # dMvOpeningFirstDestinationFighterKindsDuplicate + 24
   /* 164E00 801342C0 ADD8001C */        sw $t8, 0x1c($t6)
   /* 164E04 801342C4 0C00628C */       jal lbRandom_GetTimeByteRange
   /* 164E08 801342C8 ADD90018 */        sw $t9, 0x18($t6)
@@ -2683,22 +2683,22 @@ glabel func_ovl34_80134270
   /* 164E1C 801342DC 03E00008 */        jr $ra
   /* 164E20 801342E0 27BD0040 */     addiu $sp, $sp, 0x40
 
-glabel func_ovl34_801342E4
+glabel mvOpeningFirstDestinationInitGlobals
   /* 164E24 801342E4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 164E28 801342E8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 164E2C 801342EC 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationFramesElapsed)
-  /* 164E30 801342F0 0C04D09C */       jal func_ovl34_80134270
+  /* 164E30 801342F0 0C04D09C */       jal mvOpeningFirstDestinationGetPluckedFighterKind
   /* 164E34 801342F4 AC204CE4 */        sw $zero, %lo(gMvOpeningFirstDestinationFramesElapsed)($at)
-  /* 164E38 801342F8 3C018013 */       lui $at, %hi(D_ovl34_80134CF8)
-  /* 164E3C 801342FC 0C04D06D */       jal func_ovl34_801341B4
-  /* 164E40 80134300 AC224CF8 */        sw $v0, %lo(D_ovl34_80134CF8)($at)
+  /* 164E38 801342F8 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationPluckedFighterKind)
+  /* 164E3C 801342FC 0C04D06D */       jal mvOpeningFirstDestinationGetDroppedFighterKind
+  /* 164E40 80134300 AC224CF8 */        sw $v0, %lo(gMvOpeningFirstDestinationPluckedFighterKind)($at)
   /* 164E44 80134304 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 164E48 80134308 3C018013 */       lui $at, %hi(D_ovl34_80134CFC)
-  /* 164E4C 8013430C AC224CFC */        sw $v0, %lo(D_ovl34_80134CFC)($at)
+  /* 164E48 80134308 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationDroppedFighterKind)
+  /* 164E4C 8013430C AC224CFC */        sw $v0, %lo(gMvOpeningFirstDestinationDroppedFighterKind)($at)
   /* 164E50 80134310 03E00008 */        jr $ra
   /* 164E54 80134314 27BD0018 */     addiu $sp, $sp, 0x18
 
-glabel func_ovl34_80134318
+glabel mvOpeningFirstDestinationSetFrameBuffer
   /* 164E58 80134318 3C0E8004 */       lui $t6, %hi(D_80044F9C)
   /* 164E5C 8013431C 8DCE4F9C */        lw $t6, %lo(D_80044F9C)($t6)
   /* 164E60 80134320 27BDFFD8 */     addiu $sp, $sp, -0x28
@@ -2808,9 +2808,9 @@ glabel mvOpeningFirstDestinationMainProc
   /* 164FD4 80134494 8C424CE4 */        lw $v0, %lo(gMvOpeningFirstDestinationFramesElapsed)($v0)
   /* 164FD8 80134498 24010118 */     addiu $at, $zero, 0x118
   /* 164FDC 8013449C 14410010 */       bne $v0, $at, .L801344E0
-  /* 164FE0 801344A0 3C048013 */       lui $a0, %hi(D_ovl34_80134CF8)
+  /* 164FE0 801344A0 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationPluckedFighterKind)
   /* 164FE4 801344A4 0C04C8CC */       jal mvOpeningFirstDestinationCreatePluckedFighter
-  /* 164FE8 801344A8 8C844CF8 */        lw $a0, %lo(D_ovl34_80134CF8)($a0)
+  /* 164FE8 801344A8 8C844CF8 */        lw $a0, %lo(gMvOpeningFirstDestinationPluckedFighterKind)($a0)
   /* 164FEC 801344AC 0C04C7DF */       jal mvOpeningFirstDestinationCreatePencilHolder
   /* 164FF0 801344B0 00000000 */       nop
   /* 164FF4 801344B4 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationHALLogoGObj)
@@ -2819,17 +2819,17 @@ glabel mvOpeningFirstDestinationMainProc
   /* 165000 801344C0 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationHALLogoBackgroundGObj)
   /* 165004 801344C4 0C0026A1 */       jal omEjectGObj
   /* 165008 801344C8 8C844D3C */        lw $a0, %lo(gMvOpeningFirstDestinationHALLogoBackgroundGObj)($a0)
-  /* 16500C 801344CC 3C048013 */       lui $a0, %hi(D_ovl34_80134D30)
+  /* 16500C 801344CC 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationMasterHandShadowGObj)
   /* 165010 801344D0 0C0026A1 */       jal omEjectGObj
-  /* 165014 801344D4 8C844D30 */        lw $a0, %lo(D_ovl34_80134D30)($a0)
+  /* 165014 801344D4 8C844D30 */        lw $a0, %lo(gMvOpeningFirstDestinationMasterHandShadowGObj)($a0)
   /* 165018 801344D8 3C028013 */       lui $v0, %hi(gMvOpeningFirstDestinationFramesElapsed)
   /* 16501C 801344DC 8C424CE4 */        lw $v0, %lo(gMvOpeningFirstDestinationFramesElapsed)($v0)
   .L801344E0:
   /* 165020 801344E0 240102B7 */     addiu $at, $zero, 0x2b7
   /* 165024 801344E4 14410005 */       bne $v0, $at, .L801344FC
-  /* 165028 801344E8 3C048013 */       lui $a0, %hi(D_ovl34_80134CFC)
-  /* 16502C 801344EC 0C04CA4A */       jal func_ovl34_80132928
-  /* 165030 801344F0 8C844CFC */        lw $a0, %lo(D_ovl34_80134CFC)($a0)
+  /* 165028 801344E8 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationDroppedFighterKind)
+  /* 16502C 801344EC 0C04CA4A */       jal mvOpeningFirstDestinationCreateDroppedFighter
+  /* 165030 801344F0 8C844CFC */        lw $a0, %lo(gMvOpeningFirstDestinationDroppedFighterKind)($a0)
   /* 165034 801344F4 3C028013 */       lui $v0, %hi(gMvOpeningFirstDestinationFramesElapsed)
   /* 165038 801344F8 8C424CE4 */        lw $v0, %lo(gMvOpeningFirstDestinationFramesElapsed)($v0)
   .L801344FC:
@@ -2861,20 +2861,20 @@ glabel mvOpeningFirstDestinationMainProc
   /* 16509C 8013455C 240101C2 */     addiu $at, $zero, 0x1c2
   /* 1650A0 80134560 54410009 */      bnel $v0, $at, .L80134588
   /* 1650A4 80134564 24010230 */     addiu $at, $zero, 0x230
-  /* 1650A8 80134568 0C04CB3B */       jal func_ovl34_80132CEC
-  /* 1650AC 8013456C 00000000 */       nop 
-  /* 1650B0 80134570 3C048013 */       lui $a0, %hi(D_ovl34_80134D10)
+  /* 1650A8 80134568 0C04CB3B */       jal mvOpeningFirstDestinationCreateCloseupOverlay
+  /* 1650AC 8013456C 00000000 */       nop
+  /* 1650B0 80134570 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationSunlightGObj)
   /* 1650B4 80134574 0C0026A1 */       jal omEjectGObj
-  /* 1650B8 80134578 8C844D10 */        lw $a0, %lo(D_ovl34_80134D10)($a0)
-  /* 1650BC 8013457C 3C028013 */       lui $v0, %hi(D_ovl34_80134CE4)
-  /* 1650C0 80134580 8C424CE4 */        lw $v0, %lo(D_ovl34_80134CE4)($v0)
+  /* 1650B8 80134578 8C844D10 */        lw $a0, %lo(gMvOpeningFirstDestinationSunlightGObj)($a0)
+  /* 1650BC 8013457C 3C028013 */       lui $v0, %hi(gMvOpeningFirstDestinationFramesElapsed)
+  /* 1650C0 80134580 8C424CE4 */        lw $v0, %lo(gMvOpeningFirstDestinationFramesElapsed)($v0)
   /* 1650C4 80134584 24010230 */     addiu $at, $zero, 0x230
   .L80134588:
   /* 1650C8 80134588 5441000D */      bnel $v0, $at, .L801345C0
   /* 1650CC 8013458C 240101F4 */     addiu $at, $zero, 0x1f4
-  /* 1650D0 80134590 0C04D061 */       jal func_ovl34_80134184
+  /* 1650D0 80134590 0C04D061 */       jal mvOpeningFirstDestinationDestroyViewports
   /* 1650D4 80134594 00000000 */       nop
-  /* 1650D8 80134598 0C04CD1C */       jal func_ovl34_80133470
+  /* 1650D8 80134598 0C04CD1C */       jal mvOpeningFirstDestinationCreateSecondSceneViewports
   /* 1650DC 8013459C 00000000 */       nop
   /* 1650E0 801345A0 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationMasterHandGObj)
   /* 1650E4 801345A4 3C050001 */       lui $a1, (0x10010 >> 16) # 65552
@@ -2891,7 +2891,7 @@ glabel mvOpeningFirstDestinationMainProc
   /* 16510C 801345CC 24050009 */     addiu $a1, $zero, 9
   /* 165110 801345D0 0C002834 */       jal omMoveGObjDL
   /* 165114 801345D4 2406FFFF */     addiu $a2, $zero, -1
-  /* 165118 801345D8 0C04CC2E */       jal func_ovl34_801330B8
+  /* 165118 801345D8 0C04CC2E */       jal mvOpeningFirstDestinationCreateSpotlight
   /* 16511C 801345DC 00000000 */       nop
   /* 165120 801345E0 3C028013 */       lui $v0, %hi(gMvOpeningFirstDestinationFramesElapsed)
   /* 165124 801345E4 8C424CE4 */        lw $v0, %lo(gMvOpeningFirstDestinationFramesElapsed)($v0)
@@ -2899,9 +2899,9 @@ glabel mvOpeningFirstDestinationMainProc
   /* 165128 801345E8 2401035C */     addiu $at, $zero, 0x35c
   /* 16512C 801345EC 5441000F */      bnel $v0, $at, .L8013462C
   /* 165130 801345F0 2401040D */     addiu $at, $zero, 0x40d
-  /* 165134 801345F4 0C04D061 */       jal func_ovl34_80134184
+  /* 165134 801345F4 0C04D061 */       jal mvOpeningFirstDestinationDestroyViewports
   /* 165138 801345F8 00000000 */       nop
-  /* 16513C 801345FC 0C04CDAA */       jal func_ovl34_801336A8
+  /* 16513C 801345FC 0C04CDAA */       jal mvOpeningFirstDestinationCreateThirdSceneViewports
   /* 165140 80134600 00000000 */       nop
   /* 165144 80134604 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationMasterHandGObj)
   /* 165148 80134608 3C050001 */       lui $a1, (0x10011 >> 16) # 65553
@@ -2915,8 +2915,8 @@ glabel mvOpeningFirstDestinationMainProc
   /* 165168 80134628 2401040D */     addiu $at, $zero, 0x40d
   .L8013462C:
   /* 16516C 8013462C 14410009 */       bne $v0, $at, .L80134654
-  /* 165170 80134630 3C188013 */       lui $t8, %hi(D_ovl34_80134D50)
-  /* 165174 80134634 8F184D50 */        lw $t8, %lo(D_ovl34_80134D50)($t8)
+  /* 165170 80134630 3C188013 */       lui $t8, %hi(gMvOpeningFirstDestinationCameraGObj)
+  /* 165174 80134634 8F184D50 */        lw $t8, %lo(gMvOpeningFirstDestinationCameraGObj)($t8)
   /* 165178 80134638 2401FFFD */     addiu $at, $zero, -3
   /* 16517C 8013463C 3C028013 */       lui $v0, %hi(gMvOpeningFirstDestinationFramesElapsed)
   /* 165180 80134640 8F030074 */        lw $v1, 0x74($t8)
@@ -2927,24 +2927,24 @@ glabel mvOpeningFirstDestinationMainProc
   .L80134654:
   /* 165194 80134654 24010410 */     addiu $at, $zero, 0x410
   /* 165198 80134658 14410015 */       bne $v0, $at, .L801346B0
-  /* 16519C 8013465C 3C048013 */       lui $a0, %hi(D_ovl34_80134D3C)
+  /* 16519C 8013465C 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationHALLogoBackgroundGObj)
   /* 1651A0 80134660 0C0026A1 */       jal omEjectGObj
-  /* 1651A4 80134664 8C844D3C */        lw $a0, %lo(D_ovl34_80134D3C)($a0)
-  /* 1651A8 80134668 3C048013 */       lui $a0, %hi(D_ovl34_80134D40)
+  /* 1651A4 80134664 8C844D3C */        lw $a0, %lo(gMvOpeningFirstDestinationHALLogoBackgroundGObj)($a0)
+  /* 1651A8 80134668 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationSpotlightGObj)
   /* 1651AC 8013466C 0C0026A1 */       jal omEjectGObj
-  /* 1651B0 80134670 8C844D40 */        lw $a0, %lo(D_ovl34_80134D40)($a0)
-  /* 1651B4 80134674 3C048013 */       lui $a0, %hi(D_ovl34_80134CF4)
+  /* 1651B0 80134670 8C844D40 */        lw $a0, %lo(gMvOpeningFirstDestinationSpotlightGObj)($a0)
+  /* 1651B4 80134674 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationMasterHandGObj)
   /* 1651B8 80134678 0C0026A1 */       jal omEjectGObj
-  /* 1651BC 8013467C 8C844CF4 */        lw $a0, %lo(D_ovl34_80134CF4)($a0)
-  /* 1651C0 80134680 0C04D01F */       jal func_ovl34_8013407C
+  /* 1651BC 8013467C 8C844CF4 */        lw $a0, %lo(gMvOpeningFirstDestinationMasterHandGObj)($a0)
+  /* 1651C0 80134680 0C04D01F */       jal mvOpeningFirstDestinationCreateTransitionGFXViewport
   /* 1651C4 80134684 00000000 */       nop
-  /* 1651C8 80134688 0C04CFBF */       jal func_ovl34_80133EFC
+  /* 1651C8 80134688 0C04CFBF */       jal mvOpeningFirstDestinationCreateTransitionGFX
   /* 1651CC 8013468C 00000000 */       nop
-  /* 1651D0 80134690 0C04CC6C */       jal func_ovl34_801331B0
+  /* 1651D0 80134690 0C04CC6C */       jal mvOpeningFirstDestinationDestroyDeskObjects
   /* 1651D4 80134694 00000000 */       nop
-  /* 1651D8 80134698 0C04CAB9 */       jal func_ovl34_80132AE4
+  /* 1651D8 80134698 0C04CAB9 */       jal mvOpeningFirstDestinationCreateDeskStage
   /* 1651DC 8013469C 00000000 */       nop
-  /* 1651E0 801346A0 0C04CBD1 */       jal func_ovl34_80132F44
+  /* 1651E0 801346A0 0C04CBD1 */       jal mvOpeningFirstDestinationCreateBackground
   /* 1651E4 801346A4 00000000 */       nop
   /* 1651E8 801346A8 3C028013 */       lui $v0, %hi(gMvOpeningFirstDestinationFramesElapsed)
   /* 1651EC 801346AC 8C424CE4 */        lw $v0, %lo(gMvOpeningFirstDestinationFramesElapsed)($v0)
@@ -2952,9 +2952,9 @@ glabel mvOpeningFirstDestinationMainProc
   /* 1651F0 801346B0 24010474 */     addiu $at, $zero, 0x474
   /* 1651F4 801346B4 5441001E */      bnel $v0, $at, .L80134730
   /* 1651F8 801346B8 24010438 */     addiu $at, $zero, 0x438
-  /* 1651FC 801346BC 0C04D061 */       jal func_ovl34_80134184
+  /* 1651FC 801346BC 0C04D061 */       jal mvOpeningFirstDestinationDestroyViewports
   /* 165200 801346C0 00000000 */       nop
-  /* 165204 801346C4 0C04C9CE */       jal func_ovl34_80132738
+  /* 165204 801346C4 0C04C9CE */       jal mvOpeningFirstDestinationCreateCloseUpGFX
   /* 165208 801346C8 00000000 */       nop
   /* 16520C 801346CC 3C098013 */       lui $t1, %hi(gMvOpeningFirstDestinationPluckedFighterGObj)
   /* 165210 801346D0 8D294D04 */        lw $t1, %lo(gMvOpeningFirstDestinationPluckedFighterGObj)($t1)
@@ -2976,19 +2976,19 @@ glabel mvOpeningFirstDestinationMainProc
   /* 165250 80134710 E5D20038 */      swc1 $f18, 0x38($t6)
   /* 165254 80134714 0C0E4173 */       jal func_ovl1_803905CC
   /* 165258 80134718 8C844D04 */        lw $a0, %lo(gMvOpeningFirstDestinationPluckedFighterGObj)($a0)
-  /* 16525C 8013471C 0C04CE35 */       jal func_ovl34_801338D4
+  /* 16525C 8013471C 0C04CE35 */       jal mvOpeningFirstDestinationCreateFourthSceneViewports
   /* 165260 80134720 00000000 */       nop
   /* 165264 80134724 3C028013 */       lui $v0, %hi(gMvOpeningFirstDestinationFramesElapsed)
   /* 165268 80134728 8C424CE4 */        lw $v0, %lo(gMvOpeningFirstDestinationFramesElapsed)($v0)
   /* 16526C 8013472C 24010438 */     addiu $at, $zero, 0x438
   .L80134730:
   /* 165270 80134730 14410008 */       bne $v0, $at, .L80134754
-  /* 165274 80134734 3C048013 */       lui $a0, %hi(D_ovl34_80134D4C)
+  /* 165274 80134734 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationTransitionGFXOverlayGObj)
   /* 165278 80134738 0C0026A1 */       jal omEjectGObj
-  /* 16527C 8013473C 8C844D4C */        lw $a0, %lo(D_ovl34_80134D4C)($a0)
-  /* 165280 80134740 3C048013 */       lui $a0, %hi(D_ovl34_80134D48)
+  /* 16527C 8013473C 8C844D4C */        lw $a0, %lo(gMvOpeningFirstDestinationTransitionGFXOverlayGObj)($a0)
+  /* 165280 80134740 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationTransitionGFXOutlineGObj)
   /* 165284 80134744 0C0026A1 */       jal omEjectGObj
-  /* 165288 80134748 8C844D48 */        lw $a0, %lo(D_ovl34_80134D48)($a0)
+  /* 165288 80134748 8C844D48 */        lw $a0, %lo(gMvOpeningFirstDestinationTransitionGFXOutlineGObj)($a0)
   /* 16528C 8013474C 3C028013 */       lui $v0, %hi(gMvOpeningFirstDestinationFramesElapsed)
   /* 165290 80134750 8C424CE4 */        lw $v0, %lo(gMvOpeningFirstDestinationFramesElapsed)($v0)
   .L80134754:
@@ -3010,9 +3010,9 @@ glabel mvOpeningFirstDestinationMainProc
 glabel mvOpeningFirstDestinationInit
   /* 1652C8 80134788 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 1652CC 8013478C AFBF001C */        sw $ra, 0x1c($sp)
-  /* 1652D0 80134790 3C048013 */       lui $a0, %hi(func_ovl34_80134318)
+  /* 1652D0 80134790 3C048013 */       lui $a0, %hi(mvOpeningFirstDestinationSetFrameBuffer)
   /* 1652D4 80134794 0C001234 */       jal func_800048D0
-  /* 1652D8 80134798 24844318 */     addiu $a0, $a0, %lo(func_ovl34_80134318)
+  /* 1652D8 80134798 24844318 */     addiu $a0, $a0, %lo(mvOpeningFirstDestinationSetFrameBuffer)
   /* 1652DC 8013479C 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 1652E0 801347A0 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
   /* 1652E4 801347A4 3C188013 */       lui $t8, %hi(D_ovl34_80134D58)
@@ -3060,22 +3060,22 @@ glabel mvOpeningFirstDestinationInit
   /* 16538C 8013484C 24060064 */     addiu $a2, $zero, 0x64
   /* 165390 80134850 0C002E7F */       jal func_8000B9FC
   /* 165394 80134854 24070003 */     addiu $a3, $zero, 3
-  /* 165398 80134858 3C018013 */       lui $at, %hi(D_ovl34_80134D50)
+  /* 165398 80134858 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationCameraGObj)
   /* 16539C 8013485C 0C045624 */       jal func_ovl2_80115890
-  /* 1653A0 80134860 AC224D50 */        sw $v0, %lo(D_ovl34_80134D50)($at)
-  /* 1653A4 80134864 0C04D0B9 */       jal func_ovl34_801342E4
+  /* 1653A0 80134860 AC224D50 */        sw $v0, %lo(gMvOpeningFirstDestinationCameraGObj)($at)
+  /* 1653A4 80134864 0C04D0B9 */       jal mvOpeningFirstDestinationInitGlobals
   /* 1653A8 80134868 00000000 */       nop
   /* 1653AC 8013486C 0C03F4C0 */       jal efManager_AllocUserData
   /* 1653B0 80134870 00000000 */       nop
   /* 1653B4 80134874 24040001 */     addiu $a0, $zero, 1
   /* 1653B8 80134878 0C035C65 */       jal ftManager_AllocFighterData
   /* 1653BC 8013487C 24050003 */     addiu $a1, $zero, 3
-  /* 1653C0 80134880 3C048013 */       lui $a0, %hi(D_ovl34_80134CF8)
+  /* 1653C0 80134880 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationPluckedFighterKind)
   /* 1653C4 80134884 0C035E1B */       jal ftManager_SetFileDataKind
-  /* 1653C8 80134888 8C844CF8 */        lw $a0, %lo(D_ovl34_80134CF8)($a0)
-  /* 1653CC 8013488C 3C048013 */       lui $a0, %hi(D_ovl34_80134CFC)
+  /* 1653C8 80134888 8C844CF8 */        lw $a0, %lo(gMvOpeningFirstDestinationPluckedFighterKind)($a0)
+  /* 1653CC 8013488C 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationDroppedFighterKind)
   /* 1653D0 80134890 0C035E1B */       jal ftManager_SetFileDataKind
-  /* 1653D4 80134894 8C844CFC */        lw $a0, %lo(D_ovl34_80134CFC)($a0)
+  /* 1653D4 80134894 8C844CFC */        lw $a0, %lo(gMvOpeningFirstDestinationDroppedFighterKind)($a0)
   /* 1653D8 80134898 0C035E1B */       jal ftManager_SetFileDataKind
   /* 1653DC 8013489C 2404000C */     addiu $a0, $zero, 0xc
   /* 1653E0 801348A0 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
@@ -3094,14 +3094,14 @@ glabel mvOpeningFirstDestinationInit
   /* 165414 801348D4 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
   /* 165418 801348D8 0C001260 */       jal gsMemoryAlloc
   /* 16541C 801348DC 24050010 */     addiu $a1, $zero, 0x10
-  /* 165420 801348E0 3C018013 */       lui $at, %hi(D_ovl34_80134CE0)
-  /* 165424 801348E4 0C04CCAF */       jal func_ovl34_801332BC
-  /* 165428 801348E8 AC224CE0 */        sw $v0, %lo(D_ovl34_80134CE0)($at)
-  /* 16542C 801348EC 0C04CB52 */       jal func_ovl34_80132D48
+  /* 165420 801348E0 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationDroppedFighterAnimHeap)
+  /* 165424 801348E4 0C04CCAF */       jal mvOpeningFirstDestinationCreateFirstSceneViewports
+  /* 165428 801348E8 AC224CE0 */        sw $v0, %lo(gMvOpeningFirstDestinationDroppedFighterAnimHeap)($at)
+  /* 16542C 801348EC 0C04CB52 */       jal mvOpeningFirstDestinationCreateOverlayViewport
   /* 165430 801348F0 00000000 */       nop
-  /* 165434 801348F4 0C04CE73 */       jal func_ovl34_801339CC
+  /* 165434 801348F4 0C04CE73 */       jal mvOpeningFirstDestinationCreateBackgroundViewport
   /* 165438 801348F8 00000000 */       nop
-  /* 16543C 801348FC 0C04CE9B */       jal func_ovl34_80133A6C
+  /* 16543C 801348FC 0C04CE9B */       jal mvOpeningFirstDestinationCreateHALLogoViewport
   /* 165440 80134900 00000000 */       nop
   /* 165444 80134904 0C04C760 */       jal mvOpeningFirstDestinationCreateOutside
   /* 165448 80134908 00000000 */       nop
@@ -3125,7 +3125,7 @@ glabel mvOpeningFirstDestinationInit
   /* 165490 80134950 00000000 */       nop
   /* 165494 80134954 0C04C87E */       jal mvOpeningFirstDestinationCreateMasterHand
   /* 165498 80134958 00000000 */       nop
-  /* 16549C 8013495C 0C04CA7C */       jal func_ovl34_801329F0
+  /* 16549C 8013495C 0C04CA7C */       jal mvOpeningFirstDestinationCreateMasterHandShadow
   /* 1654A0 80134960 00000000 */       nop
   /* 1654A4 80134964 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 1654A8 80134968 44816000 */      mtc1 $at, $f12 # 45.0 to cop1

@@ -59,7 +59,7 @@ void mvOpeningLinkHillRenderHills(GObj* hills_gobj)
 // 0x80131C34
 void mvOpeningLinkHillCreateHills()
 {
-    GObj* hills_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    GObj* hills_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     func_8000F120(hills_gobj, GetAddressFromOffset(gMvOpeningLinkHillFilesArray[0], &FILE_044_HILL_OBJECT_OFFSET), 0);
     omAddGObjRenderProc(hills_gobj, mvOpeningLinkHillRenderHills, 0x1A, 0x80000000, -1);
 }
@@ -153,7 +153,7 @@ void mvOpeningLinkHillCreateBackground()
     GObj* bg_gobj;
     SObj* bg_sobj;
 
-    bg_gobj = omMakeGObjCommon(0, 0, 0x12, 0x80000000);
+    bg_gobj = omMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
     omAddGObjRenderProc(bg_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
     omAddGObjCommonProc(bg_gobj, mvOpeningLinkHillScrollBackground, 1, 1);
 
@@ -177,7 +177,7 @@ void mvOpeningLinkHillCreateOcarina()
 {
     GObj* ocarina_gobj;
 
-    gMvOpeningLinkHillOcarinaGObj = ocarina_gobj = omMakeGObjCommon(0, 0, 0x11, 0x80000000);
+    gMvOpeningLinkHillOcarinaGObj = ocarina_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
     func_8000F590(ocarina_gobj, GetAddressFromOffset(gMvOpeningLinkHillFilesArray[0], &FILE_044_OCARINA_OFFSET_1), 0, 0x1C, 0, 0);
     omAddGObjRenderProc(ocarina_gobj, odRenderDObjTreeForGObj, 0x1A, 0x80000000, -1);
 
@@ -290,7 +290,7 @@ void mvOpeningLinkHillInit()
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl46_801326D0, ARRAY_COUNT(D_ovl46_801326D0), gMvOpeningLinkHillFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl46_801326D0, ARRAY_COUNT(D_ovl46_801326D0)), 0x10));
 
-    omMakeGObjCommon(0, mvOpeningLinkHillMainProc, 0, 0x80000000);
+    omMakeGObjSPAfter(0, mvOpeningLinkHillMainProc, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 1, 0);
     func_ovl2_80115890();
     mvOpeningLinkHillInitFramesElapsed();

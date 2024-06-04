@@ -115,7 +115,7 @@ void func_ovl49_80131CCC(GObj* arg0)
 void mvOpeningKickEntryCreateWhiteOverlay()
 {
     gMvOpeningKickEntryWhiteOverlayAlpha = 0;
-    omAddGObjRenderProc(omMakeGObjCommon(0, 0, 0x12, 0x80000000), func_ovl49_80131CCC, 0x1A, 0x80000000, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x12, 0x80000000), func_ovl49_80131CCC, 0x1A, 0x80000000, -1);
 }
 
 // 0x80131E5C
@@ -124,7 +124,7 @@ void mvOpeningKickEntryCreateBackground()
     GObj* temp_v0;
 
     // lower left quadrant
-    temp_v0 = omMakeGObjCommon(0, 0, 0x14, 0x80000000);
+    temp_v0 = omMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
     omAddGObjRenderProc(temp_v0, odRenderDObjDLHead0, 0x1D, 0x80000000, -1);
     omAddOMMtxForDObjFixed(omAddDObjForGObj(temp_v0, GetAddressFromOffset(gMvOpeningKickEntryFilesArray[1], &FILE_042_BACKGROUND_LOWER_LEFT_OFFSET_2)), 0x1C, 0);
     func_8000F8F4(temp_v0, GetAddressFromOffset(gMvOpeningKickEntryFilesArray[1], &FILE_042_BACKGROUND_LOWER_LEFT_OFFSET_1));
@@ -138,7 +138,7 @@ void mvOpeningKickEntryCreateBackground()
     omAddGObjCommonProc(temp_v0, func_8000DF34, 1, 1);
 
     // lower right quadrant
-    temp_v0 = omMakeGObjCommon(0, 0, 0x14, 0x80000000);
+    temp_v0 = omMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
     omAddGObjRenderProc(temp_v0, odRenderDObjDLHead0, 0x1D, 0x80000000, -1);
     omAddOMMtxForDObjFixed(omAddDObjForGObj(temp_v0, GetAddressFromOffset(gMvOpeningKickEntryFilesArray[1], &FILE_042_BACKGROUND_LOWER_RIGHT_OFFSET_2)), 0x1C, 0);
     func_8000F8F4(temp_v0, GetAddressFromOffset(gMvOpeningKickEntryFilesArray[1], &FILE_042_BACKGROUND_LOWER_RIGHT_OFFSET_1));
@@ -152,7 +152,7 @@ void mvOpeningKickEntryCreateBackground()
     omAddGObjCommonProc(temp_v0, func_8000DF34, 1, 1);
 
     // upper left quadrant
-    temp_v0 = omMakeGObjCommon(0, 0, 0x14, 0x80000000);
+    temp_v0 = omMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
     omAddGObjRenderProc(temp_v0, odRenderDObjDLHead0, 0x1D, 0x80000000, -1);
     omAddOMMtxForDObjFixed(omAddDObjForGObj(temp_v0, GetAddressFromOffset(gMvOpeningKickEntryFilesArray[1], &FILE_042_BACKGROUND_UPPER_LEFT_OFFSET_2)), 0x1C, 0);
     func_8000F8F4(temp_v0, GetAddressFromOffset(gMvOpeningKickEntryFilesArray[1], &FILE_042_BACKGROUND_UPPER_LEFT_OFFSET_1));
@@ -166,7 +166,7 @@ void mvOpeningKickEntryCreateBackground()
     omAddGObjCommonProc(temp_v0, func_8000DF34, 1, 1);
 
     // upper right quadrant
-    temp_v0 = omMakeGObjCommon(0, 0, 0x14, 0x80000000);
+    temp_v0 = omMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
     omAddGObjRenderProc(temp_v0, odRenderDObjDLHead0, 0x1D, 0x80000000, -1);
     omAddOMMtxForDObjFixed(omAddDObjForGObj(temp_v0, GetAddressFromOffset(gMvOpeningKickEntryFilesArray[1], &FILE_042_BACKGROUND_UPPER_RIGHT_OFFSET_2)), 0x1C, 0);
     func_8000F8F4(temp_v0, GetAddressFromOffset(gMvOpeningKickEntryFilesArray[1], &FILE_042_BACKGROUND_UPPER_RIGHT_OFFSET_1));
@@ -287,7 +287,7 @@ void mvOpeningKickEntryInit()
     rdManagerInitSetup(&rldmSetup);
     rdManagerLoadFiles(D_ovl49_801328D0, ARRAY_COUNT(D_ovl49_801328D0), gMvOpeningKickEntryFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl49_801328D0, ARRAY_COUNT(D_ovl49_801328D0)), 0x10));
 
-    omMakeGObjCommon(0, mvOpeningKickEntryMainProc, 0, 0x80000000);
+    omMakeGObjSPAfter(0, mvOpeningKickEntryMainProc, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 3, 0xFF);
     func_ovl2_80115890();
     mvOpeningKickEntryInitFramesElapsed();

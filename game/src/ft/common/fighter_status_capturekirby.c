@@ -457,7 +457,7 @@ void ftCommon_ThrownKirbyStar_ProcStatus(GObj *fighter_gobj)
     ftCommon_ThrownKirbyStar_InitStatusVars(fighter_gobj);
 }
 
-extern intptr_t lKirbySpecialNCopyData; // This is just 0x00000000
+extern intptr_t lFTKirbySpecialNCopyData; // This is just 0x00000000
 extern void *gFTDataKirbyBattleMotion;
 
 // 0x8014C508
@@ -465,7 +465,7 @@ void ftCommon_ThrownKirbyStar_SetStatus(GObj *fighter_gobj)
 {
     s32 i;
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lKirbySpecialNCopyData);
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lFTKirbySpecialNCopyData);
 
     if (fp->ground_or_air == GA_Ground)
     {

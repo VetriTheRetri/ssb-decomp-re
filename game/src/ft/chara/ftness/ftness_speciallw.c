@@ -225,7 +225,7 @@ void ftNessSpecialLwInitVars(GObj *fighter_gobj)
 
     if (!(fp->is_attach_effect))
     {
-        if (efParticle_PSIMagnet_MakeEffect(fighter_gobj) != NULL)
+        if (efParticle_PsychicMagnet_MakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
         }

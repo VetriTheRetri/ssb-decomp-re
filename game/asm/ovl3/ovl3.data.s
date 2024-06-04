@@ -999,7 +999,7 @@ glabel ftCommon_CaptureKirby_CatchKnockback
 glabel ftCommon_CaptureKirby_CaptureKnockback
   .incbin "ovl3.raw.bin", 0x56C10, 0x10
 
-glabel ftCommon_YoshiEgg_HurtboxDesc
+glabel dFTYoshiEggHurtboxDesc
   /* 56C20 103160 80188720 */
   .asciz "@"
   .balign 4

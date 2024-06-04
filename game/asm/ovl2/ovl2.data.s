@@ -331,7 +331,7 @@ glabel D_ovl2_80117810
   /* 413B4 093044 80117844 */  .4byte D_ovl2_80130E38
   .incbin "ovl2.raw.bin", 0x413B8, 0x4
   /* 413BC 09304C 8011784C */  .4byte gFTDataMarioExtra1
-  /* 413C0 093050 80117850 */  .4byte D_ovl2_80130E40
+  /* 413C0 093050 80117850 */  .4byte gFTDataMarioExtra2
   /* 413C4 093054 80117854 */  .4byte D_ovl2_80130E44
   .incbin "ovl2.raw.bin", 0x413C8, 0x4
   /* 413CC 09305C 8011785C */  .4byte D_ovl2_80130E48
@@ -546,7 +546,7 @@ glabel D_ovl2_801196F4
   .incbin "ovl2.raw.bin", 0x4329C, 0x4
   /* 432A0 094F30 80119730 */  .4byte gFTDataFoxExtra1
   /* 432A4 094F34 80119734 */  .4byte gFTDataFoxExtra2
-  /* 432A8 094F38 80119738 */  .4byte D_ovl2_80130EA4
+  /* 432A8 094F38 80119738 */  .4byte gFTDataFoxExtra3
   /* 432AC 094F3C 8011973C */  .4byte D_ovl2_80130EA8
   /* 432B0 094F40 80119740 */  .4byte D_ovl2_80130EAC
   .incbin "ovl2.raw.bin", 0x432B4, 0x14
@@ -708,7 +708,7 @@ glabel D_ovl2_8011AC8C
   .incbin "ovl2.raw.bin", 0x4482C, 0x4
   /* 44830 0964C0 8011ACC0 */  .4byte D_ovl2_80130ED8
   .incbin "ovl2.raw.bin", 0x44834, 0x8
-  /* 4483C 0964CC 8011ACCC */  .4byte D_ovl2_80130EDC
+  /* 4483C 0964CC 8011ACCC */  .4byte gFTDataDonkeyExtra2
   .incbin "ovl2.raw.bin", 0x44840, 0x8
   /* 44848 0964D8 8011ACD8 */  .4byte D_ovl2_80130EE0
   .incbin "ovl2.raw.bin", 0x4484C, 0x14
@@ -1075,7 +1075,7 @@ glabel D_ovl2_8011E0A0
   /* 47C44 0998D4 8011E0D4 */  .4byte D_ovl2_80130F78
   .incbin "ovl2.raw.bin", 0x47C48, 0x4
   /* 47C4C 0998DC 8011E0DC */  .4byte gFTDataLuigiExtra1
-  /* 47C50 0998E0 8011E0E0 */  .4byte D_ovl2_80130F80
+  /* 47C50 0998E0 8011E0E0 */  .4byte gFTDataLuigiExtra2
   /* 47C54 0998E4 8011E0E4 */  .4byte D_ovl2_80130F84
   .incbin "ovl2.raw.bin", 0x47C58, 0x4
   /* 47C5C 0998EC 8011E0EC */  .4byte D_ovl2_80130F88
@@ -1239,7 +1239,7 @@ glabel D_ovl2_8011F520
   /* 490C4 09AD54 8011F554 */  .4byte D_ovl2_80130FB8
   .incbin "ovl2.raw.bin", 0x490C8, 0x4
   /* 490CC 09AD5C 8011F55C */  .4byte gFTDataLinkExtra1
-  /* 490D0 09AD60 8011F560 */  .4byte D_ovl2_80130FC0
+  /* 490D0 09AD60 8011F560 */  .4byte gFTDataLinkExtra2
   /* 490D4 09AD64 8011F564 */  .4byte D_ovl2_80130FC4
   .incbin "ovl2.raw.bin", 0x490D8, 0x4
   /* 490DC 09AD6C 8011F56C */  .4byte D_ovl2_80130FC8
@@ -1330,10 +1330,10 @@ glabel D_ovl2_801209D0
   .incbin "ovl2.raw.bin", 0x4A570, 0x4
   /* 4A574 09C204 80120A04 */  .4byte gFTDataYoshiModel
   .incbin "ovl2.raw.bin", 0x4A578, 0x8
-  /* 4A580 09C210 80120A10 */  .4byte D_ovl2_80130FFC
-  /* 4A584 09C214 80120A14 */  .4byte D_ovl2_80131000
+  /* 4A580 09C210 80120A10 */  .4byte gFTDataYoshiExtra2
+  /* 4A584 09C214 80120A14 */  .4byte gFTDataYoshiExtra3
   .incbin "ovl2.raw.bin", 0x4A588, 0x4
-  /* 4A58C 09C21C 80120A1C */  .4byte D_ovl2_80131004
+  /* 4A58C 09C21C 80120A1C */  .4byte gFTDataYoshiParticles
   .incbin "ovl2.raw.bin", 0x4A590, 0x14
   /* 4A5A4 09C234 80120A34 */  .4byte D_ovl2_80120010
   /* 4A5A8 09C238 80120A38 */  .4byte D_ovl1_80391CA0
@@ -1560,8 +1560,8 @@ glabel D_ovl2_80121E98
   .incbin "ovl2.raw.bin", 0x4BA38, 0x4
   /* 4BA3C 09D6CC 80121ECC */  .4byte D_ovl2_80131038
   .incbin "ovl2.raw.bin", 0x4BA40, 0x8
-  /* 4BA48 09D6D8 80121ED8 */  .4byte D_ovl2_8013103C
-  /* 4BA4C 09D6DC 80121EDC */  .4byte D_ovl2_80131040
+  /* 4BA48 09D6D8 80121ED8 */  .4byte gFTDataCaptainExtra2
+  /* 4BA4C 09D6DC 80121EDC */  .4byte gFTDataCaptainExtra3
   .incbin "ovl2.raw.bin", 0x4BA50, 0x4
   /* 4BA54 09D6E4 80121EE4 */  .4byte D_ovl2_80131044
   .incbin "ovl2.raw.bin", 0x4BA58, 0x14
@@ -1817,7 +1817,7 @@ glabel D_ovl2_80123680
   .incbin "ovl2.raw.bin", 0x4D228, 0x8
   /* 4D230 09EEC0 801236C0 */  .4byte gFTDataKirbyExtra2
   .incbin "ovl2.raw.bin", 0x4D234, 0x8
-  /* 4D23C 09EECC 801236CC */  .4byte D_ovl2_80131080
+  /* 4D23C 09EECC 801236CC */  .4byte gFTDataKirbyParticles
   .incbin "ovl2.raw.bin", 0x4D240, 0x14
   /* 4D254 09EEE4 801236E4 */  .4byte D_ovl2_80122990
   /* 4D258 09EEE8 801236E8 */  .4byte D_ovl1_803920B4
@@ -2171,7 +2171,7 @@ glabel D_ovl2_8012617C
   .incbin "ovl2.raw.bin", 0x4FD1C, 0x4
   /* 4FD20 0A19B0 801261B0 */  .4byte D_ovl2_801310F8
   .incbin "ovl2.raw.bin", 0x4FD24, 0x8
-  /* 4FD2C 0A19BC 801261BC */  .4byte D_ovl2_801310FC
+  /* 4FD2C 0A19BC 801261BC */  .4byte gFTDataPurinExtra2
   .incbin "ovl2.raw.bin", 0x4FD30, 0x8
   /* 4FD38 0A19C8 801261C8 */  .4byte D_ovl2_80131100
   .incbin "ovl2.raw.bin", 0x4FD3C, 0x14
@@ -2351,10 +2351,10 @@ glabel D_ovl2_801276A0
   /* 51238 0A2EC8 801276C8 */  .4byte gFTDataNessMain
   /* 5123C 0A2ECC 801276CC */  .4byte gFTDataNessBattleMotion
   .incbin "ovl2.raw.bin", 0x51240, 0x4
-  /* 51244 0A2ED4 801276D4 */  .4byte D_ovl2_80131138
+  /* 51244 0A2ED4 801276D4 */  .4byte gFTDataNessModel
   .incbin "ovl2.raw.bin", 0x51248, 0x4
   /* 5124C 0A2EDC 801276DC */  .4byte gFTDataNessExtra1
-  /* 51250 0A2EE0 801276E0 */  .4byte D_ovl2_80131140
+  /* 51250 0A2EE0 801276E0 */  .4byte gFTDataNessExtra2
   /* 51254 0A2EE4 801276E4 */  .4byte D_ovl2_80131144
   .incbin "ovl2.raw.bin", 0x51258, 0x4
   /* 5125C 0A2EEC 801276EC */  .4byte gFTDataNessExtra4
@@ -7041,25 +7041,25 @@ glabel dEFImpactWaveEnvColorG
 glabel dEFImpactWaveEnvColorB
   .incbin "ovl2.raw.bin", 0x57A60, 0x8
 
-glabel efParticle_DeadBlast_SubColorR
+glabel dEFDeadExplodeEnvColorSiblingR
   .incbin "ovl2.raw.bin", 0x57A68, 0x4
 
-glabel efParticle_DeadBlast_SubColorG
+glabel dEFDeadExplodeEnvColorSiblingG
   .incbin "ovl2.raw.bin", 0x57A6C, 0x4
 
-glabel efParticle_DeadBlast_SubColorB
+glabel dEFDeadExplodeEnvColorSiblingB
   .incbin "ovl2.raw.bin", 0x57A70, 0x4
 
-glabel efParticle_DeadBlast_MainColorR
+glabel dEFDeadExplodeEnvColorChildR
   .incbin "ovl2.raw.bin", 0x57A74, 0x4
 
-glabel efParticle_DeadBlast_MainColorG
+glabel dEFDeadExplodeEnvColorChildG
   .incbin "ovl2.raw.bin", 0x57A78, 0x4
 
-glabel efParticle_DeadBlast_MainColorB
+glabel dEFDeadExplodeEnvColorChildB
   .incbin "ovl2.raw.bin", 0x57A7C, 0x4
 
-glabel efParticle_DeadBlast_Rotate
+glabel dEFDeadExplodeRotateD
   /* 57A80 0A9710 8012DF10 */
   .4byte 0x000000 # .float 0.0
   .incbin "ovl2.raw.bin", 0x57A84, 0x4
@@ -7267,31 +7267,31 @@ glabel dEFGrappleBeamEffectDesc
   /* 57E20 0A9AB0 8012E2B0 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57E24, 0x10
 
-glabel D_ovl2_8012E2C4
+glabel dEFFalconKickEffectDesc
   .incbin "ovl2.raw.bin", 0x57E34, 0x4
-  /* 57E38 0A9AC8 8012E2C8 */  .4byte D_ovl2_8013103C
+  /* 57E38 0A9AC8 8012E2C8 */  .4byte gFTDataCaptainExtra2
   .incbin "ovl2.raw.bin", 0x57E3C, 0x8
   /* 57E44 0A9AD4 8012E2D4 */  .4byte func_ovl2_800FD5D8
   /* 57E48 0A9AD8 8012E2D8 */  .4byte odRenderDObjTreeForGObj
   .incbin "ovl2.raw.bin", 0x57E4C, 0x10
 
-glabel D_ovl2_8012E2EC
+glabel dEFFalconPunchEffectDesc
   .incbin "ovl2.raw.bin", 0x57E5C, 0x4
-  /* 57E60 0A9AF0 8012E2F0 */  .4byte D_ovl2_80131040
+  /* 57E60 0A9AF0 8012E2F0 */  .4byte gFTDataCaptainExtra3
   .incbin "ovl2.raw.bin", 0x57E64, 0x8
   /* 57E6C 0A9AFC 8012E2FC */  .4byte func_ovl2_800FD5D8
   /* 57E70 0A9B00 8012E300 */  .4byte func_ovl0_800CB4B0
   .incbin "ovl2.raw.bin", 0x57E74, 0x10
 
-glabel D_ovl2_8012E314
+glabel dEFPurinSingEffectDesc
   .incbin "ovl2.raw.bin", 0x57E84, 0x4
-  /* 57E88 0A9B18 8012E318 */  .4byte D_ovl2_801310FC
+  /* 57E88 0A9B18 8012E318 */  .4byte gFTDataPurinExtra2
   .incbin "ovl2.raw.bin", 0x57E8C, 0x8
   /* 57E94 0A9B24 8012E324 */  .4byte efManagerDefaultEndEjectProcUpdate
   /* 57E98 0A9B28 8012E328 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57E9C, 0x10
 
-glabel D_ovl2_8012E33C
+glabel dEFDeadExplodeEffectDesc
   .incbin "ovl2.raw.bin", 0x57EAC, 0x4
   /* 57EB0 0A9B40 8012E340 */  .4byte sEFTexturesFile2
   .incbin "ovl2.raw.bin", 0x57EB4, 0x8
@@ -7299,13 +7299,13 @@ glabel D_ovl2_8012E33C
   /* 57EC0 0A9B50 8012E350 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57EC4, 0x10
 
-glabel efParticle_DeadBlast_GenIndex
+glabel dEFDeadExplodeGenID
   .incbin "ovl2.raw.bin", 0x57ED4, 0x8
 
-glabel D_ovl2_8012E36C
+glabel dEFDeadExplodeMatAnimJoints
   .incbin "ovl2.raw.bin", 0x57EDC, 0x10
 
-glabel D_ovl2_8012E37C
+glabel dEFFinalCutterUpEffectDesc
   .incbin "ovl2.raw.bin", 0x57EEC, 0x4
   /* 57EF0 0A9B80 8012E380 */  .4byte gFTDataKirbyExtra2
   .incbin "ovl2.raw.bin", 0x57EF4, 0x8
@@ -7313,7 +7313,7 @@ glabel D_ovl2_8012E37C
   /* 57F00 0A9B90 8012E390 */  .4byte odRenderDObjTreeForGObj
   .incbin "ovl2.raw.bin", 0x57F04, 0x10
 
-glabel D_ovl2_8012E3A4
+glabel dEFFinalCutterDownEffectDesc
   .incbin "ovl2.raw.bin", 0x57F14, 0x4
   /* 57F18 0A9BA8 8012E3A8 */  .4byte gFTDataKirbyExtra2
   .incbin "ovl2.raw.bin", 0x57F1C, 0x8
@@ -7321,7 +7321,7 @@ glabel D_ovl2_8012E3A4
   /* 57F28 0A9BB8 8012E3B8 */  .4byte odRenderDObjTreeForGObj
   .incbin "ovl2.raw.bin", 0x57F2C, 0x10
 
-glabel D_ovl2_8012E3CC
+glabel dEFFinalCutterDrawEffectDesc
   .incbin "ovl2.raw.bin", 0x57F3C, 0x4
   /* 57F40 0A9BD0 8012E3D0 */  .4byte gFTDataKirbyExtra2
   .incbin "ovl2.raw.bin", 0x57F44, 0x8
@@ -7329,7 +7329,7 @@ glabel D_ovl2_8012E3CC
   /* 57F50 0A9BE0 8012E3E0 */  .4byte odRenderDObjTreeForGObj
   .incbin "ovl2.raw.bin", 0x57F54, 0x10
 
-glabel D_ovl2_8012E3F4
+glabel dEFFinalCutterTrailEffectDesc
   .incbin "ovl2.raw.bin", 0x57F64, 0x4
   /* 57F68 0A9BF8 8012E3F8 */  .4byte gFTDataKirbyExtra2
   .incbin "ovl2.raw.bin", 0x57F6C, 0x8
@@ -7337,9 +7337,9 @@ glabel D_ovl2_8012E3F4
   /* 57F78 0A9C08 8012E408 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57F7C, 0x10
 
-glabel D_ovl2_8012E41C
+glabel dEFPsychicMagnetEffectDesc
   .incbin "ovl2.raw.bin", 0x57F8C, 0x4
-  /* 57F90 0A9C20 8012E420 */  .4byte D_ovl2_80131140
+  /* 57F90 0A9C20 8012E420 */  .4byte gFTDataNessExtra2
   .incbin "ovl2.raw.bin", 0x57F94, 0x4
   /* 57F98 0A9C28 8012E428 */
   .asciz "."
@@ -7348,9 +7348,9 @@ glabel D_ovl2_8012E41C
   /* 57FA0 0A9C30 8012E430 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x57FA4, 0x10
 
-glabel D_ovl2_8012E444
+glabel dEFPKThunderTrailEffectDesc
   .incbin "ovl2.raw.bin", 0x57FB4, 0x4
-  /* 57FB8 0A9C48 8012E448 */  .4byte D_ovl2_80131138
+  /* 57FB8 0A9C48 8012E448 */  .4byte gFTDataNessModel
   .incbin "ovl2.raw.bin", 0x57FBC, 0x8
 
 glabel jtbl_ovl2_8012E454
@@ -7358,9 +7358,9 @@ glabel jtbl_ovl2_8012E454
   /* 57FC8 0A9C58 8012E458 */  .4byte efParticle_PKThunderTrail_ProcRender
   .incbin "ovl2.raw.bin", 0x57FCC, 0x10
 
-glabel D_ovl2_8012E46C
+glabel dEFPKReflectTrailEffectDesc
   .incbin "ovl2.raw.bin", 0x57FDC, 0x4
-  /* 57FE0 0A9C70 8012E470 */  .4byte D_ovl2_80131138
+  /* 57FE0 0A9C70 8012E470 */  .4byte gFTDataNessModel
   .incbin "ovl2.raw.bin", 0x57FE4, 0x8
 
 glabel jtbl_ovl2_8012E47C
@@ -7368,9 +7368,9 @@ glabel jtbl_ovl2_8012E47C
   /* 57FF0 0A9C80 8012E480 */  .4byte efParticle_PKThunderTrail_ProcRender
   .incbin "ovl2.raw.bin", 0x57FF4, 0x10
 
-glabel D_ovl2_8012E494
+glabel dEFPKThunderWaveEffectDesc
   .incbin "ovl2.raw.bin", 0x58004, 0x4
-  /* 58008 0A9C98 8012E498 */  .4byte D_ovl2_80131138
+  /* 58008 0A9C98 8012E498 */  .4byte gFTDataNessModel
   .incbin "ovl2.raw.bin", 0x5800C, 0x4
   /* 58010 0A9CA0 8012E4A0 */
   .asciz "."
@@ -7379,7 +7379,7 @@ glabel D_ovl2_8012E494
   /* 58018 0A9CA8 8012E4A8 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x5801C, 0x10
 
-glabel D_ovl2_8012E4BC
+glabel dEFPKFlashEffectDesc
   .incbin "ovl2.raw.bin", 0x5802C, 0x4
   /* 58030 0A9CC0 8012E4C0 */  .4byte sEFTexturesFile2
   .incbin "ovl2.raw.bin", 0x58034, 0x8
@@ -7387,23 +7387,23 @@ glabel D_ovl2_8012E4BC
   /* 58040 0A9CD0 8012E4D0 */  .4byte odRenderDObjTreeForGObj
   .incbin "ovl2.raw.bin", 0x58044, 0x10
 
-glabel D_ovl2_8012E4E4
+glabel dEFLinkEntryWaveEffectDesc
   .incbin "ovl2.raw.bin", 0x58054, 0x4
-  /* 58058 0A9CE8 8012E4E8 */  .4byte D_ovl2_80130FC0
+  /* 58058 0A9CE8 8012E4E8 */  .4byte gFTDataLinkExtra2
   .incbin "ovl2.raw.bin", 0x5805C, 0x8
   /* 58064 0A9CF4 8012E4F4 */  .4byte func_8000DF34
   /* 58068 0A9CF8 8012E4F8 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x5806C, 0x10
 
-glabel D_ovl2_8012E50C
+glabel dEFLinkEntryBeamEffectDesc
   .incbin "ovl2.raw.bin", 0x5807C, 0x4
-  /* 58080 0A9D10 8012E510 */  .4byte D_ovl2_80130FC0
+  /* 58080 0A9D10 8012E510 */  .4byte gFTDataLinkExtra2
   .incbin "ovl2.raw.bin", 0x58084, 0x8
   /* 5808C 0A9D1C 8012E51C */  .4byte func_8000DF34
   /* 58090 0A9D20 8012E520 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x58094, 0x10
 
-glabel D_ovl2_8012E534
+glabel dEFKirbyEntryStarEffectDesc
   .incbin "ovl2.raw.bin", 0x580A4, 0x4
   /* 580A8 0A9D38 8012E538 */  .4byte gFTDataKirbyExtra2
   .incbin "ovl2.raw.bin", 0x580AC, 0x8
@@ -7411,7 +7411,7 @@ glabel D_ovl2_8012E534
   /* 580B8 0A9D48 8012E548 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x580BC, 0x10
 
-glabel D_ovl2_8012E55C
+glabel dEFMBallRaysEffectDesc
   .incbin "ovl2.raw.bin", 0x580CC, 0x4
   /* 580D0 0A9D60 8012E560 */  .4byte sEFTexturesFile3
   .incbin "ovl2.raw.bin", 0x580D4, 0x8
@@ -7419,34 +7419,34 @@ glabel D_ovl2_8012E55C
   /* 580E0 0A9D70 8012E570 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x580E4, 0x10
 
-glabel D_ovl2_8012E584
+glabel dEFMBallThrownEffectDesc
   .incbin "ovl2.raw.bin", 0x580F4, 0x4
   /* 580F8 0A9D88 8012E588 */  .4byte gITFileData
   .incbin "ovl2.raw.bin", 0x580FC, 0x8
-  /* 58104 0A9D94 8012E594 */  .4byte func_ovl2_80102C84
+  /* 58104 0A9D94 8012E594 */  .4byte efMBallThrownProcUpdate
   /* 58108 0A9D98 8012E598 */  .4byte odRenderDObjTreeForGObj
   .incbin "ovl2.raw.bin", 0x5810C, 0x10
 
-glabel D_ovl2_8012E5AC
+glabel dEFYoshiEntryEggEffectDesc
   .incbin "ovl2.raw.bin", 0x5811C, 0x4
-  /* 58120 0A9DB0 8012E5B0 */  .4byte D_ovl2_80130FFC
+  /* 58120 0A9DB0 8012E5B0 */  .4byte gFTDataYoshiExtra2
   .incbin "ovl2.raw.bin", 0x58124, 0x8
   /* 5812C 0A9DBC 8012E5BC */  .4byte efManagerDefaultEndEjectProcUpdate
   /* 58130 0A9DC0 8012E5C0 */  .4byte func_ovl0_800CB4B0
   .incbin "ovl2.raw.bin", 0x58134, 0x10
 
-glabel D_ovl2_8012E5D4
+glabel dEFYoshiEggLayAnimJoints
   .incbin "ovl2.raw.bin", 0x58144, 0x8
 
-glabel D_ovl2_8012E5DC
+glabel dEFYoshiEggLayEffectDesc
   .incbin "ovl2.raw.bin", 0x5814C, 0x4
-  /* 58150 0A9DE0 8012E5E0 */  .4byte D_ovl2_80131000
+  /* 58150 0A9DE0 8012E5E0 */  .4byte gFTDataYoshiExtra3
   .incbin "ovl2.raw.bin", 0x58154, 0x8
-  /* 5815C 0A9DEC 8012E5EC */  .4byte func_ovl2_80102FE4
+  /* 5815C 0A9DEC 8012E5EC */  .4byte efYoshiEggLayProcUpdate
   /* 58160 0A9DF0 8012E5F0 */  .4byte odRenderDObjTreeForGObj
   .incbin "ovl2.raw.bin", 0x58164, 0x10
 
-glabel D_ovl2_8012E604
+glabel dEFYoshiEggEscapeEffectDesc
   .incbin "ovl2.raw.bin", 0x58174, 0x4
   /* 58178 0A9E08 8012E608 */  .4byte gFTDataYoshiModel
   /* 5817C 0A9E0C 8012E60C */
@@ -7456,23 +7456,23 @@ glabel D_ovl2_8012E604
   /* 58188 0A9E18 8012E618 */  .4byte efYoshiShieldProcRender
   .incbin "ovl2.raw.bin", 0x5818C, 0x10
 
-glabel D_ovl2_8012E62C
+glabel dEFSpinAttackEffectDesc
   .incbin "ovl2.raw.bin", 0x5819C, 0x4
-  /* 581A0 0A9E30 8012E630 */  .4byte D_ovl2_80130FC0
+  /* 581A0 0A9E30 8012E630 */  .4byte gFTDataLinkExtra2
   .incbin "ovl2.raw.bin", 0x581A4, 0x8
   /* 581AC 0A9E3C 8012E63C */  .4byte efManagerDefaultEndEjectProcUpdate
   /* 581B0 0A9E40 8012E640 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x581B4, 0x10
 
-glabel D_ovl2_8012E654
+glabel dEFDonkeyEntryTaruEffectDesc
   .incbin "ovl2.raw.bin", 0x581C4, 0x4
-  /* 581C8 0A9E58 8012E658 */  .4byte D_ovl2_80130EDC
+  /* 581C8 0A9E58 8012E658 */  .4byte gFTDataDonkeyExtra2
   .incbin "ovl2.raw.bin", 0x581CC, 0x8
   /* 581D4 0A9E64 8012E664 */  .4byte efManagerDefaultEndEjectProcUpdate
   /* 581D8 0A9E68 8012E668 */  .4byte odRenderDObjTreeForGObj
   .incbin "ovl2.raw.bin", 0x581DC, 0x10
 
-glabel D_ovl2_8012E67C
+glabel dEFSamusEntryPointEffectDesc
   .incbin "ovl2.raw.bin", 0x581EC, 0x4
   /* 581F0 0A9E80 8012E680 */  .4byte gFTDataSamusExtra2
   .incbin "ovl2.raw.bin", 0x581F4, 0x8
@@ -7480,38 +7480,38 @@ glabel D_ovl2_8012E67C
   /* 58200 0A9E90 8012E690 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x58204, 0x10
 
-glabel D_ovl2_8012E6A4
+glabel dEFCaptainEntryCarEffectDesc
   .incbin "ovl2.raw.bin", 0x58214, 0x4
-  /* 58218 0A9EA8 8012E6A8 */  .4byte D_ovl2_8013103C
+  /* 58218 0A9EA8 8012E6A8 */  .4byte gFTDataCaptainExtra2
   .incbin "ovl2.raw.bin", 0x5821C, 0x8
-  /* 58224 0A9EB4 8012E6B4 */  .4byte func_ovl2_801034D0
+  /* 58224 0A9EB4 8012E6B4 */  .4byte efCaptainEntryCarProcUpdate
   /* 58228 0A9EB8 8012E6B8 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x5822C, 0x10
 
-glabel D_ovl2_8012E6CC
+glabel dEFMarioEntryDokanEffectDesc
   .incbin "ovl2.raw.bin", 0x5823C, 0x4
 
 glabel D_ovl2_8012E6D0
-  /* 58240 0A9ED0 8012E6D0 */  .4byte D_ovl2_80130E40
+  /* 58240 0A9ED0 8012E6D0 */  .4byte gFTDataMarioExtra2
   .incbin "ovl2.raw.bin", 0x58244, 0x8
   /* 5824C 0A9EDC 8012E6DC */  .4byte efManagerDefaultEndEjectProcUpdate
   /* 58250 0A9EE0 8012E6E0 */  .4byte odRenderDObjTreeForGObj
   .incbin "ovl2.raw.bin", 0x58254, 0x10
 
-glabel D_ovl2_8012E6F4
+glabel dEFFoxEntryArwingEffectDesc
   .incbin "ovl2.raw.bin", 0x58264, 0x4
-  /* 58268 0A9EF8 8012E6F8 */  .4byte D_ovl2_80130EA4
+  /* 58268 0A9EF8 8012E6F8 */  .4byte gFTDataFoxExtra3
   .incbin "ovl2.raw.bin", 0x5826C, 0x8
-  /* 58274 0A9F04 8012E704 */  .4byte func_ovl2_80103780
+  /* 58274 0A9F04 8012E704 */  .4byte efFoxEntryArwingProcUpdate
   /* 58278 0A9F08 8012E708 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x5827C, 0x10
 
-glabel efManager_Purin_SingNoteIDs
+glabel dEFPurinSingNoteGenIDs
   /* 5828C 0A9F1C 8012E71C */
   .asciz "@AB"
   .balign 4
 
-glabel D_ovl2_8012E720
+glabel dEFCaptureKirbyStarEffectDesc
   .incbin "ovl2.raw.bin", 0x58290, 0x4
   /* 58294 0A9F24 8012E724 */  .4byte gITFileData
   .incbin "ovl2.raw.bin", 0x58298, 0x4
@@ -7522,7 +7522,7 @@ glabel D_ovl2_8012E720
   /* 582A4 0A9F34 8012E734 */  .4byte func_ovl0_800CB4B0
   .incbin "ovl2.raw.bin", 0x582A8, 0x10
 
-glabel D_ovl2_8012E748
+glabel dEFLoseKirbyStarEffectDesc
   .incbin "ovl2.raw.bin", 0x582B8, 0x4
   /* 582BC 0A9F4C 8012E74C */  .4byte gITFileData
   .incbin "ovl2.raw.bin", 0x582C0, 0x4
@@ -7533,7 +7533,7 @@ glabel D_ovl2_8012E748
   /* 582CC 0A9F5C 8012E75C */  .4byte func_ovl0_800CB4B0
   .incbin "ovl2.raw.bin", 0x582D0, 0x10
 
-glabel D_ovl2_8012E770
+glabel dEFRebirthHaloEffectDesc
   .incbin "ovl2.raw.bin", 0x582E0, 0x4
   /* 582E4 0A9F74 8012E774 */  .4byte sEFTexturesFile3
   .incbin "ovl2.raw.bin", 0x582E8, 0x8
@@ -7541,7 +7541,7 @@ glabel D_ovl2_8012E770
   /* 582F4 0A9F84 8012E784 */  .4byte odRenderDObjTreeDLLinksForGObj
   .incbin "ovl2.raw.bin", 0x582F8, 0x10
 
-glabel D_ovl2_8012E798
+glabel dEFItemGetSwirlEffectDesc
   .incbin "ovl2.raw.bin", 0x58308, 0x4
   /* 5830C 0A9F9C 8012E79C */  .4byte sEFTexturesFile3
   .incbin "ovl2.raw.bin", 0x58310, 0x8

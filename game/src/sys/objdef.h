@@ -60,6 +60,7 @@ typedef enum GObjLinkIndex
 
     GObj_LinkID_Weapon,             // ID 5: Weapon (projectile) object
     GObj_LinkID_Effect,             // ID 6: Effect type 1 object (other ID is 8 but idk what it does)
+    GObj_LinkID_SpecialEffect = 8,  // ID 8: Effect type 2 object
     GObj_LinkID_Highlight = 9,      // ID 9: Credits shootout rectangles that zoom in on crosshair
     GObj_LinkID_Interface = 11,     // ID 11: HUD elements object 
     GObj_LinkID_Rumble = 13,        // ID 13: Rumble object?

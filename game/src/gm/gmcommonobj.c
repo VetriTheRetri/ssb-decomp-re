@@ -2314,9 +2314,9 @@ void func_ovl2_800EB648(DObj *arg0)
 
         if (temp_v1 != NULL)
         {
-            if (temp_v1->transform_update_mode == TRUE)
+            if (temp_v1->transform_update_mode == 1)
             {
-                temp_v1->transform_update_mode = FALSE;
+                temp_v1->transform_update_mode = 0;
             }
             temp_v1->unk_dobjtrans_0x4 = 0;
         }

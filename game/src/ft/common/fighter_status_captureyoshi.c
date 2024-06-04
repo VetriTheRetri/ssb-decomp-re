@@ -2,7 +2,7 @@
 #include <it/item.h>
 
 // 0x80188720
-ftYoshiEggDesc ftCommon_YoshiEgg_HurtboxDesc[Ft_Kind_EnumMax] =
+ftYoshiEggDesc dFTYoshiEggHurtboxDesc[Ft_Kind_EnumMax] =
 {
     { 2.0F, { 0.0F, 157.0F, 0.0F }, { 180.0F, 180.0F, 180.0F } },   // Mario
     { 1.9F, { 0.0F, 155.0F, 0.0F }, { 171.0F, 171.0F, 171.0F } },   // Fox
@@ -301,7 +301,7 @@ void ftCommon_YoshiEgg_SetHurt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftHurtbox *ft_hurt = &fp->fighter_hurt[0];
-    ftYoshiEggDesc *egg = &ftCommon_YoshiEgg_HurtboxDesc[fp->ft_kind];
+    ftYoshiEggDesc *egg = &dFTYoshiEggHurtboxDesc[fp->ft_kind];
     s32 i;
 
     ft_hurt->joint = fp->joint[ftParts_Joint_TopN];

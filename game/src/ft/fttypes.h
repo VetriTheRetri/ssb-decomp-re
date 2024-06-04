@@ -173,7 +173,7 @@ struct ftData
     s32 **p_file_extra2;
     s32 **p_file_extra3;
     s32 **p_file_extra4;
-    void **p_particle;
+    s32 **p_particle;
     intptr_t o_particles1;
     intptr_t o_particles2;
     intptr_t o_particles3;

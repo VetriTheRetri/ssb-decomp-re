@@ -2,7 +2,7 @@
 
 extern Gfx *gDisplayListHead[4];
 
-s32 sEFBankIndex;
+s32 sEFParticleBankID;
 
 extern intptr_t D_NF_00AC7340;
 extern intptr_t D_NF_00AC9DE0;
@@ -116,5 +116,5 @@ void func_ovl2_800FD18C(void)
     omAddGObjRenderProc(gobj, func_ovl2_800FD0AC, 0xA, 0x80000000U, -1);
     gobj->unk_gobj_0x30 = 16;
 
-    sEFBankIndex = efAlloc_SetParticleBank(&D_NF_00AC7340, &D_NF_00AC9DE0, &D_NF_00AC9DE0_other, &D_NF_00B16C80);
+    sEFParticleBankID = efAlloc_SetParticleBank(&D_NF_00AC7340, &D_NF_00AC9DE0, &D_NF_00AC9DE0_other, &D_NF_00B16C80);
 }

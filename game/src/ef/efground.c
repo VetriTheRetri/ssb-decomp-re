@@ -246,7 +246,7 @@ GObj* func_ovl2_8011652C(efCreateDesc *effect_desc, s32 arg1)
     }
     else ep = NULL;
 
-    effect_gobj = omMakeGObjSPAfter(GObj_Kind_Effect, efManagerProcEject, 6, 0x80000000U);
+    effect_gobj = omMakeGObjSPAfter(GObj_Kind_Effect, efManagerProcRun, 6, 0x80000000U);
 
     if (effect_gobj == NULL)
     {

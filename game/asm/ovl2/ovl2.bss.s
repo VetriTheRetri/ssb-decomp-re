@@ -71,7 +71,7 @@ glabel D_ovl2_80130E38
     .space 4
 glabel gFTDataMarioExtra1
     .space 4
-glabel D_ovl2_80130E40
+glabel gFTDataMarioExtra2
     .space 4
 glabel D_ovl2_80130E44
     .space 4
@@ -111,7 +111,7 @@ glabel gFTDataFoxExtra1
     .space 4
 glabel gFTDataFoxExtra2
     .space 4
-glabel D_ovl2_80130EA4
+glabel gFTDataFoxExtra3
     .space 4
 glabel D_ovl2_80130EA8
     .space 4
@@ -131,7 +131,7 @@ glabel D_ovl2_80130ED4
     .space 4
 glabel D_ovl2_80130ED8
     .space 4
-glabel D_ovl2_80130EDC
+glabel gFTDataDonkeyExtra2
     .space 4
 glabel D_ovl2_80130EE0
     .space 16
@@ -183,7 +183,7 @@ glabel D_ovl2_80130F78
     .space 4
 glabel gFTDataLuigiExtra1
     .space 4
-glabel D_ovl2_80130F80
+glabel gFTDataLuigiExtra2
     .space 4
 glabel D_ovl2_80130F84
     .space 4
@@ -205,7 +205,7 @@ glabel D_ovl2_80130FB8
     .space 4
 glabel gFTDataLinkExtra1
     .space 4
-glabel D_ovl2_80130FC0
+glabel gFTDataLinkExtra2
     .space 4
 glabel D_ovl2_80130FC4
     .space 4
@@ -225,11 +225,11 @@ glabel D_ovl2_80130FF4
     .space 4
 glabel gFTDataYoshiModel
     .space 4
-glabel D_ovl2_80130FFC
+glabel gFTDataYoshiExtra2
     .space 4
-glabel D_ovl2_80131000
+glabel gFTDataYoshiExtra3
     .space 4
-glabel D_ovl2_80131004
+glabel gFTDataYoshiParticles
     .space 12
 glabel D_ovl2_80131010
     .space 4
@@ -245,9 +245,9 @@ glabel D_ovl2_80131034
     .space 4
 glabel D_ovl2_80131038
     .space 4
-glabel D_ovl2_8013103C
+glabel gFTDataCaptainExtra2
     .space 4
-glabel D_ovl2_80131040
+glabel gFTDataCaptainExtra3
     .space 4
 glabel D_ovl2_80131044
     .space 12
@@ -267,7 +267,7 @@ glabel D_ovl2_80131078
     .space 4
 glabel gFTDataKirbyExtra2
     .space 4
-glabel D_ovl2_80131080
+glabel gFTDataKirbyParticles
     .space 16
 glabel D_ovl2_80131090
     .space 4
@@ -307,7 +307,7 @@ glabel D_ovl2_801310F4
     .space 4
 glabel D_ovl2_801310F8
     .space 4
-glabel D_ovl2_801310FC
+glabel gFTDataPurinExtra2
     .space 4
 glabel D_ovl2_80131100
     .space 16
@@ -323,11 +323,11 @@ glabel gFTDataNessMain
     .space 4
 glabel gFTDataNessBattleMotion
     .space 4
-glabel D_ovl2_80131138
+glabel gFTDataNessModel
     .space 4
 glabel gFTDataNessExtra1
     .space 4
-glabel D_ovl2_80131140
+glabel gFTDataNessExtra2
     .space 4
 glabel D_ovl2_80131144
     .space 4
@@ -429,7 +429,7 @@ glabel sEFStructsAllocFree
     .space 4
 glabel sEFStructsNumFree
     .space 4
-glabel sEFBankIndex
+glabel sEFParticleBankID
     .space 12
 glabel D_ovl2_801313D0
     .space 8
@@ -637,7 +637,7 @@ glabel D_ovl2_80131A10
     .space 4
 glabel D_ovl2_80131A14
     .space 4
-glabel D_ovl2_80131A18
+glabel sEFParticleBankNum
     .space 8
 glabel D_ovl2_80131A20
     .space 32

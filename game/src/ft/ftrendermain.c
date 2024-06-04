@@ -868,7 +868,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
         }
         else
         {
-            fp->joint[ftParts_Joint_TopN]->ommtx[0]->kind = 0x1A;
+            fp->joint[ftParts_Joint_TopN]->ommtx[0]->kind = OMMtx_Transform_RotRpyR;
 
             func_ovl2_800F24A0(fighter_gobj);
 
@@ -975,7 +975,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
         }
         else
         {
-            fp->joint[ftParts_Joint_TopN]->ommtx[0]->kind = 0x1A;
+            fp->joint[ftParts_Joint_TopN]->ommtx[0]->kind = OMMtx_Transform_RotRpyR;
 
             func_ovl2_800F2584(DObjGetStruct(fighter_gobj));
 

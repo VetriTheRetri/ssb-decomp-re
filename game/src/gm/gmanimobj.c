@@ -104,7 +104,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
         }
         do
         {
-            if (root_dobj->acommand == NULL)
+            if (root_dobj->actor.acommand == NULL)
             {
                 current_aobj = root_dobj->aobj;
 
@@ -122,15 +122,15 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
                 return;
             }
-            command_kind = root_dobj->acommand->command.opcode;
+            command_kind = root_dobj->actor.acommand->command.opcode;
 
             switch (command_kind)
             {
             case 7:
             case 8:
-                aflags = root_dobj->acommand->command.flags;
+                aflags = root_dobj->actor.acommand->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
+                var_f20 = (ACommandAdvance(root_dobj->actor.acommand)->command.toggle) ? ACommandAdvance(root_dobj->actor.acommand)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
@@ -144,7 +144,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         }
                         setup_aobj[i]->value_base = setup_aobj[i]->value_target;
 
-                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
+                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->actor.acommand)->shalf, i + 1, 0);
 
                         setup_aobj[i]->rate_base = setup_aobj[i]->rate_target;
                         setup_aobj[i]->rate_target = 0.0F;
@@ -165,9 +165,9 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
             case 2:
             case 3:
-                aflags = root_dobj->acommand->command.flags;
+                aflags = root_dobj->actor.acommand->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
+                var_f20 = (ACommandAdvance(root_dobj->actor.acommand)->command.toggle) ? ACommandAdvance(root_dobj->actor.acommand)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
@@ -181,7 +181,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         }
                         setup_aobj[i]->value_base = setup_aobj[i]->value_target;
 
-                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
+                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->actor.acommand)->shalf, i + 1, 0);
 
                         setup_aobj[i]->kind = 2;
 
@@ -201,9 +201,9 @@ void func_ovl2_800EC238(DObj *root_dobj)
 
             case 4:
             case 5:
-                aflags = root_dobj->acommand->command.flags;
+                aflags = root_dobj->actor.acommand->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
+                var_f20 = (ACommandAdvance(root_dobj->actor.acommand)->command.toggle) ? ACommandAdvance(root_dobj->actor.acommand)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
@@ -217,11 +217,11 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         }
                         setup_aobj[i]->value_base = setup_aobj[i]->value_target;
 
-                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
+                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->actor.acommand)->shalf, i + 1, 0);
 
                         setup_aobj[i]->rate_base = setup_aobj[i]->rate_target;
 
-                        setup_aobj[i]->rate_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 1);
+                        setup_aobj[i]->rate_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->actor.acommand)->shalf, i + 1, 1);
 
                         setup_aobj[i]->kind = 3;
 
@@ -239,9 +239,9 @@ void func_ovl2_800EC238(DObj *root_dobj)
                 break;
 
             case 6:
-                aflags = root_dobj->acommand->command.flags;
+                aflags = root_dobj->actor.acommand->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
+                var_f20 = (ACommandAdvance(root_dobj->actor.acommand)->command.toggle) ? ACommandAdvance(root_dobj->actor.acommand)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
@@ -253,23 +253,23 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         {
                             setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->rate_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 1);
+                        setup_aobj[i]->rate_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->actor.acommand)->shalf, i + 1, 1);
                     }
                 }
                 break;
 
             case 1:
-                if (ACommandAdvance(root_dobj->acommand)->command.toggle)
+                if (ACommandAdvance(root_dobj->actor.acommand)->command.toggle)
                 {
-                    root_dobj->dobj_f0 += ACommandAdvance(root_dobj->acommand)->uhalf;
+                    root_dobj->dobj_f0 += ACommandAdvance(root_dobj->actor.acommand)->uhalf;
                 }
                 break;
 
             case 9:
             case 10:
-                aflags = root_dobj->acommand->command.flags;
+                aflags = root_dobj->actor.acommand->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
+                var_f20 = (ACommandAdvance(root_dobj->actor.acommand)->command.toggle) ? ACommandAdvance(root_dobj->actor.acommand)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
@@ -283,7 +283,7 @@ void func_ovl2_800EC238(DObj *root_dobj)
                         }
                         setup_aobj[i]->value_base = setup_aobj[i]->value_target;
 
-                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->acommand)->shalf, i + 1, 0);
+                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->actor.acommand)->shalf, i + 1, 0);
 
                         setup_aobj[i]->kind = 1;
 
@@ -301,9 +301,9 @@ void func_ovl2_800EC238(DObj *root_dobj)
                 break;
 
             case 13:
-                ACommandAdvance(root_dobj->acommand);
+                ACommandAdvance(root_dobj->actor.acommand);
 
-                root_dobj->acommand += root_dobj->acommand->shalf / 2;
+                root_dobj->actor.acommand += root_dobj->actor.acommand->shalf / 2;
 
                 root_dobj->dobj_f2 = -root_dobj->dobj_f0;
                 root_dobj->parent_gobj->anim_frame = -root_dobj->dobj_f0;
@@ -318,9 +318,9 @@ void func_ovl2_800EC238(DObj *root_dobj)
                 break;
 
             case 11:
-                aflags = root_dobj->acommand->command.flags;
+                aflags = root_dobj->actor.acommand->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->acommand)->command.toggle) ? ACommandAdvance(root_dobj->acommand)->uhalf : 0.0F;
+                var_f20 = (ACommandAdvance(root_dobj->actor.acommand)->command.toggle) ? ACommandAdvance(root_dobj->actor.acommand)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
@@ -338,15 +338,15 @@ void func_ovl2_800EC238(DObj *root_dobj)
                 break;
 
             case 12:
-                ACommandAdvance(root_dobj->acommand);
+                ACommandAdvance(root_dobj->actor.acommand);
 
                 if (setup_aobj[3] == NULL)
                 {
                     setup_aobj[3] = omAddAObjForDObj(root_dobj, 4);
                 }
-                setup_aobj[3]->interpolate = root_dobj->acommand + (root_dobj->acommand->shalf / 2);
+                setup_aobj[3]->interpolate = root_dobj->actor.acommand + (root_dobj->actor.acommand->shalf / 2);
 
-                ACommandAdvance(root_dobj->acommand);
+                ACommandAdvance(root_dobj->actor.acommand);
                 break;
 
             case 0:
@@ -374,11 +374,11 @@ void func_ovl2_800EC238(DObj *root_dobj)
                 return;
 
             case 14:
-                root_dobj->flags = root_dobj->acommand->command.flags;
+                root_dobj->flags = root_dobj->actor.acommand->command.flags;
 
-                if (ACommandAdvance(root_dobj->acommand)->command.toggle)
+                if (ACommandAdvance(root_dobj->actor.acommand)->command.toggle)
                 {
-                    root_dobj->dobj_f0 += ACommandAdvance(root_dobj->acommand)->uhalf;
+                    root_dobj->dobj_f0 += ACommandAdvance(root_dobj->actor.acommand)->uhalf;
                 }
                 break;
 

@@ -413,7 +413,7 @@ segments:
     start: 0x043220
     vram: 0x800C7840
     subsegments:
-      - [0x043220, asm, ovl0/hal_bitmap]
+      - [0x043220, asm, ovl0/halbitmap]
       - [0x049000, asm, ovl0/rldm]
       - [0x049A20, asm, ovl0/hal_sprite]
       - [0x04F860, asm, ovl0/ovl0_2]
@@ -421,8 +421,8 @@ segments:
       - [0x04FF00, asm, ovl0/ovl0_4]
       - [0x050680, data, ovl0/float_table]
       - [0x051680, rodata, ovl0/function_table]
-      - [0x051740, rodata, ovl0/rldm]
-      - [0x051C90]
+      - [0x051740, rodata, ovl0/halbitmap]
+      - [0x0518C0, rodata, ovl0/rldm]
 
   - name: ovl2
     type: code
@@ -433,7 +433,6 @@ segments:
       - [0x051C90, asm, ovl2]
       - [0x0923D0, data, ovl2]
       - [0x0AB250, rodata, ovl2]
-      - [0x0AC540]
 
   - name: ovl3
     type: code
@@ -447,7 +446,7 @@ segments:
       - [0x106100, .data, item_links_bomb]
       - [0x106200, rodata, ovl3]
       - [0x1079B0, .rodata, item_links_bomb]
-      # - { start: 0x1079C0, type: bss, vram: 0x8018cf80 }
+      # - { start: 0x1079C0, type: bss, vram: 0x8018CF80 }
 
   - name: ovl1
     type: code
@@ -457,7 +456,6 @@ segments:
     subsegments:
       - [0x1079C0, asm, ovl1]
       - [0x1081C0, data, ovl1]
-      - [0x109FB0]
 
   - name: ovl4
     type: code
@@ -467,7 +465,7 @@ segments:
     subsegments:
       - [0x109FB0, asm, ovl4]
       - [0x10B2C0, data, ovl4]
-      - [0x10B370]
+
   - name: ovl5
     type: code
     start: 0x10B370
@@ -476,7 +474,7 @@ segments:
     subsegments:
       - [0x10B370, asm, ovl5]
       - [0x10B830, data, ovl5]
-      - [0x10B920]
+
   - name: ovl65
     type: code
     start: 0x10B920
@@ -486,7 +484,7 @@ segments:
       - [0x10B920, asm, ovl65]
       - [0x111060, data, ovl65]
       - [0x111670, rodata, ovl65]
-      - [0x111800]
+
   - name: ovl6
     type: code
     start: 0x111800
@@ -500,6 +498,7 @@ segments:
       - [0x1138B0, .rodata, ovl6]
       - { start: 0x1138E0, type: .bss, vram: 0x8018F1A0, name: ovl6}
       - { start: 0x1138E0, type: .bss, vram: 0x8018F3B0, name: ovl6_1}
+
   - name: ovl7
     type: code
     start: 0x1138E0
@@ -520,38 +519,36 @@ segments:
       - [0x117180, asm, ovl10]
       - [0x119860, data, ovl10]
       - [0x119AB0, rodata, ovl10]
-      - [0x119ac0]
 
   - name: ovl11
     type: code
-    start: 0x119ac0
+    start: 0x119AC0
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x119ac0, asm, ovl11]
+      - [0x119AC0, asm, ovl11]
       - [0x119D30, data, ovl11]
-      - [0x119df0]
+
   - name: ovl12
     type: code
-    start: 0x119df0
+    start: 0x119DF0
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x119df0, asm, ovl12]
+      - [0x119DF0, asm, ovl12]
       - [0x119FE0, data, ovl12]
       - [0x11A170, rodata, ovl12]
-      - [0x11a340]
 
   - name: ovl13
     type: code
-    start: 0x11a340
+    start: 0x11A340
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11a340, asm, ovl13]
+      - [0x11A340, asm, ovl13]
       - [0x11AA20, data, ovl13]
       - [0x11B860, rodata, ovl13]
-      - [0x11b970]
+
   - name: ovl14
     type: code
     start: 0x11b970
@@ -561,7 +558,7 @@ segments:
       - [0x11b970, asm, ovl14]
       - [0x11C500, data, ovl14]
       - [0x11C850, rodata, ovl14]
-      - [0x11ca90]
+
   - name: ovl17
     type: code
     start: 0x11ca90
@@ -570,7 +567,7 @@ segments:
     subsegments:
       - [0x11ca90, asm, ovl17]
       - [0x11DB20, data, ovl17]
-      - [0x11dc10]
+
   - name: ovl18
     type: code
     start: 0x11dc10
@@ -579,7 +576,7 @@ segments:
     subsegments:
       - [0x11dc10, asm, ovl18]
       - [0x11F190, data, ovl18]
-      - [0x11f2b0]
+
   - name: ovl60
     type: code
     start: 0x11f2b0
@@ -588,7 +585,7 @@ segments:
     subsegments:
       - [0x11f2b0, asm, ovl60]
       - [0x120DD0, data, ovl60]
-      - [0x120f50]
+
   - name: ovl61
     type: code
     start: 0x120f50
@@ -606,7 +603,7 @@ segments:
     subsegments:
       - [0x1224b0, asm, ovl19]
       - [0x125160, data, ovl19]
-      - [0x1252e0]
+
   - name: ovl20
     type: code
     start: 0x1252e0
@@ -615,7 +612,7 @@ segments:
     subsegments:
       - [0x1252e0, asm, ovl20]
       - [0x127EA0, data, ovl20]
-      - [0x1280a0]
+
   - name: ovl21
     type: code
     start: 0x1280a0
@@ -624,7 +621,7 @@ segments:
     subsegments:
       - [0x1280a0, asm, ovl21]
       - [0x1297B0, data, ovl21]
-      - [0x129970]
+
   - name: ovl22
     type: code
     start: 0x129970
@@ -642,7 +639,7 @@ segments:
     subsegments:
       - [0x12a4c0, asm, ovl23]
       - [0x12AD30, data, ovl23]
-      - [0x12ae40]
+
   - name: ovl24
     type: code
     start: 0x12ae40
@@ -652,7 +649,7 @@ segments:
       - [0x12ae40, asm, ovl24]
       - [0x12E130, data, ovl24]
       - [0x12EF20, rodata, ovl24]
-      - [0x12ef60]
+
   - name: ovl25
     type: code
     start: 0x12ef60
@@ -661,7 +658,7 @@ segments:
     subsegments:
       - [0x12ef60, asm, ovl25]
       - [0x12FC90, data, ovl25]
-      - [0x12fd80]
+
   - name: ovl26
     type: code
     start: 0x12fd80
@@ -673,6 +670,7 @@ segments:
       - [0x139620, .data, ovl26]
       - [0x139CB0, .rodata, ovl26]
       - { start: 0x139D00, type: .bss, vram: 0x8013ba80, name: ovl7}
+
   - name: ovl27
     type: code
     start: 0x139D00
@@ -682,7 +680,7 @@ segments:
       - [0x139D00, asm, ovl27]
       - [0x1407B0, data, ovl27]
       - [0x140F60, rodata, ovl27]
-      - [0x1410E0]
+
   - name: ovl28
     type: code
     start: 0x1410E0
@@ -692,7 +690,7 @@ segments:
       - [0x1410E0, asm, ovl28]
       - [0x147540, data, ovl28]
       - [0x147AC0, rodata, ovl28]
-      - [0x147B30]
+
   - name: ovl29
     type: code
     start: 0x147B30
@@ -702,7 +700,7 @@ segments:
       - [0x147B30, asm, ovl29]
       - [0x14CF80, data, ovl29]
       - [0x14D610, rodata, ovl29]
-      - [0x14D670]
+
   - name: ovl30
     type: code
     start: 0x14D670
@@ -712,7 +710,7 @@ segments:
       - [0x14D670, asm, ovl30]
       - [0x150040, data, ovl30]
       - [0x150530, rodata, ovl30]
-      - [0x150CA0]
+
   - name: ovl31
     type: code
     start: 0x150CA0
@@ -723,7 +721,7 @@ segments:
       - [0x150CC0, asm, ovl31]
       - [0x158090, data, ovl31]
       - [0x158960, rodata, ovl31]
-      - [0x158A40]
+
   - name: ovl32
     type: code
     start: 0x158A40
@@ -733,7 +731,7 @@ segments:
       - [0x158A40, asm, ovl32]
       - [0x15D570, data, ovl32]
       - [0x15D9C0, rodata, ovl32]
-      - [0x15DB50]
+
   - name: ovl33
     type: code
     start: 0x15DB50
@@ -743,7 +741,7 @@ segments:
       - [0x15DB50, asm, ovl33]
       - [0x160100, data, ovl33]
       - [0x162600, rodata, ovl33]
-      - [0x162640]
+
   - name: ovl34
     type: code
     start: 0x162640
@@ -753,7 +751,7 @@ segments:
       - [0x162640, asm, ovl34]
       - [0x165560, data, ovl34]
       - [0x1657C0, rodata, ovl34]
-      - [0x165810]
+
   - name: ovl35
     type: code
     start: 0x165810
@@ -762,7 +760,6 @@ segments:
     subsegments:
       - [0x165810, asm, ovl35]
       - [0x1665B0, data, ovl35]
-      - [0x1666F0]
 
   - name: ovl36
     type: code
@@ -773,7 +770,7 @@ segments:
       - [0x1666F0, asm, ovl36]
       - [0x1676C0, data, ovl36]
       - [0x167800, rodata, ovl36]
-      - [0x167830]
+
   - name: ovl37
     type: code
     start: 0x167830
@@ -783,7 +780,7 @@ segments:
       - [0x167830, asm, ovl37]
       - [0x1687E0, data, ovl37]
       - [0x168900, rodata, ovl37]
-      - [0x168930]
+
   - name: ovl38
     type: code
     start: 0x168930
@@ -793,7 +790,7 @@ segments:
       - [0x168930, asm, ovl38]
       - [0x169990, data, ovl38]
       - [0x169AB0, rodata, ovl38]
-      - [0x169AE0]
+
   - name: ovl39
     type: code
     start: 0x169AE0
@@ -803,7 +800,7 @@ segments:
       - [0x169AE0, asm, ovl39]
       - [0x16AAB0, data, ovl39]
       - [0x16ABE0, rodata, ovl39]
-      - [0x16AC10]
+
   - name: ovl40
     type: code
     start: 0x16AC10
@@ -813,7 +810,7 @@ segments:
       - [0x16AC10, asm, ovl40]
       - [0x16BBC0, data, ovl40]
       - [0x16BCE0, rodata, ovl40]
-      - [0x16BD10]
+
   - name: ovl41
     type: code
     start: 0x16BD10
@@ -823,7 +820,7 @@ segments:
       - [0x16BD10, asm, ovl41]
       - [0x16CD10, data, ovl41]
       - [0x16CE40, rodata, ovl41]
-      - [0x16CE70]
+
   - name: ovl42
     type: code
     start: 0x16CE70
@@ -833,7 +830,7 @@ segments:
       - [0x16CE70, asm, ovl42]
       - [0x16DE70, data, ovl42]
       - [0x16DFA0, rodata, ovl42]
-      - [0x16DFD0]
+
   - name: ovl43
     type: code
     start: 0x16DFD0
@@ -843,7 +840,6 @@ segments:
       - [0x16DFD0, asm, ovl43]
       - [0x16EFC0, data, ovl43]
       - [0x16F100, rodata, ovl43]
-      - [0x16F130]
 
   - name: ovl44
     type: code
@@ -854,7 +850,7 @@ segments:
       - [0x16F130, asm, ovl44]
       - [0x16FC00, data, ovl44]
       - [0x16FD30, rodata, ovl44]
-      - [0x16FD40]
+
   - name: ovl45
     type: code
     start: 0x16FD40
@@ -873,7 +869,7 @@ segments:
       - [0x170660, asm, ovl46]
       - [0x171230, data, ovl46]
       - [0x171310, rodata, ovl46]
-      - [0x171320]
+
   - name: ovl47
     type: code
     start: 0x171320
@@ -883,7 +879,7 @@ segments:
       - [0x171320, asm, ovl47]
       - [0x1720F0, data, ovl47]
       - [0x1721D0, rodata, ovl47]
-      - [0x1721E0]
+
   - name: ovl48
     type: code
     start: 0x1721E0
@@ -892,7 +888,7 @@ segments:
     subsegments:
       - [0x1721E0, asm, ovl48]
       - [0x172A80, data, ovl48]
-      - [0x172B60]
+
   - name: ovl49
     type: code
     start: 0x172B60
@@ -901,7 +897,7 @@ segments:
     subsegments:
       - [0x172B60, asm, ovl49]
       - [0x173930, data, ovl49]
-      - [0x173A30]
+
   - name: ovl50 # needs rodata symbols
     type: code
     start: 0x173A30
@@ -911,7 +907,7 @@ segments:
       - [0x173A30, asm, ovl50]
       - [0x174820, data, ovl50]
       - [0x174920, rodata, ovl50]
-      - [0x174940]
+
   - name: ovl51
     type: code
     start: 0x174940
@@ -920,7 +916,7 @@ segments:
     subsegments:
       - [0x174940, asm, ovl51]
       - [0x1750F0, data, ovl51]
-      - [0x1752C0]
+
   - name: ovl52
     type: code
     start: 0x1752C0
@@ -930,7 +926,7 @@ segments:
       - [0x1752C0, asm, ovl52]
       - [0x175E00, data, ovl52]
       - [0x175EE0, rodata, ovl52]
-      - [0x175F00]
+
   - name: ovl53
     type: code
     start: 0x175F00
@@ -940,7 +936,7 @@ segments:
       - [0x175F00, asm, ovl53]
       - [0x177280, data, ovl53]
       - [0x177470, rodata, ovl53]
-      - [0x1774A0]
+
   - name: ovl54
     type: code
     start: 0x1774A0
@@ -950,7 +946,7 @@ segments:
       - [0x1774A0, asm, ovl54]
       - [0x178470, data, ovl54]
       - [0x178550, rodata, ovl54]
-      - [0x178560]
+
   - name: ovl55
     type: code
     start: 0x178560
@@ -960,7 +956,7 @@ segments:
       - [0x178560, asm, ovl55]
       - [0x17ABC0, data, ovl55]
       - [0x17AD40, rodata, ovl55]
-      - [0x17AD50]
+
   - name: ovl56
     type: code
     start: 0x17AD50
@@ -970,7 +966,7 @@ segments:
       - [0x17AD50, asm, ovl56]
       - [0x17E130, data, ovl56]
       - [0x17E4F0, rodata, ovl56]
-      - [0x17E510]
+
   - name: ovl57
     type: code
     start: 0x17E510
@@ -979,7 +975,7 @@ segments:
     subsegments:
       - [0x17E510, asm, ovl57]
       - [0x17EB10, data, ovl57]
-      - [0x17ECC0]
+
   - name: ovl58
     type: code
     start: 0x17ECC0
@@ -988,7 +984,7 @@ segments:
     subsegments:
       - [0x17ECC0, asm, ovl58]
       - [0x17F110, data, ovl58]
-      - [0x17F200]
+
   - name: ovl59
     type: code
     start: 0x17F200
@@ -998,7 +994,7 @@ segments:
       - [0x17F200, asm, ovl59]
       - [0x182960, data, ovl59]
       - [0x187EB0, rodata, ovl59]
-      - [0x187ED0]
+
   - name: ovl62
     type: code
     start: 0x187ED0
@@ -1007,7 +1003,6 @@ segments:
     subsegments:
       - [0x187ED0, asm, ovl62]
       - [0x189DB0, data, ovl62]
-      - [0x18DCB0]
 
   - name: ovl8
     type: code
@@ -1018,7 +1013,6 @@ segments:
       - [0x18DCB0, asm, ovl8]
       - [0x1A44F0, data, ovl8]
       - [0x1AB650, rodata, ovl8]
-      - [0x1AB6B0]
 
   - name: ovl9
     type: code
@@ -1029,7 +1023,6 @@ segments:
       - [0x1AB6B0, asm, ovl9]
       - [0x1AC3D0, data, ovl9]
       - [0x1AC820, rodata, ovl9]
-      - [0x1AC870]
 
   - [0x1AC870, bin]
 

@@ -1,5 +1,5 @@
-func_ovl0_800C7840 = 0x800C7840; // segment:ovl0
-func_ovl0_800C78B8 = 0x800C78B8; // segment:ovl0
+bitmap_sinf = 0x800C7840; // segment:ovl0
+bitmap_cosf = 0x800C78B8; // segment:ovl0
 func_ovl0_800C793C = 0x800C793C; // segment:ovl0
 func_ovl0_800C7A00 = 0x800C7A00; // segment:ovl0
 func_ovl0_800C7A84 = 0x800C7A84; // segment:ovl0
@@ -161,7 +161,8 @@ D_ovl0_800D5D58 = 0x800D5D58; // segment:ovl0
 D_ovl0_800D5D5C = 0x800D5D5C; // segment:ovl0
 D_ovl0_800D5D60 = 0x800D5D60; // segment:ovl0
 
-D_ovl0_800D5E10 = 0x800D5E10; // segment:ovl0
+D_ovl0_800D5E10 = 0x800D5E10; // segment:ovl0 type:asciz
+D_ovl0_800D5E40 = 0x800D5E40; // segment:ovl0 type:asciz
 D_ovl0_800D5FC0 = 0x800D5FC0; // segment:ovl0
 jtbl_ovl0_800D5FC4 = 0x800D5FC4; // segment:ovl0
 jtbl_ovl0_800D5FDC = 0x800D5FDC; // segment:ovl0

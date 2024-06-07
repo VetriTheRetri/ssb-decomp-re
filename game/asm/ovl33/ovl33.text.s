@@ -1090,7 +1090,7 @@ glabel func_ovl33_801329E8
   /* 15EAE8 80132A98 8FA5003C */        lw $a1, 0x3c($sp)
   /* 15EAEC 80132A9C 24060000 */     addiu $a2, $zero, 0
   /* 15EAF0 80132AA0 3C073F80 */       lui $a3, 0x3f80
-  /* 15EAF4 80132AA4 0C039BC9 */       jal ftMain_SetFighterStatus
+  /* 15EAF4 80132AA4 0C039BC9 */       jal ftMainSetFighterStatus
   /* 15EAF8 80132AA8 AFAC0010 */        sw $t4, 0x10($sp)
   /* 15EAFC 80132AAC 8FAD003C */        lw $t5, 0x3c($sp)
   /* 15EB00 80132AB0 3C010002 */       lui $at, (0x20031 >> 16) # 131121
@@ -1239,7 +1239,7 @@ glabel func_ovl33_80132C40
   /* 15ED0C 80132CBC 8D2966EC */        lw $t1, %lo(D_ovl33_801366EC)($t1)
   /* 15ED10 80132CC0 A3A2004F */        sb $v0, 0x4f($sp)
   /* 15ED14 80132CC4 02002025 */        or $a0, $s0, $zero
-  /* 15ED18 80132CC8 0C035FCF */       jal ftManager_MakeFighter
+  /* 15ED18 80132CC8 0C035FCF */       jal ftManagerMakeFighter
   /* 15ED1C 80132CCC AFA90070 */        sw $t1, 0x70($sp)
   /* 15ED20 80132CD0 3C018013 */       lui $at, %hi(D_ovl33_8013660C)
   /* 15ED24 80132CD4 3C058013 */       lui $a1, %hi(func_ovl33_801329E8)
@@ -1281,7 +1281,7 @@ glabel func_ovl33_80132C40
   /* 15EDB4 80132D64 8FA5002C */        lw $a1, 0x2c($sp)
   /* 15EDB8 80132D68 24060000 */     addiu $a2, $zero, 0
   /* 15EDBC 80132D6C 3C073F80 */       lui $a3, 0x3f80
-  /* 15EDC0 80132D70 0C039BC9 */       jal ftMain_SetFighterStatus
+  /* 15EDC0 80132D70 0C039BC9 */       jal ftMainSetFighterStatus
   /* 15EDC4 80132D74 AFA80010 */        sw $t0, 0x10($sp)
   /* 15EDC8 80132D78 8FA20030 */        lw $v0, 0x30($sp)
   /* 15EDCC 80132D7C 2401029A */     addiu $at, $zero, 0x29a
@@ -1956,7 +1956,7 @@ glabel func_ovl33_8013369C
   /* 15F778 80133728 8C84660C */        lw $a0, %lo(D_ovl33_8013660C)($a0)
   /* 15F77C 8013372C 50800006 */      beql $a0, $zero, .L80133748
   /* 15F780 80133730 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 15F784 80133734 0C035E3A */       jal func_ovl2_800D78E8
+  /* 15F784 80133734 0C035E3A */       jal ftManagerDestroyFighter
   /* 15F788 80133738 00000000 */       nop 
   /* 15F78C 8013373C 0C04CB10 */       jal func_ovl33_80132C40
   /* 15F790 80133740 8FA40018 */        lw $a0, 0x18($sp)
@@ -2504,11 +2504,11 @@ glabel func_ovl33_80133E28
   /* 15FF54 80133F04 0C03F4C0 */       jal efManager_AllocUserData
   /* 15FF58 80133F08 00000000 */       nop 
   /* 15FF5C 80133F0C 24040003 */     addiu $a0, $zero, 3
-  /* 15FF60 80133F10 0C035C65 */       jal ftManager_AllocFighterData
+  /* 15FF60 80133F10 0C035C65 */       jal ftManagerAllocFighter
   /* 15FF64 80133F14 24050001 */     addiu $a1, $zero, 1
   /* 15FF68 80133F18 00008025 */        or $s0, $zero, $zero
   .L80133F1C:
-  /* 15FF6C 80133F1C 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 15FF6C 80133F1C 0C035E1B */       jal ftManagerSetupDataKind
   /* 15FF70 80133F20 02002025 */        or $a0, $s0, $zero
   /* 15FF74 80133F24 26100001 */     addiu $s0, $s0, %lo(D_NF_80000001)
   /* 15FF78 80133F28 2401000C */     addiu $at, $zero, 0xc

@@ -105,8 +105,8 @@ void ftCommon_Turn_SetStatus(GObj *fighter_gobj, s32 lr_dash)
 
     fp->command_vars.flags.flag1 = 0;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_Turn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Turn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->status_vars.common.turn.is_allow_turn_direction = FALSE;
     fp->status_vars.common.turn.is_disable_interrupts = FALSE;

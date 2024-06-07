@@ -151,11 +151,11 @@ void ftCommon_Thrown_ReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 sc
 
         if ((s32) ((damage * 0.75F) + 4.0F) > 0)
         {
-            ftMain_MakeRumble(this_fp, 0, (s32) ((damage * 0.75F) + 4.0F));
+            ftMainMakeRumble(this_fp, 0, (s32) ((damage * 0.75F) + 4.0F));
         }
         if ((s32) ((damage * 0.5F) + 2.0F) > 0)
         {
-            ftMain_MakeRumble(capture_fp, 5, (s32) ((damage * 0.5F) + 2.0F));
+            ftMainMakeRumble(capture_fp, 5, (s32) ((damage * 0.5F) + 2.0F));
         }
     }
     this_fp->capture_gobj = NULL;

@@ -4,7 +4,7 @@
 #include <ft/fttypes.h>
 
 // 0x8012A700
-ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */] =
+ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 {
 	// Status 220 (0xDC): Attack100Start
 	{

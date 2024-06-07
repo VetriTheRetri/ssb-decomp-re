@@ -1239,7 +1239,7 @@ void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 cost
         if (fighter_gobj != NULL)
         {
             initial_y_rotation = DObjGetStruct(fighter_gobj)->rotate.vec.f.y;
-            func_ovl2_800D78E8(fighter_gobj);
+            ftManagerDestroyFighter(fighter_gobj);
         }
         else
         {
@@ -1251,7 +1251,7 @@ void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 cost
         spawn_info.shade = gMNBattlePanels[port_id].shade;
         spawn_info.anim_heap = gMNBattlePanels[port_id].anim_heap;
         spawn_info.player = port_id;
-        fighter_gobj = ftManager_MakeFighter(&spawn_info);
+        fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
         gMNBattlePanels[port_id].player = fighter_gobj;
 
@@ -4102,11 +4102,11 @@ void mnBattleInitCSS() {
     efManager_AllocUserData();
     mnSyncControllerOrderArray();
     mnBattleLoadMatchInfo();
-    ftManager_AllocFighterData(1U, 4);
+    ftManagerAllocFighter(1U, 4);
 
     for (i = 0; i < 12; i++)
     {
-        ftManager_SetFileDataKind(i);
+        ftManagerSetupDataKind(i);
     }
 
     for (i = 0; i < 4; i++)

@@ -70,7 +70,7 @@ typedef struct grCreateDesc     grCreateDesc;
 typedef struct grRenderDesc     grRenderDesc;
 typedef struct grHitbox         grHitbox;
 typedef struct grMapObject      grMapObject;
-typedef struct grMapEnvironment grMapEnvironment;
+typedef struct grMapEnv grMapEnv;
 typedef struct grItemWeights grItemWeights;
 typedef struct grFileInfo       grFileInfo;
 typedef struct gmGroundInfo     gmGroundInfo;

@@ -14,12 +14,12 @@
 
 extern alSoundEffect D_8009EDD0;
 extern s32 D_ovl2_80130D70;
-extern u8 g1PGameKirbyTeamFinalCopy;
-extern void *gCommonFiles[/* */];
+extern u8 sGM1PManagerKirbyTeamFinalCopy;
+extern void *gGMCommonFiles[/* */];
 extern u32 dCommonFileIDs[8];
 
-extern u32 g1PGameTotalFalls;
-extern u32 g1PGameTotalTimeFrames;
+extern u32 sGM1PManagerTotalFalls;
+extern u32 sGM1PManagerTotalFrames;
 
 extern intptr_t D_NF_800A5240;
 extern intptr_t lOverlay65ArenaLo;  // 0x80193900
@@ -689,7 +689,7 @@ void func_ovl65_8018D0C0(void)
     rldm_setup.forceBufSize = ARRAY_COUNT(sGM1PGameForceBuf);
 
     rdManagerInitSetup(&rldm_setup);
-    rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
+    rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }
 */ 
 
@@ -1228,7 +1228,7 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
     {
         sGM1PGameTeamPlayersRemaining--;
 
-        func_ovl2_800D78E8(player_gobj);
+        ftManagerDestroyFighter(player_gobj);
 
         gBattleState->player_block[player].stock_count = 0;
 
@@ -1247,7 +1247,7 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
             break;
 
         case gm1PGame_Stage_Kirby:
-            sGM1PGamePlayerSetups[player].copy_kind = (sGM1PGameCurrentEnemyVariation == GM1PGAME_STAGE_KIRBY_VARIATIONS_COUNT) ? g1PGameKirbyTeamFinalCopy : d1PGameKirbyTeamCopyIDs[sGM1PGameCurrentEnemyVariation];
+            sGM1PGamePlayerSetups[player].copy_kind = (sGM1PGameCurrentEnemyVariation == GM1PGAME_STAGE_KIRBY_VARIATIONS_COUNT) ? sGM1PManagerKirbyTeamFinalCopy : d1PGameKirbyTeamCopyIDs[sGM1PGameCurrentEnemyVariation];
             break;
         }
         sGM1PGamePlayerSetups[player].team_order = sGM1PGameCurrentEnemyVariation++;
@@ -1293,7 +1293,7 @@ void gm1PGameSpawnEnemyTeamNext(GObj *player_gobj)
         player_spawn.is_skip_magnify = sGM1PGamePlayerSetups[player].is_skip_magnify;
         player_spawn.is_skip_shadow_setup = TRUE;
 
-        com_gobj = ftManager_MakeFighter(&player_spawn);
+        com_gobj = ftManagerMakeFighter(&player_spawn);
 
         fp = ftGetStruct(com_gobj);
 
@@ -1622,7 +1622,7 @@ void func_ovl65_8018EE44(void)
 
         for (i = 0; i < sGM1PGameEnemyStocksRemaining; i++)
         {
-            gcAppendSObjWithSprite(interface_gobj, spGetSpriteFromFile(gCommonFiles[4], &D_NF_00000068));
+            gcAppendSObjWithSprite(interface_gobj, spGetSpriteFromFile(gGMCommonFiles[4], &D_NF_00000068));
         }
         sGM1PGameEnemyStocksDisplay = sGM1PGameEnemyStocksRemaining + 1;
 
@@ -1759,7 +1759,7 @@ void gm1PGameBossSetZoomCamera(ftStruct *fp)
 
     world_pos.x = world_pos.y = world_pos.z = 0.0F;
 
-    ftParts_GetDObjWorldPosition(fp->joint[fp->damage_joint_index], &world_pos);
+    ftParts_GetDObjWorldPosition(fp->joint[fp->damage_joint_id], &world_pos);
 
     sGM1PGameBossDefeatZoomPosition = world_pos;
 
@@ -1922,7 +1922,7 @@ void gm1PGameStageInitAll(void)
     {
     case gm1PGame_Stage_Kirby:
         // Need to load PK Fire graphics from Ness' file
-        plns = dFTManagerFtDataFiles[Ft_Kind_Ness];
+        plns = dFTManagerDataFiles[Ft_Kind_Ness];
 
         rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_000000E6, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
         efAlloc_SetParticleBank(plns->o_particles1, plns->o_particles2, plns->o_particles3, plns->o_particles4);
@@ -1931,15 +1931,15 @@ void gm1PGameStageInitAll(void)
     case gm1PGame_Stage_Zako:
         for (i = Ft_Kind_PolyStart; i <= Ft_Kind_PolyEnd; i++)
         {
-            ftManager_SetFileDataKind(i);
+            ftManagerSetupDataKind(i);
         }
         largest_size = 0;
 
         for (i = Ft_Kind_PolyStart; i <= Ft_Kind_PolyEnd; i++)
         {
-            if (largest_size < dFTManagerFtDataFiles[i]->anim_file_size)
+            if (largest_size < dFTManagerDataFiles[i]->anim_file_size)
             {
-                largest_size = dFTManagerFtDataFiles[i]->anim_file_size;
+                largest_size = dFTManagerDataFiles[i]->anim_file_size;
             }
         }
         for (i = 0; i < (ARRAY_COUNT(gBattleState->player_block) + ARRAY_COUNT(sGM1PGamePlayerSetups)) / 2; i++)
@@ -1958,7 +1958,7 @@ void gm1PGameStageInitAll(void)
 
         if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
 
-        ftManager_SetFileDataKind(gBattleState->player_block[i].character_kind);
+        ftManagerSetupDataKind(gBattleState->player_block[i].character_kind);
 
         player_spawn.ft_kind = gBattleState->player_block[i].character_kind;
 
@@ -1988,7 +1988,7 @@ void gm1PGameStageInitAll(void)
 
         player_spawn.controller = &gPlayerControllers[i];
 
-        player_spawn.anim_heap = (sGM1PGamePlayerSetups[i].anim_bank != NULL) ? sGM1PGamePlayerSetups[i].anim_bank : ftManager_AllocAnimHeapKind(gBattleState->player_block[i].character_kind);
+        player_spawn.anim_heap = (sGM1PGamePlayerSetups[i].anim_bank != NULL) ? sGM1PGamePlayerSetups[i].anim_bank : ftManagerAllocAnimHeapKind(gBattleState->player_block[i].character_kind);
 
         player_spawn.copy_kind = sGM1PGamePlayerSetups[i].copy_kind;
 
@@ -1998,7 +1998,7 @@ void gm1PGameStageInitAll(void)
 
         player_spawn.is_skip_magnify = sGM1PGamePlayerSetups[i].is_skip_magnify;
 
-        fighter_gobj = ftManager_MakeFighter(&player_spawn), fp = ftGetStruct(fighter_gobj);
+        fighter_gobj = ftManagerMakeFighter(&player_spawn), fp = ftGetStruct(fighter_gobj);
 
         ftCommon_ClearPlayerMatchStats(i, fighter_gobj);
 
@@ -2006,7 +2006,7 @@ void gm1PGameStageInitAll(void)
 
         fp->cam_zoom_frame *= sGM1PGamePlayerSetups[i].cam_frame_mul;
     }
-    ftManager_SetFileDataPlayables();
+    ftManagerSetupDataPlayables();
     func_ovl2_80114958();
     func_ovl65_8018F1C0();
     func_ovl2_8010E1A4();
@@ -2055,7 +2055,7 @@ void gm1PGameAppendBonusStats(void)
     s32 i;
 
     sGM1PGameStageTimeSec = I_FRAMES_TO_SEC(gBattleState->match_time_current);
-    sGM1PGameTotalTimeSec = I_FRAMES_TO_SEC(g1PGameTotalTimeFrames);
+    sGM1PGameTotalTimeSec = I_FRAMES_TO_SEC(sGM1PManagerTotalFrames);
 
     if (sGM1PGameBonusStatNumPlayerKOs != 0)
     {
@@ -2354,7 +2354,7 @@ check_heavy_damage:
         // Pacifist
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_PACIFIST;
     }
-    if (g1PGameTotalFalls == 0)
+    if (sGM1PManagerTotalFalls == 0)
     {
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NOMISS;
     }
@@ -2623,12 +2623,12 @@ check_heavy_damage:
     {
         gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_GAMECLEAR;
 
-        if (g1PGameTotalFalls == 0)
+        if (sGM1PManagerTotalFalls == 0)
         {
             // No Miss Clear
             gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NOMISSCLEAR;
         }
-        if (g1PGameTotalDamageTaken == 0)
+        if (sGM1PManagerTotalDamageTaken == 0)
         {
             // No Damage Clear
             gSceneData.bonus_get_mask[0] |= GM1PGAME_BONUS_MASK0_NODAMAGECLEAR;
@@ -2688,9 +2688,9 @@ void gm1PGameSetBonusStats(void)
 
     gSceneData.spgame_time_seconds = (gBattleState->time_limit == GMMATCH_TIMELIMIT_INFINITE) ? 0 : I_FRAMES_TO_SEC(gBattleState->match_time_remain + 59);
 
-    g1PGameTotalTimeFrames += gBattleState->match_time_current;
-    g1PGameTotalFalls += gBattleState->player_block[gSceneData.spgame_player].falls;
-    g1PGameTotalDamageTaken += gBattleState->player_block[gSceneData.spgame_player].total_damage_all;
+    sGM1PManagerTotalFrames += gBattleState->match_time_current;
+    sGM1PManagerTotalFalls += gBattleState->player_block[gSceneData.spgame_player].falls;
+    sGM1PManagerTotalDamageTaken += gBattleState->player_block[gSceneData.spgame_player].total_damage_all;
 
     switch (gSceneData.spgame_stage)
     {
@@ -2713,7 +2713,7 @@ void func_ovl65_80190F8C(Gfx **display_list)
 {
     gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 
-    ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
+    ftRender_Lights_DisplayLightReflect(display_list, gMPLightAngleX, gMPLightAngleY);
 }
 
 // 0x80190FD8

@@ -38,8 +38,8 @@ void ftDonkey_ThrowFTurn_SetStatus(GObj *fighter_gobj)
 
     fp->command_vars.flags.flag1 = 0;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_ThrowFTurn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Donkey_ThrowFTurn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x8014D810

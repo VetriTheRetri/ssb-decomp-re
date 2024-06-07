@@ -17,8 +17,8 @@ void ftCommon_AttackHi3_SetStatus(GObj *fighter_gobj)
     }
     else status_id = ftStatus_Common_AttackHi3;
 
-    ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x8014FB1C

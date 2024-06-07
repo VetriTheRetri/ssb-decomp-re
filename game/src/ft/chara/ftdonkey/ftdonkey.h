@@ -22,7 +22,24 @@
 #define FTDONKEY_SPINNINGKONG_FALLSPECIAL_DRIFT 1.0F
 #define FTDONKEY_SPINNINGKONG_LANDING_LAG 0.3F
 
-extern ftStatusDesc ftStatus_SpecialDesc_Donkey[/* */];
+extern ftStatusDesc dFTDonkeySpecialStatusDesc[/* */];
+
+extern void *gFTDataDonkeyMain;
+extern void *gFTDataDonkeyBattleMotion;
+extern void *gFTDataDonkeyModel;
+extern void *gFTDataDonkeySpecial2;
+extern u32 gFTDataDonkeyParticleBankID;
+
+extern void *gFTDataPolyDonkeyMain;
+extern void *gFTDataPolyDonkeySubMotion;
+extern void *gFTDataPolyDonkeyModel;
+extern u32 gFTDataPolyDonkeyParticleBankID;
+
+extern void *gFTDataGiantDonkeyMain;
+extern void *gFTDataGiantDonkeySubMotion;
+extern void *gFTDataGiantDonkeyModel;
+extern void *gFTDataGiantDonkeySpecial2;
+extern u32 gFTDataGiantDonkeyParticleBankID;
 
 typedef enum ftDonkeyMotion
 {

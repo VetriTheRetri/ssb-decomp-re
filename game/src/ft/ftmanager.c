@@ -9,21 +9,38 @@ extern intptr_t D_NF_001AC870;
 extern intptr_t D_NF_000000A3;
 extern intptr_t D_NF_000000C9;
 
-ftStruct *gMainFighterStructCurrent;
-ftStruct *gFighterStructCurrent;
-ftParts *gMainFighterPartsCurrent;
-ftParts *gFighterPartsCurrent;
+// 0x80130D80
+ftStruct *sFTManagerFighterAllocFree;
+
+// 0x80130D84
+ftStruct *sFTManagerFighterAllocBuf;
+
+// 0x80130D88
+ftParts *sFTManagerPartsAllocFree;
+
+// 0x80130D8C
+ftParts *sFTManagerPartsAllocBuf;
+
+// 0x80130D90
+u32 gFTManagerBattlePlayerNum;
+
+// 0x80130D94
+u16 gFTManagerMotionCount;
+
+// 0x80130D96
+u16 gFTManagerStatUpdateCount;
+
+// 0x80130D98
 void *gFTCommonFile;
 
+// 0x80130D9C
 u32 gFTAnimHeapSize;
-u32 gBattlePlayerCount;
-u16 gEntityMotionCount;
-u16 gEntityStatUpdateCount;
 
-rdFileNode D_ovl2_80130DA0;
+// 0x80130DA0
+rdFileNode sFTManagerForceBuf[7];
 
 // 0x80116E10
-ftData *dFTManagerFtDataFiles[/* */] =
+ftData *dFTManagerDataFiles[/* */] =
 {
     D_ovl2_80117810,
     D_ovl2_801196F4,
@@ -55,7 +72,7 @@ ftData *dFTManagerFtDataFiles[/* */] =
 };
 
 // 0x800D6FE0
-void func_ovl2_800D6FE0(void)
+void ftManagerSetupFileSize(void)
 {
     s32 i, j;
     u32 largest_size;
@@ -65,21 +82,21 @@ void func_ovl2_800D6FE0(void)
     rdSetup rldm_setup;
     ftScriptInfo *script_info;
 
-    rldm_setup.tableRomAddr = (s32)&D_NF_001AC870;
-    rldm_setup.tableFileCount = (u32)&D_NF_00000854;
+    rldm_setup.tableRomAddr = &D_NF_001AC870;
+    rldm_setup.tableFileCount = &D_NF_00000854;
     rldm_setup.fileHeap = NULL;
     rldm_setup.fileHeapSize = 0;
     rldm_setup.statusBuf = NULL;
     rldm_setup.statusBufSize = 0;
-    rldm_setup.forceBuf = &D_ovl2_80130DA0;
-    rldm_setup.forceBufSize = 7;
+    rldm_setup.forceBuf = sFTManagerForceBuf;
+    rldm_setup.forceBufSize = ARRAY_COUNT(sFTManagerForceBuf);
 
     rdManagerInitSetup(&rldm_setup);
 
-    for (i = 0; i < ARRAY_COUNT(dFTManagerFtDataFiles); i++)
+    for (i = 0; i < ARRAY_COUNT(dFTManagerDataFiles); i++)
     {
         rldm_size = &D_800A50F8[i];
-        ft_data = dFTManagerFtDataFiles[i];
+        ft_data = dFTManagerDataFiles[i];
 
         largest_size = 0;
 
@@ -106,11 +123,11 @@ void func_ovl2_800D6FE0(void)
         }
         rldm_size->largest_size1 = largest_size;
 
-        for (j = 0; j < *ft_data->demoscript_array_count; j++)
+        for (j = 0; j < *ft_data->submotion_array_count; j++)
         {
-            script_info = &ft_data->demoscript->script_info[j];
+            script_info = &ft_data->submotion->script_info[j];
 
-            current_anim_size = ft_data->demoscript->script_info[j].anim_id;
+            current_anim_size = ft_data->submotion->script_info[j].anim_id;
 
             if (script_info->anim_id != 0)
             {
@@ -130,55 +147,55 @@ void func_ovl2_800D6FE0(void)
 }
 
 // 0x800D7194
-void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
+void ftManagerAllocFighter(u32 data_flags, s32 alloc_count)
 {
     u32 largest_size;
     s32 i;
     u32 temp;
     ftData *ft_data;
     RldmFileSize *rldm_size;
-    u32 var_t2;
+    u32 heap_size;
 
-    var_t2 = 0;
+    heap_size = 0;
 
-    gFighterStructCurrent = gMainFighterStructCurrent = gsMemoryAlloc(sizeof(ftStruct) * alloc_count, 0x8);
+    sFTManagerFighterAllocBuf = sFTManagerFighterAllocFree = gsMemoryAlloc(sizeof(ftStruct) * alloc_count, 0x8);
 
-    _bzero(gFighterStructCurrent, sizeof(ftStruct) * alloc_count);
+    _bzero(sFTManagerFighterAllocBuf, sizeof(ftStruct) * alloc_count);
 
     for (i = 0; i < (alloc_count - 1); i++)
     {
-        gFighterStructCurrent[i].alloc_next = &gFighterStructCurrent[i + 1];
+        sFTManagerFighterAllocBuf[i].alloc_next = &sFTManagerFighterAllocBuf[i + 1];
     }
-    gFighterStructCurrent[i].alloc_next = NULL;
+    sFTManagerFighterAllocBuf[i].alloc_next = NULL;
 
-    gMainFighterPartsCurrent = gFighterPartsCurrent = gsMemoryAlloc(sizeof(ftParts) * alloc_count * FTPARTS_JOINT_NUM_MAX, 0x8);
+    sFTManagerPartsAllocFree = sFTManagerPartsAllocBuf = gsMemoryAlloc(sizeof(ftParts) * alloc_count * FTPARTS_JOINT_NUM_MAX, 0x8);
 
     for (i = 0; i < ((alloc_count * FTPARTS_JOINT_NUM_MAX) - 1); i++)
     {
-        gFighterPartsCurrent[i].alloc_next = &gFighterPartsCurrent[i + 1];
+        sFTManagerPartsAllocBuf[i].alloc_next = &sFTManagerPartsAllocBuf[i + 1];
     }
-    gFighterPartsCurrent[i].alloc_next = NULL;
+    sFTManagerPartsAllocBuf[i].alloc_next = NULL;
 
-    gBattlePlayerCount = 1;
-    gEntityMotionCount = 1;
-    gEntityStatUpdateCount = 1;
+    gFTManagerBattlePlayerNum = 1;
+    gFTManagerMotionCount = 1;
+    gFTManagerStatUpdateCount = 1;
 
     gFTCommonFile = rdManagerGetFileWithExternHeap((u32)&D_NF_000000A3, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000A3), 0x10));
 
     rdManagerGetFileWithExternHeap((u32)&D_NF_000000C9, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000C9), 0x10));
 
-    for (i = 0; i < (ARRAY_COUNT(dFTManagerFtDataFiles) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(dFTManagerDataFiles) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
     {
-        ft_data = dFTManagerFtDataFiles[i];
+        ft_data = dFTManagerDataFiles[i];
         rldm_size = &D_800A50F8[i];
 
         largest_size = 0;
 
         *ft_data->p_file_main = NULL;
 
-        ft_data->file_size_total = rldm_size->file_size;
+        ft_data->file_main_size = rldm_size->file_size;
 
-        if (data_flags & 2)
+        if (data_flags & FTDATA_FLAG_ANIM_GAME)
         {
             temp = rldm_size->largest_size1;
 
@@ -187,7 +204,7 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
                 largest_size = temp;
             }
         }
-        if (data_flags & 1)
+        if (data_flags & FTDATA_FLAG_ANIM_MOVIE)
         {
             temp = rldm_size->largest_size2;
 
@@ -198,9 +215,9 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
         }
         ft_data->anim_file_size = largest_size;
 
-        if (var_t2 < largest_size)
+        if (heap_size < largest_size)
         {
-            var_t2 = largest_size;
+            heap_size = largest_size;
         }
 
         // gzburger
@@ -209,19 +226,19 @@ void ftManager_AllocFighterData(u32 data_flags, s32 alloc_count)
 
         }
     }
-    gFTAnimHeapSize = var_t2;
+    gFTAnimHeapSize = heap_size;
 
-    if (data_flags & 1)
+    if (data_flags & FTDATA_FLAG_ANIM_MOVIE)
     {
         func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
     }
 }
 
 // 0x800D7594
-ftStruct* ftManager_GetStructSetNextAlloc(void)
+ftStruct* ftManagerGetStructSetNextAlloc(void)
 {
     ftStruct *current_fighter;
-    ftStruct *next_fighter = gMainFighterStructCurrent;
+    ftStruct *next_fighter = sFTManagerFighterAllocFree;
 
     if (next_fighter == NULL)
     {
@@ -233,7 +250,7 @@ ftStruct* ftManager_GetStructSetNextAlloc(void)
     }
     else current_fighter = next_fighter;
 
-    gMainFighterStructCurrent = next_fighter->alloc_next;
+    sFTManagerFighterAllocFree = next_fighter->alloc_next;
 
     return current_fighter;
 }
@@ -241,8 +258,8 @@ ftStruct* ftManager_GetStructSetNextAlloc(void)
 // 0x800D75EC
 void ftManager_SetPrevAlloc(ftStruct *fp)
 {
-    fp->alloc_next = gMainFighterStructCurrent;
-    gMainFighterStructCurrent = fp;
+    fp->alloc_next = sFTManagerFighterAllocFree;
+    sFTManagerFighterAllocFree = fp;
 }
 
 // 0x800D7604
@@ -251,7 +268,7 @@ ftParts* ftManager_GetFighterPartsSetNextAlloc(void)
     ftParts *current_ftpart;
     ftParts *next_ftpart;
 
-    next_ftpart = gMainFighterPartsCurrent;
+    next_ftpart = sFTManagerPartsAllocFree;
 
     if (next_ftpart == NULL)
     {
@@ -263,14 +280,14 @@ ftParts* ftManager_GetFighterPartsSetNextAlloc(void)
     }
     current_ftpart = next_ftpart;
 
-    gMainFighterPartsCurrent = next_ftpart->alloc_next;
+    sFTManagerPartsAllocFree = next_ftpart->alloc_next;
 
     next_ftpart->transform_update_mode =
     next_ftpart->unk_dobjtrans_0x5 =
     next_ftpart->unk_dobjtrans_0x7 = 0;
     next_ftpart->unk_dobjtrans_0x6 = 0;
 
-    next_ftpart->unk_gobj = NULL;
+    next_ftpart->ftparts_gobj = NULL;
     next_ftpart->unk_dobjtrans_0xE = 0;
 
     return current_ftpart;
@@ -279,14 +296,14 @@ ftParts* ftManager_GetFighterPartsSetNextAlloc(void)
 // 0x800D767C
 void ftManager_SetFighterPartsPrevAlloc(ftParts *ft_parts)
 {
-    ft_parts->alloc_next = gMainFighterPartsCurrent;
-    gMainFighterPartsCurrent = ft_parts;
+    ft_parts->alloc_next = sFTManagerPartsAllocFree;
+    sFTManagerPartsAllocFree = ft_parts;
 }
 
 // 0x800D7694
-void ftManager_SetMainFileData(s32 ft_kind)
+void ftManagerSetupDataMain(s32 ft_kind)
 {
-    ftData *ft_data = dFTManagerFtDataFiles[ft_kind];
+    ftData *ft_data = dFTManagerDataFiles[ft_kind];
 
     *ft_data->p_file_main = rdManagerGetFileWithExternHeap(ft_data->file_main_id, gsMemoryAlloc(rdManagerGetFileSize(ft_data->file_main_id), 0x10));
 
@@ -297,18 +314,18 @@ void ftManager_SetMainFileData(s32 ft_kind)
 }
 
 // 0x800D7710
-void func_ovl2_800D7710(s32 ft_kind)
+void ftManagerSetupDataFiles(s32 ft_kind)
 {
-    ftData *ft_data = dFTManagerFtDataFiles[ft_kind];
+    ftData *ft_data = dFTManagerDataFiles[ft_kind];
 
     if (ft_data->file_battlemotion_id != 0)
     {
         *ft_data->p_file_battlemotion = rldm_get_file_standard(ft_data->file_battlemotion_id);
     }
 
-    if (ft_data->file_demomotion_id != 0)
+    if (ft_data->file_submotion_id != 0)
     {
-        *ft_data->p_file_demoscript = rldm_get_file_standard(ft_data->file_demomotion_id);
+        *ft_data->p_file_submotion = rldm_get_file_standard(ft_data->file_submotion_id);
     }
 
     *ft_data->p_file_model = rldm_get_file_standard(ft_data->file_model_id);
@@ -317,21 +334,21 @@ void func_ovl2_800D7710(s32 ft_kind)
     {
         ft_data->p_file_shieldpose = rldm_get_file_standard(ft_data->file_shieldpose_id);
     }
-    if (ft_data->file_extra1_id != 0)
+    if (ft_data->file_special1_id != 0)
     {
-        *ft_data->p_file_extra1 = rldm_get_file_standard(ft_data->file_extra1_id);
+        *ft_data->p_file_special1 = rldm_get_file_standard(ft_data->file_special1_id);
     }
-    if (ft_data->file_extra2_id != 0)
+    if (ft_data->file_special2_id != 0)
     {
-        *ft_data->p_file_extra2 = rldm_get_file_standard(ft_data->file_extra2_id);
+        *ft_data->p_file_special2 = rldm_get_file_standard(ft_data->file_special2_id);
     }
-    if (ft_data->file_extra3_id != 0)
+    if (ft_data->file_special3_id != 0)
     {
-        *ft_data->p_file_extra3 = rldm_get_file_standard(ft_data->file_extra3_id);
+        *ft_data->p_file_special3 = rldm_get_file_standard(ft_data->file_special3_id);
     }
-    if (ft_data->file_extra4_id != 0)
+    if (ft_data->file_special4_id != 0)
     {
-        *ft_data->p_file_extra4 = rldm_get_file_standard(ft_data->file_extra4_id);
+        *ft_data->p_file_special4 = rldm_get_file_standard(ft_data->file_special4_id);
     }
     if (ft_data->o_particles1 != 0)
     {
@@ -340,38 +357,38 @@ void func_ovl2_800D7710(s32 ft_kind)
 }
 
 // 0x800D782C
-void ftManager_SetFileDataPlayables(void)
+void ftManagerSetupDataPlayables(void)
 {
     s32 i;
 
-    for (i = 0; i < Ft_Kind_MasterHand; i++)
+    for (i = 0; i <= Ft_Kind_PlayableEnd; i++)
     {
-        func_ovl2_800D7710(i);
+        ftManagerSetupDataFiles(i);
     }
 }
 
 // 0x800D786C
-void ftManager_SetFileDataKind(s32 ft_kind)
+void ftManagerSetupDataKind(s32 ft_kind)
 {
-    ftData *ft_data = dFTManagerFtDataFiles[ft_kind];
+    ftData *ft_data = dFTManagerDataFiles[ft_kind];
 
     if (*ft_data->p_file_main == NULL)
     {
-        ftManager_SetMainFileData(ft_kind);
-        func_ovl2_800D7710(ft_kind);
+        ftManagerSetupDataMain(ft_kind);
+        ftManagerSetupDataFiles(ft_kind);
     }
 }
 
 // 0x800D78B4
-void* ftManager_AllocAnimHeapKind(s32 ft_kind)
+void* ftManagerAllocAnimHeapKind(s32 ft_kind)
 {
-    ftData *ft_data = dFTManagerFtDataFiles[ft_kind];
+    ftData *ft_data = dFTManagerDataFiles[ft_kind];
 
     return gsMemoryAlloc(ft_data->anim_file_size, 0x10);
 }
 
 // 0x800D78E8
-void func_ovl2_800D78E8(GObj *fighter_gobj)
+void ftManagerDestroyFighter(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
@@ -380,16 +397,15 @@ void func_ovl2_800D78E8(GObj *fighter_gobj)
     {
         ftCommon_ProcStopGFX(fighter_gobj);
     }
-
     for (i = 0; i < ARRAY_COUNT(fp->joint); i++)
     {
         if (fp->joint[i] != NULL)
         {
             ftParts *ft_parts = fp->joint[i]->user_data.p;
 
-            if (ft_parts->unk_gobj != NULL)
+            if (ft_parts->ftparts_gobj != NULL)
             {
-                omEjectGObj(ft_parts->unk_gobj);
+                omEjectGObj(ft_parts->ftparts_gobj);
             }
             ftManager_SetFighterPartsPrevAlloc(ft_parts);
         }
@@ -418,11 +434,10 @@ void func_ovl2_800D7994(GObj *fighter_gobj)
 }
 
 extern intptr_t lFTKirbySpecialNCopyData;
-extern s32 gBattlePlayerCount;
 extern void *gFTDataKirbyBattleMotion; // Pointer to fighter files?
 
 // 0x800D79F0
-void func_ovl2_800D79F0(GObj *fighter_gobj, ftCreateDesc *spawn)
+void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *spawn)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -468,7 +483,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftCreateDesc *spawn)
     fp->damage_count = 0;
     fp->damage_kind = 0;
     fp->damage_heal = 0;
-    fp->damage_joint_index = 0;
+    fp->damage_joint_id = 0;
     fp->invincible_timer = 0;
     fp->intangible_timer = 0;
     fp->star_invincible_timer = 0;
@@ -504,7 +519,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftCreateDesc *spawn)
 
     fp->is_fast_fall = FALSE;
 
-    fp->player_number = gBattlePlayerCount++;
+    fp->player_number = gFTManagerBattlePlayerNum++;
 
     fp->publicity_knockback = 0.0F;
 
@@ -653,7 +668,7 @@ void func_ovl2_800D79F0(GObj *fighter_gobj, ftCreateDesc *spawn)
 }
 
 // 0x800D7F3C
-GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
+GObj* ftManagerMakeFighter(ftCreateDesc *spawn) // Create fighter
 {
     ftStruct *fp;
     GObj *fighter_gobj;
@@ -664,18 +679,18 @@ GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
     DObj *topn_joint;
     ftMesh *ftmesh;
 
-    fighter_gobj = omMakeGObjSPAfter(GObj_Kind_Fighter, NULL, GObj_LinkID_Fighter, 0x80000000);
+    fighter_gobj = omMakeGObjSPAfter(GObj_Kind_Fighter, NULL, GObj_LinkID_Fighter, GOBJ_LINKORDER_DEFAULT);
 
-    omAddGObjRenderProc(fighter_gobj, spawn->proc_render, 9, 0x80000000, -1);
+    omAddGObjRenderProc(fighter_gobj, spawn->proc_render, 9, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    fp = ftManager_GetStructSetNextAlloc();
+    fp = ftManagerGetStructSetNextAlloc();
 
     fighter_gobj->user_data.p = fp;
 
     fp->status_info.pl_kind = spawn->pl_kind;
     fp->fighter_gobj = fighter_gobj;
     fp->ft_kind = spawn->ft_kind;
-    fp->ft_data = dFTManagerFtDataFiles[fp->ft_kind];
+    fp->ft_data = dFTManagerDataFiles[fp->ft_kind];
     attributes = fp->attributes = (ftAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
     fp->anim_load = spawn->anim_heap;
     fp->team = spawn->team;
@@ -758,18 +773,18 @@ GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
 
             ftparts = fp->joint[i]->user_data.p;
             ftparts->unk_0xC = attributes->dobj_desc_container->dobj_desc_array[fp->lod_current - 1].unk_dobjcontain_0xC;
-            ftparts->unk_0xD = i;
+            ftparts->joint_id = i;
 
             if (fp->costume != 0)
             {
-                if ((attributes->mesh != NULL) && (i == attributes->mesh->joint_index))
+                if ((attributes->mesh != NULL) && (i == attributes->mesh->joint_id))
                 {
                     ftmesh = attributes->mesh;
 
-                    ftparts->unk_gobj = omMakeGObjSPAfter(GObj_Kind_FighterParts, NULL, 0xD, 0x80000000);
+                    ftparts->ftparts_gobj = omMakeGObjSPAfter(GObj_Kind_FighterParts, NULL, GObj_LinkID_FighterParts, GOBJ_LINKORDER_DEFAULT);
 
-                    omAddDObjForGObj(ftparts->unk_gobj, ftmesh->dl);
-                    func_ovl0_800C8CB8(ftparts->unk_gobj->obj, ftmesh->unk_ftdobj_0x8, ftmesh->unk_ftdobj_0xC, 0, fp->costume);
+                    omAddDObjForGObj(ftparts->ftparts_gobj, ftmesh->dl);
+                    func_ovl0_800C8CB8(ftparts->ftparts_gobj->obj, ftmesh->unk_ftdobj_0x8, ftmesh->unk_ftdobj_0xC, 0, fp->costume);
                 }
             }
         }
@@ -779,7 +794,7 @@ GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
         if (fp->joint[i] != NULL)
         {
             fp->joint_render_state[i - ftParts_Joint_EnumMax].render_state_b0 = 
-            fp->joint_render_state[i - ftParts_Joint_EnumMax].render_state_b1 = (fp->joint[i]->display_list != NULL) ? 0 : -1;
+            fp->joint_render_state[i - ftParts_Joint_EnumMax].render_state_b1 = (fp->joint[i]->display_ptr != NULL) ? 0 : -1;
         }
     }
     for (i = 0; i < ARRAY_COUNT(fp->texture_render_state); i++)
@@ -803,11 +818,11 @@ GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
 
     for (i = 0; i < ARRAY_COUNT(fp->fighter_hurt); i++)
     {
-        if (attributes->fighter_hurt_desc[i].joint_index != -1)
+        if (attributes->fighter_hurt_desc[i].joint_id != -1)
         {
             fp->fighter_hurt[i].hitstatus = gmHitCollision_HitStatus_Normal;
-            fp->fighter_hurt[i].joint_index = attributes->fighter_hurt_desc[i].joint_index;
-            fp->fighter_hurt[i].joint = fp->joint[fp->fighter_hurt[i].joint_index];
+            fp->fighter_hurt[i].joint_id = attributes->fighter_hurt_desc[i].joint_id;
+            fp->fighter_hurt[i].joint = fp->joint[fp->fighter_hurt[i].joint_id];
             fp->fighter_hurt[i].placement = attributes->fighter_hurt_desc[i].placement;
             fp->fighter_hurt[i].is_grabbable = attributes->fighter_hurt_desc[i].is_grabbable;
             fp->fighter_hurt[i].offset = attributes->fighter_hurt_desc[i].offset;
@@ -825,21 +840,21 @@ GObj* ftManager_MakeFighter(ftCreateDesc *spawn) // Create fighter
     fp->coll_data.p_object_coll = &fp->coll_data.object_coll;
     fp->coll_data.cliffcatch_coll = attributes->cliffcatch_coll;
     fp->coll_data.ignore_line_id = -1;
-    fp->coll_data.coll_update_frame = gMapCollUpdateFrame;
+    fp->coll_data.coll_update_frame = gMPCollUpdateFrame;
     fp->coll_data.coll_mask_curr = 0;
 
     if (fp->status_info.pl_kind != Pl_Kind_Demo)
     {
-        omAddGObjCommonProc(fighter_gobj, ftMain_ProcInterruptMain, 1, 5);
-        omAddGObjCommonProc(fighter_gobj, ftMain_ProcPhysicsMapNormal, 1, 4);
-        omAddGObjCommonProc(fighter_gobj, ftMain_ProcPhysicsMapCapture, 1, 3);
-        omAddGObjCommonProc(fighter_gobj, ftMain_ProcSearchAllCatch, 1, 2);
-        omAddGObjCommonProc(fighter_gobj, ftMain_ProcSearchAllHit, 1, 1);
-        omAddGObjCommonProc(fighter_gobj, ftMain_ProcUpdateMain, 1, 0);
+        omAddGObjCommonProc(fighter_gobj, ftMainProcInterruptMain, 1, 5);
+        omAddGObjCommonProc(fighter_gobj, ftMainProcPhysicsMapNormal, 1, 4);
+        omAddGObjCommonProc(fighter_gobj, ftMainProcPhysicsMapCapture, 1, 3);
+        omAddGObjCommonProc(fighter_gobj, ftMainProcSearchAllCatch, 1, 2);
+        omAddGObjCommonProc(fighter_gobj, ftMainProcSearchAllHit, 1, 1);
+        omAddGObjCommonProc(fighter_gobj, ftMainProcUpdateMain, 1, 0);
     }
     else omAddGObjCommonProc(fighter_gobj, func_ovl1_80390584, 1, 5);
 
-    func_ovl2_800D79F0(fighter_gobj, spawn);
+    ftManagerInitFighter(fighter_gobj, spawn);
 
     if (fp->status_info.pl_kind == Pl_Kind_Com)
     {

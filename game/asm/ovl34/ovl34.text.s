@@ -520,7 +520,7 @@ glabel mvOpeningFirstDestinationCreateMasterHand
   /* 162DA4 80132264 E7A00020 */      swc1 $f0, 0x20($sp)
   /* 162DA8 80132268 E7A00024 */      swc1 $f0, 0x24($sp)
   /* 162DAC 8013226C E7A00028 */      swc1 $f0, 0x28($sp)
-  /* 162DB0 80132270 0C035FCF */       jal ftManager_MakeFighter
+  /* 162DB0 80132270 0C035FCF */       jal ftManagerMakeFighter
   /* 162DB4 80132274 AFAA0054 */        sw $t2, 0x54($sp)
   /* 162DB8 80132278 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationMasterHandGObj)
   /* 162DBC 8013227C 3C050001 */       lui $a1, (0x1000F >> 16) # 65551
@@ -605,7 +605,7 @@ glabel mvOpeningFirstDestinationCreatePluckedFighter
   /* 162ED4 80132394 E7A00020 */      swc1 $f0, 0x20($sp)
   /* 162ED8 80132398 E7A00024 */      swc1 $f0, 0x24($sp)
   /* 162EDC 8013239C E7A00028 */      swc1 $f0, 0x28($sp)
-  /* 162EE0 801323A0 0C035FCF */       jal ftManager_MakeFighter
+  /* 162EE0 801323A0 0C035FCF */       jal ftManagerMakeFighter
   /* 162EE4 801323A4 AFA90054 */        sw $t1, 0x54($sp)
   /* 162EE8 801323A8 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 162EEC 801323AC 44810000 */      mtc1 $at, $f0 # 1.0 to cop1
@@ -1006,7 +1006,7 @@ glabel mvOpeningFirstDestinationCreateDroppedFighter
   /* 1634E0 801329A0 E7A40020 */      swc1 $f4, 0x20($sp)
   /* 1634E4 801329A4 E7A60024 */      swc1 $f6, 0x24($sp)
   /* 1634E8 801329A8 AFA90054 */        sw $t1, 0x54($sp)
-  /* 1634EC 801329AC 0C035FCF */       jal ftManager_MakeFighter
+  /* 1634EC 801329AC 0C035FCF */       jal ftManagerMakeFighter
   /* 1634F0 801329B0 E7A80028 */      swc1 $f8, 0x28($sp)
   /* 1634F4 801329B4 3C018013 */       lui $at, %hi(gMvOpeningFirstDestinationDroppedFighterGObj)
   /* 1634F8 801329B8 3C050001 */       lui $a1, (0x10009 >> 16) # 65545
@@ -3068,15 +3068,15 @@ glabel mvOpeningFirstDestinationInit
   /* 1653AC 8013486C 0C03F4C0 */       jal efManager_AllocUserData
   /* 1653B0 80134870 00000000 */       nop
   /* 1653B4 80134874 24040001 */     addiu $a0, $zero, 1
-  /* 1653B8 80134878 0C035C65 */       jal ftManager_AllocFighterData
+  /* 1653B8 80134878 0C035C65 */       jal ftManagerAllocFighter
   /* 1653BC 8013487C 24050003 */     addiu $a1, $zero, 3
   /* 1653C0 80134880 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationPluckedFighterKind)
-  /* 1653C4 80134884 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 1653C4 80134884 0C035E1B */       jal ftManagerSetupDataKind
   /* 1653C8 80134888 8C844CF8 */        lw $a0, %lo(gMvOpeningFirstDestinationPluckedFighterKind)($a0)
   /* 1653CC 8013488C 3C048013 */       lui $a0, %hi(gMvOpeningFirstDestinationDroppedFighterKind)
-  /* 1653D0 80134890 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 1653D0 80134890 0C035E1B */       jal ftManagerSetupDataKind
   /* 1653D4 80134894 8C844CFC */        lw $a0, %lo(gMvOpeningFirstDestinationDroppedFighterKind)($a0)
-  /* 1653D8 80134898 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 1653D8 80134898 0C035E1B */       jal ftManagerSetupDataKind
   /* 1653DC 8013489C 2404000C */     addiu $a0, $zero, 0xc
   /* 1653E0 801348A0 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
   /* 1653E4 801348A4 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)

@@ -43,8 +43,8 @@ glabel func_ovl65_8018D0C0
   /* 10B98C 8018D12C 0C001260 */       jal gsMemoryAlloc
   /* 10B990 8018D130 24050010 */     addiu $a1, $zero, 0x10
   /* 10B994 8018D134 3C048011 */       lui $a0, %hi(dCommonFileIDs)
-  /* 10B998 8018D138 3C068013 */       lui $a2, %hi(gCommonFiles)
-  /* 10B99C 8018D13C 24C60D40 */     addiu $a2, $a2, %lo(gCommonFiles)
+  /* 10B998 8018D138 3C068013 */       lui $a2, %hi(gGMCommonFiles)
+  /* 10B99C 8018D13C 24C60D40 */     addiu $a2, $a2, %lo(gGMCommonFiles)
   /* 10B9A0 8018D140 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
   /* 10B9A4 8018D144 24050008 */     addiu $a1, $zero, 8
   /* 10B9A8 8018D148 0C033781 */       jal rdManagerLoadFiles
@@ -1199,7 +1199,7 @@ glabel gm1PGameStageSetupAll
   .L8018E1CC:
   /* 10CA2C 8018E1CC 244FFFFF */     addiu $t7, $v0, -1
   /* 10CA30 8018E1D0 A06F0000 */        sb $t7, ($v1)
-  /* 10CA34 8018E1D4 0C035E3A */       jal func_ovl2_800D78E8
+  /* 10CA34 8018E1D4 0C035E3A */       jal ftManagerDestroyFighter
   /* 10CA38 8018E1D8 AFA70088 */        sw $a3, 0x88($sp)
   /* 10CA3C 8018E1DC 3C09800A */       lui $t1, %hi(gBattleState)
   /* 10CA40 8018E1E0 001040C0 */       sll $t0, $s0, 3
@@ -1299,8 +1299,8 @@ glabel gm1PGameStageSetupAll
   /* 10CBA4 8018E344 14410009 */       bne $v0, $at, .L8018E36C
   /* 10CBA8 8018E348 00401825 */        or $v1, $v0, $zero
   /* 10CBAC 8018E34C 3C0A8019 */       lui $t2, %hi(sGM1PGamePlayerSetups)
-  /* 10CBB0 8018E350 3C0B8013 */       lui $t3, %hi(g1PGameKirbyTeamFinalCopy)
-  /* 10CBB4 8018E354 916B0D75 */       lbu $t3, %lo(g1PGameKirbyTeamFinalCopy)($t3)
+  /* 10CBB0 8018E350 3C0B8013 */       lui $t3, %hi(sGM1PManagerKirbyTeamFinalCopy)
+  /* 10CBB4 8018E354 916B0D75 */       lbu $t3, %lo(sGM1PManagerKirbyTeamFinalCopy)($t3)
   /* 10CBB8 8018E358 254A2FE0 */     addiu $t2, $t2, %lo(sGM1PGamePlayerSetups)
   /* 10CBBC 8018E35C 0010C940 */       sll $t9, $s0, 5
   /* 10CBC0 8018E360 032A3821 */      addu $a3, $t9, $t2
@@ -1425,7 +1425,7 @@ glabel gm1PGameStageSetupAll
   /* 10CD84 8018E524 A3AA0063 */        sb $t2, 0x63($sp)
   /* 10CD88 8018E528 354B0040 */       ori $t3, $t2, 0x40
   /* 10CD8C 8018E52C A3AB0063 */        sb $t3, 0x63($sp)
-  /* 10CD90 8018E530 0C035FCF */       jal ftManager_MakeFighter
+  /* 10CD90 8018E530 0C035FCF */       jal ftManagerMakeFighter
   /* 10CD94 8018E534 AFA70020 */        sw $a3, 0x20($sp)
   /* 10CD98 8018E538 AFA2003C */        sw $v0, 0x3c($sp)
   /* 10CD9C 8018E53C 8C460084 */        lw $a2, 0x84($v0)
@@ -2154,9 +2154,9 @@ glabel func_ovl65_8018EE44
   /* 10D7F8 8018EF98 3C120000 */       lui $s2, %hi(D_NF_00000068)
   /* 10D7FC 8018EF9C 26520068 */     addiu $s2, $s2, %lo(D_NF_00000068)
   /* 10D800 8018EFA0 1860000B */      blez $v1, .L8018EFD0
-  /* 10D804 8018EFA4 3C148013 */       lui $s4, %hi(gCommonFiles)
-  /* 10D808 8018EFA8 26940D40 */     addiu $s4, $s4, %lo(gCommonFiles)
-  /* 10D80C 8018EFAC 8E990010 */        lw $t9, 0x10($s4) # gCommonFiles + 16
+  /* 10D804 8018EFA4 3C148013 */       lui $s4, %hi(gGMCommonFiles)
+  /* 10D808 8018EFA8 26940D40 */     addiu $s4, $s4, %lo(gGMCommonFiles)
+  /* 10D80C 8018EFAC 8E990010 */        lw $t9, 0x10($s4) # gGMCommonFiles + 16
   .L8018EFB0:
   /* 10D810 8018EFB0 02202025 */        or $a0, $s1, $zero
   /* 10D814 8018EFB4 0C0333F7 */       jal gcAppendSObjWithSprite
@@ -2165,7 +2165,7 @@ glabel func_ovl65_8018EE44
   /* 10D820 8018EFC0 26100001 */     addiu $s0, $s0, 1
   /* 10D824 8018EFC4 0203082A */       slt $at, $s0, $v1
   /* 10D828 8018EFC8 5420FFF9 */      bnel $at, $zero, .L8018EFB0
-  /* 10D82C 8018EFCC 8E990010 */        lw $t9, 0x10($s4) # gCommonFiles + 16
+  /* 10D82C 8018EFCC 8E990010 */        lw $t9, 0x10($s4) # gGMCommonFiles + 16
   .L8018EFD0:
   /* 10D830 8018EFD0 24680001 */     addiu $t0, $v1, 1
   /* 10D834 8018EFD4 3C018019 */       lui $at, %hi(sGM1PGameEnemyStocksDisplay)
@@ -2852,7 +2852,7 @@ glabel gm1PGameStageInitAll
   /* 10E214 8018F9B4 1000002F */         b .L8018FA74
   /* 10E218 8018F9B8 267350E8 */     addiu $s3, $s3, %lo(gBattleState)
   .L8018F9BC:
-  /* 10E21C 8018F9BC 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 10E21C 8018F9BC 0C035E1B */       jal ftManagerSetupDataKind
   /* 10E220 8018F9C0 02202025 */        or $a0, $s1, $zero
   /* 10E224 8018F9C4 26310001 */     addiu $s1, $s1, 1
   /* 10E228 8018F9C8 2A21001A */      slti $at, $s1, 0x1a
@@ -2939,7 +2939,7 @@ glabel gm1PGameStageInitAll
   /* 10E34C 8018FAEC 000A5040 */       sll $t2, $t2, 1
   /* 10E350 8018FAF0 014F6021 */      addu $t4, $t2, $t7
   /* 10E354 8018FAF4 90640023 */       lbu $a0, 0x23($v1)
-  /* 10E358 8018FAF8 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 10E358 8018FAF8 0C035E1B */       jal ftManagerSetupDataKind
   /* 10E35C 8018FAFC AFAC0040 */        sw $t4, 0x40($sp)
   /* 10E360 8018FB00 8E6B0000 */        lw $t3, ($s3) # gBattleState + 0
   /* 10E364 8018FB04 27A40060 */     addiu $a0, $sp, 0x60
@@ -2988,7 +2988,7 @@ glabel gm1PGameStageInitAll
   /* 10E40C 8018FBAC 10000004 */         b .L8018FBC0
   /* 10E410 8018FBB0 AFA20094 */        sw $v0, 0x94($sp)
   .L8018FBB4:
-  /* 10E414 8018FBB4 0C035E2D */       jal ftManager_AllocAnimHeapKind
+  /* 10E414 8018FBB4 0C035E2D */       jal ftManagerAllocAnimHeapKind
   /* 10E418 8018FBB8 90640023 */       lbu $a0, 0x23($v1)
   /* 10E41C 8018FBBC AFA20094 */        sw $v0, 0x94($sp)
   .L8018FBC0:
@@ -3007,7 +3007,7 @@ glabel gm1PGameStageInitAll
   /* 10E450 8018FBF0 304AFFDF */      andi $t2, $v0, 0xffdf
   /* 10E454 8018FBF4 012A1025 */        or $v0, $t1, $t2
   /* 10E458 8018FBF8 A3A2007B */        sb $v0, 0x7b($sp)
-  /* 10E45C 8018FBFC 0C035FCF */       jal ftManager_MakeFighter
+  /* 10E45C 8018FBFC 0C035FCF */       jal ftManagerMakeFighter
   /* 10E460 8018FC00 27A4005C */     addiu $a0, $sp, 0x5c
   /* 10E464 8018FC04 8C430084 */        lw $v1, 0x84($v0)
   /* 10E468 8018FC08 02202025 */        or $a0, $s1, $zero
@@ -3026,7 +3026,7 @@ glabel gm1PGameStageInitAll
   /* 10E498 8018FC38 24010004 */     addiu $at, $zero, 4
   /* 10E49C 8018FC3C 1621FF8F */       bne $s1, $at, .L8018FA7C
   /* 10E4A0 8018FC40 26520074 */     addiu $s2, $s2, 0x74
-  /* 10E4A4 8018FC44 0C035E0B */       jal ftManager_SetFileDataPlayables
+  /* 10E4A4 8018FC44 0C035E0B */       jal ftManagerSetupDataPlayables
   /* 10E4A8 8018FC48 00000000 */       nop 
   /* 10E4AC 8018FC4C 0C045256 */       jal func_ovl2_80114958
   /* 10E4B0 8018FC50 00000000 */       nop 
@@ -3112,8 +3112,8 @@ glabel gm1PGameAppendBonusStats
   /* 10E5DC 8018FD7C 01E2001B */      divu $zero, $t7, $v0
   /* 10E5E0 8018FD80 0000C012 */      mflo $t8
   /* 10E5E4 8018FD84 ADB80000 */        sw $t8, ($t5) # sGM1PGameStageTimeSec + 0
-  /* 10E5E8 8018FD88 3C198013 */       lui $t9, %hi(g1PGameTotalTimeFrames)
-  /* 10E5EC 8018FD8C 8F390D64 */        lw $t9, %lo(g1PGameTotalTimeFrames)($t9)
+  /* 10E5E8 8018FD88 3C198013 */       lui $t9, %hi(sGM1PManagerTotalFrames)
+  /* 10E5EC 8018FD8C 8F390D64 */        lw $t9, %lo(sGM1PManagerTotalFrames)($t9)
   /* 10E5F0 8018FD90 3C088019 */       lui $t0, %hi(sGM1PGameBonusStatNumPlayerKOs)
   /* 10E5F4 8018FD94 8D0836A0 */        lw $t0, %lo(sGM1PGameBonusStatNumPlayerKOs)($t0)
   /* 10E5F8 8018FD98 0322001B */      divu $zero, $t9, $v0
@@ -3571,7 +3571,7 @@ glabel gm1PGameAppendBonusStats
   /* 10EC08 801903A8 24020074 */     addiu $v0, $zero, 0x74
   /* 10EC0C 801903AC 00C20019 */     multu $a2, $v0
   /* 10EC10 801903B0 8FA30018 */        lw $v1, 0x18($sp)
-  /* 10EC14 801903B4 3C068013 */       lui $a2, %hi(g1PGameTotalFalls)
+  /* 10EC14 801903B4 3C068013 */       lui $a2, %hi(sGM1PManagerTotalFalls)
   /* 10EC18 801903B8 0000C012 */      mflo $t8
   /* 10EC1C 801903BC 0078C821 */      addu $t9, $v1, $t8
   /* 10EC20 801903C0 8F2E006C */        lw $t6, 0x6c($t9)
@@ -3602,7 +3602,7 @@ glabel gm1PGameAppendBonusStats
   /* 10EC7C 8019041C 0301C825 */        or $t9, $t8, $at
   /* 10EC80 80190420 AD59002C */        sw $t9, 0x2c($t2) # gSceneData + 44
   .L80190424:
-  /* 10EC84 80190424 8CC60D68 */        lw $a2, %lo(g1PGameTotalFalls)($a2)
+  /* 10EC84 80190424 8CC60D68 */        lw $a2, %lo(sGM1PManagerTotalFalls)($a2)
   /* 10EC88 80190428 54C00006 */      bnel $a2, $zero, .L80190444
   /* 10EC8C 8019042C 91580013 */       lbu $t8, 0x13($t2) # gSceneData + 19
   /* 10EC90 80190430 8D4E002C */        lw $t6, 0x2c($t2) # gSceneData + 44
@@ -4222,8 +4222,8 @@ glabel gm1PGameAppendBonusStats
   /* 10F538 80190CD8 01E17025 */        or $t6, $t7, $at
   /* 10F53C 80190CDC AD4E002C */        sw $t6, 0x2c($t2) # gSceneData + 44
   .L80190CE0:
-  /* 10F540 80190CE0 3C0F8013 */       lui $t7, %hi(g1PGameTotalDamageTaken)
-  /* 10F544 80190CE4 8DEF0D6C */        lw $t7, %lo(g1PGameTotalDamageTaken)($t7)
+  /* 10F540 80190CE0 3C0F8013 */       lui $t7, %hi(sGM1PManagerTotalDamageTaken)
+  /* 10F544 80190CE4 8DEF0D6C */        lw $t7, %lo(sGM1PManagerTotalDamageTaken)($t7)
   /* 10F548 80190CE8 3C028019 */       lui $v0, %hi(sGM1PGameTotalTimeSec)
   /* 10F54C 80190CEC 15E00005 */      bnez $t7, .L80190D04
   /* 10F550 80190CF0 00000000 */       nop 
@@ -4339,9 +4339,9 @@ glabel gm1PGameSetBonusStats
   /* 10F6D8 80190E78 AFBF0014 */        sw $ra, 0x14($sp)
   /* 10F6DC 80190E7C 908E0006 */       lbu $t6, 6($a0)
   /* 10F6E0 80190E80 24010064 */     addiu $at, $zero, 0x64
-  /* 10F6E4 80190E84 3C058013 */       lui $a1, %hi(g1PGameTotalTimeFrames)
+  /* 10F6E4 80190E84 3C058013 */       lui $a1, %hi(sGM1PManagerTotalFrames)
   /* 10F6E8 80190E88 15C10003 */       bne $t6, $at, .L80190E98
-  /* 10F6EC 80190E8C 24A50D64 */     addiu $a1, $a1, %lo(g1PGameTotalTimeFrames)
+  /* 10F6EC 80190E8C 24A50D64 */     addiu $a1, $a1, %lo(sGM1PManagerTotalFrames)
   /* 10F6F0 80190E90 10000008 */         b .L80190EB4
   /* 10F6F4 80190E94 AC60001C */        sw $zero, 0x1c($v1) # gSceneData + 28
   .L80190E98:
@@ -4354,31 +4354,31 @@ glabel gm1PGameSetBonusStats
   /* 10F710 80190EB0 00000000 */       nop 
   .L80190EB4:
   /* 10F714 80190EB4 906B0013 */       lbu $t3, 0x13($v1) # gSceneData + 19
-  /* 10F718 80190EB8 8CA80000 */        lw $t0, ($a1) # g1PGameTotalTimeFrames + 0
+  /* 10F718 80190EB8 8CA80000 */        lw $t0, ($a1) # sGM1PManagerTotalFrames + 0
   /* 10F71C 80190EBC 8C890018 */        lw $t1, 0x18($a0)
   /* 10F720 80190EC0 000B60C0 */       sll $t4, $t3, 3
   /* 10F724 80190EC4 018B6023 */      subu $t4, $t4, $t3
   /* 10F728 80190EC8 000C6080 */       sll $t4, $t4, 2
   /* 10F72C 80190ECC 018B6021 */      addu $t4, $t4, $t3
-  /* 10F730 80190ED0 3C068013 */       lui $a2, %hi(g1PGameTotalFalls)
+  /* 10F730 80190ED0 3C068013 */       lui $a2, %hi(sGM1PManagerTotalFalls)
   /* 10F734 80190ED4 000C6080 */       sll $t4, $t4, 2
   /* 10F738 80190ED8 01095021 */      addu $t2, $t0, $t1
-  /* 10F73C 80190EDC 24C60D68 */     addiu $a2, $a2, %lo(g1PGameTotalFalls)
-  /* 10F740 80190EE0 ACAA0000 */        sw $t2, ($a1) # g1PGameTotalTimeFrames + 0
+  /* 10F73C 80190EDC 24C60D68 */     addiu $a2, $a2, %lo(sGM1PManagerTotalFalls)
+  /* 10F740 80190EE0 ACAA0000 */        sw $t2, ($a1) # sGM1PManagerTotalFrames + 0
   /* 10F744 80190EE4 008C1021 */      addu $v0, $a0, $t4
   /* 10F748 80190EE8 8C4E0030 */        lw $t6, 0x30($v0)
-  /* 10F74C 80190EEC 8CCD0000 */        lw $t5, ($a2) # g1PGameTotalFalls + 0
-  /* 10F750 80190EF0 3C078013 */       lui $a3, %hi(g1PGameTotalDamageTaken)
-  /* 10F754 80190EF4 24E70D6C */     addiu $a3, $a3, %lo(g1PGameTotalDamageTaken)
+  /* 10F74C 80190EEC 8CCD0000 */        lw $t5, ($a2) # sGM1PManagerTotalFalls + 0
+  /* 10F750 80190EF0 3C078013 */       lui $a3, %hi(sGM1PManagerTotalDamageTaken)
+  /* 10F754 80190EF4 24E70D6C */     addiu $a3, $a3, %lo(sGM1PManagerTotalDamageTaken)
   /* 10F758 80190EF8 01AE7821 */      addu $t7, $t5, $t6
-  /* 10F75C 80190EFC ACCF0000 */        sw $t7, ($a2) # g1PGameTotalFalls + 0
+  /* 10F75C 80190EFC ACCF0000 */        sw $t7, ($a2) # sGM1PManagerTotalFalls + 0
   /* 10F760 80190F00 8C590058 */        lw $t9, 0x58($v0)
-  /* 10F764 80190F04 8CF80000 */        lw $t8, ($a3) # g1PGameTotalDamageTaken + 0
+  /* 10F764 80190F04 8CF80000 */        lw $t8, ($a3) # sGM1PManagerTotalDamageTaken + 0
   /* 10F768 80190F08 90690017 */       lbu $t1, 0x17($v1) # gSceneData + 23
   /* 10F76C 80190F0C 2401000B */     addiu $at, $zero, 0xb
   /* 10F770 80190F10 03194021 */      addu $t0, $t8, $t9
   /* 10F774 80190F14 1521000F */       bne $t1, $at, .L80190F54
-  /* 10F778 80190F18 ACE80000 */        sw $t0, ($a3) # g1PGameTotalDamageTaken + 0
+  /* 10F778 80190F18 ACE80000 */        sw $t0, ($a3) # sGM1PManagerTotalDamageTaken + 0
   /* 10F77C 80190F1C 8C4A0030 */        lw $t2, 0x30($v0)
   /* 10F780 80190F20 55400017 */      bnel $t2, $zero, .L80190F80
   /* 10F784 80190F24 8FBF0014 */        lw $ra, 0x14($sp)
@@ -4421,13 +4421,13 @@ glabel func_ovl65_80190FA0
   /* 10F800 80190FA0 246E0008 */     addiu $t6, $v1, 8
   /* 10F804 80190FA4 AC8E0000 */        sw $t6, ($a0)
   /* 10F808 80190FA8 3C180002 */       lui $t8, 2
-  /* 10F80C 80190FAC 3C058013 */       lui $a1, %hi(gMapLightAngleX)
-  /* 10F810 80190FB0 3C068013 */       lui $a2, %hi(gMapLightAngleY)
+  /* 10F80C 80190FAC 3C058013 */       lui $a1, %hi(gMPLightAngleX)
+  /* 10F810 80190FB0 3C068013 */       lui $a2, %hi(gMPLightAngleY)
   /* 10F814 80190FB4 AC780004 */        sw $t8, 4($v1)
   /* 10F818 80190FB8 AC6F0000 */        sw $t7, ($v1)
-  /* 10F81C 80190FBC 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
+  /* 10F81C 80190FBC 8CC61394 */        lw $a2, %lo(gMPLightAngleY)($a2)
   /* 10F820 80190FC0 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
-  /* 10F824 80190FC4 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
+  /* 10F824 80190FC4 8CA51390 */        lw $a1, %lo(gMPLightAngleX)($a1)
   /* 10F828 80190FC8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 10F82C 80190FCC 27BD0018 */     addiu $sp, $sp, 0x18
   /* 10F830 80190FD0 03E00008 */        jr $ra
@@ -5219,11 +5219,11 @@ glabel func_ovl65_80191B44
   /* 1103B4 80191B54 24040002 */     addiu $a0, $zero, 2
   /* 1103B8 80191B58 0C006265 */       jal lbRandom_GetIntRange
   /* 1103BC 80191B5C AFA60034 */        sw $a2, 0x34($sp)
-  /* 1103C0 80191B60 3C058013 */       lui $a1, %hi(gMapEdgeBounds)
-  /* 1103C4 80191B64 24A51308 */     addiu $a1, $a1, %lo(gMapEdgeBounds)
+  /* 1103C0 80191B60 3C058013 */       lui $a1, %hi(gMPEdgeBounds)
+  /* 1103C4 80191B64 24A51308 */     addiu $a1, $a1, %lo(gMPEdgeBounds)
   /* 1103C8 80191B68 3C0144FA */       lui $at, (0x44FA0000 >> 16) # 2000.0
   /* 1103CC 80191B6C 44816000 */      mtc1 $at, $f12 # 2000.0 to cop1
-  /* 1103D0 80191B70 C4A0002C */      lwc1 $f0, 0x2c($a1) # gMapEdgeBounds + 44
+  /* 1103D0 80191B70 C4A0002C */      lwc1 $f0, 0x2c($a1) # gMPEdgeBounds + 44
   /* 1103D4 80191B74 00022100 */       sll $a0, $v0, 4
   /* 1103D8 80191B78 00822023 */      subu $a0, $a0, $v0
   /* 1103DC 80191B7C 460C003C */    c.lt.s $f0, $f12
@@ -5238,7 +5238,7 @@ glabel func_ovl65_80191B44
   .L80191BA0:
   /* 110400 80191BA0 460C0381 */     sub.s $f14, $f0, $f12
   .L80191BA4:
-  /* 110404 80191BA4 C4A40028 */      lwc1 $f4, 0x28($a1) # gMapEdgeBounds + 40
+  /* 110404 80191BA4 C4A40028 */      lwc1 $f4, 0x28($a1) # gMPEdgeBounds + 40
   /* 110408 80191BA8 44809000 */      mtc1 $zero, $f18
   /* 11040C 80191BAC 3C028013 */       lui $v0, %hi(gGroundInfo)
   /* 110410 80191BB0 460C2000 */     add.s $f0, $f4, $f12
@@ -5286,12 +5286,12 @@ glabel func_ovl65_80191B44
   /* 1104AC 80191C4C 0C006252 */       jal lbRandom_GetFloat
   /* 1104B0 80191C50 E7B00030 */      swc1 $f16, 0x30($sp)
   /* 1104B4 80191C54 C7B00030 */      lwc1 $f16, 0x30($sp)
-  /* 1104B8 80191C58 3C058013 */       lui $a1, %hi(gMapEdgeBounds)
-  /* 1104BC 80191C5C 24A51308 */     addiu $a1, $a1, %lo(gMapEdgeBounds)
+  /* 1104B8 80191C58 3C058013 */       lui $a1, %hi(gMPEdgeBounds)
+  /* 1104BC 80191C5C 24A51308 */     addiu $a1, $a1, %lo(gMPEdgeBounds)
   /* 1104C0 80191C60 3C0144FA */       lui $at, (0x44FA0000 >> 16) # 2000.0
   /* 1104C4 80191C64 46100102 */     mul.s $f4, $f0, $f16
   /* 1104C8 80191C68 44816000 */      mtc1 $at, $f12 # 2000.0 to cop1
-  /* 1104CC 80191C6C C4A6002C */      lwc1 $f6, 0x2c($a1) # gMapEdgeBounds + 44
+  /* 1104CC 80191C6C C4A6002C */      lwc1 $f6, 0x2c($a1) # gMPEdgeBounds + 44
   /* 1104D0 80191C70 8FA60034 */        lw $a2, 0x34($sp)
   /* 1104D4 80191C74 460C3201 */     sub.s $f8, $f6, $f12
   /* 1104D8 80191C78 46082280 */     add.s $f10, $f4, $f8

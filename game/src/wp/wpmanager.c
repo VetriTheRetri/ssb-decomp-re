@@ -5,13 +5,13 @@
 #include <gm/battle.h>
 
 // 0x8018CFF0 - Points to next available weapon struct
-wpStruct *sWeaponAllocFree;
+wpStruct *sWPManagerWeaponAllocFree;
 
 // 0x8018CFF4
-s32 sWeaponDisplayMode;
+s32 sWPManagerWeaponDisplayMode;
 
 // 0x8018CFF8
-u32 sWeaponGroupIndex;
+u32 sWPManagerWeaponGroupID;
 
 // 0x801654B0
 void wpManagerAllocWeapons(void)
@@ -19,7 +19,7 @@ void wpManagerAllocWeapons(void)
     wpStruct *wp;
     s32 i;
 
-    sWeaponAllocFree = wp = gsMemoryAlloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, 0x8);
+    sWPManagerWeaponAllocFree = wp = gsMemoryAlloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, 0x8);
 
     for (i = 0; i < (WEAPON_ALLOC_MAX - 1); i++)
     {
@@ -29,14 +29,14 @@ void wpManagerAllocWeapons(void)
     {
         wp[i].alloc_next = NULL;
     }
-    sWeaponGroupIndex = 1;
-    sWeaponDisplayMode = dbObject_DisplayMode_Master;
+    sWPManagerWeaponGroupID = 1;
+    sWPManagerWeaponDisplayMode = dbObject_DisplayMode_Master;
 }
 
 // 0x80165558
 wpStruct* wpManagerGetWeaponSetNextAlloc()
 {
-    wpStruct *new_weapon = sWeaponAllocFree;
+    wpStruct *new_weapon = sWPManagerWeaponAllocFree;
     wpStruct *get_weapon;
 
     if (new_weapon == NULL)
@@ -45,7 +45,7 @@ wpStruct* wpManagerGetWeaponSetNextAlloc()
     }
     get_weapon = new_weapon;
 
-    sWeaponAllocFree = new_weapon->alloc_next;
+    sWPManagerWeaponAllocFree = new_weapon->alloc_next;
 
     return get_weapon;
 }
@@ -53,19 +53,19 @@ wpStruct* wpManagerGetWeaponSetNextAlloc()
 // 0x80165588
 void wpManagerSetPrevWeaponAlloc(wpStruct *wp)
 {
-    wp->alloc_next = sWeaponAllocFree;
+    wp->alloc_next = sWPManagerWeaponAllocFree;
 
-    sWeaponAllocFree = wp;
+    sWPManagerWeaponAllocFree = wp;
 }
 
 // 0x801655A0 - Do NOT declare this with a void argument! PK Thunder passes unused arguments to this function.
 u32 wpManagerGetGroupIndexInc()
 {
-    u32 group_id = sWeaponGroupIndex++;
+    u32 group_id = sWPManagerWeaponGroupID++;
 
-    if (sWeaponGroupIndex == 0)
+    if (sWPManagerWeaponGroupID == 0)
     {
-        sWeaponGroupIndex++;
+        sWPManagerWeaponGroupID++;
     }
     return group_id;
 }
@@ -165,7 +165,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
         wp->player_number = 0;
         wp->lr = LR_Right;
 
-        wp->display_mode = sWeaponDisplayMode;
+        wp->display_mode = sWPManagerWeaponDisplayMode;
 
         wp->weapon_hit.attack_id = ftMotion_AttackIndex_None;
         wp->weapon_hit.stale = WEAPON_STALE_DEFAULT;
@@ -283,7 +283,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     wp->coll_data.rwall_line_id = -1;
     wp->coll_data.lwall_line_id = -1;
 
-    wp->coll_data.coll_update_frame = gMapCollUpdateFrame;
+    wp->coll_data.coll_update_frame = gMPCollUpdateFrame;
     wp->coll_data.coll_mask_curr = 0;
 
     wp->coll_data.vel_push.x = 0.0F;

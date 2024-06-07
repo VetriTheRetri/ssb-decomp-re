@@ -1014,7 +1014,7 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->unk_gobj_0x30 = 6;
+    camera_gobj->ftparts_gobj_0x30 = 6;
 
     func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
     func_800057C8();
@@ -1022,7 +1022,7 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->unk_gobj_0x30 = 16;
+    camera_gobj->ftparts_gobj_0x30 = 16;
 
     func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
     func_800057C8();
@@ -1030,7 +1030,7 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->unk_gobj_0x30 = 0x1EC0;
+    camera_gobj->ftparts_gobj_0x30 = 0x1EC0;
 
     func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
     func_800057C8();
@@ -1038,7 +1038,7 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->unk_gobj_0x30 = 0xE000;
+    camera_gobj->ftparts_gobj_0x30 = 0xE000;
 
     func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
     func_800057C8();
@@ -1046,7 +1046,7 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->unk_gobj_0x30 = 0x70000;
+    camera_gobj->ftparts_gobj_0x30 = 0x70000;
 
     func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
     func_800057C8();
@@ -1054,7 +1054,7 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->unk_gobj_0x30 = 0x180000;
+    camera_gobj->ftparts_gobj_0x30 = 0x180000;
 
     func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
     func_800057C8();

@@ -1,7 +1,7 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFTDataFoxExtra1;
+extern void *gFTDataFoxSpecial1;
 extern 
 intptr_t lWPFoxBlasterWeaponAttributes;     // 0x00000000
 
@@ -9,7 +9,7 @@ wpCreateDesc dWPFoxBlasterWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_Blaster,                        // Weapon Kind
-    &gFTDataFoxExtra1,                      // Pointer to character's loaded files?
+    &gFTDataFoxSpecial1,                      // Pointer to character's loaded files?
     &lWPFoxBlasterWeaponAttributes,         // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

@@ -256,7 +256,7 @@ glabel mvOpeningDKVsSamusCreateFighters
   /* 174CD4 8018D454 01AE9821 */      addu $s3, $t5, $t6
   /* 174CD8 8018D458 528C0055 */      beql $s4, $t4, .L8018D5B0
   /* 174CDC 8018D45C 26310001 */     addiu $s1, $s1, 1
-  /* 174CE0 8018D460 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 174CE0 8018D460 0C035E1B */       jal ftManagerSetupDataKind
   /* 174CE4 8018D464 92040023 */       lbu $a0, 0x23($s0) # D_ovl51_8018DA0C + 35
   /* 174CE8 8018D468 8EA20000 */        lw $v0, ($s5) # gBattleState + 0
   /* 174CEC 8018D46C C7AA009C */      lwc1 $f10, 0x9c($sp)
@@ -303,10 +303,10 @@ glabel mvOpeningDKVsSamusCreateFighters
   /* 174D88 8018D508 92180022 */       lbu $t8, 0x22($s0) # D_ovl51_8018DA0C + 34
   /* 174D8C 8018D50C AFB30078 */        sw $s3, 0x78($sp)
   /* 174D90 8018D510 AFB80074 */        sw $t8, 0x74($sp)
-  /* 174D94 8018D514 0C035E2D */       jal ftManager_AllocAnimHeapKind
+  /* 174D94 8018D514 0C035E2D */       jal ftManagerAllocAnimHeapKind
   /* 174D98 8018D518 92040023 */       lbu $a0, 0x23($s0) # D_ovl51_8018DA0C + 35
   /* 174D9C 8018D51C AFA20084 */        sw $v0, 0x84($sp)
-  /* 174DA0 8018D520 0C035FCF */       jal ftManager_MakeFighter
+  /* 174DA0 8018D520 0C035FCF */       jal ftManagerMakeFighter
   /* 174DA4 8018D524 02C02025 */        or $a0, $s6, $zero
   /* 174DA8 8018D528 3C018019 */       lui $at, %hi(gMvOpeningDKVsSamusFighterGObj)
   /* 174DAC 8018D52C AC22DA50 */        sw $v0, %lo(gMvOpeningDKVsSamusFighterGObj)($at)
@@ -463,7 +463,7 @@ glabel mvOpeningDKVsSamusInit
   /* 174FD8 8018D758 0C0436D5 */       jal cmManager_MakeWallpaperCamera
   /* 174FDC 8018D75C 00000000 */       nop
   /* 174FE0 8018D760 24040002 */     addiu $a0, $zero, 2
-  /* 174FE4 8018D764 0C035C65 */       jal ftManager_AllocFighterData
+  /* 174FE4 8018D764 0C035C65 */       jal ftManagerAllocFighter
   /* 174FE8 8018D768 24050002 */     addiu $a1, $zero, 2
   /* 174FEC 8018D76C 0C05952C */       jal wpManagerAllocWeapons
   /* 174FF0 8018D770 00000000 */       nop
@@ -501,13 +501,13 @@ glabel mvOpeningDKVsSamusSetupDisplayList
   /* 175060 8018D7E0 246E0008 */     addiu $t6, $v1, 8
   /* 175064 8018D7E4 AC8E0000 */        sw $t6, ($a0)
   /* 175068 8018D7E8 3C180002 */       lui $t8, 2
-  /* 17506C 8018D7EC 3C058013 */       lui $a1, %hi(gMapLightAngleX)
-  /* 175070 8018D7F0 3C068013 */       lui $a2, %hi(gMapLightAngleY)
+  /* 17506C 8018D7EC 3C058013 */       lui $a1, %hi(gMPLightAngleX)
+  /* 175070 8018D7F0 3C068013 */       lui $a2, %hi(gMPLightAngleY)
   /* 175074 8018D7F4 AC780004 */        sw $t8, 4($v1)
   /* 175078 8018D7F8 AC6F0000 */        sw $t7, ($v1)
-  /* 17507C 8018D7FC 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
+  /* 17507C 8018D7FC 8CC61394 */        lw $a2, %lo(gMPLightAngleY)($a2)
   /* 175080 8018D800 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
-  /* 175084 8018D804 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
+  /* 175084 8018D804 8CA51390 */        lw $a1, %lo(gMPLightAngleX)($a1)
   /* 175088 8018D808 8FBF0014 */        lw $ra, 0x14($sp)
   /* 17508C 8018D80C 27BD0018 */     addiu $sp, $sp, 0x18
   /* 175090 8018D810 03E00008 */        jr $ra

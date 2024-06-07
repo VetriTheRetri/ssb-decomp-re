@@ -255,7 +255,7 @@ void mnCongraStartScene(void)
         sMNCongraFighterKind = gSceneData.ft_kind;
         break;
 
-    case scMajor_Kind_DebugMapSel:
+    case scMajor_Kind_DebugMPSel:
         sMNCongraFighterKind = gTransferBattleState.player_block[0].character_kind;
         break;
     }

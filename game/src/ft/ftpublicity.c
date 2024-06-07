@@ -251,7 +251,7 @@ void ftPublicityDownDecide(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 pos_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
 
-    if ((pos_y >= gMapEdgeBounds.d2.bottom) || (pos_y < -2400.0F))
+    if ((pos_y >= gMPEdgeBounds.d2.bottom) || (pos_y < -2400.0F))
     {
         return;
     }
@@ -308,7 +308,7 @@ void ftPublicityProcUpdate(GObj *public_gobj)
 
         if (!(gBattleState->match_rules & GMMATCH_GAMERULE_STOCK) || (fp->stock_count != -1))
         {
-            if (DObjGetStruct(gobj)->translate.vec.f.y < (gMapEdgeBounds.d2.bottom - 100.0F)) // 0x80131308 = stage data?
+            if (DObjGetStruct(gobj)->translate.vec.f.y < (gMPEdgeBounds.d2.bottom - 100.0F)) // 0x80131308 = stage data?
             {
                 sFTPublicityPlayersDown++;
             }

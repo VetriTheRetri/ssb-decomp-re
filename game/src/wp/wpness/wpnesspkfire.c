@@ -2,7 +2,7 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 
-extern void *gFTDataNessExtra1;
+extern void *gFTDataNessSpecial1;
 extern
 intptr_t lWPNessPKFireWeaponAttributes;     // 0x00000000
 
@@ -10,7 +10,7 @@ wpCreateDesc dWPNessPKFireWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_PKFire,                         // Weapon Kind
-    &gFTDataNessExtra1,                     // Pointer to character's loaded files?
+    &gFTDataNessSpecial1,                     // Pointer to character's loaded files?
     &lWPNessPKFireWeaponAttributes,         // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

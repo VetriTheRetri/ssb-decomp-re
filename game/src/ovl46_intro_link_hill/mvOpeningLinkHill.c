@@ -82,7 +82,7 @@ void mvOpeningLinkHillCreateFighter()
     spawn_info.pos.y = 0.0F;
     spawn_info.pos.z = 0.0F;
     spawn_info.anim_heap = gMvOpeningLinkHillFighterAnimHeap;
-    gMvOpeningLinkHillFighterGObj = fighter_gobj = ftManager_MakeFighter(&spawn_info);
+    gMvOpeningLinkHillFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
     func_ovl1_803905CC(fighter_gobj, 0x1000F);
 
@@ -295,8 +295,8 @@ void mvOpeningLinkHillInit()
     func_ovl2_80115890();
     mvOpeningLinkHillInitFramesElapsed();
     efManager_AllocUserData();
-    ftManager_AllocFighterData(1, 1);
-    ftManager_SetFileDataKind(Ft_Kind_Link);
+    ftManagerAllocFighter(1, 1);
+    ftManagerSetupDataKind(Ft_Kind_Link);
 
     gMvOpeningLinkHillFighterAnimHeap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10);
     mvOpeningLinkHillCreateMainViewport();

@@ -402,7 +402,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     ip->coll_data.object_coll.width     = attributes->objectcoll_width;
     ip->coll_data.p_object_coll         = &ip->coll_data.object_coll;
     ip->coll_data.ignore_line_id        = -1;
-    ip->coll_data.coll_update_frame     = gMapCollUpdateFrame;
+    ip->coll_data.coll_update_frame     = gMPCollUpdateFrame;
     ip->coll_data.coll_mask_curr        = 0;
     ip->coll_data.vel_push.x            = 0.0F;
     ip->coll_data.vel_push.y            = 0.0F;
@@ -1002,7 +1002,7 @@ void itManagerUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *
     f32 damage_knockback;
     Vec3f pos;
 
-    ftMain_SetHitVictimInteractStats(fp, ft_hit->group_id, item_gobj, gmHitCollision_Type_Hurt, 0, FALSE);
+    ftMainSetHitVictimInteractStats(fp, ft_hit->group_id, item_gobj, gmHitCollision_Type_Hurt, 0, FALSE);
 
     damage = ft_hit->damage;
 
@@ -1369,7 +1369,7 @@ void itManagerSearchFighterHit(GObj *item_gobj) // Check fighters for hit detect
 
             if ((ip->owner_gobj != NULL) && (fp->throw_gobj != NULL) && (fp->throw_gobj == ip->owner_gobj)) goto next_gobj;
             
-            for (i = 0; i < ARRAY_COUNT(gFighterIsHurtDetect); i++)
+            for (i = 0; i < ARRAY_COUNT(gFTMainIsHurtDetect); i++)
             {
                 ft_hit = &fp->fighter_hit[i];
 
@@ -1392,14 +1392,14 @@ void itManagerSearchFighterHit(GObj *item_gobj) // Check fighters for hit detect
                         }
                         if ((!(fighter_victim_flags.is_interact_hurt)) && (!(fighter_victim_flags.is_interact_shield)) && (fighter_victim_flags.group_id == 7))
                         {
-                            gFighterIsHurtDetect[i] = TRUE;
+                            gFTMainIsHurtDetect[i] = TRUE;
                             k++;
 
                             continue;
                         }
                     }
                 }
-                gFighterIsHurtDetect[i] = FALSE;
+                gFTMainIsHurtDetect[i] = FALSE;
             }
             if (k != 0)
             {
@@ -1407,7 +1407,7 @@ void itManagerSearchFighterHit(GObj *item_gobj) // Check fighters for hit detect
                 {
                     it_hurt = &ip->item_hurt;
 
-                    if (gFighterIsHurtDetect[i] != FALSE)
+                    if (gFTMainIsHurtDetect[i] != FALSE)
                     {
                         if (ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) break;
 
@@ -1806,7 +1806,7 @@ void itManagerUpdateColAnim(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (ftMain_UpdateColAnim(&ip->colanim, item_gobj, FALSE, FALSE) != FALSE)
+    if (ftMainUpdateColAnim(&ip->colanim, item_gobj, FALSE, FALSE) != FALSE)
     {
         itMainClearColAnim(item_gobj);
     }

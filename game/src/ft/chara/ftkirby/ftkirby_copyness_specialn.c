@@ -61,7 +61,7 @@ void ftKirbyCopyNessSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyNess_SpecialN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYNESS_SPECIALN_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyNess_SpecialN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYNESS_SPECIALN_STATUPDATE_FLAGS);
 
     fp->proc_accessory = ftKirbyCopyNessSpecialNProcAccessory;
 }
@@ -72,7 +72,7 @@ void ftKirbyCopyNessSpecialNSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyNess_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYNESS_SPECIALN_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyNess_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYNESS_SPECIALN_STATUPDATE_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_accessory = ftKirbyCopyNessSpecialNProcAccessory;
@@ -91,15 +91,15 @@ void ftKirbyCopyNessSpecialNInitStatusVars(GObj *fighter_gobj)
 // 0x80155DBC
 void ftKirbyCopyNessSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyNess_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyNess_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyNessSpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x80155DFC
 void ftKirbyCopyNessSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyNess_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyNess_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyNessSpecialNInitStatusVars(fighter_gobj);
 }

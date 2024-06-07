@@ -1131,7 +1131,7 @@ void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind)
         if (fighter_gobj != NULL)
         {
             initial_y_rotation = DObjGetStruct(fighter_gobj)->rotate.vec.f.y;
-            func_ovl2_800D78E8(fighter_gobj);
+            ftManagerDestroyFighter(fighter_gobj);
         }
         else
         {
@@ -1143,7 +1143,7 @@ void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind)
         // spawn_info.shade = 0;
         spawn_info.anim_heap = gMnBonusAnimHeap;
         spawn_info.player = port_id;
-        gMnBonusPanel.player = fighter_gobj = ftManager_MakeFighter(&spawn_info);
+        gMnBonusPanel.player = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
         omAddGObjCommonProc(fighter_gobj, mnBonusRotateFighter, 1, 1);
 
@@ -2435,11 +2435,11 @@ void mnBonusInitCSS()
     func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
     func_ovl2_80115890();
     efManager_AllocUserData();
-    ftManager_AllocFighterData(1U, 1);
+    ftManagerAllocFighter(1U, 1);
 
     for (i = 0; i < 12; i++)
     {
-        ftManager_SetFileDataKind(i);
+        ftManagerSetupDataKind(i);
     }
 
     gMnBonusAnimHeap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10U);

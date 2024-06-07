@@ -13,7 +13,7 @@ void ftMasterHand_Okuhikouki1_SetStatus(GObj *fighter_gobj)
     ftStruct *masterhand_fp;
     s32 line_id;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Okuhikouki1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_MasterHand_Okuhikouki1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     masterhand_fp = ftGetStruct(fighter_gobj);
 

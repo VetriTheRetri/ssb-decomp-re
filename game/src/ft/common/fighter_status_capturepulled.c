@@ -112,13 +112,13 @@ void ftCommon_CapturePulled_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     this_fp->lr = -capture_fp->lr;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_CapturePulled, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CapturePulled, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     this_fp->status_vars.common.capture.is_goto_pulled_wait = FALSE;
 
     ftSetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
-    ftMain_MakeRumble(this_fp, 9, 0);
+    ftMainMakeRumble(this_fp, 9, 0);
     ftPhysics_StopVelAll(fighter_gobj);
     ftCommon_Capture_ProcPhysics(fighter_gobj);
     ftCommon_CapturePulled_ProcMap(fighter_gobj);

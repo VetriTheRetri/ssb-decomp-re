@@ -22,7 +22,7 @@ void ftCommon_CatchPull_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_CatchPull, fp->status_vars.common.catchmain.catch_pull_frame_begin, 1.0F, (FTSTATUPDATE_SLOPECONTOUR_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CatchPull, fp->status_vars.common.catchmain.catch_pull_frame_begin, 1.0F, (FTSTATUPDATE_SLOPECONTOUR_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
 
     fp->catch_gobj = fp->search_gobj;
 
@@ -38,7 +38,7 @@ void ftCommon_CatchPull_SetStatus(GObj *fighter_gobj)
 
     ftParts_GetDObjWorldPosition(fp->joint[fp->attributes->joint_itemhold_heavy], &pos);
     efParticle_CatchSwirl_MakeEffect(&pos);
-    ftMain_MakeRumble(fp, 9, 0);
+    ftMainMakeRumble(fp, 9, 0);
 }
 
 // 0x80149FCC
@@ -58,7 +58,7 @@ void ftCommon_CatchWait_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_CatchWait, 0.0F, 1.0F, FTSTATUPDATE_SLOPECONTOUR_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CatchWait, 0.0F, 1.0F, FTSTATUPDATE_SLOPECONTOUR_PRESERVE);
 
     fp->status_vars.common.catchwait.throw_wait = FTCOMMON_CATCH_THROW_WAIT;
 

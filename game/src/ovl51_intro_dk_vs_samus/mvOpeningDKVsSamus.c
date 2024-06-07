@@ -175,7 +175,7 @@ void mvOpeningDKVsSamusCreateFighters()
 
         if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
 
-        ftManager_SetFileDataKind(gBattleState->player_block[i].character_kind);
+        ftManagerSetupDataKind(gBattleState->player_block[i].character_kind);
 
         spawn_info.ft_kind = gBattleState->player_block[i].character_kind;
 
@@ -204,9 +204,9 @@ void mvOpeningDKVsSamusCreateFighters()
         spawn_info.stock_count = gBattleState->stock_setting;
         spawn_info.pl_kind = gBattleState->player_block[i].player_kind;
         spawn_info.controller = &gPlayerControllers[i];
-        spawn_info.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[i].character_kind);
+        spawn_info.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->player_block[i].character_kind);
 
-        gMvOpeningDKVsSamusFighterGObj = fighter_gobj = ftManager_MakeFighter(&spawn_info);
+        gMvOpeningDKVsSamusFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
         if (gBattleState->player_block[i].character_kind == Ft_Kind_Donkey)
         {
@@ -282,7 +282,7 @@ void mvOpeningDKVsSamusInit()
     mpCollision_InitMapCollisionData();
     cmManager_SetViewportCoordinates(10, 10, 310, 230);
     cmManager_MakeWallpaperCamera();
-    ftManager_AllocFighterData(2, 2);
+    ftManagerAllocFighter(2, 2);
     wpManagerAllocWeapons();
     itManagerInitItems();
     efManager_AllocUserData();
@@ -299,7 +299,7 @@ void mvOpeningDKVsSamusInit()
 void mvOpeningDKVsSamusSetupDisplayList(Gfx **display_list)
 {
     gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-    ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
+    ftRender_Lights_DisplayLightReflect(display_list, gMPLightAngleX, gMPLightAngleY);
 }
 
 // intro_dk_vs_samus_entry

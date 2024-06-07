@@ -3,12 +3,12 @@
 
 #include "grtypes.h"
 
-gmGroundInfo *gGroundInfo; // TO DO: move this to the correct file (is this the correct file? NO, this is Patrick!)
+extern grMapObject sFTMainMapObjects[2];
+extern grMapEnv sFTMainMapEnvs[1];
+extern s32 sFTMainMapObjectNum;
+extern s32 sFTMainMapEnvNum;
 
-static grMapObject gMapObjects[2];
-static grMapEnvironment gMapEnvironments[1];
-static s32 gMapObjectCount;
-static s32 gMapEnvironmentCount;
+extern gmGroundInfo *gGroundInfo; // TO DO: move this to the correct file (is this the correct file? NO, this is Patrick!)
 extern grStruct gGroundStruct;
 
 #endif

@@ -566,7 +566,7 @@ void scExplainProcStart(void)
     func_ovl2_8010DB00();
     itManagerInitItems();
     grNodeInit_SetGroundFiles();
-    ftManager_AllocFighterData(2, 2);
+    ftManagerAllocFighter(2, 2);
     wpManagerAllocWeapons();
     efManager_AllocUserData();
     ifScreenFlash_InitInterfaceVars(0xFF);
@@ -579,7 +579,7 @@ void scExplainProcStart(void)
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 
-        ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
+        ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
 
         player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
 
@@ -607,9 +607,9 @@ void scExplainProcStart(void)
 
         player_spawn.controller = &gPlayerControllers[player];
 
-        player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+        player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->player_block[player].character_kind);
 
-        fighter_gobj = ftManager_MakeFighter(&player_spawn);
+        fighter_gobj = ftManagerMakeFighter(&player_spawn);
 
         gBattleState->player_block[player].player_color_index = player;
         gBattleState->player_block[player].tag_index = player;
@@ -653,7 +653,7 @@ void func_ovl63_8018E51C(Gfx **display_list)
 {
     gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 
-    ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
+    ftRender_Lights_DisplayLightReflect(display_list, gMPLightAngleX, gMPLightAngleY);
 }
 
 // 0x8018E568

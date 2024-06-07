@@ -23,7 +23,7 @@ void ftCommon_DownStand_SetStatus(GObj *fighter_gobj)
     }
     else status_id = ftStatus_Common_DownStandU;
 
-    ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->command_vars.flags.flag1 = 0;
 }

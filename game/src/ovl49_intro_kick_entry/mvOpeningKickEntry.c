@@ -78,7 +78,7 @@ void mvOpeningKickEntryCreateFighters()
         spawn_info.pos.y = 0.0F;
         spawn_info.pos.z = 0.0F;
         spawn_info.anim_heap = gMvOpeningKickEntryFighterAnimHeaps[i];
-        fighter_gobj = ftManager_MakeFighter(&spawn_info);
+        fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
         func_ovl1_803905CC(fighter_gobj, 0x1000B);
 
@@ -292,16 +292,16 @@ void mvOpeningKickEntryInit()
     func_ovl2_80115890();
     mvOpeningKickEntryInitFramesElapsed();
     efManager_AllocUserData();
-    ftManager_AllocFighterData(1, 8);
+    ftManagerAllocFighter(1, 8);
 
-    ftManager_SetFileDataKind(Ft_Kind_Mario);
-    ftManager_SetFileDataKind(Ft_Kind_Fox);
-    ftManager_SetFileDataKind(Ft_Kind_Donkey);
-    ftManager_SetFileDataKind(Ft_Kind_Samus);
-    ftManager_SetFileDataKind(Ft_Kind_Link);
-    ftManager_SetFileDataKind(Ft_Kind_Yoshi);
-    ftManager_SetFileDataKind(Ft_Kind_Kirby);
-    ftManager_SetFileDataKind(Ft_Kind_Pikachu);
+    ftManagerSetupDataKind(Ft_Kind_Mario);
+    ftManagerSetupDataKind(Ft_Kind_Fox);
+    ftManagerSetupDataKind(Ft_Kind_Donkey);
+    ftManagerSetupDataKind(Ft_Kind_Samus);
+    ftManagerSetupDataKind(Ft_Kind_Link);
+    ftManagerSetupDataKind(Ft_Kind_Yoshi);
+    ftManagerSetupDataKind(Ft_Kind_Kirby);
+    ftManagerSetupDataKind(Ft_Kind_Pikachu);
 
     for (i = 0; i < ARRAY_COUNT(gMvOpeningKickEntryFighterAnimHeaps); i++)
     {

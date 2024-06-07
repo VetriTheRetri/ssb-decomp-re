@@ -216,7 +216,7 @@ void mvEndingMakeFighter(s32 ft_kind)
 
     player_spawn.pos.z = -3688.5298F;
 
-    sMVEndingFighterGObj = fighter_gobj = ftManager_MakeFighter(&player_spawn);
+    sMVEndingFighterGObj = fighter_gobj = ftManagerMakeFighter(&player_spawn);
 
     func_ovl1_803905CC(fighter_gobj, 0x10009);
 }
@@ -386,7 +386,7 @@ void mvEndingActorProcUpdate(GObj *gobj)
         if (sMVEndingRoomTimer == 540)
         {
             func_ovl54_8013253C();
-            func_ovl2_800D78E8(sMVEndingFighterGObj);
+            ftManagerDestroyFighter(sMVEndingFighterGObj);
             omEjectGObj(sMVEndingRoomLightGObj);
             func_800269C0(0x14);
         }
@@ -422,8 +422,8 @@ void mvEndingInitAll(void)
     func_ovl2_80115890();
     mvEndingInitVars();
     efManager_AllocUserData();
-    ftManager_AllocFighterData(1, 1);
-    ftManager_SetFileDataKind(sMVEndingFighterDesc.ft_kind);
+    ftManagerAllocFighter(1, 1);
+    ftManagerSetupDataKind(sMVEndingFighterDesc.ft_kind);
 
     sMVEndingFighterAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
 

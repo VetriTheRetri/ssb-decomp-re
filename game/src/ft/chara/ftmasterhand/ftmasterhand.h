@@ -12,7 +12,12 @@
 
 #define FTMASTERHAND_OKUHIKOUKI_VEL_ADD 40.0F	
 
-extern ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */];
+extern ftStatusDesc dFTBossSpecialStatusDesc[/* */];
+
+extern void *gFTDataBossMain;
+extern void *gFTDataBossBattleMotion;
+extern void *gFTDataBossModel;
+extern u32 gFTDataBossParticleBankID;
 
 typedef enum ftMasterHandMotion
 {

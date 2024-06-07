@@ -13,21 +13,21 @@
 // Globals
 
 // 0x80130D6C
-extern s32 g1PGameTotalDamageTaken; // 1P Game / Bonus damage total?
+extern s32 sGM1PManagerTotalDamageTaken; // 1P Game / Bonus damage total?
 
 // 0x80130D98
 extern void *gFTCommonFile;
 
-extern sb32 gFighterIsHurtDetect[/* */];
-extern sb32 gFighterIsHitDetect[/* */];
+extern sb32 gFTMainIsHurtDetect[/* */];
+extern sb32 gFTMainIsHitDetect[/* */];
 
-extern s32 gFighterHitLogIndex;
-extern ftHitCollisionLog gFighterHitLogTable[/* */];
+extern s32 sFTMainHitLogID;
+extern ftHitCollisionLog sFTMainHitLogTable[/* */];
 
 // Data - 0x80116DD0
 extern ftCreateDesc dFTDefaultFighterDesc;
-extern f32 dFTMapSurfaceFrictions[/* */];
-extern ftData *dFTManagerFtDataFiles[/* */];
+extern f32 dFTMainMapSurfaceFrictions[/* */];
+extern ftData *dFTManagerDataFiles[/* */];
 
 #define ftGetStruct(fighter_gobj) \
 ((ftStruct*)(fighter_gobj)->user_data.p) \

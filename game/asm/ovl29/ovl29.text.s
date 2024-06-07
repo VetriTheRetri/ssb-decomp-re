@@ -2706,7 +2706,7 @@ glabel mnBonusSpawnFighter
   /* 14A1A4 80134174 8E0A0074 */        lw $t2, 0x74($s0)
   /* 14A1A8 80134178 02002025 */        or $a0, $s0, $zero
   /* 14A1AC 8013417C C5440034 */      lwc1 $f4, 0x34($t2)
-  /* 14A1B0 80134180 0C035E3A */       jal func_ovl2_800D78E8
+  /* 14A1B0 80134180 0C035E3A */       jal ftManagerDestroyFighter
   /* 14A1B4 80134184 E7A40064 */      swc1 $f4, 0x64($sp)
   /* 14A1B8 80134188 10000005 */         b .L801341A0
   /* 14A1BC 8013418C 8FA40070 */        lw $a0, 0x70($sp)
@@ -2728,7 +2728,7 @@ glabel mnBonusSpawnFighter
   /* 14A1F4 801341C4 A3A2003B */        sb $v0, 0x3b($sp)
   /* 14A1F8 801341C8 27A40024 */     addiu $a0, $sp, 0x24
   /* 14A1FC 801341CC AFAD005C */        sw $t5, 0x5c($sp)
-  /* 14A200 801341D0 0C035FCF */       jal ftManager_MakeFighter
+  /* 14A200 801341D0 0C035FCF */       jal ftManagerMakeFighter
   /* 14A204 801341D4 A3A80039 */        sb $t0, 0x39($sp)
   /* 14A208 801341D8 3C018013 */       lui $at, %hi(D_ovl29_80137650)
   /* 14A20C 801341DC 3C058013 */       lui $a1, %hi(mnBonusRotateFighter)
@@ -5812,11 +5812,11 @@ glabel mnBonusInitCSS
   /* 14CDD8 80136DA8 0C03F4C0 */       jal efManager_AllocUserData
   /* 14CDDC 80136DAC 00000000 */       nop
   /* 14CDE0 80136DB0 24040001 */     addiu $a0, $zero, 1
-  /* 14CDE4 80136DB4 0C035C65 */       jal ftManager_AllocFighterData
+  /* 14CDE4 80136DB4 0C035C65 */       jal ftManagerAllocFighter
   /* 14CDE8 80136DB8 24050001 */     addiu $a1, $zero, 1
   /* 14CDEC 80136DBC 00008025 */        or $s0, $zero, $zero
   .L80136DC0:
-  /* 14CDF0 80136DC0 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 14CDF0 80136DC0 0C035E1B */       jal ftManagerSetupDataKind
   /* 14CDF4 80136DC4 02002025 */        or $a0, $s0, $zero
   /* 14CDF8 80136DC8 26100001 */     addiu $s0, $s0, %lo(D_NF_80000001)
   /* 14CDFC 80136DCC 2401000C */     addiu $at, $zero, 0xc

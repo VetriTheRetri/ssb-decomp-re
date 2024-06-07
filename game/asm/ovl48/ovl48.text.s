@@ -101,7 +101,7 @@ glabel mvOpeningPikachuPokeballCreateFighter
   /* 172320 80131C40 E7A00020 */      swc1 $f0, 0x20($sp)
   /* 172324 80131C44 E7A00024 */      swc1 $f0, 0x24($sp)
   /* 172328 80131C48 E7A00028 */      swc1 $f0, 0x28($sp)
-  /* 17232C 80131C4C 0C035FCF */       jal ftManager_MakeFighter
+  /* 17232C 80131C4C 0C035FCF */       jal ftManagerMakeFighter
   /* 172330 80131C50 AFAA0054 */        sw $t2, 0x54($sp)
   /* 172334 80131C54 3C018013 */       lui $at, %hi(gMvOpeningPikachuPokeballFighterGObj)
   /* 172338 80131C58 3C050001 */       lui $a1, (0x1000F >> 16) # 65551
@@ -520,9 +520,9 @@ glabel mvOpeningPikachuPokeballInit
   /* 17295C 8013227C 0C03F4C0 */       jal efManager_AllocUserData
   /* 172960 80132280 00000000 */       nop
   /* 172964 80132284 24040001 */     addiu $a0, $zero, 1
-  /* 172968 80132288 0C035C65 */       jal ftManager_AllocFighterData
+  /* 172968 80132288 0C035C65 */       jal ftManagerAllocFighter
   /* 17296C 8013228C 24050001 */     addiu $a1, $zero, 1
-  /* 172970 80132290 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 172970 80132290 0C035E1B */       jal ftManagerSetupDataKind
   /* 172974 80132294 24040009 */     addiu $a0, $zero, 9
   /* 172978 80132298 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
   /* 17297C 8013229C 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)

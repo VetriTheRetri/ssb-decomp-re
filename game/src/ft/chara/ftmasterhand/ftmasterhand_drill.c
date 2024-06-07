@@ -76,7 +76,7 @@ void ftMasterHand_Drill_SetStatus(GObj *fighter_gobj)
     ftStruct *fp;
     Vec3f pos;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Drill, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_MasterHand_Drill, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMasterHand_Common_CheckEdgeInvertLR(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);

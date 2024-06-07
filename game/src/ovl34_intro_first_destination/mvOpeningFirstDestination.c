@@ -274,7 +274,7 @@ void mvOpeningFirstDestinationCreateMasterHand()
     spawn_info.pos.y = 0.0f;
     spawn_info.pos.z = 0.0f;
     spawn_info.anim_heap = gMvOpeningFirstDestinationMasterHandAnimHeap;
-    gMvOpeningFirstDestinationMasterHandGObj = fighter_gobj = ftManager_MakeFighter(&spawn_info);
+    gMvOpeningFirstDestinationMasterHandGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
     func_ovl1_803905CC(fighter_gobj, 0x1000F);
 }
@@ -324,7 +324,7 @@ void mvOpeningFirstDestinationCreatePluckedFighter(s32 ft_kind)
     spawn_info.pos.y = 0.0f;
     spawn_info.pos.z = 0.0f;
     spawn_info.anim_heap = gMvOpeningFirstDestinationPluckedFighterAnimHeap;
-    gMvOpeningFirstDestinationPluckedFighterGObj = fighter_gobj = ftManager_MakeFighter(&spawn_info);
+    gMvOpeningFirstDestinationPluckedFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
     DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0f;
     DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0f;
@@ -442,7 +442,7 @@ void mvOpeningFirstDestinationCreateDroppedFighter(s32 ft_kind)
     spawn_info.pos.x = 872.325F;
     spawn_info.pos.y = 4038.86F;
     spawn_info.pos.z = -4734.6F;
-    gMvOpeningFirstDestinationDroppedFighterGObj = fighter_gobj = ftManager_MakeFighter(&spawn_info);
+    gMvOpeningFirstDestinationDroppedFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
     func_ovl1_803905CC(fighter_gobj, 0x10009);
     omMoveGObjDL(fighter_gobj, 6, -1);
@@ -1016,10 +1016,10 @@ void mvOpeningFirstDestinationInit()
     func_ovl2_80115890();
     mvOpeningFirstDestinationInitGlobals();
     efManager_AllocUserData();
-    ftManager_AllocFighterData(1, 3);
-    ftManager_SetFileDataKind(gMvOpeningFirstDestinationPluckedFighterKind);
-    ftManager_SetFileDataKind(gMvOpeningFirstDestinationDroppedFighterKind);
-    ftManager_SetFileDataKind(Ft_Kind_MasterHand);
+    ftManagerAllocFighter(1, 3);
+    ftManagerSetupDataKind(gMvOpeningFirstDestinationPluckedFighterKind);
+    ftManagerSetupDataKind(gMvOpeningFirstDestinationDroppedFighterKind);
+    ftManagerSetupDataKind(Ft_Kind_MasterHand);
     gMvOpeningFirstDestinationMasterHandAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
     gMvOpeningFirstDestinationPluckedFighterAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
     gMvOpeningFirstDestinationDroppedFighterAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);

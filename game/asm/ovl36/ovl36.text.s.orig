@@ -450,7 +450,7 @@ glabel mvOpeningMarioInitFighterStagePanel
   /* 166D74 8018D744 01AE9821 */      addu $s3, $t5, $t6
   /* 166D78 8018D748 52EC0030 */      beql $s7, $t4, .L8018D80C
   /* 166D7C 8018D74C 26310001 */     addiu $s1, $s1, 1
-  /* 166D80 8018D750 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 166D80 8018D750 0C035E1B */       jal ftManagerSetupDataKind
   /* 166D84 8018D754 92040023 */       lbu $a0, 0x23($s0) # D_ovl36_8018E1D0 + 35
   /* 166D88 8018D758 8EA20000 */        lw $v0, ($s5) # gBattleState + 0
   /* 166D8C 8018D75C C7A4008C */      lwc1 $f4, 0x8c($sp)
@@ -481,10 +481,10 @@ glabel mvOpeningMarioInitFighterStagePanel
   /* 166DF0 8018D7C0 920D0022 */       lbu $t5, 0x22($s0) # D_ovl36_8018E1D0 + 34
   /* 166DF4 8018D7C4 AFB30078 */        sw $s3, 0x78($sp)
   /* 166DF8 8018D7C8 AFAD0074 */        sw $t5, 0x74($sp)
-  /* 166DFC 8018D7CC 0C035E2D */       jal ftManager_AllocAnimHeapKind
+  /* 166DFC 8018D7CC 0C035E2D */       jal ftManagerAllocAnimHeapKind
   /* 166E00 8018D7D0 92040023 */       lbu $a0, 0x23($s0) # D_ovl36_8018E1D0 + 35
   /* 166E04 8018D7D4 AFA20084 */        sw $v0, 0x84($sp)
-  /* 166E08 8018D7D8 0C035FCF */       jal ftManager_MakeFighter
+  /* 166E08 8018D7D8 0C035FCF */       jal ftManagerMakeFighter
   /* 166E0C 8018D7DC 02802025 */        or $a0, $s4, $zero
   /* 166E10 8018D7E0 3C018019 */       lui $at, %hi(gMvOpeningMarioStageFighterGObj)
   /* 166E14 8018D7E4 AC22E210 */        sw $v0, %lo(gMvOpeningMarioStageFighterGObj)($at)
@@ -695,7 +695,7 @@ glabel mvOpeningMarioCreatePosedFighter
   /* 167108 8018DAD8 E7A00028 */      swc1 $f0, 0x28($sp)
   /* 16710C 8018DADC E7A00030 */      swc1 $f0, 0x30($sp)
   /* 167110 8018DAE0 AFA9005C */        sw $t1, 0x5c($sp)
-  /* 167114 8018DAE4 0C035FCF */       jal ftManager_MakeFighter
+  /* 167114 8018DAE4 0C035FCF */       jal ftManagerMakeFighter
   /* 167118 8018DAE8 E7A4002C */      swc1 $f4, 0x2c($sp)
   /* 16711C 8018DAEC 3C050001 */       lui $a1, (0x1000C >> 16) # 65548
   /* 167120 8018DAF0 00408025 */        or $s0, $v0, $zero
@@ -994,7 +994,7 @@ glabel mvOpeningMarioInit
   /* 167574 8018DF44 0C0436D5 */       jal cmManager_MakeWallpaperCamera
   /* 167578 8018DF48 00000000 */       nop
   /* 16757C 8018DF4C 24040003 */     addiu $a0, $zero, 3
-  /* 167580 8018DF50 0C035C65 */       jal ftManager_AllocFighterData
+  /* 167580 8018DF50 0C035C65 */       jal ftManagerAllocFighter
   /* 167584 8018DF54 24050002 */     addiu $a1, $zero, 2
   /* 167588 8018DF58 0C05952C */       jal wpManagerAllocWeapons
   /* 16758C 8018DF5C 00000000 */       nop
@@ -1002,7 +1002,7 @@ glabel mvOpeningMarioInit
   /* 167594 8018DF64 00000000 */       nop
   /* 167598 8018DF68 0C03F4C0 */       jal efManager_AllocUserData
   /* 16759C 8018DF6C 00000000 */       nop
-  /* 1675A0 8018DF70 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 1675A0 8018DF70 0C035E1B */       jal ftManagerSetupDataKind
   /* 1675A4 8018DF74 00002025 */        or $a0, $zero, $zero
   /* 1675A8 8018DF78 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
   /* 1675AC 8018DF7C 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
@@ -1043,13 +1043,13 @@ glabel mvOpeningMarioSetupDisplayList
   /* 167628 8018DFF8 246E0008 */     addiu $t6, $v1, 8
   /* 16762C 8018DFFC AC8E0000 */        sw $t6, ($a0)
   /* 167630 8018E000 3C180002 */       lui $t8, 2
-  /* 167634 8018E004 3C058013 */       lui $a1, %hi(gMapLightAngleX)
-  /* 167638 8018E008 3C068013 */       lui $a2, %hi(gMapLightAngleY)
+  /* 167634 8018E004 3C058013 */       lui $a1, %hi(gMPLightAngleX)
+  /* 167638 8018E008 3C068013 */       lui $a2, %hi(gMPLightAngleY)
   /* 16763C 8018E00C AC780004 */        sw $t8, 4($v1)
   /* 167640 8018E010 AC6F0000 */        sw $t7, ($v1)
-  /* 167644 8018E014 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
+  /* 167644 8018E014 8CC61394 */        lw $a2, %lo(gMPLightAngleY)($a2)
   /* 167648 8018E018 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
-  /* 16764C 8018E01C 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
+  /* 16764C 8018E01C 8CA51390 */        lw $a1, %lo(gMPLightAngleX)($a1)
   /* 167650 8018E020 8FBF0014 */        lw $ra, 0x14($sp)
   /* 167654 8018E024 27BD0018 */     addiu $sp, $sp, 0x18
   /* 167658 8018E028 03E00008 */        jr $ra

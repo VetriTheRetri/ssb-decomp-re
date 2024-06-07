@@ -276,10 +276,10 @@ void func_ovl65_80191B44(GObj *gobj)
     sw = 0;
     angle = (lbRandom_GetIntRange(2) * 30) + 30;
 
-    lr = ABS(gMapEdgeBounds.d2.left - 2000.0F)     + ABS(gMapEdgeBounds.d2.right + 2000.0F);
+    lr = ABS(gMPEdgeBounds.d2.left - 2000.0F)     + ABS(gMPEdgeBounds.d2.right + 2000.0F);
     bt = ABS(gGroundInfo->blastzone_top - 2000.0F) + ABS(gGroundInfo->blastzone_bottom + 2000.0F);
 
-    dobj->translate.vec.f.x = (lbRandom_GetFloat() * lr) + (gMapEdgeBounds.d2.left - 2000.0F);
+    dobj->translate.vec.f.x = (lbRandom_GetFloat() * lr) + (gMPEdgeBounds.d2.left - 2000.0F);
     dobj->translate.vec.f.y = (lbRandom_GetFloat() * bt) + (gGroundInfo->blastzone_bottom + 2000.0F);
 
     if (dobj->translate.vec.f.x < 0.0F)

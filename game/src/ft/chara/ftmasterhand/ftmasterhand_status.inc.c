@@ -4,7 +4,7 @@
 #include <ft/fttypes.h>
 
 // 0x8012B4AC
-ftStatusDesc ftStatus_SpecialDesc_MasterHand[/* */] =
+ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 {
 	// Status 220 (0xDC): Unk
 	{

@@ -115,7 +115,7 @@ void ftCommon_Sleep_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_Sleep, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Sleep, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->is_invisible = TRUE;
     fp->x18E_flag_b0 = TRUE;

@@ -55,8 +55,8 @@ void ftDonkey_ThrowFWalk_SetStatusParam(GObj *fighter_gobj, f32 frame_begin)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftCommon_Walk_GetWalkStatus(fp->input.pl.stick_range.x) + (ftStatus_Donkey_ThrowFWalkSlow - ftStatus_Common_WalkSlow), frame_begin, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftCommon_Walk_GetWalkStatus(fp->input.pl.stick_range.x) + (ftStatus_Donkey_ThrowFWalkSlow - ftStatus_Common_WalkSlow), frame_begin, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x8014D6D8

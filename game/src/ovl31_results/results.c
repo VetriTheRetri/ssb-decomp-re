@@ -864,7 +864,7 @@ void mnResultsSpawnFighter(s32 port_id)
     spawn_info.costume = gTransferBattleState.player_block[port_id].costume_index;
     spawn_info.shade = gTransferBattleState.player_block[port_id].shade_index;
     spawn_info.anim_heap = gMNResultsAnimHeaps[port_id];
-    gMNResultsFighterGObjs[port_id] = ftManager_MakeFighter(&spawn_info);
+    gMNResultsFighterGObjs[port_id] = ftManagerMakeFighter(&spawn_info);
 }
 
 // 0x801339F4
@@ -2773,11 +2773,11 @@ void mnResultsInit()
     func_8000B9FC(0, 0x80000000U, 0x64, 3, 0xFF);
     func_ovl2_80115890();
     efManager_AllocUserData();
-    ftManager_AllocFighterData(1, 4);
+    ftManagerAllocFighter(1, 4);
 
     for (i = 0; i < 12; i++)
     {
-        ftManager_SetFileDataKind(i);
+        ftManagerSetupDataKind(i);
     }
 
     for (i = 0; i < ARRAY_COUNT(gMNResultsAnimHeaps); i++)

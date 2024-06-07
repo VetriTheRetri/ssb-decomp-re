@@ -2207,7 +2207,7 @@ glabel mnResultsSpawnFighter
   /* 152B64 801339C4 27A40024 */     addiu $a0, $sp, 0x24
   /* 152B68 801339C8 A3AB003B */        sb $t3, 0x3b($sp)
   /* 152B6C 801339CC A3AC003C */        sb $t4, 0x3c($sp)
-  /* 152B70 801339D0 0C035FCF */       jal ftManager_MakeFighter
+  /* 152B70 801339D0 0C035FCF */       jal ftManagerMakeFighter
   /* 152B74 801339D4 AFAD005C */        sw $t5, 0x5c($sp)
   /* 152B78 801339D8 8FA60020 */        lw $a2, 0x20($sp)
   /* 152B7C 801339DC 8FBF0014 */        lw $ra, 0x14($sp)
@@ -8017,11 +8017,11 @@ glabel mnResultsInit
   /* 157DE4 80138C44 0C03F4C0 */       jal efManager_AllocUserData
   /* 157DE8 80138C48 00000000 */       nop
   /* 157DEC 80138C4C 24040001 */     addiu $a0, $zero, 1
-  /* 157DF0 80138C50 0C035C65 */       jal ftManager_AllocFighterData
+  /* 157DF0 80138C50 0C035C65 */       jal ftManagerAllocFighter
   /* 157DF4 80138C54 24050004 */     addiu $a1, $zero, 4
   /* 157DF8 80138C58 00008025 */        or $s0, $zero, $zero
   .L80138C5C:
-  /* 157DFC 80138C5C 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 157DFC 80138C5C 0C035E1B */       jal ftManagerSetupDataKind
   /* 157E00 80138C60 02002025 */        or $a0, $s0, $zero
   /* 157E04 80138C64 26100001 */     addiu $s0, $s0, %lo(D_NF_80000001)
   /* 157E08 80138C68 2A01000C */      slti $at, $s0, 0xc

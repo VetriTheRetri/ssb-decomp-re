@@ -30,7 +30,7 @@ void ftCommon_HammerFall_SetStatus(GObj *fighter_gobj)
     {
         ftMap_SetAir(fp);
     }
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
     ftHammer_CheckSetColAnim(fighter_gobj);
     ftPhysics_ClampAirVelXMax(fp);
 }
@@ -57,7 +57,7 @@ void ftCommon_HammerFall_SetStatusJump(GObj *fighter_gobj)
     s32 vel_x, vel_y;
 
     ftMap_SetAir(fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
     ftHammer_CheckSetColAnim(fighter_gobj);
 
     switch (fp->status_vars.common.hammer.input_source)

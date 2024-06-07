@@ -330,7 +330,7 @@ glabel mvEndingMakeFighter
   /* 17794C 80131FAC A3A90033 */        sb $t1, 0x33($sp)
   /* 177950 80131FB0 A3AA0034 */        sb $t2, 0x34($sp)
   /* 177954 80131FB4 AFAB0054 */        sw $t3, 0x54($sp)
-  /* 177958 80131FB8 0C035FCF */       jal ftManager_MakeFighter
+  /* 177958 80131FB8 0C035FCF */       jal ftManagerMakeFighter
   /* 17795C 80131FBC E7A80028 */      swc1 $f8, 0x28($sp)
   /* 177960 80131FC0 3C018013 */       lui $at, %hi(sMVEndingFighterGObj)
   /* 177964 80131FC4 3C050001 */       lui $a1, (0x10009 >> 16) # 65545
@@ -923,7 +923,7 @@ glabel mvEndingActorProcUpdate
   /* 17820C 8013286C 0C04C94F */       jal func_ovl54_8013253C
   /* 178210 80132870 00000000 */       nop 
   /* 178214 80132874 3C048013 */       lui $a0, %hi(sMVEndingFighterGObj)
-  /* 178218 80132878 0C035E3A */       jal func_ovl2_800D78E8
+  /* 178218 80132878 0C035E3A */       jal ftManagerDestroyFighter
   /* 17821C 8013287C 8C842BDC */        lw $a0, %lo(sMVEndingFighterGObj)($a0)
   /* 178220 80132880 3C048013 */       lui $a0, %hi(sMVEndingRoomLightGObj)
   /* 178224 80132884 0C0026A1 */       jal omEjectGObj
@@ -1005,10 +1005,10 @@ glabel mvEndingInitAll
   /* 178344 801329A4 0C03F4C0 */       jal efManager_AllocUserData
   /* 178348 801329A8 00000000 */       nop 
   /* 17834C 801329AC 24040001 */     addiu $a0, $zero, 1
-  /* 178350 801329B0 0C035C65 */       jal ftManager_AllocFighterData
+  /* 178350 801329B0 0C035C65 */       jal ftManagerAllocFighter
   /* 178354 801329B4 24050001 */     addiu $a1, $zero, 1
   /* 178358 801329B8 3C048013 */       lui $a0, %hi(sMVEndingFighterDesc)
-  /* 17835C 801329BC 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 17835C 801329BC 0C035E1B */       jal ftManagerSetupDataKind
   /* 178360 801329C0 8C842C08 */        lw $a0, %lo(sMVEndingFighterDesc)($a0)
   /* 178364 801329C4 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
   /* 178368 801329C8 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)

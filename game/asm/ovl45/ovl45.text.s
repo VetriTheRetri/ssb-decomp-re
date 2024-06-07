@@ -134,7 +134,7 @@ glabel mvOpeningYoshiNestCreateFighters
   /* 16FF00 80131CC0 E7B40050 */      swc1 $f20, 0x50($sp)
   /* 16FF04 80131CC4 E7B40054 */      swc1 $f20, 0x54($sp)
   /* 16FF08 80131CC8 02802025 */        or $a0, $s4, $zero
-  /* 16FF0C 80131CCC 0C035FCF */       jal ftManager_MakeFighter
+  /* 16FF0C 80131CCC 0C035FCF */       jal ftManagerMakeFighter
   /* 16FF10 80131CD0 AFAE0080 */        sw $t6, 0x80($sp)
   /* 16FF14 80131CD4 00408825 */        or $s1, $v0, $zero
   /* 16FF18 80131CD8 00402025 */        or $a0, $v0, $zero
@@ -482,9 +482,9 @@ glabel mvOpeningYoshiNestInit
   /* 170428 801321E8 0C03F4C0 */       jal efManager_AllocUserData
   /* 17042C 801321EC 00000000 */       nop
   /* 170430 801321F0 24040001 */     addiu $a0, $zero, 1
-  /* 170434 801321F4 0C035C65 */       jal ftManager_AllocFighterData
+  /* 170434 801321F4 0C035C65 */       jal ftManagerAllocFighter
   /* 170438 801321F8 24050004 */     addiu $a1, $zero, 4
-  /* 17043C 801321FC 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 17043C 801321FC 0C035E1B */       jal ftManagerSetupDataKind
   /* 170440 80132200 24040006 */     addiu $a0, $zero, 6
   /* 170444 80132204 3C108013 */       lui $s0, %hi(gMvOpeningYoshiNestFighterAnimHeaps)
   /* 170448 80132208 3C128013 */       lui $s2, %hi(gMvOpeningYoshiNestFramesElapsed)

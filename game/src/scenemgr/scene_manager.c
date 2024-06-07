@@ -65,7 +65,7 @@ void start_scene_manager(UNUSED u32 set) {
     gTransferBattleState = sp220;
     D_800A4B18 = sp220;
 
-    func_ovl2_800D6FE0();
+    ftManagerSetupFileSize();
     D_8003CB6D = 72;
 
     func_8002102C();

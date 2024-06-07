@@ -98,8 +98,8 @@ void ftCommon_CaptureYoshi_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     this_fp->lr = -capture_fp->lr;
 
     ftMap_SetAir(this_fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_CaptureYoshi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CaptureYoshi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     this_fp->status_vars.common.captureyoshi.stage = 0;
     this_fp->status_vars.common.captureyoshi.breakout_wait = 0;
@@ -181,7 +181,7 @@ void ftCommon_YoshiEgg_ProcUpdate(GObj *fighter_gobj)
         DObjGetStruct(fighter_gobj)->translate.vec.f.y += FTCOMMON_YOSHIEGG_ESCAPE_OFF_Y;
 
         ftMap_SetAir(fp);
-        ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_Fall, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Fall, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
         ftCommon_ApplyIntangibleTimer(fp, FTCOMMON_YOSHIEGG_INTANGIBLE_TIMER);
     }
 }
@@ -305,7 +305,7 @@ void ftCommon_YoshiEgg_SetHurt(GObj *fighter_gobj)
     s32 i;
 
     ft_hurt->joint = fp->joint[ftParts_Joint_TopN];
-    ft_hurt->joint_index = ftParts_Joint_TopN;
+    ft_hurt->joint_id = ftParts_Joint_TopN;
     ft_hurt->placement = 1;
     ft_hurt->is_grabbable = FALSE;
     ft_hurt->offset = egg->offset;
@@ -347,7 +347,7 @@ void ftCommon_YoshiEgg_SetStatus(GObj *fighter_gobj)
     this_fp->proc_status = ftCommon_YoshiEgg_ProcStatus;
 
     ftMap_SetAir(this_fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_YoshiEgg, 0.0F, 0.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_YoshiEgg, 0.0F, 0.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftSetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
 
     this_fp->is_invisible = TRUE;

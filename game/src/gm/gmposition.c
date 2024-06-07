@@ -1554,7 +1554,7 @@ sb32 wpCollision_CheckWeaponHitShieldIntersect(wpHitbox *wp_hit, s32 hit_id, GOb
 // 0x800EFFCC
 sb32 wpCollision_CheckWeaponHitSpecialIntersect(wpHitbox *wp_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
 {
-    DObj *dobj = fp->joint[special_hit->joint_index];
+    DObj *dobj = fp->joint[special_hit->joint_id];
     ftParts *unk_dobjtrans = dobj->user_data.p;
 
     func_ovl2_800EDE00(dobj);
@@ -1779,7 +1779,7 @@ sb32 itCollision_CheckItemHitShieldIntersect(itHitbox *it_hit, s32 hit_id, GObj 
 // 0x800F0518
 sb32 itCollision_CheckItemHitSpecialIntersect(itHitbox *it_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
 {
-    DObj *dobj = fp->joint[special_hit->joint_index];
+    DObj *dobj = fp->joint[special_hit->joint_id];
     ftParts *unk_dobjtrans = dobj->user_data.p;
 
     func_ovl2_800EDE00(dobj);

@@ -158,7 +158,7 @@ glabel mvOpeningLinkHillCreateFighter
   /* 170878 80131D18 E7A00020 */      swc1 $f0, 0x20($sp)
   /* 17087C 80131D1C E7A00024 */      swc1 $f0, 0x24($sp)
   /* 170880 80131D20 E7A00028 */      swc1 $f0, 0x28($sp)
-  /* 170884 80131D24 0C035FCF */       jal ftManager_MakeFighter
+  /* 170884 80131D24 0C035FCF */       jal ftManagerMakeFighter
   /* 170888 80131D28 AFAA0054 */        sw $t2, 0x54($sp)
   /* 17088C 80131D2C 3C018013 */       lui $at, %hi(gMvOpeningLinkHillFighterGObj)
   /* 170890 80131D30 3C050001 */       lui $a1, (0x1000F >> 16) # 65551
@@ -741,9 +741,9 @@ glabel mvOpeningLinkHillInit
   /* 171110 801325B0 0C03F4C0 */       jal efManager_AllocUserData
   /* 171114 801325B4 00000000 */       nop
   /* 171118 801325B8 24040001 */     addiu $a0, $zero, 1
-  /* 17111C 801325BC 0C035C65 */       jal ftManager_AllocFighterData
+  /* 17111C 801325BC 0C035C65 */       jal ftManagerAllocFighter
   /* 171120 801325C0 24050001 */     addiu $a1, $zero, 1
-  /* 171124 801325C4 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 171124 801325C4 0C035E1B */       jal ftManagerSetupDataKind
   /* 171128 801325C8 24040005 */     addiu $a0, $zero, 5
   /* 17112C 801325CC 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
   /* 171130 801325D0 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)

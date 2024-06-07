@@ -201,7 +201,7 @@ typedef enum scMajorScene
 {
     scMajor_Kind_NoController,      // "No Controller" screen
     scMajor_Kind_Title,             // Title screen
-    scMajor_Kind_DebugMapSel,       // Debug stage select
+    scMajor_Kind_DebugMPSel,       // Debug stage select
     scMajor_Kind_DebugSystem,       // Debug main menu?
     scMajor_Kind_DebugChrSel,       // Debug character select
     scMajor_Kind_DebugResScreen,    // Debug results screen

@@ -1,6 +1,6 @@
 #include <ovl0/reloc_data_mgr.h>
 
-extern void *gCommonFiles[/* */];
+extern void *gGMCommonFiles[/* */];
 
 extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_001AC870;
@@ -29,7 +29,7 @@ void func_ovl6_8018ED70(void)
     (
         dCommonFileIDs,
         ARRAY_COUNT(dCommonFileIDs),
-        gCommonFiles,
+        gGMCommonFiles,
         gsMemoryAlloc
         (
             rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)),

@@ -236,8 +236,8 @@ void ftCommon_Get_SetStatus(GObj *fighter_gobj, GObj *item_gobj)
 
     fp->command_vars.flags.flag1 = 0;
 
-    ftMain_SetFighterStatus(fighter_gobj, ((ip->weight == It_Weight_Heavy) ? ftStatus_Common_HeavyGet : ftStatus_Common_LightGet), 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ((ip->weight == It_Weight_Heavy) ? ftStatus_Common_HeavyGet : ftStatus_Common_LightGet), 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     if (fp->status_info.status_id == ftStatus_Common_HeavyGet)
     {
@@ -279,7 +279,7 @@ void ftCommon_LiftWait_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_LiftWait, 0.0F, 1.0F, FTSTATUPDATE_SLOPECONTOUR_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_LiftWait, 0.0F, 1.0F, FTSTATUPDATE_SLOPECONTOUR_PRESERVE);
 
     fp->proc_damage = ftCommon_Get_DropItem;
 }
@@ -324,7 +324,7 @@ void ftCommon_LiftTurn_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_LiftTurn, 0.0F, 1.0F, FTSTATUPDATE_SLOPECONTOUR_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_LiftTurn, 0.0F, 1.0F, FTSTATUPDATE_SLOPECONTOUR_PRESERVE);
 
     fp->proc_damage = ftCommon_Get_DropItem;
 

@@ -908,7 +908,7 @@ glabel func_ovl64_8018DCC4
   /* 18CA94 8018DD54 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 18CA98 8018DD58 00000000 */       nop 
   /* 18CA9C 8018DD5C 24040002 */     addiu $a0, $zero, 2
-  /* 18CAA0 8018DD60 0C035C65 */       jal ftManager_AllocFighterData
+  /* 18CAA0 8018DD60 0C035C65 */       jal ftManagerAllocFighter
   /* 18CAA4 8018DD64 24050004 */     addiu $a1, $zero, 4
   /* 18CAA8 8018DD68 0C05952C */       jal wpManagerAllocWeapons
   /* 18CAAC 8018DD6C 00000000 */       nop 
@@ -946,7 +946,7 @@ glabel func_ovl64_8018DCC4
   /* 18CB24 8018DDE4 AD190000 */        sw $t9, ($t0)
   /* 18CB28 8018DDE8 8E4A0000 */        lw $t2, ($s2) # gBattleState + 0
   /* 18CB2C 8018DDEC 01515821 */      addu $t3, $t2, $s1
-  /* 18CB30 8018DDF0 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 18CB30 8018DDF0 0C035E1B */       jal ftManagerSetupDataKind
   /* 18CB34 8018DDF4 91640023 */       lbu $a0, 0x23($t3)
   /* 18CB38 8018DDF8 8E4C0000 */        lw $t4, ($s2) # gBattleState + 0
   /* 18CB3C 8018DDFC 02002025 */        or $a0, $s0, $zero
@@ -998,13 +998,13 @@ glabel func_ovl64_8018DCC4
   /* 18CBEC 8018DEAC 90590022 */       lbu $t9, 0x22($v0)
   /* 18CBF0 8018DEB0 AFB30078 */        sw $s3, 0x78($sp)
   /* 18CBF4 8018DEB4 AFB90074 */        sw $t9, 0x74($sp)
-  /* 18CBF8 8018DEB8 0C035E2D */       jal ftManager_AllocAnimHeapKind
+  /* 18CBF8 8018DEB8 0C035E2D */       jal ftManagerAllocAnimHeapKind
   /* 18CBFC 8018DEBC 90440023 */       lbu $a0, 0x23($v0)
   /* 18CC00 8018DEC0 93AB006B */       lbu $t3, 0x6b($sp)
   /* 18CC04 8018DEC4 AFA20084 */        sw $v0, 0x84($sp)
   /* 18CC08 8018DEC8 02802025 */        or $a0, $s4, $zero
   /* 18CC0C 8018DECC 356C0080 */       ori $t4, $t3, 0x80
-  /* 18CC10 8018DED0 0C035FCF */       jal ftManager_MakeFighter
+  /* 18CC10 8018DED0 0C035FCF */       jal ftManagerMakeFighter
   /* 18CC14 8018DED4 A3AC006B */        sb $t4, 0x6b($sp)
   /* 18CC18 8018DED8 8E4D0000 */        lw $t5, ($s2) # gBattleState + 0
   /* 18CC1C 8018DEDC 02002025 */        or $a0, $s0, $zero
@@ -1020,7 +1020,7 @@ glabel func_ovl64_8018DCC4
   /* 18CC44 8018DF04 26310074 */     addiu $s1, $s1, 0x74
   /* 18CC48 8018DF08 1601FFA8 */       bne $s0, $at, .L8018DDAC
   /* 18CC4C 8018DF0C 2673000A */     addiu $s3, $s3, 0xa
-  /* 18CC50 8018DF10 0C035E0B */       jal ftManager_SetFileDataPlayables
+  /* 18CC50 8018DF10 0C035E0B */       jal ftManagerSetupDataPlayables
   /* 18CC54 8018DF14 00000000 */       nop 
   /* 18CC58 8018DF18 0C063438 */       jal scAutoDemoBeginMatch
   /* 18CC5C 8018DF1C 00000000 */       nop 
@@ -1076,13 +1076,13 @@ glabel func_ovl64_8018DFC8
   /* 18CD1C 8018DFDC 246E0008 */     addiu $t6, $v1, 8
   /* 18CD20 8018DFE0 AC8E0000 */        sw $t6, ($a0)
   /* 18CD24 8018DFE4 3C180002 */       lui $t8, 2
-  /* 18CD28 8018DFE8 3C058013 */       lui $a1, %hi(gMapLightAngleX)
-  /* 18CD2C 8018DFEC 3C068013 */       lui $a2, %hi(gMapLightAngleY)
+  /* 18CD28 8018DFE8 3C058013 */       lui $a1, %hi(gMPLightAngleX)
+  /* 18CD2C 8018DFEC 3C068013 */       lui $a2, %hi(gMPLightAngleY)
   /* 18CD30 8018DFF0 AC780004 */        sw $t8, 4($v1)
   /* 18CD34 8018DFF4 AC6F0000 */        sw $t7, ($v1)
-  /* 18CD38 8018DFF8 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
+  /* 18CD38 8018DFF8 8CC61394 */        lw $a2, %lo(gMPLightAngleY)($a2)
   /* 18CD3C 8018DFFC 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
-  /* 18CD40 8018E000 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
+  /* 18CD40 8018E000 8CA51390 */        lw $a1, %lo(gMPLightAngleX)($a1)
   /* 18CD44 8018E004 8FBF0014 */        lw $ra, 0x14($sp)
   /* 18CD48 8018E008 27BD0018 */     addiu $sp, $sp, 0x18
   /* 18CD4C 8018E00C 03E00008 */        jr $ra
@@ -1168,8 +1168,8 @@ glabel func_ovl64_8018E0C0
   /* 18CE6C 8018E12C 0C001260 */       jal gsMemoryAlloc
   /* 18CE70 8018E130 24050010 */     addiu $a1, $zero, 0x10
   /* 18CE74 8018E134 3C048011 */       lui $a0, %hi(dCommonFileIDs)
-  /* 18CE78 8018E138 3C068013 */       lui $a2, %hi(gCommonFiles)
-  /* 18CE7C 8018E13C 24C60D40 */     addiu $a2, $a2, %lo(gCommonFiles)
+  /* 18CE78 8018E138 3C068013 */       lui $a2, %hi(gGMCommonFiles)
+  /* 18CE7C 8018E13C 24C60D40 */     addiu $a2, $a2, %lo(gGMCommonFiles)
   /* 18CE80 8018E140 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
   /* 18CE84 8018E144 24050008 */     addiu $a1, $zero, 8
   /* 18CE88 8018E148 0C033781 */       jal rdManagerLoadFiles

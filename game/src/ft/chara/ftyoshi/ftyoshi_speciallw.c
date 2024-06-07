@@ -50,7 +50,7 @@ void ftYoshiSpecialLwStartProcMap(GObj *fighter_gobj)
             if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
             {
                 ftMap_SetGround(fp);
-                ftMain_SetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialLwLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+                ftMainSetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialLwLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
             }
             else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {
@@ -74,7 +74,7 @@ void ftYoshiSpecialAirLwLoopProcMap(GObj *fighter_gobj)
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
         {
             ftMap_SetGround(fp);
-            ftMain_SetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialLwLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+            ftMainSetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialLwLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
         }
         else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
@@ -100,8 +100,8 @@ void ftYoshiSpecialLwStartSetStatus(GObj *fighter_gobj)
     fp->proc_status = ftYoshiSpecialLwStartProcStatus;
 
     ftMap_SetAir(fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialLwStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialLwStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->jumps_used = fp->attributes->jumps_max;
 }
@@ -113,8 +113,8 @@ void ftYoshiSpecialAirLwStartSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftYoshiSpecialLwStartProcStatus;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialAirLwStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialAirLwStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->jumps_used = fp->attributes->jumps_max;
 }
@@ -132,8 +132,8 @@ void ftYoshiSpecialAirLwLoopSetStatus(GObj *fighter_gobj)
 
     vel_y_bak = fp->phys_info.vel_air.y;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialAirLwLoop, fighter_gobj->anim_frame, 0, FTSTATUPDATE_HIT_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Yoshi_SpecialAirLwLoop, fighter_gobj->anim_frame, 0, FTSTATUPDATE_HIT_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->phys_info.vel_air.y = vel_y_bak;
 

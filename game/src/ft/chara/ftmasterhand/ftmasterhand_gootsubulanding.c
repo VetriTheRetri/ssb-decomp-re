@@ -14,7 +14,7 @@ void ftMasterHand_GootsubusuDown_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_GootsubusuDown, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_MasterHand_GootsubusuDown, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->phys_info.vel_air.x = 0.0F;
     fp->phys_info.vel_air.y = -400.0F;

@@ -9,7 +9,18 @@
 #define FTPURIN_POUND_VEL_BASE 0.65F
 #define FTPURIN_POUND_VEL_MUL 0.92F
 
-extern ftStatusDesc ftStatus_SpecialDesc_Purin[/* */];
+extern ftStatusDesc dFTPurinSpecialStatusDesc[/* */];
+
+extern void *gFTDataPurinMain;
+extern void *gFTDataPurinBattleMotion;
+extern void *gFTDataPurinModel;
+extern void *gFTDataPurinSpecial2;
+extern u32 gFTDataPurinParticleBankID;
+
+extern void *gFTDataPolyPurinMain;
+extern void *gFTDataPolyPurinSubMotion;
+extern void *gFTDataPolyPurinModel;
+extern u32 gFTDataPolyPurinParticleBankID;
 
 typedef enum ftPurinMotion
 {

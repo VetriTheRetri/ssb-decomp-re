@@ -5,22 +5,22 @@
 #include <gr/ground.h>
 
 // 0x80131304
-mpEdgeBounds gMapEdgeBounds;
-mpRoomDObj *gMapRooms;
-mpLineGroup gMapLineTypeGroups[mpCollision_LineType_EnumMax];
-mpGeometryInfo *gMapGeometry;
-mpVertexInfoContainer *gMapVertexInfo;
-mpVertexArray *gMapVertexID;
-mpVertexLinks *gMapVertexLinks;       //
-mpVertexPosContainer *gMapVertexData; // Vertex positions
-Vec3f *gMapDynamicCollisions;
-mpMPointContainer *gMapPoints;
-s32 gMapLineCount;
-gsColorRGBA gMapLightColor;
-s32 gMapRoomCount;
-f32 gMapLightAngleX;
-f32 gMapLightAngleY;
-u16 gMapCollUpdateFrame;
+mpEdgeBounds gMPEdgeBounds;
+mpRoomDObj *gMPRooms;
+mpLineGroup gMPLineTypeGroups[mpCollision_LineType_EnumMax];
+mpGeometryInfo *gMPGeometry;
+mpVertexInfoContainer *gMPVertexInfo;
+mpVertexArray *gMPVertexID;
+mpVertexLinks *gMPVertexLinks;       //
+mpVertexPosContainer *gMPVertexData; // Vertex positions
+Vec3f *gMPDynamicCollisions;
+mpMPointContainer *gMPPoints;
+s32 gMPLineCount;
+gsColorRGBA gMPLightColor;
+s32 gMPRoomCount;
+f32 gMPLightAngleX;
+f32 gMPLightAngleY;
+u16 gMPCollUpdateFrame;
 
 extern u32 gMusicIndexCurrent;
 extern u32 gMusicIndexDefault;
@@ -64,7 +64,7 @@ sb32 mpCollision_GetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *fla
             smCrashPrintGObjStatus();
         }
     }
-    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMPRooms->room_dobj[gMPVertexInfo->vertex_info[line_id].room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -75,7 +75,7 @@ sb32 mpCollision_GetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *fla
             smCrashPrintGObjStatus();
         }
     }
-    vlinks = &gMapVertexLinks[line_id];
+    vlinks = &gMPVertexLinks[line_id];
 
     if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
     {
@@ -88,10 +88,10 @@ sb32 mpCollision_GetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *fla
         object_pos_y = object_pos->y;
     }
     vertex1 = vlinks->vertex1;
-    pv = &gMapVertexID->vertex_id[vertex1];
-    v1x = gMapVertexData->vpos[pv[0]].pos.x;
+    pv = &gMPVertexID->vertex_id[vertex1];
+    v1x = gMPVertexData->vpos[pv[0]].pos.x;
     vid = vlinks->vertex2 - 1;
-    v2x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex1 + vid]].pos.x;
+    v2x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex1 + vid]].pos.x;
 
     if (v2x < v1x)
     {
@@ -119,8 +119,8 @@ sb32 mpCollision_GetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *fla
     {
         for (i = 0; i < vid; i++, pv++)
         {
-            v1x = gMapVertexData->vpos[pv[0]].pos.x;
-            v2x = gMapVertexData->vpos[pv[1]].pos.x;
+            v1x = gMPVertexData->vpos[pv[0]].pos.x;
+            v2x = gMPVertexData->vpos[pv[1]].pos.x;
 
             if (v2x == v1x)
             {
@@ -136,12 +136,12 @@ sb32 mpCollision_GetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *fla
             }
         }
     }
-    v1y = gMapVertexData->vpos[pv[0]].pos.y;
-    v2y = gMapVertexData->vpos[pv[1]].pos.y;
+    v1y = gMPVertexData->vpos[pv[0]].pos.y;
+    v2y = gMPVertexData->vpos[pv[1]].pos.y;
 
     if (flags != NULL)
     {
-        *flags = gMapVertexData->vpos[pv[0]].vertex_flags;
+        *flags = gMPVertexData->vpos[pv[0]].vertex_flags;
     }
     if (dist != NULL)
     {
@@ -193,7 +193,7 @@ sb32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *fla
             smCrashPrintGObjStatus();
         }
     }
-    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMPRooms->room_dobj[gMPVertexInfo->vertex_info[line_id].room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -204,7 +204,7 @@ sb32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *fla
             smCrashPrintGObjStatus();
         }
     }
-    vlinks = &gMapVertexLinks[line_id];
+    vlinks = &gMPVertexLinks[line_id];
 
     if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
     {
@@ -217,10 +217,10 @@ sb32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *fla
         object_pos_y = object_pos->y;
     }
     vertex1 = vlinks->vertex1;
-    pv = &gMapVertexID->vertex_id[vertex1];
-    v1y = gMapVertexData->vpos[pv[0]].pos.y;
+    pv = &gMPVertexID->vertex_id[vertex1];
+    v1y = gMPVertexData->vpos[pv[0]].pos.y;
     vid = vlinks->vertex2 - 1;
-    v2y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex1 + vid]].pos.y;
+    v2y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex1 + vid]].pos.y;
 
     if (v2y < v1y)
     {
@@ -248,8 +248,8 @@ sb32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *fla
     {
         for (i = 0; i < vid; i++, pv++)
         {
-            v1y = gMapVertexData->vpos[pv[0]].pos.y;
-            v2y = gMapVertexData->vpos[pv[1]].pos.y;
+            v1y = gMPVertexData->vpos[pv[0]].pos.y;
+            v2y = gMPVertexData->vpos[pv[1]].pos.y;
 
             if (v2y == v1y)
             {
@@ -265,12 +265,12 @@ sb32 mpCollision_GetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *fla
             }
         }
     }
-    v1x = gMapVertexData->vpos[pv[0]].pos.x;
-    v2x = gMapVertexData->vpos[pv[1]].pos.x;
+    v1x = gMPVertexData->vpos[pv[0]].pos.x;
+    v2x = gMPVertexData->vpos[pv[1]].pos.x;
 
     if (flags != NULL)
     {
-        *flags = gMapVertexData->vpos[pv[0]].vertex_flags;
+        *flags = gMPVertexData->vpos[pv[0]].vertex_flags;
     }
     if (arg2 != NULL)
     {
@@ -316,7 +316,7 @@ void mpCollision_GetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
             smCrashPrintGObjStatus();
         }
     }
-    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMPRooms->room_dobj[gMPVertexInfo->vertex_info[line_id].room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -326,23 +326,23 @@ void mpCollision_GetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
             smCrashPrintGObjStatus();
         }
     }
-    vlinks = &gMapVertexLinks[line_id];
+    vlinks = &gMPVertexLinks[line_id];
     vertex1 = vlinks->vertex1;
     vid = (vlinks->vertex2 + vertex1) - 1;
-    v1x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex1]].pos.x;
-    v2x = gMapVertexData->vpos[gMapVertexID->vertex_id[vid]].pos.x;
+    v1x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex1]].pos.x;
+    v2x = gMPVertexData->vpos[gMPVertexID->vertex_id[vid]].pos.x;
 
     cmp_lt = (lr < LR_Center) ? (v1x < v2x) : (v2x < v1x);
 
     if (cmp_lt != FALSE)
     {
         object_pos->x = v1x;
-        object_pos->y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex1]].pos.y;
+        object_pos->y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex1]].pos.y;
     }
     else
     {
         object_pos->x = v2x;
-        object_pos->y = gMapVertexData->vpos[gMapVertexID->vertex_id[vid]].pos.y;
+        object_pos->y = gMPVertexData->vpos[gMPVertexID->vertex_id[vid]].pos.y;
     }
     object_pos->z = 0.0F;
 
@@ -400,7 +400,7 @@ void mpCollision_GetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
             smCrashPrintGObjStatus();
         }
     }
-    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMPRooms->room_dobj[gMPVertexInfo->vertex_info[line_id].room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -410,11 +410,11 @@ void mpCollision_GetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
             smCrashPrintGObjStatus();
         }
     }
-    vlinks = &gMapVertexLinks[line_id];
+    vlinks = &gMPVertexLinks[line_id];
     vertex1 = vlinks->vertex1;
     vid = (vlinks->vertex2 + vertex1) - 1;
-    vpos1 = &gMapVertexData->vpos[gMapVertexID->vertex_id[vertex1]];
-    vpos2 = &gMapVertexData->vpos[gMapVertexID->vertex_id[vid]];
+    vpos1 = &gMPVertexData->vpos[gMPVertexID->vertex_id[vertex1]];
+    vpos2 = &gMPVertexData->vpos[gMPVertexID->vertex_id[vid]];
 
     v1y = vpos1->pos.y;
     v2y = vpos2->pos.y;
@@ -647,12 +647,12 @@ sb32 mpCollision_CheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate,
     f32 spAC;
 
     line_project_pos = F32_MAX;
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ground];
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
@@ -690,28 +690,28 @@ sb32 mpCollision_CheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate,
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     continue;
                 }
-                else if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                else if (gMPVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMPVertexLinks[line_id].vertex1;
 
-                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMPVertexLinks[line_id].vertex1; vertex_id < (gMPVertexLinks[line_id].vertex1 + gMPVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s1 = vpos_x;
                         temp_s0 = vpos_y;
 
-                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_y)
                         {
@@ -738,7 +738,7 @@ sb32 mpCollision_CheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate,
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spAC < vpdist_y) ? -(spAC - vpdist_y) : (spAC - vpdist_y);
                                 }
@@ -764,7 +764,7 @@ sb32 mpCollision_CheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate,
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spAC < vpdist_y) ? -(spAC - vpdist_y) : (spAC - vpdist_y);
                         }
@@ -806,12 +806,12 @@ sb32 mpCollision_CheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate,
     f32 spAC;
 
     line_project_pos = F32_MAX;
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ground];
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
@@ -821,9 +821,9 @@ sb32 mpCollision_CheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate,
                 vedge_x = room_dobj->translate.vec.f.x;
                 vedge_y = room_dobj->translate.vec.f.y;
 
-                dynamic_y = gMapDynamicCollisions[line_info->room_id].y;
+                dynamic_y = gMPDynamicCollisions[line_info->room_id].y;
 
-                vpdist_x = (position->x - vedge_x) + gMapDynamicCollisions[line_info->room_id].x;
+                vpdist_x = (position->x - vedge_x) + gMPDynamicCollisions[line_info->room_id].x;
                 vpdist_y = (position->y - vedge_y) + dynamic_y;
 
                 vtdist_x = translate->x - vedge_x;
@@ -852,28 +852,28 @@ sb32 mpCollision_CheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate,
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     continue;
                 }
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMPVertexLinks[line_id].vertex1;
 
-                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMPVertexLinks[line_id].vertex1; vertex_id < (gMPVertexLinks[line_id].vertex1 + gMPVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s1 = vpos_x;
                         temp_s0 = vpos_y;
 
-                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_y)
                         {
@@ -900,7 +900,7 @@ sb32 mpCollision_CheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate,
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spAC < (vpdist_y - dynamic_y)) ? -(spAC - (vpdist_y - dynamic_y)) : (spAC - (vpdist_y - dynamic_y));
                                 }
@@ -926,7 +926,7 @@ sb32 mpCollision_CheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate,
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spAC < (vpdist_y - dynamic_y)) ? -(spAC - (vpdist_y - dynamic_y)) : (spAC - (vpdist_y - dynamic_y));
                         }
@@ -1092,12 +1092,12 @@ sb32 mpCollision_CheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, V
     f32 spAC;
 
     line_project_pos = F32_MAX;
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ceil];
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
@@ -1135,28 +1135,28 @@ sb32 mpCollision_CheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, V
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     continue;
                 }
-                else if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                else if (gMPVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMPVertexLinks[line_id].vertex1;
 
-                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMPVertexLinks[line_id].vertex1; vertex_id < (gMPVertexLinks[line_id].vertex1 + gMPVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s1 = vpos_x;
                         temp_s0 = vpos_y;
 
-                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_y)
                         {
@@ -1183,7 +1183,7 @@ sb32 mpCollision_CheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, V
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spAC < vpdist_y) ? -(spAC - vpdist_y) : (spAC - vpdist_y);
                                 }
@@ -1209,7 +1209,7 @@ sb32 mpCollision_CheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, V
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spAC < vpdist_y) ? -(spAC - vpdist_y) : (spAC - vpdist_y);
                         }
@@ -1251,12 +1251,12 @@ sb32 mpCollision_CheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, V
     f32 spAC;
 
     line_project_pos = F32_MAX;
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ceil];
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
@@ -1266,9 +1266,9 @@ sb32 mpCollision_CheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                 vedge_x = room_dobj->translate.vec.f.x;
                 vedge_y = room_dobj->translate.vec.f.y;
 
-                dynamic_y = gMapDynamicCollisions[line_info->room_id].y;
+                dynamic_y = gMPDynamicCollisions[line_info->room_id].y;
 
-                vpdist_x = (position->x - vedge_x) + gMapDynamicCollisions[line_info->room_id].x;
+                vpdist_x = (position->x - vedge_x) + gMPDynamicCollisions[line_info->room_id].x;
                 vpdist_y = (position->y - vedge_y) + dynamic_y;
 
                 vtdist_x = translate->x - vedge_x;
@@ -1297,28 +1297,28 @@ sb32 mpCollision_CheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, V
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     continue;
                 }
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMPVertexLinks[line_id].vertex1;
 
-                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMPVertexLinks[line_id].vertex1; vertex_id < (gMPVertexLinks[line_id].vertex1 + gMPVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s1 = vpos_x;
                         temp_s0 = vpos_y;
 
-                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_y)
                         {
@@ -1345,7 +1345,7 @@ sb32 mpCollision_CheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spAC < (vpdist_y - dynamic_y)) ? -(spAC - (vpdist_y - dynamic_y)) : (spAC - (vpdist_y - dynamic_y));
                                 }
@@ -1371,7 +1371,7 @@ sb32 mpCollision_CheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spAC < (vpdist_y - dynamic_y)) ? -(spAC - (vpdist_y - dynamic_y)) : (spAC - (vpdist_y - dynamic_y));
                         }
@@ -1412,12 +1412,12 @@ sb32 mpCollision_CheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
     f32 spAC;
 
     line_project_pos = F32_MAX;
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_RWall];
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
@@ -1455,28 +1455,28 @@ sb32 mpCollision_CheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     continue;
                 }
-                else if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                else if (gMPVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMPVertexLinks[line_id].vertex1;
 
-                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMPVertexLinks[line_id].vertex1; vertex_id < (gMPVertexLinks[line_id].vertex1 + gMPVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s0 = vpos_x;
                         temp_s1 = vpos_y;
 
-                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_x)
                         {
@@ -1503,7 +1503,7 @@ sb32 mpCollision_CheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x);
                                 }
@@ -1529,7 +1529,7 @@ sb32 mpCollision_CheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x);
                         }
@@ -1732,12 +1732,12 @@ sb32 mpCollision_CheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
     f32 spAC;
 
     line_project_pos = F32_MAX;
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_RWall];
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
@@ -1747,10 +1747,10 @@ sb32 mpCollision_CheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
                 vedge_y = room_dobj->translate.vec.f.x;
                 vedge_x = room_dobj->translate.vec.f.y;
 
-                dynamic_x = gMapDynamicCollisions[line_info->room_id].x;
+                dynamic_x = gMPDynamicCollisions[line_info->room_id].x;
 
                 vpdist_x = (position->x - vedge_y) + dynamic_x;
-                vpdist_y = (position->y - vedge_x) + gMapDynamicCollisions[line_info->room_id].y;
+                vpdist_y = (position->y - vedge_x) + gMPDynamicCollisions[line_info->room_id].y;
 
                 vtdist_x = translate->x - vedge_y;
                 vtdist_y = translate->y - vedge_x;
@@ -1778,28 +1778,28 @@ sb32 mpCollision_CheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     continue;
                 }
-                else if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                else if (gMPVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMPVertexLinks[line_id].vertex1;
 
-                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMPVertexLinks[line_id].vertex1; vertex_id < (gMPVertexLinks[line_id].vertex1 + gMPVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s0 = vpos_x;
                         temp_s1 = vpos_y;
 
-                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_x)
                         {
@@ -1826,7 +1826,7 @@ sb32 mpCollision_CheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x));
                                 }
@@ -1852,7 +1852,7 @@ sb32 mpCollision_CheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x));
                         }
@@ -1953,12 +1953,12 @@ sb32 mpCollision_CheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
     f32 spAC;
 
     line_project_pos = F32_MAX;
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_LWall];
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
@@ -1996,28 +1996,28 @@ sb32 mpCollision_CheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     continue;
                 }
-                else if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                else if (gMPVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMPVertexLinks[line_id].vertex1;
 
-                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMPVertexLinks[line_id].vertex1; vertex_id < (gMPVertexLinks[line_id].vertex1 + gMPVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s0 = vpos_x;
                         temp_s1 = vpos_y;
 
-                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_x)
                         {
@@ -2044,7 +2044,7 @@ sb32 mpCollision_CheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x);
                                 }
@@ -2070,7 +2070,7 @@ sb32 mpCollision_CheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, 
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x);
                         }
@@ -2238,12 +2238,12 @@ sb32 mpCollision_CheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
     f32 spAC;
 
     line_project_pos = F32_MAX;
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_LWall];
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
@@ -2253,10 +2253,10 @@ sb32 mpCollision_CheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
                 vedge_y = room_dobj->translate.vec.f.x;
                 vedge_x = room_dobj->translate.vec.f.y;
 
-                dynamic_x = gMapDynamicCollisions[line_info->room_id].x;
+                dynamic_x = gMPDynamicCollisions[line_info->room_id].x;
 
                 vpdist_x = (position->x - vedge_y) + dynamic_x;
-                vpdist_y = (position->y - vedge_x) + gMapDynamicCollisions[line_info->room_id].y;
+                vpdist_y = (position->y - vedge_x) + gMPDynamicCollisions[line_info->room_id].y;
 
                 vtdist_x = translate->x - vedge_y;
                 vtdist_y = translate->y - vedge_x;
@@ -2284,28 +2284,28 @@ sb32 mpCollision_CheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
                     continue;
                 }
-                else if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
+                else if (gMPVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
                     goto lbl_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
-                    vertex_id = gMapVertexLinks[line_id].vertex1;
+                    vertex_id = gMPVertexLinks[line_id].vertex1;
 
-                    vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.x;
-                    vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].pos.y;
+                    vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.x;
+                    vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].pos.y;
 
-                    for (vertex_id = gMapVertexLinks[line_id].vertex1; vertex_id < (gMapVertexLinks[line_id].vertex1 + gMapVertexLinks[line_id].vertex2) - 1; vertex_id++)
+                    for (vertex_id = gMPVertexLinks[line_id].vertex1; vertex_id < (gMPVertexLinks[line_id].vertex1 + gMPVertexLinks[line_id].vertex2) - 1; vertex_id++)
                     {
                         temp_s0 = vpos_x;
                         temp_s1 = vpos_y;
 
-                        vpos_x = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.x;
-                        vpos_y = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id + 1]].pos.y;
+                        vpos_x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.x;
+                        vpos_y = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id + 1]].pos.y;
 
                         if (temp_s0 == vpos_x)
                         {
@@ -2332,7 +2332,7 @@ sb32 mpCollision_CheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
                                     }
                                     if (stand_coll_flags != NULL)
                                     {
-                                        *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                        *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                                     }
                                     line_project_pos = (spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x));
                                 }
@@ -2358,7 +2358,7 @@ sb32 mpCollision_CheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, 
                             }
                             if (stand_coll_flags != NULL)
                             {
-                                *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id]].vertex_flags;
+                                *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id]].vertex_flags;
                             }
                             line_project_pos = (spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x));
                         }
@@ -2386,12 +2386,12 @@ sb32 func_ovl2_800F8FFC(Vec3f *position)
     f32 vpdist_x, vpdist_y;
     s32 line_id;
 
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ground];
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
@@ -2408,13 +2408,13 @@ sb32 func_ovl2_800F8FFC(Vec3f *position)
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev <= vpdist_y)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_prev <= vpdist_y)
                 {
-                    s32 vertex_id1 = gMapVertexLinks->vertex_links[line_id].vertex1;
-                    s32 vertex_id2 = gMapVertexLinks->vertex_links[line_id].vertex2 - 1;
+                    s32 vertex_id1 = gMPVertexLinks->vertex_links[line_id].vertex1;
+                    s32 vertex_id2 = gMPVertexLinks->vertex_links[line_id].vertex2 - 1;
 
-                    s32 x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
-                    s32 x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.x;
+                    s32 x1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.x;
+                    s32 x2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.x;
 
                     if ((x1 <= vpdist_x && x2 >= vpdist_x) || (x2 <= vpdist_x && x1 >= vpdist_x))
                     {
@@ -2422,16 +2422,16 @@ sb32 func_ovl2_800F8FFC(Vec3f *position)
                         {
                             for (j = 0; j < vertex_id2; j++, vertex_id1++)
                             {
-                                x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
-                                x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
+                                x1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.x;
+                                x2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + 1]].pos.x;
 
-                                if (mpCollision_GetLineDistanceUD(vpdist_x, x1, gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y, x2, gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.y) < vpdist_y)
+                                if (mpCollision_GetLineDistanceUD(vpdist_x, x1, gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.y, x2, gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + 1]].pos.y) < vpdist_y)
                                 {
                                     return TRUE;
                                 }
                             }
                         }
-                        else if (mpCollision_GetLineDistanceUD(vpdist_x, x1, gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y, x2, gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.y) < vpdist_y)
+                        else if (mpCollision_GetLineDistanceUD(vpdist_x, x1, gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.y, x2, gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + 1]].pos.y) < vpdist_y)
                         {
                             return TRUE;
                         }
@@ -2457,12 +2457,12 @@ sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
     f32 gdist;
 
     line_project_pos = F32_MAX;
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ground];
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
@@ -2479,13 +2479,13 @@ sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev <= vpdist_y)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_prev <= vpdist_y)
                 {
-                    s32 vertex_id1 = gMapVertexLinks[line_id].vertex1;
-                    s32 vertex_id2 = gMapVertexLinks[line_id].vertex2 - 1;
+                    s32 vertex_id1 = gMPVertexLinks[line_id].vertex1;
+                    s32 vertex_id2 = gMPVertexLinks[line_id].vertex2 - 1;
 
-                    s32 x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
-                    s32 x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.x;
+                    s32 x1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.x;
+                    s32 x2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.x;
                     s32 y1;
                     s32 y2;
 
@@ -2495,8 +2495,8 @@ sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                         {
                             for (j = 0; j < vertex_id2; j++, vertex_id1++)
                             {
-                                x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
-                                x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
+                                x1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.x;
+                                x2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + 1]].pos.x;
 
                                 if ((x1 <= vpdist_x && x2 >= vpdist_x) || (x2 <= vpdist_x && x1 >= vpdist_x))
                                 {
@@ -2504,8 +2504,8 @@ sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                                 }
                             }
                         }
-                        y1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y;
-                        y2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.y;
+                        y1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.y;
+                        y2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + 1]].pos.y;
 
                         fpos = mpCollision_GetLineDistanceUD(vpdist_x, x1, y1, x2, y2);
 
@@ -2525,7 +2525,7 @@ sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                                 }
                                 if (stand_coll_flags != NULL)
                                 {
-                                    *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].vertex_flags;
+                                    *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].vertex_flags;
                                 }
                                 if (angle != NULL)
                                 {
@@ -2560,12 +2560,12 @@ sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
     f32 gdist;
 
     line_project_pos = F32_MAX;
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_Ceil];
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
@@ -2582,13 +2582,13 @@ sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next >= vpdist_y)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_next >= vpdist_y)
                 {
-                    s32 vertex_id1 = gMapVertexLinks[line_id].vertex1;
-                    s32 vertex_id2 = gMapVertexLinks[line_id].vertex2 - 1;
+                    s32 vertex_id1 = gMPVertexLinks[line_id].vertex1;
+                    s32 vertex_id2 = gMPVertexLinks[line_id].vertex2 - 1;
 
-                    s32 x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
-                    s32 x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.x;
+                    s32 x1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.x;
+                    s32 x2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.x;
                     s32 y1;
                     s32 y2;
 
@@ -2598,8 +2598,8 @@ sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                         {
                             for (j = 0; j < vertex_id2; j++, vertex_id1++)
                             {
-                                x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
-                                x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
+                                x1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.x;
+                                x2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + 1]].pos.x;
 
                                 if ((x1 <= vpdist_x && x2 >= vpdist_x) || (x2 <= vpdist_x && x1 >= vpdist_x))
                                 {
@@ -2607,8 +2607,8 @@ sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                                 }
                             }
                         }
-                        y1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y;
-                        y2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.y;
+                        y1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.y;
+                        y2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + 1]].pos.y;
 
                         fpos = mpCollision_GetLineDistanceUD(vpdist_x, x1, y1, x2, y2);
 
@@ -2628,7 +2628,7 @@ sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                                 }
                                 if (stand_coll_flags != NULL)
                                 {
-                                    *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].vertex_flags;
+                                    *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].vertex_flags;
                                 }
                                 if (angle != NULL)
                                 {
@@ -2663,12 +2663,12 @@ sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
     f32 gdist;
 
     line_project_pos = F32_MAX;
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_RWall];
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
@@ -2685,13 +2685,13 @@ sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_prev <= vpdist_x)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_prev <= vpdist_x)
                 {
-                    s32 vertex_id1 = gMapVertexLinks[line_id].vertex1;
-                    s32 vertex_id2 = gMapVertexLinks[line_id].vertex2 - 1;
+                    s32 vertex_id1 = gMPVertexLinks[line_id].vertex1;
+                    s32 vertex_id2 = gMPVertexLinks[line_id].vertex2 - 1;
 
-                    s32 y1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y;
-                    s32 y2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.y;
+                    s32 y1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.y;
+                    s32 y2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.y;
                     s32 x1;
                     s32 x2;
 
@@ -2701,8 +2701,8 @@ sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                         {
                             for (j = 0; j < vertex_id2; j++, vertex_id1++)
                             {
-                                y1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y;
-                                y2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.y;
+                                y1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.y;
+                                y2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + 1]].pos.y;
 
                                 if ((y1 <= vpdist_y && y2 >= vpdist_y) || (y2 <= vpdist_y && y1 >= vpdist_y))
                                 {
@@ -2710,8 +2710,8 @@ sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                                 }
                             }
                         }
-                        x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
-                        x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
+                        x1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.x;
+                        x2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + 1]].pos.x;
 
                         fpos = mpCollision_GetLineDistanceLR(vpdist_y, x1, y1, x2, y2);
 
@@ -2731,7 +2731,7 @@ sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                                 }
                                 if (stand_coll_flags != NULL)
                                 {
-                                    *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].vertex_flags;
+                                    *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].vertex_flags;
                                 }
                                 if (angle != NULL)
                                 {
@@ -2766,12 +2766,12 @@ sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
     f32 gdist;
 
     line_project_pos = F32_MAX;
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[mpCollision_LineType_LWall];
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((line_data->line_count != 0) && (room_dobj->user_data.s < mpCollision_Yakumono_Off))
         {
@@ -2788,13 +2788,13 @@ sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
             }
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                if (gMapVertexInfo->vertex_info[line_id].coll_pos_next >= vpdist_x)
+                if (gMPVertexInfo->vertex_info[line_id].coll_pos_next >= vpdist_x)
                 {
-                    s32 vertex_id1 = gMapVertexLinks[line_id].vertex1;
-                    s32 vertex_id2 = gMapVertexLinks[line_id].vertex2 - 1;
+                    s32 vertex_id1 = gMPVertexLinks[line_id].vertex1;
+                    s32 vertex_id2 = gMPVertexLinks[line_id].vertex2 - 1;
 
-                    s32 y1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y;
-                    s32 y2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.y;
+                    s32 y1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.y;
+                    s32 y2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + vertex_id2]].pos.y;
                     s32 x1;
                     s32 x2;
 
@@ -2804,8 +2804,8 @@ sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                         {
                             for (j = 0; j < vertex_id2; j++, vertex_id1++)
                             {
-                                y1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.y;
-                                y2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.y;
+                                y1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.y;
+                                y2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + 1]].pos.y;
 
                                 if ((y1 <= vpdist_y && y2 >= vpdist_y) || (y2 <= vpdist_y && y1 >= vpdist_y))
                                 {
@@ -2813,8 +2813,8 @@ sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                                 }
                             }
                         }
-                        x1 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].pos.x;
-                        x2 = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1 + 1]].pos.x;
+                        x1 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].pos.x;
+                        x2 = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1 + 1]].pos.x;
 
                         fpos = mpCollision_GetLineDistanceLR(vpdist_y, x1, y1, x2, y2);
 
@@ -2834,7 +2834,7 @@ sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                                 }
                                 if (stand_coll_flags != NULL)
                                 {
-                                    *stand_coll_flags = gMapVertexData->vpos[gMapVertexID->vertex_id[vertex_id1]].vertex_flags;
+                                    *stand_coll_flags = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex_id1]].vertex_flags;
                                 }
                                 if (angle != NULL)
                                 {
@@ -2868,7 +2868,7 @@ s32 mpCollision_GetVertexCountLineID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMPRooms->room_dobj[gMPVertexInfo->vertex_info[line_id].room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -2878,7 +2878,7 @@ s32 mpCollision_GetVertexCountLineID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    return gMapVertexLinks[line_id].vertex2;
+    return gMPVertexLinks[line_id].vertex2;
 }
 
 // 0x800F15E8
@@ -2894,7 +2894,7 @@ void mpCollision_GetVertexPositionID(s32 line_id, s32 vertex_id, Vec3f *pos)
             smCrashPrintGObjStatus();
         }
     }
-    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMPRooms->room_dobj[gMPVertexInfo->vertex_info[line_id].room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -2904,11 +2904,11 @@ void mpCollision_GetVertexPositionID(s32 line_id, s32 vertex_id, Vec3f *pos)
             smCrashPrintGObjStatus();
         }
     }
-    pos->x = gMapVertexData->vpos[gMapVertexID->vertex_id[gMapVertexLinks[line_id].vertex1 + vertex_id]].pos.x;
-    pos->y = gMapVertexData->vpos[gMapVertexID->vertex_id[gMapVertexLinks[line_id].vertex1 + vertex_id]].pos.y;
+    pos->x = gMPVertexData->vpos[gMPVertexID->vertex_id[gMPVertexLinks[line_id].vertex1 + vertex_id]].pos.x;
+    pos->y = gMPVertexData->vpos[gMPVertexID->vertex_id[gMPVertexLinks[line_id].vertex1 + vertex_id]].pos.y;
     pos->z = 0.0F;
 
-    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMPRooms->room_dobj[gMPVertexInfo->vertex_info[line_id].room_id];
 
     if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s != mpCollision_Yakumono_None))
     {
@@ -2931,9 +2931,9 @@ void mpCollision_GetSpeedLineID(s32 line_id, Vec3f *speed)
             smCrashPrintGObjStatus();
         }
     }
-    room_id = gMapVertexInfo->vertex_info[line_id].room_id;
+    room_id = gMPVertexInfo->vertex_info[line_id].room_id;
 
-    room_dobj = gMapRooms->room_dobj[room_id];
+    room_dobj = gMPRooms->room_dobj[room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -2943,7 +2943,7 @@ void mpCollision_GetSpeedLineID(s32 line_id, Vec3f *speed)
             smCrashPrintGObjStatus();
         }
     }
-    *speed = gMapDynamicCollisions[room_id];
+    *speed = gMPDynamicCollisions[room_id];
 }
 
 // 0x800FA8A4
@@ -2961,8 +2961,8 @@ s32 mpCollision_GetLineTypeID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    vertex_info = &gMapVertexInfo->vertex_info[line_id];
-    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMPVertexInfo->vertex_info[line_id];
+    room_dobj = gMPRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->user_data.s == mpCollision_Yakumono_Off)
     {
@@ -2989,8 +2989,8 @@ s32 mpCollision_GetEdgeUnderRLineID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    vertex_info = &gMapVertexInfo->vertex_info[line_id];
-    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMPVertexInfo->vertex_info[line_id];
+    room_dobj = gMPRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -3017,8 +3017,8 @@ s32 mpCollision_GetEdgeUnderLLineID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    vertex_info = &gMapVertexInfo->vertex_info[line_id];
-    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMPVertexInfo->vertex_info[line_id];
+    room_dobj = gMPRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -3045,8 +3045,8 @@ s32 mpCollision_GetEdgeUpperRLineID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    vertex_info = &gMapVertexInfo->vertex_info[line_id];
-    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMPVertexInfo->vertex_info[line_id];
+    room_dobj = gMPRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -3073,8 +3073,8 @@ s32 mpCollision_GetEdgeUpperLLineID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    vertex_info = &gMapVertexInfo->vertex_info[line_id];
-    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMPVertexInfo->vertex_info[line_id];
+    room_dobj = gMPRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -3101,8 +3101,8 @@ s32 mpCollision_GetEdgeRightULineID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    vertex_info = &gMapVertexInfo->vertex_info[line_id];
-    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMPVertexInfo->vertex_info[line_id];
+    room_dobj = gMPRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -3129,8 +3129,8 @@ s32 mpCollision_GetEdgeRightDLineID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    vertex_info = &gMapVertexInfo->vertex_info[line_id];
-    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMPVertexInfo->vertex_info[line_id];
+    room_dobj = gMPRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -3157,8 +3157,8 @@ s32 mpCollision_GetEdgeLeftULineID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    vertex_info = &gMapVertexInfo->vertex_info[line_id];
-    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMPVertexInfo->vertex_info[line_id];
+    room_dobj = gMPRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -3185,8 +3185,8 @@ s32 mpCollision_GetEdgeLeftDLineID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    vertex_info = &gMapVertexInfo->vertex_info[line_id];
-    room_dobj = gMapRooms->room_dobj[vertex_info->room_id];
+    vertex_info = &gMPVertexInfo->vertex_info[line_id];
+    room_dobj = gMPRooms->room_dobj[vertex_info->room_id];
 
     if (room_dobj->user_data.s >= mpCollision_Yakumono_Off)
     {
@@ -3202,7 +3202,7 @@ s32 mpCollision_GetEdgeLeftDLineID(s32 line_id)
 // 0x800FAF64
 void mpCollision_GetPlayerMPointPosition(s32 player, Vec3f *pos)
 {
-    if (!gMapGeometry->mpoint_count)
+    if (!gMPGeometry->mpoint_count)
     {
         pos->x = pos->y = pos->z = 0.0F;
     }
@@ -3210,12 +3210,12 @@ void mpCollision_GetPlayerMPointPosition(s32 player, Vec3f *pos)
     {
         s32 i, index = player;
 
-        for (i = 0; i < gMapGeometry->mpoint_count; i++)
+        for (i = 0; i < gMPGeometry->mpoint_count; i++)
         {
-            if (index == gMapPoints->mpoints[i].mpoint_kind)
+            if (index == gMPPoints->mpoints[i].mpoint_kind)
             {
-                pos->x = gMapPoints->mpoints[i].pos.x;
-                pos->y = gMapPoints->mpoints[i].pos.y;
+                pos->x = gMPPoints->mpoints[i].pos.x;
+                pos->y = gMPPoints->mpoints[i].pos.y;
                 pos->z = 0;
 
                 break;
@@ -3227,7 +3227,7 @@ void mpCollision_GetPlayerMPointPosition(s32 player, Vec3f *pos)
 // 0x800FB010
 void mpCollision_AllocVertexInfo(void)
 {
-    gMapVertexInfo = gsMemoryAlloc(gMapLineCount * sizeof(mpVertexInfo), 0x8);
+    gMPVertexInfo = gsMemoryAlloc(gMPLineCount * sizeof(mpVertexInfo), 0x8);
 }
 
 // 0x800FB04C
@@ -3246,9 +3246,9 @@ void func_ovl2_800FB04C(void)
     s32 vp2;
     s32 index;
 
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = l = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = l = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[0];
         room_id = line_info->room_id;
@@ -3257,17 +3257,17 @@ void func_ovl2_800FB04C(void)
         {
             for (index = line_data[j].group_id, line_id = 0; line_id < line_data[j].line_count; line_id++, index++)
             {
-                mpVertexLinks *vlinks = &gMapVertexLinks[index];
+                mpVertexLinks *vlinks = &gMPVertexLinks[index];
 
-                vfar = vnear = (j < ARRAY_COUNT(line_info->line_data) / 2) ? gMapVertexData->vpos[gMapVertexID->vertex_id[vlinks->vertex1]].pos.y:
-                                                                             gMapVertexData->vpos[gMapVertexID->vertex_id[vlinks->vertex1]].pos.x;
+                vfar = vnear = (j < ARRAY_COUNT(line_info->line_data) / 2) ? gMPVertexData->vpos[gMPVertexID->vertex_id[vlinks->vertex1]].pos.y:
+                                                                             gMPVertexData->vpos[gMPVertexID->vertex_id[vlinks->vertex1]].pos.x;
 
                 for (k = vlinks->vertex1 + 1; k < (vlinks->vertex1 + vlinks->vertex2); k++)
                 {
-                    // There are various ways to fake-match this function (e.g. do {} while (0), if(1), if(!gMapVertexData->vpos) right where this comment is)...
+                    // There are various ways to fake-match this function (e.g. do {} while (0), if(1), if(!gMPVertexData->vpos) right where this comment is)...
 
-                    vp2 = (j < ARRAY_COUNT(line_info->line_data) / 2) ? gMapVertexData->vpos[gMapVertexID->vertex_id[k]].pos.y:
-                                                                        gMapVertexData->vpos[gMapVertexID->vertex_id[k]].pos.x;
+                    vp2 = (j < ARRAY_COUNT(line_info->line_data) / 2) ? gMPVertexData->vpos[gMPVertexID->vertex_id[k]].pos.y:
+                                                                        gMPVertexData->vpos[gMPVertexID->vertex_id[k]].pos.x;
 
                     if (vp2 >= vfar)
                     {
@@ -3279,9 +3279,9 @@ void func_ovl2_800FB04C(void)
                     }
                     else continue; // ...but this seems to be the most realistic solution for now.
                 }
-                gMapVertexInfo->vertex_info[l].coll_pos_next = vfar;
-                gMapVertexInfo->vertex_info[l].coll_pos_prev = vnear;
-                gMapVertexInfo->vertex_info[l].room_id = room_id;
+                gMPVertexInfo->vertex_info[l].coll_pos_next = vfar;
+                gMPVertexInfo->vertex_info[l].coll_pos_prev = vnear;
+                gMPVertexInfo->vertex_info[l].room_id = room_id;
 
                 l++;
             }
@@ -3294,11 +3294,11 @@ void mpCollision_InitLineTypesAll(void)
 {
     s32 line_type, line_id;
 
-    for (line_type = 0; line_type < ARRAY_COUNT(gMapLineTypeGroups); line_type++)
+    for (line_type = 0; line_type < ARRAY_COUNT(gMPLineTypeGroups); line_type++)
     {
-        for (line_id = 0; line_id < gMapLineTypeGroups[line_type].line_count; line_id++)
+        for (line_id = 0; line_id < gMPLineTypeGroups[line_type].line_count; line_id++)
         {
-            gMapVertexInfo->vertex_info[gMapLineTypeGroups[line_type].line_id[line_id]].line_type = line_type;
+            gMPVertexInfo->vertex_info[gMPLineTypeGroups[line_type].line_id[line_id]].line_type = line_type;
         }
     }
 }
@@ -3316,45 +3316,45 @@ void func_ovl2_800FB31C(void)
     s32 vid;
     s32 vtemp1, vtemp2;
 
-    for (i = 0; i < gMapLineCount; i++)
+    for (i = 0; i < gMPLineCount; i++)
     {
         line_next = -1;
         line_prev = -1;
 
         unk_bool = FALSE;
 
-        vtemp1 = gMapVertexLinks[i].vertex1;
+        vtemp1 = gMPVertexLinks[i].vertex1;
 
-        vertex_id1 = gMapVertexID->vertex_id[vtemp1];
-        vertex_id2 = gMapVertexID->vertex_id[vtemp1 + gMapVertexLinks[i].vertex2 - 1];
+        vertex_id1 = gMPVertexID->vertex_id[vtemp1];
+        vertex_id2 = gMPVertexID->vertex_id[vtemp1 + gMPVertexLinks[i].vertex2 - 1];
 
-        for (line_id = 0; line_id < gMapLineCount; line_id++)
+        for (line_id = 0; line_id < gMPLineCount; line_id++)
         {
             if (i != line_id)
             {
-                vtemp2 = gMapVertexLinks[line_id].vertex1;
+                vtemp2 = gMPVertexLinks[line_id].vertex1;
 
-                vid = vtemp2 + gMapVertexLinks[line_id].vertex2 - 1;
+                vid = vtemp2 + gMPVertexLinks[line_id].vertex2 - 1;
 
-                if ((vertex_id1 == gMapVertexID->vertex_id[vtemp2]) || (vertex_id1 == gMapVertexID->vertex_id[vid]))
+                if ((vertex_id1 == gMPVertexID->vertex_id[vtemp2]) || (vertex_id1 == gMPVertexID->vertex_id[vid]))
                 {
                     line_prev = line_id;
                 }
-                if ((vertex_id2 == gMapVertexID->vertex_id[vtemp2]) || (vertex_id2 == gMapVertexID->vertex_id[vid]))
+                if ((vertex_id2 == gMPVertexID->vertex_id[vtemp2]) || (vertex_id2 == gMPVertexID->vertex_id[vid]))
                 {
                     line_next = line_id;
                 }
             }
             continue;
         }
-        switch (gMapVertexInfo->vertex_info[i].line_type)
+        switch (gMPVertexInfo->vertex_info[i].line_type)
         {
         default:
             break;
 
         case mpCollision_LineType_Ground:
         case mpCollision_LineType_Ceil:
-            if (gMapVertexData->vpos[vertex_id2].pos.x < gMapVertexData->vpos[vertex_id1].pos.x)
+            if (gMPVertexData->vpos[vertex_id2].pos.x < gMPVertexData->vpos[vertex_id1].pos.x)
             {
                 unk_bool = TRUE;
             }
@@ -3362,7 +3362,7 @@ void func_ovl2_800FB31C(void)
 
         case mpCollision_LineType_RWall:
         case mpCollision_LineType_LWall:
-            if (gMapVertexData->vpos[vertex_id2].pos.y < gMapVertexData->vpos[vertex_id1].pos.y)
+            if (gMPVertexData->vpos[vertex_id2].pos.y < gMPVertexData->vpos[vertex_id1].pos.y)
             {
                 unk_bool = TRUE;
             }
@@ -3370,13 +3370,13 @@ void func_ovl2_800FB31C(void)
         }
         if (unk_bool != FALSE)
         {
-            gMapVertexInfo->vertex_info[i].edge_psign_id = line_prev;
-            gMapVertexInfo->vertex_info[i].edge_nsign_id = line_next;
+            gMPVertexInfo->vertex_info[i].edge_psign_id = line_prev;
+            gMPVertexInfo->vertex_info[i].edge_nsign_id = line_next;
         }
         else
         {
-            gMapVertexInfo->vertex_info[i].edge_psign_id = line_next;
-            gMapVertexInfo->vertex_info[i].edge_nsign_id = line_prev;
+            gMPVertexInfo->vertex_info[i].edge_psign_id = line_next;
+            gMPVertexInfo->vertex_info[i].edge_nsign_id = line_prev;
         }
         continue;
     }
@@ -3400,14 +3400,14 @@ void mpCollision_AllocMapRooms(DObjDesc *gr_room)
     {
         gr_room++;
     }
-    gMapRooms = gsMemoryAlloc(room_count * sizeof(gMapRooms), 0x4);
-    gMapDynamicCollisions = gsMemoryAlloc(room_count * sizeof(Vec3f), 0x4);
+    gMPRooms = gsMemoryAlloc(room_count * sizeof(gMPRooms), 0x4);
+    gMPDynamicCollisions = gsMemoryAlloc(room_count * sizeof(Vec3f), 0x4);
 
     for (i = 0; i < room_count; i++)
     {
-        gMapDynamicCollisions[i].x = gMapDynamicCollisions[i].y = gMapDynamicCollisions[i].z = 0.0F;
+        gMPDynamicCollisions[i].x = gMPDynamicCollisions[i].y = gMPDynamicCollisions[i].z = 0.0F;
     }
-    gMapRoomCount = room_count;
+    gMPRoomCount = room_count;
 }
 
 // 0x800FB808
@@ -3421,13 +3421,13 @@ void func_ovl2_800FB808(void)
     mpVertexLinks *vlinks;
     s32 i, j, k, l;
 
-    dir = gMapEdgeBounds.d1;
+    dir = gMPEdgeBounds.d1;
 
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((room_dobj->actor.p != NULL) || (room_dobj->user_data.s < mpCollision_Yakumono_Off && room_dobj->user_data.s != mpCollision_Yakumono_None))
         {
@@ -3439,12 +3439,12 @@ void func_ovl2_800FB808(void)
             {
                 for (index = line_data[j].group_id, k = 0; k < line_data[j].line_count; k++, index++)
                 {
-                    vlinks = &gMapVertexLinks[index];
+                    vlinks = &gMPVertexLinks[index];
 
                     for (l = vlinks->vertex1; l < (vlinks->vertex1 + vlinks->vertex2); l++)
                     {
-                        s32 vx = gMapVertexData->vpos[gMapVertexID->vertex_id[l]].pos.x + x;
-                        s32 vy = gMapVertexData->vpos[gMapVertexID->vertex_id[l]].pos.y + y;
+                        s32 vx = gMPVertexData->vpos[gMPVertexID->vertex_id[l]].pos.x + x;
+                        s32 vy = gMPVertexData->vpos[gMPVertexID->vertex_id[l]].pos.y + y;
 
                         if (dir.top < vy)
                         {
@@ -3467,16 +3467,16 @@ void func_ovl2_800FB808(void)
             }
         }
     }
-    gMapEdgeBounds.d2 = dir;
+    gMPEdgeBounds.d2 = dir;
 }
 
 // 0x800FBA84
 void func_ovl2_800FBA84(void)
 {
-    gMapEdgeBounds.d3.top      =   gMapEdgeBounds.d2.top      -   gMapEdgeBounds.d0.top;
-    gMapEdgeBounds.d3.bottom   =   gMapEdgeBounds.d2.bottom   -   gMapEdgeBounds.d0.bottom;
-    gMapEdgeBounds.d3.right    =   gMapEdgeBounds.d2.right    -   gMapEdgeBounds.d0.right;
-    gMapEdgeBounds.d3.left     =   gMapEdgeBounds.d2.left     -   gMapEdgeBounds.d0.left;
+    gMPEdgeBounds.d3.top      =   gMPEdgeBounds.d2.top      -   gMPEdgeBounds.d0.top;
+    gMPEdgeBounds.d3.bottom   =   gMPEdgeBounds.d2.bottom   -   gMPEdgeBounds.d0.bottom;
+    gMPEdgeBounds.d3.right    =   gMPEdgeBounds.d2.right    -   gMPEdgeBounds.d0.right;
+    gMPEdgeBounds.d3.left     =   gMPEdgeBounds.d2.left     -   gMPEdgeBounds.d0.left;
 }
 
 // 0x800FBAD0
@@ -3494,7 +3494,7 @@ void jtgt_ovl2_800FBAD0(GObj *ground_gobj)
 
     while (dobj != NULL)
     {
-        if (dobj == gMapRooms->room_info[i])
+        if (dobj == gMPRooms->room_info[i])
         {
             if ((dobj->user_data.s != mpCollision_Yakumono_On) && (dobj->user_data.s != mpCollision_Yakumono_Off))
             {
@@ -3506,9 +3506,9 @@ void jtgt_ovl2_800FBAD0(GObj *ground_gobj)
 
                 func_8000CCBC(dobj);
 
-                gMapDynamicCollisions[i].x = dobj->translate.vec.f.x - translate.x;
-                gMapDynamicCollisions[i].y = dobj->translate.vec.f.y - translate.y;
-                gMapDynamicCollisions[i].z = dobj->translate.vec.f.z - translate.z;
+                gMPDynamicCollisions[i].x = dobj->translate.vec.f.x - translate.x;
+                gMPDynamicCollisions[i].y = dobj->translate.vec.f.y - translate.y;
+                gMPDynamicCollisions[i].z = dobj->translate.vec.f.z - translate.z;
 
                 if (temp_s2 == 0)
                 {
@@ -3522,7 +3522,7 @@ void jtgt_ovl2_800FBAD0(GObj *ground_gobj)
                     dobj->user_data.s = 2;
                 }
             }
-            if (i < (gMapRoomCount - 1))
+            if (i < (gMPRoomCount - 1))
             {
                 i++;
             }
@@ -3575,13 +3575,13 @@ void jtgt_ovl2_800FBAD0(GObj *ground_gobj)
     func_ovl2_800FB808();
     func_ovl2_800FBA84();
 
-    gMapCollUpdateFrame++;
+    gMPCollUpdateFrame++;
 }
 
 // 0x800FBCF8
 void mpCollision_AdvanceUpdateFrame(GObj *ground_gobj)
 {
-    gMapCollUpdateFrame++;
+    gMPCollUpdateFrame++;
 }
 
 // 0x800FBD14
@@ -3601,7 +3601,7 @@ void func_ovl2_800FBD14(void)
     s32 i, j, k, l;
     s32 unused[2];
 
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
     dir1.top = -65536.0F;
     dir1.right = -65536.0F;
@@ -3612,9 +3612,9 @@ void func_ovl2_800FBD14(void)
     dir1.left = 65536.0F;
     dir1.bottom = 65536.0F;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
-        room_dobj = gMapRooms->room_dobj[line_info->room_id];
+        room_dobj = gMPRooms->room_dobj[line_info->room_id];
 
         if ((room_dobj->user_data.s != mpCollision_Yakumono_On) && (room_dobj->user_data.s != mpCollision_Yakumono_Off))
         {
@@ -3634,12 +3634,12 @@ void func_ovl2_800FBD14(void)
             {
                 for (index = line_data[j].group_id, k = 0; k < line_data[j].line_count; k++, index++)
                 {
-                    vlinks = &gMapVertexLinks[index];
+                    vlinks = &gMPVertexLinks[index];
 
                     for (l = vlinks->vertex1; l < (vlinks->vertex1 + vlinks->vertex2); l++)
                     {
-                        vx = gMapVertexData->vpos[gMapVertexID->vertex_id[l]].pos.x;
-                        vy = gMapVertexData->vpos[gMapVertexID->vertex_id[l]].pos.y;
+                        vx = gMPVertexData->vpos[gMPVertexID->vertex_id[l]].pos.x;
+                        vy = gMPVertexData->vpos[gMPVertexID->vertex_id[l]].pos.y;
 
                         if (room_dobj->actor.p == NULL)
                         {
@@ -3686,10 +3686,10 @@ void func_ovl2_800FBD14(void)
     }
     // Slight WARNING: not sure about this. The member names in the struct don't seem to correspond to their suggested purpose...
     // ...or I just don't understand what is going on. Or both.
-    gMapEdgeBounds.d0 = dir1;
-    gMapEdgeBounds.d1 = dir2;
-    gMapEdgeBounds.d2 = dir1;
-    gMapEdgeBounds.d3.top = gMapEdgeBounds.d3.bottom = gMapEdgeBounds.d3.right = gMapEdgeBounds.d3.left = 0.0F;
+    gMPEdgeBounds.d0 = dir1;
+    gMPEdgeBounds.d1 = dir2;
+    gMPEdgeBounds.d2 = dir1;
+    gMPEdgeBounds.d3.top = gMPEdgeBounds.d3.bottom = gMPEdgeBounds.d3.right = gMPEdgeBounds.d3.left = 0.0F;
 }
 
 // 0x800FC09C
@@ -3705,9 +3705,9 @@ s32 mpCollision_AllocLinesGetCountTotal(void)
     {
         line_count[i] = 0;
     }
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[0];
 
@@ -3716,15 +3716,15 @@ s32 mpCollision_AllocLinesGetCountTotal(void)
             line_count[j] += line_data->line_count;
         }
     }
-    for (i = 0, line_total = 0; i < (ARRAY_COUNT(line_count) + ARRAY_COUNT(gMapLineTypeGroups)) / 2; i++)
+    for (i = 0, line_total = 0; i < (ARRAY_COUNT(line_count) + ARRAY_COUNT(gMPLineTypeGroups)) / 2; i++)
     {
-        gMapLineTypeGroups[i].line_count = line_count[i];
+        gMPLineTypeGroups[i].line_count = line_count[i];
 
         line_total += line_count[i];
 
         if (line_count[i] != 0)
         {
-            gMapLineTypeGroups[i].line_id = (u16*) gsMemoryAlloc(line_count[i] * sizeof(*gMapLineTypeGroups[i].line_id), sizeof(*gMapLineTypeGroups[i].line_id));
+            gMPLineTypeGroups[i].line_id = (u16*) gsMemoryAlloc(line_count[i] * sizeof(*gMPLineTypeGroups[i].line_id), sizeof(*gMPLineTypeGroups[i].line_id));
         }
     }
     return line_total;
@@ -3743,9 +3743,9 @@ void mpCollision_InitLineIDsAll(void)
     {
         line_count[i] = 0;
     }
-    line_info = gMapGeometry->line_info;
+    line_info = gMPGeometry->line_info;
 
-    for (i = 0; i < gMapGeometry->room_count; i++, line_info++)
+    for (i = 0; i < gMPGeometry->room_count; i++, line_info++)
     {
         line_data = &line_info->line_data[0];
 
@@ -3753,7 +3753,7 @@ void mpCollision_InitLineIDsAll(void)
         {
             for (line_id = line_data->group_id; line_id < (line_data->group_id + line_data->line_count); line_id++)
             {
-                gMapLineTypeGroups[j].line_id[line_count[j]] = line_id;
+                gMPLineTypeGroups[j].line_id[line_count[j]] = line_id;
                 line_count[j]++;
             }
         }
@@ -3776,8 +3776,8 @@ void mpCollision_InitMapCollisionData(void)
                                                                                                                    + D_ovl2_8012C520[gBattleState->gr_kind].offset
     );
 
-    gMapGeometry = gGroundInfo->map_geometry;
-    geometry_info = gMapGeometry;
+    gMPGeometry = gGroundInfo->map_geometry;
+    geometry_info = gMPGeometry;
 
     if (geometry_info == NULL)
     {
@@ -3787,25 +3787,25 @@ void mpCollision_InitMapCollisionData(void)
             smCrashPrintGObjStatus();
         }
     }
-    gMapVertexData  = geometry_info->vertex_data;
-    gMapVertexID    = geometry_info->vertex_id;
-    gMapVertexLinks = geometry_info->vertex_links;
-    gMapPoints      = geometry_info->mpoints;
+    gMPVertexData  = geometry_info->vertex_data;
+    gMPVertexID    = geometry_info->vertex_id;
+    gMPVertexLinks = geometry_info->vertex_links;
+    gMPPoints      = geometry_info->mpoints;
 
-    gMapLineCount = mpCollision_AllocLinesGetCountTotal();
+    gMPLineCount = mpCollision_AllocLinesGetCountTotal();
 
     mpCollision_InitLineIDsAll();
     mpCollision_AllocVertexInfo();
     func_ovl2_800FB554();
     mpCollision_AllocMapRooms(gGroundInfo->gr_desc[1].dobj_desc);
 
-    gMapLightColor.r = 0xFF;
-    gMapLightColor.g = 0xFF;
-    gMapLightColor.b = 0xFF;
-    gMapLightColor.a = 0xFF;
+    gMPLightColor.r = 0xFF;
+    gMPLightColor.g = 0xFF;
+    gMPLightColor.b = 0xFF;
+    gMPLightColor.a = 0xFF;
 
-    gMapLightAngleX = gGroundInfo->light_angle.x;
-    gMapLightAngleY = gGroundInfo->light_angle.y;
+    gMPLightAngleX = gGroundInfo->light_angle.x;
+    gMPLightAngleY = gGroundInfo->light_angle.y;
 }
 
 // 0x800FC3E8
@@ -3832,9 +3832,9 @@ void mpCollision_ClearYakumonoAll(void)
 
     for (i = 0; dobj_desc->index != 0x12; i++, dobj_desc++)
     {
-        gMapRooms->room_dobj[i]->user_data.s = mpCollision_Yakumono_None;
+        gMPRooms->room_dobj[i]->user_data.s = mpCollision_Yakumono_None;
     }
-    gMapCollUpdateFrame = 0;
+    gMPCollUpdateFrame = 0;
 }
 
 // 0x800FC4A8
@@ -3850,11 +3850,11 @@ void mpCollision_SetYakumonoPosID(s32 line_id, Vec3f *yakumono_pos)
             smCrashPrintGObjStatus();
         }
     }
-    room_dobj = gMapRooms->room_dobj[line_id];
+    room_dobj = gMPRooms->room_dobj[line_id];
 
-    gMapDynamicCollisions[line_id].x = yakumono_pos->x - room_dobj->translate.vec.f.x;
-    gMapDynamicCollisions[line_id].y = yakumono_pos->y - room_dobj->translate.vec.f.y;
-    gMapDynamicCollisions[line_id].z = yakumono_pos->z - room_dobj->translate.vec.f.z;
+    gMPDynamicCollisions[line_id].x = yakumono_pos->x - room_dobj->translate.vec.f.x;
+    gMPDynamicCollisions[line_id].y = yakumono_pos->y - room_dobj->translate.vec.f.y;
+    gMPDynamicCollisions[line_id].z = yakumono_pos->z - room_dobj->translate.vec.f.z;
 
     room_dobj->translate.vec.f.x = yakumono_pos->x;
     room_dobj->translate.vec.f.y = yakumono_pos->y;
@@ -3872,7 +3872,7 @@ void mpCollision_SetYakumonoOnID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    gMapRooms->room_dobj[line_id]->user_data.s = mpCollision_Yakumono_On;
+    gMPRooms->room_dobj[line_id]->user_data.s = mpCollision_Yakumono_On;
 }
 
 // 0x800FC604
@@ -3886,7 +3886,7 @@ void mpCollision_SetYakumonoOffID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    gMapRooms->room_dobj[line_id]->user_data.s = mpCollision_Yakumono_Off;
+    gMPRooms->room_dobj[line_id]->user_data.s = mpCollision_Yakumono_Off;
 }
 
 // 0x800FC67C
@@ -3904,7 +3904,7 @@ sb32 mpCollision_CheckExistLineID(s32 line_id)
     {
         return FALSE;
     }
-    if (gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id]->user_data.s < mpCollision_Yakumono_Off)
+    if (gMPRooms->room_dobj[gMPVertexInfo->vertex_info[line_id].room_id]->user_data.s < mpCollision_Yakumono_Off)
     {
         return TRUE;
     }
@@ -3922,7 +3922,7 @@ s32 mpCollision_SetDObjNoID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    return gMapVertexInfo->vertex_info[line_id].room_id;
+    return gMPVertexInfo->vertex_info[line_id].room_id;
 }
 
 // 0x800FC7A4
@@ -3930,13 +3930,13 @@ s32 mpCollision_GetMPointCountKind(s32 mpoint_kind)
 {
     s32 i, count;
 
-    if (!gMapGeometry->mpoint_count)
+    if (!gMPGeometry->mpoint_count)
     {
         return 0;
     }
-    else for (i = count = 0; i < gMapGeometry->mpoint_count; i++)
+    else for (i = count = 0; i < gMPGeometry->mpoint_count; i++)
     {
-        if (mpoint_kind == gMapPoints->mpoints[i].mpoint_kind)
+        if (mpoint_kind == gMPPoints->mpoints[i].mpoint_kind)
         {
             count++;
         }
@@ -3949,11 +3949,11 @@ void mpCollision_GetMPointIDsKind(s32 mpoint_kind, s32 *mpoints)
 {
     s32 i, count;
 
-    if (gMapGeometry->mpoint_count)
+    if (gMPGeometry->mpoint_count)
     {
-        for (i = count = 0; i < gMapGeometry->mpoint_count; i++)
+        for (i = count = 0; i < gMPGeometry->mpoint_count; i++)
         {
-            if (mpoint_kind == gMapPoints->mpoints[i].mpoint_kind)
+            if (mpoint_kind == gMPPoints->mpoints[i].mpoint_kind)
             {
                 mpoints[count] = i;
 
@@ -3966,15 +3966,15 @@ void mpCollision_GetMPointIDsKind(s32 mpoint_kind, s32 *mpoints)
 // 0x800FC894
 void mpCollision_GetMPointPositionID(s32 mpoint_kind, Vec3f *pos)
 {
-    pos->x = gMapPoints->mpoints[mpoint_kind].pos.x;
-    pos->y = gMapPoints->mpoints[mpoint_kind].pos.y;
+    pos->x = gMPPoints->mpoints[mpoint_kind].pos.x;
+    pos->y = gMPPoints->mpoints[mpoint_kind].pos.y;
     pos->z = 0.0F;
 }
 
 // 0x800FC8EC
 s32 mpCollision_GetLineCountType(s32 line_type)
 {
-    return gMapLineTypeGroups[line_type].line_count;
+    return gMPLineTypeGroups[line_type].line_count;
 }
 
 // 0x800FC900
@@ -3984,16 +3984,16 @@ void mpCollision_GetLineIDsTypeCount(s32 type, s32 count, s32 *line_ids)
 
     for (i = 0; i < count; i++)
     {
-        line_ids[i] = gMapLineTypeGroups[type].line_id[i];
+        line_ids[i] = gMPLineTypeGroups[type].line_id[i];
     }
 }
 
 // 0x800FC9C8
 u8 mpCollision_SetLightColorGetAlpha(Gfx **display_list)
 {
-    gDPSetEnvColor(display_list[0]++, gMapLightColor.r, gMapLightColor.g, gMapLightColor.b, gMapLightColor.a);
+    gDPSetEnvColor(display_list[0]++, gMPLightColor.r, gMPLightColor.g, gMPLightColor.b, gMPLightColor.a);
 
-    return gMapLightColor.a;
+    return gMPLightColor.a;
 }
 
 // 0x800FCA18
@@ -4009,7 +4009,7 @@ sb32 mpCollision_CheckExistPlatformLineID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    room_dobj = gMapRooms->room_dobj[gMapVertexInfo->vertex_info[line_id].room_id];
+    room_dobj = gMPRooms->room_dobj[gMPVertexInfo->vertex_info[line_id].room_id];
 
     if ((room_dobj->user_data.s != mpCollision_Yakumono_None) || (room_dobj->actor.p != NULL))
     {
@@ -4029,5 +4029,5 @@ u16 mpCollision_GetVertexFlagsLineID(s32 line_id)
             smCrashPrintGObjStatus();
         }
     }
-    return gMapVertexData->vpos[gMapVertexID->vertex_id[gMapVertexLinks[line_id].vertex1]].vertex_flags;
+    return gMPVertexData->vpos[gMPVertexID->vertex_id[gMPVertexLinks[line_id].vertex1]].vertex_flags;
 }

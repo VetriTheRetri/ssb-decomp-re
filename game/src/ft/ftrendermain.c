@@ -104,9 +104,9 @@ void func_ovl2_800F1020(ftStruct *fp)
 
         alpha = (((base_alpha - add_alpha) / (fp->afterimage.render_state - 1)) * i) + add_alpha;
 
-        p_vtx->v.ob[0] = (afterimage->unk_afid_0x0 + (afterimage->vec.x * var_f20));
-        p_vtx->v.ob[1] = (afterimage->unk_afid_0x2 + (afterimage->vec.y * var_f20));
-        p_vtx->v.ob[2] = (afterimage->unk_afid_0x4 + (afterimage->vec.z * var_f20));
+        p_vtx->v.ob[0] = (afterimage->translate_x + (afterimage->vec.x * var_f20));
+        p_vtx->v.ob[1] = (afterimage->translate_y + (afterimage->vec.y * var_f20));
+        p_vtx->v.ob[2] = (afterimage->translate_z + (afterimage->vec.z * var_f20));
 
         p_vtx->v.flag = 0;
 
@@ -119,9 +119,9 @@ void func_ovl2_800F1020(ftStruct *fp)
 
         p_vtx = (gGraphicsHeap.ptr = (Vtx*)gGraphicsHeap.ptr + 1);
 
-        p_vtx->v.ob[0] = (afterimage->unk_afid_0x0 + (afterimage->vec.x * var_f22));
-        p_vtx->v.ob[1] = (afterimage->unk_afid_0x2 + (afterimage->vec.y * var_f22));
-        p_vtx->v.ob[2] = (afterimage->unk_afid_0x4 + (afterimage->vec.z * var_f22));
+        p_vtx->v.ob[0] = (afterimage->translate_x + (afterimage->vec.x * var_f22));
+        p_vtx->v.ob[1] = (afterimage->translate_y + (afterimage->vec.y * var_f22));
+        p_vtx->v.ob[2] = (afterimage->translate_z + (afterimage->vec.z * var_f22));
 
         p_vtx->v.flag = 0;
 
@@ -162,15 +162,15 @@ void func_ovl2_800F1020(ftStruct *fp)
 
                     scale = 1.0F / (target_angle);
 
-                    n_ai_x = afterimage->unk_afid_0x0;
-                    n_ai_y = afterimage->unk_afid_0x2;
-                    n_ai_z = afterimage->unk_afid_0x4;
+                    n_ai_x = afterimage->translate_x;
+                    n_ai_y = afterimage->translate_y;
+                    n_ai_z = afterimage->translate_z;
 
                     f_angle_diff *= scale;
 
-                    vtx_x = ((next_afterimage->unk_afid_0x0 - n_ai_x) * scale);
-                    vtx_y = ((next_afterimage->unk_afid_0x2 - n_ai_y) * scale);
-                    vtx_z = ((next_afterimage->unk_afid_0x4 - n_ai_z) * scale);
+                    vtx_x = ((next_afterimage->translate_x - n_ai_x) * scale);
+                    vtx_y = ((next_afterimage->translate_y - n_ai_y) * scale);
+                    vtx_z = ((next_afterimage->translate_z - n_ai_z) * scale);
 
                     spAC = afterimage->vec;
 
@@ -360,7 +360,7 @@ void func_ovl2_800F1C08(u8 flags, ftStruct *fp)
 // 0x800F1D44
 void func_ovl2_800F1D44(ftStruct *fp, DObj *dobj, ftParts *unk_dobjtrans)
 {
-    DObj *root_dobj = DObjGetStruct(unk_dobjtrans->unk_gobj);
+    DObj *root_dobj = DObjGetStruct(unk_dobjtrans->ftparts_gobj);
 
     switch (unk_dobjtrans->unk_0xC & 0xF)
     {
@@ -410,7 +410,7 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
             case 0:
                 sp58 = odRenderDObjMain(gDisplayListHead, dobj);
 
-                if ((unk_dobjtrans != NULL) && (unk_dobjtrans->unk_gobj != NULL) && (fp->ft_kind == Ft_Kind_Purin))
+                if ((unk_dobjtrans != NULL) && (unk_dobjtrans->ftparts_gobj != NULL) && (fp->ft_kind == Ft_Kind_Purin))
                 {
                     func_ovl2_800F1D44(fp, dobj, unk_dobjtrans);
                 }
@@ -448,12 +448,12 @@ void ftRender_DisplayFighterAccessory(DObj *dobj)
         {
             sp58 = odRenderDObjMain(gDisplayListHead, dobj);
 
-            if ((unk_dobjtrans != NULL) && (unk_dobjtrans->unk_gobj != NULL) && (fp->ft_kind == Ft_Kind_Purin))
+            if ((unk_dobjtrans != NULL) && (unk_dobjtrans->ftparts_gobj != NULL) && (fp->ft_kind == Ft_Kind_Purin))
             {
                 func_ovl2_800F1D44(fp, dobj, unk_dobjtrans);
             }
         }
-        if ((unk_dobjtrans != NULL) && (unk_dobjtrans->unk_gobj != NULL) && (fp->ft_kind == Ft_Kind_Pikachu))
+        if ((unk_dobjtrans != NULL) && (unk_dobjtrans->ftparts_gobj != NULL) && (fp->ft_kind == Ft_Kind_Pikachu))
         {
             func_ovl2_800F1D44(fp, dobj, unk_dobjtrans);
         }
@@ -886,7 +886,7 @@ void func_ovl2_800F293C(GObj *fighter_gobj)
 
         if (fp->status_info.pl_kind != Pl_Kind_Demo)
         {
-            ftRender_Lights_DisplayLightReflect(gDisplayListHead, gMapLightAngleX, gMapLightAngleY);
+            ftRender_Lights_DisplayLightReflect(gDisplayListHead, gMPLightAngleX, gMPLightAngleY);
         }
         else ftRender_Lights_DisplayLightReflect(gDisplayListHead, func_ovl1_8039051C(), func_ovl1_80390528());
 

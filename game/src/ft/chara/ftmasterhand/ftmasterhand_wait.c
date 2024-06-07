@@ -272,7 +272,7 @@ void ftMasterHand_Wait_SetStatus(GObj *fighter_gobj)
     Vec3f pos;
     s32 ground_line_id;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Wait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_MasterHand_Wait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp = ftGetStruct(fighter_gobj);
 
@@ -292,11 +292,11 @@ void ftMasterHand_Wait_SetStatus(GObj *fighter_gobj)
             ground_line_id = fp->fighter_vars.masterhand.boss->default_line_id;
         }
 
-        if (translate->x > gMapEdgeBounds.d2.right)
+        if (translate->x > gMPEdgeBounds.d2.right)
         {
             mpCollision_GetLREdgeRight(ground_line_id, &pos);
         }
-        else if (translate->x < gMapEdgeBounds.d2.left)
+        else if (translate->x < gMPEdgeBounds.d2.left)
         {
             mpCollision_GetLREdgeLeft(ground_line_id, &pos);
         }

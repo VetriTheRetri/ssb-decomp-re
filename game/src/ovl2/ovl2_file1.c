@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <ft/fighter.h>
 
-extern u32 g1PGameTotalTimeFrames; // Static (.bss); Total time taken to complete 1P Game (in frames);
+extern u32 sGM1PManagerTotalFrames; // Static (.bss); Total time taken to complete 1P Game (in frames);
 
 s32 func_ovl2_800D6490(u16 flag)
 {
@@ -64,7 +64,7 @@ void func_ovl2_800D6590(void)
     {
         gSceneData.spgame_stage = gm1PGame_Stage_Ness;
     }
-    else if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_CAPTAIN) && (g1PGameTotalTimeFrames < I_MIN_TO_FRAMES(12))) // Captain Falcon's unlock criteria is 12 minutes instead of 20???
+    else if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_CAPTAIN) && (sGM1PManagerTotalFrames < I_MIN_TO_FRAMES(12))) // Captain Falcon's unlock criteria is 12 minutes instead of 20???
     {
         gSceneData.spgame_stage = gm1PGame_Stage_Captain;
     }
@@ -154,12 +154,15 @@ extern u32 D_ovl2_80116D74[2];
 extern struct Overlay D_ovl2_80116D7C;
 extern u32 D_ovl2_80116D84[7];
 extern u8 D_ovl2_80116DA0[];
-extern u8 D_ovl2_80130D60;
-extern s32 g1PGameTotalFalls;
-extern s32 g1PGameTotalDamageTaken;
+
+// 0x80130D60
+u8 sGM1PManagerScenePrev;
+
+extern s32 sGM1PManagerTotalFalls;
+extern s32 sGM1PManagerTotalDamageTaken;
 extern s32 D_ovl2_80130D70;
 extern u8 D_ovl2_80130D74;
-extern u8 g1PGameKirbyTeamFinalCopy;
+extern u8 sGM1PManagerKirbyTeamFinalCopy;
 extern u8 D_ovl2_80130D76;
 
 void func_ovl2_800D67DC(void)
@@ -174,7 +177,7 @@ void func_ovl2_800D67DC(void)
     s32 player_port;
     s32 spgame_stage;
 
-    D_ovl2_80130D60 = gSceneData.scene_previous;
+    sGM1PManagerScenePrev = gSceneData.scene_previous;
 
     D_800A4B18.is_team_battle = TRUE;
     D_800A4B18.match_rules = (GMMATCH_GAMERULE_1PGAME | GMMATCH_GAMERULE_TIME);
@@ -202,10 +205,10 @@ void func_ovl2_800D67DC(void)
     gSceneData.continues_used = 0;
     gSceneData.bonus_count = 0;
 
-    g1PGameTotalTimeFrames = 0;
+    sGM1PManagerTotalFrames = 0;
 
-    g1PGameTotalFalls = 0;
-    g1PGameTotalDamageTaken = 0;
+    sGM1PManagerTotalFalls = 0;
+    sGM1PManagerTotalDamageTaken = 0;
     D_ovl2_80130D70 = 0;
     D_ovl2_80130D74 = 2;
 
@@ -264,9 +267,9 @@ void func_ovl2_800D67DC(void)
             case gm1PGame_Stage_Kirby:
                 variation_flags = (gSaveData.character_mask | gmSaveChrMask(Ft_Kind_Kirby));
 
-                g1PGameKirbyTeamFinalCopy = func_ovl2_800D6554(variation_flags, lbRandom_GetIntRange(func_ovl2_800D6490(variation_flags)));
+                sGM1PManagerKirbyTeamFinalCopy = func_ovl2_800D6554(variation_flags, lbRandom_GetIntRange(func_ovl2_800D6490(variation_flags)));
 
-                D_ovl2_80130D76 = D_ovl2_80116DA0[g1PGameKirbyTeamFinalCopy];
+                D_ovl2_80130D76 = D_ovl2_80116DA0[sGM1PManagerKirbyTeamFinalCopy];
                 break;
             }
             load_overlay(&D_ovl2_80116BF0);

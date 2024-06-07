@@ -3533,7 +3533,7 @@ glabel scTrainingMode_InitTrainingMode
   /* 116B18 801902F8 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 116B1C 801902FC 00000000 */       nop 
   /* 116B20 80190300 24040002 */     addiu $a0, $zero, 2
-  /* 116B24 80190304 0C035C65 */       jal ftManager_AllocFighterData
+  /* 116B24 80190304 0C035C65 */       jal ftManagerAllocFighter
   /* 116B28 80190308 24050004 */     addiu $a1, $zero, 4
   /* 116B2C 8019030C 0C05952C */       jal wpManagerAllocWeapons
   /* 116B30 80190310 00000000 */       nop 
@@ -3578,7 +3578,7 @@ glabel scTrainingMode_InitTrainingMode
   /* 116BC4 801903A4 000C6040 */       sll $t4, $t4, 1
   /* 116BC8 801903A8 1161003D */       beq $t3, $at, .L801904A0
   /* 116BCC 801903AC 018D9021 */      addu $s2, $t4, $t5
-  /* 116BD0 801903B0 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 116BD0 801903B0 0C035E1B */       jal ftManagerSetupDataKind
   /* 116BD4 801903B4 90440023 */       lbu $a0, 0x23($v0)
   /* 116BD8 801903B8 8E6E0000 */        lw $t6, ($s3) # gBattleState + 0
   /* 116BDC 801903BC 02002025 */        or $a0, $s0, $zero
@@ -3629,13 +3629,13 @@ glabel scTrainingMode_InitTrainingMode
   /* 116C88 80190468 904A0022 */       lbu $t2, 0x22($v0)
   /* 116C8C 8019046C AFB20088 */        sw $s2, 0x88($sp)
   /* 116C90 80190470 AFAA0084 */        sw $t2, 0x84($sp)
-  /* 116C94 80190474 0C035E2D */       jal ftManager_AllocAnimHeapKind
+  /* 116C94 80190474 0C035E2D */       jal ftManagerAllocAnimHeapKind
   /* 116C98 80190478 90440023 */       lbu $a0, 0x23($v0)
   /* 116C9C 8019047C 93AC007B */       lbu $t4, 0x7b($sp)
   /* 116CA0 80190480 AFA20094 */        sw $v0, 0x94($sp)
   /* 116CA4 80190484 02802025 */        or $a0, $s4, $zero
   /* 116CA8 80190488 358D0080 */       ori $t5, $t4, 0x80
-  /* 116CAC 8019048C 0C035FCF */       jal ftManager_MakeFighter
+  /* 116CAC 8019048C 0C035FCF */       jal ftManagerMakeFighter
   /* 116CB0 80190490 A3AD007B */        sb $t5, 0x7b($sp)
   /* 116CB4 80190494 02002025 */        or $a0, $s0, $zero
   /* 116CB8 80190498 0C039F13 */       jal ftCommon_ClearPlayerMatchStats
@@ -3647,7 +3647,7 @@ glabel scTrainingMode_InitTrainingMode
   /* 116CCC 801904AC 26310074 */     addiu $s1, $s1, 0x74
   /* 116CD0 801904B0 0C06407D */       jal scTrainingMode_UpdateOpponentBehavior
   /* 116CD4 801904B4 00000000 */       nop 
-  /* 116CD8 801904B8 0C035E0B */       jal ftManager_SetFileDataPlayables
+  /* 116CD8 801904B8 0C035E0B */       jal ftManagerSetupDataPlayables
   /* 116CDC 801904BC 00000000 */       nop 
   /* 116CE0 801904C0 0C064068 */       jal scTrainingMode_SetGameStatusGo
   /* 116CE4 801904C4 00000000 */       nop 
@@ -3717,13 +3717,13 @@ glabel scTrainingMode_SetGeometryRenderLights
   /* 116DDC 801905BC 246E0008 */     addiu $t6, $v1, 8
   /* 116DE0 801905C0 AC8E0000 */        sw $t6, ($a0)
   /* 116DE4 801905C4 3C180002 */       lui $t8, 2
-  /* 116DE8 801905C8 3C058013 */       lui $a1, %hi(gMapLightAngleX)
-  /* 116DEC 801905CC 3C068013 */       lui $a2, %hi(gMapLightAngleY)
+  /* 116DE8 801905C8 3C058013 */       lui $a1, %hi(gMPLightAngleX)
+  /* 116DEC 801905CC 3C068013 */       lui $a2, %hi(gMPLightAngleY)
   /* 116DF0 801905D0 AC780004 */        sw $t8, 4($v1)
   /* 116DF4 801905D4 AC6F0000 */        sw $t7, ($v1)
-  /* 116DF8 801905D8 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
+  /* 116DF8 801905D8 8CC61394 */        lw $a2, %lo(gMPLightAngleY)($a2)
   /* 116DFC 801905DC 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
-  /* 116E00 801905E0 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
+  /* 116E00 801905E0 8CA51390 */        lw $a1, %lo(gMPLightAngleX)($a1)
   /* 116E04 801905E4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 116E08 801905E8 27BD0018 */     addiu $sp, $sp, 0x18
   /* 116E0C 801905EC 03E00008 */        jr $ra
@@ -3820,8 +3820,8 @@ glabel func_ovl7_801906D0
   /* 116F5C 8019073C 0C001260 */       jal gsMemoryAlloc
   /* 116F60 80190740 24050010 */     addiu $a1, $zero, 0x10
   /* 116F64 80190744 3C048011 */       lui $a0, %hi(dCommonFileIDs)
-  /* 116F68 80190748 3C068013 */       lui $a2, %hi(gCommonFiles)
-  /* 116F6C 8019074C 24C60D40 */     addiu $a2, $a2, %lo(gCommonFiles)
+  /* 116F68 80190748 3C068013 */       lui $a2, %hi(gGMCommonFiles)
+  /* 116F6C 8019074C 24C60D40 */     addiu $a2, $a2, %lo(gGMCommonFiles)
   /* 116F70 80190750 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
   /* 116F74 80190754 24050008 */     addiu $a1, $zero, 8
   /* 116F78 80190758 0C033781 */       jal rdManagerLoadFiles

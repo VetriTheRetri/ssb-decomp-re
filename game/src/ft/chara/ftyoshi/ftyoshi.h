@@ -13,7 +13,19 @@
 #define FTYOSHI_YOSHIBOMB_VEL_X_CLAMP 30.0F     // Not sure how this takes effect
 #define FTYOSHI_YOSHIBOMB_VEL_Y_CLAMP -150.0F   // Constant downward velocity during ground pound
 
-extern ftStatusDesc ftStatus_SpecialDesc_Yoshi[/* */];
+extern ftStatusDesc dFTYoshiSpecialStatusDesc[/* */];
+
+extern void *gFTDataYoshiMain;
+extern void *gFTDataYoshiBattleMotion;
+extern void *gFTDataYoshiModel;
+extern void *gFTDataYoshiSpecial2;
+extern void *gFTDataYoshiSpecial3;
+extern u32 gFTDataYoshiParticleBankID;
+
+extern void *gFTDataPolyYoshiMain;
+extern void *gFTDataPolyYoshiSubMotion;
+extern void *gFTDataPolyYoshiModel;
+extern u32 gFTDataPolyYoshiParticleBankID;
 
 typedef enum ftYoshiMotion
 {

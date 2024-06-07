@@ -20,8 +20,8 @@ void ftCommon_ShieldBreakFly_SetStatus(GObj *fighter_gobj)
     ftAttributes *attributes = fp->attributes;
 
     ftMap_SetAir(fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_ShieldBreakFly, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_ShieldBreakFly, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->phys_info.vel_air.x = 0.0F;
     fp->phys_info.vel_air.y = attributes->shield_break_vel_y;
@@ -70,7 +70,7 @@ void ftCommon_ShieldBreakFlyReflector_SetStatus(GObj *fighter_gobj)
     ftSpecialHit *special_hit = fp->special_hit;
     Vec3f offset = special_hit->offset;
 
-    ftParts_GetDObjWorldPosition(fp->joint[special_hit->joint_index], &offset);
+    ftParts_GetDObjWorldPosition(fp->joint[special_hit->joint_id], &offset);
     efParticle_ReflectBreak_MakeEffect(&offset, fp->lr_reflect);
     ftCommon_ShieldBreakFly_SetStatus(fighter_gobj);
 }

@@ -42,7 +42,7 @@ void ftCommon_CaptureWait_SetStatus(GObj *fighter_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_CaptureWait, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CaptureWait, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE));
 
     if ((capture_fp->ft_kind == Ft_Kind_Yoshi) || (capture_fp->ft_kind == Ft_Kind_PolyYoshi))
     {

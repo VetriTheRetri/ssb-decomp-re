@@ -1214,7 +1214,7 @@ glabel scExplainProcStart
   /* 18B838 8018E228 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 18B83C 8018E22C 00000000 */       nop 
   /* 18B840 8018E230 24040002 */     addiu $a0, $zero, 2
-  /* 18B844 8018E234 0C035C65 */       jal ftManager_AllocFighterData
+  /* 18B844 8018E234 0C035C65 */       jal ftManagerAllocFighter
   /* 18B848 8018E238 24050002 */     addiu $a1, $zero, 2
   /* 18B84C 8018E23C 0C05952C */       jal wpManagerAllocWeapons
   /* 18B850 8018E240 00000000 */       nop 
@@ -1263,7 +1263,7 @@ glabel scExplainProcStart
   /* 18B8F4 8018E2E4 2508E710 */     addiu $t0, $t0, %lo(dExplainInputSequenceOffsets)
   /* 18B8F8 8018E2E8 00106880 */       sll $t5, $s0, 2
   /* 18B8FC 8018E2EC 01A8A021 */      addu $s4, $t5, $t0
-  /* 18B900 8018E2F0 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 18B900 8018E2F0 0C035E1B */       jal ftManagerSetupDataKind
   /* 18B904 8018E2F4 90440023 */       lbu $a0, 0x23($v0)
   /* 18B908 8018E2F8 8E6E0000 */        lw $t6, ($s3) # gBattleState + 0
   /* 18B90C 8018E2FC 02002025 */        or $a0, $s0, $zero
@@ -1312,10 +1312,10 @@ glabel scExplainProcStart
   /* 18B9B0 8018E3A0 904A0022 */       lbu $t2, 0x22($v0)
   /* 18B9B4 8018E3A4 AFB20088 */        sw $s2, 0x88($sp)
   /* 18B9B8 8018E3A8 AFAA0084 */        sw $t2, 0x84($sp)
-  /* 18B9BC 8018E3AC 0C035E2D */       jal ftManager_AllocAnimHeapKind
+  /* 18B9BC 8018E3AC 0C035E2D */       jal ftManagerAllocAnimHeapKind
   /* 18B9C0 8018E3B0 90440023 */       lbu $a0, 0x23($v0)
   /* 18B9C4 8018E3B4 AFA20094 */        sw $v0, 0x94($sp)
-  /* 18B9C8 8018E3B8 0C035FCF */       jal ftManager_MakeFighter
+  /* 18B9C8 8018E3B8 0C035FCF */       jal ftManagerMakeFighter
   /* 18B9CC 8018E3BC 02A02025 */        or $a0, $s5, $zero
   /* 18B9D0 8018E3C0 8E6B0000 */        lw $t3, ($s3) # gBattleState + 0
   /* 18B9D4 8018E3C4 00409025 */        or $s2, $v0, $zero
@@ -1415,13 +1415,13 @@ glabel func_ovl63_8018E51C
   /* 18BB40 8018E530 246E0008 */     addiu $t6, $v1, 8
   /* 18BB44 8018E534 AC8E0000 */        sw $t6, ($a0)
   /* 18BB48 8018E538 3C180002 */       lui $t8, 2
-  /* 18BB4C 8018E53C 3C058013 */       lui $a1, %hi(gMapLightAngleX)
-  /* 18BB50 8018E540 3C068013 */       lui $a2, %hi(gMapLightAngleY)
+  /* 18BB4C 8018E53C 3C058013 */       lui $a1, %hi(gMPLightAngleX)
+  /* 18BB50 8018E540 3C068013 */       lui $a2, %hi(gMPLightAngleY)
   /* 18BB54 8018E544 AC780004 */        sw $t8, 4($v1)
   /* 18BB58 8018E548 AC6F0000 */        sw $t7, ($v1)
-  /* 18BB5C 8018E54C 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
+  /* 18BB5C 8018E54C 8CC61394 */        lw $a2, %lo(gMPLightAngleY)($a2)
   /* 18BB60 8018E550 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
-  /* 18BB64 8018E554 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
+  /* 18BB64 8018E554 8CA51390 */        lw $a1, %lo(gMPLightAngleX)($a1)
   /* 18BB68 8018E558 8FBF0014 */        lw $ra, 0x14($sp)
   /* 18BB6C 8018E55C 27BD0018 */     addiu $sp, $sp, 0x18
   /* 18BB70 8018E560 03E00008 */        jr $ra
@@ -1518,8 +1518,8 @@ glabel func_ovl63_8018E640
   /* 18BCBC 8018E6AC 0C001260 */       jal gsMemoryAlloc
   /* 18BCC0 8018E6B0 24050010 */     addiu $a1, $zero, 0x10
   /* 18BCC4 8018E6B4 3C048011 */       lui $a0, %hi(dCommonFileIDs)
-  /* 18BCC8 8018E6B8 3C068013 */       lui $a2, %hi(gCommonFiles)
-  /* 18BCCC 8018E6BC 24C60D40 */     addiu $a2, $a2, %lo(gCommonFiles)
+  /* 18BCC8 8018E6B8 3C068013 */       lui $a2, %hi(gGMCommonFiles)
+  /* 18BCCC 8018E6BC 24C60D40 */     addiu $a2, $a2, %lo(gGMCommonFiles)
   /* 18BCD0 8018E6C0 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
   /* 18BCD4 8018E6C4 24050008 */     addiu $a1, $zero, 8
   /* 18BCD8 8018E6C8 0C033781 */       jal rdManagerLoadFiles

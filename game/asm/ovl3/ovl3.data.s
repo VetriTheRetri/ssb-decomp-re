@@ -1613,18 +1613,18 @@ glabel D_ovl3_80188E44
   /* 57350 103890 80188E50 */
   .asciz "BH"
   .balign 4
-  /* 57354 103894 80188E54 */  .4byte gFTDataMarioExtra1
+  /* 57354 103894 80188E54 */  .4byte gFTDataMarioSpecial1
   .incbin "ovl3.raw.bin", 0x57358, 0xC
   /* 57364 1038A4 80188E64 */
   .asciz "B\\"
   .balign 4
   .incbin "ovl3.raw.bin", 0x57368, 0x1C
-  /* 57384 1038C4 80188E84 */  .4byte gFTDataLuigiExtra1
+  /* 57384 1038C4 80188E84 */  .4byte gFTDataLuigiSpecial1
   .incbin "ovl3.raw.bin", 0x57388, 0x8
 
 glabel dWPMarioFireballWeaponDesc
   .incbin "ovl3.raw.bin", 0x57390, 0x8
-  /* 57398 1038D8 80188E98 */  .4byte D_ovl2_80130E30
+  /* 57398 1038D8 80188E98 */  .4byte gFTDataMarioMain
   .incbin "ovl3.raw.bin", 0x5739C, 0x8
 
 glabel jtbl_ovl3_80188EA4
@@ -1640,7 +1640,7 @@ glabel jtbl_ovl3_80188EA4
 
 glabel dWPFoxBlasterWeaponDesc
   .incbin "ovl3.raw.bin", 0x573D0, 0x8
-  /* 573D8 103918 80188ED8 */  .4byte gFTDataFoxExtra1
+  /* 573D8 103918 80188ED8 */  .4byte gFTDataFoxSpecial1
   .incbin "ovl3.raw.bin", 0x573DC, 0x8
 
 glabel jtbl_ovl3_80188EE4
@@ -1675,7 +1675,7 @@ glabel dWPSamusChargeShotWeaponAttributes
 
 glabel dWPSamusChargeShotWeaponDesc
   .incbin "ovl3.raw.bin", 0x57530, 0x8
-  /* 57538 103A78 80189038 */  .4byte gFTDataSamusExtra1
+  /* 57538 103A78 80189038 */  .4byte gFTDataSamusSpecial1
   .incbin "ovl3.raw.bin", 0x5753C, 0x8
 
 glabel jtbl_ovl3_80189044
@@ -1707,7 +1707,7 @@ glabel jtbl_ovl3_80189084
 
 glabel dWPPikachuThunderJoltAirWeaponDesc
   .incbin "ovl3.raw.bin", 0x575B0, 0x8
-  /* 575B8 103AF8 801890B8 */  .4byte gFTDataPikachuExtra1
+  /* 575B8 103AF8 801890B8 */  .4byte gFTDataPikachuSpecial1
   .incbin "ovl3.raw.bin", 0x575BC, 0x8
 
 glabel jtbl_ovl3_801890C4
@@ -1722,7 +1722,7 @@ glabel jtbl_ovl3_801890C4
 
 glabel dWPPikachuThunderJoltGroundWeaponDesc
   .incbin "ovl3.raw.bin", 0x575E4, 0x8
-  /* 575EC 103B2C 801890EC */  .4byte gFTDataPikachuExtra1
+  /* 575EC 103B2C 801890EC */  .4byte gFTDataPikachuSpecial1
   .incbin "ovl3.raw.bin", 0x575F0, 0x8
 
 glabel jtbl_ovl3_801890F8
@@ -1766,7 +1766,7 @@ glabel jtbl_ovl3_80189170
 
 glabel dWPNessPKFireWeaponDesc
   .incbin "ovl3.raw.bin", 0x57690, 0x8
-  /* 57698 103BD8 80189198 */  .4byte gFTDataNessExtra1
+  /* 57698 103BD8 80189198 */  .4byte gFTDataNessSpecial1
   .incbin "ovl3.raw.bin", 0x5769C, 0x8
 
 glabel jtbl_ovl3_801891A4
@@ -1909,7 +1909,7 @@ glabel jtbl_ovl3_80189374
 
 glabel wpLink_Boomerang_CreateDesc
   .incbin "ovl3.raw.bin", 0x578A0, 0x8
-  /* 578A8 103DE8 801893A8 */  .4byte gFTDataLinkExtra1
+  /* 578A8 103DE8 801893A8 */  .4byte gFTDataLinkSpecial1
   .incbin "ovl3.raw.bin", 0x578AC, 0x8
 
 glabel jtbl_ovl3_801893B4
@@ -3616,7 +3616,7 @@ glabel jtbl_ovl3_8018B628
 
 glabel dITNessPKFireItemDesc
   .incbin "ovl3.raw.bin", 0x59B40, 0x4
-  /* 59B44 106084 8018B644 */  .4byte gFTDataNessExtra1
+  /* 59B44 106084 8018B644 */  .4byte gFTDataNessSpecial1
   .incbin "ovl3.raw.bin", 0x59B48, 0xC
   /* 59B54 106094 8018B654 */  .4byte itNessPKFireSDefaultProcUpdate
   .incbin "ovl3.raw.bin", 0x59B58, 0x1C

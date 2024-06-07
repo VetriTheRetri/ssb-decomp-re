@@ -113,7 +113,7 @@ void grJungle_TaruCann_MakeGround(void)
     func_8000DF34(tarucann_gobj);
 
     omAddGObjCommonProc(tarucann_gobj, grJungle_TaruCann_ProcUpdate, 1, 4);
-    ftMain_CheckSetMapObjectGObj(tarucann_gobj, grJungle_TaruCann_CheckFindFighter);
+    ftMainCheckSetMapObjectGObj(tarucann_gobj, grJungle_TaruCann_CheckFindFighter);
 
     gGroundStruct.jungle.tarucann_status = grJungle_TaruCann_Move;
     gGroundStruct.jungle.tarucann_wait = lbRandom_GetIntRange(180) + 180;

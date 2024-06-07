@@ -51,7 +51,7 @@ loop: // This makes no sense
     rebirth_vars.pos.y = gGroundInfo->blastzone_top;
     rebirth_vars.pos.z = 0.0F;
 
-    func_ovl2_800D79F0(this_gobj, &rebirth_vars);
+    ftManagerInitFighter(this_gobj, &rebirth_vars);
     ifPlayer_Damage_StopBreakAnim(this_fp);
     ftMap_SetGround(this_fp);
 
@@ -61,8 +61,8 @@ loop: // This makes no sense
     this_fp->coll_data.ground_angle.x = 0.0F;
     this_fp->coll_data.ground_angle.z = 0.0F;
 
-    ftMain_SetFighterStatus(this_gobj, ftStatus_Common_RebirthDown, 100.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(this_gobj);
+    ftMainSetFighterStatus(this_gobj, ftStatus_Common_RebirthDown, 100.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(this_gobj);
     ftPhysics_StopVelAll(this_gobj);
 
     this_fp->status_vars.common.rebirth.halo_lower_wait = FTCOMMON_REBIRTH_HALO_LOWER_WAIT;
@@ -143,8 +143,8 @@ void ftCommon_RebirthStand_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_RebirthStand, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_RebirthStand, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->is_ignore_startbutton = TRUE;
     fp->is_nullstatus = TRUE;
@@ -184,7 +184,7 @@ void ftCommon_RebirthWait_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_RebirthWait, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_RebirthWait, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
 
     fp->is_nullstatus = TRUE;
     fp->x18E_flag_b0 = TRUE;

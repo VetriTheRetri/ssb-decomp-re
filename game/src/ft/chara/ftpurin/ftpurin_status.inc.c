@@ -4,7 +4,7 @@
 #include <ft/fttypes.h>
 
 // 0x8012B178
-ftStatusDesc ftStatus_SpecialDesc_Purin[/* */] =
+ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 {
 	// Status 220 (0xDC): Attack100Start
 	{

@@ -209,7 +209,7 @@ void grCommon_Yoster_InitGroundVars(void)
         func_8000BD8C(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
 
         coll_dobj = DObjGetStruct(map_gobj);
-        coll_dobj->translate.vec.f = gMapRooms->room_dobj[dGrYosterCloudLineIDs[i]]->translate.vec.f;
+        coll_dobj->translate.vec.f = gMPRooms->room_dobj[dGrYosterCloudLineIDs[i]]->translate.vec.f;
 
         gGroundStruct.yoster.clouds[i].altitude = coll_dobj->translate.vec.f.y;
 

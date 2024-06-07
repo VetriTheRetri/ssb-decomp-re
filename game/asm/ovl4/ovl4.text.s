@@ -196,7 +196,7 @@ glabel scBattle_StartStockBattle
   /* 10A254 8018D364 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 10A258 8018D368 00000000 */       nop 
   /* 10A25C 8018D36C 24040002 */     addiu $a0, $zero, 2
-  /* 10A260 8018D370 0C035C65 */       jal ftManager_AllocFighterData
+  /* 10A260 8018D370 0C035C65 */       jal ftManagerAllocFighter
   /* 10A264 8018D374 24050004 */     addiu $a1, $zero, 4
   /* 10A268 8018D378 0C05952C */       jal wpManagerAllocWeapons
   /* 10A26C 8018D37C 00000000 */       nop 
@@ -241,7 +241,7 @@ glabel scBattle_StartStockBattle
   /* 10A300 8018D410 000A5040 */       sll $t2, $t2, 1
   /* 10A304 8018D414 11210033 */       beq $t1, $at, .L8018D4E4
   /* 10A308 8018D418 014B9821 */      addu $s3, $t2, $t3
-  /* 10A30C 8018D41C 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 10A30C 8018D41C 0C035E1B */       jal ftManagerSetupDataKind
   /* 10A310 8018D420 90640023 */       lbu $a0, 0x23($v1)
   /* 10A314 8018D424 8E4C0000 */        lw $t4, ($s2) # gBattleState + 0
   /* 10A318 8018D428 02002025 */        or $a0, $s0, $zero
@@ -284,10 +284,10 @@ glabel scBattle_StartStockBattle
   /* 10A3A8 8018D4B8 906E0022 */       lbu $t6, 0x22($v1)
   /* 10A3AC 8018D4BC AFB30088 */        sw $s3, 0x88($sp)
   /* 10A3B0 8018D4C0 AFAE0084 */        sw $t6, 0x84($sp)
-  /* 10A3B4 8018D4C4 0C035E2D */       jal ftManager_AllocAnimHeapKind
+  /* 10A3B4 8018D4C4 0C035E2D */       jal ftManagerAllocAnimHeapKind
   /* 10A3B8 8018D4C8 90640023 */       lbu $a0, 0x23($v1)
   /* 10A3BC 8018D4CC AFA20094 */        sw $v0, 0x94($sp)
-  /* 10A3C0 8018D4D0 0C035FCF */       jal ftManager_MakeFighter
+  /* 10A3C0 8018D4D0 0C035FCF */       jal ftManagerMakeFighter
   /* 10A3C4 8018D4D4 02802025 */        or $a0, $s4, $zero
   /* 10A3C8 8018D4D8 02002025 */        or $a0, $s0, $zero
   /* 10A3CC 8018D4DC 0C039F13 */       jal ftCommon_ClearPlayerMatchStats
@@ -297,7 +297,7 @@ glabel scBattle_StartStockBattle
   /* 10A3D8 8018D4E8 24010004 */     addiu $at, $zero, 4
   /* 10A3DC 8018D4EC 1601FFB1 */       bne $s0, $at, .L8018D3B4
   /* 10A3E0 8018D4F0 26310074 */     addiu $s1, $s1, 0x74
-  /* 10A3E4 8018D4F4 0C035E0B */       jal ftManager_SetFileDataPlayables
+  /* 10A3E4 8018D4F4 0C035E0B */       jal ftManagerSetupDataPlayables
   /* 10A3E8 8018D4F8 00000000 */       nop 
   /* 10A3EC 8018D4FC 0C045256 */       jal ifMain_SetGameStatusWait
   /* 10A3F0 8018D500 00000000 */       nop 
@@ -1000,7 +1000,7 @@ glabel scBattle_StartSDBattle
   /* 10ADA0 8018DEB0 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 10ADA4 8018DEB4 00000000 */       nop 
   /* 10ADA8 8018DEB8 24040002 */     addiu $a0, $zero, 2
-  /* 10ADAC 8018DEBC 0C035C65 */       jal ftManager_AllocFighterData
+  /* 10ADAC 8018DEBC 0C035C65 */       jal ftManagerAllocFighter
   /* 10ADB0 8018DEC0 24050004 */     addiu $a1, $zero, 4
   /* 10ADB4 8018DEC4 0C05952C */       jal wpManagerAllocWeapons
   /* 10ADB8 8018DEC8 00000000 */       nop 
@@ -1045,7 +1045,7 @@ glabel scBattle_StartSDBattle
   /* 10AE4C 8018DF5C 000C6040 */       sll $t4, $t4, 1
   /* 10AE50 8018DF60 11610039 */       beq $t3, $at, .L8018E048
   /* 10AE54 8018DF64 018D9821 */      addu $s3, $t4, $t5
-  /* 10AE58 8018DF68 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 10AE58 8018DF68 0C035E1B */       jal ftManagerSetupDataKind
   /* 10AE5C 8018DF6C 90A40023 */       lbu $a0, 0x23($a1)
   /* 10AE60 8018DF70 8E4E0000 */        lw $t6, ($s2) # gBattleState + 0
   /* 10AE64 8018DF74 02002025 */        or $a0, $s0, $zero
@@ -1091,10 +1091,10 @@ glabel scBattle_StartSDBattle
   /* 10AF00 8018E010 90AB0022 */       lbu $t3, 0x22($a1)
   /* 10AF04 8018E014 AFB30080 */        sw $s3, 0x80($sp)
   /* 10AF08 8018E018 AFAB007C */        sw $t3, 0x7c($sp)
-  /* 10AF0C 8018E01C 0C035E2D */       jal ftManager_AllocAnimHeapKind
+  /* 10AF0C 8018E01C 0C035E2D */       jal ftManagerAllocAnimHeapKind
   /* 10AF10 8018E020 90A40023 */       lbu $a0, 0x23($a1)
   /* 10AF14 8018E024 AFA2008C */        sw $v0, 0x8c($sp)
-  /* 10AF18 8018E028 0C035FCF */       jal ftManager_MakeFighter
+  /* 10AF18 8018E028 0C035FCF */       jal ftManagerMakeFighter
   /* 10AF1C 8018E02C 02802025 */        or $a0, $s4, $zero
   /* 10AF20 8018E030 02002025 */        or $a0, $s0, $zero
   /* 10AF24 8018E034 0C039F13 */       jal ftCommon_ClearPlayerMatchStats
@@ -1107,7 +1107,7 @@ glabel scBattle_StartSDBattle
   /* 10AF3C 8018E04C 24010004 */     addiu $at, $zero, 4
   /* 10AF40 8018E050 1601FFAB */       bne $s0, $at, .L8018DF00
   /* 10AF44 8018E054 26310074 */     addiu $s1, $s1, 0x74
-  /* 10AF48 8018E058 0C035E0B */       jal ftManager_SetFileDataPlayables
+  /* 10AF48 8018E058 0C035E0B */       jal ftManagerSetupDataPlayables
   /* 10AF4C 8018E05C 00000000 */       nop 
   /* 10AF50 8018E060 0C045256 */       jal ifMain_SetGameStatusWait
   /* 10AF54 8018E064 00000000 */       nop 
@@ -1176,13 +1176,13 @@ glabel scBattle_SetGeometryRenderLights
   /* 10B048 8018E158 246E0008 */     addiu $t6, $v1, 8
   /* 10B04C 8018E15C AC8E0000 */        sw $t6, ($a0)
   /* 10B050 8018E160 3C180002 */       lui $t8, 2
-  /* 10B054 8018E164 3C058013 */       lui $a1, %hi(gMapLightAngleX)
-  /* 10B058 8018E168 3C068013 */       lui $a2, %hi(gMapLightAngleY)
+  /* 10B054 8018E164 3C058013 */       lui $a1, %hi(gMPLightAngleX)
+  /* 10B058 8018E168 3C068013 */       lui $a2, %hi(gMPLightAngleY)
   /* 10B05C 8018E16C AC780004 */        sw $t8, 4($v1)
   /* 10B060 8018E170 AC6F0000 */        sw $t7, ($v1)
-  /* 10B064 8018E174 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
+  /* 10B064 8018E174 8CC61394 */        lw $a2, %lo(gMPLightAngleY)($a2)
   /* 10B068 8018E178 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
-  /* 10B06C 8018E17C 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
+  /* 10B06C 8018E17C 8CA51390 */        lw $a1, %lo(gMPLightAngleX)($a1)
   /* 10B070 8018E180 8FBF0014 */        lw $ra, 0x14($sp)
   /* 10B074 8018E184 27BD0018 */     addiu $sp, $sp, 0x18
   /* 10B078 8018E188 03E00008 */        jr $ra
@@ -1333,8 +1333,8 @@ glabel func_ovl4_8018E330
   /* 10B28C 8018E39C 0C001260 */       jal gsMemoryAlloc
   /* 10B290 8018E3A0 24050010 */     addiu $a1, $zero, 0x10
   /* 10B294 8018E3A4 3C048011 */       lui $a0, %hi(dCommonFileIDs)
-  /* 10B298 8018E3A8 3C068013 */       lui $a2, %hi(gCommonFiles)
-  /* 10B29C 8018E3AC 24C60D40 */     addiu $a2, $a2, %lo(gCommonFiles)
+  /* 10B298 8018E3A8 3C068013 */       lui $a2, %hi(gGMCommonFiles)
+  /* 10B29C 8018E3AC 24C60D40 */     addiu $a2, $a2, %lo(gGMCommonFiles)
   /* 10B2A0 8018E3B0 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
   /* 10B2A4 8018E3B4 24050008 */     addiu $a1, $zero, 8
   /* 10B2A8 8018E3B8 0C033781 */       jal rdManagerLoadFiles

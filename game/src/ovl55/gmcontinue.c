@@ -311,7 +311,7 @@ void gmContinueMakeFighter(s32 ft_kind)
     player_spawn.pos.y = 2070.0F;
     player_spawn.pos.z = 0.0F;
 
-    sGMContinueFighterGObj = fighter_gobj = ftManager_MakeFighter(&player_spawn);
+    sGMContinueFighterGObj = fighter_gobj = ftManagerMakeFighter(&player_spawn);
 
     func_ovl1_803905CC(fighter_gobj, 0x10009);
 
@@ -1022,8 +1022,8 @@ void gmContinueInitAll(void)
     func_ovl2_80115890();
     func_ovl55_80133918();
     efManager_AllocUserData();
-    ftManager_AllocFighterData(1, 1);
-    ftManager_SetFileDataKind(sGMContinueFighterDesc.ft_kind);
+    ftManagerAllocFighter(1, 1);
+    ftManagerSetupDataKind(sGMContinueFighterDesc.ft_kind);
     sGMContinueFighterAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
     func_ovl55_80133694();
     func_ovl55_801333C4();

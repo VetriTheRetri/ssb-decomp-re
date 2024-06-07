@@ -24,7 +24,7 @@ void ftCommon_Fall_SetStatus(GObj *fighter_gobj)
         {
             ftMap_SetAir(fp);
         }
-        ftMain_SetFighterStatus(fighter_gobj, ((fp->jumps_used >= fp->attributes->jumps_max) ? ftStatus_Common_FallAerial : ftStatus_Common_Fall), 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, ((fp->jumps_used >= fp->attributes->jumps_max) ? ftStatus_Common_FallAerial : ftStatus_Common_Fall), 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
 
         ftPhysics_ClampAirVelXMax(fp);
 

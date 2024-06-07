@@ -158,7 +158,7 @@ void grHyrule_Twister_UpdateSummon(void)
         gGroundStruct.hyrule.twister_vel = lr * 10.0F;
         gGroundStruct.hyrule.twister_speed_wait = lbRandom_GetIntRange(120) + 180;
 
-        ftMain_CheckSetMapObjectGObj(gGroundStruct.hyrule.twister_gobj, grHyrule_Twister_GetHitInfo);
+        ftMainCheckSetMapObjectGObj(gGroundStruct.hyrule.twister_gobj, grHyrule_Twister_GetHitInfo);
 
         func_800269C0(alSound_SFX_HyruleTwisterSpawn);
     }
@@ -310,7 +310,7 @@ void grHyrule_Twister_UpdateStop(void)
     gGroundStruct.hyrule.twister_status = grHyrule_Twister_Subside;
     gGroundStruct.hyrule.twister_wait = 32;
 
-    ftMain_ClearMapObjectGObj(gGroundStruct.hyrule.twister_gobj);
+    ftMainClearMapObjectGObj(gGroundStruct.hyrule.twister_gobj);
 
     if (gGroundStruct.hyrule.twister_eftrans != NULL)
     {

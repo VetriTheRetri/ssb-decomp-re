@@ -1,6 +1,6 @@
 #include <ovl0/reloc_data_mgr.h>
 
-extern void *gCommonFiles[];
+extern void *gGMCommonFiles[];
 
 // 0x8018E500
 extern rdFileNode sAutoDemoStatusBuf[100];
@@ -27,5 +27,5 @@ void func_ovl65_8018D0C0(void)
     rldm_setup.forceBufSize = ARRAY_COUNT(sAutoDemoForceBuf);
 
     rdManagerInitSetup(&rldm_setup);
-    rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
+    rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }

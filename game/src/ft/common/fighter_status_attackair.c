@@ -16,7 +16,7 @@ void ftCommon_AttackAirLw_ProcHit(GObj *fighter_gobj)
 
         if (fighter_gobj->anim_frame > FTCOMMON_ATTACKAIRLW_LINK_REHIT_FRAME_BEGIN)
         {
-            ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_AttackAirLw, FTCOMMON_ATTACKAIRLW_LINK_REHIT_FRAME_BEGIN, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+            ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_AttackAirLw, FTCOMMON_ATTACKAIRLW_LINK_REHIT_FRAME_BEGIN, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
         }
         fp->status_vars.common.attackair.rehit_timer = FTCOMMON_ATTACKAIRLW_LINK_REHIT_TIMER;
     }
@@ -181,7 +181,7 @@ sb32 ftCommon_AttackAir_CheckInterruptCommon(GObj *fighter_gobj)
             {
                 fp->command_vars.flags.flag1 = 0;
 
-                ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+                ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
 
                 if (status_id == ftStatus_Common_AttackAirLw)
                 {
@@ -189,7 +189,7 @@ sb32 ftCommon_AttackAir_CheckInterruptCommon(GObj *fighter_gobj)
 
                     fp->status_vars.common.attackair.rehit_timer = 0;
                 }
-                ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+                ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
                 fp->time_since_last_z = FTINPUT_ZBUTTONLAST_FRAMES_MAX;
 

@@ -7,8 +7,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern void *gFTDataNessExtra1;
-extern void *gFTDataNessExtra4;
+extern void *gFTDataNessSpecial1;
+extern void *gFTDataNessParticleBankID;
 
 extern intptr_t lITNessPKFireItemAttributes;// 0x00000034
 
@@ -21,7 +21,7 @@ extern intptr_t lITNessPKFireItemAttributes;// 0x00000034
 itCreateDesc dITNessPKFireItemDesc = 
 {
     It_Kind_NessPKFire,                     // Item Kind
-    &gFTDataNessExtra1,                     // Pointer to item file data?
+    &gFTDataNessSpecial1,                     // Pointer to item file data?
     &lITNessPKFireItemAttributes,           // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -286,7 +286,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
 
     ip->lifetime = ITPKFIRE_LIFETIME;
 
-    efpart = func_ovl0_800CE9E8(gFTDataNessExtra4, 0);
+    efpart = func_ovl0_800CE9E8(gFTDataNessParticleBankID, 0);
 
     if (efpart != NULL)
     {

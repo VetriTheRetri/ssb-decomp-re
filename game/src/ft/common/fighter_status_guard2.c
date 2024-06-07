@@ -6,8 +6,8 @@ void ftCommon_Guard_SetStatusFromEscape(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_GuardOn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE); // Why? It overwrites this with Guard later down.
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_GuardOn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE); // Why? It overwrites this with Guard later down.
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     if (fp->shield_health != 0)
     {
@@ -30,7 +30,7 @@ void ftCommon_Guard_SetStatusFromEscape(GObj *fighter_gobj)
     fp->status_vars.common.guard.slide_frames = 0;
     fp->status_vars.common.guard.is_setoff = FALSE;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_Guard, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Guard, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
 
     func_ovl3_8014889C(fighter_gobj);
 
@@ -75,8 +75,8 @@ void ftCommon_GuardOff_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ub32 flag = fp->is_shield;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_GuardOff, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_GuardOff, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->is_shield = flag;
 
@@ -109,7 +109,7 @@ void ftCommon_GuardSetOff_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_GuardSetOff, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_GuardSetOff, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_GFX_PRESERVE));
 
     fp->status_vars.common.guard.setoff_frames = (fp->shield_damage * FTCOMMON_GUARD_SETOFF_MUL) + FTCOMMON_GUARD_SETOFF_ADD;
 

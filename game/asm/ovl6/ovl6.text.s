@@ -443,8 +443,8 @@ glabel func_ovl6_8018D6A8
   /* 111DF0 8018D6B0 AFB00020 */        sw $s0, 0x20($sp)
   /* 111DF4 8018D6B4 0C03F1CB */       jal mpCollision_SetDObjNoID
   /* 111DF8 8018D6B8 AFA40038 */        sw $a0, 0x38($sp)
-  /* 111DFC 8018D6BC 3C0E8013 */       lui $t6, %hi(gMapRooms)
-  /* 111E00 8018D6C0 8DCE1304 */        lw $t6, %lo(gMapRooms)($t6)
+  /* 111DFC 8018D6BC 3C0E8013 */       lui $t6, %hi(gMPRooms)
+  /* 111E00 8018D6C0 8DCE1304 */        lw $t6, %lo(gMPRooms)($t6)
   /* 111E04 8018D6C4 00027880 */       sll $t7, $v0, 2
   /* 111E08 8018D6C8 8FA40038 */        lw $a0, 0x38($sp)
   /* 111E0C 8018D6CC 01CFC021 */      addu $t8, $t6, $t7
@@ -521,10 +521,10 @@ glabel scBonusGame_InitBonus2Platforms
   /* 111F20 8018D7E0 1AA00021 */      blez $s5, .L8018D868
   /* 111F24 8018D7E4 27B0004C */     addiu $s0, $sp, 0x4c
   /* 111F28 8018D7E8 00157880 */       sll $t7, $s5, 2
-  /* 111F2C 8018D7EC 3C148013 */       lui $s4, %hi(gMapRooms)
+  /* 111F2C 8018D7EC 3C148013 */       lui $s4, %hi(gMPRooms)
   /* 111F30 8018D7F0 3C13FFFF */       lui $s3, (0xFFFF00FF >> 16) # 4294902015
   /* 111F34 8018D7F4 367300FF */       ori $s3, $s3, (0xFFFF00FF & 0xFFFF) # 4294902015
-  /* 111F38 8018D7F8 26941304 */     addiu $s4, $s4, %lo(gMapRooms)
+  /* 111F38 8018D7F8 26941304 */     addiu $s4, $s4, %lo(gMPRooms)
   /* 111F3C 8018D7FC 01F0B021 */      addu $s6, $t7, $s0
   /* 111F40 8018D800 2412000E */     addiu $s2, $zero, 0xe
   .L8018D804:
@@ -535,7 +535,7 @@ glabel scBonusGame_InitBonus2Platforms
   /* 111F54 8018D814 26100004 */     addiu $s0, $s0, 4
   /* 111F58 8018D818 0C03F1CB */       jal mpCollision_SetDObjNoID
   /* 111F5C 8018D81C 8E040000 */        lw $a0, ($s0)
-  /* 111F60 8018D820 8E990000 */        lw $t9, ($s4) # gMapRooms + 0
+  /* 111F60 8018D820 8E990000 */        lw $t9, ($s4) # gMPRooms + 0
   /* 111F64 8018D824 00024080 */       sll $t0, $v0, 2
   /* 111F68 8018D828 00402025 */        or $a0, $v0, $zero
   /* 111F6C 8018D82C 03284821 */      addu $t1, $t9, $t0
@@ -690,10 +690,10 @@ glabel scBonusGame_CheckBonus2PlatformLanding
   /* 112188 8018DA48 AFB10018 */        sw $s1, 0x18($sp)
   /* 11218C 8018DA4C 1200001D */      beqz $s0, .L8018DAC4
   /* 112190 8018DA50 AFA40028 */        sw $a0, 0x28($sp)
-  /* 112194 8018DA54 3C138013 */       lui $s3, %hi(gMapRooms)
+  /* 112194 8018DA54 3C138013 */       lui $s3, %hi(gMPRooms)
   /* 112198 8018DA58 3C12FFFF */       lui $s2, (0xFFFF00FF >> 16) # 4294902015
   /* 11219C 8018DA5C 365200FF */       ori $s2, $s2, (0xFFFF00FF & 0xFFFF) # 4294902015
-  /* 1121A0 8018DA60 26731304 */     addiu $s3, $s3, %lo(gMapRooms)
+  /* 1121A0 8018DA60 26731304 */     addiu $s3, $s3, %lo(gMPRooms)
   /* 1121A4 8018DA64 2411000E */     addiu $s1, $zero, 0xe
   /* 1121A8 8018DA68 8E020084 */        lw $v0, 0x84($s0)
   .L8018DA6C:
@@ -706,7 +706,7 @@ glabel scBonusGame_CheckBonus2PlatformLanding
   /* 1121C4 8018DA84 8E100004 */        lw $s0, 4($s0)
   /* 1121C8 8018DA88 0C03F1CB */       jal mpCollision_SetDObjNoID
   /* 1121CC 8018DA8C 8C4400EC */        lw $a0, 0xec($v0)
-  /* 1121D0 8018DA90 8E790000 */        lw $t9, ($s3) # gMapRooms + 0
+  /* 1121D0 8018DA90 8E790000 */        lw $t9, ($s3) # gMPRooms + 0
   /* 1121D4 8018DA94 00024080 */       sll $t0, $v0, 2
   /* 1121D8 8018DA98 03284821 */      addu $t1, $t9, $t0
   /* 1121DC 8018DA9C 8D240000 */        lw $a0, ($t1)
@@ -1193,11 +1193,11 @@ glabel scBonusGame_InitTimer
   /* 1128B4 8018E174 3C0C8019 */       lui $t4, %hi(D_ovl6_8018F3A6)
   /* 1128B8 8018E178 3C0A8019 */       lui $t2, %hi(gBonusTimerDigits)
   /* 1128BC 8018E17C 3C098019 */       lui $t1, %hi(scBonusGame_Timer_DigitPositions)
-  /* 1128C0 8018E180 3C088013 */       lui $t0, %hi(gCommonFiles)
+  /* 1128C0 8018E180 3C088013 */       lui $t0, %hi(gGMCommonFiles)
   /* 1128C4 8018E184 3C048013 */       lui $a0, %hi(ifTimer_Digits_SpriteOffsets)
   /* 1128C8 8018E188 44816000 */      mtc1 $at, $f12 # 0.5 to cop1
   /* 1128CC 8018E18C 2484EE94 */     addiu $a0, $a0, %lo(ifTimer_Digits_SpriteOffsets)
-  /* 1128D0 8018E190 25080D40 */     addiu $t0, $t0, %lo(gCommonFiles)
+  /* 1128D0 8018E190 25080D40 */     addiu $t0, $t0, %lo(gGMCommonFiles)
   /* 1128D4 8018E194 2529F014 */     addiu $t1, $t1, %lo(scBonusGame_Timer_DigitPositions)
   /* 1128D8 8018E198 254AF3A0 */     addiu $t2, $t2, %lo(gBonusTimerDigits)
   /* 1128DC 8018E19C 258CF3A6 */     addiu $t4, $t4, %lo(D_ovl6_8018F3A6)
@@ -1219,7 +1219,7 @@ glabel scBonusGame_InitTimer
   /* 112918 8018E1D8 10580029 */       beq $v0, $t8, .L8018E280
   /* 11291C 8018E1DC 46040001 */     sub.s $f0, $f0, $f4
   /* 112920 8018E1E0 8DAE0000 */        lw $t6, ($t5)
-  /* 112924 8018E1E4 8D0F000C */        lw $t7, 0xc($t0) # gCommonFiles + 12
+  /* 112924 8018E1E4 8D0F000C */        lw $t7, 0xc($t0) # gGMCommonFiles + 12
   /* 112928 8018E1E8 01CFC021 */      addu $t8, $t6, $t7
   /* 11292C 8018E1EC 270F003C */     addiu $t7, $t8, 0x3c
   /* 112930 8018E1F0 00607025 */        or $t6, $v1, $zero
@@ -1359,15 +1359,15 @@ glabel func_ovl6_8018E344
   /* 112B18 8018E3D8 3C118019 */       lui $s1, %hi(scBonusGame_Timer_DigitPositions)
   /* 112B1C 8018E3DC 3C108019 */       lui $s0, %hi(gBonusTimerDigits)
   /* 112B20 8018E3E0 3C158019 */       lui $s5, %hi(D_ovl6_8018F3A6)
-  /* 112B24 8018E3E4 3C128013 */       lui $s2, %hi(gCommonFiles)
+  /* 112B24 8018E3E4 3C128013 */       lui $s2, %hi(gGMCommonFiles)
   /* 112B28 8018E3E8 4481A000 */      mtc1 $at, $f20 # 0.5 to cop1
-  /* 112B2C 8018E3EC 26520D40 */     addiu $s2, $s2, %lo(gCommonFiles)
+  /* 112B2C 8018E3EC 26520D40 */     addiu $s2, $s2, %lo(gGMCommonFiles)
   /* 112B30 8018E3F0 26B5F3A6 */     addiu $s5, $s5, %lo(D_ovl6_8018F3A6)
   /* 112B34 8018E3F4 2610F3A0 */     addiu $s0, $s0, %lo(gBonusTimerDigits)
   /* 112B38 8018E3F8 2631F014 */     addiu $s1, $s1, %lo(scBonusGame_Timer_DigitPositions)
   /* 112B3C 8018E3FC 26730138 */     addiu $s3, $s3, %lo(D_NF_00000138)
   .L8018E400:
-  /* 112B40 8018E400 8E58000C */        lw $t8, 0xc($s2) # gCommonFiles + 12
+  /* 112B40 8018E400 8E58000C */        lw $t8, 0xc($s2) # gGMCommonFiles + 12
   /* 112B44 8018E404 02802025 */        or $a0, $s4, $zero
   /* 112B48 8018E408 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 112B4C 8018E40C 03132821 */      addu $a1, $t8, $s3
@@ -1398,7 +1398,7 @@ glabel func_ovl6_8018E344
   /* 112BB0 8018E470 02802025 */        or $a0, $s4, $zero
   /* 112BB4 8018E474 354B0004 */       ori $t3, $t2, 4
   /* 112BB8 8018E478 A44B0024 */        sh $t3, 0x24($v0)
-  /* 112BBC 8018E47C 8E4C000C */        lw $t4, 0xc($s2) # gCommonFiles + 12
+  /* 112BBC 8018E47C 8E4C000C */        lw $t4, 0xc($s2) # gGMCommonFiles + 12
   /* 112BC0 8018E480 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 112BC4 8018E484 018D2821 */      addu $a1, $t4, $t5
   /* 112BC8 8018E488 844E0014 */        lh $t6, 0x14($v0)
@@ -1432,7 +1432,7 @@ glabel func_ovl6_8018E344
   /* 112C38 8018E4F8 00000000 */       nop 
   /* 112C3C 8018E4FC 46802420 */   cvt.s.w $f16, $f4
   /* 112C40 8018E500 E450005C */      swc1 $f16, 0x5c($v0)
-  /* 112C44 8018E504 8E4A000C */        lw $t2, 0xc($s2) # gCommonFiles + 12
+  /* 112C44 8018E504 8E4A000C */        lw $t2, 0xc($s2) # gGMCommonFiles + 12
   /* 112C48 8018E508 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 112C4C 8018E50C 014B2821 */      addu $a1, $t2, $t3
   /* 112C50 8018E510 844C0014 */        lh $t4, 0x14($v0)
@@ -1536,7 +1536,7 @@ glabel scBonusGame_InitBonusGame
   /* 112DC0 8018E680 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 112DC4 8018E684 00000000 */       nop 
   /* 112DC8 8018E688 24040002 */     addiu $a0, $zero, 2
-  /* 112DCC 8018E68C 0C035C65 */       jal ftManager_AllocFighterData
+  /* 112DCC 8018E68C 0C035C65 */       jal ftManagerAllocFighter
   /* 112DD0 8018E690 24050004 */     addiu $a1, $zero, 4
   /* 112DD4 8018E694 0C05952C */       jal wpManagerAllocWeapons
   /* 112DD8 8018E698 00000000 */       nop 
@@ -1576,7 +1576,7 @@ glabel scBonusGame_InitBonusGame
   /* 112E58 8018E718 24C60001 */     addiu $a2, $a2, 1
   /* 112E5C 8018E71C 90440023 */       lbu $a0, 0x23($v0)
   /* 112E60 8018E720 AFA60078 */        sw $a2, 0x78($sp)
-  /* 112E64 8018E724 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 112E64 8018E724 0C035E1B */       jal ftManagerSetupDataKind
   /* 112E68 8018E728 AFA3002C */        sw $v1, 0x2c($sp)
   /* 112E6C 8018E72C 3C0B800A */       lui $t3, %hi(gBattleState)
   /* 112E70 8018E730 8FA3002C */        lw $v1, 0x2c($sp)
@@ -1618,13 +1618,13 @@ glabel scBonusGame_InitBonusGame
   /* 112EF8 8018E7B8 AFAC0060 */        sw $t4, 0x60($sp)
   /* 112EFC 8018E7BC AFA8005C */        sw $t0, 0x5c($sp)
   /* 112F00 8018E7C0 90440023 */       lbu $a0, 0x23($v0)
-  /* 112F04 8018E7C4 0C035E2D */       jal ftManager_AllocAnimHeapKind
+  /* 112F04 8018E7C4 0C035E2D */       jal ftManagerAllocAnimHeapKind
   /* 112F08 8018E7C8 AFA60078 */        sw $a2, 0x78($sp)
   /* 112F0C 8018E7CC 93AE0053 */       lbu $t6, 0x53($sp)
   /* 112F10 8018E7D0 AFA2006C */        sw $v0, 0x6c($sp)
   /* 112F14 8018E7D4 27A40034 */     addiu $a0, $sp, 0x34
   /* 112F18 8018E7D8 35C90080 */       ori $t1, $t6, 0x80
-  /* 112F1C 8018E7DC 0C035FCF */       jal ftManager_MakeFighter
+  /* 112F1C 8018E7DC 0C035FCF */       jal ftManagerMakeFighter
   /* 112F20 8018E7E0 A3A90053 */        sb $t1, 0x53($sp)
   /* 112F24 8018E7E4 8FA40078 */        lw $a0, 0x78($sp)
   /* 112F28 8018E7E8 0C039F13 */       jal ftCommon_ClearPlayerMatchStats
@@ -1637,7 +1637,7 @@ glabel scBonusGame_InitBonusGame
   /* 112F40 8018E800 14C5FFC3 */       bne $a2, $a1, .L8018E710
   /* 112F44 8018E804 24420074 */     addiu $v0, $v0, 0x74
   .L8018E808:
-  /* 112F48 8018E808 0C035E0B */       jal ftManager_SetFileDataPlayables
+  /* 112F48 8018E808 0C035E0B */       jal ftManagerSetupDataPlayables
   /* 112F4C 8018E80C 00000000 */       nop 
   /* 112F50 8018E810 0C045256 */       jal ifMain_SetGameStatusWait
   /* 112F54 8018E814 00000000 */       nop 
@@ -1698,17 +1698,17 @@ glabel scBonusGame_SetBonusEndStats
   /* 113028 8018E8E8 030FC023 */      subu $t8, $t8, $t7
   /* 11302C 8018E8EC 0018C080 */       sll $t8, $t8, 2
   /* 113030 8018E8F0 030FC021 */      addu $t8, $t8, $t7
-  /* 113034 8018E8F4 3C038013 */       lui $v1, %hi(g1PGameTotalDamageTaken)
+  /* 113034 8018E8F4 3C038013 */       lui $v1, %hi(sGM1PManagerTotalDamageTaken)
   /* 113038 8018E8F8 0018C080 */       sll $t8, $t8, 2
-  /* 11303C 8018E8FC 24630D6C */     addiu $v1, $v1, %lo(g1PGameTotalDamageTaken)
+  /* 11303C 8018E8FC 24630D6C */     addiu $v1, $v1, %lo(sGM1PManagerTotalDamageTaken)
   /* 113040 8018E900 0058C821 */      addu $t9, $v0, $t8
   /* 113044 8018E904 8F280058 */        lw $t0, 0x58($t9)
-  /* 113048 8018E908 8C6E0000 */        lw $t6, ($v1) # g1PGameTotalDamageTaken + 0
+  /* 113048 8018E908 8C6E0000 */        lw $t6, ($v1) # sGM1PManagerTotalDamageTaken + 0
   /* 11304C 8018E90C 2401003C */     addiu $at, $zero, 0x3c
   /* 113050 8018E910 3C0D0004 */       lui $t5, 4
   /* 113054 8018E914 01C84821 */      addu $t1, $t6, $t0
   /* 113058 8018E918 10800006 */      beqz $a0, .L8018E934
-  /* 11305C 8018E91C AC690000 */        sw $t1, ($v1) # g1PGameTotalDamageTaken + 0
+  /* 11305C 8018E91C AC690000 */        sw $t1, ($v1) # sGM1PManagerTotalDamageTaken + 0
   /* 113060 8018E920 ACA0001C */        sw $zero, 0x1c($a1) # gSceneData + 28
   /* 113064 8018E924 ACA0002C */        sw $zero, 0x2c($a1) # gSceneData + 44
   /* 113068 8018E928 ACA00030 */        sw $zero, 0x30($a1) # gSceneData + 48
@@ -1816,13 +1816,13 @@ glabel scBonusGame_SetGeometryRenderLights
   /* 1131D4 8018EA94 246E0008 */     addiu $t6, $v1, 8
   /* 1131D8 8018EA98 AC8E0000 */        sw $t6, ($a0)
   /* 1131DC 8018EA9C 3C180002 */       lui $t8, 2
-  /* 1131E0 8018EAA0 3C058013 */       lui $a1, %hi(gMapLightAngleX)
-  /* 1131E4 8018EAA4 3C068013 */       lui $a2, %hi(gMapLightAngleY)
+  /* 1131E0 8018EAA0 3C058013 */       lui $a1, %hi(gMPLightAngleX)
+  /* 1131E4 8018EAA4 3C068013 */       lui $a2, %hi(gMPLightAngleY)
   /* 1131E8 8018EAA8 AC780004 */        sw $t8, 4($v1)
   /* 1131EC 8018EAAC AC6F0000 */        sw $t7, ($v1)
-  /* 1131F0 8018EAB0 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
+  /* 1131F0 8018EAB0 8CC61394 */        lw $a2, %lo(gMPLightAngleY)($a2)
   /* 1131F4 8018EAB4 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
-  /* 1131F8 8018EAB8 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
+  /* 1131F8 8018EAB8 8CA51390 */        lw $a1, %lo(gMPLightAngleX)($a1)
   /* 1131FC 8018EABC 8FBF0014 */        lw $ra, 0x14($sp)
   /* 113200 8018EAC0 27BD0018 */     addiu $sp, $sp, 0x18
   /* 113204 8018EAC4 03E00008 */        jr $ra
@@ -2046,8 +2046,8 @@ glabel func_ovl6_8018ED70
   /* 11351C 8018EDDC 0C001260 */       jal gsMemoryAlloc
   /* 113520 8018EDE0 24050010 */     addiu $a1, $zero, 0x10
   /* 113524 8018EDE4 3C048011 */       lui $a0, %hi(dCommonFileIDs)
-  /* 113528 8018EDE8 3C068013 */       lui $a2, %hi(gCommonFiles)
-  /* 11352C 8018EDEC 24C60D40 */     addiu $a2, $a2, %lo(gCommonFiles)
+  /* 113528 8018EDE8 3C068013 */       lui $a2, %hi(gGMCommonFiles)
+  /* 11352C 8018EDEC 24C60D40 */     addiu $a2, $a2, %lo(gGMCommonFiles)
   /* 113530 8018EDF0 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
   /* 113534 8018EDF4 24050008 */     addiu $a1, $zero, 8
   /* 113538 8018EDF8 0C033781 */       jal rdManagerLoadFiles

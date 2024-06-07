@@ -67,8 +67,8 @@ void ftSamusSpecialHiSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->command_vars.flags.flag1 = 0;
 }
@@ -87,8 +87,8 @@ void ftSamusSpecialAirHiSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE;
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Samus_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE;
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->jumps_used = fp->attributes->jumps_max;
     fp->phys_info.vel_air.y = FTSAMUS_SCREWATTACK_VEL_Y_BASE;

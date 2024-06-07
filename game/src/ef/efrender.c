@@ -102,19 +102,19 @@ void func_ovl2_800FD18C(void)
 
     gobj = omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 6U, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl2_800FCFCC, 0x12, 1, -1);
-    gobj->unk_gobj_0x30 = 5;
+    gobj->ftparts_gobj_0x30 = 5;
 
     gobj = omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 6U, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl2_800FCFCC, 0xF, 1, -1);
-    gobj->unk_gobj_0x30 = 2;
+    gobj->ftparts_gobj_0x30 = 2;
 
     gobj = omMakeGObjSPAfter(0x3F8U, NULL, 0xBU, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl2_800FCEEC, 0x19, 0x80000000U, -1);
-    gobj->unk_gobj_0x30 = 8;
+    gobj->ftparts_gobj_0x30 = 8;
 
     gobj = omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 6U, 0x80000000);
     omAddGObjRenderProc(gobj, func_ovl2_800FD0AC, 0xA, 0x80000000U, -1);
-    gobj->unk_gobj_0x30 = 16;
+    gobj->ftparts_gobj_0x30 = 16;
 
     sEFParticleBankID = efAlloc_SetParticleBank(&D_NF_00AC7340, &D_NF_00AC9DE0, &D_NF_00AC9DE0_other, &D_NF_00B16C80);
 }

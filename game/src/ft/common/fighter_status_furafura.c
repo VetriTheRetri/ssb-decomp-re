@@ -28,7 +28,7 @@ void ftCommon_FuraFura_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 breakout_wait;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_FuraFura, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_FuraFura, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE));
 
     fp->shield_health = (fp->ft_kind == Ft_Kind_Yoshi) ? 30 : 30;
 

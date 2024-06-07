@@ -34,7 +34,7 @@ void ftDonkey_ThrowFWait_SetStatus(GObj *fighter_gobj)
     {
         ftMap_SetGround(fp);
     }
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Donkey_ThrowFWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Donkey_ThrowFWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 }
 
 // 0x8014D4EC

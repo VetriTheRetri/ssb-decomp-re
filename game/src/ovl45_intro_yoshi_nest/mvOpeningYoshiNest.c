@@ -68,7 +68,7 @@ void mvOpeningYoshiNestCreateFighters()
         spawn_info.pos.y = 0.0F;
         spawn_info.pos.z = 0.0F;
         spawn_info.anim_heap = gMvOpeningYoshiNestFighterAnimHeaps[i];
-        fighter_gobj = ftManager_MakeFighter(&spawn_info);
+        fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
         func_ovl1_803905CC(fighter_gobj, anims[i]);
 
@@ -184,8 +184,8 @@ void mvOpeningYoshiNestInit()
     func_ovl2_80115890();
     mvOpeningYoshiNestInitFramesElapsed();
     efManager_AllocUserData();
-    ftManager_AllocFighterData(1, 4);
-    ftManager_SetFileDataKind(Ft_Kind_Yoshi);
+    ftManagerAllocFighter(1, 4);
+    ftManagerSetupDataKind(Ft_Kind_Yoshi);
 
     for (i = 0; i < ARRAY_COUNT(gMvOpeningYoshiNestFighterAnimHeaps); i++)
     {

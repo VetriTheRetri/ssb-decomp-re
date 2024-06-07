@@ -92,7 +92,18 @@
 #define FTKIRBY_COPYNESS_PKFIRE_SPARK_VEL_AIR 95.0F
 #define FTKIRBY_COPYNESS_PKFIRE_SPARK_VEL_GROUND 73.0F
 
-extern ftStatusDesc ftStatus_SpecialDesc_Kirby[/* */];
+extern ftStatusDesc dFTKirbySpecialStatusDesc[/* */];
+
+extern void *gFTDataKirbyMain;
+extern void *gFTDataKirbyBattleMotion;
+extern void *gFTDataKirbyModel;
+extern void *gFTDataKirbySpecial2;
+extern u32 gFTDataKirbyParticleBankID;
+
+extern void *gFTDataPolyKirbyMain;
+extern void *gFTDataPolyKirbySubMotion;
+extern void *gFTDataPolyKirbyModel;
+extern u32 gFTDataPolyKirbyParticleBankID;
 
 typedef enum ftKirbyMotion
 {

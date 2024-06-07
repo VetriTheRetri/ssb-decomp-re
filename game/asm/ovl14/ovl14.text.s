@@ -379,7 +379,7 @@ glabel func_ovl14_80131F3C
   /* 11BE74 80132004 ADAC0000 */        sw $t4, ($t5)
   /* 11BE78 80132008 8E240004 */        lw $a0, 4($s1) # D_ovl14_80133110 + 4
   /* 11BE7C 8013200C 8C820084 */        lw $v0, 0x84($a0)
-  /* 11BE80 80132010 0C035E3A */       jal func_ovl2_800D78E8
+  /* 11BE80 80132010 0C035E3A */       jal ftManagerDestroyFighter
   /* 11BE84 80132014 8C5309D0 */        lw $s3, 0x9d0($v0)
   /* 11BE88 80132018 44922000 */      mtc1 $s2, $f4
   /* 11BE8C 8013201C 3C0143C8 */       lui $at, (0x43C80000 >> 16) # 400.0
@@ -407,7 +407,7 @@ glabel func_ovl14_80131F3C
   /* 11BEE0 80132070 02402025 */        or $a0, $s2, $zero
   /* 11BEE4 80132074 A3A20060 */        sb $v0, 0x60($sp)
   /* 11BEE8 80132078 AFB30080 */        sw $s3, 0x80($sp)
-  /* 11BEEC 8013207C 0C035FCF */       jal ftManager_MakeFighter
+  /* 11BEEC 8013207C 0C035FCF */       jal ftManagerMakeFighter
   /* 11BEF0 80132080 02802025 */        or $a0, $s4, $zero
   /* 11BEF4 80132084 920F0023 */       lbu $t7, 0x23($s0) # gTransferBattleState + 35
   /* 11BEF8 80132088 92180026 */       lbu $t8, 0x26($s0) # gTransferBattleState + 38
@@ -689,11 +689,11 @@ glabel func_ovl14_8013239C
   /* 11C2E8 80132478 0C03F4C0 */       jal efManager_AllocUserData
   /* 11C2EC 8013247C 00000000 */       nop 
   /* 11C2F0 80132480 24040003 */     addiu $a0, $zero, 3
-  /* 11C2F4 80132484 0C035C65 */       jal ftManager_AllocFighterData
+  /* 11C2F4 80132484 0C035C65 */       jal ftManagerAllocFighter
   /* 11C2F8 80132488 24050004 */     addiu $a1, $zero, 4
   /* 11C2FC 8013248C 00008025 */        or $s0, $zero, $zero
   .L80132490:
-  /* 11C300 80132490 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 11C300 80132490 0C035E1B */       jal ftManagerSetupDataKind
   /* 11C304 80132494 02002025 */        or $a0, $s0, $zero
   /* 11C308 80132498 26100001 */     addiu $s0, $s0, %lo(D_NF_80000001)
   /* 11C30C 8013249C 2A01001B */      slti $at, $s0, 0x1b
@@ -759,7 +759,7 @@ glabel func_ovl14_8013239C
   /* 11C3F0 80132580 0C001260 */       jal gsMemoryAlloc
   /* 11C3F4 80132584 E7AA005C */      swc1 $f10, 0x5c($sp)
   /* 11C3F8 80132588 AFA20090 */        sw $v0, 0x90($sp)
-  /* 11C3FC 8013258C 0C035FCF */       jal ftManager_MakeFighter
+  /* 11C3FC 8013258C 0C035FCF */       jal ftManagerMakeFighter
   /* 11C400 80132590 02602025 */        or $a0, $s3, $zero
   /* 11C404 80132594 92290023 */       lbu $t1, 0x23($s1) # gTransferBattleState + 35
   /* 11C408 80132598 922A0026 */       lbu $t2, 0x26($s1) # gTransferBattleState + 38

@@ -75,7 +75,7 @@ void mvOpeningMarioVsKirbyCreateFighters()
     spawn_info.pos.y = 0.0f;
     spawn_info.pos.z = 0.0f;
     spawn_info.anim_heap = gMvOpeningMarioVsKirbyAnimHeapMario;
-    fighter_gobj = ftManager_MakeFighter(&spawn_info);
+    fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
     func_ovl1_803905CC(fighter_gobj, 0x1000F);
     DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0f;
@@ -88,7 +88,7 @@ void mvOpeningMarioVsKirbyCreateFighters()
     spawn_info.pos.y = 0.0f;
     spawn_info.pos.z = 0.0f;
     spawn_info.anim_heap = gMvOpeningMarioVsKirbyAnimHeapKirby;
-    fighter_gobj = ftManager_MakeFighter(&spawn_info);
+    fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
     func_ovl1_803905CC(fighter_gobj, 0x1000F);
     DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0f;
@@ -353,9 +353,9 @@ void mvOpeningMarioVsKirbyInit()
     func_ovl2_80115890();
     mvOpeningMarioVsKirbyInitFramesElapsed();
     efManager_AllocUserData();
-    ftManager_AllocFighterData(1, 2);
-    ftManager_SetFileDataKind(Ft_Kind_Mario);
-    ftManager_SetFileDataKind(Ft_Kind_Kirby);
+    ftManagerAllocFighter(1, 2);
+    ftManagerSetupDataKind(Ft_Kind_Mario);
+    ftManagerSetupDataKind(Ft_Kind_Kirby);
 
     gMvOpeningMarioVsKirbyAnimHeapMario = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
     gMvOpeningMarioVsKirbyAnimHeapKirby = gsMemoryAlloc(gFTAnimHeapSize, 0x10);

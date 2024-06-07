@@ -132,7 +132,7 @@ void ftHammer_SetStatusHammerWait(GObj *fighter_gobj)
     {
         ftMap_SetGround(fp);
     }
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_HammerWait, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_HammerWait, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
     ftHammer_CheckSetColAnim(fighter_gobj);
 }
 

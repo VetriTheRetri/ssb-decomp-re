@@ -111,7 +111,7 @@ void ftMarioSpecialAirLwSwitchStatusGround(GObj *fighter_gobj)
 
     ftMarioSpecialAirLwSetDisableRise(fighter_gobj);
     ftMap_SetGround(fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
     ftPhysics_ClampGroundVel(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
 }
 
@@ -122,7 +122,7 @@ void ftMarioSpecialLwSwitchStatusAir(GObj *fighter_gobj)
 
     ftMarioSpecialAirLwSetDisableRise(fighter_gobj);
     ftMap_SetAir(fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
     ftPhysics_ClampAirVelY(fp, FTMARIO_TORNADO_VEL_Y_CLAMP);
     ftPhysics_ClampAirVelX(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
 }
@@ -146,8 +146,8 @@ void ftMarioSpecialLwSetStatus(GObj *fighter_gobj)
 
     ftMarioSpecialAirLwSetDisableRise(fighter_gobj);
     ftMap_SetAir(fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->phys_info.vel_air.y = -7.0F;
 
@@ -164,8 +164,8 @@ void ftMarioSpecialAirLwSetStatus(GObj *fighter_gobj)
     f32 tornado_vel_y;
 
     ftMarioSpecialAirLwSetDisableRise(fighter_gobj);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     tornado_vel_y = (fp->fighter_vars.mario.is_expend_tornado != FALSE) ? 0.0F : FTMARIO_TORNADO_VEL_Y_TAP;
 

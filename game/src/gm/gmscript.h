@@ -170,7 +170,7 @@ typedef struct ftMotionEventMakeHit1
     u32 opcode : 6;
     u32 hit_id : 3;
     u32 group_id : 3;
-    s32 joint_index : 7;
+    s32 joint_id : 7;
     u32 damage : 8;
     ub32 can_rebound : 1;
     u32 element : 4;
@@ -314,7 +314,7 @@ typedef struct ftMotionEventPlaySFX
 typedef struct ftMotionEventMakeGFX1
 {
     u32 opcode : 6;
-    s32 joint_index : 7;
+    s32 joint_id : 7;
     u32 gfx_id : 9;
     u32 flag : 10;
 
@@ -360,7 +360,7 @@ typedef struct ftMotionEventSetHitStatusAll
 typedef struct ftMotionEventSetHitStatusPart
 {
     u32 opcode : 6;
-    s32 joint_index : 7;
+    s32 joint_id : 7;
     u32 hitstatus : 19;
 
 } ftMotionEventSetHitStatusPart;
@@ -368,7 +368,7 @@ typedef struct ftMotionEventSetHitStatusPart
 typedef struct ftMotionEventSetHurtPart1
 {
     u32 opcode : 6;
-    s32 joint_index : 7;
+    s32 joint_id : 7;
 
 } ftMotionEventSetHurtPart1;
 
@@ -500,7 +500,7 @@ typedef struct ftMotionEventParallel
 typedef struct ftMotionEventSetModelPart
 {
     u32 opcode : 6;
-    s32 joint_index : 7;
+    s32 joint_id : 7;
     s32 mode : 19;
 
 } ftMotionEventSetModelPart;
@@ -685,7 +685,7 @@ typedef struct caColorEventBlendRGBA
 typedef struct caColorEventCreateGFX1
 {
     u32 opcode : 6;
-    s32 joint_index : 7;
+    s32 joint_id : 7;
     u32 gfx_id : 9;
     u32 flag : 10;
 

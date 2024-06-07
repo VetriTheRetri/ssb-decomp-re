@@ -1,9 +1,598 @@
 #include <ft/fighter.h>
+
 #include <wp/weapon.h>
 #include <it/item.h>
 #include <gr/ground.h>
 #include <gm/battle.h>
-#include "thread6.h"
+
+#include <sys/thread6.h>
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+/* MARIO FTDATA */
+
+// 0x80130E30
+void *gFTDataMarioMain;
+
+// 0x80130E34
+void *gFTDataMarioBattleMotion;
+
+// 0x80130E38
+void *gFTDataMarioModel;
+
+// 0x80130E3C
+void *gFTDataMarioSpecial1;
+
+// 0x80130E40
+void *gFTDataMarioSpecial2;
+
+// 0x80130E44
+void *gFTDataMarioSpecial3;
+
+// 0x80130E48
+u32 gFTDataMarioParticleBankID;
+
+// 0x80130E4C
+u32 gFTDataMarioPadding[1];
+
+/* METALMARIO FTDATA */
+
+// 0x80130E50
+void *gFTDataMetalMarioMain;
+
+// 0x80130E54
+void *gFTDataMetalMarioBattleMotion;
+
+// 0x80130E58
+void *gFTDataMetalMarioSubMotion;
+
+// 0x80130E5C
+void *gFTDataMetalMarioModel;
+
+// 0x80130E60
+void *gFTDataMetalMarioSpecial1;
+
+// 0x80130E64
+void *gFTDataMetalMarioSpecial2;
+
+// 0x80130E68
+void *gFTDataMetalMarioSpecial3;
+
+// 0x80130E6C
+u32 gFTDataMetalMarioParticleBankID;
+
+/* POLYMARIO FTDATA */
+
+// 0x80130E70
+void *gFTDataPolyMarioMain;
+
+// 0x80130E74
+void *gFTDataPolyMarioSubMotion;
+
+// 0x80130E78
+void *gFTDataPolyMarioModel;
+
+// 0x80130E7C
+u32 gFTDataPolyMarioParticleBankID;
+
+// 0x80130E80
+u32 gFTDataPolyMarioPadding[4];
+
+/* FOX FTDATA */
+
+// 0x80130E90
+void *gFTDataFoxMain;
+
+// 0x80130E94
+void *gFTDataFoxBattleMotion;
+
+// 0x80130E98
+void *gFTDataFoxModel;
+
+// 0x80130E9C
+void *gFTDataFoxSpecial1;
+
+// 0x80130EA0
+void *gFTDataFoxSpecial2;
+
+// 0x80130EA4
+void *gFTDataFoxSpecial3;
+
+// 0x80130EA8
+void *gFTDataFoxSpecial4;
+
+// 0x80130EAC
+u32 gFTDataFoxParticleBankID;
+
+/* POLYFOX FDATA */
+
+// 0x80130EB0
+void *gFTDataPolyFoxMain;
+
+// 0x80130EB4
+void *gFTDataPolyFoxSubMotion;
+
+// 0x80130EB8
+void *gFTDataPolyFoxModel;
+
+// 0x80130EBC
+u32 gFTDataPolyFoxParticleBankID;
+
+// 0x80130EC0
+u32 gFTDataPolyFoxPadding[4];
+
+/* DONKEY FTDATA */
+
+// 0x80130ED0
+void *gFTDataDonkeyMain;
+
+// 0x80130ED4
+void *gFTDataDonkeyBattleMotion;
+
+// 0x80130ED8
+void *gFTDataDonkeyModel;
+
+// 0x80130EDC
+void *gFTDataDonkeySpecial2;
+
+// 0x80130EE0
+u32 gFTDataDonkeyParticleBankID;
+
+// 0x80130EE4
+u32 gFTDataDonkeyPadding[3];
+
+/* POLYDONKEY FTDATA */
+
+// 0x80130EF0
+void *gFTDataPolyDonkeyMain;
+
+// 0x80130EF4
+void *gFTDataPolyDonkeySubMotion;
+
+// 0x80130EF8
+void *gFTDataPolyDonkeyModel;
+
+// 0x80130EFC
+u32 gFTDataPolyDonkeyParticleBankID;
+
+// 0x80130F00
+u32 gFTDataPolyDonkeyPadding[4];
+
+/* GIANTDONKEY FTDATA */
+
+// 0x80130F10
+void *gFTDataGiantDonkeyMain;
+
+// 0x80130F14
+void *gFTDataGiantDonkeySubMotion;
+
+// 0x80130F18
+void *gFTDataGiantDonkeyModel;
+
+// 0x80130F1C
+void *gFTDataGiantDonkeySpecial2;
+
+// 0x80130F20
+u32 gFTDataGiantDonkeyParticleBankID;
+
+// 0x80130F24
+u32 gFTDataGiantDonkeyPadding[3];
+
+/* SAMUS FTDATA */
+
+// 0x80130F30
+void *gFTDataSamusMain;
+
+// 0x80130F34
+void *gFTDataSamusBattleMotion;
+
+// 0x80130F38
+void *gFTDataSamusModel;
+
+// 0x80130F3C
+void *gFTDataSamusSpecial1;
+
+// 0x80130F40
+void *gFTDataSamusSpecial2;
+
+// 0x80130F44
+void *gFTDataSamusSpecial3;
+
+// 0x80130F48
+u32 gFTDataSamusParticleBankID;
+
+// 0x80130F4C
+u32 gFTDataSamusPadding[1];
+
+/* POLYSAMUS FTDATA */
+
+// 0x80130F50
+void *gFTDataPolySamusMain;
+
+// 0x80130F54
+void *gFTDataPolySamusSubMotion;
+
+// 0x80130F58
+void *gFTDataPolySamusModel;
+
+// 0x80130F5C
+u32 gFTDataPolySamusParticleBankID;
+
+// 0x80130F60
+u32 gFTDataPolySamusPadding[4];
+
+/* LUIGI FTDATA */
+
+// 0x80130F70
+void *gFTDataLuigiMain;
+
+// 0x80130F74
+void *gFTDataLuigiBattleMotion;
+
+// 0x80130F78
+void *gFTDataLuigiModel;
+
+// 0x80130F7C
+void *gFTDataLuigiSpecial1;
+
+// 0x80130F80
+void *gFTDataLuigiSpecial2;
+
+// 0x80130F84
+void *gFTDataLuigiSpecial3;
+
+// 0x80130F88
+u32 gFTDataLuigiParticleBankID;
+
+// 0x80130F8C
+u32 gFTDataLuigiPadding[1];
+
+/* POLYLUIGI FTDATA */
+
+// 0x80130F90
+void *gFTDataPolyLuigiMain;
+
+// 0x80130F94
+void *gFTDataPolyLuigiSubMotion;
+
+// 0x80130F98
+void *gFTDataPolyLuigiModel;
+
+// 0x80130F9C
+u32 gFTDataPolyLuigiParticleBankID;
+
+// 0x80130FA0
+u32 gFTDataPolyLuigiPadding[4];
+
+/* LINK FTDATA */
+
+// 0x80130FB0
+void *gFTDataLinkMain;
+
+// 0x80130FB4
+void *gFTDataLinkBattleMotion;
+
+// 0x80130FB8
+void *gFTDataLinkModel;
+
+// 0x80130FBC
+void *gFTDataLinkSpecial1;
+
+// 0x80130FC0
+void *gFTDataLinkSpecial2;
+
+// 0x80130FC4
+void *gFTDataLinkSpecial3;
+
+// 0x80130FC8
+u32 gFTDataLinkParticleBankID;
+
+// 0x80130FCC
+u32 gFTDataLinkPadding[1];
+
+/* POLYLINK FTDATA */
+
+// 0x80130FD0
+void *gFTDataPolyLinkMain;
+
+// 0x80130FD4
+void *gFTDataPolyLinkSubMotion;
+
+// 0x80130FD8
+void *gFTDataPolyLinkModel;
+
+// 0x80130FDC
+u32 gFTDataPolyLinkParticleBankID;
+
+// 0x80130FE0
+u32 gFTDataPolyLinkPadding[4];
+
+/* YOSHI FTDATA */
+
+// 0x80130FF0
+void *gFTDataYoshiMain;
+
+// 0x80130FF4
+void *gFTDataYoshiBattleMotion;
+
+// 0x80130FF8
+void *gFTDataYoshiModel;
+
+// 0x80130FFC
+void *gFTDataYoshiSpecial2;
+
+// 0x80131000
+void *gFTDataYoshiSpecial3;
+
+// 0x80131004
+u32 gFTDataYoshiParticleBankID;
+
+// 0x80131008
+u32 gFTDataYoshiPadding[2];
+
+/* POLYYOSHI FTDATA */
+
+// 0x80131010
+void *gFTDataPolyYoshiMain;
+
+// 0x80131014
+void *gFTDataPolyYoshiSubMotion;
+
+// 0x80131018
+void *gFTDataPolyYoshiModel;
+
+// 0x8013101C
+u32 gFTDataPolyYoshiParticleBankID;
+
+// 0x80131020
+u32 gFTDataPolyYoshiPadding[4];
+
+/* CAPTAIN FTDATA */
+
+// 0x80131030
+void *gFTDataCaptainMain;
+
+// 0x80131034
+void *gFTDataCaptainBattleMotion;
+
+// 0x80131038
+void *gFTDataCaptainModel;
+
+// 0x8013103C
+void *gFTDataCaptainSpecial2;
+
+// 0x80131040
+void *gFTDataCaptainSpecial3;
+
+// 0x80131044
+u32 gFTDataCaptainParticleBankID;
+
+// 0x80131048
+u32 gFTDataCaptainPadding[2];
+
+/* POLYCAPTAIN FTDATA */
+
+// 0x80131050
+void *gFTDataPolyCaptainMain;
+
+// 0x80131054
+void *gFTDataPolyCaptainSubMotion;
+
+// 0x80131058
+void *gFTDataPolyCaptainModel;
+
+// 0x8013105C
+u32 gFTDataPolyCaptainParticleBankID;
+
+// 0x80131060
+u32 gFTDataPolyCaptainPadding[4];
+
+/* KIRBY FTDATA */
+
+// 0x80131070
+void *gFTDataKirbyMain;
+
+// 0x80131074
+void *gFTDataKirbyBattleMotion;
+
+// 0x80131078
+void *gFTDataKirbyModel;
+
+// 0x8013107C
+void *gFTDataKirbySpecial2;
+
+// 0x80131080
+u32 gFTDataKirbyParticleBankID;
+
+// 0x80131084
+u32 gFTDataKirbyPadding[3];
+
+/* POLYKIRBY FTDATA */
+
+// 0x80131090
+void *gFTDataPolyKirbyMain;
+
+// 0x80131094
+void *gFTDataPolyKirbySubMotion;
+
+// 0x80131098
+void *gFTDataPolyKirbyModel;
+
+// 0x8013109C
+u32 gFTDataPolyKirbyParticleBankID;
+
+// 0x801310A0
+u32 gFTDataPolyKirbyPadding[3];
+
+/* PIKACHU FTDATA */
+
+// 0x801310B0
+void *gFTDataPikachuMain;
+
+// 0x801310B4
+void *gFTDataPikachuBattleMotion;
+
+// 0x801310B8
+void *gFTDataPikachuModel;
+
+// 0x801310BC
+void *gFTDataPikachuSpecial1;
+
+// 0x801310C0
+void *gFTDataPikachuSpecial2;
+
+// 0x801310C4
+void *gFTDataPikachuSpecial3;
+
+// 0x801310C8
+u32 gFTDataPikachuParticleBankID;
+
+// 0x801310CC
+u32 gFTDataPikachuPadding[1];
+
+/* POLYPIKACHU FTDATA */
+
+// 0x801310D0
+void *gFTDataPolyPikachuMain;
+
+// 0x801310D4
+void *gFTDataPolyPikachuSubMotion;
+
+// 0x801310D8
+void *gFTDataPolyPikachuModel;
+
+// 0x801310DC
+u32 gFTDataPolyPikachuParticleBankID;
+
+// 0x801310E0
+u32 gFTDataPolyPikachuPadding[4];
+
+/* PURIN FTDATA */
+
+// 0x801310F0
+void *gFTDataPurinMain;
+
+// 0x801310F4
+void *gFTDataPurinBattleMotion;
+
+// 0x801310F8
+void *gFTDataPurinModel;
+
+// 0x801310FC
+void *gFTDataPurinSpecial2;
+
+// 0x80131100
+u32 gFTDataPurinParticleBankID;
+
+// 0x80131104
+u32 gFTDataPurinPadding[3];
+
+/* POLYPURIN FTDATA */
+
+// 0x80131110
+void *gFTDataPolyPurinMain;
+
+// 0x80131114
+void *gFTDataPolyPurinSubMotion;
+
+// 0x80131118
+void *gFTDataPolyPurinModel;
+
+// 0x8013111C
+u32 gFTDataPolyPurinParticleBankID;
+
+// 0x80131120
+u32 gFTDataPolyPurinPadding[4];
+
+/* NESS FTDATA */
+
+// 0x80131130
+void *gFTDataNessMain;
+
+// 0x80131134
+void *gFTDataNessBattleMotion;
+
+// 0x80131138
+void *gFTDataNessModel;
+
+// 0x8013113C
+void *gFTDataNessSpecial1;
+
+// 0x80131140
+void *gFTDataNessSpecial2;
+
+// 0x80131144
+void *gFTDataNessSpecial3;
+
+// 0x80131148
+u32 gFTDataNessParticleBankID;
+
+// 0x8013114C
+u32 gFTDataNessPadding[1];
+
+/* POLYNESS FTDATA */
+
+// 0x80131150
+void *gFTDataPolyNessMain;
+
+// 0x80131154
+void *gFTDataPolyNessSubMotion;
+
+// 0x80131158
+void *gFTDataPolyNessModel;
+
+// 0x8013115C
+u32 gFTDataPolyNessParticleBankID;
+
+// 0x80131160
+u32 gFTDataPolyNessPadding[4];
+
+/* BOSS FTDATA */
+
+// 0x80131170
+void *gFTDataBossMain;
+
+// 0x80131174
+void *gFTDataBossBattleMotion;
+
+// 0x80131178
+void *gFTDataBossModel;
+
+// 0x8013117C
+u32 gFTDataBossParticleBankID;
+
+/* MISC. VARIABLES */
+
+// 0x80131180
+grMapObject sFTMainMapObjects[2];
+
+// 0x80131190
+grMapEnv sFTMainMapEnvs[1];
+
+// 0x80131198
+s32 sFTMainMapObjectNum;
+
+// 0x8013119C
+s32 sFTMainMapEnvNum;
+
+// 0x801311A0
+sb32 gFTMainIsHurtDetect[GMMATCH_PLAYERS_MAX];
+
+// 0x801311B0
+sb32 gFTMainIsHitDetect[GMMATCH_PLAYERS_MAX];
+
+// 0x801311C0
+s32 sFTMainHitLogID;
+
+// 0x801311C4
+s32 sFTPad801311C4;
+
+// 0x801311C8 - 0x10 bytes of padding after this, for mpcoll .bss
+ftHitCollisionLog sFTMainHitLogTable[10];
 
 // // // // // // // // // // // //
 //                               //
@@ -16,7 +605,7 @@
 // Columns = SFX level
 
 // 0x80128D00
-u16 dFighterHitCollisionFGM[/* */][gmHitCollision_SoundLevel_EnumMax] =
+u16 dFTMainHitCollisionFGMs[/* */][gmHitCollision_SoundLevel_EnumMax] =
 {
     { alSound_SFX_PunchS,             alSound_SFX_PunchM,             alSound_SFX_PunchL             }, // Punch
     { alSound_SFX_KickS,              alSound_SFX_KickM,              alSound_SFX_KickL              }, // Kick
@@ -29,7 +618,7 @@ u16 dFighterHitCollisionFGM[/* */][gmHitCollision_SoundLevel_EnumMax] =
 };
 
 // 0x80128D30
-grHitbox dGroundHitCollisionAttributes[/* */] =
+grHitbox dFTMainGroundHitCollisionAttributes[/* */] =
 {
     {  4,  1, 361, 100, 100, 0, gmHitCollision_Element_Fire  },
     {  5, 10,  90, 100, 200, 0, gmHitCollision_Element_Fire  },
@@ -40,7 +629,7 @@ grHitbox dGroundHitCollisionAttributes[/* */] =
 };
 
 // 0x8012C4E0
-f32 dFTMapSurfaceFrictions[/* */] = { 4.0F, 3.0F, 3.0F, 1.0F, 2.0F, 2.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F };
+f32 dFTMainMapSurfaceFrictions[/* */] = { 4.0F, 3.0F, 3.0F, 1.0F, 2.0F, 2.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F, 4.0F };
 
 // 0x800DF0F0
 void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent *p_event, u32 ev_kind)
@@ -48,12 +637,12 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
     ftScriptPointer *p_goto;
     s32 gfx_id;
     s32 i, j;
-    sb32 var_v0;
+    sb32 unused;
     ftHitbox *ft_hit;
     s32 hit_id;
     s32 group_id;
     u32 sfx_id;
-    s32 joint_index;
+    s32 joint_id;
     Vec3f gfx_offset;
     Vec3f gfx_scatter;
     u32 flag;
@@ -63,8 +652,8 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
     ftMotionEventDamage *p_damage;
     s32 ft_kind;
     s32 script_index;
-    s32 flag2;
-    ftMotionEventPlaySFX *plswork;
+    s32 slope_contour;
+    sb32 unused2;
 
     switch (ev_kind)
     {
@@ -116,8 +705,8 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
                     ftCollision_ClearHitRecordIndex(fp, hit_id);
                 }
             }
-            ft_hit->joint_index = ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventMakeHit1)->joint_index);
-            ft_hit->joint = fp->joint[ft_hit->joint_index];
+            ft_hit->joint_id = ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventMakeHit1)->joint_id);
+            ft_hit->joint = fp->joint[ft_hit->joint_id];
             ft_hit->damage = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->damage;
             ft_hit->can_rebound = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->can_rebound;
             ft_hit->element = ftMotionEventCast(p_event, ftMotionEventMakeHit1)->element;
@@ -339,7 +928,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
     case ftMotionEvent_Kind_EffectScaleOffset:
         if (!(fp->is_playing_gfx))
         {
-            joint_index = ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventMakeGFX1)->joint_index);
+            joint_id = ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventMakeGFX1)->joint_id);
             gfx_id = ftMotionEventCast(p_event, ftMotionEventMakeGFX1)->gfx_id;
             flag = ftMotionEventCast(p_event, ftMotionEventMakeGFX1)->flag;
 
@@ -360,7 +949,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
 
             ftMotionEventAdvance(p_event, ftMotionEventMakeGFX4);
 
-            ftParticle_MakeEffectKind(fighter_gobj, gfx_id, joint_index, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == ftMotionEvent_Kind_EffectScaleOffset) ? TRUE : FALSE, flag);
+            ftParticle_MakeEffectKind(fighter_gobj, gfx_id, joint_id, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == ftMotionEvent_Kind_EffectScaleOffset) ? TRUE : FALSE, flag);
         }
         else ftMotionEventAdvance(p_event, ftMotionEventMakeGFX);
 
@@ -374,7 +963,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
         break;
 
     case ftMotionEvent_Kind_SetHitStatusPart:
-        ftCommon_SetHitStatusPart(fighter_gobj, ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventSetHitStatusPart)->joint_index), ftMotionEventCast(p_event, ftMotionEventSetHitStatusPart)->hitstatus);
+        ftCommon_SetHitStatusPart(fighter_gobj, ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventSetHitStatusPart)->joint_id), ftMotionEventCast(p_event, ftMotionEventSetHitStatusPart)->hitstatus);
 
         ftMotionEventAdvance(p_event, ftMotionEventSetHitStatusPart);
 
@@ -395,7 +984,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
         break;
 
     case ftMotionEvent_Kind_SetHurtPart:
-        joint_index = ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventSetHurtPart1)->joint_index);
+        joint_id = ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventSetHurtPart1)->joint_id);
 
         ftMotionEventAdvance(p_event, ftMotionEventSetHurtPart1);
 
@@ -414,7 +1003,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
 
         ftMotionEventAdvance(p_event, ftMotionEventSetHurtPart4);
 
-        ftCommon_UpdateFighterHurtPartIndex(fighter_gobj, joint_index, &hurt_offset, &hurt_size);
+        ftCommon_UpdateFighterHurtPartIndex(fighter_gobj, joint_id, &hurt_offset, &hurt_size);
 
         break;
 
@@ -503,7 +1092,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
         break;
 
     case ftMotionEvent_Kind_SetModelPart:
-        ftCommon_SetModelPartRenderIndex(fighter_gobj, ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventSetModelPart)->joint_index), ftMotionEventCast(p_event, ftMotionEventSetModelPart)->mode);
+        ftCommon_SetModelPartRenderIndex(fighter_gobj, ftParts_GetJointCheckLightHold(fp, ftMotionEventCast(p_event, ftMotionEventSetModelPart)->joint_id), ftMotionEventCast(p_event, ftMotionEventSetModelPart)->mode);
 
         ftMotionEventAdvance(p_event, ftMotionEventSetModelPart);
         break;
@@ -551,7 +1140,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
         break;
 
     case ftMotionEvent_Kind_SetFlag2:
-        fp->command_vars.flags.flag2 = ftMotionEventCast(p_event, ftMotionEventSetFlag)->flag;
+        fp->command_vars.flags.slope_contour = ftMotionEventCast(p_event, ftMotionEventSetFlag)->flag;
 
         ftMotionEventAdvance(p_event, ftMotionEventSetFlag);
         break;
@@ -563,11 +1152,11 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
         break;
 
     case ftMotionEvent_Kind_SlopeContour:
-        flag2 = fp->slope_contour;
+        slope_contour = fp->slope_contour;
 
         fp->slope_contour = ftMotionEventCastAdvance(p_event, ftMotionEventSlopeContour)->mode;
 
-        if (!(flag2 & fp->slope_contour & 4))
+        if (!(slope_contour & fp->slope_contour & 4))
         {
             DObjGetStruct(fighter_gobj)->rotate.vec.f.x = F_DEG_TO_RAD(0.0F);
         }
@@ -589,7 +1178,7 @@ void ftScript_ProcessScriptEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent
     case ftMotionEvent_Kind_MakeRumble:
         if (fp->status_info.pl_kind != Pl_Kind_Demo)
         {
-            ftMain_MakeRumble(fp, ftMotionEventCast(p_event, ftMotionEventMakeRumble)->rumble_id, ftMotionEventCast(p_event, ftMotionEventMakeRumble)->duration);
+            ftMainMakeRumble(fp, ftMotionEventCast(p_event, ftMotionEventMakeRumble)->rumble_id, ftMotionEventCast(p_event, ftMotionEventMakeRumble)->duration);
         }
         ftMotionEventAdvance(p_event, ftMotionEventMakeRumble);
         break;
@@ -815,7 +1404,7 @@ void ftScript_UpdateDefaultEventsGFX(GObj *fighter_gobj)
 }
 
 // 0x800E07D4
-void ftMain_UpdateTransNJoint(GObj *fighter_gobj)
+void ftMainUpdateTransNJoint(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -828,28 +1417,28 @@ void ftMain_UpdateTransNJoint(GObj *fighter_gobj)
 }
 
 // 0x800E0830
-void ftMain_UpdateAnimCheckInterrupt(GObj *fighter_gobj)
+void ftMainUpdateAnimCheckInterrupt(GObj *fighter_gobj)
 {
-    ftMain_UpdateTransNJoint(fighter_gobj);
+    ftMainUpdateTransNJoint(fighter_gobj);
     ftScript_UpdateAllEventsInterrupt(fighter_gobj);
 }
 
 // 0x800E0858
-void ftMain_UpdateAnimAllEvents(GObj *fighter_gobj)
+void ftMainUpdateAnimAllEvents(GObj *fighter_gobj)
 {
-    ftMain_UpdateTransNJoint(fighter_gobj);
+    ftMainUpdateTransNJoint(fighter_gobj);
     ftScript_UpdateDefaultEvents(fighter_gobj);
 }
 
 // 0x800E0880
-sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing_sfx, sb32 is_playing_gfx)
+sb32 ftMainUpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing_sfx, sb32 is_playing_gfx)
 {
     s32 i, j;
     ftStruct *fp;
     caScript *cs;
     void *p_script;
     s32 gfx_id;
-    s32 joint_index;
+    s32 joint_id;
     u32 flag;
     caColorEventDefault *def;
     Vec3f gfx_offset;
@@ -999,7 +1588,7 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
                 {
                     fp = ftGetStruct(fighter_gobj);
 
-                    joint_index = ftParts_GetJointCheckLightHold(fp, caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX1)->joint_index);
+                    joint_id = ftParts_GetJointCheckLightHold(fp, caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX1)->joint_id);
                     gfx_id = caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX1)->gfx_id;
                     flag = caColorEventCast(colanim->cs[i].p_script, caColorEventCreateGFX1)->flag;
 
@@ -1020,7 +1609,7 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
 
                     caColorEventAdvance(colanim->cs[i].p_script, caColorEventCreateGFX4);
 
-                    ftParticle_MakeEffectKind(fighter_gobj, gfx_id, joint_index, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == caColorEvent_Kind_EffectScaleOffset) ? TRUE : FALSE, flag);
+                    ftParticle_MakeEffectKind(fighter_gobj, gfx_id, joint_id, &gfx_offset, &gfx_scatter, fp->lr, (ev_kind == caColorEvent_Kind_EffectScaleOffset) ? TRUE : FALSE, flag);
                 }
                 else caColorEventAdvance(colanim->cs[i].p_script, caColorEventCreateGFX);
                 break;
@@ -1084,7 +1673,7 @@ sb32 ftMain_UpdateColAnim(caStruct *colanim, GObj *fighter_gobj, sb32 is_playing
 }
 
 // 0x800E11C8
-void ftMain_RunUpdateColAnim(GObj *fighter_gobj)
+void ftMainRunUpdateColAnim(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -1095,7 +1684,7 @@ void ftMain_RunUpdateColAnim(GObj *fighter_gobj)
 }
 
 // 0x800E1260
-void ftMain_ProcInterruptMain(GObj *fighter_gobj)
+void ftMainProcInterruptMain(GObj *fighter_gobj)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *other_fp;
@@ -1289,9 +1878,9 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
 
     if (this_fp->hitlag_timer == 0)
     {
-        ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+        ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     }
-    ftMain_RunUpdateColAnim(fighter_gobj);
+    ftMainRunUpdateColAnim(fighter_gobj);
 
     if (this_fp->intangible_timer != 0)
     {
@@ -1461,34 +2050,34 @@ void ftMain_ProcInterruptMain(GObj *fighter_gobj)
 }
 
 // 0x800E1CF0
-void ftMain_ClearMapElementsAll(void)
+void ftMainClearMapElementsAll(void)
 {
     s32 i;
 
-    gMapObjectCount = gMapEnvironmentCount = 0;
+    sFTMainMapObjectNum = sFTMainMapEnvNum = 0;
 
-    for (i = 0; i < ARRAY_COUNT(gMapObjects); i++)
+    for (i = 0; i < ARRAY_COUNT(sFTMainMapObjects); i++)
     {
-        gMapObjects[i].ogobj = NULL;
+        sFTMainMapObjects[i].ogobj = NULL;
     }
-    for (i = 0; i < ARRAY_COUNT(gMapEnvironments); i++)
+    for (i = 0; i < ARRAY_COUNT(sFTMainMapEnvs); i++)
     {
-        gMapEnvironments[i].egobj = NULL;
+        sFTMainMapEnvs[i].egobj = NULL;
     }
 }
 
 // 0x800E1D48
-sb32 ftMain_CheckSetMapObjectGObj(GObj *ogobj, sb32(*proc_update)(GObj*, GObj*, s32*))
+sb32 ftMainCheckSetMapObjectGObj(GObj *ogobj, sb32(*proc_update)(GObj*, GObj*, s32*))
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gMapObjects); i++)
+    for (i = 0; i < ARRAY_COUNT(sFTMainMapObjects); i++)
     {
-        if (gMapObjects[i].ogobj == NULL)
+        if (sFTMainMapObjects[i].ogobj == NULL)
         {
-            gMapObjects[i].ogobj = ogobj;
-            gMapObjects[i].proc_update = proc_update;
-            gMapObjectCount++;
+            sFTMainMapObjects[i].ogobj = ogobj;
+            sFTMainMapObjects[i].proc_update = proc_update;
+            sFTMainMapObjectNum++;
 
             return TRUE;
         }
@@ -1497,16 +2086,16 @@ sb32 ftMain_CheckSetMapObjectGObj(GObj *ogobj, sb32(*proc_update)(GObj*, GObj*, 
 }
 
 // 0x800E1D9C
-void ftMain_ClearMapObjectGObj(GObj *ogobj)
+void ftMainClearMapObjectGObj(GObj *ogobj)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gMapObjects); i++)
+    for (i = 0; i < ARRAY_COUNT(sFTMainMapObjects); i++)
     {
-        if (gMapObjects[i].ogobj == ogobj)
+        if (sFTMainMapObjects[i].ogobj == ogobj)
         {
-            gMapObjects[i].ogobj = NULL;
-            gMapObjectCount--;
+            sFTMainMapObjects[i].ogobj = NULL;
+            sFTMainMapObjectNum--;
 
             break;
         }
@@ -1514,18 +2103,18 @@ void ftMain_ClearMapObjectGObj(GObj *ogobj)
 }
 
 // 0x800E1DE8
-sb32 ftMain_CheckSetMapEnvironmentGObj(GObj *egobj, sb32(*proc_update)(GObj*, GObj*, grHitbox**, s32*))
+sb32 ftMainCheckSetMapEnvGObj(GObj *egobj, sb32(*proc_update)(GObj*, GObj*, grHitbox**, s32*))
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gMapEnvironments); i++)
+    for (i = 0; i < ARRAY_COUNT(sFTMainMapEnvs); i++)
     {
-        if (gMapEnvironments[i].egobj == NULL)
+        if (sFTMainMapEnvs[i].egobj == NULL)
         {
-            gMapEnvironments[i].egobj = egobj;
-            gMapEnvironments[i].proc_update = proc_update;
+            sFTMainMapEnvs[i].egobj = egobj;
+            sFTMainMapEnvs[i].proc_update = proc_update;
 
-            gMapEnvironmentCount++;
+            sFTMainMapEnvNum++;
 
             return TRUE;
         }
@@ -1534,16 +2123,16 @@ sb32 ftMain_CheckSetMapEnvironmentGObj(GObj *egobj, sb32(*proc_update)(GObj*, GO
 }
 
 // 0x800E1E3C - Remove map environment object by GObj pointer match
-void ftMain_ClearMapEnvironmentGObj(GObj *egobj)
+void ftMainClearMapEnvGObj(GObj *egobj)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gMapEnvironments); i++)
+    for (i = 0; i < ARRAY_COUNT(sFTMainMapEnvs); i++)
     {
-        if (gMapEnvironments[i].egobj == egobj)
+        if (sFTMainMapEnvs[i].egobj == egobj)
         {
-            gMapEnvironments[i].egobj = NULL;
-            gMapEnvironmentCount--;
+            sFTMainMapEnvs[i].egobj = NULL;
+            sFTMainMapEnvNum--;
 
             break;
         }
@@ -1551,7 +2140,7 @@ void ftMain_ClearMapEnvironmentGObj(GObj *egobj)
 }
 
 // 0x800E1E88
-void ftMain_SetHitMapObject(GObj *ogobj, GObj *fighter_gobj, ftStruct *fp, s32 kind)
+void ftMainSetHitMapObject(GObj *ogobj, GObj *fighter_gobj, ftStruct *fp, s32 kind)
 {
     switch (kind)
     {
@@ -1566,10 +2155,10 @@ void ftMain_SetHitMapObject(GObj *ogobj, GObj *fighter_gobj, ftStruct *fp, s32 k
 }
 
 // 0x800E1EE8
-void ftMain_SearchHitMapObject(GObj *fighter_gobj)
+void ftMainSearchHitMapObject(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    grMapObject *mo = &gMapObjects[0];
+    grMapObject *mo = &sFTMainMapObjects[0];
     s32 i;
 
     if (!fp->is_nullstatus)
@@ -1585,7 +2174,7 @@ void ftMain_SearchHitMapObject(GObj *fighter_gobj)
                 fp->tarucann_wait--;
             }
         }
-        for (i = 0; i < gMapObjectCount; i++, mo++)
+        for (i = 0; i < sFTMainMapObjectNum; i++, mo++)
         {
             if (mo->ogobj != NULL)
             {
@@ -1593,7 +2182,7 @@ void ftMain_SearchHitMapObject(GObj *fighter_gobj)
 
                 if (mo->proc_update(mo->ogobj, fighter_gobj, &okind) != FALSE)
                 {
-                    ftMain_SetHitMapObject(mo->ogobj, fighter_gobj, fp, okind);
+                    ftMainSetHitMapObject(mo->ogobj, fighter_gobj, fp, okind);
                 }
             }
         }
@@ -1601,7 +2190,7 @@ void ftMain_SearchHitMapObject(GObj *fighter_gobj)
 }
 
 // 0x800E1FE0
-void ftMain_UpdateVelDamageGround(ftStruct *fp, f32 move)
+void ftMainUpdateVelDamageGround(ftStruct *fp, f32 move)
 {
     if (fp->phys_info.vel_damage_ground < 0.0F)
     {
@@ -1624,7 +2213,7 @@ void ftMain_UpdateVelDamageGround(ftStruct *fp, f32 move)
 }
 
 // 0x800E2048
-void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
+void ftMainProcPhysicsMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *topn_translate = &fp->joint[ftParts_Joint_TopN]->translate.vec.f;
@@ -1675,7 +2264,7 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
                 {
                     fp->phys_info.vel_damage_ground = fp->phys_info.vel_damage_air.x;
                 }
-                ftMain_UpdateVelDamageGround(fp, dFTMapSurfaceFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * fp->attributes->traction * 0.25F);
+                ftMainUpdateVelDamageGround(fp, dFTMainMapSurfaceFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * fp->attributes->traction * 0.25F);
 
                 vel_damage_air->x = (ground_angle->y * fp->phys_info.vel_damage_ground);
                 vel_damage_air->y = (-ground_angle->x * fp->phys_info.vel_damage_ground);
@@ -1707,7 +2296,7 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
     }
     if (fp->publicity_knockback != 0)
     {
-        if (((gMapEdgeBounds.d2.left + 450.0F) < fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) && (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < (gMapEdgeBounds.d2.right - 450.0F)))
+        if (((gMPEdgeBounds.d2.left + 450.0F) < fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) && (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < (gMPEdgeBounds.d2.right - 450.0F)))
         {
             fp->publicity_knockback = 0.0F;
         }
@@ -1801,29 +2390,29 @@ void ftMain_ProcPhysicsMap(GObj *fighter_gobj)
 }
 
 // 0x800E2604
-void ftMain_ProcPhysicsMapNormal(GObj *fighter_gobj)
+void ftMainProcPhysicsMapNormal(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     if (((fp->capture_gobj == NULL) || (fp->x192_flag_b3)) && ((fp->catch_gobj == NULL) || !(fp->x192_flag_b3)))
     {
-        ftMain_ProcPhysicsMap(fighter_gobj);
+        ftMainProcPhysicsMap(fighter_gobj);
     }
 }
 
 // 0x800E2660
-void ftMain_ProcPhysicsMapCapture(GObj *fighter_gobj)
+void ftMainProcPhysicsMapCapture(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     if (((fp->capture_gobj != NULL) && !(fp->x192_flag_b3)) || ((fp->catch_gobj != NULL) && (fp->x192_flag_b3)))
     {
-        ftMain_ProcPhysicsMap(fighter_gobj);
+        ftMainProcPhysicsMap(fighter_gobj);
     }
 }
 
 // 0x800E26BC
-void ftMain_SetHitVictimInteractStats(ftStruct *fp, u32 attack_group_id, GObj *victim_gobj, s32 hitbox_type, u32 victim_group_id, sb32 ignore_hurt_or_hit)
+void ftMainSetHitVictimInteractStats(ftStruct *fp, u32 attack_group_id, GObj *victim_gobj, s32 hitbox_type, u32 victim_group_id, sb32 ignore_hurt_or_hit)
 {
     s32 i, j;
 
@@ -1887,15 +2476,15 @@ void ftMain_SetHitVictimInteractStats(ftStruct *fp, u32 attack_group_id, GObj *v
             }
             if (ignore_hurt_or_hit == 0)
             {
-                gFighterIsHurtDetect[i] = FALSE;
+                gFTMainIsHurtDetect[i] = FALSE;
             }
-            else gFighterIsHitDetect[i] = FALSE;
+            else gFTMainIsHitDetect[i] = FALSE;
         }
     }
 }
 
 // 0x800E287C
-void ftMain_SetHitCollisionRebound(GObj *attacker_gobj, ftStruct *fp, ftHitbox *ft_hit, GObj *victim_gobj)
+void ftMainSetHitCollisionRebound(GObj *attacker_gobj, ftStruct *fp, ftHitbox *ft_hit, GObj *victim_gobj)
 {
     if (fp->attack_shield_push < ft_hit->damage)
     {
@@ -1913,7 +2502,7 @@ void ftMain_SetHitCollisionRebound(GObj *attacker_gobj, ftStruct *fp, ftHitbox *
 extern s8 g1PGameBonusStatGiantImpact;
 
 // 0x800E2910
-void ftMain_UpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftStruct *this_fp, ftHitbox *this_hit, GObj *other_gobj, GObj *this_gobj)
+void ftMainUpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftStruct *this_fp, ftHitbox *this_hit, GObj *other_gobj, GObj *this_gobj)
 {
     Vec3f impact_pos;
 
@@ -1921,8 +2510,8 @@ void ftMain_UpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftS
 
     if ((this_hit->damage - 10) < other_hit->damage)
     {
-        ftMain_SetHitVictimInteractStats(this_fp, this_hit->group_id, other_gobj, gmHitCollision_Type_Hit, other_hit->group_id, 1);
-        ftMain_SetHitCollisionRebound(this_gobj, this_fp, this_hit, other_gobj);
+        ftMainSetHitVictimInteractStats(this_fp, this_hit->group_id, other_gobj, gmHitCollision_Type_Hit, other_hit->group_id, 1);
+        ftMainSetHitCollisionRebound(this_gobj, this_fp, this_hit, other_gobj);
         efParticle_SetOff_MakeEffect(&impact_pos, this_hit->damage);
 
         if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (this_hit->damage >= 20) && (other_fp->player == gSceneData.spgame_player))
@@ -1932,8 +2521,8 @@ void ftMain_UpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftS
     }
     if ((other_hit->damage - 10) < this_hit->damage)
     {
-        ftMain_SetHitVictimInteractStats(other_fp, other_hit->group_id, this_gobj, gmHitCollision_Type_Hit, this_hit->group_id, 0);
-        ftMain_SetHitCollisionRebound(other_gobj, other_fp, other_hit, this_gobj);
+        ftMainSetHitVictimInteractStats(other_fp, other_hit->group_id, this_gobj, gmHitCollision_Type_Hit, this_hit->group_id, 0);
+        ftMainSetHitCollisionRebound(other_gobj, other_fp, other_hit, this_gobj);
         efParticle_SetOff_MakeEffect(&impact_pos, other_hit->damage);
 
         if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (other_hit->damage >= 20) && (this_fp->player == gSceneData.spgame_player))
@@ -1944,11 +2533,11 @@ void ftMain_UpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftS
 }
 
 // 0x800E2A90
-void ftMain_UpdateShieldStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hit, ftStruct *victim_fp, GObj *attacker_gobj, GObj *victim_gobj)
+void ftMainUpdateShieldStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hit, ftStruct *victim_fp, GObj *attacker_gobj, GObj *victim_gobj)
 {
     Vec3f impact_pos;
 
-    ftMain_SetHitVictimInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, gmHitCollision_Type_Shield, 0, 0);
+    ftMainSetHitVictimInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, gmHitCollision_Type_Shield, 0, 0);
 
     if (attacker_fp->attack_shield_push < attacker_hit->damage)
     {
@@ -1969,11 +2558,11 @@ void ftMain_UpdateShieldStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hi
 }
 
 // 0x800E2B88
-void ftMain_UpdateCatchStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hit, ftStruct *victim_fp, GObj *attacker_gobj, GObj *victim_gobj)
+void ftMainUpdateCatchStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hit, ftStruct *victim_fp, GObj *attacker_gobj, GObj *victim_gobj)
 {
     f32 dist;
 
-    ftMain_SetHitVictimInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, gmHitCollision_Type_Hurt, 0, 1);
+    ftMainSetHitVictimInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, gmHitCollision_Type_Hurt, 0, 1);
 
     if (DObjGetStruct(victim_gobj)->translate.vec.f.x < DObjGetStruct(attacker_gobj)->translate.vec.f.x)
     {
@@ -1997,11 +2586,11 @@ void func_ovl2_800E2C24(ftStruct *fp, ftHitbox *ft_hit)
     }
     fp->p_sfx = NULL, fp->sfx_id = 0;
 
-    func_ovl0_800C8654(dFighterHitCollisionFGM[ft_hit->sfx_kind][ft_hit->sfx_level], fp->joint[ftParts_Joint_TopN]->translate.vec.f.x);
+    func_ovl0_800C8654(dFTMainHitCollisionFGMs[ft_hit->sfx_kind][ft_hit->sfx_level], fp->joint[ftParts_Joint_TopN]->translate.vec.f.x);
 }
 
 // 0x800E2CC0
-sb32 ftMain_CheckGetUpdateDamage(ftStruct *fp, s32 *damage)
+sb32 ftMainCheckGetUpdateDamage(ftStruct *fp, s32 *damage)
 {
     if (fp->is_damage_resist)
     {
@@ -2028,7 +2617,7 @@ sb32 ftMain_CheckGetUpdateDamage(ftStruct *fp, s32 *damage)
 }
 
 // 0x800E2D44
-void ftMain_UpdateDamageStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hit, ftStruct *victim_fp, ftHurtbox *victim_hurt, GObj *attacker_gobj, GObj *victim_gobj)
+void ftMainUpdateDamageStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hit, ftStruct *victim_fp, ftHurtbox *victim_hurt, GObj *attacker_gobj, GObj *victim_gobj)
 {
     s32 damage;
     s32 attacker_player;
@@ -2036,7 +2625,7 @@ void ftMain_UpdateDamageStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hi
     s32 unused;
     Vec3f impact_pos;
 
-    ftMain_SetHitVictimInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, gmHitCollision_Type_Hurt, 0, FALSE);
+    ftMainSetHitVictimInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, gmHitCollision_Type_Hurt, 0, FALSE);
 
     damage = ftCommon_DamageAdjustCapture(victim_fp, attacker_hit->damage);
 
@@ -2052,7 +2641,7 @@ void ftMain_UpdateDamageStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hi
         (victim_hurt->hitstatus == gmHitCollision_HitStatus_Normal)
     )
     {
-        if (ftMain_CheckGetUpdateDamage(victim_fp, &damage) != FALSE)
+        if (ftMainCheckGetUpdateDamage(victim_fp, &damage) != FALSE)
         {
             if (attacker_fp->throw_gobj != NULL)
             {
@@ -2064,9 +2653,9 @@ void ftMain_UpdateDamageStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hi
                 attacker_player = attacker_fp->player;
                 attacker_player_number = attacker_fp->player_number;
             }
-            if (gFighterHitLogIndex < ARRAY_COUNT(gFighterHitLogTable))
+            if (sFTMainHitLogID < ARRAY_COUNT(sFTMainHitLogTable))
             {
-                ftHitCollisionLog *hitlog = &gFighterHitLogTable[gFighterHitLogIndex];
+                ftHitCollisionLog *hitlog = &sFTMainHitLogTable[sFTMainHitLogID];
 
                 hitlog->attacker_object_class = ftHitlog_ObjectClass_Fighter;
                 hitlog->attacker_hit = attacker_hit;
@@ -2075,7 +2664,7 @@ void ftMain_UpdateDamageStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hi
                 hitlog->attacker_player = attacker_player;
                 hitlog->attacker_player_number = attacker_player_number;
 
-                gFighterHitLogIndex++;
+                sFTMainHitLogID++;
             }
             ftAttackUpdateMatchStats(attacker_player, victim_fp->player, damage);
             ftAttackAddStaleQueue(attacker_player, victim_fp->player, attacker_hit->attack_id, attacker_hit->flags_hi.halfword);
@@ -2095,7 +2684,7 @@ void ftMain_UpdateDamageStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hi
 }
 
 // 0x800E2F04
-void ftMain_UpdateAttackStatWeapon(wpStruct *ip, wpHitbox *wp_hit, s32 index, ftStruct *fp, ftHitbox *ft_hit, GObj *weapon_gobj, GObj *fighter_gobj)
+void ftMainUpdateAttackStatWeapon(wpStruct *ip, wpHitbox *wp_hit, s32 index, ftStruct *fp, ftHitbox *ft_hit, GObj *weapon_gobj, GObj *fighter_gobj)
 {
     s32 damage = wpMainGetStaledDamageOutput(ip);
     Vec3f impact_pos;
@@ -2104,8 +2693,8 @@ void ftMain_UpdateAttackStatWeapon(wpStruct *ip, wpHitbox *wp_hit, s32 index, ft
 
     if ((ft_hit->damage - 10) < damage)
     {
-        ftMain_SetHitVictimInteractStats(fp, ft_hit->group_id, weapon_gobj, gmHitCollision_Type_Hit, 0, TRUE);
-        ftMain_SetHitCollisionRebound(fighter_gobj, fp, ft_hit, weapon_gobj);
+        ftMainSetHitVictimInteractStats(fp, ft_hit->group_id, weapon_gobj, gmHitCollision_Type_Hit, 0, TRUE);
+        ftMainSetHitCollisionRebound(fighter_gobj, fp, ft_hit, weapon_gobj);
         efParticle_SetOff_MakeEffect(&impact_pos, ft_hit->damage);
     }
 
@@ -2127,7 +2716,7 @@ void ftMain_UpdateAttackStatWeapon(wpStruct *ip, wpHitbox *wp_hit, s32 index, ft
 }
 
 // 0x800E3048
-void ftMain_UpdateShieldStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id, ftStruct *fp, GObj *weapon_gobj, GObj *fighter_gobj, f32 angle, Vec3f *vec)
+void ftMainUpdateShieldStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id, ftStruct *fp, GObj *weapon_gobj, GObj *fighter_gobj, f32 angle, Vec3f *vec)
 {
     s32 damage = wpMainGetStaledDamageOutput(wp);
     Vec3f impact_pos;
@@ -2162,7 +2751,7 @@ void ftMain_UpdateShieldStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id
 }
 
 // 0x800E31B4
-void ftMain_UpdateReflectorStatWeapon(wpStruct *wp, wpHitbox *wp_hit, ftStruct *fp, GObj *fighter_gobj)
+void ftMainUpdateReflectorStatWeapon(wpStruct *wp, wpHitbox *wp_hit, ftStruct *fp, GObj *fighter_gobj)
 {
     s32 damage = wpMainGetStaledDamageOutput(wp);
 
@@ -2197,7 +2786,7 @@ void ftMain_UpdateReflectorStatWeapon(wpStruct *wp, wpHitbox *wp_hit, ftStruct *
 }
 
 // 0x800E3308
-void ftMain_UpdateAbsorbStatWeapon(wpStruct *ip, wpHitbox *wp_hit, ftStruct *fp, GObj *fighter_gobj)
+void ftMainUpdateAbsorbStatWeapon(wpStruct *ip, wpHitbox *wp_hit, ftStruct *fp, GObj *fighter_gobj)
 {
     s32 damage = wpMainGetStaledDamageOutput(ip);
 
@@ -2220,7 +2809,7 @@ void ftMain_UpdateAbsorbStatWeapon(wpStruct *ip, wpHitbox *wp_hit, ftStruct *fp,
 }
 
 // 0x800E3418
-void ftMain_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id, ftStruct *fp, ftHurtbox *ft_hurt, GObj *weapon_gobj, GObj *fighter_gobj)
+void ftMainUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id, ftStruct *fp, ftHurtbox *ft_hurt, GObj *weapon_gobj, GObj *fighter_gobj)
 {
     s32 temp_damage = wpMainGetStaledDamageOutput(wp);
     s32 damage;
@@ -2246,12 +2835,12 @@ void ftMain_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id
         (fp->star_hitstatus == gmHitCollision_HitStatus_Normal)    &&
         (fp->hitstatus == gmHitCollision_HitStatus_Normal)         &&
         (ft_hurt->hitstatus == gmHitCollision_HitStatus_Normal)    &&
-        (ftMain_CheckGetUpdateDamage(fp, &damage) != FALSE)
+        (ftMainCheckGetUpdateDamage(fp, &damage) != FALSE)
     )
     {
-        if (gFighterHitLogIndex < ARRAY_COUNT(gFighterHitLogTable))
+        if (sFTMainHitLogID < ARRAY_COUNT(sFTMainHitLogTable))
         {
-            ftHitCollisionLog *hitlog = &gFighterHitLogTable[gFighterHitLogIndex];
+            ftHitCollisionLog *hitlog = &sFTMainHitLogTable[sFTMainHitLogID];
 
             hitlog->attacker_object_class = ftHitlog_ObjectClass_Weapon;
             hitlog->attacker_hit = wp_hit;
@@ -2261,7 +2850,7 @@ void ftMain_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id
             hitlog->attacker_player = wp->player;
             hitlog->attacker_player_number = wp->player_number;
 
-            gFighterHitLogIndex++;
+            sFTMainHitLogID++;
         }
         ftAttackUpdateMatchStats(wp->player, fp->player, damage);
         ftAttackAddStaleQueue(wp->player, fp->player, wp_hit->attack_id, wp_hit->motion_count);
@@ -2270,7 +2859,7 @@ void ftMain_UpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id
 }
 
 // 0x800E35BC
-void ftMain_UpdateAttackStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, ftStruct *fp, ftHitbox *ft_hit, GObj *item_gobj, GObj *fighter_gobj)
+void ftMainUpdateAttackStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, ftStruct *fp, ftHitbox *ft_hit, GObj *item_gobj, GObj *fighter_gobj)
 {
     s32 damage = itMainGetDamageOutput(ip);
     Vec3f impact_pos;
@@ -2279,8 +2868,8 @@ void ftMain_UpdateAttackStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
 
     if ((ft_hit->damage - 10) < damage)
     {
-        ftMain_SetHitVictimInteractStats(fp, ft_hit->group_id, item_gobj, gmHitCollision_Type_Hit, 0, 0);
-        ftMain_SetHitCollisionRebound(fighter_gobj, fp, ft_hit, item_gobj);
+        ftMainSetHitVictimInteractStats(fp, ft_hit->group_id, item_gobj, gmHitCollision_Type_Hit, 0, 0);
+        ftMainSetHitCollisionRebound(fighter_gobj, fp, ft_hit, item_gobj);
         efParticle_SetOff_MakeEffect(&impact_pos, ft_hit->damage);
     }
     if ((damage - 10) < ft_hit->damage)
@@ -2301,7 +2890,7 @@ void ftMain_UpdateAttackStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
 }
 
 // 0x800E36F8
-void ftMain_UpdateShieldStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, ftStruct *fp, GObj *item_gobj, GObj *fighter_gobj, f32 angle, Vec3f *vec)
+void ftMainUpdateShieldStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, ftStruct *fp, GObj *item_gobj, GObj *fighter_gobj, f32 angle, Vec3f *vec)
 {
     s32 damage = itMainGetDamageOutput(ip);
     Vec3f impact_pos;
@@ -2336,7 +2925,7 @@ void ftMain_UpdateShieldStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
 }
 
 // 0x800E3860
-void ftMain_UpdateReflectorStatItem(itStruct *ip, itHitbox *it_hit, ftStruct *fp, GObj *fighter_gobj)
+void ftMainUpdateReflectorStatItem(itStruct *ip, itHitbox *it_hit, ftStruct *fp, GObj *fighter_gobj)
 {
     s32 damage = itMainGetDamageOutput(ip);
 
@@ -2373,7 +2962,7 @@ void ftMain_UpdateReflectorStatItem(itStruct *ip, itHitbox *it_hit, ftStruct *fp
 extern u8 g1PGameBonusStatStarCount;
 
 // 0x800E39B0
-void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, ftStruct *fp, ftHurtbox *ft_hurt, GObj *item_gobj, GObj *fighter_gobj)
+void ftMainUpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, ftStruct *fp, ftHurtbox *ft_hurt, GObj *item_gobj, GObj *fighter_gobj)
 {
     s32 damage_temp = itMainGetDamageOutput(ip);
     s32 damage;
@@ -2435,12 +3024,12 @@ void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
             (fp->star_hitstatus == gmHitCollision_HitStatus_Normal)    &&
             (fp->hitstatus == gmHitCollision_HitStatus_Normal)         &&
             (ft_hurt->hitstatus == gmHitCollision_HitStatus_Normal)    &&
-            (ftMain_CheckGetUpdateDamage(fp, &damage) != FALSE)
+            (ftMainCheckGetUpdateDamage(fp, &damage) != FALSE)
         )
         {
-            if (gFighterHitLogIndex < ARRAY_COUNT(gFighterHitLogTable))
+            if (sFTMainHitLogID < ARRAY_COUNT(sFTMainHitLogTable))
             {
-                ftHitCollisionLog *hitlog = &gFighterHitLogTable[gFighterHitLogIndex];
+                ftHitCollisionLog *hitlog = &sFTMainHitLogTable[sFTMainHitLogID];
 
                 hitlog->attacker_object_class = ftHitlog_ObjectClass_Item;
                 hitlog->attacker_hit = it_hit;
@@ -2450,7 +3039,7 @@ void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
                 hitlog->attacker_player = ip->player;
                 hitlog->attacker_player_number = ip->player_number;
 
-                gFighterHitLogIndex++;
+                sFTMainHitLogID++;
             }
             ftAttackUpdateMatchStats(ip->player, fp->player, damage);
             ftAttackAddStaleQueue(ip->player, fp->player, it_hit->attack_id, it_hit->stat_count);
@@ -2460,20 +3049,20 @@ void ftMain_UpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, 
 }
 
 // 0x800E3CAC
-void ftMain_UpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, ftStruct *fp, grHitbox *gr_hit, s32 target_kind)
+void ftMainUpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, ftStruct *fp, grHitbox *gr_hit, s32 target_kind)
 {
     s32 damage = ftCommon_DamageAdjustCapture(fp, gr_hit->damage);
-    sb32 is_take_damage = ftMain_CheckGetUpdateDamage(fp, &damage);
+    sb32 is_take_damage = ftMainCheckGetUpdateDamage(fp, &damage);
 
-    if ((is_take_damage != FALSE) && (gFighterHitLogIndex < ARRAY_COUNT(gFighterHitLogTable)))
+    if ((is_take_damage != FALSE) && (sFTMainHitLogID < ARRAY_COUNT(sFTMainHitLogTable)))
     {
-        ftHitCollisionLog *hitlog = &gFighterHitLogTable[gFighterHitLogIndex];
+        ftHitCollisionLog *hitlog = &sFTMainHitLogTable[sFTMainHitLogID];
 
         hitlog->attacker_object_class = ftHitlog_ObjectClass_Ground;
         hitlog->attacker_hit = gr_hit;
         hitlog->attacker_gobj = special_gobj;
 
-        gFighterHitLogIndex++;
+        sFTMainHitLogID++;
     }
     switch (target_kind)
     {
@@ -2503,6 +3092,7 @@ void ftMain_UpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, ftStr
             func_800269C0(alSound_SFX_ShockML);
         }
         else func_800269C0(alSound_SFX_FloorDamageBurn);
+
         break;
 
     default:
@@ -2511,7 +3101,7 @@ void ftMain_UpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, ftStr
 }
 
 // 0x800E3DD0
-void ftMain_GetBumperDamageAngle(GObj *fighter_gobj, GObj *attacker_gobj)
+void ftMainGetBumperDamageAngle(GObj *fighter_gobj, GObj *attacker_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -2533,7 +3123,7 @@ void ftMain_GetBumperDamageAngle(GObj *fighter_gobj, GObj *attacker_gobj)
 }
 
 // 0x800E3EBC
-void ftMain_ProcessHitCollisionStatsMain(GObj *fighter_gobj)
+void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *attacker_fp;
@@ -2556,9 +3146,9 @@ void ftMain_ProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
     knockback = -1.0F;
 
-    for (i = 0; i < gFighterHitLogIndex; i++)
+    for (i = 0; i < sFTMainHitLogID; i++)
     {
-        hitlog = &gFighterHitLogTable[i];
+        hitlog = &sFTMainHitLogTable[i];
 
         switch (hitlog->attacker_object_class)
         {
@@ -2712,7 +3302,7 @@ void ftMain_ProcessHitCollisionStatsMain(GObj *fighter_gobj)
             j = i;
         }
     }
-    hitlog = &gFighterHitLogTable[j];
+    hitlog = &sFTMainHitLogTable[j];
     attacker_gobj = hitlog->attacker_gobj;
 
     switch (hitlog->attacker_object_class)
@@ -2729,7 +3319,7 @@ void ftMain_ProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
         ftCommon_Update1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, attacker_fp->ft_kind, attacker_fp->stat_flags.halfword & ~0x400, attacker_fp->stat_count);
 
-        this_fp->damage_joint_index = hitlog->victim_hurt->joint_index;
+        this_fp->damage_joint_id = hitlog->victim_hurt->joint_id;
         this_fp->damage_index = hitlog->victim_hurt->placement;
 
         if (this_fp->damage_element == gmHitCollision_Element_Electric)
@@ -2766,10 +3356,10 @@ void ftMain_ProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
             ftCommon_Update1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, ip->wp_kind, wp_hit->stat_flags.halfword, wp_hit->stat_count);
         }
-        this_fp->damage_joint_index = hitlog->victim_hurt->joint_index;
+        this_fp->damage_joint_id = hitlog->victim_hurt->joint_id;
         this_fp->damage_index = hitlog->victim_hurt->placement;
 
-        ftMain_GetBumperDamageAngle(fighter_gobj, attacker_gobj);
+        ftMainGetBumperDamageAngle(fighter_gobj, attacker_gobj);
         break;
 
     case ftHitlog_ObjectClass_Item:
@@ -2801,10 +3391,10 @@ void ftMain_ProcessHitCollisionStatsMain(GObj *fighter_gobj)
             this_fp->damage_player_number = hitlog->attacker_player_number;
             ftCommon_Update1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, ap->it_kind, it_hit->stat_flags.halfword, it_hit->stat_count);
         }
-        this_fp->damage_joint_index = hitlog->victim_hurt->joint_index;
+        this_fp->damage_joint_id = hitlog->victim_hurt->joint_id;
         this_fp->damage_index = hitlog->victim_hurt->placement;
 
-        ftMain_GetBumperDamageAngle(fighter_gobj, attacker_gobj);
+        ftMainGetBumperDamageAngle(fighter_gobj, attacker_gobj);
         break;
 
     case ftHitlog_ObjectClass_Ground:
@@ -2842,7 +3432,7 @@ void ftMain_ProcessHitCollisionStatsMain(GObj *fighter_gobj)
             ftCommon_Update1PGameDamageStats(this_fp, GMMATCH_PLAYERS_MAX, hitlog->attacker_object_class, gr_hit->env_kind, 0, 0);
             break;
         }
-        this_fp->damage_joint_index = 0;
+        this_fp->damage_joint_id = 0;
         this_fp->damage_index = 0;
 
         break;
@@ -2859,7 +3449,7 @@ void ftMain_ProcessHitCollisionStatsMain(GObj *fighter_gobj)
 }
 
 // 0x800E4870 - My brain hurts
-void ftMain_SearchFighterHit(GObj *this_gobj)
+void ftMainSearchFighterHit(GObj *this_gobj)
 {
     GObj *other_gobj;
     ftStruct *this_fp;
@@ -2926,7 +3516,7 @@ void ftMain_SearchFighterHit(GObj *this_gobj)
                             }
                             if ((!(these_flags.is_interact_hurt)) && (!(these_flags.is_interact_shield)) && (these_flags.group_id == 7))
                             {
-                                gFighterIsHurtDetect[i] = TRUE;
+                                gFTMainIsHurtDetect[i] = TRUE;
 
                                 k++;
 
@@ -2934,7 +3524,7 @@ void ftMain_SearchFighterHit(GObj *this_gobj)
                             }
                         }
                     }
-                    gFighterIsHurtDetect[i] = FALSE;
+                    gFTMainIsHurtDetect[i] = FALSE;
                 }
                 if (k == 0) goto next_gobj;
 
@@ -2971,7 +3561,7 @@ void ftMain_SearchFighterHit(GObj *this_gobj)
                                         }
                                         if ((!(those_flags.is_interact_hurt)) && (!(those_flags.is_interact_shield)) && (those_flags.group_id == 7))
                                         {
-                                            gFighterIsHitDetect[i] = TRUE;
+                                            gFTMainIsHitDetect[i] = TRUE;
 
                                             l++;
 
@@ -2979,7 +3569,7 @@ void ftMain_SearchFighterHit(GObj *this_gobj)
                                         }
                                     }
                                 }
-                                gFighterIsHitDetect[i] = FALSE;
+                                gFTMainIsHitDetect[i] = FALSE;
                             }
                             if (l != 0)
                             {
@@ -2987,19 +3577,19 @@ void ftMain_SearchFighterHit(GObj *this_gobj)
                                 {
                                     other_ft_hit = &other_fp->fighter_hit[i];
 
-                                    if (gFighterIsHurtDetect[i] == FALSE) continue;
+                                    if (gFTMainIsHurtDetect[i] == FALSE) continue;
 
                                     else for (j = 0; j < ARRAY_COUNT(this_fp->fighter_hit); j++)
                                     {
                                         this_ft_hit = &this_fp->fighter_hit[j];
 
-                                        if (gFighterIsHitDetect[j] == FALSE) continue;
+                                        if (gFTMainIsHitDetect[j] == FALSE) continue;
 
                                         else if (ftCollision_CheckFighterHitFighterHitIntersect(other_ft_hit, this_ft_hit) != FALSE)
                                         {
-                                            ftMain_UpdateAttackStatFighter(other_fp, other_ft_hit, this_fp, this_ft_hit, other_gobj, this_gobj);
+                                            ftMainUpdateAttackStatFighter(other_fp, other_ft_hit, this_fp, this_ft_hit, other_gobj, this_gobj);
 
-                                            if (gFighterIsHurtDetect[i] == FALSE)
+                                            if (gFTMainIsHurtDetect[i] == FALSE)
                                             {
                                                 break;
                                             }
@@ -3014,11 +3604,11 @@ void ftMain_SearchFighterHit(GObj *this_gobj)
                     {
                         other_ft_hit = &other_fp->fighter_hit[i];
 
-                        if (gFighterIsHurtDetect[i] == FALSE) continue;
+                        if (gFTMainIsHurtDetect[i] == FALSE) continue;
 
-                        gFighterIsHurtDetect[i] = ftCollision_CheckFighterHitInRange(other_ft_hit, this_gobj);
+                        gFTMainIsHurtDetect[i] = ftCollision_CheckFighterHitInRange(other_ft_hit, this_gobj);
 
-                        if (gFighterIsHurtDetect[i] != FALSE) k++;
+                        if (gFTMainIsHurtDetect[i] != FALSE) k++;
                     }
                     if (k != 0)
                     {
@@ -3028,11 +3618,11 @@ void ftMain_SearchFighterHit(GObj *this_gobj)
                             {
                                 other_ft_hit = &other_fp->fighter_hit[i];
 
-                                if (gFighterIsHurtDetect[i] == FALSE) continue;
+                                if (gFTMainIsHurtDetect[i] == FALSE) continue;
 
                                 else if (ftCollision_CheckFighterHitShieldIntersect(other_ft_hit, this_gobj, this_fp->joint[ftParts_Joint_YRotN], &angle) != FALSE)
                                 {
-                                    ftMain_UpdateShieldStatFighter(other_fp, other_ft_hit, this_fp, other_gobj, this_gobj);
+                                    ftMainUpdateShieldStatFighter(other_fp, other_ft_hit, this_fp, other_gobj, this_gobj);
                                 }
                             }
                         }
@@ -3042,7 +3632,7 @@ void ftMain_SearchFighterHit(GObj *this_gobj)
                             {
                                 other_ft_hit = &other_fp->fighter_hit[i];
 
-                                if (gFighterIsHurtDetect[i] == FALSE) continue;
+                                if (gFTMainIsHurtDetect[i] == FALSE) continue;
 
                                 else for (j = 0; j < ARRAY_COUNT(this_fp->fighter_hurt); j++)
                                 {
@@ -3054,7 +3644,7 @@ void ftMain_SearchFighterHit(GObj *this_gobj)
                                     {
                                         if (ftCollision_CheckFighterHitFighterHurtIntersect(other_ft_hit, ft_hurt) != FALSE)
                                         {
-                                            ftMain_UpdateDamageStatFighter(other_fp, other_ft_hit, this_fp, ft_hurt, other_gobj, this_gobj);
+                                            ftMainUpdateDamageStatFighter(other_fp, other_ft_hit, this_fp, ft_hurt, other_gobj, this_gobj);
 
                                             break;
                                         }
@@ -3072,7 +3662,7 @@ void ftMain_SearchFighterHit(GObj *this_gobj)
 }
 
 // 0x800E4ED4
-void ftMain_SearchWeaponHit(GObj *fighter_gobj)
+void ftMainSearchWeaponHit(GObj *fighter_gobj)
 {
     GObj *weapon_gobj;
     s32 i, j, k, l, m, n;
@@ -3140,14 +3730,14 @@ void ftMain_SearchWeaponHit(GObj *fighter_gobj)
                                     }
                                     if (fighter_flags.group_id == 7)
                                     {
-                                        gFighterIsHitDetect[i] = TRUE;
+                                        gFTMainIsHitDetect[i] = TRUE;
 
                                         k++;
 
                                         continue;
                                     }
                                 }
-                                gFighterIsHitDetect[i] = FALSE;
+                                gFTMainIsHitDetect[i] = FALSE;
                             }
                             if (k != 0)
                             {
@@ -3157,11 +3747,11 @@ void ftMain_SearchWeaponHit(GObj *fighter_gobj)
                                     {
                                         ft_hit = &fp->fighter_hit[j];
 
-                                        if (gFighterIsHitDetect[j] == FALSE) continue;
+                                        if (gFTMainIsHitDetect[j] == FALSE) continue;
 
                                         else if (wpCollision_CheckWeaponHitFighterHitIntersect(wp_hit, i, ft_hit) != FALSE)
                                         {
-                                            ftMain_UpdateAttackStatWeapon(ip, wp_hit, i, fp, ft_hit, weapon_gobj, fighter_gobj);
+                                            ftMainUpdateAttackStatWeapon(ip, wp_hit, i, fp, ft_hit, weapon_gobj, fighter_gobj);
 
                                             if (ip->hit_attack_damage != 0) goto next_gobj;
                                         }
@@ -3173,9 +3763,9 @@ void ftMain_SearchWeaponHit(GObj *fighter_gobj)
                     }
                     for (i = 0, l = 0; i < wp_hit->hitbox_count; i++)
                     {
-                        gFighterIsHurtDetect[i] = ftCollision_CheckWeaponHitInRange(wp_hit, i, fighter_gobj);
+                        gFTMainIsHurtDetect[i] = ftCollision_CheckWeaponHitInRange(wp_hit, i, fighter_gobj);
 
-                        if (gFighterIsHurtDetect[i] != FALSE)
+                        if (gFTMainIsHurtDetect[i] != FALSE)
                         {
                             l++;
                         }
@@ -3186,11 +3776,11 @@ void ftMain_SearchWeaponHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < wp_hit->hitbox_count; i++)
                             {
-                                if (gFighterIsHurtDetect[i] == FALSE) continue;
+                                if (gFTMainIsHurtDetect[i] == FALSE) continue;
 
                                 else if (wpCollision_CheckWeaponHitSpecialIntersect(wp_hit, i, fp, fp->special_hit) != FALSE)
                                 {
-                                    ftMain_UpdateReflectorStatWeapon(ip, wp_hit, fp, fighter_gobj);
+                                    ftMainUpdateReflectorStatWeapon(ip, wp_hit, fp, fighter_gobj);
 
                                     goto next_gobj;
                                 }
@@ -3200,11 +3790,11 @@ void ftMain_SearchWeaponHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < wp_hit->hitbox_count; i++)
                             {
-                                if (gFighterIsHurtDetect[i] == FALSE) continue;
+                                if (gFTMainIsHurtDetect[i] == FALSE) continue;
 
                                 else if (wpCollision_CheckWeaponHitSpecialIntersect(wp_hit, i, fp, fp->special_hit) != FALSE)
                                 {
-                                    ftMain_UpdateAbsorbStatWeapon(ip, wp_hit, fp, fighter_gobj);
+                                    ftMainUpdateAbsorbStatWeapon(ip, wp_hit, fp, fighter_gobj);
 
                                     goto next_gobj;
                                 }
@@ -3214,11 +3804,11 @@ void ftMain_SearchWeaponHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < wp_hit->hitbox_count; i++)
                             {
-                                if (gFighterIsHurtDetect[i] == FALSE) continue;
+                                if (gFTMainIsHurtDetect[i] == FALSE) continue;
 
                                 else if (wpCollision_CheckWeaponHitShieldIntersect(wp_hit, i, fighter_gobj, fp->joint[ftParts_Joint_YRotN], &angle, &vec) != FALSE)
                                 {
-                                    ftMain_UpdateShieldStatWeapon(ip, wp_hit, i, fp, weapon_gobj, fighter_gobj, angle, &vec);
+                                    ftMainUpdateShieldStatWeapon(ip, wp_hit, i, fp, weapon_gobj, fighter_gobj, angle, &vec);
 
                                     goto next_gobj;
                                 }
@@ -3228,7 +3818,7 @@ void ftMain_SearchWeaponHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < wp_hit->hitbox_count; i++)
                             {
-                                if (gFighterIsHurtDetect[i] == FALSE) continue;
+                                if (gFTMainIsHurtDetect[i] == FALSE) continue;
 
                                 else for (j = 0; j < ARRAY_COUNT(fp->fighter_hurt); j++)
                                 {
@@ -3240,7 +3830,7 @@ void ftMain_SearchWeaponHit(GObj *fighter_gobj)
                                     {
                                         if (wpCollision_CheckWeaponHitFighterHurtIntersect(wp_hit, i, ft_hurt) != FALSE)
                                         {
-                                            ftMain_UpdateDamageStatWeapon(ip, wp_hit, i, fp, ft_hurt, weapon_gobj, fighter_gobj);
+                                            ftMainUpdateDamageStatWeapon(ip, wp_hit, i, fp, ft_hurt, weapon_gobj, fighter_gobj);
 
                                             goto next_gobj;
                                         }
@@ -3259,7 +3849,7 @@ void ftMain_SearchWeaponHit(GObj *fighter_gobj)
 }
 
 // 0x800E55DC
-void ftMain_SearchItemHit(GObj *fighter_gobj)
+void ftMainSearchItemHit(GObj *fighter_gobj)
 {
     GObj *item_gobj;
     s32 i, j, k, l, m, n;
@@ -3326,14 +3916,14 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
                                     }
                                     if (fighter_flags.group_id == 7)
                                     {
-                                        gFighterIsHitDetect[i] = TRUE;
+                                        gFTMainIsHitDetect[i] = TRUE;
 
                                         k++;
 
                                         continue;
                                     }
                                 }
-                                gFighterIsHitDetect[i] = FALSE;
+                                gFTMainIsHitDetect[i] = FALSE;
                             }
                             if (k != 0)
                             {
@@ -3343,11 +3933,11 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
                                     {
                                         ft_hit = &fp->fighter_hit[j];
 
-                                        if (gFighterIsHitDetect[j] == FALSE) continue;
+                                        if (gFTMainIsHitDetect[j] == FALSE) continue;
 
                                         else if (itCollision_CheckItemHitFighterHitIntersect(it_hit, i, ft_hit) != FALSE)
                                         {
-                                            ftMain_UpdateAttackStatItem(ip, it_hit, i, fp, ft_hit, item_gobj, fighter_gobj);
+                                            ftMainUpdateAttackStatItem(ip, it_hit, i, fp, ft_hit, item_gobj, fighter_gobj);
 
                                             if (ip->hit_attack_damage != 0) goto next_gobj;
                                         }
@@ -3359,9 +3949,9 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
                     }
                     for (i = 0, l = 0; i < it_hit->hitbox_count; i++)
                     {
-                        gFighterIsHurtDetect[i] = ftCollision_CheckItemHitInRange(it_hit, i, fighter_gobj);
+                        gFTMainIsHurtDetect[i] = ftCollision_CheckItemHitInRange(it_hit, i, fighter_gobj);
 
-                        if (gFighterIsHurtDetect[i] != FALSE)
+                        if (gFTMainIsHurtDetect[i] != FALSE)
                         {
                             l++;
                         }
@@ -3372,11 +3962,11 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < it_hit->hitbox_count; i++)
                             {
-                                if (gFighterIsHurtDetect[i] == FALSE) continue;
+                                if (gFTMainIsHurtDetect[i] == FALSE) continue;
 
                                 else if (itCollision_CheckItemHitSpecialIntersect(it_hit, i, fp, fp->special_hit) != FALSE)
                                 {
-                                    ftMain_UpdateReflectorStatItem(ip, it_hit, fp, fighter_gobj);
+                                    ftMainUpdateReflectorStatItem(ip, it_hit, fp, fighter_gobj);
 
                                     goto next_gobj;
                                 }
@@ -3386,11 +3976,11 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < it_hit->hitbox_count; i++)
                             {
-                                if (gFighterIsHurtDetect[i] == FALSE) continue;
+                                if (gFTMainIsHurtDetect[i] == FALSE) continue;
 
                                 else if (itCollision_CheckItemHitShieldIntersect(it_hit, i, fighter_gobj, fp->joint[ftParts_Joint_YRotN], &angle, &vec) != FALSE)
                                 {
-                                    ftMain_UpdateShieldStatItem(ip, it_hit, i, fp, item_gobj, fighter_gobj, angle, &vec);
+                                    ftMainUpdateShieldStatItem(ip, it_hit, i, fp, item_gobj, fighter_gobj, angle, &vec);
 
                                     goto next_gobj;
                                 }
@@ -3400,7 +3990,7 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
                         {
                             for (i = 0; i < it_hit->hitbox_count; i++)
                             {
-                                if (gFighterIsHurtDetect[i] == FALSE) continue;
+                                if (gFTMainIsHurtDetect[i] == FALSE) continue;
 
                                 else for (j = 0; j < ARRAY_COUNT(fp->fighter_hurt); j++)
                                 {
@@ -3412,7 +4002,7 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
                                     {
                                         if (itCollision_CheckItemHitFighterHurtIntersect(it_hit, i, ft_hurt) != FALSE)
                                         {
-                                            ftMain_UpdateDamageStatItem(ip, it_hit, i, fp, ft_hurt, item_gobj, fighter_gobj);
+                                            ftMainUpdateDamageStatItem(ip, it_hit, i, fp, ft_hurt, item_gobj, fighter_gobj);
 
                                             goto next_gobj;
                                         }
@@ -3430,34 +4020,34 @@ void ftMain_SearchItemHit(GObj *fighter_gobj)
 }
 
 // 0x800E5C30
-sb32 ftMain_GetGroundHitboxPointer(ftStruct *fp, grHitbox **p_gr_hit)
+sb32 ftMainGetGroundHitboxPointer(ftStruct *fp, grHitbox **p_gr_hit)
 {
     if ((fp->damagefloor_wait == 0) && (fp->ground_or_air == GA_Ground) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2))
     {
         switch (fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK)
         {
         case mpCollision_Material_FireWeakHz1:
-            *p_gr_hit = &dGroundHitCollisionAttributes[0];
+            *p_gr_hit = &dFTMainGroundHitCollisionAttributes[0];
             return TRUE;
 
         case mpCollision_Material_FireStrongVt1:
-            *p_gr_hit = &dGroundHitCollisionAttributes[1];
+            *p_gr_hit = &dFTMainGroundHitCollisionAttributes[1];
             return TRUE;
 
         case mpCollision_Material_FireWeakVt1:
-            *p_gr_hit = &dGroundHitCollisionAttributes[2];
+            *p_gr_hit = &dFTMainGroundHitCollisionAttributes[2];
             return TRUE;
 
         case mpCollision_Material_SpikeStrongHz1:
-            *p_gr_hit = &dGroundHitCollisionAttributes[3];
+            *p_gr_hit = &dFTMainGroundHitCollisionAttributes[3];
             return TRUE;
 
         case mpCollision_Material_FireWeakVt2:
-            *p_gr_hit = &dGroundHitCollisionAttributes[4];
+            *p_gr_hit = &dFTMainGroundHitCollisionAttributes[4];
             return TRUE;
 
         case mpCollision_Material_FireWeakVt3:
-            *p_gr_hit = &dGroundHitCollisionAttributes[5];
+            *p_gr_hit = &dFTMainGroundHitCollisionAttributes[5];
             return TRUE;
 
         default:
@@ -3468,13 +4058,13 @@ sb32 ftMain_GetGroundHitboxPointer(ftStruct *fp, grHitbox **p_gr_hit)
 }
 
 // 0x800E5D20
-void ftMain_SearchGroundHit(GObj *fighter_gobj)
+void ftMainSearchGroundHit(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    grMapEnvironment *me = &gMapEnvironments[0];
+    grMapEnv *me = &sFTMainMapEnvs[0];
     s32 i;
     grHitbox *gr_hit;
-    s32 sp44;
+    s32 kind;
 
     if (fp->hitlag_timer == 0)
     {
@@ -3489,22 +4079,22 @@ void ftMain_SearchGroundHit(GObj *fighter_gobj)
     }
     if (ftCommon_GetBestHitStatusAll(fighter_gobj) == gmHitCollision_HitStatus_Normal)
     {
-        for (i = 0; i < gMapEnvironmentCount; i++, me++)
+        for (i = 0; i < sFTMainMapEnvNum; i++, me++)
         {
-            if ((me->egobj != NULL) && (me->proc_update(me->egobj, fighter_gobj, &gr_hit, &sp44) != FALSE))
+            if ((me->egobj != NULL) && (me->proc_update(me->egobj, fighter_gobj, &gr_hit, &kind) != FALSE))
             {
-                ftMain_UpdateDamageStatGround(me->egobj, fighter_gobj, fp, gr_hit, sp44);
+                ftMainUpdateDamageStatGround(me->egobj, fighter_gobj, fp, gr_hit, kind);
             }
         }
-        if (ftMain_GetGroundHitboxPointer(fp, &gr_hit) != FALSE)
+        if (ftMainGetGroundHitboxPointer(fp, &gr_hit) != FALSE)
         {
-            ftMain_UpdateDamageStatGround(NULL, fighter_gobj, fp, gr_hit, gr_hit->env_kind);
+            ftMainUpdateDamageStatGround(NULL, fighter_gobj, fp, gr_hit, gr_hit->env_kind);
         }
     }
 }
 
 // 0x800E5E58 - Meth
-void ftMain_SearchFighterCatch(GObj *this_gobj)
+void ftMainSearchFighterCatch(GObj *this_gobj)
 {
     GObj *other_gobj;
     ftStruct *this_fp;
@@ -3570,7 +4160,7 @@ void ftMain_SearchFighterCatch(GObj *this_gobj)
                 {
                     if ((ft_hurt->is_grabbable != FALSE) && (ftCollision_CheckFighterHitFighterHurtIntersect(ft_hit, ft_hurt) != FALSE))
                     {
-                        ftMain_UpdateCatchStatFighter(this_fp, ft_hit, other_fp, this_gobj, other_gobj);
+                        ftMainUpdateCatchStatFighter(this_fp, ft_hit, other_fp, this_gobj, other_gobj);
 
                         goto next_gobj;
                     }
@@ -3583,15 +4173,15 @@ void ftMain_SearchFighterCatch(GObj *this_gobj)
 }
 
 // 0x800E6100
-void ftMain_ProcSearchAllCatch(GObj *fighter_gobj)
+void ftMainProcSearchAllCatch(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SearchHitMapObject(fighter_gobj);
+    ftMainSearchHitMapObject(fighter_gobj);
 
     if (fp->is_catchstatus)
     {
-        ftMain_SearchFighterCatch(fighter_gobj);
+        ftMainSearchFighterCatch(fighter_gobj);
 
         if (fp->search_gobj != NULL)
         {
@@ -3602,28 +4192,28 @@ void ftMain_ProcSearchAllCatch(GObj *fighter_gobj)
 }
 
 // 0x800E6178
-void ftMain_ProcSearchAllHit(GObj *fighter_gobj)
+void ftMainProcSearchAllHit(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     if (!(fp->is_nullstatus))
     {
-        gFighterHitLogIndex = 0;
+        sFTMainHitLogID = 0;
 
-        ftMain_SearchFighterHit(fighter_gobj);
-        ftMain_SearchItemHit(fighter_gobj);
-        ftMain_SearchWeaponHit(fighter_gobj);
-        ftMain_SearchGroundHit(fighter_gobj);
+        ftMainSearchFighterHit(fighter_gobj);
+        ftMainSearchItemHit(fighter_gobj);
+        ftMainSearchWeaponHit(fighter_gobj);
+        ftMainSearchGroundHit(fighter_gobj);
 
-        if (gFighterHitLogIndex != 0)
+        if (sFTMainHitLogID != 0)
         {
-            ftMain_ProcessHitCollisionStatsMain(fighter_gobj);
+            ftMainProcessHitCollisionStatsMain(fighter_gobj);
         }
     }
 }
 
 // 0x800E61EC
-void ftMain_ProcUpdateMain(GObj *fighter_gobj)
+void ftMainProcUpdateMain(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 damage;
@@ -3729,7 +4319,7 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
 
         if ((s32)((fp->damage_queue * 0.75F) + 4.0F) > 0)
         {
-            ftMain_MakeRumble(fp, 0, (s32)((fp->damage_queue * 0.75F) + 4.0F));
+            ftMainMakeRumble(fp, 0, (s32)((fp->damage_queue * 0.75F) + 4.0F));
         }
     }
     else if (fp->shield_damage != 0)
@@ -3765,11 +4355,11 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
 
         if (fp->stat_flags.stat_attack_id == ftStatus_AttackIndex_BatSwing4)
         {
-            ftMain_MakeRumble(fp, 10, 0);
+            ftMainMakeRumble(fp, 10, 0);
         }
-        else if ((s32)((fp->attack_damage * 0.5F) + 2.0F) > 0)
+        else if ((s32) ((fp->attack_damage * 0.5F) + 2.0F) > 0)
         {
-            ftMain_MakeRumble(fp, 5, (s32)((fp->attack_damage * 0.5F) + 2.0F));
+            ftMainMakeRumble(fp, 5, (s32)((fp->attack_damage * 0.5F) + 2.0F));
         }
     }
     else if (fp->reflect_damage != 0)
@@ -3833,16 +4423,16 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
         case FALSE:
             if ((fp->ft_kind == Ft_Kind_Link) && (fp->joint_render_state[11 - ftParts_Joint_EnumMax].render_state_b1 == 0))
             {
-                ftParts *unk_dobj = fp->joint[11]->user_data.p;
+                ftParts *ftparts = fp->joint[11]->user_data.p;
 
                 func_ovl2_800EDBA4(fp->joint[11]);
 
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x0 = unk_dobj->mtx_translate[3][0];
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x2 = unk_dobj->mtx_translate[3][1];
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x4 = unk_dobj->mtx_translate[3][2];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = unk_dobj->mtx_translate[2][0];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = unk_dobj->mtx_translate[2][1];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = unk_dobj->mtx_translate[2][2];
+                fp->afterimage.desc[fp->afterimage.desc_index].translate_x = ftparts->mtx_translate[3][0];
+                fp->afterimage.desc[fp->afterimage.desc_index].translate_y = ftparts->mtx_translate[3][1];
+                fp->afterimage.desc[fp->afterimage.desc_index].translate_z = ftparts->mtx_translate[3][2];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = ftparts->mtx_translate[2][0];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = ftparts->mtx_translate[2][1];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = ftparts->mtx_translate[2][2];
 
                 if (fp->afterimage.desc_index == 2)
                 {
@@ -3858,7 +4448,6 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
             break;
 
         case TRUE:
-
             if ((fp->item_hold != NULL) && (fp->is_show_item) && (itGetStruct(fp->item_hold)->it_kind == It_Kind_Sword))
             {
                 s32 unused;
@@ -3866,9 +4455,9 @@ void ftMain_ProcUpdateMain(GObj *fighter_gobj)
 
                 func_ovl0_800C9A38(mtx, fp->joint[fp->attributes->joint_itemhold_light]);
 
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x0 = mtx[3][0];
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x2 = mtx[3][1];
-                fp->afterimage.desc[fp->afterimage.desc_index].unk_afid_0x4 = mtx[3][2];
+                fp->afterimage.desc[fp->afterimage.desc_index].translate_x = mtx[3][0];
+                fp->afterimage.desc[fp->afterimage.desc_index].translate_y = mtx[3][1];
+                fp->afterimage.desc[fp->afterimage.desc_index].translate_z = mtx[3][2];
                 fp->afterimage.desc[fp->afterimage.desc_index].vec.x = mtx[1][0];
                 fp->afterimage.desc[fp->afterimage.desc_index].vec.y = mtx[1][1];
                 fp->afterimage.desc[fp->afterimage.desc_index].vec.z = mtx[1][2];
@@ -3901,18 +4490,18 @@ void func_ovl2_800E69C4(ftStruct *fp, s32 index)
     ftAttributes *attributes;
     DObjDescArray *container;
     DObj *part_joint;
-    ftParts *unk_dobj;
+    ftParts *ftparts;
 
     attributes = fp->attributes;
     part_index = &attributes->p_ftpart_lookup[index];
 
-    if (part_index->partindex_0x0 > 3)
+    if (part_index->joint_id >= ftParts_Joint_EnumMax)
     {
         if (fp->lod_current == ftParts_LOD_HighPoly)
         {
             container = &fp->attributes->dobj_desc_container->dobj_desc_array[0];
         }
-        else if (attributes->dobj_desc_container->dobj_desc_array[1].dobj_desc[part_index->partindex_0x0 - 4].display_list != NULL)
+        else if (attributes->dobj_desc_container->dobj_desc_array[1].dobj_desc[part_index->joint_id - ftParts_Joint_EnumMax].display_list != NULL)
         {
             container = &attributes->dobj_desc_container->dobj_desc_array[1];
         }
@@ -3920,93 +4509,93 @@ void func_ovl2_800E69C4(ftStruct *fp, s32 index)
     }
     else container = NULL;
 
-    sp38 = (container != NULL) ? container->dobj_desc[part_index->partindex_0x0 - 4].display_list : NULL;
+    sp38 = (container != NULL) ? container->dobj_desc[part_index->joint_id - ftParts_Joint_EnumMax].display_list : NULL;
 
     joint = omAddDObjForGObj(fp->fighter_gobj, sp38);
-    joint->unk_0xC->unk_0x8 = NULL;
-    joint->unk_0xC = NULL;
+    joint->sib_prev->sib_next = NULL;
+    joint->sib_prev = NULL;
 
     if (sp38 != NULL)
     {
-        func_ovl0_800C8CB8(joint, container->d2[part_index->partindex_0x0 - 4], container->d3[part_index->partindex_0x0 - 4], 0, fp->costume);
+        func_ovl0_800C8CB8(joint, container->d2[part_index->joint_id - ftParts_Joint_EnumMax], container->d3[part_index->joint_id - ftParts_Joint_EnumMax], 0, fp->costume);
     }
     if (container != NULL)
     {
-        fp->joint_render_state[part_index->partindex_0x0 - 4].render_state_b0 = fp->joint_render_state[part_index->partindex_0x0 - 4].render_state_b1 = (sp38 != NULL) ? 0 : -1;
+        fp->joint_render_state[part_index->joint_id - ftParts_Joint_EnumMax].render_state_b0 = fp->joint_render_state[part_index->joint_id - ftParts_Joint_EnumMax].render_state_b1 = (sp38 != NULL) ? 0 : -1;
     }
     part_joint = fp->joint[part_index->partindex_0x4];
 
     switch (part_index->partindex_0xC)
     {
     case 0:
-        if (part_joint->next != NULL)
+        if (part_joint->child != NULL)
         {
-            j1 = part_joint->next->unk_0x8;
-            j2 = part_joint->next;
+            j1 = part_joint->child->sib_next;
+            j2 = part_joint->child;
 
             while (j1 != NULL)
             {
                 j2 = j1;
-                j1 = j1->unk_0x8;
+                j1 = j1->sib_next;
             }
-            j2->unk_0x8 = joint;
-            joint->unk_0xC = j2;
+            j2->sib_next = joint;
+            joint->sib_prev = j2;
         }
-        else part_joint->next = joint;
+        else part_joint->child = joint;
 
-        joint->prev = part_joint;
+        joint->parent = part_joint;
 
         break;
 
     case 1:
-        if (part_joint->next != NULL)
+        if (part_joint->child != NULL)
         {
-            j2 = part_joint->next;
-            j2->unk_0xC = joint;
-            joint->unk_0x8 = j2;
+            j2 = part_joint->child;
+            j2->sib_prev = joint;
+            joint->sib_next = j2;
         }
-        part_joint->next = joint;
+        part_joint->child = joint;
 
-        joint->prev = part_joint;
+        joint->parent = part_joint;
 
         break;
 
     case 2:
-        j2 = part_joint->next->unk_0x8;
-        j2->unk_0xC = joint;
-        joint->unk_0x8 = j2;
-        j2 = part_joint->next;
-        j2->unk_0x8 = joint;
-        joint->prev = part_joint;
-        joint->unk_0xC = j2;
+        j2 = part_joint->child->sib_next;
+        j2->sib_prev = joint;
+        joint->sib_next = j2;
+        j2 = part_joint->child;
+        j2->sib_next = joint;
+        joint->parent = part_joint;
+        joint->sib_prev = j2;
 
         break;
 
     case 3:
-        if (part_joint->next != NULL)
+        if (part_joint->child != NULL)
         {
-            j2 = part_joint->next;
-            joint->next = j2;
+            j2 = part_joint->child;
+            joint->child = j2;
 
             do
             {
-                j2->prev = joint;
-                j2 = j2->unk_0x8;
+                j2->parent = joint;
+                j2 = j2->sib_next;
             }
             while (j2 != NULL);
         }
-        part_joint->next = joint;
+        part_joint->child = joint;
 
-        joint->prev = part_joint;
+        joint->parent = part_joint;
 
         break;
     }
-    fp->joint[part_index->partindex_0x0] = joint;
+    fp->joint[part_index->joint_id] = joint;
 
-    joint->user_data.p = unk_dobj = ftManager_GetFighterPartsSetNextAlloc();
+    joint->user_data.p = ftparts = ftManager_GetFighterPartsSetNextAlloc();
 
-    unk_dobj->unk_0xC = attributes->dobj_desc_container->dobj_desc_array[fp->lod_current - 1].unk_dobjcontain_0xC;
-    unk_dobj->unk_0xD = part_index->partindex_0x0;
+    ftparts->unk_0xC = attributes->dobj_desc_container->dobj_desc_array[fp->lod_current - 1].unk_dobjcontain_0xC;
+    ftparts->joint_id = part_index->joint_id;
 
     if (part_index->partindex_0x8 != 0)
     {
@@ -4014,7 +4603,8 @@ void func_ovl2_800E69C4(ftStruct *fp, s32 index)
     }
 }
 
-void func_ovl2_800E6CE0(ftStruct *fp, s32 index)
+// 0x800E6CE0
+void ftMainAddTransNJointID(ftStruct *fp, s32 index)
 {
     DObj *temp_a1;
     DObj *temp_t0;
@@ -4025,91 +4615,92 @@ void func_ovl2_800E6CE0(ftStruct *fp, s32 index)
     DObj *new_var;
 
     part_index = &fp->attributes->p_ftpart_lookup[index];
-    joint = fp->joint[part_index->partindex_0x0];
+    joint = fp->joint[part_index->joint_id];
 
-    if (part_index->partindex_0x0 == 1)
+    if (part_index->joint_id == ftParts_Joint_TransN)
     {
-        new_var = joint->prev;
-        var_a2 = joint->next;
+        new_var = joint->parent;
+        var_a2 = joint->child;
         temp_a1 = new_var;
         var_a3 = var_a2;
 
         if (var_a3 != NULL)
         {
-            temp_t0 = joint->unk_0xC;
+            temp_t0 = joint->sib_prev;
 
             var_a3 = var_a2;
             var_a2 = temp_t0;
 
             if (temp_t0 == NULL)
             {
-                temp_a1->next = var_a3;
+                temp_a1->child = var_a3;
             }
             else
             {
-                var_a2->unk_0x8 = var_a3;
-                var_a3->unk_0xC = joint->unk_0xC;
+                var_a2->sib_next = var_a3;
+                var_a3->sib_prev = joint->sib_prev;
             }
-            var_a2 = var_a3->unk_0x8;
-            var_a3->prev = temp_a1;
+            var_a2 = var_a3->sib_next;
+            var_a3->parent = temp_a1;
 
             while (var_a2 != NULL)
             {
                 var_a3 = var_a2;
-                var_a2->prev = temp_a1;
-                var_a2 = var_a2->unk_0x8;
+                var_a2->parent = temp_a1;
+                var_a2 = var_a2->sib_next;
             }
 
-            var_a3->unk_0x8 = joint->unk_0x8;
-            temp_a1 = joint->unk_0x8;
+            var_a3->sib_next = joint->sib_next;
+            temp_a1 = joint->sib_next;
 
             if (temp_a1 != NULL)
             {
-                temp_a1->unk_0xC = var_a3;
+                temp_a1->sib_prev = var_a3;
             }
         }
         else
         {
-            temp_t0 = joint->unk_0xC;
+            temp_t0 = joint->sib_prev;
 
             if (temp_t0 == NULL)
             {
-                temp_a1->next = joint->unk_0x8;
+                temp_a1->child = joint->sib_next;
             }
-            else temp_t0->unk_0x8 = joint->unk_0x8;
+            else temp_t0->sib_next = joint->sib_next;
 
-            temp_a1 = joint->unk_0x8;
+            temp_a1 = joint->sib_next;
 
             if (temp_a1 != NULL)
             {
-                temp_a1->unk_0xC = joint->unk_0xC;
+                temp_a1->sib_prev = joint->sib_prev;
             }
         }
-        joint->next = NULL;
-        joint->unk_0xC = NULL;
-        joint->unk_0x8 = NULL;
-        joint->prev = NULL;
+        joint->child = NULL;
+        joint->sib_prev = NULL;
+        joint->sib_next = NULL;
+        joint->parent = NULL;
 
         temp_a1 = fp->joint[part_index->partindex_0x4];
 
-        if (temp_a1->next != NULL)
+        if (temp_a1->child != NULL)
         {
-            var_a3 = temp_a1->next;
-            joint->next = temp_a1->next;
+            var_a3 = temp_a1->child;
+            joint->child = temp_a1->child;
 
             do
             {
-                var_a3->prev = joint;
-                var_a3 = var_a3->unk_0x8;
+                var_a3->parent = joint;
+                var_a3 = var_a3->sib_next;
             } 
             while (var_a3 != NULL);
         }
-        temp_a1->next = joint;
-        joint->prev = temp_a1;
+        temp_a1->child = joint;
+        joint->parent = temp_a1;
     }
 }
 
-void func_ovl2_800E6E00(ftStruct *fp, s32 index)
+// 0x800E6E00
+void ftMainEjectJointID(ftStruct *fp, s32 index)
 {
     ftPartIndex *part_index;
     DObj *joint;
@@ -4119,62 +4710,62 @@ void func_ovl2_800E6E00(ftStruct *fp, s32 index)
     DObj *var_v0;
 
     part_index = &fp->attributes->p_ftpart_lookup[index];
-    joint = fp->joint[part_index->partindex_0x0];
+    joint = fp->joint[part_index->joint_id];
 
     ftManager_SetFighterPartsPrevAlloc(joint->user_data.p);
 
-    temp_a1 = joint->next;
-    temp_a0 = joint->prev;
+    temp_a1 = joint->child;
+    temp_a0 = joint->parent;
 
     if (temp_a1 != NULL)
     {
         var_v1 = temp_a1;
 
-        if (joint->unk_0xC == NULL)
+        if (joint->sib_prev == NULL)
         {
-            temp_a0->next = temp_a1;
+            temp_a0->child = temp_a1;
         }
         else
         {
-            joint->unk_0xC->unk_0x8 = var_v1;
-            var_v1->unk_0xC = (temp_a1 = joint)->unk_0xC;
+            joint->sib_prev->sib_next = var_v1;
+            var_v1->sib_prev = (temp_a1 = joint)->sib_prev;
         }
-        var_v0 = var_v1->unk_0x8;
-        var_v1->prev = temp_a0;
+        var_v0 = var_v1->sib_next;
+        var_v1->parent = temp_a0;
 
         while (var_v0 != NULL)
         {
             var_v1 = var_v0;
-            var_v0->prev = temp_a0;
-            var_v0 = var_v0->unk_0x8;
+            var_v0->parent = temp_a0;
+            var_v0 = var_v0->sib_next;
         }
-        var_v1->unk_0x8 = joint->unk_0x8;
-        var_v0 = joint->unk_0x8;
+        var_v1->sib_next = joint->sib_next;
+        var_v0 = joint->sib_next;
 
         if (var_v0 != NULL)
         {
-            var_v0->unk_0xC = var_v1;
+            var_v0->sib_prev = var_v1;
         }
     }
     else
     {
-        if (joint->unk_0xC == NULL)
+        if (joint->sib_prev == NULL)
         {
-            temp_a0->next = joint->unk_0x8;
+            temp_a0->child = joint->sib_next;
         }
         else
         {
-            joint->unk_0xC->unk_0x8 = joint->unk_0x8;
+            joint->sib_prev->sib_next = joint->sib_next;
         }
-        if (joint->unk_0x8 != NULL)
+        if (joint->sib_next != NULL)
         {
-            joint->unk_0x8->unk_0xC = joint->unk_0xC;
+            joint->sib_next->sib_prev = joint->sib_prev;
         }
     }
-    fp->joint[part_index->partindex_0x0] = NULL;
-    joint->unk_0x8 = NULL;
-    joint->unk_0xC = NULL;
-    joint->next = NULL;
+    fp->joint[part_index->joint_id] = NULL;
+    joint->sib_next = NULL;
+    joint->sib_prev = NULL;
+    joint->child = NULL;
 
     omEjectDObj(joint);
 }
@@ -4217,39 +4808,39 @@ extern ftIntroStatusDesc D_ovl1_80390BE8;
 // 0x8012B740
 ftStatusDesc *ftStatus_Characters_SpecialDescPointers[/* */] =
 {
-    ftStatus_SpecialDesc_Mario,
-    ftStatus_SpecialDesc_Fox,
-    ftStatus_SpecialDesc_Donkey,
-    ftStatus_SpecialDesc_Samus,
-    ftStatus_SpecialDesc_Luigi,
-    ftStatus_SpecialDesc_Link,
-    ftStatus_SpecialDesc_Yoshi,
-    ftStatus_SpecialDesc_Captain,
-    ftStatus_SpecialDesc_Kirby,
-    ftStatus_SpecialDesc_Pikachu,
-    ftStatus_SpecialDesc_Purin,
-    ftStatus_SpecialDesc_Ness,
-    ftStatus_SpecialDesc_MasterHand,
-    ftStatus_SpecialDesc_Mario,
-    ftStatus_SpecialDesc_Mario,
-    ftStatus_SpecialDesc_Fox,
-    ftStatus_SpecialDesc_Donkey,
-    ftStatus_SpecialDesc_Samus,
-    ftStatus_SpecialDesc_Luigi,
-    ftStatus_SpecialDesc_Link,
-    ftStatus_SpecialDesc_Yoshi,
-    ftStatus_SpecialDesc_Captain,
-    ftStatus_SpecialDesc_Kirby,
-    ftStatus_SpecialDesc_Pikachu,
-    ftStatus_SpecialDesc_Purin,
-    ftStatus_SpecialDesc_Ness,
-    ftStatus_SpecialDesc_Donkey
+    dFTMarioSpecialStatusDesc,
+    dFTFoxSpecialStatusDesc,
+    dFTDonkeySpecialStatusDesc,
+    dFTSamusSpecialStatusDesc,
+    dFTLuigiSpecialStatusDesc,
+    dFTLinkSpecialStatusDesc,
+    dFTYoshiSpecialStatusDesc,
+    dFTCaptainSpecialStatusDesc,
+    dFTKirbySpecialStatusDesc,
+    dFTPikachuSpecialStatusDesc,
+    dFTPurinSpecialStatusDesc,
+    dFTNessSpecialStatusDesc,
+    dFTBossSpecialStatusDesc,
+    dFTMarioSpecialStatusDesc,
+    dFTMarioSpecialStatusDesc,
+    dFTFoxSpecialStatusDesc,
+    dFTDonkeySpecialStatusDesc,
+    dFTSamusSpecialStatusDesc,
+    dFTLuigiSpecialStatusDesc,
+    dFTLinkSpecialStatusDesc,
+    dFTYoshiSpecialStatusDesc,
+    dFTCaptainSpecialStatusDesc,
+    dFTKirbySpecialStatusDesc,
+    dFTPikachuSpecialStatusDesc,
+    dFTPurinSpecialStatusDesc,
+    dFTNessSpecialStatusDesc,
+    dFTDonkeySpecialStatusDesc
 };
 
 extern ColAnimDesc caColorAnimDesc[]; // The disassembler thinks this is 0x8012DBD5, actually starts at 0x8012DBD0
 
 // 0x800E6F24
-void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 anim_rate, u32 flags)
+void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 anim_rate, u32 flags)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 event_ptr;
@@ -4495,7 +5086,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
     {
         motion_id = unk_callback[status_struct_id].motion_id - 0x10000;
         fp->status_info.motion_id = motion_id;
-        script_array = fp->ft_data->demoscript;
+        script_array = fp->ft_data->submotion;
     }
     if ((motion_id != -1) && (motion_id != -2))
     {
@@ -4529,9 +5120,9 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
                 }
                 else if (anim_flags_update & (1 << 31))
                 {
-                    func_ovl2_800E6CE0(fp, i);
+                    ftMainAddTransNJointID(fp, i);
                 }
-                else func_ovl2_800E6E00(fp, i);
+                else ftMainEjectJointID(fp, i);
             }
 
             dobj_desc = attributes->dobj_desc_container->dobj_desc_array[fp->lod_current - 1].dobj_desc;
@@ -4635,7 +5226,7 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
                 // Actually subaction scripts?
                 if (fp->anim_flags.flags.x19B_flag_b3)
                 {
-                    event_ptr = *fp->ft_data->p_file_demoscript;
+                    event_ptr = *fp->ft_data->p_file_submotion;
 
                     event_script_ptr = (void*)((intptr_t)script_info->offset + (uintptr_t)event_ptr);
                 }
@@ -4673,12 +5264,12 @@ void ftMain_SetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin,
 
         if (frame_begin != 0.0F)
         {
-            ftMain_UpdateAnimAllEvents(fighter_gobj);
+            ftMainUpdateAnimAllEvents(fighter_gobj);
         }
         else
         {
             func_ovl2_800E0830(fighter_gobj);
-            ftMain_RunUpdateColAnim(fighter_gobj);
+            ftMainRunUpdateColAnim(fighter_gobj);
         }
     }
     else for (i = 0; i < ARRAY_COUNT(fp->motion_event); i++)

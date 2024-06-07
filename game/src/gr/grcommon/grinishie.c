@@ -455,7 +455,7 @@ void grInishie_PowerBlock_UpdateDamage(void)
 
     if (gGroundStruct.inishie.pblock_appear_wait == 0)
     {
-        ftMain_ClearMapEnvironmentGObj(gGroundStruct.inishie.pblock_gobj);
+        ftMainClearMapEnvGObj(gGroundStruct.inishie.pblock_gobj);
     }
 }
 
@@ -510,7 +510,7 @@ void grInishie_PowerBlock_MakeGround(void)
 // 0x80109B4C
 void func_ovl2_80109B4C(void)
 {
-    ftMain_CheckSetMapEnvironmentGObj(gGroundStruct.inishie.pblock_gobj, grInishie_PowerBlock_GetHitInfo);
+    ftMainCheckSetMapEnvGObj(gGroundStruct.inishie.pblock_gobj, grInishie_PowerBlock_GetHitInfo);
 
     gGroundStruct.inishie.pblock_appear_wait = 2;
     gGroundStruct.inishie.pblock_status = 3;

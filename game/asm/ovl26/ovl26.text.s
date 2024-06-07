@@ -3369,7 +3369,7 @@ glabel mnBattleSpawnFighter
   /* 132D7C 80134AFC 02002025 */        or $a0, $s0, $zero
   /* 132D80 80134B00 C5640034 */      lwc1 $f4, 0x34($t3)
   /* 132D84 80134B04 AFA70074 */        sw $a3, 0x74($sp)
-  /* 132D88 80134B08 0C035E3A */       jal func_ovl2_800D78E8
+  /* 132D88 80134B08 0C035E3A */       jal ftManagerDestroyFighter
   /* 132D8C 80134B0C E7A40064 */      swc1 $f4, 0x64($sp)
   /* 132D90 80134B10 10000004 */         b .L80134B24
   /* 132D94 80134B14 8FA70074 */        lw $a3, 0x74($sp)
@@ -3399,7 +3399,7 @@ glabel mnBattleSpawnFighter
   /* 132DEC 80134B6C AFAC0024 */        sw $t4, 0x24($sp)
   /* 132DF0 80134B70 A3B8003C */        sb $t8, 0x3c($sp)
   /* 132DF4 80134B74 AFB9005C */        sw $t9, 0x5c($sp)
-  /* 132DF8 80134B78 0C035FCF */       jal ftManager_MakeFighter
+  /* 132DF8 80134B78 0C035FCF */       jal ftManagerMakeFighter
   /* 132DFC 80134B7C A3AA0039 */        sb $t2, 0x39($sp)
   /* 132E00 80134B80 8FA80020 */        lw $t0, 0x20($sp)
   /* 132E04 80134B84 3C058013 */       lui $a1, %hi(mnBattleRotateFighter)
@@ -10574,11 +10574,11 @@ glabel mnBattleInitCSS
   /* 139428 8013B1A8 0C04EBB2 */       jal mnBattleLoadMatchInfo
   /* 13942C 8013B1AC 00000000 */       nop
   /* 139430 8013B1B0 24040001 */     addiu $a0, $zero, 1
-  /* 139434 8013B1B4 0C035C65 */       jal ftManager_AllocFighterData
+  /* 139434 8013B1B4 0C035C65 */       jal ftManagerAllocFighter
   /* 139438 8013B1B8 24050004 */     addiu $a1, $zero, 4
   /* 13943C 8013B1BC 00008025 */        or $s0, $zero, $zero
   .L8013B1C0:
-  /* 139440 8013B1C0 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 139440 8013B1C0 0C035E1B */       jal ftManagerSetupDataKind
   /* 139444 8013B1C4 02002025 */        or $a0, $s0, $zero
   /* 139448 8013B1C8 26100001 */     addiu $s0, $s0, %lo(D_NF_80000001)
   /* 13944C 8013B1CC 2A01000C */      slti $at, $s0, 0xc

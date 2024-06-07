@@ -1919,7 +1919,7 @@ void omLinkGObjDLCommon(GObj *gobj, void (*proc_render)(GObj*), u8 dl_link, u32 
     gobj->dl_link_id = dl_link;
     gobj->dl_link_order = dl_order;
     gobj->proc_render = proc_render;
-    gobj->unk_gobj_0x38 = arg4;
+    gobj->ftparts_gobj_0x38 = arg4;
     gobj->fd_last = D_8003B6E8.word - 1;
 }
 
@@ -1969,9 +1969,9 @@ void func_80009F28(GObj *gobj, void (*proc_render)(GObj*), u32 order, u64 arg3, 
     gobj->dl_link_id = ARRAY_COUNT(gOMObjCommonDLLinks) - 1;
     gobj->dl_link_order = order;
     gobj->proc_render = proc_render;
-    gobj->unk_gobj_0x30 = arg3;
-    gobj->unk_gobj_0x38 = arg4;
-    gobj->unk_gobj_0x40 = 0;
+    gobj->ftparts_gobj_0x30 = arg3;
+    gobj->ftparts_gobj_0x38 = arg4;
+    gobj->ftparts_gobj_0x40 = 0;
     gobj->fd_last = D_8003B6E8.word - 1;
 }
 

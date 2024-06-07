@@ -55,15 +55,15 @@ void ftFoxSpecialNInitStatusVars(GObj *fighter_gobj)
 // 0x8015BC78
 void ftFoxSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftFoxSpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x8015BCB8
 void ftFoxSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftFoxSpecialNInitStatusVars(fighter_gobj);
 }

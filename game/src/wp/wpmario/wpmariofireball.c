@@ -1,8 +1,8 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFTDataMarioExtra1;
-extern void *gFTDataLuigiExtra1;
+extern void *gFTDataMarioSpecial1;
+extern void *gFTDataLuigiSpecial1;
 extern intptr_t
 lWPMariroFireballWeaponAttributes;          // 0x00000000
 
@@ -19,7 +19,7 @@ wpMarioFireballAttributes dWPMarioFireballWeaponAttributes[/* */] =
         F_DEG_TO_RAD(-5.0F),                // Grounded launch angle (-0.0872664675117F)
         F_DEG_TO_RAD(-5.0F),                // Aerial launch angle (-0.0872664675117F)
         50.0F,                              // Base velocity
-        &gFTDataMarioExtra1,                // Pointer to ???
+        &gFTDataMarioSpecial1,                // Pointer to ???
         0x0,                                // Offset of hitbox/attributes?
         0.0F                                // Animation starting frame?
     },
@@ -35,7 +35,7 @@ wpMarioFireballAttributes dWPMarioFireballWeaponAttributes[/* */] =
         F_DEG_TO_RAD(0.0F),                 // Grounded launch angle (0.0F)
         F_DEG_TO_RAD(0.0F),                 // Aerial launch angle (0.0F)
         36.0F,                              // Base velocity
-        &gFTDataLuigiExtra1,                // Pointer to ???
+        &gFTDataLuigiSpecial1,                // Pointer to ???
         0x0,                                // Offset of hitbox/attributes?
         1.0F                                // Animation starting frame?
     }
@@ -45,7 +45,7 @@ wpCreateDesc dWPMarioFireballWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_Fireball,                       // Weapon Kind
-    &gFTDataMarioExtra1,                    // Pointer to character's loaded files?
+    &gFTDataMarioSpecial1,                    // Pointer to character's loaded files?
     &lWPMariroFireballWeaponAttributes,     // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

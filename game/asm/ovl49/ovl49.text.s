@@ -107,7 +107,7 @@ glabel mvOpeningKickEntryCreateFighters
   /* 172CB8 80131C58 E7B40050 */      swc1 $f20, 0x50($sp)
   /* 172CBC 80131C5C E7B40054 */      swc1 $f20, 0x54($sp)
   /* 172CC0 80131C60 02602025 */        or $a0, $s3, $zero
-  /* 172CC4 80131C64 0C035FCF */       jal ftManager_MakeFighter
+  /* 172CC4 80131C64 0C035FCF */       jal ftManagerMakeFighter
   /* 172CC8 80131C68 AFAD0080 */        sw $t5, 0x80($sp)
   /* 172CCC 80131C6C 00408825 */        or $s1, $v0, $zero
   /* 172CD0 80131C70 00402025 */        or $a0, $v0, $zero
@@ -842,23 +842,23 @@ glabel mvOpeningKickEntryInit
   /* 1737C0 80132760 0C03F4C0 */       jal efManager_AllocUserData
   /* 1737C4 80132764 00000000 */       nop
   /* 1737C8 80132768 24040001 */     addiu $a0, $zero, 1
-  /* 1737CC 8013276C 0C035C65 */       jal ftManager_AllocFighterData
+  /* 1737CC 8013276C 0C035C65 */       jal ftManagerAllocFighter
   /* 1737D0 80132770 24050008 */     addiu $a1, $zero, 8
-  /* 1737D4 80132774 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 1737D4 80132774 0C035E1B */       jal ftManagerSetupDataKind
   /* 1737D8 80132778 00002025 */        or $a0, $zero, $zero
-  /* 1737DC 8013277C 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 1737DC 8013277C 0C035E1B */       jal ftManagerSetupDataKind
   /* 1737E0 80132780 24040001 */     addiu $a0, $zero, 1
-  /* 1737E4 80132784 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 1737E4 80132784 0C035E1B */       jal ftManagerSetupDataKind
   /* 1737E8 80132788 24040002 */     addiu $a0, $zero, 2
-  /* 1737EC 8013278C 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 1737EC 8013278C 0C035E1B */       jal ftManagerSetupDataKind
   /* 1737F0 80132790 24040003 */     addiu $a0, $zero, 3
-  /* 1737F4 80132794 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 1737F4 80132794 0C035E1B */       jal ftManagerSetupDataKind
   /* 1737F8 80132798 24040005 */     addiu $a0, $zero, 5
-  /* 1737FC 8013279C 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 1737FC 8013279C 0C035E1B */       jal ftManagerSetupDataKind
   /* 173800 801327A0 24040006 */     addiu $a0, $zero, 6
-  /* 173804 801327A4 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 173804 801327A4 0C035E1B */       jal ftManagerSetupDataKind
   /* 173808 801327A8 24040008 */     addiu $a0, $zero, 8
-  /* 17380C 801327AC 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 17380C 801327AC 0C035E1B */       jal ftManagerSetupDataKind
   /* 173810 801327B0 24040009 */     addiu $a0, $zero, 9
   /* 173814 801327B4 3C108013 */       lui $s0, %hi(gMvOpeningKickEntryFighterAnimHeaps)
   /* 173818 801327B8 3C128013 */       lui $s2, %hi(D_ovl49_801329F8)

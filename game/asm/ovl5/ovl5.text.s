@@ -43,8 +43,8 @@ glabel func_ovl5_8018D0C0
   /* 10B3DC 8018D12C 0C001260 */       jal gsMemoryAlloc
   /* 10B3E0 8018D130 24050010 */     addiu $a1, $zero, 0x10
   /* 10B3E4 8018D134 3C048011 */       lui $a0, %hi(dCommonFileIDs)
-  /* 10B3E8 8018D138 3C068013 */       lui $a2, %hi(gCommonFiles)
-  /* 10B3EC 8018D13C 24C60D40 */     addiu $a2, $a2, %lo(gCommonFiles)
+  /* 10B3E8 8018D138 3C068013 */       lui $a2, %hi(gGMCommonFiles)
+  /* 10B3EC 8018D13C 24C60D40 */     addiu $a2, $a2, %lo(gGMCommonFiles)
   /* 10B3F0 8018D140 24846BD0 */     addiu $a0, $a0, %lo(dCommonFileIDs)
   /* 10B3F4 8018D144 24050008 */     addiu $a1, $zero, 8
   /* 10B3F8 8018D148 0C033781 */       jal rdManagerLoadFiles
@@ -151,7 +151,7 @@ glabel func_ovl5_8018D1A0
   /* 10B574 8018D2C4 0C041580 */       jal grNodeInit_SetGroundFiles
   /* 10B578 8018D2C8 00000000 */       nop 
   /* 10B57C 8018D2CC 24040003 */     addiu $a0, $zero, 3
-  /* 10B580 8018D2D0 0C035C65 */       jal ftManager_AllocFighterData
+  /* 10B580 8018D2D0 0C035C65 */       jal ftManagerAllocFighter
   /* 10B584 8018D2D4 24050001 */     addiu $a1, $zero, 1
   /* 10B588 8018D2D8 0C05952C */       jal wpManagerAllocWeapons
   /* 10B58C 8018D2DC 00000000 */       nop 
@@ -202,7 +202,7 @@ glabel func_ovl5_8018D1A0
   /* 10B638 8018D388 00084040 */       sll $t0, $t0, 1
   /* 10B63C 8018D38C 12CD002C */       beq $s6, $t5, .L8018D440
   /* 10B640 8018D390 010E9821 */      addu $s3, $t0, $t6
-  /* 10B644 8018D394 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 10B644 8018D394 0C035E1B */       jal ftManagerSetupDataKind
   /* 10B648 8018D398 92040023 */       lbu $a0, %lo(D_NF_80000023)($s0)
   /* 10B64C 8018D39C 3C02800A */       lui $v0, %hi(gBattleState)
   /* 10B650 8018D3A0 8C4250E8 */        lw $v0, %lo(gBattleState)($v0)
@@ -231,10 +231,10 @@ glabel func_ovl5_8018D1A0
   /* 10B6AC 8018D3FC 92080022 */       lbu $t0, %lo(D_NF_80000022)($s0)
   /* 10B6B0 8018D400 AFB300A0 */        sw $s3, 0xa0($sp)
   /* 10B6B4 8018D404 AFA8009C */        sw $t0, 0x9c($sp)
-  /* 10B6B8 8018D408 0C035E2D */       jal ftManager_AllocAnimHeapKind
+  /* 10B6B8 8018D408 0C035E2D */       jal ftManagerAllocAnimHeapKind
   /* 10B6BC 8018D40C 92040023 */       lbu $a0, %lo(D_NF_80000023)($s0)
   /* 10B6C0 8018D410 AFA200AC */        sw $v0, 0xac($sp)
-  /* 10B6C4 8018D414 0C035FCF */       jal ftManager_MakeFighter
+  /* 10B6C4 8018D414 0C035FCF */       jal ftManagerMakeFighter
   /* 10B6C8 8018D418 02802025 */        or $a0, $s4, $zero
   /* 10B6CC 8018D41C 00408025 */        or $s0, $v0, $zero
   /* 10B6D0 8018D420 AFC20000 */        sw $v0, ($fp) # gUnkExplainFighterGObj + 0
@@ -287,13 +287,13 @@ glabel func_ovl5_8018D4BC
   /* 10B780 8018D4D0 246E0008 */     addiu $t6, $v1, 8
   /* 10B784 8018D4D4 AC8E0000 */        sw $t6, ($a0)
   /* 10B788 8018D4D8 3C180002 */       lui $t8, 2
-  /* 10B78C 8018D4DC 3C058013 */       lui $a1, %hi(gMapLightAngleX)
-  /* 10B790 8018D4E0 3C068013 */       lui $a2, %hi(gMapLightAngleY)
+  /* 10B78C 8018D4DC 3C058013 */       lui $a1, %hi(gMPLightAngleX)
+  /* 10B790 8018D4E0 3C068013 */       lui $a2, %hi(gMPLightAngleY)
   /* 10B794 8018D4E4 AC780004 */        sw $t8, 4($v1)
   /* 10B798 8018D4E8 AC6F0000 */        sw $t7, ($v1)
-  /* 10B79C 8018D4EC 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
+  /* 10B79C 8018D4EC 8CC61394 */        lw $a2, %lo(gMPLightAngleY)($a2)
   /* 10B7A0 8018D4F0 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
-  /* 10B7A4 8018D4F4 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
+  /* 10B7A4 8018D4F4 8CA51390 */        lw $a1, %lo(gMPLightAngleX)($a1)
   /* 10B7A8 8018D4F8 8FBF0014 */        lw $ra, 0x14($sp)
   /* 10B7AC 8018D4FC 27BD0018 */     addiu $sp, $sp, 0x18
   /* 10B7B0 8018D500 03E00008 */        jr $ra

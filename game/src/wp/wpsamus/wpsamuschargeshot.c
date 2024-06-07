@@ -1,7 +1,7 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFTDataSamusExtra1;
+extern void *gFTDataSamusSpecial1;
 extern
 intptr_t lWPSamusChargeShotWeaponAttributes;// 0x00000000
 
@@ -116,7 +116,7 @@ wpCreateDesc dWPSamusChargeShotWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_ChargeShot,                     // Weapon Kind
-    &gFTDataSamusExtra1,                    // Pointer to character's loaded files?
+    &gFTDataSamusSpecial1,                    // Pointer to character's loaded files?
     &lWPSamusChargeShotWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

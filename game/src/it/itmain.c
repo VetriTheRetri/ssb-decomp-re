@@ -321,15 +321,15 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
     GObj *fighter_gobj = ip->owner_gobj;
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
-    s32 joint_index;
+    s32 joint_id;
 
     func_ovl0_800C9424(DObjGetStruct(item_gobj));
 
     pos.x = pos.y = pos.z = 0.0F;
 
-    joint_index = (ip->weight == It_Weight_Heavy) ? fp->attributes->joint_itemhold_heavy : fp->attributes->joint_itemhold_light;
+    joint_id = (ip->weight == It_Weight_Heavy) ? fp->attributes->joint_itemhold_heavy : fp->attributes->joint_itemhold_light;
 
-    ftParts_GetDObjWorldPosition(fp->joint[joint_index], &pos);
+    ftParts_GetDObjWorldPosition(fp->joint[joint_id], &pos);
 
     DObjGetStruct(item_gobj)->translate.vec.f.x = pos.x;
     DObjGetStruct(item_gobj)->translate.vec.f.y = pos.y;
@@ -386,10 +386,10 @@ void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash
     {
         if (is_smash_throw != FALSE)
         {
-            ftMain_MakeRumble(fp, 6, 0);
+            ftMainMakeRumble(fp, 6, 0);
         }
     }
-    else ftMain_MakeRumble(fp, (is_smash_throw != FALSE) ? 9 : 6, 0);
+    else ftMainMakeRumble(fp, (is_smash_throw != FALSE) ? 9 : 6, 0);
     
     proc_throw = dITThrowProcList[ip->it_kind];
 
@@ -414,7 +414,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
     DObj *joint;
     void (*proc_pickup)(GObj*);
     Vec3f pos;
-    s32 joint_index;
+    s32 joint_id;
 
     fp->item_hold = item_gobj;
     ip->owner_gobj = fighter_gobj;
@@ -447,15 +447,15 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     omAddOMMtxForDObjFixed(joint, 0x52, 0);
 
-    joint_index = (ip->weight == It_Weight_Heavy) ? fp->attributes->joint_itemhold_heavy : fp->attributes->joint_itemhold_light;
+    joint_id = (ip->weight == It_Weight_Heavy) ? fp->attributes->joint_itemhold_heavy : fp->attributes->joint_itemhold_light;
 
-    joint->user_data.p = fp->joint[joint_index];
+    joint->user_data.p = fp->joint[joint_id];
 
     pos.x = 0.0F;
     pos.y = 0.0F;
     pos.z = 0.0F;
 
-    ftParts_GetDObjWorldPosition(fp->joint[joint_index], &pos);
+    ftParts_GetDObjWorldPosition(fp->joint[joint_id], &pos);
 
     efParticle_ItemPickupSwirl_ProcUpdate(&pos);
 
@@ -478,7 +478,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
         func_800269C0(fp->attributes->throw_heavy_sfx);
     }
     
-    ftMain_MakeRumble(fp, 6, 0);
+    ftMainMakeRumble(fp, 6, 0);
 
     ip->pickup_wait = ITEM_PICKUP_WAIT_DEFAULT;
 }

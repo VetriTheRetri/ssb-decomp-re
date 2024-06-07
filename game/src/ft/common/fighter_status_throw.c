@@ -69,8 +69,8 @@ void ftCommon_Throw_SetStatus(GObj *fighter_gobj, sb32 is_throwf)
         status_id = ftStatus_Common_ThrowB;
         thrown_status = &this_fp->attributes->thrown_status[catch_fp->ft_kind].ft_thrown[1];
     }
-    ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftSetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
 
     this_fp->command_vars.flags.flag2 = 0;
@@ -147,7 +147,7 @@ void ftKirby_ThrowFFall_SetStatus(GObj *fighter_gobj)
     GObj *catch_gobj = this_fp->catch_gobj;
     ftStruct *catch_fp = ftGetStruct(catch_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_ThrowFFall, 0.0F, 1.0F, FTSTATUPDATE_TEXTUREPART_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_ThrowFFall, 0.0F, 1.0F, FTSTATUPDATE_TEXTUREPART_PRESERVE);
 
     catch_fp->x192_flag_b1 = FALSE;
 }
@@ -185,5 +185,5 @@ void ftKirby_ThrowFLanding_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_ThrowFLanding, 0.0F, 1.0F, FTSTATUPDATE_TEXTUREPART_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_ThrowFLanding, 0.0F, 1.0F, FTSTATUPDATE_TEXTUREPART_PRESERVE);
 }

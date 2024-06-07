@@ -13,5 +13,5 @@ void ftMasterHand_Default_ProcInterrupt(GObj *fighter_gobj)
 // 0x80158784
 void ftMasterHand_Default_SetStatus(GObj *fighter_gobj) // Unused
 {
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Default, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_MasterHand_Default, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 }

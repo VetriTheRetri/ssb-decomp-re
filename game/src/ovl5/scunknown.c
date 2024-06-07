@@ -4,7 +4,7 @@
 
 // OVERLAY 5
 
-extern void *gCommonFiles[];
+extern void *gGMCommonFiles[];
 extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_001AC870;
 extern u32 dCommonFileIDs[8];
@@ -52,7 +52,7 @@ void func_ovl5_8018D0C0(void)
     rldm_setup.forceBufSize = ARRAY_COUNT(D_ovl5_8018D718);
 
     rdManagerInitSetup(&rldm_setup);
-    rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
+    rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }
 
 // 0x8018D160
@@ -94,7 +94,7 @@ void func_ovl5_8018D1A0(void)
     grWallpaper_SetGroundWallpaper();
     func_ovl2_8010DB00();
     grNodeInit_SetGroundFiles();
-    ftManager_AllocFighterData(3, 1);
+    ftManagerAllocFighter(3, 1);
     wpManagerAllocWeapons();
     itManagerInitItems();
     efManager_AllocUserData();
@@ -107,7 +107,7 @@ void func_ovl5_8018D1A0(void)
 
         if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
 
-        ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
+        ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
 
         player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
         player_spawn.pos.x = 0.0F;
@@ -125,9 +125,9 @@ void func_ovl5_8018D1A0(void)
         player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
         player_spawn.controller = &gPlayerControllers[player];
 
-        player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+        player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->player_block[player].character_kind);
 
-        fighter_gobj = ftManager_MakeFighter(&player_spawn);
+        fighter_gobj = ftManagerMakeFighter(&player_spawn);
         gUnkExplainFighterGObj = fighter_gobj;
 
         ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
@@ -143,5 +143,5 @@ void func_ovl5_8018D4BC(Gfx **display_list)
 {
     gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 
-    ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
+    ftRender_Lights_DisplayLightReflect(display_list, gMPLightAngleX, gMPLightAngleY);
 }

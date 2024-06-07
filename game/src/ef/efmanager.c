@@ -14,28 +14,6 @@
 
 // Globals
 
-extern void *gFTDataMarioExtra2;
-extern void *gFTDataFoxExtra2;
-extern void *gFTDataFoxExtra3;
-extern void *gFTDataDonkeyExtra2;
-extern void *gFTDataSamusExtra2;
-extern void *gFTDataLuigiExtra2;
-extern void *gFTDataLinkExtra2;
-extern void *gFTDataYoshiModel;
-extern void *gFTDataYoshiExtra2;
-extern void *gFTDataYoshiExtra3;
-extern  s32  gFTDataYoshiParticles;
-extern void *gFTDataCaptainExtra2;
-extern void *gFTDataCaptainExtra3;
-extern void *gFTDataKirbyBattleMotion;
-extern void *gFTDataKirbyExtra2;
-extern  s32  gFTDataKirbyParticles;
-extern void *gFTDataPikachuExtra2;
-extern void *gFTDataPikachuExtra3;
-extern void *gFTDataPurinExtra2;
-extern void *gFTDataNessModel;
-extern void *gFTDataNessExtra2;
-
 extern ftYoshiEggDesc dFTYoshiEggHurtboxDesc[/* */];
 
 // Reloc Data Manager File IDs
@@ -58,7 +36,7 @@ extern intptr_t D_NF_00001AC0;
 extern intptr_t D_NF_00001B10;
 
 extern intptr_t D_NF_000004D4;
-extern intptr_t lEFKirbyStarDObjSetup;       // 0x00005458
+extern intptr_t lEFKirbyStarDObjSetup;              // 0x00005458
 
 extern intptr_t lEFPikachuUnkMObjSub;               // 0x00000640
 extern intptr_t lEFPikachuUnkDObjSetup;             // 0x00000800
@@ -700,7 +678,7 @@ efCreateDesc dEFReflectorEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTDataFoxExtra2,                      // Texture file
+    &gFTDataFoxSpecial2,                    // Texture file
 
     // DObj transformation struct 1
     {
@@ -860,7 +838,7 @@ efCreateDesc dEFPikachuUnkEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA | 0x1,       // Flags
     15,                                     // DL Link
-    &gFTDataPikachuExtra2,                  // Texture file
+    &gFTDataPikachuSpecial2,                // Texture file
 
     // DObj transformation struct 1
     {
@@ -890,7 +868,7 @@ efCreateDesc dEFThunderShockEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTDataPikachuExtra2,                  // Texture file
+    &gFTDataPikachuSpecial2,                // Texture file
 
     // DObj transformation struct 1
     {
@@ -950,7 +928,7 @@ efCreateDesc dEFThunderJoltEffectDesc =
 {
     0x4,                                    // Flags
     15,                                     // DL Link
-    &gFTDataPikachuExtra3,                  // Texture file
+    &gFTDataPikachuSpecial3,                // Texture file
 
     // DObj transformation struct 1
     {
@@ -980,7 +958,7 @@ efCreateDesc dEFVulcanJabEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA | 0x1,       // Flags
     15,                                     // DL Link
-    &gFTDataSamusExtra2,                    // Texture file
+    &gFTDataKirbySpecial2,                  // Texture file
 
     // DObj transformation struct 1
     {
@@ -1010,7 +988,7 @@ efCreateDesc dEFGrappleBeamEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTDataSamusExtra2,                    // Texture file
+    &gFTDataSamusSpecial2,                  // Texture file
 
     // DObj transformation struct 1
     {
@@ -1040,7 +1018,7 @@ efCreateDesc dEFFalconKickEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTDataCaptainExtra2,                  // Texture file
+    &gFTDataCaptainSpecial2,                // Texture file
 
     // DObj transformation struct 1
     {
@@ -1070,7 +1048,7 @@ efCreateDesc dEFFalconPunchEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     15,                                     // DL Link
-    &gFTDataCaptainExtra3,                  // Texture file
+    &gFTDataCaptainSpecial3,                // Texture file
 
     // DObj transformation struct 1
     {
@@ -1100,7 +1078,7 @@ efCreateDesc dEFPurinSingEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTDataCaptainExtra3,                  // Texture file
+    &gFTDataPurinSpecial2,                  // Texture file
 
     // DObj transformation struct 1
     {
@@ -1173,7 +1151,7 @@ efCreateDesc dEFFinalCutterUpEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTDataKirbyExtra2,                    // Texture file
+    &gFTDataKirbySpecial2,                  // Texture file
 
     // DObj transformation struct 1
     {
@@ -1203,7 +1181,7 @@ efCreateDesc dEFFinalCutterDownEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTDataKirbyExtra2,                    // Texture file
+    &gFTDataKirbySpecial2,                  // Texture file
 
     // DObj transformation struct 1
     {
@@ -1233,7 +1211,7 @@ efCreateDesc dEFFinalCutterDrawEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTDataKirbyExtra2,                    // Texture file
+    &gFTDataKirbySpecial2,                  // Texture file
 
     // DObj transformation struct 1
     {
@@ -1263,7 +1241,7 @@ efCreateDesc dEFFinalCutterTrailEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTDataKirbyExtra2,                    // Texture file
+    &gFTDataKirbySpecial2,                  // Texture file
 
     // DObj transformation struct 1
     {
@@ -1293,7 +1271,7 @@ efCreateDesc dEFPsychicMagnetEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTDataNessExtra2,                     // Texture file
+    &gFTDataNessSpecial2,                   // Texture file
 
     // DObj transformation struct 1
     {
@@ -1443,7 +1421,7 @@ efCreateDesc dEFLinkEntryWaveEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
-    &gFTDataLinkExtra2,                     // Texture file
+    &gFTDataLinkSpecial2,                   // Texture file
 
     // DObj transformation struct 1
     {
@@ -1473,7 +1451,7 @@ efCreateDesc dEFLinkEntryBeamEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
-    &gFTDataLinkExtra2,                     // Texture file
+    &gFTDataLinkSpecial2,                   // Texture file
 
     // DObj transformation struct 1
     {
@@ -1503,7 +1481,7 @@ efCreateDesc dEFKirbyEntryStarEffectDesc =
 {
     0x4 | 0x1,                              // Flags
     10,                                     // DL Link
-    &gFTDataKirbyExtra2,                    // Texture file
+    &gFTDataKirbySpecial2,                  // Texture file
 
     // DObj transformation struct 1
     {
@@ -1593,7 +1571,7 @@ efCreateDesc dEFYoshiEntryEggEffectDesc =
 {
     0x1,                                    // Flags
     10,                                     // DL Link
-    &gFTDataYoshiExtra2,                    // Texture file
+    &gFTDataYoshiSpecial2,                  // Texture file
 
     // DObj transformation struct 1
     {
@@ -1626,7 +1604,7 @@ efCreateDesc dEFYoshiEggLayEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA | 0x1,       // Flags
     10,                                     // DL Link
-    &gFTDataYoshiExtra3,                    // Texture file
+    &gFTDataYoshiSpecial3,                  // Texture file
 
     // DObj transformation struct 1
     {
@@ -1686,7 +1664,7 @@ efCreateDesc dEFSpinAttackEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTDataLinkExtra2,                     // Texture file
+    &gFTDataLinkSpecial2,                   // Texture file
 
     // DObj transformation struct 1
     {
@@ -1716,7 +1694,7 @@ efCreateDesc dEFDonkeyEntryTaruEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
-    &gFTDataDonkeyExtra2,                   // Texture file
+    &gFTDataDonkeySpecial2,                 // Texture file
 
     // DObj transformation struct 1
     {
@@ -1746,7 +1724,7 @@ efCreateDesc dEFSamusEntryPointEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
-    &gFTDataSamusExtra2,                    // Texture file
+    &gFTDataSamusSpecial2,                  // Texture file
 
     // DObj transformation struct 1
     {
@@ -1776,7 +1754,7 @@ efCreateDesc dEFCaptainEntryCarEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     10,                                     // DL Link
-    &gFTDataCaptainExtra2,                  // Texture file
+    &gFTDataCaptainSpecial2,                // Texture file
 
     // DObj transformation struct 1
     {
@@ -1806,7 +1784,7 @@ efCreateDesc dEFMarioEntryDokanEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
-    &gFTDataMarioExtra2,                    // Texture file
+    &gFTDataMarioSpecial2,                  // Texture file
 
     // DObj transformation struct 1
     {
@@ -1836,7 +1814,7 @@ efCreateDesc dEFFoxEntryArwingEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA | 0x1,       // Flags
     10,                                     // DL Link
-    &gFTDataFoxExtra3,                      // Texture file
+    &gFTDataFoxSpecial3,                    // Texture file
 
     // DObj transformation struct 1
     {
@@ -4286,7 +4264,7 @@ void efTransform_Reflector_SetImageIndex(GObj *effect_gobj, s32 index)
 
     ep->effect_vars.reflector.index = index;
 
-    func_8000BD8C(effect_gobj, (uintptr_t)gFTDataFoxExtra2 + (intptr_t)dEFReflectorAnimJointOffsets[index], 0.0F);
+    func_8000BD8C(effect_gobj, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)dEFReflectorAnimJointOffsets[index], 0.0F);
     func_8000DF34(effect_gobj);
 }
 
@@ -4689,12 +4667,12 @@ GObj* efParticle_ThunderShock_MakeEffect(GObj *fighter_gobj, Vec3f *pos, s32 fra
     switch (frame)
     {
     case 1:
-        func_8000BED8(effect_gobj, (uintptr_t)gFTDataPikachuExtra2 + (intptr_t)&D_NF_00001850, (uintptr_t)gFTDataPikachuExtra2 + (intptr_t)&D_NF_00001AC0, 0.0F); // Linker thing
+        func_8000BED8(effect_gobj, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001850, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001AC0, 0.0F); // Linker thing
         func_8000DF34(effect_gobj);
         break;
 
     case 2:
-        func_8000BED8(effect_gobj, (uintptr_t)gFTDataPikachuExtra2 + (intptr_t)&D_NF_00001970, (uintptr_t)gFTDataPikachuExtra2 + (intptr_t)&D_NF_00001B10, 0.0F); // Linker thing
+        func_8000BED8(effect_gobj, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001970, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001B10, 0.0F); // Linker thing
         func_8000DF34(effect_gobj);
         break;
     }
@@ -5614,7 +5592,7 @@ void efYoshiEggLaySetAnim(GObj *effect_gobj, s32 index)
 
     ep->effect_vars.yoshi_egg_lay.index = index;
 
-    func_ovl0_800C8758(DObjGetStruct(effect_gobj)->child, (uintptr_t)gFTDataYoshiExtra3 + dEFYoshiEggLayAnimJoints[index], 1.0F);
+    func_ovl0_800C8758(DObjGetStruct(effect_gobj)->child, (uintptr_t)gFTDataYoshiSpecial3 + dEFYoshiEggLayAnimJoints[index], 1.0F);
 }
 
 // 0x80102FE4
@@ -5664,7 +5642,7 @@ GObj* efParticle_YoshiEggLay_MakeEffect(GObj *fighter_gobj)
     dobj->child->child->ommtx[0]->kind = OMMtx_Transform_Tra;
 
     omAddOMMtxForDObjFixed(dobj->child->child, 0x2E, 0);
-    func_ovl0_800C9314(dobj->child, (uintptr_t)gFTDataYoshiExtra3 + (intptr_t)&lEFYoshiEggLayDObjSetup);
+    func_ovl0_800C9314(dobj->child, (uintptr_t)gFTDataYoshiSpecial3 + (intptr_t)&lEFYoshiEggLayDObjSetup);
 
     return effect_gobj;
 }
@@ -5705,7 +5683,7 @@ GObj* efParticle_YoshiEggRoll_MakeEffect(GObj *fighter_gobj)
 // 0x801031E0
 efParticle* func_ovl2_801031E0(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(gFTDataKirbyParticles, 2);
+    efParticle *efpart = func_ovl0_800CE9E8(gFTDataKirbyParticleBankID, 2);
 
     if (efpart != NULL)
     {
@@ -5734,7 +5712,7 @@ efParticle* func_ovl2_801031E0(Vec3f *pos)
 // 0x80103280
 efParticle* func_ovl2_80103280(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(gFTDataKirbyParticles, 5);
+    efParticle *efpart = func_ovl0_800CE9E8(gFTDataKirbyParticleBankID, 5);
 
     if (efpart != NULL)
     {
@@ -5881,7 +5859,7 @@ GObj* efParticle_CaptainEntryCar_MakeEffect(Vec3f *pos, s32 lr)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    func_8000BD8C(effect_gobj, (uintptr_t)gFTDataCaptainExtra2 + (intptr_t)&D_NF_00006200, 0.0F);
+    func_8000BD8C(effect_gobj, (uintptr_t)gFTDataCaptainSpecial2 + (intptr_t)&D_NF_00006200, 0.0F);
 
     node_dobj = dobj->child->child->child;
 
@@ -5889,11 +5867,11 @@ GObj* efParticle_CaptainEntryCar_MakeEffect(Vec3f *pos, s32 lr)
     {
         omAddOMMtxForDObjFixed(node_dobj, 0x2C, 0);
 
-        omAddDObjAnimAll(node_dobj, (uintptr_t)gFTDataCaptainExtra2 + (intptr_t)&D_NF_00006518, 0.0F);
+        omAddDObjAnimAll(node_dobj, (uintptr_t)gFTDataCaptainSpecial2 + (intptr_t)&D_NF_00006518, 0.0F);
 
         node_dobj = node_dobj->sib_next;
 
-        omAddDObjAnimAll(node_dobj, (uintptr_t)gFTDataCaptainExtra2 + (intptr_t)&D_NF_00006598, 0.0F);
+        omAddDObjAnimAll(node_dobj, (uintptr_t)gFTDataCaptainSpecial2 + (intptr_t)&D_NF_00006598, 0.0F);
 
         node_dobj = node_dobj->sib_next;
     }
@@ -5923,11 +5901,11 @@ GObj* efParticle_MarioEntryPipe_MakeEffect(Vec3f *pos, s32 ft_kind)
     switch (ft_kind)
     {
     case Ft_Kind_Mario:
-        dEFMarioEntryDokanEffectDesc.file_head = &gFTDataMarioExtra2;
+        dEFMarioEntryDokanEffectDesc.file_head = &gFTDataMarioSpecial2;
         break;
 
     case Ft_Kind_Luigi:
-        dEFMarioEntryDokanEffectDesc.file_head = &gFTDataLuigiExtra2;
+        dEFMarioEntryDokanEffectDesc.file_head = &gFTDataLuigiSpecial2;
         break;
     }
     effect_gobj = efManagerMakeEffectNoForce(&dEFMarioEntryDokanEffectDesc);
@@ -5975,13 +5953,13 @@ GObj* efParticle_FoxEntryArwing_MakeEffect(Vec3f *pos, s32 lr)
     what = dobj->child->child->child->sib_next->sib_next->sib_next->sib_next->sib_next->sib_next->child;
 
     omAddOMMtxForDObjFixed(what, 0x2C, 0);
-    omAddDObjAnimAll(what, (uintptr_t)gFTDataFoxExtra3 + (intptr_t)&D_NF_00002E74, 0.0F); // Linker thing
+    omAddDObjAnimAll(what, (uintptr_t)gFTDataFoxSpecial3 + (intptr_t)&D_NF_00002E74, 0.0F); // Linker thing
 
     if (lr == LR_Right)
     {
-        func_ovl0_800C8758(dobj->child, (uintptr_t)gFTDataFoxExtra2 + (intptr_t)&D_NF_000009E0, 0.0F); // Linker thing
+        func_ovl0_800C8758(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_000009E0, 0.0F); // Linker thing
     }
-    else func_ovl0_800C8758(dobj->child, (uintptr_t)gFTDataFoxExtra2 + (intptr_t)&D_NF_00000590, 0.0F); // Linker thing
+    else func_ovl0_800C8758(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_00000590, 0.0F); // Linker thing
 
     func_8000DF34(effect_gobj);
 
@@ -6051,7 +6029,7 @@ efParticle* efParticle_SingNote_MakeEffect(Vec3f *pos)
 // 0x80103A88
 efParticle* efParticle_YoshiEggExplode_MakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(gFTDataYoshiParticles, 3);
+    efParticle *efpart = func_ovl0_800CE9E8(gFTDataYoshiParticleBankID, 3);
 
     if (efpart != NULL)
     {
@@ -6355,7 +6333,7 @@ efParticle* efParticle_KirbyInhaleWind_MakeEffect(GObj *fighter_gobj)
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = func_ovl0_800CE9E8(gFTDataKirbyParticles | 8, 0xC);
+    efpart = func_ovl0_800CE9E8(gFTDataKirbyParticleBankID | 8, 0xC);
 
     if (efpart != NULL)
     {

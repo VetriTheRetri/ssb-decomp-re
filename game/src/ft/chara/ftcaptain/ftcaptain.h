@@ -18,7 +18,19 @@
 #define FTCAPTAIN_FALCONKICK_VEL_SCALE_APPLY_TIME 6
 #define FTCAPTAIN_FALCONKICK_VEL_SCALE_DIV 2.0F
 
-extern ftStatusDesc ftStatus_SpecialDesc_Captain[/* */];
+extern ftStatusDesc dFTCaptainSpecialStatusDesc[/* */];
+
+extern void *gFTDataCaptainMain;
+extern void *gFTDataCaptainBattleMotion;
+extern void *gFTDataCaptainModel;
+extern void *gFTDataCaptainSpecial2;
+extern void *gFTDataCaptainSpecial3;
+extern u32 gFTDataCaptainParticleBankID;
+
+extern void *gFTDataPolyCaptainMain;
+extern void *gFTDataPolyCaptainSubMotion;
+extern void *gFTDataPolyCaptainModel;
+extern u32 gFTDataPolyCaptainParticleBankID;
 
 typedef enum ftCaptainMotion
 {

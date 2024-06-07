@@ -4,7 +4,7 @@
 // 0x8014F670
 void ftCommon_AttackDash_SetStatus(GObj *fighter_gobj)
 {
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_AttackDash, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_AttackDash, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 }
 
 // 0x8014F69C - Also checks LightThrowDash and ItemSwingDash

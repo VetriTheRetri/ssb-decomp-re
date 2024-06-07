@@ -11,7 +11,7 @@ void ftMasterHand_Walk_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Walk, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_MasterHand_Walk, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMasterHand_Common_CheckEdgeInvertLR(fighter_gobj);
 
     fp->phys_info.vel_air.x = 0.0F;

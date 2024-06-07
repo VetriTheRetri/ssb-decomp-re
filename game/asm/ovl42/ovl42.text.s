@@ -458,7 +458,7 @@ glabel mvOpeningPikachuInitFighterStagePanel
   /* 16D514 8018D764 01AE9821 */      addu $s3, $t5, $t6
   /* 16D518 8018D768 52EC0030 */      beql $s7, $t4, .L8018D82C
   /* 16D51C 8018D76C 26310001 */     addiu $s1, $s1, 1
-  /* 16D520 8018D770 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 16D520 8018D770 0C035E1B */       jal ftManagerSetupDataKind
   /* 16D524 8018D774 92040023 */       lbu $a0, 0x23($s0) # D_ovl42_8018E1F0 + 35
   /* 16D528 8018D778 8EA20000 */        lw $v0, ($s5) # gBattleState + 0
   /* 16D52C 8018D77C C7A40090 */      lwc1 $f4, 0x90($sp)
@@ -489,10 +489,10 @@ glabel mvOpeningPikachuInitFighterStagePanel
   /* 16D590 8018D7E0 920D0022 */       lbu $t5, 0x22($s0) # D_ovl42_8018E1F0 + 34
   /* 16D594 8018D7E4 AFB3007C */        sw $s3, 0x7c($sp)
   /* 16D598 8018D7E8 AFAD0078 */        sw $t5, 0x78($sp)
-  /* 16D59C 8018D7EC 0C035E2D */       jal ftManager_AllocAnimHeapKind
+  /* 16D59C 8018D7EC 0C035E2D */       jal ftManagerAllocAnimHeapKind
   /* 16D5A0 8018D7F0 92040023 */       lbu $a0, 0x23($s0) # D_ovl42_8018E1F0 + 35
   /* 16D5A4 8018D7F4 AFA20088 */        sw $v0, 0x88($sp)
-  /* 16D5A8 8018D7F8 0C035FCF */       jal ftManager_MakeFighter
+  /* 16D5A8 8018D7F8 0C035FCF */       jal ftManagerMakeFighter
   /* 16D5AC 8018D7FC 02802025 */        or $a0, $s4, $zero
   /* 16D5B0 8018D800 3C018019 */       lui $at, %hi(gMvOpeningPikachuStageFighterGObj)
   /* 16D5B4 8018D804 AC22E230 */        sw $v0, %lo(gMvOpeningPikachuStageFighterGObj)($at)
@@ -704,7 +704,7 @@ glabel mvOpeningPikachuCreatePosedFighter
   /* 16D8AC 8018DAFC E7A00028 */      swc1 $f0, 0x28($sp)
   /* 16D8B0 8018DB00 E7A00030 */      swc1 $f0, 0x30($sp)
   /* 16D8B4 8018DB04 AFAA005C */        sw $t2, 0x5c($sp)
-  /* 16D8B8 8018DB08 0C035FCF */       jal ftManager_MakeFighter
+  /* 16D8B8 8018DB08 0C035FCF */       jal ftManagerMakeFighter
   /* 16D8BC 8018DB0C E7A4002C */      swc1 $f4, 0x2c($sp)
   /* 16D8C0 8018DB10 3C050001 */       lui $a1, (0x1000C >> 16) # 65548
   /* 16D8C4 8018DB14 00408025 */        or $s0, $v0, $zero
@@ -1005,7 +1005,7 @@ glabel mvOpeningPikachuInit
   /* 16DD20 8018DF70 0C0436D5 */       jal cmManager_MakeWallpaperCamera
   /* 16DD24 8018DF74 00000000 */       nop
   /* 16DD28 8018DF78 24040003 */     addiu $a0, $zero, 3
-  /* 16DD2C 8018DF7C 0C035C65 */       jal ftManager_AllocFighterData
+  /* 16DD2C 8018DF7C 0C035C65 */       jal ftManagerAllocFighter
   /* 16DD30 8018DF80 24050002 */     addiu $a1, $zero, 2
   /* 16DD34 8018DF84 0C05952C */       jal func_NF_801654B0 # couldn't be resolved
   /* 16DD38 8018DF88 00000000 */       nop
@@ -1013,7 +1013,7 @@ glabel mvOpeningPikachuInit
   /* 16DD40 8018DF90 00000000 */       nop
   /* 16DD44 8018DF94 0C03F4C0 */       jal efManager_AllocUserData
   /* 16DD48 8018DF98 00000000 */       nop
-  /* 16DD4C 8018DF9C 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 16DD4C 8018DF9C 0C035E1B */       jal ftManagerSetupDataKind
   /* 16DD50 8018DFA0 24040009 */     addiu $a0, $zero, 9
   /* 16DD54 8018DFA4 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
   /* 16DD58 8018DFA8 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
@@ -1054,13 +1054,13 @@ glabel gMvOpeningPikachuSetupDisplayList
   /* 16DDD4 8018E024 246E0008 */     addiu $t6, $v1, 8
   /* 16DDD8 8018E028 AC8E0000 */        sw $t6, ($a0)
   /* 16DDDC 8018E02C 3C180002 */       lui $t8, 2
-  /* 16DDE0 8018E030 3C058013 */       lui $a1, %hi(gMapLightAngleX)
-  /* 16DDE4 8018E034 3C068013 */       lui $a2, %hi(gMapLightAngleY)
+  /* 16DDE0 8018E030 3C058013 */       lui $a1, %hi(gMPLightAngleX)
+  /* 16DDE4 8018E034 3C068013 */       lui $a2, %hi(gMPLightAngleY)
   /* 16DDE8 8018E038 AC780004 */        sw $t8, 4($v1)
   /* 16DDEC 8018E03C AC6F0000 */        sw $t7, ($v1)
-  /* 16DDF0 8018E040 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
+  /* 16DDF0 8018E040 8CC61394 */        lw $a2, %lo(gMPLightAngleY)($a2)
   /* 16DDF4 8018E044 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
-  /* 16DDF8 8018E048 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
+  /* 16DDF8 8018E048 8CA51390 */        lw $a1, %lo(gMPLightAngleX)($a1)
   /* 16DDFC 8018E04C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16DE00 8018E050 27BD0018 */     addiu $sp, $sp, 0x18
   /* 16DE04 8018E054 03E00008 */        jr $ra

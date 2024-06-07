@@ -2902,8 +2902,8 @@ void func_80017868(GObj *this_gobj, s32 link_id, s32 arg2)
         {
             if
             (
-                ((arg2 == 0) && (this_gobj->unk_gobj_0x38 &  current_gobj->unk_gobj_0x38)) ||
-                ((arg2 == 1) && (this_gobj->unk_gobj_0x38 == current_gobj->unk_gobj_0x38))
+                ((arg2 == 0) && (this_gobj->ftparts_gobj_0x38 &  current_gobj->ftparts_gobj_0x38)) ||
+                ((arg2 == 1) && (this_gobj->ftparts_gobj_0x38 == current_gobj->ftparts_gobj_0x38))
             )
             {
                 D_8003B874 = 4;
@@ -2971,8 +2971,8 @@ void func_80017B80(GObj *gobj, s32 arg1)
     u64 sp38; // t6+t7
     u64 sp30;
 
-    sp38 = gobj->unk_gobj_0x30;
-    sp30 = gobj->unk_gobj_0x40;
+    sp38 = gobj->ftparts_gobj_0x30;
+    sp30 = gobj->ftparts_gobj_0x40;
 
     idx = 0;
 

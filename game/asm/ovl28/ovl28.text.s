@@ -2046,7 +2046,7 @@ glabel mnTrainingSpawnFighter
   /* 142E0C 8013382C 02002025 */        or $a0, $s0, $zero
   /* 142E10 80133830 C5440034 */      lwc1 $f4, 0x34($t2)
   /* 142E14 80133834 AFA70074 */        sw $a3, 0x74($sp)
-  /* 142E18 80133838 0C035E3A */       jal func_ovl2_800D78E8
+  /* 142E18 80133838 0C035E3A */       jal ftManagerDestroyFighter
   /* 142E1C 8013383C E7A40064 */      swc1 $f4, 0x64($sp)
   /* 142E20 80133840 10000004 */         b .L80133854
   /* 142E24 80133844 8FA70074 */        lw $a3, 0x74($sp)
@@ -2075,7 +2075,7 @@ glabel mnTrainingSpawnFighter
   /* 142E78 80133898 27A40024 */     addiu $a0, $sp, 0x24
   /* 142E7C 8013389C AFAB0024 */        sw $t3, 0x24($sp)
   /* 142E80 801338A0 AFAE005C */        sw $t6, 0x5c($sp)
-  /* 142E84 801338A4 0C035FCF */       jal ftManager_MakeFighter
+  /* 142E84 801338A4 0C035FCF */       jal ftManagerMakeFighter
   /* 142E88 801338A8 A3B80039 */        sb $t8, 0x39($sp)
   /* 142E8C 801338AC 8FA30020 */        lw $v1, 0x20($sp)
   /* 142E90 801338B0 3C058013 */       lui $a1, %hi(mnTrainingRotateFighter)
@@ -6851,11 +6851,11 @@ glabel mnTrainingInitCSS
   /* 147364 80137D84 0C04DE73 */       jal mnTrainingLoadMatchInfo
   /* 147368 80137D88 00000000 */       nop
   /* 14736C 80137D8C 24040001 */     addiu $a0, $zero, 1
-  /* 147370 80137D90 0C035C65 */       jal ftManager_AllocFighterData
+  /* 147370 80137D90 0C035C65 */       jal ftManagerAllocFighter
   /* 147374 80137D94 24050004 */     addiu $a1, $zero, 4
   /* 147378 80137D98 00008025 */        or $s0, $zero, $zero
   .L80137D9C:
-  /* 14737C 80137D9C 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 14737C 80137D9C 0C035E1B */       jal ftManagerSetupDataKind
   /* 147380 80137DA0 02002025 */        or $a0, $s0, $zero
   /* 147384 80137DA4 26100001 */     addiu $s0, $s0, %lo(D_NF_80000001)
   /* 147388 80137DA8 2A01000C */      slti $at, $s0, 0xc

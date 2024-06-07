@@ -5,7 +5,20 @@
 
 #include "ftmario_functions.h"
 
-extern ftStatusDesc ftStatus_SpecialDesc_Luigi[/* */];
+extern ftStatusDesc dFTLuigiSpecialStatusDesc[/* */];
+
+extern void *gFTDataLuigiMain;
+extern void *gFTDataLuigiBattleMotion;
+extern void *gFTDataLuigiModel;
+extern void *gFTDataLuigiSpecial1;
+extern void *gFTDataLuigiSpecial2;
+extern void *gFTDataLuigiSpecial3;
+extern u32 gFTDataLuigiParticleBankID;
+
+extern void *gFTDataPolyLuigiMain;
+extern void *gFTDataPolyLuigiSubMotion;
+extern void *gFTDataPolyLuigiModel;
+extern u32 gFTDataPolyLuigiParticleBankID;
 
 typedef enum ftLuigiMotion
 {

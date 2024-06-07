@@ -3,7 +3,7 @@
 #include <gm/battle.h>
 
 // 0x80130FBC
-extern void *gFTDataLinkExtra1;
+extern void *gFTDataLinkSpecial1;
 extern
 intptr_t lWPLinkBoomerangWeaponAttributes;  // 0x00000000
 
@@ -29,7 +29,7 @@ wpCreateDesc dWPLinkBoomerangWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_Boomerang,                      // Weapon Kind
-    &gFTDataLinkExtra1,                     // Pointer to character's loaded files?
+    &gFTDataLinkSpecial1,                     // Pointer to character's loaded files?
     &lWPLinkBoomerangWeaponAttributes,      // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

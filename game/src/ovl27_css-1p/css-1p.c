@@ -1442,7 +1442,7 @@ void mn1PSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_
         if (fighter_gobj != NULL)
         {
             initial_y_rotation = DObjGetStruct(fighter_gobj)->rotate.vec.f.y;
-            func_ovl2_800D78E8(fighter_gobj);
+            ftManagerDestroyFighter(fighter_gobj);
         }
         else
         {
@@ -1454,7 +1454,7 @@ void mn1PSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_
         spawn_info.shade = 0;
         spawn_info.anim_heap = gMN1PAnimHeap;
         spawn_info.player = port_id;
-        gMN1PPanel.player = fighter_gobj = ftManager_MakeFighter(&spawn_info);
+        gMN1PPanel.player = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
         omAddGObjCommonProc(fighter_gobj, mn1PRotateFighter, 1, 1);
 
@@ -2943,11 +2943,11 @@ void mn1PInitCSS()
     func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
     func_ovl2_80115890();
     efManager_AllocUserData();
-    ftManager_AllocFighterData(1U, 1);
+    ftManagerAllocFighter(1U, 1);
 
     for (i = 0; i < 12; i++)
     {
-        ftManager_SetFileDataKind(i);
+        ftManagerSetupDataKind(i);
     }
 
     gMN1PAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10U);

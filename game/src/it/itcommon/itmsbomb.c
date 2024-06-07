@@ -348,7 +348,7 @@ void itMSBombGAttachInitItemVars(GObj *item_gobj)
 
         if (fighter_gobj != NULL)
         {
-            ftMain_MakeRumble(ftGetStruct(fighter_gobj), 6, 0);
+            ftMainMakeRumble(ftGetStruct(fighter_gobj), 6, 0);
         }
     }
     func_800269C0(alSound_SFX_MSBombAttach);

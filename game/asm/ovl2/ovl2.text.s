@@ -119,8 +119,8 @@ glabel func_ovl2_800D6590
   /* 051DE8 800D65E8 3C04800A */       lui $a0, %hi(gSceneData)
   /* 051DEC 800D65EC 1520000A */      bnez $t1, .L800D6618
   /* 051DF0 800D65F0 24844AD0 */     addiu $a0, $a0, %lo(gSceneData)
-  /* 051DF4 800D65F4 3C0A8013 */       lui $t2, %hi(g1PGameTotalTimeFrames)
-  /* 051DF8 800D65F8 8D4A0D64 */        lw $t2, %lo(g1PGameTotalTimeFrames)($t2)
+  /* 051DF4 800D65F4 3C0A8013 */       lui $t2, %hi(sGM1PManagerTotalFrames)
+  /* 051DF8 800D65F8 8D4A0D64 */        lw $t2, %lo(sGM1PManagerTotalFrames)($t2)
   /* 051DFC 800D65FC 3401A8C0 */       ori $at, $zero, 0xa8c0
   /* 051E00 800D6600 240B0011 */     addiu $t3, $zero, 0x11
   /* 051E04 800D6604 0141082B */      sltu $at, $t2, $at
@@ -273,9 +273,9 @@ glabel func_ovl2_800D67DC
   /* 051FEC 800D67EC 924E0001 */       lbu $t6, 1($s2) # gSceneData + 1
   /* 051FF0 800D67F0 AFB40028 */        sw $s4, 0x28($sp)
   /* 051FF4 800D67F4 3C14800A */       lui $s4, %hi(D_800A4B18)
-  /* 051FF8 800D67F8 3C018013 */       lui $at, %hi(D_ovl2_80130D60)
+  /* 051FF8 800D67F8 3C018013 */       lui $at, %hi(sGM1PManagerScenePrev)
   /* 051FFC 800D67FC 26944B18 */     addiu $s4, $s4, %lo(D_800A4B18)
-  /* 052000 800D6800 A02E0D60 */        sb $t6, %lo(D_ovl2_80130D60)($at)
+  /* 052000 800D6800 A02E0D60 */        sb $t6, %lo(sGM1PManagerScenePrev)($at)
   /* 052004 800D6804 9299001D */       lbu $t9, 0x1d($s4) # D_800A4B18 + 29
   /* 052008 800D6808 24070009 */     addiu $a3, $zero, 9
   /* 05200C 800D680C 240F0001 */     addiu $t7, $zero, 1
@@ -308,7 +308,7 @@ glabel func_ovl2_800D67DC
   /* 052074 800D6874 00550019 */     multu $v0, $s5
   /* 052078 800D6878 92580015 */       lbu $t8, 0x15($s2) # gSceneData + 21
   /* 05207C 800D687C 3C19800A */       lui $t9, %hi((gSaveData + 0x45B))
-  /* 052080 800D6880 3C018013 */       lui $at, %hi(g1PGameTotalTimeFrames)
+  /* 052080 800D6880 3C018013 */       lui $at, %hi(sGM1PManagerTotalFrames)
   /* 052084 800D6884 3C168013 */       lui $s6, %hi(D_ovl2_80130D70)
   /* 052088 800D6888 3C178013 */       lui $s7, %hi(D_ovl2_80130D74)
   /* 05208C 800D688C 26F70D74 */     addiu $s7, $s7, %lo(D_ovl2_80130D74)
@@ -331,11 +331,11 @@ glabel func_ovl2_800D67DC
   /* 0520D0 800D68D0 AE400024 */        sw $zero, 0x24($s2) # gSceneData + 36
   /* 0520D4 800D68D4 AE400028 */        sw $zero, 0x28($s2) # gSceneData + 40
   /* 0520D8 800D68D8 A099002B */        sb $t9, 0x2b($a0)
-  /* 0520DC 800D68DC AC200D64 */        sw $zero, %lo(g1PGameTotalTimeFrames)($at)
-  /* 0520E0 800D68E0 3C018013 */       lui $at, %hi(g1PGameTotalFalls)
-  /* 0520E4 800D68E4 AC200D68 */        sw $zero, %lo(g1PGameTotalFalls)($at)
-  /* 0520E8 800D68E8 3C018013 */       lui $at, %hi(g1PGameTotalDamageTaken)
-  /* 0520EC 800D68EC AC200D6C */        sw $zero, %lo(g1PGameTotalDamageTaken)($at)
+  /* 0520DC 800D68DC AC200D64 */        sw $zero, %lo(sGM1PManagerTotalFrames)($at)
+  /* 0520E0 800D68E0 3C018013 */       lui $at, %hi(sGM1PManagerTotalFalls)
+  /* 0520E4 800D68E4 AC200D68 */        sw $zero, %lo(sGM1PManagerTotalFalls)($at)
+  /* 0520E8 800D68E8 3C018013 */       lui $at, %hi(sGM1PManagerTotalDamageTaken)
+  /* 0520EC 800D68EC AC200D6C */        sw $zero, %lo(sGM1PManagerTotalDamageTaken)($at)
   /* 0520F0 800D68F0 3C04800A */       lui $a0, %hi((gSceneData + 0x2))
   /* 0520F4 800D68F4 AEC00000 */        sw $zero, ($s6) # D_ovl2_80130D70 + 0
   /* 0520F8 800D68F8 A2E80000 */        sb $t0, ($s7) # D_ovl2_80130D74 + 0
@@ -467,11 +467,11 @@ glabel func_ovl2_800D67DC
   /* 0522CC 800D6ACC 3224FFFF */      andi $a0, $s1, 0xffff
   /* 0522D0 800D6AD0 0C035955 */       jal func_ovl2_800D6554
   /* 0522D4 800D6AD4 00402825 */        or $a1, $v0, $zero
-  /* 0522D8 800D6AD8 3C038013 */       lui $v1, %hi(g1PGameKirbyTeamFinalCopy)
-  /* 0522DC 800D6ADC 24630D75 */     addiu $v1, $v1, %lo(g1PGameKirbyTeamFinalCopy)
+  /* 0522D8 800D6AD8 3C038013 */       lui $v1, %hi(sGM1PManagerKirbyTeamFinalCopy)
+  /* 0522DC 800D6ADC 24630D75 */     addiu $v1, $v1, %lo(sGM1PManagerKirbyTeamFinalCopy)
   /* 0522E0 800D6AE0 304800FF */      andi $t0, $v0, 0xff
   /* 0522E4 800D6AE4 3C0B8011 */       lui $t3, %hi(D_ovl2_80116DA0)
-  /* 0522E8 800D6AE8 A0620000 */        sb $v0, ($v1) # g1PGameKirbyTeamFinalCopy + 0
+  /* 0522E8 800D6AE8 A0620000 */        sb $v0, ($v1) # sGM1PManagerKirbyTeamFinalCopy + 0
   /* 0522EC 800D6AEC 01685821 */      addu $t3, $t3, $t0
   /* 0522F0 800D6AF0 916B6DA0 */       lbu $t3, %lo(D_ovl2_80116DA0)($t3)
   /* 0522F4 800D6AF4 3C018013 */       lui $at, %hi(D_ovl2_80130D76)
@@ -816,15 +816,15 @@ glabel func_ovl2_800D67DC
   /* 0527DC 800D6FDC 00000000 */       nop 
 
 # Likely start of new file
-glabel func_ovl2_800D6FE0
+glabel ftManagerSetupFileSize
   /* 0527E0 800D6FE0 27BDFF80 */     addiu $sp, $sp, -0x80
   /* 0527E4 800D6FE4 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 0527E8 800D6FE8 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
-  /* 0527EC 800D6FEC 3C188013 */       lui $t8, %hi(D_ovl2_80130DA0)
+  /* 0527EC 800D6FEC 3C188013 */       lui $t8, %hi(sFTManagerForceBuf)
   /* 0527F0 800D6FF0 AFBF0034 */        sw $ra, 0x34($sp)
   /* 0527F4 800D6FF4 25CEC870 */     addiu $t6, $t6, %lo(D_NF_001AC870)
   /* 0527F8 800D6FF8 25EF0854 */     addiu $t7, $t7, %lo(D_NF_00000854)
-  /* 0527FC 800D6FFC 27180DA0 */     addiu $t8, $t8, %lo(D_ovl2_80130DA0)
+  /* 0527FC 800D6FFC 27180DA0 */     addiu $t8, $t8, %lo(sFTManagerForceBuf)
   /* 052800 800D7000 24190007 */     addiu $t9, $zero, 7
   /* 052804 800D7004 AFB70030 */        sw $s7, 0x30($sp)
   /* 052808 800D7008 AFB6002C */        sw $s6, 0x2c($sp)
@@ -845,13 +845,13 @@ glabel func_ovl2_800D6FE0
   /* 052844 800D7044 0C0337DE */       jal rdManagerInitSetup
   /* 052848 800D7048 27A40048 */     addiu $a0, $sp, 0x48
   /* 05284C 800D704C 3C14800A */       lui $s4, %hi(D_800A50F8)
-  /* 052850 800D7050 3C158011 */       lui $s5, %hi(dFTManagerFtDataFiles)
+  /* 052850 800D7050 3C158011 */       lui $s5, %hi(dFTManagerDataFiles)
   /* 052854 800D7054 3C178011 */       lui $s7, %hi(D_ovl2_80116E7C)
   /* 052858 800D7058 26F76E7C */     addiu $s7, $s7, %lo(D_ovl2_80116E7C)
-  /* 05285C 800D705C 26B56E10 */     addiu $s5, $s5, %lo(dFTManagerFtDataFiles)
+  /* 05285C 800D705C 26B56E10 */     addiu $s5, $s5, %lo(dFTManagerDataFiles)
   /* 052860 800D7060 269450F8 */     addiu $s4, $s4, %lo(D_800A50F8)
   .L800D7064:
-  /* 052864 800D7064 8EB20000 */        lw $s2, ($s5) # dFTManagerFtDataFiles + 0
+  /* 052864 800D7064 8EB20000 */        lw $s2, ($s5) # dFTManagerDataFiles + 0
   /* 052868 800D7068 0280B025 */        or $s6, $s4, $zero
   /* 05286C 800D706C 00009825 */        or $s3, $zero, $zero
   /* 052870 800D7070 00008825 */        or $s1, $zero, $zero
@@ -935,7 +935,7 @@ glabel func_ovl2_800D7170
   /* 05298C 800D718C 03E00008 */        jr $ra
   /* 052990 800D7190 27BD0080 */     addiu $sp, $sp, 0x80
 
-glabel ftManager_AllocFighterData
+glabel ftManagerAllocFighter
   /* 052994 800D7194 00053080 */       sll $a2, $a1, 2
   /* 052998 800D7198 00C53023 */      subu $a2, $a2, $a1
   /* 05299C 800D719C 00063080 */       sll $a2, $a2, 2
@@ -954,18 +954,18 @@ glabel ftManager_AllocFighterData
   /* 0529D0 800D71D0 24050008 */     addiu $a1, $zero, 8
   /* 0529D4 800D71D4 0C001260 */       jal gsMemoryAlloc
   /* 0529D8 800D71D8 AFA00038 */        sw $zero, 0x38($sp)
-  /* 0529DC 800D71DC 3C038013 */       lui $v1, %hi(gMainFighterStructCurrent)
-  /* 0529E0 800D71E0 3C078013 */       lui $a3, %hi(gFighterStructCurrent)
-  /* 0529E4 800D71E4 24E70D84 */     addiu $a3, $a3, %lo(gFighterStructCurrent)
-  /* 0529E8 800D71E8 24630D80 */     addiu $v1, $v1, %lo(gMainFighterStructCurrent)
-  /* 0529EC 800D71EC AC620000 */        sw $v0, ($v1) # gMainFighterStructCurrent + 0
-  /* 0529F0 800D71F0 ACE20000 */        sw $v0, ($a3) # gFighterStructCurrent + 0
+  /* 0529DC 800D71DC 3C038013 */       lui $v1, %hi(sFTManagerFighterAllocFree)
+  /* 0529E0 800D71E0 3C078013 */       lui $a3, %hi(sFTManagerFighterAllocBuf)
+  /* 0529E4 800D71E4 24E70D84 */     addiu $a3, $a3, %lo(sFTManagerFighterAllocBuf)
+  /* 0529E8 800D71E8 24630D80 */     addiu $v1, $v1, %lo(sFTManagerFighterAllocFree)
+  /* 0529EC 800D71EC AC620000 */        sw $v0, ($v1) # sFTManagerFighterAllocFree + 0
+  /* 0529F0 800D71F0 ACE20000 */        sw $v0, ($a3) # sFTManagerFighterAllocBuf + 0
   /* 0529F4 800D71F4 8FA50024 */        lw $a1, 0x24($sp)
   /* 0529F8 800D71F8 0C00C56C */       jal _bzero
   /* 0529FC 800D71FC 00402025 */        or $a0, $v0, $zero
   /* 052A00 800D7200 8FA80054 */        lw $t0, 0x54($sp)
-  /* 052A04 800D7204 3C078013 */       lui $a3, %hi(gFighterStructCurrent)
-  /* 052A08 800D7208 24E70D84 */     addiu $a3, $a3, %lo(gFighterStructCurrent)
+  /* 052A04 800D7204 3C078013 */       lui $a3, %hi(sFTManagerFighterAllocBuf)
+  /* 052A08 800D7208 24E70D84 */     addiu $a3, $a3, %lo(sFTManagerFighterAllocBuf)
   /* 052A0C 800D720C 2505FFFF */     addiu $a1, $t0, -1
   /* 052A10 800D7210 8FAA0038 */        lw $t2, 0x38($sp)
   /* 052A14 800D7214 18A00035 */      blez $a1, .L800D72EC
@@ -982,7 +982,7 @@ glabel ftManager_AllocFighterData
   /* 052A40 800D7240 00031880 */       sll $v1, $v1, 2
   /* 052A44 800D7244 00031900 */       sll $v1, $v1, 4
   .L800D7248:
-  /* 052A48 800D7248 8CE20000 */        lw $v0, ($a3) # gFighterStructCurrent + 0
+  /* 052A48 800D7248 8CE20000 */        lw $v0, ($a3) # sFTManagerFighterAllocBuf + 0
   /* 052A4C 800D724C 24C60001 */     addiu $a2, $a2, 1
   /* 052A50 800D7250 00627821 */      addu $t7, $v1, $v0
   /* 052A54 800D7254 25F80B50 */     addiu $t8, $t7, 0xb50
@@ -1002,23 +1002,23 @@ glabel ftManager_AllocFighterData
   /* 052A88 800D7288 00661821 */      addu $v1, $v1, $a2
   /* 052A8C 800D728C 00031900 */       sll $v1, $v1, 4
   .L800D7290:
-  /* 052A90 800D7290 8CE20000 */        lw $v0, ($a3) # gFighterStructCurrent + 0
+  /* 052A90 800D7290 8CE20000 */        lw $v0, ($a3) # sFTManagerFighterAllocBuf + 0
   /* 052A94 800D7294 24C60004 */     addiu $a2, $a2, 4
   /* 052A98 800D7298 00625821 */      addu $t3, $v1, $v0
   /* 052A9C 800D729C 256C0B50 */     addiu $t4, $t3, 0xb50
   /* 052AA0 800D72A0 00436821 */      addu $t5, $v0, $v1
   /* 052AA4 800D72A4 ADAC0000 */        sw $t4, ($t5)
-  /* 052AA8 800D72A8 8CE20000 */        lw $v0, ($a3) # gFighterStructCurrent + 0
+  /* 052AA8 800D72A8 8CE20000 */        lw $v0, ($a3) # sFTManagerFighterAllocBuf + 0
   /* 052AAC 800D72AC 00627021 */      addu $t6, $v1, $v0
   /* 052AB0 800D72B0 25CF16A0 */     addiu $t7, $t6, 0x16a0
   /* 052AB4 800D72B4 0043C021 */      addu $t8, $v0, $v1
   /* 052AB8 800D72B8 AF0F0B50 */        sw $t7, 0xb50($t8)
-  /* 052ABC 800D72BC 8CE20000 */        lw $v0, ($a3) # gFighterStructCurrent + 0
+  /* 052ABC 800D72BC 8CE20000 */        lw $v0, ($a3) # sFTManagerFighterAllocBuf + 0
   /* 052AC0 800D72C0 0062C821 */      addu $t9, $v1, $v0
   /* 052AC4 800D72C4 272B21F0 */     addiu $t3, $t9, 0x21f0
   /* 052AC8 800D72C8 00436021 */      addu $t4, $v0, $v1
   /* 052ACC 800D72CC AD8B16A0 */        sw $t3, 0x16a0($t4)
-  /* 052AD0 800D72D0 8CE20000 */        lw $v0, ($a3) # gFighterStructCurrent + 0
+  /* 052AD0 800D72D0 8CE20000 */        lw $v0, ($a3) # sFTManagerFighterAllocBuf + 0
   /* 052AD4 800D72D4 00626821 */      addu $t5, $v1, $v0
   /* 052AD8 800D72D8 25AE2D40 */     addiu $t6, $t5, 0x2d40
   /* 052ADC 800D72DC 00437821 */      addu $t7, $v0, $v1
@@ -1032,7 +1032,7 @@ glabel ftManager_AllocFighterData
   /* 052AF8 800D72F8 0326C823 */      subu $t9, $t9, $a2
   /* 052AFC 800D72FC 0019C880 */       sll $t9, $t9, 2
   /* 052B00 800D7300 0326C821 */      addu $t9, $t9, $a2
-  /* 052B04 800D7304 8CF80000 */        lw $t8, ($a3) # gFighterStructCurrent + 0
+  /* 052B04 800D7304 8CF80000 */        lw $t8, ($a3) # sFTManagerFighterAllocBuf + 0
   /* 052B08 800D7308 0019C880 */       sll $t9, $t9, 2
   /* 052B0C 800D730C 0326C821 */      addu $t9, $t9, $a2
   /* 052B10 800D7310 00082180 */       sll $a0, $t0, 6
@@ -1048,12 +1048,12 @@ glabel ftManager_AllocFighterData
   /* 052B38 800D7338 00003025 */        or $a2, $zero, $zero
   /* 052B3C 800D733C 0C001260 */       jal gsMemoryAlloc
   /* 052B40 800D7340 24050008 */     addiu $a1, $zero, 8
-  /* 052B44 800D7344 3C048013 */       lui $a0, %hi(gFighterPartsCurrent)
+  /* 052B44 800D7344 3C048013 */       lui $a0, %hi(sFTManagerPartsAllocBuf)
   /* 052B48 800D7348 8FA80054 */        lw $t0, 0x54($sp)
-  /* 052B4C 800D734C 24840D8C */     addiu $a0, $a0, %lo(gFighterPartsCurrent)
-  /* 052B50 800D7350 AC820000 */        sw $v0, ($a0) # gFighterPartsCurrent + 0
-  /* 052B54 800D7354 3C018013 */       lui $at, %hi(gMainFighterPartsCurrent)
-  /* 052B58 800D7358 AC220D88 */        sw $v0, %lo(gMainFighterPartsCurrent)($at)
+  /* 052B4C 800D734C 24840D8C */     addiu $a0, $a0, %lo(sFTManagerPartsAllocBuf)
+  /* 052B50 800D7350 AC820000 */        sw $v0, ($a0) # sFTManagerPartsAllocBuf + 0
+  /* 052B54 800D7354 3C018013 */       lui $at, %hi(sFTManagerPartsAllocFree)
+  /* 052B58 800D7358 AC220D88 */        sw $v0, %lo(sFTManagerPartsAllocFree)($at)
   /* 052B5C 800D735C 01000821 */      addu $at, $t0, $zero
   /* 052B60 800D7360 000840C0 */       sll $t0, $t0, 3
   /* 052B64 800D7364 01014021 */      addu $t0, $t0, $at
@@ -1072,7 +1072,7 @@ glabel ftManager_AllocFighterData
   /* 052B98 800D7398 00461023 */      subu $v0, $v0, $a2
   /* 052B9C 800D739C 00021140 */       sll $v0, $v0, 5
   .L800D73A0:
-  /* 052BA0 800D73A0 8C830000 */        lw $v1, ($a0) # gFighterPartsCurrent + 0
+  /* 052BA0 800D73A0 8C830000 */        lw $v1, ($a0) # sFTManagerPartsAllocBuf + 0
   /* 052BA4 800D73A4 24C60001 */     addiu $a2, $a2, 1
   /* 052BA8 800D73A8 00436021 */      addu $t4, $v0, $v1
   /* 052BAC 800D73AC 258D00E0 */     addiu $t5, $t4, 0xe0
@@ -1086,23 +1086,23 @@ glabel ftManager_AllocFighterData
   /* 052BC8 800D73C8 00461023 */      subu $v0, $v0, $a2
   /* 052BCC 800D73CC 00021140 */       sll $v0, $v0, 5
   .L800D73D0:
-  /* 052BD0 800D73D0 8C830000 */        lw $v1, ($a0) # gFighterPartsCurrent + 0
+  /* 052BD0 800D73D0 8C830000 */        lw $v1, ($a0) # sFTManagerPartsAllocBuf + 0
   /* 052BD4 800D73D4 24C60004 */     addiu $a2, $a2, 4
   /* 052BD8 800D73D8 00437821 */      addu $t7, $v0, $v1
   /* 052BDC 800D73DC 25F800E0 */     addiu $t8, $t7, 0xe0
   /* 052BE0 800D73E0 0062C821 */      addu $t9, $v1, $v0
   /* 052BE4 800D73E4 AF380008 */        sw $t8, 8($t9)
-  /* 052BE8 800D73E8 8C830000 */        lw $v1, ($a0) # gFighterPartsCurrent + 0
+  /* 052BE8 800D73E8 8C830000 */        lw $v1, ($a0) # sFTManagerPartsAllocBuf + 0
   /* 052BEC 800D73EC 00435821 */      addu $t3, $v0, $v1
   /* 052BF0 800D73F0 256C01C0 */     addiu $t4, $t3, 0x1c0
   /* 052BF4 800D73F4 00626821 */      addu $t5, $v1, $v0
   /* 052BF8 800D73F8 ADAC00E8 */        sw $t4, 0xe8($t5)
-  /* 052BFC 800D73FC 8C830000 */        lw $v1, ($a0) # gFighterPartsCurrent + 0
+  /* 052BFC 800D73FC 8C830000 */        lw $v1, ($a0) # sFTManagerPartsAllocBuf + 0
   /* 052C00 800D7400 00437021 */      addu $t6, $v0, $v1
   /* 052C04 800D7404 25CF02A0 */     addiu $t7, $t6, 0x2a0
   /* 052C08 800D7408 0062C021 */      addu $t8, $v1, $v0
   /* 052C0C 800D740C AF0F01C8 */        sw $t7, 0x1c8($t8)
-  /* 052C10 800D7410 8C830000 */        lw $v1, ($a0) # gFighterPartsCurrent + 0
+  /* 052C10 800D7410 8C830000 */        lw $v1, ($a0) # sFTManagerPartsAllocBuf + 0
   /* 052C14 800D7414 0043C821 */      addu $t9, $v0, $v1
   /* 052C18 800D7418 272B0380 */     addiu $t3, $t9, 0x380
   /* 052C1C 800D741C 00626021 */      addu $t4, $v1, $v0
@@ -1110,8 +1110,8 @@ glabel ftManager_AllocFighterData
   /* 052C24 800D7424 14C7FFEA */       bne $a2, $a3, .L800D73D0
   /* 052C28 800D7428 24420380 */     addiu $v0, $v0, 0x380
   .L800D742C:
-  /* 052C2C 800D742C 3C038013 */       lui $v1, %hi(gFighterPartsCurrent)
-  /* 052C30 800D7430 8C630D8C */        lw $v1, %lo(gFighterPartsCurrent)($v1)
+  /* 052C2C 800D742C 3C038013 */       lui $v1, %hi(sFTManagerPartsAllocBuf)
+  /* 052C30 800D7430 8C630D8C */        lw $v1, %lo(sFTManagerPartsAllocBuf)($v1)
   .L800D7434:
   /* 052C34 800D7434 000668C0 */       sll $t5, $a2, 3
   /* 052C38 800D7438 01A66823 */      subu $t5, $t5, $a2
@@ -1119,14 +1119,14 @@ glabel ftManager_AllocFighterData
   /* 052C40 800D7440 006D7021 */      addu $t6, $v1, $t5
   /* 052C44 800D7444 24020001 */     addiu $v0, $zero, 1
   /* 052C48 800D7448 ADC00008 */        sw $zero, 8($t6)
-  /* 052C4C 800D744C 3C018013 */       lui $at, %hi(gBattlePlayerCount)
-  /* 052C50 800D7450 AC220D90 */        sw $v0, %lo(gBattlePlayerCount)($at)
-  /* 052C54 800D7454 3C018013 */       lui $at, %hi(gEntityMotionCount)
-  /* 052C58 800D7458 A4220D94 */        sh $v0, %lo(gEntityMotionCount)($at)
+  /* 052C4C 800D744C 3C018013 */       lui $at, %hi(gFTManagerBattlePlayerNum)
+  /* 052C50 800D7450 AC220D90 */        sw $v0, %lo(gFTManagerBattlePlayerNum)($at)
+  /* 052C54 800D7454 3C018013 */       lui $at, %hi(gFTManagerMotionCount)
+  /* 052C58 800D7458 A4220D94 */        sh $v0, %lo(gFTManagerMotionCount)($at)
   /* 052C5C 800D745C 3C040000 */       lui $a0, %hi(D_NF_000000A3)
-  /* 052C60 800D7460 3C018013 */       lui $at, %hi(gEntityStatUpdateCount)
+  /* 052C60 800D7460 3C018013 */       lui $at, %hi(gFTManagerStatUpdateCount)
   /* 052C64 800D7464 248400A3 */     addiu $a0, $a0, %lo(D_NF_000000A3)
-  /* 052C68 800D7468 A4220D96 */        sh $v0, %lo(gEntityStatUpdateCount)($at)
+  /* 052C68 800D7468 A4220D96 */        sh $v0, %lo(gFTManagerStatUpdateCount)($at)
   /* 052C6C 800D746C AFA40020 */        sw $a0, 0x20($sp)
   /* 052C70 800D7470 AFAA0038 */        sw $t2, 0x38($sp)
   /* 052C74 800D7474 0C0336F4 */       jal rdManagerGetFileSize
@@ -1150,17 +1150,17 @@ glabel ftManager_AllocFighterData
   /* 052CBC 800D74BC 0C033722 */       jal rdManagerGetFileWithExternHeap
   /* 052CC0 800D74C0 00402825 */        or $a1, $v0, $zero
   /* 052CC4 800D74C4 8FA30050 */        lw $v1, 0x50($sp)
-  /* 052CC8 800D74C8 3C068011 */       lui $a2, %hi(dFTManagerFtDataFiles)
+  /* 052CC8 800D74C8 3C068011 */       lui $a2, %hi(dFTManagerDataFiles)
   /* 052CCC 800D74CC 3C05800A */       lui $a1, %hi(D_800A50F8)
   /* 052CD0 800D74D0 3C07800A */       lui $a3, %hi(D_800A523C)
   /* 052CD4 800D74D4 8FAA0038 */        lw $t2, 0x38($sp)
   /* 052CD8 800D74D8 24E7523C */     addiu $a3, $a3, %lo(D_800A523C)
   /* 052CDC 800D74DC 24A550F8 */     addiu $a1, $a1, %lo(D_800A50F8)
-  /* 052CE0 800D74E0 24C66E10 */     addiu $a2, $a2, %lo(dFTManagerFtDataFiles)
+  /* 052CE0 800D74E0 24C66E10 */     addiu $a2, $a2, %lo(dFTManagerDataFiles)
   /* 052CE4 800D74E4 30690002 */      andi $t1, $v1, 2
   /* 052CE8 800D74E8 30680001 */      andi $t0, $v1, 1
   .L800D74EC:
-  /* 052CEC 800D74EC 8CC40000 */        lw $a0, ($a2) # dFTManagerFtDataFiles + 0
+  /* 052CEC 800D74EC 8CC40000 */        lw $a0, ($a2) # dFTManagerDataFiles + 0
   /* 052CF0 800D74F0 00001825 */        or $v1, $zero, $zero
   /* 052CF4 800D74F4 8C8F0028 */        lw $t7, 0x28($a0)
   /* 052CF8 800D74F8 ADE00000 */        sw $zero, ($t7)
@@ -1207,10 +1207,10 @@ glabel ftManager_AllocFighterData
   /* 052D8C 800D758C 03E00008 */        jr $ra
   /* 052D90 800D7590 00000000 */       nop 
 
-glabel ftManager_GetStructSetNextAlloc
-  /* 052D94 800D7594 3C048013 */       lui $a0, %hi(gMainFighterStructCurrent)
-  /* 052D98 800D7598 24840D80 */     addiu $a0, $a0, %lo(gMainFighterStructCurrent)
-  /* 052D9C 800D759C 8C830000 */        lw $v1, ($a0) # gMainFighterStructCurrent + 0
+glabel ftManagerGetStructSetNextAlloc
+  /* 052D94 800D7594 3C048013 */       lui $a0, %hi(sFTManagerFighterAllocFree)
+  /* 052D98 800D7598 24840D80 */     addiu $a0, $a0, %lo(sFTManagerFighterAllocFree)
+  /* 052D9C 800D759C 8C830000 */        lw $v1, ($a0) # sFTManagerFighterAllocFree + 0
   /* 052DA0 800D75A0 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 052DA4 800D75A4 AFBF001C */        sw $ra, 0x1c($sp)
   /* 052DA8 800D75A8 14600009 */      bnez $v1, .L800D75D0
@@ -1234,17 +1234,17 @@ glabel ftManager_GetStructSetNextAlloc
   /* 052DE8 800D75E8 AC8E0000 */        sw $t6, ($a0)
 
 glabel ftManager_SetPrevAlloc
-  /* 052DEC 800D75EC 3C028013 */       lui $v0, %hi(gMainFighterStructCurrent)
-  /* 052DF0 800D75F0 24420D80 */     addiu $v0, $v0, %lo(gMainFighterStructCurrent)
-  /* 052DF4 800D75F4 8C4E0000 */        lw $t6, ($v0) # gMainFighterStructCurrent + 0
+  /* 052DEC 800D75EC 3C028013 */       lui $v0, %hi(sFTManagerFighterAllocFree)
+  /* 052DF0 800D75F0 24420D80 */     addiu $v0, $v0, %lo(sFTManagerFighterAllocFree)
+  /* 052DF4 800D75F4 8C4E0000 */        lw $t6, ($v0) # sFTManagerFighterAllocFree + 0
   /* 052DF8 800D75F8 AC8E0000 */        sw $t6, ($a0)
   /* 052DFC 800D75FC 03E00008 */        jr $ra
-  /* 052E00 800D7600 AC440000 */        sw $a0, ($v0) # gMainFighterStructCurrent + 0
+  /* 052E00 800D7600 AC440000 */        sw $a0, ($v0) # sFTManagerFighterAllocFree + 0
 
 glabel ftManager_GetFighterPartsSetNextAlloc
-  /* 052E04 800D7604 3C058013 */       lui $a1, %hi(gMainFighterPartsCurrent)
-  /* 052E08 800D7608 24A50D88 */     addiu $a1, $a1, %lo(gMainFighterPartsCurrent)
-  /* 052E0C 800D760C 8CA30000 */        lw $v1, ($a1) # gMainFighterPartsCurrent + 0
+  /* 052E04 800D7604 3C058013 */       lui $a1, %hi(sFTManagerPartsAllocFree)
+  /* 052E08 800D7608 24A50D88 */     addiu $a1, $a1, %lo(sFTManagerPartsAllocFree)
+  /* 052E0C 800D760C 8CA30000 */        lw $v1, ($a1) # sFTManagerPartsAllocFree + 0
   /* 052E10 800D7610 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 052E14 800D7614 AFBF001C */        sw $ra, 0x1c($sp)
   /* 052E18 800D7618 14600009 */      bnez $v1, .L800D7640
@@ -1276,20 +1276,20 @@ glabel ftManager_GetFighterPartsSetNextAlloc
   /* 052E78 800D7678 00000000 */       nop 
 
 glabel ftManager_SetFighterPartsPrevAlloc
-  /* 052E7C 800D767C 3C028013 */       lui $v0, %hi(gMainFighterPartsCurrent)
-  /* 052E80 800D7680 24420D88 */     addiu $v0, $v0, %lo(gMainFighterPartsCurrent)
-  /* 052E84 800D7684 8C4E0000 */        lw $t6, ($v0) # gMainFighterPartsCurrent + 0
+  /* 052E7C 800D767C 3C028013 */       lui $v0, %hi(sFTManagerPartsAllocFree)
+  /* 052E80 800D7680 24420D88 */     addiu $v0, $v0, %lo(sFTManagerPartsAllocFree)
+  /* 052E84 800D7684 8C4E0000 */        lw $t6, ($v0) # sFTManagerPartsAllocFree + 0
   /* 052E88 800D7688 AC8E0008 */        sw $t6, 8($a0)
   /* 052E8C 800D768C 03E00008 */        jr $ra
-  /* 052E90 800D7690 AC440000 */        sw $a0, ($v0) # gMainFighterPartsCurrent + 0
+  /* 052E90 800D7690 AC440000 */        sw $a0, ($v0) # sFTManagerPartsAllocFree + 0
 
-glabel ftManager_SetMainFileData
+glabel ftManagerSetupDataMain
   /* 052E94 800D7694 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 052E98 800D7698 AFB00018 */        sw $s0, 0x18($sp)
-  /* 052E9C 800D769C 3C108011 */       lui $s0, %hi(dFTManagerFtDataFiles)
+  /* 052E9C 800D769C 3C108011 */       lui $s0, %hi(dFTManagerDataFiles)
   /* 052EA0 800D76A0 00047080 */       sll $t6, $a0, 2
   /* 052EA4 800D76A4 020E8021 */      addu $s0, $s0, $t6
-  /* 052EA8 800D76A8 8E106E10 */        lw $s0, %lo(dFTManagerFtDataFiles)($s0)
+  /* 052EA8 800D76A8 8E106E10 */        lw $s0, %lo(dFTManagerDataFiles)($s0)
   /* 052EAC 800D76AC AFBF001C */        sw $ra, 0x1c($sp)
   /* 052EB0 800D76B0 0C0336F4 */       jal rdManagerGetFileSize
   /* 052EB4 800D76B4 8E040000 */        lw $a0, ($s0)
@@ -1317,13 +1317,13 @@ glabel ftManager_SetMainFileData
   /* 052F08 800D7708 03E00008 */        jr $ra
   /* 052F0C 800D770C 00000000 */       nop 
 
-glabel func_ovl2_800D7710
+glabel ftManagerSetupDataFiles
   /* 052F10 800D7710 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 052F14 800D7714 AFB00018 */        sw $s0, 0x18($sp)
-  /* 052F18 800D7718 3C108011 */       lui $s0, %hi(dFTManagerFtDataFiles)
+  /* 052F18 800D7718 3C108011 */       lui $s0, %hi(dFTManagerDataFiles)
   /* 052F1C 800D771C 00047080 */       sll $t6, $a0, 2
   /* 052F20 800D7720 020E8021 */      addu $s0, $s0, $t6
-  /* 052F24 800D7724 8E106E10 */        lw $s0, %lo(dFTManagerFtDataFiles)($s0)
+  /* 052F24 800D7724 8E106E10 */        lw $s0, %lo(dFTManagerDataFiles)($s0)
   /* 052F28 800D7728 AFBF001C */        sw $ra, 0x1c($sp)
   /* 052F2C 800D772C 8E050004 */        lw $a1, 4($s0)
   /* 052F30 800D7730 50A00006 */      beql $a1, $zero, .L800D774C
@@ -1398,7 +1398,7 @@ glabel func_ovl2_800D7710
   /* 053024 800D7824 03E00008 */        jr $ra
   /* 053028 800D7828 00000000 */       nop 
 
-glabel ftManager_SetFileDataPlayables
+glabel ftManagerSetupDataPlayables
   /* 05302C 800D782C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 053030 800D7830 AFB10018 */        sw $s1, 0x18($sp)
   /* 053034 800D7834 AFB00014 */        sw $s0, 0x14($sp)
@@ -1406,7 +1406,7 @@ glabel ftManager_SetFileDataPlayables
   /* 05303C 800D783C 00008025 */        or $s0, $zero, $zero
   /* 053040 800D7840 2411000C */     addiu $s1, $zero, 0xc
   .L800D7844:
-  /* 053044 800D7844 0C035DC4 */       jal func_ovl2_800D7710
+  /* 053044 800D7844 0C035DC4 */       jal ftManagerSetupDataFiles
   /* 053048 800D7848 02002025 */        or $a0, $s0, $zero
   /* 05304C 800D784C 26100001 */     addiu $s0, $s0, 1
   /* 053050 800D7850 1611FFFC */       bne $s0, $s1, .L800D7844
@@ -1417,20 +1417,20 @@ glabel ftManager_SetFileDataPlayables
   /* 053064 800D7864 03E00008 */        jr $ra
   /* 053068 800D7868 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel ftManager_SetFileDataKind
+glabel ftManagerSetupDataKind
   /* 05306C 800D786C 00047080 */       sll $t6, $a0, 2
-  /* 053070 800D7870 3C028011 */       lui $v0, %hi(dFTManagerFtDataFiles)
+  /* 053070 800D7870 3C028011 */       lui $v0, %hi(dFTManagerDataFiles)
   /* 053074 800D7874 004E1021 */      addu $v0, $v0, $t6
-  /* 053078 800D7878 8C426E10 */        lw $v0, %lo(dFTManagerFtDataFiles)($v0)
+  /* 053078 800D7878 8C426E10 */        lw $v0, %lo(dFTManagerDataFiles)($v0)
   /* 05307C 800D787C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 053080 800D7880 AFBF0014 */        sw $ra, 0x14($sp)
   /* 053084 800D7884 8C4F0028 */        lw $t7, 0x28($v0)
   /* 053088 800D7888 8DF80000 */        lw $t8, ($t7)
   /* 05308C 800D788C 57000006 */      bnel $t8, $zero, .L800D78A8
   /* 053090 800D7890 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 053094 800D7894 0C035DA5 */       jal ftManager_SetMainFileData
+  /* 053094 800D7894 0C035DA5 */       jal ftManagerSetupDataMain
   /* 053098 800D7898 AFA40018 */        sw $a0, 0x18($sp)
-  /* 05309C 800D789C 0C035DC4 */       jal func_ovl2_800D7710
+  /* 05309C 800D789C 0C035DC4 */       jal ftManagerSetupDataFiles
   /* 0530A0 800D78A0 8FA40018 */        lw $a0, 0x18($sp)
   /* 0530A4 800D78A4 8FBF0014 */        lw $ra, 0x14($sp)
   .L800D78A8:
@@ -1438,11 +1438,11 @@ glabel ftManager_SetFileDataKind
   /* 0530AC 800D78AC 03E00008 */        jr $ra
   /* 0530B0 800D78B0 00000000 */       nop 
 
-glabel ftManager_AllocAnimHeapKind
+glabel ftManagerAllocAnimHeapKind
   /* 0530B4 800D78B4 00047080 */       sll $t6, $a0, 2
-  /* 0530B8 800D78B8 3C028011 */       lui $v0, %hi(dFTManagerFtDataFiles)
+  /* 0530B8 800D78B8 3C028011 */       lui $v0, %hi(dFTManagerDataFiles)
   /* 0530BC 800D78BC 004E1021 */      addu $v0, $v0, $t6
-  /* 0530C0 800D78C0 8C426E10 */        lw $v0, %lo(dFTManagerFtDataFiles)($v0)
+  /* 0530C0 800D78C0 8C426E10 */        lw $v0, %lo(dFTManagerDataFiles)($v0)
   /* 0530C4 800D78C4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 0530C8 800D78C8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 0530CC 800D78CC 24050010 */     addiu $a1, $zero, 0x10
@@ -1453,7 +1453,7 @@ glabel ftManager_AllocAnimHeapKind
   /* 0530E0 800D78E0 03E00008 */        jr $ra
   /* 0530E4 800D78E4 00000000 */       nop 
 
-glabel func_ovl2_800D78E8
+glabel ftManagerDestroyFighter
   /* 0530E8 800D78E8 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 0530EC 800D78EC AFBF0024 */        sw $ra, 0x24($sp)
   /* 0530F0 800D78F0 AFB30020 */        sw $s3, 0x20($sp)
@@ -1530,7 +1530,7 @@ glabel func_ovl2_800D7994
   /* 0531E8 800D79E8 03E00008 */        jr $ra
   /* 0531EC 800D79EC 00000000 */       nop 
 
-glabel func_ovl2_800D79F0
+glabel ftManagerInitFighter
   /* 0531F0 800D79F0 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 0531F4 800D79F4 AFBF0024 */        sw $ra, 0x24($sp)
   /* 0531F8 800D79F8 AFB00020 */        sw $s0, 0x20($sp)
@@ -1604,11 +1604,11 @@ glabel func_ovl2_800D79F0
   /* 0532FC 800D7AFC 332FFF9F */      andi $t7, $t9, 0xff9f
   /* 053300 800D7B00 330CFFEF */      andi $t4, $t8, 0xffef
   /* 053304 800D7B04 2409FFFF */     addiu $t1, $zero, -1
-  /* 053308 800D7B08 3C028013 */       lui $v0, %hi(gBattlePlayerCount)
+  /* 053308 800D7B08 3C028013 */       lui $v0, %hi(gFTManagerBattlePlayerNum)
   /* 05330C 800D7B0C 31F800F7 */      andi $t8, $t7, 0xf7
   /* 053310 800D7B10 A06F018D */        sb $t7, 0x18d($v1)
   /* 053314 800D7B14 316DFFFC */      andi $t5, $t3, 0xfffc
-  /* 053318 800D7B18 24420D90 */     addiu $v0, $v0, %lo(gBattlePlayerCount)
+  /* 053318 800D7B18 24420D90 */     addiu $v0, $v0, %lo(gFTManagerBattlePlayerNum)
   /* 05331C 800D7B1C A0600148 */        sb $zero, 0x148($v1)
   /* 053320 800D7B20 AC60015C */        sw $zero, 0x15c($v1)
   /* 053324 800D7B24 AC600160 */        sw $zero, 0x160($v1)
@@ -1655,14 +1655,14 @@ glabel func_ovl2_800D79F0
   /* 0533C8 800D7BC8 E46007E0 */      swc1 $f0, 0x7e0($v1)
   /* 0533CC 800D7BCC E46407A4 */      swc1 $f4, 0x7a4($v1)
   /* 0533D0 800D7BD0 E46607A8 */      swc1 $f6, 0x7a8($v1)
-  /* 0533D4 800D7BD4 8C4C0000 */        lw $t4, ($v0) # gBattlePlayerCount + 0
+  /* 0533D4 800D7BD4 8C4C0000 */        lw $t4, ($v0) # gFTManagerBattlePlayerNum + 0
   /* 0533D8 800D7BD8 24010003 */     addiu $at, $zero, 3
   /* 0533DC 800D7BDC 246500EC */     addiu $a1, $v1, 0xec
   /* 0533E0 800D7BE0 AC6C0018 */        sw $t4, 0x18($v1)
-  /* 0533E4 800D7BE4 8C4B0000 */        lw $t3, ($v0) # gBattlePlayerCount + 0
+  /* 0533E4 800D7BE4 8C4B0000 */        lw $t3, ($v0) # gFTManagerBattlePlayerNum + 0
   /* 0533E8 800D7BE8 246700F4 */     addiu $a3, $v1, 0xf4
   /* 0533EC 800D7BEC 256D0001 */     addiu $t5, $t3, 1
-  /* 0533F0 800D7BF0 AC4D0000 */        sw $t5, ($v0) # gBattlePlayerCount + 0
+  /* 0533F0 800D7BF0 AC4D0000 */        sw $t5, ($v0) # gFTManagerBattlePlayerNum + 0
   /* 0533F4 800D7BF4 9079018F */       lbu $t9, 0x18f($v1)
   /* 0533F8 800D7BF8 906F0190 */       lbu $t7, 0x190($v1)
   /* 0533FC 800D7BFC 906B0192 */       lbu $t3, 0x192($v1)
@@ -1893,7 +1893,7 @@ glabel func_ovl2_800D79F0
   /* 053734 800D7F34 03E00008 */        jr $ra
   /* 053738 800D7F38 00000000 */       nop 
 
-glabel ftManager_MakeFighter
+glabel ftManagerMakeFighter
   /* 05373C 800D7F3C 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 053740 800D7F40 AFB60048 */        sw $s6, 0x48($sp)
   /* 053744 800D7F44 0080B025 */        or $s6, $a0, $zero
@@ -1917,10 +1917,10 @@ glabel ftManager_MakeFighter
   /* 05378C 800D7F8C 24060009 */     addiu $a2, $zero, 9
   /* 053790 800D7F90 0C00277D */       jal omAddGObjRenderProc
   /* 053794 800D7F94 3C078000 */       lui $a3, 0x8000
-  /* 053798 800D7F98 0C035D65 */       jal ftManager_GetStructSetNextAlloc
+  /* 053798 800D7F98 0C035D65 */       jal ftManagerGetStructSetNextAlloc
   /* 05379C 800D7F9C 00000000 */       nop 
   /* 0537A0 800D7FA0 8FA60060 */        lw $a2, 0x60($sp)
-  /* 0537A4 800D7FA4 3C0B8011 */       lui $t3, %hi(dFTManagerFtDataFiles)
+  /* 0537A4 800D7FA4 3C0B8011 */       lui $t3, %hi(dFTManagerDataFiles)
   /* 0537A8 800D7FA8 24010003 */     addiu $at, $zero, 3
   /* 0537AC 800D7FAC ACC20084 */        sw $v0, 0x84($a2)
   /* 0537B0 800D7FB0 8ECF0028 */        lw $t7, 0x28($s6)
@@ -1932,7 +1932,7 @@ glabel ftManager_MakeFighter
   /* 0537C8 800D7FC8 00185080 */       sll $t2, $t8, 2
   /* 0537CC 800D7FCC 016A5821 */      addu $t3, $t3, $t2
   /* 0537D0 800D7FD0 AC580008 */        sw $t8, 8($v0)
-  /* 0537D4 800D7FD4 8D6B6E10 */        lw $t3, %lo(dFTManagerFtDataFiles)($t3)
+  /* 0537D4 800D7FD4 8D6B6E10 */        lw $t3, %lo(dFTManagerDataFiles)($t3)
   /* 0537D8 800D7FD8 AC4B09C4 */        sw $t3, 0x9c4($v0)
   /* 0537DC 800D7FDC 8D6C0028 */        lw $t4, 0x28($t3)
   /* 0537E0 800D7FE0 8D6E0060 */        lw $t6, 0x60($t3)
@@ -2325,7 +2325,7 @@ glabel ftManager_MakeFighter
   /* 053D98 800D8598 26A200B0 */     addiu $v0, $s5, 0xb0
   /* 053D9C 800D859C 8C8A0074 */        lw $t2, 0x74($a0)
   /* 053DA0 800D85A0 AEAF007C */        sw $t7, 0x7c($s5)
-  /* 053DA4 800D85A4 3C0B8013 */       lui $t3, %hi(gMapCollUpdateFrame)
+  /* 053DA4 800D85A4 3C0B8013 */       lui $t3, %hi(gMPCollUpdateFrame)
   /* 053DA8 800D85A8 254D001C */     addiu $t5, $t2, 0x1c
   /* 053DAC 800D85AC AEAD0078 */        sw $t5, 0x78($s5)
   /* 053DB0 800D85B0 8D2C009C */        lw $t4, 0x9c($t1)
@@ -2348,40 +2348,40 @@ glabel ftManager_MakeFighter
   /* 053DF4 800D85F4 8D3800B0 */        lw $t8, 0xb0($t1)
   /* 053DF8 800D85F8 AEA80144 */        sw $t0, 0x144($s5)
   /* 053DFC 800D85FC AEB800C8 */        sw $t8, 0xc8($s5)
-  /* 053E00 800D8600 956B1398 */       lhu $t3, %lo(gMapCollUpdateFrame)($t3)
+  /* 053E00 800D8600 956B1398 */       lhu $t3, %lo(gMPCollUpdateFrame)($t3)
   /* 053E04 800D8604 A6A000CE */        sh $zero, 0xce($s5)
   /* 053E08 800D8608 11410025 */       beq $t2, $at, .L800D86A0
   /* 053E0C 800D860C A6AB00D4 */        sh $t3, 0xd4($s5)
-  /* 053E10 800D8610 3C05800E */       lui $a1, %hi(ftMain_ProcInterruptMain)
-  /* 053E14 800D8614 24A51260 */     addiu $a1, $a1, %lo(ftMain_ProcInterruptMain)
+  /* 053E10 800D8610 3C05800E */       lui $a1, %hi(ftMainProcInterruptMain)
+  /* 053E14 800D8614 24A51260 */     addiu $a1, $a1, %lo(ftMainProcInterruptMain)
   /* 053E18 800D8618 0C002062 */       jal omAddGObjCommonProc
   /* 053E1C 800D861C 24060001 */     addiu $a2, $zero, 1
-  /* 053E20 800D8620 3C05800E */       lui $a1, %hi(ftMain_ProcPhysicsMapNormal)
-  /* 053E24 800D8624 24A52604 */     addiu $a1, $a1, %lo(ftMain_ProcPhysicsMapNormal)
+  /* 053E20 800D8620 3C05800E */       lui $a1, %hi(ftMainProcPhysicsMapNormal)
+  /* 053E24 800D8624 24A52604 */     addiu $a1, $a1, %lo(ftMainProcPhysicsMapNormal)
   /* 053E28 800D8628 8FA40060 */        lw $a0, 0x60($sp)
   /* 053E2C 800D862C 24060001 */     addiu $a2, $zero, 1
   /* 053E30 800D8630 0C002062 */       jal omAddGObjCommonProc
   /* 053E34 800D8634 24070004 */     addiu $a3, $zero, 4
-  /* 053E38 800D8638 3C05800E */       lui $a1, %hi(ftMain_ProcPhysicsMapCapture)
-  /* 053E3C 800D863C 24A52660 */     addiu $a1, $a1, %lo(ftMain_ProcPhysicsMapCapture)
+  /* 053E38 800D8638 3C05800E */       lui $a1, %hi(ftMainProcPhysicsMapCapture)
+  /* 053E3C 800D863C 24A52660 */     addiu $a1, $a1, %lo(ftMainProcPhysicsMapCapture)
   /* 053E40 800D8640 8FA40060 */        lw $a0, 0x60($sp)
   /* 053E44 800D8644 24060001 */     addiu $a2, $zero, 1
   /* 053E48 800D8648 0C002062 */       jal omAddGObjCommonProc
   /* 053E4C 800D864C 24070003 */     addiu $a3, $zero, 3
-  /* 053E50 800D8650 3C05800E */       lui $a1, %hi(ftMain_ProcSearchAllCatch)
-  /* 053E54 800D8654 24A56100 */     addiu $a1, $a1, %lo(ftMain_ProcSearchAllCatch)
+  /* 053E50 800D8650 3C05800E */       lui $a1, %hi(ftMainProcSearchAllCatch)
+  /* 053E54 800D8654 24A56100 */     addiu $a1, $a1, %lo(ftMainProcSearchAllCatch)
   /* 053E58 800D8658 8FA40060 */        lw $a0, 0x60($sp)
   /* 053E5C 800D865C 24060001 */     addiu $a2, $zero, 1
   /* 053E60 800D8660 0C002062 */       jal omAddGObjCommonProc
   /* 053E64 800D8664 24070002 */     addiu $a3, $zero, 2
-  /* 053E68 800D8668 3C05800E */       lui $a1, %hi(ftMain_ProcSearchAllHit)
-  /* 053E6C 800D866C 24A56178 */     addiu $a1, $a1, %lo(ftMain_ProcSearchAllHit)
+  /* 053E68 800D8668 3C05800E */       lui $a1, %hi(ftMainProcSearchAllHit)
+  /* 053E6C 800D866C 24A56178 */     addiu $a1, $a1, %lo(ftMainProcSearchAllHit)
   /* 053E70 800D8670 8FA40060 */        lw $a0, 0x60($sp)
   /* 053E74 800D8674 24060001 */     addiu $a2, $zero, 1
   /* 053E78 800D8678 0C002062 */       jal omAddGObjCommonProc
   /* 053E7C 800D867C 24070001 */     addiu $a3, $zero, 1
-  /* 053E80 800D8680 3C05800E */       lui $a1, %hi(ftMain_ProcUpdateMain)
-  /* 053E84 800D8684 24A561EC */     addiu $a1, $a1, %lo(ftMain_ProcUpdateMain)
+  /* 053E80 800D8680 3C05800E */       lui $a1, %hi(ftMainProcUpdateMain)
+  /* 053E84 800D8684 24A561EC */     addiu $a1, $a1, %lo(ftMainProcUpdateMain)
   /* 053E88 800D8688 8FA40060 */        lw $a0, 0x60($sp)
   /* 053E8C 800D868C 24060001 */     addiu $a2, $zero, 1
   /* 053E90 800D8690 0C002062 */       jal omAddGObjCommonProc
@@ -2393,7 +2393,7 @@ glabel ftManager_MakeFighter
   /* 053EA4 800D86A4 24070005 */     addiu $a3, $zero, 5
   /* 053EA8 800D86A8 8FA40060 */        lw $a0, 0x60($sp)
   .L800D86AC:
-  /* 053EAC 800D86AC 0C035E7C */       jal func_ovl2_800D79F0
+  /* 053EAC 800D86AC 0C035E7C */       jal ftManagerInitFighter
   /* 053EB0 800D86B0 02C02825 */        or $a1, $s6, $zero
   /* 053EB4 800D86B4 8EA20020 */        lw $v0, 0x20($s5)
   /* 053EB8 800D86B8 56020005 */      bnel $s0, $v0, .L800D86D0
@@ -2782,9 +2782,9 @@ glabel ftPhysics_ApplyGroundVelFriction
   /* 0543D0 800D8BD0 8C8209C8 */        lw $v0, 0x9c8($a0)
   /* 0543D4 800D8BD4 01E1C024 */       and $t8, $t7, $at
   /* 0543D8 800D8BD8 0018C880 */       sll $t9, $t8, 2
-  /* 0543DC 800D8BDC 3C018013 */       lui $at, %hi(dFTMapSurfaceFrictions)
+  /* 0543DC 800D8BDC 3C018013 */       lui $at, %hi(dFTMainMapSurfaceFrictions)
   /* 0543E0 800D8BE0 00390821 */      addu $at, $at, $t9
-  /* 0543E4 800D8BE4 C424C4E0 */      lwc1 $f4, %lo(dFTMapSurfaceFrictions)($at)
+  /* 0543E4 800D8BE4 C424C4E0 */      lwc1 $f4, %lo(dFTMainMapSurfaceFrictions)($at)
   /* 0543E8 800D8BE8 C4460024 */      lwc1 $f6, 0x24($v0)
   /* 0543EC 800D8BEC 46062202 */     mul.s $f8, $f4, $f6
   /* 0543F0 800D8BF0 44054000 */      mfc1 $a1, $f8
@@ -2953,7 +2953,7 @@ glabel ftPhysics_CheckSetFastFall
   /* 05462C 800D8E2C AFA70018 */        sw $a3, 0x18($sp)
   /* 054630 800D8E30 10400003 */      beqz $v0, .L800D8E40
   /* 054634 800D8E34 8FA70018 */        lw $a3, 0x18($sp)
-  /* 054638 800D8E38 0C038472 */       jal ftMain_RunUpdateColAnim
+  /* 054638 800D8E38 0C038472 */       jal ftMainRunUpdateColAnim
   /* 05463C 800D8E3C 8CE40004 */        lw $a0, 4($a3)
   .L800D8E40:
   /* 054640 800D8E40 8FBF0014 */        lw $ra, 0x14($sp)
@@ -3469,20 +3469,20 @@ glabel ftStatus_IfAnimEnd_SetStatusFall
 
 # Likely start of new file
 glabel mpObjectProc_ResetMultiWallCount
-  /* 054D10 800D9510 3C018013 */       lui $at, %hi(gMapMultiWallCollideCount)
+  /* 054D10 800D9510 3C018013 */       lui $at, %hi(gMPMultiWallCollideCount)
   /* 054D14 800D9514 03E00008 */        jr $ra
-  /* 054D18 800D9518 AC200DE0 */        sw $zero, %lo(gMapMultiWallCollideCount)($at)
+  /* 054D18 800D9518 AC200DE0 */        sw $zero, %lo(gMPMultiWallCollideCount)($at)
 
 glabel mpObjectProc_SetMultiWallLineID
-  /* 054D1C 800D951C 3C068013 */       lui $a2, %hi(gMapMultiWallCollideCount)
-  /* 054D20 800D9520 24C60DE0 */     addiu $a2, $a2, %lo(gMapMultiWallCollideCount)
-  /* 054D24 800D9524 8CC30000 */        lw $v1, ($a2) # gMapMultiWallCollideCount + 0
-  /* 054D28 800D9528 3C058013 */       lui $a1, %hi(gMapMultiWallCollideLineIDs)
-  /* 054D2C 800D952C 24A50DE8 */     addiu $a1, $a1, %lo(gMapMultiWallCollideLineIDs)
+  /* 054D1C 800D951C 3C068013 */       lui $a2, %hi(gMPMultiWallCollideCount)
+  /* 054D20 800D9520 24C60DE0 */     addiu $a2, $a2, %lo(gMPMultiWallCollideCount)
+  /* 054D24 800D9524 8CC30000 */        lw $v1, ($a2) # gMPMultiWallCollideCount + 0
+  /* 054D28 800D9528 3C058013 */       lui $a1, %hi(gMPMultiWallCollideLineIDs)
+  /* 054D2C 800D952C 24A50DE8 */     addiu $a1, $a1, %lo(gMPMultiWallCollideLineIDs)
   /* 054D30 800D9530 18600008 */      blez $v1, .L800D9554
   /* 054D34 800D9534 00001025 */        or $v0, $zero, $zero
   .L800D9538:
-  /* 054D38 800D9538 8CAE0000 */        lw $t6, ($a1) # gMapMultiWallCollideLineIDs + 0
+  /* 054D38 800D9538 8CAE0000 */        lw $t6, ($a1) # gMPMultiWallCollideLineIDs + 0
   /* 054D3C 800D953C 24420001 */     addiu $v0, $v0, 1
   /* 054D40 800D9540 0043082A */       slt $at, $v0, $v1
   /* 054D44 800D9544 108E000B */       beq $a0, $t6, .L800D9574
@@ -3493,11 +3493,11 @@ glabel mpObjectProc_SetMultiWallLineID
   /* 054D54 800D9554 24010005 */     addiu $at, $zero, 5
   /* 054D58 800D9558 10610006 */       beq $v1, $at, .L800D9574
   /* 054D5C 800D955C 00037880 */       sll $t7, $v1, 2
-  /* 054D60 800D9560 3C018013 */       lui $at, %hi(gMapMultiWallCollideLineIDs)
+  /* 054D60 800D9560 3C018013 */       lui $at, %hi(gMPMultiWallCollideLineIDs)
   /* 054D64 800D9564 002F0821 */      addu $at, $at, $t7
-  /* 054D68 800D9568 AC240DE8 */        sw $a0, %lo(gMapMultiWallCollideLineIDs)($at)
+  /* 054D68 800D9568 AC240DE8 */        sw $a0, %lo(gMPMultiWallCollideLineIDs)($at)
   /* 054D6C 800D956C 24780001 */     addiu $t8, $v1, 1
-  /* 054D70 800D9570 ACD80000 */        sw $t8, ($a2) # gMapMultiWallCollideCount + 0
+  /* 054D70 800D9570 ACD80000 */        sw $t8, ($a2) # gMPMultiWallCollideCount + 0
   .L800D9574:
   /* 054D74 800D9574 03E00008 */        jr $ra
   /* 054D78 800D9578 00000000 */       nop 
@@ -3505,51 +3505,51 @@ glabel mpObjectProc_SetMultiWallLineID
 glabel mpObjectProc_SetLastWallCollideLeft
   /* 054D7C 800D957C 3C01C780 */       lui $at, (0xC7800000 >> 16) # -65536.0
   /* 054D80 800D9580 44812000 */      mtc1 $at, $f4 # -65536.0 to cop1
-  /* 054D84 800D9584 3C018013 */       lui $at, %hi(gMapLastWallCollidePosition)
+  /* 054D84 800D9584 3C018013 */       lui $at, %hi(gMPLastWallCollidePosition)
   /* 054D88 800D9588 03E00008 */        jr $ra
-  /* 054D8C 800D958C E4240DFC */      swc1 $f4, %lo(gMapLastWallCollidePosition)($at)
+  /* 054D8C 800D958C E4240DFC */      swc1 $f4, %lo(gMPLastWallCollidePosition)($at)
 
 glabel mpObjectProc_SetLastWallCollideRight
   /* 054D90 800D9590 3C014780 */       lui $at, (0x47800000 >> 16) # 65536.0
   /* 054D94 800D9594 44812000 */      mtc1 $at, $f4 # 65536.0 to cop1
-  /* 054D98 800D9598 3C018013 */       lui $at, %hi(gMapLastWallCollidePosition)
+  /* 054D98 800D9598 3C018013 */       lui $at, %hi(gMPLastWallCollidePosition)
   /* 054D9C 800D959C 03E00008 */        jr $ra
-  /* 054DA0 800D95A0 E4240DFC */      swc1 $f4, %lo(gMapLastWallCollidePosition)($at)
+  /* 054DA0 800D95A0 E4240DFC */      swc1 $f4, %lo(gMPLastWallCollidePosition)($at)
 
 glabel mpObjectProc_SetLastWallCollideStats
-  /* 054DA4 800D95A4 3C018013 */       lui $at, %hi(gMapLastWallCollidePosition)
-  /* 054DA8 800D95A8 E42C0DFC */      swc1 $f12, %lo(gMapLastWallCollidePosition)($at)
-  /* 054DAC 800D95AC 3C018013 */       lui $at, %hi(gMapLastWallLineID)
-  /* 054DB0 800D95B0 AC250E00 */        sw $a1, %lo(gMapLastWallLineID)($at)
-  /* 054DB4 800D95B4 3C018013 */       lui $at, %hi(gMapLastWallFlags)
-  /* 054DB8 800D95B8 AC260E04 */        sw $a2, %lo(gMapLastWallFlags)($at)
+  /* 054DA4 800D95A4 3C018013 */       lui $at, %hi(gMPLastWallCollidePosition)
+  /* 054DA8 800D95A8 E42C0DFC */      swc1 $f12, %lo(gMPLastWallCollidePosition)($at)
+  /* 054DAC 800D95AC 3C018013 */       lui $at, %hi(gMPLastWallLineID)
+  /* 054DB0 800D95B0 AC250E00 */        sw $a1, %lo(gMPLastWallLineID)($at)
+  /* 054DB4 800D95B4 3C018013 */       lui $at, %hi(gMPLastWallFlags)
+  /* 054DB8 800D95B8 AC260E04 */        sw $a2, %lo(gMPLastWallFlags)($at)
   /* 054DBC 800D95BC 8CF80000 */        lw $t8, ($a3)
-  /* 054DC0 800D95C0 3C0E8013 */       lui $t6, %hi(gMapLastWallAngle)
-  /* 054DC4 800D95C4 25CE0E08 */     addiu $t6, $t6, %lo(gMapLastWallAngle)
-  /* 054DC8 800D95C8 ADD80000 */        sw $t8, ($t6) # gMapLastWallAngle + 0
+  /* 054DC0 800D95C0 3C0E8013 */       lui $t6, %hi(gMPLastWallAngle)
+  /* 054DC4 800D95C4 25CE0E08 */     addiu $t6, $t6, %lo(gMPLastWallAngle)
+  /* 054DC8 800D95C8 ADD80000 */        sw $t8, ($t6) # gMPLastWallAngle + 0
   /* 054DCC 800D95CC 8CEF0004 */        lw $t7, 4($a3)
-  /* 054DD0 800D95D0 ADCF0004 */        sw $t7, 4($t6) # gMapLastWallAngle + 4
+  /* 054DD0 800D95D0 ADCF0004 */        sw $t7, 4($t6) # gMPLastWallAngle + 4
   /* 054DD4 800D95D4 8CF80008 */        lw $t8, 8($a3)
   /* 054DD8 800D95D8 03E00008 */        jr $ra
-  /* 054DDC 800D95DC ADD80008 */        sw $t8, 8($t6) # gMapLastWallAngle + 8
+  /* 054DDC 800D95DC ADD80008 */        sw $t8, 8($t6) # gMPLastWallAngle + 8
 
 glabel mpObjectProc_GetLastWallCollideStats
-  /* 054DE0 800D95E0 3C018013 */       lui $at, %hi(gMapLastWallCollidePosition)
-  /* 054DE4 800D95E4 C4240DFC */      lwc1 $f4, %lo(gMapLastWallCollidePosition)($at)
-  /* 054DE8 800D95E8 3C0E8013 */       lui $t6, %hi(gMapLastWallLineID)
-  /* 054DEC 800D95EC 3C0F8013 */       lui $t7, %hi(gMapLastWallFlags)
+  /* 054DE0 800D95E0 3C018013 */       lui $at, %hi(gMPLastWallCollidePosition)
+  /* 054DE4 800D95E4 C4240DFC */      lwc1 $f4, %lo(gMPLastWallCollidePosition)($at)
+  /* 054DE8 800D95E8 3C0E8013 */       lui $t6, %hi(gMPLastWallLineID)
+  /* 054DEC 800D95EC 3C0F8013 */       lui $t7, %hi(gMPLastWallFlags)
   /* 054DF0 800D95F0 E4840000 */      swc1 $f4, ($a0)
-  /* 054DF4 800D95F4 8DCE0E00 */        lw $t6, %lo(gMapLastWallLineID)($t6)
-  /* 054DF8 800D95F8 3C188013 */       lui $t8, %hi(gMapLastWallAngle)
-  /* 054DFC 800D95FC 27180E08 */     addiu $t8, $t8, %lo(gMapLastWallAngle)
+  /* 054DF4 800D95F4 8DCE0E00 */        lw $t6, %lo(gMPLastWallLineID)($t6)
+  /* 054DF8 800D95F8 3C188013 */       lui $t8, %hi(gMPLastWallAngle)
+  /* 054DFC 800D95FC 27180E08 */     addiu $t8, $t8, %lo(gMPLastWallAngle)
   /* 054E00 800D9600 ACAE0000 */        sw $t6, ($a1)
-  /* 054E04 800D9604 8DEF0E04 */        lw $t7, %lo(gMapLastWallFlags)($t7)
+  /* 054E04 800D9604 8DEF0E04 */        lw $t7, %lo(gMPLastWallFlags)($t7)
   /* 054E08 800D9608 ACCF0000 */        sw $t7, ($a2)
-  /* 054E0C 800D960C 8F080000 */        lw $t0, ($t8) # gMapLastWallAngle + 0
+  /* 054E0C 800D960C 8F080000 */        lw $t0, ($t8) # gMPLastWallAngle + 0
   /* 054E10 800D9610 ACE80000 */        sw $t0, ($a3)
-  /* 054E14 800D9614 8F190004 */        lw $t9, 4($t8) # gMapLastWallAngle + 4
+  /* 054E14 800D9614 8F190004 */        lw $t9, 4($t8) # gMPLastWallAngle + 4
   /* 054E18 800D9618 ACF90004 */        sw $t9, 4($a3)
-  /* 054E1C 800D961C 8F080008 */        lw $t0, 8($t8) # gMapLastWallAngle + 8
+  /* 054E1C 800D961C 8F080008 */        lw $t0, 8($t8) # gMPLastWallAngle + 8
   /* 054E20 800D9620 03E00008 */        jr $ra
   /* 054E24 800D9624 ACE80008 */        sw $t0, 8($a3)
 
@@ -4385,8 +4385,8 @@ glabel mpObjectProc_UpdateMapProcMain
   /* 055A44 800DA244 5160FFD5 */      beql $t3, $zero, .L800DA19C
   /* 055A48 800DA248 8E0A0000 */        lw $t2, ($s0)
   .L800DA24C:
-  /* 055A4C 800DA24C 3C0C8013 */       lui $t4, %hi(gMapCollUpdateFrame)
-  /* 055A50 800DA250 958C1398 */       lhu $t4, %lo(gMapCollUpdateFrame)($t4)
+  /* 055A4C 800DA24C 3C0C8013 */       lui $t4, %hi(gMPCollUpdateFrame)
+  /* 055A50 800DA250 958C1398 */       lhu $t4, %lo(gMPCollUpdateFrame)($t4)
   /* 055A54 800DA254 A64C005C */        sh $t4, 0x5c($s2)
   /* 055A58 800DA258 8FBF004C */        lw $ra, 0x4c($sp)
   /* 055A5C 800DA25C 8FB70048 */        lw $s7, 0x48($sp)
@@ -4430,12 +4430,12 @@ glabel mpObjectProc_CheckTestLWallCollision
   .L800DA2E8:
   /* 055AE8 800DA2E8 8FA90068 */        lw $t1, 0x68($sp)
   /* 055AEC 800DA2EC 8FA80060 */        lw $t0, 0x60($sp)
-  /* 055AF0 800DA2F0 3C0A8013 */       lui $t2, %hi(gMapCollUpdateFrame)
+  /* 055AF0 800DA2F0 3C0A8013 */       lui $t2, %hi(gMPCollUpdateFrame)
   /* 055AF4 800DA2F4 25230008 */     addiu $v1, $t1, 8
   /* 055AF8 800DA2F8 C4640000 */      lwc1 $f4, ($v1)
   /* 055AFC 800DA2FC C506000C */      lwc1 $f6, 0xc($t0)
   /* 055B00 800DA300 25220038 */     addiu $v0, $t1, 0x38
-  /* 055B04 800DA304 954A1398 */       lhu $t2, %lo(gMapCollUpdateFrame)($t2)
+  /* 055B04 800DA304 954A1398 */       lhu $t2, %lo(gMPCollUpdateFrame)($t2)
   /* 055B08 800DA308 46062200 */     add.s $f8, $f4, $f6
   /* 055B0C 800DA30C E7A8004C */      swc1 $f8, 0x4c($sp)
   /* 055B10 800DA310 C46A0004 */      lwc1 $f10, 4($v1)
@@ -4494,9 +4494,9 @@ glabel mpObjectProc_CheckTestLWallCollision
   /* 055BD4 800DA3D4 C4660004 */      lwc1 $f6, 4($v1)
   /* 055BD8 800DA3D8 C5C80008 */      lwc1 $f8, 8($t6)
   /* 055BDC 800DA3DC 8FB90068 */        lw $t9, 0x68($sp)
-  /* 055BE0 800DA3E0 3C188013 */       lui $t8, %hi(gMapCollUpdateFrame)
+  /* 055BE0 800DA3E0 3C188013 */       lui $t8, %hi(gMPCollUpdateFrame)
   /* 055BE4 800DA3E4 46083280 */     add.s $f10, $f6, $f8
-  /* 055BE8 800DA3E8 97181398 */       lhu $t8, %lo(gMapCollUpdateFrame)($t8)
+  /* 055BE8 800DA3E8 97181398 */       lhu $t8, %lo(gMPCollUpdateFrame)($t8)
   /* 055BEC 800DA3EC 27A4004C */     addiu $a0, $sp, 0x4c
   /* 055BF0 800DA3F0 27A50040 */     addiu $a1, $sp, 0x40
   /* 055BF4 800DA3F4 E7AA0050 */      swc1 $f10, 0x50($sp)
@@ -4547,9 +4547,9 @@ glabel mpObjectProc_CheckTestLWallCollision
   /* 055C98 800DA498 C46A0004 */      lwc1 $f10, 4($v1)
   /* 055C9C 800DA49C C5B00000 */      lwc1 $f16, ($t5)
   /* 055CA0 800DA4A0 8FB90068 */        lw $t9, 0x68($sp)
-  /* 055CA4 800DA4A4 3C0F8013 */       lui $t7, %hi(gMapCollUpdateFrame)
+  /* 055CA4 800DA4A4 3C0F8013 */       lui $t7, %hi(gMPCollUpdateFrame)
   /* 055CA8 800DA4A8 46105480 */     add.s $f18, $f10, $f16
-  /* 055CAC 800DA4AC 95EF1398 */       lhu $t7, %lo(gMapCollUpdateFrame)($t7)
+  /* 055CAC 800DA4AC 95EF1398 */       lhu $t7, %lo(gMPCollUpdateFrame)($t7)
   /* 055CB0 800DA4B0 27A4004C */     addiu $a0, $sp, 0x4c
   /* 055CB4 800DA4B4 27A50040 */     addiu $a1, $sp, 0x40
   /* 055CB8 800DA4B8 E7B20050 */      swc1 $f18, 0x50($sp)
@@ -4681,16 +4681,16 @@ glabel mpCollision_RunLWallCollision
   /* 055E84 800DA684 AFA400A8 */        sw $a0, 0xa8($sp)
   /* 055E88 800DA688 0C036564 */       jal mpObjectProc_SetLastWallCollideRight
   /* 055E8C 800DA68C 8C960000 */        lw $s6, ($a0)
-  /* 055E90 800DA690 3C0F8013 */       lui $t7, %hi(gMapMultiWallCollideCount)
-  /* 055E94 800DA694 8DEF0DE0 */        lw $t7, %lo(gMapMultiWallCollideCount)($t7)
+  /* 055E90 800DA690 3C0F8013 */       lui $t7, %hi(gMPMultiWallCollideCount)
+  /* 055E94 800DA694 8DEF0DE0 */        lw $t7, %lo(gMPMultiWallCollideCount)($t7)
   /* 055E98 800DA698 8FB000A8 */        lw $s0, 0xa8($sp)
   /* 055E9C 800DA69C AFA00078 */        sw $zero, 0x78($sp)
   /* 055EA0 800DA6A0 19E000E8 */      blez $t7, .L800DAA44
   /* 055EA4 800DA6A4 26100038 */     addiu $s0, $s0, 0x38
-  /* 055EA8 800DA6A8 3C028013 */       lui $v0, %hi(gMapMultiWallCollideLineIDs)
-  /* 055EAC 800DA6AC 24420DE8 */     addiu $v0, $v0, %lo(gMapMultiWallCollideLineIDs)
-  /* 055EB0 800DA6B0 3C178013 */       lui $s7, %hi(gMapLastWallCollidePosition)
-  /* 055EB4 800DA6B4 26F70DFC */     addiu $s7, $s7, %lo(gMapLastWallCollidePosition)
+  /* 055EA8 800DA6A8 3C028013 */       lui $v0, %hi(gMPMultiWallCollideLineIDs)
+  /* 055EAC 800DA6AC 24420DE8 */     addiu $v0, $v0, %lo(gMPMultiWallCollideLineIDs)
+  /* 055EB0 800DA6B0 3C178013 */       lui $s7, %hi(gMPLastWallCollidePosition)
+  /* 055EB4 800DA6B4 26F70DFC */     addiu $s7, $s7, %lo(gMPLastWallCollidePosition)
   /* 055EB8 800DA6B8 AFA2005C */        sw $v0, 0x5c($sp)
   /* 055EBC 800DA6BC 27BE006C */     addiu $fp, $sp, 0x6c
   /* 055EC0 800DA6C0 27B5007C */     addiu $s5, $sp, 0x7c
@@ -4711,7 +4711,7 @@ glabel mpCollision_RunLWallCollision
   /* 055EF8 800DA6F8 00000000 */       nop 
   /* 055EFC 800DA6FC 45000013 */      bc1f .L800DA74C
   /* 055F00 800DA700 00000000 */       nop 
-  /* 055F04 800DA704 C6F20000 */      lwc1 $f18, ($s7) # gMapLastWallCollidePosition + 0
+  /* 055F04 800DA704 C6F20000 */      lwc1 $f18, ($s7) # gMPLastWallCollidePosition + 0
   /* 055F08 800DA708 02402025 */        or $a0, $s2, $zero
   /* 055F0C 800DA70C 27A50094 */     addiu $a1, $sp, 0x94
   /* 055F10 800DA710 4612803C */    c.lt.s $f16, $f18
@@ -4741,7 +4741,7 @@ glabel mpCollision_RunLWallCollision
   /* 055F6C 800DA76C 00000000 */       nop 
   /* 055F70 800DA770 45020014 */     bc1fl .L800DA7C4
   /* 055F74 800DA774 C6C60000 */      lwc1 $f6, ($s6)
-  /* 055F78 800DA778 C6F20000 */      lwc1 $f18, ($s7) # gMapLastWallCollidePosition + 0
+  /* 055F78 800DA778 C6F20000 */      lwc1 $f18, ($s7) # gMPLastWallCollidePosition + 0
   /* 055F7C 800DA77C 02402025 */        or $a0, $s2, $zero
   /* 055F80 800DA780 27A50094 */     addiu $a1, $sp, 0x94
   /* 055F84 800DA784 4612803C */    c.lt.s $f16, $f18
@@ -4776,7 +4776,7 @@ glabel mpCollision_RunLWallCollision
   /* 055FF4 800DA7F4 1040000C */      beqz $v0, .L800DA828
   /* 055FF8 800DA7F8 C7B20064 */      lwc1 $f18, 0x64($sp)
   /* 055FFC 800DA7FC C6D00000 */      lwc1 $f16, ($s6)
-  /* 056000 800DA800 C6E60000 */      lwc1 $f6, ($s7) # gMapLastWallCollidePosition + 0
+  /* 056000 800DA800 C6E60000 */      lwc1 $f6, ($s7) # gMPLastWallCollidePosition + 0
   /* 056004 800DA804 02402825 */        or $a1, $s2, $zero
   /* 056008 800DA808 46128300 */     add.s $f12, $f16, $f18
   /* 05600C 800DA80C 8FA6006C */        lw $a2, 0x6c($sp)
@@ -4805,7 +4805,7 @@ glabel mpCollision_RunLWallCollision
   /* 056060 800DA860 1040000C */      beqz $v0, .L800DA894
   /* 056064 800DA864 C7A40064 */      lwc1 $f4, 0x64($sp)
   /* 056068 800DA868 C6C80000 */      lwc1 $f8, ($s6)
-  /* 05606C 800DA86C C6EA0000 */      lwc1 $f10, ($s7) # gMapLastWallCollidePosition + 0
+  /* 05606C 800DA86C C6EA0000 */      lwc1 $f10, ($s7) # gMPLastWallCollidePosition + 0
   /* 056070 800DA870 02402825 */        or $a1, $s2, $zero
   /* 056074 800DA874 46044300 */     add.s $f12, $f8, $f4
   /* 056078 800DA878 8FA6006C */        lw $a2, 0x6c($sp)
@@ -4832,7 +4832,7 @@ glabel mpCollision_RunLWallCollision
   /* 0560C4 800DA8C4 1040000C */      beqz $v0, .L800DA8F8
   /* 0560C8 800DA8C8 C7AA0064 */      lwc1 $f10, 0x64($sp)
   /* 0560CC 800DA8CC C6C40000 */      lwc1 $f4, ($s6)
-  /* 0560D0 800DA8D0 C6F00000 */      lwc1 $f16, ($s7) # gMapLastWallCollidePosition + 0
+  /* 0560D0 800DA8D0 C6F00000 */      lwc1 $f16, ($s7) # gMPLastWallCollidePosition + 0
   /* 0560D4 800DA8D4 02402825 */        or $a1, $s2, $zero
   /* 0560D8 800DA8D8 460A2300 */     add.s $f12, $f4, $f10
   /* 0560DC 800DA8DC 8FA6006C */        lw $a2, 0x6c($sp)
@@ -4899,7 +4899,7 @@ glabel mpCollision_RunLWallCollision
   /* 0561C4 800DA9C4 E7B00064 */      swc1 $f16, 0x64($sp)
   .L800DA9C8:
   /* 0561C8 800DA9C8 C7B20064 */      lwc1 $f18, 0x64($sp)
-  /* 0561CC 800DA9CC C6E60000 */      lwc1 $f6, ($s7) # gMapLastWallCollidePosition + 0
+  /* 0561CC 800DA9CC C6E60000 */      lwc1 $f6, ($s7) # gMPLastWallCollidePosition + 0
   /* 0561D0 800DA9D0 02402025 */        or $a0, $s2, $zero
   /* 0561D4 800DA9D4 02A02825 */        or $a1, $s5, $zero
   /* 0561D8 800DA9D8 4606903C */    c.lt.s $f18, $f6
@@ -4924,8 +4924,8 @@ glabel mpCollision_RunLWallCollision
   .L800DAA1C:
   /* 05621C 800DAA1C 8FA20078 */        lw $v0, 0x78($sp)
   .L800DAA20:
-  /* 056220 800DAA20 3C088013 */       lui $t0, %hi(gMapMultiWallCollideCount)
-  /* 056224 800DAA24 8D080DE0 */        lw $t0, %lo(gMapMultiWallCollideCount)($t0)
+  /* 056220 800DAA20 3C088013 */       lui $t0, %hi(gMPMultiWallCollideCount)
+  /* 056224 800DAA24 8D080DE0 */        lw $t0, %lo(gMPMultiWallCollideCount)($t0)
   /* 056228 800DAA28 8FB8005C */        lw $t8, 0x5c($sp)
   /* 05622C 800DAA2C 24420001 */     addiu $v0, $v0, 1
   /* 056230 800DAA30 0048082A */       slt $at, $v0, $t0
@@ -4987,12 +4987,12 @@ glabel mpObjectProc_CheckTestRWallCollision
   .L800DAAFC:
   /* 0562FC 800DAAFC 8FA90068 */        lw $t1, 0x68($sp)
   /* 056300 800DAB00 8FA80060 */        lw $t0, 0x60($sp)
-  /* 056304 800DAB04 3C0A8013 */       lui $t2, %hi(gMapCollUpdateFrame)
+  /* 056304 800DAB04 3C0A8013 */       lui $t2, %hi(gMPCollUpdateFrame)
   /* 056308 800DAB08 25230008 */     addiu $v1, $t1, 8
   /* 05630C 800DAB0C C4640000 */      lwc1 $f4, ($v1)
   /* 056310 800DAB10 C506000C */      lwc1 $f6, 0xc($t0)
   /* 056314 800DAB14 25220038 */     addiu $v0, $t1, 0x38
-  /* 056318 800DAB18 954A1398 */       lhu $t2, %lo(gMapCollUpdateFrame)($t2)
+  /* 056318 800DAB18 954A1398 */       lhu $t2, %lo(gMPCollUpdateFrame)($t2)
   /* 05631C 800DAB1C 46062201 */     sub.s $f8, $f4, $f6
   /* 056320 800DAB20 E7A8004C */      swc1 $f8, 0x4c($sp)
   /* 056324 800DAB24 C46A0004 */      lwc1 $f10, 4($v1)
@@ -5051,9 +5051,9 @@ glabel mpObjectProc_CheckTestRWallCollision
   /* 0563E8 800DABE8 C4660004 */      lwc1 $f6, 4($v1)
   /* 0563EC 800DABEC C5C80008 */      lwc1 $f8, 8($t6)
   /* 0563F0 800DABF0 8FB90068 */        lw $t9, 0x68($sp)
-  /* 0563F4 800DABF4 3C188013 */       lui $t8, %hi(gMapCollUpdateFrame)
+  /* 0563F4 800DABF4 3C188013 */       lui $t8, %hi(gMPCollUpdateFrame)
   /* 0563F8 800DABF8 46083280 */     add.s $f10, $f6, $f8
-  /* 0563FC 800DABFC 97181398 */       lhu $t8, %lo(gMapCollUpdateFrame)($t8)
+  /* 0563FC 800DABFC 97181398 */       lhu $t8, %lo(gMPCollUpdateFrame)($t8)
   /* 056400 800DAC00 27A4004C */     addiu $a0, $sp, 0x4c
   /* 056404 800DAC04 27A50040 */     addiu $a1, $sp, 0x40
   /* 056408 800DAC08 E7AA0050 */      swc1 $f10, 0x50($sp)
@@ -5104,9 +5104,9 @@ glabel mpObjectProc_CheckTestRWallCollision
   /* 0564AC 800DACAC C46A0004 */      lwc1 $f10, 4($v1)
   /* 0564B0 800DACB0 C5B00000 */      lwc1 $f16, ($t5)
   /* 0564B4 800DACB4 8FB90068 */        lw $t9, 0x68($sp)
-  /* 0564B8 800DACB8 3C0F8013 */       lui $t7, %hi(gMapCollUpdateFrame)
+  /* 0564B8 800DACB8 3C0F8013 */       lui $t7, %hi(gMPCollUpdateFrame)
   /* 0564BC 800DACBC 46105480 */     add.s $f18, $f10, $f16
-  /* 0564C0 800DACC0 95EF1398 */       lhu $t7, %lo(gMapCollUpdateFrame)($t7)
+  /* 0564C0 800DACC0 95EF1398 */       lhu $t7, %lo(gMPCollUpdateFrame)($t7)
   /* 0564C4 800DACC4 27A4004C */     addiu $a0, $sp, 0x4c
   /* 0564C8 800DACC8 27A50040 */     addiu $a1, $sp, 0x40
   /* 0564CC 800DACCC E7B20050 */      swc1 $f18, 0x50($sp)
@@ -5238,16 +5238,16 @@ glabel mpObjectProc_RunRWallCollision
   /* 056698 800DAE98 AFA400A8 */        sw $a0, 0xa8($sp)
   /* 05669C 800DAE9C 0C03655F */       jal mpObjectProc_SetLastWallCollideLeft
   /* 0566A0 800DAEA0 8C960000 */        lw $s6, ($a0)
-  /* 0566A4 800DAEA4 3C0F8013 */       lui $t7, %hi(gMapMultiWallCollideCount)
-  /* 0566A8 800DAEA8 8DEF0DE0 */        lw $t7, %lo(gMapMultiWallCollideCount)($t7)
+  /* 0566A4 800DAEA4 3C0F8013 */       lui $t7, %hi(gMPMultiWallCollideCount)
+  /* 0566A8 800DAEA8 8DEF0DE0 */        lw $t7, %lo(gMPMultiWallCollideCount)($t7)
   /* 0566AC 800DAEAC 8FB000A8 */        lw $s0, 0xa8($sp)
   /* 0566B0 800DAEB0 AFA00078 */        sw $zero, 0x78($sp)
   /* 0566B4 800DAEB4 19E000E8 */      blez $t7, .L800DB258
   /* 0566B8 800DAEB8 26100038 */     addiu $s0, $s0, 0x38
-  /* 0566BC 800DAEBC 3C028013 */       lui $v0, %hi(gMapMultiWallCollideLineIDs)
-  /* 0566C0 800DAEC0 24420DE8 */     addiu $v0, $v0, %lo(gMapMultiWallCollideLineIDs)
-  /* 0566C4 800DAEC4 3C178013 */       lui $s7, %hi(gMapLastWallCollidePosition)
-  /* 0566C8 800DAEC8 26F70DFC */     addiu $s7, $s7, %lo(gMapLastWallCollidePosition)
+  /* 0566BC 800DAEBC 3C028013 */       lui $v0, %hi(gMPMultiWallCollideLineIDs)
+  /* 0566C0 800DAEC0 24420DE8 */     addiu $v0, $v0, %lo(gMPMultiWallCollideLineIDs)
+  /* 0566C4 800DAEC4 3C178013 */       lui $s7, %hi(gMPLastWallCollidePosition)
+  /* 0566C8 800DAEC8 26F70DFC */     addiu $s7, $s7, %lo(gMPLastWallCollidePosition)
   /* 0566CC 800DAECC AFA2005C */        sw $v0, 0x5c($sp)
   /* 0566D0 800DAED0 27BE006C */     addiu $fp, $sp, 0x6c
   /* 0566D4 800DAED4 27B5007C */     addiu $s5, $sp, 0x7c
@@ -5268,7 +5268,7 @@ glabel mpObjectProc_RunRWallCollision
   /* 05670C 800DAF0C 00000000 */       nop 
   /* 056710 800DAF10 45000013 */      bc1f .L800DAF60
   /* 056714 800DAF14 00000000 */       nop 
-  /* 056718 800DAF18 C6F00000 */      lwc1 $f16, ($s7) # gMapLastWallCollidePosition + 0
+  /* 056718 800DAF18 C6F00000 */      lwc1 $f16, ($s7) # gMPLastWallCollidePosition + 0
   /* 05671C 800DAF1C 02402025 */        or $a0, $s2, $zero
   /* 056720 800DAF20 27A50094 */     addiu $a1, $sp, 0x94
   /* 056724 800DAF24 4612803C */    c.lt.s $f16, $f18
@@ -5298,7 +5298,7 @@ glabel mpObjectProc_RunRWallCollision
   /* 056780 800DAF80 00000000 */       nop 
   /* 056784 800DAF84 45020014 */     bc1fl .L800DAFD8
   /* 056788 800DAF88 C6C60000 */      lwc1 $f6, ($s6)
-  /* 05678C 800DAF8C C6F00000 */      lwc1 $f16, ($s7) # gMapLastWallCollidePosition + 0
+  /* 05678C 800DAF8C C6F00000 */      lwc1 $f16, ($s7) # gMPLastWallCollidePosition + 0
   /* 056790 800DAF90 02402025 */        or $a0, $s2, $zero
   /* 056794 800DAF94 27A50094 */     addiu $a1, $sp, 0x94
   /* 056798 800DAF98 4612803C */    c.lt.s $f16, $f18
@@ -5333,7 +5333,7 @@ glabel mpObjectProc_RunRWallCollision
   /* 056808 800DB008 1040000C */      beqz $v0, .L800DB03C
   /* 05680C 800DB00C C7B20064 */      lwc1 $f18, 0x64($sp)
   /* 056810 800DB010 C6D00000 */      lwc1 $f16, ($s6)
-  /* 056814 800DB014 C6E60000 */      lwc1 $f6, ($s7) # gMapLastWallCollidePosition + 0
+  /* 056814 800DB014 C6E60000 */      lwc1 $f6, ($s7) # gMPLastWallCollidePosition + 0
   /* 056818 800DB018 02402825 */        or $a1, $s2, $zero
   /* 05681C 800DB01C 46128300 */     add.s $f12, $f16, $f18
   /* 056820 800DB020 8FA6006C */        lw $a2, 0x6c($sp)
@@ -5362,7 +5362,7 @@ glabel mpObjectProc_RunRWallCollision
   /* 056874 800DB074 1040000C */      beqz $v0, .L800DB0A8
   /* 056878 800DB078 C7A40064 */      lwc1 $f4, 0x64($sp)
   /* 05687C 800DB07C C6C80000 */      lwc1 $f8, ($s6)
-  /* 056880 800DB080 C6EA0000 */      lwc1 $f10, ($s7) # gMapLastWallCollidePosition + 0
+  /* 056880 800DB080 C6EA0000 */      lwc1 $f10, ($s7) # gMPLastWallCollidePosition + 0
   /* 056884 800DB084 02402825 */        or $a1, $s2, $zero
   /* 056888 800DB088 46044300 */     add.s $f12, $f8, $f4
   /* 05688C 800DB08C 8FA6006C */        lw $a2, 0x6c($sp)
@@ -5389,7 +5389,7 @@ glabel mpObjectProc_RunRWallCollision
   /* 0568D8 800DB0D8 1040000C */      beqz $v0, .L800DB10C
   /* 0568DC 800DB0DC C7AA0064 */      lwc1 $f10, 0x64($sp)
   /* 0568E0 800DB0E0 C6C40000 */      lwc1 $f4, ($s6)
-  /* 0568E4 800DB0E4 C6F00000 */      lwc1 $f16, ($s7) # gMapLastWallCollidePosition + 0
+  /* 0568E4 800DB0E4 C6F00000 */      lwc1 $f16, ($s7) # gMPLastWallCollidePosition + 0
   /* 0568E8 800DB0E8 02402825 */        or $a1, $s2, $zero
   /* 0568EC 800DB0EC 460A2300 */     add.s $f12, $f4, $f10
   /* 0568F0 800DB0F0 8FA6006C */        lw $a2, 0x6c($sp)
@@ -5455,7 +5455,7 @@ glabel mpObjectProc_RunRWallCollision
   /* 0569D4 800DB1D4 46045400 */     add.s $f16, $f10, $f4
   /* 0569D8 800DB1D8 E7B00064 */      swc1 $f16, 0x64($sp)
   .L800DB1DC:
-  /* 0569DC 800DB1DC C6E60000 */      lwc1 $f6, ($s7) # gMapLastWallCollidePosition + 0
+  /* 0569DC 800DB1DC C6E60000 */      lwc1 $f6, ($s7) # gMPLastWallCollidePosition + 0
   /* 0569E0 800DB1E0 C7B20064 */      lwc1 $f18, 0x64($sp)
   /* 0569E4 800DB1E4 02402025 */        or $a0, $s2, $zero
   /* 0569E8 800DB1E8 02A02825 */        or $a1, $s5, $zero
@@ -5481,8 +5481,8 @@ glabel mpObjectProc_RunRWallCollision
   .L800DB230:
   /* 056A30 800DB230 8FA20078 */        lw $v0, 0x78($sp)
   .L800DB234:
-  /* 056A34 800DB234 3C088013 */       lui $t0, %hi(gMapMultiWallCollideCount)
-  /* 056A38 800DB238 8D080DE0 */        lw $t0, %lo(gMapMultiWallCollideCount)($t0)
+  /* 056A34 800DB234 3C088013 */       lui $t0, %hi(gMPMultiWallCollideCount)
+  /* 056A38 800DB238 8D080DE0 */        lw $t0, %lo(gMPMultiWallCollideCount)($t0)
   /* 056A3C 800DB23C 8FB8005C */        lw $t8, 0x5c($sp)
   /* 056A40 800DB240 24420001 */     addiu $v0, $v0, 1
   /* 056A44 800DB244 0048082A */       slt $at, $v0, $t0
@@ -5647,8 +5647,8 @@ glabel mpObjectProc_CheckTestGroundCollision
   /* 056C90 800DB490 E7A4004C */      swc1 $f4, 0x4c($sp)
   /* 056C94 800DB494 C486000C */      lwc1 $f6, 0xc($a0)
   /* 056C98 800DB498 C4680008 */      lwc1 $f8, 8($v1)
-  /* 056C9C 800DB49C 3C0E8013 */       lui $t6, %hi(gMapCollUpdateFrame)
-  /* 056CA0 800DB4A0 95CE1398 */       lhu $t6, %lo(gMapCollUpdateFrame)($t6)
+  /* 056C9C 800DB49C 3C0E8013 */       lui $t6, %hi(gMPCollUpdateFrame)
+  /* 056CA0 800DB4A0 95CE1398 */       lhu $t6, %lo(gMPCollUpdateFrame)($t6)
   /* 056CA4 800DB4A4 46083280 */     add.s $f10, $f6, $f8
   /* 056CA8 800DB4A8 00808025 */        or $s0, $a0, $zero
   /* 056CAC 800DB4AC 26060068 */     addiu $a2, $s0, 0x68
@@ -5730,8 +5730,8 @@ glabel mpObjectProc_CheckTestLCliffCollision
   .L800DB5C4:
   /* 056DC4 800DB5C4 C4640000 */      lwc1 $f4, ($v1)
   /* 056DC8 800DB5C8 C4460000 */      lwc1 $f6, ($v0)
-  /* 056DCC 800DB5CC 3C188013 */       lui $t8, %hi(gMapCollUpdateFrame)
-  /* 056DD0 800DB5D0 97181398 */       lhu $t8, %lo(gMapCollUpdateFrame)($t8)
+  /* 056DCC 800DB5CC 3C188013 */       lui $t8, %hi(gMPCollUpdateFrame)
+  /* 056DD0 800DB5D0 97181398 */       lhu $t8, %lo(gMPCollUpdateFrame)($t8)
   /* 056DD4 800DB5D4 46062200 */     add.s $f8, $f4, $f6
   /* 056DD8 800DB5D8 27A40048 */     addiu $a0, $sp, 0x48
   /* 056DDC 800DB5DC 26060068 */     addiu $a2, $s0, 0x68
@@ -5825,8 +5825,8 @@ glabel mpObjectProc_CheckTestRCliffCollision
   .L800DB724:
   /* 056F24 800DB724 C4640000 */      lwc1 $f4, ($v1)
   /* 056F28 800DB728 C4460000 */      lwc1 $f6, ($v0)
-  /* 056F2C 800DB72C 3C188013 */       lui $t8, %hi(gMapCollUpdateFrame)
-  /* 056F30 800DB730 97181398 */       lhu $t8, %lo(gMapCollUpdateFrame)($t8)
+  /* 056F2C 800DB72C 3C188013 */       lui $t8, %hi(gMPCollUpdateFrame)
+  /* 056F30 800DB730 97181398 */       lhu $t8, %lo(gMPCollUpdateFrame)($t8)
   /* 056F34 800DB734 46062201 */     sub.s $f8, $f4, $f6
   /* 056F38 800DB738 27A40048 */     addiu $a0, $sp, 0x48
   /* 056F3C 800DB73C 26060068 */     addiu $a2, $s0, 0x68
@@ -5916,12 +5916,12 @@ glabel mpObjectProc_CheckTestLWallCollisionAdjNew
   /* 057074 800DB874 AFA40070 */        sw $a0, 0x70($sp)
   /* 057078 800DB878 8FA80070 */        lw $t0, 0x70($sp)
   /* 05707C 800DB87C 8FA30068 */        lw $v1, 0x68($sp)
-  /* 057080 800DB880 3C0A8013 */       lui $t2, %hi(gMapCollUpdateFrame)
+  /* 057080 800DB880 3C0A8013 */       lui $t2, %hi(gMPCollUpdateFrame)
   /* 057084 800DB884 25020008 */     addiu $v0, $t0, 8
   /* 057088 800DB888 C4440000 */      lwc1 $f4, ($v0)
   /* 05708C 800DB88C C466000C */      lwc1 $f6, 0xc($v1)
   /* 057090 800DB890 25110038 */     addiu $s1, $t0, 0x38
-  /* 057094 800DB894 954A1398 */       lhu $t2, %lo(gMapCollUpdateFrame)($t2)
+  /* 057094 800DB894 954A1398 */       lhu $t2, %lo(gMPCollUpdateFrame)($t2)
   /* 057098 800DB898 46062200 */     add.s $f8, $f4, $f6
   /* 05709C 800DB89C E7A80054 */      swc1 $f8, 0x54($sp)
   /* 0570A0 800DB8A0 C44A0004 */      lwc1 $f10, 4($v0)
@@ -5969,8 +5969,8 @@ glabel mpObjectProc_CheckTestLWallCollisionAdjNew
   /* 05713C 800DB93C 8FAD0068 */        lw $t5, 0x68($sp)
   /* 057140 800DB940 8FAF0070 */        lw $t7, 0x70($sp)
   /* 057144 800DB944 C4440000 */      lwc1 $f4, ($v0)
-  /* 057148 800DB948 3C0E8013 */       lui $t6, %hi(gMapCollUpdateFrame)
-  /* 05714C 800DB94C 95CE1398 */       lhu $t6, %lo(gMapCollUpdateFrame)($t6)
+  /* 057148 800DB948 3C0E8013 */       lui $t6, %hi(gMPCollUpdateFrame)
+  /* 05714C 800DB94C 95CE1398 */       lhu $t6, %lo(gMPCollUpdateFrame)($t6)
   /* 057150 800DB950 E7A40054 */      swc1 $f4, 0x54($sp)
   /* 057154 800DB954 C4460004 */      lwc1 $f6, 4($v0)
   /* 057158 800DB958 C5A80008 */      lwc1 $f8, 8($t5)
@@ -6012,8 +6012,8 @@ glabel mpObjectProc_CheckTestLWallCollisionAdjNew
   /* 0571DC 800DB9DC 8FA90068 */        lw $t1, 0x68($sp)
   /* 0571E0 800DB9E0 8FAB0070 */        lw $t3, 0x70($sp)
   /* 0571E4 800DB9E4 C4480000 */      lwc1 $f8, ($v0)
-  /* 0571E8 800DB9E8 3C0A8013 */       lui $t2, %hi(gMapCollUpdateFrame)
-  /* 0571EC 800DB9EC 954A1398 */       lhu $t2, %lo(gMapCollUpdateFrame)($t2)
+  /* 0571E8 800DB9E8 3C0A8013 */       lui $t2, %hi(gMPCollUpdateFrame)
+  /* 0571EC 800DB9EC 954A1398 */       lhu $t2, %lo(gMPCollUpdateFrame)($t2)
   /* 0571F0 800DB9F0 E7A80054 */      swc1 $f8, 0x54($sp)
   /* 0571F4 800DB9F4 C44A0004 */      lwc1 $f10, 4($v0)
   /* 0571F8 800DB9F8 C5300000 */      lwc1 $f16, ($t1)
@@ -6110,8 +6110,8 @@ glabel mpObjectProc_CheckTestLWallCollisionAdjNew
   /* 057350 800DBB50 8FA90070 */        lw $t1, 0x70($sp)
   /* 057354 800DBB54 C4440000 */      lwc1 $f4, ($v0)
   /* 057358 800DBB58 C706000C */      lwc1 $f6, 0xc($t8)
-  /* 05735C 800DBB5C 3C198013 */       lui $t9, %hi(gMapCollUpdateFrame)
-  /* 057360 800DBB60 97391398 */       lhu $t9, %lo(gMapCollUpdateFrame)($t9)
+  /* 05735C 800DBB5C 3C198013 */       lui $t9, %hi(gMPCollUpdateFrame)
+  /* 057360 800DBB60 97391398 */       lhu $t9, %lo(gMPCollUpdateFrame)($t9)
   /* 057364 800DBB64 46062200 */     add.s $f8, $f4, $f6
   /* 057368 800DBB68 27A40054 */     addiu $a0, $sp, 0x54
   /* 05736C 800DBB6C 27A50048 */     addiu $a1, $sp, 0x48
@@ -6165,8 +6165,8 @@ glabel mpObjectProc_CheckTestLWallCollisionAdjNew
   /* 057424 800DBC24 E7A40054 */      swc1 $f4, 0x54($sp)
   /* 057428 800DBC28 C5460004 */      lwc1 $f6, 4($t2)
   /* 05742C 800DBC2C C5880000 */      lwc1 $f8, ($t4)
-  /* 057430 800DBC30 3C0D8013 */       lui $t5, %hi(gMapCollUpdateFrame)
-  /* 057434 800DBC34 95AD1398 */       lhu $t5, %lo(gMapCollUpdateFrame)($t5)
+  /* 057430 800DBC30 3C0D8013 */       lui $t5, %hi(gMPCollUpdateFrame)
+  /* 057434 800DBC34 95AD1398 */       lhu $t5, %lo(gMPCollUpdateFrame)($t5)
   /* 057438 800DBC38 46083280 */     add.s $f10, $f6, $f8
   /* 05743C 800DBC3C 27A40054 */     addiu $a0, $sp, 0x54
   /* 057440 800DBC40 27A50048 */     addiu $a1, $sp, 0x48
@@ -6239,8 +6239,8 @@ glabel mpObjectProc_CheckTestLWallCollisionAdjNew
   /* 057534 800DBD34 8FAE0070 */        lw $t6, 0x70($sp)
   /* 057538 800DBD38 C5840000 */      lwc1 $f4, ($t4)
   /* 05753C 800DBD3C C5E6000C */      lwc1 $f6, 0xc($t7)
-  /* 057540 800DBD40 3C0D8013 */       lui $t5, %hi(gMapCollUpdateFrame)
-  /* 057544 800DBD44 95AD1398 */       lhu $t5, %lo(gMapCollUpdateFrame)($t5)
+  /* 057540 800DBD40 3C0D8013 */       lui $t5, %hi(gMPCollUpdateFrame)
+  /* 057544 800DBD44 95AD1398 */       lhu $t5, %lo(gMPCollUpdateFrame)($t5)
   /* 057548 800DBD48 46062200 */     add.s $f8, $f4, $f6
   /* 05754C 800DBD4C 27A40054 */     addiu $a0, $sp, 0x54
   /* 057550 800DBD50 27A50048 */     addiu $a1, $sp, 0x48
@@ -6299,8 +6299,8 @@ glabel mpObjectProc_CheckTestLWallCollisionAdjNew
   /* 05761C 800DBE1C E7A40054 */      swc1 $f4, 0x54($sp)
   /* 057620 800DBE20 C5860004 */      lwc1 $f6, 4($t4)
   /* 057624 800DBE24 C5E80008 */      lwc1 $f8, 8($t7)
-  /* 057628 800DBE28 3C0E8013 */       lui $t6, %hi(gMapCollUpdateFrame)
-  /* 05762C 800DBE2C 95CE1398 */       lhu $t6, %lo(gMapCollUpdateFrame)($t6)
+  /* 057628 800DBE28 3C0E8013 */       lui $t6, %hi(gMPCollUpdateFrame)
+  /* 05762C 800DBE2C 95CE1398 */       lhu $t6, %lo(gMPCollUpdateFrame)($t6)
   /* 057630 800DBE30 46083280 */     add.s $f10, $f6, $f8
   /* 057634 800DBE34 27A40054 */     addiu $a0, $sp, 0x54
   /* 057638 800DBE38 27A50048 */     addiu $a1, $sp, 0x48
@@ -6398,16 +6398,16 @@ glabel mpObjectProc_RunLWallCollisionAdjNew
   /* 057784 800DBF84 AFA400A8 */        sw $a0, 0xa8($sp)
   /* 057788 800DBF88 0C036564 */       jal mpObjectProc_SetLastWallCollideRight
   /* 05778C 800DBF8C 8C960000 */        lw $s6, ($a0)
-  /* 057790 800DBF90 3C0F8013 */       lui $t7, %hi(gMapMultiWallCollideCount)
-  /* 057794 800DBF94 8DEF0DE0 */        lw $t7, %lo(gMapMultiWallCollideCount)($t7)
+  /* 057790 800DBF90 3C0F8013 */       lui $t7, %hi(gMPMultiWallCollideCount)
+  /* 057794 800DBF94 8DEF0DE0 */        lw $t7, %lo(gMPMultiWallCollideCount)($t7)
   /* 057798 800DBF98 8FB000A8 */        lw $s0, 0xa8($sp)
   /* 05779C 800DBF9C AFA00078 */        sw $zero, 0x78($sp)
   /* 0577A0 800DBFA0 19E000E8 */      blez $t7, .L800DC344
   /* 0577A4 800DBFA4 26100038 */     addiu $s0, $s0, 0x38
-  /* 0577A8 800DBFA8 3C028013 */       lui $v0, %hi(gMapMultiWallCollideLineIDs)
-  /* 0577AC 800DBFAC 24420DE8 */     addiu $v0, $v0, %lo(gMapMultiWallCollideLineIDs)
-  /* 0577B0 800DBFB0 3C178013 */       lui $s7, %hi(gMapLastWallCollidePosition)
-  /* 0577B4 800DBFB4 26F70DFC */     addiu $s7, $s7, %lo(gMapLastWallCollidePosition)
+  /* 0577A8 800DBFA8 3C028013 */       lui $v0, %hi(gMPMultiWallCollideLineIDs)
+  /* 0577AC 800DBFAC 24420DE8 */     addiu $v0, $v0, %lo(gMPMultiWallCollideLineIDs)
+  /* 0577B0 800DBFB0 3C178013 */       lui $s7, %hi(gMPLastWallCollidePosition)
+  /* 0577B4 800DBFB4 26F70DFC */     addiu $s7, $s7, %lo(gMPLastWallCollidePosition)
   /* 0577B8 800DBFB8 AFA2005C */        sw $v0, 0x5c($sp)
   /* 0577BC 800DBFBC 27BE006C */     addiu $fp, $sp, 0x6c
   /* 0577C0 800DBFC0 27B5007C */     addiu $s5, $sp, 0x7c
@@ -6428,7 +6428,7 @@ glabel mpObjectProc_RunLWallCollisionAdjNew
   /* 0577F8 800DBFF8 00000000 */       nop 
   /* 0577FC 800DBFFC 45000013 */      bc1f .L800DC04C
   /* 057800 800DC000 00000000 */       nop 
-  /* 057804 800DC004 C6F20000 */      lwc1 $f18, ($s7) # gMapLastWallCollidePosition + 0
+  /* 057804 800DC004 C6F20000 */      lwc1 $f18, ($s7) # gMPLastWallCollidePosition + 0
   /* 057808 800DC008 02402025 */        or $a0, $s2, $zero
   /* 05780C 800DC00C 27A50094 */     addiu $a1, $sp, 0x94
   /* 057810 800DC010 4612803C */    c.lt.s $f16, $f18
@@ -6458,7 +6458,7 @@ glabel mpObjectProc_RunLWallCollisionAdjNew
   /* 05786C 800DC06C 00000000 */       nop 
   /* 057870 800DC070 45020014 */     bc1fl .L800DC0C4
   /* 057874 800DC074 C6C60000 */      lwc1 $f6, ($s6)
-  /* 057878 800DC078 C6F20000 */      lwc1 $f18, ($s7) # gMapLastWallCollidePosition + 0
+  /* 057878 800DC078 C6F20000 */      lwc1 $f18, ($s7) # gMPLastWallCollidePosition + 0
   /* 05787C 800DC07C 02402025 */        or $a0, $s2, $zero
   /* 057880 800DC080 27A50094 */     addiu $a1, $sp, 0x94
   /* 057884 800DC084 4612803C */    c.lt.s $f16, $f18
@@ -6493,7 +6493,7 @@ glabel mpObjectProc_RunLWallCollisionAdjNew
   /* 0578F4 800DC0F4 1040000C */      beqz $v0, .L800DC128
   /* 0578F8 800DC0F8 C7B20064 */      lwc1 $f18, 0x64($sp)
   /* 0578FC 800DC0FC C6D00000 */      lwc1 $f16, ($s6)
-  /* 057900 800DC100 C6E60000 */      lwc1 $f6, ($s7) # gMapLastWallCollidePosition + 0
+  /* 057900 800DC100 C6E60000 */      lwc1 $f6, ($s7) # gMPLastWallCollidePosition + 0
   /* 057904 800DC104 02402825 */        or $a1, $s2, $zero
   /* 057908 800DC108 46128300 */     add.s $f12, $f16, $f18
   /* 05790C 800DC10C 8FA6006C */        lw $a2, 0x6c($sp)
@@ -6522,7 +6522,7 @@ glabel mpObjectProc_RunLWallCollisionAdjNew
   /* 057960 800DC160 1040000C */      beqz $v0, .L800DC194
   /* 057964 800DC164 C7A40064 */      lwc1 $f4, 0x64($sp)
   /* 057968 800DC168 C6C80000 */      lwc1 $f8, ($s6)
-  /* 05796C 800DC16C C6EA0000 */      lwc1 $f10, ($s7) # gMapLastWallCollidePosition + 0
+  /* 05796C 800DC16C C6EA0000 */      lwc1 $f10, ($s7) # gMPLastWallCollidePosition + 0
   /* 057970 800DC170 02402825 */        or $a1, $s2, $zero
   /* 057974 800DC174 46044300 */     add.s $f12, $f8, $f4
   /* 057978 800DC178 8FA6006C */        lw $a2, 0x6c($sp)
@@ -6549,7 +6549,7 @@ glabel mpObjectProc_RunLWallCollisionAdjNew
   /* 0579C4 800DC1C4 1040000C */      beqz $v0, .L800DC1F8
   /* 0579C8 800DC1C8 C7AA0064 */      lwc1 $f10, 0x64($sp)
   /* 0579CC 800DC1CC C6C40000 */      lwc1 $f4, ($s6)
-  /* 0579D0 800DC1D0 C6F00000 */      lwc1 $f16, ($s7) # gMapLastWallCollidePosition + 0
+  /* 0579D0 800DC1D0 C6F00000 */      lwc1 $f16, ($s7) # gMPLastWallCollidePosition + 0
   /* 0579D4 800DC1D4 02402825 */        or $a1, $s2, $zero
   /* 0579D8 800DC1D8 460A2300 */     add.s $f12, $f4, $f10
   /* 0579DC 800DC1DC 8FA6006C */        lw $a2, 0x6c($sp)
@@ -6616,7 +6616,7 @@ glabel mpObjectProc_RunLWallCollisionAdjNew
   /* 057AC4 800DC2C4 E7B00064 */      swc1 $f16, 0x64($sp)
   .L800DC2C8:
   /* 057AC8 800DC2C8 C7B20064 */      lwc1 $f18, 0x64($sp)
-  /* 057ACC 800DC2CC C6E60000 */      lwc1 $f6, ($s7) # gMapLastWallCollidePosition + 0
+  /* 057ACC 800DC2CC C6E60000 */      lwc1 $f6, ($s7) # gMPLastWallCollidePosition + 0
   /* 057AD0 800DC2D0 02402025 */        or $a0, $s2, $zero
   /* 057AD4 800DC2D4 02A02825 */        or $a1, $s5, $zero
   /* 057AD8 800DC2D8 4606903C */    c.lt.s $f18, $f6
@@ -6641,8 +6641,8 @@ glabel mpObjectProc_RunLWallCollisionAdjNew
   .L800DC31C:
   /* 057B1C 800DC31C 8FA20078 */        lw $v0, 0x78($sp)
   .L800DC320:
-  /* 057B20 800DC320 3C088013 */       lui $t0, %hi(gMapMultiWallCollideCount)
-  /* 057B24 800DC324 8D080DE0 */        lw $t0, %lo(gMapMultiWallCollideCount)($t0)
+  /* 057B20 800DC320 3C088013 */       lui $t0, %hi(gMPMultiWallCollideCount)
+  /* 057B24 800DC324 8D080DE0 */        lw $t0, %lo(gMPMultiWallCollideCount)($t0)
   /* 057B28 800DC328 8FB8005C */        lw $t8, 0x5c($sp)
   /* 057B2C 800DC32C 24420001 */     addiu $v0, $v0, 1
   /* 057B30 800DC330 0048082A */       slt $at, $v0, $t0
@@ -6705,12 +6705,12 @@ glabel mpObjectProc_CheckTestRWallCollisionAdjNew
   /* 057C04 800DC404 AFA40070 */        sw $a0, 0x70($sp)
   /* 057C08 800DC408 8FA80070 */        lw $t0, 0x70($sp)
   /* 057C0C 800DC40C 8FA30068 */        lw $v1, 0x68($sp)
-  /* 057C10 800DC410 3C0A8013 */       lui $t2, %hi(gMapCollUpdateFrame)
+  /* 057C10 800DC410 3C0A8013 */       lui $t2, %hi(gMPCollUpdateFrame)
   /* 057C14 800DC414 25020008 */     addiu $v0, $t0, 8
   /* 057C18 800DC418 C4440000 */      lwc1 $f4, ($v0)
   /* 057C1C 800DC41C C466000C */      lwc1 $f6, 0xc($v1)
   /* 057C20 800DC420 25110038 */     addiu $s1, $t0, 0x38
-  /* 057C24 800DC424 954A1398 */       lhu $t2, %lo(gMapCollUpdateFrame)($t2)
+  /* 057C24 800DC424 954A1398 */       lhu $t2, %lo(gMPCollUpdateFrame)($t2)
   /* 057C28 800DC428 46062201 */     sub.s $f8, $f4, $f6
   /* 057C2C 800DC42C E7A80054 */      swc1 $f8, 0x54($sp)
   /* 057C30 800DC430 C44A0004 */      lwc1 $f10, 4($v0)
@@ -6758,8 +6758,8 @@ glabel mpObjectProc_CheckTestRWallCollisionAdjNew
   /* 057CCC 800DC4CC 8FAD0068 */        lw $t5, 0x68($sp)
   /* 057CD0 800DC4D0 8FAF0070 */        lw $t7, 0x70($sp)
   /* 057CD4 800DC4D4 C4440000 */      lwc1 $f4, ($v0)
-  /* 057CD8 800DC4D8 3C0E8013 */       lui $t6, %hi(gMapCollUpdateFrame)
-  /* 057CDC 800DC4DC 95CE1398 */       lhu $t6, %lo(gMapCollUpdateFrame)($t6)
+  /* 057CD8 800DC4D8 3C0E8013 */       lui $t6, %hi(gMPCollUpdateFrame)
+  /* 057CDC 800DC4DC 95CE1398 */       lhu $t6, %lo(gMPCollUpdateFrame)($t6)
   /* 057CE0 800DC4E0 E7A40054 */      swc1 $f4, 0x54($sp)
   /* 057CE4 800DC4E4 C4460004 */      lwc1 $f6, 4($v0)
   /* 057CE8 800DC4E8 C5A80008 */      lwc1 $f8, 8($t5)
@@ -6801,8 +6801,8 @@ glabel mpObjectProc_CheckTestRWallCollisionAdjNew
   /* 057D6C 800DC56C 8FA90068 */        lw $t1, 0x68($sp)
   /* 057D70 800DC570 8FAB0070 */        lw $t3, 0x70($sp)
   /* 057D74 800DC574 C4480000 */      lwc1 $f8, ($v0)
-  /* 057D78 800DC578 3C0A8013 */       lui $t2, %hi(gMapCollUpdateFrame)
-  /* 057D7C 800DC57C 954A1398 */       lhu $t2, %lo(gMapCollUpdateFrame)($t2)
+  /* 057D78 800DC578 3C0A8013 */       lui $t2, %hi(gMPCollUpdateFrame)
+  /* 057D7C 800DC57C 954A1398 */       lhu $t2, %lo(gMPCollUpdateFrame)($t2)
   /* 057D80 800DC580 E7A80054 */      swc1 $f8, 0x54($sp)
   /* 057D84 800DC584 C44A0004 */      lwc1 $f10, 4($v0)
   /* 057D88 800DC588 C5300000 */      lwc1 $f16, ($t1)
@@ -6899,8 +6899,8 @@ glabel mpObjectProc_CheckTestRWallCollisionAdjNew
   /* 057EE0 800DC6E0 8FA90070 */        lw $t1, 0x70($sp)
   /* 057EE4 800DC6E4 C4440000 */      lwc1 $f4, ($v0)
   /* 057EE8 800DC6E8 C706000C */      lwc1 $f6, 0xc($t8)
-  /* 057EEC 800DC6EC 3C198013 */       lui $t9, %hi(gMapCollUpdateFrame)
-  /* 057EF0 800DC6F0 97391398 */       lhu $t9, %lo(gMapCollUpdateFrame)($t9)
+  /* 057EEC 800DC6EC 3C198013 */       lui $t9, %hi(gMPCollUpdateFrame)
+  /* 057EF0 800DC6F0 97391398 */       lhu $t9, %lo(gMPCollUpdateFrame)($t9)
   /* 057EF4 800DC6F4 46062201 */     sub.s $f8, $f4, $f6
   /* 057EF8 800DC6F8 27A40054 */     addiu $a0, $sp, 0x54
   /* 057EFC 800DC6FC 27A50048 */     addiu $a1, $sp, 0x48
@@ -6954,8 +6954,8 @@ glabel mpObjectProc_CheckTestRWallCollisionAdjNew
   /* 057FB4 800DC7B4 E7A40054 */      swc1 $f4, 0x54($sp)
   /* 057FB8 800DC7B8 C5460004 */      lwc1 $f6, 4($t2)
   /* 057FBC 800DC7BC C5880000 */      lwc1 $f8, ($t4)
-  /* 057FC0 800DC7C0 3C0D8013 */       lui $t5, %hi(gMapCollUpdateFrame)
-  /* 057FC4 800DC7C4 95AD1398 */       lhu $t5, %lo(gMapCollUpdateFrame)($t5)
+  /* 057FC0 800DC7C0 3C0D8013 */       lui $t5, %hi(gMPCollUpdateFrame)
+  /* 057FC4 800DC7C4 95AD1398 */       lhu $t5, %lo(gMPCollUpdateFrame)($t5)
   /* 057FC8 800DC7C8 46083280 */     add.s $f10, $f6, $f8
   /* 057FCC 800DC7CC 27A40054 */     addiu $a0, $sp, 0x54
   /* 057FD0 800DC7D0 27A50048 */     addiu $a1, $sp, 0x48
@@ -7028,8 +7028,8 @@ glabel mpObjectProc_CheckTestRWallCollisionAdjNew
   /* 0580C4 800DC8C4 8FAE0070 */        lw $t6, 0x70($sp)
   /* 0580C8 800DC8C8 C5840000 */      lwc1 $f4, ($t4)
   /* 0580CC 800DC8CC C5E6000C */      lwc1 $f6, 0xc($t7)
-  /* 0580D0 800DC8D0 3C0D8013 */       lui $t5, %hi(gMapCollUpdateFrame)
-  /* 0580D4 800DC8D4 95AD1398 */       lhu $t5, %lo(gMapCollUpdateFrame)($t5)
+  /* 0580D0 800DC8D0 3C0D8013 */       lui $t5, %hi(gMPCollUpdateFrame)
+  /* 0580D4 800DC8D4 95AD1398 */       lhu $t5, %lo(gMPCollUpdateFrame)($t5)
   /* 0580D8 800DC8D8 46062201 */     sub.s $f8, $f4, $f6
   /* 0580DC 800DC8DC 27A40054 */     addiu $a0, $sp, 0x54
   /* 0580E0 800DC8E0 27A50048 */     addiu $a1, $sp, 0x48
@@ -7088,8 +7088,8 @@ glabel mpObjectProc_CheckTestRWallCollisionAdjNew
   /* 0581AC 800DC9AC E7A40054 */      swc1 $f4, 0x54($sp)
   /* 0581B0 800DC9B0 C5860004 */      lwc1 $f6, 4($t4)
   /* 0581B4 800DC9B4 C5E80008 */      lwc1 $f8, 8($t7)
-  /* 0581B8 800DC9B8 3C0E8013 */       lui $t6, %hi(gMapCollUpdateFrame)
-  /* 0581BC 800DC9BC 95CE1398 */       lhu $t6, %lo(gMapCollUpdateFrame)($t6)
+  /* 0581B8 800DC9B8 3C0E8013 */       lui $t6, %hi(gMPCollUpdateFrame)
+  /* 0581BC 800DC9BC 95CE1398 */       lhu $t6, %lo(gMPCollUpdateFrame)($t6)
   /* 0581C0 800DC9C0 46083280 */     add.s $f10, $f6, $f8
   /* 0581C4 800DC9C4 27A40054 */     addiu $a0, $sp, 0x54
   /* 0581C8 800DC9C8 27A50048 */     addiu $a1, $sp, 0x48
@@ -7187,16 +7187,16 @@ glabel mpObjectProc_RunRWallCollisionAdjNew
   /* 058314 800DCB14 AFA400A8 */        sw $a0, 0xa8($sp)
   /* 058318 800DCB18 0C03655F */       jal mpObjectProc_SetLastWallCollideLeft
   /* 05831C 800DCB1C 8C960000 */        lw $s6, ($a0)
-  /* 058320 800DCB20 3C0F8013 */       lui $t7, %hi(gMapMultiWallCollideCount)
-  /* 058324 800DCB24 8DEF0DE0 */        lw $t7, %lo(gMapMultiWallCollideCount)($t7)
+  /* 058320 800DCB20 3C0F8013 */       lui $t7, %hi(gMPMultiWallCollideCount)
+  /* 058324 800DCB24 8DEF0DE0 */        lw $t7, %lo(gMPMultiWallCollideCount)($t7)
   /* 058328 800DCB28 8FB000A8 */        lw $s0, 0xa8($sp)
   /* 05832C 800DCB2C AFA00078 */        sw $zero, 0x78($sp)
   /* 058330 800DCB30 19E000E8 */      blez $t7, .L800DCED4
   /* 058334 800DCB34 26100038 */     addiu $s0, $s0, 0x38
-  /* 058338 800DCB38 3C028013 */       lui $v0, %hi(gMapMultiWallCollideLineIDs)
-  /* 05833C 800DCB3C 24420DE8 */     addiu $v0, $v0, %lo(gMapMultiWallCollideLineIDs)
-  /* 058340 800DCB40 3C178013 */       lui $s7, %hi(gMapLastWallCollidePosition)
-  /* 058344 800DCB44 26F70DFC */     addiu $s7, $s7, %lo(gMapLastWallCollidePosition)
+  /* 058338 800DCB38 3C028013 */       lui $v0, %hi(gMPMultiWallCollideLineIDs)
+  /* 05833C 800DCB3C 24420DE8 */     addiu $v0, $v0, %lo(gMPMultiWallCollideLineIDs)
+  /* 058340 800DCB40 3C178013 */       lui $s7, %hi(gMPLastWallCollidePosition)
+  /* 058344 800DCB44 26F70DFC */     addiu $s7, $s7, %lo(gMPLastWallCollidePosition)
   /* 058348 800DCB48 AFA2005C */        sw $v0, 0x5c($sp)
   /* 05834C 800DCB4C 27BE006C */     addiu $fp, $sp, 0x6c
   /* 058350 800DCB50 27B5007C */     addiu $s5, $sp, 0x7c
@@ -7217,7 +7217,7 @@ glabel mpObjectProc_RunRWallCollisionAdjNew
   /* 058388 800DCB88 00000000 */       nop 
   /* 05838C 800DCB8C 45000013 */      bc1f .L800DCBDC
   /* 058390 800DCB90 00000000 */       nop 
-  /* 058394 800DCB94 C6F00000 */      lwc1 $f16, ($s7) # gMapLastWallCollidePosition + 0
+  /* 058394 800DCB94 C6F00000 */      lwc1 $f16, ($s7) # gMPLastWallCollidePosition + 0
   /* 058398 800DCB98 02402025 */        or $a0, $s2, $zero
   /* 05839C 800DCB9C 27A50094 */     addiu $a1, $sp, 0x94
   /* 0583A0 800DCBA0 4612803C */    c.lt.s $f16, $f18
@@ -7247,7 +7247,7 @@ glabel mpObjectProc_RunRWallCollisionAdjNew
   /* 0583FC 800DCBFC 00000000 */       nop 
   /* 058400 800DCC00 45020014 */     bc1fl .L800DCC54
   /* 058404 800DCC04 C6C60000 */      lwc1 $f6, ($s6)
-  /* 058408 800DCC08 C6F00000 */      lwc1 $f16, ($s7) # gMapLastWallCollidePosition + 0
+  /* 058408 800DCC08 C6F00000 */      lwc1 $f16, ($s7) # gMPLastWallCollidePosition + 0
   /* 05840C 800DCC0C 02402025 */        or $a0, $s2, $zero
   /* 058410 800DCC10 27A50094 */     addiu $a1, $sp, 0x94
   /* 058414 800DCC14 4612803C */    c.lt.s $f16, $f18
@@ -7282,7 +7282,7 @@ glabel mpObjectProc_RunRWallCollisionAdjNew
   /* 058484 800DCC84 1040000C */      beqz $v0, .L800DCCB8
   /* 058488 800DCC88 C7B20064 */      lwc1 $f18, 0x64($sp)
   /* 05848C 800DCC8C C6D00000 */      lwc1 $f16, ($s6)
-  /* 058490 800DCC90 C6E60000 */      lwc1 $f6, ($s7) # gMapLastWallCollidePosition + 0
+  /* 058490 800DCC90 C6E60000 */      lwc1 $f6, ($s7) # gMPLastWallCollidePosition + 0
   /* 058494 800DCC94 02402825 */        or $a1, $s2, $zero
   /* 058498 800DCC98 46128300 */     add.s $f12, $f16, $f18
   /* 05849C 800DCC9C 8FA6006C */        lw $a2, 0x6c($sp)
@@ -7311,7 +7311,7 @@ glabel mpObjectProc_RunRWallCollisionAdjNew
   /* 0584F0 800DCCF0 1040000C */      beqz $v0, .L800DCD24
   /* 0584F4 800DCCF4 C7A40064 */      lwc1 $f4, 0x64($sp)
   /* 0584F8 800DCCF8 C6C80000 */      lwc1 $f8, ($s6)
-  /* 0584FC 800DCCFC C6EA0000 */      lwc1 $f10, ($s7) # gMapLastWallCollidePosition + 0
+  /* 0584FC 800DCCFC C6EA0000 */      lwc1 $f10, ($s7) # gMPLastWallCollidePosition + 0
   /* 058500 800DCD00 02402825 */        or $a1, $s2, $zero
   /* 058504 800DCD04 46044300 */     add.s $f12, $f8, $f4
   /* 058508 800DCD08 8FA6006C */        lw $a2, 0x6c($sp)
@@ -7338,7 +7338,7 @@ glabel mpObjectProc_RunRWallCollisionAdjNew
   /* 058554 800DCD54 1040000C */      beqz $v0, .L800DCD88
   /* 058558 800DCD58 C7AA0064 */      lwc1 $f10, 0x64($sp)
   /* 05855C 800DCD5C C6C40000 */      lwc1 $f4, ($s6)
-  /* 058560 800DCD60 C6F00000 */      lwc1 $f16, ($s7) # gMapLastWallCollidePosition + 0
+  /* 058560 800DCD60 C6F00000 */      lwc1 $f16, ($s7) # gMPLastWallCollidePosition + 0
   /* 058564 800DCD64 02402825 */        or $a1, $s2, $zero
   /* 058568 800DCD68 460A2300 */     add.s $f12, $f4, $f10
   /* 05856C 800DCD6C 8FA6006C */        lw $a2, 0x6c($sp)
@@ -7404,7 +7404,7 @@ glabel mpObjectProc_RunRWallCollisionAdjNew
   /* 058650 800DCE50 46045400 */     add.s $f16, $f10, $f4
   /* 058654 800DCE54 E7B00064 */      swc1 $f16, 0x64($sp)
   .L800DCE58:
-  /* 058658 800DCE58 C6E60000 */      lwc1 $f6, ($s7) # gMapLastWallCollidePosition + 0
+  /* 058658 800DCE58 C6E60000 */      lwc1 $f6, ($s7) # gMPLastWallCollidePosition + 0
   /* 05865C 800DCE5C C7B20064 */      lwc1 $f18, 0x64($sp)
   /* 058660 800DCE60 02402025 */        or $a0, $s2, $zero
   /* 058664 800DCE64 02A02825 */        or $a1, $s5, $zero
@@ -7430,8 +7430,8 @@ glabel mpObjectProc_RunRWallCollisionAdjNew
   .L800DCEAC:
   /* 0586AC 800DCEAC 8FA20078 */        lw $v0, 0x78($sp)
   .L800DCEB0:
-  /* 0586B0 800DCEB0 3C088013 */       lui $t0, %hi(gMapMultiWallCollideCount)
-  /* 0586B4 800DCEB4 8D080DE0 */        lw $t0, %lo(gMapMultiWallCollideCount)($t0)
+  /* 0586B0 800DCEB0 3C088013 */       lui $t0, %hi(gMPMultiWallCollideCount)
+  /* 0586B4 800DCEB4 8D080DE0 */        lw $t0, %lo(gMPMultiWallCollideCount)($t0)
   /* 0586B8 800DCEB8 8FB8005C */        lw $t8, 0x5c($sp)
   /* 0586BC 800DCEBC 24420001 */     addiu $v0, $v0, 1
   /* 0586C0 800DCEC0 0048082A */       slt $at, $v0, $t0
@@ -7490,9 +7490,9 @@ glabel mpObjectProc_CheckTestCeilCollisionAdjNew
   /* 058784 800DCF84 C486000C */      lwc1 $f6, 0xc($a0)
   /* 058788 800DCF88 C4680000 */      lwc1 $f8, ($v1)
   /* 05878C 800DCF8C 00808025 */        or $s0, $a0, $zero
-  /* 058790 800DCF90 3C188013 */       lui $t8, %hi(gMapCollUpdateFrame)
+  /* 058790 800DCF90 3C188013 */       lui $t8, %hi(gMPCollUpdateFrame)
   /* 058794 800DCF94 46083280 */     add.s $f10, $f6, $f8
-  /* 058798 800DCF98 97181398 */       lhu $t8, %lo(gMapCollUpdateFrame)($t8)
+  /* 058798 800DCF98 97181398 */       lhu $t8, %lo(gMPCollUpdateFrame)($t8)
   /* 05879C 800DCF9C 26060068 */     addiu $a2, $s0, 0x68
   /* 0587A0 800DCFA0 2607008C */     addiu $a3, $s0, 0x8c
   /* 0587A4 800DCFA4 E7AA0050 */      swc1 $f10, 0x50($sp)
@@ -7726,9 +7726,9 @@ glabel mpObjectProc_CheckTestGroundCollisionAdjNew
   /* 058AF8 800DD2F8 C486000C */      lwc1 $f6, 0xc($a0)
   /* 058AFC 800DD2FC C4680008 */      lwc1 $f8, 8($v1)
   /* 058B00 800DD300 00808025 */        or $s0, $a0, $zero
-  /* 058B04 800DD304 3C188013 */       lui $t8, %hi(gMapCollUpdateFrame)
+  /* 058B04 800DD304 3C188013 */       lui $t8, %hi(gMPCollUpdateFrame)
   /* 058B08 800DD308 46083280 */     add.s $f10, $f6, $f8
-  /* 058B0C 800DD30C 97181398 */       lhu $t8, %lo(gMapCollUpdateFrame)($t8)
+  /* 058B0C 800DD30C 97181398 */       lhu $t8, %lo(gMPCollUpdateFrame)($t8)
   /* 058B10 800DD310 26060068 */     addiu $a2, $s0, 0x68
   /* 058B14 800DD314 26070074 */     addiu $a3, $s0, 0x74
   /* 058B18 800DD318 E7AA0050 */      swc1 $f10, 0x50($sp)
@@ -8863,14 +8863,14 @@ glabel ftMap_SetFighterLandingVars
   /* 059B88 800DE388 4503001F */     bc1tl .L800DE408
   /* 059B8C 800DE38C 8C4F0008 */        lw $t7, 8($v0)
   /* 059B90 800DE390 44813000 */      mtc1 $at, $f6 # 100.0 to cop1
-  /* 059B94 800DE394 3C038013 */       lui $v1, %hi(gMapEdgeBounds)
-  /* 059B98 800DE398 24631308 */     addiu $v1, $v1, %lo(gMapEdgeBounds)
+  /* 059B94 800DE394 3C038013 */       lui $v1, %hi(gMPEdgeBounds)
+  /* 059B98 800DE398 24631308 */     addiu $v1, $v1, %lo(gMPEdgeBounds)
   /* 059B9C 800DE39C 4602303E */    c.le.s $f6, $f2
   /* 059BA0 800DE3A0 3C0143E1 */       lui $at, (0x43E10000 >> 16) # 450.0
   /* 059BA4 800DE3A4 45020015 */     bc1fl .L800DE3FC
   /* 059BA8 800DE3A8 44802000 */      mtc1 $zero, $f4
   /* 059BAC 800DE3AC 44816000 */      mtc1 $at, $f12 # 450.0 to cop1
-  /* 059BB0 800DE3B0 C468002C */      lwc1 $f8, 0x2c($v1) # gMapEdgeBounds + 44
+  /* 059BB0 800DE3B0 C468002C */      lwc1 $f8, 0x2c($v1) # gMPEdgeBounds + 44
   /* 059BB4 800DE3B4 8C4E08E8 */        lw $t6, 0x8e8($v0)
   /* 059BB8 800DE3B8 460C4280 */     add.s $f10, $f8, $f12
   /* 059BBC 800DE3BC C5C0001C */      lwc1 $f0, 0x1c($t6)
@@ -8878,7 +8878,7 @@ glabel ftMap_SetFighterLandingVars
   /* 059BC4 800DE3C4 00000000 */       nop 
   /* 059BC8 800DE3C8 45030008 */     bc1tl .L800DE3EC
   /* 059BCC 800DE3CC 44051000 */      mfc1 $a1, $f2
-  /* 059BD0 800DE3D0 C4700028 */      lwc1 $f16, 0x28($v1) # gMapEdgeBounds + 40
+  /* 059BD0 800DE3D0 C4700028 */      lwc1 $f16, 0x28($v1) # gMPEdgeBounds + 40
   /* 059BD4 800DE3D4 460C8481 */     sub.s $f18, $f16, $f12
   /* 059BD8 800DE3D8 4600903C */    c.lt.s $f18, $f0
   /* 059BDC 800DE3DC 00000000 */       nop 
@@ -8981,12 +8981,12 @@ glabel mpObjectProc_RunFighterSpecialCollisions
   /* 059D28 800DE528 8FAD0040 */        lw $t5, 0x40($sp)
   .L800DE52C:
   /* 059D2C 800DE52C 02202025 */        or $a0, $s1, $zero
-  /* 059D30 800DE530 3C058013 */       lui $a1, %hi(gMapLinePassFunction)
+  /* 059D30 800DE530 3C058013 */       lui $a1, %hi(gMPLinePassFunction)
   /* 059D34 800DE534 31AE0004 */      andi $t6, $t5, 4
   /* 059D38 800DE538 11C00005 */      beqz $t6, .L800DE550
   /* 059D3C 800DE53C 8FA6003C */        lw $a2, 0x3c($sp)
   /* 059D40 800DE540 0C0374B2 */       jal mpObjectProc_CheckTestGroundCollisionAdjNew
-  /* 059D44 800DE544 8CA50E20 */        lw $a1, %lo(gMapLinePassFunction)($a1)
+  /* 059D44 800DE544 8CA50E20 */        lw $a1, %lo(gMPLinePassFunction)($a1)
   /* 059D48 800DE548 10000003 */         b .L800DE558
   /* 059D4C 800DE54C 00000000 */       nop 
   .L800DE550:
@@ -9145,8 +9145,8 @@ glabel mpObjectProc_ProcFighterPass
   /* 059F5C 800DE75C AFBF0014 */        sw $ra, 0x14($sp)
   /* 059F60 800DE760 AFA5001C */        sw $a1, 0x1c($sp)
   /* 059F64 800DE764 8C820084 */        lw $v0, 0x84($a0)
-  /* 059F68 800DE768 3C018013 */       lui $at, %hi(gMapLinePassFunction)
-  /* 059F6C 800DE76C AC250E20 */        sw $a1, %lo(gMapLinePassFunction)($at)
+  /* 059F68 800DE768 3C018013 */       lui $at, %hi(gMPLinePassFunction)
+  /* 059F6C 800DE76C AC250E20 */        sw $a1, %lo(gMPLinePassFunction)($at)
   /* 059F70 800DE770 00803025 */        or $a2, $a0, $zero
   /* 059F74 800DE774 3C05800E */       lui $a1, %hi(mpObjectProc_RunFighterSpecialCollisions)
   /* 059F78 800DE778 24A5E45C */     addiu $a1, $a1, %lo(mpObjectProc_RunFighterSpecialCollisions)
@@ -9163,8 +9163,8 @@ glabel mpObjectProc_ProcFighterPassCliff
   /* 059F9C 800DE79C AFBF0014 */        sw $ra, 0x14($sp)
   /* 059FA0 800DE7A0 AFA5001C */        sw $a1, 0x1c($sp)
   /* 059FA4 800DE7A4 8C820084 */        lw $v0, 0x84($a0)
-  /* 059FA8 800DE7A8 3C018013 */       lui $at, %hi(gMapLinePassFunction)
-  /* 059FAC 800DE7AC AC250E20 */        sw $a1, %lo(gMapLinePassFunction)($at)
+  /* 059FA8 800DE7A8 3C018013 */       lui $at, %hi(gMPLinePassFunction)
+  /* 059FAC 800DE7AC AC250E20 */        sw $a1, %lo(gMPLinePassFunction)($at)
   /* 059FB0 800DE7B0 00803025 */        or $a2, $a0, $zero
   /* 059FB4 800DE7B4 3C05800E */       lui $a1, %hi(mpObjectProc_RunFighterSpecialCollisions)
   /* 059FB8 800DE7B8 24A5E45C */     addiu $a1, $a1, %lo(mpObjectProc_RunFighterSpecialCollisions)
@@ -9766,8 +9766,8 @@ glabel mpObjectProc_CopyCollDataStats
 glabel mpObjectProc_ResetCollDataStats
   /* 05A7F8 800DEFF8 248E0038 */     addiu $t6, $a0, 0x38
   /* 05A7FC 800DEFFC AC8E0048 */        sw $t6, 0x48($a0)
-  /* 05A800 800DF000 3C0F8013 */       lui $t7, %hi(gMapCollUpdateFrame)
-  /* 05A804 800DF004 95EF1398 */       lhu $t7, %lo(gMapCollUpdateFrame)($t7)
+  /* 05A800 800DF000 3C0F8013 */       lui $t7, %hi(gMPCollUpdateFrame)
+  /* 05A804 800DF004 95EF1398 */       lhu $t7, %lo(gMPCollUpdateFrame)($t7)
   /* 05A808 800DF008 A4800056 */        sh $zero, 0x56($a0)
   /* 05A80C 800DF00C 03E00008 */        jr $ra
   /* 05A810 800DF010 A48F005C */        sh $t7, 0x5c($a0)
@@ -11023,7 +11023,7 @@ glabel func_ovl2_800E0000
   /* 05BA38 800E0238 8F090000 */        lw $t1, ($t8)
   /* 05BA3C 800E023C 00093180 */       sll $a2, $t1, 6
   /* 05BA40 800E0240 000634C2 */       srl $a2, $a2, 0x13
-  /* 05BA44 800E0244 0C03A01B */       jal ftMain_MakeRumble
+  /* 05BA44 800E0244 0C03A01B */       jal ftMainMakeRumble
   /* 05BA48 800E0248 31251FFF */      andi $a1, $t1, 0x1fff
   /* 05BA4C 800E024C 8E0E0004 */        lw $t6, 4($s0)
   .L800E0250:
@@ -11424,7 +11424,7 @@ glabel ftScript_UpdateDefaultEventsGFX
   /* 05BFCC 800E07CC 03E00008 */        jr $ra
   /* 05BFD0 800E07D0 27BD0040 */     addiu $sp, $sp, 0x40
 
-glabel ftMain_UpdateTransNJoint
+glabel ftMainUpdateTransNJoint
   /* 05BFD4 800E07D4 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 05BFD8 800E07D8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 05BFDC 800E07DC 8C820084 */        lw $v0, 0x84($a0)
@@ -11450,10 +11450,10 @@ glabel ftMain_UpdateTransNJoint
   /* 05C028 800E0828 03E00008 */        jr $ra
   /* 05C02C 800E082C 00000000 */       nop 
 
-glabel ftMain_UpdateAnimCheckInterrupt
+glabel ftMainUpdateAnimCheckInterrupt
   /* 05C030 800E0830 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 05C034 800E0834 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 05C038 800E0838 0C0381F5 */       jal ftMain_UpdateTransNJoint
+  /* 05C038 800E0838 0C0381F5 */       jal ftMainUpdateTransNJoint
   /* 05C03C 800E083C AFA40018 */        sw $a0, 0x18($sp)
   /* 05C040 800E0840 0C0380AA */       jal ftScript_UpdateAllEventsInterrupt
   /* 05C044 800E0844 8FA40018 */        lw $a0, 0x18($sp)
@@ -11462,10 +11462,10 @@ glabel ftMain_UpdateAnimCheckInterrupt
   /* 05C050 800E0850 03E00008 */        jr $ra
   /* 05C054 800E0854 00000000 */       nop 
 
-glabel ftMain_UpdateAnimAllEvents
+glabel ftMainUpdateAnimAllEvents
   /* 05C058 800E0858 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 05C05C 800E085C AFBF0014 */        sw $ra, 0x14($sp)
-  /* 05C060 800E0860 0C0381F5 */       jal ftMain_UpdateTransNJoint
+  /* 05C060 800E0860 0C0381F5 */       jal ftMainUpdateTransNJoint
   /* 05C064 800E0864 AFA40018 */        sw $a0, 0x18($sp)
   /* 05C068 800E0868 0C03811E */       jal ftScript_UpdateDefaultEvents
   /* 05C06C 800E086C 8FA40018 */        lw $a0, 0x18($sp)
@@ -11474,7 +11474,7 @@ glabel ftMain_UpdateAnimAllEvents
   /* 05C078 800E0878 03E00008 */        jr $ra
   /* 05C07C 800E087C 00000000 */       nop 
 
-glabel ftMain_UpdateColAnim
+glabel ftMainUpdateColAnim
   /* 05C080 800E0880 27BDFF50 */     addiu $sp, $sp, -0xb0
   /* 05C084 800E0884 AFBE0048 */        sw $fp, 0x48($sp)
   /* 05C088 800E0888 AFB70044 */        sw $s7, 0x44($sp)
@@ -12124,7 +12124,7 @@ glabel ftMain_UpdateColAnim
   /* 05C9C0 800E11C0 03E00008 */        jr $ra
   /* 05C9C4 800E11C4 27BD00B0 */     addiu $sp, $sp, 0xb0
 
-glabel ftMain_RunUpdateColAnim
+glabel ftMainRunUpdateColAnim
   /* 05C9C8 800E11C8 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 05C9CC 800E11CC AFBF0024 */        sw $ra, 0x24($sp)
   /* 05C9D0 800E11D0 AFB20020 */        sw $s2, 0x20($sp)
@@ -12140,7 +12140,7 @@ glabel ftMain_RunUpdateColAnim
   /* 05C9F8 800E11F8 00073D40 */       sll $a3, $a3, 0x15
   /* 05C9FC 800E11FC 00073FC2 */       srl $a3, $a3, 0x1f
   /* 05CA00 800E1200 000637C2 */       srl $a2, $a2, 0x1f
-  /* 05CA04 800E1204 0C038220 */       jal ftMain_UpdateColAnim
+  /* 05CA04 800E1204 0C038220 */       jal ftMainUpdateColAnim
   /* 05CA08 800E1208 02402025 */        or $a0, $s2, $zero
   /* 05CA0C 800E120C 5040000F */      beql $v0, $zero, .L800E124C
   /* 05CA10 800E1210 8FBF0024 */        lw $ra, 0x24($sp)
@@ -12154,7 +12154,7 @@ glabel ftMain_RunUpdateColAnim
   /* 05CA2C 800E122C 00073D40 */       sll $a3, $a3, 0x15
   /* 05CA30 800E1230 00073FC2 */       srl $a3, $a3, 0x1f
   /* 05CA34 800E1234 000637C2 */       srl $a2, $a2, 0x1f
-  /* 05CA38 800E1238 0C038220 */       jal ftMain_UpdateColAnim
+  /* 05CA38 800E1238 0C038220 */       jal ftMainUpdateColAnim
   /* 05CA3C 800E123C 02202825 */        or $a1, $s1, $zero
   /* 05CA40 800E1240 1440FFF4 */      bnez $v0, .L800E1214
   /* 05CA44 800E1244 00000000 */       nop 
@@ -12166,7 +12166,7 @@ glabel ftMain_RunUpdateColAnim
   /* 05CA58 800E1258 03E00008 */        jr $ra
   /* 05CA5C 800E125C 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel ftMain_ProcInterruptMain
+glabel ftMainProcInterruptMain
   /* 05CA60 800E1260 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 05CA64 800E1264 AFBF0014 */        sw $ra, 0x14($sp)
   /* 05CA68 800E1268 AFA40020 */        sw $a0, 0x20($sp)
@@ -12499,12 +12499,12 @@ glabel ftMain_ProcInterruptMain
   /* 05CEF4 800E16F4 15600005 */      bnez $t3, .L800E170C
   /* 05CEF8 800E16F8 A0CA0191 */        sb $t2, 0x191($a2)
   /* 05CEFC 800E16FC 8FA40020 */        lw $a0, 0x20($sp)
-  /* 05CF00 800E1700 0C03820C */       jal ftMain_UpdateAnimCheckInterrupt
+  /* 05CF00 800E1700 0C03820C */       jal ftMainUpdateAnimCheckInterrupt
   /* 05CF04 800E1704 AFA6001C */        sw $a2, 0x1c($sp)
   /* 05CF08 800E1708 8FA6001C */        lw $a2, 0x1c($sp)
   .L800E170C:
   /* 05CF0C 800E170C 8FA40020 */        lw $a0, 0x20($sp)
-  /* 05CF10 800E1710 0C038472 */       jal ftMain_RunUpdateColAnim
+  /* 05CF10 800E1710 0C038472 */       jal ftMainRunUpdateColAnim
   /* 05CF14 800E1714 AFA6001C */        sw $a2, 0x1c($sp)
   /* 05CF18 800E1718 8FA6001C */        lw $a2, 0x1c($sp)
   /* 05CF1C 800E171C 8FA90020 */        lw $t1, 0x20($sp)
@@ -12917,47 +12917,47 @@ glabel ftMain_ProcInterruptMain
   /* 05D4E8 800E1CE8 03E00008 */        jr $ra
   /* 05D4EC 800E1CEC 00000000 */       nop 
 
-glabel ftMain_ClearMapElementsAll
-  /* 05D4F0 800E1CF0 3C048013 */       lui $a0, %hi(gMapEnvironmentCount)
-  /* 05D4F4 800E1CF4 2484119C */     addiu $a0, $a0, %lo(gMapEnvironmentCount)
-  /* 05D4F8 800E1CF8 AC800000 */        sw $zero, ($a0) # gMapEnvironmentCount + 0
-  /* 05D4FC 800E1CFC 3C018013 */       lui $at, %hi(gMapObjectCount)
-  /* 05D500 800E1D00 3C038013 */       lui $v1, %hi(gMapObjects)
-  /* 05D504 800E1D04 3C028013 */       lui $v0, %hi(gMapEnvironments)
-  /* 05D508 800E1D08 AC201198 */        sw $zero, %lo(gMapObjectCount)($at)
-  /* 05D50C 800E1D0C 24421190 */     addiu $v0, $v0, %lo(gMapEnvironments)
-  /* 05D510 800E1D10 24631180 */     addiu $v1, $v1, %lo(gMapObjects)
+glabel ftMainClearMapElementsAll
+  /* 05D4F0 800E1CF0 3C048013 */       lui $a0, %hi(sFTMainMapEnvNum)
+  /* 05D4F4 800E1CF4 2484119C */     addiu $a0, $a0, %lo(sFTMainMapEnvNum)
+  /* 05D4F8 800E1CF8 AC800000 */        sw $zero, ($a0) # sFTMainMapEnvNum + 0
+  /* 05D4FC 800E1CFC 3C018013 */       lui $at, %hi(sFTMainMapObjectNum)
+  /* 05D500 800E1D00 3C038013 */       lui $v1, %hi(sFTMainMapObjects)
+  /* 05D504 800E1D04 3C028013 */       lui $v0, %hi(sFTMainMapEnvs)
+  /* 05D508 800E1D08 AC201198 */        sw $zero, %lo(sFTMainMapObjectNum)($at)
+  /* 05D50C 800E1D0C 24421190 */     addiu $v0, $v0, %lo(sFTMainMapEnvs)
+  /* 05D510 800E1D10 24631180 */     addiu $v1, $v1, %lo(sFTMainMapObjects)
   .L800E1D14:
   /* 05D514 800E1D14 24630008 */     addiu $v1, $v1, 8
   /* 05D518 800E1D18 0062082B */      sltu $at, $v1, $v0
   /* 05D51C 800E1D1C 1420FFFD */      bnez $at, .L800E1D14
-  /* 05D520 800E1D20 AC60FFF8 */        sw $zero, -8($v1) # gMapObjects + -8
-  /* 05D524 800E1D24 3C038013 */       lui $v1, %hi(gMapEnvironments)
-  /* 05D528 800E1D28 3C028013 */       lui $v0, %hi(gMapObjectCount)
-  /* 05D52C 800E1D2C 24421198 */     addiu $v0, $v0, %lo(gMapObjectCount)
-  /* 05D530 800E1D30 24631190 */     addiu $v1, $v1, %lo(gMapEnvironments)
+  /* 05D520 800E1D20 AC60FFF8 */        sw $zero, -8($v1) # sFTMainMapObjects + -8
+  /* 05D524 800E1D24 3C038013 */       lui $v1, %hi(sFTMainMapEnvs)
+  /* 05D528 800E1D28 3C028013 */       lui $v0, %hi(sFTMainMapObjectNum)
+  /* 05D52C 800E1D2C 24421198 */     addiu $v0, $v0, %lo(sFTMainMapObjectNum)
+  /* 05D530 800E1D30 24631190 */     addiu $v1, $v1, %lo(sFTMainMapEnvs)
   .L800E1D34:
   /* 05D534 800E1D34 24630008 */     addiu $v1, $v1, 8
   /* 05D538 800E1D38 1462FFFE */       bne $v1, $v0, .L800E1D34
-  /* 05D53C 800E1D3C AC60FFF8 */        sw $zero, -8($v1) # gMapEnvironments + -8
+  /* 05D53C 800E1D3C AC60FFF8 */        sw $zero, -8($v1) # sFTMainMapEnvs + -8
   /* 05D540 800E1D40 03E00008 */        jr $ra
   /* 05D544 800E1D44 00000000 */       nop 
 
-glabel ftMain_CheckSetMapObjectGObj
-  /* 05D548 800E1D48 3C038013 */       lui $v1, %hi(gMapObjects)
-  /* 05D54C 800E1D4C 3C028013 */       lui $v0, %hi(gMapEnvironments)
-  /* 05D550 800E1D50 24421190 */     addiu $v0, $v0, %lo(gMapEnvironments)
-  /* 05D554 800E1D54 24631180 */     addiu $v1, $v1, %lo(gMapObjects)
-  /* 05D558 800E1D58 8C6E0000 */        lw $t6, ($v1) # gMapObjects + 0
+glabel ftMainCheckSetMapObjectGObj
+  /* 05D548 800E1D48 3C038013 */       lui $v1, %hi(sFTMainMapObjects)
+  /* 05D54C 800E1D4C 3C028013 */       lui $v0, %hi(sFTMainMapEnvs)
+  /* 05D550 800E1D50 24421190 */     addiu $v0, $v0, %lo(sFTMainMapEnvs)
+  /* 05D554 800E1D54 24631180 */     addiu $v1, $v1, %lo(sFTMainMapObjects)
+  /* 05D558 800E1D58 8C6E0000 */        lw $t6, ($v1) # sFTMainMapObjects + 0
   .L800E1D5C:
   /* 05D55C 800E1D5C 15C00009 */      bnez $t6, .L800E1D84
-  /* 05D560 800E1D60 3C068013 */       lui $a2, %hi(gMapObjectCount)
-  /* 05D564 800E1D64 24C61198 */     addiu $a2, $a2, %lo(gMapObjectCount)
-  /* 05D568 800E1D68 8CCF0000 */        lw $t7, ($a2) # gMapObjectCount + 0
-  /* 05D56C 800E1D6C AC640000 */        sw $a0, ($v1) # gMapObjects + 0
-  /* 05D570 800E1D70 AC650004 */        sw $a1, 4($v1) # gMapObjects + 4
+  /* 05D560 800E1D60 3C068013 */       lui $a2, %hi(sFTMainMapObjectNum)
+  /* 05D564 800E1D64 24C61198 */     addiu $a2, $a2, %lo(sFTMainMapObjectNum)
+  /* 05D568 800E1D68 8CCF0000 */        lw $t7, ($a2) # sFTMainMapObjectNum + 0
+  /* 05D56C 800E1D6C AC640000 */        sw $a0, ($v1) # sFTMainMapObjects + 0
+  /* 05D570 800E1D70 AC650004 */        sw $a1, 4($v1) # sFTMainMapObjects + 4
   /* 05D574 800E1D74 25F80001 */     addiu $t8, $t7, 1
-  /* 05D578 800E1D78 ACD80000 */        sw $t8, ($a2) # gMapObjectCount + 0
+  /* 05D578 800E1D78 ACD80000 */        sw $t8, ($a2) # sFTMainMapObjectNum + 0
   /* 05D57C 800E1D7C 03E00008 */        jr $ra
   /* 05D580 800E1D80 24020001 */     addiu $v0, $zero, 1
 
@@ -12969,22 +12969,22 @@ glabel ftMain_CheckSetMapObjectGObj
   /* 05D594 800E1D94 03E00008 */        jr $ra
   /* 05D598 800E1D98 00000000 */       nop 
 
-glabel ftMain_ClearMapObjectGObj
-  /* 05D59C 800E1D9C 3C038013 */       lui $v1, %hi(gMapObjects)
-  /* 05D5A0 800E1DA0 3C028013 */       lui $v0, %hi(gMapEnvironments)
-  /* 05D5A4 800E1DA4 24421190 */     addiu $v0, $v0, %lo(gMapEnvironments)
-  /* 05D5A8 800E1DA8 24631180 */     addiu $v1, $v1, %lo(gMapObjects)
-  /* 05D5AC 800E1DAC 8C6E0000 */        lw $t6, ($v1) # gMapObjects + 0
+glabel ftMainClearMapObjectGObj
+  /* 05D59C 800E1D9C 3C038013 */       lui $v1, %hi(sFTMainMapObjects)
+  /* 05D5A0 800E1DA0 3C028013 */       lui $v0, %hi(sFTMainMapEnvs)
+  /* 05D5A4 800E1DA4 24421190 */     addiu $v0, $v0, %lo(sFTMainMapEnvs)
+  /* 05D5A8 800E1DA8 24631180 */     addiu $v1, $v1, %lo(sFTMainMapObjects)
+  /* 05D5AC 800E1DAC 8C6E0000 */        lw $t6, ($v1) # sFTMainMapObjects + 0
   .L800E1DB0:
   /* 05D5B0 800E1DB0 548E0009 */      bnel $a0, $t6, .L800E1DD8
   /* 05D5B4 800E1DB4 24630008 */     addiu $v1, $v1, 8
-  /* 05D5B8 800E1DB8 3C028013 */       lui $v0, %hi(gMapObjectCount)
-  /* 05D5BC 800E1DBC 24421198 */     addiu $v0, $v0, %lo(gMapObjectCount)
-  /* 05D5C0 800E1DC0 8C4F0000 */        lw $t7, ($v0) # gMapObjectCount + 0
-  /* 05D5C4 800E1DC4 AC600000 */        sw $zero, ($v1) # gMapObjects + 0
+  /* 05D5B8 800E1DB8 3C028013 */       lui $v0, %hi(sFTMainMapObjectNum)
+  /* 05D5BC 800E1DBC 24421198 */     addiu $v0, $v0, %lo(sFTMainMapObjectNum)
+  /* 05D5C0 800E1DC0 8C4F0000 */        lw $t7, ($v0) # sFTMainMapObjectNum + 0
+  /* 05D5C4 800E1DC4 AC600000 */        sw $zero, ($v1) # sFTMainMapObjects + 0
   /* 05D5C8 800E1DC8 25F8FFFF */     addiu $t8, $t7, -1
   /* 05D5CC 800E1DCC 03E00008 */        jr $ra
-  /* 05D5D0 800E1DD0 AC580000 */        sw $t8, ($v0) # gMapObjectCount + 0
+  /* 05D5D0 800E1DD0 AC580000 */        sw $t8, ($v0) # sFTMainMapObjectNum + 0
 
   /* 05D5D4 800E1DD4 24630008 */     addiu $v1, $v1, 8
   .L800E1DD8:
@@ -12993,21 +12993,21 @@ glabel ftMain_ClearMapObjectGObj
   /* 05D5E0 800E1DE0 03E00008 */        jr $ra
   /* 05D5E4 800E1DE4 00000000 */       nop 
 
-glabel ftMain_CheckSetMapEnvironmentGObj
-  /* 05D5E8 800E1DE8 3C038013 */       lui $v1, %hi(gMapEnvironments)
-  /* 05D5EC 800E1DEC 3C028013 */       lui $v0, %hi(gMapObjectCount)
-  /* 05D5F0 800E1DF0 24421198 */     addiu $v0, $v0, %lo(gMapObjectCount)
-  /* 05D5F4 800E1DF4 24631190 */     addiu $v1, $v1, %lo(gMapEnvironments)
-  /* 05D5F8 800E1DF8 8C6E0000 */        lw $t6, ($v1) # gMapEnvironments + 0
+glabel ftMainCheckSetMapEnvGObj
+  /* 05D5E8 800E1DE8 3C038013 */       lui $v1, %hi(sFTMainMapEnvs)
+  /* 05D5EC 800E1DEC 3C028013 */       lui $v0, %hi(sFTMainMapObjectNum)
+  /* 05D5F0 800E1DF0 24421198 */     addiu $v0, $v0, %lo(sFTMainMapObjectNum)
+  /* 05D5F4 800E1DF4 24631190 */     addiu $v1, $v1, %lo(sFTMainMapEnvs)
+  /* 05D5F8 800E1DF8 8C6E0000 */        lw $t6, ($v1) # sFTMainMapEnvs + 0
   .L800E1DFC:
   /* 05D5FC 800E1DFC 15C00009 */      bnez $t6, .L800E1E24
-  /* 05D600 800E1E00 3C068013 */       lui $a2, %hi(gMapEnvironmentCount)
-  /* 05D604 800E1E04 24C6119C */     addiu $a2, $a2, %lo(gMapEnvironmentCount)
-  /* 05D608 800E1E08 8CCF0000 */        lw $t7, ($a2) # gMapEnvironmentCount + 0
-  /* 05D60C 800E1E0C AC640000 */        sw $a0, ($v1) # gMapEnvironments + 0
-  /* 05D610 800E1E10 AC650004 */        sw $a1, 4($v1) # gMapEnvironments + 4
+  /* 05D600 800E1E00 3C068013 */       lui $a2, %hi(sFTMainMapEnvNum)
+  /* 05D604 800E1E04 24C6119C */     addiu $a2, $a2, %lo(sFTMainMapEnvNum)
+  /* 05D608 800E1E08 8CCF0000 */        lw $t7, ($a2) # sFTMainMapEnvNum + 0
+  /* 05D60C 800E1E0C AC640000 */        sw $a0, ($v1) # sFTMainMapEnvs + 0
+  /* 05D610 800E1E10 AC650004 */        sw $a1, 4($v1) # sFTMainMapEnvs + 4
   /* 05D614 800E1E14 25F80001 */     addiu $t8, $t7, 1
-  /* 05D618 800E1E18 ACD80000 */        sw $t8, ($a2) # gMapEnvironmentCount + 0
+  /* 05D618 800E1E18 ACD80000 */        sw $t8, ($a2) # sFTMainMapEnvNum + 0
   /* 05D61C 800E1E1C 03E00008 */        jr $ra
   /* 05D620 800E1E20 24020001 */     addiu $v0, $zero, 1
 
@@ -13019,22 +13019,22 @@ glabel ftMain_CheckSetMapEnvironmentGObj
   /* 05D634 800E1E34 03E00008 */        jr $ra
   /* 05D638 800E1E38 00000000 */       nop 
 
-glabel ftMain_ClearMapEnvironmentGObj
-  /* 05D63C 800E1E3C 3C038013 */       lui $v1, %hi(gMapEnvironments)
-  /* 05D640 800E1E40 3C028013 */       lui $v0, %hi(gMapObjectCount)
-  /* 05D644 800E1E44 24421198 */     addiu $v0, $v0, %lo(gMapObjectCount)
-  /* 05D648 800E1E48 24631190 */     addiu $v1, $v1, %lo(gMapEnvironments)
-  /* 05D64C 800E1E4C 8C6E0000 */        lw $t6, ($v1) # gMapEnvironments + 0
+glabel ftMainClearMapEnvGObj
+  /* 05D63C 800E1E3C 3C038013 */       lui $v1, %hi(sFTMainMapEnvs)
+  /* 05D640 800E1E40 3C028013 */       lui $v0, %hi(sFTMainMapObjectNum)
+  /* 05D644 800E1E44 24421198 */     addiu $v0, $v0, %lo(sFTMainMapObjectNum)
+  /* 05D648 800E1E48 24631190 */     addiu $v1, $v1, %lo(sFTMainMapEnvs)
+  /* 05D64C 800E1E4C 8C6E0000 */        lw $t6, ($v1) # sFTMainMapEnvs + 0
   .L800E1E50:
   /* 05D650 800E1E50 548E0009 */      bnel $a0, $t6, .L800E1E78
   /* 05D654 800E1E54 24630008 */     addiu $v1, $v1, 8
-  /* 05D658 800E1E58 3C028013 */       lui $v0, %hi(gMapEnvironmentCount)
-  /* 05D65C 800E1E5C 2442119C */     addiu $v0, $v0, %lo(gMapEnvironmentCount)
-  /* 05D660 800E1E60 8C4F0000 */        lw $t7, ($v0) # gMapEnvironmentCount + 0
-  /* 05D664 800E1E64 AC600000 */        sw $zero, ($v1) # gMapEnvironments + 0
+  /* 05D658 800E1E58 3C028013 */       lui $v0, %hi(sFTMainMapEnvNum)
+  /* 05D65C 800E1E5C 2442119C */     addiu $v0, $v0, %lo(sFTMainMapEnvNum)
+  /* 05D660 800E1E60 8C4F0000 */        lw $t7, ($v0) # sFTMainMapEnvNum + 0
+  /* 05D664 800E1E64 AC600000 */        sw $zero, ($v1) # sFTMainMapEnvs + 0
   /* 05D668 800E1E68 25F8FFFF */     addiu $t8, $t7, -1
   /* 05D66C 800E1E6C 03E00008 */        jr $ra
-  /* 05D670 800E1E70 AC580000 */        sw $t8, ($v0) # gMapEnvironmentCount + 0
+  /* 05D670 800E1E70 AC580000 */        sw $t8, ($v0) # sFTMainMapEnvNum + 0
 
   /* 05D674 800E1E74 24630008 */     addiu $v1, $v1, 8
   .L800E1E78:
@@ -13043,7 +13043,7 @@ glabel ftMain_ClearMapEnvironmentGObj
   /* 05D680 800E1E80 03E00008 */        jr $ra
   /* 05D684 800E1E84 00000000 */       nop 
 
-glabel ftMain_SetHitMapObject
+glabel ftMainSetHitMapObject
   /* 05D688 800E1E88 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 05D68C 800E1E8C AFA60020 */        sw $a2, 0x20($sp)
   /* 05D690 800E1E90 24010002 */     addiu $at, $zero, 2
@@ -13072,7 +13072,7 @@ glabel ftMain_SetHitMapObject
   /* 05D6E0 800E1EE0 03E00008 */        jr $ra
   /* 05D6E4 800E1EE4 00000000 */       nop 
 
-glabel ftMain_SearchHitMapObject
+glabel ftMainSearchHitMapObject
   /* 05D6E8 800E1EE8 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 05D6EC 800E1EEC AFBF002C */        sw $ra, 0x2c($sp)
   /* 05D6F0 800E1EF0 AFB50028 */        sw $s5, 0x28($sp)
@@ -13082,18 +13082,18 @@ glabel ftMain_SearchHitMapObject
   /* 05D700 800E1F00 AFB10018 */        sw $s1, 0x18($sp)
   /* 05D704 800E1F04 AFB00014 */        sw $s0, 0x14($sp)
   /* 05D708 800E1F08 8C930084 */        lw $s3, 0x84($a0)
-  /* 05D70C 800E1F0C 3C118013 */       lui $s1, %hi(gMapObjects)
-  /* 05D710 800E1F10 3C148013 */       lui $s4, %hi(gMapObjectCount)
+  /* 05D70C 800E1F0C 3C118013 */       lui $s1, %hi(sFTMainMapObjects)
+  /* 05D710 800E1F10 3C148013 */       lui $s4, %hi(sFTMainMapObjectNum)
   /* 05D714 800E1F14 8E6E0190 */        lw $t6, 0x190($s3)
   /* 05D718 800E1F18 00809025 */        or $s2, $a0, $zero
-  /* 05D71C 800E1F1C 26311180 */     addiu $s1, $s1, %lo(gMapObjects)
+  /* 05D71C 800E1F1C 26311180 */     addiu $s1, $s1, %lo(sFTMainMapObjects)
   /* 05D720 800E1F20 000EC240 */       sll $t8, $t6, 9
   /* 05D724 800E1F24 07000025 */      bltz $t8, .L800E1FBC
-  /* 05D728 800E1F28 26941198 */     addiu $s4, $s4, %lo(gMapObjectCount)
+  /* 05D728 800E1F28 26941198 */     addiu $s4, $s4, %lo(sFTMainMapObjectNum)
   /* 05D72C 800E1F2C 8E790040 */        lw $t9, 0x40($s3)
   /* 05D730 800E1F30 27B50038 */     addiu $s5, $sp, 0x38
   /* 05D734 800E1F34 5720000A */      bnel $t9, $zero, .L800E1F60
-  /* 05D738 800E1F38 8E8A0000 */        lw $t2, ($s4) # gMapObjectCount + 0
+  /* 05D738 800E1F38 8E8A0000 */        lw $t2, ($s4) # sFTMainMapObjectNum + 0
   /* 05D73C 800E1F3C 8E620168 */        lw $v0, 0x168($s3)
   /* 05D740 800E1F40 10400002 */      beqz $v0, .L800E1F4C
   /* 05D744 800E1F44 2448FFFF */     addiu $t0, $v0, -1
@@ -13104,34 +13104,34 @@ glabel ftMain_SearchHitMapObject
   /* 05D754 800E1F54 2449FFFF */     addiu $t1, $v0, -1
   /* 05D758 800E1F58 AE69016C */        sw $t1, 0x16c($s3)
   .L800E1F5C:
-  /* 05D75C 800E1F5C 8E8A0000 */        lw $t2, ($s4) # gMapObjectCount + 0
+  /* 05D75C 800E1F5C 8E8A0000 */        lw $t2, ($s4) # sFTMainMapObjectNum + 0
   .L800E1F60:
   /* 05D760 800E1F60 00008025 */        or $s0, $zero, $zero
   /* 05D764 800E1F64 59400016 */     blezl $t2, .L800E1FC0
   /* 05D768 800E1F68 8FBF002C */        lw $ra, 0x2c($sp)
-  /* 05D76C 800E1F6C 8E240000 */        lw $a0, ($s1) # gMapObjects + 0
+  /* 05D76C 800E1F6C 8E240000 */        lw $a0, ($s1) # sFTMainMapObjects + 0
   .L800E1F70:
   /* 05D770 800E1F70 5080000D */      beql $a0, $zero, .L800E1FA8
-  /* 05D774 800E1F74 8E8B0000 */        lw $t3, ($s4) # gMapObjectCount + 0
-  /* 05D778 800E1F78 8E390004 */        lw $t9, 4($s1) # gMapObjects + 4
+  /* 05D774 800E1F74 8E8B0000 */        lw $t3, ($s4) # sFTMainMapObjectNum + 0
+  /* 05D778 800E1F78 8E390004 */        lw $t9, 4($s1) # sFTMainMapObjects + 4
   /* 05D77C 800E1F7C 02402825 */        or $a1, $s2, $zero
   /* 05D780 800E1F80 02A03025 */        or $a2, $s5, $zero
   /* 05D784 800E1F84 0320F809 */      jalr $t9
   /* 05D788 800E1F88 00000000 */       nop 
   /* 05D78C 800E1F8C 10400005 */      beqz $v0, .L800E1FA4
   /* 05D790 800E1F90 02402825 */        or $a1, $s2, $zero
-  /* 05D794 800E1F94 8E240000 */        lw $a0, ($s1) # gMapObjects + 0
+  /* 05D794 800E1F94 8E240000 */        lw $a0, ($s1) # sFTMainMapObjects + 0
   /* 05D798 800E1F98 02603025 */        or $a2, $s3, $zero
-  /* 05D79C 800E1F9C 0C0387A2 */       jal ftMain_SetHitMapObject
+  /* 05D79C 800E1F9C 0C0387A2 */       jal ftMainSetHitMapObject
   /* 05D7A0 800E1FA0 8FA70038 */        lw $a3, 0x38($sp)
   .L800E1FA4:
-  /* 05D7A4 800E1FA4 8E8B0000 */        lw $t3, ($s4) # gMapObjectCount + 0
+  /* 05D7A4 800E1FA4 8E8B0000 */        lw $t3, ($s4) # sFTMainMapObjectNum + 0
   .L800E1FA8:
   /* 05D7A8 800E1FA8 26100001 */     addiu $s0, $s0, 1
   /* 05D7AC 800E1FAC 26310008 */     addiu $s1, $s1, 8
   /* 05D7B0 800E1FB0 020B082A */       slt $at, $s0, $t3
   /* 05D7B4 800E1FB4 5420FFEE */      bnel $at, $zero, .L800E1F70
-  /* 05D7B8 800E1FB8 8E240000 */        lw $a0, ($s1) # gMapObjects + 0
+  /* 05D7B8 800E1FB8 8E240000 */        lw $a0, ($s1) # sFTMainMapObjects + 0
   .L800E1FBC:
   /* 05D7BC 800E1FBC 8FBF002C */        lw $ra, 0x2c($sp)
   .L800E1FC0:
@@ -13144,7 +13144,7 @@ glabel ftMain_SearchHitMapObject
   /* 05D7D8 800E1FD8 03E00008 */        jr $ra
   /* 05D7DC 800E1FDC 27BD0048 */     addiu $sp, $sp, 0x48
 
-glabel ftMain_UpdateVelDamageGround
+glabel ftMainUpdateVelDamageGround
   /* 05D7E0 800E1FE0 44801000 */      mtc1 $zero, $f2
   /* 05D7E4 800E1FE4 C480006C */      lwc1 $f0, 0x6c($a0)
   /* 05D7E8 800E1FE8 44856000 */      mtc1 $a1, $f12
@@ -13175,7 +13175,7 @@ glabel ftMain_UpdateVelDamageGround
   /* 05D840 800E2040 03E00008 */        jr $ra
   /* 05D844 800E2044 00000000 */       nop 
 
-glabel ftMain_ProcPhysicsMap
+glabel ftMainProcPhysicsMap
   /* 05D848 800E2048 27BDFF90 */     addiu $sp, $sp, -0x70
   /* 05D84C 800E204C AFBF0024 */        sw $ra, 0x24($sp)
   /* 05D850 800E2050 AFB10020 */        sw $s1, 0x20($sp)
@@ -13284,9 +13284,9 @@ glabel ftMain_ProcPhysicsMap
   /* 05D9D0 800E21D0 8E2809C8 */        lw $t0, 0x9c8($s1)
   /* 05D9D4 800E21D4 01E1C024 */       and $t8, $t7, $at
   /* 05D9D8 800E21D8 0018C880 */       sll $t9, $t8, 2
-  /* 05D9DC 800E21DC 3C018013 */       lui $at, %hi(dFTMapSurfaceFrictions)
+  /* 05D9DC 800E21DC 3C018013 */       lui $at, %hi(dFTMainMapSurfaceFrictions)
   /* 05D9E0 800E21E0 00390821 */      addu $at, $at, $t9
-  /* 05D9E4 800E21E4 C424C4E0 */      lwc1 $f4, %lo(dFTMapSurfaceFrictions)($at)
+  /* 05D9E4 800E21E4 C424C4E0 */      lwc1 $f4, %lo(dFTMainMapSurfaceFrictions)($at)
   /* 05D9E8 800E21E8 C5080024 */      lwc1 $f8, 0x24($t0)
   /* 05D9EC 800E21EC 3C013E80 */       lui $at, (0x3E800000 >> 16) # 0.25
   /* 05D9F0 800E21F0 44818000 */      mtc1 $at, $f16 # 0.25 to cop1
@@ -13294,7 +13294,7 @@ glabel ftMain_ProcPhysicsMap
   /* 05D9F8 800E21F8 02202025 */        or $a0, $s1, $zero
   /* 05D9FC 800E21FC 46103282 */     mul.s $f10, $f6, $f16
   /* 05DA00 800E2200 44055000 */      mfc1 $a1, $f10
-  /* 05DA04 800E2204 0C0387F8 */       jal ftMain_UpdateVelDamageGround
+  /* 05DA04 800E2204 0C0387F8 */       jal ftMainUpdateVelDamageGround
   /* 05DA08 800E2208 00000000 */       nop 
   /* 05DA0C 800E220C 262200F8 */     addiu $v0, $s1, 0xf8
   /* 05DA10 800E2210 C4520004 */      lwc1 $f18, 4($v0)
@@ -13388,8 +13388,8 @@ glabel ftMain_ProcPhysicsMap
   /* 05DB54 800E2354 44808000 */      mtc1 $zero, $f16
   .L800E2358:
   /* 05DB58 800E2358 C62A082C */      lwc1 $f10, 0x82c($s1)
-  /* 05DB5C 800E235C 3C028013 */       lui $v0, %hi(gMapEdgeBounds)
-  /* 05DB60 800E2360 24421308 */     addiu $v0, $v0, %lo(gMapEdgeBounds)
+  /* 05DB5C 800E235C 3C028013 */       lui $v0, %hi(gMPEdgeBounds)
+  /* 05DB60 800E2360 24421308 */     addiu $v0, $v0, %lo(gMPEdgeBounds)
   /* 05DB64 800E2364 460A8032 */    c.eq.s $f16, $f10
   /* 05DB68 800E2368 3C0143E1 */       lui $at, (0x43E10000 >> 16) # 450.0
   /* 05DB6C 800E236C 45030012 */     bc1tl .L800E23B8
@@ -13572,7 +13572,7 @@ glabel ftMain_ProcPhysicsMap
   /* 05DDFC 800E25FC 03E00008 */        jr $ra
   /* 05DE00 800E2600 27BD0070 */     addiu $sp, $sp, 0x70
 
-glabel ftMain_ProcPhysicsMapNormal
+glabel ftMainProcPhysicsMapNormal
   /* 05DE04 800E2604 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 05DE08 800E2608 AFBF0014 */        sw $ra, 0x14($sp)
   /* 05DE0C 800E260C 8C820084 */        lw $v0, 0x84($a0)
@@ -13592,7 +13592,7 @@ glabel ftMain_ProcPhysicsMapNormal
   /* 05DE40 800E2640 05620004 */     bltzl $t3, .L800E2654
   /* 05DE44 800E2644 8FBF0014 */        lw $ra, 0x14($sp)
   .L800E2648:
-  /* 05DE48 800E2648 0C038812 */       jal ftMain_ProcPhysicsMap
+  /* 05DE48 800E2648 0C038812 */       jal ftMainProcPhysicsMap
   /* 05DE4C 800E264C 00000000 */       nop 
   /* 05DE50 800E2650 8FBF0014 */        lw $ra, 0x14($sp)
   .L800E2654:
@@ -13600,7 +13600,7 @@ glabel ftMain_ProcPhysicsMapNormal
   /* 05DE58 800E2658 03E00008 */        jr $ra
   /* 05DE5C 800E265C 00000000 */       nop 
 
-glabel ftMain_ProcPhysicsMapCapture
+glabel ftMainProcPhysicsMapCapture
   /* 05DE60 800E2660 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 05DE64 800E2664 AFBF0014 */        sw $ra, 0x14($sp)
   /* 05DE68 800E2668 8C820084 */        lw $v0, 0x84($a0)
@@ -13620,7 +13620,7 @@ glabel ftMain_ProcPhysicsMapCapture
   /* 05DE9C 800E269C 05630004 */     bgezl $t3, .L800E26B0
   /* 05DEA0 800E26A0 8FBF0014 */        lw $ra, 0x14($sp)
   .L800E26A4:
-  /* 05DEA4 800E26A4 0C038812 */       jal ftMain_ProcPhysicsMap
+  /* 05DEA4 800E26A4 0C038812 */       jal ftMainProcPhysicsMap
   /* 05DEA8 800E26A8 00000000 */       nop 
   /* 05DEAC 800E26AC 8FBF0014 */        lw $ra, 0x14($sp)
   .L800E26B0:
@@ -13628,7 +13628,7 @@ glabel ftMain_ProcPhysicsMapCapture
   /* 05DEB4 800E26B4 03E00008 */        jr $ra
   /* 05DEB8 800E26B8 00000000 */       nop 
 
-glabel ftMain_SetHitVictimInteractStats
+glabel ftMainSetHitVictimInteractStats
   /* 05DEBC 800E26BC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 05DEC0 800E26C0 AFB30014 */        sw $s3, 0x14($sp)
   /* 05DEC4 800E26C4 AFB20010 */        sw $s2, 0x10($sp)
@@ -13741,13 +13741,13 @@ glabel ftMain_SetHitVictimInteractStats
   .L800E2838:
   /* 05E038 800E2838 15600005 */      bnez $t3, .L800E2850
   /* 05E03C 800E283C 3C018013 */       lui $at, 0x8013
-  /* 05E040 800E2840 3C018013 */       lui $at, %hi(gFighterIsHitDetect)
+  /* 05E040 800E2840 3C018013 */       lui $at, %hi(gFTMainIsHitDetect)
   /* 05E044 800E2844 002C0821 */      addu $at, $at, $t4
   /* 05E048 800E2848 10000003 */         b .L800E2858
-  /* 05E04C 800E284C AC2011A0 */        sw $zero, %lo(gFighterIsHurtDetect)($at)
+  /* 05E04C 800E284C AC2011A0 */        sw $zero, %lo(gFTMainIsHurtDetect)($at)
   .L800E2850:
   /* 05E050 800E2850 002C0821 */      addu $at, $at, $t4
-  /* 05E054 800E2854 AC2011B0 */        sw $zero, %lo(gFighterIsHitDetect)($at)
+  /* 05E054 800E2854 AC2011B0 */        sw $zero, %lo(gFTMainIsHitDetect)($at)
   .L800E2858:
   /* 05E058 800E2858 24420001 */     addiu $v0, $v0, 1
   .L800E285C:
@@ -13760,7 +13760,7 @@ glabel ftMain_SetHitVictimInteractStats
   /* 05E074 800E2874 03E00008 */        jr $ra
   /* 05E078 800E2878 27BD0018 */     addiu $sp, $sp, 0x18
 
-glabel ftMain_SetHitCollisionRebound
+glabel ftMainSetHitCollisionRebound
   /* 05E07C 800E287C 8CC2000C */        lw $v0, 0xc($a2)
   /* 05E080 800E2880 8CAE07BC */        lw $t6, 0x7bc($a1)
   /* 05E084 800E2884 01C2082A */       slt $at, $t6, $v0
@@ -13801,7 +13801,7 @@ glabel ftMain_SetHitCollisionRebound
   /* 05E108 800E2908 03E00008 */        jr $ra
   /* 05E10C 800E290C 00000000 */       nop 
 
-glabel ftMain_UpdateAttackStatFighter
+glabel ftMainUpdateAttackStatFighter
   /* 05E110 800E2910 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 05E114 800E2914 AFB10020 */        sw $s1, 0x20($sp)
   /* 05E118 800E2918 00A08825 */        or $s1, $a1, $zero
@@ -13826,12 +13826,12 @@ glabel ftMain_UpdateAttackStatFighter
   /* 05E164 800E2964 24080001 */     addiu $t0, $zero, 1
   /* 05E168 800E2968 AFA80014 */        sw $t0, 0x14($sp)
   /* 05E16C 800E296C 24070003 */     addiu $a3, $zero, 3
-  /* 05E170 800E2970 0C0389AF */       jal ftMain_SetHitVictimInteractStats
+  /* 05E170 800E2970 0C0389AF */       jal ftMainSetHitVictimInteractStats
   /* 05E174 800E2974 AFB90010 */        sw $t9, 0x10($sp)
   /* 05E178 800E2978 8FA4004C */        lw $a0, 0x4c($sp)
   /* 05E17C 800E297C 8FA50040 */        lw $a1, 0x40($sp)
   /* 05E180 800E2980 02003025 */        or $a2, $s0, $zero
-  /* 05E184 800E2984 0C038A1F */       jal ftMain_SetHitCollisionRebound
+  /* 05E184 800E2984 0C038A1F */       jal ftMainSetHitCollisionRebound
   /* 05E188 800E2988 8FA70048 */        lw $a3, 0x48($sp)
   /* 05E18C 800E298C 27A4002C */     addiu $a0, $sp, 0x2c
   /* 05E190 800E2990 0C0402FC */       jal efParticle_SetOff_MakeEffect
@@ -13867,12 +13867,12 @@ glabel ftMain_UpdateAttackStatFighter
   /* 05E200 800E2A00 8E250004 */        lw $a1, 4($s1)
   /* 05E204 800E2A04 AFA00014 */        sw $zero, 0x14($sp)
   /* 05E208 800E2A08 24070003 */     addiu $a3, $zero, 3
-  /* 05E20C 800E2A0C 0C0389AF */       jal ftMain_SetHitVictimInteractStats
+  /* 05E20C 800E2A0C 0C0389AF */       jal ftMainSetHitVictimInteractStats
   /* 05E210 800E2A10 AFA90010 */        sw $t1, 0x10($sp)
   /* 05E214 800E2A14 8FA40048 */        lw $a0, 0x48($sp)
   /* 05E218 800E2A18 8FA50038 */        lw $a1, 0x38($sp)
   /* 05E21C 800E2A1C 02203025 */        or $a2, $s1, $zero
-  /* 05E220 800E2A20 0C038A1F */       jal ftMain_SetHitCollisionRebound
+  /* 05E220 800E2A20 0C038A1F */       jal ftMainSetHitCollisionRebound
   /* 05E224 800E2A24 8FA7004C */        lw $a3, 0x4c($sp)
   /* 05E228 800E2A28 27A4002C */     addiu $a0, $sp, 0x2c
   /* 05E22C 800E2A2C 0C0402FC */       jal efParticle_SetOff_MakeEffect
@@ -13903,7 +13903,7 @@ glabel ftMain_UpdateAttackStatFighter
   /* 05E288 800E2A88 03E00008 */        jr $ra
   /* 05E28C 800E2A8C 27BD0038 */     addiu $sp, $sp, 0x38
 
-glabel ftMain_UpdateShieldStatFighter
+glabel ftMainUpdateShieldStatFighter
   /* 05E290 800E2A90 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 05E294 800E2A94 AFB10020 */        sw $s1, 0x20($sp)
   /* 05E298 800E2A98 00A08825 */        or $s1, $a1, $zero
@@ -13916,7 +13916,7 @@ glabel ftMain_UpdateShieldStatFighter
   /* 05E2B4 800E2AB4 AFA40038 */        sw $a0, 0x38($sp)
   /* 05E2B8 800E2AB8 AFA00014 */        sw $zero, 0x14($sp)
   /* 05E2BC 800E2ABC AFA00010 */        sw $zero, 0x10($sp)
-  /* 05E2C0 800E2AC0 0C0389AF */       jal ftMain_SetHitVictimInteractStats
+  /* 05E2C0 800E2AC0 0C0389AF */       jal ftMainSetHitVictimInteractStats
   /* 05E2C4 800E2AC4 24070001 */     addiu $a3, $zero, 1
   /* 05E2C8 800E2AC8 8FA40038 */        lw $a0, 0x38($sp)
   /* 05E2CC 800E2ACC 8E22000C */        lw $v0, 0xc($s1)
@@ -13970,7 +13970,7 @@ glabel ftMain_UpdateShieldStatFighter
   /* 05E380 800E2B80 03E00008 */        jr $ra
   /* 05E384 800E2B84 27BD0038 */     addiu $sp, $sp, 0x38
 
-glabel ftMain_UpdateCatchStatFighter
+glabel ftMainUpdateCatchStatFighter
   /* 05E388 800E2B88 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 05E38C 800E2B8C AFBF001C */        sw $ra, 0x1c($sp)
   /* 05E390 800E2B90 AFA50024 */        sw $a1, 0x24($sp)
@@ -13982,7 +13982,7 @@ glabel ftMain_UpdateCatchStatFighter
   /* 05E3A8 800E2BA8 AFA40020 */        sw $a0, 0x20($sp)
   /* 05E3AC 800E2BAC AFA00010 */        sw $zero, 0x10($sp)
   /* 05E3B0 800E2BB0 00003825 */        or $a3, $zero, $zero
-  /* 05E3B4 800E2BB4 0C0389AF */       jal ftMain_SetHitVictimInteractStats
+  /* 05E3B4 800E2BB4 0C0389AF */       jal ftMainSetHitVictimInteractStats
   /* 05E3B8 800E2BB8 8FA60030 */        lw $a2, 0x30($sp)
   /* 05E3BC 800E2BBC 8FA20030 */        lw $v0, 0x30($sp)
   /* 05E3C0 800E2BC0 8FB9002C */        lw $t9, 0x2c($sp)
@@ -14036,7 +14036,7 @@ glabel func_ovl2_800E2C24
   /* 05E46C 800E2C6C A4E00A14 */        sh $zero, 0xa14($a3)
   /* 05E470 800E2C70 8FAF001C */        lw $t7, 0x1c($sp)
   /* 05E474 800E2C74 8CEC08E8 */        lw $t4, 0x8e8($a3)
-  /* 05E478 800E2C78 3C048013 */       lui $a0, %hi(dFighterHitCollisionFGM)
+  /* 05E478 800E2C78 3C048013 */       lui $a0, %hi(dFTMainHitCollisionFGMs)
   /* 05E47C 800E2C7C 8DE2003C */        lw $v0, 0x3c($t7)
   /* 05E480 800E2C80 8D85001C */        lw $a1, 0x1c($t4)
   /* 05E484 800E2C84 0002C0C0 */       sll $t8, $v0, 3
@@ -14049,13 +14049,13 @@ glabel func_ovl2_800E2C24
   /* 05E4A0 800E2CA0 010A5821 */      addu $t3, $t0, $t2
   /* 05E4A4 800E2CA4 008B2021 */      addu $a0, $a0, $t3
   /* 05E4A8 800E2CA8 0C032195 */       jal func_ovl0_800C8654
-  /* 05E4AC 800E2CAC 94848D00 */       lhu $a0, %lo(dFighterHitCollisionFGM)($a0)
+  /* 05E4AC 800E2CAC 94848D00 */       lhu $a0, %lo(dFTMainHitCollisionFGMs)($a0)
   /* 05E4B0 800E2CB0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 05E4B4 800E2CB4 27BD0018 */     addiu $sp, $sp, 0x18
   /* 05E4B8 800E2CB8 03E00008 */        jr $ra
   /* 05E4BC 800E2CBC 00000000 */       nop 
 
-glabel ftMain_CheckGetUpdateDamage
+glabel ftMainCheckGetUpdateDamage
   /* 05E4C0 800E2CC0 8C8E0190 */        lw $t6, 0x190($a0)
   /* 05E4C4 800E2CC4 00001025 */        or $v0, $zero, $zero
   /* 05E4C8 800E2CC8 000EC280 */       sll $t8, $t6, 0xa
@@ -14095,7 +14095,7 @@ glabel ftMain_CheckGetUpdateDamage
   /* 05E53C 800E2D3C 03E00008 */        jr $ra
   /* 05E540 800E2D40 00000000 */       nop 
 
-glabel ftMain_UpdateDamageStatFighter
+glabel ftMainUpdateDamageStatFighter
   /* 05E544 800E2D44 27BDFFA8 */     addiu $sp, $sp, -0x58
   /* 05E548 800E2D48 AFB20028 */        sw $s2, 0x28($sp)
   /* 05E54C 800E2D4C AFB00020 */        sw $s0, 0x20($sp)
@@ -14109,7 +14109,7 @@ glabel ftMain_UpdateDamageStatFighter
   /* 05E56C 800E2D6C AFA00014 */        sw $zero, 0x14($sp)
   /* 05E570 800E2D70 AFA00010 */        sw $zero, 0x10($sp)
   /* 05E574 800E2D74 8FA6006C */        lw $a2, 0x6c($sp)
-  /* 05E578 800E2D78 0C0389AF */       jal ftMain_SetHitVictimInteractStats
+  /* 05E578 800E2D78 0C0389AF */       jal ftMainSetHitVictimInteractStats
   /* 05E57C 800E2D7C 00003825 */        or $a3, $zero, $zero
   /* 05E580 800E2D80 02002025 */        or $a0, $s0, $zero
   /* 05E584 800E2D84 0C03A903 */       jal ftCommon_DamageAdjustCapture
@@ -14137,15 +14137,15 @@ glabel ftMain_UpdateDamageStatFighter
   /* 05E5D8 800E2DD8 02002025 */        or $a0, $s0, $zero
   /* 05E5DC 800E2DDC 54C9003A */      bnel $a2, $t1, .L800E2EC8
   /* 05E5E0 800E2DE0 27B0003C */     addiu $s0, $sp, 0x3c
-  /* 05E5E4 800E2DE4 0C038B30 */       jal ftMain_CheckGetUpdateDamage
+  /* 05E5E4 800E2DE4 0C038B30 */       jal ftMainCheckGetUpdateDamage
   /* 05E5E8 800E2DE8 27A50054 */     addiu $a1, $sp, 0x54
   /* 05E5EC 800E2DEC 1040002B */      beqz $v0, .L800E2E9C
   /* 05E5F0 800E2DF0 24060001 */     addiu $a2, $zero, 1
   /* 05E5F4 800E2DF4 8E2A0278 */        lw $t2, 0x278($s1)
-  /* 05E5F8 800E2DF8 3C078013 */       lui $a3, %hi(gFighterHitLogIndex)
-  /* 05E5FC 800E2DFC 24E711C0 */     addiu $a3, $a3, %lo(gFighterHitLogIndex)
+  /* 05E5F8 800E2DF8 3C078013 */       lui $a3, %hi(sFTMainHitLogID)
+  /* 05E5FC 800E2DFC 24E711C0 */     addiu $a3, $a3, %lo(sFTMainHitLogID)
   /* 05E600 800E2E00 11400004 */      beqz $t2, .L800E2E14
-  /* 05E604 800E2E04 3C0C8013 */       lui $t4, %hi(gFighterHitLogTable)
+  /* 05E604 800E2E04 3C0C8013 */       lui $t4, %hi(sFTMainHitLogTable)
   /* 05E608 800E2E08 92240281 */       lbu $a0, 0x281($s1)
   /* 05E60C 800E2E0C 10000003 */         b .L800E2E1C
   /* 05E610 800E2E10 8E230284 */        lw $v1, 0x284($s1)
@@ -14153,8 +14153,8 @@ glabel ftMain_UpdateDamageStatFighter
   /* 05E614 800E2E14 9224000D */       lbu $a0, 0xd($s1)
   /* 05E618 800E2E18 8E230018 */        lw $v1, 0x18($s1)
   .L800E2E1C:
-  /* 05E61C 800E2E1C 8CE50000 */        lw $a1, ($a3) # gFighterHitLogIndex + 0
-  /* 05E620 800E2E20 258C11C8 */     addiu $t4, $t4, %lo(gFighterHitLogTable)
+  /* 05E61C 800E2E1C 8CE50000 */        lw $a1, ($a3) # sFTMainHitLogID + 0
+  /* 05E620 800E2E20 258C11C8 */     addiu $t4, $t4, %lo(sFTMainHitLogTable)
   /* 05E624 800E2E24 28A1000A */      slti $at, $a1, 0xa
   /* 05E628 800E2E28 1020000F */      beqz $at, .L800E2E68
   /* 05E62C 800E2E2C 000558C0 */       sll $t3, $a1, 3
@@ -14169,9 +14169,9 @@ glabel ftMain_UpdateDamageStatFighter
   /* 05E650 800E2E50 A0440014 */        sb $a0, 0x14($v0)
   /* 05E654 800E2E54 AC430018 */        sw $v1, 0x18($v0)
   /* 05E658 800E2E58 AC4E0010 */        sw $t6, 0x10($v0)
-  /* 05E65C 800E2E5C 8CEF0000 */        lw $t7, ($a3) # gFighterHitLogIndex + 0
+  /* 05E65C 800E2E5C 8CEF0000 */        lw $t7, ($a3) # sFTMainHitLogID + 0
   /* 05E660 800E2E60 25F80001 */     addiu $t8, $t7, 1
-  /* 05E664 800E2E64 ACF80000 */        sw $t8, ($a3) # gFighterHitLogIndex + 0
+  /* 05E664 800E2E64 ACF80000 */        sw $t8, ($a3) # sFTMainHitLogID + 0
   .L800E2E68:
   /* 05E668 800E2E68 9205000D */       lbu $a1, 0xd($s0)
   /* 05E66C 800E2E6C AFA40050 */        sw $a0, 0x50($sp)
@@ -14216,7 +14216,7 @@ glabel ftMain_UpdateDamageStatFighter
   /* 05E6FC 800E2EFC 03E00008 */        jr $ra
   /* 05E700 800E2F00 27BD0058 */     addiu $sp, $sp, 0x58
 
-glabel ftMain_UpdateAttackStatWeapon
+glabel ftMainUpdateAttackStatWeapon
   /* 05E704 800E2F04 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 05E708 800E2F08 AFBF0024 */        sw $ra, 0x24($sp)
   /* 05E70C 800E2F0C AFB10020 */        sw $s1, 0x20($sp)
@@ -14243,12 +14243,12 @@ glabel ftMain_UpdateAttackStatWeapon
   /* 05E760 800E2F60 8E050004 */        lw $a1, 4($s0)
   /* 05E764 800E2F64 240F0001 */     addiu $t7, $zero, 1
   /* 05E768 800E2F68 AFAF0014 */        sw $t7, 0x14($sp)
-  /* 05E76C 800E2F6C 0C0389AF */       jal ftMain_SetHitVictimInteractStats
+  /* 05E76C 800E2F6C 0C0389AF */       jal ftMainSetHitVictimInteractStats
   /* 05E770 800E2F70 AFA00010 */        sw $zero, 0x10($sp)
   /* 05E774 800E2F74 8FA40058 */        lw $a0, 0x58($sp)
   /* 05E778 800E2F78 8FA5004C */        lw $a1, 0x4c($sp)
   /* 05E77C 800E2F7C 02003025 */        or $a2, $s0, $zero
-  /* 05E780 800E2F80 0C038A1F */       jal ftMain_SetHitCollisionRebound
+  /* 05E780 800E2F80 0C038A1F */       jal ftMainSetHitCollisionRebound
   /* 05E784 800E2F84 8FA70054 */        lw $a3, 0x54($sp)
   /* 05E788 800E2F88 27A40030 */     addiu $a0, $sp, 0x30
   /* 05E78C 800E2F8C 0C0402FC */       jal efParticle_SetOff_MakeEffect
@@ -14303,7 +14303,7 @@ glabel ftMain_UpdateAttackStatWeapon
   /* 05E840 800E3040 03E00008 */        jr $ra
   /* 05E844 800E3044 27BD0040 */     addiu $sp, $sp, 0x40
 
-glabel ftMain_UpdateShieldStatWeapon
+glabel ftMainUpdateShieldStatWeapon
   /* 05E848 800E3048 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 05E84C 800E304C AFBF0024 */        sw $ra, 0x24($sp)
   /* 05E850 800E3050 AFB10020 */        sw $s1, 0x20($sp)
@@ -14402,7 +14402,7 @@ glabel ftMain_UpdateShieldStatWeapon
   /* 05E9AC 800E31AC 03E00008 */        jr $ra
   /* 05E9B0 800E31B0 27BD0040 */     addiu $sp, $sp, 0x40
 
-glabel ftMain_UpdateReflectorStatWeapon
+glabel ftMainUpdateReflectorStatWeapon
   /* 05E9B4 800E31B4 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 05E9B8 800E31B8 AFBF0024 */        sw $ra, 0x24($sp)
   /* 05E9BC 800E31BC AFB00020 */        sw $s0, 0x20($sp)
@@ -14496,7 +14496,7 @@ glabel ftMain_UpdateReflectorStatWeapon
   /* 05EB00 800E3300 03E00008 */        jr $ra
   /* 05EB04 800E3304 00000000 */       nop 
 
-glabel ftMain_UpdateAbsorbStatWeapon
+glabel ftMainUpdateAbsorbStatWeapon
   /* 05EB08 800E3308 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 05EB0C 800E330C AFBF0024 */        sw $ra, 0x24($sp)
   /* 05EB10 800E3310 AFB00020 */        sw $s0, 0x20($sp)
@@ -14570,7 +14570,7 @@ glabel ftMain_UpdateAbsorbStatWeapon
   /* 05EC10 800E3410 03E00008 */        jr $ra
   /* 05EC14 800E3414 00000000 */       nop 
 
-glabel ftMain_UpdateDamageStatWeapon
+glabel ftMainUpdateDamageStatWeapon
   /* 05EC18 800E3418 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 05EC1C 800E341C AFBF002C */        sw $ra, 0x2c($sp)
   /* 05EC20 800E3420 AFB20028 */        sw $s2, 0x28($sp)
@@ -14632,14 +14632,14 @@ glabel ftMain_UpdateDamageStatWeapon
   /* 05ECEC 800E34EC 02402025 */        or $a0, $s2, $zero
   /* 05ECF0 800E34F0 1458002A */       bne $v0, $t8, .L800E359C
   /* 05ECF4 800E34F4 00000000 */       nop 
-  /* 05ECF8 800E34F8 0C038B30 */       jal ftMain_CheckGetUpdateDamage
+  /* 05ECF8 800E34F8 0C038B30 */       jal ftMainCheckGetUpdateDamage
   /* 05ECFC 800E34FC 27A50040 */     addiu $a1, $sp, 0x40
   /* 05ED00 800E3500 10400026 */      beqz $v0, .L800E359C
-  /* 05ED04 800E3504 3C048013 */       lui $a0, %hi(gFighterHitLogIndex)
-  /* 05ED08 800E3508 248411C0 */     addiu $a0, $a0, %lo(gFighterHitLogIndex)
-  /* 05ED0C 800E350C 8C830000 */        lw $v1, ($a0) # gFighterHitLogIndex + 0
-  /* 05ED10 800E3510 3C088013 */       lui $t0, %hi(gFighterHitLogTable)
-  /* 05ED14 800E3514 250811C8 */     addiu $t0, $t0, %lo(gFighterHitLogTable)
+  /* 05ED04 800E3504 3C048013 */       lui $a0, %hi(sFTMainHitLogID)
+  /* 05ED08 800E3508 248411C0 */     addiu $a0, $a0, %lo(sFTMainHitLogID)
+  /* 05ED0C 800E350C 8C830000 */        lw $v1, ($a0) # sFTMainHitLogID + 0
+  /* 05ED10 800E3510 3C088013 */       lui $t0, %hi(sFTMainHitLogTable)
+  /* 05ED14 800E3514 250811C8 */     addiu $t0, $t0, %lo(sFTMainHitLogTable)
   /* 05ED18 800E3518 2861000A */      slti $at, $v1, 0xa
   /* 05ED1C 800E351C 10200014 */      beqz $at, .L800E3570
   /* 05ED20 800E3520 0003C8C0 */       sll $t9, $v1, 3
@@ -14659,9 +14659,9 @@ glabel ftMain_UpdateDamageStatWeapon
   /* 05ED58 800E3558 A04D0014 */        sb $t5, 0x14($v0)
   /* 05ED5C 800E355C 8E0E0014 */        lw $t6, 0x14($s0)
   /* 05ED60 800E3560 AC4E0018 */        sw $t6, 0x18($v0)
-  /* 05ED64 800E3564 8C8F0000 */        lw $t7, ($a0) # gFighterHitLogIndex + 0
+  /* 05ED64 800E3564 8C8F0000 */        lw $t7, ($a0) # sFTMainHitLogID + 0
   /* 05ED68 800E3568 25F80001 */     addiu $t8, $t7, 1
-  /* 05ED6C 800E356C AC980000 */        sw $t8, ($a0) # gFighterHitLogIndex + 0
+  /* 05ED6C 800E356C AC980000 */        sw $t8, ($a0) # sFTMainHitLogID + 0
   .L800E3570:
   /* 05ED70 800E3570 92040011 */       lbu $a0, 0x11($s0)
   /* 05ED74 800E3574 9245000D */       lbu $a1, 0xd($s2)
@@ -14684,7 +14684,7 @@ glabel ftMain_UpdateDamageStatWeapon
   /* 05EDB4 800E35B4 03E00008 */        jr $ra
   /* 05EDB8 800E35B8 27BD0048 */     addiu $sp, $sp, 0x48
 
-glabel ftMain_UpdateAttackStatItem
+glabel ftMainUpdateAttackStatItem
   /* 05EDBC 800E35BC 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 05EDC0 800E35C0 AFBF0024 */        sw $ra, 0x24($sp)
   /* 05EDC4 800E35C4 AFB10020 */        sw $s1, 0x20($sp)
@@ -14711,12 +14711,12 @@ glabel ftMain_UpdateAttackStatItem
   /* 05EE18 800E3618 8E050004 */        lw $a1, 4($s0)
   /* 05EE1C 800E361C 240F0001 */     addiu $t7, $zero, 1
   /* 05EE20 800E3620 AFAF0014 */        sw $t7, 0x14($sp)
-  /* 05EE24 800E3624 0C0389AF */       jal ftMain_SetHitVictimInteractStats
+  /* 05EE24 800E3624 0C0389AF */       jal ftMainSetHitVictimInteractStats
   /* 05EE28 800E3628 AFA00010 */        sw $zero, 0x10($sp)
   /* 05EE2C 800E362C 8FA40058 */        lw $a0, 0x58($sp)
   /* 05EE30 800E3630 8FA5004C */        lw $a1, 0x4c($sp)
   /* 05EE34 800E3634 02003025 */        or $a2, $s0, $zero
-  /* 05EE38 800E3638 0C038A1F */       jal ftMain_SetHitCollisionRebound
+  /* 05EE38 800E3638 0C038A1F */       jal ftMainSetHitCollisionRebound
   /* 05EE3C 800E363C 8FA70054 */        lw $a3, 0x54($sp)
   /* 05EE40 800E3640 27A40030 */     addiu $a0, $sp, 0x30
   /* 05EE44 800E3644 0C0402FC */       jal efParticle_SetOff_MakeEffect
@@ -14769,7 +14769,7 @@ glabel ftMain_UpdateAttackStatItem
   /* 05EEF0 800E36F0 03E00008 */        jr $ra
   /* 05EEF4 800E36F4 27BD0040 */     addiu $sp, $sp, 0x40
 
-glabel ftMain_UpdateShieldStatItem
+glabel ftMainUpdateShieldStatItem
   /* 05EEF8 800E36F8 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 05EEFC 800E36FC AFBF0024 */        sw $ra, 0x24($sp)
   /* 05EF00 800E3700 AFB10020 */        sw $s1, 0x20($sp)
@@ -14867,7 +14867,7 @@ glabel ftMain_UpdateShieldStatItem
   /* 05F058 800E3858 03E00008 */        jr $ra
   /* 05F05C 800E385C 27BD0040 */     addiu $sp, $sp, 0x40
 
-glabel ftMain_UpdateReflectorStatItem
+glabel ftMainUpdateReflectorStatItem
   /* 05F060 800E3860 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 05F064 800E3864 AFBF001C */        sw $ra, 0x1c($sp)
   /* 05F068 800E3868 AFB10018 */        sw $s1, 0x18($sp)
@@ -14960,7 +14960,7 @@ glabel ftMain_UpdateReflectorStatItem
   /* 05F1A8 800E39A8 03E00008 */        jr $ra
   /* 05F1AC 800E39AC 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel ftMain_UpdateDamageStatItem
+glabel ftMainUpdateDamageStatItem
   /* 05F1B0 800E39B0 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 05F1B4 800E39B4 AFBF001C */        sw $ra, 0x1c($sp)
   /* 05F1B8 800E39B8 AFB00018 */        sw $s0, 0x18($sp)
@@ -15111,15 +15111,15 @@ glabel ftMain_UpdateDamageStatItem
   /* 05F3CC 800E3BCC 8D2A0000 */        lw $t2, ($t1)
   /* 05F3D0 800E3BD0 144A002F */       bne $v0, $t2, .L800E3C90
   /* 05F3D4 800E3BD4 00000000 */       nop 
-  /* 05F3D8 800E3BD8 0C038B30 */       jal ftMain_CheckGetUpdateDamage
+  /* 05F3D8 800E3BD8 0C038B30 */       jal ftMainCheckGetUpdateDamage
   /* 05F3DC 800E3BDC 27A50038 */     addiu $a1, $sp, 0x38
   /* 05F3E0 800E3BE0 1040002B */      beqz $v0, .L800E3C90
   /* 05F3E4 800E3BE4 8FA80044 */        lw $t0, 0x44($sp)
-  /* 05F3E8 800E3BE8 3C048013 */       lui $a0, %hi(gFighterHitLogIndex)
-  /* 05F3EC 800E3BEC 248411C0 */     addiu $a0, $a0, %lo(gFighterHitLogIndex)
-  /* 05F3F0 800E3BF0 8C830000 */        lw $v1, ($a0) # gFighterHitLogIndex + 0
-  /* 05F3F4 800E3BF4 3C0B8013 */       lui $t3, %hi(gFighterHitLogTable)
-  /* 05F3F8 800E3BF8 256B11C8 */     addiu $t3, $t3, %lo(gFighterHitLogTable)
+  /* 05F3E8 800E3BE8 3C048013 */       lui $a0, %hi(sFTMainHitLogID)
+  /* 05F3EC 800E3BEC 248411C0 */     addiu $a0, $a0, %lo(sFTMainHitLogID)
+  /* 05F3F0 800E3BF0 8C830000 */        lw $v1, ($a0) # sFTMainHitLogID + 0
+  /* 05F3F4 800E3BF4 3C0B8013 */       lui $t3, %hi(sFTMainHitLogTable)
+  /* 05F3F8 800E3BF8 256B11C8 */     addiu $t3, $t3, %lo(sFTMainHitLogTable)
   /* 05F3FC 800E3BFC 2861000A */      slti $at, $v1, 0xa
   /* 05F400 800E3C00 10200014 */      beqz $at, .L800E3C54
   /* 05F404 800E3C04 000360C0 */       sll $t4, $v1, 3
@@ -15139,9 +15139,9 @@ glabel ftMain_UpdateDamageStatItem
   /* 05F43C 800E3C3C A0590014 */        sb $t9, 0x14($v0)
   /* 05F440 800E3C40 8E090018 */        lw $t1, 0x18($s0)
   /* 05F444 800E3C44 AC490018 */        sw $t1, 0x18($v0)
-  /* 05F448 800E3C48 8C8A0000 */        lw $t2, ($a0) # gFighterHitLogIndex + 0
+  /* 05F448 800E3C48 8C8A0000 */        lw $t2, ($a0) # sFTMainHitLogID + 0
   /* 05F44C 800E3C4C 254C0001 */     addiu $t4, $t2, 1
-  /* 05F450 800E3C50 AC8C0000 */        sw $t4, ($a0) # gFighterHitLogIndex + 0
+  /* 05F450 800E3C50 AC8C0000 */        sw $t4, ($a0) # sFTMainHitLogID + 0
   .L800E3C54:
   /* 05F454 800E3C54 8FAB004C */        lw $t3, 0x4c($sp)
   /* 05F458 800E3C58 92040015 */       lbu $a0, 0x15($s0)
@@ -15169,7 +15169,7 @@ glabel ftMain_UpdateDamageStatItem
   /* 05F4A4 800E3CA4 03E00008 */        jr $ra
   /* 05F4A8 800E3CA8 00000000 */       nop 
 
-glabel ftMain_UpdateDamageStatGround
+glabel ftMainUpdateDamageStatGround
   /* 05F4AC 800E3CAC 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 05F4B0 800E3CB0 AFBF0014 */        sw $ra, 0x14($sp)
   /* 05F4B4 800E3CB4 AFA40028 */        sw $a0, 0x28($sp)
@@ -15181,15 +15181,15 @@ glabel ftMain_UpdateDamageStatGround
   /* 05F4CC 800E3CCC 00C02025 */        or $a0, $a2, $zero
   /* 05F4D0 800E3CD0 8FA40030 */        lw $a0, 0x30($sp)
   /* 05F4D4 800E3CD4 AFA20024 */        sw $v0, 0x24($sp)
-  /* 05F4D8 800E3CD8 0C038B30 */       jal ftMain_CheckGetUpdateDamage
+  /* 05F4D8 800E3CD8 0C038B30 */       jal ftMainCheckGetUpdateDamage
   /* 05F4DC 800E3CDC 27A50024 */     addiu $a1, $sp, 0x24
   /* 05F4E0 800E3CE0 10400015 */      beqz $v0, .L800E3D38
   /* 05F4E4 800E3CE4 8FA70030 */        lw $a3, 0x30($sp)
-  /* 05F4E8 800E3CE8 3C058013 */       lui $a1, %hi(gFighterHitLogIndex)
-  /* 05F4EC 800E3CEC 24A511C0 */     addiu $a1, $a1, %lo(gFighterHitLogIndex)
-  /* 05F4F0 800E3CF0 8CA40000 */        lw $a0, ($a1) # gFighterHitLogIndex + 0
-  /* 05F4F4 800E3CF4 3C188013 */       lui $t8, %hi(gFighterHitLogTable)
-  /* 05F4F8 800E3CF8 271811C8 */     addiu $t8, $t8, %lo(gFighterHitLogTable)
+  /* 05F4E8 800E3CE8 3C058013 */       lui $a1, %hi(sFTMainHitLogID)
+  /* 05F4EC 800E3CEC 24A511C0 */     addiu $a1, $a1, %lo(sFTMainHitLogID)
+  /* 05F4F0 800E3CF0 8CA40000 */        lw $a0, ($a1) # sFTMainHitLogID + 0
+  /* 05F4F4 800E3CF4 3C188013 */       lui $t8, %hi(sFTMainHitLogTable)
+  /* 05F4F8 800E3CF8 271811C8 */     addiu $t8, $t8, %lo(sFTMainHitLogTable)
   /* 05F4FC 800E3CFC 2881000A */      slti $at, $a0, 0xa
   /* 05F500 800E3D00 1020000D */      beqz $at, .L800E3D38
   /* 05F504 800E3D04 000478C0 */       sll $t7, $a0, 3
@@ -15202,9 +15202,9 @@ glabel ftMain_UpdateDamageStatGround
   /* 05F520 800E3D20 AC680004 */        sw $t0, 4($v1)
   /* 05F524 800E3D24 8FA90028 */        lw $t1, 0x28($sp)
   /* 05F528 800E3D28 AC69000C */        sw $t1, 0xc($v1)
-  /* 05F52C 800E3D2C 8CAA0000 */        lw $t2, ($a1) # gFighterHitLogIndex + 0
+  /* 05F52C 800E3D2C 8CAA0000 */        lw $t2, ($a1) # sFTMainHitLogID + 0
   /* 05F530 800E3D30 254B0001 */     addiu $t3, $t2, 1
-  /* 05F534 800E3D34 ACAB0000 */        sw $t3, ($a1) # gFighterHitLogIndex + 0
+  /* 05F534 800E3D34 ACAB0000 */        sw $t3, ($a1) # sFTMainHitLogID + 0
   .L800E3D38:
   /* 05F538 800E3D38 8FA30038 */        lw $v1, 0x38($sp)
   /* 05F53C 800E3D3C 2C61000A */     sltiu $at, $v1, 0xa
@@ -15251,7 +15251,7 @@ glabel ftMain_UpdateDamageStatGround
   /* 05F5C8 800E3DC8 03E00008 */        jr $ra
   /* 05F5CC 800E3DCC 00000000 */       nop 
 
-glabel ftMain_GetBumperDamageAngle
+glabel ftMainGetBumperDamageAngle
   /* 05F5D0 800E3DD0 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 05F5D4 800E3DD4 AFBF0014 */        sw $ra, 0x14($sp)
   /* 05F5D8 800E3DD8 8C820084 */        lw $v0, 0x84($a0)
@@ -15317,7 +15317,7 @@ glabel ftMain_GetBumperDamageAngle
   /* 05F6B4 800E3EB4 03E00008 */        jr $ra
   /* 05F6B8 800E3EB8 00000000 */       nop 
 
-glabel ftMain_ProcessHitCollisionStatsMain
+glabel ftMainProcessHitCollisionStatsMain
   /* 05F6BC 800E3EBC 27BDFF38 */     addiu $sp, $sp, -0xc8
   /* 05F6C0 800E3EC0 AFBF005C */        sw $ra, 0x5c($sp)
   /* 05F6C4 800E3EC4 AFBE0058 */        sw $fp, 0x58($sp)
@@ -15332,36 +15332,36 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05F6E8 800E3EE8 F7B40030 */      sdc1 $f20, 0x30($sp)
   /* 05F6EC 800E3EEC AFA400C8 */        sw $a0, 0xc8($sp)
   /* 05F6F0 800E3EF0 8C950084 */        lw $s5, 0x84($a0)
-  /* 05F6F4 800E3EF4 3C028013 */       lui $v0, %hi(gFighterHitLogIndex)
-  /* 05F6F8 800E3EF8 8C4211C0 */        lw $v0, %lo(gFighterHitLogIndex)($v0)
+  /* 05F6F4 800E3EF4 3C028013 */       lui $v0, %hi(sFTMainHitLogID)
+  /* 05F6F8 800E3EF8 8C4211C0 */        lw $v0, %lo(sFTMainHitLogID)($v0)
   /* 05F6FC 800E3EFC 3C01BF80 */       lui $at, (0xBF800000 >> 16) # -1.0
   /* 05F700 800E3F00 44812000 */      mtc1 $at, $f4 # -1.0 to cop1
   /* 05F704 800E3F04 8EB709C8 */        lw $s7, 0x9c8($s5)
   /* 05F708 800E3F08 0000F025 */        or $fp, $zero, $zero
   /* 05F70C 800E3F0C 1840012F */      blez $v0, .L800E43CC
   /* 05F710 800E3F10 E7A400A0 */      swc1 $f4, 0xa0($sp)
-  /* 05F714 800E3F14 3C128013 */       lui $s2, %hi(gFighterHitLogTable)
-  /* 05F718 800E3F18 265211C8 */     addiu $s2, $s2, %lo(gFighterHitLogTable)
+  /* 05F714 800E3F14 3C128013 */       lui $s2, %hi(sFTMainHitLogTable)
+  /* 05F718 800E3F18 265211C8 */     addiu $s2, $s2, %lo(sFTMainHitLogTable)
   /* 05F71C 800E3F1C C7B400A4 */      lwc1 $f20, 0xa4($sp)
   /* 05F720 800E3F20 24160001 */     addiu $s6, $zero, 1
   /* 05F724 800E3F24 27B30084 */     addiu $s3, $sp, 0x84
   /* 05F728 800E3F28 24080004 */     addiu $t0, $zero, 4
   .L800E3F2C:
-  /* 05F72C 800E3F2C 8E430000 */        lw $v1, ($s2) # gFighterHitLogTable + 0
+  /* 05F72C 800E3F2C 8E430000 */        lw $v1, ($s2) # sFTMainHitLogTable + 0
   /* 05F730 800E3F30 24010002 */     addiu $at, $zero, 2
   /* 05F734 800E3F34 5076000A */      beql $v1, $s6, .L800E3F60
-  /* 05F738 800E3F38 8E500004 */        lw $s0, 4($s2) # gFighterHitLogTable + 4
+  /* 05F738 800E3F38 8E500004 */        lw $s0, 4($s2) # sFTMainHitLogTable + 4
   /* 05F73C 800E3F3C 1061006A */       beq $v1, $at, .L800E40E8
   /* 05F740 800E3F40 24010003 */     addiu $at, $zero, 3
   /* 05F744 800E3F44 506100B2 */      beql $v1, $at, .L800E4210
-  /* 05F748 800E3F48 8E4C000C */        lw $t4, 0xc($s2) # gFighterHitLogTable + 12
+  /* 05F748 800E3F48 8E4C000C */        lw $t4, 0xc($s2) # sFTMainHitLogTable + 12
   /* 05F74C 800E3F4C 506800F9 */      beql $v1, $t0, .L800E4334
-  /* 05F750 800E3F50 8E420004 */        lw $v0, 4($s2) # gFighterHitLogTable + 4
+  /* 05F750 800E3F50 8E420004 */        lw $v0, 4($s2) # sFTMainHitLogTable + 4
   /* 05F754 800E3F54 10000112 */         b .L800E43A0
   /* 05F758 800E3F58 C7A800A0 */      lwc1 $f8, 0xa0($sp)
-  /* 05F75C 800E3F5C 8E500004 */        lw $s0, 4($s2) # gFighterHitLogTable + 4
+  /* 05F75C 800E3F5C 8E500004 */        lw $s0, 4($s2) # sFTMainHitLogTable + 4
   .L800E3F60:
-  /* 05F760 800E3F60 8E4F000C */        lw $t7, 0xc($s2) # gFighterHitLogTable + 12
+  /* 05F760 800E3F60 8E4F000C */        lw $t7, 0xc($s2) # sFTMainHitLogTable + 12
   /* 05F764 800E3F64 8EA4002C */        lw $a0, 0x2c($s5)
   /* 05F768 800E3F68 8E18002C */        lw $t8, 0x2c($s0)
   /* 05F76C 800E3F6C 8DF10084 */        lw $s1, 0x84($t7)
@@ -15382,7 +15382,7 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05F7A8 800E3FA8 02602025 */        or $a0, $s3, $zero
   /* 05F7AC 800E3FAC 02002825 */        or $a1, $s0, $zero
   /* 05F7B0 800E3FB0 0C03C2A4 */       jal ftCollision_GetHurtImpactPosition
-  /* 05F7B4 800E3FB4 8E460010 */        lw $a2, 0x10($s2) # gFighterHitLogTable + 16
+  /* 05F7B4 800E3FB4 8E460010 */        lw $a2, 0x10($s2) # sFTMainHitLogTable + 16
   /* 05F7B8 800E3FB8 8E030010 */        lw $v1, 0x10($s0)
   /* 05F7BC 800E3FBC 24010002 */     addiu $at, $zero, 2
   /* 05F7C0 800E3FC0 02602025 */        or $a0, $s3, $zero
@@ -15429,14 +15429,14 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05F850 800E4050 4608A03C */    c.lt.s $f20, $f8
   /* 05F854 800E4054 00000000 */       nop 
   /* 05F858 800E4058 45020008 */     bc1fl .L800E407C
-  /* 05F85C 800E405C 92450014 */       lbu $a1, 0x14($s2) # gFighterHitLogTable + 20
+  /* 05F85C 800E405C 92450014 */       lbu $a1, 0x14($s2) # sFTMainHitLogTable + 20
   /* 05F860 800E4060 02602025 */        or $a0, $s3, $zero
-  /* 05F864 800E4064 92450014 */       lbu $a1, 0x14($s2) # gFighterHitLogTable + 20
+  /* 05F864 800E4064 92450014 */       lbu $a1, 0x14($s2) # sFTMainHitLogTable + 20
   /* 05F868 800E4068 0C03F701 */       jal efParticle_DamageNormalLight_MakeEffect
   /* 05F86C 800E406C 8E06000C */        lw $a2, 0xc($s0)
   /* 05F870 800E4070 10000005 */         b .L800E4088
   /* 05F874 800E4074 8E0B003C */        lw $t3, 0x3c($s0)
-  /* 05F878 800E4078 92450014 */       lbu $a1, 0x14($s2) # gFighterHitLogTable + 20
+  /* 05F878 800E4078 92450014 */       lbu $a1, 0x14($s2) # sFTMainHitLogTable + 20
   .L800E407C:
   /* 05F87C 800E407C 0C03F7AB */       jal efParticle_DamageNormalHeavy_MakeEffect
   /* 05F880 800E4080 8E06000C */        lw $a2, 0xc($s0)
@@ -15465,13 +15465,13 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05F8D0 800E40D0 0C040110 */       jal efParticle_DamageSpawnMDust_CheckRandomMakeEffect
   /* 05F8D4 800E40D4 8EA50044 */        lw $a1, 0x44($s5)
   .L800E40D8:
-  /* 05F8D8 800E40D8 3C028013 */       lui $v0, %hi(gFighterHitLogIndex)
-  /* 05F8DC 800E40DC 8C4211C0 */        lw $v0, %lo(gFighterHitLogIndex)($v0)
+  /* 05F8D8 800E40D8 3C028013 */       lui $v0, %hi(sFTMainHitLogID)
+  /* 05F8DC 800E40DC 8C4211C0 */        lw $v0, %lo(sFTMainHitLogID)($v0)
   /* 05F8E0 800E40E0 100000AE */         b .L800E439C
   /* 05F8E4 800E40E4 24080004 */     addiu $t0, $zero, 4
   .L800E40E8:
-  /* 05F8E8 800E40E8 8E4E000C */        lw $t6, 0xc($s2) # gFighterHitLogTable + 12
-  /* 05F8EC 800E40EC 8E510004 */        lw $s1, 4($s2) # gFighterHitLogTable + 4
+  /* 05F8E8 800E40E8 8E4E000C */        lw $t6, 0xc($s2) # sFTMainHitLogTable + 12
+  /* 05F8EC 800E40EC 8E510004 */        lw $s1, 4($s2) # sFTMainHitLogTable + 4
   /* 05F8F0 800E40F0 8DD40084 */        lw $s4, 0x84($t6)
   /* 05F8F4 800E40F4 0C05A04A */       jal wpMainGetStaledDamageOutput
   /* 05F8F8 800E40F8 02802025 */        or $a0, $s4, $zero
@@ -15497,9 +15497,9 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05F948 800E4148 000A5FC2 */       srl $t3, $t2, 0x1f
   /* 05F94C 800E414C 1160002B */      beqz $t3, .L800E41FC
   /* 05F950 800E4150 02202825 */        or $a1, $s1, $zero
-  /* 05F954 800E4154 8E460008 */        lw $a2, 8($s2) # gFighterHitLogTable + 8
+  /* 05F954 800E4154 8E460008 */        lw $a2, 8($s2) # sFTMainHitLogTable + 8
   /* 05F958 800E4158 0C03C349 */       jal wpCollision_GetFighterHurtImpactPosition
-  /* 05F95C 800E415C 8E470010 */        lw $a3, 0x10($s2) # gFighterHitLogTable + 16
+  /* 05F95C 800E415C 8E470010 */        lw $a3, 0x10($s2) # sFTMainHitLogTable + 16
   /* 05F960 800E4160 8E23000C */        lw $v1, 0xc($s1)
   /* 05F964 800E4164 24010002 */     addiu $at, $zero, 2
   /* 05F968 800E4168 02602025 */        or $a0, $s3, $zero
@@ -15536,22 +15536,22 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05F9D4 800E41D4 45000007 */      bc1f .L800E41F4
   /* 05F9D8 800E41D8 00000000 */       nop 
   /* 05F9DC 800E41DC 02602025 */        or $a0, $s3, $zero
-  /* 05F9E0 800E41E0 92450014 */       lbu $a1, 0x14($s2) # gFighterHitLogTable + 20
+  /* 05F9E0 800E41E0 92450014 */       lbu $a1, 0x14($s2) # sFTMainHitLogTable + 20
   /* 05F9E4 800E41E4 0C03F701 */       jal efParticle_DamageNormalLight_MakeEffect
   /* 05F9E8 800E41E8 02003025 */        or $a2, $s0, $zero
   /* 05F9EC 800E41EC 10000003 */         b .L800E41FC
   /* 05F9F0 800E41F0 00000000 */       nop 
   .L800E41F4:
   /* 05F9F4 800E41F4 0C03F7AB */       jal efParticle_DamageNormalHeavy_MakeEffect
-  /* 05F9F8 800E41F8 92450014 */       lbu $a1, 0x14($s2) # gFighterHitLogTable + 20
+  /* 05F9F8 800E41F8 92450014 */       lbu $a1, 0x14($s2) # sFTMainHitLogTable + 20
   .L800E41FC:
-  /* 05F9FC 800E41FC 3C028013 */       lui $v0, %hi(gFighterHitLogIndex)
-  /* 05FA00 800E4200 8C4211C0 */        lw $v0, %lo(gFighterHitLogIndex)($v0)
+  /* 05F9FC 800E41FC 3C028013 */       lui $v0, %hi(sFTMainHitLogID)
+  /* 05FA00 800E4200 8C4211C0 */        lw $v0, %lo(sFTMainHitLogID)($v0)
   /* 05FA04 800E4204 10000065 */         b .L800E439C
   /* 05FA08 800E4208 24080004 */     addiu $t0, $zero, 4
-  /* 05FA0C 800E420C 8E4C000C */        lw $t4, 0xc($s2) # gFighterHitLogTable + 12
+  /* 05FA0C 800E420C 8E4C000C */        lw $t4, 0xc($s2) # sFTMainHitLogTable + 12
   .L800E4210:
-  /* 05FA10 800E4210 8E510004 */        lw $s1, 4($s2) # gFighterHitLogTable + 4
+  /* 05FA10 800E4210 8E510004 */        lw $s1, 4($s2) # sFTMainHitLogTable + 4
   /* 05FA14 800E4214 8D940084 */        lw $s4, 0x84($t4)
   /* 05FA18 800E4218 0C05C9FD */       jal itMainGetDamageOutput
   /* 05FA1C 800E421C 02802025 */        or $a0, $s4, $zero
@@ -15577,9 +15577,9 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05FA6C 800E426C 00194FC2 */       srl $t1, $t9, 0x1f
   /* 05FA70 800E4270 1120002B */      beqz $t1, .L800E4320
   /* 05FA74 800E4274 02202825 */        or $a1, $s1, $zero
-  /* 05FA78 800E4278 8E460008 */        lw $a2, 8($s2) # gFighterHitLogTable + 8
+  /* 05FA78 800E4278 8E460008 */        lw $a2, 8($s2) # sFTMainHitLogTable + 8
   /* 05FA7C 800E427C 0C03C382 */       jal itCollision_GetFighterHurtImpactPosition
-  /* 05FA80 800E4280 8E470010 */        lw $a3, 0x10($s2) # gFighterHitLogTable + 16
+  /* 05FA80 800E4280 8E470010 */        lw $a3, 0x10($s2) # sFTMainHitLogTable + 16
   /* 05FA84 800E4284 8E230010 */        lw $v1, 0x10($s1)
   /* 05FA88 800E4288 24010002 */     addiu $at, $zero, 2
   /* 05FA8C 800E428C 02602025 */        or $a0, $s3, $zero
@@ -15616,26 +15616,26 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05FAF8 800E42F8 45000007 */      bc1f .L800E4318
   /* 05FAFC 800E42FC 00000000 */       nop 
   /* 05FB00 800E4300 02602025 */        or $a0, $s3, $zero
-  /* 05FB04 800E4304 92450014 */       lbu $a1, 0x14($s2) # gFighterHitLogTable + 20
+  /* 05FB04 800E4304 92450014 */       lbu $a1, 0x14($s2) # sFTMainHitLogTable + 20
   /* 05FB08 800E4308 0C03F701 */       jal efParticle_DamageNormalLight_MakeEffect
   /* 05FB0C 800E430C 02003025 */        or $a2, $s0, $zero
   /* 05FB10 800E4310 10000003 */         b .L800E4320
   /* 05FB14 800E4314 00000000 */       nop 
   .L800E4318:
   /* 05FB18 800E4318 0C03F7AB */       jal efParticle_DamageNormalHeavy_MakeEffect
-  /* 05FB1C 800E431C 92450014 */       lbu $a1, 0x14($s2) # gFighterHitLogTable + 20
+  /* 05FB1C 800E431C 92450014 */       lbu $a1, 0x14($s2) # sFTMainHitLogTable + 20
   .L800E4320:
-  /* 05FB20 800E4320 3C028013 */       lui $v0, %hi(gFighterHitLogIndex)
-  /* 05FB24 800E4324 8C4211C0 */        lw $v0, %lo(gFighterHitLogIndex)($v0)
+  /* 05FB20 800E4320 3C028013 */       lui $v0, %hi(sFTMainHitLogID)
+  /* 05FB24 800E4324 8C4211C0 */        lw $v0, %lo(sFTMainHitLogID)($v0)
   /* 05FB28 800E4328 1000001C */         b .L800E439C
   /* 05FB2C 800E432C 24080004 */     addiu $t0, $zero, 4
-  /* 05FB30 800E4330 8E420004 */        lw $v0, 4($s2) # gFighterHitLogTable + 4
+  /* 05FB30 800E4330 8E420004 */        lw $v0, 4($s2) # sFTMainHitLogTable + 4
   .L800E4334:
   /* 05FB34 800E4334 24030009 */     addiu $v1, $zero, 9
   /* 05FB38 800E4338 8C4A0000 */        lw $t2, ($v0)
   /* 05FB3C 800E433C 16CA0005 */       bne $s6, $t2, .L800E4354
   /* 05FB40 800E4340 00000000 */       nop 
-  /* 05FB44 800E4344 8E4B000C */        lw $t3, 0xc($s2) # gFighterHitLogTable + 12
+  /* 05FB44 800E4344 8E4B000C */        lw $t3, 0xc($s2) # sFTMainHitLogTable + 12
   /* 05FB48 800E4348 8D6C0084 */        lw $t4, 0x84($t3)
   /* 05FB4C 800E434C 10000001 */         b .L800E4354
   /* 05FB50 800E4350 918302B4 */       lbu $v1, 0x2b4($t4)
@@ -15654,9 +15654,9 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05FB80 800E4380 92AF0012 */       lbu $t7, 0x12($s5)
   /* 05FB84 800E4384 0C03A75E */       jal gmCommonObject_DamageCalcKnockback
   /* 05FB88 800E4388 AFAF0020 */        sw $t7, 0x20($sp)
-  /* 05FB8C 800E438C 3C028013 */       lui $v0, %hi(gFighterHitLogIndex)
+  /* 05FB8C 800E438C 3C028013 */       lui $v0, %hi(sFTMainHitLogID)
   /* 05FB90 800E4390 46000506 */     mov.s $f20, $f0
-  /* 05FB94 800E4394 8C4211C0 */        lw $v0, %lo(gFighterHitLogIndex)($v0)
+  /* 05FB94 800E4394 8C4211C0 */        lw $v0, %lo(sFTMainHitLogID)($v0)
   /* 05FB98 800E4398 24080004 */     addiu $t0, $zero, 4
   .L800E439C:
   /* 05FB9C 800E439C C7A800A0 */      lwc1 $f8, 0xa0($sp)
@@ -15675,28 +15675,28 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05FBC8 800E43C8 E7B400A4 */      swc1 $f20, 0xa4($sp)
   .L800E43CC:
   /* 05FBCC 800E43CC 8FB800A8 */        lw $t8, 0xa8($sp)
-  /* 05FBD0 800E43D0 3C098013 */       lui $t1, %hi(gFighterHitLogTable)
-  /* 05FBD4 800E43D4 252911C8 */     addiu $t1, $t1, %lo(gFighterHitLogTable)
+  /* 05FBD0 800E43D0 3C098013 */       lui $t1, %hi(sFTMainHitLogTable)
+  /* 05FBD4 800E43D4 252911C8 */     addiu $t1, $t1, %lo(sFTMainHitLogTable)
   /* 05FBD8 800E43D8 0018C8C0 */       sll $t9, $t8, 3
   /* 05FBDC 800E43DC 0338C823 */      subu $t9, $t9, $t8
   /* 05FBE0 800E43E0 0019C880 */       sll $t9, $t9, 2
   /* 05FBE4 800E43E4 03299021 */      addu $s2, $t9, $t1
-  /* 05FBE8 800E43E8 8E430000 */        lw $v1, ($s2) # gFighterHitLogTable + 0
+  /* 05FBE8 800E43E8 8E430000 */        lw $v1, ($s2) # sFTMainHitLogTable + 0
   /* 05FBEC 800E43EC 24160001 */     addiu $s6, $zero, 1
   /* 05FBF0 800E43F0 24080004 */     addiu $t0, $zero, 4
   /* 05FBF4 800E43F4 1076000A */       beq $v1, $s6, .L800E4420
-  /* 05FBF8 800E43F8 8E53000C */        lw $s3, 0xc($s2) # gFighterHitLogTable + 12
+  /* 05FBF8 800E43F8 8E53000C */        lw $s3, 0xc($s2) # sFTMainHitLogTable + 12
   /* 05FBFC 800E43FC 24010002 */     addiu $at, $zero, 2
   /* 05FC00 800E4400 10610036 */       beq $v1, $at, .L800E44DC
   /* 05FC04 800E4404 24010003 */     addiu $at, $zero, 3
   /* 05FC08 800E4408 50610084 */      beql $v1, $at, .L800E461C
-  /* 05FC0C 800E440C 8E510004 */        lw $s1, 4($s2) # gFighterHitLogTable + 4
+  /* 05FC0C 800E440C 8E510004 */        lw $s1, 4($s2) # sFTMainHitLogTable + 4
   /* 05FC10 800E4410 506800D1 */      beql $v1, $t0, .L800E4758
-  /* 05FC14 800E4414 8E420004 */        lw $v0, 4($s2) # gFighterHitLogTable + 4
+  /* 05FC14 800E4414 8E420004 */        lw $v0, 4($s2) # sFTMainHitLogTable + 4
   /* 05FC18 800E4418 10000100 */         b .L800E481C
   /* 05FC1C 800E441C 8EA207F8 */        lw $v0, 0x7f8($s5)
   .L800E4420:
-  /* 05FC20 800E4420 8E500004 */        lw $s0, 4($s2) # gFighterHitLogTable + 4
+  /* 05FC20 800E4420 8E500004 */        lw $s0, 4($s2) # sFTMainHitLogTable + 4
   /* 05FC24 800E4424 8E710084 */        lw $s1, 0x84($s3)
   /* 05FC28 800E4428 240FFFFF */     addiu $t7, $zero, -1
   /* 05FC2C 800E442C 8E0A0028 */        lw $t2, 0x28($s0)
@@ -15716,25 +15716,25 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05FC64 800E4464 AEB607FC */        sw $s6, 0x7fc($s5)
   /* 05FC68 800E4468 AEAF07FC */        sw $t7, 0x7fc($s5)
   .L800E446C:
-  /* 05FC6C 800E446C 8E580018 */        lw $t8, 0x18($s2) # gFighterHitLogTable + 24
+  /* 05FC6C 800E446C 8E580018 */        lw $t8, 0x18($s2) # sFTMainHitLogTable + 24
   /* 05FC70 800E4470 2401FBFF */     addiu $at, $zero, -0x401
   /* 05FC74 800E4474 02A02025 */        or $a0, $s5, $zero
   /* 05FC78 800E4478 AEB80808 */        sw $t8, 0x808($s5)
   /* 05FC7C 800E447C 9639028E */       lhu $t9, 0x28e($s1)
   /* 05FC80 800E4480 8E270008 */        lw $a3, 8($s1)
-  /* 05FC84 800E4484 8E460000 */        lw $a2, ($s2) # gFighterHitLogTable + 0
-  /* 05FC88 800E4488 92450014 */       lbu $a1, 0x14($s2) # gFighterHitLogTable + 20
+  /* 05FC84 800E4484 8E460000 */        lw $a2, ($s2) # sFTMainHitLogTable + 0
+  /* 05FC88 800E4488 92450014 */       lbu $a1, 0x14($s2) # sFTMainHitLogTable + 20
   /* 05FC8C 800E448C 03214824 */       and $t1, $t9, $at
   /* 05FC90 800E4490 AFA90010 */        sw $t1, 0x10($sp)
   /* 05FC94 800E4494 962A0290 */       lhu $t2, 0x290($s1)
   /* 05FC98 800E4498 0C03AA8B */       jal ftCommon_Update1PGameDamageStats
   /* 05FC9C 800E449C AFAA0014 */        sw $t2, 0x14($sp)
-  /* 05FCA0 800E44A0 8E4B0010 */        lw $t3, 0x10($s2) # gFighterHitLogTable + 16
+  /* 05FCA0 800E44A0 8E4B0010 */        lw $t3, 0x10($s2) # sFTMainHitLogTable + 16
   /* 05FCA4 800E44A4 8EA207F8 */        lw $v0, 0x7f8($s5)
   /* 05FCA8 800E44A8 24010002 */     addiu $at, $zero, 2
   /* 05FCAC 800E44AC 8D6C0004 */        lw $t4, 4($t3)
   /* 05FCB0 800E44B0 AEAC0804 */        sw $t4, 0x804($s5)
-  /* 05FCB4 800E44B4 8E4D0010 */        lw $t5, 0x10($s2) # gFighterHitLogTable + 16
+  /* 05FCB4 800E44B4 8E4D0010 */        lw $t5, 0x10($s2) # sFTMainHitLogTable + 16
   /* 05FCB8 800E44B8 8DAE000C */        lw $t6, 0xc($t5)
   /* 05FCBC 800E44BC 144100D7 */       bne $v0, $at, .L800E481C
   /* 05FCC0 800E44C0 AEAE0800 */        sw $t6, 0x800($s5)
@@ -15745,7 +15745,7 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05FCD4 800E44D4 100000D1 */         b .L800E481C
   /* 05FCD8 800E44D8 8EA207F8 */        lw $v0, 0x7f8($s5)
   .L800E44DC:
-  /* 05FCDC 800E44DC 8E510004 */        lw $s1, 4($s2) # gFighterHitLogTable + 4
+  /* 05FCDC 800E44DC 8E510004 */        lw $s1, 4($s2) # sFTMainHitLogTable + 4
   /* 05FCE0 800E44E0 8E740084 */        lw $s4, 0x84($s3)
   /* 05FCE4 800E44E4 44802000 */      mtc1 $zero, $f4
   /* 05FCE8 800E44E8 8E2F002C */        lw $t7, 0x2c($s1)
@@ -15795,43 +15795,43 @@ glabel ftMain_ProcessHitCollisionStatsMain
   .L800E458C:
   /* 05FD8C 800E458C AEA207FC */        sw $v0, 0x7fc($s5)
   .L800E4590:
-  /* 05FD90 800E4590 924B0014 */       lbu $t3, 0x14($s2) # gFighterHitLogTable + 20
+  /* 05FD90 800E4590 924B0014 */       lbu $t3, 0x14($s2) # sFTMainHitLogTable + 20
   /* 05FD94 800E4594 92AC000D */       lbu $t4, 0xd($s5)
   /* 05FD98 800E4598 556C000A */      bnel $t3, $t4, .L800E45C4
-  /* 05FD9C 800E459C 8E4D0018 */        lw $t5, 0x18($s2) # gFighterHitLogTable + 24
+  /* 05FD9C 800E459C 8E4D0018 */        lw $t5, 0x18($s2) # sFTMainHitLogTable + 24
   /* 05FDA0 800E45A0 AEA00808 */        sw $zero, 0x808($s5)
   /* 05FDA4 800E45A4 8E87000C */        lw $a3, 0xc($s4)
-  /* 05FDA8 800E45A8 8E460000 */        lw $a2, ($s2) # gFighterHitLogTable + 0
+  /* 05FDA8 800E45A8 8E460000 */        lw $a2, ($s2) # sFTMainHitLogTable + 0
   /* 05FDAC 800E45AC AFA00014 */        sw $zero, 0x14($sp)
   /* 05FDB0 800E45B0 0C03AA8B */       jal ftCommon_Update1PGameDamageStats
   /* 05FDB4 800E45B4 AFA00010 */        sw $zero, 0x10($sp)
   /* 05FDB8 800E45B8 1000000D */         b .L800E45F0
-  /* 05FDBC 800E45BC 8E580010 */        lw $t8, 0x10($s2) # gFighterHitLogTable + 16
-  /* 05FDC0 800E45C0 8E4D0018 */        lw $t5, 0x18($s2) # gFighterHitLogTable + 24
+  /* 05FDBC 800E45BC 8E580010 */        lw $t8, 0x10($s2) # sFTMainHitLogTable + 16
+  /* 05FDC0 800E45C0 8E4D0018 */        lw $t5, 0x18($s2) # sFTMainHitLogTable + 24
   .L800E45C4:
   /* 05FDC4 800E45C4 02A02025 */        or $a0, $s5, $zero
   /* 05FDC8 800E45C8 AEAD0808 */        sw $t5, 0x808($s5)
   /* 05FDCC 800E45CC 962E004C */       lhu $t6, 0x4c($s1)
   /* 05FDD0 800E45D0 8E87000C */        lw $a3, 0xc($s4)
-  /* 05FDD4 800E45D4 8E460000 */        lw $a2, ($s2) # gFighterHitLogTable + 0
-  /* 05FDD8 800E45D8 92450014 */       lbu $a1, 0x14($s2) # gFighterHitLogTable + 20
+  /* 05FDD4 800E45D4 8E460000 */        lw $a2, ($s2) # sFTMainHitLogTable + 0
+  /* 05FDD8 800E45D8 92450014 */       lbu $a1, 0x14($s2) # sFTMainHitLogTable + 20
   /* 05FDDC 800E45DC AFAE0010 */        sw $t6, 0x10($sp)
   /* 05FDE0 800E45E0 962F004E */       lhu $t7, 0x4e($s1)
   /* 05FDE4 800E45E4 0C03AA8B */       jal ftCommon_Update1PGameDamageStats
   /* 05FDE8 800E45E8 AFAF0014 */        sw $t7, 0x14($sp)
-  /* 05FDEC 800E45EC 8E580010 */        lw $t8, 0x10($s2) # gFighterHitLogTable + 16
+  /* 05FDEC 800E45EC 8E580010 */        lw $t8, 0x10($s2) # sFTMainHitLogTable + 16
   .L800E45F0:
   /* 05FDF0 800E45F0 02602825 */        or $a1, $s3, $zero
   /* 05FDF4 800E45F4 8F190004 */        lw $t9, 4($t8)
   /* 05FDF8 800E45F8 AEB90804 */        sw $t9, 0x804($s5)
-  /* 05FDFC 800E45FC 8E490010 */        lw $t1, 0x10($s2) # gFighterHitLogTable + 16
+  /* 05FDFC 800E45FC 8E490010 */        lw $t1, 0x10($s2) # sFTMainHitLogTable + 16
   /* 05FE00 800E4600 8D2A000C */        lw $t2, 0xc($t1)
   /* 05FE04 800E4604 AEAA0800 */        sw $t2, 0x800($s5)
-  /* 05FE08 800E4608 0C038F74 */       jal ftMain_GetBumperDamageAngle
+  /* 05FE08 800E4608 0C038F74 */       jal ftMainGetBumperDamageAngle
   /* 05FE0C 800E460C 8FA400C8 */        lw $a0, 0xc8($sp)
   /* 05FE10 800E4610 10000082 */         b .L800E481C
   /* 05FE14 800E4614 8EA207F8 */        lw $v0, 0x7f8($s5)
-  /* 05FE18 800E4618 8E510004 */        lw $s1, 4($s2) # gFighterHitLogTable + 4
+  /* 05FE18 800E4618 8E510004 */        lw $s1, 4($s2) # sFTMainHitLogTable + 4
   .L800E461C:
   /* 05FE1C 800E461C 8E740084 */        lw $s4, 0x84($s3)
   /* 05FE20 800E4620 44809000 */      mtc1 $zero, $f18
@@ -15882,43 +15882,43 @@ glabel ftMain_ProcessHitCollisionStatsMain
   .L800E46C8:
   /* 05FEC8 800E46C8 AEA207FC */        sw $v0, 0x7fc($s5)
   .L800E46CC:
-  /* 05FECC 800E46CC 92580014 */       lbu $t8, 0x14($s2) # gFighterHitLogTable + 20
+  /* 05FECC 800E46CC 92580014 */       lbu $t8, 0x14($s2) # sFTMainHitLogTable + 20
   /* 05FED0 800E46D0 92B9000D */       lbu $t9, 0xd($s5)
   /* 05FED4 800E46D4 5719000A */      bnel $t8, $t9, .L800E4700
-  /* 05FED8 800E46D8 8E490018 */        lw $t1, 0x18($s2) # gFighterHitLogTable + 24
+  /* 05FED8 800E46D8 8E490018 */        lw $t1, 0x18($s2) # sFTMainHitLogTable + 24
   /* 05FEDC 800E46DC AEA00808 */        sw $zero, 0x808($s5)
   /* 05FEE0 800E46E0 8E87000C */        lw $a3, 0xc($s4)
-  /* 05FEE4 800E46E4 8E460000 */        lw $a2, ($s2) # gFighterHitLogTable + 0
+  /* 05FEE4 800E46E4 8E460000 */        lw $a2, ($s2) # sFTMainHitLogTable + 0
   /* 05FEE8 800E46E8 AFA00014 */        sw $zero, 0x14($sp)
   /* 05FEEC 800E46EC 0C03AA8B */       jal ftCommon_Update1PGameDamageStats
   /* 05FEF0 800E46F0 AFA00010 */        sw $zero, 0x10($sp)
   /* 05FEF4 800E46F4 1000000D */         b .L800E472C
-  /* 05FEF8 800E46F8 8E4C0010 */        lw $t4, 0x10($s2) # gFighterHitLogTable + 16
-  /* 05FEFC 800E46FC 8E490018 */        lw $t1, 0x18($s2) # gFighterHitLogTable + 24
+  /* 05FEF8 800E46F8 8E4C0010 */        lw $t4, 0x10($s2) # sFTMainHitLogTable + 16
+  /* 05FEFC 800E46FC 8E490018 */        lw $t1, 0x18($s2) # sFTMainHitLogTable + 24
   .L800E4700:
   /* 05FF00 800E4700 02A02025 */        or $a0, $s5, $zero
   /* 05FF04 800E4704 AEA90808 */        sw $t1, 0x808($s5)
   /* 05FF08 800E4708 962A0050 */       lhu $t2, 0x50($s1)
   /* 05FF0C 800E470C 8E87000C */        lw $a3, 0xc($s4)
-  /* 05FF10 800E4710 8E460000 */        lw $a2, ($s2) # gFighterHitLogTable + 0
-  /* 05FF14 800E4714 92450014 */       lbu $a1, 0x14($s2) # gFighterHitLogTable + 20
+  /* 05FF10 800E4710 8E460000 */        lw $a2, ($s2) # sFTMainHitLogTable + 0
+  /* 05FF14 800E4714 92450014 */       lbu $a1, 0x14($s2) # sFTMainHitLogTable + 20
   /* 05FF18 800E4718 AFAA0010 */        sw $t2, 0x10($sp)
   /* 05FF1C 800E471C 962B0052 */       lhu $t3, 0x52($s1)
   /* 05FF20 800E4720 0C03AA8B */       jal ftCommon_Update1PGameDamageStats
   /* 05FF24 800E4724 AFAB0014 */        sw $t3, 0x14($sp)
-  /* 05FF28 800E4728 8E4C0010 */        lw $t4, 0x10($s2) # gFighterHitLogTable + 16
+  /* 05FF28 800E4728 8E4C0010 */        lw $t4, 0x10($s2) # sFTMainHitLogTable + 16
   .L800E472C:
   /* 05FF2C 800E472C 02602825 */        or $a1, $s3, $zero
   /* 05FF30 800E4730 8D8D0004 */        lw $t5, 4($t4)
   /* 05FF34 800E4734 AEAD0804 */        sw $t5, 0x804($s5)
-  /* 05FF38 800E4738 8E4E0010 */        lw $t6, 0x10($s2) # gFighterHitLogTable + 16
+  /* 05FF38 800E4738 8E4E0010 */        lw $t6, 0x10($s2) # sFTMainHitLogTable + 16
   /* 05FF3C 800E473C 8DCF000C */        lw $t7, 0xc($t6)
   /* 05FF40 800E4740 AEAF0800 */        sw $t7, 0x800($s5)
-  /* 05FF44 800E4744 0C038F74 */       jal ftMain_GetBumperDamageAngle
+  /* 05FF44 800E4744 0C038F74 */       jal ftMainGetBumperDamageAngle
   /* 05FF48 800E4748 8FA400C8 */        lw $a0, 0xc8($sp)
   /* 05FF4C 800E474C 10000033 */         b .L800E481C
   /* 05FF50 800E4750 8EA207F8 */        lw $v0, 0x7f8($s5)
-  /* 05FF54 800E4754 8E420004 */        lw $v0, 4($s2) # gFighterHitLogTable + 4
+  /* 05FF54 800E4754 8E420004 */        lw $v0, 4($s2) # sFTMainHitLogTable + 4
   .L800E4758:
   /* 05FF58 800E4758 8EA90044 */        lw $t1, 0x44($s5)
   /* 05FF5C 800E475C 02A02025 */        or $a0, $s5, $zero
@@ -15939,10 +15939,10 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05FF94 800E4794 2401FFFF */     addiu $at, $zero, -1
   /* 05FF98 800E4798 AEA00808 */        sw $zero, 0x808($s5)
   /* 05FF9C 800E479C 54A10004 */      bnel $a1, $at, .L800E47B0
-  /* 05FFA0 800E47A0 8E460000 */        lw $a2, ($s2) # gFighterHitLogTable + 0
+  /* 05FFA0 800E47A0 8E460000 */        lw $a2, ($s2) # sFTMainHitLogTable + 0
   /* 05FFA4 800E47A4 AEA8080C */        sw $t0, 0x80c($s5)
   /* 05FFA8 800E47A8 01002825 */        or $a1, $t0, $zero
-  /* 05FFAC 800E47AC 8E460000 */        lw $a2, ($s2) # gFighterHitLogTable + 0
+  /* 05FFAC 800E47AC 8E460000 */        lw $a2, ($s2) # sFTMainHitLogTable + 0
   .L800E47B0:
   /* 05FFB0 800E47B0 8C470000 */        lw $a3, ($v0)
   /* 05FFB4 800E47B4 AFA00014 */        sw $zero, 0x14($sp)
@@ -15956,7 +15956,7 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 05FFD0 800E47D0 8E8A02B0 */        lw $t2, 0x2b0($s4)
   /* 05FFD4 800E47D4 AEAA0808 */        sw $t2, 0x808($s5)
   /* 05FFD8 800E47D8 8C470000 */        lw $a3, ($v0)
-  /* 05FFDC 800E47DC 8E460000 */        lw $a2, ($s2) # gFighterHitLogTable + 0
+  /* 05FFDC 800E47DC 8E460000 */        lw $a2, ($s2) # sFTMainHitLogTable + 0
   /* 05FFE0 800E47E0 928502AD */       lbu $a1, 0x2ad($s4)
   /* 05FFE4 800E47E4 AFA00014 */        sw $zero, 0x14($sp)
   /* 05FFE8 800E47E8 0C03AA8B */       jal ftCommon_Update1PGameDamageStats
@@ -15966,7 +15966,7 @@ glabel ftMain_ProcessHitCollisionStatsMain
   .L800E47F8:
   /* 05FFF8 800E47F8 AEA00808 */        sw $zero, 0x808($s5)
   /* 05FFFC 800E47FC 8C470000 */        lw $a3, ($v0)
-  /* 060000 800E4800 8E460000 */        lw $a2, ($s2) # gFighterHitLogTable + 0
+  /* 060000 800E4800 8E460000 */        lw $a2, ($s2) # sFTMainHitLogTable + 0
   /* 060004 800E4804 AFA00014 */        sw $zero, 0x14($sp)
   /* 060008 800E4808 0C03AA8B */       jal ftCommon_Update1PGameDamageStats
   /* 06000C 800E480C AFA00010 */        sw $zero, 0x10($sp)
@@ -15998,7 +15998,7 @@ glabel ftMain_ProcessHitCollisionStatsMain
   /* 060068 800E4868 03E00008 */        jr $ra
   /* 06006C 800E486C 27BD00C8 */     addiu $sp, $sp, 0xc8
 
-glabel ftMain_SearchFighterHit
+glabel ftMainSearchFighterHit
   /* 060070 800E4870 27BDFF58 */     addiu $sp, $sp, -0xa8
   /* 060074 800E4874 3C188004 */       lui $t8, %hi(gOMObjCommonLinks + (0x03 * 4))
   /* 060078 800E4878 8F1866FC */        lw $t8, %lo(gOMObjCommonLinks + (0x03 * 4))($t8)
@@ -16070,14 +16070,14 @@ glabel ftMain_SearchFighterHit
   /* 060170 800E4970 10000149 */         b .L800E4E98
   /* 060174 800E4974 8FAF00A4 */        lw $t7, 0xa4($sp)
   .L800E4978:
-  /* 060178 800E4978 3C168013 */       lui $s6, %hi(gFighterIsHurtDetect)
-  /* 06017C 800E497C 26D611A0 */     addiu $s6, $s6, %lo(gFighterIsHurtDetect)
+  /* 060178 800E4978 3C168013 */       lui $s6, %hi(gFTMainIsHurtDetect)
+  /* 06017C 800E497C 26D611A0 */     addiu $s6, $s6, %lo(gFTMainIsHurtDetect)
   /* 060180 800E4980 24060020 */     addiu $a2, $zero, 0x20
   .L800E4984:
   /* 060184 800E4984 8CAE0294 */        lw $t6, 0x294($a1)
   /* 060188 800E4988 8FAF00A0 */        lw $t7, 0xa0($sp)
   /* 06018C 800E498C 51C00036 */      beql $t6, $zero, .L800E4A68
-  /* 060190 800E4990 AEC00000 */        sw $zero, ($s6) # gFighterIsHurtDetect + 0
+  /* 060190 800E4990 AEC00000 */        sw $zero, ($s6) # gFTMainIsHurtDetect + 0
   /* 060194 800E4994 8DE2014C */        lw $v0, 0x14c($t7)
   /* 060198 800E4998 24010001 */     addiu $at, $zero, 1
   /* 06019C 800E499C 24B10294 */     addiu $s1, $a1, 0x294
@@ -16092,7 +16092,7 @@ glabel ftMain_SearchFighterHit
   /* 0601BC 800E49BC 24B10294 */     addiu $s1, $a1, 0x294
   /* 0601C0 800E49C0 822A003D */        lb $t2, 0x3d($s1)
   /* 0601C4 800E49C4 05430028 */     bgezl $t2, .L800E4A68
-  /* 0601C8 800E49C8 AEC00000 */        sw $zero, ($s6) # gFighterIsHurtDetect + 0
+  /* 0601C8 800E49C8 AEC00000 */        sw $zero, ($s6) # gFTMainIsHurtDetect + 0
   /* 0601CC 800E49CC 93AC007C */       lbu $t4, 0x7c($sp)
   .L800E49D0:
   /* 0601D0 800E49D0 00001825 */        or $v1, $zero, $zero
@@ -16132,14 +16132,14 @@ glabel ftMain_SearchFighterHit
   /* 06024C 800E4A4C 24010007 */     addiu $at, $zero, 7
   /* 060250 800E4A50 17010004 */       bne $t8, $at, .L800E4A64
   /* 060254 800E4A54 240B0001 */     addiu $t3, $zero, 1
-  /* 060258 800E4A58 AECB0000 */        sw $t3, ($s6) # gFighterIsHurtDetect + 0
+  /* 060258 800E4A58 AECB0000 */        sw $t3, ($s6) # gFTMainIsHurtDetect + 0
   /* 06025C 800E4A5C 10000002 */         b .L800E4A68
   /* 060260 800E4A60 26940001 */     addiu $s4, $s4, 1
   .L800E4A64:
-  /* 060264 800E4A64 AEC00000 */        sw $zero, ($s6) # gFighterIsHurtDetect + 0
+  /* 060264 800E4A64 AEC00000 */        sw $zero, ($s6) # gFTMainIsHurtDetect + 0
   .L800E4A68:
-  /* 060268 800E4A68 3C098013 */       lui $t1, %hi(gFighterIsHitDetect)
-  /* 06026C 800E4A6C 252911B0 */     addiu $t1, $t1, %lo(gFighterIsHitDetect)
+  /* 060268 800E4A68 3C098013 */       lui $t1, %hi(gFTMainIsHitDetect)
+  /* 06026C 800E4A6C 252911B0 */     addiu $t1, $t1, %lo(gFTMainIsHitDetect)
   /* 060270 800E4A70 26D60004 */     addiu $s6, $s6, 4
   /* 060274 800E4A74 02C9082B */      sltu $at, $s6, $t1
   /* 060278 800E4A78 1420FFC2 */      bnez $at, .L800E4984
@@ -16191,12 +16191,12 @@ glabel ftMain_SearchFighterHit
   /* 060328 800E4B28 91F80280 */       lbu $t8, 0x280($t7)
   /* 06032C 800E4B2C 1058006D */       beq $v0, $t8, .L800E4CE4
   .L800E4B30:
-  /* 060330 800E4B30 3C078013 */       lui $a3, %hi(gFighterIsHitDetect)
-  /* 060334 800E4B34 24E711B0 */     addiu $a3, $a3, %lo(gFighterIsHitDetect)
+  /* 060330 800E4B30 3C078013 */       lui $a3, %hi(gFTMainIsHitDetect)
+  /* 060334 800E4B34 24E711B0 */     addiu $a3, $a3, %lo(gFTMainIsHitDetect)
   .L800E4B38:
   /* 060338 800E4B38 8CCB0294 */        lw $t3, 0x294($a2)
   /* 06033C 800E4B3C 51600037 */      beql $t3, $zero, .L800E4C1C
-  /* 060340 800E4B40 ACE00000 */        sw $zero, ($a3) # gFighterIsHitDetect + 0
+  /* 060340 800E4B40 ACE00000 */        sw $zero, ($a3) # gFTMainIsHitDetect + 0
   /* 060344 800E4B44 8EE2014C */        lw $v0, 0x14c($s7)
   /* 060348 800E4B48 24010001 */     addiu $at, $zero, 1
   /* 06034C 800E4B4C 24C40294 */     addiu $a0, $a2, 0x294
@@ -16211,7 +16211,7 @@ glabel ftMain_SearchFighterHit
   /* 06036C 800E4B6C 24C40294 */     addiu $a0, $a2, 0x294
   /* 060370 800E4B70 808C003D */        lb $t4, 0x3d($a0)
   /* 060374 800E4B74 05830029 */     bgezl $t4, .L800E4C1C
-  /* 060378 800E4B78 ACE00000 */        sw $zero, ($a3) # gFighterIsHitDetect + 0
+  /* 060378 800E4B78 ACE00000 */        sw $zero, ($a3) # gFTMainIsHitDetect + 0
   /* 06037C 800E4B7C 93AD0080 */       lbu $t5, 0x80($sp)
   .L800E4B80:
   /* 060380 800E4B80 00801025 */        or $v0, $a0, $zero
@@ -16252,30 +16252,30 @@ glabel ftMain_SearchFighterHit
   /* 060400 800E4C00 24010007 */     addiu $at, $zero, 7
   /* 060404 800E4C04 15210004 */       bne $t1, $at, .L800E4C18
   /* 060408 800E4C08 240E0001 */     addiu $t6, $zero, 1
-  /* 06040C 800E4C0C ACEE0000 */        sw $t6, ($a3) # gFighterIsHitDetect + 0
+  /* 06040C 800E4C0C ACEE0000 */        sw $t6, ($a3) # gFTMainIsHitDetect + 0
   /* 060410 800E4C10 10000002 */         b .L800E4C1C
   /* 060414 800E4C14 25080001 */     addiu $t0, $t0, 1
   .L800E4C18:
-  /* 060418 800E4C18 ACE00000 */        sw $zero, ($a3) # gFighterIsHitDetect + 0
+  /* 060418 800E4C18 ACE00000 */        sw $zero, ($a3) # gFTMainIsHitDetect + 0
   .L800E4C1C:
-  /* 06041C 800E4C1C 3C198013 */       lui $t9, %hi(gFighterHitLogIndex)
-  /* 060420 800E4C20 273911C0 */     addiu $t9, $t9, %lo(gFighterHitLogIndex)
+  /* 06041C 800E4C1C 3C198013 */       lui $t9, %hi(sFTMainHitLogID)
+  /* 060420 800E4C20 273911C0 */     addiu $t9, $t9, %lo(sFTMainHitLogID)
   /* 060424 800E4C24 24E70004 */     addiu $a3, $a3, 4
   /* 060428 800E4C28 00F9082B */      sltu $at, $a3, $t9
   /* 06042C 800E4C2C 1420FFC2 */      bnez $at, .L800E4B38
   /* 060430 800E4C30 24C600C4 */     addiu $a2, $a2, 0xc4
   /* 060434 800E4C34 1100002B */      beqz $t0, .L800E4CE4
   /* 060438 800E4C38 0000A825 */        or $s5, $zero, $zero
-  /* 06043C 800E4C3C 3C168013 */       lui $s6, %hi(gFighterIsHurtDetect)
-  /* 060440 800E4C40 26D611A0 */     addiu $s6, $s6, %lo(gFighterIsHurtDetect)
+  /* 06043C 800E4C3C 3C168013 */       lui $s6, %hi(gFTMainIsHurtDetect)
+  /* 060440 800E4C40 26D611A0 */     addiu $s6, $s6, %lo(gFTMainIsHurtDetect)
   .L800E4C44:
-  /* 060444 800E4C44 8ECA0000 */        lw $t2, ($s6) # gFighterIsHurtDetect + 0
-  /* 060448 800E4C48 3C128013 */       lui $s2, %hi(gFighterIsHitDetect)
-  /* 06044C 800E4C4C 265211B0 */     addiu $s2, $s2, %lo(gFighterIsHitDetect)
+  /* 060444 800E4C44 8ECA0000 */        lw $t2, ($s6) # gFTMainIsHurtDetect + 0
+  /* 060448 800E4C48 3C128013 */       lui $s2, %hi(gFTMainIsHitDetect)
+  /* 06044C 800E4C4C 265211B0 */     addiu $s2, $s2, %lo(gFTMainIsHitDetect)
   /* 060450 800E4C50 11400020 */      beqz $t2, .L800E4CD4
   /* 060454 800E4C54 00009825 */        or $s3, $zero, $zero
   .L800E4C58:
-  /* 060458 800E4C58 8E4D0000 */        lw $t5, ($s2) # gFighterIsHitDetect + 0
+  /* 060458 800E4C58 8E4D0000 */        lw $t5, ($s2) # gFTMainIsHitDetect + 0
   /* 06045C 800E4C5C 51A0001A */      beql $t5, $zero, .L800E4CC8
   /* 060460 800E4C60 26730001 */     addiu $s3, $s3, 1
   /* 060464 800E4C64 02BE0019 */     multu $s5, $fp
@@ -16298,9 +16298,9 @@ glabel ftMain_SearchFighterHit
   /* 0604A8 800E4CA8 8FA600A0 */        lw $a2, 0xa0($sp)
   /* 0604AC 800E4CAC 02003825 */        or $a3, $s0, $zero
   /* 0604B0 800E4CB0 AFAB0010 */        sw $t3, 0x10($sp)
-  /* 0604B4 800E4CB4 0C038A44 */       jal ftMain_UpdateAttackStatFighter
+  /* 0604B4 800E4CB4 0C038A44 */       jal ftMainUpdateAttackStatFighter
   /* 0604B8 800E4CB8 AFA90014 */        sw $t1, 0x14($sp)
-  /* 0604BC 800E4CBC 8ECE0000 */        lw $t6, ($s6) # gFighterIsHurtDetect + 0
+  /* 0604BC 800E4CBC 8ECE0000 */        lw $t6, ($s6) # gFTMainIsHurtDetect + 0
   /* 0604C0 800E4CC0 11C00004 */      beqz $t6, .L800E4CD4
   .L800E4CC4:
   /* 0604C4 800E4CC4 26730001 */     addiu $s3, $s3, 1
@@ -16314,11 +16314,11 @@ glabel ftMain_SearchFighterHit
   /* 0604DC 800E4CDC 16A1FFD9 */       bne $s5, $at, .L800E4C44
   /* 0604E0 800E4CE0 26D60004 */     addiu $s6, $s6, 4
   .L800E4CE4:
-  /* 0604E4 800E4CE4 3C168013 */       lui $s6, %hi(gFighterIsHurtDetect)
-  /* 0604E8 800E4CE8 26D611A0 */     addiu $s6, $s6, %lo(gFighterIsHurtDetect)
+  /* 0604E4 800E4CE4 3C168013 */       lui $s6, %hi(gFTMainIsHurtDetect)
+  /* 0604E8 800E4CE8 26D611A0 */     addiu $s6, $s6, %lo(gFTMainIsHurtDetect)
   /* 0604EC 800E4CEC 0000A825 */        or $s5, $zero, $zero
   .L800E4CF0:
-  /* 0604F0 800E4CF0 8ED90000 */        lw $t9, ($s6) # gFighterIsHurtDetect + 0
+  /* 0604F0 800E4CF0 8ED90000 */        lw $t9, ($s6) # gFTMainIsHurtDetect + 0
   /* 0604F4 800E4CF4 5320000B */      beql $t9, $zero, .L800E4D24
   /* 0604F8 800E4CF8 26B50001 */     addiu $s5, $s5, 1
   /* 0604FC 800E4CFC 02BE0019 */     multu $s5, $fp
@@ -16328,7 +16328,7 @@ glabel ftMain_SearchFighterHit
   /* 06050C 800E4D0C 0C03BCD9 */       jal ftCollision_CheckFighterHitInRange
   /* 060510 800E4D10 24840294 */     addiu $a0, $a0, 0x294
   /* 060514 800E4D14 10400002 */      beqz $v0, .L800E4D20
-  /* 060518 800E4D18 AEC20000 */        sw $v0, ($s6) # gFighterIsHurtDetect + 0
+  /* 060518 800E4D18 AEC20000 */        sw $v0, ($s6) # gFTMainIsHurtDetect + 0
   /* 06051C 800E4D1C 26940001 */     addiu $s4, $s4, 1
   .L800E4D20:
   /* 060520 800E4D20 26B50001 */     addiu $s5, $s5, 1
@@ -16339,13 +16339,13 @@ glabel ftMain_SearchFighterHit
   /* 060530 800E4D30 12800058 */      beqz $s4, .L800E4E94
   /* 060534 800E4D34 8FAD00A0 */        lw $t5, 0xa0($sp)
   /* 060538 800E4D38 8DAF018C */        lw $t7, 0x18c($t5)
-  /* 06053C 800E4D3C 3C168013 */       lui $s6, %hi(gFighterIsHurtDetect)
-  /* 060540 800E4D40 26D611A0 */     addiu $s6, $s6, %lo(gFighterIsHurtDetect)
+  /* 06053C 800E4D3C 3C168013 */       lui $s6, %hi(gFTMainIsHurtDetect)
+  /* 060540 800E4D40 26D611A0 */     addiu $s6, $s6, %lo(gFTMainIsHurtDetect)
   /* 060544 800E4D44 000F6680 */       sll $t4, $t7, 0x1a
   /* 060548 800E4D48 0581001A */      bgez $t4, .L800E4DB4
   /* 06054C 800E4D4C 0000A825 */        or $s5, $zero, $zero
   .L800E4D50:
-  /* 060550 800E4D50 8ECB0000 */        lw $t3, ($s6) # gFighterIsHurtDetect + 0
+  /* 060550 800E4D50 8ECB0000 */        lw $t3, ($s6) # gFTMainIsHurtDetect + 0
   /* 060554 800E4D54 51600014 */      beql $t3, $zero, .L800E4DA8
   /* 060558 800E4D58 26B50001 */     addiu $s5, $s5, 1
   /* 06055C 800E4D5C 02BE0019 */     multu $s5, $fp
@@ -16364,7 +16364,7 @@ glabel ftMain_SearchFighterHit
   /* 060590 800E4D90 02202825 */        or $a1, $s1, $zero
   /* 060594 800E4D94 8FA600A0 */        lw $a2, 0xa0($sp)
   /* 060598 800E4D98 8FA700A4 */        lw $a3, 0xa4($sp)
-  /* 06059C 800E4D9C 0C038AA4 */       jal ftMain_UpdateShieldStatFighter
+  /* 06059C 800E4D9C 0C038AA4 */       jal ftMainUpdateShieldStatFighter
   /* 0605A0 800E4DA0 AFB90010 */        sw $t9, 0x10($sp)
   .L800E4DA4:
   /* 0605A4 800E4DA4 26B50001 */     addiu $s5, $s5, 1
@@ -16386,10 +16386,10 @@ glabel ftMain_SearchFighterHit
   /* 0605DC 800E4DDC 24010003 */     addiu $at, $zero, 3
   /* 0605E0 800E4DE0 0000A825 */        or $s5, $zero, $zero
   /* 0605E4 800E4DE4 1301002B */       beq $t8, $at, .L800E4E94
-  /* 0605E8 800E4DE8 3C168013 */       lui $s6, %hi(gFighterIsHurtDetect)
-  /* 0605EC 800E4DEC 26D611A0 */     addiu $s6, $s6, %lo(gFighterIsHurtDetect)
+  /* 0605E8 800E4DE8 3C168013 */       lui $s6, %hi(gFTMainIsHurtDetect)
+  /* 0605EC 800E4DEC 26D611A0 */     addiu $s6, $s6, %lo(gFTMainIsHurtDetect)
   .L800E4DF0:
-  /* 0605F0 800E4DF0 8ECC0000 */        lw $t4, ($s6) # gFighterIsHurtDetect + 0
+  /* 0605F0 800E4DF0 8ECC0000 */        lw $t4, ($s6) # gFTMainIsHurtDetect + 0
   /* 0605F4 800E4DF4 0000A025 */        or $s4, $zero, $zero
   /* 0605F8 800E4DF8 8FB200A0 */        lw $s2, 0xa0($sp)
   /* 0605FC 800E4DFC 51800022 */      beql $t4, $zero, .L800E4E88
@@ -16419,7 +16419,7 @@ glabel ftMain_SearchFighterHit
   /* 060658 800E4E58 8FA600A0 */        lw $a2, 0xa0($sp)
   /* 06065C 800E4E5C 02003825 */        or $a3, $s0, $zero
   /* 060660 800E4E60 AFB90010 */        sw $t9, 0x10($sp)
-  /* 060664 800E4E64 0C038B51 */       jal ftMain_UpdateDamageStatFighter
+  /* 060664 800E4E64 0C038B51 */       jal ftMainUpdateDamageStatFighter
   /* 060668 800E4E68 AFAD0014 */        sw $t5, 0x14($sp)
   /* 06066C 800E4E6C 10000005 */         b .L800E4E84
   /* 060670 800E4E70 00000000 */       nop 
@@ -16454,7 +16454,7 @@ glabel ftMain_SearchFighterHit
   /* 0606CC 800E4ECC 03E00008 */        jr $ra
   /* 0606D0 800E4ED0 27BD00A8 */     addiu $sp, $sp, 0xa8
 
-glabel ftMain_SearchWeaponHit
+glabel ftMainSearchWeaponHit
   /* 0606D4 800E4ED4 27BDFF48 */     addiu $sp, $sp, -0xb8
   /* 0606D8 800E4ED8 3C0F8004 */       lui $t7, %hi(gOMObjCommonLinks + (0x05 * 4))
   /* 0606DC 800E4EDC 8DEF6704 */        lw $t7, %lo(gOMObjCommonLinks + (0x05 * 4))($t7)
@@ -16594,12 +16594,12 @@ glabel ftMain_SearchWeaponHit
   /* 0608DC 800E50DC 02E02825 */        or $a1, $s7, $zero
   /* 0608E0 800E50E0 05E00061 */      bltz $t7, .L800E5268
   .L800E50E4:
-  /* 0608E4 800E50E4 3C068013 */       lui $a2, %hi(gFighterIsHitDetect)
-  /* 0608E8 800E50E8 24C611B0 */     addiu $a2, $a2, %lo(gFighterIsHitDetect)
+  /* 0608E4 800E50E4 3C068013 */       lui $a2, %hi(gFTMainIsHitDetect)
+  /* 0608E8 800E50E8 24C611B0 */     addiu $a2, $a2, %lo(gFTMainIsHitDetect)
   .L800E50EC:
   /* 0608EC 800E50EC 8CB90294 */        lw $t9, 0x294($a1)
   /* 0608F0 800E50F0 5320002B */      beql $t9, $zero, .L800E51A0
-  /* 0608F4 800E50F4 ACC00000 */        sw $zero, ($a2) # gFighterIsHitDetect + 0
+  /* 0608F4 800E50F4 ACC00000 */        sw $zero, ($a2) # gFTMainIsHitDetect + 0
   /* 0608F8 800E50F8 8FC200FC */        lw $v0, 0xfc($fp)
   /* 0608FC 800E50FC 24010001 */     addiu $at, $zero, 1
   /* 060900 800E5100 24A40294 */     addiu $a0, $a1, 0x294
@@ -16614,7 +16614,7 @@ glabel ftMain_SearchWeaponHit
   /* 060920 800E5120 24A40294 */     addiu $a0, $a1, 0x294
   /* 060924 800E5124 808B003D */        lb $t3, 0x3d($a0)
   /* 060928 800E5128 0563001D */     bgezl $t3, .L800E51A0
-  /* 06092C 800E512C ACC00000 */        sw $zero, ($a2) # gFighterIsHitDetect + 0
+  /* 06092C 800E512C ACC00000 */        sw $zero, ($a2) # gFTMainIsHitDetect + 0
   /* 060930 800E5130 93AD0098 */       lbu $t5, 0x98($sp)
   .L800E5134:
   /* 060934 800E5134 00801025 */        or $v0, $a0, $zero
@@ -16642,15 +16642,15 @@ glabel ftMain_SearchWeaponHit
   /* 060980 800E5180 000A5900 */       sll $t3, $t2, 4
   /* 060984 800E5184 000B6742 */       srl $t4, $t3, 0x1d
   /* 060988 800E5188 55810005 */      bnel $t4, $at, .L800E51A0
-  /* 06098C 800E518C ACC00000 */        sw $zero, ($a2) # gFighterIsHitDetect + 0
-  /* 060990 800E5190 ACCD0000 */        sw $t5, ($a2) # gFighterIsHitDetect + 0
+  /* 06098C 800E518C ACC00000 */        sw $zero, ($a2) # gFTMainIsHitDetect + 0
+  /* 060990 800E5190 ACCD0000 */        sw $t5, ($a2) # gFTMainIsHitDetect + 0
   /* 060994 800E5194 10000002 */         b .L800E51A0
   /* 060998 800E5198 25080001 */     addiu $t0, $t0, 1
   .L800E519C:
-  /* 06099C 800E519C ACC00000 */        sw $zero, ($a2) # gFighterIsHitDetect + 0
+  /* 06099C 800E519C ACC00000 */        sw $zero, ($a2) # gFTMainIsHitDetect + 0
   .L800E51A0:
-  /* 0609A0 800E51A0 3C188013 */       lui $t8, %hi(gFighterHitLogIndex)
-  /* 0609A4 800E51A4 271811C0 */     addiu $t8, $t8, %lo(gFighterHitLogIndex)
+  /* 0609A0 800E51A0 3C188013 */       lui $t8, %hi(sFTMainHitLogID)
+  /* 0609A4 800E51A4 271811C0 */     addiu $t8, $t8, %lo(sFTMainHitLogID)
   /* 0609A8 800E51A8 24C60004 */     addiu $a2, $a2, 4
   /* 0609AC 800E51AC 00D8082B */      sltu $at, $a2, $t8
   /* 0609B0 800E51B0 1420FFCE */      bnez $at, .L800E50EC
@@ -16661,11 +16661,11 @@ glabel ftMain_SearchWeaponHit
   /* 0609C4 800E51C4 0000A025 */        or $s4, $zero, $zero
   /* 0609C8 800E51C8 19E00027 */      blez $t7, .L800E5268
   .L800E51CC:
-  /* 0609CC 800E51CC 3C118013 */       lui $s1, %hi(gFighterIsHitDetect)
-  /* 0609D0 800E51D0 263111B0 */     addiu $s1, $s1, %lo(gFighterIsHitDetect)
+  /* 0609CC 800E51CC 3C118013 */       lui $s1, %hi(gFTMainIsHitDetect)
+  /* 0609D0 800E51D0 263111B0 */     addiu $s1, $s1, %lo(gFTMainIsHitDetect)
   /* 0609D4 800E51D4 00009025 */        or $s2, $zero, $zero
   .L800E51D8:
-  /* 0609D8 800E51D8 8E390000 */        lw $t9, ($s1) # gFighterIsHitDetect + 0
+  /* 0609D8 800E51D8 8E390000 */        lw $t9, ($s1) # gFTMainIsHitDetect + 0
   /* 0609DC 800E51DC 02C02025 */        or $a0, $s6, $zero
   /* 0609E0 800E51E0 02802825 */        or $a1, $s4, $zero
   /* 0609E4 800E51E4 13200016 */      beqz $t9, .L800E5240
@@ -16687,7 +16687,7 @@ glabel ftMain_SearchWeaponHit
   /* 060A24 800E5224 02E03825 */        or $a3, $s7, $zero
   /* 060A28 800E5228 AFB00010 */        sw $s0, 0x10($sp)
   /* 060A2C 800E522C AFA90014 */        sw $t1, 0x14($sp)
-  /* 060A30 800E5230 0C038BC1 */       jal ftMain_UpdateAttackStatWeapon
+  /* 060A30 800E5230 0C038BC1 */       jal ftMainUpdateAttackStatWeapon
   /* 060A34 800E5234 AFAA0018 */        sw $t2, 0x18($sp)
   /* 060A38 800E5238 8FCB023C */        lw $t3, 0x23c($fp)
   /* 060A3C 800E523C 156000D7 */      bnez $t3, .L800E559C
@@ -16708,15 +16708,15 @@ glabel ftMain_SearchWeaponHit
   /* 060A6C 800E526C 0000A025 */        or $s4, $zero, $zero
   /* 060A70 800E5270 00008025 */        or $s0, $zero, $zero
   /* 060A74 800E5274 19A00010 */      blez $t5, .L800E52B8
-  /* 060A78 800E5278 3C158013 */       lui $s5, %hi(gFighterIsHurtDetect)
-  /* 060A7C 800E527C 26B511A0 */     addiu $s5, $s5, %lo(gFighterIsHurtDetect)
+  /* 060A78 800E5278 3C158013 */       lui $s5, %hi(gFTMainIsHurtDetect)
+  /* 060A7C 800E527C 26B511A0 */     addiu $s5, $s5, %lo(gFTMainIsHurtDetect)
   /* 060A80 800E5280 02C02025 */        or $a0, $s6, $zero
   .L800E5284:
   /* 060A84 800E5284 02802825 */        or $a1, $s4, $zero
   /* 060A88 800E5288 0C03BD05 */       jal ftCollision_CheckWeaponHitInRange
   /* 060A8C 800E528C 8FA600B8 */        lw $a2, 0xb8($sp)
   /* 060A90 800E5290 10400002 */      beqz $v0, .L800E529C
-  /* 060A94 800E5294 AEA20000 */        sw $v0, ($s5) # gFighterIsHurtDetect + 0
+  /* 060A94 800E5294 AEA20000 */        sw $v0, ($s5) # gFTMainIsHurtDetect + 0
   /* 060A98 800E5298 26100001 */     addiu $s0, $s0, 1
   .L800E529C:
   /* 060A9C 800E529C 8FB80088 */        lw $t8, 0x88($sp)
@@ -16738,12 +16738,12 @@ glabel ftMain_SearchWeaponHit
   /* 060AD8 800E52D8 0583001F */     bgezl $t4, .L800E5358
   /* 060ADC 800E52DC 82E9018D */        lb $t1, 0x18d($s7)
   /* 060AE0 800E52E0 8ECD0050 */        lw $t5, 0x50($s6)
-  /* 060AE4 800E52E4 3C158013 */       lui $s5, %hi(gFighterIsHurtDetect)
-  /* 060AE8 800E52E8 26B511A0 */     addiu $s5, $s5, %lo(gFighterIsHurtDetect)
+  /* 060AE4 800E52E4 3C158013 */       lui $s5, %hi(gFTMainIsHurtDetect)
+  /* 060AE8 800E52E8 26B511A0 */     addiu $s5, $s5, %lo(gFTMainIsHurtDetect)
   /* 060AEC 800E52EC 19A00019 */      blez $t5, .L800E5354
   /* 060AF0 800E52F0 0000A025 */        or $s4, $zero, $zero
   .L800E52F4:
-  /* 060AF4 800E52F4 8EB80000 */        lw $t8, ($s5) # gFighterIsHurtDetect + 0
+  /* 060AF4 800E52F4 8EB80000 */        lw $t8, ($s5) # gFTMainIsHurtDetect + 0
   /* 060AF8 800E52F8 02C02025 */        or $a0, $s6, $zero
   /* 060AFC 800E52FC 02802825 */        or $a1, $s4, $zero
   /* 060B00 800E5300 17000004 */      bnez $t8, .L800E5314
@@ -16759,7 +16759,7 @@ glabel ftMain_SearchWeaponHit
   /* 060B24 800E5324 03C02025 */        or $a0, $fp, $zero
   /* 060B28 800E5328 02C02825 */        or $a1, $s6, $zero
   /* 060B2C 800E532C 02E03025 */        or $a2, $s7, $zero
-  /* 060B30 800E5330 0C038C6D */       jal ftMain_UpdateReflectorStatWeapon
+  /* 060B30 800E5330 0C038C6D */       jal ftMainUpdateReflectorStatWeapon
   /* 060B34 800E5334 8FA700B8 */        lw $a3, 0xb8($sp)
   /* 060B38 800E5338 10000099 */         b .L800E55A0
   /* 060B3C 800E533C 8FB900B4 */        lw $t9, 0xb4($sp)
@@ -16780,12 +16780,12 @@ glabel ftMain_SearchWeaponHit
   /* 060B68 800E5368 0583001F */     bgezl $t4, .L800E53E8
   /* 060B6C 800E536C 8EEE018C */        lw $t6, 0x18c($s7)
   /* 060B70 800E5370 8ECD0050 */        lw $t5, 0x50($s6)
-  /* 060B74 800E5374 3C158013 */       lui $s5, %hi(gFighterIsHurtDetect)
-  /* 060B78 800E5378 26B511A0 */     addiu $s5, $s5, %lo(gFighterIsHurtDetect)
+  /* 060B74 800E5374 3C158013 */       lui $s5, %hi(gFTMainIsHurtDetect)
+  /* 060B78 800E5378 26B511A0 */     addiu $s5, $s5, %lo(gFTMainIsHurtDetect)
   /* 060B7C 800E537C 19A00019 */      blez $t5, .L800E53E4
   /* 060B80 800E5380 0000A025 */        or $s4, $zero, $zero
   .L800E5384:
-  /* 060B84 800E5384 8EB80000 */        lw $t8, ($s5) # gFighterIsHurtDetect + 0
+  /* 060B84 800E5384 8EB80000 */        lw $t8, ($s5) # gFTMainIsHurtDetect + 0
   /* 060B88 800E5388 02C02025 */        or $a0, $s6, $zero
   /* 060B8C 800E538C 02802825 */        or $a1, $s4, $zero
   /* 060B90 800E5390 17000004 */      bnez $t8, .L800E53A4
@@ -16801,7 +16801,7 @@ glabel ftMain_SearchWeaponHit
   /* 060BB4 800E53B4 03C02025 */        or $a0, $fp, $zero
   /* 060BB8 800E53B8 02C02825 */        or $a1, $s6, $zero
   /* 060BBC 800E53BC 02E03025 */        or $a2, $s7, $zero
-  /* 060BC0 800E53C0 0C038CC2 */       jal ftMain_UpdateAbsorbStatWeapon
+  /* 060BC0 800E53C0 0C038CC2 */       jal ftMainUpdateAbsorbStatWeapon
   /* 060BC4 800E53C4 8FA700B8 */        lw $a3, 0xb8($sp)
   /* 060BC8 800E53C8 10000075 */         b .L800E55A0
   /* 060BCC 800E53CC 8FB900B4 */        lw $t9, 0xb4($sp)
@@ -16822,12 +16822,12 @@ glabel ftMain_SearchWeaponHit
   /* 060BF8 800E53F8 0583002B */     bgezl $t4, .L800E54A8
   /* 060BFC 800E53FC 8EED05AC */        lw $t5, 0x5ac($s7)
   /* 060C00 800E5400 8ECD0050 */        lw $t5, 0x50($s6)
-  /* 060C04 800E5404 3C158013 */       lui $s5, %hi(gFighterIsHurtDetect)
-  /* 060C08 800E5408 26B511A0 */     addiu $s5, $s5, %lo(gFighterIsHurtDetect)
+  /* 060C04 800E5404 3C158013 */       lui $s5, %hi(gFTMainIsHurtDetect)
+  /* 060C08 800E5408 26B511A0 */     addiu $s5, $s5, %lo(gFTMainIsHurtDetect)
   /* 060C0C 800E540C 19A00025 */      blez $t5, .L800E54A4
   /* 060C10 800E5410 0000A025 */        or $s4, $zero, $zero
   .L800E5414:
-  /* 060C14 800E5414 8EB80000 */        lw $t8, ($s5) # gFighterIsHurtDetect + 0
+  /* 060C14 800E5414 8EB80000 */        lw $t8, ($s5) # gFTMainIsHurtDetect + 0
   /* 060C18 800E5418 02C02025 */        or $a0, $s6, $zero
   /* 060C1C 800E541C 02802825 */        or $a1, $s4, $zero
   /* 060C20 800E5420 17000004 */      bnez $t8, .L800E5434
@@ -16855,7 +16855,7 @@ glabel ftMain_SearchWeaponHit
   /* 060C74 800E5474 02E03825 */        or $a3, $s7, $zero
   /* 060C78 800E5478 AFA90010 */        sw $t1, 0x10($sp)
   /* 060C7C 800E547C AFAA0014 */        sw $t2, 0x14($sp)
-  /* 060C80 800E5480 0C038C12 */       jal ftMain_UpdateShieldStatWeapon
+  /* 060C80 800E5480 0C038C12 */       jal ftMainUpdateShieldStatWeapon
   /* 060C84 800E5484 E7A40018 */      swc1 $f4, 0x18($sp)
   /* 060C88 800E5488 10000045 */         b .L800E55A0
   /* 060C8C 800E548C 8FB900B4 */        lw $t9, 0xb4($sp)
@@ -16881,12 +16881,12 @@ glabel ftMain_SearchWeaponHit
   /* 060CCC 800E54CC 51E10034 */      beql $t7, $at, .L800E55A0
   /* 060CD0 800E54D0 8FB900B4 */        lw $t9, 0xb4($sp)
   /* 060CD4 800E54D4 8ED90050 */        lw $t9, 0x50($s6)
-  /* 060CD8 800E54D8 3C158013 */       lui $s5, %hi(gFighterIsHurtDetect)
-  /* 060CDC 800E54DC 26B511A0 */     addiu $s5, $s5, %lo(gFighterIsHurtDetect)
+  /* 060CD8 800E54D8 3C158013 */       lui $s5, %hi(gFTMainIsHurtDetect)
+  /* 060CDC 800E54DC 26B511A0 */     addiu $s5, $s5, %lo(gFTMainIsHurtDetect)
   /* 060CE0 800E54E0 1B20002E */      blez $t9, .L800E559C
   /* 060CE4 800E54E4 0000A025 */        or $s4, $zero, $zero
   .L800E54E8:
-  /* 060CE8 800E54E8 8EAE0000 */        lw $t6, ($s5) # gFighterIsHurtDetect + 0
+  /* 060CE8 800E54E8 8EAE0000 */        lw $t6, ($s5) # gFTMainIsHurtDetect + 0
   /* 060CEC 800E54EC 8FA90088 */        lw $t1, 0x88($sp)
   /* 060CF0 800E54F0 00009825 */        or $s3, $zero, $zero
   /* 060CF4 800E54F4 15C00003 */      bnez $t6, .L800E5504
@@ -16894,7 +16894,7 @@ glabel ftMain_SearchWeaponHit
   /* 060CFC 800E54FC 10000023 */         b .L800E558C
   /* 060D00 800E5500 8D220050 */        lw $v0, 0x50($t1)
   .L800E5504:
-  /* 060D04 800E5504 8E2A05BC */        lw $t2, 0x5bc($s1) # gFighterIsHitDetect + 1468
+  /* 060D04 800E5504 8E2A05BC */        lw $t2, 0x5bc($s1) # gFTMainIsHitDetect + 1468
   /* 060D08 800E5508 263005BC */     addiu $s0, $s1, 0x5bc
   /* 060D0C 800E550C 02C02025 */        or $a0, $s6, $zero
   /* 060D10 800E5510 15400004 */      bnez $t2, .L800E5524
@@ -16919,7 +16919,7 @@ glabel ftMain_SearchWeaponHit
   /* 060D58 800E5558 02E03825 */        or $a3, $s7, $zero
   /* 060D5C 800E555C AFB00010 */        sw $s0, 0x10($sp)
   /* 060D60 800E5560 AFAD0014 */        sw $t5, 0x14($sp)
-  /* 060D64 800E5564 0C038D06 */       jal ftMain_UpdateDamageStatWeapon
+  /* 060D64 800E5564 0C038D06 */       jal ftMainUpdateDamageStatWeapon
   /* 060D68 800E5568 AFB80018 */        sw $t8, 0x18($sp)
   /* 060D6C 800E556C 1000000C */         b .L800E55A0
   /* 060D70 800E5570 8FB900B4 */        lw $t9, 0xb4($sp)
@@ -16955,7 +16955,7 @@ glabel ftMain_SearchWeaponHit
   /* 060DD4 800E55D4 03E00008 */        jr $ra
   /* 060DD8 800E55D8 27BD00B8 */     addiu $sp, $sp, 0xb8
 
-glabel ftMain_SearchItemHit
+glabel ftMainSearchItemHit
   /* 060DDC 800E55DC 27BDFF48 */     addiu $sp, $sp, -0xb8
   /* 060DE0 800E55E0 3C0F8004 */       lui $t7, %hi(gOMObjCommonLinks + (0x04 * 4))
   /* 060DE4 800E55E4 8DEF6700 */        lw $t7, %lo(gOMObjCommonLinks + (0x04 * 4))($t7)
@@ -17085,12 +17085,12 @@ glabel ftMain_SearchItemHit
   /* 060FBC 800E57BC 02E02825 */        or $a1, $s7, $zero
   /* 060FC0 800E57C0 05A00061 */      bltz $t5, .L800E5948
   .L800E57C4:
-  /* 060FC4 800E57C4 3C068013 */       lui $a2, %hi(gFighterIsHitDetect)
-  /* 060FC8 800E57C8 24C611B0 */     addiu $a2, $a2, %lo(gFighterIsHitDetect)
+  /* 060FC4 800E57C4 3C068013 */       lui $a2, %hi(gFTMainIsHitDetect)
+  /* 060FC8 800E57C8 24C611B0 */     addiu $a2, $a2, %lo(gFTMainIsHitDetect)
   .L800E57CC:
   /* 060FCC 800E57CC 8CB90294 */        lw $t9, 0x294($a1)
   /* 060FD0 800E57D0 5320002B */      beql $t9, $zero, .L800E5880
-  /* 060FD4 800E57D4 ACC00000 */        sw $zero, ($a2) # gFighterIsHitDetect + 0
+  /* 060FD4 800E57D4 ACC00000 */        sw $zero, ($a2) # gFTMainIsHitDetect + 0
   /* 060FD8 800E57D8 8FC20108 */        lw $v0, 0x108($fp)
   /* 060FDC 800E57DC 24010001 */     addiu $at, $zero, 1
   /* 060FE0 800E57E0 24A40294 */     addiu $a0, $a1, 0x294
@@ -17105,7 +17105,7 @@ glabel ftMain_SearchItemHit
   /* 061000 800E5800 24A40294 */     addiu $a0, $a1, 0x294
   /* 061004 800E5804 808E003D */        lb $t6, 0x3d($a0)
   /* 061008 800E5808 05C3001D */     bgezl $t6, .L800E5880
-  /* 06100C 800E580C ACC00000 */        sw $zero, ($a2) # gFighterIsHitDetect + 0
+  /* 06100C 800E580C ACC00000 */        sw $zero, ($a2) # gFTMainIsHitDetect + 0
   /* 061010 800E5810 93AB0098 */       lbu $t3, 0x98($sp)
   .L800E5814:
   /* 061014 800E5814 00801025 */        or $v0, $a0, $zero
@@ -17133,15 +17133,15 @@ glabel ftMain_SearchItemHit
   /* 061060 800E5860 00097100 */       sll $t6, $t1, 4
   /* 061064 800E5864 000E5742 */       srl $t2, $t6, 0x1d
   /* 061068 800E5868 55410005 */      bnel $t2, $at, .L800E5880
-  /* 06106C 800E586C ACC00000 */        sw $zero, ($a2) # gFighterIsHitDetect + 0
-  /* 061070 800E5870 ACCB0000 */        sw $t3, ($a2) # gFighterIsHitDetect + 0
+  /* 06106C 800E586C ACC00000 */        sw $zero, ($a2) # gFTMainIsHitDetect + 0
+  /* 061070 800E5870 ACCB0000 */        sw $t3, ($a2) # gFTMainIsHitDetect + 0
   /* 061074 800E5874 10000002 */         b .L800E5880
   /* 061078 800E5878 25080001 */     addiu $t0, $t0, 1
   .L800E587C:
-  /* 06107C 800E587C ACC00000 */        sw $zero, ($a2) # gFighterIsHitDetect + 0
+  /* 06107C 800E587C ACC00000 */        sw $zero, ($a2) # gFTMainIsHitDetect + 0
   .L800E5880:
-  /* 061080 800E5880 3C0C8013 */       lui $t4, %hi(gFighterHitLogIndex)
-  /* 061084 800E5884 258C11C0 */     addiu $t4, $t4, %lo(gFighterHitLogIndex)
+  /* 061080 800E5880 3C0C8013 */       lui $t4, %hi(sFTMainHitLogID)
+  /* 061084 800E5884 258C11C0 */     addiu $t4, $t4, %lo(sFTMainHitLogID)
   /* 061088 800E5888 24C60004 */     addiu $a2, $a2, 4
   /* 06108C 800E588C 00CC082B */      sltu $at, $a2, $t4
   /* 061090 800E5890 1420FFCE */      bnez $at, .L800E57CC
@@ -17152,11 +17152,11 @@ glabel ftMain_SearchItemHit
   /* 0610A4 800E58A4 0000A025 */        or $s4, $zero, $zero
   /* 0610A8 800E58A8 19A00027 */      blez $t5, .L800E5948
   .L800E58AC:
-  /* 0610AC 800E58AC 3C118013 */       lui $s1, %hi(gFighterIsHitDetect)
-  /* 0610B0 800E58B0 263111B0 */     addiu $s1, $s1, %lo(gFighterIsHitDetect)
+  /* 0610AC 800E58AC 3C118013 */       lui $s1, %hi(gFTMainIsHitDetect)
+  /* 0610B0 800E58B0 263111B0 */     addiu $s1, $s1, %lo(gFTMainIsHitDetect)
   /* 0610B4 800E58B4 00009025 */        or $s2, $zero, $zero
   .L800E58B8:
-  /* 0610B8 800E58B8 8E390000 */        lw $t9, ($s1) # gFighterIsHitDetect + 0
+  /* 0610B8 800E58B8 8E390000 */        lw $t9, ($s1) # gFTMainIsHitDetect + 0
   /* 0610BC 800E58BC 02C02025 */        or $a0, $s6, $zero
   /* 0610C0 800E58C0 02802825 */        or $a1, $s4, $zero
   /* 0610C4 800E58C4 13200016 */      beqz $t9, .L800E5920
@@ -17178,7 +17178,7 @@ glabel ftMain_SearchItemHit
   /* 061104 800E5904 02E03825 */        or $a3, $s7, $zero
   /* 061108 800E5908 AFB00010 */        sw $s0, 0x10($sp)
   /* 06110C 800E590C AFAF0014 */        sw $t7, 0x14($sp)
-  /* 061110 800E5910 0C038D6F */       jal ftMain_UpdateAttackStatItem
+  /* 061110 800E5910 0C038D6F */       jal ftMainUpdateAttackStatItem
   /* 061114 800E5914 AFA90018 */        sw $t1, 0x18($sp)
   /* 061118 800E5918 8FCE0270 */        lw $t6, 0x270($fp)
   /* 06111C 800E591C 15C000B4 */      bnez $t6, .L800E5BF0
@@ -17199,15 +17199,15 @@ glabel ftMain_SearchItemHit
   /* 06114C 800E594C 0000A025 */        or $s4, $zero, $zero
   /* 061150 800E5950 00008025 */        or $s0, $zero, $zero
   /* 061154 800E5954 19600010 */      blez $t3, .L800E5998
-  /* 061158 800E5958 3C158013 */       lui $s5, %hi(gFighterIsHurtDetect)
-  /* 06115C 800E595C 26B511A0 */     addiu $s5, $s5, %lo(gFighterIsHurtDetect)
+  /* 061158 800E5958 3C158013 */       lui $s5, %hi(gFTMainIsHurtDetect)
+  /* 06115C 800E595C 26B511A0 */     addiu $s5, $s5, %lo(gFTMainIsHurtDetect)
   /* 061160 800E5960 02C02025 */        or $a0, $s6, $zero
   .L800E5964:
   /* 061164 800E5964 02802825 */        or $a1, $s4, $zero
   /* 061168 800E5968 0C03BD3D */       jal ftCollision_CheckItemHitInRange
   /* 06116C 800E596C 8FA600B8 */        lw $a2, 0xb8($sp)
   /* 061170 800E5970 10400002 */      beqz $v0, .L800E597C
-  /* 061174 800E5974 AEA20000 */        sw $v0, ($s5) # gFighterIsHurtDetect + 0
+  /* 061174 800E5974 AEA20000 */        sw $v0, ($s5) # gFTMainIsHurtDetect + 0
   /* 061178 800E5978 26100001 */     addiu $s0, $s0, 1
   .L800E597C:
   /* 06117C 800E597C 8FAC0088 */        lw $t4, 0x88($sp)
@@ -17229,12 +17229,12 @@ glabel ftMain_SearchItemHit
   /* 0611B8 800E59B8 05C30020 */     bgezl $t6, .L800E5A3C
   /* 0611BC 800E59BC 0002C680 */       sll $t8, $v0, 0x1a
   /* 0611C0 800E59C0 8ECA0054 */        lw $t2, 0x54($s6)
-  /* 0611C4 800E59C4 3C158013 */       lui $s5, %hi(gFighterIsHurtDetect)
-  /* 0611C8 800E59C8 26B511A0 */     addiu $s5, $s5, %lo(gFighterIsHurtDetect)
+  /* 0611C4 800E59C4 3C158013 */       lui $s5, %hi(gFTMainIsHurtDetect)
+  /* 0611C8 800E59C8 26B511A0 */     addiu $s5, $s5, %lo(gFTMainIsHurtDetect)
   /* 0611CC 800E59CC 1940001A */      blez $t2, .L800E5A38
   /* 0611D0 800E59D0 0000A025 */        or $s4, $zero, $zero
   .L800E59D4:
-  /* 0611D4 800E59D4 8EAB0000 */        lw $t3, ($s5) # gFighterIsHurtDetect + 0
+  /* 0611D4 800E59D4 8EAB0000 */        lw $t3, ($s5) # gFTMainIsHurtDetect + 0
   /* 0611D8 800E59D8 02C02025 */        or $a0, $s6, $zero
   /* 0611DC 800E59DC 02802825 */        or $a1, $s4, $zero
   /* 0611E0 800E59E0 15600004 */      bnez $t3, .L800E59F4
@@ -17250,7 +17250,7 @@ glabel ftMain_SearchItemHit
   /* 061204 800E5A04 03C02025 */        or $a0, $fp, $zero
   /* 061208 800E5A08 02C02825 */        or $a1, $s6, $zero
   /* 06120C 800E5A0C 02E03025 */        or $a2, $s7, $zero
-  /* 061210 800E5A10 0C038E18 */       jal ftMain_UpdateReflectorStatItem
+  /* 061210 800E5A10 0C038E18 */       jal ftMainUpdateReflectorStatItem
   /* 061214 800E5A14 8FA700B8 */        lw $a3, 0xb8($sp)
   /* 061218 800E5A18 10000076 */         b .L800E5BF4
   /* 06121C 800E5A1C 8FAD00B4 */        lw $t5, 0xb4($sp)
@@ -17272,12 +17272,12 @@ glabel ftMain_SearchItemHit
   /* 06124C 800E5A4C 05C3002B */     bgezl $t6, .L800E5AFC
   /* 061250 800E5A50 8EEA05AC */        lw $t2, 0x5ac($s7)
   /* 061254 800E5A54 8ECA0054 */        lw $t2, 0x54($s6)
-  /* 061258 800E5A58 3C158013 */       lui $s5, %hi(gFighterIsHurtDetect)
-  /* 06125C 800E5A5C 26B511A0 */     addiu $s5, $s5, %lo(gFighterIsHurtDetect)
+  /* 061258 800E5A58 3C158013 */       lui $s5, %hi(gFTMainIsHurtDetect)
+  /* 06125C 800E5A5C 26B511A0 */     addiu $s5, $s5, %lo(gFTMainIsHurtDetect)
   /* 061260 800E5A60 19400025 */      blez $t2, .L800E5AF8
   /* 061264 800E5A64 0000A025 */        or $s4, $zero, $zero
   .L800E5A68:
-  /* 061268 800E5A68 8EAB0000 */        lw $t3, ($s5) # gFighterIsHurtDetect + 0
+  /* 061268 800E5A68 8EAB0000 */        lw $t3, ($s5) # gFTMainIsHurtDetect + 0
   /* 06126C 800E5A6C 02C02025 */        or $a0, $s6, $zero
   /* 061270 800E5A70 02802825 */        or $a1, $s4, $zero
   /* 061274 800E5A74 15600004 */      bnez $t3, .L800E5A88
@@ -17305,7 +17305,7 @@ glabel ftMain_SearchItemHit
   /* 0612C8 800E5AC8 02E03825 */        or $a3, $s7, $zero
   /* 0612CC 800E5ACC AFB80010 */        sw $t8, 0x10($sp)
   /* 0612D0 800E5AD0 AFAF0014 */        sw $t7, 0x14($sp)
-  /* 0612D4 800E5AD4 0C038DBE */       jal ftMain_UpdateShieldStatItem
+  /* 0612D4 800E5AD4 0C038DBE */       jal ftMainUpdateShieldStatItem
   /* 0612D8 800E5AD8 E7A40018 */      swc1 $f4, 0x18($sp)
   /* 0612DC 800E5ADC 10000045 */         b .L800E5BF4
   /* 0612E0 800E5AE0 8FAD00B4 */        lw $t5, 0xb4($sp)
@@ -17331,12 +17331,12 @@ glabel ftMain_SearchItemHit
   /* 061320 800E5B20 51810034 */      beql $t4, $at, .L800E5BF4
   /* 061324 800E5B24 8FAD00B4 */        lw $t5, 0xb4($sp)
   /* 061328 800E5B28 8ECD0054 */        lw $t5, 0x54($s6)
-  /* 06132C 800E5B2C 3C158013 */       lui $s5, %hi(gFighterIsHurtDetect)
-  /* 061330 800E5B30 26B511A0 */     addiu $s5, $s5, %lo(gFighterIsHurtDetect)
+  /* 06132C 800E5B2C 3C158013 */       lui $s5, %hi(gFTMainIsHurtDetect)
+  /* 061330 800E5B30 26B511A0 */     addiu $s5, $s5, %lo(gFTMainIsHurtDetect)
   /* 061334 800E5B34 19A0002E */      blez $t5, .L800E5BF0
   /* 061338 800E5B38 0000A025 */        or $s4, $zero, $zero
   .L800E5B3C:
-  /* 06133C 800E5B3C 8EB90000 */        lw $t9, ($s5) # gFighterIsHurtDetect + 0
+  /* 06133C 800E5B3C 8EB90000 */        lw $t9, ($s5) # gFTMainIsHurtDetect + 0
   /* 061340 800E5B40 8FB80088 */        lw $t8, 0x88($sp)
   /* 061344 800E5B44 00009825 */        or $s3, $zero, $zero
   /* 061348 800E5B48 17200003 */      bnez $t9, .L800E5B58
@@ -17344,7 +17344,7 @@ glabel ftMain_SearchItemHit
   /* 061350 800E5B50 10000023 */         b .L800E5BE0
   /* 061354 800E5B54 8F020054 */        lw $v0, 0x54($t8)
   .L800E5B58:
-  /* 061358 800E5B58 8E2F05BC */        lw $t7, 0x5bc($s1) # gFighterIsHitDetect + 1468
+  /* 061358 800E5B58 8E2F05BC */        lw $t7, 0x5bc($s1) # gFTMainIsHitDetect + 1468
   /* 06135C 800E5B5C 263005BC */     addiu $s0, $s1, 0x5bc
   /* 061360 800E5B60 02C02025 */        or $a0, $s6, $zero
   /* 061364 800E5B64 15E00004 */      bnez $t7, .L800E5B78
@@ -17369,7 +17369,7 @@ glabel ftMain_SearchItemHit
   /* 0613AC 800E5BAC 02E03825 */        or $a3, $s7, $zero
   /* 0613B0 800E5BB0 AFB00010 */        sw $s0, 0x10($sp)
   /* 0613B4 800E5BB4 AFAA0014 */        sw $t2, 0x14($sp)
-  /* 0613B8 800E5BB8 0C038E6C */       jal ftMain_UpdateDamageStatItem
+  /* 0613B8 800E5BB8 0C038E6C */       jal ftMainUpdateDamageStatItem
   /* 0613BC 800E5BBC AFAB0018 */        sw $t3, 0x18($sp)
   /* 0613C0 800E5BC0 1000000C */         b .L800E5BF4
   /* 0613C4 800E5BC4 8FAD00B4 */        lw $t5, 0xb4($sp)
@@ -17405,7 +17405,7 @@ glabel ftMain_SearchItemHit
   /* 061428 800E5C28 03E00008 */        jr $ra
   /* 06142C 800E5C2C 27BD00B8 */     addiu $sp, $sp, 0xb8
 
-glabel ftMain_GetGroundHitboxPointer
+glabel ftMainGetGroundHitboxPointer
   /* 061430 800E5C30 8C8E0170 */        lw $t6, 0x170($a0)
   /* 061434 800E5C34 55C00038 */      bnel $t6, $zero, .L800E5D18
   /* 061438 800E5C38 00001025 */        or $v0, $zero, $zero
@@ -17432,8 +17432,8 @@ glabel ftMain_GetGroundHitboxPointer
   /* 06148C 800E5C8C 01000008 */        jr $t0
   /* 061490 800E5C90 00000000 */       nop 
   glabel jtgt_ovl2_800E5C94
-  /* 061494 800E5C94 3C098013 */       lui $t1, %hi(dGroundHitCollisionAttributes)
-  /* 061498 800E5C98 25298D30 */     addiu $t1, $t1, %lo(dGroundHitCollisionAttributes)
+  /* 061494 800E5C94 3C098013 */       lui $t1, %hi(dFTMainGroundHitCollisionAttributes)
+  /* 061498 800E5C98 25298D30 */     addiu $t1, $t1, %lo(dFTMainGroundHitCollisionAttributes)
   /* 06149C 800E5C9C ACA90000 */        sw $t1, ($a1)
   /* 0614A0 800E5CA0 03E00008 */        jr $ra
   /* 0614A4 800E5CA4 24020001 */     addiu $v0, $zero, 1
@@ -17483,7 +17483,7 @@ glabel ftMain_GetGroundHitboxPointer
   /* 061518 800E5D18 03E00008 */        jr $ra
   /* 06151C 800E5D1C 00000000 */       nop 
 
-glabel ftMain_SearchGroundHit
+glabel ftMainSearchGroundHit
   /* 061520 800E5D20 27BDFFA8 */     addiu $sp, $sp, -0x58
   /* 061524 800E5D24 AFBF003C */        sw $ra, 0x3c($sp)
   /* 061528 800E5D28 AFB60038 */        sw $s6, 0x38($sp)
@@ -17494,10 +17494,10 @@ glabel ftMain_SearchGroundHit
   /* 06153C 800E5D3C AFB10024 */        sw $s1, 0x24($sp)
   /* 061540 800E5D40 AFB00020 */        sw $s0, 0x20($sp)
   /* 061544 800E5D44 8C960084 */        lw $s6, 0x84($a0)
-  /* 061548 800E5D48 3C118013 */       lui $s1, %hi(gMapEnvironments)
+  /* 061548 800E5D48 3C118013 */       lui $s1, %hi(sFTMainMapEnvs)
   /* 06154C 800E5D4C 00809025 */        or $s2, $a0, $zero
   /* 061550 800E5D50 8ECE0040 */        lw $t6, 0x40($s6)
-  /* 061554 800E5D54 26311190 */     addiu $s1, $s1, %lo(gMapEnvironments)
+  /* 061554 800E5D54 26311190 */     addiu $s1, $s1, %lo(sFTMainMapEnvs)
   /* 061558 800E5D58 15C00009 */      bnez $t6, .L800E5D80
   /* 06155C 800E5D5C 00000000 */       nop 
   /* 061560 800E5D60 8EC20164 */        lw $v0, 0x164($s6)
@@ -17514,18 +17514,18 @@ glabel ftMain_SearchGroundHit
   /* 061584 800E5D84 02402025 */        or $a0, $s2, $zero
   /* 061588 800E5D88 24010001 */     addiu $at, $zero, 1
   /* 06158C 800E5D8C 14410028 */       bne $v0, $at, .L800E5E30
-  /* 061590 800E5D90 3C138013 */       lui $s3, %hi(gMapEnvironmentCount)
-  /* 061594 800E5D94 2673119C */     addiu $s3, $s3, %lo(gMapEnvironmentCount)
-  /* 061598 800E5D98 8E790000 */        lw $t9, ($s3) # gMapEnvironmentCount + 0
+  /* 061590 800E5D90 3C138013 */       lui $s3, %hi(sFTMainMapEnvNum)
+  /* 061594 800E5D94 2673119C */     addiu $s3, $s3, %lo(sFTMainMapEnvNum)
+  /* 061598 800E5D98 8E790000 */        lw $t9, ($s3) # sFTMainMapEnvNum + 0
   /* 06159C 800E5D9C 00008025 */        or $s0, $zero, $zero
   /* 0615A0 800E5DA0 27B50044 */     addiu $s5, $sp, 0x44
   /* 0615A4 800E5DA4 1B200017 */      blez $t9, .L800E5E04
   /* 0615A8 800E5DA8 27B40048 */     addiu $s4, $sp, 0x48
-  /* 0615AC 800E5DAC 8E240000 */        lw $a0, ($s1) # gMapEnvironments + 0
+  /* 0615AC 800E5DAC 8E240000 */        lw $a0, ($s1) # sFTMainMapEnvs + 0
   .L800E5DB0:
   /* 0615B0 800E5DB0 5080000F */      beql $a0, $zero, .L800E5DF0
-  /* 0615B4 800E5DB4 8E690000 */        lw $t1, ($s3) # gMapEnvironmentCount + 0
-  /* 0615B8 800E5DB8 8E390004 */        lw $t9, 4($s1) # gMapEnvironments + 4
+  /* 0615B4 800E5DB4 8E690000 */        lw $t1, ($s3) # sFTMainMapEnvNum + 0
+  /* 0615B8 800E5DB8 8E390004 */        lw $t9, 4($s1) # sFTMainMapEnvs + 4
   /* 0615BC 800E5DBC 02402825 */        or $a1, $s2, $zero
   /* 0615C0 800E5DC0 02803025 */        or $a2, $s4, $zero
   /* 0615C4 800E5DC4 0320F809 */      jalr $t9
@@ -17533,22 +17533,22 @@ glabel ftMain_SearchGroundHit
   /* 0615CC 800E5DCC 10400007 */      beqz $v0, .L800E5DEC
   /* 0615D0 800E5DD0 02402825 */        or $a1, $s2, $zero
   /* 0615D4 800E5DD4 8FA80044 */        lw $t0, 0x44($sp)
-  /* 0615D8 800E5DD8 8E240000 */        lw $a0, ($s1) # gMapEnvironments + 0
+  /* 0615D8 800E5DD8 8E240000 */        lw $a0, ($s1) # sFTMainMapEnvs + 0
   /* 0615DC 800E5DDC 02C03025 */        or $a2, $s6, $zero
   /* 0615E0 800E5DE0 8FA70048 */        lw $a3, 0x48($sp)
-  /* 0615E4 800E5DE4 0C038F2B */       jal ftMain_UpdateDamageStatGround
+  /* 0615E4 800E5DE4 0C038F2B */       jal ftMainUpdateDamageStatGround
   /* 0615E8 800E5DE8 AFA80010 */        sw $t0, 0x10($sp)
   .L800E5DEC:
-  /* 0615EC 800E5DEC 8E690000 */        lw $t1, ($s3) # gMapEnvironmentCount + 0
+  /* 0615EC 800E5DEC 8E690000 */        lw $t1, ($s3) # sFTMainMapEnvNum + 0
   .L800E5DF0:
   /* 0615F0 800E5DF0 26100001 */     addiu $s0, $s0, 1
   /* 0615F4 800E5DF4 26310008 */     addiu $s1, $s1, 8
   /* 0615F8 800E5DF8 0209082A */       slt $at, $s0, $t1
   /* 0615FC 800E5DFC 5420FFEC */      bnel $at, $zero, .L800E5DB0
-  /* 061600 800E5E00 8E240000 */        lw $a0, ($s1) # gMapEnvironments + 0
+  /* 061600 800E5E00 8E240000 */        lw $a0, ($s1) # sFTMainMapEnvs + 0
   .L800E5E04:
   /* 061604 800E5E04 27A50048 */     addiu $a1, $sp, 0x48
-  /* 061608 800E5E08 0C03970C */       jal ftMain_GetGroundHitboxPointer
+  /* 061608 800E5E08 0C03970C */       jal ftMainGetGroundHitboxPointer
   /* 06160C 800E5E0C 02C02025 */        or $a0, $s6, $zero
   /* 061610 800E5E10 10400007 */      beqz $v0, .L800E5E30
   /* 061614 800E5E14 8FA70048 */        lw $a3, 0x48($sp)
@@ -17556,7 +17556,7 @@ glabel ftMain_SearchGroundHit
   /* 06161C 800E5E1C 00002025 */        or $a0, $zero, $zero
   /* 061620 800E5E20 02402825 */        or $a1, $s2, $zero
   /* 061624 800E5E24 02C03025 */        or $a2, $s6, $zero
-  /* 061628 800E5E28 0C038F2B */       jal ftMain_UpdateDamageStatGround
+  /* 061628 800E5E28 0C038F2B */       jal ftMainUpdateDamageStatGround
   /* 06162C 800E5E2C AFAB0010 */        sw $t3, 0x10($sp)
   .L800E5E30:
   /* 061630 800E5E30 8FBF003C */        lw $ra, 0x3c($sp)
@@ -17570,7 +17570,7 @@ glabel ftMain_SearchGroundHit
   /* 061650 800E5E50 03E00008 */        jr $ra
   /* 061654 800E5E54 27BD0058 */     addiu $sp, $sp, 0x58
 
-glabel ftMain_SearchFighterCatch
+glabel ftMainSearchFighterCatch
   /* 061658 800E5E58 27BDFF78 */     addiu $sp, $sp, -0x88
   /* 06165C 800E5E5C AFBF0044 */        sw $ra, 0x44($sp)
   /* 061660 800E5E60 AFBE0040 */        sw $fp, 0x40($sp)
@@ -17721,7 +17721,7 @@ glabel ftMain_SearchFighterCatch
   /* 061880 800E6080 02402825 */        or $a1, $s2, $zero
   /* 061884 800E6084 8FA6007C */        lw $a2, 0x7c($sp)
   /* 061888 800E6088 8FA70088 */        lw $a3, 0x88($sp)
-  /* 06188C 800E608C 0C038AE2 */       jal ftMain_UpdateCatchStatFighter
+  /* 06188C 800E608C 0C038AE2 */       jal ftMainUpdateCatchStatFighter
   /* 061890 800E6090 AFB30010 */        sw $s3, 0x10($sp)
   /* 061894 800E6094 1000000B */         b .L800E60C4
   /* 061898 800E6098 24050001 */     addiu $a1, $zero, 1
@@ -17757,19 +17757,19 @@ glabel ftMain_SearchFighterCatch
   /* 0618F8 800E60F8 03E00008 */        jr $ra
   /* 0618FC 800E60FC 27BD0088 */     addiu $sp, $sp, 0x88
 
-glabel ftMain_ProcSearchAllCatch
+glabel ftMainProcSearchAllCatch
   /* 061900 800E6100 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 061904 800E6104 AFBF001C */        sw $ra, 0x1c($sp)
   /* 061908 800E6108 AFB10018 */        sw $s1, 0x18($sp)
   /* 06190C 800E610C AFB00014 */        sw $s0, 0x14($sp)
   /* 061910 800E6110 00808825 */        or $s1, $a0, $zero
-  /* 061914 800E6114 0C0387BA */       jal ftMain_SearchHitMapObject
+  /* 061914 800E6114 0C0387BA */       jal ftMainSearchHitMapObject
   /* 061918 800E6118 8C900084 */        lw $s0, 0x84($a0)
   /* 06191C 800E611C 8E0E0190 */        lw $t6, 0x190($s0)
   /* 061920 800E6120 000EC480 */       sll $t8, $t6, 0x12
   /* 061924 800E6124 07030010 */     bgezl $t8, .L800E6168
   /* 061928 800E6128 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 06192C 800E612C 0C039796 */       jal ftMain_SearchFighterCatch
+  /* 06192C 800E612C 0C039796 */       jal ftMainSearchFighterCatch
   /* 061930 800E6130 02202025 */        or $a0, $s1, $zero
   /* 061934 800E6134 8E190830 */        lw $t9, 0x830($s0)
   /* 061938 800E6138 5320000B */      beql $t9, $zero, .L800E6168
@@ -17790,30 +17790,30 @@ glabel ftMain_ProcSearchAllCatch
   /* 061970 800E6170 03E00008 */        jr $ra
   /* 061974 800E6174 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel ftMain_ProcSearchAllHit
+glabel ftMainProcSearchAllHit
   /* 061978 800E6178 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 06197C 800E617C AFBF001C */        sw $ra, 0x1c($sp)
   /* 061980 800E6180 AFB00018 */        sw $s0, 0x18($sp)
   /* 061984 800E6184 8C820084 */        lw $v0, 0x84($a0)
   /* 061988 800E6188 00808025 */        or $s0, $a0, $zero
-  /* 06198C 800E618C 3C018013 */       lui $at, %hi(gFighterHitLogIndex)
+  /* 06198C 800E618C 3C018013 */       lui $at, %hi(sFTMainHitLogID)
   /* 061990 800E6190 8C4E0190 */        lw $t6, 0x190($v0)
   /* 061994 800E6194 000EC240 */       sll $t8, $t6, 9
   /* 061998 800E6198 07020010 */     bltzl $t8, .L800E61DC
   /* 06199C 800E619C 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 0619A0 800E61A0 0C03921C */       jal ftMain_SearchFighterHit
-  /* 0619A4 800E61A4 AC2011C0 */        sw $zero, %lo(gFighterHitLogIndex)($at)
-  /* 0619A8 800E61A8 0C039577 */       jal ftMain_SearchItemHit
+  /* 0619A0 800E61A0 0C03921C */       jal ftMainSearchFighterHit
+  /* 0619A4 800E61A4 AC2011C0 */        sw $zero, %lo(sFTMainHitLogID)($at)
+  /* 0619A8 800E61A8 0C039577 */       jal ftMainSearchItemHit
   /* 0619AC 800E61AC 02002025 */        or $a0, $s0, $zero
-  /* 0619B0 800E61B0 0C0393B5 */       jal ftMain_SearchWeaponHit
+  /* 0619B0 800E61B0 0C0393B5 */       jal ftMainSearchWeaponHit
   /* 0619B4 800E61B4 02002025 */        or $a0, $s0, $zero
-  /* 0619B8 800E61B8 0C039748 */       jal ftMain_SearchGroundHit
+  /* 0619B8 800E61B8 0C039748 */       jal ftMainSearchGroundHit
   /* 0619BC 800E61BC 02002025 */        or $a0, $s0, $zero
-  /* 0619C0 800E61C0 3C198013 */       lui $t9, %hi(gFighterHitLogIndex)
-  /* 0619C4 800E61C4 8F3911C0 */        lw $t9, %lo(gFighterHitLogIndex)($t9)
+  /* 0619C0 800E61C0 3C198013 */       lui $t9, %hi(sFTMainHitLogID)
+  /* 0619C4 800E61C4 8F3911C0 */        lw $t9, %lo(sFTMainHitLogID)($t9)
   /* 0619C8 800E61C8 53200004 */      beql $t9, $zero, .L800E61DC
   /* 0619CC 800E61CC 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 0619D0 800E61D0 0C038FAF */       jal ftMain_ProcessHitCollisionStatsMain
+  /* 0619D0 800E61D0 0C038FAF */       jal ftMainProcessHitCollisionStatsMain
   /* 0619D4 800E61D4 02002025 */        or $a0, $s0, $zero
   /* 0619D8 800E61D8 8FBF001C */        lw $ra, 0x1c($sp)
   .L800E61DC:
@@ -17822,7 +17822,7 @@ glabel ftMain_ProcSearchAllHit
   /* 0619E4 800E61E4 03E00008 */        jr $ra
   /* 0619E8 800E61E8 00000000 */       nop 
 
-glabel ftMain_ProcUpdateMain
+glabel ftMainProcUpdateMain
   /* 0619EC 800E61EC 27BDFF60 */     addiu $sp, $sp, -0xa0
   /* 0619F0 800E61F0 AFBF0024 */        sw $ra, 0x24($sp)
   /* 0619F4 800E61F4 AFB00020 */        sw $s0, 0x20($sp)
@@ -18016,7 +18016,7 @@ glabel ftMain_ProcUpdateMain
   /* 061C98 800E6498 00000000 */       nop 
   /* 061C9C 800E649C 58C00077 */     blezl $a2, .L800E667C
   /* 061CA0 800E64A0 8FAE0098 */        lw $t6, 0x98($sp)
-  /* 061CA4 800E64A4 0C03A01B */       jal ftMain_MakeRumble
+  /* 061CA4 800E64A4 0C03A01B */       jal ftMainMakeRumble
   /* 061CA8 800E64A8 00002825 */        or $a1, $zero, $zero
   /* 061CAC 800E64AC 10000073 */         b .L800E667C
   /* 061CB0 800E64B0 8FAE0098 */        lw $t6, 0x98($sp)
@@ -18085,7 +18085,7 @@ glabel ftMain_ProcUpdateMain
   /* 061D8C 800E658C 31F803FF */      andi $t8, $t7, 0x3ff
   /* 061D90 800E6590 17010005 */       bne $t8, $at, .L800E65A8
   /* 061D94 800E6594 2405000A */     addiu $a1, $zero, 0xa
-  /* 061D98 800E6598 0C03A01B */       jal ftMain_MakeRumble
+  /* 061D98 800E6598 0C03A01B */       jal ftMainMakeRumble
   /* 061D9C 800E659C 00003025 */        or $a2, $zero, $zero
   /* 061DA0 800E65A0 10000036 */         b .L800E667C
   /* 061DA4 800E65A4 8FAE0098 */        lw $t6, 0x98($sp)
@@ -18104,7 +18104,7 @@ glabel ftMain_ProcUpdateMain
   /* 061DD4 800E65D4 00000000 */       nop 
   /* 061DD8 800E65D8 58C00028 */     blezl $a2, .L800E667C
   /* 061DDC 800E65DC 8FAE0098 */        lw $t6, 0x98($sp)
-  /* 061DE0 800E65E0 0C03A01B */       jal ftMain_MakeRumble
+  /* 061DE0 800E65E0 0C03A01B */       jal ftMainMakeRumble
   /* 061DE4 800E65E4 24050005 */     addiu $a1, $zero, 5
   /* 061DE8 800E65E8 10000024 */         b .L800E667C
   /* 061DEC 800E65EC 8FAE0098 */        lw $t6, 0x98($sp)
@@ -18596,7 +18596,7 @@ glabel func_ovl2_800E69C4
   /* 0624D8 800E6CD8 03E00008 */        jr $ra
   /* 0624DC 800E6CDC 00000000 */       nop 
 
-glabel func_ovl2_800E6CE0
+glabel ftMainAddTransNJointID
   /* 0624E0 800E6CE0 8C8E09C8 */        lw $t6, 0x9c8($a0)
   /* 0624E4 800E6CE4 0005C100 */       sll $t8, $a1, 4
   /* 0624E8 800E6CE8 24010001 */     addiu $at, $zero, 1
@@ -18682,7 +18682,7 @@ glabel func_ovl2_800E6CE0
   /* 0625F8 800E6DF8 03E00008 */        jr $ra
   /* 0625FC 800E6DFC 00000000 */       nop 
 
-glabel func_ovl2_800E6E00
+glabel ftMainEjectJointID
   /* 062600 800E6E00 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 062604 800E6E04 AFBF0014 */        sw $ra, 0x14($sp)
   /* 062608 800E6E08 AFA40020 */        sw $a0, 0x20($sp)
@@ -18766,7 +18766,7 @@ glabel func_ovl2_800E6E00
   /* 06271C 800E6F1C 03E00008 */        jr $ra
   /* 062720 800E6F20 00000000 */       nop 
 
-glabel ftMain_SetFighterStatus
+glabel ftMainSetFighterStatus
   /* 062724 800E6F24 27BDFF70 */     addiu $sp, $sp, -0x90
   /* 062728 800E6F28 AFBF001C */        sw $ra, 0x1c($sp)
   /* 06272C 800E6F2C AFB10018 */        sw $s1, 0x18($sp)
@@ -19260,7 +19260,7 @@ glabel ftMain_SetFighterStatus
   /* 062E1C 800E761C 02202025 */        or $a0, $s1, $zero
   /* 062E20 800E7620 02002825 */        or $a1, $s0, $zero
   /* 062E24 800E7624 AFA20070 */        sw $v0, 0x70($sp)
-  /* 062E28 800E7628 0C039B38 */       jal func_ovl2_800E6CE0
+  /* 062E28 800E7628 0C039B38 */       jal ftMainAddTransNJointID
   /* 062E2C 800E762C AFA3006C */        sw $v1, 0x6c($sp)
   /* 062E30 800E7630 8FA20070 */        lw $v0, 0x70($sp)
   /* 062E34 800E7634 10000007 */         b .L800E7654
@@ -19268,7 +19268,7 @@ glabel ftMain_SetFighterStatus
   .L800E763C:
   /* 062E3C 800E763C 02002825 */        or $a1, $s0, $zero
   /* 062E40 800E7640 AFA20070 */        sw $v0, 0x70($sp)
-  /* 062E44 800E7644 0C039B80 */       jal func_ovl2_800E6E00
+  /* 062E44 800E7644 0C039B80 */       jal ftMainEjectJointID
   /* 062E48 800E7648 AFA3006C */        sw $v1, 0x6c($sp)
   /* 062E4C 800E764C 8FA20070 */        lw $v0, 0x70($sp)
   /* 062E50 800E7650 8FA3006C */        lw $v1, 0x6c($sp)
@@ -19514,14 +19514,14 @@ glabel ftMain_SetFighterStatus
   /* 0631B8 800E79B8 00000000 */       nop 
   /* 0631BC 800E79BC 45010005 */      bc1t .L800E79D4
   /* 0631C0 800E79C0 00000000 */       nop 
-  /* 0631C4 800E79C4 0C038216 */       jal ftMain_UpdateAnimAllEvents
+  /* 0631C4 800E79C4 0C038216 */       jal ftMainUpdateAnimAllEvents
   /* 0631C8 800E79C8 8FA40090 */        lw $a0, 0x90($sp)
   /* 0631CC 800E79CC 1000000F */         b .L800E7A0C
   /* 0631D0 800E79D0 8E2B0020 */        lw $t3, 0x20($s1)
   .L800E79D4:
-  /* 0631D4 800E79D4 0C03820C */       jal ftMain_UpdateAnimCheckInterrupt
+  /* 0631D4 800E79D4 0C03820C */       jal ftMainUpdateAnimCheckInterrupt
   /* 0631D8 800E79D8 8FA40090 */        lw $a0, 0x90($sp)
-  /* 0631DC 800E79DC 0C038472 */       jal ftMain_RunUpdateColAnim
+  /* 0631DC 800E79DC 0C038472 */       jal ftMainRunUpdateColAnim
   /* 0631E0 800E79E0 8FA40090 */        lw $a0, 0x90($sp)
   /* 0631E4 800E79E4 10000009 */         b .L800E7A0C
   /* 0631E8 800E79E8 8E2B0020 */        lw $t3, 0x20($s1)
@@ -19993,7 +19993,7 @@ glabel ftCommon_StickInputSetLR
   /* 063864 800E8064 03E00008 */        jr $ra
   /* 063868 800E8068 00000000 */       nop 
 
-glabel ftMain_MakeRumble
+glabel ftMainMakeRumble
   /* 06386C 800E806C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 063870 800E8070 AFBF0014 */        sw $ra, 0x14($sp)
   /* 063874 800E8074 8C8E0020 */        lw $t6, 0x20($a0)
@@ -22627,10 +22627,10 @@ glabel gmCommon_DamageGetStaleMul
   /* 065CEC 800EA4EC 946A0082 */       lhu $t2, 0x82($v1)
   /* 065CF0 800EA4F0 120A0005 */       beq $s0, $t2, .L800EA508
   /* 065CF4 800EA4F4 00075880 */       sll $t3, $a3, 2
-  /* 065CF8 800EA4F8 3C018013 */       lui $at, %hi(gmCommon_DamageStaleTable)
+  /* 065CF8 800EA4F8 3C018013 */       lui $at, %hi(dGMDamageStaleTable)
   /* 065CFC 800EA4FC 002B0821 */      addu $at, $at, $t3
   /* 065D00 800EA500 1000000F */         b .L800EA540
-  /* 065D04 800EA504 C420B820 */      lwc1 $f0, %lo(gmCommon_DamageStaleTable)($at)
+  /* 065D04 800EA504 C420B820 */      lwc1 $f0, %lo(dGMDamageStaleTable)($at)
   .L800EA508:
   /* 065D08 800EA508 14460002 */       bne $v0, $a2, .L800EA514
   /* 065D0C 800EA50C 00000000 */       nop 
@@ -22687,15 +22687,15 @@ glabel gmCommon_DamageApplyStale
   /* 065DB8 800EA5B8 27BD0018 */     addiu $sp, $sp, 0x18
 
 glabel gmCommon_GetMotionCountInc
-  /* 065DBC 800EA5BC 3C048013 */       lui $a0, %hi(gEntityMotionCount)
-  /* 065DC0 800EA5C0 24840D94 */     addiu $a0, $a0, %lo(gEntityMotionCount)
-  /* 065DC4 800EA5C4 94830000 */       lhu $v1, ($a0) # gEntityMotionCount + 0
+  /* 065DBC 800EA5BC 3C048013 */       lui $a0, %hi(gFTManagerMotionCount)
+  /* 065DC0 800EA5C0 24840D94 */     addiu $a0, $a0, %lo(gFTManagerMotionCount)
+  /* 065DC4 800EA5C4 94830000 */       lhu $v1, ($a0) # gFTManagerMotionCount + 0
   /* 065DC8 800EA5C8 24180001 */     addiu $t8, $zero, 1
   /* 065DCC 800EA5CC 246E0001 */     addiu $t6, $v1, 1
   /* 065DD0 800EA5D0 31CFFFFF */      andi $t7, $t6, 0xffff
   /* 065DD4 800EA5D4 15E00002 */      bnez $t7, .L800EA5E0
-  /* 065DD8 800EA5D8 A48E0000 */        sh $t6, ($a0) # gEntityMotionCount + 0
-  /* 065DDC 800EA5DC A4980000 */        sh $t8, ($a0) # gEntityMotionCount + 0
+  /* 065DD8 800EA5D8 A48E0000 */        sh $t6, ($a0) # gFTManagerMotionCount + 0
+  /* 065DDC 800EA5DC A4980000 */        sh $t8, ($a0) # gFTManagerMotionCount + 0
   .L800EA5E0:
   /* 065DE0 800EA5E0 03E00008 */        jr $ra
   /* 065DE4 800EA5E4 00601025 */        or $v0, $v1, $zero
@@ -22802,15 +22802,15 @@ glabel ftAttackAddStaleQueue
   /* 065F48 800EA748 27BD0008 */     addiu $sp, $sp, 8
 
 glabel gmCommon_GetStatUpdateCountInc
-  /* 065F4C 800EA74C 3C048013 */       lui $a0, %hi(gEntityStatUpdateCount)
-  /* 065F50 800EA750 24840D96 */     addiu $a0, $a0, %lo(gEntityStatUpdateCount)
-  /* 065F54 800EA754 94830000 */       lhu $v1, ($a0) # gEntityStatUpdateCount + 0
+  /* 065F4C 800EA74C 3C048013 */       lui $a0, %hi(gFTManagerStatUpdateCount)
+  /* 065F50 800EA750 24840D96 */     addiu $a0, $a0, %lo(gFTManagerStatUpdateCount)
+  /* 065F54 800EA754 94830000 */       lhu $v1, ($a0) # gFTManagerStatUpdateCount + 0
   /* 065F58 800EA758 24180001 */     addiu $t8, $zero, 1
   /* 065F5C 800EA75C 246E0001 */     addiu $t6, $v1, 1
   /* 065F60 800EA760 31CFFFFF */      andi $t7, $t6, 0xffff
   /* 065F64 800EA764 15E00002 */      bnez $t7, .L800EA770
-  /* 065F68 800EA768 A48E0000 */        sh $t6, ($a0) # gEntityStatUpdateCount + 0
-  /* 065F6C 800EA76C A4980000 */        sh $t8, ($a0) # gEntityStatUpdateCount + 0
+  /* 065F68 800EA768 A48E0000 */        sh $t6, ($a0) # gFTManagerStatUpdateCount + 0
+  /* 065F6C 800EA76C A4980000 */        sh $t8, ($a0) # gFTManagerStatUpdateCount + 0
   .L800EA770:
   /* 065F70 800EA770 03E00008 */        jr $ra
   /* 065F74 800EA774 00601025 */        or $v0, $v1, $zero
@@ -24647,7 +24647,7 @@ glabel func_ovl2_800EC11C
 glabel func_ovl2_800EC130
   /* 067930 800EC130 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 067934 800EC134 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 067938 800EC138 0C03873C */       jal ftMain_ClearMapElementsAll
+  /* 067938 800EC138 0C03873C */       jal ftMainClearMapElementsAll
   /* 06793C 800EC13C 00000000 */       nop 
   /* 067940 800EC140 0C044D22 */       jal func_ovl2_80113488
   /* 067944 800EC144 00000000 */       nop 
@@ -32249,7 +32249,7 @@ glabel func_ovl2_800F293C
   /* 06E70C 800F2F0C 3C18D838 */       lui $t8, (0xD8380002 >> 16) # 3627548674
   /* 06E710 800F2F10 02802025 */        or $a0, $s4, $zero
   /* 06E714 800F2F14 11C00008 */      beqz $t6, .L800F2F38
-  /* 06E718 800F2F18 3C058013 */       lui $a1, %hi(gMapLightAngleX)
+  /* 06E718 800F2F18 3C058013 */       lui $a1, %hi(gMPLightAngleX)
   /* 06E71C 800F2F1C 8E900000 */        lw $s0, ($s4) # gDisplayListHead + 0
   /* 06E720 800F2F20 37180002 */       ori $t8, $t8, (0xD8380002 & 0xFFFF) # 3627548674
   /* 06E724 800F2F24 240F0040 */     addiu $t7, $zero, 0x40
@@ -32273,7 +32273,7 @@ glabel func_ovl2_800F293C
   /* 06E768 800F2F68 AE000004 */        sw $zero, 4($s0)
   /* 06E76C 800F2F6C AE120000 */        sw $s2, ($s0)
   /* 06E770 800F2F70 8E900000 */        lw $s0, ($s4) # gDisplayListHead + 0
-  /* 06E774 800F2F74 3C068013 */       lui $a2, %hi(gMapLightAngleY)
+  /* 06E774 800F2F74 3C068013 */       lui $a2, %hi(gMPLightAngleY)
   /* 06E778 800F2F78 260E0008 */     addiu $t6, $s0, 8
   /* 06E77C 800F2F7C AE8E0000 */        sw $t6, ($s4) # gDisplayListHead + 0
   /* 06E780 800F2F80 AE0C0004 */        sw $t4, 4($s0)
@@ -32281,9 +32281,9 @@ glabel func_ovl2_800F293C
   /* 06E788 800F2F88 8FD80020 */        lw $t8, 0x20($fp)
   /* 06E78C 800F2F8C 13010006 */       beq $t8, $at, .L800F2FA8
   /* 06E790 800F2F90 00000000 */       nop 
-  /* 06E794 800F2F94 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
+  /* 06E794 800F2F94 8CA51390 */        lw $a1, %lo(gMPLightAngleX)($a1)
   /* 06E798 800F2F98 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
-  /* 06E79C 800F2F9C 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
+  /* 06E79C 800F2F9C 8CC61394 */        lw $a2, %lo(gMPLightAngleY)($a2)
   /* 06E7A0 800F2FA0 1000000A */         b .L800F2FCC
   /* 06E7A4 800F2FA4 8FCF0B4C */        lw $t7, 0xb4c($fp)
   .L800F2FA8:
@@ -32975,7 +32975,7 @@ glabel ftHammer_SetStatusHammerWait
   /* 06F17C 800F397C 24050092 */     addiu $a1, $zero, 0x92
   /* 06F180 800F3980 8FA6002C */        lw $a2, 0x2c($sp)
   /* 06F184 800F3984 3C073F80 */       lui $a3, 0x3f80
-  /* 06F188 800F3988 0C039BC9 */       jal ftMain_SetFighterStatus
+  /* 06F188 800F3988 0C039BC9 */       jal ftMainSetFighterStatus
   /* 06F18C 800F398C AFA20010 */        sw $v0, 0x10($sp)
   /* 06F190 800F3990 0C03CE23 */       jal ftHammer_CheckSetColAnim
   /* 06F194 800F3994 02002025 */        or $a0, $s0, $zero
@@ -33066,15 +33066,15 @@ glabel mpCollision_GetUDCommon
   /* 06F2B8 800F3AB8 1000FFF9 */         b .L800F3AA0
   /* 06F2BC 800F3ABC 00000000 */       nop 
   .L800F3AC0:
-  /* 06F2C0 800F3AC0 3C0F8013 */       lui $t7, %hi(gMapVertexInfo)
-  /* 06F2C4 800F3AC4 8DEF136C */        lw $t7, %lo(gMapVertexInfo)($t7)
+  /* 06F2C0 800F3AC0 3C0F8013 */       lui $t7, %hi(gMPVertexInfo)
+  /* 06F2C4 800F3AC4 8DEF136C */        lw $t7, %lo(gMPVertexInfo)($t7)
   /* 06F2C8 800F3AC8 0018C880 */       sll $t9, $t8, 2
   /* 06F2CC 800F3ACC 0338C821 */      addu $t9, $t9, $t8
   /* 06F2D0 800F3AD0 0019C840 */       sll $t9, $t9, 1
   /* 06F2D4 800F3AD4 01F96021 */      addu $t4, $t7, $t9
   /* 06F2D8 800F3AD8 918D0000 */       lbu $t5, ($t4)
-  /* 06F2DC 800F3ADC 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 06F2E0 800F3AE0 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 06F2DC 800F3ADC 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 06F2E0 800F3AE0 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 06F2E4 800F3AE4 000D7080 */       sll $t6, $t5, 2
   /* 06F2E8 800F3AE8 3C0D8013 */       lui $t5, 0x8013
   /* 06F2EC 800F3AEC 030E7821 */      addu $t7, $t8, $t6
@@ -33126,8 +33126,8 @@ glabel mpCollision_GetUDCommon
   /* 06F390 800F3B90 012C6821 */      addu $t5, $t1, $t4
   /* 06F394 800F3B94 01B87021 */      addu $t6, $t5, $t8
   /* 06F398 800F3B98 95CF0000 */       lhu $t7, ($t6)
-  /* 06F39C 800F3B9C 3C048013 */       lui $a0, %hi(gMapVertexData)
-  /* 06F3A0 800F3BA0 8C841370 */        lw $a0, %lo(gMapVertexData)($a0)
+  /* 06F39C 800F3B9C 3C048013 */       lui $a0, %hi(gMPVertexData)
+  /* 06F3A0 800F3BA0 8C841370 */        lw $a0, %lo(gMPVertexData)($a0)
   /* 06F3A4 800F3BA4 0000C812 */      mflo $t9
   /* 06F3A8 800F3BA8 00993021 */      addu $a2, $a0, $t9
   /* 06F3AC 800F3BAC 84C50000 */        lh $a1, ($a2)
@@ -33333,15 +33333,15 @@ glabel mpCollision_GetLRCommon
   /* 06F670 800F3E70 1000FFF9 */         b .L800F3E58
   /* 06F674 800F3E74 00000000 */       nop 
   .L800F3E78:
-  /* 06F678 800F3E78 3C0F8013 */       lui $t7, %hi(gMapVertexInfo)
-  /* 06F67C 800F3E7C 8DEF136C */        lw $t7, %lo(gMapVertexInfo)($t7)
+  /* 06F678 800F3E78 3C0F8013 */       lui $t7, %hi(gMPVertexInfo)
+  /* 06F67C 800F3E7C 8DEF136C */        lw $t7, %lo(gMPVertexInfo)($t7)
   /* 06F680 800F3E80 0018C880 */       sll $t9, $t8, 2
   /* 06F684 800F3E84 0338C821 */      addu $t9, $t9, $t8
   /* 06F688 800F3E88 0019C840 */       sll $t9, $t9, 1
   /* 06F68C 800F3E8C 01F96021 */      addu $t4, $t7, $t9
   /* 06F690 800F3E90 918D0000 */       lbu $t5, ($t4)
-  /* 06F694 800F3E94 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 06F698 800F3E98 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 06F694 800F3E94 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 06F698 800F3E98 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 06F69C 800F3E9C 000D7080 */       sll $t6, $t5, 2
   /* 06F6A0 800F3EA0 3C0D8013 */       lui $t5, 0x8013
   /* 06F6A4 800F3EA4 030E7821 */      addu $t7, $t8, $t6
@@ -33393,8 +33393,8 @@ glabel mpCollision_GetLRCommon
   /* 06F748 800F3F48 012C6821 */      addu $t5, $t1, $t4
   /* 06F74C 800F3F4C 01B87021 */      addu $t6, $t5, $t8
   /* 06F750 800F3F50 95CF0000 */       lhu $t7, ($t6)
-  /* 06F754 800F3F54 3C048013 */       lui $a0, %hi(gMapVertexData)
-  /* 06F758 800F3F58 8C841370 */        lw $a0, %lo(gMapVertexData)($a0)
+  /* 06F754 800F3F54 3C048013 */       lui $a0, %hi(gMPVertexData)
+  /* 06F758 800F3F58 8C841370 */        lw $a0, %lo(gMPVertexData)($a0)
   /* 06F75C 800F3F5C 0000C812 */      mflo $t9
   /* 06F760 800F3F60 00992821 */      addu $a1, $a0, $t9
   /* 06F764 800F3F64 84A60002 */        lh $a2, 2($a1)
@@ -33611,8 +33611,8 @@ glabel mpCollision_GetLREdge
   /* 06FA4C 800F424C 000F7840 */       sll $t7, $t7, 1
   /* 06FA50 800F4250 01CFC021 */      addu $t8, $t6, $t7
   /* 06FA54 800F4254 93190000 */       lbu $t9, ($t8)
-  /* 06FA58 800F4258 3C0F8013 */       lui $t7, %hi(gMapRooms)
-  /* 06FA5C 800F425C 8DEF1304 */        lw $t7, %lo(gMapRooms)($t7)
+  /* 06FA58 800F4258 3C0F8013 */       lui $t7, %hi(gMPRooms)
+  /* 06FA5C 800F425C 8DEF1304 */        lw $t7, %lo(gMPRooms)($t7)
   /* 06FA60 800F4260 00197080 */       sll $t6, $t9, 2
   /* 06FA64 800F4264 3C108013 */       lui $s0, 0x8013
   /* 06FA68 800F4268 01EEC021 */      addu $t8, $t7, $t6
@@ -33643,15 +33643,15 @@ glabel mpCollision_GetLREdge
   /* 06FAC4 800F42C4 00ABC821 */      addu $t9, $a1, $t3
   /* 06FAC8 800F42C8 972F0000 */       lhu $t7, ($t9)
   /* 06FACC 800F42CC 94580002 */       lhu $t8, 2($v0)
-  /* 06FAD0 800F42D0 3C1F8013 */       lui $ra, %hi(gMapVertexData)
+  /* 06FAD0 800F42D0 3C1F8013 */       lui $ra, %hi(gMPVertexData)
   /* 06FAD4 800F42D4 01ED0019 */     multu $t7, $t5
   /* 06FAD8 800F42D8 03033021 */      addu $a2, $t8, $v1
   /* 06FADC 800F42DC 24C6FFFF */     addiu $a2, $a2, -1
   /* 06FAE0 800F42E0 00066040 */       sll $t4, $a2, 1
   /* 06FAE4 800F42E4 00ACC821 */      addu $t9, $a1, $t4
   /* 06FAE8 800F42E8 972F0000 */       lhu $t7, ($t9)
-  /* 06FAEC 800F42EC 27FF1370 */     addiu $ra, $ra, %lo(gMapVertexData)
-  /* 06FAF0 800F42F0 8FE40000 */        lw $a0, ($ra) # gMapVertexData + 0
+  /* 06FAEC 800F42EC 27FF1370 */     addiu $ra, $ra, %lo(gMPVertexData)
+  /* 06FAF0 800F42F0 8FE40000 */        lw $a0, ($ra) # gMPVertexData + 0
   /* 06FAF4 800F42F4 8FB90028 */        lw $t9, 0x28($sp)
   /* 06FAF8 800F42F8 00007012 */      mflo $t6
   /* 06FAFC 800F42FC 008EC021 */      addu $t8, $a0, $t6
@@ -33673,7 +33673,7 @@ glabel mpCollision_GetLREdge
   /* 06FB34 800F4334 468021A0 */   cvt.s.w $f6, $f4
   /* 06FB38 800F4338 E4E60000 */      swc1 $f6, ($a3)
   /* 06FB3C 800F433C 8E0E0000 */        lw $t6, ($s0) # D_ovl2_80130340 + 0
-  /* 06FB40 800F4340 8FEF0000 */        lw $t7, ($ra) # gMapVertexData + 0
+  /* 06FB40 800F4340 8FEF0000 */        lw $t7, ($ra) # gMPVertexData + 0
   /* 06FB44 800F4344 01CBC021 */      addu $t8, $t6, $t3
   /* 06FB48 800F4348 97190000 */       lhu $t9, ($t8)
   /* 06FB4C 800F434C 032D0019 */     multu $t9, $t5
@@ -33691,7 +33691,7 @@ glabel mpCollision_GetLREdge
   /* 06FB78 800F4378 468084A0 */   cvt.s.w $f18, $f16
   /* 06FB7C 800F437C E4F20000 */      swc1 $f18, ($a3)
   /* 06FB80 800F4380 8E0E0000 */        lw $t6, ($s0) # D_ovl2_80130340 + 0
-  /* 06FB84 800F4384 8FEF0000 */        lw $t7, ($ra) # gMapVertexData + 0
+  /* 06FB84 800F4384 8FEF0000 */        lw $t7, ($ra) # gMPVertexData + 0
   /* 06FB88 800F4388 01CCC021 */      addu $t8, $t6, $t4
   /* 06FB8C 800F438C 97190000 */       lhu $t9, ($t8)
   /* 06FB90 800F4390 032D0019 */     multu $t9, $t5
@@ -33799,8 +33799,8 @@ glabel mpCollision_GetUDEdge
   /* 06FCE8 800F44E8 000F7840 */       sll $t7, $t7, 1
   /* 06FCEC 800F44EC 01CFC021 */      addu $t8, $t6, $t7
   /* 06FCF0 800F44F0 93190000 */       lbu $t9, ($t8)
-  /* 06FCF4 800F44F4 3C0F8013 */       lui $t7, %hi(gMapRooms)
-  /* 06FCF8 800F44F8 8DEF1304 */        lw $t7, %lo(gMapRooms)($t7)
+  /* 06FCF4 800F44F4 3C0F8013 */       lui $t7, %hi(gMPRooms)
+  /* 06FCF8 800F44F8 8DEF1304 */        lw $t7, %lo(gMPRooms)($t7)
   /* 06FCFC 800F44FC 00197080 */       sll $t6, $t9, 2
   /* 06FD00 800F4500 01EEC021 */      addu $t8, $t7, $t6
   /* 06FD04 800F4504 8F0A0000 */        lw $t2, ($t8)
@@ -33821,23 +33821,23 @@ glabel mpCollision_GetUDEdge
   .L800F453C:
   /* 06FD3C 800F453C 8DCE1378 */        lw $t6, 0x1378($t6)
   /* 06FD40 800F4540 00117880 */       sll $t7, $s1, 2
-  /* 06FD44 800F4544 3C058013 */       lui $a1, %hi(gMapVertexID)
+  /* 06FD44 800F4544 3C058013 */       lui $a1, %hi(gMPVertexID)
   /* 06FD48 800F4548 01EE1021 */      addu $v0, $t7, $t6
   /* 06FD4C 800F454C 94430000 */       lhu $v1, ($v0)
-  /* 06FD50 800F4550 8CA51374 */        lw $a1, %lo(gMapVertexID)($a1)
+  /* 06FD50 800F4550 8CA51374 */        lw $a1, %lo(gMPVertexID)($a1)
   /* 06FD54 800F4554 240D0006 */     addiu $t5, $zero, 6
   /* 06FD58 800F4558 0003C840 */       sll $t9, $v1, 1
   /* 06FD5C 800F455C 00B97821 */      addu $t7, $a1, $t9
   /* 06FD60 800F4560 95EE0000 */       lhu $t6, ($t7)
   /* 06FD64 800F4564 94580002 */       lhu $t8, 2($v0)
-  /* 06FD68 800F4568 3C048013 */       lui $a0, %hi(gMapVertexData)
+  /* 06FD68 800F4568 3C048013 */       lui $a0, %hi(gMPVertexData)
   /* 06FD6C 800F456C 01CD0019 */     multu $t6, $t5
   /* 06FD70 800F4570 03033021 */      addu $a2, $t8, $v1
   /* 06FD74 800F4574 24C6FFFF */     addiu $a2, $a2, -1
   /* 06FD78 800F4578 0006C840 */       sll $t9, $a2, 1
   /* 06FD7C 800F457C 00B97821 */      addu $t7, $a1, $t9
   /* 06FD80 800F4580 95EE0000 */       lhu $t6, ($t7)
-  /* 06FD84 800F4584 8C841370 */        lw $a0, %lo(gMapVertexData)($a0)
+  /* 06FD84 800F4584 8C841370 */        lw $a0, %lo(gMPVertexData)($a0)
   /* 06FD88 800F4588 0000C012 */      mflo $t8
   /* 06FD8C 800F458C 00985821 */      addu $t3, $a0, $t8
   /* 06FD90 800F4590 85680002 */        lh $t0, 2($t3)
@@ -34287,8 +34287,8 @@ glabel mpCollision_CheckGroundSurfaceTilt
 
 glabel mpCollision_CheckGroundLineCollisionSame
   /* 0703D8 800F4BD8 27BDFF00 */     addiu $sp, $sp, -0x100
-  /* 0703DC 800F4BDC 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 0703E0 800F4BE0 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 0703DC 800F4BDC 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 0703E0 800F4BE0 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 0703E4 800F4BE4 AFBF0084 */        sw $ra, 0x84($sp)
   /* 0703E8 800F4BE8 AFBE0080 */        sw $fp, 0x80($sp)
   /* 0703EC 800F4BEC AFB7007C */        sw $s7, 0x7c($sp)
@@ -34315,11 +34315,11 @@ glabel mpCollision_CheckGroundLineCollisionSame
   /* 070440 800F4C40 00C0A825 */        or $s5, $a2, $zero
   /* 070444 800F4C44 1900015C */      blez $t0, .L800F51B8
   /* 070448 800F4C48 C43607A4 */      lwc1 $f22, %lo(D_ovl2_801307A4)($at)
-  /* 07044C 800F4C4C 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 070450 800F4C50 3C098013 */       lui $t1, %hi(gMapVertexData)
+  /* 07044C 800F4C4C 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 070450 800F4C50 3C098013 */       lui $t1, %hi(gMPVertexData)
   /* 070454 800F4C54 4480C000 */      mtc1 $zero, $f24
-  /* 070458 800F4C58 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
-  /* 07045C 800F4C5C 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
+  /* 070458 800F4C58 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
+  /* 07045C 800F4C5C 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
   /* 070460 800F4C60 8FBE0110 */        lw $fp, 0x110($sp)
   /* 070464 800F4C64 8FB60114 */        lw $s6, 0x114($sp)
   /* 070468 800F4C68 240B0006 */     addiu $t3, $zero, 6
@@ -34327,8 +34327,8 @@ glabel mpCollision_CheckGroundLineCollisionSame
   /* 07046C 800F4C6C 25840002 */     addiu $a0, $t4, 2
   /* 070470 800F4C70 AFA400F8 */        sw $a0, 0xf8($sp)
   /* 070474 800F4C74 958F0000 */       lhu $t7, ($t4)
-  /* 070478 800F4C78 3C0E8013 */       lui $t6, %hi(gMapRooms)
-  /* 07047C 800F4C7C 8DCE1304 */        lw $t6, %lo(gMapRooms)($t6)
+  /* 070478 800F4C78 3C0E8013 */       lui $t6, %hi(gMPRooms)
+  /* 07047C 800F4C7C 8DCE1304 */        lw $t6, %lo(gMPRooms)($t6)
   /* 070480 800F4C80 958D0004 */       lhu $t5, 4($t4)
   /* 070484 800F4C84 000FC080 */       sll $t8, $t7, 2
   /* 070488 800F4C88 01D8C821 */      addu $t9, $t6, $t8
@@ -34400,8 +34400,8 @@ glabel mpCollision_CheckGroundLineCollisionSame
   /* 07057C 800F4D7C 00042040 */       sll $a0, $a0, 1
   /* 070580 800F4D80 AFAC00FC */        sw $t4, 0xfc($sp)
   .L800F4D84:
-  /* 070584 800F4D84 3C0F8013 */       lui $t7, %hi(gMapVertexInfo)
-  /* 070588 800F4D88 8DEF136C */        lw $t7, %lo(gMapVertexInfo)($t7)
+  /* 070584 800F4D84 3C0F8013 */       lui $t7, %hi(gMPVertexInfo)
+  /* 070588 800F4D88 8DEF136C */        lw $t7, %lo(gMPVertexInfo)($t7)
   /* 07058C 800F4D8C C7B000E8 */      lwc1 $f16, 0xe8($sp)
   /* 070590 800F4D90 8FB800F8 */        lw $t8, 0xf8($sp)
   /* 070594 800F4D94 01E41021 */      addu $v0, $t7, $a0
@@ -34424,23 +34424,23 @@ glabel mpCollision_CheckGroundLineCollisionSame
   /* 0705D4 800F4DD4 C7AA00EC */      lwc1 $f10, 0xec($sp)
   /* 0705D8 800F4DD8 8FB700C8 */        lw $s7, 0xc8($sp)
   /* 0705DC 800F4DDC 448F3000 */      mtc1 $t7, $f6
-  /* 0705E0 800F4DE0 3C188013 */       lui $t8, %hi(gMapVertexLinks)
+  /* 0705E0 800F4DE0 3C188013 */       lui $t8, %hi(gMPVertexLinks)
   /* 0705E4 800F4DE4 46803220 */   cvt.s.w $f8, $f6
   /* 0705E8 800F4DE8 460A403C */    c.lt.s $f8, $f10
   /* 0705EC 800F4DEC 00000000 */       nop 
   /* 0705F0 800F4DF0 45000005 */      bc1f .L800F4E08
-  /* 0705F4 800F4DF4 3C0E8013 */       lui $t6, %hi(gMapGeometry)
-  /* 0705F8 800F4DF8 8DCE1368 */        lw $t6, %lo(gMapGeometry)($t6)
+  /* 0705F4 800F4DF4 3C0E8013 */       lui $t6, %hi(gMPGeometry)
+  /* 0705F8 800F4DF8 8DCE1368 */        lw $t6, %lo(gMPGeometry)($t6)
   /* 0705FC 800F4DFC 8FAC00FC */        lw $t4, 0xfc($sp)
   /* 070600 800F4E00 100000E7 */         b .L800F51A0
   /* 070604 800F4E04 95C80000 */       lhu $t0, ($t6)
   .L800F4E08:
-  /* 070608 800F4E08 8F181378 */        lw $t8, %lo(gMapVertexLinks)($t8)
+  /* 070608 800F4E08 8F181378 */        lw $t8, %lo(gMPVertexLinks)($t8)
   /* 07060C 800F4E0C 0017B880 */       sll $s7, $s7, 2
-  /* 070610 800F4E10 8D4D0000 */        lw $t5, ($t2) # gMapVertexID + 0
+  /* 070610 800F4E10 8D4D0000 */        lw $t5, ($t2) # gMPVertexID + 0
   /* 070614 800F4E14 03171021 */      addu $v0, $t8, $s7
   /* 070618 800F4E18 94430000 */       lhu $v1, ($v0)
-  /* 07061C 800F4E1C 8D390000 */        lw $t9, ($t1) # gMapVertexData + 0
+  /* 07061C 800F4E1C 8D390000 */        lw $t9, ($t1) # gMPVertexData + 0
   /* 070620 800F4E20 00039040 */       sll $s2, $v1, 1
   /* 070624 800F4E24 01B27821 */      addu $t7, $t5, $s2
   /* 070628 800F4E28 95EE0000 */       lhu $t6, ($t7)
@@ -34454,9 +34454,9 @@ glabel mpCollision_CheckGroundLineCollisionSame
   /* 070648 800F4E48 84930000 */        lh $s3, ($a0)
   /* 07064C 800F4E4C 102000C6 */      beqz $at, .L800F5168
   /* 070650 800F4E50 84940002 */        lh $s4, 2($a0)
-  /* 070654 800F4E54 8D580000 */        lw $t8, ($t2) # gMapVertexID + 0
+  /* 070654 800F4E54 8D580000 */        lw $t8, ($t2) # gMPVertexID + 0
   .L800F4E58:
-  /* 070658 800F4E58 8D390000 */        lw $t9, ($t1) # gMapVertexData + 0
+  /* 070658 800F4E58 8D390000 */        lw $t9, ($t1) # gMPVertexData + 0
   /* 07065C 800F4E5C 02808025 */        or $s0, $s4, $zero
   /* 070660 800F4E60 03126821 */      addu $t5, $t8, $s2
   /* 070664 800F4E64 95AF0002 */       lhu $t7, 2($t5)
@@ -34488,17 +34488,17 @@ glabel mpCollision_CheckGroundLineCollisionSame
   /* 0706CC 800F4ECC E7BA0018 */      swc1 $f26, 0x18($sp)
   /* 0706D0 800F4ED0 0C03D628 */       jal mpCollision_CheckUDSurfaceFlat
   /* 0706D4 800F4ED4 E7B20014 */      swc1 $f18, 0x14($sp)
-  /* 0706D8 800F4ED8 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 0706DC 800F4EDC 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 0706D8 800F4ED8 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 0706DC 800F4EDC 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 0706E0 800F4EE0 24010001 */     addiu $at, $zero, 1
-  /* 0706E4 800F4EE4 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 0706E8 800F4EE8 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 0706E4 800F4EE4 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 0706E8 800F4EE8 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 0706EC 800F4EEC 8FA8010C */        lw $t0, 0x10c($sp)
   /* 0706F0 800F4EF0 14410091 */       bne $v0, $at, .L800F5138
   /* 0706F4 800F4EF4 240B0006 */     addiu $t3, $zero, 6
   /* 0706F8 800F4EF8 C7B000AC */      lwc1 $f16, 0xac($sp)
   /* 0706FC 800F4EFC C7A400AC */      lwc1 $f4, 0xac($sp)
-  /* 070700 800F4F00 3C0F8013 */       lui $t7, %hi(gMapVertexLinks)
+  /* 070700 800F4F00 3C0F8013 */       lui $t7, %hi(gMPVertexLinks)
   /* 070704 800F4F04 4614803C */    c.lt.s $f16, $f20
   /* 070708 800F4F08 00000000 */       nop 
   /* 07070C 800F4F0C 45020005 */     bc1fl .L800F4F24
@@ -34512,7 +34512,7 @@ glabel mpCollision_CheckGroundLineCollisionSame
   /* 070728 800F4F28 00000000 */       nop 
   /* 07072C 800F4F2C 45000009 */      bc1f .L800F4F54
   /* 070730 800F4F30 00000000 */       nop 
-  /* 070734 800F4F34 8DEF1378 */        lw $t7, %lo(gMapVertexLinks)($t7)
+  /* 070734 800F4F34 8DEF1378 */        lw $t7, %lo(gMPVertexLinks)($t7)
   /* 070738 800F4F38 01F71021 */      addu $v0, $t7, $s7
   /* 07073C 800F4F3C 94590002 */       lhu $t9, 2($v0)
   /* 070740 800F4F40 944E0000 */       lhu $t6, ($v0)
@@ -34543,8 +34543,8 @@ glabel mpCollision_CheckGroundLineCollisionSame
   .L800F4F98:
   /* 070798 800F4F98 53C0000B */      beql $fp, $zero, .L800F4FC8
   /* 07079C 800F4F9C C7A400AC */      lwc1 $f4, 0xac($sp)
-  /* 0707A0 800F4FA0 8D4F0000 */        lw $t7, ($t2) # gMapVertexID + 0
-  /* 0707A4 800F4FA4 8D2D0000 */        lw $t5, ($t1) # gMapVertexData + 0
+  /* 0707A0 800F4FA0 8D4F0000 */        lw $t7, ($t2) # gMPVertexID + 0
+  /* 0707A4 800F4FA4 8D2D0000 */        lw $t5, ($t1) # gMPVertexData + 0
   /* 0707A8 800F4FA8 01F2C821 */      addu $t9, $t7, $s2
   /* 0707AC 800F4FAC 972E0000 */       lhu $t6, ($t9)
   /* 0707B0 800F4FB0 01CB0019 */     multu $t6, $t3
@@ -34573,17 +34573,17 @@ glabel mpCollision_CheckGroundLineCollisionSame
   /* 070800 800F5000 AFAD0024 */        sw $t5, 0x24($sp)
   /* 070804 800F5004 0C03D1EB */       jal mpCollision_CheckGroundSurfaceTilt
   /* 070808 800F5008 E7A80018 */      swc1 $f8, 0x18($sp)
-  /* 07080C 800F500C 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 070810 800F5010 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 07080C 800F500C 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 070810 800F5010 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 070814 800F5014 24010001 */     addiu $at, $zero, 1
-  /* 070818 800F5018 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 07081C 800F501C 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 070818 800F5018 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 07081C 800F501C 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 070820 800F5020 8FA8010C */        lw $t0, 0x10c($sp)
   /* 070824 800F5024 14410044 */       bne $v0, $at, .L800F5138
   /* 070828 800F5028 240B0006 */     addiu $t3, $zero, 6
   /* 07082C 800F502C C7AA00AC */      lwc1 $f10, 0xac($sp)
   /* 070830 800F5030 C7B200AC */      lwc1 $f18, 0xac($sp)
-  /* 070834 800F5034 3C188013 */       lui $t8, %hi(gMapVertexLinks)
+  /* 070834 800F5034 3C188013 */       lui $t8, %hi(gMPVertexLinks)
   /* 070838 800F5038 4614503C */    c.lt.s $f10, $f20
   /* 07083C 800F503C 00000000 */       nop 
   /* 070840 800F5040 45020005 */     bc1fl .L800F5058
@@ -34597,7 +34597,7 @@ glabel mpCollision_CheckGroundLineCollisionSame
   /* 07085C 800F505C 00000000 */       nop 
   /* 070860 800F5060 45000009 */      bc1f .L800F5088
   /* 070864 800F5064 00000000 */       nop 
-  /* 070868 800F5068 8F181378 */        lw $t8, %lo(gMapVertexLinks)($t8)
+  /* 070868 800F5068 8F181378 */        lw $t8, %lo(gMPVertexLinks)($t8)
   /* 07086C 800F506C 03171021 */      addu $v0, $t8, $s7
   /* 070870 800F5070 944F0002 */       lhu $t7, 2($v0)
   /* 070874 800F5074 94590000 */       lhu $t9, ($v0)
@@ -34628,16 +34628,16 @@ glabel mpCollision_CheckGroundLineCollisionSame
   /* 0708CC 800F50CC 02603825 */        or $a3, $s3, $zero
   /* 0708D0 800F50D0 0C03D1B4 */       jal mpCollision_GetUDAngle
   /* 0708D4 800F50D4 AFB40010 */        sw $s4, 0x10($sp)
-  /* 0708D8 800F50D8 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 0708DC 800F50DC 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 0708E0 800F50E0 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 0708E4 800F50E4 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 0708D8 800F50D8 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 0708DC 800F50DC 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 0708E0 800F50E0 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 0708E4 800F50E4 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 0708E8 800F50E8 240B0006 */     addiu $t3, $zero, 6
   .L800F50EC:
   /* 0708EC 800F50EC 53C0000B */      beql $fp, $zero, .L800F511C
   /* 0708F0 800F50F0 C7AA00AC */      lwc1 $f10, 0xac($sp)
-  /* 0708F4 800F50F4 8D4F0000 */        lw $t7, ($t2) # gMapVertexID + 0
-  /* 0708F8 800F50F8 8D380000 */        lw $t8, ($t1) # gMapVertexData + 0
+  /* 0708F4 800F50F4 8D4F0000 */        lw $t7, ($t2) # gMPVertexID + 0
+  /* 0708F8 800F50F8 8D380000 */        lw $t8, ($t1) # gMPVertexData + 0
   /* 0708FC 800F50FC 01F2C821 */      addu $t9, $t7, $s2
   /* 070900 800F5100 972E0000 */       lhu $t6, ($t9)
   /* 070904 800F5104 01CB0019 */     multu $t6, $t3
@@ -34655,8 +34655,8 @@ glabel mpCollision_CheckGroundLineCollisionSame
   /* 070930 800F5130 46000587 */     neg.s $f22, $f0
   /* 070934 800F5134 46000586 */     mov.s $f22, $f0
   .L800F5138:
-  /* 070938 800F5138 3C0E8013 */       lui $t6, %hi(gMapVertexLinks)
-  /* 07093C 800F513C 8DCE1378 */        lw $t6, %lo(gMapVertexLinks)($t6)
+  /* 070938 800F5138 3C0E8013 */       lui $t6, %hi(gMPVertexLinks)
+  /* 07093C 800F513C 8DCE1378 */        lw $t6, %lo(gMPVertexLinks)($t6)
   /* 070940 800F5140 01D71021 */      addu $v0, $t6, $s7
   /* 070944 800F5144 94580002 */       lhu $t8, 2($v0)
   /* 070948 800F5148 944D0000 */       lhu $t5, ($v0)
@@ -34667,7 +34667,7 @@ glabel mpCollision_CheckGroundLineCollisionSame
   /* 070958 800F5158 26520002 */     addiu $s2, $s2, 2
   /* 07095C 800F515C 0244082A */       slt $at, $s2, $a0
   /* 070960 800F5160 5420FF3D */      bnel $at, $zero, .L800F4E58
-  /* 070964 800F5164 8D580000 */        lw $t8, ($t2) # gMapVertexID + 0
+  /* 070964 800F5164 8D580000 */        lw $t8, ($t2) # gMPVertexID + 0
   .L800F5168:
   /* 070968 800F5168 8FA300F8 */        lw $v1, 0xf8($sp)
   /* 07096C 800F516C 8FA400A0 */        lw $a0, 0xa0($sp)
@@ -34680,8 +34680,8 @@ glabel mpCollision_CheckGroundLineCollisionSame
   /* 070984 800F5184 0062082A */       slt $at, $v1, $v0
   /* 070988 800F5188 1420FEFE */      bnez $at, .L800F4D84
   /* 07098C 800F518C 2484000A */     addiu $a0, $a0, 0xa
-  /* 070990 800F5190 3C0E8013 */       lui $t6, %hi(gMapGeometry)
-  /* 070994 800F5194 8DCE1368 */        lw $t6, %lo(gMapGeometry)($t6)
+  /* 070990 800F5190 3C0E8013 */       lui $t6, %hi(gMPGeometry)
+  /* 070994 800F5194 8DCE1368 */        lw $t6, %lo(gMPGeometry)($t6)
   /* 070998 800F5198 95C80000 */       lhu $t0, ($t6)
   .L800F519C:
   /* 07099C 800F519C 8FAC00FC */        lw $t4, 0xfc($sp)
@@ -34724,8 +34724,8 @@ glabel mpCollision_CheckGroundLineCollisionSame
 
 glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070A1C 800F521C 27BDFEF8 */     addiu $sp, $sp, -0x108
-  /* 070A20 800F5220 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 070A24 800F5224 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 070A20 800F5220 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 070A24 800F5224 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 070A28 800F5228 AFBF0084 */        sw $ra, 0x84($sp)
   /* 070A2C 800F522C AFBE0080 */        sw $fp, 0x80($sp)
   /* 070A30 800F5230 AFB7007C */        sw $s7, 0x7c($sp)
@@ -34754,17 +34754,17 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070A8C 800F528C C43607BC */      lwc1 $f22, %lo(D_ovl2_801307BC)($at)
   /* 070A90 800F5290 1900016A */      blez $t0, .L800F583C
   /* 070A94 800F5294 8FBE0118 */        lw $fp, 0x118($sp)
-  /* 070A98 800F5298 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 070A9C 800F529C 3C098013 */       lui $t1, %hi(gMapVertexData)
+  /* 070A98 800F5298 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 070A9C 800F529C 3C098013 */       lui $t1, %hi(gMPVertexData)
   /* 070AA0 800F52A0 4480D000 */      mtc1 $zero, $f26
-  /* 070AA4 800F52A4 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
-  /* 070AA8 800F52A8 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
+  /* 070AA4 800F52A4 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
+  /* 070AA8 800F52A8 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
   /* 070AAC 800F52AC 8FB6011C */        lw $s6, 0x11c($sp)
   /* 070AB0 800F52B0 240B0006 */     addiu $t3, $zero, 6
   .L800F52B4:
   /* 070AB4 800F52B4 8FAF0104 */        lw $t7, 0x104($sp)
-  /* 070AB8 800F52B8 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 070ABC 800F52BC 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 070AB8 800F52B8 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 070ABC 800F52BC 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 070AC0 800F52C0 25E40002 */     addiu $a0, $t7, 2
   /* 070AC4 800F52C4 AFA40100 */        sw $a0, 0x100($sp)
   /* 070AC8 800F52C8 95E50000 */       lhu $a1, ($t7)
@@ -34787,9 +34787,9 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070B0C 800F530C C7100004 */      lwc1 $f16, 4($t8)
   /* 070B10 800F5310 10400015 */      beqz $v0, .L800F5368
   .L800F5314:
-  /* 070B14 800F5314 3C0C8013 */       lui $t4, %hi(gMapDynamicCollisions)
+  /* 070B14 800F5314 3C0C8013 */       lui $t4, %hi(gMPDynamicCollisions)
   /* 070B18 800F5318 C47E001C */      lwc1 $f30, 0x1c($v1)
-  /* 070B1C 800F531C 8D8C137C */        lw $t4, %lo(gMapDynamicCollisions)($t4)
+  /* 070B1C 800F531C 8D8C137C */        lw $t4, %lo(gMPDynamicCollisions)($t4)
   /* 070B20 800F5320 00057880 */       sll $t7, $a1, 2
   /* 070B24 800F5324 01E57823 */      subu $t7, $t7, $a1
   /* 070B28 800F5328 000F7880 */       sll $t7, $t7, 2
@@ -34847,14 +34847,14 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070BE8 800F53E8 00822021 */      addu $a0, $a0, $v0
   /* 070BEC 800F53EC 00042040 */       sll $a0, $a0, 1
   .L800F53F0:
-  /* 070BF0 800F53F0 3C188013 */       lui $t8, %hi(gMapVertexInfo)
-  /* 070BF4 800F53F4 8F18136C */        lw $t8, %lo(gMapVertexInfo)($t8)
+  /* 070BF0 800F53F0 3C188013 */       lui $t8, %hi(gMPVertexInfo)
+  /* 070BF4 800F53F4 8F18136C */        lw $t8, %lo(gMPVertexInfo)($t8)
   /* 070BF8 800F53F8 C7AA00F0 */      lwc1 $f10, 0xf0($sp)
   /* 070BFC 800F53FC 8FAC0100 */        lw $t4, 0x100($sp)
   /* 070C00 800F5400 03041021 */      addu $v0, $t8, $a0
   /* 070C04 800F5404 84590004 */        lh $t9, 4($v0)
   /* 070C08 800F5408 44992000 */      mtc1 $t9, $f4
-  /* 070C0C 800F540C 3C198013 */       lui $t9, %hi(gMapVertexLinks)
+  /* 070C0C 800F540C 3C198013 */       lui $t9, %hi(gMPVertexLinks)
   /* 070C10 800F5410 468021A0 */   cvt.s.w $f6, $f4
   /* 070C14 800F5414 4606503C */    c.lt.s $f10, $f6
   /* 070C18 800F5418 00000000 */       nop 
@@ -34876,18 +34876,18 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070C54 800F5454 460A203C */    c.lt.s $f4, $f10
   /* 070C58 800F5458 00000000 */       nop 
   /* 070C5C 800F545C 45000004 */      bc1f .L800F5470
-  /* 070C60 800F5460 3C188013 */       lui $t8, %hi(gMapGeometry)
-  /* 070C64 800F5464 8F181368 */        lw $t8, %lo(gMapGeometry)($t8)
+  /* 070C60 800F5460 3C188013 */       lui $t8, %hi(gMPGeometry)
+  /* 070C64 800F5464 8F181368 */        lw $t8, %lo(gMPGeometry)($t8)
   /* 070C68 800F5468 100000EC */         b .L800F581C
   /* 070C6C 800F546C 97080000 */       lhu $t0, ($t8)
   .L800F5470:
-  /* 070C70 800F5470 8F391378 */        lw $t9, %lo(gMapVertexLinks)($t9)
+  /* 070C70 800F5470 8F391378 */        lw $t9, %lo(gMPVertexLinks)($t9)
   /* 070C74 800F5474 0017B880 */       sll $s7, $s7, 2
-  /* 070C78 800F5478 8D4F0000 */        lw $t7, ($t2) # gMapVertexID + 0
+  /* 070C78 800F5478 8D4F0000 */        lw $t7, ($t2) # gMPVertexID + 0
   /* 070C7C 800F547C 03371021 */      addu $v0, $t9, $s7
   /* 070C80 800F5480 94430000 */       lhu $v1, ($v0)
   /* 070C84 800F5484 94590002 */       lhu $t9, 2($v0)
-  /* 070C88 800F5488 8D2C0000 */        lw $t4, ($t1) # gMapVertexData + 0
+  /* 070C88 800F5488 8D2C0000 */        lw $t4, ($t1) # gMPVertexData + 0
   /* 070C8C 800F548C 00039040 */       sll $s2, $v1, 1
   /* 070C90 800F5490 01F26821 */      addu $t5, $t7, $s2
   /* 070C94 800F5494 95AE0000 */       lhu $t6, ($t5)
@@ -34900,9 +34900,9 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070CB0 800F54B0 84930000 */        lh $s3, ($a0)
   /* 070CB4 800F54B4 102000CC */      beqz $at, .L800F57E8
   /* 070CB8 800F54B8 84940002 */        lh $s4, 2($a0)
-  /* 070CBC 800F54BC 8D4C0000 */        lw $t4, ($t2) # gMapVertexID + 0
+  /* 070CBC 800F54BC 8D4C0000 */        lw $t4, ($t2) # gMPVertexID + 0
   .L800F54C0:
-  /* 070CC0 800F54C0 8D2E0000 */        lw $t6, ($t1) # gMapVertexData + 0
+  /* 070CC0 800F54C0 8D2E0000 */        lw $t6, ($t1) # gMPVertexData + 0
   /* 070CC4 800F54C4 02808025 */        or $s0, $s4, $zero
   /* 070CC8 800F54C8 0192C021 */      addu $t8, $t4, $s2
   /* 070CCC 800F54CC 97190002 */       lhu $t9, 2($t8)
@@ -34934,11 +34934,11 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070D34 800F5534 E7BC0018 */      swc1 $f28, 0x18($sp)
   /* 070D38 800F5538 0C03D628 */       jal mpCollision_CheckUDSurfaceFlat
   /* 070D3C 800F553C E7A60014 */      swc1 $f6, 0x14($sp)
-  /* 070D40 800F5540 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 070D44 800F5544 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 070D40 800F5540 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 070D44 800F5544 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 070D48 800F5548 24010001 */     addiu $at, $zero, 1
-  /* 070D4C 800F554C 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 070D50 800F5550 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 070D4C 800F554C 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 070D50 800F5550 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 070D54 800F5554 8FA80114 */        lw $t0, 0x114($sp)
   /* 070D58 800F5558 14410097 */       bne $v0, $at, .L800F57B8
   /* 070D5C 800F555C 240B0006 */     addiu $t3, $zero, 6
@@ -34946,7 +34946,7 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070D64 800F5564 C7A400B0 */      lwc1 $f4, 0xb0($sp)
   /* 070D68 800F5568 C7AA00B0 */      lwc1 $f10, 0xb0($sp)
   /* 070D6C 800F556C 4608C501 */     sub.s $f20, $f24, $f8
-  /* 070D70 800F5570 3C188013 */       lui $t8, %hi(gMapVertexLinks)
+  /* 070D70 800F5570 3C188013 */       lui $t8, %hi(gMPVertexLinks)
   /* 070D74 800F5574 4614203C */    c.lt.s $f4, $f20
   /* 070D78 800F5578 00000000 */       nop 
   /* 070D7C 800F557C 45020005 */     bc1fl .L800F5594
@@ -34960,7 +34960,7 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070D98 800F5598 00000000 */       nop 
   /* 070D9C 800F559C 45000009 */      bc1f .L800F55C4
   /* 070DA0 800F55A0 00000000 */       nop 
-  /* 070DA4 800F55A4 8F181378 */        lw $t8, %lo(gMapVertexLinks)($t8)
+  /* 070DA4 800F55A4 8F181378 */        lw $t8, %lo(gMPVertexLinks)($t8)
   /* 070DA8 800F55A8 03171021 */      addu $v0, $t8, $s7
   /* 070DAC 800F55AC 94590002 */       lhu $t9, 2($v0)
   /* 070DB0 800F55B0 944E0000 */       lhu $t6, ($v0)
@@ -34992,8 +34992,8 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   .L800F560C:
   /* 070E0C 800F560C 53C0000B */      beql $fp, $zero, .L800F563C
   /* 070E10 800F5610 C7A400B0 */      lwc1 $f4, 0xb0($sp)
-  /* 070E14 800F5614 8D4C0000 */        lw $t4, ($t2) # gMapVertexID + 0
-  /* 070E18 800F5618 8D2D0000 */        lw $t5, ($t1) # gMapVertexData + 0
+  /* 070E14 800F5614 8D4C0000 */        lw $t4, ($t2) # gMPVertexID + 0
+  /* 070E18 800F5618 8D2D0000 */        lw $t5, ($t1) # gMPVertexData + 0
   /* 070E1C 800F561C 0192C021 */      addu $t8, $t4, $s2
   /* 070E20 800F5620 97190000 */       lhu $t9, ($t8)
   /* 070E24 800F5624 032B0019 */     multu $t9, $t3
@@ -35022,11 +35022,11 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070E74 800F5674 AFB90024 */        sw $t9, 0x24($sp)
   /* 070E78 800F5678 0C03D1EB */       jal mpCollision_CheckGroundSurfaceTilt
   /* 070E7C 800F567C E7A60018 */      swc1 $f6, 0x18($sp)
-  /* 070E80 800F5680 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 070E84 800F5684 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 070E80 800F5680 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 070E84 800F5684 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 070E88 800F5688 24010001 */     addiu $at, $zero, 1
-  /* 070E8C 800F568C 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 070E90 800F5690 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 070E8C 800F568C 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 070E90 800F5690 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 070E94 800F5694 8FA80114 */        lw $t0, 0x114($sp)
   /* 070E98 800F5698 14410047 */       bne $v0, $at, .L800F57B8
   /* 070E9C 800F569C 240B0006 */     addiu $t3, $zero, 6
@@ -35034,7 +35034,7 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070EA4 800F56A4 C7A400B0 */      lwc1 $f4, 0xb0($sp)
   /* 070EA8 800F56A8 C7AA00B0 */      lwc1 $f10, 0xb0($sp)
   /* 070EAC 800F56AC 4608C501 */     sub.s $f20, $f24, $f8
-  /* 070EB0 800F56B0 3C0D8013 */       lui $t5, %hi(gMapVertexLinks)
+  /* 070EB0 800F56B0 3C0D8013 */       lui $t5, %hi(gMPVertexLinks)
   /* 070EB4 800F56B4 4614203C */    c.lt.s $f4, $f20
   /* 070EB8 800F56B8 00000000 */       nop 
   /* 070EBC 800F56BC 45020005 */     bc1fl .L800F56D4
@@ -35048,7 +35048,7 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070ED8 800F56D8 00000000 */       nop 
   /* 070EDC 800F56DC 45000009 */      bc1f .L800F5704
   /* 070EE0 800F56E0 00000000 */       nop 
-  /* 070EE4 800F56E4 8DAD1378 */        lw $t5, %lo(gMapVertexLinks)($t5)
+  /* 070EE4 800F56E4 8DAD1378 */        lw $t5, %lo(gMPVertexLinks)($t5)
   /* 070EE8 800F56E8 01B71021 */      addu $v0, $t5, $s7
   /* 070EEC 800F56EC 944E0002 */       lhu $t6, 2($v0)
   /* 070EF0 800F56F0 944F0000 */       lhu $t7, ($v0)
@@ -35080,16 +35080,16 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070F4C 800F574C 02603825 */        or $a3, $s3, $zero
   /* 070F50 800F5750 0C03D1B4 */       jal mpCollision_GetUDAngle
   /* 070F54 800F5754 AFB40010 */        sw $s4, 0x10($sp)
-  /* 070F58 800F5758 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 070F5C 800F575C 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 070F60 800F5760 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 070F64 800F5764 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 070F58 800F5758 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 070F5C 800F575C 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 070F60 800F5760 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 070F64 800F5764 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 070F68 800F5768 240B0006 */     addiu $t3, $zero, 6
   .L800F576C:
   /* 070F6C 800F576C 53C0000B */      beql $fp, $zero, .L800F579C
   /* 070F70 800F5770 C7A800B0 */      lwc1 $f8, 0xb0($sp)
-  /* 070F74 800F5774 8D4D0000 */        lw $t5, ($t2) # gMapVertexID + 0
-  /* 070F78 800F5778 8D390000 */        lw $t9, ($t1) # gMapVertexData + 0
+  /* 070F74 800F5774 8D4D0000 */        lw $t5, ($t2) # gMPVertexID + 0
+  /* 070F78 800F5778 8D390000 */        lw $t9, ($t1) # gMPVertexData + 0
   /* 070F7C 800F577C 01B27021 */      addu $t6, $t5, $s2
   /* 070F80 800F5780 95CF0000 */       lhu $t7, ($t6)
   /* 070F84 800F5784 01EB0019 */     multu $t7, $t3
@@ -35107,8 +35107,8 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070FB0 800F57B0 46000587 */     neg.s $f22, $f0
   /* 070FB4 800F57B4 46000586 */     mov.s $f22, $f0
   .L800F57B8:
-  /* 070FB8 800F57B8 3C0E8013 */       lui $t6, %hi(gMapVertexLinks)
-  /* 070FBC 800F57BC 8DCE1378 */        lw $t6, %lo(gMapVertexLinks)($t6)
+  /* 070FB8 800F57B8 3C0E8013 */       lui $t6, %hi(gMPVertexLinks)
+  /* 070FBC 800F57BC 8DCE1378 */        lw $t6, %lo(gMPVertexLinks)($t6)
   /* 070FC0 800F57C0 01D71021 */      addu $v0, $t6, $s7
   /* 070FC4 800F57C4 944F0002 */       lhu $t7, 2($v0)
   /* 070FC8 800F57C8 94590000 */       lhu $t9, ($v0)
@@ -35119,7 +35119,7 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 070FD8 800F57D8 26520002 */     addiu $s2, $s2, 2
   /* 070FDC 800F57DC 0244082A */       slt $at, $s2, $a0
   /* 070FE0 800F57E0 5420FF37 */      bnel $at, $zero, .L800F54C0
-  /* 070FE4 800F57E4 8D4C0000 */        lw $t4, ($t2) # gMapVertexID + 0
+  /* 070FE4 800F57E4 8D4C0000 */        lw $t4, ($t2) # gMPVertexID + 0
   .L800F57E8:
   /* 070FE8 800F57E8 8FA30100 */        lw $v1, 0x100($sp)
   /* 070FEC 800F57EC 8FA400A4 */        lw $a0, 0xa4($sp)
@@ -35132,8 +35132,8 @@ glabel mpCollision_CheckGroundLineCollisionDiff
   /* 071004 800F5804 0062082A */       slt $at, $v1, $v0
   /* 071008 800F5808 1420FEF9 */      bnez $at, .L800F53F0
   /* 07100C 800F580C 2484000A */     addiu $a0, $a0, 0xa
-  /* 071010 800F5810 3C0D8013 */       lui $t5, %hi(gMapGeometry)
-  /* 071014 800F5814 8DAD1368 */        lw $t5, %lo(gMapGeometry)($t5)
+  /* 071010 800F5810 3C0D8013 */       lui $t5, %hi(gMPGeometry)
+  /* 071014 800F5814 8DAD1368 */        lw $t5, %lo(gMPGeometry)($t5)
   /* 071018 800F5818 95A80000 */       lhu $t0, ($t5)
   .L800F581C:
   /* 07101C 800F581C 8FAE00F8 */        lw $t6, 0xf8($sp)
@@ -35592,8 +35592,8 @@ glabel mpCollision_CheckCeilSurfaceTilt
 
 glabel mpCollision_CheckCeilLineCollisionSame
   /* 071690 800F5E90 27BDFF00 */     addiu $sp, $sp, -0x100
-  /* 071694 800F5E94 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 071698 800F5E98 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 071694 800F5E94 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 071698 800F5E98 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 07169C 800F5E9C AFBF0084 */        sw $ra, 0x84($sp)
   /* 0716A0 800F5EA0 AFBE0080 */        sw $fp, 0x80($sp)
   /* 0716A4 800F5EA4 AFB7007C */        sw $s7, 0x7c($sp)
@@ -35620,11 +35620,11 @@ glabel mpCollision_CheckCeilLineCollisionSame
   /* 0716F8 800F5EF8 00C0A825 */        or $s5, $a2, $zero
   /* 0716FC 800F5EFC 1900015C */      blez $t0, .L800F6470
   /* 071700 800F5F00 C4360804 */      lwc1 $f22, %lo(D_ovl2_80130804)($at)
-  /* 071704 800F5F04 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 071708 800F5F08 3C098013 */       lui $t1, %hi(gMapVertexData)
+  /* 071704 800F5F04 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 071708 800F5F08 3C098013 */       lui $t1, %hi(gMPVertexData)
   /* 07170C 800F5F0C 4480C000 */      mtc1 $zero, $f24
-  /* 071710 800F5F10 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
-  /* 071714 800F5F14 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
+  /* 071710 800F5F10 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
+  /* 071714 800F5F14 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
   /* 071718 800F5F18 8FBE0110 */        lw $fp, 0x110($sp)
   /* 07171C 800F5F1C 8FB60114 */        lw $s6, 0x114($sp)
   /* 071720 800F5F20 240B0006 */     addiu $t3, $zero, 6
@@ -35632,8 +35632,8 @@ glabel mpCollision_CheckCeilLineCollisionSame
   /* 071724 800F5F24 25840006 */     addiu $a0, $t4, 6
   /* 071728 800F5F28 AFA400F8 */        sw $a0, 0xf8($sp)
   /* 07172C 800F5F2C 958F0000 */       lhu $t7, ($t4)
-  /* 071730 800F5F30 3C0E8013 */       lui $t6, %hi(gMapRooms)
-  /* 071734 800F5F34 8DCE1304 */        lw $t6, %lo(gMapRooms)($t6)
+  /* 071730 800F5F30 3C0E8013 */       lui $t6, %hi(gMPRooms)
+  /* 071734 800F5F34 8DCE1304 */        lw $t6, %lo(gMPRooms)($t6)
   /* 071738 800F5F38 958D0008 */       lhu $t5, 8($t4)
   /* 07173C 800F5F3C 000FC080 */       sll $t8, $t7, 2
   /* 071740 800F5F40 01D8C821 */      addu $t9, $t6, $t8
@@ -35705,8 +35705,8 @@ glabel mpCollision_CheckCeilLineCollisionSame
   /* 071834 800F6034 00042040 */       sll $a0, $a0, 1
   /* 071838 800F6038 AFAC00FC */        sw $t4, 0xfc($sp)
   .L800F603C:
-  /* 07183C 800F603C 3C0F8013 */       lui $t7, %hi(gMapVertexInfo)
-  /* 071840 800F6040 8DEF136C */        lw $t7, %lo(gMapVertexInfo)($t7)
+  /* 07183C 800F603C 3C0F8013 */       lui $t7, %hi(gMPVertexInfo)
+  /* 071840 800F6040 8DEF136C */        lw $t7, %lo(gMPVertexInfo)($t7)
   /* 071844 800F6044 C7A400EC */      lwc1 $f4, 0xec($sp)
   /* 071848 800F6048 8FB800F8 */        lw $t8, 0xf8($sp)
   /* 07184C 800F604C 01E41021 */      addu $v0, $t7, $a0
@@ -35729,23 +35729,23 @@ glabel mpCollision_CheckCeilLineCollisionSame
   /* 07188C 800F608C C7A600E8 */      lwc1 $f6, 0xe8($sp)
   /* 071890 800F6090 8FB700C8 */        lw $s7, 0xc8($sp)
   /* 071894 800F6094 448F4000 */      mtc1 $t7, $f8
-  /* 071898 800F6098 3C188013 */       lui $t8, %hi(gMapVertexLinks)
+  /* 071898 800F6098 3C188013 */       lui $t8, %hi(gMPVertexLinks)
   /* 07189C 800F609C 468042A0 */   cvt.s.w $f10, $f8
   /* 0718A0 800F60A0 460A303C */    c.lt.s $f6, $f10
   /* 0718A4 800F60A4 00000000 */       nop 
   /* 0718A8 800F60A8 45000005 */      bc1f .L800F60C0
-  /* 0718AC 800F60AC 3C0E8013 */       lui $t6, %hi(gMapGeometry)
-  /* 0718B0 800F60B0 8DCE1368 */        lw $t6, %lo(gMapGeometry)($t6)
+  /* 0718AC 800F60AC 3C0E8013 */       lui $t6, %hi(gMPGeometry)
+  /* 0718B0 800F60B0 8DCE1368 */        lw $t6, %lo(gMPGeometry)($t6)
   /* 0718B4 800F60B4 8FAC00FC */        lw $t4, 0xfc($sp)
   /* 0718B8 800F60B8 100000E7 */         b .L800F6458
   /* 0718BC 800F60BC 95C80000 */       lhu $t0, ($t6)
   .L800F60C0:
-  /* 0718C0 800F60C0 8F181378 */        lw $t8, %lo(gMapVertexLinks)($t8)
+  /* 0718C0 800F60C0 8F181378 */        lw $t8, %lo(gMPVertexLinks)($t8)
   /* 0718C4 800F60C4 0017B880 */       sll $s7, $s7, 2
-  /* 0718C8 800F60C8 8D4D0000 */        lw $t5, ($t2) # gMapVertexID + 0
+  /* 0718C8 800F60C8 8D4D0000 */        lw $t5, ($t2) # gMPVertexID + 0
   /* 0718CC 800F60CC 03171021 */      addu $v0, $t8, $s7
   /* 0718D0 800F60D0 94430000 */       lhu $v1, ($v0)
-  /* 0718D4 800F60D4 8D390000 */        lw $t9, ($t1) # gMapVertexData + 0
+  /* 0718D4 800F60D4 8D390000 */        lw $t9, ($t1) # gMPVertexData + 0
   /* 0718D8 800F60D8 00039040 */       sll $s2, $v1, 1
   /* 0718DC 800F60DC 01B27821 */      addu $t7, $t5, $s2
   /* 0718E0 800F60E0 95EE0000 */       lhu $t6, ($t7)
@@ -35759,9 +35759,9 @@ glabel mpCollision_CheckCeilLineCollisionSame
   /* 071900 800F6100 84930000 */        lh $s3, ($a0)
   /* 071904 800F6104 102000C6 */      beqz $at, .L800F6420
   /* 071908 800F6108 84940002 */        lh $s4, 2($a0)
-  /* 07190C 800F610C 8D580000 */        lw $t8, ($t2) # gMapVertexID + 0
+  /* 07190C 800F610C 8D580000 */        lw $t8, ($t2) # gMPVertexID + 0
   .L800F6110:
-  /* 071910 800F6110 8D390000 */        lw $t9, ($t1) # gMapVertexData + 0
+  /* 071910 800F6110 8D390000 */        lw $t9, ($t1) # gMPVertexData + 0
   /* 071914 800F6114 02808025 */        or $s0, $s4, $zero
   /* 071918 800F6118 03126821 */      addu $t5, $t8, $s2
   /* 07191C 800F611C 95AF0002 */       lhu $t7, 2($t5)
@@ -35793,17 +35793,17 @@ glabel mpCollision_CheckCeilLineCollisionSame
   /* 071984 800F6184 E7BA0018 */      swc1 $f26, 0x18($sp)
   /* 071988 800F6188 0C03D628 */       jal mpCollision_CheckUDSurfaceFlat
   /* 07198C 800F618C E7B00014 */      swc1 $f16, 0x14($sp)
-  /* 071990 800F6190 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 071994 800F6194 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 071990 800F6190 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 071994 800F6194 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 071998 800F6198 24010001 */     addiu $at, $zero, 1
-  /* 07199C 800F619C 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 0719A0 800F61A0 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 07199C 800F619C 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 0719A0 800F61A0 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 0719A4 800F61A4 8FA8010C */        lw $t0, 0x10c($sp)
   /* 0719A8 800F61A8 14410091 */       bne $v0, $at, .L800F63F0
   /* 0719AC 800F61AC 240B0006 */     addiu $t3, $zero, 6
   /* 0719B0 800F61B0 C7B200AC */      lwc1 $f18, 0xac($sp)
   /* 0719B4 800F61B4 C7A400AC */      lwc1 $f4, 0xac($sp)
-  /* 0719B8 800F61B8 3C0F8013 */       lui $t7, %hi(gMapVertexLinks)
+  /* 0719B8 800F61B8 3C0F8013 */       lui $t7, %hi(gMPVertexLinks)
   /* 0719BC 800F61BC 4614903C */    c.lt.s $f18, $f20
   /* 0719C0 800F61C0 00000000 */       nop 
   /* 0719C4 800F61C4 45020005 */     bc1fl .L800F61DC
@@ -35817,7 +35817,7 @@ glabel mpCollision_CheckCeilLineCollisionSame
   /* 0719E0 800F61E0 00000000 */       nop 
   /* 0719E4 800F61E4 45000009 */      bc1f .L800F620C
   /* 0719E8 800F61E8 00000000 */       nop 
-  /* 0719EC 800F61EC 8DEF1378 */        lw $t7, %lo(gMapVertexLinks)($t7)
+  /* 0719EC 800F61EC 8DEF1378 */        lw $t7, %lo(gMPVertexLinks)($t7)
   /* 0719F0 800F61F0 01F71021 */      addu $v0, $t7, $s7
   /* 0719F4 800F61F4 94590002 */       lhu $t9, 2($v0)
   /* 0719F8 800F61F8 944E0000 */       lhu $t6, ($v0)
@@ -35848,8 +35848,8 @@ glabel mpCollision_CheckCeilLineCollisionSame
   .L800F6250:
   /* 071A50 800F6250 53C0000B */      beql $fp, $zero, .L800F6280
   /* 071A54 800F6254 C7A400AC */      lwc1 $f4, 0xac($sp)
-  /* 071A58 800F6258 8D4F0000 */        lw $t7, ($t2) # gMapVertexID + 0
-  /* 071A5C 800F625C 8D2D0000 */        lw $t5, ($t1) # gMapVertexData + 0
+  /* 071A58 800F6258 8D4F0000 */        lw $t7, ($t2) # gMPVertexID + 0
+  /* 071A5C 800F625C 8D2D0000 */        lw $t5, ($t1) # gMPVertexData + 0
   /* 071A60 800F6260 01F2C821 */      addu $t9, $t7, $s2
   /* 071A64 800F6264 972E0000 */       lhu $t6, ($t9)
   /* 071A68 800F6268 01CB0019 */     multu $t6, $t3
@@ -35878,17 +35878,17 @@ glabel mpCollision_CheckCeilLineCollisionSame
   /* 071AB8 800F62B8 AFAD0024 */        sw $t5, 0x24($sp)
   /* 071ABC 800F62BC 0C03D699 */       jal mpCollision_CheckCeilSurfaceTilt
   /* 071AC0 800F62C0 E7A60018 */      swc1 $f6, 0x18($sp)
-  /* 071AC4 800F62C4 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 071AC8 800F62C8 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 071AC4 800F62C4 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 071AC8 800F62C8 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 071ACC 800F62CC 24010001 */     addiu $at, $zero, 1
-  /* 071AD0 800F62D0 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 071AD4 800F62D4 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 071AD0 800F62D0 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 071AD4 800F62D4 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 071AD8 800F62D8 8FA8010C */        lw $t0, 0x10c($sp)
   /* 071ADC 800F62DC 14410044 */       bne $v0, $at, .L800F63F0
   /* 071AE0 800F62E0 240B0006 */     addiu $t3, $zero, 6
   /* 071AE4 800F62E4 C7AA00AC */      lwc1 $f10, 0xac($sp)
   /* 071AE8 800F62E8 C7B000AC */      lwc1 $f16, 0xac($sp)
-  /* 071AEC 800F62EC 3C188013 */       lui $t8, %hi(gMapVertexLinks)
+  /* 071AEC 800F62EC 3C188013 */       lui $t8, %hi(gMPVertexLinks)
   /* 071AF0 800F62F0 4614503C */    c.lt.s $f10, $f20
   /* 071AF4 800F62F4 00000000 */       nop 
   /* 071AF8 800F62F8 45020005 */     bc1fl .L800F6310
@@ -35902,7 +35902,7 @@ glabel mpCollision_CheckCeilLineCollisionSame
   /* 071B14 800F6314 00000000 */       nop 
   /* 071B18 800F6318 45000009 */      bc1f .L800F6340
   /* 071B1C 800F631C 00000000 */       nop 
-  /* 071B20 800F6320 8F181378 */        lw $t8, %lo(gMapVertexLinks)($t8)
+  /* 071B20 800F6320 8F181378 */        lw $t8, %lo(gMPVertexLinks)($t8)
   /* 071B24 800F6324 03171021 */      addu $v0, $t8, $s7
   /* 071B28 800F6328 944F0002 */       lhu $t7, 2($v0)
   /* 071B2C 800F632C 94590000 */       lhu $t9, ($v0)
@@ -35933,16 +35933,16 @@ glabel mpCollision_CheckCeilLineCollisionSame
   /* 071B84 800F6384 02603825 */        or $a3, $s3, $zero
   /* 071B88 800F6388 0C03D1B4 */       jal mpCollision_GetUDAngle
   /* 071B8C 800F638C AFB40010 */        sw $s4, 0x10($sp)
-  /* 071B90 800F6390 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 071B94 800F6394 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 071B98 800F6398 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 071B9C 800F639C 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 071B90 800F6390 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 071B94 800F6394 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 071B98 800F6398 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 071B9C 800F639C 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 071BA0 800F63A0 240B0006 */     addiu $t3, $zero, 6
   .L800F63A4:
   /* 071BA4 800F63A4 53C0000B */      beql $fp, $zero, .L800F63D4
   /* 071BA8 800F63A8 C7AA00AC */      lwc1 $f10, 0xac($sp)
-  /* 071BAC 800F63AC 8D4F0000 */        lw $t7, ($t2) # gMapVertexID + 0
-  /* 071BB0 800F63B0 8D380000 */        lw $t8, ($t1) # gMapVertexData + 0
+  /* 071BAC 800F63AC 8D4F0000 */        lw $t7, ($t2) # gMPVertexID + 0
+  /* 071BB0 800F63B0 8D380000 */        lw $t8, ($t1) # gMPVertexData + 0
   /* 071BB4 800F63B4 01F2C821 */      addu $t9, $t7, $s2
   /* 071BB8 800F63B8 972E0000 */       lhu $t6, ($t9)
   /* 071BBC 800F63BC 01CB0019 */     multu $t6, $t3
@@ -35960,8 +35960,8 @@ glabel mpCollision_CheckCeilLineCollisionSame
   /* 071BE8 800F63E8 46000587 */     neg.s $f22, $f0
   /* 071BEC 800F63EC 46000586 */     mov.s $f22, $f0
   .L800F63F0:
-  /* 071BF0 800F63F0 3C0E8013 */       lui $t6, %hi(gMapVertexLinks)
-  /* 071BF4 800F63F4 8DCE1378 */        lw $t6, %lo(gMapVertexLinks)($t6)
+  /* 071BF0 800F63F0 3C0E8013 */       lui $t6, %hi(gMPVertexLinks)
+  /* 071BF4 800F63F4 8DCE1378 */        lw $t6, %lo(gMPVertexLinks)($t6)
   /* 071BF8 800F63F8 01D71021 */      addu $v0, $t6, $s7
   /* 071BFC 800F63FC 94580002 */       lhu $t8, 2($v0)
   /* 071C00 800F6400 944D0000 */       lhu $t5, ($v0)
@@ -35972,7 +35972,7 @@ glabel mpCollision_CheckCeilLineCollisionSame
   /* 071C10 800F6410 26520002 */     addiu $s2, $s2, 2
   /* 071C14 800F6414 0244082A */       slt $at, $s2, $a0
   /* 071C18 800F6418 5420FF3D */      bnel $at, $zero, .L800F6110
-  /* 071C1C 800F641C 8D580000 */        lw $t8, ($t2) # gMapVertexID + 0
+  /* 071C1C 800F641C 8D580000 */        lw $t8, ($t2) # gMPVertexID + 0
   .L800F6420:
   /* 071C20 800F6420 8FA300F8 */        lw $v1, 0xf8($sp)
   /* 071C24 800F6424 8FA400A0 */        lw $a0, 0xa0($sp)
@@ -35985,8 +35985,8 @@ glabel mpCollision_CheckCeilLineCollisionSame
   /* 071C3C 800F643C 0062082A */       slt $at, $v1, $v0
   /* 071C40 800F6440 1420FEFE */      bnez $at, .L800F603C
   /* 071C44 800F6444 2484000A */     addiu $a0, $a0, 0xa
-  /* 071C48 800F6448 3C0E8013 */       lui $t6, %hi(gMapGeometry)
-  /* 071C4C 800F644C 8DCE1368 */        lw $t6, %lo(gMapGeometry)($t6)
+  /* 071C48 800F6448 3C0E8013 */       lui $t6, %hi(gMPGeometry)
+  /* 071C4C 800F644C 8DCE1368 */        lw $t6, %lo(gMPGeometry)($t6)
   /* 071C50 800F6450 95C80000 */       lhu $t0, ($t6)
   .L800F6454:
   /* 071C54 800F6454 8FAC00FC */        lw $t4, 0xfc($sp)
@@ -36029,8 +36029,8 @@ glabel mpCollision_CheckCeilLineCollisionSame
 
 glabel mpCollision_CheckCeilLineCollisionDiff
   /* 071CD4 800F64D4 27BDFEF8 */     addiu $sp, $sp, -0x108
-  /* 071CD8 800F64D8 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 071CDC 800F64DC 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 071CD8 800F64D8 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 071CDC 800F64DC 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 071CE0 800F64E0 AFBF0084 */        sw $ra, 0x84($sp)
   /* 071CE4 800F64E4 AFBE0080 */        sw $fp, 0x80($sp)
   /* 071CE8 800F64E8 AFB7007C */        sw $s7, 0x7c($sp)
@@ -36059,17 +36059,17 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 071D44 800F6544 C436081C */      lwc1 $f22, %lo(D_ovl2_8013081C)($at)
   /* 071D48 800F6548 1900016A */      blez $t0, .L800F6AF4
   /* 071D4C 800F654C 8FBE0118 */        lw $fp, 0x118($sp)
-  /* 071D50 800F6550 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 071D54 800F6554 3C098013 */       lui $t1, %hi(gMapVertexData)
+  /* 071D50 800F6550 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 071D54 800F6554 3C098013 */       lui $t1, %hi(gMPVertexData)
   /* 071D58 800F6558 4480D000 */      mtc1 $zero, $f26
-  /* 071D5C 800F655C 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
-  /* 071D60 800F6560 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
+  /* 071D5C 800F655C 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
+  /* 071D60 800F6560 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
   /* 071D64 800F6564 8FB6011C */        lw $s6, 0x11c($sp)
   /* 071D68 800F6568 240B0006 */     addiu $t3, $zero, 6
   .L800F656C:
   /* 071D6C 800F656C 8FAF0104 */        lw $t7, 0x104($sp)
-  /* 071D70 800F6570 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 071D74 800F6574 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 071D70 800F6570 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 071D74 800F6574 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 071D78 800F6578 25E40006 */     addiu $a0, $t7, 6
   /* 071D7C 800F657C AFA40100 */        sw $a0, 0x100($sp)
   /* 071D80 800F6580 95E50000 */       lhu $a1, ($t7)
@@ -36092,9 +36092,9 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 071DC4 800F65C4 C7100004 */      lwc1 $f16, 4($t8)
   /* 071DC8 800F65C8 10400015 */      beqz $v0, .L800F6620
   .L800F65CC:
-  /* 071DCC 800F65CC 3C0C8013 */       lui $t4, %hi(gMapDynamicCollisions)
+  /* 071DCC 800F65CC 3C0C8013 */       lui $t4, %hi(gMPDynamicCollisions)
   /* 071DD0 800F65D0 C47E001C */      lwc1 $f30, 0x1c($v1)
-  /* 071DD4 800F65D4 8D8C137C */        lw $t4, %lo(gMapDynamicCollisions)($t4)
+  /* 071DD4 800F65D4 8D8C137C */        lw $t4, %lo(gMPDynamicCollisions)($t4)
   /* 071DD8 800F65D8 00057880 */       sll $t7, $a1, 2
   /* 071DDC 800F65DC 01E57823 */      subu $t7, $t7, $a1
   /* 071DE0 800F65E0 000F7880 */       sll $t7, $t7, 2
@@ -36152,14 +36152,14 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 071EA0 800F66A0 00822021 */      addu $a0, $a0, $v0
   /* 071EA4 800F66A4 00042040 */       sll $a0, $a0, 1
   .L800F66A8:
-  /* 071EA8 800F66A8 3C188013 */       lui $t8, %hi(gMapVertexInfo)
-  /* 071EAC 800F66AC 8F18136C */        lw $t8, %lo(gMapVertexInfo)($t8)
+  /* 071EA8 800F66A8 3C188013 */       lui $t8, %hi(gMPVertexInfo)
+  /* 071EAC 800F66AC 8F18136C */        lw $t8, %lo(gMPVertexInfo)($t8)
   /* 071EB0 800F66B0 C7A600F4 */      lwc1 $f6, 0xf4($sp)
   /* 071EB4 800F66B4 8FAC0100 */        lw $t4, 0x100($sp)
   /* 071EB8 800F66B8 03041021 */      addu $v0, $t8, $a0
   /* 071EBC 800F66BC 84590002 */        lh $t9, 2($v0)
   /* 071EC0 800F66C0 44995000 */      mtc1 $t9, $f10
-  /* 071EC4 800F66C4 3C198013 */       lui $t9, %hi(gMapVertexLinks)
+  /* 071EC4 800F66C4 3C198013 */       lui $t9, %hi(gMPVertexLinks)
   /* 071EC8 800F66C8 46805120 */   cvt.s.w $f4, $f10
   /* 071ECC 800F66CC 4606203C */    c.lt.s $f4, $f6
   /* 071ED0 800F66D0 00000000 */       nop 
@@ -36181,18 +36181,18 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 071F0C 800F670C 4604403C */    c.lt.s $f8, $f4
   /* 071F10 800F6710 00000000 */       nop 
   /* 071F14 800F6714 45000004 */      bc1f .L800F6728
-  /* 071F18 800F6718 3C188013 */       lui $t8, %hi(gMapGeometry)
-  /* 071F1C 800F671C 8F181368 */        lw $t8, %lo(gMapGeometry)($t8)
+  /* 071F18 800F6718 3C188013 */       lui $t8, %hi(gMPGeometry)
+  /* 071F1C 800F671C 8F181368 */        lw $t8, %lo(gMPGeometry)($t8)
   /* 071F20 800F6720 100000EC */         b .L800F6AD4
   /* 071F24 800F6724 97080000 */       lhu $t0, ($t8)
   .L800F6728:
-  /* 071F28 800F6728 8F391378 */        lw $t9, %lo(gMapVertexLinks)($t9)
+  /* 071F28 800F6728 8F391378 */        lw $t9, %lo(gMPVertexLinks)($t9)
   /* 071F2C 800F672C 0017B880 */       sll $s7, $s7, 2
-  /* 071F30 800F6730 8D4F0000 */        lw $t7, ($t2) # gMapVertexID + 0
+  /* 071F30 800F6730 8D4F0000 */        lw $t7, ($t2) # gMPVertexID + 0
   /* 071F34 800F6734 03371021 */      addu $v0, $t9, $s7
   /* 071F38 800F6738 94430000 */       lhu $v1, ($v0)
   /* 071F3C 800F673C 94590002 */       lhu $t9, 2($v0)
-  /* 071F40 800F6740 8D2C0000 */        lw $t4, ($t1) # gMapVertexData + 0
+  /* 071F40 800F6740 8D2C0000 */        lw $t4, ($t1) # gMPVertexData + 0
   /* 071F44 800F6744 00039040 */       sll $s2, $v1, 1
   /* 071F48 800F6748 01F26821 */      addu $t5, $t7, $s2
   /* 071F4C 800F674C 95AE0000 */       lhu $t6, ($t5)
@@ -36205,9 +36205,9 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 071F68 800F6768 84930000 */        lh $s3, ($a0)
   /* 071F6C 800F676C 102000CC */      beqz $at, .L800F6AA0
   /* 071F70 800F6770 84940002 */        lh $s4, 2($a0)
-  /* 071F74 800F6774 8D4C0000 */        lw $t4, ($t2) # gMapVertexID + 0
+  /* 071F74 800F6774 8D4C0000 */        lw $t4, ($t2) # gMPVertexID + 0
   .L800F6778:
-  /* 071F78 800F6778 8D2E0000 */        lw $t6, ($t1) # gMapVertexData + 0
+  /* 071F78 800F6778 8D2E0000 */        lw $t6, ($t1) # gMPVertexData + 0
   /* 071F7C 800F677C 02808025 */        or $s0, $s4, $zero
   /* 071F80 800F6780 0192C021 */      addu $t8, $t4, $s2
   /* 071F84 800F6784 97190002 */       lhu $t9, 2($t8)
@@ -36239,11 +36239,11 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 071FEC 800F67EC E7BC0018 */      swc1 $f28, 0x18($sp)
   /* 071FF0 800F67F0 0C03D628 */       jal mpCollision_CheckUDSurfaceFlat
   /* 071FF4 800F67F4 E7A60014 */      swc1 $f6, 0x14($sp)
-  /* 071FF8 800F67F8 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 071FFC 800F67FC 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 071FF8 800F67F8 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 071FFC 800F67FC 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 072000 800F6800 24010001 */     addiu $at, $zero, 1
-  /* 072004 800F6804 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 072008 800F6808 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 072004 800F6804 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 072008 800F6808 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 07200C 800F680C 8FA80114 */        lw $t0, 0x114($sp)
   /* 072010 800F6810 14410097 */       bne $v0, $at, .L800F6A70
   /* 072014 800F6814 240B0006 */     addiu $t3, $zero, 6
@@ -36251,7 +36251,7 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 07201C 800F681C C7A800B0 */      lwc1 $f8, 0xb0($sp)
   /* 072020 800F6820 C7A400B0 */      lwc1 $f4, 0xb0($sp)
   /* 072024 800F6824 460AC501 */     sub.s $f20, $f24, $f10
-  /* 072028 800F6828 3C188013 */       lui $t8, %hi(gMapVertexLinks)
+  /* 072028 800F6828 3C188013 */       lui $t8, %hi(gMPVertexLinks)
   /* 07202C 800F682C 4614403C */    c.lt.s $f8, $f20
   /* 072030 800F6830 00000000 */       nop 
   /* 072034 800F6834 45020005 */     bc1fl .L800F684C
@@ -36265,7 +36265,7 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 072050 800F6850 00000000 */       nop 
   /* 072054 800F6854 45000009 */      bc1f .L800F687C
   /* 072058 800F6858 00000000 */       nop 
-  /* 07205C 800F685C 8F181378 */        lw $t8, %lo(gMapVertexLinks)($t8)
+  /* 07205C 800F685C 8F181378 */        lw $t8, %lo(gMPVertexLinks)($t8)
   /* 072060 800F6860 03171021 */      addu $v0, $t8, $s7
   /* 072064 800F6864 94590002 */       lhu $t9, 2($v0)
   /* 072068 800F6868 944E0000 */       lhu $t6, ($v0)
@@ -36297,8 +36297,8 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   .L800F68C4:
   /* 0720C4 800F68C4 53C0000B */      beql $fp, $zero, .L800F68F4
   /* 0720C8 800F68C8 C7A800B0 */      lwc1 $f8, 0xb0($sp)
-  /* 0720CC 800F68CC 8D4C0000 */        lw $t4, ($t2) # gMapVertexID + 0
-  /* 0720D0 800F68D0 8D2D0000 */        lw $t5, ($t1) # gMapVertexData + 0
+  /* 0720CC 800F68CC 8D4C0000 */        lw $t4, ($t2) # gMPVertexID + 0
+  /* 0720D0 800F68D0 8D2D0000 */        lw $t5, ($t1) # gMPVertexData + 0
   /* 0720D4 800F68D4 0192C021 */      addu $t8, $t4, $s2
   /* 0720D8 800F68D8 97190000 */       lhu $t9, ($t8)
   /* 0720DC 800F68DC 032B0019 */     multu $t9, $t3
@@ -36327,11 +36327,11 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 07212C 800F692C AFB90024 */        sw $t9, 0x24($sp)
   /* 072130 800F6930 0C03D699 */       jal mpCollision_CheckCeilSurfaceTilt
   /* 072134 800F6934 E7A60018 */      swc1 $f6, 0x18($sp)
-  /* 072138 800F6938 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 07213C 800F693C 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 072138 800F6938 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 07213C 800F693C 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 072140 800F6940 24010001 */     addiu $at, $zero, 1
-  /* 072144 800F6944 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 072148 800F6948 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 072144 800F6944 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 072148 800F6948 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 07214C 800F694C 8FA80114 */        lw $t0, 0x114($sp)
   /* 072150 800F6950 14410047 */       bne $v0, $at, .L800F6A70
   /* 072154 800F6954 240B0006 */     addiu $t3, $zero, 6
@@ -36339,7 +36339,7 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 07215C 800F695C C7A800B0 */      lwc1 $f8, 0xb0($sp)
   /* 072160 800F6960 C7A400B0 */      lwc1 $f4, 0xb0($sp)
   /* 072164 800F6964 460AC501 */     sub.s $f20, $f24, $f10
-  /* 072168 800F6968 3C0D8013 */       lui $t5, %hi(gMapVertexLinks)
+  /* 072168 800F6968 3C0D8013 */       lui $t5, %hi(gMPVertexLinks)
   /* 07216C 800F696C 4614403C */    c.lt.s $f8, $f20
   /* 072170 800F6970 00000000 */       nop 
   /* 072174 800F6974 45020005 */     bc1fl .L800F698C
@@ -36353,7 +36353,7 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 072190 800F6990 00000000 */       nop 
   /* 072194 800F6994 45000009 */      bc1f .L800F69BC
   /* 072198 800F6998 00000000 */       nop 
-  /* 07219C 800F699C 8DAD1378 */        lw $t5, %lo(gMapVertexLinks)($t5)
+  /* 07219C 800F699C 8DAD1378 */        lw $t5, %lo(gMPVertexLinks)($t5)
   /* 0721A0 800F69A0 01B71021 */      addu $v0, $t5, $s7
   /* 0721A4 800F69A4 944E0002 */       lhu $t6, 2($v0)
   /* 0721A8 800F69A8 944F0000 */       lhu $t7, ($v0)
@@ -36385,16 +36385,16 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 072204 800F6A04 02603825 */        or $a3, $s3, $zero
   /* 072208 800F6A08 0C03D1B4 */       jal mpCollision_GetUDAngle
   /* 07220C 800F6A0C AFB40010 */        sw $s4, 0x10($sp)
-  /* 072210 800F6A10 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 072214 800F6A14 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 072218 800F6A18 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 07221C 800F6A1C 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 072210 800F6A10 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 072214 800F6A14 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 072218 800F6A18 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 07221C 800F6A1C 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 072220 800F6A20 240B0006 */     addiu $t3, $zero, 6
   .L800F6A24:
   /* 072224 800F6A24 53C0000B */      beql $fp, $zero, .L800F6A54
   /* 072228 800F6A28 C7AA00B0 */      lwc1 $f10, 0xb0($sp)
-  /* 07222C 800F6A2C 8D4D0000 */        lw $t5, ($t2) # gMapVertexID + 0
-  /* 072230 800F6A30 8D390000 */        lw $t9, ($t1) # gMapVertexData + 0
+  /* 07222C 800F6A2C 8D4D0000 */        lw $t5, ($t2) # gMPVertexID + 0
+  /* 072230 800F6A30 8D390000 */        lw $t9, ($t1) # gMPVertexData + 0
   /* 072234 800F6A34 01B27021 */      addu $t6, $t5, $s2
   /* 072238 800F6A38 95CF0000 */       lhu $t7, ($t6)
   /* 07223C 800F6A3C 01EB0019 */     multu $t7, $t3
@@ -36412,8 +36412,8 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 072268 800F6A68 46000587 */     neg.s $f22, $f0
   /* 07226C 800F6A6C 46000586 */     mov.s $f22, $f0
   .L800F6A70:
-  /* 072270 800F6A70 3C0E8013 */       lui $t6, %hi(gMapVertexLinks)
-  /* 072274 800F6A74 8DCE1378 */        lw $t6, %lo(gMapVertexLinks)($t6)
+  /* 072270 800F6A70 3C0E8013 */       lui $t6, %hi(gMPVertexLinks)
+  /* 072274 800F6A74 8DCE1378 */        lw $t6, %lo(gMPVertexLinks)($t6)
   /* 072278 800F6A78 01D71021 */      addu $v0, $t6, $s7
   /* 07227C 800F6A7C 944F0002 */       lhu $t7, 2($v0)
   /* 072280 800F6A80 94590000 */       lhu $t9, ($v0)
@@ -36424,7 +36424,7 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 072290 800F6A90 26520002 */     addiu $s2, $s2, 2
   /* 072294 800F6A94 0244082A */       slt $at, $s2, $a0
   /* 072298 800F6A98 5420FF37 */      bnel $at, $zero, .L800F6778
-  /* 07229C 800F6A9C 8D4C0000 */        lw $t4, ($t2) # gMapVertexID + 0
+  /* 07229C 800F6A9C 8D4C0000 */        lw $t4, ($t2) # gMPVertexID + 0
   .L800F6AA0:
   /* 0722A0 800F6AA0 8FA30100 */        lw $v1, 0x100($sp)
   /* 0722A4 800F6AA4 8FA400A4 */        lw $a0, 0xa4($sp)
@@ -36437,8 +36437,8 @@ glabel mpCollision_CheckCeilLineCollisionDiff
   /* 0722BC 800F6ABC 0062082A */       slt $at, $v1, $v0
   /* 0722C0 800F6AC0 1420FEF9 */      bnez $at, .L800F66A8
   /* 0722C4 800F6AC4 2484000A */     addiu $a0, $a0, 0xa
-  /* 0722C8 800F6AC8 3C0D8013 */       lui $t5, %hi(gMapGeometry)
-  /* 0722CC 800F6ACC 8DAD1368 */        lw $t5, %lo(gMapGeometry)($t5)
+  /* 0722C8 800F6AC8 3C0D8013 */       lui $t5, %hi(gMPGeometry)
+  /* 0722CC 800F6ACC 8DAD1368 */        lw $t5, %lo(gMPGeometry)($t5)
   /* 0722D0 800F6AD0 95A80000 */       lhu $t0, ($t5)
   .L800F6AD4:
   /* 0722D4 800F6AD4 8FAE00F8 */        lw $t6, 0xf8($sp)
@@ -36481,8 +36481,8 @@ glabel mpCollision_CheckCeilLineCollisionDiff
 
 glabel mpCollision_CheckRWallLineCollisionSame
   /* 072358 800F6B58 27BDFF00 */     addiu $sp, $sp, -0x100
-  /* 07235C 800F6B5C 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 072360 800F6B60 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 07235C 800F6B5C 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 072360 800F6B60 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 072364 800F6B64 AFBF0084 */        sw $ra, 0x84($sp)
   /* 072368 800F6B68 AFBE0080 */        sw $fp, 0x80($sp)
   /* 07236C 800F6B6C AFB7007C */        sw $s7, 0x7c($sp)
@@ -36509,11 +36509,11 @@ glabel mpCollision_CheckRWallLineCollisionSame
   /* 0723C0 800F6BC0 00C0A825 */        or $s5, $a2, $zero
   /* 0723C4 800F6BC4 1900015D */      blez $t0, .L800F713C
   /* 0723C8 800F6BC8 C4360830 */      lwc1 $f22, %lo(D_ovl2_80130830)($at)
-  /* 0723CC 800F6BCC 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 0723D0 800F6BD0 3C098013 */       lui $t1, %hi(gMapVertexData)
+  /* 0723CC 800F6BCC 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 0723D0 800F6BD0 3C098013 */       lui $t1, %hi(gMPVertexData)
   /* 0723D4 800F6BD4 4480C000 */      mtc1 $zero, $f24
-  /* 0723D8 800F6BD8 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
-  /* 0723DC 800F6BDC 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
+  /* 0723D8 800F6BD8 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
+  /* 0723DC 800F6BDC 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
   /* 0723E0 800F6BE0 8FBE0110 */        lw $fp, 0x110($sp)
   /* 0723E4 800F6BE4 8FB60114 */        lw $s6, 0x114($sp)
   /* 0723E8 800F6BE8 240B0006 */     addiu $t3, $zero, 6
@@ -36521,8 +36521,8 @@ glabel mpCollision_CheckRWallLineCollisionSame
   /* 0723EC 800F6BEC 2584000A */     addiu $a0, $t4, 0xa
   /* 0723F0 800F6BF0 AFA400F8 */        sw $a0, 0xf8($sp)
   /* 0723F4 800F6BF4 958F0000 */       lhu $t7, ($t4)
-  /* 0723F8 800F6BF8 3C0E8013 */       lui $t6, %hi(gMapRooms)
-  /* 0723FC 800F6BFC 8DCE1304 */        lw $t6, %lo(gMapRooms)($t6)
+  /* 0723F8 800F6BF8 3C0E8013 */       lui $t6, %hi(gMPRooms)
+  /* 0723FC 800F6BFC 8DCE1304 */        lw $t6, %lo(gMPRooms)($t6)
   /* 072400 800F6C00 958D000C */       lhu $t5, 0xc($t4)
   /* 072404 800F6C04 000FC080 */       sll $t8, $t7, 2
   /* 072408 800F6C08 01D8C821 */      addu $t9, $t6, $t8
@@ -36594,8 +36594,8 @@ glabel mpCollision_CheckRWallLineCollisionSame
   /* 0724FC 800F6CFC 00042040 */       sll $a0, $a0, 1
   /* 072500 800F6D00 AFAC00FC */        sw $t4, 0xfc($sp)
   .L800F6D04:
-  /* 072504 800F6D04 3C0F8013 */       lui $t7, %hi(gMapVertexInfo)
-  /* 072508 800F6D08 8DEF136C */        lw $t7, %lo(gMapVertexInfo)($t7)
+  /* 072504 800F6D04 3C0F8013 */       lui $t7, %hi(gMPVertexInfo)
+  /* 072508 800F6D08 8DEF136C */        lw $t7, %lo(gMPVertexInfo)($t7)
   /* 07250C 800F6D0C C7B000E8 */      lwc1 $f16, 0xe8($sp)
   /* 072510 800F6D10 8FB800F8 */        lw $t8, 0xf8($sp)
   /* 072514 800F6D14 01E41021 */      addu $v0, $t7, $a0
@@ -36618,23 +36618,23 @@ glabel mpCollision_CheckRWallLineCollisionSame
   /* 072554 800F6D54 C7AA00EC */      lwc1 $f10, 0xec($sp)
   /* 072558 800F6D58 8FB700C8 */        lw $s7, 0xc8($sp)
   /* 07255C 800F6D5C 448F3000 */      mtc1 $t7, $f6
-  /* 072560 800F6D60 3C188013 */       lui $t8, %hi(gMapVertexLinks)
+  /* 072560 800F6D60 3C188013 */       lui $t8, %hi(gMPVertexLinks)
   /* 072564 800F6D64 46803220 */   cvt.s.w $f8, $f6
   /* 072568 800F6D68 460A403C */    c.lt.s $f8, $f10
   /* 07256C 800F6D6C 00000000 */       nop 
   /* 072570 800F6D70 45000005 */      bc1f .L800F6D88
-  /* 072574 800F6D74 3C0E8013 */       lui $t6, %hi(gMapGeometry)
-  /* 072578 800F6D78 8DCE1368 */        lw $t6, %lo(gMapGeometry)($t6)
+  /* 072574 800F6D74 3C0E8013 */       lui $t6, %hi(gMPGeometry)
+  /* 072578 800F6D78 8DCE1368 */        lw $t6, %lo(gMPGeometry)($t6)
   /* 07257C 800F6D7C 8FAC00FC */        lw $t4, 0xfc($sp)
   /* 072580 800F6D80 100000E8 */         b .L800F7124
   /* 072584 800F6D84 95C80000 */       lhu $t0, ($t6)
   .L800F6D88:
-  /* 072588 800F6D88 8F181378 */        lw $t8, %lo(gMapVertexLinks)($t8)
+  /* 072588 800F6D88 8F181378 */        lw $t8, %lo(gMPVertexLinks)($t8)
   /* 07258C 800F6D8C 0017B880 */       sll $s7, $s7, 2
-  /* 072590 800F6D90 8D4D0000 */        lw $t5, ($t2) # gMapVertexID + 0
+  /* 072590 800F6D90 8D4D0000 */        lw $t5, ($t2) # gMPVertexID + 0
   /* 072594 800F6D94 03171021 */      addu $v0, $t8, $s7
   /* 072598 800F6D98 94430000 */       lhu $v1, ($v0)
-  /* 07259C 800F6D9C 8D390000 */        lw $t9, ($t1) # gMapVertexData + 0
+  /* 07259C 800F6D9C 8D390000 */        lw $t9, ($t1) # gMPVertexData + 0
   /* 0725A0 800F6DA0 00039040 */       sll $s2, $v1, 1
   /* 0725A4 800F6DA4 01B27821 */      addu $t7, $t5, $s2
   /* 0725A8 800F6DA8 95EE0000 */       lhu $t6, ($t7)
@@ -36648,9 +36648,9 @@ glabel mpCollision_CheckRWallLineCollisionSame
   /* 0725C8 800F6DC8 84930000 */        lh $s3, ($a0)
   /* 0725CC 800F6DCC 102000C7 */      beqz $at, .L800F70EC
   /* 0725D0 800F6DD0 84940002 */        lh $s4, 2($a0)
-  /* 0725D4 800F6DD4 8D580000 */        lw $t8, ($t2) # gMapVertexID + 0
+  /* 0725D4 800F6DD4 8D580000 */        lw $t8, ($t2) # gMPVertexID + 0
   .L800F6DD8:
-  /* 0725D8 800F6DD8 8D390000 */        lw $t9, ($t1) # gMapVertexData + 0
+  /* 0725D8 800F6DD8 8D390000 */        lw $t9, ($t1) # gMPVertexData + 0
   /* 0725DC 800F6DDC 02608025 */        or $s0, $s3, $zero
   /* 0725E0 800F6DE0 03126821 */      addu $t5, $t8, $s2
   /* 0725E4 800F6DE4 95AF0002 */       lhu $t7, 2($t5)
@@ -36682,17 +36682,17 @@ glabel mpCollision_CheckRWallLineCollisionSame
   /* 07264C 800F6E4C E7BA0014 */      swc1 $f26, 0x14($sp)
   /* 072650 800F6E50 0C03DF49 */       jal mpCollision_CheckLRSurfaceFlat
   /* 072654 800F6E54 E7B00018 */      swc1 $f16, 0x18($sp)
-  /* 072658 800F6E58 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 07265C 800F6E5C 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 072658 800F6E58 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 07265C 800F6E5C 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 072660 800F6E60 24010001 */     addiu $at, $zero, 1
-  /* 072664 800F6E64 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 072668 800F6E68 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 072664 800F6E64 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 072668 800F6E68 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 07266C 800F6E6C 8FA8010C */        lw $t0, 0x10c($sp)
   /* 072670 800F6E70 14410092 */       bne $v0, $at, .L800F70BC
   /* 072674 800F6E74 240B0006 */     addiu $t3, $zero, 6
   /* 072678 800F6E78 C7A400B0 */      lwc1 $f4, 0xb0($sp)
   /* 07267C 800F6E7C C7A600B0 */      lwc1 $f6, 0xb0($sp)
-  /* 072680 800F6E80 3C0F8013 */       lui $t7, %hi(gMapVertexLinks)
+  /* 072680 800F6E80 3C0F8013 */       lui $t7, %hi(gMPVertexLinks)
   /* 072684 800F6E84 4614203C */    c.lt.s $f4, $f20
   /* 072688 800F6E88 00000000 */       nop 
   /* 07268C 800F6E8C 45020005 */     bc1fl .L800F6EA4
@@ -36706,7 +36706,7 @@ glabel mpCollision_CheckRWallLineCollisionSame
   /* 0726A8 800F6EA8 00000000 */       nop 
   /* 0726AC 800F6EAC 45000009 */      bc1f .L800F6ED4
   /* 0726B0 800F6EB0 00000000 */       nop 
-  /* 0726B4 800F6EB4 8DEF1378 */        lw $t7, %lo(gMapVertexLinks)($t7)
+  /* 0726B4 800F6EB4 8DEF1378 */        lw $t7, %lo(gMPVertexLinks)($t7)
   /* 0726B8 800F6EB8 01F71021 */      addu $v0, $t7, $s7
   /* 0726BC 800F6EBC 94590002 */       lhu $t9, 2($v0)
   /* 0726C0 800F6EC0 944E0000 */       lhu $t6, ($v0)
@@ -36737,8 +36737,8 @@ glabel mpCollision_CheckRWallLineCollisionSame
   .L800F6F18:
   /* 072718 800F6F18 53C0000B */      beql $fp, $zero, .L800F6F48
   /* 07271C 800F6F1C C7A600B0 */      lwc1 $f6, 0xb0($sp)
-  /* 072720 800F6F20 8D4F0000 */        lw $t7, ($t2) # gMapVertexID + 0
-  /* 072724 800F6F24 8D2D0000 */        lw $t5, ($t1) # gMapVertexData + 0
+  /* 072720 800F6F20 8D4F0000 */        lw $t7, ($t2) # gMPVertexID + 0
+  /* 072724 800F6F24 8D2D0000 */        lw $t5, ($t1) # gMPVertexData + 0
   /* 072728 800F6F28 01F2C821 */      addu $t9, $t7, $s2
   /* 07272C 800F6F2C 972E0000 */       lhu $t6, ($t9)
   /* 072730 800F6F30 01CB0019 */     multu $t6, $t3
@@ -36768,17 +36768,17 @@ glabel mpCollision_CheckRWallLineCollisionSame
   /* 072784 800F6F84 E7A80014 */      swc1 $f8, 0x14($sp)
   /* 072788 800F6F88 0C03DC9C */       jal mpCollision_CheckRWallSurfaceTilt
   /* 07278C 800F6F8C E7AA001C */      swc1 $f10, 0x1c($sp)
-  /* 072790 800F6F90 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 072794 800F6F94 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 072790 800F6F90 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 072794 800F6F94 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 072798 800F6F98 24010001 */     addiu $at, $zero, 1
-  /* 07279C 800F6F9C 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 0727A0 800F6FA0 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 07279C 800F6F9C 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 0727A0 800F6FA0 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 0727A4 800F6FA4 8FA8010C */        lw $t0, 0x10c($sp)
   /* 0727A8 800F6FA8 14410044 */       bne $v0, $at, .L800F70BC
   /* 0727AC 800F6FAC 240B0006 */     addiu $t3, $zero, 6
   /* 0727B0 800F6FB0 C7B200B0 */      lwc1 $f18, 0xb0($sp)
   /* 0727B4 800F6FB4 C7B000B0 */      lwc1 $f16, 0xb0($sp)
-  /* 0727B8 800F6FB8 3C188013 */       lui $t8, %hi(gMapVertexLinks)
+  /* 0727B8 800F6FB8 3C188013 */       lui $t8, %hi(gMPVertexLinks)
   /* 0727BC 800F6FBC 4614903C */    c.lt.s $f18, $f20
   /* 0727C0 800F6FC0 00000000 */       nop 
   /* 0727C4 800F6FC4 45020005 */     bc1fl .L800F6FDC
@@ -36792,7 +36792,7 @@ glabel mpCollision_CheckRWallLineCollisionSame
   /* 0727E0 800F6FE0 00000000 */       nop 
   /* 0727E4 800F6FE4 45000009 */      bc1f .L800F700C
   /* 0727E8 800F6FE8 00000000 */       nop 
-  /* 0727EC 800F6FEC 8F181378 */        lw $t8, %lo(gMapVertexLinks)($t8)
+  /* 0727EC 800F6FEC 8F181378 */        lw $t8, %lo(gMPVertexLinks)($t8)
   /* 0727F0 800F6FF0 03171021 */      addu $v0, $t8, $s7
   /* 0727F4 800F6FF4 944F0002 */       lhu $t7, 2($v0)
   /* 0727F8 800F6FF8 94590000 */       lhu $t9, ($v0)
@@ -36823,16 +36823,16 @@ glabel mpCollision_CheckRWallLineCollisionSame
   /* 072850 800F7050 02603825 */        or $a3, $s3, $zero
   /* 072854 800F7054 0C03DC68 */       jal mpCollision_GetLRAngle
   /* 072858 800F7058 AFB40010 */        sw $s4, 0x10($sp)
-  /* 07285C 800F705C 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 072860 800F7060 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 072864 800F7064 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 072868 800F7068 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 07285C 800F705C 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 072860 800F7060 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 072864 800F7064 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 072868 800F7068 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 07286C 800F706C 240B0006 */     addiu $t3, $zero, 6
   .L800F7070:
   /* 072870 800F7070 53C0000B */      beql $fp, $zero, .L800F70A0
   /* 072874 800F7074 C7B200B0 */      lwc1 $f18, 0xb0($sp)
-  /* 072878 800F7078 8D4F0000 */        lw $t7, ($t2) # gMapVertexID + 0
-  /* 07287C 800F707C 8D380000 */        lw $t8, ($t1) # gMapVertexData + 0
+  /* 072878 800F7078 8D4F0000 */        lw $t7, ($t2) # gMPVertexID + 0
+  /* 07287C 800F707C 8D380000 */        lw $t8, ($t1) # gMPVertexData + 0
   /* 072880 800F7080 01F2C821 */      addu $t9, $t7, $s2
   /* 072884 800F7084 972E0000 */       lhu $t6, ($t9)
   /* 072888 800F7088 01CB0019 */     multu $t6, $t3
@@ -36850,8 +36850,8 @@ glabel mpCollision_CheckRWallLineCollisionSame
   /* 0728B4 800F70B4 46000587 */     neg.s $f22, $f0
   /* 0728B8 800F70B8 46000586 */     mov.s $f22, $f0
   .L800F70BC:
-  /* 0728BC 800F70BC 3C0E8013 */       lui $t6, %hi(gMapVertexLinks)
-  /* 0728C0 800F70C0 8DCE1378 */        lw $t6, %lo(gMapVertexLinks)($t6)
+  /* 0728BC 800F70BC 3C0E8013 */       lui $t6, %hi(gMPVertexLinks)
+  /* 0728C0 800F70C0 8DCE1378 */        lw $t6, %lo(gMPVertexLinks)($t6)
   /* 0728C4 800F70C4 01D71021 */      addu $v0, $t6, $s7
   /* 0728C8 800F70C8 94580002 */       lhu $t8, 2($v0)
   /* 0728CC 800F70CC 944D0000 */       lhu $t5, ($v0)
@@ -36862,7 +36862,7 @@ glabel mpCollision_CheckRWallLineCollisionSame
   /* 0728DC 800F70DC 26520002 */     addiu $s2, $s2, 2
   /* 0728E0 800F70E0 0244082A */       slt $at, $s2, $a0
   /* 0728E4 800F70E4 5420FF3C */      bnel $at, $zero, .L800F6DD8
-  /* 0728E8 800F70E8 8D580000 */        lw $t8, ($t2) # gMapVertexID + 0
+  /* 0728E8 800F70E8 8D580000 */        lw $t8, ($t2) # gMPVertexID + 0
   .L800F70EC:
   /* 0728EC 800F70EC 8FA300F8 */        lw $v1, 0xf8($sp)
   /* 0728F0 800F70F0 8FA400A0 */        lw $a0, 0xa0($sp)
@@ -36875,8 +36875,8 @@ glabel mpCollision_CheckRWallLineCollisionSame
   /* 072908 800F7108 0062082A */       slt $at, $v1, $v0
   /* 07290C 800F710C 1420FEFD */      bnez $at, .L800F6D04
   /* 072910 800F7110 2484000A */     addiu $a0, $a0, 0xa
-  /* 072914 800F7114 3C0E8013 */       lui $t6, %hi(gMapGeometry)
-  /* 072918 800F7118 8DCE1368 */        lw $t6, %lo(gMapGeometry)($t6)
+  /* 072914 800F7114 3C0E8013 */       lui $t6, %hi(gMPGeometry)
+  /* 072918 800F7118 8DCE1368 */        lw $t6, %lo(gMPGeometry)($t6)
   /* 07291C 800F711C 95C80000 */       lhu $t0, ($t6)
   .L800F7120:
   /* 072920 800F7120 8FAC00FC */        lw $t4, 0xfc($sp)
@@ -37266,8 +37266,8 @@ glabel mpCollision_CheckRWallSurfaceTilt
 
 glabel mpCollision_CheckRWallLineCollisionDiff
   /* 072E9C 800F769C 27BDFEF8 */     addiu $sp, $sp, -0x108
-  /* 072EA0 800F76A0 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 072EA4 800F76A4 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 072EA0 800F76A0 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 072EA4 800F76A4 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 072EA8 800F76A8 AFBF0084 */        sw $ra, 0x84($sp)
   /* 072EAC 800F76AC AFBE0080 */        sw $fp, 0x80($sp)
   /* 072EB0 800F76B0 AFB7007C */        sw $s7, 0x7c($sp)
@@ -37296,17 +37296,17 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 072F0C 800F770C C4360874 */      lwc1 $f22, %lo(D_ovl2_80130874)($at)
   /* 072F10 800F7710 1900016B */      blez $t0, .L800F7CC0
   /* 072F14 800F7714 8FBE0118 */        lw $fp, 0x118($sp)
-  /* 072F18 800F7718 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 072F1C 800F771C 3C098013 */       lui $t1, %hi(gMapVertexData)
+  /* 072F18 800F7718 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 072F1C 800F771C 3C098013 */       lui $t1, %hi(gMPVertexData)
   /* 072F20 800F7720 4480D000 */      mtc1 $zero, $f26
-  /* 072F24 800F7724 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
-  /* 072F28 800F7728 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
+  /* 072F24 800F7724 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
+  /* 072F28 800F7728 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
   /* 072F2C 800F772C 8FB6011C */        lw $s6, 0x11c($sp)
   /* 072F30 800F7730 240B0006 */     addiu $t3, $zero, 6
   .L800F7734:
   /* 072F34 800F7734 8FAF0104 */        lw $t7, 0x104($sp)
-  /* 072F38 800F7738 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 072F3C 800F773C 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 072F38 800F7738 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 072F3C 800F773C 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 072F40 800F7740 25E4000A */     addiu $a0, $t7, 0xa
   /* 072F44 800F7744 AFA40100 */        sw $a0, 0x100($sp)
   /* 072F48 800F7748 95E50000 */       lhu $a1, ($t7)
@@ -37329,9 +37329,9 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 072F8C 800F778C C7100004 */      lwc1 $f16, 4($t8)
   /* 072F90 800F7790 10400015 */      beqz $v0, .L800F77E8
   .L800F7794:
-  /* 072F94 800F7794 3C0C8013 */       lui $t4, %hi(gMapDynamicCollisions)
+  /* 072F94 800F7794 3C0C8013 */       lui $t4, %hi(gMPDynamicCollisions)
   /* 072F98 800F7798 C47E001C */      lwc1 $f30, 0x1c($v1)
-  /* 072F9C 800F779C 8D8C137C */        lw $t4, %lo(gMapDynamicCollisions)($t4)
+  /* 072F9C 800F779C 8D8C137C */        lw $t4, %lo(gMPDynamicCollisions)($t4)
   /* 072FA0 800F77A0 00057880 */       sll $t7, $a1, 2
   /* 072FA4 800F77A4 C4600020 */      lwc1 $f0, 0x20($v1)
   /* 072FA8 800F77A8 01E57823 */      subu $t7, $t7, $a1
@@ -37389,14 +37389,14 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 073068 800F7868 00822021 */      addu $a0, $a0, $v0
   /* 07306C 800F786C 00042040 */       sll $a0, $a0, 1
   .L800F7870:
-  /* 073070 800F7870 3C188013 */       lui $t8, %hi(gMapVertexInfo)
-  /* 073074 800F7874 8F18136C */        lw $t8, %lo(gMapVertexInfo)($t8)
+  /* 073070 800F7870 3C188013 */       lui $t8, %hi(gMPVertexInfo)
+  /* 073074 800F7874 8F18136C */        lw $t8, %lo(gMPVertexInfo)($t8)
   /* 073078 800F7878 C7AA00F0 */      lwc1 $f10, 0xf0($sp)
   /* 07307C 800F787C 8FAC0100 */        lw $t4, 0x100($sp)
   /* 073080 800F7880 03041021 */      addu $v0, $t8, $a0
   /* 073084 800F7884 84590004 */        lh $t9, 4($v0)
   /* 073088 800F7888 44992000 */      mtc1 $t9, $f4
-  /* 07308C 800F788C 3C198013 */       lui $t9, %hi(gMapVertexLinks)
+  /* 07308C 800F788C 3C198013 */       lui $t9, %hi(gMPVertexLinks)
   /* 073090 800F7890 468021A0 */   cvt.s.w $f6, $f4
   /* 073094 800F7894 4606503C */    c.lt.s $f10, $f6
   /* 073098 800F7898 00000000 */       nop 
@@ -37418,18 +37418,18 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 0730D4 800F78D4 460A203C */    c.lt.s $f4, $f10
   /* 0730D8 800F78D8 00000000 */       nop 
   /* 0730DC 800F78DC 45000004 */      bc1f .L800F78F0
-  /* 0730E0 800F78E0 3C188013 */       lui $t8, %hi(gMapGeometry)
-  /* 0730E4 800F78E4 8F181368 */        lw $t8, %lo(gMapGeometry)($t8)
+  /* 0730E0 800F78E0 3C188013 */       lui $t8, %hi(gMPGeometry)
+  /* 0730E4 800F78E4 8F181368 */        lw $t8, %lo(gMPGeometry)($t8)
   /* 0730E8 800F78E8 100000ED */         b .L800F7CA0
   /* 0730EC 800F78EC 97080000 */       lhu $t0, ($t8)
   .L800F78F0:
-  /* 0730F0 800F78F0 8F391378 */        lw $t9, %lo(gMapVertexLinks)($t9)
+  /* 0730F0 800F78F0 8F391378 */        lw $t9, %lo(gMPVertexLinks)($t9)
   /* 0730F4 800F78F4 0017B880 */       sll $s7, $s7, 2
-  /* 0730F8 800F78F8 8D4F0000 */        lw $t7, ($t2) # gMapVertexID + 0
+  /* 0730F8 800F78F8 8D4F0000 */        lw $t7, ($t2) # gMPVertexID + 0
   /* 0730FC 800F78FC 03371021 */      addu $v0, $t9, $s7
   /* 073100 800F7900 94430000 */       lhu $v1, ($v0)
   /* 073104 800F7904 94590002 */       lhu $t9, 2($v0)
-  /* 073108 800F7908 8D2C0000 */        lw $t4, ($t1) # gMapVertexData + 0
+  /* 073108 800F7908 8D2C0000 */        lw $t4, ($t1) # gMPVertexData + 0
   /* 07310C 800F790C 00039040 */       sll $s2, $v1, 1
   /* 073110 800F7910 01F26821 */      addu $t5, $t7, $s2
   /* 073114 800F7914 95AE0000 */       lhu $t6, ($t5)
@@ -37442,9 +37442,9 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 073130 800F7930 84930000 */        lh $s3, ($a0)
   /* 073134 800F7934 102000CD */      beqz $at, .L800F7C6C
   /* 073138 800F7938 84940002 */        lh $s4, 2($a0)
-  /* 07313C 800F793C 8D4C0000 */        lw $t4, ($t2) # gMapVertexID + 0
+  /* 07313C 800F793C 8D4C0000 */        lw $t4, ($t2) # gMPVertexID + 0
   .L800F7940:
-  /* 073140 800F7940 8D2E0000 */        lw $t6, ($t1) # gMapVertexData + 0
+  /* 073140 800F7940 8D2E0000 */        lw $t6, ($t1) # gMPVertexData + 0
   /* 073144 800F7944 02608025 */        or $s0, $s3, $zero
   /* 073148 800F7948 0192C021 */      addu $t8, $t4, $s2
   /* 07314C 800F794C 97190002 */       lhu $t9, 2($t8)
@@ -37476,11 +37476,11 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 0731B4 800F79B4 E7BC0014 */      swc1 $f28, 0x14($sp)
   /* 0731B8 800F79B8 0C03DF49 */       jal mpCollision_CheckLRSurfaceFlat
   /* 0731BC 800F79BC E7A80018 */      swc1 $f8, 0x18($sp)
-  /* 0731C0 800F79C0 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 0731C4 800F79C4 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 0731C0 800F79C0 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 0731C4 800F79C4 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 0731C8 800F79C8 24010001 */     addiu $at, $zero, 1
-  /* 0731CC 800F79CC 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 0731D0 800F79D0 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 0731CC 800F79CC 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 0731D0 800F79D0 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 0731D4 800F79D4 8FA80114 */        lw $t0, 0x114($sp)
   /* 0731D8 800F79D8 14410098 */       bne $v0, $at, .L800F7C3C
   /* 0731DC 800F79DC 240B0006 */     addiu $t3, $zero, 6
@@ -37488,7 +37488,7 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 0731E4 800F79E4 C7AA00B4 */      lwc1 $f10, 0xb4($sp)
   /* 0731E8 800F79E8 C7A600B4 */      lwc1 $f6, 0xb4($sp)
   /* 0731EC 800F79EC 4604C501 */     sub.s $f20, $f24, $f4
-  /* 0731F0 800F79F0 3C188013 */       lui $t8, %hi(gMapVertexLinks)
+  /* 0731F0 800F79F0 3C188013 */       lui $t8, %hi(gMPVertexLinks)
   /* 0731F4 800F79F4 4614503C */    c.lt.s $f10, $f20
   /* 0731F8 800F79F8 00000000 */       nop 
   /* 0731FC 800F79FC 45020005 */     bc1fl .L800F7A14
@@ -37502,7 +37502,7 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 073218 800F7A18 00000000 */       nop 
   /* 07321C 800F7A1C 45000009 */      bc1f .L800F7A44
   /* 073220 800F7A20 00000000 */       nop 
-  /* 073224 800F7A24 8F181378 */        lw $t8, %lo(gMapVertexLinks)($t8)
+  /* 073224 800F7A24 8F181378 */        lw $t8, %lo(gMPVertexLinks)($t8)
   /* 073228 800F7A28 03171021 */      addu $v0, $t8, $s7
   /* 07322C 800F7A2C 94590002 */       lhu $t9, 2($v0)
   /* 073230 800F7A30 944E0000 */       lhu $t6, ($v0)
@@ -37534,8 +37534,8 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   .L800F7A8C:
   /* 07328C 800F7A8C 53C0000B */      beql $fp, $zero, .L800F7ABC
   /* 073290 800F7A90 C7AA00B4 */      lwc1 $f10, 0xb4($sp)
-  /* 073294 800F7A94 8D4C0000 */        lw $t4, ($t2) # gMapVertexID + 0
-  /* 073298 800F7A98 8D2D0000 */        lw $t5, ($t1) # gMapVertexData + 0
+  /* 073294 800F7A94 8D4C0000 */        lw $t4, ($t2) # gMPVertexID + 0
+  /* 073298 800F7A98 8D2D0000 */        lw $t5, ($t1) # gMPVertexData + 0
   /* 07329C 800F7A9C 0192C021 */      addu $t8, $t4, $s2
   /* 0732A0 800F7AA0 97190000 */       lhu $t9, ($t8)
   /* 0732A4 800F7AA4 032B0019 */     multu $t9, $t3
@@ -37565,11 +37565,11 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 0732F8 800F7AF8 E7A60014 */      swc1 $f6, 0x14($sp)
   /* 0732FC 800F7AFC 0C03DC9C */       jal mpCollision_CheckRWallSurfaceTilt
   /* 073300 800F7B00 E7A8001C */      swc1 $f8, 0x1c($sp)
-  /* 073304 800F7B04 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 073308 800F7B08 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 073304 800F7B04 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 073308 800F7B08 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 07330C 800F7B0C 24010001 */     addiu $at, $zero, 1
-  /* 073310 800F7B10 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 073314 800F7B14 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 073310 800F7B10 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 073314 800F7B14 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 073318 800F7B18 8FA80114 */        lw $t0, 0x114($sp)
   /* 07331C 800F7B1C 14410047 */       bne $v0, $at, .L800F7C3C
   /* 073320 800F7B20 240B0006 */     addiu $t3, $zero, 6
@@ -37577,7 +37577,7 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 073328 800F7B28 C7AA00B4 */      lwc1 $f10, 0xb4($sp)
   /* 07332C 800F7B2C C7A600B4 */      lwc1 $f6, 0xb4($sp)
   /* 073330 800F7B30 4604C501 */     sub.s $f20, $f24, $f4
-  /* 073334 800F7B34 3C0D8013 */       lui $t5, %hi(gMapVertexLinks)
+  /* 073334 800F7B34 3C0D8013 */       lui $t5, %hi(gMPVertexLinks)
   /* 073338 800F7B38 4614503C */    c.lt.s $f10, $f20
   /* 07333C 800F7B3C 00000000 */       nop 
   /* 073340 800F7B40 45020005 */     bc1fl .L800F7B58
@@ -37591,7 +37591,7 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 07335C 800F7B5C 00000000 */       nop 
   /* 073360 800F7B60 45000009 */      bc1f .L800F7B88
   /* 073364 800F7B64 00000000 */       nop 
-  /* 073368 800F7B68 8DAD1378 */        lw $t5, %lo(gMapVertexLinks)($t5)
+  /* 073368 800F7B68 8DAD1378 */        lw $t5, %lo(gMPVertexLinks)($t5)
   /* 07336C 800F7B6C 01B71021 */      addu $v0, $t5, $s7
   /* 073370 800F7B70 944E0002 */       lhu $t6, 2($v0)
   /* 073374 800F7B74 944F0000 */       lhu $t7, ($v0)
@@ -37623,16 +37623,16 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 0733D0 800F7BD0 02603825 */        or $a3, $s3, $zero
   /* 0733D4 800F7BD4 0C03DC68 */       jal mpCollision_GetLRAngle
   /* 0733D8 800F7BD8 AFB40010 */        sw $s4, 0x10($sp)
-  /* 0733DC 800F7BDC 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 0733E0 800F7BE0 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 0733E4 800F7BE4 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 0733E8 800F7BE8 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 0733DC 800F7BDC 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 0733E0 800F7BE0 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 0733E4 800F7BE4 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 0733E8 800F7BE8 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 0733EC 800F7BEC 240B0006 */     addiu $t3, $zero, 6
   .L800F7BF0:
   /* 0733F0 800F7BF0 53C0000B */      beql $fp, $zero, .L800F7C20
   /* 0733F4 800F7BF4 C7A400B4 */      lwc1 $f4, 0xb4($sp)
-  /* 0733F8 800F7BF8 8D4D0000 */        lw $t5, ($t2) # gMapVertexID + 0
-  /* 0733FC 800F7BFC 8D390000 */        lw $t9, ($t1) # gMapVertexData + 0
+  /* 0733F8 800F7BF8 8D4D0000 */        lw $t5, ($t2) # gMPVertexID + 0
+  /* 0733FC 800F7BFC 8D390000 */        lw $t9, ($t1) # gMPVertexData + 0
   /* 073400 800F7C00 01B27021 */      addu $t6, $t5, $s2
   /* 073404 800F7C04 95CF0000 */       lhu $t7, ($t6)
   /* 073408 800F7C08 01EB0019 */     multu $t7, $t3
@@ -37650,8 +37650,8 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 073434 800F7C34 46000587 */     neg.s $f22, $f0
   /* 073438 800F7C38 46000586 */     mov.s $f22, $f0
   .L800F7C3C:
-  /* 07343C 800F7C3C 3C0E8013 */       lui $t6, %hi(gMapVertexLinks)
-  /* 073440 800F7C40 8DCE1378 */        lw $t6, %lo(gMapVertexLinks)($t6)
+  /* 07343C 800F7C3C 3C0E8013 */       lui $t6, %hi(gMPVertexLinks)
+  /* 073440 800F7C40 8DCE1378 */        lw $t6, %lo(gMPVertexLinks)($t6)
   /* 073444 800F7C44 01D71021 */      addu $v0, $t6, $s7
   /* 073448 800F7C48 944F0002 */       lhu $t7, 2($v0)
   /* 07344C 800F7C4C 94590000 */       lhu $t9, ($v0)
@@ -37662,7 +37662,7 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 07345C 800F7C5C 26520002 */     addiu $s2, $s2, 2
   /* 073460 800F7C60 0244082A */       slt $at, $s2, $a0
   /* 073464 800F7C64 5420FF36 */      bnel $at, $zero, .L800F7940
-  /* 073468 800F7C68 8D4C0000 */        lw $t4, ($t2) # gMapVertexID + 0
+  /* 073468 800F7C68 8D4C0000 */        lw $t4, ($t2) # gMPVertexID + 0
   .L800F7C6C:
   /* 07346C 800F7C6C 8FA30100 */        lw $v1, 0x100($sp)
   /* 073470 800F7C70 8FA400A4 */        lw $a0, 0xa4($sp)
@@ -37675,8 +37675,8 @@ glabel mpCollision_CheckRWallLineCollisionDiff
   /* 073488 800F7C88 0062082A */       slt $at, $v1, $v0
   /* 07348C 800F7C8C 1420FEF8 */      bnez $at, .L800F7870
   /* 073490 800F7C90 2484000A */     addiu $a0, $a0, 0xa
-  /* 073494 800F7C94 3C0D8013 */       lui $t5, %hi(gMapGeometry)
-  /* 073498 800F7C98 8DAD1368 */        lw $t5, %lo(gMapGeometry)($t5)
+  /* 073494 800F7C94 3C0D8013 */       lui $t5, %hi(gMPGeometry)
+  /* 073498 800F7C98 8DAD1368 */        lw $t5, %lo(gMPGeometry)($t5)
   /* 07349C 800F7C9C 95A80000 */       lhu $t0, ($t5)
   .L800F7CA0:
   /* 0734A0 800F7CA0 8FAE00F8 */        lw $t6, 0xf8($sp)
@@ -37852,8 +37852,8 @@ glabel mpCollision_CheckLRSurfaceFlat
 
 glabel mpCollision_CheckLWallLineCollisionSame
   /* 073700 800F7F00 27BDFF00 */     addiu $sp, $sp, -0x100
-  /* 073704 800F7F04 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 073708 800F7F08 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 073704 800F7F04 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 073708 800F7F08 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 07370C 800F7F0C AFBF0084 */        sw $ra, 0x84($sp)
   /* 073710 800F7F10 AFBE0080 */        sw $fp, 0x80($sp)
   /* 073714 800F7F14 AFB7007C */        sw $s7, 0x7c($sp)
@@ -37880,11 +37880,11 @@ glabel mpCollision_CheckLWallLineCollisionSame
   /* 073768 800F7F68 00C0A825 */        or $s5, $a2, $zero
   /* 07376C 800F7F6C 1900015D */      blez $t0, .L800F84E4
   /* 073770 800F7F70 C4360890 */      lwc1 $f22, %lo(D_ovl2_80130890)($at)
-  /* 073774 800F7F74 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 073778 800F7F78 3C098013 */       lui $t1, %hi(gMapVertexData)
+  /* 073774 800F7F74 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 073778 800F7F78 3C098013 */       lui $t1, %hi(gMPVertexData)
   /* 07377C 800F7F7C 4480C000 */      mtc1 $zero, $f24
-  /* 073780 800F7F80 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
-  /* 073784 800F7F84 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
+  /* 073780 800F7F80 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
+  /* 073784 800F7F84 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
   /* 073788 800F7F88 8FBE0110 */        lw $fp, 0x110($sp)
   /* 07378C 800F7F8C 8FB60114 */        lw $s6, 0x114($sp)
   /* 073790 800F7F90 240B0006 */     addiu $t3, $zero, 6
@@ -37892,8 +37892,8 @@ glabel mpCollision_CheckLWallLineCollisionSame
   /* 073794 800F7F94 2584000E */     addiu $a0, $t4, 0xe
   /* 073798 800F7F98 AFA400F8 */        sw $a0, 0xf8($sp)
   /* 07379C 800F7F9C 958F0000 */       lhu $t7, ($t4)
-  /* 0737A0 800F7FA0 3C0E8013 */       lui $t6, %hi(gMapRooms)
-  /* 0737A4 800F7FA4 8DCE1304 */        lw $t6, %lo(gMapRooms)($t6)
+  /* 0737A0 800F7FA0 3C0E8013 */       lui $t6, %hi(gMPRooms)
+  /* 0737A4 800F7FA4 8DCE1304 */        lw $t6, %lo(gMPRooms)($t6)
   /* 0737A8 800F7FA8 958D0010 */       lhu $t5, 0x10($t4)
   /* 0737AC 800F7FAC 000FC080 */       sll $t8, $t7, 2
   /* 0737B0 800F7FB0 01D8C821 */      addu $t9, $t6, $t8
@@ -37965,8 +37965,8 @@ glabel mpCollision_CheckLWallLineCollisionSame
   /* 0738A4 800F80A4 00042040 */       sll $a0, $a0, 1
   /* 0738A8 800F80A8 AFAC00FC */        sw $t4, 0xfc($sp)
   .L800F80AC:
-  /* 0738AC 800F80AC 3C0F8013 */       lui $t7, %hi(gMapVertexInfo)
-  /* 0738B0 800F80B0 8DEF136C */        lw $t7, %lo(gMapVertexInfo)($t7)
+  /* 0738AC 800F80AC 3C0F8013 */       lui $t7, %hi(gMPVertexInfo)
+  /* 0738B0 800F80B0 8DEF136C */        lw $t7, %lo(gMPVertexInfo)($t7)
   /* 0738B4 800F80B4 C7A400EC */      lwc1 $f4, 0xec($sp)
   /* 0738B8 800F80B8 8FB800F8 */        lw $t8, 0xf8($sp)
   /* 0738BC 800F80BC 01E41021 */      addu $v0, $t7, $a0
@@ -37989,23 +37989,23 @@ glabel mpCollision_CheckLWallLineCollisionSame
   /* 0738FC 800F80FC C7A600E8 */      lwc1 $f6, 0xe8($sp)
   /* 073900 800F8100 8FB700C8 */        lw $s7, 0xc8($sp)
   /* 073904 800F8104 448F4000 */      mtc1 $t7, $f8
-  /* 073908 800F8108 3C188013 */       lui $t8, %hi(gMapVertexLinks)
+  /* 073908 800F8108 3C188013 */       lui $t8, %hi(gMPVertexLinks)
   /* 07390C 800F810C 468042A0 */   cvt.s.w $f10, $f8
   /* 073910 800F8110 460A303C */    c.lt.s $f6, $f10
   /* 073914 800F8114 00000000 */       nop 
   /* 073918 800F8118 45000005 */      bc1f .L800F8130
-  /* 07391C 800F811C 3C0E8013 */       lui $t6, %hi(gMapGeometry)
-  /* 073920 800F8120 8DCE1368 */        lw $t6, %lo(gMapGeometry)($t6)
+  /* 07391C 800F811C 3C0E8013 */       lui $t6, %hi(gMPGeometry)
+  /* 073920 800F8120 8DCE1368 */        lw $t6, %lo(gMPGeometry)($t6)
   /* 073924 800F8124 8FAC00FC */        lw $t4, 0xfc($sp)
   /* 073928 800F8128 100000E8 */         b .L800F84CC
   /* 07392C 800F812C 95C80000 */       lhu $t0, ($t6)
   .L800F8130:
-  /* 073930 800F8130 8F181378 */        lw $t8, %lo(gMapVertexLinks)($t8)
+  /* 073930 800F8130 8F181378 */        lw $t8, %lo(gMPVertexLinks)($t8)
   /* 073934 800F8134 0017B880 */       sll $s7, $s7, 2
-  /* 073938 800F8138 8D4D0000 */        lw $t5, ($t2) # gMapVertexID + 0
+  /* 073938 800F8138 8D4D0000 */        lw $t5, ($t2) # gMPVertexID + 0
   /* 07393C 800F813C 03171021 */      addu $v0, $t8, $s7
   /* 073940 800F8140 94430000 */       lhu $v1, ($v0)
-  /* 073944 800F8144 8D390000 */        lw $t9, ($t1) # gMapVertexData + 0
+  /* 073944 800F8144 8D390000 */        lw $t9, ($t1) # gMPVertexData + 0
   /* 073948 800F8148 00039040 */       sll $s2, $v1, 1
   /* 07394C 800F814C 01B27821 */      addu $t7, $t5, $s2
   /* 073950 800F8150 95EE0000 */       lhu $t6, ($t7)
@@ -38019,9 +38019,9 @@ glabel mpCollision_CheckLWallLineCollisionSame
   /* 073970 800F8170 84930000 */        lh $s3, ($a0)
   /* 073974 800F8174 102000C7 */      beqz $at, .L800F8494
   /* 073978 800F8178 84940002 */        lh $s4, 2($a0)
-  /* 07397C 800F817C 8D580000 */        lw $t8, ($t2) # gMapVertexID + 0
+  /* 07397C 800F817C 8D580000 */        lw $t8, ($t2) # gMPVertexID + 0
   .L800F8180:
-  /* 073980 800F8180 8D390000 */        lw $t9, ($t1) # gMapVertexData + 0
+  /* 073980 800F8180 8D390000 */        lw $t9, ($t1) # gMPVertexData + 0
   /* 073984 800F8184 02608025 */        or $s0, $s3, $zero
   /* 073988 800F8188 03126821 */      addu $t5, $t8, $s2
   /* 07398C 800F818C 95AF0002 */       lhu $t7, 2($t5)
@@ -38053,17 +38053,17 @@ glabel mpCollision_CheckLWallLineCollisionSame
   /* 0739F4 800F81F4 E7BA0014 */      swc1 $f26, 0x14($sp)
   /* 0739F8 800F81F8 0C03DF49 */       jal mpCollision_CheckLRSurfaceFlat
   /* 0739FC 800F81FC E7B20018 */      swc1 $f18, 0x18($sp)
-  /* 073A00 800F8200 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 073A04 800F8204 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 073A00 800F8200 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 073A04 800F8204 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 073A08 800F8208 24010001 */     addiu $at, $zero, 1
-  /* 073A0C 800F820C 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 073A10 800F8210 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 073A0C 800F820C 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 073A10 800F8210 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 073A14 800F8214 8FA8010C */        lw $t0, 0x10c($sp)
   /* 073A18 800F8218 14410092 */       bne $v0, $at, .L800F8464
   /* 073A1C 800F821C 240B0006 */     addiu $t3, $zero, 6
   /* 073A20 800F8220 C7A400B0 */      lwc1 $f4, 0xb0($sp)
   /* 073A24 800F8224 C7A800B0 */      lwc1 $f8, 0xb0($sp)
-  /* 073A28 800F8228 3C0F8013 */       lui $t7, %hi(gMapVertexLinks)
+  /* 073A28 800F8228 3C0F8013 */       lui $t7, %hi(gMPVertexLinks)
   /* 073A2C 800F822C 4614203C */    c.lt.s $f4, $f20
   /* 073A30 800F8230 00000000 */       nop 
   /* 073A34 800F8234 45020005 */     bc1fl .L800F824C
@@ -38077,7 +38077,7 @@ glabel mpCollision_CheckLWallLineCollisionSame
   /* 073A50 800F8250 00000000 */       nop 
   /* 073A54 800F8254 45000009 */      bc1f .L800F827C
   /* 073A58 800F8258 00000000 */       nop 
-  /* 073A5C 800F825C 8DEF1378 */        lw $t7, %lo(gMapVertexLinks)($t7)
+  /* 073A5C 800F825C 8DEF1378 */        lw $t7, %lo(gMPVertexLinks)($t7)
   /* 073A60 800F8260 01F71021 */      addu $v0, $t7, $s7
   /* 073A64 800F8264 94590002 */       lhu $t9, 2($v0)
   /* 073A68 800F8268 944E0000 */       lhu $t6, ($v0)
@@ -38108,8 +38108,8 @@ glabel mpCollision_CheckLWallLineCollisionSame
   .L800F82C0:
   /* 073AC0 800F82C0 53C0000B */      beql $fp, $zero, .L800F82F0
   /* 073AC4 800F82C4 C7A800B0 */      lwc1 $f8, 0xb0($sp)
-  /* 073AC8 800F82C8 8D4F0000 */        lw $t7, ($t2) # gMapVertexID + 0
-  /* 073ACC 800F82CC 8D2D0000 */        lw $t5, ($t1) # gMapVertexData + 0
+  /* 073AC8 800F82C8 8D4F0000 */        lw $t7, ($t2) # gMPVertexID + 0
+  /* 073ACC 800F82CC 8D2D0000 */        lw $t5, ($t1) # gMPVertexData + 0
   /* 073AD0 800F82D0 01F2C821 */      addu $t9, $t7, $s2
   /* 073AD4 800F82D4 972E0000 */       lhu $t6, ($t9)
   /* 073AD8 800F82D8 01CB0019 */     multu $t6, $t3
@@ -38139,17 +38139,17 @@ glabel mpCollision_CheckLWallLineCollisionSame
   /* 073B2C 800F832C E7A60014 */      swc1 $f6, 0x14($sp)
   /* 073B30 800F8330 0C03E152 */       jal mpCollision_CheckLWallSurfaceTilt
   /* 073B34 800F8334 E7AA001C */      swc1 $f10, 0x1c($sp)
-  /* 073B38 800F8338 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 073B3C 800F833C 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 073B38 800F8338 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 073B3C 800F833C 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 073B40 800F8340 24010001 */     addiu $at, $zero, 1
-  /* 073B44 800F8344 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 073B48 800F8348 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 073B44 800F8344 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 073B48 800F8348 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 073B4C 800F834C 8FA8010C */        lw $t0, 0x10c($sp)
   /* 073B50 800F8350 14410044 */       bne $v0, $at, .L800F8464
   /* 073B54 800F8354 240B0006 */     addiu $t3, $zero, 6
   /* 073B58 800F8358 C7B000B0 */      lwc1 $f16, 0xb0($sp)
   /* 073B5C 800F835C C7B200B0 */      lwc1 $f18, 0xb0($sp)
-  /* 073B60 800F8360 3C188013 */       lui $t8, %hi(gMapVertexLinks)
+  /* 073B60 800F8360 3C188013 */       lui $t8, %hi(gMPVertexLinks)
   /* 073B64 800F8364 4614803C */    c.lt.s $f16, $f20
   /* 073B68 800F8368 00000000 */       nop 
   /* 073B6C 800F836C 45020005 */     bc1fl .L800F8384
@@ -38163,7 +38163,7 @@ glabel mpCollision_CheckLWallLineCollisionSame
   /* 073B88 800F8388 00000000 */       nop 
   /* 073B8C 800F838C 45000009 */      bc1f .L800F83B4
   /* 073B90 800F8390 00000000 */       nop 
-  /* 073B94 800F8394 8F181378 */        lw $t8, %lo(gMapVertexLinks)($t8)
+  /* 073B94 800F8394 8F181378 */        lw $t8, %lo(gMPVertexLinks)($t8)
   /* 073B98 800F8398 03171021 */      addu $v0, $t8, $s7
   /* 073B9C 800F839C 944F0002 */       lhu $t7, 2($v0)
   /* 073BA0 800F83A0 94590000 */       lhu $t9, ($v0)
@@ -38194,16 +38194,16 @@ glabel mpCollision_CheckLWallLineCollisionSame
   /* 073BF8 800F83F8 02603825 */        or $a3, $s3, $zero
   /* 073BFC 800F83FC 0C03DC68 */       jal mpCollision_GetLRAngle
   /* 073C00 800F8400 AFB40010 */        sw $s4, 0x10($sp)
-  /* 073C04 800F8404 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 073C08 800F8408 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 073C0C 800F840C 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 073C10 800F8410 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 073C04 800F8404 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 073C08 800F8408 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 073C0C 800F840C 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 073C10 800F8410 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 073C14 800F8414 240B0006 */     addiu $t3, $zero, 6
   .L800F8418:
   /* 073C18 800F8418 53C0000B */      beql $fp, $zero, .L800F8448
   /* 073C1C 800F841C C7B000B0 */      lwc1 $f16, 0xb0($sp)
-  /* 073C20 800F8420 8D4F0000 */        lw $t7, ($t2) # gMapVertexID + 0
-  /* 073C24 800F8424 8D380000 */        lw $t8, ($t1) # gMapVertexData + 0
+  /* 073C20 800F8420 8D4F0000 */        lw $t7, ($t2) # gMPVertexID + 0
+  /* 073C24 800F8424 8D380000 */        lw $t8, ($t1) # gMPVertexData + 0
   /* 073C28 800F8428 01F2C821 */      addu $t9, $t7, $s2
   /* 073C2C 800F842C 972E0000 */       lhu $t6, ($t9)
   /* 073C30 800F8430 01CB0019 */     multu $t6, $t3
@@ -38221,8 +38221,8 @@ glabel mpCollision_CheckLWallLineCollisionSame
   /* 073C5C 800F845C 46000587 */     neg.s $f22, $f0
   /* 073C60 800F8460 46000586 */     mov.s $f22, $f0
   .L800F8464:
-  /* 073C64 800F8464 3C0E8013 */       lui $t6, %hi(gMapVertexLinks)
-  /* 073C68 800F8468 8DCE1378 */        lw $t6, %lo(gMapVertexLinks)($t6)
+  /* 073C64 800F8464 3C0E8013 */       lui $t6, %hi(gMPVertexLinks)
+  /* 073C68 800F8468 8DCE1378 */        lw $t6, %lo(gMPVertexLinks)($t6)
   /* 073C6C 800F846C 01D71021 */      addu $v0, $t6, $s7
   /* 073C70 800F8470 94580002 */       lhu $t8, 2($v0)
   /* 073C74 800F8474 944D0000 */       lhu $t5, ($v0)
@@ -38233,7 +38233,7 @@ glabel mpCollision_CheckLWallLineCollisionSame
   /* 073C84 800F8484 26520002 */     addiu $s2, $s2, 2
   /* 073C88 800F8488 0244082A */       slt $at, $s2, $a0
   /* 073C8C 800F848C 5420FF3C */      bnel $at, $zero, .L800F8180
-  /* 073C90 800F8490 8D580000 */        lw $t8, ($t2) # gMapVertexID + 0
+  /* 073C90 800F8490 8D580000 */        lw $t8, ($t2) # gMPVertexID + 0
   .L800F8494:
   /* 073C94 800F8494 8FA300F8 */        lw $v1, 0xf8($sp)
   /* 073C98 800F8498 8FA400A0 */        lw $a0, 0xa0($sp)
@@ -38246,8 +38246,8 @@ glabel mpCollision_CheckLWallLineCollisionSame
   /* 073CB0 800F84B0 0062082A */       slt $at, $v1, $v0
   /* 073CB4 800F84B4 1420FEFD */      bnez $at, .L800F80AC
   /* 073CB8 800F84B8 2484000A */     addiu $a0, $a0, 0xa
-  /* 073CBC 800F84BC 3C0E8013 */       lui $t6, %hi(gMapGeometry)
-  /* 073CC0 800F84C0 8DCE1368 */        lw $t6, %lo(gMapGeometry)($t6)
+  /* 073CBC 800F84BC 3C0E8013 */       lui $t6, %hi(gMPGeometry)
+  /* 073CC0 800F84C0 8DCE1368 */        lw $t6, %lo(gMPGeometry)($t6)
   /* 073CC4 800F84C4 95C80000 */       lhu $t0, ($t6)
   .L800F84C8:
   /* 073CC8 800F84C8 8FAC00FC */        lw $t4, 0xfc($sp)
@@ -38579,8 +38579,8 @@ glabel mpCollision_CheckLWallSurfaceTilt
 
 glabel mpCollision_CheckLWallLineCollisionDiff
   /* 074174 800F8974 27BDFEF8 */     addiu $sp, $sp, -0x108
-  /* 074178 800F8978 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 07417C 800F897C 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 074178 800F8978 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 07417C 800F897C 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 074180 800F8980 AFBF0084 */        sw $ra, 0x84($sp)
   /* 074184 800F8984 AFBE0080 */        sw $fp, 0x80($sp)
   /* 074188 800F8988 AFB7007C */        sw $s7, 0x7c($sp)
@@ -38609,17 +38609,17 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 0741E4 800F89E4 C43608D4 */      lwc1 $f22, %lo(D_ovl2_801308D4)($at)
   /* 0741E8 800F89E8 1900016B */      blez $t0, .L800F8F98
   /* 0741EC 800F89EC 8FBE0118 */        lw $fp, 0x118($sp)
-  /* 0741F0 800F89F0 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 0741F4 800F89F4 3C098013 */       lui $t1, %hi(gMapVertexData)
+  /* 0741F0 800F89F0 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 0741F4 800F89F4 3C098013 */       lui $t1, %hi(gMPVertexData)
   /* 0741F8 800F89F8 4480D000 */      mtc1 $zero, $f26
-  /* 0741FC 800F89FC 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
-  /* 074200 800F8A00 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
+  /* 0741FC 800F89FC 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
+  /* 074200 800F8A00 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
   /* 074204 800F8A04 8FB6011C */        lw $s6, 0x11c($sp)
   /* 074208 800F8A08 240B0006 */     addiu $t3, $zero, 6
   .L800F8A0C:
   /* 07420C 800F8A0C 8FAF0104 */        lw $t7, 0x104($sp)
-  /* 074210 800F8A10 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 074214 800F8A14 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 074210 800F8A10 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 074214 800F8A14 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 074218 800F8A18 25E4000E */     addiu $a0, $t7, 0xe
   /* 07421C 800F8A1C AFA40100 */        sw $a0, 0x100($sp)
   /* 074220 800F8A20 95E50000 */       lhu $a1, ($t7)
@@ -38642,9 +38642,9 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 074264 800F8A64 C7100004 */      lwc1 $f16, 4($t8)
   /* 074268 800F8A68 10400015 */      beqz $v0, .L800F8AC0
   .L800F8A6C:
-  /* 07426C 800F8A6C 3C0C8013 */       lui $t4, %hi(gMapDynamicCollisions)
+  /* 07426C 800F8A6C 3C0C8013 */       lui $t4, %hi(gMPDynamicCollisions)
   /* 074270 800F8A70 C47E001C */      lwc1 $f30, 0x1c($v1)
-  /* 074274 800F8A74 8D8C137C */        lw $t4, %lo(gMapDynamicCollisions)($t4)
+  /* 074274 800F8A74 8D8C137C */        lw $t4, %lo(gMPDynamicCollisions)($t4)
   /* 074278 800F8A78 00057880 */       sll $t7, $a1, 2
   /* 07427C 800F8A7C C4600020 */      lwc1 $f0, 0x20($v1)
   /* 074280 800F8A80 01E57823 */      subu $t7, $t7, $a1
@@ -38702,14 +38702,14 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 074340 800F8B40 00822021 */      addu $a0, $a0, $v0
   /* 074344 800F8B44 00042040 */       sll $a0, $a0, 1
   .L800F8B48:
-  /* 074348 800F8B48 3C188013 */       lui $t8, %hi(gMapVertexInfo)
-  /* 07434C 800F8B4C 8F18136C */        lw $t8, %lo(gMapVertexInfo)($t8)
+  /* 074348 800F8B48 3C188013 */       lui $t8, %hi(gMPVertexInfo)
+  /* 07434C 800F8B4C 8F18136C */        lw $t8, %lo(gMPVertexInfo)($t8)
   /* 074350 800F8B50 C7A600F4 */      lwc1 $f6, 0xf4($sp)
   /* 074354 800F8B54 8FAC0100 */        lw $t4, 0x100($sp)
   /* 074358 800F8B58 03041021 */      addu $v0, $t8, $a0
   /* 07435C 800F8B5C 84590002 */        lh $t9, 2($v0)
   /* 074360 800F8B60 44995000 */      mtc1 $t9, $f10
-  /* 074364 800F8B64 3C198013 */       lui $t9, %hi(gMapVertexLinks)
+  /* 074364 800F8B64 3C198013 */       lui $t9, %hi(gMPVertexLinks)
   /* 074368 800F8B68 46805120 */   cvt.s.w $f4, $f10
   /* 07436C 800F8B6C 4606203C */    c.lt.s $f4, $f6
   /* 074370 800F8B70 00000000 */       nop 
@@ -38731,18 +38731,18 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 0743AC 800F8BAC 4604403C */    c.lt.s $f8, $f4
   /* 0743B0 800F8BB0 00000000 */       nop 
   /* 0743B4 800F8BB4 45000004 */      bc1f .L800F8BC8
-  /* 0743B8 800F8BB8 3C188013 */       lui $t8, %hi(gMapGeometry)
-  /* 0743BC 800F8BBC 8F181368 */        lw $t8, %lo(gMapGeometry)($t8)
+  /* 0743B8 800F8BB8 3C188013 */       lui $t8, %hi(gMPGeometry)
+  /* 0743BC 800F8BBC 8F181368 */        lw $t8, %lo(gMPGeometry)($t8)
   /* 0743C0 800F8BC0 100000ED */         b .L800F8F78
   /* 0743C4 800F8BC4 97080000 */       lhu $t0, ($t8)
   .L800F8BC8:
-  /* 0743C8 800F8BC8 8F391378 */        lw $t9, %lo(gMapVertexLinks)($t9)
+  /* 0743C8 800F8BC8 8F391378 */        lw $t9, %lo(gMPVertexLinks)($t9)
   /* 0743CC 800F8BCC 0017B880 */       sll $s7, $s7, 2
-  /* 0743D0 800F8BD0 8D4F0000 */        lw $t7, ($t2) # gMapVertexID + 0
+  /* 0743D0 800F8BD0 8D4F0000 */        lw $t7, ($t2) # gMPVertexID + 0
   /* 0743D4 800F8BD4 03371021 */      addu $v0, $t9, $s7
   /* 0743D8 800F8BD8 94430000 */       lhu $v1, ($v0)
   /* 0743DC 800F8BDC 94590002 */       lhu $t9, 2($v0)
-  /* 0743E0 800F8BE0 8D2C0000 */        lw $t4, ($t1) # gMapVertexData + 0
+  /* 0743E0 800F8BE0 8D2C0000 */        lw $t4, ($t1) # gMPVertexData + 0
   /* 0743E4 800F8BE4 00039040 */       sll $s2, $v1, 1
   /* 0743E8 800F8BE8 01F26821 */      addu $t5, $t7, $s2
   /* 0743EC 800F8BEC 95AE0000 */       lhu $t6, ($t5)
@@ -38755,9 +38755,9 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 074408 800F8C08 84930000 */        lh $s3, ($a0)
   /* 07440C 800F8C0C 102000CD */      beqz $at, .L800F8F44
   /* 074410 800F8C10 84940002 */        lh $s4, 2($a0)
-  /* 074414 800F8C14 8D4C0000 */        lw $t4, ($t2) # gMapVertexID + 0
+  /* 074414 800F8C14 8D4C0000 */        lw $t4, ($t2) # gMPVertexID + 0
   .L800F8C18:
-  /* 074418 800F8C18 8D2E0000 */        lw $t6, ($t1) # gMapVertexData + 0
+  /* 074418 800F8C18 8D2E0000 */        lw $t6, ($t1) # gMPVertexData + 0
   /* 07441C 800F8C1C 02608025 */        or $s0, $s3, $zero
   /* 074420 800F8C20 0192C021 */      addu $t8, $t4, $s2
   /* 074424 800F8C24 97190002 */       lhu $t9, 2($t8)
@@ -38789,11 +38789,11 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 07448C 800F8C8C E7BC0014 */      swc1 $f28, 0x14($sp)
   /* 074490 800F8C90 0C03DF49 */       jal mpCollision_CheckLRSurfaceFlat
   /* 074494 800F8C94 E7AA0018 */      swc1 $f10, 0x18($sp)
-  /* 074498 800F8C98 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 07449C 800F8C9C 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 074498 800F8C98 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 07449C 800F8C9C 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 0744A0 800F8CA0 24010001 */     addiu $at, $zero, 1
-  /* 0744A4 800F8CA4 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 0744A8 800F8CA8 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 0744A4 800F8CA4 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 0744A8 800F8CA8 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 0744AC 800F8CAC 8FA80114 */        lw $t0, 0x114($sp)
   /* 0744B0 800F8CB0 14410098 */       bne $v0, $at, .L800F8F14
   /* 0744B4 800F8CB4 240B0006 */     addiu $t3, $zero, 6
@@ -38801,7 +38801,7 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 0744BC 800F8CBC C7A400B4 */      lwc1 $f4, 0xb4($sp)
   /* 0744C0 800F8CC0 C7A600B4 */      lwc1 $f6, 0xb4($sp)
   /* 0744C4 800F8CC4 4608C501 */     sub.s $f20, $f24, $f8
-  /* 0744C8 800F8CC8 3C188013 */       lui $t8, %hi(gMapVertexLinks)
+  /* 0744C8 800F8CC8 3C188013 */       lui $t8, %hi(gMPVertexLinks)
   /* 0744CC 800F8CCC 4614203C */    c.lt.s $f4, $f20
   /* 0744D0 800F8CD0 00000000 */       nop 
   /* 0744D4 800F8CD4 45020005 */     bc1fl .L800F8CEC
@@ -38815,7 +38815,7 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 0744F0 800F8CF0 00000000 */       nop 
   /* 0744F4 800F8CF4 45000009 */      bc1f .L800F8D1C
   /* 0744F8 800F8CF8 00000000 */       nop 
-  /* 0744FC 800F8CFC 8F181378 */        lw $t8, %lo(gMapVertexLinks)($t8)
+  /* 0744FC 800F8CFC 8F181378 */        lw $t8, %lo(gMPVertexLinks)($t8)
   /* 074500 800F8D00 03171021 */      addu $v0, $t8, $s7
   /* 074504 800F8D04 94590002 */       lhu $t9, 2($v0)
   /* 074508 800F8D08 944E0000 */       lhu $t6, ($v0)
@@ -38847,8 +38847,8 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   .L800F8D64:
   /* 074564 800F8D64 53C0000B */      beql $fp, $zero, .L800F8D94
   /* 074568 800F8D68 C7A400B4 */      lwc1 $f4, 0xb4($sp)
-  /* 07456C 800F8D6C 8D4C0000 */        lw $t4, ($t2) # gMapVertexID + 0
-  /* 074570 800F8D70 8D2D0000 */        lw $t5, ($t1) # gMapVertexData + 0
+  /* 07456C 800F8D6C 8D4C0000 */        lw $t4, ($t2) # gMPVertexID + 0
+  /* 074570 800F8D70 8D2D0000 */        lw $t5, ($t1) # gMPVertexData + 0
   /* 074574 800F8D74 0192C021 */      addu $t8, $t4, $s2
   /* 074578 800F8D78 97190000 */       lhu $t9, ($t8)
   /* 07457C 800F8D7C 032B0019 */     multu $t9, $t3
@@ -38878,11 +38878,11 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 0745D0 800F8DD0 E7A60014 */      swc1 $f6, 0x14($sp)
   /* 0745D4 800F8DD4 0C03E152 */       jal mpCollision_CheckLWallSurfaceTilt
   /* 0745D8 800F8DD8 E7AA001C */      swc1 $f10, 0x1c($sp)
-  /* 0745DC 800F8DDC 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 0745E0 800F8DE0 3C0A8013 */       lui $t2, %hi(gMapVertexID)
+  /* 0745DC 800F8DDC 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 0745E0 800F8DE0 3C0A8013 */       lui $t2, %hi(gMPVertexID)
   /* 0745E4 800F8DE4 24010001 */     addiu $at, $zero, 1
-  /* 0745E8 800F8DE8 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 0745EC 800F8DEC 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 0745E8 800F8DE8 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 0745EC 800F8DEC 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 0745F0 800F8DF0 8FA80114 */        lw $t0, 0x114($sp)
   /* 0745F4 800F8DF4 14410047 */       bne $v0, $at, .L800F8F14
   /* 0745F8 800F8DF8 240B0006 */     addiu $t3, $zero, 6
@@ -38890,7 +38890,7 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 074600 800F8E00 C7A400B4 */      lwc1 $f4, 0xb4($sp)
   /* 074604 800F8E04 C7A600B4 */      lwc1 $f6, 0xb4($sp)
   /* 074608 800F8E08 4608C501 */     sub.s $f20, $f24, $f8
-  /* 07460C 800F8E0C 3C0D8013 */       lui $t5, %hi(gMapVertexLinks)
+  /* 07460C 800F8E0C 3C0D8013 */       lui $t5, %hi(gMPVertexLinks)
   /* 074610 800F8E10 4614203C */    c.lt.s $f4, $f20
   /* 074614 800F8E14 00000000 */       nop 
   /* 074618 800F8E18 45020005 */     bc1fl .L800F8E30
@@ -38904,7 +38904,7 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 074634 800F8E34 00000000 */       nop 
   /* 074638 800F8E38 45000009 */      bc1f .L800F8E60
   /* 07463C 800F8E3C 00000000 */       nop 
-  /* 074640 800F8E40 8DAD1378 */        lw $t5, %lo(gMapVertexLinks)($t5)
+  /* 074640 800F8E40 8DAD1378 */        lw $t5, %lo(gMPVertexLinks)($t5)
   /* 074644 800F8E44 01B71021 */      addu $v0, $t5, $s7
   /* 074648 800F8E48 944E0002 */       lhu $t6, 2($v0)
   /* 07464C 800F8E4C 944F0000 */       lhu $t7, ($v0)
@@ -38936,16 +38936,16 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 0746A8 800F8EA8 02603825 */        or $a3, $s3, $zero
   /* 0746AC 800F8EAC 0C03DC68 */       jal mpCollision_GetLRAngle
   /* 0746B0 800F8EB0 AFB40010 */        sw $s4, 0x10($sp)
-  /* 0746B4 800F8EB4 3C098013 */       lui $t1, %hi(gMapVertexData)
-  /* 0746B8 800F8EB8 3C0A8013 */       lui $t2, %hi(gMapVertexID)
-  /* 0746BC 800F8EBC 254A1374 */     addiu $t2, $t2, %lo(gMapVertexID)
-  /* 0746C0 800F8EC0 25291370 */     addiu $t1, $t1, %lo(gMapVertexData)
+  /* 0746B4 800F8EB4 3C098013 */       lui $t1, %hi(gMPVertexData)
+  /* 0746B8 800F8EB8 3C0A8013 */       lui $t2, %hi(gMPVertexID)
+  /* 0746BC 800F8EBC 254A1374 */     addiu $t2, $t2, %lo(gMPVertexID)
+  /* 0746C0 800F8EC0 25291370 */     addiu $t1, $t1, %lo(gMPVertexData)
   /* 0746C4 800F8EC4 240B0006 */     addiu $t3, $zero, 6
   .L800F8EC8:
   /* 0746C8 800F8EC8 53C0000B */      beql $fp, $zero, .L800F8EF8
   /* 0746CC 800F8ECC C7A800B4 */      lwc1 $f8, 0xb4($sp)
-  /* 0746D0 800F8ED0 8D4D0000 */        lw $t5, ($t2) # gMapVertexID + 0
-  /* 0746D4 800F8ED4 8D390000 */        lw $t9, ($t1) # gMapVertexData + 0
+  /* 0746D0 800F8ED0 8D4D0000 */        lw $t5, ($t2) # gMPVertexID + 0
+  /* 0746D4 800F8ED4 8D390000 */        lw $t9, ($t1) # gMPVertexData + 0
   /* 0746D8 800F8ED8 01B27021 */      addu $t6, $t5, $s2
   /* 0746DC 800F8EDC 95CF0000 */       lhu $t7, ($t6)
   /* 0746E0 800F8EE0 01EB0019 */     multu $t7, $t3
@@ -38963,8 +38963,8 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 07470C 800F8F0C 46000587 */     neg.s $f22, $f0
   /* 074710 800F8F10 46000586 */     mov.s $f22, $f0
   .L800F8F14:
-  /* 074714 800F8F14 3C0E8013 */       lui $t6, %hi(gMapVertexLinks)
-  /* 074718 800F8F18 8DCE1378 */        lw $t6, %lo(gMapVertexLinks)($t6)
+  /* 074714 800F8F14 3C0E8013 */       lui $t6, %hi(gMPVertexLinks)
+  /* 074718 800F8F18 8DCE1378 */        lw $t6, %lo(gMPVertexLinks)($t6)
   /* 07471C 800F8F1C 01D71021 */      addu $v0, $t6, $s7
   /* 074720 800F8F20 944F0002 */       lhu $t7, 2($v0)
   /* 074724 800F8F24 94590000 */       lhu $t9, ($v0)
@@ -38975,7 +38975,7 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 074734 800F8F34 26520002 */     addiu $s2, $s2, 2
   /* 074738 800F8F38 0244082A */       slt $at, $s2, $a0
   /* 07473C 800F8F3C 5420FF36 */      bnel $at, $zero, .L800F8C18
-  /* 074740 800F8F40 8D4C0000 */        lw $t4, ($t2) # gMapVertexID + 0
+  /* 074740 800F8F40 8D4C0000 */        lw $t4, ($t2) # gMPVertexID + 0
   .L800F8F44:
   /* 074744 800F8F44 8FA30100 */        lw $v1, 0x100($sp)
   /* 074748 800F8F48 8FA400A4 */        lw $a0, 0xa4($sp)
@@ -38988,8 +38988,8 @@ glabel mpCollision_CheckLWallLineCollisionDiff
   /* 074760 800F8F60 0062082A */       slt $at, $v1, $v0
   /* 074764 800F8F64 1420FEF8 */      bnez $at, .L800F8B48
   /* 074768 800F8F68 2484000A */     addiu $a0, $a0, 0xa
-  /* 07476C 800F8F6C 3C0D8013 */       lui $t5, %hi(gMapGeometry)
-  /* 074770 800F8F70 8DAD1368 */        lw $t5, %lo(gMapGeometry)($t5)
+  /* 07476C 800F8F6C 3C0D8013 */       lui $t5, %hi(gMPGeometry)
+  /* 074770 800F8F70 8DAD1368 */        lw $t5, %lo(gMPGeometry)($t5)
   /* 074774 800F8F74 95A80000 */       lhu $t0, ($t5)
   .L800F8F78:
   /* 074778 800F8F78 8FAE00F8 */        lw $t6, 0xf8($sp)
@@ -39032,8 +39032,8 @@ glabel mpCollision_CheckLWallLineCollisionDiff
 
 glabel func_ovl2_800F8FFC
   /* 0747FC 800F8FFC 27BDFF90 */     addiu $sp, $sp, -0x70
-  /* 074800 800F9000 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 074804 800F9004 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 074800 800F9000 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 074804 800F9004 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 074808 800F9008 AFBF005C */        sw $ra, 0x5c($sp)
   /* 07480C 800F900C AFBE0058 */        sw $fp, 0x58($sp)
   /* 074810 800F9010 AFB70054 */        sw $s7, 0x54($sp)
@@ -39050,20 +39050,20 @@ glabel func_ovl2_800F8FFC
   /* 07483C 800F903C AFA40070 */        sw $a0, 0x70($sp)
   /* 074840 800F9040 8C4E0010 */        lw $t6, 0x10($v0)
   /* 074844 800F9044 AFA00064 */        sw $zero, 0x64($sp)
-  /* 074848 800F9048 3C158013 */       lui $s5, %hi(gMapVertexID)
+  /* 074848 800F9048 3C158013 */       lui $s5, %hi(gMPVertexID)
   /* 07484C 800F904C AFAE006C */        sw $t6, 0x6c($sp)
   /* 074850 800F9050 94450000 */       lhu $a1, ($v0)
-  /* 074854 800F9054 26B51374 */     addiu $s5, $s5, %lo(gMapVertexID)
-  /* 074858 800F9058 3C148013 */       lui $s4, %hi(gMapVertexData)
+  /* 074854 800F9054 26B51374 */     addiu $s5, $s5, %lo(gMPVertexID)
+  /* 074858 800F9058 3C148013 */       lui $s4, %hi(gMPVertexData)
   /* 07485C 800F905C 18A000AA */      blez $a1, .L800F9308
   /* 074860 800F9060 3C018013 */       lui $at, %hi(D_ovl2_801308E8)
   /* 074864 800F9064 C43808E8 */      lwc1 $f24, %lo(D_ovl2_801308E8)($at)
-  /* 074868 800F9068 26941370 */     addiu $s4, $s4, %lo(gMapVertexData)
+  /* 074868 800F9068 26941370 */     addiu $s4, $s4, %lo(gMPVertexData)
   /* 07486C 800F906C 24130006 */     addiu $s3, $zero, 6
   .L800F9070:
   /* 074870 800F9070 8FAF006C */        lw $t7, 0x6c($sp)
-  /* 074874 800F9074 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 074878 800F9078 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 074874 800F9074 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 074878 800F9078 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 07487C 800F907C 95F90000 */       lhu $t9, ($t7)
   /* 074880 800F9080 95EC0004 */       lhu $t4, 4($t7)
   /* 074884 800F9084 25E40002 */     addiu $a0, $t7, 2
@@ -39105,9 +39105,9 @@ glabel func_ovl2_800F8FFC
   /* 074908 800F9108 02E2B821 */      addu $s7, $s7, $v0
   /* 07490C 800F910C 0017B840 */       sll $s7, $s7, 1
   .L800F9110:
-  /* 074910 800F9110 3C0A8013 */       lui $t2, %hi(gMapVertexInfo)
-  /* 074914 800F9114 8D4A136C */        lw $t2, %lo(gMapVertexInfo)($t2)
-  /* 074918 800F9118 3C0C8013 */       lui $t4, %hi(gMapVertexLinks)
+  /* 074910 800F9110 3C0A8013 */       lui $t2, %hi(gMPVertexInfo)
+  /* 074914 800F9114 8D4A136C */        lw $t2, %lo(gMPVertexInfo)($t2)
+  /* 074918 800F9118 3C0C8013 */       lui $t4, %hi(gMPVertexLinks)
   /* 07491C 800F911C 01575821 */      addu $t3, $t2, $s7
   /* 074920 800F9120 856F0004 */        lh $t7, 4($t3)
   /* 074924 800F9124 448F5000 */      mtc1 $t7, $f10
@@ -39117,13 +39117,13 @@ glabel func_ovl2_800F8FFC
   /* 074934 800F9134 00000000 */       nop 
   /* 074938 800F9138 45020061 */     bc1fl .L800F92C0
   /* 07493C 800F913C 97CA0000 */       lhu $t2, ($fp)
-  /* 074940 800F9140 8D8C1378 */        lw $t4, %lo(gMapVertexLinks)($t4)
+  /* 074940 800F9140 8D8C1378 */        lw $t4, %lo(gMPVertexLinks)($t4)
   /* 074944 800F9144 00166880 */       sll $t5, $s6, 2
-  /* 074948 800F9148 8EA90000 */        lw $t1, ($s5) # gMapVertexID + 0
+  /* 074948 800F9148 8EA90000 */        lw $t1, ($s5) # gMPVertexID + 0
   /* 07494C 800F914C 018D3021 */      addu $a2, $t4, $t5
   /* 074950 800F9150 94C20000 */       lhu $v0, ($a2)
   /* 074954 800F9154 94D20002 */       lhu $s2, 2($a2)
-  /* 074958 800F9158 8E830000 */        lw $v1, ($s4) # gMapVertexData + 0
+  /* 074958 800F9158 8E830000 */        lw $v1, ($s4) # gMPVertexData + 0
   /* 07495C 800F915C 00028840 */       sll $s1, $v0, 1
   /* 074960 800F9160 01312021 */      addu $a0, $t1, $s1
   /* 074964 800F9164 948E0000 */       lhu $t6, ($a0)
@@ -39172,8 +39172,8 @@ glabel func_ovl2_800F8FFC
   /* 074A08 800F9208 1A40002C */      blez $s2, .L800F92BC
   /* 074A0C 800F920C 00008025 */        or $s0, $zero, $zero
   .L800F9210:
-  /* 074A10 800F9210 8EB90000 */        lw $t9, ($s5) # gMapVertexID + 0
-  /* 074A14 800F9214 8E830000 */        lw $v1, ($s4) # gMapVertexData + 0
+  /* 074A10 800F9210 8EB90000 */        lw $t9, ($s5) # gMPVertexID + 0
+  /* 074A14 800F9214 8E830000 */        lw $v1, ($s4) # gMPVertexData + 0
   /* 074A18 800F9218 4600A306 */     mov.s $f12, $f20
   /* 074A1C 800F921C 03312021 */      addu $a0, $t9, $s1
   /* 074A20 800F9220 94980000 */       lhu $t8, ($a0)
@@ -39227,8 +39227,8 @@ glabel func_ovl2_800F8FFC
   /* 074AD0 800F92D0 02CF082A */       slt $at, $s6, $t7
   /* 074AD4 800F92D4 1420FF8E */      bnez $at, .L800F9110
   /* 074AD8 800F92D8 00000000 */       nop 
-  /* 074ADC 800F92DC 3C0C8013 */       lui $t4, %hi(gMapGeometry)
-  /* 074AE0 800F92E0 8D8C1368 */        lw $t4, %lo(gMapGeometry)($t4)
+  /* 074ADC 800F92DC 3C0C8013 */       lui $t4, %hi(gMPGeometry)
+  /* 074AE0 800F92E0 8D8C1368 */        lw $t4, %lo(gMPGeometry)($t4)
   /* 074AE4 800F92E4 95850000 */       lhu $a1, ($t4)
   .L800F92E8:
   /* 074AE8 800F92E8 8FAD0064 */        lw $t5, 0x64($sp)
@@ -39261,8 +39261,8 @@ glabel func_ovl2_800F8FFC
 
 glabel func_ovl2_800F9348
   /* 074B48 800F9348 27BDFF80 */     addiu $sp, $sp, -0x80
-  /* 074B4C 800F934C 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 074B50 800F9350 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 074B4C 800F934C 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 074B50 800F9350 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 074B54 800F9354 AFBF006C */        sw $ra, 0x6c($sp)
   /* 074B58 800F9358 AFBE0068 */        sw $fp, 0x68($sp)
   /* 074B5C 800F935C AFB70064 */        sw $s7, 0x64($sp)
@@ -39294,8 +39294,8 @@ glabel func_ovl2_800F9348
   /* 074BC4 800F93C4 24130006 */     addiu $s3, $zero, 6
   .L800F93C8:
   /* 074BC8 800F93C8 8FAF007C */        lw $t7, 0x7c($sp)
-  /* 074BCC 800F93CC 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 074BD0 800F93D0 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 074BCC 800F93CC 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 074BD0 800F93D0 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 074BD4 800F93D4 95F90000 */       lhu $t9, ($t7)
   /* 074BD8 800F93D8 95EB0004 */       lhu $t3, 4($t7)
   /* 074BDC 800F93DC 25E40002 */     addiu $a0, $t7, 2
@@ -39336,9 +39336,9 @@ glabel func_ovl2_800F9348
   /* 074C5C 800F945C 02E2B821 */      addu $s7, $s7, $v0
   /* 074C60 800F9460 0017B840 */       sll $s7, $s7, 1
   .L800F9464:
-  /* 074C64 800F9464 3C188013 */       lui $t8, %hi(gMapVertexInfo)
-  /* 074C68 800F9468 8F18136C */        lw $t8, %lo(gMapVertexInfo)($t8)
-  /* 074C6C 800F946C 3C0F8013 */       lui $t7, %hi(gMapVertexLinks)
+  /* 074C64 800F9464 3C188013 */       lui $t8, %hi(gMPVertexInfo)
+  /* 074C68 800F9468 8F18136C */        lw $t8, %lo(gMPVertexInfo)($t8)
+  /* 074C6C 800F946C 3C0F8013 */       lui $t7, %hi(gMPVertexLinks)
   /* 074C70 800F9470 03174821 */      addu $t1, $t8, $s7
   /* 074C74 800F9474 852A0004 */        lh $t2, 4($t1)
   /* 074C78 800F9478 448A4000 */      mtc1 $t2, $f8
@@ -39348,18 +39348,18 @@ glabel func_ovl2_800F9348
   /* 074C88 800F9488 00000000 */       nop 
   /* 074C8C 800F948C 450200A1 */     bc1fl .L800F9714
   /* 074C90 800F9490 97CA0000 */       lhu $t2, ($fp)
-  /* 074C94 800F9494 8DEF1378 */        lw $t7, %lo(gMapVertexLinks)($t7)
+  /* 074C94 800F9494 8DEF1378 */        lw $t7, %lo(gMPVertexLinks)($t7)
   /* 074C98 800F9498 00165880 */       sll $t3, $s6, 2
-  /* 074C9C 800F949C 3C068013 */       lui $a2, %hi(gMapVertexID)
+  /* 074C9C 800F949C 3C068013 */       lui $a2, %hi(gMPVertexID)
   /* 074CA0 800F94A0 01EB2821 */      addu $a1, $t7, $t3
   /* 074CA4 800F94A4 94A20000 */       lhu $v0, ($a1)
-  /* 074CA8 800F94A8 8CC61374 */        lw $a2, %lo(gMapVertexID)($a2)
+  /* 074CA8 800F94A8 8CC61374 */        lw $a2, %lo(gMPVertexID)($a2)
   /* 074CAC 800F94AC 94A70002 */       lhu $a3, 2($a1)
   /* 074CB0 800F94B0 00029040 */       sll $s2, $v0, 1
   /* 074CB4 800F94B4 00D21821 */      addu $v1, $a2, $s2
   /* 074CB8 800F94B8 946C0000 */       lhu $t4, ($v1)
-  /* 074CBC 800F94BC 3C088013 */       lui $t0, %hi(gMapVertexData)
-  /* 074CC0 800F94C0 8D081370 */        lw $t0, %lo(gMapVertexData)($t0)
+  /* 074CBC 800F94BC 3C088013 */       lui $t0, %hi(gMPVertexData)
+  /* 074CC0 800F94C0 8D081370 */        lw $t0, %lo(gMPVertexData)($t0)
   /* 074CC4 800F94C4 01930019 */     multu $t4, $s3
   /* 074CC8 800F94C8 00027040 */       sll $t6, $v0, 1
   /* 074CCC 800F94CC 24E7FFFF */     addiu $a3, $a3, -1
@@ -39480,7 +39480,7 @@ glabel func_ovl2_800F9348
   /* 074E78 800F9678 45020026 */     bc1fl .L800F9714
   /* 074E7C 800F967C 97CA0000 */       lhu $t2, ($fp)
   /* 074E80 800F9680 11A00002 */      beqz $t5, .L800F968C
-  /* 074E84 800F9684 3C098013 */       lui $t1, %hi(gMapVertexID)
+  /* 074E84 800F9684 3C098013 */       lui $t1, %hi(gMPVertexID)
   /* 074E88 800F9688 ADB60000 */        sw $s6, ($t5)
   .L800F968C:
   /* 074E8C 800F968C 8FAE0088 */        lw $t6, 0x88($sp)
@@ -39493,9 +39493,9 @@ glabel func_ovl2_800F9348
   /* 074EA4 800F96A4 8FB9008C */        lw $t9, 0x8c($sp)
   /* 074EA8 800F96A8 5320000C */      beql $t9, $zero, .L800F96DC
   /* 074EAC 800F96AC 8FAE0090 */        lw $t6, 0x90($sp)
-  /* 074EB0 800F96B0 8D291374 */        lw $t1, %lo(gMapVertexID)($t1)
-  /* 074EB4 800F96B4 3C188013 */       lui $t8, %hi(gMapVertexData)
-  /* 074EB8 800F96B8 8F181370 */        lw $t8, %lo(gMapVertexData)($t8)
+  /* 074EB0 800F96B0 8D291374 */        lw $t1, %lo(gMPVertexID)($t1)
+  /* 074EB4 800F96B4 3C188013 */       lui $t8, %hi(gMPVertexData)
+  /* 074EB8 800F96B8 8F181370 */        lw $t8, %lo(gMPVertexData)($t8)
   /* 074EBC 800F96BC 01325021 */      addu $t2, $t1, $s2
   /* 074EC0 800F96C0 954F0000 */       lhu $t7, ($t2)
   /* 074EC4 800F96C4 01F30019 */     multu $t7, $s3
@@ -39529,8 +39529,8 @@ glabel func_ovl2_800F9348
   /* 074F24 800F9724 02D8082A */       slt $at, $s6, $t8
   /* 074F28 800F9728 1420FF4E */      bnez $at, .L800F9464
   /* 074F2C 800F972C 00000000 */       nop 
-  /* 074F30 800F9730 3C0B8013 */       lui $t3, %hi(gMapGeometry)
-  /* 074F34 800F9734 8D6B1368 */        lw $t3, %lo(gMapGeometry)($t3)
+  /* 074F30 800F9730 3C0B8013 */       lui $t3, %hi(gMPGeometry)
+  /* 074F34 800F9734 8D6B1368 */        lw $t3, %lo(gMPGeometry)($t3)
   /* 074F38 800F9738 95680000 */       lhu $t0, ($t3)
   .L800F973C:
   /* 074F3C 800F973C 8FAC0070 */        lw $t4, 0x70($sp)
@@ -39571,8 +39571,8 @@ glabel func_ovl2_800F9348
   /* 074FB8 800F97B8 27BD0080 */     addiu $sp, $sp, 0x80
 
   /* 074FBC 800F97BC 27BDFF80 */     addiu $sp, $sp, -0x80
-  /* 074FC0 800F97C0 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 074FC4 800F97C4 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 074FC0 800F97C0 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 074FC4 800F97C4 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 074FC8 800F97C8 AFBF006C */        sw $ra, 0x6c($sp)
   /* 074FCC 800F97CC AFBE0068 */        sw $fp, 0x68($sp)
   /* 074FD0 800F97D0 AFB70064 */        sw $s7, 0x64($sp)
@@ -39604,8 +39604,8 @@ glabel func_ovl2_800F9348
   /* 075038 800F9838 24130006 */     addiu $s3, $zero, 6
   .L800F983C:
   /* 07503C 800F983C 8FAF007C */        lw $t7, 0x7c($sp)
-  /* 075040 800F9840 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 075044 800F9844 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 075040 800F9840 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 075044 800F9844 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 075048 800F9848 95F90000 */       lhu $t9, ($t7)
   /* 07504C 800F984C 95EB0008 */       lhu $t3, 8($t7)
   /* 075050 800F9850 25E40006 */     addiu $a0, $t7, 6
@@ -39646,9 +39646,9 @@ glabel func_ovl2_800F9348
   /* 0750D0 800F98D0 02E2B821 */      addu $s7, $s7, $v0
   /* 0750D4 800F98D4 0017B840 */       sll $s7, $s7, 1
   .L800F98D8:
-  /* 0750D8 800F98D8 3C188013 */       lui $t8, %hi(gMapVertexInfo)
-  /* 0750DC 800F98DC 8F18136C */        lw $t8, %lo(gMapVertexInfo)($t8)
-  /* 0750E0 800F98E0 3C0F8013 */       lui $t7, %hi(gMapVertexLinks)
+  /* 0750D8 800F98D8 3C188013 */       lui $t8, %hi(gMPVertexInfo)
+  /* 0750DC 800F98DC 8F18136C */        lw $t8, %lo(gMPVertexInfo)($t8)
+  /* 0750E0 800F98E0 3C0F8013 */       lui $t7, %hi(gMPVertexLinks)
   /* 0750E4 800F98E4 03174821 */      addu $t1, $t8, $s7
   /* 0750E8 800F98E8 852A0002 */        lh $t2, 2($t1)
   /* 0750EC 800F98EC 448A4000 */      mtc1 $t2, $f8
@@ -39658,18 +39658,18 @@ glabel func_ovl2_800F9348
   /* 0750FC 800F98FC 00000000 */       nop 
   /* 075100 800F9900 450200A1 */     bc1fl .L800F9B88
   /* 075104 800F9904 97CA0000 */       lhu $t2, ($fp)
-  /* 075108 800F9908 8DEF1378 */        lw $t7, %lo(gMapVertexLinks)($t7)
+  /* 075108 800F9908 8DEF1378 */        lw $t7, %lo(gMPVertexLinks)($t7)
   /* 07510C 800F990C 00165880 */       sll $t3, $s6, 2
-  /* 075110 800F9910 3C068013 */       lui $a2, %hi(gMapVertexID)
+  /* 075110 800F9910 3C068013 */       lui $a2, %hi(gMPVertexID)
   /* 075114 800F9914 01EB2821 */      addu $a1, $t7, $t3
   /* 075118 800F9918 94A20000 */       lhu $v0, ($a1)
-  /* 07511C 800F991C 8CC61374 */        lw $a2, %lo(gMapVertexID)($a2)
+  /* 07511C 800F991C 8CC61374 */        lw $a2, %lo(gMPVertexID)($a2)
   /* 075120 800F9920 94A70002 */       lhu $a3, 2($a1)
   /* 075124 800F9924 00029040 */       sll $s2, $v0, 1
   /* 075128 800F9928 00D21821 */      addu $v1, $a2, $s2
   /* 07512C 800F992C 946C0000 */       lhu $t4, ($v1)
-  /* 075130 800F9930 3C088013 */       lui $t0, %hi(gMapVertexData)
-  /* 075134 800F9934 8D081370 */        lw $t0, %lo(gMapVertexData)($t0)
+  /* 075130 800F9930 3C088013 */       lui $t0, %hi(gMPVertexData)
+  /* 075134 800F9934 8D081370 */        lw $t0, %lo(gMPVertexData)($t0)
   /* 075138 800F9938 01930019 */     multu $t4, $s3
   /* 07513C 800F993C 00027040 */       sll $t6, $v0, 1
   /* 075140 800F9940 24E7FFFF */     addiu $a3, $a3, -1
@@ -39790,7 +39790,7 @@ glabel func_ovl2_800F9348
   /* 0752EC 800F9AEC 45020026 */     bc1fl .L800F9B88
   /* 0752F0 800F9AF0 97CA0000 */       lhu $t2, ($fp)
   /* 0752F4 800F9AF4 11A00002 */      beqz $t5, .L800F9B00
-  /* 0752F8 800F9AF8 3C098013 */       lui $t1, %hi(gMapVertexID)
+  /* 0752F8 800F9AF8 3C098013 */       lui $t1, %hi(gMPVertexID)
   /* 0752FC 800F9AFC ADB60000 */        sw $s6, ($t5)
   .L800F9B00:
   /* 075300 800F9B00 8FAE0088 */        lw $t6, 0x88($sp)
@@ -39803,9 +39803,9 @@ glabel func_ovl2_800F9348
   /* 075318 800F9B18 8FB9008C */        lw $t9, 0x8c($sp)
   /* 07531C 800F9B1C 5320000C */      beql $t9, $zero, .L800F9B50
   /* 075320 800F9B20 8FAE0090 */        lw $t6, 0x90($sp)
-  /* 075324 800F9B24 8D291374 */        lw $t1, %lo(gMapVertexID)($t1)
-  /* 075328 800F9B28 3C188013 */       lui $t8, %hi(gMapVertexData)
-  /* 07532C 800F9B2C 8F181370 */        lw $t8, %lo(gMapVertexData)($t8)
+  /* 075324 800F9B24 8D291374 */        lw $t1, %lo(gMPVertexID)($t1)
+  /* 075328 800F9B28 3C188013 */       lui $t8, %hi(gMPVertexData)
+  /* 07532C 800F9B2C 8F181370 */        lw $t8, %lo(gMPVertexData)($t8)
   /* 075330 800F9B30 01325021 */      addu $t2, $t1, $s2
   /* 075334 800F9B34 954F0000 */       lhu $t7, ($t2)
   /* 075338 800F9B38 01F30019 */     multu $t7, $s3
@@ -39839,8 +39839,8 @@ glabel func_ovl2_800F9348
   /* 075398 800F9B98 02D8082A */       slt $at, $s6, $t8
   /* 07539C 800F9B9C 1420FF4E */      bnez $at, .L800F98D8
   /* 0753A0 800F9BA0 00000000 */       nop 
-  /* 0753A4 800F9BA4 3C0B8013 */       lui $t3, %hi(gMapGeometry)
-  /* 0753A8 800F9BA8 8D6B1368 */        lw $t3, %lo(gMapGeometry)($t3)
+  /* 0753A4 800F9BA4 3C0B8013 */       lui $t3, %hi(gMPGeometry)
+  /* 0753A8 800F9BA8 8D6B1368 */        lw $t3, %lo(gMPGeometry)($t3)
   /* 0753AC 800F9BAC 95680000 */       lhu $t0, ($t3)
   .L800F9BB0:
   /* 0753B0 800F9BB0 8FAC0070 */        lw $t4, 0x70($sp)
@@ -39882,8 +39882,8 @@ glabel func_ovl2_800F9348
 
 glabel func_ovl2_800F9C30
   /* 075430 800F9C30 27BDFF80 */     addiu $sp, $sp, -0x80
-  /* 075434 800F9C34 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 075438 800F9C38 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 075434 800F9C34 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 075438 800F9C38 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 07543C 800F9C3C AFBF006C */        sw $ra, 0x6c($sp)
   /* 075440 800F9C40 AFBE0068 */        sw $fp, 0x68($sp)
   /* 075444 800F9C44 AFB70064 */        sw $s7, 0x64($sp)
@@ -39915,8 +39915,8 @@ glabel func_ovl2_800F9C30
   /* 0754AC 800F9CAC 24130006 */     addiu $s3, $zero, 6
   .L800F9CB0:
   /* 0754B0 800F9CB0 8FAF007C */        lw $t7, 0x7c($sp)
-  /* 0754B4 800F9CB4 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 0754B8 800F9CB8 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 0754B4 800F9CB4 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 0754B8 800F9CB8 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 0754BC 800F9CBC 95F90000 */       lhu $t9, ($t7)
   /* 0754C0 800F9CC0 95EB000C */       lhu $t3, 0xc($t7)
   /* 0754C4 800F9CC4 25E4000A */     addiu $a0, $t7, 0xa
@@ -39957,9 +39957,9 @@ glabel func_ovl2_800F9C30
   /* 075544 800F9D44 02E2B821 */      addu $s7, $s7, $v0
   /* 075548 800F9D48 0017B840 */       sll $s7, $s7, 1
   .L800F9D4C:
-  /* 07554C 800F9D4C 3C188013 */       lui $t8, %hi(gMapVertexInfo)
-  /* 075550 800F9D50 8F18136C */        lw $t8, %lo(gMapVertexInfo)($t8)
-  /* 075554 800F9D54 3C0F8013 */       lui $t7, %hi(gMapVertexLinks)
+  /* 07554C 800F9D4C 3C188013 */       lui $t8, %hi(gMPVertexInfo)
+  /* 075550 800F9D50 8F18136C */        lw $t8, %lo(gMPVertexInfo)($t8)
+  /* 075554 800F9D54 3C0F8013 */       lui $t7, %hi(gMPVertexLinks)
   /* 075558 800F9D58 03174821 */      addu $t1, $t8, $s7
   /* 07555C 800F9D5C 852A0004 */        lh $t2, 4($t1)
   /* 075560 800F9D60 448A4000 */      mtc1 $t2, $f8
@@ -39969,18 +39969,18 @@ glabel func_ovl2_800F9C30
   /* 075570 800F9D70 00000000 */       nop 
   /* 075574 800F9D74 450200A1 */     bc1fl .L800F9FFC
   /* 075578 800F9D78 97CA0000 */       lhu $t2, ($fp)
-  /* 07557C 800F9D7C 8DEF1378 */        lw $t7, %lo(gMapVertexLinks)($t7)
+  /* 07557C 800F9D7C 8DEF1378 */        lw $t7, %lo(gMPVertexLinks)($t7)
   /* 075580 800F9D80 00165880 */       sll $t3, $s6, 2
-  /* 075584 800F9D84 3C068013 */       lui $a2, %hi(gMapVertexID)
+  /* 075584 800F9D84 3C068013 */       lui $a2, %hi(gMPVertexID)
   /* 075588 800F9D88 01EB2821 */      addu $a1, $t7, $t3
   /* 07558C 800F9D8C 94A20000 */       lhu $v0, ($a1)
-  /* 075590 800F9D90 8CC61374 */        lw $a2, %lo(gMapVertexID)($a2)
+  /* 075590 800F9D90 8CC61374 */        lw $a2, %lo(gMPVertexID)($a2)
   /* 075594 800F9D94 94A70002 */       lhu $a3, 2($a1)
   /* 075598 800F9D98 00029040 */       sll $s2, $v0, 1
   /* 07559C 800F9D9C 00D21821 */      addu $v1, $a2, $s2
   /* 0755A0 800F9DA0 946C0000 */       lhu $t4, ($v1)
-  /* 0755A4 800F9DA4 3C088013 */       lui $t0, %hi(gMapVertexData)
-  /* 0755A8 800F9DA8 8D081370 */        lw $t0, %lo(gMapVertexData)($t0)
+  /* 0755A4 800F9DA4 3C088013 */       lui $t0, %hi(gMPVertexData)
+  /* 0755A8 800F9DA8 8D081370 */        lw $t0, %lo(gMPVertexData)($t0)
   /* 0755AC 800F9DAC 01930019 */     multu $t4, $s3
   /* 0755B0 800F9DB0 00027040 */       sll $t6, $v0, 1
   /* 0755B4 800F9DB4 24E7FFFF */     addiu $a3, $a3, -1
@@ -40101,7 +40101,7 @@ glabel func_ovl2_800F9C30
   /* 075760 800F9F60 45020026 */     bc1fl .L800F9FFC
   /* 075764 800F9F64 97CA0000 */       lhu $t2, ($fp)
   /* 075768 800F9F68 11A00002 */      beqz $t5, .L800F9F74
-  /* 07576C 800F9F6C 3C098013 */       lui $t1, %hi(gMapVertexID)
+  /* 07576C 800F9F6C 3C098013 */       lui $t1, %hi(gMPVertexID)
   /* 075770 800F9F70 ADB60000 */        sw $s6, ($t5)
   .L800F9F74:
   /* 075774 800F9F74 8FAE0088 */        lw $t6, 0x88($sp)
@@ -40114,9 +40114,9 @@ glabel func_ovl2_800F9C30
   /* 07578C 800F9F8C 8FB9008C */        lw $t9, 0x8c($sp)
   /* 075790 800F9F90 5320000C */      beql $t9, $zero, .L800F9FC4
   /* 075794 800F9F94 8FAE0090 */        lw $t6, 0x90($sp)
-  /* 075798 800F9F98 8D291374 */        lw $t1, %lo(gMapVertexID)($t1)
-  /* 07579C 800F9F9C 3C188013 */       lui $t8, %hi(gMapVertexData)
-  /* 0757A0 800F9FA0 8F181370 */        lw $t8, %lo(gMapVertexData)($t8)
+  /* 075798 800F9F98 8D291374 */        lw $t1, %lo(gMPVertexID)($t1)
+  /* 07579C 800F9F9C 3C188013 */       lui $t8, %hi(gMPVertexData)
+  /* 0757A0 800F9FA0 8F181370 */        lw $t8, %lo(gMPVertexData)($t8)
   /* 0757A4 800F9FA4 01325021 */      addu $t2, $t1, $s2
   /* 0757A8 800F9FA8 954F0000 */       lhu $t7, ($t2)
   /* 0757AC 800F9FAC 01F30019 */     multu $t7, $s3
@@ -40150,8 +40150,8 @@ glabel func_ovl2_800F9C30
   /* 07580C 800FA00C 02D8082A */       slt $at, $s6, $t8
   /* 075810 800FA010 1420FF4E */      bnez $at, .L800F9D4C
   /* 075814 800FA014 00000000 */       nop 
-  /* 075818 800FA018 3C0B8013 */       lui $t3, %hi(gMapGeometry)
-  /* 07581C 800FA01C 8D6B1368 */        lw $t3, %lo(gMapGeometry)($t3)
+  /* 075818 800FA018 3C0B8013 */       lui $t3, %hi(gMPGeometry)
+  /* 07581C 800FA01C 8D6B1368 */        lw $t3, %lo(gMPGeometry)($t3)
   /* 075820 800FA020 95680000 */       lhu $t0, ($t3)
   .L800FA024:
   /* 075824 800FA024 8FAC0070 */        lw $t4, 0x70($sp)
@@ -40192,8 +40192,8 @@ glabel func_ovl2_800F9C30
   /* 0758A0 800FA0A0 27BD0080 */     addiu $sp, $sp, 0x80
 
   /* 0758A4 800FA0A4 27BDFF80 */     addiu $sp, $sp, -0x80
-  /* 0758A8 800FA0A8 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 0758AC 800FA0AC 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 0758A8 800FA0A8 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 0758AC 800FA0AC 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 0758B0 800FA0B0 AFBF006C */        sw $ra, 0x6c($sp)
   /* 0758B4 800FA0B4 AFBE0068 */        sw $fp, 0x68($sp)
   /* 0758B8 800FA0B8 AFB70064 */        sw $s7, 0x64($sp)
@@ -40225,8 +40225,8 @@ glabel func_ovl2_800F9C30
   /* 075920 800FA120 24130006 */     addiu $s3, $zero, 6
   .L800FA124:
   /* 075924 800FA124 8FAF007C */        lw $t7, 0x7c($sp)
-  /* 075928 800FA128 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 07592C 800FA12C 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 075928 800FA128 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 07592C 800FA12C 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 075930 800FA130 95F90000 */       lhu $t9, ($t7)
   /* 075934 800FA134 95EB0010 */       lhu $t3, 0x10($t7)
   /* 075938 800FA138 25E4000E */     addiu $a0, $t7, 0xe
@@ -40267,9 +40267,9 @@ glabel func_ovl2_800F9C30
   /* 0759B8 800FA1B8 02E2B821 */      addu $s7, $s7, $v0
   /* 0759BC 800FA1BC 0017B840 */       sll $s7, $s7, 1
   .L800FA1C0:
-  /* 0759C0 800FA1C0 3C188013 */       lui $t8, %hi(gMapVertexInfo)
-  /* 0759C4 800FA1C4 8F18136C */        lw $t8, %lo(gMapVertexInfo)($t8)
-  /* 0759C8 800FA1C8 3C0F8013 */       lui $t7, %hi(gMapVertexLinks)
+  /* 0759C0 800FA1C0 3C188013 */       lui $t8, %hi(gMPVertexInfo)
+  /* 0759C4 800FA1C4 8F18136C */        lw $t8, %lo(gMPVertexInfo)($t8)
+  /* 0759C8 800FA1C8 3C0F8013 */       lui $t7, %hi(gMPVertexLinks)
   /* 0759CC 800FA1CC 03174821 */      addu $t1, $t8, $s7
   /* 0759D0 800FA1D0 852A0002 */        lh $t2, 2($t1)
   /* 0759D4 800FA1D4 448A4000 */      mtc1 $t2, $f8
@@ -40279,18 +40279,18 @@ glabel func_ovl2_800F9C30
   /* 0759E4 800FA1E4 00000000 */       nop 
   /* 0759E8 800FA1E8 450200A1 */     bc1fl .L800FA470
   /* 0759EC 800FA1EC 97CA0000 */       lhu $t2, ($fp)
-  /* 0759F0 800FA1F0 8DEF1378 */        lw $t7, %lo(gMapVertexLinks)($t7)
+  /* 0759F0 800FA1F0 8DEF1378 */        lw $t7, %lo(gMPVertexLinks)($t7)
   /* 0759F4 800FA1F4 00165880 */       sll $t3, $s6, 2
-  /* 0759F8 800FA1F8 3C068013 */       lui $a2, %hi(gMapVertexID)
+  /* 0759F8 800FA1F8 3C068013 */       lui $a2, %hi(gMPVertexID)
   /* 0759FC 800FA1FC 01EB2821 */      addu $a1, $t7, $t3
   /* 075A00 800FA200 94A20000 */       lhu $v0, ($a1)
-  /* 075A04 800FA204 8CC61374 */        lw $a2, %lo(gMapVertexID)($a2)
+  /* 075A04 800FA204 8CC61374 */        lw $a2, %lo(gMPVertexID)($a2)
   /* 075A08 800FA208 94A70002 */       lhu $a3, 2($a1)
   /* 075A0C 800FA20C 00029040 */       sll $s2, $v0, 1
   /* 075A10 800FA210 00D21821 */      addu $v1, $a2, $s2
   /* 075A14 800FA214 946C0000 */       lhu $t4, ($v1)
-  /* 075A18 800FA218 3C088013 */       lui $t0, %hi(gMapVertexData)
-  /* 075A1C 800FA21C 8D081370 */        lw $t0, %lo(gMapVertexData)($t0)
+  /* 075A18 800FA218 3C088013 */       lui $t0, %hi(gMPVertexData)
+  /* 075A1C 800FA21C 8D081370 */        lw $t0, %lo(gMPVertexData)($t0)
   /* 075A20 800FA220 01930019 */     multu $t4, $s3
   /* 075A24 800FA224 00027040 */       sll $t6, $v0, 1
   /* 075A28 800FA228 24E7FFFF */     addiu $a3, $a3, -1
@@ -40411,7 +40411,7 @@ glabel func_ovl2_800F9C30
   /* 075BD4 800FA3D4 45020026 */     bc1fl .L800FA470
   /* 075BD8 800FA3D8 97CA0000 */       lhu $t2, ($fp)
   /* 075BDC 800FA3DC 11A00002 */      beqz $t5, .L800FA3E8
-  /* 075BE0 800FA3E0 3C098013 */       lui $t1, %hi(gMapVertexID)
+  /* 075BE0 800FA3E0 3C098013 */       lui $t1, %hi(gMPVertexID)
   /* 075BE4 800FA3E4 ADB60000 */        sw $s6, ($t5)
   .L800FA3E8:
   /* 075BE8 800FA3E8 8FAE0088 */        lw $t6, 0x88($sp)
@@ -40424,9 +40424,9 @@ glabel func_ovl2_800F9C30
   /* 075C00 800FA400 8FB9008C */        lw $t9, 0x8c($sp)
   /* 075C04 800FA404 5320000C */      beql $t9, $zero, .L800FA438
   /* 075C08 800FA408 8FAE0090 */        lw $t6, 0x90($sp)
-  /* 075C0C 800FA40C 8D291374 */        lw $t1, %lo(gMapVertexID)($t1)
-  /* 075C10 800FA410 3C188013 */       lui $t8, %hi(gMapVertexData)
-  /* 075C14 800FA414 8F181370 */        lw $t8, %lo(gMapVertexData)($t8)
+  /* 075C0C 800FA40C 8D291374 */        lw $t1, %lo(gMPVertexID)($t1)
+  /* 075C10 800FA410 3C188013 */       lui $t8, %hi(gMPVertexData)
+  /* 075C14 800FA414 8F181370 */        lw $t8, %lo(gMPVertexData)($t8)
   /* 075C18 800FA418 01325021 */      addu $t2, $t1, $s2
   /* 075C1C 800FA41C 954F0000 */       lhu $t7, ($t2)
   /* 075C20 800FA420 01F30019 */     multu $t7, $s3
@@ -40460,8 +40460,8 @@ glabel func_ovl2_800F9C30
   /* 075C80 800FA480 02D8082A */       slt $at, $s6, $t8
   /* 075C84 800FA484 1420FF4E */      bnez $at, .L800FA1C0
   /* 075C88 800FA488 00000000 */       nop 
-  /* 075C8C 800FA48C 3C0B8013 */       lui $t3, %hi(gMapGeometry)
-  /* 075C90 800FA490 8D6B1368 */        lw $t3, %lo(gMapGeometry)($t3)
+  /* 075C8C 800FA48C 3C0B8013 */       lui $t3, %hi(gMPGeometry)
+  /* 075C90 800FA490 8D6B1368 */        lw $t3, %lo(gMPGeometry)($t3)
   /* 075C94 800FA494 95680000 */       lhu $t0, ($t3)
   .L800FA498:
   /* 075C98 800FA498 8FAC0070 */        lw $t4, 0x70($sp)
@@ -40530,8 +40530,8 @@ glabel mpCollision_GetVertexCountLineID
   /* 075D70 800FA570 000F7840 */       sll $t7, $t7, 1
   /* 075D74 800FA574 01CFC021 */      addu $t8, $t6, $t7
   /* 075D78 800FA578 93190000 */       lbu $t9, ($t8)
-  /* 075D7C 800FA57C 3C098013 */       lui $t1, %hi(gMapRooms)
-  /* 075D80 800FA580 8D291304 */        lw $t1, %lo(gMapRooms)($t1)
+  /* 075D7C 800FA57C 3C098013 */       lui $t1, %hi(gMPRooms)
+  /* 075D80 800FA580 8D291304 */        lw $t1, %lo(gMPRooms)($t1)
   /* 075D84 800FA584 00194080 */       sll $t0, $t9, 2
   /* 075D88 800FA588 3C0C8013 */       lui $t4, 0x8013
   /* 075D8C 800FA58C 01285021 */      addu $t2, $t1, $t0
@@ -40584,9 +40584,9 @@ glabel mpCollision_GetVertexPositionID
   /* 075E30 800FA630 1000FFFB */         b .L800FA620
   /* 075E34 800FA634 02002025 */        or $a0, $s0, $zero
   .L800FA638:
-  /* 075E38 800FA638 3C0C8013 */       lui $t4, %hi(gMapVertexInfo)
-  /* 075E3C 800FA63C 258C136C */     addiu $t4, $t4, %lo(gMapVertexInfo)
-  /* 075E40 800FA640 8D8F0000 */        lw $t7, ($t4) # gMapVertexInfo + 0
+  /* 075E38 800FA638 3C0C8013 */       lui $t4, %hi(gMPVertexInfo)
+  /* 075E3C 800FA63C 258C136C */     addiu $t4, $t4, %lo(gMPVertexInfo)
+  /* 075E40 800FA640 8D8F0000 */        lw $t7, ($t4) # gMPVertexInfo + 0
   /* 075E44 800FA644 00112880 */       sll $a1, $s1, 2
   /* 075E48 800FA648 00B12821 */      addu $a1, $a1, $s1
   /* 075E4C 800FA64C 00052840 */       sll $a1, $a1, 1
@@ -40595,15 +40595,15 @@ glabel mpCollision_GetVertexPositionID
   /* 075E58 800FA658 256B1304 */     addiu $t3, $t3, 0x1304
   /* 075E5C 800FA65C 8D6E0000 */        lw $t6, ($t3)
   /* 075E60 800FA660 00196880 */       sll $t5, $t9, 2
-  /* 075E64 800FA664 3C098013 */       lui $t1, %hi(gMapVertexLinks)
+  /* 075E64 800FA664 3C098013 */       lui $t1, %hi(gMPVertexLinks)
   /* 075E68 800FA668 01CD7821 */      addu $t7, $t6, $t5
   /* 075E6C 800FA66C 8DE20000 */        lw $v0, ($t7)
-  /* 075E70 800FA670 25291378 */     addiu $t1, $t1, %lo(gMapVertexLinks)
+  /* 075E70 800FA670 25291378 */     addiu $t1, $t1, %lo(gMPVertexLinks)
   /* 075E74 800FA674 3C088013 */       lui $t0, 0x8013
   /* 075E78 800FA678 8C580084 */        lw $t8, 0x84($v0)
   /* 075E7C 800FA67C 2B010003 */      slti $at, $t8, 3
   /* 075E80 800FA680 5420000A */      bnel $at, $zero, .L800FA6AC
-  /* 075E84 800FA684 8D2E0000 */        lw $t6, ($t1) # gMapVertexLinks + 0
+  /* 075E84 800FA684 8D2E0000 */        lw $t6, ($t1) # gMPVertexLinks + 0
   /* 075E88 800FA688 3C108013 */       lui $s0, %hi(D_ovl2_801303E4)
   /* 075E8C 800FA68C 261003E4 */     addiu $s0, $s0, %lo(D_ovl2_801303E4)
   .L800FA690:
@@ -40626,10 +40626,10 @@ glabel mpCollision_GetVertexPositionID
   /* 075ECC 800FA6CC 01C46821 */      addu $t5, $t6, $a0
   /* 075ED0 800FA6D0 95AF0000 */       lhu $t7, ($t5)
   /* 075ED4 800FA6D4 240A0006 */     addiu $t2, $zero, 6
-  /* 075ED8 800FA6D8 3C078013 */       lui $a3, %hi(gMapVertexData)
+  /* 075ED8 800FA6D8 3C078013 */       lui $a3, %hi(gMPVertexData)
   /* 075EDC 800FA6DC 01EA0019 */     multu $t7, $t2
-  /* 075EE0 800FA6E0 24E71370 */     addiu $a3, $a3, %lo(gMapVertexData)
-  /* 075EE4 800FA6E4 8CF80000 */        lw $t8, ($a3) # gMapVertexData + 0
+  /* 075EE0 800FA6E0 24E71370 */     addiu $a3, $a3, %lo(gMPVertexData)
+  /* 075EE4 800FA6E4 8CF80000 */        lw $t8, ($a3) # gMPVertexData + 0
   /* 075EE8 800FA6E8 44808000 */      mtc1 $zero, $f16
   /* 075EEC 800FA6EC 0000C812 */      mflo $t9
   /* 075EF0 800FA6F0 03197021 */      addu $t6, $t8, $t9
@@ -40646,7 +40646,7 @@ glabel mpCollision_GetVertexPositionID
   /* 075F1C 800FA71C 01EDC021 */      addu $t8, $t7, $t5
   /* 075F20 800FA720 0304C821 */      addu $t9, $t8, $a0
   /* 075F24 800FA724 972E0000 */       lhu $t6, ($t9)
-  /* 075F28 800FA728 8CED0000 */        lw $t5, ($a3) # gMapVertexData + 0
+  /* 075F28 800FA728 8CED0000 */        lw $t5, ($a3) # gMPVertexData + 0
   /* 075F2C 800FA72C 01CA0019 */     multu $t6, $t2
   /* 075F30 800FA730 00007812 */      mflo $t7
   /* 075F34 800FA734 01AFC021 */      addu $t8, $t5, $t7
@@ -40714,8 +40714,8 @@ glabel mpCollision_GetSpeedLineID
   /* 076010 800FA810 000F7840 */       sll $t7, $t7, 1
   /* 076014 800FA814 01CFC021 */      addu $t8, $t6, $t7
   /* 076018 800FA818 93030000 */       lbu $v1, ($t8)
-  /* 07601C 800FA81C 3C198013 */       lui $t9, %hi(gMapRooms)
-  /* 076020 800FA820 8F391304 */        lw $t9, %lo(gMapRooms)($t9)
+  /* 07601C 800FA81C 3C198013 */       lui $t9, %hi(gMPRooms)
+  /* 076020 800FA820 8F391304 */        lw $t9, %lo(gMPRooms)($t9)
   /* 076024 800FA824 00034080 */       sll $t0, $v1, 2
   /* 076028 800FA828 3C108013 */       lui $s0, %hi(D_ovl2_80130418)
   /* 07602C 800FA82C 03284821 */      addu $t1, $t9, $t0
@@ -40780,8 +40780,8 @@ glabel mpCollision_GetLineTypeID
   /* 0760FC 800FA8FC 000F7840 */       sll $t7, $t7, 1
   /* 076100 800FA900 01CF1821 */      addu $v1, $t6, $t7
   /* 076104 800FA904 90790000 */       lbu $t9, ($v1)
-  /* 076108 800FA908 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 07610C 800FA90C 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 076108 800FA908 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 07610C 800FA90C 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 076110 800FA910 00194080 */       sll $t0, $t9, 2
   /* 076114 800FA914 24010003 */     addiu $at, $zero, 3
   /* 076118 800FA918 03084821 */      addu $t1, $t8, $t0
@@ -40835,8 +40835,8 @@ glabel mpCollision_GetEdgeUnderRLineID
   /* 0761BC 800FA9BC 000F7840 */       sll $t7, $t7, 1
   /* 0761C0 800FA9C0 01CF1821 */      addu $v1, $t6, $t7
   /* 0761C4 800FA9C4 90790000 */       lbu $t9, ($v1)
-  /* 0761C8 800FA9C8 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 0761CC 800FA9CC 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 0761C8 800FA9C8 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 0761CC 800FA9CC 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 0761D0 800FA9D0 00194080 */       sll $t0, $t9, 2
   /* 0761D4 800FA9D4 8FB00014 */        lw $s0, 0x14($sp)
   /* 0761D8 800FA9D8 03084821 */      addu $t1, $t8, $t0
@@ -40890,8 +40890,8 @@ glabel mpCollision_GetEdgeUnderLLineID
   /* 07627C 800FAA7C 000F7840 */       sll $t7, $t7, 1
   /* 076280 800FAA80 01CF1821 */      addu $v1, $t6, $t7
   /* 076284 800FAA84 90790000 */       lbu $t9, ($v1)
-  /* 076288 800FAA88 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 07628C 800FAA8C 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 076288 800FAA88 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 07628C 800FAA8C 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 076290 800FAA90 00194080 */       sll $t0, $t9, 2
   /* 076294 800FAA94 8FB00014 */        lw $s0, 0x14($sp)
   /* 076298 800FAA98 03084821 */      addu $t1, $t8, $t0
@@ -40945,8 +40945,8 @@ glabel mpCollision_GetEdgeUpperRLineID
   /* 07633C 800FAB3C 000F7840 */       sll $t7, $t7, 1
   /* 076340 800FAB40 01CF1821 */      addu $v1, $t6, $t7
   /* 076344 800FAB44 90790000 */       lbu $t9, ($v1)
-  /* 076348 800FAB48 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 07634C 800FAB4C 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 076348 800FAB48 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 07634C 800FAB4C 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 076350 800FAB50 00194080 */       sll $t0, $t9, 2
   /* 076354 800FAB54 8FB00014 */        lw $s0, 0x14($sp)
   /* 076358 800FAB58 03084821 */      addu $t1, $t8, $t0
@@ -41000,8 +41000,8 @@ glabel mpCollision_GetEdgeUpperLLineID
   /* 0763FC 800FABFC 000F7840 */       sll $t7, $t7, 1
   /* 076400 800FAC00 01CF1821 */      addu $v1, $t6, $t7
   /* 076404 800FAC04 90790000 */       lbu $t9, ($v1)
-  /* 076408 800FAC08 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 07640C 800FAC0C 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 076408 800FAC08 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 07640C 800FAC0C 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 076410 800FAC10 00194080 */       sll $t0, $t9, 2
   /* 076414 800FAC14 8FB00014 */        lw $s0, 0x14($sp)
   /* 076418 800FAC18 03084821 */      addu $t1, $t8, $t0
@@ -41055,8 +41055,8 @@ glabel mpCollision_GetEdgeRightULineID
   /* 0764BC 800FACBC 000F7840 */       sll $t7, $t7, 1
   /* 0764C0 800FACC0 01CF1821 */      addu $v1, $t6, $t7
   /* 0764C4 800FACC4 90790000 */       lbu $t9, ($v1)
-  /* 0764C8 800FACC8 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 0764CC 800FACCC 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 0764C8 800FACC8 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 0764CC 800FACCC 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 0764D0 800FACD0 00194080 */       sll $t0, $t9, 2
   /* 0764D4 800FACD4 8FB00014 */        lw $s0, 0x14($sp)
   /* 0764D8 800FACD8 03084821 */      addu $t1, $t8, $t0
@@ -41110,8 +41110,8 @@ glabel mpCollision_GetEdgeRightDLineID
   /* 07657C 800FAD7C 000F7840 */       sll $t7, $t7, 1
   /* 076580 800FAD80 01CF1821 */      addu $v1, $t6, $t7
   /* 076584 800FAD84 90790000 */       lbu $t9, ($v1)
-  /* 076588 800FAD88 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 07658C 800FAD8C 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 076588 800FAD88 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 07658C 800FAD8C 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 076590 800FAD90 00194080 */       sll $t0, $t9, 2
   /* 076594 800FAD94 8FB00014 */        lw $s0, 0x14($sp)
   /* 076598 800FAD98 03084821 */      addu $t1, $t8, $t0
@@ -41165,8 +41165,8 @@ glabel mpCollision_GetEdgeLeftULineID
   /* 07663C 800FAE3C 000F7840 */       sll $t7, $t7, 1
   /* 076640 800FAE40 01CF1821 */      addu $v1, $t6, $t7
   /* 076644 800FAE44 90790000 */       lbu $t9, ($v1)
-  /* 076648 800FAE48 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 07664C 800FAE4C 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 076648 800FAE48 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 07664C 800FAE4C 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 076650 800FAE50 00194080 */       sll $t0, $t9, 2
   /* 076654 800FAE54 8FB00014 */        lw $s0, 0x14($sp)
   /* 076658 800FAE58 03084821 */      addu $t1, $t8, $t0
@@ -41220,8 +41220,8 @@ glabel mpCollision_GetEdgeLeftDLineID
   /* 0766FC 800FAEFC 000F7840 */       sll $t7, $t7, 1
   /* 076700 800FAF00 01CF1821 */      addu $v1, $t6, $t7
   /* 076704 800FAF04 90790000 */       lbu $t9, ($v1)
-  /* 076708 800FAF08 3C188013 */       lui $t8, %hi(gMapRooms)
-  /* 07670C 800FAF0C 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 076708 800FAF08 3C188013 */       lui $t8, %hi(gMPRooms)
+  /* 07670C 800FAF0C 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 076710 800FAF10 00194080 */       sll $t0, $t9, 2
   /* 076714 800FAF14 8FB00014 */        lw $s0, 0x14($sp)
   /* 076718 800FAF18 03084821 */      addu $t1, $t8, $t0
@@ -41247,8 +41247,8 @@ glabel mpCollision_GetEdgeLeftDLineID
   /* 076760 800FAF60 27BD0020 */     addiu $sp, $sp, 0x20
 
 glabel mpCollision_GetPlayerMPointPosition
-  /* 076764 800FAF64 3C0E8013 */       lui $t6, %hi(gMapGeometry)
-  /* 076768 800FAF68 8DCE1368 */        lw $t6, %lo(gMapGeometry)($t6)
+  /* 076764 800FAF64 3C0E8013 */       lui $t6, %hi(gMPGeometry)
+  /* 076768 800FAF68 8DCE1368 */        lw $t6, %lo(gMPGeometry)($t6)
   /* 07676C 800FAF6C 00001825 */        or $v1, $zero, $zero
   /* 076770 800FAF70 95C20014 */       lhu $v0, 0x14($t6)
   /* 076774 800FAF74 14400007 */      bnez $v0, .L800FAF94
@@ -41263,8 +41263,8 @@ glabel mpCollision_GetPlayerMPointPosition
   .L800FAF94:
   /* 076794 800FAF94 1840001C */      blez $v0, .L800FB008
   /* 076798 800FAF98 00403025 */        or $a2, $v0, $zero
-  /* 07679C 800FAF9C 3C078013 */       lui $a3, %hi(gMapPoints)
-  /* 0767A0 800FAFA0 8CE71380 */        lw $a3, %lo(gMapPoints)($a3)
+  /* 07679C 800FAF9C 3C078013 */       lui $a3, %hi(gMPPoints)
+  /* 0767A0 800FAFA0 8CE71380 */        lw $a3, %lo(gMPPoints)($a3)
   /* 0767A4 800FAFA4 00001025 */        or $v0, $zero, $zero
   .L800FAFA8:
   /* 0767A8 800FAFA8 94EF0000 */       lhu $t7, ($a3)
@@ -41273,13 +41273,13 @@ glabel mpCollision_GetPlayerMPointPosition
   /* 0767B4 800FAFB4 548F0012 */      bnel $a0, $t7, .L800FB000
   /* 0767B8 800FAFB8 24420006 */     addiu $v0, $v0, 6
   /* 0767BC 800FAFBC 84F80002 */        lh $t8, 2($a3)
-  /* 0767C0 800FAFC0 3C198013 */       lui $t9, %hi(gMapPoints)
+  /* 0767C0 800FAFC0 3C198013 */       lui $t9, %hi(gMPPoints)
   /* 0767C4 800FAFC4 44808000 */      mtc1 $zero, $f16
   /* 0767C8 800FAFC8 44982000 */      mtc1 $t8, $f4
   /* 0767CC 800FAFCC 00000000 */       nop 
   /* 0767D0 800FAFD0 468021A0 */   cvt.s.w $f6, $f4
   /* 0767D4 800FAFD4 E4A60000 */      swc1 $f6, ($a1)
-  /* 0767D8 800FAFD8 8F391380 */        lw $t9, %lo(gMapPoints)($t9)
+  /* 0767D8 800FAFD8 8F391380 */        lw $t9, %lo(gMPPoints)($t9)
   /* 0767DC 800FAFDC 03224021 */      addu $t0, $t9, $v0
   /* 0767E0 800FAFE0 85090004 */        lh $t1, 4($t0)
   /* 0767E4 800FAFE4 E4B00008 */      swc1 $f16, 8($a1)
@@ -41298,8 +41298,8 @@ glabel mpCollision_GetPlayerMPointPosition
   /* 07680C 800FB00C 00000000 */       nop 
 
 glabel mpCollision_AllocVertexInfo
-  /* 076810 800FB010 3C048013 */       lui $a0, %hi(gMapLineCount)
-  /* 076814 800FB014 8C841384 */        lw $a0, %lo(gMapLineCount)($a0)
+  /* 076810 800FB010 3C048013 */       lui $a0, %hi(gMPLineCount)
+  /* 076814 800FB014 8C841384 */        lw $a0, %lo(gMPLineCount)($a0)
   /* 076818 800FB018 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 07681C 800FB01C AFBF0014 */        sw $ra, 0x14($sp)
   /* 076820 800FB020 00800821 */      addu $at, $a0, $zero
@@ -41309,15 +41309,15 @@ glabel mpCollision_AllocVertexInfo
   /* 076830 800FB030 0C001260 */       jal gsMemoryAlloc
   /* 076834 800FB034 24050008 */     addiu $a1, $zero, 8
   /* 076838 800FB038 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 07683C 800FB03C 3C018013 */       lui $at, %hi(gMapVertexInfo)
-  /* 076840 800FB040 AC22136C */        sw $v0, %lo(gMapVertexInfo)($at)
+  /* 07683C 800FB03C 3C018013 */       lui $at, %hi(gMPVertexInfo)
+  /* 076840 800FB040 AC22136C */        sw $v0, %lo(gMPVertexInfo)($at)
   /* 076844 800FB044 03E00008 */        jr $ra
   /* 076848 800FB048 27BD0018 */     addiu $sp, $sp, 0x18
 
 glabel func_ovl2_800FB04C
   /* 07684C 800FB04C 27BDFF68 */     addiu $sp, $sp, -0x98
-  /* 076850 800FB050 3C028013 */       lui $v0, %hi(gMapGeometry)
-  /* 076854 800FB054 8C421368 */        lw $v0, %lo(gMapGeometry)($v0)
+  /* 076850 800FB050 3C028013 */       lui $v0, %hi(gMPGeometry)
+  /* 076854 800FB054 8C421368 */        lw $v0, %lo(gMPGeometry)($v0)
   /* 076858 800FB058 AFBF002C */        sw $ra, 0x2c($sp)
   /* 07685C 800FB05C AFBE0028 */        sw $fp, 0x28($sp)
   /* 076860 800FB060 AFB70024 */        sw $s7, 0x24($sp)
@@ -41330,18 +41330,18 @@ glabel func_ovl2_800FB04C
   /* 07687C 800FB07C AFB00008 */        sw $s0, 8($sp)
   /* 076880 800FB080 8C4E0010 */        lw $t6, 0x10($v0)
   /* 076884 800FB084 AFA00090 */        sw $zero, 0x90($sp)
-  /* 076888 800FB088 3C1F8013 */       lui $ra, %hi(gMapVertexLinks)
+  /* 076888 800FB088 3C1F8013 */       lui $ra, %hi(gMPVertexLinks)
   /* 07688C 800FB08C AFAE008C */        sw $t6, 0x8c($sp)
   /* 076890 800FB090 944F0000 */       lhu $t7, ($v0)
-  /* 076894 800FB094 27FF1378 */     addiu $ra, $ra, %lo(gMapVertexLinks)
-  /* 076898 800FB098 3C158013 */       lui $s5, %hi(gMapVertexID)
+  /* 076894 800FB094 27FF1378 */     addiu $ra, $ra, %lo(gMPVertexLinks)
+  /* 076898 800FB098 3C158013 */       lui $s5, %hi(gMPVertexID)
   /* 07689C 800FB09C 19E00074 */      blez $t7, .L800FB270
   /* 0768A0 800FB0A0 0000B025 */        or $s6, $zero, $zero
-  /* 0768A4 800FB0A4 3C148013 */       lui $s4, %hi(gMapVertexData)
-  /* 0768A8 800FB0A8 3C138013 */       lui $s3, %hi(gMapVertexInfo)
-  /* 0768AC 800FB0AC 2673136C */     addiu $s3, $s3, %lo(gMapVertexInfo)
-  /* 0768B0 800FB0B0 26941370 */     addiu $s4, $s4, %lo(gMapVertexData)
-  /* 0768B4 800FB0B4 26B51374 */     addiu $s5, $s5, %lo(gMapVertexID)
+  /* 0768A4 800FB0A4 3C148013 */       lui $s4, %hi(gMPVertexData)
+  /* 0768A8 800FB0A8 3C138013 */       lui $s3, %hi(gMPVertexInfo)
+  /* 0768AC 800FB0AC 2673136C */     addiu $s3, $s3, %lo(gMPVertexInfo)
+  /* 0768B0 800FB0B0 26941370 */     addiu $s4, $s4, %lo(gMPVertexData)
+  /* 0768B4 800FB0B4 26B51374 */     addiu $s5, $s5, %lo(gMPVertexID)
   /* 0768B8 800FB0B8 24080006 */     addiu $t0, $zero, 6
   .L800FB0BC:
   /* 0768BC 800FB0BC 8FB8008C */        lw $t8, 0x8c($sp)
@@ -41361,14 +41361,14 @@ glabel func_ovl2_800FB04C
   /* 0768F0 800FB0F0 01CBB821 */      addu $s7, $t6, $t3
   /* 0768F4 800FB0F4 00029080 */       sll $s2, $v0, 2
   /* 0768F8 800FB0F8 AFA40034 */        sw $a0, 0x34($sp)
-  /* 0768FC 800FB0FC 8FEF0000 */        lw $t7, ($ra) # gMapVertexLinks + 0
+  /* 0768FC 800FB0FC 8FEF0000 */        lw $t7, ($ra) # gMPVertexLinks + 0
   .L800FB100:
   /* 076900 800FB100 29610008 */      slti $at, $t3, 8
   /* 076904 800FB104 1020000C */      beqz $at, .L800FB138
   /* 076908 800FB108 024F2021 */      addu $a0, $s2, $t7
   /* 07690C 800FB10C 94830000 */       lhu $v1, ($a0)
-  /* 076910 800FB110 8EAA0000 */        lw $t2, ($s5) # gMapVertexID + 0
-  /* 076914 800FB114 8E850000 */        lw $a1, ($s4) # gMapVertexData + 0
+  /* 076910 800FB110 8EAA0000 */        lw $t2, ($s5) # gMPVertexID + 0
+  /* 076914 800FB114 8E850000 */        lw $a1, ($s4) # gMPVertexData + 0
   /* 076918 800FB118 0003C040 */       sll $t8, $v1, 1
   /* 07691C 800FB11C 0158C821 */      addu $t9, $t2, $t8
   /* 076920 800FB120 972E0000 */       lhu $t6, ($t9)
@@ -41379,8 +41379,8 @@ glabel func_ovl2_800FB04C
   /* 076934 800FB134 87090002 */        lh $t1, 2($t8)
   .L800FB138:
   /* 076938 800FB138 94830000 */       lhu $v1, ($a0)
-  /* 07693C 800FB13C 8EAA0000 */        lw $t2, ($s5) # gMapVertexID + 0
-  /* 076940 800FB140 8E850000 */        lw $a1, ($s4) # gMapVertexData + 0
+  /* 07693C 800FB13C 8EAA0000 */        lw $t2, ($s5) # gMPVertexID + 0
+  /* 076940 800FB140 8E850000 */        lw $a1, ($s4) # gMPVertexData + 0
   /* 076944 800FB144 0003C840 */       sll $t9, $v1, 1
   /* 076948 800FB148 01597021 */      addu $t6, $t2, $t9
   /* 07694C 800FB14C 95CF0000 */       lhu $t7, ($t6)
@@ -41430,31 +41430,31 @@ glabel func_ovl2_800FB04C
   /* 0769E4 800FB1E4 1420FFE8 */      bnez $at, .L800FB188
   /* 0769E8 800FB1E8 24630002 */     addiu $v1, $v1, 2
   .L800FB1EC:
-  /* 0769EC 800FB1EC 8E790000 */        lw $t9, ($s3) # gMapVertexInfo + 0
+  /* 0769EC 800FB1EC 8E790000 */        lw $t9, ($s3) # gMPVertexInfo + 0
   /* 0769F0 800FB1F0 26310001 */     addiu $s1, $s1, 1
   /* 0769F4 800FB1F4 26520004 */     addiu $s2, $s2, 4
   /* 0769F8 800FB1F8 03307021 */      addu $t6, $t9, $s0
   /* 0769FC 800FB1FC A5C70002 */        sh $a3, 2($t6)
-  /* 076A00 800FB200 8E6F0000 */        lw $t7, ($s3) # gMapVertexInfo + 0
+  /* 076A00 800FB200 8E6F0000 */        lw $t7, ($s3) # gMPVertexInfo + 0
   /* 076A04 800FB204 26D60001 */     addiu $s6, $s6, 1
   /* 076A08 800FB208 01F0C021 */      addu $t8, $t7, $s0
   /* 076A0C 800FB20C A7060004 */        sh $a2, 4($t8)
-  /* 076A10 800FB210 8E790000 */        lw $t9, ($s3) # gMapVertexInfo + 0
+  /* 076A10 800FB210 8E790000 */        lw $t9, ($s3) # gMPVertexInfo + 0
   /* 076A14 800FB214 03307021 */      addu $t6, $t9, $s0
   /* 076A18 800FB218 A1DE0000 */        sb $fp, ($t6)
   /* 076A1C 800FB21C 96EF0002 */       lhu $t7, 2($s7)
   /* 076A20 800FB220 2610000A */     addiu $s0, $s0, 0xa
   /* 076A24 800FB224 022F082A */       slt $at, $s1, $t7
   /* 076A28 800FB228 5420FFB5 */      bnel $at, $zero, .L800FB100
-  /* 076A2C 800FB22C 8FEF0000 */        lw $t7, ($ra) # gMapVertexLinks + 0
+  /* 076A2C 800FB22C 8FEF0000 */        lw $t7, ($ra) # gMPVertexLinks + 0
   /* 076A30 800FB230 8FA40034 */        lw $a0, 0x34($sp)
   .L800FB234:
   /* 076A34 800FB234 256B0004 */     addiu $t3, $t3, 4
   /* 076A38 800FB238 24010010 */     addiu $at, $zero, 0x10
   /* 076A3C 800FB23C 1561FFA4 */       bne $t3, $at, .L800FB0D0
   /* 076A40 800FB240 24840004 */     addiu $a0, $a0, 4
-  /* 076A44 800FB244 3C188013 */       lui $t8, %hi(gMapGeometry)
-  /* 076A48 800FB248 8F181368 */        lw $t8, %lo(gMapGeometry)($t8)
+  /* 076A44 800FB244 3C188013 */       lui $t8, %hi(gMPGeometry)
+  /* 076A48 800FB248 8F181368 */        lw $t8, %lo(gMPGeometry)($t8)
   /* 076A4C 800FB24C 8FB90090 */        lw $t9, 0x90($sp)
   /* 076A50 800FB250 8FAF008C */        lw $t7, 0x8c($sp)
   /* 076A54 800FB254 97020000 */       lhu $v0, ($t8)
@@ -41479,22 +41479,22 @@ glabel func_ovl2_800FB04C
   /* 076A9C 800FB29C 27BD0098 */     addiu $sp, $sp, 0x98
 
 glabel mpCollision_InitLineTypesAll
-  /* 076AA0 800FB2A0 3C048013 */       lui $a0, %hi(gMapLineTypeGroups)
-  /* 076AA4 800FB2A4 3C068013 */       lui $a2, %hi(gMapVertexInfo)
-  /* 076AA8 800FB2A8 24C6136C */     addiu $a2, $a2, %lo(gMapVertexInfo)
-  /* 076AAC 800FB2AC 24841348 */     addiu $a0, $a0, %lo(gMapLineTypeGroups)
+  /* 076AA0 800FB2A0 3C048013 */       lui $a0, %hi(gMPLineTypeGroups)
+  /* 076AA4 800FB2A4 3C068013 */       lui $a2, %hi(gMPVertexInfo)
+  /* 076AA8 800FB2A8 24C6136C */     addiu $a2, $a2, %lo(gMPVertexInfo)
+  /* 076AAC 800FB2AC 24841348 */     addiu $a0, $a0, %lo(gMPLineTypeGroups)
   /* 076AB0 800FB2B0 00001025 */        or $v0, $zero, $zero
   /* 076AB4 800FB2B4 24080004 */     addiu $t0, $zero, 4
   /* 076AB8 800FB2B8 2407000A */     addiu $a3, $zero, 0xa
   .L800FB2BC:
-  /* 076ABC 800FB2BC 948E0000 */       lhu $t6, ($a0) # gMapLineTypeGroups + 0
+  /* 076ABC 800FB2BC 948E0000 */       lhu $t6, ($a0) # gMPLineTypeGroups + 0
   /* 076AC0 800FB2C0 00001825 */        or $v1, $zero, $zero
   /* 076AC4 800FB2C4 00002825 */        or $a1, $zero, $zero
   /* 076AC8 800FB2C8 59C00010 */     blezl $t6, .L800FB30C
   /* 076ACC 800FB2CC 24420001 */     addiu $v0, $v0, 1
-  /* 076AD0 800FB2D0 8C980004 */        lw $t8, 4($a0) # gMapLineTypeGroups + 4
+  /* 076AD0 800FB2D0 8C980004 */        lw $t8, 4($a0) # gMPLineTypeGroups + 4
   .L800FB2D4:
-  /* 076AD4 800FB2D4 8CCF0000 */        lw $t7, ($a2) # gMapVertexInfo + 0
+  /* 076AD4 800FB2D4 8CCF0000 */        lw $t7, ($a2) # gMPVertexInfo + 0
   /* 076AD8 800FB2D8 24630001 */     addiu $v1, $v1, 1
   /* 076ADC 800FB2DC 0305C821 */      addu $t9, $t8, $a1
   /* 076AE0 800FB2E0 97290000 */       lhu $t1, ($t9)
@@ -41503,10 +41503,10 @@ glabel mpCollision_InitLineTypesAll
   /* 076AEC 800FB2EC 00005012 */      mflo $t2
   /* 076AF0 800FB2F0 01EA5821 */      addu $t3, $t7, $t2
   /* 076AF4 800FB2F4 A1620001 */        sb $v0, 1($t3)
-  /* 076AF8 800FB2F8 948C0000 */       lhu $t4, ($a0) # gMapLineTypeGroups + 0
+  /* 076AF8 800FB2F8 948C0000 */       lhu $t4, ($a0) # gMPLineTypeGroups + 0
   /* 076AFC 800FB2FC 006C082A */       slt $at, $v1, $t4
   /* 076B00 800FB300 5420FFF4 */      bnel $at, $zero, .L800FB2D4
-  /* 076B04 800FB304 8C980004 */        lw $t8, 4($a0) # gMapLineTypeGroups + 4
+  /* 076B04 800FB304 8C980004 */        lw $t8, 4($a0) # gMPLineTypeGroups + 4
   /* 076B08 800FB308 24420001 */     addiu $v0, $v0, 1
   .L800FB30C:
   /* 076B0C 800FB30C 1448FFEB */       bne $v0, $t0, .L800FB2BC
@@ -41516,8 +41516,8 @@ glabel mpCollision_InitLineTypesAll
 
 glabel func_ovl2_800FB31C
   /* 076B1C 800FB31C 27BDFFD0 */     addiu $sp, $sp, -0x30
-  /* 076B20 800FB320 3C0B8013 */       lui $t3, %hi(gMapLineCount)
-  /* 076B24 800FB324 8D6B1384 */        lw $t3, %lo(gMapLineCount)($t3)
+  /* 076B20 800FB320 3C0B8013 */       lui $t3, %hi(gMPLineCount)
+  /* 076B24 800FB324 8D6B1384 */        lw $t3, %lo(gMPLineCount)($t3)
   /* 076B28 800FB328 AFB00008 */        sw $s0, 8($sp)
   /* 076B2C 800FB32C AFBF002C */        sw $ra, 0x2c($sp)
   /* 076B30 800FB330 AFBE0028 */        sw $fp, 0x28($sp)
@@ -41530,21 +41530,21 @@ glabel func_ovl2_800FB31C
   /* 076B4C 800FB34C AFB1000C */        sw $s1, 0xc($sp)
   /* 076B50 800FB350 19600074 */      blez $t3, .L800FB524
   /* 076B54 800FB354 00008025 */        or $s0, $zero, $zero
-  /* 076B58 800FB358 3C1E8013 */       lui $fp, %hi(gMapVertexID)
-  /* 076B5C 800FB35C 3C178013 */       lui $s7, %hi(gMapVertexLinks)
-  /* 076B60 800FB360 3C168013 */       lui $s6, %hi(gMapVertexData)
-  /* 076B64 800FB364 3C148013 */       lui $s4, %hi(gMapVertexInfo)
-  /* 076B68 800FB368 2694136C */     addiu $s4, $s4, %lo(gMapVertexInfo)
-  /* 076B6C 800FB36C 26D61370 */     addiu $s6, $s6, %lo(gMapVertexData)
-  /* 076B70 800FB370 26F71378 */     addiu $s7, $s7, %lo(gMapVertexLinks)
-  /* 076B74 800FB374 27DE1374 */     addiu $fp, $fp, %lo(gMapVertexID)
+  /* 076B58 800FB358 3C1E8013 */       lui $fp, %hi(gMPVertexID)
+  /* 076B5C 800FB35C 3C178013 */       lui $s7, %hi(gMPVertexLinks)
+  /* 076B60 800FB360 3C168013 */       lui $s6, %hi(gMPVertexData)
+  /* 076B64 800FB364 3C148013 */       lui $s4, %hi(gMPVertexInfo)
+  /* 076B68 800FB368 2694136C */     addiu $s4, $s4, %lo(gMPVertexInfo)
+  /* 076B6C 800FB36C 26D61370 */     addiu $s6, $s6, %lo(gMPVertexData)
+  /* 076B70 800FB370 26F71378 */     addiu $s7, $s7, %lo(gMPVertexLinks)
+  /* 076B74 800FB374 27DE1374 */     addiu $fp, $fp, %lo(gMPVertexID)
   /* 076B78 800FB378 0000A825 */        or $s5, $zero, $zero
   /* 076B7C 800FB37C 00008825 */        or $s1, $zero, $zero
   /* 076B80 800FB380 241F0001 */     addiu $ra, $zero, 1
   /* 076B84 800FB384 24130006 */     addiu $s3, $zero, 6
   .L800FB388:
-  /* 076B88 800FB388 8EEA0000 */        lw $t2, ($s7) # gMapVertexLinks + 0
-  /* 076B8C 800FB38C 8FC70000 */        lw $a3, ($fp) # gMapVertexID + 0
+  /* 076B88 800FB388 8EEA0000 */        lw $t2, ($s7) # gMPVertexLinks + 0
+  /* 076B8C 800FB38C 8FC70000 */        lw $a3, ($fp) # gMPVertexID + 0
   /* 076B90 800FB390 240CFFFF */     addiu $t4, $zero, -1
   /* 076B94 800FB394 01551021 */      addu $v0, $t2, $s5
   /* 076B98 800FB398 94450000 */       lhu $a1, ($v0)
@@ -41595,8 +41595,8 @@ glabel func_ovl2_800FB31C
   /* 076C34 800FB434 1420FFE5 */      bnez $at, .L800FB3CC
   /* 076C38 800FB438 00000000 */       nop 
   .L800FB43C:
-  /* 076C3C 800FB43C 8E990000 */        lw $t9, ($s4) # gMapVertexInfo + 0
-  /* 076C40 800FB440 3C0B8013 */       lui $t3, %hi(gMapLineCount)
+  /* 076C3C 800FB43C 8E990000 */        lw $t9, ($s4) # gMPVertexInfo + 0
+  /* 076C40 800FB440 3C0B8013 */       lui $t3, %hi(gMPLineCount)
   /* 076C44 800FB444 03311821 */      addu $v1, $t9, $s1
   /* 076C48 800FB448 90620001 */       lbu $v0, 1($v1)
   /* 076C4C 800FB44C 10400009 */      beqz $v0, .L800FB474
@@ -41611,7 +41611,7 @@ glabel func_ovl2_800FB31C
   /* 076C70 800FB470 00000000 */       nop 
   .L800FB474:
   /* 076C74 800FB474 01330019 */     multu $t1, $s3
-  /* 076C78 800FB478 8EC20000 */        lw $v0, ($s6) # gMapVertexData + 0
+  /* 076C78 800FB478 8EC20000 */        lw $v0, ($s6) # gMPVertexData + 0
   /* 076C7C 800FB47C 00007012 */      mflo $t6
   /* 076C80 800FB480 004E7821 */      addu $t7, $v0, $t6
   /* 076C84 800FB484 85F80000 */        lh $t8, ($t7)
@@ -41626,7 +41626,7 @@ glabel func_ovl2_800FB31C
   /* 076CA8 800FB4A8 03E09025 */        or $s2, $ra, $zero
   .L800FB4AC:
   /* 076CAC 800FB4AC 01330019 */     multu $t1, $s3
-  /* 076CB0 800FB4B0 8EC20000 */        lw $v0, ($s6) # gMapVertexData + 0
+  /* 076CB0 800FB4B0 8EC20000 */        lw $v0, ($s6) # gMPVertexData + 0
   /* 076CB4 800FB4B4 0000C812 */      mflo $t9
   /* 076CB8 800FB4B8 00597021 */      addu $t6, $v0, $t9
   /* 076CBC 800FB4BC 85D80002 */        lh $t8, 2($t6)
@@ -41642,17 +41642,17 @@ glabel func_ovl2_800FB31C
   /* 076CE0 800FB4E0 52400007 */      beql $s2, $zero, .L800FB500
   /* 076CE4 800FB4E4 A46C0006 */        sh $t4, 6($v1)
   /* 076CE8 800FB4E8 A46D0006 */        sh $t5, 6($v1)
-  /* 076CEC 800FB4EC 8E8F0000 */        lw $t7, ($s4) # gMapVertexInfo + 0
+  /* 076CEC 800FB4EC 8E8F0000 */        lw $t7, ($s4) # gMPVertexInfo + 0
   /* 076CF0 800FB4F0 01F1C821 */      addu $t9, $t7, $s1
   /* 076CF4 800FB4F4 10000005 */         b .L800FB50C
   /* 076CF8 800FB4F8 A72C0008 */        sh $t4, 8($t9)
   /* 076CFC 800FB4FC A46C0006 */        sh $t4, 6($v1)
   .L800FB500:
-  /* 076D00 800FB500 8E980000 */        lw $t8, ($s4) # gMapVertexInfo + 0
+  /* 076D00 800FB500 8E980000 */        lw $t8, ($s4) # gMPVertexInfo + 0
   /* 076D04 800FB504 03117021 */      addu $t6, $t8, $s1
   /* 076D08 800FB508 A5CD0008 */        sh $t5, 8($t6)
   .L800FB50C:
-  /* 076D0C 800FB50C 8D6B1384 */        lw $t3, %lo(gMapLineCount)($t3)
+  /* 076D0C 800FB50C 8D6B1384 */        lw $t3, %lo(gMPLineCount)($t3)
   /* 076D10 800FB510 26100001 */     addiu $s0, $s0, 1
   /* 076D14 800FB514 26B50004 */     addiu $s5, $s5, 4
   /* 076D18 800FB518 020B082A */       slt $at, $s0, $t3
@@ -41705,17 +41705,17 @@ glabel mpCollision_AllocMapRooms
   /* 076DB8 800FB5B8 0C001260 */       jal gsMemoryAlloc
   /* 076DBC 800FB5BC AFA6001C */        sw $a2, 0x1c($sp)
   /* 076DC0 800FB5C0 8FA6001C */        lw $a2, 0x1c($sp)
-  /* 076DC4 800FB5C4 3C018013 */       lui $at, %hi(gMapRooms)
-  /* 076DC8 800FB5C8 AC221304 */        sw $v0, %lo(gMapRooms)($at)
+  /* 076DC4 800FB5C4 3C018013 */       lui $at, %hi(gMPRooms)
+  /* 076DC8 800FB5C8 AC221304 */        sw $v0, %lo(gMPRooms)($at)
   /* 076DCC 800FB5CC 00062080 */       sll $a0, $a2, 2
   /* 076DD0 800FB5D0 00862023 */      subu $a0, $a0, $a2
   /* 076DD4 800FB5D4 00042080 */       sll $a0, $a0, 2
   /* 076DD8 800FB5D8 0C001260 */       jal gsMemoryAlloc
   /* 076DDC 800FB5DC 24050004 */     addiu $a1, $zero, 4
   /* 076DE0 800FB5E0 8FA6001C */        lw $a2, 0x1c($sp)
-  /* 076DE4 800FB5E4 3C048013 */       lui $a0, %hi(gMapDynamicCollisions)
-  /* 076DE8 800FB5E8 2484137C */     addiu $a0, $a0, %lo(gMapDynamicCollisions)
-  /* 076DEC 800FB5EC AC820000 */        sw $v0, ($a0) # gMapDynamicCollisions + 0
+  /* 076DE4 800FB5E4 3C048013 */       lui $a0, %hi(gMPDynamicCollisions)
+  /* 076DE8 800FB5E8 2484137C */     addiu $a0, $a0, %lo(gMPDynamicCollisions)
+  /* 076DEC 800FB5EC AC820000 */        sw $v0, ($a0) # gMPDynamicCollisions + 0
   /* 076DF0 800FB5F0 18C00080 */      blez $a2, .L800FB7F4
   /* 076DF4 800FB5F4 00002825 */        or $a1, $zero, $zero
   /* 076DF8 800FB5F8 30C30003 */      andi $v1, $a2, 3
@@ -41725,31 +41725,31 @@ glabel mpCollision_AllocMapRooms
   /* 076E08 800FB608 00401023 */      subu $v0, $v0, $zero
   /* 076E0C 800FB60C 44801000 */      mtc1 $zero, $f2
   /* 076E10 800FB610 00021080 */       sll $v0, $v0, 2
-  /* 076E14 800FB614 8C980000 */        lw $t8, ($a0) # gMapDynamicCollisions + 0
+  /* 076E14 800FB614 8C980000 */        lw $t8, ($a0) # gMPDynamicCollisions + 0
   /* 076E18 800FB618 24A50001 */     addiu $a1, $a1, 1
   /* 076E1C 800FB61C 0302C821 */      addu $t9, $t8, $v0
   /* 076E20 800FB620 E7220008 */      swc1 $f2, 8($t9)
   /* 076E24 800FB624 10E5000E */       beq $a3, $a1, .L800FB660
-  /* 076E28 800FB628 8C880000 */        lw $t0, ($a0) # gMapDynamicCollisions + 0
+  /* 076E28 800FB628 8C880000 */        lw $t0, ($a0) # gMPDynamicCollisions + 0
   .L800FB62C:
   /* 076E2C 800FB62C 01021821 */      addu $v1, $t0, $v0
   /* 076E30 800FB630 C4720008 */      lwc1 $f18, 8($v1)
   /* 076E34 800FB634 24A50001 */     addiu $a1, $a1, 1
   /* 076E38 800FB638 E4720004 */      swc1 $f18, 4($v1)
-  /* 076E3C 800FB63C 8C890000 */        lw $t1, ($a0) # gMapDynamicCollisions + 0
+  /* 076E3C 800FB63C 8C890000 */        lw $t1, ($a0) # gMPDynamicCollisions + 0
   /* 076E40 800FB640 01225021 */      addu $t2, $t1, $v0
   /* 076E44 800FB644 E5520000 */      swc1 $f18, ($t2)
-  /* 076E48 800FB648 8C980000 */        lw $t8, ($a0) # gMapDynamicCollisions + 0
+  /* 076E48 800FB648 8C980000 */        lw $t8, ($a0) # gMPDynamicCollisions + 0
   /* 076E4C 800FB64C 2442000C */     addiu $v0, $v0, 0xc
   /* 076E50 800FB650 0302C821 */      addu $t9, $t8, $v0
   /* 076E54 800FB654 E7220008 */      swc1 $f2, 8($t9)
   /* 076E58 800FB658 14E5FFF4 */       bne $a3, $a1, .L800FB62C
-  /* 076E5C 800FB65C 8C880000 */        lw $t0, ($a0) # gMapDynamicCollisions + 0
+  /* 076E5C 800FB65C 8C880000 */        lw $t0, ($a0) # gMPDynamicCollisions + 0
   .L800FB660:
   /* 076E60 800FB660 01021821 */      addu $v1, $t0, $v0
   /* 076E64 800FB664 C4720008 */      lwc1 $f18, 8($v1)
   /* 076E68 800FB668 E4720004 */      swc1 $f18, 4($v1)
-  /* 076E6C 800FB66C 8C890000 */        lw $t1, ($a0) # gMapDynamicCollisions + 0
+  /* 076E6C 800FB66C 8C890000 */        lw $t1, ($a0) # gMPDynamicCollisions + 0
   /* 076E70 800FB670 01225021 */      addu $t2, $t1, $v0
   /* 076E74 800FB674 2442000C */     addiu $v0, $v0, 0xc
   /* 076E78 800FB678 E5520000 */      swc1 $f18, ($t2)
@@ -41762,98 +41762,98 @@ glabel mpCollision_AllocMapRooms
   /* 076E90 800FB690 44801000 */      mtc1 $zero, $f2
   /* 076E94 800FB694 00021080 */       sll $v0, $v0, 2
   /* 076E98 800FB698 00073880 */       sll $a3, $a3, 2
-  /* 076E9C 800FB69C 8C8B0000 */        lw $t3, ($a0) # gMapDynamicCollisions + 0
+  /* 076E9C 800FB69C 8C8B0000 */        lw $t3, ($a0) # gMPDynamicCollisions + 0
   /* 076EA0 800FB6A0 24E7FFD0 */     addiu $a3, $a3, -0x30
   /* 076EA4 800FB6A4 01626021 */      addu $t4, $t3, $v0
   /* 076EA8 800FB6A8 E5820008 */      swc1 $f2, 8($t4)
   /* 076EAC 800FB6AC 1047002B */       beq $v0, $a3, .L800FB75C
-  /* 076EB0 800FB6B0 8C8D0000 */        lw $t5, ($a0) # gMapDynamicCollisions + 0
+  /* 076EB0 800FB6B0 8C8D0000 */        lw $t5, ($a0) # gMPDynamicCollisions + 0
   .L800FB6B4:
   /* 076EB4 800FB6B4 01A21821 */      addu $v1, $t5, $v0
   /* 076EB8 800FB6B8 C4720008 */      lwc1 $f18, 8($v1)
   /* 076EBC 800FB6BC E4720004 */      swc1 $f18, 4($v1)
-  /* 076EC0 800FB6C0 8C8E0000 */        lw $t6, ($a0) # gMapDynamicCollisions + 0
+  /* 076EC0 800FB6C0 8C8E0000 */        lw $t6, ($a0) # gMPDynamicCollisions + 0
   /* 076EC4 800FB6C4 01C27821 */      addu $t7, $t6, $v0
   /* 076EC8 800FB6C8 E5F20000 */      swc1 $f18, ($t7)
-  /* 076ECC 800FB6CC 8C980000 */        lw $t8, ($a0) # gMapDynamicCollisions + 0
+  /* 076ECC 800FB6CC 8C980000 */        lw $t8, ($a0) # gMPDynamicCollisions + 0
   /* 076ED0 800FB6D0 0302C821 */      addu $t9, $t8, $v0
   /* 076ED4 800FB6D4 E7220014 */      swc1 $f2, 0x14($t9)
-  /* 076ED8 800FB6D8 8C880000 */        lw $t0, ($a0) # gMapDynamicCollisions + 0
+  /* 076ED8 800FB6D8 8C880000 */        lw $t0, ($a0) # gMPDynamicCollisions + 0
   /* 076EDC 800FB6DC 01021821 */      addu $v1, $t0, $v0
   /* 076EE0 800FB6E0 C4720014 */      lwc1 $f18, 0x14($v1)
   /* 076EE4 800FB6E4 E4720010 */      swc1 $f18, 0x10($v1)
-  /* 076EE8 800FB6E8 8C890000 */        lw $t1, ($a0) # gMapDynamicCollisions + 0
+  /* 076EE8 800FB6E8 8C890000 */        lw $t1, ($a0) # gMPDynamicCollisions + 0
   /* 076EEC 800FB6EC 01225021 */      addu $t2, $t1, $v0
   /* 076EF0 800FB6F0 E552000C */      swc1 $f18, 0xc($t2)
-  /* 076EF4 800FB6F4 8C8B0000 */        lw $t3, ($a0) # gMapDynamicCollisions + 0
+  /* 076EF4 800FB6F4 8C8B0000 */        lw $t3, ($a0) # gMPDynamicCollisions + 0
   /* 076EF8 800FB6F8 01626021 */      addu $t4, $t3, $v0
   /* 076EFC 800FB6FC E5820020 */      swc1 $f2, 0x20($t4)
-  /* 076F00 800FB700 8C8D0000 */        lw $t5, ($a0) # gMapDynamicCollisions + 0
+  /* 076F00 800FB700 8C8D0000 */        lw $t5, ($a0) # gMPDynamicCollisions + 0
   /* 076F04 800FB704 01A21821 */      addu $v1, $t5, $v0
   /* 076F08 800FB708 C4720020 */      lwc1 $f18, 0x20($v1)
   /* 076F0C 800FB70C E472001C */      swc1 $f18, 0x1c($v1)
-  /* 076F10 800FB710 8C8E0000 */        lw $t6, ($a0) # gMapDynamicCollisions + 0
+  /* 076F10 800FB710 8C8E0000 */        lw $t6, ($a0) # gMPDynamicCollisions + 0
   /* 076F14 800FB714 01C27821 */      addu $t7, $t6, $v0
   /* 076F18 800FB718 E5F20018 */      swc1 $f18, 0x18($t7)
-  /* 076F1C 800FB71C 8C980000 */        lw $t8, ($a0) # gMapDynamicCollisions + 0
+  /* 076F1C 800FB71C 8C980000 */        lw $t8, ($a0) # gMPDynamicCollisions + 0
   /* 076F20 800FB720 0302C821 */      addu $t9, $t8, $v0
   /* 076F24 800FB724 E722002C */      swc1 $f2, 0x2c($t9)
-  /* 076F28 800FB728 8C880000 */        lw $t0, ($a0) # gMapDynamicCollisions + 0
+  /* 076F28 800FB728 8C880000 */        lw $t0, ($a0) # gMPDynamicCollisions + 0
   /* 076F2C 800FB72C 01021821 */      addu $v1, $t0, $v0
   /* 076F30 800FB730 C472002C */      lwc1 $f18, 0x2c($v1)
   /* 076F34 800FB734 E4720028 */      swc1 $f18, 0x28($v1)
-  /* 076F38 800FB738 8C890000 */        lw $t1, ($a0) # gMapDynamicCollisions + 0
+  /* 076F38 800FB738 8C890000 */        lw $t1, ($a0) # gMPDynamicCollisions + 0
   /* 076F3C 800FB73C 01225021 */      addu $t2, $t1, $v0
   /* 076F40 800FB740 E5520024 */      swc1 $f18, 0x24($t2)
-  /* 076F44 800FB744 8C8B0000 */        lw $t3, ($a0) # gMapDynamicCollisions + 0
+  /* 076F44 800FB744 8C8B0000 */        lw $t3, ($a0) # gMPDynamicCollisions + 0
   /* 076F48 800FB748 24420030 */     addiu $v0, $v0, 0x30
   /* 076F4C 800FB74C 01626021 */      addu $t4, $t3, $v0
   /* 076F50 800FB750 E5820008 */      swc1 $f2, 8($t4)
   /* 076F54 800FB754 1447FFD7 */       bne $v0, $a3, .L800FB6B4
-  /* 076F58 800FB758 8C8D0000 */        lw $t5, ($a0) # gMapDynamicCollisions + 0
+  /* 076F58 800FB758 8C8D0000 */        lw $t5, ($a0) # gMPDynamicCollisions + 0
   .L800FB75C:
   /* 076F5C 800FB75C 01A21821 */      addu $v1, $t5, $v0
   /* 076F60 800FB760 C4720008 */      lwc1 $f18, 8($v1)
   /* 076F64 800FB764 24E70030 */     addiu $a3, $a3, 0x30
   /* 076F68 800FB768 E4720004 */      swc1 $f18, 4($v1)
-  /* 076F6C 800FB76C 8C8E0000 */        lw $t6, ($a0) # gMapDynamicCollisions + 0
+  /* 076F6C 800FB76C 8C8E0000 */        lw $t6, ($a0) # gMPDynamicCollisions + 0
   /* 076F70 800FB770 01C27821 */      addu $t7, $t6, $v0
   /* 076F74 800FB774 E5F20000 */      swc1 $f18, ($t7)
-  /* 076F78 800FB778 8C980000 */        lw $t8, ($a0) # gMapDynamicCollisions + 0
+  /* 076F78 800FB778 8C980000 */        lw $t8, ($a0) # gMPDynamicCollisions + 0
   /* 076F7C 800FB77C 0302C821 */      addu $t9, $t8, $v0
   /* 076F80 800FB780 E7220014 */      swc1 $f2, 0x14($t9)
-  /* 076F84 800FB784 8C880000 */        lw $t0, ($a0) # gMapDynamicCollisions + 0
+  /* 076F84 800FB784 8C880000 */        lw $t0, ($a0) # gMPDynamicCollisions + 0
   /* 076F88 800FB788 01021821 */      addu $v1, $t0, $v0
   /* 076F8C 800FB78C C4720014 */      lwc1 $f18, 0x14($v1)
   /* 076F90 800FB790 E4720010 */      swc1 $f18, 0x10($v1)
-  /* 076F94 800FB794 8C890000 */        lw $t1, ($a0) # gMapDynamicCollisions + 0
+  /* 076F94 800FB794 8C890000 */        lw $t1, ($a0) # gMPDynamicCollisions + 0
   /* 076F98 800FB798 01225021 */      addu $t2, $t1, $v0
   /* 076F9C 800FB79C E552000C */      swc1 $f18, 0xc($t2)
-  /* 076FA0 800FB7A0 8C8B0000 */        lw $t3, ($a0) # gMapDynamicCollisions + 0
+  /* 076FA0 800FB7A0 8C8B0000 */        lw $t3, ($a0) # gMPDynamicCollisions + 0
   /* 076FA4 800FB7A4 01626021 */      addu $t4, $t3, $v0
   /* 076FA8 800FB7A8 E5820020 */      swc1 $f2, 0x20($t4)
-  /* 076FAC 800FB7AC 8C8D0000 */        lw $t5, ($a0) # gMapDynamicCollisions + 0
+  /* 076FAC 800FB7AC 8C8D0000 */        lw $t5, ($a0) # gMPDynamicCollisions + 0
   /* 076FB0 800FB7B0 01A21821 */      addu $v1, $t5, $v0
   /* 076FB4 800FB7B4 C4720020 */      lwc1 $f18, 0x20($v1)
   /* 076FB8 800FB7B8 E472001C */      swc1 $f18, 0x1c($v1)
-  /* 076FBC 800FB7BC 8C8E0000 */        lw $t6, ($a0) # gMapDynamicCollisions + 0
+  /* 076FBC 800FB7BC 8C8E0000 */        lw $t6, ($a0) # gMPDynamicCollisions + 0
   /* 076FC0 800FB7C0 01C27821 */      addu $t7, $t6, $v0
   /* 076FC4 800FB7C4 E5F20018 */      swc1 $f18, 0x18($t7)
-  /* 076FC8 800FB7C8 8C980000 */        lw $t8, ($a0) # gMapDynamicCollisions + 0
+  /* 076FC8 800FB7C8 8C980000 */        lw $t8, ($a0) # gMPDynamicCollisions + 0
   /* 076FCC 800FB7CC 0302C821 */      addu $t9, $t8, $v0
   /* 076FD0 800FB7D0 E722002C */      swc1 $f2, 0x2c($t9)
-  /* 076FD4 800FB7D4 8C880000 */        lw $t0, ($a0) # gMapDynamicCollisions + 0
+  /* 076FD4 800FB7D4 8C880000 */        lw $t0, ($a0) # gMPDynamicCollisions + 0
   /* 076FD8 800FB7D8 01021821 */      addu $v1, $t0, $v0
   /* 076FDC 800FB7DC C472002C */      lwc1 $f18, 0x2c($v1)
   /* 076FE0 800FB7E0 E4720028 */      swc1 $f18, 0x28($v1)
-  /* 076FE4 800FB7E4 8C890000 */        lw $t1, ($a0) # gMapDynamicCollisions + 0
+  /* 076FE4 800FB7E4 8C890000 */        lw $t1, ($a0) # gMPDynamicCollisions + 0
   /* 076FE8 800FB7E8 01225021 */      addu $t2, $t1, $v0
   /* 076FEC 800FB7EC 24420030 */     addiu $v0, $v0, 0x30
   /* 076FF0 800FB7F0 E5520024 */      swc1 $f18, 0x24($t2)
   .L800FB7F4:
   /* 076FF4 800FB7F4 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 076FF8 800FB7F8 3C018013 */       lui $at, %hi(gMapRoomCount)
-  /* 076FFC 800FB7FC AC26138C */        sw $a2, %lo(gMapRoomCount)($at)
+  /* 076FF8 800FB7F8 3C018013 */       lui $at, %hi(gMPRoomCount)
+  /* 076FFC 800FB7FC AC26138C */        sw $a2, %lo(gMPRoomCount)($at)
   /* 077000 800FB800 03E00008 */        jr $ra
   /* 077004 800FB804 27BD0020 */     addiu $sp, $sp, 0x20
 
@@ -41871,11 +41871,11 @@ glabel func_ovl2_800FB808
   /* 077030 800FB830 25CE1318 */     addiu $t6, $t6, %lo(D_ovl2_80131318)
   /* 077034 800FB834 8DD80000 */        lw $t8, ($t6) # D_ovl2_80131318 + 0
   /* 077038 800FB838 27AB007C */     addiu $t3, $sp, 0x7c
-  /* 07703C 800FB83C 3C098013 */       lui $t1, %hi(gMapGeometry)
+  /* 07703C 800FB83C 3C098013 */       lui $t1, %hi(gMPGeometry)
   /* 077040 800FB840 AD780000 */        sw $t8, ($t3)
   /* 077044 800FB844 8DCF0004 */        lw $t7, 4($t6) # D_ovl2_80131318 + 4
   /* 077048 800FB848 00004025 */        or $t0, $zero, $zero
-  /* 07704C 800FB84C 3C0A8013 */       lui $t2, %hi(gMapRooms)
+  /* 07704C 800FB84C 3C0A8013 */       lui $t2, %hi(gMPRooms)
   /* 077050 800FB850 AD6F0004 */        sw $t7, 4($t3)
   /* 077054 800FB854 8DD80008 */        lw $t8, 8($t6) # D_ovl2_80131318 + 8
   /* 077058 800FB858 24060010 */     addiu $a2, $zero, 0x10
@@ -41883,12 +41883,12 @@ glabel func_ovl2_800FB808
   /* 077060 800FB860 AD780008 */        sw $t8, 8($t3)
   /* 077064 800FB864 8DCF000C */        lw $t7, 0xc($t6) # D_ovl2_80131318 + 12
   /* 077068 800FB868 AD6F000C */        sw $t7, 0xc($t3)
-  /* 07706C 800FB86C 8D291368 */        lw $t1, %lo(gMapGeometry)($t1)
+  /* 07706C 800FB86C 8D291368 */        lw $t1, %lo(gMPGeometry)($t1)
   /* 077070 800FB870 95230000 */       lhu $v1, ($t1)
   /* 077074 800FB874 8D270010 */        lw $a3, 0x10($t1)
   /* 077078 800FB878 5860006F */     blezl $v1, .L800FBA38
   /* 07707C 800FB87C 8D780000 */        lw $t8, ($t3)
-  /* 077080 800FB880 8D4A1304 */        lw $t2, %lo(gMapRooms)($t2)
+  /* 077080 800FB880 8D4A1304 */        lw $t2, %lo(gMPRooms)($t2)
   .L800FB884:
   /* 077084 800FB884 94F90000 */       lhu $t9, ($a3)
   /* 077088 800FB888 25080001 */     addiu $t0, $t0, 1
@@ -41914,8 +41914,8 @@ glabel func_ovl2_800FB808
   /* 0770D0 800FB8D0 948C0000 */       lhu $t4, ($a0)
   /* 0770D4 800FB8D4 00008025 */        or $s0, $zero, $zero
   /* 0770D8 800FB8D8 1B20004F */      blez $t9, .L800FBA18
-  /* 0770DC 800FB8DC 3C0F8013 */       lui $t7, %hi(gMapVertexLinks)
-  /* 0770E0 800FB8E0 8DEF1378 */        lw $t7, %lo(gMapVertexLinks)($t7)
+  /* 0770DC 800FB8DC 3C0F8013 */       lui $t7, %hi(gMPVertexLinks)
+  /* 0770E0 800FB8E0 8DEF1378 */        lw $t7, %lo(gMPVertexLinks)($t7)
   /* 0770E4 800FB8E4 000C7080 */       sll $t6, $t4, 2
   /* 0770E8 800FB8E8 00A36821 */      addu $t5, $a1, $v1
   /* 0770EC 800FB8EC 01CF8821 */      addu $s1, $t6, $t7
@@ -41923,15 +41923,15 @@ glabel func_ovl2_800FB808
   .L800FB8F4:
   /* 0770F4 800FB8F4 96380002 */       lhu $t8, 2($s1)
   /* 0770F8 800FB8F8 02206025 */        or $t4, $s1, $zero
-  /* 0770FC 800FB8FC 3C148013 */       lui $s4, %hi(gMapVertexData)
+  /* 0770FC 800FB8FC 3C148013 */       lui $s4, %hi(gMPVertexData)
   /* 077100 800FB900 0278C821 */      addu $t9, $s3, $t8
   /* 077104 800FB904 0279082A */       slt $at, $s3, $t9
   /* 077108 800FB908 1020003D */      beqz $at, .L800FBA00
   /* 07710C 800FB90C 02609025 */        or $s2, $s3, $zero
-  /* 077110 800FB910 3C0E8013 */       lui $t6, %hi(gMapVertexID)
-  /* 077114 800FB914 8DCE1374 */        lw $t6, %lo(gMapVertexID)($t6)
+  /* 077110 800FB910 3C0E8013 */       lui $t6, %hi(gMPVertexID)
+  /* 077114 800FB914 8DCE1374 */        lw $t6, %lo(gMPVertexID)($t6)
   /* 077118 800FB918 00137840 */       sll $t7, $s3, 1
-  /* 07711C 800FB91C 8E941370 */        lw $s4, %lo(gMapVertexData)($s4)
+  /* 07711C 800FB91C 8E941370 */        lw $s4, %lo(gMPVertexData)($s4)
   /* 077120 800FB920 01CFA821 */      addu $s5, $t6, $t7
   /* 077124 800FB924 96B80000 */       lhu $t8, ($s5)
   .L800FB928:
@@ -42035,25 +42035,25 @@ glabel func_ovl2_800FB808
   /* 077280 800FBA80 27BD0090 */     addiu $sp, $sp, 0x90
 
 glabel func_ovl2_800FBA84
-  /* 077284 800FBA84 3C028013 */       lui $v0, %hi(gMapEdgeBounds)
-  /* 077288 800FBA88 24421308 */     addiu $v0, $v0, %lo(gMapEdgeBounds)
-  /* 07728C 800FBA8C C4440020 */      lwc1 $f4, 0x20($v0) # gMapEdgeBounds + 32
-  /* 077290 800FBA90 C4460000 */      lwc1 $f6, ($v0) # gMapEdgeBounds + 0
-  /* 077294 800FBA94 C44A0024 */      lwc1 $f10, 0x24($v0) # gMapEdgeBounds + 36
-  /* 077298 800FBA98 C4500004 */      lwc1 $f16, 4($v0) # gMapEdgeBounds + 4
+  /* 077284 800FBA84 3C028013 */       lui $v0, %hi(gMPEdgeBounds)
+  /* 077288 800FBA88 24421308 */     addiu $v0, $v0, %lo(gMPEdgeBounds)
+  /* 07728C 800FBA8C C4440020 */      lwc1 $f4, 0x20($v0) # gMPEdgeBounds + 32
+  /* 077290 800FBA90 C4460000 */      lwc1 $f6, ($v0) # gMPEdgeBounds + 0
+  /* 077294 800FBA94 C44A0024 */      lwc1 $f10, 0x24($v0) # gMPEdgeBounds + 36
+  /* 077298 800FBA98 C4500004 */      lwc1 $f16, 4($v0) # gMPEdgeBounds + 4
   /* 07729C 800FBA9C 46062201 */     sub.s $f8, $f4, $f6
-  /* 0772A0 800FBAA0 C4460008 */      lwc1 $f6, 8($v0) # gMapEdgeBounds + 8
-  /* 0772A4 800FBAA4 C4440028 */      lwc1 $f4, 0x28($v0) # gMapEdgeBounds + 40
+  /* 0772A0 800FBAA0 C4460008 */      lwc1 $f6, 8($v0) # gMPEdgeBounds + 8
+  /* 0772A4 800FBAA4 C4440028 */      lwc1 $f4, 0x28($v0) # gMPEdgeBounds + 40
   /* 0772A8 800FBAA8 46105481 */     sub.s $f18, $f10, $f16
-  /* 0772AC 800FBAAC C450000C */      lwc1 $f16, 0xc($v0) # gMapEdgeBounds + 12
-  /* 0772B0 800FBAB0 C44A002C */      lwc1 $f10, 0x2c($v0) # gMapEdgeBounds + 44
-  /* 0772B4 800FBAB4 E4480030 */      swc1 $f8, 0x30($v0) # gMapEdgeBounds + 48
-  /* 0772B8 800FBAB8 E4520034 */      swc1 $f18, 0x34($v0) # gMapEdgeBounds + 52
+  /* 0772AC 800FBAAC C450000C */      lwc1 $f16, 0xc($v0) # gMPEdgeBounds + 12
+  /* 0772B0 800FBAB0 C44A002C */      lwc1 $f10, 0x2c($v0) # gMPEdgeBounds + 44
+  /* 0772B4 800FBAB4 E4480030 */      swc1 $f8, 0x30($v0) # gMPEdgeBounds + 48
+  /* 0772B8 800FBAB8 E4520034 */      swc1 $f18, 0x34($v0) # gMPEdgeBounds + 52
   /* 0772BC 800FBABC 46062201 */     sub.s $f8, $f4, $f6
   /* 0772C0 800FBAC0 46105481 */     sub.s $f18, $f10, $f16
-  /* 0772C4 800FBAC4 E4480038 */      swc1 $f8, 0x38($v0) # gMapEdgeBounds + 56
+  /* 0772C4 800FBAC4 E4480038 */      swc1 $f8, 0x38($v0) # gMPEdgeBounds + 56
   /* 0772C8 800FBAC8 03E00008 */        jr $ra
-  /* 0772CC 800FBACC E452003C */      swc1 $f18, 0x3c($v0) # gMapEdgeBounds + 60
+  /* 0772CC 800FBACC E452003C */      swc1 $f18, 0x3c($v0) # gMPEdgeBounds + 60
 
   glabel jtgt_ovl2_800FBAD0
   /* 0772D0 800FBAD0 27BDFFA0 */     addiu $sp, $sp, -0x60
@@ -42069,12 +42069,12 @@ glabel func_ovl2_800FBA84
   /* 0772F8 800FBAF8 0000A025 */        or $s4, $zero, $zero
   /* 0772FC 800FBAFC 0000A825 */        or $s5, $zero, $zero
   /* 077300 800FBB00 1220006A */      beqz $s1, .L800FBCAC
-  /* 077304 800FBB04 3C168013 */       lui $s6, %hi(gMapDynamicCollisions)
-  /* 077308 800FBB08 26D6137C */     addiu $s6, $s6, %lo(gMapDynamicCollisions)
+  /* 077304 800FBB04 3C168013 */       lui $s6, %hi(gMPDynamicCollisions)
+  /* 077308 800FBB08 26D6137C */     addiu $s6, $s6, %lo(gMPDynamicCollisions)
   /* 07730C 800FBB0C 24130001 */     addiu $s3, $zero, 1
   .L800FBB10:
-  /* 077310 800FBB10 3C0E8013 */       lui $t6, %hi(gMapRooms)
-  /* 077314 800FBB14 8DCE1304 */        lw $t6, %lo(gMapRooms)($t6)
+  /* 077310 800FBB10 3C0E8013 */       lui $t6, %hi(gMPRooms)
+  /* 077314 800FBB14 8DCE1304 */        lw $t6, %lo(gMPRooms)($t6)
   /* 077318 800FBB18 01D57821 */      addu $t7, $t6, $s5
   /* 07731C 800FBB1C 8DF80000 */        lw $t8, ($t7)
   /* 077320 800FBB20 1638003C */       bne $s1, $t8, .L800FBC14
@@ -42101,19 +42101,19 @@ glabel func_ovl2_800FBA84
   /* 077374 800FBB74 AF290008 */        sw $t1, 8($t9)
   /* 077378 800FBB78 C624001C */      lwc1 $f4, 0x1c($s1)
   /* 07737C 800FBB7C C7A60048 */      lwc1 $f6, 0x48($sp)
-  /* 077380 800FBB80 8ECA0000 */        lw $t2, ($s6) # gMapDynamicCollisions + 0
+  /* 077380 800FBB80 8ECA0000 */        lw $t2, ($s6) # gMPDynamicCollisions + 0
   /* 077384 800FBB84 46062201 */     sub.s $f8, $f4, $f6
   /* 077388 800FBB88 01505821 */      addu $t3, $t2, $s0
   /* 07738C 800FBB8C E5680000 */      swc1 $f8, ($t3)
   /* 077390 800FBB90 C7B0004C */      lwc1 $f16, 0x4c($sp)
   /* 077394 800FBB94 C62A0020 */      lwc1 $f10, 0x20($s1)
-  /* 077398 800FBB98 8ECC0000 */        lw $t4, ($s6) # gMapDynamicCollisions + 0
+  /* 077398 800FBB98 8ECC0000 */        lw $t4, ($s6) # gMPDynamicCollisions + 0
   /* 07739C 800FBB9C 46105481 */     sub.s $f18, $f10, $f16
   /* 0773A0 800FBBA0 01906821 */      addu $t5, $t4, $s0
   /* 0773A4 800FBBA4 E5B20004 */      swc1 $f18, 4($t5)
   /* 0773A8 800FBBA8 C7A60050 */      lwc1 $f6, 0x50($sp)
   /* 0773AC 800FBBAC C6240024 */      lwc1 $f4, 0x24($s1)
-  /* 0773B0 800FBBB0 8ECE0000 */        lw $t6, ($s6) # gMapDynamicCollisions + 0
+  /* 0773B0 800FBBB0 8ECE0000 */        lw $t6, ($s6) # gMPDynamicCollisions + 0
   /* 0773B4 800FBBB4 46062201 */     sub.s $f8, $f4, $f6
   /* 0773B8 800FBBB8 01D07821 */      addu $t7, $t6, $s0
   /* 0773BC 800FBBBC 16400007 */      bnez $s2, .L800FBBDC
@@ -42131,8 +42131,8 @@ glabel func_ovl2_800FBA84
   /* 0773E8 800FBBE8 00000000 */       nop 
   /* 0773EC 800FBBEC AE290084 */        sw $t1, 0x84($s1)
   .L800FBBF0:
-  /* 0773F0 800FBBF0 3C0A8013 */       lui $t2, %hi(gMapRoomCount)
-  /* 0773F4 800FBBF4 8D4A138C */        lw $t2, %lo(gMapRoomCount)($t2)
+  /* 0773F0 800FBBF0 3C0A8013 */       lui $t2, %hi(gMPRoomCount)
+  /* 0773F4 800FBBF4 8D4A138C */        lw $t2, %lo(gMPRoomCount)($t2)
   /* 0773F8 800FBBF8 254BFFFF */     addiu $t3, $t2, -1
   /* 0773FC 800FBBFC 028B082A */       slt $at, $s4, $t3
   /* 077400 800FBC00 50200009 */      beql $at, $zero, .L800FBC28
@@ -42194,9 +42194,9 @@ glabel func_ovl2_800FBA84
   /* 0774B0 800FBCB0 00000000 */       nop 
   /* 0774B4 800FBCB4 0C03EEA1 */       jal func_ovl2_800FBA84
   /* 0774B8 800FBCB8 00000000 */       nop 
-  /* 0774BC 800FBCBC 3C028013 */       lui $v0, %hi(gMapCollUpdateFrame)
-  /* 0774C0 800FBCC0 24421398 */     addiu $v0, $v0, %lo(gMapCollUpdateFrame)
-  /* 0774C4 800FBCC4 944C0000 */       lhu $t4, ($v0) # gMapCollUpdateFrame + 0
+  /* 0774BC 800FBCBC 3C028013 */       lui $v0, %hi(gMPCollUpdateFrame)
+  /* 0774C0 800FBCC0 24421398 */     addiu $v0, $v0, %lo(gMPCollUpdateFrame)
+  /* 0774C4 800FBCC4 944C0000 */       lhu $t4, ($v0) # gMPCollUpdateFrame + 0
   /* 0774C8 800FBCC8 8FBF0034 */        lw $ra, 0x34($sp)
   /* 0774CC 800FBCCC 8FB00018 */        lw $s0, 0x18($sp)
   /* 0774D0 800FBCD0 8FB1001C */        lw $s1, 0x1c($sp)
@@ -42206,24 +42206,24 @@ glabel func_ovl2_800FBA84
   /* 0774E0 800FBCE0 8FB5002C */        lw $s5, 0x2c($sp)
   /* 0774E4 800FBCE4 8FB60030 */        lw $s6, 0x30($sp)
   /* 0774E8 800FBCE8 258D0001 */     addiu $t5, $t4, 1
-  /* 0774EC 800FBCEC A44D0000 */        sh $t5, ($v0) # gMapCollUpdateFrame + 0
+  /* 0774EC 800FBCEC A44D0000 */        sh $t5, ($v0) # gMPCollUpdateFrame + 0
   /* 0774F0 800FBCF0 03E00008 */        jr $ra
   /* 0774F4 800FBCF4 27BD0060 */     addiu $sp, $sp, 0x60
 
 glabel mpCollision_AdvanceUpdateFrame
-  /* 0774F8 800FBCF8 3C028013 */       lui $v0, %hi(gMapCollUpdateFrame)
-  /* 0774FC 800FBCFC 24421398 */     addiu $v0, $v0, %lo(gMapCollUpdateFrame)
-  /* 077500 800FBD00 944E0000 */       lhu $t6, ($v0) # gMapCollUpdateFrame + 0
+  /* 0774F8 800FBCF8 3C028013 */       lui $v0, %hi(gMPCollUpdateFrame)
+  /* 0774FC 800FBCFC 24421398 */     addiu $v0, $v0, %lo(gMPCollUpdateFrame)
+  /* 077500 800FBD00 944E0000 */       lhu $t6, ($v0) # gMPCollUpdateFrame + 0
   /* 077504 800FBD04 AFA40000 */        sw $a0, ($sp)
   /* 077508 800FBD08 25CF0001 */     addiu $t7, $t6, 1
   /* 07750C 800FBD0C 03E00008 */        jr $ra
-  /* 077510 800FBD10 A44F0000 */        sh $t7, ($v0) # gMapCollUpdateFrame + 0
+  /* 077510 800FBD10 A44F0000 */        sh $t7, ($v0) # gMPCollUpdateFrame + 0
 
 glabel func_ovl2_800FBD14
   /* 077514 800FBD14 27BDFF50 */     addiu $sp, $sp, -0xb0
   /* 077518 800FBD18 AFB1000C */        sw $s1, 0xc($sp)
-  /* 07751C 800FBD1C 3C118013 */       lui $s1, %hi(gMapGeometry)
-  /* 077520 800FBD20 8E311368 */        lw $s1, %lo(gMapGeometry)($s1)
+  /* 07751C 800FBD1C 3C118013 */       lui $s1, %hi(gMPGeometry)
+  /* 077520 800FBD20 8E311368 */        lw $s1, %lo(gMPGeometry)($s1)
   /* 077524 800FBD24 AFBF002C */        sw $ra, 0x2c($sp)
   /* 077528 800FBD28 AFBE0028 */        sw $fp, 0x28($sp)
   /* 07752C 800FBD2C AFB70024 */        sw $s7, 0x24($sp)
@@ -42248,11 +42248,11 @@ glabel func_ovl2_800FBD14
   /* 077578 800FBD78 E7A2009C */      swc1 $f2, 0x9c($sp)
   /* 07757C 800FBD7C 96220000 */       lhu $v0, ($s1)
   /* 077580 800FBD80 00008025 */        or $s0, $zero, $zero
-  /* 077584 800FBD84 3C128013 */       lui $s2, %hi(gMapRooms)
+  /* 077584 800FBD84 3C128013 */       lui $s2, %hi(gMPRooms)
   /* 077588 800FBD88 18400090 */      blez $v0, .L800FBFCC
   /* 07758C 800FBD8C 24140003 */     addiu $s4, $zero, 3
   /* 077590 800FBD90 44806000 */      mtc1 $zero, $f12
-  /* 077594 800FBD94 8E521304 */        lw $s2, %lo(gMapRooms)($s2)
+  /* 077594 800FBD94 8E521304 */        lw $s2, %lo(gMPRooms)($s2)
   /* 077598 800FBD98 24130001 */     addiu $s3, $zero, 1
   /* 07759C 800FBD9C 240C0010 */     addiu $t4, $zero, 0x10
   /* 0775A0 800FBDA0 24050006 */     addiu $a1, $zero, 6
@@ -42283,8 +42283,8 @@ glabel func_ovl2_800FBD14
   /* 0775F8 800FBDF8 95420000 */       lhu $v0, ($t2)
   /* 0775FC 800FBDFC 00003025 */        or $a2, $zero, $zero
   /* 077600 800FBE00 19C0006B */      blez $t6, .L800FBFB0
-  /* 077604 800FBE04 3C188013 */       lui $t8, %hi(gMapVertexLinks)
-  /* 077608 800FBE08 8F181378 */        lw $t8, %lo(gMapVertexLinks)($t8)
+  /* 077604 800FBE04 3C188013 */       lui $t8, %hi(gMPVertexLinks)
+  /* 077608 800FBE08 8F181378 */        lw $t8, %lo(gMPVertexLinks)($t8)
   /* 07760C 800FBE0C 00027880 */       sll $t7, $v0, 2
   /* 077610 800FBE10 01694021 */      addu $t0, $t3, $t1
   /* 077614 800FBE14 01F83821 */      addu $a3, $t7, $t8
@@ -42292,15 +42292,15 @@ glabel func_ovl2_800FBD14
   .L800FBE1C:
   /* 07761C 800FBE1C 94F90002 */       lhu $t9, 2($a3)
   /* 077620 800FBE20 00E01825 */        or $v1, $a3, $zero
-  /* 077624 800FBE24 3C168013 */       lui $s6, %hi(gMapVertexData)
+  /* 077624 800FBE24 3C168013 */       lui $s6, %hi(gMPVertexData)
   /* 077628 800FBE28 02B97021 */      addu $t6, $s5, $t9
   /* 07762C 800FBE2C 02AE082A */       slt $at, $s5, $t6
   /* 077630 800FBE30 10200059 */      beqz $at, .L800FBF98
   /* 077634 800FBE34 02A01025 */        or $v0, $s5, $zero
-  /* 077638 800FBE38 3C0F8013 */       lui $t7, %hi(gMapVertexID)
-  /* 07763C 800FBE3C 8DEF1374 */        lw $t7, %lo(gMapVertexID)($t7)
+  /* 077638 800FBE38 3C0F8013 */       lui $t7, %hi(gMPVertexID)
+  /* 07763C 800FBE3C 8DEF1374 */        lw $t7, %lo(gMPVertexID)($t7)
   /* 077640 800FBE40 0015C040 */       sll $t8, $s5, 1
-  /* 077644 800FBE44 8ED61370 */        lw $s6, %lo(gMapVertexData)($s6)
+  /* 077644 800FBE44 8ED61370 */        lw $s6, %lo(gMPVertexData)($s6)
   /* 077648 800FBE48 01F8B821 */      addu $s7, $t7, $t8
   /* 07764C 800FBE4C 96F90000 */       lhu $t9, ($s7)
   .L800FBE50:
@@ -42416,15 +42416,15 @@ glabel func_ovl2_800FBD14
   /* 0777CC 800FBFCC 27A30098 */     addiu $v1, $sp, 0x98
   /* 0777D0 800FBFD0 8C6F0000 */        lw $t7, ($v1)
   /* 0777D4 800FBFD4 8C6E0004 */        lw $t6, 4($v1)
-  /* 0777D8 800FBFD8 3C028013 */       lui $v0, %hi(gMapEdgeBounds)
-  /* 0777DC 800FBFDC 24421308 */     addiu $v0, $v0, %lo(gMapEdgeBounds)
-  /* 0777E0 800FBFE0 AC4F0000 */        sw $t7, ($v0) # gMapEdgeBounds + 0
-  /* 0777E4 800FBFE4 AC4E0004 */        sw $t6, 4($v0) # gMapEdgeBounds + 4
+  /* 0777D8 800FBFD8 3C028013 */       lui $v0, %hi(gMPEdgeBounds)
+  /* 0777DC 800FBFDC 24421308 */     addiu $v0, $v0, %lo(gMPEdgeBounds)
+  /* 0777E0 800FBFE0 AC4F0000 */        sw $t7, ($v0) # gMPEdgeBounds + 0
+  /* 0777E4 800FBFE4 AC4E0004 */        sw $t6, 4($v0) # gMPEdgeBounds + 4
   /* 0777E8 800FBFE8 8C6E000C */        lw $t6, 0xc($v1)
   /* 0777EC 800FBFEC 8C6F0008 */        lw $t7, 8($v1)
   /* 0777F0 800FBFF0 27B90088 */     addiu $t9, $sp, 0x88
-  /* 0777F4 800FBFF4 AC4E000C */        sw $t6, 0xc($v0) # gMapEdgeBounds + 12
-  /* 0777F8 800FBFF8 AC4F0008 */        sw $t7, 8($v0) # gMapEdgeBounds + 8
+  /* 0777F4 800FBFF4 AC4E000C */        sw $t6, 0xc($v0) # gMPEdgeBounds + 12
+  /* 0777F8 800FBFF8 AC4F0008 */        sw $t7, 8($v0) # gMPEdgeBounds + 8
   /* 0777FC 800FBFFC 8F2E0004 */        lw $t6, 4($t9)
   /* 077800 800FC000 8F2F0000 */        lw $t7, ($t9)
   /* 077804 800FC004 3C188013 */       lui $t8, %hi(D_ovl2_80131318)
@@ -42446,16 +42446,16 @@ glabel func_ovl2_800FBD14
   /* 077844 800FC044 AF0E0008 */        sw $t6, 8($t8) # D_ovl2_80131328 + 8
   /* 077848 800FC048 8C79000C */        lw $t9, 0xc($v1)
   /* 07784C 800FC04C AF19000C */        sw $t9, 0xc($t8) # D_ovl2_80131328 + 12
-  /* 077850 800FC050 E44C003C */      swc1 $f12, 0x3c($v0) # gMapEdgeBounds + 60
-  /* 077854 800FC054 C448003C */      lwc1 $f8, 0x3c($v0) # gMapEdgeBounds + 60
+  /* 077850 800FC050 E44C003C */      swc1 $f12, 0x3c($v0) # gMPEdgeBounds + 60
+  /* 077854 800FC054 C448003C */      lwc1 $f8, 0x3c($v0) # gMPEdgeBounds + 60
   /* 077858 800FC058 8FBF002C */        lw $ra, 0x2c($sp)
   /* 07785C 800FC05C 8FBE0028 */        lw $fp, 0x28($sp)
-  /* 077860 800FC060 E4480038 */      swc1 $f8, 0x38($v0) # gMapEdgeBounds + 56
-  /* 077864 800FC064 C44A0038 */      lwc1 $f10, 0x38($v0) # gMapEdgeBounds + 56
+  /* 077860 800FC060 E4480038 */      swc1 $f8, 0x38($v0) # gMPEdgeBounds + 56
+  /* 077864 800FC064 C44A0038 */      lwc1 $f10, 0x38($v0) # gMPEdgeBounds + 56
   /* 077868 800FC068 8FB70024 */        lw $s7, 0x24($sp)
   /* 07786C 800FC06C 8FB60020 */        lw $s6, 0x20($sp)
-  /* 077870 800FC070 E44A0034 */      swc1 $f10, 0x34($v0) # gMapEdgeBounds + 52
-  /* 077874 800FC074 C4500034 */      lwc1 $f16, 0x34($v0) # gMapEdgeBounds + 52
+  /* 077870 800FC070 E44A0034 */      swc1 $f10, 0x34($v0) # gMPEdgeBounds + 52
+  /* 077874 800FC074 C4500034 */      lwc1 $f16, 0x34($v0) # gMPEdgeBounds + 52
   /* 077878 800FC078 8FB5001C */        lw $s5, 0x1c($sp)
   /* 07787C 800FC07C 8FB40018 */        lw $s4, 0x18($sp)
   /* 077880 800FC080 8FB30014 */        lw $s3, 0x14($sp)
@@ -42464,7 +42464,7 @@ glabel func_ovl2_800FBD14
   /* 07788C 800FC08C 8FB00008 */        lw $s0, 8($sp)
   /* 077890 800FC090 27BD00B0 */     addiu $sp, $sp, 0xb0
   /* 077894 800FC094 03E00008 */        jr $ra
-  /* 077898 800FC098 E4500030 */      swc1 $f16, 0x30($v0) # gMapEdgeBounds + 48
+  /* 077898 800FC098 E4500030 */      swc1 $f16, 0x30($v0) # gMPEdgeBounds + 48
 
 glabel mpCollision_AllocLinesGetCountTotal
   /* 07789C 800FC09C 27BDFFA8 */     addiu $sp, $sp, -0x58
@@ -42480,13 +42480,13 @@ glabel mpCollision_AllocLinesGetCountTotal
   /* 0778C0 800FC0C0 0222082B */      sltu $at, $s1, $v0
   /* 0778C4 800FC0C4 1420FFFD */      bnez $at, .L800FC0BC
   /* 0778C8 800FC0C8 AE20FFFC */        sw $zero, -4($s1)
-  /* 0778CC 800FC0CC 3C068013 */       lui $a2, %hi(gMapGeometry)
-  /* 0778D0 800FC0D0 8CC61368 */        lw $a2, %lo(gMapGeometry)($a2)
+  /* 0778CC 800FC0CC 3C068013 */       lui $a2, %hi(gMPGeometry)
+  /* 0778D0 800FC0D0 8CC61368 */        lw $a2, %lo(gMPGeometry)($a2)
   /* 0778D4 800FC0D4 00002025 */        or $a0, $zero, $zero
   /* 0778D8 800FC0D8 00009025 */        or $s2, $zero, $zero
   /* 0778DC 800FC0DC 94CE0000 */       lhu $t6, ($a2)
   /* 0778E0 800FC0E0 27B1003C */     addiu $s1, $sp, 0x3c
-  /* 0778E4 800FC0E4 3C108013 */       lui $s0, %hi(gMapLineTypeGroups)
+  /* 0778E4 800FC0E4 3C108013 */       lui $s0, %hi(gMPLineTypeGroups)
   /* 0778E8 800FC0E8 19C00018 */      blez $t6, .L800FC14C
   /* 0778EC 800FC0EC 8CC50010 */        lw $a1, 0x10($a2)
   /* 0778F0 800FC0F0 8FAF003C */        lw $t7, 0x3c($sp)
@@ -42514,18 +42514,18 @@ glabel mpCollision_AllocLinesGetCountTotal
   /* 077944 800FC144 5420FFEB */      bnel $at, $zero, .L800FC0F4
   /* 077948 800FC148 8FAF003C */        lw $t7, 0x3c($sp)
   .L800FC14C:
-  /* 07794C 800FC14C 3C138013 */       lui $s3, %hi(gMapGeometry)
-  /* 077950 800FC150 26731368 */     addiu $s3, $s3, %lo(gMapGeometry)
-  /* 077954 800FC154 26101348 */     addiu $s0, $s0, %lo(gMapLineTypeGroups)
+  /* 07794C 800FC14C 3C138013 */       lui $s3, %hi(gMPGeometry)
+  /* 077950 800FC150 26731368 */     addiu $s3, $s3, %lo(gMPGeometry)
+  /* 077954 800FC154 26101348 */     addiu $s0, $s0, %lo(gMPLineTypeGroups)
   .L800FC158:
   /* 077958 800FC158 8E220000 */        lw $v0, ($s1)
   /* 07795C 800FC15C 24050002 */     addiu $a1, $zero, 2
-  /* 077960 800FC160 A6020000 */        sh $v0, ($s0) # gMapLineTypeGroups + 0
+  /* 077960 800FC160 A6020000 */        sh $v0, ($s0) # gMPLineTypeGroups + 0
   /* 077964 800FC164 10400004 */      beqz $v0, .L800FC178
   /* 077968 800FC168 02429021 */      addu $s2, $s2, $v0
   /* 07796C 800FC16C 0C001260 */       jal gsMemoryAlloc
   /* 077970 800FC170 00022040 */       sll $a0, $v0, 1
-  /* 077974 800FC174 AE020004 */        sw $v0, 4($s0) # gMapLineTypeGroups + 4
+  /* 077974 800FC174 AE020004 */        sw $v0, 4($s0) # gMPLineTypeGroups + 4
   .L800FC178:
   /* 077978 800FC178 26100008 */     addiu $s0, $s0, 8
   /* 07797C 800FC17C 1613FFF6 */       bne $s0, $s3, .L800FC158
@@ -42548,8 +42548,8 @@ glabel mpCollision_InitLineIDsAll
   /* 0779B4 800FC1B4 0062082B */      sltu $at, $v1, $v0
   /* 0779B8 800FC1B8 1420FFFD */      bnez $at, .L800FC1B0
   /* 0779BC 800FC1BC AC60FFFC */        sw $zero, -4($v1)
-  /* 0779C0 800FC1C0 3C048013 */       lui $a0, %hi(gMapGeometry)
-  /* 0779C4 800FC1C4 8C841368 */        lw $a0, %lo(gMapGeometry)($a0)
+  /* 0779C0 800FC1C0 3C048013 */       lui $a0, %hi(gMPGeometry)
+  /* 0779C4 800FC1C4 8C841368 */        lw $a0, %lo(gMPGeometry)($a0)
   /* 0779C8 800FC1C8 00001025 */        or $v0, $zero, $zero
   /* 0779CC 800FC1CC 24090004 */     addiu $t1, $zero, 4
   /* 0779D0 800FC1D0 948E0000 */       lhu $t6, ($a0)
@@ -42561,8 +42561,8 @@ glabel mpCollision_InitLineIDsAll
   .L800FC1E4:
   /* 0779E4 800FC1E4 94860000 */       lhu $a2, ($a0)
   /* 0779E8 800FC1E8 948F0002 */       lhu $t7, 2($a0)
-  /* 0779EC 800FC1EC 3C0A8013 */       lui $t2, %hi(gMapLineTypeGroups)
-  /* 0779F0 800FC1F0 254A1348 */     addiu $t2, $t2, %lo(gMapLineTypeGroups)
+  /* 0779EC 800FC1EC 3C0A8013 */       lui $t2, %hi(gMPLineTypeGroups)
+  /* 0779F0 800FC1F0 254A1348 */     addiu $t2, $t2, %lo(gMPLineTypeGroups)
   /* 0779F4 800FC1F4 00CFC021 */      addu $t8, $a2, $t7
   /* 0779F8 800FC1F8 00D8082A */       slt $at, $a2, $t8
   /* 0779FC 800FC1FC 10200014 */      beqz $at, .L800FC250
@@ -42591,8 +42591,8 @@ glabel mpCollision_InitLineIDsAll
   /* 077A50 800FC250 24A50001 */     addiu $a1, $a1, 1
   /* 077A54 800FC254 14A9FFE3 */       bne $a1, $t1, .L800FC1E4
   /* 077A58 800FC258 24840004 */     addiu $a0, $a0, 4
-  /* 077A5C 800FC25C 3C0D8013 */       lui $t5, %hi(gMapGeometry)
-  /* 077A60 800FC260 8DAD1368 */        lw $t5, %lo(gMapGeometry)($t5)
+  /* 077A5C 800FC25C 3C0D8013 */       lui $t5, %hi(gMPGeometry)
+  /* 077A60 800FC260 8DAD1368 */        lw $t5, %lo(gMPGeometry)($t5)
   /* 077A64 800FC264 24420001 */     addiu $v0, $v0, 1
   /* 077A68 800FC268 24630012 */     addiu $v1, $v1, 0x12
   /* 077A6C 800FC26C 95A40000 */       lhu $a0, ($t5)
@@ -42632,8 +42632,8 @@ glabel mpCollision_InitMapCollisionData
   /* 077AE8 800FC2E8 3C058013 */       lui $a1, %hi(gGroundInfo)
   /* 077AEC 800FC2EC 24A51300 */     addiu $a1, $a1, %lo(gGroundInfo)
   /* 077AF0 800FC2F0 918D0001 */       lbu $t5, 1($t4)
-  /* 077AF4 800FC2F4 3C048013 */       lui $a0, %hi(gMapGeometry)
-  /* 077AF8 800FC2F8 24841368 */     addiu $a0, $a0, %lo(gMapGeometry)
+  /* 077AF4 800FC2F4 3C048013 */       lui $a0, %hi(gMPGeometry)
+  /* 077AF8 800FC2F8 24841368 */     addiu $a0, $a0, %lo(gMPGeometry)
   /* 077AFC 800FC2FC 000D70C0 */       sll $t6, $t5, 3
   /* 077B00 800FC300 020E7821 */      addu $t7, $s0, $t6
   /* 077B04 800FC304 8DF80004 */        lw $t8, 4($t7)
@@ -42643,7 +42643,7 @@ glabel mpCollision_InitMapCollisionData
   /* 077B14 800FC314 ACB90000 */        sw $t9, ($a1) # gGroundInfo + 0
   /* 077B18 800FC318 8F230040 */        lw $v1, 0x40($t9)
   /* 077B1C 800FC31C 14600007 */      bnez $v1, .L800FC33C
-  /* 077B20 800FC320 AC830000 */        sw $v1, ($a0) # gMapGeometry + 0
+  /* 077B20 800FC320 AC830000 */        sw $v1, ($a0) # gMPGeometry + 0
   .L800FC324:
   /* 077B24 800FC324 0C008D89 */       jal gsFatalPrintF
   /* 077B28 800FC328 02002025 */        or $a0, $s0, $zero
@@ -42653,21 +42653,21 @@ glabel mpCollision_InitMapCollisionData
   /* 077B38 800FC338 00000000 */       nop 
   .L800FC33C:
   /* 077B3C 800FC33C 8C6A0004 */        lw $t2, 4($v1)
-  /* 077B40 800FC340 3C018013 */       lui $at, %hi(gMapVertexData)
-  /* 077B44 800FC344 AC2A1370 */        sw $t2, %lo(gMapVertexData)($at)
+  /* 077B40 800FC340 3C018013 */       lui $at, %hi(gMPVertexData)
+  /* 077B44 800FC344 AC2A1370 */        sw $t2, %lo(gMPVertexData)($at)
   /* 077B48 800FC348 8C6B0008 */        lw $t3, 8($v1)
-  /* 077B4C 800FC34C 3C018013 */       lui $at, %hi(gMapVertexID)
-  /* 077B50 800FC350 AC2B1374 */        sw $t3, %lo(gMapVertexID)($at)
+  /* 077B4C 800FC34C 3C018013 */       lui $at, %hi(gMPVertexID)
+  /* 077B50 800FC350 AC2B1374 */        sw $t3, %lo(gMPVertexID)($at)
   /* 077B54 800FC354 8C6C000C */        lw $t4, 0xc($v1)
-  /* 077B58 800FC358 3C018013 */       lui $at, %hi(gMapVertexLinks)
-  /* 077B5C 800FC35C AC2C1378 */        sw $t4, %lo(gMapVertexLinks)($at)
+  /* 077B58 800FC358 3C018013 */       lui $at, %hi(gMPVertexLinks)
+  /* 077B5C 800FC35C AC2C1378 */        sw $t4, %lo(gMPVertexLinks)($at)
   /* 077B60 800FC360 8C6D0018 */        lw $t5, 0x18($v1)
-  /* 077B64 800FC364 3C018013 */       lui $at, %hi(gMapPoints)
+  /* 077B64 800FC364 3C018013 */       lui $at, %hi(gMPPoints)
   /* 077B68 800FC368 0C03F027 */       jal mpCollision_AllocLinesGetCountTotal
-  /* 077B6C 800FC36C AC2D1380 */        sw $t5, %lo(gMapPoints)($at)
+  /* 077B6C 800FC36C AC2D1380 */        sw $t5, %lo(gMPPoints)($at)
   /* 077B70 800FC370 3C108013 */       lui $s0, %hi(gGroundInfo)
-  /* 077B74 800FC374 3C018013 */       lui $at, %hi(gMapLineCount)
-  /* 077B78 800FC378 AC221384 */        sw $v0, %lo(gMapLineCount)($at)
+  /* 077B74 800FC374 3C018013 */       lui $at, %hi(gMPLineCount)
+  /* 077B78 800FC378 AC221384 */        sw $v0, %lo(gMPLineCount)($at)
   /* 077B7C 800FC37C 0C03F069 */       jal mpCollision_InitLineIDsAll
   /* 077B80 800FC380 26101300 */     addiu $s0, $s0, %lo(gGroundInfo)
   /* 077B84 800FC384 0C03EC04 */       jal mpCollision_AllocVertexInfo
@@ -42677,24 +42677,24 @@ glabel mpCollision_InitMapCollisionData
   /* 077B94 800FC394 8E0E0000 */        lw $t6, ($s0) # gGroundInfo + 0
   /* 077B98 800FC398 0C03ED61 */       jal mpCollision_AllocMapRooms
   /* 077B9C 800FC39C 8DC40010 */        lw $a0, 0x10($t6)
-  /* 077BA0 800FC3A0 3C038013 */       lui $v1, %hi(gMapLightColor)
-  /* 077BA4 800FC3A4 24631388 */     addiu $v1, $v1, %lo(gMapLightColor)
+  /* 077BA0 800FC3A0 3C038013 */       lui $v1, %hi(gMPLightColor)
+  /* 077BA4 800FC3A4 24631388 */     addiu $v1, $v1, %lo(gMPLightColor)
   /* 077BA8 800FC3A8 240400FF */     addiu $a0, $zero, 0xff
   /* 077BAC 800FC3AC 8E020000 */        lw $v0, ($s0) # gGroundInfo + 0
-  /* 077BB0 800FC3B0 A0640000 */        sb $a0, ($v1) # gMapLightColor + 0
-  /* 077BB4 800FC3B4 A0640001 */        sb $a0, 1($v1) # gMapLightColor + 1
-  /* 077BB8 800FC3B8 A0640002 */        sb $a0, 2($v1) # gMapLightColor + 2
-  /* 077BBC 800FC3BC A0640003 */        sb $a0, 3($v1) # gMapLightColor + 3
+  /* 077BB0 800FC3B0 A0640000 */        sb $a0, ($v1) # gMPLightColor + 0
+  /* 077BB4 800FC3B4 A0640001 */        sb $a0, 1($v1) # gMPLightColor + 1
+  /* 077BB8 800FC3B8 A0640002 */        sb $a0, 2($v1) # gMPLightColor + 2
+  /* 077BBC 800FC3BC A0640003 */        sb $a0, 3($v1) # gMPLightColor + 3
   /* 077BC0 800FC3C0 C4440060 */      lwc1 $f4, 0x60($v0)
-  /* 077BC4 800FC3C4 3C018013 */       lui $at, %hi(gMapLightAngleX)
+  /* 077BC4 800FC3C4 3C018013 */       lui $at, %hi(gMPLightAngleX)
   /* 077BC8 800FC3C8 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 077BCC 800FC3CC E4241390 */      swc1 $f4, %lo(gMapLightAngleX)($at)
+  /* 077BCC 800FC3CC E4241390 */      swc1 $f4, %lo(gMPLightAngleX)($at)
   /* 077BD0 800FC3D0 C4460064 */      lwc1 $f6, 0x64($v0)
-  /* 077BD4 800FC3D4 3C018013 */       lui $at, %hi(gMapLightAngleY)
+  /* 077BD4 800FC3D4 3C018013 */       lui $at, %hi(gMPLightAngleY)
   /* 077BD8 800FC3D8 8FB00018 */        lw $s0, 0x18($sp)
   /* 077BDC 800FC3DC 27BD0020 */     addiu $sp, $sp, 0x20
   /* 077BE0 800FC3E0 03E00008 */        jr $ra
-  /* 077BE4 800FC3E4 E4261394 */      swc1 $f6, %lo(gMapLightAngleY)($at)
+  /* 077BE4 800FC3E4 E4261394 */      swc1 $f6, %lo(gMPLightAngleY)($at)
 
 glabel mpCollision_SetPlayMusicID
   /* 077BE8 800FC3E8 3C0E8013 */       lui $t6, %hi(gGroundInfo)
@@ -42730,15 +42730,15 @@ glabel mpCollision_ClearYakumonoAll
   /* 077C50 800FC450 3C0E8013 */       lui $t6, %hi(gGroundInfo)
   /* 077C54 800FC454 8DCE1300 */        lw $t6, %lo(gGroundInfo)($t6)
   /* 077C58 800FC458 24040012 */     addiu $a0, $zero, 0x12
-  /* 077C5C 800FC45C 3C058013 */       lui $a1, %hi(gMapRooms)
+  /* 077C5C 800FC45C 3C058013 */       lui $a1, %hi(gMPRooms)
   /* 077C60 800FC460 8DC20010 */        lw $v0, 0x10($t6)
-  /* 077C64 800FC464 24A51304 */     addiu $a1, $a1, %lo(gMapRooms)
+  /* 077C64 800FC464 24A51304 */     addiu $a1, $a1, %lo(gMPRooms)
   /* 077C68 800FC468 00001825 */        or $v1, $zero, $zero
   /* 077C6C 800FC46C 8C4F0000 */        lw $t7, ($v0)
-  /* 077C70 800FC470 3C018013 */       lui $at, %hi(gMapCollUpdateFrame)
+  /* 077C70 800FC470 3C018013 */       lui $at, %hi(gMPCollUpdateFrame)
   /* 077C74 800FC474 108F000A */       beq $a0, $t7, .L800FC4A0
   /* 077C78 800FC478 00000000 */       nop 
-  /* 077C7C 800FC47C 8CB80000 */        lw $t8, ($a1) # gMapRooms + 0
+  /* 077C7C 800FC47C 8CB80000 */        lw $t8, ($a1) # gMPRooms + 0
   .L800FC480:
   /* 077C80 800FC480 2442002C */     addiu $v0, $v0, 0x2c
   /* 077C84 800FC484 0303C821 */      addu $t9, $t8, $v1
@@ -42747,10 +42747,10 @@ glabel mpCollision_ClearYakumonoAll
   /* 077C90 800FC490 AD000084 */        sw $zero, 0x84($t0)
   /* 077C94 800FC494 8C490000 */        lw $t1, ($v0)
   /* 077C98 800FC498 5489FFF9 */      bnel $a0, $t1, .L800FC480
-  /* 077C9C 800FC49C 8CB80000 */        lw $t8, ($a1) # gMapRooms + 0
+  /* 077C9C 800FC49C 8CB80000 */        lw $t8, ($a1) # gMPRooms + 0
   .L800FC4A0:
   /* 077CA0 800FC4A0 03E00008 */        jr $ra
-  /* 077CA4 800FC4A4 A4201398 */        sh $zero, %lo(gMapCollUpdateFrame)($at)
+  /* 077CA4 800FC4A4 A4201398 */        sh $zero, %lo(gMPCollUpdateFrame)($at)
 
 glabel mpCollision_SetYakumonoPosID
   /* 077CA8 800FC4A8 27BDFFE0 */     addiu $sp, $sp, -0x20
@@ -42780,10 +42780,10 @@ glabel mpCollision_SetYakumonoPosID
   /* 077CFC 800FC4FC C4A40000 */      lwc1 $f4, ($a1)
   /* 077D00 800FC500 01CFC021 */      addu $t8, $t6, $t7
   /* 077D04 800FC504 8F020000 */        lw $v0, ($t8)
-  /* 077D08 800FC508 3C048013 */       lui $a0, %hi(gMapDynamicCollisions)
-  /* 077D0C 800FC50C 2484137C */     addiu $a0, $a0, %lo(gMapDynamicCollisions)
+  /* 077D08 800FC508 3C048013 */       lui $a0, %hi(gMPDynamicCollisions)
+  /* 077D0C 800FC50C 2484137C */     addiu $a0, $a0, %lo(gMPDynamicCollisions)
   /* 077D10 800FC510 C446001C */      lwc1 $f6, 0x1c($v0)
-  /* 077D14 800FC514 8C990000 */        lw $t9, ($a0) # gMapDynamicCollisions + 0
+  /* 077D14 800FC514 8C990000 */        lw $t9, ($a0) # gMPDynamicCollisions + 0
   /* 077D18 800FC518 00111880 */       sll $v1, $s1, 2
   /* 077D1C 800FC51C 46062201 */     sub.s $f8, $f4, $f6
   /* 077D20 800FC520 00711823 */      subu $v1, $v1, $s1
@@ -42792,13 +42792,13 @@ glabel mpCollision_SetYakumonoPosID
   /* 077D2C 800FC52C E5080000 */      swc1 $f8, ($t0)
   /* 077D30 800FC530 C4AA0004 */      lwc1 $f10, 4($a1)
   /* 077D34 800FC534 C4500020 */      lwc1 $f16, 0x20($v0)
-  /* 077D38 800FC538 8C890000 */        lw $t1, ($a0) # gMapDynamicCollisions + 0
+  /* 077D38 800FC538 8C890000 */        lw $t1, ($a0) # gMPDynamicCollisions + 0
   /* 077D3C 800FC53C 46105481 */     sub.s $f18, $f10, $f16
   /* 077D40 800FC540 01235021 */      addu $t2, $t1, $v1
   /* 077D44 800FC544 E5520004 */      swc1 $f18, 4($t2)
   /* 077D48 800FC548 C4A40008 */      lwc1 $f4, 8($a1)
   /* 077D4C 800FC54C C4460024 */      lwc1 $f6, 0x24($v0)
-  /* 077D50 800FC550 8C8B0000 */        lw $t3, ($a0) # gMapDynamicCollisions + 0
+  /* 077D50 800FC550 8C8B0000 */        lw $t3, ($a0) # gMPDynamicCollisions + 0
   /* 077D54 800FC554 46062201 */     sub.s $f8, $f4, $f6
   /* 077D58 800FC558 01636021 */      addu $t4, $t3, $v1
   /* 077D5C 800FC55C E5880008 */      swc1 $f8, 8($t4)
@@ -42909,15 +42909,15 @@ glabel mpCollision_CheckExistLineID
   /* 077EC8 800FC6C8 10000014 */         b .L800FC71C
   /* 077ECC 800FC6CC 00001025 */        or $v0, $zero, $zero
   .L800FC6D0:
-  /* 077ED0 800FC6D0 3C0E8013 */       lui $t6, %hi(gMapVertexInfo)
-  /* 077ED4 800FC6D4 8DCE136C */        lw $t6, %lo(gMapVertexInfo)($t6)
+  /* 077ED0 800FC6D0 3C0E8013 */       lui $t6, %hi(gMPVertexInfo)
+  /* 077ED4 800FC6D4 8DCE136C */        lw $t6, %lo(gMPVertexInfo)($t6)
   /* 077ED8 800FC6D8 00117880 */       sll $t7, $s1, 2
   /* 077EDC 800FC6DC 01F17821 */      addu $t7, $t7, $s1
   /* 077EE0 800FC6E0 000F7840 */       sll $t7, $t7, 1
   /* 077EE4 800FC6E4 01CFC021 */      addu $t8, $t6, $t7
   /* 077EE8 800FC6E8 93190000 */       lbu $t9, ($t8)
-  /* 077EEC 800FC6EC 3C098013 */       lui $t1, %hi(gMapRooms)
-  /* 077EF0 800FC6F0 8D291304 */        lw $t1, %lo(gMapRooms)($t1)
+  /* 077EEC 800FC6EC 3C098013 */       lui $t1, %hi(gMPRooms)
+  /* 077EF0 800FC6F0 8D291304 */        lw $t1, %lo(gMPRooms)($t1)
   /* 077EF4 800FC6F4 00194080 */       sll $t0, $t9, 2
   /* 077EF8 800FC6F8 00001025 */        or $v0, $zero, $zero
   /* 077EFC 800FC6FC 01285021 */      addu $t2, $t1, $t0
@@ -42970,8 +42970,8 @@ glabel mpCollision_SetDObjNoID
   /* 077FA0 800FC7A0 27BD0020 */     addiu $sp, $sp, 0x20
 
 glabel mpCollision_GetMPointCountKind
-  /* 077FA4 800FC7A4 3C0E8013 */       lui $t6, %hi(gMapGeometry)
-  /* 077FA8 800FC7A8 8DCE1368 */        lw $t6, %lo(gMapGeometry)($t6)
+  /* 077FA4 800FC7A4 3C0E8013 */       lui $t6, %hi(gMPGeometry)
+  /* 077FA8 800FC7A8 8DCE1368 */        lw $t6, %lo(gMPGeometry)($t6)
   /* 077FAC 800FC7AC 00803025 */        or $a2, $a0, $zero
   /* 077FB0 800FC7B0 00001825 */        or $v1, $zero, $zero
   /* 077FB4 800FC7B4 95C20014 */       lhu $v0, 0x14($t6)
@@ -42985,8 +42985,8 @@ glabel mpCollision_GetMPointCountKind
   /* 077FCC 800FC7CC 00402825 */        or $a1, $v0, $zero
   /* 077FD0 800FC7D0 00053880 */       sll $a3, $a1, 2
   /* 077FD4 800FC7D4 00E53823 */      subu $a3, $a3, $a1
-  /* 077FD8 800FC7D8 3C048013 */       lui $a0, %hi(gMapPoints)
-  /* 077FDC 800FC7DC 8C841380 */        lw $a0, %lo(gMapPoints)($a0)
+  /* 077FD8 800FC7D8 3C048013 */       lui $a0, %hi(gMPPoints)
+  /* 077FDC 800FC7DC 8C841380 */        lw $a0, %lo(gMPPoints)($a0)
   /* 077FE0 800FC7E0 00073840 */       sll $a3, $a3, 1
   /* 077FE4 800FC7E4 00001025 */        or $v0, $zero, $zero
   .L800FC7E8:
@@ -43005,8 +43005,8 @@ glabel mpCollision_GetMPointCountKind
   /* 078010 800FC810 00000000 */       nop 
 
 glabel mpCollision_GetMPointIDsKind
-  /* 078014 800FC814 3C0E8013 */       lui $t6, %hi(gMapGeometry)
-  /* 078018 800FC818 8DCE1368 */        lw $t6, %lo(gMapGeometry)($t6)
+  /* 078014 800FC814 3C0E8013 */       lui $t6, %hi(gMPGeometry)
+  /* 078018 800FC818 8DCE1368 */        lw $t6, %lo(gMPGeometry)($t6)
   /* 07801C 800FC81C 00803025 */        or $a2, $a0, $zero
   /* 078020 800FC820 00A03825 */        or $a3, $a1, $zero
   /* 078024 800FC824 95C20014 */       lhu $v0, 0x14($t6)
@@ -43016,20 +43016,20 @@ glabel mpCollision_GetMPointIDsKind
   /* 078034 800FC834 00000000 */       nop 
   /* 078038 800FC838 18400014 */      blez $v0, .L800FC88C
   /* 07803C 800FC83C 00402825 */        or $a1, $v0, $zero
-  /* 078040 800FC840 3C088013 */       lui $t0, %hi(gMapPoints)
-  /* 078044 800FC844 25081380 */     addiu $t0, $t0, %lo(gMapPoints)
+  /* 078040 800FC840 3C088013 */       lui $t0, %hi(gMPPoints)
+  /* 078044 800FC844 25081380 */     addiu $t0, $t0, %lo(gMPPoints)
   /* 078048 800FC848 00001025 */        or $v0, $zero, $zero
   .L800FC84C:
-  /* 07804C 800FC84C 8D0F0000 */        lw $t7, ($t0) # gMapPoints + 0
+  /* 07804C 800FC84C 8D0F0000 */        lw $t7, ($t0) # gMPPoints + 0
   /* 078050 800FC850 00034880 */       sll $t1, $v1, 2
   /* 078054 800FC854 00E95021 */      addu $t2, $a3, $t1
   /* 078058 800FC858 01E2C021 */      addu $t8, $t7, $v0
   /* 07805C 800FC85C 97190000 */       lhu $t9, ($t8)
-  /* 078060 800FC860 3C0B8013 */       lui $t3, %hi(gMapGeometry)
+  /* 078060 800FC860 3C0B8013 */       lui $t3, %hi(gMPGeometry)
   /* 078064 800FC864 54D90006 */      bnel $a2, $t9, .L800FC880
   /* 078068 800FC868 24840001 */     addiu $a0, $a0, 1
   /* 07806C 800FC86C AD440000 */        sw $a0, ($t2)
-  /* 078070 800FC870 8D6B1368 */        lw $t3, %lo(gMapGeometry)($t3)
+  /* 078070 800FC870 8D6B1368 */        lw $t3, %lo(gMPGeometry)($t3)
   /* 078074 800FC874 24630001 */     addiu $v1, $v1, 1
   /* 078078 800FC878 95650014 */       lhu $a1, 0x14($t3)
   /* 07807C 800FC87C 24840001 */     addiu $a0, $a0, 1
@@ -43042,9 +43042,9 @@ glabel mpCollision_GetMPointIDsKind
   /* 078090 800FC890 00000000 */       nop 
 
 glabel mpCollision_GetMPointPositionID
-  /* 078094 800FC894 3C038013 */       lui $v1, %hi(gMapPoints)
-  /* 078098 800FC898 24631380 */     addiu $v1, $v1, %lo(gMapPoints)
-  /* 07809C 800FC89C 8C6E0000 */        lw $t6, ($v1) # gMapPoints + 0
+  /* 078094 800FC894 3C038013 */       lui $v1, %hi(gMPPoints)
+  /* 078098 800FC898 24631380 */     addiu $v1, $v1, %lo(gMPPoints)
+  /* 07809C 800FC89C 8C6E0000 */        lw $t6, ($v1) # gMPPoints + 0
   /* 0780A0 800FC8A0 00041080 */       sll $v0, $a0, 2
   /* 0780A4 800FC8A4 00441023 */      subu $v0, $v0, $a0
   /* 0780A8 800FC8A8 00021040 */       sll $v0, $v0, 1
@@ -43055,7 +43055,7 @@ glabel mpCollision_GetMPointPositionID
   /* 0780BC 800FC8BC 00000000 */       nop 
   /* 0780C0 800FC8C0 468021A0 */   cvt.s.w $f6, $f4
   /* 0780C4 800FC8C4 E4A60000 */      swc1 $f6, ($a1)
-  /* 0780C8 800FC8C8 8C790000 */        lw $t9, ($v1) # gMapPoints + 0
+  /* 0780C8 800FC8C8 8C790000 */        lw $t9, ($v1) # gMPPoints + 0
   /* 0780CC 800FC8CC 03224021 */      addu $t0, $t9, $v0
   /* 0780D0 800FC8D0 85090004 */        lh $t1, 4($t0)
   /* 0780D4 800FC8D4 E4B00008 */      swc1 $f16, 8($a1)
@@ -43067,10 +43067,10 @@ glabel mpCollision_GetMPointPositionID
 
 glabel mpCollision_GetLineCountType
   /* 0780EC 800FC8EC 000470C0 */       sll $t6, $a0, 3
-  /* 0780F0 800FC8F0 3C028013 */       lui $v0, %hi(gMapLineTypeGroups)
+  /* 0780F0 800FC8F0 3C028013 */       lui $v0, %hi(gMPLineTypeGroups)
   /* 0780F4 800FC8F4 004E1021 */      addu $v0, $v0, $t6
   /* 0780F8 800FC8F8 03E00008 */        jr $ra
-  /* 0780FC 800FC8FC 94421348 */       lhu $v0, %lo(gMapLineTypeGroups)($v0)
+  /* 0780FC 800FC8FC 94421348 */       lhu $v0, %lo(gMPLineTypeGroups)($v0)
 
 glabel mpCollision_GetLineIDsTypeCount
   /* 078100 800FC900 18A0002F */      blez $a1, .L800FC9C0
@@ -43078,8 +43078,8 @@ glabel mpCollision_GetLineIDsTypeCount
   /* 078108 800FC908 30AA0003 */      andi $t2, $a1, 3
   /* 07810C 800FC90C 11400011 */      beqz $t2, .L800FC954
   /* 078110 800FC910 01404825 */        or $t1, $t2, $zero
-  /* 078114 800FC914 3C188013 */       lui $t8, %hi(gMapLineTypeGroups)
-  /* 078118 800FC918 27181348 */     addiu $t8, $t8, %lo(gMapLineTypeGroups)
+  /* 078114 800FC914 3C188013 */       lui $t8, %hi(gMPLineTypeGroups)
+  /* 078118 800FC918 27181348 */     addiu $t8, $t8, %lo(gMPLineTypeGroups)
   /* 07811C 800FC91C 00007080 */       sll $t6, $zero, 2
   /* 078120 800FC920 000478C0 */       sll $t7, $a0, 3
   /* 078124 800FC924 01F83821 */      addu $a3, $t7, $t8
@@ -43096,8 +43096,8 @@ glabel mpCollision_GetLineIDsTypeCount
   /* 07814C 800FC94C AC6CFFFC */        sw $t4, -4($v1)
   /* 078150 800FC950 1045001B */       beq $v0, $a1, .L800FC9C0
   .L800FC954:
-  /* 078154 800FC954 3C0F8013 */       lui $t7, %hi(gMapLineTypeGroups)
-  /* 078158 800FC958 25EF1348 */     addiu $t7, $t7, %lo(gMapLineTypeGroups)
+  /* 078154 800FC954 3C0F8013 */       lui $t7, %hi(gMPLineTypeGroups)
+  /* 078158 800FC958 25EF1348 */     addiu $t7, $t7, %lo(gMPLineTypeGroups)
   /* 07815C 800FC95C 00026880 */       sll $t5, $v0, 2
   /* 078160 800FC960 000470C0 */       sll $t6, $a0, 3
   /* 078164 800FC964 01CF3821 */      addu $a3, $t6, $t7
@@ -43130,16 +43130,16 @@ glabel mpCollision_GetLineIDsTypeCount
 
 glabel mpCollision_SetLightColorGetAlpha
   /* 0781C8 800FC9C8 8C850000 */        lw $a1, ($a0)
-  /* 0781CC 800FC9CC 3C068013 */       lui $a2, %hi(gMapLightColor)
+  /* 0781CC 800FC9CC 3C068013 */       lui $a2, %hi(gMPLightColor)
   /* 0781D0 800FC9D0 3C0FFB00 */       lui $t7, 0xfb00
   /* 0781D4 800FC9D4 24AE0008 */     addiu $t6, $a1, 8
   /* 0781D8 800FC9D8 AC8E0000 */        sw $t6, ($a0)
-  /* 0781DC 800FC9DC 24C61388 */     addiu $a2, $a2, %lo(gMapLightColor)
+  /* 0781DC 800FC9DC 24C61388 */     addiu $a2, $a2, %lo(gMPLightColor)
   /* 0781E0 800FC9E0 ACAF0000 */        sw $t7, ($a1)
-  /* 0781E4 800FC9E4 90CA0001 */       lbu $t2, 1($a2) # gMapLightColor + 1
-  /* 0781E8 800FC9E8 90D90000 */       lbu $t9, ($a2) # gMapLightColor + 0
-  /* 0781EC 800FC9EC 90CE0002 */       lbu $t6, 2($a2) # gMapLightColor + 2
-  /* 0781F0 800FC9F0 90C90003 */       lbu $t1, 3($a2) # gMapLightColor + 3
+  /* 0781E4 800FC9E4 90CA0001 */       lbu $t2, 1($a2) # gMPLightColor + 1
+  /* 0781E8 800FC9E8 90D90000 */       lbu $t9, ($a2) # gMPLightColor + 0
+  /* 0781EC 800FC9EC 90CE0002 */       lbu $t6, 2($a2) # gMPLightColor + 2
+  /* 0781F0 800FC9F0 90C90003 */       lbu $t1, 3($a2) # gMPLightColor + 3
   /* 0781F4 800FC9F4 000A5C00 */       sll $t3, $t2, 0x10
   /* 0781F8 800FC9F8 00194600 */       sll $t0, $t9, 0x18
   /* 0781FC 800FC9FC 010B6025 */        or $t4, $t0, $t3
@@ -43148,7 +43148,7 @@ glabel mpCollision_SetLightColorGetAlpha
   /* 078208 800FCA08 03095025 */        or $t2, $t8, $t1
   /* 07820C 800FCA0C ACAA0004 */        sw $t2, 4($a1)
   /* 078210 800FCA10 03E00008 */        jr $ra
-  /* 078214 800FCA14 90C20003 */       lbu $v0, 3($a2) # gMapLightColor + 3
+  /* 078214 800FCA14 90C20003 */       lbu $v0, 3($a2) # gMPLightColor + 3
 
 glabel mpCollision_CheckExistPlatformLineID
   /* 078218 800FCA18 27BDFFE0 */     addiu $sp, $sp, -0x20
@@ -43179,8 +43179,8 @@ glabel mpCollision_CheckExistPlatformLineID
   /* 078270 800FCA70 000F7840 */       sll $t7, $t7, 1
   /* 078274 800FCA74 01CFC021 */      addu $t8, $t6, $t7
   /* 078278 800FCA78 93190000 */       lbu $t9, ($t8)
-  /* 07827C 800FCA7C 3C098013 */       lui $t1, %hi(gMapRooms)
-  /* 078280 800FCA80 8D291304 */        lw $t1, %lo(gMapRooms)($t1)
+  /* 07827C 800FCA7C 3C098013 */       lui $t1, %hi(gMPRooms)
+  /* 078280 800FCA80 8D291304 */        lw $t1, %lo(gMPRooms)($t1)
   /* 078284 800FCA84 00194080 */       sll $t0, $t9, 2
   /* 078288 800FCA88 8FBF001C */        lw $ra, 0x1c($sp)
   /* 07828C 800FCA8C 01285021 */      addu $t2, $t1, $t0
@@ -43226,15 +43226,15 @@ glabel mpCollision_GetVertexFlagsLineID
   .L800FCB14:
   /* 078314 800FCB14 8DCE1378 */        lw $t6, 0x1378($t6)
   /* 078318 800FCB18 00117880 */       sll $t7, $s1, 2
-  /* 07831C 800FCB1C 3C098013 */       lui $t1, %hi(gMapVertexID)
+  /* 07831C 800FCB1C 3C098013 */       lui $t1, %hi(gMPVertexID)
   /* 078320 800FCB20 01CFC021 */      addu $t8, $t6, $t7
   /* 078324 800FCB24 97190000 */       lhu $t9, ($t8)
-  /* 078328 800FCB28 8D291374 */        lw $t1, %lo(gMapVertexID)($t1)
-  /* 07832C 800FCB2C 3C0D8013 */       lui $t5, %hi(gMapVertexData)
+  /* 078328 800FCB28 8D291374 */        lw $t1, %lo(gMPVertexID)($t1)
+  /* 07832C 800FCB2C 3C0D8013 */       lui $t5, %hi(gMPVertexData)
   /* 078330 800FCB30 00194040 */       sll $t0, $t9, 1
   /* 078334 800FCB34 01285021 */      addu $t2, $t1, $t0
   /* 078338 800FCB38 954B0000 */       lhu $t3, ($t2)
-  /* 07833C 800FCB3C 8DAD1370 */        lw $t5, %lo(gMapVertexData)($t5)
+  /* 07833C 800FCB3C 8DAD1370 */        lw $t5, %lo(gMPVertexData)($t5)
   /* 078340 800FCB40 8FBF001C */        lw $ra, 0x1c($sp)
   /* 078344 800FCB44 000B6080 */       sll $t4, $t3, 2
   /* 078348 800FCB48 018B6023 */      subu $t4, $t4, $t3
@@ -47967,8 +47967,8 @@ glabel efTransform_Reflector_SetImageIndex
   /* 07C694 80100E94 3C0F8013 */       lui $t7, %hi(dEFReflectorAnimJointOffsets)
   /* 07C698 80100E98 AC450018 */        sw $a1, 0x18($v0)
   /* 07C69C 80100E9C 01EE7821 */      addu $t7, $t7, $t6
-  /* 07C6A0 80100EA0 3C188013 */       lui $t8, %hi(gFTDataFoxExtra2)
-  /* 07C6A4 80100EA4 8F180EA0 */        lw $t8, %lo(gFTDataFoxExtra2)($t8)
+  /* 07C6A0 80100EA0 3C188013 */       lui $t8, %hi(gFTDataFoxExt2)
+  /* 07C6A4 80100EA4 8F180EA0 */        lw $t8, %lo(gFTDataFoxExt2)($t8)
   /* 07C6A8 80100EA8 8DEFE0DC */        lw $t7, %lo(dEFReflectorAnimJointOffsets)($t7)
   /* 07C6AC 80100EAC AFA40018 */        sw $a0, 0x18($sp)
   /* 07C6B0 80100EB0 24060000 */     addiu $a2, $zero, 0
@@ -48743,14 +48743,14 @@ glabel efParticle_ThunderShock_MakeEffect
   /* 07D168 80101968 24010001 */     addiu $at, $zero, 1
   /* 07D16C 8010196C 02002025 */        or $a0, $s0, $zero
   /* 07D170 80101970 10610006 */       beq $v1, $at, .L8010198C
-  /* 07D174 80101974 3C028013 */       lui $v0, %hi(gFTDataPikachuExtra2)
+  /* 07D174 80101974 3C028013 */       lui $v0, %hi(gFTDataPikachuExt2)
   /* 07D178 80101978 24010002 */     addiu $at, $zero, 2
   /* 07D17C 8010197C 10610010 */       beq $v1, $at, .L801019C0
   /* 07D180 80101980 02002025 */        or $a0, $s0, $zero
   /* 07D184 80101984 1000001B */         b .L801019F4
   /* 07D188 80101988 02001025 */        or $v0, $s0, $zero
   .L8010198C:
-  /* 07D18C 8010198C 8C4210C0 */        lw $v0, %lo(gFTDataPikachuExtra2)($v0)
+  /* 07D18C 8010198C 8C4210C0 */        lw $v0, %lo(gFTDataPikachuExt2)($v0)
   /* 07D190 80101990 3C0E0000 */       lui $t6, %hi(D_NF_00001850)
   /* 07D194 80101994 3C0F0000 */       lui $t7, %hi(D_NF_00001AC0)
   /* 07D198 80101998 25EF1AC0 */     addiu $t7, $t7, %lo(D_NF_00001AC0)
@@ -48764,8 +48764,8 @@ glabel efParticle_ThunderShock_MakeEffect
   /* 07D1B8 801019B8 1000000E */         b .L801019F4
   /* 07D1BC 801019BC 02001025 */        or $v0, $s0, $zero
   .L801019C0:
-  /* 07D1C0 801019C0 3C028013 */       lui $v0, %hi(gFTDataPikachuExtra2)
-  /* 07D1C4 801019C4 8C4210C0 */        lw $v0, %lo(gFTDataPikachuExtra2)($v0)
+  /* 07D1C0 801019C0 3C028013 */       lui $v0, %hi(gFTDataPikachuExt2)
+  /* 07D1C4 801019C4 8C4210C0 */        lw $v0, %lo(gFTDataPikachuExt2)($v0)
   /* 07D1C8 801019C8 3C180000 */       lui $t8, %hi(D_NF_00001970)
   /* 07D1CC 801019CC 3C190000 */       lui $t9, %hi(D_NF_00001B10)
   /* 07D1D0 801019D0 27391B10 */     addiu $t9, $t9, %lo(D_NF_00001B10)
@@ -50320,10 +50320,10 @@ glabel efYoshiEggLaySetAnim
   /* 07E798 80102F98 AFA5001C */        sw $a1, 0x1c($sp)
   /* 07E79C 80102F9C 8C820084 */        lw $v0, 0x84($a0)
   /* 07E7A0 80102FA0 3C088013 */       lui $t0, %hi(dEFYoshiEggLayAnimJoints)
-  /* 07E7A4 80102FA4 3C098013 */       lui $t1, %hi(gFTDataYoshiExtra3)
+  /* 07E7A4 80102FA4 3C098013 */       lui $t1, %hi(gFTDataYoshiSpecial3)
   /* 07E7A8 80102FA8 AC450018 */        sw $a1, 0x18($v0)
   /* 07E7AC 80102FAC 8FB8001C */        lw $t8, 0x1c($sp)
-  /* 07E7B0 80102FB0 8D291000 */        lw $t1, %lo(gFTDataYoshiExtra3)($t1)
+  /* 07E7B0 80102FB0 8D291000 */        lw $t1, %lo(gFTDataYoshiSpecial3)($t1)
   /* 07E7B4 80102FB4 8C8F0074 */        lw $t7, 0x74($a0)
   /* 07E7B8 80102FB8 0018C880 */       sll $t9, $t8, 2
   /* 07E7BC 80102FBC 01194021 */      addu $t0, $t0, $t9
@@ -50421,9 +50421,9 @@ glabel efParticle_YoshiEggLay_MakeEffect
   /* 07E910 80103110 AFA70020 */        sw $a3, 0x20($sp)
   /* 07E914 80103114 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 07E918 80103118 AFA3001C */        sw $v1, 0x1c($sp)
-  /* 07E91C 8010311C 3C0A8013 */       lui $t2, %hi(gFTDataYoshiExtra3)
+  /* 07E91C 8010311C 3C0A8013 */       lui $t2, %hi(gFTDataYoshiSpecial3)
   /* 07E920 80103120 8FA3001C */        lw $v1, 0x1c($sp)
-  /* 07E924 80103124 8D4A1000 */        lw $t2, %lo(gFTDataYoshiExtra3)($t2)
+  /* 07E924 80103124 8D4A1000 */        lw $t2, %lo(gFTDataYoshiSpecial3)($t2)
   /* 07E928 80103128 3C0B0000 */       lui $t3, %hi(D_NF_00000960)
   /* 07E92C 8010312C 256B0960 */     addiu $t3, $t3, %lo(D_NF_00000960)
   /* 07E930 80103130 8C640010 */        lw $a0, 0x10($v1)
@@ -50480,9 +50480,9 @@ glabel func_ovl2_801031E0
   /* 07E9E0 801031E0 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07E9E4 801031E4 AFA40028 */        sw $a0, 0x28($sp)
   /* 07E9E8 801031E8 AFBF001C */        sw $ra, 0x1c($sp)
-  /* 07E9EC 801031EC 3C048013 */       lui $a0, %hi(gFTDataKirbyParticles)
+  /* 07E9EC 801031EC 3C048013 */       lui $a0, %hi(gFTDataKirbyParticleBankID)
   /* 07E9F0 801031F0 AFB00018 */        sw $s0, 0x18($sp)
-  /* 07E9F4 801031F4 8C841080 */        lw $a0, %lo(gFTDataKirbyParticles)($a0)
+  /* 07E9F4 801031F4 8C841080 */        lw $a0, %lo(gFTDataKirbyParticleBankID)($a0)
   /* 07E9F8 801031F8 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07E9FC 801031FC 24050002 */     addiu $a1, $zero, 2
   /* 07EA00 80103200 10400019 */      beqz $v0, .L80103268
@@ -50526,9 +50526,9 @@ glabel func_ovl2_80103280
   /* 07EA80 80103280 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07EA84 80103284 AFA40028 */        sw $a0, 0x28($sp)
   /* 07EA88 80103288 AFBF001C */        sw $ra, 0x1c($sp)
-  /* 07EA8C 8010328C 3C048013 */       lui $a0, %hi(gFTDataKirbyParticles)
+  /* 07EA8C 8010328C 3C048013 */       lui $a0, %hi(gFTDataKirbyParticleBankID)
   /* 07EA90 80103290 AFB00018 */        sw $s0, 0x18($sp)
-  /* 07EA94 80103294 8C841080 */        lw $a0, %lo(gFTDataKirbyParticles)($a0)
+  /* 07EA94 80103294 8C841080 */        lw $a0, %lo(gFTDataKirbyParticleBankID)($a0)
   /* 07EA98 80103298 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07EA9C 8010329C 24050005 */     addiu $a1, $zero, 5
   /* 07EAA0 801032A0 10400019 */      beqz $v0, .L80103308
@@ -50758,9 +50758,9 @@ glabel efParticle_CaptainEntryCar_MakeEffect
   /* 07EDB4 801035B4 00001025 */        or $v0, $zero, $zero
   .L801035B8:
   /* 07EDB8 801035B8 4480A000 */      mtc1 $zero, $f20
-  /* 07EDBC 801035BC 3C128013 */       lui $s2, %hi(gFTDataCaptainExtra2)
-  /* 07EDC0 801035C0 2652103C */     addiu $s2, $s2, %lo(gFTDataCaptainExtra2)
-  /* 07EDC4 801035C4 8E4E0000 */        lw $t6, ($s2) # gFTDataCaptainExtra2 + 0
+  /* 07EDBC 801035BC 3C128013 */       lui $s2, %hi(gFTDataCaptainExt2)
+  /* 07EDC0 801035C0 2652103C */     addiu $s2, $s2, %lo(gFTDataCaptainExt2)
+  /* 07EDC4 801035C4 8E4E0000 */        lw $t6, ($s2) # gFTDataCaptainExt2 + 0
   /* 07EDC8 801035C8 3C0F0000 */       lui $t7, %hi(D_NF_00006200)
   /* 07EDCC 801035CC 25EF6200 */     addiu $t7, $t7, %lo(D_NF_00006200)
   /* 07EDD0 801035D0 4406A000 */      mfc1 $a2, $f20
@@ -50781,13 +50781,13 @@ glabel efParticle_CaptainEntryCar_MakeEffect
   /* 07EE08 80103608 2405002C */     addiu $a1, $zero, 0x2c
   /* 07EE0C 8010360C 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 07EE10 80103610 00003025 */        or $a2, $zero, $zero
-  /* 07EE14 80103614 8E480000 */        lw $t0, ($s2) # gFTDataCaptainExtra2 + 0
+  /* 07EE14 80103614 8E480000 */        lw $t0, ($s2) # gFTDataCaptainExt2 + 0
   /* 07EE18 80103618 4406A000 */      mfc1 $a2, $f20
   /* 07EE1C 8010361C 02002025 */        or $a0, $s0, $zero
   /* 07EE20 80103620 0C002F47 */       jal omAddDObjAnimAll
   /* 07EE24 80103624 01132821 */      addu $a1, $t0, $s3
   /* 07EE28 80103628 8E100008 */        lw $s0, 8($s0)
-  /* 07EE2C 8010362C 8E490000 */        lw $t1, ($s2) # gFTDataCaptainExtra2 + 0
+  /* 07EE2C 8010362C 8E490000 */        lw $t1, ($s2) # gFTDataCaptainExt2 + 0
   /* 07EE30 80103630 4406A000 */      mfc1 $a2, $f20
   /* 07EE34 80103634 02002025 */        or $a0, $s0, $zero
   /* 07EE38 80103638 0C002F47 */       jal omAddDObjAnimAll
@@ -50846,17 +50846,17 @@ glabel efParticle_MarioEntryPipe_MakeEffect
   /* 07EEF8 801036F8 AFA40018 */        sw $a0, 0x18($sp)
   /* 07EEFC 801036FC 24010004 */     addiu $at, $zero, 4
   /* 07EF00 80103700 10A10008 */       beq $a1, $at, .L80103724
-  /* 07EF04 80103704 3C0F8013 */       lui $t7, %hi(gFTDataLuigiExtra2)
+  /* 07EF04 80103704 3C0F8013 */       lui $t7, %hi(gFTDataLuigiExt2)
   /* 07EF08 80103708 10000009 */         b .L80103730
   /* 07EF0C 8010370C 00000000 */       nop 
   .L80103710:
-  /* 07EF10 80103710 3C0E8013 */       lui $t6, %hi(gFTDataMarioExtra2)
-  /* 07EF14 80103714 25CE0E40 */     addiu $t6, $t6, %lo(gFTDataMarioExtra2)
+  /* 07EF10 80103710 3C0E8013 */       lui $t6, %hi(gFTDataMarioExt2)
+  /* 07EF14 80103714 25CE0E40 */     addiu $t6, $t6, %lo(gFTDataMarioExt2)
   /* 07EF18 80103718 3C018013 */       lui $at, %hi(D_ovl2_8012E6D0)
   /* 07EF1C 8010371C 10000004 */         b .L80103730
   /* 07EF20 80103720 AC2EE6D0 */        sw $t6, %lo(D_ovl2_8012E6D0)($at)
   .L80103724:
-  /* 07EF24 80103724 25EF0F80 */     addiu $t7, $t7, %lo(gFTDataLuigiExtra2)
+  /* 07EF24 80103724 25EF0F80 */     addiu $t7, $t7, %lo(gFTDataLuigiExt2)
   /* 07EF28 80103728 3C018013 */       lui $at, %hi(D_ovl2_8012E6D0)
   /* 07EF2C 8010372C AC2FE6D0 */        sw $t7, %lo(D_ovl2_8012E6D0)($at)
   .L80103730:
@@ -50944,8 +50944,8 @@ glabel efParticle_FoxEntryArwing_MakeEffect
   /* 07F050 80103850 AFA3002C */        sw $v1, 0x2c($sp)
   /* 07F054 80103854 0C002330 */       jal omAddOMMtxForDObjFixed
   /* 07F058 80103858 AFA40024 */        sw $a0, 0x24($sp)
-  /* 07F05C 8010385C 3C0D8013 */       lui $t5, %hi(gFTDataFoxExtra3)
-  /* 07F060 80103860 8DAD0EA4 */        lw $t5, %lo(gFTDataFoxExtra3)($t5)
+  /* 07F05C 8010385C 3C0D8013 */       lui $t5, %hi(gFTDataFoxSpecial3)
+  /* 07F060 80103860 8DAD0EA4 */        lw $t5, %lo(gFTDataFoxSpecial3)($t5)
   /* 07F064 80103864 3C0E0000 */       lui $t6, %hi(D_NF_00002E74)
   /* 07F068 80103868 25CE2E74 */     addiu $t6, $t6, %lo(D_NF_00002E74)
   /* 07F06C 8010386C 8FA40024 */        lw $a0, 0x24($sp)
@@ -50957,8 +50957,8 @@ glabel efParticle_FoxEntryArwing_MakeEffect
   /* 07F084 80103884 24010001 */     addiu $at, $zero, 1
   /* 07F088 80103888 15E1000B */       bne $t7, $at, .L801038B8
   /* 07F08C 8010388C 3C088013 */       lui $t0, 0x8013
-  /* 07F090 80103890 3C188013 */       lui $t8, %hi(gFTDataFoxExtra2)
-  /* 07F094 80103894 8F180EA0 */        lw $t8, %lo(gFTDataFoxExtra2)($t8)
+  /* 07F090 80103890 3C188013 */       lui $t8, %hi(gFTDataFoxExt2)
+  /* 07F094 80103894 8F180EA0 */        lw $t8, %lo(gFTDataFoxExt2)($t8)
   /* 07F098 80103898 3C190000 */       lui $t9, %hi(D_NF_000009E0)
   /* 07F09C 8010389C 273909E0 */     addiu $t9, $t9, %lo(D_NF_000009E0)
   /* 07F0A0 801038A0 44060000 */      mfc1 $a2, $f0
@@ -51105,9 +51105,9 @@ glabel efParticle_YoshiEggExplode_MakeEffect
   /* 07F288 80103A88 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 07F28C 80103A8C AFA40028 */        sw $a0, 0x28($sp)
   /* 07F290 80103A90 AFBF001C */        sw $ra, 0x1c($sp)
-  /* 07F294 80103A94 3C048013 */       lui $a0, %hi(gFTDataYoshiParticles)
+  /* 07F294 80103A94 3C048013 */       lui $a0, %hi(gFTDataYoshiParticleBankID)
   /* 07F298 80103A98 AFB00018 */        sw $s0, 0x18($sp)
-  /* 07F29C 80103A9C 8C841004 */        lw $a0, %lo(gFTDataYoshiParticles)($a0)
+  /* 07F29C 80103A9C 8C841004 */        lw $a0, %lo(gFTDataYoshiParticleBankID)($a0)
   /* 07F2A0 80103AA0 0C033A7A */       jal func_ovl0_800CE9E8
   /* 07F2A4 80103AA4 24050003 */     addiu $a1, $zero, 3
   /* 07F2A8 80103AA8 10400019 */      beqz $v0, .L80103B10
@@ -51695,8 +51695,8 @@ glabel efParticle_KirbyInhaleWind_MakeEffect
   /* 07FB04 80104304 00001025 */        or $v0, $zero, $zero
   .L80104308:
   /* 07FB08 80104308 AC710084 */        sw $s1, 0x84($v1)
-  /* 07FB0C 8010430C 3C048013 */       lui $a0, %hi(gFTDataKirbyParticles)
-  /* 07FB10 80104310 8C841080 */        lw $a0, %lo(gFTDataKirbyParticles)($a0)
+  /* 07FB0C 8010430C 3C048013 */       lui $a0, %hi(gFTDataKirbyParticleBankID)
+  /* 07FB10 80104310 8C841080 */        lw $a0, %lo(gFTDataKirbyParticleBankID)($a0)
   /* 07FB14 80104314 AFA30024 */        sw $v1, 0x24($sp)
   /* 07FB18 80104318 2405000C */     addiu $a1, $zero, 0xc
   /* 07FB1C 8010431C 0C033A7A */       jal func_ovl0_800CE9E8
@@ -53036,9 +53036,9 @@ glabel grNodeInit_SetGroundFiles
   /* 080E1C 8010561C 3C048013 */       lui $a0, %hi(gGroundInfo)
   /* 080E20 80105620 8C841300 */        lw $a0, %lo(gGroundInfo)($a0)
   /* 080E24 80105624 3C018013 */       lui $at, %hi(D_ovl2_801313E0)
-  /* 080E28 80105628 3C068013 */       lui $a2, %hi(gMapRooms)
+  /* 080E28 80105628 3C068013 */       lui $a2, %hi(gMPRooms)
   /* 080E2C 8010562C AC2213E0 */        sw $v0, %lo(D_ovl2_801313E0)($at)
-  /* 080E30 80105630 8CC61304 */        lw $a2, %lo(gMapRooms)($a2)
+  /* 080E30 80105630 8CC61304 */        lw $a2, %lo(gMPRooms)($a2)
   /* 080E34 80105634 24050001 */     addiu $a1, $zero, 1
   /* 080E38 80105638 0C04151F */       jal func_ovl2_8010547C
   /* 080E3C 8010563C 24840010 */     addiu $a0, $a0, 0x10
@@ -56349,7 +56349,7 @@ glabel grCommon_Zebes_ProcUpdate
   /* 083C84 80108484 24070004 */     addiu $a3, $zero, 4
   /* 083C88 80108488 3C058011 */       lui $a1, %hi(grCommon_Zebes_GetAcidHitInfo)
   /* 083C8C 8010848C 24A584AC */     addiu $a1, $a1, %lo(grCommon_Zebes_GetAcidHitInfo)
-  /* 083C90 80108490 0C03877A */       jal ftMain_CheckSetMapEnvironmentGObj
+  /* 083C90 80108490 0C03877A */       jal ftMainCheckSetMapEnvGObj
   /* 083C94 80108494 8FA40018 */        lw $a0, 0x18($sp)
   /* 083C98 80108498 8FBF0014 */        lw $ra, 0x14($sp)
   /* 083C9C 8010849C 8FA2001C */        lw $v0, 0x1c($sp)
@@ -56820,8 +56820,8 @@ glabel grCommon_Yoster_InitGroundVars
   /* 084324 80108B24 0C002F63 */       jal func_8000BD8C
   /* 084328 80108B28 8FA50068 */        lw $a1, 0x68($sp)
   /* 08432C 80108B2C 8FA80064 */        lw $t0, 0x64($sp)
-  /* 084330 80108B30 3C198013 */       lui $t9, %hi(gMapRooms)
-  /* 084334 80108B34 8F391304 */        lw $t9, %lo(gMapRooms)($t9)
+  /* 084330 80108B30 3C198013 */       lui $t9, %hi(gMPRooms)
+  /* 084334 80108B34 8F391304 */        lw $t9, %lo(gMPRooms)($t9)
   /* 084338 80108B38 91090000 */       lbu $t1, ($t0)
   /* 08433C 80108B3C 8FD10074 */        lw $s1, 0x74($fp)
   /* 084340 80108B40 00009025 */        or $s2, $zero, $zero
@@ -57797,7 +57797,7 @@ glabel grInishie_PowerBlock_UpdateDamage
   /* 085144 80109944 31F8FFFF */      andi $t8, $t7, 0xffff
   /* 085148 80109948 17000003 */      bnez $t8, .L80109958
   /* 08514C 8010994C A44F0044 */        sh $t7, 0x44($v0) # gGroundStruct + 68
-  /* 085150 80109950 0C03878F */       jal ftMain_ClearMapEnvironmentGObj
+  /* 085150 80109950 0C03878F */       jal ftMainClearMapEnvGObj
   /* 085154 80109954 8C44003C */        lw $a0, 0x3c($v0) # gGroundStruct + 60
   .L80109958:
   /* 085158 80109958 8FBF0014 */        lw $ra, 0x14($sp)
@@ -57947,7 +57947,7 @@ glabel func_ovl2_80109B4C
   /* 085354 80109B54 3C048013 */       lui $a0, %hi(D_ovl2_8013142C)
   /* 085358 80109B58 3C058011 */       lui $a1, %hi(grInishie_PowerBlock_GetHitInfo)
   /* 08535C 80109B5C 24A59B8C */     addiu $a1, $a1, %lo(grInishie_PowerBlock_GetHitInfo)
-  /* 085360 80109B60 0C03877A */       jal ftMain_CheckSetMapEnvironmentGObj
+  /* 085360 80109B60 0C03877A */       jal ftMainCheckSetMapEnvGObj
   /* 085364 80109B64 8C84142C */        lw $a0, %lo(D_ovl2_8013142C)($a0)
   /* 085368 80109B68 8FBF0014 */        lw $ra, 0x14($sp)
   /* 08536C 80109B6C 3C028013 */       lui $v0, %hi(gGroundStruct)
@@ -58242,7 +58242,7 @@ glabel grJungle_TaruCann_MakeGround
   /* 085768 80109F68 24070004 */     addiu $a3, $zero, 4
   /* 08576C 80109F6C 3C058011 */       lui $a1, %hi(grJungle_TaruCann_CheckFindFighter)
   /* 085770 80109F70 24A59FD8 */     addiu $a1, $a1, %lo(grJungle_TaruCann_CheckFindFighter)
-  /* 085774 80109F74 0C038752 */       jal ftMain_CheckSetMapObjectGObj
+  /* 085774 80109F74 0C038752 */       jal ftMainCheckSetMapObjectGObj
   /* 085778 80109F78 02002025 */        or $a0, $s0, $zero
   /* 08577C 80109F7C 3C018013 */       lui $at, %hi(D_ovl2_801313F8)
   /* 085780 80109F80 A02013F8 */        sb $zero, %lo(D_ovl2_801313F8)($at)
@@ -58627,7 +58627,7 @@ glabel grHyrule_Twister_UpdateSummon
   /* 085CC4 8010A4C4 3C058011 */       lui $a1, %hi(grHyrule_Twister_GetHitInfo)
   /* 085CC8 8010A4C8 A60A0022 */        sh $t2, 0x22($s0) # gGroundStruct + 34
   /* 085CCC 8010A4CC 24A5AB74 */     addiu $a1, $a1, %lo(grHyrule_Twister_GetHitInfo)
-  /* 085CD0 8010A4D0 0C038752 */       jal ftMain_CheckSetMapObjectGObj
+  /* 085CD0 8010A4D0 0C038752 */       jal ftMainCheckSetMapObjectGObj
   /* 085CD4 8010A4D4 8E040004 */        lw $a0, 4($s0) # gGroundStruct + 4
   /* 085CD8 8010A4D8 0C009A70 */       jal func_800269C0
   /* 085CDC 8010A4DC 2404011B */     addiu $a0, $zero, 0x11b
@@ -58893,7 +58893,7 @@ glabel grHyrule_Twister_UpdateStop
   /* 086064 8010A864 24180020 */     addiu $t8, $zero, 0x20
   /* 086068 8010A868 A04F0028 */        sb $t7, 0x28($v0) # gGroundStruct + 40
   /* 08606C 8010A86C A4580020 */        sh $t8, 0x20($v0) # gGroundStruct + 32
-  /* 086070 8010A870 0C038767 */       jal ftMain_ClearMapObjectGObj
+  /* 086070 8010A870 0C038767 */       jal ftMainClearMapObjectGObj
   /* 086074 8010A874 8C440004 */        lw $a0, 4($v0) # gGroundStruct + 4
   /* 086078 8010A878 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 08607C 8010A87C 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
@@ -59323,9 +59323,9 @@ glabel grYamabukiGateSetPositionFar
   /* 086640 8010AE40 44812000 */      mtc1 $at, $f4 # 1600.0 to cop1
   /* 086644 8010AE44 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 086648 8010AE48 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
-  /* 08664C 8010AE4C 3C0E8013 */       lui $t6, %hi(gMapRooms)
+  /* 08664C 8010AE4C 3C0E8013 */       lui $t6, %hi(gMPRooms)
   /* 086650 8010AE50 E4440010 */      swc1 $f4, 0x10($v0) # gGroundStruct + 16
-  /* 086654 8010AE54 8DCE1304 */        lw $t6, %lo(gMapRooms)($t6)
+  /* 086654 8010AE54 8DCE1304 */        lw $t6, %lo(gMPRooms)($t6)
   /* 086658 8010AE58 8DCF000C */        lw $t7, 0xc($t6)
   /* 08665C 8010AE5C C5E60020 */      lwc1 $f6, 0x20($t7)
   /* 086660 8010AE60 03E00008 */        jr $ra
@@ -59336,9 +59336,9 @@ glabel grYamabukiGateSetPositionNear
   /* 08666C 8010AE6C 44812000 */      mtc1 $at, $f4 # 960.0 to cop1
   /* 086670 8010AE70 3C028013 */       lui $v0, %hi(gGroundStruct)
   /* 086674 8010AE74 244213F0 */     addiu $v0, $v0, %lo(gGroundStruct)
-  /* 086678 8010AE78 3C0E8013 */       lui $t6, %hi(gMapRooms)
+  /* 086678 8010AE78 3C0E8013 */       lui $t6, %hi(gMPRooms)
   /* 08667C 8010AE7C E4440010 */      swc1 $f4, 0x10($v0) # gGroundStruct + 16
-  /* 086680 8010AE80 8DCE1304 */        lw $t6, %lo(gMapRooms)($t6)
+  /* 086680 8010AE80 8DCE1304 */        lw $t6, %lo(gMPRooms)($t6)
   /* 086684 8010AE84 8DCF000C */        lw $t7, 0xc($t6)
   /* 086688 8010AE88 C5E60020 */      lwc1 $f6, 0x20($t7)
   /* 08668C 8010AE8C 03E00008 */        jr $ra
@@ -59465,7 +59465,7 @@ glabel grYamabukiGateUpdateOpen
   /* 086828 8010B028 8FBF0014 */        lw $ra, 0x14($sp)
   /* 08682C 8010B02C 8C640084 */        lw $a0, 0x84($v1)
   /* 086830 8010B030 8C6F0074 */        lw $t7, 0x74($v1)
-  /* 086834 8010B034 3C188013 */       lui $t8, %hi(gMapRooms)
+  /* 086834 8010B034 3C188013 */       lui $t8, %hi(gMPRooms)
   /* 086838 8010B038 C486007C */      lwc1 $f6, 0x7c($a0)
   /* 08683C 8010B03C C5E4001C */      lwc1 $f4, 0x1c($t7)
   /* 086840 8010B040 3C014470 */       lui $at, (0x44700000 >> 16) # 960.0
@@ -59474,7 +59474,7 @@ glabel grYamabukiGateUpdateOpen
   /* 08684C 8010B04C 3C0144C8 */       lui $at, (0x44C80000 >> 16) # 1600.0
   /* 086850 8010B050 24080001 */     addiu $t0, $zero, 1
   /* 086854 8010B054 E4480010 */      swc1 $f8, 0x10($v0)
-  /* 086858 8010B058 8F181304 */        lw $t8, %lo(gMapRooms)($t8)
+  /* 086858 8010B058 8F181304 */        lw $t8, %lo(gMPRooms)($t8)
   /* 08685C 8010B05C C4400010 */      lwc1 $f0, 0x10($v0)
   /* 086860 8010B060 8F19000C */        lw $t9, 0xc($t8)
   /* 086864 8010B064 4602003C */    c.lt.s $f0, $f2
@@ -63979,10 +63979,10 @@ glabel func_ovl2_8010EEFC
   /* 08A8D0 8010F0D0 3C128013 */       lui $s2, %hi(ifPlayer_Damage_DigitSpriteOffsets)
   /* 08A8D4 8010F0D4 2652EE64 */     addiu $s2, $s2, %lo(ifPlayer_Damage_DigitSpriteOffsets)
   /* 08A8D8 8010F0D8 8E020054 */        lw $v0, 0x54($s0)
-  /* 08A8DC 8010F0DC 3C138013 */       lui $s3, %hi(gCommonFiles)
-  /* 08A8E0 8010F0E0 26730D40 */     addiu $s3, $s3, %lo(gCommonFiles)
+  /* 08A8DC 8010F0DC 3C138013 */       lui $s3, %hi(gGMCommonFiles)
+  /* 08A8E0 8010F0E0 26730D40 */     addiu $s3, $s3, %lo(gGMCommonFiles)
   /* 08A8E4 8010F0E4 904E0010 */       lbu $t6, 0x10($v0)
-  /* 08A8E8 8010F0E8 8E680008 */        lw $t0, 8($s3) # gCommonFiles + 8
+  /* 08A8E8 8010F0E8 8E680008 */        lw $t0, 8($s3) # gGMCommonFiles + 8
   /* 08A8EC 8010F0EC 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
   /* 08A8F0 8010F0F0 000E7880 */       sll $t7, $t6, 2
   /* 08A8F4 8010F0F4 024FC021 */      addu $t8, $s2, $t7
@@ -64059,7 +64059,7 @@ glabel func_ovl2_8010EEFC
   /* 08AA04 8010F204 5580003C */      bnel $t4, $zero, .L8010F2F8
   /* 08AA08 8010F208 8E100008 */        lw $s0, 8($s0)
   /* 08AA0C 8010F20C 8E020054 */        lw $v0, 0x54($s0)
-  /* 08AA10 8010F210 8E780008 */        lw $t8, 8($s3) # gCommonFiles + 8
+  /* 08AA10 8010F210 8E780008 */        lw $t8, 8($s3) # gGMCommonFiles + 8
   /* 08AA14 8010F214 02004825 */        or $t1, $s0, $zero
   /* 08AA18 8010F218 904A0010 */       lbu $t2, 0x10($v0)
   /* 08AA1C 8010F21C 000A5880 */       sll $t3, $t2, 2
@@ -64144,27 +64144,27 @@ glabel func_ovl2_8010EEFC
 glabel func_ovl2_8010F334
   /* 08AB34 8010F334 3C038013 */       lui $v1, %hi(ifPlayer_Damage_DigitSpriteOffsets)
   /* 08AB38 8010F338 3C058013 */       lui $a1, %hi(ifTimer_Digits_SpriteOffsets)
-  /* 08AB3C 8010F33C 3C028013 */       lui $v0, %hi(gCommonFiles)
-  /* 08AB40 8010F340 24420D40 */     addiu $v0, $v0, %lo(gCommonFiles)
+  /* 08AB3C 8010F33C 3C028013 */       lui $v0, %hi(gGMCommonFiles)
+  /* 08AB40 8010F340 24420D40 */     addiu $v0, $v0, %lo(gGMCommonFiles)
   /* 08AB44 8010F344 24A5EE94 */     addiu $a1, $a1, %lo(ifTimer_Digits_SpriteOffsets)
   /* 08AB48 8010F348 2463EE64 */     addiu $v1, $v1, %lo(ifPlayer_Damage_DigitSpriteOffsets)
   /* 08AB4C 8010F34C 24040201 */     addiu $a0, $zero, 0x201
   .L8010F350:
-  /* 08AB50 8010F350 8C4E0008 */        lw $t6, 8($v0) # gCommonFiles + 8
+  /* 08AB50 8010F350 8C4E0008 */        lw $t6, 8($v0) # gGMCommonFiles + 8
   /* 08AB54 8010F354 8C6F0000 */        lw $t7, ($v1) # ifPlayer_Damage_DigitSpriteOffsets + 0
   /* 08AB58 8010F358 24630010 */     addiu $v1, $v1, 0x10
   /* 08AB5C 8010F35C 01CFC021 */      addu $t8, $t6, $t7
   /* 08AB60 8010F360 A7040014 */        sh $a0, 0x14($t8)
-  /* 08AB64 8010F364 8C590008 */        lw $t9, 8($v0) # gCommonFiles + 8
+  /* 08AB64 8010F364 8C590008 */        lw $t9, 8($v0) # gGMCommonFiles + 8
   /* 08AB68 8010F368 8C68FFF4 */        lw $t0, -0xc($v1) # ifPlayer_Damage_DigitSpriteOffsets + -12
   /* 08AB6C 8010F36C 03284821 */      addu $t1, $t9, $t0
   /* 08AB70 8010F370 A5240014 */        sh $a0, 0x14($t1)
-  /* 08AB74 8010F374 8C4A0008 */        lw $t2, 8($v0) # gCommonFiles + 8
+  /* 08AB74 8010F374 8C4A0008 */        lw $t2, 8($v0) # gGMCommonFiles + 8
   /* 08AB78 8010F378 8C6BFFF8 */        lw $t3, -8($v1) # ifPlayer_Damage_DigitSpriteOffsets + -8
   /* 08AB7C 8010F37C 014B6021 */      addu $t4, $t2, $t3
   /* 08AB80 8010F380 A5840014 */        sh $a0, 0x14($t4)
   /* 08AB84 8010F384 8C6EFFFC */        lw $t6, -4($v1) # ifPlayer_Damage_DigitSpriteOffsets + -4
-  /* 08AB88 8010F388 8C4D0008 */        lw $t5, 8($v0) # gCommonFiles + 8
+  /* 08AB88 8010F388 8C4D0008 */        lw $t5, 8($v0) # gGMCommonFiles + 8
   /* 08AB8C 8010F38C 01AE7821 */      addu $t7, $t5, $t6
   /* 08AB90 8010F390 1465FFEF */       bne $v1, $a1, .L8010F350
   /* 08AB94 8010F394 A5E40014 */        sh $a0, 0x14($t7)
@@ -64642,9 +64642,9 @@ glabel func_ovl2_8010F878
   /* 08B294 8010FA94 8DAE0000 */        lw $t6, ($t5)
   /* 08B298 8010FA98 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
   /* 08B29C 8010FA9C 3C098013 */       lui $t1, %hi(ifPlayer_Stocks_DigitSpriteOffsets)
-  /* 08B2A0 8010FAA0 3C0B8013 */       lui $t3, %hi(gCommonFiles)
+  /* 08B2A0 8010FAA0 3C0B8013 */       lui $t3, %hi(gGMCommonFiles)
   /* 08B2A4 8010FAA4 44810000 */      mtc1 $at, $f0 # 0.5 to cop1
-  /* 08B2A8 8010FAA8 256B0D40 */     addiu $t3, $t3, %lo(gCommonFiles)
+  /* 08B2A8 8010FAA8 256B0D40 */     addiu $t3, $t3, %lo(gGMCommonFiles)
   /* 08B2AC 8010FAAC 2529EEC8 */     addiu $t1, $t1, %lo(ifPlayer_Stocks_DigitSpriteOffsets)
   /* 08B2B0 8010FAB0 2407FFFB */     addiu $a3, $zero, -5
   /* 08B2B4 8010FAB4 8FAC0028 */        lw $t4, 0x28($sp)
@@ -64698,7 +64698,7 @@ glabel func_ovl2_8010F878
   /* 08B370 8010FB70 A4780024 */        sh $t8, 0x24($v1)
   /* 08B374 8010FB74 468084A0 */   cvt.s.w $f18, $f16
   /* 08B378 8010FB78 E472005C */      swc1 $f18, 0x5c($v1)
-  /* 08B37C 8010FB7C 8D6F0010 */        lw $t7, 0x10($t3) # gCommonFiles + 16
+  /* 08B37C 8010FB7C 8D6F0010 */        lw $t7, 0x10($t3) # gGMCommonFiles + 16
   /* 08B380 8010FB80 8D390028 */        lw $t9, 0x28($t1) # ifPlayer_Stocks_DigitSpriteOffsets + 40
   /* 08B384 8010FB84 8C630008 */        lw $v1, 8($v1)
   /* 08B388 8010FB88 032F6821 */      addu $t5, $t9, $t7
@@ -64749,7 +64749,7 @@ glabel func_ovl2_8010F878
   /* 08B434 8010FC34 1020002E */      beqz $at, .L8010FCF0
   /* 08B438 8010FC38 02046821 */      addu $t5, $s0, $a0
   /* 08B43C 8010FC3C 91B90000 */       lbu $t9, ($t5)
-  /* 08B440 8010FC40 8D6D0010 */        lw $t5, 0x10($t3) # gCommonFiles + 16
+  /* 08B440 8010FC40 8D6D0010 */        lw $t5, 0x10($t3) # gGMCommonFiles + 16
   /* 08B444 8010FC44 00197080 */       sll $t6, $t9, 2
   /* 08B448 8010FC48 012EC021 */      addu $t8, $t1, $t6
   /* 08B44C 8010FC4C 8F0F0000 */        lw $t7, ($t8)
@@ -64816,44 +64816,44 @@ glabel func_ovl2_8010F878
   /* 08B528 8010FD28 27BD0058 */     addiu $sp, $sp, 0x58
 
 glabel func_ovl2_8010FD2C
-  /* 08B52C 8010FD2C 3C048013 */       lui $a0, %hi(gCommonFiles)
-  /* 08B530 8010FD30 24840D40 */     addiu $a0, $a0, %lo(gCommonFiles)
+  /* 08B52C 8010FD2C 3C048013 */       lui $a0, %hi(gGMCommonFiles)
+  /* 08B530 8010FD30 24840D40 */     addiu $a0, $a0, %lo(gGMCommonFiles)
   /* 08B534 8010FD34 3C0F8013 */       lui $t7, %hi(ifPlayer_Stocks_DigitSpriteOffsets)
   /* 08B538 8010FD38 8DEFEEC8 */        lw $t7, %lo(ifPlayer_Stocks_DigitSpriteOffsets)($t7)
-  /* 08B53C 8010FD3C 8C8E0010 */        lw $t6, 0x10($a0) # gCommonFiles + 16
+  /* 08B53C 8010FD3C 8C8E0010 */        lw $t6, 0x10($a0) # gGMCommonFiles + 16
   /* 08B540 8010FD40 24050201 */     addiu $a1, $zero, 0x201
   /* 08B544 8010FD44 3C088013 */       lui $t0, %hi(D_ovl2_8012EECC)
   /* 08B548 8010FD48 01CFC021 */      addu $t8, $t6, $t7
   /* 08B54C 8010FD4C A7050014 */        sh $a1, 0x14($t8)
-  /* 08B550 8010FD50 8C990010 */        lw $t9, 0x10($a0) # gCommonFiles + 16
+  /* 08B550 8010FD50 8C990010 */        lw $t9, 0x10($a0) # gGMCommonFiles + 16
   /* 08B554 8010FD54 8D08EECC */        lw $t0, %lo(D_ovl2_8012EECC)($t0)
   /* 08B558 8010FD58 3C0B8013 */       lui $t3, %hi(D_ovl2_8012EED0)
   /* 08B55C 8010FD5C 3C038013 */       lui $v1, %hi(D_ovl2_8012EED4)
   /* 08B560 8010FD60 03284821 */      addu $t1, $t9, $t0
   /* 08B564 8010FD64 A5250014 */        sh $a1, 0x14($t1)
   /* 08B568 8010FD68 8D6BEED0 */        lw $t3, %lo(D_ovl2_8012EED0)($t3)
-  /* 08B56C 8010FD6C 8C8A0010 */        lw $t2, 0x10($a0) # gCommonFiles + 16
+  /* 08B56C 8010FD6C 8C8A0010 */        lw $t2, 0x10($a0) # gGMCommonFiles + 16
   /* 08B570 8010FD70 3C028013 */       lui $v0, %hi(D_ovl2_8012EEF4)
   /* 08B574 8010FD74 2442EEF4 */     addiu $v0, $v0, %lo(D_ovl2_8012EEF4)
   /* 08B578 8010FD78 014B6021 */      addu $t4, $t2, $t3
   /* 08B57C 8010FD7C A5850014 */        sh $a1, 0x14($t4)
   /* 08B580 8010FD80 2463EED4 */     addiu $v1, $v1, %lo(D_ovl2_8012EED4)
   .L8010FD84:
-  /* 08B584 8010FD84 8C8D0010 */        lw $t5, 0x10($a0) # gCommonFiles + 16
+  /* 08B584 8010FD84 8C8D0010 */        lw $t5, 0x10($a0) # gGMCommonFiles + 16
   /* 08B588 8010FD88 8C6E0000 */        lw $t6, ($v1) # D_ovl2_8012EED4 + 0
   /* 08B58C 8010FD8C 24630010 */     addiu $v1, $v1, 0x10
   /* 08B590 8010FD90 01AE7821 */      addu $t7, $t5, $t6
   /* 08B594 8010FD94 A5E50014 */        sh $a1, 0x14($t7)
-  /* 08B598 8010FD98 8C980010 */        lw $t8, 0x10($a0) # gCommonFiles + 16
+  /* 08B598 8010FD98 8C980010 */        lw $t8, 0x10($a0) # gGMCommonFiles + 16
   /* 08B59C 8010FD9C 8C79FFF4 */        lw $t9, -0xc($v1) # D_ovl2_8012EED4 + -12
   /* 08B5A0 8010FDA0 03194021 */      addu $t0, $t8, $t9
   /* 08B5A4 8010FDA4 A5050014 */        sh $a1, 0x14($t0)
-  /* 08B5A8 8010FDA8 8C890010 */        lw $t1, 0x10($a0) # gCommonFiles + 16
+  /* 08B5A8 8010FDA8 8C890010 */        lw $t1, 0x10($a0) # gGMCommonFiles + 16
   /* 08B5AC 8010FDAC 8C6AFFF8 */        lw $t2, -8($v1) # D_ovl2_8012EED4 + -8
   /* 08B5B0 8010FDB0 012A5821 */      addu $t3, $t1, $t2
   /* 08B5B4 8010FDB4 A5650014 */        sh $a1, 0x14($t3)
   /* 08B5B8 8010FDB8 8C6DFFFC */        lw $t5, -4($v1) # D_ovl2_8012EED4 + -4
-  /* 08B5BC 8010FDBC 8C8C0010 */        lw $t4, 0x10($a0) # gCommonFiles + 16
+  /* 08B5BC 8010FDBC 8C8C0010 */        lw $t4, 0x10($a0) # gGMCommonFiles + 16
   /* 08B5C0 8010FDC0 018D7021 */      addu $t6, $t4, $t5
   /* 08B5C4 8010FDC4 1462FFEF */       bne $v1, $v0, .L8010FD84
   /* 08B5C8 8010FDC8 A5C50014 */        sh $a1, 0x14($t6)
@@ -64899,31 +64899,31 @@ glabel func_ovl2_8010FDD4
   /* 08B660 8010FE60 24060017 */     addiu $a2, $zero, 0x17
   /* 08B664 8010FE64 0C00277D */       jal omAddGObjRenderProc
   /* 08B668 8010FE68 02203825 */        or $a3, $s1, $zero
-  /* 08B66C 8010FE6C 3C128013 */       lui $s2, %hi(gCommonFiles)
-  /* 08B670 8010FE70 26520D40 */     addiu $s2, $s2, %lo(gCommonFiles)
-  /* 08B674 8010FE74 8E4C0010 */        lw $t4, 0x10($s2) # gCommonFiles + 16
+  /* 08B66C 8010FE6C 3C128013 */       lui $s2, %hi(gGMCommonFiles)
+  /* 08B670 8010FE70 26520D40 */     addiu $s2, $s2, %lo(gGMCommonFiles)
+  /* 08B674 8010FE74 8E4C0010 */        lw $t4, 0x10($s2) # gGMCommonFiles + 16
   /* 08B678 8010FE78 3C110000 */       lui $s1, %hi(D_NF_00000068)
   /* 08B67C 8010FE7C 26310068 */     addiu $s1, $s1, %lo(D_NF_00000068)
   /* 08B680 8010FE80 02002025 */        or $a0, $s0, $zero
   /* 08B684 8010FE84 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 08B688 8010FE88 01912821 */      addu $a1, $t4, $s1
-  /* 08B68C 8010FE8C 8E4D0010 */        lw $t5, 0x10($s2) # gCommonFiles + 16
+  /* 08B68C 8010FE8C 8E4D0010 */        lw $t5, 0x10($s2) # gGMCommonFiles + 16
   /* 08B690 8010FE90 02002025 */        or $a0, $s0, $zero
   /* 08B694 8010FE94 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 08B698 8010FE98 01B12821 */      addu $a1, $t5, $s1
-  /* 08B69C 8010FE9C 8E4F0010 */        lw $t7, 0x10($s2) # gCommonFiles + 16
+  /* 08B69C 8010FE9C 8E4F0010 */        lw $t7, 0x10($s2) # gGMCommonFiles + 16
   /* 08B6A0 8010FEA0 02002025 */        or $a0, $s0, $zero
   /* 08B6A4 8010FEA4 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 08B6A8 8010FEA8 01F12821 */      addu $a1, $t7, $s1
-  /* 08B6AC 8010FEAC 8E4E0010 */        lw $t6, 0x10($s2) # gCommonFiles + 16
+  /* 08B6AC 8010FEAC 8E4E0010 */        lw $t6, 0x10($s2) # gGMCommonFiles + 16
   /* 08B6B0 8010FEB0 02002025 */        or $a0, $s0, $zero
   /* 08B6B4 8010FEB4 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 08B6B8 8010FEB8 01D12821 */      addu $a1, $t6, $s1
-  /* 08B6BC 8010FEBC 8E580010 */        lw $t8, 0x10($s2) # gCommonFiles + 16
+  /* 08B6BC 8010FEBC 8E580010 */        lw $t8, 0x10($s2) # gGMCommonFiles + 16
   /* 08B6C0 8010FEC0 02002025 */        or $a0, $s0, $zero
   /* 08B6C4 8010FEC4 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 08B6C8 8010FEC8 03112821 */      addu $a1, $t8, $s1
-  /* 08B6CC 8010FECC 8E590010 */        lw $t9, 0x10($s2) # gCommonFiles + 16
+  /* 08B6CC 8010FECC 8E590010 */        lw $t9, 0x10($s2) # gGMCommonFiles + 16
   /* 08B6D0 8010FED0 02002025 */        or $a0, $s0, $zero
   /* 08B6D4 8010FED4 0C0333F7 */       jal gcAppendSObjWithSprite
   /* 08B6D8 8010FED8 03312821 */      addu $a1, $t9, $s1
@@ -65618,8 +65618,8 @@ glabel func_ovl2_801107F0
   /* 08C0D4 801108D4 00403025 */        or $a2, $v0, $zero
   /* 08C0D8 801108D8 3C18FD70 */       lui $t8, 0xfd70
   /* 08C0DC 801108DC ACD80000 */        sw $t8, ($a2)
-  /* 08C0E0 801108E0 3C198013 */       lui $t9, %hi(gCommonFiles)
-  /* 08C0E4 801108E4 8F390D40 */        lw $t9, %lo(gCommonFiles)($t9)
+  /* 08C0E0 801108E0 3C198013 */       lui $t9, %hi(gGMCommonFiles)
+  /* 08C0E4 801108E4 8F390D40 */        lw $t9, %lo(gGMCommonFiles)($t9)
   /* 08C0E8 801108E8 3C0E0000 */       lui $t6, %hi(D_NF_000002C8)
   /* 08C0EC 801108EC 25CE02C8 */     addiu $t6, $t6, %lo(D_NF_000002C8)
   /* 08C0F0 801108F0 24420008 */     addiu $v0, $v0, 8
@@ -66393,10 +66393,10 @@ glabel ifPlayer_MagnifyGlass_SetInterface
   /* 08CC74 80111474 AFB00018 */        sw $s0, 0x18($sp)
   /* 08CC78 80111478 3C140000 */       lui $s4, %hi(D_NF_00000030)
   /* 08CC7C 8011147C 3C17800A */       lui $s7, %hi(gBattleState)
-  /* 08CC80 80111480 3C168013 */       lui $s6, %hi(gCommonFiles)
+  /* 08CC80 80111480 3C168013 */       lui $s6, %hi(gGMCommonFiles)
   /* 08CC84 80111484 3C138013 */       lui $s3, %hi(gPlayerMagnifyInterface)
   /* 08CC88 80111488 26731748 */     addiu $s3, $s3, %lo(gPlayerMagnifyInterface)
-  /* 08CC8C 8011148C 26D60D40 */     addiu $s6, $s6, %lo(gCommonFiles)
+  /* 08CC8C 8011148C 26D60D40 */     addiu $s6, $s6, %lo(gGMCommonFiles)
   /* 08CC90 80111490 26F750E8 */     addiu $s7, $s7, %lo(gBattleState)
   /* 08CC94 80111494 26940030 */     addiu $s4, $s4, %lo(D_NF_00000030)
   /* 08CC98 80111498 241E0074 */     addiu $fp, $zero, 0x74
@@ -66408,7 +66408,7 @@ glabel ifPlayer_MagnifyGlass_SetInterface
   /* 08CCAC 801114AC 2406000C */     addiu $a2, $zero, 0xc
   /* 08CCB0 801114B0 0C00265A */       jal omMakeGObjSPAfter
   /* 08CCB4 801114B4 02A03825 */        or $a3, $s5, $zero
-  /* 08CCB8 801114B8 8ECE0000 */        lw $t6, ($s6) # gCommonFiles + 0
+  /* 08CCB8 801114B8 8ECE0000 */        lw $t6, ($s6) # gGMCommonFiles + 0
   /* 08CCBC 801114BC 00409025 */        or $s2, $v0, $zero
   /* 08CCC0 801114C0 00402025 */        or $a0, $v0, $zero
   /* 08CCC4 801114C4 0C0024B4 */       jal omAddDObjForGObj
@@ -66482,8 +66482,8 @@ glabel func_ovl2_80111588
   /* 08CDB8 801115B8 00000000 */       nop 
 
 glabel func_ovl2_801115BC
-  /* 08CDBC 801115BC 3C0E8013 */       lui $t6, %hi(gCommonFiles)
-  /* 08CDC0 801115C0 8DCE0D40 */        lw $t6, %lo(gCommonFiles)($t6)
+  /* 08CDBC 801115BC 3C0E8013 */       lui $t6, %hi(gGMCommonFiles)
+  /* 08CDC0 801115C0 8DCE0D40 */        lw $t6, %lo(gGMCommonFiles)($t6)
   /* 08CDC4 801115C4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 08CDC8 801115C8 3C0F0000 */       lui $t7, %hi(D_NF_00000270)
   /* 08CDCC 801115CC AFBF0014 */        sw $ra, 0x14($sp)
@@ -66559,8 +66559,8 @@ glabel func_ovl2_80111684
   /* 08CEBC 801116BC 24060008 */     addiu $a2, $zero, 8
   /* 08CEC0 801116C0 0C00277D */       jal omAddGObjRenderProc
   /* 08CEC4 801116C4 3C078000 */       lui $a3, 0x8000
-  /* 08CEC8 801116C8 3C0F8013 */       lui $t7, %hi(gCommonFiles)
-  /* 08CECC 801116CC 8DEF0D40 */        lw $t7, %lo(gCommonFiles)($t7)
+  /* 08CEC8 801116C8 3C0F8013 */       lui $t7, %hi(gGMCommonFiles)
+  /* 08CECC 801116CC 8DEF0D40 */        lw $t7, %lo(gGMCommonFiles)($t7)
   /* 08CED0 801116D0 3C180000 */       lui $t8, %hi(D_NF_00000188)
   /* 08CED4 801116D4 27180188 */     addiu $t8, $t8, %lo(D_NF_00000188)
   /* 08CED8 801116D8 8FA40024 */        lw $a0, 0x24($sp)
@@ -66930,11 +66930,11 @@ glabel ifPlayer_Tag_SetInterface
   /* 08D400 80111C00 AFB00020 */        sw $s0, 0x20($sp)
   /* 08D404 80111C04 3C14800A */       lui $s4, %hi(gBattleState)
   /* 08D408 80111C08 3C178013 */       lui $s7, %hi(ifPlayer_Tag_SpriteOffsets)
-  /* 08D40C 80111C0C 3C1E8013 */       lui $fp, %hi(gCommonFiles)
+  /* 08D40C 80111C0C 3C1E8013 */       lui $fp, %hi(gGMCommonFiles)
   /* 08D410 80111C10 AFBF0044 */        sw $ra, 0x44($sp)
   /* 08D414 80111C14 AFB3002C */        sw $s3, 0x2c($sp)
   /* 08D418 80111C18 AFB10024 */        sw $s1, 0x24($sp)
-  /* 08D41C 80111C1C 27DE0D40 */     addiu $fp, $fp, %lo(gCommonFiles)
+  /* 08D41C 80111C1C 27DE0D40 */     addiu $fp, $fp, %lo(gGMCommonFiles)
   /* 08D420 80111C20 26F7EFAC */     addiu $s7, $s7, %lo(ifPlayer_Tag_SpriteOffsets)
   /* 08D424 80111C24 269450E8 */     addiu $s4, $s4, %lo(gBattleState)
   /* 08D428 80111C28 00008025 */        or $s0, $zero, $zero
@@ -66962,7 +66962,7 @@ glabel ifPlayer_Tag_SetInterface
   /* 08D47C 80111C7C 0C00277D */       jal omAddGObjRenderProc
   /* 08D480 80111C80 02A03825 */        or $a3, $s5, $zero
   /* 08D484 80111C84 8E880000 */        lw $t0, ($s4) # gBattleState + 0
-  /* 08D488 80111C88 8FCE0018 */        lw $t6, 0x18($fp) # gCommonFiles + 24
+  /* 08D488 80111C88 8FCE0018 */        lw $t6, 0x18($fp) # gGMCommonFiles + 24
   /* 08D48C 80111C8C 02202025 */        or $a0, $s1, $zero
   /* 08D490 80111C90 01104821 */      addu $t1, $t0, $s0
   /* 08D494 80111C94 912A002A */       lbu $t2, 0x2a($t1)
@@ -67212,7 +67212,7 @@ glabel func_ovl2_80111FF0
 glabel func_ovl2_80112024
   /* 08D824 80112024 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 08D828 80112028 AFB2001C */        sw $s2, 0x1c($sp)
-  /* 08D82C 8011202C 3C128013 */       lui $s2, %hi(gCommonFiles)
+  /* 08D82C 8011202C 3C128013 */       lui $s2, %hi(gGMCommonFiles)
   /* 08D830 80112030 00057080 */       sll $t6, $a1, 2
   /* 08D834 80112034 AFB40024 */        sw $s4, 0x24($sp)
   /* 08D838 80112038 024E9021 */      addu $s2, $s2, $t6
@@ -67223,7 +67223,7 @@ glabel func_ovl2_80112024
   /* 08D84C 8011204C AFB10018 */        sw $s1, 0x18($sp)
   /* 08D850 80112050 AFB00014 */        sw $s0, 0x14($sp)
   /* 08D854 80112054 18E00016 */      blez $a3, .L801120B0
-  /* 08D858 80112058 8E520D40 */        lw $s2, %lo(gCommonFiles)($s2)
+  /* 08D858 80112058 8E520D40 */        lw $s2, %lo(gGMCommonFiles)($s2)
   /* 08D85C 8011205C 000778C0 */       sll $t7, $a3, 3
   /* 08D860 80112060 01E69821 */      addu $s3, $t7, $a2
   /* 08D864 80112064 00C08025 */        or $s0, $a2, $zero
@@ -68049,12 +68049,12 @@ glabel func_ovl2_80112C18
   /* 08E438 80112C38 1440003B */      bnez $v0, .L80112D28
   /* 08E43C 80112C3C 3C098013 */       lui $t1, %hi(ifTimer_Digits_SpriteOffsets)
   /* 08E440 80112C40 8C780008 */        lw $t8, 8($v1)
-  /* 08E444 80112C44 3C0A8013 */       lui $t2, %hi(gCommonFiles)
-  /* 08E448 80112C48 254A0D40 */     addiu $t2, $t2, %lo(gCommonFiles)
+  /* 08E444 80112C44 3C0A8013 */       lui $t2, %hi(gGMCommonFiles)
+  /* 08E448 80112C48 254A0D40 */     addiu $t2, $t2, %lo(gGMCommonFiles)
   /* 08E44C 80112C4C 8F190008 */        lw $t9, 8($t8)
   /* 08E450 80112C50 2529EE94 */     addiu $t1, $t1, %lo(ifTimer_Digits_SpriteOffsets)
   /* 08E454 80112C54 8D2D0000 */        lw $t5, ($t1) # ifTimer_Digits_SpriteOffsets + 0
-  /* 08E458 80112C58 8D4E000C */        lw $t6, 0xc($t2) # gCommonFiles + 12
+  /* 08E458 80112C58 8D4E000C */        lw $t6, 0xc($t2) # gGMCommonFiles + 12
   /* 08E45C 80112C5C 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
   /* 08E460 80112C60 8F230008 */        lw $v1, 8($t9)
   /* 08E464 80112C64 44810000 */      mtc1 $at, $f0 # 0.5 to cop1
@@ -68124,11 +68124,11 @@ glabel func_ovl2_80112C18
   /* 08E554 80112D54 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
   /* 08E558 80112D58 3C068013 */       lui $a2, %hi(gTimerDigitsInterface)
   /* 08E55C 80112D5C 3C0B8013 */       lui $t3, %hi(ifTimer_Digits_SpritePositionsX)
-  /* 08E560 80112D60 3C0A8013 */       lui $t2, %hi(gCommonFiles)
+  /* 08E560 80112D60 3C0A8013 */       lui $t2, %hi(gGMCommonFiles)
   /* 08E564 80112D64 3C098013 */       lui $t1, %hi(ifTimer_Digits_SpriteOffsets)
   /* 08E568 80112D68 44810000 */      mtc1 $at, $f0 # 0.5 to cop1
   /* 08E56C 80112D6C 2529EE94 */     addiu $t1, $t1, %lo(ifTimer_Digits_SpriteOffsets)
-  /* 08E570 80112D70 254A0D40 */     addiu $t2, $t2, %lo(gCommonFiles)
+  /* 08E570 80112D70 254A0D40 */     addiu $t2, $t2, %lo(gGMCommonFiles)
   /* 08E574 80112D74 256BEE54 */     addiu $t3, $t3, %lo(ifTimer_Digits_SpritePositionsX)
   /* 08E578 80112D78 24C617C8 */     addiu $a2, $a2, %lo(gTimerDigitsInterface)
   /* 08E57C 80112D7C 240C0004 */     addiu $t4, $zero, 4
@@ -68157,7 +68157,7 @@ glabel func_ovl2_80112C18
   /* 08E5CC 80112DCC 00047080 */       sll $t6, $a0, 2
   /* 08E5D0 80112DD0 012E7821 */      addu $t7, $t1, $t6
   /* 08E5D4 80112DD4 8DED0000 */        lw $t5, ($t7)
-  /* 08E5D8 80112DD8 8D58000C */        lw $t8, 0xc($t2) # gCommonFiles + 12
+  /* 08E5D8 80112DD8 8D58000C */        lw $t8, 0xc($t2) # gGMCommonFiles + 12
   /* 08E5DC 80112DDC 01B8C821 */      addu $t9, $t5, $t8
   /* 08E5E0 80112DE0 2738003C */     addiu $t8, $t9, 0x3c
   /* 08E5E4 80112DE4 00606825 */        or $t5, $v1, $zero
@@ -68219,11 +68219,11 @@ glabel func_ovl2_80112C18
   /* 08E6B8 80112EB8 00000000 */       nop 
 
 glabel func_ovl2_80112EBC
-  /* 08E6BC 80112EBC 3C048013 */       lui $a0, %hi(gCommonFiles)
-  /* 08E6C0 80112EC0 24840D40 */     addiu $a0, $a0, %lo(gCommonFiles)
+  /* 08E6BC 80112EBC 3C048013 */       lui $a0, %hi(gGMCommonFiles)
+  /* 08E6C0 80112EC0 24840D40 */     addiu $a0, $a0, %lo(gGMCommonFiles)
   /* 08E6C4 80112EC4 3C0F8013 */       lui $t7, %hi(ifTimer_Digits_SpriteOffsets)
   /* 08E6C8 80112EC8 8DEFEE94 */        lw $t7, %lo(ifTimer_Digits_SpriteOffsets)($t7)
-  /* 08E6CC 80112ECC 8C8E000C */        lw $t6, 0xc($a0) # gCommonFiles + 12
+  /* 08E6CC 80112ECC 8C8E000C */        lw $t6, 0xc($a0) # gGMCommonFiles + 12
   /* 08E6D0 80112ED0 24050201 */     addiu $a1, $zero, 0x201
   /* 08E6D4 80112ED4 3C038013 */       lui $v1, %hi(D_ovl2_8012EE98)
   /* 08E6D8 80112ED8 3C028013 */       lui $v0, %hi(ifPlayer_Stocks_DigitSpriteOffsets)
@@ -68232,21 +68232,21 @@ glabel func_ovl2_80112EBC
   /* 08E6E4 80112EE4 2442EEC8 */     addiu $v0, $v0, %lo(ifPlayer_Stocks_DigitSpriteOffsets)
   /* 08E6E8 80112EE8 2463EE98 */     addiu $v1, $v1, %lo(D_ovl2_8012EE98)
   .L80112EEC:
-  /* 08E6EC 80112EEC 8C99000C */        lw $t9, 0xc($a0) # gCommonFiles + 12
+  /* 08E6EC 80112EEC 8C99000C */        lw $t9, 0xc($a0) # gGMCommonFiles + 12
   /* 08E6F0 80112EF0 8C680000 */        lw $t0, ($v1) # D_ovl2_8012EE98 + 0
   /* 08E6F4 80112EF4 24630010 */     addiu $v1, $v1, 0x10
   /* 08E6F8 80112EF8 03284821 */      addu $t1, $t9, $t0
   /* 08E6FC 80112EFC A5250014 */        sh $a1, 0x14($t1)
-  /* 08E700 80112F00 8C8A000C */        lw $t2, 0xc($a0) # gCommonFiles + 12
+  /* 08E700 80112F00 8C8A000C */        lw $t2, 0xc($a0) # gGMCommonFiles + 12
   /* 08E704 80112F04 8C6BFFF4 */        lw $t3, -0xc($v1) # D_ovl2_8012EE98 + -12
   /* 08E708 80112F08 014B6021 */      addu $t4, $t2, $t3
   /* 08E70C 80112F0C A5850014 */        sh $a1, 0x14($t4)
-  /* 08E710 80112F10 8C8D000C */        lw $t5, 0xc($a0) # gCommonFiles + 12
+  /* 08E710 80112F10 8C8D000C */        lw $t5, 0xc($a0) # gGMCommonFiles + 12
   /* 08E714 80112F14 8C6EFFF8 */        lw $t6, -8($v1) # D_ovl2_8012EE98 + -8
   /* 08E718 80112F18 01AE7821 */      addu $t7, $t5, $t6
   /* 08E71C 80112F1C A5E50014 */        sh $a1, 0x14($t7)
   /* 08E720 80112F20 8C79FFFC */        lw $t9, -4($v1) # D_ovl2_8012EE98 + -4
-  /* 08E724 80112F24 8C98000C */        lw $t8, 0xc($a0) # gCommonFiles + 12
+  /* 08E724 80112F24 8C98000C */        lw $t8, 0xc($a0) # gGMCommonFiles + 12
   /* 08E728 80112F28 03194021 */      addu $t0, $t8, $t9
   /* 08E72C 80112F2C 1462FFEF */       bne $v1, $v0, .L80112EEC
   /* 08E730 80112F30 A5050014 */        sh $a1, 0x14($t0)
@@ -71592,7 +71592,7 @@ glabel func_ovl2_80115DA8
   /* 0915B4 80115DB4 3C048013 */       lui $a0, %hi(gScreenFlashColAnim)
   /* 0915B8 80115DB8 24841A40 */     addiu $a0, $a0, %lo(gScreenFlashColAnim)
   /* 0915BC 80115DBC 00003025 */        or $a2, $zero, $zero
-  /* 0915C0 80115DC0 0C038220 */       jal ftMain_UpdateColAnim
+  /* 0915C0 80115DC0 0C038220 */       jal ftMainUpdateColAnim
   /* 0915C4 80115DC4 00003825 */        or $a3, $zero, $zero
   /* 0915C8 80115DC8 10400003 */      beqz $v0, .L80115DD8
   /* 0915CC 80115DCC 3C048013 */       lui $a0, %hi(gScreenFlashColAnim)

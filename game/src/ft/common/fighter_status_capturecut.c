@@ -140,5 +140,5 @@ void ftCommon_Shouldered_SetStatus(GObj *fighter_gobj)
         ftAttackUpdateMatchStats(capture_fp->player, this_fp->player, damage);
         ftAttackAddStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);
     }
-    ftMain_MakeRumble(this_fp, 7, 0);
+    ftMainMakeRumble(this_fp, 7, 0);
 }

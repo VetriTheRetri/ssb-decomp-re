@@ -44,11 +44,10 @@ struct grMapObject
     sb32(*proc_update)(GObj*, GObj*, s32*);
 };
 
-struct grMapEnvironment
+struct grMapEnv
 {
     GObj *egobj;
     sb32(*proc_update)(GObj*, GObj*, grHitbox*, s32*);
-
 };
 
 struct grItemWeights

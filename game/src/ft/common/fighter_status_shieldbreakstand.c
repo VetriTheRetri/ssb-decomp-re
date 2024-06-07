@@ -14,5 +14,5 @@ void ftCommon_ShieldBreakStand_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id = (fp->status_info.status_id == ftStatus_Common_ShieldBreakDownD) ? ftStatus_Common_ShieldBreakStandD : ftStatus_Common_ShieldBreakStandU;
 
-    ftMain_SetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKSTAND_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKSTAND_STATUPDATE_FLAGS);
 }

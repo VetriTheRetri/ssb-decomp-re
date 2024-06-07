@@ -100,13 +100,13 @@ struct _GObjThread
     GObjThread *next;
     OSThread osthread;
     u64 *osstack;
-    u32 stack_size;
+    size_t stack_size;
 };
 
 struct _OMThreadStackNode
 {
     OMThreadStackNode *next;
-    u32 stack_size;
+    size_t stack_size;
     u64 stack[1];
 }; // size == 0x08 + VLA
 
@@ -115,7 +115,7 @@ struct _OMThreadStackList
 {
     OMThreadStackList *next;
     OMThreadStackNode *stack;
-    u32 size;
+    size_t size;
 };
 
 struct _GObjProcess
@@ -140,7 +140,7 @@ struct _GObjProcess
 struct GObjLink
 {
     GObj *next;
-    s32 unk_gobjlink_0x4;
+    s32 ftparts_gobjlink_0x4;
 };
 
 struct GObj
@@ -159,7 +159,7 @@ struct GObj
     union
     {
         s32 unk_0x1C;
-        GObj *unk_gobj_0x1C;
+        GObj *ftparts_gobj_0x1C;
         GObjProcess *gobjproc_tail;
     };
     
@@ -167,9 +167,9 @@ struct GObj
     GObj *dl_link_prev;
     u32 dl_link_order;
     void (*proc_render)(GObj*);
-    u64 unk_gobj_0x30;
-    s32 unk_gobj_0x38;                  // 0xFFFFFFFF, textures or series of flags?
-    u64 unk_gobj_0x40;
+    u64 ftparts_gobj_0x30;
+    s32 ftparts_gobj_0x38;                  // 0xFFFFFFFF, textures or series of flags?
+    u64 ftparts_gobj_0x40;
     GObjLink gobjlinks[5];
     s32 gobjlink_len;                   // Length/number of active members of gobjlinks
     void *obj;                          // Can be: NULL, DObj, SObj or Camera
@@ -505,7 +505,7 @@ struct _OMSetup
     GObjThread *gobjthreads;
     s32 num_gobjthreads;
 
-    u32 omthreadstack_size;
+    size_t omthreadstack_size;
     OMThreadStackNode *omthreadstacks;
     u32 num_omthreadstacks;
 
@@ -516,7 +516,7 @@ struct _OMSetup
 
     GObj *gobjs;
     s32 num_gobjs;
-    s32 gobj_size;
+    size_t gobj_size;
 
     OMMtx *ommtxes;
     s32 num_ommtxes;
@@ -531,15 +531,15 @@ struct _OMSetup
 
     DObj *dobjs;
     s32 num_dobjs;
-    s32 dobj_size;
+    size_t dobj_size;
 
     SObj *sobjs;
     s32 num_sobjs;
-    s32 sobj_size;
+    size_t sobj_size;
 
     Camera *cameras;
     s32 num_cameras;
-    s32 camera_size;
+    size_t camera_size;
 };
 
 #endif

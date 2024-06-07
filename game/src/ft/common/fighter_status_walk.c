@@ -93,8 +93,8 @@ void ftCommon_Walk_SetStatusParam(GObj *fighter_gobj, f32 anim_frame_begin)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id = ftCommon_Walk_GetWalkStatus(fp->input.pl.stick_range.x);
 
-    ftMain_SetFighterStatus(fighter_gobj, status_id, anim_frame_begin, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, status_id, anim_frame_begin, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     if (status_id != ftStatus_Common_WalkFast)
     {

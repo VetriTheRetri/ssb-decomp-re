@@ -43,11 +43,11 @@ glabel sFTPublicityDefeatedALSound
     .space 4
 glabel sFTPublicityDefeatedCurrentOrder
     .space 8
-glabel sWeaponAllocFree
+glabel sWPManagerWeaponAllocFree
     .space 4
-glabel sWeaponDisplayMode
+glabel sWPManagerWeaponDisplayMode
     .space 4
-glabel sWeaponGroupIndex
+glabel sWPManagerWeaponGroupID
     .space 72
 glabel gITFileData
     .space 4

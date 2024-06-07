@@ -72,8 +72,8 @@ void ftCommon_Twister_SetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
     {
         ftMap_SetAir(fp);
     }
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_Twister, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Twister, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftPhysics_StopVelAll(fighter_gobj);
 
     fp->status_vars.common.twister.release_wait = 0;

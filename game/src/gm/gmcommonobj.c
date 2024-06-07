@@ -177,7 +177,7 @@ void ftCommon_StickInputSetLR(ftStruct *fp)
 }
 
 // 0x800E806C
-void ftMain_MakeRumble(ftStruct *fp, s32 rumble_id, s32 duration)
+void ftMainMakeRumble(ftStruct *fp, s32 rumble_id, s32 duration)
 {
     if (fp->status_info.pl_kind == Pl_Kind_Man)
     {
@@ -459,13 +459,13 @@ void ftCommon_CollDataSetVelPush(GObj *fighter_gobj, Vec3f *vel_push)
 }
 
 // 0x800E86D4
-s32 ftParts_GetJointCheckLightHold(ftStruct *fp, s32 joint_index)
+s32 ftParts_GetJointCheckLightHold(ftStruct *fp, s32 joint_id)
 {
-    if (joint_index == -2)
+    if (joint_id == -2)
     {
-        joint_index = fp->attributes->joint_itemhold_light;
+        joint_id = fp->attributes->joint_itemhold_light;
     }
-    return joint_index;
+    return joint_id;
 }
 
 // 0x800E86F0
@@ -533,7 +533,7 @@ void ftCommon_SetHitStatusPartAll(GObj *fighter_gobj, s32 hitstatus)
 }
 
 // 0x800E8884
-void ftCommon_SetHitStatusPart(GObj *fighter_gobj, s32 joint_index, s32 hitstatus)
+void ftCommon_SetHitStatusPart(GObj *fighter_gobj, s32 joint_id, s32 hitstatus)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
@@ -542,7 +542,7 @@ void ftCommon_SetHitStatusPart(GObj *fighter_gobj, s32 joint_index, s32 hitstatu
     {
         ftHurtbox *ft_hurt = &fp->fighter_hurt[i];
 
-        if ((ft_hurt->hitstatus != gmHitCollision_HitStatus_None) && (joint_index == ft_hurt->joint_index))
+        if ((ft_hurt->hitstatus != gmHitCollision_HitStatus_None) && (joint_id == ft_hurt->joint_id))
         {
             ft_hurt->hitstatus = hitstatus;
 
@@ -621,10 +621,10 @@ void ftCommon_InitFighterHurtParts(GObj *fighter_gobj)
 
     for (i = 0; i < FTPARTS_HURT_NUM_MAX; i++, ft_hurt++, ft_hurt_desc++)
     {
-        if (ft_hurt_desc->joint_index != -1)
+        if (ft_hurt_desc->joint_id != -1)
         {
-            ft_hurt->joint_index = ft_hurt_desc->joint_index;
-            ft_hurt->joint = fp->joint[ft_hurt->joint_index];
+            ft_hurt->joint_id = ft_hurt_desc->joint_id;
+            ft_hurt->joint = fp->joint[ft_hurt->joint_id];
 
             ft_hurt->placement = ft_hurt_desc->placement;
             ft_hurt->is_grabbable = ft_hurt_desc->is_grabbable;
@@ -641,7 +641,7 @@ void ftCommon_InitFighterHurtParts(GObj *fighter_gobj)
 }
 
 // 0x800E8BC8
-void ftCommon_UpdateFighterHurtPartIndex(GObj *fighter_gobj, s32 joint_index, Vec3f *offset, Vec3f *size)
+void ftCommon_UpdateFighterHurtPartIndex(GObj *fighter_gobj, s32 joint_id, Vec3f *offset, Vec3f *size)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
@@ -650,7 +650,7 @@ void ftCommon_UpdateFighterHurtPartIndex(GObj *fighter_gobj, s32 joint_index, Ve
     {
         ftHurtbox *ft_hurt = &fp->fighter_hurt[i];
 
-        if (joint_index == ft_hurt->joint_index)
+        if (joint_id == ft_hurt->joint_id)
         {
             ft_hurt->offset = *offset;
             ft_hurt->size = *size;
@@ -667,7 +667,7 @@ void ftCommon_UpdateFighterHurtPartIndex(GObj *fighter_gobj, s32 joint_index, Ve
 }
 
 // 0x800E8C70
-void ftCommon_SetModelPartRenderIndex(GObj *fighter_gobj, s32 joint_index, s32 render_state)
+void ftCommon_SetModelPartRenderIndex(GObj *fighter_gobj, s32 joint_id, s32 render_state)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -680,9 +680,9 @@ void ftCommon_SetModelPartRenderIndex(GObj *fighter_gobj, s32 joint_index, s32 r
     s32 lod_index;
     void *sp38;
 
-    joint = fp->joint[joint_index];
+    joint = fp->joint[joint_id];
     dobj_desc_container = attributes->dobj_desc_container;
-    joint_render_state = &fp->joint_render_state[joint_index - 4];
+    joint_render_state = &fp->joint_render_state[joint_id - 4];
     unk_dobj = joint->user_data.p;
 
     if (joint != NULL)
@@ -695,9 +695,9 @@ void ftCommon_SetModelPartRenderIndex(GObj *fighter_gobj, s32 joint_index, s32 r
 
             if (render_state != -1)
             {
-                if (fp->attributes->model_parts->model_part_desc[joint_index - 4] != NULL)
+                if (fp->attributes->model_parts->model_part_desc[joint_id - 4] != NULL)
                 {
-                    model_part = &fp->attributes->model_parts->model_part_desc[joint_index - 4]->model_part[render_state][fp->lod_current - 1];
+                    model_part = &fp->attributes->model_parts->model_part_desc[joint_id - 4]->model_part[render_state][fp->lod_current - 1];
 
                     joint->display_list = model_part->display_list;
 
@@ -707,23 +707,23 @@ void ftCommon_SetModelPartRenderIndex(GObj *fighter_gobj, s32 joint_index, s32 r
                 }
                 else
                 {
-                    if ((fp->lod_current == 1) || (dobj_desc_container->dobj_desc_array[1].dobj_desc[joint_index - 4].display_list == NULL))
+                    if ((fp->lod_current == 1) || (dobj_desc_container->dobj_desc_array[1].dobj_desc[joint_id - 4].display_list == NULL))
                     {
                         lod_index = 0;
                     }
                     else lod_index = 1;
 
-                    joint->display_list = dobj_desc_container->dobj_desc_array[lod_index].dobj_desc[joint_index - 4].display_list;
+                    joint->display_list = dobj_desc_container->dobj_desc_array[lod_index].dobj_desc[joint_id - 4].display_list;
 
                     if (dobj_desc_container->dobj_desc_array[lod_index].d2 != NULL)
                     {
-                        sp38 = dobj_desc_container->dobj_desc_array[lod_index].d2[joint_index - 4];
+                        sp38 = dobj_desc_container->dobj_desc_array[lod_index].d2[joint_id - 4];
                     }
                     else sp38 = NULL;
 
                     if (dobj_desc_container->dobj_desc_array[lod_index].d3 != NULL)
                     {
-                        var_a2 = dobj_desc_container->dobj_desc_array[lod_index].d3[joint_index - 4];
+                        var_a2 = dobj_desc_container->dobj_desc_array[lod_index].d3[joint_id - 4];
                     }
                     else var_a2 = NULL;
 
@@ -739,11 +739,11 @@ void ftCommon_SetModelPartRenderIndex(GObj *fighter_gobj, s32 joint_index, s32 r
     }
 }
 
-void ftCommon_SetModelPartRenderStateIndex(GObj *fighter_gobj, s32 joint_index, s32 render_state)
+void ftCommon_SetModelPartRenderStateIndex(GObj *fighter_gobj, s32 joint_id, s32 render_state)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joint_render_state[joint_index - ftParts_Joint_EnumMax].render_state_b0 = render_state;
+    fp->joint_render_state[joint_id - ftParts_Joint_EnumMax].render_state_b0 = render_state;
 
     fp->is_modelpart_modify = TRUE;
 }
@@ -894,7 +894,7 @@ void func_ovl2_800E9248(GObj *fighter_gobj, s32 costume, s32 shade)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
     DObj *joint;
-    GObj *unk_gobj;
+    GObj *ftparts_gobj;
     ftParts *unk_dobj;
     DObjDescContainer *dobj_desc_container;
     ftMesh *unk_ftdobj;
@@ -949,24 +949,24 @@ void func_ovl2_800E9248(GObj *fighter_gobj, s32 costume, s32 shade)
                     func_ovl0_800C8CB8(joint, var_a1, var_a2, NULL, costume);
                 }
             }
-            if ((unk_ftdobj != NULL) && ((i + 4) == unk_ftdobj->joint_index))
+            if ((unk_ftdobj != NULL) && ((i + 4) == unk_ftdobj->joint_id))
             {
                 unk_dobj = joint->user_data.p;
 
-                if (unk_dobj->unk_gobj != NULL)
+                if (unk_dobj->ftparts_gobj != NULL)
                 {
-                    omEjectGObj(unk_dobj->unk_gobj);
+                    omEjectGObj(unk_dobj->ftparts_gobj);
 
-                    unk_dobj->unk_gobj = NULL;
+                    unk_dobj->ftparts_gobj = NULL;
                 }
                 if (costume != 0)
                 {
-                    unk_gobj = omMakeGObjSPAfter(0x3E9U, NULL, 0xDU, 0x80000000U);
-                    unk_dobj->unk_gobj = unk_gobj;
+                    ftparts_gobj = omMakeGObjSPAfter(0x3E9U, NULL, 0xDU, 0x80000000U);
+                    unk_dobj->ftparts_gobj = ftparts_gobj;
 
-                    omAddDObjForGObj(unk_gobj, unk_ftdobj->dl);
+                    omAddDObjForGObj(ftparts_gobj, unk_ftdobj->dl);
 
-                    func_ovl0_800C8CB8(unk_dobj->unk_gobj->obj, unk_ftdobj->unk_ftdobj_0x8, unk_ftdobj->unk_ftdobj_0xC, NULL, costume);
+                    func_ovl0_800C8CB8(unk_dobj->ftparts_gobj->obj, unk_ftdobj->unk_ftdobj_0x8, unk_ftdobj->unk_ftdobj_0xC, NULL, costume);
                 }
             }
         }
@@ -998,7 +998,7 @@ void func_ovl2_800E9598(GObj *fighter_gobj)
     {
         if (texture_render_state->frame_index_current != texture_render_state->frame_index_default)
         {
-            joint = fp->joint[texture_info->joint_index];
+            joint = fp->joint[texture_info->joint_id];
             lod = texture_info->lod[fp->lod_current - 1];
 
             if (joint != NULL)
@@ -1032,7 +1032,7 @@ void ftCommon_SetTexturePartIndex(GObj *fighter_gobj, s32 obj_index, s32 frame_i
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftTexturePartInfo *texture_part_info = &fp->attributes->texture_parts->texture_part_info[obj_index];
     s32 lod = texture_part_info->lod[fp->lod_current - 1];
-    DObj *joint = fp->joint[texture_part_info->joint_index];
+    DObj *joint = fp->joint[texture_part_info->joint_id];
 
     if (joint != NULL)
     {
@@ -1077,7 +1077,7 @@ void func_ovl2_800E96B0(GObj *fighter_gobj)
         {
             texture_render_state->frame_index_current = texture_render_state->frame_index_default;
 
-            joint = fp->joint[texture_info->joint_index];
+            joint = fp->joint[texture_info->joint_id];
             lod = texture_info->lod[fp->lod_current - 1];
 
             if (joint != NULL)
@@ -1579,7 +1579,7 @@ s32 ftCommon_DamageAdjustCapture(ftStruct *fp, s32 damage)
 }
 
 // 0x8012B820
-f32 gmCommon_DamageStaleTable[4] = 
+f32 dGMDamageStaleTable[/* */] = 
 {
     0.75F, 0.82F, 0.89F, 0.96F
 };
@@ -1587,24 +1587,24 @@ f32 gmCommon_DamageStaleTable[4] =
 // 0x800EA470
 f32 gmCommon_DamageGetStaleMul(s32 player, s32 attack_id, u16 motion_count)
 {
-    s32 stale_index;
+    s32 stale_id;
     s32 start_array_id;
     s32 current_array_id;
     s32 i;
 
-    stale_index = gBattleState->player_block[player].stale_index;
+    stale_id = gBattleState->player_block[player].stale_id;
 
     if (attack_id != ftMotion_AttackIndex_None)
     {
-        current_array_id = start_array_id = (stale_index != 0) ? stale_index - 1 : ARRAY_COUNT(gBattleState->player_block[player].stale_info) - 1;
+        current_array_id = start_array_id = (stale_id != 0) ? stale_id - 1 : ARRAY_COUNT(gBattleState->player_block[player].stale_info) - 1;
 
-        for (i = 0; i < ARRAY_COUNT(gmCommon_DamageStaleTable); i++)
+        for (i = 0; i < ARRAY_COUNT(dGMDamageStaleTable); i++)
         {
             if (attack_id == gBattleState->player_block[player].stale_info[current_array_id].attack_id)
             {
                 if (motion_count != gBattleState->player_block[player].stale_info[current_array_id].motion_count)
                 {
-                    return gmCommon_DamageStaleTable[i];
+                    return dGMDamageStaleTable[i];
                 }
                 else if (current_array_id == start_array_id)
                 {
@@ -1628,16 +1628,16 @@ s32 gmCommon_DamageApplyStale(s32 player, s32 damage, s32 attack_id, u16 flags)
     return damage;
 }
 
-extern u16 gEntityMotionCount; // Updated each time a new move is used? Includes non-attacks.
+extern u16 gFTManagerMotionCount; // Updated each time a new move is used? Includes non-attacks.
 
 // 0x800EA5BC
 u16 gmCommon_GetMotionCountInc(void)
 {
-    u16 motion_count = gEntityMotionCount++;
+    u16 motion_count = gFTManagerMotionCount++;
 
-    if (gEntityMotionCount == 0)
+    if (gFTManagerMotionCount == 0)
     {
-        gEntityMotionCount = 1;
+        gFTManagerMotionCount = 1;
     }
     return motion_count;
 }
@@ -1674,16 +1674,16 @@ void ftAttackAddStaleQueue(s32 attack_player, s32 defend_player, s32 attack_id, 
     }
 }
 
-extern u16 gEntityStatUpdateCount; // Updated each time an entity's status is changed? e.g. PK Fire pillar increments this twice, desyncing it from gEntityMotionCount
+extern u16 gFTManagerStatUpdateCount; // Updated each time an entity's status is changed? e.g. PK Fire pillar increments this twice, desyncing it from gFTManagerMotionCount
 
 // 0x800EA74C
 u16 gmCommon_GetStatUpdateCountInc(void)
 {
-    u16 update_count = gEntityStatUpdateCount++; 
+    u16 update_count = gFTManagerStatUpdateCount++; 
 
-    if (gEntityStatUpdateCount == 0)
+    if (gFTManagerStatUpdateCount == 0)
     {
-        gEntityStatUpdateCount = 1;
+        gFTManagerStatUpdateCount = 1;
     }
     return update_count;
 }
@@ -1808,7 +1808,7 @@ void ftCommon_GFXJointCycle(ftStruct *fp, Vec3f *pos)
 }
 
 // 0x800EABDC
-void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index, Vec3f *gfx_pos, Vec3f *gfx_scatter, s32 lr, sb32 is_scale_pos, u32 arg7)
+void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_id, Vec3f *gfx_pos, Vec3f *gfx_scatter, s32 lr, sb32 is_scale_pos, u32 arg7)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -1825,7 +1825,7 @@ void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index,
         switch (fp->ft_kind)
         {
         case Ft_Kind_Samus:
-            joint_index = 0x10;
+            joint_id = 0x10;
 
             gfx_pos_mod.z = gfx_pos_mod.y = 0.0F;
             gfx_pos_mod.x = 180.0F;
@@ -1834,7 +1834,7 @@ void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index,
             break;
 
         case Ft_Kind_Donkey:
-            joint_index = 0x10;
+            joint_id = 0x10;
 
             gfx_pos_mod.z = gfx_pos_mod.y = 0.0F;
             gfx_pos_mod.x = 100.0F;
@@ -1843,7 +1843,7 @@ void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index,
             break;
 
         case Ft_Kind_Kirby:
-            joint_index = 0x10;
+            joint_id = 0x10;
 
             gfx_pos_mod.z = gfx_pos_mod.y = 0.0F;
             gfx_pos_mod.x = 50.0F;
@@ -1852,7 +1852,7 @@ void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index,
             break;
 
         case Ft_Kind_GiantDonkey:
-            joint_index = 0x10;
+            joint_id = 0x10;
 
             gfx_pos_mod.z = gfx_pos_mod.y = 0.0F;
             gfx_pos_mod.x = 100.0F;
@@ -1870,7 +1870,7 @@ void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index,
     default:
         break;
     }
-    if (joint_index != -1)
+    if (joint_id != -1)
     {
         if (gfx_pos != NULL)
         {
@@ -1901,7 +1901,7 @@ void* ftParticle_MakeEffectKind(GObj *fighter_gobj, s32 gfx_id, s32 joint_index,
             pos.y *= scale;
             pos.z *= scale;
         }
-        ftParts_GetDObjWorldPosition(fp->joint[joint_index], &pos);
+        ftParts_GetDObjWorldPosition(fp->joint[joint_id], &pos);
     }
     switch (gfx_id)
     {
@@ -2680,6 +2680,6 @@ s32 func_ovl2_800EC11C(s32 ft_kind)
 // 0x800EC130
 void func_ovl2_800EC130(void)
 {
-    ftMain_ClearMapElementsAll();
+    ftMainClearMapElementsAll();
     func_ovl2_80113488();
 }

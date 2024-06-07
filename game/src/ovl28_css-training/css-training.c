@@ -830,7 +830,7 @@ void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 co
         if (fighter_gobj != NULL)
         {
             initial_y_rotation = DObjGetStruct(fighter_gobj)->rotate.vec.f.y;
-            func_ovl2_800D78E8(fighter_gobj);
+            ftManagerDestroyFighter(fighter_gobj);
         }
         else
         {
@@ -842,7 +842,7 @@ void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 co
         spawn_info.shade = 0;
         spawn_info.anim_heap = gMNTrainingPanels[port_id].anim_heap;
         spawn_info.player = port_id;
-        fighter_gobj = ftManager_MakeFighter(&spawn_info);
+        fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
         gMNTrainingPanels[port_id].player = fighter_gobj;
 
@@ -2662,11 +2662,11 @@ void mnTrainingInitCSS() {
     func_ovl2_80115890();
     efManager_AllocUserData();
     mnTrainingLoadMatchInfo();
-    ftManager_AllocFighterData(1U, 4);
+    ftManagerAllocFighter(1U, 4);
 
     for (i = 0; i < 12; i++)
     {
-        ftManager_SetFileDataKind(i);
+        ftManagerSetupDataKind(i);
     }
 
     for (i = 0; i < 4; i++)

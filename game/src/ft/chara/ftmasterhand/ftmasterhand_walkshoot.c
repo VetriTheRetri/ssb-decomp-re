@@ -9,5 +9,5 @@ void ftMasterHand_WalkShoot_ProcUpdate(GObj *fighter_gobj)
 // 0x80159AC4
 void ftMasterHand_WalkShoot_SetStatus(GObj *fighter_gobj)
 {
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_WalkShoot, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_MasterHand_WalkShoot, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 }

@@ -26,7 +26,21 @@
 #define FTFOX_REFLECTOR_GRAVITY_DELAY 5                 // Frames required for gravity to take effect
 #define FTFOX_REFLECTOR_GRAVITY 0.8F
 
-extern ftStatusDesc ftStatus_SpecialDesc_Fox[/* */];
+extern ftStatusDesc dFTFoxSpecialStatusDesc[/* */];
+
+extern void *gFTDataFoxMain;
+extern void *gFTDataFoxBattleMotion;
+extern void *gFTDataFoxModel;
+extern void *gFTDataFoxSpecial1;
+extern void *gFTDataFoxSpecial2;
+extern void *gFTDataFoxSpecial3;
+extern void *gFTDataFoxSpecial4;
+extern u32 gFTDataFoxParticleBankID;
+
+extern void *gFTDataPolyFoxMain;
+extern void *gFTDataPolyFoxSubMotion;
+extern void *gFTDataPolyFoxModel;
+extern u32 gFTDataPolyFoxParticleBankID;
 
 typedef enum ftFoxMotion
 {

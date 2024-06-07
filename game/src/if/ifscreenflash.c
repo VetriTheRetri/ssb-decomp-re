@@ -46,7 +46,7 @@ void func_ovl2_80115C20(GObj *gobj)
 // 0x80115DA8
 void func_ovl2_80115DA8(GObj *fighter_gobj)
 {
-    if (ftMain_UpdateColAnim(&gScreenFlashColAnim, fighter_gobj, FALSE, FALSE) != FALSE)
+    if (ftMainUpdateColAnim(&gScreenFlashColAnim, fighter_gobj, FALSE, FALSE) != FALSE)
     {
         caResetColAnim(&gScreenFlashColAnim);
     }

@@ -1276,7 +1276,7 @@ glabel func_ovl24_80132C98
   /* 12C088 80132D48 A3AE0050 */        sb $t6, 0x50($sp)
   /* 12C08C 80132D4C 8F2F0000 */        lw $t7, ($t9)
   /* 12C090 80132D50 A3A0004D */        sb $zero, 0x4d($sp)
-  /* 12C094 80132D54 0C035FCF */       jal ftManager_MakeFighter
+  /* 12C094 80132D54 0C035FCF */       jal ftManagerMakeFighter
   /* 12C098 80132D58 AFAF0070 */        sw $t7, 0x70($sp)
   /* 12C09C 80132D5C 3C050001 */       lui $a1, (0x1000D >> 16) # 65549
   /* 12C0A0 80132D60 00408025 */        or $s0, $v0, $zero
@@ -1630,7 +1630,7 @@ glabel func_ovl24_80133170
   /* 12C588 80133248 34A5000E */       ori $a1, $a1, (0x1000E & 0xFFFF) # 65550
   /* 12C58C 8013324C 44060000 */      mfc1 $a2, $f0
   /* 12C590 80133250 44070000 */      mfc1 $a3, $f0
-  /* 12C594 80133254 0C039BC9 */       jal ftMain_SetFighterStatus
+  /* 12C594 80133254 0C039BC9 */       jal ftMainSetFighterStatus
   /* 12C598 80133258 AFA00010 */        sw $zero, 0x10($sp)
   /* 12C59C 8013325C 0C0037CD */       jal func_8000DF34
   /* 12C5A0 80133260 02002025 */        or $a0, $s0, $zero
@@ -1652,7 +1652,7 @@ glabel func_ovl24_80133170
   /* 12C5DC 8013329C 34A5000E */       ori $a1, $a1, (0x1000E & 0xFFFF) # 65550
   /* 12C5E0 801332A0 3C063F80 */       lui $a2, 0x3f80
   /* 12C5E4 801332A4 24070000 */     addiu $a3, $zero, 0
-  /* 12C5E8 801332A8 0C039BC9 */       jal ftMain_SetFighterStatus
+  /* 12C5E8 801332A8 0C039BC9 */       jal ftMainSetFighterStatus
   /* 12C5EC 801332AC AFA00010 */        sw $zero, 0x10($sp)
   /* 12C5F0 801332B0 0C0037CD */       jal func_8000DF34
   /* 12C5F4 801332B4 02002025 */        or $a0, $s0, $zero
@@ -1674,7 +1674,7 @@ glabel func_ovl24_80133170
   /* 12C630 801332F0 34A5000E */       ori $a1, $a1, (0x1000E & 0xFFFF) # 65550
   /* 12C634 801332F4 3C064000 */       lui $a2, 0x4000
   /* 12C638 801332F8 24070000 */     addiu $a3, $zero, 0
-  /* 12C63C 801332FC 0C039BC9 */       jal ftMain_SetFighterStatus
+  /* 12C63C 801332FC 0C039BC9 */       jal ftMainSetFighterStatus
   /* 12C640 80133300 AFA00010 */        sw $zero, 0x10($sp)
   /* 12C644 80133304 0C0037CD */       jal func_8000DF34
   /* 12C648 80133308 02002025 */        or $a0, $s0, $zero
@@ -1764,7 +1764,7 @@ glabel func_ovl24_80133398
   /* 12C77C 8013343C 240D0002 */     addiu $t5, $zero, 2
   /* 12C780 80133440 A3AD003E */        sb $t5, 0x3e($sp)
   .L80133444:
-  /* 12C784 80133444 0C035FCF */       jal ftManager_MakeFighter
+  /* 12C784 80133444 0C035FCF */       jal ftManagerMakeFighter
   /* 12C788 80133448 27A40028 */     addiu $a0, $sp, 0x28
   /* 12C78C 8013344C 8FA80078 */        lw $t0, 0x78($sp)
   /* 12C790 80133450 3C050001 */       lui $a1, (0x1000E >> 16) # 65550
@@ -1776,7 +1776,7 @@ glabel func_ovl24_80133398
   /* 12C7A8 80133468 24070000 */     addiu $a3, $zero, 0
   /* 12C7AC 8013346C AFA00010 */        sw $zero, 0x10($sp)
   /* 12C7B0 80133470 44062000 */      mfc1 $a2, $f4
-  /* 12C7B4 80133474 0C039BC9 */       jal ftMain_SetFighterStatus
+  /* 12C7B4 80133474 0C039BC9 */       jal ftMainSetFighterStatus
   /* 12C7B8 80133478 00000000 */       nop 
   /* 12C7BC 8013347C 0C0037CD */       jal func_8000DF34
   /* 12C7C0 80133480 02002025 */        or $a0, $s0, $zero
@@ -3277,7 +3277,7 @@ glabel func_ovl24_801349F8
   /* 12DD94 80134A54 AF380000 */        sw $t8, ($t9)
   /* 12DD98 80134A58 8DCF0004 */        lw $t7, 4($t6) # D_ovl24_80135B00 + 4
   /* 12DD9C 80134A5C AF2F0004 */        sw $t7, 4($t9)
-  /* 12DDA0 80134A60 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 12DDA0 80134A60 0C035E1B */       jal ftManagerSetupDataKind
   /* 12DDA4 80134A64 8C845CC8 */        lw $a0, %lo(D_ovl24_80135CC8)($a0)
   /* 12DDA8 80134A68 24010004 */     addiu $at, $zero, 4
   /* 12DDAC 80134A6C 12010012 */       beq $s0, $at, .L80134AB8
@@ -3291,21 +3291,21 @@ glabel func_ovl24_801349F8
   /* 12DDCC 80134A8C 00104880 */       sll $t1, $s0, 2
   .L80134A90:
   /* 12DDD0 80134A90 3C048013 */       lui $a0, %hi(D_ovl24_80135CD8)
-  /* 12DDD4 80134A94 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 12DDD4 80134A94 0C035E1B */       jal ftManagerSetupDataKind
   /* 12DDD8 80134A98 8C845CD8 */        lw $a0, %lo(D_ovl24_80135CD8)($a0)
   /* 12DDDC 80134A9C 3C048013 */       lui $a0, %hi(D_ovl24_80135CE8)
-  /* 12DDE0 80134AA0 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 12DDE0 80134AA0 0C035E1B */       jal ftManagerSetupDataKind
   /* 12DDE4 80134AA4 8C845CE8 */        lw $a0, %lo(D_ovl24_80135CE8)($a0)
-  /* 12DDE8 80134AA8 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 12DDE8 80134AA8 0C035E1B */       jal ftManagerSetupDataKind
   /* 12DDEC 80134AAC 24040002 */     addiu $a0, $zero, 2
   /* 12DDF0 80134AB0 1000001B */         b .L80134B20
   /* 12DDF4 80134AB4 8FBF0024 */        lw $ra, 0x24($sp)
   .L80134AB8:
-  /* 12DDF8 80134AB8 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 12DDF8 80134AB8 0C035E1B */       jal ftManagerSetupDataKind
   /* 12DDFC 80134ABC 8C845CD8 */        lw $a0, 0x5cd8($a0)
-  /* 12DE00 80134AC0 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 12DE00 80134AC0 0C035E1B */       jal ftManagerSetupDataKind
   /* 12DE04 80134AC4 00002025 */        or $a0, $zero, $zero
-  /* 12DE08 80134AC8 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 12DE08 80134AC8 0C035E1B */       jal ftManagerSetupDataKind
   /* 12DE0C 80134ACC 24040004 */     addiu $a0, $zero, 4
   /* 12DE10 80134AD0 10000013 */         b .L80134B20
   /* 12DE14 80134AD4 8FBF0024 */        lw $ra, 0x24($sp)
@@ -3318,7 +3318,7 @@ glabel func_ovl24_801349F8
   /* 12DE28 80134AE8 26100001 */     addiu $s0, $s0, 1
   /* 12DE2C 80134AEC 52120004 */      beql $s0, $s2, .L80134B00
   /* 12DE30 80134AF0 26100001 */     addiu $s0, $s0, 1
-  /* 12DE34 80134AF4 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 12DE34 80134AF4 0C035E1B */       jal ftManagerSetupDataKind
   /* 12DE38 80134AF8 02002025 */        or $a0, $s0, $zero
   /* 12DE3C 80134AFC 26100001 */     addiu $s0, $s0, 1
   .L80134B00:
@@ -3328,7 +3328,7 @@ glabel func_ovl24_801349F8
   /* 12DE4C 80134B0C 8FBF0024 */        lw $ra, 0x24($sp)
   .L80134B10:
   /* 12DE50 80134B10 02295021 */      addu $t2, $s1, $t1
-  /* 12DE54 80134B14 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 12DE54 80134B14 0C035E1B */       jal ftManagerSetupDataKind
   /* 12DE58 80134B18 8D440000 */        lw $a0, ($t2)
   /* 12DE5C 80134B1C 8FBF0024 */        lw $ra, 0x24($sp)
   .L80134B20:
@@ -3404,7 +3404,7 @@ glabel func_ovl24_801349F8
   /* 12DF6C 80134C2C 0C04D15B */       jal func_ovl24_8013456C
   /* 12DF70 80134C30 8E440000 */        lw $a0, ($s2) # D_ovl24_80135C28 + 0
   /* 12DF74 80134C34 24040001 */     addiu $a0, $zero, 1
-  /* 12DF78 80134C38 0C035C65 */       jal ftManager_AllocFighterData
+  /* 12DF78 80134C38 0C035C65 */       jal ftManagerAllocFighter
   /* 12DF7C 80134C3C 00402825 */        or $a1, $v0, $zero
   /* 12DF80 80134C40 0C04D27E */       jal func_ovl24_801349F8
   /* 12DF84 80134C44 8E440000 */        lw $a0, ($s2) # D_ovl24_80135C28 + 0

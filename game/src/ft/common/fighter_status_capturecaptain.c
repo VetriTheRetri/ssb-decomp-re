@@ -87,9 +87,9 @@ void ftCommon_CaptureCaptain_ProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     else this_fp->x192_flag_b3 = FALSE;
 
     ftMap_SetAir(this_fp);
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Common_CaptureCaptain, FTCOMMON_CAPTURECAPTAIN_FRAME_BEGIN, FTCOMMON_CAPTURECAPTAIN_ANIM_SPEED, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CaptureCaptain, FTCOMMON_CAPTURECAPTAIN_FRAME_BEGIN, FTCOMMON_CAPTURECAPTAIN_ANIM_SPEED, FTSTATUPDATE_NONE_PRESERVE);
     ftSetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftPhysics_StopVelAll(fighter_gobj);
     ftCommon_CaptureCaptain_ProcPhysics(fighter_gobj);
 }

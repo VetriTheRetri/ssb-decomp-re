@@ -141,9 +141,9 @@ void ftCaptainSpecialHiSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftCaptainSpecialHiProcStatus;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Captain_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Captain_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCaptainSpecialHiInitCatchVars(fp);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }
 
 // 0x80160690
@@ -152,8 +152,8 @@ void ftCaptainSpecialHiProcCatch(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj), *catch_fp;
     GObj *search_gobj;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Captain_SpecialHiCatch, 0.0F, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Captain_SpecialHiCatch, 0.0F, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
     ftPhysics_StopVelAll(fighter_gobj);
 
@@ -175,8 +175,8 @@ void ftCaptain_SpecialHiThrow_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Captain_SpecialHiThrow, 0.0F, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Captain_SpecialHiThrow, 0.0F, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_NONE);
 
     if ((fp->x192_flag_b3 == TRUE) && (fp->catch_gobj != NULL))
@@ -193,7 +193,7 @@ void ftCaptainSpecialAirHiSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftCaptainSpecialHiProcStatus;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Captain_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Captain_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCaptainSpecialHiInitCatchVars(fp);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }

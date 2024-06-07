@@ -11,7 +11,7 @@ void ftMasterHand_Yubideppou1_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_Yubideppou1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_MasterHand_Yubideppou1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMasterHand_Common_CheckPlayerInvertLR(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);

@@ -684,7 +684,8 @@ typedef enum ftPartsLevelDetail
 
 typedef enum ftKind
 {
-    Ft_Kind_Mario,
+    Ft_Kind_PlayableStart,
+    Ft_Kind_Mario = Ft_Kind_PlayableStart,
     Ft_Kind_Fox,
     Ft_Kind_Donkey,
     Ft_Kind_Samus,
@@ -696,6 +697,8 @@ typedef enum ftKind
     Ft_Kind_Pikachu,
     Ft_Kind_Purin,
     Ft_Kind_Ness,
+    Ft_Kind_PlayableEnd = Ft_Kind_Ness,
+
     Ft_Kind_MasterHand,
     Ft_Kind_MetalMario,
 

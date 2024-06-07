@@ -19,7 +19,7 @@ void ftMasterHand_DeadCenter_SetStatus(GObj *fighter_gobj)
     ftStruct *fp;
     f32 vel_z;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_MasterHand_DeadCenter, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_MasterHand_DeadCenter, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp = ftGetStruct(fighter_gobj);
 

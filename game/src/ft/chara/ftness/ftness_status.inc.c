@@ -4,7 +4,7 @@
 #include <ft/fttypes.h>
 
 // 0x8012B2B8
-ftStatusDesc ftStatus_SpecialDesc_Ness[/* */] =
+ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 {
 	// Status 220 (0xDC): Attack13
 	{

@@ -225,7 +225,7 @@ void ftKirby_SpecialAirHiFall_ProcMap(GObj *fighter_gobj)
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
         {
             ftMap_SetGround(fp);
-            ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialHiLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+            ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialHiLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
             fp->proc_lagstart = ftCommon_ProcPauseGFX;
             fp->proc_lagend = ftCommon_ProcResumeGFX;
@@ -252,8 +252,8 @@ void ftKirbySpecialHiSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftKirbySpecialHiProcStatus;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_lagstart = ftCommon_ProcPauseGFX;
     fp->proc_lagend = ftCommon_ProcResumeGFX;
@@ -264,8 +264,8 @@ void ftKirby_SpecialHiLanding_SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialHiLanding, 0.0F, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialHiLanding, 0.0F, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_lagstart = ftCommon_ProcPauseGFX;
     fp->proc_lagend = ftCommon_ProcResumeGFX;
@@ -278,8 +278,8 @@ void ftKirbySpecialAirHiSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftKirbySpecialHiProcStatus;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_lagstart = ftCommon_ProcPauseGFX;
     fp->proc_lagend = ftCommon_ProcResumeGFX;
@@ -291,8 +291,8 @@ void ftKirby_SpecialAirHiFall_SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 vel_y_bak = fp->phys_info.vel_air.y;
 
-    ftMain_SetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirHiFall, 0.0F, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
-    ftMain_UpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialAirHiFall, 0.0F, 1.0F, FTSTATUPDATE_GFX_PRESERVE);
+    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_lagstart = ftCommon_ProcPauseGFX;
     fp->proc_lagend = ftCommon_ProcResumeGFX;

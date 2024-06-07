@@ -46,7 +46,7 @@ void func_ovl2_80115980(void)
 }
 
 // 0x801159B0
-s32 func_ovl2_801159B0(s32 arg0)
+s32 func_ovl2_801159B0(uintptr_t arg0)
 {
     s32 i;
 
@@ -61,7 +61,7 @@ s32 func_ovl2_801159B0(s32 arg0)
 }
 
 // 0x801159F8
-s32 efAlloc_SetParticleBank(u32 arg0, u32 arg1, u32 arg2, u32 arg3)
+s32 efAlloc_SetParticleBank(uintptr_t arg0, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3)
 {
     void *sp3C;
     void *sp38;

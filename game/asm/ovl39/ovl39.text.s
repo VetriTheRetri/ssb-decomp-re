@@ -452,7 +452,7 @@ glabel mvOpeningFoxInitFighterStagePanel
   /* 16A16C 8018D74C 01AE9821 */      addu $s3, $t5, $t6
   /* 16A170 8018D750 52EC0030 */      beql $s7, $t4, .L8018D814
   /* 16A174 8018D754 26310001 */     addiu $s1, $s1, 1
-  /* 16A178 8018D758 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 16A178 8018D758 0C035E1B */       jal ftManagerSetupDataKind
   /* 16A17C 8018D75C 92040023 */       lbu $a0, 0x23($s0) # D_ovl39_8018E1C0 + 35
   /* 16A180 8018D760 8EA20000 */        lw $v0, ($s5) # gBattleState + 0
   /* 16A184 8018D764 C7A40090 */      lwc1 $f4, 0x90($sp)
@@ -483,10 +483,10 @@ glabel mvOpeningFoxInitFighterStagePanel
   /* 16A1E8 8018D7C8 920D0022 */       lbu $t5, 0x22($s0) # D_ovl39_8018E1C0 + 34
   /* 16A1EC 8018D7CC AFB3007C */        sw $s3, 0x7c($sp)
   /* 16A1F0 8018D7D0 AFAD0078 */        sw $t5, 0x78($sp)
-  /* 16A1F4 8018D7D4 0C035E2D */       jal ftManager_AllocAnimHeapKind
+  /* 16A1F4 8018D7D4 0C035E2D */       jal ftManagerAllocAnimHeapKind
   /* 16A1F8 8018D7D8 92040023 */       lbu $a0, 0x23($s0) # D_ovl39_8018E1C0 + 35
   /* 16A1FC 8018D7DC AFA20088 */        sw $v0, 0x88($sp)
-  /* 16A200 8018D7E0 0C035FCF */       jal ftManager_MakeFighter
+  /* 16A200 8018D7E0 0C035FCF */       jal ftManagerMakeFighter
   /* 16A204 8018D7E4 02802025 */        or $a0, $s4, $zero
   /* 16A208 8018D7E8 3C018019 */       lui $at, %hi(gMvOpeningFoxStageFighterGObj)
   /* 16A20C 8018D7EC AC22E200 */        sw $v0, %lo(gMvOpeningFoxStageFighterGObj)($at)
@@ -698,7 +698,7 @@ glabel mvOpeningFoxCreatePosedFighter
   /* 16A504 8018DAE4 E7A00028 */      swc1 $f0, 0x28($sp)
   /* 16A508 8018DAE8 E7A00030 */      swc1 $f0, 0x30($sp)
   /* 16A50C 8018DAEC AFAA005C */        sw $t2, 0x5c($sp)
-  /* 16A510 8018DAF0 0C035FCF */       jal ftManager_MakeFighter
+  /* 16A510 8018DAF0 0C035FCF */       jal ftManagerMakeFighter
   /* 16A514 8018DAF4 E7A4002C */      swc1 $f4, 0x2c($sp)
   /* 16A518 8018DAF8 3C050001 */       lui $a1, (0x1000C >> 16) # 65548
   /* 16A51C 8018DAFC 00408025 */        or $s0, $v0, $zero
@@ -993,7 +993,7 @@ glabel mvOpeningFoxInit
   /* 16A960 8018DF40 0C0436D5 */       jal cmManager_MakeWallpaperCamera
   /* 16A964 8018DF44 00000000 */       nop
   /* 16A968 8018DF48 24040003 */     addiu $a0, $zero, 3
-  /* 16A96C 8018DF4C 0C035C65 */       jal ftManager_AllocFighterData
+  /* 16A96C 8018DF4C 0C035C65 */       jal ftManagerAllocFighter
   /* 16A970 8018DF50 24050002 */     addiu $a1, $zero, 2
   /* 16A974 8018DF54 0C05952C */       jal func_NF_801654B0 # couldn't be resolved
   /* 16A978 8018DF58 00000000 */       nop
@@ -1001,7 +1001,7 @@ glabel mvOpeningFoxInit
   /* 16A980 8018DF60 00000000 */       nop
   /* 16A984 8018DF64 0C03F4C0 */       jal efManager_AllocUserData
   /* 16A988 8018DF68 00000000 */       nop
-  /* 16A98C 8018DF6C 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 16A98C 8018DF6C 0C035E1B */       jal ftManagerSetupDataKind
   /* 16A990 8018DF70 24040001 */     addiu $a0, $zero, 1
   /* 16A994 8018DF74 3C048013 */       lui $a0, %hi(gFTAnimHeapSize)
   /* 16A998 8018DF78 8C840D9C */        lw $a0, %lo(gFTAnimHeapSize)($a0)
@@ -1042,13 +1042,13 @@ glabel mvOpeningFoxSetupDisplayList
   /* 16AA14 8018DFF4 246E0008 */     addiu $t6, $v1, 8
   /* 16AA18 8018DFF8 AC8E0000 */        sw $t6, ($a0)
   /* 16AA1C 8018DFFC 3C180002 */       lui $t8, 2
-  /* 16AA20 8018E000 3C058013 */       lui $a1, %hi(gMapLightAngleX)
-  /* 16AA24 8018E004 3C068013 */       lui $a2, %hi(gMapLightAngleY)
+  /* 16AA20 8018E000 3C058013 */       lui $a1, %hi(gMPLightAngleX)
+  /* 16AA24 8018E004 3C068013 */       lui $a2, %hi(gMPLightAngleY)
   /* 16AA28 8018E008 AC780004 */        sw $t8, 4($v1)
   /* 16AA2C 8018E00C AC6F0000 */        sw $t7, ($v1)
-  /* 16AA30 8018E010 8CC61394 */        lw $a2, %lo(gMapLightAngleY)($a2)
+  /* 16AA30 8018E010 8CC61394 */        lw $a2, %lo(gMPLightAngleY)($a2)
   /* 16AA34 8018E014 0C03F2DC */       jal ftRender_Lights_DisplayLightReflect
-  /* 16AA38 8018E018 8CA51390 */        lw $a1, %lo(gMapLightAngleX)($a1)
+  /* 16AA38 8018E018 8CA51390 */        lw $a1, %lo(gMPLightAngleX)($a1)
   /* 16AA3C 8018E01C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 16AA40 8018E020 27BD0018 */     addiu $sp, $sp, 0x18
   /* 16AA44 8018E024 03E00008 */        jr $ra

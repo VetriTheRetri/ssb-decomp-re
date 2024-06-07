@@ -38,7 +38,20 @@
 #define FTNESS_PSI_MAGNET_COLANIM_ID 0x3F
 #define FTNESS_PSI_MAGNET_COLANIM_LENGTH 0
 
-extern ftStatusDesc ftStatus_SpecialDesc_Ness[/* */];
+extern ftStatusDesc dFTNessSpecialStatusDesc[/* */];
+
+extern void *gFTDataNessMain;
+extern void *gFTDataNessBattleMotion;
+extern void *gFTDataNessModel;
+extern void *gFTDataNessSpecial1;
+extern void *gFTDataNessSpecial2;
+extern void *gFTDataNessSpecial3;
+extern u32 gFTDataNessParticleBankID;
+
+extern void *gFTDataPolyNessMain;
+extern void *gFTDataPolyNessSubMotion;
+extern void *gFTDataPolyNessModel;
+extern u32 gFTDataPolyNessParticleBankID;
 
 // Moveset script IDs
 typedef enum ftNessMotion

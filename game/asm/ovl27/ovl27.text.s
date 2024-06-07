@@ -3760,7 +3760,7 @@ glabel mn1PSpawnFighter
   /* 13D2D0 801350D0 02002025 */        or $a0, $s0, $zero
   /* 13D2D4 801350D4 C5440034 */      lwc1 $f4, 0x34($t2)
   /* 13D2D8 801350D8 AFA70074 */        sw $a3, 0x74($sp)
-  /* 13D2DC 801350DC 0C035E3A */       jal func_ovl2_800D78E8
+  /* 13D2DC 801350DC 0C035E3A */       jal ftManagerDestroyFighter
   /* 13D2E0 801350E0 E7A40064 */      swc1 $f4, 0x64($sp)
   /* 13D2E4 801350E4 10000004 */         b .L801350F8
   /* 13D2E8 801350E8 8FA70074 */        lw $a3, 0x74($sp)
@@ -3781,7 +3781,7 @@ glabel mn1PSpawnFighter
   /* 13D31C 8013511C 27A40024 */     addiu $a0, $sp, 0x24
   /* 13D320 80135120 AFAB0024 */        sw $t3, 0x24($sp)
   /* 13D324 80135124 AFAD005C */        sw $t5, 0x5c($sp)
-  /* 13D328 80135128 0C035FCF */       jal ftManager_MakeFighter
+  /* 13D328 80135128 0C035FCF */       jal ftManagerMakeFighter
   /* 13D32C 8013512C A3A80039 */        sb $t0, 0x39($sp)
   /* 13D330 80135130 3C018014 */       lui $at, %hi(D_ovl27_80138EF0)
   /* 13D334 80135134 3C058013 */       lui $a1, %hi(mn1PRotateFighter)
@@ -7369,11 +7369,11 @@ glabel mn1PInitCSS
   /* 140604 80138404 0C03F4C0 */       jal efManager_AllocUserData
   /* 140608 80138408 00000000 */       nop
   /* 14060C 8013840C 24040001 */     addiu $a0, $zero, 1
-  /* 140610 80138410 0C035C65 */       jal ftManager_AllocFighterData
+  /* 140610 80138410 0C035C65 */       jal ftManagerAllocFighter
   /* 140614 80138414 24050001 */     addiu $a1, $zero, 1
   /* 140618 80138418 00008025 */        or $s0, $zero, $zero
   .L8013841C:
-  /* 14061C 8013841C 0C035E1B */       jal ftManager_SetFileDataKind
+  /* 14061C 8013841C 0C035E1B */       jal ftManagerSetupDataKind
   /* 140620 80138420 02002025 */        or $a0, $s0, $zero
   /* 140624 80138424 26100001 */     addiu $s0, $s0, %lo(D_NF_80000001)
   /* 140628 80138428 2401000C */     addiu $at, $zero, 0xc

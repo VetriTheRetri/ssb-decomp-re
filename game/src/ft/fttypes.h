@@ -33,6 +33,9 @@
 #define FTSTAT_OPENING1_START 0x1000F
 #define FTSTAT_OPENING2_START 0x10000
 
+#define FTDATA_FLAG_ANIM_MOVIE              0x1
+#define FTDATA_FLAG_ANIM_GAME               0x2
+
 #define FTSTATUPDATE_NONE_PRESERVE          (0)                                         // 0x0 - Just zero
 #define FTSTATUPDATE_HIT_PRESERVE           (1 << ftStatusUpdate_Hit_Preserve)          // 0x1
 #define FTSTATUPDATE_COLANIM_PRESERVE       (1 << ftStatusUpdate_ColAnim_Preserve)      // 0x2
@@ -111,7 +114,7 @@
 struct ftSpecialHit
 {
     s32 hit_type;
-    s32 joint_index;
+    s32 joint_id;
     Vec3f offset;
     Vec3f size;
     s32 damage_resist;
@@ -156,34 +159,34 @@ struct ftData
 {
     intptr_t file_main_id; // File size in bytes?
     intptr_t file_battlemotion_id;
-    intptr_t file_demomotion_id;
+    intptr_t file_submotion_id;
     intptr_t file_model_id;
     intptr_t file_shieldpose_id;
-    intptr_t file_extra1_id;
-    intptr_t file_extra2_id;
-    intptr_t file_extra3_id;
-    intptr_t file_extra4_id;
-    s32 file_size_total;
+    intptr_t file_special1_id;
+    intptr_t file_special2_id;
+    intptr_t file_special3_id;
+    intptr_t file_special4_id;
+    size_t file_main_size;
     void **p_file_main; // Pointer to character's file?
     s32 **p_file_battlemotion;
-    s32 **p_file_demoscript;
+    s32 **p_file_submotion;
     s32 **p_file_model;
     s32 **p_file_shieldpose;
-    s32 **p_file_extra1;
-    s32 **p_file_extra2;
-    s32 **p_file_extra3;
-    s32 **p_file_extra4;
-    s32 **p_particle;
+    s32 **p_file_special1;
+    s32 **p_file_special2;
+    s32 **p_file_special3;
+    s32 **p_file_special4;
+    s32 *p_particle;
     intptr_t o_particles1;
     intptr_t o_particles2;
     intptr_t o_particles3;
     intptr_t o_particles4;
     intptr_t o_attributes; // Offset to fighter's attributes
     ftScriptInfoArray *battlemotion;
-    ftScriptInfoArray *demoscript;
+    ftScriptInfoArray *submotion;
     s32 battlemotion_array_count;
-    s32 *demoscript_array_count;
-    s32 anim_file_size;
+    s32 *submotion_array_count;
+    size_t anim_file_size;
 };
 
 struct ftModelPart
@@ -212,7 +215,7 @@ struct ftModelPartRenderState
 
 struct ftTexturePartInfo
 {
-    u8 joint_index;
+    u8 joint_id;
     u8 lod[2];
 };
 
@@ -352,7 +355,7 @@ struct ftHitbox
 {
     gmHitCollisionUpdateState update_state;
     u32 group_id;
-    s32 joint_index;
+    s32 joint_id;
     s32 damage;
     gmHitCollisionElement element;
     DObj *joint;
@@ -380,7 +383,7 @@ struct ftHitbox
 
 struct ftHurtboxDesc
 {
-    s32 joint_index;
+    s32 joint_id;
     s32 placement;
     sb32 is_grabbable;
     Vec3f offset;
@@ -390,7 +393,7 @@ struct ftHurtboxDesc
 struct ftHurtbox
 {
     s32 hitstatus;
-    s32 joint_index;
+    s32 joint_id;
     DObj *joint;
     s32 placement;              // 0 = low, 1 = middle, 2 = high
     sb32 is_grabbable;
@@ -436,19 +439,19 @@ struct ftParts
     u8 unk_dobjtrans_0x7;
     ftParts *alloc_next;
     u8 unk_0xC;
-    u8 unk_0xD;
+    u8 joint_id;
     u8 unk_dobjtrans_0xE;
     u8 unk_dobjtrans_0xF;
     Mtx44f unk_dobjtrans_0x10;
     Mtx44f mtx_translate;
     Vec3f vec_translate; // ???
     Mtx44f unk_dobjtrans_0x9C;
-    GObj *unk_gobj;
+    GObj *ftparts_gobj;
 };
 
 struct ftPartIndex
 {
-    s32 partindex_0x0;
+    s32 joint_id;
     s32 partindex_0x4;
     s32 partindex_0x8;
     s32 partindex_0xC;
@@ -480,9 +483,9 @@ struct ftCostumeIndex
 
 struct ftAfterImage
 {
-    s16 unk_afid_0x0;
-    s16 unk_afid_0x2;
-    s16 unk_afid_0x4;
+    s16 translate_x;
+    s16 translate_y;
+    s16 translate_z;
     Vec3f vec;
 };
 
@@ -712,9 +715,9 @@ struct ftAttributes
     DObjDescContainer *dobj_desc_container;
     DObjDesc *dobj_lookup; // WARNING: Not actually DObjDesc* but I don't know what this struct is or what its bounds are; bunch of consecutive floats
     s32 *unk_joint[8];
-    s32 joint_index1; // What does this do?
+    s32 joint_id1; // What does this do?
     f32 joint_float1;
-    s32 joint_index2;
+    s32 joint_id2;
     f32 joint_float2;
     u8 filler_0x304[0x31C - 0x30C];
     f32 unk_0x31C;
@@ -732,7 +735,7 @@ struct ftAttributes
 
 struct ftMesh
 {
-    s32 joint_index;
+    s32 joint_id;
     Gfx *dl;
     s32 unk_ftdobj_0x8;
     s32 unk_ftdobj_0xC;
@@ -965,7 +968,7 @@ struct ftStruct
     s32 damage_element;
     s32 lr_damage;
     s32 damage_index;
-    s32 damage_joint_index;
+    s32 damage_joint_id;
     s32 damage_player_number;
     s32 damage_player; // Port index of damaging fighter
     u16 damage_count;

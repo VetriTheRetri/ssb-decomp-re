@@ -403,7 +403,7 @@ void itMBallGOpenInitItemVars(GObj *item_gobj)
         {
             ftStruct *fp = ftGetStruct(fighter_gobj);
 
-            ftMain_MakeRumble(fp, 8, 20);
+            ftMainMakeRumble(fp, 8, 20);
         }
     }
     ip->item_vars.m_ball.effect_gobj = efParticle_MBallRays_MakeEffect(&dobj->translate.vec.f);

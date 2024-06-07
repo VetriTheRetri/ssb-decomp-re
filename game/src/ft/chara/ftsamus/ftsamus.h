@@ -28,7 +28,20 @@
 #define FTSAMUS_BOMB_VEL_Y_SUB 10.0F
 #define FTSAMUS_BOMB_DRIFT 0.66F
 
-extern ftStatusDesc ftStatus_SpecialDesc_Samus[/* */];
+extern ftStatusDesc dFTSamusSpecialStatusDesc[/* */];
+
+extern void *gFTDataSamusMain;
+extern void *gFTDataSamusBattleMotion;
+extern void *gFTDataSamusModel;
+extern void *gFTDataSamusSpecial1;
+extern void *gFTDataSamusSpecial2;
+extern void *gFTDataSamusSpecial3;
+extern u32 gFTDataSamusParticleBankID;
+
+extern void *gFTDataPolySamusMain;
+extern void *gFTDataPolySamusSubMotion;
+extern void *gFTDataPolySamusModel;
+extern u32 gFTDataPolySamusParticleBankID;
 
 typedef enum ftSamusMotion
 {

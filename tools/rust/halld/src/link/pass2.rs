@@ -39,7 +39,7 @@ impl Pass2 {
             .transpose()
             .context("creating vpk compressiong cache")?;
 
-        // This could maybe be done in one pass with a custom IndexedParellelITerator...?
+        // This could maybe be done in one pass with a custom IndexedParallelIterator...?
         let processed = script
             .into_par_iter()
             .map(|entry| process_linked_file(entry, &sym_map, vpk_cache.as_ref()))

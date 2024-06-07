@@ -883,7 +883,7 @@ Subscripting a non-array.
 Subscripting an array of incomplete type which is not an object type.
 The element of the array shall have an object type.
 3.3.2.1
-Should only submotion an array with an integral expression
+Should only subscript an array with an integral expression
 3.3.2.1
 Subscripting an unbounded array
 3.3.2.1
@@ -1157,7 +1157,7 @@ array of unknown size.
 initializer not an array aggregate
 The initializer for an object that has aggregate type shall be a
 brace-enclosed list of initializers for the members of the aggregate,
-written in increasing submotion or member order.
+written in increasing subscript or member order.
 3.5.7(20)
 '%s' type is incomplete; cannot initialize
 Was the struct ever defined?

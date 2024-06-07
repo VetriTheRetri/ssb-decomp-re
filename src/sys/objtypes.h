@@ -39,6 +39,11 @@
 #define MOBJ_FLAG_LIGHT1        (1 << 12)
 #define MOBJ_FLAG_LIGHT2        (1 << 13)
 
+// Camera defines
+
+// Create mask of draw layer (known in Smash Remix lingo as "room") to render
+#define CAMERA_MASK_DLLINK(r) (1ULL << (r))
+
 union OMUserData
 {
     s32 s;
@@ -78,14 +83,14 @@ union AObjActor
 struct _AObj
 {
     /* 0x00 */ AObj *next;
-    /* 0x04 */ u8 unk_aobj_0x4;
-    /* 0x05 */ u8 unk_aobj_0x5;
-    /* 0x08 */ f32 unk_aobj_0x8;
-    /* 0x0C */ f32 unk_aobj_0xC;
-    /* 0x10 */ f32 unk_aobj_0x10;
-    /* 0x14 */ f32 unk_aobj_0x14;
-    /* 0x18 */ f32 unk_aobj_0x18;
-    /* 0x1C */ f32 unk_aobj_0x1C;
+    /* 0x04 */ u8 param;
+    /* 0x05 */ u8 kind;
+    /* 0x08 */ f32 length_invert;
+    /* 0x0C */ f32 length;
+    /* 0x10 */ f32 value_base;
+    /* 0x14 */ f32 value_target;
+    /* 0x18 */ f32 rate_base;
+    /* 0x1C */ f32 rate_target;
     // interpolation control struct?
     /* 0x20 */ ACommand *interpolate;
 }; // size == 0x24
@@ -95,13 +100,13 @@ struct _GObjThread
     GObjThread *next;
     OSThread osthread;
     u64 *osstack;
-    u32 stack_size;
+    size_t stack_size;
 };
 
 struct _OMThreadStackNode
 {
     OMThreadStackNode *next;
-    u32 stack_size;
+    size_t stack_size;
     u64 stack[1];
 }; // size == 0x08 + VLA
 
@@ -110,18 +115,18 @@ struct _OMThreadStackList
 {
     OMThreadStackList *next;
     OMThreadStackNode *stack;
-    u32 size;
+    size_t size;
 };
 
 struct _GObjProcess
 {
-    GObjProcess *unk_gobjproc_0x0;
-    GObjProcess *unk_gobjproc_0x4;
-    GObjProcess *unk_gobjproc_0x8; // This is more than likely not an array, doing this only to get the correct offsets
-    GObjProcess *unk_gobjproc_0xC;
+    GObjProcess *link_next;
+    GObjProcess *link_prev;
+    GObjProcess *priority_next; // This is more than likely not an array, doing this only to get the correct offsets
+    GObjProcess *priority_prev;
     s32 priority;
     u8 kind;
-    u8 unk_gobjproc_0x15;
+    ub8 is_paused;
     GObj *parent_gobj;
     union // These are based on 0x14
     {
@@ -144,17 +149,17 @@ struct GObj
     GObj *link_prev;
     u8 link_id;
     u8 dl_link_id;
-    u8 unk_gobj_0xE;                    // ???
+    u8 fd_last;                         // Last frame drawn?
     u8 obj_kind;                        // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = Camera
     u32 link_order;
-    void (*proc_eject)(GObj*);
-    GObjProcess *gobjproc_next;
+    void (*proc_run)(GObj*);
+    GObjProcess *gobjproc_head;
 
     union
     {
         s32 unk_0x1C;
         GObj *unk_gobj_0x1C;
-        GObjProcess *gobjproc_prev;
+        GObjProcess *gobjproc_tail;
     };
     
     GObj *dl_link_next;
@@ -313,7 +318,7 @@ struct _MObj
     f32 mobj_f0;            // Animation frames remaining, multi-purpose?
     f32 mobj_f1;            // Animation playback rate / interpolation, multi-purpose?
     f32 mobj_f2;            // Current animation frame, multi-purpose?
-	u32 padA4;
+	OMUserData user_data;   // Actually just padding?
 };
 
 struct DObjTransformTypes
@@ -500,7 +505,7 @@ struct _OMSetup
     GObjThread *gobjthreads;
     s32 num_gobjthreads;
 
-    u32 thread_stack_size;
+    size_t thread_stack_size;
     OMThreadStackNode *threadstacks;
     u32 num_stacks;
 
@@ -511,12 +516,12 @@ struct _OMSetup
 
     GObj *gobjs;
     s32 num_gobjs;
-    s32 gobj_size;
+    size_t gobj_size;
 
     OMMtx *ommtxes;
     s32 num_ommtxes;
 
-    void (*proc_cleanup)(DObjDynamicStore*);
+    void (*proc_eject)(DObjDynamicStore*);
 
     AObj *aobjs;
     s32 num_aobjs;
@@ -526,15 +531,15 @@ struct _OMSetup
 
     DObj *dobjs;
     s32 num_dobjs;
-    s32 dobj_size;
+    size_t dobj_size;
 
     SObj *sobjs;
     s32 num_sobjs;
-    s32 sobj_size;
+    size_t sobj_size;
 
     Camera *cameras;
     s32 num_cameras;
-    s32 camera_size;
+    size_t camera_size;
 };
 
 #endif

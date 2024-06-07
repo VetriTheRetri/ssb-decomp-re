@@ -128,7 +128,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
             {
                 if (ommtx->unk05 == 4)
                 {
-                    if (dobj->parent_gobj->unk_gobj_0xE != D_8003B6E8.bytes.b3)
+                    if (dobj->parent_gobj->fd_last != D_8003B6E8.bytes.b3)
                     {
                         *mtx_store.p = gGraphicsHeap.ptr;
                         gGraphicsHeap.ptr = (mtx_store.f = gGraphicsHeap.ptr) + 1;
@@ -177,7 +177,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                 {
                     gGraphicsHeap.ptr = (mtx_store.f = gGraphicsHeap.ptr) + 1;
                 }
-                else if (dobj->parent_gobj->unk_gobj_0xE == D_8003B6E8.bytes.b3)
+                else if (dobj->parent_gobj->fd_last == D_8003B6E8.bytes.b3)
                 {
                     switch (ommtx->kind)
                     {
@@ -886,7 +886,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     {
                         if (D_800470AC != NULL)
                         {
-                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->unk_gobj_0xE != D_8003B6E8.bytes.b3) ? D_800470AC[ommtx->kind - 66].unk00 : D_800470AC[ommtx->kind - 66].unk04;
+                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->fd_last != D_8003B6E8.bytes.b3) ? D_800470AC[ommtx->kind - 66].unk00 : D_800470AC[ommtx->kind - 66].unk04;
 
                             // If proc's return value uses up a GPR and is assigned to a variable, IDO refuses to free up v0 later down.
                             ret = proc(mtx_store.gbi, dobj, &current_dl);
@@ -2913,7 +2913,7 @@ void func_80017868(GObj *this_gobj, s32 link_id, s32 arg2)
                 D_80046A5C_40A7C = current_gobj;
                 current_gobj->proc_render(current_gobj);
                 D_8003B874_3C474 = 3;
-                current_gobj->unk_gobj_0xE = D_8003B6E8.word;
+                current_gobj->fd_last = D_8003B6E8.word;
             }
         }
         current_gobj = current_gobj->dl_link_next;

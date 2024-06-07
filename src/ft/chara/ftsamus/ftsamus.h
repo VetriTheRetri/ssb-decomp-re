@@ -5,17 +5,15 @@
 
 #include "ftsamus_functions.h"
 
-#define FTSAMUS_CHARGE_JOINT 16 // Bone to attach Charge Shot
-#define FTSAMUS_CHARGE_MAX 7	// Maximum charge level
-#define FTSAMUS_CHARGE_INT                                                                                             \
-	20 // Charge interval, level increrments once this timer hits zero, then
-	   // begins counting the next iteration
+#define FTSAMUS_CHARGE_JOINT 16             // Bone to attach Charge Shot
+#define FTSAMUS_CHARGE_MAX 7                // Maximum charge level
+#define FTSAMUS_CHARGE_INT 20               // Charge interval, level increrments once this timer hits zero, then begins counting the next iteration
 #define FTSAMUS_CHARGE_COLANIM_ID 0x6
 #define FTSAMUS_CHARGE_COLANIM_LENGTH 0
-#define FTSAMUS_CHARGE_OFF_X 180.0F		 // X-Offset of Charge Shot
-#define FTSAMUS_CHARGE_RECOIL_BASE 10.0F // Base unit of recoil taken from firing Charge Shot
-#define FTSAMUS_CHARGE_RECOIL_MUL 2.0F	 // Charge Recoil multiplier
-#define FTSAMUS_CHARGE_RECOIL_ADD 20.0F	 // Added velocity
+#define FTSAMUS_CHARGE_OFF_X 180.0F         // X-Offset of Charge Shot
+#define FTSAMUS_CHARGE_RECOIL_BASE 10.0F    // Base unit of recoil taken from firing Charge Shot
+#define FTSAMUS_CHARGE_RECOIL_MUL 2.0F      // Charge Recoil multiplier
+#define FTSAMUS_CHARGE_RECOIL_ADD 20.0F     // Added velocity
 
 #define FTSAMUS_SCREWATTACK_PASS_STICK_RANGE_MIN (-44)
 #define FTSAMUS_SCREWATTACK_DRIFT_MUL 0.5F
@@ -30,65 +28,78 @@
 #define FTSAMUS_BOMB_VEL_Y_SUB 10.0F
 #define FTSAMUS_BOMB_DRIFT 0.66F
 
-extern ftStatusDesc* ftStatus_SpecialDesc_Samus;
+extern ftStatusDesc dFTSamusSpecialStatusDesc[/* */];
+
+extern void *gFTDataSamusMain;
+extern void *gFTDataSamusBattleMotion;
+extern void *gFTDataSamusModel;
+extern void *gFTDataSamusSpecial1;
+extern void *gFTDataSamusSpecial2;
+extern void *gFTDataSamusSpecial3;
+extern u32 gFTDataSamusParticleBankID;
+
+extern void *gFTDataPolySamusMain;
+extern void *gFTDataPolySamusSubMotion;
+extern void *gFTDataPolySamusModel;
+extern u32 gFTDataPolySamusParticleBankID;
 
 typedef enum ftSamusMotion
 {
-	ftMotion_Samus_AppearR = ftMotion_Common_SpecialStart,
-	ftMotion_Samus_AppearL,
-	ftMotion_Samus_SpecialNStart,
-	ftMotion_Samus_SpecialNLoop,
-	ftMotion_Samus_SpecialNEnd,
-	ftMotion_Samus_SpecialAirNStart,
-	ftMotion_Samus_SpecialAirNEnd,
-	ftMotion_Samus_SpecialHi,
-	ftMotion_Samus_SpecialAirHi,
-	ftMotion_Samus_SpecialLw,
-	ftMotion_Samus_SpecialAirLw
+    ftMotion_Samus_AppearR = ftMotion_Common_SpecialStart,
+    ftMotion_Samus_AppearL,
+    ftMotion_Samus_SpecialNStart,
+    ftMotion_Samus_SpecialNLoop,
+    ftMotion_Samus_SpecialNEnd,
+    ftMotion_Samus_SpecialAirNStart,
+    ftMotion_Samus_SpecialAirNEnd,
+    ftMotion_Samus_SpecialHi,
+    ftMotion_Samus_SpecialAirHi,
+    ftMotion_Samus_SpecialLw,
+    ftMotion_Samus_SpecialAirLw
 
 } ftSamusMotion;
 
 typedef enum ftSamusStatus
 {
-	ftStatus_Samus_AppearR = ftStatus_Common_SpecialStart,
-	ftStatus_Samus_AppearL,
-	ftStatus_Samus_SpecialNStart,
-	ftStatus_Samus_SpecialNLoop,
-	ftStatus_Samus_SpecialNEnd,
-	ftStatus_Samus_SpecialAirNStart,
-	ftStatus_Samus_SpecialAirNEnd,
-	ftStatus_Samus_SpecialHi,
-	ftStatus_Samus_SpecialAirHi,
-	ftStatus_Samus_SpecialLw,
-	ftStatus_Samus_SpecialAirLw
+    ftStatus_Samus_AppearR = ftStatus_Common_SpecialStart,
+    ftStatus_Samus_AppearL,
+    ftStatus_Samus_SpecialNStart,
+    ftStatus_Samus_SpecialNLoop,
+    ftStatus_Samus_SpecialNEnd,
+    ftStatus_Samus_SpecialAirNStart,
+    ftStatus_Samus_SpecialAirNEnd,
+    ftStatus_Samus_SpecialHi,
+    ftStatus_Samus_SpecialAirHi,
+    ftStatus_Samus_SpecialLw,
+    ftStatus_Samus_SpecialAirLw
 
 } ftSamusStatus;
 
 typedef struct ftSamus_FighterVars
 {
-	s32 charge_level;
-	s32 charge_recoil;
+    s32 charge_level;
+    s32 charge_recoil;
 
 } ftSamus_FighterVars;
 
-typedef struct ftSamus_SpecialN_StatusVars
+typedef struct ftSamusSpecialNStatusVars
 {
-	sb32 is_release;
-	s32 charge_int;
-	GObj* charge_gobj;
+    sb32 is_release;
+    s32 charge_int;
+    GObj *charge_gobj;
 
-} ftSamus_SpecialN_StatusVars;
+} ftSamusSpecialNStatusVars;
 
-typedef struct ftSamus_SpecialLw_StatusVars
+typedef struct ftSamusSpecialLwStatusVars
 {
-	sb32 unused;
+    sb32 unused;
 
-} ftSamus_SpecialLw_StatusVars;
+} ftSamusSpecialLwStatusVars;
 
 typedef union ftSamus_StatusVars
 {
-	ftSamus_SpecialN_StatusVars specialn;
-	ftSamus_SpecialLw_StatusVars speciallw;
+    ftSamusSpecialNStatusVars specialn;
+    ftSamusSpecialLwStatusVars speciallw;
 
 } ftSamus_StatusVars;
 

@@ -1,7 +1,135 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 
-#include "item_links_bomb.h"
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+// WARNING: Intentionally erroneous declaration. Missing two u16 arguments after f32. HAL's mistake, not mine.
+extern void itMainSetFighterRelease(GObj*, Vec3f*, f32);
+
+extern 
+intptr_t lITLinkBombItemAttributes;	   	// 0x00000040
+extern intptr_t lITLinkBombHitEvents;  	// 0x00000088
+extern intptr_t lITLinkBombBloatScale; 	// 0x000000A8
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+itCreateDesc dItLinkBombItemDesc =
+{
+	It_Kind_LinkBomb, 					// Item Kind
+	&gFTDataLinkMain, 					// Pointer to item file data?
+	&lITLinkBombItemAttributes,			// Offset of item attributes in file?
+
+	// DObj transformation struct
+	{
+		OMMtx_Transform_Tra,  			// Main matrix transformations
+		OMMtx_Transform_Null, 			// Secondary matrix transformations?
+		0					  			// ???
+	},
+
+	gmHitCollision_UpdateState_Disable, // Hitbox Update State
+	itLinkBombFHoldProcUpdate,			// Proc Update
+	NULL,								// Proc Map
+	NULL,								// Proc Hit
+	NULL,								// Proc Shield
+	NULL,								// Proc Hop
+	NULL,								// Proc Set-Off
+	NULL,								// Proc Reflector
+	NULL								// Proc Damage
+};
+
+itStatusDesc dItLinkBombStatusDesc[/* */] = 
+{
+	// Status 0 (Ground Wait)
+	{
+		itLinkBombGWaitProcUpdate,	 // Proc Update
+		itLinkBombGWaitProcMap,		 // Proc Map
+		NULL,						 // Proc Hit
+		NULL,						 // Proc Shield
+		NULL,						 // Proc Hop
+		NULL,						 // Proc Set-Off
+		NULL,						 // Proc Reflector
+		itLinkBombSDefaultProcDamage // Proc Damage
+	},
+
+	// Status 1 (Air Wait Fall)
+	{
+		itLinkBombAFallProcUpdate,	 // Proc Update
+		itLinkBombAFallProcMap,		 // Proc Map
+		NULL,						 // Proc Hit
+		NULL,						 // Proc Shield
+		NULL,						 // Proc Hop
+		NULL,						 // Proc Set-Off
+		NULL,						 // Proc Reflector
+		itLinkBombSDefaultProcDamage // Proc Damage
+	},
+
+	// Status 2 (Fighter Hold)
+	{
+		itLinkBombFHoldProcUpdate, // Proc Update
+		NULL,					   // Proc Map
+		NULL,					   // Proc Hit
+		NULL,					   // Proc Shield
+		NULL,					   // Proc Hop
+		NULL,					   // Proc Set-Off
+		NULL,					   // Proc Reflector
+		NULL					   // Proc Damage
+	},
+
+	// Status 3 (Fighter Throw)
+	{
+		itLinkBombAFallProcUpdate,	   // Proc Update
+		itLinkBombFThrowProcMap,	   // Proc Map
+		itLinkBombFThrowProcHit,	   // Proc Hit
+		itLinkBombSDefaultProcShield,  // Proc Shield
+		itCommonSDefaultProcHop,	   // Proc Hop
+		NULL,						   // Proc Set-Off
+		itCommonSDefaultProcReflector, // Proc Reflector
+		itLinkBombSDefaultProcDamage   // Proc Damage
+	},
+
+	// Status 4 (Fighter Drop)
+	{
+		itLinkBombFDropProcUpdate,	   // Proc Update
+		itLinkBombFThrowProcMap,	   // Proc Map
+		itLinkBombFDropProcHit,		   // Proc Hit
+		itLinkBombSDefaultProcShield,  // Proc Shield
+		itCommonSDefaultProcHop,	   // Proc Hop
+		NULL,						   // Proc Set-Off
+		itCommonSDefaultProcReflector, // Proc Reflector
+		itLinkBombFDropProcDamage	   // Proc Damage
+	},
+
+	// Status 5 (Neutral Explosion)
+	{
+		itLinkBombNExplodeProcUpdate, // Proc Update
+		NULL,						  // Proc Map
+		NULL,						  // Proc Hit
+		NULL,						  // Proc Shield
+		NULL,						  // Proc Hop
+		NULL,						  // Proc Set-Off
+		NULL,						  // Proc Reflector
+		NULL						  // Proc Damage
+	}
+};
+
+enum itLinkBombStatus
+{
+	itStatus_LinkBomb_GWait,
+	itStatus_LinkBomb_AFall,
+	itStatus_LinkBomb_FHold,
+	itStatus_LinkBomb_FThrow,
+	itStatus_LinkBomb_FDrop,
+	itStatus_LinkBomb_NExplode,
+	itStatus_LinkBomb_EnumMax
+};
 
 // 801859C0
 void itLinkBombNExplodeWaitUpdateScale(GObj* item_gobj)
@@ -11,7 +139,7 @@ void itLinkBombNExplodeWaitUpdateScale(GObj* item_gobj)
 
 	if (ip->item_vars.link_bomb.scale_int == 0)
 	{
-		f32* scale = (f32*)((uintptr_t)*dItLinkBombItemDesc.p_file + (intptr_t)&lItLinkBombBloatScale); // Linker thing
+		f32* scale = (f32*)((uintptr_t)*dItLinkBombItemDesc.p_file + (intptr_t)&lITLinkBombBloatScale); // Linker thing
 		s32 index = (ip->item_vars.link_bomb.scale_index > ITLINKBOMB_SCALE_INDEX_REWIND)
 						? (ITLINKBOMB_SCALE_INDEX_MAX - ip->item_vars.link_bomb.scale_index)
 						: ip->item_vars.link_bomb.scale_index;
@@ -356,7 +484,7 @@ void itLinkBombNExplodeInitItemVars(GObj* item_gobj)
 void itLinkBombNExplodeUpdateHitEvent(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
-	itHitEvent* ev = itGetHitEvent(dItLinkBombItemDesc, lItLinkBombHitEvents);
+	itHitEvent* ev = itGetHitEvent(dItLinkBombItemDesc, lITLinkBombHitEvents);
 
 	if (ip->it_multi == ev[ip->item_event_index].timer)
 	{

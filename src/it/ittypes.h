@@ -3,7 +3,6 @@
 
 #include <ssb_types.h>
 #include <macros.h>
-#include <PR/ultratypes.h>
 #include <sys/obj.h>
 #include <mp/mpcoll.h>
 #include <it/itemvars.h>

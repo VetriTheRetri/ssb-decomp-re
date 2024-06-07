@@ -108,7 +108,7 @@ void gsCheckSPDmemOK(void)
     else gSPDmemOkay = FALSE;
 }
 
-void gsFatalStackOverflowThread(s32 tid)
+void gsFatalThreadStackOverflow(s32 tid)
 {
     gsFatalPrintF("thread stack overflow  id = %d\n", tid);
 
@@ -117,10 +117,10 @@ void gsFatalStackOverflowThread(s32 tid)
 
 void gsVerifyStackProbes(void) 
 {
-    if (gThread0Stack[0] != STACK_PROBE_MAGIC) { gsFatalStackOverflowThread(0); }
-    if (sThread1Stack[0] != STACK_PROBE_MAGIC) { gsFatalStackOverflowThread(1); }
-    if (sThread3Stack[0] != STACK_PROBE_MAGIC) { gsFatalStackOverflowThread(3); }
-    if (sThread5Stack[0] != STACK_PROBE_MAGIC) { gsFatalStackOverflowThread(5); }
+    if (gThread0Stack[0] != STACK_PROBE_MAGIC) { gsFatalThreadStackOverflow(0); }
+    if (sThread1Stack[0] != STACK_PROBE_MAGIC) { gsFatalThreadStackOverflow(1); }
+    if (sThread3Stack[0] != STACK_PROBE_MAGIC) { gsFatalThreadStackOverflow(3); }
+    if (sThread5Stack[0] != STACK_PROBE_MAGIC) { gsFatalThreadStackOverflow(5); }
 }
 
 void gsThread5Main(UNUSED void *arg) 

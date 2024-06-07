@@ -6,13 +6,11 @@
 #include "ftdonkey_functions.h"
 
 #define FTDONKEY_GIANTPUNCH_CHARGE_MAX 10
-#define FTDONKEY_GIANTPUNCH_CHARGE_DAMAGE_MUL                                                                          \
-	2 // Uncharged Giant Punch damage = base hitbox damage + charge level *
-	  // this value
+#define FTDONKEY_GIANTPUNCH_CHARGE_DAMAGE_MUL 2 // Uncharged Giant Punch damage = base hitbox damage + charge level * this value
 #define FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID 6
 #define FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_LENGTH 0
 #define FTDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED 2.0F
-#define FTDONKEY_GIANTPUNCH_VEL_MUL 8.0F // Multiplies horizontal ground velocity only
+#define FTDONKEY_GIANTPUNCH_VEL_MUL 8.0F        // Multiplies horizontal ground velocity only
 
 #define FTDONKEY_SPINNINGKONG_GROUND_ACCEL 0.025F
 #define FTDONKEY_SPINNINGKONG_GROUND_VEL_MAX 26.0F
@@ -24,7 +22,24 @@
 #define FTDONKEY_SPINNINGKONG_FALLSPECIAL_DRIFT 1.0F
 #define FTDONKEY_SPINNINGKONG_LANDING_LAG 0.3F
 
-extern ftStatusDesc* ftStatus_SpecialDesc_Donkey;
+extern ftStatusDesc dFTDonkeySpecialStatusDesc[/* */];
+
+extern void *gFTDataDonkeyMain;
+extern void *gFTDataDonkeyBattleMotion;
+extern void *gFTDataDonkeyModel;
+extern void *gFTDataDonkeySpecial2;
+extern u32 gFTDataDonkeyParticleBankID;
+
+extern void *gFTDataPolyDonkeyMain;
+extern void *gFTDataPolyDonkeySubMotion;
+extern void *gFTDataPolyDonkeyModel;
+extern u32 gFTDataPolyDonkeyParticleBankID;
+
+extern void *gFTDataGiantDonkeyMain;
+extern void *gFTDataGiantDonkeySubMotion;
+extern void *gFTDataGiantDonkeyModel;
+extern void *gFTDataGiantDonkeySpecial2;
+extern u32 gFTDataGiantDonkeyParticleBankID;
 
 typedef enum ftDonkeyMotion
 {
@@ -93,7 +108,7 @@ typedef enum ftDonkeyStatus
 	ftStatus_Donkey_ThrowFF,
 	ftStatus_Donkey_ThrowAirFF,
 
-	ftStatus_Donkey_HeavyThrowStart, // Start of HeavyThrow action states
+	ftStatus_Donkey_HeavyThrowStart,	// Start of HeavyThrow action states
 	ftStatus_Donkey_HeavyThrowF = ftStatus_Donkey_HeavyThrowStart,
 	ftStatus_Donkey_HeavyThrowB,
 	ftStatus_Donkey_HeavyThrowF4,
@@ -108,32 +123,32 @@ typedef struct ftDonkey_FighterVars
 
 } ftDonkey_FighterVars;
 
-typedef struct ftDonkey_SpecialN_StatusVars
+typedef struct ftDonkeySpecialNStatusVars
 {
 	sb32 is_release;
 	s32 charge_level;
 	sb32 is_charging;
 	sb32 is_cancel;
 
-} ftDonkey_SpecialN_StatusVars;
+} ftDonkeySpecialNStatusVars;
 
-typedef struct ftDonkey_SpecialHi_StatusVars
+typedef struct ftDonkeySpecialHiStatusVars
 {
 	s32 unk_0x0;
 
-} ftDonkey_SpecialHi_StatusVars;
+} ftDonkeySpecialHiStatusVars;
 
-typedef struct ftDonkey_SpecialLw_StatusVars
+typedef struct ftDonkeySpecialLwStatusVars
 {
 	sb32 is_loop;
 
-} ftDonkey_SpecialLw_StatusVars;
+} ftDonkeySpecialLwStatusVars;
 
 typedef union ftDonkey_StatusVars
 {
-	ftDonkey_SpecialN_StatusVars specialn;
-	ftDonkey_SpecialHi_StatusVars specialhi;
-	ftDonkey_SpecialLw_StatusVars speciallw;
+	ftDonkeySpecialNStatusVars specialn;
+	ftDonkeySpecialHiStatusVars specialhi;
+	ftDonkeySpecialLwStatusVars speciallw;
 
 } ftDonkey_StatusVars;
 

@@ -5,5 +5,6 @@ lOverlay7ArenaHi = 0x80392A00;
 lOverlay26ArenaLo = 0x8013C4C0;
 lOverlay26ArenaHi = 0x803903E0;
 
-lItLinkBombHitEvents = 0x00000088;
-lItLinkBombBloatScale = 0x000000A8;
+lITLinkBombItemAttributes = 0x00000040;
+lITLinkBombHitEvents = 0x00000088;
+lITLinkBombBloatScale = 0x000000A8;

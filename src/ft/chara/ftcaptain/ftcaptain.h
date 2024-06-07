@@ -18,80 +18,92 @@
 #define FTCAPTAIN_FALCONKICK_VEL_SCALE_APPLY_TIME 6
 #define FTCAPTAIN_FALCONKICK_VEL_SCALE_DIV 2.0F
 
-extern ftStatusDesc* ftStatus_SpecialDesc_Captain;
+extern ftStatusDesc dFTCaptainSpecialStatusDesc[/* */];
+
+extern void *gFTDataCaptainMain;
+extern void *gFTDataCaptainBattleMotion;
+extern void *gFTDataCaptainModel;
+extern void *gFTDataCaptainSpecial2;
+extern void *gFTDataCaptainSpecial3;
+extern u32 gFTDataCaptainParticleBankID;
+
+extern void *gFTDataPolyCaptainMain;
+extern void *gFTDataPolyCaptainSubMotion;
+extern void *gFTDataPolyCaptainModel;
+extern u32 gFTDataPolyCaptainParticleBankID;
 
 typedef enum ftCaptainMotion
 {
-	ftMotion_Captain_Attack13 = ftMotion_Common_SpecialStart,
-	ftMotion_Captain_Attack100Start,
-	ftMotion_Captain_Attack100Loop,
-	ftMotion_Captain_Attack100End,
-	ftMotion_Captain_AppearRStart,
-	ftMotion_Captain_AppearLStart,
-	ftMotion_Captain_AppearREnd,
-	ftMotion_Captain_AppearLEnd,
-	ftMotion_Captain_SpecialN,
-	ftMotion_Captain_SpecialAirN,
-	ftMotion_Captain_SpecialLw,		   // Grounded Falcon Kick
-	ftMotion_Captain_SpecialLwAir,	   // Grounded -> aerial Falcon Kick
-	ftMotion_Captain_SpecialLwLanding, // Landing from aerial Falcon Kick
-	ftMotion_Captain_SpecialAirLw,	   // Aerial Falcon Kick
-	ftMotion_Captain_SpecialLwBound,   // Wall collision from Falcon Kick
-	ftMotion_Captain_SpecialHi,
-	ftMotion_Captain_SpecialHiCatch,
-	ftMotion_Captain_SpecialHiThrow,
-	ftMotion_Captain_SpecialAirHi
+    ftMotion_Captain_Attack13 = ftMotion_Common_SpecialStart,
+    ftMotion_Captain_Attack100Start,
+    ftMotion_Captain_Attack100Loop,
+    ftMotion_Captain_Attack100End,
+    ftMotion_Captain_AppearRStart,
+    ftMotion_Captain_AppearLStart,
+    ftMotion_Captain_AppearREnd,
+    ftMotion_Captain_AppearLEnd,
+    ftMotion_Captain_SpecialN,
+    ftMotion_Captain_SpecialAirN,
+    ftMotion_Captain_SpecialLw,                                 // Grounded Falcon Kick
+    ftMotion_Captain_SpecialLwAir,                              // Grounded -> aerial Falcon Kick
+    ftMotion_Captain_SpecialLwLanding,                          // Landing from aerial Falcon Kick                             
+    ftMotion_Captain_SpecialAirLw,                              // Aerial Falcon Kick
+    ftMotion_Captain_SpecialLwBound,                            // Wall collision from Falcon Kick
+    ftMotion_Captain_SpecialHi,
+    ftMotion_Captain_SpecialHiCatch,
+    ftMotion_Captain_SpecialHiThrow,
+    ftMotion_Captain_SpecialAirHi
 
 } ftCaptainMotion;
 
 typedef enum ftCaptainStatus
 {
-	ftStatus_Captain_Attack13 = ftStatus_Common_SpecialStart,
-	ftStatus_Captain_Attack100Start,
-	ftStatus_Captain_Attack100Loop,
-	ftStatus_Captain_Attack100End,
-	ftStatus_Captain_AppearRStart,
-	ftStatus_Captain_AppearLStart,
-	ftStatus_Captain_AppearREnd,
-	ftStatus_Captain_AppearLEnd,
-	ftStatus_Captain_SpecialN,
-	ftStatus_Captain_SpecialAirN,
-	ftStatus_Captain_SpecialLw,		   // Grounded Falcon Kick
-	ftStatus_Captain_SpecialLwAir,	   // Grounded -> aerial Falcon Kick
-	ftStatus_Captain_SpecialLwLanding, // Landing from aerial Falcon Kick
-	ftStatus_Captain_SpecialAirLw,	   // Aerial Falcon Kick
-	ftStatus_Captain_SpecialLwBound,   // Wall collision from Falcon Kick
-	ftStatus_Captain_SpecialHi,
-	ftStatus_Captain_SpecialHiCatch,
-	ftStatus_Captain_SpecialHiThrow,
-	ftStatus_Captain_SpecialAirHi
+    ftStatus_Captain_Attack13 = ftStatus_Common_SpecialStart,
+    ftStatus_Captain_Attack100Start,
+    ftStatus_Captain_Attack100Loop,
+    ftStatus_Captain_Attack100End,
+    ftStatus_Captain_AppearRStart,
+    ftStatus_Captain_AppearLStart,
+    ftStatus_Captain_AppearREnd,
+    ftStatus_Captain_AppearLEnd,
+    ftStatus_Captain_SpecialN,
+    ftStatus_Captain_SpecialAirN,
+    ftStatus_Captain_SpecialLw,                                 // Grounded Falcon Kick
+    ftStatus_Captain_SpecialLwAir,                              // Grounded -> aerial Falcon Kick
+    ftStatus_Captain_SpecialLwLanding,                          // Landing from aerial Falcon Kick                             
+    ftStatus_Captain_SpecialAirLw,                              // Aerial Falcon Kick
+    ftStatus_Captain_SpecialLwBound,                            // Wall collision from Falcon Kick
+    ftStatus_Captain_SpecialHi,
+    ftStatus_Captain_SpecialHiCatch,
+    ftStatus_Captain_SpecialHiThrow,
+    ftStatus_Captain_SpecialAirHi
 
 } ftCaptainStatus;
 
 typedef struct ftCaptain_FighterVars
 {
-	s32 falcon_punch_unk;
+    s32 falcon_punch_unk;
 
 } ftCaptain_FighterVars;
 
-typedef struct ftCaptain_SpecialHi_StatusVars
+typedef struct ftCaptainSpecialHiStatusVars
 {
-	u16 flags;
-	Vec3f vel;
+    u16 flags;
+    Vec3f vel;
 
-} ftCaptain_SpecialHi_StatusVars;
+} ftCaptainSpecialHiStatusVars;
 
-typedef struct ftCaptain_SpecialLw_StatusVars
+typedef struct ftCaptainSpecialLwStatusVars
 {
-	u16 scale_apply_timer;
-	f32 vel_scale;
+    u16 scale_apply_timer;
+    f32 vel_scale;
 
-} ftCaptain_SpecialLw_StatusVars;
+} ftCaptainSpecialLwStatusVars;
 
 typedef union ftCaptain_StatusVars
 {
-	ftCaptain_SpecialHi_StatusVars specialhi;
-	ftCaptain_SpecialLw_StatusVars speciallw;
+    ftCaptainSpecialHiStatusVars specialhi;
+    ftCaptainSpecialLwStatusVars speciallw;
 
 } ftCaptain_StatusVars;
 

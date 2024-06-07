@@ -771,7 +771,7 @@ itMapSetGround = 0x80173F54;
 itMapSetAir = 0x80173F78;
 itMapCheckMapReboundProcAll = 0x80173D24;
 itManagerMakeItem = 0x8016E174;
-gFtDataLinkMain = 0x80130FB0;
+gFTDataLinkMain = 0x80130FB0;
 itCommonSDefaultProcHop = 0x801733E4;
 itCommonSDefaultProcReflector = 0x80173434;
 

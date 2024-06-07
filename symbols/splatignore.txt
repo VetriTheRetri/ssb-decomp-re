@@ -1,0 +1,8 @@
+D_1 = 0x1; // ignore:true
+D_CD8 = 0xCD8; // ignore:true
+D_1338 = 0x1338; // ignore:true
+D_80080080 = 0x80080080; // ignore:true This address appears in boot, but it's a coincidence
+D_30 = 0x30; // ignore:true
+D_1D58 = 0x1D58; // ignore:true
+D_50 = 0x50; // ignore:true
+D_100 = 0x100; // ignore:true

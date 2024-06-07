@@ -5,8 +5,8 @@
 #include <gm/battle.h>
 #include <sc/scene.h>
 #include <buttons.h>
-#include <sys/om.h>
-#include <sys/rldm.h>
+#include <sys/objtypes.h>
+#include <reloc_data_mgr.h>
 
 #include "ovl7.h"
 
@@ -42,8 +42,8 @@ void scTrainingMode_CheckEnterTrainingMenu()
 
 			gBattleState->game_status = 2;
 
-			func_800269C0(0x116U);
-			func_80020B38(0, 0x3C00);
+			func_800269C0_275C0(0x116U);
+			auSetBGMVolume(0, 0x3C00);
 
 			gTrainingModeStruct.is_read_menu_inputs = 0;
 		}
@@ -71,7 +71,7 @@ void scTrainingMode_CheckLeaveTrainingMenu()
 			ftStruct* fp = ftGetStruct(fighter_gobj);
 			fp->input.pl.button_hold |= HAL_BUTTON_B;
 		}
-		func_80020B38(0, 0x7800);
+		auSetBGMVolume(0, 0x7800);
 	}
 }
 
@@ -124,7 +124,7 @@ void func_ovl7_8018D3DC()
 {
 	scTrainingMode_UpdateOptionArrows();
 	scTrainingMode_UpdateCursorUnderline();
-	func_800269C0(0xA4U);
+	func_800269C0_275C0(0xA4U);
 }
 
 // 8018D40C
@@ -203,11 +203,11 @@ sb32 scTrainingMode_UpdateItemOption()
 				pos.z = 0.0F;
 
 				itManager_MakeItemSetupCommon(NULL, gTrainingModeStruct.item_menu_option + 3, &pos, &vel, 4);
-				func_800269C0(0x9EU);
+				func_800269C0_275C0(0x9EU);
 				gTrainingModeStruct.item_spawn_wait = 8;
 			}
 			else
-				func_800269C0(0xA5U);
+				func_800269C0_275C0(0xA5U);
 		}
 	}
 	else
@@ -262,9 +262,9 @@ sb32 scTrainingMode_UpdateResetOption()
 	if (gPlayerControllers[gSceneData.spgame_player].button_new & A_BUTTON)
 	{
 		gTrainingModeStruct.exit_or_reset = 1;
-		func_800266A0();
-		func_800269C0(0xA2U);
-		func_80020B38(0, 0x7800);
+		func_800266A0_272A0();
+		func_800269C0_275C0(0xA2U);
+		auSetBGMVolume(0, 0x7800);
 		leoInitUnit_atten();
 		return TRUE;
 	}
@@ -277,8 +277,8 @@ sb32 scTrainingMode_UpdateExitOption()
 {
 	if (gPlayerControllers[gSceneData.spgame_player].button_new & A_BUTTON)
 	{
-		func_800266A0();
-		func_800269C0(0xA2U);
+		func_800266A0_272A0();
+		func_800269C0_275C0(0xA2U);
 		leoInitUnit_atten();
 		return TRUE;
 	}
@@ -301,7 +301,7 @@ void scTrainingMode_UpdateMainOption()
 
 		scTrainingMode_UpdateCursorPosition();
 		func_ovl7_8018D3DC();
-		func_800269C0(0xA4U);
+		func_800269C0_275C0(0xA4U);
 	}
 }
 
@@ -423,8 +423,8 @@ void func_ovl7_8018DA98()
 // 8018DD0C
 void scTrainingMode_LoadFiles()
 {
-	void* addr = rldm_get_file_with_external_heap((u32)&D_NF_000000FE,
-												  hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FE), 0x10));
+	void* addr = rdManagerGetFileWithExternHeap((u32)&D_NF_000000FE,
+												  gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000FE), 0x10));
 	gTrainingModeStruct.display_label_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_00000000);
 	gTrainingModeStruct.display_option_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_00000020);
 	gTrainingModeStruct.menu_label_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_000000BC);
@@ -728,7 +728,7 @@ void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 		{
 			while (TRUE)
 			{
-				fatal_printf("Error : wrong item! %d\n", ip->it_kind);
+				gsFatalPrintF("Error : wrong item! %d\n", ip->it_kind);
 				scnmgr_crash_print_gobj_state();
 			}
 		}
@@ -1237,7 +1237,7 @@ void scTrainingMode_RenderCursorUnderline(GObj* interface_gobj)
 	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
 	gDPSetFillColor(gDisplayListHead[0]++,
-					rgba32_to_fill_color(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF), gDisplayListHead));
+					gsGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF), gDisplayListHead));
 	gDPFillRectangle(gDisplayListHead[0]++, gTrainingModeStruct.cursor_ulx, gTrainingModeStruct.cursor_uly,
 					 gTrainingModeStruct.cursor_lrx, gTrainingModeStruct.cursor_lry);
 	gDPPipeSync(gDisplayListHead[0]++);
@@ -1298,7 +1298,7 @@ void scTrainingMode_InitTrainingMenuAll()
 void scTrainingMode_SetPlayDefaultMusicID()
 {
 	gMusicIndexDefault = 0x2A;
-	func_80020AB4(0, gMusicIndexDefault);
+	auPlaySong(0, gMusicIndexDefault);
 	gMusicIndexCurrent = gMusicIndexDefault;
 }
 
@@ -1401,8 +1401,8 @@ void scTrainingMode_InitTrainingMode()
 	scTrainingMode_InitStatDisplayAll();
 	scTrainingMode_InitTrainingMenuAll();
 	scTrainingMode_SetPlayDefaultMusicID();
-	func_800266A0();
-	func_800269C0(0x272);
+	func_800266A0_272A0();
+	func_800269C0_275C0(0x272);
 
 	sp54 = D_ovl7_8019086C;
 
@@ -1432,11 +1432,11 @@ void scManager_TrainingMode_InitScene()
 		func_ovl2_801157EC();
 	} while (gTrainingModeStruct.exit_or_reset != 0);
 
-	func_80020A74();
+	auStopBGM();
 
-	while (func_80020D58(0) != FALSE)
+	while (auIsBGMPlaying(0) != FALSE)
 		continue;
-	func_80020B38(0, 0x7800);
+	auSetBGMVolume(0, 0x7800);
 
 	gSceneData.scene_previous = gSceneData.scene_current;
 	gSceneData.scene_current = 0x12;
@@ -1445,7 +1445,7 @@ void scManager_TrainingMode_InitScene()
 // 801906D0
 void func_ovl7_801906D0()
 {
-	RldmSetup rldm_setup;
+	rdSetup rldm_setup;
 
 	rldm_setup.tableRomAddr = &D_NF_001AC870;
 	rldm_setup.tableFileCount = &D_NF_00000854;
@@ -1456,7 +1456,7 @@ void func_ovl7_801906D0()
 	rldm_setup.forceBuf = gOverlay7ForceBuf;
 	rldm_setup.forceBufSize = ARRAY_COUNT(gOverlay7ForceBuf);
 
-	rldm_initialize(&rldm_setup);
-	rldm_load_files_into(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonSpriteFiles,
-						 hal_alloc(rldm_bytes_need_to_load(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
+	rdManagerInitSetup(&rldm_setup);
+	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonSpriteFiles,
+						 gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }

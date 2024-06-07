@@ -1,3 +1,4 @@
+gPlayerControllerPortStatuses = 0x800451A4; // segment:ovl26
 mnBattleSetupDisplayList = 0x80131B20; // segment:ovl26
 mnBattleGetShade = 0x80131B78; // segment:ovl26
 mnBattleSelectCharWithToken = 0x80131C74; // segment:ovl26

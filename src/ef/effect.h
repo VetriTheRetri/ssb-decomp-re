@@ -3,7 +3,7 @@
 
 #include <ssb_types.h>
 #include <macros.h>
-#include <sys/obj_renderer.h> // Probably shouldn't be included
+#include <sys/objdraw.h> // Probably shouldn't be included
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
 #include <gm/gmmisc.h>
@@ -57,9 +57,9 @@ struct efParticle
 	u8 filler_0xC[0x20 - 0xC];
 	Vec3f pos;
 	u8 filler_0x2C[0x48 - 0x2C];
-	ColorRGBA color1;
+	gsColorRGBA color1;
 	s32 unk_efpart_0x4C;
-	ColorRGBA color2;
+	gsColorRGBA color2;
 	u8 filler_0x54[0x5C - 0x54];
 	efTransform* effect_info;
 };

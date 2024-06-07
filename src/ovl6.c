@@ -5,10 +5,10 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <gm/gmsound.h>
-#include <sys/om.h>
+#include <sys/objtypes.h>
 #include <mp/mpcollision.h>
 #include <it/ittypes.h>
-#include <sys/rldm.h>
+#include <reloc_data_mgr.h>
 
 #include "ovl6.h"
 
@@ -86,8 +86,8 @@ void func_ovl6_8018D0F0()
 // 8018D330
 void func_ovl6_8018D330()
 {
-	gBonusGameFileData[0] = rldm_get_file_with_external_heap(
-		(u32)&D_NF_000000FD, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FD), 0x10));
+	gBonusGameFileData[0] = rdManagerGetFileWithExternHeap(
+		(u32)&D_NF_000000FD, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000FD), 0x10));
 }
 
 // 8018D374
@@ -114,13 +114,13 @@ void scBonusGame_InitBonus1Targets()
 		if (*atrack != NULL)
 		{
 			omAddDObjAnimAll(DObjGetStruct(item_gobj), *atrack, 0.0F);
-			func_8000DF34(item_gobj);
+			func_8000DF34_EB34(item_gobj);
 		}
 		dobj_desc++, atrack++, gGroundStruct.bonus1.target_count++;
 	}
 	if (gGroundStruct.bonus1.target_count != 10)
 	{
-		fatal_printf("Error : not %d targets!\n", 10);
+		gsFatalPrintF("Error : not %d targets!\n", 10);
 		while (TRUE)
 			;
 	}
@@ -161,8 +161,8 @@ void func_ovl6_8018D5C8() { scBonusGame_InitBonus1Targets(); }
 // 8018D5E8
 void func_ovl6_8018D5E8()
 {
-	D_ovl2_801313F4 = rldm_get_file_with_external_heap(
-		(u32)&D_NF_00000088, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_00000088), 0x10U));
+	D_ovl2_801313F4 = rdManagerGetFileWithExternHeap(
+		(u32)&D_NF_00000088, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_00000088), 0x10U));
 }
 
 // 8018D62C
@@ -266,7 +266,7 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 	gGroundStruct.bonus2.platform_count--;
 
 	scBonusGame_UpdateBonus2PlatformInterface();
-	func_800269C0(alSound_SFX_Bonus2PlatformLanding);
+	func_800269C0_275C0(alSound_SFX_Bonus2PlatformLanding);
 
 	if (gGroundStruct.bonus2.platform_count == 0)
 	{
@@ -339,7 +339,7 @@ void scBonusGame_InitBonus2Bumpers()
 			if (*atrack != NULL)
 			{
 				omAddDObjAnimAll(DObjGetStruct(item_gobj), *atrack, 0.0F);
-				func_8000DF34(item_gobj);
+				func_8000DF34_EB34(item_gobj);
 			}
 			dobj_desc++, atrack++;
 		}
@@ -358,13 +358,13 @@ void func_ovl6_8018DC38()
 // 8018DC70
 void scBonusGame_InitInterface(GObj* interface_gobj)
 {
-	stop_current_process(60);
+	gsStopCurrentProcess(60);
 	func_ovl2_801120D4();
 	ifPlayer_Damage_InitInterface();
-	func_800269C0(0x1EA);
+	func_800269C0_275C0(0x1EA);
 	func_ovl2_801121C4();
-	omEjectGObjCommon(NULL);
-	stop_current_process(1);
+	omEjectGObj(NULL);
+	gsStopCurrentProcess(1);
 }
 
 // 8018DCC4
@@ -405,7 +405,7 @@ void scBonusGame_InitBonus1TargetSprites()
 	s32 i;
 
 	sprites
-		= rldm_get_file_with_external_heap(&D_NF_00000097, hal_alloc(rldm_bytes_needed_to_load(&D_NF_00000097), 0x10));
+		= rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
 	gGroundStruct.bonus1.interface_gobj = interface_gobj
 		= omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
@@ -428,7 +428,7 @@ void scBonusGame_InitBonus2PlatformSprites()
 	s32 i;
 
 	sprites
-		= rldm_get_file_with_external_heap(&D_NF_00000097, hal_alloc(rldm_bytes_needed_to_load(&D_NF_00000097), 0x10));
+		= rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
 	gGroundStruct.bonus2.interface_gobj = interface_gobj
 		= omMakeGObjCommon(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
@@ -505,7 +505,7 @@ void scBonusGame_CheckTimeUpEjectInterface(GObj* interface_gobj)
 	{
 		func_ovl2_80114DD4();
 		gIsBonusGameTimeUp = FALSE;
-		omEjectGObjCommon(interface_gobj);
+		omEjectGObj(interface_gobj);
 	}
 }
 
@@ -643,7 +643,7 @@ void scBonusGame_InitBonusGame()
 	scBonusGame_InitBonusGameSprites();
 	scBonusGame_MakeInterface();
 	mpCollision_SetPlayMusicID();
-	func_800269C0(0x272U);
+	func_800269C0_275C0(0x272U);
 	func_ovl6_8018E344();
 	scBonusGame_InitCameraVars();
 
@@ -748,15 +748,15 @@ void scManager_BonusGame_InitScene()
 	D_ovl6_8018F09C.arena_size = ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
 	D_ovl6_8018F09C.proc_start = scBonusGame_InitBonusGame;
 
-	func_8000683C(&D_ovl6_8018F09C);
-	func_80020A74();
+	gsGTLSceneInit(&D_ovl6_8018F09C);
+	auStopBGM();
 
-	while (func_80020D58(0) != FALSE)
+	while (auIsBGMPlaying(0) != FALSE)
 	{
 		continue;
 	};
-	func_80020B38(0, 0x7800);
-	func_800266A0();
+	auSetBGMVolume(0, 0x7800);
+	func_800266A0_272A0();
 	func_ovl2_801157EC();
 
 	if (gBattleState->game_status != gmMatch_GameStatus_Pause)

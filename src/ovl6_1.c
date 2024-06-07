@@ -1,5 +1,5 @@
-#include <sys/om.h>
-#include <sys/rldm.h>
+#include <sys/objtypes.h>
+#include <reloc_data_mgr.h>
 #include <sys/objdef.h>
 #include <sys/obj.h>
 #include <gm/gmsound.h>
@@ -38,15 +38,15 @@ itCreateDesc dItTargetItemDesc = {
 };
 
 // 8018F3B0
-RldmFileNode gOverlay6StatusBuf[100];
+rdFileNode gOverlay6StatusBuf[100];
 
 // 8018F6D0
-RldmFileNode gOverlay6ForceBuf[7];
+rdFileNode gOverlay6ForceBuf[7];
 
 // 8018ED70
 void func_ovl6_8018ED70()
 {
-	RldmSetup rldm_setup;
+	rdSetup rldm_setup;
 
 	rldm_setup.tableRomAddr = &D_NF_001AC870;
 	rldm_setup.tableFileCount = &D_NF_00000854;
@@ -57,9 +57,9 @@ void func_ovl6_8018ED70()
 	rldm_setup.forceBuf = gOverlay6ForceBuf;
 	rldm_setup.forceBufSize = ARRAY_COUNT(gOverlay6ForceBuf);
 
-	rldm_initialize(&rldm_setup);
-	rldm_load_files_into(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonSpriteFiles,
-						 hal_alloc(rldm_bytes_need_to_load(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
+	rdManagerInitSetup(&rldm_setup);
+	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonSpriteFiles,
+						 gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }
 
 // 8018EE10
@@ -68,7 +68,7 @@ sb32 itTargetSDefaultProcDamage(GObj* item_gobj)
 	efParticle_ShieldBreak_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 	efParticle_FireGrind_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
-	func_800269C0(alSound_SFX_Bonus1TargetBreak);
+	func_800269C0_275C0(alSound_SFX_Bonus1TargetBreak);
 
 	scBonusGame_UpdateBonus1TargetCount();
 

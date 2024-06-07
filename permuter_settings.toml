@@ -1,0 +1,17 @@
+compiler_type = "ido"
+
+[preserve_macros]
+"g[DS]P.*" = "void"
+"gs[DS]P.*" = "void"
+"G_IM_SIZ_.*" = "int"
+"G_[AC]C.*" = "int"
+ABS = "int"
+ABS_ALT = "int"
+SQ = "int"
+ARRAY_COUNT = "int"
+ARRAY_COUNTU = "int"
+CLAMP = "int"
+NULL = "int"
+
+[decompme.compilers]
+"tools/ido-recomp/linux/cc" = "ido7.1"

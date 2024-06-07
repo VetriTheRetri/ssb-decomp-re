@@ -1,9 +1,9 @@
 [submodule "tools/splat"]
 	path = tools/splat
 	url = https://github.com/ethteck/splat.git
-[submodule "tools/ido-static-recomp"]
-	path = tools/ido-static-recomp
-	url = https://github.com/Emill/ido-static-recomp.git
 [submodule "tools/asm-processor"]
 	path = tools/asm-processor
-	url = https://github.com/simonlindholm/asm-processor.git
+	url = https://github.com/simonlindholm/asm-processor
+[submodule "tools/asm-differ"]
+	path = tools/asm-differ
+	url = https://github.com/simonlindholm/asm-differ

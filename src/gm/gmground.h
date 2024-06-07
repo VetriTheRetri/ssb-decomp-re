@@ -4,7 +4,7 @@
 #include <ssb_types.h>
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
-#include <sys/obj_renderer.h>
+#include <sys/objdraw.h>
 #include <mp/mpcoll.h>
 
 typedef struct gmGroundUnkBytes
@@ -47,7 +47,7 @@ typedef struct gmGroundInfo
 	mpGeometryInfo* map_geometry;
 	void* unk_0x44;
 	void* unk_0x48;
-	ColorRGBA fog_color;
+	gsColorRGBA fog_color;
 	s32 unk_0x50;
 	s32 flags;
 	s32 unk_0x58;

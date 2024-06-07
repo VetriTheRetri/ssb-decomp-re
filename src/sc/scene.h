@@ -172,7 +172,7 @@ typedef struct scTrainingFiles
 {
 	s32 file_id;
 	uintptr_t addr;
-	ColorRGB fog_color;
+	gsColorRGB fog_color;
 
 } scTrainingFiles;
 

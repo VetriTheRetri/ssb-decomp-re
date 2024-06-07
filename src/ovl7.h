@@ -3,7 +3,7 @@
 
 #define scGetTrainingModeItemKind(kind) ((kind) - (It_Kind_UtilityStart - 1))
 
-void func_80020B38(s32, s32);
+void auSetBGMVolume(s32 playerID, u32 vol);
 void func_ovl2_8010CF44(void*, f32, f32, f32, f32, f32); /* extern */
 void scTrainingMode_InitViewOptionSprite();				 /* extern */
 void func_ovl0_800CCF00(GObj*);							 /* extern */
@@ -133,9 +133,9 @@ gmBattleState gTrainingModeBattleState;
 scTrainingMenu gTrainingModeStruct;
 
 // 80190C40
-RldmFileNode gOverlay7StatusBuf[100];
+rdFileNode gOverlay7StatusBuf[100];
 // 80190F60
-RldmFileNode gOverlay7ForceBuf[7];
+rdFileNode gOverlay7ForceBuf[7];
 
 extern u32 dCommonFileIDs[8];
 extern intptr_t D_NF_00000000;
@@ -153,8 +153,5 @@ extern intptr_t D_NF_001AC870;
 
 extern void* gCommonSpriteFiles[/* */];
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
-
-extern void
-omAddGObjRenderProc(struct GObjCommon* arg0, void (*arg1)(struct GObjCommon*), u8 dlLink, u32 arg3, s32 arg4);
 
 #endif

@@ -2,13 +2,13 @@ name: Smash Brothers (North America)
 sha1: e2929e10fccc0aa84e5776227e798abc07cedabf
 options:
   basename: smashbrothers
-  target_path: baserom.z64
-  elf_path: bin/smashbrothers.elf
+  target_path: baserom.us.z64
+  elf_path: build/smashbrothers.elf
   base_path: .
   platform: n64
   compiler: IDO
 
-  build_path: bin
+  build_path: build
 
   ld_script_path: .splat/smashbrothers.ld
   ld_dependencies: True
@@ -21,6 +21,7 @@ options:
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
+  symbol_name_format: $VRAM_$ROM
 
   symbol_addrs_path:
     - symbols/libultra.txt
@@ -89,6 +90,7 @@ options:
     - symbols/ovl8.txt
     - symbols/ovl9.txt
     - symbols/not_found.txt
+    - symbols/splatignore.txt
   reloc_addrs_path:
     - reloc_addrs.txt
 
@@ -100,7 +102,7 @@ options:
   rodata_string_guesser_level: 2
   data_string_guesser_level: 2
 
-  # elf_section_list_path: bin/smashbrothers.elf
+  # elf_section_list_path: build/smashbrothers.elf
   # asm_path: asm
   # src_path: src
   # create_asm_dependencies: True
@@ -115,9 +117,7 @@ options:
   # gfx_ucode: # one of [f3d, f3db, f3dex, f3dexb, f3dex2]
 
 segments:
-  - name: header
-    type: header
-    start: 0x0
+  - [0x000000, header, header]
 
   - name: boot
     type: code
@@ -125,19 +125,15 @@ segments:
     exclusive_ram_id: boot_A4000040
     vram: 0xA4000040
     subsegments:
-      - [0x40, hasm, boot_hasm]
-      - [0xB60, asm, boot_nops]
+      - [0x40, hasm, boot]
       - [0xB70, data, boot]
-      - [0x1000]
 
   - name: entry
     type: code
     start: 0x1000
     vram: 0x80000400
     subsegments:
-      - [0x1000, hasm, entry_hasm]
-      - [0x1040, asm, entry_nops]
-      - [0x1060]
+      - [0x1000, hasm, entry]
 
   - name: main
     type: code
@@ -146,30 +142,57 @@ segments:
     follows_vram: entry
     bss_size: 0x61EA0
     subsegments:
-      - [0x001060, asm, main]
-      - [0x001510, asm, nops_1510]
-      - [0x001520, asm, thread3]
-      - [0x003660, asm, dma]
-      - [0x004800, asm, thread6]
-      - [0x0054D0, asm, gtl]
-      - [0x0078E0, asm, ml]
-      - [0x007970, asm, system_00]
-      - [0x007C80, asm, rdp_reset]
-      - [0x007FE0, c, obj_manager]
-      - [0x00B8D0, asm, system_03]
-      - [0x00BAF0, asm, system_03_1]
-      - [0x00C7B0, asm, system_04]
-      - [0x011970, asm, obj_renderer]
-      - [0x0190E0, asm, trig_rand]
-      - [0x019AE0, asm, vec_math]
-      - [0x01A870, asm, hal_gu]
-      - [0x01E210, asm, interpolation]
-      - [0x01F1C0, asm, hal_audio]
-      - [0x021CC0, asm, crash]
-      - [0x024440, asm, unk_24440]
-      - [0x024480, asm, libultra/sprite]
-      - [0x026B10, asm, libultra/io/sptaskyield]
-      - [0x026BC0, asm, libultra/audio]
+      - [0x001060, c, sys/main]
+      - [0x001510, pad, padding_1510]
+      - [0x001520, c, sys/thread3]
+      - [0x003660, c, sys/gsdma]
+      - [0x004800, c, sys/thread6]
+      - [0x0054D0, c, sys/gsgtl]
+      - [0x0078E0, c, sys/ml]
+      - [0x007970, c, sys/system_00]
+      - [0x007C80, c, sys/rdp_reset]
+      - [0x007FE0, c, sys/obj_manager]
+      - [0x00B8D0, c, sys/system_03]
+      - [0x00BAF0, c, sys/system_03_1]
+      - [0x00C7B0, c, sys/system_04]
+      - [0x011970, c, sys/objdraw]
+      - [0x0190E0, c, sys/trig_rand]
+      - [0x019AE0, c, sys/vec]
+      - [0x01A870, c, sys/hal_gu]
+      - [0x01E210, c, sys/interpolation]
+      - [0x01F1C0, asm, sys/hal_audio]
+      - [0x021CC0, c, sys/gserror]
+      - [0x024440, c, unref24440] # One func, that's entirely unreferenced.
+      - [0x024470, asm, libultra/sp/setattribute]
+      - [0x024480, asm, libultra/sp/sprite]
+      - [0x026AF0, c, libultra/sp/clearattribute]
+      - [0x026B10, asm, libultra/sp/hide]
+      - [0x026B30, asm, libultra/sp/show]
+      - [0x026B50, asm, libultra/sp/spscale]
+      - [0x026BC0, c, libultra/n_audio/cspsetpriority]
+      - [0x026C10, c, libultra/n_audio/cspsetfxmix]
+      - [0x026C70, c, libultra/n_audio/n_env] 
+      - [0x02E220, c, libultra/n_audio/n_synaddplayer]
+      - [0x02E380, c, libultra/n_audio/n_synstopvoice]
+      - [0x02E3F0, c, libultra/n_audio/n_synallocvoice]
+      - [0x02E620, c, libultra/n_audio/n_synsetpan]
+      - [0x02E6A0, c, libultra/n_audio/n_synstartvoiceparam]
+      - [0x02E870, asm, libultra/n_audio/audio09]
+      - [0x0302A0, c, libultra/n_audio/n_synsetpriority]
+      - [0x0302C0, asm, libultra/n_audio/audio11]
+      - [0x0302E0, c, libultra/n_audio/seq]
+      - [0x030670, c, libultra/n_audio/cspsetseq]
+      - [0x0306B0, c, libultra/n_audio/n_synsetpitch]
+      - [0x030730, c, libultra/n_audio/cspsetbank]
+      - [0x030810, c, libultra/n_audio/cspsetvol]
+      - [0x030850, c, libultra/n_audio/n_synsetfxmix]
+      - [0x030980, c, libultra/n_audio/n_syndelete]
+      - [0x0309B0, c, libultra/n_audio/cspplay]
+      - [0x0309E0, c, libultra/n_audio/audio19] # One func, not matched
+      - [0x030A30, c, libultra/n_audio/n_synallocfx]
+      - [0x030A90, c, libultra/n_audio/cspstop]
+      - [0x030AC0, c, libultra/n_audio/n_synfreevoice]
+      - [0x030B60, c, libultra/n_audio/n_synsetvol]
       - [0x030C00, asm, libultra/os/sendmesg]
       - [0x030D50, asm, libultra/os/stopthread]
       - [0x030E10, asm, libultra/os/recvmesg]
@@ -179,37 +202,41 @@ segments:
       - [0x0314A0, asm, libultra/os/destroythread]
       - [0x0315B0, asm, libultra/libc/ll]
       - [0x031870, hasm, libultra/os/exceptasm]
-      - [0x032160, asm, libultra/os/thread]
+      - [0x032170, asm, libultra/os/thread]
       - [0x0321B0, hasm, libultra/libc/bzero]
-      - [0x032250, asm, libultra/motor]
+      - [0x032250, asm, libultra/io/motor]
       - [0x032620, asm, libultra/io/siacs]
-      - [0x0326E0, asm, libultra/unk_326E0]
+      - [0x0326E0, asm, libultra/io/controller]
       - [0x032A20, asm, libultra/os/createthread]
-      - [0x032B70, asm, libultra/contramdata]
+      - [0x032B70, asm, libultra/io/contreaddata]
       - [0x032D50, asm, libultra/os/virtualtophysical]
       - [0x032DD0, hasm, libultra/os/writebackdcache]
-      - [0x033110, asm, libultra/createspeedparam]
-      - [0x0331B0, asm, libultra/io/pirawread]
-      - [0x033210, asm, libultra/nops_33210]
+      - [0x032E50, asm, libultra/os/initialize]
+      - [0x0331B0, c, libultra/io/pirawread]
+      - [0x033210, pad, padding_33210]
       - [0x033270, hasm, libultra/os/setsr]
       - [0x033280, hasm, libultra/os/getsr]
+      - [0x033290, c, libultra/io/vigetnextframebuf]
       - [0x0332D0, asm, libultra/io/sprawdma]
+      - [0x033360, asm, libultra/io/sirawdma]
+      - [0x033410, asm, libultra/io/epilinkhandle]
       - [0x033460, asm, libultra/io/viblack]
       - [0x0334D0, asm, libultra/io/sirawread]
       - [0x033540, c, libultra/gu/mtxutil]
       - [0x0337B0, asm, libultra/io/visetmode]
       - [0x033820, asm, libultra/os/probetlb]
+      - [0x0338E0, asm, libultra/io/pimgr]
       - [0x033A50, asm, libultra/io/piacs]
-      - [0x033B10, asm, libultra/nops_33B10]
+      - [0x033B10, pad, padding_33B10]
       - [0x033B20, asm, libultra/io/devmgr]
       - [0x033FB0, asm, libultra/io/pirawdma]
       - [0x034090, asm, libultra/os/getcount]
       - [0x0340A0, asm, libultra/os/seteventmesg]
-      - [0x034110, c, libultra/gu/sqrtf]
-      - [0x034120, asm, libultra/unk_34120]
+      - [0x034110, hasm, libultra/gu/sqrtf]
+      - [0x034120, asm, libultra/os/afterprenmi]
       - [0x034140, asm, libultra/io/contquery]
       - [0x0341F0, asm, libultra/libc/xprintf]
-      - [0x034EB0, hasm, libultra/unk_34EB0_hasm]
+      - [0x034EB0, hasm, libultra/os/unmaptlball]
       - [0x034F00, asm, libultra/io/epidma]
       - [0x034FE0, c, libultra/libc/string]
       - [0x035080, asm, libultra/os/createmesgqueue]
@@ -225,24 +252,33 @@ segments:
       - [0x035950, asm, libultra/os/gettime]
       - [0x0359E0, asm, libultra/os/timerintr]
       - [0x035DE0, asm, libultra/os/setglobalintmask]
+      - [0x035E30, asm, libultra/io/aisetfreq]
+      - [0x035F80, asm, libultra/gu/normalize]
       - [0x036010, asm, libultra/os/setcompare]
+      - [0x036020, asm, libultra/os/getactivequeue]
       - [0x036030, hasm, libultra/libc/bcopy]
+      - [0x036340, c, libultra/audio/alCopy]
       - [0x0363C0, asm, libultra/os/resetglobalintmask]
       - [0x036420, hasm, libultra/os/interrupt]
-      - [0x036460, asm, libultra/io/vi]
-      - [0x0368A0, asm, libultra/io/pigetcmdq]
+      - [0x036460, c, libultra/io/vi]
+      - [0x0365A0, asm, libultra/io/viswapcontext]
+      - [0x0368A0, c, libultra/io/pigetcmdq]
       - [0x0368D0, asm, libultra/gu/cosf]
       - [0x036A40, asm, libultra/os/settime]
       - [0x036A70, asm, libultra/io/visetevent]
+      - [0x036AE0, asm, libultra/io/cartrominit]
+      - [0x036CC0, asm, libultra/io/pfsselectbank]
       - [0x036D40, hasm, libultra/os/setfpccsr]
       - [0x036D50, asm, libultra/io/epirawread]
       - [0x036EB0, hasm, libultra/os/maptlbrdb]
       - [0x036F10, asm, libultra/os/yieldthread]
+      - [0x036F60, c, libultra/audio/cents2ratio]
       - [0x036FB0, asm, libultra/io/contramwrite]
       - [0x037200, asm, libultra/pfsgetstatus]
-      - [0x037430, asm, libultra/contpfs]
+      - [0x037430, asm, libultra/io/contpfs]
+      - [0x037FB0, hasm, libultra/libc/bcmp]
       - [0x0380D0, asm, libultra/io/contramread]
-      - [0x038300, asm, libultra/crc]
+      - [0x038300, asm, libultra/io/crc]
       - [0x038470, asm, libultra/io/pfsisplug]
       - [0x0387B0, asm, libultra/io/epirawwrite]
       - [0x038910, asm, libultra/os/settimer]
@@ -250,40 +286,107 @@ segments:
       - [0x0394B0, asm, libultra/libc/ldiv]
       - [0x039640, asm, libultra/libc/xlitob]
       - [0x0398E0, asm, libultra/io/sirawwrite]
-      - [0x039A30, asm, libultra/nops_39A30]
+      - [0x039930, asm, libultra/io/dpsetnextbuf]
+      - [0x0399E0, asm, libultra/io/dp]
+      - [0x039A10, asm, libultra/io/spsetstat]
+      - [0x039A20, asm, libultra/io/spgetstat]
+      - [0x039A30, pad, padding_39A30]
       - [0x039A40, asm, libultra/vimgr]
+      - [0x039D50, asm, libultra/io/vigetcurrcontext]
       - [0x039D60, hasm, libultra/os/writebackdcacheall]
       - [0x039D90, asm, libultra/os/startthread]
+      - [0x039EE0, asm, libultra/os/visetyscale]
+      - [0x039F40, asm, libultra/libc/llcvt]
       - [0x03A150, asm, libultra/io/aisetnextbuf] # different from sf64
-      - [0x03A200, asm, libultra/io/ai]
+      - [0x03A200, c, libultra/io/ai]
+      - [0x03A230, c, libultra/io/vigetcurrframebuf]
       - [0x03A270, asm, libultra/io/spsetpc]
-      - [0x03A2B0, hasm, libultra/unk_3A2B0_hasm]
-      - [0x03A3E0, data, libultra_data]
-      - [0x03B350, data, rdp_reset]
-      - [0x03B530, data, system_04]
-      - [0x03B540, data, trig_rand]
-      - [0x03B550, data, hal_gu]
-      - [0x03C470, .data, obj_manager]
-      - [0x03C530, data, unk_3C530]
-      - [0x03C550, data, hal_audio]
-      - [0x03C7B0, data, crash]
-      - [0x03CC70, data, libultra/sprite]
-      - [0x03D270, rodata, thread3]
-      - [0x03D980, rodata, system_03]
-      - [0x03D9A0, rodata, system_04]
-      - [0x03DD10, rodata, obj_renderer]
-      - [0x03DF50, rodata, trig_rand]
-      - [0x03DFA0, rodata, hal_gu]
-      - [0x03DFF0, rodata, system_09]
-      - [0x03E020, rodata, unk_data_3E020]
-      - [0x03E250, rodata, main]
-      - [0x03E270, rodata, libultra]
-      - [0x03E460, rodata, libultra/sprite]
-      - [0x03E530, .rodata, obj_manager]
-      - [0x03E980, rodata, unk_3E980]
-      - { start: 0x0406D0, type: bss, vram: 0x8003FAD0 }
-      - { type: .bss, vram: 0x800466B0, name: obj_manager }
-      - { type: bss, vram: 0x80046FA0, name: unk_bss }
+      - [0x03A2B0, hasm, libultra/os/getwatchlo]
+      - [0x03A2C0, textbin, rsp/n_aspmain]
+      - [0x03AF20, textbin, rsp/gspF3DEX2_fifo] # L3DEX2_2.04H.code
+      - [0x03C0B0, bin, unk_3C0B0] # other rsp files?
+      - [0x03C2B0, .data, sys/main]
+      - [0x03C2E0, .data, sys/gsgtl]
+      - [0x03C350, .data, sys/rdp_reset]
+      - [0x03C470, .data, sys/obj_manager]
+      - [0x03C530, .data, sys/system_04]
+      - [0x03C540, .data, sys/trig_rand]
+      - [0x03C550, .data, sys/sintable]
+      - [0x03D550, data, sys/hal_audio]
+      - [0x03D7B0, .data, sys/gserror]
+      - [0x03DC70, data, libultra/sp/sprite]
+      - [0x03DC80, data, libultra/n_audio/n_env]
+      - [0x03DF30, data, libultra/io/vimodepallan1] # osViModePalLan1
+      - [0x03DF80, data, libultra/os/exceptasm]
+      - [0x03DFB0, data, libultra/os/thread]
+      - [0x03DFF0, data, libultra/os/initialize]
+      - [0x03E010, data, libultra/io/pimgr]
+      - [0x03E050, data, libultra/libc/xprintf]
+      - [0x03E0A0, data, libultra/os/timerintr]
+      - [0x03E0B0, data, libultra/vimodentsclan1] # osViModeNtscLan1
+      - [0x03E100, data, libultra/vimodempallan1] # osViModeMpalLan1
+      - [0x03E150, .data, libultra/io/vi]
+      - [0x03E1C0, data, libultra/io/cartrominit]
+      - [0x03E1D0, data, libultra/io/contpfs]
+      - [0x03E1E0, data, libultra/io/contramread]
+      - [0x03E1F0, data, libultra/libc/xlitob]
+      - [0x03E220, data, libultra/io/vimgr]
+      - [0x3E240, data, libultra/io/aisetnextbuf]
+      - [0x03E250, .rodata, sys/main]
+      - [0x03E270, .rodata, sys/thread3]
+      - [0x03E2D0, .rodata, sys/thread6]
+      - [0x03E2F0, .rodata, sys/gsgtl]
+      - [0x03E510, .rodata, sys/ml]
+      - [0x03E530, .rodata, sys/obj_manager]
+      - [0x03E980, .rodata, sys/system_03]
+      - [0x03E9A0, .rodata, sys/system_03_1]
+      - [0x03E9D0, .rodata, sys/system_04]
+      - [0x03ED10, .rodata, sys/objdraw]
+      - [0x03EF50, .rodata, sys/trig_rand]
+      - [0x03EFA0, .rodata, sys/hal_gu]
+      - [0x03EFF0, .rodata, sys/interpolation]
+      - [0x03F010, rodata, sys/hal_audio]
+      - [0x03F020, .rodata, sys/gserror]
+      - [0x03F460, rodata, libultra/sp/sprite]
+      - [0x03F470, .rodata, libultra/n_audio/n_env]
+      - [0x03FAA0, rodata, libultra/n_audio/audio09]
+      - [0x03FCE0, rodata, libultra/os/setintmask]
+      - [0x03FDB0, rodata, libultra/os/exceptasm]
+      - [0x03FE00, rodata, libultra/io/devmgr]
+      - [0x03FE20, rodata, libultra/libc/xprintf]
+      - [0x03FF20, rodata, libultra/gu/cosf]
+      - [0x03FF70, rodata, libultra/gu/libm_vals]
+      - [0x03FF80, .rodata, libultra/audio/cents2ratio]
+      - [0x03FF90, rodata, libultra/libc/xldtob]
+      - [0x03FFF0, rodata, libultra/libc/llcvt]
+      - { start: 0x040000, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
+      - { start: 0x0402B0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
+      - { start: auto, type: .bss, name: sys/main,                 vram: 0x8003FAD0 }
+      - { start: auto, type: .bss, name: sys/thread3,              vram: 0x80044EC0 }
+      - { start: auto, type: .bss, name: sys/gsdma,                vram: 0x80045040 }
+      - { start: auto, type: .bss, name: sys/thread6,              vram: 0x800450F0 }
+      - { start: auto, type: .bss, name: sys/gsgtl,                vram: 0x80045480 }
+      - { start: auto, type: .bss, name: sys/system_00,            vram: 0x80046670 }
+      - { start: auto, type: .bss, name: sys/rdp_reset,            vram: 0x800466A0 }
+      - { start: auto, type: .bss, name: sys/obj_manager,          vram: 0x800466B0 }
+      - { start: auto, type: .bss, name: sys/objdraw,              vram: 0x80046FA0 }
+      - { start: auto, type:  bss, name: sys/hal_audio,            vram: 0x800472D0 }
+      - { start: auto, type: .bss, name: sys/gserror,              vram: 0x8009DA00 }
+      - { start: auto, type:  bss, name: libultra/sp/sprite,       vram: 0x8009EDC0 }
+      - { start: auto, type:  bss, name: libultra/n_audio/n_env,   vram: 0x8009EDD0 }
+      - { start: auto, type:  bss, name: libultra/io/sptask,       vram: 0x8009EE40 }
+      - { start: auto, type:  bss, name: libultra/io/motor,        vram: 0x8009EE80 }
+      - { start: auto, type:  bss, name: libultra/io/siacs,        vram: 0x8009EF80 }
+      - { start: auto, type:  bss, name: libultra/io/controller,   vram: 0x8009EFA0 }
+      - { start: auto, type:  bss, name: libultra/os/initialize,   vram: 0x8009F030 }
+      - { start: auto, type:  bss, name: libultra/io/pimgr,        vram: 0x8009F2E0 }
+      - { start: auto, type:  bss, name: libultra/io/piacs,        vram: 0x800A04B0 }
+      - { start: auto, type:  bss, name: libultra/os/seteventmesg, vram: 0x800A04D0 }
+      - { start: auto, type:  bss, name: libultra/os/timerintr,    vram: 0x800A0550 }
+      - { start: auto, type:  bss, name: libultra/io/cartrominit,  vram: 0x800A0590 }
+      - { start: auto, type:  bss, name: libultra/io/contpfs,      vram: 0x800A0610 }
+      - { start: auto, type:  bss, name: libultra/io/vimgr,        vram: 0x800A0750 }
+      
       # - [0x0406D0, asm, unk_406D0]
       # - [0x049A20, asm, halbitmap]
       # - [0x04F860]
@@ -299,18 +402,18 @@ segments:
   - name: scene_manager
     type: code
     start: 0x0406D0
-    vram: 0x800a1980
+    vram: 0x800A1980
     subsegments:
-      - [0x0406D0, asm, scene_manager]
-      - [0x041db0, data, scene_manager]
-      - [0x042F30, rodata, scene_manager]
+      - [0x0406D0, c, scenemgr/scene_manager]
+      - [0x041db0, data, scenemgr/scene_manager]
+      - [0x042F30, .rodata, scenemgr/scene_manager]
 
   - name: ovl0
     type: code
     start: 0x043220
-    vram: 0x800c7840
+    vram: 0x800C7840
     subsegments:
-      - [0x043220, asm, ovl0/hal_bitmap]
+      - [0x043220, asm, ovl0/halbitmap]
       - [0x049000, asm, ovl0/rldm]
       - [0x049A20, asm, ovl0/hal_sprite]
       - [0x04F860, asm, ovl0/ovl0_2]
@@ -318,8 +421,8 @@ segments:
       - [0x04FF00, asm, ovl0/ovl0_4]
       - [0x050680, data, ovl0/float_table]
       - [0x051680, rodata, ovl0/function_table]
-      - [0x051740, rodata, ovl0/rldm]
-      - [0x051C90]
+      - [0x051740, rodata, ovl0/halbitmap]
+      - [0x0518C0, rodata, ovl0/rldm]
 
   - name: ovl2
     type: code
@@ -330,7 +433,6 @@ segments:
       - [0x051C90, asm, ovl2]
       - [0x0923D0, data, ovl2]
       - [0x0AB250, rodata, ovl2]
-      - [0x0AC540]
 
   - name: ovl3
     type: code
@@ -344,7 +446,7 @@ segments:
       - [0x106100, .data, item_links_bomb]
       - [0x106200, rodata, ovl3]
       - [0x1079B0, .rodata, item_links_bomb]
-      # - { start: 0x1079C0, type: bss, vram: 0x8018cf80 }
+      # - { start: 0x1079C0, type: bss, vram: 0x8018CF80 }
 
   - name: ovl1
     type: code
@@ -354,7 +456,6 @@ segments:
     subsegments:
       - [0x1079C0, asm, ovl1]
       - [0x1081C0, data, ovl1]
-      - [0x109FB0]
 
   - name: ovl4
     type: code
@@ -364,7 +465,7 @@ segments:
     subsegments:
       - [0x109FB0, asm, ovl4]
       - [0x10B2C0, data, ovl4]
-      - [0x10B370]
+
   - name: ovl5
     type: code
     start: 0x10B370
@@ -373,7 +474,7 @@ segments:
     subsegments:
       - [0x10B370, asm, ovl5]
       - [0x10B830, data, ovl5]
-      - [0x10B920]
+
   - name: ovl65
     type: code
     start: 0x10B920
@@ -383,7 +484,7 @@ segments:
       - [0x10B920, asm, ovl65]
       - [0x111060, data, ovl65]
       - [0x111670, rodata, ovl65]
-      - [0x111800]
+
   - name: ovl6
     type: code
     start: 0x111800
@@ -397,6 +498,7 @@ segments:
       - [0x1138B0, .rodata, ovl6]
       - { start: 0x1138E0, type: .bss, vram: 0x8018F1A0, name: ovl6}
       - { start: 0x1138E0, type: .bss, vram: 0x8018F3B0, name: ovl6_1}
+
   - name: ovl7
     type: code
     start: 0x1138E0
@@ -417,38 +519,36 @@ segments:
       - [0x117180, asm, ovl10]
       - [0x119860, data, ovl10]
       - [0x119AB0, rodata, ovl10]
-      - [0x119ac0]
 
   - name: ovl11
     type: code
-    start: 0x119ac0
+    start: 0x119AC0
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x119ac0, asm, ovl11]
+      - [0x119AC0, asm, ovl11]
       - [0x119D30, data, ovl11]
-      - [0x119df0]
+
   - name: ovl12
     type: code
-    start: 0x119df0
+    start: 0x119DF0
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x119df0, asm, ovl12]
+      - [0x119DF0, asm, ovl12]
       - [0x119FE0, data, ovl12]
       - [0x11A170, rodata, ovl12]
-      - [0x11a340]
 
   - name: ovl13
     type: code
-    start: 0x11a340
+    start: 0x11A340
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11a340, asm, ovl13]
+      - [0x11A340, asm, ovl13]
       - [0x11AA20, data, ovl13]
       - [0x11B860, rodata, ovl13]
-      - [0x11b970]
+
   - name: ovl14
     type: code
     start: 0x11b970
@@ -458,7 +558,7 @@ segments:
       - [0x11b970, asm, ovl14]
       - [0x11C500, data, ovl14]
       - [0x11C850, rodata, ovl14]
-      - [0x11ca90]
+
   - name: ovl17
     type: code
     start: 0x11ca90
@@ -467,7 +567,7 @@ segments:
     subsegments:
       - [0x11ca90, asm, ovl17]
       - [0x11DB20, data, ovl17]
-      - [0x11dc10]
+
   - name: ovl18
     type: code
     start: 0x11dc10
@@ -476,7 +576,7 @@ segments:
     subsegments:
       - [0x11dc10, asm, ovl18]
       - [0x11F190, data, ovl18]
-      - [0x11f2b0]
+
   - name: ovl60
     type: code
     start: 0x11f2b0
@@ -485,7 +585,7 @@ segments:
     subsegments:
       - [0x11f2b0, asm, ovl60]
       - [0x120DD0, data, ovl60]
-      - [0x120f50]
+
   - name: ovl61
     type: code
     start: 0x120f50
@@ -503,7 +603,7 @@ segments:
     subsegments:
       - [0x1224b0, asm, ovl19]
       - [0x125160, data, ovl19]
-      - [0x1252e0]
+
   - name: ovl20
     type: code
     start: 0x1252e0
@@ -512,7 +612,7 @@ segments:
     subsegments:
       - [0x1252e0, asm, ovl20]
       - [0x127EA0, data, ovl20]
-      - [0x1280a0]
+
   - name: ovl21
     type: code
     start: 0x1280a0
@@ -521,7 +621,7 @@ segments:
     subsegments:
       - [0x1280a0, asm, ovl21]
       - [0x1297B0, data, ovl21]
-      - [0x129970]
+
   - name: ovl22
     type: code
     start: 0x129970
@@ -539,7 +639,7 @@ segments:
     subsegments:
       - [0x12a4c0, asm, ovl23]
       - [0x12AD30, data, ovl23]
-      - [0x12ae40]
+
   - name: ovl24
     type: code
     start: 0x12ae40
@@ -549,7 +649,7 @@ segments:
       - [0x12ae40, asm, ovl24]
       - [0x12E130, data, ovl24]
       - [0x12EF20, rodata, ovl24]
-      - [0x12ef60]
+
   - name: ovl25
     type: code
     start: 0x12ef60
@@ -558,7 +658,7 @@ segments:
     subsegments:
       - [0x12ef60, asm, ovl25]
       - [0x12FC90, data, ovl25]
-      - [0x12fd80]
+
   - name: ovl26
     type: code
     start: 0x12fd80
@@ -570,6 +670,7 @@ segments:
       - [0x139620, .data, ovl26]
       - [0x139CB0, .rodata, ovl26]
       - { start: 0x139D00, type: .bss, vram: 0x8013ba80, name: ovl7}
+
   - name: ovl27
     type: code
     start: 0x139D00
@@ -579,7 +680,7 @@ segments:
       - [0x139D00, asm, ovl27]
       - [0x1407B0, data, ovl27]
       - [0x140F60, rodata, ovl27]
-      - [0x1410E0]
+
   - name: ovl28
     type: code
     start: 0x1410E0
@@ -589,7 +690,7 @@ segments:
       - [0x1410E0, asm, ovl28]
       - [0x147540, data, ovl28]
       - [0x147AC0, rodata, ovl28]
-      - [0x147B30]
+
   - name: ovl29
     type: code
     start: 0x147B30
@@ -599,7 +700,7 @@ segments:
       - [0x147B30, asm, ovl29]
       - [0x14CF80, data, ovl29]
       - [0x14D610, rodata, ovl29]
-      - [0x14D670]
+
   - name: ovl30
     type: code
     start: 0x14D670
@@ -609,7 +710,7 @@ segments:
       - [0x14D670, asm, ovl30]
       - [0x150040, data, ovl30]
       - [0x150530, rodata, ovl30]
-      - [0x150CA0]
+
   - name: ovl31
     type: code
     start: 0x150CA0
@@ -620,7 +721,7 @@ segments:
       - [0x150CC0, asm, ovl31]
       - [0x158090, data, ovl31]
       - [0x158960, rodata, ovl31]
-      - [0x158A40]
+
   - name: ovl32
     type: code
     start: 0x158A40
@@ -630,7 +731,7 @@ segments:
       - [0x158A40, asm, ovl32]
       - [0x15D570, data, ovl32]
       - [0x15D9C0, rodata, ovl32]
-      - [0x15DB50]
+
   - name: ovl33
     type: code
     start: 0x15DB50
@@ -640,7 +741,7 @@ segments:
       - [0x15DB50, asm, ovl33]
       - [0x160100, data, ovl33]
       - [0x162600, rodata, ovl33]
-      - [0x162640]
+
   - name: ovl34
     type: code
     start: 0x162640
@@ -650,7 +751,7 @@ segments:
       - [0x162640, asm, ovl34]
       - [0x165560, data, ovl34]
       - [0x1657C0, rodata, ovl34]
-      - [0x165810]
+
   - name: ovl35
     type: code
     start: 0x165810
@@ -659,7 +760,6 @@ segments:
     subsegments:
       - [0x165810, asm, ovl35]
       - [0x1665B0, data, ovl35]
-      - [0x1666F0]
 
   - name: ovl36
     type: code
@@ -670,7 +770,7 @@ segments:
       - [0x1666F0, asm, ovl36]
       - [0x1676C0, data, ovl36]
       - [0x167800, rodata, ovl36]
-      - [0x167830]
+
   - name: ovl37
     type: code
     start: 0x167830
@@ -680,7 +780,7 @@ segments:
       - [0x167830, asm, ovl37]
       - [0x1687E0, data, ovl37]
       - [0x168900, rodata, ovl37]
-      - [0x168930]
+
   - name: ovl38
     type: code
     start: 0x168930
@@ -690,7 +790,7 @@ segments:
       - [0x168930, asm, ovl38]
       - [0x169990, data, ovl38]
       - [0x169AB0, rodata, ovl38]
-      - [0x169AE0]
+
   - name: ovl39
     type: code
     start: 0x169AE0
@@ -700,7 +800,7 @@ segments:
       - [0x169AE0, asm, ovl39]
       - [0x16AAB0, data, ovl39]
       - [0x16ABE0, rodata, ovl39]
-      - [0x16AC10]
+
   - name: ovl40
     type: code
     start: 0x16AC10
@@ -710,7 +810,7 @@ segments:
       - [0x16AC10, asm, ovl40]
       - [0x16BBC0, data, ovl40]
       - [0x16BCE0, rodata, ovl40]
-      - [0x16BD10]
+
   - name: ovl41
     type: code
     start: 0x16BD10
@@ -720,7 +820,7 @@ segments:
       - [0x16BD10, asm, ovl41]
       - [0x16CD10, data, ovl41]
       - [0x16CE40, rodata, ovl41]
-      - [0x16CE70]
+
   - name: ovl42
     type: code
     start: 0x16CE70
@@ -730,7 +830,7 @@ segments:
       - [0x16CE70, asm, ovl42]
       - [0x16DE70, data, ovl42]
       - [0x16DFA0, rodata, ovl42]
-      - [0x16DFD0]
+
   - name: ovl43
     type: code
     start: 0x16DFD0
@@ -740,7 +840,6 @@ segments:
       - [0x16DFD0, asm, ovl43]
       - [0x16EFC0, data, ovl43]
       - [0x16F100, rodata, ovl43]
-      - [0x16F130]
 
   - name: ovl44
     type: code
@@ -751,7 +850,7 @@ segments:
       - [0x16F130, asm, ovl44]
       - [0x16FC00, data, ovl44]
       - [0x16FD30, rodata, ovl44]
-      - [0x16FD40]
+
   - name: ovl45
     type: code
     start: 0x16FD40
@@ -770,7 +869,7 @@ segments:
       - [0x170660, asm, ovl46]
       - [0x171230, data, ovl46]
       - [0x171310, rodata, ovl46]
-      - [0x171320]
+
   - name: ovl47
     type: code
     start: 0x171320
@@ -780,7 +879,7 @@ segments:
       - [0x171320, asm, ovl47]
       - [0x1720F0, data, ovl47]
       - [0x1721D0, rodata, ovl47]
-      - [0x1721E0]
+
   - name: ovl48
     type: code
     start: 0x1721E0
@@ -789,7 +888,7 @@ segments:
     subsegments:
       - [0x1721E0, asm, ovl48]
       - [0x172A80, data, ovl48]
-      - [0x172B60]
+
   - name: ovl49
     type: code
     start: 0x172B60
@@ -798,7 +897,7 @@ segments:
     subsegments:
       - [0x172B60, asm, ovl49]
       - [0x173930, data, ovl49]
-      - [0x173A30]
+
   - name: ovl50 # needs rodata symbols
     type: code
     start: 0x173A30
@@ -808,7 +907,7 @@ segments:
       - [0x173A30, asm, ovl50]
       - [0x174820, data, ovl50]
       - [0x174920, rodata, ovl50]
-      - [0x174940]
+
   - name: ovl51
     type: code
     start: 0x174940
@@ -817,7 +916,7 @@ segments:
     subsegments:
       - [0x174940, asm, ovl51]
       - [0x1750F0, data, ovl51]
-      - [0x1752C0]
+
   - name: ovl52
     type: code
     start: 0x1752C0
@@ -827,7 +926,7 @@ segments:
       - [0x1752C0, asm, ovl52]
       - [0x175E00, data, ovl52]
       - [0x175EE0, rodata, ovl52]
-      - [0x175F00]
+
   - name: ovl53
     type: code
     start: 0x175F00
@@ -837,7 +936,7 @@ segments:
       - [0x175F00, asm, ovl53]
       - [0x177280, data, ovl53]
       - [0x177470, rodata, ovl53]
-      - [0x1774A0]
+
   - name: ovl54
     type: code
     start: 0x1774A0
@@ -847,7 +946,7 @@ segments:
       - [0x1774A0, asm, ovl54]
       - [0x178470, data, ovl54]
       - [0x178550, rodata, ovl54]
-      - [0x178560]
+
   - name: ovl55
     type: code
     start: 0x178560
@@ -857,7 +956,7 @@ segments:
       - [0x178560, asm, ovl55]
       - [0x17ABC0, data, ovl55]
       - [0x17AD40, rodata, ovl55]
-      - [0x17AD50]
+
   - name: ovl56
     type: code
     start: 0x17AD50
@@ -867,7 +966,7 @@ segments:
       - [0x17AD50, asm, ovl56]
       - [0x17E130, data, ovl56]
       - [0x17E4F0, rodata, ovl56]
-      - [0x17E510]
+
   - name: ovl57
     type: code
     start: 0x17E510
@@ -876,7 +975,7 @@ segments:
     subsegments:
       - [0x17E510, asm, ovl57]
       - [0x17EB10, data, ovl57]
-      - [0x17ECC0]
+
   - name: ovl58
     type: code
     start: 0x17ECC0
@@ -885,7 +984,7 @@ segments:
     subsegments:
       - [0x17ECC0, asm, ovl58]
       - [0x17F110, data, ovl58]
-      - [0x17F200]
+
   - name: ovl59
     type: code
     start: 0x17F200
@@ -895,7 +994,7 @@ segments:
       - [0x17F200, asm, ovl59]
       - [0x182960, data, ovl59]
       - [0x187EB0, rodata, ovl59]
-      - [0x187ED0]
+
   - name: ovl62
     type: code
     start: 0x187ED0
@@ -904,7 +1003,6 @@ segments:
     subsegments:
       - [0x187ED0, asm, ovl62]
       - [0x189DB0, data, ovl62]
-      - [0x18DCB0]
 
   - name: ovl8
     type: code
@@ -915,7 +1013,6 @@ segments:
       - [0x18DCB0, asm, ovl8]
       - [0x1A44F0, data, ovl8]
       - [0x1AB650, rodata, ovl8]
-      - [0x1AB6B0]
 
   - name: ovl9
     type: code
@@ -926,7 +1023,6 @@ segments:
       - [0x1AB6B0, asm, ovl9]
       - [0x1AC3D0, data, ovl9]
       - [0x1AC820, rodata, ovl9]
-      - [0x1AC870]
 
   - [0x1AC870, bin]
 

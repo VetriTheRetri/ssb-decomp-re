@@ -28,15 +28,13 @@ git submodule update --init --recursive
 python3 -m pip install -r ./tools/splat/requirements.txt
 python3 -m pip install charset-normalizer -U
 
-if [ ! -f ./tools/ido-static-recomp/build7.1/out/cc ]
+if [ ! -f ./baserom.us.z64 ]
 then
-	pushd ./tools/ido-static-recomp/ && python3 ./build.py ./ido/7.1/ && popd
-fi
-
-if [ ! -f ./baserom.z64 ]
-then
-	echo -e ${RED}Rom not found, place it at $(pwd)/baserom.z64${ENDCOLOR}
+	echo -e ${RED}Rom not found, place it at $(pwd)/baserom.us.z64${ENDCOLOR}
 	exit
 fi
+
+# Run the toolchain script automatically, which currently sets up recomp. 
+make toolchain
 
 echo -e ${GREEN}All requirements satisfied${ENDCOLOR}

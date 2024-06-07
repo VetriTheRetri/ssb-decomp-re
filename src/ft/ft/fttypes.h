@@ -3,7 +3,7 @@
 
 #include <ssb_types.h>
 #include <macros.h>
-#include <sys/obj_renderer.h> // Probably shouldn't be included
+#include <sys/objdraw.h> // Probably shouldn't be included
 #include <PR/ultratypes.h>
 #include <sys/thread6.h>
 #include <sys/hal_input.h>
@@ -663,7 +663,7 @@ struct ftAttributes
 	u16 throw_heavy_sfx;
 	u16 unk_0xEA;
 	f32 halo_size; // Respawn platform size?
-	gsColorRGBA shade_color[4];
+	gsgsColorRGBA shade_color[4];
 	ub32 is_have_attack11 : 1;
 	ub32 is_have_attack12 : 1;
 	ub32 is_have_attackdash : 1;
@@ -1064,9 +1064,9 @@ struct ftStruct
 
 	caStruct colanim;
 
-	gsColorRGBA fog_color;	 // Used only by Master Hand, when in the
+	gsgsColorRGBA fog_color;	 // Used only by Master Hand, when in the
 							 // background on the -Z plane?
-	gsColorRGBA shade_color; // Shade colors of character costume
+	gsgsColorRGBA shade_color; // Shade colors of character costume
 
 	ftExplainInput explain; // "How To Play" tutorial command struct
 

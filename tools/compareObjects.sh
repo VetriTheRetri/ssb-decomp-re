@@ -6,10 +6,15 @@ ENDCOLOR="\e[0m"
 rm -f /tmp/compareObjectsOutGreen.txt
 rm -f /tmp/compareObjectsOutRed.txt
 rm -f /tmp/compareObjectsOutNonMatchingText.txt
-find bin/src/ -type f | grep \\.text$ | grep "$1" | while read line
+
+buildSrcPath=build/src/
+buildSrcPathLength=${#buildSrcPath}
+
+find build/src/ -type f | grep \\.text$ | grep "$1" | while read line
 do
-	relPath=${line:8}
-	asmPath=bin/asm/${relPath}
+	relPath=${line:${buildSrcPathLength}}
+	asmPath=build/asm/${relPath}
+	echo $asmPath
 	if [ -f "$asmPath" ]
 	then
 		python3 tools/matchbin.py ${line} ${asmPath} > /tmp/compareObjectsTextDiffOut.txt
@@ -24,10 +29,10 @@ do
 	fi
 done
 
-find bin/src/ -type f | grep \\.data$ | grep "$1" | while read line
+find build/src/ -type f | grep \\.data$ | grep "$1" | while read line
 do
-	relPath=${line:8}
-	asmPath=bin/asm/data/${relPath}.data
+	relPath=${line:${buildSrcPathLength}}
+	asmPath=build/asm/data/${relPath}.data
 	if [ -f "$asmPath" ]
 	then
 		sizeA=$(stat --printf="%s" $asmPath)
@@ -43,10 +48,10 @@ do
 	fi
 done
 
-find bin/src/ -type f | grep \\.rodata$ | grep "$1" | while read line
+find build/src/ -type f | grep \\.rodata$ | grep "$1" | while read line
 do
-	relPath=${line:8}
-	asmPath=bin/asm/data/${relPath}.rodata
+	relPath=${line:${buildSrcPathLength}}
+	asmPath=build/asm/data/${relPath}.rodata
 	if [ -f "$asmPath" ]
 	then
 		sizeA=$(stat --printf="%s" $asmPath)

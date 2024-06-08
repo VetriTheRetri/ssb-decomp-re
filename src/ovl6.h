@@ -7,7 +7,7 @@ void func_ovl0_800C9228(DObj*, void*);					 /* extern */
 void func_ovl0_800C8758(DObj*, void*, f32);				 /* extern */
 void func_ovl2_8010CFA8(GObj*, f32, f32, f32, f32, f32); /* extern */
 void func_ovl0_800CCF00(GObj*);
-void itManager_AllocUserData();
+void itManagerAllocUserData();
 void wpManager_AllocUserData();
 void ftPublicity_SetPlayerPublicReact();
 void lbMemory_SaveData_WriteSRAM(gmBattleState*);

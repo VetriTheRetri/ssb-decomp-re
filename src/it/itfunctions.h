@@ -7,6 +7,7 @@
 #include "itmap.h"
 
 // Fighter item headers
+#include <it/itfighter/itnesspkfire.h>
 #include <it/itfighter/itlinkbomb.h>
 
 #endif

@@ -530,7 +530,7 @@ void itLinkBombNExplodeInitHitbox(GObj* item_gobj)
 	ip->it_multi = 0;
 	ip->item_event_index = 0;
 
-	ip->item_hit.stale = ITEM_STALE_DEFAULT;
+	ip->item_hit.throw_mul = 1.0F;
 
 	itLinkBombNExplodeUpdateHitEvent(item_gobj);
 }

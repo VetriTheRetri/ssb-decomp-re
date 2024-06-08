@@ -1,5 +1,5 @@
-#ifndef _ITMANAGER_H_
-#define _ITMANAGER_H_
+#ifndef _itManagerH_
+#define _itManagerH_
 
 #include "ittypes.h"
 #include <wp/wptypes.h>

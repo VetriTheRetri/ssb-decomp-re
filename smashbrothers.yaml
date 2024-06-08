@@ -429,8 +429,10 @@ segments:
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x0AC540, asm, ovl3]
+      - [0x0FFD90, c, it/itfighter/itnesspkfire]
       - [0x100400, c, it/itfighter/itlinkbomb]
       - [0x1010A0, data, ovl3]
+      - [0x106080, .data, it/itfighter/itnesspkfire]
       - [0x106100, .data, it/itfighter/itlinkbomb]
       - [0x106200, rodata, ovl3]
       - [0x1079B0, .rodata, it/itfighter/itlinkbomb]

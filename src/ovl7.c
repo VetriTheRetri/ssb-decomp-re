@@ -202,7 +202,7 @@ sb32 scTrainingMode_UpdateItemOption()
 				pos.y += 200.0F;
 				pos.z = 0.0F;
 
-				itManager_MakeItemSetupCommon(NULL, gTrainingModeStruct.item_menu_option + 3, &pos, &vel, 4);
+				itManagerMakeItemSetupCommon(NULL, gTrainingModeStruct.item_menu_option + 3, &pos, &vel, 4);
 				func_800269C0_275C0(0x9EU);
 				gTrainingModeStruct.item_spawn_wait = 8;
 			}
@@ -1346,7 +1346,7 @@ void scTrainingMode_InitTrainingMode()
 	cmManager_MakeWallpaperCamera();
 	grWallpaper_SetGroundWallpaper();
 	func_ovl2_8010DB00();
-	itManager_AllocUserData();
+	itManagerAllocUserData();
 	grNodeInit_SetGroundFiles();
 	ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
 	wpManager_AllocUserData();

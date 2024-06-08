@@ -780,3 +780,6 @@ gMapRooms = 0x80131304;
 g1PGameTotalDamageTaken = 0x80130D6C;
 omAddDObjAnimAll = 0x8000BD1C;
 D_ovl2_801313F4 = 0x801313F4;
+
+gFTDataNessSpecial1 = 0x8013113C;
+gFTDataNessParticleBankID = 0x80131148;

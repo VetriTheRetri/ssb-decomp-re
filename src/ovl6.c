@@ -110,7 +110,7 @@ void scBonusGame_InitBonus1Targets()
 
 	while (dobj_desc->index != 0x12)
 	{
-		GObj* item_gobj = itManager_MakeItemSetupCommon(NULL, It_Kind_Target, &dobj_desc->translate, &sp48, 1);
+		GObj* item_gobj = itManagerMakeItemSetupCommon(NULL, It_Kind_Target, &dobj_desc->translate, &sp48, 1);
 		if (*atrack != NULL)
 		{
 			omAddDObjAnimAll(DObjGetStruct(item_gobj), *atrack, 0.0F);
@@ -334,7 +334,7 @@ void scBonusGame_InitBonus2Bumpers()
 
 		while (dobj_desc->index != 0x12)
 		{
-			item_gobj = itManager_MakeItemSetupCommon(NULL, It_Kind_GBumper, &dobj_desc->translate, &vel,
+			item_gobj = itManagerMakeItemSetupCommon(NULL, It_Kind_GBumper, &dobj_desc->translate, &vel,
 													  ITEM_MASK_SPAWN_GROUND);
 			if (*atrack != NULL)
 			{
@@ -590,7 +590,7 @@ void scBonusGame_InitBonusGame()
 	cmManager_MakeWallpaperCamera();
 	grWallpaper_SetGroundWallpaper();
 	func_ovl2_8010DB00();
-	itManager_AllocUserData();
+	itManagerAllocUserData();
 	grNodeInit_SetGroundFiles();
 	ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
 	wpManager_AllocUserData();

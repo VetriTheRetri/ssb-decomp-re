@@ -9,7 +9,7 @@
 #include "sys/dma.h"
 #include "sys/gtl.h"
 #include "sys/hal_audio.h"
-#include "sys/obj_renderer.h"
+#include "sys/objdraw.h"
 #include "sys/system_00.h"
 #include "sys/system_03_1.h"
 #include "sys/system_04.h"

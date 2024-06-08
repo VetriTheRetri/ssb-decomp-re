@@ -88,7 +88,7 @@ struct itFileData
 struct itCreateDesc
 {
 	itKind it_kind;
-	uintptr_t** p_file;
+	void **p_file;
 	intptr_t o_attributes;
 	DObjTransformTypes transform_types;
 	s32 update_state;

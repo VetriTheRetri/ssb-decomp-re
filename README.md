@@ -1,12 +1,13 @@
-# Super Smash Bros. 64 Disassembly
+# Super Smash Bros. 64 Decompilation
 
-A very WIP dissassembly of the first Smash Bros. game for the Nintendo 64.
+- SHA1: `e2929e10fccc0aa84e5776227e798abc07cedabf`
+- MD5: `f7c52568a31aadf26e14dc2b6416b2ed`
 
-| ROM          | SHA1                                      |
-|--------------|-------------------------------------------|
-| ssb64.us.z64 | `e2929e10fccc0aa84e5776227e798abc07cedabf`|
+To set up and build the rom, see below
 
-To setup and build the rom, see below
+## Clone this branch
+
+`git clone --single-branch --branch buildingRom git@github.com:VetriTheRetri/ssb-decomp-re.git ssbd`
 
 ## Install dependencies
 
@@ -14,11 +15,13 @@ To setup and build the rom, see below
 
 ## Extract files, and run the initial build
 
-`make init`
+`make init` or `make clean && make extract && make`
 
-## Build any changes
+## Build the ROM
 
 `make`
+
+or with parallel jobs for faster build: `make -j$(nproc)`
 
 ## Debugging
 There's a few handy scripts to help with debugging non matches after making changes.

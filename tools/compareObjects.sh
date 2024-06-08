@@ -14,7 +14,6 @@ find build/src/ -type f | grep \\.text$ | grep "$1" | while read line
 do
 	relPath=${line:${buildSrcPathLength}}
 	asmPath=build/asm/${relPath}
-	echo $asmPath
 	if [ -f "$asmPath" ]
 	then
 		python3 tools/matchbin.py ${line} ${asmPath} > /tmp/compareObjectsTextDiffOut.txt

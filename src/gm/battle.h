@@ -139,13 +139,14 @@ typedef enum gmSaveProtectPenalty
 
 typedef enum gmMatchGameType
 {
-	gmMatch_GameType_Demo,		  // 0x0
-	gmMatch_GameType_VSMode,	  // 0x1
-	gmMatch_GameType_Bonus,		  // 0x2
-	gmMatch_GameType_HowToPlay,	  // 0x3
-	gmMatch_GameType_1PGame = 5,  // 0x5
-	gmMatch_GameType_Unk6,		  // 0x6
-	gmMatch_GameType_TrainingMode // 0x7
+    gmMatch_GameType_Demo,          // 0x0
+    gmMatch_GameType_VSMode,        // 0x1
+    gmMatch_GameType_Bonus,         // 0x2
+    gmMatch_GameType_Explain,       // 0x3
+    gmMatch_GameType_Intro,         // 0x4
+    gmMatch_GameType_1PGame,        // 0x5
+    gmMatch_GameType_Unk6,          // 0x6
+    gmMatch_GameType_TrainingMode   // 0x7
 
 } gmMatchGameType;
 
@@ -387,7 +388,9 @@ typedef struct scUnkDataBounds
 	uintptr_t unk_scdatabounds_0x4;
 	uintptr_t unk_scdatabounds_0x8;
 	uintptr_t unk_scdatabounds_0xC;
-	u8 filler_0x10[0x1C - 0x10];
+	u32 unk_0x10;
+	u32 unk_0x14;
+	u32 unk_0x18;
 
 } scUnkDataBounds;
 

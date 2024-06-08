@@ -118,7 +118,7 @@ s32 scTrainingMode_Files_BackgroundImageIDs[/* */] = {
 
 Unk800D4060 D_ovl7_8019086C = { 0 };
 scUnkDataBounds D_ovl7_80190870
-	= { 0x80392a00, 0x803b6900, 0x803da800, 0x00000000, { 0, 0, 1, 64, 0, 0, 0, 240, 0, 1, 106, 153 } };
+	= { 0x80392a00, 0x803b6900, 0x803da800, 0x00000000, 0x00000140, 0x000000F0, 0x00016A99 };
 
 scRuntimeInfo D_ovl7_8019088C
 	= { NULL,		0x8018da78, 0x800a26b8, 0x80190fa0, 0x00000000, 0x00000001, 0x00000002, 0x0000f000, 0x00005000,

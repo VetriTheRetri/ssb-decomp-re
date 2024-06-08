@@ -1357,7 +1357,7 @@ void scTrainingMode_InitTrainingMode()
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
 	{
-		player_spawn = ftGlobal_SpawnInfo_MainData;
+		player_spawn = dFTDefaultFighterDesc;
 
 		if (gBattleState->player_block[player].player_kind == Pl_Kind_Not)
 			continue;

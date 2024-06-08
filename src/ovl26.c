@@ -1063,7 +1063,7 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id)
 {
 	f32 initial_y_rotation;
-	ftCreateDesc spawn_info = ftGlobal_SpawnInfo_MainData;
+	ftCreateDesc spawn_info = dFTDefaultFighterDesc;
 
 	if (ft_kind != Ft_Kind_Null)
 	{
@@ -3848,7 +3848,7 @@ void mnBattleInitCSS()
 		ftManager_SetFileDataKind(i);
 
 	for (i = 0; i < 4; i++)
-		gMnBattlePanels[i].anim_heap = gsMemoryAlloc(D_ovl2_80130D9C, 0x10U);
+		gMnBattlePanels[i].anim_heap = gsMemoryAlloc(gFTAnimHeapSize, 0x10U);
 
 	mnBattleCreatePortraitViewport();
 	mnBattleCreateCursorViewport();

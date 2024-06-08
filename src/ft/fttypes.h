@@ -94,6 +94,17 @@
 	FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_Button, timer), (buttons & U16_MAX)
 #define FTEXPLAIN_COMMAND_END FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_End, 0)
 
+#define FTCOMPUTER_EVENT_INSTRUCTION(k, t)      ( ((((k) << FTCOMPUTER_COMMAND_TIMER_BITS) & FTCOMPUTER_COMMAND_OPCODE_MASK) | ((t) & FTCOMPUTER_COMMAND_TIMER_MASK)) & U8_MAX )
+#define FTCOMPUTER_EVENT_STICK_X(x, t)          FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_StickX, t), (x)
+#define FTCOMPUTER_EVENT_STICK_Y(y, t)          FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_StickY, t), (y)
+#define FTCOMPUTER_EVENT_PKTHUNDER()            (FTCOMPUTER_COMMAND_PKTHUNDER)
+#define FTCOMPUTER_EVENT_END()                  (FTCOMPUTER_COMMAND_END)
+
+#define FTEXPLAIN_EVENT_INSTRUCTION(k, t)       ( ((((k) << 12) & 0xF000) | ((t) & 0xFFF)) & U16_MAX )
+#define FTEXPLAIN_EVENT_STICK(x, y, t)          FTEXPLAIN_EVENT_INSTRUCTION(ftExplainCommand_Kind_Stick, t), (((((x) << 8) & 0xFF00) | (((y) << 0) & 0x00FF)) & U16_MAX)
+#define FTEXPLAIN_EVENT_BUTTON(b, t)            FTEXPLAIN_EVENT_INSTRUCTION(ftExplainCommand_Kind_Button, t), ((b) & U16_MAX)
+#define FTEXPLAIN_EVENT_END()                   FTEXPLAIN_EVENT_INSTRUCTION(ftExplainCommand_Kind_End, 0)
+
 // Structs
 struct ftSpecialHit
 {

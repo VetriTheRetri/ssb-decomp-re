@@ -103,9 +103,8 @@ extern SObj* gcAppendSObjWithSprite(GObj*, void*);
 // ovl1
 extern f32 menu_zoom[12]; // D_ovl1_80390D90
 // ovl2
-extern u32 D_ovl2_80130D9C;
 extern u8 D_ovl2_8012EF40[4];
-extern u32 D_ovl2_80130D9C;
+extern u32 gFTAnimHeapSize;
 
 extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
@@ -302,7 +301,7 @@ s32 dMnBattleTimerValuesDuplicate[8] = { // 8013B95C[8];
 };
 u8 dMnBattleDefaultTeam[4] = { 0, 0, 1, 1 }; // 8013B97C[4]; // default team
 scUnkDataBounds D_ovl26_8013B980
-	= { 0x80392A00, 0x803B6900, 0x803DA800, 0x00000000, { 00, 00, 01, 0x40, 00, 00, 00, 0xF0, 00, 01, 0x6A, 0x99 } };
+	= { 0x80392A00, 0x803B6900, 0x803DA800, 0x00000000, 0x00000140, 0x000000F0, 0x00016A99 };
 scRuntimeInfo D_ovl26_8013B99C
 	= { 0x00000000, 0x8000a5e4, 0x800a26b8, 0x8013c4c0, 0x00000000, 0x00000001, 0x00000002, 0x000055f0, 0x00000200,
 		0x00000000, 0x00000000, 0x00003a98, 0x00020000, 0x00008000, 0x80131b20, 0x80004310, 0x00000000, 0x00000200,

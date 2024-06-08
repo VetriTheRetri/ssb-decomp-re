@@ -16,9 +16,9 @@ extern s32 gFighterHitLogIndex;
 extern ftHitCollisionLog gFighterHitLogTable[/* */];
 
 // Data - 0x80116DD0
-extern ftCreateDesc ftGlobal_SpawnInfo_MainData;
-extern f32 ftMap_SurfaceMaterials_Friction[/* */];
-extern ftData* ftManager_FighterData_FilePointers[/* */];
+extern ftCreateDesc dFTDefaultFighterDesc;
+extern f32 dFTMainMapSurfaceFrictions[/* */];
+extern ftData *dFTManagerDataFiles[/* */];
 
 #define ftGetStruct(fighter_gobj) ((ftStruct*)(fighter_gobj)->user_data.p)
 

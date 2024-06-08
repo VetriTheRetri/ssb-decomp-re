@@ -161,7 +161,9 @@ scUnkDataBounds D_ovl6_8018F080 = { 0x80392a00,
 									0x803b6900,
 									0x803da800,
 									0x00000000,
-									{ 0x00, 0x00, 0x01, 0x40, 0x00, 0x00, 0x00, 0xf0, 0x00, 0x01, 0x6a, 0x99 } };
+									0x00000140,
+									0x000000f0,
+									0x00016A99 };
 
 // 8018F09C
 scRuntimeInfo D_ovl6_8018F09C
@@ -170,7 +172,7 @@ scRuntimeInfo D_ovl6_8018F09C
 		0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000088, 0x00000000, 0x800d5cac, 0x00000000, 0x00000000,
 		0x00000000, 0x00000000, 0x00000088, 0x00000000, 0x0000006c, 0x00000000, 0x00000090, 0x8018e5f8 };
 
-extern ftCreateDesc ftGlobal_SpawnInfo_MainData; // ovl2 80116DD0
+extern ftCreateDesc dFTDefaultFighterDesc; // ovl2 80116DD0
 extern intptr_t D_NF_00000088;
 extern intptr_t D_NF_00000097;
 extern intptr_t D_NF_000000C0;

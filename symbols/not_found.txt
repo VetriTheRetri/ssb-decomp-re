@@ -671,7 +671,6 @@ D_NF_FFFF0004 = 0xFFFF0004;
 
 func_ovl2_800E7F68 = 0x800E7F68;
 gOMObjCommonLinks = 0x800466F0;
-ftGlobal_SpawnInfo_MainData = 0x80116DD0;
 gDefaultBattleState = 0x800A3fc8;
 gCommonSpriteFiles = 0x80130D40;
 gMapLightAngleY = 0x80131394;
@@ -688,7 +687,7 @@ gGroundInfo = 0x80131300;
 menu_zoom = 0x80390D90;
 gcAppendSObjWithSprite = 0x800ccfdc;
 gSaveData = 0x800A44E0;
-D_ovl2_80130D9C = 0x80130D9C;
+gFTAnimHeapSize = 0x80130D9C;
 D_ovl2_8012EF40 = 0x8012EF40;
 func_ovl26_801365D0 = 0x801365D0;
 
@@ -762,6 +761,8 @@ func_8018D0C0 = 0x8018D0C0;
 .L800D6470 = 0x800D6470;
 
 .L800D381C = 0x800D381C;
+
+D_8018E1C0 = 0x8018E1C0;
 
 
 itManagerUpdateSpin = 0x801713F4;

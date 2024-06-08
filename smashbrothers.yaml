@@ -386,18 +386,6 @@ segments:
       - { start: auto, type:  bss, name: libultra/io/cartrominit,  vram: 0x800A0590 }
       - { start: auto, type:  bss, name: libultra/io/contpfs,      vram: 0x800A0610 }
       - { start: auto, type:  bss, name: libultra/io/vimgr,        vram: 0x800A0750 }
-      
-      # - [0x0406D0, asm, unk_406D0]
-      # - [0x049A20, asm, halbitmap]
-      # - [0x04F860]
-
-  # - name: hal_sys_sintable
-  #   type: bin
-  #   start: 0x3C550
-
-  # - name: hal_sys_sintable_end
-  #   type: bin
-  #   start: 0x3D550
 
   - name: scene_manager
     type: code

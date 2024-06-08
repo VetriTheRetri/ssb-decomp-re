@@ -3,7 +3,7 @@
 
 #include <ssb_types.h>
 #include <macros.h>
-#include <sys/objdraw.h> // Probably shouldn't be included
+// #include <sys/obj_renderer.h> // Probably shouldn't be included
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
 
@@ -26,7 +26,7 @@
 #define EFPART_DUSTCOLL_VEL_BASE 15.0F
 
 #define EFPART_SHOCKSMALL_OFF_BASE 300.0F
-#define EFPART_SHOCKSMALL_OFF_ADD (-150.0F)
+#define EFPART_SHOCKSMALL_OFF_ADD  (-150.0F)
 #define EFPART_SHOCKSMALL_SCALE_BASE 0.5F
 #define EFPART_SHOCKSMALL_SCALE_ADD 0.75F
 
@@ -95,191 +95,189 @@
 #define EFPART_LOSEKIRBYSTAR_VEL_Y 80.0F
 #define EFPART_LOSEKIRBYSTAR_OFF_Y 210.0F
 
-typedef struct efParticle_EffectVars_BoxSmash
+typedef struct efParticle_EffectVars_ContainerSmash
 {
 	s32 lifetime;
 	s32 unk_ef_0x1C;
 
-} efParticle_EffectVars_BoxSmash;
+} efParticle_EffectVars_ContainerSmash;
 
-typedef struct efParticle_EffectVars_Basic2 // Stuff like the effect that is
-											// created when hit by a normal
-											// element attack
+typedef struct efParticle_EffectVars_Basic2 // Stuff like the effect that is created when hit by a normal element attack
 {
-	Vec3f vel;
-	u8 player;
-	s32 size;
-	efTransform* eftrans;
-	u8 filler_0x2C[0x3C - 0x30];
+    Vec3f vel;
+    u8 player;
+    s32 size;
+    efTransform *eftrans;
+    u8 filler_0x2C[0x3C - 0x30];
 
 } efParticle_EffectVars_Basic2;
 
 typedef struct efParticle_EffectVars_DamageNormalHeavy
 {
-	Vec3f pos;
-	u8 player;
-	s32 size;
+    Vec3f pos;
+    u8 player;
+    s32 size;
 
 } efParticle_EffectVars_DamageNormalHeavy;
 
 typedef struct efParticle_EffectVars_Common
 {
-	Vec3f vel;
-	s32 size;
-	efTransform* eftrans;
+    Vec3f vel;
+    s32 size;
+    efTransform *eftrans;
 
 } efParticle_EffectVars_Common;
 
 typedef struct efParticle_EffectVars_DustLight
 {
-	Vec3f vel1, vel2;
-	s32 lifetime;
-	efTransform* eftrans;
+    Vec3f vel1, vel2;
+    s32 lifetime;
+    efTransform *eftrans;
 
 } efParticle_EffectVars_DustLight;
 
 typedef struct efParticle_EffectVars_DustHeavy
 {
-	Vec3f pos;
-	s32 lr;
-	s32 anim_frame;
-	efTransform* eftrans;
+    Vec3f pos;
+    s32 lr;
+    s32 anim_frame;
+    efTransform *eftrans;
 
 } efParticle_EffectVars_DustHeavy;
 
 typedef struct efParticle_EffectVars_DamageFlyOrbs
 {
-	Vec3f vel;
-	s32 lifetime;
+    Vec3f vel;
+    s32 lifetime;
 
 } efParticle_EffectVars_DamageFlyOrbs;
 
 typedef struct efParticle_EffectVars_DamageSpawnOrbs
 {
-	s32 lifetime;
-	Vec3f pos;
+    s32 lifetime;
+    Vec3f pos;
 
 } efParticle_EffectVars_DamageSpawnOrbs;
 
-typedef struct efParticle_EffectVars_ImpactSW
+typedef struct efParticle_EffectVars_ImpactWave
 {
-	u8 index;
-	f32 alpha;
-	f32 decay;
+    u8 index;
+    f32 alpha;
+    f32 decay;
 
-} efParticle_EffectVars_ImpactSW;
+} efParticle_EffectVars_ImpactWave;
 
 typedef struct efParticle_EffectVars_StarRodSpark
 {
-	Vec3f vel, add;
-	s32 add_timer;
+    Vec3f vel, add;
+    s32 add_timer;
 
 } efParticle_EffectVars_StarRodSpark;
 
 typedef struct efParticle_EffectVars_DamageFlySpark
 {
-	Vec3f vel, add;
-	s32 add_timer;
+    Vec3f vel, add;
+    s32 add_timer;
 
 } efParticle_EffectVars_DamageFlySpark;
 
 typedef struct efParticle_EffectVars_DamageSpawnSpark
 {
-	s32 lifetime;
-	Vec3f pos;
-	s32 lr;
+    s32 lifetime;
+    Vec3f pos;
+    s32 lr;
 
 } efParticle_EffectVars_DamageSpawnSpark;
 
 typedef struct efParticle_EffectVars_DamageFlyMDust
 {
-	Vec3f vel, add;
-	s32 add_timer;
+    Vec3f vel, add;
+    s32 add_timer;
 
 } efParticle_EffectVars_DamageFlyMDust;
 
 typedef struct efParticle_EffectVars_DamageSpawnMDust
 {
-	s32 lifetime;
-	Vec3f pos;
-	s32 lr;
+    s32 lifetime;
+    Vec3f pos;
+    s32 lr;
 
 } efParticle_EffectVars_DamageSpawnMDust;
 
 typedef struct efParticle_EffectVars_Quake
 {
-	u8 priority;
+    u8 priority;
 
 } efParticle_EffectVars_Quake;
 
 typedef struct efParticle_EffectVars_Reflector
 {
-	s32 index, status;
+    s32 index, status;
 
 } efParticle_EffectVars_Reflector;
 
 typedef struct efParticle_EffectVars_Shield
 {
-	s32 player;
-	sb32 is_damage_shield;
+    s32 player;
+    sb32 is_damage_shield;
 
 } efParticle_EffectVars_Shield;
 
 typedef struct efParticle_EffectVars_Unknown1
 {
-	s32 efvars_unk1_0x0;
+    s32 efvars_unk1_0x0;
 
 } efParticle_EffectVars_Unknown1;
 
 typedef struct efParticle_EffectVars_ThunderTrail
 {
-	s32 lifetime;
+    s32 lifetime;
 
 } efParticle_EffectVars_ThunderTrail;
 
 typedef struct efParticle_EffectVars_VulcanJab
 {
-	s32 lifetime;
-	Vec3f vel, add;
+    s32 lifetime;
+    Vec3f vel, add;
 
 } efParticle_EffectVars_VulcanJab;
 
 typedef struct efParticle_EffectVars_PKThunder
 {
-	s32 status;
-	GObj* owner_gobj;
+    s32 status;
+    GObj *owner_gobj;
 
 } efParticle_EffectVars_PKThunder;
 
 typedef struct efParticle_EffectVars_YoshiEggLay
 {
-	s32 index, force_index;
+    s32 index, force_index;
 
 } efParticle_EffectVars_YoshiEggLay;
 
 typedef struct efParticle_EffectVars_CaptureKirbyStar
 {
-	s32 effect_timer;
+    s32 effect_timer;
 
 } efParticle_EffectVars_CaptureKirbyStar;
 
 typedef struct efParticle_EffectVars_LoseKirbyStar
 {
-	Vec2f vel;
-	s16 lifetime;
-	s16 lr;
+    Vec2f vel;
+    s16 lifetime;
+    s16 lr;
 
 } efParticle_EffectVars_LoseKirbyStar;
 
 typedef struct efParticle_EffectVars_GroundEffect
 {
-	Vec3f pos;
-	s32 groundeffect__0xC;
-	f32 scale_step;
-	s32 lr;
-	void* groundeffect__0x18;
-	void* groundeffect__0x1C;
-	u8 groundeffect__0x20;
+    Vec3f pos;
+    s32 groundeffect__0xC;
+    f32 scale_step;
+    s32 lr;
+    void *groundeffect__0x18;
+    void *groundeffect__0x1C;
+    u8 groundeffect__0x20;
 
 } efParticle_EffectVars_GroundEffect;
 

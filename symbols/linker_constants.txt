@@ -5,6 +5,11 @@ lOverlay7ArenaHi = 0x80392A00;
 lOverlay26ArenaLo = 0x8013C4C0;
 lOverlay26ArenaHi = 0x803903E0;
 
+lITRBombItemAttributes = 0x000000A8;
+lITRBombHitEvents = 0x000000F0;
+lITRBombDataStart = 0x00000788;
+lITRBombEffectDisplayList = 0x000008A0;
+
 lITNessPKFireItemAttributes = 0x00000034;
 
 lITLinkBombItemAttributes = 0x00000040;

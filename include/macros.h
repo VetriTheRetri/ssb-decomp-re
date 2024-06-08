@@ -22,6 +22,11 @@
 #define DTOR32 ((float)DTOR64)
 #define RTOD32 ((float)RTOD64)
 
+/* Well, OOF. I forgot this branch used the incorrect version of F_DEG_TO_RAD and 
+ * now I'm scared to change it. Take this instead.
+ */
+#define F_DTOR32(x) ((float)(((x) * PI32) / 180.0F))
+
 // Float convert degrees to radians
 #define F_DEG_TO_RAD(x) ((float)((x)*DTOR32))
 

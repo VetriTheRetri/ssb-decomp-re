@@ -136,10 +136,6 @@ void itRBombContainerSmashUpdateEffect(GObj *effect_gobj) // RTTF bomb explode G
     }
 }
 
-#define F_DTOR32(x) ((float)(((x) * PI32) / 180.0F))
-
-extern void *efManager_GetStructNoForceReturn();
-
 // 0x80184B44
 void itRBombContainerSmashMakeEffect(Vec3f *pos)
 {

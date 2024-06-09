@@ -9,9 +9,8 @@
 
 extern f32 lbRandom_GetFloat();
 extern f32 atan2f(f32, f32);
-extern f32 sqrtf(f32);
 
-extern void *func_800269C0_275C0(u16);
+extern alSoundEffect *func_800269C0_275C0(u16);
 
 extern intptr_t lITRBombItemAttributes;     // 0x000000A8
 extern intptr_t lITRBombHitEvents;          // 0x000000F0

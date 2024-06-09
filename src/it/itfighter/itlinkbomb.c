@@ -186,8 +186,6 @@ void itLinkBombNExplodeMakeEffectGotoSetStatus(GObj* item_gobj)
 	itLinkBombNExplodeSetStatus(item_gobj);
 }
 
-extern void* efParticle_DustHeavyDouble_MakeEffect(Vec3f*, s32, f32);
-
 // 0x80185B18 - Called only by unused function
 void func_ovl3_80185B18(GObj* item_gobj)
 {

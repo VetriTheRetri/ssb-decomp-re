@@ -8,8 +8,6 @@
 //                               //
 // // // // // // // // // // // //
 
-extern void* efParticle_DustExpandSmall_MakeEffect(Vec3f*, f32);
-
 extern intptr_t lITNessPKFireItemAttributes;// 0x00000034
 
 // // // // // // // // // // // //
@@ -21,7 +19,7 @@ extern intptr_t lITNessPKFireItemAttributes;// 0x00000034
 itCreateDesc dITNessPKFireItemDesc = 
 {
     It_Kind_NessPKFire,                     // Item Kind
-    &gFTDataNessSpecial1,                     // Pointer to item file data?
+    &gFTDataNessSpecial1,                   // Pointer to item file data?
     &lITNessPKFireItemAttributes,           // Offset of item attributes in file?
 
     // DObj transformation struct

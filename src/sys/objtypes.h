@@ -3,10 +3,12 @@
 
 #include <macros.h>
 #include <ssb_types.h>
+#include <PR/ultratypes.h>
 #include <PR/mbi.h>
 #include <PR/os.h>
 #include <PR/sp.h>
-#include <PR/ultratypes.h>
+#include <PR/gu.h>
+
 
 #include "objdef.h"
 

@@ -6,58 +6,58 @@
 #include <sys/objdef.h>
 
 // Appear
-void ftCaptain_AppearStart_ProcUpdate(GObj* fighter_gobj);
-void ftCaptain_AppearEnd_SetStatus(GObj* fighter_gobj);
+void ftCaptainAppearStartProcUpdate(GObj* fighter_gobj);
+void ftCaptainAppearEndSetStatus(GObj* fighter_gobj);
 
 // SpecialN / SpecialAirN
-void ftCaptain_SpecialN_UpdateGFX(GObj* fighter_gobj);
-f32 ftCaptain_SpecialN_GetAngle(s32 stick_y);
-void ftCaptain_SpecialN_ProcPhysics(GObj* fighter_gobj);
-void ftCaptain_SpecialAirN_ProcPhysics(GObj* fighter_gobj);
-void ftCaptain_SpecialAirN_SwitchStatusGround(GObj* fighter_gobj);
-void ftCaptain_SpecialN_SwitchStatusAir(GObj* fighter_gobj);
-void ftCaptain_SpecialN_ProcMap(GObj* fighter_gobj);
-void ftCaptain_SpecialAirN_ProcMap(GObj* fighter_gobj);
-void ftCaptain_SpecialN_InitStatusVars(GObj* fighter_gobj);
+void ftCaptainSpecialNUpdateGFX(GObj* fighter_gobj);
+f32 ftCaptainSpecialNGetAngle(s32 stick_y);
+void ftCaptainSpecialNProcPhysics(GObj* fighter_gobj);
+void ftCaptainSpecialAirNProcPhysics(GObj* fighter_gobj);
+void ftCaptainSpecialAirNSwitchStatusGround(GObj* fighter_gobj);
+void ftCaptainSpecialNSwitchStatusAir(GObj* fighter_gobj);
+void ftCaptainSpecialNProcMap(GObj* fighter_gobj);
+void ftCaptainSpecialAirNProcMap(GObj* fighter_gobj);
+void ftCaptainSpecialNInitStatusVars(GObj* fighter_gobj);
 void func_ovl3_8015FB54();
 void ftCaptain_SpecialN_SetStatus(GObj* fighter_gobj);
 void ftCaptain_SpecialAirN_SetStatus(GObj* fighter_gobj);
 
 // SpecialLw / SpecialAirLw
-void ftCaptain_SpecialLw_UpdateGFX(GObj* fighter_gobj);
-void ftCaptain_SpecialLw_SetAir(GObj* fighter_gobj);
+void ftCaptainSpecialLwUpdateGFX(GObj* fighter_gobj);
+void ftCaptainSpecialLwSetAir(GObj* fighter_gobj);
 void func_ovl3_8015FCC8(GObj* fighter_gobj);
-void ftCaptain_SpecialLw_DecideMapCollide(GObj* fighter_gobj);
-void ftCaptain_SpecialLw_DecideSetEndStatus(GObj* fighter_gobj);
-void ftCaptain_SpecialLw_ProcUpdate(GObj* fighter_gobj);
-void ftCaptain_SpecialLw_ProcPhysics(GObj* fighter_gobj);
-void ftCaptain_SpecialLwLanding_ProcPhysics(GObj* fighter_gobj);
-void ftCaptain_SpecialAirLw_ProcPhysics(GObj* fighter_gobj);
-void ftCaptain_SpecialLwBound_ProcPhysics(GObj* fighter_gobj);
-sb32 ftCaptain_SpecialLwBound_CheckMapCollideGoto(GObj* fighter_gobj);
-sb32 ftCaptain_SpecialLwAir_CheckAirGoto(GObj* fighter_gobj);
-void ftCaptain_SpecialLw_ProcMap(GObj* fighter_gobj);
-void ftCaptain_SpecialLwAir_ProcMap(GObj* fighter_gobj);
-void ftCaptain_SpecialAirLw_ProcMap(GObj* fighter_gobj);
-void ftCaptain_SpecialLw_ProcHit(GObj* fighter_gobj);
-void ftCaptain_SpecialLw_ProcStatus(GObj* fighter_gobj);
-void ftCaptain_SpecialLwAir_SetStatus(GObj* fighter_gobj);
-void ftCaptain_SpecialLwLanding_SetStatus(GObj* fighter_gobj);
+void ftCaptainSpecialLwDecideMapCollide(GObj* fighter_gobj);
+void ftCaptainSpecialLwDecideSetEndStatus(GObj* fighter_gobj);
+void ftCaptainSpecialLwProcUpdate(GObj* fighter_gobj);
+void ftCaptainSpecialLwProcPhysics(GObj* fighter_gobj);
+void ftCaptainSpecialLwLandingProcPhysics(GObj* fighter_gobj);
+void ftCaptainSpecialAirLwProcPhysics(GObj* fighter_gobj);
+void ftCaptainSpecialLwBoundProcPhysics(GObj* fighter_gobj);
+sb32 ftCaptainSpecialLwBoundCheckMapCollideGoto(GObj* fighter_gobj);
+sb32 ftCaptainSpecialLwAirCheckAirGoto(GObj* fighter_gobj);
+void ftCaptainSpecialLwProcMap(GObj* fighter_gobj);
+void ftCaptainSpecialLwAirProcMap(GObj* fighter_gobj);
+void ftCaptainSpecialAirLwProcMap(GObj* fighter_gobj);
+void ftCaptainSpecialLwProcHit(GObj* fighter_gobj);
+void ftCaptainSpecialLwProcStatus(GObj* fighter_gobj);
+void ftCaptainSpecialLwAirSetStatus(GObj* fighter_gobj);
+void ftCaptainSpecialLwLandingSetStatus(GObj* fighter_gobj);
 void ftCaptain_SpecialLw_SetStatus(GObj* fighter_gobj);
 void jtgt_ovl3_801601A0(GObj* fighter_gobj);
 void ftCaptain_SpecialAirLw_SetStatus(GObj* fighter_gobj);
 
 // SpecialHi / SpecialAirHi
-void ftCaptain_SpecialHi_InitCatchVars(ftStruct* fp);
-void ftCaptain_SpecialHi_ProcUpdate(GObj* fighter_gobj);
+void ftCaptainSpecialHiInitCatchVars(ftStruct* fp);
+void ftCaptainSpecialHiProcUpdate(GObj* fighter_gobj);
 void ftCaptain_SpecialHiCatch_ProcUpdate(GObj* fighter_gobj);
-void ftCaptain_SpecialHi_ProcInterrupt(GObj* fighter_gobj);
-void ftCaptain_SpecialHi_ProcPhysics(GObj* fighter_gobj);
+void ftCaptainSpecialHiProcInterrupt(GObj* fighter_gobj);
+void ftCaptainSpecialHiProcPhysics(GObj* fighter_gobj);
 void ftCaptain_SpecialHiCatch_ProcPhysics(GObj* fighter_gobj);
-void ftCaptain_SpecialHi_ProcMap(GObj* fighter_gobj);
-void ftCaptain_SpecialHi_ProcStatus(GObj* fighter_gobj);
+void ftCaptainSpecialHiProcMap(GObj* fighter_gobj);
+void ftCaptainSpecialHiProcStatus(GObj* fighter_gobj);
 void ftCaptain_SpecialHi_SetStatus(GObj* fighter_gobj);
-void ftCaptain_SpecialHi_ProcCatch(GObj* fighter_gobj);
+void ftCaptainSpecialHiProcCatch(GObj* fighter_gobj);
 void ftCaptain_SpecialHiThrow_SetStatus(GObj* fighter_gobj);
 void ftCaptain_SpecialAirHi_SetStatus(GObj* fighter_gobj);
 

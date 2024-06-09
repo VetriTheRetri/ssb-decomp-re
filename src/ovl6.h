@@ -8,8 +8,8 @@ void func_ovl0_800C8758(DObj*, void*, f32);				 /* extern */
 void func_ovl2_8010CFA8(GObj*, f32, f32, f32, f32, f32); /* extern */
 void func_ovl0_800CCF00(GObj*);
 void itManagerAllocUserData();
-void wpManager_AllocUserData();
-void ftPublicity_SetPlayerPublicReact();
+void wpManagerAllocWeapons();
+void ftPublicitySetup();
 void lbMemory_SaveData_WriteSRAM(gmBattleState*);
 void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32);
 void func_ovl2_801157EC();

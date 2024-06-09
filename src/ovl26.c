@@ -9,7 +9,7 @@
 #include "ovl26.h"
 
 // 80131B20
-void mnBattleSetupDisplayList(Gfx** display_list)
+void mnResultsSetupDisplayList(Gfx** display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftRender_Lights_DisplayLightReflect(display_list, func_ovl1_8039051C(), func_ovl1_80390528());
@@ -78,7 +78,7 @@ void mnBattleSelectCharWithToken(s32 port_id, s32 select_button)
 	gMnBattlePanels[held_port_id].holder_port_id = 4;
 	gMnBattlePanels[port_id].cursor_state = mnCursorStateNotHoldingToken;
 
-	mnBattleRedrawCursor(gMnBattlePanels[port_id].cursor, port_id, 2);
+	mnBonusCheckAndHandleTokenPickup(gMnBattlePanels[port_id].cursor, port_id, 2);
 
 	gMnBattlePanels[port_id].held_port_id = -1;
 	gMnBattlePanels[held_port_id].unk_0x88 = TRUE;
@@ -296,7 +296,7 @@ void mnBattleCreatePortrait(s32 portrait_id)
 }
 
 // 801326DC
-void mnBattleCreatePortraits()
+void mnStagePositionStageName()
 {
 	s32 portrait_id;
 
@@ -521,7 +521,7 @@ void mnBattleCreateTypeButtonViewport()
 }
 
 // 8013303C
-void mnBattleCreatePanelViewport()
+void mnStageCreateStageGeo()
 {
 	GObj* camera_gobj
 		= func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x32, 0x10000000, -1, 0, 1, 0, 1, 0);
@@ -1080,7 +1080,7 @@ void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 cost
 		spawn_info.shade = gMnBattlePanels[port_id].shade;
 		spawn_info.anim_heap = gMnBattlePanels[port_id].anim_heap;
 		spawn_info.player = port_id;
-		fighter_gobj = ftManager_MakeFighter(&spawn_info);
+		fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		gMnBattlePanels[port_id].player = fighter_gobj;
 
@@ -1119,7 +1119,7 @@ void mnBattleCreateFighterViewport()
 }
 
 // 80134D54
-void mnBattleRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
+void mnBonusCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 {
 	SObj* cursor_sobj;
 	f32 current_x, current_y;
@@ -1615,7 +1615,7 @@ void mnHandlePlayerTypeButtonPress(s32 port_id)
 			cursor_gobj = gMnBattlePanels[gMnBattlePanels[port_id].holder_port_id].cursor;
 			if (cursor_gobj != NULL)
 			{
-				mnBattleRedrawCursor(cursor_gobj, gMnBattlePanels[port_id].holder_port_id,
+				mnBonusCheckAndHandleTokenPickup(cursor_gobj, gMnBattlePanels[port_id].holder_port_id,
 									 gMnBattlePanels[gMnBattlePanels[port_id].holder_port_id].cursor_state);
 			}
 		}
@@ -1714,7 +1714,7 @@ void mnUpdateCursor(GObj* cursor_gobj, s32 port_id)
 		{
 			if (gMnBattlePanels[port_id].cursor_state != mnCursorStatePointer)
 			{
-				mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStatePointer);
+				mnBonusCheckAndHandleTokenPickup(cursor_gobj, port_id, mnCursorStatePointer);
 				gMnBattlePanels[port_id].cursor_state = mnCursorStatePointer;
 			}
 		}
@@ -1722,12 +1722,12 @@ void mnUpdateCursor(GObj* cursor_gobj, s32 port_id)
 		{
 			if ((gMnBattlePanels[port_id].is_selected == 1) || (gMnBattlePanels[port_id].player_type == 2))
 			{
-				mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
+				mnBonusCheckAndHandleTokenPickup(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
 				gMnBattlePanels[port_id].cursor_state = mnCursorStateNotHoldingToken;
 			}
 			else if (gMnBattlePanels[port_id].cursor_state != mnCursorStateHoldingToken)
 			{
-				mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStateHoldingToken);
+				mnBonusCheckAndHandleTokenPickup(cursor_gobj, port_id, mnCursorStateHoldingToken);
 				gMnBattlePanels[port_id].cursor_state = mnCursorStateHoldingToken;
 			}
 		}
@@ -1920,7 +1920,7 @@ void mnBattleRemoveHandicapCPULevel(s32 port_id)
 }
 
 // 80136998
-SObj* mnBattleGetArrowSObj(GObj* arrow_gobj, s32 direction)
+SObj* mnBonusSaveMatchInfo(GObj* arrow_gobj, s32 direction)
 {
 	SObj* second_arrow_sobj;
 	SObj* first_arrow_sobj;
@@ -1961,12 +1961,12 @@ void mnBattleSyncAndBlinkArrows(GObj* arrow_gobj)
 
 		if (value == 1)
 		{
-			arrow_sobj = mnBattleGetArrowSObj(arrow_gobj, 0);
+			arrow_sobj = mnBonusSaveMatchInfo(arrow_gobj, 0);
 
 			if (arrow_sobj != NULL)
 				omEjectSObj(arrow_sobj);
 		}
-		else if (mnBattleGetArrowSObj(arrow_gobj, 0) == NULL)
+		else if (mnBonusSaveMatchInfo(arrow_gobj, 0) == NULL)
 		{
 			arrow_sobj
 				= gcAppendSObjWithSprite(arrow_gobj, GetAddressFromOffset(gFile011, &FILE_011_ARROW_L_IMAGE_OFFSET));
@@ -1979,12 +1979,12 @@ void mnBattleSyncAndBlinkArrows(GObj* arrow_gobj)
 
 		if (value == 9)
 		{
-			arrow_sobj = mnBattleGetArrowSObj(arrow_gobj, 1);
+			arrow_sobj = mnBonusSaveMatchInfo(arrow_gobj, 1);
 
 			if (arrow_sobj != NULL)
 				omEjectSObj(arrow_sobj);
 		}
-		else if (mnBattleGetArrowSObj(arrow_gobj, 1) == NULL)
+		else if (mnBonusSaveMatchInfo(arrow_gobj, 1) == NULL)
 		{
 			arrow_sobj
 				= gcAppendSObjWithSprite(arrow_gobj, GetAddressFromOffset(gFile011, &FILE_011_ARROW_R_IMAGE_OFFSET));
@@ -2246,7 +2246,7 @@ void mnBattleHandleCursorPickup(s32 port_id, s32 held_port_id)
 	mnBattleSyncFighterDisplay(held_port_id);
 	mnBattleReorderCursorsOnPickup(port_id, held_port_id);
 	mnBattleSetCursorCoordinatesFromToken(port_id);
-	mnBattleRedrawCursor(panel_info->cursor, port_id, panel_info->cursor_state);
+	mnBonusCheckAndHandleTokenPickup(panel_info->cursor, port_id, panel_info->cursor_state);
 
 	panel_info->unk_0xA0 = TRUE;
 
@@ -2428,7 +2428,7 @@ void mnBattleSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 	{
 		if (panel_info->cursor_state != mnCursorStatePointer)
 		{
-			mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStatePointer);
+			mnBonusCheckAndHandleTokenPickup(cursor_gobj, port_id, mnCursorStatePointer);
 			panel_info->cursor_state = mnCursorStatePointer;
 		}
 	}
@@ -2438,7 +2438,7 @@ void mnBattleSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 		{
 			if (panel_info->cursor_state != mnCursorStateNotHoldingToken)
 			{
-				mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
+				mnBonusCheckAndHandleTokenPickup(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
 				panel_info->cursor_state = mnCursorStateNotHoldingToken;
 			}
 		}
@@ -2446,7 +2446,7 @@ void mnBattleSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 		{
 			if (panel_info->cursor_state != mnCursorStateHoldingToken)
 			{
-				mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStateHoldingToken);
+				mnBonusCheckAndHandleTokenPickup(cursor_gobj, port_id, mnCursorStateHoldingToken);
 				panel_info->cursor_state = mnCursorStateHoldingToken;
 			}
 		}
@@ -2458,7 +2458,7 @@ void mnBattleSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 		{
 			if ((gMnBattlePanels[i].is_selected == 1) && (mnBattleCheckTokenPickup(cursor_gobj, port_id, i) != 0))
 			{
-				mnBattleRedrawCursor(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
+				mnBonusCheckAndHandleTokenPickup(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
 				panel_info->cursor_state = mnCursorStateNotHoldingToken;
 				return;
 			}
@@ -2884,7 +2884,7 @@ void mnBattleCreateCursor(s32 port_id)
 	SObjGetStruct(cursor_gobj)->sprite.attr &= ~SP_FASTCOPY;
 	SObjGetStruct(cursor_gobj)->sprite.attr |= SP_TRANSPARENT;
 
-	mnBattleRedrawCursor(cursor_gobj, port_id, 0);
+	mnBonusCheckAndHandleTokenPickup(cursor_gobj, port_id, 0);
 }
 
 // 80138FA0
@@ -3842,10 +3842,10 @@ void mnBattleInitCSS()
 	efManager_AllocUserData();
 	mnSyncControllerOrderArray();
 	mnBattleLoadMatchInfo();
-	ftManager_AllocFighterData(1U, 4);
+	ftManagerAllocFighter(1U, 4);
 
 	for (i = 0; i < 12; i++)
-		ftManager_SetFileDataKind(i);
+		ftManagerSetupDataKind(i);
 
 	for (i = 0; i < 4; i++)
 		gMnBattlePanels[i].anim_heap = gsMemoryAlloc(gFTAnimHeapSize, 0x10U);
@@ -3853,7 +3853,7 @@ void mnBattleInitCSS()
 	mnBattleCreatePortraitViewport();
 	mnBattleCreateCursorViewport();
 	mnBattleCreateDroppedTokenViewport();
-	mnBattleCreatePanelViewport();
+	mnStageCreateStageGeo();
 	mnBattleCreatePanelDoorsViewport();
 	mnBattleCreateTypeButtonViewport();
 	mnBattleCreateFighterViewport();
@@ -3864,7 +3864,7 @@ void mnBattleInitCSS()
 	mnBattleCreateReadyToFightViewport();
 
 	mnBattleCreateBackground();
-	mnBattleCreatePortraits();
+	mnStagePositionStageName();
 	mnBattleInitPanels();
 	mnBattleDrawTitleAndBack();
 	mnBattleCreateTokenAutopositionRoutine();

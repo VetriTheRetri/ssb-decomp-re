@@ -5,37 +5,37 @@
 #include <ft/fttypes.h>
 
 // Stop weapon's ongoing sound effect
-void wpMain_StopSFX(wpStruct* wp);
+void wpMainStopSFX(wpStruct* wp);
 
 // Play sound effect if applicable
-void wpMain_PlaySFX(wpStruct* wp, u16 sfx_id);
+void wpMainPlaySFX(wpStruct* wp, u16 sfx_id);
 
 // Set weapon's facing direction based on velocity
-void wpMain_VelSetLR(GObj* weapon_gobj);
+void wpMainVelSetLR(GObj* weapon_gobj);
 
 // Set weapon's Yaw rotation based on velocity
-void wpMain_VelSetModelYaw(GObj* weapon_gobj);
+void wpMainVelSetModelPitch(GObj* weapon_gobj);
 
 // Decrement weapon's lifetime and return bool for whether weapon has expired
-sb32 wpMain_DecLifeCheckExpire(wpStruct* wp);
+sb32 wpMainDecLifeCheckExpire(wpStruct* wp);
 
 // Destroy weapon
-void wpMain_DestroyWeapon(GObj* weapon_gobj);
+void wpMainDestroyWeapon(GObj* weapon_gobj);
 
 // Transfer weapon's ground velocity to aerial velocity
-void wpMain_VelGroundTransferAir(GObj* weapon_gobj);
+void wpMainVelGroundTransferAir(GObj* weapon_gobj);
 
 // Update weapon's gravity and clamp to terminal velocity if greater than
-void wpMain_ApplyGravityClampTVel(wpStruct* wp, f32 gravity, f32 terminal_velocity);
+void wpMainApplyGClampTVel(wpStruct* wp, f32 gravity, f32 terminal_velocity);
 
 // Set weapon's facing direction when reflected
-void wpMain_ReflectorSetLR(wpStruct* wp, ftStruct* fp);
+void wpMainReflectorSetLR(wpStruct* wp, ftStruct* fp);
 
 // Apply stale multiplier to final hitbox damage output (+ 0.999% bonus)
-s32 wpMain_GetDamageOutput(wpStruct* wp);
+s32 wpMainGetStaledDamageOutput(wpStruct* wp);
 
 // Reset weapon's record of previously hit targets
-void wpMain_ClearHitRecord(wpStruct* wp);
+void wpMainClearHitRecord(wpStruct* wp);
 
 // Unknown
 void func_ovl3_80168428(GObj* weapon_gobj);

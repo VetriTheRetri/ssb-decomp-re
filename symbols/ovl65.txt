@@ -1,5 +1,5 @@
 func_ovl65_8018D0C0 = 0x8018D0C0; // segment:ovl65
-gm1PGameSetGameStart = 0x8018D160; // segment:ovl65
+mvOpeningYoshiSetNameColor = 0x8018D160; // segment:ovl65
 gm1PGameSetGameEnd = 0x8018D1A8; // segment:ovl65
 func_ovl65_8018D200 = 0x8018D200; // segment:ovl65
 gm1PGameGetNextFreePlayerPort = 0x8018D280; // segment:ovl65

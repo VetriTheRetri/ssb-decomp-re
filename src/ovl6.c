@@ -592,12 +592,12 @@ void scBonusGame_InitBonusGame()
 	func_ovl2_8010DB00();
 	itManagerAllocUserData();
 	grNodeInit_SetGroundFiles();
-	ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
-	wpManager_AllocUserData();
+	ftManagerAllocFighter(2, GMMATCH_PLAYERS_MAX);
+	wpManagerAllocWeapons();
 	efManager_AllocUserData();
 	ifScreenFlash_InitInterfaceVars(0xFF);
 	gmRumble_SetPlayerRumble();
-	ftPublicity_SetPlayerPublicReact();
+	ftPublicitySetup();
 
 	for (player = 0, player_spawn = dFTDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->player_block);
 		 player++)
@@ -605,7 +605,7 @@ void scBonusGame_InitBonusGame()
 		if (gBattleState->player_block[player].player_kind == Pl_Kind_Not)
 			continue;
 
-		ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
+		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
 
 		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
 
@@ -621,17 +621,17 @@ void scBonusGame_InitBonusGame()
 		player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->player_block[player].character_kind);
 		player_spawn.is_skip_entry = TRUE;
 
-		fighter_gobj = ftManager_MakeFighter(&player_spawn);
+		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 
 		ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
 
 		break;
 	}
 
-	ftManager_SetFileDataPlayables();
+	ftManagerSetupDataPlayables();
 	ifMain_SetGameStatusWait();
 	func_ovl2_8010DDC4();
 	func_ovl2_8010E374();

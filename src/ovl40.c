@@ -141,7 +141,7 @@ void mvOpeningLinkInitFighterStagePanel()
 	mpCollision_GetMPointPositionID(pos_ids, &spawn_position);
 	mvOpeningLinkCreateStageViewport(spawn_position);
 	gmRumble_SetPlayerRumble();
-	ftPublicity_SetPlayerPublicReact();
+	ftPublicitySetup();
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
 	{
@@ -149,7 +149,7 @@ void mvOpeningLinkInitFighterStagePanel()
 
 		if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
 
-		ftManager_SetFileDataKind(gBattleState->player_block[i].character_kind);
+		ftManagerSetupDataKind(gBattleState->player_block[i].character_kind);
 
 		spawn_info.ft_kind = gBattleState->player_block[i].character_kind;
 		spawn_info.pos.x = spawn_position.x;
@@ -166,9 +166,9 @@ void mvOpeningLinkInitFighterStagePanel()
 		spawn_info.damage = 0;
 		spawn_info.pl_kind = gBattleState->player_block[i].player_kind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[i].character_kind);
+		spawn_info.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->player_block[i].character_kind);
 
-		gMvOpeningLinkStageFighterGObj = fighter_gobj = ftManager_MakeFighter(&spawn_info);
+		gMvOpeningLinkStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftCommon_ClearPlayerMatchStats(i, fighter_gobj);
 		ftCommon_SetHowToPlayInputSeq(fighter_gobj, dMvOpeningLinkInputSeq);
@@ -233,7 +233,7 @@ void mvOpeningLinkCreatePosedFighter()
 	spawn_info.pos.y = 0.0f;
 	spawn_info.pos.z = 0.0f;
 
-	fighter_gobj = ftManager_MakeFighter(&spawn_info);
+	fighter_gobj = ftManagerMakeFighter(&spawn_info);
 	func_ovl1_803905CC(fighter_gobj, 0x1000C);
 	omMoveGObjDL(fighter_gobj, 0x1A, -1);
 	omAddGObjCommonProc(fighter_gobj, mvOpeningLinkAnimatePosedFighter, 1, 1);
@@ -330,11 +330,11 @@ void mvOpeningLinkInit()
 	mpCollision_InitMapCollisionData();
 	cmManager_SetViewportCoordinates(10, 10, 310, 230);
 	cmManager_MakeWallpaperCamera();
-	ftManager_AllocFighterData(3, 2);
-	wpManager_AllocUserData();
+	ftManagerAllocFighter(3, 2);
+	wpManagerAllocWeapons();
 	itManagerAllocUserData();
 	efManager_AllocUserData();
-	ftManager_SetFileDataKind(Ft_Kind_Link);
+	ftManagerSetupDataKind(Ft_Kind_Link);
 
 	gMvOpeningLinkAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
 	mvOpeningLinkCreateNameViewport();

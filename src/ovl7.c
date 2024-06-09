@@ -11,7 +11,7 @@
 #include "ovl7.h"
 
 // 8018D0C0
-void scTrainingMode_SetPauseGObjRenderFlags(u32 flags)
+void mvOpeningYoshiLoadFiles(u32 flags)
 {
 	GObj* pause_gobj = gOMObjCommonLinks[GObj_LinkID_PauseMenu];
 
@@ -35,7 +35,7 @@ void scTrainingMode_CheckEnterTrainingMenu()
 		if (!(fp->is_ignore_startbutton))
 		{
 			ifCommon_SetRenderFlagsAll(1);
-			scTrainingMode_SetPauseGObjRenderFlags(0);
+			mvOpeningYoshiLoadFiles(0);
 			func_ovl2_801157EC();
 			ftCommon_ResetControllerInputs(gBattleState->player_block[player].fighter_gobj);
 			ftCommon_ResetControllerInputs(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
@@ -59,7 +59,7 @@ void scTrainingMode_CheckLeaveTrainingMenu()
 	if (gPlayerControllers[player].button_new & (HAL_BUTTON_B | HAL_BUTTON_START))
 	{
 		ifCommon_SetRenderFlagsAll(0);
-		scTrainingMode_SetPauseGObjRenderFlags(1);
+		mvOpeningYoshiLoadFiles(1);
 
 		gBattleState->game_status = 1;
 		func_ovl2_800E7F68(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
@@ -128,7 +128,7 @@ void func_ovl7_8018D3DC()
 }
 
 // 8018D40C
-sb32 scTrainingMode_CheckUpdateOptionID(s32* arg0, s32 arg1, s32 arg2)
+sb32 mvOpeningYoshiCreateStageViewport(s32* arg0, s32 arg1, s32 arg2)
 {
 	if (gTrainingModeStruct.button_queue & 0x300)
 	{
@@ -151,7 +151,7 @@ sb32 scTrainingMode_CheckUpdateOptionID(s32* arg0, s32 arg1, s32 arg2)
 // 8018D478
 sb32 scTrainingMode_UpdateCPOption()
 {
-	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.cp_menu_option, 0, 5) != FALSE)
+	if (mvOpeningYoshiCreateStageViewport(&gTrainingModeStruct.cp_menu_option, 0, 5) != FALSE)
 	{
 		scTrainingMode_UpdateOpponentBehavior();
 		scTrainingMode_InitCPDisplaySprite();
@@ -182,7 +182,7 @@ sb32 scTrainingMode_UpdateItemOption()
 	Vec3f pos;
 	Vec3f vel;
 
-	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.item_menu_option, 0, 0x11) != FALSE)
+	if (mvOpeningYoshiCreateStageViewport(&gTrainingModeStruct.item_menu_option, 0, 0x11) != FALSE)
 	{
 		scTrainingMode_InitItemOptionSprite();
 		func_ovl7_8018D3DC();
@@ -219,7 +219,7 @@ sb32 scTrainingMode_UpdateItemOption()
 // 8018D684
 sb32 scTrainingMode_UpdateSpeedOption()
 {
-	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.speed_menu_option, 0, 4) != FALSE)
+	if (mvOpeningYoshiCreateStageViewport(&gTrainingModeStruct.speed_menu_option, 0, 4) != FALSE)
 	{
 		gTrainingModeStruct.lagframe_wait = gTrainingModeStruct.frameadvance_wait = 0;
 
@@ -231,11 +231,11 @@ sb32 scTrainingMode_UpdateSpeedOption()
 }
 
 // 8018D6DC
-sb32 scTrainingMode_UpdateViewOption()
+sb32 scAutoDemoProcUpdateMain()
 {
 	GObj* fighter_gobj;
 
-	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.view_menu_option, 0, 2) != FALSE)
+	if (mvOpeningYoshiCreateStageViewport(&gTrainingModeStruct.view_menu_option, 0, 2) != FALSE)
 	{
 		if (gTrainingModeStruct.view_menu_option == 1)
 		{
@@ -318,7 +318,7 @@ void scTrainingMode_UpdateTrainingMenu()
 }
 
 // 8018D974
-sb32 scTrainingMode_CheckSpeedFrameFreeze()
+sb32 mvOpeningYoshiCreatePosedFighterBackground()
 {
 	if (gTrainingModeStruct.lagframe_wait == 0)
 	{
@@ -348,7 +348,7 @@ void scTrainingMode_ProcUpdate()
 
 	case 2: scTrainingMode_UpdateTrainingMenu(); break;
 	}
-	if (scTrainingMode_CheckSpeedFrameFreeze() == FALSE)
+	if (mvOpeningYoshiCreatePosedFighterBackground() == FALSE)
 		func_8000A5E4();
 	else
 		cmManager_RunProcCamera(gCameraGObj);
@@ -1291,7 +1291,7 @@ void scTrainingMode_InitTrainingMenuAll()
 	scTrainingMode_CopyVScrollOptionSObjs();
 	scTrainingMode_MakeMenuCursorInterface();
 	scTrainingMode_MakeCursorUnderlineInterface();
-	scTrainingMode_SetPauseGObjRenderFlags(GOBJ_FLAG_NORENDER);
+	mvOpeningYoshiLoadFiles(GOBJ_FLAG_NORENDER);
 }
 
 // 80190164
@@ -1348,12 +1348,12 @@ void scTrainingMode_InitTrainingMode()
 	func_ovl2_8010DB00();
 	itManagerAllocUserData();
 	grNodeInit_SetGroundFiles();
-	ftManager_AllocFighterData(2, GMMATCH_PLAYERS_MAX);
-	wpManager_AllocUserData();
+	ftManagerAllocFighter(2, GMMATCH_PLAYERS_MAX);
+	wpManagerAllocWeapons();
 	efManager_AllocUserData();
 	ifScreenFlash_InitInterfaceVars(0xFF);
 	gmRumble_SetPlayerRumble();
-	ftPublicity_SetPlayerPublicReact();
+	ftPublicitySetup();
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
 	{
@@ -1362,7 +1362,7 @@ void scTrainingMode_InitTrainingMode()
 		if (gBattleState->player_block[player].player_kind == Pl_Kind_Not)
 			continue;
 
-		ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
+		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
 		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
 		mpCollision_GetPlayerMPointPosition(player, &player_spawn.pos);
 		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? LR_Left : LR_Right;
@@ -1378,13 +1378,13 @@ void scTrainingMode_InitTrainingMode()
 		player_spawn.damage = 0;
 		player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
 		player_spawn.controller = &gPlayerControllers[player];
-		player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->player_block[player].character_kind);
 		player_spawn.is_skip_entry = TRUE;
-		fighter_gobj = ftManager_MakeFighter(&player_spawn);
+		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 		ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
 	}
 	scTrainingMode_UpdateOpponentBehavior();
-	ftManager_SetFileDataPlayables();
+	ftManagerSetupDataPlayables();
 	scTrainingMode_SetGameStatusGo();
 	func_ovl2_8010E2D4();
 	ifPlayer_MagnifyArrows_SetInterface();

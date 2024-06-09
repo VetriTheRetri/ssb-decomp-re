@@ -50,7 +50,7 @@
 
 // Structs
 
-// Weapon's blueprint to feed into wpManager_MakeWeapon
+// Weapon's blueprint to feed into wpManagerMakeWeapon
 struct wpCreateDesc
 {
 	u8 unk_0x0;

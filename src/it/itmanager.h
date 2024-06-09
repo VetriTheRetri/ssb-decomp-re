@@ -42,7 +42,7 @@ void itManagerSetupContainerDrops();
 void itManagerInitMonsterVars();
 
 // Make immediate item with index
-GObj* itManagerMakeItemIndex(GObj* spawn_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 flags);
+GObj* itManagerMakeItemID(GObj* spawn_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 flags);
 
 // Update positions of item hitboxes
 void itManagerUpdateHitPositions(GObj* item_gobj);

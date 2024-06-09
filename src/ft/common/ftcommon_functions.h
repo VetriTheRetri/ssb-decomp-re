@@ -192,7 +192,7 @@ void func_ovl3_80140934();
 void ftCommon_DamageAirCommon_ProcMap(GObj* fighter_gobj);
 f32 gmCommon_Damage_GetKnockbackAngle(s32 angle_i, s32 ground_or_air, f32 knockback);
 s32 ftCommon_Damage_GetDamageLevel(f32 hitstun);
-void ftCommon_Damage_SetPublicReact(ftStruct* this_fp, f32 knockback, f32 angle);
+void ftCommon_Damage_SetPublicity(ftStruct* this_fp, f32 knockback, f32 angle);
 sb32 ftCommon_Damage_CheckElementSetColAnim(GObj* fighter_gobj, s32 element, s32 damage_level);
 void ftCommon_Damage_CheckMakeScreenFlash(f32 knockback, s32 element);
 sb32 func_ovl3_80140D30(ftStruct* fp);
@@ -680,13 +680,13 @@ void ftCommon_LandingAir_SetStatus(GObj* fighter_gobj);
 
 // SpecialN
 void ftKirby_SpecialN_SetStatusIndex(GObj* fighter_gobj);
-sb32 ftCommon_SpecialN_CheckInterruptCommon(GObj* fighter_gobj);
+sb32 ftCommonSpecialNCheckInterruptCommon(GObj* fighter_gobj);
 
 // SpecialHi
-sb32 ftCommon_SpecialHi_CheckInterruptCommon(GObj* fighter_gobj);
+sb32 ftCommonSpecialHiCheckInterruptCommon(GObj* fighter_gobj);
 
 // SpecialLw
-sb32 ftCommon_SpecialLw_CheckInterruptCommon(GObj* fighter_gobj);
+sb32 ftCommonSpecialLwCheckInterruptCommon(GObj* fighter_gobj);
 
 // SpecialAirN / SpecialAirHi / SpecialAirLw
 void ftKirby_SpecialAirN_SetStatusIndex(GObj* fighter_gobj);

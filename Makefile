@@ -246,7 +246,7 @@ $(BUILD_DIR)/%.o: %.c
 	@mkdir -p $(@D)
 #   d file generation
 	$(V)clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $<
-	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $<
+	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $< 2>&1 | $(PYTHON) $(TOOLS)/colorizeIDO.py
 
 #Bins
 $(BUILD_DIR)/%.o: %.bin

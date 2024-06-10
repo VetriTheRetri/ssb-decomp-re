@@ -15,7 +15,7 @@ def renameSymbol(oldSymbolName, newSymbolName, baseDir='./', force=False):
 			with open(filePath, 'r') as file:
 				source = file.read()
 			if newSymbolName in source:
-				print(f"Not renaming to prevent symbol collision")
+				print(f"Not renaming {oldSymbolName} to prevent symbol collision ({newSymbolName} already exists in the codebase)")
 				return False
 	for filePath in fileList:
 		with open(filePath, 'r') as file:

@@ -17,4 +17,19 @@
 #include <it/itground/itfushigibana.h>
 #include <it/itground/itrbomb.h>
 
+// Pokémon item headers
+#include <it/itmonster/itdogas.h>
+#include <it/itmonster/itiwark.h>
+#include <it/itmonster/itkabigon.h>
+#include <it/itmonster/itkamex.h>
+#include <it/itmonster/itlizardon.h>
+#include <it/itmonster/itmew.h>
+#include <it/itmonster/itmlucky.h>
+#include <it/itmonster/itnyars.h>
+#include <it/itmonster/itpippi.h>
+#include <it/itmonster/itsawamura.h>
+#include <it/itmonster/itspear.h>
+#include <it/itmonster/itstarmie.h>
+#include <it/itmonster/ittosakinto.h>
+
 #endif

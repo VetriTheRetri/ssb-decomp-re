@@ -7,7 +7,7 @@
 // Global variables declared here as extern for easy access
 
 // 8018D040
-extern void* gITFileData;
+extern void *gITFileData;
 
 // 8018D044
 extern s32 gITEffectBank;
@@ -28,7 +28,7 @@ extern itStruct* gITAllocFree;
 extern itSpawnActor gITSpawnActor;
 
 // Linker variable, points to base of animation bank in item file? 0x00013624
-extern intptr_t lMonsterAnimBankStart;
+extern intptr_t lITMonsterAnimBankStart;
 
 #define itGetStruct(item_gobj) ((itStruct*)(item_gobj)->user_data.p)
 
@@ -37,7 +37,7 @@ extern intptr_t lMonsterAnimBankStart;
 	((void*)(((uintptr_t)(ip)->attributes->model_desc - (intptr_t) & (off1)) + (intptr_t) & (off2)))
 
 #define itGetMonsterAnimNode(ip, off)                                                                                  \
-	((void*)(((uintptr_t)(ip)->attributes->model_desc - (intptr_t) & (off)) + (intptr_t)&lMonsterAnimBankStart))
+	((void*)(((uintptr_t)(ip)->attributes->model_desc - (intptr_t) & (off)) + (intptr_t)&lITMonsterAnimBankStart))
 
 #define itGetHitEvent(it_desc, off) ((itHitEvent*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
 

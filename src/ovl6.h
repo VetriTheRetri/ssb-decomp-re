@@ -1,7 +1,6 @@
 #ifndef _OVL6_H_
 #define _OVL6_H_
 
-void omAddDObjAnimAll(DObj*, ATrack*, f32);
 void func_ovl0_800C88AC(DObj*, void*, void*, f32);		 /* extern */
 void func_ovl0_800C9228(DObj*, void*);					 /* extern */
 void func_ovl0_800C8758(DObj*, void*, f32);				 /* extern */

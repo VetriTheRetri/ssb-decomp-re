@@ -4,8 +4,7 @@
 #include "objtypes.h"
 
 // Function headers
-#include "objmanager.h"
-#include "objdraw.h"
+#include "objfunctions.h"
 
 #define ACommandAdvance(acommand) \
 ((acommand)++)

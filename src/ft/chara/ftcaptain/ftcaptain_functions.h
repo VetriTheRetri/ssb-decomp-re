@@ -20,8 +20,8 @@ void ftCaptainSpecialNProcMap(GObj* fighter_gobj);
 void ftCaptainSpecialAirNProcMap(GObj* fighter_gobj);
 void ftCaptainSpecialNInitStatusVars(GObj* fighter_gobj);
 void func_ovl3_8015FB54();
-void ftCaptain_SpecialN_SetStatus(GObj* fighter_gobj);
-void ftCaptain_SpecialAirN_SetStatus(GObj* fighter_gobj);
+void ftCaptainSpecialNSetStatus(GObj* fighter_gobj);
+void ftCaptainSpecialAirNSetStatus(GObj* fighter_gobj);
 
 // SpecialLw / SpecialAirLw
 void ftCaptainSpecialLwUpdateGFX(GObj* fighter_gobj);
@@ -43,22 +43,22 @@ void ftCaptainSpecialLwProcHit(GObj* fighter_gobj);
 void ftCaptainSpecialLwProcStatus(GObj* fighter_gobj);
 void ftCaptainSpecialLwAirSetStatus(GObj* fighter_gobj);
 void ftCaptainSpecialLwLandingSetStatus(GObj* fighter_gobj);
-void ftCaptain_SpecialLw_SetStatus(GObj* fighter_gobj);
+void ftCaptainSpecialLwSetStatus(GObj* fighter_gobj);
 void jtgt_ovl3_801601A0(GObj* fighter_gobj);
-void ftCaptain_SpecialAirLw_SetStatus(GObj* fighter_gobj);
+void ftCaptainSpecialAirLwSetStatus(GObj* fighter_gobj);
 
 // SpecialHi / SpecialAirHi
 void ftCaptainSpecialHiInitCatchVars(ftStruct* fp);
 void ftCaptainSpecialHiProcUpdate(GObj* fighter_gobj);
-void ftCaptain_SpecialHiCatch_ProcUpdate(GObj* fighter_gobj);
+void ftCaptainSpecialHiCatchProcUpdate(GObj* fighter_gobj);
 void ftCaptainSpecialHiProcInterrupt(GObj* fighter_gobj);
 void ftCaptainSpecialHiProcPhysics(GObj* fighter_gobj);
-void ftCaptain_SpecialHiCatch_ProcPhysics(GObj* fighter_gobj);
+void ftCaptainSpecialHiCatchProcPhysics(GObj* fighter_gobj);
 void ftCaptainSpecialHiProcMap(GObj* fighter_gobj);
 void ftCaptainSpecialHiProcStatus(GObj* fighter_gobj);
-void ftCaptain_SpecialHi_SetStatus(GObj* fighter_gobj);
+void ftCaptainSpecialHiSetStatus(GObj* fighter_gobj);
 void ftCaptainSpecialHiProcCatch(GObj* fighter_gobj);
-void ftCaptain_SpecialHiThrow_SetStatus(GObj* fighter_gobj);
-void ftCaptain_SpecialAirHi_SetStatus(GObj* fighter_gobj);
+void ftCaptainSpecialHiThrowSetStatus(GObj* fighter_gobj);
+void ftCaptainSpecialAirHiSetStatus(GObj* fighter_gobj);
 
 #endif

@@ -8,7 +8,7 @@
 #include <sys/objdef.h>
 
 // JumpAerial
-void ftNess_JumpAerial_ProcPhysics(GObj* fighter_gobj); // Same story as Yoshi's JumpAerial physics
+void ftNessJumpAerialProcPhysics(GObj* fighter_gobj); // Same story as Yoshi's JumpAerial physics
 
 // Appear
 void ftNessAppearStartProcUpdate(GObj* fighter_gobj);
@@ -23,8 +23,8 @@ void ftNessSpecialAirNProcMap(GObj* fighter_gobj);
 void ftNessSpecialAirNSwitchStatusGround(GObj* fighter_gobj);
 void ftNessSpecialNSwitchStatusAir(GObj* fighter_gobj);
 void ftNessSpecialNInitStatusVars(GObj* fighter_gobj);
-void ftNess_SpecialN_SetStatus(GObj* fighter_gobj);
-void ftNess_SpecialAirN_SetStatus(GObj* fighter_gobj);
+void ftNessSpecialNSetStatus(GObj* fighter_gobj);
+void ftNessSpecialAirNSetStatus(GObj* fighter_gobj);
 
 // SpecialHi / SpecialAirHi
 void ftNessSpecialHiDecThunderTimers(ftStruct* fp);
@@ -39,14 +39,14 @@ void ftNessSpecialAirHiStartProcMap(GObj* fighter_gobj);
 void ftNessSpecialAirHiStartSwitchStatusGround(GObj* fighter_gobj);
 void ftNessSpecialHiStartSwitchStatusAir(GObj* fighter_gobj);
 void ftNessSpecialHiInitStatusVars(GObj* fighter_gobj);
-void ftNess_SpecialHiStart_SetStatus(GObj* fighter_gobj);
-void ftNess_SpecialAirHiStart_SetStatus(GObj* fighter_gobj);
+void ftNessSpecialHiStartSetStatus(GObj* fighter_gobj);
+void ftNessSpecialAirHiStartSetStatus(GObj* fighter_gobj);
 void ftNessSpecialHiUpdatePKThunder(GObj* fighter_gobj);
 void ftNessSpecialHiHoldProcUpdate(GObj* fighter_gobj);
 void ftNessSpecialAirHiHoldProcUpdate(GObj* fighter_gobj);
 void ftNessSpecialHiHoldProcMap(GObj* fighter_gobj);
 void ftNessSpecialAirHiHoldProcMap(GObj* fighter_gobj);
-void ftNess_SpecialHi_SetPKThunderDestroy(GObj* fighter_gobj); // Unused
+void ftNessSpecialHiSetPKThunderDestroy(GObj* fighter_gobj); // Unused
 void ftNessSpecialAirHiHoldSwitchStatusGround(GObj* fighter_gobj);
 void ftNessSpecialHiHoldSwitchStatusAir(GObj* fighter_gobj);
 void ftNessSpecialHiHoldInitStatusVars(GObj* fighter_gobj);
@@ -61,7 +61,7 @@ void ftNessSpecialHiClearProcDamage(GObj* fighter_gobj);
 void ftNessSpecialHiEndSetStatus(GObj* fighter_gobj);
 void ftNessSpecialAirHiEndSetStatus(GObj* fighter_gobj);
 void ftNessSpecialHiCollideWallPhysics(GObj* fighter_gobj, mpCollData* coll_data);
-void ftNess_SpecialHi_UpdateModelPitch(GObj* fighter_gobj);
+void ftNessSpecialHiUpdateModelPitch(GObj* fighter_gobj);
 void ftNessJibakuProcUpdate(GObj* fighter_gobj);
 void ftNessJibakuAirProcUpdate(GObj* fighter_gobj);
 void ftNessJibakuProcPhysics(GObj* fighter_gobj);
@@ -89,11 +89,11 @@ void ftNessSpecialAirLwProcPhysics(GObj* fighter_gobj);
 void ftNessSpecialLwStartProcMap(GObj* fighter_gobj);
 void ftNessSpecialAirLwStartProcMap(GObj* fighter_gobj);
 void ftNessSpecialAirLwStartSwitchStatusGround(GObj* fighter_gobj);
-void ftNessSpecialLwStart_SwitchStatusAir(GObj* fighter_gobj);
-void ftNessSpecialLw_InitStatusVars(GObj* fighter_gobj);
-void ftNess_SpeciaLwStart_SetStatus(GObj* fighter_gobj);
-void ftNess_SpecialAirLwStart_SetStatus(GObj* fighter_gobj);
-void ftNessSpecialLw_UpdateReleaseLag(GObj* fighter_gobj);
+void ftNessSpecialLwStartSwitchStatusAir(GObj* fighter_gobj);
+void ftNessSpecialLwInitStatusVars(GObj* fighter_gobj);
+void ftNessSpeciaLwStartSetStatus(GObj* fighter_gobj);
+void ftNessSpecialAirLwStartSetStatus(GObj* fighter_gobj);
+void ftNessSpecialLwUpdateReleaseLag(GObj* fighter_gobj);
 void ftNessSpecialLwHoldProcUpdate(GObj* fighter_gobj);
 void ftNessSpecialAirLwHoldProcUpdate(GObj* fighter_gobj);
 void ftNessSpecialLwHoldProcMap(GObj* fighter_gobj);

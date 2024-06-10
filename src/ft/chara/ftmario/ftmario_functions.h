@@ -13,8 +13,8 @@ void ftMarioSpecialAirNProcMap(GObj* fighter_gobj);
 void ftMarioSpecialAirNSwitchStatusGround(GObj* fighter_gobj);
 void ftMarioSpecialNSwitchStatusAir(GObj* fighter_gobj);
 void ftMarioSpecialNInitStatusVars(GObj* fighter_gobj);
-void ftMario_SpecialN_SetStatus(GObj* fighter_gobj);
-void ftMario_SpecialAirN_SetStatus(GObj* fighter_gobj);
+void ftMarioSpecialNSetStatus(GObj* fighter_gobj);
+void ftMarioSpecialAirNSetStatus(GObj* fighter_gobj);
 
 // SpecialHi / SpecialAirHi
 void ftMarioSpecialHiProcUpdate(GObj* fighter_gobj);
@@ -23,8 +23,8 @@ void ftMarioSpecialHiProcPhysics(GObj* fighter_gobj);
 sb32 ftMarioSpecialHiCheckIgnorePass(GObj* fighter_gobj);
 void ftMarioSpecialHiProcMap(GObj* fighter_gobj);
 void ftMarioSpecialHiInitStatusVars(GObj* fighter_gobj);
-void ftMario_SpecialHi_SetStatus(GObj* fighter_gobj);
-void ftMario_SpecialAirHi_SetStatus(GObj* fighter_gobj);
+void ftMarioSpecialHiSetStatus(GObj* fighter_gobj);
+void ftMarioSpecialAirHiSetStatus(GObj* fighter_gobj);
 
 // SpecialLw / SpecialAirLw
 void ftMarioSpecialLwProcUpdate(GObj* fighter_gobj);
@@ -38,7 +38,7 @@ void ftMarioSpecialAirLwSetDisableRise(GObj* fighter_gobj);
 void ftMarioSpecialAirLwSwitchStatusGround(GObj* fighter_gobj);
 void ftMarioSpecialLwSwitchStatusAir(GObj* fighter_gobj);
 void ftMarioSpecialLwInitStatusVars(GObj* fighter_gobj);
-void ftMario_SpecialLw_SetStatus(GObj* fighter_gobj);
-void ftMario_SpecialAirLw_SetStatus(GObj* fighter_gobj);
+void ftMarioSpecialLwSetStatus(GObj* fighter_gobj);
+void ftMarioSpecialAirLwSetStatus(GObj* fighter_gobj);
 
 #endif

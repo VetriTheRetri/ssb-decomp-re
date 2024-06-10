@@ -30,8 +30,8 @@ void ftDonkeySpecialNGetStatusChargeLevelReset(GObj* fighter_gobj);
 void ftDonkeySpecialNEndSetStatus(GObj* fighter_gobj);
 void ftDonkeySpecialAirNEndSetStatus(GObj* fighter_gobj);
 void ftDonkeySpecialNInitStatusVars(GObj* fighter_gobj);
-void ftDonkey_SpecialNStart_SetStatus(GObj* fighter_gobj);
-void ftDonkey_SpecialAirNStart_SetStatus(GObj* fighter_gobj);
+void ftDonkeySpecialNStartSetStatus(GObj* fighter_gobj);
+void ftDonkeySpecialAirNStartSetStatus(GObj* fighter_gobj);
 
 // SpecialHi / SpecialAirHi
 void ftDonkeySpecialHiProcUpdate(GObj* fighter_gobj);
@@ -43,8 +43,8 @@ void ftDonkeySpecialAirHiProcMap(GObj* fighter_gobj);
 void ftDonkeySpecialAirHiSwitchStatusGround(GObj* fighter_gobj);
 void ftDonkeySpecialHiSwitchStatusAir(GObj* fighter_gobj);
 void ftDonkeySpecialHiSetStatusFlagGA(GObj* fighter_gobj, sb32 ground_or_air);
-void ftDonkey_SpecialHi_SetStatus(GObj* fighter_gobj);
-void ftDonkey_SpecialAirHi_SetStatus(GObj* fighter_gobj);
+void ftDonkeySfpecialHiSetStatus(GObj* fighter_gobj);
+void ftDonkeySpecialAirHiSetStatus(GObj* fighter_gobj);
 
 // SpecialLw / SpecialAirLw
 void ftDonkeySpecialLwStartProcUpdate(GObj* fighter_gobj);
@@ -52,60 +52,60 @@ void ftDonkeySpecialLwLoopProcUpdate(GObj* fighter_gobj);
 void ftDonkeySpecialLwLoopProcInterrupt(GObj* fighter_gobj);
 void ftDonkeySpecialLwLoopSetStatus(GObj* fighter_gobj);
 void ftDonkeySpecialLwEndSetStatus(GObj* fighter_gobj);
-void ftDonkey_SpecialLwStart_SetStatus(GObj* fighter_gobj);
+void ftDonkeySpecialLwStartSetStatus(GObj* fighter_gobj);
 
 // The ThrowF functions are grouped with the Common action states, but I felt
 // like it would be cleaner if I declared them here instead. After all, only DK
 // uses them.
 
 // ThrowFWait
-void ftDonkey_ThrowFWait_ProcInterrupt(GObj* fighter_gobj);
-void ftDonkey_ThrowFCommon_ProcMap(GObj* fighter_gobj);
-void ftDonkey_ThrowFWait_SetStatus(GObj* fighter_gobj);
-sb32 ftDonkey_ThrowFWait_CheckInterruptThrowFWalk(GObj* fighter_gobj);
+void ftDonkeyThrowFWaitProcInterrupt(GObj* fighter_gobj);
+void ftDonkeyThrowFCommonProcMap(GObj* fighter_gobj);
+void ftDonkeyThrowFWaitSetStatus(GObj* fighter_gobj);
+sb32 ftDonkeyThrowFWaitCheckInterruptThrowFWalk(GObj* fighter_gobj);
 
 // ThrowFWalk
-f32 ftDonkey_ThrowFWalk_GetWalkAnimSpeed(ftStruct* fp, s32 status_id);
-void ftDonkey_ThrowFWalk_ProcInterrupt(GObj* fighter_gobj);
-void ftDonkey_ThrowFWalk_SetStatusParam(GObj* fighter_gobj, f32 frame_begin);
-void ftDonkey_ThrowFWalk_SetStatusDefault(GObj* fighter_gobj);
-sb32 ftDonkey_ThrowFWalk_CheckInterruptThrowFWait(GObj* fighter_gobj);
+f32 ftDonkeyThrowFWalkGetWalkAnimSpeed(ftStruct* fp, s32 status_id);
+void ftDonkeyThrowFWalkProcInterrupt(GObj* fighter_gobj);
+void ftDonkeyThrowFWalkSetStatusParam(GObj* fighter_gobj, f32 frame_begin);
+void ftDonkeyThrowFWalkSetStatusDefault(GObj* fighter_gobj);
+sb32 ftDonkeyThrowFWalkCheckInterruptThrowFWait(GObj* fighter_gobj);
 
 // ThrowFTurn
-void ftDonkey_ThrowFTurn_ProcUpdate(GObj* fighter_gobj);
-void ftDonkey_ThrowFTurn_ProcInterrupt(GObj* fighter_gobj);
-void ftDonkey_ThrowFTurn_SetStatus(GObj* fighter_gobj);
-sb32 ftDonkey_ThrowFTurn_CheckInterruptThrowFCommon(GObj* fighter_gobj);
+void ftDonkeyThrowFTurnProcUpdate(GObj* fighter_gobj);
+void ftDonkeyThrowFTurnProcInterrupt(GObj* fighter_gobj);
+void ftDonkeyThrowFTurnSetStatus(GObj* fighter_gobj);
+sb32 ftDonkeyThrowFTurnCheckInterruptThrowFCommon(GObj* fighter_gobj);
 
 // ThrowFKneeBend
-void ftDonkey_ThrowFKneeBend_ProcUpdate(GObj* fighter_gobj);
-void ftDonkey_ThrowFKneeBend_ProcInterrupt(GObj* fighter_gobj);
-void ftDonkey_ThrowFKneeBend_SetStatus(GObj* fighter_gobj, s32 input_source);
-sb32 ftDonkey_ThrowFKneeBend_CheckInterruptThrowFCommon(GObj* fighter_gobj);
+void ftDonkeyThrowFKneeBendProcUpdate(GObj* fighter_gobj);
+void ftDonkeyThrowFKneeBendProcInterrupt(GObj* fighter_gobj);
+void ftDonkeyThrowFKneeBendSetStatus(GObj* fighter_gobj, s32 input_source);
+sb32 ftDonkeyThrowFKneeBendCheckInterruptThrowFCommon(GObj* fighter_gobj);
 
 // ThrowFFall
-void ftDonkey_ThrowFFall_ProcInterrupt(GObj* fighter_gobj);
-void ftDonkey_ThrowFFall_ProcMap(GObj* fighter_gobj);
-void ftDonkey_ThrowFFall_SetStatus(GObj* fighter_gobj);
-void ftDonkey_ThrowFJump_SetStatus(GObj* fighter_gobj);
-void ftDonkey_ThrowFFall_SetStatusPass(GObj* fighter_gobj);
-sb32 ftDonkey_ThrowFFall_CheckInterruptPass(GObj* fighter_gobj);
+void ftDonkeyThrowFFallProcInterrupt(GObj* fighter_gobj);
+void ftDonkeyThrowFFallProcMap(GObj* fighter_gobj);
+void ftDonkeyThrowFFallSetStatus(GObj* fighter_gobj);
+void ftDonkeyThrowFJumpSetStatus(GObj* fighter_gobj);
+void ftDonkeyThrowFFallSetStatusPass(GObj* fighter_gobj);
+sb32 ftDonkeyThrowFFallCheckInterruptPass(GObj* fighter_gobj);
 
 // ThrowFLanding
-void ftDonkey_ThrowFLanding_ProcUpdate(GObj* fighter_gobj);
-void ftDonkey_ThrowFLanding_SetStatus(GObj* fighter_gobj);
+void ftDonkeyThrowFLandingProcUpdate(GObj* fighter_gobj);
+void ftDonkeyThrowFLandingSetStatus(GObj* fighter_gobj);
 
 // ThrowFDamage
-void ftDonkey_ThrowFDamage_ProcUpdate(GObj* fighter_gobj);
-void ftDonkey_ThrowFDamage_SetStatus(GObj* fighter_gobj);
+void ftDonkeyThrowFDamageProcUpdate(GObj* fighter_gobj);
+void ftDonkeyThrowFDamageSetStatus(GObj* fighter_gobj);
 
 // ThrowFF / ThrowAirFF
-void ftDonkey_ThrowFF_ProcUpdate(GObj* fighter_gobj);
-void ftDonkey_ThrowAirFF_SwitchStatusGround(GObj* fighter_gobj);
-void ftDonkey_ThrowFF_SwitchStatusAir(GObj* fighter_gobj);
-void ftDonkey_ThrowFF_ProcMap(GObj* fighter_gobj);
-void ftDonkey_ThrowAirFF_ProcMap(GObj* fighter_gobj);
-void ftDonkey_ThrowFF_SetStatus(GObj* fighter_gobj, sb32 is_turn);
-sb32 ftDonkey_ThrowFF_CheckInterruptThrowFCommon(GObj* fighter_gobj);
+void ftDonkeyThrowFFProcUpdate(GObj* fighter_gobj);
+void ftDonkeyThrowAirFFSwitchStatusGround(GObj* fighter_gobj);
+void ftDonkeyThrowFFSwitchStatusAir(GObj* fighter_gobj);
+void ftDonkeyThrowFFProcMap(GObj* fighter_gobj);
+void ftDonkeyThrowAirFFProcMap(GObj* fighter_gobj);
+void ftDonkeyThrowFFSetStatus(GObj* fighter_gobj, sb32 is_turn);
+sb32 ftDonkeyThrowFFCheckInterruptThrowFCommon(GObj* fighter_gobj);
 
 #endif

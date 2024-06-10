@@ -28,7 +28,7 @@ void ftFoxSpecialHiHoldSwitchStatusAir(GObj* fighter_gobj);
 void ftFoxSpecialHiHoldInitStatusVars(GObj* fighter_gobj);
 void ftFoxSpecialHiHoldSetStatus(GObj* fighter_gobj);
 void ftFoxSpecialAirHiHoldSetStatus(GObj* fighter_gobj);
-void ftFox_SpecialHi_UpdateModelPitch(GObj* fighter_gobj);
+void ftFoxSpecialHiUpdateModelPitch(GObj* fighter_gobj);
 void ftFoxSpecialHiProcUpdate(GObj* fighter_gobj);
 void ftFoxSpecialHiProcPhysics(GObj* fighter_gobj);
 void ftFoxSpecialAirHiProcPhysics(GObj* fighter_gobj);
@@ -45,13 +45,13 @@ void ftFoxSpecialAirHiEndProcMap(GObj* fighter_gobj);
 void ftFoxSpecialAirHiEndSwitchStatusGround(GObj* fighter_gobj);
 void ftFoxSpecialHiEndSetStatus(GObj* fighter_gobj);
 void ftFoxSpecialAirHiEndSetStatus(GObj* fighter_gobj);
-void ftFox_SpecialAirHiBound_ProcUpdate(GObj* fighter_gobj);
-void ftFox_SpecialAirHiBound_ProcPhysics(GObj* fighter_gobj);
-void ftFox_SpecialAirHiBound_ProcMap(GObj* fighter_gobj);
-void ftFox_SpecialAirHiBound_SetStatus(GObj* fighter_gobj);
+void ftFoxSpecialAirHiBoundProcUpdate(GObj* fighter_gobj);
+void ftFoxSpecialAirHiBoundProcPhysics(GObj* fighter_gobj);
+void ftFoxSpecialAirHiBoundProcMap(GObj* fighter_gobj);
+void ftFoxSpecialAirHiBoundSetStatus(GObj* fighter_gobj);
 void ftFoxSpecialHiStartInitGravity(ftStruct* fp);
-void ftFox_SpecialHiStart_SetStatus(GObj* fighter_gobj);
-void ftFox_SpecialAirHiStart_SetStatus(GObj* fighter_gobj);
+void ftFoxSpecialHiStartSetStatus(GObj* fighter_gobj);
+void ftFoxSpecialAirHiStartSetStatus(GObj* fighter_gobj);
 
 // SpecialLw / SpecialAirLw
 void ftFoxSpecialLwCheckSetRelease(ftStruct* fp);
@@ -71,13 +71,13 @@ void ftFoxSpecialLwTurnDecTurnFrames(GObj* fighter_gobj);
 void ftFoxSpecialLwTurnProcUpdate(GObj* fighter_gobj);
 void ftFoxSpecialLwTurnInitStatusVars(GObj* fighter_gobj);
 void ftFoxSpecialLwTurnSetStatus(GObj* fighter_gobj);
-void ftFox_SpecialAirLwTurn_SetStatus(GObj* fighter_gobj);
+void ftFoxSpecialAirLwTurnSetStatus(GObj* fighter_gobj);
 sb32 ftFoxSpecialLwTurnCheckInterruptSpecialLwLoop(GObj* fighter_gobj);
 void ftFoxSpecialLwEndProcUpdate(GObj* fighter_gobj);
 void ftFoxSpecialLwEndSetStatus(GObj* fighter_gobj);
 void ftFoxSpecialAirLwEndSetStatus(GObj* fighter_gobj);
 void ftFoxSpecialLwStartInitStatusVars(GObj* fighter_gobj);
-void ftFox_SpecialLwStart_SetStatus(GObj* fighter_gobj);
-void ftFox_SpecialAirLwStart_SetStatus(GObj* fighter_gobj);
+void ftFoxSpecialLwStartSetStatus(GObj* fighter_gobj);
+void ftFoxSpecialAirLwStartSetStatus(GObj* fighter_gobj);
 
 #endif

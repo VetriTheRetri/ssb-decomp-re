@@ -10,7 +10,7 @@ rm -f /tmp/compareObjectsOutNonMatchingText.txt
 buildSrcPath=build/src/
 buildSrcPathLength=${#buildSrcPath}
 
-find build/src/ -type f | grep \\.text$ | grep "$1" | while read line
+find $buildSrcPath -type f | grep \\.text$ | grep "$1" | while read line
 do
 	relPath=${line:${buildSrcPathLength}}
 	asmPath=build/asm/${relPath}
@@ -28,7 +28,7 @@ do
 	fi
 done
 
-find build/src/ -type f | grep \\.data$ | grep "$1" | while read line
+find $buildSrcPath -type f | grep \\.data$ | grep "$1" | while read line
 do
 	relPath=${line:${buildSrcPathLength}}
 	asmPath=build/asm/data/${relPath}.data
@@ -47,7 +47,7 @@ do
 	fi
 done
 
-find build/src/ -type f | grep \\.rodata$ | grep "$1" | while read line
+find $buildSrcPath -type f | grep \\.rodata$ | grep "$1" | while read line
 do
 	relPath=${line:${buildSrcPathLength}}
 	asmPath=build/asm/data/${relPath}.rodata

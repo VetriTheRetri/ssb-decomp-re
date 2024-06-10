@@ -114,6 +114,23 @@ struct itStatusDesc
 	sb32 (*proc_damage)(GObj*);
 };
 
+struct itRandomWeights          // Random item drop struct?
+{
+    u8 filler_0x0[0x8];
+    u8 item_count;              // Maximum number of items that can be spawned
+    u8 *item_ids;               // Array of item IDs that can be spawned
+    u16 item_num;               // Randomizer weight?
+    u16 *item_totals;           // Consecutive sum of item quantities? This is pretty weird
+};
+
+struct itSpawnActor
+{
+    u8 item_mpoint_count;       // Maximum number of item spawn points
+    u8 *item_mpoints;           // Pointer to array of item map object IDs
+    u32 item_spawn_wait;        // Spawn a random new item when this reaches 0
+    itRandomWeights weights;    // Randomizer struct
+};
+
 struct itHitPositions
 {
 	Vec3f pos;

@@ -287,7 +287,7 @@ guMtxCatF = 0x80034980;
 guNormalize = 0x80035380;
 sqrtf = 0x80033510;
 
-fcos = 0x80035CD0;
+__cosf = 0x80035CD0;
 __osIntOffTable = 0x8003F1B0;
 __osIntTable = 0x8003F1D0;
 send_mesg = 0x800311A4; // type:func

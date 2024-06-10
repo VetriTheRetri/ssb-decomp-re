@@ -17,7 +17,7 @@ s32 D_8003B948                = 0;
 s32 (*D_8003B94C)(u8 *, u8 *) = NULL;
 
 f32 tanf(f32 angle) {
-    return __sinf(angle) / fcos(angle);
+    return __sinf(angle) / __cosf(angle);
 }
 
 f32 atanf(f32 yDivX) {
@@ -96,7 +96,7 @@ f32 cscf(f32 x) {
 }
 
 f32 secf(f32 x) {
-    return 1.0f / fcos(x);
+    return 1.0f / __cosf(x);
 }
 
 f32 cotf(f32 x) {
@@ -139,7 +139,7 @@ f32 lbRandom_GetFloat(void) {
     return ((step >> 16) & 0xFFFF) / ((f32)65536.0f);
 }
 
-u32 lbRandom_GetIntRange(s32 range) {
+s32 lbRandom_GetIntRange(s32 range) {
     return lbRandom_GetShort() * range / 0x10000;
 }
 

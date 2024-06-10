@@ -56,7 +56,7 @@ extern "C"
 		u32 timeStamp;
 		u16 argCount;
 		u16 eventID;
-	} OSLogItem;
+	} OSLogIT;
 
 	typedef struct
 	{

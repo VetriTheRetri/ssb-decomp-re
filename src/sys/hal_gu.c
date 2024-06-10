@@ -106,7 +106,7 @@ s32 fast_sinf(f32 x)
     return sinx;
 }
 
-s32 fast_fcos(f32 x)
+s32 fast___cosf(f32 x)
 {
     s32 idx = RAD_TO_IDX(x + (M_PI_F / 2.0F));
     u16 cosx = gSinTable[idx & (ARRAY_COUNT(gSinTable) - 1)];
@@ -645,7 +645,7 @@ void hlMtxPerspF(
     UNUSED s32 i, j;
 
     fovy *= 3.1415926f / 180.0f;
-    cot = fcos(fovy / 2) / __sinf(fovy / 2);
+    cot = __cosf(fovy / 2) / __sinf(fovy / 2);
 
     /*
     (*mf)[0][0] = cot / aspect;
@@ -840,7 +840,7 @@ void hal_rotate_f(Mtx4f *mf, f32 a, f32 x, f32 y, f32 z) {
 
     guNormalize(&x, &y, &z);
     sine   = __sinf(a);
-    cosine = fcos(a);
+    cosine = __cosf(a);
     t      = (1.0f - cosine);
     ab     = x * y * t;
     bc     = y * z * t;
@@ -936,11 +936,11 @@ void hal_rotate_rpy_f(Mtx4f *mf, f32 r, f32 p, f32 h) {
     f32 cosr, cosp, cosh;
 
     sinr = __sinf(r);
-    cosr = fcos(r);
+    cosr = __cosf(r);
     sinp = __sinf(p);
-    cosp = fcos(p);
+    cosp = __cosf(p);
     sinh = __sinf(h);
-    cosh = fcos(h);
+    cosh = __cosf(h);
 
     (*mf)[0][0] = cosp * cosh;
     (*mf)[0][1] = cosp * sinh;
@@ -1226,11 +1226,11 @@ void hal_rotate_pyr_f(Mtx4f *mf, f32 r, f32 p, f32 h) {
     UNUSED u32 pad[4];
 
     sinr = __sinf(r);
-    cosr = fcos(r);
+    cosr = __cosf(r);
     sinp = __sinf(p);
-    cosp = fcos(p);
+    cosp = __cosf(p);
     sinh = __sinf(h);
-    cosh = fcos(h);
+    cosh = __cosf(h);
 
     (*mf)[0][0] = cosh * cosp;
     (*mf)[0][1] = cosr * sinh * cosp + sinr * sinp;
@@ -1316,9 +1316,9 @@ void hal_rotate_py_f(Mtx4f *mf, f32 p, f32 h) {
     f32 cosp, cosh;
 
     sinp = __sinf(p);
-    cosp = fcos(p);
+    cosp = __cosf(p);
     sinh = __sinf(h);
-    cosh = fcos(h);
+    cosh = __cosf(h);
 
     (*mf)[0][0] = cosp * cosh;
     (*mf)[0][1] = cosp * sinh;
@@ -1364,9 +1364,9 @@ void hal_rotate_rp_f(Mtx4f *mf, f32 r, f32 p) {
     f32 cosr, cosp;
 
     sinr = __sinf(r);
-    cosr = fcos(r);
+    cosr = __cosf(r);
     sinp = __sinf(p);
-    cosp = fcos(p);
+    cosp = __cosf(p);
 
     (*mf)[0][0] = cosp;
     (*mf)[0][1] = 0;
@@ -1412,7 +1412,7 @@ void hal_rotate_yaw_f(Mtx4f *mf, f32 h) {
     f32 cosh;
 
     sinh = __sinf(h);
-    cosh = fcos(h);
+    cosh = __cosf(h);
 
     (*mf)[0][0] = (*mf)[1][1] = cosh;
     (*mf)[0][1]               = sinh;
@@ -1463,7 +1463,7 @@ void hal_rotate_pitch_f(Mtx4f *mf, f32 p) {
     f32 cosp;
 
     sinp = __sinf(p);
-    cosp = fcos(p);
+    cosp = __cosf(p);
 
     (*mf)[0][0] = (*mf)[2][2] = cosp;
 

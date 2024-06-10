@@ -10,7 +10,6 @@
 // // // // // // // // // // // //
 
 extern func_80019438(Vec3f*, Vec3f*, f32);
-extern f32 atan2f(f32, f32);
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 

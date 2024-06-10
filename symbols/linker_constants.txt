@@ -7,6 +7,9 @@ lOverlay26ArenaHi = 0x803903E0;
 lOverlay40ArenaLo = 0x8018E5E0;
 lOverlay40ArenaHi = 0x803903E0;
 
+lITHitokageItemAttributes = 0x000001FC;
+lITHitokageWeaponFlameWeaponAttributes = 0x00000244;
+
 lITFushigibanaItemAttributes = 0x00000278;
 lITFushigibanaHitParties = 0x000002C0;
 lITFushigibanaWeaponRazorWeaponAttributes = 0x00000308;

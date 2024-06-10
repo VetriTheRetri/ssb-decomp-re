@@ -9,6 +9,7 @@
 #include <PR/sp.h>
 #include <PR/gu.h>
 
+#include "trig_rand.h"
 
 #include "objdef.h"
 

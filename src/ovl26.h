@@ -90,8 +90,6 @@ extern intptr_t lOverlay26ArenaLo; // 0x8013C4C0
 extern intptr_t lOverlay26ArenaHi; // 0x803903E0
 
 extern f32 sqrtf(f32);
-extern s32 lbRandom_GetIntRange(s32);
-extern s32 lbRandom_GetTimeByteRange(s32);
 extern void gsStopCurrentProcess(s32);
 extern void leoInitUnit_atten();
 // ovl0

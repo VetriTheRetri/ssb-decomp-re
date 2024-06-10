@@ -7,22 +7,25 @@
 // Global variables declared here as extern for easy access
 
 // 8018D040
-extern void* gItemFileData;
+extern void* gITFileData;
 
 // 8018D044
-extern void* gItemEffectBank;
+extern s32 gITEffectBank;
 
 // 8018D048
-extern Unk_8018D048 D_ovl3_8018D048;
+extern itRandomWeights gITRandomWeights;
 
 // 8018D060
 extern itMonsterInfo gMonsterData;
 
 // 8018D090
-extern s32 gItemDisplayMode;
+extern s32 gITDisplayMode;
 
 // 8018D094
-extern itStruct* gItemAllocFree;
+extern itStruct* gITAllocFree;
+
+// 0x8018D098
+extern itSpawnActor gITSpawnActor;
 
 // Linker variable, points to base of animation bank in item file? 0x00013624
 extern intptr_t lMonsterAnimBankStart;

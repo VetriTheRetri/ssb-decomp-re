@@ -124,7 +124,7 @@ f32 lbVector_Vec3fAngleDiff(struct Vec3f *v1, struct Vec3f *v2) {
 struct Vec3f *lbVector_Vec3fGetEulerRotation(struct Vec3f *v, enum VectorAxisFlags axis, f32 angle) {
     f32 xResult, yResult, zResult;
     f32 sinAngle = __sinf(angle);
-    f32 cosAngle = fcos(angle);
+    f32 cosAngle = __cosf(angle);
 
     switch (axis) {
         case AXIS_X:

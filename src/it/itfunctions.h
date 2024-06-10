@@ -11,6 +11,7 @@
 #include <it/itfighter/itlinkbomb.h>
 
 // Ground item headers
+#include <it/itground/itfushigibana.h>
 #include <it/itground/itrbomb.h>
 
 #endif

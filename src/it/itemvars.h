@@ -391,7 +391,7 @@
 #define ITDOGAS_SMOG_MUL_OFF_X 400.0F // Multiply random spawn position
 #define ITDOGAS_SMOG_SUB_OFF_X 200.0F // Subtracted from multiplied random spawn position
 #define ITDOGAS_SMOG_MUL_OFF_Y 800.0F // Multiply random spawn position
-#define ATDGOAS_SMOG_SUB_OFF_Y 400.0F // Subtracted from multiplied random spawn position
+#define ITDGOAS_SMOG_SUB_OFF_Y 400.0F // Subtracted from multiplied random spawn position
 
 #define ITMARUMINE_EXPLODE_LIFETIME 6
 #define ITMARUMINE_EXPLODE_GFX_SCALE 1.4F

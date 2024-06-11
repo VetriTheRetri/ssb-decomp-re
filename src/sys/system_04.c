@@ -101,7 +101,9 @@ s32 D_8003B93C = 10;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_80010734.s")
 
-void unref_80010740(void) {
+void unref_80010740(void) 
+{
+    return;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_80010748.s")

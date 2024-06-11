@@ -9,6 +9,12 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITLizardonItemAttributes = 0x000008FC;
+lITLizardonWeaponFlameWeaponAttributes = 0x00000944;
+lITLizardonDataStart = 0x0000D5C0;
+lITLizardonAnimJoint = 0x0000D658;
+lITLizardonMatAnimJoint = 0x0000D688;
+
 lITSpearItemAttributes = 0x0000098C;
 lITSpearWeaponSwarmWeaponAttributes = 0x000009D4;
 lITPippiWeaponSwarmWeaponAttributes = 0x00000CBC;

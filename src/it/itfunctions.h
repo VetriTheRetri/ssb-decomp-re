@@ -6,6 +6,9 @@
 #include "itrender.h"
 #include "itmap.h"
 
+// Common item headers
+#include <it/itcommon/itegg.h>
+
 // Fighter item headers
 #include <it/itfighter/itnesspkfire.h>
 #include <it/itfighter/itlinkbomb.h>

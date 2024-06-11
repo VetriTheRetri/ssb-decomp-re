@@ -376,7 +376,7 @@ struct ftHitbox
 	u16 stat_count;
 	Vec3f pos;
 	Vec3f pos_prev;
-	gmHitRecord hit_targets[GMHITRECORD_COUNT_MAX];
+	gmHitRecord hit_targets[GMHITRECORD_NUM_MAX];
 	ftHitMatrix hit_matrix;
 };
 

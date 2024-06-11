@@ -30,6 +30,7 @@
 #define ITEM_PORT_DEFAULT GMMATCH_PLAYERS_MAX
 #define ITEM_HANDICAP_DEFAULT 9 // Handicap?
 #define ITEM_STALE_DEFAULT 1.0F
+#define ITEM_THROW_DEFAULT 1.0F
 
 #define ITEM_PICKUP_WAIT_DEFAULT 1400 // "Lifetime" while item is not being carried
 
@@ -45,7 +46,7 @@
 	   // frames visible, 45 frames invisible)
 
 #define ITEM_REHIT_TIME_DEFAULT 16
-#define ITEM_HITBOX_COUNT_MAX 2
+#define ITEM_HITBOX_NUM_MAX 2
 
 #define ITEM_HOP_ANGLE_DEFAULT F_DEG_TO_RAD(135.0F) // 2.3561945F
 
@@ -142,42 +143,42 @@ struct itHitPositions
 
 struct itHitbox
 {
-	gmHitCollisionUpdateState update_state;				 // Hitbox's position update mode (0 = disabled, 1 =
-														 // fresh, 2 = transfer, 3 = interpolate)
-	s32 damage;											 // Hitbox's base damage output
-	f32 throw_mul;										 // Might be swapped with stale
-	f32 stale;											 // Might be swapped with throw_mul
-	gmHitCollisionElement element;						 // Hitbox's element
-	Vec3f offset[ITEM_HITBOX_COUNT_MAX];				 // Hitbox offset from TopN translation
-														 // vector?
-	f32 size;											 // Hitbox size
-	s32 angle;											 // Launch angle
-	u32 knockback_scale;								 // Knockback growth
-	u32 knockback_weight;								 // Weight-Dependent Set Knockback
-	u32 knockback_base;									 // Base knockback
-	s32 shield_damage;									 // Shield damage
-	s32 priority;										 // Priority?
-	u8 interact_mask;									 // Mask of object classes hitbox can interact with; 0x1 =
-														 // fighters, 0x2 = weapons, 0x4 = items
-	u16 hit_sfx;										 // Played when hitbox connects with a hurtbox
-	ub32 can_setoff : 1;								 // Item's hitbox can collide with other hitboxes
-	ub32 can_rehit_item : 1;							 // Item can rehit item after default rehit
-														 // cooldown expires
-	ub32 can_rehit_fighter : 1;							 // Item can rehit fighter after default rehit
-														 // cooldown expires
-	ub32 can_rehit_shield : 1;							 // Item can rehit shield after default rehit
-														 // cooldown expires
-	ub32 can_hop : 1;									 // Item can bounce off shields
-	ub32 can_reflect : 1;								 // Item can be reflected
-	ub32 can_shield : 1;								 // Item can be shielded
-	u32 attack_id : 6;									 // Attack ID copied from object that spawned this item
-	u16 motion_count;									 // Item's animation update number?
-	gmStatFlags stat_flags;								 // Item's status flags
-	u16 stat_count;										 // Item's status update number
-	s32 hitbox_count;									 // Item's hitbox count, up to two
-	itHitPositions hit_positions[ITEM_HITBOX_COUNT_MAX]; // Item hitbox positions
-	gmHitRecord hit_targets[GMHITRECORD_COUNT_MAX];		 // Item's record of
-														 // attacked targets
+	gmHitCollisionUpdateState update_state;				// Hitbox's position update mode (0 = disabled, 1 =
+														// fresh, 2 = transfer, 3 = interpolate)
+	s32 damage;											// Hitbox's base damage output
+	f32 throw_mul;										// Might be swapped with stale
+	f32 stale;											// Might be swapped with throw_mul
+	gmHitCollisionElement element;						// Hitbox's element
+	Vec3f offset[ITEM_HITBOX_NUM_MAX];				 	// Hitbox offset from TopN translation
+														// vector?
+	f32 size;											// Hitbox size
+	s32 angle;											// Launch angle
+	u32 knockback_scale;								// Knockback growth
+	u32 knockback_weight;								// Weight-Dependent Set Knockback
+	u32 knockback_base;									// Base knockback
+	s32 shield_damage;									// Shield damage
+	s32 priority;										// Priority?
+	u8 interact_mask;									// Mask of object classes hitbox can interact with; 0x1 =
+														// fighters, 0x2 = weapons, 0x4 = items
+	u16 hit_sfx;										// Played when hitbox connects with a hurtbox
+	ub32 can_setoff : 1;								// Item's hitbox can collide with other hitboxes
+	ub32 can_rehit_item : 1;							// Item can rehit item after default rehit
+														// cooldown expires
+	ub32 can_rehit_fighter : 1;							// Item can rehit fighter after default rehit
+														// cooldown expires
+	ub32 can_rehit_shield : 1;							// Item can rehit shield after default rehit
+														// cooldown expires
+	ub32 can_hop : 1;									// Item can bounce off shields
+	ub32 can_reflect : 1;								// Item can be reflected
+	ub32 can_shield : 1;								// Item can be shielded
+	u32 attack_id : 6;									// Attack ID copied from object that spawned this item
+	u16 motion_count;									// Item's animation update number?
+	gmStatFlags stat_flags;								// Item's status flags
+	u16 stat_count;										// Item's status update number
+	s32 hitbox_count;									// Item's hitbox count, up to two
+	itHitPositions hit_positions[ITEM_HITBOX_NUM_MAX]; 	// Item hitbox positions
+	gmHitRecord hit_targets[GMHITRECORD_NUM_MAX];		// Item's record of
+														// attacked targets
 };
 
 struct itHitEvent // Miniature Hitbox subaction event? Used by explosions.

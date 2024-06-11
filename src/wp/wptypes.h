@@ -149,7 +149,7 @@ struct wpHitbox
 	s32 hitbox_count;									   // Weapon's hitbox count
 	wpHitPositions hit_positions[WEAPON_HITBOX_COUNT_MAX]; // Weapon's hitbox
 														   // world positions
-	gmHitRecord hit_targets[GMHITRECORD_COUNT_MAX];		   // Weapon's record of
+	gmHitRecord hit_targets[GMHITRECORD_NUM_MAX];		   // Weapon's record of
 														   // interacted targets
 };
 

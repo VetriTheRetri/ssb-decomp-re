@@ -9,6 +9,11 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITKamexItemAttributes = 0x00000A08;
+lITKamexWeaponHydroWeaponAttributes = 0x00000A50;
+lITKamexDataStart = 0x0000EA60;
+lITKamexDisplayList = 0x0000ED60;
+
 lITMLuckyItemAttributes = 0x00000A84;
 lITLuckyDataStart = 0x00010000;
 lITLuckyAnimJoint = 0x000100BC;

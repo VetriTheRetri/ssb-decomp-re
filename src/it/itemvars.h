@@ -225,7 +225,7 @@
 		   // inside the pipe
 #define ITPAKKUN_NDAMAGE_KNOCKBACK_MIN 100.0F
 #define ITPAKKUN_GRAVITY 1.5F
-#define ITPAKKUN_T_VEL 120.0F
+#define ITPAKKUN_T_VEL 100.0F
 
 #define ITIWARK_FLY_WAIT 30 // Unconfirmed?
 #define ITIWARK_MODEL_ROTATE_WAIT                                                                                      \

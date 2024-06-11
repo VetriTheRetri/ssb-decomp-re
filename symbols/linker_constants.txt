@@ -9,6 +9,11 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITPakkunItemAttributes = 0x00000120;
+lITPakkunDAppearAnimJoint = 0x00000CC8;
+lITPakkunDAppearMatAnimJoint = 0x00000CF8;
+lITPakkunNDamageMatAnimJoint = 0x00000E04;
+
 lITGBumperItemAttributes = 0x00000CF0;
 
 lITIwarkItemAttributes = 0x0000072C;

@@ -59,7 +59,7 @@ itCreateDesc dITPippiItemDesc =
     NULL                                    // Proc Damage
 };
 
-#if !defined(DAIRANTOU_OPT1)
+#if !defined(DAIRANTOU_OPT0)
 
 // 0x8018B3D4 - why
 itStatusDesc dITPippiStatusDesc = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };

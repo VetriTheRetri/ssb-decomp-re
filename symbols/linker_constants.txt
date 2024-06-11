@@ -9,6 +9,9 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITMewItemAttributes = 0x00000838;
+lITMewDataStart = 0x0000BCC0;
+
 lITNyarsItemAttributes = 0x00000880;
 lITNyarsWeaponCoinWeaponAttributes = 0x000008C8;
 lITNyarsAnimJoint = 0x0000C130;

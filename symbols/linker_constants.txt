@@ -7,6 +7,15 @@ lOverlay26ArenaHi = 0x803903E0;
 lOverlay40ArenaLo = 0x8018E5E0;
 lOverlay40ArenaHi = 0x803903E0;
 
+lITStarmieItemAttributes = 0x00000B34;
+lITStarmieWeaponSwiftWeaponAttributes = 0x00000B7C;
+lITStarmieDataStart = 0x000112A0;
+lITStarmieMatAnimJoint = 0x00011338;
+
+lITSawamuraItemAttributes = 0x00000BB0;
+lITSawamuraDataStart = 0x00011F40;
+lITSawamuraDisplayList = 0x00012340;
+
 lITDogasItemAttributes = 0x00000BF8;
 lITDogasWeaponSmogWeaponAttributes = 0x00000C40;
 lITDogasDataStart = 0x00012820;

@@ -10,6 +10,7 @@
 #include <PR/gu.h>
 
 #include "trig_rand.h"
+#include "vec.h"
 
 #include "objdef.h"
 

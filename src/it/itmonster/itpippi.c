@@ -106,7 +106,7 @@ void itPippiSDefaultSelectMonster(GObj *item_gobj)
     {
         item_gobj->proc_render = itPippiSDefaultMoveDLProcRender;
 
-        omMoveGObjDLHead(item_gobj, 0x12, item_gobj->dl_link_order);
+        omMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
     }
     if (it_kind == It_Kind_Lizardon)
     {

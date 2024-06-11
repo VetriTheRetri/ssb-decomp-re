@@ -429,6 +429,8 @@ segments:
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x0AC540, asm, ovl3]
+      - [0x0FC660, c, it/itmonster/itstarmie]
+      - [0x0FD070, c, it/itmonster/itsawamura]
       - [0x0FD6C0, c, it/itmonster/itdogas]
       - [0x0FDC50, c, it/itmonster/itpippi]
       - [0x0FE1E0, c, it/itground/itmarumine]
@@ -439,6 +441,8 @@ segments:
       - [0x0FFD90, c, it/itfighter/itnesspkfire]
       - [0x100400, c, it/itfighter/itlinkbomb]
       - [0x1010A0, data, ovl3]
+      - [0x105BB0, .data, it/itmonster/itstarmie]
+      - [0x105C60, .data, it/itmonster/itsawamura]
       - [0x105D00, .data, it/itmonster/itdogas]
       - [0x105DB0, .data, it/itmonster/itpippi]
       - [0x105E40, .data, it/itground/itmarumine]
@@ -449,6 +453,8 @@ segments:
       - [0x106080, .data, it/itfighter/itnesspkfire]
       - [0x106100, .data, it/itfighter/itlinkbomb]
       - [0x106200, rodata, ovl3]
+      - [0x107900, .rodata, it/itmonster/itstarmie]
+      - [0x107910, .rodata, it/itmonster/itsawamura]
       - [0x107920, .rodata, it/itmonster/itpippi]
       - [0x107930, .rodata, it/itground/itmarumine]
       - [0x107940, .rodata, it/itground/itporygon]

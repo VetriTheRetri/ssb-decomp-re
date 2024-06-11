@@ -764,6 +764,7 @@ func_8018D0C0 = 0x8018D0C0;
 
 D_8018E1C0 = 0x8018E1C0;
 
+omAddMObjAnimAll = 0x8000BD54;
 
 itManagerUpdateSpin = 0x801713F4;
 itMapCheckLRWallProcGround = 0x801735A0;

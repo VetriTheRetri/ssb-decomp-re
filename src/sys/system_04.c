@@ -19,7 +19,7 @@ s32 D_8003B93C = 10;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/omAddDObjAnimAll.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000BD54_C954.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/omAddMObjAnimAll.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000BD8C_C98C.s")
 

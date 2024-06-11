@@ -104,7 +104,8 @@ typedef enum mpMPointKind
     mpMPoint_Kind_1PGameChallengerUnused1Spawn,                                                 // 0x2E
     mpMPoint_Kind_1PGameChallengerUnused2Spawn,                                                 // 0x2F
     mpMPoint_Kind_1PGameChallengerEnemySpawnEnd = mpMPoint_Kind_1PGameChallengerUnused2Spawn    // 0x2F
-};
+    
+} mpMPointKind;
 
 typedef enum mpYakumonoStatus // State of collision line?
 {

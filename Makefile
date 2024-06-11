@@ -207,8 +207,8 @@ expected:
 
 format:
 	$(PYTHON) $(TOOLS)/formatHelper.py -e
-	find include -type f | rg "\.h" | xargs clang-format -i
-	find src -type f | rg "\.(c|h)" | xargs clang-format -i
+# 	find include -type f | rg "\.h" | xargs clang-format -i
+# 	find src -type f | rg "\.(c|h)" | xargs clang-format -i
 	$(PYTHON) $(TOOLS)/formatHelper.py -s
 
 # ----- Rules ------

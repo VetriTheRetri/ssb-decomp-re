@@ -9,6 +9,8 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITGBumperItemAttributes = 0x00000CF0;
+
 lITIwarkItemAttributes = 0x0000072C;
 lITIwarkWeaponRockWeaponAttributes = 0x00000774;
 lITIwarkDataStart = 0x0000A140;

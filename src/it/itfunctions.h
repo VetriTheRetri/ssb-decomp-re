@@ -14,6 +14,7 @@
 #include <it/itfighter/itlinkbomb.h>
 
 // Ground item headers
+#include <it/itground/itgbumper.h>
 #include <it/itground/itmarumine.h>
 #include <it/itground/itporygon.h>
 #include <it/itground/ithitokage.h>

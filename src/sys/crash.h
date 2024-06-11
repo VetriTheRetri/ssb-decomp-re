@@ -1,7 +1,7 @@
 #ifndef SYS_CRASH_H
 #define SYS_CRASH_H
 
-#include "sys/objtypes.h"
+#include <sys/objtypes.h>
 
 #include <PR/ultratypes.h>
 

@@ -1,10 +1,10 @@
 #ifndef _OBJ_H_
 #define _OBJ_H_
 
-#include "objtypes.h"
+#include <sys/objtypes.h>
 
 // Function headers
-#include "objfunctions.h"
+#include <sys/objfunctions.h>
 
 #define ACommandAdvance(acommand) \
 ((acommand)++)

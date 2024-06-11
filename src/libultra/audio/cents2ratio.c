@@ -15,7 +15,7 @@
  * two ocataves.
  */
 
-#include <libaudio.h>
+#include <PR/libaudio.h>
 
 
 f32 alCents2Ratio(s32 cents) 

@@ -1,14 +1,14 @@
 #include "common.h"
-#include "sys/crash.h"
+#include <sys/crash.h>
 
-#include "sys/gtl.h"
-#include "sys/hal_audio.h"
-#include "sys/main.h"
-#include "obj.h"
-#include "sys/system_00.h"
-#include "sys/system_03_1.h"
-#include "sys/thread3.h"
-#include "sys/thread6.h"
+#include <sys/gtl.h>
+#include <sys/hal_audio.h>
+#include <sys/main.h>
+#include <sys/obj.h>
+#include <sys/system_00.h>
+#include <sys/system_03_1.h>
+#include <sys/thread3.h>
+#include <sys/thread6.h>
 
 // #include <macros.h> // (included in obj.h)
 #include <config.h>

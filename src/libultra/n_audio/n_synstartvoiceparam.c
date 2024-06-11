@@ -1,5 +1,5 @@
 #include "common.h"
-#include "n_synthInternals.h"
+#include <n_audio/n_synthInternals.h>
 
 void n_alSynStartVoiceParams(N_ALVoice *v, ALWaveTable *w,
                            f32 pitch, s16 vol, ALPan pan, u8 fxmix,

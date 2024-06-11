@@ -18,7 +18,7 @@
  * Copyright Laws of the United States.
  *====================================================================*/
 
-#include <n_libaudio.h>
+#include <n_audio/n_libaudio.h>
 
 void n_alSynSetPriority(N_ALVoice *voice, s16 priority)
 {

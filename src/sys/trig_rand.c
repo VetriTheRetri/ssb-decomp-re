@@ -1,5 +1,5 @@
 #include "common.h"
-#include "sys/trig_rand.h"
+#include "trig_rand.h"
 
 #include <macros.h>
 #include <string.h>

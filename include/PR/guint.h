@@ -10,8 +10,8 @@
  *									  *
  **************************************************************************/
 
-#include "mbi.h"
-#include "gu.h"
+#include <PR/mbi.h>
+#include <PR/gu.h>
 
 typedef union
 {

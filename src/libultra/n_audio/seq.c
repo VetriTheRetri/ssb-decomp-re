@@ -18,9 +18,9 @@
  * Copyright Laws of the United States.
  *====================================================================*/
 
-#include <libaudio.h>
-#include <os_internal.h>
-#include <ultraerror.h>
+#include <PR/libaudio.h>
+#include <PR/os_internal.h>
+#include <PR/ultraerror.h>
 
 char __alSeqNextDelta (ALSeq *seq, s32 *pDeltaTicks);
 

@@ -20,7 +20,7 @@
  * Copyright Laws of the United States.
  *====================================================================*/
 
-#include <libaudio.h>
+#include <PR/libaudio.h>
 
 #if 0
 // seqp->evtq needs a padding of 8 bytes before it in the struct. Need more info to figure out where.

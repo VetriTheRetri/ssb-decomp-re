@@ -18,7 +18,7 @@
  * Copyright Laws of the United States.
  *====================================================================*/
 
-#include <libaudio.h>
+#include <PR/libaudio.h>
 
 #if 0
 // Needs -O3

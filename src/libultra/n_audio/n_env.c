@@ -1,6 +1,6 @@
 #include "common.h"
-#include "n_synthInternals.h"
-#include "n_seqp.h"
+#include <n_audio/n_synthInternals.h>
+#include <n_audio/n_seqp.h>
 
 typedef struct alSoundEffect
 {

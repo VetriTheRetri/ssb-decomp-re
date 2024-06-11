@@ -17,9 +17,9 @@
  * Copyright Laws of the United States.
  *====================================================================*/
 
-#include <os_internal.h>
-#include <ultraerror.h>
-#include "n_synthInternals.h"
+#include <PR/os_internal.h>
+#include <PR/ultraerror.h>
+#include <n_audio/n_synthInternals.h>
 
 void n_alSynSetPan( N_ALVoice *v, u8 pan)
 {

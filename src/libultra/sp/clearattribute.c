@@ -21,7 +21,7 @@
  * GRAPHICS, INC.
  */
 
-#include <sp.h>
+#include <PR/sp.h>
 
 /*
  * spClearAttribute()

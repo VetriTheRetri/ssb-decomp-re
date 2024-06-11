@@ -1,9 +1,9 @@
 #include "common.h"
-#include "sys/thread3.h"
+#include "thread3.h"
 
-#include "sys/crash.h"
-#include "sys/main.h"
-#include "sys/thread6.h"
+#include <sys/crash.h>
+#include <sys/main.h>
+#include <sys/thread6.h>
 
 #include <config.h>
 #include <macros.h>

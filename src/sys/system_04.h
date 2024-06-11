@@ -1,7 +1,7 @@
 #ifndef SYS_SYSTEM_04_H
 #define SYS_SYSTEM_04_H
 
-#include "sys/objtypes.h"
+#include <sys/objtypes.h>
 
 #include <ssb_types.h>
 

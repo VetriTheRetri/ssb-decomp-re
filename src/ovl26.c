@@ -1,5 +1,5 @@
 #include <ssb_types.h>
-#include <reloc_data_mgr.h>
+#include <ovl0/reloc_data_mgr.h>
 #include <sys/develop.h>
 #include <sys/objtypes.h>
 #include <ft/ftdef.h>

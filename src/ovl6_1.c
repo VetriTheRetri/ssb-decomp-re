@@ -1,5 +1,5 @@
 #include <sys/objtypes.h>
-#include <reloc_data_mgr.h>
+#include <ovl0/reloc_data_mgr.h>
 #include <sys/objdef.h>
 #include <sys/obj.h>
 #include <gm/gmsound.h>

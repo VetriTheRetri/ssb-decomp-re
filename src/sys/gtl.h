@@ -1,8 +1,8 @@
 #ifndef SYS_GTL_H
 #define SYS_GTL_H
 
-#include "sys/ml.h"
-#include "sys/thread3.h"
+#include <sys/ml.h>
+#include <sys/thread3.h>
 
 #include <PR/mbi.h>
 #include <PR/ultratypes.h>

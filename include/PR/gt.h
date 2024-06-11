@@ -49,7 +49,7 @@
 
 /* this file should be #included AFTER gbi.h */
 
-#include "sptask.h"
+#include <PR/sptask.h>
 
 #ifdef _LANGUAGE_C_PLUS_PLUS
 extern "C"

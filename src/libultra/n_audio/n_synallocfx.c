@@ -16,7 +16,7 @@
  * DOD or NASA FAR Supplement. Unpublished - rights reserved under the
  * Copyright Laws of the United States.
  *====================================================================*/
-#include "n_synthInternals.h"
+#include <n_audio/n_synthInternals.h>
 
 ALFxRef n_alSynAllocFX(s16 bus, ALSynConfig *c, ALHeap *hp)
 {

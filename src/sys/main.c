@@ -1,12 +1,12 @@
-#include "sys/main.h"
+#include "main.h"
 
 // #include "scenemgr/scene_manager.h"
-#include "sys/crash.h"
-#include "sys/dma.h"
-#include "sys/gtl.h"
-#include "sys/hal_audio.h"
-#include "sys/thread3.h"
-#include "sys/thread6.h"
+#include <sys/crash.h>
+#include <sys/dma.h>
+#include <sys/gtl.h>
+#include <sys/hal_audio.h>
+#include <sys/thread3.h>
+#include <sys/thread6.h>
 
 // #include <linkersegs.h>
 #include <macros.h>

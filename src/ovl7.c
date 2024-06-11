@@ -6,7 +6,7 @@
 #include <sc/scene.h>
 #include <buttons.h>
 #include <sys/objtypes.h>
-#include <reloc_data_mgr.h>
+#include <ovl0/reloc_data_mgr.h>
 
 #include "ovl7.h"
 

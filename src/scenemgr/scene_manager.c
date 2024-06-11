@@ -1,19 +1,19 @@
 #include "common.h"
 #include "scenemgr/scene_manager.h"
 
-#include "ovl0/halsprite.h"
-#include "ovl0/ovl0.h"
+#include <ovl0/halsprite.h>
+#include <ovl0/ovl0.h>
 #include "ovl2/ovl2.h"
 #include "scenemgr/entries.h"
-#include "sys/crash.h"
-#include "sys/dma.h"
-#include "sys/gtl.h"
-#include "sys/hal_audio.h"
-#include "sys/objdraw.h"
-#include "sys/system_00.h"
-#include "sys/system_03_1.h"
-#include "sys/system_04.h"
-#include "sys/thread6.h"
+#include <sys/crash.h>
+#include <sys/dma.h>
+#include <sys/gtl.h>
+#include <sys/hal_audio.h>
+#include <sys/objdraw.h>
+#include <sys/system_00.h>
+#include <sys/system_03_1.h>
+#include <sys/system_04.h>
+#include <sys/thread6.h>
 
 #include <macros.h>
 

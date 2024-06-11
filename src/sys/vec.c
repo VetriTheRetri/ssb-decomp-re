@@ -1,8 +1,8 @@
 #include "common.h"
-#include "sys/vec.h"
+#include "vec.h"
 
 #include "macros.h"
-#include "sys/trig_rand.h"
+#include <sys/trig_rand.h>
 
 #include <ssb_types.h>
 

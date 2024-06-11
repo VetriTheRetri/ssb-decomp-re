@@ -9,10 +9,10 @@
 #include <PR/sp.h>
 #include <PR/gu.h>
 
-#include "trig_rand.h"
-#include "vec.h"
+#include <sys/trig_rand.h>
+#include <sys/vec.h>
 
-#include "objdef.h"
+#include <sys/objdef.h>
 
 // General OM defines
 #define OM_COMMON_MAX_LINKS     33

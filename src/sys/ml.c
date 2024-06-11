@@ -1,6 +1,6 @@
-#include "sys/ml.h"
+#include "ml.h"
 
-#include "sys/crash.h"
+#include <sys/crash.h>
 
 #include <ssb_types.h>
 

@@ -1,16 +1,16 @@
 #include "common.h"
-#include "sys/gtl.h"
+#include <sys/gtl.h>
 
-#include "sys/crash.h"
-#include "sys/main.h"
-#include "sys/ml.h"
-#include "sys/obj.h"
-#include "sys/rdp_reset.h"
-#include "sys/system_00.h"
-#include "sys/system_03_1.h"
-#include "sys/system_04.h"
-#include "sys/thread3.h"
-#include "sys/thread6.h"
+#include <sys/crash.h>
+#include <sys/main.h>
+#include <sys/ml.h>
+#include <sys/obj.h>
+#include <sys/rdp_reset.h>
+#include <sys/system_00.h>
+#include <sys/system_03_1.h>
+#include <sys/system_04.h>
+#include <sys/thread3.h>
+#include <sys/thread6.h>
 
 #include <macros.h>
 #include <ssb_types.h>

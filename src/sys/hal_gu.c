@@ -1,8 +1,8 @@
 #include "common.h"
 
-#include "sys/hal_gu.h"
+#include "hal_gu.h"
 
-#include "sys/vec.h"
+#include <sys/vec.h>
 
 #include <macros.h>
 #include <ssb_types.h>

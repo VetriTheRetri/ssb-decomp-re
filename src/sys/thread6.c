@@ -1,8 +1,8 @@
-#include "sys/thread6.h"
+#include "thread6.h"
 
-#include "sys/main.h"
-#include "sys/thread3.h"
-#include "sys/thread6.h"
+#include <sys/main.h>
+#include <sys/thread3.h>
+#include "thread6.h"
 
 #include <macros.h>
 #include <missing_libultra.h>

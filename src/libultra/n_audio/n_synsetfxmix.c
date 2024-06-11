@@ -17,9 +17,9 @@
  * Copyright Laws of the United States.
  *====================================================================*/
 
-#include <os_internal.h>
-#include <ultraerror.h>
-#include "n_synthInternals.h"
+#include <PR/os_internal.h>
+#include <PR/ultraerror.h>
+#include <n_audio/n_synthInternals.h>
 
 // This version of n_alSynSetFXMix differs only by a single argument, and it gets a different
 // update type with moredata from arg2.

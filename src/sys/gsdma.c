@@ -1,7 +1,7 @@
 #include "common.h"
-#include "sys/dma.h"
-#include "sys/gamesys.h"
-#include "sys/thread3.h"
+#include <sys/dma.h>
+#include <sys/gamesys.h>
+#include <sys/thread3.h>
 
 #include <macros.h>
 #include <ssb_types.h>

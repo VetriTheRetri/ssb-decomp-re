@@ -1,7 +1,7 @@
 #ifndef SYS_SYSTEM_00_H
 #define SYS_SYSTEM_00_H
 
-#include "sys/thread3.h"
+#include <sys/thread3.h>
 
 #include <PR/ultratypes.h>
 

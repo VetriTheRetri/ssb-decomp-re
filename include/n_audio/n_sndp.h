@@ -20,8 +20,8 @@
 #ifndef __N_SNDP__
 #define __N_SNDP__
 
-#include <libaudio.h>
-#include "n_libaudio.h"
+#include <PR/libaudio.h>
+#include <n_audio/n_libaudio.h>
 
 #ifndef MIN
 #define MIN(a,b) (((a)<(b))?(a):(b))

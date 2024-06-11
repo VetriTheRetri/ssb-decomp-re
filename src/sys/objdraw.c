@@ -1,15 +1,15 @@
-#include "obj.h"
+#include <sys/obj.h>
 
-#include "sys/gtl.h"
-#include "sys/hal_gu.h"
-#include "sys/system_00.h"
-#include "sys/system_04.h"
+#include <sys/gtl.h>
+#include <sys/hal_gu.h>
+#include <sys/system_00.h>
+#include <sys/system_04.h>
 
 #include <config.h>
-#include "PR/gbi.h"
+#include <PR/gbi.h>
 #include "libc/math.h"
-#include "sys/objmanager.h"
-#include "PR/sp.h"
+#include <sys/objmanager.h>
+#include <PR/sp.h>
 
 extern f32 sqrtf(f32);
 

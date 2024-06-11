@@ -1,6 +1,6 @@
-#include "sys/system_00.h"
+#include "system_00.h"
 
-#include "sys/thread3.h"
+#include <sys/thread3.h>
 
 #include <PR/mbi.h>
 #include <PR/os.h>

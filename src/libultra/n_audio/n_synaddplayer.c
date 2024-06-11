@@ -1,5 +1,5 @@
-#include <os_internal.h>
-#include "n_synthInternals.h"
+#include <PR/os_internal.h>
+#include <n_audio/n_synthInternals.h>
 
 void n_alSynAddPlayer(ALPlayer *client)
 {

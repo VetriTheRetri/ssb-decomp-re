@@ -1,7 +1,7 @@
 #ifndef _OBJDRAW_H_
 #define _OBJDRAW_H_
 
-#include "objtypes.h"
+#include <sys/objtypes.h>
 
 extern Gfx *gDisplayListHead[4];
 

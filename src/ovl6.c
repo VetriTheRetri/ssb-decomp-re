@@ -8,7 +8,7 @@
 #include <sys/objtypes.h>
 #include <mp/mpcollision.h>
 #include <it/ittypes.h>
-#include <reloc_data_mgr.h>
+#include <ovl0/reloc_data_mgr.h>
 
 #include "ovl6.h"
 

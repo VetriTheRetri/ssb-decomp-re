@@ -21,7 +21,7 @@
 
 #include <PR/rdb.h>
 #include <PR/ramrom.h>
-#include "u64gio.h"
+#include <sys/u64gio.h>
 
 #if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)
 

@@ -1,7 +1,7 @@
-#include "sys/rdp_reset.h"
+#include "rdp_reset.h"
 
-#include "sys/gtl.h"
-#include "sys/system_00.h"
+#include <sys/gtl.h>
+#include <sys/system_00.h>
 
 #include <config.h>
 #include <macros.h>

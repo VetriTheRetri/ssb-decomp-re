@@ -1,7 +1,7 @@
 #ifndef __STDDEF_H__
 #define __STDDEF_H__
 
-#include "PR/ultratypes.h"
+#include <PR/ultratypes.h>
 
 #ifndef __sgi
 /* use built-in offsetof macro */

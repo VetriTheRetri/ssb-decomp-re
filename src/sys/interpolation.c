@@ -1,5 +1,5 @@
 #include "common.h"
-#include "sys/interpolation.h"
+#include "interpolation.h"
 
 #include <macros.h>
 #include <ssb_types.h>

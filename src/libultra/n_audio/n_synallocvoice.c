@@ -16,9 +16,9 @@
  * DOD or NASA FAR Supplement. Unpublished - rights reserved under the
  * Copyright Laws of the United States.
  *====================================================================*/
-#include <os_internal.h>
-#include <ultraerror.h>
-#include "n_synthInternals.h"
+#include <PR/os_internal.h>
+#include <PR/ultraerror.h>
+#include <n_audio/n_synthInternals.h>
 
 
 s32 _allocatePVoice(N_PVoice **pvoice, s16 priority);

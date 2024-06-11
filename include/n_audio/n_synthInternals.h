@@ -20,9 +20,9 @@
 #ifndef __N_SYNTHINTERNALS__
 #define __N_SYNTHINTERNALS__
 
-#include <n_libaudio.h>
-#include <synthInternals.h>
-#include <n_abi.h>
+#include <n_audio/n_libaudio.h>
+#include <n_audio/synthInternals.h>
+#include <n_audio/n_abi.h>
 
 #define SAMPLE_ROUND
 #undef  SAMPLE_ROUND

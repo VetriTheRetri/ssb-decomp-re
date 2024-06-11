@@ -1,8 +1,8 @@
-#include "sys/system_03.h"
+#include "system_03.h"
 
-#include "sys/objmanager.h"
-#include "sys/system_03_1.h"
-#include "sys/system_04.h"
+#include <sys/objmanager.h>
+#include <sys/system_03_1.h>
+#include <sys/system_04.h>
 
 #include <macros.h>
 

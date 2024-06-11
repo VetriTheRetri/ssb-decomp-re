@@ -1,7 +1,7 @@
 #ifndef _OBJMANAGER_H_
 #define _OBJMANAGER_H_
 
-#include "objtypes.h"
+#include <sys/objtypes.h>
 
 extern s32 D_8003B874_3C474;
 extern OMPersp dOMPerspDefault;

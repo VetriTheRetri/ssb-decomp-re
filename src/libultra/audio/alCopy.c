@@ -20,7 +20,7 @@
  * Copyright Laws of the United States.
  *====================================================================*/
 
-#include <libaudio.h>
+#include <PR/libaudio.h>
 
 void alCopy(void *src, void *dest, s32 len)
 {

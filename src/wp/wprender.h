@@ -16,7 +16,7 @@ void wpRenderDrawNormal();
 void wpRenderDrawZBuffer();
 
 // Unknown
-void func_ovl3_80167520(GObj* weapon_gobj, void (*proc_render)(GObj*));
+void wpRenderMain(GObj* weapon_gobj, void (*proc_render)(GObj*));
 
 // Unknown
 void func_ovl3_801675D0(GObj* weapon_gobj);

@@ -9,6 +9,13 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITSpearItemAttributes = 0x0000098C;
+lITSpearWeaponSwarmWeaponAttributes = 0x000009D4;
+lITPippiWeaponSwarmWeaponAttributes = 0x00000CBC;
+lITSpearDataStart = 0x0000DF38;
+lITSpearAnimJoint = 0x0000DFFC;
+lITSpearMatAnimJoint = 0x0000E12C;
+
 lITKamexItemAttributes = 0x00000A08;
 lITKamexWeaponHydroWeaponAttributes = 0x00000A50;
 lITKamexDataStart = 0x0000EA60;

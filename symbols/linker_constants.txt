@@ -9,6 +9,11 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITTosakintoItemAttributes = 0x000007F0;
+lITTosakintoDataStart = 0x0000B708;
+lITTosakintoAnimJoint = 0x0000B7CC;
+lITTosakintoMatAnimJoint = 0x0000B90C;
+
 lITMewItemAttributes = 0x00000838;
 lITMewDataStart = 0x0000BCC0;
 

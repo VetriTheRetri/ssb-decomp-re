@@ -239,7 +239,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
     ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
     ip->phys_info.vel_air.x = ITSTARMIE_FOLLOW_VEL_X;
 
-    lbVector_Vec3fGetEulerRotation(&ip->phys_info.vel_air, 4, atan2f(dist.y, dist.x));
+    lbVector_Vec3fGetEulerRotation(&ip->phys_info.vel_air, MTVECTOR_AXIS_Z, atan2f(dist.y, dist.x));
 
     ip->item_vars.starmie.target_pos = target_pos;
 

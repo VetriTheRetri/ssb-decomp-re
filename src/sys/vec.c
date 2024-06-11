@@ -121,23 +121,23 @@ f32 lbVector_Vec3fAngleDiff(struct Vec3f *v1, struct Vec3f *v2) {
     return 0.0f;
 }
 
-struct Vec3f *lbVector_Vec3fGetEulerRotation(struct Vec3f *v, enum VectorAxisFlags axis, f32 angle) {
+struct Vec3f *lbVector_Vec3fGetEulerRotation(struct Vec3f *v, enum mtVectorAxisFlags axis, f32 angle) {
     f32 xResult, yResult, zResult;
     f32 sinAngle = __sinf(angle);
     f32 cosAngle = __cosf(angle);
 
     switch (axis) {
-        case AXIS_X:
+        case MTVECTOR_AXIS_X:
             xResult = v->x;
             yResult = (v->y * cosAngle) - (v->z * sinAngle);
             zResult = (v->y * sinAngle) + (v->z * cosAngle);
             break;
-        case AXIS_Y:
+        case MTVECTOR_AXIS_Y:
             xResult = (v->x * cosAngle) + (v->z * sinAngle);
             yResult = v->y;
             zResult = (v->z * cosAngle) - (v->x * sinAngle);
             break;
-        case AXIS_Z:
+        case MTVECTOR_AXIS_Z:
             xResult = (v->x * cosAngle) - (v->y * sinAngle);
             yResult = (v->x * sinAngle) + (v->y * cosAngle);
             zResult = v->z;
@@ -206,10 +206,10 @@ struct Vec3f *func_80019438(struct Vec3f *arg0, struct Vec3f *arg1, f32 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/vec/func_80019438.s")
 #endif
 
-struct Vec3f *lbVector_Vec3fNegateByAxis(struct Vec3f *v, enum VectorAxisFlags flag) {
-    if (flag & AXIS_X) { v->x = -v->x; }
-    if (flag & AXIS_Y) { v->y = -v->y; }
-    if (flag & AXIS_Z) { v->z = -v->z; }
+struct Vec3f *lbVector_Vec3fNegateByAxis(struct Vec3f *v, enum mtVectorAxisFlags flag) {
+    if (flag & MTVECTOR_AXIS_X) { v->x = -v->x; }
+    if (flag & MTVECTOR_AXIS_Y) { v->y = -v->y; }
+    if (flag & MTVECTOR_AXIS_Z) { v->z = -v->z; }
     return v;
 }
 

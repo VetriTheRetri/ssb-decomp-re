@@ -206,7 +206,7 @@ void itSawamuraNAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
     ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
     ip->phys_info.vel_air.x = ITSAWAMURA_KICK_VEL_X;
 
-    lbVector_Vec3fGetEulerRotation(&ip->phys_info.vel_air, 4, atan2f(dist.y, dist.x));
+    lbVector_Vec3fGetEulerRotation(&ip->phys_info.vel_air, MTVECTOR_AXIS_Z, atan2f(dist.y, dist.x));
 
     ip->lr = (dist.x < 0.0F) ? LR_Left : LR_Right;
 

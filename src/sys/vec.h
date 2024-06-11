@@ -4,7 +4,17 @@
 #include <ssb_types.h>
 #include <PR/ultratypes.h>
 
-enum VectorAxisFlags { AXIS_X = 1 << 0, AXIS_Y = 1 << 1, AXIS_Z = 1 << 2 };
+typedef enum mtVectorAxisFlags 
+{
+    nMTVectorAxisX, 
+    nMTVectorAxisY,
+    nMTVectorAxisZ
+    
+} mtVectorAxisFlags;
+
+#define MTVECTOR_AXIS_X (1 << nMTVectorAxisX)
+#define MTVECTOR_AXIS_Y (1 << nMTVectorAxisY)
+#define MTVECTOR_AXIS_Z (1 << nMTVectorAxisZ)
 
 extern f32 lbVector_Vec3fNormalize(Vec3f *v);
 extern f32 lbVector_Vec3fMagnitude(const Vec3f *v);
@@ -25,10 +35,10 @@ extern void lbVector_Vec3fScaleAddScaledNormalize(
     const Vec3f *addend,
     f32 addendScale);
 extern f32 lbVector_Vec3fAngleDiff(Vec3f *v1, Vec3f *v2);
-extern Vec3f *lbVector_Vec3fGetEulerRotation(Vec3f *v, enum VectorAxisFlags axis, f32 angle);
+extern Vec3f *lbVector_Vec3fGetEulerRotation(Vec3f *v, mtVectorAxisFlags axis, f32 angle);
 extern Vec3f *lbVector_Vec3fNegate(Vec3f *v);
 extern Vec3f *func_80019438(Vec3f *, Vec3f *, f32);
-extern Vec3f *lbVector_Vec3fNegateByAxis(Vec3f *v, enum VectorAxisFlags flag);
+extern Vec3f *lbVector_Vec3fNegateByAxis(Vec3f *v, mtVectorAxisFlags flag);
 extern Vec3f *unref_80019608(Vec3f *v, u32 flags);
 extern Vec3f *unref_80019818(Vec3f *v1, const Vec3f *v2);
 extern Vec3f *unref_80019888(Vec3f *v1, const Vec3f *v2);

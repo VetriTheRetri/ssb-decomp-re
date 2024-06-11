@@ -9,6 +9,10 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITMLuckyItemAttributes = 0x00000A84;
+lITLuckyDataStart = 0x00010000;
+lITLuckyAnimJoint = 0x000100BC;
+
 lITEggItemAttributes = 0x00000ACC;
 lITEggHitEvents = 0x00000B14;
 

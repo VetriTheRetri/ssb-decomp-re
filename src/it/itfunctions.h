@@ -15,6 +15,7 @@
 #include <it/itfighter/itlinkbomb.h>
 
 // Ground item headers
+#include <it/itground/itpowerblock.h>
 #include <it/itground/itglucky.h>
 #include <it/itground/itpakkun.h>
 #include <it/itground/itgbumper.h>

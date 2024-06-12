@@ -128,9 +128,9 @@ void itMLuckyNSpawnInitItemVars(GObj *item_gobj)
     }
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
 
-    ip->item_vars.mlucky.egg_spawn_wait = ITMBLUCKY_EGG_SPAWN_WAIT_CONST;
+    ip->item_vars.mlucky.egg_spawn_wait = ITMLUCKY_EGG_SPAWN_WAIT_CONST;
 
-    ip->it_multi = ITMBLUCKY_EGG_SPAWN_COUNT;
+    ip->it_multi = ITMLUCKY_EGG_SPAWN_COUNT;
 }
 
 // 0x80181048
@@ -138,7 +138,7 @@ sb32 itMLuckyAFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
+    itMainApplyGClampTVel(ip, ITMLUCKY_GRAVITY, ITMLUCKY_T_VEL);
 
     return FALSE;
 }
@@ -179,7 +179,7 @@ sb32 itMLuckyNAppearProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITMBLUCKY_GRAVITY, ITMBLUCKY_T_VEL);
+    itMainApplyGClampTVel(ip, ITMLUCKY_GRAVITY, ITMLUCKY_T_VEL);
 
     return FALSE;
 }
@@ -238,8 +238,8 @@ sb32 itMLuckyNSpawnProcUpdate(GObj *lucky_gobj)
             {
                 pos = dobj->translate.vec.f;
 
-                vel.x = (lbRandom_GetFloat() * ITMBLUCKY_EGG_SPAWN_BASE_VEL) + ITMBLUCKY_EGG_SPAWN_ADD_VEL_X;
-                vel.y = (lbRandom_GetFloat() * ITMBLUCKY_EGG_SPAWN_BASE_VEL) + ITMBLUCKY_EGG_SPAWN_ADD_VEL_Y;
+                vel.x = (lbRandom_GetFloat() * ITMLUCKY_EGG_SPAWN_BASE_VEL) + ITMLUCKY_EGG_SPAWN_ADD_VEL_X;
+                vel.y = (lbRandom_GetFloat() * ITMLUCKY_EGG_SPAWN_BASE_VEL) + ITMLUCKY_EGG_SPAWN_ADD_VEL_Y;
                 vel.z = 0.0F;
 
                 egg_gobj = itManagerMakeItemSetupCommon(lucky_gobj, It_Kind_Egg, &pos, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
@@ -250,7 +250,7 @@ sb32 itMLuckyNSpawnProcUpdate(GObj *lucky_gobj)
 
                     func_800269C0_275C0(alSound_SFX_KirbySpecialLwStart);
 
-                    lucky_ip->item_vars.mlucky.egg_spawn_wait = ITMBLUCKY_EGG_SPAWN_WAIT_CONST;
+                    lucky_ip->item_vars.mlucky.egg_spawn_wait = ITMLUCKY_EGG_SPAWN_WAIT_CONST;
                     lucky_ip->it_multi--;
 
                     efParticle_DustLight_MakeEffect(&pos, egg_ip->lr, 1.0F);
@@ -258,7 +258,7 @@ sb32 itMLuckyNSpawnProcUpdate(GObj *lucky_gobj)
             }
             else
             {
-                lucky_ip->item_vars.mlucky.egg_spawn_wait = ITMBLUCKY_EGG_SPAWN_WAIT_CONST;
+                lucky_ip->item_vars.mlucky.egg_spawn_wait = ITMLUCKY_EGG_SPAWN_WAIT_CONST;
                 lucky_ip->it_multi--;
             }
         }
@@ -283,7 +283,7 @@ sb32 itMLuckyNSpawnProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_vars.mlucky.egg_spawn_wait += ITMBLUCKY_EGG_SPAWN_WAIT_ADD;
+    ip->item_vars.mlucky.egg_spawn_wait += ITMLUCKY_EGG_SPAWN_WAIT_ADD;
 
     return FALSE;
 }
@@ -313,7 +313,7 @@ void itMLuckyNDisappearSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_vars.mlucky.lifetime = ITMBLUCKY_LIFETIME;
+    ip->item_vars.mlucky.lifetime = ITMLUCKY_LIFETIME;
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 

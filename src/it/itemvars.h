@@ -181,22 +181,22 @@
 #define ITBUMPER_GRAVITY_HIT 4.0F
 #define ITBUMPER_T_VEL 80.0F
 
-#define ITGRLUCKY_EGG_SPAWN_COUNT                                                                                      \
+#define ITGLUCKY_EGG_SPAWN_COUNT                                                                                      \
 	1									 // Wait this many frames before spawning egg (read only when egg spawn
 										 // function is called)
-#define ITGRLUCKY_EGG_SPAWN_OFF_X 200.0F // X-offset of egg spawn
-#define ITGRLUCKY_EGG_SPAWN_OFF_Y 200.0F // Y-offset of egg spawn
-#define ITGRLUCKY_EGG_SPAWN_MUL 8.0F	 // Multiplies random velocity of egg
-#define ITGRLUCKY_EGG_SPAWN_ADD_X 8.0F	 // Added to mutliplied random velocity of egg
-#define ITGRLUCKY_EGG_SPAWN_ADD_Y 30.0F	 // Added to multiplide random velocity of egg
-#define ITGRLUCKY_EGG_SPAWN_BEGIN 80.0F	 // First frame egg spawn function is called
-#define ITGRLUCKY_EGG_SPAWN_END 85.0F	 // Last frame egg spawn function is called
-#define ITGRLUCKY_HIT_ROTATE_Z                                                                                         \
+#define ITGLUCKY_EGG_SPAWN_OFF_X 200.0F // X-offset of egg spawn
+#define ITGLUCKY_EGG_SPAWN_OFF_Y 200.0F // Y-offset of egg spawn
+#define ITGLUCKY_EGG_SPAWN_MUL 8.0F	 // Multiplies random velocity of egg
+#define ITGLUCKY_EGG_SPAWN_ADD_X 8.0F	 // Added to mutliplied random velocity of egg
+#define ITGLUCKY_EGG_SPAWN_ADD_Y 30.0F	 // Added to multiplide random velocity of egg
+#define ITGLUCKY_EGG_SPAWN_BEGIN 80.0F	 // First frame egg spawn function is called
+#define ITGLUCKY_EGG_SPAWN_END 85.0F	 // Last frame egg spawn function is called
+#define ITGLUCKY_HIT_ROTATE_Z                                                                                         \
 	0.10471976F // Rotation step when Chansey is knocked out of the Pokémon
 				// hut? Not actually applied?
-#define ITGRLUCKY_GRAVITY 1.2F
-#define ITGRLUCKY_NDAMAGE_KNOCKBACK_MIN 100.0F
-#define ITGRLUCKY_T_VEL 100.0F
+#define ITGLUCKY_GRAVITY 1.2F
+#define ITGLUCKY_NDAMAGE_KNOCKBACK_MIN 100.0F
+#define ITGLUCKY_T_VEL 100.0F
 
 #define ITMBALL_SPAWN_WAIT 30 // Wait this many frames before releasing Pokémon once thrown and landed
 #define ITMBALL_GRAVITY 1.5F
@@ -341,15 +341,15 @@
 #define ITKAMEX_GRAVITY 1.0F
 #define ITKAMEX_T_VEL 40.0F
 
-#define ITMBLUCKY_LIFETIME 90		   // Used only after Chansey has spawned all of its eggs
-#define ITMBLUCKY_EGG_SPAWN_WAIT_ADD 4 // Added when Chansey gets hit
-#define ITMBLUCKY_EGG_SPAWN_COUNT 3
-#define ITMBLUCKY_EGG_SPAWN_WAIT_CONST 30
-#define ITMBLUCKY_EGG_SPAWN_BASE_VEL 8.0F	// Multiplies random velocity
-#define ITMBLUCKY_EGG_SPAWN_ADD_VEL_X 7.0F	// Added to multiplied random X-velocity
-#define ITMBLUCKY_EGG_SPAWN_ADD_VEL_Y 40.0F // Added to multiplide random Y-velocity
-#define ITMBLUCKY_GRAVITY 1.0F
-#define ITMBLUCKY_T_VEL 40.0F
+#define ITMLUCKY_LIFETIME 90		   // Used only after Chansey has spawned all of its eggs
+#define ITMLUCKY_EGG_SPAWN_WAIT_ADD 4 // Added when Chansey gets hit
+#define ITMLUCKY_EGG_SPAWN_COUNT 3
+#define ITMLUCKY_EGG_SPAWN_WAIT_CONST 30
+#define ITMLUCKY_EGG_SPAWN_BASE_VEL 8.0F	// Multiplies random velocity
+#define ITMLUCKY_EGG_SPAWN_ADD_VEL_X 7.0F	// Added to multiplied random X-velocity
+#define ITMLUCKY_EGG_SPAWN_ADD_VEL_Y 40.0F // Added to multiplide random Y-velocity
+#define ITMLUCKY_GRAVITY 1.0F
+#define ITMLUCKY_T_VEL 40.0F
 
 #define ITEGG_EXPLODE_GFX_WAIT 8	 // Wait this many frames before spawning eggshell break GFX on explosion
 #define ITEGG_EXPLODE_GFX_SCALE 1.4F // Scale of explosion GFX

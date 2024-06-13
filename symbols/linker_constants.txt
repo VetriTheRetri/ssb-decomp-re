@@ -9,6 +9,9 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITTaruItemAttributes = 0x00000634;
+lITTaruHitEvents = 0x0000067C;
+
 lITRShellITemAttributes = 0x00000584;
 lITRShellDataStart = 0x00005F88;
 lITRShellAnimJoint = 0x00006018;

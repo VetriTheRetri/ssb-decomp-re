@@ -201,9 +201,9 @@ void itSwordFThrowSetStatus(GObj *item_gobj)
 }
 
 // 0x80174D2C
-void itSwordFDropProcMap(GObj *item_gobj)
+sb32 itSwordFDropProcMap(GObj *item_gobj)
 {
-    itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itSwordGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itSwordGWaitSetStatus);
 }
 
 // 0x80174D5C

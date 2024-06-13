@@ -132,9 +132,9 @@ void itIwarkNAttackUpdateRock(GObj *iwark_gobj)
         GObj *rock_gobj;
         Vec3f pos = dobj->translate.vec.f;
 
-        pos.x += (ITIWARK_ROCK_SPAWN_OFF_X_MUL * lbRandom_GetFloat()) + ITIWARK_ROCK_SPAWN_OFF_X_ADD;
+        pos.x += (ITIWARK_ROCK_SPAWN_OFF_X_MUL * mtTrigGetRandomFloat()) + ITIWARK_ROCK_SPAWN_OFF_X_ADD;
 
-        rock_gobj = itIwarkWeaponRockMakeWeapon(iwark_gobj, &pos, lbRandom_GetIntRange(WPIWARK_ROCK_RANDOM_VEL_MAX));
+        rock_gobj = itIwarkWeaponRockMakeWeapon(iwark_gobj, &pos, mtTrigGetRandomIntRange(WPIWARK_ROCK_RANDOM_VEL_MAX));
 
         if (rock_gobj != NULL)
         {
@@ -152,7 +152,7 @@ void itIwarkNAttackUpdateRock(GObj *iwark_gobj)
                 wp->weapon_vars.rock.unk_0xC = -1;
             }
         #endif
-            ip->item_vars.iwark.rock_spawn_wait = lbRandom_GetIntRange(ITIWARK_ROCK_SPAWN_WAIT_MAX) + ITIWARK_ROCK_SPAWN_WAIT_MIN;
+            ip->item_vars.iwark.rock_spawn_wait = mtTrigGetRandomIntRange(ITIWARK_ROCK_SPAWN_WAIT_MAX) + ITIWARK_ROCK_SPAWN_WAIT_MIN;
         }
     }
 }
@@ -213,7 +213,7 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
 
     ip->phys_info.vel_air.y = ITIWARK_FLY_VEL_Y;
 
-    ip->item_vars.iwark.rock_spawn_remain = lbRandom_GetIntRange(ITIWARK_ROCK_SPAWN_COUNT_RANDOM) + ITIWARK_ROCK_SPAWN_COUNT_MIN;
+    ip->item_vars.iwark.rock_spawn_remain = mtTrigGetRandomIntRange(ITIWARK_ROCK_SPAWN_COUNT_RANDOM) + ITIWARK_ROCK_SPAWN_COUNT_MIN;
     ip->item_vars.iwark.rock_spawn_max = ip->item_vars.iwark.rock_spawn_remain;
     ip->item_vars.iwark.rock_spawn_count = 0;
     ip->item_vars.iwark.rock_spawn_wait = 0;
@@ -455,7 +455,7 @@ GObj* itIwarkWeaponRockMakeWeapon(GObj *spawn_gobj, Vec3f *pos, u8 random)
     }
     else wp->phys_info.vel_air.y = vel_y = (random32 == 1) ? WPIWARK_ROCK_VEL_Y_START_B : WPIWARK_ROCK_VEL_Y_START_C;
 
-    if (lbRandom_GetIntRange(2) == 0)
+    if (mtTrigGetRandomIntRange(2) == 0)
     {
         wp->lr = LR_Left;
     }

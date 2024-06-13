@@ -106,7 +106,7 @@ void itMewNFlyInitItemVars(GObj *item_gobj)
 
     ip->it_multi = ITMEW_LIFETIME;
 
-    if (lbRandom_GetIntRange(2) != 0)
+    if (mtTrigGetRandomIntRange(2) != 0)
     {
         ip->phys_info.vel_air.x = ITMEW_START_VEL_X;
     }

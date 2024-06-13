@@ -80,13 +80,13 @@ void itPippiSDefaultSelectMonster(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    index = lbRandom_GetIntRange(ARRAY_COUNT(dITPippiStatusProcList));
+    index = mtTrigGetRandomIntRange(ARRAY_COUNT(dITPippiStatusProcList));
 
     it_kind = index + It_Kind_MbMonsterStart;
 
     if ((it_kind == It_Kind_Spear) || (it_kind == It_Kind_Kamex))
     {
-        if (lbRandom_GetIntRange(2) == 0)
+        if (mtTrigGetRandomIntRange(2) == 0)
         {
             dobj->rotate.vec.f.y = F_DTOR32(180.0F); // PI32
 

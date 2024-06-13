@@ -7,7 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern f32 lbRandom_GetFloat();
+extern f32 mtTrigGetRandomFloat();
 extern f32 atan2f(f32, f32);
 
 extern alSoundEffect *func_800269C0_275C0(u16);
@@ -162,13 +162,13 @@ void itRBombContainerSmashMakeEffect(Vec3f *pos)
 
                 dobj->translate.vec.f = *pos;
 
-                dobj->scale.vec.f.x = (lbRandom_GetFloat() * 48.0F) + -24.0F;
-                dobj->scale.vec.f.y = (lbRandom_GetFloat() * 50.0F) + 10.0F;
-                dobj->scale.vec.f.z = (lbRandom_GetFloat() * 32.0F) + -16.0F;
+                dobj->scale.vec.f.x = (mtTrigGetRandomFloat() * 48.0F) + -24.0F;
+                dobj->scale.vec.f.y = (mtTrigGetRandomFloat() * 50.0F) + 10.0F;
+                dobj->scale.vec.f.z = (mtTrigGetRandomFloat() * 32.0F) + -16.0F;
 
-                dobj->dobj_f0 = F_DTOR32((lbRandom_GetFloat() * 100.0F) + -50.0F);
-                dobj->dobj_f1 = F_DTOR32((lbRandom_GetFloat() * 100.0F) + -50.0F);
-                dobj->dobj_f2 = F_DTOR32((lbRandom_GetFloat() * 100.0F) + -50.0F);
+                dobj->dobj_f0 = F_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->dobj_f1 = F_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->dobj_f2 = F_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
             }
             ep->effect_vars.container.lifetime = ITRBOMB_GFX_LIFETIME;
 

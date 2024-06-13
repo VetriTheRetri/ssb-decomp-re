@@ -191,7 +191,7 @@ GObj* itFushigibanaMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_allow_knockback = TRUE;
 
-        ip->item_vars.fushigibana.flags = lbRandom_GetIntRange(ITYCITYMONSTER_WEAPON_MAX);
+        ip->item_vars.fushigibana.flags = mtTrigGetRandomIntRange(ITYCITYMONSTER_WEAPON_MAX);
 
         if ((dGRYamabukiMonsterAttackType == ip->item_vars.fushigibana.flags) || (ip->item_vars.fushigibana.flags & dGRYamabukiMonsterAttackType))
         {

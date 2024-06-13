@@ -158,7 +158,7 @@ sb32 itTosakintoNSplashProcMap(GObj *item_gobj)
     {
         ip->phys_info.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
 
-        if (lbRandom_GetIntRange(2) != 0)
+        if (mtTrigGetRandomIntRange(2) != 0)
         {
             ip->phys_info.vel_air.x = -ip->phys_info.vel_air.x;
         }

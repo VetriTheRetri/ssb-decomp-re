@@ -103,8 +103,8 @@ void itGLuckySDefaultUpdateEggSpawn(GObj *lucky_gobj)
                 pos.x -= ITGLUCKY_EGG_SPAWN_OFF_X;
                 pos.y += ITGLUCKY_EGG_SPAWN_OFF_Y;
 
-                vel.x = -((lbRandom_GetFloat() * ITGLUCKY_EGG_SPAWN_MUL) + ITGLUCKY_EGG_SPAWN_ADD_X);
-                vel.y = (lbRandom_GetFloat() * ITGLUCKY_EGG_SPAWN_MUL) + ITGLUCKY_EGG_SPAWN_ADD_Y;
+                vel.x = -((mtTrigGetRandomFloat() * ITGLUCKY_EGG_SPAWN_MUL) + ITGLUCKY_EGG_SPAWN_ADD_X);
+                vel.y = (mtTrigGetRandomFloat() * ITGLUCKY_EGG_SPAWN_MUL) + ITGLUCKY_EGG_SPAWN_ADD_Y;
                 vel.z = 0.0F;
 
                 egg_gobj = itManagerMakeItemSetupCommon(lucky_gobj, It_Kind_Egg, &pos, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));

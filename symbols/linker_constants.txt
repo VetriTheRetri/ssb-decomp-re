@@ -9,6 +9,11 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITRShellITemAttributes = 0x00000584;
+lITRShellDataStart = 0x00005F88;
+lITRShellAnimJoint = 0x00006018;
+lITRShellMatAnimJoint = 0x00006048;
+
 lITNBumperItemAttributes = 0x0000069C;
 lITNBumperDataStart = 0x00007648;
 lITNBumperGWaitMObjSub = 0x00007A38;

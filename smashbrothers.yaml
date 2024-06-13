@@ -435,7 +435,7 @@ segments:
       - [0x0F3B60, c, it/itcommon/itbox]
       - [0x0F45E0, c, it/itcommon/ittaru]
       - [0x0F4DE0, c, it/itcommon/itrshell]
-      - [0x0F5E60, c, it/itcommon/itempty]
+      - [0x0F5E60, pad, pad0x0F5E60]
       - [0x0F5E70, c, it/itcommon/itnbumper]
       - [0x0F6AD0, c, it/itground/itpowerblock]
       - [0x0F6C80, c, it/itground/itglucky]

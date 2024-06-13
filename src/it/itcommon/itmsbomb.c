@@ -8,7 +8,7 @@
 // // // // // // // // // // // //
 
 extern intptr_t lITMSBombItemAttributes;    // 0x000003BC
-extern intptr_t lITMSBombHitEvent;          // 0x00000404
+extern intptr_t lITMSBombHitEvents;          // 0x00000404
 
 // // // // // // // // // // // //
 //                               //
@@ -475,7 +475,7 @@ sb32 itMSBombGAttachProcMap(GObj *item_gobj)
 void itMSBombNExplodeUpdateHitEvent(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    itHitEvent *ev = itGetHitEvent(dITMSBombItemDesc, lITMSBombHitEvent); // (itHitEvent *)((uintptr_t)*dITMSBombItemDesc.p_file + &lITMSBombHitEvent); - Linker thing
+    itHitEvent *ev = itGetHitEvent(dITMSBombItemDesc, lITMSBombHitEvents); // (itHitEvent *)((uintptr_t)*dITMSBombItemDesc.p_file + &lITMSBombHitEvents); - Linker thing
 
     if (ip->it_multi == ev[ip->item_event_index].timer)
     {

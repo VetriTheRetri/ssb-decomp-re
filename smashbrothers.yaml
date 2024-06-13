@@ -434,6 +434,7 @@ segments:
     
       # ovl3 text
       - [0x0AC540, asm, ovl3]
+      - [0x0EE9D0, c, it/itcommon/itcapsule]
       - [0x0EEF00, c, it/itcommon/ittomato]
       - [0x0EF130, c, it/itcommon/itheart]
       - [0x0EF370, c, it/itcommon/itstar]
@@ -481,6 +482,7 @@ segments:
 
       # ovl3 data
       - [0x1010A0, data, ovl3]
+      - [0x104070, .data, it/itcommon/itcapsule]
       - [0x104170, .data, it/itcommon/ittomato]
       - [0x104210, .data, it/itcommon/itheart]
       - [0x1042B0, .data, it/itcommon/itstar]
@@ -527,6 +529,7 @@ segments:
 
       # ovl3 read-only data
       - [0x106200, rodata, ovl3]
+      - [0x1076F0, .rodata, it/itcommon/itcapsule]
       - [0x107700, .rodata, it/itcommon/itsword]
       - [0x107710, .rodata, it/itcommon/itbat]
       - [0x107720, .rodata, it/itcommon/itharisen]

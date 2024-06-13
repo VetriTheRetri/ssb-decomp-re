@@ -9,6 +9,10 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITFFlowerItemAttributes = 0x000002E4;
+lITFFlowerWeaponFlameWeaponAttributes = 0x0000032C;
+lITFFlowerFlameAngles = 0x00000360;
+
 lITHammerItemAttributes = 0x00000374;
 
 lITMSBombItemAttributes = 0x000003BC;

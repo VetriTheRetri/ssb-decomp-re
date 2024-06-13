@@ -9,6 +9,10 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITStarRodItemAttributes = 0x0000048C;
+lITStarRodWeaponStarWeaponAttributes = 0x000004D4;
+lITStarRodWeaponStarSmashAttributes = 0x00000508;
+
 lITGShellItemAttributes = 0x0000053C;
 lITGShellDataStart = 0x00005F88;
 lITGShellAnimJoint = 0x00006018;

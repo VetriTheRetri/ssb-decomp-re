@@ -9,6 +9,13 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITBombHeiItemAttributes = 0x00000424;
+lITBombHeiHitEvents = 0x0000046C;
+lITBombHeiDataStart = 0x000033F8;
+lITBombHeiWalkRightDisplayList = 0x00003310;
+lITBombHeiWalkLeftDisplayList = 0x000034C0;
+lITBombHeiWalkMatAnimJoint = 0x000035B8;
+
 lITStarRodItemAttributes = 0x0000048C;
 lITStarRodWeaponStarWeaponAttributes = 0x000004D4;
 lITStarRodWeaponStarSmashAttributes = 0x00000508;

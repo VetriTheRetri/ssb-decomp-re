@@ -430,7 +430,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
+    
+      # ovl3 text
       - [0x0AC540, asm, ovl3]
+      - [0x0F1AA0, c, it/itcommon/itbombhei]
       - [0x0F28C0, c, it/itcommon/itstarrod]
       - [0x0F3020, c, it/itcommon/itgshell]
       - [0x0F3B60, c, it/itcommon/itbox]
@@ -464,7 +467,10 @@ segments:
       - [0x0FF4B0, c, it/itground/itrbomb]
       - [0x0FFD90, c, it/itfighter/itnesspkfire]
       - [0x100400, c, it/itfighter/itlinkbomb]
+
+      # ovl3 data
       - [0x1010A0, data, ovl3]
+      - [0x1049D0, .data, it/itcommon/itbombhei]
       - [0x104B30, .data, it/itcommon/itstarrod]
       - [0x104C40, .data, it/itcommon/itgshell]
       - [0x104D60, .data, it/itcommon/itbox]
@@ -497,7 +503,10 @@ segments:
       - [0x105FE0, .data, it/itground/itrbomb]
       - [0x106080, .data, it/itfighter/itnesspkfire]
       - [0x106100, .data, it/itfighter/itlinkbomb]
+
+      # ovl3 read-only data
       - [0x106200, rodata, ovl3]
+      - [0x107770, .rodata, it/itcommon/itbombhei]
       - [0x107780, .rodata, it/itcommon/itstarrod]
       - [0x107790, .rodata, it/itcommon/itgshell]
       - [0x1077A0, .rodata, it/itcommon/itbox]

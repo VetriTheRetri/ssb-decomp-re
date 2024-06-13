@@ -9,6 +9,8 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITTomatoItemAttributes = 0x000000B8;
+
 lITHeartItemAttributes = 0x00000100;
 
 lITStarItemAttributes = 0x00000148;

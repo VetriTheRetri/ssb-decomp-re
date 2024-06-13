@@ -9,6 +9,8 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITBatItemAttributes = 0x000001D8;
+
 lITHarisenItemAttributes = 0x00000220;
 lITHarisenDataStart = 0x00002198;
 

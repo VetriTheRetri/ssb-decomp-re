@@ -7,6 +7,7 @@
 #include "itmap.h"
 
 // Common item headers
+#include <it/itcommon/itbat.h>
 #include <it/itcommon/itharisen.h>
 #include <it/itcommon/itlgun.h>
 #include <it/itcommon/itfflower.h>

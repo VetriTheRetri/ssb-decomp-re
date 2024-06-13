@@ -84,7 +84,8 @@ ifneq ($(shell type $(MIPS_BINUTILS_PREFIX)ld >/dev/null 2>/dev/null; echo $$?),
 $(error Unable to find $(MIPS_BINUTILS_PREFIX)ld. Please install or build MIPS binutils, commonly mips-linux-gnu. (or set MIPS_BINUTILS_PREFIX if your MIPS binutils install uses another prefix))
 endif
 
-IDO             := $(TOOLS)/ido-recomp/$(DETECTED_OS)/cc
+IDO7            := $(TOOLS)/ido-recomp/7.1/cc
+IDO5            := $(TOOLS)/ido-recomp/5.3/cc
 AS              := $(MIPS_BINUTILS_PREFIX)as
 LD              := $(MIPS_BINUTILS_PREFIX)ld
 OBJCOPY         := $(MIPS_BINUTILS_PREFIX)objcopy
@@ -104,7 +105,7 @@ ifneq ($(FULL_DISASM),0)
 endif
 
 # ----- Files ------
-CC := $(ASM_PROC) $(ASM_PROC_FLAGS) $(IDO) -- $(AS) $(ASFLAGS) --
+CC := $(ASM_PROC) $(ASM_PROC_FLAGS) $(IDO7) -- $(AS) $(ASFLAGS) --
 
 C_FILES        := $(shell find src -type f | grep \\.c$)
 S_TEXT_FILES   := $(shell find asm -type f | grep \\.s$ | grep -v nonmatchings | grep -v \\.rodata\\.s | grep -v \\.data\\.s | grep -v \\.bss\\.s)
@@ -141,21 +142,23 @@ build/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0
 
 # per file flags
 # build/src/libultra/n_audio/cspsetvol.o:	OPTFLAGS := -O3 -g0
-# build/src/libultra/n_audio/cspsetvol.o: CC := $(IDO)
+# build/src/libultra/n_audio/cspsetvol.o: CC := $(IDO7)
 # build/src/libultra/n_audio/cspsetbank.o:	OPTFLAGS := -O3 -g0
-# build/src/libultra/n_audio/cspsetbank.o: CC := $(IDO)
+# build/src/libultra/n_audio/cspsetbank.o: CC := $(IDO7)
 # build/src/libultra/n_audio/cspsetpriority.o:	OPTFLAGS := -O3 -g0
-# build/src/libultra/n_audio/cspsetpriority.o: CC := $(IDO)
+# build/src/libultra/n_audio/cspsetpriority.o: CC := $(IDO7)
 # build/src/libultra/n_audio/cspsetfxmix.o:	OPTFLAGS := -O3 -g0
-# build/src/libultra/n_audio/cspsetfxmix.o: CC := $(IDO)
+# build/src/libultra/n_audio/cspsetfxmix.o: CC := $(IDO7)
 build/src/libultra/n_audio/n_synaddplayer.o: OPTFLAGS := -O3 -g0
-build/src/libultra/n_audio/n_synaddplayer.o: CC := $(IDO)
+build/src/libultra/n_audio/n_synaddplayer.o: CC := $(IDO7)
 build/src/libultra/n_audio/n_synallocvoice.o: OPTFLAGS := -O3 -g0
-build/src/libultra/n_audio/n_synallocvoice.o: CC := $(IDO)
+build/src/libultra/n_audio/n_synallocvoice.o: CC := $(IDO7)
 build/src/libultra/n_audio/n_synstartvoiceparam.o: OPTFLAGS := -O3 -g0
-build/src/libultra/n_audio/n_synstartvoiceparam.o: CC := $(IDO)
+build/src/libultra/n_audio/n_synstartvoiceparam.o: CC := $(IDO7)
 build/src/libultra/n_audio/seq.o: OPTFLAGS := -O3 -g0
-build/src/libultra/n_audio/seq.o: CC := $(IDO)
+build/src/libultra/n_audio/seq.o: CC := $(IDO7)
+build/src/libultra/io/viswapcontext.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/viswapcontext.o: CC := $(IDO5)
 
 
 # Automatic dependency files
@@ -171,7 +174,7 @@ $(shell mkdir -p $(BUILD_DIR)/assets)
 all: rom
 
 toolchain:
-	@$(MAKE) -s -C tools
+	$(V)bash ./installDependencies.sh
 
 SB := $(BLUE)ROM MATCH: $(GREEN)Complete!\n
 rom: $(ROM)

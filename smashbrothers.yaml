@@ -434,6 +434,7 @@ segments:
     
       # ovl3 text
       - [0x0AC540, asm, ovl3]
+      - [0x0EFB80, c, it/itcommon/itharisen]
       - [0x0EFF30, c, it/itcommon/itlgun]
       - [0x0F0560, c, it/itcommon/itfflower]
       - [0x0F0B50, c, it/itcommon/ithammer]
@@ -475,6 +476,7 @@ segments:
 
       # ovl3 data
       - [0x1010A0, data, ovl3]
+      - [0x1044B0, .data, it/itcommon/itharisen]
       - [0x104590, .data, it/itcommon/itlgun]
       - [0x1046A0, .data, it/itcommon/itfflower]
       - [0x1047B0, .data, it/itcommon/ithammer]
@@ -515,6 +517,7 @@ segments:
 
       # ovl3 read-only data
       - [0x106200, rodata, ovl3]
+      - [0x107720, .rodata, it/itcommon/itharisen]
       - [0x107730, .rodata, it/itcommon/itlgun]
       - [0x107750, .rodata, it/itcommon/ithammer]
       - [0x107760, .rodata, it/itcommon/itmsbomb]

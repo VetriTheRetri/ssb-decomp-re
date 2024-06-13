@@ -9,6 +9,9 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITHarisenItemAttributes = 0x00000220;
+lITHarisenDataStart = 0x00002198;
+
 lITLGunItemAttributes = 0x00000268;
 lITLGunWeaponAmmoWeaponAttributes = 0x000002B0;
 

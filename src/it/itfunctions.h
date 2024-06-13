@@ -7,6 +7,7 @@
 #include "itmap.h"
 
 // Common item headers
+#include <it/itcommon/itnbumper.h>
 #include <it/itcommon/itmball.h>
 #include <it/itcommon/itegg.h>
 

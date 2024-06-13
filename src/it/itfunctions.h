@@ -7,6 +7,7 @@
 #include "itmap.h"
 
 // Common item headers
+#include <it/itcommon/itheart.h>
 #include <it/itcommon/itstar.h>
 #include <it/itcommon/itsword.h>
 #include <it/itcommon/itbat.h>

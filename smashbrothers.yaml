@@ -434,6 +434,7 @@ segments:
     
       # ovl3 text
       - [0x0AC540, asm, ovl3]
+      - [0x0EF130, c, it/itcommon/itheart]
       - [0x0EF370, c, it/itcommon/itstar]
       - [0x0EF590, c, it/itcommon/itsword]
       - [0x0EF870, c, it/itcommon/itbat]
@@ -479,6 +480,7 @@ segments:
 
       # ovl3 data
       - [0x1010A0, data, ovl3]
+      - [0x104210, .data, it/itcommon/itheart]
       - [0x1042B0, .data, it/itcommon/itstar]
       - [0x1042F0, .data, it/itcommon/itsword]
       - [0x1043D0, .data, it/itcommon/itbat]

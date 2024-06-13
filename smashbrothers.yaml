@@ -434,6 +434,7 @@ segments:
     
       # ovl3 text
       - [0x0AC540, asm, ovl3]
+      - [0x0F0E90, c, it/itcommon/itmsbomb]
       - [0x0F1AA0, c, it/itcommon/itbombhei]
       - [0x0F28C0, c, it/itcommon/itstarrod]
       - [0x0F3020, c, it/itcommon/itgshell]
@@ -471,6 +472,7 @@ segments:
 
       # ovl3 data
       - [0x1010A0, data, ovl3]
+      - [0x104890, .data, it/itcommon/itmsbomb]
       - [0x1049D0, .data, it/itcommon/itbombhei]
       - [0x104B30, .data, it/itcommon/itstarrod]
       - [0x104C40, .data, it/itcommon/itgshell]
@@ -507,6 +509,7 @@ segments:
 
       # ovl3 read-only data
       - [0x106200, rodata, ovl3]
+      - [0x107760, .rodata, it/itcommon/itmsbomb]
       - [0x107770, .rodata, it/itcommon/itbombhei]
       - [0x107780, .rodata, it/itcommon/itstarrod]
       - [0x107790, .rodata, it/itcommon/itgshell]

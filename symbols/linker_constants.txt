@@ -9,6 +9,9 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITCapsuleHitEvents = 0x00000098;
 
+lITMSBombItemAttributes = 0x000003BC;
+lITMSBombHitEvent = 0x00000404;
+
 lITBombHeiItemAttributes = 0x00000424;
 lITBombHeiHitEvents = 0x0000046C;
 lITBombHeiDataStart = 0x000033F8;

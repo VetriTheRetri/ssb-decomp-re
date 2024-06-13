@@ -34,22 +34,28 @@ then
 	exit
 fi
 
-# fetch ido recomp
+# fetch ido recomp if not there
 unameOut="$(uname -s)"
 case "${unameOut}" in
-    Linux*)     DETECTED_OS=linux;;
-    Darwin*)    DETECTED_OS=macos;;
-    *)          DETECTED_OS="UNKNOWN:${unameOut}"
+	Linux*)     DETECTED_OS=linux;;
+	Darwin*)    DETECTED_OS=macos;;
+	*)          DETECTED_OS="UNKNOWN:${unameOut}"
 esac
 RECOMP_DIR7=tools/ido-recomp/7.1
 RECOMP_DIR5=tools/ido-recomp/5.3
-wget https://github.com/decompals/ido-static-recomp/releases/download/v1.1/ido-7.1-recomp-${DETECTED_OS}.tar.gz
-mkdir -p ${RECOMP_DIR7}
-tar xf ido-7.1-recomp-${DETECTED_OS}.tar.gz -C ${RECOMP_DIR7}
-rm ido-7.1-recomp-${DETECTED_OS}.tar.gz
-wget https://github.com/decompals/ido-static-recomp/releases/download/v1.1/ido-5.3-recomp-${DETECTED_OS}.tar.gz
-mkdir -p ${RECOMP_DIR5}
-tar xf ido-5.3-recomp-${DETECTED_OS}.tar.gz -C ${RECOMP_DIR5}
-rm ido-5.3-recomp-${DETECTED_OS}.tar.gz
+if [ ! -d "${RECOMP_DIR7}" ]
+then
+	wget https://github.com/decompals/ido-static-recomp/releases/download/v1.1/ido-7.1-recomp-${DETECTED_OS}.tar.gz
+	mkdir -p ${RECOMP_DIR7}
+	tar xf ido-7.1-recomp-${DETECTED_OS}.tar.gz -C ${RECOMP_DIR7}
+	rm ido-7.1-recomp-${DETECTED_OS}.tar.gz
+fi
+if [ ! -d "${RECOMP_DIR5}" ]
+then
+	wget https://github.com/decompals/ido-static-recomp/releases/download/v1.1/ido-5.3-recomp-${DETECTED_OS}.tar.gz
+	mkdir -p ${RECOMP_DIR5}
+	tar xf ido-5.3-recomp-${DETECTED_OS}.tar.gz -C ${RECOMP_DIR5}
+	rm ido-5.3-recomp-${DETECTED_OS}.tar.gz
+fi
 
 echo -e ${GREEN}All requirements satisfied${ENDCOLOR}

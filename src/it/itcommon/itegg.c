@@ -84,7 +84,7 @@ itStatusDesc dITEggStatusDesc[/* */] =
         itEggFThrowProcMap,                 // Proc Map
         itEggSDefaultProcHit,               // Proc Hit
         itEggSDefaultProcHit,               // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itEggSDefaultProcHit,               // Proc Set-Off
         itEggSDefaultProcHit,               // Proc Reflector
         itEggSDefaultProcHit                // Proc Damage
@@ -96,7 +96,7 @@ itStatusDesc dITEggStatusDesc[/* */] =
         itEggFDropProcMap,                  // Proc Map
         itEggSDefaultProcHit,               // Proc Hit
         itEggSDefaultProcHit,               // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itEggSDefaultProcHit,               // Proc Set-Off
         itEggSDefaultProcHit,               // Proc Reflector
         itEggSDefaultProcHit                // Proc Damage

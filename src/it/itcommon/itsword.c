@@ -82,9 +82,9 @@ itStatusDesc dITSwordStatusDesc[/* */] =
         itSwordFThrowProcMap,               // Proc Map
         itSwordFThrowProcHit,               // Proc Hit
         itSwordFThrowProcHit,               // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itSwordFThrowProcHit,               // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         NULL                                // Proc Damage
     },
 
@@ -94,9 +94,9 @@ itStatusDesc dITSwordStatusDesc[/* */] =
         itSwordFDropProcMap,                // Proc Map
         itSwordFThrowProcHit,               // Proc Hit
         itSwordFThrowProcHit,               // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itSwordFThrowProcHit,               // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         NULL                                // Proc Damage
     }
 };

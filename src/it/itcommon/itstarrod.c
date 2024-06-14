@@ -88,9 +88,9 @@ itStatusDesc dITStarRodStatusDesc[/* */] =
         itStarRodFThrowProcMap,             // Proc Map
         itStarRodFThrowProcHit,             // Proc Hit
         itStarRodFThrowProcHit,             // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itStarRodFThrowProcHit,             // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         NULL                                // Proc Damage
     },
 
@@ -100,9 +100,9 @@ itStatusDesc dITStarRodStatusDesc[/* */] =
         itStarRodFDropProcMap,              // Proc Map
         itStarRodFThrowProcHit,             // Proc Hit
         itStarRodFThrowProcHit,             // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itStarRodFThrowProcHit,             // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         NULL                                // Proc Damage
     }
 };

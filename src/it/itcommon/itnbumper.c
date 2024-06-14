@@ -88,7 +88,7 @@ itStatusDesc dITNBumperStatusDesc[/* */] =
         itNBumperFThrowProcMap,             // Proc Map
         itNBumperFThrowProcHit,             // Proc Hit
         itNBumperFThrowProcShield,          // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         NULL,                               // Proc Set-Off
         itNBumperFThrowProcReflector,       // Proc Reflector
         NULL                                // Proc Damage
@@ -100,7 +100,7 @@ itStatusDesc dITNBumperStatusDesc[/* */] =
         itNBumperFThrowProcMap,             // Proc Map
         itNBumperFThrowProcHit,             // Proc Hit
         itNBumperFThrowProcShield,          // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         NULL,                               // Proc Set-Off
         itNBumperFThrowProcReflector,       // Proc Reflector
         NULL                                // Proc Damage

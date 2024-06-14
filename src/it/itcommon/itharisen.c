@@ -88,9 +88,9 @@ itStatusDesc dITHarisenStatusDesc[/* */] =
         itHarisenFThrowProcMap,             // Proc Map
         itHarisenSDefaultProcHit,           // Proc Hit
         itHarisenSDefaultProcHit,           // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itHarisenSDefaultProcHit,           // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         NULL                                // Proc Damage
     },
 
@@ -100,9 +100,9 @@ itStatusDesc dITHarisenStatusDesc[/* */] =
         itHarisenFDropProcMap,              // Proc Map
         itHarisenSDefaultProcHit,           // Proc Hit
         itHarisenSDefaultProcHit,           // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itHarisenSDefaultProcHit,           // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         NULL                                // Proc Damage
     }
 };

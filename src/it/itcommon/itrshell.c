@@ -85,7 +85,7 @@ itStatusDesc dITRShellStatusDesc[/* */] =
         itRShellFThrowProcMap,              // Proc Map
         itRShellSDefaultProcHit,            // Proc Hit
         itRShellSDefaultProcShield,         // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itRShellSDefaultProcShield,         // Proc Set-Off
         itRShellSDefaultProcReflector,      // Proc Reflector
         itRShellSDefaultProcDamage          // Proc Damage
@@ -97,7 +97,7 @@ itStatusDesc dITRShellStatusDesc[/* */] =
         itRShellFThrowProcMap,              // Proc Map
         itRShellSDefaultProcHit,            // Proc Hit
         itRShellSDefaultProcShield,         // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itRShellSDefaultProcShield,         // Proc Set-Off
         itRShellSDefaultProcReflector,      // Proc Reflector
         itRShellSDefaultProcDamage          // Proc Damage

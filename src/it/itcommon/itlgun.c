@@ -86,9 +86,9 @@ itStatusDesc dITLGunStatusDesc[/* */] =
         itLGunFThrowProcMap,                // Proc Map
         itLGunSDefaultProcHit,              // Proc Hit
         itLGunSDefaultProcHit,              // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itLGunSDefaultProcHit,              // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         NULL                                // Proc Damage
     },
 
@@ -98,9 +98,9 @@ itStatusDesc dITLGunStatusDesc[/* */] =
         itLGunFDropProcMap,                 // Proc Map
         itLGunSDefaultProcHit,              // Proc Hit
         itLGunSDefaultProcHit,              // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itLGunSDefaultProcHit,              // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         NULL                                // Proc Damage
     }
 };

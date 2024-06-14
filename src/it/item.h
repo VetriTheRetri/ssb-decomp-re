@@ -16,7 +16,7 @@ extern s32 gITEffectBank;
 extern itRandomWeights gITRandomWeights;
 
 // 8018D060
-extern itMonsterInfo gMonsterData;
+extern itMonsterInfo gITMonsterData;
 
 // 8018D090
 extern s32 gITDisplayMode;

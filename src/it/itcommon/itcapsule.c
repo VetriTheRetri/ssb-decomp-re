@@ -83,7 +83,7 @@ itStatusDesc dITCapsuleStatusDesc[/* */] =
         itCapsuleFThrowProcMap,             // Proc Map
         itCapsuleSDefaultProcHit,           // Proc Hit
         itCapsuleSDefaultProcHit,           // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itCapsuleSDefaultProcHit,           // Proc Set-Off
         itCapsuleSDefaultProcHit,           // Proc Reflector
         itCapsuleSDefaultProcHit            // Proc Damage
@@ -95,7 +95,7 @@ itStatusDesc dITCapsuleStatusDesc[/* */] =
         itCapsuleFDropProcMap,              // Proc Map
         itCapsuleSDefaultProcHit,           // Proc Hit
         itCapsuleSDefaultProcHit,           // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itCapsuleSDefaultProcHit,           // Proc Set-Off
         itCapsuleSDefaultProcHit,           // Proc Reflector
         itCapsuleSDefaultProcHit            // Proc Damage

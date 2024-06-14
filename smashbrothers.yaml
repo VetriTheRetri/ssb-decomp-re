@@ -434,10 +434,9 @@ segments:
     
     # ovl3 text
       - [0x0AC540, asm, ovl3]
-
     # Item handler files
+      - [0x0ECD50, c, it/itmain]
       - [0x0EDEC0, c, it/itmap]
-
     # Item entity files
       - [0x0EE9D0, c, it/itcommon/itcapsule]
       - [0x0EEF00, c, it/itcommon/ittomato]
@@ -487,6 +486,9 @@ segments:
 
     # ovl3 data
       - [0x1010A0, data, ovl3]
+    # Item handler files
+      - [0x103F60, .data, it/itmain]
+    # Item entity files
       - [0x104070, .data, it/itcommon/itcapsule]
       - [0x104170, .data, it/itcommon/ittomato]
       - [0x104210, .data, it/itcommon/itheart]
@@ -534,6 +536,9 @@ segments:
 
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
+    # Item handler files
+      - [0x1076B0, .rodata, it/itmain]
+    # Item entity files
       - [0x1076F0, .rodata, it/itcommon/itcapsule]
       - [0x107700, .rodata, it/itcommon/itsword]
       - [0x107710, .rodata, it/itcommon/itbat]

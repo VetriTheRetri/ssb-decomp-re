@@ -87,9 +87,9 @@ itStatusDesc dITFFlowerStatusDesc[/* */] =
         itFFlowerFThrowProcMap,             // Proc Map
         itFFlowerSDefaultProcHit,           // Proc Hit
         itFFlowerSDefaultProcHit,           // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itFFlowerSDefaultProcHit,           // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         NULL                                // Proc Damage
     },
 
@@ -99,9 +99,9 @@ itStatusDesc dITFFlowerStatusDesc[/* */] =
         itFFlowerFDropProcMap,              // Proc Map
         itFFlowerSDefaultProcHit,           // Proc Hit
         itFFlowerSDefaultProcHit,           // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itFFlowerSDefaultProcHit,           // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         NULL                                // Proc Damage
     }
 };

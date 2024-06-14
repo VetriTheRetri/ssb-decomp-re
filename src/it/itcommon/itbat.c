@@ -84,9 +84,9 @@ itStatusDesc dITBatStatusDesc[/* */] =
         itBatFThrowProcMap,                 // Proc Map
         itBatFThrowProcHit,                 // Proc Hit
         itBatFThrowProcHit,                 // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itBatFThrowProcHit,                 // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         NULL                                // Proc Damage
     },
 
@@ -96,9 +96,9 @@ itStatusDesc dITBatStatusDesc[/* */] =
         itBatFDropProcMap,                  // Proc Map
         itBatFThrowProcHit,                 // Proc Hit
         itBatFThrowProcHit,                 // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itBatFThrowProcHit,                 // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         NULL                                // Proc Damage
     }
 };

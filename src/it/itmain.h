@@ -10,7 +10,7 @@ void func_ovl3_80172310(GObj* item_gobj);
 void func_ovl3_80172394(GObj* item_gobj, sb32 is_prev_spawn);
 
 // Something to do with item spin rotation
-void func_ovl3_8017245C(GObj* item_gobj, f32* spin_speed, sb32 is_smash_throw);
+void func_ovl3_8017245C(GObj* item_gobj, Vec3f* vel, sb32 is_smash_throw);
 
 // Set item's facing direction and spin rotation based on velocity
 void itMainVelSetRotateStepLR(GObj* item_gobj);
@@ -86,9 +86,9 @@ void itMainUpdateHitEvent(GObj* item_gobj, itHitEvent* ev);
 GObj* itMainMakeMonster(GObj* item_gobj);
 
 // Default process run when item bounces off a shield (SDefault = status default)
-sb32 itCommonSDefaultProcHop(GObj* item_gobj);
+sb32 itMainSDefaultProcHop(GObj* item_gobj);
 
 // Default process run when item is reflected (SDefault = status default)
-sb32 itCommonSDefaultProcReflector(GObj* item_gobj);
+sb32 itMainSDefaultProcReflector(GObj* item_gobj);
 
 #endif

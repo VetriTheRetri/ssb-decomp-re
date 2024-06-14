@@ -85,9 +85,9 @@ itStatusDesc dITGShellStatusDesc[/* */] =
         itGShellFThrowProcMap,              // Proc Map
         itGShellSDefaultProcHit,            // Proc Hit
         itGShellSDefaultProcShield,         // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itGShellSDefaultProcShield,         // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         itGShellSDefaultProcDamage          // Proc Damage
     },
 
@@ -97,9 +97,9 @@ itStatusDesc dITGShellStatusDesc[/* */] =
         itGShellFThrowProcMap,              // Proc Map
         itGShellSDefaultProcHit,            // Proc Hit
         itGShellSDefaultProcShield,         // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itGShellSDefaultProcShield,         // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         itGShellSDefaultProcDamage          // Proc Damage
     },
 
@@ -111,7 +111,7 @@ itStatusDesc dITGShellStatusDesc[/* */] =
         itGShellSDefaultProcHit,            // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         itGShellGASpinProcDamage            // Proc Damage
     },
 
@@ -123,7 +123,7 @@ itStatusDesc dITGShellStatusDesc[/* */] =
         itGShellSDefaultProcHit,            // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
-        itCommonSDefaultProcReflector,      // Proc Reflector
+        itMainSDefaultProcReflector,      // Proc Reflector
         itGShellGASpinProcDamage            // Proc Damage
     }
 };

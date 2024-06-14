@@ -86,7 +86,7 @@ itStatusDesc dITMBallStatusDesc[/* */] =
         itMBallFThrowProcMap,               // Proc Map
         itMBallSDefaultProcHit,             // Proc Hit
         itMBallSDefaultProcHit,             // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itMBallSDefaultProcHit,             // Proc Set-Off
         itMBallSDefaultProcReflector,       // Proc Reflector
         NULL                                // Proc Damage
@@ -98,7 +98,7 @@ itStatusDesc dITMBallStatusDesc[/* */] =
         itMBallFThrowProcMap,               // Proc Map
         itMBallSDefaultProcHit,             // Proc Hit
         itMBallSDefaultProcHit,             // Proc Shield
-        itCommonSDefaultProcHop,            // Proc Hop
+        itMainSDefaultProcHop,            // Proc Hop
         itMBallSDefaultProcHit,             // Proc Set-Off
         itMBallSDefaultProcReflector,       // Proc Reflector
         NULL                                // Proc Damage

@@ -49,14 +49,14 @@
 #define ITEM_REHIT_TIME_DEFAULT 16
 #define ITEM_HITBOX_NUM_MAX 2
 
-#define ITEM_HOP_ANGLE_DEFAULT F_DEG_TO_RAD(135.0F) // 2.3561945F
+#define ITEM_HOP_ANGLE_DEFAULT F_DTOR32(135.0F) // 2.3561945F
 
-#define ITEM_SPIN_SPEED_MUL_DEFAULT F_DEG_TO_RAD(18.0F)	   // 0.31415927F
-#define ITEM_SPIN_SPEED_MUL_NEW_SPAWN F_DEG_TO_RAD(10.0F)  // 0.17453294F, DEG_TO_RAD angle might actually be incorrect
-#define ITEM_SPIN_SPEED_MUL_PREV_SPAWN F_DEG_TO_RAD(16.0F) // 0.27925268F
+#define ITEM_SPIN_SPEED_MUL_DEFAULT F_DTOR32(18.0F)	   // 0.31415927F
+#define ITEM_SPIN_SPEED_MUL_NEW_SPAWN F_DTOR32(10.0F)  // 0.17453294F, F_DEG_TO_RAD angle might actually be incorrect
+#define ITEM_SPIN_SPEED_MUL_PREV_SPAWN F_DTOR32(16.0F) // 0.27925268F
 
-#define ITEM_SPIN_SPEED_SET_SMASH_THROW F_DEG_TO_RAD(-21.0F)  // -0.36651915F
-#define ITEM_SPIN_SPEED_SET_NORMAL_THROW F_DEG_TO_RAD(-10.0F) // -0.17453294F
+#define ITEM_SPIN_SPEED_SET_SMASH_THROW F_DTOR32(-21.0F)  // -0.36651915F
+#define ITEM_SPIN_SPEED_SET_NORMAL_THROW F_DTOR32(-10.0F) // -0.17453294F
 
 #define ITEM_SPIN_SPEED_FRACTION_DEFAULT 0.01F // Also multiplies spin speed
 
@@ -259,9 +259,9 @@ struct itAttributes
 	u32 hitstatus : 4;
 	ub32 unk_atca_0x3C_b6 : 1;
 	ub32 unk_atca_0x3C_b7 : 1;
-	u32 unk_atca_sfx : 10;
 	u32 drop_sfx : 10;
 	u32 throw_sfx : 10;
+	u32 smash_sfx : 10;
 	u32 vel_scale : 9;
 	u16 spin_speed;
 };
@@ -331,9 +331,9 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 
 	f32 vel_scale; // Scale item's velocity
 
-	u16 unk_sfx;   // Unused?
-	u16 drop_sfx;  // SFX to play when item is dropped
-	u16 throw_sfx; // SFX to play when item is thrown
+	u16 drop_sfx;   				// SFX to play when item is dropped
+	u16 throw_sfx;  				// SFX to play when item is tilt-thrown
+	u16 smash_sfx; 					// SFX to play when item is smash-thrown
 
 	ub32 is_allow_pickup : 1;	  // Bool to check whether item can be picked up or
 								  // not

@@ -88,9 +88,9 @@ itStatusDesc dItLinkBombStatusDesc[/* */] =
 		itLinkBombFThrowProcMap,	   // Proc Map
 		itLinkBombFThrowProcHit,	   // Proc Hit
 		itLinkBombSDefaultProcShield,  // Proc Shield
-		itCommonSDefaultProcHop,	   // Proc Hop
+		itMainSDefaultProcHop,	   // Proc Hop
 		NULL,						   // Proc Set-Off
-		itCommonSDefaultProcReflector, // Proc Reflector
+		itMainSDefaultProcReflector, // Proc Reflector
 		itLinkBombSDefaultProcDamage   // Proc Damage
 	},
 
@@ -100,9 +100,9 @@ itStatusDesc dItLinkBombStatusDesc[/* */] =
 		itLinkBombFThrowProcMap,	   // Proc Map
 		itLinkBombFDropProcHit,		   // Proc Hit
 		itLinkBombSDefaultProcShield,  // Proc Shield
-		itCommonSDefaultProcHop,	   // Proc Hop
+		itMainSDefaultProcHop,	   // Proc Hop
 		NULL,						   // Proc Set-Off
-		itCommonSDefaultProcReflector, // Proc Reflector
+		itMainSDefaultProcReflector, // Proc Reflector
 		itLinkBombFDropProcDamage	   // Proc Damage
 	},
 

@@ -435,6 +435,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Item handler files
+      - [0x0EBE50, c, it/itrender]
       - [0x0ECD50, c, it/itmain]
       - [0x0EDEC0, c, it/itmap]
     # Item entity files

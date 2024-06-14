@@ -10,6 +10,7 @@
 #include <gm/gmsound.h>
 #include <ef/effect.h>
 #include <gm/battle.h>
+#include <ovl0/halbitmap.h>
 
 #include "itdef.h"
 

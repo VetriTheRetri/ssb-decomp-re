@@ -13,8 +13,6 @@ extern intptr_t
 lITFFlowerWeaponFlameWeaponAttributes;      // 0x0000032C
 extern intptr_t lITFFlowerFlameAngles;      // 0x00000360
 
-extern void* func_ovl0_800CE8C0(s32, s32, f32, f32, f32, f32, f32, f32);
-
 // // // // // // // // // // // //
 //                               //
 //        INITALIZED DATA        //

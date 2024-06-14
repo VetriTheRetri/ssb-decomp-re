@@ -432,8 +432,13 @@ segments:
     exclusive_ram_id: overlay_80131B00
     subsegments:
     
-      # ovl3 text
+    # ovl3 text
       - [0x0AC540, asm, ovl3]
+
+    # Item handler files
+      - [0x0EDEC0, c, it/itmap]
+
+    # Item entity files
       - [0x0EE9D0, c, it/itcommon/itcapsule]
       - [0x0EEF00, c, it/itcommon/ittomato]
       - [0x0EF130, c, it/itcommon/itheart]
@@ -480,7 +485,7 @@ segments:
       - [0x0FFD90, c, it/itfighter/itnesspkfire]
       - [0x100400, c, it/itfighter/itlinkbomb]
 
-      # ovl3 data
+    # ovl3 data
       - [0x1010A0, data, ovl3]
       - [0x104070, .data, it/itcommon/itcapsule]
       - [0x104170, .data, it/itcommon/ittomato]
@@ -527,7 +532,7 @@ segments:
       - [0x106080, .data, it/itfighter/itnesspkfire]
       - [0x106100, .data, it/itfighter/itlinkbomb]
 
-      # ovl3 read-only data
+    # ovl3 read-only data
       - [0x106200, rodata, ovl3]
       - [0x1076F0, .rodata, it/itcommon/itcapsule]
       - [0x107700, .rodata, it/itcommon/itsword]

@@ -15,8 +15,6 @@ lITIwarkWeaponRockWeaponAttributes;         // 0x00000774
 extern intptr_t lITIwarkDataStart;          // 0x0000A140
 extern intptr_t lITIwarkDisplayList;        // 0x0000A640
 
-extern void func_ovl0_800C7AE0(Vec3f*, f32);
-
 // // // // // // // // // // // //
 //                               //
 //        INITALIZED DATA        //

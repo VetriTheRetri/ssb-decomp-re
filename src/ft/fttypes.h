@@ -12,6 +12,7 @@
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
 #include <gm/gmscript.h>
+#include <ovl0/halbitmap.h>
 
 #include "ftdef.h"
 #include "ftfunctions.h"
@@ -24,9 +25,8 @@
 #define FTPARTS_HURT_NUM_MAX 11
 #define FTPARTS_JOINT_NUM_MAX 37
 
-#define FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN                                                                             \
-	8 // Default minimum stick range required to clamp air drift in respective
-	  // physics routine
+#define FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN 8 	// Default minimum stick range required to clamp air drift in respective
+	  											// physics routine
 
 #define FTINPUT_STICKBUFFER_FRAMES_MAX (U8_MAX - 1)
 #define FTINPUT_ZBUTTONLAST_FRAMES_MAX (U16_MAX + 1)

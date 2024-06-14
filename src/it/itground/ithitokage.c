@@ -16,8 +16,6 @@ lITHitokageWeaponFlameWeaponAttributes;     // 0x00000244
 
 extern s32 dGRYamabukiMonsterAttackType;
 
-extern void* func_ovl0_800CE8C0(s32, s32, f32, f32, f32, f32, f32, f32);
-
 // // // // // // // // // // // //
 //                               //
 //        INITALIZED DATA        //

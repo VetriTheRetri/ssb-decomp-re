@@ -217,10 +217,10 @@ struct itHurtbox
 
 struct itAttributes
 {
-	void* model_desc; // DObjDesc?
-	void*** mobjsub;	  // Actually MObjSub?
-	void** anim_joint;
-	void*** matanim_joint;
+	void *model_desc; // DObjDesc?
+	MObjSub ***mobjsub;	  // Actually MObjSub?
+	void ** anim_joint;
+	void ***matanim_joint;
 	ub32 is_render_transparency : 1;
 	ub32 unk_0x10_b1 : 1;
 	ub32 is_render_colanim : 1;

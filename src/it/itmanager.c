@@ -414,8 +414,8 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     ip->coll_data.vel_push.z            = 0.0F;
 
     omAddGObjCommonProc(item_gobj, itManagerProcItemMain, GObjProcess_Kind_Proc, 3);
-    omAddGObjCommonProc(item_gobj, itManagerProcSearchHitAll, GObjProcess_Kind_Proc, 1);
-    omAddGObjCommonProc(item_gobj, itManagerProcHitCollisions, GObjProcess_Kind_Proc, 0);
+    omAddGObjCommonProc(item_gobj, itCollisionProcSearchHitAll, GObjProcess_Kind_Proc, 1);
+    omAddGObjCommonProc(item_gobj, itCollisionProcHitCollisions, GObjProcess_Kind_Proc, 0);
 
     ip->proc_update     = item_desc->proc_update;
     ip->proc_map        = item_desc->proc_map;
@@ -911,5 +911,5 @@ void itManagerProcItemMain(GObj *item_gobj)
         itManagerUpdateHitPositions(item_gobj);
         itManagerUpdateHitRecord(item_gobj);
     }
-    itManagerUpdateColAnim(item_gobj);
+    itVisualsUpdateColAnim(item_gobj);
 }

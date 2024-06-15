@@ -131,7 +131,7 @@ sb32 itBatAFallProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGClampTVel(ip, ITBAT_GRAVITY, ITBAT_T_VEL);
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -182,7 +182,7 @@ void itBatFHoldSetStatus(GObj *item_gobj)
 sb32 itBatFThrowProcUpdate(GObj *item_gobj)
 {
     itMainApplyGClampTVel(itGetStruct(item_gobj), ITBAT_GRAVITY, ITBAT_T_VEL);
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }

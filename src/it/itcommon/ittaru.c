@@ -159,7 +159,7 @@ sb32 itTaruAFallProcUpdate(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->rotate.vec.f.z += ip->item_vars.taru.roll_rotate_step;
 
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }

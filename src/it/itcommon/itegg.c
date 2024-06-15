@@ -145,7 +145,7 @@ sb32 itEggAFallProcUpdate(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     dobj->child->rotate.vec.f.z = dobj->rotate.vec.f.z;
 
@@ -227,7 +227,7 @@ sb32 itEggFThrowProcUpdate(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGClampTVel(ip, ITEGG_GRAVITY, ITEGG_T_VEL);
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     dobj->child->rotate.vec.f.z = dobj->rotate.vec.f.z;
 

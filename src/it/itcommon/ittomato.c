@@ -103,7 +103,7 @@ sb32 itTomatoAFallProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGClampTVel(ip, ITTOMATO_GRAVITY, ITTOMATO_T_VEL);
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }

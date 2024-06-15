@@ -179,7 +179,7 @@ sb32 itMBallAFallProcUpdate(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     dobj->child->sib_next->rotate.vec.f.z = dobj->rotate.vec.f.z;
 
@@ -239,7 +239,7 @@ sb32 itMBallFThrowProcUpdate(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     dobj->child->sib_next->rotate.vec.f.z = dobj->rotate.vec.f.z;
 

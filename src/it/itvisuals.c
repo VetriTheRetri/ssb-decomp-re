@@ -1,7 +1,7 @@
 #include <it/item.h>
 
 // 0x801713B0
-void itManagerUpdateColAnim(GObj *item_gobj)
+void itVisualsUpdateColAnim(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -12,7 +12,7 @@ void itManagerUpdateColAnim(GObj *item_gobj)
 }
 
 // 0x801713F4
-void itManagerUpdateSpin(GObj *item_gobj)
+void itVisualsUpdateSpin(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);

@@ -10,7 +10,7 @@ extern f32 gmCommonObject_DamageCalcKnockback(s32 percent_damage, s32 recent_dam
 extern s32 gmCommon_DamageCalcHitLag(s32, s32, f32);
 
 // 0x8016F930
-void itManagerSetHitInteractStats(itHitbox *it_hit, GObj *victim_gobj, s32 hitbox_type, u32 interact_mask)
+void itCollisionSetHitInteractStats(itHitbox *it_hit, GObj *victim_gobj, s32 hitbox_type, u32 interact_mask)
 {
     s32 i;
 
@@ -99,7 +99,7 @@ void itManagerSetHitInteractStats(itHitbox *it_hit, GObj *victim_gobj, s32 hitbo
 }
 
 // 0x8016FB18 - Item's hurtbox gets hit by a fighter
-void itManagerUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *ip, itHurtbox *it_hurt, GObj *fighter_gobj, GObj *item_gobj)
+void itCollisionUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *ip, itHurtbox *it_hurt, GObj *fighter_gobj, GObj *item_gobj)
 {
     s32 damage;
     f32 damage_knockback;
@@ -170,7 +170,7 @@ void itManagerUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *
 }
 
 // 0x8016FD4C
-void itManagerUpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 this_hit_id, itStruct *victim_ip, itHitbox *victim_hit, s32 victim_hit_id, GObj *this_gobj, GObj *victim_gobj)
+void itCollisionUpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 this_hit_id, itStruct *victim_ip, itHitbox *victim_hit, s32 victim_hit_id, GObj *this_gobj, GObj *victim_gobj)
 {
     s32 victim_hit_damage = itMainGetDamageOutput(victim_ip);
     s32 this_hit_damage = itMainGetDamageOutput(this_ip);
@@ -183,7 +183,7 @@ void itManagerUpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 th
 
     if (victim_hit->priority <= highest_priority)
     {
-        itManagerSetHitInteractStats(victim_hit, this_gobj, gmHitCollision_Type_Hit, 0);
+        itCollisionSetHitInteractStats(victim_hit, this_gobj, gmHitCollision_Type_Hit, 0);
 
         if (victim_ip->hit_attack_damage < victim_hit_damage)
         {
@@ -195,7 +195,7 @@ void itManagerUpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 th
 
     if (this_hit->priority <= highest_priority)
     {
-        itManagerSetHitInteractStats(this_hit, victim_gobj, gmHitCollision_Type_Hit, 0);
+        itCollisionSetHitInteractStats(this_hit, victim_gobj, gmHitCollision_Type_Hit, 0);
 
         if (this_ip->hit_attack_damage < this_hit_damage)
         {
@@ -206,7 +206,7 @@ void itManagerUpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 th
 }
 
 // 0x8016FE4C
-void itManagerUpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit_id, itStruct *ip, itHitbox *it_hit, s32 it_hit_id, GObj *weapon_gobj, GObj *item_gobj)
+void itCollisionUpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit_id, itStruct *ip, itHitbox *it_hit, s32 it_hit_id, GObj *weapon_gobj, GObj *item_gobj)
 {
     s32 wp_hit_damage = wpMainGetStaledDamageOutput(wp);
     s32 it_hit_damage = itMainGetDamageOutput(ip);
@@ -219,7 +219,7 @@ void itManagerUpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit_
 
     if (it_hit->priority <= highest_priority)
     {
-        itManagerSetHitInteractStats(it_hit, weapon_gobj, gmHitCollision_Type_Hit, 0);
+        itCollisionSetHitInteractStats(it_hit, weapon_gobj, gmHitCollision_Type_Hit, 0);
 
         if (ip->hit_attack_damage < it_hit_damage)
         {
@@ -242,7 +242,7 @@ void itManagerUpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit_
 }
 
 // 0x8016FF4C - Item's hurtbox gets hit by another item
-void itManagerUpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit, s32 hitbox_id, itStruct *defend_ip, itHurtbox *it_hurt, GObj *attack_gobj, GObj *defend_gobj)
+void itCollisionUpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit, s32 hitbox_id, itStruct *defend_ip, itHurtbox *it_hurt, GObj *attack_gobj, GObj *defend_gobj)
 {
     s32 damage;
     f32 knockback;
@@ -256,7 +256,7 @@ void itManagerUpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit,
 
     is_rehit = ((defend_ip->type == It_Type_Damage) && (attack_it_hit->can_rehit_item)) ? TRUE : FALSE;
 
-    itManagerSetHitInteractStats(attack_it_hit, defend_gobj, (is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt, 0);
+    itCollisionSetHitInteractStats(attack_it_hit, defend_gobj, (is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt, 0);
 
     if (is_rehit != FALSE)
     {
@@ -345,7 +345,7 @@ void itManagerUpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit,
 }
 
 // 0x801702C8 - Item's hurtbox gets hit by a weapon
-void itManagerUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id, itStruct *ip, itHurtbox *it_hurt, GObj *weapon_gobj, GObj *item_gobj)
+void itCollisionUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id, itStruct *ip, itHurtbox *it_hurt, GObj *weapon_gobj, GObj *item_gobj)
 {
     s32 damage;
     s32 unused;
@@ -438,7 +438,7 @@ void itManagerUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_
 }
 
 // 0x801705C4
-void itManagerSearchFighterHit(GObj *item_gobj) // Check fighters for hit detection
+void itCollisionSearchFighterHit(GObj *item_gobj) // Check fighters for hit detection
 {
     GObj *fighter_gobj;
     GObj *owner_gobj;
@@ -518,7 +518,7 @@ void itManagerSearchFighterHit(GObj *item_gobj) // Check fighters for hit detect
 
                         if (ftCollision_CheckFighterHitItemHurtIntersect(&fp->fighter_hit[i], it_hurt, item_gobj) != FALSE)
                         {
-                            itManagerUpdateDamageStatFighter(fp, &fp->fighter_hit[i], ip, it_hurt, fighter_gobj, item_gobj);
+                            itCollisionUpdateDamageStatFighter(fp, &fp->fighter_hit[i], ip, it_hurt, fighter_gobj, item_gobj);
                         }
                     }
                 }
@@ -530,7 +530,7 @@ void itManagerSearchFighterHit(GObj *item_gobj) // Check fighters for hit detect
 }
 
 // 0x8017088C
-void itManagerSearchItemHit(GObj *this_gobj) // Check other items for hit detection
+void itCollisionSearchItemHit(GObj *this_gobj) // Check other items for hit detection
 {
     itHitbox *this_hit;
     itStruct *other_ip;
@@ -614,7 +614,7 @@ void itManagerSearchItemHit(GObj *this_gobj) // Check other items for hit detect
                                     {
                                         if (itCollision_CheckItemHitItemHitIntersect(other_hit, i, this_hit, j) != FALSE)
                                         {
-                                            itManagerUpdateAttackStatItem(other_ip, other_hit, i, this_ip, this_hit, j, other_gobj, this_gobj);
+                                            itCollisionUpdateAttackStatItem(other_ip, other_hit, i, this_ip, this_hit, j, other_gobj, this_gobj);
 
                                             if (other_ip->hit_attack_damage != 0) goto next_gobj;
 
@@ -637,7 +637,7 @@ void itManagerSearchItemHit(GObj *this_gobj) // Check other items for hit detect
 
                     if (itCollision_CheckItemHitItemHurtIntersect(other_hit, i, it_hurt, this_gobj) != FALSE)
                     {
-                        itManagerUpdateDamageStatItem(other_ip, other_hit, i, this_ip, it_hurt, other_gobj, this_gobj);
+                        itCollisionUpdateDamageStatItem(other_ip, other_hit, i, this_ip, it_hurt, other_gobj, this_gobj);
 
                         goto next_gobj;
                     }
@@ -650,7 +650,7 @@ void itManagerSearchItemHit(GObj *this_gobj) // Check other items for hit detect
 }
 
 // 0x80170C84
-void itManagerSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detection
+void itCollisionSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detection
 {
     itHitbox *it_hit;
     wpStruct *wp;
@@ -728,7 +728,7 @@ void itManagerSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detectio
                                         {
                                             if (wpCollision_CheckWeaponHitItemHitIntersect(wp_hit, i, it_hit, j) != FALSE)
                                             {
-                                                itManagerUpdateAttackStatWeapon(wp, wp_hit, i, ip, it_hit, j, weapon_gobj, item_gobj);
+                                                itCollisionUpdateAttackStatWeapon(wp, wp_hit, i, ip, it_hit, j, weapon_gobj, item_gobj);
 
                                                 if (wp->hit_attack_damage != 0) goto next_gobj;
 
@@ -752,7 +752,7 @@ void itManagerSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detectio
 
                         else if (itCollision_CheckWeaponHitItemHurtIntersect(wp_hit, i, it_hurt, item_gobj) != FALSE)
                         {
-                            itManagerUpdateDamageStatWeapon(wp, wp_hit, i, ip, it_hurt, weapon_gobj, item_gobj);
+                            itCollisionUpdateDamageStatWeapon(wp, wp_hit, i, ip, it_hurt, weapon_gobj, item_gobj);
 
                             break;
                         }
@@ -768,20 +768,20 @@ void itManagerSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detectio
 // Copy pasted everything from Item VS Item hit collision logic and it immediately matched 82% of Item VS Weapon, even the stack; apparently in a much similar fashion to HAL
 
 // 0x80171080
-void itManagerProcSearchHitAll(GObj *item_gobj)
+void itCollisionProcSearchHitAll(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     if (!(ip->is_hold))
     {
-        itManagerSearchFighterHit(item_gobj);
-        itManagerSearchItemHit(item_gobj);
-        itManagerSearchWeaponHit(item_gobj);
+        itCollisionSearchFighterHit(item_gobj);
+        itCollisionSearchItemHit(item_gobj);
+        itCollisionSearchWeaponHit(item_gobj);
     }
 }
 
 // 0x801710C4
-void itManagerProcHitCollisions(GObj *item_gobj)
+void itCollisionProcHitCollisions(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

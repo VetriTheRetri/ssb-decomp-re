@@ -143,7 +143,7 @@ sb32 itHarisenAFallProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -200,7 +200,7 @@ sb32 itHarisenFThrowProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }

@@ -159,7 +159,7 @@ sb32 itStarRodAFallProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_T_VEL);
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -212,7 +212,7 @@ sb32 itStarRodFThrowProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_T_VEL);
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }

@@ -103,7 +103,7 @@ sb32 itHeartAFallProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGClampTVel(ip, ITHEART_GRAVITY, ITHEART_T_VEL);
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }

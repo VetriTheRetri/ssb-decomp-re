@@ -274,7 +274,7 @@ sb32 itLinkBombAFallProcUpdate(GObj* item_gobj)
 		itLinkBombNExplodeWaitUpdateScale(item_gobj);
 	ip->lifetime--;
 
-	itManagerUpdateSpin(item_gobj);
+	itVisualsUpdateSpin(item_gobj);
 
 	return FALSE;
 }

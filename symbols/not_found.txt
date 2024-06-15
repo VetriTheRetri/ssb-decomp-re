@@ -766,7 +766,7 @@ D_8018E1C0 = 0x8018E1C0;
 
 omAddMObjAnimAll = 0x8000BD54;
 
-itManagerUpdateSpin = 0x801713F4;
+itVisualsUpdateSpin = 0x801713F4;
 itMapCheckLRWallProcGround = 0x801735A0;
 itMapCheckMapCollideThrownLanding = 0x80173B24;
 itMapSetGround = 0x80173F54;

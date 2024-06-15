@@ -194,7 +194,7 @@ sb32 itNBumperAFallProcUpdate(GObj *item_gobj)
     {
         ip->item_vars.bumper.damage_all_delay--;
     }
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
@@ -278,7 +278,7 @@ sb32 itNBumperFThrowProcUpdate(GObj *item_gobj)
     {
         ip->item_vars.bumper.damage_all_delay--;
     }
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }

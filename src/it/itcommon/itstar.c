@@ -58,7 +58,7 @@ sb32 itStarSDefaultProcUpdate(GObj *item_gobj)
     {
         itMainRefreshHit(item_gobj);
     }
-    itManagerUpdateSpin(item_gobj);
+    itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }

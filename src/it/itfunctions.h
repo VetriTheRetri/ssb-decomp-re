@@ -2,6 +2,8 @@
 #define _ITFUNCTIONS_H_
 
 #include "itmanager.h"
+#include "itcollision.h"
+#include "itvisuals.h"
 #include "itmain.h"
 #include "itrender.h"
 #include "itmap.h"

@@ -19,16 +19,16 @@ void wpRenderDrawZBuffer();
 void wpRenderMain(GObj* weapon_gobj, void (*proc_render)(GObj*));
 
 // Unknown
-void func_ovl3_801675D0(GObj* weapon_gobj);
+void wpRenderDLHead1(GObj* weapon_gobj);
 
 // Unknown
-void func_ovl3_801675F4(GObj* weapon_gobj);
+void wpRenderDObjDLLinks(GObj* weapon_gobj);
 
 // Unknown
 void func_ovl3_80167618(GObj* weapon_gobj);
 
 // Unknown
-void func_ovl3_8016763C(GObj* weapon_gobj);
+void wpRenderDObjTreeDLLinks(GObj* weapon_gobj);
 
 // Render PK Thunder specifically because life is short
 void wpRenderPKThunder(GObj* weapon_gobj);

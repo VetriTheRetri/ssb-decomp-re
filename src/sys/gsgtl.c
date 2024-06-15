@@ -111,7 +111,7 @@ Gfx *D_8004662C;
 u32 gGtlTaskId;
 s32 D_80046634;
 s32 D_80046638[2];
-s32 D_80046640;
+s32 sGSGTLNumTasks;
 UNUSED s32 unref80046644;
 mlBumpAllocRegion sMtxTaskHeaps[2];
 void (*D_80046668)(void *); // takes function bundle struct?

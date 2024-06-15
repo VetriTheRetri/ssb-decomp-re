@@ -6,15 +6,14 @@
 #define OS_TV_TYPE_NTSC 1
 #define OS_TV_TYPE_MPAL 2
 
-// TODO: figure out what this is
-#define VI_STATE_01 0x01
+#define VI_STATE_MODE_UPDATED 0x01
 #define VI_STATE_XSCALE_UPDATED 0x02
 #define VI_STATE_YSCALE_UPDATED 0x04
-#define VI_STATE_08 0x08		 // related to control regs changing
-#define VI_STATE_10 0x10		 // swap buffer
-#define VI_STATE_BLACK 0x20		 // probably related to a black screen
-#define VI_STATE_REPEATLINE 0x40 // repeat line?
-#define VI_STATE_FADE 0x80		 // fade
+#define VI_STATE_CTRL_UPDATED 0x08   // related to control regs changing
+#define VI_STATE_BUFFER_UPDATED 0x10 // swap buffer
+#define VI_STATE_BLACK 0x20          // probably related to a black screen
+#define VI_STATE_REPEATLINE 0x40     // repeat line?
+#define VI_STATE_FADE 0x80           // fade
 
 #define VI_CTRL_ANTIALIAS_MODE_3 0x00300 /* Bit [9:8] anti-alias mode */
 #define VI_CTRL_ANTIALIAS_MODE_2 0x00200 /* Bit [9:8] anti-alias mode */

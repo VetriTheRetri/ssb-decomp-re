@@ -165,7 +165,14 @@ build/src/libultra/io/epirawread.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/epirawread.o: CC := $(IDO5)
 build/src/libultra/io/contramwrite.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/contramwrite.o: CC := $(IDO5)
-
+build/src/libultra/io/aisetfreq.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/aisetfreq.o: CC := $(IDO5)
+build/src/libultra/io/epirawdma.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/epirawdma.o: CC := $(IDO5)
+build/src/libultra/gu/mtxcatf.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/gu/mtxcatf.o: CC := $(IDO5)
+build/src/libultra/gu/mtxxfmf.o: OPTFLAGS := -O3 -mips2
+build/src/libultra/gu/mtxxfmf.o: CC := $(IDO5)
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

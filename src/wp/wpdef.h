@@ -20,8 +20,8 @@ typedef enum wpKind
 	Wp_Kind_PKFire,			   // 0x0D
 	Wp_Kind_PKThunderHead,	   // 0x0E
 	Wp_Kind_PKThunderTrail,	   // 0x0F
-	Wp_Kind_YubiBulletNormal,  // 0x10
-	Wp_Kind_YubiBulletHard,	   // 0x11
+	Wp_Kind_BulletNormal,  	   // 0x10
+	Wp_Kind_BulletHard,	   	   // 0x11
 	Wp_Kind_ArwingLaser2D,	   // 0x12
 	Wp_Kind_ArwingLaser3D,	   // 0x13
 	Wp_Kind_LGunAmmo,		   // 0x14

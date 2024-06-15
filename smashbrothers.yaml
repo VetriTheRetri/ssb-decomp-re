@@ -434,6 +434,8 @@ segments:
     
     # ovl3 text
       - [0x0AC540, asm, ovl3]
+    # Weapon entity files
+      - [0x0E8640, c, wp/wpboss/wpbossbullet]
     # Item handler files
       - [0x0E88E0, c, it/itmanager]
       - [0x0EA370, c, it/itcollision]
@@ -490,6 +492,8 @@ segments:
 
     # ovl3 data
       - [0x1010A0, data, ovl3]
+    # Weapon entity files
+      - [0x103E20, .data, wp/wpboss/wpbossbullet]
     # Item handler files
       - [0x103E90, .data, it/itmanager]
       - [0x103F60, .data, it/itmain]

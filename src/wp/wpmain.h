@@ -38,6 +38,6 @@ s32 wpMainGetStaledDamageOutput(wpStruct* wp);
 void wpMainClearHitRecord(wpStruct* wp);
 
 // Unknown
-void func_ovl3_80168428(GObj* weapon_gobj);
+void wpMainReflectorRotateWeaponModel(GObj* weapon_gobj);
 
 #endif

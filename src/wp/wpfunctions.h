@@ -6,4 +6,7 @@
 #include "wpmap.h"
 #include "wprender.h"
 
+// Fighter weapons
+#include <wp/wpboss/wpbossbullet.h>
+
 #endif

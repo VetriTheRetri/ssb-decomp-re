@@ -1,5 +1,11 @@
 #include <it/item.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x801713B0
 void itVisualsUpdateColAnim(GObj *item_gobj)
 {

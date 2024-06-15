@@ -12,6 +12,12 @@ extern Gfx dGMMapCollisionBottomGfx[/* */];
 extern Gfx dGMMapCollisionTopGfx[/* */];
 extern mlBumpAllocRegion gGraphicsHeap;
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80171410
 void itRenderHitCollisions(GObj *item_gobj)
 {

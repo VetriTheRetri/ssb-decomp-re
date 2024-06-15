@@ -241,7 +241,7 @@ sb32 itFushigibanaWeaponRazorProcHop(GObj *weapon_gobj)
 
     func_80019438(&wp->phys_info.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x) + F_DEG_TO_RAD(180.0F); // PI32
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x) + F_CLC_DTOR32(180.0F); // PI32
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     if (wp->phys_info.vel_air.x > 0.0F)
@@ -261,7 +261,7 @@ sb32 itFushigibanaWeaponRazorProcReflector(GObj *weapon_gobj)
 
     wpMainReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x) + F_DEG_TO_RAD(180.0F); // PI32
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x) + F_CLC_DTOR32(180.0F); // PI32
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     wp->lr = -wp->lr;

@@ -233,7 +233,7 @@ void itLGunFThrowSetStatus(GObj *item_gobj)
 
     itMainSetItemStatus(item_gobj, dITLGunStatusDesc, itStatus_LGun_FThrow);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == LR_Left) ? F_DTOR32(-90.0F) : F_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == LR_Left) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
 }
 
 // 0x8017572C
@@ -255,7 +255,7 @@ void itLGunFDropSetStatus(GObj *item_gobj)
 
     itMainSetItemStatus(item_gobj, dITLGunStatusDesc, itStatus_LGun_FDrop);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == LR_Left) ? F_DTOR32(-90.0F) : F_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == LR_Left) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
 }
 
 // 0x80175800
@@ -269,7 +269,7 @@ GObj* itLGunMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = ITLGUN_AMMO_MAX;
 
-        DObjGetStruct(item_gobj)->rotate.vec.f.y = ((mtTrigGetRandomUShort() % 2) != 0) ? F_DTOR32(90.0F) : F_DTOR32(-90.0F); // HALF_PI32, -HALF_PI32
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = ((mtTrigGetRandomUShort() % 2) != 0) ? F_CST_DTOR32(90.0F) : F_CST_DTOR32(-90.0F); // HALF_PI32, -HALF_PI32
 
         ip->is_unused_item_bool = TRUE;
 

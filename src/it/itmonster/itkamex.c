@@ -425,7 +425,7 @@ GObj* itKamexMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         if (kamex_ip->lr == LR_Left)
         {
-            dobj->rotate.vec.f.y = F_DTOR32(180.0F); // PI32
+            dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }
         dobj->translate.vec.f.y -= kamex_ip->attributes->objectcoll_bottom;
 
@@ -497,7 +497,7 @@ GObj* itKamexWeaponHydroMakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     if (wp->lr == LR_Left)
     {
-        dobj->rotate.vec.f.y = F_DTOR32(180.0F); // PI32
+        dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }
     wp->weapon_vars.hydro.unk_0x0 = 0; // Set but never used?
     wp->weapon_vars.hydro.unk_0x4 = 0; // Set but never used?

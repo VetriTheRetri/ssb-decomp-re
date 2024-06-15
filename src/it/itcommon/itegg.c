@@ -330,7 +330,7 @@ GObj* itEggMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
             if ((spawn_ip->it_kind == It_Kind_MLucky) && (mtTrigGetRandomIntRange(2) == 0))
             {
-                dobj->child->rotate.vec.f.y = F_DTOR32(180.0F); // PI32
+                dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
 
                 egg_ip->phys_info.vel_air.x = -egg_ip->phys_info.vel_air.x;
 

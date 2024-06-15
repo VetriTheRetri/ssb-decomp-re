@@ -1,12 +1,22 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFTDataBossBattleMotion;
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
 
 extern intptr_t 
 lWPBossBulletNormalWeaponAttributes;        // 0x00000774
 extern intptr_t
 lWPBossBulletHardWeaponAttributes;          // 0x000007A8
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 wpCreateDesc dWPBossBulletNormalWeaponDesc =
 {
@@ -55,6 +65,12 @@ wpCreateDesc dWPBossBulletHardWeaponDesc =
     wpBossBulletProcReflector,              // Proc Reflector
     wpBossBulletProcHit                     // Proc Absorb
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8016DC00
 sb32 wpBossBulletExplodeProcUpdate(GObj *weapon_gobj)

@@ -437,6 +437,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Weapon entity files
+      - [0x0E7690, c, wp/wplink/wplinkboomerang]
       - [0x0E8640, c, wp/wpboss/wpbossbullet]
     # Item handler files
       - [0x0E88E0, c, it/itmanager]
@@ -495,6 +496,7 @@ segments:
     # ovl3 data
       - [0x1010A0, data, ovl3]
     # Weapon entity files
+      - [0x103DE0, .data, wp/wplink/wplinkboomerang]
       - [0x103E20, .data, wp/wpboss/wpbossbullet]
     # Item handler files
       - [0x103E90, .data, it/itmanager]
@@ -547,6 +549,8 @@ segments:
 
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
+    # Weapon entity files
+      - [0x1075B0, .rodata, wp/wplink/wplinkboomerang]
     # Item handler files
       - [0x107620, .rodata, it/itmanager]
       - [0x107660, .rodata, it/itcollision]

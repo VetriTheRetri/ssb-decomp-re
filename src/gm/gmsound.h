@@ -229,7 +229,7 @@ typedef enum alSoundEffectID
 	alSound_SFX_KirbySpecialNLoseCopy,
 	alSound_SFX_LinkSpecialLwGet,
 	alSound_SFX_LinkSpecialNThrow,
-	alSound_SFX_LinkSpecialNUnk,
+	alSound_SFX_LinkSpecialNDraw,
 	alSound_SFX_LinkSpecialNReturn,
 	alSound_SFX_LinkSpecialHi,
 	alSound_SFX_LinkCatchHookshot,

@@ -351,7 +351,7 @@ void itNBumperGWaitHitSetModelYaw(GObj *item_gobj)
 
     ip->attach_line_id = ip->coll_data.ground_line_id;
 
-    dobj->rotate.vec.f.z = atan2f(ground_angle.y, ground_angle.x) - F_DEG_TO_RAD(90.0F); // HALF_PI32
+    dobj->rotate.vec.f.z = atan2f(ground_angle.y, ground_angle.x) - F_CLC_DTOR32(90.0F); // HALF_PI32
 }
 
 // 0x8017B8DC

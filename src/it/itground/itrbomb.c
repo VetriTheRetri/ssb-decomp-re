@@ -166,9 +166,9 @@ void itRBombContainerSmashMakeEffect(Vec3f *pos)
                 dobj->scale.vec.f.y = (mtTrigGetRandomFloat() * 50.0F) + 10.0F;
                 dobj->scale.vec.f.z = (mtTrigGetRandomFloat() * 32.0F) + -16.0F;
 
-                dobj->dobj_f0 = F_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
-                dobj->dobj_f1 = F_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
-                dobj->dobj_f2 = F_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->dobj_f0 = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->dobj_f1 = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->dobj_f2 = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
             }
             ep->effect_vars.container.lifetime = ITRBOMB_GFX_LIFETIME;
 
@@ -280,7 +280,7 @@ void itRBombSDefaultSetMapCollisionBox(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->rotate.vec.f.x = F_DEG_TO_RAD(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->rotate.vec.f.x = F_CLC_DTOR32(90.0F); // HALF_PI32
 
     ip->coll_data.object_coll.top = ip->coll_data.object_coll.width;
     ip->coll_data.object_coll.bottom = -ip->coll_data.object_coll.width;
@@ -309,7 +309,7 @@ sb32 itRBombGRollProcUpdate(GObj *item_gobj)
     f32 roll_rotate_step;
     f32 sqrt_vel;
 
-    ip->phys_info.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_DEG_TO_RAD(90.0F) /*HALF_PI32*/) * ITRBOMB_MUL_VEL_X);
+    ip->phys_info.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F) /*HALF_PI32*/) * ITRBOMB_MUL_VEL_X);
 
     ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? LR_Right : LR_Left;
 

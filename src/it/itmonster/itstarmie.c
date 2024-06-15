@@ -175,7 +175,7 @@ void itStarmieNAttackInitItemVars(GObj *item_gobj)
 
     if (ip->lr != lr_bak)
     {
-        dobj->rotate.vec.f.y += F_DTOR32(180.0F); // PI32
+        dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F); // PI32
     }
     ip->it_multi = ITSTARMIE_LIFETIME;
 
@@ -249,7 +249,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     if (ip->lr == LR_Right)
     {
-        item_dobj->rotate.vec.f.y = F_DTOR32(180.0F); // PI32
+        item_dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }
     if (ip->it_kind == It_Kind_Starmie)
     {
@@ -457,7 +457,7 @@ GObj* itStarmieWeaponSwiftMakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     if (wp->lr == LR_Right)
     {
-        dobj->rotate.vec.f.y = F_DTOR32(180.0F); // PI32
+        dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }
     return weapon_gobj;
 }

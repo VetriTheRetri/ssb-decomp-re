@@ -692,7 +692,7 @@ GObj* itRShellMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         itStruct *ip;
         Vec3f translate = dobj->translate.vec.f;
 
-        dobj->rotate.vec.f.y = F_DTOR32(90.0F); // HALF_PI32
+        dobj->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
         omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_TraRotRpyR, 0);
         omAddOMMtxForDObjFixed(dobj, 0x48, 0);

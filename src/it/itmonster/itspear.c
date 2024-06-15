@@ -332,7 +332,7 @@ GObj* itSpearMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         if (mtTrigGetRandomIntRange(2) == 0)
         {
-            dobj->child->rotate.vec.f.y = F_DTOR32(180.0F); // PI32
+            dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
 
             ip->lr = LR_Left;
 
@@ -415,7 +415,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
         if (wp->lr == LR_Left)
         {
-            dobj->child->child->rotate.vec.f.y = F_DTOR32(180.0F); // PI32
+            dobj->child->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }
     }
     else
@@ -426,7 +426,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
         if (wp->lr == LR_Right)
         {
-            dobj->child->rotate.vec.f.y = F_DTOR32(180.0F); // PI32
+            dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }
     }
     dobj->translate.vec.f = *pos;

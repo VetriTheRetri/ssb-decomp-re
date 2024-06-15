@@ -228,7 +228,7 @@ void itHarisenFThrowSetStatus(GObj *item_gobj)
 {
     itMainSetItemStatus(item_gobj, dITHarisenStatusDesc, itStatus_Harisen_FThrow);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DTOR32(-90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(-90.0F); // HALF_PI32
 }
 
 // 0x80175394
@@ -242,7 +242,7 @@ void itHarisenFDropSetStatus(GObj *item_gobj)
 {
     itMainSetItemStatus(item_gobj, dITHarisenStatusDesc, itStatus_Harisen_FDrop);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DTOR32(-90.0F);
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(-90.0F);
 }
 
 // 0x80175408
@@ -263,7 +263,7 @@ GObj* itHarisenMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_DTOR32(-90.0F); // HALF_PI32
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(-90.0F); // HALF_PI32
 
         ip->is_unused_item_bool = TRUE;
 

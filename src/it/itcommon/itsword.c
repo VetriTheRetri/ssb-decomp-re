@@ -169,7 +169,7 @@ void itSwordAFallSetStatus(GObj *item_gobj)
 // 0x80174C5C
 void itSwordFHoldSetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->rotate.vec.f.y = F_DTOR32(0.0F);
+    DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
     itMainSetItemStatus(item_gobj, dITSwordStatusDesc, itStatus_Sword_FHold);
 }
@@ -197,7 +197,7 @@ void itSwordFThrowSetStatus(GObj *item_gobj)
 {
     itMainSetItemStatus(item_gobj, dITSwordStatusDesc, itStatus_Sword_FThrow);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DTOR32(90.0F);
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }
 
 // 0x80174D2C
@@ -211,7 +211,7 @@ void itSwordFDropSetStatus(GObj *item_gobj)
 {
     itMainSetItemStatus(item_gobj, dITSwordStatusDesc, itStatus_Sword_FDrop);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DTOR32(90.0F);
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }
 
 // 0x80174DA0
@@ -223,7 +223,7 @@ GObj* itSwordMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_DTOR32(90.0F);
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 
         ip->is_unused_item_bool = TRUE;
 

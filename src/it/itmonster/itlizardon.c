@@ -246,7 +246,7 @@ sb32 itLizardonNAttackProcUpdate(GObj *item_gobj)
 
         if (ip->it_kind == It_Kind_Pippi)
         {
-            dobj->rotate.vec.f.y += F_DTOR32(180.0F);
+            dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F);
         }
     }
     ip->item_vars.lizardon.turn_wait--;

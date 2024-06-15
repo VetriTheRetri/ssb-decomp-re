@@ -286,7 +286,7 @@ sb32 itPakkunDAppearProcDamage(GObj *item_gobj)
 
         dobj->ommtx[1]->kind = 0x46;
 
-        dobj->rotate.vec.f.z = F_DTOR32(180.0F); // PI32
+        dobj->rotate.vec.f.z = F_CST_DTOR32(180.0F); // PI32
 
         angle = gmCommon_Damage_GetKnockbackAngle(ip->damage_angle, ip->ground_or_air, ip->damage_knockback);
 

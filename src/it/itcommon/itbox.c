@@ -213,9 +213,9 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
                 dobj->scale.vec.f.y = (mtTrigGetRandomFloat() * 50.0F) + 10.0F;
                 dobj->scale.vec.f.z = (mtTrigGetRandomFloat() * 32.0F) + -16.0F;
 
-                dobj->dobj_f0 = F_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
-                dobj->dobj_f1 = F_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
-                dobj->dobj_f2 = F_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->dobj_f0 = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->dobj_f1 = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->dobj_f2 = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
             }
             ep->effect_vars.container.lifetime = ITCONTAINER_GFX_LIFETIME;
 
@@ -366,7 +366,7 @@ void itBoxGWaitSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CST_DTOR32(90.0F); // HALF_PI32
 
     itMainSetGroundAllowPickup(item_gobj);
     itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_GWait);
@@ -409,7 +409,7 @@ sb32 itBoxFThrowProcMap(GObj *item_gobj)
 // 0x8017987C
 void itBoxFThrowSetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
     itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_FThrow);
 }
@@ -431,7 +431,7 @@ sb32 itBoxFDropProcMap(GObj *item_gobj)
 // 0x8017990C
 void itBoxFDropSetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
     itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_FDrop);
 }
@@ -461,7 +461,7 @@ GObj* itBoxMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_DTOR32(90.0F);
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 
         ip->is_damage_all = TRUE;
         ip->is_unused_item_bool = TRUE;

@@ -214,7 +214,7 @@ void itHammerFThrowSetStatus(GObj *item_gobj)
 {
     itMainSetItemStatus(item_gobj, dITHammerStatusDesc, itStatus_Hammer_FThrow);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
     ftSpecialItem_BGMCheckFighters();
 }
@@ -231,7 +231,7 @@ void itHammerFDropSetStatus(GObj *item_gobj)
     itMainClearColAnim(item_gobj);
     itMainSetItemStatus(item_gobj, dITHammerStatusDesc, itStatus_Hammer_FDrop);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
     ftSpecialItem_BGMCheckFighters();
 }
@@ -245,7 +245,7 @@ GObj* itHammerMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_DTOR32(90.0F); // HALF_PI32
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
         ip->is_unused_item_bool = TRUE;
 

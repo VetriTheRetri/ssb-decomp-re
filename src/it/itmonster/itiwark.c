@@ -190,7 +190,7 @@ sb32 itIwarkNAttackProcUpdate(GObj *item_gobj)
     }
     if (ip->it_multi == ITIWARK_MODEL_ROTATE_WAIT)
     {
-        dobj->rotate.vec.f.y += F_DTOR32(180.0F); // PI32
+        dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F); // PI32
 
         ip->it_multi = 0;
     }

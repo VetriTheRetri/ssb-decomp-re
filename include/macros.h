@@ -22,13 +22,15 @@
 #define DTOR32 ((float)DTOR64)
 #define RTOD32 ((float)RTOD64)
 
-/* Well, OOF. I forgot this branch used the incorrect version of F_DEG_TO_RAD and 
- * now I'm scared to change it. Take this instead.
+/* This is very stupid. I cannot find a single PI or DTOR constant that works everywhere.
+ * Need to alternate between F_CST_DTOR32 and F_CLC_DTOR32. Use with caution when matching.
  */
-#define F_DTOR32(x) ((float)(((x) * PI32) / 180.0F))
 
-// Float convert degrees to radians
-#define F_DEG_TO_RAD(x) ((float)((x)*DTOR32))
+// Float convert degrees to radians - use this for immediate DTOR const multiplication
+#define F_CST_DTOR32(x) ((float)((x)*DTOR32)) 
+
+// Float convert degrees to radians - use this in functions that manually calculate each step of DTOR
+#define F_CLC_DTOR32(x) ((float)(((x) * PI32) / 180.0F))
 
 // Float convert radians to degrees
 #define F_RAD_TO_DEG(x) ((float)((x) / RTOD32))

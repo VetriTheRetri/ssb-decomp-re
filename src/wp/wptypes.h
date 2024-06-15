@@ -47,7 +47,7 @@
 	0.999F // Bonus 1% added after multiplying hitbox damage with staling
 		   // modifier
 
-#define WEAPON_HOP_ANGLE_DEFAULT F_DEG_TO_RAD(135.0F) // 2.3561945F - Determines whether weapon bounces off a shield
+#define WEAPON_HOP_ANGLE_DEFAULT F_CLC_DTOR32(135.0F) // 2.3561945F - Determines whether weapon bounces off a shield
 
 // Structs
 

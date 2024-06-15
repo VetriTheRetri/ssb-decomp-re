@@ -88,7 +88,7 @@ void itPippiSDefaultSelectMonster(GObj *item_gobj)
     {
         if (mtTrigGetRandomIntRange(2) == 0)
         {
-            dobj->rotate.vec.f.y = F_DTOR32(180.0F); // PI32
+            dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
 
             ip->lr = LR_Right;
         }

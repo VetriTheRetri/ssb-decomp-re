@@ -212,7 +212,7 @@ void itSawamuraNAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     if (ip->lr == LR_Right)
     {
-        ij->rotate.vec.f.y = F_DTOR32(180.0F); // PI32
+        ij->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }
 }
 

@@ -784,10 +784,15 @@ g1PGameTotalDamageTaken = 0x80130D6C;
 omAddDObjAnimAll = 0x8000BD1C;
 D_ovl2_801313F4 = 0x801313F4;
 
+gFTDataLinkSpecial1 = 0x80130FBC;
+
 gFTDataNessSpecial1 = 0x8013113C;
 gFTDataNessParticleBankID = 0x80131148;
 
 gFTDataBossBattleMotion = 0x80131174;
+
+gCameraMatrix = 0x80131470;
+gCameraStruct = 0x801314B0;
 
 gITFileData = 0x8018D040;
 gITEffectBank = 0x8018D044;

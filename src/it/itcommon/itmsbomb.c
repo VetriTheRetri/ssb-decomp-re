@@ -315,7 +315,7 @@ void itMSBombGAttachUpdateSurface(GObj *item_gobj)
             ip->attach_line_id = coll_data->rwall_line_id;
         }
     }
-    joint->rotate.vec.f.z = atan2f(angle.y, angle.x) - F_DTOR32(90.0F); // HALF_PI32
+    joint->rotate.vec.f.z = atan2f(angle.y, angle.x) - F_CST_DTOR32(90.0F); // HALF_PI32
 }
 
 // 0x80176840

@@ -124,7 +124,7 @@ sb32 itNyarsNAttackProcUpdate(GObj *item_gobj)
     }
     if (ip->item_vars.nyars.model_rotate_wait == 0)
     {
-        dobj->rotate.vec.f.y += F_DTOR32(180.0F); // PI32
+        dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F); // PI32
 
         ip->item_vars.nyars.model_rotate_wait = ITNYARS_MODEL_ROTATE_WAIT;
     }
@@ -286,7 +286,7 @@ GObj* itNyarsWeaponCoinMakeWeapon(GObj *item_gobj, u8 coin_number, f32 rotate_an
     wp->phys_info.vel_air.y = wp->phys_info.vel_air.z = 0.0F;
     wp->phys_info.vel_air.x = ITNYARS_COIN_VEL_X;
 
-    lbVector_Vec3fGetEulerRotation(&wp->phys_info.vel_air, MTVECTOR_AXIS_Z, F_DTOR32((coin_number * ITNYARS_COIN_ANGLE_DIFF) + rotate_angle));
+    lbVector_Vec3fGetEulerRotation(&wp->phys_info.vel_air, MTVECTOR_AXIS_Z, F_CLC_DTOR32((coin_number * ITNYARS_COIN_ANGLE_DIFF) + rotate_angle));
 
     dobj = DObjGetStruct(weapon_gobj);
 

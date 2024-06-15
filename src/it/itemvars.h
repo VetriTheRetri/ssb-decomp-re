@@ -299,7 +299,7 @@
 #define ITLIZARDON_FLAME_LIFETIME 30
 #define ITLIZARDON_FLAME_SPAWN_WAIT 8 // Wait this many frames before spawning another flame projectile
 #define ITLIZARDON_TURN_WAIT 26		  // Wait this many frames before flipping Charizard's sprite
-#define ITLIZARDON_FLAME_SPAWN_ANGLE F_DEG_TO_RAD(-15.0F) // Angle at which flame projectile spreads (-0.2617994F)
+#define ITLIZARDON_FLAME_SPAWN_ANGLE F_CLC_DTOR32(-15.0F) // Angle at which flame projectile spreads (-0.2617994F)
 #define ITLIZARDON_FLAME_VEL_XY 50.0F
 #define ITLIZARDON_LIZARDON_FLAME_OFF_X 180.0F // X-offset of Charizard's flame spawn position
 #define ITLIZARDON_LIZARDON_FLAME_OFF_Y 120.0F // Y-offset of Charizard's flame spawn position
@@ -400,12 +400,12 @@
 
 #define ITHITOKAGE_FLAME_LIFETIME 20
 #define ITHITOKAGE_FLAME_SPAWN_WAIT 8
-#define ITHITOKAGE_FLAME_SPAWN_ANGLE F_DEG_TO_RAD(-12.0F) // -0.20943952F
+#define ITHITOKAGE_FLAME_SPAWN_ANGLE F_CLC_DTOR32(-12.0F) // -0.20943952F
 #define ITHITOKAGE_FLAME_VEL_BASE 45.0F
 #define ITHITOKAGE_FLAME_SPAWN_BEGIN 40.0F		   // Charmander can begin firing Flamethrower this frame onward
 #define ITHITOKAGE_FLAME_SPAWN_END 120.0F		   // Charmander can no longer fire Flamethrower this frame onward
 #define ITHITOKAGE_FLAME_SPAWN_OFF_X (-250.0F)	   // X-offset of flame spawn
-#define ITHITOKAGE_HIT_ROTATE_Z F_DEG_TO_RAD(6.0F) // 0.10471976F
+#define ITHITOKAGE_HIT_ROTATE_Z F_CLC_DTOR32(6.0F) // 0.10471976F
 #define ITHITOKAGE_NDAMAGE_KNOCKBACK_MIN 100.0F	   // Minimum knockback required to send Charmander into damage state
 #define ITHITOKAGE_GRAVITY 1.2F
 #define ITHITOKAGE_T_VEL 100.0F

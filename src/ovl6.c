@@ -386,10 +386,10 @@ void scBonusGame_InitCameraVars()
 			continue;
 
 		if (gBattleState->gr_kind >= Gr_Kind_Bonus2Start)
-			func_ovl2_8010CFA8(gBattleState->player_block[player].fighter_gobj, 0.0F, F_DEG_TO_RAD(-15.0F), 9000.0F,
+			func_ovl2_8010CFA8(gBattleState->player_block[player].fighter_gobj, 0.0F, F_CLC_DTOR32(-15.0F), 9000.0F,
 							   0.3F, 31.5F);
 		else
-			func_ovl2_8010CFA8(gBattleState->player_block[player].fighter_gobj, 0.0F, F_DEG_TO_RAD(-9.0F), 9000.0F,
+			func_ovl2_8010CFA8(gBattleState->player_block[player].fighter_gobj, 0.0F, F_CLC_DTOR32(-9.0F), 9000.0F,
 							   0.3F, 31.5F);
 
 		break;

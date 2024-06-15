@@ -295,7 +295,7 @@ void itTaruFThrowInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.x = F_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.x = F_CST_DTOR32(90.0F); // HALF_PI32
 
     ip->coll_data.object_coll.top = ip->coll_data.object_coll.width;
     ip->coll_data.object_coll.bottom = -ip->coll_data.object_coll.width;
@@ -346,7 +346,7 @@ sb32 itTaruGRollProcUpdate(GObj *item_gobj)
     f32 roll_rotate_step;
     f32 sqrt_vel;
 
-    ip->phys_info.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_DEG_TO_RAD(90.0F)) * ITTARU_MUL_VEL_X);
+    ip->phys_info.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F)) * ITTARU_MUL_VEL_X);
 
     ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? LR_Right : LR_Left;
 

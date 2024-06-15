@@ -173,7 +173,7 @@ void itBatAFallSetStatus(GObj *item_gobj)
 // 0x80174F3C
 void itBatFHoldSetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->rotate.vec.f.y = F_DTOR32(0.0F);
+    DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
     itMainSetItemStatus(item_gobj, dITBatStatusDesc, itStatus_Bat_FHold);
 }
@@ -210,7 +210,7 @@ void itBatFThrowSetStatus(GObj *item_gobj)
 {
     itMainSetItemStatus(item_gobj, dITBatStatusDesc, itStatus_Bat_FThrow);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 }
 
 // 0x80175044
@@ -224,7 +224,7 @@ void itBatFDropSetStatus(GObj *item_gobj)
 {
     itMainSetItemStatus(item_gobj, dITBatStatusDesc, itStatus_Bat_FDrop);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 }
 
 // 0x801750B8
@@ -236,7 +236,7 @@ GObj* itBatMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_DTOR32(90.0F); // HALF_PI32
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
         ip->is_unused_item_bool = TRUE;
 

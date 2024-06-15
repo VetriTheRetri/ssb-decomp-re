@@ -220,11 +220,30 @@ extern u8 __osMaxControllers;
 	if (ret != 0)                                                                                                      \
 		return ret;
 
-#define SET_ACTIVEBANK_TO_ZERO                                                                                         \
-	if (pfs->activebank != 0)                                                                                          \
-	{                                                                                                                  \
-		ERRCK(__osPfsSelectBank(pfs, 0))                                                                               \
-	}
+#if BUILD_VERSION >= VERSION_J
+
+#define SELECT_BANK(pfs, bank) \
+    __osPfsSelectBank((pfs), (bank))
+
+#define SET_ACTIVEBANK_TO_ZERO()          \
+    if (pfs->activebank != 0)             \
+    {                                     \
+        ERRCK(__osPfsSelectBank(pfs, 0)); \
+    } (void)0
+
+#else
+
+#define SELECT_BANK(pfs, bank) \
+    (pfs->activebank = (bank), __osPfsSelectBank((pfs)))
+
+#define SET_ACTIVEBANK_TO_ZERO()       \
+    if (pfs->activebank != 0)          \
+    {                                  \
+        pfs->activebank = 0;           \
+        ERRCK(__osPfsSelectBank(pfs)); \
+    } (void)0
+
+#endif
 
 #define PFS_CHECK_ID                                                                                                   \
 	if (__osCheckId(pfs) == PFS_ERR_NEW_PACK)                                                                          \

@@ -173,6 +173,10 @@ build/src/libultra/gu/mtxcatf.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/gu/mtxcatf.o: CC := $(IDO5)
 build/src/libultra/gu/mtxxfmf.o: OPTFLAGS := -O3 -mips2
 build/src/libultra/gu/mtxxfmf.o: CC := $(IDO5)
+build/src/libultra/gu/sinf.o: OPTFLAGS := -O3 -mips2
+build/src/libultra/gu/sinf.o: CC := $(IDO5)
+build/src/libultra/io/motor.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/motor.o: CC := $(IDO5)
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

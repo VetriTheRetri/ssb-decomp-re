@@ -5,6 +5,7 @@ __osPfsPifRampifstatus = 0x800A074C;
 __osActiveQueue = 0x8003D3BC;
 __additional_scanline = 0x8003D63C;
 
+__osMakeMotorData = 0x800317B8;
 __osSiDeviceBusy = 0x80034610;
 __osSpDeviceBusy = 0x800345E0;
 __osExceptionPreamble = 0x80030C70;

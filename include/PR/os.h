@@ -657,8 +657,11 @@ extern "C"
 #define PFS_CREATE 2
 
 /* File System status */
-#define PFS_INITIALIZED 0x1
-#define PFS_CORRUPTED 0x2 /* File system was corrupted */
+#define PFS_INITIALIZED         0x1
+#define PFS_CORRUPTED           0x2
+#define PFS_ID_BROKEN           0x4
+#define PFS_MOTOR_INITIALIZED   0x8
+#define PFS_GBPAK_INITIALIZED   0x10
 
 /* File System error number */
 

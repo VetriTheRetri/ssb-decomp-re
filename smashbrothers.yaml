@@ -438,6 +438,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Weapon entity files
+      - [0x0E6690, c, wp/wpkirby/wpkirbycutter]
       - [0x0E6990, c, wp/wpyoshi/wpyoshieggthrow]
       - [0x0E6F80, c, wp/wpyoshi/wpyoshistar]
       - [0x0E73E0, c, wp/wplink/wplinkspinattack]
@@ -501,6 +502,7 @@ segments:
     # ovl3 data
       - [0x1010A0, data, ovl3]
     # Weapon entity files
+      - [0x103CE0, .data, wp/wpkirby/wpkirbycutter]
       - [0x103D20, .data, wp/wpyoshi/wpyoshieggthrow]
       - [0x103D60, .data, wp/wpyoshi/wpyoshistar]
       - [0x103DA0, .data, wp/wplink/wplinkspinattack]

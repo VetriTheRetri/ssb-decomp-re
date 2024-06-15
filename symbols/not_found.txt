@@ -788,6 +788,8 @@ gFTDataLinkSpecial1 = 0x80130FBC;
 
 gFTDataYoshiMain = 0x80130FF0;
 
+gFTDataKirbyMain = 0x80131070;
+
 gFTDataNessSpecial1 = 0x8013113C;
 gFTDataNessParticleBankID = 0x80131148;
 

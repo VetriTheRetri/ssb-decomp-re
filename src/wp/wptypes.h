@@ -3,16 +3,16 @@
 
 #include <ssb_types.h>
 #include <macros.h>
-#include <PR/ultratypes.h>
 #include <sys/obj.h>
 #include <mp/mpcoll.h>
-#include <wp/weaponvars.h>
+#include <ef/effect.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
 #include <sys/develop.h>
 #include <gm/battle.h>
 #include <ovl0/halbitmap.h>
 
+#include <wp/weaponvars.h>
 #include "wpdef.h"
 
 // Macros

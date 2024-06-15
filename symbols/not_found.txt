@@ -786,6 +786,8 @@ D_ovl2_801313F4 = 0x801313F4;
 
 gFTDataLinkSpecial1 = 0x80130FBC;
 
+gFTDataYoshiMain = 0x80130FF0;
+
 gFTDataNessSpecial1 = 0x8013113C;
 gFTDataNessParticleBankID = 0x80131148;
 

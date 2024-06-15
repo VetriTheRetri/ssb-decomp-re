@@ -159,6 +159,12 @@ build/src/libultra/n_audio/seq.o: OPTFLAGS := -O3 -g0
 build/src/libultra/n_audio/seq.o: CC := $(IDO7)
 build/src/libultra/io/viswapcontext.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/viswapcontext.o: CC := $(IDO5)
+build/src/libultra/io/pfsselectbank.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/pfsselectbank.o: CC := $(IDO5)
+build/src/libultra/io/epirawread.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/epirawread.o: CC := $(IDO5)
+build/src/libultra/io/contramwrite.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/contramwrite.o: CC := $(IDO5)
 
 
 # Automatic dependency files

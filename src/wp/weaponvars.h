@@ -78,14 +78,10 @@
 #define WPEGGTHROW_EXPLODE_LIFETIME 10
 #define WPEGGTHROW_EXPLODE_SIZE 340.0F
 #define WPEGGTHROW_TRAJECTORY_DIV 65.0F
-#define WPEGGTHROW_TRAJECTORY_SUB_LR_Right                                                                             \
-	1.8675023F // Default: 107 degrees; subtract angle from this if egg's
-			   // facing direction is LR_Right
-#define WPEGGTHROW_TRAJECTORY_SUB_LR_Left                                                                              \
-	1.27409040928F						   // Default: 73 degrees; subtract angle from this if egg's
-										   // facing direction is LR_Left
-#define WPEGGTHROW_ANGLE_MUL 0.34906587F   // Default: 20 degrees
-#define WPEGGTHROW_ANGLE_CLAMP 0.10471976F // Default: 6 degrees; if less than this value, angle becomes 0.0
+#define WPEGGTHROW_TRAJECTORY_SUB_FORWARD F_CLC_DTOR32(73.0F)
+#define WPEGGTHROW_TRAJECTORY_SUB_BEHIND F_CLC_DTOR32(107.0F)					   
+#define WPEGGTHROW_ANGLE_MUL F_CLC_DTOR32(20.0F)   // Default: 20 degrees
+#define WPEGGTHROW_ANGLE_CLAMP F_CLC_DTOR32(6.0F) // Default: 6 degrees; if less than this value, angle becomes 0.0
 #define WPEGGTHROW_VEL_ADD 50.0F
 #define WPEGGTHROW_VEL_FORCE_MUL 2.3F // Multiplies number of frames the B button was held
 #define WPEGGTHROW_ANGLE_FORCE_MUL (-2.1F)
@@ -98,7 +94,7 @@
 #define WPYOSHISTAR_LIFETIME_SCALE_ADD 0.3F
 #define WPYOSHISTAR_ROTATE_SPEED 0.24F
 #define WPYOSHISTAR_VEL_CLAMP 1.8F
-#define WPYOSHISTAR_ANGLE 0.5235988F
+#define WPYOSHISTAR_ANGLE F_CLC_DTOR32(30.0F)
 #define WPYOSHISTAR_VEL 30.0F
 #define WPYOSHISTAR_OFF_X 300.0F
 #define WPYOSHISTAR_OFF_Y 20.0F

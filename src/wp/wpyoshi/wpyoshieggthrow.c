@@ -1,8 +1,20 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern intptr_t 
 lWPYoshiEggThrowWeaponAttributes;           // 0x0000000C
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 wpCreateDesc dWPYoshiEggThrowWeaponDesc =
 {
@@ -27,6 +39,12 @@ wpCreateDesc dWPYoshiEggThrowWeaponDesc =
     wpYoshiEggThrowProcReflector,           // Proc Reflector
     NULL                                    // Proc Absorb
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8016BF50
 sb32 wpYoshiEggThrowProcDead(GObj *weapon_gobj)

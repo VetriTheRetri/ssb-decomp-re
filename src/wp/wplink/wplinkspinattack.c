@@ -1,8 +1,20 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern intptr_t 
 lWPLinkSpinAttackWeaponAttributes;          // 0x0000000C
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 wpCreateDesc dWPLinkSpinAttackWeaponDesc =
 {
@@ -27,6 +39,12 @@ wpCreateDesc dWPLinkSpinAttackWeaponDesc =
     NULL,                                   // Proc Reflector
     NULL                                    // Proc Absorb
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8016C9A0
 void func_ovl3_8016C9A0(void) // Unused

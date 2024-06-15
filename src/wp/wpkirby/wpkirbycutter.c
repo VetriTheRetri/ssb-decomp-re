@@ -1,8 +1,20 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern intptr_t 
 lWPKirbyCutterWeaponAttributes;             // 0x00000008
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 wpCreateDesc dWPKirbyCutterWeaponDesc =
 {
@@ -27,6 +39,12 @@ wpCreateDesc dWPKirbyCutterWeaponDesc =
     wpKirbyCutterProcReflector,             // Proc Reflector
     wpKirbyCutterProcShield                 // Proc Absorb
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8016BC50
 sb32 wpKirbyCutterProcUpdate(GObj *weapon_gobj)

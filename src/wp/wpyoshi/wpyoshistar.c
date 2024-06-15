@@ -1,8 +1,20 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern
 intptr_t lWPYoshiStarWeaponAttributes;      // 0x00000040
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 wpCreateDesc dWPYoshiStarWeaponDesc =
 {
@@ -27,6 +39,12 @@ wpCreateDesc dWPYoshiStarWeaponDesc =
     wpYoshiStarProcReflector,               // Proc Reflector
     wpYoshiStarProcShield                   // Proc Absorb
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8016C540
 f32 wpYoshiStarGetScale(wpStruct *wp)

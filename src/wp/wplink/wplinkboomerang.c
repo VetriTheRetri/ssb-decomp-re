@@ -11,6 +11,12 @@
 extern intptr_t 
 lWPLinkBoomerangWeaponAttributes;           // 0x00000000
 
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
 wpCreateDesc dWPLinkBoomerangWeaponDesc =
 {
     0x01,                                   // Render flags?

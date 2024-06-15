@@ -66,9 +66,9 @@ typedef struct grRenderDesc grRenderDesc;
 typedef struct grHitbox grHitbox;
 typedef struct grMapObject grMapObject;
 typedef struct grMapEnvironment grMapEnvironment;
-typedef struct gmGroundUnkBytes gmGroundUnkBytes;
+typedef struct grItemWeights grItemWeights;
 typedef struct grFileInfo grFileInfo;
 typedef struct gmGroundInfo gmGroundInfo;
-typedef union grStruct grStruct;
+typedef union  grStruct grStruct;
 
 #endif

@@ -729,7 +729,7 @@ void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 			while (TRUE)
 			{
 				gsFatalPrintF("Error : wrong item! %d\n", ip->it_kind);
-				scnmgr_crash_print_gobj_state();
+				smRunPrintGObjStatus();
 			}
 		}
 		item_id = (ip->it_kind <= It_Kind_CommonEnd) ? scGetTrainingModeItemKind(ip->it_kind) : 0;
@@ -1346,7 +1346,7 @@ void scTrainingMode_InitTrainingMode()
 	cmManager_MakeWallpaperCamera();
 	grWallpaper_SetGroundWallpaper();
 	func_ovl2_8010DB00();
-	itManagerAllocUserData();
+	itManagerInitItems();
 	grNodeInit_SetGroundFiles();
 	ftManagerAllocFighter(2, GMMATCH_PLAYERS_MAX);
 	wpManagerAllocWeapons();

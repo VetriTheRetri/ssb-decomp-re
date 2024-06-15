@@ -590,7 +590,7 @@ void scBonusGame_InitBonusGame()
 	cmManager_MakeWallpaperCamera();
 	grWallpaper_SetGroundWallpaper();
 	func_ovl2_8010DB00();
-	itManagerAllocUserData();
+	itManagerInitItems();
 	grNodeInit_SetGroundFiles();
 	ftManagerAllocFighter(2, GMMATCH_PLAYERS_MAX);
 	wpManagerAllocWeapons();

@@ -775,6 +775,9 @@ itMapCheckMapReboundProcAll = 0x80173D24;
 itManagerMakeItem = 0x8016E174;
 gFTDataLinkMain = 0x80130FB0;
 
+gFTMainIsHurtDetect = 0x801311A0;
+gFTMainIsHitDetect = 0x801311B0;
+gMPCollUpdateFrame = 0x80131398;
 gGroundStruct = 0x801313F0;
 gMapRooms = 0x80131304;
 g1PGameTotalDamageTaken = 0x80130D6C;

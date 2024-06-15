@@ -11,7 +11,7 @@
 extern intptr_t lITContainerSpawnVelY;  // 0x00000000
 extern ub8 g1PGameBonusStatMewCatcher;
 
-extern alSoundEffect *func_800269C0_275C0(u16);
+extern alSoundEffect* func_800269C0_275C0(u16);
 extern void func_8000F988();
 
 // // // // // // // // // // // //

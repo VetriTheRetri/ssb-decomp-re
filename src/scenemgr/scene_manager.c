@@ -62,6 +62,6 @@ void unref_800A2BA8(s32 link, u32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/scenemgr/scene_manager/crash_inspect_gobj.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/scenemgr/scene_manager/crash_print_gobj_state.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/scenemgr/scene_manager/smProcPrintGObjStatus.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/scenemgr/scene_manager/scnmgr_crash_print_gobj_state.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/scenemgr/scene_manager/smRunPrintGObjStatus.s")

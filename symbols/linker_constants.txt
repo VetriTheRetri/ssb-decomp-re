@@ -9,6 +9,8 @@ lOverlay40ArenaHi = 0x803903E0;
 
 lITContainerSpawnVelY = 0x00000000;
 
+D_NF_00B1BDE0_other = 0xB1BDE0;
+
 lITCapsuleItemAttributes = 0x00000050;
 lITCapsuleHitEvents = 0x00000098;
 

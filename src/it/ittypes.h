@@ -218,7 +218,7 @@ struct itHurtbox
 struct itAttributes
 {
 	void* model_desc; // DObjDesc?
-	void*** mobj;	  // Actually MObjSub?
+	void*** mobjsub;	  // Actually MObjSub?
 	void** anim_joint;
 	void*** matanim_joint;
 	ub32 is_render_transparency : 1;
@@ -268,7 +268,7 @@ struct itAttributes
 
 struct itStruct // Common items, stage hazards, fighter items and Pokémon
 {
-	itStruct* ip_alloc_next; // Memory region allocated for next itStruct
+	itStruct *alloc_next;    // Memory region allocated for next itStruct
 	GObj* item_gobj;		 // Item's GObj pointer
 	GObj* owner_gobj;		 // Item's owner
 	itKind it_kind;			 // Item ID

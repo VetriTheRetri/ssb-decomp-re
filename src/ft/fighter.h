@@ -9,8 +9,8 @@
 // 80130D6C
 extern s32 g1PGameTotalDamageTaken; // 1P Game / Bonus damage total?
 
-extern sb32 gFighterIsHurtDetect[/* */];
-extern sb32 gFighterIsHitDetect[/* */];
+extern sb32 gFTMainIsHurtDetect[4];
+extern sb32 gFTMainIsHitDetect[4];
 
 extern s32 gFighterHitLogIndex;
 extern ftHitCollisionLog gFighterHitLogTable[/* */];

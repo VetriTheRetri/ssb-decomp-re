@@ -217,7 +217,7 @@ extern gsColorRGBA gMapLightColor;
 extern s32 gMapRoomCount;
 extern f32 gMapLightAngleX;
 extern f32 gMapLightAngleY;
-extern u16 gMapCollUpdateFrame;
+extern u16 gMPCollUpdateFrame;
 extern u32 gMusicIndexCurrent;
 extern u32 gMusicIndexDefault;
 

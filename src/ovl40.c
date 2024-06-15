@@ -133,7 +133,7 @@ void mvOpeningLinkInitFighterStagePanel()
 		while (TRUE)
 		{
 			gsFatalPrintF("wrong number of mapobject\n");
-			scnmgr_crash_print_gobj_state();
+			smRunPrintGObjStatus();
 		}
 	}
 
@@ -332,7 +332,7 @@ void mvOpeningLinkInit()
 	cmManager_MakeWallpaperCamera();
 	ftManagerAllocFighter(3, 2);
 	wpManagerAllocWeapons();
-	itManagerAllocUserData();
+	itManagerInitItems();
 	efManager_AllocUserData();
 	ftManagerSetupDataKind(Ft_Kind_Link);
 

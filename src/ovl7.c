@@ -11,7 +11,7 @@
 #include "ovl7.h"
 
 // 8018D0C0
-void mvOpeningYoshiLoadFiles(u32 flags)
+void scTrainingMode_SetPauseGObjRenderFlags(u32 flags)
 {
 	GObj* pause_gobj = gOMObjCommonLinks[GObj_LinkID_PauseMenu];
 
@@ -35,7 +35,7 @@ void scTrainingMode_CheckEnterTrainingMenu()
 		if (!(fp->is_ignore_startbutton))
 		{
 			ifCommon_SetRenderFlagsAll(1);
-			mvOpeningYoshiLoadFiles(0);
+			scTrainingMode_SetPauseGObjRenderFlags(0);
 			func_ovl2_801157EC();
 			ftCommon_ResetControllerInputs(gBattleState->player_block[player].fighter_gobj);
 			ftCommon_ResetControllerInputs(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
@@ -59,7 +59,7 @@ void scTrainingMode_CheckLeaveTrainingMenu()
 	if (gPlayerControllers[player].button_new & (HAL_BUTTON_B | HAL_BUTTON_START))
 	{
 		ifCommon_SetRenderFlagsAll(0);
-		mvOpeningYoshiLoadFiles(1);
+		scTrainingMode_SetPauseGObjRenderFlags(1);
 
 		gBattleState->game_status = 1;
 		func_ovl2_800E7F68(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
@@ -128,7 +128,7 @@ void func_ovl7_8018D3DC()
 }
 
 // 8018D40C
-sb32 mvOpeningYoshiCreateStageViewport(s32* arg0, s32 arg1, s32 arg2)
+sb32 scTrainingMode_CheckUpdateOptionID(s32* arg0, s32 arg1, s32 arg2)
 {
 	if (gTrainingModeStruct.button_queue & 0x300)
 	{
@@ -151,7 +151,7 @@ sb32 mvOpeningYoshiCreateStageViewport(s32* arg0, s32 arg1, s32 arg2)
 // 8018D478
 sb32 scTrainingMode_UpdateCPOption()
 {
-	if (mvOpeningYoshiCreateStageViewport(&gTrainingModeStruct.cp_menu_option, 0, 5) != FALSE)
+	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.cp_menu_option, 0, 5) != FALSE)
 	{
 		scTrainingMode_UpdateOpponentBehavior();
 		scTrainingMode_InitCPDisplaySprite();
@@ -182,7 +182,7 @@ sb32 scTrainingMode_UpdateItemOption()
 	Vec3f pos;
 	Vec3f vel;
 
-	if (mvOpeningYoshiCreateStageViewport(&gTrainingModeStruct.item_menu_option, 0, 0x11) != FALSE)
+	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.item_menu_option, 0, 0x11) != FALSE)
 	{
 		scTrainingMode_InitItemOptionSprite();
 		func_ovl7_8018D3DC();
@@ -219,7 +219,7 @@ sb32 scTrainingMode_UpdateItemOption()
 // 8018D684
 sb32 scTrainingMode_UpdateSpeedOption()
 {
-	if (mvOpeningYoshiCreateStageViewport(&gTrainingModeStruct.speed_menu_option, 0, 4) != FALSE)
+	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.speed_menu_option, 0, 4) != FALSE)
 	{
 		gTrainingModeStruct.lagframe_wait = gTrainingModeStruct.frameadvance_wait = 0;
 
@@ -231,11 +231,11 @@ sb32 scTrainingMode_UpdateSpeedOption()
 }
 
 // 8018D6DC
-sb32 scAutoDemoProcUpdateMain()
+sb32 scTrainingMode_UpdateViewOption()
 {
 	GObj* fighter_gobj;
 
-	if (mvOpeningYoshiCreateStageViewport(&gTrainingModeStruct.view_menu_option, 0, 2) != FALSE)
+	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.view_menu_option, 0, 2) != FALSE)
 	{
 		if (gTrainingModeStruct.view_menu_option == 1)
 		{
@@ -318,7 +318,7 @@ void scTrainingMode_UpdateTrainingMenu()
 }
 
 // 8018D974
-sb32 mvOpeningYoshiCreatePosedFighterBackground()
+sb32 scTrainingMode_CheckSpeedFrameFreeze()
 {
 	if (gTrainingModeStruct.lagframe_wait == 0)
 	{
@@ -348,7 +348,7 @@ void scTrainingMode_ProcUpdate()
 
 	case 2: scTrainingMode_UpdateTrainingMenu(); break;
 	}
-	if (mvOpeningYoshiCreatePosedFighterBackground() == FALSE)
+	if (scTrainingMode_CheckSpeedFrameFreeze() == FALSE)
 		func_8000A5E4();
 	else
 		cmManager_RunProcCamera(gCameraGObj);
@@ -1291,7 +1291,7 @@ void scTrainingMode_InitTrainingMenuAll()
 	scTrainingMode_CopyVScrollOptionSObjs();
 	scTrainingMode_MakeMenuCursorInterface();
 	scTrainingMode_MakeCursorUnderlineInterface();
-	mvOpeningYoshiLoadFiles(GOBJ_FLAG_NORENDER);
+	scTrainingMode_SetPauseGObjRenderFlags(GOBJ_FLAG_NORENDER);
 }
 
 // 80190164

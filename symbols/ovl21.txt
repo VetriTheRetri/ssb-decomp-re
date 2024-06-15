@@ -22,7 +22,7 @@ func_ovl21_80132A44 = 0x80132A44; // segment:ovl21
 func_ovl21_80132A94 = 0x80132A94; // segment:ovl21
 func_ovl21_80132AF0 = 0x80132AF0; // segment:ovl21
 func_ovl21_80133090 = 0x80133090; // segment:ovl21
-mvOpeningFirstDestinationDestroyDeskObjects = 0x801331B0; // segment:ovl21
+overlay_set11_entry = 0x801331B0; // segment:ovl21
 
 D_ovl21_80133210 = 0x80133210; // segment:ovl21
 D_ovl21_80133214 = 0x80133214; // segment:ovl21

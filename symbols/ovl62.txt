@@ -1,11 +1,11 @@
 mnSoundTestUpdateOptionColors = 0x80131B00; // segment:ovl62
 mnSoundTestUpdateControllerInputs = 0x80131B80; // segment:ovl62
 mnSoundTestUpdateFunctions = 0x801320B4; // segment:ovl62
-mvEndingRoomLightProcRender = 0x80132244; // segment:ovl62
+mnSoundTestMenuProcUpdate = 0x80132244; // segment:ovl62
 func_ovl62_801322B8 = 0x801322B8; // segment:ovl62
-mnResultsGetWinnerPort = 0x8013234C; // segment:ovl62
+mnSoundTestMakeHeaderSObjs = 0x8013234C; // segment:ovl62
 mnSoundTestOptionProcUpdate = 0x80132450; // segment:ovl62
-gmStageClearMakeTimerTextSObjs = 0x801324FC; // segment:ovl62
+mnSoundTestMusicProcRender = 0x801324FC; // segment:ovl62
 mnSoundTestMakeMusicSObjs = 0x80132638; // segment:ovl62
 mnSoundTestSoundProcRender = 0x80132758; // segment:ovl62
 mnSoundTestMakeSoundSObjs = 0x80132894; // segment:ovl62

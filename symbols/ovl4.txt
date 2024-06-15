@@ -1,7 +1,7 @@
 scBattle_UpdateGameStatus = 0x8018D0C0; // segment:ovl4
-scAutoDemoBeginMatch = 0x8018D0E0; // segment:ovl4
+scBattle_GetPlayerStartLR = 0x8018D0E0; // segment:ovl4
 scBattle_StartStockBattle = 0x8018D228; // segment:ovl4
-scAutoDemoSetMagnifyDisplayOn = 0x8018D5E0; // segment:ovl4
+scBattle_CheckSDSetTimeBattleResults = 0x8018D5E0; // segment:ovl4
 scBattle_StartSDBattle = 0x8018DE20; // segment:ovl4
 scBattle_SetGeometryRenderLights = 0x8018E144; // segment:ovl4
 scManager_BattleRoyal_InitScene = 0x8018E190; // segment:ovl4

@@ -53,7 +53,7 @@
 	  // below this number
 
 #define WPPKFIRE_LIFETIME 20
-#define WPPKFIRE_VEL_MUL 160.0F
+#define WPPKFIRE_POS_MUL 160.0F
 
 #define WPPKTHUNDER_LIFETIME 160
 #define WPPKTHUNDER_SPAWN_TRAIL_FRAME                                                                                  \

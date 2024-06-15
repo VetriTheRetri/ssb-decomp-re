@@ -7,6 +7,7 @@
 #include "wprender.h"
 
 // Fighter weapons
+#include <wp/wpness/wpnesspkfire.h>
 #include <wp/wpness/wpnesspkthunder.h>
 #include <wp/wpkirby/wpkirbycutter.h>
 #include <wp/wpyoshi/wpyoshieggthrow.h>

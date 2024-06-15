@@ -7,6 +7,8 @@ lOverlay26ArenaHi = 0x803903E0;
 lOverlay40ArenaLo = 0x8018E5E0;
 lOverlay40ArenaHi = 0x803903E0;
 
+lWPNessPKFireWeaponAttributes = 0x00000000;
+
 lWPNessPKThunderWeaponAttributes = 0x0000000C;
 lWPNessPKThunderTrailWeaponAttributes = 0x00000040;
 

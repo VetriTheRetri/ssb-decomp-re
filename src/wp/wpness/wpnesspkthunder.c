@@ -9,10 +9,10 @@
 // // // // // // // // // // // //
 
 #define wpNessPKThunderHeadGetTrailIDGObj(wp, i) \
-((GObj*)(wp)->weapon_vars.pkthunder.trail_gobj[(i)])
+((wp)->weapon_vars.pkthunder.trail_gobj[(i)])
 
 #define wpNessPKThunderTrailGetTrailIDGObj(wp, i) \
-((GObj*)(wp)->weapon_vars.pkthunder_trail.trail_gobj[(i)])
+((wp)->weapon_vars.pkthunder_trail.trail_gobj[(i)])
 
 // // // // // // // // // // // //
 //                               //

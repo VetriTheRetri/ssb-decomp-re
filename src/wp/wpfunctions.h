@@ -7,6 +7,7 @@
 #include "wprender.h"
 
 // Fighter weapons
+#include <wp/wplink/wplinkspinattack.h>
 #include <wp/wplink/wplinkboomerang.h>
 #include <wp/wpboss/wpbossbullet.h>
 

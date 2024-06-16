@@ -301,7 +301,7 @@ segments:
       - [0x039D90, c, libultra/os/startthread]
       - [0x039EE0, c, libultra/io/visetyscale]
       - [0x039F40, asm, libultra/libc/llcvt]
-      - [0x03A150, asm, libultra/io/aisetnextbuf] # different from sf64
+      - [0x03A150, c, libultra/io/aisetnextbuf]
       - [0x03A200, c, libultra/io/ai]
       - [0x03A230, c, libultra/io/vigetcurrframebuf]
       - [0x03A270, c, libultra/io/spsetpc]
@@ -338,7 +338,7 @@ segments:
       - [0x03E1E0, .data, libultra/io/contramread]
       - [0x03E1F0, data, libultra/libc/xlitob]
       - [0x03E220, data, libultra/io/vimgr]
-      - [0x03E240, data, libultra/io/aisetnextbuf]
+      - [0x03E240, .data, libultra/io/aisetnextbuf]
       - [0x03E250, .rodata, sys/main]
       - [0x03E270, .rodata, sys/thread3]
       - [0x03E2D0, .rodata, sys/thread6]

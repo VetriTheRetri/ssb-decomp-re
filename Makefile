@@ -177,6 +177,10 @@ build/src/libultra/gu/sinf.o: OPTFLAGS := -O3 -mips2
 build/src/libultra/gu/sinf.o: CC := $(IDO5)
 build/src/libultra/io/motor.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/motor.o: CC := $(IDO5)
+build/src/libultra/io/sirawdma.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/sirawdma.o: CC := $(IDO5)
+build/src/libultra/io/pimgr.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/pimgr.o: CC := $(IDO5)
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

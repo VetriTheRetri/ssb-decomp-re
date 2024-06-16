@@ -202,14 +202,14 @@ segments:
       - [0x0314A0, c, libultra/os/destroythread]
       - [0x0315B0, asm, libultra/libc/ll]
       - [0x031870, hasm, libultra/os/exceptasm]
-      - [0x032170, asm, libultra/os/thread]
+      - [0x032170, c, libultra/os/thread]
       - [0x0321B0, hasm, libultra/libc/bzero]
       - [0x032250, c, libultra/io/motor]
       - [0x032620, c, libultra/io/siacs]
       - [0x0326E0, asm, libultra/io/controller]
-      - [0x032A20, asm, libultra/os/createthread]
+      - [0x032A20, c, libultra/os/createthread]
       - [0x032B70, asm, libultra/io/contreaddata]
-      - [0x032D50, asm, libultra/os/virtualtophysical]
+      - [0x032D50, c, libultra/os/virtualtophysical]
       - [0x032DD0, hasm, libultra/os/writebackdcache]
       - [0x032E50, asm, libultra/os/initialize]
       - [0x0331B0, c, libultra/io/pirawread]
@@ -217,24 +217,25 @@ segments:
       - [0x033270, hasm, libultra/os/setsr]
       - [0x033280, hasm, libultra/os/getsr]
       - [0x033290, c, libultra/io/vigetnextframebuf]
-      - [0x0332D0, asm, libultra/io/sprawdma]
-      - [0x033360, asm, libultra/io/sirawdma]
-      - [0x033410, asm, libultra/io/epilinkhandle]
-      - [0x033460, asm, libultra/io/viblack]
-      - [0x0334D0, asm, libultra/io/sirawread]
+      - [0x0332D0, c, libultra/io/sprawdma]
+      - [0x033360, c, libultra/io/sirawdma]
+      - [0x033410, c, libultra/io/epilinkhandle]
+      - [0x033460, c, libultra/io/viblack]
+      - [0x0334D0, asm, libultra/io/sprawread] # sirawread or sprawread?
+      - [0x033520, c, libultra/io/sptaskyield]
       - [0x033540, c, libultra/gu/mtxutil]
-      - [0x0337B0, asm, libultra/io/visetmode]
-      - [0x033820, asm, libultra/os/probetlb]
+      - [0x0337B0, c, libultra/io/visetmode]
+      - [0x033820, hasm, libultra/os/probetlb]
       - [0x0338E0, asm, libultra/io/pimgr]
-      - [0x033A50, asm, libultra/io/piacs]
+      - [0x033A50, c, libultra/io/piacs]
       - [0x033B10, pad, padding_33B10]
       - [0x033B20, asm, libultra/io/devmgr]
-      - [0x033FB0, asm, libultra/io/pirawdma]
-      - [0x034090, asm, libultra/os/getcount]
+      - [0x033FB0, c, libultra/io/pirawdma]
+      - [0x034090, hasm, libultra/os/getcount]
       - [0x0340A0, asm, libultra/os/seteventmesg]
       - [0x034110, hasm, libultra/gu/sqrtf]
       - [0x034120, asm, libultra/os/afterprenmi]
-      - [0x034140, asm, libultra/io/contquery]
+      - [0x034140, c, libultra/io/contquery]
       - [0x0341F0, asm, libultra/libc/xprintf]
       - [0x034EB0, hasm, libultra/os/unmaptlball]
       - [0x034F00, c, libultra/io/epidma]
@@ -321,11 +322,12 @@ segments:
       - [0x03DC80, data, libultra/n_audio/n_env]
       - [0x03DF30, data, libultra/io/vimodepallan1] # osViModePalLan1
       - [0x03DF80, data, libultra/os/exceptasm]
-      - [0x03DFB0, data, libultra/os/thread]
+      - [0x03DFB0, .data, libultra/os/thread]
       - [0x03DFD0, .data, libultra/io/siacs]
       - [0x03DFE0, data, unk_3DFE0]
       - [0x03DFF0, data, libultra/os/initialize]
       - [0x03E010, data, libultra/io/pimgr]
+      - [0x03E040, .data, libultra/io/piacs]
       - [0x03E050, data, libultra/libc/xprintf]
       - [0x03E0A0, .data, libultra/os/timerintr]
       - [0x03E0B0, data, libultra/vimodentsclan1] # osViModeNtscLan1
@@ -386,7 +388,7 @@ segments:
       - { start: auto, type:  bss, name: libultra/io/controller,   vram: 0x8009EFA0 }
       - { start: auto, type:  bss, name: libultra/os/initialize,   vram: 0x8009F030 }
       - { start: auto, type:  bss, name: libultra/io/pimgr,        vram: 0x8009F2E0 }
-      - { start: auto, type:  bss, name: libultra/io/piacs,        vram: 0x800A04B0 }
+      - { start: auto, type: .bss, name: libultra/io/piacs,        vram: 0x800A04B0 }
       - { start: auto, type:  bss, name: libultra/os/seteventmesg, vram: 0x800A04D0 }
       - { start: auto, type: .bss, name: libultra/os/timerintr,    vram: 0x800A0550 }
       - { start: auto, type:  bss, name: libultra/io/cartrominit,  vram: 0x800A0590 }

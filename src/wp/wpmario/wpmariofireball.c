@@ -1,12 +1,24 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern intptr_t
 lWPMariroFireballWeaponAttributes;          // 0x00000000
 extern intptr_t
 lWPMarioFireballMarioWeaponAttributes;      // 0x00000000
 extern intptr_t
 lWPMarioFireballLuigiWeaponAttributes;      // 0x00000000
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 wpMarioFireballAttributes dWPMarioFireballWeaponAttributes[/* */] = 
 {
@@ -66,6 +78,12 @@ wpCreateDesc dWPMarioFireballWeaponDesc =
     wpMarioFireballProcReflector,           // Proc Reflector
     wpMarioFireballProcHit                  // Proc Absorb
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80168540
 sb32 wpMarioFireballProcUpdate(GObj *weapon_gobj)

@@ -1,10 +1,22 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern intptr_t 
 lWPPikachuThunderHeadWeaponAttributes;          // 0x0000000C
 extern intptr_t 
 lWPPikachuThunderTrailWeaponAttributes;         // 0x00000040
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 wpCreateDesc dWPPikachuThunderHeadWeaponDesc =
 {
@@ -53,6 +65,12 @@ wpCreateDesc dWPPikachuThunderTrailWeaponDesc =
     NULL,                                       // Proc Reflector
     wpPikachuThunderTrailProcHit                // Proc Absorb
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8016A640
 void wpPikachuThunderHeadSetDestroy(GObj *weapon_gobj, sb32 is_destroy)

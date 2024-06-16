@@ -1,6 +1,12 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern intptr_t 
 lWPPikachuThunderJoltAirWeaponAttributes;               // 0x00000000
 extern intptr_t 
@@ -12,6 +18,12 @@ lWPPikachuThunderJoltMatAnimJoint;                      // 0x00001AE0
 
 extern void func_8000BED8_CAD8(GObj*, void*, void*, f32);
 extern void gcSetAllAnimPlaybackRate(GObj*, f32);
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 wpCreateDesc dWPPikachuThunderJoltAirWeaponDesc =
 {
@@ -60,6 +72,12 @@ wpCreateDesc dWPPikachuThunderJoltGroundWeaponDesc =
     wpPikachuThunderJoltGroundProcReflector,            // Proc Reflector
     wpPikachuThunderJoltGroundProcHit                   // Proc Absorb
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80169390
 sb32 wpPikachuThunderJoltAirProcUpdate(GObj *weapon_gobj)

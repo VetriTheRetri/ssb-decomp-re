@@ -1,9 +1,20 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void *gFTDataSamusMain;
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern intptr_t 
 lWPSamusBombWeaponAttributes;               // 0x0000000C
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 wpCreateDesc dWPSamusBombWeaponDesc =
 {
@@ -28,6 +39,12 @@ wpCreateDesc dWPSamusBombWeaponDesc =
     wpSamusBombProcReflector,               // Proc Reflector
     wpSamusBombProcAbsorb                   // Proc Absorb
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80168F00
 sb32 wpSamusBombExplodeProcUpdate(GObj *weapon_gobj)

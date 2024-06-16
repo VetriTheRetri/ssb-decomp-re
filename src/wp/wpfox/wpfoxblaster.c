@@ -1,8 +1,20 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern intptr_t 
 lWPFoxBlasterWeaponAttributes;              // 0x00000000
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 wpCreateDesc dWPFoxBlasterWeaponDesc = 
 {
@@ -27,6 +39,12 @@ wpCreateDesc dWPFoxBlasterWeaponDesc =
     wpFoxBlasterProcReflector,              // Proc Reflector
     wpFoxBlasterProcHit                     // Proc Absorb
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x801688D0
 sb32 wpFoxBlasterProcUpdate(GObj *weapon_gobj)

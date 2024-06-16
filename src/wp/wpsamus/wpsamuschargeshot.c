@@ -1,11 +1,23 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
 extern intptr_t 
 lWPSamusChargeShotWeaponAttributes;         // 0x00000000
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 extern void ftCommon_PlayLoopSFXStoreInfo(ftStruct*, u16);
+
+// // // // // // // // // // // //
+//                               //
+//        INITALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 wpSamusChargeShotAttributes dWPSamusChargeShotWeaponAttributes[/* */] =
 {
@@ -137,6 +149,12 @@ wpCreateDesc dWPSamusChargeShotWeaponDesc =
     wpSamusChargeShotProcReflector,         // Proc Reflector
     wpSamusChargeShotProcHit                // Proc Absorb
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80168B00
 void wpSamusChargeShotLaunch(GObj *weapon_gobj) // Set Charge Shot's attributes upon firing

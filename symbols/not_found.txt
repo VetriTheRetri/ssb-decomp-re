@@ -785,6 +785,7 @@ omAddDObjAnimAll = 0x8000BD1C;
 D_ovl2_801313F4 = 0x801313F4;
 
 gFTDataSamusMain = 0x80130F30;
+gFTDataSamusSpecial1 = 0x80130F3C;
 
 gFTDataLinkSpecial1 = 0x80130FBC;
 

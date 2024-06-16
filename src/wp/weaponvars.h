@@ -2,7 +2,6 @@
 #define _WEAPONVARS_H_
 
 #include <ssb_types.h>
-#include <PR/ultratypes.h>
 #include <sys/obj.h>
 
 #include "wpdef.h"
@@ -12,18 +11,17 @@
 #define WPBLASTER_CLAMP_SCALE_X (160.0F / 3.0F)
 
 #define WPCHARGESHOT_GFX_SIZE_DIV 30.0F
-#define WPCHARGESHOT_ROTATE_SPEED 0.31415927F
+#define WPCHARGESHOT_ROTATE_SPEED F_CLC_DTOR32(18.0F)
 
 #define WPSAMUSBOMB_EXPLODE_LIFETIME 6
 #define WPSAMUSBOMB_EXPLODE_SIZE 180.0F
-
-#define WPSAMUSBOMB_WAIT_LIFETIME 100					 // Countdown of Bomb until it explodes
-#define WPSAMUSBOMB_WAIT_VEL_Y 10.0F					 // Initial velocity of Bomb
-#define WPSAMUSBOMB_WAIT_ROTATE_SPEED_AIR 0.34906587F	 // Bomb spins at this rate while airborne
-#define WPSAMUSBOMB_WAIT_ROTATE_SPEED_GROUND 0.17453294F // Bomb spins at this rate while grounded
-#define WPSAMUSBOMB_WAIT_COLLIDE_MOD_VEL 0.9F			 // Modify velocity when colliding with an obstruction?
-#define WPSAMUSBOMB_WAIT_GRAVITY 1.0F					 // Bomb's gravity
-#define WPSAMUSBOMB_WAIT_T_VEL 50.0F					 // Bomb's terminal velocity
+#define WPSAMUSBOMB_WAIT_LIFETIME 100					 			// Countdown of Bomb until it explodes
+#define WPSAMUSBOMB_WAIT_VEL_Y 10.0F					 			// Initial velocity of Bomb
+#define WPSAMUSBOMB_WAIT_ROTATE_SPEED_AIR F_CLC_DTOR32(20.0F)	 	// Bomb spins at this rate while airborne
+#define WPSAMUSBOMB_WAIT_ROTATE_SPEED_GROUND F_CLC_DTOR32(10.0F) 	// Bomb spins at this rate while grounded
+#define WPSAMUSBOMB_WAIT_COLLIDE_MOD_VEL 0.9F			 			// Modify velocity when colliding with an obstruction?
+#define WPSAMUSBOMB_WAIT_GRAVITY 1.0F					 			// Bomb's gravity
+#define WPSAMUSBOMB_WAIT_T_VEL 50.0F					 			// Bomb's terminal velocity
 #define WPSAMUSBOMB_WAIT_BLINK_SLOW                                                                                    \
 	40 // The light in the center of the bomb blinks at its "slow" rate while
 	   // lifetime is greater than this value

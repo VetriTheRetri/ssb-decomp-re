@@ -7,6 +7,7 @@
 #include "wprender.h"
 
 // Samus weapons
+#include <wp/wpsamus/wpsamuschargeshot.h>
 #include <wp/wpsamus/wpsamusbomb.h>
 
 // Pikachu weapons

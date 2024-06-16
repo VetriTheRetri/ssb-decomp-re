@@ -47,7 +47,7 @@
 
 #define WPPIKACHUTHUNDER_TEXTURE_COUNT 4   // Number of textures Thunder contains
 #define WPPIKACHUTHUNDER_SPAWN_LIFETIME 40 // Duration of inital Thunder projectile?
-#define WPPIKACHUTHUNDER_CHAIN_LIFETIME 10 // Duration of subsequent Thunder segments?
+#define WPPIKACHUTHUNDER_TRAIL_LIFETIME 10 // Duration of subsequent Thunder segments?
 #define WPPIKACHUTHUNDER_EXPIRE                                                                                        \
 	6 // Thunder can no longer damage opponents once its lifetime has dipped
 	  // below this number

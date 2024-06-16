@@ -195,6 +195,8 @@ build/src/libultra/io/epirawwrite.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/epirawwrite.o: CC := $(IDO5)
 build/src/libultra/os/seteventmesg.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/os/seteventmesg.o: CC := $(IDO5)
+build/src/libultra/io/vimgr.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/vimgr.o: CC := $(IDO5)
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

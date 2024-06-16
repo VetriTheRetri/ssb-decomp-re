@@ -295,7 +295,7 @@ segments:
       - [0x039A10, c, libultra/io/spsetstat]
       - [0x039A20, c, libultra/io/spgetstat]
       - [0x039A30, pad, padding_39A30]
-      - [0x039A40, asm, libultra/io/vimgr]
+      - [0x039A40, c, libultra/io/vimgr]
       - [0x039D50, c, libultra/io/vigetcurrcontext]
       - [0x039D60, hasm, libultra/os/writebackdcacheall]
       - [0x039D90, c, libultra/os/startthread]
@@ -337,7 +337,7 @@ segments:
       - [0x03E1D0, .data, libultra/io/contpfs]
       - [0x03E1E0, .data, libultra/io/contramread]
       - [0x03E1F0, data, libultra/libc/xlitob]
-      - [0x03E220, data, libultra/io/vimgr]
+      - [0x03E220, .data, libultra/io/vimgr]
       - [0x03E240, .data, libultra/io/aisetnextbuf]
       - [0x03E250, .rodata, sys/main]
       - [0x03E270, .rodata, sys/thread3]
@@ -394,7 +394,7 @@ segments:
       - { start: auto, type:  bss, name: libultra/io/cartrominit,  vram: 0x800A0590 }
       - { start: auto, type: .bss, name: libultra/io/contpfs,      vram: 0x800A0610 }
       - { start: auto, type: .bss, name: libultra/io/pfsisplug,    vram: 0x800A0710 }
-      - { start: auto, type:  bss, name: libultra/io/vimgr,        vram: 0x800A0750 }
+      - { start: auto, type: .bss, name: libultra/io/vimgr,        vram: 0x800A0750 }
 
   - name: scene_manager
     type: code

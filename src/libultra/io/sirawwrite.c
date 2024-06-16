@@ -1,23 +1,22 @@
 #include <PR/os_internal.h>
-#include <assert.h>
 #include <siint.h>
+#include <assert.h>
 
 // Adjust line numbers to match assert
 #if BUILD_VERSION < VERSION_J
-#line 45
+#line 46
 #endif
 
 // TODO: this comes from a header
 #ident "$Revision: 1.17 $"
 
-s32 __osSpRawReadIo(u32 devAddr, u32* data) {
+s32 __osSiRawWriteIo(u32 devAddr, u32 data) {
 	assert((devAddr & 0x3) == 0);
-	assert(data != NULL);
 
-	if (__osSpDeviceBusy()) {
+	if (__osSiDeviceBusy()) {
 		return -1;
 	}
 
-	*data = IO_READ(devAddr);
+	IO_WRITE(devAddr, data);
 	return 0;
 }

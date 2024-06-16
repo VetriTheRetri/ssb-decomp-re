@@ -181,6 +181,18 @@ build/src/libultra/io/sirawdma.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/sirawdma.o: CC := $(IDO5)
 build/src/libultra/io/pimgr.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/pimgr.o: CC := $(IDO5)
+build/src/libultra/io/pfsgetstatus.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/pfsgetstatus.o: CC := $(IDO5)
+build/src/libultra/io/contpfs.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/contpfs.o: CC := $(IDO5)
+build/src/libultra/io/contramread.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/contramread.o: CC := $(IDO5)
+build/src/libultra/io/crc.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/crc.o: CC := $(IDO5)
+build/src/libultra/io/pfsisplug.o: OPTFLAGS := -O1 -mips2
+build/src/libultra/io/pfsisplug.o: CC := $(IDO5)
+build/src/libultra/io/epirawwrite.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/epirawwrite.o: CC := $(IDO5)
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

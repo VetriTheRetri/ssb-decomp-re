@@ -644,14 +644,14 @@ extern "C"
 #define OS_PFS_VERSION_HI (OS_PFS_VERSION >> 8)
 #define OS_PFS_VERSION_LO (OS_PFS_VERSION & 255)
 
+#define PFS_INODE_SIZE_PER_PAGE 128
 #define PFS_FILE_NAME_LEN 16
 #define PFS_FILE_EXT_LEN 4
 #define BLOCKSIZE 32   /* bytes */
 #define PFS_ONE_PAGE 8 /* blocks */
 #define PFS_MAX_BANKS 62
 
-	/* File System flag */
-
+/* File System flag */
 #define PFS_READ 0
 #define PFS_WRITE 1
 #define PFS_CREATE 2

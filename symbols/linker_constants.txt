@@ -8,6 +8,8 @@ lOverlay40ArenaLo = 0x8018E5E0;
 lOverlay40ArenaHi = 0x803903E0;
 
 lWPMariroFireballWeaponAttributes = 0x00000000;
+lWPMarioFireballMarioWeaponAttributes = 0x00000000;
+lWPMarioFireballLuigiWeaponAttributes = 0x00000000;
 
 lWPFoxBlasterWeaponAttributes = 0x00000000;
 

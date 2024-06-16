@@ -784,10 +784,15 @@ g1PGameTotalDamageTaken = 0x80130D6C;
 omAddDObjAnimAll = 0x8000BD1C;
 D_ovl2_801313F4 = 0x801313F4;
 
+gFTDataMarioMain = 0x80130E30;
+gFTDataMarioSpecial1 = 0x80130E3C;
+
 gFTDataFoxSpecial1 = 0x80130E9C;
 
 gFTDataSamusMain = 0x80130F30;
 gFTDataSamusSpecial1 = 0x80130F3C;
+
+gFTDataLuigiSpecial1 = 0x80130F7C;
 
 gFTDataLinkSpecial1 = 0x80130FBC;
 

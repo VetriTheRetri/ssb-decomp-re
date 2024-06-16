@@ -7,6 +7,8 @@
 #include "wprender.h"
 
 // Fox weapons
+#include <wp/wpmario/wpmariofireball.h>
+
 #include <wp/wpfox/wpfoxblaster.h>
 
 // Samus weapons

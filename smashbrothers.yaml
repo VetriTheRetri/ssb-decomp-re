@@ -441,6 +441,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Weapon handler files
+      - [0x0E22C0, c, wp/wpmap]
       - [0x0E28F0, c, wp/wpmain]
     # Weapon entity files
       - [0x0E2F80, c, wp/wpmario/wpmariofireball]

@@ -49,7 +49,7 @@ void wpMainVelSetLR(GObj *weapon_gobj) // Set weapon's facing direction based on
 }
 
 // 0x80167FA0
-void wpMainVelSetModelPitch(GObj *weapon_gobj) // Set yaw rotation based on velocity
+void wpMainVelSetModelPitch(GObj *weapon_gobj) // Set pitch rotation based on velocity
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 

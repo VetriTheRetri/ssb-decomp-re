@@ -270,7 +270,7 @@ segments:
       - [0x0368D0, c, libultra/gu/cosf]
       - [0x036A40, c, libultra/os/settime]
       - [0x036A70, c, libultra/io/visetevent]
-      - [0x036AE0, asm, libultra/io/cartrominit]
+      - [0x036AE0, c, libultra/io/cartrominit]
       - [0x036CC0, c, libultra/io/pfsselectbank]
       - [0x036D40, hasm, libultra/os/setfpccsr]
       - [0x036D50, c, libultra/io/epirawread]
@@ -333,7 +333,7 @@ segments:
       - [0x03E0B0, data, libultra/vimodentsclan1] # osViModeNtscLan1
       - [0x03E100, data, libultra/vimodempallan1] # osViModeMpalLan1
       - [0x03E150, .data, libultra/io/vi]
-      - [0x03E1C0, data, libultra/io/cartrominit]
+      - [0x03E1C0, .data, libultra/io/cartrominit]
       - [0x03E1D0, .data, libultra/io/contpfs]
       - [0x03E1E0, .data, libultra/io/contramread]
       - [0x03E1F0, data, libultra/libc/xlitob]
@@ -391,7 +391,7 @@ segments:
       - { start: auto, type: .bss, name: libultra/io/piacs,        vram: 0x800A04B0 }
       - { start: auto, type: .bss, name: libultra/os/seteventmesg, vram: 0x800A04D0 }
       - { start: auto, type: .bss, name: libultra/os/timerintr,    vram: 0x800A0550 }
-      - { start: auto, type:  bss, name: libultra/io/cartrominit,  vram: 0x800A0590 }
+      - { start: auto, type: .bss, name: libultra/io/cartrominit,  vram: 0x800A0590 }
       - { start: auto, type: .bss, name: libultra/io/contpfs,      vram: 0x800A0610 }
       - { start: auto, type: .bss, name: libultra/io/pfsisplug,    vram: 0x800A0710 }
       - { start: auto, type: .bss, name: libultra/io/vimgr,        vram: 0x800A0750 }

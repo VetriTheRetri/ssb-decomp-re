@@ -784,6 +784,8 @@ g1PGameTotalDamageTaken = 0x80130D6C;
 omAddDObjAnimAll = 0x8000BD1C;
 D_ovl2_801313F4 = 0x801313F4;
 
+gFTDataSamusMain = 0x80130F30;
+
 gFTDataLinkSpecial1 = 0x80130FBC;
 
 gFTDataYoshiMain = 0x80130FF0;

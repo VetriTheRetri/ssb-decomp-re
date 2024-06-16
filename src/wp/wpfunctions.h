@@ -6,6 +6,9 @@
 #include "wpmap.h"
 #include "wprender.h"
 
+// Samus weapons
+#include <wp/wpsamus/wpsamusbomb.h>
+
 // Pikachu weapons
 #include <wp/wppikachu/wppikachuthunderjolt.h>
 #include <wp/wppikachu/wppikachuthunder.h>

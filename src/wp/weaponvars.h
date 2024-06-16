@@ -15,7 +15,7 @@
 #define WPCHARGESHOT_ROTATE_SPEED 0.31415927F
 
 #define WPSAMUSBOMB_EXPLODE_LIFETIME 6
-#define WPSAMUSBOMB_EXPLODE_RADIUS 180.0F
+#define WPSAMUSBOMB_EXPLODE_SIZE 180.0F
 
 #define WPSAMUSBOMB_WAIT_LIFETIME 100					 // Countdown of Bomb until it explodes
 #define WPSAMUSBOMB_WAIT_VEL_Y 10.0F					 // Initial velocity of Bomb
@@ -38,7 +38,7 @@
 #define WPPIKACHUJOLT_VEL 55.0F
 #define WPPIKACHUJOLT_GRAVITY 0.0F
 #define WPPIKACHUJOLT_T_VEL 50.0F
-#define WPPIKACHUJOLT_ROTATE_ANGLE_MAX 1.7453293F
+#define WPPIKACHUJOLT_ROTATE_ANGLE_MAX F_CLC_DTOR32(100.0F)
 #define WPPIKACHUJOLT_ANIM_PUSH_FRAME 7.5F // Frame on which Thunder Jolt gets pushed ahead to simulate movement?
 #define WPPIKACHUJOLT_COLL_GROUND 0		   // ID of Thunder Jolt collision type
 #define WPPIKACHUJOLT_COLL_RWALL 1		   // ID of Thunder Jolt collision type

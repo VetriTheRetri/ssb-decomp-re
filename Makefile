@@ -67,7 +67,7 @@ MIPS_BINUTILS_PREFIX := mips-linux-gnu-
 TOOLS	  := tools
 PYTHON	  := python3
 INCLUDES := -Iinclude -Isrc
-DEFINES := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32 -DNDEBUG -DN_MICRO
+DEFINES := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32 -DNDEBUG -DN_MICRO -D_FINALROM
 OPTFLAGS := -O2
 
 # ----- Output ------
@@ -193,6 +193,8 @@ build/src/libultra/io/pfsisplug.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/io/pfsisplug.o: CC := $(IDO5)
 build/src/libultra/io/epirawwrite.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/epirawwrite.o: CC := $(IDO5)
+build/src/libultra/os/seteventmesg.o: OPTFLAGS := -O1 -mips2
+build/src/libultra/os/seteventmesg.o: CC := $(IDO5)
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

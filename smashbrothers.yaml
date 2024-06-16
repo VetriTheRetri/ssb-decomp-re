@@ -232,7 +232,7 @@ segments:
       - [0x033B20, asm, libultra/io/devmgr]
       - [0x033FB0, c, libultra/io/pirawdma]
       - [0x034090, hasm, libultra/os/getcount]
-      - [0x0340A0, asm, libultra/os/seteventmesg]
+      - [0x0340A0, c, libultra/os/seteventmesg]
       - [0x034110, hasm, libultra/gu/sqrtf]
       - [0x034120, asm, libultra/os/afterprenmi]
       - [0x034140, c, libultra/io/contquery]
@@ -389,7 +389,7 @@ segments:
       - { start: auto, type:  bss, name: libultra/os/initialize,   vram: 0x8009F030 }
       - { start: auto, type:  bss, name: libultra/io/pimgr,        vram: 0x8009F2E0 }
       - { start: auto, type: .bss, name: libultra/io/piacs,        vram: 0x800A04B0 }
-      - { start: auto, type:  bss, name: libultra/os/seteventmesg, vram: 0x800A04D0 }
+      - { start: auto, type: .bss, name: libultra/os/seteventmesg, vram: 0x800A04D0 }
       - { start: auto, type: .bss, name: libultra/os/timerintr,    vram: 0x800A0550 }
       - { start: auto, type:  bss, name: libultra/io/cartrominit,  vram: 0x800A0590 }
       - { start: auto, type: .bss, name: libultra/io/contpfs,      vram: 0x800A0610 }

@@ -6,6 +6,9 @@
 #include "wpmap.h"
 #include "wprender.h"
 
+// Fox weapons
+#include <wp/wpfox/wpfoxblaster.h>
+
 // Samus weapons
 #include <wp/wpsamus/wpsamuschargeshot.h>
 #include <wp/wpsamus/wpsamusbomb.h>

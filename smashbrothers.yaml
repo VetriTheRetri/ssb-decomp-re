@@ -440,6 +440,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Weapon entity files
+      - [0x0E3310, c, wp/wpfox/wpfoxblaster]
       - [0x0E3540, c, wp/wpsamus/wpsamuschargeshot]
       - [0x0E3940, c, wp/wpsamus/wpsamusbomb]
       - [0x0E3DD0, c, wp/wppikachu/wppikachuthunderjolt]
@@ -510,6 +511,7 @@ segments:
     # ovl3 data
       - [0x1010A0, data, ovl3]
     # Weapon entity files
+      - [0x103910, .data, wp/wpfox/wpfoxblaster]
       - [0x103950, .data, wp/wpsamus/wpsamuschargeshot]
       - [0x103AB0, .data, wp/wpsamus/wpsamusbomb]
       - [0x103AF0, .data, wp/wppikachu/wppikachuthunderjolt]
@@ -574,6 +576,7 @@ segments:
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
     # Weapon entity files
+      - [0x1074E0, .rodata, wp/wpfox/wpfoxblaster]
       - [0x1074F0, .rodata, wp/wpsamus/wpsamuschargeshot]
       - [0x107500, .rodata, wp/wpsamus/wpsamusbomb]
       - [0x107510, .rodata, wp/wppikachu/wppikachuthunderjolt]

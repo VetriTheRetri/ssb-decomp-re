@@ -441,6 +441,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Weapon handler files
+      - [0x0DFEF0, c, wp/wpmanager]
       - [0x0E0910, c, wp/wpprocess]
       - [0x0E18C0, c, wp/wprender]
       - [0x0E22C0, c, wp/wpmap]

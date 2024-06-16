@@ -1,8 +1,15 @@
 #include <wp/weapon.h>
 #include <it/item.h>
 #include <ft/fighter.h>
-#include <gr/ground.h>
-#include <gm/battle.h>
+
+extern void func_8000BED8_CAD8(GObj*, void*, void*, f32);
+extern f32 gmCommon_DamageGetStaleMul(s32, s32, u16);
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8018CFF0 - Points to next available weapon struct
 wpStruct *sWPAllocFree;
@@ -12,6 +19,12 @@ s32 sWPDisplayMode;
 
 // 0x8018CFF8
 u32 sWPGroupID;
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x801654B0
 void wpManagerAllocWeapons(void)
@@ -149,9 +162,9 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
 
         wp->display_mode = ip->display_mode;
 
-        wp->weapon_hit.stale = ip->item_hit.throw_mul;
+        wp->weapon_hit.stale = ip->item_hit.stale;
         wp->weapon_hit.attack_id = ip->item_hit.attack_id;
-        wp->weapon_hit.motion_count = ip->item_hit.stat_count;
+        wp->weapon_hit.motion_count = ip->item_hit.motion_count;
         wp->weapon_hit.stat_flags = ip->item_hit.stat_flags;
         wp->weapon_hit.stat_count = ip->item_hit.stat_count;
         break;
@@ -258,7 +271,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
 
         cb = (wp_desc->flags & 0x2) ? wpRenderDObjDLLinks : wpRenderDLHead1;
     }
-    omAddGObjRenderProc(weapon_gobj, cb, 0xE, 0x80000000, -1);
+    omAddGObjRenderProc(weapon_gobj, cb, 14, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     if (attributes->mobjsub != NULL)
     {
@@ -266,7 +279,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     }
     if ((attributes->anim_joint != NULL) || (attributes->matanim_joint != NULL))
     {
-        func_8000BED8(weapon_gobj, attributes->anim_joint, attributes->matanim_joint, 0.0F);
+        func_8000BED8_CAD8(weapon_gobj, attributes->anim_joint, attributes->matanim_joint, 0.0F);
     }
     wp->coll_data.p_translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     wp->coll_data.p_lr = &wp->lr;
@@ -280,8 +293,8 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     wp->coll_data.ignore_line_id = -1;
     wp->coll_data.ground_line_id = -1;
     wp->coll_data.ceil_line_id = -1;
-    wp->coll_data.rwall_line_id = -1;
     wp->coll_data.lwall_line_id = -1;
+    wp->coll_data.rwall_line_id = -1;
 
     wp->coll_data.coll_update_frame = gMPCollUpdateFrame;
     wp->coll_data.coll_mask_curr = 0;

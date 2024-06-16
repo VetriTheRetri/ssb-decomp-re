@@ -441,6 +441,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Weapon handler files
+      - [0x0E18C0, c, wp/wprender]
       - [0x0E22C0, c, wp/wpmap]
       - [0x0E28F0, c, wp/wpmain]
     # Weapon entity files
@@ -516,6 +517,7 @@ segments:
     # ovl3 data
       - [0x1010A0, data, ovl3]
     # Weapon handler files
+      - [0x103850, .data, wp/wprender]
     # Weapon entity files
       - [0x103870, .data, wp/wpmario/wpmariofireball]
       - [0x103910, .data, wp/wpfox/wpfoxblaster]

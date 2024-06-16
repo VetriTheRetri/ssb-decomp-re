@@ -1,4 +1,10 @@
-#include "weapon.h"
+#include <wp/weapon.h>
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x80167880
 sb32 wpMapProcLRWallCheckGround(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)

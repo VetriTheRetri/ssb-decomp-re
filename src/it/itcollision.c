@@ -237,7 +237,7 @@ void itCollisionUpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hi
 
     if (wp_hit->priority <= highest_priority)
     {
-        wpManagerUpdateHitInteractStatsGroupID(wp, wp_hit, item_gobj, gmHitCollision_Type_Hit, 0);
+        wpProcessUpdateHitInteractStatsGroupID(wp, wp_hit, item_gobj, gmHitCollision_Type_Hit, 0);
 
         if (wp->hit_attack_damage < wp_hit_damage)
         {
@@ -365,7 +365,7 @@ void itCollisionUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbo
 
     is_rehit = ((ip->type == It_Type_Damage) && (wp_hit->can_rehit_item)) ? TRUE : FALSE;
 
-    wpManagerUpdateHitInteractStatsGroupID(wp, wp_hit, item_gobj, ((is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt), 0);
+    wpProcessUpdateHitInteractStatsGroupID(wp, wp_hit, item_gobj, ((is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt), 0);
 
     if (is_rehit != FALSE)
     {

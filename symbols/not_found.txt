@@ -813,6 +813,10 @@ gFTDataBossBattleMotion = 0x80131174;
 gCameraMatrix = 0x80131470;
 gCameraStruct = 0x801314B0;
 
+sWPAllocFree = 0x8018CFF0;
+sWPDisplayMode = 0x8018CFF4;
+sWPGroupID = 0x8018CFF8;
+
 gITFileData = 0x8018D040;
 gITEffectBank = 0x8018D044;
 gITRandomWeights = 0x8018D048;

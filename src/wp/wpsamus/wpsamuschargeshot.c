@@ -213,7 +213,7 @@ sb32 wpSamusChargeShotProcUpdate(GObj *weapon_gobj)
 
             wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
 
-            wpManagerUpdateHitPositions(weapon_gobj);
+            wpProcessUpdateHitPositions(weapon_gobj);
         }
     }
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= WPCHARGESHOT_ROTATE_SPEED * wp->lr;

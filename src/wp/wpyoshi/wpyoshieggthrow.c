@@ -151,7 +151,7 @@ void wpYoshiEggThrowInitWeaponVars(GObj *weapon_gobj)
 
     wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
 
-    wpManagerUpdateHitPositions(weapon_gobj);
+    wpProcessUpdateHitPositions(weapon_gobj);
 }
 
 // 0x8016C218

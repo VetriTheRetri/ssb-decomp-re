@@ -151,7 +151,7 @@ GObj* wpLinkSpinAttackMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
     
     wp->phys_info.vel_air.x = wp->phys_info.vel_air.y = wp->phys_info.vel_air.z = 0.0F;
 
-    wpManagerUpdateHitPositions(weapon_gobj);
+    wpProcessUpdateHitPositions(weapon_gobj);
 
     return weapon_gobj;
 }

@@ -711,7 +711,7 @@ GObj* wpNessPKReflectTrailMakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_index
 
     DObjGetStruct(new_gobj)->rotate.vec.f.z = DObjGetStruct(old_gobj)->rotate.vec.f.z - F_CST_DTOR32(90.0F);
 
-    wpManagerUpdateHitPositions(new_gobj);
+    wpProcessUpdateHitPositions(new_gobj);
 
     return new_gobj;
 }

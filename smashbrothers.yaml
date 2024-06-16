@@ -441,6 +441,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Weapon handler files
+      - [0x0E0910, c, wp/wpprocess]
       - [0x0E18C0, c, wp/wprender]
       - [0x0E22C0, c, wp/wpmap]
       - [0x0E28F0, c, wp/wpmain]
@@ -585,6 +586,7 @@ segments:
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
     # Weapon handler files
+      - [0x107470, .rodata, wp/wpprocess]
       - [0x1074C0, .rodata, wp/wpmain]
     # Weapon entity files
       - [0x1074E0, .rodata, wp/wpfox/wpfoxblaster]

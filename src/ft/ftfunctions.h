@@ -7,4 +7,6 @@
 #include "fthammer.h"
 #include "ftphysics.h"
 
+#include "ftpublicity.h"
+
 #endif

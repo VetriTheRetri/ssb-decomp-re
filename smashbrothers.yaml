@@ -440,6 +440,8 @@ segments:
     
     # ovl3 text
       - [0x0AC540, asm, ovl3]
+    # Crowd reaction handler
+      - [0x0DF4F0, c, ft/ftpublicity]
     # Weapon handler files
       - [0x0DFEF0, c, wp/wpmanager]
       - [0x0E0910, c, wp/wpprocess]

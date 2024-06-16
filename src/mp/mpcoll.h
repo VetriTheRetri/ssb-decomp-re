@@ -4,4 +4,6 @@
 #include "mptypes.h"
 #include "mpfunctions.h"
 
+extern mpEdgeBounds gMPEdgeBounds;
+
 #endif

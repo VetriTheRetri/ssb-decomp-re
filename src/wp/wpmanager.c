@@ -214,23 +214,23 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     wp->weapon_hit.knockback_base = attributes->knockback_base;
 
     wp->weapon_hit.can_setoff = attributes->can_setoff;
+
     wp->weapon_hit.shield_damage = attributes->shield_damage;
 
     wp->weapon_hit.hit_sfx = attributes->sfx;
 
     wp->weapon_hit.priority = attributes->priority;
+
     wp->weapon_hit.can_rehit_item = attributes->can_rehit_item;
     wp->weapon_hit.can_rehit_fighter = attributes->can_rehit_fighter;
-
     wp->weapon_hit.can_rehit_shield = FALSE;
 
     wp->weapon_hit.can_hop = attributes->can_hop;
     wp->weapon_hit.can_reflect = attributes->can_reflect;
     wp->weapon_hit.can_absorb = attributes->can_absorb;
-
     wp->weapon_hit.can_not_heal = FALSE;
-
     wp->weapon_hit.can_shield = attributes->can_shield;
+    
     wp->weapon_hit.hitbox_count = attributes->hitbox_count;
 
     wp->weapon_hit.interact_mask = GMHITCOLLISION_MASK_ALL;

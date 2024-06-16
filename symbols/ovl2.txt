@@ -1458,3 +1458,4 @@ D_ovl2_8012FA04 = 0x8012FA04; // segment:ovl2
 
 dCommonFileIDs = 0x80116BD0; // segment:ovl2 type:u32 size:0x20
 dFTDefaultFighterDesc = 0x80116DD0; // segment:ovl2 size:0x30
+dFTPublicityChantFighterFGMs = 0x8012C9A8;

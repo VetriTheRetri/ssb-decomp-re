@@ -810,8 +810,29 @@ gFTDataNessParticleBankID = 0x80131148;
 
 gFTDataBossBattleMotion = 0x80131174;
 
+gMPEdgeBounds = 0x80131308;
+
 gCameraMatrix = 0x80131470;
 gCameraStruct = 0x801314B0;
+
+sFTPublicityCommonFramesSince = 0x8018CF90;
+sFTPublicityCommonPlayerNum = 0x8018CF94;
+sFTPublicityCommonKnockback = 0x8018CF98;
+sFTPublicityCommonALSound = 0x8018CF9C;
+sFTPublicityCommonOrder = 0x8018CFA0;
+sFTPublicityChantIsInterrupt = 0x8018CFA4;
+sFTPublicityChantWait = 0x8018CFA8;
+sFTPublicityChantPlayerNum = 0x8018CFAC;
+sFTPublicityChantALSound = 0x8018CFB0;
+sFTPublicityChantOrder = 0x8018CFB4;
+sFTPublicityChantCount = 0x8018CFB8;
+sFTPublicityChantID = 0x8018CFBC;
+sFTPublicityPlayersDown = 0x8018CFC0;
+sFTPublicityDefeatedVoiceIDs = 0x8018CFC8;
+sFTPublicityDefeatedQueueCurrent = 0x8018CFDC;
+sFTPublicityDefeatedQueueEnd = 0x8018CFE0;
+sFTPublicityDefeatedALSound = 0x8018CFE4;
+sFTPublicityDefeatedCurrentOrder = 0x8018CFE8;
 
 sWPAllocFree = 0x8018CFF0;
 sWPDisplayMode = 0x8018CFF4;

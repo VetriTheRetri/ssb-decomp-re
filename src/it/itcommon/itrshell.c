@@ -190,7 +190,7 @@ void itRShellGSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
             {
                 ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-                itManagerUpdateHitPositions(item_gobj);
+                itProcessUpdateHitPositions(item_gobj);
             }
         }
         ip->lr = (ip->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right;
@@ -339,7 +339,7 @@ void itRShellGWaitUpdateStatusVars(GObj *item_gobj)
     {
         ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-        itManagerUpdateHitPositions(item_gobj);
+        itProcessUpdateHitPositions(item_gobj);
         itRShellGSpinSetStatus(item_gobj);
     }
     else
@@ -390,7 +390,7 @@ sb32 itRShellSDefaultProcDamage(GObj *item_gobj)
 
         ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-        itManagerUpdateHitPositions(item_gobj);
+        itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
 
         if (ip->ground_or_air != GA_Ground)
@@ -591,7 +591,7 @@ sb32 itRShellGSpinProcDamage(GObj *item_gobj)
     {
         ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-        itManagerUpdateHitPositions(item_gobj);
+        itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
         itRShellGSpinSetStatus(item_gobj);
     }

@@ -280,7 +280,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
     ip->item_hit.stat_count = wp->weapon_hit.stat_count;
 
     itMapSetAir(ip);
-    itManagerUpdateHitPositions(item_gobj);
+    itProcessUpdateHitPositions(item_gobj);
 
     ip->lifetime = ITPKFIRE_LIFETIME;
 

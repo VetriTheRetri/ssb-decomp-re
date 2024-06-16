@@ -250,7 +250,7 @@ void itGShellGWaitInitItemVars(GObj *item_gobj)
     {
         ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-        itManagerUpdateHitPositions(item_gobj);
+        itProcessUpdateHitPositions(item_gobj);
         itGShellGSpinSetStatus(item_gobj);
     }
     else
@@ -303,7 +303,7 @@ sb32 itGShellSDefaultProcDamage(GObj *item_gobj)
 
         ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-        itManagerUpdateHitPositions(item_gobj);
+        itProcessUpdateHitPositions(item_gobj);
 
         ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
@@ -446,7 +446,7 @@ sb32 itGShellGASpinProcDamage(GObj *item_gobj)
     {
         ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-        itManagerUpdateHitPositions(item_gobj);
+        itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
 
         if (ip->ground_or_air != FALSE)

@@ -236,7 +236,7 @@ void itMainRefreshHit(GObj *item_gobj)
 
     ip->item_hit.update_state = gmHitCollision_UpdateState_New;
 
-    itManagerUpdateHitPositions(item_gobj);
+    itProcessUpdateHitPositions(item_gobj);
 }
 
 // 0x8017279C

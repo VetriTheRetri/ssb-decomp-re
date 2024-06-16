@@ -463,7 +463,7 @@ segments:
       - [0x0E8640, c, wp/wpboss/wpbossbullet]
     # Item handler files
       - [0x0E88E0, c, it/itmanager]
-      - [0x0EA370, c, it/itcollision]
+      - [0x0E9CC0, c, it/itprocess]
       - [0x0EBDF0, c, it/itvisuals]
       - [0x0EBE50, c, it/itrender]
       - [0x0ECD50, c, it/itmain]
@@ -601,7 +601,7 @@ segments:
       - [0x1075B0, .rodata, wp/wplink/wplinkboomerang]
     # Item handler files
       - [0x107620, .rodata, it/itmanager]
-      - [0x107660, .rodata, it/itcollision]
+      - [0x107660, .rodata, it/itprocess]
       - [0x1076B0, .rodata, it/itmain]
     # Item entity files
       - [0x1076F0, .rodata, it/itcommon/itcapsule]

@@ -413,9 +413,9 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     ip->coll_data.vel_push.y            = 0.0F;
     ip->coll_data.vel_push.z            = 0.0F;
 
-    omAddGObjCommonProc(item_gobj, itManagerProcItemMain, GObjProcess_Kind_Proc, 3);
-    omAddGObjCommonProc(item_gobj, itCollisionProcSearchHitAll, GObjProcess_Kind_Proc, 1);
-    omAddGObjCommonProc(item_gobj, itCollisionProcHitCollisions, GObjProcess_Kind_Proc, 0);
+    omAddGObjCommonProc(item_gobj, itProcessProcItemMain, GObjProcess_Kind_Proc, 3);
+    omAddGObjCommonProc(item_gobj, itProcessProcSearchHitAll, GObjProcess_Kind_Proc, 1);
+    omAddGObjCommonProc(item_gobj, itProcessProcHitCollisions, GObjProcess_Kind_Proc, 0);
 
     ip->proc_update     = item_desc->proc_update;
     ip->proc_map        = item_desc->proc_map;
@@ -455,7 +455,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     }
     ip->ground_or_air = GA_Air;
 
-    itManagerUpdateHitPositions(item_gobj);
+    itProcessUpdateHitPositions(item_gobj);
     itMainClearColAnim(item_gobj);
 
     return item_gobj;
@@ -720,196 +720,4 @@ void itManagerInitMonsterVars(void)
 GObj* itManagerMakeItemID(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     return dITMakeProcList[index](spawn_gobj, pos, vel, flags);
-}
-
-// 0x8016F280
-void itManagerUpdateHitPositions(GObj *item_gobj)
-{
-    itStruct *ip = itGetStruct(item_gobj);
-    s32 i;
-
-    for (i = 0; i < ip->item_hit.hitbox_count; i++)
-    {
-        switch (ip->item_hit.update_state)
-        {
-        case gmHitCollision_UpdateState_Disable:
-            break;
-
-        case gmHitCollision_UpdateState_New:
-            ip->item_hit.hit_positions[i].pos.x = ip->item_hit.offset[i].x + DObjGetStruct(item_gobj)->translate.vec.f.x;
-            ip->item_hit.hit_positions[i].pos.y = ip->item_hit.offset[i].y + DObjGetStruct(item_gobj)->translate.vec.f.y;
-            ip->item_hit.hit_positions[i].pos.z = ip->item_hit.offset[i].z + DObjGetStruct(item_gobj)->translate.vec.f.z;
-
-            ip->item_hit.update_state = gmHitCollision_UpdateState_Transfer;
-
-            ip->item_hit.hit_positions[i].unk_ithitpos_0x18 = FALSE;
-            ip->item_hit.hit_positions[i].unk_ithitpos_0x5C = 0;
-            break;
-
-        case gmHitCollision_UpdateState_Transfer:
-            ip->item_hit.update_state = gmHitCollision_UpdateState_Interpolate;
-
-        case gmHitCollision_UpdateState_Interpolate:
-            ip->item_hit.hit_positions[i].pos_prev = ip->item_hit.hit_positions[i].pos;
-
-            ip->item_hit.hit_positions[i].pos.x = ip->item_hit.offset[i].x + DObjGetStruct(item_gobj)->translate.vec.f.x;
-            ip->item_hit.hit_positions[i].pos.y = ip->item_hit.offset[i].y + DObjGetStruct(item_gobj)->translate.vec.f.y;
-            ip->item_hit.hit_positions[i].pos.z = ip->item_hit.offset[i].z + DObjGetStruct(item_gobj)->translate.vec.f.z;
-
-            ip->item_hit.hit_positions[i].unk_ithitpos_0x18 = FALSE;
-            ip->item_hit.hit_positions[i].unk_ithitpos_0x5C = 0;
-            break;
-        }
-    }
-}
-
-// 0x8016F3D4
-void itManagerUpdateHitRecord(GObj *item_gobj)
-{
-    itStruct *ip = itGetStruct(item_gobj);
-    gmHitRecord *targets;
-    itHitbox *it_hit;
-    s32 i;
-
-    it_hit = &ip->item_hit;
-
-    if (it_hit->update_state != gmHitCollision_UpdateState_Disable)
-    {
-        for (i = 0; i < ARRAY_COUNT(ip->item_hit.hit_targets); i++)
-        {
-            targets = &it_hit->hit_targets[i];
-
-            if (targets->victim_gobj != NULL)
-            {
-                if (targets->victim_flags.timer_rehit > 0)
-                {
-                    targets->victim_flags.timer_rehit--;
-
-                    if (targets->victim_flags.timer_rehit <= 0)
-                    {
-                        targets->victim_gobj = NULL;
-
-                        targets->victim_flags.is_interact_hurt = targets->victim_flags.is_interact_shield = targets->victim_flags.is_interact_reflect = FALSE;
-
-                        targets->victim_flags.group_id = 7;
-                    }
-                }
-            }
-        }
-    }
-}
-
-// 0x8016F534
-void itManagerProcItemMain(GObj *item_gobj)
-{
-    itStruct *ip = itGetStruct(item_gobj);
-
-    if (ip->hitlag_timer > 0)
-    {
-        ip->hitlag_timer--;
-    }
-    if (ip->hitlag_timer <= 0)
-    {
-        func_8000DF34_EB34(item_gobj);
-    }
-    if (ip->hitlag_timer <= 0)
-    {
-        if (ip->proc_update != NULL)
-        {
-            if (ip->proc_update(item_gobj) != FALSE)
-            {
-                itMainDestroyItem(item_gobj);
-                return;
-            }
-        }
-    }
-    if (ip->is_allow_pickup)
-    {
-        ip->pickup_wait--;
-
-        if (ip->pickup_wait <= ITEM_DESPAWN_FLASH_BEGIN_DEFAULT)
-        {
-            if (ip->pickup_wait == 0)
-            {
-                efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
-
-                itMainDestroyItem(item_gobj);
-                return;
-            }
-            if ((ip->pickup_wait % 2) != 0) // Make item invisible on odd frames; when in doubt, simply do "& 1"
-            {
-                item_gobj->flags ^= GOBJ_FLAG_NORENDER;
-            }
-        }
-        if (ip->indicator_timer == 0)
-        {
-            ip->indicator_timer = ITEM_ARROW_FLASH_INT_DEFAULT;
-        }
-        ip->indicator_timer--;
-    }
-    else item_gobj->flags = GOBJ_FLAG_NONE;
-
-    if (!(ip->is_hold))
-    {
-        Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
-
-        ip->coll_data.pos_curr = *translate;
-
-        if (ip->hitlag_timer == 0)
-        {
-            translate->x += ip->phys_info.vel_air.x;
-            translate->y += ip->phys_info.vel_air.y;
-            translate->z += ip->phys_info.vel_air.z;
-        }
-        ip->coll_data.pos_correct.x = translate->x - ip->coll_data.pos_curr.x;
-        ip->coll_data.pos_correct.y = translate->y - ip->coll_data.pos_curr.y;
-        ip->coll_data.pos_correct.z = translate->z - ip->coll_data.pos_curr.z;
-
-        if ((ip->is_attach_surface) && (mpCollision_CheckExistLineID(ip->attach_line_id) != FALSE))
-        {
-            mpCollData *coll_data = &ip->coll_data;
-
-            mpCollision_GetSpeedLineID(ip->attach_line_id, &ip->coll_data.pos_speed);
-
-            translate->x += coll_data->pos_speed.x;
-            translate->y += coll_data->pos_speed.y;
-            translate->z += coll_data->pos_speed.z;
-        }
-
-        else if ((ip->ground_or_air == GA_Ground) && (ip->coll_data.ground_line_id != -1) && (ip->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(ip->coll_data.ground_line_id) != FALSE))
-        {
-            mpCollision_GetSpeedLineID(ip->coll_data.ground_line_id, &ip->coll_data.pos_speed);
-
-            translate->x += ip->coll_data.pos_speed.x;
-            translate->y += ip->coll_data.pos_speed.y;
-            translate->z += ip->coll_data.pos_speed.z;
-        }
-        else ip->coll_data.pos_speed.x = ip->coll_data.pos_speed.y = ip->coll_data.pos_speed.z = 0.0F;
-
-        if ((translate->y < gGroundInfo->blastzone_bottom) || (translate->x > gGroundInfo->blastzone_right) || (translate->x < gGroundInfo->blastzone_left) || (translate->y > gGroundInfo->blastzone_top))
-        {
-            if ((ip->proc_dead == NULL) || (ip->proc_dead(item_gobj) != FALSE))
-            {
-                itMainDestroyItem(item_gobj);
-                return;
-            }
-        }
-        if (ip->proc_map != NULL)
-        {
-            ip->coll_data.coll_mask_prev = ip->coll_data.coll_mask_curr;
-            ip->coll_data.coll_mask_curr = 0;
-            ip->coll_data.is_coll_end = FALSE;
-            ip->coll_data.coll_mask_stat = 0;
-            ip->coll_data.coll_mask_unk = 0;
-
-            if (ip->proc_map(item_gobj) != FALSE)
-            {
-                itMainDestroyItem(item_gobj);
-                return;
-            }
-        }
-        itManagerUpdateHitPositions(item_gobj);
-        itManagerUpdateHitRecord(item_gobj);
-    }
-    itVisualsUpdateColAnim(item_gobj);
 }

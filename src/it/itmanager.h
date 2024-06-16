@@ -45,12 +45,12 @@ void itManagerInitMonsterVars();
 GObj* itManagerMakeItemID(GObj* spawn_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 flags);
 
 // Update positions of item hitboxes
-void itManagerUpdateHitPositions(GObj* item_gobj);
+void itProcessUpdateHitPositions(GObj* item_gobj);
 
 // Update item's record of interacted targets (Decrement rehit timer if available, clear targets if timer reaches 0)
-void itManagerUpdateHitRecord(GObj* item_gobj);
+void itProcessUpdateHitRecord(GObj* item_gobj);
 
 // Main item logic GObj process (animation, physics, collision, blastzone check)
-void itManagerProcItemMain(GObj* item_gobj);
+void itProcessProcItemMain(GObj* item_gobj);
 
 #endif

@@ -7,6 +7,7 @@
 #include "wprender.h"
 
 // Pikachu weapons
+#include <wp/wppikachu/wppikachuthunderjolt.h>
 #include <wp/wppikachu/wppikachuthunder.h>
 
 // Ness weapons

@@ -791,6 +791,8 @@ gFTDataYoshiMain = 0x80130FF0;
 gFTDataKirbyMain = 0x80131070;
 
 gFTDataPikachuMain = 0x801310B0;
+gFTDataPikachuSpecial1 = 0x801310BC;
+gFTDataPikachuSpecial3 = 0x801310C4;
 
 gFTDataNessMain = 0x80131130;
 gFTDataNessSpecial1 = 0x8013113C;

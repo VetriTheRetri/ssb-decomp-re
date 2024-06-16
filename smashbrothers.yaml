@@ -438,6 +438,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Weapon entity files
+      - [0x0E3DD0, c, wp/wppikachu/wppikachuthunderjolt]
       - [0x0E5080, c, wp/wppikachu/wppikachuthunder]
       - [0x0E5480, c, wp/wpness/wpnesspkfire]
       - [0x0E5770, c, wp/wpness/wpnesspkthunder]
@@ -505,6 +506,7 @@ segments:
     # ovl3 data
       - [0x1010A0, data, ovl3]
     # Weapon entity files
+      - [0x103AF0, .data, wp/wppikachu/wppikachuthunderjolt]
       - [0x103B60, .data, wp/wppikachu/wppikachuthunder]
       - [0x103BD0, .data, wp/wpness/wpnesspkfire]
       - [0x103C10, .data, wp/wpness/wpnesspkthunder]
@@ -566,6 +568,7 @@ segments:
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
     # Weapon entity files
+      - [0x107510, .rodata, wp/wppikachu/wppikachuthunderjolt]
       - [0x107530, .rodata, wp/wpness/wpnesspkfire]
       - [0x107540, .rodata, wp/wpness/wpnesspkthunder]
       - [0x107560, .rodata, wp/wpyoshi/wpyoshieggthrow]

@@ -26,7 +26,7 @@ extern void ftKirbySpecialLwUnused(GObj* fighter_gobj);
 extern void ftKirbySpecialLwUpdateColAnim(GObj* fighter_gobj);
 extern void ftKirbySpecialLwSetDamageResist(GObj* fighter_gobj);
 extern void ftKirbySpecialLwSetDropFallVel(ftStruct* fp);
-extern f32 ftKirbySpecialLwGetGroundAxisRoll(ftStruct* fp);
+extern f32 ftKirbySpecialLwGetGroundAxisYaw(ftStruct* fp);
 extern sb32 ftKirbySpecialLwCheckRelease(GObj* fighter_gobj, sb32 is_allow_release);
 extern void ftKirbySpecialLwStartProcUpdate(GObj* fighter_gobj);
 extern void ftKirbySpecialAirLwStartProcUpdate(GObj* fighter_gobj);

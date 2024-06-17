@@ -4,10 +4,9 @@
 #include <ssb_types.h>
 #include <macros.h>
 // #include <sys/objdraw.h> // Probably shouldn't be included
-#include <PR/ultratypes.h>
-#include <sys/thread6.h>
-#include <sys/hal_input.h>
+// #include <PR/ultratypes.h>
 #include <sys/obj.h>
+#include <sys/thread6.h>
 #include <mp/mpcoll.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
@@ -28,7 +27,7 @@
 #define FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN 8                                            // Default minimum stick range required to clamp air drift in respective physics routine
 
 #define FTINPUT_STICKBUFFER_FRAMES_MAX      ( U8_MAX - 1)
-#define FTINPUT_ZBUTTONLAST_FRAMES_MAX      (U16_MAX + 1)
+#define FTINPUT_ZTRIGLAST_FRAMES_MAX        (U16_MAX + 1)
 
 #define FTSTAT_CHARDATA_START 0x20000
 #define FTSTAT_OPENING1_START 0x1000F

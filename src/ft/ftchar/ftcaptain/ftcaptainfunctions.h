@@ -10,7 +10,7 @@ extern void ftCaptainAppearStartProcUpdate(GObj* fighter_gobj);
 extern void ftCaptainAppearEndSetStatus(GObj* fighter_gobj);
 
 // SpecialN / SpecialAirN
-extern void ftCaptainSpecialNUpdateGFX(GObj* fighter_gobj);
+extern void ftCaptainSpecialNUpdateEffect(GObj* fighter_gobj);
 extern f32 ftCaptainSpecialNGetAngle(s32 stick_y);
 extern void ftCaptainSpecialNProcPhysics(GObj* fighter_gobj);
 extern void ftCaptainSpecialAirNProcPhysics(GObj* fighter_gobj);

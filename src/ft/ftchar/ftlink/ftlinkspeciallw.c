@@ -1,6 +1,12 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x801643D0
 void ftLinkSpecialLwCreateBomb(GObj *fighter_gobj)
 {

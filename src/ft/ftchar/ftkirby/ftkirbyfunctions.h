@@ -58,7 +58,7 @@ extern void ftKirbySpecialNInitCatchVars(ftStruct* fp);
 extern void ftKirbySpecialNGotoInitCatchVars(GObj* fighter_gobj);
 extern void ftKirbySpecialNInitFighterVars(ftStruct* fp);
 extern void ftKirbySpecialNCopyInitCopyVars(GObj* fighter_gobj);
-extern void ftKirbySpecialNStopGFX(GObj* fighter_gobj);
+extern void ftKirbySpecialNStopEffect(GObj* fighter_gobj);
 extern void ftKirbySpecialNStartProcUpdate(GObj* fighter_gobj);
 extern void ftKirbySpecialNLoopProcUpdate(GObj* fighter_gobj);
 extern void ftKirbySpecialNCatchProcUpdate(GObj* fighter_gobj);

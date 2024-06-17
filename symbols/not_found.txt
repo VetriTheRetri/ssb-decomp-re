@@ -799,6 +799,7 @@ gFTDataLinkSpecial1 = 0x80130FBC;
 gFTDataYoshiMain = 0x80130FF0;
 
 gFTDataKirbyMain = 0x80131070;
+gFTDataKirbyBattleMotion = 0x80131074;
 
 gFTDataPikachuMain = 0x801310B0;
 gFTDataPikachuSpecial1 = 0x801310BC;

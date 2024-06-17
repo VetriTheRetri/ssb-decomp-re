@@ -1,6 +1,12 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80163B40
 void ftLinkSpecialHiDestroyWeapon(ftStruct *fp, wpStruct *wp)
 {

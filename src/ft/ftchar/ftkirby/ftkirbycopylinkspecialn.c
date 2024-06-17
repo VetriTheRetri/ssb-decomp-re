@@ -1,6 +1,12 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80164650
 void ftKirbyCopyLinkSpecialNDestroyBoomerang(GObj *fighter_gobj)
 {

@@ -272,7 +272,7 @@ void ftLinkSpecialHiProcMap(GObj *fighter_gobj)
     if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
     {
         ftMap_SetAir(fp);
-        ftMainSetFighterStatus(fighter_gobj, ftStatus_Link_SpecialAirHi, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_GFX_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
+        ftMainSetFighterStatus(fighter_gobj, ftStatus_Link_SpecialAirHi, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_EFFECT_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
 
         fp->proc_damage = ftLinkSpecialHiProcDamage;
 

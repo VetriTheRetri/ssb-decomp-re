@@ -7,7 +7,7 @@
 
 #define FTYOSHI_JUMPAERIAL_KNOCKBACK_RESIST 140.0F
 
-#define FTYOSHI_EGG_THROW_JOINT ftParts_Joint_YRotN // Bone to attach Egg
+#define FTYOSHI_EGGTHROW_JOINT ftParts_Joint_YRotN // Bone to attach Egg
 
 #define FTYOSHI_YOSHIBOMB_STAR_SPAWN_JOINT 0    // Bone to use as base for Star projectiles when landing
 #define FTYOSHI_YOSHIBOMB_VEL_X_CLAMP 30.0F     // Not sure how this takes effect

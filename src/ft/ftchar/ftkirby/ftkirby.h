@@ -3,7 +3,7 @@
 
 #include <ft/fttypes.h>
 
-#include "ftkirby_functions.h"
+#include "ftkirbyfunctions.h"
 
 #define FTKIRBY_JUMPAERIAL_VEL_MUL 0.8F
 

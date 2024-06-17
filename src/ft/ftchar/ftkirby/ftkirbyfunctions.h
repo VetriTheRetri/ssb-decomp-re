@@ -266,7 +266,7 @@ extern void ftKirbyCopyPurinSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyPurinSpecialAirNSetStatus(GObj* fighter_gobj);
 
 // CopyCaptainSpecialN
-extern void ftKirbyCopyCaptainSpecialNUpdateGFX(GObj* fighter_gobj);
+extern void ftKirbyCopyCaptainSpecialNUpdateEffect(GObj* fighter_gobj);
 extern f32 ftKirbyCopyCaptainSpecialNGetAngle(s32 stick_y);
 extern void ftKirbyCopyCaptainSpecialNProcPhysics(GObj* fighter_gobj);
 extern void ftKirbyCopyCaptainSpecialAirNProcPhysics(GObj* fighter_gobj);

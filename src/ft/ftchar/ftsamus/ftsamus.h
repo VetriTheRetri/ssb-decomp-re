@@ -3,7 +3,7 @@
 
 #include <ft/fttypes.h>
 
-#include "ftsamus_functions.h"
+#include "ftsamusfunctions.h"
 
 #define FTSAMUS_CHARGE_JOINT 16             // Bone to attach Charge Shot
 #define FTSAMUS_CHARGE_MAX 7                // Maximum charge level

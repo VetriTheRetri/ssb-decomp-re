@@ -1,6 +1,12 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x8015EDC0
 void ftYoshiSpecialLwStartProcUpdate(GObj *fighter_gobj)
 {

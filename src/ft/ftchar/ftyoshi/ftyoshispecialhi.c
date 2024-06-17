@@ -1,6 +1,12 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x8015E980
 void ftYoshiSpecialHiProcDamage(GObj *fighter_gobj)
 {

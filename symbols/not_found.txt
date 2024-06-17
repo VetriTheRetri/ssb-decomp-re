@@ -667,6 +667,8 @@ D_NF_FB006A58 = 0xFB006A58;
 D_NF_FFFF0000 = 0xFFFF0000;
 D_NF_FFFF0004 = 0xFFFF0004;
 
+__osContPifRam_pifstatus = 0x8009EFDC;
+
 func_ovl2_800E7F68 = 0x800E7F68;
 gOMObjCommonLinks = 0x800466F0;
 gDefaultBattleState = 0x800A3fc8;

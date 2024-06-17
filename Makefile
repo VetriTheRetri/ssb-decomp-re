@@ -201,6 +201,8 @@ build/src/libultra/io/cartrominit.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/cartrominit.o: CC := $(IDO5)
 build/src/libultra/os/initialize.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/os/initialize.o: CC := $(IDO5)
+build/src/libultra/io/controller.o: OPTFLAGS := -O1 -mips2
+build/src/libultra/io/controller.o: CC := $(IDO5)
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

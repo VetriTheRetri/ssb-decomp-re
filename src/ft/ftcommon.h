@@ -1,7 +1,7 @@
 #ifndef _FTCOMMON_H_
 #define _FTCOMMON_H_
 
-#include <ft/ftcommon/ftcommon_functions.h>
+#include <ft/ftcommon/ftcommonfunctions.h>
 
 #define FTCOMMON_DEAD_REBIRTH_WAIT 45
 #define FTCOMMON_DEADUP_REBIRTH_WAIT 180

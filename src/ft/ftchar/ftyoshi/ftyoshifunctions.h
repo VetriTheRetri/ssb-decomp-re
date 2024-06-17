@@ -7,7 +7,7 @@
 
 // JumpAerial
 extern void ftYoshiJumpAerialProcPhysics(GObj* fighter_gobj); // Contemplating whether this should be here or in
-														 // ftcommon_functions.h
+														 // ftcommonfunctions.h
 
 // SpecialHi / SpecialAirHi
 extern void ftYoshiSpecialHiProcDamage(GObj* fighter_gobj);

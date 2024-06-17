@@ -457,7 +457,9 @@ void ftCommon_GuardSetOff_SetStatus(GObj* fighter_gobj);
 void ftCommon_Escape_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_Escape_ProcInterrupt(GObj* fighter_gobj);
 void ftCommon_Escape_ProcStatus(GObj* fighter_gobj);
-void ftCommon_Escape_SetStatus(GObj* fighter_gobj, s32 status_id, s32 itemthrow_buffer_frames);
+
+// Samus erroneously calls this without specifying itemthrow_buffer_frames; same story as Link's Bomb?
+// void ftCommon_Escape_SetStatus(GObj* fighter_gobj, s32 status_id, s32 itemthrow_buffer_frames); 
 s32 ftCommon_Escape_GetStatus(ftStruct* fp);
 sb32 ftCommon_Escape_CheckInterruptSpecialNDonkey(GObj* fighter_gobj);
 sb32 ftCommon_Escape_CheckInterruptDash(GObj* fighter_gobj);

@@ -24,9 +24,9 @@ extern void ftCaptainSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftCaptainSpecialAirNSetStatus(GObj* fighter_gobj);
 
 // SpecialLw / SpecialAirLw
-extern void ftCaptainSpecialLwUpdateGFX(GObj* fighter_gobj);
+extern void ftCaptainSpecialLwUpdateEffect(GObj* fighter_gobj);
 extern void ftCaptainSpecialLwSetAir(GObj* fighter_gobj);
-extern void func_ovl3_8015FCC8(GObj* fighter_gobj);
+extern void ftCaptainSpecialLwSetGround(GObj* fighter_gobj);
 extern void ftCaptainSpecialLwDecideMapCollide(GObj* fighter_gobj);
 extern void ftCaptainSpecialLwDecideSetEndStatus(GObj* fighter_gobj);
 extern void ftCaptainSpecialLwProcUpdate(GObj* fighter_gobj);

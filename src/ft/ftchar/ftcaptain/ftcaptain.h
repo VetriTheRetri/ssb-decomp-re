@@ -3,7 +3,7 @@
 
 #include <ft/fttypes.h>
 
-#include "ftcaptain_functions.h"
+#include "ftcaptainfunctions.h"
 
 #define FTCAPTAIN_FALCONPUNCH_VEL_BASE 65.0F
 #define FTCAPTAIN_FALCONPUNCH_VEL_MUL 0.92

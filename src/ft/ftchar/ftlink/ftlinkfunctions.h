@@ -1,5 +1,5 @@
-#ifndef _FTLINK_FUNCTIONS_H_
-#define _FTLINK_FUNCTIONS_H_
+#ifndef _FTLINKFUNCTIONS_H_
+#define _FTLINKFUNCTIONS_H_
 
 #include <ssb_types.h>
 #include <sys/objdef.h>

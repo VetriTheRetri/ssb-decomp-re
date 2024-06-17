@@ -5,11 +5,11 @@
 
 #include "ftlinkfunctions.h"
 
-#define FTLINK_BOOMERANG_SPAWN_JOINT 0                  // Joint to attach Boomerang
+#define FTLINK_BOOMERANG_SPAWN_JOINT ftParts_Joint_TopN // Joint to attach Boomerang
 #define FTLINK_BOOMERANG_SMASH_BUFFER 8                 // Frames of smash input buffer
 #define FTLINK_BOOMERANG_SMASH_STICK_MIN 56             // Minimum X-Axis range range required for smash input
 
-#define FTLINK_SPINATTACK_SPAWN_JOINT 0
+#define FTLINK_SPINATTACK_SPAWN_JOINT ftParts_Joint_TopN
 #define FTLINK_SPINATTACK_EXTEND_POS_COUNT 4
 #define FTLINK_SPINATTACK_FLAG_SIZE_1 0.0F             // Size of Spin Attack item hitbox when 0x184 @ ftStruct is 1
 #define FTLINK_SPINATTACK_FLAG_SIZE_2 120.0F           // Size of Spin Attack item hitbox when 0x184 @ ftStruct is 2

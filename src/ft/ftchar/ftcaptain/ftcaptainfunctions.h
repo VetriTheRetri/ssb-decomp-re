@@ -1,9 +1,9 @@
 #ifndef _FTCAPTAINFUNCTIONS_H_
 #define _FTCAPTAINFUNCTIONS_H_
 
-#include <ft/ftdef.h>
 #include <ssb_types.h>
 #include <sys/objdef.h>
+#include <ft/ftdef.h>
 
 // Appear
 extern void ftCaptainAppearStartProcUpdate(GObj* fighter_gobj);

@@ -441,6 +441,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Fighter special moves
+      - [0x0DEE10, c, ft/ftchar/ftlink/ftlinkspeciallw]
       - [0x0DF090, c, ft/ftchar/ftkirby/ftkirbycopylinkspecialn]
     # Crowd reaction handler
       - [0x0DF4F0, c, ft/ftpublicity]

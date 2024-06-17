@@ -3,7 +3,7 @@
 
 #include <ft/fttypes.h>
 
-#include "ftlink_functions.h"
+#include "ftlinkfunctions.h"
 
 #define FTLINK_BOOMERANG_SPAWN_JOINT 0                  // Joint to attach Boomerang
 #define FTLINK_BOOMERANG_SMASH_BUFFER 8                 // Frames of smash input buffer

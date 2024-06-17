@@ -211,7 +211,7 @@ segments:
       - [0x032B70, asm, libultra/io/contreaddata]
       - [0x032D50, c, libultra/os/virtualtophysical]
       - [0x032DD0, hasm, libultra/os/writebackdcache]
-      - [0x032E50, asm, libultra/os/initialize]
+      - [0x032E50, c, libultra/os/initialize]
       - [0x0331B0, c, libultra/io/pirawread]
       - [0x033210, pad, padding_33210]
       - [0x033270, hasm, libultra/os/setsr]
@@ -325,7 +325,7 @@ segments:
       - [0x03DFB0, .data, libultra/os/thread]
       - [0x03DFD0, .data, libultra/io/siacs]
       - [0x03DFE0, data, unk_3DFE0]
-      - [0x03DFF0, data, libultra/os/initialize]
+      - [0x03DFF0, .data, libultra/os/initialize]
       - [0x03E010, data, libultra/io/pimgr]
       - [0x03E040, .data, libultra/io/piacs]
       - [0x03E050, data, libultra/libc/xprintf]
@@ -386,8 +386,8 @@ segments:
       - { start: auto, type: .bss, name: libultra/io/motor,        vram: 0x8009EE80 }
       - { start: auto, type: .bss, name: libultra/io/siacs,        vram: 0x8009EF80 }
       - { start: auto, type:  bss, name: libultra/io/controller,   vram: 0x8009EFA0 }
-      - { start: auto, type:  bss, name: libultra/os/initialize,   vram: 0x8009F030 }
-      - { start: auto, type:  bss, name: libultra/io/pimgr,        vram: 0x8009F2E0 }
+      - { start: auto, type: .bss, name: libultra/os/initialize,   vram: 0x8009F030 }
+      - { start: auto, type:  bss, name: libultra/io/pimgr,        vram: 0x8009F040 }
       - { start: auto, type: .bss, name: libultra/io/piacs,        vram: 0x800A04B0 }
       - { start: auto, type: .bss, name: libultra/os/seteventmesg, vram: 0x800A04D0 }
       - { start: auto, type: .bss, name: libultra/os/timerintr,    vram: 0x800A0550 }

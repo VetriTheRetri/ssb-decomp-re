@@ -1,5 +1,11 @@
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80161360
 void ftKirbySpecialLwUnused(GObj *fighter_gobj)
 {
@@ -40,8 +46,8 @@ void ftKirbySpecialLwSetDamageResist(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->is_damage_resist = TRUE;
-
     fp->damage_resist = FTKIRBY_STONE_HEALTH_MAX;
+
     fp->status_vars.kirby.speciallw.duration = FTKIRBY_STONE_DURATION_MAX;
     fp->status_vars.kirby.speciallw.colanim_id = FTKIRBY_STONE_COLANIM_ID_HIGH;
 

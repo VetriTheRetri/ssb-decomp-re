@@ -6,7 +6,7 @@
 #include <ft/ftdef.h>
 
 // SpecialHi / SpecialAirHi
-extern void ftKirbySpecialHiUpdateGFX(GObj* fighter_gobj);
+extern void ftKirbySpecialHiUpdateEffect(GObj* fighter_gobj);
 extern void ftKirbySpecialHiProcUpdate(GObj* fighter_gobj);
 extern void ftKirbySpecialHiLandingProcUpdate(GObj* fighter_gobj);
 extern void ftKirbySpecialHiProcPhysics(GObj* fighter_gobj);

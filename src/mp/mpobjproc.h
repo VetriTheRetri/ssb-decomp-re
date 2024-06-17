@@ -49,7 +49,7 @@ sb32 mpObjectProc_RunFighterAllCollisions(mpCollData* coll_data, GObj* fighter_g
 sb32 ftMap_CheckGroundStanding(GObj* fighter_gobj);
 sb32 ftMap_ProcFighterAirProcMap(GObj* fighter_gobj, void (*proc_map)(GObj*));
 void ftMap_CheckGroundStopCliffEdge(GObj* fighter_gobj);
-void ftMap_CheckGroundStopEdge(GObj* fighter_gobj);
+sb32 ftMap_CheckGroundStopEdge(GObj* fighter_gobj);
 sb32 ftMap_CheckGroundBreakEdgeProcMap(GObj* fighter_gobj, void (*proc_map)(GObj*));
 void ftMap_CheckGroundBreakSetFall(GObj* fighter_gobj);
 void ftMap_CheckGroundEdgeOttottoOrFall(GObj* fighter_gobj);

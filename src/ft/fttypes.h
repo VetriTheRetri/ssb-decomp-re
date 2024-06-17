@@ -1024,7 +1024,7 @@ struct ftStruct
     void(*proc_trap)(GObj*);    // Used only by Yoshi Egg so far
     void(*proc_shield)(GObj*);
     void(*proc_hit)(GObj*);
-    void(*proc_gfx)(GObj*);
+    void(*proc_effect)(GObj*);
     void(*proc_lagupdate)(GObj*);
     void(*proc_lagstart)(GObj*);
     void(*proc_lagend)(GObj*);

@@ -440,7 +440,8 @@ segments:
     
     # ovl3 text
       - [0x0AC540, asm, ovl3]
-    # Fighter special moves
+    # Fighter special move files
+      - [0x0DE580, c, ft/ftchar/ftlink/ftlinkspecialhi]
       - [0x0DEE10, c, ft/ftchar/ftlink/ftlinkspeciallw]
       - [0x0DF090, c, ft/ftchar/ftkirby/ftkirbycopylinkspecialn]
     # Crowd reaction handler
@@ -523,6 +524,7 @@ segments:
 
     # ovl3 data
       - [0x1010A0, data, ovl3]
+    # Fighter special move files
     # Weapon handler files
       - [0x103850, .data, wp/wprender]
     # Weapon entity files
@@ -591,6 +593,8 @@ segments:
 
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
+    # Fighter special move files
+      - [0x107430, .rodata, ft/ftchar/ftlink/ftlinkspecialhi]
     # Weapon handler files
       - [0x107470, .rodata, wp/wpprocess]
       - [0x1074C0, .rodata, wp/wpmain]

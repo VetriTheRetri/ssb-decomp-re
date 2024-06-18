@@ -156,8 +156,8 @@ extern void ftBossOkutsubushiStartProcUpdate(GObj* fighter_gobj);
 extern void ftBossOkutsubushiStartSetStatus(GObj* fighter_gobj);
 
 // DeadLeft
-extern void ftBossDeadLeftProcUpdate(GObj* fighter_gobj);
-extern void ftBossDeadLeftSetStatus(GObj* fighter_gobj);
+extern void ftBossDead1ProcUpdate(GObj* fighter_gobj);
+extern void ftBossDead1SetStatus(GObj* fighter_gobj);
 
 // DeadCenter?
 extern void ftBossDead2ProcPhysics(GObj* fighter_gobj);

@@ -1,13 +1,19 @@
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x8015ADC0
 void ftBossDead2ProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.masterhand.dead.dead_timer--;
+    fp->status_vars.boss.dead.dead_timer--;
 
-    if (fp->status_vars.masterhand.dead.dead_timer == 0)
+    if (fp->status_vars.boss.dead.dead_timer == 0)
     {
         fp->proc_physics = NULL;
     }
@@ -28,7 +34,7 @@ void ftBossDead2SetStatus(GObj *fighter_gobj)
 
     vel_z = __cosf(F_CST_DTOR32(45.0F)) * 100.0F;
 
-    fp->status_vars.masterhand.dead.dead_timer = 200;
+    fp->status_vars.boss.dead.dead_timer = 200;
 
     fp->phys_info.vel_air.z = -vel_z;
 }

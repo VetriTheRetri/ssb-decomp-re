@@ -1063,7 +1063,7 @@ struct ftStruct
         ftPikachu_FighterVars       pikachu;
         ftPurin_FighterVars         purin;
         ftNess_FighterVars          ness;
-        ftBoss_FighterVars    masterhand;
+        ftBoss_FighterVars    boss;
 
     } fighter_vars;
 
@@ -1082,7 +1082,7 @@ struct ftStruct
         ftKirby_StatusVars          kirby;
         ftPikachu_StatusVars        pikachu;
         ftNess_StatusVars           ness;
-        ftBoss_StatusVars     masterhand;
+        ftBoss_StatusVars     boss;
 
     } status_vars;
 

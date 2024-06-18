@@ -111,7 +111,7 @@ typedef struct ftBossInfo
 
 typedef struct ftBoss_FighterVars
 {
-    ftBossInfo *boss, s;
+    ftBossInfo *p, s;
 
 } ftBoss_FighterVars;
 

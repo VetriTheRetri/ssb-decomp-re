@@ -201,7 +201,7 @@ void ftLinkSpecialHiProcDamage(GObj *fighter_gobj)
 // 0x80163F30
 void ftLinkSpecialHiProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftLinkSpecialHiEndSetStatus);
+    ftStatusSetOnAnimEnd(fighter_gobj, ftLinkSpecialHiEndSetStatus);
 }
 
 // 0x80163F54

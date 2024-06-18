@@ -19,13 +19,13 @@ void ftDonkeySpecialNProcDamage(GObj *fighter_gobj)
 // 0x8015AF1C
 void ftDonkeySpecialNStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkeySpecialNLoopSetStatus);
+    ftStatusSetOnAnimEnd(fighter_gobj, ftDonkeySpecialNLoopSetStatus);
 }
 
 // 0x8015AF40
 void ftDonkeySpecialAirNStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftDonkeySpecialAirNLoopSetStatus);
+    ftStatusSetOnAnimEnd(fighter_gobj, ftDonkeySpecialAirNLoopSetStatus);
 }
 
 // 0x8015AF64

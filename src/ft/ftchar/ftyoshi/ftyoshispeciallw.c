@@ -10,7 +10,7 @@
 // 0x8015EDC0
 void ftYoshiSpecialLwStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftYoshiSpecialAirLwLoopSetStatus);
+    ftStatusSetOnAnimEnd(fighter_gobj, ftYoshiSpecialAirLwLoopSetStatus);
 }
 
 // 0x8015EDE4
@@ -30,7 +30,7 @@ void ftYoshiSpecialLwLandingProcUpdate(GObj *fighter_gobj)
         ftParts_GetDObjWorldPosition(fp->joint[FTYOSHI_YOSHIBOMB_STAR_SPAWN_JOINT], &pos);
         wpYoshiStarMakeStars(fighter_gobj, &pos);
     }
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftCommon_Wait_SetStatus);
+    ftStatusSetOnAnimEnd(fighter_gobj, ftCommon_Wait_SetStatus);
 }
 
 // 0x8015EE4C

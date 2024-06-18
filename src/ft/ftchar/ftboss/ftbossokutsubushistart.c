@@ -9,7 +9,7 @@
 // 0x8015ACB0
 void ftBossOkutsubushiStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftBossOkutsubushiSetStatus);
+    ftStatusSetOnAnimEnd(fighter_gobj, ftBossOkutsubushiSetStatus);
 }
 
 // 0x8015ACD4

@@ -9,7 +9,7 @@
 // 0x8015A0C0
 void ftBossDrillProcUpdate(GObj *fighter_gobj)
 {
-    ftStatus_IfAnimEnd_ProcStatus(fighter_gobj, ftBossWaitSetStatus);
+    ftStatusSetOnAnimEnd(fighter_gobj, ftBossWaitSetStatus);
 }
 
 // 0x8015A0E4

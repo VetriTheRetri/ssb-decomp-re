@@ -442,6 +442,8 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Fighter special move files
+      - [0x0D47F0, c, ft/ftchar/ftboss/ftbossgootsubusuend]
+      - [0x0D4860, c, ft/ftchar/ftboss/ftbossgootsubusudown]
       - [0x0D48E0, c, ft/ftchar/ftboss/ftbosstsutsuku1]
       - [0x0D4930, c, ft/ftchar/ftboss/ftbosstsutsuku3]
       - [0x0D4980, c, ft/ftchar/ftboss/ftbosstsutsuku2]

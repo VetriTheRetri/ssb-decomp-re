@@ -1,7 +1,5 @@
 #include <ft/fighter.h>
 
-extern void ftBossOkutsubushiSetStatus(GObj*);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //

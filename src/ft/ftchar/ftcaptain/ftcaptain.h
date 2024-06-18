@@ -1,8 +1,6 @@
 #ifndef _FTCAPTAIN_H_
 #define _FTCAPTAIN_H_
 
-#include <ft/fttypes.h>
-
 #include "ftcaptainfunctions.h"
 
 #define FTCAPTAIN_FALCONPUNCH_VEL_BASE 65.0F

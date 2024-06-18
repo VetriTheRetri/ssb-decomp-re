@@ -1,8 +1,6 @@
 #ifndef _FTFOX_H_
 #define _FTFOX_H_
 
-#include <ft/fttypes.h>
-
 #include "ftfoxfunctions.h"
 
 #define FTFOX_BLASTER_HOLD_JOINT 17                     // Joint to attach Blaster

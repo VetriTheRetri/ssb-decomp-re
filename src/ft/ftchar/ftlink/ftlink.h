@@ -1,8 +1,6 @@
 #ifndef _FTLINK_H_
 #define _FTLINK_H_
 
-#include <ft/fttypes.h>
-
 #include "ftlinkfunctions.h"
 
 #define FTLINK_BOOMERANG_SPAWN_JOINT ftParts_Joint_TopN // Joint to attach Boomerang

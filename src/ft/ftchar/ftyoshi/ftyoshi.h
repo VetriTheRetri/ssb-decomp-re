@@ -1,8 +1,6 @@
 #ifndef _FTYOSHI_H_
 #define _FTYOSHI_H_
 
-#include <ft/fttypes.h>
-
 #include "ftyoshifunctions.h"
 
 #define FTYOSHI_JUMPAERIAL_KNOCKBACK_RESIST 140.0F

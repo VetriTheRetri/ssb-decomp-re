@@ -5,7 +5,6 @@
 #include <sys/objdef.h>
 #include <ft/ftdef.h>
 
-
 // SpecialN / SpecialAirN
 extern void ftFoxSpecialNProcUpdate(GObj* fighter_gobj);
 extern void ftFoxSpecialNProcInterrupt(GObj* fighter_gobj);

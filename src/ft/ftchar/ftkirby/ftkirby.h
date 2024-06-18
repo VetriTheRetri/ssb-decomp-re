@@ -1,8 +1,6 @@
 #ifndef _FTKIRBY_H_
 #define _FTKIRBY_H_
 
-#include <ft/fttypes.h>
-
 #include "ftkirbyfunctions.h"
 
 #define FTKIRBY_JUMPAERIAL_VEL_MUL 0.8F

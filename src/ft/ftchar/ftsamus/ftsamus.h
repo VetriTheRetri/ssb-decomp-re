@@ -1,8 +1,6 @@
 #ifndef _FTSAMUS_H_
 #define _FTSAMUS_H_
 
-#include <ft/fttypes.h>
-
 #include "ftsamusfunctions.h"
 
 #define FTSAMUS_CHARGE_JOINT 16             // Bone to attach Charge Shot

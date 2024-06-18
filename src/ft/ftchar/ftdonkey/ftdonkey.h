@@ -1,8 +1,6 @@
 #ifndef _FTDONKEY_H_
 #define _FTDONKEY_H_
 
-#include <ft/fttypes.h>
-
 #include "ftdonkeyfunctions.h"
 
 #define FTDONKEY_GIANTPUNCH_CHARGE_MAX 10

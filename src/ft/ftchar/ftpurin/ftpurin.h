@@ -1,8 +1,6 @@
 #ifndef _FTPURIN_H_
 #define _FTPURIN_H_
 
-#include <ft/fttypes.h>
-
 #include "ftpurin_functions.h"
 
 #define FTPURIN_JUMPAERIAL_VEL_MUL 0.8F

@@ -1,7 +1,9 @@
 #ifndef _FTLUIGI_H_
 #define _FTLUIGI_H_
 
-#include <ft/fttypes.h>
+#include <ssb_types.h>
+#include <sys/objdef.h>
+#include <ft/ftdef.h>
 
 // #include "ftmario_functions.h"
 

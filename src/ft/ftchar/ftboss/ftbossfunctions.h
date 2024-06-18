@@ -1,7 +1,9 @@
 #ifndef _FTBOSSFUNCTIONS_H_
 #define _FTBOSSFUNCTIONS_H_
 
-#include <ft/fttypes.h>
+#include <ssb_types.h>
+#include <sys/objdef.h>
+#include <ft/ftdef.h>
 
 // Common
 extern void ftBossCommonInvertLR(GObj* fighter_gobj);

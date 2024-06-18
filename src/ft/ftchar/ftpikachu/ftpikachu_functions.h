@@ -2,10 +2,9 @@
 #define _FTPIKACHU_FUNCTIONS_H_
 
 #include <ssb_types.h>
-
+#include <sys/objdef.h>
 #include <ft/ftdef.h>
 #include <mp/mpdef.h>
-#include <sys/objdef.h>
 
 // SpecialN / SpecialAirN
 void ftPikachuSpecialNProcAccessory(GObj* fighter_gobj);

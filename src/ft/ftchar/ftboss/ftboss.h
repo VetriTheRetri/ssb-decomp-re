@@ -1,8 +1,6 @@
 #ifndef _FTMASTERHAND_H_
 #define _FTMASTERHAND_H_
 
-#include <ft/fttypes.h>
-
 #include "ftbossfunctions.h"
 
 #define FTMASTERHAND_ATTACK_WAIT_MAX 120				// Master Hand will wait at most this many frames before initiating his next attack

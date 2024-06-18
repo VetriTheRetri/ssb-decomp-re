@@ -30,11 +30,8 @@ void ftFoxSpecialAirHiStartProcPhysics(GObj *fighter_gobj)
     {
         fp->status_vars.fox.specialhi.gravity_delay--;
     }
-    else
-    {
-        ftPhysics_ApplyGClampTVel(fp, 0.5F, attributes->fall_speed_max);
-    }
-
+    else ftPhysics_ApplyGClampTVel(fp, 0.5F, attributes->fall_speed_max);
+    
     if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
         ftPhysics_ApplyAirVelXFriction(fp, attributes);
@@ -236,9 +233,9 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
             if (lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &fp->phys_info.vel_air) > F_CST_DTOR32(110.0F)) // 1.9198622F
             {
                 ftFoxSpecialAirHiBoundSetStatus(fighter_gobj);
-                return;
             }
-            ftFoxSpecialHiEndSetStatus(fighter_gobj);
+            else ftFoxSpecialHiEndSetStatus(fighter_gobj);
+
             return;
         }
         goto coll_end;

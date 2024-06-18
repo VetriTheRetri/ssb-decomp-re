@@ -207,7 +207,9 @@ build/src/libultra/io/contreaddata.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/contreaddata.o: CC := $(IDO5)
 build/src/libultra/io/devmgr.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/io/devmgr.o: CC := $(IDO5)
-build/src/libultra/libc/ll.o:	OPTFLAGS := -O1 -mips3 -32
+build/src/libultra/libc/ll.o: OPTFLAGS := -O1 -mips3 -32
+build/src/libultra/libc/xprintf.o: OPTFLAGS := -O3 -mips2
+build/src/libultra/libc/xprintf.o: CC := $(IDO5)
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

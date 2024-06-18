@@ -236,7 +236,7 @@ segments:
       - [0x034110, hasm, libultra/gu/sqrtf]
       - [0x034120, c, libultra/os/afterprenmi]
       - [0x034140, c, libultra/io/contquery]
-      - [0x0341F0, asm, libultra/libc/xprintf]
+      - [0x0341F0, c, libultra/libc/xprintf]
       - [0x034EB0, hasm, libultra/os/unmaptlball]
       - [0x034F00, c, libultra/io/epidma]
       - [0x034FE0, c, libultra/libc/string]
@@ -328,7 +328,7 @@ segments:
       - [0x03DFF0, .data, libultra/os/initialize]
       - [0x03E010, .data, libultra/io/pimgr]
       - [0x03E040, .data, libultra/io/piacs]
-      - [0x03E050, data, libultra/libc/xprintf]
+      - [0x03E050, .data, libultra/libc/xprintf]
       - [0x03E0A0, .data, libultra/os/timerintr]
       - [0x03E0B0, data, libultra/vimodentsclan1] # osViModeNtscLan1
       - [0x03E100, data, libultra/vimodempallan1] # osViModeMpalLan1
@@ -361,7 +361,7 @@ segments:
       - [0x03FD60, .rodata, libultra/gu/sinf]
       - [0x03FDB0, rodata, libultra/os/exceptasm]
       - [0x03FE00, .rodata, libultra/io/devmgr]
-      - [0x03FE20, rodata, libultra/libc/xprintf]
+      - [0x03FE20, .rodata, libultra/libc/xprintf]
       - [0x03FF20, .rodata, libultra/gu/cosf]
       - [0x03FF70, rodata, libultra/gu/libm_vals]
       - [0x03FF80, .rodata, libultra/audio/cents2ratio]

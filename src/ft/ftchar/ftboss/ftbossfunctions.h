@@ -67,7 +67,7 @@ extern void ftBossWalkProcUpdate(GObj* fighter_gobj);
 extern void ftBossWalkSetStatus(GObj* fighter_gobj);
 
 // WalkLoop
-extern sb32 ftBossWalkLoopCheckPlayerRange(GObj* fighter_gobj);
+extern sb32 ftBossWalkLoopCheckPlayerInRange(GObj* fighter_gobj);
 extern void ftBossWalkLoopProcPhysics(GObj* fighter_gobj);
 extern void ftBossWalkLoopProcMap(GObj* fighter_gobj);
 extern void ftBossWalkLoopSetStatus(GObj* fighter_gobj);

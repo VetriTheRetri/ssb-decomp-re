@@ -442,6 +442,11 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Fighter special move files
+      - [0x0D4270, c, ft/ftchar/ftboss/ftbosswalk]
+      - [0x0D4300, c, ft/ftchar/ftboss/ftbosswalkloop]
+      - [0x0D4470, c, ft/ftchar/ftboss/ftbosswalkwait]
+      - [0x0D44E0, c, ft/ftchar/ftboss/ftbosswalkshoot]
+      - [0x0D4530, pad, pad0x0D4530]
       - [0x0D4540, c, ft/ftchar/ftboss/ftbossgootsubusuup]
       - [0x0D4610, c, ft/ftchar/ftboss/ftbossgootsubusuwait]
       - [0x0D47F0, c, ft/ftchar/ftboss/ftbossgootsubusuend]
@@ -638,6 +643,7 @@ segments:
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
     # Fighter special move files
+      # - [0x107220, .rodata, ft/ftchar/ftboss/ftbosswalkloop]
       - [0x107230, .rodata, ft/ftchar/ftboss/ftbossgootsubusuup]
       - [0x107240, .rodata, ft/ftchar/ftboss/ftbossgootsubusuwait]
       - [0x107250, .rodata, ft/ftchar/ftboss/ftbosstsutsuku2]

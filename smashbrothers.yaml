@@ -442,6 +442,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Fighter special move files
+      - [0x0D3BE0, c, ft/ftchar/ftboss/ftbossmove]
       - [0x0D3DC0, c, ft/ftchar/ftboss/ftbosshippataku]
       - [0x0D3E20, c, ft/ftchar/ftboss/ftbossharau]
       - [0x0D3F40, c, ft/ftchar/ftboss/ftbossokuhikouki1]
@@ -648,6 +649,7 @@ segments:
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
     # Fighter special move files
+      - [0x107200, .rodata, ft/ftchar/ftboss/ftbossmove]
       - [0x107210, .rodata, ft/ftchar/ftboss/ftbossokuhikouki2]
       - [0x107220, .rodata, ft/ftchar/ftboss/ftbossokuhikouki3]
       - [0x107230, .rodata, ft/ftchar/ftboss/ftbossgootsubusuup]

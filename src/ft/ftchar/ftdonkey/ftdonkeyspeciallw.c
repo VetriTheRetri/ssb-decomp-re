@@ -1,5 +1,11 @@
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x8015B9F0
 void ftDonkeySpecialLwStartProcUpdate(GObj *fighter_gobj)
 {

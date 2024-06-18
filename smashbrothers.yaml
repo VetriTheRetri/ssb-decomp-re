@@ -442,6 +442,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Fighter special move files
+      - [0x0D6110, c, ft/ftchar/ftdonkey/ftdonkeyspecialhi]
       - [0x0D6430, c, ft/ftchar/ftdonkey/ftdonkeyspeciallw]
       - [0x0D6590, c, ft/ftchar/ftfox/ftfoxspecialn]
       - [0x0D6740, c, ft/ftchar/ftfox/ftfoxspecialhi]
@@ -615,6 +616,7 @@ segments:
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
     # Fighter special move files
+      - [0x1072B0, .rodata, ft/ftchar/ftfox/ftfoxspecialn]
       - [0x1072C0, .rodata, ft/ftchar/ftfox/ftfoxspecialhi]
       - [0x1072F0, .rodata, ft/ftchar/ftfox/ftfoxspeciallw]
       - [0x107300, .rodata, ft/ftchar/ftsamus/ftsamusspecialn]

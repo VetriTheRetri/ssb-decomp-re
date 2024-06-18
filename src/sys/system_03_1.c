@@ -70,6 +70,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/func_8000BAA0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/func_8000BB04.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/gcSetDObjAnimPlaybackRate.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/gcSetAllAnimPlaybackRate.s")

@@ -286,7 +286,7 @@ segments:
       - [0x038470, c, libultra/io/pfsisplug]
       - [0x0387B0, c, libultra/io/epirawwrite]
       - [0x038910, c, libultra/os/settimer]
-      - [0x0389F0, asm, libultra/libc/xldtob]
+      - [0x0389F0, c, libultra/libc/xldtob]
       - [0x0394B0, asm, libultra/libc/ldiv]
       - [0x039640, asm, libultra/libc/xlitob]
       - [0x0398E0, c, libultra/io/sirawwrite]
@@ -365,7 +365,7 @@ segments:
       - [0x03FF20, .rodata, libultra/gu/cosf]
       - [0x03FF70, rodata, libultra/gu/libm_vals]
       - [0x03FF80, .rodata, libultra/audio/cents2ratio]
-      - [0x03FF90, rodata, libultra/libc/xldtob]
+      - [0x03FF90, .rodata, libultra/libc/xldtob]
       - [0x03FFF0, rodata, libultra/libc/llcvt]
       - { start: 0x040000, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
       - { start: 0x0402B0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }

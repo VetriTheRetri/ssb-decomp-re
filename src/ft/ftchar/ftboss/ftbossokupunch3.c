@@ -1,5 +1,11 @@
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x8015AA10
 void ftBossOkupunch3ProcUpdate(GObj *fighter_gobj)
 {

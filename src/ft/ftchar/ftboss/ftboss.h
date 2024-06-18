@@ -90,12 +90,6 @@ typedef enum ftBossStatus
 
 } ftBossStatus;
 
-typedef struct ftBossRandom
-{
-	u8 r1, r2;
-
-} ftBossRandom;
-
 typedef struct ftBossInfo
 {
     GObj *target_gobj; // (Fighter) GObj pointer of Master Hand's target

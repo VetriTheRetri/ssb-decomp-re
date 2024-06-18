@@ -442,6 +442,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Fighter special move files
+      - [0x0D31F0, c, ft/ftchar/ftboss/ftbosswait]
       - [0x0D3BE0, c, ft/ftchar/ftboss/ftbossmove]
       - [0x0D3DC0, c, ft/ftchar/ftboss/ftbosshippataku]
       - [0x0D3E20, c, ft/ftchar/ftboss/ftbossharau]
@@ -579,6 +580,7 @@ segments:
     # ovl3 data
       - [0x1010A0, data, ovl3]
     # Fighter special move files
+      - [0x103800, .data, ft/ftchar/ftboss/ftbosswait]
       - [0x103840, .data, ft/ftchar/ftkirby/ftkirbyspecialn]
     # Weapon handler files
       - [0x103850, .data, wp/wprender]
@@ -649,6 +651,7 @@ segments:
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
     # Fighter special move files
+      - [0x107170, .rodata, ft/ftchar/ftboss/ftbosswait]
       - [0x107200, .rodata, ft/ftchar/ftboss/ftbossmove]
       - [0x107210, .rodata, ft/ftchar/ftboss/ftbossokuhikouki2]
       - [0x107220, .rodata, ft/ftchar/ftboss/ftbossokuhikouki3]

@@ -68,7 +68,7 @@ TOOLS	  := tools
 PYTHON	  := python3
 INCLUDES := -Iinclude -Isrc
 DEFINES := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32 -DNDEBUG -DN_MICRO -D_FINALROM
-OPTFLAGS := -O2
+OPTFLAGS := -O2 -mips2
 
 # ----- Output ------
 
@@ -91,7 +91,7 @@ LD              := $(MIPS_BINUTILS_PREFIX)ld
 OBJCOPY         := $(MIPS_BINUTILS_PREFIX)objcopy
 OBJDUMP         := $(MIPS_BINUTILS_PREFIX)objdump
 ASM_PROC        := $(PYTHON) $(TOOLS)/asm-processor/build.py
-CCFLAGS         := -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624 -mips2
+CCFLAGS         := -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 LDFLAGS         := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T symbols/not_found.txt -T symbols/linker_constants.txt -T .splat/smashbrothers.ld
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
@@ -133,11 +133,11 @@ RODATA_SECTION_FILES := $(foreach f,$(C_FILES:.c=.rodata),$(BUILD_DIR)/$f) \
                         $(foreach f,$(S_RODATA_FILES:.s=.rodata),$(BUILD_DIR)/$f)
 
 # directory flags
-build/src/libultra/io/%.o: 		OPTFLAGS := -O1 -g0
-build/src/libultra/os/%.o: 		OPTFLAGS := -O1 -g0
-build/src/libultra/rmon/%.o: 	OPTFLAGS := -O1 -g0
-build/src/libultra/debug/%.o: 	OPTFLAGS := -O1 -g0
-build/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0
+build/src/libultra/io/%.o: 		OPTFLAGS := -O1 -g0 -mips2
+build/src/libultra/os/%.o: 		OPTFLAGS := -O1 -g0 -mips2
+build/src/libultra/rmon/%.o: 	OPTFLAGS := -O1 -g0 -mips2
+build/src/libultra/debug/%.o: 	OPTFLAGS := -O1 -g0 -mips2
+build/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0 -mips2
 # build/src/libultra/n_audio/%.o:	OPTFLAGS := -O3 -g0
 
 # per file flags
@@ -149,13 +149,13 @@ build/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0
 # build/src/libultra/n_audio/cspsetpriority.o: CC := $(IDO7)
 # build/src/libultra/n_audio/cspsetfxmix.o:	OPTFLAGS := -O3 -g0
 # build/src/libultra/n_audio/cspsetfxmix.o: CC := $(IDO7)
-build/src/libultra/n_audio/n_synaddplayer.o: OPTFLAGS := -O3 -g0
+build/src/libultra/n_audio/n_synaddplayer.o: OPTFLAGS := -O3 -g0 -mips2
 build/src/libultra/n_audio/n_synaddplayer.o: CC := $(IDO7)
-build/src/libultra/n_audio/n_synallocvoice.o: OPTFLAGS := -O3 -g0
+build/src/libultra/n_audio/n_synallocvoice.o: OPTFLAGS := -O3 -g0 -mips2
 build/src/libultra/n_audio/n_synallocvoice.o: CC := $(IDO7)
-build/src/libultra/n_audio/n_synstartvoiceparam.o: OPTFLAGS := -O3 -g0
+build/src/libultra/n_audio/n_synstartvoiceparam.o: OPTFLAGS := -O3 -g0 -mips2
 build/src/libultra/n_audio/n_synstartvoiceparam.o: CC := $(IDO7)
-build/src/libultra/n_audio/seq.o: OPTFLAGS := -O3 -g0
+build/src/libultra/n_audio/seq.o: OPTFLAGS := -O3 -g0 -mips2
 build/src/libultra/n_audio/seq.o: CC := $(IDO7)
 build/src/libultra/io/viswapcontext.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/viswapcontext.o: CC := $(IDO5)
@@ -207,6 +207,7 @@ build/src/libultra/io/contreaddata.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/contreaddata.o: CC := $(IDO5)
 build/src/libultra/io/devmgr.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/io/devmgr.o: CC := $(IDO5)
+build/src/libultra/libc/ll.o:	OPTFLAGS := -O1 -mips3 -32
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)
@@ -294,9 +295,12 @@ $(BUILD_DIR)/%.o: %.s
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	@mkdir -p $(@D)
-#   d file generation
+# generate .d files to track header dependencies
 	$(V)clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $< && rm $@
+# compile and pipe through colorizer
 	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $< 2>&1 | $(PYTHON) $(TOOLS)/colorizeIDO.py
+# patch object files compiled with mips3 to be able to link them
+	$(V)$(PYTHON) $(TOOLS)/patchMips3Objects.py $@
 
 #Bins
 $(BUILD_DIR)/%.o: %.bin

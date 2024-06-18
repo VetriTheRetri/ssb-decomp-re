@@ -200,7 +200,7 @@ segments:
       - [0x030FF0, c, libultra/gu/sinf]
       - [0x0311B0, c, libultra/io/sptask]
       - [0x0314A0, c, libultra/os/destroythread]
-      - [0x0315B0, asm, libultra/libc/ll]
+      - [0x0315B0, c, libultra/libc/ll]
       - [0x031870, hasm, libultra/os/exceptasm]
       - [0x032170, c, libultra/os/thread]
       - [0x0321B0, hasm, libultra/libc/bzero]

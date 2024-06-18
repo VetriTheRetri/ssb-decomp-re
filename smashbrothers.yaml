@@ -287,8 +287,8 @@ segments:
       - [0x0387B0, c, libultra/io/epirawwrite]
       - [0x038910, c, libultra/os/settimer]
       - [0x0389F0, c, libultra/libc/xldtob]
-      - [0x0394B0, asm, libultra/libc/ldiv]
-      - [0x039640, asm, libultra/libc/xlitob]
+      - [0x0394B0, c, libultra/libc/ldiv]
+      - [0x039640, c, libultra/libc/xlitob]
       - [0x0398E0, c, libultra/io/sirawwrite]
       - [0x039930, c, libultra/io/dpsetnextbuf]
       - [0x0399E0, c, libultra/io/dp]
@@ -300,7 +300,7 @@ segments:
       - [0x039D60, hasm, libultra/os/writebackdcacheall]
       - [0x039D90, c, libultra/os/startthread]
       - [0x039EE0, c, libultra/io/visetyscale]
-      - [0x039F40, asm, libultra/libc/llcvt]
+      - [0x039F40, c, libultra/libc/llcvt]
       - [0x03A150, c, libultra/io/aisetnextbuf]
       - [0x03A200, c, libultra/io/ai]
       - [0x03A230, c, libultra/io/vigetcurrframebuf]
@@ -336,7 +336,7 @@ segments:
       - [0x03E1C0, .data, libultra/io/cartrominit]
       - [0x03E1D0, .data, libultra/io/contpfs]
       - [0x03E1E0, .data, libultra/io/contramread]
-      - [0x03E1F0, data, libultra/libc/xlitob]
+      - [0x03E1F0, .data, libultra/libc/xlitob]
       - [0x03E220, .data, libultra/io/vimgr]
       - [0x03E240, .data, libultra/io/aisetnextbuf]
       - [0x03E250, .rodata, sys/main]
@@ -366,7 +366,7 @@ segments:
       - [0x03FF70, rodata, libultra/gu/libm_vals]
       - [0x03FF80, .rodata, libultra/audio/cents2ratio]
       - [0x03FF90, .rodata, libultra/libc/xldtob]
-      - [0x03FFF0, rodata, libultra/libc/llcvt]
+      - [0x03FFF0, .rodata, libultra/libc/llcvt]
       - { start: 0x040000, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
       - { start: 0x0402B0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
       - { start: auto, type: .bss, name: sys/main,                 vram: 0x8003FAD0 }

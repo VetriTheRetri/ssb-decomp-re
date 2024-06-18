@@ -212,6 +212,11 @@ build/src/libultra/libc/xprintf.o: OPTFLAGS := -O3 -mips2
 build/src/libultra/libc/xprintf.o: CC := $(IDO5)
 build/src/libultra/libc/xldtob.o: OPTFLAGS := -O3 -mips2
 build/src/libultra/libc/xldtob.o: CC := $(IDO5)
+build/src/libultra/libc/xlitob.o: OPTFLAGS := -O3 -mips2
+build/src/libultra/libc/xlitob.o: CC := $(IDO5)
+build/src/libultra/libc/ldiv.o: OPTFLAGS := -O3 -mips2
+build/src/libultra/libc/ldiv.o: CC := $(IDO5)
+build/src/libultra/libc/llcvt.o: OPTFLAGS := -O1 -mips3 -32
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d)

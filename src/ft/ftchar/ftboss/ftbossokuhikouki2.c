@@ -30,9 +30,9 @@ void ftBossOkuhikouki2ProcPhysics(GObj *fighter_gobj)
 
     dist_x = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.x - DObjGetStruct(fighter_gobj)->translate.vec.f.x;
 
-    if (ABSF(dist_x) > FTMASTERHAND_OKUHIKOUKI_VEL_ADD)
+    if (ABSF(dist_x) > FTBOSS_OKUHIKOUKI_VEL_ADD)
     {
-        vel_x = (dist_x > 0.0F) ? FTMASTERHAND_OKUHIKOUKI_VEL_ADD : -FTMASTERHAND_OKUHIKOUKI_VEL_ADD;
+        vel_x = (dist_x > 0.0F) ? FTBOSS_OKUHIKOUKI_VEL_ADD : -FTBOSS_OKUHIKOUKI_VEL_ADD;
 
         fp->phys_info.vel_air.x += vel_x;
     }

@@ -1,14 +1,14 @@
-#ifndef _FTMASTERHAND_H_
-#define _FTMASTERHAND_H_
+#ifndef _FTBOSS_H_
+#define _FTBOSS_H_
 
 #include "ftbossfunctions.h"
 
-#define FTMASTERHAND_ATTACK_WAIT_MAX 120				// Master Hand will wait at most this many frames before initiating his next attack
-#define FTMASTERHAND_ATTACK_WAIT_LEVEL_DIV 100			// Divide this value by CPU level
+#define FTBOSS_ATTACK_WAIT_MAX 120				// Master Hand will wait at most this many frames before initiating his next attack
+#define FTBOSS_ATTACK_WAIT_LEVEL_DIV 100			// Divide this value by CPU level
 
-#define FTMASTERHAND_HARAU_VEL_X 50.0F					// Velocity of sweep ("shooing") attack?
+#define FTBOSS_HARAU_VEL_X 50.0F					// Velocity of sweep ("shooing") attack?
 
-#define FTMASTERHAND_OKUHIKOUKI_VEL_ADD 40.0F	
+#define FTBOSS_OKUHIKOUKI_VEL_ADD 40.0F	
 
 extern ftStatusDesc dFTBossSpecialStatusDesc[/* */];
 

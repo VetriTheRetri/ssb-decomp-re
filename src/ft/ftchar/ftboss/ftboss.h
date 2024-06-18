@@ -190,6 +190,7 @@ typedef union ftBoss_StatusVars
     ftBoss_Move_StatusVars move;
     ftBoss_Okuhikouki_StatusVars okuhikouki;
     ftBoss_Gootsubusu_StatusVars gootsubu;
+	ftBoss_Tsutsuku_StatusVars tsutsuku;
     ftBoss_Drill_StatusVars drill;
     ftBoss_Yubideppou_StatusVars yubideppou;
     ftBoss_Okupunch_StatusVars okupunch;

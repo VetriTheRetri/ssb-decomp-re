@@ -83,9 +83,9 @@ typedef enum ftBossStatus
 	ftStatus_Boss_Okupunch3,
 	ftStatus_Boss_Okutsubushi, // Vertical hand slap
 	ftStatus_Boss_OkutsubushiStart,
-	ftStatus_Boss_Dead1,
-	ftStatus_Boss_Dead2,
-	ftStatus_Boss_Dead3,
+	ftStatus_Boss_DeadLeft,
+	ftStatus_Boss_DeadCenter,
+	ftStatus_Boss_DeadRight,
 	ftStatus_Boss_Appear
 
 } ftBossStatus;

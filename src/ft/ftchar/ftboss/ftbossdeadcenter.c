@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 // 0x8015ADC0
-void ftBossDead2ProcPhysics(GObj *fighter_gobj)
+void ftBossDeadCenterProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -20,12 +20,12 @@ void ftBossDead2ProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x8015ADE8
-void ftBossDead2SetStatus(GObj *fighter_gobj)
+void ftBossDeadCenterSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp;
     f32 vel_z;
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Boss_Dead2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Boss_DeadCenter, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp = ftGetStruct(fighter_gobj);
 

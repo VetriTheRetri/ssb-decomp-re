@@ -56,39 +56,39 @@ typedef enum ftBossMotion
 
 typedef enum ftBossStatus
 {
-	ftStatus_MasterHand_Default = ftStatus_Common_SpecialStart,
-	ftStatus_MasterHand_Wait,
-	ftStatus_MasterHand_Move,
-	ftStatus_MasterHand_Hippataku,	// Horizontal slap
-	ftStatus_MasterHand_Harau,		// Sweep
-	ftStatus_MasterHand_Okuhikouki1,
-	ftStatus_MasterHand_Okuhikouki2,
-	ftStatus_MasterHand_Okuhikouki3,
-	ftStatus_MasterHand_Walk,
-	ftStatus_MasterHand_WalkLoop,
-	ftStatus_MasterHand_WalkWait,
-	ftStatus_MasterHand_WalkShoot,	// Finger walk hit
-	ftStatus_MasterHand_GootsubusuUp,	// Fist slam 
-	ftStatus_MasterHand_GootsubusuWait,
-	ftStatus_MasterHand_GootsubusuEnd,
-	ftStatus_MasterHand_GootsubusuDown,
-	ftStatus_MasterHand_Tsutsuku1,	// Pointer poke
-	ftStatus_MasterHand_Tsutsuku3,
-	ftStatus_MasterHand_Tsutsuku2,
-	ftStatus_MasterHand_Drill,
-	ftStatus_MasterHand_Okukouki,
-	ftStatus_MasterHand_Yubideppou1, // Finger gun
-	ftStatus_MasterHand_Yubideppou3,
-	ftStatus_MasterHand_Yubideppou2,
-	ftStatus_MasterHand_Okupunch1,	// Fist rocket
-	ftStatus_MasterHand_Okupunch2,
-	ftStatus_MasterHand_Okupunch3,
-	ftStatus_MasterHand_Okutsubushi, // Vertical hand slap
-	ftStatus_MasterHand_OkutsubushiStart,
-	ftStatus_MasterHand_DeadLeft,
-	ftStatus_MasterHand_DeadCenter,
-	ftStatus_MasterHand_DeadRight,
-	ftStatus_MasterHand_Appear
+	ftStatus_Boss_Default = ftStatus_Common_SpecialStart,
+	ftStatus_Boss_Wait,
+	ftStatus_Boss_Move,
+	ftStatus_Boss_Hippataku,	// Horizontal slap
+	ftStatus_Boss_Harau,		// Sweep
+	ftStatus_Boss_Okuhikouki1,
+	ftStatus_Boss_Okuhikouki2,
+	ftStatus_Boss_Okuhikouki3,
+	ftStatus_Boss_Walk,
+	ftStatus_Boss_WalkLoop,
+	ftStatus_Boss_WalkWait,
+	ftStatus_Boss_WalkShoot,	// Finger walk hit
+	ftStatus_Boss_GootsubusuUp,	// Fist slam 
+	ftStatus_Boss_GootsubusuWait,
+	ftStatus_Boss_GootsubusuEnd,
+	ftStatus_Boss_GootsubusuDown,
+	ftStatus_Boss_Tsutsuku1,	// Pointer poke
+	ftStatus_Boss_Tsutsuku3,
+	ftStatus_Boss_Tsutsuku2,
+	ftStatus_Boss_Drill,
+	ftStatus_Boss_Okukouki,
+	ftStatus_Boss_Yubideppou1, // Finger gun
+	ftStatus_Boss_Yubideppou3,
+	ftStatus_Boss_Yubideppou2,
+	ftStatus_Boss_Okupunch1,	// Fist rocket
+	ftStatus_Boss_Okupunch2,
+	ftStatus_Boss_Okupunch3,
+	ftStatus_Boss_Okutsubushi, // Vertical hand slap
+	ftStatus_Boss_OkutsubushiStart,
+	ftStatus_Boss_DeadLeft,
+	ftStatus_Boss_Dead2,
+	ftStatus_Boss_Dead3,
+	ftStatus_Boss_Appear
 
 } ftBossStatus;
 

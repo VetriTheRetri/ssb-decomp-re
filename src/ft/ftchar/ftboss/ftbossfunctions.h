@@ -160,11 +160,11 @@ extern void ftBossDeadLeftProcUpdate(GObj* fighter_gobj);
 extern void ftBossDeadLeftSetStatus(GObj* fighter_gobj);
 
 // DeadCenter?
-extern void ftBossDeadCenterProcPhysics(GObj* fighter_gobj);
-extern void ftBossDeadCenterSetStatus(GObj* fighter_gobj);
+extern void ftBossDead2ProcPhysics(GObj* fighter_gobj);
+extern void ftBossDead2SetStatus(GObj* fighter_gobj);
 
 // DeadRight?
-extern void ftBossDeadRightSetStatus(GObj* fighter_gobj);
+extern void ftBossDead3SetStatus(GObj* fighter_gobj);
 
 // Appear
 extern void ftBossAppearProcPhysics(GObj* fighter_gobj);

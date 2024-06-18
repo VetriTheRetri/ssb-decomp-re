@@ -18,6 +18,6 @@
 #include <ft/ftchar/ftpikachu/ftpikachu.h>
 #include <ft/ftchar/ftpurin/ftpurin.h>
 #include <ft/ftchar/ftness/ftness.h>
-#include <ft/ftchar/ftmasterhand/ftmasterhand.h>
+#include <ft/ftchar/ftboss/ftboss.h>
 
 #endif

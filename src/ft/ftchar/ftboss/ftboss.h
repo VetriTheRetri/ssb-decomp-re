@@ -3,7 +3,7 @@
 
 #include <ft/fttypes.h>
 
-#include "ftmasterhand_functions.h"
+#include "ftbossfunctions.h"
 
 #define FTMASTERHAND_ATTACK_WAIT_MAX 120				// Master Hand will wait at most this many frames before initiating his next attack
 #define FTMASTERHAND_ATTACK_WAIT_LEVEL_DIV 100			// Divide this value by CPU level
@@ -19,7 +19,7 @@ extern void *gFTDataBossBattleMotion;
 extern void *gFTDataBossModel;
 extern u32 gFTDataBossParticleBankID;
 
-typedef enum ftMasterHandMotion
+typedef enum ftBossMotion
 {
 	ftMotion_MasterHand_Default = ftMotion_Common_SpecialStart,
 	ftMotion_MasterHand_Hippataku,	// Horizontal slap
@@ -52,9 +52,9 @@ typedef enum ftMasterHandMotion
 	ftMotion_MasterHand_DeadRight,
 	ftMotion_MasterHand_Appear
 
-} ftMasterHandMotion;
+} ftBossMotion;
 
-typedef enum ftMasterHandStatus
+typedef enum ftBossStatus
 {
 	ftStatus_MasterHand_Default = ftStatus_Common_SpecialStart,
 	ftStatus_MasterHand_Wait,
@@ -90,13 +90,13 @@ typedef enum ftMasterHandStatus
 	ftStatus_MasterHand_DeadRight,
 	ftStatus_MasterHand_Appear
 
-} ftMasterHandStatus;
+} ftBossStatus;
 
-typedef struct ftMasterHandRandom
+typedef struct ftBossRandom
 {
 	u8 r1, r2;
 
-} ftMasterHandRandom;
+} ftBossRandom;
 
 typedef struct ftBossInfo
 {
@@ -111,93 +111,93 @@ typedef struct ftBossInfo
 
 } ftBossInfo;
 
-typedef struct ftMasterHand_FighterVars
+typedef struct ftBoss_FighterVars
 {
     ftBossInfo *boss, s;
 
-} ftMasterHand_FighterVars;
+} ftBoss_FighterVars;
 
-typedef struct ftMasterHand_Wait_StatusVars
+typedef struct ftBoss_Wait_StatusVars
 {
     Vec3f pos;
 
-} ftMasterHand_Wait_StatusVars;
+} ftBoss_Wait_StatusVars;
 
-typedef struct ftMasterHand_Move_StatusVars
+typedef struct ftBoss_Move_StatusVars
 {
     void (*proc_setstatus)(GObj*);
     Vec3f vel;
     f32 magnitude;
 
-} ftMasterHand_Move_StatusVars;
+} ftBoss_Move_StatusVars;
 
-typedef struct ftMasterHand_Okhuikouki_StatusVars
+typedef struct ftBoss_Okhuikouki_StatusVars
 {
     Vec3f pos;
 
-} ftMasterHand_Okuhikouki_StatusVars;
+} ftBoss_Okuhikouki_StatusVars;
 
-typedef struct ftMasterHand_Gootsubusu_StatusVars
+typedef struct ftBoss_Gootsubusu_StatusVars
 {
     s16 wait_timer;
     f32 edgeleft_pos_x;
     f32 edgeright_pos_x;
 
-} ftMasterHand_Gootsubusu_StatusVars;
+} ftBoss_Gootsubusu_StatusVars;
 
-typedef struct ftMasterHand_Tsutsuku_StatusVars
+typedef struct ftBoss_Tsutsuku_StatusVars
 {
     s16 wait_timer;
 
-} ftMasterHand_Tsutsuku_StatusVars;
+} ftBoss_Tsutsuku_StatusVars;
 
-typedef struct ftMasterHand_Drill_StatusVars
+typedef struct ftBoss_Drill_StatusVars
 {
     s16 follow_timer; // Follow player for this many frames?
     f32 edgeleft_pos_x;
     f32 edgeright_pos_x;
 
-} ftMasterHand_Drill_StatusVars;
+} ftBoss_Drill_StatusVars;
 
-typedef struct ftMasterHand_Yubideppou_StatusVars
+typedef struct ftBoss_Yubideppou_StatusVars
 {
     s16 wait_timer;
     s16 bullet_count;
     u8 shoot_timer;
 
-} ftMasterHand_Yubideppou_StatusVars;
+} ftBoss_Yubideppou_StatusVars;
 
-typedef struct ftMasterHand_Okupunch_StatusVars
+typedef struct ftBoss_Okupunch_StatusVars
 {
     Vec3f pos;
 
-} ftMasterHand_Okupunch_StatusVars;
+} ftBoss_Okupunch_StatusVars;
 
-typedef struct ftMasterHand_Okutsubushi_StatusVars
+typedef struct ftBoss_Okutsubushi_StatusVars
 {
     Vec3f pos;
     u16 follow_timer;
 
-} ftMasterHand_Okutsubushi_StatusVars;
+} ftBoss_Okutsubushi_StatusVars;
 
-typedef struct ftMasterHand_Dead_StatusVars
+typedef struct ftBoss_Dead_StatusVars
 {
     s16 dead_timer;
 
-} ftMasterHand_Dead_StatusVars;
+} ftBoss_Dead_StatusVars;
 
-typedef union ftMasterHand_StatusVars
+typedef union ftBoss_StatusVars
 {
-    ftMasterHand_Wait_StatusVars wait;
-    ftMasterHand_Move_StatusVars move;
-    ftMasterHand_Okuhikouki_StatusVars okuhikouki;
-    ftMasterHand_Gootsubusu_StatusVars gootsubu;
-    ftMasterHand_Drill_StatusVars drill;
-    ftMasterHand_Yubideppou_StatusVars yubideppou;
-    ftMasterHand_Okupunch_StatusVars okupunch;
-    ftMasterHand_Okutsubushi_StatusVars okutsubushi;
-    ftMasterHand_Dead_StatusVars dead;
+    ftBoss_Wait_StatusVars wait;
+    ftBoss_Move_StatusVars move;
+    ftBoss_Okuhikouki_StatusVars okuhikouki;
+    ftBoss_Gootsubusu_StatusVars gootsubu;
+    ftBoss_Drill_StatusVars drill;
+    ftBoss_Yubideppou_StatusVars yubideppou;
+    ftBoss_Okupunch_StatusVars okupunch;
+    ftBoss_Okutsubushi_StatusVars okutsubushi;
+    ftBoss_Dead_StatusVars dead;
 
-} ftMasterHand_StatusVars;
+} ftBoss_StatusVars;
 
 #endif

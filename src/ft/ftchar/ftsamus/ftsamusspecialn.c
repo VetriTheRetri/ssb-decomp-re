@@ -174,8 +174,8 @@ void ftSamusSpecialNLoopProcInterrupt(GObj *fighter_gobj)
     {
         ftSamusSpecialNDestroyChargeShot(fp);
 
-        /* WARNING: Undefined behavior. This function expects a third argument for itme throw buffer frames,
-         * but never receives it.
+        /* WARNING: Undefined behavior. This function expects a third argument
+         * for item throw buffer frames, but never receives it.
          */ 
         ftCommon_Escape_SetStatus(fighter_gobj, status_id);
     }

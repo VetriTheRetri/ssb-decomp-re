@@ -787,6 +787,7 @@ D_ovl2_801313F4 = 0x801313F4;
 gFTDataMarioMain = 0x80130E30;
 gFTDataMarioSpecial1 = 0x80130E3C;
 
+gFTDataFoxBattleMotion = 0x80130E94;
 gFTDataFoxSpecial1 = 0x80130E9C;
 
 gFTDataSamusMain = 0x80130F30;

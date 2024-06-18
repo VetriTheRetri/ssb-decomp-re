@@ -3,7 +3,7 @@
 
 #include <ft/fttypes.h>
 
-#include "ftfox_functions.h"
+#include "ftfoxfunctions.h"
 
 #define FTFOX_BLASTER_HOLD_JOINT 17                     // Joint to attach Blaster
 #define FTFOX_BLASTER_SPAWN_OFF_X 60.0F                 // X-Offset of Blaster spawn
@@ -23,7 +23,7 @@
 
 #define FTFOX_REFLECTOR_RELEASE_LAG 18                  // Number of frames Fox is automatically locked in Reflector before the B button is read
 #define FTFOX_REFLECTOR_TURN_FRAMES 4                   // Number of frames it takes Fox to turn around during Reflector
-#define FTFOX_REFLECTOR_GRAVITY_DELAY 5                 // Frames required for gravity to take effect
+#define FTFOX_REFLECTOR_GRAVITY_DELAY 4                 // Frames required for gravity to take effect
 #define FTFOX_REFLECTOR_GRAVITY 0.8F
 
 extern ftStatusDesc dFTFoxSpecialStatusDesc[/* */];

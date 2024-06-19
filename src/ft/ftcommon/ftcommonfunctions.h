@@ -681,17 +681,17 @@ sb32 ftCommon_AttackAir_CheckInterruptCommon(GObj* fighter_gobj);
 void ftCommon_LandingAir_SetStatus(GObj* fighter_gobj);
 
 // SpecialN
-void ftKirby_SpecialN_SetStatusIndex(GObj* fighter_gobj);
-sb32 ftCommonSpecialNCheckInterruptCommon(GObj* fighter_gobj);
+extern void ftKirbySpecialNSetStatusSelect(GObj* fighter_gobj);
+extern sb32 ftCommonSpecialNCheckInterruptCommon(GObj* fighter_gobj);
 
 // SpecialHi
-sb32 ftCommonSpecialHiCheckInterruptCommon(GObj* fighter_gobj);
+extern sb32 ftCommonSpecialHiCheckInterruptCommon(GObj* fighter_gobj);
 
 // SpecialLw
-sb32 ftCommonSpecialLwCheckInterruptCommon(GObj* fighter_gobj);
+extern sb32 ftCommonSpecialLwCheckInterruptCommon(GObj* fighter_gobj);
 
 // SpecialAirN / SpecialAirHi / SpecialAirLw
-void ftKirby_SpecialAirN_SetStatusIndex(GObj* fighter_gobj);
-sb32 ftCommon_SpecialAir_CheckInterruptCommon(GObj* fighter_gobj);
+extern void ftKirby_SpecialAirN_SetStatusIndex(GObj* fighter_gobj);
+extern sb32 ftCommon_SpecialAir_CheckInterruptCommon(GObj* fighter_gobj);
 
 #endif

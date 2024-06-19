@@ -442,6 +442,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Common fighter move files
+      - [0x0CBAA0, c, ft/ftcommon/ftcommonspecialn]
       - [0x0CBBA0, c, ft/ftcommon/ftcommonspecialhi]
       - [0x0CBC20, c, ft/ftcommon/ftcommonspeciallw]
     # Fighter special move files
@@ -604,6 +605,7 @@ segments:
     # ovl3 data
       - [0x1010A0, data, ovl3]
     # Common fighter move files
+      - [0x103640, .data, ft/ftcommon/ftcommonspecialn]
       - [0x103720, .data, ft/ftcommon/ftcommonspecialhi]
       - [0x103790, .data, ft/ftcommon/ftcommonspeciallw]
     # Fighter special move files

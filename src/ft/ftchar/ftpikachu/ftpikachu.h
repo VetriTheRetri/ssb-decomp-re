@@ -3,7 +3,7 @@
 
 #include <ft/fttypes.h>
 
-#include "ftpikachu_functions.h"
+#include "ftpikachufunctions.h"
 
 #define FTPIKACHU_THUNDERJOLT_SPAWN_JOINT 11					// Spawn Thunder Jolt relative to this bone
 #define FTPIKACHU_THUNDERJOLT_SPAWN_ANGLE F_CLC_DTOR32(-45.0F)	// Launch angle of Thunder Jolt in Radians (-0.7853982F)

@@ -44,6 +44,9 @@
 // Float convert percentage to decimal notation
 #define F_PCT_TO_DEC(x) ((float)((x)*0.01F))
 
+#define I_CONTROLLER_RANGE_MAX 80									// Maximum control stick range in integer
+#define F_CONTROLLER_RANGE_MAX ((float)I_CONTROLLER_RANGE_MAX)		// Maximum control stick range in float
+
 // Bitfield macros to set up in-game bytecode commands (e.g. colanim events, CPU input scripts)
 #define GC_BITFIELD(n) (1 << (n))
 #define GC_BITMASK(len) (GC_BITFIELD(len) - 1)

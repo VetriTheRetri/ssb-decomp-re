@@ -639,8 +639,8 @@ void ftCommon_AttackS3_SetStatus(GObj* fighter_gobj);
 sb32 ftCommon_AttackS3_CheckInterruptCommon(GObj* fighter_gobj);
 
 // AttackHi3
-void ftCommon_AttackHi3_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_AttackHi3_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonAttackHi3SetStatus(GObj* fighter_gobj);
+sb32 ftCommonAttackHi3CheckInterruptCommon(GObj* fighter_gobj);
 
 // AttackLw3
 void ftCommonAttackLw3ProcUpdate(GObj* fighter_gobj);

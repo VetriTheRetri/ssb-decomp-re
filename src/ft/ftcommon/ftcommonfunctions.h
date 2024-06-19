@@ -635,8 +635,8 @@ void ftCommon_AttackDash_SetStatus(GObj* fighter_gobj);
 sb32 ftCommon_AttackDash_CheckInterruptCommon(GObj* fighter_gobj);
 
 // AttackS3
-void ftCommon_AttackS3_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_AttackS3_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonAttackS3SetStatus(GObj* fighter_gobj);
+sb32 ftCommonAttackS3CheckInterruptCommon(GObj* fighter_gobj);
 
 // AttackHi3
 void ftCommonAttackHi3SetStatus(GObj* fighter_gobj);

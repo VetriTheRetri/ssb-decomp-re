@@ -441,6 +441,8 @@ segments:
     
     # ovl3 text
       - [0x0AC540, asm, ovl3]
+    # Common fighter move files
+      - [0x0CBC20, c, ft/ftcommon/ftcommonspeciallw]
     # Fighter special move files
       - [0x0CBCA0, c, ft/ftchar/ftpurin/ftpurinspecialn]
       - [0x0CBF90, c, ft/ftchar/ftpurin/ftpurinspecialhi]
@@ -600,6 +602,8 @@ segments:
 
     # ovl3 data
       - [0x1010A0, data, ovl3]
+    # Common fighter move files
+      - [0x103790, .data, ft/ftcommon/ftcommonspeciallw]
     # Fighter special move files
       - [0x103800, .data, ft/ftchar/ftboss/ftbosswait]
       - [0x103840, .data, ft/ftchar/ftkirby/ftkirbyspecialn]
@@ -671,6 +675,7 @@ segments:
 
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
+    # Common fighter move files
     # Fighter special move files
       - [0x106F60, .rodata, ft/ftchar/ftpurin/ftpurinspecialn]
       - [0x106F70, .rodata, ft/ftchar/ftkirby/ftkirbycopypurinspecialn]

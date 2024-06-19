@@ -90,7 +90,7 @@ extern void ftNessSpecialAirLwStartProcMap(GObj* fighter_gobj);
 extern void ftNessSpecialAirLwStartSwitchStatusGround(GObj* fighter_gobj);
 extern void ftNessSpecialLwStartSwitchStatusAir(GObj* fighter_gobj);
 extern void ftNessSpecialLwInitStatusVars(GObj* fighter_gobj);
-extern void ftNessSpeciaLwStartSetStatus(GObj* fighter_gobj);
+extern void ftNessSpecialLwStartSetStatus(GObj* fighter_gobj);
 extern void ftNessSpecialAirLwStartSetStatus(GObj* fighter_gobj);
 extern void ftNessSpecialLwUpdateReleaseLag(GObj* fighter_gobj);
 extern void ftNessSpecialLwHoldProcUpdate(GObj* fighter_gobj);

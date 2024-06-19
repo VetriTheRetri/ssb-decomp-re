@@ -807,6 +807,7 @@ gFTDataPikachuSpecial1 = 0x801310BC;
 gFTDataPikachuSpecial3 = 0x801310C4;
 
 gFTDataNessMain = 0x80131130;
+gFTDataNessBattleMotion = 0x80131134;
 gFTDataNessSpecial1 = 0x8013113C;
 gFTDataNessParticleBankID = 0x80131148;
 

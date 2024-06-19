@@ -3,7 +3,7 @@
 
 #include <wp/weaponvars.h>
 
-#include "ftness_functions.h"
+#include "ftnessfunctions.h"
 
 // Special move attributes
 

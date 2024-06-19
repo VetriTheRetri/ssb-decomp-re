@@ -1,6 +1,12 @@
 #include <ft/fighter.h>
 #include <ef/effect.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x801564F0
 void ftMarioSpecialLwProcUpdate(GObj *fighter_gobj)
 {

@@ -678,7 +678,7 @@ void ftCommon_AttackAir_ProcMap(GObj* fighter_gobj);
 sb32 ftCommon_AttackAir_CheckInterruptCommon(GObj* fighter_gobj);
 
 // LandingAirN / LandingAirF / LandingAirB / LandingAirHi / LandingAirLw
-void ftCommon_LandingAir_SetStatus(GObj* fighter_gobj);
+void ftCommonLandingAirSetStatus(GObj* fighter_gobj);
 
 // SpecialN
 extern void ftKirbySpecialNSetStatusSelect(GObj* fighter_gobj);

@@ -28,7 +28,7 @@ extern ftData *dFTManagerDataFiles[/* */];
                                                                                                                        \
 		vel.x = vel.y = vel.z = 0.0F;                                                                                  \
                                                                                                                        \
-		itMain_SetFighterDrop((fp)->item_hold, &vel, 1.0F);                                                            \
+		itMainSetFighterDrop((fp)->item_hold, &vel, 1.0F);                                                            \
 	}
 
 #define ftExplainCommandCast(input_seq, type) ((type*)(input_seq))

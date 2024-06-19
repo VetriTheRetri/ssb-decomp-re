@@ -47,8 +47,11 @@ void ftKirbyCopyMarioSpecialNProcAccessory(GObj *fighter_gobj)
             fireball_kind = 0;
             break;
 
-        default:
+        #if defined (AVOID_UB)
+            return; // This prevents the UB by returning from the function if an unwanted character somehow slips through.
+        #else
             break; // Undefined behavior here, var is uninitialized, but projectile spawn function still runs
+        #endif
 
         case Ft_Kind_Luigi:
         case Ft_Kind_PolyLuigi:

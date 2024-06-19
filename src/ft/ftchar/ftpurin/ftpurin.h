@@ -4,7 +4,7 @@
 #include "ftpurinfunctions.h"
 
 #define FTPURIN_JUMPAERIAL_VEL_MUL 0.8F
-#define FTPURIN_POUND_VEL_BASE 0.65F
+#define FTPURIN_POUND_VEL_BASE 65.0F
 #define FTPURIN_POUND_VEL_MUL 0.92F
 
 extern ftStatusDesc dFTPurinSpecialStatusDesc[/* */];

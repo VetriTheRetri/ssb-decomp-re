@@ -1,7 +1,7 @@
 #ifndef _FTMARIO_H_
 #define _FTMARIO_H_
 
-#include "ftmario_functions.h"
+#include "ftmariofunctions.h"
 
 #define FTMARIO_FIREBALL_SPAWN_JOINT 16
 

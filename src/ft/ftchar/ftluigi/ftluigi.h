@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <ft/ftdef.h>
 
-// #include "ftmario_functions.h"
+// #include "ftmariofunctions.h"
 
 extern ftStatusDesc dFTLuigiSpecialStatusDesc[/* */];
 

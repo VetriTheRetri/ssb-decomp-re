@@ -643,12 +643,12 @@ void ftCommon_AttackHi3_SetStatus(GObj* fighter_gobj);
 sb32 ftCommon_AttackHi3_CheckInterruptCommon(GObj* fighter_gobj);
 
 // AttackLw3
-void ftCommon_AttackLw3_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_AttackLw3_ProcInterrupt(GObj* fighter_gobj);
-sb32 ftCommon_AttackLw3_CheckInterruptSelf(GObj* fighter_gobj);
-void ftCommon_AttackLw3_InitStatusVars(GObj* fighter_gobj);
-void ftCommon_AttackLw3_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_AttackLw3_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonAttackLw3ProcUpdate(GObj* fighter_gobj);
+void ftCommonAttackLw3ProcInterrupt(GObj* fighter_gobj);
+sb32 ftCommonAttackLw3CheckInterruptSelf(GObj* fighter_gobj);
+void ftCommonAttackLw3InitStatusVars(GObj* fighter_gobj);
+void ftCommonAttackLw3SetStatus(GObj* fighter_gobj);
+sb32 ftCommonAttackLw3CheckInterruptCommon(GObj* fighter_gobj);
 
 // AttackS4
 void ftCommonAttackS4ProcUpdate(GObj* fighter_gobj);

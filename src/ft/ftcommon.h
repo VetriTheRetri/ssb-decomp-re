@@ -682,11 +682,11 @@ typedef struct ftCommon_Attack100_StatusVars
 
 } ftCommon_Attack100_StatusVars;
 
-typedef struct ftCommon_AttackLw3_StatusVars
+typedef struct ftCommonAttackLw3StatusVars
 {
 	sb32 is_goto_attacklw3; // Interrupt Down Tilt into self
 
-} ftCommon_AttackLw3_StatusVars;
+} ftCommonAttackLw3StatusVars;
 
 typedef struct ftCommon_Attack4_StatusVars
 {
@@ -744,7 +744,7 @@ typedef union ftCommon_StatusVars
 	ftCommon_ThrowFDamage_StatusVars throwfdamage;
 	ftCommon_Attack1_StatusVars attack1;
 	ftCommon_Attack100_StatusVars attack100;
-	ftCommon_AttackLw3_StatusVars attacklw3;
+	ftCommonAttackLw3StatusVars attacklw3;
 	ftCommon_Attack4_StatusVars attack4;
 	ftCommon_AttackAir_StatusVars attackair;
 

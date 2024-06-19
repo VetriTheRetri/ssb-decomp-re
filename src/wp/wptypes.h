@@ -4,16 +4,16 @@
 #include <ssb_types.h>
 #include <macros.h>
 #include <sys/obj.h>
-#include <mp/mpcoll.h>
 #include <ef/effect.h>
+#include <mp/mpcoll.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
 #include <sys/develop.h>
 #include <gm/battle.h>
 #include <ovl0/halbitmap.h>
 
-#include <wp/weaponvars.h>
 #include "wpdef.h"
+#include <wp/weaponvars.h>
 
 // Macros
 #define WEAPON_ALLOC_MAX 32 // Allocate this many weapon user_data structs at once

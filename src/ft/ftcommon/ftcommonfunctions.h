@@ -621,14 +621,14 @@ sb32 ftCommon_Attack12_CheckGoto(GObj* fighter_gobj);
 sb32 ftCommon_Attack13_CheckGoto(GObj* fighter_gobj);
 
 // Attack100Start / Attack100Loop / Attack100End
-void ftCommon_Attack100Start_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Attack100Start_SetStatus(GObj* fighter_gobj);
-void ftCommon_Attack100Loop_KirbyUpdateGFX(ftStruct* fp);
-void ftCommon_Attack100Loop_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Attack100Loop_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Attack100Loop_SetStatus(GObj* fighter_gobj);
-void ftCommon_Attack100End_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_Attack100Start_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonAttack100StartProcUpdate(GObj* fighter_gobj);
+void ftCommonAttack100StartSetStatus(GObj* fighter_gobj);
+void ftCommonAttack100LoopKirbyUpdateEffect(ftStruct* fp);
+void ftCommonAttack100LoopProcUpdate(GObj* fighter_gobj);
+void ftCommonAttack100LoopProcInterrupt(GObj* fighter_gobj);
+void ftCommonAttack100LoopSetStatus(GObj* fighter_gobj);
+void ftCommonAttack100EndSetStatus(GObj* fighter_gobj);
+sb32 ftCommonAttack100StartCheckInterruptCommon(GObj* fighter_gobj);
 
 // AttackDash
 void ftCommonAttackDashSetStatus(GObj* fighter_gobj);

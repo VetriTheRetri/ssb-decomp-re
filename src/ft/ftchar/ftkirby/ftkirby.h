@@ -286,14 +286,14 @@ typedef struct ftKirbyCopy
 
 } ftKirbyCopy;
 
-typedef struct ftKirbyAttack100Gfx
+typedef struct ftKirbyAttack100Effect
 {
     Vec3f offset;
     f32 rotate;
     f32 vel;
     f32 add;
 
-} ftKirbyAttack100Gfx;
+} ftKirbyAttack100Effect;
 
 typedef struct ftKirby_FighterVars
 {

@@ -7,6 +7,7 @@
 // #include <PR/ultratypes.h>
 #include <sys/obj.h>
 #include <sys/thread6.h>
+#include <ef/effect.h>
 #include <mp/mpcoll.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
@@ -14,7 +15,6 @@
 #include <ovl0/halbitmap.h>
 
 #include "ftdef.h"
-#include "ftfunctions.h"
 
 #include <ft/ftcommon.h>
 #include <ft/ftchar.h>

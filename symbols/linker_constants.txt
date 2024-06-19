@@ -14,6 +14,7 @@ lFTNessSpecialLwAbsorb = 0x000016D4;
 lFTFoxSpecialLwReflector = 0x000019B0;
 
 lFTKirbySpecialNCopyData = 0x00000000;
+lFTKirbyAttack100Effect = 0x00001220;
 
 lWPMariroFireballWeaponAttributes = 0x00000000;
 lWPMarioFireballMarioWeaponAttributes = 0x00000000;

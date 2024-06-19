@@ -4,8 +4,8 @@
 #include <ssb_types.h>
 #include <macros.h>
 #include <sys/obj.h>
+#include <ef/effect.h>
 #include <mp/mpcoll.h>
-#include <it/itemvars.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
 #include <ef/effect.h>
@@ -13,6 +13,7 @@
 #include <ovl0/halbitmap.h>
 
 #include "itdef.h"
+#include <it/itemvars.h>
 
 // Macros
 #define ITEM_ALLOC_MAX 16

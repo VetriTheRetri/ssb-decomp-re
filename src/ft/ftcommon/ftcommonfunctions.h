@@ -605,20 +605,20 @@ void ftCommon_Appeal_SetStatus(GObj* fighter_gobj);
 sb32 ftCommon_Appeal_CheckInterruptCommon(GObj* fighter_gobj);
 
 // Attack11 / Attack12 / Attack13
-void ftCommon_Attack11_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Attack12_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Attack13_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Attack11_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Attack12_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Attack13_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Attack11_ProcStatus(GObj* fighter_gobj);
-void ftCommon_Attack11_SetStatus(GObj* fighter_gobj);
-void ftCommon_Attack12_SetStatus(GObj* fighter_gobj);
-void ftCommon_Attack13_SetStatus(GObj* fighter_gobj);
+void ftCommonAttack11ProcUpdate(GObj* fighter_gobj);
+void ftCommonAttack12ProcUpdate(GObj* fighter_gobj);
+void ftCommonAttack13ProcUpdate(GObj* fighter_gobj);
+void ftCommonAttack11ProcInterrupt(GObj* fighter_gobj);
+void ftCommonAttack12ProcInterrupt(GObj* fighter_gobj);
+void ftCommonAttack13ProcInterrupt(GObj* fighter_gobj);
+void ftCommonAttack11ProcStatus(GObj* fighter_gobj);
+void ftCommonAttack11SetStatus(GObj* fighter_gobj);
+void ftCommonAttack12SetStatus(GObj* fighter_gobj);
+void ftCommonAttack13SetStatus(GObj* fighter_gobj);
 sb32 ftCommon_Attack1_CheckInterruptCommon(GObj* fighter_gobj);
-sb32 ftCommon_Attack11_CheckGoto(GObj* fighter_gobj);
-sb32 ftCommon_Attack12_CheckGoto(GObj* fighter_gobj);
-sb32 ftCommon_Attack13_CheckGoto(GObj* fighter_gobj);
+sb32 ftCommonAttack11CheckGoto(GObj* fighter_gobj);
+sb32 ftCommonAttack12CheckGoto(GObj* fighter_gobj);
+sb32 ftCommonAttack13CheckGoto(GObj* fighter_gobj);
 
 // Attack100Start / Attack100Loop / Attack100End
 void ftCommonAttack100StartProcUpdate(GObj* fighter_gobj);

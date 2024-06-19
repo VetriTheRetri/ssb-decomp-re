@@ -233,7 +233,7 @@ sb32 ftCommonAttack100StartCheckInterruptCommon(GObj *fighter_gobj)
     s32 status_id;
     s32 inputs_req;
 
-    if(!ftCommonAttack100CheckFighterKind(fp))
+    if(!(ftCommonAttack100CheckFighterKind(fp)))
     {
         return FALSE;
     }

@@ -1,7 +1,7 @@
 #ifndef _FTPURIN_H_
 #define _FTPURIN_H_
 
-#include "ftpurin_functions.h"
+#include "ftpurinfunctions.h"
 
 #define FTPURIN_JUMPAERIAL_VEL_MUL 0.8F
 #define FTPURIN_POUND_VEL_BASE 0.65F

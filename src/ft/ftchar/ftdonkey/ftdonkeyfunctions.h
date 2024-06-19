@@ -43,7 +43,7 @@ extern void ftDonkeySpecialAirHiProcMap(GObj* fighter_gobj);
 extern void ftDonkeySpecialAirHiSwitchStatusGround(GObj* fighter_gobj);
 extern void ftDonkeySpecialHiSwitchStatusAir(GObj* fighter_gobj);
 extern void ftDonkeySpecialHiSetStatusFlagGA(GObj* fighter_gobj, sb32 ground_or_air);
-extern void ftDonkeySfpecialHiSetStatus(GObj* fighter_gobj);
+extern void ftDonkeySpecialHiSetStatus(GObj* fighter_gobj);
 extern void ftDonkeySpecialAirHiSetStatus(GObj* fighter_gobj);
 
 // SpecialLw / SpecialAirLw

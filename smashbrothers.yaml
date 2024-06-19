@@ -442,6 +442,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Fighter special move files
+      - [0x0CBF90, c, ft/ftchar/ftpurin/ftpurinspecialhi]
       - [0x0CC150, c, ft/ftchar/ftpurin/ftpurinspeciallw]
       - [0x0CC2A0, c, ft/ftchar/ftkirby/ftkirbycopypurinspecialn]
       - [0x0CC590, c, ft/ftchar/ftpikachu/ftpikachuspecialn]

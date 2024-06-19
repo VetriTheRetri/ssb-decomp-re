@@ -531,12 +531,12 @@ void ftCommon_CaptureWait_ProcMap(GObj* fighter_gobj);
 void ftCommon_CaptureWait_SetStatus(GObj* fighter_gobj);
 
 // CatchCut / CaptureCut / Shouldered
-void ftCommon_CatchCut_DamageApplyKnockback(GObj* fighter_gobj, ftThrowReleaseDesc* throw_release);
-void ftCommon_CaptureCut_DamageApplyKnockback(GObj* fighter_gobj, ftThrowReleaseDesc* throw_release);
-void ftCommon_Trap_InitBreakoutVars(ftStruct* fp, s32 breakout_wait);
-sb32 ftCommon_Trap_UpdateBreakoutVars(ftStruct* fp);
-void ftCommon_Shouldered_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Shouldered_SetStatus(GObj* fighter_gobj);
+void ftCommonCaptureApplyCatchKnockback(GObj* fighter_gobj, ftThrowReleaseDesc* throw_release);
+void ftCommonCaptureApplyCaptureKnockback(GObj* fighter_gobj, ftThrowReleaseDesc* throw_release);
+void ftCommonCaptureTrappedInitBreakoutVars(ftStruct* fp, s32 breakout_wait);
+sb32 ftCommonCaptureTrappedUpdateBreakoutVars(ftStruct* fp);
+void ftCommonCaptureShoulderedProcInterrupt(GObj* fighter_gobj);
+void ftCommonCaptureShoulderedSetStatus(GObj* fighter_gobj);
 
 // CaptureKirby
 void ftCommon_CaptureKirby_UpdatePosMag(GObj* fighter_gobj, Vec3f* dist);

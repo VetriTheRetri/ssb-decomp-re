@@ -119,6 +119,12 @@ itStatusDesc dItLinkBombStatusDesc[/* */] =
 	}
 };
 
+// // // // // // // // // // // //
+//                               //
+//          ENUMERATORS          //
+//                               //
+// // // // // // // // // // // //
+
 enum itLinkBombStatus
 {
 	itStatus_LinkBomb_GWait,
@@ -129,6 +135,12 @@ enum itLinkBombStatus
 	itStatus_LinkBomb_NExplode,
 	itStatus_LinkBomb_EnumMax
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 801859C0
 void itLinkBombNExplodeWaitUpdateScale(GObj* item_gobj)

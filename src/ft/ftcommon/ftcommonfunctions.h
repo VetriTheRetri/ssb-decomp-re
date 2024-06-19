@@ -600,9 +600,9 @@ void ftCommon_Thrown_SetStatusDamageRelease(GObj* fighter_gobj);
 void ftCommon_Thrown_SetStatusNoDamageRelease(GObj* fighter_gobj);
 
 // Appeal
-void ftCommon_Appeal_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Appeal_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_Appeal_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonAppealProcInterrupt(GObj* fighter_gobj);
+void ftCommonAppealSetStatus(GObj* fighter_gobj);
+sb32 ftCommonAppealCheckInterruptCommon(GObj* fighter_gobj);
 
 // Attack11 / Attack12 / Attack13
 void ftCommonAttack11ProcUpdate(GObj* fighter_gobj);

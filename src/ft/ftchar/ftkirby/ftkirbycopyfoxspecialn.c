@@ -1,6 +1,12 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80156CB0
 void ftKirbyCopyFoxSpecialNProcUpdate(GObj *fighter_gobj)
 {

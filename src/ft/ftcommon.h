@@ -666,7 +666,7 @@ typedef struct ftCommon_ThrowFDamaage_StatusVars
 	s32 status_id;
 	sb32 is_knockback_over;
 
-} ftCommon_ThrowFDamage_StatusVars;
+} ftCommonThrowFDamageStatusVars;
 
 typedef struct ftCommon_Attack1_StatusVars
 {
@@ -741,7 +741,7 @@ typedef union ftCommon_StatusVars
 	ftCommon_CaptureCaptain_StatusVars capturecaptain;
 	ftCommon_ThrowF_StatusVars throwf;
 	ftCommon_ThrowFF_StatusVars throwff;
-	ftCommon_ThrowFDamage_StatusVars throwfdamage;
+	ftCommonThrowFDamageStatusVars throwfdamage;
 	ftCommon_Attack1_StatusVars attack1;
 	ftCommon_Attack100_StatusVars attack100;
 	ftCommonAttackLw3StatusVars attacklw3;

@@ -651,11 +651,11 @@ void ftCommon_AttackLw3_SetStatus(GObj* fighter_gobj);
 sb32 ftCommon_AttackLw3_CheckInterruptCommon(GObj* fighter_gobj);
 
 // AttackS4
-void ftCommon_AttackS4_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_AttackS4_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_AttackS4_CheckInterruptDash(GObj* fighter_gobj);
-sb32 ftCommon_AttackS4_CheckInterruptTurn(GObj* fighter_gobj);
-sb32 ftCommon_AttackS4_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonAttackS4ProcUpdate(GObj* fighter_gobj);
+void ftCommonAttackS4SetStatus(GObj* fighter_gobj);
+sb32 ftCommonAttackS4CheckInterruptDash(GObj* fighter_gobj);
+sb32 ftCommonAttackS4CheckInterruptTurn(GObj* fighter_gobj);
+sb32 ftCommonAttackS4CheckInterruptCommon(GObj* fighter_gobj);
 
 // AttackHi4
 void ftCommonAttackHi4SetStatus(GObj* fighter_gobj);

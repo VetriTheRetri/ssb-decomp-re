@@ -857,7 +857,7 @@ struct ftStruct
     u32 joint_cycle_array_index : 4;    // Goes up to 5 by default; index of the array from gfx_joint_cycle_index from ftAttributes which houses the actual joint ID
     ub32 is_shield : 1;                 // Fighter's shield bubble is active
     ub32 is_attach_effect : 1;          // Destroy GFX on action state change if TRUE, not sure why this and is_playing_gfx are different
-    ub32 x18F_flag_b4 : 1;
+    ub32 is_ignore_jostle : 1;
     ub32 x18F_flag_b5 : 1;
     ub32 is_disable_control : 1;        // Fighter cannot be controlled if TRUE; enabled when training mode menu is up
     ub32 is_hitstun : 1;

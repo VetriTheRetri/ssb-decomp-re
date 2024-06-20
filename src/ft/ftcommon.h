@@ -577,11 +577,11 @@ typedef struct ftCommon_Guard_StatusVars
 
 } ftCommon_Guard_StatusVars;
 
-typedef struct ftCommon_Escape_StatusVars
+typedef struct ftCommonEscapeStatusVars
 {
 	s32 itemthrow_buffer_frames; // Allow interrupt into item throw
 
-} ftCommon_Escape_StatusVars;
+} ftCommonEscapeStatusVars;
 
 typedef struct ftCommonCatchStatusVars
 {
@@ -731,7 +731,7 @@ typedef union ftCommon_StatusVars
 	ftCommon_FireFlower_StatusVars fireflower;
 	ftCommon_Hammer_StatusVars hammer;
 	ftCommon_Guard_StatusVars guard;
-	ftCommon_Escape_StatusVars escape;
+	ftCommonEscapeStatusVars escape;
 	ftCommonCatchStatusVars catchmain;
 	ftCommonCatchWaitStatusVars catchwait;
 	ftCommon_Capture_StatusVars capture;

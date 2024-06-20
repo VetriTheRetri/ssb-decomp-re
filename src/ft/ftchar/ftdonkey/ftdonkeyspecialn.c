@@ -119,7 +119,7 @@ void ftDonkeySpecialNLoopProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ground_or_air != GA_Ground) || (ftCommon_Escape_CheckInterruptSpecialNDonkey(fighter_gobj) == FALSE))
+    if ((fp->ground_or_air != GA_Ground) || (ftCommonEscapeCheckInterruptSpecialNDonkey(fighter_gobj) == FALSE))
     {
         if (fp->input.pl.button_tap & (fp->input.button_mask_b | fp->input.button_mask_a))
         {

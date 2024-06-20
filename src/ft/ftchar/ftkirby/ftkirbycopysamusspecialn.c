@@ -163,7 +163,7 @@ void ftKirbyCopySamusSpecialNLoopProcInterrupt(GObj *fighter_gobj)
         return;
     }
 
-    status_id = ftCommon_Escape_GetStatus(fp);
+    status_id = ftCommonEscapeGetStatus(fp);
 
     if (status_id != -1)
     {
@@ -172,7 +172,7 @@ void ftKirbyCopySamusSpecialNLoopProcInterrupt(GObj *fighter_gobj)
         /* WARNING: Undefined behavior. This function expects a third argument
          * for item throw buffer frames, but never receives it.
          */ 
-        ftCommon_Escape_SetStatus(fighter_gobj, status_id);
+        ftCommonEscapeSetStatus(fighter_gobj, status_id);
     }
 
     else if (fp->input.pl.button_tap & fp->input.button_mask_z)

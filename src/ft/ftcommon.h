@@ -148,7 +148,7 @@
 #define FTCOMMON_FALLSPECIAL_PASS_STICK_RANGE_MIN                                                                      \
 	(-44) // Minimum stick Y range required to pass through drop-through
 		  // platforms while in FallSpecial
-#define FTCOMMON_FALLSPECIAL_SKIP_LANDING_VEL_Y_MAX (-20.0F) // Maximum Y velocity allowed for no impact land
+#define FTCOMMON_FALLSPECIAL_SKIPLANDING_VEL_Y_MAX (-20.0F) // Maximum Y velocity allowed for no impact land
 
 #define FTCOMMON_TORNADO_RELEASE_WAIT 60.0F
 #define FTCOMMON_TORNADO_PICKUP_WAIT 60 // Frames before tornado can pick up individual fighter again
@@ -219,7 +219,7 @@
 #define FTCOMMON_HAMMER_COLANIM_ID 0x49
 #define FTCOMMON_HAMMER_COLANIM_LENGTH 0
 #define FTCOMMON_HAMMER_TURN_FRAMES 12
-#define FTCOMMON_HAMMER_SKIP_LANDING_VEL_Y_MAX (-20.0F)
+#define FTCOMMON_HAMMER_SKIPLANDING_VEL_Y_MAX (-20.0F)
 #define FTCOMMON_HAMMER_TURN_ROTATE_STEP (-(F_CLC_DTOR32(180.0F) / FTCOMMON_HAMMER_TURN_FRAMES)) // -0.2617994F
 
 #define FTCOMMON_GUARD_RELEASE_LAG 8
@@ -292,7 +292,7 @@
 #define FTCOMMON_CAPTURECAPTAIN_FRAME_BEGIN 4.0F
 #define FTCOMMON_CAPTURECAPTAIN_ANIM_SPEED 0.0F
 
-#define FTCOMMON_THROWFFALL_SKIP_LANDING_VEL_Y_MAX (-20.0F)
+#define FTCOMMON_THROWFFALL_SKIPLANDING_VEL_Y_MAX (-20.0F)
 
 #define FTCOMMON_THROWFF_TURN_STICK_RANGE_MIN 20
 #define FTCOMMON_THROWFF_TURN_FRAMES 6
@@ -334,7 +334,7 @@
 #define FTCOMMON_ATTACKLW4_BUFFER_FRAMES_MAX 4
 
 #define FTCOMMON_ATTACKAIR_SMOOTH_LANDING_BUFFER_FRAMES_MAX 10
-#define FTCOMMON_ATTACKAIR_SKIP_LANDING_VEL_Y_MAX (-20.0F)
+#define FTCOMMON_ATTACKAIR_SKIPLANDING_VEL_Y_MAX (-20.0F)
 #define FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN                                                                   \
 	20 // Minimum control stick range required for directional aerial attacks
 #define FTCOMMON_LIGHTTHROWAIR4_BUFFER_FRAMES_MAX 8

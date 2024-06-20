@@ -66,7 +66,7 @@ void ftCommonAttackAirProcMap(GObj *fighter_gobj)
             }
             else ftCommon_LandingAirNull_SetStatus(fighter_gobj, fp->command_vars.flags.flag1 * 0.01F);
         }
-        else if (fp->phys_info.vel_air.y > FTCOMMON_ATTACKAIR_SKIP_LANDING_VEL_Y_MAX)
+        else if (fp->phys_info.vel_air.y > FTCOMMON_ATTACKAIR_SKIPLANDING_VEL_Y_MAX)
         {
             ftCommon_Wait_SetStatus(fighter_gobj);
         }

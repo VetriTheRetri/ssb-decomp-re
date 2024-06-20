@@ -442,6 +442,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Common fighter move files
+      - [0x0C7B30, c, ft/ftcommon/ftcommoncapturecaptain]
       - [0x0C7E40, c, ft/ftchar/ftdonkey/ftdonkeythrowfwait]
       - [0x0C7F70, c, ft/ftchar/ftdonkey/ftdonkeythrowfwalk]
       - [0x0C8180, c, ft/ftchar/ftdonkey/ftdonkeythrowfturn]
@@ -627,6 +628,7 @@ segments:
     # ovl3 data
       - [0x1010A0, data, ovl3]
     # Common fighter move files
+      - [0x103460, .data, ft/ftcommon/ftcommoncapturecaptain]
       - [0x103470, .data, ft/ftcommon/ftcommoncapture]
       - [0x103490, .data, ft/ftcommon/ftcommonspecialair]
       - [0x103640, .data, ft/ftcommon/ftcommonspecialn]

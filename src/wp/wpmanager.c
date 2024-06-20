@@ -21,7 +21,7 @@ s32 sWPDisplayMode;
 u32 sWPGroupID;
 
 // 0x8018CFFC
-u8 sWPPadding[68];
+u8 sWPPadding[52];
 
 // // // // // // // // // // // //
 //                               //

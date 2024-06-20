@@ -819,7 +819,7 @@ segments:
       - [0x107970, .rodata, it/itground/itfushigibana]
       - [0x107980, .rodata, it/itground/itrbomb]
       - [0x1079B0, .rodata, it/itfighter/itlinkbomb]
-      # - { start: 0x1079C0, type: bss, vram: 0x8018CF80 }
+      - { start: 0x1079C0, type: bss, vram: 0x8018CF80 }
 
   - name: ovl1
     type: code

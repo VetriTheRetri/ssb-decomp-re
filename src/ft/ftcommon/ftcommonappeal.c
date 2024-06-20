@@ -13,7 +13,7 @@ void ftCommonAppealProcInterrupt(GObj *fighter_gobj)
 
     if ((fp->command_vars.flags.flag1 != 0) && (ftCommonCatchCheckInterruptCommon(fighter_gobj) == FALSE))
     {
-        ftCommon_GuardOn_CheckInterruptCommon(fighter_gobj);
+        ftCommonGuardOnCheckInterruptCommon(fighter_gobj);
     }
 }
 

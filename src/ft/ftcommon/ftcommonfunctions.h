@@ -426,22 +426,22 @@ void ftCommon_HammerLanding_SetStatus(GObj* fighter_gobj);
 
 // GuardOn / Guard
 void ftCommonGuardCheckScheduleRelease(ftStruct* fp);
-void ftCommon_GuardOn_SetHitStatusYoshi(GObj* fighter_gobj);
+void ftCommonGuardOnSetHitStatusYoshi(GObj* fighter_gobj);
 void ftCommonGuardSetHitStatusYoshi(GObj* fighter_gobj);
 void ftCommonGuardOffSetHitStatusYoshi(GObj* fighter_gobj);
 void ftCommonGuardUpdateShieldVars(GObj* fighter_gobj);
 void ftCommonGuardUpdateShieldHitbox(ftStruct* fp);
-void func_ovl3_80148488(ftStruct* fp);
-void func_ovl3_801485CC(DObj* joint, DObjDesc* joint_desc, f32 range);
-void func_ovl3_80148664(DObj* joint, DObjDesc* joint_desc, f32 range, Vec3f* scale);
-void func_ovl3_80148714(GObj* fighter_gobj);
-void func_ovl3_8014889C(GObj* fighter_gobj);
-void ftCommon_GuardOn_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_GuardCommon_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_GuardOn_SetStatus(GObj* fighter_gobj, s32 slide_frames);
-sb32 ftCommon_GuardOn_CheckInterruptSuccess(GObj* fighter_gobj, s32 slide_frames);
-sb32 ftCommon_GuardOn_CheckInterruptCommon(GObj* fighter_gobj);
-sb32 ftCommon_GuardOn_CheckInterruptDashRun(GObj* fighter_gobj, s32 slide_frames);
+void ftCommonGuardUpdateShieldAngle(ftStruct* fp);
+void ftCommonGuardGetJointTransform(DObj* joint, DObjDesc* joint_desc, f32 range);
+void ftCommonGuardGetJointTransformScale(DObj* joint, DObjDesc* joint_desc, f32 range, Vec3f* scale);
+void ftCommonGuardUpdateJoints(GObj* fighter_gobj);
+void ftCommonGuardInitJoints(GObj* fighter_gobj);
+void ftCommonGuardOnProcUpdate(GObj* fighter_gobj);
+void ftCommonGuardCommonProcInterrupt(GObj* fighter_gobj);
+void ftCommonGuardOnSetStatus(GObj* fighter_gobj, s32 slide_frames);
+sb32 ftCommonGuardOnCheckInterruptSuccess(GObj* fighter_gobj, s32 slide_frames);
+sb32 ftCommonGuardOnCheckInterruptCommon(GObj* fighter_gobj);
+sb32 ftCommonGuardOnCheckInterruptDashRun(GObj* fighter_gobj, s32 slide_frames);
 void ftCommonGuardProcUpdate(GObj* fighter_gobj);
 void ftCommonGuardSetStatus(GObj* fighter_gobj);
 

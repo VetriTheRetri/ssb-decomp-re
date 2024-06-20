@@ -50,7 +50,7 @@ extern ftData *dFTManagerDataFiles[/* */];
 	 || (ftCommonAttackHi3CheckInterruptCommon(fighter_gobj) != FALSE)                                               \
 	 || (ftCommonAttackLw3CheckInterruptCommon(fighter_gobj) != FALSE)                                               \
 	 || (ftCommon_Attack1_CheckInterruptCommon(fighter_gobj) != FALSE)                                                 \
-	 || (ftCommon_GuardOn_CheckInterruptCommon(fighter_gobj) != FALSE)                                                 \
+	 || (ftCommonGuardOnCheckInterruptCommon(fighter_gobj) != FALSE)                                                 \
 	 || (ftCommonAppealCheckInterruptCommon(fighter_gobj) != FALSE)                                                  \
 	 || (ftCommon_KneeBend_CheckInterruptCommon(fighter_gobj) != FALSE)                                                \
 	 || (ftCommon_Dash_CheckInterruptCommon(fighter_gobj) != FALSE)                                                    \

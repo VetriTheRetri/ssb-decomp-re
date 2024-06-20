@@ -27,7 +27,7 @@ void ftCommonGuardSetStatusFromEscape(GObj *fighter_gobj)
 
         fp->is_shield = TRUE;
     }
-    func_ovl3_80148714(fighter_gobj);
+    ftCommonGuardUpdateJoints(fighter_gobj);
 
     fp->status_vars.common.guard.release_lag = FTCOMMON_GUARD_RELEASE_LAG;
     fp->status_vars.common.guard.shield_decay_wait = FTCOMMON_GUARD_DECAY_INT;
@@ -37,7 +37,7 @@ void ftCommonGuardSetStatusFromEscape(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Guard, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE));
 
-    func_ovl3_8014889C(fighter_gobj);
+    ftCommonGuardInitJoints(fighter_gobj);
 
     fp->is_shield = TRUE;
 }
@@ -71,7 +71,7 @@ void ftCommonGuardOffProcUpdate(GObj *fighter_gobj)
     {
         ftCommon_Wait_SetStatus(fighter_gobj);
     }
-    else func_ovl3_80148714(fighter_gobj);
+    else ftCommonGuardUpdateJoints(fighter_gobj);
 }
 
 // 0x80148FF0
@@ -85,7 +85,7 @@ void ftCommonGuardOffSetStatus(GObj *fighter_gobj)
 
     fp->is_shield = flag;
 
-    func_ovl3_80148714(fighter_gobj);
+    ftCommonGuardUpdateJoints(fighter_gobj);
     func_800269C0_275C0(alSound_SFX_GuardOff);
 }
 
@@ -106,7 +106,7 @@ void ftCommonGuardSetOffProcUpdate(GObj *fighter_gobj)
         }
         else ftCommonGuardSetStatus(fighter_gobj);
     }
-    else func_ovl3_8014889C(fighter_gobj);
+    else ftCommonGuardInitJoints(fighter_gobj);
 }
 
 // 0x80149108

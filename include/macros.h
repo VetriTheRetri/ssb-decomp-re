@@ -27,13 +27,16 @@
  */
 
 // Float convert degrees to radians - use this for immediate DTOR const multiplication
-#define F_CST_DTOR32(x) ((float)((x)*DTOR32)) 
+#define F_CST_DTOR32(x) ((float)((x) * DTOR32)) 
 
 // Float convert degrees to radians - use this in functions that manually calculate each step of DTOR
 #define F_CLC_DTOR32(x) ((float)(((x) * PI32) / 180.0F))
 
 // Float convert radians to degrees
-#define F_RAD_TO_DEG(x) ((float)((x) / RTOD32))
+#define F_CST_RTOD32(x) ((float)((x) * RTOD32))
+
+// Float convert radians to degrees
+#define F_CLC_RTOD32(x) ((float)(((x) / PI32) * 180.0F))
 
 // Integer convert degrees to radians
 #define I_DEG_TO_RAD(x) ((int)((x)*DTOR32))

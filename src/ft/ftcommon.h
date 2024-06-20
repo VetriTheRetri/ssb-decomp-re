@@ -618,7 +618,7 @@ typedef struct ftCommon_CaptureKirby_StatusVars
 
 } ftCommon_CaptureKirby_StatusVars;
 
-typedef struct ftCommon_CaptureYoshi_StatusVars
+typedef struct ftCommonCaptureYoshiStatusVars
 {
 	GObj* effect_gobj;
 	s16 stage;
@@ -626,7 +626,7 @@ typedef struct ftCommon_CaptureYoshi_StatusVars
 	s8 lr;
 	s8 unk_0x9;
 
-} ftCommon_CaptureYoshi_StatusVars;
+} ftCommonCaptureYoshiStatusVars;
 
 typedef struct ftCommonCaptureCaptainStatusVars
 {
@@ -737,7 +737,7 @@ typedef union ftCommon_StatusVars
 	ftCommon_Capture_StatusVars capture;
 	ftCommon_Thrown_StatusVars thrown;
 	ftCommon_CaptureKirby_StatusVars capturekirby;
-	ftCommon_CaptureYoshi_StatusVars captureyoshi;
+	ftCommonCaptureYoshiStatusVars captureyoshi;
 	ftCommonCaptureCaptainStatusVars capturecaptain;
 	ftCommon_ThrowF_StatusVars throwf;
 	ftCommon_ThrowFF_StatusVars throwff;

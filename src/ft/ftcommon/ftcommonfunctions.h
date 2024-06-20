@@ -489,8 +489,8 @@ void ftCommon_FuraFura_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_FuraFura_SetStatus(GObj* fighter_gobj);
 
 // FuraSleep
-void ftCommon_FuraSleep_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_FuraSleep_SetStatus(GObj* fighter_gobj);
+void ftCommonFuraSleepProcUpdate(GObj* fighter_gobj);
+void ftCommonFuraSleepSetStatus(GObj* fighter_gobj);
 
 // Catch
 void ftCommonCatchProcUpdate(GObj* fighter_gobj);

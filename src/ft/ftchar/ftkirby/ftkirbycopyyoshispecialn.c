@@ -57,7 +57,7 @@ void ftKirbyCopyYoshiSpecialAirNCatchUpdateCaptureVars(ftStruct *fp)
 
             fp->command_vars.flags.flag1 = 0;
 
-            gmCommonFighterSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_NONE);
+            ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_NONE);
         }
     }
 }
@@ -206,7 +206,7 @@ void ftKirbyCopyYoshiSpecialNCatchInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    gmCommonFighterSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
+    ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
     ftPhysics_StopVelAll(fighter_gobj);
 
     fp->catch_gobj = fp->search_gobj;
@@ -233,7 +233,7 @@ void ftKirbyCopyYoshiSpecialNReleaseInitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    gmCommonFighterSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
+    ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
     fp->command_vars.flags.flag2 = 0;
     fp->command_vars.flags.flag1 = 0;

@@ -80,9 +80,9 @@ void ftKirbySpecialNInitCatchVars(ftStruct *fp)
 {
     if (fp->ground_or_air == GA_Ground)
     {
-        ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_SPECIALNKIRBY, ftKirbySpecialNCatchProcCatch, ftCommon_CaptureKirby_ProcCapture);
+        ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_SPECIALNKIRBY, ftKirbySpecialNCatchProcCatch, ftCommonCaptureKirbyProcCapture);
     }
-    else ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_SPECIALNKIRBY, ftKirbySpecialAirNCatchProcCatch, ftCommon_CaptureKirby_ProcCapture);
+    else ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_SPECIALNKIRBY, ftKirbySpecialAirNCatchProcCatch, ftCommonCaptureKirbyProcCapture);
 }
 
 // 0x80161E94
@@ -253,7 +253,7 @@ void ftKirbySpecialNThrowUpdateCheckThrowStar(GObj *fighter_gobj)
         {
             ftStruct *victim_fp = ftGetStruct(kirby_fp->catch_gobj);
 
-            ftCommon_ThrownKirbyStar_SetStatus(kirby_fp->catch_gobj);
+            ftCommonThrownKirbyStarSetStatus(kirby_fp->catch_gobj);
             ftCommon_ThrownUpdateEnemyInfo(victim_fp, fighter_gobj);
 
             victim_fp->phys_info.vel_air.z = 0.0F;
@@ -274,7 +274,7 @@ void ftKirbySpecialNCopyUpdateCheckCopyStar(GObj *fighter_gobj)
         {
             ftStruct *victim_fp = ftGetStruct(kirby_fp->catch_gobj);
 
-            ftCommon_ThrownCopyStar_SetStatus(kirby_fp->catch_gobj);
+            ftCommonThrownCopyStarSetStatus(kirby_fp->catch_gobj);
 
             victim_fp->phys_info.vel_air.y = (__sinf(FTKIRBY_VACUUM_COPY_ANGLE) * FTKIRBY_VACUUM_COPY_VEL_BASE);
             victim_fp->phys_info.vel_air.x = (__cosf(FTKIRBY_VACUUM_COPY_ANGLE) * victim_fp->lr * FTKIRBY_VACUUM_COPY_VEL_BASE);

@@ -539,28 +539,28 @@ void ftCommonCaptureShoulderedProcInterrupt(GObj* fighter_gobj);
 void ftCommonCaptureShoulderedSetStatus(GObj* fighter_gobj);
 
 // CaptureKirby
-void ftCommon_CaptureKirby_UpdatePosMag(GObj* fighter_gobj, Vec3f* dist);
-void ftCommon_CaptureKirby_UpdatePosAll(GObj* fighter_gobj);
-void ftCommon_CaptureKirby_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_CaptureKirby_ProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
-void ftCommon_CaptureWaitKirby_UpdateBreakoutVars(ftStruct* this_fp, ftStruct* capture_fp);
-void ftCommon_CaptureWaitKirby_ProcMap(GObj* fighter_gobj);
-void ftCommon_CaptureWaitKirby_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_CaptureWaitKirby_SetStatus(GObj* fighter_gobj);
-void ftCommon_ThrownKirby_Escape(GObj* fighter_gobj);
-void ftCommon_ThrownCommonStar_ProcHit(GObj* fighter_gobj);
-void ftCommon_ThrownKirby_SpawnStarGFX(GObj* fighter_gobj, f32 arg1, f32 arg2);
-void ftCommon_ThrownKirbyStar_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_ThrownCommonStar_UpdatePhysics(GObj* fighter_gobj, f32 decelerate);
-void ftCommon_ThrownKirbyStar_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_ThrownCommonStar_ProcMap(GObj* fighter_gobj);
-void ftCommon_ThrownKirbyStar_InitStatusVars(GObj* fighter_gobj);
-void ftCommon_ThrownKirbyStar_ProcStatus(GObj* fighter_gobj);
-void ftCommon_ThrownKirbyStar_SetStatus(GObj* fighter_gobj);
-void ftCommon_ThrownCopyStar_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_ThrownCopyStar_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_ThrownCopyStar_ProcStatus(GObj* fighter_gobj);
-void ftCommon_ThrownCopyStar_SetStatus(GObj* fighter_gobj);
+void ftCommonCaptureKirbyUpdatePositionsMag(GObj* fighter_gobj, Vec3f* dist);
+void ftCommonCaptureKirbyUpdatePositionsAll(GObj* fighter_gobj);
+void ftCommonCaptureKirbyProcPhysics(GObj* fighter_gobj);
+void ftCommonCaptureKirbyProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
+void ftCommonCaptureWaitKirbyUpdateBreakoutVars(ftStruct* this_fp, ftStruct* capture_fp);
+void ftCommonCaptureWaitKirbyProcMap(GObj* fighter_gobj);
+void ftCommonCaptureWaitKirbyProcInterrupt(GObj* fighter_gobj);
+void ftCommonCaptureWaitKirbySetStatus(GObj* fighter_gobj);
+void ftCommonThrownKirbyEscape(GObj* fighter_gobj);
+void ftCommonThrownCommonStarProcHit(GObj* fighter_gobj);
+void ftCommonThrownKirbyStarMakeEffect(GObj* fighter_gobj, f32 arg1, f32 arg2);
+void ftCommonThrownKirbyStarProcUpdate(GObj* fighter_gobj);
+void ftCommonThrownCommonStarUpdatePhysics(GObj* fighter_gobj, f32 decelerate);
+void ftCommonThrownKirbyStarProcPhysics(GObj* fighter_gobj);
+void ftCommonThrownCommonStarProcMap(GObj* fighter_gobj);
+void ftCommonThrownKirbyStarInitStatusVars(GObj* fighter_gobj);
+void ftCommonThrownKirbyStarProcStatus(GObj* fighter_gobj);
+void ftCommonThrownKirbyStarSetStatus(GObj* fighter_gobj);
+void ftCommonThrownCopyStarProcUpdate(GObj* fighter_gobj);
+void ftCommonThrownCopyStarProcPhysics(GObj* fighter_gobj);
+void ftCommonThrownCopyStarProcStatus(GObj* fighter_gobj);
+void ftCommonThrownCopyStarSetStatus(GObj* fighter_gobj);
 
 // CaptureYoshi / YoshiEgg
 void func_ovl3_8014C770(); // Unused

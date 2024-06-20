@@ -610,13 +610,13 @@ typedef struct ftCommon_Thrown_StatusVars
 
 } ftCommon_Thrown_StatusVars;
 
-typedef struct ftCommon_CaptureKirby_StatusVars
+typedef struct ftCommonCaptureKirbyStatusVars
 {
 	sb16 is_goto_capturewait;
 	s16 lr;
 	sb16 is_kirby; // Set to TRUE if captured fighter is Kirby?
 
-} ftCommon_CaptureKirby_StatusVars;
+} ftCommonCaptureKirbyStatusVars;
 
 typedef struct ftCommonCaptureYoshiStatusVars
 {
@@ -736,7 +736,7 @@ typedef union ftCommon_StatusVars
 	ftCommon_CatchWait_StatusVars catchwait;
 	ftCommon_Capture_StatusVars capture;
 	ftCommon_Thrown_StatusVars thrown;
-	ftCommon_CaptureKirby_StatusVars capturekirby;
+	ftCommonCaptureKirbyStatusVars capturekirby;
 	ftCommonCaptureYoshiStatusVars captureyoshi;
 	ftCommonCaptureCaptainStatusVars capturecaptain;
 	ftCommon_ThrowF_StatusVars throwf;

@@ -442,6 +442,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Common fighter move files
+      - [0x0C6140, c, ft/ftcommon/ftcommoncapturekirby]
       - [0x0C71B0, c, ft/ftcommon/ftcommoncaptureyoshi]
       - [0x0C7B30, c, ft/ftcommon/ftcommoncapturecaptain]
       - [0x0C7E40, c, ft/ftchar/ftdonkey/ftdonkeythrowfwait]
@@ -629,6 +630,7 @@ segments:
     # ovl3 data
       - [0x1010A0, data, ovl3]
     # Common fighter move files
+      - [0x103140, .data, ft/ftcommon/ftcommoncapturekirby]
       - [0x103160, .data, ft/ftcommon/ftcommoncaptureyoshi]
       - [0x103460, .data, ft/ftcommon/ftcommoncapturecaptain]
       - [0x103470, .data, ft/ftcommon/ftcommoncapture]
@@ -708,6 +710,7 @@ segments:
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
     # Common fighter move files
+      - [0x106C60, .rodata, ft/ftcommon/ftcommoncapturekirby]
       - [0x106C70, .rodata, ft/ftchar/ftdonkey/ftdonkeythrowff]
       - [0x106C80, .rodata, ft/ftcommon/ftcommoncapture]
       - [0x106C90, .rodata, ft/ftcommon/ftcommonattack1]

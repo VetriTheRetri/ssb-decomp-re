@@ -1,5 +1,11 @@
 #include <ft/fighter.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x8014DD00
 void ftDonkeyThrowFFProcUpdate(GObj *fighter_gobj)
 {

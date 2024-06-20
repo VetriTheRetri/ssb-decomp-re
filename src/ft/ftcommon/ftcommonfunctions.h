@@ -527,8 +527,8 @@ void ftCommon_CapturePulled_ProcMap(GObj* fighter_gobj);
 void ftCommon_CapturePulled_ProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
 
 // CaptureWait
-void ftCommon_CaptureWait_ProcMap(GObj* fighter_gobj);
-void ftCommon_CaptureWait_SetStatus(GObj* fighter_gobj);
+void ftCommonCaptureWaitProcMap(GObj* fighter_gobj);
+void ftCommonCaptureWaitSetStatus(GObj* fighter_gobj);
 
 // CatchCut / CaptureCut / Shouldered
 void ftCommonCaptureApplyCatchKnockback(GObj* fighter_gobj, ftThrowReleaseDesc* throw_release);

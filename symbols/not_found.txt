@@ -799,6 +799,9 @@ gFTDataLinkSpecial1 = 0x80130FBC;
 
 gFTDataYoshiMain = 0x80130FF0;
 
+gFTDataCaptainMain = 0x80131030;
+gFTDataCaptainBattleMotion = 0x80131034;
+
 gFTDataKirbyMain = 0x80131070;
 gFTDataKirbyBattleMotion = 0x80131074;
 

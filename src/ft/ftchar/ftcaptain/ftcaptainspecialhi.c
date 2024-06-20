@@ -9,7 +9,7 @@
 // 0x80160280
 void ftCaptainSpecialHiInitCatchVars(ftStruct *fp)
 {
-    ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_SPECIALHICAPTAIN, ftCaptainSpecialHiProcCatch, ftCommon_CaptureCaptain_ProcCapture);
+    ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_SPECIALHICAPTAIN, ftCaptainSpecialHiProcCatch, ftCommonCaptureCaptainProcCapture);
 }
 
 // 0x801602B0
@@ -87,7 +87,7 @@ void ftCaptainSpecialHiCatchProcPhysics(GObj *fighter_gobj)
 
     if (!(fp->status_vars.captain.specialhi.flags & 4))
     {
-        ftCommon_CaptureCaptain_UpdateCapturePos(fighter_gobj, fp->catch_gobj, &vec);
+        ftCommonCaptureCaptainUpdatePositions(fighter_gobj, fp->catch_gobj, &vec);
 
         if (lbVector_Vec3fMagnitude(&vec) > 180.0F)
         {

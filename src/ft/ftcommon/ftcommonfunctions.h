@@ -577,10 +577,10 @@ void ftCommon_YoshiEgg_ProcStatus(GObj* fighter_gobj);
 void ftCommon_YoshiEgg_SetStatus(GObj* fighter_gobj);
 
 // CaptureCaptain
-void ftCommon_CaptureCaptain_UpdateCapturePos(GObj* fighter_gobj, GObj* capture_gobj, Vec3f* pos);
-void ftCommon_CaptureCaptain_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_CaptureCaptain_ProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
-void ftCommon_CaptureCaptain_Release(GObj* fighter_gobj);
+void ftCommonCaptureCaptainUpdatePositions(GObj* fighter_gobj, GObj* capture_gobj, Vec3f* pos);
+void ftCommonCaptureCaptainProcPhysics(GObj* fighter_gobj);
+void ftCommonCaptureCaptainProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
+void ftCommonCaptureCaptainRelease(GObj* fighter_gobj);
 
 // Thrown
 void ftCommon_Thrown_ProcUpdate(GObj* fighter_gobj);

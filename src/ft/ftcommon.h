@@ -628,11 +628,11 @@ typedef struct ftCommon_CaptureYoshi_StatusVars
 
 } ftCommon_CaptureYoshi_StatusVars;
 
-typedef struct ftCommon_CaptureCaptain_StatusVars
+typedef struct ftCommonCaptureCaptainStatusVars
 {
 	u16 capture_flag; // Collection of bit flags, only seen 0x4 and 0x2 used
 
-} ftCommon_CaptureCaptain_StatusVars;
+} ftCommonCaptureCaptainStatusVars;
 
 typedef struct ftCommon_ThrowF_StatusVars // Cargo Throw
 {
@@ -738,7 +738,7 @@ typedef union ftCommon_StatusVars
 	ftCommon_Thrown_StatusVars thrown;
 	ftCommon_CaptureKirby_StatusVars capturekirby;
 	ftCommon_CaptureYoshi_StatusVars captureyoshi;
-	ftCommon_CaptureCaptain_StatusVars capturecaptain;
+	ftCommonCaptureCaptainStatusVars capturecaptain;
 	ftCommon_ThrowF_StatusVars throwf;
 	ftCommon_ThrowFF_StatusVars throwff;
 	ftCommonThrowFDamageStatusVars throwfdamage;

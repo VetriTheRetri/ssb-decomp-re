@@ -510,9 +510,9 @@ void ftCommon_CatchWait_ProcInterrupt(GObj* fighter_gobj);
 void ftCommon_CatchWait_SetStatus(GObj* fighter_gobj);
 
 // ThrowF / ThrowB
-void ftCommon_Throw_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Throw_SetStatus(GObj* fighter_gobj, sb32 is_throwf);
-sb32 ftCommon_Throw_CheckInterruptCatchWait(GObj* fighter_gobj);
+void ftCommonThrowProcUpdate(GObj* fighter_gobj);
+void ftCommonThrowSetStatus(GObj* fighter_gobj, sb32 is_throwf);
+sb32 ftCommonThrowCheckInterruptCatchWait(GObj* fighter_gobj);
 
 // CapturePulled
 void ftCommonCapturePulledRotateScale(GObj* fighter_gobj, Vec3f* this_pos, Vec3f* rotate);

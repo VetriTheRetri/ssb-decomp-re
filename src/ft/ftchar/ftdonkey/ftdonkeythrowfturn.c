@@ -6,11 +6,11 @@
 //                               //
 // // // // // // // // // // // //
 
-#define ftDonkeyThrowFTurnCheckInterruptThrow(fighter_gobj)                            \
+#define ftDonkeyThrowFTurnCheckInterrupt(fighter_gobj)                            \
 (                                                                           \
     (ftCommon_LightThrow_CheckInterruptCommon(fighter_gobj) != FALSE) ||    \
     (ftDonkeyThrowFFCheckInterruptThrowFCommon(fighter_gobj) != FALSE)    \
-)                                                                           \
+)
 
 // // // // // // // // // // // //
 //                               //
@@ -37,7 +37,7 @@ void ftDonkeyThrowFTurnProcUpdate(GObj *fighter_gobj)
 // 0x8014D790
 void ftDonkeyThrowFTurnProcInterrupt(GObj *fighter_gobj)
 {
-    if (!(ftDonkeyThrowFTurnCheckInterruptThrow(fighter_gobj)))
+    if (!(ftDonkeyThrowFTurnCheckInterrupt(fighter_gobj)))
     {
         ftDonkeyThrowFKneeBendCheckInterruptThrowFCommon(fighter_gobj);
     }

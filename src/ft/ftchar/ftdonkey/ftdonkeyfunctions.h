@@ -66,7 +66,7 @@ extern void ftDonkeyThrowFWaitSetStatus(GObj* fighter_gobj);
 sb32 ftDonkeyThrowFWaitCheckInterruptThrowFWalk(GObj* fighter_gobj);
 
 // ThrowFWalk
-f32 ftDonkeyThrowFWalkGetWalkAnimSpeed(ftStruct* fp, s32 status_id);
+f32 ftDonkeyThrowFWalkGetWalkAnimLength(ftStruct* fp, s32 status_id);
 extern void ftDonkeyThrowFWalkProcInterrupt(GObj* fighter_gobj);
 extern void ftDonkeyThrowFWalkSetStatusParam(GObj* fighter_gobj, f32 frame_begin);
 extern void ftDonkeyThrowFWalkSetStatusDefault(GObj* fighter_gobj);

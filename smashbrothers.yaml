@@ -442,6 +442,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Common fighter move files
+      - [0x0C7F70, c, ft/ftchar/ftdonkey/ftdonkeythrowfwalk]
       - [0x0C8180, c, ft/ftchar/ftdonkey/ftdonkeythrowfturn]
       - [0x0C8290, c, ft/ftchar/ftdonkey/ftdonkeythrowfkneebend]
       - [0x0C8440, c, ft/ftchar/ftdonkey/ftdonkeythrowffall]

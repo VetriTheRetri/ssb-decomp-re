@@ -466,11 +466,11 @@ sb32 ftCommon_Escape_CheckInterruptDash(GObj* fighter_gobj);
 sb32 ftCommon_Escape_CheckInterruptGuard(GObj* fighter_gobj);
 
 // ShieldBreakFly
-void ftCommon_ShieldBreakFly_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_ShieldBreakFly_ProcMap(GObj* fighter_gobj);
-void ftCommon_ShieldBreakFly_SetStatus(GObj* fighter_gobj);
-void ftCommon_ShieldBreakFly_UpdateVarsSetStatus(GObj* fighter_gobj);
-void ftCommon_ShieldBreakFlyReflector_SetStatus(GObj* fighter_gobj);
+void ftCommonShieldBreakFlyProcUpdate(GObj* fighter_gobj);
+void ftCommonShieldBreakFlyProcMap(GObj* fighter_gobj);
+void ftCommonShieldBreakFlySetStatus(GObj* fighter_gobj);
+void ftCommonShieldBreakFlyCommonSetStatus(GObj* fighter_gobj);
+void ftCommonShieldBreakFlyReflectorSetStatus(GObj* fighter_gobj);
 
 // ShieldBreakFall
 void ftCommonShieldBreakFallProcMap(GObj* fighter_gobj);

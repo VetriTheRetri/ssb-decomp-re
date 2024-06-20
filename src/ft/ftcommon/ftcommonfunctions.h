@@ -513,12 +513,6 @@ void ftCommon_CatchWait_SetStatus(GObj* fighter_gobj);
 void ftCommon_Throw_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_Throw_SetStatus(GObj* fighter_gobj, sb32 is_throwf);
 sb32 ftCommon_Throw_CheckInterruptCatchWait(GObj* fighter_gobj);
-void ftKirby_ThrowFJump_ProcUpdate(GObj* fighter_gobj);
-void ftKirby_ThrowFJump_ProcMap(GObj* fighter_gobj);
-void ftKirby_ThrowFFall_SetStatus(GObj* fighter_gobj);
-void ftKirby_ThrowFLanding_ProcPhysics(GObj* fighter_gobj);
-void ftKirby_ThrowFLanding_ProcMap(GObj* fighter_gobj);
-void ftKirby_ThrowFLanding_SetStatus(GObj* fighter_gobj);
 
 // CapturePulled
 void ftCommonCapturePulledRotateScale(GObj* fighter_gobj, Vec3f* this_pos, Vec3f* rotate);

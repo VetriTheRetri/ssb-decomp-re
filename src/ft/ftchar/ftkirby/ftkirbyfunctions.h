@@ -5,6 +5,14 @@
 #include <sys/objdef.h>
 #include <ft/ftdef.h>
 
+// ThrowF
+extern void ftKirbyThrowFProcUpdate(GObj *fighter_gobj);
+extern void ftKirbyThrowFProcMap(GObj *fighter_gobj);
+extern void ftKirbyThrowFFallSetStatus(GObj *fighter_gobj);
+extern void ftKirbyThrowFLandingProcPhysics(GObj *fighter_gobj);
+extern void ftKirbyThrowFLandingProcMap(GObj *fighter_gobj);
+extern void ftKirbyThrowFLandingSetStatus(GObj *fighter_gobj);
+
 // SpecialHi / SpecialAirHi
 extern void ftKirbySpecialHiUpdateEffect(GObj* fighter_gobj);
 extern void ftKirbySpecialHiProcUpdate(GObj* fighter_gobj);

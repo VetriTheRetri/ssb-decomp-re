@@ -634,7 +634,7 @@ typedef struct ftCommonCaptureCaptainStatusVars
 
 } ftCommonCaptureCaptainStatusVars;
 
-typedef struct ftCommon_ThrowF_StatusVars // Cargo Throw
+typedef struct ftCommonThrowFStatusVars // Cargo Throw
 {
 	union
 	{
@@ -645,7 +645,7 @@ typedef struct ftCommon_ThrowF_StatusVars // Cargo Throw
 	s32 input_source;
 	sb32 is_short_hop;
 
-} ftCommon_ThrowF_StatusVars;
+} ftCommonThrowFStatusVars;
 
 typedef struct ftCommon_ThrowFF_StatusVars
 {
@@ -739,7 +739,7 @@ typedef union ftCommon_StatusVars
 	ftCommonCaptureKirbyStatusVars capturekirby;
 	ftCommonCaptureYoshiStatusVars captureyoshi;
 	ftCommonCaptureCaptainStatusVars capturecaptain;
-	ftCommon_ThrowF_StatusVars throwf;
+	ftCommonThrowFStatusVars throwf;
 	ftCommon_ThrowFF_StatusVars throwff;
 	ftCommonThrowFDamageStatusVars throwfdamage;
 	ftCommon_Attack1_StatusVars attack1;

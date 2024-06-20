@@ -521,10 +521,10 @@ void ftKirby_ThrowFLanding_ProcMap(GObj* fighter_gobj);
 void ftKirby_ThrowFLanding_SetStatus(GObj* fighter_gobj);
 
 // CapturePulled
-void ftCommon_CapturePulled_MatrixRotateScale(GObj* fighter_gobj, Vec3f* this_pos, Vec3f* rotate);
-void ftCommon_Capture_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_CapturePulled_ProcMap(GObj* fighter_gobj);
-void ftCommon_CapturePulled_ProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
+void ftCommonCapturePulledRotateScale(GObj* fighter_gobj, Vec3f* this_pos, Vec3f* rotate);
+void ftCommonCapturePulledProcPhysics(GObj* fighter_gobj);
+void ftCommonCapturePulledProcMap(GObj* fighter_gobj);
+void ftCommonCapturePulledProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
 
 // CaptureWait
 void ftCommonCaptureWaitProcMap(GObj* fighter_gobj);

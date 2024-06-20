@@ -473,12 +473,12 @@ void ftCommon_ShieldBreakFly_UpdateVarsSetStatus(GObj* fighter_gobj);
 void ftCommon_ShieldBreakFlyReflector_SetStatus(GObj* fighter_gobj);
 
 // ShieldBreakFall
-void ftCommon_ShieldBreakFall_ProcMap(GObj* fighter_gobj);
-void ftCommon_ShieldBreakFall_SetStatus(GObj* fighter_gobj);
+void ftCommonShieldBreakFallProcMap(GObj* fighter_gobj);
+void ftCommonShieldBreakFallSetStatus(GObj* fighter_gobj);
 
 // ShieldBreakDown
-void ftCommon_ShieldBreakDown_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_ShieldBreakDown_SetStatus(GObj* fighter_gobj);
+void ftCommonShieldBreakDownProcUpdate(GObj* fighter_gobj);
+void ftCommonShieldBreakDownSetStatus(GObj* fighter_gobj);
 
 // ShieldBreakStand
 void ftCommonShieldBreakStandProcUpdate(GObj* fighter_gobj);

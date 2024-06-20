@@ -624,7 +624,7 @@ typedef struct ftCommonCaptureYoshiStatusVars
 	s16 stage;
 	s16 breakout_wait;
 	s8 lr;
-	s8 unk_0x9;
+	sb8 is_damagefloor;
 
 } ftCommonCaptureYoshiStatusVars;
 

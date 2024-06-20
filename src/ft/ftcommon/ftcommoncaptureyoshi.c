@@ -146,7 +146,7 @@ void ftCommonCaptureYoshiEggProcUpdate(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     sb32 is_escape = FALSE;
 
-    if (fp->status_vars.common.captureyoshi.unk_0x9 == TRUE)
+    if (fp->status_vars.common.captureyoshi.is_damagefloor == TRUE)
     {
         is_escape = TRUE;
 
@@ -302,12 +302,12 @@ void ftCommonCaptureYoshiEggProcTrap(GObj *fighter_gobj)
     {
         fp->status_vars.common.captureyoshi.breakout_wait -= ((2.0F * fp->damage_queue) / 0.5F);
     }
-    if ((fp->damage_object_class == ftHitlog_ObjectClass_Ground) && (fp->damage_object_kind == 0))
+    if ((fp->damage_object_class == ftHitlog_ObjectClass_Ground) && (fp->damage_object_kind == gmHitEnvironment_Kind_Acid))
     {
         fp->status_vars.common.captureyoshi.breakout_wait = 0;
-        fp->status_vars.common.captureyoshi.unk_0x9 = 1;
+        fp->status_vars.common.captureyoshi.is_damagefloor = TRUE;
     }
-    fp->damage_kind = 4;
+    fp->damage_kind = ftHitlog_ObjectClass_Ground;
 }
 
 // 0x8014CDFC
@@ -320,7 +320,7 @@ void ftCommonCaptureYoshiEggSetHurtCollisions(GObj *fighter_gobj)
 
     ft_hurt->joint = fp->joint[ftParts_Joint_TopN];
     ft_hurt->joint_id = ftParts_Joint_TopN;
-    ft_hurt->placement = 1;
+    ft_hurt->placement = ftHurtbox_Placement_Middle;
     ft_hurt->is_grabbable = FALSE;
     ft_hurt->offset = egg->offset;
     ft_hurt->size = egg->size;
@@ -390,7 +390,7 @@ void ftCommonCaptureYoshiEggSetStatus(GObj *fighter_gobj)
 
     this_fp->status_vars.common.captureyoshi.lr = capture_fp->lr;
     this_fp->status_vars.common.captureyoshi.effect_gobj = NULL;
-    this_fp->status_vars.common.captureyoshi.unk_0x9 = 0;
+    this_fp->status_vars.common.captureyoshi.is_damagefloor = 0;
 
     ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, ftHitlog_ObjectClass_Fighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
     ftCommonCaptureYoshiEggMakeEffect(fighter_gobj);

@@ -666,6 +666,14 @@ typedef enum ftCatchKind
 
 } ftCatchKind;
 
+typedef enum ftHurtboxPlacement
+{
+    ftHurtbox_Placement_Low,
+    ftHurtbox_Placement_Middle,
+    ftHurtbox_Placement_High
+
+} ftHurtboxPlacement;
+
 typedef enum ftPartsJointLabels
 {
     ftParts_Joint_TopN,

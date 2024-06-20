@@ -117,14 +117,14 @@ typedef enum ftNessStatus
 
 } ftNessStatus;
 
-typedef struct ftNess_FighterVars
+typedef struct ftNessFighterVars
 {
     sb32 is_thunder_destroy;      // Bool to check if PK Thunder exists
     s32 pkthunder_trail_id;
     s16 pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT];
     s16 pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT];
 
-} ftNess_FighterVars;
+} ftNessFighterVars;
 
 typedef struct ftNessSpecialHiStatusVars
 {
@@ -146,11 +146,11 @@ typedef struct ftNessSpecialLwStatusVars
 
 } ftNessSpecialLwStatusVars;
 
-typedef union ftNess_StatusVars
+typedef union ftNessStatusVars
 {
     ftNessSpecialHiStatusVars specialhi;
     ftNessSpecialLwStatusVars speciallw;
 
-} ftNess_StatusVars;
+} ftNessStatusVars;
 
 #endif

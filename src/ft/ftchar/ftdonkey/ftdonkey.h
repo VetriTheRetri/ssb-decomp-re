@@ -115,11 +115,11 @@ typedef enum ftDonkeyStatus
 
 } ftDonkeyStatus;
 
-typedef struct ftDonkey_FighterVars
+typedef struct ftDonkeyFighterVars
 {
 	s32 charge_level;
 
-} ftDonkey_FighterVars;
+} ftDonkeyFighterVars;
 
 typedef struct ftDonkeySpecialNStatusVars
 {
@@ -142,12 +142,12 @@ typedef struct ftDonkeySpecialLwStatusVars
 
 } ftDonkeySpecialLwStatusVars;
 
-typedef union ftDonkey_StatusVars
+typedef union ftDonkeyStatusVars
 {
 	ftDonkeySpecialNStatusVars specialn;
 	ftDonkeySpecialHiStatusVars specialhi;
 	ftDonkeySpecialLwStatusVars speciallw;
 
-} ftDonkey_StatusVars;
+} ftDonkeyStatusVars;
 
 #endif

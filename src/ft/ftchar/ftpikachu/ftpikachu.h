@@ -103,11 +103,11 @@ typedef enum ftPikachuStatus
 
 } ftPikachuStatus;
 
-typedef struct ftPikachu_FighterVars
+typedef struct ftPikachuFighterVars
 {
 	sb32 is_thunder_destroy;
 
-} ftPikachu_FighterVars;
+} ftPikachuFighterVars;
 
 typedef struct ftPikachuSpecialHiStatusVars
 {
@@ -128,11 +128,11 @@ typedef struct ftPikachuSpecialLwStatusVars
 
 } ftPikachuSpecialLwStatusVars;
 
-typedef union ftPikachu_StatusVars
+typedef union ftPikachuStatusVars
 {
 	ftPikachuSpecialHiStatusVars specialhi;
 	ftPikachuSpecialLwStatusVars speciallw;
 
-} ftPikachu_StatusVars;
+} ftPikachuStatusVars;
 
 #endif

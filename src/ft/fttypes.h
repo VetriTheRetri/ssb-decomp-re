@@ -1054,16 +1054,16 @@ struct ftStruct
 
     union ftFighterVars
     {
-        ftMario_FighterVars         mario;
-        ftDonkey_FighterVars        donkey;
-        ftSamus_FighterVars         samus;
-        ftLink_FighterVars          link;
-        ftCaptain_FighterVars       captain;
-        ftKirby_FighterVars         kirby;
-        ftPikachu_FighterVars       pikachu;
-        ftPurin_FighterVars         purin;
-        ftNess_FighterVars          ness;
-        ftBoss_FighterVars    boss;
+        ftMarioFighterVars      mario;
+        ftDonkeyFighterVars     donkey;
+        ftSamusFighterVars      samus;
+        ftLinkFighterVars       link;
+        ftCaptainFighterVars    captain;
+        ftKirbyFighterVars      kirby;
+        ftPikachuFighterVars    pikachu;
+        ftPurinFighterVars      purin;
+        ftNessFighterVars       ness;
+        ftBossFighterVars       boss;
 
     } fighter_vars;
 
@@ -1071,18 +1071,18 @@ struct ftStruct
 
     union ftStatusVars
     {
-        ftCommon_StatusVars         common;
-        ftMario_StatusVars          mario;
-        ftFox_StatusVars            fox;
-        ftDonkey_StatusVars         donkey;
-        ftSamus_StatusVars          samus;
-        ftLink_StatusVars           link;
-        ftYoshi_StatusVars          yoshi;
-        ftCaptain_StatusVars        captain;
-        ftKirby_StatusVars          kirby;
-        ftPikachu_StatusVars        pikachu;
-        ftNess_StatusVars           ness;
-        ftBoss_StatusVars     boss;
+        ftCommonStatusVars      common;
+        ftMarioStatusVars       mario;
+        ftFoxStatusVars         fox;
+        ftDonkeyStatusVars      donkey;
+        ftSamusStatusVars       samus;
+        ftLinkStatusVars        link;
+        ftYoshiStatusVars       yoshi;
+        ftCaptainStatusVars     captain;
+        ftKirbyStatusVars       kirby;
+        ftPikachuStatusVars     pikachu;
+        ftNessStatusVars        ness;
+        ftBossStatusVars        boss;
 
     } status_vars;
 

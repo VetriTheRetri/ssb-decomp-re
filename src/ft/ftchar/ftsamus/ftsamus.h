@@ -73,12 +73,12 @@ typedef enum ftSamusStatus
 
 } ftSamusStatus;
 
-typedef struct ftSamus_FighterVars
+typedef struct ftSamusFighterVars
 {
     s32 charge_level;
     s32 charge_recoil;
 
-} ftSamus_FighterVars;
+} ftSamusFighterVars;
 
 typedef struct ftSamusSpecialNStatusVars
 {
@@ -94,11 +94,11 @@ typedef struct ftSamusSpecialLwStatusVars
 
 } ftSamusSpecialLwStatusVars;
 
-typedef union ftSamus_StatusVars
+typedef union ftSamusStatusVars
 {
     ftSamusSpecialNStatusVars specialn;
     ftSamusSpecialLwStatusVars speciallw;
 
-} ftSamus_StatusVars;
+} ftSamusStatusVars;
 
 #endif

@@ -70,11 +70,11 @@ typedef enum ftMarioStatus
 
 } ftMarioStatus;
 
-typedef struct ftMario_FighterVars
+typedef struct ftMarioFighterVars
 {
     sb32 is_expend_tornado;
 
-} ftMario_FighterVars;
+} ftMarioFighterVars;
 
 typedef struct ftMarioSpecialHiStatusVars
 {
@@ -89,11 +89,11 @@ typedef struct ftMarioSpecialLwStatusVars
 
 } ftMarioSpecialLwStatusVars;
 
-typedef union ftMario_StatusVars
+typedef union ftMarioStatusVars
 {
     ftMarioSpecialHiStatusVars specialhi;
     ftMarioSpecialLwStatusVars speciallw;
 
-} ftMario_StatusVars;
+} ftMarioStatusVars;
 
 #endif

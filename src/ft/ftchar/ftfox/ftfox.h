@@ -124,11 +124,11 @@ typedef struct ftFoxSpecialLwStatusVars
 
 } ftFoxSpecialLwStatusVars;
 
-typedef union ftFox_StatusVars
+typedef union ftFoxStatusVars
 {
     ftFoxSpecialHiStatusVars specialhi;
     ftFoxSpecialLwStatusVars speciallw;
 
-} ftFox_StatusVars;
+} ftFoxStatusVars;
 
 #endif

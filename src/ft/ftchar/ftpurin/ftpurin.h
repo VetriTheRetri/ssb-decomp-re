@@ -62,10 +62,10 @@ typedef enum ftPurinStatus
 
 } ftPurinStatus;
 
-typedef struct ftPurin_FighterVars
+typedef struct ftPurinFighterVars
 {
     u32 unk_0x0;
 
-} ftPurin_FighterVars;
+} ftPurinFighterVars;
 
 #endif

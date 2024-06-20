@@ -78,11 +78,11 @@ typedef enum ftCaptainStatus
 
 } ftCaptainStatus;
 
-typedef struct ftCaptain_FighterVars
+typedef struct ftCaptainFighterVars
 {
     s32 falcon_punch_unk;
 
-} ftCaptain_FighterVars;
+} ftCaptainFighterVars;
 
 typedef struct ftCaptainSpecialHiStatusVars
 {
@@ -98,11 +98,11 @@ typedef struct ftCaptainSpecialLwStatusVars
 
 } ftCaptainSpecialLwStatusVars;
 
-typedef union ftCaptain_StatusVars
+typedef union ftCaptainStatusVars
 {
     ftCaptainSpecialHiStatusVars specialhi;
     ftCaptainSpecialLwStatusVars speciallw;
 
-} ftCaptain_StatusVars;
+} ftCaptainStatusVars;
 
 #endif

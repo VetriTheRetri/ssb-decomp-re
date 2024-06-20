@@ -34,7 +34,7 @@ void ftDonkeyThrowFFProcUpdate(GObj *fighter_gobj)
         fp->command_vars.flags.flag2 = 0;
         fp->catch_gobj = NULL;
 
-        ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_NONE);
+        gmCommonFighterSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_NONE);
     }
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -52,7 +52,7 @@ void ftDonkeyThrowAirFFSwitchStatusGround(GObj *fighter_gobj)
 
     fp->status_vars.common.throwff.is_turn = FALSE;
 
-    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    gmCommonFighterSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x8014DE80
@@ -62,7 +62,7 @@ void ftDonkeyThrowFFSwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMainSetFighterStatus(fighter_gobj, ftStatus_Donkey_ThrowAirFF, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    gmCommonFighterSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
 // 0x8014DECC
@@ -96,7 +96,7 @@ void ftDonkeyThrowFFSetStatus(GObj *fighter_gobj, sb32 is_turn)
     }
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, flags);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
-    ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_ALL);
+    gmCommonFighterSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
     fp->command_vars.flags.flag2 = 0;
 

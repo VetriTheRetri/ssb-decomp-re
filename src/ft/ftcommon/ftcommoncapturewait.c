@@ -56,5 +56,5 @@ void ftCommonCaptureWaitSetStatus(GObj *fighter_gobj)
 
         ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Intangible);
     }
-    ftSetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
+    gmCommonFighterSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
 }

@@ -75,7 +75,7 @@ void ftCommonThrownSetStatusQueue(GObj *fighter_gobj, s32 status_id_new, s32 sta
 
         ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Intangible);
     }
-    ftSetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
+    gmCommonFighterSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
 
     this_fp->status_vars.common.thrown.status_id = status_id_queue;
 }
@@ -98,7 +98,7 @@ void ftCommonThrownSetStatusImmediate(GObj *fighter_gobj, s32 status_id)
 
         ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Intangible);
     }
-    ftSetCaptureIgnoreMask(this_fp, FTCATCHKIND_MASK_ALL);
+    gmCommonFighterSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
 
     if 
     (

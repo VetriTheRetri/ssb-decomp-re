@@ -881,7 +881,7 @@ struct ftStruct
     ub32 is_shield_catch : 1;           // Set to TRUE when fighter grabs after getting shield poked; there is a check for this flag that halves throw damage if TRUE
     ub32 x192_flag_b6 : 1;
     ub32 x192_flag_b7 : 1;
-    u8 capture_ignore_mask;             // Fighter is immune to these grab types
+    u8 capture_immune_mask;             // Fighter is immune to these grab types
     u8 catch_mask;                      // Fighter's current grab type
 
     ftAnimFlags anim_flags;

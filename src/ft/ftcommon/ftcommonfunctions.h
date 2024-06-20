@@ -493,19 +493,19 @@ void ftCommon_FuraSleep_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_FuraSleep_SetStatus(GObj* fighter_gobj);
 
 // Catch
-void ftCommon_Catch_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Catch_CaptureSetStatusRelease(GObj* fighter_gobj);
+void ftCommonCatchProcUpdate(GObj* fighter_gobj);
+void ftCommonCatchCaptureSetStatusRelease(GObj* fighter_gobj);
 void func_ovl3_80149B48(GObj* fighter_gobj); // Unused?
-void ftCommon_Catch_ProcMap(GObj* fighter_gobj);
-void ftCommon_Catch_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_Catch_CheckInterruptGuard(GObj* fighter_gobj);
-sb32 ftCommon_Catch_CheckInterruptCommon(GObj* fighter_gobj);
-sb32 ftCommon_Catch_CheckInterruptDashRun(GObj* fighter_gobj);
-sb32 ftCommon_Catch_CheckInterruptAttack11(GObj* fighter_gobj);
+void ftCommonCatchProcMap(GObj* fighter_gobj);
+void ftCommonCatchSetStatus(GObj* fighter_gobj);
+sb32 ftCommonCatchCheckInterruptGuard(GObj* fighter_gobj);
+sb32 ftCommonCatchCheckInterruptCommon(GObj* fighter_gobj);
+sb32 ftCommonCatchCheckInterruptDashRun(GObj* fighter_gobj);
+sb32 ftCommonCatchCheckInterruptAttack11(GObj* fighter_gobj);
 
 // CatchPull / CatchWait
 void ftCommonCatchPullProcUpdate(GObj* fighter_gobj);
-void ftCommonCatchPullSetStatus(GObj* fighter_gobj);
+void ftCommonCatchPullProcCatch(GObj* fighter_gobj);
 void ftCommonCatchWaitProcInterrupt(GObj* fighter_gobj);
 void ftCommonCatchWaitSetStatus(GObj* fighter_gobj);
 

@@ -81,7 +81,7 @@ void ftCommonAttack11ProcInterrupt(GObj *fighter_gobj)
     {
         fp->status_vars.common.attack1.interrupt_catch_timer++;
 
-        if (ftCommon_Catch_CheckInterruptAttack11(fighter_gobj) != FALSE)
+        if (ftCommonCatchCheckInterruptAttack11(fighter_gobj) != FALSE)
         {
             return;
         }

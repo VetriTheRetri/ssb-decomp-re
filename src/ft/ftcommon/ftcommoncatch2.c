@@ -29,7 +29,7 @@ void ftCommonCatchPullProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80149F04
-void ftCommonCatchPullSetStatus(GObj *fighter_gobj)
+void ftCommonCatchPullProcCatch(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;

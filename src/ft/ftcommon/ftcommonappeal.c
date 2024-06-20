@@ -11,7 +11,7 @@ void ftCommonAppealProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->command_vars.flags.flag1 != 0) && (ftCommon_Catch_CheckInterruptCommon(fighter_gobj) == FALSE))
+    if ((fp->command_vars.flags.flag1 != 0) && (ftCommonCatchCheckInterruptCommon(fighter_gobj) == FALSE))
     {
         ftCommon_GuardOn_CheckInterruptCommon(fighter_gobj);
     }

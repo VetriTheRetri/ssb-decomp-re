@@ -54,7 +54,7 @@ void ftKirbyThrowFLandingProcMap(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Ground)
     {
-        ftCommon_Catch_ProcMap(fighter_gobj);
+        ftCommonCatchProcMap(fighter_gobj);
     }
     else if ((ftMap_CheckAirLanding(fighter_gobj) != FALSE) && (fp->phys_info.vel_air.y < 0.0F))
     {

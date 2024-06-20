@@ -583,14 +583,14 @@ typedef struct ftCommon_Escape_StatusVars
 
 } ftCommon_Escape_StatusVars;
 
-typedef struct ftCommon_Catch_StatusVars
+typedef struct ftCommonCatchStatusVars
 {
 	f32 catch_pull_frame_begin; // ???
 	f32 catch_pull_anim_frames; // Time it takes to retract grabbed fighter
 	u8 filler_0x8[0xB3C - 0xB20];
 	u32 unk_0x24;
 
-} ftCommon_Catch_StatusVars;
+} ftCommonCatchStatusVars;
 
 typedef struct ftCommonCatchWaitStatusVars
 {
@@ -732,7 +732,7 @@ typedef union ftCommon_StatusVars
 	ftCommon_Hammer_StatusVars hammer;
 	ftCommon_Guard_StatusVars guard;
 	ftCommon_Escape_StatusVars escape;
-	ftCommon_Catch_StatusVars catchmain;
+	ftCommonCatchStatusVars catchmain;
 	ftCommonCatchWaitStatusVars catchwait;
 	ftCommon_Capture_StatusVars capture;
 	ftCommonThrownStatusVars thrown;

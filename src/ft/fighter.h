@@ -42,7 +42,7 @@ extern ftData *dFTManagerDataFiles[/* */];
 	((ftCommonSpecialNCheckInterruptCommon(fighter_gobj) != FALSE)                                                   \
 	 || (ftCommonSpecialHiCheckInterruptCommon(fighter_gobj) != FALSE)                                               \
 	 || (ftCommonSpecialLwCheckInterruptCommon(fighter_gobj) != FALSE)                                               \
-	 || (ftCommon_Catch_CheckInterruptCommon(fighter_gobj) != FALSE)                                                   \
+	 || (ftCommonCatchCheckInterruptCommon(fighter_gobj) != FALSE)                                                   \
 	 || (ftCommonAttackS4CheckInterruptCommon(fighter_gobj) != FALSE)                                                \
 	 || (ftCommonAttackHi4CheckInterruptCommon(fighter_gobj) != FALSE)                                               \
 	 || (ftCommon_AttackLw4_CheckInterruptCommon(fighter_gobj) != FALSE)                                               \

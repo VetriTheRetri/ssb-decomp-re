@@ -481,8 +481,8 @@ void ftCommon_ShieldBreakDown_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_ShieldBreakDown_SetStatus(GObj* fighter_gobj);
 
 // ShieldBreakStand
-void ftCommon_ShieldBreakStand_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_ShieldBreakStand_SetStatus(GObj* fighter_gobj);
+void ftCommonShieldBreakStandProcUpdate(GObj* fighter_gobj);
+void ftCommonShieldBreakStandSetStatus(GObj* fighter_gobj);
 
 // FuraFura
 void ftCommonFuraFuraProcUpdate(GObj* fighter_gobj);

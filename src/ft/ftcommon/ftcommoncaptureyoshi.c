@@ -68,7 +68,7 @@ void ftCommonCaptureYoshiProcPhysics(GObj *fighter_gobj)
     {
         if (fp->status_vars.common.captureyoshi.stage == 3)
         {
-            ftCommonCaptureYoshiEggSetStatus(fighter_gobj);
+            ftCommonYoshiEggSetStatus(fighter_gobj);
         }
         else if (fp->status_vars.common.captureyoshi.stage == 1)
         {
@@ -125,7 +125,7 @@ void ftCommonCaptureYoshiProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 }
 
 // 0x8014C958
-void ftCommonCaptureYoshiEggMakeEffect(GObj *fighter_gobj)
+void ftCommonYoshiEggMakeEffect(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -141,7 +141,7 @@ void ftCommonCaptureYoshiEggMakeEffect(GObj *fighter_gobj)
 }
 
 // 0x8014C9A0
-void ftCommonCaptureYoshiEggProcUpdate(GObj *fighter_gobj)
+void ftCommonYoshiEggProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     sb32 is_escape = FALSE;
@@ -159,7 +159,7 @@ void ftCommonCaptureYoshiEggProcUpdate(GObj *fighter_gobj)
     }
     else
     {
-        ftCommonCaptureYoshiEggMakeEffect(fighter_gobj);
+        ftCommonYoshiEggMakeEffect(fighter_gobj);
 
         if (fp->status_vars.common.captureyoshi.effect_gobj != NULL)
         {
@@ -201,7 +201,7 @@ void ftCommonCaptureYoshiEggProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8014CB24
-void ftCommonCaptureYoshiEggProcInterrupt(GObj *fighter_gobj)
+void ftCommonYoshiEggProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -232,7 +232,7 @@ void ftCommonCaptureYoshiEggProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x8014CC0C
-void ftCommonCaptureYoshiEggProcPhysics(GObj *fighter_gobj)
+void ftCommonYoshiEggProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -276,7 +276,7 @@ void ftCommonCaptureYoshiEggProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x8014CD24
-void ftCommonCaptureYoshiEggProcMap(GObj *fighter_gobj)
+void ftCommonYoshiEggProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -294,7 +294,7 @@ void ftCommonCaptureYoshiEggProcMap(GObj *fighter_gobj)
 }
 
 // 0x8014CD7C
-void ftCommonCaptureYoshiEggProcTrap(GObj *fighter_gobj)
+void ftCommonYoshiEggProcTrap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -311,7 +311,7 @@ void ftCommonCaptureYoshiEggProcTrap(GObj *fighter_gobj)
 }
 
 // 0x8014CDFC
-void ftCommonCaptureYoshiEggSetHurtCollisions(GObj *fighter_gobj)
+void ftCommonYoshiEggSetHurtCollisions(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftHurtbox *ft_hurt = &fp->fighter_hurt[0];
@@ -339,7 +339,7 @@ void ftCommonCaptureYoshiEggSetHurtCollisions(GObj *fighter_gobj)
 }
 
 // 0x8014CF0C
-void ftCommonCaptureYoshiEggProcStatus(GObj *fighter_gobj)
+void ftCommonYoshiEggProcStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -349,7 +349,7 @@ void ftCommonCaptureYoshiEggProcStatus(GObj *fighter_gobj)
 }
 
 // 0x8014CF20
-void ftCommonCaptureYoshiEggSetStatus(GObj *fighter_gobj)
+void ftCommonYoshiEggSetStatus(GObj *fighter_gobj)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp;
@@ -358,7 +358,7 @@ void ftCommonCaptureYoshiEggSetStatus(GObj *fighter_gobj)
     {
         ftMap_SetAir(this_fp);
     }
-    this_fp->proc_status = ftCommonCaptureYoshiEggProcStatus;
+    this_fp->proc_status = ftCommonYoshiEggProcStatus;
 
     ftMap_SetAir(this_fp);
     ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_YoshiEgg, 0.0F, 0.0F, FTSTATUPDATE_NONE_PRESERVE);
@@ -366,7 +366,7 @@ void ftCommonCaptureYoshiEggSetStatus(GObj *fighter_gobj)
 
     this_fp->is_invisible = TRUE;
 
-    ftCommonCaptureYoshiEggSetHurtCollisions(fighter_gobj);
+    ftCommonYoshiEggSetHurtCollisions(fighter_gobj);
     ftCommonCaptureTrappedInitBreakoutVars(this_fp, FTCOMMON_YOSHIEGG_BREAKOUT_INPUTS_MIN);
     ftKirbySpecialNApplyCaptureDamage(this_fp->capture_gobj, fighter_gobj, 5); // Br0h why
     ftCommon_SetPlayerTagWait(fighter_gobj, 1);
@@ -386,12 +386,12 @@ void ftCommonCaptureYoshiEggSetStatus(GObj *fighter_gobj)
 
     this_fp->capture_gobj = NULL;
 
-    this_fp->proc_trap = ftCommonCaptureYoshiEggProcTrap;
+    this_fp->proc_trap = ftCommonYoshiEggProcTrap;
 
     this_fp->status_vars.common.captureyoshi.lr = capture_fp->lr;
     this_fp->status_vars.common.captureyoshi.effect_gobj = NULL;
-    this_fp->status_vars.common.captureyoshi.is_damagefloor = 0;
+    this_fp->status_vars.common.captureyoshi.is_damagefloor = FALSE;
 
     ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, ftHitlog_ObjectClass_Fighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
-    ftCommonCaptureYoshiEggMakeEffect(fighter_gobj);
+    ftCommonYoshiEggMakeEffect(fighter_gobj);
 }

@@ -566,15 +566,15 @@ void ftCommon_ThrownCopyStar_SetStatus(GObj* fighter_gobj);
 void func_ovl3_8014C770(); // Unused
 void ftCommonCaptureYoshiProcPhysics(GObj* fighter_gobj);
 void ftCommonCaptureYoshiProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
-void ftCommonCaptureYoshiEggMakeEffect(GObj* fighter_gobj);
-void ftCommonCaptureYoshiEggProcUpdate(GObj* fighter_gobj);
-void ftCommonCaptureYoshiEggProcInterrupt(GObj* fighter_gobj);
-void ftCommonCaptureYoshiEggProcPhysics(GObj* fighter_gobj);
-void ftCommonCaptureYoshiEggProcMap(GObj* fighter_gobj);
-void ftCommonCaptureYoshiEggProcTrap(GObj* fighter_gobj);
-void ftCommonCaptureYoshiEggSetHurtCollisions(GObj* fighter_gobj);
-void ftCommonCaptureYoshiEggProcStatus(GObj* fighter_gobj);
-void ftCommonCaptureYoshiEggSetStatus(GObj* fighter_gobj);
+void ftCommonYoshiEggMakeEffect(GObj* fighter_gobj);
+void ftCommonYoshiEggProcUpdate(GObj* fighter_gobj);
+void ftCommonYoshiEggProcInterrupt(GObj* fighter_gobj);
+void ftCommonYoshiEggProcPhysics(GObj* fighter_gobj);
+void ftCommonYoshiEggProcMap(GObj* fighter_gobj);
+void ftCommonYoshiEggProcTrap(GObj* fighter_gobj);
+void ftCommonYoshiEggSetHurtCollisions(GObj* fighter_gobj);
+void ftCommonYoshiEggProcStatus(GObj* fighter_gobj);
+void ftCommonYoshiEggSetStatus(GObj* fighter_gobj);
 
 // CaptureCaptain
 void ftCommonCaptureCaptainUpdatePositions(GObj* fighter_gobj, GObj* capture_gobj, Vec3f* pos);

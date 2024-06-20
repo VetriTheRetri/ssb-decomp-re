@@ -504,10 +504,10 @@ sb32 ftCommon_Catch_CheckInterruptDashRun(GObj* fighter_gobj);
 sb32 ftCommon_Catch_CheckInterruptAttack11(GObj* fighter_gobj);
 
 // CatchPull / CatchWait
-void ftCommon_CatchPull_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_CatchPull_SetStatus(GObj* fighter_gobj);
-void ftCommon_CatchWait_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_CatchWait_SetStatus(GObj* fighter_gobj);
+void ftCommonCatchPullProcUpdate(GObj* fighter_gobj);
+void ftCommonCatchPullSetStatus(GObj* fighter_gobj);
+void ftCommonCatchWaitProcInterrupt(GObj* fighter_gobj);
+void ftCommonCatchWaitSetStatus(GObj* fighter_gobj);
 
 // ThrowF / ThrowB
 void ftCommonThrowProcUpdate(GObj* fighter_gobj);

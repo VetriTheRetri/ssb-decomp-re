@@ -679,7 +679,7 @@ struct ftAttributes
     s16 item_throw_vel;
     s16 item_throw_mul;
     u16 heavyget_sfx;
-    u16 unk_0xEA;
+    // u16 unk_0xEA;
     f32 halo_size; // Respawn platform size?
     gsColorRGBA shade_color[4];
     ub32 is_have_attack11    : 1;
@@ -714,7 +714,7 @@ struct ftAttributes
     ftPartIndex *p_ftpart_lookup;
     DObjDescContainer *dobj_desc_container;
     DObjDesc *dobj_lookup; // WARNING: Not actually DObjDesc* but I don't know what this struct is or what its bounds are; bunch of consecutive floats
-    s32 *unk_joint[8];
+    void **shield_keys[8];
     s32 joint_id1; // What does this do?
     f32 joint_float1;
     s32 joint_id2;
@@ -722,7 +722,7 @@ struct ftAttributes
     u8 filler_0x304[0x31C - 0x30C];
     f32 unk_0x31C;
     f32 unk_0x320;
-    Vec3f *unk_0x324; // Pointer to some array of vectors, something to do with joints
+    Vec3f *translate_scales; // Scales the translation vector of a given joint?
     ftModelPartContainer *model_parts;
     ftMesh *mesh;
     ftTexturePartContainer *texture_parts;

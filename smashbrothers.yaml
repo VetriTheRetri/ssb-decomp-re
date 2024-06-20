@@ -442,6 +442,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Common fighter move files
+      - [0x0C4900, c, ft/ftcommon/ftcommoncatch2]
       - [0x0C4B00, c, ft/ftcommon/ftcommonthrow]
       - [0x0C4E70, c, ft/ftchar/ftkirby/ftkirbythrowf]
       - [0x0C5030, c, ft/ftcommon/ftcommoncapturepulled]
@@ -637,6 +638,7 @@ segments:
     # ovl3 data
       - [0x1010A0, data, ovl3]
     # Common fighter move files
+      - [0x103110, .data, ft/ftcommon/ftcommoncatch2]
       - [0x103120, .data, ft/ftcommon/ftcommonthrown2]
       - [0x103140, .data, ft/ftcommon/ftcommoncapturekirby]
       - [0x103160, .data, ft/ftcommon/ftcommoncaptureyoshi]

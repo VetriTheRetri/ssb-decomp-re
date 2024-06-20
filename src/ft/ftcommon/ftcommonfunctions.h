@@ -485,8 +485,8 @@ void ftCommon_ShieldBreakStand_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_ShieldBreakStand_SetStatus(GObj* fighter_gobj);
 
 // FuraFura
-void ftCommon_FuraFura_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_FuraFura_SetStatus(GObj* fighter_gobj);
+void ftCommonFuraFuraProcUpdate(GObj* fighter_gobj);
+void ftCommonFuraFuraSetStatus(GObj* fighter_gobj);
 
 // FuraSleep
 void ftCommonFuraSleepProcUpdate(GObj* fighter_gobj);

@@ -425,12 +425,12 @@ void ftCommon_HammerLanding_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_HammerLanding_SetStatus(GObj* fighter_gobj);
 
 // GuardOn / Guard
-void ftCommon_Guard_CheckScheduleRelease(ftStruct* fp);
+void ftCommonGuardCheckScheduleRelease(ftStruct* fp);
 void ftCommon_GuardOn_SetHitStatusYoshi(GObj* fighter_gobj);
-void ftCommon_Guard_SetHitStatusYoshi(GObj* fighter_gobj);
-void ftCommon_GuardOff_SetHitStatusYoshi(GObj* fighter_gobj);
-void ftCommon_Guard_UpdateShieldVars(GObj* fighter_gobj);
-void ftCommon_Guard_UpdateShieldHitbox(ftStruct* fp);
+void ftCommonGuardSetHitStatusYoshi(GObj* fighter_gobj);
+void ftCommonGuardOffSetHitStatusYoshi(GObj* fighter_gobj);
+void ftCommonGuardUpdateShieldVars(GObj* fighter_gobj);
+void ftCommonGuardUpdateShieldHitbox(ftStruct* fp);
 void func_ovl3_80148488(ftStruct* fp);
 void func_ovl3_801485CC(DObj* joint, DObjDesc* joint_desc, f32 range);
 void func_ovl3_80148664(DObj* joint, DObjDesc* joint_desc, f32 range, Vec3f* scale);
@@ -442,14 +442,14 @@ void ftCommon_GuardOn_SetStatus(GObj* fighter_gobj, s32 slide_frames);
 sb32 ftCommon_GuardOn_CheckInterruptSuccess(GObj* fighter_gobj, s32 slide_frames);
 sb32 ftCommon_GuardOn_CheckInterruptCommon(GObj* fighter_gobj);
 sb32 ftCommon_GuardOn_CheckInterruptDashRun(GObj* fighter_gobj, s32 slide_frames);
-void ftCommon_Guard_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Guard_SetStatus(GObj* fighter_gobj);
+void ftCommonGuardProcUpdate(GObj* fighter_gobj);
+void ftCommonGuardSetStatus(GObj* fighter_gobj);
 
 // GuardOff / GuardSetOff
-void ftCommon_Guard_SetStatusFromEscape(GObj* fighter_gobj);
-sb32 ftCommon_Guard_CheckInterruptEscape(GObj* fighter_gobj);
-void ftCommon_GuardOff_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_GuardOff_SetStatus(GObj* fighter_gobj);
+void ftCommonGuardSetStatusFromEscape(GObj* fighter_gobj);
+sb32 ftCommonGuardCheckInterruptEscape(GObj* fighter_gobj);
+void ftCommonGuardOffProcUpdate(GObj* fighter_gobj);
+void ftCommonGuardOffSetStatus(GObj* fighter_gobj);
 void ftCommon_GuardSetOff_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_GuardSetOff_SetStatus(GObj* fighter_gobj);
 

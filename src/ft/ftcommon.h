@@ -560,7 +560,7 @@ typedef struct ftCommon_Hammer_StatusVars
 
 } ftCommon_Hammer_StatusVars;
 
-typedef struct ftCommon_Guard_StatusVars
+typedef struct ftCommonGuardStatusVars
 {
 	s32 release_lag;
 	s32 shield_decay_wait;
@@ -575,7 +575,7 @@ typedef struct ftCommon_Guard_StatusVars
 	sb32 is_setoff;	   // Set to TRUE if shield is hit, does not reset to FALSE
 					   // until shield is released and put up again
 
-} ftCommon_Guard_StatusVars;
+} ftCommonGuardStatusVars;
 
 typedef struct ftCommonEscapeStatusVars
 {
@@ -730,7 +730,7 @@ typedef union ftCommon_StatusVars
 	ftCommon_ItemSwing_StatusVars itemswing;
 	ftCommon_FireFlower_StatusVars fireflower;
 	ftCommon_Hammer_StatusVars hammer;
-	ftCommon_Guard_StatusVars guard;
+	ftCommonGuardStatusVars guard;
 	ftCommonEscapeStatusVars escape;
 	ftCommonCatchStatusVars catchmain;
 	ftCommonCatchWaitStatusVars catchwait;

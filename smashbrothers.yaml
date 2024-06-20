@@ -442,6 +442,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Common fighter move files
+      - [0x0C3870, c, ft/ftcommon/ftcommonguard2]
       - [0x0C3C10, c, ft/ftcommon/ftcommonescape]
       - [0x0C3E80, c, ft/ftcommon/ftcommonshieldbreakfly]
       - [0x0C40C0, c, ft/ftcommon/ftcommonshieldbreakdown]
@@ -728,6 +729,7 @@ segments:
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
     # Common fighter move files
+      - [0x106C40, .rodata, ft/ftcommon/ftcommonguard2]
       - [0x106C50, .rodata, ft/ftcommon/ftcommonthrown2]
       - [0x106C60, .rodata, ft/ftcommon/ftcommoncapturekirby]
       - [0x106C70, .rodata, ft/ftchar/ftdonkey/ftdonkeythrowff]

@@ -821,6 +821,7 @@ gMPEdgeBounds = 0x80131308;
 gCameraMatrix = 0x80131470;
 gCameraStruct = 0x801314B0;
 
+sFTCommonThrownScriptID = 0x8018CF80;
 sFTPublicityCommonFramesSince = 0x8018CF90;
 sFTPublicityCommonPlayerNum = 0x8018CF94;
 sFTPublicityCommonKnockback = 0x8018CF98;

@@ -604,11 +604,11 @@ typedef struct ftCommon_Capture_StatusVars
 
 } ftCommon_Capture_StatusVars;
 
-typedef struct ftCommon_Thrown_StatusVars
+typedef struct ftCommonThrownStatusVars
 {
 	s32 status_id;
 
-} ftCommon_Thrown_StatusVars;
+} ftCommonThrownStatusVars;
 
 typedef struct ftCommonCaptureKirbyStatusVars
 {
@@ -735,7 +735,7 @@ typedef union ftCommon_StatusVars
 	ftCommon_Catch_StatusVars catchmain;
 	ftCommon_CatchWait_StatusVars catchwait;
 	ftCommon_Capture_StatusVars capture;
-	ftCommon_Thrown_StatusVars thrown;
+	ftCommonThrownStatusVars thrown;
 	ftCommonCaptureKirbyStatusVars capturekirby;
 	ftCommonCaptureYoshiStatusVars captureyoshi;
 	ftCommonCaptureCaptainStatusVars capturecaptain;

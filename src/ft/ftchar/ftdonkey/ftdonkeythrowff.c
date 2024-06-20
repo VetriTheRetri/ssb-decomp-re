@@ -28,8 +28,8 @@ void ftDonkeyThrowFFProcUpdate(GObj *fighter_gobj)
     }
     if (fp->command_vars.flags.flag2 != 0)
     {
-        ftCommon_Thrown_ProcPhysics(fp->catch_gobj);
-        ftCommon_Thrown_ReleaseThrownUpdateStats(fp->catch_gobj, -fp->lr, 0, TRUE);
+        ftCommonThrownProcPhysics(fp->catch_gobj);
+        ftCommonThrownReleaseThrownUpdateStats(fp->catch_gobj, -fp->lr, 0, TRUE);
 
         fp->command_vars.flags.flag2 = 0;
         fp->catch_gobj = NULL;

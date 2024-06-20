@@ -76,7 +76,7 @@ void ftCommonCaptureCaptainProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     }
     if (this_fp->catch_gobj != NULL)
     {
-        ftCommon_Thrown_SetStatusDamageRelease(this_fp->catch_gobj);
+        ftCommonThrownSetStatusDamageRelease(this_fp->catch_gobj);
 
         this_fp->catch_gobj = NULL;
     }
@@ -109,6 +109,6 @@ void ftCommonCaptureCaptainRelease(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_Thrown_ReleaseThrownUpdateStats(fighter_gobj, fp->lr, 0, 0);
+    ftCommonThrownReleaseThrownUpdateStats(fighter_gobj, fp->lr, 0, 0);
     ftSetCaptureIgnoreMask(fp, FTCATCHKIND_MASK_NONE);
 }

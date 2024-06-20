@@ -20,6 +20,9 @@ s32 sWPDisplayMode;
 // 0x8018CFF8
 u32 sWPGroupID;
 
+// 0x8018CFFC
+u8 sWPPadding[68];
+
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //

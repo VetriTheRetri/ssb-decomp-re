@@ -583,21 +583,21 @@ void ftCommonCaptureCaptainProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
 void ftCommonCaptureCaptainRelease(GObj* fighter_gobj);
 
 // Thrown
-void ftCommon_Thrown_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Thrown_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_Thrown_ProcMap(GObj* fighter_gobj);
-void ftCommon_Thrown_SetStatusQueue(GObj* fighter_gobj, s32 status_id_new, s32 status_id_queue);
-void ftCommon_Thrown_SetStatusImmediate(GObj* fighter_gobj, s32 status_id);
+void ftCommonThrownProcUpdate(GObj* fighter_gobj);
+void ftCommonThrownProcPhysics(GObj* fighter_gobj);
+void ftCommonThrownProcMap(GObj* fighter_gobj);
+void ftCommonThrownSetStatusQueue(GObj* fighter_gobj, s32 status_id_new, s32 status_id_queue);
+void ftCommonThrownSetStatusImmediate(GObj* fighter_gobj, s32 status_id);
 
 // Thrown2
-void ftCommon_Thrown_ReleaseFighterLoseGrip(GObj* fighter_gobj);
-void ftCommon_Thrown_DecideFighterLoseGrip(GObj* fighter_gobj, GObj* interact_gobj);
+void ftCommonThrownReleaseFighterLoseGrip(GObj* fighter_gobj);
+void ftCommonThrownDecideFighterLoseGrip(GObj* fighter_gobj, GObj* interact_gobj);
 void func_ovl3_8014AF2C(GObj* fighter_gobj);
-void ftCommon_Thrown_ProcStatus(GObj* fighter_gobj);
-void ftCommon_Thrown_ReleaseThrownUpdateStats(GObj* fighter_gobj, s32 lr, s32 script_index, sb32 is_proc_status);
-void ftCommon_Thrown_UpdateDamageStats(ftStruct* this_fp);
-void ftCommon_Thrown_SetStatusDamageRelease(GObj* fighter_gobj);
-void ftCommon_Thrown_SetStatusNoDamageRelease(GObj* fighter_gobj);
+void ftCommonThrownProcStatus(GObj* fighter_gobj);
+void ftCommonThrownReleaseThrownUpdateStats(GObj* fighter_gobj, s32 lr, s32 script_index, sb32 is_proc_status);
+void ftCommonThrownUpdateDamageStats(ftStruct* this_fp);
+void ftCommonThrownSetStatusDamageRelease(GObj* fighter_gobj);
+void ftCommonThrownSetStatusNoDamageRelease(GObj* fighter_gobj);
 
 // Appeal
 void ftCommonAppealProcInterrupt(GObj* fighter_gobj);

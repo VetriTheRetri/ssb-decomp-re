@@ -95,13 +95,13 @@ void ftCommonCaptureYoshiProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     }
     if (this_fp->catch_gobj != NULL)
     {
-        ftCommon_Thrown_SetStatusDamageRelease(this_fp->catch_gobj);
+        ftCommonThrownSetStatusDamageRelease(this_fp->catch_gobj);
 
         this_fp->catch_gobj = NULL;
     }
     else if (this_fp->capture_gobj != NULL)
     {
-        ftCommon_Thrown_DecideFighterLoseGrip(this_fp->capture_gobj, fighter_gobj);
+        ftCommonThrownDecideFighterLoseGrip(this_fp->capture_gobj, fighter_gobj);
     }
     this_fp->x192_flag_b3 = FALSE;
 

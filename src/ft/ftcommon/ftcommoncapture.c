@@ -42,7 +42,7 @@ void ftCommonCaptureApplyCaptureKnockback(GObj *fighter_gobj, ftThrowReleaseDesc
     f32 knockback;
     s32 lr;
 
-    ftCommon_Thrown_ReleaseFighterLoseGrip(fighter_gobj);
+    ftCommonThrownReleaseFighterLoseGrip(fighter_gobj);
 
     if (this_fp->ground_or_air == GA_Air)
     {
@@ -137,7 +137,7 @@ void ftCommonCaptureShoulderedSetStatus(GObj *fighter_gobj)
     ftStruct *capture_fp = ftGetStruct(capture_gobj);
     s32 damage;
 
-    ftCommon_Thrown_SetStatusImmediate(fighter_gobj, ftStatus_Common_Shouldered);
+    ftCommonThrownSetStatusImmediate(fighter_gobj, ftStatus_Common_Shouldered);
     ftCommonCaptureTrappedInitBreakoutVars(this_fp, ((this_fp->percent_damage * 0.08F) + 14.0F));
 
     damage = gmCommon_DamageApplyStale(capture_fp->player, 8, capture_fp->attack_id, capture_fp->motion_count);

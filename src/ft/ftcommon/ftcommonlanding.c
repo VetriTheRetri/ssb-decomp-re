@@ -6,7 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
-#define ftCheckInterruptLanding(fighter_gobj)                           \
+#define ftCommonLandingCheckInterrupt(fighter_gobj)                     \
 (                                                                       \
     (ftCommonSpecialNCheckInterruptCommon(fighter_gobj) != FALSE)   ||  \
     (ftCommonSpecialHiCheckInterruptCommon(fighter_gobj) != FALSE)  ||  \
@@ -42,7 +42,7 @@ void ftCommonLandingProcInterrupt(GObj *fighter_gobj)
     {
         return;
     }
-    else if ((fp->status_vars.common.landing.is_allow_interrupt != FALSE) && !(ftCheckInterruptLanding(fighter_gobj)))
+    else if ((fp->status_vars.common.landing.is_allow_interrupt != FALSE) && !(ftCommonLandingCheckInterrupt(fighter_gobj)))
     {
         if ((fighter_gobj->anim_frame >= FTCOMMON_LANDING_INTERRUPT_BEGIN) && (fighter_gobj->anim_frame < (FTCOMMON_LANDING_INTERRUPT_BEGIN + DObjGetStruct(fighter_gobj)->dobj_f1)))
         {

@@ -170,10 +170,10 @@ sb32 ftCommon_Pass_CheckInterruptSquat(GObj* fighter_gobj);
 sb32 ftCommon_GuardPass_CheckInterruptGuard(GObj* fighter_gobj);
 
 // Ottotto / OttottoWait
-void ftCommon_Ottotto_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Ottotto_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Ottotto_ProcMap(GObj* fighter_gobj);
-void ftCommon_OttottoWait_SetStatus(GObj* fighter_gobj);
+void ftCommonOttottoProcUpdate(GObj* fighter_gobj);
+void ftCommonOttottoProcInterrupt(GObj* fighter_gobj);
+void ftCommonOttottoProcMap(GObj* fighter_gobj);
+void ftCommonOttottoWaitSetStatus(GObj* fighter_gobj);
 
 // Damage
 void ftCommon_Damage_SetDustGFXInterval(ftStruct* fp);

@@ -192,6 +192,12 @@ extern ftItemThrow dFTCommonItemThrowDescs[/* */];
 };
 */
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x801462A0
 void ftCommonItemThrowUpdateModelPitch(GObj *fighter_gobj)
 {
@@ -398,7 +404,7 @@ void ftCommonHeavyThrowDecideSetStatus(GObj *fighter_gobj)
     }
     ftCommonItemThrowSetStatus(fighter_gobj, status_id);
 
-    fp->proc_damage = ftCommon_Get_DropItem;
+    fp->proc_damage = ftCommonHeavyGetProcDamage;
 }
 
 // 0x80146A8C
@@ -467,7 +473,7 @@ sb32 ftCommonLightThrowCheckInterruptEscape(GObj *fighter_gobj) // Interrupt ite
 }
 
 // 0x80146BE0
-sb32 ftCommonLightThrowCheckInterruptCommon(GObj *fighter_gobj)
+sb32 ftCommonHeavyThrowCheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 

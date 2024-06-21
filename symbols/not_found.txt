@@ -821,5 +821,7 @@ gMPEdgeBounds = 0x80131308;
 gCameraMatrix = 0x80131470;
 gCameraStruct = 0x801314B0;
 
+g1PGameBonusStatTomatoCount = 0x801936A8;
+g1PGameBonusStatHeartCount = 0x801936A9;
 g1PGameBonusStatShieldBreaker = 0x801936AB;
 g1PGameBonusStatMewCatcher = 0x801936AD;

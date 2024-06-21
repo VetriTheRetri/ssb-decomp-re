@@ -64,7 +64,7 @@ void ftCommonAttackLw3SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftCommon_Get_CheckInterruptCommon(fighter_gobj) == FALSE)
+    if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
         fp->proc_status = ftCommonAttackLw3InitStatusVars;
 

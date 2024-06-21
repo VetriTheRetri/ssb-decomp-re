@@ -9,7 +9,7 @@
 // 0x8014DA00
 void ftDonkeyThrowFFallProcInterrupt(GObj *fighter_gobj)
 {
-    if (ftCommonLightThrowCheckInterruptCommon(fighter_gobj) == FALSE)
+    if (ftCommonHeavyThrowCheckInterruptCommon(fighter_gobj) == FALSE)
     {
         ftDonkeyThrowFFCheckInterruptThrowFCommon(fighter_gobj);
     }

@@ -16,7 +16,7 @@ void ftCommonAttackS3SetStatus(GObj *fighter_gobj)
     f32 stick_angle;
     s32 status_id;
 
-    if (ftCommon_Get_CheckInterruptCommon(fighter_gobj) == FALSE)
+    if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
         if (fp->ft_data->battlemotion->script_info[ftMotion_Common_AttackS3HiS].anim_id != 0)
         {

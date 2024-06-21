@@ -2,8 +2,6 @@
 #define _GMSOUND_H_
 
 #include <ssb_types.h>
-#include <PR/ultratypes.h>
-#include <sys/obj.h>
 
 typedef struct alSoundEffect
 {
@@ -26,6 +24,13 @@ typedef struct alSoundEffect
 	u16 sfx_max; // End of SFX index list
 
 } alSoundEffect;
+
+typedef enum alMusicID
+{
+    alSound_Music_Hammer = 0x2D,            // 0x2D
+    alSound_Music_Starman                   // 0x2E
+
+} alMusicID;
 
 typedef enum alSoundEffectID
 {

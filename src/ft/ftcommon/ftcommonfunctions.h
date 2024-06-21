@@ -338,22 +338,22 @@ void ftCommon_CliffEscapeQuick2_SetStatus(GObj* fighter_gobj);
 void ftCommon_CliffEscapeSlow2_SetStatus(GObj* fighter_gobj);
 
 // LightGet / HeavyGet / LiftWait / LiftTurn
-GObj* ftCommon_Get_GetItemPickupGObj(GObj* fighter_gobj, u8 pickup_mask);
-void ftCommon_Get_ApplyItemStats(GObj* fighter_gobj);
-void ftCommon_Get_DropItem(GObj* fighter_gobj);
-void ftCommon_Get_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_LightGet_ProcMap(GObj* fighter_gobj);
-void ftCommon_HeavyGet_ProcMap(GObj* fighter_gobj);
+GObj* ftCommonGetFindItemPickupGObj(GObj* fighter_gobj, u8 pickup_mask);
+void ftCommonLightGetProcDamage(GObj* fighter_gobj);
+void ftCommonHeavyGetProcDamage(GObj* fighter_gobj);
+void ftCommonGetProcUpdate(GObj* fighter_gobj);
+void ftCommonLightGetProcMap(GObj* fighter_gobj);
+void ftCommonHeavyGetProcMap(GObj* fighter_gobj);
 void ftCommonHeavyThrowProcMap(GObj* fighter_gobj);
-void ftCommon_Get_SetStatus(GObj* fighter_gobj, GObj* item_gobj);
-sb32 ftCommon_Get_CheckInterruptCommon(GObj* fighter_gobj);
-void ftCommon_LiftWait_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_LiftWait_SetStatus(GObj* fighter_gobj);
-void ftCommon_LiftTurn_UpdateModelYaw(ftStruct* fp);
-void ftCommon_LiftTurn_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_LiftTurn_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_LiftTurn_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_LiftTurn_CheckInterruptLiftWait(GObj* fighter_gobj);
+void ftCommonGetSetStatus(GObj* fighter_gobj, GObj* item_gobj);
+sb32 ftCommonGetCheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonLiftWaitProcInterrupt(GObj* fighter_gobj);
+void ftCommonLiftWaitSetStatus(GObj* fighter_gobj);
+void ftCommonLiftTurnUpdateModelYaw(ftStruct* fp);
+void ftCommonLiftTurnProcUpdate(GObj* fighter_gobj);
+void ftCommonLiftTurnProcInterrupt(GObj* fighter_gobj);
+void ftCommonLiftTurnSetStatus(GObj* fighter_gobj);
+sb32 ftCommonLiftTurnCheckInterruptLiftWait(GObj* fighter_gobj);
 
 // ItemThrow
 void ftCommonItemThrowUpdateModelYaw(GObj* fighter_gobj);
@@ -367,7 +367,7 @@ void ftCommonHeavyThrowDecideSetStatus(GObj* fighter_gobj);
 sb32 ftCommonLightThrowCheckItemTypeThrow(ftStruct* fp);
 sb32 ftCommonLightThrowCheckInterruptGuardOnOn(GObj* fighter_gobj);
 sb32 ftCommonLightThrowCheckInterruptEscape(GObj* fighter_gobj);
-sb32 ftCommonLightThrowCheckInterruptCommon(GObj* fighter_gobj);
+sb32 ftCommonHeavyThrowCheckInterruptCommon(GObj* fighter_gobj);
 
 // ItemSwing
 void ftCommonHarisenSwingProcHit(GObj* fighter_gobj);

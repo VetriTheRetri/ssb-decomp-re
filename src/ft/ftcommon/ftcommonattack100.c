@@ -46,7 +46,7 @@ void ftCommonAttack100StartSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    if (ftCommon_Get_CheckInterruptCommon(fighter_gobj) == FALSE)
+    if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
         switch (fp->ft_kind)
         {
@@ -133,7 +133,7 @@ void ftCommonAttack100LoopProcUpdate(GObj *fighter_gobj)
 
             return;
         }
-        else if (ftCommon_Get_CheckInterruptCommon(fighter_gobj) == FALSE)
+        else if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
         {
             fp->status_vars.common.attack100.is_goto_loop = FALSE;
         }

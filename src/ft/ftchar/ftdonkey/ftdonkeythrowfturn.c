@@ -8,7 +8,7 @@
 
 #define ftDonkeyThrowFTurnCheckInterrupt(fighter_gobj)                            \
 (                                                                           \
-    (ftCommonLightThrowCheckInterruptCommon(fighter_gobj) != FALSE) ||    \
+    (ftCommonHeavyThrowCheckInterruptCommon(fighter_gobj) != FALSE) ||    \
     (ftDonkeyThrowFFCheckInterruptThrowFCommon(fighter_gobj) != FALSE)    \
 )
 

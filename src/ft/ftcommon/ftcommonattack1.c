@@ -130,7 +130,7 @@ void ftCommonAttack11SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    if (ftCommon_Get_CheckInterruptCommon(fighter_gobj) == FALSE)
+    if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
         fp->proc_status = ftCommonAttack11ProcStatus;
 
@@ -154,7 +154,7 @@ void ftCommonAttack12SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftCommon_Get_CheckInterruptCommon(fighter_gobj) == FALSE)
+    if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
         ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Attack12, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
         ftMainUpdateAnimCheckInterrupt(fighter_gobj);
@@ -202,7 +202,7 @@ void ftCommonAttack13SetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    if (ftCommon_Get_CheckInterruptCommon(fighter_gobj) == FALSE)
+    if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
         switch (fp->ft_kind)
         {

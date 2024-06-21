@@ -137,20 +137,20 @@ void ftCommon_Fall_ProcInterrupt(GObj* fighter_gobj);
 void ftCommon_Fall_SetStatus(GObj* fighter_gobj);
 
 // Squat / SquatWait / SquatRv
-sb32 ftCommon_Squat_CheckGotoPass(GObj* fighter_gobj);
-void ftCommon_Squat_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Squat_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Squat_SetStatusNoPass(GObj* fighter_gobj);
-void ftCommon_Squat_SetStatusPass(GObj* fighter_gobj);
-sb32 ftCommon_Squat_CheckInterruptCommon(GObj* fighter_gobj);
-void ftCommon_SquatWait_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_SquatWait_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_SquatWait_SetStatus(GObj* fighter_gobj);
-void ftCommon_SquatWait_SetStatusNoPass(GObj* fighter_gobj);
-sb32 ftCommon_SquatWait_CheckInterruptLanding(GObj* fighter_gobj);
-void ftCommon_SquatRv_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_SquatRv_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_SquatRv_CheckInterruptSquatWait(GObj* fighter_gobj);
+sb32 ftCommonSquatCheckGotoPass(GObj* fighter_gobj);
+void ftCommonSquatProcUpdate(GObj* fighter_gobj);
+void ftCommonSquatProcInterrupt(GObj* fighter_gobj);
+void ftCommonSquatSetStatusNoPass(GObj* fighter_gobj);
+void ftCommonSquatSetStatusPass(GObj* fighter_gobj);
+sb32 ftCommonSquatCheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonSquatWaitProcUpdate(GObj* fighter_gobj);
+void ftCommonSquatWaitProcInterrupt(GObj* fighter_gobj);
+void ftCommonSquatWaitSetStatus(GObj* fighter_gobj);
+void ftCommonSquatWaitSetStatusNoPass(GObj* fighter_gobj);
+sb32 ftCommonSquatWaitCheckInterruptLanding(GObj* fighter_gobj);
+void ftCommonSquatRvProcInterrupt(GObj* fighter_gobj);
+void ftCommonSquatRvSetStatus(GObj* fighter_gobj);
+sb32 ftCommonSquatRvCheckInterruptSquatWait(GObj* fighter_gobj);
 
 // LandingLight / LandingHeavy
 void ftCommon_Landing_ProcInterrupt(GObj* fighter_gobj);
@@ -609,7 +609,7 @@ void ftCommonAttack11ProcStatus(GObj* fighter_gobj);
 void ftCommonAttack11SetStatus(GObj* fighter_gobj);
 void ftCommonAttack12SetStatus(GObj* fighter_gobj);
 void ftCommonAttack13SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_Attack1_CheckInterruptCommon(GObj* fighter_gobj);
+sb32 ftCommonAttack1CheckInterruptCommon(GObj* fighter_gobj);
 sb32 ftCommonAttack11CheckGoto(GObj* fighter_gobj);
 sb32 ftCommonAttack12CheckGoto(GObj* fighter_gobj);
 sb32 ftCommonAttack13CheckGoto(GObj* fighter_gobj);

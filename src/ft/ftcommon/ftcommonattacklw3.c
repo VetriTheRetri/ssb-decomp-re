@@ -17,7 +17,7 @@ void ftCommonAttackLw3ProcUpdate(GObj *fighter_gobj)
     {
         ftCommonAttackLw3SetStatus(fighter_gobj);
     }
-    else ftStatusSetOnAnimEnd(fighter_gobj, ftCommon_SquatWait_SetStatus);
+    else ftStatusSetOnAnimEnd(fighter_gobj, ftCommonSquatWaitSetStatus);
 }
 
 // 0x8014FC40

@@ -329,13 +329,13 @@ void ftCommon_CliffAttackQuick2_SetStatus(GObj* fighter_gobj);
 void ftCommon_CliffAttackSlow2_SetStatus(GObj* fighter_gobj);
 
 // CliffEscape
-sb32 ftCommon_CliffEscape_CheckInterruptCommon(GObj* fighter_gobj);
-void ftCommon_CliffEscapeQuick1_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_CliffEscapeSlow1_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_CliffEscapeQuick1_SetStatus(GObj* fighter_gobj);
-void ftCommon_CliffEscapeSlow1_SetStatus(GObj* fighter_gobj);
-void ftCommon_CliffEscapeQuick2_SetStatus(GObj* fighter_gobj);
-void ftCommon_CliffEscapeSlow2_SetStatus(GObj* fighter_gobj);
+sb32 ftCommonCliffEscapeCheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonCliffEscapeQuick1ProcUpdate(GObj* fighter_gobj);
+void ftCommonCliffEscapeSlow1ProcUpdate(GObj* fighter_gobj);
+void ftCommonCliffEscapeQuick1SetStatus(GObj* fighter_gobj);
+void ftCommonCliffEscapeSlow1SetStatus(GObj* fighter_gobj);
+void ftCommonCliffEscapeQuick2SetStatus(GObj* fighter_gobj);
+void ftCommonCliffEscapeSlow2SetStatus(GObj* fighter_gobj);
 
 // LightGet / HeavyGet / LiftWait / LiftTurn
 GObj* ftCommonGetFindItemPickupGObj(GObj* fighter_gobj, u8 pickup_mask);

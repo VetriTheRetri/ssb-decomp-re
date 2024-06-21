@@ -443,7 +443,7 @@ void ftPikachuSpecialAirHiEndProcUpdate(GObj *fighter_gobj)
     }
     else if (fighter_gobj->anim_frame <= 0.0F)
     {
-        ftCommon_FallSpecial_SetStatus(fighter_gobj, FTPIKACHU_QUICKATTACK_FALLSPECIAL_DRIFT, FALSE, TRUE, TRUE, FTPIKACHU_QUICKATTACK_LANDING_LAG, FALSE);
+        ftCommonFallSpecialSetStatus(fighter_gobj, FTPIKACHU_QUICKATTACK_FALLSPECIAL_DRIFT, FALSE, TRUE, TRUE, FTPIKACHU_QUICKATTACK_LANDING_LAG, FALSE);
     }
 }
 

@@ -230,7 +230,7 @@ void ftLinkSpecialAirHiProcUpdate(GObj *fighter_gobj)
         {
             ftLinkSpecialHiDestroyWeapon(fp, wpGetStruct(fp->status_vars.link.specialhi.spin_attack_gobj));
         }
-        ftCommon_FallSpecial_SetStatus(fighter_gobj, FTLINK_SPINATTACK_FALLSPECIAL_DRIFT, FALSE, TRUE, TRUE, FTLINK_SPINATTACK_LANDING_LAG, FALSE);
+        ftCommonFallSpecialSetStatus(fighter_gobj, FTLINK_SPINATTACK_FALLSPECIAL_DRIFT, FALSE, TRUE, TRUE, FTLINK_SPINATTACK_LANDING_LAG, FALSE);
     }
 }
 

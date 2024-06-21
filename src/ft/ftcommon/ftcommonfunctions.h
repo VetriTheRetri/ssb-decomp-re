@@ -218,11 +218,11 @@ void ftCommon_DamageFall_SetStatusFromCliffWait(GObj* fighter_gobj);
 void func_ovl3_801436F0(GObj* fighter_gobj);
 
 // FallSpecial
-void ftCommon_FallSpecial_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_FallSpecial_ProcPhysics(GObj* fighter_gobj);
-sb32 ftCommon_FallSpecial_CheckIgnorePass(GObj* fighter_gobj);
-void ftCommon_FallSpecial_ProcMap(GObj* fighter_gobj);
-void ftCommon_FallSpecial_SetStatus(GObj* fighter_gobj, f32 drift, sb32 unknown, sb32 is_fall_accelerate,
+void ftCommonFallSpecialProcInterrupt(GObj* fighter_gobj);
+void ftCommonFallSpecialProcPhysics(GObj* fighter_gobj);
+sb32 ftCommonFallSpecialCheckIgnorePass(GObj* fighter_gobj);
+void ftCommonFallSpecialProcMap(GObj* fighter_gobj);
+void ftCommonFallSpecialSetStatus(GObj* fighter_gobj, f32 drift, sb32 unknown, sb32 is_fall_accelerate,
 									sb32 is_goto_landing, f32 landing_lag, sb32 is_allow_interrupt);
 
 // Twister

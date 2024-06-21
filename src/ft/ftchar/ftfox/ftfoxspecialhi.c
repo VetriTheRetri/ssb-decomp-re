@@ -384,7 +384,7 @@ void ftFoxSpecialAirHiEndProcUpdate(GObj *fighter_gobj)
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        ftCommon_FallSpecial_SetStatus(fighter_gobj, FTFOX_FIREFOX_AIR_DRIFT, FALSE, TRUE, FALSE, FTFOX_FIREFOX_LANDING_LAG, TRUE);
+        ftCommonFallSpecialSetStatus(fighter_gobj, FTFOX_FIREFOX_AIR_DRIFT, FALSE, TRUE, FALSE, FTFOX_FIREFOX_LANDING_LAG, TRUE);
     }
 }
 
@@ -433,14 +433,14 @@ void ftFoxSpecialAirHiBoundProcUpdate(GObj* fighter_gobj)
 
     if ((fp->command_vars.flags.flag1 != 0) && (fp->ground_or_air == GA_Air))
     {
-        ftCommon_FallSpecial_SetStatus(fighter_gobj, FTFOX_FIREFOX_AIR_DRIFT, FALSE, TRUE, FALSE, FTFOX_FIREFOX_LANDING_LAG, TRUE);
+        ftCommonFallSpecialSetStatus(fighter_gobj, FTFOX_FIREFOX_AIR_DRIFT, FALSE, TRUE, FALSE, FTFOX_FIREFOX_LANDING_LAG, TRUE);
     }
 
     else if (fighter_gobj->anim_frame <= 0.0F)
     {
         if (fp->ground_or_air == GA_Air)
         {
-            ftCommon_FallSpecial_SetStatus(fighter_gobj, FTFOX_FIREFOX_AIR_DRIFT, FALSE, TRUE, FALSE, FTFOX_FIREFOX_LANDING_LAG, TRUE);
+            ftCommonFallSpecialSetStatus(fighter_gobj, FTFOX_FIREFOX_AIR_DRIFT, FALSE, TRUE, FALSE, FTFOX_FIREFOX_LANDING_LAG, TRUE);
         }
         else ftCommon_Wait_SetStatus(fighter_gobj);
     }

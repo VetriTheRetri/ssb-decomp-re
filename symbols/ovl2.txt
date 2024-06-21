@@ -1143,6 +1143,7 @@ D_ovl2_8012C4D4 = 0x8012C4D4; // segment:ovl2
 dFTMainMapSurfaceFrictions = 0x8012C4E0; // segment:ovl2
 D_ovl2_8012C520 = 0x8012C520; // segment:ovl2
 D_ovl2_8012C830 = 0x8012C830; // segment:ovl2
+dFTCommonDownBounceSFX = 0x8012C970; // segment:ovl2
 dFTCommonItemThrowDescs = 0x8012C9E0; // segment:ovl2
 dFTCommonItemSwingAnimSpeeds = 0x8012CA38; // segment:ovl2
 D_ovl2_8012CA90 = 0x8012CA90; // segment:ovl2

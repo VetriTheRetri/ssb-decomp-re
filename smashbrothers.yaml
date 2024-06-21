@@ -442,6 +442,10 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Common fighter move files
+      - [0x0BEC60, c, ft/ftcommon/ftcommondownwaitbounce]
+      - [0x0BEF70, c, ft/ftcommon/ftcommondownstand]
+      - [0x0BF0A0, c, ft/ftcommon/ftcommonpassive]
+      - [0x0BF140, c, ft/ftcommon/ftcommonpassivestand]
       - [0x0BF220, c, ft/ftcommon/ftcommondownforwardback]
       - [0x0BF350, c, ft/ftcommon/ftcommondownattack]
       - [0x0BF450, c, ft/ftcommon/ftcommonrebound]
@@ -749,6 +753,8 @@ segments:
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
     # Common fighter move files
+      - [0x106B90, .rodata, ft/ftcommon/ftcommondownwaitbounce]
+      - [0x106BA0, .rodata, ft/ftcommon/ftcommondownstand]
       - [0x106BB0, .rodata, ft/ftcommon/ftcommondownforwardback]
       - [0x106BC0, .rodata, ft/ftcommon/ftcommoncliffclimb]
       - [0x106BD0, .rodata, ft/ftcommon/ftcommonget]

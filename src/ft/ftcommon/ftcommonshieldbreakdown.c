@@ -30,8 +30,8 @@ void ftCommonShieldBreakDownSetStatus(GObj *fighter_gobj)
     {
         ftMap_SetGround(fp);
     }
-    status_id = (ftCommon_DownBounce_UpOrDown(fighter_gobj) != 0) ? ftStatus_Common_ShieldBreakDownD : ftStatus_Common_ShieldBreakDownU;
+    status_id = (ftCommonDownBounceCheckUpOrDown(fighter_gobj) != 0) ? ftStatus_Common_ShieldBreakDownD : ftStatus_Common_ShieldBreakDownU;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKDOWN_STATUPDATE_FLAGS);
-    ftCommon_DownBounce_UpdateEffects(fighter_gobj);
+    ftCommonDownBounceUpdateEffects(fighter_gobj);
 }

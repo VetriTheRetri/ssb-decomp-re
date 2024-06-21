@@ -556,7 +556,7 @@ void ftNessJibakuProcMap(GObj *fighter_gobj)
     else if (fp->coll_data.coll_mask_curr & (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
         fp->phys_info.vel_ground.x = 0.0F;
-        ftCommon_DownBounce_SetStatus(fighter_gobj);
+        ftCommonDownBounceSetStatus(fighter_gobj);
     }
 }
 
@@ -579,7 +579,7 @@ void ftNessJibakuAirProcMap(GObj *fighter_gobj)
             fp->phys_info.vel_air.y = 0.0F;
 
             ftMap_SetGround(fp);
-            ftCommon_DownBounce_SetStatus(fighter_gobj);
+            ftCommonDownBounceSetStatus(fighter_gobj);
         }
         else ftNessJibakuAirSwitchStatusGround(fighter_gobj);
 
@@ -713,7 +713,7 @@ setair:
     return;
     
 setdown:
-    ftCommon_DownBounce_SetStatus(fighter_gobj);
+    ftCommonDownBounceSetStatus(fighter_gobj);
 }
 
 // 0x80154F54
@@ -759,7 +759,7 @@ void ftNessJibakuAirBoundProcMap(GObj *fighter_gobj)
         else
         {
             ftMap_SetGround(fp);
-            ftCommon_DownBounce_SetStatus(fighter_gobj);
+            ftCommonDownBounceSetStatus(fighter_gobj);
         }
     }
 }

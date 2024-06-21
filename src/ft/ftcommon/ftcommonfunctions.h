@@ -254,23 +254,23 @@ void ftCommon_DokanEnd_SetStatus(GObj* fighter_gobj);
 void ftCommon_DokanWalk_SetStatus(GObj* fighter_gobj);
 
 // DownWait / DownBounce
-void ftCommon_DownWait_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_DownWait_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_DownWait_SetStatus(GObj* fighter_gobj);
-void ftCommon_DownBounce_ProcUpdate(GObj* fighter_gobj);
+void ftCommonDownWaitProcUpdate(GObj* fighter_gobj);
+void ftCommonDownWaitProcInterrupt(GObj* fighter_gobj);
+void ftCommonDownWaitSetStatus(GObj* fighter_gobj);
+void ftCommonDownBounceProcUpdate(GObj* fighter_gobj);
 // Up = 0, Down = 1
-sb32 ftCommon_DownBounce_UpOrDown(GObj* fighter_gobj);
-void ftCommon_DownBounce_UpdateEffects(GObj* fighter_gobj);
-void ftCommon_DownBounce_SetStatus(GObj* fighter_gobj);
+sb32 ftCommonDownBounceCheckUpOrDown(GObj* fighter_gobj);
+void ftCommonDownBounceUpdateEffects(GObj* fighter_gobj);
+void ftCommonDownBounceSetStatus(GObj* fighter_gobj);
 
 // DownStand
-void ftCommon_DownStand_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_DownStand_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_DownStand_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonDownStandProcInterrupt(GObj* fighter_gobj);
+void ftCommonDownStandSetStatus(GObj* fighter_gobj);
+sb32 ftCommonDownStandCheckInterruptCommon(GObj* fighter_gobj);
 
 // PassiveStand
-void ftCommon_PassiveStand_SetStatus(GObj* fighter_gobj, s32 status_id);
-sb32 ftCommon_PassiveStand_CheckInterruptDamage(GObj* fighter_gobj);
+void ftCommonPassiveStandSetStatus(GObj* fighter_gobj, s32 status_id);
+sb32 ftCommonPassiveStandCheckInterruptDamage(GObj* fighter_gobj);
 
 // DownForward / DownBack
 void ftCommonDownForwardOrBackSetStatus(GObj* fighter_gobj, s32 status_id);
@@ -282,8 +282,8 @@ sb32 ftCommonDownAttackCheckInterruptDownBounce(GObj* fighter_gobj);
 sb32 ftCommonDownAttackCheckInterruptDownWait(GObj* fighter_gobj);
 
 // Passive
-void ftCommon_Passive_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_Passive_CheckInterruptDamage(GObj* fighter_gobj);
+void ftCommonPassiveSetStatus(GObj* fighter_gobj);
+sb32 ftCommonPassiveCheckInterruptDamage(GObj* fighter_gobj);
 
 // Rebound / ReboundWait
 void ftCommonReboundProcUpdate(GObj* fighter_gobj);

@@ -676,8 +676,8 @@ struct ftAttributes
     u16 smash_sfx[3]; // Random Smash SFX
     // s16 unk_0xC2;
     ftItemPickup item_pickup;
-    s16 item_throw_vel;
-    s16 item_throw_mul;
+    u16 item_throw_vel;
+    u16 item_throw_mul;
     u16 heavyget_sfx;
     // u16 unk_0xEA;
     f32 halo_size; // Respawn platform size?

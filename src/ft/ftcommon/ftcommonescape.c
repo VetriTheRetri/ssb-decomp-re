@@ -31,7 +31,7 @@ void ftCommonEscapeProcUpdate(GObj *fighter_gobj)
 // 0x80149268
 void ftCommonEscapeProcInterrupt(GObj *fighter_gobj)
 {
-    ftCommon_LightThrow_CheckInterruptEscape(fighter_gobj);
+    ftCommonLightThrowCheckInterruptEscape(fighter_gobj);
 }
 
 // 0x80149288

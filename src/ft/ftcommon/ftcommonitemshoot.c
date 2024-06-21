@@ -292,7 +292,7 @@ void ftCommonFireFlowerShootInitStatusVars(ftStruct *fp)
 }
 
 // 0x80147844
-void ftCommon_ItemShoot_SetStatus(GObj *fighter_gobj)
+void ftCommonItemShootSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     itStruct *ip = itGetStruct(fp->item_hold);
@@ -322,7 +322,7 @@ void ftCommon_ItemShoot_SetStatus(GObj *fighter_gobj)
 }
 
 // 0x801478EC
-void ftCommon_ItemShootAir_SetStatus(GObj *fighter_gobj)
+void ftCommonItemShootAirSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     itStruct *ip = itGetStruct(fp->item_hold);

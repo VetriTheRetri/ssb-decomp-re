@@ -29,9 +29,9 @@ sb32 ftCommonAttackHi4CheckInterruptMain(ftStruct *fp)
 {
     ftAttributes *attributes = fp->attributes;
 
-    if (ftCommon_LightThrow_CheckItemTypeThrow(fp) != FALSE)
+    if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
-        ftCommon_ItemThrow_SetStatus(fp->fighter_gobj, ftStatus_Common_LightThrowHi4);
+        ftCommonItemThrowSetStatus(fp->fighter_gobj, ftStatus_Common_LightThrowHi4);
 
         return TRUE;
     }

@@ -25,7 +25,7 @@ sb32 ftCommonAttackDashCheckInterruptCommon(GObj *fighter_gobj)
         {
             if ((fp->input.pl.button_hold & fp->input.button_mask_z) || (itGetStruct(fp->item_hold)->type == It_Type_Throw))
             {
-                ftCommon_ItemThrow_SetStatus(fighter_gobj, ftStatus_Common_LightThrowDash);
+                ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowDash);
 
                 return TRUE;
             }

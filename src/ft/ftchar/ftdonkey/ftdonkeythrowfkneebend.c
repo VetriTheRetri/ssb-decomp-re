@@ -34,7 +34,7 @@ void ftDonkeyThrowFKneeBendProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftCommon_LightThrow_CheckInterruptCommon(fighter_gobj) == FALSE)
+    if (ftCommonLightThrowCheckInterruptCommon(fighter_gobj) == FALSE)
     {
         if (ftDonkeyThrowFFCheckInterruptThrowFCommon(fighter_gobj) == FALSE)
         {

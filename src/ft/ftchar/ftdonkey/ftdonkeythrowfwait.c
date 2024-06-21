@@ -9,7 +9,7 @@
 // Donkey Kong's Cargo Wait
 #define ftDonkeyThrowFWaitCheckInterupt(fighter_gobj)                             \
 (                                                                                  \
-    (ftCommon_LightThrow_CheckInterruptCommon(fighter_gobj) != FALSE) ||           \
+    (ftCommonLightThrowCheckInterruptCommon(fighter_gobj) != FALSE) ||           \
     (ftDonkeyThrowFFCheckInterruptThrowFCommon(fighter_gobj) != FALSE) ||        \
     (ftDonkeyThrowFKneeBendCheckInterruptThrowFCommon(fighter_gobj) != FALSE) || \
     (ftDonkeyThrowFFallCheckInterruptPass(fighter_gobj) != FALSE) ||             \

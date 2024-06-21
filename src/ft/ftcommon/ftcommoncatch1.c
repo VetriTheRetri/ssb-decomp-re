@@ -127,9 +127,9 @@ sb32 ftCommonCatchCheckInterruptCommon(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    if (ftCommon_LightThrow_CheckItemTypeThrow(fp) != FALSE)
+    if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
-        ftCommon_LightThrow_DecideSetStatus(fighter_gobj);
+        ftCommonLightThrowDecideSetStatus(fighter_gobj);
 
         return TRUE;
     }
@@ -148,9 +148,9 @@ sb32 ftCommonCatchCheckInterruptDashRun(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    if (ftCommon_LightThrow_CheckItemTypeThrow(fp) != FALSE)
+    if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
-        ftCommon_ItemThrow_SetStatus(fighter_gobj, ftStatus_Common_LightThrowDash);
+        ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowDash);
 
         return TRUE;
     }
@@ -169,9 +169,9 @@ sb32 ftCommonCatchCheckInterruptAttack11(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    if (ftCommon_LightThrow_CheckItemTypeThrow(fp) != FALSE)
+    if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
-        ftCommon_ItemThrow_SetStatus(fighter_gobj, ftStatus_Common_LightThrowDash);
+        ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowDash);
 
         return TRUE;
     }

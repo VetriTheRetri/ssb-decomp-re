@@ -83,9 +83,9 @@ sb32 ftCommonAttackLw3CheckInterruptCommon(GObj *fighter_gobj)
     {
         if (ftCommon_GetStickAngleRadians(fp) < F_CST_DTOR32(-50.0F)) // -0.87266463F
         {
-            if (ftCommon_LightThrow_CheckItemTypeThrow(fp) != FALSE)
+            if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
             {
-                ftCommon_ItemThrow_SetStatus(fighter_gobj, ftStatus_Common_LightThrowLw);
+                ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowLw);
 
                 return TRUE;
             }

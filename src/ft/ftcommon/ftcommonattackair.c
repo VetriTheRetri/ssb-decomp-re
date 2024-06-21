@@ -88,13 +88,13 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
     {
         if (ftHammer_CheckItemHold(fighter_gobj) == FALSE)
         {
-            if (ftCommon_LightThrow_CheckItemTypeThrow(fp) != FALSE)
+            if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
             {
                 if ((ABS(fp->input.pl.stick_range.x) < FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN) && (ABS(fp->input.pl.stick_range.y) < FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN))
                 {
                     if (itGetStruct(fp->item_hold)->type == It_Type_Throw)
                     {
-                        ftCommon_ItemThrow_SetStatus(fighter_gobj, ftStatus_Common_LightThrowAirF);
+                        ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowAirF);
 
                         return TRUE;
                     }
@@ -136,7 +136,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
                     }
                     else status_id = ftStatus_Common_LightThrowAirB;
 
-                    ftCommon_ItemThrow_SetStatus(fighter_gobj, status_id);
+                    ftCommonItemThrowSetStatus(fighter_gobj, status_id);
 
                     return TRUE;
                 }
@@ -180,7 +180,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
             {
                 if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->type == It_Type_Shoot))
                 {
-                    ftCommon_ItemShootAir_SetStatus(fighter_gobj);
+                    ftCommonItemShootAirSetStatus(fighter_gobj);
 
                     return TRUE;
                 }

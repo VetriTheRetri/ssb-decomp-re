@@ -154,7 +154,7 @@ sb32 ftCommonAttackS4CheckInterruptDash(GObj *fighter_gobj)
 
             if ((fp->input.pl.button_hold & fp->input.button_mask_z) || ((ip->type == It_Type_Throw) || (ip->type == It_Type_Shoot) && (itMainCheckShootNoAmmo(item_gobj) != FALSE)))
             {
-                ftCommon_ItemThrow_SetStatus(fighter_gobj, ftStatus_Common_LightThrowF4);
+                ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowF4);
 
                 return TRUE;
             }
@@ -165,7 +165,7 @@ sb32 ftCommonAttackS4CheckInterruptDash(GObj *fighter_gobj)
                 return TRUE;
 
             case It_Type_Shoot:
-                ftCommon_ItemShoot_SetStatus(fighter_gobj);
+                ftCommonItemShootSetStatus(fighter_gobj);
                 return TRUE;
             }
         }
@@ -195,7 +195,7 @@ sb32 ftCommonAttackS4CheckInterruptTurn(GObj *fighter_gobj)
 
             if ((fp->input.pl.button_hold & fp->input.button_mask_z) || ((ip->type == It_Type_Throw) || (ip->type == It_Type_Shoot) && (itMainCheckShootNoAmmo(item_gobj) != FALSE)))
             {
-                ftCommon_ItemThrow_SetStatus(fighter_gobj, ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? ftStatus_Common_LightThrowF4 : ftStatus_Common_LightThrowB4);
+                ftCommonItemThrowSetStatus(fighter_gobj, ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? ftStatus_Common_LightThrowF4 : ftStatus_Common_LightThrowB4);
 
                 return TRUE;
             }
@@ -208,7 +208,7 @@ sb32 ftCommonAttackS4CheckInterruptTurn(GObj *fighter_gobj)
 
             case It_Type_Shoot:
                 ftCommon_StickInputSetLR(fp);
-                ftCommon_ItemShoot_SetStatus(fighter_gobj);
+                ftCommonItemShootSetStatus(fighter_gobj);
                 return TRUE;
             }
         }
@@ -239,7 +239,7 @@ sb32 ftCommonAttackS4CheckInterruptCommon(GObj *fighter_gobj)
 
             if ((fp->input.pl.button_hold & fp->input.button_mask_z) || ((ip->type == It_Type_Throw) || (ip->type == It_Type_Shoot) && (itMainCheckShootNoAmmo(item_gobj) != FALSE)))
             {
-                ftCommon_ItemThrow_SetStatus(fighter_gobj, ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? ftStatus_Common_LightThrowF4 : ftStatus_Common_LightThrowB4);
+                ftCommonItemThrowSetStatus(fighter_gobj, ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? ftStatus_Common_LightThrowF4 : ftStatus_Common_LightThrowB4);
 
                 return TRUE;
             }
@@ -252,7 +252,7 @@ sb32 ftCommonAttackS4CheckInterruptCommon(GObj *fighter_gobj)
 
             case It_Type_Shoot:
                 ftCommon_StickInputSetLR(fp);
-                ftCommon_ItemShoot_SetStatus(fighter_gobj);
+                ftCommonItemShootSetStatus(fighter_gobj);
                 return TRUE;
             }
         }

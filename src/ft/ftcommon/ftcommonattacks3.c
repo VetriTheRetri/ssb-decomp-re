@@ -57,7 +57,7 @@ sb32 ftCommonAttackS3CheckInterruptCommon(GObj *fighter_gobj)
             {
                 if ((fp->input.pl.button_hold & fp->input.button_mask_z) || (itGetStruct(fp->item_hold)->type == It_Type_Throw))
                 {
-                    ftCommon_ItemThrow_SetStatus(fighter_gobj, ftStatus_Common_LightThrowF);
+                    ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowF);
 
                     return TRUE;
                 }
@@ -68,7 +68,7 @@ sb32 ftCommonAttackS3CheckInterruptCommon(GObj *fighter_gobj)
                     return TRUE;
 
                 case It_Type_Shoot:
-                    ftCommon_ItemShoot_SetStatus(fighter_gobj);
+                    ftCommonItemShootSetStatus(fighter_gobj);
                     return TRUE;
                 }
             }

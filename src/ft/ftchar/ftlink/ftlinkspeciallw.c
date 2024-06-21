@@ -79,11 +79,11 @@ sb32 ftLinkSpecialLwCheckGotoItemThrow(GObj *fighter_gobj, sb32 is_ground)
         {
             if (is_ground == TRUE)
             {
-                ftCommon_ItemThrow_SetStatus(fighter_gobj, ftStatus_Common_LightThrowF4);
+                ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowF4);
 
                 return TRUE;
             }
-            else ftCommon_ItemThrow_SetStatus(fighter_gobj, ftStatus_Common_LightThrowAirF4);
+            else ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowAirF4);
         }
         return TRUE;
     }

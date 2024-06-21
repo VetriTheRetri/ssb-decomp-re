@@ -6,8 +6,6 @@
 //                               //
 // // // // // // // // // // // //
 
-// CliffCatch + CliffWait
-
 // 0x80144B30
 void ftCommonCliffCatchProcUpdate(GObj *fighter_gobj)
 {

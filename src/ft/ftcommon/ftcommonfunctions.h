@@ -286,10 +286,10 @@ void ftCommon_Passive_SetStatus(GObj* fighter_gobj);
 sb32 ftCommon_Passive_CheckInterruptDamage(GObj* fighter_gobj);
 
 // Rebound / ReboundWait
-void ftCommon_Rebound_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Rebound_SetStatus(GObj* fighter_gobj);
-void ftCommon_ReboundWait_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_ReboundWait_SetStatus(GObj* fighter_gobj);
+void ftCommonReboundProcUpdate(GObj* fighter_gobj);
+void ftCommonReboundSetStatus(GObj* fighter_gobj);
+void ftCommonReboundWaitProcUpdate(GObj* fighter_gobj);
+void ftCommonReboundWaitSetStatus(GObj* fighter_gobj);
 
 // CliffCatch / CliffWait
 void ftCommonCliffCatchProcUpdate(GObj* fighter_gobj);

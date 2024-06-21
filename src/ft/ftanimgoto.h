@@ -5,7 +5,7 @@
 #include <sys/obj.h>
 
 sb32 ftStatusSetOnAnimEnd(GObj* fighter_gobj, void (*proc_status)(GObj*));
-void ftStatus_IfAnimEnd_SetStatusWait(GObj* fighter_gobj);
-void ftStatus_IfAnimEnd_SetStatusFall(GObj* fighter_gobj);
+void ftStatusWaitOnAnimEnd(GObj* fighter_gobj);
+void ftStatusFallOnAnimEnd(GObj* fighter_gobj);
 
 #endif

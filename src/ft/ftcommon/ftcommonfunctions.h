@@ -370,10 +370,10 @@ sb32 ftCommon_LightThrow_CheckInterruptEscape(GObj* fighter_gobj);
 sb32 ftCommon_LightThrow_CheckInterruptCommon(GObj* fighter_gobj);
 
 // ItemSwing
-void ftCommon_HarisenSwing_ProcHit(GObj* fighter_gobj);
-void ftCommon_HarisenSwing_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_StarRodSwing_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_ItemSwing_SetStatus(GObj* fighter_gobj, s32 swing_type);
+void ftCommonHarisenSwingProcHit(GObj* fighter_gobj);
+void ftCommonHarisenSwingProcUpdate(GObj* fighter_gobj);
+void ftCommonStarRodSwingProcUpdate(GObj* fighter_gobj);
+void ftCommonItemSwingSetStatus(GObj* fighter_gobj, s32 swing_type);
 
 // ItemShoot
 void ftCommonLGunShootProcUpdate(GObj* fighter_gobj);

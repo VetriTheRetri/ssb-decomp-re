@@ -39,14 +39,14 @@ void ftSamusSpecialLwProcUpdate(GObj *fighter_gobj)
     {
         ftSamusSpecialLwTransferStatusAir(fighter_gobj);
     }
-    else ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
+    else ftStatusWaitOnAnimEnd(fighter_gobj);
 }
 
 // 0x8015DFBC
 void ftSamusSpecialAirLwProcUpdate(GObj *fighter_gobj)
 {
     ftSamusSpecialLwCreateBomb(fighter_gobj);
-    ftStatus_IfAnimEnd_SetStatusFall(fighter_gobj);
+    ftStatusFallOnAnimEnd(fighter_gobj);
 }
 
 // 0x8015DFE4

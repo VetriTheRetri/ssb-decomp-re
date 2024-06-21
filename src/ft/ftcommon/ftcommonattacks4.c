@@ -75,7 +75,7 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
         }
         break;
     }
-    ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
+    ftStatusWaitOnAnimEnd(fighter_gobj);
 }
 
 // 0x8014FFE0
@@ -161,7 +161,7 @@ sb32 ftCommonAttackS4CheckInterruptDash(GObj *fighter_gobj)
             switch (ip->type)
             {
             case It_Type_Swing:
-                ftCommon_ItemSwing_SetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
+                ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
                 return TRUE;
 
             case It_Type_Shoot:
@@ -203,7 +203,7 @@ sb32 ftCommonAttackS4CheckInterruptTurn(GObj *fighter_gobj)
             {
             case It_Type_Swing:
                 ftCommon_StickInputSetLR(fp);
-                ftCommon_ItemSwing_SetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
+                ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
                 return TRUE;
 
             case It_Type_Shoot:
@@ -247,7 +247,7 @@ sb32 ftCommonAttackS4CheckInterruptCommon(GObj *fighter_gobj)
             {
             case It_Type_Swing:
                 ftCommon_StickInputSetLR(fp);
-                ftCommon_ItemSwing_SetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
+                ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
                 return TRUE;
 
             case It_Type_Shoot:

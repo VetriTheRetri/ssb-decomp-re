@@ -74,7 +74,7 @@ void ftDonkeyThrowFJumpSetStatus(GObj *fighter_gobj)
 // 0x8014DBE0
 void ftDonkeyThrowFFallSetStatusPass(GObj *fighter_gobj)
 {
-    ftCommon_Pass_SetStatusParam(fighter_gobj, ftStatus_Donkey_ThrowFFall, 1.0F, 0);
+    ftCommonPassSetStatusParam(fighter_gobj, ftStatus_Donkey_ThrowFFall, 1.0F, 0);
 }
 
 // 0x8014DC08
@@ -82,7 +82,7 @@ sb32 ftDonkeyThrowFFallCheckInterruptPass(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftCommon_Pass_CheckInputSuccess(fp) != FALSE)
+    if (ftCommonPassCheckInputSuccess(fp) != FALSE)
     {
         ftDonkeyThrowFFallSetStatusPass(fighter_gobj);
 

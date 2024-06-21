@@ -87,7 +87,7 @@ void ftCommonHammerFallSetStatusJump(GObj *fighter_gobj)
 // 0x80147E34
 void ftCommonHammerFallSetStatusPass(GObj *fighter_gobj)
 {
-    ftCommon_Pass_SetStatusParam(fighter_gobj, ftStatus_Common_HammerFall, ftHammer_GetAnimFrame(fighter_gobj), ftHammer_GetStatUpdateFlags(fighter_gobj));
+    ftCommonPassSetStatusParam(fighter_gobj, ftStatus_Common_HammerFall, ftHammer_GetAnimFrame(fighter_gobj), ftHammer_GetStatUpdateFlags(fighter_gobj));
     ftHammer_CheckSetColAnim(fighter_gobj);
 }
 
@@ -96,7 +96,7 @@ sb32 ftCommonHammerFallCheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftCommon_Pass_CheckInputSuccess(fp) != FALSE)
+    if (ftCommonPassCheckInputSuccess(fp) != FALSE)
     {
         ftCommonHammerFallSetStatusPass(fighter_gobj);
 

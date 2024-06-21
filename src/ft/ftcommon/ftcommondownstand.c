@@ -13,7 +13,7 @@ void ftCommonDownStandProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->command_vars.flags.flag1 != 0) && (ftCommon_KneeBend_CheckInterruptCommon(fighter_gobj) == FALSE) && (ftCommon_Pass_CheckInterruptCommon(fighter_gobj) == FALSE))
+    if ((fp->command_vars.flags.flag1 != 0) && (ftCommon_KneeBend_CheckInterruptCommon(fighter_gobj) == FALSE) && (ftCommonPassCheckInterruptCommon(fighter_gobj) == FALSE))
     {
         ftCommonDokanStartCheckInterruptCommon(fighter_gobj);
     }

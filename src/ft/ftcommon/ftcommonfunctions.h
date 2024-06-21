@@ -160,14 +160,14 @@ void ftCommonLandingAirNullSetStatus(GObj* fighter_gobj, f32 anim_speed);
 void ftCommonLandingFallSpecialSetStatus(GObj* fighter_gobj, sb32 is_allow_interrupt, f32 anim_speed);
 
 // Pass
-void ftCommon_Pass_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Pass_SetStatusParam(GObj* fighter_gobj, s32 status_id, f32 frame_begin, u32 flags);
-void ftCommon_Pass_SetStatusSquat(GObj* fighter_gobj);
-void ftCommon_GuardPass_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_Pass_CheckInputSuccess(ftStruct* fp);
-sb32 ftCommon_Pass_CheckInterruptCommon(GObj* fighter_gobj);
-sb32 ftCommon_Pass_CheckInterruptSquat(GObj* fighter_gobj);
-sb32 ftCommon_GuardPass_CheckInterruptGuard(GObj* fighter_gobj);
+void ftCommonPassProcInterrupt(GObj* fighter_gobj);
+void ftCommonPassSetStatusParam(GObj* fighter_gobj, s32 status_id, f32 frame_begin, u32 flags);
+void ftCommonPassSetStatusSquat(GObj* fighter_gobj);
+void ftCommonGuardPassSetStatus(GObj* fighter_gobj);
+sb32 ftCommonPassCheckInputSuccess(ftStruct* fp);
+sb32 ftCommonPassCheckInterruptCommon(GObj* fighter_gobj);
+sb32 ftCommonPassCheckInterruptSquat(GObj* fighter_gobj);
+sb32 ftCommonGuardPassCheckInterruptGuard(GObj* fighter_gobj);
 
 // Ottotto / OttottoWait
 void ftCommonOttottoProcUpdate(GObj* fighter_gobj);

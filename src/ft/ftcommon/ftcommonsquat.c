@@ -22,7 +22,7 @@
     (ftCommonGuardOnCheckInterruptCommon(fighter_gobj) != FALSE)    ||  \
     (ftCommonAppealCheckInterruptCommon(fighter_gobj) != FALSE)     ||  \
     (ftCommon_KneeBend_CheckInterruptCommon(fighter_gobj) != FALSE) ||  \
-    (ftCommon_Pass_CheckInterruptSquat(fighter_gobj) != FALSE) || \
+    (ftCommonPassCheckInterruptSquat(fighter_gobj) != FALSE) || \
     (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE)    \
 )
 
@@ -43,7 +43,7 @@
     (ftCommonAppealCheckInterruptCommon(fighter_gobj) != FALSE)     ||  \
     (ftCommon_KneeBend_CheckInterruptCommon(fighter_gobj) != FALSE)   || \
     (ftCommon_Dash_CheckInterruptCommon(fighter_gobj) != FALSE)       || \
-    (ftCommon_Pass_CheckInterruptSquat(fighter_gobj) != FALSE)        || \
+    (ftCommonPassCheckInterruptSquat(fighter_gobj) != FALSE)        || \
     (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE) || \
     (ftCommonSquatRvCheckInterruptSquatWait(fighter_gobj) != FALSE)    \
 )
@@ -65,7 +65,7 @@
     (ftCommonAppealCheckInterruptCommon(fighter_gobj) != FALSE)     ||  \
     (ftCommon_KneeBend_CheckInterruptCommon(fighter_gobj) != FALSE) ||  \
     (ftCommon_Dash_CheckInterruptCommon(fighter_gobj) != FALSE) ||     \
-    (ftCommon_Pass_CheckInterruptCommon(fighter_gobj) != FALSE) ||     \
+    (ftCommonPassCheckInterruptCommon(fighter_gobj) != FALSE) ||     \
     (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE)   \
 )
 
@@ -88,7 +88,7 @@ sb32 ftCommonSquatCheckGotoPass(GObj *fighter_gobj)
 
             if (fp->status_vars.common.squat.pass_wait == 0)
             {
-                ftCommon_Pass_SetStatusParam(fighter_gobj, ftStatus_Common_Pass, 1.0F, 0);
+                ftCommonPassSetStatusParam(fighter_gobj, ftStatus_Common_Pass, 1.0F, 0);
 
                 return TRUE;
             }

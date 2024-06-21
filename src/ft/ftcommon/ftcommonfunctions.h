@@ -210,11 +210,11 @@ void ftCommon_WallDamage_SetStatus(GObj* fighter_gobj, Vec3f* angle, Vec3f* pos)
 sb32 ftCommon_WallDamage_CheckGoto(GObj* fighter_gobj);
 
 // DamageFall
-void ftCommon_DamageFall_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_DamageFall_ProcMap(GObj* fighter_gobj);
-void func_ovl3_80143630(GObj* fighter_gobj);
-void ftCommon_DamageFall_SetStatusFromDamage(GObj* fighter_gobj);
-void ftCommon_DamageFall_SetStatusFromCliffWait(GObj* fighter_gobj);
+void ftCommonDamageFallProcInterrupt(GObj* fighter_gobj);
+void ftCommonDamageFallProcMap(GObj* fighter_gobj);
+void ftCommonDamageFallClampRumble(GObj* fighter_gobj);
+void ftCommonDamageFallSetStatusFromDamage(GObj* fighter_gobj);
+void ftCommonDamageFallSetStatusFromCliffWait(GObj* fighter_gobj);
 void func_ovl3_801436F0(GObj* fighter_gobj);
 
 // FallSpecial

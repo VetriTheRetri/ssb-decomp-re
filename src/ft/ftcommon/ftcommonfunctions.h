@@ -273,8 +273,8 @@ void ftCommon_PassiveStand_SetStatus(GObj* fighter_gobj, s32 status_id);
 sb32 ftCommon_PassiveStand_CheckInterruptDamage(GObj* fighter_gobj);
 
 // DownForward / DownBack
-void ftCommon_DownForwardOrBack_SetStatus(GObj* fighter_gobj, s32 status_id);
-sb32 ftCommon_DownForwardOrBack_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonDownForwardOrBackSetStatus(GObj* fighter_gobj, s32 status_id);
+sb32 ftCommonDownForwardOrBackCheckInterruptCommon(GObj* fighter_gobj);
 
 // DownAttack
 void ftCommonDownAttackSetStatus(GObj* fighter_gobj, s32 status_id);

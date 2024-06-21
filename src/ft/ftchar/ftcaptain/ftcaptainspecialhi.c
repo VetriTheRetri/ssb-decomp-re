@@ -117,7 +117,7 @@ void ftCaptainSpecialHiProcMap(GObj *fighter_gobj)
     }
     else if ((mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK))
     {
-        ftCommon_CliffCatch_SetStatus(fighter_gobj);
+        ftCommonCliffCatchSetStatus(fighter_gobj);
     }
 }
 

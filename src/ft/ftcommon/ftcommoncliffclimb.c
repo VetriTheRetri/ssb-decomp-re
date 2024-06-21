@@ -77,7 +77,7 @@ void ftCommonCliffQuickOrSlowSetStatus(GObj *fighter_gobj, s32 status_input)
 
     fp->is_cliff_hold = TRUE;
 
-    fp->proc_damage = ftCommon_CliffCommon_ProcDamage;
+    fp->proc_damage = ftCommonCliffCommonProcDamage;
 }
 
 // 0x80145084
@@ -103,7 +103,7 @@ sb32 ftCommonCliffClimbOrFallCheckInterruptCommon(GObj *fighter_gobj)
         {
             fp->cliffcatch_wait = FTCOMMON_CLIFF_CATCH_WAIT;
 
-            ftCommon_CliffCommon_ProcDamage(fighter_gobj);
+            ftCommonCliffCommonProcDamage(fighter_gobj);
             ftCommon_Fall_SetStatus(fighter_gobj);
 
             return TRUE;
@@ -136,7 +136,7 @@ void ftCommonCliffClimbQuick1SetStatus(GObj *fighter_gobj)
 
     fp->is_cliff_hold = TRUE;
 
-    fp->proc_damage = ftCommon_CliffCommon_ProcDamage;
+    fp->proc_damage = ftCommonCliffCommonProcDamage;
 }
 
 // 0x80145240
@@ -148,7 +148,7 @@ void ftCommonCliffClimbSlow1SetStatus(GObj *fighter_gobj)
 
     fp->is_cliff_hold = TRUE;
 
-    fp->proc_damage = ftCommon_CliffCommon_ProcDamage;
+    fp->proc_damage = ftCommonCliffCommonProcDamage;
 }
 
 // 0x80145290

@@ -292,14 +292,14 @@ void ftCommon_ReboundWait_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_ReboundWait_SetStatus(GObj* fighter_gobj);
 
 // CliffCatch / CliffWait
-void ftCommon_CliffCatch_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_CliffCommon_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_CliffCommon_ProcMap(GObj* fighter_gobj);
-void ftCommon_CliffCatch_SetStatus(GObj* fighter_gobj);
-void ftCommon_CliffCommon_ProcDamage(GObj* fighter_gobj);
-void ftCommon_CliffWait_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_CliffWait_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_CliffWait_CheckFall(GObj* fighter_gobj);
+void ftCommonCliffCatchProcUpdate(GObj* fighter_gobj);
+void ftCommonCliffCommonProcPhysics(GObj* fighter_gobj);
+void ftCommonCliffCommonProcMap(GObj* fighter_gobj);
+void ftCommonCliffCatchSetStatus(GObj* fighter_gobj);
+void ftCommonCliffCommonProcDamage(GObj* fighter_gobj);
+void ftCommonCliffWaitProcInterrupt(GObj* fighter_gobj);
+void ftCommonCliffWaitSetStatus(GObj* fighter_gobj);
+sb32 ftCommonCliffWaitCheckFall(GObj* fighter_gobj);
 
 // CliffQuick / CliffSlow / CliffClimb
 void ftCommonCliffQuickProcUpdate(GObj* fighter_gobj);

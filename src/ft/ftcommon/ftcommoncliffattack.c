@@ -41,7 +41,7 @@ void ftCommonCliffAttackQuick1SetStatus(GObj *fighter_gobj)
 
     fp->is_cliff_hold = TRUE;
 
-    fp->proc_damage = ftCommon_CliffCommon_ProcDamage;
+    fp->proc_damage = ftCommonCliffCommonProcDamage;
 }
 
 // 0x80145704
@@ -53,7 +53,7 @@ void ftCommonCliffAttackSlow1SetStatus(GObj *fighter_gobj)
 
     fp->is_cliff_hold = TRUE;
 
-    fp->proc_damage = ftCommon_CliffCommon_ProcDamage;
+    fp->proc_damage = ftCommonCliffCommonProcDamage;
 }
 
 // 0x80145754

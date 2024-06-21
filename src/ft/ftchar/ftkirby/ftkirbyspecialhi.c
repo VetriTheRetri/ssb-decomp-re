@@ -216,7 +216,7 @@ void ftKirbySpecialHiProcMap(GObj *fighter_gobj)
         {
             if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {
-                ftCommon_CliffCatch_SetStatus(fighter_gobj);
+                ftCommonCliffCatchSetStatus(fighter_gobj);
             }
             else if ((fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND) && (fp->phys_info.vel_air.y < 0.0F))
             {
@@ -244,7 +244,7 @@ void ftKirbySpecialAirHiFallProcMap(GObj *fighter_gobj)
         }
         else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
-            ftCommon_CliffCatch_SetStatus(fighter_gobj);
+            ftCommonCliffCatchSetStatus(fighter_gobj);
         }
     }
 }

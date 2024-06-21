@@ -300,7 +300,7 @@ void ftLinkSpecialAirHiProcMap(GObj *fighter_gobj)
 
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
-            ftCommon_CliffCatch_SetStatus(fighter_gobj);
+            ftCommonCliffCatchSetStatus(fighter_gobj);
         }
         else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
         {

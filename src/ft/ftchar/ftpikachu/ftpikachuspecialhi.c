@@ -220,7 +220,7 @@ void ftPikachuSpecialAirHiProcMap(GObj *fighter_gobj)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
-            ftCommon_CliffCatch_SetStatus(fighter_gobj);
+            ftCommonCliffCatchSetStatus(fighter_gobj);
 
         }
         else if (lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &fp->phys_info.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE)
@@ -498,7 +498,7 @@ void ftPikachuSpecialAirHiEndProcMap(GObj *fighter_gobj)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
-            ftCommon_CliffCatch_SetStatus(fighter_gobj);
+            ftCommonCliffCatchSetStatus(fighter_gobj);
         }
         else ftCommon_LandingFallSpecial_SetStatus(fighter_gobj, FALSE, FTPIKACHU_QUICKATTACK_LANDING_LAG);
     }

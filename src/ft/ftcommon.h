@@ -348,6 +348,24 @@
 #define FTCOMMON_SPECIALHI_STICK_RANGE_MIN 40
 #define FTCOMMON_SPECIALLW_STICK_RANGE_MIN (-40)
 
+typedef enum ftCommonCliffStatusKind
+{
+	// Quick (below 100%)
+
+	nFTCommonCliffKindClimbQuick,
+	nFTCommonCliffKindAttackQuick,
+	nFTCommonCliffKindEscapeQuick,
+
+	// Slow (above 100%)
+
+	nFTCommonCliffKindClimbSlow,
+	nFTCommonCliffKindAttackSlow,
+	nFTCommonCliffKindEscapeSlow,
+
+	nFTCommonCliffKindEnumMax
+
+} ftCommonCliffStatusKind;
+
 typedef struct ftCommon_DeadStatusVars
 {
 	s32 rebirth_wait;

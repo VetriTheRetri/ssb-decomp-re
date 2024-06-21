@@ -13,7 +13,7 @@ sb32 ftCommonCliffEscapeCheckInterruptCommon(GObj *fighter_gobj)
 
     if (fp->input.pl.button_tap & fp->input.button_mask_z)
     {
-        ftCommon_CliffQuickOrSlow_SetStatus(fighter_gobj, 2);
+        ftCommonCliffQuickOrSlowSetStatus(fighter_gobj, 2);
 
         return TRUE;
     }
@@ -59,15 +59,15 @@ void ftCommonCliffEscapeSlow1SetStatus(GObj *fighter_gobj)
 // 0x8014590C
 void ftCommonCliffEscapeQuick2SetStatus(GObj *fighter_gobj)
 {
-    ftCommon_CliffCommon2_UpdateCollData(fighter_gobj);
+    ftCommonCliffCommon2UpdateCollData(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CliffEscapeQuick2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftCommon_CliffCommon2_InitStatusVars(fighter_gobj);
+    ftCommonCliffCommon2InitStatusVars(fighter_gobj);
 }
 
 // 0x8014594C
 void ftCommonCliffEscapeSlow2SetStatus(GObj *fighter_gobj)
 {
-    ftCommon_CliffCommon2_UpdateCollData(fighter_gobj);
+    ftCommonCliffCommon2UpdateCollData(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CliffEscapeSlow2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
-    ftCommon_CliffCommon2_InitStatusVars(fighter_gobj);
+    ftCommonCliffCommon2InitStatusVars(fighter_gobj);
 }

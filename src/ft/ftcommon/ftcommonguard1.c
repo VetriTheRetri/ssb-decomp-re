@@ -380,7 +380,7 @@ void ftCommonGuardCommonProcInterrupt(GObj *fighter_gobj)
 {
     if (!(ftCommonGuardCheckInterrupt(fighter_gobj)))
     {
-        ftCommon_DokanStart_CheckInterruptCommon(fighter_gobj);
+        ftCommonDokanStartCheckInterruptCommon(fighter_gobj);
     }
 }
 

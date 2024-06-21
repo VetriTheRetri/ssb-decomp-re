@@ -239,19 +239,19 @@ void ftCommonTaruCannSetStatus(GObj* fighter_gobj, GObj* tarucann_gobj);
 void ftCommonTaruCannShootFighter(GObj* fighter_gobj);
 
 // Dokan
-void ftCommon_DokanStart_UpdateModelYaw(ftStruct* fp);
-void ftCommon_DokanStart_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_DokanStart_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_DokanStart_SetStatus(GObj* fighter_gobj, s32 ground_line_id);
-sb32 ftCommon_DokanStart_CheckInterruptCommon(GObj* fighter_gobj);
-void ftCommon_DokanWait_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_DokanWait_ProcMap(GObj* fighter_gobj);
-void ftCommon_DokanWait_SetStatus(GObj* fighter_gobj);
-void ftCommon_DokanEnd_UpdateModelYaw(GObj* fighter_gobj);
-void ftCommon_DokanEnd_UpdatePlayerTag(GObj* fighter_gobj);
-void ftCommon_DokanEnd_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_DokanEnd_SetStatus(GObj* fighter_gobj);
-void ftCommon_DokanWalk_SetStatus(GObj* fighter_gobj);
+void ftCommonDokanStartUpdateModelYaw(ftStruct* fp);
+void ftCommonDokanStartProcUpdate(GObj* fighter_gobj);
+void ftCommonDokanStartProcPhysics(GObj* fighter_gobj);
+void ftCommonDokanStartSetStatus(GObj* fighter_gobj, s32 ground_line_id);
+sb32 ftCommonDokanStartCheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonDokanWaitProcUpdate(GObj* fighter_gobj);
+void ftCommonDokanWaitProcMap(GObj* fighter_gobj);
+void ftCommonDokanWaitSetStatus(GObj* fighter_gobj);
+void ftCommonDokanEndUpdateModelYaw(GObj* fighter_gobj);
+void ftCommonDokanEndUpdatePlayerTag(GObj* fighter_gobj);
+void ftCommonDokanEndProcUpdate(GObj* fighter_gobj);
+void ftCommonDokanEndSetStatus(GObj* fighter_gobj);
+void ftCommonDokanWalkSetStatus(GObj* fighter_gobj);
 
 // DownWait / DownBounce
 void ftCommonDownWaitProcUpdate(GObj* fighter_gobj);

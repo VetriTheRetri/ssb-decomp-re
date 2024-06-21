@@ -23,7 +23,7 @@
     (ftCommonAppealCheckInterruptCommon(fighter_gobj) != FALSE)     ||  \
     (ftCommon_KneeBend_CheckInterruptCommon(fighter_gobj) != FALSE) ||  \
     (ftCommon_Pass_CheckInterruptSquat(fighter_gobj) != FALSE) || \
-    (ftCommon_DokanStart_CheckInterruptCommon(fighter_gobj) != FALSE)    \
+    (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE)    \
 )
 
 #define ftCommonSquatWaitCheckInterrupt(fighter_gobj)                   \
@@ -44,7 +44,7 @@
     (ftCommon_KneeBend_CheckInterruptCommon(fighter_gobj) != FALSE)   || \
     (ftCommon_Dash_CheckInterruptCommon(fighter_gobj) != FALSE)       || \
     (ftCommon_Pass_CheckInterruptSquat(fighter_gobj) != FALSE)        || \
-    (ftCommon_DokanStart_CheckInterruptCommon(fighter_gobj) != FALSE) || \
+    (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE) || \
     (ftCommonSquatRvCheckInterruptSquatWait(fighter_gobj) != FALSE)    \
 )
 
@@ -66,7 +66,7 @@
     (ftCommon_KneeBend_CheckInterruptCommon(fighter_gobj) != FALSE) ||  \
     (ftCommon_Dash_CheckInterruptCommon(fighter_gobj) != FALSE) ||     \
     (ftCommon_Pass_CheckInterruptCommon(fighter_gobj) != FALSE) ||     \
-    (ftCommon_DokanStart_CheckInterruptCommon(fighter_gobj) != FALSE)   \
+    (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE)   \
 )
 
 // // // // // // // // // // // //

@@ -62,7 +62,7 @@ void ftSamusSpecialHiProcMap(GObj *fighter_gobj)
             {
                 ftCommonCliffCatchSetStatus(fighter_gobj);
             }
-            else ftCommon_LandingFallSpecial_SetStatus(fighter_gobj, FALSE, FTSAMUS_SCREWATTACK_LANDING_LAG);
+            else ftCommonLandingFallSpecialSetStatus(fighter_gobj, FALSE, FTSAMUS_SCREWATTACK_LANDING_LAG);
         }
     }
     else ftMap_CheckGroundStopEdgeFall(fighter_gobj);

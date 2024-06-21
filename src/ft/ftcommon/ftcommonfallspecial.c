@@ -62,7 +62,7 @@ void ftCommonFallSpecialProcMap(GObj *fighter_gobj)
         }
         else if ((fp->status_vars.common.fallspecial.is_goto_landing != FALSE) || (fp->phys_info.vel_air.y < FTCOMMON_FALLSPECIAL_SKIPLANDING_VEL_Y_MAX))
         {
-            ftCommon_LandingFallSpecial_SetStatus(fighter_gobj, fp->status_vars.common.fallspecial.is_allow_interrupt, fp->status_vars.common.fallspecial.landing_lag);
+            ftCommonLandingFallSpecialSetStatus(fighter_gobj, fp->status_vars.common.fallspecial.is_allow_interrupt, fp->status_vars.common.fallspecial.landing_lag);
         }
         else ftCommon_Wait_SetStatus(fighter_gobj);
     }

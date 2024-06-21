@@ -125,7 +125,7 @@ void ftMarioSpecialHiProcMap(GObj *fighter_gobj)
             {
                 ftCommonCliffCatchSetStatus(fighter_gobj);
             }
-            else ftCommon_LandingFallSpecial_SetStatus(fighter_gobj, FALSE, FTMARIO_SUPERJUMP_LANDING_LAG);
+            else ftCommonLandingFallSpecialSetStatus(fighter_gobj, FALSE, FTMARIO_SUPERJUMP_LANDING_LAG);
         }
     }
     else ftMap_CheckGroundStopEdgeFall(fighter_gobj);

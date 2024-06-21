@@ -500,7 +500,7 @@ void ftPikachuSpecialAirHiEndProcMap(GObj *fighter_gobj)
         {
             ftCommonCliffCatchSetStatus(fighter_gobj);
         }
-        else ftCommon_LandingFallSpecial_SetStatus(fighter_gobj, FALSE, FTPIKACHU_QUICKATTACK_LANDING_LAG);
+        else ftCommonLandingFallSpecialSetStatus(fighter_gobj, FALSE, FTPIKACHU_QUICKATTACK_LANDING_LAG);
     }
 }
 

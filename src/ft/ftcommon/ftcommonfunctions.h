@@ -153,11 +153,11 @@ void ftCommonSquatRvSetStatus(GObj* fighter_gobj);
 sb32 ftCommonSquatRvCheckInterruptSquatWait(GObj* fighter_gobj);
 
 // LandingLight / LandingHeavy
-void ftCommon_Landing_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Landing_SetStatusParam(GObj* fighter_gobj, s32 status_id, sb32 is_allow_interrupt, f32 anim_speed);
-void ftCommon_Landing_SetStatus(GObj* fighter_gobj);
-void ftCommon_LandingAirNull_SetStatus(GObj* fighter_gobj, f32 anim_speed);
-void ftCommon_LandingFallSpecial_SetStatus(GObj* fighter_gobj, sb32 is_allow_interrupt, f32 anim_speed);
+void ftCommonLandingProcInterrupt(GObj* fighter_gobj);
+void ftCommonLandingSetStatusParam(GObj* fighter_gobj, s32 status_id, sb32 is_allow_interrupt, f32 anim_speed);
+void ftCommonLandingSetStatus(GObj* fighter_gobj);
+void ftCommonLandingAirNullSetStatus(GObj* fighter_gobj, f32 anim_speed);
+void ftCommonLandingFallSpecialSetStatus(GObj* fighter_gobj, sb32 is_allow_interrupt, f32 anim_speed);
 
 // Pass
 void ftCommon_Pass_ProcInterrupt(GObj* fighter_gobj);

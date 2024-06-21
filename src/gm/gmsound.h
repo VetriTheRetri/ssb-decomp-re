@@ -311,7 +311,7 @@ typedef enum alSoundEffectID
     alSound_SFX_JungleTaruCannShoot,
     alSound_SFX_JungleTaruCannEnter,
 	alSound_SFX_HyruleTwisterSpawn,
-	alSound_SFX_HyruleTwisterEnter,
+	alSound_SFX_HyruleTwisterTrapped,
 	alSound_SFX_PupupuWhispyWind, // Despawn?
 	alSound_SFX_FloorDamageBurn,
 	alSound_SFX_FighterBodySlamL,		  // This continues until 0x12A

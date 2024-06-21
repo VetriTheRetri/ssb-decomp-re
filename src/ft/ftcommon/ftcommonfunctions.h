@@ -226,10 +226,10 @@ void ftCommon_FallSpecial_SetStatus(GObj* fighter_gobj, f32 drift, sb32 unknown,
 									sb32 is_goto_landing, f32 landing_lag, sb32 is_allow_interrupt);
 
 // Twister
-void ftCommon_Twister_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Twister_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_Twister_SetStatus(GObj* fighter_gobj, GObj* tornado_gobj);
-void ftCommon_Twister_ShootFighter(GObj* fighter_gobj);
+void ftCommonTwisterProcUpdate(GObj* fighter_gobj);
+void ftCommonTwisterProcPhysics(GObj* fighter_gobj);
+void ftCommonTwisterSetStatus(GObj* fighter_gobj, GObj* tornado_gobj);
+void ftCommonTwisterShootFighter(GObj* fighter_gobj);
 
 // TaruCann
 void ftCommonTaruCannProcUpdate(GObj* fighter_gobj);

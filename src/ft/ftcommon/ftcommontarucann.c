@@ -15,6 +15,12 @@ extern f32 grJungleTaruCannGetRotate();
 extern intptr_t lGRJungleDataStart;             // 0x00000014
 extern intptr_t lGRJungleTaruCannThrowHitDesc;  // 0x000000BC
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80143E10
 void ftCommonTaruCannProcUpdate(GObj *fighter_gobj)
 {

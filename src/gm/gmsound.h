@@ -308,8 +308,8 @@ typedef enum alSoundEffectID
 	alSound_SFX_GamePause,
 	alSound_SFX_InishiePowerBlock, // POW Block
 	alSound_SFX_Bonus1TargetBreak, // Break Bonus 1 target
-	alSound_SFX_KongoTaruCannShoot,
-	alSound_SFX_KongoTaruCannEnter,
+    alSound_SFX_JungleTaruCannShoot,
+    alSound_SFX_JungleTaruCannEnter,
 	alSound_SFX_HyruleTwisterSpawn,
 	alSound_SFX_HyruleTwisterEnter,
 	alSound_SFX_PupupuWhispyWind, // Despawn?

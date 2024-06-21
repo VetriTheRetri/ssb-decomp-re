@@ -39,10 +39,16 @@
 #define F_CLC_RTOD32(x) ((float)(((x) / PI32) * 180.0F))
 
 // Integer convert degrees to radians
-#define I_DEG_TO_RAD(x) ((int)((x)*DTOR32))
+#define I_CST_DTOR32(x) (( int )((x) * DTOR32))
+
+// Integer convert degrees to radians
+#define I_CLC_DTOR32(x) (( int )(((x) * PI32) / 180.0F))
 
 // Integer convert radians to degrees
-#define I_RAD_TO_DEG(x) ((int)((x) / RTOD32))
+#define I_CST_RTOD32(x) (( int )((x) * RTOD32))
+
+// Integer convert radians to degrees
+#define I_CLC_RTOD32(x) (( int )(((x) / PI32) * 180.0F))
 
 // Float convert percentage to decimal notation
 #define F_PCT_TO_DEC(x) ((float)((x)*0.01F))

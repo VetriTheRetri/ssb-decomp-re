@@ -232,11 +232,11 @@ void ftCommon_Twister_SetStatus(GObj* fighter_gobj, GObj* tornado_gobj);
 void ftCommon_Twister_ShootFighter(GObj* fighter_gobj);
 
 // TaruCann
-void ftCommon_TaruCann_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_TaruCann_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_TaruCann_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_TaruCann_SetStatus(GObj* fighter_gobj, GObj* tarucann_gobj);
-void ftCommon_TaruCann_ShootFighter(GObj* fighter_gobj);
+void ftCommonTaruCannProcUpdate(GObj* fighter_gobj);
+void ftCommonTaruCannProcInterrupt(GObj* fighter_gobj);
+void ftCommonTaruCannProcPhysics(GObj* fighter_gobj);
+void ftCommonTaruCannSetStatus(GObj* fighter_gobj, GObj* tarucann_gobj);
+void ftCommonTaruCannShootFighter(GObj* fighter_gobj);
 
 // Dokan
 void ftCommon_DokanStart_UpdateModelYaw(ftStruct* fp);

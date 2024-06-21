@@ -63,7 +63,7 @@ void ftCommonShieldBreakFlyCommonSetStatus(GObj *fighter_gobj)
     }
     else efParticle_ShieldBreak_MakeEffect(&offset);
 
-    ftCommon_Update1PGameDamageStats(fp, fp->shield_player, 0, 0, 0, 0);
+    ftCommon_Update1PGameDamageStats(fp, fp->shield_player, ftHitlog_ObjectClass_None, 0, 0, 0);
 
     if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->shield_damage != 0))
     {

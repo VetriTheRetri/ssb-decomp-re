@@ -1,4 +1,5 @@
 #include <ft/fighter.h>
+#include <gm/battle.h>
 
 extern f32 gmCommonObject_DamageCalcKnockback(s32 percent_damage, s32 recent_damage, s32 hit_damage, s32 knockback_weight, s32 knockback_scale, s32 knockback_base, f32 weight, s32 attack_handicap, s32 defend_handicap);
 extern s32 gmCommon_DamageApplyStale(s32, s32, s32, u16);
@@ -30,7 +31,7 @@ void ftCommonCaptureApplyCatchKnockback(GObj *fighter_gobj, ftThrowReleaseDesc *
     f32 knockback = gmCommonObject_DamageCalcKnockback(this_fp->percent_damage, 0, 0, throw_release->knockback_weight, throw_release->knockback_scale, throw_release->knockback_base, this_fp->attributes->weight, catch_fp->handicap, this_fp->handicap);
     
     ftCommon_Damage_InitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, this_fp->lr, 1, 0, 0, FALSE, FALSE, FALSE);
-    ftCommon_Update1PGameDamageStats(this_fp, 4, 0, 0, 0, 0);
+    ftCommon_Update1PGameDamageStats(this_fp, GMMATCH_PLAYERS_MAX, ftHitlog_ObjectClass_None, 0, 0, 0);
 }
 
 // 0x8014E2A8
@@ -61,7 +62,7 @@ void ftCommonCaptureApplyCaptureKnockback(GObj *fighter_gobj, ftThrowReleaseDesc
     else lr = LR_Left;
 
     ftCommon_Damage_InitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, lr, 1, 0, 0, FALSE, FALSE, FALSE);
-    ftCommon_Update1PGameDamageStats(this_fp, 4, 0, 0, 0, 0);
+    ftCommon_Update1PGameDamageStats(this_fp, GMMATCH_PLAYERS_MAX, ftHitlog_ObjectClass_None, 0, 0, 0);
 }
 
 // 0x8014E3EC

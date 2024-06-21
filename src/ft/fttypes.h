@@ -867,7 +867,7 @@ struct ftStruct
     ub32 is_playing_sfx : 1;
     ub32 x190_flag_b5 : 1;
     ub32 is_show_item : 1;
-    ub32 x190_flag_b7 : 1;
+    ub32 is_cliff_hold : 1;
     ub32 is_effect_interrupt : 1;       // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
     ub32 is_nullstatus : 1;             // Dead / Entry / Appear / Rebirth, ignore hit collisions + blastzones?
     ub32 is_damage_resist : 1;

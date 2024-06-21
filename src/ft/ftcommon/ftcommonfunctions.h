@@ -320,13 +320,13 @@ void ftCommon_CliffClimbQuick2_SetStatus(GObj* fighter_gobj);
 void ftCommon_CliffClimbSlow2_SetStatus(GObj* fighter_gobj);
 
 // CliffAttack
-sb32 ftCommon_CliffAttack_CheckInterruptCommon(GObj* fighter_gobj);
-void ftCommon_CliffAttackQuick1_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_CliffAttackSlow1_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_CliffAttackQuick1_SetStatus(GObj* fighter_gobj);
-void ftCommon_CliffAttackSlow1_SetStatus(GObj* fighter_gobj);
-void ftCommon_CliffAttackQuick2_SetStatus(GObj* fighter_gobj);
-void ftCommon_CliffAttackSlow2_SetStatus(GObj* fighter_gobj);
+sb32 ftCommonCliffAttackCheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonCliffAttackQuick1ProcUpdate(GObj* fighter_gobj);
+void ftCommonCliffAttackSlow1ProcUpdate(GObj* fighter_gobj);
+void ftCommonCliffAttackQuick1SetStatus(GObj* fighter_gobj);
+void ftCommonCliffAttackSlow1SetStatus(GObj* fighter_gobj);
+void ftCommonCliffAttackQuick2SetStatus(GObj* fighter_gobj);
+void ftCommonCliffAttackSlow2SetStatus(GObj* fighter_gobj);
 
 // CliffEscape
 sb32 ftCommonCliffEscapeCheckInterruptCommon(GObj* fighter_gobj);

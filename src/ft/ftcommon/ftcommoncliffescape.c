@@ -39,7 +39,7 @@ void ftCommonCliffEscapeQuick1SetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CliffEscapeQuick1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-    fp->x190_flag_b7 = TRUE;
+    fp->is_cliff_hold = TRUE;
 
     fp->proc_damage = ftCommon_CliffCommon_ProcDamage;
 }
@@ -51,7 +51,7 @@ void ftCommonCliffEscapeSlow1SetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CliffEscapeSlow1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
-    fp->x190_flag_b7 = TRUE;
+    fp->is_cliff_hold = TRUE;
 
     fp->proc_damage = ftCommon_CliffCommon_ProcDamage;
 }

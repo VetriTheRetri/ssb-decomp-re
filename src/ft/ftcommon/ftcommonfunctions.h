@@ -394,35 +394,35 @@ void ftCommon_ItemShoot_SetStatus(GObj* fighter_gobj);
 void ftCommon_ItemShootAir_SetStatus(GObj* fighter_gobj);
 
 // HammerWalk
-void ftCommon_HammerWalk_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_HammerWalk_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_HammerWalk_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonHammerWalkProcInterrupt(GObj* fighter_gobj);
+void ftCommonHammerWalkSetStatus(GObj* fighter_gobj);
+sb32 ftCommonHammerWalkCheckInterruptCommon(GObj* fighter_gobj);
 
 // HammerTurn
-void ftCommon_HammerTurn_UpdateModelYaw(GObj* fighter_gobj);
-void ftCommon_HammerTurn_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_HammerTurn_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_HammerTurn_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_HammerTurn_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonHammerTurnUpdateModelYaw(GObj* fighter_gobj);
+void ftCommonHammerTurnProcUpdate(GObj* fighter_gobj);
+void ftCommonHammerTurnProcInterrupt(GObj* fighter_gobj);
+void ftCommonHammerTurnSetStatus(GObj* fighter_gobj);
+sb32 ftCommonHammerTurnCheckInterruptCommon(GObj* fighter_gobj);
 
 // HammerKneeBend
-void ftCommon_HammerKneeBend_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_HammerKneeBend_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_HammerKneeBend_SetStatus(GObj* fighter_gobj, s32 input_source);
-sb32 ftCommon_HammerKneeBend_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonHammerKneeBendProcUpdate(GObj* fighter_gobj);
+void ftCommonHammerKneeBendProcInterrupt(GObj* fighter_gobj);
+void ftCommonHammerKneeBendSetStatus(GObj* fighter_gobj, s32 input_source);
+sb32 ftCommonHammerKneeBendCheckInterruptCommon(GObj* fighter_gobj);
 
 // HammerFall
-void ftCommon_HammerFall_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_HammerFall_ProcMap(GObj* fighter_gobj);
-void ftCommon_HammerFall_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_HammerFall_CheckInterruptDamageFall(GObj* fighter_gobj);
-void ftCommon_HammerFall_SetStatusJump(GObj* fighter_gobj);
-void ftCommon_HammerFall_SetStatusPass(GObj* fighter_gobj);
-sb32 ftCommon_HammerFall_CheckInterruptCommon(GObj*);
+void ftCommonHammerFallProcInterrupt(GObj* fighter_gobj);
+void ftCommonHammerFallProcMap(GObj* fighter_gobj);
+void ftCommonHammerFallSetStatus(GObj* fighter_gobj);
+sb32 ftCommonHammerFallCheckInterruptDamageFall(GObj* fighter_gobj);
+void ftCommonHammerFallSetStatusJump(GObj* fighter_gobj);
+void ftCommonHammerFallSetStatusPass(GObj* fighter_gobj);
+sb32 ftCommonHammerFallCheckInterruptCommon(GObj*);
 
 // HammerLanding
-void ftCommon_HammerLanding_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_HammerLanding_SetStatus(GObj* fighter_gobj);
+void ftCommonHammerLandingProcUpdate(GObj* fighter_gobj);
+void ftCommonHammerLandingSetStatus(GObj* fighter_gobj);
 
 // GuardOn / Guard
 void ftCommonGuardCheckScheduleRelease(ftStruct* fp);

@@ -159,7 +159,7 @@ void itGShellGSpinUpdateEffect(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f pos;
 
-    if (ip->item_vars.shell.dust_gfx_int == 0)
+    if (ip->item_vars.shell.dust_effect_int == 0)
     {
         pos = dobj->translate.vec.f;
 
@@ -167,9 +167,9 @@ void itGShellGSpinUpdateEffect(GObj *item_gobj)
 
         efParticle_DustLight_MakeEffect(&pos, ip->lr, 1.0F);
 
-        ip->item_vars.shell.dust_gfx_int = ITGSHELL_GFX_SPAWN_INT;
+        ip->item_vars.shell.dust_effect_int = ITGSHELL_EFFECT_SPAWN_INT;
     }
-    ip->item_vars.shell.dust_gfx_int--;
+    ip->item_vars.shell.dust_effect_int--;
 }
 
 // 0x80178670
@@ -493,7 +493,7 @@ void itGShellGSpinInitItemVars(GObj *item_gobj)
     }
     else ip->lr = LR_Right;
 
-    ip->item_vars.shell.dust_gfx_int = ITGSHELL_GFX_SPAWN_INT;
+    ip->item_vars.shell.dust_effect_int = ITGSHELL_EFFECT_SPAWN_INT;
     ip->item_vars.shell.damage_all_delay = ITGSHELL_DAMAGE_ALL_WAIT;
 
     itGShellGSpinAddAnim(item_gobj);

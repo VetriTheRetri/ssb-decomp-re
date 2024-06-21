@@ -14,17 +14,17 @@ void ftMarioSpecialLwProcUpdate(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag3 != 0)
     {
-        fp->status_vars.mario.speciallw.dust_gfx_int--;
+        fp->status_vars.mario.speciallw.dust_effect_int--;
 
-        if (fp->status_vars.mario.speciallw.dust_gfx_int == 4)
+        if (fp->status_vars.mario.speciallw.dust_effect_int == 4)
         {
             ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, ftParts_Joint_TopN, NULL, NULL, -fp->lr, FALSE, FALSE); // Spawn GFX
         }
-        else if (fp->status_vars.mario.speciallw.dust_gfx_int == 0)
+        else if (fp->status_vars.mario.speciallw.dust_effect_int == 0)
         {
             ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, ftParts_Joint_TopN, NULL, NULL, fp->lr, FALSE, FALSE); // Spawn GFX 
 
-            fp->status_vars.mario.speciallw.dust_gfx_int = 8;
+            fp->status_vars.mario.speciallw.dust_effect_int = 8;
         }
     }
     ftStatus_IfAnimEnd_SetStatusWait(fighter_gobj);
@@ -141,7 +141,7 @@ void ftMarioSpecialLwInitStatusVars(GObj *fighter_gobj)
     fp->command_vars.flags.flag1 = 0;
     fp->command_vars.flags.flag2 = 0;
 
-    fp->status_vars.mario.speciallw.dust_gfx_int = 5;
+    fp->status_vars.mario.speciallw.dust_effect_int = 5;
     fp->status_vars.mario.speciallw.friction = 0.0F;
 }
 

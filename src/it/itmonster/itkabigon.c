@@ -202,7 +202,7 @@ sb32 itKabigonNJumpProcUpdate(GObj *item_gobj)
             itKabigonNFallSetStatus(item_gobj);
         }
     }
-    if (ip->item_vars.kabigon.dust_gfx_int == 0)
+    if (ip->item_vars.kabigon.dust_effect_int == 0)
     {
         Vec3f pos = dobj->translate.vec.f;
 
@@ -211,9 +211,9 @@ sb32 itKabigonNJumpProcUpdate(GObj *item_gobj)
 
         efParticle_DustExpandLarge_MakeEffect(&pos);
 
-        ip->item_vars.kabigon.dust_gfx_int = ITKABIGON_GFX_SPAWN_INT;
+        ip->item_vars.kabigon.dust_effect_int = ITKABIGON_EFFECT_SPAWN_INT;
     }
-    ip->item_vars.kabigon.dust_gfx_int--;
+    ip->item_vars.kabigon.dust_effect_int--;
 
     return FALSE;
 }
@@ -260,7 +260,7 @@ void itKabigonNJumpInitItemVars(GObj *item_gobj)
 
     ip->it_multi = ITKABIGON_DROP_WAIT;
 
-    ip->item_vars.kabigon.dust_gfx_int = ITKABIGON_GFX_SPAWN_INT;
+    ip->item_vars.kabigon.dust_effect_int = ITKABIGON_EFFECT_SPAWN_INT;
 
     ip->phys_info.vel_air.y = ITKABIGON_JUMP_VEL_Y;
 }

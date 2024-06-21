@@ -208,7 +208,7 @@
 #define FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Y 60.0F
 #define FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Z 180.0F
 
-#define FTCOMMON_FIREFLOWERSHOOT_GFX_SPAWN_INT 12
+#define FTCOMMON_FIREFLOWERSHOOT_EFFECT_SPAWN_INT 12
 #define FTCOMMON_FIREFLOWERSHOOT_RELEASE_LAG 20
 #define FTCOMMON_FIREFLOWERSHOOT_AMMO_INDEX_MAX 8
 #define FTCOMMON_FIREFLOWERSHOOT_AMMO_INDEX_LOOP 5
@@ -414,7 +414,7 @@ typedef struct ftCommon_JumpAerialStatusVars
 typedef struct ftCommon_DamageStatusVars
 {
 	s32 hitstun_timer;
-	s32 dust_gfx_int;
+	s32 dust_effect_int;
 	f32 publicity_knockback;
 	u16 coll_mask_curr;
 	u16 coll_mask_prev;
@@ -540,7 +540,7 @@ typedef struct ftCommon_FireFlowerStatusVars
 {
 	s32 flame_vel_index;
 	s32 ammo_sub;
-	s32 gfx_spawn_int;
+	s32 effect_make_int;
 	s32 ammo_fire_count;
 	sb32 is_release;
 	s32 release_lag;
@@ -658,7 +658,7 @@ typedef struct ftCommon_ThrowFFStatusVars
 typedef struct ftCommon_ThrowFDamaageStatusVars
 {
 	s32 hitstun_timer;
-	s32 dust_gfx_int;
+	s32 dust_effect_int;
 	f32 publicity_knockback;
 	u16 coll_mask;
 	u8 filler_0xE[0x28 - 0xE];

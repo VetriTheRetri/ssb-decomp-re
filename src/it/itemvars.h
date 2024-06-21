@@ -98,7 +98,7 @@
 
 #define ITGSHELL_LIFETIME 240
 #define ITGSHELL_HEALTH_MAX 4		// Set every time shell hits a target
-#define ITGSHELL_GFX_SPAWN_INT 8	// Interval between dust GFX
+#define ITGSHELL_EFFECT_SPAWN_INT 8	// Interval between dust GFX
 #define ITGSHELL_DAMAGE_ALL_WAIT 32 // Wait this many frames before shell can damage its owner and teammates
 #define ITGSHELL_CLAMP_VEL_X 90.0F	// Limit maximum X-velocity to this value
 #define ITGSHELL_REBOUND_MUL_X                                                                                         \
@@ -139,7 +139,7 @@
 #define ITRSHELL_INTERACT_MAX 24
 #define ITRSHELL_LIFETIME 480
 #define ITRSHELL_HEALTH_MAX 4
-#define ITRSHELL_GFX_SPAWN_INT 8
+#define ITRSHELL_EFFECT_SPAWN_INT 8
 #define ITRSHELL_DAMAGE_ALL_WAIT 16
 #define ITRSHELL_CLAMP_VEL_X 70.0F
 #define ITRSHELL_CLAMP_AIR_X                                                                                           \
@@ -255,7 +255,7 @@
 												 // ground
 #define WPIWARK_ROCK_COLLIDE_ADD_VEL_Y (-150.0F) // Added when rock collides with ground
 
-#define ITKABIGON_GFX_SPAWN_INT 4
+#define ITKABIGON_EFFECT_SPAWN_INT 4
 #define ITKABIGON_DROP_WAIT                                                                                            \
 	60 // Wait this many frames before dropping after reaching the top of the
 	   // screen
@@ -281,7 +281,7 @@
 #define ITTOSAKINTO_T_VEL 90.0F
 
 #define ITMEW_LIFETIME 480
-#define ITMEW_GFX_SPAWN_INT 3
+#define ITMEW_EFFECT_SPAWN_INT 3
 #define ITMEW_START_VEL_X 8.0F	 // Mew's initial X-velocity
 #define ITMEW_START_VEL_Y -20.0F // Mew's initial Y-velocity
 #define ITMEW_FLY_ADD_VEL_Y 0.8F // Added to Mew's Y-velocity every frame
@@ -482,7 +482,7 @@ typedef struct itCommon_ItemVars_Shell
 {
 	u8 damage_all_delay; // Shell can hit owner and teammates once this frame
 						 // timer reaches -1
-	u8 dust_gfx_int;	 // Delay between dust GFX
+	u8 dust_effect_int;	 // Delay between dust GFX
 	u8 health;			 // Appears to determine whether Shell will despawn after hittin
 						 // a target, shell can have up to 4 HP
 	ub8 is_damage;		 // Shell can damage players
@@ -548,7 +548,7 @@ typedef struct itMonster_ItemVars_Iwark
 
 typedef struct itMonster_ItemVars_Kabigon
 {
-	s32 dust_gfx_int;
+	s32 dust_effect_int;
 	s32 rumble_wait;
 
 } itMonster_ItemVars_Kabigon;

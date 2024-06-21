@@ -239,7 +239,7 @@ void itRShellGSpinUpdateGFX(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if (ip->item_vars.shell.dust_gfx_int == 0)
+    if (ip->item_vars.shell.dust_effect_int == 0)
     {
         Vec3f pos = dobj->translate.vec.f;
 
@@ -247,9 +247,9 @@ void itRShellGSpinUpdateGFX(GObj *item_gobj)
 
         efParticle_DustLight_MakeEffect(&pos, ip->lr, 1.0F);
 
-        ip->item_vars.shell.dust_gfx_int = ITRSHELL_GFX_SPAWN_INT;
+        ip->item_vars.shell.dust_effect_int = ITRSHELL_EFFECT_SPAWN_INT;
     }
-    ip->item_vars.shell.dust_gfx_int--;
+    ip->item_vars.shell.dust_effect_int--;
 }
 
 // 0x8017A6A0
@@ -634,7 +634,7 @@ void itRShellGSpinInitItemVars(GObj *item_gobj)
 
         ip->item_vars.shell.interact = ITRSHELL_INTERACT_MAX;
     }
-    ip->item_vars.shell.dust_gfx_int = ITRSHELL_GFX_SPAWN_INT;
+    ip->item_vars.shell.dust_effect_int = ITRSHELL_EFFECT_SPAWN_INT;
 
     itRShellGSpinAddAnim(item_gobj);
     func_800269C0_275C0(alSound_SFX_BombHeiWalkStart);

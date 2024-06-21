@@ -29,29 +29,29 @@ void ftCommonLGunShootProcAccessory(GObj *fighter_gobj)
         if (ip->it_multi != 0)
         {
             // 0x80188660
-            Vec3f spawn_ammo_offset = { FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_X, FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Y, FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Z };
-            Vec3f spawn_gfx_offset;
+            Vec3f make_ammo_offset = { 0.0F, 60.0F, 180.0F };
+            Vec3f make_effect_offset;
 
             size_mul = 1.0F / fp->attributes->size_mul;
 
-            spawn_ammo_offset.x *= size_mul;
-            spawn_ammo_offset.y *= size_mul;
-            spawn_ammo_offset.z *= size_mul;
+            make_ammo_offset.x *= size_mul;
+            make_ammo_offset.y *= size_mul;
+            make_ammo_offset.z *= size_mul;
 
-            ftParts_GetDObjWorldPosition(fp->joint[fp->attributes->joint_itemhold_light], &spawn_ammo_offset);
-            itLGunMakeAmmo(fighter_gobj, &spawn_ammo_offset);
+            ftParts_GetDObjWorldPosition(fp->joint[fp->attributes->joint_itemhold_light], &make_ammo_offset);
+            itLGunMakeAmmo(fighter_gobj, &make_ammo_offset);
 
-            spawn_gfx_offset.x = 0.0F;
-            spawn_gfx_offset.y = FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Y;
-            spawn_gfx_offset.z = FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Z;
+            make_effect_offset.x = 0.0F;
+            make_effect_offset.y = 60.0F;
+            make_effect_offset.z = 180.0F;
 
-            ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_SparkleWhiteScale, fp->attributes->joint_itemhold_light, &spawn_gfx_offset, NULL, fp->lr, TRUE, FALSE);
+            ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_SparkleWhiteScale, fp->attributes->joint_itemhold_light, &make_effect_offset, NULL, fp->lr, TRUE, FALSE);
 
-            spawn_gfx_offset.x = 0.0F;
-            spawn_gfx_offset.y = 0.0F;
-            spawn_gfx_offset.z = -FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Z;
+            make_effect_offset.x = 0.0F;
+            make_effect_offset.y = 0.0F;
+            make_effect_offset.z = -180.0F;
 
-            ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustDashSmall, ftParts_Joint_TopN, &spawn_gfx_offset, NULL, fp->lr, FALSE, FALSE);
+            ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustDashSmall, ftParts_Joint_TopN, &make_effect_offset, NULL, fp->lr, FALSE, FALSE);
 
             func_800269C0_275C0(alSound_SFX_LGunShoot);
             ftMainMakeRumble(fp, 9, 0);
@@ -59,9 +59,9 @@ void ftCommonLGunShootProcAccessory(GObj *fighter_gobj)
         else
         {
             // 0x8018866C
-            Vec3f dust_gfx_offset = { FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_X, FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Y, FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Z };
+            Vec3f dust_effect_offset = { FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_X, FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Y, FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Z };
 
-            ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, fp->attributes->joint_itemhold_light, &dust_gfx_offset, NULL, -fp->lr, TRUE, FALSE);
+            ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, fp->attributes->joint_itemhold_light, &dust_effect_offset, NULL, -fp->lr, TRUE, FALSE);
             func_800269C0_275C0(alSound_SFX_LGunEmpty);
         }
         fp->command_vars.flags.flag0 = 0;
@@ -115,7 +115,7 @@ void ftCommonFireFlowerShootUpdateAmmoStats(ftStruct *fp, s32 ammo_sub)
     itStruct *ip = itGetStruct(fp->item_hold);
 
     // 0x80188678
-    Vec3f flame_spawn_offset = { FTCOMMON_FIREFLOWERSHOOT_AMMO_SPAWN_OFF_X, FTCOMMON_FIREFLOWERSHOOT_AMMO_SPAWN_OFF_Y, FTCOMMON_FIREFLOWERSHOOT_AMMO_SPAWN_OFF_Z };
+    Vec3f make_flame_offset = { 60.0F, 100.0F, 0.0F };
     
     f32 size_mul;
     s32 flame_vel_index;
@@ -124,11 +124,11 @@ void ftCommonFireFlowerShootUpdateAmmoStats(ftStruct *fp, s32 ammo_sub)
     {
         size_mul = 1.0F / fp->attributes->size_mul;
 
-        flame_spawn_offset.x *= size_mul;
-        flame_spawn_offset.y *= size_mul;
-        flame_spawn_offset.z *= size_mul;
+        make_flame_offset.x *= size_mul;
+        make_flame_offset.y *= size_mul;
+        make_flame_offset.z *= size_mul;
 
-        ftParts_GetDObjWorldPosition(fp->joint[fp->attributes->joint_itemhold_light], &flame_spawn_offset);
+        ftParts_GetDObjWorldPosition(fp->joint[fp->attributes->joint_itemhold_light], &make_flame_offset);
 
         if (fp->status_vars.common.fireflower.flame_vel_index >= FTCOMMON_FIREFLOWERSHOOT_AMMO_INDEX_LOOP)
         {
@@ -136,7 +136,7 @@ void ftCommonFireFlowerShootUpdateAmmoStats(ftStruct *fp, s32 ammo_sub)
         }
         else flame_vel_index = fp->status_vars.common.fireflower.flame_vel_index;
 
-        itFFlowerShootFlame(fp->fighter_gobj, &flame_spawn_offset, flame_vel_index, ammo_sub);
+        itFFlowerShootFlame(fp->fighter_gobj, &make_flame_offset, flame_vel_index, ammo_sub);
         ftMainMakeRumble(fp, 6, 0);
     }
     fp->status_vars.common.fireflower.ammo_fire_count++;
@@ -184,26 +184,26 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
 
             ammo_sub = (fp->status_vars.common.fireflower.ammo_fire_count == 0) ? 2 : 1;
 
-            fp->status_vars.common.fireflower.gfx_spawn_int--;
+            fp->status_vars.common.fireflower.effect_make_int--;
 
-            if (fp->status_vars.common.fireflower.gfx_spawn_int == 0)
+            if (fp->status_vars.common.fireflower.effect_make_int == 0)
             {
-                fp->status_vars.common.fireflower.gfx_spawn_int = FTCOMMON_FIREFLOWERSHOOT_GFX_SPAWN_INT;
+                fp->status_vars.common.fireflower.effect_make_int = FTCOMMON_FIREFLOWERSHOOT_EFFECT_SPAWN_INT;
 
                 if (ip->it_multi < ammo_sub)
                 {
                     // 0x80188684
-                    Vec3f gfx_noammo_offset = { 60.0F, 100.0F, 0.0F };
+                    Vec3f effect_noammo_offset = { 60.0F, 100.0F, 0.0F };
 
-                    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, fp->attributes->joint_itemhold_light, &gfx_noammo_offset, NULL, -fp->lr, TRUE, FALSE);
+                    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, fp->attributes->joint_itemhold_light, &effect_noammo_offset, NULL, -fp->lr, TRUE, FALSE);
                     func_800269C0_275C0(alSound_SFX_FireFlowerBurn);
                 }
                 else
                 {
                     // 0x80188690
-                    Vec3f gfx_haveammo_offset = { 0.0F, 0.0F, -180.0F };
+                    Vec3f effect_haveammo_offset = { 0.0F, 0.0F, -180.0F };
 
-                    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, ftParts_Joint_TopN, &gfx_haveammo_offset, NULL, fp->lr, FALSE, FALSE);
+                    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, ftParts_Joint_TopN, &effect_haveammo_offset, NULL, fp->lr, FALSE, FALSE);
                     func_800269C0_275C0(alSound_SFX_BurnE);
                 }
             }
@@ -220,16 +220,16 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
                 if (ip->it_multi >= ammo_sub)
                 {
                     // 0x8018869C
-                    Vec3f gfx_spark_offset = { 0.0F, 80.0F, 0.0F };
+                    Vec3f effect_spark_offset = { 0.0F, 80.0F, 0.0F };
 
                     // 0x801886A8
-                    Vec3f gfx_spark_scatter = { 90.0F, 90.0F, 90.0F };
+                    Vec3f effect_spark_scatter = { 90.0F, 90.0F, 90.0F };
 
                     // 0x801886B4
-                    Vec3f gfx_dust_offset = { 0.0F, 0.0F, -180.0F };
+                    Vec3f effect_dust_offset = { 0.0F, 0.0F, -180.0F };
 
-                    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_SparkleWhiteScale, fp->attributes->joint_itemhold_light, &gfx_spark_offset, &gfx_spark_scatter, fp->lr, TRUE, FALSE);
-                    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustDashSmall, ftParts_Joint_TopN, &gfx_dust_offset, NULL, fp->lr, FALSE, FALSE);
+                    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_SparkleWhiteScale, fp->attributes->joint_itemhold_light, &effect_spark_offset, &effect_spark_scatter, fp->lr, TRUE, FALSE);
+                    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustDashSmall, ftParts_Joint_TopN, &effect_dust_offset, NULL, fp->lr, FALSE, FALSE);
                 }
                 fp->command_vars.flags.flag0 = 2;
 
@@ -285,7 +285,7 @@ void ftCommonFireFlowerShootInitStatusVars(ftStruct *fp)
 {
     fp->status_vars.common.fireflower.flame_vel_index = 0;
     fp->status_vars.common.fireflower.ammo_sub = 1;
-    fp->status_vars.common.fireflower.gfx_spawn_int = 1;
+    fp->status_vars.common.fireflower.effect_make_int = 1;
     fp->status_vars.common.fireflower.ammo_fire_count = 0;
     fp->status_vars.common.fireflower.is_release = FALSE;
     fp->status_vars.common.fireflower.release_lag = 0;

@@ -86,7 +86,7 @@ sb32 itMewNFlyProcUpdate(GObj *item_gobj)
     }
     if (ip->item_vars.mew.esper_gfx_int == 0)
     {
-        ip->item_vars.mew.esper_gfx_int = ITMEW_GFX_SPAWN_INT;
+        ip->item_vars.mew.esper_gfx_int = ITMEW_EFFECT_SPAWN_INT;
 
         efParticle_HealSparkles_MakeEffect(&pos);
     }

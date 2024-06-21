@@ -376,20 +376,20 @@ void ftCommon_StarRodSwing_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_ItemSwing_SetStatus(GObj* fighter_gobj, s32 swing_type);
 
 // ItemShoot
-void ftCommon_LGunShoot_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_LGunShoot_ProcAccessory(GObj* fighter_gobj);
-void ftCommon_LGunShoot_ProcMap(GObj* fighter_gobj);
-void ftCommon_LGunShootAir_ProcMap(GObj* fighter_gobj);
-void ftCommon_LGunShootAir_SwitchStatusGround(GObj* fighter_gobj);
-void ftCommon_LGunShoot_SwitchStatusAir(GObj* fighter_gobj);
-void ftCommon_FireFlowerShoot_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_FireFlowerShoot_UpdateAmmoStats(ftStruct* fp, s32 ammo_sub);
-void ftCommon_FireFlowerShoot_ProcAccessory(GObj* fighter_gobj);
-void ftCommon_FireFlowerShoot_ProcMap(GObj* fighter_gobj);
-void ftCommon_FireFlowerShootAir_ProcMap(GObj* fighter_gobj);
-void ftCommon_FireFlowerShootAir_SwitchStatusGround(GObj* fighter_gobj);
-void ftCommon_FireFlowerShoot_SwitchStatusAir(GObj* fighter_gobj);
-void ftCommon_FireFlowerShoot_InitStatusVars(ftStruct* fp);
+void ftCommonLGunShootProcUpdate(GObj* fighter_gobj);
+void ftCommonLGunShootProcAccessory(GObj* fighter_gobj);
+void ftCommonLGunShootProcMap(GObj* fighter_gobj);
+void ftCommonLGunShootAirProcMap(GObj* fighter_gobj);
+void ftCommonLGunShootAirSwitchStatusGround(GObj* fighter_gobj);
+void ftCommonLGunShootSwitchStatusAir(GObj* fighter_gobj);
+void ftCommonFireFlowerShootProcUpdate(GObj* fighter_gobj);
+void ftCommonFireFlowerShootUpdateAmmoStats(ftStruct* fp, s32 ammo_sub);
+void ftCommonFireFlowerShootProcAccessory(GObj* fighter_gobj);
+void ftCommonFireFlowerShootProcMap(GObj* fighter_gobj);
+void ftCommonFireFlowerShootAirProcMap(GObj* fighter_gobj);
+void ftCommonFireFlowerShootAirSwitchStatusGround(GObj* fighter_gobj);
+void ftCommonFireFlowerShootSwitchStatusAir(GObj* fighter_gobj);
+void ftCommonFireFlowerShootInitStatusVars(ftStruct* fp);
 void ftCommon_ItemShoot_SetStatus(GObj* fighter_gobj);
 void ftCommon_ItemShootAir_SetStatus(GObj* fighter_gobj);
 

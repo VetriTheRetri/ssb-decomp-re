@@ -3,6 +3,8 @@
 *.ld
 *.z64
 *.o
+*.credits.encoded
+*.credits.metadata
 assets
 __pycache__
 bin

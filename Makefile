@@ -52,6 +52,7 @@ NO_COL  := \033[0m
 RED     := \033[0;31m
 GREEN   := \033[0;32m
 BLUE    := \033[0;34m
+PURPLE  := \033[0;35m
 YELLOW  := \033[0;33m
 BLINK   := \033[33;5m
 endif
@@ -310,6 +311,20 @@ $(BUILD_DIR)/%.o: %.c
 	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $< 2>&1 | $(PYTHON) $(TOOLS)/colorizeIDO.py
 # patch object files compiled with mips3 to be able to link them
 	$(V)$(PYTHON) $(TOOLS)/patchMips3Objects.py $@
+
+src/ovl59.c: src/credits/staff.credits.encoded src/credits/titles.credits.encoded src/credits/info.credits.encoded src/credits/companies.credits.encoded
+src/credits/staff.credits.encoded: src/credits/staff.credits.txt
+	@$(PRINT) "$(GREEN)Creating credit text data for: $(PURPLE)$<$(NO_COL)\n"
+	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $<
+src/credits/titles.credits.encoded: src/credits/titles.credits.txt
+	@$(PRINT) "$(GREEN)Creating credit text data for: $(PURPLE)$<$(NO_COL)\n"
+	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $<
+src/credits/info.credits.encoded: src/credits/info.credits.txt
+	@$(PRINT) "$(GREEN)Creating credit text data for: $(PURPLE)$<$(NO_COL)\n"
+	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $< -m
+src/credits/companies.credits.encoded: src/credits/companies.credits.txt
+	@$(PRINT) "$(GREEN)Creating credit text data for: $(PURPLE)$<$(NO_COL)\n"
+	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $< -3f
 
 #Bins
 $(BUILD_DIR)/%.o: %.bin

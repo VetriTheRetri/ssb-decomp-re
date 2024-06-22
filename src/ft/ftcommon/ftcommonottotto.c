@@ -50,7 +50,7 @@ void ftCommonOttottoProcInterrupt(GObj *fighter_gobj)
     {
         if ((fp->input.pl.stick_range.x * fp->lr) >= FTCOMMON_OTTOTTO_WALK_STICK_RANGE_MIN)
         {
-            ftCommon_Walk_CheckInterruptCommon(fighter_gobj);
+            ftCommonWalkCheckInterruptCommon(fighter_gobj);
         }
     }
 }

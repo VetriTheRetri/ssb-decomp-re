@@ -27,7 +27,7 @@ void ftCommonHammerWalkSetStatus(GObj *fighter_gobj)
 // 0x80147A2C
 sb32 ftCommonHammerWalkCheckInterruptCommon(GObj *fighter_gobj)
 {
-    if (ftCommon_Walk_CheckInputSuccess(fighter_gobj) != FALSE)
+    if (ftCommonWalkCheckInputSuccess(fighter_gobj) != FALSE)
     {
         ftCommonHammerWalkSetStatus(fighter_gobj);
 

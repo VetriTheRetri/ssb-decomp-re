@@ -58,14 +58,14 @@ sb32 ftCommon_Wait_CheckInputSuccess(GObj* fighter_gobj);
 sb32 ftCommon_Wait_CheckInterruptCommon(GObj* fighter_gobj);
 
 // WalkSlow / WalkMiddle / WalkFast
-f32 ftCommon_Walk_GetWalkAnimSpeed(ftStruct* fp, s32 status_id);
-s32 ftCommon_Walk_GetWalkStatus(s8 stick_range_x);
-void ftCommon_Walk_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Walk_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_Walk_SetStatusParam(GObj* fighter_gobj, f32 anim_frame_begin);
-void ftCommon_Walk_SetStatusDefault(GObj* fighter_gobj);
-sb32 ftCommon_Walk_CheckInputSuccess(GObj* fighter_gobj);
-sb32 ftCommon_Walk_CheckInterruptCommon(GObj* fighter_gobj);
+f32 ftCommonWalkGetWalkAnimLength(ftStruct* fp, s32 status_id);
+s32 ftCommonWalkGetWalkStatus(s8 stick_range_x);
+void ftCommonWalkProcInterrupt(GObj* fighter_gobj);
+void ftCommonWalkProcPhysics(GObj* fighter_gobj);
+void ftCommonWalkSetStatusParam(GObj* fighter_gobj, f32 anim_frame_begin);
+void ftCommonWalkSetStatusDefault(GObj* fighter_gobj);
+sb32 ftCommonWalkCheckInputSuccess(GObj* fighter_gobj);
+sb32 ftCommonWalkCheckInterruptCommon(GObj* fighter_gobj);
 
 // Dash
 void ftCommonDashProcUpdate(GObj* fighter_gobj);

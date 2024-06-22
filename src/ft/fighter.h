@@ -58,7 +58,7 @@ extern ftData *dFTManagerDataFiles[/* */];
 	 || (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE)                                              \
 	 || (ftCommonSquatCheckInterruptCommon(fighter_gobj) != FALSE)                                                   \
 	 || (ftCommonTurnCheckInterruptCommon(fighter_gobj) != FALSE)                                                    \
-	 || (ftCommon_Walk_CheckInterruptCommon(fighter_gobj) != FALSE))
+	 || (ftCommonWalkCheckInterruptCommon(fighter_gobj) != FALSE))
 
 #define AttributesGetStruct(fp) ((ftAttributes*)fp->attributes)
 

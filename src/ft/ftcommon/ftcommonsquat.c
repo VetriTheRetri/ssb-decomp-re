@@ -227,7 +227,7 @@ void ftCommonSquatRvProcInterrupt(GObj *fighter_gobj)
 {
     if (!(ftCommonSquatRvCheckInterrupt(fighter_gobj)))
     {
-        ftCommon_Walk_CheckInterruptCommon(fighter_gobj);
+        ftCommonWalkCheckInterruptCommon(fighter_gobj);
     }
 }
 

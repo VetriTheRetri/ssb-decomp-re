@@ -57,7 +57,7 @@ void ftDonkeyThrowFJumpSetStatus(GObj *fighter_gobj)
     switch (fp->status_vars.common.throwf.input_source)
     {
     case FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON:
-        ftCommon_Jump_GetJumpForceButton(fp->input.pl.stick_range.x, &vel_x, &vel_y, fp->status_vars.common.throwf.is_short_hop);
+        ftCommonJumpGetJumpForceButton(fp->input.pl.stick_range.x, &vel_x, &vel_y, fp->status_vars.common.throwf.is_short_hop);
         break;
 
     case FTCOMMON_KNEEBEND_INPUT_TYPE_STICK:

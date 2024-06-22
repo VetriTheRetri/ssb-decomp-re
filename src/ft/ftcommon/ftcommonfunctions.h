@@ -117,9 +117,9 @@ sb32 ftCommon_KneeBend_CheckInterruptRun(GObj* fighter_gobj);
 sb32 ftCommon_GuardKneeBend_CheckInterruptGuard(GObj* fighter_gobj);
 
 // Jump
-void ftCommon_Jump_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Jump_GetJumpForceButton(s32 stick_range_x, s32* jump_vel_x, s32* jump_vel_y, sb32 is_short_hop);
-void ftCommon_Jump_SetStatus(GObj* fighter_gobj);
+void ftCommonJumpProcInterrupt(GObj* fighter_gobj);
+void ftCommonJumpGetJumpForceButton(s32 stick_range_x, s32* jump_vel_x, s32* jump_vel_y, sb32 is_short_hop);
+void ftCommonJumpSetStatus(GObj* fighter_gobj);
 
 // JumpAerial
 void ftCommonJumpAerialUpdateModelYaw(ftStruct* fp);

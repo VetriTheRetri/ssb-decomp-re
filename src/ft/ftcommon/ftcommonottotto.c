@@ -21,12 +21,12 @@
     (ftCommonAttack1CheckInterruptCommon(fighter_gobj) != FALSE)    ||  \
     (ftCommonGuardOnCheckInterruptCommon(fighter_gobj) != FALSE)    ||  \
     (ftCommonAppealCheckInterruptCommon(fighter_gobj) != FALSE)     ||  \
-    (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) != FALSE) ||  \
-    (ftCommonDashCheckInterruptCommon(fighter_gobj) != FALSE) ||  \
-    (ftCommonPassCheckInterruptCommon(fighter_gobj) != FALSE) ||  \
+    (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) != FALSE)   ||  \
+    (ftCommonDashCheckInterruptCommon(fighter_gobj) != FALSE)       ||  \
+    (ftCommonPassCheckInterruptCommon(fighter_gobj) != FALSE)       ||  \
     (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE) ||  \
     (ftCommonSquatCheckInterruptCommon(fighter_gobj) != FALSE)      ||  \
-    (ftCommonTurnCheckInterruptCommon(fighter_gobj) != FALSE)     \
+    (ftCommonTurnCheckInterruptCommon(fighter_gobj) != FALSE)           \
 )
 
 // // // // // // // // // // // //
@@ -82,7 +82,7 @@ void ftCommonOttottoProcMap(GObj *fighter_gobj)
 
         if (dist_x > FTCOMMON_OTTOTTO_WALK_DIST_X_MIN)
         {
-            ftCommon_Wait_SetStatus(fighter_gobj);
+            ftCommonWaitSetStatus(fighter_gobj);
         }
     }
 }

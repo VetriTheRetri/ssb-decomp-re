@@ -23,7 +23,7 @@ void ftCommonEscapeProcUpdate(GObj *fighter_gobj)
 
         if ((fp->ft_kind != Ft_Kind_Yoshi) && (fp->ft_kind != Ft_Kind_PolyYoshi) || (ftCommonGuardCheckInterruptEscape(fighter_gobj) == FALSE))
         {
-            ftCommon_Wait_SetStatus(fighter_gobj);
+            ftCommonWaitSetStatus(fighter_gobj);
         }
     }
 }

@@ -137,7 +137,7 @@ void ftKirbyCopySamusSpecialNLoopProcUpdate(GObj *fighter_gobj)
             {
                 ftColor_CheckSetColAnimIndex(fighter_gobj, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_ID, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_LENGTH);
                 ftKirbyCopySamusSpecialNDestroyChargeShot(fp);
-                ftCommon_Wait_SetStatus(fighter_gobj);
+                ftCommonWaitSetStatus(fighter_gobj);
             }
 
             else if (fp->status_vars.kirby.copysamus_specialn.charge_gobj != NULL)
@@ -178,7 +178,7 @@ void ftKirbyCopySamusSpecialNLoopProcInterrupt(GObj *fighter_gobj)
     else if (fp->input.pl.button_tap & fp->input.button_mask_z)
     {
         ftKirbyCopySamusSpecialNDestroyChargeShot(fp);
-        ftCommon_Wait_SetStatus(fighter_gobj);
+        ftCommonWaitSetStatus(fighter_gobj);
     }
 }
 

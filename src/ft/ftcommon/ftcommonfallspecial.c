@@ -64,7 +64,7 @@ void ftCommonFallSpecialProcMap(GObj *fighter_gobj)
         {
             ftCommonLandingFallSpecialSetStatus(fighter_gobj, fp->status_vars.common.fallspecial.is_allow_interrupt, fp->status_vars.common.fallspecial.landing_lag);
         }
-        else ftCommon_Wait_SetStatus(fighter_gobj);
+        else ftCommonWaitSetStatus(fighter_gobj);
     }
 }
 

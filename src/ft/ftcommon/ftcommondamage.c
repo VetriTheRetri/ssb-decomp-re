@@ -185,7 +185,7 @@ void ftCommonDamageCommonProcInterrupt(GObj *fighter_gobj)
         {
             ftHammer_ProcInterrupt(fighter_gobj);
         }
-        else ftCommon_Wait_ProcInterrupt(fighter_gobj);
+        else ftCommonWaitProcInterrupt(fighter_gobj);
     }
 }
 

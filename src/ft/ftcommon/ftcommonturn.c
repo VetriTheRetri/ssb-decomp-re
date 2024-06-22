@@ -23,7 +23,7 @@ void ftCommonTurnProcUpdate(GObj *fighter_gobj)
     }
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        ftCommon_Wait_SetStatus(fighter_gobj);
+        ftCommonWaitSetStatus(fighter_gobj);
     }
 }
 

@@ -215,7 +215,7 @@ void ftLinkSpecialHiEndProcUpdate(GObj *fighter_gobj)
         {
             ftLinkSpecialHiDestroyWeapon(fp, wpGetStruct(fp->status_vars.link.specialhi.spin_attack_gobj));
         }
-        ftCommon_Wait_SetStatus(fighter_gobj);
+        ftCommonWaitSetStatus(fighter_gobj);
     }
 }
 

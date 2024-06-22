@@ -52,7 +52,7 @@ void ftDonkeyThrowFWaitSetStatus(GObj *fighter_gobj)
 // 0x8014D4EC
 sb32 ftDonkeyThrowFWaitCheckInterruptThrowFWalk(GObj *fighter_gobj)
 {
-    if (ftCommon_Wait_CheckInputSuccess(fighter_gobj) != FALSE)
+    if (ftCommonWaitCheckInputSuccess(fighter_gobj) != FALSE)
     {
         ftDonkeyThrowFWaitSetStatus(fighter_gobj);
 

@@ -94,7 +94,7 @@ void ftYoshiSpecialHiProcUpdate(GObj *fighter_gobj)
 {
     ftYoshiSpecialHiUpdateEggThrowForce(fighter_gobj);
     ftYoshiSpecialHiUpdateEggVars(fighter_gobj);
-    ftStatusSetOnAnimEnd(fighter_gobj, ftCommon_Wait_SetStatus);
+    ftStatusSetOnAnimEnd(fighter_gobj, ftCommonWaitSetStatus);
 }
 
 // 0x8015EB70

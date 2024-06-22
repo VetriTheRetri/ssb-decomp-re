@@ -69,7 +69,7 @@ void ftCommonGuardOffProcUpdate(GObj *fighter_gobj)
     }
     else if (fighter_gobj->anim_frame <= 0.0F)
     {
-        ftCommon_Wait_SetStatus(fighter_gobj);
+        ftCommonWaitSetStatus(fighter_gobj);
     }
     else ftCommonGuardUpdateJoints(fighter_gobj);
 }

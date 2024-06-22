@@ -15,7 +15,7 @@ void ftCommonDashProcUpdate(GObj *fighter_gobj)
     {
         fp->phys_info.vel_ground.x *= 0.75F;
 
-        ftCommon_Wait_SetStatus(fighter_gobj);
+        ftCommonWaitSetStatus(fighter_gobj);
     }
 }
 

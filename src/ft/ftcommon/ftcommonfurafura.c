@@ -24,7 +24,7 @@ void ftCommonFuraFuraProcUpdate(GObj *fighter_gobj)
 
     if (fp->breakout_wait <= 0)
     {
-        ftCommon_Wait_SetStatus(fighter_gobj);
+        ftCommonWaitSetStatus(fighter_gobj);
     }
 }
 

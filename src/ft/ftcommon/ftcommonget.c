@@ -173,7 +173,7 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
                 }
                 else ftCommonLiftWaitSetStatus(fighter_gobj);
             }
-            else ftCommon_Wait_SetStatus(fighter_gobj);
+            else ftCommonWaitSetStatus(fighter_gobj);
         }
         else
         {
@@ -195,7 +195,7 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
                     }
                 }
             }
-            ftCommon_Wait_SetStatus(fighter_gobj);
+            ftCommonWaitSetStatus(fighter_gobj);
         }
     }
 }

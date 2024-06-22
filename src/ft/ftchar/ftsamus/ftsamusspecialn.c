@@ -137,7 +137,7 @@ void ftSamusSpecialNLoopProcUpdate(GObj *fighter_gobj)
             {
                 ftColor_CheckSetColAnimIndex(fighter_gobj, FTSAMUS_CHARGE_COLANIM_ID, FTSAMUS_CHARGE_COLANIM_LENGTH);
                 ftSamusSpecialNDestroyChargeShot(fp);
-                ftCommon_Wait_SetStatus(fighter_gobj);
+                ftCommonWaitSetStatus(fighter_gobj);
             }
             else if (fp->status_vars.samus.specialn.charge_gobj != NULL)
             {
@@ -174,7 +174,7 @@ void ftSamusSpecialNLoopProcInterrupt(GObj *fighter_gobj)
     else if (fp->input.pl.button_tap & fp->input.button_mask_z)
     {
         ftSamusSpecialNDestroyChargeShot(fp);
-        ftCommon_Wait_SetStatus(fighter_gobj);
+        ftCommonWaitSetStatus(fighter_gobj);
     }
 }
 

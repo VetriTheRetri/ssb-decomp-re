@@ -117,7 +117,7 @@ void ftKirbySpecialHiLandingProcUpdate(GObj *fighter_gobj)
 
         wpKirbyCutterMakeWeapon(fighter_gobj, &pos);
     }
-    ftStatusSetOnAnimEnd(fighter_gobj, ftCommon_Wait_SetStatus);
+    ftStatusSetOnAnimEnd(fighter_gobj, ftCommonWaitSetStatus);
 }
 
 // 0x80160DF0

@@ -68,7 +68,7 @@ void ftCommonAttackAirProcMap(GObj *fighter_gobj)
         }
         else if (fp->phys_info.vel_air.y > FTCOMMON_ATTACKAIR_SKIPLANDING_VEL_Y_MAX)
         {
-            ftCommon_Wait_SetStatus(fighter_gobj);
+            ftCommonWaitSetStatus(fighter_gobj);
         }
         else ftCommonLandingSetStatus(fighter_gobj);
     }

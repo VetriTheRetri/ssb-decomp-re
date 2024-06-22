@@ -15,7 +15,7 @@ void ftCommonReboundProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.common.rebound.rebound_timer <= 0.0F)
     {
-        ftCommon_Wait_SetStatus(fighter_gobj);
+        ftCommonWaitSetStatus(fighter_gobj);
     }
 }
 

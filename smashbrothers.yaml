@@ -442,6 +442,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Common fighter move files
+      - [0x0B8AB0, c, ft/ftcommon/ftcommonwait]
       - [0x0B8D20, c, ft/ftcommon/ftcommonwalk]
       - [0x0B90D0, c, ft/ftcommon/ftcommonturn]
       - [0x0B9480, c, ft/ftcommon/ftcommondash]

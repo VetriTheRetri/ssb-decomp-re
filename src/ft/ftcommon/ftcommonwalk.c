@@ -24,7 +24,7 @@
     (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) != FALSE)   ||  \
     (ftCommonDashCheckInterruptCommon(fighter_gobj) != FALSE)       ||  \
     (ftCommonSquatCheckInterruptCommon(fighter_gobj) != FALSE)      ||  \
-    (ftCommon_Wait_CheckInterruptCommon(fighter_gobj) != FALSE)         \
+    (ftCommonWaitCheckInterruptCommon(fighter_gobj) != FALSE)           \
 )
 
 // // // // // // // // // // // //

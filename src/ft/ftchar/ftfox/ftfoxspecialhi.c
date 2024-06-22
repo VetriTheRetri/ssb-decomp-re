@@ -442,7 +442,7 @@ void ftFoxSpecialAirHiBoundProcUpdate(GObj* fighter_gobj)
         {
             ftCommonFallSpecialSetStatus(fighter_gobj, FTFOX_FIREFOX_AIR_DRIFT, FALSE, TRUE, FALSE, FTFOX_FIREFOX_LANDING_LAG, TRUE);
         }
-        else ftCommon_Wait_SetStatus(fighter_gobj);
+        else ftCommonWaitSetStatus(fighter_gobj);
     }
 }
 

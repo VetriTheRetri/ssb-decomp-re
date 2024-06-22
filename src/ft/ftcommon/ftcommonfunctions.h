@@ -52,10 +52,10 @@ void ftCommon_RebirthWait_ProcInterrupt(GObj* fighter_gobj);
 void ftCommon_RebirthWait_SetStatus(GObj* fighter_gobj);
 
 // Wait
-void ftCommon_Wait_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Wait_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_Wait_CheckInputSuccess(GObj* fighter_gobj);
-sb32 ftCommon_Wait_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonWaitProcInterrupt(GObj* fighter_gobj);
+void ftCommonWaitSetStatus(GObj* fighter_gobj);
+sb32 ftCommonWaitCheckInputSuccess(GObj* fighter_gobj);
+sb32 ftCommonWaitCheckInterruptCommon(GObj* fighter_gobj);
 
 // WalkSlow / WalkMiddle / WalkFast
 f32 ftCommonWalkGetWalkAnimLength(ftStruct* fp, s32 status_id);

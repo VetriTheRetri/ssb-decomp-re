@@ -52,7 +52,7 @@ void ftCommonCatchCaptureSetStatusRelease(GObj *fighter_gobj)
 
         if (catch_fp->ground_or_air == GA_Ground)
         {
-            ftCommon_Wait_SetStatus(catch_gobj);
+            ftCommonWaitSetStatus(catch_gobj);
         }
         else ftCommonFallSetStatus(catch_gobj);
 

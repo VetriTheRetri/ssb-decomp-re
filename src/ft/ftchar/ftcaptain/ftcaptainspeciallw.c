@@ -70,7 +70,7 @@ void ftCaptainSpecialLwDecideSetEndStatus(GObj *fighter_gobj)
 
     if (fp->ground_or_air == GA_Ground)
     {
-        ftCommon_Wait_SetStatus(fighter_gobj);
+        ftCommonWaitSetStatus(fighter_gobj);
     }
     else ftCommonFallSetStatus(fighter_gobj);
 }

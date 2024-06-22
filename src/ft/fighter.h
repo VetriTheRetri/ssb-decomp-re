@@ -22,14 +22,14 @@ extern ftData *dFTManagerDataFiles[/* */];
 
 #define ftGetStruct(fighter_gobj) ((ftStruct*)(fighter_gobj)->user_data.p)
 
-#define ftSetupDropItem(fp)                                                                                            \
-	{                                                                                                                  \
-		Vec3f vel;                                                                                                     \
-                                                                                                                       \
-		vel.x = vel.y = vel.z = 0.0F;                                                                                  \
-                                                                                                                       \
-		itMainSetFighterDrop((fp)->item_hold, &vel, 1.0F);                                                            \
-	}
+#define ftSetupDropItem(fp)                          	\
+{                                                     	\
+	Vec3f vel;                                        	\
+                                                        \
+	vel.x = vel.y = vel.z = 0.0F;                       \
+                                                        \
+	itMainSetFighterDrop((fp)->item_hold, &vel, 1.0F);	\
+}
 
 #define ftExplainCommandCast(input_seq, type) ((type*)(input_seq))
 
@@ -38,27 +38,29 @@ extern ftData *dFTManagerDataFiles[/* */];
 #define ftExplainGetCpStickRange(input_seq) (ftExplainCommandCast((input_seq), Vec2b))
 
 // Macro to check if a move has been interrupted by any standard action
-#define ftCheckInterruptAll(fighter_gobj)                                                                              \
-	((ftCommonSpecialNCheckInterruptCommon(fighter_gobj) != FALSE)                                                   \
-	 || (ftCommonSpecialHiCheckInterruptCommon(fighter_gobj) != FALSE)                                               \
-	 || (ftCommonSpecialLwCheckInterruptCommon(fighter_gobj) != FALSE)                                               \
-	 || (ftCommonCatchCheckInterruptCommon(fighter_gobj) != FALSE)                                                   \
-	 || (ftCommonAttackS4CheckInterruptCommon(fighter_gobj) != FALSE)                                                \
-	 || (ftCommonAttackHi4CheckInterruptCommon(fighter_gobj) != FALSE)                                               \
-	 || (ftCommon_AttackLw4_CheckInterruptCommon(fighter_gobj) != FALSE)                                               \
-	 || (ftCommonAttackS3CheckInterruptCommon(fighter_gobj) != FALSE)                                                \
-	 || (ftCommonAttackHi3CheckInterruptCommon(fighter_gobj) != FALSE)                                               \
-	 || (ftCommonAttackLw3CheckInterruptCommon(fighter_gobj) != FALSE)                                               \
-	 || (ftCommonAttack1CheckInterruptCommon(fighter_gobj) != FALSE)                                                 \
-	 || (ftCommonGuardOnCheckInterruptCommon(fighter_gobj) != FALSE)                                                 \
-	 || (ftCommonAppealCheckInterruptCommon(fighter_gobj) != FALSE)                                                  \
-	 || (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) != FALSE)                                                \
-	 || (ftCommonDashCheckInterruptCommon(fighter_gobj) != FALSE)                                                    \
-	 || (ftCommonPassCheckInterruptCommon(fighter_gobj) != FALSE)                                                    \
-	 || (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE)                                              \
-	 || (ftCommonSquatCheckInterruptCommon(fighter_gobj) != FALSE)                                                   \
-	 || (ftCommonTurnCheckInterruptCommon(fighter_gobj) != FALSE)                                                    \
-	 || (ftCommonWalkCheckInterruptCommon(fighter_gobj) != FALSE))
+#define ftCommonGroundCheckInterrupt(fighter_gobj)                    	\
+(																		\
+	(ftCommonSpecialNCheckInterruptCommon(fighter_gobj) != FALSE)  	|| 	\
+	(ftCommonSpecialHiCheckInterruptCommon(fighter_gobj) != FALSE) 	||  \
+	(ftCommonSpecialLwCheckInterruptCommon(fighter_gobj) != FALSE) 	||	\
+	(ftCommonCatchCheckInterruptCommon(fighter_gobj) != FALSE) 		||  \
+	(ftCommonAttackS4CheckInterruptCommon(fighter_gobj) != FALSE) 	|| 	\
+	(ftCommonAttackHi4CheckInterruptCommon(fighter_gobj) != FALSE) 	|| 	\
+	(ftCommonAttackLw4CheckInterruptCommon(fighter_gobj) != FALSE)	|| 	\
+	(ftCommonAttackS3CheckInterruptCommon(fighter_gobj) != FALSE) 	||  \
+	(ftCommonAttackHi3CheckInterruptCommon(fighter_gobj) != FALSE) 	||  \
+	(ftCommonAttackLw3CheckInterruptCommon(fighter_gobj) != FALSE) 	||  \
+	(ftCommonAttack1CheckInterruptCommon(fighter_gobj) != FALSE) 	|| 	\
+	(ftCommonGuardOnCheckInterruptCommon(fighter_gobj) != FALSE) 	|| 	\
+	(ftCommonAppealCheckInterruptCommon(fighter_gobj) != FALSE) 	|| 	\
+	(ftCommonKneeBendCheckInterruptCommon(fighter_gobj) != FALSE) 	|| 	\
+	(ftCommonDashCheckInterruptCommon(fighter_gobj) != FALSE) 		|| 	\
+	(ftCommonPassCheckInterruptCommon(fighter_gobj) != FALSE) 		|| 	\
+	(ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE) || 	\
+	(ftCommonSquatCheckInterruptCommon(fighter_gobj) != FALSE) 		|| 	\
+	(ftCommonTurnCheckInterruptCommon(fighter_gobj) != FALSE) 		|| 	\
+	(ftCommonWalkCheckInterruptCommon(fighter_gobj) != FALSE) 			\
+)
 
 #define AttributesGetStruct(fp) ((ftAttributes*)fp->attributes)
 

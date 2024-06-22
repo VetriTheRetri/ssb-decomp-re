@@ -21,9 +21,9 @@
     (ftCommonAttack1CheckInterruptCommon(fighter_gobj) != FALSE)    ||  \
     (ftCommonGuardOnCheckInterruptCommon(fighter_gobj) != FALSE)    ||  \
     (ftCommonAppealCheckInterruptCommon(fighter_gobj) != FALSE)     ||  \
-    (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) != FALSE) ||  \
-    (ftCommonPassCheckInterruptSquat(fighter_gobj) != FALSE) || \
-    (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE)    \
+    (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) != FALSE)   ||  \
+    (ftCommonPassCheckInterruptSquat(fighter_gobj) != FALSE)        ||  \
+    (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE)     \
 )
 
 #define ftCommonSquatWaitCheckInterrupt(fighter_gobj)                   \
@@ -41,11 +41,11 @@
     (ftCommonAttack1CheckInterruptCommon(fighter_gobj) != FALSE)    ||  \
     (ftCommonGuardOnCheckInterruptCommon(fighter_gobj) != FALSE)    ||  \
     (ftCommonAppealCheckInterruptCommon(fighter_gobj) != FALSE)     ||  \
-    (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) != FALSE)   || \
-    (ftCommonDashCheckInterruptCommon(fighter_gobj) != FALSE)       || \
-    (ftCommonPassCheckInterruptSquat(fighter_gobj) != FALSE)        || \
-    (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE) || \
-    (ftCommonSquatRvCheckInterruptSquatWait(fighter_gobj) != FALSE)    \
+    (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) != FALSE)   ||  \
+    (ftCommonDashCheckInterruptCommon(fighter_gobj) != FALSE)       ||  \
+    (ftCommonPassCheckInterruptSquat(fighter_gobj) != FALSE)        ||  \
+    (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE) ||  \
+    (ftCommonSquatRvCheckInterruptSquatWait(fighter_gobj) != FALSE)     \
 )
 
 #define ftCommonSquatRvCheckInterrupt(fighter_gobj)                     \
@@ -63,10 +63,10 @@
     (ftCommonAttack1CheckInterruptCommon(fighter_gobj) != FALSE)    ||  \
     (ftCommonGuardOnCheckInterruptCommon(fighter_gobj) != FALSE)    ||  \
     (ftCommonAppealCheckInterruptCommon(fighter_gobj) != FALSE)     ||  \
-    (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) != FALSE) ||  \
-    (ftCommonDashCheckInterruptCommon(fighter_gobj) != FALSE) ||     \
-    (ftCommonPassCheckInterruptCommon(fighter_gobj) != FALSE) ||     \
-    (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE)   \
+    (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) != FALSE)   ||  \
+    (ftCommonDashCheckInterruptCommon(fighter_gobj) != FALSE)       ||  \
+    (ftCommonPassCheckInterruptCommon(fighter_gobj) != FALSE)       ||  \
+    (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE)     \
 )
 
 // // // // // // // // // // // //

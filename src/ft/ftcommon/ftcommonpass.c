@@ -11,7 +11,7 @@ void ftCommonPassProcInterrupt(GObj *fighter_gobj)
 {
     if ((ftCommonSpecialAirCheckInterruptCommon(fighter_gobj) == FALSE) && (ftCommonAttackAirCheckInterruptCommon(fighter_gobj) == FALSE))
     {
-        ftCommon_JumpAerial_CheckInterruptCommon(fighter_gobj);
+        ftCommonJumpAerialCheckInterruptCommon(fighter_gobj);
     }
 }
 

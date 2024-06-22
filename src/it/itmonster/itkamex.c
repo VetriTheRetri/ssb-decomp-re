@@ -24,7 +24,7 @@ extern intptr_t lITKamexDisplayList;        // 0x0000ED60
 itCreateDesc dITKamexItemDesc = 
 {
     It_Kind_Kamex,                          // Item Kind
-    &gITFileData,                         // Pointer to item file data?
+    &gITFileData,                           // Pointer to item file data?
     &lITKamexItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct

@@ -9,7 +9,7 @@
 // 0x80143730
 void ftCommonFallSpecialProcInterrupt(GObj *fighter_gobj)
 {
-    ftCommon_JumpAerial_CheckInterruptCommon(fighter_gobj);
+    ftCommonJumpAerialCheckInterruptCommon(fighter_gobj);
 }
 
 // 0x80143750

@@ -372,7 +372,7 @@ sb32 ftCommonDamageCheckElementSetColAnim(GObj *fighter_gobj, s32 element, s32 d
         is_set_colanim = func_ovl2_800E9AF4(fighter_gobj, damage_level);
         break;
 
-    case gmHitCollision_Element_Unk1:
+    case gmHitCollision_Element_Freezing:
         is_set_colanim = ftColor_CheckSetColAnimIndex(fighter_gobj, damage_level + 0x20, 0);
         break;
 
@@ -403,7 +403,7 @@ void ftCommonDamageCheckMakeScreenFlash(f32 knockback, s32 element)
         }
         break;
 
-    case gmHitCollision_Element_Unk1:
+    case gmHitCollision_Element_Freezing:
         if (knockback > FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH)
         {
             ifScreenFlash_SetColAnim(0x55, 0);

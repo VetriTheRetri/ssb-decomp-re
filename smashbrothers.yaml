@@ -442,6 +442,7 @@ segments:
     # ovl3 text
       - [0x0AC540, asm, ovl3]
     # Common fighter move files
+      - [0x0BA4D0, c, ft/ftcommon/ftcommonjumpaerial]
       - [0x0BAD80, c, ft/ftcommon/ftcommondamage]
       - [0x0BC500, c, ft/ftcommon/ftcommonwalldamage]
       - [0x0BC7A0, c, ft/ftcommon/ftcommonpass]
@@ -680,6 +681,7 @@ segments:
     # ovl3 data
       - [0x1010A0, data, ovl3]
     # Common fighter move files
+      - [0x102FC0, .data, ft/ftcommon/ftcommonjumpaerial]
       - [0x102FE0, .data, ft/ftcommon/ftcommondamage]
       - [0x103040, .data, ft/ftcommon/ftcommonitemswing]
       - [0x1030A0, .data, ft/ftcommon/ftcommonitemshoot]
@@ -766,6 +768,7 @@ segments:
     # ovl3 read-only data
       - [0x106200, rodata, ovl3]
     # Common fighter move files
+      - [0x106B10, .rodata, ft/ftcommon/ftcommonjumpaerial]
       - [0x106B20, .rodata, ft/ftcommon/ftcommondamage]
       - [0x106B60, .rodata, ft/ftcommon/ftcommondokan]
       - [0x106B70, .rodata, ft/ftcommon/ftcommontwister]

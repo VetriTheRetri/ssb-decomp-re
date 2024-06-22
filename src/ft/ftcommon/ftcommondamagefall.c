@@ -13,7 +13,7 @@ void ftCommonDamageFallProcInterrupt(GObj *fighter_gobj)
     (
         (ftCommonSpecialAirCheckInterruptCommon(fighter_gobj) == FALSE)     && 
         (ftCommonAttackAirCheckInterruptCommon(fighter_gobj) == FALSE)      &&
-        (ftCommon_JumpAerial_CheckInterruptCommon(fighter_gobj) == FALSE)
+        (ftCommonJumpAerialCheckInterruptCommon(fighter_gobj) == FALSE)
     )
     {
         ftCommonHammerFallCheckInterruptDamageFall(fighter_gobj);

@@ -59,7 +59,7 @@ typedef enum gmHitCollisionElement
 	gmHitCollision_Element_Electric,
 	gmHitCollision_Element_Slash,
 	gmHitCollision_Element_Coin,
-	gmHitCollision_Element_Unk1,
+	gmHitCollision_Element_Freezing,	// This is only speculation. It causes the screen to flash blue if knockback > 160.0
 	gmHitCollision_Element_Sleep,
 	gmHitCollision_Element_Unk2
 

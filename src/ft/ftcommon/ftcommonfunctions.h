@@ -122,15 +122,15 @@ void ftCommon_Jump_GetJumpForceButton(s32 stick_range_x, s32* jump_vel_x, s32* j
 void ftCommon_Jump_SetStatus(GObj* fighter_gobj);
 
 // JumpAerial
-void ftCommon_JumpAerial_UpdateModelYaw(ftStruct* fp);
-void ftCommon_JumpAerial_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_JumpAerial_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_JumpAerial_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_JumpAerial_SetStatus(GObj* fighter_gobj, s32 input_source);
-void ftCommon_JumpAerialMulti_SetStatus(GObj* fighter_gobj, s32 input_source);
-sb32 ftCommon_JumpAerialMulti_CheckJumpButtonHold(ftStruct* fp);
-s32 ftCommon_JumpAerialMulti_GetJumpInputType(ftStruct* fp);
-sb32 ftCommon_JumpAerial_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonJumpAerialUpdateModelYaw(ftStruct* fp);
+void ftCommonJumpAerialProcUpdate(GObj* fighter_gobj);
+void ftCommonJumpAerialProcInterrupt(GObj* fighter_gobj);
+void ftCommonJumpAerialProcPhysics(GObj* fighter_gobj);
+void ftCommonJumpAerialSetStatus(GObj* fighter_gobj, s32 input_source);
+void ftCommonJumpAerialMultiSetStatus(GObj* fighter_gobj, s32 input_source);
+sb32 ftCommonJumpAerialMultiCheckJumpButtonHold(ftStruct* fp);
+s32 ftCommonJumpAerialMultiGetJumpInputType(ftStruct* fp);
+sb32 ftCommonJumpAerialCheckInterruptCommon(GObj* fighter_gobj);
 
 // Fall / FallAerial
 void ftCommon_Fall_ProcInterrupt(GObj* fighter_gobj);

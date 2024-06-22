@@ -30,14 +30,14 @@ void ftCommon_Sleep_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_Sleep_SetStatus(GObj* fighter_gobj);
 
 // Entry / Appear
-void ftCommon_Entry_SetStatus(GObj* fighter_gobj);
-void ftCommon_EntryNull_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Appear_UpdateEffects(GObj* fighter_gobj);
-void ftCommon_Appear_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Appear_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_Appear_InitStatusVars(GObj* fighter_gobj);
-void ftCommon_Appear_SetStatus(GObj* fighter_gobj);
-void ftCommon_Appear_SetPosition(GObj* fighter_gobj); // This runs when spawning multi-character team
+void ftCommonEntrySetStatus(GObj* fighter_gobj);
+void ftCommonEntryNullProcUpdate(GObj* fighter_gobj);
+void ftCommonAppearUpdateEffects(GObj* fighter_gobj);
+void ftCommonAppearProcUpdate(GObj* fighter_gobj);
+void ftCommonAppearProcPhysics(GObj* fighter_gobj);
+void ftCommonAppearInitStatusVars(GObj* fighter_gobj);
+void ftCommonAppearSetStatus(GObj* fighter_gobj);
+void ftCommonAppearSetPosition(GObj* fighter_gobj); // This runs when spawning multi-character team
 													  // members in VS mode I suppose?
 
 // RebirthDown / RebirthStand / RebirthWait

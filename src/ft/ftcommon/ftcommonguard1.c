@@ -13,7 +13,7 @@ extern void func_ovl0_800C8758(DObj*, void*, f32);
     (ftCommonLightThrowCheckInterruptGuardOn(fighter_gobj) != FALSE)    ||  \
     (ftCommonEscapeCheckInterruptGuard(fighter_gobj) != FALSE)          ||  \
     (ftCommonCatchCheckInterruptGuard(fighter_gobj) != FALSE)           ||  \
-    (ftCommon_GuardKneeBend_CheckInterruptGuard(fighter_gobj) != FALSE) ||  \
+    (ftCommonGuardKneeBendCheckInterruptGuard(fighter_gobj) != FALSE) ||  \
     (ftCommonGuardPassCheckInterruptGuard(fighter_gobj) != FALSE)         \
 )
 

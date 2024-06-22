@@ -104,17 +104,17 @@ void ftCommon_TurnRun_SetStatus(GObj* fighter_gobj);
 sb32 ftCommon_TurnRun_CheckInterruptRun(GObj* fighter_gobj);
 
 // KneeBend / GuardKneeBend
-void ftCommon_KneeBend_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_KneeBend_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_KneeBend_SetStatusParam(GObj* fighter_gobj, s32 status_id, s32 input_source);
-void ftCommon_KneeBend_SetStatus(GObj* fighter_gobj, s32 input_source);
-void ftCommon_GuardKneeBend_SetStatus(GObj* fighter_gobj, s32 input_source);
-sb32 ftCommon_KneeBend_CheckButtonTap(ftStruct* fp);
-s32 ftCommon_KneeBend_GetInputTypeCommon(ftStruct* fp);
-sb32 ftCommon_KneeBend_CheckInterruptCommon(GObj* fighter_gobj);
-s32 ftCommon_KneeBend_GetInputTypeRun(ftStruct* fp);
-sb32 ftCommon_KneeBend_CheckInterruptRun(GObj* fighter_gobj);
-sb32 ftCommon_GuardKneeBend_CheckInterruptGuard(GObj* fighter_gobj);
+void ftCommonKneeBendProcUpdate(GObj* fighter_gobj);
+void ftCommonKneeBendProcInterrupt(GObj* fighter_gobj);
+void ftCommonKneeBendSetStatusParam(GObj* fighter_gobj, s32 status_id, s32 input_source);
+void ftCommonKneeBendSetStatus(GObj* fighter_gobj, s32 input_source);
+void ftCommonGuardKneeBendSetStatus(GObj* fighter_gobj, s32 input_source);
+sb32 ftCommonKneeBendCheckButtonTap(ftStruct* fp);
+s32 ftCommonKneeBendGetInputTypeCommon(ftStruct* fp);
+sb32 ftCommonKneeBendCheckInterruptCommon(GObj* fighter_gobj);
+s32 ftCommonKneeBendGetInputTypeRun(ftStruct* fp);
+sb32 ftCommonKneeBendCheckInterruptRun(GObj* fighter_gobj);
+sb32 ftCommonGuardKneeBendCheckInterruptGuard(GObj* fighter_gobj);
 
 // Jump
 void ftCommonJumpProcInterrupt(GObj* fighter_gobj);

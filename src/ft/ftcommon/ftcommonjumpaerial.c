@@ -290,7 +290,7 @@ sb32 ftCommonJumpAerialCheckInterruptCommon(GObj *fighter_gobj)
         {
             if (fp->jumps_used == 1)
             {
-                input_source = ftCommon_KneeBend_GetInputTypeCommon(fp);
+                input_source = ftCommonKneeBendGetInputTypeCommon(fp);
 
                 if (input_source != FTCOMMON_JUMPAERIAL_INPUT_TYPE_NONE)
                 {
@@ -335,7 +335,7 @@ sb32 ftCommonJumpAerialCheckInterruptCommon(GObj *fighter_gobj)
     }
     else
     {
-        input_source = ftCommon_KneeBend_GetInputTypeCommon(fp);
+        input_source = ftCommonKneeBendGetInputTypeCommon(fp);
 
         if ((input_source != FTCOMMON_JUMPAERIAL_INPUT_TYPE_NONE) && (fp->jumps_used < fp->attributes->jumps_max))
         {

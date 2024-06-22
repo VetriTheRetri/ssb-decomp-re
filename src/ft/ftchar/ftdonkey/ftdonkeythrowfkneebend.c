@@ -63,7 +63,7 @@ void ftDonkeyThrowFKneeBendSetStatus(GObj *fighter_gobj, s32 input_source)
 sb32 ftDonkeyThrowFKneeBendCheckInterruptThrowFCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    s32 input_source = ftCommon_KneeBend_GetInputTypeCommon(fp);
+    s32 input_source = ftCommonKneeBendGetInputTypeCommon(fp);
 
     if (input_source != FTCOMMON_KNEEBEND_INPUT_TYPE_NONE)
     {

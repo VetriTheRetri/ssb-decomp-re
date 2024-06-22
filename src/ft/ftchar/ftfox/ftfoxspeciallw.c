@@ -242,7 +242,7 @@ sb32 ftFoxSpecialLwTurnCheckInterruptLoop(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftCommon_Turn_CheckInputSuccess(fighter_gobj) != FALSE)
+    if (ftCommonTurnCheckInputSuccess(fighter_gobj) != FALSE)
     {
         if (fp->ground_or_air == GA_Ground)
         {

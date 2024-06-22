@@ -59,7 +59,7 @@ void ftCommonHammerTurnSetStatus(GObj *fighter_gobj)
 // 0x80147B9C
 sb32 ftCommonHammerTurnCheckInterruptCommon(GObj *fighter_gobj)
 {
-    if (ftCommon_Turn_CheckInputSuccess(fighter_gobj) != FALSE)
+    if (ftCommonTurnCheckInputSuccess(fighter_gobj) != FALSE)
     {
         ftCommonHammerTurnSetStatus(fighter_gobj);
 

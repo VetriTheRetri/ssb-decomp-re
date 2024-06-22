@@ -57,7 +57,7 @@ void ftDonkeyThrowFTurnSetStatus(GObj *fighter_gobj)
 // 0x8014D810
 sb32 ftDonkeyThrowFTurnCheckInterruptThrowFCommon(GObj *fighter_gobj)
 {
-    if (ftCommon_Turn_CheckInputSuccess(fighter_gobj) != FALSE)
+    if (ftCommonTurnCheckInputSuccess(fighter_gobj) != FALSE)
     {
         ftDonkeyThrowFTurnSetStatus(fighter_gobj);
 

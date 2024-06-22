@@ -83,7 +83,7 @@ void ftBossWaitDecideStatusPlayer(GObj *fighter_gobj)
     ftStruct *target_fp;
     Vec3f pos;
 
-    if (ftCommon_Turn_CheckInputSuccess(fighter_gobj) != FALSE)
+    if (ftCommonTurnCheckInputSuccess(fighter_gobj) != FALSE)
     {
         fp->lr = -fp->lr;
         fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32

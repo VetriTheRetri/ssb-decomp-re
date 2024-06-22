@@ -28,8 +28,8 @@ void ftCommonDashProcInterrupt(GObj *fighter_gobj)
     {
         if 
         (
-            (ftCommonSpecialNCheckInterruptCommon(fighter_gobj) == FALSE)   && 
-            (ftCommonCatchCheckInterruptCommon(fighter_gobj) == FALSE)      && 
+            (ftCommonSpecialNCheckInterruptCommon(fighter_gobj) == FALSE) && 
+            (ftCommonCatchCheckInterruptCommon(fighter_gobj) == FALSE)    &&
             (ftCommonAttackS4CheckInterruptDash(fighter_gobj) == FALSE)
         )
         {
@@ -69,8 +69,8 @@ void ftCommonDashProcInterrupt(GObj *fighter_gobj)
     }
     else if 
     (
-        (ftCommonCatchCheckInterruptCommon(fighter_gobj) == FALSE)      && 
-        (ftCommonDashCheckInterruptCommon(fighter_gobj) == FALSE)       && 
+        (ftCommonCatchCheckInterruptCommon(fighter_gobj) == FALSE)  && 
+        (ftCommonDashCheckInterruptCommon(fighter_gobj) == FALSE)   &&
         (ftCommonGuardOnCheckInterruptCommon(fighter_gobj) == FALSE)
     )
     {
@@ -130,7 +130,7 @@ sb32 ftCommonDashCheckInterruptCommon(GObj *fighter_gobj)
     {
         if ((fp->input.pl.stick_range.x * fp->lr) < 0)
         {
-            ftCommon_Turn_SetStatusInvertLR(fighter_gobj);
+            ftCommonTurnSetStatusInvertLR(fighter_gobj);
 
             return TRUE;
         }

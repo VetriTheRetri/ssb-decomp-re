@@ -50,7 +50,7 @@ void ftCommonLandingProcInterrupt(GObj *fighter_gobj)
         }
         else if (ftCommonSquatCheckInterruptCommon(fighter_gobj) != FALSE) return;
 
-        if (ftCommon_Turn_CheckInterruptCommon(fighter_gobj) == FALSE)
+        if (ftCommonTurnCheckInterruptCommon(fighter_gobj) == FALSE)
         {
             ftCommon_Walk_CheckInterruptCommon(fighter_gobj);
         }

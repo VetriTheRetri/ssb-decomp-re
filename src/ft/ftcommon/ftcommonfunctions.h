@@ -89,13 +89,13 @@ sb32 ftCommonRunBrakeCheckInterruptRun(GObj* fighter_gobj);
 sb32 ftCommonRunBrakeCheckInterruptTurnRun(GObj* fighter_gobj);
 
 // Turn
-void ftCommon_Turn_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Turn_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Turn_SetStatus(GObj* fighter_gobj, s32 lr_dash);
-void ftCommon_Turn_SetStatusCenter(GObj* fighter_gobj);
-void ftCommon_Turn_SetStatusInvertLR(GObj* fighter_gobj);
-sb32 ftCommon_Turn_CheckInputSuccess(GObj* fighter_gobj);
-sb32 ftCommon_Turn_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonTurnProcUpdate(GObj* fighter_gobj);
+void ftCommonTurnProcInterrupt(GObj* fighter_gobj);
+void ftCommonTurnSetStatus(GObj* fighter_gobj, s32 lr_dash);
+void ftCommonTurnSetStatusCenter(GObj* fighter_gobj);
+void ftCommonTurnSetStatusInvertLR(GObj* fighter_gobj);
+sb32 ftCommonTurnCheckInputSuccess(GObj* fighter_gobj);
+sb32 ftCommonTurnCheckInterruptCommon(GObj* fighter_gobj);
 
 // TurnRun
 void ftCommonTurnRunProcUpdate(GObj* fighter_gobj);

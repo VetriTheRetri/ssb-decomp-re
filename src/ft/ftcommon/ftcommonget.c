@@ -348,7 +348,7 @@ void ftCommonLiftTurnSetStatus(GObj *fighter_gobj)
 // 0x8014625C
 sb32 ftCommonLiftTurnCheckInterruptLiftWait(GObj *fighter_gobj)
 {
-    if (ftCommon_Turn_CheckInputSuccess(fighter_gobj) != FALSE)
+    if (ftCommonTurnCheckInputSuccess(fighter_gobj) != FALSE)
     {
         ftCommonLiftTurnSetStatus(fighter_gobj);
 

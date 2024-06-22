@@ -402,7 +402,7 @@ typedef struct ftCommon_TurnStatusVars
 {
 	sb32 is_allow_turn_direction; // Cannot turn around at all if disabled +
 								  // horizontal controls are inverted?
-	sb32 is_disable_interrupts;	  // Sort of weird, still allows three interrupts
+	sb32 is_disable_sa_interrupts;// Disable special move and common attack interrupts 
 								  // even if false, one being shield and the other
 								  // being jumpsquat, I don't know the third one
 	u16 button_mask;

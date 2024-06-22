@@ -79,7 +79,7 @@ void ftCommonThrownDecideFighterLoseGrip(GObj *fighter_gobj, GObj *interact_gobj
 }
 
 // 0x8014AF2C
-void func_ovl3_8014AF2C(GObj *fighter_gobj)
+void ftCommonThrownDecideDeadResult(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     GObj *interact_gobj = fp->catch_gobj;

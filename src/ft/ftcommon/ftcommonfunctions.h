@@ -6,23 +6,23 @@
 #include <sys/objdef.h>
 
 // DeadDown / DeadLeft / DeadRight / DeadUpStar / DeadUpFall
-void func_ovl3_8013BC60(u16 sfx_id);
-void func_ovl3_8013BC8C(ftStruct* this_fp);
-void func_ovl3_8013BC8C(ftStruct* this_fp);
-void ftCommon_Dead_UpdateScore(ftStruct* this_fp);
-void ftCommon_Dead_CheckRebirth(GObj* fighter_gobj);
-void ftCommon_Dead_ResetCommonVars(GObj* fighter_gobj);
-void ftCommon_Dead_ClearSpecialStats(GObj* fighter_gobj);
-void ftCommon_DeadCommon_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Dead_InitStatusVars(GObj* fighter_gobj);
-void ftCommon_DeadDown_SetStatus(GObj* fighter_gobj);
-void ftCommon_DeadRight_SetStatus(GObj* fighter_gobj);
-void ftCommon_DeadLeft_SetStatus(GObj* fighter_gobj);
-void ftCommon_DeadUpStar_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_DeadUpStar_SetStatus(GObj* fighter_gobj);
-void ftCommon_DeadUpFall_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_DeadUpFall_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_Dead_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonDeadAddDeadSFXSoundQueue(u16 sfx_id);
+void ftCommonDeadUpdateRumble(ftStruct* this_fp);
+void ftCommonDeadUpdateRumble(ftStruct* this_fp);
+void ftCommonDeadUpdateScore(ftStruct* this_fp);
+void ftCommonDeadCheckRebirth(GObj* fighter_gobj);
+void ftCommonDeadResetCommonVars(GObj* fighter_gobj);
+void ftCommonDeadClearSpecialStats(GObj* fighter_gobj);
+void ftCommonDeadCommonProcUpdate(GObj* fighter_gobj);
+void ftCommonDeadInitStatusVars(GObj* fighter_gobj);
+void ftCommonDeadDownSetStatus(GObj* fighter_gobj);
+void ftCommonDeadRightSetStatus(GObj* fighter_gobj);
+void ftCommonDeadLeftSetStatus(GObj* fighter_gobj);
+void ftCommonDeadUpStarProcUpdate(GObj* fighter_gobj);
+void ftCommonDeadUpStarSetStatus(GObj* fighter_gobj);
+void ftCommonDeadUpFallProcUpdate(GObj* fighter_gobj);
+void ftCommonDeadUpFallSetStatus(GObj* fighter_gobj);
+sb32 ftCommonDeadCheckInterruptCommon(GObj* fighter_gobj);
 
 // Sleep
 sb32 ftCommonSleepCheckIgnorePauseMenu(GObj* fighter_gobj);
@@ -586,7 +586,7 @@ void ftCommonThrownSetStatusImmediate(GObj* fighter_gobj, s32 status_id);
 // Thrown2
 void ftCommonThrownReleaseFighterLoseGrip(GObj* fighter_gobj);
 void ftCommonThrownDecideFighterLoseGrip(GObj* fighter_gobj, GObj* interact_gobj);
-void func_ovl3_8014AF2C(GObj* fighter_gobj);
+void ftCommonThrownDecideDeadResult(GObj* fighter_gobj);
 void ftCommonThrownProcStatus(GObj* fighter_gobj);
 void ftCommonThrownReleaseThrownUpdateStats(GObj* fighter_gobj, s32 lr, s32 script_index, sb32 is_proc_status);
 void ftCommonThrownUpdateDamageStats(ftStruct* this_fp);

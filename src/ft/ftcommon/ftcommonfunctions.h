@@ -77,9 +77,9 @@ sb32 ftCommon_Dash_CheckInterruptCommon(GObj* fighter_gobj);
 sb32 ftCommon_Dash_CheckTurn(GObj* fighter_gobj);
 
 // Run
-void ftCommon_Run_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Run_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_Run_CheckInterruptDash(GObj* fighter_gobj);
+void ftCommonRunProcInterrupt(GObj* fighter_gobj);
+void ftCommonRunSetStatus(GObj* fighter_gobj);
+sb32 ftCommonRunCheckInterruptDash(GObj* fighter_gobj);
 
 // RunBrake
 void ftCommonRunBrakeProcInterrupt(GObj* fighter_gobj);

@@ -7,12 +7,12 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lFTShadowTextureImage;  // 0x00003A68
+extern intptr_t lFTShadowTextureImage;          // 0x00003A68
 
 extern u32 gGtlTaskId;
 
 extern gsColorRGBA dFTShadowColorDefault;
-extern gsColorRGBA dFTShadowColorsTeam[/* */];
+extern gsColorRGBA dFTShadowColorTeams[/* */];
 
 // // // // // // // // // // // //
 //                               //
@@ -90,7 +90,7 @@ void ftShadowProcRender(GObj *shadow_gobj)
     s32 gfx_vertex_num;
     s32 coll_vertex_num;
     f32 shadow_edge_right;
-    s32 edge_left_or_right;
+    sb32 edge_left_or_right;
 
     if (shadow_gobj->dl_link_prev == NULL)
     {
@@ -305,7 +305,7 @@ void ftShadowProcRender(GObj *shadow_gobj)
 
                     if ((gBattleState->is_team_battle == TRUE) && !(gBattleState->is_not_teamshadows))
                     {
-                        gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dFTShadowColorsTeam[fp->team].r, dFTShadowColorsTeam[fp->team].g, dFTShadowColorsTeam[fp->team].b, dFTShadowColorsTeam[fp->team].a);
+                        gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dFTShadowColorTeams[fp->team].r, dFTShadowColorTeams[fp->team].g, dFTShadowColorTeams[fp->team].b, dFTShadowColorTeams[fp->team].a);
                     }
                     else gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dFTShadowColorDefault.r, dFTShadowColorDefault.g, dFTShadowColorDefault.b, dFTShadowColorDefault.a);
 

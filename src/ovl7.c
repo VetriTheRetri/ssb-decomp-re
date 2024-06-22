@@ -1396,7 +1396,7 @@ void scTrainingMode_InitTrainingMode()
 	ifPlayer_Tag_SetInterface();
 	func_ovl2_8010F3A0();
 	func_ovl2_8010F3C0();
-	ifPlayer_Damage_InitInterface();
+	ifPlayerDamageInitInterface();
 	ifPlayer_Stocks_SetInterface();
 	scTrainingMode_InitStatDisplayAll();
 	scTrainingMode_InitTrainingMenuAll();

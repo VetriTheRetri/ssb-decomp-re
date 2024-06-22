@@ -360,7 +360,7 @@ void scBonusGame_InitInterface(GObj* interface_gobj)
 {
 	gsStopCurrentProcess(60);
 	func_ovl2_801120D4();
-	ifPlayer_Damage_InitInterface();
+	ifPlayerDamageInitInterface();
 	func_800269C0_275C0(0x1EA);
 	func_ovl2_801121C4();
 	omEjectGObj(NULL);

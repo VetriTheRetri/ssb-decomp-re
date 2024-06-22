@@ -35,7 +35,7 @@ void ftKirbySpecialNApplyCaptureDamage(GObj *kirby_gobj, GObj *victim_gobj, s32 
 
     damage = star_dmg_victim;
 
-    ftCommon_Damage_UpdateDamageColAnim(victim_gobj, gmCommonObject_DamageCalcKnockback(victim_fp->percent_damage, star_dmg_victim, star_dmg_victim, 0, 100, 0, victim_fp->attributes->weight, kirby_fp->handicap, victim_fp->handicap), 0);
+    ftCommonDamageUpdateDamageColAnim(victim_gobj, gmCommonObject_DamageCalcKnockback(victim_fp->percent_damage, star_dmg_victim, star_dmg_victim, 0, 100, 0, victim_fp->attributes->weight, kirby_fp->handicap, victim_fp->handicap), 0);
     ftDamageUpdateCheckDropItem(victim_fp, damage);
     ftAttackUpdateMatchStats(kirby_fp->player, victim_fp->player, damage);
     ftAttackAddStaleQueue(kirby_fp->player, victim_fp->player, kirby_fp->attack_id, kirby_fp->motion_count);

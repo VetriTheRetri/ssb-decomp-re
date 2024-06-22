@@ -30,7 +30,7 @@ void ftCommonCaptureApplyCatchKnockback(GObj *fighter_gobj, ftThrowReleaseDesc *
     ftStruct *catch_fp = ftGetStruct(catch_gobj);
     f32 knockback = gmCommonObject_DamageCalcKnockback(this_fp->percent_damage, 0, 0, throw_release->knockback_weight, throw_release->knockback_scale, throw_release->knockback_base, this_fp->attributes->weight, catch_fp->handicap, this_fp->handicap);
     
-    ftCommon_Damage_InitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, this_fp->lr, 1, 0, 0, FALSE, FALSE, FALSE);
+    ftCommonDamageInitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, this_fp->lr, 1, 0, 0, FALSE, FALSE, FALSE);
     ftCommon_Update1PGameDamageStats(this_fp, GMMATCH_PLAYERS_MAX, ftHitlog_ObjectClass_None, 0, 0, 0);
 }
 
@@ -61,7 +61,7 @@ void ftCommonCaptureApplyCaptureKnockback(GObj *fighter_gobj, ftThrowReleaseDesc
     }
     else lr = LR_Left;
 
-    ftCommon_Damage_InitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, lr, 1, 0, 0, FALSE, FALSE, FALSE);
+    ftCommonDamageInitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, lr, 1, 0, 0, FALSE, FALSE, FALSE);
     ftCommon_Update1PGameDamageStats(this_fp, GMMATCH_PLAYERS_MAX, ftHitlog_ObjectClass_None, 0, 0, 0);
 }
 
@@ -149,7 +149,7 @@ void ftCommonCaptureShoulderedSetStatus(GObj *fighter_gobj)
     }
     if (damage != 0)
     {
-        ftCommon_Damage_UpdateDamageColAnim(fighter_gobj, gmCommonObject_DamageCalcKnockback(this_fp->percent_damage, damage, damage, 0, 100, 0, this_fp->attributes->weight, capture_fp->handicap, this_fp->handicap), 0);
+        ftCommonDamageUpdateDamageColAnim(fighter_gobj, gmCommonObject_DamageCalcKnockback(this_fp->percent_damage, damage, damage, 0, 100, 0, this_fp->attributes->weight, capture_fp->handicap, this_fp->handicap), 0);
         ftDamageUpdateCheckDropItem(this_fp, damage);
         ftAttackUpdateMatchStats(capture_fp->player, this_fp->player, damage);
         ftAttackAddStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);

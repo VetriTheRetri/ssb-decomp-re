@@ -176,38 +176,38 @@ void ftCommonOttottoProcMap(GObj* fighter_gobj);
 void ftCommonOttottoWaitSetStatus(GObj* fighter_gobj);
 
 // Damage
-void ftCommon_Damage_SetDustGFXInterval(ftStruct* fp);
-void ftCommon_Damage_UpdateDustGFX(GObj* fighter_gobj);
-void ftCommon_Damage_DecHitStunSetPublicity(GObj* fighter_gobj);
-void ftCommon_DamageCommon_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_DamageAirCommon_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Damage_CheckSetInvincible(GObj* fighter_gobj);
-void ftCommon_Damage_SetStatus(GObj* fighter_gobj);
-void ftCommon_DamageCommon_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_DamageAirCommon_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_DamageFlyRoll_UpdateModelPitch(GObj* fighter_gobj);
-void ftCommon_DamageCommon_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_DamageCommon_ProcLagUpdate(GObj* fighter_gobj);
+void ftCommonDamageSetDustGFXInterval(ftStruct* fp);
+void ftCommonDamageUpdateDustEffect(GObj* fighter_gobj);
+void ftCommonDamageDecHitStunSetPublicity(GObj* fighter_gobj);
+void ftCommonDamageCommonProcUpdate(GObj* fighter_gobj);
+void ftCommonDamageAirCommonProcUpdate(GObj* fighter_gobj);
+void ftCommonDamageCheckSetInvincible(GObj* fighter_gobj);
+void ftCommonDamageSetStatus(GObj* fighter_gobj);
+void ftCommonDamageCommonProcInterrupt(GObj* fighter_gobj);
+void ftCommonDamageAirCommonProcInterrupt(GObj* fighter_gobj);
+void ftCommonDamageFlyRollUpdateModelRoll(GObj* fighter_gobj);
+void ftCommonDamageCommonProcPhysics(GObj* fighter_gobj);
+void ftCommonDamageCommonProcLagUpdate(GObj* fighter_gobj);
 void func_ovl3_80140934();
-void ftCommon_DamageAirCommon_ProcMap(GObj* fighter_gobj);
-f32 gmCommon_Damage_GetKnockbackAngle(s32 angle_i, s32 ground_or_air, f32 knockback);
-s32 ftCommon_Damage_GetDamageLevel(f32 hitstun);
-void ftCommon_Damage_SetPublicity(ftStruct* this_fp, f32 knockback, f32 angle);
-sb32 ftCommon_Damage_CheckElementSetColAnim(GObj* fighter_gobj, s32 element, s32 damage_level);
-void ftCommon_Damage_CheckMakeScreenFlash(f32 knockback, s32 element);
-sb32 func_ovl3_80140D30(ftStruct* fp);
-void func_ovl3_80140E2C(GObj* fighter_gobj);
-sb32 ftCommon_Damage_CheckCaptureKeepHold(ftStruct* fp);
-void ftCommon_Damage_InitDamageVars(GObj* this_gobj, s32 status_id_replace, s32 damage, f32 knockback, s32 angle_start,
+void ftCommonDamageAirCommonProcMap(GObj* fighter_gobj);
+f32 ftCommonDamageGetKnockbackAngle(s32 angle_i, s32 ground_or_air, f32 knockback);
+s32 ftCommonDamageGetDamageLevel(f32 hitstun);
+void ftCommonDamageSetPublicity(ftStruct* this_fp, f32 knockback, f32 angle);
+sb32 ftCommonDamageCheckElementSetColAnim(GObj* fighter_gobj, s32 element, s32 damage_level);
+void ftCommonDamageCheckMakeScreenFlash(f32 knockback, s32 element);
+sb32 ftCommonDamageCheckCatchResist(ftStruct* fp);
+void ftCommonDamageUpdateCatchResist(GObj* fighter_gobj);
+sb32 ftCommonDamageCheckCaptureKeepHold(ftStruct* fp);
+void ftCommonDamageInitDamageVars(GObj* this_gobj, s32 status_id_replace, s32 damage, f32 knockback, s32 angle_start,
 									s32 lr_damage, s32 damage_index, s32 element, s32 damage_player_number, s32 arg9,
 									sb32 unk_bool, sb32 is_publicity);
-void ftCommon_Damage_GotoDamageStatus(GObj* fighter_gobj);
-void ftCommon_Damage_UpdateDamageColAnim(GObj* fighter_gobj, f32 knockback, s32 element);
-void ftCommon_Damage_SetDamageColAnim(GObj* fighter_gobj);
-void ftCommon_Damage_UpdateMain(GObj* fighter_gobj);
-void ftCommon_WallDamage_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_WallDamage_SetStatus(GObj* fighter_gobj, Vec3f* angle, Vec3f* pos);
-sb32 ftCommon_WallDamage_CheckGoto(GObj* fighter_gobj);
+void ftCommonDamageGotoDamageStatus(GObj* fighter_gobj);
+void ftCommonDamageUpdateDamageColAnim(GObj* fighter_gobj, f32 knockback, s32 element);
+void ftCommonDamageSetDamageColAnim(GObj* fighter_gobj);
+void ftCommonDamageUpdateMain(GObj* fighter_gobj);
+void ftCommonWallDamageProcUpdate(GObj* fighter_gobj);
+void ftCommonWallDamageSetStatus(GObj* fighter_gobj, Vec3f* angle, Vec3f* pos);
+sb32 ftCommonWallDamageCheckGoto(GObj* fighter_gobj);
 
 // DamageFall
 void ftCommonDamageFallProcInterrupt(GObj* fighter_gobj);

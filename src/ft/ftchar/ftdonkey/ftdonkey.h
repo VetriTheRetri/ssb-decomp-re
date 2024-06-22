@@ -94,7 +94,10 @@ typedef enum ftDonkeyStatus
 	ftStatus_Donkey_SpecialLwStart,
 	ftStatus_Donkey_SpecialLwLoop,
 	ftStatus_Donkey_SpecialLwEnd,
-	ftStatus_Donkey_ThrowFWait,
+
+	ftStatus_Donkey_ThrowFStartDamage,
+
+	ftStatus_Donkey_ThrowFWait = ftStatus_Donkey_ThrowFStartDamage,
 	ftStatus_Donkey_ThrowFWalkSlow,
 	ftStatus_Donkey_ThrowFWalkMiddle,
 	ftStatus_Donkey_ThrowFWalkFast,
@@ -103,6 +106,7 @@ typedef enum ftDonkeyStatus
 	ftStatus_Donkey_ThrowFFall,
 	ftStatus_Donkey_ThrowFLanding,
 	ftStatus_Donkey_ThrowFDamage,
+	ftStatus_Donkey_ThrowFEndDamage = ftStatus_Donkey_ThrowFDamage,
 	ftStatus_Donkey_ThrowFF,
 	ftStatus_Donkey_ThrowAirFF,
 

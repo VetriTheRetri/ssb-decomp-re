@@ -303,7 +303,7 @@ typedef enum alSoundEffectID
 	alSound_SFX_MenuExclamationUnk,
 	alSound_SFX_PlayerHeal, // High-pitched short click, sped up Mario Fireball?
 	alSound_SFX_YosterCloudVapor,
-	alSound_SFX_DeadPortalFallQuick,
+	alSound_SFX_StockSteal,
 	alSound_SFX_Bonus2PlatformLanding, // Land on Bonus 2 platform
 	alSound_SFX_GamePause,
 	alSound_SFX_InishiePowerBlock, // POW Block

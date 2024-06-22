@@ -25,9 +25,9 @@ void ftCommon_DeadUpFall_SetStatus(GObj* fighter_gobj);
 sb32 ftCommon_Dead_CheckInterruptCommon(GObj* fighter_gobj);
 
 // Sleep
-sb32 ftCommon_Sleep_CheckIgnorePauseMenu(GObj* fighter_gobj);
-void ftCommon_Sleep_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Sleep_SetStatus(GObj* fighter_gobj);
+sb32 ftCommonSleepCheckIgnorePauseMenu(GObj* fighter_gobj);
+void ftCommonSleepProcUpdate(GObj* fighter_gobj);
+void ftCommonSleepSetStatus(GObj* fighter_gobj);
 
 // Entry / Appear
 void ftCommonEntrySetStatus(GObj* fighter_gobj);

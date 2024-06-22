@@ -7,4 +7,8 @@
 #define efGetStruct(effect_gobj) \
 ((efStruct*)(effect_gobj)->user_data.p) \
 
+extern void *sEFTexturesFile1;
+extern void *sEFTexturesFile2;
+extern void *sEFTexturesFile3;
+
 #endif

@@ -441,6 +441,8 @@ segments:
     
     # ovl3 text
       - [0x0AC540, asm, ovl3]
+    # Fighter shadows file
+      - [0x0B5850, c, ft/ftshadow]
     # Common fighter move files
       - [0x0B66A0, c, ft/ftcommon/ftcommondead]
       - [0x0B79A0, c, ft/ftcommon/ftcommonrebirth]
@@ -694,6 +696,8 @@ segments:
 
     # ovl3 data
       - [0x1010A0, data, ovl3]
+    # Fighter shadows file
+      - [0x102E50, .data, ft/ftshadow]
     # Common fighter move files
       - [0x102ED0, .data, ft/ftcommon/ftcommonrebirth]
       - [0x102EE0, .data, ft/ftcommon/ftcommonentry]

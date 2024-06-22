@@ -21,6 +21,7 @@ typedef enum GObjKind
     GObj_Kind_Rumble,             // 1017
     GObj_Kind_Publicity,          // 1018 - Audience reaction
     GObj_Kind_PauseMenu = 1019,   // 1019
+    GObj_Kind_Shadow,             // 1020
     GObj_Kind_BossWallpaper = 1023
 
 } GObjKind;
@@ -67,6 +68,7 @@ typedef enum GObjLinkIndex
     GObj_LinkID_Rumble = 13,        // ID 13: Rumble object?
     GObj_LinkID_Wallpaper = 13,     // ID 13: Stage background object?
     GObj_LinkID_FighterParts = 13,  // ID 13: FighterParts
+    GObj_LinkID_Shadow = 13,        // ID 13: Fighter shadows
 
     GObj_LinkID_PauseMenu           // ID 14: Pause menu object?
 

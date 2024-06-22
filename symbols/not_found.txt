@@ -818,6 +818,8 @@ gFTDataBossBattleMotion = 0x80131174;
 
 gMPEdgeBounds = 0x80131308;
 
+sEFTexturesFile2 = 0x801313B4;
+
 gCameraMatrix = 0x80131470;
 gCameraStruct = 0x801314B0;
 

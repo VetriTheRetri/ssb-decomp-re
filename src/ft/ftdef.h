@@ -920,6 +920,7 @@ typedef struct ftItemSwing				ftItemSwing;
 typedef struct ftParts                  ftParts;
 typedef struct ftPartIndex				ftPartIndex;
 typedef struct ftPartsUnkIndexTable		ftPartsUnkIndexTable;
+typedef struct ftShadow                 ftShadow;
 typedef struct ftCostumeIndex           ftCostumeIndex;
 typedef struct ftSkeleton               ftSkeleton;
 typedef struct ftAfterImage				ftAfterImage;

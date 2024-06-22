@@ -6,6 +6,7 @@
 #include "ftanimgoto.h"
 #include "fthammer.h"
 #include "ftphysics.h"
+#include "ftshadow.h"
 
 #include "ftpublicity.h"
 

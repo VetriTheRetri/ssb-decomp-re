@@ -518,7 +518,7 @@ typedef struct gmBattleState
 					// (?), 0x1 on Metal Mario battle, 0x2 on Hyrule Castle,
 					// 0x3 on various stages, 0x4 on Polygon Team?
 	ub32 is_display_score : 1;						 // Displays score when a fighter falls
-	ub32 is_ignore_teamshadow : 1;					 // If FALSE, shadows are colored based on
+	ub32 is_not_teamshadows : 1;					 // If FALSE, shadows are colored based on
 													 // players' team affiliation, otherwise use
 													 // default shadow color
 	gmPlayerBlock player_block[GMMATCH_PLAYERS_MAX]; // Holds data for each player

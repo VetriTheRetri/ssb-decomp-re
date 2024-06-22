@@ -474,6 +474,14 @@ struct ftSkeleton
     u8 flags;
 };
 
+struct ftShadow
+{
+    Vtx shadow_vertex1[8];
+    Vtx shadow_vertex2[8];
+    s32 player;
+    s32 unk_0x104;
+};
+
 struct ftCostumeIndex
 {
     u8 ffa[4];

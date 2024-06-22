@@ -68,7 +68,7 @@ void ftCommonSleepProcUpdate(GObj *fighter_gobj)
                 this_fp->stock_count = 0;
                 gBattleState->player_block[this_fp->player].stock_count = 0;
 
-                ftCommon_RebirthDown_SetStatus(fighter_gobj);
+                ftCommonRebirthDownSetStatus(fighter_gobj);
             }
         }
         else

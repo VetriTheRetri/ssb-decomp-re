@@ -41,15 +41,15 @@ void ftCommonAppearSetPosition(GObj* fighter_gobj); // This runs when spawning m
 													  // members in VS mode I suppose?
 
 // RebirthDown / RebirthStand / RebirthWait
-void ftCommon_RebirthDown_SetStatus(GObj* this_gobj);
-void ftCommon_RebirthCommon_DecHaloTimers(GObj* fighter_gobj);
-void ftCommon_RebirthDown_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_RebirthCommon_ProcMap(GObj* fighter_gobj);
-void ftCommon_RebirthStand_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_RebirthStand_SetStatus(GObj* fighter_gobj);
-void ftCommon_RebirthWait_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_RebirthWait_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_RebirthWait_SetStatus(GObj* fighter_gobj);
+void ftCommonRebirthDownSetStatus(GObj* this_gobj);
+void ftCommonRebirthCommonUpdateHaloWait(GObj* fighter_gobj);
+void ftCommonRebirthDownProcUpdate(GObj* fighter_gobj);
+void ftCommonRebirthCommonProcMap(GObj* fighter_gobj);
+void ftCommonRebirthStandProcUpdate(GObj* fighter_gobj);
+void ftCommonRebirthStandSetStatus(GObj* fighter_gobj);
+void ftCommonRebirthWaitProcUpdate(GObj* fighter_gobj);
+void ftCommonRebirthWaitProcInterrupt(GObj* fighter_gobj);
+void ftCommonRebirthWaitSetStatus(GObj* fighter_gobj);
 
 // Wait
 void ftCommonWaitProcInterrupt(GObj* fighter_gobj);

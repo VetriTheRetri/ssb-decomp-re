@@ -82,11 +82,11 @@ void ftCommon_Run_SetStatus(GObj* fighter_gobj);
 sb32 ftCommon_Run_CheckInterruptDash(GObj* fighter_gobj);
 
 // RunBrake
-void ftCommon_RunBrake_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_RunBrake_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_RunBrake_SetStatus(GObj* fighter_gobj, u32 flag);
-sb32 ftCommon_RunBrake_CheckInterruptRun(GObj* fighter_gobj);
-sb32 ftCommon_RunBrake_CheckInterruptTurnRun(GObj* fighter_gobj);
+void ftCommonRunBrakeProcInterrupt(GObj* fighter_gobj);
+void ftCommonRunBrakeProcPhysics(GObj* fighter_gobj);
+void ftCommonRunBrakeSetStatus(GObj* fighter_gobj, u32 flag);
+sb32 ftCommonRunBrakeCheckInterruptRun(GObj* fighter_gobj);
+sb32 ftCommonRunBrakeCheckInterruptTurnRun(GObj* fighter_gobj);
 
 // Turn
 void ftCommon_Turn_ProcUpdate(GObj* fighter_gobj);

@@ -28,7 +28,7 @@ void ftCommonTurnRunProcInterrupt(GObj *fighter_gobj)
 
     if ((ftCommonKneeBendCheckInterruptRun(fighter_gobj) == FALSE) && (fp->command_vars.flags.flag2 != 0))
     {
-        ftCommon_RunBrake_CheckInterruptTurnRun(fighter_gobj);
+        ftCommonRunBrakeCheckInterruptTurnRun(fighter_gobj);
     }
 }
 

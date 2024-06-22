@@ -22,7 +22,7 @@
     (ftCommonGuardOnCheckInterruptCommon(fighter_gobj) != FALSE)    ||  \
     (ftCommonAppealCheckInterruptCommon(fighter_gobj) != FALSE)     ||  \
     (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) != FALSE) ||  \
-    (ftCommon_Dash_CheckInterruptCommon(fighter_gobj) != FALSE) ||      \
+    (ftCommonDashCheckInterruptCommon(fighter_gobj) != FALSE) ||      \
     (ftCommonPassCheckInterruptCommon(fighter_gobj) != FALSE) ||      \
     (ftCommonDokanStartCheckInterruptCommon(fighter_gobj) != FALSE)   \
 )

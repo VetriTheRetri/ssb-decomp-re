@@ -68,13 +68,13 @@ sb32 ftCommon_Walk_CheckInputSuccess(GObj* fighter_gobj);
 sb32 ftCommon_Walk_CheckInterruptCommon(GObj* fighter_gobj);
 
 // Dash
-void ftCommon_Dash_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_Dash_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Dash_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_Dash_ProcMap(GObj* fighter_gobj);
-void ftCommon_Dash_SetStatus(GObj* fighter_gobj, u32 flag);
-sb32 ftCommon_Dash_CheckInterruptCommon(GObj* fighter_gobj);
-sb32 ftCommon_Dash_CheckTurn(GObj* fighter_gobj);
+void ftCommonDashProcUpdate(GObj* fighter_gobj);
+void ftCommonDashProcInterrupt(GObj* fighter_gobj);
+void ftCommonDashProcPhysics(GObj* fighter_gobj);
+void ftCommonDashProcMap(GObj* fighter_gobj);
+void ftCommonDashSetStatus(GObj* fighter_gobj, u32 flag);
+sb32 ftCommonDashCheckInterruptCommon(GObj* fighter_gobj);
+sb32 ftCommonDashCheckTurn(GObj* fighter_gobj);
 
 // Run
 void ftCommonRunProcInterrupt(GObj* fighter_gobj);

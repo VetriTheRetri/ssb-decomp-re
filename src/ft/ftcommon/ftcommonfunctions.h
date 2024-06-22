@@ -98,10 +98,10 @@ sb32 ftCommon_Turn_CheckInputSuccess(GObj* fighter_gobj);
 sb32 ftCommon_Turn_CheckInterruptCommon(GObj* fighter_gobj);
 
 // TurnRun
-void ftCommon_TurnRun_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_TurnRun_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_TurnRun_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_TurnRun_CheckInterruptRun(GObj* fighter_gobj);
+void ftCommonTurnRunProcUpdate(GObj* fighter_gobj);
+void ftCommonTurnRunProcInterrupt(GObj* fighter_gobj);
+void ftCommonTurnRunSetStatus(GObj* fighter_gobj);
+sb32 ftCommonTurnRunCheckInterruptRun(GObj* fighter_gobj);
 
 // KneeBend / GuardKneeBend
 void ftCommonKneeBendProcUpdate(GObj* fighter_gobj);

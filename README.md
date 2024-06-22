@@ -7,7 +7,7 @@ To set up and build the rom, see below
 
 ## Clone this branch
 
-`git clone --single-branch --branch buildingRom git@github.com:VetriTheRetri/ssb-decomp-re.git ssbd`
+`git clone --single-branch --branch buildingRom https://github.com/VetriTheRetri/ssb-decomp-re.git`
 
 ## Install dependencies
 

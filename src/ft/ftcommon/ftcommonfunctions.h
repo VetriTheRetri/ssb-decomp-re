@@ -133,8 +133,8 @@ s32 ftCommonJumpAerialMultiGetJumpInputType(ftStruct* fp);
 sb32 ftCommonJumpAerialCheckInterruptCommon(GObj* fighter_gobj);
 
 // Fall / FallAerial
-void ftCommon_Fall_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Fall_SetStatus(GObj* fighter_gobj);
+void ftCommonFallProcInterrupt(GObj* fighter_gobj);
+void ftCommonFallSetStatus(GObj* fighter_gobj);
 
 // Squat / SquatWait / SquatRv
 sb32 ftCommonSquatCheckGotoPass(GObj* fighter_gobj);

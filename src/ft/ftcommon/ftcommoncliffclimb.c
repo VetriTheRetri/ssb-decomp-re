@@ -104,7 +104,7 @@ sb32 ftCommonCliffClimbOrFallCheckInterruptCommon(GObj *fighter_gobj)
             fp->cliffcatch_wait = FTCOMMON_CLIFF_CATCH_WAIT;
 
             ftCommonCliffCommonProcDamage(fighter_gobj);
-            ftCommon_Fall_SetStatus(fighter_gobj);
+            ftCommonFallSetStatus(fighter_gobj);
 
             return TRUE;
         }

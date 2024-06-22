@@ -179,7 +179,7 @@ void ftCommonDamageCommonProcInterrupt(GObj *fighter_gobj)
             {
                 ftCommonHammerFallProcInterrupt(fighter_gobj);
             }
-            else ftCommon_Fall_ProcInterrupt(fighter_gobj);
+            else ftCommonFallProcInterrupt(fighter_gobj);
         }
         else if (ftHammer_CheckItemHold(fighter_gobj) != FALSE)
         {

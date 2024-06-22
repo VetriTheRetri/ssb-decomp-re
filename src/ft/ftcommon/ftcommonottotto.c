@@ -64,7 +64,7 @@ void ftCommonOttottoProcMap(GObj *fighter_gobj)
 
     if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
     {
-        ftCommon_Fall_SetStatus(fighter_gobj);
+        ftCommonFallSetStatus(fighter_gobj);
     }
     else
     {

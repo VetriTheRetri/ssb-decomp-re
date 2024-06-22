@@ -72,7 +72,7 @@ void ftCaptainSpecialLwDecideSetEndStatus(GObj *fighter_gobj)
     {
         ftCommon_Wait_SetStatus(fighter_gobj);
     }
-    else ftCommon_Fall_SetStatus(fighter_gobj);
+    else ftCommonFallSetStatus(fighter_gobj);
 }
 
 // 0x8015FD90

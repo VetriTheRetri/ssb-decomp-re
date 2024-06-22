@@ -102,7 +102,7 @@ void ftYoshiSpecialAirHiProcUpdate(GObj *fighter_gobj)
 {
     ftYoshiSpecialHiUpdateEggThrowForce(fighter_gobj);
     ftYoshiSpecialHiUpdateEggVars(fighter_gobj);
-    ftStatusSetOnAnimEnd(fighter_gobj, ftCommon_Fall_SetStatus);
+    ftStatusSetOnAnimEnd(fighter_gobj, ftCommonFallSetStatus);
 }
 
 // 0x8015EBA8

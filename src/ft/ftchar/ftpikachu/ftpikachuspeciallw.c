@@ -389,7 +389,7 @@ void ftPikachuSpecialAirLwHitSetStatus(GObj *fighter_gobj)
 // 0x80152620
 void ftPikachuSpecialAirLwEndProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftCommon_Fall_SetStatus);
+    ftStatusSetOnAnimEnd(fighter_gobj, ftCommonFallSetStatus);
 }
 
 // 0x80152644

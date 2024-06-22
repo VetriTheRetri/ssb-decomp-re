@@ -283,7 +283,7 @@ void ftLinkSpecialHiProcMap(GObj *fighter_gobj)
 // 0x80164198
 void ftLinkSpecialHiEndProcMap(GObj *fighter_gobj)
 {
-    if (ftMap_ProcFighterAirProcMap(fighter_gobj, ftCommon_Fall_SetStatus) == FALSE)
+    if (ftMap_ProcFighterAirProcMap(fighter_gobj, ftCommonFallSetStatus) == FALSE)
     {
         ftLinkSpecialHiProcDamage(fighter_gobj);
     }

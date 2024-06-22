@@ -40,7 +40,7 @@ void ftCommonCatchCaptureSetStatusRelease(GObj *fighter_gobj)
     ftStruct *catch_fp;
     GObj *catch_gobj;
 
-    ftCommon_Fall_SetStatus(fighter_gobj);
+    ftCommonFallSetStatus(fighter_gobj);
 
     catch_gobj = this_fp->catch_gobj;
 
@@ -54,7 +54,7 @@ void ftCommonCatchCaptureSetStatusRelease(GObj *fighter_gobj)
         {
             ftCommon_Wait_SetStatus(catch_gobj);
         }
-        else ftCommon_Fall_SetStatus(catch_gobj);
+        else ftCommonFallSetStatus(catch_gobj);
 
         catch_fp->capture_gobj = NULL;
         this_fp->catch_gobj = NULL;

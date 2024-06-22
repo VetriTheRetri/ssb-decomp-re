@@ -351,7 +351,7 @@ void ftNessSpecialAirLwHitSetStatus(GObj *fighter_gobj)
 // 0x801559D0
 void ftNessSpecialAirLwEndProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftCommon_Fall_SetStatus);
+    ftStatusSetOnAnimEnd(fighter_gobj, ftCommonFallSetStatus);
 }
 
 // 0x801559F4

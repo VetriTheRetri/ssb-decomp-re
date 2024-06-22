@@ -206,7 +206,7 @@ void ftCommonLightGetProcMap(GObj *fighter_gobj)
     if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
     {
         ftCommonLightGetProcDamage(fighter_gobj);
-        ftCommon_Fall_SetStatus(fighter_gobj);
+        ftCommonFallSetStatus(fighter_gobj);
     }
 }
 
@@ -221,7 +221,7 @@ void ftCommonHeavyGetProcMap(GObj *fighter_gobj)
         {
             ftSetupDropItem(fp);
         }
-        ftCommon_Fall_SetStatus(fighter_gobj);
+        ftCommonFallSetStatus(fighter_gobj);
     }
 }
 
@@ -236,7 +236,7 @@ void ftCommonHeavyThrowProcMap(GObj *fighter_gobj)
         {
             ftSetupDropItem(fp);
         }
-        ftCommon_Fall_SetStatus(fighter_gobj);
+        ftCommonFallSetStatus(fighter_gobj);
     }
 }
 

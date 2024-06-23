@@ -189,7 +189,7 @@ void func_ovl6_8018D6A8(s32 line_id)
 	s32 index;
 
 	index = mpCollision_SetDObjNoID(line_id);
-	dobj = gMapRooms->room_dobj[index];
+	dobj = gMPRooms->room_dobj[index];
 	index = scBonusGame_GetBonus2PlatformKind(line_id);
 
 	func_ovl0_800C8B28(dobj,
@@ -227,7 +227,7 @@ void scBonusGame_InitBonus2Platforms()
 		if ((mpCollision_GetVertexFlagsLineID(line_ids[i]) & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_Detect)
 		{
 			room_id = mpCollision_SetDObjNoID(line_ids[i]);
-			if (gMapRooms->room_dobj[room_id]->actor.atrack == NULL)
+			if (gMPRooms->room_dobj[room_id]->actor.atrack == NULL)
 				mpCollision_SetYakumonoOnID(room_id);
 			func_ovl6_8018D6A8(line_ids[i]);
 			gGroundStruct.bonus2.platform_count++;
@@ -292,7 +292,7 @@ void scBonusGame_CheckBonus2PlatformLanding(GObj* ground_gobj)
 		if ((fp->ground_or_air == GA_Ground)
 			&& ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_Detect))
 		{
-			DObj* dobj = gMapRooms->room_dobj[mpCollision_SetDObjNoID(fp->coll_data.ground_line_id)];
+			DObj* dobj = gMPRooms->room_dobj[mpCollision_SetDObjNoID(fp->coll_data.ground_line_id)];
 
 			if (dobj->child->user_data.s != 0)
 				scBonusGame_UpdateBonus2PlatformCount(dobj);
@@ -730,7 +730,7 @@ void scBonusGame_SetGeometryRenderLights(Gfx** display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 
-	ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
+	ftRender_Lights_DisplayLightReflect(display_list, gMPLightAngleX, gMPLightAngleY);
 }
 
 // 8018EACC

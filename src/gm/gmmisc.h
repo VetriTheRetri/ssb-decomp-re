@@ -20,7 +20,7 @@
 	3 // Apparently a valid facing direction value used by Pikachu's Thunder
 	  // Jolt?
 
-#define GMCOMPLAYER_LEVEL_MAX 9
+#define FTCOMPUTER_LEVEL_MAX 9
 
 #define GMHITCOLLISION_MASK_FIGHTER (1 << 0) // Can interact with fighters
 #define GMHITCOLLISION_MASK_WEAPON (1 << 1)	 // Can interact with weapons

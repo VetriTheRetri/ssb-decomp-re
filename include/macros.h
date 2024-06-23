@@ -70,6 +70,12 @@
 #define GS_TIME_MIN (GS_TIME_SEC * 60)
 #define GS_TIME_HRS (GS_TIME_MIN * 60)
 
+/* Count how many bits are in a type of a certain number
+(WARNING: includes padding in structs that are not byte-aligned) */
+#define GS_BITCOUNT(t) ((int) (sizeof(t) * 8) )
+
+#define GS_DISTANCE(a, b) (((a) < (b)) ? -((a) - (b)) : ((a) - (b)))
+
 #define I_GS_TIME_TO_FRAMES(q, u) ((int)((q) * (u)))
 
 #define I_SEC_TO_FRAMES(q) ((int)((q)*GS_TIME_SEC))

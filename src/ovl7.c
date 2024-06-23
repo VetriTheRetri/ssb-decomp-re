@@ -1413,7 +1413,7 @@ void scTrainingMode_InitTrainingMode()
 void scTrainingMode_SetGeometryRenderLights(Gfx** display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
+	ftRender_Lights_DisplayLightReflect(display_list, gMPLightAngleX, gMPLightAngleY);
 }
 
 // 801905F4

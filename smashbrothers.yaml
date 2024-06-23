@@ -440,7 +440,8 @@ segments:
     subsegments:
     
     # ovl3 text
-      - [0x0AC540, asm, ovl3]
+    # CPU player AI file
+      - [0x0AC540, c, ft/ftcomputer]
     # Fighter shadows file
       - [0x0B5850, c, ft/ftshadow]
     # Common fighter move files
@@ -695,7 +696,8 @@ segments:
       - [0x100400, c, it/itfighter/itlinkbomb]
 
     # ovl3 data
-      - [0x1010A0, data, ovl3]
+    # CPU player AI file
+      - [0x1010A0, .data, ft/ftcomputer]
     # Fighter shadows file
       - [0x102E50, .data, ft/ftshadow]
     # Common fighter move files
@@ -786,7 +788,8 @@ segments:
       - [0x106100, .data, it/itfighter/itlinkbomb]
 
     # ovl3 read-only data
-      - [0x106200, rodata, ovl3]
+    # CPU player AI file
+      - [0x106200, .rodata, ft/ftcomputer]
     # Common fighter move files
       - [0x106A70, .rodata, ft/ftcommon/ftcommondead]
       - [0x106A90, .rodata, ft/ftcommon/ftcommonrebirth]

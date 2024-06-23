@@ -673,10 +673,8 @@ func_ovl2_800E7F68 = 0x800E7F68;
 gOMObjCommonLinks = 0x800466F0;
 gDefaultBattleState = 0x800A3fc8;
 gCommonSpriteFiles = 0x80130D40;
-gMapLightAngleY = 0x80131394;
-gBattleState = 0x800A50e8;
+gBattleState = 0x800A50E8;
 gSceneData = 0x800A4AD0;
-gMapLightAngleX = 0x80131390;
 gCameraGObj = 0x80131460;
 gMusicIndexDefault = 0x801313a0;
 gPlayerCommonInterface = 0x80131580;
@@ -777,9 +775,8 @@ gFTDataLinkMain = 0x80130FB0;
 
 gFTMainIsHurtDetect = 0x801311A0;
 gFTMainIsHitDetect = 0x801311B0;
-gMPCollUpdateFrame = 0x80131398;
+
 gGroundStruct = 0x801313F0;
-gMapRooms = 0x80131304;
 g1PGameTotalDamageTaken = 0x80130D6C;
 omAddDObjAnimAll = 0x8000BD1C;
 D_ovl2_801313F4 = 0x801313F4;
@@ -816,7 +813,12 @@ gFTDataNessParticleBankID = 0x80131148;
 
 gFTDataBossBattleMotion = 0x80131174;
 
+gMPRooms = 0x80131304;
 gMPEdgeBounds = 0x80131308;
+gMPLineTypeGroups = 0x80131348;
+gMPLightAngleX = 0x80131390;
+gMPLightAngleY = 0x80131394;
+gMPCollUpdateFrame = 0x80131398;
 
 sEFTexturesFile2 = 0x801313B4;
 
@@ -827,3 +829,5 @@ g1PGameBonusStatTomatoCount = 0x801936A8;
 g1PGameBonusStatHeartCount = 0x801936A9;
 g1PGameBonusStatShieldBreaker = 0x801936AB;
 g1PGameBonusStatMewCatcher = 0x801936AD;
+
+.L80134E84_AF8C4 = 0x80134E84;

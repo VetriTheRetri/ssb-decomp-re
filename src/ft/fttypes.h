@@ -532,9 +532,9 @@ struct ftComputer
     u16 fighter_follow_wait;                // CPU player will wait this many frames before following target?
     u16 fighter_follow_end;                 // CPU player will stop following target after this many frames?
     u16 unk_ftcom_0x20;                     // ???
-    u16 wiggle_wait;                   // CPU player will wait this many frames before finding a new target?
+    u16 target_find_wait;
+    u16 wiggle_wait;                        // CPU player will wait this many frames before finding a new target?
     u16 target_damage_percent;              // ???
-    u16 unk_ftcom_0x26;                     // Unused?
     u16 attack_hit_count;                   // Number of times CPU player successfully dealt damage?
     u16 appeal_attempt_frames;              // CPU player will attempt to taunt while this is not 0
     u16 stand_stop_wait;                    // CPU player will wait this many frames before breaking out of idle behavior

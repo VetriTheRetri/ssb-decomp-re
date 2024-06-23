@@ -198,6 +198,7 @@ typedef enum scMajorScene
 	scMajor_Kind_VSResults = 24,   // VS mode results
 	scMajor_Kind_MnVSRecords,	   // Records screen
 	scMajor_Kind_MnChrData,		   // Character data screen
+	scMajor_Kind_N64,			   // N64 logo
 	scMajor_Kind_1PBonusGame = 53, // Bonus game in-game
 	scMajor_Kind_1PTrainingMode,   // Training mode in-game
 	scMajor_Kind_MnOptions = 57,   // Options menu

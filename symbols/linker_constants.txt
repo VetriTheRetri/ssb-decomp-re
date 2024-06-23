@@ -233,3 +233,11 @@ lITLinkBombBloatScale = 0x000000A8;
 lITMonsterAnimBankStart = 0x00013624;
 
 FILE_041_LINK_CAMERA_PARAMS_OFFSET = 0x000000C0;
+
+lCreditsArenaLo = 0x8013AA60;
+lCreditsInterpolation = 0x00007304;
+lCreditsATrack = 0x00007338;
+lCreditsDObjDesc = 0x000078C0;
+lCreditsCrosshairSprite = 0x00006D58;
+lCreditsTextBoxBracketLeft = 0x00006F98;
+lCreditsTextBoxBracketRight = 0x000071D8;

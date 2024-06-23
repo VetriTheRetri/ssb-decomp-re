@@ -173,6 +173,9 @@ extern "C"
 	void spScissor(s32 xmin, s32 xmax, s32 ymin, s32 ymax);
 	void spFinish(Gfx** glistp);
 
+#define spGetSpriteFromFile(file, offset)\
+((Sprite*) ((uintptr_t)(file) + (intptr_t)(offset)))
+
 #ifdef _LANGUAGE_C_PLUS_PLUS
 }
 #endif

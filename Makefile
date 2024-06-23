@@ -249,6 +249,10 @@ nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
 
 clean:
 	rm -r -f $(BUILD_DIR)
+	rm -f src/credits/staff.credits.encoded src/credits/staff.credits.metadata
+	rm -f src/credits/titles.credits.encoded src/credits/titles.credits.metadata
+	rm -f src/credits/info.credits.encoded src/credits/info.credits.metadata
+	rm -f src/credits/companies.credits.encoded src/credits/companies.credits.metadata
 
 extract:
 	rm -r -f asm
@@ -313,18 +317,18 @@ $(BUILD_DIR)/%.o: %.c
 	$(V)$(PYTHON) $(TOOLS)/patchMips3Objects.py $@
 
 src/ovl59.c: src/credits/staff.credits.encoded src/credits/titles.credits.encoded src/credits/info.credits.encoded src/credits/companies.credits.encoded
-src/credits/staff.credits.encoded: src/credits/staff.credits.txt
+src/credits/staff.credits.encoded: src/credits/staff.credits.txt tools/creditsTextConverter.py
 	@$(PRINT) "$(GREEN)Creating credit text data for: $(PURPLE)$<$(NO_COL)\n"
-	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $<
-src/credits/titles.credits.encoded: src/credits/titles.credits.txt
+	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $< -titleFont
+src/credits/titles.credits.encoded: src/credits/titles.credits.txt tools/creditsTextConverter.py
 	@$(PRINT) "$(GREEN)Creating credit text data for: $(PURPLE)$<$(NO_COL)\n"
-	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $<
-src/credits/info.credits.encoded: src/credits/info.credits.txt
+	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $< -titleFont
+src/credits/info.credits.encoded: src/credits/info.credits.txt tools/creditsTextConverter.py
 	@$(PRINT) "$(GREEN)Creating credit text data for: $(PURPLE)$<$(NO_COL)\n"
-	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $< -m
-src/credits/companies.credits.encoded: src/credits/companies.credits.txt
+	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $< -paragraphFont -multiline
+src/credits/companies.credits.encoded: src/credits/companies.credits.txt tools/creditsTextConverter.py
 	@$(PRINT) "$(GREEN)Creating credit text data for: $(PURPLE)$<$(NO_COL)\n"
-	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $< -3f
+	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $< -paragraphFont
 
 #Bins
 $(BUILD_DIR)/%.o: %.bin

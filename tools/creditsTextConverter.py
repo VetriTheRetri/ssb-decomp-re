@@ -2,144 +2,155 @@ import sys
 
 DECODE_PRINT_MARGIN = 35
 
-encodeMap_m = {
-	'-': 0x40,
-	'&': 0x42,
-	'"': 0x43,
-	'/': 0x44,
-	"'": 0x45,
-	'?': 0x46,
-	'(': 0x47,
-	')': 0x48,
-	'é': 0x49,
-	' ': 0xffffffdf,
-	',': 0x41,
-	'.': 0x3f,
-}
-decodeMap_m = { v: k for k, v in encodeMap_m.items() }
-encodeMap = {
-	'.': 0x34,
-	',': 0x35,
-	'-': 0x40,
-	'&': 0x42,
-	'"': 0x43,
-	'/': 0x44,
-	"'": 0x45,
-	'?': 0x46,
-	'(': 0x47,
-	')': 0x48,
-	'é': 0x49,
-	' ': 0xffffffdf,
-	'4': 0x37,
-}
-decodeMap = { v: k for k, v in encodeMap.items() }
-
-CHAR_A_m = 0x0
-CHAR_Z_m = 0x19
-CHAR_a_m = 0x1a
-CHAR_z_m = 0x33
-CHAR_9_m = 0x35
-CHAR_0_m = 0x3e
-
 CHAR_A = 0x0
 CHAR_Z = 0x19
 CHAR_a = 0x1a
 CHAR_z = 0x33
-CHAR_9 = 0x34
-CHAR_0 = 0x3d
+CHAR_9 = 0x35
+CHAR_0 = 0x3e
+
+WHITESPACE = 0xffffffdf
+LINE_BREAK = 0xffffffc9
+
+encodeMapParagraphFont = {
+	":": 0x34,
+	"9": 0x35,
+	"8": 0x36,
+	"7": 0x37,
+	"6": 0x38,
+	"5": 0x39,
+	"4": 0x3a,
+	"3": 0x3b,
+	"2": 0x3c,
+	"1": 0x3d,
+	"0": 0x3e,
+	".": 0x3f,
+	"-": 0x40,
+	",": 0x41,
+	"&": 0x42,
+	'"': 0x43,
+	"/": 0x44,
+	"'": 0x45,
+	"?": 0x46,
+	"(": 0x47,
+	")": 0x48,
+	"é": 0x49,
+}
+decodeMapParagraphFont = { v: k for k, v in encodeMapParagraphFont.items() }
+encodeMapTitleFont = {
+ 	".": 0x34,
+ 	",": 0x35,
+ 	"'": 0x36,
+ 	"4": 0x37,
+}
+decodeMapTitleFont = { v: k for k, v in encodeMapTitleFont.items() }
+
+# Staff and titles (title font):
+# 0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f  10 11 12 13 14 15 16 17 18 19
+# A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z
+# 1a 1b 1c 1d 1e 1f 20 21 22 23 24 25 26 27 28 29 2a 2b 2c 2d 2e 2f 30 31 32 33
+# a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z
+# 34 35 36 37
+# .  ,  '  4
+
+# Info and companies (paragraph font):
+# 0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f  10 11 12 13 14 15 16 17 18 19
+# A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z
+# 1a 1b 1c 1d 1e 1f 20 21 22 23 24 25 26 27 28 29 2a 2b 2c 2d 2e 2f 30 31 32 33
+# a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z
+# 34 35 36 37 38 39 3a 3b 3c 3d 3e 3f 40 41 42 43 44 45 46 47 48 49
+# :  9  8  7  6  5  4  3  2  1  0  .  -  ,  &  "  /  '  ?  (  )  é
 
 
-def encode(text, use3fForPeriod=False):
+def encode(text, encodingMap):
 	output = ""
 	for char in text:
 		if char == '\n':
 			continue
-		if use3fForPeriod and char == '.':
-			output += hex(0x3f)
-		elif use3fForPeriod and char == ':':
-			output += hex(0x34)
-		elif char in encodeMap.keys():
-			output += hex(encodeMap[char])
+		if char == ' ':
+			output += hex(WHITESPACE)
+		elif char in encodingMap.keys():
+			output += hex(encodingMap[char])
 		elif ord(char) >= ord('A') and ord(char) <= ord('Z'):
-			output += hex(ord(char) - 0x41)
+			output += hex(ord(char) - ord('A') + CHAR_A)
 		elif ord(char) >= ord('a') and ord(char) <= ord('z'):
-			output += hex(ord(char) - 0x47)
-		elif ord(char) >= ord('0') and ord(char) <= ord('9'):
-			output += hex(0x35 + ord('9') - ord(char))
+			output += hex(ord(char) - ord('a') + CHAR_a)
 		else:
-			print(f"No known way to encode '{char}'", file=sys.stderr)
+			print(f"Character '{char}' not available in font", file=sys.stderr)
 		output += ','
 	output += '\n'
 	return output
 
 
-def decode(text):
-	word = []
-	for hexString in text.replace('\n', '').split(','):
-		value = eval(hexString)
-		word.append(value)
-		if value == 0xffffffdf:
-			print(' '*(max(DECODE_PRINT_MARGIN-len(word), 1)), end='')
-			print(",".join([hex(x) for x in word]))
-			word = []
-		elif value == 0xffffffc9:
-			print('_', end='')
-		elif value in decodeMap.keys():
-			print(decodeMap[value], end='')
-		elif value >= CHAR_A and value <= CHAR_Z:
-			print(chr(value + 0x41), end='')
-		elif value >= CHAR_a and value <= CHAR_z:
-			print(chr(value + 0x47), end='')
-		elif value >= CHAR_9 and value <= CHAR_0:
-			print(chr(CHAR_9 + ord('9') - value), end='')
-		elif value == 0x3f:
-			print('.', end='')
-		else:
-			print(f"No known way to decode '{hexString}'", file=sys.stderr)
-	print(' '*(max(DECODE_PRINT_MARGIN - 1 -len(word), 1)), end='')
-	print(",".join([hex(x) for x in word]))
-
-
-def encodeMultiline(text):
+def encodeMultiline(text, encodingMap):
 	output = ""
 	for char in text.replace('\n\n', '\n'):
 		if char == '\n':
-			output += hex(0xffffffc9)
-		elif char in encodeMap_m.keys():
-			output += hex(encodeMap_m[char])
+			output += hex(LINE_BREAK)
+		elif char == ' ':
+			output += hex(WHITESPACE)
+		elif char in encodingMap.keys():
+			output += hex(encodingMap[char])
 		elif ord(char) >= ord('A') and ord(char) <= ord('Z'):
-			output += hex(ord(char) - 0x41)
+			output += hex(ord(char) - ord('A') + CHAR_A)
 		elif ord(char) >= ord('a') and ord(char) <= ord('z'):
-			output += hex(ord(char) - 0x47)
-		elif ord(char) >= ord('0') and ord(char) <= ord('9'):
-			output += hex(0x35 + ord('9') - ord(char))
+			output += hex(ord(char) - ord('a') + CHAR_a)
 		else:
-			print(f"No known way to encode '{char}'", file=sys.stderr)
+			print(f"Character '{char}' not available in font", file=sys.stderr)
 		output += ','
 	output += '\n'
 	return output
 
 
-def decodeMultiline(text):
+def decode(text, decodingMap):
+	wordSize = 16
 	word = []
 	for hexString in text.replace('\n', '').split(','):
 		value = eval(hexString)
 		word.append(value)
-		if value == 0xffffffc9:
+
+		if value == WHITESPACE:
+			print(' ', end='')
+
+		elif value in decodingMap.keys():
+			print(decodingMap[value], end='')
+		elif value >= CHAR_A and value <= CHAR_Z:
+			print(chr(value + ord('A')), end='')
+		elif value >= CHAR_a and value <= CHAR_z:
+			print(chr(value - CHAR_a + ord('a')), end='')
+		else:
+			print(f"Unknown index: '{hexString}'", file=sys.stderr)
+
+		if len(word) == wordSize:
 			print(' '*(max(DECODE_PRINT_MARGIN-len(word), 1)), end='')
 			print(",".join([hex(x) for x in word]))
 			word = []
-			# print()
-		elif value in decodeMap_m.keys():
-			print(decodeMap_m[value], end='')
-		elif value >= CHAR_A_m and value <= CHAR_Z_m:
-			print(chr(value + 0x41), end='')
-		elif value >= CHAR_a_m and value <= CHAR_z_m:
-			print(chr(value + 0x47), end='')
-		elif value >= CHAR_9_m and value <= CHAR_0_m:
-			print(chr(CHAR_9_m + ord('9') - value), end='')
+
+	print(' '*(max(DECODE_PRINT_MARGIN-len(word), 1)), end='')
+	print(",".join([hex(x) for x in word]))
+
+
+def decodeMultiline(text, decodingMap):
+	word = []
+	for hexString in text.replace('\n', '').split(','):
+		value = eval(hexString)
+		word.append(value)
+
+		if value == WHITESPACE:
+			print(' ', end='')
+		elif value == LINE_BREAK:
+			print(' '*(max(DECODE_PRINT_MARGIN-len(word), 1)), end='')
+			print(",".join([hex(x) for x in word]))
+			word = []
+
+		elif value in decodingMap.keys():
+			print(decodingMap[value], end='')
+		elif value >= CHAR_A and value <= CHAR_Z:
+			print(chr(value + ord('A')), end='')
+		elif value >= CHAR_a and value <= CHAR_z:
+			print(chr(value - CHAR_a + ord('a')), end='')
 		else:
-			print(f"No known way to decode '{hexString}'", file=sys.stderr)
+			print(f"Unknown index: '{hexString}'", file=sys.stderr)
 
 	print(' '*(max(DECODE_PRINT_MARGIN - 1 -len(word), 1)), end='')
 	print(",".join([hex(x) for x in word]))
@@ -179,23 +190,23 @@ def getDelimiterDataMultiline(text):
 
 if __name__ == "__main__":
 
+	isTitleFont = True
 	isMultiline = False
-	if '-m' in sys.argv:
+
+	if '-multiline' in sys.argv:
 		isMultiline = True
-		sys.argv.remove('-m')
+		sys.argv.remove('-multiline')
+	if '-paragraphFont' in sys.argv:
+		isTitleFont = False
+		sys.argv.remove('-paragraphFont')
 
 	if '-d' in sys.argv:
 		sys.argv.remove('-d')
 		if isMultiline:
-			decodeMultiline(sys.argv[1])
+			decodeMultiline(sys.argv[1], decodeMapTitleFont if isTitleFont else decodeMapParagraphFont)
 		else:
-			decode(sys.argv[1])
+			decode(sys.argv[1], decodeMapTitleFont if isTitleFont else decodeMapParagraphFont)
 		sys.exit(0)
-
-	use3fForPeriod = False
-	if '-3f' in sys.argv:
-		use3fForPeriod = True
-		sys.argv.remove('-3f')
 
 	inFilePath = sys.argv[1]
 
@@ -215,9 +226,9 @@ if __name__ == "__main__":
 			metadataFile.write(f"{pair[0]},{pair[1]},\n")
 
 	if isMultiline:
-		encodedText = encodeMultiline(creditsText)
+		encodedText = encodeMultiline(creditsText, encodeMapTitleFont if isTitleFont else encodeMapParagraphFont)
 	else:
-		encodedText = encode(creditsText, use3fForPeriod)
+		encodedText = encode(creditsText, encodeMapTitleFont if isTitleFont else encodeMapParagraphFont)
 
 	with open(outEncodedPath, 'w') as encodedFile:
 		encodedFile.write(encodedText)

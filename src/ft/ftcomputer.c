@@ -7518,7 +7518,7 @@ void ftComputerFollowObjectiveRush(ftStruct *fp)
 
     if (ftComputerCheckFindTarget(fp) != FALSE)
     {
-        mtTrigGetRandomFloat(fp);
+        mtTrigGetRandomFloat();
         random = mtTrigGetRandomFloat();
 
         if (((fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))

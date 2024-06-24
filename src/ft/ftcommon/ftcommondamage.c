@@ -392,28 +392,28 @@ void ftCommonDamageCheckMakeScreenFlash(f32 knockback, s32 element)
     case gmHitCollision_Element_Fire:
         if (knockback > FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH) 
         {
-            ifScreenFlash_SetColAnim(0x53, 0);
+            ifScreenFlashSetColAnimID(0x53, 0);
         }
         break;
 
     case gmHitCollision_Element_Electric:
         if (knockback > FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH)
         {
-            ifScreenFlash_SetColAnim(0x54, 0);
+            ifScreenFlashSetColAnimID(0x54, 0);
         }
         break;
 
     case gmHitCollision_Element_Freezing:
         if (knockback > FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH)
         {
-            ifScreenFlash_SetColAnim(0x55, 0);
+            ifScreenFlashSetColAnimID(0x55, 0);
         }
         break;
 
     default:
         if (knockback > FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH)
         {
-            ifScreenFlash_SetColAnim(0x52, 0);
+            ifScreenFlashSetColAnimID(0x52, 0);
         }
         break;
     }

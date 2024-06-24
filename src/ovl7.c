@@ -1351,7 +1351,7 @@ void scTrainingMode_InitTrainingMode()
 	ftManagerAllocFighter(2, GMMATCH_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManager_AllocUserData();
-	ifScreenFlash_InitInterfaceVars(0xFF);
+	ifScreenFlashMakeInterface(0xFF);
 	gmRumble_SetPlayerRumble();
 	ftPublicitySetup();
 

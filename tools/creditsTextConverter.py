@@ -2,6 +2,45 @@ import sys
 
 DECODE_PRINT_MARGIN = 35
 
+encodeMap_m = {
+	'-': 0x40,
+	'&': 0x42,
+	'"': 0x43,
+	'/': 0x44,
+	"'": 0x45,
+	'?': 0x46,
+	'(': 0x47,
+	')': 0x48,
+	'é': 0x49,
+	' ': 0xffffffdf,
+	',': 0x41,
+	'.': 0x3f,
+}
+decodeMap_m = { v: k for k, v in encodeMap_m.items() }
+encodeMap = {
+	'.': 0x34,
+	',': 0x35,
+	'-': 0x40,
+	'&': 0x42,
+	'"': 0x43,
+	'/': 0x44,
+	"'": 0x45,
+	'?': 0x46,
+	'(': 0x47,
+	')': 0x48,
+	'é': 0x49,
+	' ': 0xffffffdf,
+	'4': 0x3a,
+}
+decodeMap = { v: k for k, v in encodeMap.items() }
+
+CHAR_A_m = 0x0
+CHAR_Z_m = 0x19
+CHAR_a_m = 0x1a
+CHAR_z_m = 0x33
+CHAR_9_m = 0x35
+CHAR_0_m = 0x3e
+
 CHAR_A = 0x0
 CHAR_Z = 0x19
 CHAR_a = 0x1a

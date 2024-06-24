@@ -14,7 +14,7 @@ extern void ftScript_UpdateDefaultEvents(GObj* fighter_gobj);
 extern void ftScript_UpdateDefaultEventsGFX(GObj* fighter_gobj);
 extern void ftMainUpdateAnimCheckInterrupt(GObj* fighter_gobj);
 extern void ftMainUpdateAnimAllEvents(GObj* fighter_gobj);
-extern sb32 ftMainUpdateColAnim(caStruct* colanim, GObj* fighter_gobj, sb32 is_playing_sfx, sb32 is_playing_gfx);
+extern sb32 ftMainUpdateColAnim(gmColAnim* colanim, GObj* fighter_gobj, sb32 is_playing_sfx, sb32 is_playing_gfx);
 extern void ftMainRunUpdateColAnim(GObj* fighter_gobj);
 extern void ftMainProcInterruptMain(GObj* fighter_gobj);
 extern void ftMainClearMapElementsAll();

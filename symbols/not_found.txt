@@ -826,6 +826,9 @@ sEFTexturesFile2 = 0x801313B4;
 gCameraMatrix = 0x80131470;
 gCameraStruct = 0x801314B0;
 
+sIFScreenFlashColAnim = 0x80131A40;
+sIFScreenFlashAlpha = 0x80131AA4;
+
 sEFGroundActor = 0x80131AD8;
 
 g1PGameBonusStatTomatoCount = 0x801936A8;

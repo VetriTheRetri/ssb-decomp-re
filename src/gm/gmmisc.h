@@ -166,7 +166,7 @@ typedef union gmStatFlags
 
 } gmStatFlags;
 
-typedef struct caScript
+typedef struct gmColScript
 {
 	u32* p_script; // Pointer to Color Animation script?
 	u16 color_event_timer;
@@ -176,32 +176,32 @@ typedef struct caScript
 	void* p_goto[2];
 	s32 unk_ca_timer;
 
-} caScript;
+} gmColScript;
 
-typedef struct caColorInfo
+typedef struct gmColKeys
 {
 	u8 r, g, b, a;
 	s16 ir, ig, ib, ia; // Interpolation step
 
-} caColorInfo;
+} gmColKeys;
 
-typedef struct caStruct
+typedef struct gmColAnim
 {
-	caScript cs[2];
+	gmColScript cs[2];
 	s32 duration;
 	s32 colanim_id;
-	caColorInfo maincolor; // Used as both PrimColor and EnvColor? DK VS Samus intro
+	gmColKeys maincolor; // Used as both PrimColor and EnvColor? DK VS Samus intro
 						   // scene uses it for Prim and items render it as Env
 	f32 light_angle1;
 	f32 light_angle2;
-	caColorInfo blendcolor;
+	gmColKeys blendcolor;
 	ub8 is_use_maincolor : 1;
 	ub8 is_use_light : 1;
 	ub8 is_use_blendcolor : 1;
 	u8 skeleton_id : 2; // ID of skeleton model to use during electric shock
 						// ColAnim?
 
-} caStruct;
+} gmColAnim;
 
 typedef struct ColAnimDesc
 {

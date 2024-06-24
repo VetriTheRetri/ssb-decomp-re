@@ -530,7 +530,7 @@ sb32 itMainCheckSetColAnimID(GObj *item_gobj, s32 colanim_id, s32 duration)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    return caCheckSetColAnimIndex(&ip->colanim, colanim_id, duration);
+    return gmColAnimCheckSetID(&ip->colanim, colanim_id, duration);
 }
 
 // 0x80172FBC

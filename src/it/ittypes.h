@@ -359,7 +359,7 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 
 	itAttributes* attributes; // Pointer to standard attributes
 
-	caStruct colanim; // Item's color animation struct
+	gmColAnim colanim; // Item's color animation struct
 
 	ub32 is_hitlag_victim : 1; // Item can deal hitlag to target
 

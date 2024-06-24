@@ -1044,7 +1044,7 @@ struct ftStruct
     alSoundEffect *p_loop_sfx;
     u16 loop_sfx_id;
 
-    caStruct colanim;
+    gmColAnim colanim;
 
     gsColorRGBA fog_color;      // Used only by Master Hand, when in the background on the -Z plane?
     gsColorRGBA shade_color;    // Shade colors of character costume

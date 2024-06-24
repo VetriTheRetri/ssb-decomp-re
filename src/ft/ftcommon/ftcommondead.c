@@ -220,7 +220,7 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
         }
     }
     efParticle_DeadBlast_MakeEffect(&pos, fp->player, 0);
-    ifScreenFlash_SetColAnim(0x51, 0);
+    ifScreenFlashSetColAnimID(0x51, 0);
 
     if 
     (
@@ -262,7 +262,7 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
         }
     }
     efParticle_DeadBlast_MakeEffect(&pos, fp->player, 1);
-    ifScreenFlash_SetColAnim(0x51, 0);
+    ifScreenFlashSetColAnimID(0x51, 0);
 
     if 
     (
@@ -303,7 +303,7 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
         }
     }
     efParticle_DeadBlast_MakeEffect(&pos, fp->player, 3);
-    ifScreenFlash_SetColAnim(0x51, 0);
+    ifScreenFlashSetColAnimID(0x51, 0);
 
     if 
     (
@@ -461,7 +461,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
 
         case 1:
             ftPhysics_StopVelAll(fighter_gobj);
-            ifScreenFlash_SetColAnim(0x51, 0);
+            ifScreenFlashSetColAnimID(0x51, 0);
             efParticle_Quake_MakeEffect(2);
             ftCommonDeadUpdateRumble(fp);
 

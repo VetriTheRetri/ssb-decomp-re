@@ -65,46 +65,48 @@ struct efParticle
     efTransform *effect_info;
 };
 
-typedef struct grEffectParam
+typedef struct efGroundParam
 {
+    u16 effect_id;                      // Array index of effect desc to use
+    u16 make_queue;                     // How many of this effect ID to spawn
+    s32 lr;                             // 0 = random, -3 or 3 = ???
+    u8 effect_weight;                   // Randomizer weight?
+
+} efGroundParam;
+
+typedef struct efGroundCreateDesc
+{
+    f32 alt_high;                       // Maximum altitude
+    f32 alt_low;                        // Minimum altitude
+    f32 pos_z;                          // Z-Axis position
+    f32 scale;                          // Scale
+    u16 effect_status;                  // Effect status? Always -1?
+    void (*proc_groundeffect)(GObj*);   // ???
+    efCreateDesc effect_desc;           // Effect description
+
+} efGroundCreateDesc;
+
+typedef struct efGroundData
+{
+    u8 param_num;                       // Number of elements in effect_param
+    efGroundParam *effect_param;        // Effect parameter descriptions
+    intptr_t o_data;                    // ???
+    efGroundCreateDesc *effect_descs;   // Ground effect creation descriptions
+
+} efGroundData;
+
+typedef struct efGroundActor
+{
+    s32 make_wait;
     u16 effect_id;
-    u16 reset_wait;
-    s32 lr;
-    u8 unk_ovl2efptr_0x8;
+    u16 make_queue;             // How many of this effect should be spawned
+    u8 effect_count;            
+    u8 *effect_ids;
+    s32 lr;                     // Number of effects spawned, multiplied by LR sign
+    void *file_head;
+    efGroundData *effect_data;
 
-} grEffectParam;
-
-typedef struct grEffectData
-{
-    Vec3f pos;
-    f32 unk_ovl2efvec_scale;
-    u16 unk_ovl2efvec_0x10;
-    void (*unk_ovl2efvec_proc)(GObj *);
-    efCreateDesc effect_desc;
-
-} grEffectData;
-
-typedef struct grEffectVars
-{
-    u8 unk_ovl2efsub_0x0;
-    grEffectParam *unk_ovl2efsub_0x4;
-    s32 unk_ovl2efsub_0x8;
-    grEffectData *effect_data;
-
-} grEffectVars;
-
-typedef struct grEffect
-{
-    s32 spawn_wait;
-    u16 effect_id;
-    u16 reset_wait;
-    u8 unk_ovl2efmain_0x8;
-    u8 *unk_ovl2efmain_0xC;
-    s32 lr;
-    s32 unk_ovl2efmain_0x14;
-    grEffectVars *effect_vars;
-
-} grEffect;
+} efGroundActor;
 
 struct efStruct
 {
@@ -121,7 +123,7 @@ struct efStruct
 
     void (*proc_update)(GObj *);
 
-    union effect_vars // Effect vars union?
+    union efCommonVars // Effect vars union?
     {
         efParticle_EffectVars_Common common;
         efParticle_EffectVars_ContainerSmash container;
@@ -147,7 +149,7 @@ struct efStruct
         efParticle_EffectVars_YoshiEggLay yoshi_egg_lay;
         efParticle_EffectVars_CaptureKirbyStar capture_kirby_star;
         efParticle_EffectVars_LoseKirbyStar lose_kirby_star;
-        efParticle_EffectVars_GroundEffect ground_effect; // Used in func_ovl2_80115E80
+        efParticle_EffectVars_GroundEffect ground_effect; // Used in efGroundCheckEffectInBounds
 
     } effect_vars;
 };

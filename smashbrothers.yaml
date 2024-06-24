@@ -428,9 +428,20 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
+    # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Stage effect manager
+      - [0x091680, c, ef/efground]
+
+    # ovl2 data
       - [0x0923D0, data, ovl2]
+    # Stage effect manager
+      - [0x0AAA40, .data, ef/efground]
+
+    # ovl2 read-only data
       - [0x0AB250, rodata, ovl2]
+    # Stage effect manager
+      - [0x0AC530, .rodata, ef/efground]
 
   - name: ovl3
     type: code

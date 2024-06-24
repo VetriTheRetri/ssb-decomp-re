@@ -1,8 +1,7 @@
-#ifndef _RUMBLE_H_
-#define _RUMBLE_H_
+#ifndef _GMRUMBLE_H_
+#define _GMRUMBLE_H_
 
 #include <ssb_types.h>
-#include <PR/ultratypes.h>
 
 #include "gmscript.h"
 
@@ -25,7 +24,7 @@ struct gmRumbleLink
 
 typedef struct gmRumblePlayer
 {
-	u8 is_active;
+	ub8 is_active;
 	gmRumbleLink* rlink;
 
 } gmRumblePlayer;

@@ -7,6 +7,105 @@ lOverlay26ArenaHi = 0x803903E0;
 lOverlay40ArenaLo = 0x8018E5E0;
 lOverlay40ArenaHi = 0x803903E0;
 
+lEFGroundCastleDataStart = 0x00002A08;
+
+lEFGroundCastleLakituDObjSetup = 0x00004118;
+lEFGroundCastleLakituRAnimJoint = 0x00004220;
+lEFGroundCastleLakituLAnimJoint = 0x00004370;
+
+lEFGroundJungleDataStart = 0x00009878;
+
+lEFGroundJungleBirdMObjSub = 0x0000F230;
+lEFGroundJungleBirdDObjSetup = 0x0000F400;
+lEFGroundJungleBirdAnimJoint = 0x0000F490;
+lEFGroundJungleBirdMatAnimJoint = 0x0000F510;
+
+lEFGroundSectorDataStart = 0x00008680;
+
+lEFGroundSectorRocketDObjSetup = 0x0000AD00;
+lEFGroundSectorRocketAnimJoint = 0x0000ADB0;
+
+lEFGroundSectorShipMObjSub = 0x0000B3C0;
+lEFGroundSectorShipDObjSetup = 0x0000B6F8;
+lEFGroundSectorShipLAnimJoint = 0x0000B780;
+lEFGroundSectorShipMatAnimJoint = 0x0000B7B0;
+lEFGroundSectorShipRAnimJoint = 0x0000B7E0;
+
+lEFGroundZebesDataStart = 0x00005AC0;
+
+lEFGroundZebesShipMObjSub = 0x0000DAE0;
+lEFGroundZebesShipDObjSetup = 0x0000DE28;
+lEFGroundZebesShipAnimJoint = 0x0000DEB0;
+lEFGroundZebesShipMatAnimJoint = 0x0000DF10;
+
+lEFGroundZebesRidleyMObjSub = 0x0000CC90;
+lEFGroundZebesRidleyDObjSetup = 0x0000CEE8;
+lEFGroundZebesRidleyAnimJoint = 0x0000CF70;
+lEFGroundZebesRidleyMatAnimJoint = 0x0000D030;
+
+lEFGroundYosterDataStart = 0x00004E78;
+
+lEFGroundYosterBirdMObjSub = 0x00007610;
+lEFGroundYosterBirdDObjSetup = 0x000077E0;
+lEFGroundYosterBirdAnimJoint = 0x00007870;
+lEFGroundYosterBirdMatAnimJoint = 0x00007950;
+
+lEFGroundYosterHeihoFruitSlowMObjSub = 0x00008360;
+lEFGroundYosterHeihoFruitSlowLDObjSetup = 0x00008528;
+lEFGroundYosterHeihoFruitSlowRDObjSetup = 0x00008778;
+lEFGroundYosterHeihoFruitSlowAnimJoint = 0x00008800;
+lEFGroundYosterHeihoFruitSlowMatAnimJoint = 0x00008930;
+
+lEFGroundYosterHeihoSlowMObjSub = 0x00009520;
+lEFGroundYosterHeihoSlowDObjSetup = 0x000096E8;
+lEFGroundYosterHeihoSlowAnimJoint = 0x00009770;
+lEFGroundYosterHeihoSlowMatAnimJoint = 0x000097F0;
+
+lEFGroundYosterHeihoFruitFastMObjSub = 0x0000A3E0;
+lEFGroundYosterHeihoFruitFastDObjSetup = 0x0000A5A8;
+lEFGroundYosterHeihoFruitFastAnimJoint = 0x0000A630;
+lEFGroundYosterHeihoFruitFastMatAnimJoint = 0x0000A6A0;
+
+lEFGroundYosterHeihoFastMObjSub = 0x0000B290;
+lEFGroundYosterHeihoFastDObjSetup = 0x0000B458;
+lEFGroundYosterHeihoFastAnimJoint = 0x0000B4E0;
+lEFGroundYosterHeihoFastMatAnimJoint = 0x0000B550;
+
+lEFGroundPupupuDataStart = 0x00001CE0;
+
+lEFGroundPupupuBrontoMObjSub = 0x000031F0;
+lEFGroundPupupuBrontoDObjSetup = 0x000033B8;
+lEFGroundPupupuBrontoLAnimJoint = 0x00003440;
+lEFGroundPupupuBrontoLMatAnimJoint = 0x000034E0;
+lEFGroundPupupuBrontoRAnimJoint = 0x000036E0;
+lEFGroundPupupuBrontoRMatAnimJoint = 0x000037A0;
+
+lEFGroundPupupuDededeDObjSetup = 0x00003E80;
+lEFGroundPupupuDededeFarAnimJoint = 0x00003F10;
+lEFGroundPupupuDededeNearAnimJoint = 0x00004080;
+
+lEFGroundYamabukiDataStart = 0x00006A70;
+
+lEFGroundYamabukiButterfreeMObjSub = 0x00009790;
+lEFGroundYamabukiButterfreeDObjSetup = 0x00009958;
+lEFGroundYamabukiButterfreeAnimJoint = 0x000099E0;
+lEFGroundYamabukiButterfreeMatAnimJoint = 0x00009DC0;
+
+lEFGroundYamabukiFireMObjSub = 0x0000C6C0;
+lEFGroundYamabukiFireDObjSetup = 0x0000C890;
+lEFGroundYamabukiFireAnimJoint = 0x0000C920;
+lEFGroundYamabukiFireMatAnimJoint = 0x0000C9E0;
+
+lEFGroundYamabukiOnidrillMObjSub = 0x0000E230;
+lEFGroundYamabukiOnidrillDObjSetup = 0x0000E400;
+lEFGroundYamabukiOnidrillAnimJoint = 0x0000E490;
+lEFGroundYamabukiOnidrillMatAnimJoint = 0x0000E5C0;
+
+lEFGroundYamabukiPoppoMObjSub = 0x0000FC90;
+lEFGroundYamabukiPoppoDObjSetup = 0x0000FE58;
+lEFGroundYamabukiPoppoAnimJoint = 0x0000FEE0;
+lEFGroundYamabukiPoppoMatAnimJoint = 0x0000FFD0;
+
 lFTShadowTextureImage = 0x00003A68;
 
 lGRHyruleDataStart = 0x00000014;

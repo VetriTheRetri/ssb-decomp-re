@@ -826,6 +826,8 @@ sEFTexturesFile2 = 0x801313B4;
 gCameraMatrix = 0x80131470;
 gCameraStruct = 0x801314B0;
 
+sEFGroundActor = 0x80131AD8;
+
 g1PGameBonusStatTomatoCount = 0x801936A8;
 g1PGameBonusStatHeartCount = 0x801936A9;
 g1PGameBonusStatShieldBreaker = 0x801936AB;

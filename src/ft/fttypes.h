@@ -722,7 +722,7 @@ struct ftAttributes
     ftPartIndex *p_ftpart_lookup;
     DObjDescContainer *dobj_desc_container;
     DObjDesc *dobj_lookup; // WARNING: Not actually DObjDesc* but I don't know what this struct is or what its bounds are; bunch of consecutive floats
-    void **shield_keys[8];
+    void **shield_keys[8];  // One for each ordinal direction
     s32 joint_id1; // What does this do?
     f32 joint_float1;
     s32 joint_id2;

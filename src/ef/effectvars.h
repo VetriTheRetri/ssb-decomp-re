@@ -272,12 +272,12 @@ typedef struct efParticle_EffectVars_LoseKirbyStar
 typedef struct efParticle_EffectVars_GroundEffect
 {
     Vec3f pos;
-    s32 groundeffect__0xC;
+    s32 effect_status;
     f32 scale_step;
     s32 lr;
-    void *groundeffect__0x18;
-    void *groundeffect__0x1C;
-    u8 groundeffect__0x20;
+    void *anim_joint;
+    void *matanim_joint;
+    u8 lr_bool;
 
 } efParticle_EffectVars_GroundEffect;
 

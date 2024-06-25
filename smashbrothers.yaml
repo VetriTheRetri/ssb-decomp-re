@@ -430,6 +430,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # How to Play input parser
+      - [0x091310, c, ft/ftexplain]
     # Damage screen flash manager
       - [0x0913F0, c, if/ifscreenflash]
     # Stage effect manager

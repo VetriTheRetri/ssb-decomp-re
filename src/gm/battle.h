@@ -7,6 +7,8 @@
 #include <PR/gu.h>
 
 #include "gmmisc.h"
+#include "gmscript.h"
+#include "gmfunctions.h"
 
 #define DAIRANTOU_CHR_PLAYABLE_MAX 12
 

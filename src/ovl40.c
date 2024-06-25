@@ -140,7 +140,7 @@ void mvOpeningLinkInitFighterStagePanel()
 	mpCollision_GetMPointIDsKind(mpMPoint_Kind_Unk0x15, &pos_ids);
 	mpCollision_GetMPointPositionID(pos_ids, &spawn_position);
 	mvOpeningLinkCreateStageViewport(spawn_position);
-	gmRumble_SetPlayerRumble();
+	gmRumbleMakeActor();
 	ftPublicitySetup();
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)

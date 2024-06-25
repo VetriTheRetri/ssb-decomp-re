@@ -36,7 +36,7 @@ void scTrainingMode_CheckEnterTrainingMenu()
 		{
 			ifCommon_SetRenderFlagsAll(1);
 			scTrainingMode_SetPauseGObjRenderFlags(0);
-			func_ovl2_801157EC();
+			gmRumbleInitPlayers();
 			ftCommon_ResetControllerInputs(gBattleState->player_block[player].fighter_gobj);
 			ftCommon_ResetControllerInputs(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
 
@@ -1352,7 +1352,7 @@ void scTrainingMode_InitTrainingMode()
 	wpManagerAllocWeapons();
 	efManager_AllocUserData();
 	ifScreenFlashMakeInterface(0xFF);
-	gmRumble_SetPlayerRumble();
+	gmRumbleMakeActor();
 	ftPublicitySetup();
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
@@ -1429,7 +1429,7 @@ void scManager_TrainingMode_InitScene()
 	do
 	{
 		func_800A2698(&D_ovl7_8019088C);
-		func_ovl2_801157EC();
+		gmRumbleInitPlayers();
 	} while (gTrainingModeStruct.exit_or_reset != 0);
 
 	auStopBGM();

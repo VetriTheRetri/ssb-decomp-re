@@ -10,7 +10,7 @@
 extern void *gITFileData;
 
 // 8018D044
-extern s32 gITEffectBank;
+extern s32 gITEffectBankID;
 
 // 8018D048
 extern itRandomWeights gITRandomWeights;

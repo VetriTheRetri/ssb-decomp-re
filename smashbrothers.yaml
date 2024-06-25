@@ -430,6 +430,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Rumble manager
+      - [0x090630, c, gm/gmrumble]
     # Particle Bank alloc
       - [0x091090, c, ef/efalloc]
     # How to Play input parser
@@ -441,11 +443,15 @@ segments:
 
     # ovl2 data
       - [0x0923D0, data, ovl2]
+    # Rumble manager
+      - [0x0AA9A0, .data, gm/gmrumble]
     # Stage effect manager
       - [0x0AAA40, .data, ef/efground]
 
     # ovl2 read-only data
       - [0x0AB250, rodata, ovl2]
+    # Rumble manager
+      - [0x0AC4D0, .rodata, gm/gmrumble]
     # Particle Bank alloc
       - [0x0AC510, .rodata, ef/efalloc]
     # Stage effect manager

@@ -596,7 +596,7 @@ void scBonusGame_InitBonusGame()
 	wpManagerAllocWeapons();
 	efManager_AllocUserData();
 	ifScreenFlashMakeInterface(0xFF);
-	gmRumble_SetPlayerRumble();
+	gmRumbleMakeActor();
 	ftPublicitySetup();
 
 	for (player = 0, player_spawn = dFTDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->player_block);
@@ -757,7 +757,7 @@ void scManager_BonusGame_InitScene()
 	};
 	auSetBGMVolume(0, 0x7800);
 	func_800266A0_272A0();
-	func_ovl2_801157EC();
+	gmRumbleInitPlayers();
 
 	if (gBattleState->game_status != gmMatch_GameStatus_Pause)
 	{

@@ -63,13 +63,13 @@ void func_ovl2_80115980(void)
 }
 
 // 0x801159B0
-s32 efAllocGetParticleBankID(uintptr_t arena_lo)
+s32 efAllocGetParticleBankID(uintptr_t texlo)
 {
     s32 i;
 
     for (i = 0; i < sEFParticleBankNum; i++)
     {
-        if (arena_lo == sEFParticleBanks[i])
+        if (texlo == sEFParticleBanks[i])
         {
             return i;
         }

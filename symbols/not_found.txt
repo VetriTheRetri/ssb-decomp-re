@@ -826,6 +826,10 @@ sEFTexturesFile2 = 0x801313B4;
 gCameraMatrix = 0x80131470;
 gCameraStruct = 0x801314B0;
 
+sGMRumbleEvents = 0x80131870;
+sGMRumbleLinks = 0x80131960;
+sGMRumblePlayers = 0x801319F0;
+
 D_ovl2_80131A10 = 0x80131A10;
 D_ovl2_80131A14 = 0x80131A14;
 sEFParticleBankNum = 0x80131A18;

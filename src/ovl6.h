@@ -10,7 +10,7 @@ void itManagerInitItems();
 void wpManagerAllocWeapons();
 void lbMemory_SaveData_WriteSRAM(gmBattleState*);
 void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32);
-void func_ovl2_801157EC();
+void gmRumbleInitPlayers();
 void func_ovl6_8018ED70();
 
 typedef struct grBonusDesc

@@ -409,8 +409,8 @@ sb32 itLizardonWeaponFlameProcReflector(GObj *weapon_gobj)
 
     translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
-    func_ovl0_800CE8C0(gITEffectBank | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(gITEffectBank | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITEffectBankID | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITEffectBankID | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return FALSE;
 }
@@ -431,8 +431,8 @@ GObj* itLizardonWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     ip->lifetime = ITLIZARDON_FLAME_LIFETIME;
 
-    func_ovl0_800CE8C0(gITEffectBank | 8, 2, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F); // This needs to return something in v0 to match
-    func_ovl0_800CE8C0(gITEffectBank | 8, 0, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITEffectBankID | 8, 2, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F); // This needs to return something in v0 to match
+    func_ovl0_800CE8C0(gITEffectBankID | 8, 0, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F);
 
     return weapon_gobj;
 }

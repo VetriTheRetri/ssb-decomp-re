@@ -158,7 +158,7 @@ sb32 gmRumbleUpdateEventExecute(ub8 *is_active, gmRumbleEvent *p_event, s32 play
         switch (gmRumbleEventCast(p_event->p_script, gmRumbleEventDefault)->opcode)
         {
         case gmRumbleEvent_Kind_End:
-            p_event->p_script = dGMRumbleEventList[p_event->index];
+            p_event->p_script = dGMRumbleEventList[p_event->rumble_id];
             break;
 
         case gmRumbleEvent_Kind_StartRumble:
@@ -214,7 +214,7 @@ sb32 gmRumbleUpdateEventQueue(ub8 *is_active, gmRumbleEvent *p_event)
         switch (gmRumbleEventCast(p_event->p_script, gmRumbleEventDefault)->opcode)
         {
         case gmRumbleEvent_Kind_End:
-            p_event->p_script = dGMRumbleEventList[p_event->index];
+            p_event->p_script = dGMRumbleEventList[p_event->rumble_id];
             break;
 
         case gmRumbleEvent_Kind_StartRumble:
@@ -420,7 +420,7 @@ void gmRumbleActorProcUpdate(GObj *rumble_gobj)
 }
 
 // 0x801153B8
-sb32 gmRumbleCheckSetEventID(gmRumblePlayer *rplayer, s32 index, s32 rumble_timer)
+sb32 gmRumbleCheckSetEventID(gmRumblePlayer *rplayer, s32 rumble_id, s32 rumble_timer)
 {
     gmRumbleLink *rlink = rplayer->rlink;
 
@@ -430,7 +430,7 @@ sb32 gmRumbleCheckSetEventID(gmRumblePlayer *rplayer, s32 index, s32 rumble_time
         {
             gmRumbleEvent *p_event = rlink->p_event;
 
-            if ((p_event->p_script != NULL) && (p_event->index == index))
+            if ((p_event->p_script != NULL) && (p_event->rumble_id == rumble_id))
             {
                 if (rumble_timer != 0)
                 {
@@ -444,7 +444,7 @@ sb32 gmRumbleCheckSetEventID(gmRumblePlayer *rplayer, s32 index, s32 rumble_time
                 else
                 {
                     p_event->rumble_status = p_event->loop_count = 0;
-                    p_event->p_script = dGMRumbleEventList[index];
+                    p_event->p_script = dGMRumbleEventList[rumble_id];
 
                     return TRUE;
                 }
@@ -458,7 +458,7 @@ sb32 gmRumbleCheckSetEventID(gmRumblePlayer *rplayer, s32 index, s32 rumble_time
 }
 
 // 0x80115458
-gmRumbleEvent* gmRumbleGetEventPriorityRelink(gmRumblePlayer *rplayer, s32 index)
+gmRumbleEvent* gmRumbleGetEventPriorityRelink(gmRumblePlayer *rplayer, s32 rumble_id)
 {
     gmRumbleEvent *p_event;
     gmRumbleLink *rlink_main;
@@ -475,7 +475,7 @@ gmRumbleEvent* gmRumbleGetEventPriorityRelink(gmRumblePlayer *rplayer, s32 index
 
         if (p_event->p_script != NULL)
         {
-            if (dGMRumblePriorities[index] >= dGMRumblePriorities[p_event->index])
+            if (dGMRumblePriorities[rumble_id] >= dGMRumblePriorities[p_event->rumble_id])
             {
                 if (rlink_current == rlink_main)
                 {
@@ -513,13 +513,13 @@ gmRumbleEvent* gmRumbleGetEventPriorityRelink(gmRumblePlayer *rplayer, s32 index
 }
 
 // 0x80115530
-void gmRumbleSetPlayerRumbleParams(s32 player, s32 index, s32 rumble_timer)
+void gmRumbleSetPlayerRumbleParams(s32 player, s32 rumble_id, s32 rumble_timer)
 {
     s32 unused[4];
 
-    if (gmRumbleCheckSetEventID(&sGMRumblePlayers[player], index, rumble_timer) == FALSE)
+    if (gmRumbleCheckSetEventID(&sGMRumblePlayers[player], rumble_id, rumble_timer) == FALSE)
     {
-        gmRumbleEvent *p_event = gmRumbleGetEventPriorityRelink(&sGMRumblePlayers[player], index);
+        gmRumbleEvent *p_event = gmRumbleGetEventPriorityRelink(&sGMRumblePlayers[player], rumble_id);
 
         if (p_event != NULL)
         {
@@ -529,7 +529,7 @@ void gmRumbleSetPlayerRumbleParams(s32 player, s32 index, s32 rumble_timer)
             }
             else p_event->rumble_timer = rumble_timer;
 
-            p_event->index = index;
+            p_event->rumble_id = rumble_id;
 
             p_event->is_rumble_active = FALSE;
 
@@ -537,7 +537,7 @@ void gmRumbleSetPlayerRumbleParams(s32 player, s32 index, s32 rumble_timer)
 
             p_event->p_goto = NULL;
 
-            p_event->p_script = dGMRumbleEventList[index];
+            p_event->p_script = dGMRumbleEventList[rumble_id];
         }
     }
 }
@@ -565,7 +565,7 @@ void func_ovl2_801155C4(s32 player)
 }
 
 // 0x80115630
-void gmRumbleSetRumbleID(s32 player, s32 index)
+void gmRumbleSetRumbleID(s32 player, s32 rumble_id)
 {
     gmRumbleLink *rlink = sGMRumblePlayers[player].rlink;
 
@@ -579,7 +579,7 @@ void gmRumbleSetRumbleID(s32 player, s32 index)
             {
                 break;
             }
-            if (index == p_event->index)
+            if (rumble_id == p_event->rumble_id)
             {
                 gmRumbleAddLinkAfter(&sGMRumblePlayers[player], rlink);
 
@@ -617,11 +617,11 @@ void gmRumbleMakeActor(void)
 
     // Ignoring the above function calls, this starts by setting the i's rumble status to OFF in 0x801319F0. All good so far.
     // Then it stores the first gmRumbleLink to 0x801319F0.
-    // Then 0x80131960's p_event is set to 0x80131870. (index 0)
-    // Then 0x80131870's p_goto and p_script are set to NULL one after another. (index 0)
+    // Then 0x80131960's p_event is set to 0x80131870. (rumble_id 0)
+    // Then 0x80131870's p_goto and p_script are set to NULL one after another. (rumble_id 0)
 
     // 0x80131870 + 0x14, so now we're onto the next column
-    // 0x80131960 + 0xC, also next column (index 1)
+    // 0x80131960 + 0xC, also next column (rumble_id 1)
 
     // 0x8013196C gets stored to 0x80131960's rnext
     // 0x80131884 gets stored to 0x8013196C's p_event

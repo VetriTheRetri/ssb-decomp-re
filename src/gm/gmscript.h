@@ -944,7 +944,7 @@ typedef struct gmRumbleEventDefault
 
 typedef struct gmRumbleEvent
 {
-	u8 index;
+	u8 rumble_id;
 	ub8 is_rumble_active;
 	u16 rumble_status;
 	u16 loop_count;

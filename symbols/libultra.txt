@@ -5,6 +5,7 @@ __osPfsPifRampifstatus = 0x800A074C;
 __osActiveQueue = 0x8003D3BC;
 __additional_scanline = 0x8003D63C;
 
+drawbitmap = 0x800238B8;
 _Putfld = 0x800335F0;
 __osThreadSave = 0x8009F040;
 __osFinalrom = 0x8009F030;

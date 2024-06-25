@@ -80,11 +80,9 @@ s32 efAllocGetParticleBankID(uintptr_t texlo)
 // 0x801159F8
 s32 efAllocGetAppendParticleBankID(uintptr_t texlo, uintptr_t texhi, uintptr_t pallo, uintptr_t palhi)
 {
-    void *texheap;
-    void *palheap;
+    void *texheap, *palheap;
+    size_t texsize, palsize;
     s32 bank_id;
-    size_t texsize;
-    size_t palsize;
 
     if (sEFParticleBankNum > ARRAY_COUNT(sEFParticleBanks))
     {

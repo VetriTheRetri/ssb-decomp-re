@@ -583,7 +583,7 @@ void scBonusGame_InitBonusGame()
 	func_ovl6_8018ED70();
 	func_ovl6_8018D330();
 	func_8000B9FC(9, 0x80000000U, 0x64, 1, 0xFF);
-	func_ovl2_80115890();
+	efAllocInitParticleBank();
 	func_ovl2_800EC130();
 	mpCollision_InitMapCollisionData();
 	cmManager_SetViewportCoordinates(10, 10, 310, 230);

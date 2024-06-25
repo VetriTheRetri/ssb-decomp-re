@@ -430,6 +430,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Particle Bank alloc
+      - [0x091090, c, ef/efalloc]
     # How to Play input parser
       - [0x091310, c, ft/ftexplain]
     # Damage screen flash manager
@@ -444,6 +446,8 @@ segments:
 
     # ovl2 read-only data
       - [0x0AB250, rodata, ovl2]
+    # Particle Bank alloc
+      - [0x0AC510, .rodata, ef/efalloc]
     # Stage effect manager
       - [0x0AC530, .rodata, ef/efground]
 

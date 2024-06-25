@@ -3838,7 +3838,7 @@ void mnBattleInitCSS()
 
 	func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
 
-	func_ovl2_80115890();
+	efAllocInitParticleBank();
 	efManager_AllocUserData();
 	mnSyncControllerOrderArray();
 	mnBattleLoadMatchInfo();

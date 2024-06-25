@@ -325,7 +325,7 @@ void mvOpeningLinkInit()
 	omMakeGObjSPAfter(0x3F7, mvOpeningLinkMainProc, 0xD, 0x80000000);
 	func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
 	mvOpeningLinkInitFramesElapsed();
-	func_ovl2_80115890();
+	efAllocInitParticleBank();
 	func_ovl2_800EC130();
 	mpCollision_InitMapCollisionData();
 	cmManager_SetViewportCoordinates(10, 10, 310, 230);

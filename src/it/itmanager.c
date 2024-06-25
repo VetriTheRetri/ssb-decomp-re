@@ -162,7 +162,7 @@ void itManagerInitItems(void) // Many linker things here
     }
     gITFileData = (void*)rdManagerGetFileWithExternHeap(&D_NF_000000FB, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_000000FB), 0x10));
 
-    gITEffectBank = efAlloc_SetParticleBank(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
+    gITEffectBank = efAllocGetAppendParticleBankID(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
 
     itManagerSetupContainerDrops();
     itManagerInitMonsterVars();

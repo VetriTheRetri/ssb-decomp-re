@@ -826,6 +826,11 @@ sEFTexturesFile2 = 0x801313B4;
 gCameraMatrix = 0x80131470;
 gCameraStruct = 0x801314B0;
 
+D_ovl2_80131A10 = 0x80131A10;
+D_ovl2_80131A14 = 0x80131A14;
+sEFParticleBankNum = 0x80131A18;
+sEFParticleBanks = 0x80131A20;
+
 sIFScreenFlashColAnim = 0x80131A40;
 sIFScreenFlashAlpha = 0x80131AA4;
 

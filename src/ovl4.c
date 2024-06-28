@@ -16,13 +16,14 @@ void func_ovl2_80114D98();
 void gmRumbleInitPlayers();
 void ftRender_Lights_DisplayLightReflect(Gfx **display_list, f32 arg1, f32 arg2);
 
+Unk800D4060 D_ovl4_8018E3D0 = { 0 };
+Unk800D4060 D_ovl4_8018E3D4 = { 0 };
 
-// Until there is a better place for this...
-Unk800D4060 D_ovl4_8018E3D0 = { 0 }, D_ovl4_8018E3D4 = { 0 };
 scUnkDataBounds D_ovl4_8018E3D8 = {
 	0x80392a00, 0x803b6900, 0x803da800, 0x00000000,
 	0x00000140, 0x000000f0, 0x00016a99,
 };
+
 scRuntimeInfo D_ovl4_8018E3F4 = {
 	0x00000000, 0x8018d0c0, 0x800a26b8,
 	0x8018e7e0, 0x00000000, 0x00000001, 0x00000002,

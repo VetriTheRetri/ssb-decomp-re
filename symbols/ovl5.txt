@@ -8,3 +8,8 @@ D_ovl5_8018D580 = 0x8018D580; // segment:ovl5
 D_ovl5_8018D5B8 = 0x8018D5B8; // segment:ovl5
 D_ovl5_8018D5BC = 0x8018D5BC; // segment:ovl5
 D_ovl5_8018D5D8 = 0x8018D5D8; // segment:ovl5
+
+D_ovl5_8018D670 = 0x8018D670;
+D_ovl5_8018D674 = 0x8018D674;
+D_ovl5_8018D678 = 0x8018D678;
+D_ovl5_8018D718 = 0x8018D718;

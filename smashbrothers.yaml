@@ -972,8 +972,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x10B370, asm, ovl5]
-      - [0x10B830, data, ovl5]
+      - [0x10B370, c, ovl5]
+      - [0x10B830, .data, ovl5]
+      - { start: 0x10B920, type: .bss, vram: 0x8018D670, name: ovl5}
 
   - name: ovl65
     type: code

@@ -1,3 +1,5 @@
+lOverlay5ArenaLo = 0x8018D950;
+lOverlay5ArenaHi = 0x803903E0;
 lOverlay6ArenaLo = 0x8018F710;
 lOverlay6ArenaHi = 0x80392A00;
 lOverlay7ArenaLo = 0x80190FA0;

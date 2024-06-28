@@ -4,7 +4,7 @@ scBattle_StartStockBattle = 0x8018D228; // segment:ovl4
 scBattle_CheckSDSetTimeBattleResults = 0x8018D5E0; // segment:ovl4
 scBattle_StartSDBattle = 0x8018DE20; // segment:ovl4
 scBattle_SetGeometryRenderLights = 0x8018E144; // segment:ovl4
-scManager_BattleRoyal_InitScene = 0x8018E190; // segment:ovl4
+scBattleRoyalStartScene = 0x8018E190; // segment:ovl4
 func_ovl4_8018E330 = 0x8018E330; // segment:ovl4
 
 D_ovl4_8018E3D0 = 0x8018E3D0; // segment:ovl4

@@ -2111,10 +2111,10 @@ void mnReplaceFighterNameWithHandicapCPULevel(s32 port_id)
 }
 
 // 801370F8
-sb32 mnIsHandicapOn() { return (D_800A4D08.handicap_setting == 1) ? TRUE : FALSE; }
+sb32 mnIsHandicapOn() { return (gTransferBattleState.handicap_setting == 1) ? TRUE : FALSE; }
 
 // 80137120
-sb32 mnIsHandicapAuto() { return (D_800A4D08.handicap_setting == 2) ? TRUE : FALSE; }
+sb32 mnIsHandicapAuto() { return (gTransferBattleState.handicap_setting == 2) ? TRUE : FALSE; }
 
 // 80137148
 sb32 mnIsHandicap()
@@ -3471,54 +3471,54 @@ void mnBattleSaveMatchInfo()
 {
 	s32 i;
 
-	D_800A4D08.time_limit = gMnBattleTimerValue;
-	D_800A4D08.stock_setting = gMnBattleStockValue;
-	D_800A4D08.is_team_battle = gMnBattleIsTeamBattle;
-	D_800A4D08.match_rules = gMnBattleRule;
+	gTransferBattleState.time_limit = gMnBattleTimerValue;
+	gTransferBattleState.stock_setting = gMnBattleStockValue;
+	gTransferBattleState.is_team_battle = gMnBattleIsTeamBattle;
+	gTransferBattleState.match_rules = gMnBattleRule;
 
 	for (i = 0; i < 4; i++)
 	{
 		if (gMnBattleIsTeamBattle == FALSE)
-			D_800A4D08.player_block[i].player = i;
+			gTransferBattleState.player_block[i].player = i;
 		else
 		{
-			D_800A4D08.player_block[i].player = gMnBattlePanels[i].team;
-			D_800A4D08.player_block[i].team_index = gMnBattlePanels[i].team;
+			gTransferBattleState.player_block[i].player = gMnBattlePanels[i].team;
+			gTransferBattleState.player_block[i].team_index = gMnBattlePanels[i].team;
 		}
 
-		D_800A4D08.player_block[i].character_kind = gMnBattlePanels[i].char_id;
-		D_800A4D08.player_block[i].player_kind = gMnBattlePanels[i].player_type;
-		D_800A4D08.player_block[i].costume_index = gMnBattlePanels[i].costume_id;
-		D_800A4D08.player_block[i].shade_index = gMnBattlePanels[i].shade;
+		gTransferBattleState.player_block[i].character_kind = gMnBattlePanels[i].char_id;
+		gTransferBattleState.player_block[i].player_kind = gMnBattlePanels[i].player_type;
+		gTransferBattleState.player_block[i].costume_index = gMnBattlePanels[i].costume_id;
+		gTransferBattleState.player_block[i].shade_index = gMnBattlePanels[i].shade;
 
-		if (D_800A4D08.player_block[i].player_kind == Pl_Kind_Man)
+		if (gTransferBattleState.player_block[i].player_kind == Pl_Kind_Man)
 		{
-			D_800A4D08.player_block[i].player_color_index
-				= (D_800A4D08.is_team_battle == FALSE) ? i : D_ovl2_8012EF40[D_800A4D08.player_block[i].team_index];
+			gTransferBattleState.player_block[i].player_color_index
+				= (gTransferBattleState.is_team_battle == FALSE) ? i : D_ovl2_8012EF40[gTransferBattleState.player_block[i].team_index];
 		}
-		else if (D_800A4D08.is_team_battle == FALSE)
-			D_800A4D08.player_block[i].player_color_index = 4;
+		else if (gTransferBattleState.is_team_battle == FALSE)
+			gTransferBattleState.player_block[i].player_color_index = 4;
 		else
-			D_800A4D08.player_block[i].player_color_index = D_ovl2_8012EF40[D_800A4D08.player_block[i].team_index];
+			gTransferBattleState.player_block[i].player_color_index = D_ovl2_8012EF40[gTransferBattleState.player_block[i].team_index];
 
-		D_800A4D08.player_block[i].tag_index = (D_800A4D08.player_block[i].player_kind == Pl_Kind_Man) ? i : 4;
+		gTransferBattleState.player_block[i].tag_index = (gTransferBattleState.player_block[i].player_kind == Pl_Kind_Man) ? i : 4;
 
-		D_800A4D08.player_block[i].is_permanent_stock = (D_800A4D08.match_rules & 1) ? TRUE : FALSE;
+		gTransferBattleState.player_block[i].is_permanent_stock = (gTransferBattleState.match_rules & 1) ? TRUE : FALSE;
 
-		if (D_800A4D08.player_block[i].player_kind == Pl_Kind_Com)
-			D_800A4D08.player_block[i].level = gMnBattlePanels[i].cpu_level;
+		if (gTransferBattleState.player_block[i].player_kind == Pl_Kind_Com)
+			gTransferBattleState.player_block[i].level = gMnBattlePanels[i].cpu_level;
 		else
-			D_800A4D08.player_block[i].handicap = gMnBattlePanels[i].handicap;
+			gTransferBattleState.player_block[i].handicap = gMnBattlePanels[i].handicap;
 	}
 
-	D_800A4D08.pl_count = D_800A4D08.cp_count = 0;
+	gTransferBattleState.pl_count = gTransferBattleState.cp_count = 0;
 
 	for (i = 0; i < 4; i++)
 	{
-		switch (D_800A4D08.player_block[i].player_kind)
+		switch (gTransferBattleState.player_block[i].player_kind)
 		{
-		case Pl_Kind_Man: D_800A4D08.pl_count++; break;
-		case Pl_Kind_Com: D_800A4D08.cp_count++; break;
+		case Pl_Kind_Man: gTransferBattleState.pl_count++; break;
+		case Pl_Kind_Com: gTransferBattleState.cp_count++; break;
 		}
 	}
 }
@@ -3575,7 +3575,7 @@ void mnBattleMain(s32 arg0)
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 
-			if (D_800A4D08.is_stage_select != 0)
+			if (gTransferBattleState.is_stage_select != 0)
 				gSceneData.scene_current = 0x15;
 			else
 			{
@@ -3667,9 +3667,9 @@ void mnBattleInitPort(s32 port_id)
 	panel_info->p_sfx = NULL;
 	panel_info->sfx_id = 0;
 	panel_info->player = NULL;
-	panel_info->char_id = D_800A4D08.player_block[port_id].character_kind;
+	panel_info->char_id = gTransferBattleState.player_block[port_id].character_kind;
 
-	if ((D_800A4D08.player_block[port_id].player_kind == Pl_Kind_Man)
+	if ((gTransferBattleState.player_block[port_id].player_kind == Pl_Kind_Man)
 		&& (controller_order = gMnBattleControllerOrderArray[port_id], (controller_order == unplugged)))
 	{
 		panel_info->player_type = mnPanelTypeNA;
@@ -3677,13 +3677,13 @@ void mnBattleInitPort(s32 port_id)
 	}
 	else
 	{
-		panel_info->player_type = D_800A4D08.player_block[port_id].player_kind;
+		panel_info->player_type = gTransferBattleState.player_block[port_id].player_kind;
 		controller_order = gMnBattleControllerOrderArray[port_id];
 	}
 
-	panel_info->cpu_level = D_800A4D08.player_block[port_id].level;
-	panel_info->handicap = D_800A4D08.player_block[port_id].handicap;
-	panel_info->team = D_800A4D08.player_block[port_id].team_index;
+	panel_info->cpu_level = gTransferBattleState.player_block[port_id].level;
+	panel_info->handicap = gTransferBattleState.player_block[port_id].handicap;
+	panel_info->team = gTransferBattleState.player_block[port_id].team_index;
 
 	if ((panel_info->player_type == mnPanelTypeHuman) && (panel_info->char_id == Ft_Kind_Null))
 	{
@@ -3711,8 +3711,8 @@ void mnBattleInitPort(s32 port_id)
 		panel_info->selected_animation_started = FALSE;
 	}
 
-	panel_info->costume_id = D_800A4D08.player_block[port_id].costume_index;
-	panel_info->shade = D_800A4D08.player_block[port_id].shade_index;
+	panel_info->costume_id = gTransferBattleState.player_block[port_id].costume_index;
+	panel_info->shade = gTransferBattleState.player_block[port_id].shade_index;
 
 	if ((controller_order != unplugged) && (panel_info->player_type == mnPanelTypeNA))
 		panel_info->holder_port_id = port_id;
@@ -3732,8 +3732,8 @@ void mnBattleResetPort(s32 port_id)
 	gMnBattlePanels[port_id].p_sfx = NULL;
 	gMnBattlePanels[port_id].sfx_id = 0;
 	gMnBattlePanels[port_id].is_selected = FALSE;
-	gMnBattlePanels[port_id].cpu_level = D_800A4D08.player_block[port_id].level;
-	gMnBattlePanels[port_id].handicap = D_800A4D08.player_block[port_id].handicap;
+	gMnBattlePanels[port_id].cpu_level = gTransferBattleState.player_block[port_id].level;
+	gMnBattlePanels[port_id].handicap = gTransferBattleState.player_block[port_id].handicap;
 	gMnBattlePanels[port_id].char_id = Ft_Kind_Null;
 	gMnBattlePanels[port_id].is_recalling = FALSE;
 	gMnBattlePanels[port_id].team = default_team[port_id];
@@ -3759,19 +3759,19 @@ void mnBattleLoadMatchInfo()
 
 	gMnBattleFramesElapsed = 0;
 	gMnBattleMaxFramesElapsed = gMnBattleFramesElapsed + 0x4650;
-	gMnBattleTimerValue = D_800A4D08.time_limit;
-	gMnBattleStockValue = D_800A4D08.stock_setting;
+	gMnBattleTimerValue = gTransferBattleState.time_limit;
+	gMnBattleStockValue = gTransferBattleState.stock_setting;
 	gMnBattleIsStartTriggered = FALSE;
-	gMnBattleIsTeamBattle = D_800A4D08.is_team_battle;
-	gMnBattleRule = D_800A4D08.match_rules;
-	D_ovl26_8013BDC8 = D_800A4D08.unk_0x10;
+	gMnBattleIsTeamBattle = gTransferBattleState.is_team_battle;
+	gMnBattleRule = gTransferBattleState.match_rules;
+	D_ovl26_8013BDC8 = gTransferBattleState.unk_0x10;
 
 	for (i = 0; i < 4; i++)
 	{
 		if (D_ovl26_8013BDC8 != 0)
 		{
 			mnBattleResetPort(i);
-			D_800A4D08.unk_0x10 = 0;
+			gTransferBattleState.unk_0x10 = 0;
 		}
 		else
 			mnBattleInitPort(i);
@@ -3878,7 +3878,7 @@ void mnBattleInitCSS()
 	if (gSceneData.scene_previous != 0x15)
 		auPlaySong(0, 0xA);
 
-	if (D_800A4D08.is_team_battle == 0)
+	if (gTransferBattleState.is_team_battle == 0)
 		func_800269C0_275C0(0x200U);
 	else
 		func_800269C0_275C0(0x20EU);

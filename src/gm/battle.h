@@ -644,7 +644,7 @@ typedef struct gmSceneInfo
 
 } gmSceneInfo; // size == 0x48
 
-extern gmBattleState *gBattleState, gDefaultBattleState, D_800A4B18, D_800A4D08, D_800A4EF8;
+extern gmBattleState *gBattleState, gDefaultBattleState, D_800A4B18, gTransferBattleState, D_800A4EF8;
 extern gmSaveInfo gSaveData, gDefaultSaveData;
 extern gmSceneInfo gSceneData, gDefaultSceneData;
 

@@ -404,7 +404,7 @@ segments:
     subsegments:
       - [0x0406D0, c, scenemgr/scene_manager]
       - [0x041db0, data, scenemgr/scene_manager]
-      - [0x042F30, .rodata, scenemgr/scene_manager]
+      - [0x042F30, .rodata, scenemgr/scene_manager] # might actually start at 0x042F10
 
   - name: ovl0
     type: code

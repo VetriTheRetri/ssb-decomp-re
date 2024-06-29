@@ -1,0 +1,15 @@
+func_ovl16_800D6490 = 0x800D6490; // segment:ovl16
+func_ovl16_800D64C4 = 0x800D64C4; // segment:ovl16
+func_ovl16_800D655C = 0x800D655C; // segment:ovl16
+func_ovl16_800D65C4 = 0x800D65C4; // segment:ovl16
+debug_button_test_entry = 0x800D6FB0; // segment:ovl16
+
+D_ovl16_800D7010 = 0x800D7010; // segment:ovl16
+D_ovl16_800D7018 = 0x800D7018; // segment:ovl16
+D_ovl16_800D7020 = 0x800D7020; // segment:ovl16
+D_ovl16_800D7030 = 0x800D7030; // segment:ovl16
+D_ovl16_800D7058 = 0x800D7058; // segment:ovl16
+D_ovl16_800D7074 = 0x800D7074; // segment:ovl16
+D_ovl16_800D7100 = 0x800D7100; // segment:ovl16
+D_ovl16_800D7104 = 0x800D7104; // segment:ovl16
+D_ovl16_800D7108 = 0x800D7108; // segment:ovl16

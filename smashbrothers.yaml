@@ -41,6 +41,8 @@ options:
     - symbols/ovl12.txt
     - symbols/ovl13.txt
     - symbols/ovl14.txt
+    - symbols/ovl15.txt
+    - symbols/ovl16.txt
     - symbols/ovl17.txt
     - symbols/ovl18.txt
     - symbols/ovl60.txt
@@ -1214,6 +1216,15 @@ segments:
       - [0x150040, data, ovl30]
       - [0x150530, rodata, ovl30]
 
+  - name: ovl15
+    type: code
+    start: 0x150740
+    vram: 0x800D6490
+    exclusive_ram_id: overlay_800D6490
+    subsegments:
+      - [0x150740, asm, ovl15]
+      - [0x150990, data, ovl15]
+
   - name: ovl31
     type: code
     start: 0x150CA0
@@ -1526,6 +1537,15 @@ segments:
     subsegments:
       - [0x18BE00, asm, ovl64]
       - [0x18CEA0, data, ovl64]
+
+  - name: ovl16
+    type: code
+    start: 0x18D030
+    vram: 0x800D6490
+    exclusive_ram_id: overlay_800D6490
+    subsegments:
+      - [0x18D030, asm, ovl16]
+      - [0x18DBB0, data, ovl16]
 
   - name: ovl8
     type: code

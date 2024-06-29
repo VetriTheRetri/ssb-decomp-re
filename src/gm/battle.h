@@ -208,6 +208,14 @@ typedef enum scMajorScene
 
 } scMajorScene;
 
+typedef struct scAutoDemoProc
+{
+	u16 focus_end_wait;
+	void (*proc_change)();
+	void (*proc_focus)();
+
+} scAutoDemoProc;
+
 typedef struct gmItemSpawn
 {
 	u8 max_items;		 // Maximum number of items allowed to spawn?

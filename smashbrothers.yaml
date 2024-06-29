@@ -87,6 +87,8 @@ options:
     - symbols/ovl58.txt
     - symbols/ovl59.txt
     - symbols/ovl62.txt
+    - symbols/ovl63.txt
+    - symbols/ovl64.txt
     - symbols/ovl8.txt
     - symbols/ovl9.txt
     - symbols/not_found.txt
@@ -1506,6 +1508,24 @@ segments:
     subsegments:
       - [0x187ED0, asm, ovl62]
       - [0x189DB0, data, ovl62]
+
+  - name: ovl63
+    type: code
+    start: 0x18A6D0
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x18A6D0, asm, ovl63]
+      - [0x18BCF0, data, ovl63]
+
+  - name: ovl64
+    type: code
+    start: 0x18BE00
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
+    subsegments:
+      - [0x18BE00, asm, ovl64]
+      - [0x18CEA0, data, ovl64]
 
   - name: ovl8
     type: code

@@ -8,6 +8,8 @@ lOverlay26ArenaLo = 0x8013C4C0;
 lOverlay26ArenaHi = 0x803903E0;
 lOverlay40ArenaLo = 0x8018E5E0;
 lOverlay40ArenaHi = 0x803903E0;
+lOverlay64ArenaLo = 0x8018E860;
+lOverlay64ArenaHi = 0x80392A00;
 
 lEFGroundCastleDataStart = 0x00002A08;
 
@@ -342,3 +344,16 @@ lCreditsDObjDesc = 0x000078C0;
 lCreditsCrosshairSprite = 0x00006D58;
 lCreditsTextBoxBracketLeft = 0x00006F98;
 lCreditsTextBoxBracketRight = 0x000071D8;
+
+lAutoDemoNameSpriteMario = 0x00000138;
+lAutoDemoNameSpriteFox = 0x00000258;
+lAutoDemoNameSpriteDonkey = 0x00000378;
+lAutoDemoNameSpriteSamus = 0x000004F8;
+lAutoDemoNameSpriteLuigi = 0x00000618;
+lAutoDemoNameSpriteLink = 0x00000738;
+lAutoDemoNameSpriteYoshi = 0x00000858;
+lAutoDemoNameSpriteCaptain = 0x00000A38;
+lAutoDemoNameSpriteKirby = 0x00000BB8;
+lAutoDemoNameSpritePikachu = 0x00000D38;
+lAutoDemoNameSpritePurin = 0x00000F78;
+lAutoDemoNameSpriteNess = 0x00001098;

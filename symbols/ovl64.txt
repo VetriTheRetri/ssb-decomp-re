@@ -38,3 +38,13 @@ D_ovl64_8018E234 = 0x8018E234; // segment:ovl64
 D_ovl64_8018E250 = 0x8018E250; // segment:ovl64
 D_ovl64_8018E2E0 = 0x8018E2E0; // segment:ovl64
 D_ovl64_8018E2E4 = 0x8018E2E4; // segment:ovl64
+
+sAutoDemoBattleState = 0x8018E2F0; // segment:ovl64
+sAutoDemoFocusChangeWait = 0x8018E4E0; // segment:ovl64
+sAutoDemoCharacterFlag = 0x8018E4E4; // segment:ovl64
+sAutoDemoFighterNameGObj = 0x8018E4E8; // segment:ovl64
+sAutoDemoProc = 0x8018E4EC; // segment:ovl64
+sAutoDemoMPoints = 0x8018E4F0; // segment:ovl64
+
+sAutoDemoStatusBuf = 0x8018E500; // segment:ovl64
+sAutoDemoForceBuf = 0x8018E820; // segment:ovl64

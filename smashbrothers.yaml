@@ -1535,8 +1535,12 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x18BE00, asm, ovl64]
-      - [0x18CEA0, data, ovl64]
+      - [0x18BE00, c, ovl64]
+      - [0x18CE00, c, ovl64_1]
+      - [0x18CEA0, .data, ovl64]
+      - [0x18D020, .rodata, ovl64]
+      - { start: 0x18D030, type: .bss, vram: 0x8018E2F0, name: ovl64}
+      - { start: auto, type: .bss, vram: 0x8018E500, name: ovl64_1}
 
   - name: ovl16
     type: code

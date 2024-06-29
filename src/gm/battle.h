@@ -612,7 +612,8 @@ typedef struct gmSceneInfo
 	u8 pad03[0x09 - 0x03];
 	u8 unk09;
 	u8 unk0A;
-	u8 pad0B[0xF - 0xB];
+	u8 pad0B[0xD - 0xB];
+	u8 demo_ft_kind[2];
 	u8 gr_kind;
 	u8 unk10;
 	ub8 is_select_continue;

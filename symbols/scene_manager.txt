@@ -7,6 +7,7 @@ unref_800A2BA8 = 0x800A2BA8;
 crash_inspect_gobj = 0x800A2C30;
 smProcPrintGObjStatus = 0x800A2E84;
 smRunPrintGObjStatus = 0x800A3040;
+
 D_803903E0 = 0x803903E0;
 dCommonFileIDs = 0x80116BD0;
 D_80116BD0 = 0x80116BD0; // segment:scene_manager

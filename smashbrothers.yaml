@@ -1427,8 +1427,8 @@ segments:
   - name: ovl51
     type: code
     start: 0x174940
-    vram: 0x80131B00
-    exclusive_ram_id: overlay_80131B00
+    vram: 0x8018D0C0
+    exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x174940, asm, ovl51]
       - [0x1750F0, data, ovl51]

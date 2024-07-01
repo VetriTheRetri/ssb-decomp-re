@@ -183,6 +183,10 @@ D_ovl0_800D62A0 = 0x800D62A0; // segment:ovl0
 D_ovl0_800D62A4 = 0x800D62A4; // segment:ovl0
 D_ovl0_800D62A8 = 0x800D62A8; // segment:ovl0
 
+D_ovl0_800D6448 = 0x800D6448; // segment:ovl0
+D_ovl0_800D644A = 0x800D644A; // segment:ovl0
+D_ovl0_800D644C = 0x800D644C; // segment:ovl0
+
 jtgt_ovl0_800CF05C = 0x800CF05C; // segment:ovl0
 jtgt_ovl0_800CF0B4 = 0x800CF0B4; // segment:ovl0
 jtgt_ovl0_800CF13C = 0x800CF13C; // segment:ovl0

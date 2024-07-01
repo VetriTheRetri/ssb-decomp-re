@@ -14,15 +14,68 @@ enum TimeStockFlag { TIMESTOCK_TIME_ON = 1 << 0, TIMESTOCK_STOCK_ON = 1 << 1 };
 enum HandicapMode { HANDICAP_MODE_OFF, HANDICAP_MODE_MANUAL, HANDICAP_MODE_AUTO };
 
 enum ItemAppearanceRate {
-    ITEM_RATE_NONE,
-    ITEM_RATE_VERY_LOW,
-    ITEM_RATE_LOW,
-    ITEM_RATE_MIDDLE,
-    ITEM_RATE_HIGH,
-    ITEM_RATE_VERY_HIGH
+	ITEM_RATE_NONE,
+	ITEM_RATE_VERY_LOW,
+	ITEM_RATE_LOW,
+	ITEM_RATE_MIDDLE,
+	ITEM_RATE_HIGH,
+	ITEM_RATE_VERY_HIGH
 };
 
 enum PlayerControlledBy { PLAYER_CONTROL_MAN, PLAYER_CONTROL_CPU, PLAYER_NOT_PRESENT };
+
+
+// these might go somewhere else...
+
+typedef struct FighterInfo {
+	/* 0x000 */ u8 pad00[0x08 - 0];
+	/* 0x008 */ s32 kind;
+	/* 0x00C */ u8 pad0C[0xD - 0xC];
+	/* 0x00D */ u8 player;
+	/* 0x00E */ u8 pad0E[0x20 - 0xE];
+	/* 0x020 */ s32 pkind;
+	/* 0x024 */ s32 stat;
+	/* 0x028 */ s32 mstat;
+	/* 0x02C */ u8 pad2C[0x14C - 0x2C];
+	/* 0x14C */ s32 ga;
+} FighterInfo; // size >= 0x150
+
+typedef struct WeaponInfo {
+	/* 0x000 */ u8 pad00[0xC - 0x0];
+	/* 0x00C */ s32 kind;
+	/* 0x010 */ u8 pad10;
+	/* 0x011 */ u8 player;
+	/* 0x012 */ u8 pad12[0xFC - 0x12];
+	/* 0x0FC */ s32 ga;
+	/* 0x100 */ s32 attackStat;
+} WeaponInfo;// size >= 0x104
+
+typedef struct ItemInfo {
+	/* 0x000 */ u8 pad00[0xC - 0x0];
+	/* 0x00C */ s32 kind;
+	/* 0x010 */ u8 pad10[0x15 - 0x10];
+	/* 0x015 */ u8 player;
+	/* 0x016 */ u8 pad16[0x108 - 0x16];
+	/* 0x108 */ s32 ga;
+	/* 0x10C */ s32 attackStat;
+	/* 0x110 */ u8 pad110[0x378 - 0x110];
+	/* 0x378 */ void *procUpdate;
+	/* 0x37C */ void *procMap;
+	/* 0x380 */ void *procHit;
+	/* 0x384 */ void *procShield;
+	/* 0x388 */ void *procHop;
+	/* 0x38C */ void *procSetoff;
+	/* 0x390 */ void *procReflector;
+	/* 0x394 */ void *procDamage;
+} ItemInfo;// size >= 0x398
+
+typedef struct EffectInfo {
+	/* 0x00 */ u32 pad00;
+	/* 0x04 */ void *fgObj;
+	/* 0x08 */ u8 pad08[0x14 - 0x8];
+	/* 0x14 */ void *procFunc;
+
+} EffectInfo;// size >= 0x18
 
 // overlay defines
 #define _ovl0SegRomStart 0x00043220
@@ -634,54 +687,3 @@ enum PlayerControlledBy { PLAYER_CONTROL_MAN, PLAYER_CONTROL_CPU, PLAYER_NOT_PRE
 //     /* 0x08 */ u16 unk08[(0x74 - 0x8) / 2];
 // }; // size == 0x74
 
-// struct FighterInfo {
-//     /* 0x000 */ u8 pad00[0x08 - 0];
-//     /* 0x008 */ s32 kind;
-//     /* 0x00C */ u8 pad0C[0xD - 0xC];
-//     /* 0x00D */ u8 player;
-//     /* 0x00E */ u8 pad0E[0x20 - 0xE];
-//     /* 0x020 */ s32 pkind;
-//     /* 0x024 */ s32 stat;
-//     /* 0x028 */ s32 mstat;
-//     /* 0x02C */ u8 pad2C[0x14C - 0x2C];
-//     /* 0x14C */ s32 ga;
-// }; // size >= 0x150
-
-// // these should go somewhere else...
-
-// struct WeaponInfo {
-//     /* 0x000 */ u8 pad00[0xC - 0x0];
-//     /* 0x00C */ s32 kind;
-//     /* 0x010 */ u8 pad10;
-//     /* 0x011 */ u8 player;
-//     /* 0x012 */ u8 pad12[0xFC - 0x12];
-//     /* 0x0FC */ s32 ga;
-//     /* 0x100 */ s32 attackStat;
-// }; // size >= 0x104
-
-// struct ItemInfo {
-//     /* 0x000 */ u8 pad00[0xC - 0x0];
-//     /* 0x00C */ s32 kind;
-//     /* 0x010 */ u8 pad10[0x15 - 0x10];
-//     /* 0x015 */ u8 player;
-//     /* 0x016 */ u8 pad16[0x108 - 0x16];
-//     /* 0x108 */ s32 ga;
-//     /* 0x10C */ s32 attackStat;
-//     /* 0x110 */ u8 pad110[0x378 - 0x110];
-//     /* 0x378 */ void *procUpdate;
-//     /* 0x37C */ void *procMap;
-//     /* 0x380 */ void *procHit;
-//     /* 0x384 */ void *procShield;
-//     /* 0x388 */ void *procHop;
-//     /* 0x38C */ void *procSetoff;
-//     /* 0x390 */ void *procReflector;
-//     /* 0x394 */ void *procDamage;
-// }; // size >= 0x398
-
-// struct EffectInfo {
-//     /* 0x00 */ u32 pad00;
-//     /* 0x04 */ void *fgObj;
-//     /* 0x08 */ u8 pad08[0x14 - 0x8];
-//     /* 0x14 */ void *procFunc;
-
-// }; // size >= 0x18

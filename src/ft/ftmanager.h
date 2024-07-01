@@ -5,7 +5,7 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 
-void func_ovl2_800D6FE0();
+void ftManagerSetupFileSize();
 void ftManagerAllocFighter(u32 data_flags, s32 alloc_count);
 ftStruct* ftManagerGetStructSetNextAlloc();
 void ftManager_SetPrevAlloc(ftStruct* fp);

@@ -283,7 +283,7 @@ $(ROM): $(ELF)
 	$(call print,ELF->ROM:,$<,$@)
 	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $@ -O binary
 
-$(ELF): $(O_FILES) symbols/not_found.txt
+$(ELF): $(O_FILES) symbols/not_found.txt symbols/linker_constants.txt
 	@$(PRINT) "$(GREEN)Linking: $(YELLOW)$@$(NO_COL)\n"
 	$(V)$(LD) -Map $(LD_MAP) -o $@ $(LDFLAGS)
 

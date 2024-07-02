@@ -5,7 +5,6 @@ SHELL = /bin/bash
 
 # ----- Defaults ------
 
-COMPARE ?= 1
 FULL_DISASM ?= 0
 
 # Whether to colorize build messages
@@ -17,24 +16,14 @@ PRINT ?= printf
 
 VERSION ?= us
 
-BASEROM              := baserom.$(VERSION).z64
-TARGET               := smashbrothers
+BASEROM := baserom.$(VERSION).z64
+TARGET  := smashbrothers
 
 UNAME_S := $(shell uname -s)
-UNAME_M := $(shell uname -m)
 ifeq ($(OS),Windows_NT)
 $(error Native Windows is currently unsupported for building this repository, use WSL instead c:)
-else ifeq ($(UNAME_S),Linux)
-    DETECTED_OS := linux
-    #Detect aarch64 devices (Like Raspberry Pi OS 64-bit)
-    #If it's found, then change the compiler to a version that can compile in 32 bit mode.
-    ifeq ($(UNAME_M),aarch64)
-        CC_CHECK_COMP := arm-linux-gnueabihf-gcc
-    endif
 else ifeq ($(UNAME_S),Darwin)
-    DETECTED_OS := macos
     MAKE := gmake
-    CPPFLAGS += -xc++
 endif
 
 # Support python venv's if one is installed.
@@ -53,27 +42,26 @@ RED     := \033[0;31m
 GREEN   := \033[0;32m
 BLUE    := \033[0;34m
 PURPLE  := \033[0;35m
-YELLOW  := \033[0;33m
-BLINK   := \033[33;5m
+CYAN    := \033[0;36m
 endif
 
 # Common build print status function
-define print
-  @$(PRINT) "$(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
+define print_3
+  @$(PRINT) "$(1) $(CYAN)$(2)$(NO_COL) -> $(BLUE)$(3)$(NO_COL)\n"
+endef
+define print_2
+  @$(PRINT) "$(1) $(3)$(2)$(NO_COL)\n"
 endef
 
 # ----- Common flags -----
 
-MIPS_BINUTILS_PREFIX := mips-linux-gnu-
-TOOLS	  := tools
-PYTHON	  := python3
+PYTHON   := python3
 INCLUDES := -Iinclude -Isrc
-DEFINES := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32 -DNDEBUG -DN_MICRO -D_FINALROM
+DEFINES  := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32 -DNDEBUG -DN_MICRO -D_FINALROM
 OPTFLAGS := -O2 -mips2
 
 # ----- Output ------
 
-GAME_NAME := smashbrothers
 BUILD_DIR := build
 ROM       := $(BUILD_DIR)/$(TARGET).$(VERSION).z64
 ELF       := $(BUILD_DIR)/$(TARGET).$(VERSION).elf
@@ -81,25 +69,21 @@ LD_MAP    := $(BUILD_DIR)/$(TARGET).$(VERSION).map
 
 # ----- Tools ------
 
-ifneq ($(shell type $(MIPS_BINUTILS_PREFIX)ld >/dev/null 2>/dev/null; echo $$?), 0)
-$(error Unable to find $(MIPS_BINUTILS_PREFIX)ld. Please install or build MIPS binutils, commonly mips-linux-gnu. (or set MIPS_BINUTILS_PREFIX if your MIPS binutils install uses another prefix))
-endif
-
-IDO7            := $(TOOLS)/ido-recomp/7.1/cc
-IDO5            := $(TOOLS)/ido-recomp/5.3/cc
-AS              := $(MIPS_BINUTILS_PREFIX)as
-LD              := $(MIPS_BINUTILS_PREFIX)ld
-OBJCOPY         := $(MIPS_BINUTILS_PREFIX)objcopy
-OBJDUMP         := $(MIPS_BINUTILS_PREFIX)objdump
-ASM_PROC        := $(PYTHON) $(TOOLS)/asm-processor/build.py
-CCFLAGS         := -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624
+IDO7            := tools/ido-recomp/7.1/cc
+IDO5            := tools/ido-recomp/5.3/cc
+AS              := mips-linux-gnu-as
+LD              := mips-linux-gnu-ld
+OBJCOPY         := mips-linux-gnu-objcopy
+OBJDUMP         := mips-linux-gnu-objdump
+ASM_PROC        := $(PYTHON) tools/asm-processor/build.py
+CCFLAGS         := -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624,568
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 LDFLAGS         := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T symbols/not_found.txt -T symbols/linker_constants.txt -T .splat/smashbrothers.ld
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
 ASM_PROC_FLAGS  := --input-enc=utf-8 --output-enc=euc-jp --convert-statics=global-with-filename
 
-SPLAT             ?= $(PYTHON) $(TOOLS)/splat/split.py
-SPLAT_YAML        ?= $(GAME_NAME).yaml
+SPLAT             ?= $(PYTHON) tools/splat/split.py
+SPLAT_YAML        ?= smashbrothers.yaml
 SPLAT_FLAGS       ?=
 ifneq ($(FULL_DISASM),0)
     SPLAT_FLAGS       += --disassemble-all
@@ -234,18 +218,18 @@ all: rom
 toolchain:
 	$(V)bash ./installDependencies.sh
 
-SB := $(BLUE)ROM MATCH: $(GREEN)Complete!\n
 rom: $(ROM)
-ifneq ($(COMPARE),0)
-	@md5sum --status -c $(TARGET).$(VERSION).md5 && \
-	$(PRINT) "$(BLUE)$(TARGET).$(VERSION).z64$(NO_COL): $(GREEN)OK$(NO_COL)\n$(YELLOW)$(SB)$(NO_COL)" || \
-	$(PRINT) "$(BLUE)$(TARGET).$(VERSION).z64 $(RED)FAILED$(NO_COL)\n\
-	$(BLUE)ROM MATCH: $(RED)FAILURE$(NO_COL)\n"
-endif
+	@$(PRINT) "$(BLUE)$(TARGET).$(VERSION).z64$(NO_COL): "
+	@cmp $(ROM) $(BASEROM) > /dev/null && \
+	$(PRINT) "$(GREEN)MATCHES$(NO_COL)\n" || \
+	$(PRINT) "$(RED)DOES NOT MATCH$(NO_COL)\n"
 
 nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
 	@echo "Comparing object files:"
 	$(V)bash tools/compareObjects.sh
+
+diff: $(ROM)
+	$(V)$(PYTHON) tools/matchbin.py -x $(ROM) $(BASEROM)
 
 clean:
 	rm -r -f $(BUILD_DIR)
@@ -271,76 +255,78 @@ expected:
 	cp -r build/ expected/build/
 
 format:
-	$(PYTHON) $(TOOLS)/formatHelper.py -e
+	$(PYTHON) tools/formatHelper.py -e
 # 	find include -type f | rg "\.h" | xargs clang-format -i
 # 	find src -type f | rg "\.(c|h)" | xargs clang-format -i
-	$(PYTHON) $(TOOLS)/formatHelper.py -s
+	$(PYTHON) tools/formatHelper.py -s
 
 # ----- Rules ------
 
 # Making ROM
 $(ROM): $(ELF)
-	$(call print,ELF->ROM:,$<,$@)
+	$(call print_3,ELF->ROM:,$<,$@)
 	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $@ -O binary
 
+# Linking
 $(ELF): $(O_FILES) symbols/not_found.txt symbols/linker_constants.txt
-	@$(PRINT) "$(GREEN)Linking: $(YELLOW)$@$(NO_COL)\n"
+	$(call print_2,Linking:,$@,$(BLUE))
 	$(V)$(LD) -Map $(LD_MAP) -o $@ $(LDFLAGS)
 
+# No linking mode
 $(BUILD_DIR)/%.text: $(BUILD_DIR)/%.o
-	$(call print,text:,$<,$@)
+	$(call print_3,text:,$<,$@)
 	$(V)$(OBJCOPY) -O binary --only-section=.text $< $@
-
 $(BUILD_DIR)/%.data: $(BUILD_DIR)/%.o
-	$(call print,data:,$<,$@)
+	$(call print_3,data:,$<,$@)
 	$(V)$(OBJCOPY) -O binary --only-section=.data $< $@
-
 $(BUILD_DIR)/%.rodata: $(BUILD_DIR)/%.o
-	$(call print,Rodata:,$<,$@)
+	$(call print_3,Rodata:,$<,$@)
 	$(V)$(OBJCOPY) -O binary --only-section=.rodata $< $@
 
 # Assembly
 $(BUILD_DIR)/%.o: %.s
-	$(call print,Assembling:,$<,$@)
+	$(call print_3,Assembling:,$<,$@)
 	@mkdir -p $(@D)
 	$(V)$(AS) $(ASFLAGS) -o $@ $<
 
-# C
+# Source C files
 $(BUILD_DIR)/%.o: %.c
-	$(call print,Compiling:,$<,$@)
+	$(call print_3,Compiling:,$<,$@)
 	@mkdir -p $(@D)
 # generate .d files to track header dependencies
 	$(V)clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $< && rm $@
 # compile and pipe through colorizer
-	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $< 2>&1 | $(PYTHON) $(TOOLS)/colorizeIDO.py
+	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $< 2>&1 | $(PYTHON) tools/colorizeIDO.py
 # patch object files compiled with mips3 to be able to link them
-	$(V)$(PYTHON) $(TOOLS)/patchMips3Objects.py $@
+	$(V)$(PYTHON) tools/patchMips3Objects.py $@
 
+# Staff roll specific
 src/ovl59.c: src/credits/staff.credits.encoded src/credits/titles.credits.encoded src/credits/info.credits.encoded src/credits/companies.credits.encoded
 src/credits/staff.credits.encoded: src/credits/staff.credits.txt tools/creditsTextConverter.py
-	@$(PRINT) "$(GREEN)Creating credit text data for: $(PURPLE)$<$(NO_COL)\n"
-	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $< -titleFont
+	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
+	$(V)$(PYTHON) tools/creditsTextConverter.py $< -titleFont
 src/credits/titles.credits.encoded: src/credits/titles.credits.txt tools/creditsTextConverter.py
-	@$(PRINT) "$(GREEN)Creating credit text data for: $(PURPLE)$<$(NO_COL)\n"
-	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $< -titleFont
+	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
+	$(V)$(PYTHON) tools/creditsTextConverter.py $< -titleFont
 src/credits/info.credits.encoded: src/credits/info.credits.txt tools/creditsTextConverter.py
-	@$(PRINT) "$(GREEN)Creating credit text data for: $(PURPLE)$<$(NO_COL)\n"
-	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $< -paragraphFont -multiline
+	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
+	$(V)$(PYTHON) tools/creditsTextConverter.py $< -paragraphFont -multiline
 src/credits/companies.credits.encoded: src/credits/companies.credits.txt tools/creditsTextConverter.py
-	@$(PRINT) "$(GREEN)Creating credit text data for: $(PURPLE)$<$(NO_COL)\n"
-	$(V)$(PYTHON) $(TOOLS)/creditsTextConverter.py $< -paragraphFont
+	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
+	$(V)$(PYTHON) tools/creditsTextConverter.py $< -paragraphFont
 
-#Bins
+# Binaries
 $(BUILD_DIR)/%.o: %.bin
-	$(call print,Making binary:,$<,$@)
+	$(call print_3,Making binary:,$<,$@)
 	@mkdir -p $(@D)
 	$(V)$(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
-	$(V)@bash $(TOOLS)/createPaletteObjectIfNeeded.sh $(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
+	$(V)@bash tools/createPaletteObjectIfNeeded.sh $(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
 
+# Images
 .PRECIOUS: assets/%.bin
 assets/%.bin: assets/%.png
-	$(call print,Converting Image:,$<,$@)
-	$(V)$(PYTHON) $(TOOLS)/image_converter.py $< $@
+	$(call print_3,Converting Image:,$<,$@)
+	$(V)$(PYTHON) tools/image_converter.py $< $@
 
 -include $(DEP_FILES)
 

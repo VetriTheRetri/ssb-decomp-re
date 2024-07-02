@@ -126,9 +126,9 @@ def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, onlyInstrAndRegi
 		print(f"   differences:")
 		for d in differentRanges:
 			if d[0] == d[1]:
-				print(f"     {d[0]}")
+				print(f"     {d[0][2:]}")
 			else:
-				print(f"     {d[0]} - {d[1]}")
+				print(f"     {d[0][2:]} - {d[1][2:]}")
 
 
 if __name__ == "__main__":

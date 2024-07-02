@@ -180,31 +180,46 @@ typedef enum gm1PStageKind
 
 typedef enum scMajorScene
 {
-	scMajor_Kind_MnN64Start,	   // N64 startup logo
-	scMajor_Kind_MnTitle,		   // Title screen
-	scMajor_Kind_MnDbMapSel,	   // Debug stage select
-	scMajor_Kind_MnDbSystem,	   // Debug main menu?
-	scMajor_Kind_MnDbChrSel,	   // Debug character select
-	scMajor_Kind_DbResScreen,	   // Debug results screen
-	scMajor_Kind_DbPadTest,		   // Debug joystick test
-	scMajor_Kind_MnMain,		   // Main Menu
-	scMajor_Kind_Mn1PMode,		   // 1P mode menu
-	scMajor_Kind_MnVSMode = 9,	   // VS mode
-	scMajor_Kind_MnVSOptions,	   // VS mode options
-	scMajor_Kind_Challenger = 13,  // Challenger approaching
-	scMajor_Kind_1PTitleCard,	   // 1P game "[character] VS [opponent(s)]" screen
-	scMajor_Kind_MnScreenSetup,	   // Screen adjust
-	scMajor_Kind_VSChrSel,		   // VS mode character select
-	scMajor_Kind_VSMapSel = 21,	   // VS mode map select
-	scMajor_Kind_VSBattle,		   // VS mode in-game
-	scMajor_Kind_VSResults = 24,   // VS mode results
-	scMajor_Kind_MnVSRecords,	   // Records screen
-	scMajor_Kind_MnChrData,		   // Character data screen
-	scMajor_Kind_N64,			   // N64 logo
-	scMajor_Kind_1PBonusGame = 53, // Bonus game in-game
-	scMajor_Kind_1PTrainingMode,   // Training mode in-game
-	scMajor_Kind_MnOptions = 57,   // Options menu
-	scMajor_Kind_MnData = 58,	   // Data menu
+	scMajor_Kind_NoController,      // "No Controller" screen
+	scMajor_Kind_Title,             // Title screen
+	scMajor_Kind_DebugMPSel,       // Debug stage select
+	scMajor_Kind_DebugSystem,       // Debug main menu?
+	scMajor_Kind_DebugChrSel,       // Debug character select
+	scMajor_Kind_DebugResScreen,    // Debug results screen
+	scMajor_Kind_DebugPadTest,      // Debug joystick test
+	scMajor_Kind_MainMenu,          // Main Menu
+	scMajor_Kind_1PMode,            // 1P mode menu
+	scMajor_Kind_VSMode = 9,        // VS mode
+	scMajor_Kind_VSOptions,         // VS mode options
+	scMajor_Kind_Challenger = 13,   // Challenger approaching
+	scMajor_Kind_1PTitleCard,       // 1P game "[character] VS [opponent(s)]" screen
+	scMajor_Kind_ScreenAdjust,      // Screen adjust
+	scMajor_Kind_VSChrSel,          // VS mode character select
+	scMajor_Kind_TrainingChrSel = 18, // Training mode character select
+	scMajor_Kind_Bonus1ChrSel,      // Bonus 1 character select
+	scMajor_Kind_Bonus2ChrSel,      // Bonus 2 character select
+	scMajor_Kind_VSMapSel = 21,     // VS mode map select
+	scMajor_Kind_VSBattle,          // VS mode in-game
+	scMajor_Kind_VSResults = 24,    // VS mode results
+	scMajor_Kind_VSRecord,          // Records screen
+	scMajor_Kind_Characters,        // Character data screen
+	scMajor_Kind_N64,               // N64 logo
+	scMajor_Kind_OpeningRoom,       // Room with Master Hand and figures coming to life
+	scMajor_Kind_BackupClear = 47,  // Save data clear
+	scMajor_Kind_Ending,            // Ending cutscene
+	scMajor_Kind_1PContinue,        // "Continue?" screen
+	scMajor_Kind_1PScoreUnk = 50,   // Stage clear bonus thing?
+	scMajor_Kind_1PStageClearScore, // Stage clear bonus score page 1?
+	scMajor_Kind_1PGame,            // 1P Game logic loop
+	scMajor_Kind_1PBonusGame,       // Bonus game in-game
+	scMajor_Kind_1PTrainingMode,    // Training mode in-game
+	scMajor_Kind_1PCongratulations, // Congratulations screen
+	scMajor_Kind_Credits,           // Credits scene
+	scMajor_Kind_Options,           // Options menu
+	scMajor_Kind_Data,              // Data menu
+	scMajor_Kind_SoundTest,         // Sound Test
+	scMajor_Kind_HowToPlay,         // How to Play
+	scMajor_Kind_Demo               // Auto-Demo
 
 } scMajorScene;
 
@@ -659,7 +674,7 @@ extern gmSceneInfo gSceneData, gDefaultSceneData;
 
 typedef struct Unk800D4060
 {
-	u32 unk_b0 : 1;
+	u32 unk_b0;
 
 } Unk800D4060;
 

@@ -217,7 +217,7 @@ void scAutoDemoDetectExit()
 		if (button_new & (A_BUTTON | B_BUTTON | START_BUTTON))
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current = scMajor_Kind_MnTitle;
+			gSceneData.scene_current = scMajor_Kind_Title;
 
 			leoInitUnit_atten();
 			break;

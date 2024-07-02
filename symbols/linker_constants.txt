@@ -358,6 +358,9 @@ lAutoDemoNameSpritePikachu = 0x00000D38;
 lAutoDemoNameSpritePurin = 0x00000F78;
 lAutoDemoNameSpriteNess = 0x00001098;
 
+lMNCongraArenaLo = 0x80132300;
+lSubSystemArenaLo = 0x80392A00;
+
 FILE_000_COLON_IMAGE_OFFSET = 0xDCF0;
 FILE_011_TYPE_CP_IMAGE_OFFSET = 0xFF8;
 FILE_011_HANDICAP_IMAGE_OFFSET = 0x1108;

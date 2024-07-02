@@ -19,7 +19,7 @@ def encodingFix(fileList):
 				file.write(f"{results.best()}")
 
 
-def styleFixes(fileList, ramLocation=True, indentation=True, voidForNoArguments=True, trailingSpaces=True, oneLineBlocksWithBraces=False, newLineBeforeEof=True, tabSize=4):
+def styleFixes(fileList, ramLocation=True, indentation=True, voidForNoArguments=True, trailingSpaces=True, oneLineBlocksWithBraces=False, newLineBeforeEof=True, arrayEmptyComment=True, tabSize=4):
 	for filePath in fileList:
 		with open(filePath, 'r') as sourceFile:
 			source = sourceFile.read()
@@ -27,21 +27,27 @@ def styleFixes(fileList, ramLocation=True, indentation=True, voidForNoArguments=
 		for line in source.split('\n'):
 			ramLocationMatch = re.match(r"^\s*//\s*0x([A-Fa-f0-9]{8})\s*$", line)
 			voidForNoArgumentsMatch = re.match(r"^.*(\w+\(void\)).*$", line)
+			arrayEmptyCommentMatch = re.match(r"^.*(\[/\* \*/\]).*$", line)
 			if ramLocation and ramLocationMatch is not None:
 				sourceLines.append(f"// {ramLocationMatch.group(1)}")
 			elif voidForNoArguments and voidForNoArgumentsMatch is not None:
 				sourceLines.append(line.replace(voidForNoArgumentsMatch.group(1), voidForNoArgumentsMatch.group(1).replace("(void)", "()")))
+			elif arrayEmptyComment and arrayEmptyCommentMatch is not None:
+				sourceLines.append(line.replace(arrayEmptyCommentMatch.group(1), arrayEmptyCommentMatch.group(1).replace("[/* */]", "[]")))
 			else:
 				sourceLines.append(line)
 
 			if trailingSpaces:
 				sourceLines[-1] = sourceLines[-1].rstrip("\t ")
 			if indentation:
-				indent = 0
-				while sourceLines[-1].startswith(" "*tabSize):
-					sourceLines[-1] = sourceLines[-1][tabSize:]
-					indent += 1
-				sourceLines[-1] = '\t'*indent + sourceLines[-1]
+				if re.match(r"^\s*\\\s*$", sourceLines[-1]):
+					sourceLines = sourceLines[:-1]
+				else:
+					indent = 0
+					while sourceLines[-1].startswith(" "*tabSize):
+						sourceLines[-1] = sourceLines[-1][tabSize:]
+						indent += 1
+					sourceLines[-1] = '\t'*indent + sourceLines[-1]
 
 		with open(filePath, 'w') as sourceFile:
 			sourceFile.write("\n".join(sourceLines))
@@ -64,12 +70,13 @@ def styleFixes(fileList, ramLocation=True, indentation=True, voidForNoArguments=
 				sourceFile.write("\n".join(sourceLines))
 
 	if newLineBeforeEof:
-		with open(filePath, 'r') as sourceFile:
-			source = sourceFile.read()
-		if source[-1] != '\n':
-			source += '\n'
-		with open(filePath, 'w') as sourceFile:
-			sourceFile.write(source)
+		for filePath in fileList:
+			with open(filePath, 'r') as sourceFile:
+				source = sourceFile.read()
+			if source[-1] != '\n':
+				source += '\n'
+			with open(filePath, 'w') as sourceFile:
+				sourceFile.write(source)
 
 
 def includeFixes(includeFileList, srcFileList, folderName):
@@ -105,8 +112,8 @@ if __name__ == "__main__":
 		encodingFix(srcFileList)
 		encodingFix(includeFileList)
 	if '-s' in sys.argv:
-		styleFixes(srcFileList)
-		styleFixes(includeFileList, ramLocation=False, indentation=False, voidForNoArguments=True, trailingSpaces=True, oneLineBlocksWithBraces=False, newLineBeforeEof=True, tabSize=4)
+		styleFixes(srcFileList, ramLocation=True, indentation=True, voidForNoArguments=True, trailingSpaces=False, oneLineBlocksWithBraces=False, newLineBeforeEof=False, arrayEmptyComment=True, tabSize=4)
+		styleFixes(includeFileList, ramLocation=True, indentation=True, voidForNoArguments=True, trailingSpaces=False, oneLineBlocksWithBraces=False, newLineBeforeEof=False, arrayEmptyComment=True, tabSize=4)
 	if '-i' in sys.argv:
 		includeFixes(includeFileList, srcFileList, 'PR')
 		includeFixes(includeFileList, srcFileList, 'sys')

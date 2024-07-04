@@ -27,9 +27,53 @@ typedef struct alSoundEffect
 
 typedef enum alMusicID
 {
-	alSound_Music_InishieHurry = 3,			// Mushroom Kingdom 20-second warning
-    alSound_Music_Hammer = 0x2D,            // 0x2D
-    alSound_Music_Starman                   // 0x2E
+	alSound_Music_Pupupu,					// Dream Land
+	alSound_Music_Zebes,					// Planet Zebes
+	alSound_Music_Inishie,					// Mushroom Kingdom
+	alSound_Music_InishieHurry,				// Mushroom Kingdom 20-second countdown warning
+	alSound_Music_Sector,					// Sector Z
+	alSound_Music_Jungle,					// Kongo Jungle
+	alSound_Music_Castle,					// Peach's Castle
+	alSound_Music_Yamabuki,					// Saffron City
+	alSound_Music_Yoster,					// Yoshi's Island
+	alSound_Music_Hyrule,					// Hyrule Castle
+	alSound_Music_MenuFGSelect,				// Character / Stage Select
+	alSound_Music_UnusedClear,				// Unused fanfare?
+	alSound_Music_WinMario,					// Mario Victory
+	alSound_Music_WinSamus,					// Samus Victory
+	alSound_Music_WinDonkey,				// Donkey Kong Victory
+	alSound_Music_WinKirby,					// Kirby Victory
+	alSound_Music_WinFox,					// Fox Victory
+	alSound_Music_WinMother,				// Ness Victory
+	alSound_Music_WinYoshi,					// Yoshi Victory
+	alSound_Music_WinCaptain,				// Captain Falcon Victory
+	alSound_Music_WinMonster,				// Pokémon Victory
+	alSound_Music_WinZelda,					// Link Victory
+	alSound_Music_Results,					// VS Mode Results Screen
+	alSound_Music_BossStage,				// Final Stage Card (VS. Master Hand)
+	alSound_Music_BossEntry,				// Master Hand Appears
+	alSound_Music_Last,						// Final Destination
+	alSound_Music_Bonus,					// Bonus Stage
+	alSound_Music_StageClear,				// 1P Game Stage Cleared
+	alSound_Music_BonusClear,				// Bonus Stage Cleared
+	alSound_Music_GameClear,				// Final Stage Cleared
+	alSound_Music_BonusFailure,				// Bonus Stage Failed
+	alSound_Music_1PGameEndChoice,			// Continue or Game Over?
+	alSound_Music_1PGameOver,				// Game Over
+	alSound_Music_Opening,					// Opening Movie
+	alSound_Music_Explain,					// How to Play
+	alSound_Music_1PGameStage,				// 1P Game Stage Cards
+	alSound_Music_Zako,						// Battlefield
+	alSound_Music_Metal,					// Meta Crystal
+	alSound_Music_Ending,					// Ending Movie
+	alSound_Music_StaffRoll,				// Credits
+	alSound_Music_Secret,					// Secret Found
+	alSound_Music_ChallengerStage,			// Challenger Approaching
+	alSound_Music_TrainingMode,				// Training Mode
+	alSound_Music_Data,						// Character Data / VS Records
+	alSound_Music_ModeSelect,				// Main Menu
+	alSound_Music_Hammer,            		// Hammer
+    alSound_Music_Starman                   // Star
 
 } alMusicID;
 

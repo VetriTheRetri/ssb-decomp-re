@@ -15,6 +15,124 @@ lOverlay64ArenaHi = 0x80392A00;
 lMNN64ArenaLo = 0x80132080;
 lMNN64ArenaHi = 0x803903E0;
 
+lIFCommonPlayerMagnifyFrame = 0x000002C8;
+lIFCommonPlayerMagnifyDisplayList = 0x00000030;
+
+lIFCommonItemArrow = 0x00000050;
+
+lIFCommonTrafficRod = 0x00020990;
+lIFCommonTrafficFrame = 0x00021760;
+lIFCommonTrafficRodShadow = 0x00021878;
+lIFCommonTrafficLampRedDim = 0x00021950;
+lIFCommonTrafficLampYellowDim = 0x00021A10;
+lIFCommonTrafficLampBlueDim = 0x00021BA8;
+lIFCommonTrafficLampRedContour = 0x00023A28;
+lIFCommonTrafficLampYellowContour = 0x00024620;
+lIFCommonTrafficLampBlueContour = 0x00025290;
+lIFCommonTrafficLampRedLight = 0x00022128;
+lIFCommonTrafficLampYellowLight = 0x00022588;
+lIFCommonTrafficLampBlueLight = 0x00022F18;
+
+lIFCommonAnnounceGoLetterG = 0x00004D78;
+lIFCommonAnnounceGoLetterO = 0x0000A730;
+lIFCommonAnnounceGoSymbolExclaim = 0x0000C370;
+
+lIFCommonAnnounceCommonLetterA = 0x000005E0;
+lIFCommonAnnounceCommonLetterC = 0x00000D80;
+lIFCommonAnnounceCommonLetterD = 0x00001268;
+lIFCommonAnnounceCommonLetterE = 0x00001628;
+lIFCommonAnnounceCommonLetterF = 0x00001A00;
+lIFCommonAnnounceCommonLetterH = 0x00002408;
+lIFCommonAnnounceCommonLetterI = 0x000026B8;
+lIFCommonAnnounceCommonLetterL = 0x00003358;
+lIFCommonAnnounceCommonLetterM = 0x00003980;
+lIFCommonAnnounceCommonLetterN = 0x00003E88;
+lIFCommonAnnounceCommonLetterO = 0x000044B0;
+lIFCommonAnnounceCommonLetterP = 0x00004890;
+lIFCommonAnnounceCommonLetterR = 0x00005418;
+lIFCommonAnnounceCommonLetterS = 0x000057F0;
+lIFCommonAnnounceCommonLetterT = 0x00005BD0;
+lIFCommonAnnounceCommonLetterU = 0x000060D8;
+lIFCommonAnnounceCommonSymbolExclaim = 0x00007D98;
+
+lIFCommonAnnounceTimeUpLetterT = 0x0000E4A8;
+lIFCommonAnnounceTimeUpLetterI = 0x0000F740;
+lIFCommonAnnounceTimeUpLetterM = 0x000127E0;
+lIFCommonAnnounceTimeUpLetterE = 0x000144E0;
+lIFCommonAnnounceTimeUpLetterU = 0x00016EB8;
+lIFCommonAnnounceTimeUpLetterP = 0x00018FE8;
+
+lIFCommonAnnounceGameSetLetterG = 0x00020788;
+lIFCommonAnnounceGameSetLetterA = 0x0001DE68;
+lIFCommonAnnounceGameSetLetterM = 0x000127E0;
+lIFCommonAnnounceGameSetLetterE = 0x000144E0;
+lIFCommonAnnounceGameSetLetterS = 0x0001B5F8;
+lIFCommonAnnounceGameSetLetterT = 0x0000E4A8;
+
+lIFCommonPlayerDamageDigit0 = 0x00000148;
+lIFCommonPlayerDamageDigit1 = 0x000002D8;
+lIFCommonPlayerDamageDigit2 = 0x00000500;
+lIFCommonPlayerDamageDigit3 = 0x00000698;
+lIFCommonPlayerDamageDigit4 = 0x000008C0;
+lIFCommonPlayerDamageDigit5 = 0x00000A58;
+lIFCommonPlayerDamageDigit6 = 0x00000C80;
+lIFCommonPlayerDamageDigit7 = 0x00000E18;
+lIFCommonPlayerDamageDigit8 = 0x00001040;
+lIFCommonPlayerDamageDigit9 = 0x00001270;
+lIFCommonPlayerDamageSymbolPercent = 0x00001458;
+lIFCommonPlayerDamageSymbolHP = 0x000015D8;
+
+lIFCommonTimerDigit0 = 0x00000138;
+lIFCommonTimerDigit1 = 0x00000228;
+lIFCommonTimerDigit2 = 0x000003A8;
+lIFCommonTimerDigit3 = 0x00000528;
+lIFCommonTimerDigit4 = 0x000006A8;
+lIFCommonTimerDigit5 = 0x00000828;
+lIFCommonTimerDigit6 = 0x000009A8;
+lIFCommonTimerDigit7 = 0x00000B28;
+lIFCommonTimerDigit8 = 0x00000CA8;
+lIFCommonTimerDigit9 = 0x00000E28;
+lIFCommonTimerSymbolColon = 0x00000F08;
+lIFCommonTimerSymbolSec = 0x00001140;
+lIFCommonTimerSymbolCSec = 0x00001238;
+
+lIFCommonPlayerStockDigit0 = 0x00000068;
+lIFCommonPlayerStockDigit1 = 0x00000118;
+lIFCommonPlayerStockDigit2 = 0x000001C8;
+lIFCommonPlayerStockDigit3 = 0x00000278;
+lIFCommonPlayerStockDigit4 = 0x00000328;
+lIFCommonPlayerStockDigit5 = 0x000003D8;
+lIFCommonPlayerStockDigit6 = 0x00000488;
+lIFCommonPlayerStockDigit7 = 0x00000538;
+lIFCommonPlayerStockDigit8 = 0x000005E8;
+lIFCommonPlayerStockDigit9 = 0x00000698;
+lIFCommonPlayerStockSymbolX = 0x00000828;
+
+lIFCommonPlayerTag1P = 0x00000258;
+lIFCommonPlayerTag2P = 0x000004F8;
+lIFCommonPlayerTag3P = 0x00000798;
+lIFCommonPlayerTag4P = 0x00000A38;
+lIFCommonPlayerTagCP = 0x00000CD8;
+lIFCommonPlayerTagAlly = 0x00000EB8;
+
+lIFCommonBattlePausePlayerNum1P = 0x00000078;
+lIFCommonBattlePausePlayerNum2P = 0x00000138;
+lIFCommonBattlePausePlayerNum3P = 0x000001F8;
+lIFCommonBattlePausePlayerNum4P = 0x000002B8;
+
+lIFCommonBattlePauseDecalPause = 0x00000438;
+lIFCommonBattlePauseDecalAButton = 0x00000958;
+lIFCommonBattlePauseDecalBButton = 0x00000A88;
+lIFCommonBattlePauseDecalZTrigger = 0x00000BD8;
+lIFCommonBattlePauseDecalRTrigger = 0x00000CF8;
+lIFCommonBattlePauseDecalPlus = 0x000004D8;
+lIFCommonBattlePauseDecalReset = 0x00000610;
+lIFCommonBattlePauseDecalSmashBall = 0x000006D8;
+lIFCommonBattlePauseDecalArrows = 0x00001538;
+lIFCommonBattlePauseDecalControlStick = 0x000017A8;
+lIFCommonBattlePauseDecalLTrigger = 0x000018C8;
+lIFCommonBattlePauseDecalRetry = 0x00000828;
+
 lEFGroundCastleDataStart = 0x00002A08;
 
 lEFGroundCastleLakituDObjSetup = 0x00004118;

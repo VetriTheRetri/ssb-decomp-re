@@ -12,7 +12,7 @@ extern intptr_t D_NF_000000C7;
 extern struct gmBattleState gTransferBattleState;
 extern ftCreateDesc dFTDefaultFighterDesc;
 
-void func_ovl2_80114D98();
+void ifCommonAnnounceTimeUpInitInterface();
 void gmRumbleInitPlayers();
 void ftRender_Lights_DisplayLightReflect(Gfx **display_list, f32 arg1, f32 arg2);
 
@@ -39,7 +39,7 @@ scRuntimeInfo D_ovl4_8018E3F4 = {
 // 8018D0C0
 void scBattle_UpdateGameStatus()
 {
-	func_ovl2_8011485C();
+	ifCommonBattleUpdateInterfaceAll();
 }
 
 // 8018D0E0 - Get player's initial facing direction for battle start
@@ -159,23 +159,23 @@ void scBattle_StartStockBattle()
 		ftCommon_ClearPlayerMatchStats(player, ftManagerMakeFighter(&player_spawn));
 	}
 	ftManagerSetupDataPlayables();
-	ifMain_SetGameStatusWait();
+	ifCommonBattleSetGameStatusWait();
 	func_ovl2_8010E2D4();
-	ifPlayer_MagnifyArrows_SetInterface();
+	ifCommonPlayerArrowsInitInterface();
 	func_ovl2_8010E1A4();
-	ifPlayer_MagnifyGlass_SetInterface();
+	ifCommonPlayerMagnifyMakeInterface();
 	func_ovl2_8010DDC4();
 	func_ovl2_8010E374();
 	func_ovl2_8010E498();
-	ifPlayer_Tag_SetInterface();
-	func_ovl2_8010F3A0();
-	func_ovl2_8010F3C0();
-	ifPlayer_Stocks_SetInterface();
-	ifStart_TrafficLamp_SetInterface();
+	ifCommonPlayerTagMakeInterface();
+	ifCommonPlayerDamageSetDigitPositions();
+	ifCommonPlayerDamageInitInterface();
+	ifCommonPlayerStockInitInterface();
+	ifCommonEntryAllMakeInterface();
 	mpCollision_SetPlayMusicID();
 	func_800269C0_275C0(0x272U);
-	ifTimer_BattleTime_SetInterface(func_ovl2_80114D98);
-	ifTimer_BattleTime_SetTimerDigits();
+	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
+	ifCommonTimerMakeDigitSObjs();
 
 	unk_struct = D_ovl4_8018E3D0;
 
@@ -424,26 +424,26 @@ void scBattle_StartSDBattle()
 
 		ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
 
-		gBattleState->player_block[player].is_permanent_stock = FALSE;
+		gBattleState->player_block[player].is_single_stockicon = FALSE;
 	}
 	ftManagerSetupDataPlayables();
-	ifMain_SetGameStatusWait();
+	ifCommonBattleSetGameStatusWait();
 	func_ovl2_8010E2D4();
-	ifPlayer_MagnifyArrows_SetInterface();
+	ifCommonPlayerArrowsInitInterface();
 	func_ovl2_8010E1A4();
-	ifPlayer_MagnifyGlass_SetInterface();
+	ifCommonPlayerMagnifyMakeInterface();
 	func_ovl2_8010DDC4();
 	func_ovl2_8010E374();
 	func_ovl2_8010E498();
-	ifPlayer_Tag_SetInterface();
-	func_ovl2_8010F3A0();
-	func_ovl2_8010F3C0();
-	ifPlayer_Stocks_SetInterface();
-	func_ovl2_80112B74();
+	ifCommonPlayerTagMakeInterface();
+	ifCommonPlayerDamageSetDigitPositions();
+	ifCommonPlayerDamageInitInterface();
+	ifCommonPlayerStockInitInterface();
+	ifCommonSuddenDeathMakeInterface();
 	mpCollision_SetPlayMusicID();
 	func_800269C0_275C0(0x272U);
-	ifTimer_BattleTime_SetInterface(func_ovl2_80114D98);
-	ifTimer_BattleTime_SetTimerDigits();
+	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
+	ifCommonTimerMakeDigitSObjs();
 
 	unk_struct = D_ovl4_8018E3D4;
 

@@ -11,6 +11,6 @@ extern void func_ovl2_80115910(void);
 extern void func_ovl2_80115944(u32 lshift);
 extern void func_ovl2_80115980(void);
 extern s32 efAllocGetParticleBankID(uintptr_t texlo);
-extern s32 efAllocGetAppendParticleBankID(uintptr_t texlo, uintptr_t texhi, uintptr_t pallo, uintptr_t palhi);
+extern s32 efAllocGetAddParticleBankID(uintptr_t texlo, uintptr_t texhi, uintptr_t pallo, uintptr_t palhi);
 
 #endif

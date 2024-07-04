@@ -2,7 +2,7 @@
 #include <gm/battle.h>
 #include <ovl0/reloc_data_mgr.h>
 
-extern void *gCommonSpriteFiles[];
+extern void *gGMCommonFiles[];
 extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_001AC870;
 extern u32 dCommonFileIDs[8];
@@ -78,7 +78,7 @@ void func_ovl5_8018D0C0()
 	rldm_setup.forceBufSize = ARRAY_COUNT(D_ovl5_8018D718);
 
 	rdManagerInitSetup(&rldm_setup);
-	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonSpriteFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
+	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }
 
 // 8018D160

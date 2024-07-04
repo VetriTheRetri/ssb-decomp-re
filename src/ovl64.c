@@ -652,27 +652,27 @@ void func_ovl64_8018DCC4()
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 
 		gBattleState->player_block[player].player_color_index = player;
-		gBattleState->player_block[player].tag_index = player;
+		gBattleState->player_block[player].tag_kind = player;
 
 		ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
 	}
 	ftManagerSetupDataPlayables();
 	scAutoDemoBeginMatch();
 	func_ovl2_8010E2D4();
-	ifPlayer_MagnifyArrows_SetInterface();
+	ifCommonPlayerArrowsInitInterface();
 	func_ovl2_8010E1A4();
-	ifPlayer_MagnifyGlass_SetInterface();
+	ifCommonPlayerMagnifyMakeInterface();
 
 	gPlayerCommonInterface.is_ifmagnify_display = TRUE;
 
 	func_ovl2_8010DDC4();
 	func_ovl2_8010E374();
 	func_ovl2_8010E498();
-	ifPlayer_Tag_SetInterface();
-	func_ovl2_8010F3A0();
-	func_ovl2_8010F3C0();
-	ifPlayerDamageInitInterface();
-	ifPlayer_Stocks_SetInterface();
+	ifCommonPlayerTagMakeInterface();
+	ifCommonPlayerDamageSetDigitPositions();
+	ifCommonPlayerDamageInitInterface();
+	ifCommonPlayerDamageSetShowInterface();
+	ifCommonPlayerStockInitInterface();
 	func_ovl64_8018DB18();
 	mpCollision_SetPlayMusicID();
 	func_800269C0_275C0(0x272);

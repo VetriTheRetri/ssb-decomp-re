@@ -673,13 +673,13 @@ __osContPifRam_pifstatus = 0x8009EFDC;
 func_ovl2_800E7F68 = 0x800E7F68;
 gOMObjCommonLinks = 0x800466F0;
 gDefaultBattleState = 0x800A3fc8;
-gCommonSpriteFiles = 0x80130D40;
+gGMCommonFiles = 0x80130D40;
 gBattleState = 0x800A50E8;
 gSceneData = 0x800A4AD0;
 gCameraGObj = 0x80131460;
-gMusicIndexDefault = 0x801313a0;
+gMPMusicIDDefault = 0x801313a0;
 gPlayerCommonInterface = 0x80131580;
-gMusicIndexCurrent = 0x8013139C;
+gMPMusicIDCurrent = 0x8013139C;
 
 gGroundInfo = 0x80131300;
 
@@ -741,13 +741,6 @@ D_8018E220 = 0x8018E220;
 
 omAddMObjAnimAll = 0x8000BD54;
 
-itVisualsUpdateSpin = 0x801713F4;
-itMapCheckLRWallProcGround = 0x801735A0;
-itMapCheckMapCollideThrownLanding = 0x80173B24;
-itMapSetGround = 0x80173F54;
-itMapSetAir = 0x80173F78;
-itMapCheckMapReboundProcAll = 0x80173D24;
-itManagerMakeItem = 0x8016E174;
 gFTDataLinkMain = 0x80130FB0;
 
 gFTMainIsHurtDetect = 0x801311A0;
@@ -799,8 +792,36 @@ gMPCollUpdateFrame = 0x80131398;
 
 sEFTexturesFile2 = 0x801313B4;
 
+gCMPauseCamEyeX = 0x80131464;
+gCMPauseCamEyeY = 0x80131468;
 gCameraMatrix = 0x80131470;
 gCameraStruct = 0x801314B0;
+
+sIFCommonPlayerDamageInterface = 0x80131598;
+sIFCommonPlayerMagnifyInterface = 0x80131748;
+sIFCommonTimerDigitsInterface = 0x801317C8;
+sIFCommonPlayerStocksNum = 0x801317CC;
+sIFCommonPlayerStocksGObj = 0x801317D0;
+sIFCommonTimerLimit = 0x801317E0;
+sIFCommonBattlePausePlayer = 0x801317E4;
+sIFCommonBattlePausePlayerLOD = 0x801317E5;
+sIFCommonBattlePauseCamRestoreWait = 0x801317E6;
+sIFCommonBattlePauseCamEyeXOrigin = 0x801317E8;
+sIFCommonBattlePauseCamEyeYOrigin = 0x801317EC;
+sIFCommonItemArrowSprite = 0x801317F0;
+sIFCommonBattlePlacement = 0x801317F4;
+D_ovl2_801317FC = 0x801317FC;
+sIFCommonTimerIsStarted = 0x80131800;
+sIFCommonBattleEndSoundQueue = 0x80131808;
+sIFCommonBattlePauseKindInterface = 0x80131828;
+sIFCommonBattleEndSoundNum = 0x80131829;
+sIFCommonBattleInterfaceProcUpdate = 0x8013182C;
+sIFCommonBattleInterfaceProcSet = 0x80131830;
+sIFCommonPlayerStealInterface = 0x80131838;
+sIFCommonPlayerMagnifySoundWait = 0x80131858;
+D_ovl2_80131859 = 0x80131859;
+D_ovl2_8013185A = 0x8013185A;
+sIFCommonIsAnnouncedSecond = 0x8013185C;
 
 sGMRumbleEvents = 0x80131870;
 sGMRumbleLinks = 0x80131960;

@@ -505,7 +505,7 @@ GObj* itMBallMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->rotate.vec.f.z = 0.0F;
 
-        ip->indicator_gobj = ifItem_PickupArrow_MakeInterface(ip);
+        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }

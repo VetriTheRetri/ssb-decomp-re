@@ -107,7 +107,7 @@ void ftCommonSleepProcUpdate(GObj *fighter_gobj)
 
                     this_fp->status_vars.common.sleep.stock_steal_wait = FTCOMMON_SLEEP_STOCK_STEAL_WAIT;
 
-                    func_ovl2_801102B0(this_fp->player, steal_from_player[random_steal_target]);
+                    ifCommonPlayerStockStealMakeInterface(this_fp->player, steal_from_player[random_steal_target]);
 
                     func_800269C0_275C0(alSound_SFX_StockSteal);
                 }

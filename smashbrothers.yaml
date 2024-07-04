@@ -435,6 +435,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Common interface (HUD)
+      - [0x089E90, c, if/ifcommon]
     # Rumble manager
       - [0x090630, c, gm/gmrumble]
     # Particle Bank alloc
@@ -448,6 +450,9 @@ segments:
 
     # ovl2 data
       - [0x0923D0, data, ovl2]
+    # Common interface (HUD)
+      - [0x0AA3F0, .data, if/ifcommon]
+      - [0x0AA990, pad, pad0x0AA990]
     # Rumble manager
       - [0x0AA9A0, .data, gm/gmrumble]
     # Stage effect manager
@@ -455,6 +460,8 @@ segments:
 
     # ovl2 read-only data
       - [0x0AB250, rodata, ovl2]
+    # Common interface (HUD)
+      - [0x0AC460, .rodata, if/ifcommon]
     # Rumble manager
       - [0x0AC4D0, .rodata, gm/gmrumble]
     # Particle Bank alloc

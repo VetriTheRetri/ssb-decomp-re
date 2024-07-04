@@ -20,7 +20,7 @@ extern s32 gMPRoomCount;
 extern f32 gMPLightAngleX;
 extern f32 gMPLightAngleY;
 extern u16 gMPCollUpdateFrame;
-extern u32 gMusicIndexCurrent;
-extern u32 gMusicIndexDefault;
+extern u32 gMPMusicIDCurrent;
+extern u32 gMPMusicIDDefault;
 
 #endif

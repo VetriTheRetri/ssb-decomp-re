@@ -2,6 +2,7 @@
 #define _INTERFACE_H_
 
 #include "iftypes.h"
+#include "iffunctions.h"
 
 // extern s32 ifPlayerDamageDigitWidths[/* */];
 // extern u8 ifPlayerDamageDigitColorsR[/* */];

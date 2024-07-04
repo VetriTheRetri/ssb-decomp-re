@@ -64,7 +64,7 @@ loop: // This makes no sense
     rebirth_vars.pos.z = 0.0F;
 
     ftManagerInitFighter(this_gobj, &rebirth_vars);
-    ifPlayerDamageStopBreakAnim(this_fp);
+    ifCommonPlayerDamageStopBreakAnim(this_fp);
     ftMap_SetGround(this_fp);
 
     this_fp->coll_data.ground_line_id = -2;

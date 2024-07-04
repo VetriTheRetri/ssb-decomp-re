@@ -397,9 +397,9 @@ typedef struct ifPlayerCommon
 	s32* ifplayers_pos_x; // Pointer to each player's HUD X-position
 	u16 ifplayers_pos_y;  // Player HUD's Y-positions - subtracted from center
 						  // Y-position?
-	u8 unk_80131580_0xE;
-	u8 unk_80131580_0xF;
-	u8 unk_80131580_0x10;
+	u8 arrows_flags;
+	u8 arrows_left_status;
+	u8 arrows_right_status;
 
 } ifPlayerCommon;
 
@@ -489,9 +489,9 @@ typedef struct gmPlayerBlock
 	u8 shade_index; // Color overlay applied when several players use the same
 					// costume
 	u8 player_color_index;	// Used for emblems, player tags, and possibly more
-	ub8 is_permanent_stock; // Whether player's stock is permanent or a limited
+	ub8 is_single_stockicon;// Whether player's stock is permanent or a limited
 							// amount
-	u8 tag_index;			// Player tag sprite index (i.e. 1P, 2P, 3P, 4P, CP or heart)
+	u8 tag_kind;			// Player tag sprite index (i.e. 1P, 2P, 3P, 4P, CP or heart)
 	s8 stock_count;			// -1 = player has no stocks
 	ub8 is_rebirth_multi;	// Respawn flag of multi-man enemy teams (Yoshi,
 							// Kirby, Fighting Polygons) in 1P mode

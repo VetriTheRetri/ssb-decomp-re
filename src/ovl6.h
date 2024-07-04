@@ -183,8 +183,8 @@ extern uintptr_t D_NF_800A5240;
 extern uintptr_t lOverlay6ArenaLo; // 0x8018F710
 extern uintptr_t lOverlay6ArenaHi; // 0x80392A00
 
-extern void* gCommonSpriteFiles[/* */];
-extern intptr_t ifTimer_Digits_SpriteOffsets[/* */];
+extern void* gGMCommonFiles[/* */];
+extern intptr_t dIFCommonTimerDigitSpriteOffsets[/* */];
 extern void* D_ovl2_801313F4;
 extern grStruct gGroundStruct;
 extern gmBattleState gDefaultBattleState;

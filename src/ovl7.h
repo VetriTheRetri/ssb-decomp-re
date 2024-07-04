@@ -151,7 +151,7 @@ extern uintptr_t lOverlay7ArenaLo; // 80190FA0
 extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_001AC870;
 
-extern void* gCommonSpriteFiles[/* */];
+extern void* gGMCommonFiles[/* */];
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 
 #endif

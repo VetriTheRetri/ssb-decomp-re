@@ -21,13 +21,20 @@ typedef enum ifPlayerTagKind
 
 } ifPlayerTagKind;
 
+typedef enum ifPlayerArrowsKind
+{
+	nIFPlayerArrowKindLeft,
+	nIFPlayerArrowKindRight
+
+} ifPlayerArrowsKind;
+
 // Structs
 typedef struct ifDCharacter ifDCharacter;
 typedef struct ifACharacter ifACharacter;
 typedef struct ifPlayerDamage ifPlayerDamage;
 typedef struct ifPlayerSteal ifPlayerSteal;
 typedef struct ifPlayerMagnify ifPlayerMagnify;
-typedef struct ifStartLamp ifStartLamp;
-typedef struct ifPauseIcon ifPauseIcon;
+typedef struct ifTraffic ifTraffic;
+typedef struct ifPauseDecal ifPauseDecal;
 
 #endif

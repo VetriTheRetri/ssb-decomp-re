@@ -267,7 +267,7 @@ GObj* itHarisenMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifItem_PickupArrow_MakeInterface(ip);
+        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }

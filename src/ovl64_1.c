@@ -3,7 +3,7 @@
 extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_001AC870;
 extern u32 dCommonFileIDs[8];
-extern void *gCommonSpriteFiles[];
+extern void *gGMCommonFiles[];
 
 // 8018E500
 rdFileNode sAutoDemoStatusBuf[100];
@@ -25,5 +25,5 @@ void func_ovl64_8018E0C0()
 	rldm_setup.forceBufSize = ARRAY_COUNT(sAutoDemoForceBuf);
 
 	rdManagerInitSetup(&rldm_setup);
-	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonSpriteFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
+	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }

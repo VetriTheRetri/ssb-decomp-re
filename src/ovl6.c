@@ -19,7 +19,7 @@ void func_ovl6_8018D0C0() {}
 void func_ovl6_8018D0C8() {}
 
 // 8018D0D0
-void func_ovl6_8018D0D0() { func_ovl2_8011485C(); }
+void func_ovl6_8018D0D0() { ifCommonBattleUpdateInterfaceAll(); }
 
 // 8018D0F0
 void func_ovl6_8018D0F0()
@@ -147,11 +147,11 @@ void scBonusGame_UpdateBonus1TargetCount()
 		if ((gSceneData.scene_previous != 0x34)
 			&& (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus1_task_count == 10)
 			&& (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.bonus_char_id].bonus1_time))
-			func_ovl2_80114D58(0x1D0);
+			ifCommonAnnounceCompleteInitInterface(0x1D0);
 		else
-			func_ovl2_80114D58(0x1CB);
+			ifCommonAnnounceCompleteInitInterface(0x1CB);
 
-		func_ovl2_80113804(0x118U);
+		ifCommonBattleEndAddSoundQueueID(0x118U);
 	}
 }
 
@@ -273,11 +273,11 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 		if ((gSceneData.scene_previous != 0x34)
 			&& (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_task_count == GMMATCH_BONUSGAME_TASK_MAX)
 			&& (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_time))
-			func_ovl2_80114D58(alSound_Voice_AnnounceNewRecord);
+			ifCommonAnnounceCompleteInitInterface(alSound_Voice_AnnounceNewRecord);
 		else
-			func_ovl2_80114D58(alSound_Voice_AnnounceComplete);
+			ifCommonAnnounceCompleteInitInterface(alSound_Voice_AnnounceComplete);
 
-		func_ovl2_80113804(alSound_SFX_Bonus2PlatformLanding);
+		ifCommonBattleEndAddSoundQueueID(alSound_SFX_Bonus2PlatformLanding);
 	}
 }
 
@@ -359,10 +359,10 @@ void func_ovl6_8018DC38()
 void scBonusGame_InitInterface(GObj* interface_gobj)
 {
 	gsStopCurrentProcess(60);
-	func_ovl2_801120D4();
-	ifPlayerDamageInitInterface();
+	ifCommonAnnounceGoMakeInterface();
+	ifCommonPlayerDamageSetShowInterface();
 	func_800269C0_275C0(0x1EA);
-	func_ovl2_801121C4();
+	ifCommonAnnounceGoSetStatus();
 	omEjectGObj(NULL);
 	gsStopCurrentProcess(1);
 }
@@ -483,7 +483,7 @@ void scBonusGame_InitTimer(GObj* interface_gobj)
 
 		if (unit != gBonusTimerDigits[i])
 		{
-			sobj->sprite = *(Sprite*)((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)ifTimer_Digits_SpriteOffsets[unit]);
+			sobj->sprite = *(Sprite*)((uintptr_t)gGMCommonFiles[3] + (intptr_t)dIFCommonTimerDigitSpriteOffsets[unit]);
 			sobj->pos.x = scBonusGame_Timer_DigitPositions[i] - (sobj->sprite.width * 0.5F);
 			sobj->pos.y = 30.0F - (sobj->sprite.height * 0.5F);
 			gBonusTimerDigits[i] = unit;
@@ -503,7 +503,7 @@ void scBonusGame_CheckTimeUpEjectInterface(GObj* interface_gobj)
 {
 	if (gIsBonusGameTimeUp != FALSE)
 	{
-		func_ovl2_80114DD4();
+		ifCommonAnnounceFailureInitInterface();
 		gIsBonusGameTimeUp = FALSE;
 		omEjectGObj(interface_gobj);
 	}
@@ -527,15 +527,15 @@ void func_ovl6_8018E344()
 
 	if (gSceneData.scene_previous != 0x34)
 	{
-		ifTimer_BattleTime_SetInterface(NULL);
-		func_ovl2_80112EBC();
+		ifCommonTimerMakeInterface(NULL);
+		ifCommonTimerSetAttr();
 		interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xBU, 0x80000000U);
 		omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17U, 0x80000000U, -1);
 
 		for (i = 0; i < ARRAY_COUNT(gBonusTimerDigits); i++)
 		{
 			sobj = gcAppendSObjWithSprite(interface_gobj,
-										  (void*)((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
+										  (void*)((uintptr_t)gGMCommonFiles[3] + (intptr_t)&D_NF_00000138));
 			sobj->pos.x = scBonusGame_Timer_DigitPositions[i] - (sobj->sprite.width * 0.5F);
 			sobj->pos.y = 30.0F - (sobj->sprite.height * 0.5F);
 			gBonusTimerDigits[i] = 0;
@@ -544,12 +544,12 @@ void func_ovl6_8018E344()
 		sobj->sprite.attr |= SP_HIDDEN;
 
 		sobj = gcAppendSObjWithSprite(interface_gobj,
-									  (void*)((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001140));
+									  (void*)((uintptr_t)gGMCommonFiles[3] + (intptr_t)&D_NF_00001140));
 		sobj->pos.x = (s32)(231.0F - (sobj->sprite.width * 0.5F));
 		sobj->pos.y = (s32)(20.0F - (sobj->sprite.height * 0.5F));
 
 		sobj = gcAppendSObjWithSprite(interface_gobj,
-									  (void*)((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001238));
+									  (void*)((uintptr_t)gGMCommonFiles[3] + (intptr_t)&D_NF_00001238));
 		sobj->pos.x = (s32)(264.0F - (sobj->sprite.width * 0.5F));
 		sobj->pos.y = (s32)(20.0F - (sobj->sprite.height * 0.5F));
 
@@ -558,8 +558,8 @@ void func_ovl6_8018E344()
 	}
 	else
 	{
-		ifTimer_BattleTime_SetInterface(scBonusGame_SetTimeUp);
-		ifTimer_BattleTime_SetTimerDigits();
+		ifCommonTimerMakeInterface(scBonusGame_SetTimeUp);
+		ifCommonTimerMakeDigitSObjs();
 	}
 }
 
@@ -632,14 +632,14 @@ void scBonusGame_InitBonusGame()
 	}
 
 	ftManagerSetupDataPlayables();
-	ifMain_SetGameStatusWait();
+	ifCommonBattleSetGameStatusWait();
 	func_ovl2_8010DDC4();
 	func_ovl2_8010E374();
 	func_ovl2_8010E498();
-	ifPlayer_Tag_SetInterface();
+	ifCommonPlayerTagMakeInterface();
 	scBonusGame_SetPlayerInterfacePositions();
-	func_ovl2_8010F3C0();
-	ifPlayer_Stocks_SetInterface();
+	ifCommonPlayerDamageInitInterface();
+	ifCommonPlayerStockInitInterface();
 	scBonusGame_InitBonusGameSprites();
 	scBonusGame_MakeInterface();
 	mpCollision_SetPlayMusicID();

@@ -14,7 +14,7 @@ extern alSoundEffect* func_800269C0_275C0(u16);
 void ftCommonDeadAddDeadSFXSoundQueue(u16 sfx_id)
 {
     func_800269C0_275C0(sfx_id);
-    func_ovl2_80113804(sfx_id);
+    ifCommonBattleEndAddSoundQueueID(sfx_id);
 }
 
 // 0x8013BC8C
@@ -47,14 +47,14 @@ void ftCommonDeadUpdateRumble(ftStruct *this_fp)
 // 0x8013BD64
 void ftCommonDeadUpdateScore(ftStruct *this_fp)
 {
-    ifPlayerDamageStartBreakAnim(this_fp);
-    func_ovl2_80114968(this_fp);
+    ifCommonPlayerDamageStartBreakAnim(this_fp);
+    ifCommonPlayerInterfaceAddToViewport(this_fp);
 
     gBattleState->player_block[this_fp->player].falls++;
 
     if (gBattleState->is_display_score)
     {
-        ifDisplayScoreFighter(this_fp, -1);
+        ifCommonPlayerScoreMakeEffect(this_fp, -1);
     }
     if ((this_fp->damage_player != -1) && (this_fp->damage_player != GMMATCH_PLAYERS_MAX))
     {
@@ -64,7 +64,7 @@ void ftCommonDeadUpdateScore(ftStruct *this_fp)
 
         if (gBattleState->is_display_score)
         {
-            ifDisplayScoreFighter(ftGetStruct(gBattleState->player_block[this_fp->damage_player].fighter_gobj), 1);
+            ifCommonPlayerScoreMakeEffect(ftGetStruct(gBattleState->player_block[this_fp->damage_player].fighter_gobj), 1);
         }
     }
     else gBattleState->player_block[this_fp->player].total_self_destruct++;
@@ -75,7 +75,7 @@ void ftCommonDeadUpdateScore(ftStruct *this_fp)
 
         gBattleState->player_block[this_fp->player].stock_count--;
 
-        ifPlayer_BattleStats_UpdateScoreStocks(this_fp);
+        ifCommonBattleUpdateScoreStocks(this_fp);
     }
     if (gBattleState->match_rules & GMMATCH_GAMERULE_1PGAME)
     {
@@ -87,7 +87,7 @@ void ftCommonDeadUpdateScore(ftStruct *this_fp)
     }
     if (gBattleState->match_rules & GMMATCH_GAMERULE_BONUS)
     {
-        ifAnnounce_GameEnd_DisplayMessage();
+        ifCommonAnnounceEndMessage();
     }
 }
 

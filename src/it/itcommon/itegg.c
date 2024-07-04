@@ -318,7 +318,7 @@ GObj* itEggMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         egg_ip->is_unused_item_bool = TRUE;
 
-        egg_ip->indicator_gobj = ifItem_PickupArrow_MakeInterface(egg_ip);
+        egg_ip->indicator_gobj = ifCommonItemArrowMakeInterface(egg_ip);
 
         omAddOMMtxForDObjFixed(dobj->child, 0x2E, 0);
 

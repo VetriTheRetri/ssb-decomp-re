@@ -3501,9 +3501,9 @@ void mnBattleSaveMatchInfo()
 		else
 			gTransferBattleState.player_block[i].player_color_index = D_ovl2_8012EF40[gTransferBattleState.player_block[i].team_index];
 
-		gTransferBattleState.player_block[i].tag_index = (gTransferBattleState.player_block[i].player_kind == Pl_Kind_Man) ? i : 4;
+		gTransferBattleState.player_block[i].tag_kind = (gTransferBattleState.player_block[i].player_kind == Pl_Kind_Man) ? i : 4;
 
-		gTransferBattleState.player_block[i].is_permanent_stock = (gTransferBattleState.match_rules & 1) ? TRUE : FALSE;
+		gTransferBattleState.player_block[i].is_single_stockicon = (gTransferBattleState.match_rules & 1) ? TRUE : FALSE;
 
 		if (gTransferBattleState.player_block[i].player_kind == Pl_Kind_Com)
 			gTransferBattleState.player_block[i].level = gMnBattlePanels[i].cpu_level;

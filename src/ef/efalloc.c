@@ -63,13 +63,13 @@ void func_ovl2_80115980(void)
 }
 
 // 0x801159B0
-s32 efAllocGetParticleBankID(uintptr_t texlo)
+s32 efAllocGetParticleBankID(uintptr_t hdrlo)
 {
     s32 i;
 
     for (i = 0; i < sEFParticleBankNum; i++)
     {
-        if (texlo == sEFParticleBanks[i])
+        if (hdrlo == sEFParticleBanks[i])
         {
             return i;
         }
@@ -78,10 +78,10 @@ s32 efAllocGetParticleBankID(uintptr_t texlo)
 }
 
 // 0x801159F8
-s32 efAllocGetAppendParticleBankID(uintptr_t texlo, uintptr_t texhi, uintptr_t pallo, uintptr_t palhi)
+s32 efAllocGetAddParticleBankID(uintptr_t hdrlo, uintptr_t hdrhi, uintptr_t texlo, uintptr_t texhi)
 {
-    void *texheap, *palheap;
-    size_t texsize, palsize;
+    void *hdrheap, *texheap;
+    size_t hdrsize, texsize;
     s32 bank_id;
 
     if (sEFParticleBankNum > ARRAY_COUNT(sEFParticleBanks))
@@ -92,27 +92,27 @@ s32 efAllocGetAppendParticleBankID(uintptr_t texlo, uintptr_t texhi, uintptr_t p
             smRunPrintGObjStatus();
         }
     }
-    bank_id = efAllocGetParticleBankID(texlo);
+    bank_id = efAllocGetParticleBankID(hdrlo);
 
     if (bank_id != -1)
     {
         return bank_id;
     }
 
+    hdrsize = hdrhi - hdrlo;
     texsize = texhi - texlo;
-    palsize = palhi - pallo;
 
     bank_id = sEFParticleBankNum;
 
+    hdrheap = gsMemoryAlloc(hdrsize, 0x8);
     texheap = gsMemoryAlloc(texsize, 0x8);
-    palheap = gsMemoryAlloc(palsize, 0x8);
 
+    gsDmaRomRead(hdrlo, hdrheap, hdrsize);
     gsDmaRomRead(texlo, texheap, texsize);
-    gsDmaRomRead(pallo, palheap, palsize);
 
-    func_ovl0_800CE254(sEFParticleBankNum++, texheap, palheap);
+    func_ovl0_800CE254(sEFParticleBankNum++, hdrheap, texheap);
 
-    sEFParticleBanks[bank_id] = texlo;
+    sEFParticleBanks[bank_id] = hdrlo;
 
     return bank_id;
 }

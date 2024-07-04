@@ -1,12 +1,14 @@
 #ifndef _IFTYPES_H_
 #define _IFTYPES_H_
 
-#include <PR/ultratypes.h>
 #include <ssb_types.h>
 #include <macros.h>
 #include <sys/obj.h>
 
 #include "ifdef.h"
+
+#define IFCOMMON_PLAYERARROWS_MASK_LEFT  	(1 << nIFPlayerArrowKindLeft)
+#define IFCOMMON_PLAYERARROWS_MASK_RIGHT 	(1 << nIFPlayerArrowKindRight)
 
 struct ifACharacter // Announcer text character (e.g. SUCCESS)
 {
@@ -57,19 +59,18 @@ struct ifPlayerMagnify
 	u8 color_id;
 };
 
-struct ifStartLamp // This is exclusively for the color of the countdown lamps,
+struct ifTraffic // This is exclusively for the color of the countdown lamps,
 				   // the black main body is not included
 {
 	Vec2h pos;
 	u8 color_id;
 };
 
-struct ifPauseIcon
+struct ifPauseDecal
 {
 	intptr_t offset;
 	Vec2h pos;
-	gsColorRGB sprite_color;
-	gsColorRGB shadow_color;
+	gsColorRGBPair colors;
 };
 
 #endif

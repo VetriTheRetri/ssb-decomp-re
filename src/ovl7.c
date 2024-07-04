@@ -34,7 +34,7 @@ void scTrainingMode_CheckEnterTrainingMenu()
 
 		if (!(fp->is_ignore_startbutton))
 		{
-			ifCommon_SetRenderFlagsAll(1);
+			ifCommonInterfaceSetGObjFlagsAll(1);
 			scTrainingMode_SetPauseGObjRenderFlags(0);
 			gmRumbleInitPlayers();
 			ftCommon_ResetControllerInputs(gBattleState->player_block[player].fighter_gobj);
@@ -58,7 +58,7 @@ void scTrainingMode_CheckLeaveTrainingMenu()
 
 	if (gPlayerControllers[player].button_new & (HAL_BUTTON_B | HAL_BUTTON_START))
 	{
-		ifCommon_SetRenderFlagsAll(0);
+		ifCommonInterfaceSetGObjFlagsAll(0);
 		scTrainingMode_SetPauseGObjRenderFlags(1);
 
 		gBattleState->game_status = 1;
@@ -353,7 +353,7 @@ void scTrainingMode_ProcUpdate()
 	else
 		cmManager_RunProcCamera(gCameraGObj);
 
-	func_ovl2_80114800();
+	ifCommonSetMaxNumGObj();
 }
 
 // 8018DA78
@@ -390,7 +390,7 @@ void func_ovl7_8018DA98()
 	opponent = (gSceneData.spgame_player == 0) ? 1 : 0;
 
 	gBattleState->player_block[opponent].player_kind = 1;
-	gBattleState->player_block[opponent].tag_index = 4;
+	gBattleState->player_block[opponent].tag_kind = 4;
 	gBattleState->player_block[opponent].character_kind = gSceneData.training_cpu_char_id;
 	gBattleState->player_block[opponent].costume_index = gSceneData.training_cpu_costume_id;
 	gBattleState->player_block[opponent].level = 3;
@@ -452,7 +452,7 @@ void scTrainingMode_InitMiscVars()
 	gGroundInfo->fog_color
 		= scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 			  .fog_color;
-	ifPlayer_MagnifyGlass_SetInterface();
+	ifCommonPlayerMagnifyMakeInterface();
 	gPlayerCommonInterface.is_ifmagnify_display = TRUE;
 }
 
@@ -1297,9 +1297,9 @@ void scTrainingMode_InitTrainingMenuAll()
 // 80190164
 void scTrainingMode_SetPlayDefaultMusicID()
 {
-	gMusicIndexDefault = 0x2A;
-	auPlaySong(0, gMusicIndexDefault);
-	gMusicIndexCurrent = gMusicIndexDefault;
+	gMPMusicIDDefault = 0x2A;
+	auPlaySong(0, gMPMusicIDDefault);
+	gMPMusicIDCurrent = gMPMusicIDDefault;
 }
 
 // 801901A0
@@ -1387,17 +1387,17 @@ void scTrainingMode_InitTrainingMode()
 	ftManagerSetupDataPlayables();
 	scTrainingMode_SetGameStatusGo();
 	func_ovl2_8010E2D4();
-	ifPlayer_MagnifyArrows_SetInterface();
+	ifCommonPlayerArrowsInitInterface();
 	func_ovl2_8010E1A4();
 	scTrainingMode_InitMiscVars();
 	func_ovl2_8010DDC4();
 	func_ovl2_8010E374();
 	func_ovl2_8010E498();
-	ifPlayer_Tag_SetInterface();
-	func_ovl2_8010F3A0();
-	func_ovl2_8010F3C0();
-	ifPlayerDamageInitInterface();
-	ifPlayer_Stocks_SetInterface();
+	ifCommonPlayerTagMakeInterface();
+	ifCommonPlayerDamageSetDigitPositions();
+	ifCommonPlayerDamageInitInterface();
+	ifCommonPlayerDamageSetShowInterface();
+	ifCommonPlayerStockInitInterface();
 	scTrainingMode_InitStatDisplayAll();
 	scTrainingMode_InitTrainingMenuAll();
 	scTrainingMode_SetPlayDefaultMusicID();
@@ -1457,6 +1457,6 @@ void func_ovl7_801906D0()
 	rldm_setup.forceBufSize = ARRAY_COUNT(gOverlay7ForceBuf);
 
 	rdManagerInitSetup(&rldm_setup);
-	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonSpriteFiles,
+	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles,
 						 gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }

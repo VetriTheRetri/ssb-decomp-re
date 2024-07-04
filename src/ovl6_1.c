@@ -8,7 +8,7 @@
 extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_001AC870;
 extern u32 dCommonFileIDs[8];
-extern void* gCommonSpriteFiles[/* */];
+extern void* gGMCommonFiles[/* */];
 extern void* gBonusGameFileData[/* */];
 
 sb32 itTargetSDefaultProcDamage(GObj* item_gobj);
@@ -58,7 +58,7 @@ void func_ovl6_8018ED70()
 	rldm_setup.forceBufSize = ARRAY_COUNT(gOverlay6ForceBuf);
 
 	rdManagerInitSetup(&rldm_setup);
-	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gCommonSpriteFiles,
+	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles,
 						 gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
 }
 

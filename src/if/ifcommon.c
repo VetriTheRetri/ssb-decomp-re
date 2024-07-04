@@ -2611,7 +2611,7 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
                         }
                         else for (i = 0; i < ARRAY_COUNT(sIFCommonIsAnnouncedSecond); i++)
                         {
-                            if ((sIFCommonIsAnnouncedSecond[i] == FALSE) && (((i * GS_TIME_SEC) + GS_TIME_SEC) >= gBattleState->match_time_remain))
+                            if ((sIFCommonIsAnnouncedSecond[i] == FALSE) && (gBattleState->match_time_remain <= (I_SEC_TO_FRAMES(i) + I_SEC_TO_FRAMES(1))))
                             {
                                 func_800269C0_275C0(dIFCommonAnnounceTimerVoiceIDs[i]);
 

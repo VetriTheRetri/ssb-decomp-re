@@ -221,8 +221,8 @@ toolchain:
 rom: $(ROM)
 	@$(PRINT) "$(BLUE)$(TARGET).$(VERSION).z64$(NO_COL): "
 	@cmp $(ROM) $(BASEROM) > /dev/null && \
-	$(PRINT) "$(GREEN)MATCHES$(NO_COL)\n" || \
-	$(PRINT) "$(RED)DOES NOT MATCH$(NO_COL)\n"
+	$(PRINT) "$(GREEN)OK$(NO_COL)\n" || \
+	$(PRINT) "$(RED)FAILURE$(NO_COL)\n"
 
 nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
 	@echo "Comparing object files:"

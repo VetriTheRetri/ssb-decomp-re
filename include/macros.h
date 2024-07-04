@@ -84,6 +84,14 @@
 #define I_MIN_TO_FRAMES(q) ((int)((q)*GS_TIME_MIN))
 #define I_HRS_TO_FRAMES(q) ((int)((q)*GS_TIME_HRS))
 
+#define F_GS_TIME_TO_FRAMES(q, u) ((int)((q) * (u)))
+
+#define F_SEC_TO_FRAMES(q) ((float)((q)*GS_TIME_SEC))
+#define F_FRAMES_TO_SEC(q) ((float)((q) / GS_TIME_SEC))
+#define F_MIN_TO_SEC(q) ((float)((q)*GS_TIME_SEC))
+#define F_MIN_TO_FRAMES(q) ((float)((q)*GS_TIME_MIN))
+#define F_HRS_TO_FRAMES(q) ((float)((q)*GS_TIME_HRS))
+
 #define I_TIME_TO_FRAMES(h, m, s, f) (I_HRS_TO_FRAMES(h) + I_MIN_TO_FRAMES(m) + I_SEC_TO_FRAMES(s) + (f))
 
 #define U8_MAX 0xFF

@@ -2595,9 +2595,9 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
                     }
                     else gBattleState->match_time_remain -= time_update;
 
-                    if ((gBattleState->gr_kind == Gr_Kind_Inishie) && (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(30)) && (gMPMusicIDDefault != 3))
+                    if ((gBattleState->gr_kind == Gr_Kind_Inishie) && (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(30)) && (gMPMusicIDDefault != alSound_Music_InishieHurry))
                     {
-                        gMPMusicIDDefault = 3;
+                        gMPMusicIDDefault = alSound_Music_InishieHurry;
 
                         ftSpecialItem_BGMCheckFighters();
                     }
@@ -2618,7 +2618,7 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
                                 sIFCommonIsAnnouncedSecond[i] = TRUE;
                             }
                         }
-                        auSetBGMVolume(0, ((gBattleState->match_time_remain / 300.0F) * 20480.0F) + 10240.0F);
+                        auSetBGMVolume(0, ((gBattleState->match_time_remain / F_SEC_TO_FRAMES(5)) * 20480.0F) + 10240.0F);
                     }
                 }
             }

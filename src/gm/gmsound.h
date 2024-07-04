@@ -27,6 +27,7 @@ typedef struct alSoundEffect
 
 typedef enum alMusicID
 {
+	alSound_Music_InishieHurry = 3,			// Mushroom Kingdom 20-second warning
     alSound_Music_Hammer = 0x2D,            // 0x2D
     alSound_Music_Starman                   // 0x2E
 

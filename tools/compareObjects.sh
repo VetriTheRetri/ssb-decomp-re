@@ -18,7 +18,7 @@ do
 	then
 		python3 tools/matchbin.py ${line} ${asmPath} > /tmp/compareObjectsTextDiffOut.txt
 		if [ $(cat /tmp/compareObjectsTextDiffOut.txt | grep 100\\.00% -c) -eq 1 ]; then
-			echo -e "${GREEN}Text file matches:|${line}|${asmPath}|(100.00%|matching instructions)${ENDCOLOR}" >> /tmp/compareObjectsOutGreen.txt
+			echo -e "${GREEN}Text matches:|${line}|${asmPath}|(100.00%|matching instructions)${ENDCOLOR}" >> /tmp/compareObjectsOutGreen.txt
 		else
 			echo -e "${RED}Text differs: ${line} ${asmPath}${ENDCOLOR}" >> /tmp/compareObjectsOutNonMatchingText.txt
 			cat /tmp/compareObjectsTextDiffOut.txt >> /tmp/compareObjectsOutNonMatchingText.txt
@@ -34,13 +34,13 @@ do
 	asmPath=build/asm/data/${relPath}.data
 	if [ -f "$asmPath" ]
 	then
-		sizeA=$(stat --printf="%s" $asmPath)
-		sizeB=$(stat --printf="%s" $line)
+		targetSize=$(stat --printf="%s" $asmPath)
+		actualSize=$(stat --printf="%s" $line)
 		matchingBytesPercent=$(python3 tools/matchbin.py ${line} ${asmPath} -x -p)
-		if [ "${sizeA}" = "${sizeB}" ]; then
-			echo -e "${GREEN}Data file size matches:|${line}|${asmPath}|(${matchingBytesPercent}|matching words, can't rely too much on this value because of symbol references)${ENDCOLOR}" >> /tmp/compareObjectsOutGreen.txt
+		if [ "${targetSize}" = "${actualSize}" ]; then
+			echo -e "${GREEN}Data size matches:|${line}|${asmPath}|(${matchingBytesPercent}|matching words, can't rely too much on this value because of symbol references)${ENDCOLOR}" >> /tmp/compareObjectsOutGreen.txt
 		else
-			echo -e "${RED}Data file size doesn't match:|${line}|${asmPath}|(${matchingBytesPercent}|matching words, can't rely too much on this value because of symbol references)${ENDCOLOR}" >> /tmp/compareObjectsOutRed.txt
+			echo -e "${RED}Data size mismatch (${actualSize} != ${targetSize}):|${line}|${asmPath}|(${matchingBytesPercent}|matching words, can't rely too much on this value because of symbol references)${ENDCOLOR}" >> /tmp/compareObjectsOutRed.txt
 		fi
 	# else
 		# echo "Data file not found: $asmPath"
@@ -53,13 +53,13 @@ do
 	asmPath=build/asm/data/${relPath}.rodata
 	if [ -f "$asmPath" ]
 	then
-		sizeA=$(stat --printf="%s" $asmPath)
-		sizeB=$(stat --printf="%s" $line)
+		targetSize=$(stat --printf="%s" $asmPath)
+		actualSize=$(stat --printf="%s" $line)
 		matchingBytesPercent=$(python3 tools/matchbin.py ${line} ${asmPath} -x -p)
-		if [ "${sizeA}" = "${sizeB}" ]; then
-			echo -e "${GREEN}Rodata file size matches:|${line}|${asmPath}|(${matchingBytesPercent}|matching words, can't rely too much on this value because of symbol references)${ENDCOLOR}" >> /tmp/compareObjectsOutGreen.txt
+		if [ "${targetSize}" = "${actualSize}" ]; then
+			echo -e "${GREEN}Rodata size matches:|${line}|${asmPath}|(${matchingBytesPercent}|matching words, can't rely too much on this value because of symbol references)${ENDCOLOR}" >> /tmp/compareObjectsOutGreen.txt
 		else
-			echo -e "${RED}Rodata file size doesn't match:|${line}|${asmPath}|(${matchingBytesPercent}|matching words, can't rely too much on this value because of symbol references)${ENDCOLOR}" >> /tmp/compareObjectsOutRed.txt
+			echo -e "${RED}Rodata size mismatch (${actualSize} != ${targetSize}):|${line}|${asmPath}|(${matchingBytesPercent}|matching words, can't rely too much on this value because of symbol references)${ENDCOLOR}" >> /tmp/compareObjectsOutRed.txt
 		fi
 	# else
 		# echo "Data file not found: $asmPath"

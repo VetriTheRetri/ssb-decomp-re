@@ -8,7 +8,7 @@ void func_ovl2_8010CF44(void*, f32, f32, f32, f32, f32); /* extern */
 void scTrainingMode_InitViewOptionSprite();				 /* extern */
 void func_ovl0_800CCF00(GObj*);							 /* extern */
 void func_ovl0_800CCF00_overload(GObj*);				 /* extern */
-void func_ovl7_801906D0();
+void scTrainingMode_LoadFiles();
 void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32); /* extern */
 void scTrainingMode_InitCPDisplaySprite();
 void scTrainingMode_InitCPOptionSprite();

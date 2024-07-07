@@ -421,7 +421,7 @@ void func_ovl7_8018DA98()
 }
 
 // 8018DD0C
-void scTrainingMode_LoadFiles()
+void scTrainingMode_LoadSprites()
 {
 	void* addr = rdManagerGetFileWithExternHeap((u32)&D_NF_000000FE,
 												  gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000FE), 0x10));
@@ -434,7 +434,7 @@ void scTrainingMode_LoadFiles()
 }
 
 // 8018DDB0
-void func_ovl7_8018DDB0()
+void scTrainingMode_SetBackgroundSprite()
 {
 	gGroundInfo->background_sprite
 		= (void*)(rldm_get_file_external_force_heap(
@@ -1337,8 +1337,8 @@ void scTrainingMode_InitTrainingMode()
 	Unk800D4060 sp54;
 
 	func_ovl7_8018DA98();
-	func_ovl7_801906D0();
 	scTrainingMode_LoadFiles();
+	scTrainingMode_LoadSprites();
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
@@ -1444,7 +1444,7 @@ void scManager_TrainingMode_InitScene()
 }
 
 // 801906D0
-void func_ovl7_801906D0()
+void scTrainingMode_LoadFiles()
 {
 	rdSetup rldm_setup;
 

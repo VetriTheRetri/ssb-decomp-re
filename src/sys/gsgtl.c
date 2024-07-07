@@ -87,7 +87,7 @@ DObj *D_80046558[2];
 struct SCTaskGfxEnd *D_80046560[2];
 struct SCTaskType4 *D_80046568[2];
 // is the collection of four `DLBuffer`s something worthy of a typedef?
-struct DLBuffer D_80046570[2][4];
+gsDLBuffer D_80046570[2][4];
 Gfx *gDisplayListHead[4];
 Gfx *D_800465C0[4];
 

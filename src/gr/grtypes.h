@@ -63,11 +63,11 @@ struct grFileInfo
 struct gmGroundInfo
 {
 	grCreateDesc gr_desc[4];
-	mpGeometryInfo* map_geometry;
-	u8 unk_0x44;
-	void* unk_0x48; // Background image?
+	mpGeometryInfo *map_geometry;
+	u8 unk_0x44; // render mask which determines render type for each geo layer (gr_desc) - 0 = primary, 1 = secondary (more alpha control w/2 display lists)
+	Sprite *background_sprite; // Background image?
 	gsColorRGB fog_color;
-	u8 fog_alpha;								 // Unused padding?
+	u8 fog_alpha; // Unused padding?
 	gsColorRGB emblem_colors[GMMATCH_PLAYERS_MAX]; // What's this doing here?
 	s32 unk_0x5C;
 	Vec3f light_angle;
@@ -80,8 +80,8 @@ struct gmGroundInfo
 	s16 blastzone_right;
 	s16 blastzone_left;
 	u32 music_id;
-	void* map_nodes;
-	grItemWeights* item_weights;
+	void *map_nodes;
+	grItemWeights *item_weights; // Randomizer weights of items
 	s16 unk_groundinfo_0x88;
 	s16 unk_groundinfo_0x8A;
 	s16 unk_groundinfo_0x8C;

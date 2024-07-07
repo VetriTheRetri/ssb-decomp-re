@@ -433,14 +433,15 @@ void scTrainingMode_LoadFiles()
 	gTrainingModeStruct.unk_trainmenu_0x38 = (void*)((uintptr_t)addr + (intptr_t)&D_NF_000001B8);
 }
 
+// 8018DDB0
 void func_ovl7_8018DDB0()
 {
-	gGroundInfo->unk_0x48
+	gGroundInfo->background_sprite
 		= (void*)(rldm_get_file_external_force_heap(
 					  scTrainingMode_Files_BackgroundImageInfo
 						  [scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 							  .file_id,
-					  (void*)((uintptr_t)gGroundInfo->unk_0x48 - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind]))
+					  (void*)((uintptr_t)gGroundInfo->background_sprite - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind]))
 				  + scTrainingMode_Files_BackgroundImageInfo
 						[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 							.addr);

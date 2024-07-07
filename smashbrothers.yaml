@@ -976,7 +976,7 @@ segments:
       - [0x109FB0, c, ovl4]
       - [0x10B220, c, ovl4_1]
       - [0x10B2C0, .data, ovl4]
-      - { start: 0x10B370, type: .bss, vram: 0x8018E480, name: ovl4_1}
+      - { start: 0x10B370, type: .bss, vram: 0x8018E480, name: ovl4_1 }
 
   - name: ovl5
     type: code
@@ -986,7 +986,7 @@ segments:
     subsegments:
       - [0x10B370, c, ovl5]
       - [0x10B830, .data, ovl5]
-      - { start: 0x10B920, type: .bss, vram: 0x8018D670, name: ovl5}
+      - { start: 0x10B920, type: .bss, vram: 0x8018D670, name: ovl5 }
 
   - name: ovl65
     type: code
@@ -1009,8 +1009,8 @@ segments:
       - [0x113600, .data, ovl6]
       - [0x113870, .data, ovl6_1]
       - [0x1138B0, .rodata, ovl6]
-      - { start: 0x1138E0, type: .bss, vram: 0x8018F1A0, name: ovl6}
-      - { start: 0x1138E0, type: .bss, vram: 0x8018F3B0, name: ovl6_1}
+      - { start: 0x1138E0, type: .bss, vram: 0x8018F1A0, name: ovl6 }
+      - { start: 0x1138E0, type: .bss, vram: 0x8018F3B0, name: ovl6_1 }
 
   - name: ovl7
     type: code
@@ -1021,7 +1021,7 @@ segments:
       - [0x1138E0, c, ovl7]
       - [0x116F90, .data, ovl7]
       - [0x117140, .rodata, ovl7]
-      - { start: 0x117180, type: .bss, vram: 0x80190960, name: ovl7}
+      - { start: 0x117180, type: .bss, vram: 0x80190960, name: ovl7 }
 
   - name: ovl10
     type: code
@@ -1182,7 +1182,7 @@ segments:
       - [0x12FDA0, c, ovl26]
       - [0x139620, .data, ovl26]
       - [0x139CB0, .rodata, ovl26]
-      - { start: 0x139D00, type: .bss, vram: 0x8013ba80, name: ovl7}
+      - { start: 0x139D00, type: .bss, vram: 0x8013ba80, name: ovl26 }
 
   - name: ovl27
     type: code
@@ -1220,9 +1220,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x14D670, asm, ovl30]
-      - [0x150040, data, ovl30]
-      - [0x150530, rodata, ovl30]
+      - [0x14D670, c, ovl30]
+      - [0x150040, .data, ovl30]
+      - [0x150530, .rodata, ovl30]
+      - { start: auto, type: .bss, vram: 0x80134BD0, name: ovl30 }
 
   - name: ovl15
     type: code
@@ -1292,7 +1293,7 @@ segments:
       - [0x1666F0, c, ovl36]
       - [0x1676C0, .data, ovl36]
       - [0x167800, .rodata, ovl36]
-      - { start: 0x167830, type: .bss, vram: 0x8018E200, name: ovl36}
+      - { start: 0x167830, type: .bss, vram: 0x8018E200, name: ovl36 }
 
   - name: ovl37
     type: code
@@ -1333,7 +1334,7 @@ segments:
       - [0x16AC10, c, ovl40]
       - [0x16BBC0, .data, ovl40]
       - [0x16BCE0, .rodata, ovl40]
-      - { start: 0x16BD10, type: .bss, vram: 0x8018E1C0, name: ovl40}
+      - { start: 0x16BD10, type: .bss, vram: 0x8018E1C0, name: ovl40 }
 
   - name: ovl41
     type: code
@@ -1499,7 +1500,7 @@ segments:
     subsegments:
       - [0x17E510, c, ovl57]
       - [0x17EB10, .data, ovl57]
-      - { start: auto, type: .bss, vram: 0x801322B0, name: ovl57}
+      - { start: auto, type: .bss, vram: 0x801322B0, name: ovl57 }
 
   - name: ovl58
     type: code
@@ -1520,7 +1521,7 @@ segments:
       - [0x17F200, c, ovl59]
       - [0x182960, .data, ovl59]
       - [0x187EB0, .rodata, ovl59]
-      - { start: 0x187ED0, type: .bss, vram: 0x8013A7D0, name: ovl40}
+      - { start: 0x187ED0, type: .bss, vram: 0x8013A7D0, name: ovl40 }
 
   - name: ovl62
     type: code
@@ -1550,8 +1551,8 @@ segments:
       - [0x18CE00, c, ovl64_1]
       - [0x18CEA0, .data, ovl64]
       - [0x18D020, .rodata, ovl64]
-      - { start: 0x18D030, type: .bss, vram: 0x8018E2F0, name: ovl64}
-      - { start: auto, type: .bss, vram: 0x8018E500, name: ovl64_1}
+      - { start: 0x18D030, type: .bss, vram: 0x8018E2F0, name: ovl64 }
+      - { start: auto, type: .bss, vram: 0x8018E500, name: ovl64_1 }
 
   - name: ovl16
     type: code

@@ -223,7 +223,7 @@ void overlay_set13_entry();
 void classic_map_entry();
 void screen_adjust_entry();
 void vs_css_entry();
-void stage_select_entry();
+void mnStageStartScene();
 void scBattleRoyalStartScene();
 void overlay_set23_entry();
 void func_ovl2_800D67DC();
@@ -422,7 +422,7 @@ void start_scene_manager(u32 set)
 			case 21:
 				gsLoadOverlay(&D_800A3070[1]);
 				gsLoadOverlay(&D_800A3070[30]);
-				stage_select_entry();
+				mnStageStartScene();
 				break;
 			case 22:
 				gsLoadOverlay(&D_800A3070[2]);

@@ -22,7 +22,7 @@ extern void overlay_set13_entry(void);              // ovl 23
 extern void classic_map_entry(void);                // ovl 24
 extern void screen_adjust_entry(void);              // ovl 25
 extern void vs_css_entry(void);                     // ovl 26
-extern void stage_select_entry(void);               // ovl 30
+extern void mnStageStartScene(void);               // ovl 30
 extern void scBattleRoyalStartScene(void);          // ovl 4
 extern void overlay_set23_entry(void);              // ovl 5
 extern void func_ovl2_800D67DC(void);               // ovl 2

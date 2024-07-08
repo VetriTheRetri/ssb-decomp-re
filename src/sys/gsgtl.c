@@ -20,6 +20,9 @@
 #include <PR/ucode.h>
 #include <PR/ultratypes.h>
 
+// externs
+extern void gsCheckGtlBufferLengths();
+
 // structures
 typedef struct gsUcode
 {
@@ -217,26 +220,25 @@ void func_80004AB0()
 }
 
 // 80004B9C
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/gsCheckGtlBufferLengths.s")
-// void gsCheckGtlBufferLengths()
-// {
-// 	s32 i;
+void gsCheckGtlBufferLengths()
+{
+	s32 i;
 
-// 	for (i = 0; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800465C0) + ARRAY_COUNT(D_80046570[0])) / 3; i++)
-// 	{
-// 		if (D_80046570[gGtlTaskId][i].length + (uintptr_t)D_80046570[gGtlTaskId][i].start < (uintptr_t)gDisplayListHead[i])
-// 		{
-// 			gsFatalPrintF("gtl : gsDLBuffer over flow !  kind = %d  vol = %d byte\n", i, (uintptr_t)gDisplayListHead[i] - (uintptr_t)D_80046570[gGtlTaskId][i].start);
-// 			while (TRUE);
-// 		}
-// 	}
+	for (i = 0; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800465C0) + ARRAY_COUNT(D_80046570[0])) / 3; i++)
+	{
+		if (D_80046570[gGtlTaskId][i].length + (uintptr_t)D_80046570[gGtlTaskId][i].start < (uintptr_t)gDisplayListHead[i])
+		{
+			gsFatalPrintF("gtl : DLBuffer over flow !  kind = %d  vol = %d byte\n", i, (uintptr_t)gDisplayListHead[i] - (uintptr_t)D_80046570[gGtlTaskId][i].start);
+			while (TRUE);
+		}
+	}
 
-// 	if ((uintptr_t)gGraphicsHeap.end < (uintptr_t)gGraphicsHeap.ptr)
-// 	{
-// 		gsFatalPrintF("gtl : DynamicBuffer over flow !  %d byte\n", (uintptr_t)gGraphicsHeap.ptr - (uintptr_t)gGraphicsHeap.start);
-// 		while (TRUE);
-// 	}
-// }
+	if ((uintptr_t)gGraphicsHeap.end < (uintptr_t)gGraphicsHeap.ptr)
+	{
+		gsFatalPrintF("gtl : DynamicBuffer over flow !  %d byte\n", (uintptr_t)gGraphicsHeap.ptr - (uintptr_t)gGraphicsHeap.start);
+		while (TRUE);
+	}
+}
 
 // 80004C5C
 void func_80004C5C(void *arg0, u32 buffer_size)
@@ -656,93 +658,86 @@ void func_800053CC()
 }
 
 // 800057C8
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsgtl/func_800057C8.s")
-// void func_800057C8()
-// {
-// 	s32 i;
-// 	s32 diffs;
+void func_800057C8()
+{
+	s32 i;
+	s32 diffs;
 
-// 	gsCheckGtlBufferLengths();
+	gsCheckGtlBufferLengths();
 
-// 	diffs = 0;
+	diffs = 0;
 
-// 	for (i = 0; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800465C0)) / 2; i++)
-// 	{
-// 		diffs >>= 1;
+	for (i = 0; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800465C0)) / 2; i++)
+	{
+		diffs >>= 1;
 
-// 		if (gDisplayListHead[i] != D_800465C0[i])
-// 		{
-// 			diffs |= 8;
-// 		}
-// 	}
-// 	if (diffs != 0)
-// 	{
-// 		if (diffs & 1)
-// 		{
-// 			if (diffs & 4)
-// 			{
-// 				gsAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
-// 				gSPBranchList(gDisplayListHead[0]++, D_800465C0[2]);
-// 			}
-// 			else if (diffs & 2)
-// 			{
-// 				if (D_80046628 != 0)
-// 				{
-// 					gsAppendGfxUcodeLoad(&gDisplayListHead[0], D_80046624);
-// 				}
-// 				gSPBranchList(gDisplayListHead[0]++, D_800465C0[1]);
-// 			}
-// 			else if (diffs & 8)
-// 			{
-// 				gsAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
-// 				gSPBranchList(gDisplayListHead[0]++, D_800465C0[3]);
-// 			}
-// 		}
-// 		if (diffs & 4)
-// 		{
-// 			if (diffs & 2)
-// 			{
-// 				gsAppendGfxUcodeLoad(&gDisplayListHead[2], D_80046624);
-// 				gSPBranchList(gDisplayListHead[2]++, D_800465C0[1]);
-// 			}
-// 			else if (diffs & 8)
-// 			{
-// 				gSPBranchList(gDisplayListHead[2]++, D_800465C0[3]);
-// 			}
-// 			else
-// 			{
-// 				gsAppendGfxUcodeLoad(&gDisplayListHead[2], D_80046624);
-// 				gSPBranchList(gDisplayListHead[2]++, gDisplayListHead[0]);
-// 			}
-// 			D_800465C0[2] = gDisplayListHead[2];
-// 		}
-// 		if (diffs & 2)
-// 		{
-// 			if (diffs & 8)
-// 			{
-// 				gsAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
-// 				gSPBranchList(gDisplayListHead[1]++, D_800465C0[3]);
-// 			}
-// 			else
-// 			{
-// 				if (D_80046628 != 0)
-// 				{
-// 					gsAppendGfxUcodeLoad(&gDisplayListHead[1], D_80046624);
-// 				}
-// 				gSPBranchList(gDisplayListHead[1]++, gDisplayListHead[0]);
-// 			}
-// 			D_800465C0[1] = gDisplayListHead[1];
-// 		}
-// 		if (diffs & 8)
-// 		{
-// 			gsAppendGfxUcodeLoad(&gDisplayListHead[3], D_80046624);
-// 			gSPBranchList(gDisplayListHead[3]++, gDisplayListHead[0]);
-// 			D_800465C0[3] = gDisplayListHead[3];
-// 		}
-// 	}
-// 	D_80046628 = 0;
-// 	gsCheckGtlBufferLengths();
-// }
+		if (gDisplayListHead[i] != D_800465C0[i])
+			diffs |= 8;
+	}
+	if (diffs != 0)
+	{
+		if (diffs & 1)
+		{
+			if (diffs & 4)
+			{
+				gsAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
+				gSPBranchList(gDisplayListHead[0]++, D_800465C0[2]);
+			}
+			else if (diffs & 2)
+			{
+				if (D_80046628 != 0)
+					gsAppendGfxUcodeLoad(&gDisplayListHead[0], D_80046624);
+				gSPBranchList(gDisplayListHead[0]++, D_800465C0[1]);
+			}
+			else if (diffs & 8)
+			{
+				gsAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
+				gSPBranchList(gDisplayListHead[0]++, D_800465C0[3]);
+			}
+		}
+		if (diffs & 4)
+		{
+			if (diffs & 2)
+			{
+				gsAppendGfxUcodeLoad(&gDisplayListHead[2], D_80046624);
+				gSPBranchList(gDisplayListHead[2]++, D_800465C0[1]);
+			}
+			else if (diffs & 8)
+			{
+				gSPBranchList(gDisplayListHead[2]++, D_800465C0[3]);
+			}
+			else
+			{
+				gsAppendGfxUcodeLoad(&gDisplayListHead[2], D_80046624);
+				gSPBranchList(gDisplayListHead[2]++, gDisplayListHead[0]);
+			}
+			D_800465C0[2] = gDisplayListHead[2];
+		}
+		if (diffs & 2)
+		{
+			if (diffs & 8)
+			{
+				gsAppendGfxUcodeLoad(&gDisplayListHead[0], gsGetUcodeId());
+				gSPBranchList(gDisplayListHead[1]++, D_800465C0[3]);
+			}
+			else
+			{
+				if (D_80046628 != 0)
+					gsAppendGfxUcodeLoad(&gDisplayListHead[1], D_80046624);
+				gSPBranchList(gDisplayListHead[1]++, gDisplayListHead[0]);
+			}
+			D_800465C0[1] = gDisplayListHead[1];
+		}
+		if (diffs & 8)
+		{
+			gsAppendGfxUcodeLoad(&gDisplayListHead[3], D_80046624);
+			gSPBranchList(gDisplayListHead[3]++, gDisplayListHead[0]);
+			D_800465C0[3] = gDisplayListHead[3];
+		}
+	}
+	D_80046628 = 0;
+	gsCheckGtlBufferLengths();
+}
 
 // 80005AE4
 u32 func_80005AE4(s32 arg0)

@@ -115,8 +115,8 @@ void scBattle_StartStockBattle()
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
 	mpCollision_InitMapCollisionData();
-	cmManager_SetViewportCoordinates(10, 10, 310, 230);
-	cmManager_MakeWallpaperCamera();
+	cmManagerSetViewportDimensions(10, 10, 310, 230);
+	cmManagerMakeWallpaperCamera();
 	grWallpaper_SetGroundWallpaper();
 	func_ovl2_8010DB00();
 	itManagerInitItems();
@@ -377,8 +377,8 @@ void scBattle_StartSDBattle()
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
 	mpCollision_InitMapCollisionData();
-	cmManager_SetViewportCoordinates(10, 10, 310, 230);
-	cmManager_MakeWallpaperCamera();
+	cmManagerSetViewportDimensions(10, 10, 310, 230);
+	cmManagerMakeWallpaperCamera();
 	grWallpaper_SetGroundWallpaper();
 	func_ovl2_8010DB00();
 	itManagerInitItems();

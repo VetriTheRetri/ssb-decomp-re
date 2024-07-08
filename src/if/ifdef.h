@@ -29,12 +29,13 @@ typedef enum ifPlayerArrowsKind
 } ifPlayerArrowsKind;
 
 // Structs
-typedef struct ifDCharacter ifDCharacter;
-typedef struct ifACharacter ifACharacter;
-typedef struct ifPlayerDamage ifPlayerDamage;
-typedef struct ifPlayerSteal ifPlayerSteal;
-typedef struct ifPlayerMagnify ifPlayerMagnify;
-typedef struct ifTraffic ifTraffic;
-typedef struct ifPauseDecal ifPauseDecal;
+typedef struct ifPlayerCommon	ifPlayerCommon;
+typedef struct ifDCharacter 	ifDCharacter;
+typedef struct ifACharacter 	ifACharacter;
+typedef struct ifPlayerDamage 	ifPlayerDamage;
+typedef struct ifPlayerSteal 	ifPlayerSteal;
+typedef struct ifPlayerMagnify 	ifPlayerMagnify;
+typedef struct ifTraffic 		ifTraffic;
+typedef struct ifPauseDecal 	ifPauseDecal;
 
 #endif

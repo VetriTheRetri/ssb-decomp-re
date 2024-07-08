@@ -483,8 +483,8 @@ void mvOpeningMarioInit()
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
 	mpCollision_InitMapCollisionData();
-	cmManager_SetViewportCoordinates(10, 10, 310, 230);
-	cmManager_MakeWallpaperCamera();
+	cmManagerSetViewportDimensions(10, 10, 310, 230);
+	cmManagerMakeWallpaperCamera();
 	ftManagerAllocFighter(3, 2);
 	wpManagerAllocWeapons();
 	itManagerInitItems();

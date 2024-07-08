@@ -1,9 +1,10 @@
 #ifndef _GRTYPES_H_
 #define _GRTYPES_H_
 
-#include <PR/ultratypes.h>
+#include <ssb_types.h>
 #include <sys/obj.h>
 #include <mp/mpcoll.h>
+#include <cm/camera.h>
 #include <gm/battle.h>
 #include <gm/gmmisc.h>
 
@@ -60,15 +61,15 @@ struct grFileInfo
 	intptr_t size, offset;
 };
 
-struct gmGroundInfo
+struct grCommonData
 {
 	grCreateDesc gr_desc[4];
-	mpGeometryInfo *map_geometry;
+	mpGeometryInfo* map_geometry;
 	u8 unk_0x44; // render mask which determines render type for each geo layer (gr_desc) - 0 = primary, 1 = secondary (more alpha control w/2 display lists)
-	Sprite *background_sprite; // Background image?
+	Sprite *wallpaper; 								// Background image?
 	gsColorRGB fog_color;
-	u8 fog_alpha; // Unused padding?
-	gsColorRGB emblem_colors[GMMATCH_PLAYERS_MAX]; // What's this doing here?
+	u8 fog_alpha;								 	// Unused padding?
+	gsColorRGB emblem_colors[GMMATCH_PLAYERS_MAX]; 	// What's this doing here?
 	s32 unk_0x5C;
 	Vec3f light_angle;
 	s16 cam_bound_top;
@@ -83,10 +84,10 @@ struct gmGroundInfo
 	void *map_nodes;
 	grItemWeights *item_weights; // Randomizer weights of items
 	s16 unk_groundinfo_0x88;
-	s16 unk_groundinfo_0x8A;
-	s16 unk_groundinfo_0x8C;
-	s16 unk_groundinfo_0x8E;
-	s16 unk_groundinfo_0x90;
+	s16 cam_bound_team_top;
+	s16 cam_bound_team_bottom;
+	s16 cam_bound_team_right;
+	s16 cam_bound_team_left;
 	s16 unk_bound_top;
 	s16 unk_bound_bottom;
 	s16 unk_bound_right;

@@ -566,8 +566,8 @@ void func_ovl6_8018E344()
 // 8018E5D8
 void scBonusGame_SetPlayerInterfacePositions()
 {
-	gPlayerCommonInterface.ifplayers_pos_x = scBonusGame_Player_InterfacePositions;
-	gPlayerCommonInterface.ifplayers_pos_y = 210;
+	gIFPlayerCommonInterface.ifplayers_pos_x = scBonusGame_Player_InterfacePositions;
+	gIFPlayerCommonInterface.ifplayers_pos_y = 210;
 }
 
 // 8018E5F8
@@ -586,8 +586,8 @@ void scBonusGame_InitBonusGame()
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
 	mpCollision_InitMapCollisionData();
-	cmManager_SetViewportCoordinates(10, 10, 310, 230);
-	cmManager_MakeWallpaperCamera();
+	cmManagerSetViewportDimensions(10, 10, 310, 230);
+	cmManagerMakeWallpaperCamera();
 	grWallpaper_SetGroundWallpaper();
 	func_ovl2_8010DB00();
 	itManagerInitItems();

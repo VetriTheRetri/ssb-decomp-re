@@ -371,7 +371,7 @@ typedef enum alSoundEffectID
 	alSound_SFX_DownBouncePurin,		  // 0x132
 	alSound_SFX_DownBounceSamus,		  // 0x133
 	alSound_SFX_DownBounceYoshi,		  // 0x134
-	alSound_Voice_MBallDogasSpawn = 0x135,
+	alSound_Voice_MBallDogasSpawn,
 	alSound_Voice_MBallIwarkSpawn,
 	alSound_Voice_MBallKabigonFall,
 	alSound_Voice_MBallKabigonSpawn,

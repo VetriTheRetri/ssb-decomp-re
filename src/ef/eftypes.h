@@ -3,6 +3,7 @@
 
 #include <ssb_types.h>
 #include <sys/obj.h>
+#include <cm/camera.h>
 #include <gm/gmmisc.h>
 #include <ovl0/halbitmap.h>
 

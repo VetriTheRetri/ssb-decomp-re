@@ -635,6 +635,16 @@ typedef enum ftStatusAttackIndex
 
 } ftStatusAttackIndex;
 
+typedef enum ftCameraModes
+{
+    nFTCameraModeDefault,
+    nFTCameraModeRebirth,
+    nFTCameraModeDeadUpStar,
+    nFTCameraModeEntry,
+    nFTCameraModeExplain
+
+} ftCameraModes;
+
 typedef enum ftItemSwingKind
 {
     ftItemSwing_Kind_Sword,

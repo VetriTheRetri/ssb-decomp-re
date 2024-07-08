@@ -9,6 +9,8 @@
 // extern u8 ifPlayerDamageDigitColorsG[/* */];
 // extern u8 ifPlayerDamageDigitColorsB[/* */];
 
+extern ifPlayerCommon gIFPlayerCommonInterface;
+
 #define ifGetPlayer(interface_gobj) ((interface_gobj)->user_data.s)
 
 #define ifSetPlayer(interface_gobj, player) ((interface_gobj)->user_data.s = player)

@@ -68,7 +68,7 @@ typedef struct grMapObject grMapObject;
 typedef struct grMapEnvironment grMapEnvironment;
 typedef struct grItemWeights grItemWeights;
 typedef struct grFileInfo grFileInfo;
-typedef struct gmGroundInfo gmGroundInfo;
+typedef struct grCommonData grCommonData;
 typedef union  grStruct grStruct;
 
 #endif

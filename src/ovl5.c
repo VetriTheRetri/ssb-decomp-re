@@ -115,8 +115,8 @@ void func_ovl5_8018D1A0()
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
 	mpCollision_InitMapCollisionData();
-	cmManager_SetViewportCoordinates(10, 10, 310, 230);
-	cmManager_MakeWallpaperCamera();
+	cmManagerSetViewportDimensions(10, 10, 310, 230);
+	cmManagerMakeWallpaperCamera();
 	grWallpaper_SetGroundWallpaper();
 	func_ovl2_8010DB00();
 	grNodeInit_SetGroundFiles();

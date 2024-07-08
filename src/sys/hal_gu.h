@@ -119,7 +119,7 @@ extern void hlMtxModLookAtReflect(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hlMtxOrtho_f(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
+extern void hlMtxOrthoF(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
 extern void hlMtxOrtho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
 extern void hlMtxPerspFastF(
     Mtx4f *mf,

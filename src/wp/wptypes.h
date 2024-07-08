@@ -4,12 +4,13 @@
 #include <ssb_types.h>
 #include <macros.h>
 #include <sys/obj.h>
+#include <cm/camera.h>
 #include <ef/effect.h>
 #include <mp/mpcoll.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
-#include <sys/develop.h>
 #include <gm/battle.h>
+#include <sys/develop.h>
 #include <ovl0/halbitmap.h>
 
 #include "wpdef.h"

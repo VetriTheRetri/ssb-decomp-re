@@ -7,7 +7,9 @@
 // #include <PR/ultratypes.h>
 #include <sys/obj.h>
 #include <sys/thread6.h>
+#include <cm/camera.h>
 #include <ef/effect.h>
+#include <if/interface.h>
 #include <mp/mpcoll.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>

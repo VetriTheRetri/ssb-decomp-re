@@ -435,6 +435,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Camera manager (in-game?)
+      - [0x087010, c, cm/cmmanager]
     # Common interface (HUD)
       - [0x089E90, c, if/ifcommon]
     # Rumble manager
@@ -450,6 +452,8 @@ segments:
 
     # ovl2 data
       - [0x0923D0, data, ovl2]
+    # Camera manager (in-game?)
+      - [0x0AA370, .data, cm/cmmanager]
     # Common interface (HUD)
       - [0x0AA3F0, .data, if/ifcommon]
       - [0x0AA990, pad, pad0x0AA990]
@@ -460,6 +464,8 @@ segments:
 
     # ovl2 read-only data
       - [0x0AB250, rodata, ovl2]
+    # Camera manager (in-game?)
+      - [0x0AC3D0, .rodata, cm/cmmanager]
     # Common interface (HUD)
       - [0x0AC460, .rodata, if/ifcommon]
     # Rumble manager

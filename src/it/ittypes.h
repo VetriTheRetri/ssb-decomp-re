@@ -8,6 +8,7 @@
 #include <mp/mpcoll.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
+#include <cm/camera.h>
 #include <ef/effect.h>
 #include <gm/battle.h>
 #include <ovl0/halbitmap.h>

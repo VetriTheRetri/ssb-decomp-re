@@ -3,7 +3,7 @@
 
 #include "grtypes.h"
 
-extern gmGroundInfo* gGroundInfo; // TO DO: move this to the correct file (is this the correct
+extern grCommonData* gGroundInfo; // TO DO: move this to the correct file (is this the correct
 								  // file? NO, this is Patrick!)
 
 extern grMapObject gMapObjects[2];

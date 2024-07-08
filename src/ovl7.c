@@ -239,7 +239,7 @@ sb32 scTrainingMode_UpdateViewOption()
 	{
 		if (gTrainingModeStruct.view_menu_option == 1)
 		{
-			func_ovl2_8010CF20();
+			cmManagerSetCameraStatusDefault();
 			gTrainingModeStruct.magnify_wait = 180;
 		}
 		else
@@ -247,7 +247,7 @@ sb32 scTrainingMode_UpdateViewOption()
 			fighter_gobj = gBattleState->player_block[gSceneData.spgame_player].fighter_gobj;
 			func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_cam_zoom, 0.1F,
 							   28.0F);
-			gPlayerCommonInterface.is_ifmagnify_display = FALSE;
+			gIFPlayerCommonInterface.is_ifmagnify_display = FALSE;
 			gTrainingModeStruct.magnify_wait = 0;
 		}
 		scTrainingMode_InitViewOptionSprite();
@@ -351,7 +351,7 @@ void scTrainingMode_ProcUpdate()
 	if (scTrainingMode_CheckSpeedFrameFreeze() == FALSE)
 		func_8000A5E4();
 	else
-		cmManager_RunProcCamera(gCameraGObj);
+		cmManagerRunGlobalProcCamera(gCMManagerCameraGObj);
 
 	ifCommonSetMaxNumGObj();
 }
@@ -436,12 +436,12 @@ void scTrainingMode_LoadSprites()
 // 8018DDB0
 void scTrainingMode_SetBackgroundSprite()
 {
-	gGroundInfo->background_sprite
+	gGroundInfo->wallpaper
 		= (void*)(rldm_get_file_external_force_heap(
 					  scTrainingMode_Files_BackgroundImageInfo
 						  [scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 							  .file_id,
-					  (void*)((uintptr_t)gGroundInfo->background_sprite - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind]))
+					  (void*)((uintptr_t)gGroundInfo->wallpaper - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind]))
 				  + scTrainingMode_Files_BackgroundImageInfo
 						[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 							.addr);
@@ -454,7 +454,7 @@ void scTrainingMode_InitMiscVars()
 		= scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 			  .fog_color;
 	ifCommonPlayerMagnifyMakeInterface();
-	gPlayerCommonInterface.is_ifmagnify_display = TRUE;
+	gIFPlayerCommonInterface.is_ifmagnify_display = TRUE;
 }
 
 // 8018DEDC
@@ -997,7 +997,7 @@ void scTrainingMode_UpdateMagnifyWait(GObj* interface_gobj)
 	{
 		gTrainingModeStruct.magnify_wait--;
 		if (gTrainingModeStruct.magnify_wait == 0)
-			gPlayerCommonInterface.is_ifmagnify_display = TRUE;
+			gIFPlayerCommonInterface.is_ifmagnify_display = TRUE;
 	}
 }
 
@@ -1343,8 +1343,8 @@ void scTrainingMode_InitTrainingMode()
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
 	mpCollision_InitMapCollisionData();
-	cmManager_SetViewportCoordinates(10, 10, 310, 230);
-	cmManager_MakeWallpaperCamera();
+	cmManagerSetViewportDimensions(10, 10, 310, 230);
+	cmManagerMakeWallpaperCamera();
 	grWallpaper_SetGroundWallpaper();
 	func_ovl2_8010DB00();
 	itManagerInitItems();

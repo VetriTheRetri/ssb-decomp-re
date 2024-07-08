@@ -4,11 +4,25 @@
 #include <ssb_types.h>
 #include <macros.h>
 #include <sys/obj.h>
+#include <cm/camera.h>
 
 #include "ifdef.h"
 
 #define IFCOMMON_PLAYERARROWS_MASK_LEFT  	(1 << nIFPlayerArrowKindLeft)
 #define IFCOMMON_PLAYERARROWS_MASK_RIGHT 	(1 << nIFPlayerArrowKindRight)
+
+struct ifPlayerCommon
+{
+	ub8 is_ifmagnify_display;
+	u8 ifmagnify_mode;
+	f32 ifmagnify_scale;
+	s32* ifplayers_pos_x; // Pointer to each player's HUD X-position
+	u16 ifplayers_pos_y;  // Player HUD's Y-positions - subtracted from center
+						  // Y-position?
+	u8 arrows_flags;
+	u8 arrows_left_status;
+	u8 arrows_right_status;
+};
 
 struct ifACharacter // Announcer text character (e.g. SUCCESS)
 {

@@ -15,7 +15,7 @@ void ftBossOkutsubushiProcUpdate(GObj *fighter_gobj)
 
         fp->lr = LR_Left;
 
-        func_ovl2_8010CF20();
+        cmManagerSetCameraStatusDefault();
         ftBossWaitSetStatus(fighter_gobj);
         ftBossCommonSetDisableFogColor(fighter_gobj);
     }

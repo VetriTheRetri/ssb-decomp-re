@@ -286,7 +286,7 @@ void scAutoDemoSetFocusPlayer1()
 
 		SObjGetStruct(sAutoDemoFighterNameGObj)->sprite.attr &= ~SP_HIDDEN;
 
-		gPlayerCommonInterface.is_ifmagnify_display = FALSE;
+		gIFPlayerCommonInterface.is_ifmagnify_display = FALSE;
 	}
 }
 
@@ -346,7 +346,7 @@ void scAutoDemoResetFocusPlayerAll()
 {
 	GObj *p2_gobj = gBattleState->player_block[1].fighter_gobj;
 
-	func_ovl2_8010CF20();
+	cmManagerSetCameraStatusDefault();
 
 	ftGetStruct(gBattleState->player_block[0].fighter_gobj)->cp_level =
 	ftGetStruct(p2_gobj)->cp_level =
@@ -363,7 +363,7 @@ void scAutoDemoResetFocusPlayerAll()
 // 8018D5E0
 void scAutoDemoSetMagnifyDisplayOn()
 {
-	gPlayerCommonInterface.is_ifmagnify_display = TRUE;
+	gIFPlayerCommonInterface.is_ifmagnify_display = TRUE;
 }
 
 // 8018D5F0
@@ -598,8 +598,8 @@ void func_ovl64_8018DCC4()
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
 	mpCollision_InitMapCollisionData();
-	cmManager_SetViewportCoordinates(10, 10, 310, 230);
-	cmManager_MakeWallpaperCamera();
+	cmManagerSetViewportDimensions(10, 10, 310, 230);
+	cmManagerMakeWallpaperCamera();
 	grWallpaper_SetGroundWallpaper();
 	func_ovl2_8010DB00();
 	itManagerInitItems();
@@ -663,7 +663,7 @@ void func_ovl64_8018DCC4()
 	func_ovl2_8010E1A4();
 	ifCommonPlayerMagnifyMakeInterface();
 
-	gPlayerCommonInterface.is_ifmagnify_display = TRUE;
+	gIFPlayerCommonInterface.is_ifmagnify_display = TRUE;
 
 	func_ovl2_8010DDC4();
 	func_ovl2_8010E374();

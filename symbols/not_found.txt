@@ -676,9 +676,8 @@ gDefaultBattleState = 0x800A3fc8;
 gGMCommonFiles = 0x80130D40;
 gBattleState = 0x800A50E8;
 gSceneData = 0x800A4AD0;
-gCameraGObj = 0x80131460;
 gMPMusicIDDefault = 0x801313a0;
-gPlayerCommonInterface = 0x80131580;
+gIFPlayerCommonInterface = 0x80131580;
 gMPMusicIDCurrent = 0x8013139C;
 
 gGroundInfo = 0x80131300;
@@ -792,10 +791,11 @@ gMPCollUpdateFrame = 0x80131398;
 
 sEFTexturesFile2 = 0x801313B4;
 
-gCMPauseCamEyeX = 0x80131464;
-gCMPauseCamEyeY = 0x80131468;
-gCameraMatrix = 0x80131470;
-gCameraStruct = 0x801314B0;
+gCMManagerCameraGObj = 0x80131460;
+gCMManagerPauseCameraEyeX = 0x80131464;
+gCMManagerPauseCameraEyeY = 0x80131468;
+sCMManagerMtx = 0x80131470;
+gCMManagerCameraStruct = 0x801314B0;
 
 sIFCommonPlayerDamageInterface = 0x80131598;
 sIFCommonPlayerMagnifyInterface = 0x80131748;
@@ -805,9 +805,9 @@ sIFCommonPlayerStocksGObj = 0x801317D0;
 sIFCommonTimerLimit = 0x801317E0;
 sIFCommonBattlePausePlayer = 0x801317E4;
 sIFCommonBattlePausePlayerLOD = 0x801317E5;
-sIFCommonBattlePauseCamRestoreWait = 0x801317E6;
-sIFCommonBattlePauseCamEyeXOrigin = 0x801317E8;
-sIFCommonBattlePauseCamEyeYOrigin = 0x801317EC;
+sIFCommonBattlePauseCameraRestoreWait = 0x801317E6;
+sIFCommonBattlePauseCameraEyeXOrigin = 0x801317E8;
+sIFCommonBattlePauseCameraEyeYOrigin = 0x801317EC;
 sIFCommonItemArrowSprite = 0x801317F0;
 sIFCommonBattlePlacement = 0x801317F4;
 D_ovl2_801317FC = 0x801317FC;

@@ -26,7 +26,7 @@ typedef struct grFileInfo
 
 } grFileInfo;
 
-typedef struct gmGroundInfo
+typedef struct grCommonData
 {
 	void* unk_0x0;
 	void* unk_0x4;
@@ -67,15 +67,15 @@ typedef struct gmGroundInfo
 	u32 unk_0x80;
 	gmGroundUnkBytes* unk_0x84;
 	s16 unk_groundinfo_0x88;
-	s16 unk_groundinfo_0x8A;
+	s16 cam_bound_team_top;
 	u8 filler_0x88[0x92 - 0x8C];
 	s16 unk_bound_top;
 	s16 unk_bound_bottom;
 	s16 unk_bound_right;
 	s16 unk_bound_left;
 
-} gmGroundInfo;
+} grCommonData;
 
-extern gmGroundInfo* gGroundInfo; // TO DO: move this to the correct file
+extern grCommonData* gGroundInfo; // TO DO: move this to the correct file
 
 #endif

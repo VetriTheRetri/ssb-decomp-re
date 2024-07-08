@@ -513,7 +513,7 @@ void hlMtxModLookAtReflect(
     hlMtxF2L(&mf, m);
 }
 
-void hlMtxOrtho_f(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
+void hlMtxOrthoF(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
     s32 i, j;
 
     (*mf)[0][0] = 2 / (r - l);
@@ -539,7 +539,7 @@ void hlMtxOrtho_f(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale
 void hlMtxOrtho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
     Mtx4f mf;
 
-    hlMtxOrtho_f(&mf, l, r, b, t, n, f, scale);
+    hlMtxOrthoF(&mf, l, r, b, t, n, f, scale);
 
     hlMtxF2L(&mf, m);
 }

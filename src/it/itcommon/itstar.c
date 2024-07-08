@@ -92,7 +92,7 @@ sb32 itStarSDefaultProcHit(GObj *item_gobj)
 // 0x80174A18
 GObj* itStarMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    Camera *cam = CameraGetStruct(gCameraGObj);
+    Camera *cam = CameraGetStruct(gCMManagerCameraGObj);
     GObj *item_gobj;
     DObj *dobj;
     itStruct *ip;

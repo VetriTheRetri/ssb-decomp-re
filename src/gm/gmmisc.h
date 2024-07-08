@@ -5,7 +5,6 @@
 // anywhere... yet
 
 #include <ssb_types.h>
-#include <PR/ultratypes.h>
 #include <sys/obj.h>
 
 #define GMCOMMON_PERCENT_DAMAGE_MAX 999

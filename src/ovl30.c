@@ -270,7 +270,7 @@ GObj* gMNStageHeap0StageInfoArray[4];
 GObj* gMNStageHeap1StageInfoArray[4];
 
 // 80134C10
-gmGroundInfo* gMNStageGroundInfo;
+grCommonData* gMNStageGroundInfo;
 
 // 80134C14;
 Camera* gMNStagePreviewCam;
@@ -871,12 +871,12 @@ GObj* mnStageCreateStagePreviewBackground(s32 stage_id)
 		if (gMNStageIsTrainingMode == TRUE)
 		{
 			// If Training Mode, use Smash logo bg
-			stage_preview_bg_sobj = gcAppendSObjWithSprite(stage_preview_bg_gobj, GetAddressFromOffset(rldm_get_file_external_force_heap(dMNStageTrainingBackgroundFileNodes[dMNStageTrainingBackgroundIDs[stage_id]].id, (uintptr_t)gMNStageGroundInfo->background_sprite - dMNStageBackgroundFileOffsets[stage_id]), &FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET));
+			stage_preview_bg_sobj = gcAppendSObjWithSprite(stage_preview_bg_gobj, GetAddressFromOffset(rldm_get_file_external_force_heap(dMNStageTrainingBackgroundFileNodes[dMNStageTrainingBackgroundIDs[stage_id]].id, (uintptr_t)gMNStageGroundInfo->wallpaper - dMNStageBackgroundFileOffsets[stage_id]), &FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET));
 		}
 		else
 		{
 			// Use stage bg
-			stage_preview_bg_sobj = gcAppendSObjWithSprite(stage_preview_bg_gobj, gMNStageGroundInfo->background_sprite);
+			stage_preview_bg_sobj = gcAppendSObjWithSprite(stage_preview_bg_gobj, gMNStageGroundInfo->wallpaper);
 		}
 
 		stage_preview_bg_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -911,7 +911,7 @@ void mnStageRenderStagePreviewSecondary(GObj* stage_geo_gobj)
 }
 
 // 8013303C
-GObj* mnStageCreateStageGeo(s32 stage_id, gmGroundInfo* stage_info, grCreateDesc* stage_geo, s32 stage_geo_id)
+GObj* mnStageCreateStageGeo(s32 stage_id, grCommonData* stage_info, grCreateDesc* stage_geo, s32 stage_geo_id)
 {
 	GObj* stage_geo_gobj;
 	f32 scale[9] = dMNStagePreviewScale;
@@ -944,7 +944,7 @@ GObj* mnStageCreateStageGeo(s32 stage_id, gmGroundInfo* stage_info, grCreateDesc
 }
 
 // 801331AC
-void mnStageCreateStageGeos(s32 stage_id, gmGroundInfo* stage_info, s32 heap_id)
+void mnStageCreateStageGeos(s32 stage_id, grCommonData* stage_info, s32 heap_id)
 {
 	DObj* stage_dobj;
 	DObj* next_dobj;

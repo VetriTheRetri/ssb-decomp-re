@@ -202,7 +202,7 @@ void func_8001DC88(Vec3f *out, Vec3f *ctrl, f32 t) {
 
 // arg1->unk02 is total frames? elapsed frames?
 // delta time cubic interpolation?
-void func_8001DD94(Vec3f *out, struct HalInterpolationParam *params, f32 t) {
+void func_8001DD94(Vec3f *out, HalInterpolationParam *params, f32 t) {
     s16 targetFrame; // f10
     Vec3f *cur;
 
@@ -255,7 +255,7 @@ void func_8001DD94(Vec3f *out, struct HalInterpolationParam *params, f32 t) {
 }
 
 // quadratic interpolation
-void func_8001E020(Vec3f *out, struct HalInterpolationParam *params, f32 t) {
+void func_8001E020(Vec3f *out, HalInterpolationParam *params, f32 t) {
     s16 targetFrame;
     f32 tOrig;
     Vec3f *cur;
@@ -319,7 +319,7 @@ f32 func_8001E240(f32 arg0, f32 arg1, f32 *cof) {
 }
 
 // something like get arg1 as fractional frames?
-f32 func_8001E344(struct HalInterpolationParam *params, f32 arg1) {
+f32 func_8001E344(HalInterpolationParam *params, f32 arg1) {
     f32 *cur; // v0
     s32 idx;
     f32 f28; // sp5C
@@ -368,11 +368,11 @@ f32 func_8001E344(struct HalInterpolationParam *params, f32 arg1) {
     return ((f32)idx + f28) / ((f32)params->unk02 - 1.0f);
 }
 
-void hal_interpolation_cubic(Vec3f *out, struct HalInterpolationParam *p, f32 t) {
+void hal_interpolation_cubic(Vec3f *out, HalInterpolationParam *p, f32 t) {
     func_8001DD94(out, p, func_8001E344(p, t));
 }
 
-void hal_interpolation_quadratic(Vec3f *out, struct HalInterpolationParam *p, f32 t) {
+void hal_interpolation_quadratic(Vec3f *out, HalInterpolationParam *p, f32 t) {
     func_8001E020(out, p, func_8001E344(p, t));
 }
 

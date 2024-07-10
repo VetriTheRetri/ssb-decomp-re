@@ -118,7 +118,7 @@ void func_80006FB8(s32 width, s32 height, u32 arg2) {
     func_80000970((void *)&task.info);
 }
 
-void func_80007024(struct ScreenSettings *arg0) {
+void func_80007024(ScreenSettings *arg0) {
     update_framebuffers(arg0->fb1, arg0->fb2, arg0->fb3);
     gZBuffer = arg0->zBuffer;
     func_80006FB8(arg0->screenWidth, arg0->screenHeight, arg0->unk18);

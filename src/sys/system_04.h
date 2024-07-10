@@ -19,9 +19,9 @@
 struct UnkEC64Arg3 {
     /* 0x00 */ s32 unk00;
     /* 0x04 */ void *unk04;
-    /* 0x08 */ struct Vec3f unk08;
-    /* 0x14 */ struct Vec3f unk14;
-    /* 0x20 */ struct Vec3f unk20;
+    /* 0x08 */ Vec3f unk08;
+    /* 0x14 */ Vec3f unk14;
+    /* 0x20 */ Vec3f unk20;
 }; // size == 0x2C
 
 // data

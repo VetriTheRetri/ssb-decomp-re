@@ -16,7 +16,7 @@
 #define BQ(x) ((x) * (x) * (x) * (x))
 
 // Catmull-Rom cubic spline
-void func_8001D610(struct Vec3f *out, struct Vec3f *ctrl, f32 s, f32 t);
+void func_8001D610(Vec3f *out, Vec3f *ctrl, f32 s, f32 t);
 
 #ifdef NON_MATCHING
 #define BASIS1(t, s) ((-CB((t)) + 2.0f * SQ((t)) - (t)) * (s))
@@ -24,7 +24,7 @@ void func_8001D610(struct Vec3f *out, struct Vec3f *ctrl, f32 s, f32 t);
 #define BASIS3(t, s) (((s)-2.0f) * CB((t)) + (3.0f - 2.0f * (s)) * SQ((t)) + (s) * (t))
 #define BASIS4(t, s) ((CB((t)) - SQ((t))) * (s))
 
-void func_8001D610(struct Vec3f *out, struct Vec3f *ctrl, f32 s, f32 t) {
+void func_8001D610(Vec3f *out, Vec3f *ctrl, f32 s, f32 t) {
     f32 b1;
     f32 b2;
     f32 b3;
@@ -56,14 +56,14 @@ void func_8001D610(struct Vec3f *out, struct Vec3f *ctrl, f32 s, f32 t) {
 #endif
 
 // quadratic spline?
-void func_8001D754(struct Vec3f *out, struct Vec3f *ctrl, f32 s, f32 t);
+void func_8001D754(Vec3f *out, Vec3f *ctrl, f32 s, f32 t);
 #ifdef NON_MATCHING
 #define BASIS1(t, s) ((-3.0f * SQ((t)) + 4.0f * (t)-1.0f) * (s))
 #define BASIS2(t, s) ((2.0f - (s)) * 3.0f * SQ((t)) + 2.0f * ((s)-3.0f) * (t))
 #define BASIS3(t, s) (((s)-2.0f) * 3.0f * SQ((t)) + 2.0f * (3.0f - 2.0f * (s)) * (t) + (s))
 #define BASIS4(t, s) ((3.0f * SQ((t)) - 2.0f * (t)) * (s))
 
-void func_8001D754(struct Vec3f *out, struct Vec3f *ctrl, f32 s, f32 t) {
+void func_8001D754(Vec3f *out, Vec3f *ctrl, f32 s, f32 t) {
     // f32 b1, b2, b3, b4;
     f32 sX, sY, sZ;
 
@@ -93,14 +93,14 @@ void func_8001D754(struct Vec3f *out, struct Vec3f *ctrl, f32 s, f32 t) {
 #endif
 
 // some sort of bezier interpolation
-void func_8001D8E0(struct Vec3f *out, struct Vec3f *ctrl, f32 t);
+void func_8001D8E0(Vec3f *out, Vec3f *ctrl, f32 t);
 #ifdef NON_MATCHING
 #define BASIS1(t) ((1.0f / 6.0f) * (CB(1.0f - t)))
 #define BASIS2(t) ((1.0f / 6.0f) * (((3.0f * CB(t)) - (6.0f * SQ(t))) + 4.0f))
 #define BASIS3(t) ((1.0f / 6.0f) * ((((SQ(t) - CB(t)) + t) * 3.0f) + 1.0f))
 #define BASIS4(t) ((1.0f / 6.0f) * CB(t))
 
-void func_8001D8E0(struct Vec3f *out, struct Vec3f *ctrl, f32 t) {
+void func_8001D8E0(Vec3f *out, Vec3f *ctrl, f32 t) {
     f32 b1, b2, b3, b4;
 
     b4 = BASIS4(t);
@@ -122,9 +122,9 @@ void func_8001D8E0(struct Vec3f *out, struct Vec3f *ctrl, f32 t) {
 #endif
 
 // quadratic bezier with four control points (not three?)
-void func_8001DA40(struct Vec3f *out, struct Vec3f *ctrl, f32 t);
+void func_8001DA40(Vec3f *out, Vec3f *ctrl, f32 t);
 #ifdef NON_MATCHING
-void func_8001DA40(struct Vec3f *out, struct Vec3f *ctrl, f32 t) {
+void func_8001DA40(Vec3f *out, Vec3f *ctrl, f32 t) {
     f32 tSq;
     f32 mt;
     f32 b2;
@@ -148,9 +148,9 @@ void func_8001DA40(struct Vec3f *out, struct Vec3f *ctrl, f32 t) {
 #endif
 
 // cubic bezier with scale factor of 3?
-void func_8001DB74(struct Vec3f *out, struct Vec3f *ctrl, f32 t);
+void func_8001DB74(Vec3f *out, Vec3f *ctrl, f32 t);
 #ifdef NON_MATCHING
-void func_8001DB74(struct Vec3f *out, struct Vec3f *ctrl, f32 t) {
+void func_8001DB74(Vec3f *out, Vec3f *ctrl, f32 t) {
     f32 mt;
     f32 tSq;
     f32 b1;
@@ -175,9 +175,9 @@ void func_8001DB74(struct Vec3f *out, struct Vec3f *ctrl, f32 t) {
 #endif
 
 // four point quadratic bezier with scale of 3?
-void func_8001DC88(struct Vec3f *out, struct Vec3f *ctrl, f32 t);
+void func_8001DC88(Vec3f *out, Vec3f *ctrl, f32 t);
 #ifdef NON_MATCHING
-void func_8001DC88(struct Vec3f *out, struct Vec3f *ctrl, f32 t) {
+void func_8001DC88(Vec3f *out, Vec3f *ctrl, f32 t) {
     f32 mt;
     f32 b1;
     f32 b2;
@@ -202,9 +202,9 @@ void func_8001DC88(struct Vec3f *out, struct Vec3f *ctrl, f32 t) {
 
 // arg1->unk02 is total frames? elapsed frames?
 // delta time cubic interpolation?
-void func_8001DD94(struct Vec3f *out, struct HalInterpolationParam *params, f32 t) {
+void func_8001DD94(Vec3f *out, struct HalInterpolationParam *params, f32 t) {
     s16 targetFrame; // f10
-    struct Vec3f *cur;
+    Vec3f *cur;
 
     if (!(t < 0.0f) && !(t > 1.0f)) {
         if (t < 1.0f) {
@@ -255,10 +255,10 @@ void func_8001DD94(struct Vec3f *out, struct HalInterpolationParam *params, f32 
 }
 
 // quadratic interpolation
-void func_8001E020(struct Vec3f *out, struct HalInterpolationParam *params, f32 t) {
+void func_8001E020(Vec3f *out, struct HalInterpolationParam *params, f32 t) {
     s16 targetFrame;
     f32 tOrig;
-    struct Vec3f *cur;
+    Vec3f *cur;
 
     if (!(t < 0.0f) && !(t > 1.0f)) {
         tOrig = t;
@@ -368,11 +368,11 @@ f32 func_8001E344(struct HalInterpolationParam *params, f32 arg1) {
     return ((f32)idx + f28) / ((f32)params->unk02 - 1.0f);
 }
 
-void hal_interpolation_cubic(struct Vec3f *out, struct HalInterpolationParam *p, f32 t) {
+void hal_interpolation_cubic(Vec3f *out, struct HalInterpolationParam *p, f32 t) {
     func_8001DD94(out, p, func_8001E344(p, t));
 }
 
-void hal_interpolation_quadratic(struct Vec3f *out, struct HalInterpolationParam *p, f32 t) {
+void hal_interpolation_quadratic(Vec3f *out, struct HalInterpolationParam *p, f32 t) {
     func_8001E020(out, p, func_8001E344(p, t));
 }
 

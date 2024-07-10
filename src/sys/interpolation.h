@@ -10,7 +10,7 @@ struct HalInterpolationParam {
     /* 0x01 align pad */
     /* 0x02 */ s16 unk02;           // total frames?
     /* 0x04 */ f32 unk04;           // CR scale? count?
-    /* 0x08 */ struct Vec3f *unk08; // control points?
+    /* 0x08 */ Vec3f *unk08; // control points?
     /* 0x0C */ f32 unk0C;
     /* 0x10 */ f32 *unk10; // maybe keyframes as fraction t?
     /* 0x14 */ f32 *unk14; // quartic coef
@@ -23,7 +23,7 @@ enum HalInterpolationKind {
     HAL_INTERP_CATROM
 };
 
-extern void hal_interpolation_cubic(struct Vec3f *out, struct HalInterpolationParam *p, f32 t);
-extern void hal_interpolation_quadratic(struct Vec3f *out, struct HalInterpolationParam *p, f32 t);
+extern void hal_interpolation_cubic(Vec3f *out, struct HalInterpolationParam *p, f32 t);
+extern void hal_interpolation_quadratic(Vec3f *out, struct HalInterpolationParam *p, f32 t);
 
 #endif /* SYS_INTERPOLATION_H */

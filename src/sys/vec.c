@@ -15,7 +15,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
-f32 lbVector_Vec3fNormalize(struct Vec3f *v) {
+f32 lbVector_Vec3fNormalize(Vec3f *v) {
     f32 mag = sqrtf(SQUARE(v->x) + SQUARE(v->y) + SQUARE(v->z));
     if (mag == 0.0f) { return 0.0f; }
     v->x *= 1.0f / mag;
@@ -25,11 +25,11 @@ f32 lbVector_Vec3fNormalize(struct Vec3f *v) {
     return mag;
 }
 
-f32 lbVector_Vec3fMagnitude(const struct Vec3f *v) {
+f32 lbVector_Vec3fMagnitude(const Vec3f *v) {
     return sqrtf(SQUARE(v->x) + SQUARE(v->y) + SQUARE(v->z));
 }
 
-struct Vec3f *lbVector_Vec3fAddTo(struct Vec3f *dst, const struct Vec3f *addend) {
+Vec3f *lbVector_Vec3fAddTo(Vec3f *dst, const Vec3f *addend) {
     dst->x += addend->x;
     dst->y += addend->y;
     dst->z += addend->z;
@@ -37,7 +37,7 @@ struct Vec3f *lbVector_Vec3fAddTo(struct Vec3f *dst, const struct Vec3f *addend)
     return dst;
 }
 
-struct Vec3f *lbVector_Vec3fSubtractFrom(struct Vec3f *dst, const struct Vec3f *subtrahend) {
+Vec3f *lbVector_Vec3fSubtractFrom(Vec3f *dst, const Vec3f *subtrahend) {
     dst->x -= subtrahend->x;
     dst->y -= subtrahend->y;
     dst->z -= subtrahend->z;
@@ -45,8 +45,8 @@ struct Vec3f *lbVector_Vec3fSubtractFrom(struct Vec3f *dst, const struct Vec3f *
     return dst;
 }
 
-struct Vec3f *
-lbVector_Vec3fSubtract(struct Vec3f *difference, const struct Vec3f *minuend, const struct Vec3f *subtrahend) {
+Vec3f *
+lbVector_Vec3fSubtract(Vec3f *difference, const Vec3f *minuend, const Vec3f *subtrahend) {
     difference->x = minuend->x - subtrahend->x;
     difference->y = minuend->y - subtrahend->y;
     difference->z = minuend->z - subtrahend->z;
@@ -55,9 +55,9 @@ lbVector_Vec3fSubtract(struct Vec3f *difference, const struct Vec3f *minuend, co
 }
 
 void lbVector_Vec3fSubtractNormalize(
-    struct Vec3f *difference,
-    const struct Vec3f *minuend,
-    const struct Vec3f *subtrahend) {
+    Vec3f *difference,
+    const Vec3f *minuend,
+    const Vec3f *subtrahend) {
     difference->x = minuend->x - subtrahend->x;
     difference->y = minuend->y - subtrahend->y;
     difference->z = minuend->z - subtrahend->z;
@@ -65,7 +65,7 @@ void lbVector_Vec3fSubtractNormalize(
     lbVector_Vec3fNormalize(difference);
 }
 
-struct Vec3f *lbVector_Vec3fScale(struct Vec3f *v, f32 scale) {
+Vec3f *lbVector_Vec3fScale(Vec3f *v, f32 scale) {
     v->x *= scale;
     v->y *= scale;
     v->z *= scale;
@@ -73,7 +73,7 @@ struct Vec3f *lbVector_Vec3fScale(struct Vec3f *v, f32 scale) {
     return v;
 }
 
-struct Vec3f *lbVector_Vec3fDivideScale(struct Vec3f *v, f32 invScale) {
+Vec3f *lbVector_Vec3fDivideScale(Vec3f *v, f32 invScale) {
     if (invScale != 0.0f) {
         v->x /= invScale;
         v->y /= invScale;
@@ -83,7 +83,7 @@ struct Vec3f *lbVector_Vec3fDivideScale(struct Vec3f *v, f32 invScale) {
     return v;
 }
 
-struct Vec3f *lbVector_Vec3fAddScaled(struct Vec3f *dst, const struct Vec3f *addend, f32 scale) {
+Vec3f *lbVector_Vec3fAddScaled(Vec3f *dst, const Vec3f *addend, f32 scale) {
     dst->x += (addend->x * scale);
     dst->y += (addend->y * scale);
     dst->z += (addend->z * scale);
@@ -92,9 +92,9 @@ struct Vec3f *lbVector_Vec3fAddScaled(struct Vec3f *dst, const struct Vec3f *add
 }
 
 void lbVector_Vec3fScaleAddScaledNormalize(
-    struct Vec3f *dst,
+    Vec3f *dst,
     f32 dstScale,
-    const struct Vec3f *addend,
+    const Vec3f *addend,
     f32 addendScale) {
     dst->x *= dstScale;
     dst->y *= dstScale;
@@ -106,7 +106,7 @@ void lbVector_Vec3fScaleAddScaledNormalize(
     lbVector_Vec3fNormalize(dst);
 }
 
-f32 lbVector_Vec3fAngleDiff(struct Vec3f *v1, struct Vec3f *v2) {
+f32 lbVector_Vec3fAngleDiff(Vec3f *v1, Vec3f *v2) {
     f32 magProd = lbVector_Vec3fMagnitude(v1) * lbVector_Vec3fMagnitude(v2);
 
     if (magProd != 0.0f) {
@@ -121,7 +121,7 @@ f32 lbVector_Vec3fAngleDiff(struct Vec3f *v1, struct Vec3f *v2) {
     return 0.0f;
 }
 
-struct Vec3f *lbVector_Vec3fGetEulerRotation(struct Vec3f *v, enum mtVectorAxisFlags axis, f32 angle) {
+Vec3f *lbVector_Vec3fGetEulerRotation(Vec3f *v, enum mtVectorAxisFlags axis, f32 angle) {
     f32 xResult, yResult, zResult;
     f32 sinAngle = __sinf(angle);
     f32 cosAngle = __cosf(angle);
@@ -149,7 +149,7 @@ struct Vec3f *lbVector_Vec3fGetEulerRotation(struct Vec3f *v, enum mtVectorAxisF
     return v;
 }
 
-struct Vec3f *lbVector_Vec3fNegate(struct Vec3f *v) {
+Vec3f *lbVector_Vec3fNegate(Vec3f *v) {
     v->x = -v->x;
     v->y = -v->y;
     v->z = -v->z;
@@ -158,7 +158,7 @@ struct Vec3f *lbVector_Vec3fNegate(struct Vec3f *v) {
 }
 
 #ifdef NON_MATCHING
-struct Vec3f *func_80019438(struct Vec3f *arg0, struct Vec3f *arg1, f32 arg2) {
+Vec3f *func_80019438(Vec3f *arg0, Vec3f *arg1, f32 arg2) {
     f32 sp3C;
     f32 sp38; // only set when sp3C != 0
     f32 sp34; // only set when sp3C != 0
@@ -206,7 +206,7 @@ struct Vec3f *func_80019438(struct Vec3f *arg0, struct Vec3f *arg1, f32 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/vec/func_80019438.s")
 #endif
 
-struct Vec3f *lbVector_Vec3fNegateByAxis(struct Vec3f *v, enum mtVectorAxisFlags flag) {
+Vec3f *lbVector_Vec3fNegateByAxis(Vec3f *v, enum mtVectorAxisFlags flag) {
     if (flag & MTVECTOR_AXIS_X) { v->x = -v->x; }
     if (flag & MTVECTOR_AXIS_Y) { v->y = -v->y; }
     if (flag & MTVECTOR_AXIS_Z) { v->z = -v->z; }
@@ -214,7 +214,7 @@ struct Vec3f *lbVector_Vec3fNegateByAxis(struct Vec3f *v, enum mtVectorAxisFlags
 }
 
 // _super_ granularly negates components of a vector
-struct Vec3f *unref_80019608(struct Vec3f *v, u32 flags) {
+Vec3f *unref_80019608(Vec3f *v, u32 flags) {
     do {
         if (flags & 0x40) {
             if ((flags & 1) && (v->x < 0.0f)) {
@@ -263,7 +263,7 @@ struct Vec3f *unref_80019608(struct Vec3f *v, u32 flags) {
     return v;
 }
 
-struct Vec3f *unref_80019818(struct Vec3f *v1, const struct Vec3f *v2) {
+Vec3f *unref_80019818(Vec3f *v1, const Vec3f *v2) {
     f32 dot;
 
     dot = VEC_DOT(v2, v1) * -2.0f;
@@ -273,7 +273,7 @@ struct Vec3f *unref_80019818(struct Vec3f *v1, const struct Vec3f *v2) {
     return v1;
 }
 
-struct Vec3f *unref_80019888(struct Vec3f *v1, const struct Vec3f *v2) {
+Vec3f *unref_80019888(Vec3f *v1, const Vec3f *v2) {
     f32 dot;
 
     dot = VEC_DOT(v2, v1);
@@ -289,7 +289,7 @@ struct Vec3f *unref_80019888(struct Vec3f *v1, const struct Vec3f *v2) {
 // Returns 1 if the two vectors are less than 180 degrees apart,
 // -1 if they are more than 180 degrees apart,
 // and 0 if they are perpendicular.
-s32 lbVector_Vec3fCompareDirection(struct Vec3f *v1, struct Vec3f *v2) {
+s32 lbVector_Vec3fCompareDirection(Vec3f *v1, Vec3f *v2) {
     f32 dot;
 
     dot = VEC_DOT(v2, v1);
@@ -300,8 +300,8 @@ s32 lbVector_Vec3fCompareDirection(struct Vec3f *v1, struct Vec3f *v2) {
     }
 }
 
-struct Vec3f *
-lbVector_Vec3fNormalizedCross(struct Vec3f *v0, struct Vec3f *v1, struct Vec3f *result) {
+Vec3f *
+lbVector_Vec3fNormalizedCross(Vec3f *v0, Vec3f *v1, Vec3f *result) {
     result->x = (v0->y * v1->z) - (v0->z * v1->y);
     result->y = (v0->z * v1->x) - (v0->x * v1->z);
     result->z = (v0->x * v1->y) - (v0->y * v1->x);
@@ -310,7 +310,7 @@ lbVector_Vec3fNormalizedCross(struct Vec3f *v0, struct Vec3f *v1, struct Vec3f *
 }
 
 // Subtracts v0 from v2, and runs the same check as lbVector_Vec3fCompareDirection on the result and v1
-s32 lbVector_Vec3fSubtractCompareDirection(struct Vec3f *v0, struct Vec3f *v1, struct Vec3f *v2) {
+s32 lbVector_Vec3fSubtractCompareDirection(Vec3f *v0, Vec3f *v1, Vec3f *v2) {
     f32 dot;
 
     dot = (v1->x * (v2->x - v0->x)) + (v1->y * (v2->y - v0->y)) + (v1->z * (v2->z - v0->z));
@@ -322,8 +322,8 @@ s32 lbVector_Vec3fSubtractCompareDirection(struct Vec3f *v0, struct Vec3f *v1, s
 }
 
 // gets the magnitude of the difference of 2 vectors
-f32 lbVector_Vec3fDiffMagnitude(struct Vec3f *v0, struct Vec3f *v1) {
-    struct Vec3f result;
+f32 lbVector_Vec3fDiffMagnitude(Vec3f *v0, Vec3f *v1) {
+    Vec3f result;
 
     result.x = v1->x - v0->x;
     result.y = v1->y - v0->y;
@@ -335,7 +335,7 @@ f32 lbVector_Vec3fDiffMagnitude(struct Vec3f *v0, struct Vec3f *v1) {
 // Takes the cross product of (arg1 - arg0) and (arg2 - arg0), then
 // does the difference of cross dot arg3 and cross dot arg0, then
 // takes the absolute value of that difference and divides by the magnitude of the cross product
-f32 unref_80019B00(struct Vec3f *arg0, struct Vec3f *arg1, struct Vec3f *arg2, struct Vec3f *arg3) {
+f32 unref_80019B00(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2, Vec3f *arg3) {
     f32 dz1;
     f32 dy1;
     f32 dx1;

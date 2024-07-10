@@ -217,8 +217,8 @@ void hlMtxModLookAt_f(
     f32 yUp,
     f32 zUp) {
     f32 len;
-    struct Vec3f look;
-    struct Vec3f right;
+    Vec3f look;
+    Vec3f right;
 
     look.x = xAt - xEye;
     look.y = yAt - yEye;
@@ -413,8 +413,8 @@ void hlMtxModLookAtReflect_f(
     f32 yUp,
     f32 zUp) {
     f32 len;
-    struct Vec3f look;
-    struct Vec3f right;
+    Vec3f look;
+    Vec3f right;
 
     look.x = xAt - xEye;
     look.y = yAt - yEye;

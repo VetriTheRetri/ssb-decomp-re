@@ -56,16 +56,16 @@ struct ViSettings {
 };
 
 // bss
-struct MqListNode *D_80044EC0_406D0;
-struct SCTaskInfo *D_80044EC4_406D4; // largest priority/unk04?
-struct SCTaskInfo *D_80044EC8_406D8; // smallest priority/unk04?
-struct SCTaskGfx *D_80044ECC_406DC;  // actually a pointer to SCTaskGfx?
-struct SCTaskGfx *D_80044ED0_406E0;  // largest priority queue 2
-struct SCTaskGfx *D_80044ED4_406E4;  // smallest priority queue 2
-struct SCTaskGfx *D_80044ED8_406E8;  // largest priority queue 3
-struct SCTaskGfx *D_80044EDC_406EC;  // smallest priority queue 3
-struct SCTaskGfx *D_80044EE0_406F0;  // standard linked list head
-struct SCTaskGfx *D_80044EE4_406F4;  // standdard linked list tail
+MqListNode *D_80044EC0_406D0;
+SCTaskInfo *D_80044EC4_406D4; // largest priority/unk04?
+SCTaskInfo *D_80044EC8_406D8; // smallest priority/unk04?
+SCTaskGfx *D_80044ECC_406DC;  // actually a pointer to SCTaskGfx?
+SCTaskGfx *D_80044ED0_406E0;  // largest priority queue 2
+SCTaskGfx *D_80044ED4_406E4;  // smallest priority queue 2
+SCTaskGfx *D_80044ED8_406E8;  // largest priority queue 3
+SCTaskGfx *D_80044EDC_406EC;  // smallest priority queue 3
+SCTaskGfx *D_80044EE0_406F0;  // standard linked list head
+SCTaskGfx *D_80044EE4_406F4;  // standdard linked list tail
 OSViMode D_80044EE8_406F8;
 OSViMode D_80044F38_40748;
 u32 D_80044F88_40798[2];
@@ -105,7 +105,7 @@ s32 func_8000092C(void) {
 }
 
 void unref_80000938(void) {
-    struct SCTaskGfx *i = D_80044ECC_406DC, *j = D_80044EE4_406F4, *k = D_80044EDC_406EC;
+    SCTaskGfx *i = D_80044ECC_406DC, *j = D_80044EE4_406F4, *k = D_80044EDC_406EC;
 
     do {
     } while (i || j || k);
@@ -113,7 +113,7 @@ void unref_80000938(void) {
     return;
 }
 
-void func_80000970(struct SCTaskInfo *task) {
+void func_80000970(SCTaskInfo *task) {
     OSMesg msgs[1];
     OSMesgQueue mq;
 
@@ -125,8 +125,8 @@ void func_80000970(struct SCTaskInfo *task) {
     osRecvMesg(&mq, NULL, OS_MESG_BLOCK);
 }
 
-void func_800009D8(struct MqListNode *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count) {
-    struct SCTaskType3 t;
+void func_800009D8(MqListNode *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count) {
+    SCTaskType3 t;
 
     osCreateMesgQueue(mq, msg, count);
     arg0->mq     = mq;
@@ -137,7 +137,7 @@ void func_800009D8(struct MqListNode *arg0, OSMesgQueue *mq, OSMesg *msg, u32 co
 }
 
 #ifdef NON_MATCHING
-s32 unref_80000A34(struct SCTaskGfx *t) {
+s32 unref_80000A34(SCTaskGfx *t) {
     s32 idx;
     s32 i;
     void *nextFb; // 1c
@@ -176,8 +176,8 @@ s32 unref_80000A34(struct SCTaskGfx *t) {
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/thread3/unref_80000A34.s")
 #endif /* NON_MATCHING */
 
-s32 func_80000B54(UNUSED struct SCTaskInfo *t) {
-    struct SCTaskInfo *cur;
+s32 func_80000B54(UNUSED SCTaskInfo *t) {
+    SCTaskInfo *cur;
     const s32 TYPE_TO_CHECK = 1;
 
     if (D_80044ECC_406DC != NULL && D_80044ECC_406DC->info.unk00 == TYPE_TO_CHECK) { return 0; }
@@ -208,8 +208,8 @@ s32 func_80000B54(UNUSED struct SCTaskInfo *t) {
 }
 
 // insert into task (command?) priority queue?
-void func_80000C64(struct SCTaskInfo *newTask) {
-    struct SCTaskInfo *csr;
+void func_80000C64(SCTaskInfo *newTask) {
+    SCTaskInfo *csr;
 
     // find task with priority higher than arg0
     csr = D_80044EC8_406D8;
@@ -234,7 +234,7 @@ void func_80000C64(struct SCTaskInfo *newTask) {
 }
 
 // remove from priority queue?
-void func_80000CF4(struct SCTaskInfo *task) {
+void func_80000CF4(SCTaskInfo *task) {
     if (task->unk10 != NULL) {
         task->unk10->unk0C = task->unk0C;
     } else {
@@ -249,8 +249,8 @@ void func_80000CF4(struct SCTaskInfo *task) {
 }
 
 // add to D_80044ED4_406E4/D_80044ED8_406E8 priorirty queue
-void func_80000D44(struct SCTaskGfx *arg0) {
-    struct SCTaskInfo *temp_v0;
+void func_80000D44(SCTaskGfx *arg0) {
+    SCTaskInfo *temp_v0;
 
     temp_v0 = &D_80044ED8_406E8->info;
     while (temp_v0 != NULL && temp_v0->unk04 < arg0->info.unk04) { temp_v0 = temp_v0->unk10; }
@@ -273,7 +273,7 @@ void func_80000D44(struct SCTaskGfx *arg0) {
 }
 
 // remove from D_80044ED4_406E4/D_80044ED8_406E8 queue
-void func_80000DD4(struct SCTaskGfx *arg0) {
+void func_80000DD4(SCTaskGfx *arg0) {
     if (arg0->info.unk10 != NULL) {
         arg0->info.unk10->unk0C = arg0->info.unk0C;
     } else {
@@ -288,7 +288,7 @@ void func_80000DD4(struct SCTaskGfx *arg0) {
 }
 
 // append to head of D_80044EDC_406EC/D_80044EE0_406F0 queue
-void func_80000E24(struct SCTaskGfx *arg0) {
+void func_80000E24(SCTaskGfx *arg0) {
     arg0->info.unk0C = NULL;
     arg0->info.unk10 = &D_80044EE0_406F0->info;
     if (D_80044EE0_406F0 != NULL) {
@@ -300,7 +300,7 @@ void func_80000E24(struct SCTaskGfx *arg0) {
 }
 
 // remove from D_80044EDC_406EC/D_80044EE0_406F0 queue
-void func_80000E5C(struct SCTaskGfx *arg0) {
+void func_80000E5C(SCTaskGfx *arg0) {
     if (arg0->info.unk10 != NULL) {
         arg0->info.unk10->unk0C = arg0->info.unk0C;
     } else {
@@ -662,7 +662,7 @@ void func_800017B8(void *arg0) {
     D_80044FB4_407C4 = (u32)((u32)(osGetCount() - D_80044FAC_407BC) / 0xB9BU);
 }
 
-void func_800018E0(struct SCTaskGfx *arg0) {
+void func_800018E0(SCTaskGfx *arg0) {
     if (D_80044ECC_406DC != 0) {
         osSpTaskYield();
         D_80044ECC_406DC->info.unk08 = 4;
@@ -675,7 +675,7 @@ void func_800018E0(struct SCTaskGfx *arg0) {
     D_80044ECC_406DC = arg0;
 }
 
-void func_80001968(struct SCTaskGfx *arg0) {
+void func_80001968(SCTaskGfx *arg0) {
     D_80044FB0_407C0 = osGetCount();
 
     if ((D_80044ECC_406DC != NULL) && (D_80044ECC_406DC->info.unk08 == 2)) {
@@ -689,10 +689,10 @@ void func_80001968(struct SCTaskGfx *arg0) {
     D_80044ED0_406E0 = arg0;
 }
 
-s32 func_80001A00(struct SCTaskInfo *task);
+s32 func_80001A00(SCTaskInfo *task);
 #ifdef NON_MATCHING
 // execute task?
-s32 func_80001A00(struct SCTaskInfo *task) {
+s32 func_80001A00(SCTaskInfo *task) {
     /* Nonmatching: reg alloc, likely branches, stack too big */
 
     s32 sp4C = 0;
@@ -700,7 +700,7 @@ s32 func_80001A00(struct SCTaskInfo *task) {
     switch (task->unk00) {
         case 1:
         {
-            struct SCTaskGfx *t = (void *)task;
+            SCTaskGfx *t = (void *)task;
 
             if (t->unk68 != NULL) {
                 *t->unk68 = (*t->unk68) | ((uintptr_t)D_80044F9C_407AC);
@@ -721,7 +721,7 @@ s32 func_80001A00(struct SCTaskInfo *task) {
         case 2:
         {
             // or is this a separate type with an OSTask at the same location?
-            struct SCTaskGfx *t = (void *)task;
+            SCTaskGfx *t = (void *)task;
 
             osWritebackDCacheAll();
             func_80001968(t);
@@ -730,8 +730,8 @@ s32 func_80001A00(struct SCTaskInfo *task) {
         }
         case 3:
         {
-            struct SCTaskType3 *t   = (void *)task;
-            struct MqListNode *temp = t->unk24;
+            SCTaskType3 *t   = (void *)task;
+            MqListNode *temp = t->unk24;
 
             t->unk24->next = D_80044EC0_406D0;
             D_80044EC0_406D0     = temp;
@@ -743,7 +743,7 @@ s32 func_80001A00(struct SCTaskInfo *task) {
         }
         case 4:
         {
-            struct SCTaskType4 *t = (void *)task;
+            SCTaskType4 *t = (void *)task;
 
             func_80000F30(t->unk24, t->unk28, t->unk2C, t->unk30, t->unk32, t->unk34, t->unk36);
 
@@ -755,7 +755,7 @@ s32 func_80001A00(struct SCTaskInfo *task) {
         case 5:
         {
             s32 i;
-            struct SCTaskType5 *t = (void *)task;
+            SCTaskType5 *t = (void *)task;
 
             for (i = 0; i < ARRAY_COUNT(D_80044F90_407A0); i++) { D_80044F90_407A0[i] = t->unk24[i]; }
 
@@ -766,9 +766,9 @@ s32 func_80001A00(struct SCTaskInfo *task) {
         }
         case 6:
         {
-            struct SCTaskGfxEnd *t = (void *)task;
-            struct SCTaskGfx *v1   = NULL; // found
-            struct SCTaskInfo *v0;         // csr
+            SCTaskGfxEnd *t = (void *)task;
+            SCTaskGfx *v1   = NULL; // found
+            SCTaskInfo *v0;         // csr
             // a0 = D_80044ECC_406DC;
             if (D_80044ECC_406DC != NULL && D_80044ECC_406DC->info.unk00 == 1
                 && D_80044ECC_406DC->unk80 == t->unk28) {
@@ -778,7 +778,7 @@ s32 func_80001A00(struct SCTaskInfo *task) {
             v0 = &D_80044ED4_406E4->info;
             while (v0 != NULL) {
                 if (v0->unk00 == 1) {
-                    if (((struct SCTaskGfx *)v0)->unk80 == t->unk28) { v1 = (void *)v0; }
+                    if (((SCTaskGfx *)v0)->unk80 == t->unk28) { v1 = (void *)v0; }
                 }
                 // L80001C20
                 v0 = v0->unk0C;
@@ -787,7 +787,7 @@ s32 func_80001A00(struct SCTaskInfo *task) {
             v0 = D_80044EC4_406D4;
             while (v0 != NULL) {
                 if (v0->unk00 == 1) {
-                    if (((struct SCTaskGfx *)v0)->unk80 == t->unk28) { v1 = (void *)v0; }
+                    if (((SCTaskGfx *)v0)->unk80 == t->unk28) { v1 = (void *)v0; }
                 }
                 // L80001C5C
                 v0 = v0->unk0C;
@@ -803,7 +803,7 @@ s32 func_80001A00(struct SCTaskInfo *task) {
             v0 = &D_80044EDC_406EC->info;
             while (v0 != NULL) {
                 if (v0->unk00 == 1) {
-                    if (((struct SCTaskGfx *)v0)->unk80 == t->unk28) { v1 = (void *)v0; }
+                    if (((SCTaskGfx *)v0)->unk80 == t->unk28) { v1 = (void *)v0; }
                 }
                 v0 = v0->unk0C;
             }
@@ -829,7 +829,7 @@ s32 func_80001A00(struct SCTaskInfo *task) {
             break;
         case 8:
         {
-            struct SCTaskType8 *t = (void *)task;
+            SCTaskType8 *t = (void *)task;
 
             D_80044FCC_407DC = t->unk24;
             D_80044FD0_407E0 = t->unk28;
@@ -840,7 +840,7 @@ s32 func_80001A00(struct SCTaskInfo *task) {
         }
         case 9:
         {
-            struct SCTaskType9 *t = (void *)task;
+            SCTaskType9 *t = (void *)task;
 
             D_80045010_40820 = 1;
             D_80045014_40824 = t->unk24;
@@ -857,8 +857,8 @@ s32 func_80001A00(struct SCTaskInfo *task) {
             break;
         case 11:
         {
-            struct SCTaskInfo *a0 = D_80044EC4_406D4;
-            // struct SCTaskGfx *sp34;
+            SCTaskInfo *a0 = D_80044EC4_406D4;
+            // SCTaskGfx *sp34;
             while (a0 != NULL) {
                 if (a0->unk00 == 1 || a0->unk00 == 4) {
                     // sp34 = a0->unk0C;
@@ -888,8 +888,8 @@ void func_80001E64(void) {
     s32 phi_a0;
     s32 phi_v0; // cur "priority"
     s32 phi_v1;
-    struct SCTaskInfo *phi_s0;  // cur
-    struct SCTaskInfo *temp_s1; // temp for cur
+    SCTaskInfo *phi_s0;  // cur
+    SCTaskInfo *temp_s1; // temp for cur
     s32 phi_s2 = 0;
     s32 phi_s4; // "priority" of D_80044ED4_406E4
     s32 phi_s7; // "priority" of D_80044ECC_406DC or D_80044ED0_406E0
@@ -948,9 +948,9 @@ void func_80001FF4(void) {
 }
 
 void func_8000205C(void) {
-    struct MqListNode *cur;
+    MqListNode *cur;
     // temp usages are needed to match
-    struct MqListNode *temp;
+    MqListNode *temp;
 
     D_8004501C_4082C += 1;
     cur = D_80044EC0_406D0;
@@ -1109,7 +1109,7 @@ void func_80002340(void) {
 }
 
 // might only take a struct SpTaskInfo *
-void func_800024EC(struct SCTaskInfo *task) {
+void func_800024EC(SCTaskInfo *task) {
     task->unk08 = 1;
     func_80000C64(task);
     func_80001E64();
@@ -1198,7 +1198,7 @@ void thread3_scheduler(UNUSED void *arg) {
             default:
                 if (D_80045020_40830 == 0) {
                     // is this a pointer to only the info struct?
-                    func_800024EC((struct SCTaskInfo *)intrMsg);
+                    func_800024EC((SCTaskInfo *)intrMsg);
                 }
         }
     }

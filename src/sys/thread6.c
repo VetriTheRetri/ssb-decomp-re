@@ -78,7 +78,7 @@ struct Unk80045268 {
 
 OSMesgQueue sInitQueue; ///< Queue for OS controller Init, Status, and Read
 OSMesg sInitMesg[1];    ///< Message buffer for OS controller Init, Status, and Read
-struct MqListNode D_80045110;
+MqListNode D_80045110;
 OSMesg sContEvtMesgs[7];     // used in MqList D_80045110 [80045118]
 OSMesgQueue sContEventQueue; // queue for struct ControllerEvent callbacks [80045138]
 OSMesg D_80045150[MAXCONTROLLERS];

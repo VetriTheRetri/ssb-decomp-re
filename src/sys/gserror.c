@@ -159,7 +159,7 @@ OSMesgQueue sSysMesgQueueCPUFault;
 OSMesg sSysMesgCPUFault[1];
 u32 sUnref8009E3D4;
 void (*sCrashPrintFunction)(void);
-struct MqListNode D_8009E3E0;
+MqListNode D_8009E3E0;
 OSMesg D_8009E3E8[1];
 OSMesgQueue D_8009E3F0;
 OSThread sSysThread8Hang;

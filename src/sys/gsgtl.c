@@ -86,7 +86,7 @@ u16 D_800454BA;
 u32 D_800454BC;
 OSMesg D_800454C0[1];
 OSMesgQueue D_800454C8;
-struct MqListNode D_800454E0;
+MqListNode D_800454E0;
 unsigned int *D_800454E8; // pointer to Gfx.w1 (segment base addr?)
 OSMesg D_800454F0[3];
 OSMesgQueue D_80045500; // sctask end? or for all tasks?
@@ -98,8 +98,8 @@ u64 D_80045940[OS_YIELD_DATA_SIZE / sizeof(u64) + 1];
 DObj *sDObjTasks[2];
 DObj *D_80046550[2];
 DObj *D_80046558[2];
-struct SCTaskGfxEnd *D_80046560[2];
-struct SCTaskType4 *D_80046568[2];
+SCTaskGfxEnd *D_80046560[2];
+SCTaskType4 *D_80046568[2];
 // is the collection of four `DLBuffer`s something worthy of a typedef?
 gsDLBuffer D_80046570[2][4];
 Gfx *gDisplayListHead[4];
@@ -243,7 +243,7 @@ void gsCheckGtlBufferLengths()
 // 80004C5C
 void func_80004C5C(void *arg0, u32 buffer_size)
 {
-	struct SCTaskType8 t;
+	SCTaskType8 t;
 
 	t.info.unk00 = 8;
 	t.info.unk04 = 50;
@@ -303,7 +303,7 @@ DObj* func_80004D2C()
 }
 
 // 80004DB4
-void func_80004DB4(DObj *arg0, s32 arg1, struct SCTaskGfxEnd *arg2, struct SCTaskType4 *arg3)
+void func_80004DB4(DObj *arg0, s32 arg1, SCTaskGfxEnd *arg2, SCTaskType4 *arg3)
 {
 	s32 i;
 
@@ -313,13 +313,13 @@ void func_80004DB4(DObj *arg0, s32 arg1, struct SCTaskGfxEnd *arg2, struct SCTas
 		D_80046550[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * i);
 		D_80046558[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * (i + 1));
 
-		D_80046560[i] = (struct SCTaskGfxEnd*) ((uintptr_t)arg2 + (i * sizeof(struct SCTaskGfxEnd)));
-		D_80046568[i] = (struct SCTaskType4*)  ((uintptr_t)arg3 + (i * sizeof(struct SCTaskType4)));
+		D_80046560[i] = (SCTaskGfxEnd*) ((uintptr_t)arg2 + (i * sizeof(SCTaskGfxEnd)));
+		D_80046568[i] = (SCTaskType4*)  ((uintptr_t)arg3 + (i * sizeof(SCTaskType4)));
 	}
 }
 
 // 80004E90
-void gsScheduleGfxEnd(struct SCTaskGfxEnd *mesg, void *arg1, s32 arg2, OSMesgQueue *mq)
+void gsScheduleGfxEnd(SCTaskGfxEnd *mesg, void *arg1, s32 arg2, OSMesgQueue *mq)
 {
 	mesg->info.unk00 = 6;
 	mesg->info.unk04 = 100;
@@ -335,7 +335,7 @@ void gsScheduleGfxEnd(struct SCTaskGfxEnd *mesg, void *arg1, s32 arg2, OSMesgQue
 // 80004EFC
 void func_80004EFC()
 {
-	struct SCTaskGfxEnd *mesg = D_80046560[gGtlTaskId];
+	SCTaskGfxEnd *mesg = D_80046560[gGtlTaskId];
 
 	if (mesg == NULL)
 	{
@@ -351,7 +351,7 @@ void func_80004EFC()
 void func_80004F78()
 {
 	OSMesg recv;
-	struct SCTaskGfxEnd *mesg = D_80046560[gGtlTaskId];
+	SCTaskGfxEnd *mesg = D_80046560[gGtlTaskId];
 
 	if (mesg == NULL)
 	{
@@ -367,7 +367,7 @@ void func_80004F78()
 }
 
 // 80005018
-void func_80005018(struct SCTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u64 *arg5, u32 arg6)
+void func_80005018(SCTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u64 *arg5, u32 arg6)
 {
 	gsUcode *ucode;
 	// ...why?
@@ -773,7 +773,7 @@ u32 func_80005AE4(s32 arg0)
 // 80005BFC
 void func_80005BFC()
 {
-	struct SCTaskInfo info;
+	SCTaskInfo info;
 	OSMesg msgs[1];
 	OSMesgQueue mq;
 
@@ -804,7 +804,7 @@ void unref_80005C84(s32 arg0)
 // 80005C9C
 s32 func_80005C9C()
 {
-	struct SCTaskInfo info;
+	SCTaskInfo info;
 
 	switch (D_800465D0)
 	{
@@ -982,7 +982,7 @@ void func_800063A0(FnBundle *self)
 void unref_8000641C(Temp8000641C *arg0)
 {
 	s32 idx;
-	struct SCTaskGfxEnd *task;
+	SCTaskGfxEnd *task;
 
 	func_80005AE4(0);
 	gsResetGraphicsHeapAlloc();
@@ -1025,8 +1025,8 @@ void func_80006548(gsBufferSetup *arg0, void (*arg1)())
 	(
 		gsMemoryAlloc(arg0->unk14 * sizeof(DObj) * sGSGTLNumTasks, 8),
 		arg0->unk14,
-		gsMemoryAlloc(sizeof(struct SCTaskGfxEnd) * sGSGTLNumTasks, 8),
-		gsMemoryAlloc(sizeof(struct SCTaskType4) * sGSGTLNumTasks, 8)
+		gsMemoryAlloc(sizeof(SCTaskGfxEnd) * sGSGTLNumTasks, 8),
+		gsMemoryAlloc(sizeof(SCTaskType4) * sGSGTLNumTasks, 8)
 	);
 	for (i = 0; i < sGSGTLNumTasks; i++)
 	{

@@ -38,7 +38,7 @@ u32 gsGetFillColor(u32 color) {
 }
 
 void update_framebuffers(void *fb1, void *fb2, void *fb3) {
-    struct SCTaskType5 mesg;
+    SCTaskType5 mesg;
 
     mesg.info.unk00  = 5;
     mesg.info.unk04  = 100;
@@ -76,7 +76,7 @@ void func_80006E94(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     D_80046684 = TRUE;
 }
 
-void func_80006EF4(struct SCTaskType4 *task) {
+void func_80006EF4(SCTaskType4 *task) {
     task->unk24 = gCurrScreenWidth;
     task->unk28 = gCurrScreenHeight;
     task->unk2C = D_80046680;
@@ -88,7 +88,7 @@ void func_80006EF4(struct SCTaskType4 *task) {
     D_80046684  = FALSE;
 }
 
-void func_80006F5C(struct SCTaskType4 *task) {
+void func_80006F5C(SCTaskType4 *task) {
     if (D_80046684) {
         task->info.unk00 = 4;
         task->info.unk04 = 50;
@@ -105,7 +105,7 @@ void func_80006F5C(struct SCTaskType4 *task) {
  * @param arg2 cycle type?
  */
 void func_80006FB8(s32 width, s32 height, u32 arg2) {
-    struct SCTaskType4 task;
+    SCTaskType4 task;
 
     D_80046680          = 0;
     gPixelComponentSize = G_IM_SIZ_16b;

@@ -345,7 +345,7 @@ typedef enum alSoundEffectID
 	alSound_SFX_YCityGate, // Empty?
 	alSound_SFX_Magnify,
 	alSound_SFX_ShinePingUnk,
-	alSound_SFX_MenuExclamationUnk,
+	alSound_SFX_BonusComplete,
 	alSound_SFX_PlayerHeal, // High-pitched short click, sped up Mario Fireball?
 	alSound_SFX_YosterCloudVapor,
 	alSound_SFX_StockSteal,

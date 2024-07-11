@@ -2,6 +2,7 @@
 #define _GROUND_H_
 
 #include "grtypes.h"
+#include "grfunctions.h"
 
 extern grCommonData* gGroundInfo; // TO DO: move this to the correct file (is this the correct
 								  // file? NO, this is Patrick!)

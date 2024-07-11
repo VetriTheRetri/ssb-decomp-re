@@ -2,130 +2,78 @@
 
 #include <sys/main.h>
 #include <sys/thread3.h>
-#include "thread6.h"
-
 #include <macros.h>
 #include <missing_libultra.h>
 #include <ssb_types.h>
-
 #include <PR/os.h>
 #include <PR/ultratypes.h>
 
-typedef struct ControllerInfo {
-    /* 0x00 */ u16 unk00; // contpad button
-    /* 0x02 */ u16 unk02; // new button presses
-    /* 0x04 */ u16 unk04; // pressed buttons ( |= .02)
-    /* 0x06 */ u16 unk06; // moved new presses? buttons to handle?
-    /* 0x08 */ u16 unk08; // all buttons? ( |= .06)
-    /* 0x0A */ u16 unk0A; // button releases
-    /* 0x0C */ u16 unk0C; // released buttons ( |= .0A)
-    /* 0x0E */ s8 unk0E;  // stick x
-    /* 0x0F */ s8 unk0F;  // stick y
-    /* 0x10 */ s32 unk10;
-    /* 0x14 */ u32 unk14;
-    /* 0x18 */ s32 unk18; // some sort of countdown
-    /* 0x1C */ u8 unk1C;  // cont status errno
-    /* 0x1D */ u8 unk1D;  // cont status status
+// 800450F0
+OSMesgQueue sInitQueue; // Queue for OS controller Init, Status, and Read
 
-} ControllerInfo; // size = 0x20
+// 80045108
+OSMesg sInitMesg[1]; // Message buffer for OS controller Init, Status, and Read
 
-typedef enum ContEventType
-{
-    CONT_EVENT_READ_CONT_DATA = 1,
-    CONT_EVENT_UPDATE_GLOBAL_DATA,
-    CONT_EVENT_UNK_3,
-    CONT_EVENT_SCHEDULE_READ_CONT_DATA,
-    CONT_EVENT_MOTOR,
-    CONT_EVENT_SET_STATUS_DELAY
-
-} ContEventType;
-
-typedef struct ControllerEvent
-{
-    /* 0x00 */ ContEventType type;
-    /* 0x04 */ OSMesg mesg;
-    /* 0x08 */ OSMesgQueue *cbQueue;
-
-} ControllerEvent; // size = 0x0C
-
-typedef struct ContEvtType3
-{
-    /* 0x00 */ ControllerEvent evt;
-    /* 0x0C */ s32 unk0C;
-    /* 0x10 */ s32 unk10;
-
-} ContEvtType3; // size = 0x14
-
-typedef struct ContSchedReadEvt
-{
-    /* 0x00 */ ControllerEvent evt;
-    /* 0x0C */ s32 scheduleRead;
-
-} ContSchedReadEvt; // size = 0x10
-
-typedef enum MotorCmd
-{
-    MOTOR_CMD_INIT,
-    MOTOR_CMD_START,
-    MOTOR_CMD_STOP
-
-} MotorCmd;
-
-typedef struct ContMotorEvt
-{
-    /* 0x00 */ ControllerEvent evt;
-    /* 0x0C */ s32 contID;
-    /* 0x10 */ MotorCmd cmd;
-
-} ContMotorEvt; // size = 0x14
-
-typedef struct ContStatusDelayEvt
-{
-    /* 0x00 */ ControllerEvent evt;
-    /* 0x0C */ s32 delay;
-
-} ContStatusDelayEvt; // size = 0x10
-
-typedef struct Unk80045268
-{
-    /* 0x00 */ s32 unk00;
-    /* 0x04 */ s32 unk04; // event?
-    /* 0x08 */ s32 unk08; // controller number
-    /* 0x0C */ OSMesgQueue *unk0C;
-    /* 0x10 */ s32 unk10;
-    /* 0x14 */ s32 unk14;
-
-} Unk80045268; // size = 0x18
-
-OSMesgQueue sInitQueue; ///< Queue for OS controller Init, Status, and Read
-OSMesg sInitMesg[1];    ///< Message buffer for OS controller Init, Status, and Read
+// 80045110
 MqListNode D_80045110;
-OSMesg sContEvtMesgs[7];     // used in MqList D_80045110 [80045118]
-OSMesgQueue sContEventQueue; // queue for ControllerEvent callbacks [80045138]
+
+// 80045118
+OSMesg sContEvtMesgs[7]; // used in MqList D_80045110
+
+// 80045138
+OSMesgQueue sContEventQueue; // queue for ControllerEvent callbacks
+
+// 80045150
 OSMesg D_80045150[MAXCONTROLLERS];
+
+// 80045160
 OSMesgQueue D_80045160; // controller mesgqueue? for waiting for 0 to 1+ controllers?
-OSContStatus sContStatus[MAXCONTROLLERS]; // 80045178
-OSContPad sContData[MAXCONTROLLERS];      // 80045188
+
+// 80045178
+OSContStatus sContStatus[MAXCONTROLLERS];
+
+// 80045188
+OSContPad sContData[MAXCONTROLLERS];
+
+// 800451A0
 u32 D_800451A0;
+
+// 800451A4
 s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
-ControllerInfo sContInfo[MAXCONTROLLERS];   // 800451A8
-gsController gPlayerControllers[MAXCONTROLLERS]; // 80045228
-u32 gUpdateContData;                               // bool [80045250]
-ControllerEvent *sDelayedContUpdate;        // 80045254
-/// bool [80045258] if true, always update controller data when a thread6 loop runs
-u32 sReadContData;
-// [8004525C] number of events (or frames?) to wait until perfomring OSContStatus update
-u32 sStatusUpdateDelay;
-/// [80045260] remaining count of controller events (or frames) until OSContStatus update
-u32 sLeftUntilStatus;
 
+// 800451A8
+ControllerInfo sContInfo[MAXCONTROLLERS];
+
+// 80045228
+gsController gPlayerControllers[MAXCONTROLLERS];
+
+// 80045250
+sb32 gUpdateContData;
+
+// 80045254
+ControllerEvent *sDelayedContUpdate;
+
+// 80045258
+sb32 sReadContData; // if true, always update controller data when a thread6 loop runs
+
+// 8004525C
+u32 sStatusUpdateDelay; // number of events (or frames?) to wait until perfomring OSContStatus update
+
+/// 80045260
+u32 sLeftUntilStatus; // remaining count of controller events (or frames) until OSContStatus update
+
+// 80045268
 Unk80045268 D_80045268[MAXCONTROLLERS];
-OSPfs sMotorPfs[MAXCONTROLLERS]; // 800452C8
-UNUSED u32 unref80045468[2];
-gsController gSysController;
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
+// 800452C8
+OSPfs sMotorPfs[MAXCONTROLLERS];
+
+// 80045468
+UNUSED u32 unref80045468[2];
+
+// 80045470
+gsController _gSysController; // needs to be plugged to linker manually (linker_constants.txt) otherwise this file doesn't match
+
 
 void func_80003C00(void);
 #ifdef NON_MATCHING
@@ -164,7 +112,7 @@ void func_80003C00(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/thread6/func_80003C00.s")
 #endif
 
-// func_80003CC4
+// 80003CC4
 void update_controller_status(void) {
     s32 i;
 
@@ -183,7 +131,7 @@ void update_controller_status(void) {
     }
 }
 
-// func_80003DD4
+// 80003DD4
 void read_controller_data(void) {
     s32 i;
 
@@ -229,41 +177,39 @@ void read_controller_data(void) {
     gUpdateContData = TRUE;
 }
 
-// func_80003F98
-void update_global_contdata(void);
-#ifdef NON_MATCHING
-void update_global_contdata(void) {
+// 80003F98
+void update_global_contdata(void)
+{
     s32 i;
+    gsController *players, *sys = &gSysController;
 
-    for (i = 0; i < MAXCONTROLLERS; i++) {
-        if (!sContInfo[i].unk1C) {
-            gPlayerControllers[i].unk00 = sContInfo[i].unk00;
-            gPlayerControllers[i].unk02 = sContInfo[i].unk04;
-            gPlayerControllers[i].unk06 = sContInfo[i].unk0C;
-            gPlayerControllers[i].unk04 = sContInfo[i].unk08;
-            gPlayerControllers[i].unk08 = sContInfo[i].unk0E;
-            gPlayerControllers[i].unk09 = sContInfo[i].unk0F;
+    for (i = 0; i < 4; i++)
+    {
+        if (sContInfo[i].unk1C == FALSE)
+        {
+            gPlayerControllers[i].button_press = sContInfo[i].unk00;
+            gPlayerControllers[i].button_new = sContInfo[i].unk04;
+            gPlayerControllers[i].button_release = sContInfo[i].unk0C;
+            gPlayerControllers[i].button_update = sContInfo[i].unk08;
+            gPlayerControllers[i].stick_range.x = sContInfo[i].unk0E;
+            gPlayerControllers[i].stick_range.y = sContInfo[i].unk0F;
 
-            sContInfo[i].unk08 = 0;
-            sContInfo[i].unk0C = 0;
-            sContInfo[i].unk04 = 0;
+            sContInfo[i].unk04 = sContInfo[i].unk08 = sContInfo[i].unk0C = 0;
         }
-        // L80004014
     }
-    // 8000401C
     func_80003C00();
-    gSysController.unk02 = gPlayerControllers[gPlayerControllerPortStatuses[0]].unk02;
-    gSysController.unk00 = gPlayerControllers[gPlayerControllerPortStatuses[0]].unk00;
-    gSysController.unk04 = gPlayerControllers[gPlayerControllerPortStatuses[0]].unk04;
-    gSysController.unk06 = gPlayerControllers[gPlayerControllerPortStatuses[0]].unk06;
-    gSysController.unk08 = gPlayerControllers[gPlayerControllerPortStatuses[0]].unk08;
-    gSysController.unk09 = gPlayerControllers[gPlayerControllerPortStatuses[0]].unk09;
+
+    players = &gPlayerControllers[gPlayerControllerPortStatuses[0]];
+
+    sys->button_new = players->button_new;
+    sys->button_press = players->button_press;
+    sys->button_update = players->button_update;
+    sys->button_release = players->button_release;
+    sys->stick_range.x = players->stick_range.x;
+    sys->stick_range.y = players->stick_range.y;
 
     gUpdateContData = FALSE;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/thread6/update_global_contdata.s")
-#endif
 
 // initialize controllers
 void initialize_controllers(void);
@@ -329,7 +275,7 @@ void initialize_controllers(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/thread6/initialize_controllers.s")
 #endif
 
-// func_80004284
+// 80004284
 void dispatch_contevt(ControllerEvent *evt) {
     OSMesg mesg[1];    // sp34
     OSMesgQueue queue; // sp1C
@@ -365,7 +311,7 @@ void unref_80004338(s32 arg0, s32 arg1) {
     dispatch_contevt(&data.evt);
 }
 
-// func_80004368
+// 80004368
 void enable_auto_contread(s32 shouldSchedule) {
     ContSchedReadEvt data;
 
@@ -374,7 +320,7 @@ void enable_auto_contread(s32 shouldSchedule) {
     dispatch_contevt(&data.evt);
 }
 
-// func_80004394
+// 80004394
 void set_contstatus_delay(s32 delay) {
     ContStatusDelayEvt data;
 
@@ -412,7 +358,7 @@ void func_800044B4(s32 arg0) {
     func_800043C0(arg0, 0);
 }
 
-// func_800044D4
+// 800044D4
 void handle_contevt(ControllerEvent *evt) {
     switch (evt->type) {
         case CONT_EVENT_READ_CONT_DATA:
@@ -509,5 +455,3 @@ void thread6_controllers(UNUSED void *arg) {
         }
     }
 }
-
-#pragma GCC diagnostic pop

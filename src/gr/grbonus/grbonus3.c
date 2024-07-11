@@ -36,7 +36,7 @@ void grBonus3MakeBumpers(void)
 
     atrack++, dobj_desc++;
 
-    for (i = 0; dobj_desc->index != 0x12; i++, dobj_desc++, atrack++)
+    for (i = 0; dobj_desc->index != DOBJ_ARRAY_MAX; i++, dobj_desc++, atrack++)
     {
         item_gobj = itManagerMakeItemSetupCommon(NULL, It_Kind_GBumper, &dobj_desc->translate, &vel, ITEM_MASK_SPAWN_GROUND);
 

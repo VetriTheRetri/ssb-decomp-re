@@ -33,6 +33,8 @@
 #define DOBJ_FLAG_NOTEXTURE     (1 << 0)
 #define DOBJ_FLAG_NORENDER      (1 << 1)
 
+#define DOBJ_ARRAY_MAX          18
+
 // AObj defines
 #define AOBJ_FRAME_NULL F32_MIN             // Used to mark the lack of frames remaining in an animation
 

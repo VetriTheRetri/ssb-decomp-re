@@ -13,6 +13,12 @@ extern intptr_t lGRBonus3ItemHead;                  // 0x00000000
 extern intptr_t lGRBonus3BumpersDObjDesc;           // 0x00000000
 extern intptr_t lGRBonus3BumpersAnimJoint;          // 0x00000110
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x8010B4D0
 void grBonus3InitHeaders(void)
 {

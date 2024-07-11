@@ -436,6 +436,7 @@ segments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
     # Stage files
+      - [0x086B40, c, gr/grcommon/grcastle]
       - [0x086CD0, c, gr/grbonus/grbonus3]
     # Camera manager (in-game?)
       - [0x087010, c, cm/cmmanager]

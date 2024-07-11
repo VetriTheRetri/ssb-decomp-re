@@ -17,6 +17,8 @@ lOverlay64ArenaHi = 0x80392A00;
 lMNN64ArenaLo = 0x80132080;
 lMNN64ArenaHi = 0x803903E0;
 
+lGRCastleMapHead = 0x00000000;
+
 lGRBonus3MapHead = 0x00000000;
 lGRBonus3ItemHead = 0x00000000;
 lGRBonus3BumpersDObjDesc = 0x00000000;

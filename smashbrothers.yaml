@@ -435,7 +435,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
-    # Stage files
+    # Stage file
+      - [0x0864D0, c, gr/grcommon/gryama]
       - [0x086B40, c, gr/grcommon/grcastle]
       - [0x086CD0, c, gr/grbonus/grbonus3]
     # Camera manager (in-game?)
@@ -455,6 +456,8 @@ segments:
 
     # ovl2 data
       - [0x0923D0, data, ovl2]
+    # Stage files
+      - [0x0AA360, .data, gr/grcommon/gryama]
     # Camera manager (in-game?)
       - [0x0AA370, .data, cm/cmmanager]
     # Common interface (HUD)

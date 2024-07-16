@@ -2,9 +2,8 @@
 #define _GRVARS_H_
 
 #include <ssb_types.h>
-#include <PR/ultratypes.h>
 #include <sys/obj.h>
-
+#include <gr/grdef.h>
 #include <ef/efdef.h>
 
 #define GRPUPUPU_WHISPY_BLINK_WAIT_BASE 30
@@ -21,6 +20,12 @@
 #define GRPUPUPU_WHISPY_WINDBOX_BOTTOM (-10.0F)
 #define GRPUPUPU_WHISPY_WINDBOX_EDGELEFT (-2325.0F)
 #define GRPUPUPU_WHISPY_WINDBOX_EDGERIGHT 2275.0F
+
+#define GRYAMA_MONSTER_WEAPON_NONE      (0)
+#define GRYAMA_MONSTER_WEAPON_WAIT      (1)
+#define GRYAMA_MONSTER_WEAPON_INSTANT   (2)
+#define GRYAMA_MONSTER_WEAPON_ALL       (3)
+#define GRYAMA_MONSTER_WEAPON_MAX       (4U)
 
 typedef struct grPupupuEffect
 {
@@ -249,7 +254,7 @@ typedef struct grCommon_GroundVars_Yamabuki
 	GObj* gate_gobj;
 	Vec3f gate_pos;
 	u8 gate_status;
-	ub8 is_gate_deny_entry;
+	ub8 is_gate_noentry;
 	u16 monster_wait;
 	u16 gate_wait;
 	u8 monster_id_prev;

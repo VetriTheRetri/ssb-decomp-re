@@ -2,9 +2,9 @@
 #define _ITEMVARS_H_
 
 #include <ssb_types.h>
-#include <PR/ultratypes.h>
 #include <sys/obj.h>
-#include <ef/effect.h>
+#include <it/itdef.h>
+#include <ef/efdef.h>
 
 #define ITBOX_EXPLODE_FRAME_END 8
 
@@ -464,12 +464,6 @@
 #define ITLINKBOMB_EXPLODE_GFX_SCALE 1.3F
 #define ITLINKBOMB_GRAVITY 1.2F
 #define ITLINKBOMB_T_VEL 100.0F
-
-#define ITYCITYMONSTER_WEAPON_NONE      (0)
-#define ITYCITYMONSTER_WEAPON_WAIT      (1)
-#define ITYCITYMONSTER_WEAPON_INSTANT   (2)
-#define ITYCITYMONSTER_WEAPON_ALL       (3)
-#define ITYCITYMONSTER_WEAPON_MAX       (4U)
 
 typedef struct itCommon_ItemVars_BombHei
 {

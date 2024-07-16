@@ -17,6 +17,11 @@ lOverlay64ArenaHi = 0x80392A00;
 lMNN64ArenaLo = 0x80132080;
 lMNN64ArenaHi = 0x803903E0;
 
+lGRYamaGateOpenAnimJoint = 0x000009B0;
+lGRYamaGateCloseAnimJoint = 0x00000A20;
+lGRYamaItemHead = 0x00000014;
+lGRYamaMapHead = 0x000008A0;
+
 lGRCastleMapHead = 0x00000000;
 
 lGRBonus3MapHead = 0x00000000;

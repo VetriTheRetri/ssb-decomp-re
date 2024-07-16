@@ -14,7 +14,7 @@ lITHitokageItemAttributes;                  // 0x000001FC
 extern intptr_t
 lITHitokageWeaponFlameWeaponAttributes;     // 0x00000244
 
-extern s32 dGRYamabukiMonsterAttackType;
+extern s32 dGRYamaMonsterAttackKind;
 
 // // // // // // // // // // // //
 //                               //
@@ -25,7 +25,7 @@ extern s32 dGRYamabukiMonsterAttackType;
 itCreateDesc dITHitokageItemDesc =
 {
     It_Kind_Hitokage,                       // Item Kind
-    &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
+    &gGroundStruct.yama.item_head,      // Pointer to item file data?
     &lITHitokageItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -65,7 +65,7 @@ wpCreateDesc dITHitokageWeaponFlameWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_HitokageFlame,                  // Weapon Kind
-    &gGroundStruct.yamabuki.item_head,      // Pointer to character's loaded files?
+    &gGroundStruct.yama.item_head,      // Pointer to character's loaded files?
     &lITHitokageWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct
@@ -127,8 +127,8 @@ sb32 itHitokageSDefaultProcUpdate(GObj *item_gobj)
 
     if 
     (
-        (ip->item_vars.hitokage.flags == ITYCITYMONSTER_WEAPON_INSTANT)                                                  ||
-        ((ip->item_vars.hitokage.flags & ITYCITYMONSTER_WEAPON_WAIT) && (dobj->dobj_f2 >= ITHITOKAGE_FLAME_SPAWN_BEGIN)) &&
+        (ip->item_vars.hitokage.flags == GRYAMA_MONSTER_WEAPON_INSTANT)                                                  ||
+        ((ip->item_vars.hitokage.flags & GRYAMA_MONSTER_WEAPON_WAIT) && (dobj->dobj_f2 >= ITHITOKAGE_FLAME_SPAWN_BEGIN)) &&
         (dobj->dobj_f2 <= ITHITOKAGE_FLAME_SPAWN_END)
     )
     {
@@ -146,7 +146,7 @@ sb32 itHitokageSDefaultProcUpdate(GObj *item_gobj)
 
     if (dobj->dobj_f0 == AOBJ_FRAME_NULL)
     {
-        grYamabukiGateSetClosedWait();
+        grYamaGateSetClosedWait();
 
         return TRUE;
     }
@@ -192,7 +192,7 @@ sb32 itHitokageSDefaultProcDamage(GObj *item_gobj)
 
         dobj->dobj_f0 = AOBJ_FRAME_NULL;
 
-        grYamabukiGateClearMonsterGObj();
+        grYamaGateClearMonsterGObj();
         itHitokageNDamageSetStatus(item_gobj);
     }
     return FALSE;
@@ -216,19 +216,19 @@ GObj* itHitokageMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_allow_knockback = TRUE;
 
-        ip->item_vars.hitokage.flags = mtTrigGetRandomIntRange(ITYCITYMONSTER_WEAPON_MAX);
+        ip->item_vars.hitokage.flags = mtTrigGetRandomIntRange(GRYAMA_MONSTER_WEAPON_MAX);
 
-        if ((dGRYamabukiMonsterAttackType == ip->item_vars.hitokage.flags) || (ip->item_vars.hitokage.flags & dGRYamabukiMonsterAttackType))
+        if ((dGRYamaMonsterAttackKind == ip->item_vars.hitokage.flags) || (ip->item_vars.hitokage.flags & dGRYamaMonsterAttackKind))
         {
             ip->item_vars.hitokage.flags++;
 
-            ip->item_vars.hitokage.flags %= ITYCITYMONSTER_WEAPON_MAX;
+            ip->item_vars.hitokage.flags %= GRYAMA_MONSTER_WEAPON_MAX;
         }
-        if (ip->item_vars.hitokage.flags == ITYCITYMONSTER_WEAPON_INSTANT)
+        if (ip->item_vars.hitokage.flags == GRYAMA_MONSTER_WEAPON_INSTANT)
         {
             dobj->mobj->current_image_id = 1;
         }
-        dGRYamabukiMonsterAttackType = ip->item_vars.hitokage.flags;
+        dGRYamaMonsterAttackKind = ip->item_vars.hitokage.flags;
 
         func_800269C0_275C0(alSound_Voice_YamabukiHitokage);
     }

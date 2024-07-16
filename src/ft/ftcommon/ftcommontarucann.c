@@ -47,7 +47,7 @@ void ftCommonTaruCannProcUpdate(GObj *fighter_gobj)
     {
         fp->status_vars.common.tarucann.shoot_wait = FTCOMMON_TARUCANN_SHOOT_WAIT;
 
-        func_ovl2_80109D20(fp->status_vars.common.tarucann.tarucann_gobj);
+        grJungleTaruCannAddAnimShoot(fp->status_vars.common.tarucann.tarucann_gobj);
     }
 }
 
@@ -60,7 +60,7 @@ void ftCommonTaruCannProcInterrupt(GObj *fighter_gobj)
     {
         fp->status_vars.common.tarucann.shoot_wait = FTCOMMON_TARUCANN_SHOOT_WAIT;
 
-        func_ovl2_80109D20(fp->status_vars.common.tarucann.tarucann_gobj);
+        grJungleTaruCannAddAnimShoot(fp->status_vars.common.tarucann.tarucann_gobj);
     }
 }
 

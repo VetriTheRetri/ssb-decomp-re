@@ -76,7 +76,7 @@ typedef struct grCommon_GroundVars_Pupupu
 {
 	void* map_head;
 	GObj* map_gobj[4];
-	s32 effect_bank_index;
+	s32 particle_bank_id;
 	efTransform* leaves_eftrans;
 	efTransform* dust_eftrans;
 	u16 whispy_wind_wait;
@@ -180,7 +180,7 @@ typedef struct grCommon_GroundVars_Yoster
 {
 	void* map_head;
 	grYosterCloud clouds[3];
-	s32 effect_bank_index;
+	s32 particle_bank_id;
 
 } grCommon_GroundVars_Yoster;
 
@@ -236,7 +236,7 @@ typedef struct grCommon_GroundVars_Hyrule
 	f32 twister_rightedge_x;
 	f32 twister_vel;
 	u8* twister_pos_ids;
-	s32 effect_bank_index;
+	s32 particle_bank_id;
 	u16 twister_wait;
 	u16 twister_speed_wait;
 	u16 twister_turn_wait;

@@ -10,10 +10,10 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lGRHyruleEffectBankHeaderLo;            // 0x00B1F960
-extern intptr_t lGRHyruleEffectBankHeaderHi;            // 0x00B1FC80
-extern intptr_t lGRHyruleEffectBankTextureLo;           // 0x00B1FC80
-extern intptr_t lGRHyruleEffectBankTextureHi;           // 0x00B22980
+extern intptr_t lGRHyruleParticleBankHeaderLo;            // 0x00B1F960
+extern intptr_t lGRHyruleParticleBankHeaderHi;            // 0x00B1FC80
+extern intptr_t lGRHyruleParticleBankTextureLo;           // 0x00B1FC80
+extern intptr_t lGRHyruleParticleBankTextureHi;           // 0x00B22980
 
 // // // // // // // // // // // //
 //                               //
@@ -41,7 +41,7 @@ enum grHyruleTwisterStatus
 // 0x8010A140
 efParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(gGroundStruct.hyrule.effect_bank_index | 8, effect_id);
+    efParticle *efpart = func_ovl0_800CE9E8(gGroundStruct.hyrule.particle_bank_id | 8, effect_id);
 
     if (efpart != NULL)
     {
@@ -421,7 +421,7 @@ void grHyruleTwisterInitVars(void)
     }
 
     gGroundStruct.hyrule.twister_status = nGRHyruleTwisterStatusSleep;
-    gGroundStruct.hyrule.effect_bank_index = efAllocGetAddParticleBankID((intptr_t)&lGRHyruleEffectBankHeaderLo, (intptr_t)&lGRHyruleEffectBankHeaderHi, (intptr_t)&lGRHyruleEffectBankTextureLo, (intptr_t)&lGRHyruleEffectBankTextureHi);
+    gGroundStruct.hyrule.particle_bank_id = efAllocGetAddParticleBankID((intptr_t)&lGRHyruleParticleBankHeaderLo, (intptr_t)&lGRHyruleParticleBankHeaderHi, (intptr_t)&lGRHyruleParticleBankTextureLo, (intptr_t)&lGRHyruleParticleBankTextureHi);
 }
 
 // 0x8010AB20

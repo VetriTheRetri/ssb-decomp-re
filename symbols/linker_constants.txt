@@ -17,10 +17,15 @@ lOverlay64ArenaHi = 0x80392A00;
 lMNN64ArenaLo = 0x80132080;
 lMNN64ArenaHi = 0x803903E0;
 
-lGRHyruleEffectBankHeaderLo = 0x00B1F960;
-lGRHyruleEffectBankHeaderHi = 0x00B1FC80;
-lGRHyruleEffectBankTextureLo = 0x00B1FC80;
-lGRHyruleEffectBankTextureHi = 0x00B22980;
+lGRJungleMapHead = 0x00000A98;
+lGRJungleTaruCannDefaultAnimJoint = 0x00000B20;
+lGRJungleTaruCannFillAnimJoint = 0x00000B68;
+lGRJungleTaruCannShootAnimJoint = 0x00000BF8;
+
+lGRHyruleParticleBankHeaderLo = 0x00B1F960;
+lGRHyruleParticleBankHeaderHi = 0x00B1FC80;
+lGRHyruleParticleBankTextureLo = 0x00B1FC80;
+lGRHyruleParticleBankTextureHi = 0x00B22980;
 
 lGRYamabukiGateOpenAnimJoint = 0x000009B0;
 lGRYamabukiGateCloseAnimJoint = 0x00000A20;

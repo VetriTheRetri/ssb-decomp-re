@@ -19,7 +19,7 @@ extern intptr_t lITGLuckyItemAttributes;    // 0x000000BC
 itCreateDesc dITGLuckyItemDesc =
 {
     It_Kind_GLucky,                         // Item Kind
-    &gGroundStruct.yama.item_head,      // Pointer to item file data?
+    &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
     &lITGLuckyItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -152,7 +152,7 @@ sb32 itGLuckySDefaultProcUpdate(GObj *item_gobj)
     }
     if (dobj->dobj_f0 == AOBJ_FRAME_NULL)
     {
-        grYamaGateSetClosedWait();
+        grYamabukiGateSetClosedWait();
 
         return TRUE;
     }
@@ -208,7 +208,7 @@ sb32 itGLuckySDefaultProcDamage(GObj *item_gobj)
 
         dobj->dobj_f0 = AOBJ_FRAME_NULL;
 
-        grYamaGateClearMonsterGObj();
+        grYamabukiGateClearMonsterGObj();
         itGLuckyNDamageSetStatus(item_gobj);
     }
     return FALSE;

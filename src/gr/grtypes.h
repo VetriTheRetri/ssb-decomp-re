@@ -106,7 +106,7 @@ union grStruct
 	grCommon_GroundVars_Inishie inishie;
 	grCommon_GroundVars_Jungle jungle;
 	grCommon_GroundVars_Hyrule hyrule;
-	grCommon_GroundVars_Yamabuki yama;
+	grCommon_GroundVars_Yamabuki yamabuki;
 	grCommon_GroundVars_Castle castle;
 
 	// Bonus stages

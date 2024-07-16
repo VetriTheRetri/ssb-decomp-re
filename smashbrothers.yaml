@@ -436,7 +436,8 @@ segments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
     # Stage file
-      - [0x0864D0, c, gr/grcommon/gryama]
+      - [0x085940, c, gr/grcommon/grhyrule]
+      - [0x0864D0, c, gr/grcommon/gryamabuki]
       - [0x086B40, c, gr/grcommon/grcastle]
       - [0x086CD0, c, gr/grbonus/grbonus3]
     # Camera manager (in-game?)
@@ -457,7 +458,7 @@ segments:
     # ovl2 data
       - [0x0923D0, data, ovl2]
     # Stage files
-      - [0x0AA360, .data, gr/grcommon/gryama]
+      - [0x0AA360, .data, gr/grcommon/gryamabuki]
     # Camera manager (in-game?)
       - [0x0AA370, .data, cm/cmmanager]
     # Common interface (HUD)
@@ -471,6 +472,7 @@ segments:
     # ovl2 read-only data
       - [0x0AB250, rodata, ovl2]
     # Stage files
+      - [0x0AC370, .rodata, gr/grcommon/grhyrule]
       - [0x0AC3B0, .rodata, gr/grbonus/grbonus3]
     # Camera manager (in-game?)
       - [0x0AC3D0, .rodata, cm/cmmanager]

@@ -4911,7 +4911,7 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
     }
     if (gBattleState->gr_kind == Gr_Kind_Hyrule)
     {
-        if (grHyruleTwisterGetPosition(&twister_pos) != FALSE)
+        if (grHyruleTwisterCheckGetPosition(&twister_pos) != FALSE)
         {
             dist_x = (predict_x < twister_pos.x) ? 
                     -(predict_x - twister_pos.x) :

@@ -342,7 +342,7 @@ typedef enum alSoundEffectID
 	alSound_SFX_SectorAmbient2,
 	alSound_SFX_SectorAmbient3,
 	alSound_SFX_OptionsDataErase,
-	alSound_SFX_YamaGate, // Empty?
+	alSound_SFX_YamabukiGate, // Empty?
 	alSound_SFX_Magnify,
 	alSound_SFX_ShinePingUnk,
 	alSound_SFX_BonusComplete,

@@ -19,7 +19,7 @@ extern intptr_t lITPorygonHitParties;       // 0x000001B4
 itCreateDesc dITPorygonItemDesc = 
 {
     It_Kind_Porygon,                        // Item Kind
-    &gGroundStruct.yama.item_head,      // Pointer to item file data?
+    &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
     &lITPorygonItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -97,7 +97,7 @@ sb32 itPorygonSDefaultProcUpdate(GObj *item_gobj)
 
     if (dobj->dobj_f0 == AOBJ_FRAME_NULL)
     {
-        grYamaGateSetClosedWait();
+        grYamabukiGateSetClosedWait();
 
         return TRUE;
     }

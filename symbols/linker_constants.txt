@@ -17,10 +17,15 @@ lOverlay64ArenaHi = 0x80392A00;
 lMNN64ArenaLo = 0x80132080;
 lMNN64ArenaHi = 0x803903E0;
 
-lGRYamaGateOpenAnimJoint = 0x000009B0;
-lGRYamaGateCloseAnimJoint = 0x00000A20;
-lGRYamaItemHead = 0x00000014;
-lGRYamaMapHead = 0x000008A0;
+lGRHyruleEffectBankHeaderLo = 0x00B1F960;
+lGRHyruleEffectBankHeaderHi = 0x00B1FC80;
+lGRHyruleEffectBankTextureLo = 0x00B1FC80;
+lGRHyruleEffectBankTextureHi = 0x00B22980;
+
+lGRYamabukiGateOpenAnimJoint = 0x000009B0;
+lGRYamabukiGateCloseAnimJoint = 0x00000A20;
+lGRYamabukiItemHead = 0x00000014;
+lGRYamabukiMapHead = 0x000008A0;
 
 lGRCastleMapHead = 0x00000000;
 

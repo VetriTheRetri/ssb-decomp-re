@@ -17,6 +17,12 @@ lOverlay64ArenaHi = 0x80392A00;
 lMNN64ArenaLo = 0x80132080;
 lMNN64ArenaHi = 0x803903E0;
 
+lGRInishieItemHead = 0x00000014;
+lGRInishieScaleDObjDesc = 0x00000380;
+lGRInishieMapHead = 0x000005F0;
+lGRInishieScaleRetractAnimJoint = 0x00000734;
+lGRInishiePowerBlockHit = 0x000000BC;
+
 lGRJungleMapHead = 0x00000A98;
 lGRJungleTaruCannDefaultAnimJoint = 0x00000B20;
 lGRJungleTaruCannFillAnimJoint = 0x00000B68;

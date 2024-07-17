@@ -99,7 +99,7 @@ sb32 itPowerBlockNDamageProcUpdate(GObj *item_gobj)
 {
     if (DObjGetStruct(item_gobj)->dobj_f0 == AOBJ_FRAME_NULL)
     {
-        grInishie_PowerBlock_SetWait();
+        grInishiePowerBlockSetWait();
 
         return TRUE;
     }
@@ -118,7 +118,7 @@ sb32 itPowerBlockNWaitProcDamage(GObj *item_gobj)
     func_8000DF34_EB34(item_gobj);
     func_800269C0_275C0(alSound_SFX_InishiePowerBlock);
     efParticle_Quake_MakeEffect(3);
-    func_ovl2_80109B4C();
+    grInishiePowerBlockSetDamage();
 
     return FALSE;
 }

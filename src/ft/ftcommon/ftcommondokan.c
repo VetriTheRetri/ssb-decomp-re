@@ -108,7 +108,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
     else fp->status_vars.common.dokan.turn_stop_wait = FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT;
 
     ftCommonDokanStartUpdateModelPitch(fp);
-    func_ovl2_8010972C();
+    grInishiePakkunSetWaitFighter();
 }
 
 // 0x80142258

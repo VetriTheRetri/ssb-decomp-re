@@ -234,7 +234,7 @@ void grYosterInitAll(void)
         gGroundStruct.yoster.clouds[i].gobj = map_gobj;
 
         omAddGObjRenderProc(map_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
-        func_8000F590(map_gobj, (intptr_t)&lGRYosterMapHead + (uintptr_t)map_head, NULL, OMMtx_Transform_Tra, OMMtx_Transform_Null, 0); // Make this OMMtx_Transform_TraRotRpyRSca to add static cloud animation
+        func_8000F590(map_gobj, (DObjDesc*) ((intptr_t)&lGRYosterMapHead + (uintptr_t)map_head), NULL, OMMtx_Transform_Tra, OMMtx_Transform_Null, 0); // Make this OMMtx_Transform_TraRotRpyRSca to add static cloud animation
 
         omAddGObjCommonProc(map_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
 

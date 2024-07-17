@@ -1,5 +1,4 @@
 #include <gr/ground.h>
-
 #include <ft/fighter.h>
 #include <it/item.h>
 

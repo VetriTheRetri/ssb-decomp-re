@@ -17,6 +17,17 @@ lOverlay64ArenaHi = 0x80392A00;
 lMNN64ArenaLo = 0x80132080;
 lMNN64ArenaHi = 0x803903E0;
 
+lGRYosterMapHead = 0x00000100;
+D_NF_000001E0 = 0x000001E0;
+D_NF_000004B8 = 0x000004B8;
+lGRYosterCloudDisplayList = 0x00000580;
+lGRYosterCloudSolidMatAnimJoint = 0x00000670;
+lGRYosterCloudEvaporateMatAnimJoint = 0x00000690;
+lGRYosterParticleBankHeaderLo = 0x00B22980;
+lGRYosterParticleBankHeaderHi = 0x00B22A00;
+lGRYosterParticleBankTextureLo = 0x00B22A00;
+lGRYosterParticleBankTextureHi = 0x00B22C30;
+
 lGRInishieItemHead = 0x00000014;
 lGRInishieScaleDObjDesc = 0x00000380;
 lGRInishieMapHead = 0x000005F0;

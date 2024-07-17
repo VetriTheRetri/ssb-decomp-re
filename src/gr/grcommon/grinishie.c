@@ -8,7 +8,6 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lGRInishieItemHead;                     // 0x00000014
 extern intptr_t lGRInishieScaleDObjDesc;                // 0x00000380
 extern intptr_t lGRInishieMapHead;                      // 0x000005F0
 extern intptr_t lGRInishieScaleRetractAnimJoint;        // 0x00000734
@@ -542,7 +541,7 @@ void grInishieMakePowerBlock(void)
         gGroundStruct.inishie.pblock_pos_ids[i] = pos_ids[i];
     }
     gGroundStruct.inishie.pblock_status = nGRInishiePowerBlockStatusWait;
-    gGroundStruct.inishie.gr_hit = (grHitbox*) (((uintptr_t)gGroundInfo - (intptr_t)&lGRInishieItemHead) + (intptr_t)&lGRInishiePowerBlockHit);
+    gGroundStruct.inishie.gr_hit = (grHitbox*) (((uintptr_t)gGroundInfo - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRInishiePowerBlockHit);
 }
 
 // 0x80109B4C
@@ -578,7 +577,7 @@ sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, 
 void grInishieInitHeaders(void)
 {
     gGroundStruct.inishie.map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&lGRInishieMapHead);
-    gGroundStruct.inishie.item_head = (void*) ((uintptr_t)gGroundInfo - (intptr_t)&lGRInishieItemHead);
+    gGroundStruct.inishie.item_head = (void*) ((uintptr_t)gGroundInfo - (intptr_t)&lGRCommonHeaderStart);
 }
 
 // 0x80109C0C

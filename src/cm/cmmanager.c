@@ -660,7 +660,7 @@ void func_ovl2_8010C7D0(Camera *cam, Vec3f *arg1)
     sp30.y = cam->vec.at.y + (gCMManagerCameraStruct.target_dist * arg1->y);
     sp30.z = cam->vec.at.z + (gCMManagerCameraStruct.target_dist * arg1->z);
 
-    grCommon_Zebes_GetAcidLevelInfo(&current, &step);
+    grZebesAcidGetLevelInfo(&current, &step);
 
     current += (step + 3000.0F);
 

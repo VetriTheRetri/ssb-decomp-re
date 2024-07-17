@@ -142,8 +142,8 @@ typedef struct grCommon_GroundVars_Sector
 
 typedef struct grZebesAcid
 {
-	u16 acid_random_add;
-	u16 acid_random1, acid_random2;
+	u16 acid_wait_base;
+	u16 acid_random_min, acid_random_max;
 	f32 acid_level;
 
 } grZebesAcid;
@@ -157,7 +157,7 @@ typedef struct grCommon_GroundVars_Zebes
 	f32 acid_level_step;
 	u16 acid_level_wait;
 	u8 acid_status;
-	u8 acid_level_index;
+	u8 acid_attr_id;
 	u8 rumble_wait;
 
 } grCommon_GroundVars_Zebes;

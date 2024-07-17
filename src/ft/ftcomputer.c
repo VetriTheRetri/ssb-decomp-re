@@ -4553,7 +4553,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
 
             if (gBattleState->gr_kind == Gr_Kind_Zebes)
             {
-                grCommon_Zebes_GetAcidLevelInfo(&acid_level_current, &acid_level_step);
+                grZebesAcidGetLevelInfo(&acid_level_current, &acid_level_step);
 
                 if ((edge_pos.y < (acid_level_current + 500.0F)) || (edge_pos.y < ((5.0F * acid_level_step) + acid_level_current + 500.0F))) 
                 {
@@ -4647,7 +4647,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
 
             if (gBattleState->gr_kind == Gr_Kind_Zebes)
             {
-                grCommon_Zebes_GetAcidLevelInfo(&acid_level_current, &acid_level_step);
+                grZebesAcidGetLevelInfo(&acid_level_current, &acid_level_step);
 
                 if ((edge_pos.y < (acid_level_current + 500.0F)) || (edge_pos.y < ((5.0F * acid_level_step) + acid_level_current + 500.0F))) 
                 {
@@ -6167,7 +6167,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     }
     if (gBattleState->gr_kind == Gr_Kind_Zebes)
     {
-        grCommon_Zebes_GetAcidLevelInfo(&acid_level_current, &acid_level_step);
+        grZebesAcidGetLevelInfo(&acid_level_current, &acid_level_step);
 
         if
         (

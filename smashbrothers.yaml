@@ -436,6 +436,7 @@ segments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
     # Stage files
+      - [0x083820, c, gr/grcommon/grzebes]
       - [0x083D50, c, gr/grcommon/gryoster]
       - [0x0844D0, c, gr/grcommon/grinishie]
       - [0x0854B0, c, gr/grcommon/grjungle]
@@ -461,6 +462,7 @@ segments:
     # ovl2 data
       - [0x0923D0, data, ovl2]
     # Stage files
+      - [0x0AA260, .data, gr/grcommon/grzebes]
       - [0x0AA320, .data, gr/grcommon/gryoster]
       - [0x0AA330, .data, gr/grcommon/grinishie]
       - [0x0AA350, .data, gr/grcommon/grjungle]

@@ -1,6 +1,7 @@
 #ifndef _GRFUNCTIONS_H_
 #define _GRFUNCTIONS_H_
 
+#include <gr/grcommon/grzebes.h>
 #include <gr/grcommon/gryoster.h>
 #include <gr/grcommon/grinishie.h>
 #include <gr/grcommon/grjungle.h>

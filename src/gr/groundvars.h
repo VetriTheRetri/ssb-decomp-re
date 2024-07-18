@@ -128,7 +128,7 @@ typedef struct grCommon_GroundVars_Sector
 	u16 arwing_laser_timer;
 	u8 unk_sector_0x52;
 	s8 arwing_pilot_current; // Line IDs?
-	s8 arwing_pilot_prev;
+	u8 arwing_pilot_prev;
 	u8 arwing_laser_count; // Laser shot count? e.g. if set to 2, the arwing
 						   // will fire 2 lasers at once (though this is
 						   // hardcoded to fire two shots in the weapon make

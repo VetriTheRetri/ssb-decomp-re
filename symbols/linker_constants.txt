@@ -19,6 +19,26 @@ lMNN64ArenaHi = 0x803903E0;
 
 lGRCommonHeaderStart = 0x00000014;
 
+lGRSectorArwingLaser2DWeaponAttributes = 0x000000BC;
+lGRSectorArwingLaser3DWeaponAttributes = 0x000000F0;
+lGRSectorMapHead = 0x00000000;
+
+lGRSectorArwingSectorDesc0 = 0x00000000;
+lGRSectorArwingSectorDesc1 = 0x00000250;
+lGRSectorArwingSectorDesc2 = 0x000006D0;
+lGRSectorArwingSectorDesc3 = 0x000003E0;
+lGRSectorArwingSectorDesc4 = 0x00000D10;
+lGRSectorArwingSectorDesc5 = 0x00000EB0;
+lGRSectorArwingSectorDesc6 = 0x00001510;
+lGRSectorArwingSectorDesc7 = 0x000011D0;
+
+lGRSectorArwing0AnimJoint = 0x00000000;
+lGRSectorArwing1AnimJoint = 0x00001D34;
+lGRSectorArwing2AnimJoint = 0x00001DA4;
+lGRSectorArwing3AnimJoint = 0x00001DC4;
+lGRSectorArwing4AnimJoint = 0x00001D54;
+lGRSectorArwing5AnimJoint = 0x00001DE4;
+
 lGRZebesAcidHit = 0x000000BC;
 D_NF_000008C0 = 0x000008C0;
 lGRZebesAcidDObjSetup = 0x00000B08;

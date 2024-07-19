@@ -240,8 +240,8 @@ wpCreateDesc dGRSectorArwingWeaponLaser3DWeaponDesc =
 
 enum grSectorArwingStatus
 {
-    nGRSectorArwingStatus0,
     nGRSectorArwingStatusSleep,
+    nGRSectorArwingStatusWait,
     nGRSectorArwingStatus2
 };
 
@@ -374,7 +374,7 @@ void func_ovl2_80106A98(void)
 {
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
-        gGroundStruct.sector.arwing_status = nGRSectorArwingStatusSleep;
+        gGroundStruct.sector.arwing_status = nGRSectorArwingStatusWait;
     }
 }
 
@@ -1055,7 +1055,7 @@ void func_ovl2_80107CA0(void)
         gGroundStruct.sector.map_gobj->flags = GOBJ_FLAG_NORENDER;
 
         gGroundStruct.sector.arwing_appear_timer = mtTrigGetRandomIntRange(1140) + 960;
-        gGroundStruct.sector.arwing_status = nGRSectorArwingStatusSleep;
+        gGroundStruct.sector.arwing_status = nGRSectorArwingStatusWait;
 
         mpCollision_SetYakumonoOffID(1);
     }
@@ -1094,7 +1094,7 @@ void grSectorProcUpdate(GObj *ground_gobj)
         func_ovl2_80106A98();
         break;
 
-    case nGRSectorArwingStatusSleep:
+    case nGRSectorArwingStatusWait:
         grSectorArwingUpdateSleep();
         break;
 

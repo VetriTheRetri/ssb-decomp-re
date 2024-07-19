@@ -19,6 +19,55 @@ lMNN64ArenaHi = 0x803903E0;
 
 lGRCommonHeaderStart = 0x00000014;
 
+lGRPupupuMapHead = 0x000010F0;
+
+lGRPupupuWhispyEyesLeftTurnAnimJoint = 0x000011A0;
+lGRPupupuWhispyEyesLeftTurnMatAnimJoint = 0x000011E0;
+lGRPupupuWhispyEyesLeftBlinkAnimJoint = 0x000012B0;
+lGRPupupuWhispyEyesRightTurnAnimJoint = 0x00001220;
+lGRPupupuWhispyEyesRightTurnMatAnimJoint = 0x00001270;
+lGRPupupuWhispyEyesRightBlinkAnimJoint = 0x00001330;
+
+lGRPupupuWhispyMouthLeftStretchAnimJoint = 0x000018B0;
+lGRPupupuWhispyMouthLeftStretchMatAnimJoint = 0x00001A00;
+lGRPupupuWhispyMouthLeftTurnAnimJoint = 0x00001BE0;
+lGRPupupuWhispyMouthLeftTurnMatAnimJoint = 0x00001CE0;
+lGRPupupuWhispyMouthLeftOpenAnimJoint = 0x00001E80;
+lGRPupupuWhispyMouthLeftOpenMatAnimJoint = 0x000020B0;
+lGRPupupuWhispyMouthLeftCloseAnimJoint = 0x00002100;
+lGRPupupuWhispyMouthLeftCloseMatAnimJoint = 0x000022A0;
+lGRPupupuWhispyMouthRightStretchAnimJoint = 0x00001A40;
+lGRpupupuWhispyMouthRightStretchMatAnimJoint = 0x00001BA0;
+lGRPupupuWhispyMouthRightTurnAnimJoint = 0x00001D30;
+lGRPupupuWhispyMouthRightTurnMatAnimJoint = 0x00001E30;
+lGRPupupuWhispyMouthRightOpenAnimJoint = 0x000022F0;
+lGRPupupuWhispyMouthRightOpenMatAnimJoint = 0x00002540;
+lGRPupupuWhispyMouthRightCloseAnimJoint = 0x00002590;
+lGRPupupuWhispyMouthRightCloseMatAnimJoint = 0x00002740;
+
+lGRPupupuWhispyMouthLeftOpenTexture = 0x00002BE0;
+lGRPupupuWhispyMouthLeftBlowTexture = 0x00002C30;
+lGRPupupuWhispyMouthLeftCloseTexture = 0x00002C80;
+lGRPupupuWhispyMouthRightOpenTexture = 0x00002CD0;
+lGRPupupuWhispyMouthRightBlowTexture = 0x00002D20;
+lGRPupupuWhispyMouthRightCloseTexture = 0x00002D70;
+
+lGRPupupuWhispyEyesLeftTexture0 = 0x000033E0;
+lGRPupupuWhispyEyesLeftTexture1 = 0x00003450;
+lGRPupupuWhispyEyesLeftTexture2 = 0x000034B0;
+lGRPupupuWhispyEyesRightTexture0 = 0x00003510;
+lGRPupupuWhispyEyesRightTexture1 = 0x000035C0;
+lGRPupupuWhispyEyesRightTexture2 = 0x00003660;
+
+lGRPupupuWhispyEyesTransformKinds = 0x000010F0;
+lGRPupupuWhispyMouthTransformKinds = 0x00001770;
+lGRPupupuFlowersBackTrasnformKinds = 0x00002A80;
+lGRPupupuFlowersFrontTransformKinds = 0x000031F8;
+lGRPupupuParticleBankHeaderLo = 0x00B1E640;      
+lGRPupupuParticleBankHeaderHi = 0x00B1E7E0;
+lGRPupupuParticleBankTextureLo = 0x00B1E7E0;
+lGRPupupuParticleBankTextureHi = 0x00B1F960;
+
 lGRSectorArwingLaser2DWeaponAttributes = 0x000000BC;
 lGRSectorArwingLaser3DWeaponAttributes = 0x000000F0;
 lGRSectorMapHead = 0x00000000;

@@ -34,44 +34,6 @@ typedef struct grPupupuEffect
 
 } grPupupuEffect;
 
-typedef enum grPupupuWhispyWindStatus
-{
-	grPupupu_WhispyWind_Sleep,
-	grPupupu_WhispyWind_Wait,
-	grPupupu_WhispyWind_Turn,
-	grPupupu_WhispyWind_Open,
-	grPupupu_WhispyWind_Blow,
-	grPupupu_WhispyWind_Stop
-
-} grPupupuWhispyWindStatus;
-
-typedef enum grPupupuWhispyEyesStatus
-{
-	grPupupu_WhispyEyes_Turn,
-	grPupupu_WhispyEyes_Blink
-
-} grPupupuWhispyEyesStatus;
-
-typedef enum grPupupuWhispyMouthStatus
-{
-	grPupupu_WhispyMouth_Stretch,
-	grPupupu_WhispyMouth_Turn,
-	grPupupu_WhispyMouth_Open,
-	grPupupu_WhispyMouth_Close
-
-} grPupupuWhispyMouthStatus;
-
-typedef enum grPupupuFlowerStatus
-{
-	grPupupu_Flower_Default,
-	grPupupu_Flower_WindStart,
-	grPupupu_Flower_WindLoopStart,
-	grPupupu_Flower_WindLoop,
-	grPupupu_Flower_WindLoopEnd,
-	grPupupu_Flower_WindStop
-
-} grPupupuFlowerStatus;
-
 typedef struct grCommon_GroundVars_Pupupu
 {
 	void* map_head;

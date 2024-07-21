@@ -66,9 +66,9 @@ void func_ovl0_800D473C(void)
 {
     s32 i;
 
-    if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSaveData.unk456)))
+    if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSaveData.data_characters_ft_kind)))
     {
-        gSaveData.unk456 = gDefaultSaveData.unk456;
+        gSaveData.data_characters_ft_kind = gDefaultSaveData.data_characters_ft_kind;
     }
     if (!((gSaveData.character_mask | GMSAVEINFO_CHARACTER_MASK_STARTER) & (1 << gSceneData.ft_kind)))
     {

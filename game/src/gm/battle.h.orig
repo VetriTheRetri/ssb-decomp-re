@@ -685,7 +685,7 @@ typedef struct gmSaveInfo
     ub8 sound_mono_or_stereo;   // Sound mono / stereo setting
     s16 unk452;
     s16 unk454;
-    u8 unk456;
+    u8 data_characters_ft_kind;
     u8 unlock_mask;
     u16 character_mask;         // Mask of unlocked characters?
     u8 spgame_difficulty;

@@ -299,7 +299,7 @@ typedef enum gm1PGameBonus
 #define GM1PGAME_BONUS_MASK0_NODAMAGECLEAR	(1 << GM1PGAME_BONUS_KIND_NODAMAGECLEAR)	    // Cleared all stages without taking any damage
 #define GM1PGAME_BONUS_MASK0_SPEEDKING		(1 << GM1PGAME_BONUS_KIND_SPEEDKING)	        // Cleared all stages in under 12 minutes (not earned if Speed Demon criteria is met)
 #define GM1PGAME_BONUS_MASK0_SPEEDDEMON		(1 << GM1PGAME_BONUS_KIND_SPEEDDEMON)	        // Cleared all stages in under 8 minutes
-#define GM1PGAME_BONUS_MASK0_MEWCATCHER		(1 << GM1PGAME_BONUS_KIND_MEWCATCHER)	        // Mew was released from player's Poké Ball
+#define GM1PGAME_BONUS_MASK0_MEWCATCHER		(1 << GM1PGAME_BONUS_KIND_MEWCATCHER)	        // Mew was released from player's Pokï¿½ Ball
 #define GM1PGAME_BONUS_MASK0_STARCLEAR		(1 << GM1PGAME_BONUS_KIND_STARCLEAR)	        // Cleared stage while under the effect of Star Man
 #define GM1PGAME_BONUS_MASK0_VEGETARIAN		(1 << GM1PGAME_BONUS_KIND_VEGETARIAN)	        // Consumed 3 or more Maxim Tomatoes
 #define GM1PGAME_BONUS_MASK0_HEARTTHROB		(1 << GM1PGAME_BONUS_KIND_HEARTTHROB)	        // Consumed 3 or more Hearts
@@ -310,7 +310,7 @@ typedef enum gm1PGameBonus
 #define GM1PGAME_BONUS_MASK1_SMASHLESS		(1 << (GM1PGAME_BONUS_KIND_SMASHLESS-32))	    // Never used Smash Attacks
 #define GM1PGAME_BONUS_MASK1_SPECIALMOVE	(1 << (GM1PGAME_BONUS_KIND_SPECIALMOVE-32))	    // Only used Special Attacks
 #define GM1PGAME_BONUS_MASK1_SINGLEMOVE		(1 << (GM1PGAME_BONUS_KIND_SINGLEMOVE-32))      // Only used the same Special Attack
-#define GM1PGAME_BONUS_MASK1_POKEMONFINISH	(1 << (GM1PGAME_BONUS_KIND_POKEMONFINISH-32))	// KO'd last enemy with a Pokémon (Saffron City Pokémon projectiles also count, but not the Pokémon themselves?)
+#define GM1PGAME_BONUS_MASK1_POKEMONFINISH	(1 << (GM1PGAME_BONUS_KIND_POKEMONFINISH-32))	// KO'd last enemy with a Pokï¿½mon (Saffron City Pokï¿½mon projectiles also count, but not the Pokï¿½mon themselves?)
 #define GM1PGAME_BONUS_MASK1_BOOBYTRAP		(1 << (GM1PGAME_BONUS_KIND_BOOBYTRAP-32))		// KO'd last enemy with a Motion Sensor Bomb
 #define GM1PGAME_BONUS_MASK1_FIGHTERSTANCE	(1 << (GM1PGAME_BONUS_KIND_FIGHTERSTANCE-32))   // Player was taunting as stage ended
 #define GM1PGAME_BONUS_MASK1_MYSTIC			(1 << (GM1PGAME_BONUS_KIND_MYSTIC-32))		    // Player fell as stage ended
@@ -851,7 +851,7 @@ typedef struct gmSaveInfo
     ub8 sound_mono_or_stereo;   // Sound mono / stereo setting
     s16 unk452;
     s16 unk454;
-    u8 unk456;
+    u8 data_characters_ft_kind;   // Data > Characters screen index
     u8 unlock_mask;
     u16 character_mask;         // Mask of unlocked characters?
     u8 spgame_difficulty;

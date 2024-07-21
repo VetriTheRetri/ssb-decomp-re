@@ -67,25 +67,25 @@ glabel D_ovl33_80136228
   .balign 4
   .incbin "ovl33.raw.bin", 0x474C, 0x4
 
-glabel D_ovl33_80136250
+glabel dMNCharsFtKinds
   .incbin "ovl33.raw.bin", 0x4750, 0x30
 
-glabel D_ovl33_80136280
+glabel dMNCharsIndexes
   .incbin "ovl33.raw.bin", 0x4780, 0x30
 
-glabel D_ovl33_801362B0
+glabel dMNCharsBioOffsets
   .incbin "ovl33.raw.bin", 0x47B0, 0x30
 
-glabel D_ovl33_801362E0
+glabel dMNCharsLogoOffsets
   .incbin "ovl33.raw.bin", 0x47E0, 0x30
 
-glabel D_ovl33_80136310
+glabel dMNCharsLogoZoomAnimOffsets
   .incbin "ovl33.raw.bin", 0x4810, 0x30
 
-glabel D_ovl33_80136340
+glabel dMNCharsLogoColorAnimOffsets
   .incbin "ovl33.raw.bin", 0x4840, 0x30
 
-glabel D_ovl33_80136370
+glabel dMNCharsNameXYPositions
   .incbin "ovl33.raw.bin", 0x4870, 0x4
   /* 4874 1623C4 80136374 */
   .asciz "BH"
@@ -143,13 +143,13 @@ glabel D_ovl33_80136370
   .asciz "BP"
   .balign 4
 
-glabel D_ovl33_801363D0
+glabel dMNCharsNameOffsets
   .incbin "ovl33.raw.bin", 0x48D0, 0x30
 
-glabel D_ovl33_80136400
+glabel dMNCharsWorksOffsets
   .incbin "ovl33.raw.bin", 0x4900, 0x30
 
-glabel D_ovl33_80136430
+glabel dMNCharsSpecialActions
   /* 4930 162480 80136430 */  .4byte D_ovl33_801340B0
   /* 4934 162484 80136434 */  .4byte D_ovl33_801341D0
   /* 4938 162488 80136438 */  .4byte D_ovl33_801342F0
@@ -181,12 +181,12 @@ glabel D_ovl33_80136518
   /* 4A20 162570 80136520 */  .4byte func_800A26B8
   /* 4A24 162574 80136524 */  .4byte D_NF_80136A90
   .incbin "ovl33.raw.bin", 0x4A28, 0x28
-  /* 4A50 1625A0 80136550 */  .4byte func_ovl33_80131B00
+  /* 4A50 1625A0 80136550 */  .4byte mnCharsSetupDisplayList
   /* 4A54 1625A4 80136554 */  .4byte update_contdata
   .incbin "ovl33.raw.bin", 0x4A58, 0x20
   /* 4A78 1625C8 80136578 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl33.raw.bin", 0x4A7C, 0x24
-  /* 4AA0 1625F0 801365A0 */  .4byte func_ovl33_80133E28
+  /* 4AA0 1625F0 801365A0 */  .4byte mnCharsInit
   .incbin "ovl33.raw.bin", 0x4AA4, 0xC
 
 glabel D_ovl33_801365B0

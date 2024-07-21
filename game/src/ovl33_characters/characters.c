@@ -54,6 +54,7 @@ extern sb32 gMNCharsAutoRotateFighter; // 0x801366D0
 extern s32 gMNCharsUnknown; // 0x801366D4
 
 extern GObj* gMNCharsMoveNameGObj; // 0x801366DC
+extern GObj* gMNCharsFighterCameraGObj; // 0x801366E0
 
 extern void* gMNCharsAnimHeap; // 0x801366EC
 extern sb32 gMNCharsIsDemoMode; // 0x801366F0
@@ -684,7 +685,7 @@ void mnCharsCreateMoveName()
 }
 
 // 0x80133000
-void func_ovl33_80133000()
+void mnCharsCreateBioViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x46, 0x04000000, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
@@ -692,7 +693,7 @@ void func_ovl33_80133000()
 }
 
 // 0x801330A0
-void func_ovl33_801330A0()
+void mnCharsCreateHeaderViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x3C, 0x08000000, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
@@ -700,7 +701,7 @@ void func_ovl33_801330A0()
 }
 
 // 0x80133140
-void func_ovl33_80133140()
+void mnCharsCreateSeriesLogoViewport()
 {
     Camera *cam;
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017DBC, 0x5A, 0x10000000, -1, 1, 1, 0, 1, 0);
@@ -720,7 +721,7 @@ void func_ovl33_80133140()
 }
 
 // 0x80133224
-void func_ovl33_80133224()
+void mnCharsCreateNameViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x20000000, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
@@ -728,15 +729,15 @@ void func_ovl33_80133224()
 }
 
 // 0x801332C4
-void func_ovl33_801332C4()
+void mnCharsCreateWorksBackgroundViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x32, 0x40000000, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// func_ovl33_80133364
-void func_ovl33_80133364()
+// 0x80133364
+void mnCharsCreateWorksViewport()
 {
     GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x28, 0x80000000, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
@@ -744,13 +745,13 @@ void func_ovl33_80133364()
 }
 
 // 0x80133404
-void func_ovl33_80133404()
+void mnCharsCreateFighterViewport()
 {
     Camera *cam;
 
-    D_ovl33_801366E0 = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017DBC, 0x1E, 0x00048600, -1, 1, 1, 0, 1, 0);
+    gMNCharsFighterCameraGObj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017DBC, 0x1E, 0x00048600, -1, 1, 1, 0, 1, 0);
 
-    cam = CameraGetStruct(D_ovl33_801366E0);
+    cam = CameraGetStruct(gMNCharsFighterCameraGObj);
     cam->flags = 1;
 
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -878,9 +879,9 @@ void mnCharsMoveFighterCamera(Camera* fighter_cam, f32 angle, s32 arg2)
 }
 
 // 0x80133840
-void func_ovl33_80133840()
+void mnCharsResetFighterViewport()
 {
-    Camera *cam = CameraGetStruct(D_ovl33_801366E0);
+    Camera *cam = CameraGetStruct(gMNCharsFighterCameraGObj);
 
     cam->vec.eye.x = 0.0F;
     cam->vec.eye.y = 0.0F;
@@ -951,7 +952,7 @@ void mnCharsHandleInput()
         {
             D_ovl33_801366E4 += gPlayerControllers[z_held_port].stick_range.y / 60.0f;
 
-            mnCharsMoveFighterCamera(CameraGetStruct(D_ovl33_801366E0), D_ovl33_801366E4, D_ovl33_801366E8);
+            mnCharsMoveFighterCamera(CameraGetStruct(gMNCharsFighterCameraGObj), D_ovl33_801366E4, D_ovl33_801366E8);
 
             gMNCharsAutoRotateFighter = FALSE;
         }
@@ -960,7 +961,7 @@ void mnCharsHandleInput()
         {
             D_ovl33_801366E4 += gPlayerControllers[z_held_port].stick_range.y / 60.0f;
 
-            mnCharsMoveFighterCamera(CameraGetStruct(D_ovl33_801366E0), D_ovl33_801366E4, D_ovl33_801366E8);
+            mnCharsMoveFighterCamera(CameraGetStruct(gMNCharsFighterCameraGObj), D_ovl33_801366E4, D_ovl33_801366E8);
 
             gMNCharsAutoRotateFighter = FALSE;
         }
@@ -989,7 +990,7 @@ void mnCharsHandleInput()
 
                 mnCommonSetOptionChangeWaitN(gMNCharsChangeWait, is_button, stick_range, 7);
 
-                func_ovl33_80133840();
+                mnCharsResetFighterViewport();
         }
 
         if (
@@ -1014,7 +1015,7 @@ void mnCharsHandleInput()
 
             mnCommonSetOptionChangeWaitP(gMNCharsChangeWait, is_button, stick_range, 7);
 
-            func_ovl33_80133840();
+            mnCharsResetFighterViewport();
         }
     }
 }
@@ -1109,13 +1110,13 @@ void mnCharsInit()
     }
 
     gMNCharsAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
-    func_ovl33_80133000();
-    func_ovl33_801330A0();
-    func_ovl33_80133140();
-    func_ovl33_80133224();
-    func_ovl33_801332C4();
-    func_ovl33_80133364();
-    func_ovl33_80133404();
+    mnCharsCreateBioViewport();
+    mnCharsCreateHeaderViewport();
+    mnCharsCreateSeriesLogoViewport();
+    mnCharsCreateNameViewport();
+    mnCharsCreateWorksBackgroundViewport();
+    mnCharsCreateWorksViewport();
+    mnCharsCreateFighterViewport();
     mnCharsCreateHeader();
     mnCharsCreateWorksBackground();
     mnCharsCreateWorks(mnCharsGetFtKind(gMNCharsCurrentIndex));

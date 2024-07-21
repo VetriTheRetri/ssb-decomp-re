@@ -29,7 +29,7 @@ glabel gMNCharsUnknown
     .space 8
 glabel gMNCharsMoveNameGObj
     .space 4
-glabel D_ovl33_801366E0
+glabel gMNCharsFighterCameraGObj
     .space 4
 glabel D_ovl33_801366E4
     .space 4

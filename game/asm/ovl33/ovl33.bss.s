@@ -31,9 +31,9 @@ glabel gMNCharsMoveNameGObj
     .space 4
 glabel gMNCharsFighterCameraGObj
     .space 4
-glabel D_ovl33_801366E4
+glabel gMNCharsHeldStickAngle
     .space 4
-glabel D_ovl33_801366E8
+glabel gMNCharsHeldStickUnknown
     .space 4
 glabel gMNCharsAnimHeap
     .space 4

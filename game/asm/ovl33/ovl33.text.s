@@ -2043,7 +2043,7 @@ glabel mnCharsResetFighterViewport
   /* 15F8C0 80133870 44814000 */      mtc1 $at, $f8 # 370.0 to cop1
   /* 15F8C4 80133874 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 15F8C8 80133878 44815000 */      mtc1 $at, $f10 # 1.0 to cop1
-  /* 15F8CC 8013387C 3C018013 */       lui $at, %hi(D_ovl33_801366E4)
+  /* 15F8CC 8013387C 3C018013 */       lui $at, %hi(gMNCharsHeldStickAngle)
   /* 15F8D0 80133880 E4400050 */      swc1 $f0, 0x50($v0)
   /* 15F8D4 80133884 E4400054 */      swc1 $f0, 0x54($v0)
   /* 15F8D8 80133888 E440005C */      swc1 $f0, 0x5c($v0)
@@ -2051,10 +2051,10 @@ glabel mnCharsResetFighterViewport
   /* 15F8E0 80133890 E4460048 */      swc1 $f6, 0x48($v0)
   /* 15F8E4 80133894 E448004C */      swc1 $f8, 0x4c($v0)
   /* 15F8E8 80133898 E44A0058 */      swc1 $f10, 0x58($v0)
-  /* 15F8EC 8013389C E42266E4 */      swc1 $f2, %lo(D_ovl33_801366E4)($at)
-  /* 15F8F0 801338A0 3C018013 */       lui $at, %hi(D_ovl33_801366E8)
+  /* 15F8EC 8013389C E42266E4 */      swc1 $f2, %lo(gMNCharsHeldStickAngle)($at)
+  /* 15F8F0 801338A0 3C018013 */       lui $at, %hi(gMNCharsHeldStickUnknown)
   /* 15F8F4 801338A4 03E00008 */        jr $ra
-  /* 15F8F8 801338A8 E42266E8 */      swc1 $f2, %lo(D_ovl33_801366E8)($at)
+  /* 15F8F8 801338A8 E42266E8 */      swc1 $f2, %lo(gMNCharsHeldStickUnknown)($at)
 
 glabel mnCharsHandleInput
   /* 15F8FC 801338AC 27BDFFC8 */     addiu $sp, $sp, -0x38
@@ -2087,8 +2087,8 @@ glabel mnCharsHandleInput
   /* 15F964 80133914 0018C040 */       sll $t8, $t8, 1
   /* 15F968 80133918 03193821 */      addu $a3, $t8, $t9
   /* 15F96C 8013391C 80E30008 */        lb $v1, 8($a3)
-  /* 15F970 80133920 3C118013 */       lui $s1, %hi(D_ovl33_801366E4)
-  /* 15F974 80133924 263166E4 */     addiu $s1, $s1, %lo(D_ovl33_801366E4)
+  /* 15F970 80133920 3C118013 */       lui $s1, %hi(gMNCharsHeldStickAngle)
+  /* 15F974 80133924 263166E4 */     addiu $s1, $s1, %lo(gMNCharsHeldStickAngle)
   /* 15F978 80133928 2861FFEC */      slti $at, $v1, -0x14
   /* 15F97C 8013392C 10200021 */      beqz $at, .L801339B4
   /* 15F980 80133930 00000000 */       nop
@@ -2166,21 +2166,21 @@ glabel mnCharsHandleInput
   /* 15FA90 80133A40 1420001A */      bnez $at, .L80133AAC
   /* 15FA94 80133A44 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 15FA98 80133A48 44814000 */      mtc1 $at, $f8 # 45.0 to cop1
-  /* 15FA9C 80133A4C C6200000 */      lwc1 $f0, ($s1) # D_ovl33_801366E4 + 0
+  /* 15FA9C 80133A4C C6200000 */      lwc1 $f0, ($s1) # gMNCharsHeldStickAngle + 0
   /* 15FAA0 80133A50 4608003C */    c.lt.s $f0, $f8
   /* 15FAA4 80133A54 00000000 */       nop
   /* 15FAA8 80133A58 45000014 */      bc1f .L80133AAC
   /* 15FAAC 80133A5C 00000000 */       nop
   /* 15FAB0 80133A60 44905000 */      mtc1 $s0, $f10
   /* 15FAB4 80133A64 3C0C8013 */       lui $t4, %hi(gMNCharsFighterCameraGObj)
-  /* 15FAB8 80133A68 3C068013 */       lui $a2, %hi(D_ovl33_801366E8)
+  /* 15FAB8 80133A68 3C068013 */       lui $a2, %hi(gMNCharsHeldStickUnknown)
   /* 15FABC 80133A6C 468054A0 */   cvt.s.w $f18, $f10
   /* 15FAC0 80133A70 460C9403 */     div.s $f16, $f18, $f12
   /* 15FAC4 80133A74 46100180 */     add.s $f6, $f0, $f16
-  /* 15FAC8 80133A78 E6260000 */      swc1 $f6, ($s1) # D_ovl33_801366E4 + 0
+  /* 15FAC8 80133A78 E6260000 */      swc1 $f6, ($s1) # gMNCharsHeldStickAngle + 0
   /* 15FACC 80133A7C 8D8C66E0 */        lw $t4, %lo(gMNCharsFighterCameraGObj)($t4)
-  /* 15FAD0 80133A80 8CC666E8 */        lw $a2, %lo(D_ovl33_801366E8)($a2)
-  /* 15FAD4 80133A84 8E250000 */        lw $a1, ($s1) # D_ovl33_801366E4 + 0
+  /* 15FAD0 80133A80 8CC666E8 */        lw $a2, %lo(gMNCharsHeldStickUnknown)($a2)
+  /* 15FAD4 80133A84 8E250000 */        lw $a1, ($s1) # gMNCharsHeldStickAngle + 0
   /* 15FAD8 80133A88 8D840074 */        lw $a0, 0x74($t4)
   /* 15FADC 80133A8C 0C04CDD5 */       jal mnCharsMoveFighterCamera
   /* 15FAE0 80133A90 AFA70024 */        sw $a3, 0x24($sp)
@@ -2191,27 +2191,27 @@ glabel mnCharsHandleInput
   /* 15FAF4 80133AA4 44816000 */      mtc1 $at, $f12 # 60.0 to cop1
   /* 15FAF8 80133AA8 80F00009 */        lb $s0, 9($a3)
   .L80133AAC:
-  /* 15FAFC 80133AAC 3C118013 */       lui $s1, %hi(D_ovl33_801366E4)
+  /* 15FAFC 80133AAC 3C118013 */       lui $s1, %hi(gMNCharsHeldStickAngle)
   /* 15FB00 80133AB0 2A01FFEC */      slti $at, $s0, -0x14
   /* 15FB04 80133AB4 1020007B */      beqz $at, .L80133CA4
-  /* 15FB08 80133AB8 263166E4 */     addiu $s1, $s1, %lo(D_ovl33_801366E4)
+  /* 15FB08 80133AB8 263166E4 */     addiu $s1, $s1, %lo(gMNCharsHeldStickAngle)
   /* 15FB0C 80133ABC 3C01C234 */       lui $at, (0xC2340000 >> 16) # -45.0
   /* 15FB10 80133AC0 44812000 */      mtc1 $at, $f4 # -45.0 to cop1
-  /* 15FB14 80133AC4 C6200000 */      lwc1 $f0, ($s1) # D_ovl33_801366E4 + 0
+  /* 15FB14 80133AC4 C6200000 */      lwc1 $f0, ($s1) # gMNCharsHeldStickAngle + 0
   /* 15FB18 80133AC8 4600203C */    c.lt.s $f4, $f0
   /* 15FB1C 80133ACC 00000000 */       nop
   /* 15FB20 80133AD0 45020075 */     bc1fl .L80133CA8
   /* 15FB24 80133AD4 8FBF001C */        lw $ra, 0x1c($sp)
   /* 15FB28 80133AD8 44904000 */      mtc1 $s0, $f8
   /* 15FB2C 80133ADC 3C0D8013 */       lui $t5, %hi(gMNCharsFighterCameraGObj)
-  /* 15FB30 80133AE0 3C068013 */       lui $a2, %hi(D_ovl33_801366E8)
+  /* 15FB30 80133AE0 3C068013 */       lui $a2, %hi(gMNCharsHeldStickUnknown)
   /* 15FB34 80133AE4 468042A0 */   cvt.s.w $f10, $f8
   /* 15FB38 80133AE8 460C5483 */     div.s $f18, $f10, $f12
   /* 15FB3C 80133AEC 46120400 */     add.s $f16, $f0, $f18
-  /* 15FB40 80133AF0 E6300000 */      swc1 $f16, ($s1) # D_ovl33_801366E4 + 0
+  /* 15FB40 80133AF0 E6300000 */      swc1 $f16, ($s1) # gMNCharsHeldStickAngle + 0
   /* 15FB44 80133AF4 8DAD66E0 */        lw $t5, %lo(gMNCharsFighterCameraGObj)($t5)
-  /* 15FB48 80133AF8 8CC666E8 */        lw $a2, %lo(D_ovl33_801366E8)($a2)
-  /* 15FB4C 80133AFC 8E250000 */        lw $a1, ($s1) # D_ovl33_801366E4 + 0
+  /* 15FB48 80133AF8 8CC666E8 */        lw $a2, %lo(gMNCharsHeldStickUnknown)($a2)
+  /* 15FB4C 80133AFC 8E250000 */        lw $a1, ($s1) # gMNCharsHeldStickAngle + 0
   /* 15FB50 80133B00 0C04CDD5 */       jal mnCharsMoveFighterCamera
   /* 15FB54 80133B04 8DA40074 */        lw $a0, 0x74($t5)
   /* 15FB58 80133B08 3C018013 */       lui $at, %hi(gMNCharsAutoRotateFighter)

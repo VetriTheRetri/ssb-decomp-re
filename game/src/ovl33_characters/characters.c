@@ -55,7 +55,8 @@ extern s32 gMNCharsUnknown; // 0x801366D4
 
 extern GObj* gMNCharsMoveNameGObj; // 0x801366DC
 extern GObj* gMNCharsFighterCameraGObj; // 0x801366E0
-
+extern f32 gMNCharsHeldStickAngle; // 0x801366E4
+extern s32 gMNCharsHeldStickUnknown; // 0x801366E8
 extern void* gMNCharsAnimHeap; // 0x801366EC
 extern sb32 gMNCharsIsDemoMode; // 0x801366F0
 extern s32 gMNCharsFirstFtKind; // 0x801366F4
@@ -67,7 +68,6 @@ extern s32 gMNCharsRecentActionTypes[3]; // 0x80136708
 extern s32 gMNCharsRecentActionTypeIndex; // 0x80136714
 extern s32 gMNCharsChangeWait; // 0x80136718
 extern s32 gMNCharsFramesElapsed; // 0x8013671C; // frames elapsed
-
 extern u32 D_ovl33_80136720[240];
 extern rdFileNode D_ovl33_80136A40;
 extern uintptr_t D_NF_001AC870;
@@ -80,8 +80,11 @@ extern s32 gMNCharsFilesArray[4]; // 0x80136A78[4]
 // gMNCharsFilesArray[3] - D_ovl33_80136A84; // file 0x023 pointer
 
 // Offsets
-extern intptr_t FILE_010_BIO_UNDERLAY_TEXTURE_IMAGE_OFFSET = 0x30888; // file 0x010 image offset for rectangle underlaying bios
 extern intptr_t FILE_010_CHARACTERS_TEXTURE_IMAGE_OFFSET = 0x630; // file 0x010 image offset for Characters texture
+extern intptr_t FILE_010_NAME_BORDER_IMAGE_OFFSET = 0x1230; // file 0x010 image offset for character name border texture, normal height
+extern intptr_t FILE_010_NAME_BORDER_TALL_IMAGE_OFFSET = 0x28F0; // file 0x010 image offset for character name border texture, tall height
+extern intptr_t FILE_010_WORKS_BACKGROUND_IMAGE_OFFSET = 0x25058; // file 0x010 image offset for works background texture
+extern intptr_t FILE_010_BIO_UNDERLAY_TEXTURE_IMAGE_OFFSET = 0x30888; // file 0x010 image offset for rectangle underlaying bios
 
 extern intptr_t FILE_020_DATA_HEADER_IMAGE_OFFSET = 0xB40; // file 0x020 image offset for DATA header
 extern intptr_t FILE_020_LEFT_ARROW_IMAGE_OFFSET = 0xBE0; // file 0x020 image offset for left arrow
@@ -231,7 +234,7 @@ void mnCharsCreateName(s32 ft_kind)
 
     if ((ft_kind == Ft_Kind_Purin) || (ft_kind == Ft_Kind_Captain))
     {
-        name_sobj = gcAppendSObjWithSprite(name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &D_NF_000028F0));
+        name_sobj = gcAppendSObjWithSprite(name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_NAME_BORDER_TALL_IMAGE_OFFSET));
         name_sobj->sprite.attr &= ~SP_FASTCOPY;
         name_sobj->sprite.attr |= SP_TRANSPARENT;
         name_sobj->pos.x = 10.0f;
@@ -242,7 +245,7 @@ void mnCharsCreateName(s32 ft_kind)
     }
     else
     {
-        name_sobj = gcAppendSObjWithSprite(name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &D_NF_00001230));
+        name_sobj = gcAppendSObjWithSprite(name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_NAME_BORDER_IMAGE_OFFSET));
         name_sobj->sprite.attr &= ~SP_FASTCOPY;
         name_sobj->sprite.attr |= SP_TRANSPARENT;
         name_sobj->pos.x = 10.0f;
@@ -271,7 +274,7 @@ void mnCharsCreateWorksBackground()
     works_bg_gobj = omMakeGObjSPAfter(0, 0, 0x15, 0x80000000);
     omAddGObjRenderProc(works_bg_gobj, func_ovl0_800CCF00, 0x1E, 0x80000000, -1);
 
-    works_bg_sobj = gcAppendSObjWithSprite(works_bg_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &D_NF_00025058));
+    works_bg_sobj = gcAppendSObjWithSprite(works_bg_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_WORKS_BACKGROUND_IMAGE_OFFSET));
     works_bg_sobj->sprite.attr &= ~SP_FASTCOPY;
     works_bg_sobj->sprite.attr |= SP_TRANSPARENT;
     works_bg_sobj->pos.x = 116.0f;
@@ -893,8 +896,8 @@ void mnCharsResetFighterViewport()
     cam->vec.up.y = 1.0F;
     cam->vec.up.z = 0.0F;
 
-    D_ovl33_801366E4 = 0;
-    D_ovl33_801366E8 = 0;
+    gMNCharsHeldStickAngle = 0;
+    gMNCharsHeldStickUnknown = 0;
 }
 
 // 0x801338AC
@@ -948,20 +951,20 @@ void mnCharsHandleInput()
             gMNCharsAutoRotateFighter = FALSE;
         }
 
-        if ((gPlayerControllers[z_held_port].stick_range.y > 20) && (D_ovl33_801366E4 < 45.0f))
+        if ((gPlayerControllers[z_held_port].stick_range.y > 20) && (gMNCharsHeldStickAngle < 45.0f))
         {
-            D_ovl33_801366E4 += gPlayerControllers[z_held_port].stick_range.y / 60.0f;
+            gMNCharsHeldStickAngle += gPlayerControllers[z_held_port].stick_range.y / 60.0f;
 
-            mnCharsMoveFighterCamera(CameraGetStruct(gMNCharsFighterCameraGObj), D_ovl33_801366E4, D_ovl33_801366E8);
+            mnCharsMoveFighterCamera(CameraGetStruct(gMNCharsFighterCameraGObj), gMNCharsHeldStickAngle, gMNCharsHeldStickUnknown);
 
             gMNCharsAutoRotateFighter = FALSE;
         }
 
-        if ((gPlayerControllers[z_held_port].stick_range.y < -20) && (D_ovl33_801366E4 > -45.0f))
+        if ((gPlayerControllers[z_held_port].stick_range.y < -20) && (gMNCharsHeldStickAngle > -45.0f))
         {
-            D_ovl33_801366E4 += gPlayerControllers[z_held_port].stick_range.y / 60.0f;
+            gMNCharsHeldStickAngle += gPlayerControllers[z_held_port].stick_range.y / 60.0f;
 
-            mnCharsMoveFighterCamera(CameraGetStruct(gMNCharsFighterCameraGObj), D_ovl33_801366E4, D_ovl33_801366E8);
+            mnCharsMoveFighterCamera(CameraGetStruct(gMNCharsFighterCameraGObj), gMNCharsHeldStickAngle, gMNCharsHeldStickUnknown);
 
             gMNCharsAutoRotateFighter = FALSE;
         }

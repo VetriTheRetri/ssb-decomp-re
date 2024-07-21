@@ -11,6 +11,20 @@
 extern f32 menu_zoom[12]; // D_ovl1_80390D90
 
 // ovl33 stuff
+extern charsSpecialActionInfo charsSpecialActionInfoMario; // 0x801340B0
+extern charsSpecialActionInfo charsSpecialActionInfoFox; // 0x801341D0
+extern charsSpecialActionInfo charsSpecialActionInfoDonkey; // 0x801342F0
+extern charsSpecialActionInfo charsSpecialActionInfoSamus; // 0x80134410
+extern charsSpecialActionInfo charsSpecialActionInfoLuigi; // 0x80134530
+extern charsSpecialActionInfo charsSpecialActionInfoLink; // 0x80134650
+extern charsSpecialActionInfo charsSpecialActionInfoYoshi; // 0x80134770
+extern charsSpecialActionInfo charsSpecialActionInfoCaptain; // 0x80134890
+extern charsSpecialActionInfo charsSpecialActionInfoKirby; // 0x801349B0
+extern charsSpecialActionInfo charsSpecialActionInfoPikachu; // 0x80134AD0
+extern charsSpecialActionInfo charsSpecialActionInfoPurin; // 0x80134BF0
+extern charsSpecialActionInfo charsSpecialActionInfoNess; // 0x80134D10
+extern charsActionInfo D_ovl33_80134E30[38][8]; // 0x80134E30
+
 extern s32 dMNCharsFtKinds[12] = {
     Ft_Kind_Mario,
     Ft_Kind_Luigi,
@@ -34,9 +48,15 @@ extern Vec2f dMNCharsNameXYPositions[12]; // 0x80136370
 extern intptr_t dMNCharsNameOffsets[12]; // 0x801363D0
 extern intptr_t dMNCharsWorksOffsets[12]; // 0x80136400
 extern charsSpecialActionInfo* dMNCharsSpecialActions[12]; // 0x80136430
-
+extern charsActionInfo D_ovl33_80135CD0[8]; // 0x80135CD0
+extern charsActionInfo D_ovl33_80135D30; // 0x80135D30
+extern charsActionInfo D_ovl33_80135D3C[8]; // 0x80135D3C
+extern charsActionInfo D_ovl33_80135D9C; // 0x80135D9C
+extern charsActionInfo D_ovl33_80135DA8[12][8]; // 0x80135DA8
 extern RldmFileId D_ovl33_80136228[4];
 
+extern intptr_t gMNCharsMoveNameOffsets[12][3]; // 0x80136460
+extern intptr_t gMNCharsMoveInputOffsets[3] // 0x801364F0;
 extern scUnkDataBounds D_ovl33_801364FC;
 extern scRuntimeInfo D_ovl33_80136518;
 
@@ -373,13 +393,13 @@ charsActionInfo* mnCharsGetActionInfo(charsActionInfo* info, s32 ft_kind, s32 ac
 
         if (action_type == 0x12)
         {
-            *info = D_ovl33_80135DA8.info[ft_kind][track];
+            *info = D_ovl33_80135DA8[ft_kind][track];
 
             return info;
         }
         else
         {
-            *info = D_ovl33_80134E30.info[action_type][track];
+            *info = D_ovl33_80134E30[action_type][track];
 
             return info;
         }
@@ -630,12 +650,12 @@ s32 mnCharsGetMoveType()
 {
     switch (gMNCharsActionType)
     {
-        case 0:
-            return 0;
-        case 1:
-            return 1;
-        case 2:
-            return 2;
+        case charsActionKindSpecialHi:
+            return charsActionKindSpecialHi;
+        case charsActionKindSpecialN:
+            return charsActionKindSpecialN;
+        case charsActionKindSpecialLw:
+            return charsActionKindSpecialLw;
         default:
             return 3;
     }
@@ -645,8 +665,8 @@ s32 mnCharsGetMoveType()
 void mnCharsUpdateMoveName(GObj* move_name_gobj)
 {
     SObj* move_name_sobj;
-    intptr_t move_name_offsets[12][3] = D_ovl33_80136460;
-    intptr_t move_input_offsets[3] = D_ovl33_801364F0;
+    intptr_t move_name_offsets[12][3] = gMNCharsMoveNameOffsets;
+    intptr_t move_input_offsets[3] = gMNCharsMoveInputOffsets;
     s32 move_type;
     s32 ft_kind;
 

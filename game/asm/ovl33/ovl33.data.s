@@ -163,10 +163,10 @@ glabel dMNCharsSpecialActions
   /* 4958 1624A8 80136458 */  .4byte D_ovl33_80134BF0
   /* 495C 1624AC 8013645C */  .4byte D_ovl33_80134D10
 
-glabel D_ovl33_80136460
+glabel gMNCharsMoveNameOffsets
   .incbin "ovl33.raw.bin", 0x4960, 0x90
 
-glabel D_ovl33_801364F0
+glabel gMNCharsMoveInputOffsets
   .incbin "ovl33.raw.bin", 0x49F0, 0xC
 
 glabel D_ovl33_801364FC

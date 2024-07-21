@@ -1339,29 +1339,29 @@ glabel mnCharsGetMoveType
 
 glabel mnCharsUpdateMoveName
   /* 15EE70 80132E20 27BDFF38 */     addiu $sp, $sp, -0xc8
-  /* 15EE74 80132E24 3C0F8013 */       lui $t7, %hi(D_ovl33_80136460)
-  /* 15EE78 80132E28 25EF6460 */     addiu $t7, $t7, %lo(D_ovl33_80136460)
+  /* 15EE74 80132E24 3C0F8013 */       lui $t7, %hi(gMNCharsMoveNameOffsets)
+  /* 15EE78 80132E28 25EF6460 */     addiu $t7, $t7, %lo(gMNCharsMoveNameOffsets)
   /* 15EE7C 80132E2C AFBF0014 */        sw $ra, 0x14($sp)
   /* 15EE80 80132E30 AFA400C8 */        sw $a0, 0xc8($sp)
   /* 15EE84 80132E34 25E80090 */     addiu $t0, $t7, 0x90
   /* 15EE88 80132E38 27AE0034 */     addiu $t6, $sp, 0x34
   .L80132E3C:
-  /* 15EE8C 80132E3C 8DF90000 */        lw $t9, ($t7) # D_ovl33_80136460 + 0
+  /* 15EE8C 80132E3C 8DF90000 */        lw $t9, ($t7) # gMNCharsMoveNameOffsets + 0
   /* 15EE90 80132E40 25EF000C */     addiu $t7, $t7, 0xc
   /* 15EE94 80132E44 25CE000C */     addiu $t6, $t6, 0xc
   /* 15EE98 80132E48 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 15EE9C 80132E4C 8DF8FFF8 */        lw $t8, -8($t7) # D_ovl33_80136460 + -8
+  /* 15EE9C 80132E4C 8DF8FFF8 */        lw $t8, -8($t7) # gMNCharsMoveNameOffsets + -8
   /* 15EEA0 80132E50 ADD8FFF8 */        sw $t8, -8($t6)
-  /* 15EEA4 80132E54 8DF9FFFC */        lw $t9, -4($t7) # D_ovl33_80136460 + -4
+  /* 15EEA4 80132E54 8DF9FFFC */        lw $t9, -4($t7) # gMNCharsMoveNameOffsets + -4
   /* 15EEA8 80132E58 15E8FFF8 */       bne $t7, $t0, .L80132E3C
   /* 15EEAC 80132E5C ADD9FFFC */        sw $t9, -4($t6)
-  /* 15EEB0 80132E60 3C0A8013 */       lui $t2, %hi(D_ovl33_801364F0)
-  /* 15EEB4 80132E64 254A64F0 */     addiu $t2, $t2, %lo(D_ovl33_801364F0)
-  /* 15EEB8 80132E68 8D4C0000 */        lw $t4, ($t2) # D_ovl33_801364F0 + 0
+  /* 15EEB0 80132E60 3C0A8013 */       lui $t2, %hi(gMNCharsMoveInputOffsets)
+  /* 15EEB4 80132E64 254A64F0 */     addiu $t2, $t2, %lo(gMNCharsMoveInputOffsets)
+  /* 15EEB8 80132E68 8D4C0000 */        lw $t4, ($t2) # gMNCharsMoveInputOffsets + 0
   /* 15EEBC 80132E6C 27A90028 */     addiu $t1, $sp, 0x28
-  /* 15EEC0 80132E70 8D4B0004 */        lw $t3, 4($t2) # D_ovl33_801364F0 + 4
+  /* 15EEC0 80132E70 8D4B0004 */        lw $t3, 4($t2) # gMNCharsMoveInputOffsets + 4
   /* 15EEC4 80132E74 AD2C0000 */        sw $t4, ($t1)
-  /* 15EEC8 80132E78 8D4C0008 */        lw $t4, 8($t2) # D_ovl33_801364F0 + 8
+  /* 15EEC8 80132E78 8D4C0008 */        lw $t4, 8($t2) # gMNCharsMoveInputOffsets + 8
   /* 15EECC 80132E7C AD2B0004 */        sw $t3, 4($t1)
   /* 15EED0 80132E80 0C04CB75 */       jal mnCharsGetMoveType
   /* 15EED4 80132E84 AD2C0008 */        sw $t4, 8($t1)

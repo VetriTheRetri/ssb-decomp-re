@@ -1678,7 +1678,7 @@ void efGroundInitActor(void)
 {
     GObj *effect_gobj;
 
-    if ((gBattleState->gr_kind <= Gr_Kind_VSEnd) && (gSceneData.scene_current != scMajor_Kind_1PTrainingMode) && (dEFGroundDatas[gBattleState->gr_kind].effect_param != NULL))
+    if ((gBattleState->gr_kind <= Gr_Kind_BattleEnd) && (gSceneData.scene_current != scMajor_Kind_1PTrainingMode) && (dEFGroundDatas[gBattleState->gr_kind].effect_param != NULL))
     {
         effect_gobj = omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 7, GOBJ_LINKORDER_DEFAULT);
 

@@ -435,6 +435,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Stage GObj setup
+      - [0x080EC0, c, gr/grmainsetup]
     # Stage model setup
       - [0x080F60, c, gr/grmodel]
       - [0x0810D0, pad, pad0x0810D0]
@@ -466,6 +468,8 @@ segments:
 
     # ovl2 data
       - [0x0923D0, data, ovl2]
+    # Stage GObj setup
+      - [0x0AA040, .data, gr/grmainsetup]
     # Stage files
       - [0x0AA070, .data, gr/grcommon/grpupupu]
       - [0x0AA140, .data, gr/grcommon/grsector]

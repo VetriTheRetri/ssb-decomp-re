@@ -1,5 +1,11 @@
 #include <gr/ground.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80105760
 void grModelSetupDObj(GObj *gobj, DObjDesc *dobj_desc, DObj **p_dobj, DObjTransformTypes *transform_types)
 {

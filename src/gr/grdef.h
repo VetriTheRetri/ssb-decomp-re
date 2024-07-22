@@ -15,7 +15,7 @@ typedef enum grKind
 	Gr_Kind_Pupupu,	  // Dream Land
 	Gr_Kind_Yamabuki, // Saffron City
 	Gr_Kind_Inishie,  // Mushroom Kingdom
-	Gr_Kind_VSEnd = Gr_Kind_Inishie,
+	Gr_Kind_BattleEnd = Gr_Kind_Inishie,
 
 	Gr_Kind_PPPTest1,
 	Gr_Kind_PPPTest2,

@@ -32,7 +32,7 @@ void scTrainingMode_CheckEnterTrainingMenu()
 		GObj* fighter_gobj = gBattleState->player_block[player].fighter_gobj;
 		ftStruct* fp = ftGetStruct(fighter_gobj);
 
-		if (!(fp->is_ignore_startbutton))
+		if (!(fp->is_ignore_training_menu))
 		{
 			ifCommonInterfaceSetGObjFlagsAll(1);
 			scTrainingMode_SetPauseGObjRenderFlags(0);

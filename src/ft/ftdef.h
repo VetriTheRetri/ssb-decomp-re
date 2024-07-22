@@ -6,7 +6,7 @@ typedef enum ftStatusUpdateFlags
 {
     ftStatusUpdate_Hit_Preserve,            // Preserve hitboxes between action states
     ftStatusUpdate_ColAnim_Preserve,        // Preserve color animation between action states
-    ftStatusUpdate_Effect_Preserve,            // Preserve GFX between action states
+    ftStatusUpdate_Effect_Preserve,         // Preserve GFX between action states
     ftStatusUpdate_FastFall_Preserve,       // Preserve fastfall between action states
     ftStatusUpdate_HitStatus_Preserve,      // Preserve hurtbox collision state between action states
     ftStatusUpdate_ModelPart_Preserve,      // Preserve modified model part display state between action states

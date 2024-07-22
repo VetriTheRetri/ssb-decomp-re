@@ -881,7 +881,7 @@ struct ftStruct
     ub32 is_effect_interrupt : 1;       // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
     ub32 is_nullstatus : 1;             // Dead / Entry / Appear / Rebirth, ignore hit collisions + blastzones?
     ub32 is_damage_resist : 1;
-    ub32 is_ignore_startbutton : 1;
+    ub32 is_ignore_training_menu : 1;   // Can't bring up training menu if TRUE? Might be used for some other things
     u32 camera_mode : 4;
     ub32 is_special_interrupt : 1;      // Whether move can be interrupted by Link's boomerang? Have not seen this used anywhere else
     ub32 x192_flag_b1 : 1;

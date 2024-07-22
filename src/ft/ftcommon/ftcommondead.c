@@ -176,7 +176,7 @@ void ftCommonDeadInitStatusVars(GObj *fighter_gobj)
     ftPhysics_StopVelAll(fighter_gobj);
 
     fp->is_invisible = TRUE;
-    fp->is_ignore_startbutton = TRUE;
+    fp->is_ignore_training_menu = TRUE;
     fp->is_playertag_hide = TRUE;
 
     efParticle_Quake_MakeEffect(2);
@@ -361,7 +361,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
             efParticle_SparkleWhiteDead_MakeEffect(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, 5.0F);
 
             fp->is_invisible = TRUE;
-            fp->is_ignore_startbutton = TRUE;
+            fp->is_ignore_training_menu = TRUE;
 
             ftCommonDeadUpdateScore(fp);
             ftCommonDeadAddDeadSFXSoundQueue(alSound_SFX_DeadUpStar);
@@ -467,7 +467,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
 
             fp->is_playertag_hide = TRUE;
             fp->is_invisible = TRUE;
-            fp->is_ignore_startbutton = TRUE;
+            fp->is_ignore_training_menu = TRUE;
 
             ftCommonDeadUpdateScore(fp);
 

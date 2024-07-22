@@ -84,7 +84,7 @@ loop: // This makes no sense
     this_fp->status_vars.common.rebirth.halo_offset.y = halo_spawn_pos.y;
     this_fp->status_vars.common.rebirth.halo_offset.z = 0.0F;
 
-    this_fp->is_ignore_startbutton = TRUE;
+    this_fp->is_ignore_training_menu = TRUE;
     this_fp->is_nullstatus = TRUE;
     this_fp->x18E_flag_b0 = TRUE;
     this_fp->x18E_flag_b1 = TRUE;
@@ -158,7 +158,7 @@ void ftCommonRebirthStandSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_RebirthStand, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
-    fp->is_ignore_startbutton = TRUE;
+    fp->is_ignore_training_menu = TRUE;
     fp->is_nullstatus = TRUE;
     fp->x18E_flag_b0 = TRUE;
     fp->x18E_flag_b1 = TRUE;

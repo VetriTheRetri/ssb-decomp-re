@@ -435,6 +435,9 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Stage model setup
+      - [0x080F60, c, gr/grmodel]
+      - [0x0810D0, pad, pad0x0810D0]
     # Stage files
       - [0x0810E0, c, gr/grcommon/grpupupu]
       - [0x081F30, c, gr/grcommon/grsector]

@@ -3012,7 +3012,7 @@ void ifCommonBattleGoUpdateInterface(void)
 
                     if ((fp->status_info.status_id == ftStatus_Common_Sleep) && (ftCommonSleepCheckIgnorePauseMenu(fighter_gobj) != FALSE)) continue;
 
-                    if (!(fp->is_ignore_startbutton))
+                    if (!(fp->is_ignore_training_menu))
                     {
                         if (gBattleState->game_type == gmMatch_GameType_Bonus)
                         {

@@ -203,7 +203,7 @@ void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.dokan.pos_adjust_wait = 0;
 
-    fp->is_ignore_startbutton = TRUE;
+    fp->is_ignore_training_menu = TRUE;
 
     if (fp->status_vars.common.dokan.material == mpCollision_Material_DokanLeft)
     {

@@ -14,7 +14,7 @@ extern intptr_t lGRInishieScaleRetractAnimJoint;        // 0x00000734
 extern intptr_t lGRInishiePowerBlockHit;                // 0x000000BC
 
 extern void func_8000DF34_EB34(GObj*);
-extern void grModelSetupDObj();
+extern void grModelSetupInitDObj();
 
 // // // // // // // // // // // //
 //                               //
@@ -368,7 +368,7 @@ void grInishieMakeScale(void)
     ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(ground_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
-    grModelSetupDObj(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&lGRInishieScaleDObjDesc), map_dobj, dGRInishieScaleTransformKinds);
+    grModelSetupInitDObj(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&lGRInishieScaleDObjDesc), map_dobj, dGRInishieScaleTransformKinds);
 
     gGroundStruct.inishie.scale[0].string_dobj = map_dobj[4];
     gGroundStruct.inishie.scale[0].string_length = map_dobj[0]->translate.vec.f.y + map_dobj[3]->translate.vec.f.y;

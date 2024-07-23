@@ -791,6 +791,8 @@ gMPCollUpdateFrame = 0x80131398;
 
 sEFTexturesFile2 = 0x801313B4;
 
+sGRFileNodes = 0x801313E0;
+
 gCMManagerCameraGObj = 0x80131460;
 gCMManagerPauseCameraEyeX = 0x80131464;
 gCMManagerPauseCameraEyeY = 0x80131468;

@@ -603,7 +603,7 @@ void func_ovl64_8018DCC4()
 	grWallpaper_SetGroundWallpaper();
 	func_ovl2_8010DB00();
 	itManagerInitItems();
-	grNodeInit_SetGroundFiles();
+	grCommonSetupInitAll();
 	ftManagerAllocFighter(2, 4);
 	wpManagerAllocWeapons();
 	efManager_AllocUserData();

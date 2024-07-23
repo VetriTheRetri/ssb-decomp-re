@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 // 0x80105760
-void grModelSetupDObj(GObj *gobj, DObjDesc *dobj_desc, DObj **p_dobj, DObjTransformTypes *transform_types)
+void grModelSetupInitDObj(GObj *gobj, DObjDesc *dobj_desc, DObj **p_dobj, DObjTransformTypes *transform_types)
 {
     s32 i, index;
     DObj *joint, *dobj_array[DOBJ_ARRAY_MAX];

@@ -1674,7 +1674,7 @@ void efGroundSetupRandomWeights(void)
 }
 
 // 0x80116AD0
-void efGroundInitActor(void)
+void efGroundMakeEffectSpawnActor(void)
 {
     GObj *effect_gobj;
 

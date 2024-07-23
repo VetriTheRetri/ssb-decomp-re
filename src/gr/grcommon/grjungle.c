@@ -129,7 +129,7 @@ void grJungleMakeTaruCann(void)
 
     omAddGObjRenderProc(tarucann_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    grModelSetupDObj(tarucann_gobj, (DObjDesc*) ((intptr_t)&lGRJungleMapHead + (uintptr_t)map_head), NULL, dGRJungleTaruCannTransformKinds);
+    grModelSetupInitDObj(tarucann_gobj, (DObjDesc*) ((intptr_t)&lGRJungleMapHead + (uintptr_t)map_head), NULL, dGRJungleTaruCannTransformKinds);
     omAddGObjCommonProc(tarucann_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
 
     func_8000BD8C_C98C(tarucann_gobj, ((uintptr_t)map_head + (intptr_t)&lGRJungleTaruCannDefaultAnimJoint), 0.0F);

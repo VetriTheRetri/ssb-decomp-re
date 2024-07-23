@@ -126,7 +126,7 @@ void mvOpeningLinkInitFighterStagePanel()
 	Vec3f spawn_position;
 
 	grWallpaper_SetGroundWallpaper();
-	grNodeInit_SetGroundFiles();
+	grCommonSetupInitAll();
 
 	if (mpCollision_GetMPointCountKind(mpMPoint_Kind_Unk0x15) != 1)
 	{

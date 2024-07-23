@@ -119,7 +119,7 @@ void func_ovl5_8018D1A0()
 	cmManagerMakeWallpaperCamera();
 	grWallpaper_SetGroundWallpaper();
 	func_ovl2_8010DB00();
-	grNodeInit_SetGroundFiles();
+	grCommonSetupInitAll();
 	ftManagerAllocFighter(3, 1);
 	wpManagerAllocWeapons();
 	itManagerInitItems();

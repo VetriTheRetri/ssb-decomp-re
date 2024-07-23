@@ -438,7 +438,7 @@ segments:
     # Stage background image setup
       - [0x07FE20, c, gr/grwallpaper]
     # Stage geometry setup
-      - [0x080590, c, gr/grgeometrysetup]
+      - [0x080590, c, gr/grgeometry]
     # Stage common params and file setup
       - [0x080E00, c, gr/grcommonsetup]
     # Stage GObj main setup
@@ -477,7 +477,7 @@ segments:
     # Stage background image setup
       - [0x0A9FC0, .data, gr/grwallpaper]
     # Stage geometry layer setup
-      - [0x0AA000, .data, gr/grgeometrysetup]
+      - [0x0AA000, .data, gr/grgeometry]
     # Stage GObj setup
       - [0x0AA040, .data, gr/grmainsetup]
     # Stage files

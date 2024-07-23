@@ -12,7 +12,7 @@ extern void func_8000F8F4();
 // // // // // // // // // // // //
 
 // 0x8012E800
-grGeometryDesc dGRGeometryDescs[/* */] =
+grGeometryDesc dGRGeometrySetupDescs[/* */] =
 {
     // Layer 0
     {
@@ -233,11 +233,11 @@ GObj* grGeometrySetupMakeGeometryLayer(grCreateDesc *gr_desc, s32 gr_desc_id, DO
 
     if (gGroundInfo->layer_mask & (1 << gr_desc_id))
     {
-        proc_render = dGRGeometryDescs[gr_desc_id].proc_rendersec;
+        proc_render = dGRGeometrySetupDescs[gr_desc_id].proc_rendersec;
     }
-    else proc_render = dGRGeometryDescs[gr_desc_id].proc_renderpri;
+    else proc_render = dGRGeometrySetupDescs[gr_desc_id].proc_renderpri;
 
-    omAddGObjRenderProc(ground_gobj, proc_render, dGRGeometryDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
+    omAddGObjRenderProc(ground_gobj, proc_render, dGRGeometrySetupDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
     func_8000F590(ground_gobj, gr_desc->dobj_desc, p_dobj, OMMtx_Transform_TraRotRpyRSca, OMMtx_Transform_Null, 0);
 
     if (gr_desc->aobj != NULL)
@@ -247,7 +247,7 @@ GObj* grGeometrySetupMakeGeometryLayer(grCreateDesc *gr_desc, s32 gr_desc_id, DO
     if ((gr_desc->anim_joint != NULL) || (gr_desc->matanim_joint != NULL))
     {
         func_8000BED8_CAD8(ground_gobj, gr_desc->anim_joint, gr_desc->matanim_joint, 0.0F);
-        omAddGObjCommonProc(ground_gobj, dGRGeometryDescs[gr_desc_id].proc_update, GObjProcess_Kind_Proc, 4);
+        omAddGObjCommonProc(ground_gobj, dGRGeometrySetupDescs[gr_desc_id].proc_update, GObjProcess_Kind_Proc, 4);
         func_8000DF34_EB34(ground_gobj);
     }
     else if (gr_desc_id == 1)

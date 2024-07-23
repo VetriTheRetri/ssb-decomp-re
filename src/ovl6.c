@@ -588,7 +588,7 @@ void scBonusGame_InitBonusGame()
 	mpCollision_InitMapCollisionData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
-	grWallpaper_SetGroundWallpaper();
+	grWallpaperMakeGroundWallpaper();
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();

@@ -275,7 +275,7 @@ void mvOpeningMarioInitFighterStagePanel()
 	s32 pos_ids;
 	Vec3f spawn_position;
 
-	grWallpaper_SetGroundWallpaper();
+	grWallpaperMakeGroundWallpaper();
 	grCommonSetupInitAll();
 
 	if (mpCollision_GetMPointCountKind(mpMPoint_Kind_Unk0x15) != 1)

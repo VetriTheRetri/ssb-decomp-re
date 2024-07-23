@@ -117,7 +117,7 @@ void func_ovl5_8018D1A0()
 	mpCollision_InitMapCollisionData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
-	grWallpaper_SetGroundWallpaper();
+	grWallpaperMakeGroundWallpaper();
 	func_ovl2_8010DB00();
 	grCommonSetupInitAll();
 	ftManagerAllocFighter(3, 1);

@@ -791,6 +791,9 @@ gMPCollUpdateFrame = 0x80131398;
 
 sEFTexturesFile2 = 0x801313B4;
 
+sGRWallpaperIsPausePerspUpdate = 0x801313D0;
+sGRWallpaperGObj = 0x801313D8;
+
 sGRFileNodes = 0x801313E0;
 
 gCMManagerCameraGObj = 0x80131460;

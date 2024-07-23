@@ -2976,7 +2976,7 @@ void ifCommonBattlePauseInitInterface(s32 player)
 {
     ifCommonInterfaceSetGObjFlagsAll(GOBJ_FLAG_NORENDER);
     gmRumbleInitPlayers();
-    func_ovl2_80104CB4();
+    grWallpaperSetPausePerspUpdate();
 
     gIFPlayerCommonInterface.is_ifmagnify_display = FALSE;
     gBattleState->game_status = gmMatch_GameStatus_Pause;
@@ -3157,7 +3157,7 @@ void ifCommonBattlePauseUpdateInterface(void)
     if (sIFCommonBattlePauseKindInterface != ifPause_Kind_PlayerNA)
     {
         cmManagerRunGlobalProcCamera(gCMManagerCameraGObj);
-        func_ovl2_80104CD0();
+        grWallpaperRunGObjProcess();
     }
 }
 
@@ -3172,13 +3172,13 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
         gCMManagerPauseCameraEyeX += (sIFCommonBattlePauseCameraEyeYOrigin - gCMManagerPauseCameraEyeX) * 0.1F;
 
         cmManagerRunGlobalProcCamera(gCMManagerCameraGObj);
-        func_ovl2_80104CD0();
+        grWallpaperRunGObjProcess();
 
         return;
     }
     func_ovl2_80113F50();
     ifCommonInterfaceSetGObjFlagsAll(0);
-    func_ovl2_80104CC4();
+    grWallpaperResetPausePerspUpdate();
 
     gIFPlayerCommonInterface.is_ifmagnify_display = TRUE;
 
@@ -3225,7 +3225,7 @@ void ifCommonBattleBossDefeatUpdateInterface(void)
     else
     {
         cmManagerRunGlobalProcCamera(gCMManagerCameraGObj);
-        func_ovl2_80104CD0();
+        grWallpaperRunGObjProcess();
 
         D_ovl2_8013185A--;
     }

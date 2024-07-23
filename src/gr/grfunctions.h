@@ -2,6 +2,7 @@
 #define _GRFUNCTIONS_H_
 
 // Stage setup files
+#include <gr/grwallpaper.h>
 #include <gr/grgeometrysetup.h>
 #include <gr/grcommonsetup.h>
 #include <gr/grmainsetup.h>

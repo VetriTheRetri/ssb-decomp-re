@@ -922,7 +922,7 @@ GObj* mnStageCreateStageGeo(s32 stage_id, grCommonData* stage_info, grCreateDesc
 	}
 
 	stage_geo_gobj = omMakeGObjSPAfter(0U, NULL, 5U, 0x80000000U);
-	omAddGObjRenderProc(stage_geo_gobj, (stage_info->unk_0x44 & (1 << stage_geo_id)) ? mnStageRenderStagePreviewSecondary : mnStageRenderStagePreviewPrimary, 3U, 0x80000000U, -1);
+	omAddGObjRenderProc(stage_geo_gobj, (stage_info->layer_mask & (1 << stage_geo_id)) ? mnStageRenderStagePreviewSecondary : mnStageRenderStagePreviewPrimary, 3U, 0x80000000U, -1);
 	func_8000F590(stage_geo_gobj, stage_geo->dobj_desc, NULL, 0x1CU, 0, 0);
 
 	if (stage_geo->aobj != NULL)

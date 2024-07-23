@@ -78,7 +78,7 @@ void func_ovl2_800FB554();
 void mpCollision_AllocMapRooms(DObjDesc* gr_room);
 void func_ovl2_800FB808();
 void func_ovl2_800FBA84();
-void jtgt_ovl2_800FBAD0(GObj* ground_gobj);
+void func_ovl2_800FBAD0(GObj* ground_gobj);
 void mpCollision_AdvanceUpdateFrame(GObj* ground_gobj);
 void func_ovl2_800FBD14();
 s32 mpCollision_AllocLinesGetCountTotal();

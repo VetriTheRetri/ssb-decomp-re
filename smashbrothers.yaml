@@ -435,6 +435,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Stage geometry setup
+      - [0x080590, c, gr/grgeometrysetup]
     # Stage common params and file setup
       - [0x080E00, c, gr/grcommonsetup]
     # Stage GObj main setup
@@ -470,6 +472,8 @@ segments:
 
     # ovl2 data
       - [0x0923D0, data, ovl2]
+    # Stage geometry layer setup
+      - [0x0AA000, .data, gr/grgeometrysetup]
     # Stage GObj setup
       - [0x0AA040, .data, gr/grmainsetup]
     # Stage files

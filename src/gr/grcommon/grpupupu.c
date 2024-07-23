@@ -61,8 +61,8 @@ extern intptr_t lGRPupupuParticleBankHeaderHi;                  // 0x00B1E7E0
 extern intptr_t lGRPupupuParticleBankTextureLo;                 // 0x00B1E7E0
 extern intptr_t lGRPupupuParticleBankTextureHi;                 // 0x00B1F960
 
-extern void func_ovl2_80104D90(GObj*);
-extern void func_ovl2_80105290(GObj*);
+extern void grGeometrySetupLayer0ProcRenderPri(GObj*);
+extern void grGeometrySetupLayer3ProcRenderPri(GObj*);
 extern void func_8000DF34_EB34(GObj*);
 extern void func_8000BED8_CAD8(void*, void*, void*, f32);
 extern void func_8000BD8C_C98C(void*, void*, f32);
@@ -740,10 +740,10 @@ void grPupupuInitAll(void)
 
     gGroundStruct.pupupu.map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&lGRPupupuMapHead);
 
-    gGroundStruct.pupupu.map_gobj[0] = grPupupuMakeMapGObj(&lGRPupupuMapHead, &D_NF_00000F00, func_ovl2_80104D90, 4);
-    gGroundStruct.pupupu.map_gobj[1] = grPupupuMakeMapGObj(&lGRPupupuWhispyMouthTransformKinds, &D_NF_000013B0, func_ovl2_80104D90, 4);
-    gGroundStruct.pupupu.map_gobj[2] = grPupupuMakeMapGObj(&lGRPupupuFlowersBackTrasnformKinds, 0x0, func_ovl2_80104D90, 4);
-    gGroundStruct.pupupu.map_gobj[3] = grPupupuMakeMapGObj(&lGRPupupuFlowersFrontTransformKinds, 0x0, func_ovl2_80105290, 16);
+    gGroundStruct.pupupu.map_gobj[0] = grPupupuMakeMapGObj(&lGRPupupuMapHead, &D_NF_00000F00, grGeometrySetupLayer0ProcRenderPri, 4);
+    gGroundStruct.pupupu.map_gobj[1] = grPupupuMakeMapGObj(&lGRPupupuWhispyMouthTransformKinds, &D_NF_000013B0, grGeometrySetupLayer0ProcRenderPri, 4);
+    gGroundStruct.pupupu.map_gobj[2] = grPupupuMakeMapGObj(&lGRPupupuFlowersBackTrasnformKinds, 0x0, grGeometrySetupLayer0ProcRenderPri, 4);
+    gGroundStruct.pupupu.map_gobj[3] = grPupupuMakeMapGObj(&lGRPupupuFlowersFrontTransformKinds, 0x0, grGeometrySetupLayer3ProcRenderPri, 16);
 
     gGroundStruct.pupupu.whispy_eyes_status   =
     gGroundStruct.pupupu.whispy_mouth_status  =

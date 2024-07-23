@@ -19,12 +19,12 @@ struct grCreateDesc
 	void* matanim_joint;
 };
 
-struct grRenderDesc
+struct grGeometryDesc
 {
-	void* unk_grrender_0x0;
-	void* unk_grrender_0x4;
-	u8 unk_grrender_0x8;
-	void* gobjproc;
+	void *proc_renderpri;
+	void *proc_rendersec;
+	u8 dl_link;
+	void *proc_update;
 };
 
 struct grHitbox
@@ -65,7 +65,7 @@ struct grCommonData
 {
 	grCreateDesc gr_desc[4];
 	mpGeometryInfo* map_geometry;
-	u8 unk_0x44; // render mask which determines render type for each geo layer (gr_desc) - 0 = primary, 1 = secondary (more alpha control w/2 display lists)
+	u8 layer_mask; // render mask which determines render type for each geo layer (gr_desc) - 0 = primary, 1 = secondary (more alpha control w/2 display lists)
 	Sprite *wallpaper; 								// Background image?
 	gsColorRGB fog_color;
 	u8 fog_alpha;								 	// Unused padding?

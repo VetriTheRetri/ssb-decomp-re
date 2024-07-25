@@ -41,7 +41,7 @@ void grCastleInitAll(void)
     s32 pos_id;
     DObj *dobj;
 
-    gGroundStruct.castle.map_head = map_head = (void*)((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&lGRCastleMapHead);
+    gGroundStruct.castle.map_head = map_head = (void*)((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRCastleMapHead);
 
     ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
@@ -52,11 +52,11 @@ void grCastleInitAll(void)
 
     omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
 
-    func_8000BD8C_C98C(ground_gobj, gGroundInfo->map_nodes, 0.0F);
+    func_8000BD8C_C98C(ground_gobj, gMPGroundData->map_nodes, 0.0F);
     func_8000DF34_EB34(ground_gobj);
 
-    mpCollision_GetMPointIDsKind(mpMPoint_Kind_Bumper, &pos_id);
-    mpCollision_GetMPointPositionID(pos_id, &yakumono_pos);
+    mpCollisionGetMapObjIDsKind(nMPMapObjKindBumper, &pos_id);
+    mpCollisionGetMapObjPositionID(pos_id, &yakumono_pos);
 
     gGroundStruct.castle.bumper_pos = yakumono_pos;
 

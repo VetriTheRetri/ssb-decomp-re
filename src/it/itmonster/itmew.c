@@ -19,7 +19,7 @@ extern intptr_t lITMewDataStart;            // 0x0000BCC0
 itCreateDesc dITMewItemDesc =
 {
     It_Kind_Mew,                            // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITMewItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct

@@ -28,25 +28,25 @@ extern void func_8000BED8_CAD8(GObj*, void*, void*, f32);
 // // // // // // // // // // // //
 
 // 0x8018D040
-void *gITFileData;
+void *gITManagerFileData;
 
 // 0x8018D044
-s32 gITEffectBankID;
+s32 gITManagerParticleBankID;
 
 // 0x8018D048
-itRandomWeights gITRandomWeights;
+itRandomWeights gITManagerRandomWeights;
 
 // 0x8018D060
-itMonsterInfo gITMonsterData;
+itMonsterInfo gITManagerMonsterData;
 
 // 0x8018D090
-s32 gITDisplayMode;
+s32 gITManagerDisplayMode;
 
 // 0x8018D094 - points to next available item struct
-itStruct *gITAllocFree;
+itStruct *gITManagerStructsAllocFree;
 
 // 0x8018D098
-itSpawnActor gITSpawnActor;
+itSpawnActor gITManagerSpawnActor;
 
 // // // // // // // // // // // //
 //                               //
@@ -55,10 +55,10 @@ itSpawnActor gITSpawnActor;
 // // // // // // // // // // // //
 
 // 0x80189450 - Not uninitialized, so it's hardcoded upon building the ROM? 0 => random, beyond 0 => index of Pokémon to spawn; when in doubt, change to s32
-s32 dITMonsterSpawnID = 0;
+s32 dITManagerMonsterSpawnID = 0;
 
 // 0x80189454
-u16 dITCommonAppearanceRatesMin[/* */] = 
+u16 dITManagerAppearanceRatesMin[/* */] = 
 {
     I_SEC_TO_FRAMES(0), 
     I_SEC_TO_FRAMES(30),
@@ -69,7 +69,7 @@ u16 dITCommonAppearanceRatesMin[/* */] =
 };
 
 // 0x80189460
-u16 dITCommonAppearanceRatesMax[/* */] =
+u16 dITManagerAppearanceRatesMax[/* */] =
 {
     I_SEC_TO_FRAMES(0),
     I_SEC_TO_FRAMES(30) + 90,
@@ -80,7 +80,7 @@ u16 dITCommonAppearanceRatesMax[/* */] =
 };
 
 // 0x8018946C
-GObj* (*dITMakeProcList[/* */])(GObj*, Vec3f*, Vec3f*, u32) = 
+GObj* (*dITManagerMakeProcList[/* */])(GObj*, Vec3f*, Vec3f*, u32) = 
 {
     // Containers
     itBoxMakeItem,          // Box
@@ -150,7 +150,7 @@ void itManagerInitItems(void) // Many linker things here
     itStruct *ip;
     s32 i;
 
-    gITAllocFree = ip = gsMemoryAlloc(sizeof(itStruct) * ITEM_ALLOC_MAX, 0x8);
+    gITManagerStructsAllocFree = ip = gsMemoryAlloc(sizeof(itStruct) * ITEM_ALLOC_MAX, 0x8);
 
     for (i = 0; i < (ITEM_ALLOC_MAX - 1); i++)
     {
@@ -160,21 +160,21 @@ void itManagerInitItems(void) // Many linker things here
     {
         ip[i].alloc_next = NULL;
     }
-    gITFileData = (void*)rdManagerGetFileWithExternHeap(&D_NF_000000FB, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_000000FB), 0x10));
+    gITManagerFileData = (void*)rdManagerGetFileWithExternHeap(&D_NF_000000FB, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_000000FB), 0x10));
 
-    gITEffectBankID = efAllocGetAddParticleBankID(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
+    gITManagerParticleBankID = efAllocGetAddParticleBankID(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
 
     itManagerSetupContainerDrops();
     itManagerInitMonsterVars();
     ifCommonItemArrowSetAttr();
 
-    gITDisplayMode = dbObject_DisplayMode_Master;
+    gITManagerDisplayMode = dbObject_DisplayMode_Master;
 }
 
 // 0x8016DFAC
 itStruct* itManagerGetItemSetNextAlloc(void) // Set global Item user_data link pointer to next member
 {
-    itStruct *new_item = gITAllocFree;
+    itStruct *new_item = gITManagerStructsAllocFree;
     itStruct *get_item;
 
     if (new_item == NULL)
@@ -183,7 +183,7 @@ itStruct* itManagerGetItemSetNextAlloc(void) // Set global Item user_data link p
     }
     get_item = new_item;
 
-    gITAllocFree = new_item->alloc_next;
+    gITManagerStructsAllocFree = new_item->alloc_next;
 
     return get_item;
 }
@@ -191,9 +191,9 @@ itStruct* itManagerGetItemSetNextAlloc(void) // Set global Item user_data link p
 // 0x8016DFDC
 void itManagerSetPrevAlloc(itStruct *ip) // Set global Item user_data link pointer to previous member
 {
-    ip->alloc_next = gITAllocFree;
+    ip->alloc_next = gITManagerStructsAllocFree;
 
-    gITAllocFree = ip;
+    gITManagerStructsAllocFree = ip;
 }
 
 // 0x8016DFF4
@@ -453,7 +453,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
             break;
         }
     }
-    ip->ground_or_air = GA_Air;
+    ip->ground_or_air = nMPKineticsAir;
 
     itProcessUpdateHitPositions(item_gobj);
     itMainClearColAnim(item_gobj);
@@ -464,7 +464,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
 // 0x8016EA78
 GObj* itManagerMakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 spawn_flags)
 {
-    GObj *item_gobj = dITMakeProcList[index](spawn_gobj, pos, vel, spawn_flags);
+    GObj *item_gobj = dITManagerMakeProcList[index](spawn_gobj, pos, vel, spawn_flags);
 
     if (item_gobj != NULL)
     {
@@ -480,15 +480,15 @@ GObj* itManagerMakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3
 // 0x8016EB00
 itStruct* itManagerGetAllocFree(void)
 {
-    return gITAllocFree;
+    return gITManagerStructsAllocFree;
 }
 
 // 0x8016EB0C
 void itManagerSetItemSpawnWait(void)
 {
-    gITSpawnActor.item_spawn_wait = 
-    dITCommonAppearanceRatesMin[gBattleState->item_switch] + 
-    mtTrigGetRandomIntRange(dITCommonAppearanceRatesMax[gBattleState->item_switch] - dITCommonAppearanceRatesMin[gBattleState->item_switch]);
+    gITManagerSpawnActor.item_spawn_wait = 
+    dITManagerAppearanceRatesMin[gBattleState->item_switch] + 
+    mtTrigGetRandomIntRange(dITManagerAppearanceRatesMax[gBattleState->item_switch] - dITManagerAppearanceRatesMin[gBattleState->item_switch]);
 }
 
 // 0x8016EB78
@@ -501,17 +501,17 @@ void itManagerMakeRandomItem(GObj *item_gobj)
 
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
-        if (gITSpawnActor.item_spawn_wait > 0)
+        if (gITManagerSpawnActor.item_spawn_wait > 0)
         {
-            gITSpawnActor.item_spawn_wait--;
+            gITManagerSpawnActor.item_spawn_wait--;
 
             return;
         }
         if (itManagerGetAllocFree() != NULL)
         {
-            index = itMainGetWeightedItemID(&gITSpawnActor.weights);
+            index = itMainGetWeightedItemID(&gITManagerSpawnActor.weights);
 
-            mpCollision_GetMPointPositionID(gITSpawnActor.item_mpoints[mtTrigGetRandomIntRange(gITSpawnActor.item_mpoint_count)], &pos);
+            mpCollisionGetMapObjPositionID(gITManagerSpawnActor.item_mapobjs[mtTrigGetRandomIntRange(gITManagerSpawnActor.item_mapobj_count)], &pos);
 
             vel.x = vel.y = vel.z = 0.0F;
 
@@ -531,7 +531,7 @@ GObj* itManagerMakeItemSpawnActor(void)
     s32 item_count;
     grItemWeights *item_count_qty;
     s32 item_weights;
-    s32 item_mpoint_count;
+    s32 item_mapobj_count;
     s32 item_mpoint_ids[30];
     u32 item_count_toggles;
     s32 j;
@@ -543,9 +543,9 @@ GObj* itManagerMakeItemSpawnActor(void)
     {
         if (gBattleState->item_toggles != 0)
         {
-            if (gGroundInfo->item_weights != NULL)
+            if (gMPGroundData->item_weights != NULL)
             {
-                item_count_qty = gGroundInfo->item_weights;
+                item_count_qty = gMPGroundData->item_weights;
 
                 item_num_toggles = gBattleState->item_toggles;
 
@@ -562,15 +562,15 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     return NULL;
                 }
-                gITSpawnActor.weights.item_num = item_count;
+                gITManagerSpawnActor.weights.item_num = item_count;
 
-                item_mpoint_count = mpCollision_GetMPointCountKind(mpMPoint_Kind_ItemSpawn);
+                item_mapobj_count = mpCollisionGetMapObjCountKind(nMPMapObjKindItemSpawn);
 
-                if (item_mpoint_count == 0)
+                if (item_mapobj_count == 0)
                 {
                     return NULL;
                 }
-                if (item_mpoint_count > ARRAY_COUNT(item_mpoint_ids))
+                if (item_mapobj_count > ARRAY_COUNT(item_mpoint_ids))
                 {
                     while (TRUE)
                     {
@@ -578,14 +578,14 @@ GObj* itManagerMakeItemSpawnActor(void)
                         smRunPrintGObjStatus();
                     }
                 }
-                gITSpawnActor.item_mpoint_count = item_mpoint_count;
-                gITSpawnActor.item_mpoints = (u8*)gsMemoryAlloc(item_mpoint_count * sizeof(*gITSpawnActor.item_mpoints), 0);
+                gITManagerSpawnActor.item_mapobj_count = item_mapobj_count;
+                gITManagerSpawnActor.item_mapobjs = (u8*)gsMemoryAlloc(item_mapobj_count * sizeof(*gITManagerSpawnActor.item_mapobjs), 0);
 
-                mpCollision_GetMPointIDsKind(mpMPoint_Kind_ItemSpawn, item_mpoint_ids);
+                mpCollisionGetMapObjIDsKind(nMPMapObjKindItemSpawn, item_mpoint_ids);
 
-                for (i = 0; i < item_mpoint_count; i++)
+                for (i = 0; i < item_mapobj_count; i++)
                 {
-                    gITSpawnActor.item_mpoints[i] = item_mpoint_ids[i];
+                    gITManagerSpawnActor.item_mapobjs[i] = item_mpoint_ids[i];
                 }
                 gobj = omMakeGObjSPAfter(GObj_Kind_Item, NULL, 2, GOBJ_LINKORDER_DEFAULT);
 
@@ -593,7 +593,7 @@ GObj* itManagerMakeItemSpawnActor(void)
 
                 item_count_toggles = gBattleState->item_toggles;
 
-                item_weight_qty = gGroundInfo->item_weights;
+                item_weight_qty = gMPGroundData->item_weights;
 
                 for (i = 0, j = 0; i <= It_Kind_CommonEnd; i++, item_count_toggles >>= 1)
                 {
@@ -602,9 +602,9 @@ GObj* itManagerMakeItemSpawnActor(void)
                         j++;
                     }
                 }
-                gITSpawnActor.weights.item_count = j;
-                gITSpawnActor.weights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gITSpawnActor.weights.item_ids), 0x0);
-                gITSpawnActor.weights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gITSpawnActor.weights.item_totals), 0x2);
+                gITManagerSpawnActor.weights.item_count = j;
+                gITManagerSpawnActor.weights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gITManagerSpawnActor.weights.item_ids), 0x0);
+                gITManagerSpawnActor.weights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gITManagerSpawnActor.weights.item_totals), 0x2);
 
                 item_id_toggles = gBattleState->item_toggles;
 
@@ -614,8 +614,8 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                     {
-                        gITSpawnActor.weights.item_ids[j] = i;
-                        gITSpawnActor.weights.item_totals[j] = item_weights;
+                        gITManagerSpawnActor.weights.item_ids[j] = i;
+                        gITManagerSpawnActor.weights.item_totals[j] = item_weights;
                         item_weights += item_weight_qty->item_quantities[i];
 
                         j++;
@@ -644,10 +644,10 @@ void itManagerSetupContainerDrops(void)
     grItemWeights *item_weight_qty;
     s32 item_tenth_round;
 
-    if ((gBattleState->item_switch != gmMatch_ItemSwitch_None) && (gBattleState->item_toggles != 0) && (gGroundInfo->item_weights != NULL))
+    if ((gBattleState->item_switch != gmMatch_ItemSwitch_None) && (gBattleState->item_toggles != 0) && (gMPGroundData->item_weights != NULL))
     {
         item_num_toggles = gBattleState->item_toggles >> It_Kind_UtilityStart;
-        item_count_qty = gGroundInfo->item_weights;
+        item_count_qty = gMPGroundData->item_weights;
 
         item_count = 0;
 
@@ -658,12 +658,12 @@ void itManagerSetupContainerDrops(void)
                 item_count += item_count_qty->item_quantities[i];
             }
         }
-        gITRandomWeights.item_num = item_count;
+        gITManagerRandomWeights.item_num = item_count;
 
         if (item_count != 0)
         {
             item_id_toggles = gBattleState->item_toggles >> It_Kind_UtilityStart;
-            item_weight_qty = gGroundInfo->item_weights;
+            item_weight_qty = gMPGroundData->item_weights;
 
             for (j = 0, i = It_Kind_UtilityStart; i <= It_Kind_UtilityEnd; i++, item_id_toggles >>= 1)
             {
@@ -674,9 +674,9 @@ void itManagerSetupContainerDrops(void)
             }
             j++;
 
-            gITRandomWeights.item_count = j;
-            gITRandomWeights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gITRandomWeights.item_ids), 0x0);
-            gITRandomWeights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gITRandomWeights.item_totals), 0x2);
+            gITManagerRandomWeights.item_count = j;
+            gITManagerRandomWeights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gITManagerRandomWeights.item_ids), 0x0);
+            gITManagerRandomWeights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gITManagerRandomWeights.item_totals), 0x2);
 
             item_id_toggles = gBattleState->item_toggles >> It_Kind_UtilityStart;
 
@@ -686,16 +686,16 @@ void itManagerSetupContainerDrops(void)
             {
                 if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                 {
-                    gITRandomWeights.item_ids[j] = i;
-                    gITRandomWeights.item_totals[j] = item_weights;
+                    gITManagerRandomWeights.item_ids[j] = i;
+                    gITManagerRandomWeights.item_totals[j] = item_weights;
                     item_weights += item_weight_qty->item_quantities[i];
                     j++;
                 }
             }
-            gITRandomWeights.item_ids[j] = It_Kind_MbMonsterStart;
-            gITRandomWeights.item_totals[j] = item_weights;
+            gITManagerRandomWeights.item_ids[j] = It_Kind_MbMonsterStart;
+            gITManagerRandomWeights.item_totals[j] = item_weights;
 
-            item_tenth_round = (gITRandomWeights.item_num * 0.1F);
+            item_tenth_round = (gITManagerRandomWeights.item_num * 0.1F);
 
             if (item_tenth_round != 0)
             {
@@ -703,21 +703,21 @@ void itManagerSetupContainerDrops(void)
             }
             else item_tenth_floor = 1;
 
-            gITRandomWeights.item_num += item_tenth_floor;
+            gITManagerRandomWeights.item_num += item_tenth_floor;
         }
     }
-    else gITRandomWeights.item_num = 0;
+    else gITManagerRandomWeights.item_num = 0;
 }
 
 // 0x8016F218
 void itManagerInitMonsterVars(void)
 {
-    gITMonsterData.monster_curr = gITMonsterData.monster_prev = U8_MAX;
-    gITMonsterData.monster_count = (It_Kind_MbMonsterEnd - It_Kind_MbMonsterStart);
+    gITManagerMonsterData.monster_curr = gITManagerMonsterData.monster_prev = U8_MAX;
+    gITManagerMonsterData.monster_count = (It_Kind_MbMonsterEnd - It_Kind_MbMonsterStart);
 }
 
 // 0x8016F238
 GObj* itManagerMakeItemID(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    return dITMakeProcList[index](spawn_gobj, pos, vel, flags);
+    return dITManagerMakeProcList[index](spawn_gobj, pos, vel, flags);
 }

@@ -20,7 +20,7 @@ extern intptr_t lITGShellMatAnimJoint;      // 0x00006048
 itCreateDesc dITGShellItemDesc =
 {
     It_Kind_GShell,                         // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITGShellItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -309,7 +309,7 @@ sb32 itGShellSDefaultProcDamage(GObj *item_gobj)
 
         itMainCopyDamageStats(item_gobj);
 
-        if (ip->ground_or_air != GA_Ground)
+        if (ip->ground_or_air != nMPKineticsGround)
         {
             itGShellASpinSetStatus(item_gobj);
         }
@@ -319,7 +319,7 @@ sb32 itGShellSDefaultProcDamage(GObj *item_gobj)
     {
         ip->phys_info.vel_air.x = 0.0F;
 
-        if (ip->ground_or_air != GA_Ground)
+        if (ip->ground_or_air != nMPKineticsGround)
         {
             itGShellAFallSetStatus(item_gobj);
         }
@@ -459,7 +459,7 @@ sb32 itGShellGASpinProcDamage(GObj *item_gobj)
     {
         ip->phys_info.vel_air.x = 0.0F;
 
-        if (ip->ground_or_air != GA_Ground)
+        if (ip->ground_or_air != nMPKineticsGround)
         {
             itGShellAFallSetStatus(item_gobj);
         }

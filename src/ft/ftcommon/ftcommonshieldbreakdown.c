@@ -26,7 +26,7 @@ void ftCommonShieldBreakDownSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    if (fp->ground_or_air == GA_Air)
+    if (fp->ground_or_air == nMPKineticsAir)
     {
         ftMap_SetGround(fp);
     }

@@ -67,11 +67,11 @@ void ftBossGootsubusuWaitSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.boss.gootsubu.wait_timer = mtTrigGetRandomIntRange(60) + 60;
 
-    mpCollision_GetLREdgeLeft(fp->coll_data.ground_line_id, &pos);
+    mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &pos);
 
     fp->status_vars.boss.gootsubu.edgeleft_pos_x = pos.x;
 
-    mpCollision_GetLREdgeRight(fp->coll_data.ground_line_id, &pos);
+    mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &pos);
 
     fp->status_vars.boss.gootsubu.edgeright_pos_x = pos.x;
 }

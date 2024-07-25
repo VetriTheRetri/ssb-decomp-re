@@ -1550,7 +1550,7 @@ efCreateDesc dEFManagerMBallThrownEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     20,                                     // DL Link
-    &gITFileData,                           // Texture file
+    &gITManagerFileData,                           // Texture file
 
     // DObj transformation struct 1
     {
@@ -1856,7 +1856,7 @@ efCreateDesc dEFCaptureKirbyStarEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
-    &gITFileData,                           // Texture file
+    &gITManagerFileData,                           // Texture file
 
     // DObj transformation struct 1
     {
@@ -1886,7 +1886,7 @@ efCreateDesc dEFManagerLoseKirbyStarEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
-    &gITFileData,                           // Texture file
+    &gITManagerFileData,                           // Texture file
 
     // DObj transformation struct 1
     {
@@ -5492,7 +5492,7 @@ GObj* efManagerMBallThrownMakeEffect(Vec3f *pos, s32 lr) // Many linker things h
 
     dEFManagerMBallThrownEffectDesc.file_head = &file;
 
-    p_file = (void**)((uintptr_t)gITFileData + (intptr_t)&lEFManagerMBallThrownFileHead);
+    p_file = (void**)((uintptr_t)gITManagerFileData + (intptr_t)&lEFManagerMBallThrownFileHead);
 
     file = ((uintptr_t)*p_file - (intptr_t)&lEFManagerMBallThrownDObjSetup);
 
@@ -6128,7 +6128,7 @@ GObj* efManagerCaptureKirbyStarMakeEffect(GObj *fighter_gobj)
 
     dEFCaptureKirbyStarEffectDesc.file_head = &addr;
 
-    p_addr = (void**) ((uintptr_t)gITFileData + (intptr_t)&D_NF_000004D4);
+    p_addr = (void**) ((uintptr_t)gITManagerFileData + (intptr_t)&D_NF_000004D4);
 
     addr = ((uintptr_t)*p_addr - (intptr_t)&lEFManagerKirbyStarDObjSetup);
 
@@ -6182,10 +6182,10 @@ void efManagerLoseKirbyStarProcUpdate(GObj *effect_gobj)
     }
     else if
     (
-        (gGroundInfo->blastzone_bottom > translate->y) ||
-        (gGroundInfo->blastzone_right  < translate->x) ||
-        (gGroundInfo->blastzone_left   > translate->x) ||
-        (gGroundInfo->blastzone_top    < translate->y)
+        (gMPGroundData->blastzone_bottom > translate->y) ||
+        (gMPGroundData->blastzone_right  < translate->x) ||
+        (gMPGroundData->blastzone_left   > translate->x) ||
+        (gMPGroundData->blastzone_top    < translate->y)
     )
     {
         efManagerSetPrevAlloc(ep);
@@ -6204,7 +6204,7 @@ GObj* efManagerLoseKirbyStarMakeEffect(GObj *fighter_gobj)
 
     dEFManagerLoseKirbyStarEffectDesc.file_head = &aobj;
 
-    p_aobj = (void**)((uintptr_t)gITFileData + (intptr_t)&D_NF_000004D4);
+    p_aobj = (void**)((uintptr_t)gITManagerFileData + (intptr_t)&D_NF_000004D4);
 
     aobj = ((uintptr_t)*p_aobj - (intptr_t)&lEFManagerKirbyStarDObjSetup);
 

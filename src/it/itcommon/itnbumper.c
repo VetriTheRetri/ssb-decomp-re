@@ -22,7 +22,7 @@ extern intptr_t lITNBumperGWaitDisplayList; // 0x00007AF8
 itCreateDesc dITNBumperItemDesc =
 {
     It_Kind_NBumper,                        // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITNBumperItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -429,11 +429,11 @@ sb32 itNBumperGWaitHitProcUpdate(GObj *item_gobj)
     }
     else ip->item_vars.bumper.hit_anim_length--;
 
-    if (mpCollision_CheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
+    if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
         if (ip->lr == LR_Left)
         {
-            mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &edge_pos);
+            mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &edge_pos);
 
             if (edge_pos.x >= (dobj->translate.vec.f.x - attributes->objectcoll_width))
             {
@@ -442,7 +442,7 @@ sb32 itNBumperGWaitHitProcUpdate(GObj *item_gobj)
         }
         else
         {
-            mpCollision_GetLREdgeRight(ip->coll_data.ground_line_id, &edge_pos);
+            mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &edge_pos);
 
             if (edge_pos.x <= (dobj->translate.vec.f.x + attributes->objectcoll_width))
             {
@@ -479,7 +479,7 @@ sb32 itNBumperGWaitHitProcMap(GObj *item_gobj)
 
     if (itMapCheckLRWallProcGround(item_gobj, itNBumperFDropSetStatus) != FALSE)
     {
-        if (mpCollision_CheckExistLineID(ip->attach_line_id) == FALSE)
+        if (mpCollisionCheckExistLineID(ip->attach_line_id) == FALSE)
         {
             ip->is_attach_surface = FALSE;
 

@@ -28,7 +28,7 @@ extern intptr_t lITSpearMatAnimJoint;       // 0x0000E12C
 itCreateDesc dITSpearItemDesc =
 {
     It_Kind_Spear,                          // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITSpearItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -82,7 +82,7 @@ wpCreateDesc dITSpearWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_SpearSwarm,                     // Weapon Kind
-    &gITFileData,                           // Pointer to character's loaded files?
+    &gITManagerFileData,                           // Pointer to character's loaded files?
     &lITSpearWeaponSwarmWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
@@ -107,7 +107,7 @@ wpCreateDesc dITPippiWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_SpearSwarm,                     // Weapon Kind
-    &gITFileData,                           // Pointer to character's loaded files?
+    &gITManagerFileData,                           // Pointer to character's loaded files?
     0xCBC,                                  // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
@@ -228,7 +228,7 @@ sb32 itSpearNFlyProcUpdate(GObj *item_gobj)
 
     if (ip->lr == LR_Right)
     {
-        if (dobj->translate.vec.f.x >= (gGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X))
+        if (dobj->translate.vec.f.x >= (gMPGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X))
         {
             ip->phys_info.vel_air.x = 0.0F;
             ip->phys_info.vel_air.y = 0.0F;
@@ -244,7 +244,7 @@ sb32 itSpearNFlyProcUpdate(GObj *item_gobj)
     }
     if (ip->lr == LR_Left)
     {
-        if (dobj->translate.vec.f.x <= (gGroundInfo->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X))
+        if (dobj->translate.vec.f.x <= (gMPGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X))
         {
             ip->phys_info.vel_air.x = 0.0F;
             ip->phys_info.vel_air.y = 0.0F;
@@ -359,11 +359,11 @@ sb32 itSpearWeaponSwarmProcUpdate(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj);
 
-    if ((wp->lr == LR_Right) && (dobj->translate.vec.f.x >= (gGroundInfo->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X)))
+    if ((wp->lr == LR_Right) && (dobj->translate.vec.f.x >= (gMPGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }
-    else if ((wp->lr == LR_Left) && (dobj->translate.vec.f.x <= (gGroundInfo->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
+    else if ((wp->lr == LR_Left) && (dobj->translate.vec.f.x <= (gMPGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }

@@ -122,7 +122,7 @@ void grJungleMakeTaruCann(void)
     void *map_head;
     GObj *tarucann_gobj;
 
-    map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&lGRJungleMapHead);
+    map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRJungleMapHead);
     gGroundStruct.jungle.map_head = map_head;
 
     gGroundStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);

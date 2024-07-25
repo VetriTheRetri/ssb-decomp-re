@@ -21,7 +21,7 @@ extern intptr_t lITMBallMatAnimJoint;       // 0x00009520
 itCreateDesc dITMBallItemDesc =
 {
     It_Kind_MBall,                          // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITMBallITemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -326,13 +326,13 @@ sb32 itMBallGOpenProcUpdate(GObj *m_ball_gobj)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
-        if (dITMonsterSpawnID == 0)
+        if (dITManagerMonsterSpawnID == 0)
         {
             itMainMakeMonster(m_ball_gobj);
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemID(m_ball_gobj, dITMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemID(m_ball_gobj, dITManagerMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {
@@ -361,7 +361,7 @@ sb32 itMBallGOpenProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (mpCollision_CheckExistLineID(ip->attach_line_id) == FALSE)
+    if (mpCollisionCheckExistLineID(ip->attach_line_id) == FALSE)
     {
         ip->is_attach_surface = FALSE;
 
@@ -434,13 +434,13 @@ sb32 itMBallAOpenProcUpdate(GObj *m_ball_gobj)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
-        if (dITMonsterSpawnID == 0)
+        if (dITManagerMonsterSpawnID == 0)
         {
             itMainMakeMonster(m_ball_gobj);
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemID(m_ball_gobj, dITMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemID(m_ball_gobj, dITManagerMonsterSpawnID + (It_Kind_MbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {

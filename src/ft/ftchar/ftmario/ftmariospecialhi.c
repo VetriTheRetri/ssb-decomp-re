@@ -70,7 +70,7 @@ void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj)
 
     if (fp->status_vars.mario.specialhi.is_air_bool == FALSE)
     {
-        if (fp->ground_or_air == GA_Air)
+        if (fp->ground_or_air == nMPKineticsAir)
         {
             ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
         }
@@ -112,7 +112,7 @@ void ftMarioSpecialHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Air)
+    if (fp->ground_or_air == nMPKineticsAir)
     {
         if ((fp->command_vars.flags.flag1 == FALSE) || ((fp->phys_info.vel_air.y >= 0.0F)))
         {

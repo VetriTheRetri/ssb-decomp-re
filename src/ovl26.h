@@ -380,7 +380,7 @@ extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET; // file 0x015 image offset for
 extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_1; // AObj? for white circle
 extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2; // DObjDesc for white circle
 
-void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32);	  /* extern */
+void ftRenderLightsDrawReflect(Gfx**, f32, f32);	  /* extern */
 extern f32 func_ovl1_8039051C();							  /* extern */
 extern f32 func_ovl1_80390528();							  /* extern */
 extern void func_ovl0_800CCF00(GObj*);						  /* extern */

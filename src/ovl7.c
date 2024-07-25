@@ -436,12 +436,12 @@ void scTrainingMode_LoadSprites()
 // 8018DDB0
 void scTrainingMode_SetBackgroundSprite()
 {
-	gGroundInfo->wallpaper
+	gMPGroundData->wallpaper
 		= (void*)(rldm_get_file_external_force_heap(
 					  scTrainingMode_Files_BackgroundImageInfo
 						  [scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 							  .file_id,
-					  (void*)((uintptr_t)gGroundInfo->wallpaper - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind]))
+					  (void*)((uintptr_t)gMPGroundData->wallpaper - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind]))
 				  + scTrainingMode_Files_BackgroundImageInfo
 						[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 							.addr);
@@ -450,7 +450,7 @@ void scTrainingMode_SetBackgroundSprite()
 // 8018DE60
 void scTrainingMode_InitMiscVars()
 {
-	gGroundInfo->fog_color
+	gMPGroundData->fog_color
 		= scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 			  .fog_color;
 	ifCommonPlayerMagnifyMakeInterface();
@@ -1342,7 +1342,7 @@ void scTrainingMode_InitTrainingMode()
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
-	mpCollision_InitMapCollisionData();
+	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
 	grWallpaperMakeGroundWallpaper();
@@ -1365,7 +1365,7 @@ void scTrainingMode_InitTrainingMode()
 
 		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
 		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
-		mpCollision_GetPlayerMPointPosition(player, &player_spawn.pos);
+		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
 		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? LR_Left : LR_Right;
 		player_spawn.team = gBattleState->player_block[player].team_index;
 		player_spawn.player = player;
@@ -1414,7 +1414,7 @@ void scTrainingMode_InitTrainingMode()
 void scTrainingMode_SetGeometryRenderLights(Gfx** display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRender_Lights_DisplayLightReflect(display_list, gMPLightAngleX, gMPLightAngleY);
+	ftRenderLightsDrawReflect(display_list, gMPLightAngleX, gMPLightAngleY);
 }
 
 // 801905F4

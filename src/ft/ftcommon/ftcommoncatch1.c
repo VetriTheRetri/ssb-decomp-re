@@ -50,7 +50,7 @@ void ftCommonCatchCaptureSetStatusRelease(GObj *fighter_gobj)
 
         ftCommonThrownReleaseFighterLoseGrip(catch_gobj);
 
-        if (catch_fp->ground_or_air == GA_Ground)
+        if (catch_fp->ground_or_air == nMPKineticsGround)
         {
             ftCommonWaitSetStatus(catch_gobj);
         }

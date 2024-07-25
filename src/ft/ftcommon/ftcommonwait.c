@@ -23,7 +23,7 @@ void ftCommonWaitSetStatus(GObj *fighter_gobj)
     }
     else
     {
-        if (fp->ground_or_air == GA_Air)
+        if (fp->ground_or_air == nMPKineticsAir)
         {
             ftMap_SetGround(fp);
         }

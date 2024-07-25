@@ -5,7 +5,7 @@
 #include <macros.h>
 #include <sys/obj.h>
 #include <ef/effect.h>
-#include <mp/mpcoll.h>
+#include <mp/map.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
 #include <cm/camera.h>
@@ -129,8 +129,8 @@ struct itRandomWeights          // Random item drop struct?
 
 struct itSpawnActor
 {
-    u8 item_mpoint_count;       // Maximum number of item spawn points
-    u8 *item_mpoints;           // Pointer to array of item map object IDs
+    u8 item_mapobj_count;       // Maximum number of item spawn points
+    u8 *item_mapobjs;           // Pointer to array of item map object IDs
     u32 item_spawn_wait;        // Spawn a random new item when this reaches 0
     itRandomWeights weights;    // Randomizer struct
 };
@@ -291,7 +291,7 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 	} phys_info;
 
 	mpCollData coll_data;	   // Item's collision data
-	mpGroundAir ground_or_air; // Ground or air bool
+	mpKinetics ground_or_air; // Ground or air bool
 
 	itHitbox item_hit;	 // Item's hitbox
 	itHurtbox item_hurt; // Item's hurtbox

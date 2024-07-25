@@ -457,7 +457,7 @@ typedef struct ftCommon_SquatStatusVars
 typedef struct ftCommon_DokanStatusVars
 {
 	s32 material;	 // Vertex material of pipe player entered
-	s32 mpoint_kind; // Map Point type of pipe player will be sent to
+	s32 mapobj_kind; // Map Point type of pipe player will be sent to
 	Vec3f pos_current;
 	Vec3f pos_target;
 	s32 pos_adjust_wait;

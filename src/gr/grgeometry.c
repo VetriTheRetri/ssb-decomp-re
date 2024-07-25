@@ -231,7 +231,7 @@ GObj* grGeometryMakeGeometryLayer(grCreateDesc *gr_desc, s32 gr_desc_id, DObj **
     }
     ground_gobj = omMakeGObjSPAfter(GObj_Kind_GrRender, NULL, GObj_LinkID_GroundRender, GOBJ_LINKORDER_DEFAULT);
 
-    if (gGroundInfo->layer_mask & (1 << gr_desc_id))
+    if (gMPGroundData->layer_mask & (1 << gr_desc_id))
     {
         proc_render = dGRGeometryDescs[gr_desc_id].proc_rendersec;
     }
@@ -252,7 +252,7 @@ GObj* grGeometryMakeGeometryLayer(grCreateDesc *gr_desc, s32 gr_desc_id, DObj **
     }
     else if (gr_desc_id == 1)
     {
-        omAddGObjCommonProc(ground_gobj, mpCollision_AdvanceUpdateFrame, GObjProcess_Kind_Proc, 4);
+        omAddGObjCommonProc(ground_gobj, mpCollisionAdvanceUpdateFrame, GObjProcess_Kind_Proc, 4);
     }
     grGeometryDObjSetNoAnimMtx(ground_gobj, gr_desc->dobj_desc);
 

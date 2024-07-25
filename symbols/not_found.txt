@@ -676,11 +676,8 @@ gDefaultBattleState = 0x800A3fc8;
 gGMCommonFiles = 0x80130D40;
 gBattleState = 0x800A50E8;
 gSceneData = 0x800A4AD0;
-gMPMusicIDDefault = 0x801313a0;
 gIFPlayerCommonInterface = 0x80131580;
-gMPMusicIDCurrent = 0x8013139C;
-
-gGroundInfo = 0x80131300;
+gMPGroundData = 0x80131300;
 
 menu_zoom = 0x80390D90;
 gcAppendSObjWithSprite = 0x800ccfdc;
@@ -806,12 +803,24 @@ gFTDataNessParticleBankID = 0x80131148;
 
 gFTDataBossBattleMotion = 0x80131174;
 
-gMPRooms = 0x80131304;
+gMPYakumonoDObjs = 0x80131304;
 gMPEdgeBounds = 0x80131308;
 gMPLineTypeGroups = 0x80131348;
+gMPGeometry = 0x80131368;
+gMPVertexInfo = 0x8013136C;
+gMPVertexData = 0x80131370;
+gMPVertexID = 0x80131374;
+gMPVertexLinks = 0x80131378;
+gMPDynamicCollisions = 0x8013137C;
+gMPMapObjs = 0x80131380;
+gMPLineCount = 0x80131384;
+gMPLightColor = 0x80131388;
+gMPYakumonoCount = 0x8013138C;
 gMPLightAngleX = 0x80131390;
 gMPLightAngleY = 0x80131394;
 gMPCollUpdateFrame = 0x80131398;
+gMPMusicIDCurrent = 0x8013139C;
+gMPMusicIDDefault = 0x801313A0;
 
 sEFManagerTexturesFile1 = 0x801313B0;
 sEFManagerTexturesFile2 = 0x801313B4;

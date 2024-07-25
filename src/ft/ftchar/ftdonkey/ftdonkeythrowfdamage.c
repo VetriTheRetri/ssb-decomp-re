@@ -17,7 +17,7 @@ void ftDonkeyThrowFDamageProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.common.throwfdamage.hitstun_timer <= 0.0F)
     {
-        if (fp->ground_or_air == GA_Air)
+        if (fp->ground_or_air == nMPKineticsAir)
         {
             fp->publicity_knockback = fp->status_vars.common.throwfdamage.publicity_knockback;
 

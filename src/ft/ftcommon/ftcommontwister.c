@@ -88,7 +88,7 @@ void ftCommonTwisterSetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
     {
         ftCommonThrownDecideFighterLoseGrip(fp->capture_gobj, fighter_gobj);
     }
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftMap_SetAir(fp);
     }
@@ -107,7 +107,7 @@ void ftCommonTwisterSetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
 void ftCommonTwisterShootFighter(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftThrowHitDesc *tornado = (ftThrowHitDesc*) (((uintptr_t)gGroundInfo - (intptr_t)&lGRHyruleDataStart) + (intptr_t)&lGRHyruleTwisterThrowHitDesc); // Linker thing
+    ftThrowHitDesc *tornado = (ftThrowHitDesc*) (((uintptr_t)gMPGroundData - (intptr_t)&lGRHyruleDataStart) + (intptr_t)&lGRHyruleTwisterThrowHitDesc); // Linker thing
     f32 knockback;
     s32 damage;
 

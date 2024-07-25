@@ -21,9 +21,9 @@ void ftCommonCliffCommonProcPhysics(GObj *fighter_gobj)
 
     if (fp->lr == LR_Right)
     {
-        mpCollision_GetLREdgeLeft(fp->coll_data.cliff_id, &vel);
+        mpCollisionGetLREdgeLeft(fp->coll_data.cliff_id, &vel);
     }
-    else mpCollision_GetLREdgeRight(fp->coll_data.cliff_id, &vel);
+    else mpCollisionGetLREdgeRight(fp->coll_data.cliff_id, &vel);
 
     topn_joint->translate.vec.f.x = ((transn_joint->translate.vec.f.z * fp->lr * topn_joint->scale.vec.f.x) + vel.x);
     topn_joint->translate.vec.f.y = ((transn_joint->translate.vec.f.y * topn_joint->scale.vec.f.y) + vel.y);
@@ -55,9 +55,9 @@ void ftCommonCliffCatchSetStatus(GObj *fighter_gobj)
 
     if (fp->lr == LR_Right)
     {
-        mpCollision_GetLREdgeLeft(fp->coll_data.cliff_id, &vel);
+        mpCollisionGetLREdgeLeft(fp->coll_data.cliff_id, &vel);
     }
-    else mpCollision_GetLREdgeRight(fp->coll_data.cliff_id, &vel);
+    else mpCollisionGetLREdgeRight(fp->coll_data.cliff_id, &vel);
 
     efManagerFlashMiddleMakeEffect(&vel);
 
@@ -75,9 +75,9 @@ void ftCommonCliffCommonProcDamage(GObj *fighter_gobj)
 
     if (fp->lr == LR_Right)
     {
-        mpCollision_GetLREdgeLeft(fp->coll_data.cliff_id, &vel);
+        mpCollisionGetLREdgeLeft(fp->coll_data.cliff_id, &vel);
     }
-    else mpCollision_GetLREdgeRight(fp->coll_data.cliff_id, &vel);
+    else mpCollisionGetLREdgeRight(fp->coll_data.cliff_id, &vel);
 
     vel.x -= ((object_coll->width + 30.0F) * fp->lr);
     vel.y -= object_coll->center;

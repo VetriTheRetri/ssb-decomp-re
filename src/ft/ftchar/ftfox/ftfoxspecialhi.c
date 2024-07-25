@@ -76,7 +76,7 @@ void ftFoxSpecialHiHoldProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.fox.specialhi.launch_delay == 0)
     {
-        if (fp->ground_or_air == GA_Air)
+        if (fp->ground_or_air == nMPKineticsAir)
         {
             ftFoxSpecialAirHiSetStatusFromGround(fighter_gobj);
         }
@@ -154,7 +154,7 @@ void ftFoxSpecialHiProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.fox.specialhi.anim_frames == 0)
     {
-        if (fp->ground_or_air == GA_Air)
+        if (fp->ground_or_air == nMPKineticsAir)
         {
             ftFoxSpecialAirHiEndSetStatus(fighter_gobj);
         }
@@ -413,7 +413,7 @@ void ftFoxSpecialHiEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Air)
+    if (fp->ground_or_air == nMPKineticsAir)
     {
         ftMap_SetGround(fp);
     }
@@ -431,14 +431,14 @@ void ftFoxSpecialAirHiBoundProcUpdate(GObj* fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->command_vars.flags.flag1 != 0) && (fp->ground_or_air == GA_Air))
+    if ((fp->command_vars.flags.flag1 != 0) && (fp->ground_or_air == nMPKineticsAir))
     {
         ftCommonFallSpecialSetStatus(fighter_gobj, FTFOX_FIREFOX_AIR_DRIFT, FALSE, TRUE, FALSE, FTFOX_FIREFOX_LANDING_LAG, TRUE);
     }
 
     else if (fighter_gobj->anim_frame <= 0.0F)
     {
-        if (fp->ground_or_air == GA_Air)
+        if (fp->ground_or_air == nMPKineticsAir)
         {
             ftCommonFallSpecialSetStatus(fighter_gobj, FTFOX_FIREFOX_AIR_DRIFT, FALSE, TRUE, FALSE, FTFOX_FIREFOX_LANDING_LAG, TRUE);
         }
@@ -452,7 +452,7 @@ void ftFoxSpecialAirHiBoundProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    if (fp->ground_or_air == GA_Air)
+    if (fp->ground_or_air == nMPKineticsAir)
     {
         ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
 
@@ -469,7 +469,7 @@ void ftFoxSpecialAirHiBoundProcMap(GObj *fighter_gobj)
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Air)
+    if (fp->ground_or_air == nMPKineticsAir)
     {
         if (mpObjectProc_ProcFighterCliff(fighter_gobj) != FALSE)
         {

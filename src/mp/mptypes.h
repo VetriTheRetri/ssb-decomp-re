@@ -1,11 +1,10 @@
 #ifndef _MPTYPES_H_
 #define _MPTYPES_H_
 
-#include <PR/ultratypes.h>
 #include <ssb_types.h>
 #include <macros.h>
-
-#include "mpdef.h"
+#include <sys/obj.h>
+#include <mp/mpdef.h>
 
 #define MPCOLL_KIND_LWALL (1 << 0)		// 0x1
 #define MPCOLL_KIND_RWALL (1 << 5)		// 0x20
@@ -50,7 +49,7 @@
 
 struct mpVertexInfo
 {
-	u8 room_id;
+	u8 yakumono_id;
 	u8 line_type;
 	s16 coll_pos_next;
 	s16 coll_pos_prev;
@@ -92,19 +91,19 @@ struct mpLineData
 
 struct mpLineInfo
 {
-	u16 room_id; // Group that this line
+	u16 yakumono_id; // Group that this line
 	mpLineData line_data[4];
 };
 
 struct mpGeometryInfo // 0x80131368
 {
-	u16 room_count;
+	u16 yakumono_count;
 	void* vertex_data;
 	void* vertex_id;
 	void* vertex_links;
 	mpLineInfo* line_info;
-	u16 mpoint_count;
-	void* mpoints;
+	u16 mapobj_count;
+	void* mapobjs;
 };
 
 struct mpVertexInfoContainer
@@ -117,20 +116,20 @@ struct mpVertexLinksContainer
 	mpVertexLinks vertex_links[1];
 };
 
-struct mpRoomDObj
+struct mpYakumonoDObj
 {
-	DObj* room_dobj[1];
+	DObj *yakumono_dobj[1];
 };
 
-struct mpMPointData
+struct mpMapObjData
 {
-	u16 mpoint_kind;
+	u16 mapobj_kind;
 	Vec2h pos;
 };
 
-struct mpMPointContainer
+struct mpMapObjContainer
 {
-	mpMPointData mpoints[1];
+	mpMapObjData mapobjs[1];
 };
 
 struct mpLineGroup // This is all getting hard to wrap one's head around, but
@@ -160,46 +159,46 @@ struct mpObjectColl
 
 struct mpCollData
 {
-	Vec3f* p_translate;			 // Points to object's TopN translation vector
-	s32* p_lr;					 // Points to object's facing direction sign
-	Vec3f pos_curr;				 // Main object collision position
-	Vec3f pos_correct;			 // Unconfirmed
-	Vec3f pos_speed;			 // Applied from moving collisions
-	Vec3f vel_push;				 // Applied from extern stage objects such as Whispy's Wind
-	mpObjectColl object_coll;	 // Environmental collision box
-	mpObjectColl* p_object_coll; // Points back to environmental collision box???
-	Vec2f cliffcatch_coll;		 // Ledge grab collision box
-	u16 coll_mask_prev;			 // Previous collision flags?
-	u16 coll_mask_curr;			 // Current collision flags
-	u16 coll_mask_unk;			 // ???
-	u16 coll_mask_stat;			 // Used exclusively by object to transition between
-								 // action states? Also, persists unlike the above three.
-	u16 coll_update_frame;		 // Updates each frame?
-	s32 ewall_line_id;			 // Line ID of wall that is right under the ledge the
-								 // object is standing on?
-	sb32 is_coll_end;			 // Collision task completion bool? Main collision loop's
-								 // second condition is that this is FALSE
-	Vec3f line_collision_dist;	 // Distance to nearest collision?
+	Vec3f* p_translate;			 	// Points to object's TopN translation vector
+	s32* p_lr;					 	// Points to object's facing direction sign
+	Vec3f pos_curr;				 	// Main object collision position
+	Vec3f pos_correct;			 	// Unconfirmed
+	Vec3f pos_speed;			 	// Applied from moving collisions
+	Vec3f vel_push;				 	// Applied from extern stage objects such as Whispy's Wind
+	mpObjectColl object_coll;	 	// Environmental collision box
+	mpObjectColl *p_object_coll; 	// Points back to environmental collision box???
+	Vec2f cliffcatch_coll;		 	// Ledge grab collision box
+	u16 coll_mask_prev;			 	// Previous collision flags?
+	u16 coll_mask_curr;			 	// Current collision flags
+	u16 coll_mask_unk;			 	// ???
+	u16 coll_mask_stat;			 	// Used exclusively by object to transition between
+								 	// action states? Also, persists unlike the above three.
+	u16 coll_update_frame;		 	// Updates each frame?
+	s32 ewall_line_id;			 	// Line ID of wall that is right under the ledge the
+								 	// object is standing on?
+	sb32 is_coll_end;			 	// Collision task completion bool? Main collision loop's
+								 	// second condition is that this is FALSE
+	Vec3f line_coll_dist;	 		// Distance to nearest collision?
 
-	s32 ground_line_id; // Ground collision line ID
-	f32 ground_dist;	// Distance to ground collision directly under object
-	u32 ground_flags;	// Ground collision attributes
-	Vec3f ground_angle; // Ground collision angle
+	s32 ground_line_id; 			// Ground collision line ID
+	f32 ground_dist;				// Distance to ground collision directly under object
+	u32 ground_flags;				// Ground collision attributes
+	Vec3f ground_angle; 			// Ground collision angle
 
-	s32 ceil_line_id; // Ceiling collision line ID
-	u32 ceil_flags;	  // Ceiling collision attributes
-	Vec3f ceil_angle; // Ceiling collision angle
+	s32 ceil_line_id; 				// Ceiling collision line ID
+	u32 ceil_flags;	  				// Ceiling collision attributes
+	Vec3f ceil_angle; 				// Ceiling collision angle
 
-	s32 lwall_line_id; // Left Wall collision line ID
-	u32 lwall_flags;   // Left Wall collision attributes
-	Vec3f lwall_angle; // Left Wall collision angle
+	s32 lwall_line_id; 				// Left Wall collision line ID
+	u32 lwall_flags;   				// Left Wall collision attributes
+	Vec3f lwall_angle; 				// Left Wall collision angle
 
-	s32 rwall_line_id; // Right Wall collision line ID
-	u32 rwall_flags;   // Right Wall collision attributes
-	Vec3f rwall_angle; // Right Wall collision angle
+	s32 rwall_line_id; 				// Right Wall collision line ID
+	u32 rwall_flags;   				// Right Wall collision attributes
+	Vec3f rwall_angle; 				// Right Wall collision angle
 
-	s32 cliff_id;		// Ledge ID
-	s32 ignore_line_id; // Ignore this line when checking for collision
+	s32 cliff_id;					// Ledge ID
+	s32 ignore_line_id; 			// Ignore this line when checking for collision
 };
 
 #endif

@@ -6,7 +6,7 @@
 #include <gr/ground.h>
 #include <gm/gmsound.h>
 #include <sys/objtypes.h>
-#include <mp/mpcollision.h>
+#include <mp/map.h>
 #include <it/ittypes.h>
 #include <ovl0/reloc_data_mgr.h>
 
@@ -100,9 +100,9 @@ void scBonusGame_InitBonus1Targets()
 
 	sp48.x = sp48.y = sp48.z = 0.0F;
 
-	dobj_desc = (DObjDesc*)((uintptr_t)((uintptr_t)gGroundInfo->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
+	dobj_desc = (DObjDesc*)((uintptr_t)((uintptr_t)gMPGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
 							+ (intptr_t)bonus_desc->o_dobjdesc);
-	atrack = (void**)((uintptr_t)((uintptr_t)gGroundInfo->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
+	atrack = (void**)((uintptr_t)((uintptr_t)gMPGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
 					  + (intptr_t)bonus_desc->o_anim);
 
 	gGroundStruct.bonus1.target_count = 0;
@@ -171,8 +171,8 @@ s32 scBonusGame_GetBonus2PlatformKind(s32 line_id)
 	Vec3f pos_left;
 	Vec3f pos_right;
 
-	mpCollision_GetLREdgeLeft(line_id, &pos_left);
-	mpCollision_GetLREdgeRight(line_id, &pos_right);
+	mpCollisionGetLREdgeLeft(line_id, &pos_left);
+	mpCollisionGetLREdgeRight(line_id, &pos_right);
 
 	if ((pos_right.x - pos_left.x) <= 750.0F)
 		return grBonus_PlatformKind_Narrow;
@@ -188,8 +188,8 @@ void func_ovl6_8018D6A8(s32 line_id)
 	DObj* dobj;
 	s32 index;
 
-	index = mpCollision_SetDObjNoID(line_id);
-	dobj = gMPRooms->room_dobj[index];
+	index = mpCollisionSetDObjNoID(line_id);
+	dobj = gMPYakumonoDObjs->yakumono_dobj[index];
 	index = scBonusGame_GetBonus2PlatformKind(line_id);
 
 	func_ovl0_800C8B28(dobj,
@@ -218,17 +218,17 @@ void scBonusGame_InitBonus2Platforms()
 	s32 room_id;
 	s32 i;
 
-	line_count = mpCollision_GetLineCountType(mpCollision_LineType_Ground);
+	line_count = mpCollisionGetLineCountType(nMPLineKindGround);
 	gGroundStruct.bonus2.platform_count = 0;
-	mpCollision_GetLineIDsTypeCount(mpCollision_LineType_Ground, line_count, line_ids);
+	mpCollisionGetLineIDsTypeCount(nMPLineKindGround, line_count, line_ids);
 
 	for (i = 0; i < line_count; i++)
 	{
-		if ((mpCollision_GetVertexFlagsLineID(line_ids[i]) & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_Detect)
+		if ((mpCollisionGetVertexFlagsLineID(line_ids[i]) & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect)
 		{
-			room_id = mpCollision_SetDObjNoID(line_ids[i]);
-			if (gMPRooms->room_dobj[room_id]->actor.atrack == NULL)
-				mpCollision_SetYakumonoOnID(room_id);
+			room_id = mpCollisionSetDObjNoID(line_ids[i]);
+			if (gMPYakumonoDObjs->yakumono_dobj[room_id]->actor.atrack == NULL)
+				mpCollisionSetYakumonoOnID(room_id);
 			func_ovl6_8018D6A8(line_ids[i]);
 			gGroundStruct.bonus2.platform_count++;
 		}
@@ -289,10 +289,10 @@ void scBonusGame_CheckBonus2PlatformLanding(GObj* ground_gobj)
 	while (fighter_gobj != NULL)
 	{
 		ftStruct* fp = ftGetStruct(fighter_gobj);
-		if ((fp->ground_or_air == GA_Ground)
-			&& ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_Detect))
+		if ((fp->ground_or_air == nMPKineticsGround)
+			&& ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
 		{
-			DObj* dobj = gMPRooms->room_dobj[mpCollision_SetDObjNoID(fp->coll_data.ground_line_id)];
+			DObj* dobj = gMPYakumonoDObjs->yakumono_dobj[mpCollisionSetDObjNoID(fp->coll_data.ground_line_id)];
 
 			if (dobj->child->user_data.s != 0)
 				scBonusGame_UpdateBonus2PlatformCount(dobj);
@@ -317,9 +317,9 @@ void scBonusGame_InitBonus2Bumpers()
 	Vec3f vel;
 	GObj* item_gobj;
 
-	if (gGroundInfo->map_nodes != NULL)
+	if (gMPGroundData->map_nodes != NULL)
 	{
-		bonus_desc = ((uintptr_t)gGroundInfo->map_nodes
+		bonus_desc = ((uintptr_t)gMPGroundData->map_nodes
 					  - (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - Gr_Kind_Bonus2Start].o_main);
 
 		vel.x = vel.y = vel.z = 0.0F;
@@ -456,8 +456,8 @@ void scBonusGame_GetPlayerSpawnPosition(Vec3f* pos)
 {
 	s32 mpoint;
 
-	mpCollision_GetMPointIDsKind(mpMPoint_Kind_1PGamePlayerSpawn, &mpoint);
-	mpCollision_GetMPointPositionID(mpoint, pos);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKind1PGamePlayerSpawn, &mpoint);
+	mpCollisionGetMapObjPositionID(mpoint, pos);
 }
 
 // 8018E114
@@ -585,7 +585,7 @@ void scBonusGame_InitBonusGame()
 	func_8000B9FC(9, 0x80000000U, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
-	mpCollision_InitMapCollisionData();
+	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
 	grWallpaperMakeGroundWallpaper();
@@ -642,7 +642,7 @@ void scBonusGame_InitBonusGame()
 	ifCommonPlayerStockInitInterface();
 	scBonusGame_InitBonusGameSprites();
 	scBonusGame_MakeInterface();
-	mpCollision_SetPlayMusicID();
+	mpCollisionSetPlayMusicID();
 	func_800269C0_275C0(0x272U);
 	func_ovl6_8018E344();
 	scBonusGame_InitCameraVars();
@@ -730,7 +730,7 @@ void scBonusGame_SetGeometryRenderLights(Gfx** display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 
-	ftRender_Lights_DisplayLightReflect(display_list, gMPLightAngleX, gMPLightAngleY);
+	ftRenderLightsDrawReflect(display_list, gMPLightAngleX, gMPLightAngleY);
 }
 
 // 8018EACC

@@ -12,7 +12,7 @@
 void mnBattleSetupDisplayList(Gfx** display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRender_Lights_DisplayLightReflect(display_list, func_ovl1_8039051C(), func_ovl1_80390528());
+	ftRenderLightsDrawReflect(display_list, func_ovl1_8039051C(), func_ovl1_80390528());
 	return;
 }
 

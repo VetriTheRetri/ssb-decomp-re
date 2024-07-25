@@ -17,7 +17,7 @@ extern intptr_t lITHeartItemAttributes;     // 0x00000100
 itCreateDesc dITHeartItemDesc =
 {
     It_Kind_Heart,                          // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITHeartItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct

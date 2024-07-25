@@ -32,7 +32,7 @@ void ftPikachuSpecialLwCreateThunder(GObj *fighter_gobj)
 
     ftParts_GetDObjWorldPosition(fp->joint[FTPIKACHU_THUNDER_SPAWN_JOINT], &pos);
 
-    pos.y = gGroundInfo->blastzone_top - FTPIKACHU_THUNDER_SPAWN_OFF_Y;
+    pos.y = gMPGroundData->blastzone_top - FTPIKACHU_THUNDER_SPAWN_OFF_Y;
 
     vel.x = 0.0F;
     vel.z = 0.0F;

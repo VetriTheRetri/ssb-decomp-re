@@ -58,7 +58,7 @@ void ftKirbyCopySamusSpecialNStartProcUpdate(GObj *fighter_gobj)
 
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        if (fp->ground_or_air == GA_Air)
+        if (fp->ground_or_air == nMPKineticsAir)
         {
             ftKirbyCopySamusSpecialAirNEndSetStatus(fighter_gobj);
         }
@@ -236,7 +236,7 @@ void ftKirbyCopySamusSpecialNEndProcUpdate(GObj *fighter_gobj)
         }
         else wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->fighter_vars.kirby.copysamus_charge_level, 1);
 
-        if (fp->ground_or_air == GA_Air)
+        if (fp->ground_or_air == nMPKineticsAir)
         {
             charge_recoil_x = fp->fighter_vars.kirby.copysamus_charge_level + 1;
 
@@ -312,7 +312,7 @@ void ftKirbyCopySamusSpecialAirNEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftMap_SetAir(fp);
         ftPhysics_ClampAirVelXMax(fp);

@@ -33,7 +33,7 @@ Vec2f dITBoxItemSpawnVelocities[/* */] =
 itCreateDesc dITBoxItemDesc = 
 {
     It_Kind_Box,                            // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITBoxItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -242,9 +242,9 @@ sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj)
 
     itBoxContainerSmashMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
-    if (gITRandomWeights.item_num != 0)
+    if (gITManagerRandomWeights.item_num != 0)
     {
-        index = itMainGetWeightedItemID(&gITRandomWeights);
+        index = itMainGetWeightedItemID(&gITManagerRandomWeights);
 
         if (index <= It_Kind_CommonEnd)
         {
@@ -282,11 +282,11 @@ sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj)
             }
             else
             {
-                bak = gITRandomWeights.item_num;
-                item_count = gITRandomWeights.item_count - 1;
+                bak = gITManagerRandomWeights.item_num;
+                item_count = gITManagerRandomWeights.item_count - 1;
 
-                gITRandomWeights.item_num = gITRandomWeights.item_totals[item_count];
-                gITRandomWeights.item_count--;
+                gITManagerRandomWeights.item_num = gITManagerRandomWeights.item_totals[item_count];
+                gITManagerRandomWeights.item_count--;
 
                 vel_different.z = 0.0F;
 
@@ -294,15 +294,15 @@ sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj)
                 {
                     if (j != 0)
                     {
-                        index = itMainGetWeightedItemID(&gITRandomWeights);
+                        index = itMainGetWeightedItemID(&gITManagerRandomWeights);
                     }
                     vel_different.x = spawn_pos[j].x;
                     vel_different.y = spawn_pos[j].y;
 
                     itManagerMakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel_different, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
                 }
-                gITRandomWeights.item_count++;
-                gITRandomWeights.item_num = bak;
+                gITManagerRandomWeights.item_count++;
+                gITManagerRandomWeights.item_num = bak;
             }
             func_800269C0_275C0(alSound_SFX_FireFlowerShoot);
 

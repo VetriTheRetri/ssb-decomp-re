@@ -26,7 +26,7 @@ void ftCommonFallSetStatus(GObj *fighter_gobj)
     }
     else
     {
-        if (fp->ground_or_air == GA_Ground)
+        if (fp->ground_or_air == nMPKineticsGround)
         {
             ftMap_SetAir(fp);
         }

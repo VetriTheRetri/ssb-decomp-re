@@ -25,7 +25,7 @@ func_ovl64_8018E0C0 = 0x8018E0C0; // segment:ovl64
 
 D_ovl64_8018E160 = 0x8018E160; // segment:ovl64
 dAutoDemoGroundOrder = 0x8018E168; // segment:ovl64
-dAutoDemoMPointKindList = 0x8018E170; // segment:ovl64
+dAutoDemoMapObjKindList = 0x8018E170; // segment:ovl64
 D_ovl64_8018E174 = 0x8018E174; // segment:ovl64
 dAutoDemoProcList = 0x8018E180; // segment:ovl64
 jtbl_ovl64_8018E1A8 = 0x8018E1A8; // segment:ovl64
@@ -44,7 +44,7 @@ sAutoDemoFocusChangeWait = 0x8018E4E0; // segment:ovl64
 sAutoDemoCharacterFlag = 0x8018E4E4; // segment:ovl64
 sAutoDemoFighterNameGObj = 0x8018E4E8; // segment:ovl64
 sAutoDemoProc = 0x8018E4EC; // segment:ovl64
-sAutoDemoMPoints = 0x8018E4F0; // segment:ovl64
+sAutoDemoMapObjs = 0x8018E4F0; // segment:ovl64
 
 sAutoDemoStatusBuf = 0x8018E500; // segment:ovl64
 sAutoDemoForceBuf = 0x8018E820; // segment:ovl64

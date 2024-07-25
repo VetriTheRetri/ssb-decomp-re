@@ -131,7 +131,7 @@ void ftKirbySpecialLwUnkDecideNextStatus(GObj *fighter_gobj, sb32 ground_or_air)
 
     if (!(fp->is_damage_resist) && (fp->command_vars.flags.flag1 != 0))
     {
-        if (ground_or_air == GA_Ground)
+        if (ground_or_air == nMPKineticsGround)
         {
             ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_SpecialLwHold, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
         }
@@ -144,7 +144,7 @@ void ftKirbySpecialLwUnkDecideNextStatus(GObj *fighter_gobj, sb32 ground_or_air)
     {
         if (ftKirbySpecialLwCheckRelease(fighter_gobj, FALSE) == TRUE)
         {
-            (ground_or_air == GA_Ground) ? ftKirbySpecialLwEndSetStatus(fighter_gobj) : ftKirbySpecialAirLwEndSetStatus(fighter_gobj);
+            (ground_or_air == nMPKineticsGround) ? ftKirbySpecialLwEndSetStatus(fighter_gobj) : ftKirbySpecialAirLwEndSetStatus(fighter_gobj);
 
             fp->command_vars.flags.flag2 = 0;
         }
@@ -155,13 +155,13 @@ void ftKirbySpecialLwUnkDecideNextStatus(GObj *fighter_gobj, sb32 ground_or_air)
 // 0x801616B0
 void ftKirbySpecialLwUnkProcUpdate(GObj *fighter_gobj)
 {
-    ftKirbySpecialLwUnkDecideNextStatus(fighter_gobj, GA_Ground);
+    ftKirbySpecialLwUnkDecideNextStatus(fighter_gobj, nMPKineticsGround);
 }
 
 // 0x801616D0
 void ftKirbySpecialAirLwHoldProcUpdate(GObj *fighter_gobj)
 {
-    ftKirbySpecialLwUnkDecideNextStatus(fighter_gobj, GA_Air);
+    ftKirbySpecialLwUnkDecideNextStatus(fighter_gobj, nMPKineticsAir);
 }
 
 // 0x801616F0
@@ -169,7 +169,7 @@ void ftKirbySpecialLwHoldDecideNextStatus(GObj *fighter_gobj, sb32 ground_or_air
 {
     if (ftKirbySpecialLwCheckRelease(fighter_gobj, TRUE) == TRUE)
     {
-        (ground_or_air == GA_Ground) ? ftKirbySpecialLwEndSetStatus(fighter_gobj) : ftKirbySpecialAirLwEndSetStatus(fighter_gobj);
+        (ground_or_air == nMPKineticsGround) ? ftKirbySpecialLwEndSetStatus(fighter_gobj) : ftKirbySpecialAirLwEndSetStatus(fighter_gobj);
     }
     ftKirbySpecialLwUpdateColAnim(fighter_gobj);
 }
@@ -177,13 +177,13 @@ void ftKirbySpecialLwHoldDecideNextStatus(GObj *fighter_gobj, sb32 ground_or_air
 // 0x8016174C
 void ftKirbySpecialLwHoldProcUpdate(GObj *fighter_gobj)
 {
-    ftKirbySpecialLwHoldDecideNextStatus(fighter_gobj, GA_Ground);
+    ftKirbySpecialLwHoldDecideNextStatus(fighter_gobj, nMPKineticsGround);
 }
 
 // 0x8016176C
 void ftKirbySpecialAirLwFallProcUpdate(GObj *fighter_gobj)
 {
-    ftKirbySpecialLwHoldDecideNextStatus(fighter_gobj, GA_Air);
+    ftKirbySpecialLwHoldDecideNextStatus(fighter_gobj, nMPKineticsAir);
 }
 
 // 0x8016178C

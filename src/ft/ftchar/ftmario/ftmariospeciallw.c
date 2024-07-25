@@ -160,7 +160,7 @@ void ftMarioSpecialLwSetStatus(GObj *fighter_gobj)
     ftPhysics_ClampAirVelX(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
     ftMarioSpecialLwInitStatusVars(fighter_gobj);
 
-    fp->stat_flags.is_ground_or_air = GA_Ground;
+    fp->stat_flags.is_ground_or_air = nMPKineticsGround;
 }
 
 // 0x80156910

@@ -152,9 +152,9 @@ void wpProcessProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
         wp->coll_data.pos_correct.y = translate->y - wp->coll_data.pos_curr.y;
         wp->coll_data.pos_correct.z = translate->z - wp->coll_data.pos_curr.z;
 
-        if ((wp->ground_or_air == GA_Ground) && (wp->coll_data.ground_line_id != -1) && (wp->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(wp->coll_data.ground_line_id) != FALSE))
+        if ((wp->ground_or_air == nMPKineticsGround) && (wp->coll_data.ground_line_id != -1) && (wp->coll_data.ground_line_id != -2) && (mpCollisionCheckExistLineID(wp->coll_data.ground_line_id) != FALSE))
         {
-            mpCollision_GetSpeedLineID(wp->coll_data.ground_line_id, &wp->coll_data.pos_speed);
+            mpCollisionGetSpeedLineID(wp->coll_data.ground_line_id, &wp->coll_data.pos_speed);
 
             translate->x += wp->coll_data.pos_speed.x;
             translate->y += wp->coll_data.pos_speed.y;
@@ -164,10 +164,10 @@ void wpProcessProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
 
         if 
         (
-            (translate->y < gGroundInfo->blastzone_bottom)  || 
-            (translate->x > gGroundInfo->blastzone_right)   || 
-            (translate->x < gGroundInfo->blastzone_left)    || 
-            (translate->y > gGroundInfo->blastzone_top)     || 
+            (translate->y < gMPGroundData->blastzone_bottom)  || 
+            (translate->x > gMPGroundData->blastzone_right)   || 
+            (translate->x < gMPGroundData->blastzone_left)    || 
+            (translate->y > gMPGroundData->blastzone_top)     || 
             (translate->z < -20000.0F)                      ||
             (translate->z > 20000.0F)
         )
@@ -457,7 +457,7 @@ void wpProcessProcHitCollisions(GObj *weapon_gobj)
     }
     if (wp->hit_shield_damage != 0)
     {
-        if ((wp->weapon_hit.can_hop) && (wp->ground_or_air == GA_Air))
+        if ((wp->weapon_hit.can_hop) && (wp->ground_or_air == nMPKineticsAir))
         {
             if (wp->shield_collide_angle < WEAPON_HOP_ANGLE_DEFAULT)
             {

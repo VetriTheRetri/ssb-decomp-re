@@ -144,7 +144,7 @@ void ftKirbySpecialHiLandingProcPhysics(GObj *fighter_gobj)
 
     ftKirbySpecialHiUpdateEffect(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftPhysics_ApplyGroundVelTransN(fighter_gobj);
     }
@@ -203,11 +203,11 @@ void ftKirbySpecialHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         if (ftMap_CheckGroundStopEdge(fighter_gobj) == FALSE)
         {
-            fp->ground_or_air = GA_Air;
+            fp->ground_or_air = nMPKineticsAir;
         }
     }
     else

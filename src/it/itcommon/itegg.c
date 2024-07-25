@@ -19,7 +19,7 @@ extern intptr_t lITEggHitEvents;            // 0x00000B14
 itCreateDesc dITEggItemDesc =
 {
     It_Kind_Egg,                            // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITEggItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct

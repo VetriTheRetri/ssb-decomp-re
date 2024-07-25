@@ -80,7 +80,7 @@ void ftCommonFallSpecialSetStatus(GObj *fighter_gobj, f32 drift, sb32 unknown, s
 
     ftPhysics_ClampAirVelX(fp, fp->status_vars.common.fallspecial.drift);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftMap_SetAir(fp);
     }

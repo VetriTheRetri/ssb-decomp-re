@@ -1027,14 +1027,14 @@ void grSectorArwingUpdateCollisions(void)
 
             if ((gGroundStruct.sector.is_arwing_z_collision == FALSE) || (gGroundStruct.sector.is_arwing_line_collision == FALSE))
             {
-                mpCollision_SetYakumonoOnID(1);
-                mpCollision_SetYakumonoPosID(1, &pos);
+                mpCollisionSetYakumonoOnID(1);
+                mpCollisionSetYakumonoPosID(1, &pos);
             }
-            mpCollision_SetYakumonoPosID(1, &pos);
+            mpCollisionSetYakumonoPosID(1, &pos);
         }
         if ((!(gGroundStruct.sector.is_arwing_line_active) || !(gGroundStruct.sector.is_arwing_z_near)) && (gGroundStruct.sector.is_arwing_z_collision != FALSE) && (gGroundStruct.sector.is_arwing_line_collision != FALSE))
         {
-            mpCollision_SetYakumonoOffID(1);
+            mpCollisionSetYakumonoOffID(1);
         }
         gGroundStruct.sector.is_arwing_line_collision = gGroundStruct.sector.is_arwing_line_active;
         gGroundStruct.sector.is_arwing_z_collision = gGroundStruct.sector.is_arwing_z_near;
@@ -1057,7 +1057,7 @@ void func_ovl2_80107CA0(void)
         gGroundStruct.sector.arwing_appear_timer = mtTrigGetRandomIntRange(1140) + 960;
         gGroundStruct.sector.arwing_status = nGRSectorArwingStatusWait;
 
-        mpCollision_SetYakumonoOffID(1);
+        mpCollisionSetYakumonoOffID(1);
     }
     else gGroundStruct.sector.arwing_appear_timer++;
 }
@@ -1112,7 +1112,7 @@ void grSectorInitAll(void)
     GObj *map_gobj;
     void *map_file;
 
-    gGroundStruct.sector.map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&lGRSectorMapHead);
+    gGroundStruct.sector.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRSectorMapHead);
 
     map_file = rldm_get_file_force((intptr_t)&D_NF_000000A1);
 
@@ -1138,8 +1138,8 @@ void grSectorInitAll(void)
 
     omAddDObjAnimAll(gGroundStruct.sector.map_dobj[10], (ATrack*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002E74), 0.0F);
     func_8000DF34_EB34(map_gobj);
-    mpCollision_SetYakumonoOffID(1);
-    gGroundStruct.sector.weapon_head = (void*) ((uintptr_t)gGroundInfo - (intptr_t)&lGRCommonHeaderStart);
+    mpCollisionSetYakumonoOffID(1);
+    gGroundStruct.sector.weapon_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart);
 }
 
 // 0x80107FCC

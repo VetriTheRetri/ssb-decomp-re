@@ -26,7 +26,7 @@ void mpObjectProc_SetCollProjectGroundID(mpCollData* coll_data);
 sb32 mpObjectProc_UpdateMapProcMain(mpCollData* coll_data, sb32 (*proc_coll)(mpCollData*, GObj*, u32), GObj* gobj,
 									u32 flags);
 sb32 mpObjectProc_CheckTestLWallCollision(mpCollData* coll_data);
-void mpCollision_RunLWallCollision(mpCollData* coll_data);
+void mpObjectProc_RunLWallCollision(mpCollData* coll_data);
 sb32 mpObjectProc_CheckTestRWallCollision(mpCollData* coll_data);
 void mpObjectProc_RunRWallCollision(mpCollData* coll_data);
 sb32 mpObjectProc_CheckTestGroundCollisionNew(mpCollData* coll_data);

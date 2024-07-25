@@ -272,7 +272,7 @@ typedef struct gm1PGameStage
 
 typedef struct g1PGamePlayer
 {
-	s32 mpoint_kind; // Spawn position?
+	s32 mapobj_kind; // Spawn position?
 	void* anim_bank;
 	s32 copy_kind;
 	s32 team_order;

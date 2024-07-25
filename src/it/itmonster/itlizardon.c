@@ -29,7 +29,7 @@ lITLizardonMatAnimJoint;                    // 0x0000D688
 itCreateDesc dITLizardonItemDesc = 
 {
     It_Kind_Lizardon,                       // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITLizardonItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -95,7 +95,7 @@ wpCreateDesc dITLizardonWeaponFlameWeaponDesc =
 {
     0x00,                                   // Render flags?
     Wp_Kind_LizardonFlame,                  // Weapon Kind
-    &gITFileData,                           // Pointer to character's loaded files?
+    &gITManagerFileData,                           // Pointer to character's loaded files?
     &lITLizardonWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct
@@ -409,8 +409,8 @@ sb32 itLizardonWeaponFlameProcReflector(GObj *weapon_gobj)
 
     translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
-    func_ovl0_800CE8C0(gITEffectBankID | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(gITEffectBankID | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITManagerParticleBankID | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITManagerParticleBankID | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return FALSE;
 }
@@ -431,8 +431,8 @@ GObj* itLizardonWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     ip->lifetime = ITLIZARDON_FLAME_LIFETIME;
 
-    func_ovl0_800CE8C0(gITEffectBankID | 8, 2, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F); // This needs to return something in v0 to match
-    func_ovl0_800CE8C0(gITEffectBankID | 8, 0, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F);
+    func_ovl0_800CE8C0(gITManagerParticleBankID | 8, 2, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F); // This needs to return something in v0 to match
+    func_ovl0_800CE8C0(gITManagerParticleBankID | 8, 0, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F);
 
     return weapon_gobj;
 }

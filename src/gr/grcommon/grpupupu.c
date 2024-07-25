@@ -738,7 +738,7 @@ void grPupupuInitAll(void)
 {
     // Many linker things here
 
-    gGroundStruct.pupupu.map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&lGRPupupuMapHead);
+    gGroundStruct.pupupu.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRPupupuMapHead);
 
     gGroundStruct.pupupu.map_gobj[0] = grPupupuMakeMapGObj(&lGRPupupuMapHead, &D_NF_00000F00, grGeometryLayer0ProcRenderPri, 4);
     gGroundStruct.pupupu.map_gobj[1] = grPupupuMakeMapGObj(&lGRPupupuWhispyMouthTransformKinds, &D_NF_000013B0, grGeometryLayer0ProcRenderPri, 4);

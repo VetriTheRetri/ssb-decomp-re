@@ -101,21 +101,21 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
         }
         gGroundStruct.hyrule.twister_line_id = line_id;
 
-        mpCollision_GetLREdgeLeft(line_id, &edge_pos);
+        mpCollisionGetLREdgeLeft(line_id, &edge_pos);
 
-        edge_under = mpCollision_GetEdgeUnderLLineID(line_id);
+        edge_under = mpCollisionGetEdgeUnderLLineID(line_id);
 
-        if ((edge_under == -1) || (mpCollision_GetLineTypeID(edge_under) != mpCollision_LineType_RWall))
+        if ((edge_under == -1) || (mpCollisionGetLineTypeID(edge_under) != nMPLineKindRWall))
         {
             gGroundStruct.hyrule.twister_leftedge_x = edge_pos.x;
         }
         else gGroundStruct.hyrule.twister_leftedge_x = edge_pos.x + 300.0F;
         
-        mpCollision_GetLREdgeRight(line_id, &edge_pos);
+        mpCollisionGetLREdgeRight(line_id, &edge_pos);
 
-        edge_under = mpCollision_GetEdgeUnderRLineID(line_id);
+        edge_under = mpCollisionGetEdgeUnderRLineID(line_id);
 
-        if ((edge_under == -1) || (mpCollision_GetLineTypeID(edge_under) != mpCollision_LineType_LWall))
+        if ((edge_under == -1) || (mpCollisionGetLineTypeID(edge_under) != nMPLineKindLWall))
         {
             gGroundStruct.hyrule.twister_rightedge_x = edge_pos.x;
         }
@@ -146,7 +146,7 @@ void grHyruleTwisterUpdateWait(void)
 
     if (gGroundStruct.hyrule.twister_wait == 0)
     {
-        mpCollision_GetMPointPositionID(gGroundStruct.hyrule.twister_pos_ids[mtTrigGetRandomIntRange(gGroundStruct.hyrule.twister_pos_count)], &pos);
+        mpCollisionGetMapObjPositionID(gGroundStruct.hyrule.twister_pos_ids[mtTrigGetRandomIntRange(gGroundStruct.hyrule.twister_pos_count)], &pos);
 
         twister_gobj = grHyruleMakeTwister(&pos);
 
@@ -213,7 +213,7 @@ s32 grHyruleTwisterGetLR(void)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if ((fp->ground_or_air == GA_Ground) && (fp->coll_data.ground_line_id == gGroundStruct.hyrule.twister_line_id))
+        if ((fp->ground_or_air == nMPKineticsGround) && (fp->coll_data.ground_line_id == gGroundStruct.hyrule.twister_line_id))
         {
             if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > twister_pos_x)
             {
@@ -291,7 +291,7 @@ void grHyruleTwisterUpdateMove(void)
         }
         else pos->x = pos_x;
 
-        mpCollision_GetUDCommonUp(gGroundStruct.hyrule.twister_line_id, pos, &ground_level, NULL, NULL);
+        mpCollisionGetUDCommonUp(gGroundStruct.hyrule.twister_line_id, pos, &ground_level, NULL, NULL);
 
         pos->y += ground_level;
 
@@ -401,7 +401,7 @@ void grHyruleTwisterInitVars(void)
     s32 pos_count;
     s32 pos_ids[10];
 
-    gGroundStruct.hyrule.twister_pos_count = pos_count = mpCollision_GetMPointCountKind(mpMPoint_Kind_Twister);
+    gGroundStruct.hyrule.twister_pos_count = pos_count = mpCollisionGetMapObjCountKind(nMPMapObjKindTwister);
 
     if ((pos_count == 0) || (pos_count > ARRAY_COUNT(pos_ids)))
     {
@@ -413,7 +413,7 @@ void grHyruleTwisterInitVars(void)
     }
     gGroundStruct.hyrule.twister_pos_ids = (u8*) gsMemoryAlloc(pos_count * sizeof(*gGroundStruct.hyrule.twister_pos_ids), 0x0);
 
-    mpCollision_GetMPointIDsKind(mpMPoint_Kind_Twister, pos_ids);
+    mpCollisionGetMapObjIDsKind(nMPMapObjKindTwister, pos_ids);
 
     for (i = 0; i < pos_count; i++)
     {

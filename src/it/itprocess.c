@@ -160,20 +160,20 @@ void itProcessProcItemMain(GObj *item_gobj)
         ip->coll_data.pos_correct.y = translate->y - ip->coll_data.pos_curr.y;
         ip->coll_data.pos_correct.z = translate->z - ip->coll_data.pos_curr.z;
 
-        if ((ip->is_attach_surface) && (mpCollision_CheckExistLineID(ip->attach_line_id) != FALSE))
+        if ((ip->is_attach_surface) && (mpCollisionCheckExistLineID(ip->attach_line_id) != FALSE))
         {
             mpCollData *coll_data = &ip->coll_data;
 
-            mpCollision_GetSpeedLineID(ip->attach_line_id, &ip->coll_data.pos_speed);
+            mpCollisionGetSpeedLineID(ip->attach_line_id, &ip->coll_data.pos_speed);
 
             translate->x += coll_data->pos_speed.x;
             translate->y += coll_data->pos_speed.y;
             translate->z += coll_data->pos_speed.z;
         }
 
-        else if ((ip->ground_or_air == GA_Ground) && (ip->coll_data.ground_line_id != -1) && (ip->coll_data.ground_line_id != -2) && (mpCollision_CheckExistLineID(ip->coll_data.ground_line_id) != FALSE))
+        else if ((ip->ground_or_air == nMPKineticsGround) && (ip->coll_data.ground_line_id != -1) && (ip->coll_data.ground_line_id != -2) && (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE))
         {
-            mpCollision_GetSpeedLineID(ip->coll_data.ground_line_id, &ip->coll_data.pos_speed);
+            mpCollisionGetSpeedLineID(ip->coll_data.ground_line_id, &ip->coll_data.pos_speed);
 
             translate->x += ip->coll_data.pos_speed.x;
             translate->y += ip->coll_data.pos_speed.y;
@@ -181,7 +181,7 @@ void itProcessProcItemMain(GObj *item_gobj)
         }
         else ip->coll_data.pos_speed.x = ip->coll_data.pos_speed.y = ip->coll_data.pos_speed.z = 0.0F;
 
-        if ((translate->y < gGroundInfo->blastzone_bottom) || (translate->x > gGroundInfo->blastzone_right) || (translate->x < gGroundInfo->blastzone_left) || (translate->y > gGroundInfo->blastzone_top))
+        if ((translate->y < gMPGroundData->blastzone_bottom) || (translate->x > gMPGroundData->blastzone_right) || (translate->x < gMPGroundData->blastzone_left) || (translate->y > gMPGroundData->blastzone_top))
         {
             if ((ip->proc_dead == NULL) || (ip->proc_dead(item_gobj) != FALSE))
             {
@@ -678,7 +678,7 @@ void itProcessSearchFighterHit(GObj *item_gobj) // Check fighters for hit detect
 
                 if (ft_hit->update_state != gmHitCollision_UpdateState_Disable)
                 {
-                    if ((ip->ground_or_air == GA_Air) && (ft_hit->is_hit_air) || (ip->ground_or_air == GA_Ground) && (ft_hit->is_hit_ground))
+                    if ((ip->ground_or_air == nMPKineticsAir) && (ft_hit->is_hit_air) || (ip->ground_or_air == nMPKineticsGround) && (ft_hit->is_hit_ground))
                     {
                         fighter_victim_flags.is_interact_hurt = fighter_victim_flags.is_interact_shield = FALSE;
 
@@ -1017,7 +1017,7 @@ void itProcessProcHitCollisions(GObj *item_gobj)
     }
     if (ip->hit_shield_damage != 0)
     {
-        if ((ip->item_hit.can_hop) && (ip->ground_or_air == GA_Air))
+        if ((ip->item_hit.can_hop) && (ip->ground_or_air == nMPKineticsAir))
         {
             if (ip->shield_collide_angle < ITEM_HOP_ANGLE_DEFAULT)
             {

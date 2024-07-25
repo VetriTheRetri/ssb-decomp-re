@@ -14,7 +14,7 @@ sb32 wpMapProcLRWallCheckGround(mpCollData *coll_data, GObj *weapon_gobj, u32 fl
 
     if (mpObjectProc_CheckTestLWallCollision(coll_data) != FALSE)
     {
-        mpCollision_RunLWallCollision(coll_data);
+        mpObjectProc_RunLWallCollision(coll_data);
 
         coll_data->is_coll_end = TRUE;
     }
@@ -239,12 +239,12 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
 // 0x80167E78
 void wpMapSetGround(wpStruct *wp) // Make weapon grounded
 {
-    wp->ground_or_air = GA_Ground;
+    wp->ground_or_air = nMPKineticsGround;
     wp->phys_info.vel_ground = wp->phys_info.vel_air.x * wp->lr;
 }
 
 // 0x80167E9C
 void wpMapSetAir(wpStruct *wp) // Make item airborne
 {
-    wp->ground_or_air = GA_Air;
+    wp->ground_or_air = nMPKineticsAir;
 }

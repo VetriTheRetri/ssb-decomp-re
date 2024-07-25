@@ -93,9 +93,9 @@ void ftDonkeySpecialHiSetStatusFlagGA(GObj *fighter_gobj, sb32 ground_or_air)
 
     fp->status_vars.donkey.specialhi.unk_0x0 = 9;
 
-    if (ground_or_air == GA_Ground)
+    if (ground_or_air == nMPKineticsGround)
     {
-        fp->stat_flags.is_ground_or_air = GA_Ground;
+        fp->stat_flags.is_ground_or_air = nMPKineticsGround;
     }
 }
 
@@ -108,7 +108,7 @@ void ftDonkeySpecialHiSetStatus(GObj *fighter_gobj)
 
     fp->phys_info.vel_air.y = 0.0F;
 
-    ftDonkeySpecialHiSetStatusFlagGA(fighter_gobj, GA_Ground);
+    ftDonkeySpecialHiSetStatusFlagGA(fighter_gobj, nMPKineticsGround);
 }
 
 // 0x8015B9B8
@@ -118,5 +118,5 @@ void ftDonkeySpecialAirHiSetStatus(GObj *fighter_gobj)
 
     fp->phys_info.vel_air.y = FTDONKEY_SPINNINGKONG_AIR_VEL_Y;
 
-    ftDonkeySpecialHiSetStatusFlagGA(fighter_gobj, GA_Air);
+    ftDonkeySpecialHiSetStatusFlagGA(fighter_gobj, nMPKineticsAir);
 }

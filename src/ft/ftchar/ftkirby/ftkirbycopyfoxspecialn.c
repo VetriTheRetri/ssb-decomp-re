@@ -37,7 +37,7 @@ void ftKirbyCopyFoxSpecialNProcInterrupt(GObj *fighter_gobj)
 
     if ((fp->command_vars.flags.flag1 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
     {
-        if (fp->ground_or_air == GA_Air)
+        if (fp->ground_or_air == nMPKineticsAir)
         {
             ftKirbyCopyFoxSpecialAirNSetStatus(fighter_gobj);
         }

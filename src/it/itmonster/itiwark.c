@@ -25,7 +25,7 @@ extern intptr_t lITIwarkDisplayList;        // 0x0000A640
 itCreateDesc dITIwarkItemDesc =
 {
     It_Kind_Iwark,                          // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITIwarkItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -79,7 +79,7 @@ wpCreateDesc dITIwarkWeaponRockWeaponDesc =
 {
     0x01,                                   // Render flags?
     Wp_Kind_IwarkRock,                      // Weapon Kind
-    &gITFileData,                           // Pointer to weapon's loaded files?
+    &gITManagerFileData,                           // Pointer to weapon's loaded files?
     &lITIwarkWeaponRockWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
@@ -160,7 +160,7 @@ sb32 itIwarkNAttackProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    f32 pos_y = gGroundInfo->blastzone_top - ITIWARK_FLY_STOP_Y;
+    f32 pos_y = gMPGroundData->blastzone_top - ITIWARK_FLY_STOP_Y;
 
     if (dobj->translate.vec.f.y >= pos_y)
     {
@@ -207,7 +207,7 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
     Gfx *dl;
     Vec3f pos;
 
-    ip->ground_or_air = GA_Air;
+    ip->ground_or_air = nMPKineticsAir;
 
     ip->phys_info.vel_air.y = ITIWARK_FLY_VEL_Y;
 

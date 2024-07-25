@@ -2,7 +2,7 @@
 
 #include <ft/fighter.h>
 #include <it/item.h>
-#include <mp/mpcoll.h>
+#include <mp/map.h>
 #include <gm/battle.h>
 
 // // // // // // // // // // // //
@@ -29,13 +29,13 @@ extern void func_8000BD8C_C98C(GObj*, void*, f32);
 s32 dGRYamabukiMonsterAttackKind = GRYAMABUKI_MONSTER_WEAPON_MAX;
 
 // 0x8012EB64
-u16 dGRYamabukiMonsterMPointKinds[/* */] =
+u16 dGRYamabukiMonsterMapObjKinds[/* */] =
 {
-    mpMPoint_Kind_Monster,
-    mpMPoint_Kind_MonsterUnused2,
-    mpMPoint_Kind_MonsterUnused3,
-    mpMPoint_Kind_MonsterUnused4,
-    mpMPoint_Kind_MonsterUnused1
+    nMPMapObjKindMonster,
+    nMPMapObjKindMonsterUnused2,
+    nMPMapObjKindMonsterUnused3,
+    nMPMapObjKindMonsterUnused4,
+    nMPMapObjKindMonsterUnused1
 };
 
 // // // // // // // // // // // //
@@ -76,7 +76,7 @@ sb32 grYamabukiGateCheckPlayersNear(void)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if ((fp->ground_or_air == GA_Ground) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_Detect))
+        if ((fp->ground_or_air == nMPKineticsGround) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
         {
             return TRUE;
         }
@@ -96,12 +96,12 @@ void grYamabukiGateMakeMonster(void)
     gGroundStruct.yamabuki.gate_status = nGRYamabukiGateStatusOpen;
     gGroundStruct.yamabuki.is_gate_noentry = FALSE;
 
-    mpCollision_GetMPointIDsKind(dGRYamabukiMonsterMPointKinds[0], &mpoint);
-    mpCollision_GetMPointPositionID(mpoint, &pos);
+    mpCollisionGetMapObjIDsKind(dGRYamabukiMonsterMapObjKinds[0], &mpoint);
+    mpCollisionGetMapObjPositionID(mpoint, &pos);
 
     vel.x = vel.y = vel.z = 0.0F;
 
-    if ((dITMonsterSpawnID == 0) || (dITMonsterSpawnID > (It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1)))
+    if ((dITManagerMonsterSpawnID == 0) || (dITManagerMonsterSpawnID > (It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1)))
     {
         item_id = mtTrigGetRandomIntRange(It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1);
 
@@ -111,7 +111,7 @@ void grYamabukiGateMakeMonster(void)
         }
         gGroundStruct.yamabuki.monster_id_prev = item_id;
     }
-    else item_id = dITMonsterSpawnID - 1;
+    else item_id = dITManagerMonsterSpawnID - 1;
 
     gGroundStruct.yamabuki.monster_gobj = itManagerMakeItemSetupCommon(NULL, item_id + It_Kind_GrMonsterStart, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
 }
@@ -120,14 +120,14 @@ void grYamabukiGateMakeMonster(void)
 void grYamabukiGateSetPositionFar(void)
 {
     gGroundStruct.yamabuki.gate_pos.x = 1600.0F;
-    gGroundStruct.yamabuki.gate_pos.y = gMPRooms->room_dobj[3]->translate.vec.f.y;
+    gGroundStruct.yamabuki.gate_pos.y = gMPYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
 }
 
 // 0x8010AE68
 void grYamabukiGateSetPositionNear(void)
 {
     gGroundStruct.yamabuki.gate_pos.x = 960.0F;
-    gGroundStruct.yamabuki.gate_pos.y = gMPRooms->room_dobj[3]->translate.vec.f.y;
+    gGroundStruct.yamabuki.gate_pos.y = gMPYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
 }
 
 // 0x8010AE94
@@ -198,7 +198,7 @@ void grYamabukiGateUpdateOpen(void)
         itStruct *ip = itGetStruct(gGroundStruct.yamabuki.monster_gobj);
 
         gGroundStruct.yamabuki.gate_pos.x = DObjGetStruct(gGroundStruct.yamabuki.monster_gobj)->translate.vec.f.x - ip->coll_data.object_coll.width;
-        gGroundStruct.yamabuki.gate_pos.y = gMPRooms->room_dobj[3]->translate.vec.f.y;
+        gGroundStruct.yamabuki.gate_pos.y = gMPYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
 
         if (gGroundStruct.yamabuki.gate_pos.x < 960.0F)
         {
@@ -234,7 +234,7 @@ void grYamabukiGateSetClosedWait(void)
 // 0x8010B108
 void grYamabukiGateUpdateYakumonoPos(void)
 {
-    mpCollision_SetYakumonoPosID(3, &gGroundStruct.yamabuki.gate_pos);
+    mpCollisionSetYakumonoPosID(3, &gGroundStruct.yamabuki.gate_pos);
 }
 
 // 0x8010B130
@@ -273,12 +273,12 @@ void grYamabukiMakeGate(void)
 // 0x8010B250
 void grYamabukiInitGroundVars(void)
 {
-    gGroundStruct.yamabuki.map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&lGRYamabukiMapHead);
+    gGroundStruct.yamabuki.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRYamabukiMapHead);
 
-    mpCollision_SetYakumonoOnID(3);
+    mpCollisionSetYakumonoOnID(3);
 
     gGroundStruct.yamabuki.gate_wait = 1;
-    gGroundStruct.yamabuki.item_head = (void*) ((uintptr_t)gGroundInfo - (intptr_t)&lGRYamabukiItemHead);
+    gGroundStruct.yamabuki.item_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRYamabukiItemHead);
 
     dGRYamabukiMonsterAttackKind = GRYAMABUKI_MONSTER_WEAPON_MAX;
 

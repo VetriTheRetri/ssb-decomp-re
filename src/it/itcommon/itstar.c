@@ -18,7 +18,7 @@ extern intptr_t lITStarItemAttributes;      // 0x00000148
 itCreateDesc dITStarItemDesc =
 {
     It_Kind_Star,                           // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITStarItemAttributes,                 // Offset of item attributes in file?
 
     // DObj transformation struct

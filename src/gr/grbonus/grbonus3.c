@@ -22,8 +22,8 @@ extern intptr_t lGRBonus3BumpersAnimJoint;          // 0x00000110
 // 0x8010B4D0
 void grBonus3InitHeaders(void)
 {
-    gGroundStruct.bonus3.map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&lGRBonus3MapHead);
-    gGroundStruct.bonus3.item_head = (void*) ((uintptr_t)gGroundInfo - (intptr_t)&lGRBonus3ItemHead);
+    gGroundStruct.bonus3.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRBonus3MapHead);
+    gGroundStruct.bonus3.item_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRBonus3ItemHead);
 }
 
 // 0x8010B508
@@ -77,7 +77,7 @@ void grBonus3RBombMakeActor(void)
 
     omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT), grBonus3RBombProcUpdate, GObjProcess_Kind_Proc, 4);
 
-    if (mpCollision_GetMPointCountKind(mpMPoint_Kind_1PGameBonus3RBomb) != 1)
+    if (mpCollisionGetMapObjCountKind(nMPMapObjKind1PGameBonus3RBomb) != 1)
     {
         while (TRUE)
         {
@@ -85,8 +85,8 @@ void grBonus3RBombMakeActor(void)
             smRunPrintGObjStatus();
         }
     }
-    mpCollision_GetMPointIDsKind(mpMPoint_Kind_1PGameBonus3RBomb, &pos_ids);
-    mpCollision_GetMPointPositionID(pos_ids, &gGroundStruct.bonus3.rbomb_make_pos);
+    mpCollisionGetMapObjIDsKind(nMPMapObjKind1PGameBonus3RBomb, &pos_ids);
+    mpCollisionGetMapObjPositionID(pos_ids, &gGroundStruct.bonus3.rbomb_make_pos);
 
     gGroundStruct.bonus3.rbomb_make_wait = 180;
 }
@@ -96,7 +96,7 @@ void grBonus3FinishProcUpdate(GObj *ground_gobj)
 {
     ftStruct *fp = ftGetStruct(gBattleState->player_block[gSceneData.spgame_player].fighter_gobj);
 
-    if ((fp->ground_or_air == GA_Ground) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_Detect))
+    if ((fp->ground_or_air == nMPKineticsGround) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
     {
         ifCommonAnnounceCompleteInitInterface(0x1CB);
         ifCommonBattleEndAddSoundQueueID(alSound_SFX_BonusComplete);

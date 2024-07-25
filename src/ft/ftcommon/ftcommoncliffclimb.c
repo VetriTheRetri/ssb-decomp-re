@@ -166,7 +166,7 @@ void ftCommonCliffCommon2ProcPhysics(GObj *fighter_gobj)
     Vec3f *translate;
     f32 y;
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftPhysics_ApplyGroundVelTransN(fighter_gobj);
     }
@@ -181,11 +181,11 @@ void ftCommonCliffCommon2ProcPhysics(GObj *fighter_gobj)
         pos.x += vel.x;
         pos.z += vel.z;
 
-        mpCollision_GetSpeedLineID(fp->status_vars.common.cliffmotion.cliff_id, &vel);
+        mpCollisionGetSpeedLineID(fp->status_vars.common.cliffmotion.cliff_id, &vel);
 
         pos.x += vel.x;
 
-        if (mpCollision_GetUDCommonUp(fp->status_vars.common.cliffmotion.cliff_id, &pos, &y, NULL, NULL) != FALSE)
+        if (mpCollisionGetUDCommonUp(fp->status_vars.common.cliffmotion.cliff_id, &pos, &y, NULL, NULL) != FALSE)
         {
             pos.y += y;
 
@@ -204,7 +204,7 @@ void ftCommonCliffClimbCommon2ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftMap_CheckGroundBreakSetFall(fighter_gobj);
     }
@@ -219,7 +219,7 @@ void ftCommonCliffAttackEscape2ProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftMap_CheckGroundStopEdgeFall(fighter_gobj);
     }
@@ -236,25 +236,25 @@ void ftCommonCliffCommon2UpdateCollData(GObj *fighter_gobj)
     mpCollData *coll_data = &fp->coll_data;
     Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    if (fp->attributes->cliff_status_ground_air_id[fp->status_vars.common.cliffmotion.status_id] == GA_Ground)
+    if (fp->attributes->cliff_status_ground_air_id[fp->status_vars.common.cliffmotion.status_id] == nMPKineticsGround)
     {
         ftMap_SetGround(fp);
     }
     if (fp->lr == LR_Right)
     {
-        mpCollision_GetLREdgeLeft(coll_data->cliff_id, translate);
+        mpCollisionGetLREdgeLeft(coll_data->cliff_id, translate);
 
         translate->x += 5.0F;
     }
     else
     {
-        mpCollision_GetLREdgeRight(coll_data->cliff_id, translate);
+        mpCollisionGetLREdgeRight(coll_data->cliff_id, translate);
 
         translate->x -= 5.0F;
     }
     coll_data->ground_line_id = coll_data->cliff_id;
 
-    mpCollision_GetUDCommonUp(coll_data->ground_line_id, translate, &coll_data->ground_dist, &coll_data->ground_flags, &coll_data->ground_angle);
+    mpCollisionGetUDCommonUp(coll_data->ground_line_id, translate, &coll_data->ground_dist, &coll_data->ground_flags, &coll_data->ground_angle);
 
     translate->y += coll_data->ground_dist;
 
@@ -266,7 +266,7 @@ void ftCommonCliffCommon2InitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         fp->is_ignore_jostle = TRUE;
     }

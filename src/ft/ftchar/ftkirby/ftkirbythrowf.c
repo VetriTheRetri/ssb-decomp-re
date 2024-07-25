@@ -40,7 +40,7 @@ void ftKirbyThrowFLandingProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftPhysics_ApplyGroundVelFriction(fighter_gobj);
     }
@@ -52,7 +52,7 @@ void ftKirbyThrowFLandingProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftCommonCatchProcMap(fighter_gobj);
     }

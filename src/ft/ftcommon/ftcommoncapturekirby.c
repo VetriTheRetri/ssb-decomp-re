@@ -147,7 +147,7 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(ftStruct *this_fp, ftStruct *cap
             this_fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
             is_wiggle = TRUE;
 
-            if (capture_fp->ground_or_air == GA_Ground)
+            if (capture_fp->ground_or_air == nMPKineticsGround)
             {
                 ftKirbySpecialNWaitSwitchStatusAir(capture_fp->fighter_gobj);
 
@@ -161,7 +161,7 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(ftStruct *this_fp, ftStruct *cap
             this_fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
             is_wiggle = TRUE;
 
-            if (capture_fp->ground_or_air == GA_Ground)
+            if (capture_fp->ground_or_air == nMPKineticsGround)
             {
                 ftKirbySpecialNWaitSwitchStatusAir(capture_fp->fighter_gobj);
 
@@ -487,7 +487,7 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lFTKirbySpecialNCopyData);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftMap_SetAir(fp);
     }
@@ -542,7 +542,7 @@ void ftCommonThrownCopyStarSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftMap_SetAir(fp);
     }

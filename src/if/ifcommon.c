@@ -1055,9 +1055,9 @@ void ifCommonPlayerDamageInitInterface(void)
 
                 emblem = gBattleState->player_block[player].player_color_index;
 
-                sobj->sprite.red = gGroundInfo->emblem_colors[emblem].r;
-                sobj->sprite.green = gGroundInfo->emblem_colors[emblem].g;
-                sobj->sprite.blue = gGroundInfo->emblem_colors[emblem].b;
+                sobj->sprite.red = gMPGroundData->emblem_colors[emblem].r;
+                sobj->sprite.green = gMPGroundData->emblem_colors[emblem].g;
+                sobj->sprite.blue = gMPGroundData->emblem_colors[emblem].b;
 
                 sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
             }
@@ -1576,7 +1576,7 @@ void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly
     gDPSetAlphaCompare(dl++, G_AC_THRESHOLD);
     gDPSetBlendColor(dl++, 0, 0, 0, 0x8);
 
-    color = &gGroundInfo->fog_color;
+    color = &gMPGroundData->fog_color;
 
     gDPSetPrimColor(dl++, 0, 0, color->r, color->g, color->b, 0xFF);
     gDPSetEnvColor(dl++, dIFCommonPlayerMagnifyColorsR[color_id], dIFCommonPlayerMagnifyColorsG[color_id], dIFCommonPlayerMagnifyColorsB[color_id], 0xFF);
@@ -3016,13 +3016,13 @@ void ifCommonBattleGoUpdateInterface(void)
                     {
                         if (gBattleState->game_type == gmMatch_GameType_Bonus)
                         {
-                            sp68.x = gGroundInfo->unk_groundinfo_0x9A.x;
-                            sp68.y = gGroundInfo->unk_groundinfo_0x9A.y;
-                            sp68.z = gGroundInfo->unk_groundinfo_0x9A.z;
+                            sp68.x = gMPGroundData->unk_groundinfo_0x9A.x;
+                            sp68.y = gMPGroundData->unk_groundinfo_0x9A.y;
+                            sp68.z = gMPGroundData->unk_groundinfo_0x9A.z;
 
-                            sp5C.x = gGroundInfo->unk_groundinfo_0xA0.x;
-                            sp5C.y = gGroundInfo->unk_groundinfo_0xA0.y;
-                            sp5C.z = gGroundInfo->unk_groundinfo_0xA0.z;
+                            sp5C.x = gMPGroundData->unk_groundinfo_0xA0.x;
+                            sp5C.y = gMPGroundData->unk_groundinfo_0xA0.y;
+                            sp5C.z = gMPGroundData->unk_groundinfo_0xA0.z;
 
                             func_ovl2_8010D0A4(&sp68, &sp5C);
 

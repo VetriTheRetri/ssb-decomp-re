@@ -36,7 +36,7 @@ void ftKirbyCopyNessSpecialNProcAccessory(GObj *fighter_gobj)
         pos.x += FTKIRBY_COPYNESS_PKFIRE_SPAWN_OFF_X * fp->lr;
         pos.y += FTKIRBY_COPYNESS_PKFIRE_SPAWN_OFF_Y;
 
-        if (fp->ground_or_air == GA_Air)
+        if (fp->ground_or_air == nMPKineticsAir)
         {
             vel.z = 0.0F;
             angle = FTKIRBY_COPYNESS_PKFIRE_SPARK_ANGLE_AIR;

@@ -25,7 +25,7 @@ void ftSamusSpecialHiProcPhysics(GObj *fighter_gobj)
         fp->command_vars.flags.flag1 = FALSE;
         fp->phys_info.vel_air.x = fp->lr * FTSAMUS_SCREWATTACK_VEL_X_BASE;
     }
-    if (fp->ground_or_air == GA_Air)
+    if (fp->ground_or_air == nMPKineticsAir)
     {
         ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
         ftPhysics_ClampAirVelXStickRange(fp, 0, FTSAMUS_SCREWATTACK_DRIFT_MUL, FTSAMUS_SCREWATTACK_DRIFT_CLAMP);
@@ -50,7 +50,7 @@ void ftSamusSpecialHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Air)
+    if (fp->ground_or_air == nMPKineticsAir)
     {
         if (fp->phys_info.vel_air.y >= 0.0F)
         {

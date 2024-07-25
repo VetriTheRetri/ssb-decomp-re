@@ -20,7 +20,7 @@ extern intptr_t lITRShellMatAnimJoint;      // 0x00006048
 itCreateDesc dITRShellItemDesc =
 {
     It_Kind_RShell,                         // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITRShellITemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -161,7 +161,7 @@ void itRShellGSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
     s32 lr_vel;
     s32 lr_dist;
 
-    if (ip->ground_or_air == GA_Ground)
+    if (ip->ground_or_air == nMPKineticsGround)
     {
         dist_x = (DObjGetStruct(fighter_gobj)->translate.vec.f.x - DObjGetStruct(item_gobj)->translate.vec.f.x);
 
@@ -393,7 +393,7 @@ sb32 itRShellSDefaultProcDamage(GObj *item_gobj)
         itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
 
-        if (ip->ground_or_air != GA_Ground)
+        if (ip->ground_or_air != nMPKineticsGround)
         {
             itRShellASpinSetStatus(item_gobj);
         }
@@ -488,11 +488,11 @@ void itRShellGSpinCheckCollisionEdge(GObj *item_gobj)
     DObj *joint = DObjGetStruct(item_gobj);
     Vec3f pos;
 
-    if (mpCollision_CheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
+    if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
         if (ip->lr == LR_Left)
         {
-            mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
             if (pos.x >= (joint->translate.vec.f.x - attributes->objectcoll_width))
             {
@@ -501,7 +501,7 @@ void itRShellGSpinCheckCollisionEdge(GObj *item_gobj)
         }
         else
         {
-            mpCollision_GetLREdgeRight(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
             if (pos.x <= (joint->translate.vec.f.x + attributes->objectcoll_width))
             {
@@ -565,7 +565,7 @@ sb32 itRShellSDefaultProcHit(GObj *item_gobj)
 
     itRShellSDefaultClearAnim(item_gobj);
 
-    if (ip->ground_or_air != GA_Ground)
+    if (ip->ground_or_air != nMPKineticsGround)
     {
         itRShellASpinSetStatus(item_gobj);
     }

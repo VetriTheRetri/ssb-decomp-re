@@ -78,7 +78,7 @@ void ftKirbySpecialNInitStatusVars(GObj *fighter_gobj, sb32 unused)
 // 0x80161E3C
 void ftKirbySpecialNInitCatchVars(ftStruct *fp)
 {
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_SPECIALNKIRBY, ftKirbySpecialNCatchProcCatch, ftCommonCaptureKirbyProcCapture);
     }
@@ -203,7 +203,7 @@ void ftKirbySpecialNCatchProcUpdate(GObj *fighter_gobj)
         
         func_800269C0_275C0(alSound_SFX_KirbySpecialNCopyEat);
 
-        if (kirby_fp->ground_or_air == GA_Ground)
+        if (kirby_fp->ground_or_air == nMPKineticsGround)
         {
             ftKirbySpecialNEatSetStatus(fighter_gobj);
         }
@@ -237,7 +237,7 @@ void ftKirbySpecialAirNTurnProcUpdate(GObj *fighter_gobj)
 void ftKirbySpecialNEatProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    void (*proc_status)(GObj*) = (fp->ground_or_air == GA_Ground) ? ftKirbySpecialNWaitSetStatusFromEat : ftKirbySpecialAirNWaitSetStatusFromEat;
+    void (*proc_status)(GObj*) = (fp->ground_or_air == nMPKineticsGround) ? ftKirbySpecialNWaitSetStatusFromEat : ftKirbySpecialAirNWaitSetStatusFromEat;
 
     ftStatusSetOnAnimEnd(fighter_gobj, proc_status);
 }

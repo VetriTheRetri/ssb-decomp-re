@@ -6,7 +6,7 @@
 #include <sys/obj.h>
 #include <cm/camera.h>
 #include <ef/effect.h>
-#include <mp/mpcoll.h>
+#include <mp/map.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
 #include <gm/battle.h>
@@ -169,7 +169,7 @@ struct wpStruct
     } phys_info;
 
     mpCollData coll_data;               // Weapon's collision data
-    mpGroundAir ground_or_air;          // Ground or air bool
+    mpKinetics ground_or_air;          // Ground or air bool
 
     wpHitbox weapon_hit;                // Weapon's hitbox
 

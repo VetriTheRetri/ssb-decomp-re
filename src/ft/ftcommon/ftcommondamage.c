@@ -38,7 +38,7 @@ s32 dFTCommonDamageStatusAirIDs[/* */][3] =
 // 0x80140340
 void ftCommonDamageSetDustEffectInterval(ftStruct *fp)
 {
-    f32 vel = (fp->ground_or_air == GA_Air) ? lbVector_Vec3fMagnitude(&fp->phys_info.vel_damage_air) : ABSF(fp->phys_info.vel_damage_ground);
+    f32 vel = (fp->ground_or_air == nMPKineticsAir) ? lbVector_Vec3fMagnitude(&fp->phys_info.vel_damage_air) : ABSF(fp->phys_info.vel_damage_ground);
     s32 make_effect_wait;
 
     if (vel < FTCOMMON_DAMAGE_EFFECT_KNOCKBACK_LOW)
@@ -173,7 +173,7 @@ void ftCommonDamageCommonProcInterrupt(GObj *fighter_gobj)
     {
         fp->is_hitstun = FALSE;
 
-        if (fp->ground_or_air == GA_Air)
+        if (fp->ground_or_air == nMPKineticsAir)
         {
             if (ftHammer_CheckItemHold(fighter_gobj) != FALSE)
             {
@@ -217,7 +217,7 @@ void ftCommonDamageCommonProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Air)
+    if (fp->ground_or_air == nMPKineticsAir)
     {
         if (fp->status_vars.common.damage.hitstun_timer == 0)
         {
@@ -292,7 +292,7 @@ f32 ftCommonDamageGetKnockbackAngle(s32 angle_i, sb32 ground_or_air, f32 knockba
     {
         angle_f = F_CLC_DTOR32(angle_i);
     }
-    else if (ground_or_air == GA_Air)
+    else if (ground_or_air == nMPKineticsAir)
     {
         angle_f = FTCOMMON_DAMAGE_SAKURAI_ANGLE_DEFAULT_AR;
     }
@@ -506,7 +506,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
 
     this_fp->lr = lr_damage;
 
-    if (this_fp->ground_or_air == GA_Air)
+    if (this_fp->ground_or_air == nMPKineticsAir)
     {
         status_id_var = status_id_set = dFTCommonDamageStatusAirIDs[damage_level][damage_index];
 
@@ -565,7 +565,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     }
     this_fp->phys_info.vel_air.x = this_fp->phys_info.vel_air.y = this_fp->phys_info.vel_air.z = this_fp->phys_info.vel_ground.x = 0.0F;
 
-    if ((damage_level == 3) && (this_fp->ground_or_air == GA_Air))
+    if ((damage_level == 3) && (this_fp->ground_or_air == nMPKineticsAir))
     {
         if ((angle_end > FTCOMMON_DAMAGE_FIGHTER_FLYTOP_ANGLE_LOW) && (angle_end < FTCOMMON_DAMAGE_FIGHTER_FLYTOP_ANGLE_HIGH))
         {

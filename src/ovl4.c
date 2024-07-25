@@ -14,7 +14,7 @@ extern ftCreateDesc dFTDefaultFighterDesc;
 
 void ifCommonAnnounceTimeUpInitInterface();
 void gmRumbleInitPlayers();
-void ftRender_Lights_DisplayLightReflect(Gfx **display_list, f32 arg1, f32 arg2);
+void ftRenderLightsDrawReflect(Gfx **display_list, f32 arg1, f32 arg2);
 
 Unk800D4060 D_ovl4_8018E3D0 = { 0 };
 Unk800D4060 D_ovl4_8018E3D4 = { 0 };
@@ -56,7 +56,7 @@ s32 scBattle_GetPlayerStartLR(s32 target_player)
 	near_dist = 65536.0F;
 	near_spawn = 0.0F;
 
-	mpCollision_GetPlayerMPointPosition(target_player, &target_spawn_pos);
+	mpCollisionGetPlayerMapObjPosition(target_player, &target_spawn_pos);
 
 	for (loop_player = 0; loop_player < ARRAY_COUNT(gBattleState->player_block); loop_player++)
 	{
@@ -66,7 +66,7 @@ s32 scBattle_GetPlayerStartLR(s32 target_player)
 
 		if (gBattleState->player_block[loop_player].player != gBattleState->player_block[target_player].player)
 		{
-			mpCollision_GetPlayerMPointPosition(loop_player, &loop_spawn_pos);
+			mpCollisionGetPlayerMapObjPosition(loop_player, &loop_spawn_pos);
 
 			distx = (loop_spawn_pos.x < target_spawn_pos.x) ? -(loop_spawn_pos.x - target_spawn_pos.x) : (loop_spawn_pos.x - target_spawn_pos.x);
 
@@ -114,7 +114,7 @@ void scBattle_StartStockBattle()
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
-	mpCollision_InitMapCollisionData();
+	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
 	grWallpaperMakeGroundWallpaper();
@@ -137,7 +137,7 @@ void scBattle_StartStockBattle()
 		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
 		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
 
-		mpCollision_GetPlayerMPointPosition(player, &player_spawn.pos);
+		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
 		player_spawn.lr_spawn = scBattle_GetPlayerStartLR(player);
 
 		player_spawn.team = gBattleState->player_block[player].player;
@@ -172,7 +172,7 @@ void scBattle_StartStockBattle()
 	ifCommonPlayerDamageInitInterface();
 	ifCommonPlayerStockInitInterface();
 	ifCommonEntryAllMakeInterface();
-	mpCollision_SetPlayMusicID();
+	mpCollisionSetPlayMusicID();
 	func_800269C0_275C0(0x272U);
 	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
 	ifCommonTimerMakeDigitSObjs();
@@ -376,7 +376,7 @@ void scBattle_StartSDBattle()
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
-	mpCollision_InitMapCollisionData();
+	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
 	grWallpaperMakeGroundWallpaper();
@@ -399,7 +399,7 @@ void scBattle_StartSDBattle()
 		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
 		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
 
-		mpCollision_GetPlayerMPointPosition(player, &player_spawn.pos);
+		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
 
 		player_spawn.lr_spawn = scBattle_GetPlayerStartLR(player);
 
@@ -440,7 +440,7 @@ void scBattle_StartSDBattle()
 	ifCommonPlayerDamageInitInterface();
 	ifCommonPlayerStockInitInterface();
 	ifCommonSuddenDeathMakeInterface();
-	mpCollision_SetPlayMusicID();
+	mpCollisionSetPlayMusicID();
 	func_800269C0_275C0(0x272U);
 	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
 	ifCommonTimerMakeDigitSObjs();
@@ -455,7 +455,7 @@ void scBattle_SetGeometryRenderLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 
-	ftRender_Lights_DisplayLightReflect(display_list, gMPLightAngleX, gMPLightAngleY);
+	ftRenderLightsDrawReflect(display_list, gMPLightAngleX, gMPLightAngleY);
 }
 
 // 8018E190

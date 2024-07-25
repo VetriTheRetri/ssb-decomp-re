@@ -5,7 +5,7 @@
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
 #include <sys/objdraw.h>
-#include <mp/mpcoll.h>
+#include <mp/map.h>
 
 typedef struct gmGroundUnkBytes
 {
@@ -76,6 +76,6 @@ typedef struct grCommonData
 
 } grCommonData;
 
-extern grCommonData* gGroundInfo; // TO DO: move this to the correct file
+extern grCommonData* gMPGroundData; // TO DO: move this to the correct file
 
 #endif

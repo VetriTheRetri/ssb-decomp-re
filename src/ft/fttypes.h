@@ -10,7 +10,7 @@
 #include <cm/camera.h>
 #include <ef/effect.h>
 #include <if/interface.h>
-#include <mp/mpcoll.h>
+#include <mp/map.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
 #include <gm/gmscript.h>
@@ -803,7 +803,7 @@ struct ftStruct
 
     u8 jumps_used;
     u8 unk_ft_0x149;
-    mpGroundAir ground_or_air;
+    mpKinetics ground_or_air;
 
     f32 attack1_followup_frames;
     s32 attack1_status_id;

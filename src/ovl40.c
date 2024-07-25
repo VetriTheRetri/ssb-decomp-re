@@ -128,7 +128,7 @@ void mvOpeningLinkInitFighterStagePanel()
 	grWallpaperMakeGroundWallpaper();
 	grCommonSetupInitAll();
 
-	if (mpCollision_GetMPointCountKind(mpMPoint_Kind_Unk0x15) != 1)
+	if (mpCollisionGetMapObjCountKind(nMPMapObjKindUnk0x15) != 1)
 	{
 		while (TRUE)
 		{
@@ -137,8 +137,8 @@ void mvOpeningLinkInitFighterStagePanel()
 		}
 	}
 
-	mpCollision_GetMPointIDsKind(mpMPoint_Kind_Unk0x15, &pos_ids);
-	mpCollision_GetMPointPositionID(pos_ids, &spawn_position);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindUnk0x15, &pos_ids);
+	mpCollisionGetMapObjPositionID(pos_ids, &spawn_position);
 	mvOpeningLinkCreateStageViewport(spawn_position);
 	gmRumbleMakeActor();
 	ftPublicitySetup();
@@ -327,7 +327,7 @@ void mvOpeningLinkInit()
 	mvOpeningLinkInitFramesElapsed();
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
-	mpCollision_InitMapCollisionData();
+	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
 	ftManagerAllocFighter(3, 2);
@@ -352,7 +352,7 @@ void mvOpeningLinkInit()
 void gMvOpeningLinkSetupDisplayList(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRender_Lights_DisplayLightReflect(display_list, gMPLightAngleX, gMPLightAngleY);
+	ftRenderLightsDrawReflect(display_list, gMPLightAngleX, gMPLightAngleY);
 }
 
 // 8018E018

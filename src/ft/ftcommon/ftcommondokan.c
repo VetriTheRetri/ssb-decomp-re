@@ -39,14 +39,14 @@ void ftCommonDokanStartProcPhysics(GObj *fighter_gobj)
     Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     s32 ground_line_id;
 
-    mpCollision_GetMPointIDsKind
+    mpCollisionGetMapObjIDsKind
     (
-        (fp->status_vars.common.dokan.material == mpCollision_Material_DokanLeft) ? 
-        mpMPoint_Kind_DokanL :
-        mpMPoint_Kind_DokanR,
+        (fp->status_vars.common.dokan.material == nMPMaterialDokanLeft) ? 
+        nMPMapObjKindDokanL :
+        nMPMapObjKindDokanR,
         &ground_line_id
     );
-    mpCollision_GetMPointPositionID(ground_line_id, &dokan_pos);
+    mpCollisionGetMapObjPositionID(ground_line_id, &dokan_pos);
 
     if (translate->x > dokan_pos.x)
     {
@@ -85,14 +85,14 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
 
     fp->status_vars.common.dokan.material = material;
 
-    mpCollision_GetMPointIDsKind
+    mpCollisionGetMapObjIDsKind
     (
-        (fp->status_vars.common.dokan.material == mpCollision_Material_DokanLeft) ? 
-        mpMPoint_Kind_DokanL : 
-        mpMPoint_Kind_DokanR,
+        (fp->status_vars.common.dokan.material == nMPMaterialDokanLeft) ? 
+        nMPMapObjKindDokanL : 
+        nMPMapObjKindDokanR,
         &new_point_id
     );
-    mpCollision_GetMPointPositionID(new_point_id, &fp->status_vars.common.dokan.pos_current);
+    mpCollisionGetMapObjPositionID(new_point_id, &fp->status_vars.common.dokan.pos_current);
 
     func_800269C0_275C0(alSound_SFX_MarioDokan);
     ftCommon_SetPlayerTagWait(fighter_gobj, 1);
@@ -121,10 +121,10 @@ sb32 ftCommonDokanStartCheckInterruptCommon(GObj *fighter_gobj)
 
     if ((fp->input.pl.stick_range.y <= FTCOMMON_DOKAN_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_DOKAN_BUFFER_FRAMES_MAX))
     {
-        if ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_DokanLeft)
+        if ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDokanLeft)
         {
-            mpCollision_GetMPointIDsKind(mpMPoint_Kind_DokanL, &ground_line_id);
-            mpCollision_GetMPointPositionID(ground_line_id, &pos);
+            mpCollisionGetMapObjIDsKind(nMPMapObjKindDokanL, &ground_line_id);
+            mpCollisionGetMapObjPositionID(ground_line_id, &pos);
 
             if (pos.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x)
             {
@@ -134,15 +134,15 @@ sb32 ftCommonDokanStartCheckInterruptCommon(GObj *fighter_gobj)
 
             if (dist_x <= FTCOMMON_DOKAN_DETECT_WIDTH)
             {
-                ftCommonDokanStartSetStatus(fighter_gobj, mpCollision_Material_DokanLeft);
+                ftCommonDokanStartSetStatus(fighter_gobj, nMPMaterialDokanLeft);
 
                 return TRUE;
             }
         }
-        else if ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_DokanRight)
+        else if ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDokanRight)
         {
-            mpCollision_GetMPointIDsKind(mpMPoint_Kind_DokanR, &ground_line_id);
-            mpCollision_GetMPointPositionID(ground_line_id, &pos);
+            mpCollisionGetMapObjIDsKind(nMPMapObjKindDokanR, &ground_line_id);
+            mpCollisionGetMapObjPositionID(ground_line_id, &pos);
 
             if (pos.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x)
             {
@@ -152,7 +152,7 @@ sb32 ftCommonDokanStartCheckInterruptCommon(GObj *fighter_gobj)
 
             if (dist_x <= FTCOMMON_DOKAN_DETECT_WIDTH)
             {
-                ftCommonDokanStartSetStatus(fighter_gobj, mpCollision_Material_DokanRight);
+                ftCommonDokanStartSetStatus(fighter_gobj, nMPMaterialDokanRight);
 
                 return TRUE;
             }
@@ -170,7 +170,7 @@ void ftCommonDokanWaitProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.common.dokan.pos_adjust_wait == FTCOMMON_DOKAN_POS_ADJUST_WAIT)
     {
-        if (fp->status_vars.common.dokan.mpoint_kind == mpMPoint_Kind_DokanWall)
+        if (fp->status_vars.common.dokan.mapobj_kind == nMPMapObjKindDokanWall)
         {
             ftCommonDokanWalkSetStatus(fighter_gobj);
         }
@@ -205,22 +205,22 @@ void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
 
     fp->is_ignore_training_menu = TRUE;
 
-    if (fp->status_vars.common.dokan.material == mpCollision_Material_DokanLeft)
+    if (fp->status_vars.common.dokan.material == nMPMaterialDokanLeft)
     {
-        fp->status_vars.common.dokan.mpoint_kind = mpMPoint_Kind_DokanR;
+        fp->status_vars.common.dokan.mapobj_kind = nMPMapObjKindDokanR;
     }
-    else fp->status_vars.common.dokan.mpoint_kind = mpMPoint_Kind_DokanL;
+    else fp->status_vars.common.dokan.mapobj_kind = nMPMapObjKindDokanL;
 
-    mpCollision_GetMPointIDsKind(fp->status_vars.common.dokan.mpoint_kind, &line_id);
+    mpCollisionGetMapObjIDsKind(fp->status_vars.common.dokan.mapobj_kind, &line_id);
 
-    mpCollision_GetMPointPositionID(line_id, &fp->status_vars.common.dokan.pos_target);
+    mpCollisionGetMapObjPositionID(line_id, &fp->status_vars.common.dokan.pos_target);
 
     if (mtTrigGetRandomFloat() <= 0.25F)
     {
-        fp->status_vars.common.dokan.mpoint_kind = mpMPoint_Kind_DokanWall;
+        fp->status_vars.common.dokan.mapobj_kind = nMPMapObjKindDokanWall;
 
-        mpCollision_GetMPointIDsKind(mpMPoint_Kind_DokanWall, &line_id);
-        mpCollision_GetMPointPositionID(line_id, &fp->status_vars.common.dokan.pos_target);
+        mpCollisionGetMapObjIDsKind(nMPMapObjKindDokanWall, &line_id);
+        mpCollisionGetMapObjPositionID(line_id, &fp->status_vars.common.dokan.pos_target);
 
         if (func_ovl2_800F9C30(&fp->status_vars.common.dokan.pos_target, NULL, &pos_target_x, NULL, NULL) != FALSE)
         {

@@ -30,7 +30,7 @@ intptr_t dITBombHeiDisplayListOffsets[/* */] =
 itCreateDesc dITBombHeiItemDesc =
 {
     It_Kind_BombHei,                        // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITBombHeiItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -466,11 +466,11 @@ sb32 itBombHeiGWalkProcUpdate(GObj *item_gobj)
 
     itBombHeiGWalkUpdateEffect(item_gobj);
 
-    if (mpCollision_CheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
+    if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
         if (ip->lr == LR_Left)
         {
-            mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
             if (pos.x >= (dobj->translate.vec.f.x - attributes->objectcoll_width))
             {
@@ -479,7 +479,7 @@ sb32 itBombHeiGWalkProcUpdate(GObj *item_gobj)
         }
         else
         {
-            mpCollision_GetLREdgeRight(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
             if (pos.x <= (dobj->translate.vec.f.x + attributes->objectcoll_width))
             {
@@ -540,11 +540,11 @@ void itBombHeiGWalkInitItemVars(GObj *item_gobj)
 
     func_8000DF34_EB34(item_gobj);
 
-    if (mpCollision_CheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
+    if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
         if (ip->lr == LR_Left)
         {
-            mpCollision_GetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
             if (pos.x >= (dobj->translate.vec.f.x - attributes->objectcoll_width))
             {
@@ -553,7 +553,7 @@ void itBombHeiGWalkInitItemVars(GObj *item_gobj)
         }
         else
         {
-            mpCollision_GetLREdgeRight(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
             if (pos.x <= (dobj->translate.vec.f.x + attributes->objectcoll_width))
             {

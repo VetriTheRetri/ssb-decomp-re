@@ -31,8 +31,8 @@ void ftCommonRebirthDownSetStatus(GObj *this_gobj)
     rebirth_vars.lr_spawn = this_fp->lr;
     rebirth_vars.damage = 0;
 
-    mpCollision_GetMPointIDsKind(mpMPoint_Kind_Rebirth, &halo_mpoint);
-    mpCollision_GetMPointPositionID(halo_mpoint, &halo_spawn_pos);
+    mpCollisionGetMapObjIDsKind(nMPMapObjKindRebirth, &halo_mpoint);
+    mpCollisionGetMapObjPositionID(halo_mpoint, &halo_spawn_pos);
 
     halo_number = 0;
 
@@ -60,7 +60,7 @@ loop: // This makes no sense
         other_gobj = other_gobj->link_next;
     }
     rebirth_vars.pos.x = dFTCommonRebirthOffsetsX[halo_number] + halo_spawn_pos.x;
-    rebirth_vars.pos.y = gGroundInfo->blastzone_top;
+    rebirth_vars.pos.y = gMPGroundData->blastzone_top;
     rebirth_vars.pos.z = 0.0F;
 
     ftManagerInitFighter(this_gobj, &rebirth_vars);

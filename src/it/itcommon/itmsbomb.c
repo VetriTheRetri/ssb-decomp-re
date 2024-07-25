@@ -19,7 +19,7 @@ extern intptr_t lITMSBombHitEvents;          // 0x00000404
 itCreateDesc dITMSBombItemDesc =
 {
     It_Kind_MSBomb,                         // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITMSBombItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -463,7 +463,7 @@ sb32 itMSBombGAttachProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (mpCollision_CheckExistLineID(ip->attach_line_id) == FALSE)
+    if (mpCollisionCheckExistLineID(ip->attach_line_id) == FALSE)
     {
         ip->is_attach_surface = FALSE;
 

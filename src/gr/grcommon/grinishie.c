@@ -23,7 +23,7 @@ extern void grModelSetupInitDObj();
 // // // // // // // // // // // //
 
 // 0x8012EB30
-u16 dGRInishieScaleMPointKinds[/* */] = { mpMPoint_Kind_ScaleL, mpMPoint_Kind_ScaleR };
+u16 dGRInishieScaleMapObjKinds[/* */] = { nMPMapObjKindScaleL, nMPMapObjKindScaleR };
 
 // 0x8012EB34
 u8 dGRInishieScaleLineGroups[/* */] = { 0x01, 0x02 };
@@ -39,7 +39,7 @@ DObjTransformTypes dGRInishieScaleTransformKinds[/* */] =
 };
 
 // 0xx8012EB48
-u16 dGRInishiePakkunMPointKinds[/* */] = { mpMPoint_Kind_PakkunLSpawn, mpMPoint_Kind_PakkunRSpawn };
+u16 dGRInishiePakkunMapObjKinds[/* */] = { nMPMapObjKindPakkunLSpawn, nMPMapObjKindPakkunRSpawn };
 
 // // // // // // // // // // // //
 //                               //
@@ -79,9 +79,9 @@ void grInishieScaleUpdateFighterStatsGA(void)
         ftStruct *fp = ftGetStruct(fighter_gobj);
         s32 player = fp->player;
 
-        if (fp->ground_or_air == GA_Ground)
+        if (fp->ground_or_air == nMPKineticsGround)
         {
-            if (gGroundStruct.inishie.players_ga[player] != GA_Ground)
+            if (gGroundStruct.inishie.players_ga[player] != nMPKineticsGround)
             {
                 gGroundStruct.inishie.players_tt[player] = 1;
             }
@@ -108,9 +108,9 @@ f32 grInishieScaleGetPressure(s32 line_id)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (fp->ground_or_air == GA_Ground)
+        if (fp->ground_or_air == nMPKineticsGround)
         {
-            if ((fp->coll_data.ground_line_id != -2) && (mpCollision_SetDObjNoID(fp->coll_data.ground_line_id) == line_id))
+            if ((fp->coll_data.ground_line_id != -2) && (mpCollisionSetDObjNoID(fp->coll_data.ground_line_id) == line_id))
             {
                 f32 weight = (1.0F - fp->attributes->weight) + 1.4F;
 
@@ -246,15 +246,15 @@ void grInishieScaleUpdateFall(void)
     gGroundStruct.inishie.scale[0].platform_dobj->translate.vec.f.y -= gGroundStruct.inishie.splat_accelerate;
     gGroundStruct.inishie.scale[1].platform_dobj->translate.vec.f.y -= gGroundStruct.inishie.splat_accelerate;
 
-    deadzone = gGroundInfo->blastzone_bottom + (-1000.0F);
+    deadzone = gMPGroundData->blastzone_bottom + (-1000.0F);
 
     if ((gGroundStruct.inishie.scale[0].platform_dobj->translate.vec.f.y < deadzone) && (gGroundStruct.inishie.scale[1].platform_dobj->translate.vec.f.y < deadzone))
     {
         gGroundStruct.inishie.splat_status = nGRInishieScaleStatusSleep;
         gGroundStruct.inishie.splat_accelerate = 0.0F;
 
-        mpCollision_SetYakumonoOffID(dGRInishieScaleLineGroups[0]);
-        mpCollision_SetYakumonoOffID(dGRInishieScaleLineGroups[1]);
+        mpCollisionSetYakumonoOffID(dGRInishieScaleLineGroups[0]);
+        mpCollisionSetYakumonoOffID(dGRInishieScaleLineGroups[1]);
 
         gGroundStruct.inishie.splat_wait = 180;
     }
@@ -312,12 +312,12 @@ void grInishieScaleUpdateRetract(void)
         l_dobj->dobj_f0 = AOBJ_FRAME_NULL;
         l_dobj->flags = DOBJ_FLAG_NONE;
 
-        mpCollision_SetYakumonoOnID(dGRInishieScaleLineGroups[0]);
+        mpCollisionSetYakumonoOnID(dGRInishieScaleLineGroups[0]);
 
         r_dobj->dobj_f0 = AOBJ_FRAME_NULL;
         r_dobj->flags = DOBJ_FLAG_NONE;
 
-        mpCollision_SetYakumonoOnID(dGRInishieScaleLineGroups[1]);
+        mpCollisionSetYakumonoOnID(dGRInishieScaleLineGroups[1]);
 
         gGroundStruct.inishie.splat_status = nGRInishieScaleStatusWait;
     }
@@ -349,8 +349,8 @@ void grInishieScaleProcUpdate(GObj *ground_gobj)
         grInishieScaleUpdateRetract();
         break;
     }
-    mpCollision_SetYakumonoPosID(dGRInishieScaleLineGroups[0], &gGroundStruct.inishie.scale[0].platform_dobj->translate.vec.f);
-    mpCollision_SetYakumonoPosID(dGRInishieScaleLineGroups[1], &gGroundStruct.inishie.scale[1].platform_dobj->translate.vec.f);
+    mpCollisionSetYakumonoPosID(dGRInishieScaleLineGroups[0], &gGroundStruct.inishie.scale[0].platform_dobj->translate.vec.f);
+    mpCollisionSetYakumonoPosID(dGRInishieScaleLineGroups[1], &gGroundStruct.inishie.scale[1].platform_dobj->translate.vec.f);
 }
 
 // 0x801094A0
@@ -387,14 +387,14 @@ void grInishieMakeScale(void)
         omAddOMMtxForDObjFixed(platform_dobj, OMMtx_Transform_Tra, 0);
         omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
 
-        mpCollision_GetMPointIDsKind(dGRInishieScaleMPointKinds[i], &mpoint);
-        mpCollision_GetMPointPositionID(mpoint, &yakumono_pos);
+        mpCollisionGetMapObjIDsKind(dGRInishieScaleMapObjKinds[i], &mpoint);
+        mpCollisionGetMapObjPositionID(mpoint, &yakumono_pos);
 
         platform_dobj->translate.vec.f = yakumono_pos;
 
         gGroundStruct.inishie.scale[i].platform_base_y = yakumono_pos.y;
 
-        mpCollision_SetYakumonoOnID(dGRInishieScaleLineGroups[i]);
+        mpCollisionSetYakumonoOnID(dGRInishieScaleLineGroups[i]);
     }
     omAddGObjCommonProc(ground_gobj, grInishieScaleProcUpdate, GObjProcess_Kind_Proc, 4);
 
@@ -431,8 +431,8 @@ void grInishieMakePakkun(void)
 
     for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.pakkun_gobj); i++)
     {
-        mpCollision_GetMPointIDsKind(dGRInishiePakkunMPointKinds[i], &mpoint);
-        mpCollision_GetMPointPositionID(mpoint, &pos);
+        mpCollisionGetMapObjIDsKind(dGRInishiePakkunMapObjKinds[i], &mpoint);
+        mpCollisionGetMapObjPositionID(mpoint, &pos);
 
         vel.x = vel.y = vel.z = 0.0F;
 
@@ -470,7 +470,7 @@ void grInishiePowerBlockUpdateMake(void)
     {
         s32 pblock_pos_id = gGroundStruct.inishie.pblock_pos_ids[mtTrigGetRandomIntRange(gGroundStruct.inishie.pblock_pos_count)];
 
-        mpCollision_GetMPointPositionID(pblock_pos_id, &pos);
+        mpCollisionGetMapObjPositionID(pblock_pos_id, &pos);
 
         vel.x = vel.y = vel.z = 0.0F;
 
@@ -522,7 +522,7 @@ void grInishieMakePowerBlock(void)
 
     omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT), grInishiePowerBlockProcUpdate, GObjProcess_Kind_Proc, 4);
 
-    gGroundStruct.inishie.pblock_pos_count = pos_count = mpCollision_GetMPointCountKind(mpMPoint_Kind_PowerBlock);
+    gGroundStruct.inishie.pblock_pos_count = pos_count = mpCollisionGetMapObjCountKind(nMPMapObjKindPowerBlock);
 
     if ((pos_count == 0) || (pos_count > ARRAY_COUNT(pos_ids)))
     {
@@ -534,14 +534,14 @@ void grInishieMakePowerBlock(void)
     }
     gGroundStruct.inishie.pblock_pos_ids = (u8*) gsMemoryAlloc(pos_count * sizeof(*gGroundStruct.inishie.pblock_pos_ids), 0x0);
 
-    mpCollision_GetMPointIDsKind(mpMPoint_Kind_PowerBlock, pos_ids);
+    mpCollisionGetMapObjIDsKind(nMPMapObjKindPowerBlock, pos_ids);
 
     for (i = 0; i < pos_count; i++)
     {
         gGroundStruct.inishie.pblock_pos_ids[i] = pos_ids[i];
     }
     gGroundStruct.inishie.pblock_status = nGRInishiePowerBlockStatusWait;
-    gGroundStruct.inishie.gr_hit = (grHitbox*) (((uintptr_t)gGroundInfo - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRInishiePowerBlockHit);
+    gGroundStruct.inishie.gr_hit = (grHitbox*) (((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRInishiePowerBlockHit);
 }
 
 // 0x80109B4C
@@ -558,7 +558,7 @@ sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, 
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
@@ -576,8 +576,8 @@ sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, 
 // 0x80109BD4
 void grInishieInitHeaders(void)
 {
-    gGroundStruct.inishie.map_head = (void*) ((uintptr_t)gGroundInfo->map_nodes - (intptr_t)&lGRInishieMapHead);
-    gGroundStruct.inishie.item_head = (void*) ((uintptr_t)gGroundInfo - (intptr_t)&lGRCommonHeaderStart);
+    gGroundStruct.inishie.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRInishieMapHead);
+    gGroundStruct.inishie.item_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart);
 }
 
 // 0x80109C0C

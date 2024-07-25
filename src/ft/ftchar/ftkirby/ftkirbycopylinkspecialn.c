@@ -169,7 +169,7 @@ void ftKirbyCopyLinkSpecialNReturnSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Air)
+    if (fp->ground_or_air == nMPKineticsAir)
     {
         ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyLink_SpecialAirNReturn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     }

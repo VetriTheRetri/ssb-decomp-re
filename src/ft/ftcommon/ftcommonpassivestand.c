@@ -11,7 +11,7 @@ void ftCommonPassiveStandSetStatus(GObj *fighter_gobj, s32 status_id)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Air)
+    if (fp->ground_or_air == nMPKineticsAir)
     {
         ftMap_SetGround(fp);
     }

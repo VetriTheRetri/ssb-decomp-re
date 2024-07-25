@@ -37,7 +37,7 @@ void ftCaptainSpecialLwSetAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->ground_or_air = GA_Air;
+    fp->ground_or_air = nMPKineticsAir;
     fp->jumps_used = 1;
 }
 
@@ -52,7 +52,7 @@ void ftCaptainSpecialLwDecideMapCollide(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         if (fp->command_vars.flags.flag3 != 0)
         {
@@ -68,7 +68,7 @@ void ftCaptainSpecialLwDecideSetEndStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftCommonWaitSetStatus(fighter_gobj);
     }
@@ -86,7 +86,7 @@ void ftCaptainSpecialLwProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         fp->joint[ftParts_Joint_TopN]->rotate.vec.f.z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
         ftPhysics_ApplyGroundVelTransN(fighter_gobj);
@@ -145,7 +145,7 @@ sb32 ftCaptainSpecialLwAirCheckAirGoto(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag1 == 2)
     {
-        if (fp->ground_or_air == GA_Air)
+        if (fp->ground_or_air == nMPKineticsAir)
         {
             ftCaptainSpecialLwAirSetStatus(fighter_gobj);
 

@@ -47,7 +47,7 @@ void ftCommonThrownProcMap(GObj *fighter_gobj)
 
     if (capture_fp->coll_data.ground_line_id != -1)
     {
-        if (mpCollision_GetUDCommonUp(capture_fp->coll_data.ground_line_id, this_pos, &dist_y, &this_fp->coll_data.ground_flags, &this_fp->coll_data.ground_angle) != FALSE)
+        if (mpCollisionGetUDCommonUp(capture_fp->coll_data.ground_line_id, this_pos, &dist_y, &this_fp->coll_data.ground_flags, &this_fp->coll_data.ground_angle) != FALSE)
         {
             this_fp->coll_data.ground_line_id = capture_fp->coll_data.ground_line_id;
 
@@ -63,7 +63,7 @@ void ftCommonThrownSetStatusQueue(GObj *fighter_gobj, s32 status_id_new, s32 sta
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
 
-    this_fp->ground_or_air = GA_Air;
+    this_fp->ground_or_air = nMPKineticsAir;
     this_fp->jumps_used = 1;
 
     ftMainSetFighterStatus(fighter_gobj, status_id_new, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
@@ -86,7 +86,7 @@ void ftCommonThrownSetStatusImmediate(GObj *fighter_gobj, s32 status_id)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
 
-    this_fp->ground_or_air = GA_Air;
+    this_fp->ground_or_air = nMPKineticsAir;
     this_fp->jumps_used = 1;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);

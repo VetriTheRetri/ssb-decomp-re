@@ -28,7 +28,7 @@ extern f32 gMPLightAngleY;          // 80131394
 extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
 
-extern void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32);
+extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern void func_8000FA3C(void*, void*, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void ftManagerSetupDataKind(s32);

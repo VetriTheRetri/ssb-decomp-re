@@ -3520,11 +3520,11 @@ void ftComputerUpdateInputs(ftStruct *this_fp)
                         dist_x = ft_com->target_pos.x - this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
                         dist_y = ft_com->target_pos.y - this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
 
-                        if ((this_fp->ground_or_air == GA_Ground) && (this_fp->cp_level < 5))
+                        if ((this_fp->ground_or_air == nMPKineticsGround) && (this_fp->cp_level < 5))
                         {
                             stick_range_x = (ABSF(dist_x) > 100.0F) ? (I_CONTROLLER_RANGE_MAX / 2) : 0;
                         }
-                        else if (this_fp->ground_or_air == GA_Ground)
+                        else if (this_fp->ground_or_air == nMPKineticsGround)
                         {
                             if ((ft_com->dash_predict * 1.5F) < ABSF(dist_x))
                             {
@@ -3548,7 +3548,7 @@ void ftComputerUpdateInputs(ftStruct *this_fp)
                         }
                         stick_range_y = I_CONTROLLER_RANGE_MAX;
 
-                        if (this_fp->ground_or_air == GA_Ground)
+                        if (this_fp->ground_or_air == nMPKineticsGround)
                         {
                             if (this_fp->status_info.status_id != ftStatus_Common_KneeBend)
                             {
@@ -3682,7 +3682,7 @@ void ftComputerSetCommandWaitShort(ftStruct *fp, s32 index)
 {
     ftComputer *ft_com = &fp->fighter_com;
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ft_com->input_wait = ((2.0F * (mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - fp->cp_level))) + ((FTCOMPUTER_LEVEL_MAX - fp->cp_level) * 2) + 1.0F);
     }
@@ -3705,7 +3705,7 @@ void ftComputerSetCommandWaitLong(ftStruct *fp, s32 index)
 {
     ftComputer *ft_com = &fp->fighter_com;
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ft_com->input_wait = ((4 * (mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - fp->cp_level))) + ((FTCOMPUTER_LEVEL_MAX - fp->cp_level) * 4) + 1.0F);
     }
@@ -3747,11 +3747,11 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
                             (other_pos_x <= gMPEdgeBounds.d2.right) &&
                             (gMPEdgeBounds.d2.left <= other_pos_x) &&
                             (gMPEdgeBounds.d2.bottom <= other_pos_y) &&
-                            (other_pos_y < gGroundInfo->cam_bound_top)
+                            (other_pos_y < gMPGroundData->cam_bound_top)
                         ) 
                         ||
                         (
-                            (this_fp->ground_or_air == GA_Ground) &&
+                            (this_fp->ground_or_air == nMPKineticsGround) &&
                             (
                                 (other_fp->status_info.status_id == ftStatus_Common_CliffCatch) ||
                                 (other_fp->status_info.status_id == ftStatus_Common_CliffWait)
@@ -3761,7 +3761,7 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
                     &&
                     (
                         (this_fp->ft_kind != Ft_Kind_MetalMario) ||
-                        (other_fp->ground_or_air == GA_Ground)
+                        (other_fp->ground_or_air == nMPKineticsGround)
                     )
                 )
                 {
@@ -3792,7 +3792,7 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
     ft_com->ftcom_flags_0x4A_b1 = TRUE;
     ft_com->target_dist = sqrtf(distance);
 
-    if (ftGetComTargetFighter(ft_com)->ground_or_air == GA_Ground)
+    if (ftGetComTargetFighter(ft_com)->ground_or_air == nMPKineticsGround)
     {
         ft_com->target_line_id = ftGetComTargetFighter(ft_com)->coll_data.ground_line_id;
     }
@@ -3938,12 +3938,12 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
 
     if (gBattleState->gr_kind == Gr_Kind_Inishie)
     {
-        if ((this_fp->coll_data.ground_line_id >= 0) && (mpCollision_CheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE))
+        if ((this_fp->coll_data.ground_line_id >= 0) && (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE))
         {
             return FALSE;
         }
     }
-    if ((gBattleState->gr_kind == Gr_Kind_Yamabuki) && (this_fp->ground_or_air != GA_Ground))
+    if ((gBattleState->gr_kind == Gr_Kind_Yamabuki) && (this_fp->ground_or_air != nMPKineticsGround))
     {
         if (this_fp->phys_info.vel_air.x > 0.0F)
         {
@@ -3992,7 +3992,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
 
     ft_comattack = dFTComputerAttackList[this_fp->ft_kind];
 
-    if (this_fp->ground_or_air != GA_Ground)
+    if (this_fp->ground_or_air != nMPKineticsGround)
     {
         while (ft_comattack->input_kind != -1)
         {
@@ -4027,7 +4027,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             }
             else predict_adjust_y = (((hit_frame * this_vel_y) - ((this_gravity * SQUARE(this_predict_frame)) * 0.5F)) + (this_fall_speed_max * (hit_frame - this_predict_frame))) + this_pos_y;
 
-            if ((target_fp->status_info.status_id != ftStatus_Common_Pass) && (target_fp->ground_or_air != GA_Ground))
+            if ((target_fp->status_info.status_id != ftStatus_Common_Pass) && (target_fp->ground_or_air != nMPKineticsGround))
             {
                 target_predict_frame = -(target_fall_speed_max - target_vel_y) / target_gravity;
 
@@ -4063,7 +4063,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                 detect_near_y *= 1.4F;
                 detect_far_y *= 1.4F;
             }
-            if (this_fp->ground_or_air == GA_Ground)
+            if (this_fp->ground_or_air == nMPKineticsGround)
             {
                 switch (ft_comattack->input_kind)
                 {
@@ -4181,7 +4181,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                         break;
 
                     default:
-                        if (this_fp->ground_or_air != GA_Ground)
+                        if (this_fp->ground_or_air != nMPKineticsGround)
                         {
                             goto l_continue;
                         }
@@ -4189,7 +4189,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                     }
                 }
             }
-            if ((this_fp->ft_kind != Ft_Kind_GiantDonkey) || (this_fp->ground_or_air == GA_Ground) || (ft_comattack->input_kind != ftComputer_Input_StickSmashHiButtonB))
+            if ((this_fp->ft_kind != Ft_Kind_GiantDonkey) || (this_fp->ground_or_air == nMPKineticsGround) || (ft_comattack->input_kind != ftComputer_Input_StickSmashHiButtonB))
             {
                 if (ft_com->ftcom_flags_0x4A_b1)
                 {
@@ -4231,7 +4231,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                             {
                                 if (itGetStruct(this_fp->item_hold)->it_kind == It_Kind_Bat)
                                 {
-                                    if (this_fp->ground_or_air == GA_Ground)
+                                    if (this_fp->ground_or_air == nMPKineticsGround)
                                     {
                                         detect_ranges_x[attack_count++] = 4.0F;
                                         break;
@@ -4543,13 +4543,13 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
     {
         edge_offset = 0;
     }
-    line_ids = &gMPLineTypeGroups[mpCollision_LineType_Ground].line_id[0];
+    line_ids = &gMPLineTypeGroups[nMPLineKindGround].line_id[0];
 
-    for (i = 0; i < gMPLineTypeGroups[mpCollision_LineType_Ground].line_count; i++)
+    for (i = 0; i < gMPLineTypeGroups[nMPLineKindGround].line_count; i++)
     {
-        if (mpCollision_CheckExistLineID(line_ids[i]) != FALSE)
+        if (mpCollisionCheckExistLineID(line_ids[i]) != FALSE)
         {
-            mpCollision_GetLREdgeRight(line_ids[i], &edge_pos);
+            mpCollisionGetLREdgeRight(line_ids[i], &edge_pos);
 
             if (gBattleState->gr_kind == Gr_Kind_Zebes)
             {
@@ -4560,7 +4560,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
                     continue;
                 }
             }
-            if ((gBattleState->gr_kind == Gr_Kind_Inishie) && (mpCollision_CheckExistPlatformLineID(line_ids[i]) != FALSE)) 
+            if ((gBattleState->gr_kind == Gr_Kind_Inishie) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) != FALSE)) 
             {
                 continue;
             }
@@ -4637,13 +4637,13 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
     {
         edge_offset = 0;
     }
-    line_ids = &gMPLineTypeGroups[mpCollision_LineType_Ground].line_id[0];
+    line_ids = &gMPLineTypeGroups[nMPLineKindGround].line_id[0];
 
-    for (i = 0; i < gMPLineTypeGroups[mpCollision_LineType_Ground].line_count; i++)
+    for (i = 0; i < gMPLineTypeGroups[nMPLineKindGround].line_count; i++)
     {
-        if (mpCollision_CheckExistLineID(line_ids[i]) != FALSE)
+        if (mpCollisionCheckExistLineID(line_ids[i]) != FALSE)
         {
-            mpCollision_GetLREdgeLeft(line_ids[i], &edge_pos);
+            mpCollisionGetLREdgeLeft(line_ids[i], &edge_pos);
 
             if (gBattleState->gr_kind == Gr_Kind_Zebes)
             {
@@ -4654,7 +4654,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
                     continue;
                 }
             }
-            if ((gBattleState->gr_kind == Gr_Kind_Inishie) && (mpCollision_CheckExistPlatformLineID(line_ids[i]) != FALSE))
+            if ((gBattleState->gr_kind == Gr_Kind_Inishie) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) != FALSE))
             {
                 continue;
             }
@@ -4820,7 +4820,7 @@ void func_ovl3_80134964(ftStruct *fp)
         }
         else ft_com->target_pos.x = -500.0F;
 
-        if ((pos.y + 1100.0F) > gGroundInfo->cam_bound_top)
+        if ((pos.y + 1100.0F) > gMPGroundData->cam_bound_top)
         {
             ft_com->target_pos.y = pos.y;
         }
@@ -4889,7 +4889,7 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
                     {
                         ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-                        if (fp->ground_or_air != GA_Ground)
+                        if (fp->ground_or_air != nMPKineticsGround)
                         {
                             ft_com->target_pos.x = (ft_com->target_pos.x < it_hit->hit_positions[hit_id].pos.x) ?
                                                                 (it_hit->hit_positions[hit_id].pos.x + 1500.0F) :
@@ -4969,9 +4969,9 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
     target_pos.x = fp->fighter_com.target_pos.x;
     target_pos.y = fp->fighter_com.target_pos.y;
 
-    if ((fp->ground_or_air == GA_Ground) && (fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y))
+    if ((fp->ground_or_air == nMPKineticsGround) && (fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y))
     {
-        if (mpCollision_CheckCeilLineCollisionSame(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+        if (mpCollisionCheckCeilLineCollisionSame(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
         {
             func_ovl2_800F4468(stand_line_id, &edge_left);
             func_ovl2_800F4448(stand_line_id, &edge_right);
@@ -4996,8 +4996,8 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
         (GS_DISTANCE(ft_com->target_pos.x, fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) < (GS_DISTANCE(ft_com->target_pos.y, fp->joint[ftParts_Joint_TopN]->translate.vec.f.y) * 0.2F))
     )
     {
-        mpCollision_GetLREdgeLeft(fp->coll_data.ground_line_id, &sp9C);
-        mpCollision_GetLREdgeRight(fp->coll_data.ground_line_id, &sp90);
+        mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &sp9C);
+        mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &sp90);
 
         if (GS_DISTANCE(sp9C.x, fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) < GS_DISTANCE(sp90.x, fp->joint[ftParts_Joint_TopN]->translate.vec.f.x))
         {
@@ -5010,18 +5010,18 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
             ft_com->target_pos.y = sp90.y;
         }
     }
-    else if ((fp->ground_or_air == GA_Ground) || (fp->phys_info.vel_air.y < 0.0F) || (fp->ft_kind == Ft_Kind_Kirby) || (fp->ft_kind == Ft_Kind_Purin))
+    else if ((fp->ground_or_air == nMPKineticsGround) || (fp->phys_info.vel_air.y < 0.0F) || (fp->ft_kind == Ft_Kind_Kirby) || (fp->ft_kind == Ft_Kind_Purin))
     {
         if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x)
         {
-            if (mpCollision_CheckLWallLineCollisionSame(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+            if (mpCollisionCheckLWallLineCollisionSame(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
-                mpCollision_GetUDEdgeUp(stand_line_id, &ga_last);
+                mpCollisionGetUDEdgeUp(stand_line_id, &ga_last);
 
                 ft_com->target_pos.x = ga_last.x + 100.0;
                 ft_com->target_pos.y = ga_last.y + 100.0;
 
-                if ((fp->ground_or_air == GA_Ground) && (fp->lr < 0.0F))
+                if ((fp->ground_or_air == nMPKineticsGround) && (fp->lr < 0.0F))
                 {
                     ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + 100.0F;
                     ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
@@ -5031,14 +5031,14 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                 }
             }
         }
-        else if (mpCollision_CheckRWallLineCollisionSame(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+        else if (mpCollisionCheckRWallLineCollisionSame(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
         {
             func_ovl2_800F4690(stand_line_id, &ga_last);
 
             ft_com->target_pos.x = ga_last.x - 100.0;
             ft_com->target_pos.y = ga_last.y + 100.0;
 
-            if ((fp->ground_or_air == GA_Ground) && (fp->lr > 0.0F))
+            if ((fp->ground_or_air == nMPKineticsGround) && (fp->lr > 0.0F))
             {
                 ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x - 100.0F;
                 ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
@@ -5051,7 +5051,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
     ftComputerCheckTargetItemOrTwister(fp);
     ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAuto);
 
-    if (fp->ground_or_air != GA_Ground)
+    if (fp->ground_or_air != nMPKineticsGround)
     {
         switch (ft_com->behavior)
         {
@@ -5080,7 +5080,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                 }
                 ft_com->ftcom_flags_0x4A_b0 = FALSE;
 
-                if ((fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < (gGroundInfo->blastzone_top - 4000.0F)) && (fp->phys_info.vel_air.y < 0.0F))
+                if ((fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < (gMPGroundData->blastzone_top - 4000.0F)) && (fp->phys_info.vel_air.y < 0.0F))
                 {
                     if (fp->jumps_used < fp->attributes->jumps_max)
                     {
@@ -5216,8 +5216,8 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
             {
                 if (ft_com->target_line_id >= 0)
                 {
-                    mpCollision_GetLREdgeLeft(ft_com->target_line_id, &sp74);
-                    mpCollision_GetLREdgeRight(ft_com->target_line_id, &sp68);
+                    mpCollisionGetLREdgeLeft(ft_com->target_line_id, &sp74);
+                    mpCollisionGetLREdgeRight(ft_com->target_line_id, &sp68);
 
                     if ((sp74.x <= ft_com->target_pos.x) && (sp68.x >= ft_com->target_pos.x))
                     {
@@ -5246,9 +5246,9 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                 {
                     if (fp->phys_info.vel_air.x < 0.0F)
                     {
-                        mpCollision_GetLREdgeLeft(fp->coll_data.ground_line_id, &sp58);
+                        mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &sp58);
                     }
-                    else mpCollision_GetLREdgeRight(fp->coll_data.ground_line_id, &sp58);
+                    else mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &sp58);
 
                     if (sp58.x < fp->joint[ftParts_Joint_TopN]->translate.vec.f.x)
                     {
@@ -5373,7 +5373,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
 
                                 if (predict_div_x < 15.0F)
                                 {
-                                    predict_pos_y = (this_fp->ground_or_air != GA_Ground) ? (this_fp->phys_info.vel_air.y * predict_div_x) + this_pos_y : this_pos_y;
+                                    predict_pos_y = (this_fp->ground_or_air != nMPKineticsGround) ? (this_fp->phys_info.vel_air.y * predict_div_x) + this_pos_y : this_pos_y;
 
                                     if ((((wp_hit->hit_positions[i].pos.y - hit_size) - this_fp->hurtbox_size.y) < predict_pos_y) && (predict_pos_y < (wp_hit->hit_positions[i].pos.y + hit_size)))
                                     {
@@ -5440,7 +5440,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
 
                                 if (predict_div_x < 15.0F)
                                 {
-                                    predict_pos_y = (this_fp->ground_or_air != GA_Ground) ? (this_fp->phys_info.vel_air.y * predict_div_x) + this_pos_y : this_pos_y;
+                                    predict_pos_y = (this_fp->ground_or_air != nMPKineticsGround) ? (this_fp->phys_info.vel_air.y * predict_div_x) + this_pos_y : this_pos_y;
 
                                     if ((((it_hit->hit_positions[i].pos.y - hit_size) - this_fp->hurtbox_size.y) < predict_pos_y) && (predict_pos_y < (it_hit->hit_positions[i].pos.y + hit_size)))
                                     {
@@ -5490,7 +5490,7 @@ void func_ovl3_801361BC(ftStruct *fp)
 
     if (!(ft_com->is_counterattack) && !(ft_com->is_opponent_ra))
     {
-        if (fp->ground_or_air != GA_Ground)
+        if (fp->ground_or_air != nMPKineticsGround)
         {
             ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
 
@@ -5568,7 +5568,7 @@ sb32 ftComputerCheckFindItem(ftStruct *fp)
             f32 it_pos_x = DObjGetStruct(item_gobj)->translate.vec.f.x;
             f32 it_pos_y = DObjGetStruct(item_gobj)->translate.vec.f.y;
 
-            if ((it_pos_x <= gMPEdgeBounds.d2.right) && (it_pos_x >= gMPEdgeBounds.d2.left) && (it_pos_y >= gMPEdgeBounds.d2.bottom) && (it_pos_y < gGroundInfo->cam_bound_top))
+            if ((it_pos_x <= gMPEdgeBounds.d2.right) && (it_pos_x >= gMPEdgeBounds.d2.left) && (it_pos_y >= gMPEdgeBounds.d2.bottom) && (it_pos_y < gMPGroundData->cam_bound_top))
             {
                 f32 current_dist = SQUARE(ft_pos_x - it_pos_x) + SQUARE(ft_pos_y - it_pos_y);
 
@@ -5594,7 +5594,7 @@ sb32 ftComputerCheckFindItem(ftStruct *fp)
     }
     ft_com->target_dist = sqrtf(nearest_dist);
 
-    ft_com->target_line_id = (ftGetComTargetItem(ft_com)->ground_or_air == GA_Ground) ? ftGetComTargetItem(ft_com)->coll_data.ground_line_id : -1;
+    ft_com->target_line_id = (ftGetComTargetItem(ft_com)->ground_or_air == nMPKineticsGround) ? ftGetComTargetItem(ft_com)->coll_data.ground_line_id : -1;
 
     return TRUE;
 }
@@ -5722,13 +5722,13 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
 
             if (this_pos_x < predict_x)
             {
-                mpCollision_GetLREdgeLeft(line_id, &edge_pos);
+                mpCollisionGetLREdgeLeft(line_id, &edge_pos);
             }
-            else mpCollision_GetLREdgeRight(line_id, &edge_pos);
+            else mpCollisionGetLREdgeRight(line_id, &edge_pos);
         }
         else edge_pos = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f;
 
-        if (target_fp->ground_or_air == GA_Ground)
+        if (target_fp->ground_or_air == nMPKineticsGround)
         {
             ft_com->target_pos.y = predict_y;
         }
@@ -6085,7 +6085,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             return 0;
         }
     }
-    if (this_fp->ground_or_air == GA_Ground)
+    if (this_fp->ground_or_air == nMPKineticsGround)
     {
         if
         (
@@ -6153,7 +6153,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         (func_ovl2_800F8FFC(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f) == FALSE) ||
         (gBattleState->gr_kind == Gr_Kind_Inishie) &&
         (this_fp->coll_data.ground_line_id >= 0) &&
-        (mpCollision_CheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE) &&
+        (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE) &&
         (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < -100.0F)
     )
     {
@@ -6225,7 +6225,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         {
             if (this_fp->coll_data.ground_line_id >= 0)
             {
-                if (mpCollision_CheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE)
+                if (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE)
                 {
                     return -1;
                 }
@@ -6402,14 +6402,14 @@ s32 ftComputerProcWalk(GObj *fighter_gobj)
     {
         ft_com->target_pos.x = (((2.0 * mtTrigGetRandomFloat()) - 1.0) * 2500.0) + ft_com->origin_pos.x;
 
-        if ((ft_com->ground_line_id < 0) || (mpCollision_CheckExistLineID(ft_com->ground_line_id) == FALSE))
+        if ((ft_com->ground_line_id < 0) || (mpCollisionCheckExistLineID(ft_com->ground_line_id) == FALSE))
         {
             ft_com->target_pos.x = ft_com->origin_pos.x;
         }
         else
         {
-            mpCollision_GetLREdgeLeft(ft_com->ground_line_id, &edge_left_pos);
-            mpCollision_GetLREdgeRight(ft_com->ground_line_id, &edge_right_pos);
+            mpCollisionGetLREdgeLeft(ft_com->ground_line_id, &edge_left_pos);
+            mpCollisionGetLREdgeRight(ft_com->ground_line_id, &edge_right_pos);
 
             if (ft_com->target_pos.x < edge_left_pos.x)
             {
@@ -6700,7 +6700,7 @@ s32 func_ovl3_8013837C(ftStruct *this_fp)
             );
             ft_com->ftcom_flags_0x4A_b1 = TRUE;
 
-            if (ftGetComTargetFighter(ft_com)->ground_or_air == GA_Ground)
+            if (ftGetComTargetFighter(ft_com)->ground_or_air == nMPKineticsGround)
             {
                 ft_com->target_line_id = ftGetComTargetFighter(ft_com)->coll_data.ground_line_id;
             }
@@ -6737,7 +6737,7 @@ s32 func_ovl3_8013837C(ftStruct *this_fp)
                 return -1;
             }
         }
-        else if ((this_fp->ground_or_air == GA_Ground) && (ftComputerCheckTryChargeSpecialN(this_fp) != FALSE))
+        else if ((this_fp->ground_or_air == nMPKineticsGround) && (ftComputerCheckTryChargeSpecialN(this_fp) != FALSE))
         {
             return -1;
         }
@@ -6766,7 +6766,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
 
                 ft_com->edge_pos.x = ft_com->origin_pos.x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
 
-                if (this_fp->ground_or_air == GA_Ground)
+                if (this_fp->ground_or_air == nMPKineticsGround)
                 {
                     ft_com->edge_pos.y = ft_com->origin_pos.y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
                 }
@@ -6780,7 +6780,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
         }
         ft_com->target_line_id = ft_com->ground_line_id;
 
-        if ((ft_com->target_line_id < 0) || (mpCollision_CheckExistLineID(ft_com->target_line_id) == FALSE))
+        if ((ft_com->target_line_id < 0) || (mpCollisionCheckExistLineID(ft_com->target_line_id) == FALSE))
         {
             if (ftComputerCheckFindTarget(this_fp) != FALSE)
             {
@@ -6793,8 +6793,8 @@ void func_ovl3_8013877C(ftStruct *this_fp)
             {
                 ft_com->edge_pos.x = (((2.0 * mtTrigGetRandomFloat()) - 1.0) * 2500.0) + ft_com->origin_pos.x;
 
-                mpCollision_GetLREdgeLeft(ft_com->ground_line_id, &edge_left_pos);
-                mpCollision_GetLREdgeRight(ft_com->ground_line_id, &edge_right_pos);
+                mpCollisionGetLREdgeLeft(ft_com->ground_line_id, &edge_left_pos);
+                mpCollisionGetLREdgeRight(ft_com->ground_line_id, &edge_right_pos);
 
                 if (ft_com->edge_pos.x < edge_left_pos.x)
                 {
@@ -6825,7 +6825,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
         ft_com->input_wait = 1;
         ft_com->p_command = dFTComputerPlayerInputScripts[ftComputer_Input_StickN];
 
-        if ((ft_com->walk_stop_wait == ((-this_fp->cp_level * 2) + 18)) && (this_fp->ground_or_air == GA_Ground))
+        if ((ft_com->walk_stop_wait == ((-this_fp->cp_level * 2) + 18)) && (this_fp->ground_or_air == nMPKineticsGround))
         {
             ftComputerCheckTryChargeSpecialN(this_fp);
 
@@ -6926,28 +6926,28 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 is_delay)
 
             if (ft_com->target_pos.x < this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x)
             {
-                if (mpCollision_CheckRWallLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+                if (mpCollisionCheckRWallLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
                 {
                     return FALSE;
                 }
-                if (mpCollision_CheckGroundLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+                if (mpCollisionCheckGroundLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
                 {
                     return FALSE;
                 }
-                if (mpCollision_CheckCeilLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+                if (mpCollisionCheckCeilLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
                 {
                     return FALSE;
                 }
             }
-            else if (mpCollision_CheckLWallLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+            else if (mpCollisionCheckLWallLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
                 return FALSE;
             }
-            else if (mpCollision_CheckGroundLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+            else if (mpCollisionCheckGroundLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
                 return FALSE;
             }
-            else if (mpCollision_CheckCeilLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+            else if (mpCollisionCheckCeilLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
                 return FALSE;
             }
@@ -7027,7 +7027,7 @@ sb32 func_ovl3_80138EE4(ftStruct *fp)
     random = mtTrigGetRandomFloat();
     if
     (
-        (fp->ground_or_air == GA_Ground) &&
+        (fp->ground_or_air == nMPKineticsGround) &&
         (
             (
                 (ft_com->target_dist < ((random * 450.0F) + 350.0F) &&
@@ -7054,8 +7054,8 @@ sb32 func_ovl3_80138EE4(ftStruct *fp)
     {
         if (fp->coll_data.ground_line_id >= 0)
         {
-            mpCollision_GetLREdgeLeft(fp->coll_data.ground_line_id, &edge_left_pos);
-            mpCollision_GetLREdgeRight(fp->coll_data.ground_line_id, &edge_right_pos);
+            mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &edge_left_pos);
+            mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &edge_right_pos);
 
             if (ft_com->target_pos.x < fp->joint[ftParts_Joint_TopN]->translate.vec.f.x)
             {
@@ -7812,7 +7812,7 @@ void ftComputerSetupAll(GObj *fighter_gobj)
     {
         ft_com->origin_pos.x = ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
 
-        if (fp->ground_or_air == GA_Ground)
+        if (fp->ground_or_air == nMPKineticsGround)
         {
             ft_com->origin_pos.y = ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
         }
@@ -7859,13 +7859,13 @@ void ftComputerSetupAll(GObj *fighter_gobj)
 
         ft_com->cliff_left_pos.y = ft_com->cliff_right_pos.y = 9999.9F;
 
-        line_ids = gMPLineTypeGroups[mpCollision_LineType_Ground].line_id;
+        line_ids = gMPLineTypeGroups[nMPLineKindGround].line_id;
 
-        for (i = 0; i < gMPLineTypeGroups[mpCollision_LineType_Ground].line_count; i++)
+        for (i = 0; i < gMPLineTypeGroups[nMPLineKindGround].line_count; i++)
         {
-            if ((mpCollision_CheckExistLineID(line_ids[i]) != FALSE) && (mpCollision_CheckExistPlatformLineID(line_ids[i]) == FALSE))
+            if ((mpCollisionCheckExistLineID(line_ids[i]) != FALSE) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) == FALSE))
             {
-                mpCollision_GetLREdgeLeft(line_ids[i], &edge_pos);
+                mpCollisionGetLREdgeLeft(line_ids[i], &edge_pos);
 
                 if (edge_left_nearest > edge_pos.x)
                 {
@@ -7882,7 +7882,7 @@ void ftComputerSetupAll(GObj *fighter_gobj)
                     ft_com->cliff_left_pos.x = edge_pos.x;
                     ft_com->cliff_left_pos.y = edge_pos.y;
                 }
-                mpCollision_GetLREdgeRight(line_ids[i], &edge_pos);
+                mpCollisionGetLREdgeRight(line_ids[i], &edge_pos);
 
                 if (edge_right_nearest < edge_pos.x)
                 {

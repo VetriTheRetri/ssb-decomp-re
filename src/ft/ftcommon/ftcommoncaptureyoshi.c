@@ -209,7 +209,7 @@ void ftCommonYoshiEggProcInterrupt(GObj *fighter_gobj)
     {
         DObj *joint = DObjGetStruct(fp->status_vars.common.captureyoshi.effect_gobj)->next;
 
-        if (fp->ground_or_air == GA_Ground)
+        if (fp->ground_or_air == nMPKineticsGround)
         {
             if (ABS(fp->input.pl.stick_range.y) >= FTCOMMON_YOSHIEGG_WIGGLE_STICK_RANGE_MIN)
             {
@@ -268,7 +268,7 @@ void ftCommonYoshiEggProcPhysics(GObj *fighter_gobj)
             ep->effect_vars.yoshi_egg_lay.force_index = 1;
         }
     }
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         ftPhysics_ApplyGroundVelFriction(fighter_gobj);
     }
@@ -280,16 +280,16 @@ void ftCommonYoshiEggProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Ground)
+    if (fp->ground_or_air == nMPKineticsGround)
     {
         if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
         {
-            fp->ground_or_air = GA_Air;
+            fp->ground_or_air = nMPKineticsAir;
         }
     }
     else if (ftMap_CheckAirLanding(fighter_gobj) != FALSE)
     {
-        fp->ground_or_air = GA_Ground;
+        fp->ground_or_air = nMPKineticsGround;
     }
 }
 
@@ -354,7 +354,7 @@ void ftCommonYoshiEggSetStatus(GObj *fighter_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp;
 
-    if (this_fp->ground_or_air == GA_Ground)
+    if (this_fp->ground_or_air == nMPKineticsGround)
     {
         ftMap_SetAir(this_fp);
     }

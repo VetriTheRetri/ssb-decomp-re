@@ -88,7 +88,7 @@ void ftCommonCaptureCaptainProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     this_fp->status_vars.common.capturecaptain.capture_flag = 0;
 
-    if (this_fp->ground_or_air != GA_Air)
+    if (this_fp->ground_or_air != nMPKineticsAir)
     {
         this_fp->status_vars.common.capturecaptain.capture_flag |= FTCOMMON_CAPTURECAPTAIN_MASK_NOUPDATE;
 

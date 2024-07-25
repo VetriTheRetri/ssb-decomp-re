@@ -132,7 +132,7 @@ void ftCommonDeadResetCommonVars(GObj *fighter_gobj)
     func_ovl2_800D7994(fighter_gobj);
     ftCommonThrownDecideDeadResult(fighter_gobj);
 
-    fp->ground_or_air = GA_Air;
+    fp->ground_or_air = nMPKineticsAir;
     fp->coll_data.ground_line_id = -1;
 
     if (fp->item_hold != NULL)
@@ -209,14 +209,14 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
 
     if (gBattleState->game_type != gmMatch_GameType_Bonus)
     {
-        if (pos.x > gGroundInfo->cam_bound_right)
+        if (pos.x > gMPGroundData->cam_bound_right)
         {
-            pos.x = gGroundInfo->cam_bound_right;
+            pos.x = gMPGroundData->cam_bound_right;
         }
 
-        if (pos.x < gGroundInfo->cam_bound_left)
+        if (pos.x < gMPGroundData->cam_bound_left)
         {
-            pos.x = gGroundInfo->cam_bound_left;
+            pos.x = gMPGroundData->cam_bound_left;
         }
     }
     efManagerDeadExplodeMakeEffect(&pos, fp->player, 0);
@@ -251,14 +251,14 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
 
     if (gBattleState->game_type != gmMatch_GameType_Bonus)
     {
-        if (pos.y > gGroundInfo->cam_bound_top)
+        if (pos.y > gMPGroundData->cam_bound_top)
         {
-            pos.y = gGroundInfo->cam_bound_top;
+            pos.y = gMPGroundData->cam_bound_top;
         }
 
-        if (pos.y < gGroundInfo->cam_bound_bottom)
+        if (pos.y < gMPGroundData->cam_bound_bottom)
         {
-            pos.y = gGroundInfo->cam_bound_bottom;
+            pos.y = gMPGroundData->cam_bound_bottom;
         }
     }
     efManagerDeadExplodeMakeEffect(&pos, fp->player, 1);
@@ -293,13 +293,13 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
 
     if (gBattleState->game_type != gmMatch_GameType_Bonus)
     {
-        if (pos.y > gGroundInfo->cam_bound_top)
+        if (pos.y > gMPGroundData->cam_bound_top)
         {
-            pos.y = gGroundInfo->cam_bound_top;
+            pos.y = gMPGroundData->cam_bound_top;
         }
-        if (pos.y < gGroundInfo->cam_bound_bottom)
+        if (pos.y < gMPGroundData->cam_bound_bottom)
         {
-            pos.y = gGroundInfo->cam_bound_bottom;
+            pos.y = gMPGroundData->cam_bound_bottom;
         }
     }
     efManagerDeadExplodeMakeEffect(&pos, fp->player, 3);
@@ -341,14 +341,14 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
         switch (fp->command_vars.flags.flag1)
         {
         case 0:
-            fp->phys_info.vel_air.y = ((gGroundInfo->cam_bound_top * 0.6F) - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
+            fp->phys_info.vel_air.y = ((gMPGroundData->cam_bound_top * 0.6F) - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
             fp->phys_info.vel_air.z = FTCOMMON_DEADUPFALL_VEL_Z;
 
             fp->colanim.is_use_maincolor = TRUE;
 
-            fp->colanim.maincolor.r = gGroundInfo->fog_color.r;
-            fp->colanim.maincolor.g = gGroundInfo->fog_color.g;
-            fp->colanim.maincolor.b = gGroundInfo->fog_color.b;
+            fp->colanim.maincolor.r = gMPGroundData->fog_color.r;
+            fp->colanim.maincolor.g = gMPGroundData->fog_color.g;
+            fp->colanim.maincolor.b = gMPGroundData->fog_color.b;
             fp->colanim.maincolor.a = 0;
 
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEADUP_REBIRTH_WAIT;
@@ -421,7 +421,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
     switch (fp->command_vars.flags.flag1)
     {
     case 1:
-        if (DObjGetStruct(fighter_gobj)->translate.vec.f.y < gGroundInfo->blastzone_bottom)
+        if (DObjGetStruct(fighter_gobj)->translate.vec.f.y < gMPGroundData->blastzone_bottom)
         {
             fp->phys_info.vel_air.y = 0.0F;
         }
@@ -439,7 +439,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
         switch (fp->command_vars.flags.flag1)
         {
         case 0:
-            fp->phys_info.vel_air.y = (gGroundInfo->cam_bound_bottom - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
+            fp->phys_info.vel_air.y = (gMPGroundData->cam_bound_bottom - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
 
             DObjGetStruct(fighter_gobj)->translate.vec.f.z = CameraGetStruct(gCMManagerCameraGObj)->vec.eye.z - 3000.0F;
 
@@ -450,9 +450,9 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
             DObjGetStruct(fighter_gobj)->translate.vec.f.x = CameraGetStruct(gCMManagerCameraGObj)->vec.eye.x;
             DObjGetStruct(fighter_gobj)->translate.vec.f.y = CameraGetStruct(gCMManagerCameraGObj)->vec.eye.y + 3000.0F;
 
-            if (gGroundInfo->blastzone_top < DObjGetStruct(fighter_gobj)->translate.vec.f.y)
+            if (gMPGroundData->blastzone_top < DObjGetStruct(fighter_gobj)->translate.vec.f.y)
             {
-                DObjGetStruct(fighter_gobj)->translate.vec.f.y = gGroundInfo->blastzone_top;
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y = gMPGroundData->blastzone_top;
             }
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEADUP_REBIRTH_WAIT;
 
@@ -549,33 +549,33 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
     }
     if (fp->is_ignore_blastzone)
     {
-        if (pos->y < gGroundInfo->blastzone_bottom)
+        if (pos->y < gMPGroundData->blastzone_bottom)
         {
-            pos->y = gGroundInfo->blastzone_bottom + 500.0F;
+            pos->y = gMPGroundData->blastzone_bottom + 500.0F;
 
             fp->phys_info.vel_air.x = 0.0F;
             fp->phys_info.vel_air.y = 0.0F;
             fp->phys_info.vel_air.z = 0.0F;
         }
-        else if (pos->y > gGroundInfo->blastzone_top)
+        else if (pos->y > gMPGroundData->blastzone_top)
         {
-            pos->y = gGroundInfo->blastzone_top - 500.0F;
+            pos->y = gMPGroundData->blastzone_top - 500.0F;
 
             fp->phys_info.vel_air.x = 0.0F;
             fp->phys_info.vel_air.y = 0.0F;
             fp->phys_info.vel_air.z = 0.0F;
         }
-        if (pos->x > gGroundInfo->blastzone_right)
+        if (pos->x > gMPGroundData->blastzone_right)
         {
-            pos->x = gGroundInfo->blastzone_right - 500.0F;
+            pos->x = gMPGroundData->blastzone_right - 500.0F;
 
             fp->phys_info.vel_air.x = 0.0F;
             fp->phys_info.vel_air.y = 0.0F;
             fp->phys_info.vel_air.z = 0.0F;
         }
-        else if (pos->x < gGroundInfo->blastzone_left)
+        else if (pos->x < gMPGroundData->blastzone_left)
         {
-            pos->x = gGroundInfo->blastzone_left + 500.0F;
+            pos->x = gMPGroundData->blastzone_left + 500.0F;
 
             fp->phys_info.vel_air.x = 0.0F;
             fp->phys_info.vel_air.y = 0.0F;
@@ -587,25 +587,25 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
     {
         if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (gBattleState->player_block[fp->player].is_rebirth_multi != FALSE))
         {
-            if (pos->y < gGroundInfo->unk_bound_bottom)
+            if (pos->y < gMPGroundData->unk_bound_bottom)
             {
                 ftCommonDeadDownSetStatus(fighter_gobj);
 
                 return TRUE;
             }
-            if (pos->x > gGroundInfo->unk_bound_right)
+            if (pos->x > gMPGroundData->unk_bound_right)
             {
                 ftCommonDeadRightSetStatus(fighter_gobj);
 
                 return TRUE;
             }
-            if (pos->x < gGroundInfo->unk_bound_left)
+            if (pos->x < gMPGroundData->unk_bound_left)
             {
                 ftCommonDeadLeftSetStatus(fighter_gobj);
 
                 return TRUE;
             }
-            if (pos->y > gGroundInfo->unk_bound_top)
+            if (pos->y > gMPGroundData->unk_bound_top)
             {
                 if (mtTrigGetRandomFloat() < (1.0F / 6.0F))
                 {
@@ -618,25 +618,25 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
                 return TRUE;
             }
         }
-        else if (pos->y < gGroundInfo->blastzone_bottom)
+        else if (pos->y < gMPGroundData->blastzone_bottom)
         {
             ftCommonDeadDownSetStatus(fighter_gobj);
 
             return TRUE;
         }
-        else if (pos->x > gGroundInfo->blastzone_right)
+        else if (pos->x > gMPGroundData->blastzone_right)
         {
             ftCommonDeadRightSetStatus(fighter_gobj);
 
             return TRUE;
         }
-        else if (pos->x < gGroundInfo->blastzone_left)
+        else if (pos->x < gMPGroundData->blastzone_left)
         {
             ftCommonDeadLeftSetStatus(fighter_gobj);
 
             return TRUE;
         }
-        else if (pos->y > gGroundInfo->blastzone_top)
+        else if (pos->y > gMPGroundData->blastzone_top)
         {
             if (mtTrigGetRandomFloat() < (1.0F / 6.0F))
             {

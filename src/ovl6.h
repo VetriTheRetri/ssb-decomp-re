@@ -9,7 +9,7 @@ void func_ovl0_800CCF00(GObj*);
 void itManagerInitItems();
 void wpManagerAllocWeapons();
 void lbMemory_SaveData_WriteSRAM(gmBattleState*);
-void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32);
+void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 void gmRumbleInitPlayers();
 void func_ovl6_8018ED70();
 

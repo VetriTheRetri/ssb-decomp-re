@@ -15,7 +15,7 @@ sb32 itMapProcLRWallCheckGround(mpCollData *coll_data, GObj *item_gobj, u32 flag
 
     if (mpObjectProc_CheckTestLWallCollision(coll_data) != FALSE)
     {
-        mpCollision_RunLWallCollision(coll_data);
+        mpObjectProc_RunLWallCollision(coll_data);
         coll_data->is_coll_end = TRUE;
     }
     if (mpObjectProc_CheckTestRWallCollision(coll_data) != FALSE)
@@ -408,12 +408,12 @@ sb32 itMapCheckMapReboundProcGround(GObj *item_gobj, f32 wall_ceil_rebound, void
 // 0x80173F54
 void itMapSetGround(itStruct *ip)
 {
-    ip->ground_or_air = GA_Ground;
+    ip->ground_or_air = nMPKineticsGround;
     ip->phys_info.vel_ground = ip->phys_info.vel_air.x * ip->lr;
 }
 
 // 0x80173F78
 void itMapSetAir(itStruct *ip)
 {
-    ip->ground_or_air = GA_Air;
+    ip->ground_or_air = nMPKineticsAir;
 }

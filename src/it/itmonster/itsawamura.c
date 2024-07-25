@@ -22,7 +22,7 @@ extern intptr_t lITSawamuraDisplayList;     // 0x00012340
 itCreateDesc dITSawamuraItemDesc =
 {
     It_Kind_Sawamura,                       // Item Kind
-    &gITFileData,                           // Pointer to item file data?
+    &gITManagerFileData,                           // Pointer to item file data?
     &lITSawamuraItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -169,11 +169,11 @@ sb32 itSawamuraNAttackProcUpdate(GObj *item_gobj)
 
     itMainApplyGClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
 
-    if ((ip->lr == LR_Right) && (dobj->translate.vec.f.x >= (gGroundInfo->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X)))
+    if ((ip->lr == LR_Right) && (dobj->translate.vec.f.x >= (gMPGroundData->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X)))
     {
         return TRUE;
     }
-    else if ((ip->lr == LR_Left) && (dobj->translate.vec.f.x <= (gGroundInfo->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
+    else if ((ip->lr == LR_Left) && (dobj->translate.vec.f.x <= (gMPGroundData->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
     {
         return TRUE;
     }

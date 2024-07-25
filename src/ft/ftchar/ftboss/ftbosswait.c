@@ -349,11 +349,11 @@ void ftBossWaitSetStatus(GObj *fighter_gobj)
 
         if (translate->x > gMPEdgeBounds.d2.right)
         {
-            mpCollision_GetLREdgeRight(ground_line_id, &pos);
+            mpCollisionGetLREdgeRight(ground_line_id, &pos);
         }
         else if (translate->x < gMPEdgeBounds.d2.left)
         {
-            mpCollision_GetLREdgeLeft(ground_line_id, &pos);
+            mpCollisionGetLREdgeLeft(ground_line_id, &pos);
         }
         else ftBossCommonGetPositionCenter(ground_line_id, &pos);
         

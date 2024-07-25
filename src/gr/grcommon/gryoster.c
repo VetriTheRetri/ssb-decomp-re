@@ -76,9 +76,9 @@ sb32 grYosterCheckFighterCloudStand(s32 cloud_id)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (fp->ground_or_air == GA_Ground)
+        if (fp->ground_or_air == nMPKineticsGround)
         {
-            if ((fp->coll_data.ground_line_id != -2) && (mpCollision_SetDObjNoID(fp->coll_data.ground_line_id) == line_id))
+            if ((fp->coll_data.ground_line_id != -2) && (mpCollisionSetDObjNoID(fp->coll_data.ground_line_id) == line_id))
             {
                 return TRUE;
             }
@@ -98,7 +98,7 @@ void grYosterUpdateCloudSolid(s32 cloud_id)
     {
         if (gGroundStruct.yoster.clouds[cloud_id].is_cloud_line_active == FALSE)
         {
-            mpCollision_SetYakumonoOnID(dGRYosterCloudLineIDs[cloud_id]);
+            mpCollisionSetYakumonoOnID(dGRYosterCloudLineIDs[cloud_id]);
 
             gGroundStruct.yoster.clouds[cloud_id].is_cloud_line_active = TRUE;
         }
@@ -151,7 +151,7 @@ void grYosterUpdateCloudSolid(s32 cloud_id)
     dobj = DObjGetStruct(gGroundStruct.yoster.clouds[cloud_id].gobj);
     dobj->translate.vec.f.y = gGroundStruct.yoster.clouds[cloud_id].altitude - gGroundStruct.yoster.clouds[cloud_id].pressure;
 
-    mpCollision_SetYakumonoPosID(dGRYosterCloudLineIDs[cloud_id], &dobj->translate.vec.f);
+    mpCollisionSetYakumonoPosID(dGRYosterCloudLineIDs[cloud_id], &dobj->translate.vec.f);
 }
 
 // 0x80108814
@@ -159,7 +159,7 @@ void grYosterUpdateCloudEvaporate(s32 cloud_id)
 {
     if (gGroundStruct.yoster.clouds[cloud_id].is_cloud_line_active != FALSE)
     {
-        mpCollision_SetYakumonoOffID(dGRYosterCloudLineIDs[cloud_id]);
+        mpCollisionSetYakumonoOffID(dGRYosterCloudLineIDs[cloud_id]);
 
         gGroundStruct.yoster.clouds[cloud_id].is_cloud_line_active = FALSE;
     }
@@ -224,7 +224,7 @@ void grYosterInitAll(void)
     void *map_head;
     s32 i, j;
 
-    map_head = (uintptr_t)gGroundInfo->map_nodes - (intptr_t)&lGRYosterMapHead;
+    map_head = (uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRYosterMapHead;
     gGroundStruct.yoster.map_head = map_head;
 
     for (i = 0; i < ARRAY_COUNT(gGroundStruct.yoster.clouds); i++)
@@ -241,7 +241,7 @@ void grYosterInitAll(void)
         func_8000BD8C_C98C(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
 
         coll_dobj = DObjGetStruct(map_gobj);
-        coll_dobj->translate.vec.f = gMPRooms->room_dobj[dGRYosterCloudLineIDs[i]]->translate.vec.f;
+        coll_dobj->translate.vec.f = gMPYakumonoDObjs->yakumono_dobj[dGRYosterCloudLineIDs[i]]->translate.vec.f;
 
         gGroundStruct.yoster.clouds[i].altitude = coll_dobj->translate.vec.f.y;
 
@@ -264,7 +264,7 @@ void grYosterInitAll(void)
         gGroundStruct.yoster.clouds[i].is_cloud_line_active = FALSE;
         gGroundStruct.yoster.clouds[i].pressure = 0.0F;
 
-        mpCollision_SetYakumonoOnID(dGRYosterCloudLineIDs[i]);
+        mpCollisionSetYakumonoOnID(dGRYosterCloudLineIDs[i]);
 
     }
     gGroundStruct.yoster.particle_bank_id = efAllocGetAddParticleBankID(&lGRYosterParticleBankHeaderLo, &lGRYosterParticleBankHeaderHi, &lGRYosterParticleBankTextureLo, &lGRYosterParticleBankTextureHi);

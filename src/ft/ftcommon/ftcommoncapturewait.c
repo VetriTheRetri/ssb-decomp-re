@@ -16,28 +16,28 @@ void ftCommonCaptureWaitProcMap(GObj *fighter_gobj)
     Vec3f capture_pos;
     f32 dist_y;
 
-    if (mpCollision_GetUDCommonUp(capture_fp->coll_data.ground_line_id, this_pos, &dist_y, &this_fp->coll_data.ground_flags, &this_fp->coll_data.ground_angle) != FALSE)
+    if (mpCollisionGetUDCommonUp(capture_fp->coll_data.ground_line_id, this_pos, &dist_y, &this_fp->coll_data.ground_flags, &this_fp->coll_data.ground_angle) != FALSE)
     {
         this_fp->coll_data.ground_line_id = capture_fp->coll_data.ground_line_id;
 
         this_pos->y += dist_y;
 
-        this_fp->ground_or_air = GA_Ground;
+        this_fp->ground_or_air = nMPKineticsGround;
         this_fp->jumps_used = 0;
     }
     else
     {
         if (capture_fp->lr == LR_Right)
         {
-            mpCollision_GetLREdgeRight(capture_fp->coll_data.ground_line_id, &capture_pos);
+            mpCollisionGetLREdgeRight(capture_fp->coll_data.ground_line_id, &capture_pos);
         }
-        else mpCollision_GetLREdgeLeft(capture_fp->coll_data.ground_line_id, &capture_pos);
+        else mpCollisionGetLREdgeLeft(capture_fp->coll_data.ground_line_id, &capture_pos);
 
         this_pos->y = capture_pos.y;
 
         mpObjectProc_SetFighterProjectGroundID(fighter_gobj);
 
-        this_fp->ground_or_air = GA_Air;
+        this_fp->ground_or_air = nMPKineticsAir;
         this_fp->jumps_used = 1;
     }
 }

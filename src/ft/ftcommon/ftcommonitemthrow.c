@@ -308,7 +308,7 @@ void ftCommonItemThrowProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == GA_Air)
+    if (fp->ground_or_air == nMPKineticsAir)
     {
         ftPhysics_ApplyAirVelDrift(fighter_gobj);
     }

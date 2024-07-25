@@ -23,7 +23,7 @@ extern void func_ovl64_8018D19C();
 extern void func_ovl2_8010CF44(GObj *fighter_gobj, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5);
 extern void ftCommon_SetModelPartLevelDetailAll(GObj*, s32);
 extern void func_ovl0_800CCF00();
-extern void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32);
+extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 
 
 // Forward declarations
@@ -53,7 +53,7 @@ GObj *sAutoDemoFighterNameGObj;
 scAutoDemoProc *sAutoDemoProc;
 
 // 8018E4F0
-s16 sAutoDemoMPoints[8];
+s16 sAutoDemoMapObjs[8];
 
 
 // DATA
@@ -74,16 +74,16 @@ u8 dAutoDemoGroundOrder[] =
 };
 
 // 8018E170
-s16 dAutoDemoMPointKindList[] = 
+s16 dAutoDemoMapObjKindList[] = 
 {
-	mpMPoint_Kind_AutoDemoSpawn1,
-	mpMPoint_Kind_AutoDemoSpawn2,
-	mpMPoint_Kind_AutoDemoSpawn3,
-	mpMPoint_Kind_AutoDemoSpawn4,
-	mpMPoint_Kind_AutoDemoSpawn5,
-	mpMPoint_Kind_AutoDemoSpawn6,
-	mpMPoint_Kind_AutoDemoSpawn7,
-	mpMPoint_Kind_AutoDemoSpawn8
+	nMPMapObjKindAutoDemoSpawn1,
+	nMPMapObjKindAutoDemoSpawn2,
+	nMPMapObjKindAutoDemoSpawn3,
+	nMPMapObjKindAutoDemoSpawn4,
+	nMPMapObjKindAutoDemoSpawn5,
+	nMPMapObjKindAutoDemoSpawn6,
+	nMPMapObjKindAutoDemoSpawn7,
+	nMPMapObjKindAutoDemoSpawn8
 };
 
 // 8018E180
@@ -422,34 +422,34 @@ GObj* scAutoDemoMakeFocusInterface()
 }
 
 // 8018D758
-void scAutoDemoGetPlayerSpawnPosition(s32 mpoint_kind, Vec3f *mpoint_pos)
+void scAutoDemoGetPlayerSpawnPosition(s32 mapobj_kind, Vec3f *mpoint_pos)
 {
 	s32 i, j;
 	s32 mpoint_random;
 	s32 mpoint_select;
 	s32 mpoint;
 
-	mpoint_random = mtTrigGetRandomIntRange(((ARRAY_COUNT(dAutoDemoMPointKindList) + ARRAY_COUNT(sAutoDemoMPoints)) / 2) - mpoint_kind);
+	mpoint_random = mtTrigGetRandomIntRange(((ARRAY_COUNT(dAutoDemoMapObjKindList) + ARRAY_COUNT(sAutoDemoMapObjs)) / 2) - mapobj_kind);
 
-	for (i = j = 0; i < (ARRAY_COUNT(dAutoDemoMPointKindList) + ARRAY_COUNT(sAutoDemoMPoints)) / 2; i++)
+	for (i = j = 0; i < (ARRAY_COUNT(dAutoDemoMapObjKindList) + ARRAY_COUNT(sAutoDemoMapObjs)) / 2; i++)
 	{
-		mpoint_select = dAutoDemoMPointKindList[i];
+		mpoint_select = dAutoDemoMapObjKindList[i];
 
-		if (sAutoDemoMPoints[i] != -1)
+		if (sAutoDemoMapObjs[i] != -1)
 		{
 			if (mpoint_random == j)
 			{
-				sAutoDemoMPoints[i] = -1;
+				sAutoDemoMapObjs[i] = -1;
 
 				break;
 			}
 			else j++;
 		}
 	}
-	if (mpCollision_GetMPointCountKind(mpoint_select) != 0)
+	if (mpCollisionGetMapObjCountKind(mpoint_select) != 0)
 	{
-		mpCollision_GetMPointIDsKind(mpoint_select, &mpoint);
-		mpCollision_GetMPointPositionID(mpoint, mpoint_pos);
+		mpCollisionGetMapObjIDsKind(mpoint_select, &mpoint);
+		mpCollisionGetMapObjPositionID(mpoint, mpoint_pos);
 	}
 }
 
@@ -552,9 +552,9 @@ void func_ovl64_8018D990()
 	gBattleState->pl_count = 0;
 	gBattleState->cp_count = 4;
 
-	for (i = 0; i < ARRAY_COUNT(sAutoDemoMPoints); i++)
+	for (i = 0; i < ARRAY_COUNT(sAutoDemoMapObjs); i++)
 	{
-		sAutoDemoMPoints[i] = 0;
+		sAutoDemoMapObjs[i] = 0;
 	}
 }
 
@@ -597,7 +597,7 @@ void func_ovl64_8018DCC4()
 	func_8000B9FC(9, 0x80000000U, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
-	mpCollision_InitMapCollisionData();
+	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
 	grWallpaperMakeGroundWallpaper();
@@ -674,7 +674,7 @@ void func_ovl64_8018DCC4()
 	ifCommonPlayerDamageSetShowInterface();
 	ifCommonPlayerStockInitInterface();
 	func_ovl64_8018DB18();
-	mpCollision_SetPlayMusicID();
+	mpCollisionSetPlayMusicID();
 	func_800269C0_275C0(0x272);
 	scAutoDemoMakeFocusInterface();
 }
@@ -684,7 +684,7 @@ void func_ovl64_8018DFC8(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 
-	ftRender_Lights_DisplayLightReflect(display_list, gMPLightAngleX, gMPLightAngleY);
+	ftRenderLightsDrawReflect(display_list, gMPLightAngleX, gMPLightAngleY);
 }
 
 // 8018E014

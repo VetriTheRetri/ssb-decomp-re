@@ -435,6 +435,10 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Map collisions and stage data
+      - [0x06F1F0, c, mp/mpcollision]
+    # Fighter lights renderer?
+      - [0x078370, c, ft/ftrenderlights]
     # Effect renderer
       - [0x0784C0, c, ef/efrender]
     # Effect manager and common effects
@@ -506,6 +510,10 @@ segments:
 
     # ovl2 read-only data
       - [0x0AB250, rodata, ovl2]
+    # Map collisions and data
+      - [0x0ABA70, .rodata, mp/mpcollision]
+    # Fighter lights renderer?
+      - [0x0AC110, .rodata, ft/ftrenderlights]
     # Effect manager and common effects
       - [0x0AC120, .rodata, ef/efmanager]
     # Stage background image setup

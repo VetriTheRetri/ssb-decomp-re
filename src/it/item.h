@@ -7,30 +7,30 @@
 // Global variables declared here as extern for easy access
 
 // 8018D040
-extern void *gITFileData;
+extern void *gITManagerFileData;
 
 // 8018D044
-extern s32 gITEffectBankID;
+extern s32 gITManagerParticleBankID;
 
 // 8018D048
-extern itRandomWeights gITRandomWeights;
+extern itRandomWeights gITManagerRandomWeights;
 
 // 8018D060
-extern itMonsterInfo gITMonsterData;
+extern itMonsterInfo gITManagerMonsterData;
 
 // 8018D090
-extern s32 gITDisplayMode;
+extern s32 gITManagerDisplayMode;
 
 // 8018D094
-extern itStruct* gITAllocFree;
+extern itStruct* gITManagerStructsAllocFree;
 
 // 0x8018D098
-extern itSpawnActor gITSpawnActor;
+extern itSpawnActor gITManagerSpawnActor;
 
 // Global data
 
 // 0x80189450
-extern s32 dITMonsterSpawnID;
+extern s32 dITManagerMonsterSpawnID;
 
 // Linker variable, points to base of animation bank in item file? 0x00013624
 extern intptr_t lITMonsterAnimBankStart;

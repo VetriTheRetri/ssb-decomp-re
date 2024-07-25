@@ -34,7 +34,7 @@ extern void func_80010580();
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void func_8000FA3C(void*, void*, f32);
-extern void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32);
+extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern u32 gFTAnimHeapSize; // 80130D9C
 // Offsets
 extern intptr_t FILE_041_MARIO_CAMERA_PARAMS_OFFSET; // 00000000 file 0x041 offset for Mario's fighter pose camera settings
@@ -278,7 +278,7 @@ void mvOpeningMarioInitFighterStagePanel()
 	grWallpaperMakeGroundWallpaper();
 	grCommonSetupInitAll();
 
-	if (mpCollision_GetMPointCountKind(mpMPoint_Kind_Unk0x15) != 1)
+	if (mpCollisionGetMapObjCountKind(nMPMapObjKindUnk0x15) != 1)
 	{
 		while (TRUE)
 		{
@@ -287,8 +287,8 @@ void mvOpeningMarioInitFighterStagePanel()
 		}
 	}
 
-	mpCollision_GetMPointIDsKind(mpMPoint_Kind_Unk0x15, &pos_ids);
-	mpCollision_GetMPointPositionID(pos_ids, &spawn_position);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindUnk0x15, &pos_ids);
+	mpCollisionGetMapObjPositionID(pos_ids, &spawn_position);
 	mvOpeningMarioCreateStageViewport(spawn_position);
 	gmRumbleMakeActor();
 	ftPublicitySetup();
@@ -482,7 +482,7 @@ void mvOpeningMarioInit()
 	mvOpeningMarioInitFramesElapsed();
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
-	mpCollision_InitMapCollisionData();
+	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
 	ftManagerAllocFighter(3, 2);
@@ -507,7 +507,7 @@ void mvOpeningMarioInit()
 void mvOpeningMarioSetupDisplayList(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRender_Lights_DisplayLightReflect(display_list, gMPLightAngleX, gMPLightAngleY);
+	ftRenderLightsDrawReflect(display_list, gMPLightAngleX, gMPLightAngleY);
 }
 
 // 8018E030

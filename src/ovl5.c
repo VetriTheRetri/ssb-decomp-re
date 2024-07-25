@@ -12,7 +12,7 @@ extern intptr_t lOverlay5ArenaLo; // 8018D950
 extern intptr_t lOverlay5ArenaHi; // 803903E0
 
 void func_ovl1_803903E0();
-void ftRender_Lights_DisplayLightReflect(Gfx **display_list, f32 arg1, f32 arg2);
+void ftRenderLightsDrawReflect(Gfx **display_list, f32 arg1, f32 arg2);
 
 // DATA
 
@@ -114,7 +114,7 @@ void func_ovl5_8018D1A0()
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
 	func_ovl2_800EC130();
-	mpCollision_InitMapCollisionData();
+	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
 	grWallpaperMakeGroundWallpaper();
@@ -168,7 +168,7 @@ void func_ovl5_8018D1A0()
 void func_ovl5_8018D4BC(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRender_Lights_DisplayLightReflect(display_list, gMPLightAngleX, gMPLightAngleY);
+	ftRenderLightsDrawReflect(display_list, gMPLightAngleX, gMPLightAngleY);
 }
 
 // 8018D508

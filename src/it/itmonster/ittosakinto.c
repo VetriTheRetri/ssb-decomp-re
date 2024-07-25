@@ -13,7 +13,7 @@ extern intptr_t lITTosakintoMatAnimJoint;   // 0x0000B90C
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

@@ -17,7 +17,7 @@ extern intptr_t lITIwarkDisplayList;        // 0x0000A640
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

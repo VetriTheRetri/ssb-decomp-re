@@ -17,6 +17,11 @@ lOverlay64ArenaHi = 0x80392A00;
 lMNN64ArenaLo = 0x80132080;
 lMNN64ArenaHi = 0x803903E0;
 
+lEFCommonParticleBankHeaderLo = 0x00AC7340;
+lEFCommonParticleBankHeaderHi = 0x00AC9DE0;
+lEFCommonParticleBankTextureLo = 0x00AC9DE0;
+lEFCommonParticleBankTextureHi = 0x00B16C80;
+
 lEFManagerShieldDObjSetup = 0x00000300;
 
 lEFManagerYoshiShieldDObjSetup = 0x0000A860;

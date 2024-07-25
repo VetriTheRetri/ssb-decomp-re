@@ -15,7 +15,7 @@ extern void ftCommon_PlayLoopSFXStoreInfo(ftStruct*, u16);
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

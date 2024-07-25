@@ -15,7 +15,7 @@ extern intptr_t lITDogasAnimJoint;          // 0x000128DC
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

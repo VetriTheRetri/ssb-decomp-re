@@ -35,7 +35,7 @@ cmStruct gCMManagerCameraStruct;
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

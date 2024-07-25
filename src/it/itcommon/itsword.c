@@ -10,7 +10,7 @@ extern intptr_t lITSwordItemAttributes;     // 0x00000190
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

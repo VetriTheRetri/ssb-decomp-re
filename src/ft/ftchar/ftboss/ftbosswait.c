@@ -5,7 +5,7 @@ extern f32 ftCommon_GetStickAngleRadians(ftStruct*);
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

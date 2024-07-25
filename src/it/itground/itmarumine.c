@@ -12,7 +12,7 @@ extern intptr_t lITMarumineHitEvents;       // 0x0000014C
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

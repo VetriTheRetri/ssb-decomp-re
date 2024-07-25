@@ -15,7 +15,7 @@ extern intptr_t lITBombHeiWalkMatAnimJoint;     // 0x000035B8
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

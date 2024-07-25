@@ -11,7 +11,7 @@ extern intptr_t lITMewDataStart;            // 0x0000BCC0
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

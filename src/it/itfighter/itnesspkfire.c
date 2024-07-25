@@ -12,7 +12,7 @@ extern intptr_t lITNessPKFireItemAttributes;// 0x00000034
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

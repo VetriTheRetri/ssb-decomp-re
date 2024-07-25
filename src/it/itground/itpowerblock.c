@@ -13,7 +13,7 @@ extern intptr_t lITPowerBlockAnimJoint;     // 0x00001288
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

@@ -21,7 +21,7 @@ extern void gcSetAllAnimPlaybackRate(GObj*, f32);
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

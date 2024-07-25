@@ -16,7 +16,7 @@ extern intptr_t lITLinkBombBloatScale; 	// 0x000000A8
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

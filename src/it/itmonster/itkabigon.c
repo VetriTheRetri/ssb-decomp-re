@@ -13,7 +13,7 @@ extern intptr_t lITKabigonAnimJoint;        // 0x0000B158
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

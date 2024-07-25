@@ -50,7 +50,7 @@ itSpawnActor gITSpawnActor;
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

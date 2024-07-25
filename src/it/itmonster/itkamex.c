@@ -16,7 +16,7 @@ extern intptr_t lITKamexDisplayList;        // 0x0000ED60
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

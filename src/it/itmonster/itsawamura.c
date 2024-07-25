@@ -14,7 +14,7 @@ extern intptr_t lITSawamuraDisplayList;     // 0x00012340
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

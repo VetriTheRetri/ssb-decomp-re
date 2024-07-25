@@ -1,7 +1,9 @@
 #ifndef _EFMANAGER_H_
 #define _EFMANAGER_H_
 
-#include "eftypes.h"
+#include <ssb_types.h>
+#include <sys/objdef.h>
+#include <ef/efdef.h>
 
 extern void efManagerInitEffects(void);
 extern efStruct* efManagerGetEffectSetNextAlloc(sb32 is_force_return);

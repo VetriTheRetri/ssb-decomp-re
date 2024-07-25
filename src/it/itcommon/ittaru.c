@@ -11,7 +11,7 @@ extern intptr_t lITTaruHitEvents;           // 0x0000067C
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

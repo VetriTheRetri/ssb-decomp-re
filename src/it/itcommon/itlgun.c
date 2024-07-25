@@ -14,7 +14,7 @@ lITLGunWeaponAmmoWeaponAttributes;          // 0x000002B0
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

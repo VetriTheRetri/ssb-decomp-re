@@ -8,7 +8,7 @@ extern f32 grJungleTaruCannGetRotate();
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

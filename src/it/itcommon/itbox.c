@@ -14,7 +14,7 @@ extern intptr_t lITBoxEffectDisplayList;    // 0x000068F0
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

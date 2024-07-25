@@ -17,7 +17,7 @@ extern void func_8000DF34_EB34(GObj*);
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

@@ -13,7 +13,7 @@ extern intptr_t lITRShellMatAnimJoint;      // 0x00006048
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

@@ -12,7 +12,7 @@ lWPYoshiEggThrowWeaponAttributes;           // 0x0000000C
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

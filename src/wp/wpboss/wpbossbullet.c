@@ -14,7 +14,7 @@ lWPBossBulletHardWeaponAttributes;          // 0x000007A8
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

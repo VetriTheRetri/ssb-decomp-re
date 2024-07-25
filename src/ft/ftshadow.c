@@ -16,7 +16,7 @@ extern gsColorRGBA dFTShadowColorTeams[/* */];
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 
@@ -97,7 +97,7 @@ void ftShadowProcRender(GObj *shadow_gobj)
         gSPDisplayList(gDisplayListHead[0]++, dFTShadowNoPrevLinkDL);
 
         // Linker thing here
-        gDPLoadTextureBlock_4b(gDisplayListHead[0]++, ((uintptr_t)sEFTexturesFile2 + (intptr_t)&lFTShadowTextureImage), G_IM_FMT_I, 16, 16, 0, G_TX_MIRROR | G_TX_WRAP, G_TX_MIRROR | G_TX_WRAP, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
+        gDPLoadTextureBlock_4b(gDisplayListHead[0]++, ((uintptr_t)sEFManagerTexturesFile2 + (intptr_t)&lFTShadowTextureImage), G_IM_FMT_I, 16, 16, 0, G_TX_MIRROR | G_TX_WRAP, G_TX_MIRROR | G_TX_WRAP, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
     }
     fs = (ftShadow*)shadow_gobj->user_data.p;
 

@@ -813,12 +813,12 @@ gMPLightAngleX = 0x80131390;
 gMPLightAngleY = 0x80131394;
 gMPCollUpdateFrame = 0x80131398;
 
-sEFTexturesFile1 = 0x801313B0;
-sEFTexturesFile2 = 0x801313B4;
-sEFTexturesFile3 = 0x801313B8;
-sEFStructsAllocFree = 0x801313BC;
-sEFStructsNumFree = 0x801313C0;
-sEFParticleBankID = 0x801313C4;
+sEFManagerTexturesFile1 = 0x801313B0;
+sEFManagerTexturesFile2 = 0x801313B4;
+sEFManagerTexturesFile3 = 0x801313B8;
+sEFManagerStructsAllocFree = 0x801313BC;
+sEFManagerNumStructsFree = 0x801313C0;
+gEFManagerParticleBankID = 0x801313C4;
 
 sGRWallpaperIsPausePerspUpdate = 0x801313D0;
 sGRWallpaperGObj = 0x801313D8;

@@ -19,7 +19,7 @@ intptr_t lITPakkunNDamageMatAnimJoint;      // 0x00000E04
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

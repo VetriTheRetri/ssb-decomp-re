@@ -14,7 +14,7 @@ extern intptr_t lITMBallMatAnimJoint;       // 0x00009520
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

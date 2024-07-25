@@ -16,7 +16,7 @@ lITStarRodWeaponStarSmashAttributes;        // 0x00000508
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

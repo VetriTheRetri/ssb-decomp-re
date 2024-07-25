@@ -6,7 +6,7 @@ extern s32 gmCommon_DamageApplyStale(s32, s32, s32, u16);
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

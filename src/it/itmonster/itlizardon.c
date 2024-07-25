@@ -21,7 +21,7 @@ lITLizardonMatAnimJoint;                    // 0x0000D688
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

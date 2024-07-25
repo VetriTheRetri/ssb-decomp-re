@@ -10,7 +10,7 @@ extern intptr_t lITHeartItemAttributes;     // 0x00000100
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

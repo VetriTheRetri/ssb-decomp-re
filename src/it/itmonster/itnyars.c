@@ -15,7 +15,7 @@ extern intptr_t lITNyarsAnimJoint;          // 0x0000C130
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

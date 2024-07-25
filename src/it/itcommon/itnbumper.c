@@ -14,7 +14,7 @@ extern intptr_t lITNBumperGWaitDisplayList; // 0x00007AF8
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

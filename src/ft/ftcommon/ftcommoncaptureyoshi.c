@@ -5,7 +5,7 @@ extern void gcSetDObjAnimPlaybackRate(GObj*, f32);
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

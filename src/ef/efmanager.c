@@ -255,26 +255,26 @@ extern intptr_t lEFManagerNessPKFlashMatAnimJoint;               // 0x00006E20
 // // // // // // // // // // // //
 
 // 0x801313B0
-void *sEFTexturesFile1;
+void *sEFManagerTexturesFile1;
 
 // 0x801313B4
-void *sEFTexturesFile2;
+void *sEFManagerTexturesFile2;
 
 // 0x801313B8
-void *sEFTexturesFile3;
+void *sEFManagerTexturesFile3;
 
 // 0x801313BC
-efStruct *sEFStructsAllocFree;
+efStruct *sEFManagerStructsAllocFree;
 
 // 0x801313C0
-s32 sEFStructsNumFree;
+s32 sEFManagerNumStructsFree;
 
 // 0x801313C4
-s32 sEFParticleBankID;
+s32 gEFManagerParticleBankID;
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 
@@ -349,7 +349,7 @@ efCreateDesc dEFManagerDamageSlashEffectDesc =
 {
     0x4 | 0x1,                              // Flags
     18,                                     // DL Link
-    &sEFTexturesFile1,                      // Texture file
+    &sEFManagerTexturesFile1,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -379,7 +379,7 @@ efCreateDesc dEFManagerShockSmallEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     18,                                     // DL Link
-    &sEFTexturesFile2,                      // Texture file
+    &sEFManagerTexturesFile2,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -409,7 +409,7 @@ efCreateDesc dEFManagerDamageFlyOrbsEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
-    &sEFTexturesFile1,                      // Texture file
+    &sEFManagerTexturesFile1,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -439,7 +439,7 @@ efCreateDesc dEFManagerDamageSpawnOrbsEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     0,                                      // DL Link
-    &sEFTexturesFile1,                      // Texture file
+    &sEFManagerTexturesFile1,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -469,7 +469,7 @@ efCreateDesc dEFManagerImpactWaveEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     10,                                     // DL Link
-    &sEFTexturesFile1,                      // Texture file
+    &sEFManagerTexturesFile1,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -499,7 +499,7 @@ efCreateDesc dEFStarRodSparkEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
-    &sEFTexturesFile1,                      // Texture file
+    &sEFManagerTexturesFile1,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -529,7 +529,7 @@ efCreateDesc dEFManagerDamageFlySparksEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
-    &sEFTexturesFile1,                      // Texture file
+    &sEFManagerTexturesFile1,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -559,7 +559,7 @@ efCreateDesc dEFManagerDamageSpawnSparksEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     0,                                      // DL Link
-    &sEFTexturesFile1,                      // Texture file
+    &sEFManagerTexturesFile1,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -589,7 +589,7 @@ efCreateDesc dEFManagerDamageFlyMDustEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
-    &sEFTexturesFile1,                      // Texture file
+    &sEFManagerTexturesFile1,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -619,7 +619,7 @@ efCreateDesc dEFManagerDamageSpawnMDustEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     0,                                      // DL Link
-    &sEFTexturesFile1,                      // Texture file
+    &sEFManagerTexturesFile1,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -649,7 +649,7 @@ efCreateDesc dEFFireSparkEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &sEFTexturesFile2,                      // Texture file
+    &sEFManagerTexturesFile2,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -788,7 +788,7 @@ efCreateDesc dEFCatchSwirlEffectDesc =
 {
     0x4 | 0x1,                              // Flags
     18,                                     // DL Link
-    &sEFTexturesFile2,                      // Texture file
+    &sEFManagerTexturesFile2,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -818,7 +818,7 @@ efCreateDesc dEFReflectBreakEffectDesc =
 {
     0x4 | 0x1,                              // Flags
     18,                                     // DL Link
-    &sEFTexturesFile2,                      // Texture file
+    &sEFManagerTexturesFile2,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -1118,7 +1118,7 @@ efCreateDesc dEFManagerDeadExplodeEffectDesc =
 {
     EFFECT_FLAG_SPECIALLINK | 0x4,          // Flags
     18,                                     // DL Link
-    &sEFTexturesFile2,                      // Texture file
+    &sEFManagerTexturesFile2,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -1400,7 +1400,7 @@ efCreateDesc dEFManagerNessPKFlashEffectDesc =
 {
     0x4,                                    // Flags
     18,                                     // DL Link
-    &sEFTexturesFile2,                      // Texture file
+    &sEFManagerTexturesFile2,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -1520,7 +1520,7 @@ efCreateDesc dEFManagerMBallRaysEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
-    &sEFTexturesFile3,                      // Texture file
+    &sEFManagerTexturesFile3,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -1916,7 +1916,7 @@ efCreateDesc dEFManagerRebirthHaloEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     10,                                     // DL Link
-    &sEFTexturesFile3,                      // Texture file
+    &sEFManagerTexturesFile3,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -1946,7 +1946,7 @@ efCreateDesc dEFManagerItemGetSwirlEffectDesc =
 {
     0x4 | 0x1,                              // Flags
     18,                                     // DL Link
-    &sEFTexturesFile3,                      // Texture file
+    &sEFManagerTexturesFile3,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -1986,8 +1986,8 @@ void efManagerInitEffects(void)
     s32 i;
     s32 unused;
 
-    sEFStructsAllocFree = ep = gsMemoryAlloc(sizeof(efStruct) * EFFECT_ALLOC_NUM, 0x8);
-    sEFStructsNumFree = EFFECT_ALLOC_NUM;
+    sEFManagerStructsAllocFree = ep = gsMemoryAlloc(sizeof(efStruct) * EFFECT_ALLOC_NUM, 0x8);
+    sEFManagerNumStructsFree = EFFECT_ALLOC_NUM;
 
     for (i = 0; i < (EFFECT_ALLOC_NUM - 1); i++)
     {
@@ -1997,14 +1997,14 @@ void efManagerInitEffects(void)
     {
         ep[i].alloc_next = NULL;
     }
-    func_ovl2_800FCDEC();
-    func_ovl2_800FCE6C();
+    efRenderMakeBlendCLD();
+    efRenderMakeXLU();
 
-    sEFTexturesFile1 = rdManagerGetFileWithExternHeap(&D_NF_00000053, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000053), 0x10));
-    sEFTexturesFile2 = rdManagerGetFileWithExternHeap(&D_NF_00000054, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000054), 0x10));
-    sEFTexturesFile3 = rdManagerGetFileWithExternHeap(&D_NF_00000055, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000055), 0x10));
+    sEFManagerTexturesFile1 = rdManagerGetFileWithExternHeap(&D_NF_00000053, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000053), 0x10));
+    sEFManagerTexturesFile2 = rdManagerGetFileWithExternHeap(&D_NF_00000054, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000054), 0x10));
+    sEFManagerTexturesFile3 = rdManagerGetFileWithExternHeap(&D_NF_00000055, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000055), 0x10));
 
-    func_ovl2_800FD18C();
+    efRenderInitAll();
 }
 
 // 0x800FD43C
@@ -2012,23 +2012,23 @@ efStruct* efManagerGetEffectSetNextAlloc(sb32 is_force_return)
 {
     efStruct *ep;
 
-    if ((is_force_return == FALSE) && (sEFStructsNumFree < 5))
+    if ((is_force_return == FALSE) && (sEFManagerNumStructsFree < 5))
     {
         return NULL;
     }
-    ep = sEFStructsAllocFree;
+    ep = sEFManagerStructsAllocFree;
 
     if (ep == NULL)
     {
         return NULL;
     }
-    sEFStructsAllocFree = ep->alloc_next;
+    sEFManagerStructsAllocFree = ep->alloc_next;
 
     ep->fighter_gobj = NULL;
     ep->eftrans = NULL;
     ep->is_pause_effect = FALSE;
 
-    sEFStructsNumFree--;
+    sEFManagerNumStructsFree--;
 
     return ep;
 }
@@ -2048,11 +2048,11 @@ efStruct* efManagerGetEffectForce(void)
 // 0x800FD4F8
 void efManagerSetPrevAlloc(efStruct *ep)
 {
-    ep->alloc_next = sEFStructsAllocFree;
+    ep->alloc_next = sEFManagerStructsAllocFree;
 
-    sEFStructsAllocFree = ep;
+    sEFManagerStructsAllocFree = ep;
 
-    sEFStructsNumFree++;
+    sEFManagerNumStructsFree++;
 }
 
 // 0x800FD524
@@ -2387,7 +2387,7 @@ efParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID, dEFManagerDamageNormalLightIDs[player]);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, dEFManagerDamageNormalLightIDs[player]);
 
     if (efpart != NULL)
     {
@@ -2463,7 +2463,7 @@ efParticle* efManagerDamageNormalHeavyMakeEffect(Vec3f *pos, s32 player, s32 siz
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID, 0x64);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x64);
 
     if (efpart != NULL)
     {
@@ -2531,7 +2531,7 @@ efParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID, 0x25);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x25);
 
     if (efpart != NULL)
     {
@@ -2619,7 +2619,7 @@ efParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID, 0x4D);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x4D);
 
     if (efpart != NULL)
     {
@@ -2687,7 +2687,7 @@ efParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID, 0x53);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x53);
 
     if (efpart != NULL)
     {
@@ -2781,7 +2781,7 @@ efParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID, 0x12);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x12);
 
     if (efpart != NULL)
     {
@@ -2848,7 +2848,7 @@ efParticle* efManagerFlameRandomMakeEffect(Vec3f *pos)
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID, 0x55);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x55);
 
     if (efpart != NULL)
     {
@@ -2912,7 +2912,7 @@ efParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID, 0x55);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x55);
 
     if (efpart != NULL)
     {
@@ -2974,7 +2974,7 @@ efParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID, 0x55);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x55);
 
     if (efpart != NULL)
     {
@@ -3111,7 +3111,7 @@ efParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_i
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = (f_index == 2.0F) ? func_ovl0_800CE9E8(sEFParticleBankID | 8, 0x56) : func_ovl0_800CE9E8(sEFParticleBankID | 8, 0x55);
+    efpart = (f_index == 2.0F) ? func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x56) : func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x55);
 
     if (efpart != NULL)
     {
@@ -3179,7 +3179,7 @@ efParticle* efManagerDustHeavyMakeEffect(Vec3f *pos, s32 lr)
     }
     effect_gobj->user_data.p = NULL;
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID | 8, 0x58);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x58);
 
     if (efpart != NULL)
     {
@@ -3251,7 +3251,7 @@ efParticle* efManagerDustHeavy2xMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = (f_index == 1.7F) ? func_ovl0_800CE9E8(sEFParticleBankID | 8, 0x59) : func_ovl0_800CE9E8(sEFParticleBankID | 8, 0x58); // Why such a specific check when a bool could've worked?
+    efpart = (f_index == 1.7F) ? func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x59) : func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x58); // Why such a specific check when a bool could've worked?
 
     if (efpart != NULL)
     {
@@ -3291,7 +3291,7 @@ efParticle* efManagerDustHeavy2xMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 // 0x800FF590
 efParticle* efManagerDustExpandLargeMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(sEFParticleBankID | 8, 0x57);
+    efParticle *efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x57);
 
     if (efpart != NULL)
     {
@@ -3348,7 +3348,7 @@ efParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = (f_index == 2.0F) ? func_ovl0_800CE9E8(sEFParticleBankID | 8, 0x56) : func_ovl0_800CE9E8(sEFParticleBankID | 8, 0x55);
+    efpart = (f_index == 2.0F) ? func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x56) : func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x55);
 
     if (efpart != NULL)
     {
@@ -3388,7 +3388,7 @@ efParticle* efManagerDustDashMakeEffect(Vec3f *pos, s32 lr, f32 scale)
     efTransform *eftrans;
     efStruct *ep;
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID | 8, 0x5A);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x5A);
 
     if (efpart != NULL)
     {
@@ -3852,7 +3852,7 @@ GObj* efManagerDamageSpawnMDustCheckRandomMakeEffect(Vec3f *pos, s32 lr)
 // 0x80100480
 efParticle* efManagerSparkleWhiteMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(sEFParticleBankID | 8, 0x73);
+    efParticle *efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x73);
 
     if (efpart != NULL)
     {
@@ -3881,7 +3881,7 @@ efParticle* efManagerSparkleWhiteMakeEffect(Vec3f *pos)
 // 0x80100524
 efParticle* efManagerSparkleWhiteMultiMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(sEFParticleBankID | 8, 0x1A);
+    efParticle *efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x1A);
 
     if (efpart != NULL)
     {
@@ -3910,7 +3910,7 @@ efParticle* efManagerSparkleWhiteMultiMakeEffect(Vec3f *pos)
 // 0x801005C8
 efParticle* efManagerSparkleWhiteMultiExplodeMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(sEFParticleBankID | 8, 0x22);
+    efParticle *efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x22);
 
     if (efpart != NULL)
     {
@@ -3939,7 +3939,7 @@ efParticle* efManagerSparkleWhiteMultiExplodeMakeEffect(Vec3f *pos)
 // 0x8010066C
 efParticle* efManagerSparkleWhiteScaleMakeEffect(Vec3f *pos, f32 scale)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(sEFParticleBankID, 0x5B);
+    efParticle *efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x5B);
 
     if (efpart != NULL)
     {
@@ -3972,7 +3972,7 @@ efParticle* efManagerSparkleWhiteScaleMakeEffect(Vec3f *pos, f32 scale)
 // 0x80100720 - Plays when a fighter is Star KO'd
 efParticle* efManagerSparkleWhiteDeadMakeEffect(Vec3f *pos, f32 scale)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(sEFParticleBankID | 0x10, 0x5C);
+    efParticle *efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 0x10, 0x5C);
 
     if (efpart != NULL)
     {
@@ -4082,19 +4082,19 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude) // Linker things here
     switch (magnitude)
     {
     case 0:
-        func_8000BD8C_C98C(effect_gobj, (uintptr_t)sEFTexturesFile1 + (intptr_t)&D_NF_0000CBC0, 0.0F);
+        func_8000BD8C_C98C(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CBC0, 0.0F);
         break;
 
     case 1:
-        func_8000BD8C_C98C(effect_gobj, (uintptr_t)sEFTexturesFile1 + (intptr_t)&D_NF_0000CC20, 0.0F);
+        func_8000BD8C_C98C(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CC20, 0.0F);
         break;
 
     case 2:
-        func_8000BD8C_C98C(effect_gobj, (uintptr_t)sEFTexturesFile1 + (intptr_t)&D_NF_0000CCF0, 0.0F);
+        func_8000BD8C_C98C(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CCF0, 0.0F);
         break;
 
     case 3: // Used by POW Block 
-        func_8000BD8C_C98C(effect_gobj, (uintptr_t)sEFTexturesFile1 + (intptr_t)&D_NF_0000CDC0, 0.0F);
+        func_8000BD8C_C98C(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CDC0, 0.0F);
         break;
 
     default:
@@ -4147,7 +4147,7 @@ efParticle* efManagerDamageCoinMakeEffect(Vec3f *pos)
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID, 0x60);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x60);
 
     if (efpart != NULL)
     {
@@ -4202,7 +4202,7 @@ efParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
     }
     effect_gobj->user_data.p = ep;
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID | 8, 0x65);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x65);
 
     if (efpart != NULL)
     {
@@ -4268,7 +4268,7 @@ GObj* efManagerFireSparkMakeEffect(GObj *fighter_gobj) // I really have no idea 
     dobj->translate.vec.f.y = 160.0F;
     dobj->user_data.p = fp->joint[16];
 
-    func_ovl0_800C9314(dobj->child, (uintptr_t)sEFTexturesFile2 + (intptr_t)&lEFManagerFireSparkDObjSetup, effect_gobj); // Linker thing
+    func_ovl0_800C9314(dobj->child, (uintptr_t)sEFManagerTexturesFile2 + (intptr_t)&lEFManagerFireSparkDObjSetup, effect_gobj); // Linker thing
 
     return effect_gobj;
 }
@@ -4414,7 +4414,7 @@ void efManagerYoshiShieldProcRender(GObj *effect_gobj)
 
     odRenderDObjDLHead1(effect_gobj);
 
-    func_ovl2_800FCCC0(effect_gobj);
+    efRenderProcRenderBlendCLD(effect_gobj);
 }
 
 // 0x80101374
@@ -4450,7 +4450,7 @@ GObj* efManagerYoshiShieldMakeEffect(GObj *fighter_gobj)
 // 0x80101408
 efParticle* efManagerThunderAmpMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(sEFParticleBankID, 0x74);
+    efParticle *efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x74);
 
     if (efpart != NULL)
     {
@@ -4479,7 +4479,7 @@ efParticle* efManagerThunderAmpMakeEffect(Vec3f *pos)
 // 0x801014A8
 efGenerator* efManagerRippleMakeEffect(Vec3f *pos)
 {
-    efGenerator *efgen = func_ovl0_800D35DC(sEFParticleBankID, 0x61);
+    efGenerator *efgen = func_ovl0_800D35DC(gEFManagerParticleBankID, 0x61);
 
     if (efgen != NULL)
     {
@@ -4535,7 +4535,7 @@ GObj* efManagerReflectBreakMakeEffect(Vec3f *pos, s32 lr)
 // 0x801015D4
 efParticle* efManagerFuraSparkleMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE870(sEFParticleBankID | 8, 0);
+    efParticle *efpart = func_ovl0_800CE870(gEFManagerParticleBankID | 8, 0);
 
     if (efpart != NULL)
     {
@@ -4549,7 +4549,7 @@ efParticle* efManagerFuraSparkleMakeEffect(Vec3f *pos)
 // 0x80101630
 efParticle* efManagerNessPSIMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE870(sEFParticleBankID, 7);
+    efParticle *efpart = func_ovl0_800CE870(gEFManagerParticleBankID, 7);
 
     if (efpart != NULL)
     {
@@ -4563,7 +4563,7 @@ efParticle* efManagerNessPSIMakeEffect(Vec3f *pos)
 // 0x80101688
 efParticle* efManagerFlashSmallMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE870(sEFParticleBankID, 4);
+    efParticle *efpart = func_ovl0_800CE870(gEFManagerParticleBankID, 4);
 
     if (efpart != NULL)
     {
@@ -4577,7 +4577,7 @@ efParticle* efManagerFlashSmallMakeEffect(Vec3f *pos)
 // 0x801016E0
 efParticle* efManagerFlashMiddleMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE870(sEFParticleBankID, 5);
+    efParticle *efpart = func_ovl0_800CE870(gEFManagerParticleBankID, 5);
 
     if (efpart != NULL)
     {
@@ -4591,7 +4591,7 @@ efParticle* efManagerFlashMiddleMakeEffect(Vec3f *pos)
 // 0x80101738
 efParticle* efManagerFlashLargeMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE870(sEFParticleBankID, 6);
+    efParticle *efpart = func_ovl0_800CE870(gEFManagerParticleBankID, 6);
 
     if (efpart != NULL)
     {
@@ -4605,7 +4605,7 @@ efParticle* efManagerFlashLargeMakeEffect(Vec3f *pos)
 // 0x80101790
 efGenerator* efManagerShieldBreakMakeEffect(Vec3f *pos)
 {
-    efGenerator *efgen = func_ovl0_800D35DC(sEFParticleBankID, 3);
+    efGenerator *efgen = func_ovl0_800D35DC(gEFManagerParticleBankID, 3);
 
     if (efgen != NULL)
     {
@@ -4943,7 +4943,7 @@ GObj* efManagerCaptainFalconPunchMakeEffect(GObj *fighter_gobj)
 // 0x80102018
 efGenerator* efManagerKirbyStarMakeEffect(Vec3f *pos)
 {
-    efGenerator *efgen = func_ovl0_800D35DC(sEFParticleBankID, 0xF);
+    efGenerator *efgen = func_ovl0_800D35DC(gEFManagerParticleBankID, 0xF);
 
     if (efgen != NULL)
     {
@@ -4957,7 +4957,7 @@ efGenerator* efManagerKirbyStarMakeEffect(Vec3f *pos)
 // 0x80102070
 efGenerator* efManagerStarSplashMakeEffect(Vec3f *pos, s32 lr)
 {
-    efGenerator *efgen = (lr == LR_Left) ? func_ovl0_800D35DC(sEFParticleBankID, 0x10) : func_ovl0_800D35DC(sEFParticleBankID, 0x11);
+    efGenerator *efgen = (lr == LR_Left) ? func_ovl0_800D35DC(gEFManagerParticleBankID, 0x10) : func_ovl0_800D35DC(gEFManagerParticleBankID, 0x11);
 
     if (efgen != NULL)
     {
@@ -5022,7 +5022,7 @@ GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, s32 type)
     DObj *sibling_dobj;
     u8 index = ((type & 1) * GMMATCH_PLAYERS_MAX) + player; // WARNING: dEFManagerDeadExplodeGenID should be u8[2][GMMATCH_PLAYERS_MAX], but it will not match this way; UB-risk
 
-    efpart = func_ovl0_800CE9E8(sEFParticleBankID | 0x10, dEFManagerDeadExplodeGenID[index]);
+    efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 0x10, dEFManagerDeadExplodeGenID[index]);
 
     if (efpart != NULL)
     {
@@ -5524,7 +5524,7 @@ GObj* efManagerMBallThrownMakeEffect(Vec3f *pos, s32 lr) // Many linker things h
 // 0x80102DEC
 efParticle* efManagerFireGrindMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(sEFParticleBankID | 8, 0xB);
+    efParticle *efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0xB);
 
     if (efpart != NULL)
     {
@@ -5553,7 +5553,7 @@ efParticle* efManagerFireGrindMakeEffect(Vec3f *pos)
 // 0x80102E90
 efParticle* efManagerHealSparklesMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(sEFParticleBankID | 8, 0xE);
+    efParticle *efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0xE);
 
     if (efpart != NULL)
     {
@@ -5756,7 +5756,7 @@ efParticle* efManagerFoxBlasterGlowMakeEffect(Vec3f *pos)
 {
     efParticle *efpart;
 
-    efpart = func_ovl0_800CE870(sEFParticleBankID, 0x62);
+    efpart = func_ovl0_800CE870(gEFManagerParticleBankID, 0x62);
 
     if (efpart != NULL)
     {
@@ -5989,7 +5989,7 @@ void func_ovl2_80103918(f32 arg0, f32 arg1, s32 arg2)
     arg0 *= 4.0F;
     arg1 *= 4.0F;
 
-    func_ovl0_800CE8C0(sEFParticleBankID | 0x18, arg2, arg0, arg1, 0.0F, 0.0F, 0.0F, 0.0F);
+    func_ovl0_800CE8C0(gEFManagerParticleBankID | 0x18, arg2, arg0, arg1, 0.0F, 0.0F, 0.0F, 0.0F);
 }
 
 // 0x80103974
@@ -6015,7 +6015,7 @@ efParticle* efManagerPurinSingNoteMakeEffect(Vec3f *pos)
 {
     efParticle *efpart = func_ovl0_800CE9E8
     (
-        sEFParticleBankID | 8, 
+        gEFManagerParticleBankID | 8, 
         dEFManagerPurinSingNoteGenIDs[mtTrigGetRandomIntRange(ARRAY_COUNT(dEFManagerPurinSingNoteGenIDs))]
     );
 
@@ -6260,7 +6260,7 @@ GObj* efManagerRebirthHaloMakeEffect(GObj *fighter_gobj, f32 scale)
 // 0x801040E0
 efParticle* efManagerBattleScoreMakeEffect(Vec3f *pos, s32 score)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(sEFParticleBankID | 0x18, (score > 0) ? 0x43 : 0x44);
+    efParticle *efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 0x18, (score > 0) ? 0x43 : 0x44);
 
     if (efpart != NULL)
     {
@@ -6288,7 +6288,7 @@ efParticle* efManagerBattleScoreMakeEffect(Vec3f *pos, s32 score)
 // 0x801041A0
 efParticle* efManagerEggBreakMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(sEFParticleBankID, 0x54);
+    efParticle *efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x54);
 
     if (efpart != NULL)
     {
@@ -6417,7 +6417,7 @@ GObj* efManagerItemGetSwirlProcUpdate(Vec3f *pos)
 // 0x801044B4
 efParticle* efManagerItemSpawnSwirlMakeEffect(Vec3f *pos)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(sEFParticleBankID, 0x69);
+    efParticle *efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x69);
 
     if (efpart != NULL)
     {
@@ -6446,7 +6446,7 @@ efParticle* efManagerItemSpawnSwirlMakeEffect(Vec3f *pos)
 // 0x80104554
 efParticle* func_ovl2_80104554(Vec3f *pos, s32 arg1)
 {
-    efParticle *efpart = (arg1 != 0) ? func_ovl0_800CE9E8(sEFParticleBankID, 0x70) : func_ovl0_800CE9E8(sEFParticleBankID | 0x20, 0x70);
+    efParticle *efpart = (arg1 != 0) ? func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x70) : func_ovl0_800CE9E8(gEFManagerParticleBankID | 0x20, 0x70);
 
     if (efpart != NULL)
     {

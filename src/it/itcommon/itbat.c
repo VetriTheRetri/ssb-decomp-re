@@ -10,7 +10,7 @@ extern intptr_t lITBatItemAttributes;       // 0x000001D8
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

@@ -7,7 +7,7 @@ extern s32 gmCommon_DamageCalcHitLag(s32 damage, s32 status_id, f32 hitlag_mul);
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

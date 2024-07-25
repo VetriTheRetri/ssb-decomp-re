@@ -15,7 +15,7 @@ extern intptr_t lITFFlowerFlameAngles;      // 0x00000360
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

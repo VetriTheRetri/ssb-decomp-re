@@ -13,7 +13,7 @@ extern intptr_t lITLuckyAnimJoint;          // 0x000100BC
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

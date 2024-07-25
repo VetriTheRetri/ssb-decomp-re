@@ -44,7 +44,7 @@ extern void gcGetVectorWorldPosition();
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

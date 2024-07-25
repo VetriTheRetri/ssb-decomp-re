@@ -12,7 +12,7 @@ lWPKirbyCutterWeaponAttributes;             // 0x00000008
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

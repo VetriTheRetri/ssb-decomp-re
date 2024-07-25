@@ -12,7 +12,7 @@ extern intptr_t lITGLuckyItemAttributes;    // 0x000000BC
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

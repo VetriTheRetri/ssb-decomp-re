@@ -12,7 +12,7 @@ extern intptr_t lITPorygonHitParties;       // 0x000001B4
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

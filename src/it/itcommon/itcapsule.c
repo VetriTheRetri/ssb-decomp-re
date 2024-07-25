@@ -11,7 +11,7 @@ extern intptr_t lITCapsuleHitEvents;        // 0x00000098
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

@@ -10,7 +10,7 @@ extern intptr_t lITHammerItemAttributes;    // 0x00000374
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

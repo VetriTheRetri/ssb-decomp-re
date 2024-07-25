@@ -15,7 +15,7 @@ s32 sFTCommonThrownScriptID;
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

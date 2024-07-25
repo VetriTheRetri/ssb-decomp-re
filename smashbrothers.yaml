@@ -435,6 +435,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Effect renderer
+      - [0x0784C0, c, ef/efrender]
     # Effect manager and common effects
       - [0x078B00, c, ef/efmanager]
     # Stage background image setup

@@ -17,7 +17,7 @@ gmRumblePlayer sGMRumblePlayers[GMMATCH_PLAYERS_MAX];
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

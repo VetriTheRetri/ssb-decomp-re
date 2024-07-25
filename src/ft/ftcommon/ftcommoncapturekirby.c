@@ -14,7 +14,7 @@ extern void ftCollision_SetHitStatusAll(GObj*, s32);
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

@@ -12,7 +12,7 @@ extern intptr_t lITEggHitEvents;            // 0x00000B14
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

@@ -12,7 +12,7 @@ extern intptr_t lITGBumperItemAttributes;   // 0x00000CF0
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

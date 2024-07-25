@@ -12,7 +12,7 @@ extern intptr_t lITMSBombHitEvents;          // 0x00000404
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

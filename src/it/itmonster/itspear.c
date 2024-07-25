@@ -20,7 +20,7 @@ extern intptr_t lITSpearMatAnimJoint;       // 0x0000E12C
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

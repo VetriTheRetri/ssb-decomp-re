@@ -16,7 +16,7 @@ extern intptr_t lITStarmieMatAnimJoint;     // 0x00011338
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

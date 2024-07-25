@@ -19,7 +19,7 @@ extern intptr_t lITRBombEffectDisplayList;  // 0x000008A0
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

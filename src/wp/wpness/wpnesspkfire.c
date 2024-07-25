@@ -13,7 +13,7 @@ lWPNessPKFireWeaponAttributes;              // 0x00000000
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

@@ -21,7 +21,7 @@ extern void func_8000BD8C_C98C(GObj*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 

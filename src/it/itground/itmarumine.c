@@ -83,7 +83,7 @@ void itMarumineNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
 
-    efpart = efParticle_SparkleWhiteMultiExplode_MakeEffect(&dobj->translate.vec.f);
+    efpart = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
     if (efpart != NULL)
     {
@@ -91,7 +91,7 @@ void itMarumineNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
         efpart->effect_info->scale.y = ITMARUMINE_EXPLODE_GFX_SCALE;
         efpart->effect_info->scale.z = ITMARUMINE_EXPLODE_GFX_SCALE;
     }
-    efParticle_Quake_MakeEffect(1);
+    efManagerQuakeMakeEffect(1);
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 

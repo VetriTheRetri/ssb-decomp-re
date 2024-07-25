@@ -606,7 +606,7 @@ void func_ovl64_8018DCC4()
 	grCommonSetupInitAll();
 	ftManagerAllocFighter(2, 4);
 	wpManagerAllocWeapons();
-	efManager_AllocUserData();
+	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
 	ftPublicitySetup();

@@ -113,7 +113,7 @@ void ftCommonGuardUpdateShieldVars(GObj *fighter_gobj)
                     Vec3f egg_gfx_offset = { 0.0F, 0.0F, 0.0F };
 
                     ftParts_GetDObjWorldPosition(fp->joint[ftParts_Joint_YRotN], &egg_gfx_offset);
-                    efParticle_EggBreak_MakeEffect(&egg_gfx_offset);
+                    efManagerEggBreakMakeEffect(&egg_gfx_offset);
                 }
             }
             ftCommon_ProcStopGFX(fighter_gobj);
@@ -359,7 +359,7 @@ void ftCommonGuardOnProcUpdate(GObj *fighter_gobj)
             {
                 if (fp->ft_kind == Ft_Kind_Yoshi)
                 {
-                    fp->status_vars.common.guard.effect_gobj = efParticle_YoshiShield_MakeEffect(fighter_gobj);
+                    fp->status_vars.common.guard.effect_gobj = efManagerYoshiShieldMakeEffect(fighter_gobj);
 
                     ftCommon_HideModelPartAll(fighter_gobj);
                     ftCommonGuardSetHitStatusYoshi(fighter_gobj);
@@ -400,7 +400,7 @@ void ftCommonGuardOnSetStatus(GObj *fighter_gobj, s32 slide_frames)
         }
         else
         {
-            fp->status_vars.common.guard.effect_gobj = efParticle_Shield_MakeEffect(fighter_gobj);
+            fp->status_vars.common.guard.effect_gobj = efManagerShieldMakeEffect(fighter_gobj);
             fp->is_shield = TRUE;
         }
     }

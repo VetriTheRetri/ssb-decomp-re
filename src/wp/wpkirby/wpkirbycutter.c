@@ -53,7 +53,7 @@ sb32 wpKirbyCutterProcUpdate(GObj *weapon_gobj)
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -92,7 +92,7 @@ sb32 wpKirbyCutterProcMap(GObj *weapon_gobj)
 
     if (wp->coll_data.coll_mask_curr & (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -103,7 +103,7 @@ sb32 wpKirbyCutterProcMap(GObj *weapon_gobj)
 sb32 wpKirbyCutterProcHit(GObj *weapon_gobj)
 {
     func_800269C0_275C0(alSound_SFX_ExplodeS);
-    efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerSparkleWhiteMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return FALSE;
 }
@@ -118,7 +118,7 @@ sb32 wpKirbyCutterProcShield(GObj *weapon_gobj)
 sb32 wpKirbyCutterProcSetOff(GObj *weapon_gobj)
 {
     func_800269C0_275C0(alSound_SFX_ExplodeS);
-    efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerSparkleWhiteMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
 }

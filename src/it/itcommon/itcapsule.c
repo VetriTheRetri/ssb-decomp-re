@@ -339,13 +339,13 @@ void itCapsuleNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    ep = efParticle_SparkleWhiteMultiExplode_MakeEffect(&dobj->translate.vec.f);
+    ep = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
     if (ep != NULL)
     {
         ep->effect_info->scale.x = ep->effect_info->scale.y = ep->effect_info->scale.z = ITCAPSULE_EXPLODE_SCALE;
     }
-    efParticle_Quake_MakeEffect(1);
+    efManagerQuakeMakeEffect(1);
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 

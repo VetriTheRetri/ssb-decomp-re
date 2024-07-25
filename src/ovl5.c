@@ -123,7 +123,7 @@ void func_ovl5_8018D1A0()
 	ftManagerAllocFighter(3, 1);
 	wpManagerAllocWeapons();
 	itManagerInitItems();
-	efManager_AllocUserData();
+	efManagerInitEffects();
 	gmRumbleMakeActor();
 	ftPublicitySetup();
 

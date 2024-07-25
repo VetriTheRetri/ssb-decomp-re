@@ -123,7 +123,7 @@ void scBattle_StartStockBattle()
 	grCommonSetupInitAll();
 	ftManagerAllocFighter(2, GMMATCH_PLAYERS_MAX);
 	wpManagerAllocWeapons();
-	efManager_AllocUserData();
+	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
 	ftPublicitySetup();
@@ -385,7 +385,7 @@ void scBattle_StartSDBattle()
 	grCommonSetupInitAll();
 	ftManagerAllocFighter(2, GMMATCH_PLAYERS_MAX);
 	wpManagerAllocWeapons();
-	efManager_AllocUserData();
+	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
 	ftPublicitySetup();

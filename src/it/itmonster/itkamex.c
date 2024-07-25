@@ -147,7 +147,7 @@ void itKamexNAttackUpdateHydro(GObj *item_gobj)
         else pos.x += ITKAMEX_OTHER_HYDRO_SPAWN_OFF_X * ip->lr;
 
         itKamexNAttackMakeHydro(item_gobj, &pos);
-        efParticle_DamageSpawnSparks_MakeEffect(&pos, ip->lr);
+        efManagerDamageSpawnSparksMakeEffect(&pos, ip->lr);
         func_800269C0_275C0(alSound_SFX_KamexHydro);
 
         ip->item_vars.kamex.hydro_spawn_wait = mtTrigGetRandomIntRange(ITKAMEX_HYDRO_SPAWN_WAIT_RANDOM) + ITKAMEX_HYDRO_SPAWN_WAIT_CONST;
@@ -164,7 +164,7 @@ void itKamexNAttackUpdateHydro(GObj *item_gobj)
 
         ip->phys_info.vel_air.x = -ip->lr * ITKAMEX_CONST_VEL_X;
 
-        efParticle_DustHeavy_MakeEffect(&pos, -ip->lr);
+        efManagerDustHeavyMakeEffect(&pos, -ip->lr);
     }
 }
 
@@ -493,7 +493,7 @@ GObj* itKamexWeaponHydroMakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     translate = dobj->translate.vec.f;
 
-    efParticle_SparkleWhiteScale_MakeEffect(&translate, 1.0F);
+    efManagerSparkleWhiteScaleMakeEffect(&translate, 1.0F);
 
     if (wp->lr == LR_Left)
     {

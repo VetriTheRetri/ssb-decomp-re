@@ -66,7 +66,7 @@ sb32 wpFoxBlasterProcMap(GObj *weapon_gobj)
 {
     if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
-        efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+        efManagerFoxBlasterGlowMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
         return TRUE;
     }
@@ -76,7 +76,7 @@ sb32 wpFoxBlasterProcMap(GObj *weapon_gobj)
 // 0x80168964
 sb32 wpFoxBlasterProcHit(GObj *weapon_gobj)
 {
-    efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerFoxBlasterGlowMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
 }
@@ -91,7 +91,7 @@ sb32 wpFoxBlasterProcHop(GObj *weapon_gobj)
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
-    efParticle_FoxBlasterGlow_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerFoxBlasterGlowMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return FALSE;
 }
@@ -126,7 +126,7 @@ GObj* wpFoxBlasterMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
 
-    efParticle_FoxBlasterGlow_MakeEffect(pos);
+    efManagerFoxBlasterGlowMakeEffect(pos);
 
     return weapon_gobj;
 }

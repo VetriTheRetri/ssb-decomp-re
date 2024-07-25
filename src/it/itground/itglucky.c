@@ -118,7 +118,7 @@ void itGLuckySDefaultUpdateEggSpawn(GObj *lucky_gobj)
                     lucky_ip->it_multi = 10;
                     lucky_ip->item_vars.glucky.egg_spawn_count--;
 
-                    efParticle_DustLight_MakeEffect(&pos, egg_ip->lr, 1.0F);
+                    efManagerDustLightMakeEffect(&pos, egg_ip->lr, 1.0F);
                 }
             }
             else

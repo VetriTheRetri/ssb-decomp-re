@@ -131,7 +131,7 @@ void ftCommonYoshiEggMakeEffect(GObj *fighter_gobj)
 
     if (fp->status_vars.common.captureyoshi.effect_gobj == NULL)
     {
-        fp->status_vars.common.captureyoshi.effect_gobj = efParticle_YoshiEggLay_MakeEffect(fighter_gobj);
+        fp->status_vars.common.captureyoshi.effect_gobj = efManagerYoshiEggLayMakeEffect(fighter_gobj);
 
         if (fp->status_vars.common.captureyoshi.effect_gobj != NULL)
         {
@@ -184,8 +184,8 @@ void ftCommonYoshiEggProcUpdate(GObj *fighter_gobj)
 
         pos.z = 0.0F;
 
-        efParticle_YoshiEggExplode_MakeEffect(&pos);
-        efParticle_EggBreak_MakeEffect(&pos);
+        efManagerYoshiEggExplodeMakeEffect(&pos);
+        efManagerEggBreakMakeEffect(&pos);
         func_800269C0_275C0(alSound_SFX_YoshiEggLayShatter);
 
         fp->phys_info.vel_air.y = FTCOMMON_YOSHIEGG_ESCAPE_VEL_Y;

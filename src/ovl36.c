@@ -488,7 +488,7 @@ void mvOpeningMarioInit()
 	ftManagerAllocFighter(3, 2);
 	wpManagerAllocWeapons();
 	itManagerInitItems();
-	efManager_AllocUserData();
+	efManagerInitEffects();
 	ftManagerSetupDataKind(Ft_Kind_Mario);
 
 	gMvOpeningMarioAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);

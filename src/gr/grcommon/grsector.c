@@ -586,7 +586,7 @@ sb32 grSectorArwingWeaponLaser2DProcMap(GObj *weapon_gobj)
 {
     if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -598,7 +598,7 @@ sb32 grSectorArwingWeaponLaser2DProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
 
     return TRUE;
 }
@@ -792,7 +792,7 @@ sb32 grSectorArwingWeaponLaser3DProcMap(GObj *weapon_gobj)
         if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
         {
             func_800269C0_275C0(alSound_SFX_ExplodeS);
-            efParticle_SparkleWhiteMultiExplode_MakeEffect(&dobj->translate.vec.f);
+            efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
             grSectorArwingWeaponLaserExplodeInitWeaponVars(weapon_gobj);
         }
     }
@@ -803,7 +803,7 @@ sb32 grSectorArwingWeaponLaser3DProcMap(GObj *weapon_gobj)
 sb32 grSectorArwingWeaponLaser3DProcHit(GObj *weapon_gobj)
 {
     func_800269C0_275C0(alSound_SFX_ExplodeS);
-    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
     grSectorArwingWeaponLaserExplodeInitWeaponVars(weapon_gobj);
 
     return FALSE;
@@ -813,7 +813,7 @@ sb32 grSectorArwingWeaponLaser3DProcHit(GObj *weapon_gobj)
 sb32 grSectorArwingWeaponLaser3DProcAbsorb(GObj *weapon_gobj)
 {
     func_800269C0_275C0(alSound_SFX_ExplodeS);
-    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
 }

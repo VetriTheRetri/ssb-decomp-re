@@ -470,7 +470,7 @@ GObj* itManagerMakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3
     {
         if (index <= It_Kind_CommonEnd)
         {
-            efParticle_ItemSpawnSwirl_MakeEffect(pos);
+            efManagerItemSpawnSwirlMakeEffect(pos);
             func_ovl3_80172394(item_gobj, FALSE);
         }
     }

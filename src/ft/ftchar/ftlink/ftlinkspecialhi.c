@@ -158,7 +158,7 @@ void ftLinkSpecialHiMakeWeapon(GObj *fighter_gobj, sb32 is_skip_gobj)
     {
         fp->command_vars.flags.flag0 = 0;
 
-        if (efParticle_SpinAttackTrail_MakeEffect(fighter_gobj) != NULL)
+        if (efManagerLinkSpinAttackMakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
         }

@@ -232,7 +232,7 @@ sb32 wpSamusChargeShotProcMap(GObj *weapon_gobj)
 
         if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE) 
         {
-            efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+            efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
             return TRUE;
         }
@@ -246,7 +246,7 @@ sb32 wpSamusChargeShotProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
 
     return TRUE;
 }

@@ -3839,7 +3839,7 @@ void mnBattleInitCSS()
 	func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
 
 	efAllocInitParticleBank();
-	efManager_AllocUserData();
+	efManagerInitEffects();
 	mnSyncControllerOrderArray();
 	mnBattleLoadMatchInfo();
 	ftManagerAllocFighter(1U, 4);

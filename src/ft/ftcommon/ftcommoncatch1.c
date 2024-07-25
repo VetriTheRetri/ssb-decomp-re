@@ -97,7 +97,7 @@ void ftCommonCatchSetStatus(GObj *fighter_gobj)
 
     fp->is_shield_catch = FALSE;
 
-    if (((fp->ft_kind == Ft_Kind_Samus) || (fp->ft_kind == Ft_Kind_PolySamus)) && (efParticle_GrappleBeamGlow_MakeEffect(fighter_gobj) != NULL))
+    if (((fp->ft_kind == Ft_Kind_Samus) || (fp->ft_kind == Ft_Kind_PolySamus)) && (efManagerSamusGrappleBeamGlowMakeEffect(fighter_gobj) != NULL))
     {
         fp->is_attach_effect = TRUE;
     }

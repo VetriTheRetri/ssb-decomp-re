@@ -740,6 +740,8 @@ D_8018E220 = 0x8018E220;
 
 omAddMObjAnimAll = 0x8000BD54;
 
+gFTCommonFile = 0x80130D98;
+
 gFTDataLinkMain = 0x80130FB0;
 
 gFTMainIsHurtDetect = 0x801311A0;
@@ -752,32 +754,54 @@ D_ovl2_801313F4 = 0x801313F4;
 
 gFTDataMarioMain = 0x80130E30;
 gFTDataMarioSpecial1 = 0x80130E3C;
+gFTDataMarioSpecial2 = 0x80130E40;
 
 gFTDataFoxBattleMotion = 0x80130E94;
 gFTDataFoxSpecial1 = 0x80130E9C;
+gFTDataFoxSpecial2 = 0x80130EA0;
+gFTDataFoxSpecial3 = 0x80130EA4;
+
+gFTDataDonkeySpecial2 = 0x80130EDC;
 
 gFTDataSamusMain = 0x80130F30;
 gFTDataSamusSpecial1 = 0x80130F3C;
+gFTDataSamusSpecial2 = 0x80130F40;
 
 gFTDataLuigiSpecial1 = 0x80130F7C;
+gFTDataLuigiSpecial2 = 0x80130F80;
 
 gFTDataLinkSpecial1 = 0x80130FBC;
+gFTDataLinkSpecial2 = 0x80130FC0;
 
 gFTDataYoshiMain = 0x80130FF0;
+gFTDataYoshiModel = 0x80130FF8;
+gFTDataYoshiSpecial2 = 0x80130FFC;
+gFTDataYoshiSpecial3 = 0x80131000;
+gFTDataYoshiParticleBankID = 0x80131004;
 
 gFTDataCaptainMain = 0x80131030;
 gFTDataCaptainBattleMotion = 0x80131034;
+gFTDataCaptainSpecial2 = 0x8013103C;
+gFTDataCaptainSpecial3 = 0x80131040;
 
 gFTDataKirbyMain = 0x80131070;
 gFTDataKirbyBattleMotion = 0x80131074;
+gFTDataKirbySpecial2 = 0x8013107C;
+gFTDataKirbyParticleBankID = 0x80131080;
 
 gFTDataPikachuMain = 0x801310B0;
+gFTDataPikachuModel = 0x801310B8;
 gFTDataPikachuSpecial1 = 0x801310BC;
+gFTDataPikachuSpecial2 = 0x801310C0;
 gFTDataPikachuSpecial3 = 0x801310C4;
+
+gFTDataPurinSpecial2 = 0x801310FC;
 
 gFTDataNessMain = 0x80131130;
 gFTDataNessBattleMotion = 0x80131134;
+gFTDataNessModel = 0x80131138;
 gFTDataNessSpecial1 = 0x8013113C;
+gFTDataNessSpecial2 = 0x80131140;
 gFTDataNessParticleBankID = 0x80131148;
 
 gFTDataBossBattleMotion = 0x80131174;
@@ -789,7 +813,12 @@ gMPLightAngleX = 0x80131390;
 gMPLightAngleY = 0x80131394;
 gMPCollUpdateFrame = 0x80131398;
 
+sEFTexturesFile1 = 0x801313B0;
 sEFTexturesFile2 = 0x801313B4;
+sEFTexturesFile3 = 0x801313B8;
+sEFStructsAllocFree = 0x801313BC;
+sEFStructsNumFree = 0x801313C0;
+sEFParticleBankID = 0x801313C4;
 
 sGRWallpaperIsPausePerspUpdate = 0x801313D0;
 sGRWallpaperGObj = 0x801313D8;

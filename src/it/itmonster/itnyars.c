@@ -228,7 +228,7 @@ sb32 itNyarsWeaponCoinProcUpdate(GObj *weapon_gobj)
 // 0x8017F1A4
 sb32 itNyarsWeaponCoinProcHit(GObj *weapon_gobj)
 {
-    efParticle_DamageCoin_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerDamageCoinMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
 }

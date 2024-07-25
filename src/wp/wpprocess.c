@@ -336,7 +336,7 @@ void wpProcessUpdateAttackStatWeapon(wpStruct *this_wp, wpHitbox *this_hit, s32 
         {
             victim_wp->hit_attack_damage = victim_hit_damage;
         }
-        efParticle_SetOff_MakeEffect(&pos, victim_hit_damage);
+        efManagerSetOffMakeEffect(&pos, victim_hit_damage);
     }
     priority_high = victim_hit->priority;
 
@@ -348,7 +348,7 @@ void wpProcessUpdateAttackStatWeapon(wpStruct *this_wp, wpHitbox *this_hit, s32 
         {
             this_wp->hit_attack_damage = this_hit_damage;
         }
-        efParticle_SetOff_MakeEffect(&pos, this_hit_damage);
+        efManagerSetOffMakeEffect(&pos, this_hit_damage);
     }
 }
 

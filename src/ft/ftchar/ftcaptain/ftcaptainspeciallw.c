@@ -18,7 +18,7 @@ void ftCaptainSpecialLwUpdateEffect(GObj *fighter_gobj)
     {
         if (fp->command_vars.flags.flag2 == 1)
         {
-            if (efParticle_FalconKick_MakeEffect(fighter_gobj) != NULL)
+            if (efManagerCaptainFalconKickMakeEffect(fighter_gobj) != NULL)
             {
                 fp->is_attach_effect = TRUE;
             }

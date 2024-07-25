@@ -46,7 +46,7 @@ struct efTransform
     u16 unk_effect_0x28;
     u16 unk_effect_0x2A;
     u8 filler_0x2C[0xB4 - 0x2C];
-    void (*proc_dead)(GObj *);
+    void (*proc_dead)(efTransform*);
     u16 unk_effect_0xB8;
     GObj *effect_gobj;
 };
@@ -124,7 +124,7 @@ struct efStruct
 
     void (*proc_update)(GObj *);
 
-    union efCommonVars // Effect vars union?
+    union efManagerVars // Effect vars union?
     {
         efParticle_EffectVars_Common common;
         efParticle_EffectVars_ContainerSmash container;

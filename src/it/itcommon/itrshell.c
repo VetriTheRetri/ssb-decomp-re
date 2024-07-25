@@ -245,7 +245,7 @@ void itRShellGSpinUpdateGFX(GObj *item_gobj)
 
         pos.y += ip->attributes->objectcoll_bottom;
 
-        efParticle_DustLight_MakeEffect(&pos, ip->lr, 1.0F);
+        efManagerDustLightMakeEffect(&pos, ip->lr, 1.0F);
 
         ip->item_vars.shell.dust_effect_int = ITRSHELL_EFFECT_SPAWN_INT;
     }

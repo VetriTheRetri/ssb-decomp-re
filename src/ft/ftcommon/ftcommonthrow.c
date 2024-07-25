@@ -86,7 +86,7 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
 
     if ((this_fp->ft_kind == Ft_Kind_Samus) || (this_fp->ft_kind == Ft_Kind_PolySamus))
     {
-        if (efParticle_GrappleBeamGlow_MakeEffect(fighter_gobj) != NULL)
+        if (efManagerSamusGrappleBeamGlowMakeEffect(fighter_gobj) != NULL)
         {
             this_fp->is_attach_effect = TRUE;
         }

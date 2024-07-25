@@ -29,8 +29,8 @@ void ftCommonWallDamageSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
     Vec3f vel_air;
     f32 knockback;
 
-    efParticle_ImpactWave_MakeEffect(pos, MTVECTOR_AXIS_Z, atan2f(-angle->x, angle->y));
-    efParticle_Quake_MakeEffect(2);
+    efManagerImpactWaveMakeEffect(pos, MTVECTOR_AXIS_Z, atan2f(-angle->x, angle->y));
+    efManagerQuakeMakeEffect(2);
 
     vel_air = fp->phys_info.vel_air;
 

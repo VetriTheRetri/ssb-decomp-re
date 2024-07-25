@@ -374,7 +374,7 @@ void grPupupuWhispyUpdateWindRumble(void)
 {
     if (gGroundStruct.pupupu.rumble_wait == 0)
     {
-        efParticle_Quake_MakeEffect(0);
+        efManagerQuakeMakeEffect(0);
 
         gGroundStruct.pupupu.rumble_wait = GRPUPUPU_WHISPY_WIND_RUMBLE_WAIT;
     }

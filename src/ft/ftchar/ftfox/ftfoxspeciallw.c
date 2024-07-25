@@ -291,7 +291,7 @@ void ftFoxSpecialLwStartInitStatusVars(GObj *fighter_gobj)
     fp->command_vars.flags.flag2 = 4;
     fp->status_vars.fox.speciallw.gravity_delay = FTFOX_REFLECTOR_GRAVITY_DELAY;
 
-    fp->status_vars.fox.speciallw.effect_gobj = efParticle_Reflector_MakeEffect(fighter_gobj);
+    fp->status_vars.fox.speciallw.effect_gobj = efManagerFoxReflectorMakeEffect(fighter_gobj);
 
     if (fp->status_vars.fox.speciallw.effect_gobj != NULL)
     {

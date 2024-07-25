@@ -180,7 +180,7 @@ void itLinkBombNExplodeMakeEffectGotoSetStatus(GObj* item_gobj)
 
 	itLinkBombSDefaultSetHitStatusNone(item_gobj);
 
-	efpart = efParticle_SparkleWhiteMultiExplode_MakeEffect(&dobj->translate.vec.f);
+	efpart = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
 	if (efpart != NULL)
 	{
@@ -188,7 +188,7 @@ void itLinkBombNExplodeMakeEffectGotoSetStatus(GObj* item_gobj)
 		efpart->effect_info->scale.y = ITLINKBOMB_EXPLODE_GFX_SCALE;
 		efpart->effect_info->scale.z = ITLINKBOMB_EXPLODE_GFX_SCALE;
 	}
-	efParticle_Quake_MakeEffect(1);
+	efManagerQuakeMakeEffect(1);
 
 	DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
@@ -209,7 +209,7 @@ void func_ovl3_80185B18(GObj* item_gobj)
 
 	pos.y += attributes->objectcoll_bottom;
 
-	efParticle_DustHeavyDouble_MakeEffect(&pos, ip->lr, 1.0F);
+	efManagerDustHeavy2xMakeEffect(&pos, ip->lr, 1.0F);
 }
 
 // 80185B84

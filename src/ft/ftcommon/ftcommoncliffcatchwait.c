@@ -59,7 +59,7 @@ void ftCommonCliffCatchSetStatus(GObj *fighter_gobj)
     }
     else mpCollision_GetLREdgeRight(fp->coll_data.cliff_id, &vel);
 
-    efParticle_FlashMiddle_MakeEffect(&vel);
+    efManagerFlashMiddleMakeEffect(&vel);
 
     fp->proc_damage = ftCommonCliffCommonProcDamage;
 

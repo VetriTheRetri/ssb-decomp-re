@@ -103,7 +103,7 @@ void ftCommonAttack100LoopKirbyUpdateEffect(ftStruct *fp)
 
             ftParts_GetDObjWorldPosition(fp->joint[ftParts_Joint_TopN], &pos);
 
-            efParticle_VulcanJab_MakeEffect(&pos, fp->lr, effect[fp->command_vars.flags.flag2 - 1].rotate, effect[fp->command_vars.flags.flag2 - 1].vel, effect[fp->command_vars.flags.flag2 - 1].add);
+            efManagerKirbyVulcanJabMakeEffect(&pos, fp->lr, effect[fp->command_vars.flags.flag2 - 1].rotate, effect[fp->command_vars.flags.flag2 - 1].vel, effect[fp->command_vars.flags.flag2 - 1].add);
 
             fp->command_vars.flags.flag2 = 0;
         }

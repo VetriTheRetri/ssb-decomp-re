@@ -165,8 +165,8 @@ sb32 wpYoshiEggThrowProcUpdate(GObj *weapon_gobj)
         {
             func_800269C0_275C0(alSound_SFX_YoshiEggShatter1);
 
-            efParticle_YoshiEggExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
-            efParticle_EggBreak_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+            efManagerYoshiEggExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+            efManagerEggBreakMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
             wpYoshiEggExpireInitWeaponVars(weapon_gobj);
 
@@ -196,14 +196,14 @@ sb32 wpYoshiEggThrowProcMap(GObj *weapon_gobj)
 
     if ((wp->weapon_vars.egg_throw.is_spin != FALSE) && (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE))
     {
-        efParticle_Quake_MakeEffect(2);
+        efManagerQuakeMakeEffect(2);
 
         func_800269C0_275C0(alSound_SFX_YoshiEggShatter1);
 
-        efParticle_YoshiEggExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
-        efParticle_EggBreak_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+        efManagerYoshiEggExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+        efManagerEggBreakMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         wpYoshiEggHitInitWeaponVars(weapon_gobj);
     }
@@ -215,8 +215,8 @@ sb32 wpYoshiEggThrowProcHit(GObj *weapon_gobj)
 {
     func_800269C0_275C0(alSound_SFX_YoshiEggShatter1);
 
-    efParticle_YoshiEggExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
-    efParticle_EggBreak_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerYoshiEggExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerEggBreakMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     wpYoshiEggHitInitWeaponVars(weapon_gobj);
 

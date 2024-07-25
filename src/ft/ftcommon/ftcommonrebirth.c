@@ -94,7 +94,7 @@ loop: // This makes no sense
 
     this_fp->cam_zoom_range = 0.6F;
 
-    if (efParticle_RebirthHalo_MakeEffect(this_gobj, this_fp->attributes->halo_size) != NULL)
+    if (efManagerRebirthHaloMakeEffect(this_gobj, this_fp->attributes->halo_size) != NULL)
     {
         this_fp->is_attach_effect = TRUE;
     }

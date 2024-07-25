@@ -88,7 +88,7 @@ sb32 itMewNFlyProcUpdate(GObj *item_gobj)
     {
         ip->item_vars.mew.esper_gfx_int = ITMEW_EFFECT_SPAWN_INT;
 
-        efParticle_HealSparkles_MakeEffect(&pos);
+        efManagerHealSparklesMakeEffect(&pos);
     }
     ip->item_vars.mew.esper_gfx_int--;
 
@@ -120,7 +120,7 @@ void itMewNFlyInitItemVars(GObj *item_gobj)
     {
         func_800269C0_275C0(alSound_Voice_MBallMewSpawn);
     }
-    efParticle_Ripple_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
+    efManagerRippleMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
     ip->item_vars.mew.esper_gfx_int = 0;
 }

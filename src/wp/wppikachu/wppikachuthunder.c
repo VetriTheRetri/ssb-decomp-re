@@ -100,11 +100,11 @@ void wpPikachuThunderHeadMakeTrailEffect(GObj *weapon_gobj, s32 arg1)
 
     if (arg1 == 3)
     {
-        efParticle_ThunderTrail_MakeEffect(&pos, 10, 3);
+        efManagerPikachuThunderTrailMakeEffect(&pos, 10, 3);
     }
     else if (arg1 == -1)
     {
-        efParticle_ThunderTrail_MakeEffect(&pos, 6, 0);
+        efManagerPikachuThunderTrailMakeEffect(&pos, 6, 0);
     }
     else wpPikachuThunderTrailMakeWeapon(weapon_gobj, &pos);
 }
@@ -122,7 +122,7 @@ sb32 wpPikachuThunderHeadProcUpdate(GObj *weapon_gobj)
     }
     else if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         wpPikachuThunderHeadSetDestroy(weapon_gobj, TRUE);
         wpPikachuThunderHeadMakeTrailEffect(weapon_gobj, 3);
 
@@ -139,8 +139,8 @@ sb32 wpPikachuThunderHeadProcMap(GObj *weapon_gobj)
     if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         wpPikachuThunderHeadSetDestroy(weapon_gobj, TRUE);
-        efParticle_Quake_MakeEffect(1);
-        efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+        efManagerQuakeMakeEffect(1);
+        efManagerSparkleWhiteMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
         return TRUE;
     }
@@ -213,7 +213,7 @@ sb32 wpPikachuThunderTrailProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
 
     return FALSE;
 }

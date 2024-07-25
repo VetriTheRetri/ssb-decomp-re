@@ -65,8 +65,8 @@ void func_ovl6_8018ED70()
 // 8018EE10
 sb32 itTargetSDefaultProcDamage(GObj* item_gobj)
 {
-	efParticle_ShieldBreak_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
-	efParticle_FireGrind_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
+	efManagerShieldBreakMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
+	efManagerFireGrindMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
 	func_800269C0_275C0(alSound_SFX_Bonus1TargetBreak);
 

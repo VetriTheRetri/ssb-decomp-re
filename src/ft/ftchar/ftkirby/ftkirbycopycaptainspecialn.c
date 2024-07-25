@@ -15,7 +15,7 @@ void ftKirbyCopyCaptainSpecialNUpdateEffect(GObj *fighter_gobj)
     {
         if (fp->command_vars.flags.flag0 == 1)
         {
-            if (efParticle_FalconPunch_MakeEffect(fighter_gobj) != FALSE)
+            if (efManagerCaptainFalconPunchMakeEffect(fighter_gobj) != FALSE)
             {
                 fp->is_attach_effect = TRUE;
             }

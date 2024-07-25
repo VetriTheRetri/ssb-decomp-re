@@ -86,7 +86,7 @@ sb32 wpPikachuThunderJoltAirProcUpdate(GObj *weapon_gobj)
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -155,7 +155,7 @@ sb32 wpPikachuThunderJoltAirProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
 
     return TRUE;
 }
@@ -222,12 +222,12 @@ sb32 wpPikachuThunderJoltGroundProcUpdate(GObj *weapon_gobj)
 
     if (weapon_gobj->anim_frame == WPPIKACHUJOLT_ANIM_PUSH_FRAME)
     {
-        efParticle_ThunderJolt_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, DObjGetStruct(weapon_gobj)->rotate.vec.f.z);
+        efManagerPikachuThunderJoltMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, DObjGetStruct(weapon_gobj)->rotate.vec.f.z);
         wpPikachuThunderJoltGroundAddAnim(weapon_gobj);
     }
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         return TRUE;
     }
     wp->phys_info.vel_air.x = cosf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * WPPIKACHUJOLT_VEL;
@@ -418,7 +418,7 @@ sb32 wpPikachuThunderJoltGroundCheckDestroy(GObj *weapon_gobj)
     }
     if (lbVector_Vec3fAngleDiff(&angle, &wp->weapon_vars.thunder_jolt.rotate) > WPPIKACHUJOLT_ROTATE_ANGLE_MAX)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -441,7 +441,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
     case mpCollision_LineType_Ground:
         if (mpCollision_CheckExistLineID(wp->coll_data.ground_line_id) == FALSE)
         {
-            efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+            efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
             return TRUE;
         }
         if (mpCollision_GetUDCommonUp(wp->coll_data.ground_line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f, &pos.x, NULL, &wp->weapon_vars.thunder_jolt.rotate) != FALSE)
@@ -450,7 +450,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
 
             if (wpPikachuThunderJoltGroundGetStatus(weapon_gobj) == wpPikachuThunderJolt_Status_Destroy)
             {
-                efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+                efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
                 return TRUE;
             }
@@ -470,7 +470,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
         {
             if (wpPikachuThunderJoltGroundGetStatus(weapon_gobj) != wpPikachuThunderJolt_Status_Active)
             {
-                efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+                efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
                 return TRUE;
             }
@@ -523,7 +523,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
         }
         if (wpPikachuThunderJoltGroundGetStatus(weapon_gobj) != 1)
         {
-            efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+            efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
             return TRUE;
         }
@@ -534,7 +534,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
     case mpCollision_LineType_LWall:
         if (mpCollision_CheckExistLineID(wp->coll_data.lwall_line_id) == FALSE)
         {
-            efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+            efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
             return TRUE;
         }
@@ -544,7 +544,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
 
             if (wpPikachuThunderJoltGroundGetStatus(weapon_gobj) == wpPikachuThunderJolt_Status_Destroy)
             {
-                efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+                efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
                 return TRUE;
             }
@@ -560,7 +560,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
         {
             if (wpPikachuThunderJoltGroundGetStatus(weapon_gobj) != wpPikachuThunderJolt_Status_Active)
             {
-                efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+                efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
                 return TRUE;
             }
@@ -593,7 +593,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
         }
         if (wpPikachuThunderJoltGroundGetStatus(weapon_gobj) != wpPikachuThunderJolt_Status_Active)
         {
-            efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+            efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
             return TRUE;
         }
@@ -604,7 +604,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
     case mpCollision_LineType_RWall:
         if (mpCollision_CheckExistLineID(wp->coll_data.rwall_line_id) == FALSE)
         {
-            efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+            efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
             return TRUE;
         }
@@ -614,7 +614,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
 
             if (wpPikachuThunderJoltGroundGetStatus(weapon_gobj) == wpPikachuThunderJolt_Status_Destroy)
             {
-                efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+                efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
                 return TRUE;
             }
@@ -630,7 +630,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
         {
             if (wpPikachuThunderJoltGroundGetStatus(weapon_gobj) != wpPikachuThunderJolt_Status_Active)
             {
-                efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+                efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
                 return TRUE;
             }
@@ -663,7 +663,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
         }
         if (wpPikachuThunderJoltGroundGetStatus(weapon_gobj) != wpPikachuThunderJolt_Status_Active)
         {
-            efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+            efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
             return TRUE;
         }
@@ -679,7 +679,7 @@ sb32 wpPikachuThunderJoltGroundProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_ovl2_800FE068(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
 
     return TRUE;
 }
@@ -761,7 +761,7 @@ GObj* wpPikachuThunderJoltGroundMakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 coll
         }
         break;
     }
-    efParticle_ThunderJolt_MakeEffect(&DObjGetStruct(new_gobj)->translate.vec.f, DObjGetStruct(new_gobj)->rotate.vec.f.z);
+    efManagerPikachuThunderJoltMakeEffect(&DObjGetStruct(new_gobj)->translate.vec.f, DObjGetStruct(new_gobj)->rotate.vec.f.z);
     wpMainPlaySFX(new_wp, alSound_SFX_NessSpecialHiCrackLoop); // Bruh
 
     return new_gobj;

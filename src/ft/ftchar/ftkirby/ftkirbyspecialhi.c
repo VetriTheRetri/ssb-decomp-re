@@ -49,7 +49,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
         break;
 
     case 2:
-        if (efParticle_FinalCutterDraw_MakeEffect(fighter_gobj) != NULL)
+        if (efManagerKirbyCutterDrawMakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
             fp->command_vars.flags.flag2 = 0;
@@ -57,7 +57,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
         break;
 
     case 3:
-        if (efParticle_FinalCutterUp_MakeEffect(fighter_gobj) != NULL)
+        if (efManagerKirbyCutterUpMakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
             fp->command_vars.flags.flag2 = 0;
@@ -65,7 +65,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
         break;
 
     case 4:
-        if (efParticle_KirbyCutterDown_MakeEffect(fighter_gobj) != NULL)
+        if (efManagerKirbyCutterDownMakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
             fp->command_vars.flags.flag2 = 0;
@@ -73,7 +73,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
         break;
 
     case 5:
-        if (efParticle_FinalCutterTrail_MakeEffect(fighter_gobj) != NULL)
+        if (efManagerKirbyCutterTrailMakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
             fp->command_vars.flags.flag2 = 0;

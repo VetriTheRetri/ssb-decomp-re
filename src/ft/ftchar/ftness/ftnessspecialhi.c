@@ -312,7 +312,7 @@ void ftNessSpecialHiHoldInitStatusVars(GObj *fighter_gobj)
 
     ftNessSpecialHiCreatePKThunder(fighter_gobj);
 
-    if (!(fp->is_attach_effect) && (efParticle_PKThunderWave_MakeEffect(fighter_gobj) != NULL))
+    if (!(fp->is_attach_effect) && (efManagerNessPKThunderWaveMakeEffect(fighter_gobj) != NULL))
     {
         fp->is_attach_effect = TRUE;
     }
@@ -779,6 +779,6 @@ void ftNessJibakuAirBoundSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 
     ftMainSetFighterStatus(fighter_gobj, ftStatus_Ness_SpecialAirHiBound, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
-    efParticle_ImpactWave_MakeEffect(pos, MTVECTOR_AXIS_Z, atan2f(-angle->x, angle->y));
-    efParticle_Quake_MakeEffect(2);
+    efManagerImpactWaveMakeEffect(pos, MTVECTOR_AXIS_Z, atan2f(-angle->x, angle->y));
+    efManagerQuakeMakeEffect(2);
 }

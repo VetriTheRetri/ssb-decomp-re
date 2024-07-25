@@ -163,7 +163,7 @@ void itBoxContainerSmashUpdateEffect(GObj *effect_gobj) // Barrel/Crate smash GF
 
     if (ep->effect_vars.container.lifetime == 0)
     {
-        efManager_SetPrevAlloc(ep);
+        efManagerSetPrevAlloc(ep);
         omEjectGObj(effect_gobj);
     }
     else while (dobj != NULL)
@@ -186,7 +186,7 @@ void itBoxContainerSmashUpdateEffect(GObj *effect_gobj) // Barrel/Crate smash GF
 void itBoxContainerSmashMakeEffect(Vec3f *pos)
 {
     GObj *effect_gobj;
-    efStruct *ep = efManager_GetStructNoForceReturn();
+    efStruct *ep = efManagerGetEffectNoForce();
     DObj *dobj;
     s32 i;
     Gfx *dl;
@@ -517,13 +517,13 @@ void itBoxNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    efpart = efParticle_SparkleWhiteMultiExplode_MakeEffect(&dobj->translate.vec.f);
+    efpart = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
     if (efpart != NULL)
     {
         efpart->effect_info->scale.x = efpart->effect_info->scale.y = efpart->effect_info->scale.z = ITBOX_EXPLODE_SCALE;
     }
-    efParticle_Quake_MakeEffect(1);
+    efManagerQuakeMakeEffect(1);
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 

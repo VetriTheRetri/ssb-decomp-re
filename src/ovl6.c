@@ -594,7 +594,7 @@ void scBonusGame_InitBonusGame()
 	grCommonSetupInitAll();
 	ftManagerAllocFighter(2, GMMATCH_PLAYERS_MAX);
 	wpManagerAllocWeapons();
-	efManager_AllocUserData();
+	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
 	ftPublicitySetup();

@@ -68,7 +68,7 @@ sb32 wpYoshiStarProcUpdate(GObj *weapon_gobj)
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -106,7 +106,7 @@ sb32 wpYoshiStarProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerSparkleWhiteMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     if (wp->hit_normal_damage != 0)
     {
@@ -118,7 +118,7 @@ sb32 wpYoshiStarProcHit(GObj *weapon_gobj)
 // 0x8016C6F0
 sb32 wpYoshiStarProcShield(GObj *weapon_gobj)
 {
-    efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerSparkleWhiteMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
 }

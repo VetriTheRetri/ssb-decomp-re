@@ -388,7 +388,7 @@ sb32 itStarmieWeaponSwiftProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    efParticle_StarSplash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->lr);
+    efManagerStarSplashMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->lr);
 
     return TRUE;
 }
@@ -451,7 +451,7 @@ GObj* itStarmieWeaponSwiftMakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     dobj->translate.vec.f = *pos;
 
-    efParticle_SparkleWhiteScale_MakeEffect(&dobj->translate.vec.f, 1.0F);
+    efManagerSparkleWhiteScaleMakeEffect(&dobj->translate.vec.f, 1.0F);
 
     wp->lifetime = ITSTARMIE_SWIFT_LIFETIME;
 

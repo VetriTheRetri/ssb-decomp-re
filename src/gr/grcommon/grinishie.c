@@ -222,8 +222,8 @@ void grInishieScaleUpdateWait(void)
 
         gGroundStruct.inishie.splat_status = nGRInishieScaleStatusFall;
 
-        efParticle_SparkleWhiteScale_MakeEffect(&l_dobj->translate.vec.f, 1.0F);
-        efParticle_SparkleWhiteScale_MakeEffect(&r_dobj->translate.vec.f, 1.0F);
+        efManagerSparkleWhiteScaleMakeEffect(&l_dobj->translate.vec.f, 1.0F);
+        efManagerSparkleWhiteScaleMakeEffect(&r_dobj->translate.vec.f, 1.0F);
     }
     l_dobj->translate.vec.f.y = gGroundStruct.inishie.scale[0].platform_base_y + gGroundStruct.inishie.splat_altitude;
     r_dobj->translate.vec.f.y = gGroundStruct.inishie.scale[1].platform_base_y - gGroundStruct.inishie.splat_altitude;

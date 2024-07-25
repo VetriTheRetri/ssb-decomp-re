@@ -136,7 +136,7 @@ sb32 itNessPKFireSDefaultUpdateAllCheckDestroy(GObj *item_gobj)
 
     if (ip->lifetime < 0)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
 
         if (effect != NULL)
         {

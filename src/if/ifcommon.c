@@ -3322,7 +3322,7 @@ void ifCommonPlayerScoreMakeEffect(ftStruct *fp, s32 arg1)
     pos.y = ((gIFPlayerCommonInterface.ifplayers_pos_y + 13) << 2); // ??? Can't get this one to match unless we do bitwise instead of literal multiplication
     pos.z = 0.0F;
 
-    efParticle_BattleScoreDisplay_MakeEffect(&pos, arg1);
+    efManagerBattleScoreMakeEffect(&pos, arg1);
 }
 
 // 0x80114A48

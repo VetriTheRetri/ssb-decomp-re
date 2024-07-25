@@ -178,7 +178,7 @@ sb32 itIwarkNAttackProcUpdate(GObj *item_gobj)
         }
         if ((ip->item_vars.iwark.rumble_wait == 0) && (ip->item_vars.iwark.rumble_frame != 0))
         {
-            efParticle_Quake_MakeEffect(0);
+            efManagerQuakeMakeEffect(0);
 
             ip->item_vars.iwark.rumble_wait = ITIWARK_ROCK_RUMBLE_WAIT;
         }
@@ -230,7 +230,7 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
     }
     else pos.y += ITIWARK_OTHER_ADD_POS_Y;
 
-    efParticle_DustHeavyDouble_MakeEffect(&pos, LR_Left, 1.0F);
+    efManagerDustHeavy2xMakeEffect(&pos, LR_Left, 1.0F);
 
     if (ip->it_kind == It_Kind_Iwark)
     {
@@ -383,7 +383,7 @@ sb32 itIwarkWeaponRockProcMap(GObj *weapon_gobj)
 
             pos.y += WPIWARK_ROCK_COLLIDE_ADD_VEL_Y;
 
-            efParticle_DustLight_MakeEffect(&pos, wp->lr, 1.0F);
+            efManagerDustLightMakeEffect(&pos, wp->lr, 1.0F);
 
             wp->lr = -wp->lr;
 

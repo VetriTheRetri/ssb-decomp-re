@@ -277,7 +277,7 @@ void ftCommonThrownKirbyStarMakeEffect(GObj *fighter_gobj, f32 arg1, f32 arg2)
 
     if (!(fp->is_attach_effect))
     {
-        if (efParticle_CaptureKirbyStar_MakeEffect(fighter_gobj) != NULL)
+        if (efManagerCaptureKirbyStarMakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
         }
@@ -340,7 +340,7 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
             ftCommon_ProcStopGFX(fighter_gobj);
             ftCommonThrownKirbyEscape(fighter_gobj);
 
-            if (efParticle_StarSplash_MakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f, (-fp->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right) != NULL)
+            if (efManagerStarSplashMakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f, (-fp->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right) != NULL)
             {
                 fp->is_attach_effect = TRUE;
             }
@@ -362,7 +362,7 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
 
                 ftCommon_ProcStopGFX(fighter_gobj);
 
-                if (efParticle_StarSplash_MakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f, (-fp->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right) != NULL)
+                if (efManagerStarSplashMakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f, (-fp->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right) != NULL)
                 {
                     fp->is_attach_effect = TRUE;
                 }
@@ -440,8 +440,8 @@ void ftCommonThrownCommonStarProcMap(GObj *fighter_gobj)
 
             fp->command_vars.flags.flag1 = 0;
         }
-        efParticle_Quake_MakeEffect(2);
-        efParticle_ImpactWave_MakeEffect(&pos, MTVECTOR_AXIS_Z, atan2f(-angle->x, angle->y));
+        efManagerQuakeMakeEffect(2);
+        efManagerImpactWaveMakeEffect(&pos, MTVECTOR_AXIS_Z, atan2f(-angle->x, angle->y));
     }
 }
 

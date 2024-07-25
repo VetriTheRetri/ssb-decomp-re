@@ -333,7 +333,7 @@ void mvOpeningLinkInit()
 	ftManagerAllocFighter(3, 2);
 	wpManagerAllocWeapons();
 	itManagerInitItems();
-	efManager_AllocUserData();
+	efManagerInitEffects();
 	ftManagerSetupDataKind(Ft_Kind_Link);
 
 	gMvOpeningLinkAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);

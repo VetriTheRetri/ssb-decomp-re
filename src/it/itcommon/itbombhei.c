@@ -199,7 +199,7 @@ void itBombHeiSDefaultSetExplode(GObj *item_gobj, u8 unused_arg)
 
     itBombHeiSDefaultSetHitStatusNone(item_gobj);
 
-    efpart = efParticle_SparkleWhiteMultiExplode_MakeEffect(&dobj->translate.vec.f); // WARNING: Actually some sprite struct
+    efpart = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f); // WARNING: Actually some sprite struct
 
     if (efpart != NULL)
     {
@@ -207,7 +207,7 @@ void itBombHeiSDefaultSetExplode(GObj *item_gobj, u8 unused_arg)
         efpart->effect_info->scale.y = ITBOMBHEI_EXPLODE_SCALE;
         efpart->effect_info->scale.z = ITBOMBHEI_EXPLODE_SCALE;
     }
-    efParticle_Quake_MakeEffect(1);
+    efManagerQuakeMakeEffect(1);
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
@@ -256,7 +256,7 @@ void itBombHeiSDefaultCheckMakeDustEffect(GObj *item_gobj, u8 override)
 
         pos.y += attributes->objectcoll_bottom;
 
-        efParticle_DustHeavyDouble_MakeEffect(&pos, ip->lr, 1.0F);
+        efManagerDustHeavy2xMakeEffect(&pos, ip->lr, 1.0F);
     }
 }
 
@@ -449,7 +449,7 @@ void itBombHeiGWalkUpdateEffect(GObj *item_gobj)
 
         pos.y += 120.0F;
 
-        efParticle_DustLight_MakeEffect(&pos, ip->lr, 1.0F);
+        efManagerDustLightMakeEffect(&pos, ip->lr, 1.0F);
 
         ip->item_vars.bombhei.smoke_delay = ITBOMBHEI_SMOKE_WAIT;
     }

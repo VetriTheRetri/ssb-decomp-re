@@ -66,7 +66,7 @@ typedef enum ftYoshiStatus
 
 typedef struct ftYoshiEggDesc
 {
-    f32 gfx_size;
+    f32 effect_size;
     Vec3f offset;
     Vec3f size;
 

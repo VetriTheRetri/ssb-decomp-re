@@ -165,7 +165,7 @@ sb32 itEggSDefaultProcHit(GObj *item_gobj)
 {
     if (itMainMakeContainerItem(item_gobj) != FALSE)
     {
-        efParticle_EggBreak_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
+        efManagerEggBreakMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
         return TRUE;
     }
@@ -241,7 +241,7 @@ sb32 itEggFThrowProcMap(GObj *item_gobj)
     {
         if (itMainMakeContainerItem(item_gobj) != FALSE)
         {
-            efParticle_EggBreak_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
+            efManagerEggBreakMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
             return TRUE;
         }
@@ -297,7 +297,7 @@ sb32 itEggNExplodeProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi == ITEGG_EXPLODE_GFX_WAIT)
     {
-        efParticle_EggBreak_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
+        efManagerEggBreakMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
         return TRUE;
     }
@@ -388,13 +388,13 @@ void itEggNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    ep = efParticle_SparkleWhiteMultiExplode_MakeEffect(&dobj->translate.vec.f);
+    ep = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
     if (ep != NULL)
     {
         ep->effect_info->scale.x = ep->effect_info->scale.y = ep->effect_info->scale.z = ITEGG_EXPLODE_GFX_SCALE;
     }
-    efParticle_Quake_MakeEffect(1);
+    efManagerQuakeMakeEffect(1);
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 

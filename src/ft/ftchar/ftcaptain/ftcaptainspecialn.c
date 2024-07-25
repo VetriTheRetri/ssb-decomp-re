@@ -12,7 +12,7 @@ void ftCaptainSpecialNUpdateEffect(GObj *fighter_gobj) // Falcon Punch
     {
         if (fp->command_vars.flags.flag0 == 1)
         {
-            if (efParticle_FalconPunch_MakeEffect(fighter_gobj) != FALSE)
+            if (efManagerCaptainFalconPunchMakeEffect(fighter_gobj) != FALSE)
             {
                 fp->is_attach_effect = TRUE;
             }

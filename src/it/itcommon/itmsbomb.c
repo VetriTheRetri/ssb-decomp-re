@@ -370,7 +370,7 @@ void itMSBombNExplodeMakeEffect(GObj *item_gobj)
 
         translate.y += attributes->objectcoll_bottom;
 
-        efParticle_DustHeavyDouble_MakeEffect(&translate, ip->lr, 1.0F);
+        efManagerDustHeavy2xMakeEffect(&translate, ip->lr, 1.0F);
     }
 }
 
@@ -384,7 +384,7 @@ void itMSBombNExplodeInitStatusVars(GObj *item_gobj, sb32 is_make_effect)
     {
         itMSBombNExplodeMakeEffect(item_gobj);
     }
-    efpart = efParticle_SparkleWhiteMultiExplode_MakeEffect(&dobj->translate.vec.f);
+    efpart = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
     if (efpart != NULL)
     {
@@ -392,7 +392,7 @@ void itMSBombNExplodeInitStatusVars(GObj *item_gobj, sb32 is_make_effect)
         efpart->effect_info->scale.y = ITMSBOMB_EXPLODE_SCALE;
         efpart->effect_info->scale.z = ITMSBOMB_EXPLODE_SCALE;
     }
-    efParticle_Quake_MakeEffect(1);
+    efManagerQuakeMakeEffect(1);
     itMainRefreshHit(item_gobj);
     itMSBombNExplodeSetStatus(item_gobj);
 

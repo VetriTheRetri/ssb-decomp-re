@@ -290,7 +290,7 @@ sb32 itStarRodWeaponStarProcUpdate(GObj *weapon_gobj)
     {
         DObjGetStruct(weapon_gobj)->flags = DOBJ_FLAG_NORENDER;
 
-        efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+        efManagerSparkleWhiteScaleMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -307,7 +307,7 @@ sb32 itStarRodWeaponStarProcUpdate(GObj *weapon_gobj)
         pos.y = mtTrigGetRandomIntRange(250) + (DObjGetStruct(weapon_gobj)->translate.vec.f.y - 125.0F);
         pos.z = 0.0F;
 
-        efParticle_StarRodSpark_MakeEffect(&pos, wp->lr * -1.0F);
+        efManagerStarRodSparkMakeEffect(&pos, wp->lr * -1.0F);
     }
     return FALSE;
 }
@@ -319,7 +319,7 @@ sb32 itStarRodWeaponStarProcMap(GObj *weapon_gobj)
 
     if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
-        efParticle_StarSplash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->lr);
+        efManagerStarSplashMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->lr);
 
         func_800269C0_275C0(alSound_SFX_StarMapCollide);
 
@@ -333,7 +333,7 @@ sb32 itStarRodWeaponStarProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    efParticle_StarSplash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->lr);
+    efManagerStarSplashMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->lr);
 
     return TRUE;
 }

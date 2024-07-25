@@ -415,7 +415,7 @@ sb32 wpLinkBoomerangProcMap(GObj *weapon_gobj)
 
         if (coll_flags)
         {
-            efParticle_DustCollision_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+            efManagerDustCollideMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
             if (coll_flags & MPCOLL_KIND_LWALL)
             {

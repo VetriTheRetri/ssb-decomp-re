@@ -93,7 +93,7 @@ sb32 wpMarioFireballProcUpdate(GObj *weapon_gobj)
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -118,12 +118,12 @@ sb32 wpMarioFireballProcMap(GObj *weapon_gobj)
     {
         if (func_ovl0_800C7A84(&wp->phys_info.vel_air) < dWPMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].vel_min)
         {
-            efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+            efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
             return TRUE;
         }
         wpMainVelSetModelPitch(weapon_gobj);
 
-        efParticle_FireGrind_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+        efManagerFireGrindMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
     }
     return FALSE;
 }
@@ -132,7 +132,7 @@ sb32 wpMarioFireballProcMap(GObj *weapon_gobj)
 sb32 wpMarioFireballProcHit(GObj *weapon_gobj)
 {
     func_800269C0_275C0(alSound_SFX_ExplodeS);
-    efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerSparkleWhiteMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
 }

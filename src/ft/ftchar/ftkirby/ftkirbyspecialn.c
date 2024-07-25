@@ -167,7 +167,7 @@ void ftKirbySpecialNLoopProcUpdate(GObj *fighter_gobj)
 
     if (!(fp->is_attach_effect) && (fp->command_vars.flags.flag0 == 1))
     {
-        if (efParticle_KirbyInhaleWind_MakeEffect(fighter_gobj) != NULL)
+        if (efManagerKirbyInhaleWindMakeEffect(fighter_gobj) != NULL)
         {
             fp->command_vars.flags.flag0 = 0;
             fp->is_attach_effect = TRUE;
@@ -955,7 +955,7 @@ void ftKirbySpecialNLoseCopy(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftKirbySpecialNInitFighterVars(fp);
-    efParticle_LoseKirbyStar_MakeEffect(fighter_gobj);
+    efManagerLoseKirbyStarMakeEffect(fighter_gobj);
     func_800269C0_275C0(alSound_SFX_KirbySpecialNLoseCopy);
 
     fp->fighter_vars.kirby.copy_id = Ft_Kind_Kirby;

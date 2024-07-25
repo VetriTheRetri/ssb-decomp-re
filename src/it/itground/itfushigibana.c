@@ -114,7 +114,7 @@ void itFushigibanaSDefaultUpdateHitParty(GObj *item_gobj)
 
         pos.y = 0.0F;
 
-        efParticle_DustLight_MakeEffect(&pos, LR_Left, 1.0F);
+        efManagerDustLightMakeEffect(&pos, LR_Left, 1.0F);
     }
 }
 
@@ -151,7 +151,7 @@ sb32 itFushigibanaSDefaultProcUpdate(GObj *item_gobj)
 
             func_800269C0_275C0(alSound_SFX_MonsterShoot);
 
-            efParticle_DustCollision_MakeEffect(&pos);
+            efManagerDustCollideMakeEffect(&pos);
         }
         if (ip->item_vars.fushigibana.razor_spawn_wait > 0)
         {
@@ -229,7 +229,7 @@ sb32 itFushigibanaWeaponRazorProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    efParticle_DamageSlash_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage, wp->lr);
+    efManagerDamageSlashMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage, wp->lr);
 
     return TRUE;
 }

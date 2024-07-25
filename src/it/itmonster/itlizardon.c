@@ -242,7 +242,7 @@ sb32 itLizardonNAttackProcUpdate(GObj *item_gobj)
 
         pos.x += (ip->attributes->objectcoll_width + ITLIZARDON_DUST_GFX_OFF_X) * -ip->lr;
 
-        efParticle_DustHeavy_MakeEffect(&pos, -ip->lr);
+        efManagerDustHeavyMakeEffect(&pos, -ip->lr);
 
         if (ip->it_kind == It_Kind_Pippi)
         {
@@ -380,7 +380,7 @@ sb32 itLizardonWeaponFlameProcMap(GObj *weapon_gobj)
 {
     if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
-        efParticle_DustExpandSmall_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
+        efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
         return TRUE;
     }
@@ -391,7 +391,7 @@ sb32 itLizardonWeaponFlameProcMap(GObj *weapon_gobj)
 sb32 itLizardonWeaponFlameProcHit(GObj *weapon_gobj)
 {
     func_800269C0_275C0(alSound_SFX_ExplodeS);
-    efParticle_SparkleWhite_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerSparkleWhiteMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return FALSE;
 }

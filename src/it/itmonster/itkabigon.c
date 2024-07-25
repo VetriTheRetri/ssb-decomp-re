@@ -97,7 +97,7 @@ sb32 itKabigonNFallProcUpdate(GObj *item_gobj)
 
     if (ip->item_vars.kabigon.rumble_wait == 0)
     {
-        efParticle_Quake_MakeEffect(0);
+        efManagerQuakeMakeEffect(0);
 
         ip->item_vars.kabigon.rumble_wait = ITKABIGON_RUMBLE_WAIT;
     }
@@ -209,7 +209,7 @@ sb32 itKabigonNJumpProcUpdate(GObj *item_gobj)
         pos.x += (mtTrigGetRandomFloat() * ITKABIGON_JUMP_GFX_MUL_OFF) - ITKABIGON_JUMP_GFX_SUB_OFF;
         pos.y += (mtTrigGetRandomFloat() * ITKABIGON_JUMP_GFX_MUL_OFF) - ITKABIGON_JUMP_GFX_SUB_OFF;
 
-        efParticle_DustExpandLarge_MakeEffect(&pos);
+        efManagerDustExpandLargeMakeEffect(&pos);
 
         ip->item_vars.kabigon.dust_effect_int = ITKABIGON_EFFECT_SPAWN_INT;
     }

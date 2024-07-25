@@ -18,12 +18,12 @@ void ftCommonGuardSetStatusFromEscape(GObj *fighter_gobj)
     {
         if (fp->ft_kind == Ft_Kind_Yoshi)
         {
-            fp->status_vars.common.guard.effect_gobj = efParticle_YoshiShield_MakeEffect(fighter_gobj);
+            fp->status_vars.common.guard.effect_gobj = efManagerYoshiShieldMakeEffect(fighter_gobj);
 
             ftCommon_HideModelPartAll(fighter_gobj);
             ftCommonGuardSetHitStatusYoshi(fighter_gobj);
         }
-        else fp->status_vars.common.guard.effect_gobj = efParticle_Shield_MakeEffect(fighter_gobj);
+        else fp->status_vars.common.guard.effect_gobj = efManagerShieldMakeEffect(fighter_gobj);
 
         fp->is_shield = TRUE;
     }

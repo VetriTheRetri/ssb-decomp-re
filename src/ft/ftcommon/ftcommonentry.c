@@ -96,7 +96,7 @@ void ftCommonAppearUpdateEffects(GObj *fighter_gobj)
     {
         if ((fp->ft_kind == Ft_Kind_Pikachu) || (fp->ft_kind == Ft_Kind_Purin) || (fp->ft_kind == Ft_Kind_PolyPikachu) || (fp->ft_kind == Ft_Kind_PolyPurin))
         {
-            efParticle_MBallRays_MakeEffect(&fp->entry_pos);
+            efManagerMBallRaysMakeEffect(&fp->entry_pos);
         }
         fp->command_vars.flags.flag1 = 0;
     }
@@ -194,38 +194,38 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
     case Ft_Kind_Mario:
     case Ft_Kind_Luigi:
     case Ft_Kind_MetalMario:
-        efParticle_MarioEntryPipe_MakeEffect(&fp->entry_pos, fp->ft_kind);
+        efManagerMarioEntryDokanMakeEffect(&fp->entry_pos, fp->ft_kind);
         break;
 
     case Ft_Kind_Fox:
-        efParticle_FoxEntryArwing_MakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
+        efManagerFoxEntryArwingMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
         break;
 
     case Ft_Kind_Donkey:
     case Ft_Kind_GiantDonkey:
-        efParticle_DonkeyEntryBarrel_MakeEffect(&fp->entry_pos);
+        efManagerDonkeyEntryTaruMakeEffect(&fp->entry_pos);
         break;
 
     case Ft_Kind_Samus:
-        efParticle_SamusEntryPoint_MakeEffect(&fp->entry_pos);
+        efManagerSamusEntryPointMakeEffect(&fp->entry_pos);
         break;
 
     case Ft_Kind_Link:
-        efParticle_LinkEntryWave_MakeEffect(&fp->entry_pos);
-        efParticle_LinkEntryBeam_MakeEffect(&fp->entry_pos);
+        efManagerLinkEntryWaveMakeEffect(&fp->entry_pos);
+        efManagerLinkEntryBeamMakeEffect(&fp->entry_pos);
         break;
 
     case Ft_Kind_Yoshi:
-        efParticle_YoshiEntryEgg_MakeEffect(&fp->entry_pos);
+        efManagerYoshiEntryEggMakeEffect(&fp->entry_pos);
         break;
 
     case Ft_Kind_Kirby:
-        efParticle_KirbyEntryStar_MakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
+        efManagerKirbyEntryStarMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
         break;
 
     case Ft_Kind_Pikachu:
     case Ft_Kind_Purin:
-        efParticle_MBallThrown_MakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
+        efManagerMBallThrownMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
         break;
 
     case Ft_Kind_Captain:
@@ -233,7 +233,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
         {
             fp->status_vars.common.entry.is_rotate = TRUE;
         }
-        efParticle_CaptainEntryCar_MakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
+        efManagerCaptainEntryCarMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
         break;
 
     case Ft_Kind_MasterHand:

@@ -307,7 +307,7 @@ void itMainDestroyItem(GObj *item_gobj)
     }
     else if ((ip->it_kind < It_Kind_GrMonsterStart) || (ip->it_kind > It_Kind_GrMonsterEnd))
     {
-        efParticle_DustExpandLarge_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
+        efManagerDustExpandLargeMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
     }
     if (ip->indicator_gobj != NULL)
     {
@@ -402,7 +402,7 @@ void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash
     }
     itMainSetFighterRelease(item_gobj, vel, stale, fp->stat_flags.halfword, fp->stat_count);
 
-    efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
+    efManagerSparkleWhiteScaleMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
 
     func_800269C0_275C0((is_smash_throw != FALSE) ? ip->smash_sfx : ip->throw_sfx);
 
@@ -460,7 +460,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     ftParts_GetDObjWorldPosition(fp->joint[joint_id], &pos);
 
-    efParticle_ItemPickupSwirl_ProcUpdate(&pos);
+    efManagerItemGetSwirlProcUpdate(&pos);
 
     func_8000F988(item_gobj, ip->attributes->model_desc);
 

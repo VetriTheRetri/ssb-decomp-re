@@ -58,10 +58,10 @@ void ftCommonShieldBreakFlyCommonSetStatus(GObj *fighter_gobj)
 
     if (fp->ft_kind == Ft_Kind_Yoshi)
     {
-        efParticle_YoshiEggExplode_MakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f);
-        efParticle_EggBreak_MakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f);
+        efManagerYoshiEggExplodeMakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f);
+        efManagerEggBreakMakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f);
     }
-    else efParticle_ShieldBreak_MakeEffect(&offset);
+    else efManagerShieldBreakMakeEffect(&offset);
 
     ftCommon_Update1PGameDamageStats(fp, fp->shield_player, ftHitlog_ObjectClass_None, 0, 0, 0);
 
@@ -83,6 +83,6 @@ void ftCommonShieldBreakFlyReflectorSetStatus(GObj *fighter_gobj)
     Vec3f offset = special_hit->offset;
 
     ftParts_GetDObjWorldPosition(fp->joint[special_hit->joint_id], &offset);
-    efParticle_ReflectBreak_MakeEffect(&offset, fp->lr_reflect);
+    efManagerReflectBreakMakeEffect(&offset, fp->lr_reflect);
     ftCommonShieldBreakFlySetStatus(fighter_gobj);
 }

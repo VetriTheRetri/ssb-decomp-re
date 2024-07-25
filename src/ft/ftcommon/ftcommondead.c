@@ -179,7 +179,7 @@ void ftCommonDeadInitStatusVars(GObj *fighter_gobj)
     fp->is_ignore_training_menu = TRUE;
     fp->is_playertag_hide = TRUE;
 
-    efParticle_Quake_MakeEffect(2);
+    efManagerQuakeMakeEffect(2);
     ftCommonDeadUpdateRumble(fp);
     ftCommonDeadUpdateScore(fp);
 
@@ -219,7 +219,7 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
             pos.x = gGroundInfo->cam_bound_left;
         }
     }
-    efParticle_DeadBlast_MakeEffect(&pos, fp->player, 0);
+    efManagerDeadExplodeMakeEffect(&pos, fp->player, 0);
     ifScreenFlashSetColAnimID(0x51, 0);
 
     if 
@@ -261,7 +261,7 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
             pos.y = gGroundInfo->cam_bound_bottom;
         }
     }
-    efParticle_DeadBlast_MakeEffect(&pos, fp->player, 1);
+    efManagerDeadExplodeMakeEffect(&pos, fp->player, 1);
     ifScreenFlashSetColAnimID(0x51, 0);
 
     if 
@@ -302,7 +302,7 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
             pos.y = gGroundInfo->cam_bound_bottom;
         }
     }
-    efParticle_DeadBlast_MakeEffect(&pos, fp->player, 3);
+    efManagerDeadExplodeMakeEffect(&pos, fp->player, 3);
     ifScreenFlashSetColAnimID(0x51, 0);
 
     if 
@@ -358,7 +358,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
 
         case 1:
             ftPhysics_StopVelAll(fighter_gobj);
-            efParticle_SparkleWhiteDead_MakeEffect(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, 5.0F);
+            efManagerSparkleWhiteDeadMakeEffect(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, 5.0F);
 
             fp->is_invisible = TRUE;
             fp->is_ignore_training_menu = TRUE;
@@ -462,7 +462,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
         case 1:
             ftPhysics_StopVelAll(fighter_gobj);
             ifScreenFlashSetColAnimID(0x51, 0);
-            efParticle_Quake_MakeEffect(2);
+            efManagerQuakeMakeEffect(2);
             ftCommonDeadUpdateRumble(fp);
 
             fp->is_playertag_hide = TRUE;

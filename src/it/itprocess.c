@@ -126,7 +126,7 @@ void itProcessProcItemMain(GObj *item_gobj)
         {
             if (ip->pickup_wait == 0)
             {
-                efParticle_SparkleWhiteScale_MakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
+                efManagerSparkleWhiteScaleMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
 
                 itMainDestroyItem(item_gobj);
                 return;
@@ -346,23 +346,23 @@ void itProcessUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *
         switch (ft_hit->element)
         {
         case gmHitCollision_Element_Fire:
-            efParticle_DamageFire_MakeEffect(&pos, ft_hit->damage);
+            efManagerDamageFireMakeEffect(&pos, ft_hit->damage);
             break;
 
         case gmHitCollision_Element_Electric:
-            func_ovl2_800FE4EC(&pos, ft_hit->damage);
+            efManagerDamageElectricMakeEffect(&pos, ft_hit->damage);
             break;
 
         case gmHitCollision_Element_Coin:
-            efParticle_DamageCoin_MakeEffect(&pos);
+            efManagerDamageCoinMakeEffect(&pos);
             break;
 
         case gmHitCollision_Element_Slash:
-            efParticle_DamageSlash_MakeEffect(&pos, ft_hit->damage, ftCollision_GetDamageSlashRotation(fp, ft_hit));
+            efManagerDamageSlashMakeEffect(&pos, ft_hit->damage, ftCollision_GetDamageSlashRotation(fp, ft_hit));
             break;
 
         default:
-            efParticle_DamageNormalLight_MakeEffect(&pos, fp->player, ft_hit->damage, 0);
+            efManagerDamageNormalLightMakeEffect(&pos, fp->player, ft_hit->damage, 0);
             break;
         }
     }
@@ -389,7 +389,7 @@ void itProcessUpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 th
         {
             victim_ip->hit_attack_damage = victim_hit_damage;
         }
-        efParticle_SetOff_MakeEffect(&pos, victim_hit_damage);
+        efManagerSetOffMakeEffect(&pos, victim_hit_damage);
     }
     highest_priority = victim_hit->priority;
 
@@ -401,7 +401,7 @@ void itProcessUpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 th
         {
             this_ip->hit_attack_damage = this_hit_damage;
         }
-        efParticle_SetOff_MakeEffect(&pos, this_hit_damage);
+        efManagerSetOffMakeEffect(&pos, this_hit_damage);
     }
 }
 
@@ -425,7 +425,7 @@ void itProcessUpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit_
         {
             ip->hit_attack_damage = it_hit_damage;
         }
-        efParticle_SetOff_MakeEffect(&pos, it_hit_damage);
+        efManagerSetOffMakeEffect(&pos, it_hit_damage);
     }
     highest_priority = it_hit->priority;
 
@@ -437,7 +437,7 @@ void itProcessUpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit_
         {
             wp->hit_attack_damage = wp_hit_damage;
         }
-        efParticle_SetOff_MakeEffect(&pos, wp_hit_damage);
+        efManagerSetOffMakeEffect(&pos, wp_hit_damage);
     }
 }
 
@@ -526,17 +526,17 @@ void itProcessUpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit,
             switch (attack_it_hit->element)
             {
             case gmHitCollision_Element_Fire:
-                efParticle_DamageFire_MakeEffect(&pos, damage);
+                efManagerDamageFireMakeEffect(&pos, damage);
                 break;
             case gmHitCollision_Element_Electric:
-                func_ovl2_800FE4EC(&pos, damage);
+                efManagerDamageElectricMakeEffect(&pos, damage);
                 break;
             case gmHitCollision_Element_Coin:
-                efParticle_DamageCoin_MakeEffect(&pos);
+                efManagerDamageCoinMakeEffect(&pos);
                 break;
 
             default:
-                efParticle_DamageNormalLight_MakeEffect(&pos, attack_ip->player, damage, 0);
+                efManagerDamageNormalLightMakeEffect(&pos, attack_ip->player, damage, 0);
                 break;
             }
         }
@@ -617,19 +617,19 @@ void itProcessUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_
             switch (wp_hit->element)
             {
             case gmHitCollision_Element_Fire:
-                efParticle_DamageFire_MakeEffect(&pos, damage);
+                efManagerDamageFireMakeEffect(&pos, damage);
                 break;
 
             case gmHitCollision_Element_Electric:
-                func_ovl2_800FE4EC(&pos, damage);
+                efManagerDamageElectricMakeEffect(&pos, damage);
                 break;
 
             case gmHitCollision_Element_Coin:
-                efParticle_DamageCoin_MakeEffect(&pos);
+                efManagerDamageCoinMakeEffect(&pos);
                 break;
 
             default:
-                efParticle_DamageNormalLight_MakeEffect(&pos, wp->player, damage, NULL);
+                efManagerDamageNormalLightMakeEffect(&pos, wp->player, damage, NULL);
                 break;
             }
         }

@@ -128,7 +128,7 @@ void grZebesAcidUpdateRumble(void)
 {
     if (gGroundStruct.zebes.rumble_wait == 0)
     {
-        efParticle_Quake_MakeEffect(0);
+        efManagerQuakeMakeEffect(0);
 
         gGroundStruct.zebes.rumble_wait = 18;
     }

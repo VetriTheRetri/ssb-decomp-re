@@ -88,7 +88,7 @@ sb32 wpSamusBombProcUpdate(GObj *weapon_gobj)
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
-        efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+        efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
         wpSamusBombExplodeInitWeaponVars(weapon_gobj);
         func_800269C0_275C0(alSound_SFX_ExplodeS);
 
@@ -168,7 +168,7 @@ sb32 wpSamusBombProcMap(GObj *weapon_gobj)
 sb32 wpSamusBombProcHit(GObj *weapon_gobj)
 {
     func_800269C0_275C0(alSound_SFX_ExplodeS);
-    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
     wpSamusBombExplodeInitWeaponVars(weapon_gobj);
 
     return FALSE;
@@ -178,7 +178,7 @@ sb32 wpSamusBombProcHit(GObj *weapon_gobj)
 sb32 wpSamusBombProcAbsorb(GObj *weapon_gobj)
 {
     func_800269C0_275C0(alSound_SFX_ExplodeS);
-    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
 }

@@ -406,7 +406,7 @@ void itMBallGOpenInitItemVars(GObj *item_gobj)
             ftMainMakeRumble(fp, 8, 20);
         }
     }
-    ip->item_vars.m_ball.effect_gobj = efParticle_MBallRays_MakeEffect(&dobj->translate.vec.f);
+    ip->item_vars.m_ball.effect_gobj = efManagerMBallRaysMakeEffect(&dobj->translate.vec.f);
 
     itMBallGOpenClearAnim(item_gobj);
 

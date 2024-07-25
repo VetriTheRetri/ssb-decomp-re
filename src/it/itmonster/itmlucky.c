@@ -253,7 +253,7 @@ sb32 itMLuckyNSpawnProcUpdate(GObj *lucky_gobj)
                     lucky_ip->item_vars.mlucky.egg_spawn_wait = ITMLUCKY_EGG_SPAWN_WAIT_CONST;
                     lucky_ip->it_multi--;
 
-                    efParticle_DustLight_MakeEffect(&pos, egg_ip->lr, 1.0F);
+                    efManagerDustLightMakeEffect(&pos, egg_ip->lr, 1.0F);
                 }
             }
             else

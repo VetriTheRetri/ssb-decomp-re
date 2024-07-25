@@ -1252,7 +1252,7 @@ sb32 efGroundCheckEffectInBounds(GObj *effect_gobj)
     {
         if (dobj->translate.vec.f.x <= (gGroundInfo->blastzone_left + 500.0F))
         {
-            efManager_SetPrevAlloc(ep);
+            efManagerSetPrevAlloc(ep);
             omEjectGObj(effect_gobj);
 
             return FALSE;
@@ -1260,7 +1260,7 @@ sb32 efGroundCheckEffectInBounds(GObj *effect_gobj)
     }
     else if (dobj->translate.vec.f.x >= (gGroundInfo->blastzone_right - 500.0F))
     {
-        efManager_SetPrevAlloc(ep);
+        efManagerSetPrevAlloc(ep);
         omEjectGObj(effect_gobj);
 
         return FALSE;
@@ -1474,7 +1474,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
 
     if (effect_flags & EFFECT_FLAG_USERDATA)
     {
-        ep = efManager_GetStructNoForceReturn();
+        ep = efManagerGetEffectNoForce();
 
         if (ep == NULL)
         {
@@ -1490,7 +1490,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
     {
         if (ep != NULL)
         {
-            efManager_SetPrevAlloc(ep);
+            efManagerSetPrevAlloc(ep);
         }
         return NULL;
     }

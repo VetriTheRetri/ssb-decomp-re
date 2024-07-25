@@ -119,7 +119,7 @@ sb32 wpBossBulletProcMap(GObj *weapon_gobj)
     {
         wpBossBulletExplodeInitWeaponVars(weapon_gobj);
         func_800269C0_275C0(alSound_SFX_ExplodeS);
-        efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+        efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
         return TRUE;
     }
@@ -129,7 +129,7 @@ sb32 wpBossBulletProcMap(GObj *weapon_gobj)
 // 0x8016DD04
 sb32 wpBossBulletProcHit(GObj *weapon_gobj)
 {
-    efParticle_SparkleWhiteMultiExplode_MakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
+    efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
 }

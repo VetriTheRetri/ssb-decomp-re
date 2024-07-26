@@ -722,7 +722,7 @@ GObj* grPupupuMakeMapGObj(intptr_t tk, intptr_t offset2, void (*proc_render)(GOb
 
     omAddGObjRenderProc(ground_gobj, proc_render, dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    func_8000F590(ground_gobj, (uintptr_t)gGRCommonStruct.pupupu.map_head + tk, NULL, OMMtx_Transform_TraRotRpyRSca, OMMtx_Transform_Null, 0);
+    func_8000F590(ground_gobj, (uintptr_t)gGRCommonStruct.pupupu.map_head + tk, NULL, nOMTransformTraRotRpyRSca, nOMTransformNull, 0);
 
     if (offset2 != 0)
     {

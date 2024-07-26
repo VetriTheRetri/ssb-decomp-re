@@ -84,7 +84,7 @@ extern efGenerator* efManagerRippleMakeEffect(Vec3f *pos);
 extern GObj* efManagerCatchSwirlMakeEffect(Vec3f *pos);
 extern GObj* efManagerReflectBreakMakeEffect(Vec3f *pos, s32 lr);
 extern efParticle* efManagerFuraSparkleMakeEffect(Vec3f *pos);
-extern efParticle* efManagerNessPSIMakeEffect(Vec3f *pos);
+extern efParticle* efManagerPsionicMakeEffect(Vec3f *pos);
 extern efParticle* efManagerFlashSmallMakeEffect(Vec3f *pos);
 extern efParticle* efManagerFlashMiddleMakeEffect(Vec3f *pos);
 extern efParticle* efManagerFlashLargeMakeEffect(Vec3f *pos);

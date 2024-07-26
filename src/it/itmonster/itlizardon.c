@@ -34,8 +34,8 @@ itCreateDesc dITLizardonItemDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_Null,               // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformNull,               // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -100,8 +100,8 @@ wpCreateDesc dITLizardonWeaponFlameWeaponDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,      // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -344,7 +344,7 @@ GObj* itLizardonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         dobj = DObjGetStruct(item_gobj);
 
-        omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_TraRotRpyR, 0);
+        omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
         omAddOMMtxForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = *pos;

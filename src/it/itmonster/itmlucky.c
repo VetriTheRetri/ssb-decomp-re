@@ -26,8 +26,8 @@ itCreateDesc dITMLuckyItemDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyR,         // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,         // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0,                                  // ???
     },
 

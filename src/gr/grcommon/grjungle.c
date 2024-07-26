@@ -24,8 +24,8 @@ extern void func_8000DF34_EB34(GObj*);
 // 0x8012EB50
 DObjTransformTypes dGRJungleTaruCannTransformKinds[/* */] =
 {
-    { 0x28, OMMtx_Transform_RotRpyR, 0x00 },
-    { OMMtx_Transform_TraRotRpyRSca, OMMtx_Transform_Null, 0x00 }
+    { 0x28, nOMTransformRotRpyR, 0x00 },
+    { nOMTransformTraRotRpyRSca, nOMTransformNull, 0x00 }
 };
 
 // // // // // // // // // // // //

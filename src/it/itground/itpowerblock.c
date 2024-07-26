@@ -26,7 +26,7 @@ itCreateDesc dITPowerBlockItemDesc =
     // DObj transformation struct
     {
         0x44,                               // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformNull,               // Secondary matrix transformations?
         0                                   // ???
     },
 

@@ -64,7 +64,7 @@ wpCreateDesc dWPMarioFireballWeaponDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_Tra,                // Main matrix transformations
+        nOMTransformTra,                // Main matrix transformations
         0x47,                               // Secondary matrix transformations?
         0                                   // ???
     },

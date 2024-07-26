@@ -25,6 +25,8 @@
 
 #define FTPARTS_HURT_NUM_MAX 11
 #define FTPARTS_JOINT_NUM_MAX 37
+#define FTPARTS_FLAG_NOFOG 0x40
+#define FTPARTS_FLAG_TOGGLEFOG 0x80
 
 #define FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN 8                                            // Default minimum stick range required to clamp air drift in respective physics routine
 
@@ -440,7 +442,7 @@ struct ftParts
     u8 unk_dobjtrans_0x6;
     u8 unk_dobjtrans_0x7;
     ftParts *alloc_next;
-    u8 unk_0xC;
+    u8 flags;
     u8 joint_id;
     u8 unk_dobjtrans_0xE;
     u8 unk_dobjtrans_0xF;
@@ -448,7 +450,7 @@ struct ftParts
     Mtx44f mtx_translate;
     Vec3f vec_translate; // ???
     Mtx44f unk_dobjtrans_0x9C;
-    GObj *ftparts_gobj;
+    GObj *gobj;
 };
 
 struct ftPartIndex
@@ -691,7 +693,8 @@ struct ftAttributes
     u16 heavyget_sfx;
     // u16 unk_0xEA;
     f32 halo_size; // Respawn platform size?
-    gsColorRGBA shade_color[4];
+    gsColorRGBA shade_color[3];
+    gsColorRGBA fog_color;
     ub32 is_have_attack11    : 1;
     ub32 is_have_attack12    : 1;
     ub32 is_have_attackdash  : 1;

@@ -4,11 +4,13 @@
 #include "ftmanager.h"
 #include "ftmain.h"
 #include "ftanimgoto.h"
-#include "fthammer.h"
 #include "ftphysics.h"
+#include "ftrendermain.h"
+#include "ftrenderlights.h"
+#include "fthammer.h"
+
 #include "ftshadow.h"
 #include "ftcomputer.h"
-
 #include "ftpublicity.h"
 
 #endif

@@ -220,7 +220,7 @@ void itManagerDObjSetup(GObj *gobj, DObjDesc *dobj_desc, DObj **p_dobj, u8 trans
         {
             func_8000F364_FF64(joint, transform_kind, NULL, NULL, NULL);
         }
-        else if (transform_kind != OMMtx_Transform_Null)
+        else if (transform_kind != nOMTransformNull)
         {
             omAddOMMtxForDObjFixed(joint, transform_kind, NULL);
         }

@@ -19,7 +19,7 @@ typedef enum efKind
     nEFKindDustDashSmall,              // Small (actually pretty large) dust kickup behind user
     nEFKindDustDashLarge,              // Large dust kickup behind user
     nEFKindDamageFlyOrbs,              // Cyan orbs that fly outward
-    nEFKindImpactWave,                   // Green impact shockwave that is created when a character slams into collision
+    nEFKindImpactWave,                 // Green impact shockwave that is created when a character slams into collision
     nEFKindStarRodSpark,               // Star Rod / Star projectile sparkles 
     nEFKindDamageFlySparks,            // Shows sometimes when getting hit
     nEFKindDamageFlySparksReverse,     // LR-inverted version
@@ -29,9 +29,9 @@ typedef enum efKind
     nEFKindSparkleWhiteMultiExplode,   // e.g. Kirby's F-Throw explosion
     nEFKindSparkleWhiteMulti,          // I can't really trigger this but it's just SparkleWhiteMultiExplode without the explosion; seems to be exclusive to fighter scripts
     nEFKindSparkleWhiteScale,          // Most common white sparkle, plays during many moves such as Smash attacks
-    nEFKindQuakeM0,                    // Creates an earthquake of magnitude 0
-    nEFKindQuakeM1,                    // Creates an earthquake of magnitude 1
-    nEFKindQuakeM2,                    // Creates an earthquake of magnitude 2
+    nEFKindQuakeMag0,                  // Creates an earthquake of magnitude 0
+    nEFKindQuakeMag1,                  // Creates an earthquake of magnitude 1
+    nEFKindQuakeMag2,                  // Creates an earthquake of magnitude 2
     nEFKindFireSpark = 37,             // Not sure who uses this
     nEFKindFuraSparkle = 40,           // Dizzy sparkles after shield break
     nEFKindPsionic,                    // Ness PSI sparkles

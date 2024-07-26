@@ -26,11 +26,11 @@ void grModelSetupInitDObj(GObj *gobj, DObjDesc *dobj_desc, DObj **p_dobj, DObjTr
         }
         else joint = dobj_array[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
         
-        if (transform_types[i].tk1 != OMMtx_Transform_Null)
+        if (transform_types[i].tk1 != nOMTransformNull)
         {
             omAddOMMtxForDObjFixed(joint, transform_types[i].tk1, transform_types[i].unk_dobjtransform_0x2);
         }
-        if (transform_types[i].tk2 != OMMtx_Transform_Null)
+        if (transform_types[i].tk2 != nOMTransformNull)
         {
             omAddOMMtxForDObjFixed(joint, transform_types[i].tk2, 0);
         }

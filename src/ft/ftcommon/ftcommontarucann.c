@@ -4,7 +4,6 @@
 #include <gm/battle.h>
 
 extern f32 grMapObject_DamageCalcKnockback(s32 percent_damage, s32 recent_damage, s32 hit_damage, s32 knockback_weight, s32 knockback_scale, s32 knockback_base, f32 weight, s32 attack_handicap, s32 defend_handicap);
-extern f32 grJungleTaruCannGetRotate();
 
 // // // // // // // // // // // //
 //                               //

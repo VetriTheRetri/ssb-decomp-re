@@ -28,8 +28,8 @@ itCreateDesc dITNyarsItemDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,      // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -70,8 +70,8 @@ wpCreateDesc dITNyarsWeaponCoinWeaponDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_Null,               // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformNull,               // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -290,7 +290,7 @@ GObj* itNyarsWeaponCoinMakeWeapon(GObj *item_gobj, u8 coin_number, f32 rotate_an
 
     dobj = DObjGetStruct(weapon_gobj);
 
-    omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_TraRotRpyRSca, 0);
+    omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
     omAddOMMtxForDObjFixed(dobj, 0x46, 0);
 
     dobj->translate.vec.f = DObjGetStruct(item_gobj)->translate.vec.f;

@@ -29,8 +29,8 @@ itCreateDesc dITKamexItemDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyR,         // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,         // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -95,8 +95,8 @@ wpCreateDesc dITKamexWeaponHydroWeaponDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,      // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0,                                  // ???
     },
 

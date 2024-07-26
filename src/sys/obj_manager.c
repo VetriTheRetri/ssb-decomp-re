@@ -909,7 +909,7 @@ OMMtx* omAddOMMtxForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 ommtx_id)
 
 	switch (kind)
 	{
-	case OMMtx_Transform_Tra:
+	case nOMTransformTra:
 	case 34:
 	case 36:
 	case 38:
@@ -919,30 +919,30 @@ OMMtx* omAddOMMtxForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 ommtx_id)
 		dobj->translate.ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_RotD:
-	case OMMtx_Transform_RotR:
+	case nOMTransformRotD:
+	case nOMTransformRotR:
 		dobj->rotate = dOMRotateDefaultAXYZ;
 		dobj->rotate.ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_TraRotD:
-	case OMMtx_Transform_TraRotR:
+	case nOMTransformTraRotD:
+	case nOMTransformTraRotR:
 		dobj->translate = dOMTranslateDefault;
 		dobj->rotate = dOMRotateDefaultAXYZ;
 		dobj->translate.ommtx = ommtx;
 		dobj->rotate.ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_RotRpyD:
-	case OMMtx_Transform_RotRpyR:
-	case OMMtx_Transform_RotPyrR:
+	case nOMTransformRotRpyD:
+	case nOMTransformRotRpyR:
+	case nOMTransformRotPyrR:
 		dobj->rotate = dOMRotateDefaultRPY;
 		dobj->rotate.ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_TraRotRpyD:
-	case OMMtx_Transform_TraRotRpyR:
-	case OMMtx_Transform_TraRotPyrR:
+	case nOMTransformTraRotRpyD:
+	case nOMTransformTraRotRpyR:
+	case nOMTransformTraRotPyrR:
 	case 51:
 	case 52:
 		dobj->translate = dOMTranslateDefault;
@@ -951,7 +951,7 @@ OMMtx* omAddOMMtxForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 ommtx_id)
 		dobj->rotate.ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_TraRotRSca:
+	case nOMTransformTraRotRSca:
 		dobj->translate = dOMTranslateDefault;
 		dobj->rotate = dOMRotateDefaultAXYZ;
 		dobj->scale = dOMScaleDefault;
@@ -960,8 +960,8 @@ OMMtx* omAddOMMtxForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 ommtx_id)
 		dobj->scale.ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_TraRotRpyRSca:
-	case OMMtx_Transform_TraRotPyrRSca:
+	case nOMTransformTraRotRpyRSca:
+	case nOMTransformTraRotPyrRSca:
 	case 54:
 		dobj->translate = dOMTranslateDefault;
 		dobj->rotate = dOMRotateDefaultRPY;
@@ -971,7 +971,7 @@ OMMtx* omAddOMMtxForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 ommtx_id)
 		dobj->scale.ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_Sca:
+	case nOMTransformSca:
 	case 43:
 	case 44:
 	case 47:
@@ -991,34 +991,34 @@ OMMtx* omAddOMMtxForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 ommtx_id)
 		dobj->scale.ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_VecTra:
+	case nOMTransformVecTra:
 		*translate = dOMTranslateDefault;
 		translate->ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_VecRotR:
+	case nOMTransformVecRotR:
 		*rotate = dOMRotateDefaultAXYZ;
 		rotate->ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_VecRotRpyR:
+	case nOMTransformVecRotRpyR:
 		*rotate = dOMRotateDefaultRPY;
 		rotate->ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_VecSca:
+	case nOMTransformVecSca:
 		*scale = dOMScaleDefault;
 		scale->ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_VecTraRotR:
+	case nOMTransformVecTraRotR:
 		*translate = dOMTranslateDefault;
 		*rotate = dOMRotateDefaultAXYZ;
 
 		translate->ommtx = rotate->ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_VecTraRotRSca:
+	case nOMTransformVecTraRotRSca:
 		*translate = dOMTranslateDefault;
 		*rotate = dOMRotateDefaultAXYZ;
 		*scale = dOMScaleDefault;
@@ -1026,14 +1026,14 @@ OMMtx* omAddOMMtxForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 ommtx_id)
 		translate->ommtx = rotate->ommtx = scale->ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_VecTraRotRpyR:
+	case nOMTransformVecTraRotRpyR:
 		*translate = dOMTranslateDefault;
 		*rotate = dOMRotateDefaultRPY;
 
 		translate->ommtx = rotate->ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_VecTraRotRpyRSca:
+	case nOMTransformVecTraRotRpyRSca:
 		*translate = dOMTranslateDefault;
 		*rotate = dOMRotateDefaultRPY;
 		*scale = dOMScaleDefault;
@@ -1075,13 +1075,13 @@ OMMtx* omAddOMMtxForCamera(Camera* cam, u8 kind, u8 arg2)
 
 	switch (kind)
 	{
-	case OMMtx_Transform_PerspFastF:
-	case OMMtx_Transform_PerspF:
+	case nOMTransformPerspFastF:
+	case nOMTransformPerspF:
 		cam->projection.persp = dOMPerspDefault;
 		cam->projection.persp.ommtx = ommtx;
 		break;
 
-	case OMMtx_Transform_Ortho:
+	case nOMTransformOrtho:
 		cam->projection.ortho = dOMOrthoDefault;
 		cam->projection.ortho.ommtx = ommtx;
 		break;

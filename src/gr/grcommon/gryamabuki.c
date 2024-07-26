@@ -265,7 +265,7 @@ void grYamabukiMakeGate(void)
     gGRCommonStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gate_gobj, odRenderDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
-    func_8000F590(gate_gobj, (DObjDesc*) ((uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)&lGRYamabukiMapHead), NULL, OMMtx_Transform_TraRotRpyR, 0, 0);
+    func_8000F590(gate_gobj, (DObjDesc*) ((uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)&lGRYamabukiMapHead), NULL, nOMTransformTraRotRpyR, 0, 0);
     omAddGObjCommonProc(gate_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
     grYamabukiGateAddAnimClose();
 }

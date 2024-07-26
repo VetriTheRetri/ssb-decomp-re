@@ -40,7 +40,7 @@ wpCreateDesc dWPNessPKThunderHeadWeaponDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_Tra,                // Main matrix transformations
+        nOMTransformTra,                // Main matrix transformations
         0x2E,                               // Secondary matrix transformations?
         0                                   // ???
     },
@@ -64,8 +64,8 @@ wpCreateDesc dWPNessPKThunderTrailWeaponDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,      // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -88,7 +88,7 @@ wpCreateDesc dWPNessPKReflectHeadWeaponDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_Tra,                // Main matrix transformations
+        nOMTransformTra,                // Main matrix transformations
         0x2E,                               // Secondary matrix transformations?
         0                                   // ???
     },
@@ -112,8 +112,8 @@ wpCreateDesc dWPNessPKReflectTrailWeaponDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,      // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0                                   // ???
     },
 

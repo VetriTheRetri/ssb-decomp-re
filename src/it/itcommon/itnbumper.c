@@ -27,8 +27,8 @@ itCreateDesc dITNBumperItemDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_Tra,                // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformTra,                // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0                                   // ???
     },
 

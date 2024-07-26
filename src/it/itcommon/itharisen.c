@@ -28,8 +28,8 @@ itCreateDesc dITHarisenItemDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,      // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -187,7 +187,7 @@ void itHarisenFHoldSetStatus(GObj *item_gobj)
 {
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_Sca, 0);
+    omAddOMMtxForDObjFixed(dobj, nOMTransformSca, 0);
 
     dobj->rotate.vec.f.y = 0.0F;
 

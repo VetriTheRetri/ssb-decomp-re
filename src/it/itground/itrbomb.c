@@ -31,8 +31,8 @@ itCreateDesc dITRBombItemDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyR,         // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,         // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -158,7 +158,7 @@ void itRBombContainerSmashMakeEffect(Vec3f *pos)
             {
                 dobj = omAddDObjForGObj(effect_gobj, dl);
 
-                omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_TraRotRpyR, 0);
+                omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
 
                 dobj->translate.vec.f = *pos;
 

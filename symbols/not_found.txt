@@ -677,7 +677,6 @@ gGMCommonFiles = 0x80130D40;
 gBattleState = 0x800A50E8;
 gSceneData = 0x800A4AD0;
 gIFPlayerCommonInterface = 0x80131580;
-gMPGroundData = 0x80131300;
 
 menu_zoom = 0x80390D90;
 gcAppendSObjWithSprite = 0x800ccfdc;
@@ -803,6 +802,11 @@ gFTDataNessParticleBankID = 0x80131148;
 
 gFTDataBossBattleMotion = 0x80131174;
 
+sFTRenderMainSkyFogAlpha = 0x801312F0;
+sFTRenderMainIsShadeFog = 0x801312F1;
+sFTRenderMainFogColor = 0x801312F4;
+
+gMPGroundData = 0x80131300;
 gMPYakumonoDObjs = 0x80131304;
 gMPEdgeBounds = 0x80131308;
 gMPLineTypeGroups = 0x80131348;
@@ -837,7 +841,7 @@ sGRCommonFileNodes = 0x801313E0;
 gCMManagerCameraGObj = 0x80131460;
 gCMManagerPauseCameraEyeX = 0x80131464;
 gCMManagerPauseCameraEyeY = 0x80131468;
-sCMManagerMtx = 0x80131470;
+gCMManagerMtx = 0x80131470;
 gCMManagerCameraStruct = 0x801314B0;
 
 sIFCommonPlayerDamageInterface = 0x80131598;

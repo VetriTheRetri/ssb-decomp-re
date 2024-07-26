@@ -228,17 +228,17 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                 {
                     break;
                 }
-                case OMMtx_Transform_Tra:
+                case nOMTransformTra:
                 {
                     hlMtxTranslate(mtx_store.gbi, dobj->translate.vec.f.x, dobj->translate.vec.f.y, dobj->translate.vec.f.z);
                     break;
                 }
-                case OMMtx_Transform_RotD:
+                case nOMTransformRotD:
                 {
                     hal_rotate_degrees(mtx_store.gbi, dobj->rotate.a, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
-                case OMMtx_Transform_TraRotD:
+                case nOMTransformTraRotD:
                 {
                     hal_rotate_translate_degrees
                     (
@@ -253,12 +253,12 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case OMMtx_Transform_RotRpyD:
+                case nOMTransformRotRpyD:
                 {
                     hal_rotate_rpy_degrees(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
-                case OMMtx_Transform_TraRotRpyD:
+                case nOMTransformTraRotRpyD:
                 {
                     hal_rotate_rpy_translate_degrees
                     (
@@ -272,7 +272,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case OMMtx_Transform_RotR:
+                case nOMTransformRotR:
                 {
                     hal_rotate
                     (
@@ -284,7 +284,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case OMMtx_Transform_TraRotR:
+                case nOMTransformTraRotR:
                 {
                     hal_rotate_translate
                     (
@@ -299,7 +299,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case OMMtx_Transform_TraRotRSca:
+                case nOMTransformTraRotRSca:
                 {
                     hal_rotate_translate_rowscale
                     (
@@ -318,12 +318,12 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     gSpriteLayerScale *= dobj->scale.vec.f.x;
                     break;
                 }
-                case OMMtx_Transform_RotRpyR:
+                case nOMTransformRotRpyR:
                 {
                     hal_rotate_rpy(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
-                case OMMtx_Transform_TraRotRpyR:
+                case nOMTransformTraRotRpyR:
                 {
                     hal_rotate_rpy_translate
                     (
@@ -337,7 +337,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case OMMtx_Transform_TraRotRpyRSca:
+                case nOMTransformTraRotRpyRSca:
                 {
                     hal_rotate_rpy_translate_scale
                     (
@@ -355,12 +355,12 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     gSpriteLayerScale *= dobj->scale.vec.f.x;
                     break;
                 }
-                case OMMtx_Transform_RotPyrR:
+                case nOMTransformRotPyrR:
                 {
                     hal_rotate_pyr(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
-                case OMMtx_Transform_TraRotPyrR:
+                case nOMTransformTraRotPyrR:
                 {
                     hal_rotate_pyr_translate
                     (
@@ -374,7 +374,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case OMMtx_Transform_TraRotPyrRSca:
+                case nOMTransformTraRotPyrRSca:
                 {
                     hal_rotate_pyr_translate_scale
                     (
@@ -392,7 +392,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     gSpriteLayerScale *= dobj->scale.vec.f.x;
                     break;
                 }
-                case OMMtx_Transform_Sca:
+                case nOMTransformSca:
                 {
                     hlMtxScale(mtx_store.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
                     gSpriteLayerScale *= dobj->scale.vec.f.x;
@@ -438,28 +438,28 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     func_80010918(mtx_store.f, dobj, TRUE);
                     break;
                 }
-                case OMMtx_Transform_VecTra:
+                case nOMTransformVecTra:
                 {
                     hlMtxTranslate(mtx_store.gbi, translate->vec.f.x, translate->vec.f.y, translate->vec.f.z);
                     break;
                 }
-                case OMMtx_Transform_VecRotR:
+                case nOMTransformVecRotR:
                 {
                     hal_rotate(mtx_store.gbi, rotate->a, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
                     break;
                 }
-                case OMMtx_Transform_VecRotRpyR:
+                case nOMTransformVecRotRpyR:
                 {
                     hal_rotate_rpy(mtx_store.gbi, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
                     break;
                 }
-                case OMMtx_Transform_VecSca:
+                case nOMTransformVecSca:
                 {
                     hlMtxScale(mtx_store.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
                     gSpriteLayerScale *= scale->vec.f.x;
                     break;
                 }
-                case OMMtx_Transform_VecTraRotR:
+                case nOMTransformVecTraRotR:
                 {
                     hal_rotate_translate
                     (
@@ -474,7 +474,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case OMMtx_Transform_VecTraRotRSca:
+                case nOMTransformVecTraRotRSca:
                 {
                     hal_rotate_translate_rowscale
                     (
@@ -493,7 +493,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     gSpriteLayerScale *= scale->vec.f.x;
                     break;
                 }
-                case OMMtx_Transform_VecTraRotRpyR:
+                case nOMTransformVecTraRotRpyR:
                 {
                     hal_rotate_rpy_translate
                     (
@@ -507,7 +507,7 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case OMMtx_Transform_VecTraRotRpyRSca:
+                case nOMTransformVecTraRotRpyRSca:
                 {
                     hal_rotate_rpy_translate_scale
                     (
@@ -2602,7 +2602,7 @@ void odRenderCameraMain(Gfx **dls, Camera *cam)
                     case 2:
                         break;
 
-                    case OMMtx_Transform_PerspFastF:
+                    case nOMTransformPerspFastF:
                         hlMtxPerspFastF
                         (
                             D_80046FA8,
@@ -2617,7 +2617,7 @@ void odRenderCameraMain(Gfx **dls, Camera *cam)
                         D_80046FA0 = mtx_store.gbi;
                         break;
 
-                    case OMMtx_Transform_PerspF:
+                    case nOMTransformPerspF:
                         hlMtxPerspF
                         (
                             D_80046FA8,
@@ -2632,7 +2632,7 @@ void odRenderCameraMain(Gfx **dls, Camera *cam)
                         D_80046FA0 = mtx_store.gbi;
                         break;
 
-                    case OMMtx_Transform_Ortho:
+                    case nOMTransformOrtho:
                         hlMtxOrtho
                         (
                             mtx_store.gbi,
@@ -2735,13 +2735,13 @@ void odRenderCameraMain(Gfx **dls, Camera *cam)
                 case 2:
                     break;
 
-                case OMMtx_Transform_PerspFastF:
-                case OMMtx_Transform_PerspF:
+                case nOMTransformPerspFastF:
+                case nOMTransformPerspF:
                     gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
                     gSPPerspNormalize(dl++, cam->projection.persp.norm);
                     break;
 
-                case OMMtx_Transform_Ortho:
+                case nOMTransformOrtho:
                     gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
                     break;
 

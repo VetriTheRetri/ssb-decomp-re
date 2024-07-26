@@ -1724,7 +1724,7 @@ void ifCommonPlayerMagnifyMakeInterface(void)
         ftStruct *fp = ftGetStruct(fighter_gobj);
         GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDMagnify, GOBJ_LINKORDER_DEFAULT);
 
-        omAddOMMtxForDObjFixed(omAddDObjForGObj(interface_gobj, (Gfx*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerMagnifyDisplayList)), OMMtx_Transform_TraRotRpyRSca, 0);
+        omAddOMMtxForDObjFixed(omAddDObjForGObj(interface_gobj, (Gfx*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerMagnifyDisplayList)), nOMTransformTraRotRpyRSca, 0);
 
         sIFCommonPlayerMagnifyInterface[fp->player].interface_gobj = interface_gobj;
         sIFCommonPlayerMagnifyInterface[fp->player].color_id = gBattleState->player_block[fp->player].player_color_index;
@@ -1934,7 +1934,7 @@ void ifCommonPlayerTagProcRender(GObj *interface_gobj)
 
             pos.y += fp->attributes->cam_zoom_default;
 
-            func_ovl2_800EB924(CameraGetStruct(gCMManagerCameraGObj), sCMManagerMtx, &pos, &x, &y);
+            func_ovl2_800EB924(CameraGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &pos, &x, &y);
 
             if (cmManagerCheckTargetInBounds(x, y) != FALSE)
             {
@@ -1999,7 +1999,7 @@ void ifCommonItemArrowProcRender(GObj *interface_gobj)
 
         pos.y += ip->coll_data.object_coll.top + 100.0F;
 
-        func_ovl2_800EB924(CameraGetStruct(gCMManagerCameraGObj), sCMManagerMtx, &pos, &x, &y);
+        func_ovl2_800EB924(CameraGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &pos, &x, &y);
 
         if (cmManagerCheckTargetInBounds(x, y) != FALSE)
         {

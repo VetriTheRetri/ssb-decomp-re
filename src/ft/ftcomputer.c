@@ -4,8 +4,6 @@
 #include <gr/ground.h>
 #include <gm/battle.h>
 
-extern f32 grJungleTaruCannGetRotate();
-
 // // // // // // // // // // // //
 //                               //
 //        INITIALIZED DATA       //

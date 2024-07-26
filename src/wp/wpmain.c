@@ -152,7 +152,7 @@ void func_ovl3_8016830C(DObj *dobj, Vec3f *vec)
         {
             OMMtx *ommtx = current_dobj->ommtx[j];
 
-            if (ommtx->kind == OMMtx_Transform_Null)
+            if (ommtx->kind == nOMTransformNull)
             {
                 break;
             }

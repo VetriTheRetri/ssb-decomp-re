@@ -168,18 +168,18 @@ u8 dGRSectorArwingPilotWaitTimers[/* */][2] =
 // 0x8012E9CC
 DObjTransformTypes dGRSectorArwingTransformKinds[/* */] =
 {
-    { 0x53, OMMtx_Transform_Null, 0x00 },
-    { OMMtx_Transform_TraRotRpyR, OMMtx_Transform_Null, 0x00 },
-    { OMMtx_Transform_Tra, 0x2C, 0x01 },
-    { OMMtx_Transform_Tra, 0x2C, 0x01 },
-    { OMMtx_Transform_Tra, 0x2C, 0x00 },
-    { OMMtx_Transform_Tra, 0x2C, 0x00 },
-    { OMMtx_Transform_Tra, OMMtx_Transform_Null, 0x01 },
-    { OMMtx_Transform_Tra, OMMtx_Transform_Null, 0x00 },
-    { OMMtx_Transform_Tra, 0x2C, 0x00 },
-    { OMMtx_Transform_Tra, OMMtx_Transform_Null, 0x00 },
-    { OMMtx_Transform_Tra, 0x2C, 0x01 },
-    { OMMtx_Transform_Null, OMMtx_Transform_Null, 0x00 } // This might just be padding
+    { 0x53, nOMTransformNull, 0x00 },
+    { nOMTransformTraRotRpyR, nOMTransformNull, 0x00 },
+    { nOMTransformTra, 0x2C, 0x01 },
+    { nOMTransformTra, 0x2C, 0x01 },
+    { nOMTransformTra, 0x2C, 0x00 },
+    { nOMTransformTra, 0x2C, 0x00 },
+    { nOMTransformTra, nOMTransformNull, 0x01 },
+    { nOMTransformTra, nOMTransformNull, 0x00 },
+    { nOMTransformTra, 0x2C, 0x00 },
+    { nOMTransformTra, nOMTransformNull, 0x00 },
+    { nOMTransformTra, 0x2C, 0x01 },
+    { nOMTransformNull, nOMTransformNull, 0x00 } // This might just be padding
 };
 
 // 0x8012E9F0
@@ -192,8 +192,8 @@ wpCreateDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
     
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyR,                     // Main matrix transformations
-        OMMtx_Transform_Null,                           // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,                     // Main matrix transformations
+        nOMTransformNull,                           // Secondary matrix transformations?
         0                                               // ???
     },
 
@@ -217,8 +217,8 @@ wpCreateDesc dGRSectorArwingWeaponLaser3DWeaponDesc =
     
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyR,                     // Main matrix transformations
-        OMMtx_Transform_Null,                           // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,                     // Main matrix transformations
+        nOMTransformNull,                           // Secondary matrix transformations?
         0                                               // ???
     },
 

@@ -234,7 +234,7 @@ void grYosterInitAll(void)
         gGRCommonStruct.yoster.clouds[i].gobj = map_gobj;
 
         omAddGObjRenderProc(map_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
-        func_8000F590(map_gobj, (DObjDesc*) ((intptr_t)&lGRYosterMapHead + (uintptr_t)map_head), NULL, OMMtx_Transform_Tra, OMMtx_Transform_Null, 0); // Make this OMMtx_Transform_TraRotRpyRSca to add static cloud animation
+        func_8000F590(map_gobj, (DObjDesc*) ((intptr_t)&lGRYosterMapHead + (uintptr_t)map_head), NULL, nOMTransformTra, nOMTransformNull, 0); // Make this nOMTransformTraRotRpyRSca to add static cloud animation
 
         omAddGObjCommonProc(map_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
 
@@ -252,7 +252,7 @@ void grYosterInitAll(void)
             cloud_dobj = omAddChildForDObj(coll_dobj, (uintptr_t)map_head + (intptr_t)&lGRYosterCloudDisplayList);
             gGRCommonStruct.yoster.clouds[i].dobj[j] = cloud_dobj;
 
-            omAddOMMtxForDObjFixed(cloud_dobj, OMMtx_Transform_Tra, 0);
+            omAddOMMtxForDObjFixed(cloud_dobj, nOMTransformTra, 0);
             omAddOMMtxForDObjFixed(cloud_dobj, 0x30, 0);
             func_ovl0_800C9228(cloud_dobj, (uintptr_t)map_head + (intptr_t)&D_NF_000004B8);
         }

@@ -26,8 +26,8 @@ wpCreateDesc dWPLinkBoomerangWeaponDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_TraRotRpyRSca,      // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,      // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -111,7 +111,7 @@ sb32 wpLinkBoomerangCheckOffCamera(GObj *weapon_gobj)
         {
             wp->weapon_vars.boomerang.adjust_angle_delay = 0;
 
-            func_ovl2_800EB924(CameraGetStruct(gCMManagerCameraGObj), sCMManagerMtx, &DObjGetStruct(weapon_gobj)->translate.vec.f, &pos_x, &pos_y);
+            func_ovl2_800EB924(CameraGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &DObjGetStruct(weapon_gobj)->translate.vec.f, &pos_x, &pos_y);
 
             cam_bound_x = (gCMManagerCameraStruct.viewport_width / 2) + 40.0F;
             cam_bound_y = (gCMManagerCameraStruct.viewport_height / 2) + 40.0F;

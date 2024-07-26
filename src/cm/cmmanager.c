@@ -28,7 +28,7 @@ f32 gCMManagerPauseCameraEyeX;
 f32 gCMManagerPauseCameraEyeY; // Also from .bss
 
 // 0x80131470
-Mtx44f sCMManagerMtx; // Mtx44f?
+Mtx44f gCMManagerMtx; // Mtx44f?
 
 // 0x801314B0
 cmStruct gCMManagerCameraStruct;
@@ -975,11 +975,11 @@ f32 cmManagerGetMtxMaxValue(void)
 
     ret = 0.0F;
 
-    for (i = 0; i < ARRAY_COUNT(sCMManagerMtx[i]); i++)
+    for (i = 0; i < ARRAY_COUNT(gCMManagerMtx[i]); i++)
     {
-        for (j = 0; j < ARRAY_COUNT(sCMManagerMtx); j++)
+        for (j = 0; j < ARRAY_COUNT(gCMManagerMtx); j++)
         {
-            abs = ABSF(sCMManagerMtx[i][j]);
+            abs = ABSF(gCMManagerMtx[i][j]);
 
             if (ret < abs)
             {
@@ -1008,7 +1008,7 @@ sb32 cmManagerCameraLookAt(Mtx *mtx, Camera *cam, Gfx **dl)
     D_80046FA0 = temp_mtx;
 
     hlMtxLookAtReflectF(sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
-    guMtxCatF(sp5C, D_80046FA8, sCMManagerMtx);
+    guMtxCatF(sp5C, D_80046FA8, gCMManagerMtx);
 
     max = cmManagerGetMtxMaxValue();
 
@@ -1020,9 +1020,9 @@ sb32 cmManagerCameraLookAt(Mtx *mtx, Camera *cam, Gfx **dl)
         D_80046FA0 = temp_mtx;
 
         hlMtxLookAtReflectF(sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
-        guMtxCatF(sp5C, D_80046FA8, sCMManagerMtx);
+        guMtxCatF(sp5C, D_80046FA8, gCMManagerMtx);
     }
-    hlMtxF2L(sCMManagerMtx, mtx);
+    hlMtxF2L(gCMManagerMtx, mtx);
 
     return 0;
 }
@@ -1126,7 +1126,7 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 
     omAddOMMtxForCamera(cam, tk1, 0);
 
-    if (tk2 != OMMtx_Transform_Null)
+    if (tk2 != nOMTransformNull)
     {
         omAddOMMtxForCamera(cam, tk2, 0);
     }
@@ -1182,13 +1182,13 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 // 0x8010DB00
 void func_ovl2_8010DB00(void)
 {
-    cmManagerMakeBattleCamera(0x4C, OMMtx_Transform_Null, cmManagerRunGlobalProcCamera);
+    cmManagerMakeBattleCamera(0x4C, nOMTransformNull, cmManagerRunGlobalProcCamera);
 }
 
 // 0x8010DB2C
 GObj* func_ovl2_8010DB2C(void (*proc_camera)(GObj*))
 {
-    return cmManagerMakeBattleCamera(OMMtx_Transform_PerspFastF, 8, proc_camera);
+    return cmManagerMakeBattleCamera(nOMTransformPerspFastF, 8, proc_camera);
 }
 
 // 0x8010DB54

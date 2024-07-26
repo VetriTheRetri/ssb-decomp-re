@@ -545,7 +545,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
                 this_fp->phys_info.vel_damage_ground = 0.0F;
 
                 ftParticle_MakeEffectKind(this_gobj, nEFKindImpactWave, 0, NULL, NULL, this_fp->lr, 0, 0);
-                ftParticle_MakeEffectKind(this_gobj, nEFKindQuakeM0, 0, NULL, NULL, this_fp->lr, 0, 0);
+                ftParticle_MakeEffectKind(this_gobj, nEFKindQuakeMag0, 0, NULL, NULL, this_fp->lr, 0, 0);
             }
             else
             {

@@ -24,8 +24,8 @@ itCreateDesc dITMSBombItemDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_Null,               // Main matrix transformations
-        OMMtx_Transform_Null,               // Secondary matrix transformations?
+        nOMTransformNull,               // Main matrix transformations
+        nOMTransformNull,               // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -619,7 +619,7 @@ GObj* itMSBombMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         translate = dobj->translate.vec.f;
 
-        omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_TraRotRpyR, 0);
+        omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
         omAddOMMtxForDObjFixed(dobj->child->sib_next, 0x46, 0);
 
         dobj->translate.vec.f = translate;

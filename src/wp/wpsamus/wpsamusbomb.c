@@ -25,7 +25,7 @@ wpCreateDesc dWPSamusBombWeaponDesc =
 
     // DObj transformation struct
     {
-        OMMtx_Transform_Tra,                // Main matrix transformations
+        nOMTransformTra,                // Main matrix transformations
         0x46,                               // Secondary matrix transformations?
         0                                   // ???
     },

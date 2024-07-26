@@ -161,7 +161,7 @@ void func_ovl59_8013202C(GObj *arg0)
 	{
 		gobj = omMakeGObjSPAfter(8, NULL, nOMObjCommonLinkID02, 0x80000000);
 		omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 3, 0x80000000, -1);
-		func_8000F590(gobj, gCreditsDObjDesc, NULL, OMMtx_Transform_TraRotRpyRSca, 0, 0);
+		func_8000F590(gobj, gCreditsDObjDesc, NULL, nOMTransformTraRotRpyRSca, 0, 0);
 		omAddGObjCommonProc(gobj, func_ovl59_80131F34, 1, 1);
 
 		gobj->user_data.p = arg0;
@@ -886,7 +886,7 @@ gmCreditsSetup* gmCreditsMakeJobDObjs(gmCreditsSetup *name_setup, DObj *dobj, s3
 
 			new_dobj = omAddChildForDObj(dobj, dl);
 
-			omAddOMMtxForDObjFixed(new_dobj, OMMtx_Transform_Tra, 1);
+			omAddOMMtxForDObjFixed(new_dobj, nOMTransformTra, 1);
 
 			if (job_character_id != -1)
 			{
@@ -1005,7 +1005,7 @@ GObj* gmCreditsMakeJobGObj(gmCreditsJob *job)
 
 	dobj = omAddDObjForGObj(gobj, NULL);
 
-	omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_TraRotRpyRSca, 0);
+	omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
 
 	if (job->prefix_id != -1)
 	{
@@ -1042,7 +1042,7 @@ GObj* gmCreditsMakeNameGObjAndDObjs()
 
 	new_dobj = dobj = omAddDObjForGObj(gobj, NULL);
 
-	omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_TraRotRpyRSca, 0);
+	omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
 
 	wbase = 0.0F;
 
@@ -1068,7 +1068,7 @@ GObj* gmCreditsMakeNameGObjAndDObjs()
 
 			new_dobj = omAddChildForDObj(dobj, dl);
 
-			omAddOMMtxForDObjFixed(new_dobj, OMMtx_Transform_Tra, 1);
+			omAddOMMtxForDObjFixed(new_dobj, nOMTransformTra, 1);
 
 			if (name_character_id != -1)
 			{

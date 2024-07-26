@@ -179,7 +179,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
         wp->player = WEAPON_PORT_DEFAULT;
         wp->handicap = WEAPON_HANDICAP_DEFAULT;
         wp->player_number = 0;
-        wp->lr = LR_Right;
+        wp->lr = nGMDirectionR;
 
         wp->display_mode = sWPManagerDisplayMode;
 
@@ -191,7 +191,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
         wp->weapon_hit.stat_count = gmCommon_GetStatUpdateCountInc();
         break;
     }
-    wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
+    wp->weapon_hit.update_state = nGMHitUpdateNew;
     
     wp->phys_info.vel_air.x = wp->phys_info.vel_air.y = wp->phys_info.vel_air.z = 0.0F;
 

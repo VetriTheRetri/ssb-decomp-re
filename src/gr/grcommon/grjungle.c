@@ -192,7 +192,7 @@ sb32 grJungleTaruCannCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s
                 }
                 other_gobj = other_gobj->link_next;
             }
-            *kind = gmHitEnvironment_Kind_TaruCann;
+            *kind = nGMHitEnvironmentTaruCann;
 
             grJungleTaruCannAddAnimFill(ground_gobj);
 

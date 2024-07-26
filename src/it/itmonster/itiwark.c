@@ -35,7 +35,7 @@ itCreateDesc dITIwarkItemDesc =
         0,                                  // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itIwarkSDefaultProcUpdate,              // Proc Update
     itIwarkSDefaultProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
@@ -230,7 +230,7 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
     }
     else pos.y += ITIWARK_OTHER_ADD_POS_Y;
 
-    efManagerDustHeavy2xMakeEffect(&pos, LR_Left, 1.0F);
+    efManagerDustHeavy2xMakeEffect(&pos, nGMDirectionL, 1.0F);
 
     if (ip->it_kind == nITKindIwark)
     {
@@ -405,9 +405,9 @@ sb32 itIwarkWeaponRockProcHop(GObj *weapon_gobj)
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
-        wp->lr = LR_Right;
+        wp->lr = nGMDirectionR;
     }
-    else wp->lr = LR_Left;
+    else wp->lr = nGMDirectionL;
 
     return FALSE;
 }
@@ -455,9 +455,9 @@ GObj* itIwarkWeaponRockMakeWeapon(GObj *spawn_gobj, Vec3f *pos, u8 random)
 
     if (mtTrigGetRandomIntRange(2) == 0)
     {
-        wp->lr = LR_Left;
+        wp->lr = nGMDirectionL;
     }
-    else wp->lr = LR_Right;
+    else wp->lr = nGMDirectionR;
 
     dobj = DObjGetStruct(weapon_gobj);
 

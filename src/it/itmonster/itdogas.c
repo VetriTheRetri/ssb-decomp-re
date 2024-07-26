@@ -33,7 +33,7 @@ itCreateDesc dITDogasItemDesc =
         0,                                  // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itDogasSDefaultProcUpdate,              // Proc Update
     itDogasSDefaultProcMap,                 // Proc Map
     NULL,                                   // Proc Hit

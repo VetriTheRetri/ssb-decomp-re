@@ -34,7 +34,7 @@ itCreateDesc dITStarmieItemDesc =
         0,                                  // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itStarmieSDefaultProcUpdate,            // Proc Update
     itStarmieSDefaultProcMap,               // Proc Map
     NULL,                                   // Proc Hit
@@ -171,7 +171,7 @@ void itStarmieNAttackInitItemVars(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 lr_bak = ip->lr;
 
-    ip->lr = (ip->item_vars.starmie.victim_pos.x < dobj->translate.vec.f.x) ? LR_Left : LR_Right;
+    ip->lr = (ip->item_vars.starmie.victim_pos.x < dobj->translate.vec.f.x) ? nGMDirectionL : nGMDirectionR;
 
     if (ip->lr != lr_bak)
     {
@@ -196,14 +196,14 @@ sb32 itStarmieNFollowProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if ((ip->lr == LR_Right) && (dobj->translate.vec.f.x >= ip->item_vars.starmie.target_pos.x))
+    if ((ip->lr == nGMDirectionR) && (dobj->translate.vec.f.x >= ip->item_vars.starmie.target_pos.x))
     {
         ip->phys_info.vel_air.x = 0.0F;
         ip->phys_info.vel_air.y = 0.0F;
 
         itStarmieNAttackSetStatus(item_gobj);
     }
-    if ((ip->lr == LR_Left) && (dobj->translate.vec.f.x <= ip->item_vars.starmie.target_pos.x))
+    if ((ip->lr == nGMDirectionL) && (dobj->translate.vec.f.x <= ip->item_vars.starmie.target_pos.x))
     {
         ip->phys_info.vel_air.x = 0.0F;
         ip->phys_info.vel_air.y = 0.0F;
@@ -230,7 +230,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     target_pos.y += ITSTARMIE_TARGET_POS_OFF_Y - fp->coll_data.object_coll.bottom;
 
-    target_pos.x -= (fp->coll_data.object_coll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? LR_Left : LR_Right);
+    target_pos.x -= (fp->coll_data.object_coll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? nGMDirectionL : nGMDirectionR);
 
     victim_pos = &fighter_dobj->translate.vec.f;
 
@@ -245,9 +245,9 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     ip->item_vars.starmie.victim_pos = *victim_pos;
 
-    ip->lr = (dist.x < 0.0F) ? LR_Left : LR_Right;
+    ip->lr = (dist.x < 0.0F) ? nGMDirectionL : nGMDirectionR;
 
-    if (ip->lr == LR_Right)
+    if (ip->lr == nGMDirectionR)
     {
         item_dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }
@@ -405,9 +405,9 @@ sb32 itStarmieWeaponSwiftProcHop(GObj *weapon_gobj)
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
-        wp->lr = LR_Right;
+        wp->lr = nGMDirectionR;
     }
-    else wp->lr = LR_Left;
+    else wp->lr = nGMDirectionL;
 
     return FALSE;
 }
@@ -455,7 +455,7 @@ GObj* itStarmieWeaponSwiftMakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     wp->lifetime = ITSTARMIE_SWIFT_LIFETIME;
 
-    if (wp->lr == LR_Right)
+    if (wp->lr == nGMDirectionR)
     {
         dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }

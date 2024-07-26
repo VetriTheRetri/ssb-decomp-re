@@ -128,9 +128,9 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
 
     sFTCommonThrownScriptID = script_index;
 
-    if (this_fp->hitstatus != gmHitCollision_HitStatus_Normal)
+    if (this_fp->hitstatus != nGMHitStatusNormal)
     {
-        ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Normal);
+        ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
     }
     if (!(this_fp->x192_flag_b3))
     {
@@ -154,7 +154,7 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
     {
         damage = ((damage * 0.5F) + 0.999F);
     }
-    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != gmHitCollision_HitStatus_Normal)
+    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != nGMHitStatusNormal)
     {
         damage = 0;
     }
@@ -163,7 +163,7 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
         this_fp->proc_status = ftCommonThrownProcStatus;
     }
     ftCommonDamageInitDamageVars(fighter_gobj, ft_throw->status_id, damage, knockback_final, ft_throw->angle, lr, 1, ft_throw->element, capture_fp->player_number, TRUE, TRUE, TRUE);
-    ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, ftHitlog_ObjectClass_Fighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
+    ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
 
     if (damage != 0)
     {
@@ -211,9 +211,9 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
 
     knockback_resist = (this_fp->knockback_resist_status < this_fp->knockback_resist_passive) ? this_fp->knockback_resist_passive : this_fp->knockback_resist_status;
 
-    if (this_fp->hitstatus != gmHitCollision_HitStatus_Normal)
+    if (this_fp->hitstatus != nGMHitStatusNormal)
     {
-        ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Normal);
+        ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
     }
     if (!(this_fp->x192_flag_b3))
     {
@@ -233,7 +233,7 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
     {
         knockback_final = 0.0F;
     }
-    lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(capture_gobj)->translate.vec.f.x) ? LR_Right : LR_Left;
+    lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(capture_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
 
     damage = gmCommon_DamageApplyStale(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);;
 
@@ -242,12 +242,12 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
         damage = ((damage * 0.5F) + 0.999F);
     }
 
-    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != gmHitCollision_HitStatus_Normal)
+    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != nGMHitStatusNormal)
     {
         damage = 0;
     }
-    ftCommonDamageInitDamageVars(fighter_gobj, ft_throw->status_id, damage, knockback_final, ft_throw->angle, lr, 1, gmHitCollision_Element_Normal, capture_fp->player_number, FALSE, FALSE, TRUE);
-    ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, ftHitlog_ObjectClass_Fighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
+    ftCommonDamageInitDamageVars(fighter_gobj, ft_throw->status_id, damage, knockback_final, ft_throw->angle, lr, 1, nGMHitElementNormal, capture_fp->player_number, FALSE, FALSE, TRUE);
+    ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
 
     if (damage != 0)
     {
@@ -284,5 +284,5 @@ void ftCommonThrownSetStatusNoDamageRelease(GObj *fighter_gobj)
         knockback_final = 0.0F;
     }
     ftCommonDamageInitDamageVars(fighter_gobj, ft_throw->status_id, 0, knockback_final, ft_throw->angle, fp->lr, 1, ft_throw->element, 0, TRUE, TRUE, FALSE);
-    ftCommon_Update1PGameDamageStats(fp, GMMATCH_PLAYERS_MAX, ftHitlog_ObjectClass_None, 0, 0, 0);
+    ftCommon_Update1PGameDamageStats(fp, GMMATCH_PLAYERS_MAX, nFTHitlogObjectNone, 0, 0, 0);
 }

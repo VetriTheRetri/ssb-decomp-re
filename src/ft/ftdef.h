@@ -645,6 +645,16 @@ typedef enum ftCameraModes
 
 } ftCameraModes;
 
+typedef enum ftHitlogObjectKind
+{
+	nFTHitlogObjectNone,
+	nFTHitlogObjectFighter,
+	nFTHitlogObjectWeapon,
+	nFTHitlogObjectItem,
+	nFTHitlogObjectGround
+
+} ftHitlogObjectKind;
+
 typedef enum ftItemSwingKind
 {
     nFTItemSwingKindSword,

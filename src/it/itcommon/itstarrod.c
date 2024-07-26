@@ -33,7 +33,7 @@ itCreateDesc dITStarRodItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itStarRodAFallProcUpdate,               // Proc Update
     itStarRodAFallProcMap,                  // Proc Map
     NULL,                                   // Proc Hit
@@ -228,7 +228,7 @@ sb32 itStarRodFThrowProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     itMainVelSetRebound(item_gobj);
 
@@ -350,9 +350,9 @@ sb32 itStarRodWeaponStarProcHop(GObj *weapon_gobj)
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
-        wp->lr = LR_Right;
+        wp->lr = nGMDirectionR;
     }
-    else wp->lr = LR_Left;
+    else wp->lr = nGMDirectionL;
 
     return FALSE;
 }

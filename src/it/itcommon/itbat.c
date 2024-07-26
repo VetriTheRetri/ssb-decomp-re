@@ -28,7 +28,7 @@ itCreateDesc dITBatItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itBatAFallProcUpdate,                   // Proc Update
     itBatAFallProcMap,                      // Proc Map
     NULL,                                   // Proc Hit
@@ -198,7 +198,7 @@ sb32 itBatFThrowProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     itMainVelSetRebound(item_gobj);
 

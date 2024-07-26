@@ -29,7 +29,7 @@ itCreateDesc dITGLuckyItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itGLuckySDefaultProcUpdate,             // Proc Update
     NULL,                                   // Proc Map
     itGLuckySDefaultProcHit,                // Proc Hit
@@ -164,7 +164,7 @@ sb32 itGLuckySDefaultProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     return FALSE;
 }
@@ -203,8 +203,8 @@ sb32 itGLuckySDefaultProcDamage(GObj *item_gobj)
         ip->phys_info.vel_air.x = (__cosf(angle) * ip->damage_knockback * -ip->lr_damage);
         ip->phys_info.vel_air.y = (__sinf(angle) * ip->damage_knockback);
 
-        ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
-        ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+        ip->item_hit.update_state = nGMHitUpdateDisable;
+        ip->item_hurt.hitstatus = nGMHitStatusNone;
 
         dobj->dobj_f0 = AOBJ_FRAME_NULL;
 

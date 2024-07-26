@@ -28,7 +28,7 @@ itCreateDesc dITStarItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itStarSDefaultProcUpdate,               // Proc Update
     itStarSDefaultProcMap,                  // Proc Map
     itStarSDefaultProcHit,                  // Proc Hit

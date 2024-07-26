@@ -14,7 +14,7 @@
 #include <ovl0/halbitmap.h>
 
 #include <wp/wpdef.h>
-#include <wp/weaponvars.h>
+#include <wp/wpvars.h>
 
 // Macros
 #define WEAPON_ALLOC_MAX 32 // Allocate this many weapon user_data structs at once
@@ -159,7 +159,7 @@ struct wpStruct
     u8 player;                          // Weapon's port index
     u8 handicap;                        // Weapon's handicap
     s32 player_number;                  // Weapon's player number
-    s32 lr;                             // Weapon's facing direction; -1 = LR_Left, 0 = LR_Center, 1 = LR_Right, 2 = WALL_UP (Thunder Jolt only?), 3 = WALL_DOWN (Thunder Jolt only?)
+    s32 lr;                             // Weapon's facing direction; -1 = nGMDirectionL, 0 = nGMDirectionC, 1 = nGMDirectionR, 2 = WALL_UP (Thunder Jolt only?), 3 = WALL_DOWN (Thunder Jolt only?)
 
     struct wpPhysicsInfo
     {

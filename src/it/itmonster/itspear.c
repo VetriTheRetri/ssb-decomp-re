@@ -38,7 +38,7 @@ itCreateDesc dITSpearItemDesc =
         0,                                  // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itSpearSDefaultProcUpdate,              // Proc Update
     itSpearSDefaultProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
@@ -226,7 +226,7 @@ sb32 itSpearNFlyProcUpdate(GObj *item_gobj)
 
     ip->phys_info.vel_air.x += ITSPEAR_SWARM_CALL_VEL_X * ip->lr;
 
-    if (ip->lr == LR_Right)
+    if (ip->lr == nGMDirectionR)
     {
         if (dobj->translate.vec.f.x >= (gMPGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X))
         {
@@ -242,7 +242,7 @@ sb32 itSpearNFlyProcUpdate(GObj *item_gobj)
             ip->item_vars.spear.spear_spawn_wait--;
         }
     }
-    if (ip->lr == LR_Left)
+    if (ip->lr == nGMDirectionL)
     {
         if (dobj->translate.vec.f.x <= (gMPGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X))
         {
@@ -334,10 +334,10 @@ GObj* itSpearMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         {
             dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
 
-            ip->lr = LR_Left;
+            ip->lr = nGMDirectionL;
 
         }
-        else ip->lr = LR_Right;
+        else ip->lr = nGMDirectionR;
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
@@ -359,11 +359,11 @@ sb32 itSpearWeaponSwarmProcUpdate(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj);
 
-    if ((wp->lr == LR_Right) && (dobj->translate.vec.f.x >= (gMPGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X)))
+    if ((wp->lr == nGMDirectionR) && (dobj->translate.vec.f.x >= (gMPGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }
-    else if ((wp->lr == LR_Left) && (dobj->translate.vec.f.x <= (gMPGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
+    else if ((wp->lr == nGMDirectionL) && (dobj->translate.vec.f.x <= (gMPGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }
@@ -413,7 +413,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
     {
         omAddOMMtxForDObjFixed(dobj->child->child, 0x48, 0);
 
-        if (wp->lr == LR_Left)
+        if (wp->lr == nGMDirectionL)
         {
             dobj->child->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }
@@ -424,7 +424,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
         omAddOMMtxForDObjFixed(dobj->child, 0x48, 0);
 
-        if (wp->lr == LR_Right)
+        if (wp->lr == nGMDirectionR)
         {
             dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }

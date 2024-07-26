@@ -109,87 +109,87 @@ typedef struct ftBossFighterVars
 
 } ftBossFighterVars;
 
-typedef struct ftBoss_WaitStatusVars
+typedef struct ftBossWaitStatusVars
 {
     Vec3f pos;
 
-} ftBoss_WaitStatusVars;
+} ftBossWaitStatusVars;
 
-typedef struct ftBoss_MoveStatusVars
+typedef struct ftBossMoveStatusVars
 {
     void (*proc_setstatus)(GObj*);
     Vec3f vel;
     f32 magnitude;
 
-} ftBoss_MoveStatusVars;
+} ftBossMoveStatusVars;
 
-typedef struct ftBoss_OkhuikoukiStatusVars
+typedef struct ftBossOkhuikoukiStatusVars
 {
     Vec3f pos;
 
-} ftBoss_OkuhikoukiStatusVars;
+} ftBossOkuhikoukiStatusVars;
 
-typedef struct ftBoss_GootsubusuStatusVars
+typedef struct ftBossGootsubusuStatusVars
 {
     s16 wait_timer;
     f32 edgeleft_pos_x;
     f32 edgeright_pos_x;
 
-} ftBoss_GootsubusuStatusVars;
+} ftBossGootsubusuStatusVars;
 
-typedef struct ftBoss_TsutsukuStatusVars
+typedef struct ftBossTsutsukuStatusVars
 {
     s16 wait_timer;
 
-} ftBoss_TsutsukuStatusVars;
+} ftBossTsutsukuStatusVars;
 
-typedef struct ftBoss_DrillStatusVars
+typedef struct ftBossDrillStatusVars
 {
     s16 follow_timer; // Follow player for this many frames?
     f32 edgeleft_pos_x;
     f32 edgeright_pos_x;
 
-} ftBoss_DrillStatusVars;
+} ftBossDrillStatusVars;
 
-typedef struct ftBoss_YubideppouStatusVars
+typedef struct ftBossYubideppouStatusVars
 {
     s16 wait_timer;
     s16 bullet_count;
     u8 shoot_timer;
 
-} ftBoss_YubideppouStatusVars;
+} ftBossYubideppouStatusVars;
 
-typedef struct ftBoss_OkupunchStatusVars
+typedef struct ftBossOkupunchStatusVars
 {
     Vec3f pos;
 
-} ftBoss_OkupunchStatusVars;
+} ftBossOkupunchStatusVars;
 
-typedef struct ftBoss_OkutsubushiStatusVars
+typedef struct ftBossOkutsubushiStatusVars
 {
     Vec3f pos;
     u16 follow_timer;
 
-} ftBoss_OkutsubushiStatusVars;
+} ftBossOkutsubushiStatusVars;
 
-typedef struct ftBoss_DeadStatusVars
+typedef struct ftBossDeadStatusVars
 {
     s16 dead_timer;
 
-} ftBoss_DeadStatusVars;
+} ftBossDeadStatusVars;
 
 typedef union ftBossStatusVars
 {
-    ftBoss_WaitStatusVars wait;
-    ftBoss_MoveStatusVars move;
-    ftBoss_OkuhikoukiStatusVars okuhikouki;
-    ftBoss_GootsubusuStatusVars gootsubu;
-	ftBoss_TsutsukuStatusVars tsutsuku;
-    ftBoss_DrillStatusVars drill;
-    ftBoss_YubideppouStatusVars yubideppou;
-    ftBoss_OkupunchStatusVars okupunch;
-    ftBoss_OkutsubushiStatusVars okutsubushi;
-    ftBoss_DeadStatusVars dead;
+    ftBossWaitStatusVars wait;
+    ftBossMoveStatusVars move;
+    ftBossOkuhikoukiStatusVars okuhikouki;
+    ftBossGootsubusuStatusVars gootsubu;
+	ftBossTsutsukuStatusVars tsutsuku;
+    ftBossDrillStatusVars drill;
+    ftBossYubideppouStatusVars yubideppou;
+    ftBossOkupunchStatusVars okupunch;
+    ftBossOkutsubushiStatusVars okutsubushi;
+    ftBossDeadStatusVars dead;
 
 } ftBossStatusVars;
 

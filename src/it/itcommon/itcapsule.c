@@ -28,7 +28,7 @@ itCreateDesc dITCapsuleItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itCapsuleAFallProcUpdate,               // Proc Update
     itCapsuleAFallProcMap,                  // Proc Map
     NULL,                                   // Proc Hit
@@ -192,7 +192,7 @@ void itCapsuleAFallSetStatus(GObj *item_gobj)
 
     ip->is_damage_all = TRUE;
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+    ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
     itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_AFall);
 }
@@ -235,7 +235,7 @@ void itCapsuleFThrowSetStatus(GObj *item_gobj)
 
     ip->is_damage_all = TRUE;
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+    ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
     itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_FThrow);
 }
@@ -307,11 +307,11 @@ void itCapsuleNExplodeInitItemVars(GObj *item_gobj)
     ip->item_hit.can_hop = FALSE;
     ip->item_hit.can_reflect = FALSE;
 
-    ip->item_hit.element = gmHitCollision_Element_Fire;
+    ip->item_hit.element = nGMHitElementFire;
 
     ip->item_hit.can_setoff = FALSE;
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+    ip->item_hurt.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshHit(item_gobj);
@@ -333,7 +333,7 @@ void itCapsuleNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     efParticle *ep;
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     ip->phys_info.vel_air.x = 0.0F;
     ip->phys_info.vel_air.y = 0.0F;

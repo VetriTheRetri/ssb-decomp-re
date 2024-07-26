@@ -30,107 +30,94 @@
 
 typedef enum gmDirectionSign
 {
-	LR_Left = -1,
-	UD_Down = -1,
-	LR_Center = 0,
-	UD_Center = 0,
-	LR_Right = 1,
-	UD_Up = 1,
-	LR_WallUp   = 2,    // Exclusive to Pikachu's Thunder Jolt for riding walls
-	LR_WallDown = 3     // Exclusive to Pikachu's Thunder Jolt for riding walls
+	nGMDirectionL = -1,
+	nGMDirectionD = -1,
+	nGMDirectionC = 0,
+	nGMDirectionR = 1,
+	nGMDirectionU = 1,
+	nGMDirectionWallU = 2,    	// Exclusive to Pikachu's Thunder Jolt for riding walls up?
+	nGMDirectionWallD = 3     	// Exclusive to Pikachu's Thunder Jolt for riding walls down?
 
 } gmDirectionSign;
 
 typedef enum gmHitCollisionStatus
 {
-	gmHitCollision_HitStatus_None,		 // User's hurtboxes are disabled
-	gmHitCollision_HitStatus_Normal,	 // User can be hit
-	gmHitCollision_HitStatus_Invincible, // User can be hit, but is immune to
-										 // damage
-	gmHitCollision_HitStatus_Intangible	 // User cannot be hit
+	nGMHitStatusNone,		 	// User's hurtboxes are disabled
+	nGMHitStatusNormal,	 		// User can be hit
+	nGMHitStatusInvincible, 	// User can be hit, but is immune to damage
+	nGMHitStatusIntangible	 	// User cannot be hit
 
 } gmHitCollisionStatus;
 
 typedef enum gmHitCollisionElement
 {
-	gmHitCollision_Element_Normal,
-	gmHitCollision_Element_Fire,
-	gmHitCollision_Element_Electric,
-	gmHitCollision_Element_Slash,
-	gmHitCollision_Element_Coin,
-	gmHitCollision_Element_Freezing,	// This is only speculation. It causes the screen to flash blue if knockback > 160.0
-	gmHitCollision_Element_Sleep,
-	gmHitCollision_Element_Unk2
+	nGMHitElementNormal,
+	nGMHitElementFire,
+	nGMHitElementElectric,
+	nGMHitElementSlash,
+	nGMHitElementCoin,
+	nGMHitElementFreezing,	// This is only speculation. It causes the screen to flash blue if knockback > 160.0
+	nGMHitElementSleep,
+	nGMHitElementUnk2
 
 } gmHitCollisionElement;
 
-typedef enum gmHitCollisionType // Hitbox types, this is universal but I don't
-								// know where else to put it so both fighters
-								// and items can see it without redefining it
-								// for each
+typedef enum gmHitCollisionType 	// Hitbox types, this is universal but I don't
+									// know where else to put it so both fighters
+									// and items can see it without redefining it
+									// for each
 {
-	gmHitCollision_Type_Hurt,
-	gmHitCollision_Type_Shield,
-	gmHitCollision_Type_ShieldRehit,
-	gmHitCollision_Type_Hit,
-	gmHitCollision_Type_HurtRehit, // Only used for specific articles? e.g.
-								   // Pirahna Plants dealing damage
-	gmHitCollision_Type_Absorb,
-	gmHitCollision_Type_Reflect
+	nGMHitTypeHurt,
+	nGMHitTypeShield,
+	nGMHitTypeShieldRehit,
+	nGMHitTypeHit,
+	nGMHitTypeHurtRehit, 			// Only used for specific articles? e.g.
+								   	// Pirahna Plants dealing damage
+	nGMHitTypeAbsorb,
+	nGMHitTypeReflect
 
 } gmHitCollisionType;
 
 typedef enum gmHitCollisionUpdateState
 {
-	gmHitCollision_UpdateState_Disable,	   // No active hitbox or updates
-	gmHitCollision_UpdateState_New,		   // Initialize hitbox positions
-	gmHitCollision_UpdateState_Transfer,   // Transitions to interpolation mode,
-										   // that's it
-	gmHitCollision_UpdateState_Interpolate // Copies current position to previous
+	nGMHitUpdateDisable,	   		// No active hitbox or updates
+	nGMHitUpdateNew,		   		// Initialize hitbox positions
+	nGMHitUpdateTransfer,   		// Transitions to interpolation mode, that's it
+	nGMHitUpdateInterpolate 		// Copies current position to previous
 
 } gmHitCollisionUpdateState;
 
 typedef enum gmHitCollisionSoundEffect
 {
-	gmHitCollision_SoundEffect_Punch,
-	gmHitCollision_SoundEffect_Kick,
-	gmHitCollision_SoundEffect_Coin,
-	gmHitCollision_SoundEffect_Burn,
-	gmHitCollision_SoundEffect_Zap,
-	gmHitCollision_SoundEffect_Slash,
-	gmHitCollision_SoundEffect_Fan,
-	gmHitCollision_SoundEffect_Bat,
-	gmHitCollision_SoundEffect_EnumMax
+	nGMHitSoundPunch,
+	nGMHitSoundKick,
+	nGMHitSoundCoin,
+	nGMHitSoundBurn,
+	nGMHitSoundZap,
+	nGMHitSoundSlash,
+	nGMHitSoundFan,
+	nGMHitSoundBat,
+	nGMHitSoundEnumMax
 
 } gmHitCollisionSoundEffect;
 
 typedef enum gmHitCollisionSoundLevel
 {
-	gmHitCollision_SoundLevel_Weak,
-	gmHitCollision_SoundLevel_Mid,
-	gmHitCollision_SoundLevel_Strong,
-	gmHitCollision_SoundLevel_EnumMax
+	nGMHitLevelWeak,
+	nGMHitLevelMedium,
+	nGMHitLevelStrong,
+	nGMHitLevelEnumMax
 
 } gmHitCollisionSoundLevel;
 
 typedef enum gmHitCollisionEnvironment
 {
-	gmHitEnvironment_Kind_Acid,
-	gmHitEnvironment_Kind_PowerBlock,
-	gmHitEnvironment_Kind_Twister,
-	gmHitEnvironment_Kind_TaruCann
+	nGMHitEnvironmentAcid,
+	nGMHitEnvironmentPowerBlock,
+	nGMHitEnvironmentTwister,
+	nGMHitEnvironmentTaruCann
 
 } gmHitCollisionEnvironment;
-
-typedef enum ftHitCollisionLogKind
-{
-	ftHitlog_ObjectClass_None,
-	ftHitlog_ObjectClass_Fighter,
-	ftHitlog_ObjectClass_Weapon,
-	ftHitlog_ObjectClass_Item,
-	ftHitlog_ObjectClass_Ground
-
-} ftHitCollisionLogKind;
 
 typedef struct gmHitCollisionFlags
 {

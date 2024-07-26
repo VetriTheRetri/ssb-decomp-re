@@ -9,7 +9,7 @@
 #include <gm/gmmisc.h>
 
 #include "grdef.h"
-#include "groundvars.h"
+#include "grvars.h"
 
 struct grGeometryDesc
 {
@@ -51,20 +51,20 @@ struct grFileInfo
 union grStruct
 {
 	// Common stages
-	grCommon_GroundVars_Pupupu pupupu;
-	grCommon_GroundVars_Sector sector;
-	grCommon_GroundVars_Zebes zebes;
-	grCommon_GroundVars_Yoster yoster;
-	grCommon_GroundVars_Inishie inishie;
-	grCommon_GroundVars_Jungle jungle;
-	grCommon_GroundVars_Hyrule hyrule;
-	grCommon_GroundVars_Yamabuki yamabuki;
-	grCommon_GroundVars_Castle castle;
+	grCommonGroundVarsPupupu pupupu;
+	grCommonGroundVarsSector sector;
+	grCommonGroundVarsZebes zebes;
+	grCommonGroundVarsYoster yoster;
+	grCommonGroundVarsInishie inishie;
+	grCommonGroundVarsJungle jungle;
+	grCommonGroundVarsHyrule hyrule;
+	grCommonGroundVarsYamabuki yamabuki;
+	grCommonGroundVarsCastle castle;
 
 	// Bonus stages
-	grBonus_GroundVars_Bonus1 bonus1;
-	grBonus_GroundVars_Bonus2 bonus2;
-	grBonus_GroundVars_Bonus3 bonus3;
+	grBonusGroundVarsBonus1 bonus1;
+	grBonusGroundVarsBonus2 bonus2;
+	grBonusGroundVarsBonus3 bonus3;
 };
 
 #endif

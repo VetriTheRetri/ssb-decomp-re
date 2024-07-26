@@ -32,7 +32,7 @@ void itRenderHitCollisions(GObj *item_gobj)
 
     for (i = 0; i < it_hit->hitbox_count; i++)
     {
-        if ((it_hit->update_state != gmHitCollision_UpdateState_Disable) && (it_hit->update_state != gmHitCollision_UpdateState_New))
+        if ((it_hit->update_state != nGMHitUpdateDisable) && (it_hit->update_state != nGMHitUpdateNew))
         {
             gDPPipeSync(gDisplayListHead[0]++);
 
@@ -48,7 +48,7 @@ void itRenderHitCollisions(GObj *item_gobj)
                 gDPSetEnvColor(gDisplayListHead[0]++, 0xB0, 0x00, 0x00, 0xFF);
                 gDPSetBlendColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, 0x00);
             }
-            if (it_hit->update_state == gmHitCollision_UpdateState_Interpolate)
+            if (it_hit->update_state == nGMHitUpdateInterpolate)
             {
                 hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
@@ -76,7 +76,7 @@ void itRenderHitCollisions(GObj *item_gobj)
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            if (it_hit->update_state == gmHitCollision_UpdateState_Interpolate)
+            if (it_hit->update_state == nGMHitUpdateInterpolate)
             {
                 gSPDisplayList(gDisplayListHead[0]++, dGMHitCollisionBlendGfx);
             }
@@ -86,7 +86,7 @@ void itRenderHitCollisions(GObj *item_gobj)
     }
     it_hurt = &ip->item_hurt;
 
-    if (it_hurt->hitstatus != gmHitCollision_HitStatus_None)
+    if (it_hurt->hitstatus != nGMHitStatusNone)
     {
         translate = &DObjGetStruct(item_gobj)->translate.vec.f;
 
@@ -105,17 +105,17 @@ void itRenderHitCollisions(GObj *item_gobj)
 
         switch (it_hurt->hitstatus)
         {
-        case gmHitCollision_HitStatus_Normal:
+        case nGMHitStatusNormal:
             gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
             gDPSetEnvColor(gDisplayListHead[0]++, 0xD0, 0xD0, 0x00, 0xFF);
             break;
 
-        case gmHitCollision_HitStatus_Invincible:
+        case nGMHitStatusInvincible:
             gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
             gDPSetEnvColor(gDisplayListHead[0]++, 0x00, 0xD0, 0x00, 0xFF);
             break;
 
-        case gmHitCollision_HitStatus_Intangible:
+        case nGMHitStatusIntangible:
             gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
             gDPSetEnvColor(gDisplayListHead[0]++, 0x00, 0x00, 0xD0, 0xFF);
             break;
@@ -207,7 +207,7 @@ void itRenderProcRenderOPA(GObj *item_gobj)
             odRenderDObjTreeForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
-        else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
+        else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             odRenderDObjTreeForGObj(item_gobj);
         }
@@ -231,7 +231,7 @@ void itRenderProcRenderXLU(GObj *item_gobj)
             odRenderDObjTreeDLLinksForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
-        else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
+        else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             odRenderDObjTreeDLLinksForGObj(item_gobj);
         }
@@ -277,7 +277,7 @@ void itRenderProcRenderColAnimOPA(GObj *item_gobj)
             itRenderColAnimOPA(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
-        else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
+        else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             itRenderColAnimOPA(item_gobj);
         }
@@ -333,7 +333,7 @@ void itRenderProcRenderColAnimXLU(GObj *item_gobj)
             itRenderColAnimXLU(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
-        else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
+        else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             itRenderColAnimXLU(item_gobj);
         }

@@ -43,7 +43,7 @@ void wpRenderHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 
     for (i = 0; i < weapon_hit->hitbox_count; i++)
     {
-        if ((weapon_hit->update_state != gmHitCollision_UpdateState_Disable) && (weapon_hit->update_state != gmHitCollision_UpdateState_New))
+        if ((weapon_hit->update_state != nGMHitUpdateDisable) && (weapon_hit->update_state != nGMHitUpdateNew))
         {
             gDPPipeSync(gDisplayListHead[0]++);
 
@@ -59,7 +59,7 @@ void wpRenderHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
                 gDPSetEnvColor(gDisplayListHead[0]++, 0xB0, 0x00, 0x00, 0xFF);
                 gDPSetBlendColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, 0x00);
             }
-            if (weapon_hit->update_state == gmHitCollision_UpdateState_Interpolate)
+            if (weapon_hit->update_state == nGMHitUpdateInterpolate)
             {
                 hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
@@ -89,7 +89,7 @@ void wpRenderHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            if (weapon_hit->update_state == gmHitCollision_UpdateState_Interpolate)
+            if (weapon_hit->update_state == nGMHitUpdateInterpolate)
             {
                 gSPDisplayList(gDisplayListHead[0]++, dGMHitCollisionBlendGfx);
             }
@@ -178,7 +178,7 @@ void wpRenderMain(GObj *weapon_gobj, void(*proc_render)(GObj*))
 
         wpRenderMapCollisions(weapon_gobj);
     }
-    else if ((wp->display_mode == dbObject_DisplayMode_Master) || (wp->weapon_hit.update_state == gmHitCollision_UpdateState_Disable))
+    else if ((wp->display_mode == dbObject_DisplayMode_Master) || (wp->weapon_hit.update_state == nGMHitUpdateDisable))
     {
         wpRenderDrawNormal();
 
@@ -235,7 +235,7 @@ void wpRenderPKThunder(GObj *weapon_gobj)
 
         wpRenderMapCollisions(weapon_gobj);
     }
-    else if ((wp->display_mode == dbObject_DisplayMode_Master) || (wp->weapon_hit.update_state == gmHitCollision_UpdateState_Disable))
+    else if ((wp->display_mode == dbObject_DisplayMode_Master) || (wp->weapon_hit.update_state == nGMHitUpdateDisable))
     {
         wpRenderDrawNormal();
 

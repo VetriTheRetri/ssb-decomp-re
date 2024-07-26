@@ -134,9 +134,9 @@ sb32 wpYoshiStarProcHop(GObj *weapon_gobj)
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
-        wp->lr = LR_Right;
+        wp->lr = nGMDirectionR;
     }
-    else wp->lr = LR_Left;
+    else wp->lr = nGMDirectionL;
 
     return FALSE;
 }
@@ -174,7 +174,7 @@ sb32 wpYoshiStarProcReflector(GObj *weapon_gobj)
 
     offset.y += WPYOSHISTAR_OFF_Y;
 
-    if (lr == LR_Right)
+    if (lr == nGMDirectionR)
     {
         offset.x += WPYOSHISTAR_OFF_X;
     }

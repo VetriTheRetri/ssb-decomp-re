@@ -621,7 +621,7 @@ void func_ovl64_8018DCC4()
 
 		scAutoDemoGetPlayerSpawnPosition(player, &player_spawn.pos);
 
-		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? LR_Left : LR_Right;
+		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? nGMDirectionL : nGMDirectionR;
 
 		player_spawn.team = gBattleState->player_block[player].team_index;
 

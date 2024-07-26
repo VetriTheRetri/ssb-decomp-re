@@ -364,15 +364,15 @@ sb32 ftCommonDamageCheckElementSetColAnim(GObj *fighter_gobj, s32 element, s32 d
 
     switch (element)
     {
-    case gmHitCollision_Element_Fire:
+    case nGMHitElementFire:
         is_set_colanim = ftColor_CheckSetColAnimIndex(fighter_gobj, damage_level + 0xC, 0);
         break;
 
-    case gmHitCollision_Element_Electric:
+    case nGMHitElementElectric:
         is_set_colanim = func_ovl2_800E9AF4(fighter_gobj, damage_level);
         break;
 
-    case gmHitCollision_Element_Freezing:
+    case nGMHitElementFreezing:
         is_set_colanim = ftColor_CheckSetColAnimIndex(fighter_gobj, damage_level + 0x20, 0);
         break;
 
@@ -389,21 +389,21 @@ void ftCommonDamageCheckMakeScreenFlash(f32 knockback, s32 element)
     // Actually checking to run white screen flash effect
     switch (element)
     {
-    case gmHitCollision_Element_Fire:
+    case nGMHitElementFire:
         if (knockback > FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH) 
         {
             ifScreenFlashSetColAnimID(0x53, 0);
         }
         break;
 
-    case gmHitCollision_Element_Electric:
+    case nGMHitElementElectric:
         if (knockback > FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH)
         {
             ifScreenFlashSetColAnimID(0x54, 0);
         }
         break;
 
-    case gmHitCollision_Element_Freezing:
+    case nGMHitElementFreezing:
         if (knockback > FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH)
         {
             ifScreenFlashSetColAnimID(0x55, 0);
@@ -424,7 +424,7 @@ sb32 ftCommonDamageCheckCatchResist(ftStruct *fp)
 {
     // Something to do with a fighter in Catch(Wait) being hit?
 
-    if (fp->damage_element == gmHitCollision_Element_Sleep)
+    if (fp->damage_element == nGMHitElementSleep)
     {
         return FALSE;
     }
@@ -581,7 +581,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
         status_id_set = status_id_replace;
     }
 
-    if (((element == gmHitCollision_Element_Electric) && (status_id_set >= nFTCommonStatusDamageStart)) && (status_id_set <= nFTCommonStatusDamageEnd))
+    if (((element == nGMHitElementElectric) && (status_id_set >= nFTCommonStatusDamageStart)) && (status_id_set <= nFTCommonStatusDamageEnd))
     {
         status_id_var = status_id_set;
 
@@ -671,7 +671,7 @@ void ftCommonDamageGotoDamageStatus(GObj *fighter_gobj)
     {
         fp->cliffcatch_wait = FTCOMMON_CLIFF_CATCH_WAIT;
     }
-    if (fp->damage_element == gmHitCollision_Element_Sleep)
+    if (fp->damage_element == nGMHitElementSleep)
     {
         ftCommonFuraSleepSetStatus(fighter_gobj);
     }
@@ -834,7 +834,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
             return;
         }
     }
-    if ((this_fp->damage_element != gmHitCollision_Element_Sleep) && ((this_fp->damage_knockback == 0.0F) || ((this_fp->hitlag_timer > 0) && (this_fp->x192_flag_b6) && (this_fp->damage_knockback < (this_fp->damage_stack + 30.0F)))))
+    if ((this_fp->damage_element != nGMHitElementSleep) && ((this_fp->damage_knockback == 0.0F) || ((this_fp->hitlag_timer > 0) && (this_fp->x192_flag_b6) && (this_fp->damage_knockback < (this_fp->damage_stack + 30.0F)))))
     {
         ftCommonDamageSetDamageColAnim(fighter_gobj);
     }

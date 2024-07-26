@@ -39,7 +39,7 @@ itCreateDesc dITFushigibanaItemDesc =
         0                                       // ???
     },
 
-    gmHitCollision_UpdateState_New,             // Hitbox Update State
+    nGMHitUpdateNew,             // Hitbox Update State
     itFushigibanaSDefaultProcUpdate,            // Proc Update
     NULL,                                       // Proc Map
     NULL,                                       // Proc Hit
@@ -114,7 +114,7 @@ void itFushigibanaSDefaultUpdateHitParty(GObj *item_gobj)
 
         pos.y = 0.0F;
 
-        efManagerDustLightMakeEffect(&pos, LR_Left, 1.0F);
+        efManagerDustLightMakeEffect(&pos, nGMDirectionL, 1.0F);
     }
 }
 
@@ -246,9 +246,9 @@ sb32 itFushigibanaWeaponRazorProcHop(GObj *weapon_gobj)
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
-        wp->lr = LR_Right;
+        wp->lr = nGMDirectionR;
     }
-    else wp->lr = LR_Left;
+    else wp->lr = nGMDirectionL;
 
     return FALSE;
 }
@@ -282,7 +282,7 @@ GObj* itFushigibanaWeaponRazorMakeWeapon(GObj *item_gobj, Vec3f *pos)
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->lr = LR_Left;
+    wp->lr = nGMDirectionL;
 
     wp->phys_info.vel_air.x = ITFUSHIGIBANA_RAZOR_VEL_X;
 

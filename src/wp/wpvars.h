@@ -1,10 +1,9 @@
-#ifndef _WEAPONVARS_H_
-#define _WEAPONVARS_H_
+#ifndef _WPVARS_H_
+#define _WPVARS_H_
 
 #include <ssb_types.h>
 #include <sys/obj.h>
-
-#include "wpdef.h"
+#include <wp/wpdef.h>
 
 #define WPBLASTER_VEL_X 160.0F
 #define WPBLASTER_ADD_SCALE_X (16.0F / 3.0F)

@@ -36,7 +36,7 @@ itCreateDesc dITPakkunItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itPakkunDWaitProcUpdate,                // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
@@ -216,8 +216,8 @@ void itPakkunDWaitInitItemVars(GObj *item_gobj)
 
     itPakkunDWaitSetStatus(item_gobj);
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hurt.hitstatus = nGMHitStatusNone;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     DObjGetStruct(item_gobj)->translate.vec.f.y = ip->item_vars.pakkun.pos.y;
 }
@@ -231,14 +231,14 @@ void itPakkunDAppearUpdateHurtbox(GObj *item_gobj)
 
     if (off_y <= ITPAKKUN_CLAMP_OFF_Y)
     {
-        ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
-        ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+        ip->item_hurt.hitstatus = nGMHitStatusNone;
+        ip->item_hit.update_state = nGMHitUpdateDisable;
     }
     else
     {
-        if (ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None)
+        if (ip->item_hurt.hitstatus == nGMHitStatusNone)
         {
-            ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+            ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
             itMainRefreshHit(item_gobj);
         }
@@ -293,8 +293,8 @@ sb32 itPakkunDAppearProcDamage(GObj *item_gobj)
         ip->phys_info.vel_air.x = __cosf(angle) * ip->damage_knockback * -ip->lr_damage;
         ip->phys_info.vel_air.y = __sinf(angle) * ip->damage_knockback;
 
-        ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
-        ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+        ip->item_hurt.hitstatus = nGMHitStatusNone;
+        ip->item_hit.update_state = nGMHitUpdateDisable;
 
         itPakkunNDamageSetStatus(item_gobj);
 

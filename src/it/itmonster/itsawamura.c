@@ -32,7 +32,7 @@ itCreateDesc dITSawamuraItemDesc =
         0,                                  // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itSawamuraSDefaultProcUpdate,           // Proc Update
     itSawamuraSDefaultProcMap,              // Proc Map
     NULL,                                   // Proc Hit
@@ -169,11 +169,11 @@ sb32 itSawamuraNAttackProcUpdate(GObj *item_gobj)
 
     itMainApplyGClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
 
-    if ((ip->lr == LR_Right) && (dobj->translate.vec.f.x >= (gMPGroundData->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X)))
+    if ((ip->lr == nGMDirectionR) && (dobj->translate.vec.f.x >= (gMPGroundData->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X)))
     {
         return TRUE;
     }
-    else if ((ip->lr == LR_Left) && (dobj->translate.vec.f.x <= (gMPGroundData->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
+    else if ((ip->lr == nGMDirectionL) && (dobj->translate.vec.f.x <= (gMPGroundData->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
     {
         return TRUE;
     }
@@ -208,9 +208,9 @@ void itSawamuraNAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     lbVector_Vec3fGetEulerRotation(&ip->phys_info.vel_air, MTVECTOR_AXIS_Z, atan2f(dist.y, dist.x));
 
-    ip->lr = (dist.x < 0.0F) ? LR_Left : LR_Right;
+    ip->lr = (dist.x < 0.0F) ? nGMDirectionL : nGMDirectionR;
 
-    if (ip->lr == LR_Right)
+    if (ip->lr == nGMDirectionR)
     {
         ij->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }

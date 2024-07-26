@@ -32,7 +32,7 @@ itCreateDesc dITFFlowerItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itFFlowerAFallProcUpdate,               // Proc Update
     itFFlowerAFallProcMap,                  // Proc Map
     NULL,                                   // Proc Hit
@@ -218,7 +218,7 @@ sb32 itFFlowerSDefaultProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     itMainVelSetRebound(item_gobj);
 

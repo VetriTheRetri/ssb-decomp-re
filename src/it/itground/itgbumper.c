@@ -29,7 +29,7 @@ itCreateDesc dITGBumperItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itGBumperSDefaultProcUpdate,            // Proc Update
     NULL,                                   // Proc Map
     itGBumperSDefaultProcHit,               // Proc Hit

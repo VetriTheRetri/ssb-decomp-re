@@ -31,7 +31,7 @@ itCreateDesc dITMBallItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itMBallAFallProcUpdate,                 // Proc Update
     itMBallAFallProcMap,                    // Proc Map
     NULL,                                   // Proc Hit
@@ -265,7 +265,7 @@ sb32 itMBallSDefaultProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     ip->item_vars.m_ball.is_rebound = TRUE;
 
@@ -281,7 +281,7 @@ sb32 itMBallSDefaultProcReflector(GObj *item_gobj)
     ftStruct *fp;
     GObj *fighter_gobj;
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     ip->item_vars.m_ball.is_rebound = TRUE;
 
@@ -410,7 +410,7 @@ void itMBallGOpenInitItemVars(GObj *item_gobj)
 
     itMBallGOpenClearAnim(item_gobj);
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
     ip->item_hit.can_reflect = FALSE;
 }
 

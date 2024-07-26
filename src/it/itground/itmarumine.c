@@ -29,7 +29,7 @@ itCreateDesc dITMarumineItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itMarumineSDefaultProcUpdate,           // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
@@ -81,7 +81,7 @@ void itMarumineNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+    ip->item_hurt.hitstatus = nGMHitStatusNone;
 
     efpart = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
@@ -116,7 +116,7 @@ void itMarumineNExplodeUpdateHitEvent(GObj *item_gobj)
         ip->item_hit.can_reflect = FALSE;
         ip->item_hit.can_shield = FALSE;
 
-        ip->item_hit.element = gmHitCollision_Element_Fire;
+        ip->item_hit.element = nGMHitElementFire;
 
         ip->item_hit.can_setoff = FALSE;
 

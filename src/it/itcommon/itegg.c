@@ -29,7 +29,7 @@ itCreateDesc dITEggItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itEggAFallProcUpdate,                   // Proc Update
     itEggAFallProcMap,                      // Proc Map
     NULL,                                   // Proc Hit
@@ -205,8 +205,8 @@ void itEggAFallSetStatus(GObj *item_gobj)
 
     ip->is_allow_pickup = FALSE;
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hurt.hitstatus = nGMHitStatusNormal;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     ip->is_damage_all = TRUE;
 
@@ -257,7 +257,7 @@ void itEggFThrowSetStatus(GObj *item_gobj)
 
     ip->is_damage_all = TRUE;
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+    ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
     itMainSetItemStatus(item_gobj, dITEggStatusDesc, itStatus_Egg_FThrow);
 }
@@ -283,7 +283,7 @@ void itEggFDropSetStatus(GObj *item_gobj)
 
     ip->is_damage_all = TRUE;
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+    ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
     itMainSetItemStatus(item_gobj, dITEggStatusDesc, itStatus_Egg_FDrop);
 }
@@ -359,9 +359,9 @@ void itEggNExplodeInitItemVars(GObj *item_gobj)
     ip->item_hit.can_hop = FALSE;
     ip->item_hit.can_reflect = FALSE;
     ip->item_hit.can_setoff = FALSE;
-    ip->item_hit.element = gmHitCollision_Element_Fire;
+    ip->item_hit.element = nGMHitElementFire;
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+    ip->item_hurt.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshHit(item_gobj);
@@ -382,7 +382,7 @@ void itEggNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     efParticle *ep;
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     ip->phys_info.vel_air.x = 0.0F;
     ip->phys_info.vel_air.y = 0.0F;

@@ -366,14 +366,14 @@ typedef enum ftCommonCliffStatusKind
 
 } ftCommonCliffStatusKind;
 
-typedef struct ftCommon_DeadStatusVars
+typedef struct ftCommonDeadStatusVars
 {
 	s32 rebirth_wait;
 	Vec3f pos;
 
-} ftCommon_DeadStatusVars;
+} ftCommonDeadStatusVars;
 
-typedef struct ftCommon_RebirthStatusVars
+typedef struct ftCommonRebirthStatusVars
 {
 	Vec3f halo_offset;
 	Vec3f pos;
@@ -381,24 +381,24 @@ typedef struct ftCommon_RebirthStatusVars
 	s32 halo_number;
 	s32 halo_lower_wait;
 
-} ftCommon_RebirthStatusVars;
+} ftCommonRebirthStatusVars;
 
-typedef struct ftCommon_SleepStatusVars
+typedef struct ftCommonSleepStatusVars
 {
 	s32 stock_steal_wait;
 
-} ftCommon_SleepStatusVars;
+} ftCommonSleepStatusVars;
 
-typedef struct ftCommon_EntryStatusVars
+typedef struct ftCommonEntryStatusVars
 {
 	s32 entry_wait;
 	s32 lr_entry;
 	s32 ground_line_id;
 	sb32 is_rotate;
 
-} ftCommon_EntryStatusVars;
+} ftCommonEntryStatusVars;
 
-typedef struct ftCommon_TurnStatusVars
+typedef struct ftCommonTurnStatusVars
 {
 	sb32 is_allow_turn_direction; // Cannot turn around at all if disabled +
 								  // horizontal controls are inverted?
@@ -410,26 +410,26 @@ typedef struct ftCommon_TurnStatusVars
 	s32 lr_turn;
 	s32 attacks4_buffer;
 
-} ftCommon_TurnStatusVars;
+} ftCommonTurnStatusVars;
 
-typedef struct ftCommon_KneeBendStatusVars
+typedef struct ftCommonKneeBendStatusVars
 {
 	f32 jump_force;
 	f32 anim_frame;
 	s32 input_source;
 	sb32 is_short_hop;
 
-} ftCommon_KneeBendStatusVars;
+} ftCommonKneeBendStatusVars;
 
-typedef struct ftCommon_JumpAerialStatusVars
+typedef struct ftCommonJumpAerialStatusVars
 {
 	f32 drift;
 	f32 vel_x;
 	s32 turn_frames;
 
-} ftCommon_JumpAerialStatusVars;
+} ftCommonJumpAerialStatusVars;
 
-typedef struct ftCommon_DamageStatusVars
+typedef struct ftCommonDamageStatusVars
 {
 	s32 hitstun_timer;
 	s32 dust_effect_int;
@@ -444,17 +444,17 @@ typedef struct ftCommon_DamageStatusVars
 	s32 status_id;
 	sb32 is_knockback_over;
 
-} ftCommon_DamageStatusVars;
+} ftCommonDamageStatusVars;
 
-typedef struct ftCommon_SquatStatusVars
+typedef struct ftCommonSquatStatusVars
 {
 	sb32 is_allow_pass;
 	s32 pass_wait;
 	s32 unk_0x8;
 
-} ftCommon_SquatStatusVars;
+} ftCommonSquatStatusVars;
 
-typedef struct ftCommon_DokanStatusVars
+typedef struct ftCommonDokanStatusVars
 {
 	s32 material;	 // Vertex material of pipe player entered
 	s32 mapobj_kind; // Map Point type of pipe player will be sent to
@@ -464,15 +464,15 @@ typedef struct ftCommon_DokanStatusVars
 	s32 playertag_wait;
 	s32 turn_stop_wait;
 
-} ftCommon_DokanStatusVars;
+} ftCommonDokanStatusVars;
 
-typedef struct ftCommon_LandingStatusVars
+typedef struct ftCommonLandingStatusVars
 {
 	sb32 is_allow_interrupt;
 
-} ftCommon_LandingStatusVars;
+} ftCommonLandingStatusVars;
 
-typedef struct ftCommon_FallSpecialStatusVars
+typedef struct ftCommonFallSpecialStatusVars
 {
 	f32 drift;
 	sb32 is_allow_pass;
@@ -481,63 +481,63 @@ typedef struct ftCommon_FallSpecialStatusVars
 	sb32 is_allow_interrupt;
 	sb32 is_fall_accelerate;
 
-} ftCommon_FallSpecialStatusVars;
+} ftCommonFallSpecialStatusVars;
 
-typedef struct ftCommon_TwisterStatusVars
+typedef struct ftCommonTwisterStatusVars
 {
 	s32 release_wait;
 	GObj* tornado_gobj;
 
-} ftCommon_TwisterStatusVars;
+} ftCommonTwisterStatusVars;
 
-typedef struct ftCommon_TaruCannStatusVars
+typedef struct ftCommonTaruCannStatusVars
 {
 	s32 release_wait;
 	s32 shoot_wait;
 	GObj* tarucann_gobj;
 
-} ftCommon_TaruCannStatusVars;
+} ftCommonTaruCannStatusVars;
 
-typedef struct ftCommon_DownWaitStatusVars
+typedef struct ftCommonDownWaitStatusVars
 {
 	s32 stand_wait;
 
-} ftCommon_DownWaitStatusVars;
+} ftCommonDownWaitStatusVars;
 
-typedef struct ftCommon_DownBounceStatusVars
+typedef struct ftCommonDownBounceStatusVars
 {
 	s32 attack_buffer;
 
-} ftCommon_DownBounceStatusVars;
+} ftCommonDownBounceStatusVars;
 
-typedef struct ftCommon_ReboundStatusVars
+typedef struct ftCommonReboundStatusVars
 {
 	f32 anim_speed;
 	f32 rebound_timer;
 
-} ftCommon_ReboundStatusVars;
+} ftCommonReboundStatusVars;
 
-typedef struct ftCommon_CliffWaitStatusVars
+typedef struct ftCommonCliffWaitStatusVars
 {
 	s32 status_id;
 	s32 fall_wait;
 
-} ftCommon_CliffWaitStatusVars;
+} ftCommonCliffWaitStatusVars;
 
-typedef struct ftCommon_CliffMotionStatusVars
+typedef struct ftCommonCliffMotionStatusVars
 {
 	s32 status_id;
 	s32 cliff_id;
 
-} ftCommon_CliffMotionStatusVars;
+} ftCommonCliffMotionStatusVars;
 
-typedef struct ftCommon_LiftStatusVars
+typedef struct ftCommonLiftStatusVars
 {
 	s32 turn_frames;
 
-} ftCommon_LiftStatusVars;
+} ftCommonLiftStatusVars;
 
-typedef struct ftCommon_ItemThrowStatusVars
+typedef struct ftCommonItemThrowStatusVars
 {
 	s32 turn_rotate_step;
 	s32 turn_frames;
@@ -546,15 +546,15 @@ typedef struct ftCommon_ItemThrowStatusVars
 	s32 throw_angle;
 	f32 throw_damage;
 
-} ftCommon_ItemThrowStatusVars;
+} ftCommonItemThrowStatusVars;
 
-typedef struct ftCommon_ItemSwingStatusVars
+typedef struct ftCommonItemSwingStatusVars
 {
 	s32 harisen_scale_reset_wait;
 
-} ftCommon_ItemSwingStatusVars;
+} ftCommonItemSwingStatusVars;
 
-typedef struct ftCommon_FireFlowerStatusVars
+typedef struct ftCommonFireFlowerStatusVars
 {
 	s32 flame_vel_index;
 	s32 ammo_sub;
@@ -563,9 +563,9 @@ typedef struct ftCommon_FireFlowerStatusVars
 	sb32 is_release;
 	s32 release_lag;
 
-} ftCommon_FireFlowerStatusVars;
+} ftCommonFireFlowerStatusVars;
 
-typedef struct ftCommon_HammerStatusVars
+typedef struct ftCommonHammerStatusVars
 {
 	union
 	{
@@ -576,7 +576,7 @@ typedef struct ftCommon_HammerStatusVars
 	s32 input_source;
 	sb32 is_short_hop;
 
-} ftCommon_HammerStatusVars;
+} ftCommonHammerStatusVars;
 
 typedef struct ftCommonGuardStatusVars
 {
@@ -616,11 +616,11 @@ typedef struct ftCommonCatchWaitStatusVars
 
 } ftCommonCatchWaitStatusVars;
 
-typedef struct ftCommon_CaptureStatusVars
+typedef struct ftCommonCaptureStatusVars
 {
 	sb32 is_goto_pulled_wait;
 
-} ftCommon_CaptureStatusVars;
+} ftCommonCaptureStatusVars;
 
 typedef struct ftCommonThrownStatusVars
 {
@@ -665,15 +665,15 @@ typedef struct ftCommonThrowFStatusVars // Cargo Throw
 
 } ftCommonThrowFStatusVars;
 
-typedef struct ftCommon_ThrowFFStatusVars
+typedef struct ftCommonThrowFFStatusVars
 {
 	sb32 is_turn; // Used to tell if Donkey Kong is doing "Cargo Back Throw"
 				  // (this is still just Forward Throw but he turns around first)
 	s32 turn_frames;
 
-} ftCommon_ThrowFFStatusVars;
+} ftCommonThrowFFStatusVars;
 
-typedef struct ftCommon_ThrowFDamaageStatusVars
+typedef struct ftCommonThrowFDamaageStatusVars
 {
 	s32 hitstun_timer;
 	s32 dust_effect_int;
@@ -686,19 +686,19 @@ typedef struct ftCommon_ThrowFDamaageStatusVars
 
 } ftCommonThrowFDamageStatusVars;
 
-typedef struct ftCommon_Attack1StatusVars
+typedef struct ftCommonAttack1StatusVars
 {
 	sb32 is_goto_followup;
 	s32 interrupt_catch_timer; // Jab-Grab window
 
-} ftCommon_Attack1StatusVars;
+} ftCommonAttack1StatusVars;
 
-typedef struct ftCommon_Attack100StatusVars
+typedef struct ftCommonAttack100StatusVars
 {
 	sb32 is_anim_end;
 	sb32 is_goto_loop;
 
-} ftCommon_Attack100StatusVars;
+} ftCommonAttack100StatusVars;
 
 typedef struct ftCommonAttackLw3StatusVars
 {
@@ -706,7 +706,7 @@ typedef struct ftCommonAttackLw3StatusVars
 
 } ftCommonAttackLw3StatusVars;
 
-typedef struct ftCommon_Attack4StatusVars
+typedef struct ftCommonAttack4StatusVars
 {
 	s32 gfx_id;
 	s32 unk_0x4;
@@ -714,57 +714,57 @@ typedef struct ftCommon_Attack4StatusVars
 	s32 unk_0xC;
 	s32 lr;
 
-} ftCommon_Attack4StatusVars;
+} ftCommonAttack4StatusVars;
 
-typedef struct ftCommon_AttackAirStatusVars
+typedef struct ftCommonAttackAirStatusVars
 {
 	s32 rehit_timer;
 
-} ftCommon_AttackAirStatusVars;
+} ftCommonAttackAirStatusVars;
 
 typedef union ftCommonStatusVars
 {
-	ftCommon_DeadStatusVars dead;
-	ftCommon_RebirthStatusVars rebirth;
-	ftCommon_SleepStatusVars sleep;
-	ftCommon_EntryStatusVars entry;
-	ftCommon_TurnStatusVars turn;
-	ftCommon_KneeBendStatusVars kneebend;
-	ftCommon_JumpAerialStatusVars jumpaerial;
-	ftCommon_DamageStatusVars damage;
-	ftCommon_SquatStatusVars squat;
-	ftCommon_DokanStatusVars dokan;
-	ftCommon_LandingStatusVars landing;
-	ftCommon_FallSpecialStatusVars fallspecial;
-	ftCommon_TwisterStatusVars twister;
-	ftCommon_TaruCannStatusVars tarucann;
-	ftCommon_DownWaitStatusVars downwait;
-	ftCommon_DownBounceStatusVars downbounce;
-	ftCommon_ReboundStatusVars rebound;
-	ftCommon_CliffWaitStatusVars cliffwait;
-	ftCommon_CliffMotionStatusVars cliffmotion;
-	ftCommon_LiftStatusVars lift;
-	ftCommon_ItemThrowStatusVars itemthrow;
-	ftCommon_ItemSwingStatusVars itemswing;
-	ftCommon_FireFlowerStatusVars fireflower;
-	ftCommon_HammerStatusVars hammer;
+	ftCommonDeadStatusVars dead;
+	ftCommonRebirthStatusVars rebirth;
+	ftCommonSleepStatusVars sleep;
+	ftCommonEntryStatusVars entry;
+	ftCommonTurnStatusVars turn;
+	ftCommonKneeBendStatusVars kneebend;
+	ftCommonJumpAerialStatusVars jumpaerial;
+	ftCommonDamageStatusVars damage;
+	ftCommonSquatStatusVars squat;
+	ftCommonDokanStatusVars dokan;
+	ftCommonLandingStatusVars landing;
+	ftCommonFallSpecialStatusVars fallspecial;
+	ftCommonTwisterStatusVars twister;
+	ftCommonTaruCannStatusVars tarucann;
+	ftCommonDownWaitStatusVars downwait;
+	ftCommonDownBounceStatusVars downbounce;
+	ftCommonReboundStatusVars rebound;
+	ftCommonCliffWaitStatusVars cliffwait;
+	ftCommonCliffMotionStatusVars cliffmotion;
+	ftCommonLiftStatusVars lift;
+	ftCommonItemThrowStatusVars itemthrow;
+	ftCommonItemSwingStatusVars itemswing;
+	ftCommonFireFlowerStatusVars fireflower;
+	ftCommonHammerStatusVars hammer;
 	ftCommonGuardStatusVars guard;
 	ftCommonEscapeStatusVars escape;
 	ftCommonCatchStatusVars catchmain;
 	ftCommonCatchWaitStatusVars catchwait;
-	ftCommon_CaptureStatusVars capture;
+	ftCommonCaptureStatusVars capture;
 	ftCommonThrownStatusVars thrown;
 	ftCommonCaptureKirbyStatusVars capturekirby;
 	ftCommonCaptureYoshiStatusVars captureyoshi;
 	ftCommonCaptureCaptainStatusVars capturecaptain;
 	ftCommonThrowFStatusVars throwf;
-	ftCommon_ThrowFFStatusVars throwff;
+	ftCommonThrowFFStatusVars throwff;
 	ftCommonThrowFDamageStatusVars throwfdamage;
-	ftCommon_Attack1StatusVars attack1;
-	ftCommon_Attack100StatusVars attack100;
+	ftCommonAttack1StatusVars attack1;
+	ftCommonAttack100StatusVars attack100;
 	ftCommonAttackLw3StatusVars attacklw3;
-	ftCommon_Attack4StatusVars attack4;
-	ftCommon_AttackAirStatusVars attackair;
+	ftCommonAttack4StatusVars attack4;
+	ftCommonAttackAirStatusVars attackair;
 
 } ftCommonStatusVars;
 

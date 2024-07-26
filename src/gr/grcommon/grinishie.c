@@ -565,7 +565,7 @@ sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, 
         if (fighter_gobj != ip->damage_gobj)
         {
             *gr_hit = gGRCommonStruct.inishie.gr_hit;
-            *kind = gmHitEnvironment_Kind_PowerBlock;
+            *kind = nGMHitEnvironmentPowerBlock;
 
             return TRUE;
         }

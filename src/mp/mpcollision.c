@@ -212,13 +212,13 @@ sb32 mpCollisionGetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flag
 // 0x800F3DD8
 sb32 mpCollisionGetUDCommonUp(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle)
 {
-    return mpCollisionGetUDCommon(line_id, object_pos, dist, flags, angle, UD_Up);
+    return mpCollisionGetUDCommon(line_id, object_pos, dist, flags, angle, nGMDirectionU);
 }
 
 // 0x800F3E04
 sb32 mpCollisionGetUDCommonDown(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle)
 {
-    return mpCollisionGetUDCommon(line_id, object_pos, dist, flags, angle, UD_Down);
+    return mpCollisionGetUDCommon(line_id, object_pos, dist, flags, angle, nGMDirectionD);
 }
 
 // 0x800F3E30
@@ -341,13 +341,13 @@ sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flag
 // 0x800F4194
 sb32 mpCollisionGetLRCommonLeft(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
 {
-    return mpCollisionGetLRCommon(line_id, object_pos, arg2, flags, angle, LR_Left);
+    return mpCollisionGetLRCommon(line_id, object_pos, arg2, flags, angle, nGMDirectionL);
 }
 
 // 0x800F41C0
 sb32 mpCollisionGetLRCommonRight(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
 {
-    return mpCollisionGetLRCommon(line_id, object_pos, arg2, flags, angle, LR_Right);
+    return mpCollisionGetLRCommon(line_id, object_pos, arg2, flags, angle, nGMDirectionR);
 }
 
 // 0x800F41EC
@@ -387,7 +387,7 @@ void mpCollisionGetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
     v1x = gMPVertexData->vpos[gMPVertexID->vertex_id[vertex1]].pos.x;
     v2x = gMPVertexData->vpos[gMPVertexID->vertex_id[vid]].pos.x;
 
-    cmp_lt = (lr < LR_Center) ? (v1x < v2x) : (v2x < v1x);
+    cmp_lt = (lr < nGMDirectionC) ? (v1x < v2x) : (v2x < v1x);
 
     if (cmp_lt != FALSE)
     {
@@ -411,25 +411,25 @@ void mpCollisionGetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
 // 0x800F4408
 void mpCollisionGetLREdgeRight(s32 line_id, Vec3f *object_pos)
 {
-    mpCollisionGetLREdge(line_id, object_pos, LR_Right);
+    mpCollisionGetLREdge(line_id, object_pos, nGMDirectionR);
 }
 
 // 0x800F4428
 void mpCollisionGetLREdgeLeft(s32 line_id, Vec3f *object_pos)
 {
-    mpCollisionGetLREdge(line_id, object_pos, LR_Left);
+    mpCollisionGetLREdge(line_id, object_pos, nGMDirectionL);
 }
 
 // 0x800F4448
 void func_ovl2_800F4448(s32 line_id, Vec3f *object_pos)
 {
-    mpCollisionGetLREdge(line_id, object_pos, LR_Right);
+    mpCollisionGetLREdge(line_id, object_pos, nGMDirectionR);
 }
 
 // 0x800F4468
 void func_ovl2_800F4468(s32 line_id, Vec3f *object_pos)
 {
-    mpCollisionGetLREdge(line_id, object_pos, LR_Left);
+    mpCollisionGetLREdge(line_id, object_pos, nGMDirectionL);
 }
 
 // 0x800F4488
@@ -474,7 +474,7 @@ void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
     v1y = vpos1->pos.y;
     v2y = vpos2->pos.y;
 
-    cmp_lt = (ud < UD_Center) ? (v1y < v2y) : (v2y < v1y);
+    cmp_lt = (ud < nGMDirectionC) ? (v1y < v2y) : (v2y < v1y);
 
     if (cmp_lt != FALSE)
     {
@@ -498,25 +498,25 @@ void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
 // 0x800F4650
 void mpCollisionGetUDEdgeUp(s32 line_id, Vec3f *object_pos)
 {
-    mpCollisionGetUDEdge(line_id, object_pos, UD_Up);
+    mpCollisionGetUDEdge(line_id, object_pos, nGMDirectionU);
 }
 
 // 0x800F4670
 void mpCollisionGetUDEdgeDown(s32 line_id, Vec3f *object_pos)
 {
-    mpCollisionGetUDEdge(line_id, object_pos, UD_Down);
+    mpCollisionGetUDEdge(line_id, object_pos, nGMDirectionD);
 }
 
 // 0x800F4690
 void func_ovl2_800F4690(s32 line_id, Vec3f *object_pos)
 {
-    mpCollisionGetUDEdge(line_id, object_pos, UD_Up);
+    mpCollisionGetUDEdge(line_id, object_pos, nGMDirectionU);
 }
 
 // 0x800F46B0
 void func_ovl2_800F46B0(s32 line_id, Vec3f *object_pos)
 {
-    mpCollisionGetUDEdge(line_id, object_pos, UD_Down);
+    mpCollisionGetUDEdge(line_id, object_pos, nGMDirectionD);
 }
 
 // 0x800F46D0
@@ -815,7 +815,7 @@ sb32 mpCollisionCheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate, 
                             }
                             if (angle != NULL)
                             {
-                                mpCollisionGetUDAngle(angle, temp_s1, temp_s0, vpos_x, vpos_y, UD_Up);
+                                mpCollisionGetUDAngle(angle, temp_s1, temp_s0, vpos_x, vpos_y, nGMDirectionU);
                             }
                             if (stand_coll_flags != NULL)
                             {
@@ -977,7 +977,7 @@ sb32 mpCollisionCheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate, 
                             }
                             if (angle != NULL)
                             {
-                                mpCollisionGetUDAngle(angle, temp_s1, temp_s0, vpos_x, vpos_y, UD_Up);
+                                mpCollisionGetUDAngle(angle, temp_s1, temp_s0, vpos_x, vpos_y, nGMDirectionU);
                             }
                             if (stand_coll_flags != NULL)
                             {
@@ -1319,7 +1319,7 @@ sb32 mpCollisionCheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, Ve
                             }
                             if (angle != NULL)
                             {
-                                mpCollisionGetUDAngle(angle, temp_s1, temp_s0, vpos_x, vpos_y, UD_Down);
+                                mpCollisionGetUDAngle(angle, temp_s1, temp_s0, vpos_x, vpos_y, nGMDirectionD);
                             }
                             if (stand_coll_flags != NULL)
                             {
@@ -1481,7 +1481,7 @@ sb32 mpCollisionCheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, Ve
                             }
                             if (angle != NULL)
                             {
-                                mpCollisionGetUDAngle(angle, temp_s1, temp_s0, vpos_x, vpos_y, UD_Down);
+                                mpCollisionGetUDAngle(angle, temp_s1, temp_s0, vpos_x, vpos_y, nGMDirectionD);
                             }
                             if (stand_coll_flags != NULL)
                             {
@@ -1639,7 +1639,7 @@ sb32 mpCollisionCheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
                             }
                             if (angle != NULL)
                             {
-                                mpCollisionGetLRAngle(angle, temp_s0, temp_s1, vpos_x, vpos_y, LR_Right);
+                                mpCollisionGetLRAngle(angle, temp_s0, temp_s1, vpos_x, vpos_y, nGMDirectionR);
                             }
                             if (stand_coll_flags != NULL)
                             {
@@ -1962,7 +1962,7 @@ sb32 mpCollisionCheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                             }
                             if (angle != NULL)
                             {
-                                mpCollisionGetLRAngle(angle, temp_s0, temp_s1, vpos_x, vpos_y, LR_Right);
+                                mpCollisionGetLRAngle(angle, temp_s0, temp_s1, vpos_x, vpos_y, nGMDirectionR);
                             }
                             if (stand_coll_flags != NULL)
                             {
@@ -2468,7 +2468,7 @@ sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                             }
                             if (angle != NULL)
                             {
-                                mpCollisionGetLRAngle(angle, temp_s0, temp_s1, vpos_x, vpos_y, LR_Left);
+                                mpCollisionGetLRAngle(angle, temp_s0, temp_s1, vpos_x, vpos_y, nGMDirectionL);
                             }
                             if (stand_coll_flags != NULL)
                             {
@@ -2643,7 +2643,7 @@ sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                                 }
                                 if (angle != NULL)
                                 {
-                                    mpCollisionGetUDAngle(angle, x1, y1, x2, y2, UD_Up);
+                                    mpCollisionGetUDAngle(angle, x1, y1, x2, y2, nGMDirectionU);
                                 }
                                 line_project_pos = ABSF(gdist);
                             }
@@ -2746,7 +2746,7 @@ sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                                 }
                                 if (angle != NULL)
                                 {
-                                    mpCollisionGetUDAngle(angle, x1, y1, x2, y2, UD_Down);
+                                    mpCollisionGetUDAngle(angle, x1, y1, x2, y2, nGMDirectionD);
                                 }
                                 line_project_pos = ABSF(gdist);
                             }
@@ -2849,7 +2849,7 @@ sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                                 }
                                 if (angle != NULL)
                                 {
-                                    mpCollisionGetUDAngle(angle, x1, y1, x2, y2, UD_Up);
+                                    mpCollisionGetUDAngle(angle, x1, y1, x2, y2, nGMDirectionU);
                                 }
                                 line_project_pos = ABSF(gdist);
                             }
@@ -2952,7 +2952,7 @@ sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
                                 }
                                 if (angle != NULL)
                                 {
-                                    mpCollisionGetUDAngle(angle, x1, y1, x2, y2, UD_Down);
+                                    mpCollisionGetUDAngle(angle, x1, y1, x2, y2, nGMDirectionD);
                                 }
                                 line_project_pos = ABSF(gdist);
                             }

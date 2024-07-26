@@ -34,7 +34,7 @@ typedef struct grPupupuEffect
 
 } grPupupuEffect;
 
-typedef struct grCommon_GroundVars_Pupupu
+typedef struct grCommonGroundVarsPupupu
 {
 	void* map_head;
 	GObj* map_gobj[4];
@@ -56,7 +56,7 @@ typedef struct grCommon_GroundVars_Pupupu
 	s8 whispy_mouth_texture;
 	s8 whispy_eyes_texture;
 
-} grCommon_GroundVars_Pupupu;
+} grCommonGroundVarsPupupu;
 
 typedef struct grSectorDesc
 {
@@ -70,7 +70,7 @@ typedef struct grSectorDesc
 
 } grSectorDesc;
 
-typedef struct grCommon_GroundVars_Sector
+typedef struct grCommonGroundVarsSector
 {
 	void* map_head;
 	GObj* map_gobj;
@@ -100,7 +100,7 @@ typedef struct grCommon_GroundVars_Sector
 	ub8 is_arwing_line_active;
 	ub8 is_arwing_line_collision;
 
-} grCommon_GroundVars_Sector;
+} grCommonGroundVarsSector;
 
 typedef struct grZebesAcid
 {
@@ -110,7 +110,7 @@ typedef struct grZebesAcid
 
 } grZebesAcid;
 
-typedef struct grCommon_GroundVars_Zebes
+typedef struct grCommonGroundVarsZebes
 {
 	void* map_head;
 	GObj* map_gobj;
@@ -122,7 +122,7 @@ typedef struct grCommon_GroundVars_Zebes
 	u8 acid_attr_id;
 	u8 rumble_wait;
 
-} grCommon_GroundVars_Zebes;
+} grCommonGroundVarsZebes;
 
 typedef struct grYosterCloud
 {
@@ -138,13 +138,13 @@ typedef struct grYosterCloud
 
 } grYosterCloud;
 
-typedef struct grCommon_GroundVars_Yoster
+typedef struct grCommonGroundVarsYoster
 {
 	void* map_head;
 	grYosterCloud clouds[3];
 	s32 particle_bank_id;
 
-} grCommon_GroundVars_Yoster;
+} grCommonGroundVarsYoster;
 
 typedef struct grInishieScale
 {
@@ -155,7 +155,7 @@ typedef struct grInishieScale
 
 } grInishieScale;
 
-typedef struct grCommon_GroundVars_Inishie
+typedef struct grCommonGroundVarsInishie
 {
 	void* map_head;
 	void* item_head;
@@ -177,9 +177,9 @@ typedef struct grCommon_GroundVars_Inishie
 	u8 pblock_status;
 	GObj* pakkun_gobj[2];
 
-} grCommon_GroundVars_Inishie;
+} grCommonGroundVarsInishie;
 
-typedef struct grCommon_GroundVars_Jungle
+typedef struct grCommonGroundVarsJungle
 {
 	void* map_head;
 	GObj* tarucann_gobj;
@@ -187,9 +187,9 @@ typedef struct grCommon_GroundVars_Jungle
 	u16 tarucann_wait;
 	f32 tarucann_rotate_step;
 
-} grCommon_GroundVars_Jungle;
+} grCommonGroundVarsJungle;
 
-typedef struct grCommon_GroundVars_Hyrule
+typedef struct grCommonGroundVarsHyrule
 {
 	void* map_head;
 	GObj* twister_gobj;
@@ -206,9 +206,9 @@ typedef struct grCommon_GroundVars_Hyrule
 	u8 twister_status;
 	u8 twister_pos_count;
 
-} grCommon_GroundVars_Hyrule;
+} grCommonGroundVarsHyrule;
 
-typedef struct grCommon_GroundVars_Yamabuki
+typedef struct grCommonGroundVarsYamabuki
 {
 	void* map_head;
 	void* item_head;
@@ -221,16 +221,16 @@ typedef struct grCommon_GroundVars_Yamabuki
 	u16 gate_wait;
 	u8 monster_id_prev;
 
-} grCommon_GroundVars_Yamabuki;
+} grCommonGroundVarsYamabuki;
 
-typedef struct grCommon_GroundVars_Castle
+typedef struct grCommonGroundVarsCastle
 {
 	void* map_head;
 	void* item_head;
 	GObj* bumper_gobj;
 	Vec3f bumper_pos;
 
-} grCommon_GroundVars_Castle;
+} grCommonGroundVarsCastle;
 
 typedef struct grBonus1Targets
 {
@@ -240,7 +240,7 @@ typedef struct grBonus1Targets
 
 } grBonus1Targets;
 
-typedef struct grBonus_GroundVars_Bonus1
+typedef struct grBonusGroundVarsBonus1
 {
 	u32 filler_0x0;
 	GObj* interface_gobj; // GObj for target count HUD at the top of the screen
@@ -251,7 +251,7 @@ typedef struct grBonus_GroundVars_Bonus1
 	u8 unk_bonus1_0xF;
 	u8 unk_bonus1_0x10;
 
-} grBonus_GroundVars_Bonus1;
+} grBonusGroundVarsBonus1;
 
 typedef enum grBonus2PlatformKind
 {
@@ -284,7 +284,7 @@ typedef struct grBonus2Bumpers
 
 } grBonus2Bumpers;
 
-typedef struct grBonus_GroundVars_Bonus2
+typedef struct grBonusGroundVarsBonus2
 {
 	void* unk_bonus2_0x0;
 	void* unk_bonus2_0x4;
@@ -292,15 +292,15 @@ typedef struct grBonus_GroundVars_Bonus2
 	GObj* interface_gobj; // GObj for platform count HUD at the top of the screen
 	u8 platform_count;
 
-} grBonus_GroundVars_Bonus2;
+} grBonusGroundVarsBonus2;
 
-typedef struct grBonus_GroundVars_Bonus3
+typedef struct grBonusGroundVarsBonus3
 {
 	void* map_head;
 	void* item_head;
 	Vec3f rbomb_make_pos;
 	s32 rbomb_make_wait;
 
-} grBonus_GroundVars_Bonus3;
+} grBonusGroundVarsBonus3;
 
 #endif /* _GROUNDVARS_H_ */

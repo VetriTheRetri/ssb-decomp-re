@@ -32,7 +32,7 @@ itCreateDesc dITNBumperItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itNBumperAFallProcUpdate,               // Proc Update
     itNBumperAFallProcMap,                  // Proc Map
     NULL,                                   // Proc Hit
@@ -431,7 +431,7 @@ sb32 itNBumperGWaitHitProcUpdate(GObj *item_gobj)
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == LR_Left)
+        if (ip->lr == nGMDirectionL)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &edge_pos);
 
@@ -610,7 +610,7 @@ void itNBumperGDisappearSetStatus(GObj *item_gobj)
 
     dobj->flags = DOBJ_FLAG_NONE;
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     ip->phys_info.vel_air.x = 0.0F;
     ip->phys_info.vel_air.y = 0.0F;

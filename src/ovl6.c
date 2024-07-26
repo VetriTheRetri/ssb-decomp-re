@@ -611,7 +611,7 @@ void scBonusGame_InitBonusGame()
 
 		scBonusGame_GetPlayerSpawnPosition(&player_spawn.pos);
 
-		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? LR_Left : LR_Right;
+		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? nGMDirectionL : nGMDirectionR;
 
 		player_spawn.team = 0;
 		player_spawn.player = player;

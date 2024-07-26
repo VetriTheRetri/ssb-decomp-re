@@ -27,7 +27,7 @@ itCreateDesc dITHammerItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itHammerAFallProcUpdate,                // Proc Update
     itHammerAFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
@@ -202,7 +202,7 @@ sb32 itHammerSDefaultProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     itMainVelSetRebound(item_gobj);
 

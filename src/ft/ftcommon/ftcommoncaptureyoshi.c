@@ -76,7 +76,7 @@ void ftCommonCaptureYoshiProcPhysics(GObj *fighter_gobj)
 
             fp->is_invisible = fp->x18E_flag_b0 = TRUE;
 
-            ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Intangible);
+            ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
         }
     }
 }
@@ -302,12 +302,12 @@ void ftCommonYoshiEggProcTrap(GObj *fighter_gobj)
     {
         fp->status_vars.common.captureyoshi.breakout_wait -= ((2.0F * fp->damage_queue) / 0.5F);
     }
-    if ((fp->damage_object_class == ftHitlog_ObjectClass_Ground) && (fp->damage_object_kind == gmHitEnvironment_Kind_Acid))
+    if ((fp->damage_object_class == nFTHitlogObjectGround) && (fp->damage_object_kind == nGMHitEnvironmentAcid))
     {
         fp->status_vars.common.captureyoshi.breakout_wait = 0;
         fp->status_vars.common.captureyoshi.is_damagefloor = TRUE;
     }
-    fp->damage_kind = ftHitlog_ObjectClass_Ground;
+    fp->damage_kind = nFTHitlogObjectGround;
 }
 
 // 0x8014CDFC
@@ -329,9 +329,9 @@ void ftCommonYoshiEggSetHurtCollisions(GObj *fighter_gobj)
 
     for (i = 1; i < ARRAY_COUNT(fp->fighter_hurt); i++, ft_hurt++)
     {
-        if (ft_hurt->hitstatus != gmHitCollision_HitStatus_None)
+        if (ft_hurt->hitstatus != nGMHitStatusNone)
         {
-            ft_hurt->hitstatus = gmHitCollision_HitStatus_Intangible;
+            ft_hurt->hitstatus = nGMHitStatusIntangible;
         }
     }
     fp->is_hitstatus_nodamage = TRUE;
@@ -392,6 +392,6 @@ void ftCommonYoshiEggSetStatus(GObj *fighter_gobj)
     this_fp->status_vars.common.captureyoshi.effect_gobj = NULL;
     this_fp->status_vars.common.captureyoshi.is_damagefloor = FALSE;
 
-    ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, ftHitlog_ObjectClass_Fighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
+    ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
     ftCommonYoshiEggMakeEffect(fighter_gobj);
 }

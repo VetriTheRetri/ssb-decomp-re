@@ -211,7 +211,7 @@ sb32 wpSamusChargeShotProcUpdate(GObj *weapon_gobj)
 
             wpSamusChargeShotLaunch(weapon_gobj);
 
-            wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
+            wp->weapon_hit.update_state = nGMHitUpdateNew;
 
             wpProcessUpdateHitPositions(weapon_gobj);
         }
@@ -296,7 +296,7 @@ GObj* wpSamusChargeShotMakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_lev
     }
     else
     {
-        wp->weapon_hit.update_state = gmHitCollision_UpdateState_Disable;
+        wp->weapon_hit.update_state = nGMHitUpdateDisable;
         wp->weapon_vars.charge_shot.is_full_charge = FALSE;
 
         wp->weapon_vars.charge_shot.owner_gobj = fighter_gobj;

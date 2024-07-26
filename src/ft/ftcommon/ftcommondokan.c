@@ -305,7 +305,7 @@ void ftCommonDokanWalkSetStatus(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
 
-    fp->lr = LR_Right;
+    fp->lr = nGMDirectionR;
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanWalk, 0.0F, 1.0F, FTSTATUS_PRESERVE_HITSTATUS);
 

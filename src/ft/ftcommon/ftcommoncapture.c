@@ -31,7 +31,7 @@ void ftCommonCaptureApplyCatchKnockback(GObj *fighter_gobj, ftThrowReleaseDesc *
     f32 knockback = gmCommonObject_DamageCalcKnockback(this_fp->percent_damage, 0, 0, throw_release->knockback_weight, throw_release->knockback_scale, throw_release->knockback_base, this_fp->attributes->weight, catch_fp->handicap, this_fp->handicap);
     
     ftCommonDamageInitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, this_fp->lr, 1, 0, 0, FALSE, FALSE, FALSE);
-    ftCommon_Update1PGameDamageStats(this_fp, GMMATCH_PLAYERS_MAX, ftHitlog_ObjectClass_None, 0, 0, 0);
+    ftCommon_Update1PGameDamageStats(this_fp, GMMATCH_PLAYERS_MAX, nFTHitlogObjectNone, 0, 0, 0);
 }
 
 // 0x8014E2A8
@@ -57,12 +57,12 @@ void ftCommonCaptureApplyCaptureKnockback(GObj *fighter_gobj, ftThrowReleaseDesc
 
     if (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(capture_gobj)->translate.vec.f.x)
     {
-        lr = LR_Right;
+        lr = nGMDirectionR;
     }
-    else lr = LR_Left;
+    else lr = nGMDirectionL;
 
     ftCommonDamageInitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, lr, 1, 0, 0, FALSE, FALSE, FALSE);
-    ftCommon_Update1PGameDamageStats(this_fp, GMMATCH_PLAYERS_MAX, ftHitlog_ObjectClass_None, 0, 0, 0);
+    ftCommon_Update1PGameDamageStats(this_fp, GMMATCH_PLAYERS_MAX, nFTHitlogObjectNone, 0, 0, 0);
 }
 
 // 0x8014E3EC
@@ -88,19 +88,19 @@ sb32 ftCommonCaptureTrappedUpdateBreakoutVars(ftStruct *fp)
 
     if (fp->input.pl.stick_range.x < -FTCOMMON_CAPTURE_MASH_STICK_RANGE_MIN)
     {
-        fp->breakout_lr = LR_Left;
+        fp->breakout_lr = nGMDirectionL;
     }
     if (fp->input.pl.stick_range.x > FTCOMMON_CAPTURE_MASH_STICK_RANGE_MIN)
     {
-        fp->breakout_lr = LR_Right;
+        fp->breakout_lr = nGMDirectionR;
     }
     if (fp->input.pl.stick_range.y < -FTCOMMON_CAPTURE_MASH_STICK_RANGE_MIN)
     {
-        fp->breakout_ud = UD_Down;
+        fp->breakout_ud = nGMDirectionD;
     }
     if (fp->input.pl.stick_range.y > FTCOMMON_CAPTURE_MASH_STICK_RANGE_MIN)
     {
-        fp->breakout_ud = UD_Up;
+        fp->breakout_ud = nGMDirectionU;
     }
     if ((fp->breakout_lr != breakout_lr_bak) || (fp->breakout_ud != breakout_ud_bak))
     {
@@ -143,7 +143,7 @@ void ftCommonCaptureShoulderedSetStatus(GObj *fighter_gobj)
 
     damage = gmCommon_DamageApplyStale(capture_fp->player, 8, capture_fp->attack_id, capture_fp->motion_count);
 
-    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != gmHitCollision_HitStatus_Normal)
+    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != nGMHitStatusNormal)
     {
         damage = 0;
     }

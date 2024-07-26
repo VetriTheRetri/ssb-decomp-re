@@ -3820,7 +3820,7 @@ sb32 ftComputerCheckEvadeDistance(ftStruct *this_fp)
                 f32 other_y = (other_joint->translate.vec.f.y + other_fp->phys_info.vel_air.x * 3.0F);
                 f32 sqrt_xy = sqrtf(SQUARE(this_joint->translate.vec.f.y - other_y) + SQUARE(this_joint->translate.vec.f.x - other_x));
 
-                if ((other_fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) && (sqrt_xy < 1500.0F))
+                if ((other_fp->star_hitstatus == nGMHitStatusInvincible) && (sqrt_xy < 1500.0F))
                 {
                     return TRUE;
                 }
@@ -4863,7 +4863,7 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
                 )
                 ||
                 (
-                    (ip->item_hit.update_state != gmHitCollision_UpdateState_Disable) && (ip->item_hit.update_state != gmHitCollision_UpdateState_New)
+                    (ip->item_hit.update_state != nGMHitUpdateDisable) && (ip->item_hit.update_state != nGMHitUpdateNew)
                 )
                 &&
                 (ip->item_hit.interact_mask & GMHITCOLLISION_MASK_FIGHTER)
@@ -5349,7 +5349,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
         {
             if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (wp->team != this_fp->team))
             {
-                if ((wp->weapon_hit.update_state != gmHitCollision_UpdateState_Disable) && (wp->weapon_hit.update_state != gmHitCollision_UpdateState_New) && (wp->weapon_hit.interact_mask & GMHITCOLLISION_MASK_FIGHTER))
+                if ((wp->weapon_hit.update_state != nGMHitUpdateDisable) && (wp->weapon_hit.update_state != nGMHitUpdateNew) && (wp->weapon_hit.interact_mask & GMHITCOLLISION_MASK_FIGHTER))
                 {
                     wp_hit = &wp->weapon_hit;
 
@@ -5418,7 +5418,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
         {
             if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (ip->team != this_fp->team))
             {
-                if ((ip->item_hit.update_state != gmHitCollision_UpdateState_Disable) && (ip->item_hit.update_state != gmHitCollision_UpdateState_New) && (ip->item_hit.interact_mask & GMHITCOLLISION_MASK_FIGHTER))
+                if ((ip->item_hit.update_state != nGMHitUpdateDisable) && (ip->item_hit.update_state != nGMHitUpdateNew) && (ip->item_hit.interact_mask & GMHITCOLLISION_MASK_FIGHTER))
                 {
                     it_hit = &ip->item_hit;
 
@@ -5679,7 +5679,7 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
         predict_x = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + (target_fp->phys_info.vel_air.x * 3.0F);
         predict_y = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.y + (target_fp->phys_info.vel_air.x * 3.0F);
 
-        if ((target_fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((target_fp->item_hold != NULL) && (itGetStruct(target_fp->item_hold)->it_kind == nITKindHammer)))
+        if ((target_fp->star_hitstatus == nGMHitStatusInvincible) || ((target_fp->item_hold != NULL) && (itGetStruct(target_fp->item_hold)->it_kind == nITKindHammer)))
         {
             ft_com->target_user = target_fp;
 
@@ -7097,7 +7097,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
+            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMDirectionR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMDirectionL)))
             {
                 var_a1 = FALSE;
             }
@@ -7171,7 +7171,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
                     ft_com->walk_stop_wait = 0;
                     return;
                 }
-                if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
+                if ((fp->star_hitstatus == nGMHitStatusInvincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7229,7 +7229,7 @@ void func_ovl3_801397F4(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
+            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMDirectionR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMDirectionL)))
             {
                 var_a1 = FALSE;
             }
@@ -7278,7 +7278,7 @@ void func_ovl3_801397F4(ftStruct *fp)
                 {
                     ft_com->walk_stop_wait = 0;
                 }
-                else if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
+                else if ((fp->star_hitstatus == nGMHitStatusInvincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7315,7 +7315,7 @@ void ftComputerFollowObjectiveAlly(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
+            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMDirectionR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMDirectionL)))
             {
                 var_a1 = FALSE;
             }
@@ -7343,7 +7343,7 @@ void ftComputerFollowObjectiveAlly(ftStruct *fp)
                 ft_com->walk_stop_wait = 0;
                 return;
             }
-            if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
+            if ((fp->star_hitstatus == nGMHitStatusInvincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
             {
                 ftComputerFollowObjectiveWalk(fp);
 
@@ -7397,7 +7397,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
+            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMDirectionR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMDirectionL)))
             {
                 var_a1 = FALSE;
             }
@@ -7470,7 +7470,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
                     ft_com->walk_stop_wait = 0;
                     return;
                 }
-                if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
+                if ((fp->star_hitstatus == nGMHitStatusInvincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7521,7 +7521,7 @@ void ftComputerFollowObjectiveRush(ftStruct *fp)
         mtTrigGetRandomFloat();
         random = mtTrigGetRandomFloat();
 
-        if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
+        if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMDirectionR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMDirectionL)))
         {
             var_a1 = FALSE;
         }
@@ -7929,7 +7929,7 @@ void ftComputerSetFighterHurtboxSizeInfo(GObj *fighter_gobj)
     {
         ft_hurt = &fp->fighter_hurt[i];
 
-        if (ft_hurt->hitstatus == gmHitCollision_HitStatus_Normal)
+        if (ft_hurt->hitstatus == nGMHitStatusNormal)
         {
             joint = ft_hurt->joint;
 

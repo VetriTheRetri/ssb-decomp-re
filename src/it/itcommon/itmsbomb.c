@@ -29,7 +29,7 @@ itCreateDesc dITMSBombItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itMSBombAFallProcUpdate,                // Proc Update
     itMSBombAFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
@@ -338,9 +338,9 @@ void itMSBombGAttachInitItemVars(GObj *item_gobj)
 
     ip->is_attach_surface = TRUE;
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+    ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     if ((ip->player != -1) && (ip->player != GMMATCH_PLAYERS_MAX)) // Macro might be off though
     {
@@ -488,7 +488,7 @@ void itMSBombNExplodeUpdateHitEvent(GObj *item_gobj)
         ip->item_hit.can_reflect = FALSE;
         ip->item_hit.can_setoff = FALSE;
 
-        ip->item_hit.element = gmHitCollision_Element_Fire;
+        ip->item_hit.element = nGMHitElementFire;
 
         ip->item_event_index++;
 
@@ -504,8 +504,8 @@ void itMSBombADetachInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hurt.hitstatus = nGMHitStatusNormal;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     itMainClearOwnerStats(item_gobj);
 }
@@ -574,7 +574,7 @@ void itMSBombNExplodeInitItemVars(GObj *item_gobj)
     ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
     ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+    ip->item_hurt.hitstatus = nGMHitStatusNone;
 
     itMSBombNExplodeUpdateHitEvent(item_gobj);
 }

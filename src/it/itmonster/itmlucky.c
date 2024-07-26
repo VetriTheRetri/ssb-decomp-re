@@ -31,7 +31,7 @@ itCreateDesc dITMLuckyItemDesc =
         0,                                  // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itMLuckySDefaultProcUpdate,             // Proc Update
     itMLuckySDefaultProcMap,                // Proc Map
     NULL,                                   // Proc Hit
@@ -126,7 +126,7 @@ void itMLuckyNSpawnInitItemVars(GObj *item_gobj)
         omAddDObjAnimAll(dobj->child, itGetPData(ip, lITLuckyDataStart, lITLuckyAnimJoint), 0.0F); // Linker thing
         func_8000DF34_EB34(item_gobj);
     }
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+    ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
     ip->item_vars.mlucky.egg_spawn_wait = ITMLUCKY_EGG_SPAWN_WAIT_CONST;
 
@@ -315,7 +315,7 @@ void itMLuckyNDisappearSetStatus(GObj *item_gobj)
 
     ip->item_vars.mlucky.lifetime = ITMLUCKY_LIFETIME;
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+    ip->item_hurt.hitstatus = nGMHitStatusNone;
 
     itMainSetItemStatus(item_gobj, dITMLuckyStatusDesc, itStatus_MLucky_NDisappear);
 }

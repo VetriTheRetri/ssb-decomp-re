@@ -207,7 +207,7 @@ void ftKirbyCopyDonkeySpecialNEndProcUpdate(GObj *fighter_gobj)
         {
             ftHitbox *ft_hit = &fp->fighter_hit[i];
 
-            if (ft_hit->update_state == gmHitCollision_UpdateState_New)
+            if (ft_hit->update_state == nGMHitUpdateNew)
             {
                 ft_hit->damage += fp->status_vars.kirby.copydonkey_specialn.charge_level * FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_DAMAGE_MUL;
             }

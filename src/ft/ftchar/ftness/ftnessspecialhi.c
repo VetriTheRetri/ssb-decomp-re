@@ -406,7 +406,7 @@ void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, mpCollData *coll_data
     f32 tan_rwall_angle;
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    rotation = (fp->lr == LR_Right) ? fp->status_vars.ness.specialhi.pkjibaku_angle : (F_CST_DTOR32(180.0F) - fp->status_vars.ness.specialhi.pkjibaku_angle);
+    rotation = (fp->lr == nGMDirectionR) ? fp->status_vars.ness.specialhi.pkjibaku_angle : (F_CST_DTOR32(180.0F) - fp->status_vars.ness.specialhi.pkjibaku_angle);
 
     if (rotation > F_CST_DTOR32(360.0F))
     {
@@ -694,7 +694,7 @@ void ftNessJibakuSetStatus(GObj *fighter_gobj)
     
     if (angle_diff > F_CST_DTOR32(155.0F)) goto setdown; // 2.3561945F
         
-    fp->lr = (pos.x >= 0) ? LR_Right : LR_Left;
+    fp->lr = (pos.x >= 0) ? nGMDirectionR : nGMDirectionL;
 
     if (pos.x < 0)
     {
@@ -724,7 +724,7 @@ void ftNessJibakuAirSetStatus(GObj *fighter_gobj)
     f32 dist_x = dobj->translate.vec.f.x - fp->status_vars.ness.specialhi.pkthunder_pos.x;
     f32 dist_y = (dobj->translate.vec.f.y + 150.0F) - fp->status_vars.ness.specialhi.pkthunder_pos.y;
 
-    fp->lr = (dist_x >= 0.0F) ? LR_Right : LR_Left;
+    fp->lr = (dist_x >= 0.0F) ? nGMDirectionR : nGMDirectionL;
 
     fp->status_vars.ness.specialhi.pkjibaku_angle  = atan2f(dist_y, fp->lr * dist_x);
 
@@ -775,7 +775,7 @@ void ftNessJibakuAirBoundSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
     func_ovl0_800C7A84(vel);
     ftPhysics_ClampAirVelXMax(fp);
 
-    fp->lr = (fp->phys_info.vel_air.x < 0.0F) ? LR_Right : LR_Left;
+    fp->lr = (fp->phys_info.vel_air.x < 0.0F) ? nGMDirectionR : nGMDirectionL;
 
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirHiBound, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);

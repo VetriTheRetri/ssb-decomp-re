@@ -111,7 +111,7 @@ void ftKirbySpecialHiLandingProcUpdate(GObj *fighter_gobj)
 
         ftParts_GetDObjWorldPosition(fp->joint[FTKIRBY_FINALCUTTER_BEAM_SPAWN_JOINT], &pos);
 
-        if (fp->lr == LR_Right) pos.x += FTKIRBY_FINALCUTTER_OFF_X; // Ternary doesn't match here, only if/else :(
+        if (fp->lr == nGMDirectionR) pos.x += FTKIRBY_FINALCUTTER_OFF_X; // Ternary doesn't match here, only if/else :(
 
         else pos.x -= FTKIRBY_FINALCUTTER_OFF_X;
 

@@ -33,7 +33,7 @@ itCreateDesc dITNyarsItemDesc =
         0,                                  // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itNyarsSDefaultProcUpdate,              // Proc Update
     itNyarsSDefaultProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
@@ -245,9 +245,9 @@ sb32 itNyarsWeaponCoinProcHop(GObj *weapon_gobj)
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
-        wp->lr = LR_Right;
+        wp->lr = nGMDirectionR;
     }
-    else wp->lr = LR_Left;
+    else wp->lr = nGMDirectionL;
 
     return FALSE;
 }

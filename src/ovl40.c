@@ -155,7 +155,7 @@ void mvOpeningLinkInitFighterStagePanel()
 		spawn_info.pos.x = spawn_position.x;
 		spawn_info.pos.y = spawn_position.y;
 		spawn_info.pos.z = spawn_position.z;
-		spawn_info.lr_spawn = LR_Right;
+		spawn_info.lr_spawn = nGMDirectionR;
 		spawn_info.team = gBattleState->player_block[i].team_index;
 		spawn_info.player = i;
 		spawn_info.model_lod = nFTPartsDetailHigh;

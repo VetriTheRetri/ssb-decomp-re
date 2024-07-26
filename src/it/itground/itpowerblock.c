@@ -30,7 +30,7 @@ itCreateDesc dITPowerBlockItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itPowerBlockSDefaultProcUpdate,         // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
@@ -91,7 +91,7 @@ void itPowerBlockNWaitSetStatus(GObj *item_gobj)
 
     itMainSetItemStatus(item_gobj, dITPowerBlockStatusDesc, itStatus_PowerBlock_NWait);
 
-    ip = itGetStruct(item_gobj), ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+    ip = itGetStruct(item_gobj), ip->item_hurt.hitstatus = nGMHitStatusNormal;
 }
 
 // 0x8017C110
@@ -112,7 +112,7 @@ sb32 itPowerBlockNWaitProcDamage(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->proc_update = itPowerBlockNDamageProcUpdate;
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+    ip->item_hurt.hitstatus = nGMHitStatusNone;
 
     omAddDObjAnimAll(DObjGetStruct(item_gobj), itGetPData(ip, lITPowerBlockDataStart, lITPowerBlockAnimJoint), 0.0F); // Linker thing
     func_8000DF34_EB34(item_gobj);

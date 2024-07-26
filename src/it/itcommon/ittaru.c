@@ -28,7 +28,7 @@ itCreateDesc dITTaruItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itTaruAFallProcUpdate,                  // Proc Update
     itTaruAFallProcMap,                     // Proc Map
     NULL,                                   // Proc Hit
@@ -348,7 +348,7 @@ sb32 itTaruGRollProcUpdate(GObj *item_gobj)
 
     ip->phys_info.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F)) * ITTARU_MUL_VEL_X);
 
-    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? LR_Right : LR_Left;
+    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? nGMDirectionR : nGMDirectionL;
 
     sqrt_vel = sqrtf(SQUARE(ip->phys_info.vel_air.x) + SQUARE(ip->phys_info.vel_air.y));
 
@@ -368,7 +368,7 @@ sb32 itTaruGRollProcUpdate(GObj *item_gobj)
             }
         }
     }
-    roll_rotate_step = ((ip->lr == LR_Left) ? ITTARU_ROLL_ROTATE_MUL : -ITTARU_ROLL_ROTATE_MUL) * sqrt_vel;
+    roll_rotate_step = ((ip->lr == nGMDirectionL) ? ITTARU_ROLL_ROTATE_MUL : -ITTARU_ROLL_ROTATE_MUL) * sqrt_vel;
 
     ip->item_vars.taru.roll_rotate_step = roll_rotate_step;
 
@@ -427,11 +427,11 @@ void itTaruNExplodeInitItemVars(GObj *item_gobj)
     ip->item_hit.can_reflect = FALSE;
 
     ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
-    ip->item_hit.element = gmHitCollision_Element_Fire;
+    ip->item_hit.element = nGMHitElementFire;
 
     ip->item_hit.can_setoff = FALSE;
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+    ip->item_hurt.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshHit(item_gobj);
@@ -452,7 +452,7 @@ void itTaruNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     ip->phys_info.vel_air.x = 0.0F;
     ip->phys_info.vel_air.y = 0.0F;

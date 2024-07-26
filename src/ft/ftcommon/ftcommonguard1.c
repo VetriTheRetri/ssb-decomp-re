@@ -35,39 +35,39 @@ void ftCommonGuardCheckScheduleRelease(ftStruct *fp)
 // 0x80148144
 void ftCommonGuardOnSetHitStatusYoshi(GObj *fighter_gobj) // Set all of Yoshi's hurtbox collision states to invincible (GuardOn)
 {
-    ftCommon_SetHitStatusPart(fighter_gobj, 5,  gmHitCollision_HitStatus_Invincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 6,  gmHitCollision_HitStatus_Invincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 7,  gmHitCollision_HitStatus_Invincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 15, gmHitCollision_HitStatus_Invincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 11, gmHitCollision_HitStatus_Invincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 16, gmHitCollision_HitStatus_Invincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 12, gmHitCollision_HitStatus_Invincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 27, gmHitCollision_HitStatus_Invincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 22, gmHitCollision_HitStatus_Invincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 28, gmHitCollision_HitStatus_Invincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 23, gmHitCollision_HitStatus_Invincible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 5,  nGMHitStatusInvincible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 6,  nGMHitStatusInvincible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 7,  nGMHitStatusInvincible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 15, nGMHitStatusInvincible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 11, nGMHitStatusInvincible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 16, nGMHitStatusInvincible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 12, nGMHitStatusInvincible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 27, nGMHitStatusInvincible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 22, nGMHitStatusInvincible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 28, nGMHitStatusInvincible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 23, nGMHitStatusInvincible);
 }
 
 // 0x80148214
 void ftCommonGuardSetHitStatusYoshi(GObj *fighter_gobj) // Set all of Yoshi's hurtbox collision states to intangible (Guard)
 {
-    ftCommon_SetHitStatusPart(fighter_gobj, 5,  gmHitCollision_HitStatus_Normal);
-    ftCommon_SetHitStatusPart(fighter_gobj, 6,  gmHitCollision_HitStatus_Intangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 7,  gmHitCollision_HitStatus_Intangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 15, gmHitCollision_HitStatus_Intangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 11, gmHitCollision_HitStatus_Intangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 16, gmHitCollision_HitStatus_Intangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 12, gmHitCollision_HitStatus_Intangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 27, gmHitCollision_HitStatus_Intangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 22, gmHitCollision_HitStatus_Intangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 28, gmHitCollision_HitStatus_Intangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 23, gmHitCollision_HitStatus_Intangible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 5,  nGMHitStatusNormal);
+    ftCommon_SetHitStatusPart(fighter_gobj, 6,  nGMHitStatusIntangible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 7,  nGMHitStatusIntangible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 15, nGMHitStatusIntangible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 11, nGMHitStatusIntangible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 16, nGMHitStatusIntangible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 12, nGMHitStatusIntangible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 27, nGMHitStatusIntangible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 22, nGMHitStatusIntangible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 28, nGMHitStatusIntangible);
+    ftCommon_SetHitStatusPart(fighter_gobj, 23, nGMHitStatusIntangible);
 }
 
 // 0x801482E4
 void ftCommonGuardOffSetHitStatusYoshi(GObj *fighter_gobj)
 {
-    ftCommon_SetHitStatusPartAll(fighter_gobj, gmHitCollision_HitStatus_Normal);
+    ftCommon_SetHitStatusPartAll(fighter_gobj, nGMHitStatusNormal);
 }
 
 // 0x80148304

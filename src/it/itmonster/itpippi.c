@@ -48,7 +48,7 @@ itCreateDesc dITPippiItemDesc =
         0,                                  // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itPippiSDefaultProcUpdate,              // Proc Update
     itPippiSDefaultProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
@@ -90,13 +90,13 @@ void itPippiSDefaultSelectMonster(GObj *item_gobj)
         {
             dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
 
-            ip->lr = LR_Right;
+            ip->lr = nGMDirectionR;
         }
-        else ip->lr = LR_Left;
+        else ip->lr = nGMDirectionL;
     }
     if ((it_kind == nITKindPippi) || (it_kind == nITKindTosakinto) || (it_kind == nITKindMLucky))
     {
-        ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+        ip->item_hit.update_state = nGMHitUpdateDisable;
     }
     if (it_kind == nITKindSawamura)
     {
@@ -137,7 +137,7 @@ void itPippiSDefaultProcRender(GObj *item_gobj)
             odRenderDObjTreeForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
-        else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
+        else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
@@ -170,7 +170,7 @@ void itPippiSDefaultMoveDLProcRender(GObj *item_gobj)
             odRenderDObjTreeForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
-        else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
+        else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 

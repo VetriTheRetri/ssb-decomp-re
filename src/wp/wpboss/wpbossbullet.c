@@ -93,7 +93,7 @@ void wpBossBulletExplodeInitWeaponVars(GObj *weapon_gobj)
     wp->weapon_hit.can_hop = FALSE;
     wp->weapon_hit.can_reflect = FALSE;
 
-    wp->weapon_hit.element = gmHitCollision_Element_Fire;
+    wp->weapon_hit.element = nGMHitElementFire;
 
     wp->lifetime = WPYUBIBULLET_EXPLODE_LIFETIME;
 

@@ -41,10 +41,10 @@ void wpProcessUpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
 
         switch (wp->weapon_hit.update_state)
         {
-        case gmHitCollision_UpdateState_Disable:
+        case nGMHitUpdateDisable:
             break;
 
-        case gmHitCollision_UpdateState_New:
+        case nGMHitUpdateNew:
             positions->pos = *offset;
 
             if ((offset->x == 0.0F) && (offset->y == 0.0F) && (offset->z == 0.0F))
@@ -55,18 +55,18 @@ void wpProcessUpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
             }
             else wpProcessUpdateHitOffsets(dobj, &positions->pos);
             
-            wp->weapon_hit.update_state = gmHitCollision_UpdateState_Transfer;
+            wp->weapon_hit.update_state = nGMHitUpdateTransfer;
 
             positions->unk_wphitpos_0x18 = FALSE;
             positions->unk_wphitpos_0x5C = 0;
             break;
 
-        case gmHitCollision_UpdateState_Transfer:
-            wp->weapon_hit.update_state = gmHitCollision_UpdateState_Interpolate;
+        case nGMHitUpdateTransfer:
+            wp->weapon_hit.update_state = nGMHitUpdateInterpolate;
 
             /* fallthrough */
 
-        case gmHitCollision_UpdateState_Interpolate:
+        case nGMHitUpdateInterpolate:
             positions->pos_prev = positions->pos;
 
             positions->pos = *offset;
@@ -96,7 +96,7 @@ void wpProcessUpdateHitRecord(GObj *weapon_gobj) // Set hitbox victim array
 
     wp_hit = &wp->weapon_hit;
 
-    if (wp_hit->update_state != gmHitCollision_UpdateState_Disable)
+    if (wp_hit->update_state != nGMHitUpdateDisable)
     {
         for (i = 0; i < ARRAY_COUNT(wp->weapon_hit.hit_targets); i++)
         {
@@ -208,33 +208,33 @@ void wpProcessSetHitInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s32 hitbo
         {
             switch (hitbox_type)
             {
-            case gmHitCollision_Type_Hurt:
+            case nGMHitTypeHurt:
                 wp_hit->hit_targets[i].victim_flags.is_interact_hurt = TRUE;
                 break;
 
-            case gmHitCollision_Type_Shield:
+            case nGMHitTypeShield:
                 wp_hit->hit_targets[i].victim_flags.is_interact_shield = TRUE;
                 break;
 
-            case gmHitCollision_Type_ShieldRehit:
+            case nGMHitTypeShieldRehit:
                 wp_hit->hit_targets[i].victim_flags.is_interact_shield = TRUE;
                 wp_hit->hit_targets[i].victim_flags.timer_rehit = WEAPON_REHIT_TIME_DEFAULT;
                 break;
 
-            case gmHitCollision_Type_Reflect:
+            case nGMHitTypeReflect:
                 wp_hit->hit_targets[i].victim_flags.is_interact_reflect = TRUE;
                 wp_hit->hit_targets[i].victim_flags.timer_rehit = WEAPON_REHIT_TIME_DEFAULT;
                 break;
 
-            case gmHitCollision_Type_Absorb:
+            case nGMHitTypeAbsorb:
                 wp_hit->hit_targets[i].victim_flags.is_interact_absorb = TRUE;
                 break;
 
-            case gmHitCollision_Type_Hit:
+            case nGMHitTypeHit:
                 wp_hit->hit_targets[i].victim_flags.group_id = group_id;
                 break;
 
-            case gmHitCollision_Type_HurtRehit:
+            case nGMHitTypeHurtRehit:
                 wp_hit->hit_targets[i].victim_flags.is_interact_hurt = TRUE;
                 wp_hit->hit_targets[i].victim_flags.timer_rehit = WEAPON_REHIT_TIME_DEFAULT;
                 break;
@@ -258,33 +258,33 @@ void wpProcessSetHitInteractStats(wpHitbox *wp_hit, GObj *victim_gobj, s32 hitbo
 
         switch (hitbox_type)
         {
-        case gmHitCollision_Type_Hurt:
+        case nGMHitTypeHurt:
             wp_hit->hit_targets[i].victim_flags.is_interact_hurt = TRUE;
             break;
 
-        case gmHitCollision_Type_Shield:
+        case nGMHitTypeShield:
             wp_hit->hit_targets[i].victim_flags.is_interact_shield = TRUE;
             break;
 
-        case gmHitCollision_Type_ShieldRehit:
+        case nGMHitTypeShieldRehit:
             wp_hit->hit_targets[i].victim_flags.is_interact_shield = TRUE;
             wp_hit->hit_targets[i].victim_flags.timer_rehit = WEAPON_REHIT_TIME_DEFAULT;
             break;
 
-        case gmHitCollision_Type_Reflect:
+        case nGMHitTypeReflect:
             wp_hit->hit_targets[i].victim_flags.is_interact_reflect = TRUE;
             wp_hit->hit_targets[i].victim_flags.timer_rehit = WEAPON_REHIT_TIME_DEFAULT;
             break;
 
-        case gmHitCollision_Type_Absorb:
+        case nGMHitTypeAbsorb:
             wp_hit->hit_targets[i].victim_flags.is_interact_absorb = TRUE;
             break;
 
-        case gmHitCollision_Type_Hit:
+        case nGMHitTypeHit:
             wp_hit->hit_targets[i].victim_flags.group_id = group_id;
             break;
 
-        case gmHitCollision_Type_HurtRehit:
+        case nGMHitTypeHurtRehit:
             wp_hit->hit_targets[i].victim_flags.is_interact_hurt = TRUE;
             wp_hit->hit_targets[i].victim_flags.timer_rehit = WEAPON_REHIT_TIME_DEFAULT;
             break;
@@ -330,7 +330,7 @@ void wpProcessUpdateAttackStatWeapon(wpStruct *this_wp, wpHitbox *this_hit, s32 
 
     if (victim_hit->priority <= priority_high)
     {
-        wpProcessUpdateHitInteractStatsGroupID(victim_wp, victim_hit, this_gobj, gmHitCollision_Type_Hit, 0);
+        wpProcessUpdateHitInteractStatsGroupID(victim_wp, victim_hit, this_gobj, nGMHitTypeHit, 0);
 
         if (victim_wp->hit_attack_damage < victim_hit_damage)
         {
@@ -342,7 +342,7 @@ void wpProcessUpdateAttackStatWeapon(wpStruct *this_wp, wpHitbox *this_hit, s32 
 
     if (this_hit->priority <= priority_high)
     {
-        wpProcessUpdateHitInteractStatsGroupID(this_wp, this_hit, victim_gobj, gmHitCollision_Type_Hit, 0);
+        wpProcessUpdateHitInteractStatsGroupID(this_wp, this_hit, victim_gobj, nGMHitTypeHit, 0);
 
         if (this_wp->hit_attack_damage < this_hit_damage)
         {
@@ -365,7 +365,7 @@ void wpProcessProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision 
     this_wp = wpGetStruct(this_gobj);
     this_hit = &this_wp->weapon_hit;
 
-    if ((this_hit->can_setoff) && (this_hit->update_state != gmHitCollision_UpdateState_Disable) && (this_hit->interact_mask & GMHITCOLLISION_MASK_WEAPON))
+    if ((this_hit->can_setoff) && (this_hit->update_state != nGMHitUpdateDisable) && (this_hit->interact_mask & GMHITCOLLISION_MASK_WEAPON))
     {
         other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
 
@@ -386,7 +386,7 @@ void wpProcessProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision 
 
                 if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (this_wp->team == other_wp->team)) goto next_gobj;
                 
-                if ((other_hit->update_state != gmHitCollision_UpdateState_Disable) && (other_hit->can_setoff))
+                if ((other_hit->update_state != nGMHitUpdateDisable) && (other_hit->can_setoff))
                 {
                     if (other_hit->interact_mask & GMHITCOLLISION_MASK_WEAPON)
                     {

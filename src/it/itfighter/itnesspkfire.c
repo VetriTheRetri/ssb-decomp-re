@@ -29,7 +29,7 @@ itCreateDesc dITNessPKFireItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itNessPKFireSDefaultProcUpdate,         // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit

@@ -13,7 +13,7 @@ void ftBossOkutsubushiProcUpdate(GObj *fighter_gobj)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        fp->lr = LR_Left;
+        fp->lr = nGMDirectionL;
 
         cmManagerSetCameraStatusDefault();
         ftBossWaitSetStatus(fighter_gobj);
@@ -59,7 +59,7 @@ void ftBossOkutsubushiSetStatus(GObj *fighter_gobj)
     Vec3f sp34;
     Vec3f sp28;
 
-    fp->lr = LR_Center;
+    fp->lr = nGMDirectionC;
 
     ftMainSetFighterStatus(fighter_gobj, nFTBossStatusOkutsubushi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);

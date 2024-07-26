@@ -21,7 +21,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftBoss_Default_ProcInterrupt,		// Proc Interrupt
+		ftBossDefault_ProcInterrupt,		// Proc Interrupt
 		NULL,									// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
@@ -41,8 +41,8 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftBoss_Wait_ProcInterrupt,		// Proc Interrupt
-		ftBoss_Wait_ProcPhysics,			// Proc Physics
+		ftBossWait_ProcInterrupt,		// Proc Interrupt
+		ftBossWait_ProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -62,8 +62,8 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_Move_ProcPhysics,			// Proc Physics
-		ftBoss_Move_ProcMap				// Proc Map
+		ftBossMove_ProcPhysics,			// Proc Physics
+		ftBossMove_ProcMap				// Proc Map
 	},
 
 	// Status 223 (0xDF): Hippataku
@@ -80,7 +80,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Hippataku_ProcUpdate,		// Proc Update
+		ftBossHippataku_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -100,9 +100,9 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Harau_ProcUpdate,			// Proc Update
+		ftBossHarau_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_Harau_ProcPhysics,			// Proc Physics
+		ftBossHarau_ProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -120,7 +120,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Okuhikouki1_ProcUpdate,	// Proc Update
+		ftBossOkuhikouki1_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -140,9 +140,9 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Okuhikouki2_ProcUpdate,	// Proc Update
+		ftBossOkuhikouki2_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_Okuhikouki2_ProcPhysics,	// Proc Physics
+		ftBossOkuhikouki2_ProcPhysics,	// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -160,7 +160,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Okuhikouki3_ProcUpdate,	// Proc Update
+		ftBossOkuhikouki3_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -180,7 +180,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Walk_ProcUpdate,			// Proc Update
+		ftBossWalk_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		NULL									// Proc Map
@@ -202,8 +202,8 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_WalkLoop_ProcPhysics,		// Proc Physics
-		ftBoss_WalkLoop_ProcMap			// Proc Map
+		ftBossWalkLoop_ProcPhysics,		// Proc Physics
+		ftBossWalkLoop_ProcMap			// Proc Map
 	},
 
 	// Status 230 (0xE6): WalkWait
@@ -220,7 +220,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_WalkWait_ProcUpdate,		// Proc Update
+		ftBossWalkWait_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -240,7 +240,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_WalkShoot_ProcUpdate,		// Proc Update
+		ftBossWalkShoot_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -262,8 +262,8 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_GootsubusuUp_ProcPhysics,	// Proc Physics
-		ftBoss_GootsubusuUp_ProcMap		// Proc Map
+		ftBossGootsubusuUp_ProcPhysics,	// Proc Physics
+		ftBossGootsubusuUp_ProcMap		// Proc Map
 	},
 
 	// Status 233 (0xE9): GootsubusuWait
@@ -282,8 +282,8 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_GootsubusuWait_ProcPhysics,// Proc Physics
-		ftBoss_GootsubusuWait_ProcMap		// Proc Map
+		ftBossGootsubusuWait_ProcPhysics,// Proc Physics
+		ftBossGootsubusuWait_ProcMap		// Proc Map
 	},
 
 	// Status 234 (0xEA): GootsubusuEnd
@@ -300,7 +300,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_GootsubusuEnd_ProcUpdate,	// Proc Update
+		ftBossGootsubusuEnd_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -323,7 +323,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
-		ftBoss_GootsubusuDown_ProcMap		// Proc Map
+		ftBossGootsubusuDown_ProcMap		// Proc Map
 	},
 
 	// Status 236 (0xEC): Tsutsuku1
@@ -340,7 +340,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Tsutsuku1_ProcUpdate,		// Proc Update
+		ftBossTsutsuku1_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -360,7 +360,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Tsutsuku3_ProcUpdate,		// Proc Update
+		ftBossTsutsuku3_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -382,7 +382,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_Tsutsuku2_ProcPhysics,		// Proc Physics
+		ftBossTsutsuku2_ProcPhysics,		// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -400,10 +400,10 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Drill_ProcUpdate,			// Proc Update
+		ftBossDrill_ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_Drill_ProcPhysics,			// Proc Physics
-		ftBoss_Drill_ProcMap				// Proc Map
+		ftBossDrill_ProcPhysics,			// Proc Physics
+		ftBossDrill_ProcMap				// Proc Map
 	},
 
 	// Status 240 (0xF0): Okukouki
@@ -420,7 +420,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Okukouki_ProcUpdate,		// Proc Update
+		ftBossOkukouki_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -440,7 +440,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Yubideppou1_ProcUpdate,	// Proc Update
+		ftBossYubideppou1_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -460,9 +460,9 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Yubideppou3_ProcUpdate,	// Proc Update
+		ftBossYubideppou3_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_Yubideppou3_ProcPhysics,	// Proc Physics
+		ftBossYubideppou3_ProcPhysics,	// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -482,7 +482,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_Yubideppou2_ProcPhysics,	// Proc Physics
+		ftBossYubideppou2_ProcPhysics,	// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -500,7 +500,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Okupunch1_ProcUpdate,		// Proc Update
+		ftBossOkupunch1_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNYZ,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -520,9 +520,9 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Okupunch2_ProcUpdate,		// Proc Update
+		ftBossOkupunch2_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_Okupunch2_ProcPhysics,		// Proc Physics
+		ftBossOkupunch2_ProcPhysics,		// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -540,7 +540,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Okupunch3_ProcUpdate,		// Proc Update
+		ftBossOkupunch3_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNYZ,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -560,9 +560,9 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_Okutsubushi_ProcUpdate,	// Proc Update
+		ftBossOkutsubushi_ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_Okutsubushi_ProcPhysics,	// Proc Physics
+		ftBossOkutsubushi_ProcPhysics,	// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -580,7 +580,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_OkutsubushiStart_ProcUpdate,// Proc Update
+		ftBossOkutsubushiStart_ProcUpdate,// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNYZ,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -600,7 +600,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_DeadLeft_ProcUpdate,		// Proc Update
+		ftBossDeadLeft_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		NULL									// Proc Map
@@ -622,7 +622,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_DeadCenter_ProcPhysics,	// Proc Physics
+		ftBossDeadCenter_ProcPhysics,	// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -640,7 +640,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftBoss_DeadLeft_ProcUpdate,		// Proc Update
+		ftBossDeadLeft_ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		NULL									// Proc Map
@@ -662,7 +662,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommon_Appear_ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftBoss_Appear_ProcPhysics,		// Proc Physics
+		ftBossAppear_ProcPhysics,		// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	}
 };

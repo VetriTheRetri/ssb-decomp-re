@@ -400,7 +400,7 @@ sb32 ftKirbySpecialNTurnCheckGotoTurn(GObj *fighter_gobj, void (*proc_status)(GO
 
     if (ABS(stick_x) < FTKIRBY_VACUUM_TURN_STICK_RANGE_MIN) stick_x = 0; // HAL Meme Laboratory
 
-    if (((stick_x < 0) && (fp->lr == LR_Right)) || ((stick_x > 0) && (fp->lr == LR_Left)))
+    if (((stick_x < 0) && (fp->lr == nGMDirectionR)) || ((stick_x > 0) && (fp->lr == nGMDirectionL)))
     {
         proc_status(fighter_gobj);
 

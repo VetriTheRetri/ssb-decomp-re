@@ -115,14 +115,14 @@ void ftCommonTwisterShootFighter(GObj *fighter_gobj)
 
     knockback = gmCommonObject_DamageCalcKnockback(fp->percent_damage, tornado->damage, tornado->damage, tornado->knockback_weight, tornado->knockback_scale, tornado->knockback_base, fp->attributes->weight, 9, fp->handicap);
 
-    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != gmHitCollision_HitStatus_Normal)
+    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != nGMHitStatusNormal)
     {
         damage = 0;
     }
     else damage = tornado->damage;
 
     ftCommonDamageInitDamageVars(fighter_gobj, -1, damage, knockback, tornado->angle, fp->lr, 0, tornado->element, 0, TRUE, TRUE, TRUE);
-    ftCommon_Update1PGameDamageStats(fp, GMMATCH_PLAYERS_MAX, ftHitlog_ObjectClass_Ground, gmHitEnvironment_Kind_Twister, 0, 0);
+    ftCommon_Update1PGameDamageStats(fp, GMMATCH_PLAYERS_MAX, nFTHitlogObjectGround, nGMHitEnvironmentTwister, 0, 0);
 
     if (damage != 0)
     {

@@ -175,7 +175,7 @@ void grHyruleTwisterUpdateSummon(void)
         gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusMove;
         gGRCommonStruct.hyrule.twister_wait = mtTrigGetRandomIntRange(600) + 520;
 
-        lr = ((mtTrigGetRandomUShort() % 2) != 0) ? LR_Right : LR_Left;
+        lr = ((mtTrigGetRandomUShort() % 2) != 0) ? nGMDirectionR : nGMDirectionL;
 
         gGRCommonStruct.hyrule.twister_turn_wait = 0;
         gGRCommonStruct.hyrule.twister_vel = lr * 10.0F;
@@ -227,15 +227,15 @@ s32 grHyruleTwisterGetLR(void)
     {
         if (players_lside == players_rside)
         {
-            return ((mtTrigGetRandomUShort() % 2) != 0) ? LR_Left : LR_Right;
+            return ((mtTrigGetRandomUShort() % 2) != 0) ? nGMDirectionL : nGMDirectionR;
         }
         else if (players_rside < players_lside)
         {
-            return LR_Left;
+            return nGMDirectionL;
         }
-        else return LR_Right;
+        else return nGMDirectionR;
     }
-    else return LR_Center;
+    else return nGMDirectionC;
 }
 
 // 0x8010A610
@@ -269,7 +269,7 @@ void grHyruleTwisterUpdateMove(void)
             {
                 lr = grHyruleTwisterGetLR();
 
-                if ((lr != LR_Center) && (mtTrigGetRandomIntRange(5) == 0))
+                if ((lr != nGMDirectionC) && (mtTrigGetRandomIntRange(5) == 0))
                 {
                     gGRCommonStruct.hyrule.twister_turn_wait = mtTrigGetRandomIntRange(180) + 300;
                     gGRCommonStruct.hyrule.twister_vel = lr * 50.0F;
@@ -447,7 +447,7 @@ sb32 grHyruleTwisterCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s3
         (fp->twister_wait == 0)                                && 
         (fp->status_info.status_id != nFTCommonStatusTwister) && 
         !(fp->capture_immune_mask & FTCATCHKIND_MASK_TWISTER)  &&
-        (ftCommon_GetBestHitStatusAll(fighter_gobj) == gmHitCollision_HitStatus_Normal)
+        (ftCommon_GetBestHitStatusAll(fighter_gobj) == nGMHitStatusNormal)
     )
     {
         DObj *gr_dobj = DObjGetStruct(ground_gobj);
@@ -463,7 +463,7 @@ sb32 grHyruleTwisterCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s3
 
         if ((dist_x < 300.0F) && (dist_y < 600.0F) && (dist_y > -300.0F))
         {
-            *kind = gmHitEnvironment_Kind_Twister;
+            *kind = nGMHitEnvironmentTwister;
 
             return TRUE;
         }

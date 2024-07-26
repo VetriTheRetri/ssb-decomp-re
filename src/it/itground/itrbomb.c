@@ -36,7 +36,7 @@ itCreateDesc dITRBombItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itRBombAFallProcUpdate,                 // Proc Update
     itRBombAFallProcMap,                    // Proc Map
     itRBombSDefaultProcHit,                 // Proc Hit
@@ -311,11 +311,11 @@ sb32 itRBombGRollProcUpdate(GObj *item_gobj)
 
     ip->phys_info.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F) /*HALF_PI32*/) * ITRBOMB_MUL_VEL_X);
 
-    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? LR_Right : LR_Left;
+    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? nGMDirectionR : nGMDirectionL;
 
     sqrt_vel = sqrtf(SQUARE(ip->phys_info.vel_air.x) + SQUARE(ip->phys_info.vel_air.y));
 
-    roll_rotate_step = ((ip->lr == LR_Left) ? ITRBOMB_ROLL_ROTATE_MUL : -ITRBOMB_ROLL_ROTATE_MUL) * sqrt_vel;
+    roll_rotate_step = ((ip->lr == nGMDirectionL) ? ITRBOMB_ROLL_ROTATE_MUL : -ITRBOMB_ROLL_ROTATE_MUL) * sqrt_vel;
 
     ip->item_vars.rbomb.roll_rotate_step = roll_rotate_step;
 
@@ -370,11 +370,11 @@ void itRBombNExplodeInitItemVars(GObj *item_gobj)
     ip->item_hit.can_reflect = FALSE;
 
     ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
-    ip->item_hit.element = gmHitCollision_Element_Fire;
+    ip->item_hit.element = nGMHitElementFire;
 
     ip->item_hit.can_setoff = FALSE;
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+    ip->item_hurt.hitstatus = nGMHitStatusNone;
 
     itMainRefreshHit(item_gobj);
     itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITRBombItemDesc, lITRBombHitEvents));
@@ -394,7 +394,7 @@ void itRBombNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     ip->phys_info.vel_air.x = 0.0F;
     ip->phys_info.vel_air.y = 0.0F;

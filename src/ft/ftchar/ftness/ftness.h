@@ -1,7 +1,7 @@
 #ifndef _FTNESS_H_
 #define _FTNESS_H_
 
-#include <wp/weaponvars.h>
+#include <wp/wpvars.h>
 
 #include "ftnessfunctions.h"
 

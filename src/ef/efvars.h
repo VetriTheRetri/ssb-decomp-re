@@ -1,13 +1,10 @@
-#ifndef _EFFECT_VARS_H_
-#define _EFFECT_VARS_H_
+#ifndef _EFVARS_H_
+#define _EFVARS_H_
 
 #include <ssb_types.h>
 #include <macros.h>
-// #include <sys/obj_renderer.h> // Probably shouldn't be included
-#include <PR/ultratypes.h>
 #include <sys/obj.h>
-
-#include "efdef.h"
+#include <ef/efdef.h>
 
 #define EFPART_FLAMELR_OFF_X_BASE 300.0F
 #define EFPART_FLAMELR_OFF_X_ADD (-150.0F)

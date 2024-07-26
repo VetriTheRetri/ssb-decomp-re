@@ -61,7 +61,7 @@ void ftLinkSpecialHiUpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
         break;
 
     case 1:
-        wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
+        wp->weapon_hit.update_state = nGMHitUpdateNew;
         wp->weapon_hit.size = FTLINK_SPINATTACK_FLAG_SIZE_1;
 
     #if !defined (AVOID_UB)
@@ -72,7 +72,7 @@ void ftLinkSpecialHiUpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
         break;
 
     case 2:
-        wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
+        wp->weapon_hit.update_state = nGMHitUpdateNew;
         wp->weapon_hit.size = FTLINK_SPINATTACK_FLAG_SIZE_2;
 
     #if !defined (AVOID_UB)
@@ -83,7 +83,7 @@ void ftLinkSpecialHiUpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
         break;
 
     case 3:
-        wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
+        wp->weapon_hit.update_state = nGMHitUpdateNew;
         wp->weapon_hit.size = FTLINK_SPINATTACK_FLAG_SIZE_3;
 
     #if !defined (AVOID_UB)
@@ -94,7 +94,7 @@ void ftLinkSpecialHiUpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
         break;
 
     case 4:
-        wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
+        wp->weapon_hit.update_state = nGMHitUpdateNew;
         wp->weapon_hit.size = FTLINK_SPINATTACK_FLAG_SIZE_4;
 
     #if !defined (AVOID_UB)
@@ -105,11 +105,11 @@ void ftLinkSpecialHiUpdateWeaponHit(GObj *fighter_gobj, wpStruct *wp)
         break;
 
     case 13:
-        wp->weapon_hit.update_state = gmHitCollision_UpdateState_Disable;
+        wp->weapon_hit.update_state = nGMHitUpdateDisable;
         break;
 
     default:
-        wp->weapon_hit.update_state = gmHitCollision_UpdateState_Disable;
+        wp->weapon_hit.update_state = nGMHitUpdateDisable;
         break;
     }
     fp->command_vars.flags.flag2 = 0;
@@ -175,7 +175,7 @@ void ftLinkSpecialHiMakeWeapon(GObj *fighter_gobj, sb32 is_skip_gobj)
                 wpStruct *wp = wpGetStruct(fp->status_vars.link.specialhi.spin_attack_gobj);
                 s32 i;
 
-                wp->weapon_hit.update_state = gmHitCollision_UpdateState_Disable;
+                wp->weapon_hit.update_state = nGMHitUpdateDisable;
 
                 for (i = 0; i < WPSPINATTACK_EXTEND_POS_COUNT; i++)
                 {

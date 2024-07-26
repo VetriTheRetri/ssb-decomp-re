@@ -27,7 +27,7 @@ itCreateDesc dITTomatoItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itTomatoAFallProcUpdate,                // Proc Update
     itTomatoAFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit

@@ -30,7 +30,7 @@ itCreateDesc dITGShellItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itGShellAFallProcUpdate,                // Proc Update
     itGShellAFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
@@ -238,8 +238,8 @@ void itGShellGWaitInitItemVars(GObj *item_gobj)
 
         ip->is_damage_all = TRUE;
 
-        ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
-        ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+        ip->item_hurt.hitstatus = nGMHitStatusNormal;
+        ip->item_hit.update_state = nGMHitUpdateDisable;
 
         ip->phys_info.vel_air.x = 0.0F;
 
@@ -248,7 +248,7 @@ void itGShellGWaitInitItemVars(GObj *item_gobj)
     }
     else if (ip->item_vars.shell.is_damage != FALSE)
     {
-        ip->item_hit.update_state = gmHitCollision_UpdateState_New;
+        ip->item_hit.update_state = nGMHitUpdateNew;
 
         itProcessUpdateHitPositions(item_gobj);
         itGShellGSpinSetStatus(item_gobj);
@@ -259,8 +259,8 @@ void itGShellGWaitInitItemVars(GObj *item_gobj)
 
         ip->is_damage_all = TRUE;
 
-        ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
-        ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+        ip->item_hurt.hitstatus = nGMHitStatusNormal;
+        ip->item_hit.update_state = nGMHitUpdateDisable;
 
         ip->phys_info.vel_air.x = 0.0F;
 
@@ -280,9 +280,9 @@ void itGShellAFallSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+    ip->item_hurt.hitstatus = nGMHitStatusNone;
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     ip->is_allow_pickup = FALSE;
 
@@ -301,11 +301,11 @@ sb32 itGShellSDefaultProcDamage(GObj *item_gobj)
     {
         ip->item_vars.shell.is_damage = TRUE;
 
-        ip->item_hit.update_state = gmHitCollision_UpdateState_New;
+        ip->item_hit.update_state = nGMHitUpdateNew;
 
         itProcessUpdateHitPositions(item_gobj);
 
-        ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+        ip->item_hurt.hitstatus = nGMHitStatusNone;
 
         itMainCopyDamageStats(item_gobj);
 
@@ -420,7 +420,7 @@ sb32 itGShellSDefaultProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+    ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
     ip->item_vars.shell.health = mtTrigGetRandomIntRange(ITGSHELL_HEALTH_MAX);
 
@@ -444,7 +444,7 @@ sb32 itGShellGASpinProcDamage(GObj *item_gobj)
 
     if (ABSF(ip->phys_info.vel_air.x) > ITGSHELL_STOP_VEL_X)
     {
-        ip->item_hit.update_state = gmHitCollision_UpdateState_New;
+        ip->item_hit.update_state = nGMHitUpdateNew;
 
         itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
@@ -489,9 +489,9 @@ void itGShellGSpinInitItemVars(GObj *item_gobj)
 
     if (ip->phys_info.vel_air.x < 0.0F)
     {
-        ip->lr = LR_Left;
+        ip->lr = nGMDirectionL;
     }
-    else ip->lr = LR_Right;
+    else ip->lr = nGMDirectionR;
 
     ip->item_vars.shell.dust_effect_int = ITGSHELL_EFFECT_SPAWN_INT;
     ip->item_vars.shell.damage_all_delay = ITGSHELL_DAMAGE_ALL_WAIT;
@@ -526,9 +526,9 @@ void itGShellASpinInitItemVars(GObj *item_gobj)
     }
     if (ip->phys_info.vel_air.x < 0.0F)
     {
-        ip->lr = LR_Left;
+        ip->lr = nGMDirectionL;
     }
-    else ip->lr = LR_Right;
+    else ip->lr = nGMDirectionR;
 
     ip->is_damage_all = FALSE;
 

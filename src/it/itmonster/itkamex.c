@@ -34,7 +34,7 @@ itCreateDesc dITKamexItemDesc =
         0,                                  // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itKamexSDefaultProcUpdate,              // Proc Update
     itKamexSDefaultProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
@@ -390,7 +390,7 @@ void itKamexSDefaultFindTargetsSetLR(GObj *item_gobj)
     }
     dist_x = DObjGetStruct(victim_gobj)->translate.vec.f.x - dobj->translate.vec.f.x;
 
-    ip->lr = (dist_x < 0.0F) ? LR_Left : LR_Right;
+    ip->lr = (dist_x < 0.0F) ? nGMDirectionL : nGMDirectionR;
 }
 
 // 0x80180CDC
@@ -423,7 +423,7 @@ GObj* itKamexMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         itKamexSDefaultFindTargetsSetLR(item_gobj);
 
-        if (kamex_ip->lr == LR_Left)
+        if (kamex_ip->lr == nGMDirectionL)
         {
             dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }
@@ -495,7 +495,7 @@ GObj* itKamexWeaponHydroMakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     efManagerSparkleWhiteScaleMakeEffect(&translate, 1.0F);
 
-    if (wp->lr == LR_Left)
+    if (wp->lr == nGMDirectionL)
     {
         dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }

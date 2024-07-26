@@ -786,7 +786,7 @@ struct ftStruct
     f32 unk_ft_0x38;
     s32 x3C_unk;
     u32 hitlag_timer;
-    s32 lr;                     // Facing direction; -1 = LR_Left, 1 = LR_Right
+    s32 lr;                     // Facing direction; -1 = nGMDirectionL, 1 = nGMDirectionR
 
     struct ftPhysicsInfo
     {

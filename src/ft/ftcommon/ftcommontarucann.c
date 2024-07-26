@@ -102,7 +102,7 @@ void ftCommonTaruCannSetStatus(GObj *fighter_gobj, GObj *tarucann_gobj)
     fp->status_vars.common.tarucann.release_wait = 0;
     fp->status_vars.common.tarucann.tarucann_gobj = tarucann_gobj;
 
-    ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Intangible);
+    ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
 
     fp->is_invisible = TRUE;
 
@@ -126,7 +126,7 @@ void ftCommonTaruCannShootFighter(GObj *fighter_gobj)
     angle -= (angle / 360) * 360;
 
     ftCommonDamageInitDamageVars(fighter_gobj, nFTCommonStatusDamageFlyRoll, tarucann->damage, knockback, angle, fp->lr, 0, tarucann->element, 0, TRUE, TRUE, FALSE);
-    ftCommon_Update1PGameDamageStats(fp, GMMATCH_PLAYERS_MAX, ftHitlog_ObjectClass_Ground, gmHitEnvironment_Kind_TaruCann, 0, 0);
+    ftCommon_Update1PGameDamageStats(fp, GMMATCH_PLAYERS_MAX, nFTHitlogObjectGround, nGMHitEnvironmentTaruCann, 0, 0);
 
     fp->playertag_wait = 0;
     fp->tarucann_wait = FTCOMMON_TARUCANN_PICKUP_WAIT;

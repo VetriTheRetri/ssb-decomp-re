@@ -40,7 +40,7 @@ itCreateDesc dITBombHeiItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itBombHeiAFallProcUpdate,               // Proc Update
     itBombHeiAFallProcMap,                  // Proc Map
     NULL,                                   // Proc Hit
@@ -228,14 +228,14 @@ void itBombHeiSDefaultSetWalkDirection(GObj *item_gobj, ub8 lr)
 
     if (lr != 0)
     {
-        ip->lr = LR_Right;
+        ip->lr = nGMDirectionR;
         ip->phys_info.vel_air.x = ITBOMBHEI_WALK_VEL_X;
 
         dobj->display_list = dlr;
     }
     else
     {
-        ip->lr = LR_Left;
+        ip->lr = nGMDirectionL;
         ip->phys_info.vel_air.x = -ITBOMBHEI_WALK_VEL_X;
 
         dobj->display_list = dll;
@@ -265,7 +265,7 @@ void itBombHeiSDefaultSetHitStatusNormal(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+    ip->item_hurt.hitstatus = nGMHitStatusNormal;
 }
 
 // 0x80177218
@@ -273,7 +273,7 @@ void itBombHeiSDefaultSetHitStatusNone(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+    ip->item_hurt.hitstatus = nGMHitStatusNone;
 }
 
 // 0x80177224
@@ -306,7 +306,7 @@ s32 itBombHeiGWalkGetMostPlayersLR(GObj *item_gobj)
 
         lbVector_Vec3fSubtract(&dist, translate, &fighter_dobj->translate.vec.f);
 
-        lr = (dist.x < 0.0F) ? LR_Left : LR_Right;
+        lr = (dist.x < 0.0F) ? nGMDirectionL : nGMDirectionR;
 
         fighter_gobj = fighter_gobj->link_next;
 
@@ -327,13 +327,13 @@ sb32 itBombHeiGWaitProcUpdate(GObj *item_gobj)
     {
         lr = itBombHeiGWalkGetMostPlayersLR(item_gobj);
 
-        if (lr == LR_Center)
+        if (lr == nGMDirectionC)
         {
             lr = mtTrigGetRandomIntRange(2) - 1;
         }
         if (lr < 0)
         {
-            ip->lr = LR_Right;
+            ip->lr = nGMDirectionR;
             ip->phys_info.vel_air.x = ITBOMBHEI_WALK_VEL_X;
         }
         else
@@ -342,7 +342,7 @@ sb32 itBombHeiGWaitProcUpdate(GObj *item_gobj)
 
             dobj->display_list = dll;
 
-            ip->lr = LR_Left;
+            ip->lr = nGMDirectionL;
         }
         itBombHeiGWalkSetStatus(item_gobj);
     }
@@ -468,7 +468,7 @@ sb32 itBombHeiGWalkProcUpdate(GObj *item_gobj)
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == LR_Left)
+        if (ip->lr == nGMDirectionL)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
@@ -542,7 +542,7 @@ void itBombHeiGWalkInitItemVars(GObj *item_gobj)
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == LR_Left)
+        if (ip->lr == nGMDirectionL)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
@@ -603,7 +603,7 @@ void itBombHeiSDefaultUpdateHitEvent(GObj *item_gobj)
         ip->item_hit.can_reflect = FALSE;
         ip->item_hit.can_setoff = FALSE;
 
-        ip->item_hit.element = gmHitCollision_Element_Fire;
+        ip->item_hit.element = nGMHitElementFire;
 
         ip->item_event_index++;
 

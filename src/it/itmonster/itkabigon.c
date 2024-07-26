@@ -31,7 +31,7 @@ itCreateDesc dITKabigonItemDesc =
         0,                                  // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itKabigonSDefaultProcUpdate,            // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
@@ -132,7 +132,7 @@ void itKabigonNFallProcRender(GObj *item_gobj)
             odRenderDObjTreeForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
-        else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
+        else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
@@ -240,7 +240,7 @@ void itKabigonSDefaultProcRender(GObj *item_gobj)
             odRenderDObjTreeForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
-        else if ((ip->item_hurt.hitstatus == gmHitCollision_HitStatus_None) && (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable))
+        else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 

@@ -99,7 +99,7 @@ void ftPikachuSpecialHiStartInitStatusVars(GObj *fighter_gobj)
 // 0x80152960 - Set hit collision, color animation and anim rate
 void ftPikachuSpecialHiInitMiscVars(GObj *fighter_gobj)
 {
-    ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Intangible); // Set hit status
+    ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusIntangible); // Set hit status
 
     ftColor_CheckSetColAnimIndex(fighter_gobj, FTPIKACHU_QUICKATTACK_COLANIM_ID, FTPIKACHU_QUICKATTACK_COLANIM_LENGTH); // Apply color animation
 

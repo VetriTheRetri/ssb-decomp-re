@@ -1,5 +1,5 @@
-#ifndef _ITEMVARS_H_
-#define _ITEMVARS_H_
+#ifndef _ITVARS_H_
+#define _ITVARS_H_
 
 #include <ssb_types.h>
 #include <sys/obj.h>

@@ -129,7 +129,7 @@ void func_ovl3_80172310(GObj *item_gobj)
 
     ip->rotate_step = (ip->attributes->spin_speed != 0) ? (ip->attributes->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ITEM_SPIN_SPEED_MUL_DEFAULT) : 0.0F;
 
-    if (ip->lr == LR_Left)
+    if (ip->lr == nGMDirectionL)
     {
         ip->rotate_step = -ip->rotate_step;
     }
@@ -176,7 +176,7 @@ void itMainVelSetRotateStepLR(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? LR_Right : LR_Left;
+    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? nGMDirectionR : nGMDirectionL;
 
     func_ovl3_80172310(item_gobj);
 }
@@ -234,7 +234,7 @@ void itMainRefreshHit(GObj *item_gobj)
 
     itMainClearHitRecord(ip);
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_New;
+    ip->item_hit.update_state = nGMHitUpdateNew;
 
     itProcessUpdateHitPositions(item_gobj);
 }
@@ -491,7 +491,7 @@ void itMainSetGroundAllowPickup(GObj *item_gobj) // Airborne item becomes ground
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+    ip->item_hit.update_state = nGMHitUpdateDisable;
 
     ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
 

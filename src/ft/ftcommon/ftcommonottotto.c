@@ -68,7 +68,7 @@ void ftCommonOttottoProcMap(GObj *fighter_gobj)
     }
     else
     {
-        if (fp->lr == LR_Right)
+        if (fp->lr == nGMDirectionR)
         {
             mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &pos);
         }

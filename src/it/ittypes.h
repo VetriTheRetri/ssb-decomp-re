@@ -14,7 +14,7 @@
 #include <ovl0/halbitmap.h>
 
 #include "itdef.h"
-#include <it/itemvars.h>
+#include <it/itvars.h>
 
 // Macros
 #define ITEM_ALLOC_MAX 16

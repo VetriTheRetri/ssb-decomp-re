@@ -138,7 +138,7 @@ void wpYoshiEggThrowInitWeaponVars(GObj *weapon_gobj)
         angle = 0.0F;
     }
 
-    angle *= ((wp->weapon_vars.egg_throw.stick_range < 0) ? LR_Left : LR_Right);
+    angle *= ((wp->weapon_vars.egg_throw.stick_range < 0) ? nGMDirectionL : nGMDirectionR);
 
     angle = (wp->weapon_vars.egg_throw.lr > 0) ? (WPEGGTHROW_TRAJECTORY_SUB_FORWARD - angle) : (WPEGGTHROW_TRAJECTORY_SUB_BEHIND - angle);
 
@@ -149,7 +149,7 @@ void wpYoshiEggThrowInitWeaponVars(GObj *weapon_gobj)
 
     DObjGetStruct(weapon_gobj)->translate.vec.f.z = 0.0F;
 
-    wp->weapon_hit.update_state = gmHitCollision_UpdateState_New;
+    wp->weapon_hit.update_state = nGMHitUpdateNew;
 
     wpProcessUpdateHitPositions(weapon_gobj);
 }
@@ -281,7 +281,7 @@ GObj* wpYoshiEggThrowMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->lifetime = WPEGGTHROW_LIFETIME;
 
-    wp->weapon_hit.update_state = gmHitCollision_UpdateState_Disable;
+    wp->weapon_hit.update_state = nGMHitUpdateDisable;
 
     wp->is_camera_follow = TRUE;
 

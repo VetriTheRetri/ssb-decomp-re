@@ -33,7 +33,7 @@ itCreateDesc dItLinkBombItemDesc =
 		0					  			// ???
 	},
 
-	gmHitCollision_UpdateState_Disable, // Hitbox Update State
+	nGMHitUpdateDisable, // Hitbox Update State
 	itLinkBombFHoldProcUpdate,			// Proc Update
 	NULL,								// Proc Map
 	NULL,								// Proc Hit
@@ -256,7 +256,7 @@ void itLinkBombSDefaultSetHitStatusNormal(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
-	ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+	ip->item_hurt.hitstatus = nGMHitStatusNormal;
 }
 
 // 80185CE4
@@ -264,7 +264,7 @@ void itLinkBombSDefaultSetHitStatusNone(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
-	ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+	ip->item_hurt.hitstatus = nGMHitStatusNone;
 }
 
 // 80185CF0
@@ -336,7 +336,7 @@ void itLinkBombGWaitSetStatus(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
-	ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+	ip->item_hit.update_state = nGMHitUpdateDisable;
 
 	ip->is_allow_pickup = TRUE;
 
@@ -506,7 +506,7 @@ void itLinkBombNExplodeUpdateHitEvent(GObj* item_gobj)
 		ip->item_hit.can_reflect = FALSE;
 		ip->item_hit.can_setoff = FALSE;
 
-		ip->item_hit.element = gmHitCollision_Element_Fire;
+		ip->item_hit.element = nGMHitElementFire;
 
 		ip->item_event_index++;
 

@@ -27,7 +27,7 @@ itCreateDesc dITHeartItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itHeartAFallProcUpdate,                 // Proc Update
     itHeartAFallProcMap,                    // Proc Map
     NULL,                                   // Proc Hit

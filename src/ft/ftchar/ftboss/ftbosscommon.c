@@ -222,7 +222,7 @@ void ftBossCommonUpdateDamageStats(GObj *fighter_gobj)
         {
             func_ovl65_8018F75C(fighter_gobj);
 
-            if (fp->lr == LR_Left)
+            if (fp->lr == nGMDirectionL)
             {
                 ftBossDeadLeftSetStatus(fighter_gobj);
             }

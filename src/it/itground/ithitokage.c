@@ -35,7 +35,7 @@ itCreateDesc dITHitokageItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itHitokageSDefaultProcUpdate,           // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
@@ -187,8 +187,8 @@ sb32 itHitokageSDefaultProcDamage(GObj *item_gobj)
         ip->phys_info.vel_air.x = __cosf(angle) * ip->damage_knockback * -ip->lr_damage;
         ip->phys_info.vel_air.y = __sinf(angle) * ip->damage_knockback;
 
-        ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
-        ip->item_hurt.hitstatus = gmHitCollision_HitStatus_None;
+        ip->item_hit.update_state = nGMHitUpdateDisable;
+        ip->item_hurt.hitstatus = nGMHitStatusNone;
 
         dobj->dobj_f0 = AOBJ_FRAME_NULL;
 
@@ -303,7 +303,7 @@ GObj* itHitokageWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->lifetime = ITHITOKAGE_FLAME_LIFETIME;
 
-    wp->lr = LR_Left;
+    wp->lr = nGMDirectionL;
 
     func_ovl0_800CE8C0(gITManagerParticleBankID | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
     func_ovl0_800CE8C0(gITManagerParticleBankID | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);

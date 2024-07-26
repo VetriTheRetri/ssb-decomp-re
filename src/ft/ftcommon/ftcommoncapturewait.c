@@ -27,7 +27,7 @@ void ftCommonCaptureWaitProcMap(GObj *fighter_gobj)
     }
     else
     {
-        if (capture_fp->lr == LR_Right)
+        if (capture_fp->lr == nGMDirectionR)
         {
             mpCollisionGetLREdgeRight(capture_fp->coll_data.ground_line_id, &capture_pos);
         }
@@ -54,7 +54,7 @@ void ftCommonCaptureWaitSetStatus(GObj *fighter_gobj)
     {
         this_fp->is_invisible = TRUE;
 
-        ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Intangible);
+        ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
     }
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
 }

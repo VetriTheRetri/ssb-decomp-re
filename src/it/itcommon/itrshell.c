@@ -30,7 +30,7 @@ itCreateDesc dITRShellItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itRShellAFallProcUpdate,                // Proc Update
     itRShellAFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
@@ -165,7 +165,7 @@ void itRShellGSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
     {
         dist_x = (DObjGetStruct(fighter_gobj)->translate.vec.f.x - DObjGetStruct(item_gobj)->translate.vec.f.x);
 
-        lr_dist = (dist_x < 0.0F) ? LR_Left : LR_Right;
+        lr_dist = (dist_x < 0.0F) ? nGMDirectionL : nGMDirectionR;
 
         vel_x = lr_dist * ITRSHELL_MUL_VEL_X;
 
@@ -173,9 +173,9 @@ void itRShellGSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
 
         ip->phys_info.vel_air.x += vel_x;
 
-        lr_vel = (ip->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right;
+        lr_vel = (ip->phys_info.vel_air.x < 0.0F) ? nGMDirectionL : nGMDirectionR;
 
-        lr_dist = (ip->item_vars.shell.vel_x < 0.0F) ? LR_Left : LR_Right;
+        lr_dist = (ip->item_vars.shell.vel_x < 0.0F) ? nGMDirectionL : nGMDirectionR;
 
         if (lr_dist == lr_vel)
         {
@@ -184,16 +184,16 @@ void itRShellGSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
                 ip->phys_info.vel_air.x = ip->lr * ITRSHELL_CLAMP_VEL_X;
             }
         }
-        if (ip->item_hit.update_state == gmHitCollision_UpdateState_Disable)
+        if (ip->item_hit.update_state == nGMHitUpdateDisable)
         {
             if (ABSF(ip->phys_info.vel_air.x) <= ITRSHELL_HIT_INIT_VEL_X)
             {
-                ip->item_hit.update_state = gmHitCollision_UpdateState_New;
+                ip->item_hit.update_state = nGMHitUpdateNew;
 
                 itProcessUpdateHitPositions(item_gobj);
             }
         }
-        ip->lr = (ip->phys_info.vel_air.x < 0.0F) ? LR_Left : LR_Right;
+        ip->lr = (ip->phys_info.vel_air.x < 0.0F) ? nGMDirectionL : nGMDirectionR;
     }
 }
 
@@ -329,15 +329,15 @@ void itRShellGWaitUpdateStatusVars(GObj *item_gobj)
 
         itMainClearOwnerStats(item_gobj);
 
-        ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
-        ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+        ip->item_hurt.hitstatus = nGMHitStatusNormal;
+        ip->item_hit.update_state = nGMHitUpdateDisable;
 
         itRShellSDefaultClearAnim(item_gobj);
         itMainSetItemStatus(item_gobj, dITRShellStatusDesc, itStatus_RShell_GWait);
     }
     else if (ip->item_vars.shell.is_damage != FALSE)
     {
-        ip->item_hit.update_state = gmHitCollision_UpdateState_New;
+        ip->item_hit.update_state = nGMHitUpdateNew;
 
         itProcessUpdateHitPositions(item_gobj);
         itRShellGSpinSetStatus(item_gobj);
@@ -350,8 +350,8 @@ void itRShellGWaitUpdateStatusVars(GObj *item_gobj)
 
         itMainClearOwnerStats(item_gobj);
 
-        ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
-        ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+        ip->item_hurt.hitstatus = nGMHitStatusNormal;
+        ip->item_hit.update_state = nGMHitUpdateDisable;
 
         itRShellSDefaultClearAnim(item_gobj);
         itMainSetItemStatus(item_gobj, dITRShellStatusDesc, itStatus_RShell_GWait);
@@ -371,7 +371,7 @@ void itRShellAFallSetStatus(GObj *item_gobj)
 
     ip->is_allow_pickup = FALSE;
 
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+    ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
     itMapSetAir(ip);
     itMainSetItemStatus(item_gobj, dITRShellStatusDesc, itStatus_RShell_AFall);
@@ -388,7 +388,7 @@ sb32 itRShellSDefaultProcDamage(GObj *item_gobj)
     {
         ip->item_vars.shell.is_damage = TRUE;
 
-        ip->item_hit.update_state = gmHitCollision_UpdateState_New;
+        ip->item_hit.update_state = nGMHitUpdateNew;
 
         itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
@@ -403,7 +403,7 @@ sb32 itRShellSDefaultProcDamage(GObj *item_gobj)
     {
         ip->phys_info.vel_air.x = 0.0F;
 
-        ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+        ip->item_hit.update_state = nGMHitUpdateDisable;
     }
     return FALSE;
 }
@@ -455,9 +455,9 @@ sb32 itRShellFThrowProcMap(GObj *item_gobj)
     {
         if (ip->phys_info.vel_air.x < 0.0F)
         {
-            ip->lr = LR_Left;
+            ip->lr = nGMDirectionL;
         }
-        else ip->lr = LR_Right;
+        else ip->lr = nGMDirectionR;
 
         ip->phys_info.vel_air.x = ((ip->lr * -8.0F) + -10.0F) * 0.7F;
     }
@@ -475,9 +475,9 @@ void itRShellGSpinEdgeInvertVelLR(GObj *item_gobj, ub8 lr)
 
     if (lr != 0)
     {
-        ip->lr = LR_Right;
+        ip->lr = nGMDirectionR;
     }
-    else ip->lr = LR_Left;
+    else ip->lr = nGMDirectionL;
 }
 
 // 0x8017AC84
@@ -490,7 +490,7 @@ void itRShellGSpinCheckCollisionEdge(GObj *item_gobj)
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == LR_Left)
+        if (ip->lr == nGMDirectionL)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
@@ -557,7 +557,7 @@ sb32 itRShellSDefaultProcHit(GObj *item_gobj)
     {
         return TRUE;
     }
-    ip->item_hurt.hitstatus = gmHitCollision_HitStatus_Normal;
+    ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
     ip->item_vars.shell.health = mtTrigGetRandomIntRange(ITRSHELL_HEALTH_MAX);
 
@@ -589,7 +589,7 @@ sb32 itRShellGSpinProcDamage(GObj *item_gobj)
 
     if (ABSF(ip->phys_info.vel_air.x) > ITRSHELL_STOP_VEL_X)
     {
-        ip->item_hit.update_state = gmHitCollision_UpdateState_New;
+        ip->item_hit.update_state = nGMHitUpdateNew;
 
         itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
@@ -597,7 +597,7 @@ sb32 itRShellGSpinProcDamage(GObj *item_gobj)
     }
     else
     {
-        ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
+        ip->item_hit.update_state = nGMHitUpdateDisable;
     }
     return FALSE;
 }
@@ -622,9 +622,9 @@ void itRShellGSpinInitItemVars(GObj *item_gobj)
 
     if (ip->phys_info.vel_air.x < 0.0F)
     {
-        ip->lr = LR_Left;
+        ip->lr = nGMDirectionL;
     }
-    else ip->lr = LR_Right;
+    else ip->lr = nGMDirectionR;
 
     if (ip->item_vars.shell.is_setup_vars == FALSE)
     {
@@ -666,9 +666,9 @@ void itRShellASpinInitItemVars(GObj *item_gobj)
     }
     if (ip->phys_info.vel_air.x < 0.0F)
     {
-        ip->lr = LR_Left;
+        ip->lr = nGMDirectionL;
     }
-    else ip->lr = LR_Right;
+    else ip->lr = nGMDirectionR;
 
     itMainClearOwnerStats(item_gobj);
     itMapSetAir(ip);
@@ -741,7 +741,7 @@ sb32 itRShellSDefaultProcReflector(GObj *item_gobj)
 
     if (item_dobj->translate.vec.f.x < fighter_dobj->translate.vec.f.x)
     {
-        ip->lr = LR_Left;
+        ip->lr = nGMDirectionL;
 
         if (ip->phys_info.vel_air.x >= 0.0F)
         {
@@ -751,7 +751,7 @@ sb32 itRShellSDefaultProcReflector(GObj *item_gobj)
     }
     else
     {
-        ip->lr = LR_Right;
+        ip->lr = nGMDirectionR;
 
         if (ip->phys_info.vel_air.x < 0.0F)
         {

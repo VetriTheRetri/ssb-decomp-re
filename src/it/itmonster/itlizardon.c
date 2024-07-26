@@ -39,7 +39,7 @@ itCreateDesc dITLizardonItemDesc =
         0,                                  // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itLizardonSDefaultProcUpdate,           // Proc Update
     itLizardonSDefaultProcMap,              // Proc Map
     NULL,                                   // Proc Hit
@@ -281,7 +281,7 @@ void itLizardonNAttackInitItemVars(GObj *item_gobj)
 
     ip->item_vars.lizardon.flame_spawn_wait = 0;
 
-    ip->lr = LR_Left;
+    ip->lr = nGMDirectionL;
 
     if (ip->it_kind == nITKindLizardon)
     {

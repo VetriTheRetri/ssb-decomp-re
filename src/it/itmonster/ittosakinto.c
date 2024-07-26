@@ -31,7 +31,7 @@ itCreateDesc dITTosakintoItemDesc =
         0,                                  // ???
     },
 
-    gmHitCollision_UpdateState_Disable,     // Hitbox Update State
+    nGMHitUpdateDisable,     // Hitbox Update State
     itTosakintoSDefaultProcUpdate,          // Proc Update
     itTosakintoSDefaultProcMap,             // Proc Map
     NULL,                                   // Proc Hit

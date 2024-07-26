@@ -8,7 +8,7 @@
 #include <ovl0/halbitmap.h>
 
 #include "efdef.h"
-#include "effectvars.h"
+#include "efvars.h"
 
 #define EFFECT_ALLOC_NUM 38
 #define EFFECT_ALLOC_ALIGN 0x8

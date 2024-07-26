@@ -29,7 +29,7 @@ itCreateDesc dITPorygonItemDesc =
         0                                   // ???
     },
 
-    gmHitCollision_UpdateState_New,         // Hitbox Update State
+    nGMHitUpdateNew,         // Hitbox Update State
     itPorygonSDefaultProcUpdate,            // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
@@ -80,7 +80,7 @@ void itPorygonSDefaultUpdateHitParty(GObj *item_gobj)
 
         pos.y = 0.0F;
 
-        efManagerDustLightMakeEffect(&pos, LR_Left, 1.0F);
+        efManagerDustLightMakeEffect(&pos, nGMDirectionL, 1.0F);
     }
 }
 

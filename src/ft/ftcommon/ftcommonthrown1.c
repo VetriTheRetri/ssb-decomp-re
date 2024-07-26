@@ -73,7 +73,7 @@ void ftCommonThrownSetStatusQueue(GObj *fighter_gobj, s32 status_id_new, s32 sta
     {
         this_fp->is_invisible = TRUE;
 
-        ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Intangible);
+        ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
     }
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
 
@@ -96,7 +96,7 @@ void ftCommonThrownSetStatusImmediate(GObj *fighter_gobj, s32 status_id)
     {
         this_fp->is_invisible = TRUE;
 
-        ftCollision_SetHitStatusAll(fighter_gobj, gmHitCollision_HitStatus_Intangible);
+        ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
     }
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
 

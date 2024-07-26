@@ -239,12 +239,12 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
 // 0x80167E78
 void wpMapSetGround(wpStruct *wp) // Make weapon grounded
 {
-    wp->ground_or_air = nMPKineticsGround;
+    wp->ga = nMPKineticsGround;
     wp->phys_info.vel_ground = wp->phys_info.vel_air.x * wp->lr;
 }
 
 // 0x80167E9C
 void wpMapSetAir(wpStruct *wp) // Make item airborne
 {
-    wp->ground_or_air = nMPKineticsAir;
+    wp->ga = nMPKineticsAir;
 }

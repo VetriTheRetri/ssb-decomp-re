@@ -7,7 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
-#define FTKIRBY_COPYPIKACHU_SPECIALN_STATUPDATE_FLAGS (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE)
+#define FTKIRBY_COPYPIKACHU_SPECIALN_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM)
 
 // // // // // // // // // // // //
 //                               //
@@ -92,7 +92,7 @@ void ftKirbyCopyPikachuSpecialNInitStatusVars(GObj *fighter_gobj)
 // 0x801538C8
 void ftKirbyCopyPikachuSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPikachuSpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPikachuSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyPikachuSpecialNInitStatusVars(fighter_gobj);
 }
@@ -100,7 +100,7 @@ void ftKirbyCopyPikachuSpecialNSetStatus(GObj *fighter_gobj)
 // 0x80153908
 void ftKirbyCopyPikachuSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPikachuSpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPikachuSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyPikachuSpecialNInitStatusVars(fighter_gobj);
 }

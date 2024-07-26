@@ -48,7 +48,7 @@ void ftDonkeyThrowAirFFSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFF, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFF, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->status_vars.common.throwff.is_turn = FALSE;
 
@@ -61,7 +61,7 @@ void ftDonkeyThrowFFSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowAirFF, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowAirFF, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
@@ -84,15 +84,15 @@ void ftDonkeyThrowFFSetStatus(GObj *fighter_gobj, sb32 is_turn)
     s32 status_id;
     u32 flags;
 
-    if (fp->ground_or_air == nMPKineticsGround)
+    if (fp->ga == nMPKineticsGround)
     {
         status_id = nFTDonkeyStatusThrowFF;
-        flags = FTSTATUPDATE_NONE_PRESERVE;
+        flags = FTSTATUS_PRESERVE_NONE;
     }
     else
     {
         status_id = nFTDonkeyStatusThrowAirFF;
-        flags = FTSTATUPDATE_FASTFALL_PRESERVE;
+        flags = FTSTATUS_PRESERVE_FASTFALL;
     }
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, flags);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
@@ -118,7 +118,7 @@ sb32 ftDonkeyThrowFFCheckInterruptThrowFCommon(GObj *fighter_gobj)
 
     if (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b))
     {
-        if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_THROWFF_TURN_STICK_RANGE_MIN) && ((fp->input.pl.stick_range.x * fp->lr) < 0) && (fp->ground_or_air == nMPKineticsAir))
+        if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_THROWFF_TURN_STICK_RANGE_MIN) && ((fp->input.pl.stick_range.x * fp->lr) < 0) && (fp->ga == nMPKineticsAir))
         {
             is_turn = TRUE;
         }

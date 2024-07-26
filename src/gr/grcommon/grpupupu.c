@@ -200,13 +200,13 @@ s32 grPupupuWhispyGetLR(GObj *ground_gobj)
 {
     s32 players_rside = 0;
     s32 players_lside = 0;
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > GRPUPUPU_WHISPY_POS_X)
+        if (fp->joint[nFTPartsJointTopN]->translate.vec.f.x > GRPUPUPU_WHISPY_POS_X)
         {
             players_rside++;
         }
@@ -228,13 +228,13 @@ s32 grPupupuWhispyGetLR(GObj *ground_gobj)
 // 0x8010595C
 void grPupupuWhispySetWindPush(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
     sb32 lr_wind = gGRCommonStruct.pupupu.lr_players;
 
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
-        DObj *joint = fp->joint[ftParts_Joint_TopN];
+        DObj *joint = fp->joint[nFTPartsJointTopN];
         f32 dist_x;
         Vec3f push;
         f32 pos_x = joint->translate.vec.f.x, pos_y = joint->translate.vec.f.y;
@@ -718,7 +718,7 @@ void grPupupuProcUpdate(GObj *ground_gobj)
 // 0x801064C8
 GObj* grPupupuMakeMapGObj(intptr_t tk, intptr_t offset2, void (*proc_render)(GObj*), u8 dl_link)
 {
-    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(ground_gobj, proc_render, dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -769,7 +769,7 @@ void grPupupuInitAll(void)
 // 0x801066D4
 GObj* grPupupuMakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjCommonProc(ground_gobj, grPupupuProcUpdate, nOMObjProcessKindProc, 4);
     grPupupuInitAll();

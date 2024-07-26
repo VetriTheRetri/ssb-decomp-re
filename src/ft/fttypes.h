@@ -38,39 +38,39 @@
 #define FTDATA_FLAG_ANIM_MOVIE              0x1
 #define FTDATA_FLAG_ANIM_GAME               0x2
 
-#define FTSTATUPDATE_NONE_PRESERVE          (0)                                         // 0x0 - Just zero
-#define FTSTATUPDATE_HIT_PRESERVE           (1 << ftStatusUpdate_Hit_Preserve)          // 0x1
-#define FTSTATUPDATE_COLANIM_PRESERVE       (1 << ftStatusUpdate_ColAnim_Preserve)      // 0x2
-#define FTSTATUPDATE_EFFECT_PRESERVE        (1 << ftStatusUpdate_Effect_Preserve)          // 0x4
-#define FTSTATUPDATE_FASTFALL_PRESERVE      (1 << ftStatusUpdate_FastFall_Preserve)     // 0x8
-#define FTSTATUPDATE_HITSTATUS_PRESERVE     (1 << ftStatusUpdate_HitStatus_Preserve)    // 0x10
-#define FTSTATUPDATE_MODELPART_PRESERVE     (1 << ftStatusUpdate_ModelPart_Preserve)    // 0x20
-#define FTSTATUPDATE_SLOPECONTOUR_PRESERVE  (1 << ftStatusUpdate_SlopeContour_Preserve) // 0x40
-#define FTSTATUPDATE_TEXTUREPART_PRESERVE   (1 << ftStatusUpdate_TexturePart_Preserve)  // 0x80
-#define FTSTATUPDATE_PLAYERTAG_PRESERVE     (1 << ftStatusUpdate_PlayerTag_Preserve)    // 0x100
-#define FTSTATUPDATE_THROWPOINTER_PRESERVE  (1 << ftStatusUpdate_ThrowGObj_Preserve)    // 0x200
-#define FTSTATUPDATE_SHUFFLETIME_PRESERVE   (1 << ftStatusUpdate_ShuffleTime_Preserve)  // 0x400
-#define FTSTATUPDATE_LOOPSFX_PRESERVE       (1 << ftStatusUpdate_LoopSFX_Preserve)      // 0x800
-#define FTSTATUPDATE_DAMAGEPORT_PRESERVE    (1 << ftStatusUpdate_DamagePort_Preserve)   // 0x1000
-#define FTSTATUPDATE_AFTERIMAGE_PRESERVE    (1 << ftStatusUpdate_AfterImage_Preserve)   // 0x2000
-#define FTSTATUPDATE_RUMBLE_PRESERVE        (1 << ftStatusUpdate_Rumble_Preserve)       // 0x4000
+#define FTSTATUS_PRESERVE_NONE          (0)                                     // 0x0 - Just zero
+#define FTSTATUS_PRESERVE_HIT           (1 << nFTStatusPreserveHit)             // 0x1
+#define FTSTATUS_PRESERVE_COLANIM       (1 << nFTStatusPreserveColAnim)         // 0x2
+#define FTSTATUS_PRESERVE_EFFECT        (1 << nFTStatusPreserveEffect)          // 0x4
+#define FTSTATUS_PRESERVE_FASTFALL      (1 << nFTStatusPreserveFastFall)        // 0x8
+#define FTSTATUS_PRESERVE_HITSTATUS     (1 << nFTStatusPreserveHitStatus)       // 0x10
+#define FTSTATUS_PRESERVE_MODELPART     (1 << nFTStatusPreserveModelPart)       // 0x20
+#define FTSTATUS_PRESERVE_SLOPECONTOUR  (1 << nFTStatusPreserveSlopeContour)    // 0x40
+#define FTSTATUS_PRESERVE_TEXTUREPART   (1 << nFTStatusPreserveTexturePart)     // 0x80
+#define FTSTATUS_PRESERVE_PLAYERTAG     (1 << nFTStatusPreservePlayerTag)       // 0x100
+#define FTSTATUS_PRESERVE_THROWPOINTER  (1 << nFTStatusPreserveThrowPointer)    // 0x200
+#define FTSTATUS_PRESERVE_SHUFFLETIME   (1 << nFTStatusPreserveShuffleTime)     // 0x400
+#define FTSTATUS_PRESERVE_LOOPSFX       (1 << nFTStatusPreserveLoopSFX)         // 0x800
+#define FTSTATUS_PRESERVE_DAMAGEPLAYER  (1 << nFTStatusPreserveDamagePlayer)    // 0x1000
+#define FTSTATUS_PRESERVE_AFTERIMAGE    (1 << nFTStatusPreserveAfterImage)      // 0x2000
+#define FTSTATUS_PRESERVE_RUMBLE        (1 << nFTStatusPreserveRumble)          // 0x4000
 
-#define FTCATCHKIND_MASK_SPECIALNYOSHI      (1 << ftCatch_Kind_SpecialNYoshi)           // 0x1
-#define FTCATCHKIND_MASK_SPECIALNKIRBY      (1 << ftCatch_Kind_SpecialNKirby)           // 0x2
-#define FTCATCHKIND_MASK_TARUCANN           (1 << ftCatch_Kind_TaruCann)                // 0x4
-#define FTCATCHKIND_MASK_TWISTER            (1 << ftCatch_Kind_Twister)                 // 0x8
-#define FTCATCHKIND_MASK_CATCHCOMMON        (1 << ftCatch_Kind_CatchCommon)             // 0x10
-#define FTCATCHKIND_MASK_SPECIALHICAPTAIN   (1 << ftCatch_Kind_SpecialHiCaptain)        // 0x20
+#define FTCATCHKIND_MASK_YOSHISPECIALN      (1 << nFTCatchKindYoshiSpecialN)    // 0x1
+#define FTCATCHKIND_MASK_KIRBYSPECIALN      (1 << nFTCatchKindKirbySpecialN)    // 0x2
+#define FTCATCHKIND_MASK_TARUCANN           (1 << nFTCatchKindTaruCann)         // 0x4
+#define FTCATCHKIND_MASK_TWISTER            (1 << nFTCatchKindTwister)          // 0x8
+#define FTCATCHKIND_MASK_COMMON             (1 << nFTCatchKindCommon)           // 0x10
+#define FTCATCHKIND_MASK_CAPTAINSPECIALHI   (1 << nFTCatchKindCaptainSpecialHi) // 0x20
 
 #define FTCATCHKIND_MASK_NONE (0)
 #define FTCATCHKIND_MASK_ALL            \
 (                                       \
-    FTCATCHKIND_MASK_SPECIALHICAPTAIN | \
-    FTCATCHKIND_MASK_CATCHCOMMON      | \
+    FTCATCHKIND_MASK_CAPTAINSPECIALHI | \
+    FTCATCHKIND_MASK_COMMON           | \
     FTCATCHKIND_MASK_TWISTER          | \
     FTCATCHKIND_MASK_TARUCANN         | \
-    FTCATCHKIND_MASK_SPECIALNKIRBY    | \
-    FTCATCHKIND_MASK_SPECIALNYOSHI      \
+    FTCATCHKIND_MASK_KIRBYSPECIALN    | \
+    FTCATCHKIND_MASK_YOSHISPECIALN      \
 )
 
 #define FTCOMPUTER_COMMAND_TIMER_BITS           (0x4)
@@ -79,22 +79,22 @@
 #define FTCOMPUTER_COMMAND_TIMER_MASK           (0x0F)
 #define FTCOMPUTER_COMMAND_OPCODE_MASK          (0xF0)
 
-#define FTCOMPUTER_COMMAND_BUTTON_A_PRESS       (ftComputer_Command_ButtonAPress        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x0
-#define FTCOMPUTER_COMMAND_BUTTON_A_RELEASE     (ftComputer_Command_ButtonARelease      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x10
-#define FTCOMPUTER_COMMAND_BUTTON_B_PRESS       (ftComputer_Command_ButtonBPress        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x20
-#define FTCOMPUTER_COMMAND_BUTTON_B_RELEASE     (ftComputer_Command_ButtonBRelease      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x30
-#define FTCOMPUTER_COMMAND_BUTTON_Z_PRESS       (ftComputer_Command_ButtonZPress        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x40
-#define FTCOMPUTER_COMMAND_BUTTON_Z_RELEASE     (ftComputer_Command_ButtonZRelease      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x50
-#define FTCOMPUTER_COMMAND_BUTTON_L_PRESS       (ftComputer_Command_ButtonLPress        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x60
-#define FTCOMPUTER_COMMAND_BUTTON_L_RELEASE     (ftComputer_Command_ButtonLRelease      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x70
-#define FTCOMPUTER_COMMAND_BUTTON_START_PRESS   (ftComputer_Command_ButtonStartPress    << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x80
-#define FTCOMPUTER_COMMAND_BUTTON_START_RELEASE (ftComputer_Command_ButtonStartRelease  << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x90
-#define FTCOMPUTER_COMMAND_STICK_X_TILT         (ftComputer_Command_StickX              << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xA0
-#define FTCOMPUTER_COMMAND_STICK_Y_TILT         (ftComputer_Command_StickY              << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xB0
-#define FTCOMPUTER_COMMAND_MOVEAUTO             (ftComputer_Command_MoveAuto            << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xC0
-#define FTCOMPUTER_COMMAND_STICK_X_VAR          (ftComputer_Command_StickXVar           << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xD0
-#define FTCOMPUTER_COMMAND_STICK_Y_VAR          (ftComputer_Command_StickYVar           << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xE0
-#define FTCOMPUTER_COMMAND_DEFAULT_MAX          (ftComputer_Command_EnumMax             << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xF0
+#define FTCOMPUTER_COMMAND_BUTTON_A_PRESS       (nFTComputerCommandButtonAPress        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x0
+#define FTCOMPUTER_COMMAND_BUTTON_A_RELEASE     (nFTComputerCommandButtonARelease      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x10
+#define FTCOMPUTER_COMMAND_BUTTON_B_PRESS       (nFTComputerCommandButtonBPress        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x20
+#define FTCOMPUTER_COMMAND_BUTTON_B_RELEASE     (nFTComputerCommandButtonBRelease      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x30
+#define FTCOMPUTER_COMMAND_BUTTON_Z_PRESS       (nFTComputerCommandButtonZPress        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x40
+#define FTCOMPUTER_COMMAND_BUTTON_Z_RELEASE     (nFTComputerCommandButtonZRelease      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x50
+#define FTCOMPUTER_COMMAND_BUTTON_L_PRESS       (nFTComputerCommandButtonLPress        << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x60
+#define FTCOMPUTER_COMMAND_BUTTON_L_RELEASE     (nFTComputerCommandButtonLRelease      << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x70
+#define FTCOMPUTER_COMMAND_BUTTON_START_PRESS   (nFTComputerCommandButtonStartPress    << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x80
+#define FTCOMPUTER_COMMAND_BUTTON_START_RELEASE (nFTComputerCommandButtonStartRelease  << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0x90
+#define FTCOMPUTER_COMMAND_STICK_X_TILT         (nFTComputerCommandStickX              << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xA0
+#define FTCOMPUTER_COMMAND_STICK_Y_TILT         (nFTComputerCommandStickY              << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xB0
+#define FTCOMPUTER_COMMAND_MOVEAUTO             (nFTComputerCommandMoveAuto            << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xC0
+#define FTCOMPUTER_COMMAND_STICK_X_VAR          (nFTComputerCommandStickXVar           << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xD0
+#define FTCOMPUTER_COMMAND_STICK_Y_VAR          (nFTComputerCommandStickYVar           << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xE0
+#define FTCOMPUTER_COMMAND_DEFAULT_MAX          (nFTComputerCommandEnumMax             << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xF0
 #define FTCOMPUTER_COMMAND_PKTHUNDER            (0xF3)
 #define FTCOMPUTER_COMMAND_END                  (0xFF)
 
@@ -102,15 +102,15 @@
 #define FTCOMPUTER_STICK_AUTOHALF               (0x80)
 
 #define FTCOMPUTER_EVENT_INSTRUCTION(k, t)      ( ((((k) << FTCOMPUTER_COMMAND_TIMER_BITS) & FTCOMPUTER_COMMAND_OPCODE_MASK) | ((t) & FTCOMPUTER_COMMAND_TIMER_MASK)) & U8_MAX )
-#define FTCOMPUTER_EVENT_STICK_X(x, t)          FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_StickX, t), (x)
-#define FTCOMPUTER_EVENT_STICK_Y(y, t)          FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_StickY, t), (y)
+#define FTCOMPUTER_EVENT_STICK_X(x, t)          FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandStickX, t), (x)
+#define FTCOMPUTER_EVENT_STICK_Y(y, t)          FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandStickY, t), (y)
 #define FTCOMPUTER_EVENT_PKTHUNDER()            (FTCOMPUTER_COMMAND_PKTHUNDER)
 #define FTCOMPUTER_EVENT_END()                  (FTCOMPUTER_COMMAND_END)
 
 #define FTEXPLAIN_EVENT_INSTRUCTION(k, t)       ( ((((k) << 12) & 0xF000) | ((t) & 0xFFF)) & U16_MAX )
-#define FTEXPLAIN_EVENT_STICK(x, y, t)          FTEXPLAIN_EVENT_INSTRUCTION(ftExplain_Command_Stick, t), (((((x) << 8) & 0xFF00) | (((y) << 0) & 0x00FF)) & U16_MAX)
-#define FTEXPLAIN_EVENT_BUTTON(b, t)            FTEXPLAIN_EVENT_INSTRUCTION(ftExplain_Command_Button, t), ((b) & U16_MAX)
-#define FTEXPLAIN_EVENT_END()                   FTEXPLAIN_EVENT_INSTRUCTION(ftExplain_Command_End, 0)
+#define FTEXPLAIN_EVENT_STICK(x, y, t)          FTEXPLAIN_EVENT_INSTRUCTION(nFTExplainCommandStick, t), (((((x) << 8) & 0xFF00) | (((y) << 0) & 0x00FF)) & U16_MAX)
+#define FTEXPLAIN_EVENT_BUTTON(b, t)            FTEXPLAIN_EVENT_INSTRUCTION(nFTExplainCommandButton, t), ((b) & U16_MAX)
+#define FTEXPLAIN_EVENT_END()                   FTEXPLAIN_EVENT_INSTRUCTION(nFTExplainCommandEnd, 0)
 
 // Structs
 struct ftSpecialHit
@@ -774,7 +774,7 @@ struct ftStruct
     struct ftStatusInfo         // Status = Action State
     {
         u32 status_time_spent;  // Frames spent in this action state
-        plKind pl_kind;
+        ftPlayerKind pl_kind;
         s32 status_id;
         s32 motion_id;          // Index of moveset command script to use
 
@@ -803,7 +803,7 @@ struct ftStruct
 
     u8 jumps_used;
     u8 unk_ft_0x149;
-    mpKinetics ground_or_air;
+    mpKinetics ga;
 
     f32 attack1_followup_frames;
     s32 attack1_status_id;
@@ -1014,7 +1014,7 @@ struct ftStruct
 
     DObj *joint[FTPARTS_JOINT_NUM_MAX];
 
-    ftModelPartRenderState joint_render_state[FTPARTS_JOINT_NUM_MAX - ftParts_Joint_EnumMax]; // Display List active = 0, inactive = -1?
+    ftModelPartRenderState joint_render_state[FTPARTS_JOINT_NUM_MAX - nFTPartsJointEnumMax]; // Display List active = 0, inactive = -1?
     ftTexturePartRenderState texture_render_state[2];
 
     ftData *ft_data;

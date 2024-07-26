@@ -15,5 +15,5 @@ void ftBossTsutsuku3ProcUpdate(GObj *fighter_gobj)
 // 0x80159F14
 void ftBossTsutsuku3SetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusTsutsuku3, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusTsutsuku3, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 }

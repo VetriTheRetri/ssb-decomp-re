@@ -146,7 +146,7 @@ void itRBombContainerSmashMakeEffect(Vec3f *pos)
 
     if (ep != NULL)
     {
-        effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+        effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
         if (effect_gobj != NULL)
         {

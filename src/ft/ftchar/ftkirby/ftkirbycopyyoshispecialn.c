@@ -3,7 +3,7 @@
 // 0x8015F180
 void ftKirbyCopyYoshiSpecialNInitCatchVars(ftStruct *fp, void (*proc_catch)(GObj*)) // Kirby's Yoshi Copy
 {
-    ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_SPECIALNYOSHI, proc_catch, ftCommonCaptureYoshiProcCapture);
+    ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_YOSHISPECIALN, proc_catch, ftCommonCaptureYoshiProcCapture);
 }
 
 // 0x8015F1AC
@@ -135,7 +135,7 @@ void ftKirbyCopyYoshiSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialN, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_HIT));
     ftKirbyCopyYoshiSpecialNInitCatchVars(fp, ftKirbyCopyYoshiSpecialNCatchProcCatch);
 }
 
@@ -145,7 +145,7 @@ void ftKirbyCopyYoshiSpecialNSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_HIT));
     ftKirbyCopyYoshiSpecialNInitCatchVars(fp, ftKirbyCopyYoshiSpecialAirNCatchProcCatch);
 }
 
@@ -153,28 +153,28 @@ void ftKirbyCopyYoshiSpecialNSwitchStatusAir(GObj *fighter_gobj)
 void ftKirbyCopyYoshiSpecialAirNCatchSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
 }
 
 // 0x8015F4F0
 void ftKirbyCopyYoshiSpecialNCatchSwitchStatusAir(GObj *fighter_gobj)
 {
     ftMap_SetAir(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
 }
 
 // 0x8015F530
 void ftKirbyCopyYoshiSpecialAirNReleaseSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialNRelease, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialNRelease, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
 }
 
 // 0x8015F570
 void ftKirbyCopyYoshiSpecialNReleaseSwitchStatusAir(GObj *fighter_gobj)
 {
     ftMap_SetAir(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirNRelease, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirNRelease, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
 }
 
 // 0x8015F5B0
@@ -184,7 +184,7 @@ void ftKirbyCopyYoshiSpecialNSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftKirbyCopyYoshiSpecialNProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftKirbyCopyYoshiSpecialNInitCatchVars(fp, ftKirbyCopyYoshiSpecialNCatchProcCatch);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }
@@ -196,7 +196,7 @@ void ftKirbyCopyYoshiSpecialAirNSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftKirbyCopyYoshiSpecialAirNProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftKirbyCopyYoshiSpecialNInitCatchVars(fp, ftKirbyCopyYoshiSpecialAirNCatchProcCatch);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }
@@ -215,7 +215,7 @@ void ftKirbyCopyYoshiSpecialNCatchInitStatusVars(GObj *fighter_gobj)
 // 0x8015F6AC
 void ftKirbyCopyYoshiSpecialNCatchProcCatch(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyYoshiSpecialNCatchInitStatusVars(fighter_gobj);
 }
@@ -223,7 +223,7 @@ void ftKirbyCopyYoshiSpecialNCatchProcCatch(GObj *fighter_gobj)
 // 0x8015F6F0
 void ftKirbyCopyYoshiSpecialAirNCatchProcCatch(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyYoshiSpecialNCatchInitStatusVars(fighter_gobj);
 }
@@ -242,7 +242,7 @@ void ftKirbyCopyYoshiSpecialNReleaseInitStatusVars(GObj *fighter_gobj)
 // 0x8015F768
 void ftKirbyCopyYoshiSpecialNReleaseSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialNRelease, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialNRelease, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyYoshiSpecialNReleaseInitStatusVars(fighter_gobj);
 }
@@ -250,7 +250,7 @@ void ftKirbyCopyYoshiSpecialNReleaseSetStatus(GObj *fighter_gobj)
 // 0x8015F7AC
 void ftKirbyCopyYoshiSpecialAirNReleaseSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirNRelease, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirNRelease, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyYoshiSpecialNReleaseInitStatusVars(fighter_gobj);
 }

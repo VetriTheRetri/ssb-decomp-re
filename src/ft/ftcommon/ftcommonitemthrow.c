@@ -226,9 +226,9 @@ void ftCommonItemThrowUpdateModelPitch(GObj *fighter_gobj)
                 fp->lr = -fp->lr;
             }
         }
-        fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y -= F_CLC_DTOR32(180.0F / fp->status_vars.common.itemthrow.turn_rotate_step);
+        fp->joint[nFTPartsJointTopN]->rotate.vec.f.y -= F_CLC_DTOR32(180.0F / fp->status_vars.common.itemthrow.turn_rotate_step);
 
-        func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
+        func_ovl2_800EB528(fp->joint[nFTPartsJointTopN]);
     }
 }
 
@@ -308,7 +308,7 @@ void ftCommonItemThrowProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == nMPKineticsAir)
+    if (fp->ga == nMPKineticsAir)
     {
         ftPhysics_ApplyAirVelDrift(fighter_gobj);
     }
@@ -340,7 +340,7 @@ void ftCommonItemThrowSetStatus(GObj *fighter_gobj, s32 status_id)
 
     ftCommonItemThrowInitCommandVars(fp);
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     ftCommonItemThrowInitStatusVars(fp);

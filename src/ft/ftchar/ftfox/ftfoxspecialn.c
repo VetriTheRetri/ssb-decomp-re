@@ -37,7 +37,7 @@ void ftFoxSpecialNProcInterrupt(GObj *fighter_gobj)
 
     if ((fp->command_vars.flags.flag1 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
     {
-        if (fp->ground_or_air == nMPKineticsAir)
+        if (fp->ga == nMPKineticsAir)
         {
             ftFoxSpecialAirNSetStatus(fighter_gobj);
         }
@@ -61,7 +61,7 @@ void ftFoxSpecialNInitStatusVars(GObj *fighter_gobj)
 // 0x8015BC78
 void ftFoxSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftFoxSpecialNInitStatusVars(fighter_gobj);
 }
@@ -69,7 +69,7 @@ void ftFoxSpecialNSetStatus(GObj *fighter_gobj)
 // 0x8015BCB8
 void ftFoxSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftFoxSpecialNInitStatusVars(fighter_gobj);
 }

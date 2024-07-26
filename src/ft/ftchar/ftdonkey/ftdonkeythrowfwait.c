@@ -42,11 +42,11 @@ void ftDonkeyThrowFWaitSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == nMPKineticsAir)
+    if (fp->ga == nMPKineticsAir)
     {
         ftMap_SetGround(fp);
     }
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
 // 0x8014D4EC

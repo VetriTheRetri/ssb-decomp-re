@@ -79,7 +79,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
     {
         return NULL;
     }
-    twister_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    twister_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     if (twister_gobj != NULL)
     {
@@ -206,16 +206,16 @@ s32 grHyruleTwisterGetLR(void)
 {
     s32 players_rside = 0;
     s32 players_lside = 0;
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
     f32 twister_pos_x = DObjGetStruct(gGRCommonStruct.hyrule.twister_gobj)->translate.vec.f.x;
 
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if ((fp->ground_or_air == nMPKineticsGround) && (fp->coll_data.ground_line_id == gGRCommonStruct.hyrule.twister_line_id))
+        if ((fp->ga == nMPKineticsGround) && (fp->coll_data.ground_line_id == gGRCommonStruct.hyrule.twister_line_id))
         {
-            if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > twister_pos_x)
+            if (fp->joint[nFTPartsJointTopN]->translate.vec.f.x > twister_pos_x)
             {
                 players_rside++;
             }
@@ -318,7 +318,7 @@ void grHyruleTwisterUpdateTurn(void)
 // 0x8010A824
 void grHyruleTwisterUpdateStop(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
@@ -427,7 +427,7 @@ void grHyruleTwisterInitVars(void)
 // 0x8010AB20
 GObj* grHyruleMakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjCommonProc(ground_gobj, grHyruleTwisterProcUpdate, nOMObjProcessKindProc, 4);
     grHyruleTwisterInitVars();

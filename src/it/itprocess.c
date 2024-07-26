@@ -171,7 +171,7 @@ void itProcessProcItemMain(GObj *item_gobj)
             translate->z += coll_data->pos_speed.z;
         }
 
-        else if ((ip->ground_or_air == nMPKineticsGround) && (ip->coll_data.ground_line_id != -1) && (ip->coll_data.ground_line_id != -2) && (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE))
+        else if ((ip->ga == nMPKineticsGround) && (ip->coll_data.ground_line_id != -1) && (ip->coll_data.ground_line_id != -2) && (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE))
         {
             mpCollisionGetSpeedLineID(ip->coll_data.ground_line_id, &ip->coll_data.pos_speed);
 
@@ -656,7 +656,7 @@ void itProcessSearchFighterHit(GObj *item_gobj) // Check fighters for hit detect
 
     if (ip->item_hurt.interact_mask & GMHITCOLLISION_MASK_FIGHTER)
     {
-        fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+        fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
         while (fighter_gobj != NULL)
         {           
@@ -678,7 +678,7 @@ void itProcessSearchFighterHit(GObj *item_gobj) // Check fighters for hit detect
 
                 if (ft_hit->update_state != gmHitCollision_UpdateState_Disable)
                 {
-                    if ((ip->ground_or_air == nMPKineticsAir) && (ft_hit->is_hit_air) || (ip->ground_or_air == nMPKineticsGround) && (ft_hit->is_hit_ground))
+                    if ((ip->ga == nMPKineticsAir) && (ft_hit->is_hit_air) || (ip->ga == nMPKineticsGround) && (ft_hit->is_hit_ground))
                     {
                         fighter_victim_flags.is_interact_hurt = fighter_victim_flags.is_interact_shield = FALSE;
 
@@ -747,7 +747,7 @@ void itProcessSearchItemHit(GObj *this_gobj) // Check other items for hit detect
 
     if (this_ip->item_hurt.interact_mask & GMHITCOLLISION_MASK_ITEM)
     {
-        other_gobj = gOMObjCommonLinks[GObj_LinkID_Item];
+        other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDItem];
 
         is_check_self = FALSE;
 
@@ -868,7 +868,7 @@ void itProcessSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detectio
 
     if (ip->item_hurt.interact_mask & GMHITCOLLISION_MASK_WEAPON)
     {
-        weapon_gobj = gOMObjCommonLinks[GObj_LinkID_Weapon];
+        weapon_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
 
         while (weapon_gobj != NULL)
         {
@@ -1017,7 +1017,7 @@ void itProcessProcHitCollisions(GObj *item_gobj)
     }
     if (ip->hit_shield_damage != 0)
     {
-        if ((ip->item_hit.can_hop) && (ip->ground_or_air == nMPKineticsAir))
+        if ((ip->item_hit.can_hop) && (ip->ga == nMPKineticsAir))
         {
             if (ip->shield_collide_angle < ITEM_HOP_ANGLE_DEFAULT)
             {

@@ -1484,7 +1484,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
     }
     else ep = NULL;
 
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, efManagerProcRun, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, efManagerProcRun, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -1680,7 +1680,7 @@ void efGroundMakeEffectSpawnActor(void)
 
     if ((gBattleState->gr_kind <= Gr_Kind_BattleEnd) && (gSceneData.scene_current != scMajor_Kind_1PTrainingMode) && (dEFGroundDatas[gBattleState->gr_kind].effect_param != NULL))
     {
-        effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, 7, GOBJ_LINKORDER_DEFAULT);
+        effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, 7, GOBJ_LINKORDER_DEFAULT);
 
         if (effect_gobj != NULL)
         {

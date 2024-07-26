@@ -272,7 +272,7 @@ void ftLinkSpecialHiProcMap(GObj *fighter_gobj)
     if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
     {
         ftMap_SetAir(fp);
-        ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirHi, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_EFFECT_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
+        ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirHi, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_HIT));
 
         fp->proc_damage = ftLinkSpecialHiProcDamage;
 
@@ -305,7 +305,7 @@ void ftLinkSpecialAirHiProcMap(GObj *fighter_gobj)
         else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
         {
             ftMap_SetGround(fp);
-            ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+            ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialHiEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
             fp->proc_damage = ftLinkSpecialHiProcDamage;
         }
@@ -331,7 +331,7 @@ void ftLinkSpecialHiSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftLinkSpecialHiProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_damage = ftLinkSpecialHiProcDamage;
@@ -343,7 +343,7 @@ void ftLinkSpecialHiEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialHiEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialHiEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_damage = ftLinkSpecialHiProcDamage;
@@ -357,7 +357,7 @@ void ftLinkSpecialAirHiSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftLinkSpecialHiProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->phys_info.vel_air.y = FTLINK_SPINATTACK_AIR_VEL_Y;

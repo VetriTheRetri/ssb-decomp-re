@@ -75,7 +75,7 @@ void ftCommonAttack100StartSetStatus(GObj *fighter_gobj)
             status_id = nFTCaptainStatusAttack100Start;
             break;
         }
-        ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
         ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
         fp->status_vars.common.attack100.is_anim_end = FALSE;
@@ -101,7 +101,7 @@ void ftCommonAttack100LoopKirbyUpdateEffect(ftStruct *fp)
             pos.y = effect[fp->command_vars.flags.flag2 - 1].offset.y;
             pos.z = effect[fp->command_vars.flags.flag2 - 1].offset.z;
 
-            ftParts_GetDObjWorldPosition(fp->joint[ftParts_Joint_TopN], &pos);
+            ftParts_GetDObjWorldPosition(fp->joint[nFTPartsJointTopN], &pos);
 
             efManagerKirbyVulcanJabMakeEffect(&pos, fp->lr, effect[fp->command_vars.flags.flag2 - 1].rotate, effect[fp->command_vars.flags.flag2 - 1].vel, effect[fp->command_vars.flags.flag2 - 1].add);
 
@@ -186,7 +186,7 @@ void ftCommonAttack100LoopSetStatus(GObj *fighter_gobj)
         status_id = nFTCaptainStatusAttack100Loop;
         break;
     }
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonAttack100LoopKirbyUpdateEffect(fp);
 }
 
@@ -223,7 +223,7 @@ void ftCommonAttack100EndSetStatus(GObj *fighter_gobj)
         status_id = nFTCaptainStatusAttack100End;
         break;
     }
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
 // 0x8014F4EC

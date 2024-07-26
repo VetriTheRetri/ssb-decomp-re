@@ -77,7 +77,7 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
         status_id = nFTCommonStatusThrowB;
         thrown_status = &this_fp->attributes->thrown_status[catch_fp->ft_kind].ft_thrown[1];
     }
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
 

@@ -45,7 +45,7 @@ void ftCommonCaptureApplyCaptureKnockback(GObj *fighter_gobj, ftThrowReleaseDesc
 
     ftCommonThrownReleaseFighterLoseGrip(fighter_gobj);
 
-    if (this_fp->ground_or_air == nMPKineticsAir)
+    if (this_fp->ga == nMPKineticsAir)
     {
         this_fp->jumps_used = 1;
 

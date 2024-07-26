@@ -43,7 +43,7 @@ void grCastleInitAll(void)
 
     gGRCommonStruct.castle.map_head = map_head = (void*)((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRCastleMapHead);
 
-    ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjCommonProc(ground_gobj, grCastleBumperProcUpdate, nOMObjProcessKindProc, 4);
 

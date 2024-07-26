@@ -17,7 +17,7 @@ void ftDonkeyThrowFDamageProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.common.throwfdamage.hitstun_timer <= 0.0F)
     {
-        if (fp->ground_or_air == nMPKineticsAir)
+        if (fp->ga == nMPKineticsAir)
         {
             fp->publicity_knockback = fp->status_vars.common.throwfdamage.publicity_knockback;
 
@@ -47,6 +47,6 @@ void ftDonkeyThrowFDamageSetStatus(GObj *fighter_gobj)
         ftStruct *capture_fp = ftGetStruct(catch_gobj);
 
         ftCommonThrownProcPhysics(catch_gobj);
-        func_ovl2_800EB528(capture_fp->joint[ftParts_Joint_TopN]);
+        func_ovl2_800EB528(capture_fp->joint[nFTPartsJointTopN]);
     }
 }

@@ -70,13 +70,13 @@ void grYamabukiGateUpdateSleep(void)
 // 0x8010AD18
 sb32 grYamabukiGateCheckPlayersNear(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if ((fp->ground_or_air == nMPKineticsGround) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
+        if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
         {
             return TRUE;
         }
@@ -262,7 +262,7 @@ void grYamabukiMakeGate(void)
 {
     GObj *gate_gobj;
 
-    gGRCommonStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    gGRCommonStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gate_gobj, odRenderDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
     func_8000F590(gate_gobj, (DObjDesc*) ((uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)&lGRYamabukiMapHead), NULL, OMMtx_Transform_TraRotRpyR, 0, 0);
@@ -295,7 +295,7 @@ void grYamabukiInitGroundVars(void)
 // 0x8010B2EC
 GObj* grYamabukiMakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjCommonProc(ground_gobj, grYamabukiGateProcUpdate, nOMObjProcessKindProc, 4);
     grYamabukiInitGroundVars();

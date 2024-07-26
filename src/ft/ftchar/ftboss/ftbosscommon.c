@@ -13,7 +13,7 @@ void ftBossCommonInvertLR(GObj *fighter_gobj) // Turn Master Hand around?
 
     fp->lr = -fp->lr;
 
-    fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
+    fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
 }
 
 // 0x80157F90
@@ -162,11 +162,11 @@ void ftBossCommonUpdateFogColor(GObj *fighter_gobj)
     f32 fog_dist;
     s32 fog_blend;
 
-    if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.z > 0.0F)
+    if (fp->joint[nFTPartsJointTopN]->translate.vec.f.z > 0.0F)
     {
         fog_dist = 1.0F;
     }
-    else fog_dist = (fp->joint[ftParts_Joint_TopN]->translate.vec.f.z < -15000.0F) ? 0.0F : (fp->joint[ftParts_Joint_TopN]->translate.vec.f.z - (-15000.0F)) / 15000.0F;
+    else fog_dist = (fp->joint[nFTPartsJointTopN]->translate.vec.f.z < -15000.0F) ? 0.0F : (fp->joint[nFTPartsJointTopN]->translate.vec.f.z - (-15000.0F)) / 15000.0F;
     
     fog_blend = (0x7F * fog_dist) + 0x80;
 

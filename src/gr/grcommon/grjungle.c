@@ -125,7 +125,7 @@ void grJungleMakeTaruCann(void)
     map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRJungleMapHead);
     gGRCommonStruct.jungle.map_head = map_head;
 
-    gGRCommonStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    gGRCommonStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(tarucann_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -177,7 +177,7 @@ sb32 grJungleTaruCannCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s
 
         if ((dist_x < 280.0F) && (dist_y < 280.0F))
         {
-            GObj *other_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+            GObj *other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
             while (other_gobj != NULL)
             {

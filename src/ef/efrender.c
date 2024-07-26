@@ -46,15 +46,15 @@ void efRenderProcRenderXLU(GObj *effect_gobj)
 // 0x800FCDEC
 void efRenderMakeBlendCLD(void)
 {
-    omAddGObjRenderProc(omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT), efRenderProcRenderBlendCLD, 15, 3, -1);
-    omAddGObjRenderProc(omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT), efRenderProcRenderBlendCLD, 18, 3, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efRenderProcRenderBlendCLD, 15, 3, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efRenderProcRenderBlendCLD, 18, 3, -1);
 }
 
 // 0x800FCE6C
 void efRenderMakeXLU(void)
 {
-    omAddGObjRenderProc(omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT), efRenderProcRenderXLU, 15, 0, -1);
-    omAddGObjRenderProc(omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT), efRenderProcRenderXLU, 18, 0, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efRenderProcRenderXLU, 15, 0, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efRenderProcRenderXLU, 18, 0, -1);
 }
 
 // 0x800FCEEC
@@ -116,19 +116,19 @@ void efRenderInitAll(void)
 {
     GObj *gobj;
 
-    gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, efRenderProcRenderZPerspCLD, 18, 1, -1);
     gobj->unk_gobj_0x30 = 5;
 
-    gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, efRenderProcRenderZPerspCLD, 15, 1, -1);
     gobj->unk_gobj_0x30 = 2;
 
-    gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+    gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, efRenderProcRenderZPerspXLU, 25, GOBJ_DLLINKORDER_DEFAULT, -1);
     gobj->unk_gobj_0x30 = 8;
 
-    gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
     omAddGObjRenderProc(gobj, efRenderProcRenderZPerspAAXLU, 10, GOBJ_DLLINKORDER_DEFAULT, -1);
     gobj->unk_gobj_0x30 = 16;
 

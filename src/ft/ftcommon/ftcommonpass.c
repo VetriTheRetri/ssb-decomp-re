@@ -40,7 +40,7 @@ void ftCommonPassSetStatusSquat(GObj *fighter_gobj)
 // 0x80141E38
 void ftCommonGuardPassSetStatus(GObj *fighter_gobj)
 {
-    ftCommonPassSetStatusParam(fighter_gobj, nFTCommonStatusGuardPass, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftCommonPassSetStatusParam(fighter_gobj, nFTCommonStatusGuardPass, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
 // 0x80141E60

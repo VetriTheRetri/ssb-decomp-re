@@ -21,7 +21,7 @@ void ftSamusSpecialLwCreateBomb(GObj *fighter_gobj)
         pos.x = pos.z = 0.0F;
         pos.y = FTSAMUS_BOMB_OFF_Y;
 
-        joint = fp->joint[ftParts_Joint_TopN]; // Not required but stack frame might be suggesting they wrote it like this
+        joint = fp->joint[nFTPartsJointTopN]; // Not required but stack frame might be suggesting they wrote it like this
 
         ftParts_GetDObjWorldPosition(joint, &pos);
         wpSamusBombMakeWeapon(fighter_gobj, &pos);
@@ -35,7 +35,7 @@ void ftSamusSpecialLwProcUpdate(GObj *fighter_gobj)
 
     ftSamusSpecialLwCreateBomb(fighter_gobj);
 
-    if (fp->ground_or_air == nMPKineticsAir)
+    if (fp->ga == nMPKineticsAir)
     {
         ftSamusSpecialLwTransferStatusAir(fighter_gobj);
     }
@@ -98,7 +98,7 @@ void ftSamusSpecialAirLwSwitchStatusGround(GObj *fighter_gobj)
     fp->command_vars.flags.flag3 = FALSE;
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
 // 0x8015E170 - Go to aerial Screw Attack from grounded update process
@@ -108,7 +108,7 @@ void ftSamusSpecialLwTransferStatusAir(GObj *fighter_gobj)
     ftAttributes *attributes = fp->attributes;
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->phys_info.vel_air.y = FTSAMUS_BOMB_VEL_Y_BASE;
     fp->jumps_used = attributes->jumps_max;
@@ -118,7 +118,7 @@ void ftSamusSpecialLwTransferStatusAir(GObj *fighter_gobj)
 void ftSamusSpecialLwSwitchStatusAir(GObj *fighter_gobj)
 {
     ftMap_SetAir(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
 // 0x8015E218
@@ -134,7 +134,7 @@ void ftSamusSpecialLwSetStatus(GObj *fighter_gobj)
 
     fp->command_vars.flags.flag3 = FALSE;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftSamusSpecialLwInitStatusVars(fp);
 
@@ -147,7 +147,7 @@ void ftSamusSpecialAirLwSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftSamusSpecialLwInitStatusVars(fp);
 

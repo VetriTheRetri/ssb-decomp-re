@@ -90,7 +90,7 @@ u32 wpManagerGetGroupIndexInc()
 GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_pos, u32 flags)
 {
     GObj *weapon_gobj;
-    void (*cb)(GObj*);
+    void (*proc_render)(GObj*);
     wpAttributes *attributes;
     wpStruct *wp;
     wpStruct *owner_wp;
@@ -104,7 +104,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     {
         return NULL;
     }
-    weapon_gobj = omMakeGObjSPAfter(nOMObjKindWeapon, NULL, GObj_LinkID_Weapon, GOBJ_LINKORDER_DEFAULT);
+    weapon_gobj = omMakeGObjSPAfter(nOMObjCommonKindWeapon, NULL, nOMObjCommonLinkIDWeapon, GOBJ_LINKORDER_DEFAULT);
 
     if (weapon_gobj == NULL)
     {
@@ -187,7 +187,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
         wp->weapon_hit.stale = WEAPON_STALE_DEFAULT;
         wp->weapon_hit.motion_count = gmCommon_GetMotionCountInc();
         wp->weapon_hit.stat_flags.stat_attack_id = nFTStatusAttackIDNone;
-        wp->weapon_hit.stat_flags.is_smash_attack = wp->weapon_hit.stat_flags.is_ground_or_air = wp->weapon_hit.stat_flags.is_projectile = FALSE;
+        wp->weapon_hit.stat_flags.is_smash_attack = wp->weapon_hit.stat_flags.is_ga = wp->weapon_hit.stat_flags.is_projectile = FALSE;
         wp->weapon_hit.stat_count = gmCommon_GetStatUpdateCountInc();
         break;
     }
@@ -266,15 +266,15 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     {
         func_8000F590(weapon_gobj, attributes->dobj_setup, NULL, wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.unk_dobjtransform_0x2);
 
-        cb = (wp_desc->flags & 0x2) ? wpRenderDObjTreeDLLinks : func_ovl3_80167618;
+        proc_render = (wp_desc->flags & 0x2) ? wpRenderDObjTreeDLLinks : func_ovl3_80167618;
     }
     else
     {
         func_ovl0_800C89BC(omAddDObjForGObj(weapon_gobj, attributes->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.unk_dobjtransform_0x2);
 
-        cb = (wp_desc->flags & 0x2) ? wpRenderDObjDLLinks : wpRenderDLHead1;
+        proc_render = (wp_desc->flags & 0x2) ? wpRenderDObjDLLinks : wpRenderDLHead1;
     }
-    omAddGObjRenderProc(weapon_gobj, cb, 14, GOBJ_DLLINKORDER_DEFAULT, -1);
+    omAddGObjRenderProc(weapon_gobj, proc_render, 14, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     if (attributes->mobjsub != NULL)
     {
@@ -343,7 +343,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
             break;
         }
     }
-    wp->ground_or_air = nMPKineticsAir;
+    wp->ga = nMPKineticsAir;
 
     wpProcessUpdateHitPositions(weapon_gobj);
 

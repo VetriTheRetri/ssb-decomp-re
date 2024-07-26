@@ -262,7 +262,7 @@ void ftPublicityKnockbackDecide(GObj *fighter_gobj, f32 knockback)
 void ftPublicityDownDecide(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    f32 pos_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+    f32 pos_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
     if ((pos_y >= gMPEdgeBounds.d2.bottom) || (pos_y < -2400.0F))
     {
@@ -311,7 +311,7 @@ void ftPublicityProcUpdate(GObj *public_gobj)
     }
     players_down_bak = sFTPublicityPlayersDown;
     sFTPublicityPlayersDown = 0;
-    fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     down_gobj = NULL;
 
@@ -401,7 +401,7 @@ void ftPublicitySetup(void)
 {
     omAddGObjCommonProc
     (
-        omMakeGObjSPAfter(nOMObjKindPublicity, NULL, 0xD, GOBJ_LINKORDER_DEFAULT), 
+        omMakeGObjSPAfter(nOMObjCommonKindPublicity, NULL, 0xD, GOBJ_LINKORDER_DEFAULT), 
         ftPublicityProcUpdate, 
         nOMObjProcessKindProc, 
         0

@@ -290,7 +290,7 @@ sb32 itBombHeiAFallProcUpdate(GObj *item_gobj)
 // 0x80177260
 s32 itBombHeiGWalkGetMostPlayersLR(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
     Vec3f *translate;
     s32 lr;
     s32 ret_lr = 0;

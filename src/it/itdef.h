@@ -8,76 +8,76 @@ typedef enum itKind
 	nITKindCommonStart, // Start of common item IDs
 
 	nITKindContainerStart = nITKindCommonStart, // Start of container items
-	nITKindBox = nITKindContainerStart,		  // Crate
-	nITKindTaru,								  // Barrel
-	nITKindCapsule,							  // Capsule
-	nITKindEgg,								  // Egg
-	nITKindContainerEnd = nITKindEgg,			  // End of container items
+	nITKindBox = nITKindContainerStart,		  	// Crate
+	nITKindTaru,								// Barrel
+	nITKindCapsule,							  	// Capsule
+	nITKindEgg,								  	// Egg
+	nITKindContainerEnd = nITKindEgg,			// End of container items
 
-	nITKindUtilityStart, // Start of utility items (or items that can be spawned in training mode / toggled)
-	nITKindTomato = nITKindUtilityStart, // Maxim Tomato
-	nITKindHeart,						   // Heart
-	nITKindStar,						   // Star Man
-	nITKindSword,						   // Beam Sword
-	nITKindBat,						   // Home-Run Bat
-	nITKindHarisen,					   // Fan
-	nITKindStarRod,					   // Star Rod
-	nITKindLGun,						   // Ray Gun
-	nITKindFFlower,					   // Fire Flower
-	nITKindHammer,						   // Hammer
-	nITKindMSBomb,						   // Motion-Sensor Bomb
-	nITKindBombHei,					   // Bob-Omb
-	nITKindNBumper,					   // Bumper (Item)
-	nITKindGShell,						   // Green Shell
-	nITKindRShell,						   // Red Shell
-	nITKindMBall,						   // Poké Ball
-	nITKindUtilityEnd = nITKindMBall,	   // End of utility items
+	nITKindUtilityStart, 						// Start of utility items (or items that can be spawned in training mode / toggled)
+	nITKindTomato = nITKindUtilityStart, 		// Maxim Tomato
+	nITKindHeart,						   		// Heart
+	nITKindStar,						   		// Star Man
+	nITKindSword,						   		// Beam Sword
+	nITKindBat,						   			// Home-Run Bat
+	nITKindHarisen,					   			// Fan
+	nITKindStarRod,					   			// Star Rod
+	nITKindLGun,						   		// Ray Gun
+	nITKindFFlower,					   			// Fire Flower
+	nITKindHammer,						  	 	// Hammer
+	nITKindMSBomb,						   		// Motion-Sensor Bomb
+	nITKindBombHei,					   			// Bob-Omb
+	nITKindNBumper,					   			// Bumper (Item)
+	nITKindGShell,						   		// Green Shell
+	nITKindRShell,						   		// Red Shell
+	nITKindMBall,						   		// Poké Ball
+	nITKindUtilityEnd = nITKindMBall,	   		// End of utility items
 
-	nITKindCommonEnd = nITKindUtilityEnd, // End of common item IDs
+	nITKindCommonEnd = nITKindUtilityEnd, 		// End of common item IDs
 
 	// Fighter items
-	nITKindFighterStart,					   // Start of fighter item IDs
-	nITKindNessPKFire = nITKindFighterStart, // PK Fire pillar
-	nITKindLinkBomb,						   // Link's Bomb
-	nITKindFighterEnd = nITKindLinkBomb,	   // End of fighter item IDs
+	nITKindFighterStart,					   	// Start of fighter item IDs
+	nITKindNessPKFire = nITKindFighterStart, 	// PK Fire pillar
+	nITKindLinkBomb,						   	// Link's Bomb
+	nITKindFighterEnd = nITKindLinkBomb,	   	// End of fighter item IDs
 
 	// Stage items
 	nITKindGroundStart, // Start of stage hazard IDs
 
-	nITKindPowerBlock = nITKindGroundStart, // POW block
-	nITKindGBumper,						  // Bumper (Stage Hazard)
-	nITKindPakkun,							  // Pirahna Plant
-	nITKindTarget,							  // Target
-	nITKindRBomb,							  // Race to the Finish bomb
+	nITKindPowerBlock = nITKindGroundStart, 	// POW block
+	nITKindGBumper,						  		// Bumper (Stage Hazard)
+	nITKindPakkun,							  	// Pirahna Plant
+	nITKindTarget,							  	// Target
+	nITKindRBomb,							  	// Race to the Finish bomb
 
-	nITKindGrMonsterStart,					 // Start of stage Pokémon
-	nITKindGLucky = nITKindGrMonsterStart, // Chansey (Saffron City)
-	nITKindMarumine,						 // Electrode
-	nITKindHitokage,						 // Charmander
-	nITKindFushigibana,					 // Venusaur
-	nITKindPorygon,						 // Porygon
-	nITKindGrMonsterEnd = nITKindPorygon,	 // End of stage Pokémon IDs
+	nITKindGrMonsterStart,					 	// Start of stage Pokémon
+	nITKindGLucky = nITKindGrMonsterStart, 		// Chansey (Saffron City)
+	nITKindMarumine,						 	// Electrode
+	nITKindHitokage,						 	// Charmander
+	nITKindFushigibana,					 		// Venusaur
+	nITKindPorygon,						 		// Porygon
+	nITKindGrMonsterEnd = nITKindPorygon,	 	// End of stage Pokémon IDs
 
-	nITKindGroundEnd = nITKindGrMonsterEnd, // End of stage hazard IDs
+	nITKindGroundEnd = nITKindGrMonsterEnd, 	// End of stage hazard IDs
 
 	// Pokémon
-	nITKindMbMonsterStart,					// Start of Pokémon item IDs
-	nITKindIwark = nITKindMbMonsterStart, // Onix
-	nITKindKabigon,						// Snorlax
-	nITKindTosakinto,						// Goldeen
-	nITKindNyars,							// Meowth
-	nITKindLizardon,						// Charizard
-	nITKindSpear,							// Beedrill
-	nITKindKamex,							// Blastoise
-	nITKindMLucky,							// Chansey (Poké Ball)
-	nITKindStarmie,						// Starmie
-	nITKindSawamura,						// Hitmonlee
-	nITKindDogas,							// Koffing
-	nITKindPippi,							// Clefairy
-	nITKindMew,							// Mew
-	nITKindMbMonsterEnd = nITKindMew,		// End of Pokémon item IDs
+	nITKindMbMonsterStart,						// Start of Pokémon item IDs
+	nITKindIwark = nITKindMbMonsterStart, 		// Onix
+	nITKindKabigon,								// Snorlax
+	nITKindTosakinto,							// Goldeen
+	nITKindNyars,								// Meowth
+	nITKindLizardon,							// Charizard
+	nITKindSpear,								// Beedrill
+	nITKindKamex,								// Blastoise
+	nITKindMLucky,								// Chansey (Poké Ball)
+	nITKindStarmie,								// Starmie
+	nITKindSawamura,							// Hitmonlee
+	nITKindDogas,								// Koffing
+	nITKindPippi,								// Clefairy
+	nITKindMew,									// Mew
+	nITKindMbMonsterEnd = nITKindMew,			// End of Pokémon item IDs
 
-	nITKindEnumMax // End of all item IDs
+	nITKindEnumMax 								// End of all item IDs
 
 } itKind;
 
@@ -95,8 +95,8 @@ typedef enum itType
 
 typedef enum itWeight
 {
-	It_Weight_Heavy, // Crate and barrel
-	It_Weight_Light	 // Everything else lol
+	nITWeightHeavy, // Crate and barrel
+	nITWeightLight	 // Everything else lol
 
 } itWeight;
 

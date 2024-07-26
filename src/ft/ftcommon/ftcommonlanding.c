@@ -63,7 +63,7 @@ void ftCommonLandingSetStatusParam(GObj *fighter_gobj, s32 status_id, sb32 is_al
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, anim_speed, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, anim_speed, FTSTATUS_PRESERVE_NONE);
 
     fp->status_vars.common.landing.is_allow_interrupt = is_allow_interrupt;
 }

@@ -465,14 +465,14 @@
 #define ITLINKBOMB_GRAVITY 1.2F
 #define ITLINKBOMB_T_VEL 100.0F
 
-typedef struct itCommon_ItemVars_BombHei
+typedef struct itCommonItemVarsBombHei
 {
 	u16 smoke_delay; // Frames before smoke effect is created when Bob-Omb
 					 // begins walking?
 
-} itCommon_ItemVars_BombHei;
+} itCommonItemVarsBombHei;
 
-typedef struct itCommon_ItemVars_Shell
+typedef struct itCommonItemVarsShell
 {
 	u8 damage_all_delay; // Shell can hit owner and teammates once this frame
 						 // timer reaches -1
@@ -485,15 +485,15 @@ typedef struct itCommon_ItemVars_Shell
 				 // it hits something; despawns shell at 0
 	f32 vel_x;
 
-} itCommon_ItemVars_Shell;
+} itCommonItemVarsShell;
 
-typedef struct itCommon_ItemVars_Taru
+typedef struct itCommonItemVarsTaru
 {
 	f32 roll_rotate_step;
 
-} itCommon_ItemVars_Taru;
+} itCommonItemVarsTaru;
 
-typedef struct itCommon_ItemVars_Bumper
+typedef struct itCommonItemVarsBumper
 {
 	u16 hit_anim_length; // Number of frames "hit" animation lasts after
 						 // bouncing off a target in midair
@@ -501,16 +501,16 @@ typedef struct itCommon_ItemVars_Bumper
 	u16 damage_all_delay; // Bumper is able to hit its owner (and teammates?)
 						  // once this timer runs out
 
-} itCommon_ItemVars_Bumper;
+} itCommonItemVarsBumper;
 
-typedef struct itGround_ItemVars_GrLucky
+typedef struct itGroundItemVarsGrLucky
 {
 	Vec3f pos;
 	u16 egg_spawn_count;
 
-} itGround_ItemVars_GrLucky;
+} itGroundItemVarsGrLucky;
 
-typedef struct itCommon_ItemVars_MBall
+typedef struct itCommonItemVarsMBall
 {
 	ub16 is_rebound;   // Set to TRUE when Poké Ball bounces back off a target
 	GObj* owner_gobj;  // While Poké Balls can be reflected, ownership is not
@@ -518,16 +518,16 @@ typedef struct itCommon_ItemVars_MBall
 					   // originally picked it up
 	GObj* effect_gobj; // Poké Ball ray scatter GFX
 
-} itCommon_ItemVars_MBall;
+} itCommonItemVarsMBall;
 
-typedef struct itGround_ItemVars_Pakkun
+typedef struct itGroundItemVarsPakkun
 {
 	Vec3f pos;
 	ub8 is_wait_fighter; // TRUE if a fighter is occupying the pipe
 
-} itGround_ItemVars_Pakkun;
+} itGroundItemVarsPakkun;
 
-typedef struct itMonster_ItemVars_Iwark
+typedef struct itMonsterItemVarsIwark
 {
 	u16 rock_spawn_remain;
 	s32 rock_spawn_wait; // Delay between rock projectiles
@@ -538,52 +538,52 @@ typedef struct itMonster_ItemVars_Iwark
 	u16 rumble_wait;
 	u16 rock_spawn_count; // Number of rocks to spawn?
 
-} itMonster_ItemVars_Iwark;
+} itMonsterItemVarsIwark;
 
-typedef struct itMonster_ItemVars_Kabigon
+typedef struct itMonsterItemVarsKabigon
 {
 	s32 dust_effect_int;
 	s32 rumble_wait;
 
-} itMonster_ItemVars_Kabigon;
+} itMonsterItemVarsKabigon;
 
-typedef struct itMonster_ItemVars_Tosakinto
+typedef struct itMonsterItemVarsTosakinto
 {
 	Vec3f pos;
 
-} itMonster_ItemVars_Tosakinto;
+} itMonsterItemVarsTosakinto;
 
-typedef struct itMonster_ItemVars_Mew
+typedef struct itMonsterItemVarsMew
 {
 	s32 esper_gfx_int;
 
-} itMonster_ItemVars_Mew;
+} itMonsterItemVarsMew;
 
-typedef struct itMonster_ItemVars_Nyars
+typedef struct itMonsterItemVarsNyars
 {
 	u16 coin_spawn_wait;
 	u16 coin_rotate_step;
 	u16 model_rotate_wait;
 
-} itMonster_ItemVars_Nyars;
+} itMonsterItemVarsNyars;
 
-typedef struct itMonster_ItemVars_Lizardon
+typedef struct itMonsterItemVarsLizardon
 {
 	Vec3f pos;
 	u16 turn_wait;
 	u16 flame_spawn_wait;
 
-} itMonster_ItemVars_Lizardon;
+} itMonsterItemVarsLizardon;
 
-typedef struct itMonster_ItemVars_Spear
+typedef struct itMonsterItemVarsSpear
 {
 	u16 spear_spawn_count;
 	s32 spear_spawn_wait;
 	f32 spear_spawn_pos_y;
 
-} itMonster_ItemVars_Spear;
+} itMonsterItemVarsSpear;
 
-typedef struct itMonster_ItemVars_Kamex
+typedef struct itMonsterItemVarsKamex
 {
 	s32 hydro_spawn_wait;
 	f32 hydro_push_vel_x; // Added to Blastoise's velocity if is_apply_push is
@@ -591,16 +591,16 @@ typedef struct itMonster_ItemVars_Kamex
 	sb32 is_apply_push;	  // Blastoise will be pushed forward after each Hydro
 						  // Pump stream if enabled
 
-} itMonster_ItemVars_Kamex;
+} itMonsterItemVarsKamex;
 
-typedef struct itMonster_ItemVars_MbLucky
+typedef struct itMonsterItemVarsMbLucky
 {
 	u16 egg_spawn_wait;
 	u16 lifetime;
 
-} itMonster_ItemVars_MbLucky;
+} itMonsterItemVarsMbLucky;
 
-typedef struct itMonster_ItemVars_Starmie
+typedef struct itMonsterItemVarsStarmie
 {
 	s32 unk_0x0;
 	s32 swift_spawn_wait;
@@ -609,56 +609,56 @@ typedef struct itMonster_ItemVars_Starmie
 	Vec3f victim_pos; // Position of Starmie's selected victim
 	f32 add_vel_x;
 
-} itMonster_ItemVars_Starmie;
+} itMonsterItemVarsStarmie;
 
-typedef struct itMonster_ItemVars_Dogas
+typedef struct itMonsterItemVarsDogas
 {
 	Vec3f pos;
 	s32 smog_spawn_wait;
 
-} itMonster_ItemVars_Dogas;
+} itMonsterItemVarsDogas;
 
-typedef struct itGround_ItemVars_Marumine
+typedef struct itGroundItemVarsMarumine
 {
 	Vec3f offset;
 
-} itGround_ItemVars_Marumine;
+} itGroundItemVarsMarumine;
 
-typedef struct itGround_ItemVars_Porygon
+typedef struct itGroundItemVarsPorygon
 {
 	Vec3f offset;
 
-} itGround_ItemVars_Porygon;
+} itGroundItemVarsPorygon;
 
-typedef struct itGround_ItemVars_Hitokage
+typedef struct itGroundItemVarsHitokage
 {
 	Vec3f offset;
 	u16 flags;
 	u16 flame_spawn_wait;
 
-} itGround_ItemVars_Hitokage;
+} itGroundItemVarsHitokage;
 
-typedef struct itGround_ItemVars_Fushigibana
+typedef struct itGroundItemVarsFushigibana
 {
 	Vec3f offset;
 	u16 flags;
 	u16 razor_spawn_wait;
 
-} itGround_ItemVars_Fushigibana;
+} itGroundItemVarsFushigibana;
 
-typedef struct itGround_ItemVars_RaceBomb
+typedef struct itGroundItemVarsRaceBomb
 {
 	f32 roll_rotate_step;
 
-} itGround_ItemVars_RaceBomb;
+} itGroundItemVarsRaceBomb;
 
-typedef struct itFighter_ItemVars_PKFire
+typedef struct itFighterItemVarsPKFire
 {
 	efTransform* effect;
 
-} itFighter_ItemVars_PKFire;
+} itFighterItemVarsPKFire;
 
-typedef struct itFighter_ItemVars_LinkBomb
+typedef struct itFighterItemVarsLinkBomb
 {
 	u16 unk_0x0;
 	u16 drop_update_wait; // Wait frames when dropping bomb, must pass before
@@ -667,6 +667,6 @@ typedef struct itFighter_ItemVars_LinkBomb
 	u16 scale_int; // Interval between Bomb inflate/deflate animation updates;
 				   // effectively animation speed
 
-} itFighter_ItemVars_LinkBomb;
+} itFighterItemVarsLinkBomb;
 
 #endif

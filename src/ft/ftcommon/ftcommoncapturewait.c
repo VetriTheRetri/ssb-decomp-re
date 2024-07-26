@@ -22,7 +22,7 @@ void ftCommonCaptureWaitProcMap(GObj *fighter_gobj)
 
         this_pos->y += dist_y;
 
-        this_fp->ground_or_air = nMPKineticsGround;
+        this_fp->ga = nMPKineticsGround;
         this_fp->jumps_used = 0;
     }
     else
@@ -37,7 +37,7 @@ void ftCommonCaptureWaitProcMap(GObj *fighter_gobj)
 
         mpObjectProc_SetFighterProjectGroundID(fighter_gobj);
 
-        this_fp->ground_or_air = nMPKineticsAir;
+        this_fp->ga = nMPKineticsAir;
         this_fp->jumps_used = 1;
     }
 }
@@ -48,7 +48,7 @@ void ftCommonCaptureWaitSetStatus(GObj *fighter_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureWait, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureWait, 0.0F, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART));
 
     if ((capture_fp->ft_kind == nFTKindYoshi) || (capture_fp->ft_kind == nFTKindPolyYoshi))
     {

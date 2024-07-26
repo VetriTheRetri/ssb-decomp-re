@@ -194,7 +194,7 @@ void func_ovl64_8018D0C0()
 // 8018D0E0
 void scAutoDemoBeginMatch()
 {
-	GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+	GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
 	while (fighter_gobj != NULL)
 	{
@@ -280,9 +280,9 @@ void scAutoDemoSetFocusPlayer1()
 			ftGetStruct(gBattleState->player_block[3].fighter_gobj)->cp_level = 1;
 
 		func_ovl64_8018D220(fighter_gobj);
-		ftCommon_SetModelPartLevelDetailAll(fighter_gobj, ftParts_LOD_HighPoly);
+		ftCommon_SetModelPartLevelDetailAll(fighter_gobj, nFTPartsDetailHigh);
 
-		fp->lod_match = ftParts_LOD_HighPoly;
+		fp->lod_match = nFTPartsDetailHigh;
 
 		SObjGetStruct(sAutoDemoFighterNameGObj)->sprite.attr &= ~SP_HIDDEN;
 
@@ -308,8 +308,8 @@ void scAutoDemoSetFocusPlayer2()
 
 	SObjGetStruct(sAutoDemoFighterNameGObj)->sprite.attr |= SP_HIDDEN;
 
-	ftCommon_SetModelPartLevelDetailAll(p1_gobj, ftParts_LOD_LowPoly);
-	ftGetStruct(p1_gobj)->lod_match = ftParts_LOD_LowPoly;
+	ftCommon_SetModelPartLevelDetailAll(p1_gobj, nFTPartsDetailLow);
+	ftGetStruct(p1_gobj)->lod_match = nFTPartsDetailLow;
 
 	if (scAutoDemoCheckStopFocusPlayer(p2_fp) != FALSE)
 	{
@@ -324,9 +324,9 @@ void scAutoDemoSetFocusPlayer2()
 		ftGetStruct(gBattleState->player_block[3].fighter_gobj)->cp_level = 1;
 
 		func_ovl64_8018D220(p2_gobj);
-		ftCommon_SetModelPartLevelDetailAll(p2_gobj, ftParts_LOD_HighPoly);
+		ftCommon_SetModelPartLevelDetailAll(p2_gobj, nFTPartsDetailHigh);
 
-		p2_fp->lod_match = ftParts_LOD_HighPoly;
+		p2_fp->lod_match = nFTPartsDetailHigh;
 
 		SObjGetStruct(sAutoDemoFighterNameGObj)->next->sprite.attr &= ~SP_HIDDEN;
 	}
@@ -353,9 +353,9 @@ void scAutoDemoResetFocusPlayerAll()
 	ftGetStruct(gBattleState->player_block[2].fighter_gobj)->cp_level =
 	ftGetStruct(gBattleState->player_block[3].fighter_gobj)->cp_level = 9;
 
-	ftCommon_SetModelPartLevelDetailAll(p2_gobj, ftParts_LOD_LowPoly);
+	ftCommon_SetModelPartLevelDetailAll(p2_gobj, nFTPartsDetailLow);
 
-	ftGetStruct(p2_gobj)->lod_match = ftParts_LOD_LowPoly;
+	ftGetStruct(p2_gobj)->lod_match = nFTPartsDetailLow;
 
 	SObjGetStruct(sAutoDemoFighterNameGObj)->next->sprite.attr |= SP_HIDDEN;
 }
@@ -411,7 +411,7 @@ void scAutoDemoProcUpdateMain(GObj *gobj)
 // 8018D704
 GObj* scAutoDemoMakeFocusInterface()
 {
-	GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, scAutoDemoProcUpdateMain, 0xA, 0x80000000);
+	GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, scAutoDemoProcUpdateMain, 0xA, 0x80000000);
 
 	sAutoDemoProc = dAutoDemoProcList;
 	sAutoDemoFocusChangeWait = 0;
@@ -543,7 +543,7 @@ void func_ovl64_8018D990()
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
 	{
-		gBattleState->player_block[i].player_kind = Pl_Kind_Com;
+		gBattleState->player_block[i].player_kind = nFTPlayerKindCom;
 		gBattleState->player_block[i].character_kind = scAutoDemoGetFighterKind(i);
 		gBattleState->player_block[i].level = 9;
 
@@ -566,7 +566,7 @@ void func_ovl64_8018DB18()
 	void *file;
 
 	file = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_0000000C, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_0000000C), 0x10));
-	sAutoDemoFighterNameGObj = interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xB, 0x80000000);
+	sAutoDemoFighterNameGObj = interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xB, 0x80000000);
 
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -627,7 +627,7 @@ void func_ovl64_8018DCC4()
 
 		player_spawn.player = player;
 
-		player_spawn.model_lod = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? ftParts_LOD_HighPoly : ftParts_LOD_LowPoly;
+		player_spawn.model_lod = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
 		player_spawn.costume = gBattleState->player_block[player].costume_index;
 

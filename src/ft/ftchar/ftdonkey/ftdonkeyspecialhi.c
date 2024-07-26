@@ -62,7 +62,7 @@ void ftDonkeySpecialAirHiSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialHi, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialHi, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_RUMBLE);
     ftPhysics_ClampGroundVel(fp, FTDONKEY_SPINNINGKONG_GROUND_VEL_MAX);
 }
 
@@ -72,17 +72,17 @@ void ftDonkeySpecialHiSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirHi, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_RUMBLE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirHi, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_RUMBLE);
     ftPhysics_ClampAirVelX(fp, FTDONKEY_SPINNINGKONG_AIR_VEL_MAX);
 }
 
 // 0x8015B8E8
-void ftDonkeySpecialHiSetStatusFlagGA(GObj *fighter_gobj, sb32 ground_or_air)
+void ftDonkeySpecialHiSetStatusFlagGA(GObj *fighter_gobj, sb32 ga)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     ftPhysics_ClampAirVelX(fp, FTDONKEY_SPINNINGKONG_AIR_VEL_MAX);
@@ -93,9 +93,9 @@ void ftDonkeySpecialHiSetStatusFlagGA(GObj *fighter_gobj, sb32 ground_or_air)
 
     fp->status_vars.donkey.specialhi.unk_0x0 = 9;
 
-    if (ground_or_air == nMPKineticsGround)
+    if (ga == nMPKineticsGround)
     {
-        fp->stat_flags.is_ground_or_air = nMPKineticsGround;
+        fp->stat_flags.is_ga = nMPKineticsGround;
     }
 }
 

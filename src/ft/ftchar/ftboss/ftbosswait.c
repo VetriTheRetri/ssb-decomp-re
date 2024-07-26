@@ -86,7 +86,7 @@ void ftBossWaitDecideStatusPlayer(GObj *fighter_gobj)
     if (ftCommonTurnCheckInputSuccess(fighter_gobj) != FALSE)
     {
         fp->lr = -fp->lr;
-        fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
+        fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
     }
 
     angle = ftCommon_GetStickAngleRadians(fp);
@@ -290,7 +290,7 @@ void ftBossWaitProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->status_info.pl_kind == Pl_Kind_Man)
+    if (fp->status_info.pl_kind == nFTPlayerKindMan)
     {
         ftBossWaitDecideStatusPlayer(fighter_gobj);
     }
@@ -304,7 +304,7 @@ void ftBossWaitProcPhysics(GObj *fighter_gobj)
     Vec3f vel;
     f32 magnitude;
 
-    if (fp->status_info.pl_kind != Pl_Kind_Man)
+    if (fp->status_info.pl_kind != nFTPlayerKindMan)
     {
         lbVector_Vec3fSubtract(&vel, &fp->status_vars.boss.wait.pos, &DObjGetStruct(fighter_gobj)->translate.vec.f);
 
@@ -327,7 +327,7 @@ void ftBossWaitSetStatus(GObj *fighter_gobj)
     Vec3f pos;
     s32 ground_line_id;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp = ftGetStruct(fighter_gobj);
 

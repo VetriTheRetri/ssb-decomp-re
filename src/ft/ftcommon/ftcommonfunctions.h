@@ -190,7 +190,7 @@ void ftCommonDamageCommonProcPhysics(GObj* fighter_gobj);
 void ftCommonDamageCommonProcLagUpdate(GObj* fighter_gobj);
 void func_ovl3_80140934();
 void ftCommonDamageAirCommonProcMap(GObj* fighter_gobj);
-f32 ftCommonDamageGetKnockbackAngle(s32 angle_i, s32 ground_or_air, f32 knockback);
+f32 ftCommonDamageGetKnockbackAngle(s32 angle_i, s32 ga, f32 knockback);
 s32 ftCommonDamageGetDamageLevel(f32 hitstun);
 void ftCommonDamageSetPublicity(ftStruct* this_fp, f32 knockback, f32 angle);
 sb32 ftCommonDamageCheckElementSetColAnim(GObj* fighter_gobj, s32 element, s32 damage_level);

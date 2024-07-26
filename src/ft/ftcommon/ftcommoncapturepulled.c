@@ -60,14 +60,14 @@ void ftCommonCapturePulledProcMap(GObj *fighter_gobj)
         {
             this_pos->y += dist_y;
 
-            this_fp->ground_or_air = nMPKineticsGround;
+            this_fp->ga = nMPKineticsGround;
             this_fp->jumps_used = 0;
         }
         else
         {
             this_pos->y += dist_y * 0.5F;
 
-            this_fp->ground_or_air = nMPKineticsAir;
+            this_fp->ga = nMPKineticsAir;
             this_fp->jumps_used = 1;
         }
     }
@@ -83,7 +83,7 @@ void ftCommonCapturePulledProcMap(GObj *fighter_gobj)
 
         mpObjectProc_SetFighterProjectGroundID(fighter_gobj);
 
-        this_fp->ground_or_air = nMPKineticsAir;
+        this_fp->ga = nMPKineticsAir;
         this_fp->jumps_used = 1;
     }
 }
@@ -96,7 +96,7 @@ void ftCommonCapturePulledProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     ftCommon_ProcDamageStopVoice(fighter_gobj);
 
-    if ((this_fp->item_hold != NULL) && (itGetStruct(this_fp->item_hold)->weight == It_Weight_Heavy))
+    if ((this_fp->item_hold != NULL) && (itGetStruct(this_fp->item_hold)->weight == nITWeightHeavy))
     {
         ftSetupDropItem(this_fp);
     }
@@ -118,7 +118,7 @@ void ftCommonCapturePulledProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     this_fp->lr = -capture_fp->lr;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCapturePulled, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCapturePulled, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     this_fp->status_vars.common.capture.is_goto_pulled_wait = FALSE;

@@ -84,7 +84,7 @@ GObj* itTargetMakeItem(GObj* spawn_gobj, Vec3f* pos, Vec3f* vel, u32 flags)
 	{
 		itStruct* ip = itGetStruct(item_gobj);
 
-		ip->ground_or_air = nMPKineticsGround;
+		ip->ga = nMPKineticsGround;
 		ip->coll_data.ground_line_id = -1;
 	}
 	return item_gobj;

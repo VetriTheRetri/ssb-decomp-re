@@ -330,7 +330,7 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
 
     pos.x = pos.y = pos.z = 0.0F;
 
-    joint_id = (ip->weight == It_Weight_Heavy) ? fp->attributes->joint_itemhold_heavy : fp->attributes->joint_itemhold_light;
+    joint_id = (ip->weight == nITWeightHeavy) ? fp->attributes->joint_itemhold_heavy : fp->attributes->joint_itemhold_light;
 
     ftParts_GetDObjWorldPosition(fp->joint[joint_id], &pos);
 
@@ -385,7 +385,7 @@ void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash
     ftStruct *fp = ftGetStruct(owner_gobj);
     void (*proc_throw)(GObj*);
 
-    if (ip->weight == It_Weight_Light)
+    if (ip->weight == nITWeightLight)
     {
         if (is_smash_throw != FALSE)
         {
@@ -450,7 +450,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     omAddOMMtxForDObjFixed(joint, 0x52, 0);
 
-    joint_id = (ip->weight == It_Weight_Heavy) ? fp->attributes->joint_itemhold_heavy : fp->attributes->joint_itemhold_light;
+    joint_id = (ip->weight == nITWeightHeavy) ? fp->attributes->joint_itemhold_heavy : fp->attributes->joint_itemhold_light;
 
     joint->user_data.p = fp->joint[joint_id];
 
@@ -472,7 +472,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
     }
     ftLink_SetModelPartHideShield(fighter_gobj);
 
-    if (ip->weight == It_Weight_Light)
+    if (ip->weight == nITWeightLight)
     {
         func_800269C0_275C0(alSound_SFX_ItemPickup);
     }
@@ -520,7 +520,7 @@ void itMainSetItemStatus(GObj *item_gobj, itStatusDesc *status_desc, s32 status_
     ip->is_thrown = FALSE;
 
     ip->item_hit.stat_flags.stat_attack_id = nFTStatusAttackIDNull;
-    ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ground_or_air = ip->item_hit.stat_flags.is_projectile = FALSE;
+    ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ga = ip->item_hit.stat_flags.is_projectile = FALSE;
 
     ip->item_hit.stat_count = gmCommon_GetStatUpdateCountInc();
 }

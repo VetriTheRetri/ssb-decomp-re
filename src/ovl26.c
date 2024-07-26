@@ -3491,7 +3491,7 @@ void mnBattleSaveMatchInfo()
 		gTransferBattleState.player_block[i].costume_index = gMnBattlePanels[i].costume_id;
 		gTransferBattleState.player_block[i].shade_index = gMnBattlePanels[i].shade;
 
-		if (gTransferBattleState.player_block[i].player_kind == Pl_Kind_Man)
+		if (gTransferBattleState.player_block[i].player_kind == nFTPlayerKindMan)
 		{
 			gTransferBattleState.player_block[i].player_color_index
 				= (gTransferBattleState.is_team_battle == FALSE) ? i : D_ovl2_8012EF40[gTransferBattleState.player_block[i].team_index];
@@ -3501,11 +3501,11 @@ void mnBattleSaveMatchInfo()
 		else
 			gTransferBattleState.player_block[i].player_color_index = D_ovl2_8012EF40[gTransferBattleState.player_block[i].team_index];
 
-		gTransferBattleState.player_block[i].tag_kind = (gTransferBattleState.player_block[i].player_kind == Pl_Kind_Man) ? i : 4;
+		gTransferBattleState.player_block[i].tag_kind = (gTransferBattleState.player_block[i].player_kind == nFTPlayerKindMan) ? i : 4;
 
 		gTransferBattleState.player_block[i].is_single_stockicon = (gTransferBattleState.match_rules & 1) ? TRUE : FALSE;
 
-		if (gTransferBattleState.player_block[i].player_kind == Pl_Kind_Com)
+		if (gTransferBattleState.player_block[i].player_kind == nFTPlayerKindCom)
 			gTransferBattleState.player_block[i].level = gMnBattlePanels[i].cpu_level;
 		else
 			gTransferBattleState.player_block[i].handicap = gMnBattlePanels[i].handicap;
@@ -3517,8 +3517,8 @@ void mnBattleSaveMatchInfo()
 	{
 		switch (gTransferBattleState.player_block[i].player_kind)
 		{
-		case Pl_Kind_Man: gTransferBattleState.pl_count++; break;
-		case Pl_Kind_Com: gTransferBattleState.cp_count++; break;
+		case nFTPlayerKindMan: gTransferBattleState.pl_count++; break;
+		case nFTPlayerKindCom: gTransferBattleState.cp_count++; break;
 		}
 	}
 }
@@ -3669,7 +3669,7 @@ void mnBattleInitPort(s32 port_id)
 	panel_info->player = NULL;
 	panel_info->char_id = gTransferBattleState.player_block[port_id].character_kind;
 
-	if ((gTransferBattleState.player_block[port_id].player_kind == Pl_Kind_Man)
+	if ((gTransferBattleState.player_block[port_id].player_kind == nFTPlayerKindMan)
 		&& (controller_order = gMnBattleControllerOrderArray[port_id], (controller_order == unplugged)))
 	{
 		panel_info->player_type = mnPanelTypeNA;

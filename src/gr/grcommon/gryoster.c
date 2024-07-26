@@ -69,14 +69,14 @@ efGenerator* grYosterCloudVaporMakeEffect(Vec3f *pos)
 // 0x801085A8
 sb32 grYosterCheckFighterCloudStand(s32 cloud_id)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
     s32 line_id = dGRYosterCloudLineIDs[cloud_id];
 
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (fp->ground_or_air == nMPKineticsGround)
+        if (fp->ga == nMPKineticsGround)
         {
             if ((fp->coll_data.ground_line_id != -2) && (mpCollisionSetDObjNoID(fp->coll_data.ground_line_id) == line_id))
             {
@@ -229,7 +229,7 @@ void grYosterInitAll(void)
 
     for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.yoster.clouds); i++)
     {
-        map_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+        map_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
         gGRCommonStruct.yoster.clouds[i].gobj = map_gobj;
 
@@ -273,7 +273,7 @@ void grYosterInitAll(void)
 // 0x80108C80
 GObj* grYosterMakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     grYosterInitAll();
     omAddGObjCommonProc(ground_gobj, grYosterProcUpdate, nOMObjProcessKindProc, 4);

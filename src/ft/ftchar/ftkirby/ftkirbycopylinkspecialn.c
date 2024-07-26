@@ -96,14 +96,14 @@ void ftKirbyCopyLinkSpecialNProcStatus(GObj *fighter_gobj)
 void ftKirbyCopyLinkSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftMap_SetAir(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_MODELPART_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_MODELPART);
 }
 
 // 0x80164860
 void ftKirbyCopyLinkSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialN, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_MODELPART_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_MODELPART);
 }
 
 // 0x801648A0
@@ -112,7 +112,7 @@ void ftKirbyCopyLinkSpecialNEmptySwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialAirNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialAirNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->is_special_interrupt = TRUE;
 }
@@ -123,7 +123,7 @@ void ftKirbyCopyLinkSpecialAirNEmptySwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->is_special_interrupt = TRUE;
 }
@@ -137,11 +137,11 @@ void ftKirbyCopyLinkSpecialNSetStatus(GObj *fighter_gobj)
 
     if (fp->fighter_vars.kirby.copylink_boomerang_gobj != NULL)
     {
-        ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialNEmpty, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialNEmpty, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
         fp->is_special_interrupt = TRUE;
     }
-    else ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    else ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }
@@ -155,11 +155,11 @@ void ftKirbyCopyLinkSpecialAirNSetStatus(GObj *fighter_gobj)
 
     if (fp->fighter_vars.kirby.copylink_boomerang_gobj != NULL)
     {
-        ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialAirNEmpty, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialAirNEmpty, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
         fp->is_special_interrupt = TRUE;
     }
-    else ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    else ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }
@@ -169,11 +169,11 @@ void ftKirbyCopyLinkSpecialNReturnSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == nMPKineticsAir)
+    if (fp->ga == nMPKineticsAir)
     {
-        ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialAirNReturn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialAirNReturn, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     }
-    else ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialNReturn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    else ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialNReturn, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }

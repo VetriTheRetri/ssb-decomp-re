@@ -96,7 +96,7 @@ sb32 wpSamusBombProcUpdate(GObj *weapon_gobj)
     }
     else
     {
-        if (wp->ground_or_air == nMPKineticsAir)
+        if (wp->ga == nMPKineticsAir)
         {
             wpMainApplyGClampTVel(wp, WPSAMUSBOMB_WAIT_GRAVITY, WPSAMUSBOMB_WAIT_T_VEL);
             DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= (WPSAMUSBOMB_WAIT_ROTATE_SPEED_AIR * wp->lr);
@@ -135,7 +135,7 @@ sb32 wpSamusBombProcMap(GObj *weapon_gobj)
     Vec3f *vel;
     sb32 is_collide;
 
-    if (wp->ground_or_air == nMPKineticsAir)
+    if (wp->ga == nMPKineticsAir)
     {
         is_collide = wpMapTestAllCheckGround(weapon_gobj);
 
@@ -202,7 +202,7 @@ sb32 wpSamusBombProcReflector(GObj *weapon_gobj)
 
     wp->lifetime = WPSAMUSBOMB_WAIT_LIFETIME;
 
-    if (wp->ground_or_air == nMPKineticsAir)
+    if (wp->ga == nMPKineticsAir)
     {
         wpMainReflectorSetLR(wp, fp);
         wpMainVelSetLR(weapon_gobj);

@@ -62,7 +62,7 @@ s32 scBattle_GetPlayerStartLR(s32 target_player)
 	{
 		if (loop_player == target_player) continue;
 
-		if (gBattleState->player_block[loop_player].player_kind == Pl_Kind_Not) continue;
+		if (gBattleState->player_block[loop_player].player_kind == nFTPlayerKindNot) continue;
 
 		if (gBattleState->player_block[loop_player].player != gBattleState->player_block[target_player].player)
 		{
@@ -132,7 +132,7 @@ void scBattle_StartStockBattle()
 	{
 		player_spawn = dFTDefaultFighterDesc;
 
-		if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
+		if (gBattleState->player_block[player].player_kind == nFTPlayerKindNot) continue;
 
 		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
 		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
@@ -143,7 +143,7 @@ void scBattle_StartStockBattle()
 		player_spawn.team = gBattleState->player_block[player].player;
 		player_spawn.player = player;
 
-		player_spawn.model_lod = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? ftParts_LOD_HighPoly : ftParts_LOD_LowPoly;
+		player_spawn.model_lod = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
 		player_spawn.costume = gBattleState->player_block[player].costume_index;
 		player_spawn.shade = gBattleState->player_block[player].shade_index;
@@ -200,21 +200,21 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 
 	for (i = 0; i < ARRAY_COUNT(D_800A4EF8.player_block); i++)
 	{
-		D_800A4EF8.player_block[i].player_kind = Pl_Kind_Not;
+		D_800A4EF8.player_block[i].player_kind = nFTPlayerKindNot;
 	}
 	switch (gBattleState->is_team_battle)
 	{
 	case FALSE:
 		for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
 		{
-			if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
+			if (gBattleState->player_block[i].player_kind == nFTPlayerKindNot) continue;
 
 			player_results[result_count].tko = gBattleState->player_block[i].score - gBattleState->player_block[i].falls;
 			player_results[result_count].kos = gBattleState->player_block[i].score;
 			player_results[result_count].player_or_team = i;
 			player_results[result_count].unk_battleres_0x9 = FALSE;
 
-			if (gBattleState->player_block[i].player_kind == Pl_Kind_Man)
+			if (gBattleState->player_block[i].player_kind == nFTPlayerKindMan)
 			{
 				player_results[result_count].is_human_player = TRUE;
 			}
@@ -254,11 +254,11 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 
 			switch (D_800A4EF8.player_block[player_results[i].player_or_team].player_kind)
 			{
-			case Pl_Kind_Man:
+			case nFTPlayerKindMan:
 				D_800A4EF8.pl_count++;
 				break;
 
-			case Pl_Kind_Com:
+			case nFTPlayerKindCom:
 				D_800A4EF8.cp_count++;
 				break;
 			}
@@ -268,7 +268,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 	case TRUE:
 		for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
 		{
-			if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
+			if (gBattleState->player_block[i].player_kind == nFTPlayerKindNot) continue;
 
 			for (j = 0; j < result_count; j++)
 			{
@@ -277,7 +277,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 					player_results[j].tko += gBattleState->player_block[i].score - gBattleState->player_block[i].falls;
 					player_results[j].kos += gBattleState->player_block[i].score;
 
-					if ((player_results[j].is_human_player != FALSE) || (gBattleState->player_block[i].player_kind == Pl_Kind_Man))
+					if ((player_results[j].is_human_player != FALSE) || (gBattleState->player_block[i].player_kind == nFTPlayerKindMan))
 					{
 						player_results[j].is_human_player = TRUE;
 					}
@@ -291,7 +291,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 			player_results[result_count].player_or_team = gBattleState->player_block[i].team_index;
 			player_results[result_count].unk_battleres_0x9 = FALSE;
 
-			if ((player_results[result_count].is_human_player != FALSE) || (gBattleState->player_block[i].player_kind == Pl_Kind_Man))
+			if ((player_results[result_count].is_human_player != FALSE) || (gBattleState->player_block[i].player_kind == nFTPlayerKindMan))
 			{
 				player_results[result_count].is_human_player = TRUE;
 			}
@@ -332,7 +332,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 		{
 			for (j = 0; j < ARRAY_COUNT(gBattleState->player_block); j++)
 			{
-				if (gBattleState->player_block[j].player_kind == Pl_Kind_Not) continue;
+				if (gBattleState->player_block[j].player_kind == nFTPlayerKindNot) continue;
 
 				if (gBattleState->player_block[j].team_index == player_results[i].player_or_team)
 				{
@@ -340,11 +340,11 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 
 					switch (D_800A4EF8.player_block[j].player_kind)
 					{
-					case Pl_Kind_Man:
+					case nFTPlayerKindMan:
 						D_800A4EF8.pl_count++;
 						break;
 
-					case Pl_Kind_Com:
+					case nFTPlayerKindCom:
 						D_800A4EF8.cp_count++;
 						break;
 					}
@@ -394,7 +394,7 @@ void scBattle_StartSDBattle()
 	{
 		player_spawn = dFTDefaultFighterDesc;
 
-		if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
+		if (gBattleState->player_block[player].player_kind == nFTPlayerKindNot) continue;
 
 		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
 		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
@@ -406,7 +406,7 @@ void scBattle_StartSDBattle()
 		player_spawn.team = gBattleState->player_block[player].player;
 		player_spawn.player = player;
 
-		player_spawn.model_lod = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? ftParts_LOD_HighPoly : ftParts_LOD_LowPoly;
+		player_spawn.model_lod = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
 		player_spawn.costume = gBattleState->player_block[player].costume_index;
 		player_spawn.shade = gBattleState->player_block[player].shade_index;

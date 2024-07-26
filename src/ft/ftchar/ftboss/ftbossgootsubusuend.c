@@ -17,7 +17,7 @@ void ftBossGootsubusuEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusGootsubusuEnd, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusGootsubusuEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->phys_info.vel_air.y = 0.0F;
 }

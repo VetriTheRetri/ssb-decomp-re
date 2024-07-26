@@ -13,7 +13,7 @@
 #include <sys/develop.h>
 #include <ovl0/halbitmap.h>
 
-#include "wpdef.h"
+#include <wp/wpdef.h>
 #include <wp/weaponvars.h>
 
 // Macros
@@ -169,7 +169,7 @@ struct wpStruct
     } phys_info;
 
     mpCollData coll_data;               // Weapon's collision data
-    mpKinetics ground_or_air;          // Ground or air bool
+    mpKinetics ga;          // Ground or air bool
 
     wpHitbox weapon_hit;                // Weapon's hitbox
 
@@ -180,7 +180,7 @@ struct wpStruct
     f32 shield_collide_angle;           // Angle at which item collided with shield?
     Vec3f shield_collide_vec;           // Position of shield item collided with? (Update: only Z axis appears to be used, can be 0, -1 or 1 depending on attack direction
     GObj *reflect_gobj;                 // GObj that reflected this weapon
-    gmStatFlags reflect_stat_flags;     // Status flags of GObj reflecting this item (e.g. is_smash_attack, is_ground_or_air, is_projectile, etc.)
+    gmStatFlags reflect_stat_flags;     // Status flags of GObj reflecting this item (e.g. is_smash_attack, is_ga, is_projectile, etc.)
     u16 reflect_stat_count;             // Status update count at the time the item is reflected?
     GObj *absorb_gobj;                  // GObj that absorbed this item
 
@@ -210,23 +210,23 @@ struct wpStruct
     union wpStatusVars                  // Weapon-specific state variables
     {
         // Fighter Weapons
-        wpMario_WeaponVars_Fireball fireball;
-        wpSamus_WeaponVars_ChargeShot charge_shot;
-        wpSamus_WeaponVars_Bomb samus_bomb;
-        wpPikachu_WeaponVars_ThunderJolt thunder_jolt;
-        wpPikachu_WeaponVars_Thunder thunder;
-        wpNess_WeaponVars_PKThunder pkthunder;
-        wpNess_WeaponVars_PKThunderTrail pkthunder_trail;
-        wpYoshi_WeaponVars_EggThrow egg_throw;
-        wpLink_WeaponVars_SpinAttack spin_attack; // Link's Up Special
-        wpLink_WeaponVars_Boomerang boomerang;
+        wpMarioWeaponVarsFireball fireball;
+        wpSamusWeaponVarsChargeShot charge_shot;
+        wpSamusWeaponVarsBomb samus_bomb;
+        wpPikachuWeaponVarsThunderJolt thunder_jolt;
+        wpPikachuWeaponVarsThunder thunder;
+        wpNessWeaponVarsPKThunder pkthunder;
+        wpNessWeaponVarsPKThunderTrail pkthunder_trail;
+        wpYoshiWeaponVarsEggThrow egg_throw;
+        wpLinkWeaponVarsSpinAttack spin_attack; // Link's Up Special
+        wpLinkWeaponVarsBoomerang boomerang;
 
         // Item Weapons
-        wpStarRod_WeaponVars_Star star;
-        wpIwark_WeaponVars_Rock rock; // Onix's Rock Slide
-        wpNyars_WeaponVars_Coin coin;
-        wpKamex_WeaponVars_Hydro hydro;
-        wpDogas_WeaponVars_Smog smog;
+        wpStarRodWeaponVarsStar star;
+        wpIwarkWeaponVarsRock rock; // Onix's Rock Slide
+        wpNyarsWeaponVarsCoin coin;
+        wpKamexWeaponVarsHydro hydro;
+        wpDogasWeaponVarsSmog smog;
 
     } weapon_vars;
 

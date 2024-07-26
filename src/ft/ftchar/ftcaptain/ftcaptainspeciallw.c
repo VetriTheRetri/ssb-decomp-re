@@ -37,7 +37,7 @@ void ftCaptainSpecialLwSetAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->ground_or_air = nMPKineticsAir;
+    fp->ga = nMPKineticsAir;
     fp->jumps_used = 1;
 }
 
@@ -52,7 +52,7 @@ void ftCaptainSpecialLwDecideMapCollide(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == nMPKineticsGround)
+    if (fp->ga == nMPKineticsGround)
     {
         if (fp->command_vars.flags.flag3 != 0)
         {
@@ -68,7 +68,7 @@ void ftCaptainSpecialLwDecideSetEndStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == nMPKineticsGround)
+    if (fp->ga == nMPKineticsGround)
     {
         ftCommonWaitSetStatus(fighter_gobj);
     }
@@ -86,9 +86,9 @@ void ftCaptainSpecialLwProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == nMPKineticsGround)
+    if (fp->ga == nMPKineticsGround)
     {
-        fp->joint[ftParts_Joint_TopN]->rotate.vec.f.z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
+        fp->joint[nFTPartsJointTopN]->rotate.vec.f.z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
         ftPhysics_ApplyGroundVelTransN(fighter_gobj);
     }
     else if (fp->command_vars.flags.flag0 != 0)
@@ -129,7 +129,7 @@ sb32 ftCaptainSpecialLwBoundCheckMapCollideGoto(GObj *fighter_gobj)
     if ((fp->command_vars.flags.flag1 == 1) && (fp->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL)))
     {
         ftMap_SetAir(fp);
-        ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwBound, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwBound, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
         fp->command_vars.flags.flag1 = 0;
 
@@ -145,7 +145,7 @@ sb32 ftCaptainSpecialLwAirCheckAirGoto(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag1 == 2)
     {
-        if (fp->ground_or_air == nMPKineticsAir)
+        if (fp->ga == nMPKineticsAir)
         {
             ftCaptainSpecialLwAirSetStatus(fighter_gobj);
 
@@ -213,13 +213,13 @@ void ftCaptainSpecialLwProcStatus(GObj *fighter_gobj)
 void ftCaptainSpecialLwAirSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    f32 rot_z = fp->joint[ftParts_Joint_TopN]->rotate.vec.f.z;
+    f32 rot_z = fp->joint[nFTPartsJointTopN]->rotate.vec.f.z;
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwAir, 0.0F, 1.0F, FTSTATUPDATE_EFFECT_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwAir, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
 
-    fp->joint[ftParts_Joint_TopN]->rotate.vec.f.z = rot_z;
-    fp->joint[ftParts_Joint_TransN]->rotate.vec.f.z = fp->joint[ftParts_Joint_TopN]->rotate.vec.f.z;
+    fp->joint[nFTPartsJointTopN]->rotate.vec.f.z = rot_z;
+    fp->joint[nFTPartsJointTransN]->rotate.vec.f.z = fp->joint[nFTPartsJointTopN]->rotate.vec.f.z;
 
     fp->proc_lagstart = ftCommon_ProcPauseGFX;
     fp->proc_lagend = ftCommon_ProcResumeGFX;
@@ -229,7 +229,7 @@ void ftCaptainSpecialLwAirSetStatus(GObj *fighter_gobj)
 void ftCaptainSpecialLwLandingSetStatus(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
 // 0x80160128
@@ -239,7 +239,7 @@ void ftCaptainSpecialLwSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftCaptainSpecialLwProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_shield = ftCaptainSpecialLwProcHit;
@@ -254,7 +254,7 @@ void jtgt_ovl3_801601A0(GObj *fighter_gobj) // Unused
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwAir, 0.0F, 1.0F, FTSTATUPDATE_EFFECT_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwAir, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_hit = ftCaptainSpecialLwProcHit;
@@ -270,7 +270,7 @@ void ftCaptainSpecialAirLwSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftCaptainSpecialLwProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_lagstart = ftCommon_ProcPauseGFX;

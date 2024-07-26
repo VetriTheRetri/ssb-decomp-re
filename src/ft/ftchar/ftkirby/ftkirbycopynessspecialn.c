@@ -7,7 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
-#define FTKIRBY_COPYNESS_SPECIALN_STATUPDATE_FLAGS (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE)
+#define FTKIRBY_COPYNESS_SPECIALN_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM)
 
 // // // // // // // // // // // //
 //                               //
@@ -36,7 +36,7 @@ void ftKirbyCopyNessSpecialNProcAccessory(GObj *fighter_gobj)
         pos.x += FTKIRBY_COPYNESS_PKFIRE_SPAWN_OFF_X * fp->lr;
         pos.y += FTKIRBY_COPYNESS_PKFIRE_SPAWN_OFF_Y;
 
-        if (fp->ground_or_air == nMPKineticsAir)
+        if (fp->ga == nMPKineticsAir)
         {
             vel.z = 0.0F;
             angle = FTKIRBY_COPYNESS_PKFIRE_SPARK_ANGLE_AIR;
@@ -103,7 +103,7 @@ void ftKirbyCopyNessSpecialNInitStatusVars(GObj *fighter_gobj)
 // 0x80155DBC
 void ftKirbyCopyNessSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyNessSpecialNInitStatusVars(fighter_gobj);
 }
@@ -111,7 +111,7 @@ void ftKirbyCopyNessSpecialNSetStatus(GObj *fighter_gobj)
 // 0x80155DFC
 void ftKirbyCopyNessSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyNessSpecialNInitStatusVars(fighter_gobj);
 }

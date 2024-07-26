@@ -16,7 +16,7 @@ void ftCommonCliffCatchProcUpdate(GObj *fighter_gobj)
 void ftCommonCliffCommonProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    DObj *topn_joint = fp->joint[ftParts_Joint_TopN], *transn_joint = fp->joint[ftParts_Joint_TransN];
+    DObj *topn_joint = fp->joint[nFTPartsJointTopN], *transn_joint = fp->joint[nFTPartsJointTransN];
     Vec3f vel;
 
     if (fp->lr == LR_Right)
@@ -42,7 +42,7 @@ void ftCommonCliffCatchSetStatus(GObj *fighter_gobj)
     Vec3f vel;
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffCatch, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffCatch, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftMap_SetAir(fp);
     ftPhysics_StopVelAll(fighter_gobj);
@@ -99,7 +99,7 @@ void ftCommonCliffWaitSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->status_vars.common.cliffwait.status_id = 0;
 

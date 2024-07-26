@@ -229,7 +229,7 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     {
         return NULL;
     }
-    ground_gobj = omMakeGObjSPAfter(nOMObjKindGrRender, NULL, GObj_LinkID_GroundRender, GOBJ_LINKORDER_DEFAULT);
+    ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGrRender, NULL, nOMObjCommonLinkIDGroundRender, GOBJ_LINKORDER_DEFAULT);
 
     if (gMPGroundData->layer_mask & (1 << gr_desc_id))
     {

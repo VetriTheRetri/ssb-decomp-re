@@ -152,7 +152,7 @@ void wpProcessProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
         wp->coll_data.pos_correct.y = translate->y - wp->coll_data.pos_curr.y;
         wp->coll_data.pos_correct.z = translate->z - wp->coll_data.pos_curr.z;
 
-        if ((wp->ground_or_air == nMPKineticsGround) && (wp->coll_data.ground_line_id != -1) && (wp->coll_data.ground_line_id != -2) && (mpCollisionCheckExistLineID(wp->coll_data.ground_line_id) != FALSE))
+        if ((wp->ga == nMPKineticsGround) && (wp->coll_data.ground_line_id != -1) && (wp->coll_data.ground_line_id != -2) && (mpCollisionCheckExistLineID(wp->coll_data.ground_line_id) != FALSE))
         {
             mpCollisionGetSpeedLineID(wp->coll_data.ground_line_id, &wp->coll_data.pos_speed);
 
@@ -300,7 +300,7 @@ void wpProcessUpdateHitInteractStatsGroupID(wpStruct *this_wp, wpHitbox *wp_hit,
 {
     if (this_wp->group_id != 0)
     {
-        GObj *victim_gobj = gOMObjCommonLinks[GObj_LinkID_Weapon];
+        GObj *victim_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
 
         while (victim_gobj != NULL)
         {
@@ -367,7 +367,7 @@ void wpProcessProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision 
 
     if ((this_hit->can_setoff) && (this_hit->update_state != gmHitCollision_UpdateState_Disable) && (this_hit->interact_mask & GMHITCOLLISION_MASK_WEAPON))
     {
-        other_gobj = gOMObjCommonLinks[GObj_LinkID_Weapon];
+        other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
 
         is_check_self = FALSE;
 
@@ -457,7 +457,7 @@ void wpProcessProcHitCollisions(GObj *weapon_gobj)
     }
     if (wp->hit_shield_damage != 0)
     {
-        if ((wp->weapon_hit.can_hop) && (wp->ground_or_air == nMPKineticsAir))
+        if ((wp->weapon_hit.can_hop) && (wp->ga == nMPKineticsAir))
         {
             if (wp->shield_collide_angle < WEAPON_HOP_ANGLE_DEFAULT)
             {

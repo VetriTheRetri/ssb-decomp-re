@@ -21,7 +21,7 @@ sb32 gmCreditsCheckUnpause()
 		{
 			func_8000B2B8(gCreditsStaffRollGObj);
 		}
-		name_gobj = gOMObjCommonLinks[GObj_LinkID_CreditsName];
+		name_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName];
 
 		while (name_gobj != NULL)
 		{
@@ -29,7 +29,7 @@ sb32 gmCreditsCheckUnpause()
 
 			name_gobj = name_gobj->link_next;
 		}
-		job_gobj = gOMObjCommonLinks[GObj_LinkID_CreditsJob];
+		job_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsJob];
 
 		while (job_gobj != NULL)
 		{
@@ -154,12 +154,12 @@ void func_ovl59_80131F34(GObj *arg0)
 // 8013202C
 void func_ovl59_8013202C(GObj *arg0)
 {
-	GObj *gobj = gOMObjCommonLinks[GObj_LinkID_02];
+	GObj *gobj = gOMObjCommonLinks[nOMObjCommonLinkID02];
 	GObj *ugobj = arg0->user_data.p;
 
 	if (gobj == NULL)
 	{
-		gobj = omMakeGObjSPAfter(8, NULL, GObj_LinkID_02, 0x80000000);
+		gobj = omMakeGObjSPAfter(8, NULL, nOMObjCommonLinkID02, 0x80000000);
 		omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 3, 0x80000000, -1);
 		func_8000F590(gobj, gCreditsDObjDesc, NULL, OMMtx_Transform_TraRotRpyRSca, 0, 0);
 		omAddGObjCommonProc(gobj, func_ovl59_80131F34, 1, 1);
@@ -271,7 +271,7 @@ void gmCreditsHighlightProcUpdate(GObj *gobj)
 // 801327A4
 void gmCreditsMakeHighlightGObj(GObj *gobj)
 {
-	GObj *highlight_gobj = gOMObjCommonLinks[GObj_LinkID_Highlight];
+	GObj *highlight_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDHighlight];
 	s32 unused;
 	SObj *sobj = SObjGetStruct(gCreditsCrosshairGObj);
 
@@ -628,7 +628,7 @@ void func_ovl59_8013330C()
 
 	func_ovl59_80131C88(gCreditsCamera);
 
-	gobj = gOMObjCommonLinks[GObj_LinkID_CreditsName];
+	gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName];
 
 	if (gobj != NULL)
 	{
@@ -667,7 +667,7 @@ sb32 gmCreditsCheckPause()
 			{
 				func_8000B284(gCreditsStaffRollGObj);
 			}
-			gobj = gOMObjCommonLinks[GObj_LinkID_CreditsName];
+			gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName];
 
 			while (gobj != NULL)
 			{
@@ -675,7 +675,7 @@ sb32 gmCreditsCheckPause()
 
 				gobj = gobj->link_next;
 			}
-			gobj = gOMObjCommonLinks[GObj_LinkID_CreditsJob];
+			gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsJob];
 
 			while (gobj != NULL)
 			{
@@ -815,7 +815,7 @@ void gmCreditsJobAndNameProcUpdate(GObj *gobj)
 // 80133854
 void gmCreditsJobProcRender(GObj *gobj)
 {
-	if (gobj == gOMObjCommonLinks[GObj_LinkID_CreditsJob])
+	if (gobj == gOMObjCommonLinks[nOMObjCommonLinkIDCreditsJob])
 	{
 		gSPTexture(gDisplayListHead[0]++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
 		gDPSetRenderMode(gDisplayListHead[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
@@ -829,7 +829,7 @@ void gmCreditsJobProcRender(GObj *gobj)
 // 80133930
 void gmCreditsNameProcRender(GObj *gobj)
 {
-	if (gobj == gOMObjCommonLinks[GObj_LinkID_CreditsName])
+	if (gobj == gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName])
 	{
 		gSPTexture(gDisplayListHead[0]++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
 		gDPSetRenderMode(gDisplayListHead[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
@@ -999,7 +999,7 @@ GObj* gmCreditsMakeJobGObj(gmCreditsJob *job)
 
 	wbase = 0.0F;
 
-	gobj = omMakeGObjSPAfter(1, NULL, GObj_LinkID_CreditsJob, 0x80000000);
+	gobj = omMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsJob, 0x80000000);
 
 	omAddGObjRenderProc(gobj, gmCreditsJobProcRender, 2, 0x80000000, -1);
 
@@ -1036,7 +1036,7 @@ GObj* gmCreditsMakeNameGObjAndDObjs()
 
 	name_character_id = -1;
 
-	gobj = omMakeGObjSPAfter(1, NULL, GObj_LinkID_CreditsName, 0x80000000);
+	gobj = omMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsName, 0x80000000);
 
 	omAddGObjRenderProc(gobj, gmCreditsNameProcRender, 1, 0x80000000, -1);
 

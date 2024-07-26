@@ -2205,7 +2205,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
     }
     else ep = NULL;
 
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, efManagerProcRun, (effect_flags & EFFECT_FLAG_SPECIALLINK) ? GObj_LinkID_SpecialEffect : GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, efManagerProcRun, (effect_flags & EFFECT_FLAG_SPECIALLINK) ? nOMObjCommonLinkIDSpecialEffect : nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2377,7 +2377,7 @@ efParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2453,7 +2453,7 @@ efParticle* efManagerDamageNormalHeavyMakeEffect(Vec3f *pos, s32 player, s32 siz
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2521,7 +2521,7 @@ efParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2609,7 +2609,7 @@ efParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2677,7 +2677,7 @@ efParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2771,7 +2771,7 @@ efParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2838,7 +2838,7 @@ efParticle* efManagerFlameRandomMakeEffect(Vec3f *pos)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2902,7 +2902,7 @@ efParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2964,7 +2964,7 @@ efParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3101,7 +3101,7 @@ efParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_i
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3171,7 +3171,7 @@ efParticle* efManagerDustHeavyMakeEffect(Vec3f *pos, s32 lr)
     f32 vel;
     f32 scale;
 
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3241,7 +3241,7 @@ efParticle* efManagerDustHeavy2xMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3338,7 +3338,7 @@ efParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -4069,7 +4069,7 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude) // Linker things here
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, efManagerQuakeAddProcUpdate, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, efManagerQuakeAddProcUpdate, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -4137,7 +4137,7 @@ efParticle* efManagerDamageCoinMakeEffect(Vec3f *pos)
         return NULL;
     }
 
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -4192,7 +4192,7 @@ efParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -4331,7 +4331,7 @@ GObj* efManagerFoxReflectorMakeEffect(GObj *fighter_gobj)
 
     ep->fighter_gobj = fighter_gobj;
 
-    DObjGetStruct(effect_gobj)->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    DObjGetStruct(effect_gobj)->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
 
     ep->effect_vars.reflector.index = 0;
     ep->effect_vars.reflector.status = 4;
@@ -4385,7 +4385,7 @@ GObj* efManagerShieldMakeEffect(GObj *fighter_gobj)
 
     fp->is_attach_effect = TRUE;
 
-    DObjGetStruct(effect_gobj)->user_data.p = fp->joint[ftParts_Joint_YRotN];
+    DObjGetStruct(effect_gobj)->user_data.p = fp->joint[nFTPartsJointYRotN];
 
     ep->effect_vars.shield.player = fp->player;
     ep->effect_vars.shield.is_damage_shield = FALSE;
@@ -4438,7 +4438,7 @@ GObj* efManagerYoshiShieldMakeEffect(GObj *fighter_gobj)
 
     fp->is_attach_effect = TRUE;
 
-    DObjGetStruct(effect_gobj)->user_data.p = fp->joint[ftParts_Joint_YRotN];
+    DObjGetStruct(effect_gobj)->user_data.p = fp->joint[nFTPartsJointYRotN];
     DObjGetStruct(effect_gobj)->scale.vec.f.x = DObjGetStruct(effect_gobj)->scale.vec.f.y = 1.5F;
 
     ep->effect_vars.shield.player = fp->player;
@@ -4672,7 +4672,7 @@ GObj* efManagerPikachuThunderShockMakeEffect(GObj *fighter_gobj, Vec3f *pos, s32
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
 
     dobj->child->translate.vec.f = *pos;
 
@@ -4985,7 +4985,7 @@ GObj* efManagerPurinSingMakeEffect(GObj *fighter_gobj)
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
 
     sibling_dobj = dobj->child;
 
@@ -5103,7 +5103,7 @@ GObj* efManagerKirbyCutterUpMakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
     dobj->rotate.vec.f.y = fp->lr * F_CLC_DTOR32(90.0F);
 
     return effect_gobj;
@@ -5129,7 +5129,7 @@ GObj* efManagerKirbyCutterDownMakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
     dobj->rotate.vec.f.y = fp->lr * F_CLC_DTOR32(90.0F);
 
     return effect_gobj;
@@ -5204,7 +5204,7 @@ GObj* efManagerNessPsychicMagnetMakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
 
     return effect_gobj;
 }
@@ -5647,7 +5647,7 @@ GObj* efManagerYoshiEggLayMakeEffect(GObj *fighter_gobj)
     ep->effect_vars.yoshi_egg_lay.index = ep->effect_vars.yoshi_egg_lay.force_index = 2;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
 
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = dFTCommonYoshiEggHurtboxDesc[fp->ft_kind].effect_size;
     dobj->scale.vec.f.z = 1.0F;
@@ -5792,7 +5792,7 @@ GObj* efManagerLinkSpinAttackMakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->user_data.p = fp->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = fp->joint[nFTPartsJointTopN];
 
     dobj->rotate.vec.f.y = (ftGetStruct(fighter_gobj)->lr == LR_Right) ? F_CLC_DTOR32(30.0F) : F_CLC_DTOR32(210.0F);
 
@@ -5876,7 +5876,7 @@ GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr)
 
     node_dobj = dobj->child->child->child;
 
-    for (i = ftParts_Joint_EnumMax; i > 0; i--)
+    for (i = nFTPartsJointEnumMax; i > 0; i--)
     {
         omAddOMMtxForDObjFixed(node_dobj, 0x2C, 0);
 
@@ -6145,7 +6145,7 @@ GObj* efManagerCaptureKirbyStarMakeEffect(GObj *fighter_gobj)
 
     dobj->translate.vec.f.y += EFPART_CAPTUREKIRBYSTAR_SPARK_OFF_Y;
 
-    dobj->child->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->child->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
 
     dobj->child->scale.vec.f.x = dobj->child->scale.vec.f.y = copy_data[ftGetStruct(fighter_gobj)->ft_kind].effect_scale;
     dobj->child->scale.vec.f.z = 1.0F;
@@ -6249,7 +6249,7 @@ GObj* efManagerRebirthHaloMakeEffect(GObj *fighter_gobj, f32 scale)
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[ftParts_Joint_TopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
 
     child = DObjGetStruct(effect_gobj)->child;
     child->scale.vec.f.x = child->scale.vec.f.y = child->scale.vec.f.z = scale;
@@ -6340,7 +6340,7 @@ efParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
     {
         return 0;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {

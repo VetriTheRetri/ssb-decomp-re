@@ -16,9 +16,9 @@ void ftCommonDokanStartUpdateModelPitch(ftStruct *fp)
     {
         fp->status_vars.common.dokan.turn_stop_wait--;
 
-        fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y += (-FTCOMMON_DOKAN_TURN_STEP * fp->lr);
+        fp->joint[nFTPartsJointTopN]->rotate.vec.f.y += (-FTCOMMON_DOKAN_TURN_STEP * fp->lr);
 
-        func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
+        func_ovl2_800EB528(fp->joint[nFTPartsJointTopN]);
     }
 }
 
@@ -74,7 +74,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 new_point_id;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
@@ -195,7 +195,7 @@ void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
     s32 line_id;
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanWait, 0.0F, 1.0F, FTSTATUPDATE_HITSTATUS_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_HITSTATUS);
 
     fp->is_invisible = TRUE;
     fp->is_playertag_hide = TRUE;
@@ -240,9 +240,9 @@ void ftCommonDokanEndUpdateModelPitch(GObj *fighter_gobj)
         {
             fp->status_vars.common.dokan.turn_stop_wait--;
 
-            fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y += (FTCOMMON_DOKAN_TURN_STEP * fp->lr);
+            fp->joint[nFTPartsJointTopN]->rotate.vec.f.y += (FTCOMMON_DOKAN_TURN_STEP * fp->lr);
 
-            func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
+            func_ovl2_800EB528(fp->joint[nFTPartsJointTopN]);
         }
     }
 }
@@ -277,7 +277,7 @@ void ftCommonDokanEndSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanEnd, 0.0F, 1.0F, FTSTATUPDATE_HITSTATUS_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_HITSTATUS);
 
     DObjGetStruct(fighter_gobj)->translate.vec.f = fp->status_vars.common.dokan.pos_target;
 
@@ -289,9 +289,9 @@ void ftCommonDokanEndSetStatus(GObj *fighter_gobj)
     if ((fp->ft_kind != nFTKindMario) && (fp->ft_kind != nFTKindMetalMario) && (fp->ft_kind != nFTKindPolyMario) && (fp->ft_kind != nFTKindLuigi) && (fp->ft_kind != nFTKindPolyLuigi))
     {
         fp->status_vars.common.dokan.turn_stop_wait = FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT;
-        fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y = 0.0F;
+        fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = 0.0F;
 
-        func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
+        func_ovl2_800EB528(fp->joint[nFTPartsJointTopN]);
     }
     else fp->status_vars.common.dokan.turn_stop_wait = 0;
 
@@ -307,7 +307,7 @@ void ftCommonDokanWalkSetStatus(GObj *fighter_gobj)
 
     fp->lr = LR_Right;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanWalk, 0.0F, 1.0F, FTSTATUPDATE_HITSTATUS_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanWalk, 0.0F, 1.0F, FTSTATUS_PRESERVE_HITSTATUS);
 
     DObjGetStruct(fighter_gobj)->translate.vec.f = fp->status_vars.common.dokan.pos_target;
 

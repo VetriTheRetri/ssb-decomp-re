@@ -248,7 +248,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     {
         return NULL;
     }
-    item_gobj = omMakeGObjSPAfter(nOMObjKindItem, NULL, GObj_LinkID_Item, GOBJ_LINKORDER_DEFAULT);
+    item_gobj = omMakeGObjSPAfter(nOMObjCommonKindItem, NULL, nOMObjCommonLinkIDItem, GOBJ_LINKORDER_DEFAULT);
 
     if (item_gobj == NULL)
     {
@@ -349,7 +349,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     ip->item_hit.attack_id                  = nFTMotionAttackIDNone;
     ip->item_hit.motion_count               = gmCommon_GetMotionCountInc();
     ip->item_hit.stat_flags.stat_attack_id  = nFTStatusAttackIDNull;
-    ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ground_or_air = ip->item_hit.stat_flags.is_projectile = 0;
+    ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ga = ip->item_hit.stat_flags.is_projectile = 0;
     ip->item_hit.stat_count                 = gmCommon_GetStatUpdateCountInc();
 
     itMainClearHitRecord(ip);
@@ -453,7 +453,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
             break;
         }
     }
-    ip->ground_or_air = nMPKineticsAir;
+    ip->ga = nMPKineticsAir;
 
     itProcessUpdateHitPositions(item_gobj);
     itMainClearColAnim(item_gobj);
@@ -587,7 +587,7 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     gITManagerSpawnActor.item_mapobjs[i] = item_mpoint_ids[i];
                 }
-                gobj = omMakeGObjSPAfter(nOMObjKindItem, NULL, 2, GOBJ_LINKORDER_DEFAULT);
+                gobj = omMakeGObjSPAfter(nOMObjCommonKindItem, NULL, 2, GOBJ_LINKORDER_DEFAULT);
 
                 omAddGObjCommonProc(gobj, itManagerMakeRandomItem, nOMObjProcessKindProc, 3);
 

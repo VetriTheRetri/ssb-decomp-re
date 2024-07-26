@@ -68,7 +68,7 @@ void ftCommonAttackLw3SetStatus(GObj *fighter_gobj)
     {
         fp->proc_status = ftCommonAttackLw3InitStatusVars;
 
-        ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttackLw3, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttackLw3, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
         ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     }
 }

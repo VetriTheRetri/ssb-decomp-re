@@ -170,7 +170,7 @@ void mnCongraInitAll()
 	cam = CameraGetStruct(func_8000B93C(0x3EB, NULL, 9, 0x80000000, func_ovl0_800CD2CC, 0x50, 1, -1, 0, 1, 0, 1, 0));
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	gobj = omMakeGObjSPAfter(nOMObjKindWallpaper, NULL, GObj_LinkID_Wallpaper, GOBJ_LINKORDER_DEFAULT);
+	gobj = omMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
 	omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
 

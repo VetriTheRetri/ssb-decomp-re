@@ -32,7 +32,7 @@ void ftCommonRunBrakeSetStatus(GObj *fighter_gobj, u32 flag)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRunBrake, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRunBrake, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->command_vars.flags.flag1 = flag;
 }

@@ -68,7 +68,7 @@ void func_ovl6_8018D0F0()
 	{
 		if (player == gSceneData.spgame_player)
 		{
-			gBattleState->player_block[player].player_kind = Pl_Kind_Man;
+			gBattleState->player_block[player].player_kind = nFTPlayerKindMan;
 			gBattleState->player_block[player].character_kind = ft_kind;
 
 			if (gSceneData.scene_previous == 0x34)
@@ -79,7 +79,7 @@ void func_ovl6_8018D0F0()
 			gBattleState->player_block[player].player_color_index = player;
 		}
 		else
-			gBattleState->player_block[player].player_kind = Pl_Kind_Not;
+			gBattleState->player_block[player].player_kind = nFTPlayerKindNot;
 	}
 }
 
@@ -284,12 +284,12 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 // 8018DA2C
 void scBonusGame_CheckBonus2PlatformLanding(GObj* ground_gobj)
 {
-	GObj* fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+	GObj* fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
 	while (fighter_gobj != NULL)
 	{
 		ftStruct* fp = ftGetStruct(fighter_gobj);
-		if ((fp->ground_or_air == nMPKineticsGround)
+		if ((fp->ga == nMPKineticsGround)
 			&& ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
 		{
 			DObj* dobj = gMPYakumonoDObjs->yakumono_dobj[mpCollisionSetDObjNoID(fp->coll_data.ground_line_id)];
@@ -304,7 +304,7 @@ void scBonusGame_CheckBonus2PlatformLanding(GObj* ground_gobj)
 // 8018DAE0
 void grBonus_Bonus2_MakeGround()
 {
-	omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjKindGround, NULL, 1U, 0x80000000U),
+	omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, 1U, 0x80000000U),
 						scBonusGame_CheckBonus2PlatformLanding, 1, 4);
 }
 
@@ -370,7 +370,7 @@ void scBonusGame_InitInterface(GObj* interface_gobj)
 // 8018DCC4
 void scBonusGame_MakeInterface()
 {
-	omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xAU, 0x80000000U), scBonusGame_InitInterface, 0,
+	omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xAU, 0x80000000U), scBonusGame_InitInterface, 0,
 						5);
 	gBattleState->game_status = gmMatch_GameStatus_Wait;
 }
@@ -382,7 +382,7 @@ void scBonusGame_InitCameraVars()
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
 	{
-		if (gBattleState->player_block[player].player_kind == Pl_Kind_Not)
+		if (gBattleState->player_block[player].player_kind == nFTPlayerKindNot)
 			continue;
 
 		if (gBattleState->gr_kind >= Gr_Kind_Bonus2Start)
@@ -407,7 +407,7 @@ void scBonusGame_InitBonus1TargetSprites()
 	sprites
 		= rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
 	gGRCommonStruct.bonus1.interface_gobj = interface_gobj
-		= omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xBU, 0x80000000);
+		= omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
 	for (i = 0; i < gGRCommonStruct.bonus1.target_count; i++)
@@ -430,7 +430,7 @@ void scBonusGame_InitBonus2PlatformSprites()
 	sprites
 		= rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
 	gGRCommonStruct.bonus2.interface_gobj = interface_gobj
-		= omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xBU, 0x80000000);
+		= omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
 	for (i = 0; i < gGRCommonStruct.bonus2.platform_count; i++)
@@ -514,7 +514,7 @@ void scBonusGame_MakeBonusTimerGObj()
 {
 	gIsBonusGameTimeUp = FALSE;
 	if (gSceneData.scene_previous == 0x34)
-		omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xBU, 0x80000000U),
+		omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000U),
 							scBonusGame_CheckTimeUpEjectInterface, 1, 0);
 }
 
@@ -529,7 +529,7 @@ void func_ovl6_8018E344()
 	{
 		ifCommonTimerMakeInterface(NULL);
 		ifCommonTimerSetAttr();
-		interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xBU, 0x80000000U);
+		interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000U);
 		omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17U, 0x80000000U, -1);
 
 		for (i = 0; i < ARRAY_COUNT(gBonusTimerDigits); i++)
@@ -602,7 +602,7 @@ void scBonusGame_InitBonusGame()
 	for (player = 0, player_spawn = dFTDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->player_block);
 		 player++)
 	{
-		if (gBattleState->player_block[player].player_kind == Pl_Kind_Not)
+		if (gBattleState->player_block[player].player_kind == nFTPlayerKindNot)
 			continue;
 
 		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
@@ -615,7 +615,7 @@ void scBonusGame_InitBonusGame()
 
 		player_spawn.team = 0;
 		player_spawn.player = player;
-		player_spawn.model_lod = ftParts_LOD_HighPoly;
+		player_spawn.model_lod = nFTPartsDetailHigh;
 		player_spawn.costume = gBattleState->player_block[player].costume_index;
 
 		player_spawn.pl_kind = gBattleState->player_block[player].player_kind;

@@ -31,7 +31,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 {
     // Attack11
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         2,                                                  // First frame of hitbox
         6,                                                  // Last frame of hitbox
         150.0F,                                             // Horizontal range nearest
@@ -42,7 +42,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // AttackS3
     {
-        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        nFTComputerInputStickTiltAutoXButtonA,             // Input script index
         8,                                                  // First frame of hitbox
         17,                                                 // Last frame of hitbox
         45.0F,                                              // Horizontal range nearest
@@ -53,7 +53,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // AttackS4
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         16,                                                 // First frame of hitbox
         20,                                                 // Last frame of hitbox
         60.0F,                                              // Horizontal range nearest
@@ -64,7 +64,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // AttackHi3
     {
-        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        nFTComputerInputStickTiltHiButtonA,                // Input script index
         5,                                                  // First frame of hitbox
         16,                                                 // Last frame of hitbox
         -140.0F,                                            // Horizontal range nearest
@@ -75,7 +75,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // AttackHi4
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         7,                                                  // First frame of hitbox
         15,                                                 // Last frame of hitbox
         -230.0F,                                            // Horizontal range nearest
@@ -86,7 +86,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // AttackLw3
     {
-        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        nFTComputerInputStickTiltLwButtonA,                // Input script index
         5,                                                  // First frame of hitbox
         11,                                                 // Last frame of hitbox
         130.0F,                                             // Horizontal range nearest
@@ -97,7 +97,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // AttackLw4
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         9,                                                  // First frame of hitbox
         30,                                                 // Last frame of hitbox
         -420.0F,                                            // Horizontal range nearest
@@ -108,7 +108,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // SpecialN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         10,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         400.0F,                                             // Horizontal range nearest
@@ -119,7 +119,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // SpecialHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         2,                                                  // First frame of hitbox
         23,                                                 // Last frame of hitbox
         -120.0F,                                            // Horizontal range nearest
@@ -130,7 +130,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // SpecialLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         1,                                                  // First frame of hitbox
         44,                                                 // Last frame of hitbox
         -250.0F,                                            // Horizontal range nearest
@@ -141,7 +141,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // Catch
     {
-        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        nFTComputerInputStickNButtonZButtonA,              // Input script index
         7,                                                  // First frame of hitbox
         7,                                                  // Last frame of hitbox
         50.0F,                                              // Horizontal range nearest
@@ -163,7 +163,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // AttackAirN
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         3,                                                  // First frame of hitbox
         36,                                                 // Last frame of hitbox
         -192.0F,                                            // Horizontal range nearest
@@ -174,7 +174,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // AttackAirF / AttackAirB
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         10,                                                 // First frame of hitbox
         19,                                                 // Last frame of hitbox
         -443.0F,                                            // Horizontal range nearest
@@ -185,7 +185,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // AttackAirHi
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         2,                                                  // First frame of hitbox
         11,                                                 // Last frame of hitbox
         -273.0F,                                            // Horizontal range nearest
@@ -196,7 +196,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // AttackAirLw
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         11,                                                 // First frame of hitbox
         33,                                                 // Last frame of hitbox
         -60.0F,                                             // Horizontal range nearest
@@ -207,7 +207,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // SpecialAirN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         10,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         400.0F,                                             // Horizontal range nearest
@@ -218,7 +218,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // SpecialAirHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         2,                                                  // First frame of hitbox
         23,                                                 // Last frame of hitbox
         -334.0F,                                            // Horizontal range nearest
@@ -229,7 +229,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 
     // SpecialAirLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         1,                                                  // First frame of hitbox
         46,                                                 // Last frame of hitbox
         -250.0F,                                            // Horizontal range nearest
@@ -255,7 +255,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 {
     // Attack11
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         3,                                                  // First frame of hitbox
         4,                                                  // Last frame of hitbox
         180.0F,                                             // Horizontal range nearest
@@ -266,7 +266,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // AttackS3
     {
-        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        nFTComputerInputStickTiltAutoXButtonA,             // Input script index
         3,                                                  // First frame of hitbox
         8,                                                  // Last frame of hitbox
         180.0F,                                             // Horizontal range nearest
@@ -277,7 +277,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // AttackS4
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         12,                                                 // First frame of hitbox
         24,                                                 // Last frame of hitbox
         280.0F,                                             // Horizontal range nearest
@@ -288,7 +288,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // AttackHi3
     {
-        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        nFTComputerInputStickTiltHiButtonA,                // Input script index
         6,                                                  // First frame of hitbox
         13,                                                 // Last frame of hitbox
         -90.0F,                                             // Horizontal range nearest
@@ -299,7 +299,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // AttackHi4
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         6,                                                  // First frame of hitbox
         21,                                                 // Last frame of hitbox
         -390.0F,                                            // Horizontal range nearest
@@ -310,7 +310,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // AttackLw3
     {
-        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        nFTComputerInputStickTiltLwButtonA,                // Input script index
         6,                                                  // First frame of hitbox
         9,                                                  // Last frame of hitbox
         135.0F,                                             // Horizontal range nearest
@@ -321,7 +321,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // AttackLw4
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         7,                                                  // First frame of hitbox
         11,                                                 // Last frame of hitbox
         -465.0F,                                            // Horizontal range nearest
@@ -332,7 +332,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // SpecialN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         5,                                                  // First frame of hitbox
         10,                                                 // Last frame of hitbox
         400.0F,                                             // Horizontal range nearest
@@ -343,7 +343,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // SpecialHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         43,                                                 // First frame of hitbox
         72,                                                 // Last frame of hitbox
         -40.0F,                                             // Horizontal range nearest
@@ -354,7 +354,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // SpecialLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         1,                                                  // First frame of hitbox
         1,                                                  // Last frame of hitbox
         -180.0F,                                            // Horizontal range nearest
@@ -365,7 +365,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // Catch
     {
-        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        nFTComputerInputStickNButtonZButtonA,              // Input script index
         7,                                                  // First frame of hitbox
         7,                                                  // Last frame of hitbox
         200.0F,                                             // Horizontal range nearest
@@ -387,7 +387,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // AttackAirN
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         4,                                                  // First frame of hitbox
         28,                                                 // Last frame of hitbox
         -105.0F,                                            // Horizontal range nearest
@@ -398,7 +398,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // AttackAirF / AttackAirB
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         4,                                                  // First frame of hitbox
         27,                                                 // Last frame of hitbox
         -466.0F,                                            // Horizontal range nearest
@@ -409,7 +409,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // AttackAirHi
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         6,                                                  // First frame of hitbox
         13,                                                 // Last frame of hitbox
         -273.0F,                                            // Horizontal range nearest
@@ -420,7 +420,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // AttackAirLw
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         5,                                                  // First frame of hitbox
         24,                                                 // Last frame of hitbox
         -132.0F,                                            // Horizontal range nearest
@@ -431,7 +431,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // SpecialAirN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         5,                                                  // First frame of hitbox
         10,                                                 // Last frame of hitbox
         400.0F,                                             // Horizontal range nearest
@@ -442,7 +442,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // SpecialAirHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         43,                                                 // First frame of hitbox
         72,                                                 // Last frame of hitbox
         -144.0F,                                            // Horizontal range nearest
@@ -453,7 +453,7 @@ ftComputerAttack dFTComputerAttacksFox[/* */] =
 
     // SpecialAirLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         1,                                                  // First frame of hitbox
         1,                                                  // Last frame of hitbox
         -180.0F,                                            // Horizontal range nearest
@@ -479,7 +479,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 {
     // Attack11
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         5,                                                  // First frame of hitbox
         8,                                                  // Last frame of hitbox
         170.0F,                                             // Horizontal range nearest
@@ -490,7 +490,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // AttackS3
     {
-        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        nFTComputerInputStickTiltAutoXButtonA,             // Input script index
         5,                                                  // First frame of hitbox
         8,                                                  // Last frame of hitbox
         170.0F,                                             // Horizontal range nearest
@@ -501,7 +501,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // AttackS4
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         27,                                                 // First frame of hitbox
         32,                                                 // Last frame of hitbox
         220.0F,                                             // Horizontal range nearest
@@ -512,7 +512,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // AttackHi3
     {
-        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        nFTComputerInputStickTiltHiButtonA,                // Input script index
         4,                                                  // First frame of hitbox
         23,                                                 // Last frame of hitbox
         -950.0F,                                            // Horizontal range nearest
@@ -523,7 +523,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // AttackHi4
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         16,                                                 // First frame of hitbox
         18,                                                 // Last frame of hitbox
         -275.0F,                                            // Horizontal range nearest
@@ -534,7 +534,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // AttackLw3
     {
-        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        nFTComputerInputStickTiltLwButtonA,                // Input script index
         11,                                                 // First frame of hitbox
         16,                                                 // Last frame of hitbox
         190.0F,                                             // Horizontal range nearest
@@ -545,7 +545,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // AttackLw4
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         13,                                                 // First frame of hitbox
         32,                                                 // Last frame of hitbox
         -580.0F,                                            // Horizontal range nearest
@@ -556,7 +556,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // SpecialN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         23,                                                 // First frame of hitbox
         45,                                                 // Last frame of hitbox
         -190.0F,                                            // Horizontal range nearest
@@ -567,7 +567,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // SpecialHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         3,                                                  // First frame of hitbox
         72,                                                 // Last frame of hitbox
         -515.0F,                                            // Horizontal range nearest
@@ -578,7 +578,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // SpecialLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         19,                                                 // First frame of hitbox
         30,                                                 // Last frame of hitbox
         -825.0F,                                            // Horizontal range nearest
@@ -589,7 +589,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // Catch
     {
-        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        nFTComputerInputStickNButtonZButtonA,              // Input script index
         7,                                                  // First frame of hitbox
         7,                                                  // Last frame of hitbox
         220.0F,                                             // Horizontal range nearest
@@ -611,7 +611,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // AttackAirN
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         4,                                                  // First frame of hitbox
         29,                                                 // Last frame of hitbox
         -619.0F,                                            // Horizontal range nearest
@@ -622,7 +622,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // AttackAirF / AttackAirB
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         8,                                                  // First frame of hitbox
         15,                                                 // Last frame of hitbox
         -146.0F,                                            // Horizontal range nearest
@@ -633,7 +633,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // AttackAirHi
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         3,                                                  // First frame of hitbox
         20,                                                 // Last frame of hitbox
         -858.0F,                                            // Horizontal range nearest
@@ -644,7 +644,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // AttackAirLw
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         7,                                                  // First frame of hitbox
         30,                                                 // Last frame of hitbox
         -307.0F,                                            // Horizontal range nearest
@@ -655,7 +655,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // SpecialAirN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         23,                                                 // First frame of hitbox
         30,                                                 // Last frame of hitbox
         -447.0F,                                            // Horizontal range nearest
@@ -666,7 +666,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // SpecialAirHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         3,                                                  // First frame of hitbox
         72,                                                 // Last frame of hitbox
         -615.0F,                                            // Horizontal range nearest
@@ -677,7 +677,7 @@ ftComputerAttack dFTComputerAttacksDonkey[/* */] =
 
     // SpecialAirLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -703,7 +703,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 {
     // Attack11
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         4,                                                  // First frame of hitbox
         5,                                                  // Last frame of hitbox
         170.0F,                                             // Horizontal range nearest
@@ -714,7 +714,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // AttackS3
     {
-        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        nFTComputerInputStickTiltAutoXButtonA,             // Input script index
         4,                                                  // First frame of hitbox
         9,                                                  // Last frame of hitbox
         170.0F,                                             // Horizontal range nearest
@@ -725,7 +725,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // AttackS4
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         12,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         65.0F,                                              // Horizontal range nearest
@@ -736,7 +736,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // AttackHi3
     {
-        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        nFTComputerInputStickTiltHiButtonA,                // Input script index
         8,                                                  // First frame of hitbox
         29,                                                 // Last frame of hitbox
         -355.0F,                                            // Horizontal range nearest
@@ -747,7 +747,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // AttackHi4
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         17,                                                 // First frame of hitbox
         34,                                                 // Last frame of hitbox
         -535.0F,                                            // Horizontal range nearest
@@ -758,7 +758,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // AttackLw3
     {
-        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        nFTComputerInputStickTiltLwButtonA,                // Input script index
         8,                                                  // First frame of hitbox
         12,                                                 // Last frame of hitbox
         160.0F,                                             // Horizontal range nearest
@@ -769,7 +769,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // AttackLw4
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         9,                                                  // First frame of hitbox
         23,                                                 // Last frame of hitbox
         -525.0F,                                            // Horizontal range nearest
@@ -780,7 +780,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // SpecialN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         10,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         500.0F,                                             // Horizontal range nearest
@@ -791,7 +791,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // SpecialHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         4,                                                  // First frame of hitbox
         33,                                                 // Last frame of hitbox
         -230.0F,                                            // Horizontal range nearest
@@ -802,7 +802,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // SpecialLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -813,7 +813,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // Catch
     {
-        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        nFTComputerInputStickNButtonZButtonA,              // Input script index
         21,                                                 // First frame of hitbox
         39,                                                 // Last frame of hitbox
         75.0F,                                              // Horizontal range nearest
@@ -835,7 +835,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // AttackAirN
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         4,                                                  // First frame of hitbox
         27,                                                 // Last frame of hitbox
         -129.0F,                                            // Horizontal range nearest
@@ -846,7 +846,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // AttackAirF / AttackAirB
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         5,                                                  // First frame of hitbox
         16,                                                 // Last frame of hitbox
         -447.0F,                                            // Horizontal range nearest
@@ -857,7 +857,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // AttackAirHi
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         6,                                                  // First frame of hitbox
         19,                                                 // Last frame of hitbox
         -165.0F,                                            // Horizontal range nearest
@@ -868,7 +868,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // AttackAirLw
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         5,                                                  // First frame of hitbox
         13,                                                 // Last frame of hitbox
         -453.0F,                                            // Horizontal range nearest
@@ -879,7 +879,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // SpecialAirN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         10,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         500.0F,                                             // Horizontal range nearest
@@ -890,7 +890,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // SpecialAirHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         4,                                                  // First frame of hitbox
         31,                                                 // Last frame of hitbox
         -230.0F,                                            // Horizontal range nearest
@@ -901,7 +901,7 @@ ftComputerAttack dFTComputerAttacksSamus[/* */] =
 
     // SpecialAirLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -927,7 +927,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 {
     // Attack11
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         2,                                                  // First frame of hitbox
         6,                                                  // Last frame of hitbox
         150.0F,                                             // Horizontal range nearest
@@ -938,7 +938,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // AttackS3
     {
-        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        nFTComputerInputStickTiltAutoXButtonA,             // Input script index
         8,                                                  // First frame of hitbox
         17,                                                 // Last frame of hitbox
         45.0F,                                              // Horizontal range nearest
@@ -949,7 +949,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // AttackS4
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         16,                                                 // First frame of hitbox
         20,                                                 // Last frame of hitbox
         60.0F,                                              // Horizontal range nearest
@@ -960,7 +960,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // AttackHi3
     {
-        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        nFTComputerInputStickTiltHiButtonA,                // Input script index
         5,                                                  // First frame of hitbox
         16,                                                 // Last frame of hitbox
         -140.0F,                                            // Horizontal range nearest
@@ -971,7 +971,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // AttackHi4
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         7,                                                  // First frame of hitbox
         15,                                                 // Last frame of hitbox
         -230.0F,                                            // Horizontal range nearest
@@ -982,7 +982,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // AttackLw3
     {
-        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        nFTComputerInputStickTiltLwButtonA,                // Input script index
         5,                                                  // First frame of hitbox
         11,                                                 // Last frame of hitbox
         130.0F,                                             // Horizontal range nearest
@@ -993,7 +993,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // AttackLw4
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         9,                                                  // First frame of hitbox
         30,                                                 // Last frame of hitbox
         -420.0F,                                            // Horizontal range nearest
@@ -1004,7 +1004,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // SpecialN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         10,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         400.0F,                                             // Horizontal range nearest
@@ -1015,7 +1015,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // SpecialHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         2,                                                  // First frame of hitbox
         23,                                                 // Last frame of hitbox
         -120.0F,                                            // Horizontal range nearest
@@ -1026,7 +1026,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // SpecialLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         1,                                                  // First frame of hitbox
         44,                                                 // Last frame of hitbox
         -250.0F,                                            // Horizontal range nearest
@@ -1037,7 +1037,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // Catch
     {
-        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        nFTComputerInputStickNButtonZButtonA,              // Input script index
         7,                                                  // First frame of hitbox
         7,                                                  // Last frame of hitbox
         50.0F,                                              // Horizontal range nearest
@@ -1059,7 +1059,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // AttackAirN
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         3,                                                  // First frame of hitbox
         36,                                                 // Last frame of hitbox
         -192.0F,                                            // Horizontal range nearest
@@ -1070,7 +1070,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // AttackAirF / AttackAirB
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         10,                                                 // First frame of hitbox
         19,                                                 // Last frame of hitbox
         -443.0F,                                            // Horizontal range nearest
@@ -1081,7 +1081,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // AttackAirHi
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         2,                                                  // First frame of hitbox
         11,                                                 // Last frame of hitbox
         -273.0F,                                            // Horizontal range nearest
@@ -1092,7 +1092,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // AttackAirLw
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         11,                                                 // First frame of hitbox
         33,                                                 // Last frame of hitbox
         -60.0F,                                             // Horizontal range nearest
@@ -1103,7 +1103,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // SpecialAirN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         10,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         400.0F,                                             // Horizontal range nearest
@@ -1114,7 +1114,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // SpecialAirHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         1,                                                  // First frame of hitbox
         23,                                                 // Last frame of hitbox
         -239.0F,                                            // Horizontal range nearest
@@ -1125,7 +1125,7 @@ ftComputerAttack dFTComputerAttacksLuigi[/* */] =
 
     // SpecialAirLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         1,                                                  // First frame of hitbox
         46,                                                 // Last frame of hitbox
         -250.0F,                                            // Horizontal range nearest
@@ -1151,7 +1151,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 {
     // Attack11
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         6,                                                  // First frame of hitbox
         9,                                                  // Last frame of hitbox
         -5.0F,                                              // Horizontal range nearest
@@ -1162,7 +1162,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // AttackS3
     {
-        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        nFTComputerInputStickTiltAutoXButtonA,             // Input script index
         15,                                                 // First frame of hitbox
         20,                                                 // Last frame of hitbox
         -340.0F,                                            // Horizontal range nearest
@@ -1173,7 +1173,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // AttackS4
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         16,                                                 // First frame of hitbox
         25,                                                 // Last frame of hitbox
         -610.0F,                                            // Horizontal range nearest
@@ -1184,7 +1184,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // AttackHi3
     {
-        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        nFTComputerInputStickTiltHiButtonA,                // Input script index
         8,                                                  // First frame of hitbox
         16,                                                 // Last frame of hitbox
         -530.0F,                                            // Horizontal range nearest
@@ -1195,7 +1195,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // AttackHi4
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         11,                                                 // First frame of hitbox
         35,                                                 // Last frame of hitbox
         -500.0F,                                            // Horizontal range nearest
@@ -1206,7 +1206,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // AttackLw3
     {
-        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        nFTComputerInputStickTiltLwButtonA,                // Input script index
         12,                                                 // First frame of hitbox
         19,                                                 // Last frame of hitbox
         170.0F,                                             // Horizontal range nearest
@@ -1217,7 +1217,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // AttackLw4
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         10,                                                 // First frame of hitbox
         24,                                                 // Last frame of hitbox
         -655.0F,                                            // Horizontal range nearest
@@ -1228,7 +1228,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // SpecialN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         10,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         500.0F,                                             // Horizontal range nearest
@@ -1239,7 +1239,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // SpecialHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         8,                                                  // First frame of hitbox
         39,                                                 // Last frame of hitbox
         -775.0F,                                            // Horizontal range nearest
@@ -1250,7 +1250,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // SpecialLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -1261,7 +1261,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // Catch
     {
-        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        nFTComputerInputStickNButtonZButtonA,              // Input script index
         18,                                                 // First frame of hitbox
         29,                                                 // Last frame of hitbox
         220.0F,                                             // Horizontal range nearest
@@ -1283,7 +1283,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // AttackAirN
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         4,                                                  // First frame of hitbox
         29,                                                 // Last frame of hitbox
         -195.0F,                                            // Horizontal range nearest
@@ -1294,7 +1294,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // AttackAirF / AttackAirB
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         6,                                                  // First frame of hitbox
         26,                                                 // Last frame of hitbox
         -620.0F,                                            // Horizontal range nearest
@@ -1305,7 +1305,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // AttackAirHi
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         5,                                                  // First frame of hitbox
         29,                                                 // Last frame of hitbox
         -211.0F,                                            // Horizontal range nearest
@@ -1316,7 +1316,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // AttackAirLw
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         6,                                                  // First frame of hitbox
         29,                                                 // Last frame of hitbox
         -122.0F,                                            // Horizontal range nearest
@@ -1327,7 +1327,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // SpecialAirN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         10,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         500.0F,                                             // Horizontal range nearest
@@ -1338,7 +1338,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // SpecialAirHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         8,                                                  // First frame of hitbox
         39,                                                 // Last frame of hitbox
         -707.0F,                                            // Horizontal range nearest
@@ -1349,7 +1349,7 @@ ftComputerAttack dFTComputerAttacksLink[/* */] =
 
     // SpecialAirLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -1375,7 +1375,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 {
     // Attack11
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         3,                                                  // First frame of hitbox
         5,                                                  // Last frame of hitbox
         15.0F,                                              // Horizontal range nearest
@@ -1386,7 +1386,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // AttackS3
     {
-        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        nFTComputerInputStickTiltAutoXButtonA,             // Input script index
         3,                                                  // First frame of hitbox
         5,                                                  // Last frame of hitbox
         15.0F,                                              // Horizontal range nearest
@@ -1397,7 +1397,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // AttackS4
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         18,                                                 // First frame of hitbox
         24,                                                 // Last frame of hitbox
         155.0F,                                             // Horizontal range nearest
@@ -1408,7 +1408,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // AttackHi3
     {
-        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        nFTComputerInputStickTiltHiButtonA,                // Input script index
         7,                                                  // First frame of hitbox
         10,                                                 // Last frame of hitbox
         -240.0F,                                            // Horizontal range nearest
@@ -1419,7 +1419,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // AttackHi4
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         9,                                                  // First frame of hitbox
         15,                                                 // Last frame of hitbox
         -380.0F,                                            // Horizontal range nearest
@@ -1430,7 +1430,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // AttackLw3
     {
-        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        nFTComputerInputStickTiltLwButtonA,                // Input script index
         8,                                                  // First frame of hitbox
         10,                                                 // Last frame of hitbox
         130.0F,                                             // Horizontal range nearest
@@ -1441,7 +1441,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // AttackLw4
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         7,                                                  // First frame of hitbox
         23,                                                 // Last frame of hitbox
         -630.0F,                                            // Horizontal range nearest
@@ -1452,7 +1452,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // SpecialN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         18,                                                 // First frame of hitbox
         23,                                                 // Last frame of hitbox
         225.0F,                                             // Horizontal range nearest
@@ -1463,7 +1463,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // SpecialHi
     {
-        ftComputer_Input_YoshiSpecialHiAim,                 // Input script index
+        nFTComputerInputYoshiSpecialHiAim,                 // Input script index
         10,                                                 // First frame of hitbox
         20,                                                 // Last frame of hitbox
         -900.0F,                                            // Horizontal range nearest
@@ -1474,7 +1474,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // SpecialLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         30,                                                 // First frame of hitbox
         41,                                                 // Last frame of hitbox
         630.0F,                                             // Horizontal range nearest
@@ -1485,7 +1485,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // Catch
     {
-        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        nFTComputerInputStickNButtonZButtonA,              // Input script index
         16,                                                 // First frame of hitbox
         20,                                                 // Last frame of hitbox
         290.0F,                                             // Horizontal range nearest
@@ -1507,7 +1507,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // AttackAirN
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         5,                                                  // First frame of hitbox
         30,                                                 // Last frame of hitbox
         -186.0F,                                            // Horizontal range nearest
@@ -1518,7 +1518,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // AttackAirF / AttackAirB
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         10,                                                 // First frame of hitbox
         19,                                                 // Last frame of hitbox
         -580.0F,                                            // Horizontal range nearest
@@ -1529,7 +1529,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // AttackAirHi
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         9,                                                  // First frame of hitbox
         10,                                                 // Last frame of hitbox
         -171.0F,                                            // Horizontal range nearest
@@ -1540,7 +1540,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // AttackAirLw
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         5,                                                  // First frame of hitbox
         29,                                                 // Last frame of hitbox
         -204.0F,                                            // Horizontal range nearest
@@ -1551,7 +1551,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // SpecialAirN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         18,                                                 // First frame of hitbox
         23,                                                 // Last frame of hitbox
         224.0F,                                             // Horizontal range nearest
@@ -1562,7 +1562,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // SpecialAirHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -1573,7 +1573,7 @@ ftComputerAttack dFTComputerAttacksYoshi[/* */] =
 
     // SpecialAirLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         24,                                                 // First frame of hitbox
         31,                                                 // Last frame of hitbox
         -230.0F,                                            // Horizontal range nearest
@@ -1599,7 +1599,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 {
     // Attack11
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         3,                                                  // First frame of hitbox
         4,                                                  // Last frame of hitbox
         110.0F,                                             // Horizontal range nearest
@@ -1610,7 +1610,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // AttackS3
     {
-        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        nFTComputerInputStickTiltAutoXButtonA,             // Input script index
         3,                                                  // First frame of hitbox
         4,                                                  // Last frame of hitbox
         110.0F,                                             // Horizontal range nearest
@@ -1621,7 +1621,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // AttackS4
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         10,                                                 // First frame of hitbox
         23,                                                 // Last frame of hitbox
         215.0F,                                             // Horizontal range nearest
@@ -1632,7 +1632,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // AttackHi3
     {
-        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        nFTComputerInputStickTiltHiButtonA,                // Input script index
         4,                                                  // First frame of hitbox
         11,                                                 // Last frame of hitbox
         -230.0F,                                            // Horizontal range nearest
@@ -1643,7 +1643,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // AttackHi4
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         14,                                                 // First frame of hitbox
         23,                                                 // Last frame of hitbox
         -430.0F,                                            // Horizontal range nearest
@@ -1654,7 +1654,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // AttackLw3
     {
-        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        nFTComputerInputStickTiltLwButtonA,                // Input script index
         4,                                                  // First frame of hitbox
         10,                                                 // Last frame of hitbox
         105.0F,                                             // Horizontal range nearest
@@ -1665,7 +1665,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // AttackLw4
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         8,                                                  // First frame of hitbox
         27,                                                 // Last frame of hitbox
         -560.0F,                                            // Horizontal range nearest
@@ -1676,7 +1676,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // SpecialN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         25,                                                 // First frame of hitbox
         59,                                                 // Last frame of hitbox
         45.0F,                                              // Horizontal range nearest
@@ -1687,7 +1687,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // SpecialHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         23,                                                 // First frame of hitbox
         56,                                                 // Last frame of hitbox
         115.0F,                                             // Horizontal range nearest
@@ -1698,7 +1698,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // SpecialLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -1709,7 +1709,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // Catch
     {
-        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        nFTComputerInputStickNButtonZButtonA,              // Input script index
         7,                                                  // First frame of hitbox
         7,                                                  // Last frame of hitbox
         175.0F,                                             // Horizontal range nearest
@@ -1731,7 +1731,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // AttackAirN
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         3,                                                  // First frame of hitbox
         30,                                                 // Last frame of hitbox
         -110.0F,                                            // Horizontal range nearest
@@ -1742,7 +1742,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // AttackAirF / AttackAirB
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         6,                                                  // First frame of hitbox
         25,                                                 // Last frame of hitbox
         -416.0F,                                            // Horizontal range nearest
@@ -1753,7 +1753,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // AttackAirHi
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         10,                                                 // First frame of hitbox
         37,                                                 // Last frame of hitbox
         -291.0F,                                            // Horizontal range nearest
@@ -1764,7 +1764,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // AttackAirLw
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         5,                                                  // First frame of hitbox
         33,                                                 // Last frame of hitbox
         -124.0F,                                            // Horizontal range nearest
@@ -1775,7 +1775,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // SpecialAirN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         25,                                                 // First frame of hitbox
         59,                                                 // Last frame of hitbox
         43.0F,                                              // Horizontal range nearest
@@ -1786,7 +1786,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // SpecialAirHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         23,                                                 // First frame of hitbox
         56,                                                 // Last frame of hitbox
         125.0F,                                             // Horizontal range nearest
@@ -1797,7 +1797,7 @@ ftComputerAttack dFTComputerAttacksKirby[/* */] =
 
     // SpecialAirLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         23,                                                 // First frame of hitbox
         30,                                                 // Last frame of hitbox
         -200.0F,                                            // Horizontal range nearest
@@ -1823,7 +1823,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 {
     // Attack11
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         2,                                                  // First frame of hitbox
         5,                                                  // Last frame of hitbox
         -10.0F,                                             // Horizontal range nearest
@@ -1834,7 +1834,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // AttackS3
     {
-        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        nFTComputerInputStickTiltAutoXButtonA,             // Input script index
         5,                                                  // First frame of hitbox
         14,                                                 // Last frame of hitbox
         20.0F,                                              // Horizontal range nearest
@@ -1845,7 +1845,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // AttackS4
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         22,                                                 // First frame of hitbox
         39,                                                 // Last frame of hitbox
         50.0F,                                              // Horizontal range nearest
@@ -1856,7 +1856,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // AttackHi3
     {
-        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        nFTComputerInputStickTiltHiButtonA,                // Input script index
         5,                                                  // First frame of hitbox
         14,                                                 // Last frame of hitbox
         -360.0F,                                            // Horizontal range nearest
@@ -1867,7 +1867,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // AttackHi4
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         10,                                                 // First frame of hitbox
         18,                                                 // Last frame of hitbox
         -460.0F,                                            // Horizontal range nearest
@@ -1878,7 +1878,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // AttackLw3
     {
-        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        nFTComputerInputStickTiltLwButtonA,                // Input script index
         6,                                                  // First frame of hitbox
         13,                                                 // Last frame of hitbox
         5.0F,                                               // Horizontal range nearest
@@ -1889,7 +1889,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // AttackLw4
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         11,                                                 // First frame of hitbox
         29,                                                 // Last frame of hitbox
         -475.0F,                                            // Horizontal range nearest
@@ -1900,7 +1900,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // SpecialN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         10,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         400.0F,                                             // Horizontal range nearest
@@ -1911,7 +1911,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // SpecialHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -1922,7 +1922,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // SpecialLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         40,                                                 // First frame of hitbox
         48,                                                 // Last frame of hitbox
         -350.0F,                                            // Horizontal range nearest
@@ -1933,7 +1933,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // Catch
     {
-        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        nFTComputerInputStickNButtonZButtonA,              // Input script index
         7,                                                  // First frame of hitbox
         7,                                                  // Last frame of hitbox
         170.0F,                                             // Horizontal range nearest
@@ -1955,7 +1955,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // AttackAirN
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         3,                                                  // First frame of hitbox
         28,                                                 // Last frame of hitbox
         -247.0F,                                            // Horizontal range nearest
@@ -1966,7 +1966,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // AttackAirF / AttackAirB
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         10,                                                 // First frame of hitbox
         21,                                                 // Last frame of hitbox
         -549.0F,                                            // Horizontal range nearest
@@ -1977,7 +1977,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // AttackAirHi
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         3,                                                  // First frame of hitbox
         10,                                                 // Last frame of hitbox
         -530.0F,                                            // Horizontal range nearest
@@ -1988,7 +1988,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // AttackAirLw
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         9,                                                  // First frame of hitbox
         26,                                                 // Last frame of hitbox
         -284.0F,                                            // Horizontal range nearest
@@ -1999,7 +1999,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // SpecialAirN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         10,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         400.0F,                                             // Horizontal range nearest
@@ -2010,7 +2010,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // SpecialAirHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -2021,7 +2021,7 @@ ftComputerAttack dFTComputerAttacksPikachu[/* */] =
 
     // SpecialAirLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         40,                                                 // First frame of hitbox
         48,                                                 // Last frame of hitbox
         -350.0F,                                            // Horizontal range nearest
@@ -2047,7 +2047,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 {
     // Attack11
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         5,                                                  // First frame of hitbox
         8,                                                  // Last frame of hitbox
         25.0F,                                              // Horizontal range nearest
@@ -2058,7 +2058,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // AttackS3
     {
-        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        nFTComputerInputStickTiltAutoXButtonA,             // Input script index
         9,                                                  // First frame of hitbox
         15,                                                 // Last frame of hitbox
         20.0F,                                              // Horizontal range nearest
@@ -2069,7 +2069,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // AttackS4
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         16,                                                 // First frame of hitbox
         23,                                                 // Last frame of hitbox
         250.0F,                                             // Horizontal range nearest
@@ -2080,7 +2080,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // AttackHi3
     {
-        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        nFTComputerInputStickTiltHiButtonA,                // Input script index
         8,                                                  // First frame of hitbox
         23,                                                 // Last frame of hitbox
         -395.0F,                                            // Horizontal range nearest
@@ -2091,7 +2091,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // AttackHi4
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         4,                                                  // First frame of hitbox
         11,                                                 // Last frame of hitbox
         -115.0F,                                            // Horizontal range nearest
@@ -2102,7 +2102,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // AttackLw3
     {
-        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        nFTComputerInputStickTiltLwButtonA,                // Input script index
         8,                                                  // First frame of hitbox
         15,                                                 // Last frame of hitbox
         -95.0F,                                             // Horizontal range nearest
@@ -2113,7 +2113,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // AttackLw4
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         9,                                                  // First frame of hitbox
         23,                                                 // Last frame of hitbox
         -630.0F,                                            // Horizontal range nearest
@@ -2124,7 +2124,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // SpecialN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         42,                                                 // First frame of hitbox
         46,                                                 // Last frame of hitbox
         200.0F,                                             // Horizontal range nearest
@@ -2135,7 +2135,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // SpecialHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         13,                                                 // First frame of hitbox
         44,                                                 // Last frame of hitbox
         90.0F,                                              // Horizontal range nearest
@@ -2146,7 +2146,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // SpecialLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         12,                                                 // First frame of hitbox
         39,                                                 // Last frame of hitbox
         -10.0F,                                             // Horizontal range nearest
@@ -2157,7 +2157,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // Catch
     {
-        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        nFTComputerInputStickNButtonZButtonA,              // Input script index
         7,                                                  // First frame of hitbox
         7,                                                  // Last frame of hitbox
         170.0F,                                             // Horizontal range nearest
@@ -2179,7 +2179,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // AttackAirN
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         4,                                                  // First frame of hitbox
         27,                                                 // Last frame of hitbox
         -144.0F,                                            // Horizontal range nearest
@@ -2190,7 +2190,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // AttackAirF / AttackAirB
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         7,                                                  // First frame of hitbox
         18,                                                 // Last frame of hitbox
         -629.0F,                                            // Horizontal range nearest
@@ -2201,7 +2201,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // AttackAirHi
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         5,                                                  // First frame of hitbox
         13,                                                 // Last frame of hitbox
         -604.0F,                                            // Horizontal range nearest
@@ -2212,7 +2212,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // AttackAirLw
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         8,                                                  // First frame of hitbox
         25,                                                 // Last frame of hitbox
         -249.0F,                                            // Horizontal range nearest
@@ -2223,7 +2223,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // SpecialAirN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         42,                                                 // First frame of hitbox
         46,                                                 // Last frame of hitbox
         161.0F,                                             // Horizontal range nearest
@@ -2234,7 +2234,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // SpecialAirHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         13,                                                 // First frame of hitbox
         44,                                                 // Last frame of hitbox
         89.0F,                                              // Horizontal range nearest
@@ -2245,7 +2245,7 @@ ftComputerAttack dFTComputerAttacksCaptain[/* */] =
 
     // SpecialAirLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         12,                                                 // First frame of hitbox
         30,                                                 // Last frame of hitbox
         -247.0F,                                            // Horizontal range nearest
@@ -2271,7 +2271,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 {
     // Attack11
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         5,                                                  // First frame of hitbox
         6,                                                  // Last frame of hitbox
         100.0F,                                             // Horizontal range nearest
@@ -2282,7 +2282,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // AttackS3
     {
-        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        nFTComputerInputStickTiltAutoXButtonA,             // Input script index
         7,                                                  // First frame of hitbox
         10,                                                 // Last frame of hitbox
         55.0F,                                              // Horizontal range nearest
@@ -2293,7 +2293,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // AttackS4
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         12,                                                 // First frame of hitbox
         19,                                                 // Last frame of hitbox
         310.0F,                                             // Horizontal range nearest
@@ -2304,7 +2304,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // AttackHi3
     {
-        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        nFTComputerInputStickTiltHiButtonA,                // Input script index
         7,                                                  // First frame of hitbox
         14,                                                 // Last frame of hitbox
         -455.0F,                                            // Horizontal range nearest
@@ -2315,7 +2315,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // AttackHi4
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         8,                                                  // First frame of hitbox
         14,                                                 // Last frame of hitbox
         -345.0F,                                            // Horizontal range nearest
@@ -2326,7 +2326,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // AttackLw3
     {
-        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        nFTComputerInputStickTiltLwButtonA,                // Input script index
         11,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         30.0F,                                              // Horizontal range nearest
@@ -2337,7 +2337,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // AttackLw4
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         8,                                                  // First frame of hitbox
         27,                                                 // Last frame of hitbox
         -435.0F,                                            // Horizontal range nearest
@@ -2348,7 +2348,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // SpecialN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         12,                                                 // First frame of hitbox
         27,                                                 // Last frame of hitbox
         -255.0F,                                            // Horizontal range nearest
@@ -2359,7 +2359,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // SpecialHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         28,                                                 // First frame of hitbox
         125,                                                // Last frame of hitbox
         -355.0F,                                            // Horizontal range nearest
@@ -2370,7 +2370,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // SpecialLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -2381,7 +2381,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // Catch
     {
-        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        nFTComputerInputStickNButtonZButtonA,              // Input script index
         7,                                                  // First frame of hitbox
         7,                                                  // Last frame of hitbox
         210.0F,                                             // Horizontal range nearest
@@ -2403,7 +2403,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // AttackAirN
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         6,                                                  // First frame of hitbox
         33,                                                 // Last frame of hitbox
         -110.0F,                                            // Horizontal range nearest
@@ -2414,7 +2414,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // AttackAirF / AttackAirB
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         8,                                                  // First frame of hitbox
         21,                                                 // Last frame of hitbox
         -354.0F,                                            // Horizontal range nearest
@@ -2425,7 +2425,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // AttackAirHi
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         8,                                                  // First frame of hitbox
         16,                                                 // Last frame of hitbox
         -236.0F,                                            // Horizontal range nearest
@@ -2436,7 +2436,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // AttackAirLw
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         5,                                                  // First frame of hitbox
         33,                                                 // Last frame of hitbox
         -117.0F,                                            // Horizontal range nearest
@@ -2447,7 +2447,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // SpecialAirN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         12,                                                 // First frame of hitbox
         27,                                                 // Last frame of hitbox
         -263.0F,                                            // Horizontal range nearest
@@ -2458,7 +2458,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // SpecialAirHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         28,                                                 // First frame of hitbox
         125,                                                // Last frame of hitbox
         -358.0F,                                            // Horizontal range nearest
@@ -2469,7 +2469,7 @@ ftComputerAttack dFTComputerAttacksPurin[/* */] =
 
     // SpecialAirLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -2495,7 +2495,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 {
     // Attack11
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         2,                                                  // First frame of hitbox
         3,                                                  // Last frame of hitbox
         150.0F,                                             // Horizontal range nearest
@@ -2506,7 +2506,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // AttackS3
     {
-        ftComputer_Input_StickTiltAutoXButtonA,             // Input script index
+        nFTComputerInputStickTiltAutoXButtonA,             // Input script index
         7,                                                  // First frame of hitbox
         11,                                                 // Last frame of hitbox
         220.0F,                                             // Horizontal range nearest
@@ -2517,7 +2517,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // AttackS4
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         18,                                                 // First frame of hitbox
         21,                                                 // Last frame of hitbox
         80.0F,                                              // Horizontal range nearest
@@ -2528,7 +2528,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // AttackHi3
     {
-        ftComputer_Input_StickTiltHiButtonA,                // Input script index
+        nFTComputerInputStickTiltHiButtonA,                // Input script index
         5,                                                  // First frame of hitbox
         19,                                                 // Last frame of hitbox
         -250.0F,                                            // Horizontal range nearest
@@ -2539,7 +2539,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // AttackHi4
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         13,                                                 // First frame of hitbox
         25,                                                 // Last frame of hitbox
         -515.0F,                                            // Horizontal range nearest
@@ -2550,7 +2550,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // AttackLw3
     {
-        ftComputer_Input_StickTiltLwButtonA,                // Input script index
+        nFTComputerInputStickTiltLwButtonA,                // Input script index
         4,                                                  // First frame of hitbox
         8,                                                  // Last frame of hitbox
         -5.0F,                                              // Horizontal range nearest
@@ -2561,7 +2561,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // AttackLw4
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         14,                                                 // First frame of hitbox
         53,                                                 // Last frame of hitbox
         -680.0F,                                            // Horizontal range nearest
@@ -2572,7 +2572,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // SpecialN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         10,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         500.0F,                                             // Horizontal range nearest
@@ -2583,7 +2583,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // SpecialHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -2594,7 +2594,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // SpecialLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -2605,7 +2605,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // Catch
     {
-        ftComputer_Input_StickNButtonZButtonA,              // Input script index
+        nFTComputerInputStickNButtonZButtonA,              // Input script index
         7,                                                  // First frame of hitbox
         7,                                                  // Last frame of hitbox
         50.0F,                                              // Horizontal range nearest
@@ -2627,7 +2627,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // AttackAirN
     {
-        ftComputer_Input_StickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                     // Input script index
         5,                                                  // First frame of hitbox
         30,                                                 // Last frame of hitbox
         -162.0F,                                            // Horizontal range nearest
@@ -2638,7 +2638,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // AttackAirF / AttackAirB
     {
-        ftComputer_Input_StickSmashAutoXNYButtonA,          // Input script index
+        nFTComputerInputStickSmashAutoXNYButtonA,          // Input script index
         10,                                                 // First frame of hitbox
         19,                                                 // Last frame of hitbox
         -457.0F,                                            // Horizontal range nearest
@@ -2649,7 +2649,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // AttackAirHi
     {
-        ftComputer_Input_StickSmashHiButtonA,               // Input script index
+        nFTComputerInputStickSmashHiButtonA,               // Input script index
         8,                                                  // First frame of hitbox
         16,                                                 // Last frame of hitbox
         -335.0F,                                            // Horizontal range nearest
@@ -2660,7 +2660,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // AttackAirLw
     {
-        ftComputer_Input_StickSmashLwButtonA,               // Input script index
+        nFTComputerInputStickSmashLwButtonA,               // Input script index
         5,                                                  // First frame of hitbox
         21,                                                 // Last frame of hitbox
         -129.0F,                                            // Horizontal range nearest
@@ -2671,7 +2671,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // SpecialAirN
     {
-        ftComputer_Input_StickSmashAutoXButtonB,            // Input script index
+        nFTComputerInputStickSmashAutoXButtonB,            // Input script index
         10,                                                 // First frame of hitbox
         15,                                                 // Last frame of hitbox
         500.0F,                                             // Horizontal range nearest
@@ -2682,7 +2682,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // SpecialAirHi
     {
-        ftComputer_Input_StickSmashHiButtonB,               // Input script index
+        nFTComputerInputStickSmashHiButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -2693,7 +2693,7 @@ ftComputerAttack dFTComputerAttacksNess[/* */] =
 
     // SpecialAirLw
     {
-        ftComputer_Input_StickSmashLwButtonB,               // Input script index
+        nFTComputerInputStickSmashLwButtonB,               // Input script index
         0,                                                  // First frame of hitbox
         0,                                                  // Last frame of hitbox
         0.0F,                                               // Horizontal range nearest
@@ -2757,7 +2757,7 @@ u8 dFTComputerPlayerInputScript0[/* */] =
 // 0x80188138
 u8 dFTComputerPlayerInputScript1[/* */] =
 {
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 0),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2775,7 +2775,7 @@ u8 dFTComputerPlayerInputScript3[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 0),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2784,8 +2784,8 @@ u8 dFTComputerPlayerInputScript4[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZRelease, 0),
     FTCOMPUTER_EVENT_STICK_Y(I_CONTROLLER_RANGE_MAX, 1),
     FTCOMPUTER_EVENT_END()
 };
@@ -2794,9 +2794,9 @@ u8 dFTComputerPlayerInputScript4[/* */] =
 u8 dFTComputerPlayerInputScript5[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2806,17 +2806,17 @@ u8 dFTComputerPlayerInputScript6[/* */] =
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
 // 0x8018816C
 u8 dFTComputerPlayerInputScript7[/* */] =
 {
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2824,8 +2824,8 @@ u8 dFTComputerPlayerInputScript7[/* */] =
 u8 dFTComputerPlayerInputScript8[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOFULL, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 0),
     FTCOMPUTER_EVENT_STICK_X(0, 1),
     FTCOMPUTER_EVENT_END()
 };
@@ -2835,9 +2835,9 @@ u8 dFTComputerPlayerInputScript9[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOFULL, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBPress, 1),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2847,9 +2847,9 @@ u8 dFTComputerPlayerInputScript10[/* */] =
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOFULL, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBPress, 1),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2858,17 +2858,17 @@ u8 dFTComputerPlayerInputScript11[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBPress, 1),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
 // 0x8018819C
 u8 dFTComputerPlayerInputScript12[/* */] =
 {
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZRelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2877,9 +2877,9 @@ u8 dFTComputerPlayerInputScript13[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(I_CONTROLLER_RANGE_MAX, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBPress, 1),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2890,9 +2890,9 @@ u8 dFTComputerPlayerInputScript14[/* */] =
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(I_CONTROLLER_RANGE_MAX, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBPress, 1),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2901,18 +2901,18 @@ u8 dFTComputerPlayerInputScript15[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonLPress, 5),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonLRelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonLPress, 5),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonLRelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
 // 0x801881C8
 u8 dFTComputerPlayerInputScript16[/* */] =
 {
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZRelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2937,8 +2937,8 @@ u8 dFTComputerPlayerInputScript19[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2948,8 +2948,8 @@ u8 dFTComputerPlayerInputScript20[/* */] =
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2958,9 +2958,9 @@ u8 dFTComputerPlayerInputScript21[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOFULL, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2970,9 +2970,9 @@ u8 dFTComputerPlayerInputScript22[/* */] =
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOFULL, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2981,9 +2981,9 @@ u8 dFTComputerPlayerInputScript23[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(I_CONTROLLER_RANGE_MAX / 2, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -2992,9 +2992,9 @@ u8 dFTComputerPlayerInputScript24[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(I_CONTROLLER_RANGE_MAX, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3005,9 +3005,9 @@ u8 dFTComputerPlayerInputScript25[/* */] =
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(FTCOMPUTER_STICK_AUTOHALF, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3018,9 +3018,9 @@ u8 dFTComputerPlayerInputScript26[/* */] =
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(FTCOMPUTER_STICK_AUTOFULL, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3029,9 +3029,9 @@ u8 dFTComputerPlayerInputScript27[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(-I_CONTROLLER_RANGE_MAX, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBPress, 1),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3040,10 +3040,10 @@ u8 dFTComputerPlayerInputScript28[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZRelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3053,10 +3053,10 @@ u8 dFTComputerPlayerInputScript29[/* */] =
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZRelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3083,9 +3083,9 @@ u8 dFTComputerPlayerInputScript32[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(-I_CONTROLLER_RANGE_MAX / 2, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3096,9 +3096,9 @@ u8 dFTComputerPlayerInputScript33[/* */] =
     FTCOMPUTER_EVENT_STICK_Y(0, 5),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(-I_CONTROLLER_RANGE_MAX / 2, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3108,9 +3108,9 @@ u8 dFTComputerPlayerInputScript34[/* */] =
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
     FTCOMPUTER_EVENT_STICK_Y(-I_CONTROLLER_RANGE_MAX, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3119,14 +3119,14 @@ u8 dFTComputerPlayerInputScript35[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZPress, 1),
     FTCOMPUTER_EVENT_END()
 };
 
 // 0x801882A4
 u8 dFTComputerPlayerInputScript36[/* */] =
 {
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZRelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3134,9 +3134,9 @@ u8 dFTComputerPlayerInputScript36[/* */] =
 u8 dFTComputerPlayerInputScript37[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 1),
     FTCOMPUTER_EVENT_STICK_Y(-I_CONTROLLER_RANGE_MAX, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBPress, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3144,7 +3144,7 @@ u8 dFTComputerPlayerInputScript37[/* */] =
 u8 dFTComputerPlayerInputScript38[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3153,7 +3153,7 @@ u8 dFTComputerPlayerInputScript39[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 0),
     FTCOMPUTER_EVENT_STICK_Y(-I_CONTROLLER_RANGE_MAX, 1),
     FTCOMPUTER_EVENT_END()
 };
@@ -3163,10 +3163,10 @@ u8 dFTComputerPlayerInputScript40[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZRelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3175,24 +3175,24 @@ u8 dFTComputerPlayerInputScript41[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(FTCOMPUTER_STICK_AUTOHALF, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZRelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
 // 0x801882D4
 u8 dFTComputerPlayerInputScript42[/* */] =
 {
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 5),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZPress, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 10),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZRelease, 5),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZPress, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZRelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 10),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3201,16 +3201,16 @@ u8 dFTComputerPlayerInputScript43[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZRelease, 0),
     FTCOMPUTER_EVENT_STICK_Y(I_CONTROLLER_RANGE_MAX, 15),
     FTCOMPUTER_EVENT_STICK_Y(0, 15),
     FTCOMPUTER_EVENT_STICK_Y(-I_CONTROLLER_RANGE_MAX / 2, 3),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZPress, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZRelease, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 10),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZPress, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZRelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 10),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3218,19 +3218,19 @@ u8 dFTComputerPlayerInputScript43[/* */] =
 u8 dFTComputerPlayerInputScript44[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(I_CONTROLLER_RANGE_MAX, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 3),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
     FTCOMPUTER_EVENT_STICK_X(-I_CONTROLLER_RANGE_MAX, 3),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_STICK_X(I_CONTROLLER_RANGE_MAX, 3),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
     FTCOMPUTER_EVENT_STICK_X(-I_CONTROLLER_RANGE_MAX, 3),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 1),
     FTCOMPUTER_EVENT_STICK_X(I_CONTROLLER_RANGE_MAX, 3),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonAPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonAPress, 1),
     FTCOMPUTER_EVENT_STICK_X(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonARelease, 0),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonARelease, 0),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3239,7 +3239,7 @@ u8 dFTComputerPlayerInputScript45[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZPress, 1),
     FTCOMPUTER_EVENT_STICK_X(0, 1),
     FTCOMPUTER_EVENT_STICK_X(-I_CONTROLLER_RANGE_MAX, 1),
     FTCOMPUTER_EVENT_STICK_X(0, 1),
@@ -3251,7 +3251,7 @@ u8 dFTComputerPlayerInputScript46[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(0, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonZPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonZPress, 1),
     FTCOMPUTER_EVENT_STICK_X(0, 1),
     FTCOMPUTER_EVENT_STICK_X(I_CONTROLLER_RANGE_MAX, 1),
     FTCOMPUTER_EVENT_STICK_X(0, 1),
@@ -3263,22 +3263,22 @@ u8 dFTComputerPlayerInputScript47[/* */] =
 {
     FTCOMPUTER_EVENT_STICK_X(0, 0),
     FTCOMPUTER_EVENT_STICK_Y(I_CONTROLLER_RANGE_MAX, 0),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBPress, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_MoveAuto, 1),
-    FTCOMPUTER_EVENT_INSTRUCTION(ftComputer_Command_ButtonBRelease, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBPress, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandMoveAuto, 1),
+    FTCOMPUTER_EVENT_INSTRUCTION(nFTComputerCommandButtonBRelease, 1),
     FTCOMPUTER_EVENT_END()
 };
 
@@ -3352,7 +3352,7 @@ u8 *dFTComputerPlayerInputScripts[/* */] =
 // 0x80131B00
 wpStruct* ftComputerGetOwnWeapon(ftStruct *fp)
 {
-    GObj *weapon_gobj = gOMObjCommonLinks[GObj_LinkID_Weapon];
+    GObj *weapon_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
 
     while (weapon_gobj != NULL)
     {
@@ -3370,7 +3370,7 @@ wpStruct* ftComputerGetOwnWeapon(ftStruct *fp)
 // 0x80131B44
 Vec3f* ftComputerGetOwnWeaponPositionKind(ftStruct *fp, s32 wp_kind)
 {
-    GObj *weapon_gobj = gOMObjCommonLinks[GObj_LinkID_Weapon];
+    GObj *weapon_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
 
     while (weapon_gobj != NULL)
     {
@@ -3486,12 +3486,12 @@ void ftComputerUpdateInputs(ftStruct *this_fp)
                             break;
 
                         case FTCOMPUTER_STICK_AUTOFULL:
-                            this_fp->input.cp.stick_range.x = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) ? (I_CONTROLLER_RANGE_MAX) : -(I_CONTROLLER_RANGE_MAX);
+                            this_fp->input.cp.stick_range.x = (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) ? (I_CONTROLLER_RANGE_MAX) : -(I_CONTROLLER_RANGE_MAX);
                             p_command++;
                             break;
 
                         case FTCOMPUTER_STICK_AUTOHALF:
-                            this_fp->input.cp.stick_range.x = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) ? (I_CONTROLLER_RANGE_MAX / 2) : -(I_CONTROLLER_RANGE_MAX / 2);
+                            this_fp->input.cp.stick_range.x = (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) ? (I_CONTROLLER_RANGE_MAX / 2) : -(I_CONTROLLER_RANGE_MAX / 2);
                             p_command++;
                             break;
                         }
@@ -3505,26 +3505,26 @@ void ftComputerUpdateInputs(ftStruct *this_fp)
                             break;
 
                         case FTCOMPUTER_STICK_AUTOFULL:
-                            this_fp->input.cp.stick_range.y = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y) ? (I_CONTROLLER_RANGE_MAX) : -(I_CONTROLLER_RANGE_MAX);
+                            this_fp->input.cp.stick_range.y = (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y) ? (I_CONTROLLER_RANGE_MAX) : -(I_CONTROLLER_RANGE_MAX);
                             p_command++;
                             break;
 
                         case FTCOMPUTER_STICK_AUTOHALF:
-                            this_fp->input.cp.stick_range.y = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y) ? (I_CONTROLLER_RANGE_MAX / 2) : -(I_CONTROLLER_RANGE_MAX / 2);
+                            this_fp->input.cp.stick_range.y = (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y) ? (I_CONTROLLER_RANGE_MAX / 2) : -(I_CONTROLLER_RANGE_MAX / 2);
                             p_command++;
                             break;
                         }
                         break;
 
                     case FTCOMPUTER_COMMAND_MOVEAUTO:
-                        dist_x = ft_com->target_pos.x - this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-                        dist_y = ft_com->target_pos.y - this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+                        dist_x = ft_com->target_pos.x - this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+                        dist_y = ft_com->target_pos.y - this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
-                        if ((this_fp->ground_or_air == nMPKineticsGround) && (this_fp->cp_level < 5))
+                        if ((this_fp->ga == nMPKineticsGround) && (this_fp->cp_level < 5))
                         {
                             stick_range_x = (ABSF(dist_x) > 100.0F) ? (I_CONTROLLER_RANGE_MAX / 2) : 0;
                         }
-                        else if (this_fp->ground_or_air == nMPKineticsGround)
+                        else if (this_fp->ga == nMPKineticsGround)
                         {
                             if ((ft_com->dash_predict * 1.5F) < ABSF(dist_x))
                             {
@@ -3548,7 +3548,7 @@ void ftComputerUpdateInputs(ftStruct *this_fp)
                         }
                         stick_range_y = I_CONTROLLER_RANGE_MAX;
 
-                        if (this_fp->ground_or_air == nMPKineticsGround)
+                        if (this_fp->ga == nMPKineticsGround)
                         {
                             if (this_fp->status_info.status_id != nFTCommonStatusKneeBend)
                             {
@@ -3590,16 +3590,16 @@ void ftComputerUpdateInputs(ftStruct *this_fp)
                             }
                             switch (ft_com->behavior)
                             {
-                            case ftComputer_Behavior_YoshiTeam:
-                                if (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < 0)
+                            case nFTComputerBehaviorYoshiTeam:
+                                if (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < 0)
                                 {
                                     stick_range_y = dist_y = 0.0F;
                                 }
                                 break;
 
-                            case ftComputer_Behavior_KirbyTeam:
-                            case ftComputer_Behavior_PolyTeam:
-                                if (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < -300.0F)
+                            case nFTComputerBehaviorKirbyTeam:
+                            case nFTComputerBehaviorPolyTeam:
+                                if (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < -300.0F)
                                 {
                                     stick_range_y = dist_y = 0.0F;
                                 }
@@ -3682,7 +3682,7 @@ void ftComputerSetCommandWaitShort(ftStruct *fp, s32 index)
 {
     ftComputer *ft_com = &fp->fighter_com;
 
-    if (fp->ground_or_air == nMPKineticsGround)
+    if (fp->ga == nMPKineticsGround)
     {
         ft_com->input_wait = ((2.0F * (mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - fp->cp_level))) + ((FTCOMPUTER_LEVEL_MAX - fp->cp_level) * 2) + 1.0F);
     }
@@ -3705,7 +3705,7 @@ void ftComputerSetCommandWaitLong(ftStruct *fp, s32 index)
 {
     ftComputer *ft_com = &fp->fighter_com;
 
-    if (fp->ground_or_air == nMPKineticsGround)
+    if (fp->ga == nMPKineticsGround)
     {
         ft_com->input_wait = ((4 * (mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - fp->cp_level))) + ((FTCOMPUTER_LEVEL_MAX - fp->cp_level) * 4) + 1.0F);
     }
@@ -3719,9 +3719,9 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
     ftStruct *other_fp;
-    f32 this_pos_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-    f32 this_pos_y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
-    GObj *other_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    f32 this_pos_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+    f32 this_pos_y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+    GObj *other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
     f32 distance = F32_MAX;
     f32 square_xy;
     f32 other_pos_x;
@@ -3735,15 +3735,15 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
 
             if (this_fp->team != other_fp->team)
             {
-                other_pos_x = other_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-                other_pos_y = other_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+                other_pos_x = other_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+                other_pos_y = other_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
                 if 
                 (
                     (other_fp->status_info.status_id >= nFTCommonStatusWait) &&
                     (
                         (
-                            (func_ovl2_800F8FFC(&other_fp->joint[ftParts_Joint_TopN]->translate.vec.f) != FALSE) &&
+                            (func_ovl2_800F8FFC(&other_fp->joint[nFTPartsJointTopN]->translate.vec.f) != FALSE) &&
                             (other_pos_x <= gMPEdgeBounds.d2.right) &&
                             (gMPEdgeBounds.d2.left <= other_pos_x) &&
                             (gMPEdgeBounds.d2.bottom <= other_pos_y) &&
@@ -3751,7 +3751,7 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
                         ) 
                         ||
                         (
-                            (this_fp->ground_or_air == nMPKineticsGround) &&
+                            (this_fp->ga == nMPKineticsGround) &&
                             (
                                 (other_fp->status_info.status_id == nFTCommonStatusCliffCatch) ||
                                 (other_fp->status_info.status_id == nFTCommonStatusCliffWait)
@@ -3761,7 +3761,7 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
                     &&
                     (
                         (this_fp->ft_kind != nFTKindMetalMario) ||
-                        (other_fp->ground_or_air == nMPKineticsGround)
+                        (other_fp->ga == nMPKineticsGround)
                     )
                 )
                 {
@@ -3792,7 +3792,7 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
     ft_com->ftcom_flags_0x4A_b1 = TRUE;
     ft_com->target_dist = sqrtf(distance);
 
-    if (ftGetComTargetFighter(ft_com)->ground_or_air == nMPKineticsGround)
+    if (ftGetComTargetFighter(ft_com)->ga == nMPKineticsGround)
     {
         ft_com->target_line_id = ftGetComTargetFighter(ft_com)->coll_data.ground_line_id;
     }
@@ -3804,7 +3804,7 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
 // 0x80132BC8
 sb32 ftComputerCheckEvadeDistance(ftStruct *this_fp)
 {
-    GObj *other_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     while (other_gobj != NULL)
     {
@@ -3814,8 +3814,8 @@ sb32 ftComputerCheckEvadeDistance(ftStruct *this_fp)
 
             if (this_fp->team != other_fp->team)
             {
-                DObj *other_joint = other_fp->joint[ftParts_Joint_TopN];
-                DObj *this_joint = this_fp->joint[ftParts_Joint_TopN];
+                DObj *other_joint = other_fp->joint[nFTPartsJointTopN];
+                DObj *this_joint = this_fp->joint[nFTPartsJointTopN];
                 f32 other_x = (other_joint->translate.vec.f.x + other_fp->phys_info.vel_air.x * 3.0F);
                 f32 other_y = (other_joint->translate.vec.f.y + other_fp->phys_info.vel_air.x * 3.0F);
                 f32 sqrt_xy = sqrtf(SQUARE(this_joint->translate.vec.f.y - other_y) + SQUARE(this_joint->translate.vec.f.x - other_x));
@@ -3839,7 +3839,7 @@ sb32 ftComputerCheckEvadeDistance(ftStruct *this_fp)
 ftStruct* ftComputerWaitGetTarget(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
-    GObj *other_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
     s32 target_damage = 9999;
     ftStruct *target_fp = NULL;
 
@@ -3943,22 +3943,22 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             return FALSE;
         }
     }
-    if ((gBattleState->gr_kind == Gr_Kind_Yamabuki) && (this_fp->ground_or_air != nMPKineticsGround))
+    if ((gBattleState->gr_kind == Gr_Kind_Yamabuki) && (this_fp->ga != nMPKineticsGround))
     {
         if (this_fp->phys_info.vel_air.x > 0.0F)
         {
-            detect_near_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-            detect_far_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + (this_fp->phys_info.vel_air.x * 40.0F);
+            detect_near_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+            detect_far_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + (this_fp->phys_info.vel_air.x * 40.0F);
         }
         else
         {
-            detect_far_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-            detect_near_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + (this_fp->phys_info.vel_air.x * 40.0F);
+            detect_far_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+            detect_near_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + (this_fp->phys_info.vel_air.x * 40.0F);
         }
-        this_detect_pos.y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
-        this_detect_pos.x = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + detect_near_x) - 100.0F;
+        this_detect_pos.y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+        this_detect_pos.x = (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + detect_near_x) - 100.0F;
 
-        while (this_detect_pos.x < ((this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + detect_far_x) + 100.0F))
+        while (this_detect_pos.x < ((this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + detect_far_x) + 100.0F))
         {
             if (func_ovl2_800F8FFC(&this_detect_pos) == FALSE)
             {
@@ -3967,16 +3967,16 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             this_detect_pos.x += 100.0F;
         }
     }
-    this_pos_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-    this_pos_y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+    this_pos_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+    this_pos_y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
     hurtbox_size_mul = (((mtTrigGetRandomFloat() - 0.5F) * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level)) * 0.1F) + 1.0F;
 
     hurtbox_detect_width = target_fp->hurtbox_size.x * hurtbox_size_mul;
     hurtbox_detect_height = target_fp->hurtbox_size.y * hurtbox_size_mul;
 
-    target_pos_x = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-    target_pos_y = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+    target_pos_x = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+    target_pos_y = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
     target_vel_x = target_fp->phys_info.vel_air.x;
     target_vel_y = target_fp->phys_info.vel_air.y;
@@ -3992,7 +3992,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
 
     ft_comattack = dFTComputerAttackList[this_fp->ft_kind];
 
-    if (this_fp->ground_or_air != nMPKineticsGround)
+    if (this_fp->ga != nMPKineticsGround)
     {
         while (ft_comattack->input_kind != -1)
         {
@@ -4027,7 +4027,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             }
             else predict_adjust_y = (((hit_frame * this_vel_y) - ((this_gravity * SQUARE(this_predict_frame)) * 0.5F)) + (this_fall_speed_max * (hit_frame - this_predict_frame))) + this_pos_y;
 
-            if ((target_fp->status_info.status_id != nFTCommonStatusPass) && (target_fp->ground_or_air != nMPKineticsGround))
+            if ((target_fp->status_info.status_id != nFTCommonStatusPass) && (target_fp->ga != nMPKineticsGround))
             {
                 target_predict_frame = -(target_fall_speed_max - target_vel_y) / target_gravity;
 
@@ -4063,13 +4063,13 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                 detect_near_y *= 1.4F;
                 detect_far_y *= 1.4F;
             }
-            if (this_fp->ground_or_air == nMPKineticsGround)
+            if (this_fp->ga == nMPKineticsGround)
             {
                 switch (ft_comattack->input_kind)
                 {
-                case ftComputer_Input_StickNButtonA:
-                case ftComputer_Input_StickTiltAutoXButtonA:
-                case ftComputer_Input_StickSmashAutoXNYButtonA:
+                case nFTComputerInputStickNButtonA:
+                case nFTComputerInputStickTiltAutoXButtonA:
+                case nFTComputerInputStickSmashAutoXNYButtonA:
                     if (this_fp->item_hold != NULL)
                     {
                         user_data = itGetStruct(this_fp->item_hold);
@@ -4102,7 +4102,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             case nFTKindMetalMario:
             case nFTKindPolyMario:
             case nFTKindPolyLuigi:
-                if (ft_comattack->input_kind == ftComputer_Input_StickSmashHiButtonB)
+                if (ft_comattack->input_kind == nFTComputerInputStickSmashHiButtonB)
                 {
                     is_attempt_cliffcatch = TRUE;
                 }
@@ -4110,7 +4110,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
 
             case nFTKindKirby:
             case nFTKindPolyKirby:
-                if (ft_comattack->input_kind == ftComputer_Input_StickSmashHiButtonB)
+                if (ft_comattack->input_kind == nFTComputerInputStickSmashHiButtonB)
                 {
                     is_attempt_cliffcatch = TRUE;
                 }
@@ -4119,7 +4119,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             case nFTKindCaptain:
             case nFTKindPolyYoshi:
             case nFTKindPolyCaptain:
-                if (ft_comattack->input_kind == ftComputer_Input_StickSmashLwButtonB)
+                if (ft_comattack->input_kind == nFTComputerInputStickSmashLwButtonB)
                 {
                     is_attempt_cliffcatch = TRUE;
                 }
@@ -4137,10 +4137,10 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             }
             if (is_attempt_cliffcatch != FALSE)
             {
-                this_detect_pos.y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
-                this_detect_pos.x = (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + detect_near_x) - 100.0F;
+                this_detect_pos.y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+                this_detect_pos.x = (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + detect_near_x) - 100.0F;
 
-                while (this_detect_pos.x < ((this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + detect_far_x) + 100.0F))
+                while (this_detect_pos.x < ((this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + detect_far_x) + 100.0F))
                 {
                     if (func_ovl2_800F8FFC(&this_detect_pos) == FALSE)
                     {
@@ -4148,7 +4148,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                     }
                     this_detect_pos.x += 100.0F;
                 }
-                if (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x)
+                if (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x)
                 {
                     if (ft_com->cliff_right_pos.x < (ft_com->target_pos.x + 1200.0F))
                     {
@@ -4164,24 +4164,24 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             {
                 if
                 (
-                    (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < (gMPEdgeBounds.d2.left + 500.0F)) || 
-                    (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > (gMPEdgeBounds.d2.right - 500.0F))
+                    (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x < (gMPEdgeBounds.d2.left + 500.0F)) || 
+                    (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x > (gMPEdgeBounds.d2.right - 500.0F))
                 )
                 {
                     switch (ft_comattack->input_kind)
                     {
-                    case ftComputer_Input_StickSmashHiButtonB:
+                    case nFTComputerInputStickSmashHiButtonB:
                         goto l_continue;
 
-                    case ftComputer_Input_StickSmashAutoXButtonB:
-                        if ((this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x * this_fp->lr) > 0.0F)
+                    case nFTComputerInputStickSmashAutoXButtonB:
+                        if ((this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x * this_fp->lr) > 0.0F)
                         {
                             goto l_continue;
                         }
                         break;
 
                     default:
-                        if (this_fp->ground_or_air != nMPKineticsGround)
+                        if (this_fp->ga != nMPKineticsGround)
                         {
                             goto l_continue;
                         }
@@ -4189,7 +4189,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                     }
                 }
             }
-            if ((this_fp->ft_kind != nFTKindGiantDonkey) || (this_fp->ground_or_air == nMPKineticsGround) || (ft_comattack->input_kind != ftComputer_Input_StickSmashHiButtonB))
+            if ((this_fp->ft_kind != nFTKindGiantDonkey) || (this_fp->ga == nMPKineticsGround) || (ft_comattack->input_kind != nFTComputerInputStickSmashHiButtonB))
             {
                 if (ft_com->ftcom_flags_0x4A_b1)
                 {
@@ -4217,7 +4217,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
 
                     switch (ft_comattack->input_kind)
                     {
-                    case ftComputer_Input_StickSmashAutoXNYButtonA:
+                    case nFTComputerInputStickSmashAutoXNYButtonA:
                         if (this_fp->item_hold != NULL)
                         {
                             if (itGetStruct(this_fp->item_hold) != NULL)
@@ -4231,7 +4231,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                             {
                                 if (itGetStruct(this_fp->item_hold)->it_kind == nITKindBat)
                                 {
-                                    if (this_fp->ground_or_air == nMPKineticsGround)
+                                    if (this_fp->ga == nMPKineticsGround)
                                     {
                                         detect_ranges_x[attack_count++] = 4.0F;
                                         break;
@@ -4242,7 +4242,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                         detect_ranges_x[attack_count++] = 1.0F;
                         break;
 
-                    case ftComputer_Input_StickSmashAutoXButtonB:
+                    case nFTComputerInputStickSmashAutoXButtonB:
                         user_data = ft_com->target_user;
 
                         if (this_fp->cp_level >= 5)
@@ -4317,12 +4317,12 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                         }
                         break;
 
-                    case ftComputer_Input_StickSmashHiButtonB:
-                    case ftComputer_Input_StickSmashLwButtonB:
+                    case nFTComputerInputStickSmashHiButtonB:
+                    case nFTComputerInputStickSmashLwButtonB:
                         detect_ranges_x[attack_count++] = (detect_range_base * 0.5F) + 1.0F;
                         break;
 
-                    case ftComputer_Input_StickNButtonZButtonA:
+                    case nFTComputerInputStickNButtonZButtonA:
                         if ((this_fp->ft_kind != nFTKindLink) && (this_fp->ft_kind != nFTKindSamus))
                         {
                             detect_ranges_x[attack_count++] = 4.0F;
@@ -4341,7 +4341,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
     }
     if (attack_count != 0)
     {
-        if (ft_com->trait == ftComputer_Trait_Link)
+        if (ft_com->trait == nFTComputerTraitLink)
         {
             if (this_fp->percent_damage < ((mtTrigGetRandomFloat() * 100.0F) + 1.0F))
             {
@@ -4367,57 +4367,57 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             }
             switch (input_kinds[i])
             {
-            case ftComputer_Input_StickNButtonA:
+            case nFTComputerInputStickNButtonA:
                 detect_ranges_x[i] += ft_com->stickn_button_a_count * 0.2F;
                 ft_com->stickn_button_a_count++;
                 break;
 
-            case ftComputer_Input_StickTiltAutoXButtonA:
+            case nFTComputerInputStickTiltAutoXButtonA:
                 detect_ranges_x[i] += ft_com->sticktilts_button_a_count * 0.2F;
                 ft_com->sticktilts_button_a_count++;
                 break;
 
-            case ftComputer_Input_StickSmashAutoXNYButtonA:
+            case nFTComputerInputStickSmashAutoXNYButtonA:
                 detect_ranges_x[i] += ft_com->sticksmashs_button_a_count * 0.2F;
                 ft_com->sticksmashs_button_a_count++;
                 break;
 
-            case ftComputer_Input_StickTiltHiButtonA:
+            case nFTComputerInputStickTiltHiButtonA:
                 detect_ranges_x[i] += ft_com->sticktilthi_button_a_count * 0.2F;
                 ft_com->sticktilthi_button_a_count++;
                 break;
 
-            case ftComputer_Input_StickSmashHiButtonA:
+            case nFTComputerInputStickSmashHiButtonA:
                 detect_ranges_x[i] += ft_com->sticksmashhi_button_a_count * 0.2F;
                 ft_com->sticksmashhi_button_a_count++;
                 break;
 
-            case ftComputer_Input_StickTiltLwButtonA:
+            case nFTComputerInputStickTiltLwButtonA:
                 detect_ranges_x[i] += ft_com->sticktiltlw_button_a_count * 0.2F;
                 ft_com->sticktiltlw_button_a_count++;
                 break;
 
-            case ftComputer_Input_StickSmashLwButtonA:
+            case nFTComputerInputStickSmashLwButtonA:
                 detect_ranges_x[i] += ft_com->sticksmashlw_button_a_count * 0.2F;
                 ft_com->sticksmashlw_button_a_count++;
                 break;
 
-            case ftComputer_Input_StickSmashAutoXButtonB:
+            case nFTComputerInputStickSmashAutoXButtonB:
                 detect_ranges_x[i] += ft_com->sticksmashs_button_b_count * 0.2F;
                 ft_com->sticksmashs_button_b_count++;
                 break;
 
-            case ftComputer_Input_StickSmashHiButtonB:
+            case nFTComputerInputStickSmashHiButtonB:
                 detect_ranges_x[i] += ft_com->sticksmashhi_button_b_count * 0.2F;
                 ft_com->sticksmashhi_button_b_count++;
                 break;
 
-            case ftComputer_Input_StickSmashLwButtonB:
+            case nFTComputerInputStickSmashLwButtonB:
                 detect_ranges_x[i] += ft_com->sticksmashlw_button_b_count * 0.2F;
                 ft_com->sticksmashlw_button_b_count++;
                 break;
 
-            case ftComputer_Input_StickNButtonZButtonA:
+            case nFTComputerInputStickNButtonZButtonA:
                 detect_ranges_x[i] += ft_com->stickn_button_z_button_a_count * 0.2F;
                 ft_com->stickn_button_z_button_a_count++;
                 break;
@@ -4440,7 +4440,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
 
                     if (ft_com->input_repeat_count >= 4)
                     {
-                        ftComputerSetCommandImmediate(this_fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+                        ftComputerSetCommandImmediate(this_fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
 
                         return TRUE;
                     }
@@ -4453,54 +4453,54 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
 
                 switch (input_kinds[i])
                 {
-                case ftComputer_Input_StickNButtonA:
+                case nFTComputerInputStickNButtonA:
                     ft_com->stickn_button_a_count = 0;
                     break;
 
-                case ftComputer_Input_StickTiltAutoXButtonA:
+                case nFTComputerInputStickTiltAutoXButtonA:
                     ft_com->sticktilts_button_a_count = 0;
                     break;
 
-                case ftComputer_Input_StickSmashAutoXNYButtonA:
+                case nFTComputerInputStickSmashAutoXNYButtonA:
                     ft_com->sticksmashs_button_a_count = 0;
                     break;
 
-                case ftComputer_Input_StickTiltHiButtonA:
+                case nFTComputerInputStickTiltHiButtonA:
                     ft_com->sticktilthi_button_a_count = 0;
                     break;
 
-                case ftComputer_Input_StickSmashHiButtonA:
+                case nFTComputerInputStickSmashHiButtonA:
                     ft_com->sticksmashhi_button_a_count = 0;
                     break;
 
-                case ftComputer_Input_StickTiltLwButtonA:
+                case nFTComputerInputStickTiltLwButtonA:
                     ft_com->sticktiltlw_button_a_count = 0;
                     break;
 
-                case ftComputer_Input_StickSmashLwButtonA:
+                case nFTComputerInputStickSmashLwButtonA:
                     ft_com->sticksmashlw_button_a_count = 0;
                     break;
 
-                case ftComputer_Input_StickSmashAutoXButtonB:
+                case nFTComputerInputStickSmashAutoXButtonB:
                     ft_com->sticksmashs_button_b_count = 0;
                     break;
 
-                case ftComputer_Input_StickSmashHiButtonB:
+                case nFTComputerInputStickSmashHiButtonB:
                     ft_com->sticksmashhi_button_b_count = 0;
                     break;
 
-                case ftComputer_Input_StickSmashLwButtonB:
+                case nFTComputerInputStickSmashLwButtonB:
                     ft_com->sticksmashlw_button_b_count = 0;
                     break;
 
-                case ftComputer_Input_StickNButtonZButtonA:
+                case nFTComputerInputStickNButtonZButtonA:
                     ft_com->stickn_button_z_button_a_count = 0;
                     break;
 
                 default:
                     break;
                 }
-                if ((this_fp->ft_kind == nFTKindPurin) && (ft_com->input_kind == ftComputer_Input_StickSmashHiButtonB) && (mtTrigGetRandomFloat() < 0.9F))
+                if ((this_fp->ft_kind == nFTKindPurin) && (ft_com->input_kind == nFTComputerInputStickSmashHiButtonB) && (mtTrigGetRandomFloat() < 0.9F))
                 {
                     return FALSE;
                 }
@@ -4528,8 +4528,8 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
 
     if (fp->phys_info.vel_air.y >= 0.0F)
     {
-        ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x - 500.0F;
-        ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+        ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x - 500.0F;
+        ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
         return TRUE;
     }
@@ -4564,7 +4564,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
             {
                 continue;
             }
-            edge_dist_x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x - edge_pos.x;
+            edge_dist_x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x - edge_pos.x;
 
             if (edge_dist_x > 0.0F)
             {
@@ -4573,16 +4573,16 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
 
                 if (fall_predict <= 0)
                 {
-                    edge_predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * edge_predict_x);
+                    edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * edge_predict_x);
                 }
                 else if (edge_predict_x < fall_predict)
                 {
-                    edge_predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y +
+                    edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y +
                     (
                         (fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(edge_predict_x) * 0.5F)
                     );
                 }
-                else edge_predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y +
+                else edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y +
                 (
                     ((fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(fall_predict) * 0.5F)) -
                     (fp->attributes->fall_speed_max * (edge_predict_x - fall_predict))
@@ -4622,8 +4622,8 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
 
     if (fp->phys_info.vel_air.y >= 0.0F)
     {
-        ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + 500.0F;
-        ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+        ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x + 500.0F;
+        ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
         return TRUE;
     }
@@ -4658,7 +4658,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
             {
                 continue;
             }
-            edge_dist_x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x - edge_pos.x;
+            edge_dist_x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x - edge_pos.x;
 
             if (edge_dist_x < 0.0F)
             {
@@ -4667,16 +4667,16 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
 
                 if (fall_predict <= 0)
                 {
-                    edge_predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * edge_predict_x);
+                    edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * edge_predict_x);
                 }
                 else if (edge_predict_x < fall_predict)
                 {
-                    edge_predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y +
+                    edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y +
                     (
                         (fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(edge_predict_x) * 0.5F)
                     );
                 }
-                else edge_predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y +
+                else edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y +
                 (
                     ((fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(fall_predict) * 0.5F)) -
                     (fp->attributes->fall_speed_max * (edge_predict_x - fall_predict))
@@ -4704,7 +4704,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
 void func_ovl3_801346D4(ftStruct *fp)
 {
     ftComputer *ft_com = &fp->fighter_com;
-    Vec3f pos = fp->joint[ftParts_Joint_TopN]->translate.vec.f;
+    Vec3f pos = fp->joint[nFTPartsJointTopN]->translate.vec.f;
     f32 range = fp->fighter_com.jump_predict;
 
     if (fp->jumps_used == fp->attributes->jumps_max)
@@ -4742,7 +4742,7 @@ void func_ovl3_801346D4(ftStruct *fp)
         {
             range = 0.0F;
         }
-        if (((fp->jumps_used < fp->attributes->jumps_max) && ((pos.x - gMPEdgeBounds.d2.right) > 1500.0F)) || ((fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + fp->phys_info.vel_air.y) < (ft_com->cliff_right_pos.y - range)))
+        if (((fp->jumps_used < fp->attributes->jumps_max) && ((pos.x - gMPEdgeBounds.d2.right) > 1500.0F)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.y + fp->phys_info.vel_air.y) < (ft_com->cliff_right_pos.y - range)))
         {
             ft_com->target_pos.y = pos.y + 1100.0F;
         }
@@ -4770,7 +4770,7 @@ void func_ovl3_801346D4(ftStruct *fp)
             ) 
             || 
             (
-                (fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + fp->phys_info.vel_air.y) < (ft_com->cliff_left_pos.y - range)
+                (fp->joint[nFTPartsJointTopN]->translate.vec.f.y + fp->phys_info.vel_air.y) < (ft_com->cliff_left_pos.y - range)
             )
         )
         {
@@ -4784,7 +4784,7 @@ void func_ovl3_801346D4(ftStruct *fp)
 void func_ovl3_80134964(ftStruct *fp)
 {
     ftComputer *ft_com = &fp->fighter_com;
-    Vec3f pos = fp->joint[ftParts_Joint_TopN]->translate.vec.f;
+    Vec3f pos = fp->joint[nFTPartsJointTopN]->translate.vec.f;
 
     ft_com->target_line_id = -1;
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
@@ -4841,10 +4841,10 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
     GObj *item_gobj;
     Vec3f twister_pos;
 
-    item_gobj = gOMObjCommonLinks[GObj_LinkID_Item];
+    item_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDItem];
 
-    predict_x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + (fp->phys_info.vel_air.x * 5.0F);
-    predict_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * 5.0F);
+    predict_x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x + (fp->phys_info.vel_air.x * 5.0F);
+    predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * 5.0F);
 
     while (item_gobj != NULL)
     {
@@ -4889,7 +4889,7 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
                     {
                         ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-                        if (fp->ground_or_air != nMPKineticsGround)
+                        if (fp->ga != nMPKineticsGround)
                         {
                             ft_com->target_pos.x = (ft_com->target_pos.x < it_hit->hit_positions[hit_id].pos.x) ?
                                                                 (it_hit->hit_positions[hit_id].pos.x + 1500.0F) :
@@ -4899,8 +4899,8 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
                         }
                         else
                         {
-                            ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-                            ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + 1100.0F;
+                            ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+                            ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + 1100.0F;
                         }
                     }
                 }
@@ -4925,7 +4925,7 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
                 {
                     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-                    if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < (twister_pos.x - 300.0F))
+                    if (fp->joint[nFTPartsJointTopN]->translate.vec.f.x < (twister_pos.x - 300.0F))
                     {
                         ft_com->target_pos.x = (twister_pos.x - 1200.0F);
                         ft_com->target_pos.y = (twister_pos.y + 1100.0F);
@@ -4964,27 +4964,27 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
 
     ft_com = &fp->fighter_com;
 
-    target_pos = fp->joint[ftParts_Joint_TopN]->translate.vec.f;
+    target_pos = fp->joint[nFTPartsJointTopN]->translate.vec.f;
 
     target_pos.x = fp->fighter_com.target_pos.x;
     target_pos.y = fp->fighter_com.target_pos.y;
 
-    if ((fp->ground_or_air == nMPKineticsGround) && (fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y))
+    if ((fp->ga == nMPKineticsGround) && (fp->joint[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y))
     {
-        if (mpCollisionCheckCeilLineCollisionSame(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+        if (mpCollisionCheckCeilLineCollisionSame(&fp->joint[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
         {
             func_ovl2_800F4468(stand_line_id, &edge_left);
             func_ovl2_800F4448(stand_line_id, &edge_right);
 
-            if (GS_DISTANCE(edge_left.x, fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) < GS_DISTANCE(edge_right.x, fp->joint[ftParts_Joint_TopN]->translate.vec.f.x))
+            if (GS_DISTANCE(edge_left.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x) < GS_DISTANCE(edge_right.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x))
             {
                 ft_com->target_pos.x = edge_left.x - 600.0F;
-                ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
             }
             else
             {
                 ft_com->target_pos.x = edge_right.x + 600.0F;
-                ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
             }
         }
     }
@@ -4992,14 +4992,14 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
     (
         !(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS) &&
         (fp->coll_data.ground_line_id >= 0) &&
-        (ft_com->target_pos.y < ((fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + fp->coll_data.ground_dist) - 500.0F)) &&
-        (GS_DISTANCE(ft_com->target_pos.x, fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) < (GS_DISTANCE(ft_com->target_pos.y, fp->joint[ftParts_Joint_TopN]->translate.vec.f.y) * 0.2F))
+        (ft_com->target_pos.y < ((fp->joint[nFTPartsJointTopN]->translate.vec.f.y + fp->coll_data.ground_dist) - 500.0F)) &&
+        (GS_DISTANCE(ft_com->target_pos.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x) < (GS_DISTANCE(ft_com->target_pos.y, fp->joint[nFTPartsJointTopN]->translate.vec.f.y) * 0.2F))
     )
     {
         mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &sp9C);
         mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &sp90);
 
-        if (GS_DISTANCE(sp9C.x, fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) < GS_DISTANCE(sp90.x, fp->joint[ftParts_Joint_TopN]->translate.vec.f.x))
+        if (GS_DISTANCE(sp9C.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x) < GS_DISTANCE(sp90.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x))
         {
             ft_com->target_pos.x = sp9C.x - 600.0F;
             ft_com->target_pos.y = sp9C.y;
@@ -5010,77 +5010,77 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
             ft_com->target_pos.y = sp90.y;
         }
     }
-    else if ((fp->ground_or_air == nMPKineticsGround) || (fp->phys_info.vel_air.y < 0.0F) || (fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindPurin))
+    else if ((fp->ga == nMPKineticsGround) || (fp->phys_info.vel_air.y < 0.0F) || (fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindPurin))
     {
-        if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x)
+        if (fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x)
         {
-            if (mpCollisionCheckLWallLineCollisionSame(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+            if (mpCollisionCheckLWallLineCollisionSame(&fp->joint[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
                 mpCollisionGetUDEdgeUp(stand_line_id, &ga_last);
 
                 ft_com->target_pos.x = ga_last.x + 100.0;
                 ft_com->target_pos.y = ga_last.y + 100.0;
 
-                if ((fp->ground_or_air == nMPKineticsGround) && (fp->lr < 0.0F))
+                if ((fp->ga == nMPKineticsGround) && (fp->lr < 0.0F))
                 {
-                    ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + 100.0F;
-                    ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+                    ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x + 100.0F;
+                    ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
-                    ftComputerSetCommandImmediate(fp, ftComputer_Input_StickTiltAutoXD5);
+                    ftComputerSetCommandImmediate(fp, nFTComputerInputStickTiltAutoXD5);
                     return;
                 }
             }
         }
-        else if (mpCollisionCheckRWallLineCollisionSame(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+        else if (mpCollisionCheckRWallLineCollisionSame(&fp->joint[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
         {
             func_ovl2_800F4690(stand_line_id, &ga_last);
 
             ft_com->target_pos.x = ga_last.x - 100.0;
             ft_com->target_pos.y = ga_last.y + 100.0;
 
-            if ((fp->ground_or_air == nMPKineticsGround) && (fp->lr > 0.0F))
+            if ((fp->ga == nMPKineticsGround) && (fp->lr > 0.0F))
             {
-                ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x - 100.0F;
-                ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+                ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x - 100.0F;
+                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
-                ftComputerSetCommandImmediate(fp, ftComputer_Input_StickTiltAutoXD5);
+                ftComputerSetCommandImmediate(fp, nFTComputerInputStickTiltAutoXD5);
                 return;
             }
         }
     }
     ftComputerCheckTargetItemOrTwister(fp);
-    ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAuto);
+    ftComputerSetCommandImmediate(fp, nFTComputerInputMoveAuto);
 
-    if (fp->ground_or_air != nMPKineticsGround)
+    if (fp->ga != nMPKineticsGround)
     {
         switch (ft_com->behavior)
         {
-        case ftComputer_Behavior_YoshiTeam:
-            if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < 0.0F)
+        case nFTComputerBehaviorYoshiTeam:
+            if (fp->joint[nFTPartsJointTopN]->translate.vec.f.y < 0.0F)
             {
                 break;
             }
             else goto block_52;
 
-        case ftComputer_Behavior_KirbyTeam:
-        case ftComputer_Behavior_PolyTeam:
-            if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < -300.0F)
+        case nFTComputerBehaviorKirbyTeam:
+        case nFTComputerBehaviorPolyTeam:
+            if (fp->joint[nFTPartsJointTopN]->translate.vec.f.y < -300.0F)
             {
                 break;
             }
             /* fallthrough */
         default:
         block_52:
-            if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y)
+            if (fp->joint[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y)
             {
-                if ((ft_com->objective != ftComputer_Objective_Recover) && ((ft_com->target_pos.y - 200.0F) < fp->joint[ftParts_Joint_TopN]->translate.vec.f.y))
+                if ((ft_com->objective != nFTComputerObjectiveRecover) && ((ft_com->target_pos.y - 200.0F) < fp->joint[nFTPartsJointTopN]->translate.vec.f.y))
                 {
-                    ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+                    ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
                     return;
                 }
                 ft_com->ftcom_flags_0x4A_b0 = FALSE;
 
-                if ((fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < (gMPGroundData->blastzone_top - 4000.0F)) && (fp->phys_info.vel_air.y < 0.0F))
+                if ((fp->joint[nFTPartsJointTopN]->translate.vec.f.y < (gMPGroundData->blastzone_top - 4000.0F)) && (fp->phys_info.vel_air.y < 0.0F))
                 {
                     if (fp->jumps_used < fp->attributes->jumps_max)
                     {
@@ -5095,7 +5095,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                         {
                             if (fp->status_vars.common.damage.hitstun_timer == 0)
                             {
-                                ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+                                ftComputerSetCommandImmediate(fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
                                 return;
                             }
                         }
@@ -5111,11 +5111,11 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                             (fp->status_info.status_id == nFTCommonStatusFallSpecial)
                         )
                         {
-                            ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+                            ftComputerSetCommandImmediate(fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
                             return;
                         }
                     }
-                    if ((ft_com->objective == ftComputer_Objective_Recover) && !(ft_com->is_attempt_specialhi_recovery))
+                    if ((ft_com->objective == nFTComputerObjectiveRecover) && !(ft_com->is_attempt_specialhi_recovery))
                     {
                         if ((fp->ft_kind != nFTKindYoshi) && (fp->ft_kind != nFTKindPurin))
                         {
@@ -5131,7 +5131,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
 
                                 if ((fp->ft_kind == nFTKindGiantDonkey) || (mtTrigGetRandomFloat() < (fp->cp_level + 2) / 9.0F))
                                 {
-                                    ftComputerSetCommandImmediate(fp, ftComputer_Input_StickSmashHiButtonB);
+                                    ftComputerSetCommandImmediate(fp, nFTComputerInputStickSmashHiButtonB);
                                     return;
                                 }
                             }
@@ -5143,7 +5143,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
             {
                 if (fp->phys_info.vel_air.y < 0.0F)
                 {
-                    if (ft_com->objective != ftComputer_Objective_Recover)
+                    if (ft_com->objective != nFTComputerObjectiveRecover)
                     {
                         if (!(fp->is_fast_fall) && !(ft_com->ftcom_flags_0x4A_b0))
                         {
@@ -5153,13 +5153,13 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                             (
                                 (fp->cp_level > 5) && 
                                 (mtTrigGetRandomFloat() * (550 - (fp->cp_level * 50)) < 70.0F)  || 
-                                (ft_com->behavior == ftComputer_Behavior_YoshiTeam)             ||
-                                (ft_com->behavior == ftComputer_Behavior_KirbyTeam)             ||
-                                (ft_com->behavior == ftComputer_Behavior_PolyTeam)
+                                (ft_com->behavior == nFTComputerBehaviorYoshiTeam)             ||
+                                (ft_com->behavior == nFTComputerBehaviorKirbyTeam)             ||
+                                (ft_com->behavior == nFTComputerBehaviorPolyTeam)
                             )
                             {
                                 // Fast fall?
-                                ftComputerSetCommandWaitShort(fp, ftComputer_Input_StickND1MoveAutoSmashLw);
+                                ftComputerSetCommandWaitShort(fp, nFTComputerInputStickND1MoveAutoSmashLw);
                                 return;
                             }
                         }
@@ -5169,15 +5169,15 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
             }
             switch (ft_com->behavior)
             {
-            case ftComputer_Behavior_YoshiTeam:
-            case ftComputer_Behavior_KirbyTeam:
-            case ftComputer_Behavior_PolyTeam:
+            case nFTComputerBehaviorYoshiTeam:
+            case nFTComputerBehaviorKirbyTeam:
+            case nFTComputerBehaviorPolyTeam:
                 if (fp->status_info.status_id == nFTCommonStatusFall)
                 {
-                    if (func_ovl2_800F8FFC(&fp->joint[ftParts_Joint_TopN]->translate.vec.f) != FALSE)
+                    if (func_ovl2_800F8FFC(&fp->joint[nFTPartsJointTopN]->translate.vec.f) != FALSE)
                     {
-                        ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-                        ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y - 500.0F;
+                        ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+                        ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y - 500.0F;
                     }
                 }
                 break;
@@ -5186,14 +5186,14 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
             (
                 (fp->cp_level >= 5)                                                                     && 
                 (ft_com->ftcom_flags_0x4A_b1)                                                           && 
-                ((ft_com->target_pos.y + 1100.0F) < fp->joint[ftParts_Joint_TopN]->translate.vec.f.y)   && 
+                ((ft_com->target_pos.y + 1100.0F) < fp->joint[nFTPartsJointTopN]->translate.vec.f.y)   && 
                 (fp->phys_info.vel_air.y < 0.0F)
             )
             {
                 target_fp = ft_com->target_user;
 
-                sp80.x = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x - (target_fp->lr * 1500.0F);
-                sp80.y = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+                sp80.x = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.x - (target_fp->lr * 1500.0F);
+                sp80.y = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
                 sp80.z = 0.0F;
 
                 if (func_ovl2_800F8FFC(&sp80) != FALSE)
@@ -5203,7 +5203,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                 }
                 else
                 {
-                    sp80.x = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + (target_fp->lr * 1500.0F);
+                    sp80.x = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + (target_fp->lr * 1500.0F);
 
                     if (func_ovl2_800F8FFC(&sp80) != FALSE)
                     {
@@ -5232,15 +5232,15 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                     }
                 }
             }
-            ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAuto);
+            ftComputerSetCommandImmediate(fp, nFTComputerInputMoveAuto);
             return;
         }
     }
     else
     {
-        if (ft_com->dash_predict <= GS_DISTANCE(ft_com->target_pos.x, fp->joint[ftParts_Joint_TopN]->translate.vec.f.x))
+        if (ft_com->dash_predict <= GS_DISTANCE(ft_com->target_pos.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x))
         {
-            if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y)
+            if (fp->joint[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y)
             {
                 if (fp->coll_data.ground_line_id >= 0)
                 {
@@ -5250,11 +5250,11 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                     }
                     else mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &sp58);
 
-                    if (sp58.x < fp->joint[ftParts_Joint_TopN]->translate.vec.f.x)
+                    if (sp58.x < fp->joint[nFTPartsJointTopN]->translate.vec.f.x)
                     {
-                        edge_dist_x = -(sp58.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x);
+                        edge_dist_x = -(sp58.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x);
                     }
-                    else edge_dist_x = (sp58.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x);
+                    else edge_dist_x = (sp58.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x);
                 }
                 else edge_dist_x = 0.0F;
 
@@ -5262,32 +5262,32 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                 {
                     if (fp->status_info.status_id != nFTCommonStatusKneeBend)
                     {
-                        ftComputerSetCommandWaitShort(fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+                        ftComputerSetCommandWaitShort(fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
                     }
                 }
-                else ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAuto);
+                else ftComputerSetCommandImmediate(fp, nFTComputerInputMoveAuto);
             }
-            else ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAuto);
+            else ftComputerSetCommandImmediate(fp, nFTComputerInputMoveAuto);
         }
         else if (fp->status_info.status_id != nFTCommonStatusDash)
         {
             if (ft_com->target_line_id != fp->coll_data.ground_line_id)
             {
-                if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y)
+                if (fp->joint[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y)
                 {
                     if (fp->status_info.status_id != nFTCommonStatusKneeBend)
                     {
-                        ftComputerSetCommandWaitShort(fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+                        ftComputerSetCommandWaitShort(fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
                     }
                 }
                 else if (fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS)
                 {
-                    ftComputerSetCommandWaitShort(fp, ftComputer_Input_StickND1MoveAutoSmashLw);
+                    ftComputerSetCommandWaitShort(fp, nFTComputerInputStickND1MoveAutoSmashLw);
                 }
             }
-            else ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAuto);
+            else ftComputerSetCommandImmediate(fp, nFTComputerInputMoveAuto);
         }
-        else ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAuto);
+        else ftComputerSetCommandImmediate(fp, nFTComputerInputMoveAuto);
     }
 }
 
@@ -5316,10 +5316,10 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
 
     ft_com = &this_fp->fighter_com;
 
-    this_pos_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-    this_pos_y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+    this_pos_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+    this_pos_y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
-    fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
@@ -5339,7 +5339,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
     next_fighter:
         fighter_gobj = fighter_gobj->link_next;
     }
-    weapon_gobj = gOMObjCommonLinks[GObj_LinkID_Weapon];
+    weapon_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
 
     while (weapon_gobj != NULL)
     {
@@ -5373,7 +5373,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
 
                                 if (predict_div_x < 15.0F)
                                 {
-                                    predict_pos_y = (this_fp->ground_or_air != nMPKineticsGround) ? (this_fp->phys_info.vel_air.y * predict_div_x) + this_pos_y : this_pos_y;
+                                    predict_pos_y = (this_fp->ga != nMPKineticsGround) ? (this_fp->phys_info.vel_air.y * predict_div_x) + this_pos_y : this_pos_y;
 
                                     if ((((wp_hit->hit_positions[i].pos.y - hit_size) - this_fp->hurtbox_size.y) < predict_pos_y) && (predict_pos_y < (wp_hit->hit_positions[i].pos.y + hit_size)))
                                     {
@@ -5408,7 +5408,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
     next_weapon:
         weapon_gobj = weapon_gobj->link_next;
     }
-    item_gobj = gOMObjCommonLinks[GObj_LinkID_Item];
+    item_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDItem];
 
     while (item_gobj != NULL)
     {
@@ -5440,7 +5440,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
 
                                 if (predict_div_x < 15.0F)
                                 {
-                                    predict_pos_y = (this_fp->ground_or_air != nMPKineticsGround) ? (this_fp->phys_info.vel_air.y * predict_div_x) + this_pos_y : this_pos_y;
+                                    predict_pos_y = (this_fp->ga != nMPKineticsGround) ? (this_fp->phys_info.vel_air.y * predict_div_x) + this_pos_y : this_pos_y;
 
                                     if ((((it_hit->hit_positions[i].pos.y - hit_size) - this_fp->hurtbox_size.y) < predict_pos_y) && (predict_pos_y < (it_hit->hit_positions[i].pos.y + hit_size)))
                                     {
@@ -5490,15 +5490,15 @@ void func_ovl3_801361BC(ftStruct *fp)
 
     if (!(ft_com->is_counterattack) && !(ft_com->is_opponent_ra))
     {
-        if (fp->ground_or_air != nMPKineticsGround)
+        if (fp->ga != nMPKineticsGround)
         {
-            ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
+            ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
 
-            if (((fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + fp->hurtbox_size.y) < ft_com->target_pos.y) && (fp->phys_info.vel_air.y <= 0.0F))
+            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.y + fp->hurtbox_size.y) < ft_com->target_pos.y) && (fp->phys_info.vel_air.y <= 0.0F))
             {
-                ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y - 1100.0F;
+                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y - 1100.0F;
             }
-            else ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + 1100.0F;
+            else ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + 1100.0F;
         }
         else
         {
@@ -5524,8 +5524,8 @@ void func_ovl3_801361BC(ftStruct *fp)
             }
             else
             {
-                ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-                ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + 1100.0F;
+                ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + 1100.0F;
             }
         }
     }
@@ -5548,12 +5548,12 @@ sb32 ftComputerCheckFindItem(ftStruct *fp)
     }
     nearest_dist = F32_MAX;
 
-    ft_pos_x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-    ft_pos_y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+    ft_pos_x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+    ft_pos_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-    item_gobj = gOMObjCommonLinks[GObj_LinkID_Item];
+    item_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDItem];
 
     while (item_gobj != NULL)
     {
@@ -5594,7 +5594,7 @@ sb32 ftComputerCheckFindItem(ftStruct *fp)
     }
     ft_com->target_dist = sqrtf(nearest_dist);
 
-    ft_com->target_line_id = (ftGetComTargetItem(ft_com)->ground_or_air == nMPKineticsGround) ? ftGetComTargetItem(ft_com)->coll_data.ground_line_id : -1;
+    ft_com->target_line_id = (ftGetComTargetItem(ft_com)->ga == nMPKineticsGround) ? ftGetComTargetItem(ft_com)->coll_data.ground_line_id : -1;
 
     return TRUE;
 }
@@ -5608,7 +5608,7 @@ sb32 ftComputerCheckTargetItemInRange(ftStruct *fp)
     Vec3f *it_pos = &DObjGetStruct(ip->item_gobj)->translate.vec.f;
     mpObjectColl *object_coll = &ip->coll_data.object_coll;
 
-    if (ip->weight == It_Weight_Light)
+    if (ip->weight == nITWeightLight)
     {
         Vec2f range;
 
@@ -5661,12 +5661,12 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
 
     nearest_dist = 6250000.0F;
 
-    this_pos_x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-    this_pos_y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+    this_pos_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+    this_pos_y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-    fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
@@ -5676,8 +5676,8 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
 
         if (this_fp->team == target_fp->team) goto next_fighter;
 
-        predict_x = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + (target_fp->phys_info.vel_air.x * 3.0F);
-        predict_y = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + (target_fp->phys_info.vel_air.x * 3.0F);
+        predict_x = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + (target_fp->phys_info.vel_air.x * 3.0F);
+        predict_y = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.y + (target_fp->phys_info.vel_air.x * 3.0F);
 
         if ((target_fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((target_fp->item_hold != NULL) && (itGetStruct(target_fp->item_hold)->it_kind == nITKindHammer)))
         {
@@ -5713,8 +5713,8 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
     {
         target_fp = ft_com->target_user;
 
-        predict_x = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-        predict_y = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+        predict_x = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+        predict_y = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
         if (this_fp->coll_data.ground_line_id >= 0)
         {
@@ -5726,9 +5726,9 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
             }
             else mpCollisionGetLREdgeRight(line_id, &edge_pos);
         }
-        else edge_pos = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f;
+        else edge_pos = this_fp->joint[nFTPartsJointTopN]->translate.vec.f;
 
-        if (target_fp->ground_or_air == nMPKineticsGround)
+        if (target_fp->ga == nMPKineticsGround)
         {
             ft_com->target_pos.y = predict_y;
         }
@@ -5742,7 +5742,7 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
             {
                 ft_com->target_pos.x = predict_x + 2500.0F;
 
-                ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+                ftComputerSetCommandWaitShort(this_fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
 
                 return FALSE;
             }
@@ -5755,14 +5755,14 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
             {
                 ft_com->target_pos.x = predict_x - 2500.0F;
 
-                ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+                ftComputerSetCommandWaitShort(this_fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
 
                 return FALSE;
             }
         }
         ft_com->target_dist = sqrtf(nearest_dist);
         ft_com->target_line_id = -1;
-        ft_com->objective = ftComputer_Objective_Evade;
+        ft_com->objective = nFTComputerObjectiveEvade;
     }
     return TRUE;
 }
@@ -5944,11 +5944,11 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             }
             else if (mtTrigGetRandomFloat() < 0.5F)
             {
-                ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_ButtonZ1);
+                ftComputerSetCommandWaitShort(this_fp, nFTComputerInputButtonZ1);
 
                 return 0;
             }
-            else ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+            else ftComputerSetCommandWaitShort(this_fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
 
             return 0;
         }
@@ -5965,18 +5965,18 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             {
                 if ((mtTrigGetRandomFloat() * (11 - this_fp->cp_level)) < 1.0F)
                 {
-                    if (ft_com->target_pos.x < this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x)
+                    if (ft_com->target_pos.x < this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x)
                     {
-                        ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_EscapeL);
+                        ftComputerSetCommandWaitShort(this_fp, nFTComputerInputEscapeL);
 
                         return 0;
                     }
-                    ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_EscapeR);
+                    ftComputerSetCommandWaitShort(this_fp, nFTComputerInputEscapeR);
 
                     return 0;
                 }
             }
-            ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickNButtonBZReleaseAPress);
+            ftComputerSetCommandWaitShort(this_fp, nFTComputerInputStickNButtonBZReleaseAPress);
 
             return 0;
         }
@@ -5988,7 +5988,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         (this_fp->status_info.status_id == nFTCommonStatusSquatWait)
     )
     {
-        ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+        ftComputerSetCommandWaitShort(this_fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
 
         return 0;
     }
@@ -6004,7 +6004,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
 
             if (fvar < 0.05F)
             {
-                ftComputerSetCommandImmediate(this_fp, ftComputer_Input_StickNButtonBZReleaseAPress);
+                ftComputerSetCommandImmediate(this_fp, nFTComputerInputStickNButtonBZReleaseAPress);
 
                 return 0;
             }
@@ -6012,12 +6012,12 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     }
     if (this_fp->status_info.status_id == nFTCommonStatusCatchWait)
     {
-        if (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < 0.0F)
+        if (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x < 0.0F)
         {
-            ftComputerSetCommandImmediate(this_fp, ftComputer_Input_StickSmashL);
+            ftComputerSetCommandImmediate(this_fp, nFTComputerInputStickSmashL);
             return 0;
         }
-        else ftComputerSetCommandImmediate(this_fp, ftComputer_Input_StickSmashR);
+        else ftComputerSetCommandImmediate(this_fp, nFTComputerInputStickSmashR);
 
         return 0;
     }
@@ -6035,7 +6035,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
 
         if (((FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 15) < ft_com->target_find_wait)
         {
-            ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_Wiggle);
+            ftComputerSetCommandWaitShort(this_fp, nFTComputerInputWiggle);
 
             return 0;
         }
@@ -6052,12 +6052,12 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             (this_fp->status_info.status_id == nFTKirbyStatusSpecialAirNEat)
         )
         {
-            ftComputerSetCommandImmediate(this_fp, ftComputer_Input_StickN);
+            ftComputerSetCommandImmediate(this_fp, nFTComputerInputStickN);
             return 0;
         }
         else if ((this_fp->status_info.status_id == nFTKirbyStatusSpecialNWait) || (this_fp->status_info.status_id == nFTKirbyStatusSpecialAirNWait))
         {
-            ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickSmashLwButtonB);
+            ftComputerSetCommandWaitShort(this_fp, nFTComputerInputStickSmashLwButtonB);
 
             return 0;
         }
@@ -6066,39 +6066,39 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     {
         if ((this_fp->status_info.status_id == nFTNessStatusSpecialHiHold) || (this_fp->status_info.status_id == nFTNessStatusSpecialAirHiHold))
         {
-            if (func_ovl2_800F8FFC(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f) == FALSE)
+            if (func_ovl2_800F8FFC(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f) == FALSE)
             {
-                ft_com->target_pos.x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
+                ft_com->target_pos.x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
 
-                if (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > 0.0F)
+                if (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x > 0.0F)
                 {
                     ft_com->target_pos.x += 200.0F;
                 }
                 else ft_com->target_pos.x -= 200.0F;
 
-                ft_com->target_pos.y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y - 100.0F;
+                ft_com->target_pos.y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y - 100.0F;
             }
             else ftComputerCheckFindTarget(this_fp);
 
-            ftComputerSetCommandImmediate(this_fp, ftComputer_Input_NessSpecialHiAim);
+            ftComputerSetCommandImmediate(this_fp, nFTComputerInputNessSpecialHiAim);
 
             return 0;
         }
     }
-    if (this_fp->ground_or_air == nMPKineticsGround)
+    if (this_fp->ga == nMPKineticsGround)
     {
         if
         (
             (
-                SQUARE(this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x - ft_com->stand_pos.x) + 
-                SQUARE(this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y - ft_com->stand_pos.y) > SQUARE(100.0F)
+                SQUARE(this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x - ft_com->stand_pos.x) + 
+                SQUARE(this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y - ft_com->stand_pos.y) > SQUARE(100.0F)
             ) 
             ||
-            (ft_com->behavior == ftComputer_Behavior_Stand)
+            (ft_com->behavior == nFTComputerBehaviorStand)
         )
         {
-            ft_com->stand_pos.x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-            ft_com->stand_pos.y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+            ft_com->stand_pos.x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+            ft_com->stand_pos.y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
             ft_com->stand_stop_wait = 0;
             ft_com->is_stop_stand = FALSE;
         }
@@ -6119,7 +6119,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     }
     if (ft_com->is_stop_stand)
     {
-        ftComputerSetCommandImmediate(this_fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+        ftComputerSetCommandImmediate(this_fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
 
         return 0;
     }
@@ -6127,20 +6127,20 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     {
         switch (ft_com->behavior)
         {
-        case ftComputer_Behavior_YoshiTeam:
+        case nFTComputerBehaviorYoshiTeam:
             if (((this_fp->cp_level - 4) * 0.01F) <= mtTrigGetRandomFloat())
             {
                 return -1;
             }
             /* fallthrough */
-        case ftComputer_Behavior_KirbyTeam:
+        case nFTComputerBehaviorKirbyTeam:
             if (((this_fp->cp_level - 3) * 0.03F) <= mtTrigGetRandomFloat())
             {
                 return -1;
             }
             break;
 
-        case ftComputer_Behavior_PolyTeam:
+        case nFTComputerBehaviorPolyTeam:
             if ((this_fp->cp_level * 0.04F) <= mtTrigGetRandomFloat())
             {
                 return -1;
@@ -6150,18 +6150,18 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     }
     if
     (
-        (func_ovl2_800F8FFC(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f) == FALSE) ||
+        (func_ovl2_800F8FFC(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f) == FALSE) ||
         (gBattleState->gr_kind == Gr_Kind_Inishie) &&
         (this_fp->coll_data.ground_line_id >= 0) &&
         (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE) &&
-        (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < -100.0F)
+        (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < -100.0F)
     )
     {
-        if (ft_com->objective != ftComputer_Objective_Recover)
+        if (ft_com->objective != nFTComputerObjectiveRecover)
         {
             ft_com->is_attempt_specialhi_recovery = FALSE;
         }
-        ft_com->objective = ftComputer_Objective_Recover;
+        ft_com->objective = nFTComputerObjectiveRecover;
 
         return 1;
     }
@@ -6171,20 +6171,20 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
 
         if
         (
-            (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < (acid_level_current + 500.0F)) ||
-            (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < (acid_level_current + (5.0F * acid_level_step) + 500.0F))
+            (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < (acid_level_current + 500.0F)) ||
+            (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < (acid_level_current + (5.0F * acid_level_step) + 500.0F))
         )
         {
-            ft_com->objective = ftComputer_Objective_Recover;
+            ft_com->objective = nFTComputerObjectiveRecover;
 
             return 1;
         }
     }
     ft_com->is_within_vertical_bounds = FALSE;
 
-    if (ft_com->objective == ftComputer_Objective_Recover)
+    if (ft_com->objective == nFTComputerObjectiveRecover)
     {
-        ft_com->objective = ftComputer_Objective_Walk;
+        ft_com->objective = nFTComputerObjectiveWalk;
     }
     fvar = 0.0F;
 
@@ -6198,7 +6198,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             {
                 if ((mtTrigGetRandomFloat() * (325 - (this_fp->cp_level * 25))) < 70.0F)
                 {
-                    ft_com->objective = ftComputer_Objective_CounterAttack;
+                    ft_com->objective = nFTComputerObjectiveCounterAttack;
                     ft_com->is_counterattack = TRUE;
 
                     return 1;
@@ -6250,7 +6250,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             case nFTCommonStatusOttotto:
                 ft_com->appeal_attempt_frames = 0;
 
-                ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickNButtonL);
+                ftComputerSetCommandWaitShort(this_fp, nFTComputerInputStickNButtonL);
 
                 return 0;
             }
@@ -6272,14 +6272,14 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
     }
     if (ftComputerCheckEvadeDistance(fp) != FALSE)
     {
-        ft_com->objective = ftComputer_Objective_Evade;
+        ft_com->objective = nFTComputerObjectiveEvade;
         return TRUE;
     }
     if ((fp->ft_kind != nFTKindMetalMario) && (fp->ft_kind != nFTKindGiantDonkey))
     {
         if (func_ovl3_80135B78(fp) != FALSE)
         {
-            ft_com->objective = ftComputer_Objective_CounterAttack;
+            ft_com->objective = nFTComputerObjectiveCounterAttack;
             return TRUE;
         }
     }
@@ -6289,7 +6289,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
     case nFTKindPolyFox:
         if ((fp->status_info.status_id >= nFTFoxStatusSpecialLwScopeStart) && (fp->status_info.status_id <= nFTFoxStatusSpecialLwScopeEnd))
         {
-            ftComputerSetCommandWaitShort(fp, ftComputer_Input_StickNButtonBRelease);
+            ftComputerSetCommandWaitShort(fp, nFTComputerInputStickNButtonBRelease);
             return FALSE;
         }
         break;
@@ -6298,7 +6298,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
     case nFTKindPolyNess:
         if ((fp->status_info.status_id >= nFTNessStatusSpecialLwScopeStart) && (fp->status_info.status_id <= nFTNessStatusSpecialLwScopeEnd))
         {
-            ftComputerSetCommandWaitShort(fp, ftComputer_Input_StickNButtonBRelease);
+            ftComputerSetCommandWaitShort(fp, nFTComputerInputStickNButtonBRelease);
             return FALSE;
         }
         break;
@@ -6312,7 +6312,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
 
     if (ft_com->target_dist < 350.0F)
     {
-        ft_com->objective = ftComputer_Objective_Attack;
+        ft_com->objective = nFTComputerObjectiveAttack;
         return TRUE;
     }
     else if (ftComputerCheckFindItem(fp) != FALSE)
@@ -6325,7 +6325,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
 
             if (track_wait < ft_com->item_track_wait)
             {
-                ft_com->objective = ftComputer_Objective_TrackItem;
+                ft_com->objective = nFTComputerObjectiveTrackItem;
                 return TRUE;
             }
         }
@@ -6341,11 +6341,11 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
         case nITTypeDamage:
         case nITTypeShoot:
         case nITTypeThrow:
-            ft_com->objective = ftComputer_Objective_UseItem;
+            ft_com->objective = nFTComputerObjectiveUseItem;
             return TRUE;
 
         default:
-            ft_com->objective = ftComputer_Objective_Attack;
+            ft_com->objective = nFTComputerObjectiveAttack;
             return TRUE;
         }
     }
@@ -6372,9 +6372,9 @@ s32 ftComputerProcStand(GObj *fighter_gobj)
         ft_com->target_pos.y = ft_com->origin_pos.y;
         ft_com->target_line_id = ft_com->ground_line_id;
 
-        ft_com->objective = ftComputer_Objective_Walk;
+        ft_com->objective = nFTComputerObjectiveWalk;
     }
-    else ft_com->objective = ftComputer_Objective_Stand;
+    else ft_com->objective = nFTComputerObjectiveStand;
 
     return 1;
 }
@@ -6398,7 +6398,7 @@ s32 ftComputerProcWalk(GObj *fighter_gobj)
     ft_com->target_pos.y = ft_com->origin_pos.y;
     ft_com->target_line_id = ft_com->ground_line_id;
 
-    if (GS_DISTANCE(ft_com->target_pos.x, fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) < 100.0F)
+    if (GS_DISTANCE(ft_com->target_pos.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x) < 100.0F)
     {
         ft_com->target_pos.x = (((2.0 * mtTrigGetRandomFloat()) - 1.0) * 2500.0) + ft_com->origin_pos.x;
 
@@ -6423,13 +6423,13 @@ s32 ftComputerProcWalk(GObj *fighter_gobj)
             }
         }
     }
-    ft_com->objective = ftComputer_Objective_Walk;
+    ft_com->objective = nFTComputerObjectiveWalk;
 
-    dist = SQUARE(ft_com->target_pos.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joint[ftParts_Joint_TopN]->translate.vec.f.y);
+    dist = SQUARE(ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joint[nFTPartsJointTopN]->translate.vec.f.y);
 
     if (dist < SQUARE(100.0F))
     {
-        ft_com->objective = ftComputer_Objective_Stand;
+        ft_com->objective = nFTComputerObjectiveStand;
     }
     return 1;
 }
@@ -6447,7 +6447,7 @@ s32 ftComputerProcEvade(GObj *fighter_gobj)
     {
         return objective_status;
     }
-    ft_com->objective = ftComputer_Objective_Evade;
+    ft_com->objective = nFTComputerObjectiveEvade;
 
     return 1;
 }
@@ -6480,13 +6480,13 @@ s32 ftComputerProcJump(GObj *fighter_gobj)
         ft_com->target_line_id = ft_com->ground_line_id;
         ft_com->jump_wait--;
     }
-    ft_com->objective = ftComputer_Objective_Walk;
+    ft_com->objective = nFTComputerObjectiveWalk;
 
-    dist = SQUARE(ft_com->target_pos.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joint[ftParts_Joint_TopN]->translate.vec.f.y);
+    dist = SQUARE(ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joint[nFTPartsJointTopN]->translate.vec.f.y);
 
     if (dist < SQUARE(100.0F))
     {
-        ft_com->objective = ftComputer_Objective_Stand;
+        ft_com->objective = nFTComputerObjectiveStand;
     }
     return 1;
 }
@@ -6509,13 +6509,13 @@ s32 func_ovl3_80137E70(GObj *fighter_gobj)
     ft_com->target_pos.y = ft_com->origin_pos.y;
     ft_com->target_line_id = ft_com->ground_line_id;
 
-    ft_com->objective = ftComputer_Objective_Walk;
+    ft_com->objective = nFTComputerObjectiveWalk;
 
-    dist = SQUARE(ft_com->target_pos.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joint[ftParts_Joint_TopN]->translate.vec.f.y);
+    dist = SQUARE(ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joint[nFTPartsJointTopN]->translate.vec.f.y);
 
     if (dist < SQUARE(100.0F))
     {
-        ft_com->objective = ftComputer_Objective_Stand;
+        ft_com->objective = nFTComputerObjectiveStand;
     }
     return 1;
 }
@@ -6534,12 +6534,12 @@ void ftComputerFollowObjectiveRecover(ftStruct *fp)
             switch (fp->status_info.status_id)
             {
             case nFTPikachuStatusSpecialAirHiStart:
-                ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-                ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + 1100.0F;
+                ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + 1100.0F;
                 break;
             case nFTPikachuStatusSpecialAirHi:
                 ft_com->target_pos.x = 0.0F;
-                ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
                 break;
             }
         }
@@ -6556,7 +6556,7 @@ void ftComputerFollowObjectiveCounterAttack(ftStruct *fp)
 
     if (ft_com->is_counterattack)
     {
-        ftComputerSetCommandImmediate(fp, ftComputer_Input_ButtonZ2);
+        ftComputerSetCommandImmediate(fp, nFTComputerInputButtonZ2);
 
         ft_com->is_counterattack = FALSE;
     }
@@ -6570,7 +6570,7 @@ void ftComputerFollowObjectiveCounterAttack(ftStruct *fp)
         case nFTKindPolyFox:
             if ((fp->status_info.status_id < nFTFoxStatusSpecialLwScopeStart) || (fp->status_info.status_id > nFTFoxStatusSpecialLwScopeEnd))
             {
-                ftComputerSetCommandImmediate(fp, ftComputer_Input_StickNXSmashLwButtonBReleaseBHold);
+                ftComputerSetCommandImmediate(fp, nFTComputerInputStickNXSmashLwButtonBReleaseBHold);
             }
             break;
 
@@ -6578,7 +6578,7 @@ void ftComputerFollowObjectiveCounterAttack(ftStruct *fp)
         case nFTKindPolyNess:
             if ((fp->status_info.status_id < nFTNessStatusSpecialLwScopeStart) || (fp->status_info.status_id > nFTNessStatusSpecialLwScopeEnd))
             {
-                ftComputerSetCommandImmediate(fp, ftComputer_Input_StickNXSmashLwButtonBReleaseBHold);
+                ftComputerSetCommandImmediate(fp, nFTComputerInputStickNXSmashLwButtonBReleaseBHold);
             }
             break;
         }
@@ -6589,7 +6589,7 @@ void ftComputerFollowObjectiveCounterAttack(ftStruct *fp)
 
         if ((fp->status_info.status_id < nFTCommonStatusGuardStart) || (fp->status_info.status_id > nFTCommonStatusGuardEnd))
         {
-            ftComputerSetCommandImmediate(fp, ftComputer_Input_StickNButtonZHold);
+            ftComputerSetCommandImmediate(fp, nFTComputerInputStickNButtonZHold);
         }
     }
     else ftComputerFollowObjectiveWalk(fp);
@@ -6602,7 +6602,7 @@ void ftComputerFollowObjectiveTrackItem(ftStruct *fp)
     {
         if ((fp->status_info.status_id == nFTCommonStatusWait) || (fp->status_info.status_id == nFTCommonStatusSquat))
         {
-            ftComputerSetCommandWaitShort(fp, ftComputer_Input_StickNButtonBZReleaseAPress);
+            ftComputerSetCommandWaitShort(fp, nFTComputerInputStickNButtonBZReleaseAPress);
             return;
         }
     }
@@ -6628,24 +6628,24 @@ void ftComputerFollowObjectiveUseItem(ftStruct *fp)
             {
                 if ((target_fp->ft_kind == nFTKindNess) || (target_fp->ft_kind == nFTKindFox))
                 {
-                    ftComputerSetCommandWaitShort(fp, ftComputer_Input_ThrowItemImmediate);
+                    ftComputerSetCommandWaitShort(fp, nFTComputerInputThrowItemImmediate);
                     return;
                 }
             }
-            if (GS_DISTANCE(fp->joint[ftParts_Joint_TopN]->translate.vec.f.y, ft_com->target_pos.y) < 400.0F)
+            if (GS_DISTANCE(fp->joint[nFTPartsJointTopN]->translate.vec.f.y, ft_com->target_pos.y) < 400.0F)
             {
                 if
                 (
                     (ip->it_kind == nITKindFFlower) &&
                     (
-                        ((ft_com->target_pos.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) * fp->lr < 0.0F)     ||
-                        ((ft_com->target_pos.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) * fp->lr > 1500.0F)
+                        ((ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) * fp->lr < 0.0F)     ||
+                        ((ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) * fp->lr > 1500.0F)
                     )
                 )
                 {
                     ftComputerFollowObjectiveWalk(fp);
                 }
-                else ftComputerSetCommandWaitShort(fp, ftComputer_Input_StickTiltAutoXButtonBZReleaseAPress);
+                else ftComputerSetCommandWaitShort(fp, nFTComputerInputStickTiltAutoXButtonBZReleaseAPress);
             }
             else ftComputerFollowObjectiveWalk(fp);
 
@@ -6660,11 +6660,11 @@ void ftComputerFollowObjectiveUseItem(ftStruct *fp)
 
         if ((ft_com->item_throw_wait >= 3) || (ip->it_kind == nITKindMBall))
         {
-            ftComputerSetCommandWaitShort(fp, ftComputer_Input_ThrowItemWait);
+            ftComputerSetCommandWaitShort(fp, nFTComputerInputThrowItemWait);
 
             ft_com->item_throw_wait = 0;
         }
-        else ftComputerSetCommandWaitShort(fp, ftComputer_Input_ThrowItemImmediate);
+        else ftComputerSetCommandWaitShort(fp, nFTComputerInputThrowItemImmediate);
         break;
     }
 }
@@ -6683,24 +6683,24 @@ s32 func_ovl3_8013837C(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
 
-    if ((this_fp->fighter_com.behavior != ftComputer_Behavior_YoshiTeam) && (this_fp->ft_kind != nFTKindGiantDonkey))
+    if ((this_fp->fighter_com.behavior != nFTComputerBehaviorYoshiTeam) && (this_fp->ft_kind != nFTKindGiantDonkey))
     {
         ftStruct *target_fp = ftComputerWaitGetTarget(this_fp);
 
         if (target_fp != NULL)
         {
             ft_com->target_user = target_fp;
-            ft_com->target_pos.x = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-            ft_com->target_pos.y = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+            ft_com->target_pos.x = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+            ft_com->target_pos.y = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
             ft_com->target_dist = sqrtf
             (
-                SQUARE(this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x - ft_com->target_pos.x) +
-                SQUARE(this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y - ft_com->target_pos.y)
+                SQUARE(this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x - ft_com->target_pos.x) +
+                SQUARE(this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y - ft_com->target_pos.y)
             );
             ft_com->ftcom_flags_0x4A_b1 = TRUE;
 
-            if (ftGetComTargetFighter(ft_com)->ground_or_air == nMPKineticsGround)
+            if (ftGetComTargetFighter(ft_com)->ga == nMPKineticsGround)
             {
                 ft_com->target_line_id = ftGetComTargetFighter(ft_com)->coll_data.ground_line_id;
             }
@@ -6716,7 +6716,7 @@ s32 func_ovl3_8013837C(ftStruct *this_fp)
         // NOTE: This only trims the (mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 4.0F) part to 8-bits.
         ft_com->fighter_follow_wait = (u8)(mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 4.0F) + ((FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 16);
 
-        if (ft_com->behavior == ftComputer_Behavior_YoshiTeam)
+        if (ft_com->behavior == nFTComputerBehaviorYoshiTeam)
         {
             ft_com->fighter_follow_wait += (300.0F + (mtTrigGetRandomFloat() * 300.0F));
         }
@@ -6737,7 +6737,7 @@ s32 func_ovl3_8013837C(ftStruct *this_fp)
                 return -1;
             }
         }
-        else if ((this_fp->ground_or_air == nMPKineticsGround) && (ftComputerCheckTryChargeSpecialN(this_fp) != FALSE))
+        else if ((this_fp->ga == nMPKineticsGround) && (ftComputerCheckTryChargeSpecialN(this_fp) != FALSE))
         {
             return -1;
         }
@@ -6764,13 +6764,13 @@ void func_ovl3_8013877C(ftStruct *this_fp)
             {
                 ft_com->ground_line_id = this_fp->coll_data.ground_line_id;
 
-                ft_com->edge_pos.x = ft_com->origin_pos.x = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
+                ft_com->edge_pos.x = ft_com->origin_pos.x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
 
-                if (this_fp->ground_or_air == nMPKineticsGround)
+                if (this_fp->ga == nMPKineticsGround)
                 {
-                    ft_com->edge_pos.y = ft_com->origin_pos.y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+                    ft_com->edge_pos.y = ft_com->origin_pos.y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
                 }
-                else ft_com->edge_pos.y = ft_com->origin_pos.y = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + this_fp->coll_data.ground_dist;
+                else ft_com->edge_pos.y = ft_com->origin_pos.y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y + this_fp->coll_data.ground_dist;
             }
             else
             {
@@ -6789,7 +6789,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
         }
         else
         {
-            if (GS_DISTANCE(ft_com->edge_pos.x, this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) < 100.0F)
+            if (GS_DISTANCE(ft_com->edge_pos.x, this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x) < 100.0F)
             {
                 ft_com->edge_pos.x = (((2.0 * mtTrigGetRandomFloat()) - 1.0) * 2500.0) + ft_com->origin_pos.x;
 
@@ -6823,9 +6823,9 @@ void func_ovl3_8013877C(ftStruct *this_fp)
     else
     {
         ft_com->input_wait = 1;
-        ft_com->p_command = dFTComputerPlayerInputScripts[ftComputer_Input_StickN];
+        ft_com->p_command = dFTComputerPlayerInputScripts[nFTComputerInputStickN];
 
-        if ((ft_com->walk_stop_wait == ((-this_fp->cp_level * 2) + 18)) && (this_fp->ground_or_air == nMPKineticsGround))
+        if ((ft_com->walk_stop_wait == ((-this_fp->cp_level * 2) + 18)) && (this_fp->ga == nMPKineticsGround))
         {
             ftComputerCheckTryChargeSpecialN(this_fp);
 
@@ -6836,7 +6836,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
                 {
                     if (ft_com->target_dist < 1500.0F)
                     {
-                        ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickSmashLwButtonB);
+                        ftComputerSetCommandWaitShort(this_fp, nFTComputerInputStickSmashLwButtonB);
                     }
                 }
                 break;
@@ -6844,7 +6844,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
             case nFTKindNess:
                 if (mtTrigGetRandomFloat() < 0.25F)
                 {
-                    ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickSmashHiButtonB);
+                    ftComputerSetCommandWaitShort(this_fp, nFTComputerInputStickSmashHiButtonB);
                 }
                 break;
             }
@@ -6864,7 +6864,7 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 is_delay)
 
     target_fp = ft_com->target_user;
 
-    if (GS_DISTANCE(this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y, ft_com->target_pos.y) < 400.0F)
+    if (GS_DISTANCE(this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y, ft_com->target_pos.y) < 400.0F)
     {
         if (ft_com->unk_ftcom_0x35 == 0)
         {
@@ -6903,7 +6903,7 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 is_delay)
             {
                 if (mtTrigGetRandomFloat() < 0.3F)
                 {
-                    ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickSmashLwButtonB);
+                    ftComputerSetCommandWaitShort(this_fp, nFTComputerInputStickSmashLwButtonB);
                 }
             }
             /* fallthrough */
@@ -6920,42 +6920,42 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 is_delay)
                 ftComputerFollowObjectiveWalk(this_fp);
                 return TRUE;
             }
-            pos = this_fp->joint[ftParts_Joint_TopN]->translate.vec.f;
+            pos = this_fp->joint[nFTPartsJointTopN]->translate.vec.f;
             pos.x = ft_com->target_pos.x;
             pos.y = ft_com->target_pos.y;
 
-            if (ft_com->target_pos.x < this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x)
+            if (ft_com->target_pos.x < this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x)
             {
-                if (mpCollisionCheckRWallLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+                if (mpCollisionCheckRWallLineCollisionSame(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
                 {
                     return FALSE;
                 }
-                if (mpCollisionCheckGroundLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+                if (mpCollisionCheckGroundLineCollisionSame(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
                 {
                     return FALSE;
                 }
-                if (mpCollisionCheckCeilLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+                if (mpCollisionCheckCeilLineCollisionSame(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
                 {
                     return FALSE;
                 }
             }
-            else if (mpCollisionCheckLWallLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
-            {
-                return FALSE;
-            }
-            else if (mpCollisionCheckGroundLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+            else if (mpCollisionCheckLWallLineCollisionSame(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
                 return FALSE;
             }
-            else if (mpCollisionCheckCeilLineCollisionSame(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+            else if (mpCollisionCheckGroundLineCollisionSame(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+            {
+                return FALSE;
+            }
+            else if (mpCollisionCheckCeilLineCollisionSame(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
                 return FALSE;
             }
             if (is_delay == FALSE)
             {
-                ftComputerSetCommandWaitLong(this_fp, ftComputer_Input_StickSmashAutoXButtonB);
+                ftComputerSetCommandWaitLong(this_fp, nFTComputerInputStickSmashAutoXButtonB);
             }
-            else ftComputerSetCommandWaitLong(this_fp, ftComputer_Input_StickTiltAutoXNYD5SmashAutoXButtonB);
+            else ftComputerSetCommandWaitLong(this_fp, nFTComputerInputStickTiltAutoXNYD5SmashAutoXButtonB);
 
             return TRUE;
         }
@@ -7027,7 +7027,7 @@ sb32 func_ovl3_80138EE4(ftStruct *fp)
     random = mtTrigGetRandomFloat();
     if
     (
-        (fp->ground_or_air == nMPKineticsGround) &&
+        (fp->ga == nMPKineticsGround) &&
         (
             (
                 (ft_com->target_dist < ((random * 450.0F) + 350.0F) &&
@@ -7037,7 +7037,7 @@ sb32 func_ovl3_80138EE4(ftStruct *fp)
                         (mtTrigGetRandomFloat() * (11 - fp->cp_level)) < 1.0F) ||
                         (
                             (fp->cp_level >= 3) &&
-                            (((ft_com->target_pos.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) * fp->lr) < 0.0F)
+                            (((ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) * fp->lr) < 0.0F)
                         )
                     )
                 )
@@ -7046,7 +7046,7 @@ sb32 func_ovl3_80138EE4(ftStruct *fp)
                     (ft_com->target_dist < 800.0F) &&
                     (fp->cp_level >= 7) &&
                     ((mtTrigGetRandomFloat() * (10 - fp->cp_level)) < 1.0F) &&
-                    (((ft_com->target_pos.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) * ftGetComTargetFighter(ft_com)->lr) < 0.0F)
+                    (((ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) * ftGetComTargetFighter(ft_com)->lr) < 0.0F)
                 )
             )
         )
@@ -7057,23 +7057,23 @@ sb32 func_ovl3_80138EE4(ftStruct *fp)
             mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &edge_left_pos);
             mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &edge_right_pos);
 
-            if (ft_com->target_pos.x < fp->joint[ftParts_Joint_TopN]->translate.vec.f.x)
+            if (ft_com->target_pos.x < fp->joint[nFTPartsJointTopN]->translate.vec.f.x)
             {
-                if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < (edge_left_pos.x + 500.0F))
+                if (fp->joint[nFTPartsJointTopN]->translate.vec.f.x < (edge_left_pos.x + 500.0F))
                 {
                     return FALSE;
                 }
             }
-            else if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > (edge_right_pos.x - 500.0F))
+            else if (fp->joint[nFTPartsJointTopN]->translate.vec.f.x > (edge_right_pos.x - 500.0F))
             {
                 return FALSE;
             }
         }
-        if (ft_com->target_pos.x < fp->joint[ftParts_Joint_TopN]->translate.vec.f.x)
+        if (ft_com->target_pos.x < fp->joint[nFTPartsJointTopN]->translate.vec.f.x)
         {
-            ftComputerSetCommandWaitShort(fp, ftComputer_Input_EscapeL);
+            ftComputerSetCommandWaitShort(fp, nFTComputerInputEscapeL);
         }
-        else ftComputerSetCommandWaitShort(fp, ftComputer_Input_EscapeR);
+        else ftComputerSetCommandWaitShort(fp, nFTComputerInputEscapeR);
 
         return TRUE;
     }
@@ -7097,7 +7097,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
+            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
             {
                 var_a1 = FALSE;
             }
@@ -7130,13 +7130,13 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
                             (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyRoll)
                         )
                         {
-                            ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+                            ftComputerSetCommandImmediate(fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
                             ft_com->walk_stop_wait = 0;
                             return;
                         }
                     }
                 }
-                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[ftParts_Joint_TopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7179,7 +7179,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
 
                     return;
                 }
-                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[ftParts_Joint_TopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7229,7 +7229,7 @@ void func_ovl3_801397F4(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
+            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
             {
                 var_a1 = FALSE;
             }
@@ -7261,7 +7261,7 @@ void func_ovl3_801397F4(ftStruct *fp)
                             (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyRoll)
                         )
                         {
-                            ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+                            ftComputerSetCommandImmediate(fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
                             ft_com->walk_stop_wait = 0;
                             return;
                         }
@@ -7315,7 +7315,7 @@ void ftComputerFollowObjectiveAlly(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
+            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
             {
                 var_a1 = FALSE;
             }
@@ -7350,7 +7350,7 @@ void ftComputerFollowObjectiveAlly(ftStruct *fp)
                 ft_com->walk_stop_wait = 0;
                 return;
             }
-            if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[ftParts_Joint_TopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+            if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
             {
                 ftComputerFollowObjectiveWalk(fp);
 
@@ -7397,7 +7397,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
+            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
             {
                 var_a1 = FALSE;
             }
@@ -7430,13 +7430,13 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
                             (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyRoll)
                         )
                         {
-                            ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
+                            ftComputerSetCommandImmediate(fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
                             ft_com->walk_stop_wait = 0;
                             return;
                         }
                     }
                 }
-                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[ftParts_Joint_TopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7477,7 +7477,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
                     ft_com->walk_stop_wait = 0;
                     return;
                 }
-                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[ftParts_Joint_TopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7521,7 +7521,7 @@ void ftComputerFollowObjectiveRush(ftStruct *fp)
         mtTrigGetRandomFloat();
         random = mtTrigGetRandomFloat();
 
-        if (((fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
+        if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == LR_Right)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == LR_Left)))
         {
             var_a1 = FALSE;
         }
@@ -7557,52 +7557,52 @@ void ftComputerProcessObjective(ftStruct *fp)
     {
         switch (ft_com->objective)
         {
-        case ftComputer_Objective_Stand:
+        case nFTComputerObjectiveStand:
             ft_com->input_wait = 1;
-            ft_com->p_command = dFTComputerPlayerInputScripts[ftComputer_Input_StickN];
+            ft_com->p_command = dFTComputerPlayerInputScripts[nFTComputerInputStickN];
             break;
 
-        case ftComputer_Objective_Walk:
+        case nFTComputerObjectiveWalk:
             ftComputerFollowObjectiveWalk(fp);
             break;
 
-        case ftComputer_Objective_Attack:
+        case nFTComputerObjectiveAttack:
             ftComputerFollowObjectiveAttack(fp);
             break;
 
-        case ftComputer_Objective_Evade:
+        case nFTComputerObjectiveEvade:
             ftComputerFollowObjectiveEvade(fp);
             break;
 
-        case ftComputer_Objective_Recover:
+        case nFTComputerObjectiveRecover:
             ftComputerFollowObjectiveRecover(fp);
             break;
 
-        case ftComputer_Objective_TrackItem:
+        case nFTComputerObjectiveTrackItem:
             ftComputerFollowObjectiveTrackItem(fp);
             break;
 
-        case ftComputer_Objective_UseItem:
+        case nFTComputerObjectiveUseItem:
             ftComputerFollowObjectiveUseItem(fp);
             break;
 
-        case ftComputer_Objective_CounterAttack:
+        case nFTComputerObjectiveCounterAttack:
             ftComputerFollowObjectiveCounterAttack(fp);
             break;
 
-        case ftComputer_Objective_Unknown1:
+        case nFTComputerObjectiveUnknown1:
             func_ovl3_801397F4(fp);
             break;
 
-        case ftComputer_Objective_Ally:
+        case nFTComputerObjectiveAlly:
             ftComputerFollowObjectiveAlly(fp);
             break;
 
-        case ftComputer_Objective_Patrol:
+        case nFTComputerObjectivePatrol:
             ftComputerFollowObjectivePatrol(fp);
             break;
 
-        case ftComputer_Objective_Rush:
+        case nFTComputerObjectiveRush:
             ftComputerFollowObjectiveRush(fp);
             break;
         }
@@ -7616,73 +7616,73 @@ void ftComputerProcessBehavior(ftStruct *fp)
 
     switch (ft_com->behavior)
     {
-    case ftComputer_Behavior_Default:
+    case nFTComputerBehaviorDefault:
         ft_com->proc_com = ftComputerProcDefault;
-        ft_com->objective_default = ftComputer_Objective_Attack;
+        ft_com->objective_default = nFTComputerObjectiveAttack;
         break;
 
-    case ftComputer_Behavior_Unk1:
+    case nFTComputerBehaviorUnk1:
         ft_com->proc_com = ftComputerProcDefault;
-        ft_com->objective_default = ftComputer_Objective_Evade;
+        ft_com->objective_default = nFTComputerObjectiveEvade;
         break;
 
-    case ftComputer_Behavior_Unk2:
+    case nFTComputerBehaviorUnk2:
         ft_com->proc_com = ftComputerProcDefault;
-        ft_com->objective_default = ftComputer_Objective_Unknown1;
+        ft_com->objective_default = nFTComputerObjectiveUnknown1;
         break;
 
-    case ftComputer_Behavior_Ally:
+    case nFTComputerBehaviorAlly:
         ft_com->proc_com = ftComputerProcDefault;
-        ft_com->objective_default = ftComputer_Objective_Ally;
+        ft_com->objective_default = nFTComputerObjectiveAlly;
         break;
 
-    case ftComputer_Behavior_Captain:
+    case nFTComputerBehaviorCaptain:
         ft_com->proc_com = ftComputerProcDefault;
-        ft_com->objective_default = ftComputer_Objective_Patrol;
+        ft_com->objective_default = nFTComputerObjectivePatrol;
         break;
 
-    case ftComputer_Behavior_Unk3:
+    case nFTComputerBehaviorUnk3:
         ft_com->proc_com = ftComputerProcDefault;
-        ft_com->objective_default = ftComputer_Objective_Attack;
+        ft_com->objective_default = nFTComputerObjectiveAttack;
         break;
 
-    case ftComputer_Behavior_YoshiTeam:
+    case nFTComputerBehaviorYoshiTeam:
         ft_com->proc_com = ftComputerProcDefault;
-        ft_com->objective_default = ftComputer_Objective_Ally;
+        ft_com->objective_default = nFTComputerObjectiveAlly;
         break;
 
-    case ftComputer_Behavior_KirbyTeam:
+    case nFTComputerBehaviorKirbyTeam:
         ft_com->proc_com = ftComputerProcDefault;
-        ft_com->objective_default = ftComputer_Objective_Patrol;
+        ft_com->objective_default = nFTComputerObjectivePatrol;
         break;
 
-    case ftComputer_Behavior_PolyTeam:
+    case nFTComputerBehaviorPolyTeam:
         ft_com->proc_com = ftComputerProcDefault;
-        ft_com->objective_default = ftComputer_Objective_Attack;
+        ft_com->objective_default = nFTComputerObjectiveAttack;
         break;
 
-    case ftComputer_Behavior_Bonus3:
+    case nFTComputerBehaviorBonus3:
         ft_com->proc_com = ftComputerProcDefault;
-        ft_com->objective_default = ftComputer_Objective_Rush;
+        ft_com->objective_default = nFTComputerObjectiveRush;
         break;
 
-    case ftComputer_Behavior_Stand:
+    case nFTComputerBehaviorStand:
         ft_com->proc_com = ftComputerProcStand;
         break;
 
-    case ftComputer_Behavior_Walk:
+    case nFTComputerBehaviorWalk:
         ft_com->proc_com = ftComputerProcWalk;
         break;
 
-    case ftComputer_Behavior_Evade:
+    case nFTComputerBehaviorEvade:
         ft_com->proc_com = ftComputerProcEvade;
         break;
 
-    case ftComputer_Behavior_Jump:
+    case nFTComputerBehaviorJump:
         ft_com->proc_com = ftComputerProcJump;
         break;
 
-    case ftComputer_Behavior_Unk5:
+    case nFTComputerBehaviorUnk5:
         ft_com->proc_com = func_ovl3_80137E70;
         break;
     }
@@ -7695,7 +7695,7 @@ void ftComputerProcessTrait(ftStruct *fp)
 
     switch (ft_com->trait)
     {
-    case ftComputer_Trait_Default:
+    case nFTComputerTraitDefault:
         if (ft_com->behavior_change_wait == 0)
         {
             ft_com->behavior_change_wait = (mtTrigGetRandomFloat() * 900.0F) + 900.0F;
@@ -7703,70 +7703,70 @@ void ftComputerProcessTrait(ftStruct *fp)
             switch (mtTrigGetRandomUShort() & 3)
             {
             case 0:
-                ft_com->behavior = ftComputer_Behavior_Default;
+                ft_com->behavior = nFTComputerBehaviorDefault;
                 break;
 
             case 1:
-                ft_com->behavior = ftComputer_Behavior_Unk2;
+                ft_com->behavior = nFTComputerBehaviorUnk2;
                 break;
 
             case 2:
-                ft_com->behavior = ftComputer_Behavior_Ally;
+                ft_com->behavior = nFTComputerBehaviorAlly;
                 ft_com->behavior_change_wait >>= 2;
                 break;
 
             case 3:
-                ft_com->behavior = ftComputer_Behavior_Captain;
+                ft_com->behavior = nFTComputerBehaviorCaptain;
                 break;
             }
         }
         break;
 
-    case ftComputer_Trait_Link:
+    case nFTComputerTraitLink:
         if ((fp->percent_damage >= 14) || (ft_com->behavior_change_wait == 0))
         {
-            ft_com->behavior = ftComputer_Behavior_Default;
+            ft_com->behavior = nFTComputerBehaviorDefault;
         }
-        else ft_com->behavior = ftComputer_Behavior_Stand;
+        else ft_com->behavior = nFTComputerBehaviorStand;
         break;
 
-    case ftComputer_Trait_YoshiTeam:
-        ft_com->behavior = ftComputer_Behavior_YoshiTeam;
+    case nFTComputerTraitYoshiTeam:
+        ft_com->behavior = nFTComputerBehaviorYoshiTeam;
         break;
 
-    case ftComputer_Trait_KirbyTeam:
-        ft_com->behavior = ftComputer_Behavior_KirbyTeam;
+    case nFTComputerTraitKirbyTeam:
+        ft_com->behavior = nFTComputerBehaviorKirbyTeam;
         break;
 
-    case ftComputer_Trait_PolyTeam:
-        ft_com->behavior = ftComputer_Behavior_PolyTeam;
+    case nFTComputerTraitPolyTeam:
+        ft_com->behavior = nFTComputerBehaviorPolyTeam;
         break;
 
-    case ftComputer_Trait_MarioBros:
+    case nFTComputerTraitMarioBros:
         if (fp->ft_kind == nFTKindMario)
         {
-            ft_com->behavior = ftComputer_Behavior_Default;
+            ft_com->behavior = nFTComputerBehaviorDefault;
         }
-        else ft_com->behavior = ftComputer_Behavior_Ally;
+        else ft_com->behavior = nFTComputerBehaviorAlly;
         break;
 
-    case ftComputer_Trait_GiantDonkey:
-        ft_com->behavior = ftComputer_Behavior_Default;
+    case nFTComputerTraitGiantDonkey:
+        ft_com->behavior = nFTComputerBehaviorDefault;
         break;
 
-    case ftComputer_Trait_Unk1:
-        ft_com->behavior = ftComputer_Behavior_Unk2;
+    case nFTComputerTraitUnk1:
+        ft_com->behavior = nFTComputerBehaviorUnk2;
         break;
 
-    case ftComputer_Trait_Bonus3:
-        ft_com->behavior = ftComputer_Behavior_Bonus3;
+    case nFTComputerTraitBonus3:
+        ft_com->behavior = nFTComputerBehaviorBonus3;
         break;
 
-    case ftComputer_Trait_Ally:
-        ft_com->behavior = ftComputer_Behavior_Ally;
+    case nFTComputerTraitAlly:
+        ft_com->behavior = nFTComputerBehaviorAlly;
         break;
 
-    case ftComputer_Trait_None:
+    case nFTComputerTraitNone:
         break;
     }
 }
@@ -7810,13 +7810,13 @@ void ftComputerSetupAll(GObj *fighter_gobj)
 
     if (fp->ft_kind != nFTKindMasterHand)
     {
-        ft_com->origin_pos.x = ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
+        ft_com->origin_pos.x = ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
 
-        if (fp->ground_or_air == nMPKineticsGround)
+        if (fp->ga == nMPKineticsGround)
         {
-            ft_com->origin_pos.y = ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+            ft_com->origin_pos.y = ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
         }
-        else ft_com->origin_pos.y = ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + fp->coll_data.ground_dist;
+        else ft_com->origin_pos.y = ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + fp->coll_data.ground_dist;
 
         ft_com->ground_line_id = fp->coll_data.ground_line_id;
 
@@ -7919,8 +7919,8 @@ void ftComputerSetFighterHurtboxSizeInfo(GObj *fighter_gobj)
     s32 i, j;
     DObj *joint;
 
-    nearest_right = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
-    nearest_top = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
+    nearest_right = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+    nearest_top = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
 
     nearest_left = nearest_right;
     nearest_bottom = nearest_top;

@@ -24,7 +24,7 @@ void ftCommonReboundSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRebound, 0.0F, fp->status_vars.common.rebound.anim_speed, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRebound, 0.0F, fp->status_vars.common.rebound.anim_speed, FTSTATUS_PRESERVE_NONE);
 }
 
 // 0x80144A90
@@ -39,7 +39,7 @@ void ftCommonReboundWaitSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 lr_rebound;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusReboundWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusReboundWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->status_vars.common.rebound.anim_speed = fp->attributes->rebound_anim_length / fp->attack_rebound;
 

@@ -57,7 +57,7 @@ void ftDonkeySpecialAirNStartSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialNStart, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialNStart, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
 
     fp->proc_damage = ftDonkeySpecialNProcDamage;
 }
@@ -68,7 +68,7 @@ void ftDonkeySpecialNStartSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirNStart, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirNStart, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
 
     fp->proc_damage = ftDonkeySpecialNProcDamage;
 
@@ -104,7 +104,7 @@ void ftDonkeySpecialNLoopProcUpdate(GObj *fighter_gobj)
         }
         else if (fp->status_vars.donkey.specialn.is_release != FALSE)
         {
-            if (fp->ground_or_air == nMPKineticsAir)
+            if (fp->ga == nMPKineticsAir)
             {
                 ftDonkeySpecialAirNEndSetStatus(fighter_gobj);
             }
@@ -119,7 +119,7 @@ void ftDonkeySpecialNLoopProcInterrupt(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ground_or_air != nMPKineticsGround) || (ftCommonEscapeCheckInterruptSpecialNDonkey(fighter_gobj) == FALSE))
+    if ((fp->ga != nMPKineticsGround) || (ftCommonEscapeCheckInterruptSpecialNDonkey(fighter_gobj) == FALSE))
     {
         if (fp->input.pl.button_tap & (fp->input.button_mask_b | fp->input.button_mask_a))
         {
@@ -161,7 +161,7 @@ void ftDonkeySpecialNLoopSetProcDamageAnimRate(GObj *fighter_gobj)
 void ftDonkeySpecialAirNLoopSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_COLANIM));
     ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
 }
 
@@ -171,7 +171,7 @@ void ftDonkeySpecialNLoopSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_COLANIM));
     ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
     ftPhysics_ClampAirVelXMax(fp);
 }
@@ -179,14 +179,14 @@ void ftDonkeySpecialNLoopSwitchStatusAir(GObj *fighter_gobj)
 // 0x8015B320
 void ftDonkeySpecialNLoopSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialNLoop, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialNLoop, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
     ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
 }
 
 // 0x8015B35C
 void ftDonkeySpecialAirNLoopSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirNLoop, 0.0F, 1.0F, (FTSTATUPDATE_FASTFALL_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirNLoop, 0.0F, 1.0F, (FTSTATUS_PRESERVE_FASTFALL | FTSTATUS_PRESERVE_COLANIM));
     ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
 }
 
@@ -231,7 +231,7 @@ void ftDonkeySpecialAirNEndSwitchStatusGround(GObj *fighter_gobj)
 
     status_id = (fp->status_info.status_id == nFTDonkeyStatusSpecialAirNEnd) ? nFTDonkeyStatusSpecialNEnd : nFTDonkeyStatusSpecialNFull;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, fighter_gobj->anim_frame, 1.0F, (FTSTATUPDATE_COLANIM_PRESERVE | FTSTATUPDATE_HIT_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, status_id, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_COLANIM | FTSTATUS_PRESERVE_HIT));
 }
 
 // 0x8015B508
@@ -251,7 +251,7 @@ void ftDonkeySpecialNEndSetStatus(GObj *fighter_gobj)
 
     s32 status_id = (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX) ? nFTDonkeyStatusSpecialNFull : nFTDonkeyStatusSpecialNEnd;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
 
     fp->phys_info.vel_ground.x = fp->fighter_vars.donkey.charge_level * FTDONKEY_GIANTPUNCH_VEL_MUL;
 
@@ -265,7 +265,7 @@ void ftDonkeySpecialAirNEndSetStatus(GObj *fighter_gobj)
 
     s32 status_id = (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX) ? nFTDonkeyStatusSpecialAirNFull : nFTDonkeyStatusSpecialAirNEnd;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, (FTSTATUPDATE_FASTFALL_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, (FTSTATUS_PRESERVE_FASTFALL | FTSTATUS_PRESERVE_COLANIM));
 
     ftDonkeySpecialNGetStatusChargeLevelReset(fighter_gobj);
 }
@@ -286,7 +286,7 @@ void ftDonkeySpecialNStartSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialNStart, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialNStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->proc_damage = ftDonkeySpecialNProcDamage;
 
@@ -299,7 +299,7 @@ void ftDonkeySpecialAirNStartSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirNStart, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirNStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
 
     fp->proc_damage = ftDonkeySpecialNProcDamage;
 

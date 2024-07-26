@@ -161,7 +161,7 @@ void itRShellGSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
     s32 lr_vel;
     s32 lr_dist;
 
-    if (ip->ground_or_air == nMPKineticsGround)
+    if (ip->ga == nMPKineticsGround)
     {
         dist_x = (DObjGetStruct(fighter_gobj)->translate.vec.f.x - DObjGetStruct(item_gobj)->translate.vec.f.x);
 
@@ -201,7 +201,7 @@ void itRShellGSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
 void itRShellGSpinSearchFollowPlayer(GObj *item_gobj)
 {
     s32 unused;
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
     GObj *nearest_gobj;
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f *translate = &dobj->translate.vec.f;
@@ -393,7 +393,7 @@ sb32 itRShellSDefaultProcDamage(GObj *item_gobj)
         itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
 
-        if (ip->ground_or_air != nMPKineticsGround)
+        if (ip->ga != nMPKineticsGround)
         {
             itRShellASpinSetStatus(item_gobj);
         }
@@ -565,7 +565,7 @@ sb32 itRShellSDefaultProcHit(GObj *item_gobj)
 
     itRShellSDefaultClearAnim(item_gobj);
 
-    if (ip->ground_or_air != nMPKineticsGround)
+    if (ip->ga != nMPKineticsGround)
     {
         itRShellASpinSetStatus(item_gobj);
     }

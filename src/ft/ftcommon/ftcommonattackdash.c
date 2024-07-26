@@ -10,7 +10,7 @@
 // 0x8014F670
 void ftCommonAttackDashSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttackDash, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttackDash, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
 // 0x8014F69C - Also checks LightThrowDash and ItemSwingDash
@@ -31,7 +31,7 @@ sb32 ftCommonAttackDashCheckInterruptCommon(GObj *fighter_gobj)
             }
             if (itGetStruct(fp->item_hold)->type == nITTypeSwing)
             {
-                ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_AttackDash);
+                ftCommonItemSwingSetStatus(fighter_gobj, nFTItemSwingTypeAttackDash);
 
                 return TRUE;
             }

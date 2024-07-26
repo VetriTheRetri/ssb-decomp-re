@@ -91,7 +91,7 @@ GObj* grZebesMakeAcid(void)
     map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRZebesAcidDObjSetup);
     gGRCommonStruct.zebes.map_head = map_head;
 
-    map_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    map_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
     gGRCommonStruct.zebes.map_gobj = map_gobj;
 
     omAddGObjRenderProc(map_gobj, odRenderDObjTreeDLLinksForGObj, 12, GOBJ_DLLINKORDER_DEFAULT, -1);
@@ -212,7 +212,7 @@ void grZebesProcUpdate(GObj *ground_gobj)
 // 0x80108448
 GObj* grZebesMakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
     GObj *acid_gobj = grZebesMakeAcid();
 
     omAddGObjCommonProc(ground_gobj, grZebesProcUpdate, nOMObjProcessKindProc, 4);

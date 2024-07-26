@@ -1028,13 +1028,13 @@ void ifCommonPlayerDamageInitInterface(void)
 
     for (player = 0; player < ARRAY_COUNT(sIFCommonPlayerDamageInterface); player++)
     {
-        if (gBattleState->player_block[player].player_kind == Pl_Kind_Not)
+        if (gBattleState->player_block[player].player_kind == nFTPlayerKindNot)
         {
             sIFCommonPlayerDamageInterface[player].interface_gobj = NULL;
         }
         else
         {
-            interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+            interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
             sIFCommonPlayerDamageInterface[player].interface_gobj = interface_gobj;
 
@@ -1243,7 +1243,7 @@ void ifCommonPlayerStockMultiMakeInterface(s32 player)
 
     if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_spr != NULL))
     {
-        GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+        GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
         omAddGObjRenderProc(interface_gobj, ifCommonPlayerStockMultiProcRender, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
         gcAppendSObjWithSprite(interface_gobj, spGetSpriteFromFile(gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
@@ -1289,7 +1289,7 @@ void ifCommonPlayerStockSingleMakeInterface(s32 player)
 
     if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_spr != NULL))
     {
-        sIFCommonPlayerStocksGObj[player] = interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+        sIFCommonPlayerStocksGObj[player] = interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
         omAddGObjRenderProc(interface_gobj, ifCommonPlayerStockSingleProcRender, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -1348,7 +1348,7 @@ void ifCommonPlayerStockStealProcUpdate(GObj *interface_gobj)
 void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
 {
     ftStruct *fp = ftGetStruct(gBattleState->player_block[stolen].fighter_gobj);
-    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     if (interface_gobj != NULL)
     {
@@ -1398,7 +1398,7 @@ void ifCommonPlayerStockInitInterface(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        if (gBattleState->player_block[player].player_kind != Pl_Kind_Not)
+        if (gBattleState->player_block[player].player_kind != nFTPlayerKindNot)
         {
             switch (gBattleState->player_block[player].is_single_stockicon)
             {
@@ -1717,12 +1717,12 @@ void ifCommonPlayerMagnifyProcRender(ftStruct *fp)
 // 0x80111440
 void ifCommonPlayerMagnifyMakeInterface(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
-        GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Magnify, GOBJ_LINKORDER_DEFAULT);
+        GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDMagnify, GOBJ_LINKORDER_DEFAULT);
 
         omAddOMMtxForDObjFixed(omAddDObjForGObj(interface_gobj, (Gfx*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerMagnifyDisplayList)), OMMtx_Transform_TraRotRpyRSca, 0);
 
@@ -1796,7 +1796,7 @@ void ifCommonPlayerArrowsRightProcUpdate(GObj *interface_gobj)
 // 0x80111684
 GObj* ifCommonPlayerArrowsMakeInterface(void (*proc_render)(GObj*), void (*proc_update)(GObj*))
 {
-    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(interface_gobj, proc_render, 8, GOBJ_DLLINKORDER_DEFAULT, -1);
     func_8000F590(interface_gobj, (void*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&D_NF_00000188), NULL, 27, 0, 0);
@@ -1813,7 +1813,7 @@ void ifCommonPlayerArrowsProcRun(GObj *interface_gobj)
 
     if (gIFPlayerCommonInterface.is_ifmagnify_display != FALSE)
     {
-        GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+        GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
         while (fighter_gobj != NULL)
         {
@@ -1878,7 +1878,7 @@ void ifCommonPlayerArrowsInitInterface(void)
 
     omAddGObjRenderProc
     (
-        omMakeGObjSPAfter(nOMObjKindInterface, ifCommonPlayerArrowsProcRun, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT), 
+        omMakeGObjSPAfter(nOMObjCommonKindInterface, ifCommonPlayerArrowsProcRun, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT), 
         ifCommonPlayerArrowsMainProcRender,
         8, 
         GOBJ_DLLINKORDER_DEFAULT, 
@@ -1930,7 +1930,7 @@ void ifCommonPlayerTagProcRender(GObj *interface_gobj)
     {
         if ((fp->playertag_wait == 1) || (CameraGetStruct(gCMManagerCameraGObj)->vec.eye.z > 6000.0F))
         {
-            pos = fp->joint[ftParts_Joint_TopN]->translate.vec.f;
+            pos = fp->joint[nFTPartsJointTopN]->translate.vec.f;
 
             pos.y += fp->attributes->cam_zoom_default;
 
@@ -1957,9 +1957,9 @@ void ifCommonPlayerTagMakeInterface(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
     {
-        if (gBattleState->player_block[player].player_kind != Pl_Kind_Not)
+        if (gBattleState->player_block[player].player_kind != nFTPlayerKindNot)
         {
-            interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+            interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
             omAddGObjRenderProc(interface_gobj, ifCommonPlayerTagProcRender, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -2014,7 +2014,7 @@ void ifCommonItemArrowProcRender(GObj *interface_gobj)
 // 0x80111EC0
 GObj* ifCommonItemArrowMakeInterface(itStruct *ip)
 {
-    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     if (interface_gobj != NULL)
     {
@@ -2081,7 +2081,7 @@ void ifCommonAnnounceSetAttr(GObj *interface_gobj, s32 file_id, ifACharacter *ch
 void ifCommonAnnounceGoMakeInterface(void)
 {
     void *sprite_head = gGMCommonFiles[1];
-    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
     s32 i;
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
@@ -2101,7 +2101,7 @@ void ifCommonAnnounceGoMakeInterface(void)
 // 0x801121C4
 void ifCommonAnnounceGoSetStatus(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
@@ -2294,7 +2294,7 @@ SObj* ifCommonCountdownMakeInterface(void)
     SObj *sobj;
     s32 i;
 
-    interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+    interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
     omAddGObjCommonProc(interface_gobj, ifCommonCountdownThread, nOMObjProcessKindOSThread, 5);
@@ -2341,7 +2341,7 @@ SObj* ifCommonCountdownMakeInterface(void)
 // 0x80112814
 GObj* ifCommonAnnounceTimeUpMakeInterface(void)
 {
-    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -2368,7 +2368,7 @@ void ifCommonEntryFocusThread(GObj *interface_gobj)
     {
         gsStopCurrentProcess(process_id);
     }
-    fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
@@ -2397,7 +2397,7 @@ void ifCommonEntryFocusThread(GObj *interface_gobj)
 // 0x801129DC
 void ifCommonEntryFocusMakeInterface(s32 id)
 {
-    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_InterfaceActor, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjCommonProc(interface_gobj, ifCommonEntryFocusThread, nOMObjProcessKindOSThread, 5);
 
@@ -2417,7 +2417,7 @@ void ifCommonEntryAllThread(GObj *interface_gobj)
 // 0x80112A80
 void ifCommonEntryAllMakeInterface(void)
 {
-    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_InterfaceActor, GOBJ_LINKORDER_DEFAULT), ifCommonEntryAllThread, nOMObjProcessKindOSThread, 5);
+    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT), ifCommonEntryAllThread, nOMObjProcessKindOSThread, 5);
 
     gBattleState->game_status = gmMatch_GameStatus_Wait;
 }
@@ -2455,7 +2455,7 @@ void ifCommonAnnounceSetColors(GObj *interface_gobj, gsColorRGBPair *colors)
 // 0x80112B74
 void ifCommonSuddenDeathMakeInterface(void)
 {
-    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
     omAddGObjCommonProc(interface_gobj, ifCommonSuddenDeathThread, nOMObjProcessKindOSThread, 5);
@@ -2548,7 +2548,7 @@ SObj* ifCommonTimerMakeDigitSObjs(void)
 
     ifCommonTimerSetAttr();
 
-    interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+    interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(interface_gobj, ifCommonTimerProcRender, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -2635,13 +2635,13 @@ void ifCommonTimerMakeInterface(void (*proc)(void))
     sIFCommonTimerIsStarted = FALSE;
 
     ifCommonTimerInitAnnouncedSeconds();
-    ifSetProc(omMakeGObjSPAfter(nOMObjKindInterface, ifCommonTimerProcRun, GObj_LinkID_InterfaceActor, GOBJ_LINKORDER_DEFAULT), proc);
+    ifSetProc(omMakeGObjSPAfter(nOMObjCommonKindInterface, ifCommonTimerProcRun, nOMObjCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT), proc);
 }
 
 // 0x8011341C
 GObj* ifCommonAnnounceGameSetMakeInterface(void)
 {
-    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -2666,7 +2666,7 @@ void ifCommonBattleInitPlacement(void)
     case FALSE:
         for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
         {
-            if (gBattleState->player_block[i].player_kind != Pl_Kind_Not)
+            if (gBattleState->player_block[i].player_kind != nFTPlayerKindNot)
             {
                 members[i]++;
             }
@@ -2676,7 +2676,7 @@ void ifCommonBattleInitPlacement(void)
     case TRUE:
         for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
         {
-            if (gBattleState->player_block[i].player_kind != Pl_Kind_Not)
+            if (gBattleState->player_block[i].player_kind != nFTPlayerKindNot)
             {
                 members[gBattleState->player_block[i].team_index]++;
             }
@@ -2788,7 +2788,7 @@ void ifCommonBattleUpdateScoreStocks(ftStruct *fp)
 
     for (i = teammates_remain = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
     {
-        if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
+        if (gBattleState->player_block[i].player_kind == nFTPlayerKindNot) continue;
 
         switch (gBattleState->is_team_battle)
         {
@@ -2816,7 +2816,7 @@ void ifCommonBattleUpdateScoreStocks(ftStruct *fp)
         case TRUE:
             for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
             {
-                if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
+                if (gBattleState->player_block[i].player_kind == nFTPlayerKindNot) continue;
 
                 if (gBattleState->player_block[i].team_index == team)
                 {
@@ -2834,7 +2834,7 @@ void ifCommonBattleUpdateScoreStocks(ftStruct *fp)
     }
     if ((sIFCommonBattlePlacement != 0) && (fp->stock_count == -1))
     {
-        if (fp->status_info.pl_kind == Pl_Kind_Man)
+        if (fp->status_info.pl_kind == nFTPlayerKindMan)
         {
             ftPublicityDefeatedAddID(dIFCommonAnnounceDefeatedVoiceIDs[fp->player]);
         }
@@ -2929,9 +2929,9 @@ void ifCommonBattlePauseMakeInterface(s32 player)
 {
     GObj *interface_gobj;
 
-    omAddGObjRenderProc(omMakeGObjSPAfter(nOMObjKindPauseMenu, NULL, GObj_LinkID_PauseMenu, GOBJ_LINKORDER_DEFAULT), ifCommonBattlePauseProcRender, 24, GOBJ_DLLINKORDER_DEFAULT, -1);
+    omAddGObjRenderProc(omMakeGObjSPAfter(nOMObjCommonKindPauseMenu, NULL, nOMObjCommonLinkIDPauseMenu, GOBJ_LINKORDER_DEFAULT), ifCommonBattlePauseProcRender, 24, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    interface_gobj = omMakeGObjSPAfter(nOMObjKindPauseMenu, NULL, GObj_LinkID_PauseMenu, GOBJ_LINKORDER_DEFAULT);
+    interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindPauseMenu, NULL, nOMObjCommonLinkIDPauseMenu, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 24, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -2942,13 +2942,13 @@ void ifCommonBattlePauseMakeInterface(s32 player)
 // 0x80113F50
 void func_ovl2_80113F50(void)
 {
-    func_ovl0_800CB608(gOMObjCommonLinks[GObj_LinkID_PauseMenu]);
+    func_ovl0_800CB608(gOMObjCommonLinks[nOMObjCommonLinkIDPauseMenu]);
 }
 
 // 0x80113F74
 void ifCommonInterfaceSetGObjFlagsAll(u32 flags)
 {
-    GObj *interface_gobj = gOMObjCommonLinks[GObj_LinkID_Interface];
+    GObj *interface_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDInterface];
 
     while (interface_gobj != NULL)
     {
@@ -2961,7 +2961,7 @@ void ifCommonInterfaceSetGObjFlagsAll(u32 flags)
 // 0x80113F9C
 void ifCommonBattlePauseSetGObjFlagsAll(u32 flags)
 {
-    GObj *pausemenu_gobj = gOMObjCommonLinks[GObj_LinkID_PauseMenu];
+    GObj *pausemenu_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDPauseMenu];
 
     while (pausemenu_gobj != NULL)
     {
@@ -3002,9 +3002,9 @@ void ifCommonBattleGoUpdateInterface(void)
     {
         if (gPlayerControllers[player].button_new & START_BUTTON)
         {
-            if (gBattleState->player_block[player].player_kind != Pl_Kind_Not)
+            if (gBattleState->player_block[player].player_kind != nFTPlayerKindNot)
             {
-                if ((gBattleState->gr_kind != Gr_Kind_Bonus3) || (gBattleState->player_block[player].player_kind != Pl_Kind_Com))
+                if ((gBattleState->gr_kind != Gr_Kind_Bonus3) || (gBattleState->player_block[player].player_kind != nFTPlayerKindCom))
                 {
                     fighter_gobj = gBattleState->player_block[player].fighter_gobj;
 
@@ -3043,7 +3043,7 @@ void ifCommonBattleGoUpdateInterface(void)
 
                             sIFCommonBattlePausePlayerLOD = fp->lod_current;
 
-                            ftCommon_SetModelPartLevelDetailAll(fighter_gobj, ftParts_LOD_HighPoly);
+                            ftCommon_SetModelPartLevelDetailAll(fighter_gobj, nFTPartsDetailHigh);
                         }
                         ifCommonBattlePauseInitInterface(player);
 
@@ -3328,7 +3328,7 @@ void ifCommonPlayerScoreMakeEffect(ftStruct *fp, s32 arg1)
 // 0x80114A48
 GObj* ifCommonAnnounceFailureMakeInterface(void)
 {
-    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
     ifCommonAnnounceSetAttr(interface_gobj, 7, dIFCommonAnnounceFailureSpriteData, ARRAY_COUNT(dIFCommonAnnounceFailureSpriteData));
@@ -3340,7 +3340,7 @@ GObj* ifCommonAnnounceFailureMakeInterface(void)
 // 0x8014AC4
 GObj* ifCommonAnnounceCompleteMakeInterface(void)
 {
-    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
     ifCommonAnnounceSetAttr(interface_gobj, 7, dIFCommonAnnounceCompleteSpriteData, ARRAY_COUNT(dIFCommonAnnounceCompleteSpriteData));

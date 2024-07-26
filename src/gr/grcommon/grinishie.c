@@ -72,14 +72,14 @@ enum grInishiePowerBlockStatus
 // 0x80108CD0
 void grInishieScaleUpdateFighterStatsGA(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
         s32 player = fp->player;
 
-        if (fp->ground_or_air == nMPKineticsGround)
+        if (fp->ga == nMPKineticsGround)
         {
             if (gGRCommonStruct.inishie.players_ga[player] != nMPKineticsGround)
             {
@@ -92,7 +92,7 @@ void grInishieScaleUpdateFighterStatsGA(void)
         }
         else gGRCommonStruct.inishie.players_tt[player] = 0;
 
-        gGRCommonStruct.inishie.players_ga[player] = fp->ground_or_air;
+        gGRCommonStruct.inishie.players_ga[player] = fp->ga;
 
         fighter_gobj = fighter_gobj->link_next;
     }
@@ -101,14 +101,14 @@ void grInishieScaleUpdateFighterStatsGA(void)
 // 0x80108D50
 f32 grInishieScaleGetPressure(s32 line_id)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
     f32 pressure = 0.0F;
 
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (fp->ground_or_air == nMPKineticsGround)
+        if (fp->ga == nMPKineticsGround)
         {
             if ((fp->coll_data.ground_line_id != -2) && (mpCollisionSetDObjNoID(fp->coll_data.ground_line_id) == line_id))
             {
@@ -365,7 +365,7 @@ void grInishieMakeScale(void)
     Vec3f yakumono_pos;
 
     map_head = gGRCommonStruct.inishie.map_head;
-    ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(ground_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
     grModelSetupInitDObj(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&lGRInishieScaleDObjDesc), map_dobj, dGRInishieScaleTransformKinds);
@@ -378,7 +378,7 @@ void grInishieMakeScale(void)
 
     for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.inishie.scale); i++)
     {
-        ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+        ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
         omAddGObjRenderProc(ground_gobj, odRenderDObjDLHead0, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
         platform_dobj = omAddDObjForGObj(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&lGRInishieMapHead));
@@ -520,7 +520,7 @@ void grInishieMakePowerBlock(void)
 {
     s32 pos_count, i, pos_ids[10];
 
-    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT), grInishiePowerBlockProcUpdate, nOMObjProcessKindProc, 4);
+    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT), grInishiePowerBlockProcUpdate, nOMObjProcessKindProc, 4);
 
     gGRCommonStruct.inishie.pblock_pos_count = pos_count = mpCollisionGetMapObjCountKind(nMPMapObjKindPowerBlock);
 
@@ -558,7 +558,7 @@ sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, 
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == nMPKineticsGround)
+    if (fp->ga == nMPKineticsGround)
     {
         itStruct *ip = itGetStruct(item_gobj);
 

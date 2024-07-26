@@ -38,7 +38,7 @@ void ftCommonAttackS3SetStatus(GObj *fighter_gobj)
         }
         else status_id = nFTCommonStatusAttackS3;
 
-        ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
         ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     }
 }
@@ -64,7 +64,7 @@ sb32 ftCommonAttackS3CheckInterruptCommon(GObj *fighter_gobj)
                 switch (itGetStruct(fp->item_hold)->type)
                 {
                 case nITTypeSwing:
-                    ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_Attack3);
+                    ftCommonItemSwingSetStatus(fighter_gobj, nFTItemSwingTypeAttack3);
                     return TRUE;
 
                 case nITTypeShoot:

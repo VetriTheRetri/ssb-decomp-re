@@ -56,7 +56,7 @@ void ftCommonThrownReleaseFighterLoseGrip(GObj *fighter_gobj)
     }
     ftMap_RunCollisionDefault(fighter_gobj, &DObjGetStruct(interact_gobj)->translate.vec.f, &interact_fp->coll_data);
 
-    if ((this_fp->ground_or_air == nMPKineticsGround) && ((this_fp->coll_data.ground_line_id == -1) || (this_fp->coll_data.ground_dist != 0.0F)))
+    if ((this_fp->ga == nMPKineticsGround) && ((this_fp->coll_data.ground_line_id == -1) || (this_fp->coll_data.ground_dist != 0.0F)))
     {
         ftMap_SetAir(this_fp);
     }
@@ -219,7 +219,7 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
     {
         ftCommonThrownReleaseFighterLoseGrip(fighter_gobj);
     }
-    if (this_fp->ground_or_air == nMPKineticsAir)
+    if (this_fp->ga == nMPKineticsAir)
     {
         ftMap_SetAir(this_fp);
     }

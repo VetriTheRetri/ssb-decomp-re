@@ -207,7 +207,7 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
     Gfx *dl;
     Vec3f pos;
 
-    ip->ground_or_air = nMPKineticsAir;
+    ip->ga = nMPKineticsAir;
 
     ip->phys_info.vel_air.y = ITIWARK_FLY_VEL_Y;
 

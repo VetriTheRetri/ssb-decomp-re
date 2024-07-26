@@ -75,7 +75,7 @@ void grBonus3RBombMakeActor(void)
 {
     s32 pos_ids;
 
-    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT), grBonus3RBombProcUpdate, nOMObjProcessKindProc, 4);
+    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT), grBonus3RBombProcUpdate, nOMObjProcessKindProc, 4);
 
     if (mpCollisionGetMapObjCountKind(nMPMapObjKind1PGameBonus3RBomb) != 1)
     {
@@ -96,7 +96,7 @@ void grBonus3FinishProcUpdate(GObj *ground_gobj)
 {
     ftStruct *fp = ftGetStruct(gBattleState->player_block[gSceneData.spgame_player].fighter_gobj);
 
-    if ((fp->ground_or_air == nMPKineticsGround) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
+    if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
     {
         ifCommonAnnounceCompleteInitInterface(0x1CB);
         ifCommonBattleEndAddSoundQueueID(alSound_SFX_BonusComplete);
@@ -106,7 +106,7 @@ void grBonus3FinishProcUpdate(GObj *ground_gobj)
 // 0x8010B784
 void grBonus3FinishMakeActor(void)
 {
-    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT), grBonus3FinishProcUpdate, 1, 4);
+    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT), grBonus3FinishProcUpdate, 1, 4);
 }
 
 // 0x8010B7C8

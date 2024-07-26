@@ -11,11 +11,11 @@ void ftCommonPassiveSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == nMPKineticsAir)
+    if (fp->ga == nMPKineticsAir)
     {
         ftMap_SetGround(fp);
     }
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusPassive, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusPassive, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommon_VelDamageTransferGround(fp);
 }
 

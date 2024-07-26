@@ -408,12 +408,12 @@ sb32 itMapCheckMapReboundProcGround(GObj *item_gobj, f32 wall_ceil_rebound, void
 // 0x80173F54
 void itMapSetGround(itStruct *ip)
 {
-    ip->ground_or_air = nMPKineticsGround;
+    ip->ga = nMPKineticsGround;
     ip->phys_info.vel_ground = ip->phys_info.vel_air.x * ip->lr;
 }
 
 // 0x80173F78
 void itMapSetAir(itStruct *ip)
 {
-    ip->ground_or_air = nMPKineticsAir;
+    ip->ga = nMPKineticsAir;
 }

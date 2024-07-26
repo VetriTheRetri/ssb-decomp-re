@@ -42,7 +42,7 @@ extern void ftDonkeySpecialHiProcMap(GObj* fighter_gobj);
 extern void ftDonkeySpecialAirHiProcMap(GObj* fighter_gobj);
 extern void ftDonkeySpecialAirHiSwitchStatusGround(GObj* fighter_gobj);
 extern void ftDonkeySpecialHiSwitchStatusAir(GObj* fighter_gobj);
-extern void ftDonkeySpecialHiSetStatusFlagGA(GObj* fighter_gobj, sb32 ground_or_air);
+extern void ftDonkeySpecialHiSetStatusFlagGA(GObj* fighter_gobj, sb32 ga);
 extern void ftDonkeySpecialHiSetStatus(GObj* fighter_gobj);
 extern void ftDonkeySpecialAirHiSetStatus(GObj* fighter_gobj);
 

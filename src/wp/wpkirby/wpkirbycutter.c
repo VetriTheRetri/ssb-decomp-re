@@ -57,7 +57,7 @@ sb32 wpKirbyCutterProcUpdate(GObj *weapon_gobj)
 
         return TRUE;
     }
-    else if (wp->ground_or_air == nMPKineticsGround)
+    else if (wp->ga == nMPKineticsGround)
     {
         DObjGetStruct(weapon_gobj)->rotate.vec.f.z = -atan2f(wp->coll_data.ground_angle.x, wp->coll_data.ground_angle.y);
     }
@@ -69,7 +69,7 @@ sb32 wpKirbyCutterProcMap(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wp->ground_or_air == nMPKineticsAir)
+    if (wp->ga == nMPKineticsAir)
     {
         if (wpMapTestAllCheckGround(weapon_gobj) == TRUE)
         {

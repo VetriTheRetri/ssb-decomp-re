@@ -134,7 +134,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80188618
-s32 dFTCommonItemSwingStatusIDs[/* */][ftItemSwing_Type_EnumMax] =
+s32 dFTCommonItemSwingStatusIDs[/* */][nFTItemSwingTypeEnumMax] =
 {
     { nFTCommonStatusSwordSwing1,   nFTCommonStatusSwordSwing3,   nFTCommonStatusSwordSwing4,   nFTCommonStatusSwordSwingDash   },
     { nFTCommonStatusBatSwing1,     nFTCommonStatusBatSwing3,     nFTCommonStatusBatSwing4,     nFTCommonStatusBatSwingDash     },
@@ -154,19 +154,19 @@ void ftCommonItemSwingSetStatus(GObj *fighter_gobj, s32 swing_type)
     switch (ip->it_kind)
     {
     case nITKindSword:
-        swing_item = ftItemSwing_Kind_Sword;
+        swing_item = nFTItemSwingKindSword;
         break;
 
     case nITKindBat:
-        swing_item = ftItemSwing_Kind_Bat;
+        swing_item = nFTItemSwingKindBat;
         break;
 
     case nITKindHarisen:
-        swing_item = ftItemSwing_Kind_Harisen;
+        swing_item = nFTItemSwingKindHarisen;
         break;
 
     case nITKindStarRod:
-        swing_item = ftItemSwing_Kind_StarRod;
+        swing_item = nFTItemSwingKindStarRod;
         break;
     }
     status_id = dFTCommonItemSwingStatusIDs[swing_item][swing_type];
@@ -174,7 +174,7 @@ void ftCommonItemSwingSetStatus(GObj *fighter_gobj, s32 swing_type)
 
     fp->command_vars.flags.flag0 = 0;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, anim_speed, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, anim_speed, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_hit = ftCommonHarisenSwingProcHit;

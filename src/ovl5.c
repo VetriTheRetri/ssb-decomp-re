@@ -107,7 +107,7 @@ void func_ovl5_8018D1A0()
 	gBattleState->gr_kind = Gr_Kind_Pupupu;
 	gBattleState->pl_count = 1;
 	gBattleState->player_block[0].character_kind = nFTKindMario;
-	gBattleState->player_block[0].player_kind = Pl_Kind_Key;
+	gBattleState->player_block[0].player_kind = nFTPlayerKindKey;
 
 	func_ovl5_8018D0C0();
 	omMakeGObjSPAfter(0x3F7U, func_ovl5_8018D160, 0xDU, GOBJ_LINKORDER_DEFAULT);
@@ -131,7 +131,7 @@ void func_ovl5_8018D1A0()
 	{
 		player_spawn = dFTDefaultFighterDesc;
 
-		if (gBattleState->player_block[player].player_kind == Pl_Kind_Not) continue;
+		if (gBattleState->player_block[player].player_kind == nFTPlayerKindNot) continue;
 
 		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
 
@@ -142,7 +142,7 @@ void func_ovl5_8018D1A0()
 		player_spawn.lr_spawn = LR_Right;
 		player_spawn.team = gBattleState->player_block[player].team_index;
 		player_spawn.player = player;
-		player_spawn.model_lod = ftParts_LOD_HighPoly;
+		player_spawn.model_lod = nFTPartsDetailHigh;
 		player_spawn.costume = gBattleState->player_block[player].costume_index;
 		player_spawn.handicap = gBattleState->player_block[player].handicap;
 		player_spawn.cp_level = gBattleState->player_block[player].level;

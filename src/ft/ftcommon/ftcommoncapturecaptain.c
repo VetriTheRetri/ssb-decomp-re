@@ -31,7 +31,7 @@ void ftCommonCaptureCaptainUpdatePositions(GObj *fighter_gobj, GObj *capture_gob
     pos->z = 0.0F;
 
     ftParts_GetDObjWorldPosition(this_fp->joint[29], pos);
-    ftParts_GetDObjWorldPosition(capture_fp->joint[ftParts_Joint_TopN], &offset);
+    ftParts_GetDObjWorldPosition(capture_fp->joint[nFTPartsJointTopN], &offset);
 
     offset.x += (offset_add[capture_fp->ft_kind].x * this_fp->lr);
     offset.y += offset_add[capture_fp->ft_kind].y;
@@ -70,7 +70,7 @@ void ftCommonCaptureCaptainProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     ftCommon_ProcDamageStopVoice(fighter_gobj);
 
-    if ((this_fp->item_hold != NULL) && (itGetStruct(this_fp->item_hold)->weight == It_Weight_Heavy))
+    if ((this_fp->item_hold != NULL) && (itGetStruct(this_fp->item_hold)->weight == nITWeightHeavy))
     {
         ftSetupDropItem(this_fp);
     }
@@ -88,7 +88,7 @@ void ftCommonCaptureCaptainProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     this_fp->status_vars.common.capturecaptain.capture_flag = 0;
 
-    if (this_fp->ground_or_air != nMPKineticsAir)
+    if (this_fp->ga != nMPKineticsAir)
     {
         this_fp->status_vars.common.capturecaptain.capture_flag |= FTCOMMON_CAPTURECAPTAIN_MASK_NOUPDATE;
 
@@ -97,7 +97,7 @@ void ftCommonCaptureCaptainProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     else this_fp->x192_flag_b3 = FALSE;
 
     ftMap_SetAir(this_fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureCaptain, FTCOMMON_CAPTURECAPTAIN_FRAME_BEGIN, FTCOMMON_CAPTURECAPTAIN_ANIM_SPEED, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureCaptain, FTCOMMON_CAPTURECAPTAIN_FRAME_BEGIN, FTCOMMON_CAPTURECAPTAIN_ANIM_SPEED, FTSTATUS_PRESERVE_NONE);
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftPhysics_StopVelAll(fighter_gobj);

@@ -96,9 +96,9 @@ u32 ftHammerGetStatUpdateFlags(GObj *fighter_gobj)
 
     if (ftHammerCheckMotionWaitOrWalk(fighter_gobj) != FALSE)
     {
-        flags = (FTSTATUPDATE_RUMBLE_PRESERVE | FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_SLOPECONTOUR_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE | FTSTATUPDATE_HIT_PRESERVE);
+        flags = (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_SLOPECONTOUR | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_COLANIM | FTSTATUS_PRESERVE_HIT);
     }
-    else flags = FTSTATUPDATE_NONE_PRESERVE;
+    else flags = FTSTATUS_PRESERVE_NONE;
 
     return flags;
 }
@@ -139,7 +139,7 @@ void ftHammerSetStatusHammerWait(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == nMPKineticsAir)
+    if (fp->ga == nMPKineticsAir)
     {
         ftMap_SetGround(fp);
     }

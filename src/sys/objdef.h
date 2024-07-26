@@ -3,26 +3,26 @@
 
 typedef enum GObjKind
 {
-    nOMObjKindFighter = 1000,     // 1000
-    nOMObjKindFighterParts,       // 1001
-    nOMObjKindMainCamera = 1002,  // 1002
-    nOMObjKindWallpaperCamera,    // 1003 - Used to render stage backgrounds?
-    nOMObjKindScissorCamera,      // 1004 - Camera scissor?
-    nOMObjKindUnkCamera1,         // 1005 - ???
-    nOMObjKindUnkCamera2,         // 1006 - ???
-    nOMObjKindUnkCamera3,         // 1007
-    nOMObjKindWallpaper = 1008,   // 1008 - Stage background?
-    nOMObjKindGrRender,           // 1009 - Stage renderer?
-    nOMObjKindGround,             // 1010
-    nOMObjKindEffect,             // 1011
-    nOMObjKindWeapon,             // 1012
-    nOMObjKindItem,               // 1013
-    nOMObjKindInterface = 1016,   // 1016
-    nOMObjKindRumble,             // 1017
-    nOMObjKindPublicity,          // 1018 - Audience reaction
-    nOMObjKindPauseMenu = 1019,   // 1019
-    nOMObjKindShadow,             // 1020
-    nOMObjKindBossWallpaper = 1023
+    nOMObjCommonKindFighter = 1000,     // 1000
+    nOMObjCommonKindFighterParts,       // 1001
+    nOMObjCommonKindMainCamera = 1002,  // 1002
+    nOMObjCommonKindWallpaperCamera,    // 1003 - Used to render stage backgrounds?
+    nOMObjCommonKindScissorCamera,      // 1004 - Camera scissor?
+    nOMObjCommonKindUnkCamera1,         // 1005 - ???
+    nOMObjCommonKindUnkCamera2,         // 1006 - ???
+    nOMObjCommonKindUnkCamera3,         // 1007
+    nOMObjCommonKindWallpaper = 1008,   // 1008 - Stage background?
+    nOMObjCommonKindGrRender,           // 1009 - Stage renderer?
+    nOMObjCommonKindGround,             // 1010
+    nOMObjCommonKindEffect,             // 1011
+    nOMObjCommonKindWeapon,             // 1012
+    nOMObjCommonKindItem,               // 1013
+    nOMObjCommonKindInterface = 1016,   // 1016
+    nOMObjCommonKindRumble,             // 1017
+    nOMObjCommonKindPublicity,          // 1018 - Audience reaction
+    nOMObjCommonKindPauseMenu = 1019,   // 1019
+    nOMObjCommonKindShadow,             // 1020
+    nOMObjCommonKindBossWallpaper = 1023
 
 } GObjKind;
 
@@ -47,34 +47,34 @@ typedef enum GObjObjKind
 typedef enum GObjLinkIndex
 {
     // GObj link indexes with ID 1
-    GObj_LinkID_Ground = 1,         // ID 1: Stage object
+    nOMObjCommonLinkIDGround = 1,         // ID 1: Stage object
 
-    GObj_LinkID_GroundRender = 2,   // ID 2: Stage renderer?
-    GObj_LinkID_02 = 2,             // ID 2: ???
+    nOMObjCommonLinkIDGroundRender = 2,   // ID 2: Stage renderer?
+    nOMObjCommonLinkID02 = 2,             // ID 2: ???
 
     // GObj link indexes with ID 3
-    GObj_LinkID_Fighter = 3,        // ID 3: Fighter object
-    GObj_LinkID_CreditsName = 3,    // ID 3: Credits staff roll name
+    nOMObjCommonLinkIDFighter = 3,        // ID 3: Fighter object
+    nOMObjCommonLinkIDCreditsName = 3,    // ID 3: Credits staff roll name
 
     // GObj link indexes with ID 4
-    GObj_LinkID_Item = 4,           // ID 4: Item object
-    GObj_LinkID_CreditsJob = 4,     // ID 4: Credits staff roll job
+    nOMObjCommonLinkIDItem = 4,           // ID 4: Item object
+    nOMObjCommonLinkIDCreditsJob = 4,     // ID 4: Credits staff roll job
 
-    GObj_LinkID_Weapon,             // ID 5: Weapon (projectile) object
-    GObj_LinkID_Effect,             // ID 6: Effect type 1 object (other ID is 8 but idk what it does)
-    GObj_LinkID_SpecialEffect = 8,  // ID 8: Effect type 2 object
-    GObj_LinkID_Highlight = 9,      // ID 9: Credits shootout rectangles that zoom in on crosshair
-    GObj_LinkID_BattleCamera = 9,   // ID 9: Primary in-game cameras (?)
-    GObj_LinkID_InterfaceActor = 10,// ID 10: Traffic lamp on match start
-    GObj_LinkID_Interface = 11,     // ID 11: HUD elements object
-    GObj_LinkID_Magnify = 12,       // ID 12: HUD magnifying glass
+    nOMObjCommonLinkIDWeapon,             // ID 5: Weapon (projectile) object
+    nOMObjCommonLinkIDEffect,             // ID 6: Effect type 1 object (other ID is 8 but idk what it does)
+    nOMObjCommonLinkIDSpecialEffect = 8,  // ID 8: Effect type 2 object
+    nOMObjCommonLinkIDHighlight = 9,      // ID 9: Credits shootout rectangles that zoom in on crosshair
+    nOMObjCommonLinkIDBattleCamera = 9,   // ID 9: Primary in-game cameras (?)
+    nOMObjCommonLinkIDInterfaceActor = 10,// ID 10: Traffic lamp on match start
+    nOMObjCommonLinkIDInterface = 11,     // ID 11: HUD elements object
+    nOMObjCommonLinkIDMagnify = 12,       // ID 12: HUD magnifying glass
 
-    GObj_LinkID_Rumble = 13,        // ID 13: Rumble object?
-    GObj_LinkID_Wallpaper = 13,     // ID 13: Stage background object?
-    GObj_LinkID_FighterParts = 13,  // ID 13: FighterParts
-    GObj_LinkID_Shadow = 13,        // ID 13: Fighter shadows
+    nOMObjCommonLinkIDRumble = 13,        // ID 13: Rumble object?
+    nOMObjCommonLinkIDWallpaper = 13,     // ID 13: Stage background object?
+    nOMObjCommonLinkIDFighterParts = 13,  // ID 13: FighterParts
+    nOMObjCommonLinkIDShadow = 13,        // ID 13: Fighter shadows
 
-    GObj_LinkID_PauseMenu           // ID 14: Pause menu object?
+    nOMObjCommonLinkIDPauseMenu           // ID 14: Pause menu object?
 
 } GObjLinkIndex;
 

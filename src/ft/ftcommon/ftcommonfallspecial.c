@@ -74,13 +74,13 @@ void ftCommonFallSpecialSetStatus(GObj *fighter_gobj, f32 drift, sb32 unknown, s
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFallSpecial, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFallSpecial, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
 
     fp->status_vars.common.fallspecial.drift = (attributes->aerial_speed_max_x * drift);
 
     ftPhysics_ClampAirVelX(fp, fp->status_vars.common.fallspecial.drift);
 
-    if (fp->ground_or_air == nMPKineticsGround)
+    if (fp->ga == nMPKineticsGround)
     {
         ftMap_SetAir(fp);
     }

@@ -74,7 +74,7 @@ void ftCommonTwisterSetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
 
     ftCommon_ProcDamageStopVoice(fighter_gobj);
 
-    if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->weight == It_Weight_Heavy))
+    if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->weight == nITWeightHeavy))
     {
         ftSetupDropItem(fp);
     }
@@ -88,11 +88,11 @@ void ftCommonTwisterSetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
     {
         ftCommonThrownDecideFighterLoseGrip(fp->capture_gobj, fighter_gobj);
     }
-    if (fp->ground_or_air == nMPKineticsGround)
+    if (fp->ga == nMPKineticsGround)
     {
         ftMap_SetAir(fp);
     }
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusTwister, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusTwister, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftPhysics_StopVelAll(fighter_gobj);
 

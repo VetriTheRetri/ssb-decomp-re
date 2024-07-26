@@ -309,7 +309,7 @@ sb32 itGShellSDefaultProcDamage(GObj *item_gobj)
 
         itMainCopyDamageStats(item_gobj);
 
-        if (ip->ground_or_air != nMPKineticsGround)
+        if (ip->ga != nMPKineticsGround)
         {
             itGShellASpinSetStatus(item_gobj);
         }
@@ -319,7 +319,7 @@ sb32 itGShellSDefaultProcDamage(GObj *item_gobj)
     {
         ip->phys_info.vel_air.x = 0.0F;
 
-        if (ip->ground_or_air != nMPKineticsGround)
+        if (ip->ga != nMPKineticsGround)
         {
             itGShellAFallSetStatus(item_gobj);
         }
@@ -449,7 +449,7 @@ sb32 itGShellGASpinProcDamage(GObj *item_gobj)
         itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
 
-        if (ip->ground_or_air != FALSE)
+        if (ip->ga != FALSE)
         {
             itGShellASpinSetStatus(item_gobj);
         }
@@ -459,7 +459,7 @@ sb32 itGShellGASpinProcDamage(GObj *item_gobj)
     {
         ip->phys_info.vel_air.x = 0.0F;
 
-        if (ip->ground_or_air != nMPKineticsGround)
+        if (ip->ga != nMPKineticsGround)
         {
             itGShellAFallSetStatus(item_gobj);
         }

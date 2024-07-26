@@ -25,9 +25,9 @@ void ftCommonJumpAerialUpdateModelPitch(ftStruct *fp)
     {
         fp->status_vars.common.jumpaerial.turn_frames--;
 
-        fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y += FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP;
+        fp->joint[nFTPartsJointTopN]->rotate.vec.f.y += FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP;
 
-        func_ovl2_800EB528(fp->joint[ftParts_Joint_TopN]);
+        func_ovl2_800EB528(fp->joint[nFTPartsJointTopN]);
 
         if (fp->status_vars.common.jumpaerial.turn_frames == (FTCOMMON_JUMPAERIAL_TURN_FRAMES / 2))
         {
@@ -132,7 +132,7 @@ void ftCommonJumpAerialSetStatus(GObj *fighter_gobj, s32 input_source)
 
     // It would seem that the stick range jump mechanic was initially considered for double jumps as well...
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_PLAYERTAG_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_PLAYERTAG);
 
     if ((fp->ft_kind == nFTKindYoshi) || (fp->ft_kind == nFTKindPolyYoshi))
     {
@@ -199,7 +199,7 @@ void ftCommonJumpAerialMultiSetStatus(GObj *fighter_gobj, s32 input_source)
         status_id = fp->jumps_used + nFTPurinStatusJumpAerialF1 - 1;
         break;
     }
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_PLAYERTAG_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_PLAYERTAG);
 
     switch (input_source)
     {

@@ -556,7 +556,7 @@ s32 grSectorArwingPrepareLaserCount(void)
 // 0x80106F5C
 s32 grSectorArwingGetLaserAmmoCount(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
     f32 pos_x = gGRCommonStruct.sector.map_dobj[0]->translate.vec.f.x + gGRCommonStruct.sector.arwing_target_x;
     f32 pos_y = gGRCommonStruct.sector.map_dobj[0]->translate.vec.f.y + gGRCommonStruct.sector.map_dobj[1]->translate.vec.f.y;
 
@@ -566,7 +566,7 @@ s32 grSectorArwingGetLaserAmmoCount(void)
 
         if (gGRCommonStruct.sector.arwing_laser_count == 2)
         {
-            DObj *joint = fp->joint[ftParts_Joint_TopN];
+            DObj *joint = fp->joint[nFTPartsJointTopN];
 
             if (joint->translate.vec.f.x < pos_x)
             {
@@ -869,7 +869,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
 
     random = mtTrigGetRandomIntRange(gBattleState->pl_count + gBattleState->cp_count);
 
-    fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     for (player = 0; player < random; player++)
     {
@@ -883,7 +883,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
     }
     else
     {
-        ft_pos = fp->joint[ftParts_Joint_TopN]->translate.vec.f;
+        ft_pos = fp->joint[nFTPartsJointTopN]->translate.vec.f;
 
         ft_pos.y += fp->coll_data.ground_dist;
     }
@@ -1118,7 +1118,7 @@ void grSectorInitAll(void)
 
     gGRCommonStruct.sector.map_file = map_file;
 
-    map_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    map_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     gGRCommonStruct.sector.map_gobj = map_gobj;
 
@@ -1145,7 +1145,7 @@ void grSectorInitAll(void)
 // 0x80107FCC
 GObj* grSectorMakeGround(void)
 {
-    GObj *map_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    GObj *map_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     grSectorInitAll();
     omAddGObjCommonProc(map_gobj, grSectorProcUpdate, nOMObjProcessKindProc, 4);

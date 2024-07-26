@@ -63,10 +63,10 @@ void ftCommonThrownSetStatusQueue(GObj *fighter_gobj, s32 status_id_new, s32 sta
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
 
-    this_fp->ground_or_air = nMPKineticsAir;
+    this_fp->ga = nMPKineticsAir;
     this_fp->jumps_used = 1;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id_new, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id_new, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     if ((capture_fp->ft_kind == nFTKindYoshi) || (capture_fp->ft_kind == nFTKindPolyYoshi))
@@ -86,10 +86,10 @@ void ftCommonThrownSetStatusImmediate(GObj *fighter_gobj, s32 status_id)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
 
-    this_fp->ground_or_air = nMPKineticsAir;
+    this_fp->ga = nMPKineticsAir;
     this_fp->jumps_used = 1;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     if ((capture_fp->ft_kind == nFTKindYoshi) || (capture_fp->ft_kind == nFTKindPolyYoshi))

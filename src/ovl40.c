@@ -147,7 +147,7 @@ void mvOpeningLinkInitFighterStagePanel()
 	{
 		ftCreateDesc spawn_info = dFTDefaultFighterDesc;
 
-		if (gBattleState->player_block[i].player_kind == Pl_Kind_Not) continue;
+		if (gBattleState->player_block[i].player_kind == nFTPlayerKindNot) continue;
 
 		ftManagerSetupDataKind(gBattleState->player_block[i].character_kind);
 
@@ -158,7 +158,7 @@ void mvOpeningLinkInitFighterStagePanel()
 		spawn_info.lr_spawn = LR_Right;
 		spawn_info.team = gBattleState->player_block[i].team_index;
 		spawn_info.player = i;
-		spawn_info.model_lod = ftParts_LOD_HighPoly;
+		spawn_info.model_lod = nFTPartsDetailHigh;
 		spawn_info.costume = gBattleState->player_block[i].costume_index;
 		spawn_info.handicap = gBattleState->player_block[i].handicap;
 		spawn_info.cp_level = gBattleState->player_block[i].level;
@@ -319,7 +319,7 @@ void mvOpeningLinkInit()
 	gBattleState->pl_count = 1;
 
 	gBattleState->player_block[0].character_kind = nFTKindLink;
-	gBattleState->player_block[0].player_kind = Pl_Kind_Key;
+	gBattleState->player_block[0].player_kind = nFTPlayerKindKey;
 
 	mvOpeningLinkLoadFiles();
 	omMakeGObjSPAfter(0x3F7, mvOpeningLinkMainProc, 0xD, 0x80000000);

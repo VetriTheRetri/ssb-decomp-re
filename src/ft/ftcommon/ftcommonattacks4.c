@@ -55,7 +55,7 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
 
             }
             ftParts_GetDObjWorldPosition(fp->joint[11], &offset);
-            func_ovl2_800EE018(fp->joint[ftParts_Joint_TopN], &offset);
+            func_ovl2_800EE018(fp->joint[nFTPartsJointTopN], &offset);
 
             if (efManagerPikachuThunderShockMakeEffect(fighter_gobj, &offset, fp->status_vars.common.attack4.gfx_id) != NULL)
             {
@@ -118,7 +118,7 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
         fp->command_vars.flags.flag1 = 0;
         break;
     }
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     switch (fp->ft_kind)
@@ -161,7 +161,7 @@ sb32 ftCommonAttackS4CheckInterruptDash(GObj *fighter_gobj)
             switch (ip->type)
             {
             case nITTypeSwing:
-                ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
+                ftCommonItemSwingSetStatus(fighter_gobj, nFTItemSwingTypeAttack4);
                 return TRUE;
 
             case nITTypeShoot:
@@ -203,7 +203,7 @@ sb32 ftCommonAttackS4CheckInterruptTurn(GObj *fighter_gobj)
             {
             case nITTypeSwing:
                 ftCommon_StickInputSetLR(fp);
-                ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
+                ftCommonItemSwingSetStatus(fighter_gobj, nFTItemSwingTypeAttack4);
                 return TRUE;
 
             case nITTypeShoot:
@@ -247,7 +247,7 @@ sb32 ftCommonAttackS4CheckInterruptCommon(GObj *fighter_gobj)
             {
             case nITTypeSwing:
                 ftCommon_StickInputSetLR(fp);
-                ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
+                ftCommonItemSwingSetStatus(fighter_gobj, nFTItemSwingTypeAttack4);
                 return TRUE;
 
             case nITTypeShoot:

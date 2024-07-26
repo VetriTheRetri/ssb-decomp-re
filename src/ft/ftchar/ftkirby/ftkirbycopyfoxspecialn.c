@@ -37,7 +37,7 @@ void ftKirbyCopyFoxSpecialNProcInterrupt(GObj *fighter_gobj)
 
     if ((fp->command_vars.flags.flag1 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
     {
-        if (fp->ground_or_air == nMPKineticsAir)
+        if (fp->ga == nMPKineticsAir)
         {
             ftKirbyCopyFoxSpecialAirNSetStatus(fighter_gobj);
         }
@@ -61,7 +61,7 @@ void ftKirbyCopyFoxSpecialNInitStatusVars(GObj *fighter_gobj)
 // 0x80156DD8
 void ftKirbyCopyFoxSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyFoxSpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyFoxSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyFoxSpecialNInitStatusVars(fighter_gobj);
 }
@@ -69,7 +69,7 @@ void ftKirbyCopyFoxSpecialNSetStatus(GObj *fighter_gobj)
 // 0x80156E18
 void ftKirbyCopyFoxSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyFoxSpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyFoxSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyFoxSpecialNInitStatusVars(fighter_gobj);
 }

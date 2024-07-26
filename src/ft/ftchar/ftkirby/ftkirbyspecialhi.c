@@ -144,7 +144,7 @@ void ftKirbySpecialHiLandingProcPhysics(GObj *fighter_gobj)
 
     ftKirbySpecialHiUpdateEffect(fighter_gobj);
 
-    if (fp->ground_or_air == nMPKineticsGround)
+    if (fp->ga == nMPKineticsGround)
     {
         ftPhysics_ApplyGroundVelTransN(fighter_gobj);
     }
@@ -170,11 +170,11 @@ void ftKirbySpecialAirHiProcPhysics(GObj *fighter_gobj)
 
     ftKirbySpecialHiUpdateEffect(fighter_gobj);
 
-    fp->joint[ftParts_Joint_TopN]->scale.vec.f.x = fp->joint[ftParts_Joint_TopN]->scale.vec.f.y = fp->joint[ftParts_Joint_TopN]->scale.vec.f.z = 0.8F;
+    fp->joint[nFTPartsJointTopN]->scale.vec.f.x = fp->joint[nFTPartsJointTopN]->scale.vec.f.y = fp->joint[nFTPartsJointTopN]->scale.vec.f.z = 0.8F;
 
     ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
 
-    fp->joint[ftParts_Joint_TopN]->scale.vec.f.x = fp->joint[ftParts_Joint_TopN]->scale.vec.f.y = fp->joint[ftParts_Joint_TopN]->scale.vec.f.z = 1.0F;
+    fp->joint[nFTPartsJointTopN]->scale.vec.f.x = fp->joint[nFTPartsJointTopN]->scale.vec.f.y = fp->joint[nFTPartsJointTopN]->scale.vec.f.z = 1.0F;
 
     if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
@@ -203,11 +203,11 @@ void ftKirbySpecialHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == nMPKineticsGround)
+    if (fp->ga == nMPKineticsGround)
     {
         if (ftMap_CheckGroundStopEdge(fighter_gobj) == FALSE)
         {
-            fp->ground_or_air = nMPKineticsAir;
+            fp->ga = nMPKineticsAir;
         }
     }
     else
@@ -237,7 +237,7 @@ void ftKirbySpecialAirHiFallProcMap(GObj *fighter_gobj)
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
         {
             ftMap_SetGround(fp);
-            ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialHiLanding, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+            ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialHiLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
             fp->proc_lagstart = ftCommon_ProcPauseGFX;
             fp->proc_lagend = ftCommon_ProcResumeGFX;
@@ -264,7 +264,7 @@ void ftKirbySpecialHiSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftKirbySpecialHiProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_lagstart = ftCommon_ProcPauseGFX;
@@ -276,7 +276,7 @@ void ftKirbySpecialHiLandingSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialHiLanding, 0.0F, 1.0F, FTSTATUPDATE_EFFECT_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialHiLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_lagstart = ftCommon_ProcPauseGFX;
@@ -290,7 +290,7 @@ void ftKirbySpecialAirHiSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftKirbySpecialHiProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_lagstart = ftCommon_ProcPauseGFX;
@@ -303,7 +303,7 @@ void ftKirbySpecialAirHiFallSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 vel_y_bak = fp->phys_info.vel_air.y;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirHiFall, 0.0F, 1.0F, FTSTATUPDATE_EFFECT_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirHiFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->proc_lagstart = ftCommon_ProcPauseGFX;

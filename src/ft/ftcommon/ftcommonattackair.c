@@ -24,7 +24,7 @@ void ftCommonAttackAirLwProcHit(GObj *fighter_gobj)
 
         if (fighter_gobj->anim_frame > FTCOMMON_ATTACKAIRLW_LINK_REHIT_FRAME_BEGIN)
         {
-            ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttackAirLw, FTCOMMON_ATTACKAIRLW_LINK_REHIT_FRAME_BEGIN, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+            ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttackAirLw, FTCOMMON_ATTACKAIRLW_LINK_REHIT_FRAME_BEGIN, 1.0F, FTSTATUS_PRESERVE_NONE);
         }
         fp->status_vars.common.attackair.rehit_timer = FTCOMMON_ATTACKAIRLW_LINK_REHIT_TIMER;
     }
@@ -189,7 +189,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
             {
                 fp->command_vars.flags.flag1 = 0;
 
-                ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+                ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
 
                 if (status_id == nFTCommonStatusAttackAirLw)
                 {

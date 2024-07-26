@@ -19,5 +19,5 @@ void ftBossDefaultProcInterrupt(GObj *fighter_gobj)
 // 0x80158784
 void ftBossDefaultSetStatus(GObj *fighter_gobj) // Unused
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusDefault, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusDefault, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 }

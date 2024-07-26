@@ -185,7 +185,7 @@ GObj* wpMarioFireballMakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 index)
 
     wp->lifetime = dWPMarioFireballWeaponAttributes[index].lifetime;
 
-    angle = (fp->ground_or_air == nMPKineticsAir) ? dWPMarioFireballWeaponAttributes[index].angle_air : dWPMarioFireballWeaponAttributes[index].angle_ground;
+    angle = (fp->ga == nMPKineticsAir) ? dWPMarioFireballWeaponAttributes[index].angle_air : dWPMarioFireballWeaponAttributes[index].angle_ground;
 
     wp->phys_info.vel_air.z = 0.0F;
 

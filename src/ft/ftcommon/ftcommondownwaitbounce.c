@@ -47,7 +47,7 @@ extern u16 dFTCommonDownBounceSFX[/* */];
 //                               //
 // // // // // // // // // // // //
 
-#define FTCOMMON_DOWNBOUNCE_STATUPDATE_FLAGS (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_SLOPECONTOUR_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE)
+#define FTCOMMON_DOWNBOUNCE_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_PLAYERTAG | FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_SLOPECONTOUR | FTSTATUS_PRESERVE_MODELPART)
 
 // // // // // // // // // // // //
 //                               //
@@ -93,7 +93,7 @@ void ftCommonDownWaitSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.downwait.stand_wait = FTCOMMON_DOWNWAIT_STAND_WAIT;
 
-    ftParamSetCaptureImmuneMask(fp, (FTCATCHKIND_MASK_SPECIALHICAPTAIN | FTCATCHKIND_MASK_CATCHCOMMON | FTCATCHKIND_MASK_SPECIALNKIRBY | FTCATCHKIND_MASK_SPECIALNYOSHI));
+    ftParamSetCaptureImmuneMask(fp, (FTCATCHKIND_MASK_CAPTAINSPECIALHI | FTCATCHKIND_MASK_COMMON | FTCATCHKIND_MASK_KIRBYSPECIALN | FTCATCHKIND_MASK_YOSHISPECIALN));
 
     fp->damage_mul = 0.5F;
 }
@@ -139,7 +139,7 @@ void ftCommonDownBounceUpdateEffects(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftParticle_MakeEffectKind(fighter_gobj, nEFKindImpactWave, ftParts_Joint_TopN, NULL, NULL, fp->lr, FALSE, FALSE);
+    ftParticle_MakeEffectKind(fighter_gobj, nEFKindImpactWave, nFTPartsJointTopN, NULL, NULL, fp->lr, FALSE, FALSE);
     func_800269C0_275C0(dFTCommonDownBounceSFX[fp->ft_kind]);
     ftMainMakeRumble(fp, 4, 0);
 }
@@ -150,7 +150,7 @@ void ftCommonDownBounceSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    if (fp->ground_or_air == nMPKineticsAir)
+    if (fp->ga == nMPKineticsAir)
     {
         ftMap_SetGround(fp);
     }
@@ -160,7 +160,7 @@ void ftCommonDownBounceSetStatus(GObj *fighter_gobj)
     }
     else status_id = nFTCommonStatusDownBounceU;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_PLAYERTAG_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_PLAYERTAG);
     ftCommonDownBounceUpdateEffects(fighter_gobj);
 
     fp->status_vars.common.downbounce.attack_buffer = 0;

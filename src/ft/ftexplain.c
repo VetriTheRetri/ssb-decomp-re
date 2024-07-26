@@ -29,11 +29,11 @@ void ftExplainProcessInputSequence(GObj *fighter_gobj)
 
             switch (explain->input_seq->command.opcode)
             {
-            case ftExplain_Command_End:
+            case nFTExplainCommandEnd:
                 explain->input_seq = NULL;
                 break;
 
-            case ftExplain_Command_Button:
+            case nFTExplainCommandButton:
                 explain->input_seq++;
 
                 fp->input.cp.button_inputs = ftExplainGetCpButtons(explain->input_seq);
@@ -41,7 +41,7 @@ void ftExplainProcessInputSequence(GObj *fighter_gobj)
                 explain->input_seq++;
                 break;
 
-            case ftExplain_Command_Stick:
+            case nFTExplainCommandStick:
                 explain->input_seq++;
 
                 cp_input->stick_range.x = ftExplainGetCpStickRange(explain->input_seq)->x;

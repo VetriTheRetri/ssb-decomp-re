@@ -7,7 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
-#define FTNESS_SPECIALN_STATUPDATE_FLAGS (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE)
+#define FTNESS_SPECIALN_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM)
 
 // // // // // // // // // // // //
 //                               //
@@ -37,7 +37,7 @@ void ftNessSpecialNProcAccessory(GObj *fighter_gobj) // PK Fire setup
         pos.y += FTNESS_PKFIRE_SPAWN_OFF_Y;
         pos.z = 0.0F;
 
-        if (fp->ground_or_air == nMPKineticsAir)
+        if (fp->ga == nMPKineticsAir)
         {
             vel.z = 0.0F;
             angle = FTNESS_PKFIRE_SPARK_ANGLE_AIR;
@@ -105,7 +105,7 @@ void ftNessSpecialNInitStatusVars(GObj *fighter_gobj)
 // 0x80153BD0
 void ftNessSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftNessSpecialNInitStatusVars(fighter_gobj);
 }
@@ -113,7 +113,7 @@ void ftNessSpecialNSetStatus(GObj *fighter_gobj)
 // 0x80153C10
 void ftNessSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftNessSpecialNInitStatusVars(fighter_gobj);
 }

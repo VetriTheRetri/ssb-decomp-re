@@ -23,11 +23,11 @@ void ftCommonWaitSetStatus(GObj *fighter_gobj)
     }
     else
     {
-        if (fp->ground_or_air == nMPKineticsAir)
+        if (fp->ga == nMPKineticsAir)
         {
             ftMap_SetGround(fp);
         }
-        ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
         fp->is_special_interrupt = TRUE;
 

@@ -22,7 +22,7 @@ sb32 ftCommonSleepCheckIgnorePauseMenu(GObj *fighter_gobj)
         {
             for (active_teammate_count = 0, stock_count = 0, player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
             {
-                if ((player != fp->player) && (gBattleState->player_block[player].player_kind != Pl_Kind_Not) && (fp->team == gBattleState->player_block[player].player))
+                if ((player != fp->player) && (gBattleState->player_block[player].player_kind != nFTPlayerKindNot) && (fp->team == gBattleState->player_block[player].player))
                 {
                     if (gBattleState->player_block[player].stock_count > 0)
                     {
@@ -77,7 +77,7 @@ void ftCommonSleepProcUpdate(GObj *fighter_gobj)
             {
                 for (active_teammate_count = 0, stock_count = 0, player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
                 {
-                    if ((player != this_fp->player) && (gBattleState->player_block[player].player_kind != Pl_Kind_Not) && (this_fp->team == gBattleState->player_block[player].player)) 
+                    if ((player != this_fp->player) && (gBattleState->player_block[player].player_kind != nFTPlayerKindNot) && (this_fp->team == gBattleState->player_block[player].player)) 
                     {
                         if (gBattleState->player_block[player].stock_count > 0)
                         {
@@ -121,7 +121,7 @@ void ftCommonSleepSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusSleep, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusSleep, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->is_invisible = TRUE;
     fp->x18E_flag_b0 = TRUE;

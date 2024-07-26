@@ -38,11 +38,11 @@ void ftMarioSpecialHiProcInterrupt(GObj *fighter_gobj)
 
             stick_rot = ABSF(rot_z);
 
-            joint_rot = ABSF(fp->joint[ftParts_Joint_TransN]->rotate.vec.f.z);
+            joint_rot = ABSF(fp->joint[nFTPartsJointTransN]->rotate.vec.f.z);
 
             if (joint_rot < stick_rot)
             {
-                fp->joint[ftParts_Joint_TransN]->rotate.vec.f.z = rot_z;
+                fp->joint[nFTPartsJointTransN]->rotate.vec.f.z = rot_z;
             }
         }
     }
@@ -57,7 +57,7 @@ void ftMarioSpecialHiProcInterrupt(GObj *fighter_gobj)
         {
             ftCommon_StickInputSetLR(fp);
 
-            fp->joint[ftParts_Joint_TopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
+            fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
         }
     }
 }
@@ -70,7 +70,7 @@ void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj)
 
     if (fp->status_vars.mario.specialhi.is_air_bool == FALSE)
     {
-        if (fp->ground_or_air == nMPKineticsAir)
+        if (fp->ga == nMPKineticsAir)
         {
             ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
         }
@@ -112,7 +112,7 @@ void ftMarioSpecialHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ground_or_air == nMPKineticsAir)
+    if (fp->ga == nMPKineticsAir)
     {
         if ((fp->command_vars.flags.flag1 == FALSE) || ((fp->phys_info.vel_air.y >= 0.0F)))
         {
@@ -148,7 +148,7 @@ void ftMarioSpecialHiSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.mario.specialhi.is_air_bool = FALSE;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }
 
@@ -164,6 +164,6 @@ void ftMarioSpecialAirHiSetStatus(GObj* fighter_gobj)
     fp->phys_info.vel_air.y = 0.0F;
     fp->phys_info.vel_air.x /= 1.5F;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }

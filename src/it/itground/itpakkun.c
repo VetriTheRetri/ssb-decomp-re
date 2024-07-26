@@ -148,14 +148,14 @@ sb32 itPakkunSDefaultCheckNoFighterNear(GObj *item_gobj)
     if (item_gobj != NULL)
     {
         itStruct *ip = itGetStruct(item_gobj);
-        GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+        GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
         f32 it_pos_x = ip->item_vars.pakkun.pos.x;
         f32 it_pos_y = ip->item_vars.pakkun.pos.y;
 
         while (fighter_gobj != NULL)
         {
             ftStruct *fp = ftGetStruct(fighter_gobj);
-            DObj *dobj = fp->joint[ftParts_Joint_TopN];
+            DObj *dobj = fp->joint[nFTPartsJointTopN];
             f32 dist_x, ft_pos_y;
 
             if (dobj->translate.vec.f.x < it_pos_x)
@@ -288,7 +288,7 @@ sb32 itPakkunDAppearProcDamage(GObj *item_gobj)
 
         dobj->rotate.vec.f.z = F_CST_DTOR32(180.0F); // PI32
 
-        angle = ftCommonDamageGetKnockbackAngle(ip->damage_angle, ip->ground_or_air, ip->damage_knockback);
+        angle = ftCommonDamageGetKnockbackAngle(ip->damage_angle, ip->ga, ip->damage_knockback);
 
         ip->phys_info.vel_air.x = __cosf(angle) * ip->damage_knockback * -ip->lr_damage;
         ip->phys_info.vel_air.y = __sinf(angle) * ip->damage_knockback;

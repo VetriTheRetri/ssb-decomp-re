@@ -134,7 +134,7 @@ void ftCommonAttack11SetStatus(GObj *fighter_gobj)
     {
         fp->proc_status = ftCommonAttack11ProcStatus;
 
-        ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttack11, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttack11, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
         ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
         fp->command_vars.flags.flag1 = 0;
@@ -156,7 +156,7 @@ void ftCommonAttack12SetStatus(GObj *fighter_gobj)
 
     if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
-        ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttack12, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttack12, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
         ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
         fp->command_vars.flags.flag1 = 0;
@@ -232,7 +232,7 @@ void ftCommonAttack13SetStatus(GObj *fighter_gobj)
             status_id = nFTNessStatusAttack13;
             break;
         }
-        ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
         ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
         fp->command_vars.flags.flag1 = 0;
@@ -268,7 +268,7 @@ sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
             switch (itGetStruct(fp->item_hold)->type)
             {
             case nITTypeSwing:
-                ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_Attack1);
+                ftCommonItemSwingSetStatus(fighter_gobj, nFTItemSwingTypeAttack1);
                 return TRUE;
 
             case nITTypeShoot:

@@ -50,7 +50,7 @@ void ftCommonCatchCaptureSetStatusRelease(GObj *fighter_gobj)
 
         ftCommonThrownReleaseFighterLoseGrip(catch_gobj);
 
-        if (catch_fp->ground_or_air == nMPKineticsGround)
+        if (catch_fp->ga == nMPKineticsGround)
         {
             ftCommonWaitSetStatus(catch_gobj);
         }
@@ -84,7 +84,7 @@ void ftCommonCatchSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCatch, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCatch, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->command_vars.flags.flag1 = 1;
@@ -93,7 +93,7 @@ void ftCommonCatchSetStatus(GObj *fighter_gobj)
     fp->status_vars.common.catchmain.catch_pull_anim_frames = 0.0F;
     fp->status_vars.common.catchmain.catch_pull_frame_begin = 0.0F;
 
-    ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_CATCHCOMMON, ftCommonCatchPullProcCatch, ftCommonCapturePulledProcCapture);
+    ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_COMMON, ftCommonCatchPullProcCatch, ftCommonCapturePulledProcCapture);
 
     fp->is_shield_catch = FALSE;
 

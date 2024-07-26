@@ -182,7 +182,7 @@ sb32 itHitokageSDefaultProcDamage(GObj *item_gobj)
 
     if (ip->damage_knockback >= ITHITOKAGE_NDAMAGE_KNOCKBACK_MIN)
     {
-        f32 angle = ftCommonDamageGetKnockbackAngle(ip->damage_angle, ip->ground_or_air, ip->damage_knockback);
+        f32 angle = ftCommonDamageGetKnockbackAngle(ip->damage_angle, ip->ga, ip->damage_knockback);
 
         ip->phys_info.vel_air.x = __cosf(angle) * ip->damage_knockback * -ip->lr_damage;
         ip->phys_info.vel_air.y = __sinf(angle) * ip->damage_knockback;

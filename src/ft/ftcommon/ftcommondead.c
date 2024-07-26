@@ -26,7 +26,7 @@ void ftCommonDeadUpdateRumble(ftStruct *this_fp)
 
     for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
     {
-        if ((i != this_fp->player) && (gBattleState->player_block[i].player_kind == Pl_Kind_Man))
+        if ((i != this_fp->player) && (gBattleState->player_block[i].player_kind == nFTPlayerKindMan))
         {
             GObj *fighter_gobj = gBattleState->player_block[i].fighter_gobj;
 
@@ -132,7 +132,7 @@ void ftCommonDeadResetCommonVars(GObj *fighter_gobj)
     func_ovl2_800D7994(fighter_gobj);
     ftCommonThrownDecideDeadResult(fighter_gobj);
 
-    fp->ground_or_air = nMPKineticsAir;
+    fp->ga = nMPKineticsAir;
     fp->coll_data.ground_line_id = -1;
 
     if (fp->item_hold != NULL)
@@ -201,7 +201,7 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
     u32 sfx_id;
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadDown, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadDown, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftCommonDeadInitStatusVars(fighter_gobj);
 
@@ -243,7 +243,7 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
     u32 sfx_id;
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftCommonDeadInitStatusVars(fighter_gobj);
 
@@ -285,7 +285,7 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
     u32 sfx_id;
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftCommonDeadInitStatusVars(fighter_gobj);
 
@@ -358,7 +358,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
 
         case 1:
             ftPhysics_StopVelAll(fighter_gobj);
-            efManagerSparkleWhiteDeadMakeEffect(&fp->joint[ftParts_Joint_TopN]->translate.vec.f, 5.0F);
+            efManagerSparkleWhiteDeadMakeEffect(&fp->joint[nFTPartsJointTopN]->translate.vec.f, 5.0F);
 
             fp->is_invisible = TRUE;
             fp->is_ignore_training_menu = TRUE;
@@ -390,7 +390,7 @@ void ftCommonDeadUpStarSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadUpStar, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadUpStar, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftPhysics_StopVelAll(fighter_gobj);
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
@@ -511,7 +511,7 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadUpFall, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadUpFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftPhysics_StopVelAll(fighter_gobj);
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
@@ -537,7 +537,7 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
 sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    Vec3f *pos = &fp->joint[ftParts_Joint_TopN]->translate.vec.f;
+    Vec3f *pos = &fp->joint[nFTPartsJointTopN]->translate.vec.f;
 
     if (fp->ft_kind == nFTKindMasterHand)
     {

@@ -291,7 +291,7 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 	} phys_info;
 
 	mpCollData coll_data;	   // Item's collision data
-	mpKinetics ground_or_air; // Ground or air bool
+	mpKinetics ga; // Ground or air bool
 
 	itHitbox item_hit;	 // Item's hitbox
 	itHurtbox item_hurt; // Item's hurtbox
@@ -311,7 +311,7 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 	GObj* reflect_gobj;				// GObj that reflected this item
 	gmStatFlags reflect_stat_flags; // Status flags of GObj reflecting this
 									// item (e.g. is_smash_attack,
-									// is_ground_or_air, is_projectile, etc.)
+									// is_ga, is_projectile, etc.)
 	u16 reflect_stat_count;			// Status update count at the time the item is
 									// reflected?
 
@@ -378,37 +378,37 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 	union itStatusVars // Item-specific state variables
 	{
 		// Common items
-		itCommon_ItemVars_Taru taru;
-		itCommon_ItemVars_BombHei bombhei;
-		itCommon_ItemVars_Bumper bumper;
-		itCommon_ItemVars_Shell shell;
-		itCommon_ItemVars_MBall m_ball;
+		itCommonItemVarsTaru taru;
+		itCommonItemVarsBombHei bombhei;
+		itCommonItemVarsBumper bumper;
+		itCommonItemVarsShell shell;
+		itCommonItemVarsMBall m_ball;
 
 		// Fighter items
-		itFighter_ItemVars_PKFire pkfire;
-		itFighter_ItemVars_LinkBomb link_bomb;
+		itFighterItemVarsPKFire pkfire;
+		itFighterItemVarsLinkBomb link_bomb;
 
 		// Stage items
-		itGround_ItemVars_Pakkun pakkun;
-		itGround_ItemVars_RaceBomb rbomb;
-		itGround_ItemVars_GrLucky glucky;
-		itGround_ItemVars_Marumine marumine;
-		itGround_ItemVars_Hitokage hitokage;
-		itGround_ItemVars_Fushigibana fushigibana;
-		itGround_ItemVars_Porygon porygon;
+		itGroundItemVarsPakkun pakkun;
+		itGroundItemVarsRaceBomb rbomb;
+		itGroundItemVarsGrLucky glucky;
+		itGroundItemVarsMarumine marumine;
+		itGroundItemVarsHitokage hitokage;
+		itGroundItemVarsFushigibana fushigibana;
+		itGroundItemVarsPorygon porygon;
 
 		// Poké Ball Pokémon
-		itMonster_ItemVars_Iwark iwark;
-		itMonster_ItemVars_Kabigon kabigon;
-		itMonster_ItemVars_Tosakinto tosakinto;
-		itMonster_ItemVars_Nyars nyars;
-		itMonster_ItemVars_Lizardon lizardon;
-		itMonster_ItemVars_Spear spear;
-		itMonster_ItemVars_Kamex kamex;
-		itMonster_ItemVars_MbLucky mlucky;
-		itMonster_ItemVars_Starmie starmie;
-		itMonster_ItemVars_Dogas dogas;
-		itMonster_ItemVars_Mew mew;
+		itMonsterItemVarsIwark iwark;
+		itMonsterItemVarsKabigon kabigon;
+		itMonsterItemVarsTosakinto tosakinto;
+		itMonsterItemVarsNyars nyars;
+		itMonsterItemVarsLizardon lizardon;
+		itMonsterItemVarsSpear spear;
+		itMonsterItemVarsKamex kamex;
+		itMonsterItemVarsMbLucky mlucky;
+		itMonsterItemVarsStarmie starmie;
+		itMonsterItemVarsDogas dogas;
+		itMonsterItemVarsMew mew;
 
 	} item_vars;
 

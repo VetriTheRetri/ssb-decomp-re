@@ -26,11 +26,11 @@ void ftCommonFallSetStatus(GObj *fighter_gobj)
     }
     else
     {
-        if (fp->ground_or_air == nMPKineticsGround)
+        if (fp->ga == nMPKineticsGround)
         {
             ftMap_SetAir(fp);
         }
-        ftMainSetFighterStatus(fighter_gobj, ((fp->jumps_used >= fp->attributes->jumps_max) ? nFTCommonStatusFallAerial : nFTCommonStatusFall), 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, ((fp->jumps_used >= fp->attributes->jumps_max) ? nFTCommonStatusFallAerial : nFTCommonStatusFall), 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
 
         ftPhysics_ClampAirVelXMax(fp);
 

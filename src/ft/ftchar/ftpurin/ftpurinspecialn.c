@@ -6,7 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
-#define FTPURIN_SPECIALN_STATUPDATE_FLAGS (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE)
+#define FTPURIN_SPECIALN_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM)
 
 // // // // // // // // // // // //
 //                               //
@@ -117,7 +117,7 @@ void ftPurinSpecialNSwitchStatusAir(GObj *fighter_gobj)
 // 0x801514C4
 void ftPurinSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftPurinSpecialNInitStatusVars(fighter_gobj);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }
@@ -125,7 +125,7 @@ void ftPurinSpecialNSetStatus(GObj *fighter_gobj)
 // 0x80151504
 void ftPurinSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftPurinSpecialNInitStatusVars(fighter_gobj);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }

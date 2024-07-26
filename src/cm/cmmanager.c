@@ -259,7 +259,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
     s32 lr;
     Vec3f weapon_pos;
 
-    fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
+    fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     player_num = 0;
 
@@ -399,7 +399,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
             }
             ft_cam[cam_num].unk_ftcam_0x10 = adjust;
         }
-        weapon_gobj = gOMObjCommonLinks[GObj_LinkID_Weapon];
+        weapon_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
 
         while (weapon_gobj != NULL)
         {
@@ -1118,7 +1118,7 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
     Vec3f sp4C;
     f32 temp_f0;
 
-    camera_gobj = func_8000B93C(nOMObjKindMainCamera, NULL, GObj_LinkID_BattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010D4C0, 50, 0, -1, 0, 1, proc, 3, 0);
+    camera_gobj = func_8000B93C(nOMObjCommonKindMainCamera, NULL, nOMObjCommonLinkIDBattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010D4C0, 50, 0, -1, 0, 1, proc, 3, 0);
 
     gCMManagerCameraGObj = camera_gobj;
 
@@ -1194,7 +1194,7 @@ GObj* func_ovl2_8010DB2C(void (*proc_camera)(GObj*))
 // 0x8010DB54
 GObj* cmManagerMakeWallpaperCamera(void)
 {
-    GObj *camera_gobj = func_8000B93C(nOMObjKindWallpaperCamera, NULL, GObj_LinkID_BattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 80, CAMERA_MASK_DLLINK(0), -1, 0, 1, 0, 1, 0);
+    GObj *camera_gobj = func_8000B93C(nOMObjCommonKindWallpaperCamera, NULL, nOMObjCommonLinkIDBattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 80, CAMERA_MASK_DLLINK(0), -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
 
     func_80007080(&cam->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
@@ -1231,7 +1231,7 @@ void func_ovl2_8010DC24(GObj *camera_gobj)
 // 0x8010DDC4
 void func_ovl2_8010DDC4(void)
 {
-    Camera *cam = CameraGetStruct(func_8000B93C(nOMObjKindScissorCamera, NULL, GObj_LinkID_BattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010DC24, 20, CAMERA_MASK_DLLINK(22), -1, 0, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(func_8000B93C(nOMObjCommonKindScissorCamera, NULL, nOMObjCommonLinkIDBattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010DC24, 20, CAMERA_MASK_DLLINK(22), -1, 0, 1, 0, 1, 0));
 
     cam->flags |= 4;
 }
@@ -1324,7 +1324,7 @@ void func_ovl2_8010E134(GObj *camera_gobj)
 // 0x8010E1A4
 void func_ovl2_8010E1A4(void)
 {
-    Camera *cam = CameraGetStruct(func_8000B93C(nOMObjKindUnkCamera1, NULL, GObj_LinkID_BattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E134, 30, CAMERA_MASK_DLLINK(9), -1, 0, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(func_8000B93C(nOMObjCommonKindUnkCamera1, NULL, nOMObjCommonLinkIDBattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E134, 30, CAMERA_MASK_DLLINK(9), -1, 0, 1, 0, 1, 0));
 
     func_ovl0_800CD538(cam, 0x4D, 0);
     func_ovl0_800CD440(cam, 0x4E, 1);
@@ -1353,7 +1353,7 @@ void func_ovl2_8010E254(GObj *camera_gobj)
 // 0x8010E2D4
 void func_ovl2_8010E2D4(void)
 {
-    Camera *cam = CameraGetStruct(func_8000B93C(nOMObjKindUnkCamera2, NULL, GObj_LinkID_BattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E254, 35, CAMERA_MASK_DLLINK(8), -1, 0, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(func_8000B93C(nOMObjCommonKindUnkCamera2, NULL, nOMObjCommonLinkIDBattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E254, 35, CAMERA_MASK_DLLINK(8), -1, 0, 1, 0, 1, 0));
 
     func_ovl0_800CD440(cam, 0x54, 1);
 
@@ -1365,7 +1365,7 @@ void func_ovl2_8010E2D4(void)
 // 0x8010E374
 GObj* func_ovl2_8010E374(void)
 {
-    GObj *camera_gobj = func_8000B93C(nOMObjKindScissorCamera, NULL, GObj_LinkID_BattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 20, (CAMERA_MASK_DLLINK(24) | CAMERA_MASK_DLLINK(23)), -1, 0, 1, 0, 1, 0);
+    GObj *camera_gobj = func_8000B93C(nOMObjCommonKindScissorCamera, NULL, nOMObjCommonLinkIDBattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 20, (CAMERA_MASK_DLLINK(24) | CAMERA_MASK_DLLINK(23)), -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
 
     func_80007080(&cam->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
@@ -1386,7 +1386,7 @@ void func_ovl2_8010E458(GObj *camera_gobj)
 // 0x8010E498
 GObj* func_ovl2_8010E498(void)
 {
-    GObj *camera_gobj = func_8000B93C(nOMObjKindScissorCamera, NULL, GObj_LinkID_BattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E458, 15, CAMERA_MASK_DLLINK(25), -1, 0, 1, 0, 1, 0);
+    GObj *camera_gobj = func_8000B93C(nOMObjCommonKindScissorCamera, NULL, nOMObjCommonLinkIDBattleCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E458, 15, CAMERA_MASK_DLLINK(25), -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
 
     func_80007080(&cam->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);

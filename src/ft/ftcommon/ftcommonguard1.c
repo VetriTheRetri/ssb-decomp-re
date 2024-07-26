@@ -112,7 +112,7 @@ void ftCommonGuardUpdateShieldVars(GObj *fighter_gobj)
                     // 0x801886C0
                     Vec3f egg_gfx_offset = { 0.0F, 0.0F, 0.0F };
 
-                    ftParts_GetDObjWorldPosition(fp->joint[ftParts_Joint_YRotN], &egg_gfx_offset);
+                    ftParts_GetDObjWorldPosition(fp->joint[nFTPartsJointYRotN], &egg_gfx_offset);
                     efManagerEggBreakMakeEffect(&egg_gfx_offset);
                 }
             }
@@ -126,7 +126,7 @@ void ftCommonGuardUpdateShieldVars(GObj *fighter_gobj)
 // 0x80148408
 void ftCommonGuardUpdateShieldHitbox(ftStruct *fp)
 {
-    Vec3f *scale = &fp->joint[ftParts_Joint_YRotN]->scale.vec.f;
+    Vec3f *scale = &fp->joint[nFTPartsJointYRotN]->scale.vec.f;
     f32 scale_final;
     f32 scale_mul;
 
@@ -212,17 +212,17 @@ void ftCommonGuardUpdateJoints(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 unused2;
-    DObj *yrotn_joint = fp->joint[ftParts_Joint_YRotN];
-    DObj **p_joint = &fp->joint[ftParts_Joint_XRotN];
+    DObj *yrotn_joint = fp->joint[nFTPartsJointYRotN];
+    DObj **p_joint = &fp->joint[nFTPartsJointXRotN];
     s32 joint_num;
     s32 i;
-    Vec3f *scale = &fp->attributes->translate_scales[ftParts_Joint_YRotN];
+    Vec3f *scale = &fp->attributes->translate_scales[nFTPartsJointYRotN];
 
     if (fp->is_shield)
     {
         ftCommonGuardUpdateShieldAngle(fp);
 
-        for (i = ftParts_Joint_XRotN, joint_num = 0; i < ARRAY_COUNT(fp->joint); i++, p_joint++)
+        for (i = nFTPartsJointXRotN, joint_num = 0; i < ARRAY_COUNT(fp->joint); i++, p_joint++)
         {
             if (*p_joint != NULL)
             {
@@ -249,7 +249,7 @@ void ftCommonGuardUpdateJoints(GObj *fighter_gobj)
         yrotn_joint->dobj_f0 = AOBJ_FRAME_NULL;
 
         ftCommonGuardUpdateShieldHitbox(fp);
-        func_ovl2_800EB528(fp->joint[ftParts_Joint_YRotN]);
+        func_ovl2_800EB528(fp->joint[nFTPartsJointYRotN]);
     }
 }
 
@@ -258,7 +258,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
-    DObj **p_joint = &fp->joint[ftParts_Joint_EnumMax];
+    DObj **p_joint = &fp->joint[nFTPartsJointEnumMax];
     DObjDesc *dobj_desc = &attributes->dobj_lookup[1];
     DObj *joint;
     Vec3f *scale;
@@ -270,14 +270,14 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
     }
     fp->anim_flags.flags.x19B_flag_b4 = TRUE;
 
-    func_ovl0_800C8758(fp->joint[ftParts_Joint_XRotN], attributes->shield_keys[fp->status_vars.common.guard.angle_i], fp->status_vars.common.guard.angle_f);
+    func_ovl0_800C8758(fp->joint[nFTPartsJointXRotN], attributes->shield_keys[fp->status_vars.common.guard.angle_i], fp->status_vars.common.guard.angle_f);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     if (fp->is_have_translate_scale)
     {
-        scale = &fp->attributes->translate_scales[ftParts_Joint_EnumMax];
+        scale = &fp->attributes->translate_scales[nFTPartsJointEnumMax];
 
-        for (i = ftParts_Joint_EnumMax; i < ARRAY_COUNT(fp->joint); i++, p_joint++, scale++)
+        for (i = nFTPartsJointEnumMax; i < ARRAY_COUNT(fp->joint); i++, p_joint++, scale++)
         {
             joint = *p_joint;
 
@@ -292,18 +292,18 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
                 dobj_desc++;
             }
         }
-        joint = fp->joint[ftParts_Joint_YRotN];
+        joint = fp->joint[nFTPartsJointYRotN];
 
         if (joint->dobj_f0 != AOBJ_FRAME_NULL)
         {
-            ftCommonGuardGetJointTransformScale(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range, &fp->attributes->translate_scales[ftParts_Joint_YRotN]);
+            ftCommonGuardGetJointTransformScale(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range, &fp->attributes->translate_scales[nFTPartsJointYRotN]);
 
             joint->dobj_f0 = AOBJ_FRAME_NULL;
         }
     }
     else
     {
-        for (i = ftParts_Joint_EnumMax; i < ARRAY_COUNT(fp->joint); i++, p_joint++)
+        for (i = nFTPartsJointEnumMax; i < ARRAY_COUNT(fp->joint); i++, p_joint++)
         {
             joint = *p_joint;
 
@@ -318,7 +318,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
                 dobj_desc++;
             }
         }
-        joint = fp->joint[ftParts_Joint_YRotN];
+        joint = fp->joint[nFTPartsJointYRotN];
 
         if (joint->dobj_f0 != AOBJ_FRAME_NULL)
         {
@@ -328,7 +328,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
         }
     }
     ftCommonGuardUpdateShieldHitbox(fp);
-    func_ovl2_800EB648(fp->joint[ftParts_Joint_XRotN]);
+    func_ovl2_800EB648(fp->joint[nFTPartsJointXRotN]);
 }
 
 // 0x80148A88
@@ -389,7 +389,7 @@ void ftCommonGuardOnSetStatus(GObj *fighter_gobj, s32 slide_frames)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusGuardOn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusGuardOn, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     if (fp->shield_health != 0)
@@ -465,7 +465,7 @@ void ftCommonGuardSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusGuard, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusGuard, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT));
     ftCommonGuardInitJoints(fighter_gobj);
 
     fp->is_shield = TRUE;

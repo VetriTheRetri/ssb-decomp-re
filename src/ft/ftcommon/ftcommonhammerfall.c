@@ -21,7 +21,7 @@ void ftCommonHammerFallProcMap(GObj *fighter_gobj)
     {
         if (fp->phys_info.vel_air.y > FTCOMMON_HAMMER_SKIPLANDING_VEL_Y_MAX)
         {
-            ftHammer_SetStatusHammerWait(fighter_gobj);
+            ftHammerSetStatusHammerWait(fighter_gobj);
         }
         else ftCommonHammerLandingSetStatus(fighter_gobj);
     }
@@ -36,8 +36,8 @@ void ftCommonHammerFallSetStatus(GObj *fighter_gobj)
     {
         ftMap_SetAir(fp);
     }
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
-    ftHammer_CheckSetColAnim(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
+    ftHammerSetColAnim(fighter_gobj);
     ftPhysics_ClampAirVelXMax(fp);
 }
 
@@ -46,7 +46,7 @@ sb32 ftCommonHammerFallCheckInterruptDamageFall(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((ftHammer_CheckItemHold(fighter_gobj) != FALSE) && (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b)))
+    if ((ftHammerCheckHoldHammer(fighter_gobj) != FALSE) && (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b)))
     {
         ftCommonHammerFallSetStatus(fighter_gobj); // Wiggle out of DamageFall if A or B is pressed
 
@@ -63,8 +63,8 @@ void ftCommonHammerFallSetStatusJump(GObj *fighter_gobj)
     s32 vel_x, vel_y;
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
-    ftHammer_CheckSetColAnim(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
+    ftHammerSetColAnim(fighter_gobj);
 
     switch (fp->status_vars.common.hammer.input_source)
     {
@@ -87,8 +87,8 @@ void ftCommonHammerFallSetStatusJump(GObj *fighter_gobj)
 // 0x80147E34
 void ftCommonHammerFallSetStatusPass(GObj *fighter_gobj)
 {
-    ftCommonPassSetStatusParam(fighter_gobj, ftStatus_Common_HammerFall, ftHammer_GetAnimFrame(fighter_gobj), ftHammer_GetStatUpdateFlags(fighter_gobj));
-    ftHammer_CheckSetColAnim(fighter_gobj);
+    ftCommonPassSetStatusParam(fighter_gobj, ftStatus_Common_HammerFall, ftHammerGetAnimFrame(fighter_gobj), ftHammerGetStatUpdateFlags(fighter_gobj));
+    ftHammerSetColAnim(fighter_gobj);
 }
 
 // 0x80147E7C

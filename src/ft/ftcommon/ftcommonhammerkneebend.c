@@ -45,8 +45,8 @@ void ftCommonHammerKneeBendSetStatus(GObj *fighter_gobj, s32 input_source)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_HammerKneeBend, ftHammer_GetAnimFrame(fighter_gobj), 1.0F, ftHammer_GetStatUpdateFlags(fighter_gobj));
-    ftHammer_CheckSetColAnim(fighter_gobj);
+    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_HammerKneeBend, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
+    ftHammerSetColAnim(fighter_gobj);
 
     fp->status_vars.common.hammer.jump_force = fp->input.pl.stick_range.y;
     fp->status_vars.common.hammer.kneebend_anim_frame = 0.0F;

@@ -175,15 +175,15 @@ void ftCommonDamageCommonProcInterrupt(GObj *fighter_gobj)
 
         if (fp->ground_or_air == nMPKineticsAir)
         {
-            if (ftHammer_CheckItemHold(fighter_gobj) != FALSE)
+            if (ftHammerCheckHoldHammer(fighter_gobj) != FALSE)
             {
                 ftCommonHammerFallProcInterrupt(fighter_gobj);
             }
             else ftCommonFallProcInterrupt(fighter_gobj);
         }
-        else if (ftHammer_CheckItemHold(fighter_gobj) != FALSE)
+        else if (ftHammerCheckHoldHammer(fighter_gobj) != FALSE)
         {
-            ftHammer_ProcInterrupt(fighter_gobj);
+            ftHammerProcInterrupt(fighter_gobj);
         }
         else ftCommonWaitProcInterrupt(fighter_gobj);
     }

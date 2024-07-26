@@ -156,7 +156,7 @@ sb32 ftCommonSpecialAirCheckInterruptCommon(GObj *fighter_gobj)
 
     if (fp->input.pl.button_tap & fp->input.button_mask_b)
     {
-        if (ftHammer_CheckItemHold(fighter_gobj) == FALSE)
+        if (ftHammerCheckHoldHammer(fighter_gobj) == FALSE)
         {
             if (fp->input.pl.stick_range.y >= FTCOMMON_SPECIALHI_STICK_RANGE_MIN)
             {

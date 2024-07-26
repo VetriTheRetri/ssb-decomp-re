@@ -435,6 +435,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Hammer stuff for fighters
+      - [0x06EEE0, c, ft/fthammer]
     # Map collisions and stage data
       - [0x06F1F0, c, mp/mpcollision]
     # Fighter lights renderer?

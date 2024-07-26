@@ -86,7 +86,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
 
     if (fp->input.pl.button_tap & fp->input.button_mask_a)
     {
-        if (ftHammer_CheckItemHold(fighter_gobj) == FALSE)
+        if (ftHammerCheckHoldHammer(fighter_gobj) == FALSE)
         {
             if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
             {

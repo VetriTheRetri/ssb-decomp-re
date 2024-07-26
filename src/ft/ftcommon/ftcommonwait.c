@@ -17,9 +17,9 @@ void ftCommonWaitSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftHammer_CheckItemHold(fighter_gobj) != FALSE)
+    if (ftHammerCheckHoldHammer(fighter_gobj) != FALSE)
     {
-        ftHammer_SetStatusHammerWait(fighter_gobj);
+        ftHammerSetStatusHammerWait(fighter_gobj);
     }
     else
     {

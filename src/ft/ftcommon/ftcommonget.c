@@ -189,7 +189,7 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
 
                     if (ip->it_kind == It_Kind_Hammer)
                     {
-                        ftHammer_SetStatusHammerWait(fighter_gobj);
+                        ftHammerSetStatusHammerWait(fighter_gobj);
 
                         return;
                     }

@@ -237,7 +237,7 @@ void ftRenderMainDrawAfterImage(ftStruct *fp)
             }
         }
     }
-    vtx_count = ((uintptr_t)p_vtx - (uintptr_t)base_p_vtx) / sizeof(Vtx);
+    vtx_count = ((uintptr_t)p_vtx - (uintptr_t)base_p_vtx) / (sizeof(*p_vtx) | sizeof(*base_p_vtx));
 
     gSPDisplayList(gDisplayListHead[1]++, vtx_dl);
 

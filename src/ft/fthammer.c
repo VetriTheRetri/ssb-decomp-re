@@ -2,6 +2,12 @@
 #include <it/item.h>
 #include <gm/battle.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x800F36E0
 void ftHammerUpdateStats(GObj *fighter_gobj)
 {

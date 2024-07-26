@@ -25,7 +25,7 @@ void ftYoshiSpecialHiGetEggPosition(ftStruct *fp, Vec3f *pos)
     pos->y = 0.0F;
     pos->z = 0.0F;
 
-    ftParts_GetDObjWorldPosition(fp->joint[FTYOSHI_EGGTHROW_JOINT], pos);
+    gmCollisionGetFighterPartsWorldPosition(fp->joint[FTYOSHI_EGGTHROW_JOINT], pos);
 }
 
 // 0x8015E9E0

@@ -34,7 +34,7 @@ void ftSamusSpecialNGetChargeShotPosition(ftStruct *fp, Vec3f *pos)
     pos->y = pos->z = 0.0F;
     pos->x = FTSAMUS_CHARGE_OFF_X;
 
-    ftParts_GetDObjWorldPosition(fp->joint[FTSAMUS_CHARGE_JOINT], pos);
+    gmCollisionGetFighterPartsWorldPosition(fp->joint[FTSAMUS_CHARGE_JOINT], pos);
 }
 
 // 0x8015D394

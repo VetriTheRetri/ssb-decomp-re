@@ -112,7 +112,7 @@ void ftCommonGuardUpdateShieldVars(GObj *fighter_gobj)
                     // 0x801886C0
                     Vec3f egg_gfx_offset = { 0.0F, 0.0F, 0.0F };
 
-                    ftParts_GetDObjWorldPosition(fp->joint[nFTPartsJointYRotN], &egg_gfx_offset);
+                    gmCollisionGetFighterPartsWorldPosition(fp->joint[nFTPartsJointYRotN], &egg_gfx_offset);
                     efManagerEggBreakMakeEffect(&egg_gfx_offset);
                 }
             }

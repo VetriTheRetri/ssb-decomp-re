@@ -22,7 +22,7 @@ void ftCommonCapturePulledRotateScale(GObj *fighter_gobj, Vec3f *this_pos, Vec3f
     this_pos->y = (-joint->translate.vec.f.y * DObjGetStruct(fighter_gobj)->scale.vec.f.y);
     this_pos->z = (-joint->translate.vec.f.z * DObjGetStruct(fighter_gobj)->scale.vec.f.z);
 
-    gcGetVectorWorldPosition(mtx, this_pos);
+    gmCollisionGetWorldPosition(mtx, this_pos);
 }
 
 // 0x8014A6B4

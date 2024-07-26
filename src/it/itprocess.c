@@ -1,13 +1,9 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-#include <gr/ground.h>
+#include <gm/battle.h>
 
 extern void func_8000DF34_EB34(GObj*);
-extern void itCollision_GetHurtImpactPosition();
-extern void itCollision_GetItemHitImpactPosition();
-extern void wpCollision_GetItemHitImpactPosition();
-extern f32 ftCollision_GetDamageSlashRotation();
 extern f32 gmCommonObject_DamageCalcKnockback(s32 percent_damage, s32 recent_damage, s32 hit_damage, s32 knockback_weight, s32 knockback_scale, s32 knockback_base, f32 weight, s32 attack_handicap, s32 defend_handicap);
 extern s32 gmCommon_DamageCalcHitLag(s32, s32, f32);
 
@@ -341,7 +337,7 @@ void itProcessUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *
                 ip->damage_knockback = damage_knockback;
             }
         }
-        itCollision_GetHurtImpactPosition(&pos, ft_hit, it_hurt, item_gobj);
+        gmCollisionGetFighterHitItemHurtPosition(&pos, ft_hit, it_hurt, item_gobj);
 
         switch (ft_hit->element)
         {
@@ -358,7 +354,7 @@ void itProcessUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *
             break;
 
         case nGMHitElementSlash:
-            efManagerDamageSlashMakeEffect(&pos, ft_hit->damage, ftCollision_GetDamageSlashRotation(fp, ft_hit));
+            efManagerDamageSlashMakeEffect(&pos, ft_hit->damage, gmCollisionGetDamageSlashRotation(fp, ft_hit));
             break;
 
         default:
@@ -377,7 +373,7 @@ void itProcessUpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 th
     Vec3f pos;
     s32 highest_priority;
 
-    itCollision_GetItemHitImpactPosition(&pos, victim_hit, victim_hit_id, this_hit, this_hit_id);
+    gmCollisionGetItemHitItemHitPosition(&pos, victim_hit, victim_hit_id, this_hit, this_hit_id);
 
     highest_priority = this_hit->priority;
 
@@ -413,7 +409,7 @@ void itProcessUpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit_
     Vec3f pos;
     s32 highest_priority;
 
-    wpCollision_GetItemHitImpactPosition(&pos, wp_hit, wp_hit_id, it_hit, it_hit_id);
+    gmCollisionGetWeaponHitItemHitPosition(&pos, wp_hit, wp_hit_id, it_hit, it_hit_id);
 
     highest_priority = wp_hit->priority;
 
@@ -521,7 +517,7 @@ void itProcessUpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit,
         }
         if (attack_ip->is_hitlag_victim)
         {
-            itCollision_GetItemHurtImpactPosition(&pos, attack_it_hit, hitbox_id, it_hurt, defend_gobj);
+            gmCollisionGetItemHitItemHurtPosition(&pos, attack_it_hit, hitbox_id, it_hurt, defend_gobj);
 
             switch (attack_it_hit->element)
             {
@@ -612,7 +608,7 @@ void itProcessUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_
         }
         if (wp->is_hitlag_victim)
         {
-            wpCollision_GetItemHurtImpactPosition(&pos, wp_hit, hitbox_id, it_hurt, item_gobj);
+            gmCollisionGetWeaponHitItemHurtPosition(&pos, wp_hit, hitbox_id, it_hurt, item_gobj);
 
             switch (wp_hit->element)
             {
@@ -716,7 +712,7 @@ void itProcessSearchFighterHit(GObj *item_gobj) // Check fighters for hit detect
 
                         if (it_hurt->hitstatus == nGMHitStatusIntangible) continue;
 
-                        if (ftCollision_CheckFighterHitItemHurtIntersect(&fp->fighter_hit[i], it_hurt, item_gobj) != FALSE)
+                        if (gmCollisionCheckFighterHitItemHurtCollide(&fp->fighter_hit[i], it_hurt, item_gobj) != FALSE)
                         {
                             itProcessUpdateDamageStatFighter(fp, &fp->fighter_hit[i], ip, it_hurt, fighter_gobj, item_gobj);
                         }
@@ -812,7 +808,7 @@ void itProcessSearchItemHit(GObj *this_gobj) // Check other items for hit detect
                                 {
                                     for (j = 0; j < this_hit->hitbox_count; j++)
                                     {
-                                        if (itCollision_CheckItemHitItemHitIntersect(other_hit, i, this_hit, j) != FALSE)
+                                        if (gmCollisionCheckItemHitItemHitCollide(other_hit, i, this_hit, j) != FALSE)
                                         {
                                             itProcessUpdateAttackStatItem(other_ip, other_hit, i, this_ip, this_hit, j, other_gobj, this_gobj);
 
@@ -835,7 +831,7 @@ void itProcessSearchItemHit(GObj *this_gobj) // Check other items for hit detect
 
                     if (it_hurt->hitstatus == nGMHitStatusIntangible) continue;
 
-                    if (itCollision_CheckItemHitItemHurtIntersect(other_hit, i, it_hurt, this_gobj) != FALSE)
+                    if (gmCollisionCheckItemHitItemHurtCollide(other_hit, i, it_hurt, this_gobj) != FALSE)
                     {
                         itProcessUpdateDamageStatItem(other_ip, other_hit, i, this_ip, it_hurt, other_gobj, this_gobj);
 
@@ -926,7 +922,7 @@ void itProcessSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detectio
                                     {
                                         for (j = 0; j < it_hit->hitbox_count; j++)
                                         {
-                                            if (wpCollision_CheckWeaponHitItemHitIntersect(wp_hit, i, it_hit, j) != FALSE)
+                                            if (gmCollisionCheckWeaponHitItemHitCollide(wp_hit, i, it_hit, j) != FALSE)
                                             {
                                                 itProcessUpdateAttackStatWeapon(wp, wp_hit, i, ip, it_hit, j, weapon_gobj, item_gobj);
 
@@ -950,7 +946,7 @@ void itProcessSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detectio
 
                         else if (it_hurt->hitstatus == nGMHitStatusIntangible) continue;
 
-                        else if (itCollision_CheckWeaponHitItemHurtIntersect(wp_hit, i, it_hurt, item_gobj) != FALSE)
+                        else if (gmCollisionCheckWeaponHitItemHurtCollide(wp_hit, i, it_hurt, item_gobj) != FALSE)
                         {
                             itProcessUpdateDamageStatWeapon(wp, wp_hit, i, ip, it_hurt, weapon_gobj, item_gobj);
 

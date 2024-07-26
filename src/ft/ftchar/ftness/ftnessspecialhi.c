@@ -46,7 +46,7 @@ void ftNessSpecialHiCreatePKThunder(GObj *fighter_gobj)
     pos.y = 0.0F;
     pos.z = 0.0F;
 
-    ftParts_GetDObjWorldPosition(fp->joint[FTNESS_PKTHUNDER_SPAWN_JOINT], &pos);
+    gmCollisionGetFighterPartsWorldPosition(fp->joint[FTNESS_PKTHUNDER_SPAWN_JOINT], &pos);
 
     pos.z = 0.0F;
 

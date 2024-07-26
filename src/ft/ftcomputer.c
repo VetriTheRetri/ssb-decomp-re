@@ -7943,7 +7943,7 @@ void ftComputerSetFighterHurtboxSizeInfo(GObj *fighter_gobj)
                 joint_world_pos.y = (j & 2) ? ft_hurt->offset.y + ft_hurt->size.y : ft_hurt->offset.y - ft_hurt->size.y;
                 joint_world_pos.z = (j & 4) ? ft_hurt->offset.z + ft_hurt->size.z : ft_hurt->offset.z - ft_hurt->size.z;
 
-                gcGetVectorWorldPosition(ft_part->mtx_translate, &joint_world_pos);
+                gmCollisionGetWorldPosition(ft_part->mtx_translate, &joint_world_pos);
 
                 if (nearest_left > joint_world_pos.x)
                 {

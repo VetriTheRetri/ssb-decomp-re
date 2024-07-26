@@ -35,7 +35,7 @@ void ftKirbyCopySamusSpecialNGetChargeShotPosition(ftStruct *fp, Vec3f *pos)
     pos->y = FTKIRBY_COPYSAMUS_CHARGE_OFF_Y;
     pos->z = FTKIRBY_COPYSAMUS_CHARGE_OFF_Z;
 
-    ftParts_GetDObjWorldPosition(fp->joint[FTKIRBY_COPYSAMUS_CHARGE_JOINT], pos);
+    gmCollisionGetFighterPartsWorldPosition(fp->joint[FTKIRBY_COPYSAMUS_CHARGE_JOINT], pos);
 }
 
 // 0x80156EFC

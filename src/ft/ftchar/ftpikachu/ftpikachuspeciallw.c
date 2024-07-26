@@ -1,6 +1,5 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
-#include <gr/ground.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -30,7 +29,7 @@ void ftPikachuSpecialLwCreateThunder(GObj *fighter_gobj)
     pos.y = 0.0F;
     pos.z = 0.0F;
 
-    ftParts_GetDObjWorldPosition(fp->joint[FTPIKACHU_THUNDER_SPAWN_JOINT], &pos);
+    gmCollisionGetFighterPartsWorldPosition(fp->joint[FTPIKACHU_THUNDER_SPAWN_JOINT], &pos);
 
     pos.y = gMPGroundData->blastzone_top - FTPIKACHU_THUNDER_SPAWN_OFF_Y;
 

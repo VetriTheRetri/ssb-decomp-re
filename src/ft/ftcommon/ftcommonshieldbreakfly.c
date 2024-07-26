@@ -54,7 +54,7 @@ void ftCommonShieldBreakFlyCommonSetStatus(GObj *fighter_gobj)
     offset.y = 0.0F;
     offset.z = 0.0F;
 
-    ftParts_GetDObjWorldPosition(fp->joint[nFTPartsJointYRotN], &offset);
+    gmCollisionGetFighterPartsWorldPosition(fp->joint[nFTPartsJointYRotN], &offset);
 
     if (fp->ft_kind == nFTKindYoshi)
     {
@@ -82,7 +82,7 @@ void ftCommonShieldBreakFlyReflectorSetStatus(GObj *fighter_gobj)
     ftSpecialHit *special_hit = fp->special_hit;
     Vec3f offset = special_hit->offset;
 
-    ftParts_GetDObjWorldPosition(fp->joint[special_hit->joint_id], &offset);
+    gmCollisionGetFighterPartsWorldPosition(fp->joint[special_hit->joint_id], &offset);
     efManagerReflectBreakMakeEffect(&offset, fp->lr_reflect);
     ftCommonShieldBreakFlySetStatus(fighter_gobj);
 }

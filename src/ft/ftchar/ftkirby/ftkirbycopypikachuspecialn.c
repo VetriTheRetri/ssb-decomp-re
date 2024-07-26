@@ -30,7 +30,7 @@ void ftKirbyCopyPikachuSpecialNProcAccessory(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        ftParts_GetDObjWorldPosition(fp->joint[FTKIRBY_COPYPIKACHU_THUNDERJOLT_SPAWN_JOINT], &pos);
+        gmCollisionGetFighterPartsWorldPosition(fp->joint[FTKIRBY_COPYPIKACHU_THUNDERJOLT_SPAWN_JOINT], &pos);
 
         pos.x += FTKIRBY_COPYPIKACHU_THUNDERJOLT_SPAWN_OFF_X * fp->lr;
         pos.y += FTKIRBY_COPYPIKACHU_THUNDERJOLT_SPAWN_OFF_Y;

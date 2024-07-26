@@ -40,7 +40,7 @@ extern f32 func_8000CB94_D794();
 extern void func_8000DF34_EB34(GObj*);
 extern void hal_interpolation_quadratic(void*, void*, f32);
 extern void hal_interpolation_cubic(void*, void*, f32);
-extern void gcGetVectorWorldPosition();
+extern void gmCollisionGetWorldPosition();
 
 // // // // // // // // // // // //
 //                               //
@@ -865,7 +865,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
 
     wp_pos.z = 666.0F;
 
-    gcGetVectorWorldPosition(&mtx, &wp_pos);
+    gmCollisionGetWorldPosition(&mtx, &wp_pos);
 
     random = mtTrigGetRandomIntRange(gBattleState->pl_count + gBattleState->cp_count);
 

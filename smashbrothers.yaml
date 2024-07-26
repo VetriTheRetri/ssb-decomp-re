@@ -435,6 +435,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # General collision and position calculation
+      - [0x068580, c, gm/gmcollision]
     # Fighter main renderer
       - [0x06C820, c, ft/ftrendermain]
     # Hammer stuff for fighters
@@ -514,6 +516,8 @@ segments:
 
     # ovl2 read-only data
       - [0x0AB250, rodata, ovl2]
+    # General collision and position calculation
+      - [0x0AB980, .rodata, gm/gmcollision]
     # Fighter main renderer
       - [0x0ABA60, .rodata, ft/ftrendermain]
     # Map collisions and data

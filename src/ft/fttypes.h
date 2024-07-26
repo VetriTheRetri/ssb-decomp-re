@@ -448,7 +448,7 @@ struct ftParts
     u8 unk_dobjtrans_0xF;
     Mtx44f unk_dobjtrans_0x10;
     Mtx44f mtx_translate;
-    Vec3f vec_translate; // ???
+    Vec3f vec_scale; // ???
     Mtx44f unk_dobjtrans_0x9C;
     GObj *gobj;
 };

@@ -26,7 +26,7 @@ extern intptr_t lITRBombEffectDisplayList;  // 0x000008A0
 itCreateDesc dITRBombItemDesc =
 {
     It_Kind_RBomb,                          // Item Kind
-    &gGroundStruct.bonus3.item_head,        // Pointer to item file data?
+    &gGRCommonStruct.bonus3.item_head,        // Pointer to item file data?
     &lITRBombItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct

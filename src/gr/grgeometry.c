@@ -220,7 +220,7 @@ void grGeometryDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobj_desc)
 }
 
 // 0x8010547C
-GObj* grGeometryMakeGeometryLayer(grCreateDesc *gr_desc, s32 gr_desc_id, DObj **p_dobj)
+GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **p_dobj)
 {
     GObj *ground_gobj;
     void (*proc_render)(GObj*);

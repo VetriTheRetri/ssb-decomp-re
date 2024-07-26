@@ -744,7 +744,7 @@ gFTDataLinkMain = 0x80130FB0;
 gFTMainIsHurtDetect = 0x801311A0;
 gFTMainIsHitDetect = 0x801311B0;
 
-gGroundStruct = 0x801313F0;
+gGRCommonStruct = 0x801313F0;
 g1PGameTotalDamageTaken = 0x80130D6C;
 omAddDObjAnimAll = 0x8000BD1C;
 D_ovl2_801313F4 = 0x801313F4;
@@ -832,7 +832,7 @@ gEFManagerParticleBankID = 0x801313C4;
 sGRWallpaperIsPausePerspUpdate = 0x801313D0;
 sGRWallpaperGObj = 0x801313D8;
 
-sGRFileNodes = 0x801313E0;
+sGRCommonFileNodes = 0x801313E0;
 
 gCMManagerCameraGObj = 0x80131460;
 gCMManagerPauseCameraEyeX = 0x80131464;

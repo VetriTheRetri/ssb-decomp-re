@@ -136,5 +136,8 @@ typedef struct mpYakumonoDObj mpYakumonoDObj;
 typedef struct mpMapObjData mpMapObjData;
 typedef struct mpMapObjContainer mpMapObjContainer;
 typedef struct mpObjectColl mpObjectColl;
+typedef struct mpItemWeights mpItemWeights;
+typedef struct mpGroundDesc mpGroundDesc;
+typedef struct mpGroundData mpGroundData;
 
 #endif

@@ -529,14 +529,14 @@ GObj* itManagerMakeItemSpawnActor(void)
     GObj *gobj;
     s32 i;
     s32 item_count;
-    grItemWeights *item_count_qty;
+    mpItemWeights *item_count_qty;
     s32 item_weights;
     s32 item_mapobj_count;
     s32 item_mpoint_ids[30];
     u32 item_count_toggles;
     s32 j;
     u32 item_id_toggles;
-    grItemWeights *item_weight_qty;
+    mpItemWeights *item_weight_qty;
     u32 item_num_toggles;
 
     if (gBattleState->item_switch != gmMatch_ItemSwitch_None)
@@ -640,8 +640,8 @@ void itManagerSetupContainerDrops(void)
     s32 i;
     s32 j;
     s32 item_weights;
-    grItemWeights *item_count_qty;
-    grItemWeights *item_weight_qty;
+    mpItemWeights *item_count_qty;
+    mpItemWeights *item_weight_qty;
     s32 item_tenth_round;
 
     if ((gBattleState->item_switch != gmMatch_ItemSwitch_None) && (gBattleState->item_toggles != 0) && (gMPGroundData->item_weights != NULL))

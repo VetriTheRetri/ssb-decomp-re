@@ -22,8 +22,8 @@ extern intptr_t lGRBonus3BumpersAnimJoint;          // 0x00000110
 // 0x8010B4D0
 void grBonus3InitHeaders(void)
 {
-    gGroundStruct.bonus3.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRBonus3MapHead);
-    gGroundStruct.bonus3.item_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRBonus3ItemHead);
+    gGRCommonStruct.bonus3.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRBonus3MapHead);
+    gGRCommonStruct.bonus3.item_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRBonus3ItemHead);
 }
 
 // 0x8010B508
@@ -37,8 +37,8 @@ void grBonus3MakeBumpers(void)
 
     vel.x = vel.y = vel.z = 0.0F;
 
-    dobj_desc = (DObjDesc*) ((uintptr_t)gGroundStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersDObjDesc);
-    atrack = (ATrack**) ((uintptr_t)gGroundStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersAnimJoint);
+    dobj_desc = (DObjDesc*) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersDObjDesc);
+    atrack = (ATrack**) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersAnimJoint);
 
     atrack++, dobj_desc++;
 
@@ -59,15 +59,15 @@ void grBonus3RBombProcUpdate(GObj *ground_gobj)
 {
     Vec3f vel;
 
-    if (gGroundStruct.bonus3.rbomb_make_wait == 0)
+    if (gGRCommonStruct.bonus3.rbomb_make_wait == 0)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
-        itManagerMakeItemSetupCommon(NULL, It_Kind_RBomb, &gGroundStruct.bonus3.rbomb_make_pos, &vel, ITEM_MASK_SPAWN_GROUND);
+        itManagerMakeItemSetupCommon(NULL, It_Kind_RBomb, &gGRCommonStruct.bonus3.rbomb_make_pos, &vel, ITEM_MASK_SPAWN_GROUND);
 
-        gGroundStruct.bonus3.rbomb_make_wait = 180;
+        gGRCommonStruct.bonus3.rbomb_make_wait = 180;
     }
-    gGroundStruct.bonus3.rbomb_make_wait--;
+    gGRCommonStruct.bonus3.rbomb_make_wait--;
 }
 
 // 0x8010B660
@@ -86,9 +86,9 @@ void grBonus3RBombMakeActor(void)
         }
     }
     mpCollisionGetMapObjIDsKind(nMPMapObjKind1PGameBonus3RBomb, &pos_ids);
-    mpCollisionGetMapObjPositionID(pos_ids, &gGroundStruct.bonus3.rbomb_make_pos);
+    mpCollisionGetMapObjPositionID(pos_ids, &gGRCommonStruct.bonus3.rbomb_make_pos);
 
-    gGroundStruct.bonus3.rbomb_make_wait = 180;
+    gGRCommonStruct.bonus3.rbomb_make_wait = 180;
 }
 
 // 0x8010B700

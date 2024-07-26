@@ -67,16 +67,16 @@ enum grZebesStatus
 // 0x80108020
 void grZebesAcidSetLevelStep(void)
 {
-    gGroundStruct.zebes.acid_level_step = 
-    ((dGRZebesAcidAttributes[gGroundStruct.zebes.acid_attr_id].acid_level + (mtTrigGetRandomFloat() * 250.0F)) - gGroundStruct.zebes.acid_level_current) / 240.0F;
+    gGRCommonStruct.zebes.acid_level_step = 
+    ((dGRZebesAcidAttributes[gGRCommonStruct.zebes.acid_attr_id].acid_level + (mtTrigGetRandomFloat() * 250.0F)) - gGRCommonStruct.zebes.acid_level_current) / 240.0F;
 }
 
 // 0x80108088
 void grZebesAcidSetRandomWait(void)
 {
-    s32 index = gGroundStruct.zebes.acid_attr_id;
+    s32 index = gGRCommonStruct.zebes.acid_attr_id;
 
-    gGroundStruct.zebes.acid_level_wait = dGRZebesAcidAttributes[index].acid_wait_base +
+    gGRCommonStruct.zebes.acid_level_wait = dGRZebesAcidAttributes[index].acid_wait_base +
                                           dGRZebesAcidAttributes[index].acid_random_min +
                                           mtTrigGetRandomIntRange(dGRZebesAcidAttributes[index].acid_random_max - dGRZebesAcidAttributes[index].acid_random_min);
 }
@@ -89,10 +89,10 @@ GObj* grZebesMakeAcid(void)
     void *map_head;
 
     map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRZebesAcidDObjSetup);
-    gGroundStruct.zebes.map_head = map_head;
+    gGRCommonStruct.zebes.map_head = map_head;
 
     map_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
-    gGroundStruct.zebes.map_gobj = map_gobj;
+    gGRCommonStruct.zebes.map_gobj = map_gobj;
 
     omAddGObjRenderProc(map_gobj, odRenderDObjTreeDLLinksForGObj, 12, GOBJ_DLLINKORDER_DEFAULT, -1);
     func_8000F590(map_gobj, (DObjDesc*) ((intptr_t)&lGRZebesAcidDObjSetup + (uintptr_t)map_head), NULL, OMMtx_Transform_Tra, OMMtx_Transform_Null, 0);
@@ -101,15 +101,15 @@ GObj* grZebesMakeAcid(void)
     func_8000BED8_CAD8(map_gobj, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidAnimJoint, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidMatAnimJoint, 0.0F);
     func_8000DF34_EB34(map_gobj);
 
-    gGroundStruct.zebes.acid_status = nGRZebesAcidStatusWait;
-    gGroundStruct.zebes.acid_level_current = dGRZebesAcidAttributes[15].acid_level;
-    gGroundStruct.zebes.acid_attr_id = 0;
+    gGRCommonStruct.zebes.acid_status = nGRZebesAcidStatusWait;
+    gGRCommonStruct.zebes.acid_level_current = dGRZebesAcidAttributes[15].acid_level;
+    gGRCommonStruct.zebes.acid_attr_id = 0;
 
-    gGroundStruct.zebes.gr_hit = (void*) (((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRZebesAcidHit);
+    gGRCommonStruct.zebes.gr_hit = (void*) (((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRZebesAcidHit);
 
     grZebesAcidSetRandomWait();
 
-    DObjGetStruct(map_gobj)->translate.vec.f.y = gGroundStruct.zebes.acid_level_current;
+    DObjGetStruct(map_gobj)->translate.vec.f.y = gGRCommonStruct.zebes.acid_level_current;
 
     return map_gobj;
 }
@@ -119,44 +119,44 @@ void grZebesAcidUpdateWait(void)
 {
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
-        gGroundStruct.zebes.acid_status = nGRZebesAcidStatusNormal;
+        gGRCommonStruct.zebes.acid_status = nGRZebesAcidStatusNormal;
     }
 }
 
 // 0x80108268
 void grZebesAcidUpdateRumble(void)
 {
-    if (gGroundStruct.zebes.rumble_wait == 0)
+    if (gGRCommonStruct.zebes.rumble_wait == 0)
     {
         efManagerQuakeMakeEffect(0);
 
-        gGroundStruct.zebes.rumble_wait = 18;
+        gGRCommonStruct.zebes.rumble_wait = 18;
     }
-    gGroundStruct.zebes.rumble_wait--;
+    gGRCommonStruct.zebes.rumble_wait--;
 }
 
 // 0x801082B4
 void grZebesAcidUpdateNormal(void)
 {
-    gGroundStruct.zebes.acid_level_wait--;
+    gGRCommonStruct.zebes.acid_level_wait--;
 
-    if (gGroundStruct.zebes.acid_level_wait == 0)
+    if (gGRCommonStruct.zebes.acid_level_wait == 0)
     {
-        gGroundStruct.zebes.acid_status = nGRZebesAcidStatusShake;
-        gGroundStruct.zebes.acid_level_wait = 18;
-        gGroundStruct.zebes.rumble_wait = 0;
+        gGRCommonStruct.zebes.acid_status = nGRZebesAcidStatusShake;
+        gGRCommonStruct.zebes.acid_level_wait = 18;
+        gGRCommonStruct.zebes.rumble_wait = 0;
     }
 }
 
 // 0x801082EC
 void grZebesAcidUpdateShake(void)
 {
-    gGroundStruct.zebes.acid_level_wait--;
+    gGRCommonStruct.zebes.acid_level_wait--;
 
-    if (gGroundStruct.zebes.acid_level_wait == 0)
+    if (gGRCommonStruct.zebes.acid_level_wait == 0)
     {
-        gGroundStruct.zebes.acid_status = nGRZebesAcidStatusRise;
-        gGroundStruct.zebes.acid_level_wait = 240;
+        gGRCommonStruct.zebes.acid_status = nGRZebesAcidStatusRise;
+        gGRCommonStruct.zebes.acid_level_wait = 240;
 
         grZebesAcidSetLevelStep();
     }
@@ -166,20 +166,20 @@ void grZebesAcidUpdateShake(void)
 // 0x8010833C
 void grZebesAcidUpdateRise(void)
 {
-    gGroundStruct.zebes.acid_level_current += gGroundStruct.zebes.acid_level_step;
+    gGRCommonStruct.zebes.acid_level_current += gGRCommonStruct.zebes.acid_level_step;
 
-    DObjGetStruct(gGroundStruct.zebes.map_gobj)->translate.vec.f.y = gGroundStruct.zebes.acid_level_current;
+    DObjGetStruct(gGRCommonStruct.zebes.map_gobj)->translate.vec.f.y = gGRCommonStruct.zebes.acid_level_current;
 
-    gGroundStruct.zebes.acid_level_wait--;
+    gGRCommonStruct.zebes.acid_level_wait--;
 
-    if (gGroundStruct.zebes.acid_level_wait == 0)
+    if (gGRCommonStruct.zebes.acid_level_wait == 0)
     {
-        gGroundStruct.zebes.acid_status = nGRZebesAcidStatusNormal;
-        gGroundStruct.zebes.acid_attr_id++;
+        gGRCommonStruct.zebes.acid_status = nGRZebesAcidStatusNormal;
+        gGRCommonStruct.zebes.acid_attr_id++;
 
-        if (gGroundStruct.zebes.acid_attr_id >= ARRAY_COUNT(dGRZebesAcidAttributes))
+        if (gGRCommonStruct.zebes.acid_attr_id >= ARRAY_COUNT(dGRZebesAcidAttributes))
         {
-            gGroundStruct.zebes.acid_attr_id = 0;
+            gGRCommonStruct.zebes.acid_attr_id = 0;
         }
         grZebesAcidSetRandomWait();
     }
@@ -189,7 +189,7 @@ void grZebesAcidUpdateRise(void)
 // 0x801083C4
 void grZebesProcUpdate(GObj *ground_gobj)
 {
-    switch (gGroundStruct.zebes.acid_status)
+    switch (gGRCommonStruct.zebes.acid_status)
     {
     case nGRZebesAcidStatusWait:
         grZebesAcidUpdateWait();
@@ -232,7 +232,7 @@ sb32 grZebesAcidCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, grHitb
 
         if (DObjGetStruct(fighter_gobj)->translate.vec.f.y < (dobj->translate.vec.f.y + dobj->child->translate.vec.f.y))
         {
-            *gr_hit = gGroundStruct.zebes.gr_hit;
+            *gr_hit = gGRCommonStruct.zebes.gr_hit;
             *kind = gmHitEnvironment_Kind_Acid;
 
             return TRUE;
@@ -244,7 +244,7 @@ sb32 grZebesAcidCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, grHitb
 // 0x8010850C
 void grZebesAcidGetLevelInfo(f32 *current, f32 *step)
 {
-    *current = gGroundStruct.zebes.acid_level_current;
+    *current = gGRCommonStruct.zebes.acid_level_current;
 
-    *step = (gGroundStruct.zebes.acid_status == nGRZebesAcidStatusRise) ? gGroundStruct.zebes.acid_level_step : 0.0F;
+    *step = (gGRCommonStruct.zebes.acid_status == nGRZebesAcidStatusRise) ? gGRCommonStruct.zebes.acid_level_step : 0.0F;
 }

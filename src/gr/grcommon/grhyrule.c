@@ -41,7 +41,7 @@ enum grHyruleTwisterStatus
 // 0x8010A140
 efParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(gGroundStruct.hyrule.particle_bank_id | 8, effect_id);
+    efParticle *efpart = func_ovl0_800CE9E8(gGRCommonStruct.hyrule.particle_bank_id | 8, effect_id);
 
     if (efpart != NULL)
     {
@@ -93,13 +93,13 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
 
         if (efpart == NULL)
         {
-            gGroundStruct.hyrule.twister_eftrans = NULL;
+            gGRCommonStruct.hyrule.twister_eftrans = NULL;
 
             omEjectGObj(twister_gobj);
 
             return NULL;
         }
-        gGroundStruct.hyrule.twister_line_id = line_id;
+        gGRCommonStruct.hyrule.twister_line_id = line_id;
 
         mpCollisionGetLREdgeLeft(line_id, &edge_pos);
 
@@ -107,9 +107,9 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
 
         if ((edge_under == -1) || (mpCollisionGetLineTypeID(edge_under) != nMPLineKindRWall))
         {
-            gGroundStruct.hyrule.twister_leftedge_x = edge_pos.x;
+            gGRCommonStruct.hyrule.twister_leftedge_x = edge_pos.x;
         }
-        else gGroundStruct.hyrule.twister_leftedge_x = edge_pos.x + 300.0F;
+        else gGRCommonStruct.hyrule.twister_leftedge_x = edge_pos.x + 300.0F;
         
         mpCollisionGetLREdgeRight(line_id, &edge_pos);
 
@@ -117,11 +117,11 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
 
         if ((edge_under == -1) || (mpCollisionGetLineTypeID(edge_under) != nMPLineKindLWall))
         {
-            gGroundStruct.hyrule.twister_rightedge_x = edge_pos.x;
+            gGRCommonStruct.hyrule.twister_rightedge_x = edge_pos.x;
         }
-        else gGroundStruct.hyrule.twister_rightedge_x = edge_pos.x - 300.0F;
+        else gGRCommonStruct.hyrule.twister_rightedge_x = edge_pos.x - 300.0F;
         
-        gGroundStruct.hyrule.twister_eftrans = efpart->effect_info;
+        gGRCommonStruct.hyrule.twister_eftrans = efpart->effect_info;
     }
     return twister_gobj;
 }
@@ -131,8 +131,8 @@ void grHyruleTwisterUpdateSleep(void)
 {
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
-        gGroundStruct.hyrule.twister_status = nGRHyruleTwisterStatusWait;
-        gGroundStruct.hyrule.twister_wait = mtTrigGetRandomIntRange(1200) + 1600;
+        gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusWait;
+        gGRCommonStruct.hyrule.twister_wait = mtTrigGetRandomIntRange(1200) + 1600;
     }
 }
 
@@ -142,23 +142,23 @@ void grHyruleTwisterUpdateWait(void)
     Vec3f pos;
     GObj *twister_gobj;
 
-    gGroundStruct.hyrule.twister_wait--;
+    gGRCommonStruct.hyrule.twister_wait--;
 
-    if (gGroundStruct.hyrule.twister_wait == 0)
+    if (gGRCommonStruct.hyrule.twister_wait == 0)
     {
-        mpCollisionGetMapObjPositionID(gGroundStruct.hyrule.twister_pos_ids[mtTrigGetRandomIntRange(gGroundStruct.hyrule.twister_pos_count)], &pos);
+        mpCollisionGetMapObjPositionID(gGRCommonStruct.hyrule.twister_pos_ids[mtTrigGetRandomIntRange(gGRCommonStruct.hyrule.twister_pos_count)], &pos);
 
         twister_gobj = grHyruleMakeTwister(&pos);
 
         if (twister_gobj == NULL)
         {
-            gGroundStruct.hyrule.twister_wait = mtTrigGetRandomIntRange(1200) + 1600;
+            gGRCommonStruct.hyrule.twister_wait = mtTrigGetRandomIntRange(1200) + 1600;
         }
         else
         {
-            gGroundStruct.hyrule.twister_wait = 80;
-            gGroundStruct.hyrule.twister_gobj = twister_gobj;
-            gGroundStruct.hyrule.twister_status = nGRHyruleTwisterStatusSummon;
+            gGRCommonStruct.hyrule.twister_wait = 80;
+            gGRCommonStruct.hyrule.twister_gobj = twister_gobj;
+            gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusSummon;
         }
     }
 }
@@ -168,20 +168,20 @@ void grHyruleTwisterUpdateSummon(void)
 {
     s32 lr;
 
-    gGroundStruct.hyrule.twister_wait--;
+    gGRCommonStruct.hyrule.twister_wait--;
 
-    if (gGroundStruct.hyrule.twister_wait == 0)
+    if (gGRCommonStruct.hyrule.twister_wait == 0)
     {
-        gGroundStruct.hyrule.twister_status = nGRHyruleTwisterStatusMove;
-        gGroundStruct.hyrule.twister_wait = mtTrigGetRandomIntRange(600) + 520;
+        gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusMove;
+        gGRCommonStruct.hyrule.twister_wait = mtTrigGetRandomIntRange(600) + 520;
 
         lr = ((mtTrigGetRandomUShort() % 2) != 0) ? LR_Right : LR_Left;
 
-        gGroundStruct.hyrule.twister_turn_wait = 0;
-        gGroundStruct.hyrule.twister_vel = lr * 10.0F;
-        gGroundStruct.hyrule.twister_speed_wait = mtTrigGetRandomIntRange(120) + 180;
+        gGRCommonStruct.hyrule.twister_turn_wait = 0;
+        gGRCommonStruct.hyrule.twister_vel = lr * 10.0F;
+        gGRCommonStruct.hyrule.twister_speed_wait = mtTrigGetRandomIntRange(120) + 180;
 
-        ftMainCheckSetMapObjectGObj(gGroundStruct.hyrule.twister_gobj, grHyruleTwisterCheckGetDamageKind);
+        ftMainCheckSetMapObjectGObj(gGRCommonStruct.hyrule.twister_gobj, grHyruleTwisterCheckGetDamageKind);
 
         func_800269C0_275C0(alSound_SFX_HyruleTwisterSpawn);
     }
@@ -190,11 +190,11 @@ void grHyruleTwisterUpdateSummon(void)
 // 0x8010A4F4
 sb32 grHyruleTwisterDecLifetimeCheckStop(void)
 {
-    gGroundStruct.hyrule.twister_wait--;
+    gGRCommonStruct.hyrule.twister_wait--;
 
-    if (gGroundStruct.hyrule.twister_wait == 0)
+    if (gGRCommonStruct.hyrule.twister_wait == 0)
     {
-        gGroundStruct.hyrule.twister_status = nGRHyruleTwisterStatusStop;
+        gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusStop;
 
         return TRUE;
     }
@@ -207,13 +207,13 @@ s32 grHyruleTwisterGetLR(void)
     s32 players_rside = 0;
     s32 players_lside = 0;
     GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
-    f32 twister_pos_x = DObjGetStruct(gGroundStruct.hyrule.twister_gobj)->translate.vec.f.x;
+    f32 twister_pos_x = DObjGetStruct(gGRCommonStruct.hyrule.twister_gobj)->translate.vec.f.x;
 
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if ((fp->ground_or_air == nMPKineticsGround) && (fp->coll_data.ground_line_id == gGroundStruct.hyrule.twister_line_id))
+        if ((fp->ground_or_air == nMPKineticsGround) && (fp->coll_data.ground_line_id == gGRCommonStruct.hyrule.twister_line_id))
         {
             if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x > twister_pos_x)
             {
@@ -241,61 +241,61 @@ s32 grHyruleTwisterGetLR(void)
 // 0x8010A610
 void grHyruleTwisterUpdateMove(void)
 {
-    Vec3f *pos = &DObjGetStruct(gGroundStruct.hyrule.twister_gobj)->translate.vec.f;
+    Vec3f *pos = &DObjGetStruct(gGRCommonStruct.hyrule.twister_gobj)->translate.vec.f;
     f32 ground_level;
     f32 pos_x;
     s32 lr;
 
     if (grHyruleTwisterDecLifetimeCheckStop() == FALSE)
     {
-        if (gGroundStruct.hyrule.twister_turn_wait != 0)
+        if (gGRCommonStruct.hyrule.twister_turn_wait != 0)
         {
-            gGroundStruct.hyrule.twister_turn_wait--;
+            gGRCommonStruct.hyrule.twister_turn_wait--;
 
-            if (gGroundStruct.hyrule.twister_turn_wait == 0)
+            if (gGRCommonStruct.hyrule.twister_turn_wait == 0)
             {
-                if (gGroundStruct.hyrule.twister_vel < 0.0F)
+                if (gGRCommonStruct.hyrule.twister_vel < 0.0F)
                 {
-                    gGroundStruct.hyrule.twister_vel = -10.0F;
+                    gGRCommonStruct.hyrule.twister_vel = -10.0F;
                 }
-                else gGroundStruct.hyrule.twister_vel = 10.0F;
+                else gGRCommonStruct.hyrule.twister_vel = 10.0F;
             }
         }
         else
         {
-            gGroundStruct.hyrule.twister_speed_wait--;
+            gGRCommonStruct.hyrule.twister_speed_wait--;
 
-            if (gGroundStruct.hyrule.twister_speed_wait == 0)
+            if (gGRCommonStruct.hyrule.twister_speed_wait == 0)
             {
                 lr = grHyruleTwisterGetLR();
 
                 if ((lr != LR_Center) && (mtTrigGetRandomIntRange(5) == 0))
                 {
-                    gGroundStruct.hyrule.twister_turn_wait = mtTrigGetRandomIntRange(180) + 300;
-                    gGroundStruct.hyrule.twister_vel = lr * 50.0F;
+                    gGRCommonStruct.hyrule.twister_turn_wait = mtTrigGetRandomIntRange(180) + 300;
+                    gGRCommonStruct.hyrule.twister_vel = lr * 50.0F;
                 }
             }
         }
-        pos_x = pos->x + gGroundStruct.hyrule.twister_vel;
+        pos_x = pos->x + gGRCommonStruct.hyrule.twister_vel;
 
-        if ((gGroundStruct.hyrule.twister_rightedge_x < pos_x) || (pos_x < gGroundStruct.hyrule.twister_leftedge_x))
+        if ((gGRCommonStruct.hyrule.twister_rightedge_x < pos_x) || (pos_x < gGRCommonStruct.hyrule.twister_leftedge_x))
         {
-            if (gGroundStruct.hyrule.twister_rightedge_x < pos_x)
+            if (gGRCommonStruct.hyrule.twister_rightedge_x < pos_x)
             {
-                pos->x = (gGroundStruct.hyrule.twister_rightedge_x - 10.0F);
+                pos->x = (gGRCommonStruct.hyrule.twister_rightedge_x - 10.0F);
             }
-            else pos->x = (gGroundStruct.hyrule.twister_leftedge_x + 10.0F);
+            else pos->x = (gGRCommonStruct.hyrule.twister_leftedge_x + 10.0F);
 
-            gGroundStruct.hyrule.twister_status = nGRHyruleTwisterStatusTurn;
-            gGroundStruct.hyrule.twister_turn_wait = 120;
+            gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusTurn;
+            gGRCommonStruct.hyrule.twister_turn_wait = 120;
         }
         else pos->x = pos_x;
 
-        mpCollisionGetUDCommonUp(gGroundStruct.hyrule.twister_line_id, pos, &ground_level, NULL, NULL);
+        mpCollisionGetUDCommonUp(gGRCommonStruct.hyrule.twister_line_id, pos, &ground_level, NULL, NULL);
 
         pos->y += ground_level;
 
-        gGroundStruct.hyrule.twister_eftrans->translate = *pos;
+        gGRCommonStruct.hyrule.twister_eftrans->translate = *pos;
     }
 }
 
@@ -304,13 +304,13 @@ void grHyruleTwisterUpdateTurn(void)
 {
     if (grHyruleTwisterDecLifetimeCheckStop() == FALSE)
     {
-        gGroundStruct.hyrule.twister_turn_wait--;
+        gGRCommonStruct.hyrule.twister_turn_wait--;
 
-        if (gGroundStruct.hyrule.twister_turn_wait == 0)
+        if (gGRCommonStruct.hyrule.twister_turn_wait == 0)
         {
-            gGroundStruct.hyrule.twister_status = nGRHyruleTwisterStatusMove;
-            gGroundStruct.hyrule.twister_turn_wait = 0;
-            gGroundStruct.hyrule.twister_vel = -gGroundStruct.hyrule.twister_vel;
+            gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusMove;
+            gGRCommonStruct.hyrule.twister_turn_wait = 0;
+            gGRCommonStruct.hyrule.twister_vel = -gGRCommonStruct.hyrule.twister_vel;
         }
     }
 }
@@ -330,31 +330,31 @@ void grHyruleTwisterUpdateStop(void)
         }
         else return;
     }
-    gGroundStruct.hyrule.twister_status = nGRHyruleTwisterStatusSubside;
-    gGroundStruct.hyrule.twister_wait = 32;
+    gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusSubside;
+    gGRCommonStruct.hyrule.twister_wait = 32;
 
-    ftMainClearMapObjectGObj(gGroundStruct.hyrule.twister_gobj);
+    ftMainClearMapObjectGObj(gGRCommonStruct.hyrule.twister_gobj);
 
-    if (gGroundStruct.hyrule.twister_eftrans != NULL)
+    if (gGRCommonStruct.hyrule.twister_eftrans != NULL)
     {
-        grHyruleTwisterMakeEffect(&gGroundStruct.hyrule.twister_eftrans->translate, 7);
+        grHyruleTwisterMakeEffect(&gGRCommonStruct.hyrule.twister_eftrans->translate, 7);
     }
-    omEjectGObj(gGroundStruct.hyrule.twister_gobj);
+    omEjectGObj(gGRCommonStruct.hyrule.twister_gobj);
 }
 
 // 0x8010A8B4
 void grHyruleTwisterUpdateSubside(void)
 {
-    gGroundStruct.hyrule.twister_wait--;
+    gGRCommonStruct.hyrule.twister_wait--;
 
-    if (gGroundStruct.hyrule.twister_wait == 0)
+    if (gGRCommonStruct.hyrule.twister_wait == 0)
     {
-        gGroundStruct.hyrule.twister_status = nGRHyruleTwisterStatusWait;
-        gGroundStruct.hyrule.twister_wait = mtTrigGetRandomIntRange(1200) + 1600;
+        gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusWait;
+        gGRCommonStruct.hyrule.twister_wait = mtTrigGetRandomIntRange(1200) + 1600;
 
-        if (gGroundStruct.hyrule.twister_eftrans != NULL)
+        if (gGRCommonStruct.hyrule.twister_eftrans != NULL)
         {
-            func_ovl0_800D39D4(gGroundStruct.hyrule.twister_eftrans->unk_effect_0xB8, 1);
+            func_ovl0_800D39D4(gGRCommonStruct.hyrule.twister_eftrans->unk_effect_0xB8, 1);
         }
     }
 }
@@ -362,7 +362,7 @@ void grHyruleTwisterUpdateSubside(void)
 // 0x8010A91C
 void grHyruleTwisterProcUpdate(GObj *ground_gobj)
 {
-    switch (gGroundStruct.hyrule.twister_status)
+    switch (gGRCommonStruct.hyrule.twister_status)
     {
     case nGRHyruleTwisterStatusSleep:
         grHyruleTwisterUpdateSleep();
@@ -401,7 +401,7 @@ void grHyruleTwisterInitVars(void)
     s32 pos_count;
     s32 pos_ids[10];
 
-    gGroundStruct.hyrule.twister_pos_count = pos_count = mpCollisionGetMapObjCountKind(nMPMapObjKindTwister);
+    gGRCommonStruct.hyrule.twister_pos_count = pos_count = mpCollisionGetMapObjCountKind(nMPMapObjKindTwister);
 
     if ((pos_count == 0) || (pos_count > ARRAY_COUNT(pos_ids)))
     {
@@ -411,17 +411,17 @@ void grHyruleTwisterInitVars(void)
             smRunPrintGObjStatus();
         }
     }
-    gGroundStruct.hyrule.twister_pos_ids = (u8*) gsMemoryAlloc(pos_count * sizeof(*gGroundStruct.hyrule.twister_pos_ids), 0x0);
+    gGRCommonStruct.hyrule.twister_pos_ids = (u8*) gsMemoryAlloc(pos_count * sizeof(*gGRCommonStruct.hyrule.twister_pos_ids), 0x0);
 
     mpCollisionGetMapObjIDsKind(nMPMapObjKindTwister, pos_ids);
 
     for (i = 0; i < pos_count; i++)
     {
-        gGroundStruct.hyrule.twister_pos_ids[i] = pos_ids[i];
+        gGRCommonStruct.hyrule.twister_pos_ids[i] = pos_ids[i];
     }
 
-    gGroundStruct.hyrule.twister_status = nGRHyruleTwisterStatusSleep;
-    gGroundStruct.hyrule.particle_bank_id = efAllocGetAddParticleBankID((intptr_t)&lGRHyruleParticleBankHeaderLo, (intptr_t)&lGRHyruleParticleBankHeaderHi, (intptr_t)&lGRHyruleParticleBankTextureLo, (intptr_t)&lGRHyruleParticleBankTextureHi);
+    gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusSleep;
+    gGRCommonStruct.hyrule.particle_bank_id = efAllocGetAddParticleBankID((intptr_t)&lGRHyruleParticleBankHeaderLo, (intptr_t)&lGRHyruleParticleBankHeaderHi, (intptr_t)&lGRHyruleParticleBankTextureLo, (intptr_t)&lGRHyruleParticleBankTextureHi);
 }
 
 // 0x8010AB20
@@ -474,9 +474,9 @@ sb32 grHyruleTwisterCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s3
 // 0x8010AC70
 sb32 grHyruleTwisterCheckGetPosition(Vec3f *pos)
 {
-    if ((gGroundStruct.hyrule.twister_status == nGRHyruleTwisterStatusMove) || (gGroundStruct.hyrule.twister_status == nGRHyruleTwisterStatusTurn))
+    if ((gGRCommonStruct.hyrule.twister_status == nGRHyruleTwisterStatusMove) || (gGRCommonStruct.hyrule.twister_status == nGRHyruleTwisterStatusTurn))
     {
-        *pos = DObjGetStruct(gGroundStruct.hyrule.twister_gobj)->translate.vec.f;
+        *pos = DObjGetStruct(gGRCommonStruct.hyrule.twister_gobj)->translate.vec.f;
 
         return TRUE;
     }

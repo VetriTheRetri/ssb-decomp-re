@@ -186,7 +186,7 @@ extern uintptr_t lOverlay6ArenaHi; // 0x80392A00
 extern void* gGMCommonFiles[/* */];
 extern intptr_t dIFCommonTimerDigitSpriteOffsets[/* */];
 extern void* D_ovl2_801313F4;
-extern grStruct gGroundStruct;
+extern grStruct gGRCommonStruct;
 extern gmBattleState gDefaultBattleState;
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 

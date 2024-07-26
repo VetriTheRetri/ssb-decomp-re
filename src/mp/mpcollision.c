@@ -17,6 +17,9 @@ extern grFileInfo D_ovl2_8012C520[/* */];
 //                               //
 // // // // // // // // // // // //
 
+// 0x80131300
+mpGroundData *gMPGroundData;
+
 // 0x80131304
 mpYakumonoDObj *gMPYakumonoDObjs;
 

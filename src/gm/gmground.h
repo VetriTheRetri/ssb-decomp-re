@@ -26,7 +26,7 @@ typedef struct grFileInfo
 
 } grFileInfo;
 
-typedef struct grCommonData
+typedef struct mpGroundData
 {
 	void* unk_0x0;
 	void* unk_0x4;
@@ -74,8 +74,8 @@ typedef struct grCommonData
 	s16 unk_bound_right;
 	s16 unk_bound_left;
 
-} grCommonData;
+} mpGroundData;
 
-extern grCommonData* gMPGroundData; // TO DO: move this to the correct file
+extern mpGroundData* gMPGroundData; // TO DO: move this to the correct file
 
 #endif

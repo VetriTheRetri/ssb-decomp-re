@@ -229,7 +229,7 @@ s32 grPupupuWhispyGetLR(GObj *ground_gobj)
 void grPupupuWhispySetWindPush(void)
 {
     GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
-    sb32 lr_wind = gGroundStruct.pupupu.lr_players;
+    sb32 lr_wind = gGRCommonStruct.pupupu.lr_players;
 
     while (fighter_gobj != NULL)
     {
@@ -271,7 +271,7 @@ void grPupupuWhispyUpdateSleep(void)
 {
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
-        gGroundStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusWait;
+        gGRCommonStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusWait;
     }
 }
 
@@ -282,7 +282,7 @@ void grPupupuWhispyLeavesMakeEffect(void)
     efTransform *eftrans;
 
     eftrans = NULL;
-    efpart = func_ovl0_800CE9E8(gGroundStruct.pupupu.particle_bank_id | 8, 0);
+    efpart = func_ovl0_800CE9E8(gGRCommonStruct.pupupu.particle_bank_id | 8, 0);
 
     if (efpart != NULL)
     {
@@ -302,40 +302,40 @@ void grPupupuWhispyLeavesMakeEffect(void)
             }
             else
             {
-                eftrans->translate = dGRPupupuWhispyLeavesEffectAttributes[gGroundStruct.pupupu.lr_players].pos;
-                eftrans->rotate.y = dGRPupupuWhispyLeavesEffectAttributes[gGroundStruct.pupupu.lr_players].rotate;
+                eftrans->translate = dGRPupupuWhispyLeavesEffectAttributes[gGRCommonStruct.pupupu.lr_players].pos;
+                eftrans->rotate.y = dGRPupupuWhispyLeavesEffectAttributes[gGRCommonStruct.pupupu.lr_players].rotate;
             }
         }
     }
-    gGroundStruct.pupupu.leaves_eftrans = eftrans;
+    gGRCommonStruct.pupupu.leaves_eftrans = eftrans;
 }
 
 // 0x80105BE8
 void grPupupuWhispyUpdateWait(void)
 {
-    if (gGroundStruct.pupupu.whispy_wind_wait != 0)
+    if (gGRCommonStruct.pupupu.whispy_wind_wait != 0)
     {
-        gGroundStruct.pupupu.whispy_wind_wait--;
+        gGRCommonStruct.pupupu.whispy_wind_wait--;
     }
     else
     {
-        s32 lr = grPupupuWhispyGetLR(gGroundStruct.pupupu.map_gobj[1]);
+        s32 lr = grPupupuWhispyGetLR(gGRCommonStruct.pupupu.map_gobj[1]);
 
         if (lr == -1) // -1 = Both sides of the map have an equal number of players
         {
-            lr = gGroundStruct.pupupu.lr_players;
+            lr = gGRCommonStruct.pupupu.lr_players;
         }
-        if (lr != gGroundStruct.pupupu.lr_players)
+        if (lr != gGRCommonStruct.pupupu.lr_players)
         {
-            gGroundStruct.pupupu.whispy_eyes_status = nGRPupupuWhispyEyesStatusTurn;
-            gGroundStruct.pupupu.whispy_mouth_status = nGRPupupuWhispyMouthStatusTurn;
-            gGroundStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusTurn;
-            gGroundStruct.pupupu.lr_players = lr;
+            gGRCommonStruct.pupupu.whispy_eyes_status = nGRPupupuWhispyEyesStatusTurn;
+            gGRCommonStruct.pupupu.whispy_mouth_status = nGRPupupuWhispyMouthStatusTurn;
+            gGRCommonStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusTurn;
+            gGRCommonStruct.pupupu.lr_players = lr;
         }
         else
         {
-            gGroundStruct.pupupu.whispy_mouth_status = nGRPupupuWhispyMouthStatusOpen;
-            gGroundStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusOpen;
+            gGRCommonStruct.pupupu.whispy_mouth_status = nGRPupupuWhispyMouthStatusOpen;
+            gGRCommonStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusOpen;
         }
     }
 }
@@ -343,25 +343,25 @@ void grPupupuWhispyUpdateWait(void)
 // 0x80105C70
 void grPupupuWhispyUpdateTurn(void)
 {
-    if (gGroundStruct.pupupu.map_gobj[1]->anim_frame <= 0.0F)
+    if (gGRCommonStruct.pupupu.map_gobj[1]->anim_frame <= 0.0F)
     {
-        gGroundStruct.pupupu.whispy_mouth_status = nGRPupupuWhispyMouthStatusOpen;
-        gGroundStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusOpen;
+        gGRCommonStruct.pupupu.whispy_mouth_status = nGRPupupuWhispyMouthStatusOpen;
+        gGRCommonStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusOpen;
     }
 }
 
 // 0x80105CAC
 void grPupupuWhispyUpdateOpen(void)
 {
-    if (gGroundStruct.pupupu.map_gobj[1]->anim_frame <= 0.0F)
+    if (gGRCommonStruct.pupupu.map_gobj[1]->anim_frame <= 0.0F)
     {
-        gGroundStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusBlow;
+        gGRCommonStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusBlow;
 
-        gGroundStruct.pupupu.flowers_back_status = gGroundStruct.pupupu.flowers_front_status = nGRPupupuFlowerStatusWindStart;
+        gGRCommonStruct.pupupu.flowers_back_status = gGRCommonStruct.pupupu.flowers_front_status = nGRPupupuFlowerStatusWindStart;
 
-        gGroundStruct.pupupu.whispy_wind_duration = mtTrigGetRandomIntRange(GRPUPUPU_WHISPY_WIND_DURATION_RANDOM) + GRPUPUPU_WHISPY_WIND_DURATION_BASE;
+        gGRCommonStruct.pupupu.whispy_wind_duration = mtTrigGetRandomIntRange(GRPUPUPU_WHISPY_WIND_DURATION_RANDOM) + GRPUPUPU_WHISPY_WIND_DURATION_BASE;
 
-        gGroundStruct.pupupu.rumble_wait = 0;
+        gGRCommonStruct.pupupu.rumble_wait = 0;
 
         grPupupuWhispyLeavesMakeEffect();
 
@@ -372,31 +372,31 @@ void grPupupuWhispyUpdateOpen(void)
 // 0x80105D20
 void grPupupuWhispyUpdateWindRumble(void)
 {
-    if (gGroundStruct.pupupu.rumble_wait == 0)
+    if (gGRCommonStruct.pupupu.rumble_wait == 0)
     {
         efManagerQuakeMakeEffect(0);
 
-        gGroundStruct.pupupu.rumble_wait = GRPUPUPU_WHISPY_WIND_RUMBLE_WAIT;
+        gGRCommonStruct.pupupu.rumble_wait = GRPUPUPU_WHISPY_WIND_RUMBLE_WAIT;
     }
-    gGroundStruct.pupupu.rumble_wait--;
+    gGRCommonStruct.pupupu.rumble_wait--;
 }
 
 // 0x80105D6C
 void grPupupuWhispyUpdateBlow(void)
 {
-    gGroundStruct.pupupu.whispy_wind_duration--;
+    gGRCommonStruct.pupupu.whispy_wind_duration--;
 
-    if (gGroundStruct.pupupu.whispy_wind_duration == 0)
+    if (gGRCommonStruct.pupupu.whispy_wind_duration == 0)
     {
-        gGroundStruct.pupupu.whispy_mouth_status = nGRPupupuWhispyMouthStatusClose;
+        gGRCommonStruct.pupupu.whispy_mouth_status = nGRPupupuWhispyMouthStatusClose;
 
-        gGroundStruct.pupupu.flowers_back_status = gGroundStruct.pupupu.flowers_front_status = nGRPupupuFlowerStatusWindLoopEnd;
+        gGRCommonStruct.pupupu.flowers_back_status = gGRCommonStruct.pupupu.flowers_front_status = nGRPupupuFlowerStatusWindLoopEnd;
 
-        gGroundStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusStop;
+        gGRCommonStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusStop;
 
-        if (gGroundStruct.pupupu.leaves_eftrans != NULL)
+        if (gGRCommonStruct.pupupu.leaves_eftrans != NULL)
         {
-            func_ovl0_800D39D4(gGroundStruct.pupupu.leaves_eftrans->unk_effect_0xB8, 1);
+            func_ovl0_800D39D4(gGRCommonStruct.pupupu.leaves_eftrans->unk_effect_0xB8, 1);
         }
     }
     grPupupuWhispyUpdateWindRumble();
@@ -405,31 +405,31 @@ void grPupupuWhispyUpdateBlow(void)
 // 0x80105DD8
 void grPupupuWhispyUpdateStop(void)
 {
-    if (gGroundStruct.pupupu.map_gobj[1]->anim_frame <= 0.0F)
+    if (gGRCommonStruct.pupupu.map_gobj[1]->anim_frame <= 0.0F)
     {
-        gGroundStruct.pupupu.whispy_wind_wait = mtTrigGetRandomIntRange(GRPUPUPU_WHISPY_WAIT_DURATION_RANDOM) + GRPUPUPU_WHISPY_WAIT_DURATION_BASE;
-        gGroundStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusWait;
+        gGRCommonStruct.pupupu.whispy_wind_wait = mtTrigGetRandomIntRange(GRPUPUPU_WHISPY_WAIT_DURATION_RANDOM) + GRPUPUPU_WHISPY_WAIT_DURATION_BASE;
+        gGRCommonStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusWait;
     }
 }
 
 // 0x80105E34
 void grPupupuWhispyUpdateBlink(void)
 {
-    if ((gGroundStruct.pupupu.whispy_eyes_status == -1) && (gGroundStruct.pupupu.map_gobj[0]->anim_frame <= 0.0F))
+    if ((gGRCommonStruct.pupupu.whispy_eyes_status == -1) && (gGRCommonStruct.pupupu.map_gobj[0]->anim_frame <= 0.0F))
     {
-        gGroundStruct.pupupu.whispy_blink_wait--;
+        gGRCommonStruct.pupupu.whispy_blink_wait--;
 
-        if ((gGroundStruct.pupupu.whispy_blink_wait == 0) || (gGroundStruct.pupupu.whispy_blink_wait == -10))
+        if ((gGRCommonStruct.pupupu.whispy_blink_wait == 0) || (gGRCommonStruct.pupupu.whispy_blink_wait == -10))
         {
-            gGroundStruct.pupupu.whispy_eyes_status = nGRPupupuWhispyEyesStatusBlink;
+            gGRCommonStruct.pupupu.whispy_eyes_status = nGRPupupuWhispyEyesStatusBlink;
 
-            if ((gGroundStruct.pupupu.map_gobj[1]->anim_frame <= 0.0F) && (gGroundStruct.pupupu.whispy_status != nGRPupupuWhispyWindStatusBlow))
+            if ((gGRCommonStruct.pupupu.map_gobj[1]->anim_frame <= 0.0F) && (gGRCommonStruct.pupupu.whispy_status != nGRPupupuWhispyWindStatusBlow))
             {
-                gGroundStruct.pupupu.whispy_mouth_status = nGRPupupuWhispyMouthStatusStretch;
+                gGRCommonStruct.pupupu.whispy_mouth_status = nGRPupupuWhispyMouthStatusStretch;
             }
-            if (gGroundStruct.pupupu.whispy_blink_wait != 0)
+            if (gGRCommonStruct.pupupu.whispy_blink_wait != 0)
             {
-                gGroundStruct.pupupu.whispy_blink_wait = mtTrigGetRandomIntRange(GRPUPUPU_WHISPY_BLINK_WAIT_RANDOM) + GRPUPUPU_WHISPY_BLINK_WAIT_BASE;
+                gGRCommonStruct.pupupu.whispy_blink_wait = mtTrigGetRandomIntRange(GRPUPUPU_WHISPY_BLINK_WAIT_RANDOM) + GRPUPUPU_WHISPY_BLINK_WAIT_BASE;
             }
         }
     }
@@ -438,7 +438,7 @@ void grPupupuWhispyUpdateBlink(void)
 // 0x80105EF4
 void grPupupuUpdateWhispyStatus(void)
 {
-    switch (gGroundStruct.pupupu.whispy_status)
+    switch (gGRCommonStruct.pupupu.whispy_status)
     {
     case nGRPupupuWhispyWindStatusSleep:
         grPupupuWhispyUpdateSleep();
@@ -470,43 +470,43 @@ void grPupupuUpdateWhispyStatus(void)
 // 0x80105F94
 void grPupupuFlowersBackWindStart(void)
 {
-    gGroundStruct.pupupu.flowers_back_wait--;
+    gGRCommonStruct.pupupu.flowers_back_wait--;
 
-    if (gGroundStruct.pupupu.flowers_back_wait == 0)
+    if (gGRCommonStruct.pupupu.flowers_back_wait == 0)
     {
-        gGroundStruct.pupupu.whispy_mouth_texture = 0;
-        gGroundStruct.pupupu.flowers_back_status = nGRPupupuFlowerStatusWindLoopStart;
+        gGRCommonStruct.pupupu.whispy_mouth_texture = 0;
+        gGRCommonStruct.pupupu.flowers_back_status = nGRPupupuFlowerStatusWindLoopStart;
     }
 }
 
 // 0x80105FC4
 void grPupupuFlowersBackLoopStart(void)
 {
-    if (gGroundStruct.pupupu.map_gobj[2]->anim_frame <= 0.0F)
+    if (gGRCommonStruct.pupupu.map_gobj[2]->anim_frame <= 0.0F)
     {
-        gGroundStruct.pupupu.whispy_mouth_texture = 1;
-        gGroundStruct.pupupu.flowers_back_status = nGRPupupuFlowerStatusWindLoop;
-        gGroundStruct.pupupu.flowers_back_wait = 15;
+        gGRCommonStruct.pupupu.whispy_mouth_texture = 1;
+        gGRCommonStruct.pupupu.flowers_back_status = nGRPupupuFlowerStatusWindLoop;
+        gGRCommonStruct.pupupu.flowers_back_wait = 15;
     }
 }
 
 // 0x80106008
 void grPupupuFlowersBackLoopEnd(void)
 {
-    gGroundStruct.pupupu.flowers_back_wait--;
+    gGRCommonStruct.pupupu.flowers_back_wait--;
 
-    if (gGroundStruct.pupupu.flowers_back_wait == 0)
+    if (gGRCommonStruct.pupupu.flowers_back_wait == 0)
     {
-        gGroundStruct.pupupu.whispy_mouth_texture = 2;
-        gGroundStruct.pupupu.flowers_back_status = nGRPupupuFlowerStatusWindStop;
-        gGroundStruct.pupupu.flowers_back_wait = 15;
+        gGRCommonStruct.pupupu.whispy_mouth_texture = 2;
+        gGRCommonStruct.pupupu.flowers_back_status = nGRPupupuFlowerStatusWindStop;
+        gGRCommonStruct.pupupu.flowers_back_wait = 15;
     }
 }
 
 // 0x80106044
 void grPupupuFlowersBackUpdateAll(void)
 {
-    switch (gGroundStruct.pupupu.flowers_back_status)
+    switch (gGRCommonStruct.pupupu.flowers_back_status)
     {
     case nGRPupupuFlowerStatusWindStart:
         grPupupuFlowersBackWindStart();
@@ -525,12 +525,12 @@ void grPupupuFlowersBackUpdateAll(void)
 // 0x801060B0
 void grPupupuFlowersFrontWindStart(void)
 {
-    gGroundStruct.pupupu.flowers_front_wait--;
+    gGRCommonStruct.pupupu.flowers_front_wait--;
 
-    if (gGroundStruct.pupupu.flowers_front_wait == 0)
+    if (gGRCommonStruct.pupupu.flowers_front_wait == 0)
     {
-        gGroundStruct.pupupu.whispy_eyes_texture = 0;
-        gGroundStruct.pupupu.flowers_front_status = nGRPupupuFlowerStatusWindLoopStart;
+        gGRCommonStruct.pupupu.whispy_eyes_texture = 0;
+        gGRCommonStruct.pupupu.flowers_front_status = nGRPupupuFlowerStatusWindLoopStart;
     }
 }
 
@@ -541,7 +541,7 @@ void grPupupuWhispyDustMakeEffect(void)
     efTransform *eftrans;
 
     eftrans = NULL;
-    efpart = func_ovl0_800CE9E8(gGroundStruct.pupupu.particle_bank_id | 8, 1);
+    efpart = func_ovl0_800CE9E8(gGRCommonStruct.pupupu.particle_bank_id | 8, 1);
 
     if (efpart != NULL)
     {
@@ -561,23 +561,23 @@ void grPupupuWhispyDustMakeEffect(void)
             }
             else
             {
-                eftrans->translate = dGRPupupuWhispyDustEffectPositions[gGroundStruct.pupupu.lr_players];
+                eftrans->translate = dGRPupupuWhispyDustEffectPositions[gGRCommonStruct.pupupu.lr_players];
 
-                eftrans->rotate.y = (gGroundStruct.pupupu.lr_players == 1) ? 0.0F : F_CST_DTOR32(180.0F);
+                eftrans->rotate.y = (gGRCommonStruct.pupupu.lr_players == 1) ? 0.0F : F_CST_DTOR32(180.0F);
             }
         }
     }
-    gGroundStruct.pupupu.dust_eftrans = eftrans;
+    gGRCommonStruct.pupupu.dust_eftrans = eftrans;
 }
 
 // 0x801061CC
 void grPupupuFlowersFrontLoopStart(void)
 {
-    if (gGroundStruct.pupupu.map_gobj[3]->anim_frame <= 0.0F)
+    if (gGRCommonStruct.pupupu.map_gobj[3]->anim_frame <= 0.0F)
     {
-        gGroundStruct.pupupu.whispy_eyes_texture = 1;
-        gGroundStruct.pupupu.flowers_front_status = nGRPupupuFlowerStatusWindLoop;
-        gGroundStruct.pupupu.flowers_front_wait = 22;
+        gGRCommonStruct.pupupu.whispy_eyes_texture = 1;
+        gGRCommonStruct.pupupu.flowers_front_status = nGRPupupuFlowerStatusWindLoop;
+        gGRCommonStruct.pupupu.flowers_front_wait = 22;
 
         grPupupuWhispyDustMakeEffect();
     }
@@ -586,17 +586,17 @@ void grPupupuFlowersFrontLoopStart(void)
 // 0x80106220
 void grPupupuFlowersFrontLoopEnd(void)
 {
-    gGroundStruct.pupupu.flowers_front_wait--;
+    gGRCommonStruct.pupupu.flowers_front_wait--;
 
-    if (gGroundStruct.pupupu.flowers_front_wait == 0)
+    if (gGRCommonStruct.pupupu.flowers_front_wait == 0)
     {
-        gGroundStruct.pupupu.whispy_eyes_texture = 2;
-        gGroundStruct.pupupu.flowers_front_status = nGRPupupuFlowerStatusWindStop;
-        gGroundStruct.pupupu.flowers_front_wait = 22;
+        gGRCommonStruct.pupupu.whispy_eyes_texture = 2;
+        gGRCommonStruct.pupupu.flowers_front_status = nGRPupupuFlowerStatusWindStop;
+        gGRCommonStruct.pupupu.flowers_front_wait = 22;
 
-        if (gGroundStruct.pupupu.dust_eftrans != NULL)
+        if (gGRCommonStruct.pupupu.dust_eftrans != NULL)
         {
-            func_ovl0_800D39D4(gGroundStruct.pupupu.dust_eftrans->unk_effect_0xB8, 1);
+            func_ovl0_800D39D4(gGRCommonStruct.pupupu.dust_eftrans->unk_effect_0xB8, 1);
         }
     }
     else grPupupuWhispySetWindPush();
@@ -605,7 +605,7 @@ void grPupupuFlowersFrontLoopEnd(void)
 // 0x80106290
 void grPupupuFlowersFrontUpdateAll(void)
 {
-    switch (gGroundStruct.pupupu.flowers_front_status)
+    switch (gGRCommonStruct.pupupu.flowers_front_status)
     {
     case nGRPupupuFlowerStatusWindStart:
         grPupupuFlowersFrontWindStart();
@@ -628,81 +628,81 @@ void grPupupuFlowersFrontUpdateAll(void)
 // 0x80106314
 void grPupupuUpdateGObjAnims(void)
 {
-    if (gGroundStruct.pupupu.whispy_eyes_status != -1)
+    if (gGRCommonStruct.pupupu.whispy_eyes_status != -1)
     {
-        intptr_t offset = dGRPupupuWhispyEyesAnims[gGroundStruct.pupupu.lr_players][gGroundStruct.pupupu.whispy_eyes_status][1];
+        intptr_t offset = dGRPupupuWhispyEyesAnims[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_eyes_status][1];
 
         func_8000BED8_CAD8
         (
             // arg0
-            gGroundStruct.pupupu.map_gobj[0],
+            gGRCommonStruct.pupupu.map_gobj[0],
 
             // arg1
-            dGRPupupuWhispyEyesAnims[gGroundStruct.pupupu.lr_players][gGroundStruct.pupupu.whispy_eyes_status][0] + (uintptr_t)gGroundStruct.pupupu.map_head,
+            dGRPupupuWhispyEyesAnims[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_eyes_status][0] + (uintptr_t)gGRCommonStruct.pupupu.map_head,
 
             // arg2
-            (offset != 0) ? (void*) ((uintptr_t)gGroundStruct.pupupu.map_head + offset) : NULL,
+            (offset != 0) ? (void*) ((uintptr_t)gGRCommonStruct.pupupu.map_head + offset) : NULL,
 
             // arg3
             0.0F
         );
-        func_8000DF34_EB34(gGroundStruct.pupupu.map_gobj[0]);
+        func_8000DF34_EB34(gGRCommonStruct.pupupu.map_gobj[0]);
 
-        gGroundStruct.pupupu.whispy_eyes_status = -1;
+        gGRCommonStruct.pupupu.whispy_eyes_status = -1;
     }
-    if (gGroundStruct.pupupu.whispy_mouth_status != -1)
+    if (gGRCommonStruct.pupupu.whispy_mouth_status != -1)
     {
         func_8000BED8_CAD8
         (
             // arg0
-            gGroundStruct.pupupu.map_gobj[1],
+            gGRCommonStruct.pupupu.map_gobj[1],
 
             // arg1
-            dGRPupupuWhispyMouthAnims[gGroundStruct.pupupu.lr_players][gGroundStruct.pupupu.whispy_mouth_status][0] + (uintptr_t)gGroundStruct.pupupu.map_head,
+            dGRPupupuWhispyMouthAnims[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_mouth_status][0] + (uintptr_t)gGRCommonStruct.pupupu.map_head,
 
             // arg2
-            dGRPupupuWhispyMouthAnims[gGroundStruct.pupupu.lr_players][gGroundStruct.pupupu.whispy_mouth_status][1] + (uintptr_t)gGroundStruct.pupupu.map_head,
+            dGRPupupuWhispyMouthAnims[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_mouth_status][1] + (uintptr_t)gGRCommonStruct.pupupu.map_head,
 
             // arg3
             0.0F
         );
-        func_8000DF34_EB34(gGroundStruct.pupupu.map_gobj[1]);
+        func_8000DF34_EB34(gGRCommonStruct.pupupu.map_gobj[1]);
 
-        gGroundStruct.pupupu.whispy_mouth_status = -1;
+        gGRCommonStruct.pupupu.whispy_mouth_status = -1;
     }
-    if (gGroundStruct.pupupu.whispy_mouth_texture != -1)
+    if (gGRCommonStruct.pupupu.whispy_mouth_texture != -1)
     {
         func_8000BD8C_C98C
         (
             // arg0
-            gGroundStruct.pupupu.map_gobj[2], 
+            gGRCommonStruct.pupupu.map_gobj[2], 
 
             // arg1
-            dGRPupupuWhispyMouthTextures[gGroundStruct.pupupu.lr_players][gGroundStruct.pupupu.whispy_mouth_texture] + (uintptr_t)gGroundStruct.pupupu.map_head, 
+            dGRPupupuWhispyMouthTextures[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_mouth_texture] + (uintptr_t)gGRCommonStruct.pupupu.map_head, 
 
             // arg2
             0.0F
         );
-        func_8000DF34_EB34(gGroundStruct.pupupu.map_gobj[2]);
+        func_8000DF34_EB34(gGRCommonStruct.pupupu.map_gobj[2]);
 
-        gGroundStruct.pupupu.whispy_mouth_texture = -1;
+        gGRCommonStruct.pupupu.whispy_mouth_texture = -1;
     }
-    if (gGroundStruct.pupupu.whispy_eyes_texture != -1)
+    if (gGRCommonStruct.pupupu.whispy_eyes_texture != -1)
     {
         func_8000BD8C_C98C
         (
             // arg0
-            gGroundStruct.pupupu.map_gobj[3],
+            gGRCommonStruct.pupupu.map_gobj[3],
 
             // arg1
-            dGRPupupuWhispyEyesTextures[gGroundStruct.pupupu.lr_players][gGroundStruct.pupupu.whispy_eyes_texture] + (uintptr_t)gGroundStruct.pupupu.map_head, 
+            dGRPupupuWhispyEyesTextures[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_eyes_texture] + (uintptr_t)gGRCommonStruct.pupupu.map_head, 
             
             // arg2
             0.0F
         );
-        func_8000DF34_EB34(gGroundStruct.pupupu.map_gobj[3]);
+        func_8000DF34_EB34(gGRCommonStruct.pupupu.map_gobj[3]);
 
-        gGroundStruct.pupupu.whispy_eyes_texture = -1;
+        gGRCommonStruct.pupupu.whispy_eyes_texture = -1;
     }
 }
 
@@ -722,11 +722,11 @@ GObj* grPupupuMakeMapGObj(intptr_t tk, intptr_t offset2, void (*proc_render)(GOb
 
     omAddGObjRenderProc(ground_gobj, proc_render, dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    func_8000F590(ground_gobj, (uintptr_t)gGroundStruct.pupupu.map_head + tk, NULL, OMMtx_Transform_TraRotRpyRSca, OMMtx_Transform_Null, 0);
+    func_8000F590(ground_gobj, (uintptr_t)gGRCommonStruct.pupupu.map_head + tk, NULL, OMMtx_Transform_TraRotRpyRSca, OMMtx_Transform_Null, 0);
 
     if (offset2 != 0)
     {
-        func_8000F8F4(ground_gobj, (uintptr_t)gGroundStruct.pupupu.map_head + offset2);
+        func_8000F8F4(ground_gobj, (uintptr_t)gGRCommonStruct.pupupu.map_head + offset2);
     }
     omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
 
@@ -738,32 +738,32 @@ void grPupupuInitAll(void)
 {
     // Many linker things here
 
-    gGroundStruct.pupupu.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRPupupuMapHead);
+    gGRCommonStruct.pupupu.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRPupupuMapHead);
 
-    gGroundStruct.pupupu.map_gobj[0] = grPupupuMakeMapGObj(&lGRPupupuMapHead, &D_NF_00000F00, grGeometryLayer0ProcRenderPri, 4);
-    gGroundStruct.pupupu.map_gobj[1] = grPupupuMakeMapGObj(&lGRPupupuWhispyMouthTransformKinds, &D_NF_000013B0, grGeometryLayer0ProcRenderPri, 4);
-    gGroundStruct.pupupu.map_gobj[2] = grPupupuMakeMapGObj(&lGRPupupuFlowersBackTrasnformKinds, 0x0, grGeometryLayer0ProcRenderPri, 4);
-    gGroundStruct.pupupu.map_gobj[3] = grPupupuMakeMapGObj(&lGRPupupuFlowersFrontTransformKinds, 0x0, grGeometryLayer3ProcRenderPri, 16);
+    gGRCommonStruct.pupupu.map_gobj[0] = grPupupuMakeMapGObj(&lGRPupupuMapHead, &D_NF_00000F00, grGeometryLayer0ProcRenderPri, 4);
+    gGRCommonStruct.pupupu.map_gobj[1] = grPupupuMakeMapGObj(&lGRPupupuWhispyMouthTransformKinds, &D_NF_000013B0, grGeometryLayer0ProcRenderPri, 4);
+    gGRCommonStruct.pupupu.map_gobj[2] = grPupupuMakeMapGObj(&lGRPupupuFlowersBackTrasnformKinds, 0x0, grGeometryLayer0ProcRenderPri, 4);
+    gGRCommonStruct.pupupu.map_gobj[3] = grPupupuMakeMapGObj(&lGRPupupuFlowersFrontTransformKinds, 0x0, grGeometryLayer3ProcRenderPri, 16);
 
-    gGroundStruct.pupupu.whispy_eyes_status   =
-    gGroundStruct.pupupu.whispy_mouth_status  =
-    gGroundStruct.pupupu.whispy_mouth_texture =
-    gGroundStruct.pupupu.whispy_eyes_texture  = -1;
+    gGRCommonStruct.pupupu.whispy_eyes_status   =
+    gGRCommonStruct.pupupu.whispy_mouth_status  =
+    gGRCommonStruct.pupupu.whispy_mouth_texture =
+    gGRCommonStruct.pupupu.whispy_eyes_texture  = -1;
 
-    gGroundStruct.pupupu.whispy_status        = 0;
+    gGRCommonStruct.pupupu.whispy_status        = 0;
 
-    gGroundStruct.pupupu.lr_players           = 1;
+    gGRCommonStruct.pupupu.lr_players           = 1;
 
-    gGroundStruct.pupupu.whispy_wind_wait     = mtTrigGetRandomIntRange(GRPUPUPU_WHISPY_WAIT_DURATION_RANDOM) + GRPUPUPU_WHISPY_WAIT_DURATION_BASE;
-    gGroundStruct.pupupu.whispy_blink_wait    = mtTrigGetRandomIntRange(GRPUPUPU_WHISPY_BLINK_WAIT_RANDOM)    + GRPUPUPU_WHISPY_BLINK_WAIT_BASE;
+    gGRCommonStruct.pupupu.whispy_wind_wait     = mtTrigGetRandomIntRange(GRPUPUPU_WHISPY_WAIT_DURATION_RANDOM) + GRPUPUPU_WHISPY_WAIT_DURATION_BASE;
+    gGRCommonStruct.pupupu.whispy_blink_wait    = mtTrigGetRandomIntRange(GRPUPUPU_WHISPY_BLINK_WAIT_RANDOM)    + GRPUPUPU_WHISPY_BLINK_WAIT_BASE;
 
-    gGroundStruct.pupupu.flowers_back_status  =
-    gGroundStruct.pupupu.flowers_front_status = 0;
+    gGRCommonStruct.pupupu.flowers_back_status  =
+    gGRCommonStruct.pupupu.flowers_front_status = 0;
 
-    gGroundStruct.pupupu.flowers_back_wait    = 15;
-    gGroundStruct.pupupu.flowers_front_wait   = 22;
+    gGRCommonStruct.pupupu.flowers_back_wait    = 15;
+    gGRCommonStruct.pupupu.flowers_front_wait   = 22;
 
-    gGroundStruct.pupupu.particle_bank_id = efAllocGetAddParticleBankID(&lGRPupupuParticleBankHeaderLo, &lGRPupupuParticleBankHeaderHi, &lGRPupupuParticleBankTextureLo, &lGRPupupuParticleBankTextureHi);
+    gGRCommonStruct.pupupu.particle_bank_id = efAllocGetAddParticleBankID(&lGRPupupuParticleBankHeaderLo, &lGRPupupuParticleBankHeaderHi, &lGRPupupuParticleBankTextureLo, &lGRPupupuParticleBankTextureHi);
 }
 
 // 0x801066D4

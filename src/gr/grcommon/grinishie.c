@@ -81,18 +81,18 @@ void grInishieScaleUpdateFighterStatsGA(void)
 
         if (fp->ground_or_air == nMPKineticsGround)
         {
-            if (gGroundStruct.inishie.players_ga[player] != nMPKineticsGround)
+            if (gGRCommonStruct.inishie.players_ga[player] != nMPKineticsGround)
             {
-                gGroundStruct.inishie.players_tt[player] = 1;
+                gGRCommonStruct.inishie.players_tt[player] = 1;
             }
-            else if (gGroundStruct.inishie.players_tt[player] != 0)
+            else if (gGRCommonStruct.inishie.players_tt[player] != 0)
             {
-                gGroundStruct.inishie.players_tt[player]--;
+                gGRCommonStruct.inishie.players_tt[player]--;
             }
         }
-        else gGroundStruct.inishie.players_tt[player] = 0;
+        else gGRCommonStruct.inishie.players_tt[player] = 0;
 
-        gGroundStruct.inishie.players_ga[player] = fp->ground_or_air;
+        gGRCommonStruct.inishie.players_ga[player] = fp->ground_or_air;
 
         fighter_gobj = fighter_gobj->link_next;
     }
@@ -114,7 +114,7 @@ f32 grInishieScaleGetPressure(s32 line_id)
             {
                 f32 weight = (1.0F - fp->attributes->weight) + 1.4F;
 
-                if (gGroundStruct.inishie.players_tt[fp->player] != 0)
+                if (gGRCommonStruct.inishie.players_tt[fp->player] != 0)
                 {
                     pressure += (weight * 8.0F);
                 }
@@ -143,93 +143,93 @@ void grInishieScaleUpdateWait(void)
 
     if ((l_weight == 0.0F) && (r_weight == 0.0F))
     {
-        if (gGroundStruct.inishie.splat_altitude != 0.0F)
+        if (gGRCommonStruct.inishie.splat_altitude != 0.0F)
         {
-            if (gGroundStruct.inishie.splat_altitude < 0.0F)
+            if (gGRCommonStruct.inishie.splat_altitude < 0.0F)
             {
-                gGroundStruct.inishie.splat_altitude += 8.0F;
+                gGRCommonStruct.inishie.splat_altitude += 8.0F;
 
-                if (gGroundStruct.inishie.splat_altitude > 0.0F)
+                if (gGRCommonStruct.inishie.splat_altitude > 0.0F)
                 {
-                    gGroundStruct.inishie.splat_altitude = 0.0F;
+                    gGRCommonStruct.inishie.splat_altitude = 0.0F;
                 }
             }
             else
             {
-                gGroundStruct.inishie.splat_altitude -= 8.0F;
+                gGRCommonStruct.inishie.splat_altitude -= 8.0F;
 
-                if (gGroundStruct.inishie.splat_altitude < 0.0F)
+                if (gGRCommonStruct.inishie.splat_altitude < 0.0F)
                 {
-                    gGroundStruct.inishie.splat_altitude = 0.0F;
+                    gGRCommonStruct.inishie.splat_altitude = 0.0F;
                 }
             }
         }
-        gGroundStruct.inishie.splat_accelerate = 0.0F;
+        gGRCommonStruct.inishie.splat_accelerate = 0.0F;
     }
     else
     {
-        gGroundStruct.inishie.splat_accelerate += (r_weight - l_weight);
+        gGRCommonStruct.inishie.splat_accelerate += (r_weight - l_weight);
 
-        if ((l_weight != 0.0F) && (r_weight != 0.0F) && (gGroundStruct.inishie.splat_accelerate != 0.0F))
+        if ((l_weight != 0.0F) && (r_weight != 0.0F) && (gGRCommonStruct.inishie.splat_accelerate != 0.0F))
         {
-            gGroundStruct.inishie.splat_accelerate *= 0.93F;
+            gGRCommonStruct.inishie.splat_accelerate *= 0.93F;
         }
-        else if (gGroundStruct.inishie.splat_accelerate > 0.0F)
+        else if (gGRCommonStruct.inishie.splat_accelerate > 0.0F)
         {
-            gGroundStruct.inishie.splat_accelerate -= 0.9F;
+            gGRCommonStruct.inishie.splat_accelerate -= 0.9F;
 
-            if (gGroundStruct.inishie.splat_accelerate < 0.0F)
+            if (gGRCommonStruct.inishie.splat_accelerate < 0.0F)
             {
-                gGroundStruct.inishie.splat_accelerate = 0.0F;
+                gGRCommonStruct.inishie.splat_accelerate = 0.0F;
             }
         }
-        else if (gGroundStruct.inishie.splat_accelerate < 0.0F)
+        else if (gGRCommonStruct.inishie.splat_accelerate < 0.0F)
         {
-            gGroundStruct.inishie.splat_accelerate += 0.9F;
+            gGRCommonStruct.inishie.splat_accelerate += 0.9F;
 
-            if (gGroundStruct.inishie.splat_accelerate > 0.0F)
+            if (gGRCommonStruct.inishie.splat_accelerate > 0.0F)
             {
-                gGroundStruct.inishie.splat_accelerate = 0.0F;
+                gGRCommonStruct.inishie.splat_accelerate = 0.0F;
             }
         }
-        gGroundStruct.inishie.splat_altitude += gGroundStruct.inishie.splat_accelerate;
+        gGRCommonStruct.inishie.splat_altitude += gGRCommonStruct.inishie.splat_accelerate;
     }
-    alt = ABSF(gGroundStruct.inishie.splat_altitude);
+    alt = ABSF(gGRCommonStruct.inishie.splat_altitude);
 
-    l_dobj = gGroundStruct.inishie.scale[0].platform_dobj;
-    r_dobj = gGroundStruct.inishie.scale[1].platform_dobj;
+    l_dobj = gGRCommonStruct.inishie.scale[0].platform_dobj;
+    r_dobj = gGRCommonStruct.inishie.scale[1].platform_dobj;
 
     if (alt > 1100.0F)
     {
         ud = 0;
 
-        if (gGroundStruct.inishie.splat_altitude < 0.0F)
+        if (gGRCommonStruct.inishie.splat_altitude < 0.0F)
         {
             ud = 1;
 
-            if (gGroundStruct.inishie.splat_accelerate != 0.0F)
+            if (gGRCommonStruct.inishie.splat_accelerate != 0.0F)
             {
                 // ??? The permuter found this but I really can't match it otherwise
             }
         }
-        gGroundStruct.inishie.splat_accelerate = 0.0F;
+        gGRCommonStruct.inishie.splat_accelerate = 0.0F;
 
         if (ud != 0)
         {
-            gGroundStruct.inishie.splat_altitude = -1100.0F;
+            gGRCommonStruct.inishie.splat_altitude = -1100.0F;
         }
-        else gGroundStruct.inishie.splat_altitude = 1100.0F;
+        else gGRCommonStruct.inishie.splat_altitude = 1100.0F;
 
-        gGroundStruct.inishie.splat_status = nGRInishieScaleStatusFall;
+        gGRCommonStruct.inishie.splat_status = nGRInishieScaleStatusFall;
 
         efManagerSparkleWhiteScaleMakeEffect(&l_dobj->translate.vec.f, 1.0F);
         efManagerSparkleWhiteScaleMakeEffect(&r_dobj->translate.vec.f, 1.0F);
     }
-    l_dobj->translate.vec.f.y = gGroundStruct.inishie.scale[0].platform_base_y + gGroundStruct.inishie.splat_altitude;
-    r_dobj->translate.vec.f.y = gGroundStruct.inishie.scale[1].platform_base_y - gGroundStruct.inishie.splat_altitude;
+    l_dobj->translate.vec.f.y = gGRCommonStruct.inishie.scale[0].platform_base_y + gGRCommonStruct.inishie.splat_altitude;
+    r_dobj->translate.vec.f.y = gGRCommonStruct.inishie.scale[1].platform_base_y - gGRCommonStruct.inishie.splat_altitude;
 
-    gGroundStruct.inishie.scale[0].string_dobj->translate.vec.f.y = l_dobj->translate.vec.f.y - gGroundStruct.inishie.scale[0].string_length;
-    gGroundStruct.inishie.scale[1].string_dobj->translate.vec.f.y = r_dobj->translate.vec.f.y - gGroundStruct.inishie.scale[1].string_length;
+    gGRCommonStruct.inishie.scale[0].string_dobj->translate.vec.f.y = l_dobj->translate.vec.f.y - gGRCommonStruct.inishie.scale[0].string_length;
+    gGRCommonStruct.inishie.scale[1].string_dobj->translate.vec.f.y = r_dobj->translate.vec.f.y - gGRCommonStruct.inishie.scale[1].string_length;
 }
 
 // 0x80109118
@@ -237,40 +237,40 @@ void grInishieScaleUpdateFall(void)
 {
     f32 deadzone;
 
-    gGroundStruct.inishie.splat_accelerate += 3.0F;
+    gGRCommonStruct.inishie.splat_accelerate += 3.0F;
 
-    if (gGroundStruct.inishie.splat_accelerate > 70.0F)
+    if (gGRCommonStruct.inishie.splat_accelerate > 70.0F)
     {
-        gGroundStruct.inishie.splat_accelerate = 70.0F;
+        gGRCommonStruct.inishie.splat_accelerate = 70.0F;
     }
-    gGroundStruct.inishie.scale[0].platform_dobj->translate.vec.f.y -= gGroundStruct.inishie.splat_accelerate;
-    gGroundStruct.inishie.scale[1].platform_dobj->translate.vec.f.y -= gGroundStruct.inishie.splat_accelerate;
+    gGRCommonStruct.inishie.scale[0].platform_dobj->translate.vec.f.y -= gGRCommonStruct.inishie.splat_accelerate;
+    gGRCommonStruct.inishie.scale[1].platform_dobj->translate.vec.f.y -= gGRCommonStruct.inishie.splat_accelerate;
 
     deadzone = gMPGroundData->blastzone_bottom + (-1000.0F);
 
-    if ((gGroundStruct.inishie.scale[0].platform_dobj->translate.vec.f.y < deadzone) && (gGroundStruct.inishie.scale[1].platform_dobj->translate.vec.f.y < deadzone))
+    if ((gGRCommonStruct.inishie.scale[0].platform_dobj->translate.vec.f.y < deadzone) && (gGRCommonStruct.inishie.scale[1].platform_dobj->translate.vec.f.y < deadzone))
     {
-        gGroundStruct.inishie.splat_status = nGRInishieScaleStatusSleep;
-        gGroundStruct.inishie.splat_accelerate = 0.0F;
+        gGRCommonStruct.inishie.splat_status = nGRInishieScaleStatusSleep;
+        gGRCommonStruct.inishie.splat_accelerate = 0.0F;
 
         mpCollisionSetYakumonoOffID(dGRInishieScaleLineGroups[0]);
         mpCollisionSetYakumonoOffID(dGRInishieScaleLineGroups[1]);
 
-        gGroundStruct.inishie.splat_wait = 180;
+        gGRCommonStruct.inishie.splat_wait = 180;
     }
 }
 
 // 0x80109220
 void grInishieScaleUpdateStep(void)
 {
-    gGroundStruct.inishie.splat_wait--;
+    gGRCommonStruct.inishie.splat_wait--;
 
-    if (gGroundStruct.inishie.splat_wait == 0)
+    if (gGRCommonStruct.inishie.splat_wait == 0)
     {
-        gGroundStruct.inishie.splat_status = nGRInishieScaleStatusRetract;
+        gGRCommonStruct.inishie.splat_status = nGRInishieScaleStatusRetract;
 
-        omAddDObjAnimAll(gGroundStruct.inishie.scale[0].platform_dobj, (ATrack*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGroundStruct.inishie.map_head), 0.0F);
-        omAddDObjAnimAll(gGroundStruct.inishie.scale[1].platform_dobj, (ATrack*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGroundStruct.inishie.map_head), 0.0F);
+        omAddDObjAnimAll(gGRCommonStruct.inishie.scale[0].platform_dobj, (ATrack*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
+        omAddDObjAnimAll(gGRCommonStruct.inishie.scale[1].platform_dobj, (ATrack*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
     }
 }
 
@@ -281,33 +281,33 @@ void grInishieScaleUpdateRetract(void)
     DObj *r_dobj;
     sb32 is_complete = FALSE;
 
-    if (gGroundStruct.inishie.splat_altitude != 0.0F)
+    if (gGRCommonStruct.inishie.splat_altitude != 0.0F)
     {
-        if (gGroundStruct.inishie.splat_altitude < 0.0F)
+        if (gGRCommonStruct.inishie.splat_altitude < 0.0F)
         {
-            gGroundStruct.inishie.splat_altitude += 10.0F;
+            gGRCommonStruct.inishie.splat_altitude += 10.0F;
 
-            if (gGroundStruct.inishie.splat_altitude >= 0.0F)
+            if (gGRCommonStruct.inishie.splat_altitude >= 0.0F)
             {
                 is_complete = TRUE;
             }
         }
         else
         {
-            gGroundStruct.inishie.splat_altitude -= 10.0F;
+            gGRCommonStruct.inishie.splat_altitude -= 10.0F;
 
-            if (gGroundStruct.inishie.splat_altitude <= 0.0F)
+            if (gGRCommonStruct.inishie.splat_altitude <= 0.0F)
             {
                 is_complete = TRUE;
             }
         }
     }
-    l_dobj = gGroundStruct.inishie.scale[0].platform_dobj;
-    r_dobj = gGroundStruct.inishie.scale[1].platform_dobj;
+    l_dobj = gGRCommonStruct.inishie.scale[0].platform_dobj;
+    r_dobj = gGRCommonStruct.inishie.scale[1].platform_dobj;
 
     if (is_complete != FALSE)
     {
-        gGroundStruct.inishie.splat_altitude = 0.0F;
+        gGRCommonStruct.inishie.splat_altitude = 0.0F;
 
         l_dobj->dobj_f0 = AOBJ_FRAME_NULL;
         l_dobj->flags = DOBJ_FLAG_NONE;
@@ -319,19 +319,19 @@ void grInishieScaleUpdateRetract(void)
 
         mpCollisionSetYakumonoOnID(dGRInishieScaleLineGroups[1]);
 
-        gGroundStruct.inishie.splat_status = nGRInishieScaleStatusWait;
+        gGRCommonStruct.inishie.splat_status = nGRInishieScaleStatusWait;
     }
-    l_dobj->translate.vec.f.y = gGroundStruct.inishie.scale[0].platform_base_y + gGroundStruct.inishie.splat_altitude;
-    r_dobj->translate.vec.f.y = gGroundStruct.inishie.scale[1].platform_base_y - gGroundStruct.inishie.splat_altitude;
+    l_dobj->translate.vec.f.y = gGRCommonStruct.inishie.scale[0].platform_base_y + gGRCommonStruct.inishie.splat_altitude;
+    r_dobj->translate.vec.f.y = gGRCommonStruct.inishie.scale[1].platform_base_y - gGRCommonStruct.inishie.splat_altitude;
 
-    gGroundStruct.inishie.scale[0].string_dobj->translate.vec.f.y = l_dobj->translate.vec.f.y - gGroundStruct.inishie.scale[0].string_length;
-    gGroundStruct.inishie.scale[1].string_dobj->translate.vec.f.y = r_dobj->translate.vec.f.y - gGroundStruct.inishie.scale[1].string_length;
+    gGRCommonStruct.inishie.scale[0].string_dobj->translate.vec.f.y = l_dobj->translate.vec.f.y - gGRCommonStruct.inishie.scale[0].string_length;
+    gGRCommonStruct.inishie.scale[1].string_dobj->translate.vec.f.y = r_dobj->translate.vec.f.y - gGRCommonStruct.inishie.scale[1].string_length;
 }
 
 // 0x801093EC
 void grInishieScaleProcUpdate(GObj *ground_gobj)
 {
-    switch (gGroundStruct.inishie.splat_status)
+    switch (gGRCommonStruct.inishie.splat_status)
     {
     case nGRInishieScaleStatusWait:
         grInishieScaleUpdateWait();
@@ -349,8 +349,8 @@ void grInishieScaleProcUpdate(GObj *ground_gobj)
         grInishieScaleUpdateRetract();
         break;
     }
-    mpCollisionSetYakumonoPosID(dGRInishieScaleLineGroups[0], &gGroundStruct.inishie.scale[0].platform_dobj->translate.vec.f);
-    mpCollisionSetYakumonoPosID(dGRInishieScaleLineGroups[1], &gGroundStruct.inishie.scale[1].platform_dobj->translate.vec.f);
+    mpCollisionSetYakumonoPosID(dGRInishieScaleLineGroups[0], &gGRCommonStruct.inishie.scale[0].platform_dobj->translate.vec.f);
+    mpCollisionSetYakumonoPosID(dGRInishieScaleLineGroups[1], &gGRCommonStruct.inishie.scale[1].platform_dobj->translate.vec.f);
 }
 
 // 0x801094A0
@@ -364,25 +364,25 @@ void grInishieMakeScale(void)
     s32 mpoint;
     Vec3f yakumono_pos;
 
-    map_head = gGroundStruct.inishie.map_head;
+    map_head = gGRCommonStruct.inishie.map_head;
     ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(ground_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
     grModelSetupInitDObj(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&lGRInishieScaleDObjDesc), map_dobj, dGRInishieScaleTransformKinds);
 
-    gGroundStruct.inishie.scale[0].string_dobj = map_dobj[4];
-    gGroundStruct.inishie.scale[0].string_length = map_dobj[0]->translate.vec.f.y + map_dobj[3]->translate.vec.f.y;
+    gGRCommonStruct.inishie.scale[0].string_dobj = map_dobj[4];
+    gGRCommonStruct.inishie.scale[0].string_length = map_dobj[0]->translate.vec.f.y + map_dobj[3]->translate.vec.f.y;
 
-    gGroundStruct.inishie.scale[1].string_dobj = map_dobj[2];
-    gGroundStruct.inishie.scale[1].string_length = map_dobj[0]->translate.vec.f.y + map_dobj[1]->translate.vec.f.y;
+    gGRCommonStruct.inishie.scale[1].string_dobj = map_dobj[2];
+    gGRCommonStruct.inishie.scale[1].string_length = map_dobj[0]->translate.vec.f.y + map_dobj[1]->translate.vec.f.y;
 
-    for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.scale); i++)
+    for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.inishie.scale); i++)
     {
         ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
         omAddGObjRenderProc(ground_gobj, odRenderDObjDLHead0, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
         platform_dobj = omAddDObjForGObj(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&lGRInishieMapHead));
-        gGroundStruct.inishie.scale[i].platform_dobj = platform_dobj;
+        gGRCommonStruct.inishie.scale[i].platform_dobj = platform_dobj;
 
         omAddOMMtxForDObjFixed(platform_dobj, OMMtx_Transform_Tra, 0);
         omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
@@ -392,21 +392,21 @@ void grInishieMakeScale(void)
 
         platform_dobj->translate.vec.f = yakumono_pos;
 
-        gGroundStruct.inishie.scale[i].platform_base_y = yakumono_pos.y;
+        gGRCommonStruct.inishie.scale[i].platform_base_y = yakumono_pos.y;
 
         mpCollisionSetYakumonoOnID(dGRInishieScaleLineGroups[i]);
     }
     omAddGObjCommonProc(ground_gobj, grInishieScaleProcUpdate, GObjProcess_Kind_Proc, 4);
 
-    // WARNING: gGroundStruct MUST be defined as extern in ground.h in order for this to match
-    gGroundStruct.inishie.splat_status = nGRInishieScaleStatusWait;
-    gGroundStruct.inishie.splat_altitude = 0.0F;
-    gGroundStruct.inishie.splat_accelerate = 0.0F;
+    // WARNING: gGRCommonStruct MUST be defined as extern in ground.h in order for this to match
+    gGRCommonStruct.inishie.splat_status = nGRInishieScaleStatusWait;
+    gGRCommonStruct.inishie.splat_altitude = 0.0F;
+    gGRCommonStruct.inishie.splat_accelerate = 0.0F;
 
-    for (i = 0; i < (ARRAY_COUNT(gGroundStruct.inishie.players_ga) + ARRAY_COUNT(gGroundStruct.inishie.players_tt)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(gGRCommonStruct.inishie.players_ga) + ARRAY_COUNT(gGRCommonStruct.inishie.players_tt)) / 2; i++)
     {
-        gGroundStruct.inishie.players_tt[i] = 0;
-        gGroundStruct.inishie.players_ga[i] = 0;
+        gGRCommonStruct.inishie.players_tt[i] = 0;
+        gGRCommonStruct.inishie.players_ga[i] = 0;
     }
 }
 
@@ -415,9 +415,9 @@ void grInishiePakkunSetWaitFighter(void)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.pakkun_gobj); i++)
+    for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.inishie.pakkun_gobj); i++)
     {
-        itPakkunSDefaultSetWaitFighter(gGroundStruct.inishie.pakkun_gobj[i]);
+        itPakkunSDefaultSetWaitFighter(gGRCommonStruct.inishie.pakkun_gobj[i]);
     }
 }
 
@@ -429,14 +429,14 @@ void grInishieMakePakkun(void)
     Vec3f vel;
     s32 mpoint;
 
-    for (i = 0; i < ARRAY_COUNT(gGroundStruct.inishie.pakkun_gobj); i++)
+    for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.inishie.pakkun_gobj); i++)
     {
         mpCollisionGetMapObjIDsKind(dGRInishiePakkunMapObjKinds[i], &mpoint);
         mpCollisionGetMapObjPositionID(mpoint, &pos);
 
         vel.x = vel.y = vel.z = 0.0F;
 
-        gGroundStruct.inishie.pakkun_gobj[i] = itManagerMakeItemSetupCommon(NULL, It_Kind_Pakkun, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
+        gGRCommonStruct.inishie.pakkun_gobj[i] = itManagerMakeItemSetupCommon(NULL, It_Kind_Pakkun, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
     }
 }
 
@@ -445,16 +445,16 @@ void grInishiePowerBlockUpdateWait(void)
 {
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
-        gGroundStruct.inishie.pblock_status = nGRInishiePowerBlockStatusMake;
-        gGroundStruct.inishie.pblock_appear_wait = 1800;
+        gGRCommonStruct.inishie.pblock_status = nGRInishiePowerBlockStatusMake;
+        gGRCommonStruct.inishie.pblock_appear_wait = 1800;
     }
 }
 
 // 0x8010986C
 void grInishiePowerBlockSetWait(void)
 {
-    gGroundStruct.inishie.pblock_status = nGRInishiePowerBlockStatusMake;
-    gGroundStruct.inishie.pblock_appear_wait = 1800;
+    gGRCommonStruct.inishie.pblock_status = nGRInishiePowerBlockStatusMake;
+    gGRCommonStruct.inishie.pblock_appear_wait = 1800;
 }
 
 // 0x80109888
@@ -464,11 +464,11 @@ void grInishiePowerBlockUpdateMake(void)
     Vec3f pos;
     Vec3f vel;
 
-    gGroundStruct.inishie.pblock_appear_wait--;
+    gGRCommonStruct.inishie.pblock_appear_wait--;
 
-    if (gGroundStruct.inishie.pblock_appear_wait == 0)
+    if (gGRCommonStruct.inishie.pblock_appear_wait == 0)
     {
-        s32 pblock_pos_id = gGroundStruct.inishie.pblock_pos_ids[mtTrigGetRandomIntRange(gGroundStruct.inishie.pblock_pos_count)];
+        s32 pblock_pos_id = gGRCommonStruct.inishie.pblock_pos_ids[mtTrigGetRandomIntRange(gGRCommonStruct.inishie.pblock_pos_count)];
 
         mpCollisionGetMapObjPositionID(pblock_pos_id, &pos);
 
@@ -478,8 +478,8 @@ void grInishiePowerBlockUpdateMake(void)
 
         if (pblock_gobj != NULL)
         {
-            gGroundStruct.inishie.pblock_gobj = pblock_gobj;
-            gGroundStruct.inishie.pblock_status = nGRInishiePowerBlockStatusSleep;
+            gGRCommonStruct.inishie.pblock_gobj = pblock_gobj;
+            gGRCommonStruct.inishie.pblock_status = nGRInishiePowerBlockStatusSleep;
         }
         else grInishiePowerBlockSetWait();
     }
@@ -488,18 +488,18 @@ void grInishiePowerBlockUpdateMake(void)
 // 0x8010992C
 void grInishiePowerBlockUpdateDamage(void)
 {
-    gGroundStruct.inishie.pblock_appear_wait--;
+    gGRCommonStruct.inishie.pblock_appear_wait--;
 
-    if (gGroundStruct.inishie.pblock_appear_wait == 0)
+    if (gGRCommonStruct.inishie.pblock_appear_wait == 0)
     {
-        ftMainClearMapEnvGObj(gGroundStruct.inishie.pblock_gobj);
+        ftMainClearMapEnvGObj(gGRCommonStruct.inishie.pblock_gobj);
     }
 }
 
 // 0x80109968
 void grInishiePowerBlockProcUpdate(GObj *ground_gobj)
 {
-    switch (gGroundStruct.inishie.pblock_status)
+    switch (gGRCommonStruct.inishie.pblock_status)
     {
     case nGRInishiePowerBlockStatusWait:
         grInishiePowerBlockUpdateWait();
@@ -522,7 +522,7 @@ void grInishieMakePowerBlock(void)
 
     omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT), grInishiePowerBlockProcUpdate, GObjProcess_Kind_Proc, 4);
 
-    gGroundStruct.inishie.pblock_pos_count = pos_count = mpCollisionGetMapObjCountKind(nMPMapObjKindPowerBlock);
+    gGRCommonStruct.inishie.pblock_pos_count = pos_count = mpCollisionGetMapObjCountKind(nMPMapObjKindPowerBlock);
 
     if ((pos_count == 0) || (pos_count > ARRAY_COUNT(pos_ids)))
     {
@@ -532,25 +532,25 @@ void grInishieMakePowerBlock(void)
             smRunPrintGObjStatus();
         }
     }
-    gGroundStruct.inishie.pblock_pos_ids = (u8*) gsMemoryAlloc(pos_count * sizeof(*gGroundStruct.inishie.pblock_pos_ids), 0x0);
+    gGRCommonStruct.inishie.pblock_pos_ids = (u8*) gsMemoryAlloc(pos_count * sizeof(*gGRCommonStruct.inishie.pblock_pos_ids), 0x0);
 
     mpCollisionGetMapObjIDsKind(nMPMapObjKindPowerBlock, pos_ids);
 
     for (i = 0; i < pos_count; i++)
     {
-        gGroundStruct.inishie.pblock_pos_ids[i] = pos_ids[i];
+        gGRCommonStruct.inishie.pblock_pos_ids[i] = pos_ids[i];
     }
-    gGroundStruct.inishie.pblock_status = nGRInishiePowerBlockStatusWait;
-    gGroundStruct.inishie.gr_hit = (grHitbox*) (((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRInishiePowerBlockHit);
+    gGRCommonStruct.inishie.pblock_status = nGRInishiePowerBlockStatusWait;
+    gGRCommonStruct.inishie.gr_hit = (grHitbox*) (((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRInishiePowerBlockHit);
 }
 
 // 0x80109B4C
 void grInishiePowerBlockSetDamage(void)
 {
-    ftMainCheckSetMapEnvGObj(gGroundStruct.inishie.pblock_gobj, grInishiePowerBlockCheckGetDamageKind);
+    ftMainCheckSetMapEnvGObj(gGRCommonStruct.inishie.pblock_gobj, grInishiePowerBlockCheckGetDamageKind);
 
-    gGroundStruct.inishie.pblock_appear_wait = 2;
-    gGroundStruct.inishie.pblock_status = nGRInishiePowerBlockStatusDamage;
+    gGRCommonStruct.inishie.pblock_appear_wait = 2;
+    gGRCommonStruct.inishie.pblock_status = nGRInishiePowerBlockStatusDamage;
 }
 
 // 0x80109B8C
@@ -564,7 +564,7 @@ sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, 
 
         if (fighter_gobj != ip->damage_gobj)
         {
-            *gr_hit = gGroundStruct.inishie.gr_hit;
+            *gr_hit = gGRCommonStruct.inishie.gr_hit;
             *kind = gmHitEnvironment_Kind_PowerBlock;
 
             return TRUE;
@@ -576,8 +576,8 @@ sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, 
 // 0x80109BD4
 void grInishieInitHeaders(void)
 {
-    gGroundStruct.inishie.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRInishieMapHead);
-    gGroundStruct.inishie.item_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart);
+    gGRCommonStruct.inishie.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRInishieMapHead);
+    gGRCommonStruct.inishie.item_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart);
 }
 
 // 0x80109C0C
@@ -594,7 +594,7 @@ GObj* grInishieMakeGround(void)
 // 0x80109C48
 void grInishieScaleGetPlatformInfo(f32 *alt, f32 *accel) // Unused?
 {
-    *alt = 1100.0F - ((gGroundStruct.inishie.splat_altitude < 0.0F) ? -gGroundStruct.inishie.splat_altitude : gGroundStruct.inishie.splat_altitude);
+    *alt = 1100.0F - ((gGRCommonStruct.inishie.splat_altitude < 0.0F) ? -gGRCommonStruct.inishie.splat_altitude : gGRCommonStruct.inishie.splat_altitude);
 
-    *accel = (gGroundStruct.inishie.splat_accelerate < 0.0F) ? -gGroundStruct.inishie.splat_accelerate : gGroundStruct.inishie.splat_accelerate;
+    *accel = (gGRCommonStruct.inishie.splat_accelerate < 0.0F) ? -gGRCommonStruct.inishie.splat_accelerate : gGRCommonStruct.inishie.splat_accelerate;
 }

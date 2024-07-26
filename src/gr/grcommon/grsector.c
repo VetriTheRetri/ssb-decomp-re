@@ -187,7 +187,7 @@ wpCreateDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
 {
     0,                                                  // Render flags?
     Wp_Kind_ArwingLaser2D,                              // Weapon Kind
-    &gGroundStruct.sector.weapon_head,                  // Pointer to character's loaded files?
+    &gGRCommonStruct.sector.weapon_head,                  // Pointer to character's loaded files?
     &lGRSectorArwingLaser2DWeaponAttributes,            // Offset of weapon attributes in loaded files
     
     // DObj transformation struct
@@ -212,7 +212,7 @@ wpCreateDesc dGRSectorArwingWeaponLaser3DWeaponDesc =
 {
     0,                                                  // Render flags?
     Wp_Kind_ArwingLaser3D,                              // Weapon Kind
-    &gGroundStruct.sector.weapon_head,                  // Pointer to character's loaded files?
+    &gGRCommonStruct.sector.weapon_head,                  // Pointer to character's loaded files?
     &lGRSectorArwingLaser3DWeaponAttributes,            // Offset of weapon attributes in loaded files
     
     // DObj transformation struct
@@ -254,7 +254,7 @@ enum grSectorArwingStatus
 // 0x80106730
 void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 {
-    DObj *sp54 = gGroundStruct.sector.map_dobj[11];
+    DObj *sp54 = gGRCommonStruct.sector.map_dobj[11];
     AObj *aobj = arg0->aobj;
     f32 vlen;
 
@@ -276,7 +276,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
         }
         aobj = aobj->next;
     }
-    if ((sp54->dobj_f0 != AOBJ_FRAME_NULL) && (gGroundStruct.sector.arwing_laser_count == 0))
+    if ((sp54->dobj_f0 != AOBJ_FRAME_NULL) && (gGRCommonStruct.sector.arwing_laser_count == 0))
     {
         aobj = sp54->aobj;
 
@@ -320,7 +320,7 @@ sb32 func_ovl2_80106904(Mtx *o_mtx, DObj *dobj, f32 arg2)
     sp68.y = 1.0F;
     sp68.z = 0.0F;
 
-    if (gGroundStruct.sector.arwing_laser_count == 2)
+    if (gGRCommonStruct.sector.arwing_laser_count == 2)
     {
         sp74.x = sp74.y = 0.0F;
         sp74.z = 1;
@@ -339,7 +339,7 @@ sb32 func_ovl2_80106904(Mtx *o_mtx, DObj *dobj, f32 arg2)
 
     n_mtx[0][3] = n_mtx[1][3] = n_mtx[2][3] = 0.0F;             // sp34, sp44, sp54
 
-    n_mtx[3][0] = tx + gGroundStruct.sector.arwing_target_x;    // sp58
+    n_mtx[3][0] = tx + gGRCommonStruct.sector.arwing_target_x;    // sp58
     n_mtx[3][1] = ty;                                           // sp5C
     n_mtx[3][2] = tz;                                           // sp60
 
@@ -374,7 +374,7 @@ void func_ovl2_80106A98(void)
 {
     if (gBattleState->game_status != gmMatch_GameStatus_Wait)
     {
-        gGroundStruct.sector.arwing_status = nGRSectorArwingStatusWait;
+        gGRCommonStruct.sector.arwing_status = nGRSectorArwingStatusWait;
     }
 }
 
@@ -383,51 +383,51 @@ void grSectorArwingUpdateSleep(void)
 {
     s32 random;
 
-    if (gGroundStruct.sector.arwing_appear_timer != 0)
+    if (gGRCommonStruct.sector.arwing_appear_timer != 0)
     {
-        gGroundStruct.sector.arwing_appear_timer--;
+        gGRCommonStruct.sector.arwing_appear_timer--;
     }
     else
     {
-        gGroundStruct.sector.arwing_target_x = 0.0F;
+        gGRCommonStruct.sector.arwing_target_x = 0.0F;
 
-        if (gGroundStruct.sector.arwing_type_cycle != 0)
+        if (gGRCommonStruct.sector.arwing_type_cycle != 0)
         {
             random = mtTrigGetRandomIntRange(5);
 
             if (random == 4)
             {
-                gGroundStruct.sector.arwing_target_x = dGRSectorArwingMapPositionsX[mtTrigGetRandomIntRange(ARRAY_COUNT(dGRSectorArwingMapPositionsX))];
+                gGRCommonStruct.sector.arwing_target_x = dGRSectorArwingMapPositionsX[mtTrigGetRandomIntRange(ARRAY_COUNT(dGRSectorArwingMapPositionsX))];
             }
-            gGroundStruct.sector.arwing_type_cycle--;
-            gGroundStruct.sector.arwing_state_timer = mtTrigGetRandomIntRange(540) + 180;
-            gGroundStruct.sector.arwing_pilot_current = -1;
+            gGRCommonStruct.sector.arwing_type_cycle--;
+            gGRCommonStruct.sector.arwing_state_timer = mtTrigGetRandomIntRange(540) + 180;
+            gGRCommonStruct.sector.arwing_pilot_current = -1;
         }
         else
         {
             random = mtTrigGetRandomIntRange(3) + 5;
 
-            gGroundStruct.sector.unk_sector_0x4C = ((mtTrigGetRandomUShort() % 2) != 0) ? random - 5 : -1;
+            gGRCommonStruct.sector.unk_sector_0x4C = ((mtTrigGetRandomUShort() % 2) != 0) ? random - 5 : -1;
 
-            gGroundStruct.sector.arwing_type_cycle = 3;
-            gGroundStruct.sector.arwing_pilot_current = -2;
+            gGRCommonStruct.sector.arwing_type_cycle = 3;
+            gGRCommonStruct.sector.arwing_pilot_current = -2;
         }
-        gGroundStruct.sector.arwing_flight_pattern = random;
-        gGroundStruct.sector.arwing_status = 2;
-        gGroundStruct.sector.unk_sector_0x4E = 0x3C;
+        gGRCommonStruct.sector.arwing_flight_pattern = random;
+        gGRCommonStruct.sector.arwing_status = 2;
+        gGRCommonStruct.sector.unk_sector_0x4E = 0x3C;
 
-        gGroundStruct.sector.map_dobj[1]->translate.vec.f.x =
-        gGroundStruct.sector.map_dobj[1]->translate.vec.f.y =
-        gGroundStruct.sector.map_dobj[1]->translate.vec.f.z = 0.0F;
+        gGRCommonStruct.sector.map_dobj[1]->translate.vec.f.x =
+        gGRCommonStruct.sector.map_dobj[1]->translate.vec.f.y =
+        gGRCommonStruct.sector.map_dobj[1]->translate.vec.f.z = 0.0F;
 
-        gGroundStruct.sector.map_dobj[1]->rotate.vec.f.x =
-        gGroundStruct.sector.map_dobj[1]->rotate.vec.f.y =
-        gGroundStruct.sector.map_dobj[1]->rotate.vec.f.z = 0.0F;
+        gGRCommonStruct.sector.map_dobj[1]->rotate.vec.f.x =
+        gGRCommonStruct.sector.map_dobj[1]->rotate.vec.f.y =
+        gGRCommonStruct.sector.map_dobj[1]->rotate.vec.f.z = 0.0F;
 
-        gGroundStruct.sector.is_arwing_line_collision = FALSE;
-        gGroundStruct.sector.is_arwing_line_active = TRUE;
-        gGroundStruct.sector.is_arwing_z_collision = FALSE;
-        gGroundStruct.sector.arwing_laser_ammo = 0;
+        gGRCommonStruct.sector.is_arwing_line_collision = FALSE;
+        gGRCommonStruct.sector.is_arwing_line_active = TRUE;
+        gGRCommonStruct.sector.is_arwing_z_collision = FALSE;
+        gGRCommonStruct.sector.arwing_laser_ammo = 0;
 
         func_800269C0_275C0(alSound_SFX_SectorAmbient1);
     }
@@ -436,24 +436,24 @@ void grSectorArwingUpdateSleep(void)
 // 0x80106C28
 void grSectorArwingDecideZNear(void)
 {
-    if (ABSF(gGroundStruct.sector.map_dobj[0]->translate.vec.f.z) < 200.0F)
+    if (ABSF(gGRCommonStruct.sector.map_dobj[0]->translate.vec.f.z) < 200.0F)
     {
-        gGroundStruct.sector.is_arwing_z_near = TRUE;
+        gGRCommonStruct.sector.is_arwing_z_near = TRUE;
     }
-    else gGroundStruct.sector.is_arwing_z_near = FALSE;
+    else gGRCommonStruct.sector.is_arwing_z_near = FALSE;
 }
 
 // 0x80106C88
 void func_ovl2_80106C88(void)
 {
-    switch (gGroundStruct.sector.arwing_state_timer)
+    switch (gGRCommonStruct.sector.arwing_state_timer)
     {
     case 0:
-        gGroundStruct.sector.is_arwing_line_active = FALSE;
+        gGRCommonStruct.sector.is_arwing_line_active = FALSE;
         break;
 
     case 88:
-        gGroundStruct.sector.is_arwing_line_active = TRUE;
+        gGRCommonStruct.sector.is_arwing_line_active = TRUE;
         break;
     }
 }
@@ -461,14 +461,14 @@ void func_ovl2_80106C88(void)
 // 0x80106CC4
 void func_ovl2_80106CC4(void)
 {
-    switch (gGroundStruct.sector.arwing_state_timer)
+    switch (gGRCommonStruct.sector.arwing_state_timer)
     {
     case 0:
-        gGroundStruct.sector.is_arwing_line_active = FALSE;
+        gGRCommonStruct.sector.is_arwing_line_active = FALSE;
         break;
 
     case 178:
-        gGroundStruct.sector.is_arwing_line_active = TRUE;
+        gGRCommonStruct.sector.is_arwing_line_active = TRUE;
         break;
     }
 }
@@ -476,34 +476,34 @@ void func_ovl2_80106CC4(void)
 // 0x80106D00
 void func_ovl2_80106D00(void)
 {
-    if (gGroundStruct.sector.arwing_state_timer == 0)
+    if (gGRCommonStruct.sector.arwing_state_timer == 0)
     {
-        gGroundStruct.sector.map_dobj[7]->dobj_f0 = AOBJ_FRAME_NULL;
-        gGroundStruct.sector.map_dobj[7]->flags = DOBJ_FLAG_NONE;
-        gGroundStruct.sector.map_dobj[9]->dobj_f0 = AOBJ_FRAME_NULL;
-        gGroundStruct.sector.map_dobj[9]->flags = DOBJ_FLAG_NORENDER;
+        gGRCommonStruct.sector.map_dobj[7]->dobj_f0 = AOBJ_FRAME_NULL;
+        gGRCommonStruct.sector.map_dobj[7]->flags = DOBJ_FLAG_NONE;
+        gGRCommonStruct.sector.map_dobj[9]->dobj_f0 = AOBJ_FRAME_NULL;
+        gGRCommonStruct.sector.map_dobj[9]->flags = DOBJ_FLAG_NORENDER;
 
-        func_ovl2_80106A40(gGroundStruct.sector.map_dobj[8], (ATrack*) ((uintptr_t)gGroundStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (ATrack*) ((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
     }
-    else if (gGroundStruct.sector.map_dobj[8]->dobj_f0 == AOBJ_FRAME_NULL)
+    else if (gGRCommonStruct.sector.map_dobj[8]->dobj_f0 == AOBJ_FRAME_NULL)
     {
-        gGroundStruct.sector.map_dobj[7]->flags = DOBJ_FLAG_NORENDER;
-        gGroundStruct.sector.map_dobj[9]->flags = DOBJ_FLAG_NONE;
+        gGRCommonStruct.sector.map_dobj[7]->flags = DOBJ_FLAG_NORENDER;
+        gGRCommonStruct.sector.map_dobj[9]->flags = DOBJ_FLAG_NONE;
     }
-    if (gGroundStruct.sector.map_dobj[1]->dobj_f0 == AOBJ_FRAME_NULL)
+    if (gGRCommonStruct.sector.map_dobj[1]->dobj_f0 == AOBJ_FRAME_NULL)
     {
-        gGroundStruct.sector.map_dobj[0]->dobj_f0 = AOBJ_FRAME_NULL;
+        gGRCommonStruct.sector.map_dobj[0]->dobj_f0 = AOBJ_FRAME_NULL;
     }
 }
 
 // 0x80106DD8
 void func_ovl2_80106DD8(void)
 {
-    if (gGroundStruct.sector.arwing_pilot_current != -2)
+    if (gGRCommonStruct.sector.arwing_pilot_current != -2)
     {
-        if (gGroundStruct.sector.arwing_pilot_current >= 0)
+        if (gGRCommonStruct.sector.arwing_pilot_current >= 0)
         {
-            switch (gGroundStruct.sector.arwing_pilot_current)
+            switch (gGRCommonStruct.sector.arwing_pilot_current)
             {
             case 1:
                 func_ovl2_80106C88();
@@ -517,27 +517,27 @@ void func_ovl2_80106DD8(void)
                 func_ovl2_80106D00();
                 break;
             }
-            if (gGroundStruct.sector.map_dobj[1]->dobj_f0 == AOBJ_FRAME_NULL)
+            if (gGRCommonStruct.sector.map_dobj[1]->dobj_f0 == AOBJ_FRAME_NULL)
             {
-                gGroundStruct.sector.arwing_pilot_current = -1;
-                gGroundStruct.sector.arwing_state_timer = 120;
+                gGRCommonStruct.sector.arwing_pilot_current = -1;
+                gGRCommonStruct.sector.arwing_state_timer = 120;
             }
-            else gGroundStruct.sector.arwing_state_timer++;
+            else gGRCommonStruct.sector.arwing_state_timer++;
         }
         else
         {
-            gGroundStruct.sector.arwing_state_timer--;
+            gGRCommonStruct.sector.arwing_state_timer--;
 
-            if (gGroundStruct.sector.arwing_state_timer == 0)
+            if (gGRCommonStruct.sector.arwing_state_timer == 0)
             {
-                u8 *random = &dGRSectorArwingPilotWaitTimers[gGroundStruct.sector.arwing_pilot_prev][0];
+                u8 *random = &dGRSectorArwingPilotWaitTimers[gGRCommonStruct.sector.arwing_pilot_prev][0];
                 s32 pilot_id = dGRSectorArwingPilotIDs[random[0] + mtTrigGetRandomIntRange(random[1])];
 
                 if (pilot_id != 0)
                 {
-                    func_ovl2_80106A40(gGroundStruct.sector.map_dobj[1], (ATrack*) ((intptr_t)dGRSectorArwingAnimJoints[pilot_id] + (uintptr_t)gGroundStruct.sector.map_head), 0.0F);
+                    func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[1], (ATrack*) ((intptr_t)dGRSectorArwingAnimJoints[pilot_id] + (uintptr_t)gGRCommonStruct.sector.map_head), 0.0F);
                 }
-                gGroundStruct.sector.arwing_pilot_prev = gGroundStruct.sector.arwing_pilot_current = pilot_id;
+                gGRCommonStruct.sector.arwing_pilot_prev = gGRCommonStruct.sector.arwing_pilot_current = pilot_id;
             }
         }
     }
@@ -557,14 +557,14 @@ s32 grSectorArwingPrepareLaserCount(void)
 s32 grSectorArwingGetLaserAmmoCount(void)
 {
     GObj *fighter_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
-    f32 pos_x = gGroundStruct.sector.map_dobj[0]->translate.vec.f.x + gGroundStruct.sector.arwing_target_x;
-    f32 pos_y = gGroundStruct.sector.map_dobj[0]->translate.vec.f.y + gGroundStruct.sector.map_dobj[1]->translate.vec.f.y;
+    f32 pos_x = gGRCommonStruct.sector.map_dobj[0]->translate.vec.f.x + gGRCommonStruct.sector.arwing_target_x;
+    f32 pos_y = gGRCommonStruct.sector.map_dobj[0]->translate.vec.f.y + gGRCommonStruct.sector.map_dobj[1]->translate.vec.f.y;
 
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (gGroundStruct.sector.arwing_laser_count == 2)
+        if (gGRCommonStruct.sector.arwing_laser_count == 2)
         {
             DObj *joint = fp->joint[ftParts_Joint_TopN];
 
@@ -638,7 +638,7 @@ void func_ovl2_8010719C(Vec3f *vel, Vec3f *rotate)
 
     sp20.x = 0.0F;
 
-    rot_z = gGroundStruct.sector.map_dobj[1]->rotate.vec.f.z + F_CST_DTOR32(90.0F);
+    rot_z = gGRCommonStruct.sector.map_dobj[1]->rotate.vec.f.z + F_CST_DTOR32(90.0F);
 
     sp20.y = __sinf(rot_z);
     sp20.z = __cosf(rot_z);
@@ -695,12 +695,12 @@ void grSectorArwingWeaponLaser2DMakeWeapon(void)
     Vec3f vel;
     f32 zero = 0.0F;
 
-    sp54.x = gGroundStruct.sector.map_dobj[0]->translate.vec.f.x + gGroundStruct.sector.arwing_target_x;
-    sp54.y = gGroundStruct.sector.map_dobj[0]->translate.vec.f.y + gGroundStruct.sector.map_dobj[1]->translate.vec.f.y;
+    sp54.x = gGRCommonStruct.sector.map_dobj[0]->translate.vec.f.x + gGRCommonStruct.sector.arwing_target_x;
+    sp54.y = gGRCommonStruct.sector.map_dobj[0]->translate.vec.f.y + gGRCommonStruct.sector.map_dobj[1]->translate.vec.f.y;
 
-    sp48 = gGroundStruct.sector.map_dobj[2]->translate.vec.f;
+    sp48 = gGRCommonStruct.sector.map_dobj[2]->translate.vec.f;
 
-    lbVector_Vec3fGetEulerRotation(&sp48, MTVECTOR_AXIS_Z, gGroundStruct.sector.map_dobj[1]->rotate.vec.f.z);
+    lbVector_Vec3fGetEulerRotation(&sp48, MTVECTOR_AXIS_Z, gGRCommonStruct.sector.map_dobj[1]->rotate.vec.f.z);
 
     pos.x = (sp54.x - sp48.z) - 566.0F;
     pos.y = sp54.y + sp48.y;
@@ -721,9 +721,9 @@ void grSectorArwingWeaponLaser2DMakeWeapon(void)
 
         DObjGetStruct(weapon_gobj)->rotate.vec.f = rotate;
 
-        sp48 = gGroundStruct.sector.map_dobj[3]->translate.vec.f;
+        sp48 = gGRCommonStruct.sector.map_dobj[3]->translate.vec.f;
 
-        lbVector_Vec3fGetEulerRotation(&sp48, 4, gGroundStruct.sector.map_dobj[1]->rotate.vec.f.z);
+        lbVector_Vec3fGetEulerRotation(&sp48, 4, gGRCommonStruct.sector.map_dobj[1]->rotate.vec.f.z);
 
         pos.x = (sp54.x - sp48.z) - 566.0F;
         pos.y = sp54.y + sp48.y;
@@ -836,7 +836,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
     Mtx44f mtx;
     DObj *dobj;
 
-    dobj = gGroundStruct.sector.map_dobj[0];
+    dobj = gGRCommonStruct.sector.map_dobj[0];
 
     func_ovl2_80106730(dobj, &sp94, &sp88, &sp7C);
 
@@ -854,7 +854,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
 
     mtx[0][3] = mtx[1][3] = mtx[2][3] = 0.0F;// sp3C, sp4C, sp5C
 
-    mtx[3][0] = dobj->translate.vec.f.x + gGroundStruct.sector.arwing_target_x; // sp60
+    mtx[3][0] = dobj->translate.vec.f.x + gGRCommonStruct.sector.arwing_target_x; // sp60
     mtx[3][1] = dobj->translate.vec.f.y; // sp64
     mtx[3][2] = dobj->translate.vec.f.z;
 
@@ -910,7 +910,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
 // 0x80107910
 void func_ovl2_80107910(void)
 {
-    if (gGroundStruct.sector.arwing_laser_count == 2)
+    if (gGRCommonStruct.sector.arwing_laser_count == 2)
     {
         grSectorArwingWeaponLaser2DMakeWeapon();
     }
@@ -926,77 +926,77 @@ void func_ovl2_80107958(void)
     s32 ammo;
     void *mh1, *mh2;
 
-    if (gGroundStruct.sector.arwing_laser_ammo == 0)
+    if (gGRCommonStruct.sector.arwing_laser_ammo == 0)
     {
         ammo = 0;
 
-        if (gGroundStruct.sector.arwing_pilot_current == -2)
+        if (gGRCommonStruct.sector.arwing_pilot_current == -2)
         {
             if 
             (
-                ((gGroundStruct.sector.unk_sector_0x4C == 0) && (gGroundStruct.sector.arwing_appear_timer == 5)) || 
-                ((gGroundStruct.sector.unk_sector_0x4C == 1) && (gGroundStruct.sector.arwing_appear_timer == 5))
+                ((gGRCommonStruct.sector.unk_sector_0x4C == 0) && (gGRCommonStruct.sector.arwing_appear_timer == 5)) || 
+                ((gGRCommonStruct.sector.unk_sector_0x4C == 1) && (gGRCommonStruct.sector.arwing_appear_timer == 5))
             )
             {
                 ammo = grSectorArwingPrepareLaserCount();
             }
         }
-        else if (gGroundStruct.sector.is_arwing_z_near == 0)
+        else if (gGRCommonStruct.sector.is_arwing_z_near == 0)
         {
-            gGroundStruct.sector.unk_sector_0x4E = 60;
-            gGroundStruct.sector.arwing_laser_ammo = 0;
+            gGRCommonStruct.sector.unk_sector_0x4E = 60;
+            gGRCommonStruct.sector.arwing_laser_ammo = 0;
         }
         else
         {
-            gGroundStruct.sector.unk_sector_0x4E--;
+            gGRCommonStruct.sector.unk_sector_0x4E--;
 
-            if (gGroundStruct.sector.unk_sector_0x4E == 0)
+            if (gGRCommonStruct.sector.unk_sector_0x4E == 0)
             {
                 ammo = grSectorArwingGetLaserAmmoCount();
 
-                gGroundStruct.sector.unk_sector_0x4E = 60;
+                gGRCommonStruct.sector.unk_sector_0x4E = 60;
             }
         }
         if (ammo != 0)
         {
-            gGroundStruct.sector.arwing_laser_ammo = ammo;
-            gGroundStruct.sector.arwing_laser_timer = 0;
-            gGroundStruct.sector.unk_sector_0x52 = 0;
+            gGRCommonStruct.sector.arwing_laser_ammo = ammo;
+            gGRCommonStruct.sector.arwing_laser_timer = 0;
+            gGRCommonStruct.sector.unk_sector_0x52 = 0;
         }
     }
     else
     {
-        if (gGroundStruct.sector.arwing_laser_timer == 0)
+        if (gGRCommonStruct.sector.arwing_laser_timer == 0)
         {
-            if (gGroundStruct.sector.unk_sector_0x52 == 0)
+            if (gGRCommonStruct.sector.unk_sector_0x52 == 0)
             {
-                mh1 = gGroundStruct.sector.map_head;
+                mh1 = gGRCommonStruct.sector.map_head;
 
-                func_ovl2_80106A40(gGroundStruct.sector.map_dobj[4], (ATrack*)((uintptr_t)mh1 + (intptr_t)&D_NF_00001B84), 0.0F);
-                func_ovl2_80106A40(gGroundStruct.sector.map_dobj[5], (ATrack*)((uintptr_t)mh1 + (intptr_t)&D_NF_00001B84), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[4], (ATrack*)((uintptr_t)mh1 + (intptr_t)&D_NF_00001B84), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[5], (ATrack*)((uintptr_t)mh1 + (intptr_t)&D_NF_00001B84), 0.0F);
 
-                gGroundStruct.sector.unk_sector_0x52++;
+                gGRCommonStruct.sector.unk_sector_0x52++;
             }
-            else if (gGroundStruct.sector.map_dobj[4]->dobj_f0 == AOBJ_FRAME_NULL)
+            else if (gGRCommonStruct.sector.map_dobj[4]->dobj_f0 == AOBJ_FRAME_NULL)
             {
-                mh2 = gGroundStruct.sector.map_head;
+                mh2 = gGRCommonStruct.sector.map_head;
 
                 func_ovl2_80107910();
 
-                func_ovl2_80106A40(gGroundStruct.sector.map_dobj[2], (ATrack*)((uintptr_t)mh2 + (intptr_t)&D_NF_00001B34), 0.0F);
-                func_ovl2_80106A40(gGroundStruct.sector.map_dobj[3], (ATrack*)((uintptr_t)mh2 + (intptr_t)&D_NF_00001B34), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[2], (ATrack*)((uintptr_t)mh2 + (intptr_t)&D_NF_00001B34), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[3], (ATrack*)((uintptr_t)mh2 + (intptr_t)&D_NF_00001B34), 0.0F);
 
-                gGroundStruct.sector.arwing_laser_timer = 30;
-                gGroundStruct.sector.arwing_laser_ammo--;
+                gGRCommonStruct.sector.arwing_laser_timer = 30;
+                gGRCommonStruct.sector.arwing_laser_ammo--;
             }
         }
-        if (gGroundStruct.sector.arwing_laser_timer)
+        if (gGRCommonStruct.sector.arwing_laser_timer)
         {
-            gGroundStruct.sector.arwing_laser_timer--;
+            gGRCommonStruct.sector.arwing_laser_timer--;
         }
-        if (gGroundStruct.sector.arwing_laser_ammo == 0)
+        if (gGRCommonStruct.sector.arwing_laser_ammo == 0)
         {
-            gGroundStruct.sector.unk_sector_0x4E = 240;
+            gGRCommonStruct.sector.unk_sector_0x4E = 240;
         }
     }
 }
@@ -1004,9 +1004,9 @@ void func_ovl2_80107958(void)
 // 0x80107B30
 void func_ovl2_80107B30(void)
 {
-    if ((gGroundStruct.sector.map_dobj[8]->dobj_f0 == AOBJ_FRAME_NULL) && (gGroundStruct.sector.map_dobj[7]->flags == DOBJ_FLAG_NONE))
+    if ((gGRCommonStruct.sector.map_dobj[8]->dobj_f0 == AOBJ_FRAME_NULL) && (gGRCommonStruct.sector.map_dobj[7]->flags == DOBJ_FLAG_NONE))
     {
-        func_ovl2_80106A40(gGroundStruct.sector.map_dobj[8], (ATrack*)((uintptr_t)gGroundStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (ATrack*)((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
 
         func_800269C0_275C0(alSound_SFX_SectorAmbient2);
     }
@@ -1017,27 +1017,27 @@ void grSectorArwingUpdateCollisions(void)
 {
     Vec3f pos;
 
-    if (gGroundStruct.sector.arwing_pilot_current != -2)
+    if (gGRCommonStruct.sector.arwing_pilot_current != -2)
     {
-        if ((gGroundStruct.sector.is_arwing_line_active) && (gGroundStruct.sector.is_arwing_z_near))
+        if ((gGRCommonStruct.sector.is_arwing_line_active) && (gGRCommonStruct.sector.is_arwing_z_near))
         {
-            pos.x = gGroundStruct.sector.map_dobj[0]->translate.vec.f.x + gGroundStruct.sector.arwing_target_x;
-            pos.y = gGroundStruct.sector.map_dobj[0]->translate.vec.f.y + gGroundStruct.sector.map_dobj[1]->translate.vec.f.y;
+            pos.x = gGRCommonStruct.sector.map_dobj[0]->translate.vec.f.x + gGRCommonStruct.sector.arwing_target_x;
+            pos.y = gGRCommonStruct.sector.map_dobj[0]->translate.vec.f.y + gGRCommonStruct.sector.map_dobj[1]->translate.vec.f.y;
             pos.z = 0.0F;
 
-            if ((gGroundStruct.sector.is_arwing_z_collision == FALSE) || (gGroundStruct.sector.is_arwing_line_collision == FALSE))
+            if ((gGRCommonStruct.sector.is_arwing_z_collision == FALSE) || (gGRCommonStruct.sector.is_arwing_line_collision == FALSE))
             {
                 mpCollisionSetYakumonoOnID(1);
                 mpCollisionSetYakumonoPosID(1, &pos);
             }
             mpCollisionSetYakumonoPosID(1, &pos);
         }
-        if ((!(gGroundStruct.sector.is_arwing_line_active) || !(gGroundStruct.sector.is_arwing_z_near)) && (gGroundStruct.sector.is_arwing_z_collision != FALSE) && (gGroundStruct.sector.is_arwing_line_collision != FALSE))
+        if ((!(gGRCommonStruct.sector.is_arwing_line_active) || !(gGRCommonStruct.sector.is_arwing_z_near)) && (gGRCommonStruct.sector.is_arwing_z_collision != FALSE) && (gGRCommonStruct.sector.is_arwing_line_collision != FALSE))
         {
             mpCollisionSetYakumonoOffID(1);
         }
-        gGroundStruct.sector.is_arwing_line_collision = gGroundStruct.sector.is_arwing_line_active;
-        gGroundStruct.sector.is_arwing_z_collision = gGroundStruct.sector.is_arwing_z_near;
+        gGRCommonStruct.sector.is_arwing_line_collision = gGRCommonStruct.sector.is_arwing_line_active;
+        gGRCommonStruct.sector.is_arwing_z_collision = gGRCommonStruct.sector.is_arwing_z_near;
     }
 }
 
@@ -1050,16 +1050,16 @@ void func_ovl2_80107CA0(void)
     func_ovl2_80107B30();
     grSectorArwingUpdateCollisions();
 
-    if (gGroundStruct.sector.map_dobj[0]->dobj_f0 == AOBJ_FRAME_NULL)
+    if (gGRCommonStruct.sector.map_dobj[0]->dobj_f0 == AOBJ_FRAME_NULL)
     {
-        gGroundStruct.sector.map_gobj->flags = GOBJ_FLAG_NORENDER;
+        gGRCommonStruct.sector.map_gobj->flags = GOBJ_FLAG_NORENDER;
 
-        gGroundStruct.sector.arwing_appear_timer = mtTrigGetRandomIntRange(1140) + 960;
-        gGroundStruct.sector.arwing_status = nGRSectorArwingStatusWait;
+        gGRCommonStruct.sector.arwing_appear_timer = mtTrigGetRandomIntRange(1140) + 960;
+        gGRCommonStruct.sector.arwing_status = nGRSectorArwingStatusWait;
 
         mpCollisionSetYakumonoOffID(1);
     }
-    else gGroundStruct.sector.arwing_appear_timer++;
+    else gGRCommonStruct.sector.arwing_appear_timer++;
 }
 
 // 0x80107D50
@@ -1068,19 +1068,19 @@ void func_ovl2_80107D50(void)
     GObj *map_gobj;
     grSectorDesc *desc;
 
-    if (gGroundStruct.sector.arwing_flight_pattern != -1)
+    if (gGRCommonStruct.sector.arwing_flight_pattern != -1)
     {
-        map_gobj = gGroundStruct.sector.map_gobj;
-        gGroundStruct.sector.arwing_laser_count = dGRSectorArwingLaserCounts[gGroundStruct.sector.arwing_flight_pattern];
+        map_gobj = gGRCommonStruct.sector.map_gobj;
+        gGRCommonStruct.sector.arwing_laser_count = dGRSectorArwingLaserCounts[gGRCommonStruct.sector.arwing_flight_pattern];
 
-        desc = (grSectorDesc*) ((intptr_t)dGRSectorArwingSectorDescs[gGroundStruct.sector.arwing_flight_pattern] + (uintptr_t)gGroundStruct.sector.map_head);
+        desc = (grSectorDesc*) ((intptr_t)dGRSectorArwingSectorDescs[gGRCommonStruct.sector.arwing_flight_pattern] + (uintptr_t)gGRCommonStruct.sector.map_head);
 
-        func_ovl2_80106A40(gGroundStruct.sector.map_dobj[0], desc->atrack_0x0, 0.0F);
-        func_ovl2_80106A40(gGroundStruct.sector.map_dobj[7], desc->atrack_0x1C, 0.0F);
-        func_ovl2_80106A40(gGroundStruct.sector.map_dobj[9], desc->atrack_0x24, 0.0F);
-        func_ovl2_80106A40(gGroundStruct.sector.map_dobj[11], desc->atrack_0x2C, 0.0F);
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[0], desc->atrack_0x0, 0.0F);
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[7], desc->atrack_0x1C, 0.0F);
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[9], desc->atrack_0x24, 0.0F);
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[11], desc->atrack_0x2C, 0.0F);
 
-        gGroundStruct.sector.arwing_flight_pattern = -1;
+        gGRCommonStruct.sector.arwing_flight_pattern = -1;
         map_gobj->flags = GOBJ_FLAG_NONE;
     }
 }
@@ -1088,7 +1088,7 @@ void func_ovl2_80107D50(void)
 // 0x80107E08
 void grSectorProcUpdate(GObj *ground_gobj)
 {
-    switch (gGroundStruct.sector.arwing_status)
+    switch (gGRCommonStruct.sector.arwing_status)
     {
     case 0:
         func_ovl2_80106A98();
@@ -1112,34 +1112,34 @@ void grSectorInitAll(void)
     GObj *map_gobj;
     void *map_file;
 
-    gGroundStruct.sector.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRSectorMapHead);
+    gGRCommonStruct.sector.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRSectorMapHead);
 
     map_file = rldm_get_file_force((intptr_t)&D_NF_000000A1);
 
-    gGroundStruct.sector.map_file = map_file;
+    gGRCommonStruct.sector.map_file = map_file;
 
     map_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
-    gGroundStruct.sector.map_gobj = map_gobj;
+    gGRCommonStruct.sector.map_gobj = map_gobj;
 
     omAddGObjRenderProc(map_gobj, odRenderDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
-    grModelSetupInitDObj(map_gobj, (DObjDesc*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002C30), gGroundStruct.sector.map_dobj, dGRSectorArwingTransformKinds);
+    grModelSetupInitDObj(map_gobj, (DObjDesc*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002C30), gGRCommonStruct.sector.map_dobj, dGRSectorArwingTransformKinds);
     omAddGObjCommonProc(map_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
 
-    gGroundStruct.sector.arwing_status = 0;
-    gGroundStruct.sector.arwing_flight_pattern = -1;
-    gGroundStruct.sector.arwing_appear_timer = 600;
-    gGroundStruct.sector.arwing_type_cycle = 3;
-    gGroundStruct.sector.arwing_pilot_current = -1;
-    gGroundStruct.sector.arwing_pilot_prev = 0;
-    gGroundStruct.sector.arwing_target_x = 0.0F;
+    gGRCommonStruct.sector.arwing_status = 0;
+    gGRCommonStruct.sector.arwing_flight_pattern = -1;
+    gGRCommonStruct.sector.arwing_appear_timer = 600;
+    gGRCommonStruct.sector.arwing_type_cycle = 3;
+    gGRCommonStruct.sector.arwing_pilot_current = -1;
+    gGRCommonStruct.sector.arwing_pilot_prev = 0;
+    gGRCommonStruct.sector.arwing_target_x = 0.0F;
 
     map_gobj->flags = GOBJ_FLAG_NORENDER;
 
-    omAddDObjAnimAll(gGroundStruct.sector.map_dobj[10], (ATrack*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002E74), 0.0F);
+    omAddDObjAnimAll(gGRCommonStruct.sector.map_dobj[10], (ATrack*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002E74), 0.0F);
     func_8000DF34_EB34(map_gobj);
     mpCollisionSetYakumonoOffID(1);
-    gGroundStruct.sector.weapon_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart);
+    gGRCommonStruct.sector.weapon_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart);
 }
 
 // 0x80107FCC

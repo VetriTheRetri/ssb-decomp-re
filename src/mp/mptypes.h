@@ -4,6 +4,8 @@
 #include <ssb_types.h>
 #include <macros.h>
 #include <sys/obj.h>
+#include <gm/battle.h>
+#include <gm/gmmisc.h>
 #include <mp/mpdef.h>
 
 #define MPCOLL_KIND_LWALL (1 << 0)		// 0x1
@@ -199,6 +201,54 @@ struct mpCollData
 
 	s32 cliff_id;					// Ledge ID
 	s32 ignore_line_id; 			// Ignore this line when checking for collision
+};
+
+struct mpItemWeights
+{
+    u8 item_quantities[20];
+};
+
+struct mpGroundDesc
+{
+	void* dobj_desc;
+	void* anim_joint;
+	void* aobj;
+	void* matanim_joint;
+};
+
+struct mpGroundData
+{
+	mpGroundDesc gr_desc[4];
+	mpGeometryInfo* map_geometry;
+	u8 layer_mask; // render mask which determines render type for each geo layer (gr_desc) - 0 = primary, 1 = secondary (more alpha control w/2 display lists)
+	Sprite *wallpaper; 								// Background image?
+	gsColorRGB fog_color;
+	u8 fog_alpha;								 	// Unused padding?
+	gsColorRGB emblem_colors[GMMATCH_PLAYERS_MAX]; 	// What's this doing here?
+	s32 unk_0x5C;
+	Vec3f light_angle;
+	s16 cam_bound_top;
+	s16 cam_bound_bottom;
+	s16 cam_bound_right;
+	s16 cam_bound_left;
+	s16 blastzone_top;
+	s16 blastzone_bottom;
+	s16 blastzone_right;
+	s16 blastzone_left;
+	u32 music_id;
+	void *map_nodes;
+	mpItemWeights *item_weights; // Randomizer weights of items
+	s16 unk_groundinfo_0x88;
+	s16 cam_bound_team_top;
+	s16 cam_bound_team_bottom;
+	s16 cam_bound_team_right;
+	s16 cam_bound_team_left;
+	s16 unk_bound_top;
+	s16 unk_bound_bottom;
+	s16 unk_bound_right;
+	s16 unk_bound_left;
+	Vec3h unk_groundinfo_0x9A;
+	Vec3h unk_groundinfo_0xA0;
 };
 
 #endif

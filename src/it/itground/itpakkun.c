@@ -26,7 +26,7 @@ intptr_t lITPakkunNDamageMatAnimJoint;      // 0x00000E04
 itCreateDesc dITPakkunItemDesc =
 {
     It_Kind_Pakkun,                         // Item Kind
-    &gGroundStruct.inishie.item_head,       // Pointer to item file data?
+    &gGRCommonStruct.inishie.item_head,       // Pointer to item file data?
     &lITPakkunItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -194,8 +194,8 @@ sb32 itPakkunDWaitProcUpdate(GObj *item_gobj)
         {
             DObj *dobj = DObjGetStruct(item_gobj);
 
-            omAddDObjAnimAll(dobj, (uintptr_t)gGroundStruct.inishie.map_head + (intptr_t)&lITPakkunDAppearAnimJoint, 0.0F);
-            omAddMObjAnimAll(dobj->mobj, (uintptr_t)gGroundStruct.inishie.map_head + (intptr_t)&lITPakkunDAppearMatAnimJoint, 0.0F);
+            omAddDObjAnimAll(dobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunDAppearAnimJoint, 0.0F);
+            omAddMObjAnimAll(dobj->mobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunDAppearMatAnimJoint, 0.0F);
             func_8000DF34_EB34(item_gobj);
 
             dobj->translate.vec.f.y += ip->item_vars.pakkun.pos.y;
@@ -300,7 +300,7 @@ sb32 itPakkunDAppearProcDamage(GObj *item_gobj)
 
         dobj->dobj_f0 = AOBJ_FRAME_NULL;
 
-        omAddMObjAnimAll(dobj->mobj, (uintptr_t)gGroundStruct.inishie.map_head + (intptr_t)&lITPakkunNDamageMatAnimJoint, 0.0F);
+        omAddMObjAnimAll(dobj->mobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunNDamageMatAnimJoint, 0.0F);
         func_8000DF34_EB34(item_gobj);
     }
     return FALSE;

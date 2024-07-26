@@ -29,7 +29,7 @@ extern s32 dGRYamabukiMonsterAttackKind;
 itCreateDesc dITFushigibanaItemDesc =
 {
     It_Kind_Fushigibana,                        // Item Kind
-    &gGroundStruct.yamabuki.item_head,          // Pointer to item file data?
+    &gGRCommonStruct.yamabuki.item_head,          // Pointer to item file data?
     &lITFushigibanaItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -54,7 +54,7 @@ wpCreateDesc dITFushigibanaWeaponRazorWeaponDesc =
 {
     0x03,                                       // Render flags?
     Wp_Kind_FushigibanaRazor,                   // Weapon Kind
-    &gGroundStruct.yamabuki.item_head,          // Pointer to item's loaded files?
+    &gGRCommonStruct.yamabuki.item_head,          // Pointer to item's loaded files?
     &lITFushigibanaWeaponRazorWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

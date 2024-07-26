@@ -55,7 +55,7 @@ enum grYosterCloudStatus
 // 0x80108550
 efGenerator* grYosterCloudVaporMakeEffect(Vec3f *pos)
 {
-    efGenerator *efgen = func_ovl0_800D35DC(gGroundStruct.yoster.particle_bank_id, 0);
+    efGenerator *efgen = func_ovl0_800D35DC(gGRCommonStruct.yoster.particle_bank_id, 0);
 
     if (efgen != NULL)
     {
@@ -94,21 +94,21 @@ void grYosterUpdateCloudSolid(s32 cloud_id)
     Vec3f pos;
     DObj *dobj;
 
-    if (gGroundStruct.yoster.clouds[cloud_id].dobj[0]->mobj->mobj_f0 == AOBJ_FRAME_NULL)
+    if (gGRCommonStruct.yoster.clouds[cloud_id].dobj[0]->mobj->mobj_f0 == AOBJ_FRAME_NULL)
     {
-        if (gGroundStruct.yoster.clouds[cloud_id].is_cloud_line_active == FALSE)
+        if (gGRCommonStruct.yoster.clouds[cloud_id].is_cloud_line_active == FALSE)
         {
             mpCollisionSetYakumonoOnID(dGRYosterCloudLineIDs[cloud_id]);
 
-            gGroundStruct.yoster.clouds[cloud_id].is_cloud_line_active = TRUE;
+            gGRCommonStruct.yoster.clouds[cloud_id].is_cloud_line_active = TRUE;
         }
-        if (gGroundStruct.yoster.clouds[cloud_id].pressure_timer == 0)
+        if (gGRCommonStruct.yoster.clouds[cloud_id].pressure_timer == 0)
         {
-            gGroundStruct.yoster.clouds[cloud_id].status = nGRYosterCloudStatusEvaporate;
-            gGroundStruct.yoster.clouds[cloud_id].anim_id = nGRYosterCloudStatusEvaporate;
-            gGroundStruct.yoster.clouds[cloud_id].evaporate_wait = 180;
+            gGRCommonStruct.yoster.clouds[cloud_id].status = nGRYosterCloudStatusEvaporate;
+            gGRCommonStruct.yoster.clouds[cloud_id].anim_id = nGRYosterCloudStatusEvaporate;
+            gGRCommonStruct.yoster.clouds[cloud_id].evaporate_wait = 180;
 
-            pos = DObjGetStruct(gGroundStruct.yoster.clouds[cloud_id].gobj)->translate.vec.f;
+            pos = DObjGetStruct(gGRCommonStruct.yoster.clouds[cloud_id].gobj)->translate.vec.f;
 
             pos.x += (-750.0F);
             pos.y += (-350.0F);
@@ -121,35 +121,35 @@ void grYosterUpdateCloudSolid(s32 cloud_id)
         {
             if (grYosterCheckFighterCloudStand(cloud_id) != FALSE)
             {
-                if (gGroundStruct.yoster.clouds[cloud_id].pressure_timer == -1)
+                if (gGRCommonStruct.yoster.clouds[cloud_id].pressure_timer == -1)
                 {
-                    gGroundStruct.yoster.clouds[cloud_id].pressure_timer = 120;
+                    gGRCommonStruct.yoster.clouds[cloud_id].pressure_timer = 120;
                 }
-                gGroundStruct.yoster.clouds[cloud_id].pressure += 5.0F;
+                gGRCommonStruct.yoster.clouds[cloud_id].pressure += 5.0F;
 
-                if (gGroundStruct.yoster.clouds[cloud_id].pressure > 180.0F)
+                if (gGRCommonStruct.yoster.clouds[cloud_id].pressure > 180.0F)
                 {
-                    gGroundStruct.yoster.clouds[cloud_id].pressure = 180.0F;
+                    gGRCommonStruct.yoster.clouds[cloud_id].pressure = 180.0F;
                 }
             }
             else
             {
-                gGroundStruct.yoster.clouds[cloud_id].pressure_timer = -1;
-                gGroundStruct.yoster.clouds[cloud_id].pressure -= 5.0F;
+                gGRCommonStruct.yoster.clouds[cloud_id].pressure_timer = -1;
+                gGRCommonStruct.yoster.clouds[cloud_id].pressure -= 5.0F;
 
-                if (gGroundStruct.yoster.clouds[cloud_id].pressure < 0.0F)
+                if (gGRCommonStruct.yoster.clouds[cloud_id].pressure < 0.0F)
                 {
-                    gGroundStruct.yoster.clouds[cloud_id].pressure = 0.0F;
+                    gGRCommonStruct.yoster.clouds[cloud_id].pressure = 0.0F;
                 }
             }
-            if (gGroundStruct.yoster.clouds[cloud_id].pressure_timer > 0)
+            if (gGRCommonStruct.yoster.clouds[cloud_id].pressure_timer > 0)
             {
-                gGroundStruct.yoster.clouds[cloud_id].pressure_timer--;
+                gGRCommonStruct.yoster.clouds[cloud_id].pressure_timer--;
             }
         }
     }
-    dobj = DObjGetStruct(gGroundStruct.yoster.clouds[cloud_id].gobj);
-    dobj->translate.vec.f.y = gGroundStruct.yoster.clouds[cloud_id].altitude - gGroundStruct.yoster.clouds[cloud_id].pressure;
+    dobj = DObjGetStruct(gGRCommonStruct.yoster.clouds[cloud_id].gobj);
+    dobj->translate.vec.f.y = gGRCommonStruct.yoster.clouds[cloud_id].altitude - gGRCommonStruct.yoster.clouds[cloud_id].pressure;
 
     mpCollisionSetYakumonoPosID(dGRYosterCloudLineIDs[cloud_id], &dobj->translate.vec.f);
 }
@@ -157,40 +157,40 @@ void grYosterUpdateCloudSolid(s32 cloud_id)
 // 0x80108814
 void grYosterUpdateCloudEvaporate(s32 cloud_id)
 {
-    if (gGroundStruct.yoster.clouds[cloud_id].is_cloud_line_active != FALSE)
+    if (gGRCommonStruct.yoster.clouds[cloud_id].is_cloud_line_active != FALSE)
     {
         mpCollisionSetYakumonoOffID(dGRYosterCloudLineIDs[cloud_id]);
 
-        gGroundStruct.yoster.clouds[cloud_id].is_cloud_line_active = FALSE;
+        gGRCommonStruct.yoster.clouds[cloud_id].is_cloud_line_active = FALSE;
     }
-    if (gGroundStruct.yoster.clouds[cloud_id].evaporate_wait == 0)
+    if (gGRCommonStruct.yoster.clouds[cloud_id].evaporate_wait == 0)
     {
-        gGroundStruct.yoster.clouds[cloud_id].status = nGRYosterCloudStatusSolid;
-        gGroundStruct.yoster.clouds[cloud_id].anim_id = nGRYosterCloudStatusSolid;
-        gGroundStruct.yoster.clouds[cloud_id].pressure_timer = -1;
-        gGroundStruct.yoster.clouds[cloud_id].pressure = 0.0F;
+        gGRCommonStruct.yoster.clouds[cloud_id].status = nGRYosterCloudStatusSolid;
+        gGRCommonStruct.yoster.clouds[cloud_id].anim_id = nGRYosterCloudStatusSolid;
+        gGRCommonStruct.yoster.clouds[cloud_id].pressure_timer = -1;
+        gGRCommonStruct.yoster.clouds[cloud_id].pressure = 0.0F;
     }
-    else gGroundStruct.yoster.clouds[cloud_id].evaporate_wait--;
+    else gGRCommonStruct.yoster.clouds[cloud_id].evaporate_wait--;
 }
 
 // 0x80108890
 void grYosterUpdateCloudAnim(s32 cloud_id)
 {
-    s8 anim_id = gGroundStruct.yoster.clouds[cloud_id].anim_id;
+    s8 anim_id = gGRCommonStruct.yoster.clouds[cloud_id].anim_id;
 
     if (anim_id != -1)
     {
-        void *map_head = gGroundStruct.yoster.map_head;
+        void *map_head = gGRCommonStruct.yoster.map_head;
         s32 i;
 
-        for (i = 0; i < ARRAY_COUNT(gGroundStruct.yoster.clouds[cloud_id].dobj); i++)
+        for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.yoster.clouds[cloud_id].dobj); i++)
         {
-            DObj *dobj = gGroundStruct.yoster.clouds[cloud_id].dobj[i];
+            DObj *dobj = gGRCommonStruct.yoster.clouds[cloud_id].dobj[i];
 
             func_ovl0_800C88AC(dobj, NULL, (void*) ((intptr_t)dGRYosterCloudMatAnimJoints[anim_id] + (uintptr_t)map_head), 0.0F);
             func_8000CCBC_D8BC(dobj);
         }
-        gGroundStruct.yoster.clouds[cloud_id].anim_id = -1;
+        gGRCommonStruct.yoster.clouds[cloud_id].anim_id = -1;
     }
 }
 
@@ -199,9 +199,9 @@ void grYosterProcUpdate(GObj *ground_gobj)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gGroundStruct.yoster.clouds); i++)
+    for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.yoster.clouds); i++)
     {
-        switch (gGroundStruct.yoster.clouds[i].status)
+        switch (gGRCommonStruct.yoster.clouds[i].status)
         {
         case nGRYosterCloudStatusSolid:
             grYosterUpdateCloudSolid(i);
@@ -225,13 +225,13 @@ void grYosterInitAll(void)
     s32 i, j;
 
     map_head = (uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRYosterMapHead;
-    gGroundStruct.yoster.map_head = map_head;
+    gGRCommonStruct.yoster.map_head = map_head;
 
-    for (i = 0; i < ARRAY_COUNT(gGroundStruct.yoster.clouds); i++)
+    for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.yoster.clouds); i++)
     {
         map_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
-        gGroundStruct.yoster.clouds[i].gobj = map_gobj;
+        gGRCommonStruct.yoster.clouds[i].gobj = map_gobj;
 
         omAddGObjRenderProc(map_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
         func_8000F590(map_gobj, (DObjDesc*) ((intptr_t)&lGRYosterMapHead + (uintptr_t)map_head), NULL, OMMtx_Transform_Tra, OMMtx_Transform_Null, 0); // Make this OMMtx_Transform_TraRotRpyRSca to add static cloud animation
@@ -243,14 +243,14 @@ void grYosterInitAll(void)
         coll_dobj = DObjGetStruct(map_gobj);
         coll_dobj->translate.vec.f = gMPYakumonoDObjs->yakumono_dobj[dGRYosterCloudLineIDs[i]]->translate.vec.f;
 
-        gGroundStruct.yoster.clouds[i].altitude = coll_dobj->translate.vec.f.y;
+        gGRCommonStruct.yoster.clouds[i].altitude = coll_dobj->translate.vec.f.y;
 
         coll_dobj = coll_dobj->child;
 
-        for (j = 0; j < ARRAY_COUNT(gGroundStruct.yoster.clouds[i].dobj); j++, coll_dobj = coll_dobj->sib_next)
+        for (j = 0; j < ARRAY_COUNT(gGRCommonStruct.yoster.clouds[i].dobj); j++, coll_dobj = coll_dobj->sib_next)
         {
             cloud_dobj = omAddChildForDObj(coll_dobj, (uintptr_t)map_head + (intptr_t)&lGRYosterCloudDisplayList);
-            gGroundStruct.yoster.clouds[i].dobj[j] = cloud_dobj;
+            gGRCommonStruct.yoster.clouds[i].dobj[j] = cloud_dobj;
 
             omAddOMMtxForDObjFixed(cloud_dobj, OMMtx_Transform_Tra, 0);
             omAddOMMtxForDObjFixed(cloud_dobj, 0x30, 0);
@@ -258,16 +258,16 @@ void grYosterInitAll(void)
         }
         func_8000DF34_EB34(map_gobj);
 
-        gGroundStruct.yoster.clouds[i].status = nGRYosterCloudStatusSolid;
-        gGroundStruct.yoster.clouds[i].anim_id = nGRYosterCloudStatusSolid;
-        gGroundStruct.yoster.clouds[i].pressure_timer = -1;
-        gGroundStruct.yoster.clouds[i].is_cloud_line_active = FALSE;
-        gGroundStruct.yoster.clouds[i].pressure = 0.0F;
+        gGRCommonStruct.yoster.clouds[i].status = nGRYosterCloudStatusSolid;
+        gGRCommonStruct.yoster.clouds[i].anim_id = nGRYosterCloudStatusSolid;
+        gGRCommonStruct.yoster.clouds[i].pressure_timer = -1;
+        gGRCommonStruct.yoster.clouds[i].is_cloud_line_active = FALSE;
+        gGRCommonStruct.yoster.clouds[i].pressure = 0.0F;
 
         mpCollisionSetYakumonoOnID(dGRYosterCloudLineIDs[i]);
 
     }
-    gGroundStruct.yoster.particle_bank_id = efAllocGetAddParticleBankID(&lGRYosterParticleBankHeaderLo, &lGRYosterParticleBankHeaderHi, &lGRYosterParticleBankTextureLo, &lGRYosterParticleBankTextureHi);
+    gGRCommonStruct.yoster.particle_bank_id = efAllocGetAddParticleBankID(&lGRYosterParticleBankHeaderLo, &lGRYosterParticleBankHeaderHi, &lGRYosterParticleBankTextureLo, &lGRYosterParticleBankTextureHi);
 }
 
 // 0x80108C80

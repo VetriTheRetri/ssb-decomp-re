@@ -105,7 +105,7 @@ void scBonusGame_InitBonus1Targets()
 	atrack = (void**)((uintptr_t)((uintptr_t)gMPGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
 					  + (intptr_t)bonus_desc->o_anim);
 
-	gGroundStruct.bonus1.target_count = 0;
+	gGRCommonStruct.bonus1.target_count = 0;
 	dobj_desc++, atrack++;
 
 	while (dobj_desc->index != 0x12)
@@ -116,9 +116,9 @@ void scBonusGame_InitBonus1Targets()
 			omAddDObjAnimAll(DObjGetStruct(item_gobj), *atrack, 0.0F);
 			func_8000DF34_EB34(item_gobj);
 		}
-		dobj_desc++, atrack++, gGroundStruct.bonus1.target_count++;
+		dobj_desc++, atrack++, gGRCommonStruct.bonus1.target_count++;
 	}
-	if (gGroundStruct.bonus1.target_count != 10)
+	if (gGRCommonStruct.bonus1.target_count != 10)
 	{
 		gsFatalPrintF("Error : not %d targets!\n", 10);
 		while (TRUE)
@@ -130,9 +130,9 @@ void scBonusGame_InitBonus1Targets()
 void scBonusGame_UpdateBonus1TargetInterface()
 {
 	s32 i;
-	SObj* sobj = SObjGetStruct(gGroundStruct.bonus1.interface_gobj);
+	SObj* sobj = SObjGetStruct(gGRCommonStruct.bonus1.interface_gobj);
 
-	for (i = 0; i < gGroundStruct.bonus1.target_count; i++)
+	for (i = 0; i < gGRCommonStruct.bonus1.target_count; i++)
 		sobj = sobj->next;
 	omEjectSObj(sobj);
 }
@@ -140,9 +140,9 @@ void scBonusGame_UpdateBonus1TargetInterface()
 // 8018D510
 void scBonusGame_UpdateBonus1TargetCount()
 {
-	gGroundStruct.bonus1.target_count--;
+	gGRCommonStruct.bonus1.target_count--;
 	scBonusGame_UpdateBonus1TargetInterface();
-	if (gGroundStruct.bonus1.target_count == 0)
+	if (gGRCommonStruct.bonus1.target_count == 0)
 	{
 		if ((gSceneData.scene_previous != 0x34)
 			&& (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus1_task_count == 10)
@@ -193,16 +193,16 @@ void func_ovl6_8018D6A8(s32 line_id)
 	index = scBonusGame_GetBonus2PlatformKind(line_id);
 
 	func_ovl0_800C8B28(dobj,
-					   (void*)((uintptr_t)gGroundStruct.bonus2.unk_bonus2_0x4
+					   (void*)((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4
 							   + (intptr_t)scBonusGame_Bonus2_PlatformOffsets[index].unk_bonus2nodes_0x0),
 					   NULL, 0x44, 0, 0);
-	func_ovl0_800C9228(dobj->child, (void*)((uintptr_t)gGroundStruct.bonus2.unk_bonus2_0x4
+	func_ovl0_800C9228(dobj->child, (void*)((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4
 											+ (intptr_t)scBonusGame_Bonus2_PlatformOffsets[index].unk_bonus2nodes_0x8));
 
 	func_ovl0_800C88AC(dobj->child,
-					   ((uintptr_t)gGroundStruct.bonus2.unk_bonus2_0x4
+					   ((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4
 						+ (intptr_t)scBonusGame_Bonus2_PlatformOffsets[index].unk_bonus2nodes_0x4),
-					   ((uintptr_t)gGroundStruct.bonus2.unk_bonus2_0x4
+					   ((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4
 						+ (intptr_t)scBonusGame_Bonus2_PlatformOffsets[index].unk_bonus2nodes_0xC),
 					   0.0F);
 
@@ -219,7 +219,7 @@ void scBonusGame_InitBonus2Platforms()
 	s32 i;
 
 	line_count = mpCollisionGetLineCountType(nMPLineKindGround);
-	gGroundStruct.bonus2.platform_count = 0;
+	gGRCommonStruct.bonus2.platform_count = 0;
 	mpCollisionGetLineIDsTypeCount(nMPLineKindGround, line_count, line_ids);
 
 	for (i = 0; i < line_count; i++)
@@ -230,7 +230,7 @@ void scBonusGame_InitBonus2Platforms()
 			if (gMPYakumonoDObjs->yakumono_dobj[room_id]->actor.atrack == NULL)
 				mpCollisionSetYakumonoOnID(room_id);
 			func_ovl6_8018D6A8(line_ids[i]);
-			gGroundStruct.bonus2.platform_count++;
+			gGRCommonStruct.bonus2.platform_count++;
 		}
 	}
 }
@@ -238,10 +238,10 @@ void scBonusGame_InitBonus2Platforms()
 // 8018D890
 void scBonusGame_UpdateBonus2PlatformInterface()
 {
-	SObj* sobj = SObjGetStruct(gGroundStruct.bonus2.interface_gobj);
+	SObj* sobj = SObjGetStruct(gGRCommonStruct.bonus2.interface_gobj);
 	s32 i;
 
-	for (i = 0; i < gGroundStruct.bonus2.platform_count; i++)
+	for (i = 0; i < gGRCommonStruct.bonus2.platform_count; i++)
 		sobj = sobj->next;
 	omEjectSObj(sobj);
 }
@@ -255,20 +255,20 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 
 	func_ovl0_800C8B28(
 		dobj,
-		(void*)((uintptr_t)gGroundStruct.bonus2.unk_bonus2_0x4 + (intptr_t)D_ovl6_8018EFE4[index].unk_bonus2unk_0x0),
+		(void*)((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4 + (intptr_t)D_ovl6_8018EFE4[index].unk_bonus2unk_0x0),
 		NULL, 0x44, 0, 0);
 	func_ovl0_800C8758(
 		dobj->child,
-		(void*)((uintptr_t)gGroundStruct.bonus2.unk_bonus2_0x4 + (intptr_t)D_ovl6_8018EFE4[index].unk_bonus2unk_0x4),
+		(void*)((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4 + (intptr_t)D_ovl6_8018EFE4[index].unk_bonus2unk_0x4),
 		0.0F);
 	func_ovl0_800C92C8(dobj->child);
 
-	gGroundStruct.bonus2.platform_count--;
+	gGRCommonStruct.bonus2.platform_count--;
 
 	scBonusGame_UpdateBonus2PlatformInterface();
 	func_800269C0_275C0(alSound_SFX_Bonus2PlatformLanding);
 
-	if (gGroundStruct.bonus2.platform_count == 0)
+	if (gGRCommonStruct.bonus2.platform_count == 0)
 	{
 		if ((gSceneData.scene_previous != 0x34)
 			&& (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_task_count == GMMATCH_BONUSGAME_TASK_MAX)
@@ -406,11 +406,11 @@ void scBonusGame_InitBonus1TargetSprites()
 
 	sprites
 		= rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
-	gGroundStruct.bonus1.interface_gobj = interface_gobj
+	gGRCommonStruct.bonus1.interface_gobj = interface_gobj
 		= omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-	for (i = 0; i < gGroundStruct.bonus1.target_count; i++)
+	for (i = 0; i < gGRCommonStruct.bonus1.target_count; i++)
 	{
 		sobj = gcAppendSObjWithSprite(interface_gobj, (void*)((uintptr_t)sprites + (intptr_t)&D_NF_000001D0));
 		sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
@@ -429,11 +429,11 @@ void scBonusGame_InitBonus2PlatformSprites()
 
 	sprites
 		= rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
-	gGroundStruct.bonus2.interface_gobj = interface_gobj
+	gGRCommonStruct.bonus2.interface_gobj = interface_gobj
 		= omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-	for (i = 0; i < gGroundStruct.bonus2.platform_count; i++)
+	for (i = 0; i < gGRCommonStruct.bonus2.platform_count; i++)
 	{
 		sobj = gcAppendSObjWithSprite(interface_gobj, (void*)((uintptr_t)sprites + (intptr_t)&D_NF_000000C0));
 		sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
@@ -761,8 +761,8 @@ void scManager_BonusGame_InitScene()
 
 	if (gBattleState->game_status != gmMatch_GameStatus_Pause)
 	{
-		task_count = (gBattleState->gr_kind <= Gr_Kind_Bonus1End) ? gGroundStruct.bonus1.target_count
-																  : gGroundStruct.bonus2.platform_count;
+		task_count = (gBattleState->gr_kind <= Gr_Kind_Bonus1End) ? gGRCommonStruct.bonus1.target_count
+																  : gGRCommonStruct.bonus2.platform_count;
 
 		tasks_complete = GMMATCH_BONUSGAME_TASK_MAX - task_count;
 

@@ -19,7 +19,7 @@ extern intptr_t lITGLuckyItemAttributes;    // 0x000000BC
 itCreateDesc dITGLuckyItemDesc =
 {
     It_Kind_GLucky,                         // Item Kind
-    &gGroundStruct.yamabuki.item_head,      // Pointer to item file data?
+    &gGRCommonStruct.yamabuki.item_head,      // Pointer to item file data?
     &lITGLuckyItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct

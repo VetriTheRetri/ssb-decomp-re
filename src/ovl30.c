@@ -270,7 +270,7 @@ GObj* gMNStageHeap0StageInfoArray[4];
 GObj* gMNStageHeap1StageInfoArray[4];
 
 // 80134C10
-grCommonData* gMNStageGroundInfo;
+mpGroundData* gMNStageGroundInfo;
 
 // 80134C14;
 Camera* gMNStagePreviewCam;
@@ -911,7 +911,7 @@ void mnStageRenderStagePreviewSecondary(GObj* stage_geo_gobj)
 }
 
 // 8013303C
-GObj* mnStageCreateStageGeo(s32 stage_id, grCommonData* stage_info, grCreateDesc* stage_geo, s32 stage_geo_id)
+GObj* mnStageCreateStageGeo(s32 stage_id, mpGroundData* stage_info, mpGroundDesc* stage_geo, s32 stage_geo_id)
 {
 	GObj* stage_geo_gobj;
 	f32 scale[9] = dMNStagePreviewScale;
@@ -944,7 +944,7 @@ GObj* mnStageCreateStageGeo(s32 stage_id, grCommonData* stage_info, grCreateDesc
 }
 
 // 801331AC
-void mnStageCreateStageGeos(s32 stage_id, grCommonData* stage_info, s32 heap_id)
+void mnStageCreateStageGeos(s32 stage_id, mpGroundData* stage_info, s32 heap_id)
 {
 	DObj* stage_dobj;
 	DObj* next_dobj;

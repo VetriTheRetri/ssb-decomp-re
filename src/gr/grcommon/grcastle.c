@@ -23,11 +23,11 @@ void grCastleBumperProcUpdate(GObj *ground_gobj)
 {
     Vec3f *ground_pos = &DObjGetStruct(ground_gobj)->translate.vec.f;
 
-    if (gGroundStruct.castle.bumper_gobj != NULL)
+    if (gGRCommonStruct.castle.bumper_gobj != NULL)
     {
-        Vec3f *bumper_pos = &DObjGetStruct(gGroundStruct.castle.bumper_gobj)->translate.vec.f;
+        Vec3f *bumper_pos = &DObjGetStruct(gGRCommonStruct.castle.bumper_gobj)->translate.vec.f;
 
-        bumper_pos->x = ground_pos->x + gGroundStruct.castle.bumper_pos.x;
+        bumper_pos->x = ground_pos->x + gGRCommonStruct.castle.bumper_pos.x;
     }
 }
 
@@ -41,7 +41,7 @@ void grCastleInitAll(void)
     s32 pos_id;
     DObj *dobj;
 
-    gGroundStruct.castle.map_head = map_head = (void*)((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRCastleMapHead);
+    gGRCommonStruct.castle.map_head = map_head = (void*)((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRCastleMapHead);
 
     ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
@@ -58,13 +58,13 @@ void grCastleInitAll(void)
     mpCollisionGetMapObjIDsKind(nMPMapObjKindBumper, &pos_id);
     mpCollisionGetMapObjPositionID(pos_id, &yakumono_pos);
 
-    gGroundStruct.castle.bumper_pos = yakumono_pos;
+    gGRCommonStruct.castle.bumper_pos = yakumono_pos;
 
     vel.x = 0.0F;
     vel.y = 0.0F;
     vel.z = 0.0F;
 
-    gGroundStruct.castle.bumper_gobj = itManagerMakeItemSetupCommon(NULL, It_Kind_GBumper, &yakumono_pos, &vel, ITEM_MASK_SPAWN_GROUND);
+    gGRCommonStruct.castle.bumper_gobj = itManagerMakeItemSetupCommon(NULL, It_Kind_GBumper, &yakumono_pos, &vel, ITEM_MASK_SPAWN_GROUND);
 }
 
 // 0x8010B4AC

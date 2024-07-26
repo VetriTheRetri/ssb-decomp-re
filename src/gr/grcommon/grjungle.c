@@ -51,7 +51,7 @@ void grJungleTaruCannAddAnimOffset(GObj *ground_gobj, intptr_t offset)
 {
     DObj *dobj = DObjGetStruct(ground_gobj)->child;
 
-    omAddDObjAnimAll(dobj, (ATrack*) ((uintptr_t)gGroundStruct.jungle.map_head + (intptr_t)offset), 0.0F);
+    omAddDObjAnimAll(dobj, (ATrack*) ((uintptr_t)gGRCommonStruct.jungle.map_head + (intptr_t)offset), 0.0F);
     func_8000BFE8_CBE8(dobj);
     func_8000CCBC_D8BC(dobj);
 }
@@ -71,15 +71,15 @@ void grJungleTaruCannAddAnimShoot(GObj *ground_gobj)
 // 0x80109D44
 void grJungleTaruCannUpdateMove(GObj *ground_gobj)
 {
-    gGroundStruct.jungle.tarucann_wait--;
+    gGRCommonStruct.jungle.tarucann_wait--;
 
-    if (gGroundStruct.jungle.tarucann_wait == 0)
+    if (gGRCommonStruct.jungle.tarucann_wait == 0)
     {
-        gGroundStruct.jungle.tarucann_status = nGRJungleTaruCannStatusRotate;
+        gGRCommonStruct.jungle.tarucann_status = nGRJungleTaruCannStatusRotate;
 
-        gGroundStruct.jungle.tarucann_rotate_step = ((mtTrigGetRandomUShort() % 2) != 0) ? 0.07F : -0.07F;
+        gGRCommonStruct.jungle.tarucann_rotate_step = ((mtTrigGetRandomUShort() % 2) != 0) ? 0.07F : -0.07F;
 
-        gGroundStruct.jungle.tarucann_wait = 90;
+        gGRCommonStruct.jungle.tarucann_wait = 90;
     }
 }
 
@@ -88,23 +88,23 @@ void grJungleTaruCannUpdateRotate(GObj *ground_gobj)
 {
     DObj *dobj = DObjGetStruct(ground_gobj);
 
-    gGroundStruct.jungle.tarucann_wait--;
+    gGRCommonStruct.jungle.tarucann_wait--;
 
-    if (gGroundStruct.jungle.tarucann_wait == 0)
+    if (gGRCommonStruct.jungle.tarucann_wait == 0)
     {
-        gGroundStruct.jungle.tarucann_status = nGRJungleTaruCannStatusMove;
+        gGRCommonStruct.jungle.tarucann_status = nGRJungleTaruCannStatusMove;
 
-        gGroundStruct.jungle.tarucann_wait = mtTrigGetRandomIntRange(180) + 180;
+        gGRCommonStruct.jungle.tarucann_wait = mtTrigGetRandomIntRange(180) + 180;
 
         dobj->rotate.vec.f.z = F_CST_DTOR32(0.0F);
     }
-    else dobj->rotate.vec.f.z += gGroundStruct.jungle.tarucann_rotate_step;
+    else dobj->rotate.vec.f.z += gGRCommonStruct.jungle.tarucann_rotate_step;
 }
 
 // 0x80109E34
 void grJungleTaruCannProcUpdate(GObj *ground_gobj)
 {
-    switch (gGroundStruct.jungle.tarucann_status)
+    switch (gGRCommonStruct.jungle.tarucann_status)
     {
     case nGRJungleTaruCannStatusMove:
         grJungleTaruCannUpdateMove(ground_gobj);
@@ -123,9 +123,9 @@ void grJungleMakeTaruCann(void)
     GObj *tarucann_gobj;
 
     map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRJungleMapHead);
-    gGroundStruct.jungle.map_head = map_head;
+    gGRCommonStruct.jungle.map_head = map_head;
 
-    gGroundStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    gGRCommonStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(tarucann_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -138,9 +138,9 @@ void grJungleMakeTaruCann(void)
     omAddGObjCommonProc(tarucann_gobj, grJungleTaruCannProcUpdate, GObjProcess_Kind_Proc, 4);
     ftMainCheckSetMapObjectGObj(tarucann_gobj, grJungleTaruCannCheckGetDamageKind);
 
-    gGroundStruct.jungle.tarucann_status = nGRJungleTaruCannStatusMove;
-    gGroundStruct.jungle.tarucann_wait = mtTrigGetRandomIntRange(180) + 180;
-    gGroundStruct.jungle.tarucann_rotate_step = F_CST_DTOR32(0.0F);
+    gGRCommonStruct.jungle.tarucann_status = nGRJungleTaruCannStatusMove;
+    gGRCommonStruct.jungle.tarucann_wait = mtTrigGetRandomIntRange(180) + 180;
+    gGRCommonStruct.jungle.tarucann_rotate_step = F_CST_DTOR32(0.0F);
 }
 
 // 0x80109FB4
@@ -205,11 +205,11 @@ sb32 grJungleTaruCannCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s
 // 0x8010A104
 void grJungleTaruCannGetPosition(Vec3f *pos)
 {
-    *pos = DObjGetStruct(gGroundStruct.jungle.tarucann_gobj)->translate.vec.f;
+    *pos = DObjGetStruct(gGRCommonStruct.jungle.tarucann_gobj)->translate.vec.f;
 }
 
 // 0x8010A12C
 f32 grJungleTaruCannGetRotate(void)
 {
-    return DObjGetStruct(gGroundStruct.jungle.tarucann_gobj)->rotate.vec.f.z;
+    return DObjGetStruct(gGRCommonStruct.jungle.tarucann_gobj)->rotate.vec.f.z;
 }

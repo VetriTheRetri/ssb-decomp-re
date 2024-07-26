@@ -1,7 +1,7 @@
 #ifndef _OVL7_H_
 #define _OVL7_H_
 
-#define scGetTrainingModeItemKind(kind) ((kind) - (It_Kind_UtilityStart - 1))
+#define scGetTrainingModeItemKind(kind) ((kind) - (nITKindUtilityStart - 1))
 
 void auSetBGMVolume(s32 playerID, u32 vol);
 void scTrainingMode_InitViewOptionSprite();				 /* extern */

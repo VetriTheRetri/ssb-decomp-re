@@ -9,17 +9,17 @@
 
 #define ftCommonAttack13CheckFighterKind(fp)  \
 (                                             \
-    ((fp)->ft_kind == Ft_Kind_Mario)      ||  \
-    ((fp)->ft_kind == Ft_Kind_MetalMario) ||  \
-    ((fp)->ft_kind == Ft_Kind_PolyMario)  ||  \
-    ((fp)->ft_kind == Ft_Kind_Luigi)      ||  \
-    ((fp)->ft_kind == Ft_Kind_PolyLuigi)  ||  \
-    ((fp)->ft_kind == Ft_Kind_Captain)    ||  \
-    ((fp)->ft_kind == Ft_Kind_PolyCaptain)||  \
-    ((fp)->ft_kind == Ft_Kind_Link)       ||  \
-    ((fp)->ft_kind == Ft_Kind_PolyLink)   ||  \
-    ((fp)->ft_kind == Ft_Kind_Ness)       ||  \
-    ((fp)->ft_kind == Ft_Kind_PolyNess)       \
+    ((fp)->ft_kind == nFTKindMario)      ||  \
+    ((fp)->ft_kind == nFTKindMetalMario) ||  \
+    ((fp)->ft_kind == nFTKindPolyMario)  ||  \
+    ((fp)->ft_kind == nFTKindLuigi)      ||  \
+    ((fp)->ft_kind == nFTKindPolyLuigi)  ||  \
+    ((fp)->ft_kind == nFTKindCaptain)    ||  \
+    ((fp)->ft_kind == nFTKindPolyCaptain)||  \
+    ((fp)->ft_kind == nFTKindLink)       ||  \
+    ((fp)->ft_kind == nFTKindPolyLink)   ||  \
+    ((fp)->ft_kind == nFTKindNess)       ||  \
+    ((fp)->ft_kind == nFTKindPolyNess)       \
 )
 
 // // // // // // // // // // // //
@@ -35,7 +35,7 @@ void ftCommonAttack11ProcUpdate(GObj *fighter_gobj)
 
     if ((fp->command_vars.flags.flag1 != 0) && (fp->status_vars.common.attack1.is_goto_followup != FALSE))
     {
-        if ((fp->ft_kind == Ft_Kind_Pikachu) || (fp->ft_kind == Ft_Kind_PolyPikachu))
+        if ((fp->ft_kind == nFTKindPikachu) || (fp->ft_kind == nFTKindPolyPikachu))
         {
             ftCommonAttack11SetStatus(fighter_gobj);
         }
@@ -49,7 +49,7 @@ void ftCommonAttack12ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind != Ft_Kind_Captain) && (fp->ft_kind != Ft_Kind_PolyCaptain) && (fp->command_vars.flags.flag1 != 0) && (fp->is_goto_attack100))
+    if ((fp->ft_kind != nFTKindCaptain) && (fp->ft_kind != nFTKindPolyCaptain) && (fp->command_vars.flags.flag1 != 0) && (fp->is_goto_attack100))
     {
         ftCommonAttack100StartSetStatus(fighter_gobj);
     }
@@ -65,7 +65,7 @@ void ftCommonAttack13ProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (((fp->ft_kind == Ft_Kind_Captain) || (fp->ft_kind == Ft_Kind_PolyCaptain)) && (fp->command_vars.flags.flag1 != 0) && (fp->is_goto_attack100))
+    if (((fp->ft_kind == nFTKindCaptain) || (fp->ft_kind == nFTKindPolyCaptain)) && (fp->command_vars.flags.flag1 != 0) && (fp->is_goto_attack100))
     {
         ftCommonAttack100StartSetStatus(fighter_gobj);
     }
@@ -88,7 +88,7 @@ void ftCommonAttack11ProcInterrupt(GObj *fighter_gobj)
     }
     if (ftCommonAttack100StartCheckInterruptCommon(fighter_gobj) == FALSE)
     {
-        if ((fp->ft_kind == Ft_Kind_Pikachu) || (fp->ft_kind == Ft_Kind_PolyPikachu))
+        if ((fp->ft_kind == nFTKindPikachu) || (fp->ft_kind == nFTKindPolyPikachu))
         {
             if (ftCommonAttack11CheckGoto(fighter_gobj) != FALSE)
             {
@@ -119,7 +119,7 @@ void ftCommonAttack11ProcStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_MotionCountIncSetAttackID(fp, ftMotion_AttackIndex_Attack11);
+    ftCommon_MotionCountIncSetAttackID(fp, nFTMotionAttackIDAttack11);
     ftCommon_StatUpdateCountIncSetFlags(fp, fp->stat_flags.halfword);
     ftCommon_Update1PGameAttackStats(fp, 0);
 }
@@ -134,7 +134,7 @@ void ftCommonAttack11SetStatus(GObj *fighter_gobj)
     {
         fp->proc_status = ftCommonAttack11ProcStatus;
 
-        ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Attack11, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttack11, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
         ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
         fp->command_vars.flags.flag1 = 0;
@@ -156,7 +156,7 @@ void ftCommonAttack12SetStatus(GObj *fighter_gobj)
 
     if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
-        ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Attack12, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttack12, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
         ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
         fp->command_vars.flags.flag1 = 0;
@@ -167,29 +167,29 @@ void ftCommonAttack12SetStatus(GObj *fighter_gobj)
 
         switch (fp->ft_kind)
         {
-        case Ft_Kind_Mario:
-        case Ft_Kind_MetalMario:
-        case Ft_Kind_PolyMario:
+        case nFTKindMario:
+        case nFTKindMetalMario:
+        case nFTKindPolyMario:
             fp->attack1_followup_frames = FTCOMMON_ATTACK1_FOLLOWUP_FRAMES_DEFAULT;
             break;
 
-        case Ft_Kind_Luigi:
-        case Ft_Kind_PolyLuigi:
+        case nFTKindLuigi:
+        case nFTKindPolyLuigi:
             fp->attack1_followup_frames = FTCOMMON_ATTACK1_FOLLOWUP_FRAMES_DEFAULT;
             break;
 
-        case Ft_Kind_Captain:
-        case Ft_Kind_PolyCaptain:
+        case nFTKindCaptain:
+        case nFTKindPolyCaptain:
             fp->attack1_followup_frames = FTCOMMON_ATTACK1_FOLLOWUP_FRAMES_DEFAULT;
             break;
 
-        case Ft_Kind_Link:
-        case Ft_Kind_PolyLink:
+        case nFTKindLink:
+        case nFTKindPolyLink:
             fp->attack1_followup_frames = FTCOMMON_ATTACK1_FOLLOWUP_FRAMES_DEFAULT;
             break;
 
-        case Ft_Kind_Ness:
-        case Ft_Kind_PolyNess:
+        case nFTKindNess:
+        case nFTKindPolyNess:
             fp->attack1_followup_frames = FTCOMMON_ATTACK1_FOLLOWUP_FRAMES_DEFAULT;
             break;
         }
@@ -206,30 +206,30 @@ void ftCommonAttack13SetStatus(GObj *fighter_gobj)
     {
         switch (fp->ft_kind)
         {
-        case Ft_Kind_Mario:
-        case Ft_Kind_MetalMario:
-        case Ft_Kind_PolyMario:
-            status_id = ftStatus_Mario_Attack13;
+        case nFTKindMario:
+        case nFTKindMetalMario:
+        case nFTKindPolyMario:
+            status_id = nFTMarioStatusAttack13;
             break;
 
-        case Ft_Kind_Luigi:
-        case Ft_Kind_PolyLuigi:
-            status_id = ftStatus_Mario_Attack13;
+        case nFTKindLuigi:
+        case nFTKindPolyLuigi:
+            status_id = nFTMarioStatusAttack13;
             break;
 
-        case Ft_Kind_Captain:
-        case Ft_Kind_PolyCaptain:
-            status_id = ftStatus_Captain_Attack13;
+        case nFTKindCaptain:
+        case nFTKindPolyCaptain:
+            status_id = nFTCaptainStatusAttack13;
             break;
 
-        case Ft_Kind_Link:
-        case Ft_Kind_PolyLink:
-            status_id = ftStatus_Link_Attack13;
+        case nFTKindLink:
+        case nFTKindPolyLink:
+            status_id = nFTLinkStatusAttack13;
             break;
 
-        case Ft_Kind_Ness:
-        case Ft_Kind_PolyNess:
-            status_id = ftStatus_Ness_Attack13;
+        case nFTKindNess:
+        case nFTKindPolyNess:
+            status_id = nFTNessStatusAttack13;
             break;
         }
         ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
@@ -253,25 +253,25 @@ sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
     {
         if (fp->item_hold != NULL)
         {
-            if (itGetStruct(fp->item_hold)->type == It_Type_Throw)
+            if (itGetStruct(fp->item_hold)->type == nITTypeThrow)
             {
-                ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowF);
+                ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowF);
 
                 return TRUE;
             }
             if (fp->input.pl.button_hold & fp->input.button_mask_z)
             {
-                ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowDrop);
+                ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowDrop);
 
                 return TRUE;
             }
             switch (itGetStruct(fp->item_hold)->type)
             {
-            case It_Type_Swing:
+            case nITTypeSwing:
                 ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_Attack1);
                 return TRUE;
 
-            case It_Type_Shoot:
+            case nITTypeShoot:
                 ftCommonItemShootSetStatus(fighter_gobj);
                 return TRUE;
             }
@@ -280,8 +280,8 @@ sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
         {
             switch (fp->attack1_status_id)
             {
-            case ftStatus_Common_Attack11:
-                if ((fp->ft_kind == Ft_Kind_Pikachu) || (fp->ft_kind == Ft_Kind_PolyPikachu))
+            case nFTCommonStatusAttack11:
+                if ((fp->ft_kind == nFTKindPikachu) || (fp->ft_kind == nFTKindPolyPikachu))
                 {
                     if (attributes->is_have_attack11)
                     {
@@ -303,7 +303,7 @@ sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
                 }
                 break;
 
-            case ftStatus_Common_Attack12:
+            case nFTCommonStatusAttack12:
                 if(ftCommonAttack13CheckFighterKind(fp))
                 {
                     ftCommonAttack13SetStatus(fighter_gobj);

@@ -129,7 +129,7 @@ wpSamusChargeShotAttributes dWPSamusChargeShotWeaponAttributes[/* */] =
 wpCreateDesc dWPSamusChargeShotWeaponDesc =
 {
     0x00,                                   // Render flags?
-    Wp_Kind_ChargeShot,                     // Weapon Kind
+    nWPKindChargeShot,                     // Weapon Kind
     &gFTDataSamusSpecial1,                    // Pointer to character's loaded files?
     &lWPSamusChargeShotWeaponAttributes,    // Offset of weapon attributes in loaded files
 

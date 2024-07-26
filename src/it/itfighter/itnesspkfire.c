@@ -18,7 +18,7 @@ extern intptr_t lITNessPKFireItemAttributes;// 0x00000034
 
 itCreateDesc dITNessPKFireItemDesc = 
 {
-    It_Kind_NessPKFire,                     // Item Kind
+    nITKindNessPKFire,                     // Item Kind
     &gFTDataNessSpecial1,                   // Pointer to item file data?
     &lITNessPKFireItemAttributes,           // Offset of item attributes in file?
 

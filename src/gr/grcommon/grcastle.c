@@ -43,14 +43,14 @@ void grCastleInitAll(void)
 
     gGRCommonStruct.castle.map_head = map_head = (void*)((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRCastleMapHead);
 
-    ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
-    omAddGObjCommonProc(ground_gobj, grCastleBumperProcUpdate, GObjProcess_Kind_Proc, 4);
+    omAddGObjCommonProc(ground_gobj, grCastleBumperProcUpdate, nOMObjProcessKindProc, 4);
 
     dobj = omAddDObjForGObj(ground_gobj, NULL);
     dobj->translate.vec.f.x = dobj->translate.vec.f.y = dobj->translate.vec.f.z = 0.0F;
 
-    omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
+    omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
 
     func_8000BD8C_C98C(ground_gobj, gMPGroundData->map_nodes, 0.0F);
     func_8000DF34_EB34(ground_gobj);
@@ -64,7 +64,7 @@ void grCastleInitAll(void)
     vel.y = 0.0F;
     vel.z = 0.0F;
 
-    gGRCommonStruct.castle.bumper_gobj = itManagerMakeItemSetupCommon(NULL, It_Kind_GBumper, &yakumono_pos, &vel, ITEM_MASK_SPAWN_GROUND);
+    gGRCommonStruct.castle.bumper_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &yakumono_pos, &vel, ITEM_MASK_SPAWN_GROUND);
 }
 
 // 0x8010B4AC

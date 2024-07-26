@@ -48,7 +48,7 @@ void ftCommonWallDamageSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 
     fp->status_vars.common.damage.hitstun_timer = ftCommon_DamageCalcHitStun(knockback);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_WallDamage, 0.0F, 2.0F, (FTSTATUPDATE_DAMAGEPORT_PRESERVE | FTSTATUPDATE_PLAYERTAG_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusWallDamage, 0.0F, 2.0F, (FTSTATUPDATE_DAMAGEPORT_PRESERVE | FTSTATUPDATE_PLAYERTAG_PRESERVE));
 
     fp->damage_stack = knockback;
 

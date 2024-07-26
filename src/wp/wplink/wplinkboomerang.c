@@ -20,7 +20,7 @@ lWPLinkBoomerangWeaponAttributes;           // 0x00000000
 wpCreateDesc dWPLinkBoomerangWeaponDesc =
 {
     0x01,                                   // Render flags?
-    Wp_Kind_Boomerang,                      // Weapon Kind
+    nWPKindBoomerang,                      // Weapon Kind
     &gFTDataLinkSpecial1,                   // Pointer to character's loaded files?
     &lWPLinkBoomerangWeaponAttributes,      // Offset of weapon attributes in loaded files
 
@@ -296,7 +296,7 @@ void wpLinkBoomerangClearGObjs(wpStruct *wp)
     {
         ftStruct *fp = ftGetStruct(wp->weapon_vars.boomerang.spawn_gobj);
 
-        if ((fp->ft_kind == Ft_Kind_Kirby) || (fp->ft_kind == Ft_Kind_PolyKirby))
+        if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindPolyKirby))
         {
             fp->fighter_vars.kirby.copylink_boomerang_gobj = NULL;
         }
@@ -319,7 +319,7 @@ void wpLinkBoomerangCheckOwnerCatch(GObj *weapon_gobj, f32 distance)
 
             if (fp->is_special_interrupt)
             {
-                if ((fp->ft_kind == Ft_Kind_Kirby) || (fp->ft_kind == Ft_Kind_PolyKirby))
+                if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindPolyKirby))
                 {
                     ftKirbyCopyLinkSpecialNReturnSetStatus(wp->weapon_vars.boomerang.spawn_gobj);
                 }

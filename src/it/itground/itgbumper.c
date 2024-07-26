@@ -18,7 +18,7 @@ extern intptr_t lITGBumperItemAttributes;   // 0x00000CF0
 
 itCreateDesc dITGBumperItemDesc =
 {
-    It_Kind_GBumper,                        // Item Kind
+    nITKindGBumper,                        // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITGBumperItemAttributes,              // Offset of item attributes in file?
 

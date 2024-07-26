@@ -19,7 +19,7 @@ intptr_t lWPYoshiStarWeaponAttributes;      // 0x00000040
 wpCreateDesc dWPYoshiStarWeaponDesc =
 {
     0x00,                                   // Render flags?
-    Wp_Kind_YoshiStar,                      // Weapon Kind
+    nWPKindYoshiStar,                      // Weapon Kind
     &gFTDataYoshiMain,                      // Pointer to character's loaded files?
     &lWPYoshiStarWeaponAttributes,          // Offset of weapon attributes in loaded files
 

@@ -28,7 +28,7 @@ extern void gcSetAllAnimPlaybackRate(GObj*, f32);
 wpCreateDesc dWPPikachuThunderJoltAirWeaponDesc =
 {
     0x00,                                               // Render flags?
-    Wp_Kind_ThunderJoltAir,                             // Weapon Kind
+    nWPKindThunderJoltAir,                             // Weapon Kind
     &gFTDataPikachuSpecial1,                              // Pointer to character's loaded files?
     &lWPPikachuThunderJoltAirWeaponAttributes,          // Offset of weapon attributes in loaded files
 
@@ -52,7 +52,7 @@ wpCreateDesc dWPPikachuThunderJoltAirWeaponDesc =
 wpCreateDesc dWPPikachuThunderJoltGroundWeaponDesc =
 {
     0x03,                                               // Render flags?
-    Wp_Kind_ThunderJoltGround,                          // Weapon Kind
+    nWPKindThunderJoltGround,                          // Weapon Kind
     &gFTDataPikachuSpecial1,                              // Pointer to character's loaded files?
     &lWPPikachuThunderJoltGroundWeaponAttributes,       // Offset of weapon attributes in loaded files
 

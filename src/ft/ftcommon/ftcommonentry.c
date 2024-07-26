@@ -10,33 +10,33 @@
 // 0x801884A0
 s32 dFTCommonEntryAppearStatusIDs[/* */][2] =
 {
-    { ftStatus_Mario_AppearR,        ftStatus_Mario_AppearL         }, // Mario
-    { ftStatus_Fox_AppearR,          ftStatus_Fox_AppearL           }, // Fox
-    { ftStatus_Donkey_AppearR,       ftStatus_Donkey_AppearL        }, // Donkey Kong
-    { ftStatus_Samus_AppearR,        ftStatus_Samus_AppearL         }, // Samus
-    { ftStatus_Mario_AppearR,        ftStatus_Mario_AppearL         }, // Luigi
-    { ftStatus_Link_AppearR,         ftStatus_Link_AppearL          }, // Link
-    { ftStatus_Yoshi_AppearR,        ftStatus_Yoshi_AppearL         }, // Yoshi
-    { ftStatus_Captain_AppearRStart, ftStatus_Captain_AppearLStart, }, // Captain Falcon
-    { ftStatus_Kirby_AppearR,        ftStatus_Kirby_AppearL         }, // Kirby
-    { ftStatus_Pikachu_AppearR,      ftStatus_Pikachu_AppearL       }, // Pikachu
-    { ftStatus_Purin_AppearR,        ftStatus_Purin_AppearL         }, // Jigglypuff
-    { ftStatus_Ness_AppearRStart,    ftStatus_Ness_AppearLStart     }, // Ness
-    { ftStatus_Boss_Appear,          ftStatus_Boss_Appear           }, // Master Hand
-    { ftStatus_Mario_AppearR,        ftStatus_Mario_AppearL         }, // Metal Mario
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Mario
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Fox
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Donkey Kong
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Samus
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Luigi
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Link
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Yoshi
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Captain Falcon
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Kirby
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Pikachu
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Jigglypuff
-    { ftStatus_Common_EntryNull,     ftStatus_Common_EntryNull      }, // Poly Ness
-    { ftStatus_Donkey_AppearR,       ftStatus_Donkey_AppearL        }  // Giant Donkey Kong
+    { nFTMarioStatusAppearR,        nFTMarioStatusAppearL         }, // Mario
+    { nFTFoxStatusAppearR,          nFTFoxStatusAppearL           }, // Fox
+    { nFTDonkeyStatusAppearR,       nFTDonkeyStatusAppearL        }, // Donkey Kong
+    { nFTSamusStatusAppearR,        nFTSamusStatusAppearL         }, // Samus
+    { nFTMarioStatusAppearR,        nFTMarioStatusAppearL         }, // Luigi
+    { nFTLinkStatusAppearR,         nFTLinkStatusAppearL          }, // Link
+    { nFTYoshiStatusAppearR,        nFTYoshiStatusAppearL         }, // Yoshi
+    { nFTCaptainStatusAppearRStart, nFTCaptainStatusAppearLStart, }, // Captain Falcon
+    { nFTKirbyStatusAppearR,        nFTKirbyStatusAppearL         }, // Kirby
+    { nFTPikachuStatusAppearR,      nFTPikachuStatusAppearL       }, // Pikachu
+    { nFTPurinStatusAppearR,        nFTPurinStatusAppearL         }, // Jigglypuff
+    { nFTNessStatusAppearRStart,    nFTNessStatusAppearLStart     }, // Ness
+    { nFTBossStatusAppear,          nFTBossStatusAppear           }, // Master Hand
+    { nFTMarioStatusAppearR,        nFTMarioStatusAppearL         }, // Metal Mario
+    { nFTCommonStatusEntryNull,     nFTCommonStatusEntryNull      }, // Poly Mario
+    { nFTCommonStatusEntryNull,     nFTCommonStatusEntryNull      }, // Poly Fox
+    { nFTCommonStatusEntryNull,     nFTCommonStatusEntryNull      }, // Poly Donkey Kong
+    { nFTCommonStatusEntryNull,     nFTCommonStatusEntryNull      }, // Poly Samus
+    { nFTCommonStatusEntryNull,     nFTCommonStatusEntryNull      }, // Poly Luigi
+    { nFTCommonStatusEntryNull,     nFTCommonStatusEntryNull      }, // Poly Link
+    { nFTCommonStatusEntryNull,     nFTCommonStatusEntryNull      }, // Poly Yoshi
+    { nFTCommonStatusEntryNull,     nFTCommonStatusEntryNull      }, // Poly Captain Falcon
+    { nFTCommonStatusEntryNull,     nFTCommonStatusEntryNull      }, // Poly Kirby
+    { nFTCommonStatusEntryNull,     nFTCommonStatusEntryNull      }, // Poly Pikachu
+    { nFTCommonStatusEntryNull,     nFTCommonStatusEntryNull      }, // Poly Jigglypuff
+    { nFTCommonStatusEntryNull,     nFTCommonStatusEntryNull      }, // Poly Ness
+    { nFTDonkeyStatusAppearR,       nFTDonkeyStatusAppearL        }  // Giant Donkey Kong
 };
 
 // // // // // // // // // // // //
@@ -50,7 +50,7 @@ void ftCommonEntrySetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Entry, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusEntry, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->is_invisible = TRUE;
     fp->x18E_flag_b0 = TRUE;
@@ -69,7 +69,7 @@ void ftCommonEntryNullProcUpdate(GObj *fighter_gobj)
 
         if (fp->status_vars.common.entry.entry_wait == 0)
         {
-            if (fp->ft_kind == Ft_Kind_MasterHand)
+            if (fp->ft_kind == nFTKindMasterHand)
             {
                 ftBossWaitSetStatus(fighter_gobj);
             }
@@ -94,7 +94,7 @@ void ftCommonAppearUpdateEffects(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag1 != 0)
     {
-        if ((fp->ft_kind == Ft_Kind_Pikachu) || (fp->ft_kind == Ft_Kind_Purin) || (fp->ft_kind == Ft_Kind_PolyPikachu) || (fp->ft_kind == Ft_Kind_PolyPurin))
+        if ((fp->ft_kind == nFTKindPikachu) || (fp->ft_kind == nFTKindPurin) || (fp->ft_kind == nFTKindPolyPikachu) || (fp->ft_kind == nFTKindPolyPurin))
         {
             efManagerMBallRaysMakeEffect(&fp->entry_pos);
         }
@@ -123,7 +123,7 @@ void ftCommonAppearProcUpdate(GObj *fighter_gobj)
 
         fp->coll_data.ground_line_id = fp->status_vars.common.entry.ground_line_id;
 
-        if (fp->ft_kind == Ft_Kind_MasterHand)
+        if (fp->ft_kind == nFTKindMasterHand)
         {
             ftBossWaitSetStatus(fighter_gobj);
         }
@@ -191,44 +191,44 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
 
     switch (fp->ft_kind)
     {
-    case Ft_Kind_Mario:
-    case Ft_Kind_Luigi:
-    case Ft_Kind_MetalMario:
+    case nFTKindMario:
+    case nFTKindLuigi:
+    case nFTKindMetalMario:
         efManagerMarioEntryDokanMakeEffect(&fp->entry_pos, fp->ft_kind);
         break;
 
-    case Ft_Kind_Fox:
+    case nFTKindFox:
         efManagerFoxEntryArwingMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
         break;
 
-    case Ft_Kind_Donkey:
-    case Ft_Kind_GiantDonkey:
+    case nFTKindDonkey:
+    case nFTKindGiantDonkey:
         efManagerDonkeyEntryTaruMakeEffect(&fp->entry_pos);
         break;
 
-    case Ft_Kind_Samus:
+    case nFTKindSamus:
         efManagerSamusEntryPointMakeEffect(&fp->entry_pos);
         break;
 
-    case Ft_Kind_Link:
+    case nFTKindLink:
         efManagerLinkEntryWaveMakeEffect(&fp->entry_pos);
         efManagerLinkEntryBeamMakeEffect(&fp->entry_pos);
         break;
 
-    case Ft_Kind_Yoshi:
+    case nFTKindYoshi:
         efManagerYoshiEntryEggMakeEffect(&fp->entry_pos);
         break;
 
-    case Ft_Kind_Kirby:
+    case nFTKindKirby:
         efManagerKirbyEntryStarMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
         break;
 
-    case Ft_Kind_Pikachu:
-    case Ft_Kind_Purin:
+    case nFTKindPikachu:
+    case nFTKindPurin:
         efManagerMBallThrownMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
         break;
 
-    case Ft_Kind_Captain:
+    case nFTKindCaptain:
         if (fp->status_vars.common.entry.lr_entry == LR_Left)
         {
             fp->status_vars.common.entry.is_rotate = TRUE;
@@ -236,7 +236,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
         efManagerCaptainEntryCarMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
         break;
 
-    case Ft_Kind_MasterHand:
+    case nFTKindMasterHand:
         boss_target_gobj = gOMObjCommonLinks[GObj_LinkID_Fighter];
 
         while (boss_target_gobj != NULL)
@@ -261,7 +261,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
     fp->command_vars.flags.flag2 = 0;
     fp->command_vars.flags.flag0 = 0;
 
-    if ((fp->ft_kind == Ft_Kind_Captain) && (fp->status_vars.common.entry.lr_entry == LR_Left))
+    if ((fp->ft_kind == nFTKindCaptain) && (fp->status_vars.common.entry.lr_entry == LR_Left))
     {
         ftRenderSwapDLLink(fighter_gobj, 1);
     }
@@ -300,7 +300,7 @@ void ftNessAppearWaitSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Ness_AppearWait, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusAppearWait, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftCommonAppearInitStatusVars(fighter_gobj);
 
     fp->x18E_flag_b0 = FALSE;
@@ -311,7 +311,7 @@ void ftNessAppearEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == LR_Right) ? ftStatus_Ness_AppearREnd : ftStatus_Ness_AppearLEnd), 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == LR_Right) ? nFTNessStatusAppearREnd : nFTNessStatusAppearLEnd), 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftCommonAppearInitStatusVars(fighter_gobj);
 
     fp->x18E_flag_b0 = FALSE;
@@ -336,7 +336,7 @@ void ftCaptainAppearEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == LR_Right) ? ftStatus_Captain_AppearREnd : ftStatus_Captain_AppearLEnd), 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == LR_Right) ? nFTCaptainStatusAppearREnd : nFTCaptainStatusAppearLEnd), 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommonAppearInitStatusVars(fighter_gobj);
 
     fp->x18E_flag_b0 = FALSE;

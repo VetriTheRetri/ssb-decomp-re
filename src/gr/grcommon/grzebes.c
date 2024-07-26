@@ -91,13 +91,13 @@ GObj* grZebesMakeAcid(void)
     map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRZebesAcidDObjSetup);
     gGRCommonStruct.zebes.map_head = map_head;
 
-    map_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    map_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
     gGRCommonStruct.zebes.map_gobj = map_gobj;
 
     omAddGObjRenderProc(map_gobj, odRenderDObjTreeDLLinksForGObj, 12, GOBJ_DLLINKORDER_DEFAULT, -1);
     func_8000F590(map_gobj, (DObjDesc*) ((intptr_t)&lGRZebesAcidDObjSetup + (uintptr_t)map_head), NULL, OMMtx_Transform_Tra, OMMtx_Transform_Null, 0);
     func_8000F8F4(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000008C0);
-    omAddGObjCommonProc(map_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
+    omAddGObjCommonProc(map_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
     func_8000BED8_CAD8(map_gobj, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidAnimJoint, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidMatAnimJoint, 0.0F);
     func_8000DF34_EB34(map_gobj);
 
@@ -212,10 +212,10 @@ void grZebesProcUpdate(GObj *ground_gobj)
 // 0x80108448
 GObj* grZebesMakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
     GObj *acid_gobj = grZebesMakeAcid();
 
-    omAddGObjCommonProc(ground_gobj, grZebesProcUpdate, GObjProcess_Kind_Proc, 4);
+    omAddGObjCommonProc(ground_gobj, grZebesProcUpdate, nOMObjProcessKindProc, 4);
     ftMainCheckSetMapEnvGObj(acid_gobj, grZebesAcidCheckGetDamageKind);
 
     return ground_gobj;

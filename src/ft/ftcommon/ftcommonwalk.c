@@ -40,15 +40,15 @@ f32 ftCommonWalkGetWalkAnimLength(ftStruct *fp, s32 status_id)
 
     switch (status_id)
     {
-    case ftStatus_Common_WalkSlow:
+    case nFTCommonStatusWalkSlow:
         walk_anim_length = fp->attributes->walkslow_anim_length;
         break;
 
-    case ftStatus_Common_WalkMiddle:
+    case nFTCommonStatusWalkMiddle:
         walk_anim_length = fp->attributes->walkmiddle_anim_length;
         break;
 
-    case ftStatus_Common_WalkFast:
+    case nFTCommonStatusWalkFast:
         walk_anim_length = fp->attributes->walkfast_anim_length;
         break;
     }
@@ -64,13 +64,13 @@ s32 ftCommonWalkGetWalkStatus(s8 stick_range_x)
 
     if (stick_range_x >= FTCOMMON_WALKFAST_STICK_RANGE_MIN) 
     {
-        status_id = ftStatus_Common_WalkFast;
+        status_id = nFTCommonStatusWalkFast;
     }
     else if (stick_range_x >= FTCOMMON_WALKMIDDLE_STICK_RANGE_MIN) 
     {
-        status_id = ftStatus_Common_WalkMiddle;
+        status_id = nFTCommonStatusWalkMiddle;
     }
-    else status_id = ftStatus_Common_WalkSlow;
+    else status_id = nFTCommonStatusWalkSlow;
 
     return status_id;
 }
@@ -112,7 +112,7 @@ void ftCommonWalkSetStatusParam(GObj *fighter_gobj, f32 anim_frame_begin)
     ftMainSetFighterStatus(fighter_gobj, status_id, anim_frame_begin, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
-    if (status_id != ftStatus_Common_WalkFast)
+    if (status_id != nFTCommonStatusWalkFast)
     {
         fp->is_special_interrupt = TRUE;
     }

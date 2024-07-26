@@ -435,7 +435,7 @@ void ftShadowProcRender(GObj *shadow_gobj)
 // 0x8013BB88
 GObj* ftShadowMakeShadow(GObj *fighter_gobj)
 {
-    GObj *shadow_gobj = omMakeGObjSPAfter(GObj_Kind_Shadow, NULL, GObj_LinkID_Shadow, GOBJ_LINKORDER_DEFAULT);
+    GObj *shadow_gobj = omMakeGObjSPAfter(nOMObjKindShadow, NULL, GObj_LinkID_Shadow, GOBJ_LINKORDER_DEFAULT);
     ftStruct *fp;
     ftShadow *fs = gsMemoryAlloc(sizeof(ftShadow), 0x8);
     s32 i;

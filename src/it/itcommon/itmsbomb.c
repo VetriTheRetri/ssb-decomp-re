@@ -18,7 +18,7 @@ extern intptr_t lITMSBombHitEvents;          // 0x00000404
 
 itCreateDesc dITMSBombItemDesc =
 {
-    It_Kind_MSBomb,                         // Item Kind
+    nITKindMSBomb,                         // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITMSBombItemAttributes,               // Offset of item attributes in file?
 

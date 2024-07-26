@@ -22,7 +22,7 @@ extern intptr_t lITDogasAnimJoint;          // 0x000128DC
 // 0x8018B2C0
 itCreateDesc dITDogasItemDesc =
 {
-    It_Kind_Dogas,                          // Item Kind
+    nITKindDogas,                          // Item Kind
     &gITManagerFileData,                         // Pointer to item file data?
     &lITDogasItemAttributes,                // Offset of item attributes in file?
 
@@ -76,7 +76,7 @@ itStatusDesc dITDogasStatusDesc[/* */] =
 wpCreateDesc dITDogasWeaponSmogWeaponDesc = 
 {
     0x03,                                   // Render flags?
-    Wp_Kind_DogasSmog,                      // Weapon Kind
+    nWPKindDogasSmog,                      // Weapon Kind
     &gITManagerFileData,                         // Pointer to weapon's loaded files?
     &lITDogasWeaponSmogWeaponAttributes,    // Offset of weapon attributes in loaded files
 
@@ -204,7 +204,7 @@ void itDogasNAttackInitItemVars(GObj *item_gobj)
 
     ip->item_vars.dogas.smog_spawn_wait = 0;
 
-    if (ip->it_kind == It_Kind_Dogas)
+    if (ip->it_kind == nITKindDogas)
     {
         ip->item_vars.dogas.pos = dobj->translate.vec.f;
 

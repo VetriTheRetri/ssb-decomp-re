@@ -18,25 +18,25 @@ void ftCommonAttackS3SetStatus(GObj *fighter_gobj)
 
     if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
-        if (fp->ft_data->battlemotion->script_info[ftMotion_Common_AttackS3HiS].anim_id != 0)
+        if (fp->ft_data->battlemotion->script_info[nFTCommonMotionAttackS3HiS].anim_id != 0)
         {
             stick_angle = ftCommon_GetStickAngleRadians(fp);
 
-            status_id = (stick_angle > FTCOMMON_ATTACKS3_5ANGLE_HI_MIN)  ? ftStatus_Common_AttackS3Hi  : // High-Angled Forward Tilt
-                        (stick_angle > FTCOMMON_ATTACKS3_5ANGLE_HIS_MIN) ? ftStatus_Common_AttackS3HiS : // Middle High-Angled Forward Tilt
-                        (stick_angle < FTCOMMON_ATTACKS3_5ANGLE_LW_MIN)  ? ftStatus_Common_AttackS3Lw  : // Low-Angled Forward Tilt
-                        (stick_angle < FTCOMMON_ATTACKS3_5ANGLE_LWS_MIN) ? ftStatus_Common_AttackS3LwS : // Middle Low-Angled Forward Tilt
-                                                                           ftStatus_Common_AttackS3;     // Default Forward Tilt
+            status_id = (stick_angle > FTCOMMON_ATTACKS3_5ANGLE_HI_MIN)  ? nFTCommonStatusAttackS3Hi  : // High-Angled Forward Tilt
+                        (stick_angle > FTCOMMON_ATTACKS3_5ANGLE_HIS_MIN) ? nFTCommonStatusAttackS3HiS : // Middle High-Angled Forward Tilt
+                        (stick_angle < FTCOMMON_ATTACKS3_5ANGLE_LW_MIN)  ? nFTCommonStatusAttackS3Lw  : // Low-Angled Forward Tilt
+                        (stick_angle < FTCOMMON_ATTACKS3_5ANGLE_LWS_MIN) ? nFTCommonStatusAttackS3LwS : // Middle Low-Angled Forward Tilt
+                                                                           nFTCommonStatusAttackS3;     // Default Forward Tilt
         }
-        else if (fp->ft_data->battlemotion->script_info[ftMotion_Common_AttackS3Hi].anim_id != 0)
+        else if (fp->ft_data->battlemotion->script_info[nFTCommonMotionAttackS3Hi].anim_id != 0)
         {
             stick_angle = ftCommon_GetStickAngleRadians(fp);
 
-            status_id = (stick_angle > FTCOMMON_ATTACKS3_3ANGLE_HI_MIN)  ? ftStatus_Common_AttackS3Hi  : // High-Angled Forward Tilt
-                        (stick_angle < FTCOMMON_ATTACKS3_3ANGLE_LW_MIN)  ? ftStatus_Common_AttackS3Lw  : // Low-Angled Forward Tilt
-                                                                           ftStatus_Common_AttackS3;     // Default Forward Tilt
+            status_id = (stick_angle > FTCOMMON_ATTACKS3_3ANGLE_HI_MIN)  ? nFTCommonStatusAttackS3Hi  : // High-Angled Forward Tilt
+                        (stick_angle < FTCOMMON_ATTACKS3_3ANGLE_LW_MIN)  ? nFTCommonStatusAttackS3Lw  : // Low-Angled Forward Tilt
+                                                                           nFTCommonStatusAttackS3;     // Default Forward Tilt
         }
-        else status_id = ftStatus_Common_AttackS3;
+        else status_id = nFTCommonStatusAttackS3;
 
         ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
         ftMainUpdateAnimCheckInterrupt(fighter_gobj);
@@ -55,19 +55,19 @@ sb32 ftCommonAttackS3CheckInterruptCommon(GObj *fighter_gobj)
         {
             if (fp->item_hold != NULL)
             {
-                if ((fp->input.pl.button_hold & fp->input.button_mask_z) || (itGetStruct(fp->item_hold)->type == It_Type_Throw))
+                if ((fp->input.pl.button_hold & fp->input.button_mask_z) || (itGetStruct(fp->item_hold)->type == nITTypeThrow))
                 {
-                    ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowF);
+                    ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowF);
 
                     return TRUE;
                 }
                 switch (itGetStruct(fp->item_hold)->type)
                 {
-                case It_Type_Swing:
+                case nITTypeSwing:
                     ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_Attack3);
                     return TRUE;
 
-                case It_Type_Shoot:
+                case nITTypeShoot:
                     ftCommonItemShootSetStatus(fighter_gobj);
                     return TRUE;
                 }

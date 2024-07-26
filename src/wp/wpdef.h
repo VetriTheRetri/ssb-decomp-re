@@ -4,41 +4,41 @@
 // Enums
 typedef enum wpKind
 {
-	Wp_Kind_Fireball,		   // 0x00
-	Wp_Kind_Blaster,		   // 0x01
-	Wp_Kind_ChargeShot,		   // 0x02
-	Wp_Kind_SamusBomb,		   // 0x03
-	Wp_Kind_Cutter,			   // 0x04
-	Wp_Kind_EggThrow,		   // 0x05
-	Wp_Kind_YoshiStar,		   // 0x06
-	Wp_Kind_Boomerang,		   // 0x07
-	Wp_Kind_SpinAttack,		   // 0x08
-	Wp_Kind_ThunderJoltAir,	   // 0x09
-	Wp_Kind_ThunderJoltGround, // 0x0A
-	Wp_Kind_ThunderHead,	   // 0x0B
-	Wp_Kind_ThunderTrail,	   // 0x0C
-	Wp_Kind_PKFire,			   // 0x0D
-	Wp_Kind_PKThunderHead,	   // 0x0E
-	Wp_Kind_PKThunderTrail,	   // 0x0F
-	Wp_Kind_BulletNormal,  	   // 0x10
-	Wp_Kind_BulletHard,	   	   // 0x11
-	Wp_Kind_ArwingLaser2D,	   // 0x12
-	Wp_Kind_ArwingLaser3D,	   // 0x13
-	Wp_Kind_LGunAmmo,		   // 0x14
-	Wp_Kind_FFlowerFlame,	   // 0x15
-	Wp_Kind_StarRodStar,	   // 0x16
+	nWPKindFireball,		   // 0x00
+	nWPKindBlaster,		   // 0x01
+	nWPKindChargeShot,		   // 0x02
+	nWPKindSamusBomb,		   // 0x03
+	nWPKindCutter,			   // 0x04
+	nWPKindEggThrow,		   // 0x05
+	nWPKindYoshiStar,		   // 0x06
+	nWPKindBoomerang,		   // 0x07
+	nWPKindSpinAttack,		   // 0x08
+	nWPKindThunderJoltAir,	   // 0x09
+	nWPKindThunderJoltGround, // 0x0A
+	nWPKindThunderHead,	   // 0x0B
+	nWPKindThunderTrail,	   // 0x0C
+	nWPKindPKFire,			   // 0x0D
+	nWPKindPKThunderHead,	   // 0x0E
+	nWPKindPKThunderTrail,	   // 0x0F
+	nWPKindBulletNormal,  	   // 0x10
+	nWPKindBulletHard,	   	   // 0x11
+	nWPKindArwingLaser2D,	   // 0x12
+	nWPKindArwingLaser3D,	   // 0x13
+	nWPKindLGunAmmo,		   // 0x14
+	nWPKindFFlowerFlame,	   // 0x15
+	nWPKindStarRodStar,	   // 0x16
 
-	Wp_Kind_MonsterStart,						  // 0x17
-	Wp_Kind_IwarkRock = Wp_Kind_MonsterStart,	  // 0x17
-	Wp_Kind_NyarsCoin,							  // 0x18
-	Wp_Kind_LizardonFlame,						  // 0x19
-	Wp_Kind_SpearSwarm,							  // 0x1A
-	Wp_Kind_KamexHydro,							  // 0x1B
-	Wp_Kind_StarmieSwift,						  // 0x1C
-	Wp_Kind_DogasSmog,							  // 0x1D
-	Wp_Kind_HitokageFlame,						  // 0x1E
-	Wp_Kind_FushigibanaRazor,					  // 0x1F
-	Wp_Kind_MonsterEnd = Wp_Kind_FushigibanaRazor // 0x1F
+	nWPKindMonsterStart,						  // 0x17
+	nWPKindIwarkRock = nWPKindMonsterStart,	  // 0x17
+	nWPKindNyarsCoin,							  // 0x18
+	nWPKindLizardonFlame,						  // 0x19
+	nWPKindSpearSwarm,							  // 0x1A
+	nWPKindKamexHydro,							  // 0x1B
+	nWPKindStarmieSwift,						  // 0x1C
+	nWPKindDogasSmog,							  // 0x1D
+	nWPKindHitokageFlame,						  // 0x1E
+	nWPKindFushigibanaRazor,					  // 0x1F
+	nWPKindMonsterEnd = nWPKindFushigibanaRazor // 0x1F
 
 } wpKind;
 

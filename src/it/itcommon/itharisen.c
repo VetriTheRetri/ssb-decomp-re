@@ -22,7 +22,7 @@ intptr_t dITHarisenAnimJoint[/* */] = { 0x2250, 0x2270 };
 
 itCreateDesc dITHarisenItemDesc =
 {
-    It_Kind_Harisen,                        // Item Kind
+    nITKindHarisen,                        // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITHarisenItemAttributes,              // Offset of item attributes in file?
 

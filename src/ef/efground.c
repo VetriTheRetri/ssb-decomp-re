@@ -1484,7 +1484,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
     }
     else ep = NULL;
 
-    effect_gobj = omMakeGObjSPAfter(GObj_Kind_Effect, efManagerProcRun, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, efManagerProcRun, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -1680,11 +1680,11 @@ void efGroundMakeEffectSpawnActor(void)
 
     if ((gBattleState->gr_kind <= Gr_Kind_BattleEnd) && (gSceneData.scene_current != scMajor_Kind_1PTrainingMode) && (dEFGroundDatas[gBattleState->gr_kind].effect_param != NULL))
     {
-        effect_gobj = omMakeGObjSPAfter(GObj_Kind_Effect, NULL, 7, GOBJ_LINKORDER_DEFAULT);
+        effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, 7, GOBJ_LINKORDER_DEFAULT);
 
         if (effect_gobj != NULL)
         {
-            omAddGObjCommonProc(effect_gobj, efGroundActorProcUpdate, GObjProcess_Kind_Proc, 1);
+            omAddGObjCommonProc(effect_gobj, efGroundActorProcUpdate, nOMObjProcessKindProc, 1);
 
             effect_gobj->user_data.p = &sEFGroundActor;
 

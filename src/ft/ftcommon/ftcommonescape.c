@@ -21,7 +21,7 @@ void ftCommonEscapeProcUpdate(GObj *fighter_gobj)
         fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = fp->phys_info.vel_air.z = 0.0F;
         fp->phys_info.vel_ground.x = fp->phys_info.vel_ground.y = fp->phys_info.vel_ground.z = 0.0F;
 
-        if ((fp->ft_kind != Ft_Kind_Yoshi) && (fp->ft_kind != Ft_Kind_PolyYoshi) || (ftCommonGuardCheckInterruptEscape(fighter_gobj) == FALSE))
+        if ((fp->ft_kind != nFTKindYoshi) && (fp->ft_kind != nFTKindPolyYoshi) || (ftCommonGuardCheckInterruptEscape(fighter_gobj) == FALSE))
         {
             ftCommonWaitSetStatus(fighter_gobj);
         }
@@ -62,7 +62,7 @@ s32 ftCommonEscapeGetStatus(ftStruct *fp)
 {
     if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_ESCAPE_STICK_RANGE_MIN) && (fp->tap_stick_x < FTCOMMON_ESCAPE_BUFFER_FRAMES_MAX))
     {
-        return ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? ftStatus_Common_EscapeF : ftStatus_Common_EscapeB;
+        return ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusEscapeF : nFTCommonStatusEscapeB;
     }
     else return -1;
 }
@@ -89,7 +89,7 @@ sb32 ftCommonEscapeCheckInterruptDash(GObj *fighter_gobj)
 
     if (fp->input.pl.button_tap & fp->input.button_mask_z)
     {
-        ftCommonEscapeSetStatus(fighter_gobj, ftStatus_Common_EscapeF, 0);
+        ftCommonEscapeSetStatus(fighter_gobj, nFTCommonStatusEscapeF, 0);
 
         return TRUE;
     }

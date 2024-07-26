@@ -29,38 +29,38 @@ typedef enum ftYoshiMotion
 {
     // ID for SpecialAirLwLoop not required?
 
-    ftMotion_Yoshi_AppearR = ftMotion_Common_SpecialStart,
-    ftMotion_Yoshi_AppearL,
-    ftMotion_Yoshi_SpecialHi,
-    ftMotion_Yoshi_SpecialAirHi,
-    ftMotion_Yoshi_SpecialLwStart,
-    ftMotion_Yoshi_SpecialLwLanding,
-    ftMotion_Yoshi_SpecialAirLwStart,
-    ftMotion_Yoshi_SpecialN,
-    ftMotion_Yoshi_SpecialNCatch,
-    ftMotion_Yoshi_SpecialNRelease,
-    ftMotion_Yoshi_SpecialAirN,
-    ftMotion_Yoshi_SpecialAirNCatch,
-    ftMotion_Yoshi_SpecialAirNRelease
+    nFTYoshiMotionAppearR = nFTCommonMotionSpecialStart,
+    nFTYoshiMotionAppearL,
+    nFTYoshiMotionSpecialHi,
+    nFTYoshiMotionSpecialAirHi,
+    nFTYoshiMotionSpecialLwStart,
+    nFTYoshiMotionSpecialLwLanding,
+    nFTYoshiMotionSpecialAirLwStart,
+    nFTYoshiMotionSpecialN,
+    nFTYoshiMotionSpecialNCatch,
+    nFTYoshiMotionSpecialNRelease,
+    nFTYoshiMotionSpecialAirN,
+    nFTYoshiMotionSpecialAirNCatch,
+    nFTYoshiMotionSpecialAirNRelease
 
 } ftYoshiMotion;
 
 typedef enum ftYoshiStatus
 {
-    ftStatus_Yoshi_AppearR = ftStatus_Common_SpecialStart,
-    ftStatus_Yoshi_AppearL,
-    ftStatus_Yoshi_SpecialHi,
-    ftStatus_Yoshi_SpecialAirHi,
-    ftStatus_Yoshi_SpecialLwStart,
-    ftStatus_Yoshi_SpecialLwLanding,
-    ftStatus_Yoshi_SpecialAirLwStart,
-    ftStatus_Yoshi_SpecialAirLwLoop,
-    ftStatus_Yoshi_SpecialN,
-    ftStatus_Yoshi_SpecialNCatch,
-    ftStatus_Yoshi_SpecialNRelease,
-    ftStatus_Yoshi_SpecialAirN,
-    ftStatus_Yoshi_SpecialAirNCatch,
-    ftStatus_Yoshi_SpecialAirNRelease
+    nFTYoshiStatusAppearR = nFTCommonStatusSpecialStart,
+    nFTYoshiStatusAppearL,
+    nFTYoshiStatusSpecialHi,
+    nFTYoshiStatusSpecialAirHi,
+    nFTYoshiStatusSpecialLwStart,
+    nFTYoshiStatusSpecialLwLanding,
+    nFTYoshiStatusSpecialAirLwStart,
+    nFTYoshiStatusSpecialAirLwLoop,
+    nFTYoshiStatusSpecialN,
+    nFTYoshiStatusSpecialNCatch,
+    nFTYoshiStatusSpecialNRelease,
+    nFTYoshiStatusSpecialAirN,
+    nFTYoshiStatusSpecialAirNCatch,
+    nFTYoshiStatusSpecialAirNRelease
 
 } ftYoshiStatus;
 

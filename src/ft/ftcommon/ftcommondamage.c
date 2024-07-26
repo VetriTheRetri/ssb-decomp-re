@@ -14,19 +14,19 @@ extern s32 gmCommon_DamageCalcHitLag(s32 damage, s32 status_id, f32 hitlag_mul);
 // 0x801885A0
 s32 dFTCommonDamageStatusGroundIDs[/* */][3] =
 {
-    { ftStatus_Common_DamageLw1,   ftStatus_Common_DamageN1,    ftStatus_Common_DamageHi1   },
-    { ftStatus_Common_DamageLw2,   ftStatus_Common_DamageN2,    ftStatus_Common_DamageHi2   },
-    { ftStatus_Common_DamageLw3,   ftStatus_Common_DamageN3,    ftStatus_Common_DamageHi3   },
-    { ftStatus_Common_DamageFlyLw, ftStatus_Common_DamageFlyN,  ftStatus_Common_DamageFlyHi }
+    { nFTCommonStatusDamageLw1,   nFTCommonStatusDamageN1,    nFTCommonStatusDamageHi1   },
+    { nFTCommonStatusDamageLw2,   nFTCommonStatusDamageN2,    nFTCommonStatusDamageHi2   },
+    { nFTCommonStatusDamageLw3,   nFTCommonStatusDamageN3,    nFTCommonStatusDamageHi3   },
+    { nFTCommonStatusDamageFlyLw, nFTCommonStatusDamageFlyN,  nFTCommonStatusDamageFlyHi }
 };
 
 // 0x801885D0
 s32 dFTCommonDamageStatusAirIDs[/* */][3] =
 {
-    { ftStatus_Common_DamageAir1,  ftStatus_Common_DamageAir1,  ftStatus_Common_DamageAir1  },
-    { ftStatus_Common_DamageAir2,  ftStatus_Common_DamageAir2,  ftStatus_Common_DamageAir2  },
-    { ftStatus_Common_DamageAir3,  ftStatus_Common_DamageAir3,  ftStatus_Common_DamageAir3  },
-    { ftStatus_Common_DamageFlyLw, ftStatus_Common_DamageFlyN,  ftStatus_Common_DamageFlyHi }
+    { nFTCommonStatusDamageAir1,  nFTCommonStatusDamageAir1,  nFTCommonStatusDamageAir1  },
+    { nFTCommonStatusDamageAir2,  nFTCommonStatusDamageAir2,  nFTCommonStatusDamageAir2  },
+    { nFTCommonStatusDamageAir3,  nFTCommonStatusDamageAir3,  nFTCommonStatusDamageAir3  },
+    { nFTCommonStatusDamageFlyLw, nFTCommonStatusDamageFlyN,  nFTCommonStatusDamageFlyHi }
 };
 
 // // // // // // // // // // // //
@@ -77,7 +77,7 @@ void ftCommonDamageUpdateDustEffect(GObj *fighter_gobj)
 
         if (fp->status_vars.common.damage.dust_effect_int == 0)
         {
-            ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustExpandLarge, 4, NULL, NULL, fp->lr, FALSE, FALSE);
+            ftParticle_MakeEffectKind(fighter_gobj, nEFKindDustExpandLarge, 4, NULL, NULL, fp->lr, FALSE, FALSE);
             ftCommonDamageSetDustEffectInterval(fp);
         }
     }
@@ -149,7 +149,7 @@ void ftCommonDamageSetStatus(GObj *fighter_gobj)
         ftMainSetFighterStatus(fighter_gobj, fp->status_vars.common.damage.status_id, 0.0F, 1.0F, (FTSTATUPDATE_DAMAGEPORT_PRESERVE | FTSTATUPDATE_SHUFFLETIME_PRESERVE));
         ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
-        if (fp->status_info.status_id == ftStatus_Common_DamageFlyRoll)
+        if (fp->status_info.status_id == nFTCommonStatusDamageFlyRoll)
         {
             ftCommonDamageFlyRollUpdateModelRoll(fighter_gobj);
         }
@@ -227,7 +227,7 @@ void ftCommonDamageCommonProcPhysics(GObj *fighter_gobj)
     }
     else ftPhysics_ApplyGroundVelFriction(fighter_gobj);
     
-    if (fp->status_info.status_id == ftStatus_Common_DamageFlyRoll)
+    if (fp->status_info.status_id == nFTCommonStatusDamageFlyRoll)
     {
         ftCommonDamageFlyRollUpdateModelRoll(fighter_gobj);
     }
@@ -436,9 +436,9 @@ sb32 ftCommonDamageCheckCatchResist(ftStruct *fp)
     {
         return TRUE;
     }
-    if ((fp->ft_kind == Ft_Kind_Donkey) || (fp->ft_kind == Ft_Kind_PolyDonkey) || (fp->ft_kind == Ft_Kind_GiantDonkey))
+    if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindPolyDonkey) || (fp->ft_kind == nFTKindGiantDonkey))
     {
-        if ((fp->status_info.status_id >= ftStatus_Donkey_ThrowFStartDamage) && (fp->status_info.status_id <= ftStatus_Donkey_ThrowFEndDamage) && (ftCommonDamageGetDamageLevel(ftCommon_DamageCalcHitStun(fp->damage_knockback)) < 3))
+        if ((fp->status_info.status_id >= nFTDonkeyStatusThrowFStartDamage) && (fp->status_info.status_id <= nFTDonkeyStatusThrowFEndDamage) && (ftCommonDamageGetDamageLevel(ftCommon_DamageCalcHitStun(fp->damage_knockback)) < 3))
         {
             return TRUE;
         }
@@ -544,8 +544,8 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
                 this_fp->phys_info.vel_damage_air.y = -vel_damage.y * 0.8F;
                 this_fp->phys_info.vel_damage_ground = 0.0F;
 
-                ftParticle_MakeEffectKind(this_gobj, Ef_Kind_ImpactWave, 0, NULL, NULL, this_fp->lr, 0, 0);
-                ftParticle_MakeEffectKind(this_gobj, Ef_Kind_QuakeM0, 0, NULL, NULL, this_fp->lr, 0, 0);
+                ftParticle_MakeEffectKind(this_gobj, nEFKindImpactWave, 0, NULL, NULL, this_fp->lr, 0, 0);
+                ftParticle_MakeEffectKind(this_gobj, nEFKindQuakeM0, 0, NULL, NULL, this_fp->lr, 0, 0);
             }
             else
             {
@@ -569,11 +569,11 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     {
         if ((angle_end > FTCOMMON_DAMAGE_FIGHTER_FLYTOP_ANGLE_LOW) && (angle_end < FTCOMMON_DAMAGE_FIGHTER_FLYTOP_ANGLE_HIGH))
         {
-            status_id_var = status_id_set = ftStatus_Common_DamageFlyTop;
+            status_id_var = status_id_set = nFTCommonStatusDamageFlyTop;
         }
         else if ((this_fp->percent_damage >= FTCOMMON_DAMAGE_FIGHTER_FLYROLL_DAMAGE_MIN) && (mtTrigGetRandomFloat() < FTCOMMON_DAMAGE_FIGHTER_FLYROLL_RANDOM_CHANCE))
         {
-            status_id_var = status_id_set = ftStatus_Common_DamageFlyRoll;           
+            status_id_var = status_id_set = nFTCommonStatusDamageFlyRoll;           
         }
     }
     if (status_id_replace != -1)
@@ -581,11 +581,11 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
         status_id_set = status_id_replace;
     }
 
-    if (((element == gmHitCollision_Element_Electric) && (status_id_set >= ftStatus_Common_DamageStart)) && (status_id_set <= ftStatus_Common_DamageEnd))
+    if (((element == gmHitCollision_Element_Electric) && (status_id_set >= nFTCommonStatusDamageStart)) && (status_id_set <= nFTCommonStatusDamageEnd))
     {
         status_id_var = status_id_set;
 
-        status_id_set = (damage_level == 3) ? ftStatus_Common_DamageE2 : ftStatus_Common_DamageE1;
+        status_id_set = (damage_level == 3) ? nFTCommonStatusDamageE2 : nFTCommonStatusDamageE1;
     }
     this_fp->damage_player_number = damage_player_number;
 
@@ -610,7 +610,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     }
     else this_fp->status_vars.common.damage.is_knockback_over = FALSE;
     
-    if ((this_fp->status_info.status_id == ftStatus_Common_DamageE1) || (this_fp->status_info.status_id == ftStatus_Common_DamageE2))
+    if ((this_fp->status_info.status_id == nFTCommonStatusDamageE1) || (this_fp->status_info.status_id == nFTCommonStatusDamageE2))
     {
         this_fp->proc_effect = ftCommonDamageSetStatus;
         this_fp->status_vars.common.damage.status_id = status_id_var;
@@ -627,7 +627,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     {
         ftMainMakeRumble(this_fp, 2, 0);
     }
-    if (this_fp->status_info.status_id == ftStatus_Common_DamageFlyRoll)
+    if (this_fp->status_info.status_id == nFTCommonStatusDamageFlyRoll)
     {
         ftCommonDamageFlyRollUpdateModelRoll(this_gobj);
     }
@@ -819,7 +819,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
     }
     if (this_fp->item_hold != NULL)
     {
-        if ((itGetStruct(this_fp->item_hold)->weight == It_Weight_Heavy) && ((this_fp->ft_kind == Ft_Kind_Donkey) || (this_fp->ft_kind == Ft_Kind_PolyDonkey) || (this_fp->ft_kind == Ft_Kind_GiantDonkey)))
+        if ((itGetStruct(this_fp->item_hold)->weight == It_Weight_Heavy) && ((this_fp->ft_kind == nFTKindDonkey) || (this_fp->ft_kind == nFTKindPolyDonkey) || (this_fp->ft_kind == nFTKindGiantDonkey)))
         {
             if (ftCommonDamageCheckCatchResist(this_fp) != FALSE)
             {

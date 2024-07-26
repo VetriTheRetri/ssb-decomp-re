@@ -609,7 +609,7 @@ void gmRumbleMakeActor(void)
     s32 l;
     s32 player;
 
-    omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Rumble, NULL, GObj_LinkID_Rumble, GOBJ_LINKORDER_DEFAULT), gmRumbleActorProcUpdate, GObjProcess_Kind_Proc, 0);
+    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjKindRumble, NULL, GObj_LinkID_Rumble, GOBJ_LINKORDER_DEFAULT), gmRumbleActorProcUpdate, nOMObjProcessKindProc, 0);
 
     /* DEBUGGER NOTES */
 
@@ -694,7 +694,7 @@ void func_ovl2_80115834(void)
 
     while (rumble_gobj != NULL)
     {
-        if (rumble_gobj->gobj_id == GObj_Kind_Rumble)
+        if (rumble_gobj->gobj_id == nOMObjKindRumble)
         {
             func_8000B2B8(rumble_gobj);
         }

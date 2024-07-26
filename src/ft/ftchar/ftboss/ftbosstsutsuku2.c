@@ -51,7 +51,7 @@ void ftBossTsutsuku2SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp;
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Boss_Tsutsuku2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusTsutsuku2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp = ftGetStruct(fighter_gobj);
 

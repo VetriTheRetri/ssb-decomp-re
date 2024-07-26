@@ -20,7 +20,7 @@ extern intptr_t lITKabigonAnimJoint;        // 0x0000B158
 // 0x8018AB40
 itCreateDesc dITKabigonItemDesc = 
 {
-    It_Kind_Kabigon,                        // Item Kind
+    nITKindKabigon,                        // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITKabigonItemAttributes,              // Offset of item attributes in file?
 
@@ -159,7 +159,7 @@ void itKabigonNFallInitItemVars(GObj *item_gobj)
 
     func_800269C0_275C0(alSound_SFX_KabigonFall);
 
-    if (ip->it_kind == It_Kind_Kabigon)
+    if (ip->it_kind == nITKindKabigon)
     {
         func_800269C0_275C0(alSound_Voice_MBallKabigonFall);
 
@@ -305,7 +305,7 @@ GObj* itKabigonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITKabigonAnimJoint), 0.0F); // Linker thing
 
-        if (ip->it_kind == It_Kind_Kabigon)
+        if (ip->it_kind == nITKindKabigon)
         {
             func_800269C0_275C0(alSound_Voice_MBallKabigonSpawn);
         }

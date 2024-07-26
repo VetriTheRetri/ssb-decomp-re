@@ -238,9 +238,9 @@ sb32 scAutoDemoCheckStopFocusPlayer(ftStruct *fp)
 {
 	switch (fp->status_info.status_id)
 	{
-	case ftStatus_Common_DeadDown:
-	case ftStatus_Common_DeadLeftRight:
-	case ftStatus_Common_DeadUpStar:
+	case nFTCommonStatusDeadDown:
+	case nFTCommonStatusDeadLeftRight:
+	case nFTCommonStatusDeadUpStar:
 		return TRUE;
 
 	default:
@@ -411,7 +411,7 @@ void scAutoDemoProcUpdateMain(GObj *gobj)
 // 8018D704
 GObj* scAutoDemoMakeFocusInterface()
 {
-	GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, scAutoDemoProcUpdateMain, 0xA, 0x80000000);
+	GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, scAutoDemoProcUpdateMain, 0xA, 0x80000000);
 
 	sAutoDemoProc = dAutoDemoProcList;
 	sAutoDemoFocusChangeWait = 0;
@@ -566,7 +566,7 @@ void func_ovl64_8018DB18()
 	void *file;
 
 	file = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_0000000C, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_0000000C), 0x10));
-	sAutoDemoFighterNameGObj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+	sAutoDemoFighterNameGObj = interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xB, 0x80000000);
 
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 

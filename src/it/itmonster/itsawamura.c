@@ -21,7 +21,7 @@ extern intptr_t lITSawamuraDisplayList;     // 0x00012340
 // 0x8018B220
 itCreateDesc dITSawamuraItemDesc =
 {
-    It_Kind_Sawamura,                       // Item Kind
+    nITKindSawamura,                       // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITSawamuraItemAttributes,             // Offset of item attributes in file?
 
@@ -257,7 +257,7 @@ void itSawamuraNAttackInitItemVars(GObj *item_gobj)
     }
     itSawamuraNAttackSetFollowPlayerLR(item_gobj, victim_gobj);
 
-    if (ip->it_kind == It_Kind_Sawamura)
+    if (ip->it_kind == nITKindSawamura)
     {
         Gfx *dl = (Gfx*)itGetPData(ip, lITSawamuraDataStart, lITSawamuraDisplayList); // Linker thing
 

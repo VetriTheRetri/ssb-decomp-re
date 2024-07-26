@@ -19,7 +19,7 @@ lWPLinkSpinAttackWeaponAttributes;          // 0x0000000C
 wpCreateDesc dWPLinkSpinAttackWeaponDesc =
 {
     0x03,                                   // Render flags?
-    Wp_Kind_SpinAttack,                     // Weapon Kind
+    nWPKindSpinAttack,                     // Weapon Kind
     &gFTDataLinkMain,                       // Pointer to character's loaded files?
     &lWPLinkSpinAttackWeaponAttributes,     // Offset of weapon attributes in loaded files
 

@@ -16,7 +16,7 @@ extern intptr_t lITHammerItemAttributes;    // 0x00000374
 
 itCreateDesc dITHammerItemDesc =
 {
-    It_Kind_Hammer,                         // Item Kind
+    nITKindHammer,                         // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITHammerItemAttributes,               // Offset of item attributes in file?
 

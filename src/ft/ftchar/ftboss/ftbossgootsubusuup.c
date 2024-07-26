@@ -40,5 +40,5 @@ void ftBossGootsubusuUpProcMap(GObj *fighter_gobj)
 // 0x80159B9C
 void ftBossGootsubusuUpSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Boss_GootsubusuUp, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusGootsubusuUp, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 }

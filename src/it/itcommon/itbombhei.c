@@ -29,7 +29,7 @@ intptr_t dITBombHeiDisplayListOffsets[/* */] =
 // 0x80189F98
 itCreateDesc dITBombHeiItemDesc =
 {
-    It_Kind_BombHei,                        // Item Kind
+    nITKindBombHei,                        // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITBombHeiItemAttributes,              // Offset of item attributes in file?
 

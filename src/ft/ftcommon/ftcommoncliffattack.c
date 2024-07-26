@@ -37,7 +37,7 @@ void ftCommonCliffAttackQuick1SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CliffAttackQuick1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffAttackQuick1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->is_cliff_hold = TRUE;
 
@@ -49,7 +49,7 @@ void ftCommonCliffAttackSlow1SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CliffAttackSlow1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffAttackSlow1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->is_cliff_hold = TRUE;
 
@@ -60,7 +60,7 @@ void ftCommonCliffAttackSlow1SetStatus(GObj *fighter_gobj)
 void ftCommonCliffAttackQuick2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CliffAttackQuick2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffAttackQuick2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommonCliffCommon2InitStatusVars(fighter_gobj);
 }
 
@@ -68,6 +68,6 @@ void ftCommonCliffAttackQuick2SetStatus(GObj *fighter_gobj)
 void ftCommonCliffAttackSlow2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CliffAttackSlow2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffAttackSlow2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommonCliffCommon2InitStatusVars(fighter_gobj);
 }

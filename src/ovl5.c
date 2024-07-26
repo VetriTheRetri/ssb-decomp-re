@@ -106,7 +106,7 @@ void func_ovl5_8018D1A0()
 	gBattleState->game_type = gmMatch_GameType_Unk6;
 	gBattleState->gr_kind = Gr_Kind_Pupupu;
 	gBattleState->pl_count = 1;
-	gBattleState->player_block[0].character_kind = Ft_Kind_Mario;
+	gBattleState->player_block[0].character_kind = nFTKindMario;
 	gBattleState->player_block[0].player_kind = Pl_Kind_Key;
 
 	func_ovl5_8018D0C0();

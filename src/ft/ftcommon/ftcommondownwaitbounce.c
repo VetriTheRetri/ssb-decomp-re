@@ -83,11 +83,11 @@ void ftCommonDownWaitSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    if (fp->status_info.status_id == ftStatus_Common_DownBounceD)
+    if (fp->status_info.status_id == nFTCommonStatusDownBounceD)
     {
-        status_id = ftStatus_Common_DownWaitD;
+        status_id = nFTCommonStatusDownWaitD;
     }
-    else status_id = ftStatus_Common_DownWaitU;
+    else status_id = nFTCommonStatusDownWaitU;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_DOWNBOUNCE_STATUPDATE_FLAGS);
 
@@ -139,7 +139,7 @@ void ftCommonDownBounceUpdateEffects(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_ImpactWave, ftParts_Joint_TopN, NULL, NULL, fp->lr, FALSE, FALSE);
+    ftParticle_MakeEffectKind(fighter_gobj, nEFKindImpactWave, ftParts_Joint_TopN, NULL, NULL, fp->lr, FALSE, FALSE);
     func_800269C0_275C0(dFTCommonDownBounceSFX[fp->ft_kind]);
     ftMainMakeRumble(fp, 4, 0);
 }
@@ -156,9 +156,9 @@ void ftCommonDownBounceSetStatus(GObj *fighter_gobj)
     }
     if (ftCommonDownBounceCheckUpOrDown(fighter_gobj) != 0)
     {
-        status_id = ftStatus_Common_DownBounceD;
+        status_id = nFTCommonStatusDownBounceD;
     }
-    else status_id = ftStatus_Common_DownBounceU;
+    else status_id = nFTCommonStatusDownBounceU;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_PLAYERTAG_PRESERVE);
     ftCommonDownBounceUpdateEffects(fighter_gobj);

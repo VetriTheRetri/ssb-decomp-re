@@ -19,7 +19,7 @@ lWPFoxBlasterWeaponAttributes;              // 0x00000000
 wpCreateDesc dWPFoxBlasterWeaponDesc = 
 {
     0x00,                                   // Render flags?
-    Wp_Kind_Blaster,                        // Weapon Kind
+    nWPKindBlaster,                        // Weapon Kind
     &gFTDataFoxSpecial1,                    // Pointer to character's loaded files?
     &lWPFoxBlasterWeaponAttributes,         // Offset of weapon attributes in loaded files
 

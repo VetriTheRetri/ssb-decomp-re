@@ -8,7 +8,7 @@
 // // // // // // // // // // // //
 
 #define FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, id_true, id_false) \
-(((fp->fighter_vars.kirby.copy_id == Ft_Kind_Mario) || (fp->fighter_vars.kirby.copy_id == Ft_Kind_PolyMario) || (fp->fighter_vars.kirby.copy_id == Ft_Kind_MetalMario)) ? id_true : id_false) \
+(((fp->fighter_vars.kirby.copy_id == nFTKindMario) || (fp->fighter_vars.kirby.copy_id == nFTKindPolyMario) || (fp->fighter_vars.kirby.copy_id == nFTKindMetalMario)) ? id_true : id_false) \
 
 // // // // // // // // // // // //
 //                               //
@@ -41,9 +41,9 @@ void ftKirbyCopyMarioSpecialNProcAccessory(GObj *fighter_gobj)
 
         switch (fp->fighter_vars.kirby.copy_id) // jtbl at 0x8018C6A0
         {
-        case Ft_Kind_Mario:
-        case Ft_Kind_MetalMario:
-        case Ft_Kind_PolyMario:
+        case nFTKindMario:
+        case nFTKindMetalMario:
+        case nFTKindPolyMario:
             fireball_kind = 0;
             break;
 
@@ -53,8 +53,8 @@ void ftKirbyCopyMarioSpecialNProcAccessory(GObj *fighter_gobj)
             break; // Undefined behavior here, var is uninitialized, but projectile spawn function still runs
         #endif
 
-        case Ft_Kind_Luigi:
-        case Ft_Kind_PolyLuigi:
+        case nFTKindLuigi:
+        case nFTKindPolyLuigi:
             fireball_kind = 1;
             break;
         }
@@ -81,7 +81,7 @@ void ftKirbyCopyMarioSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
 
-    ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, ftStatus_Kirby_CopyMario_SpecialN, ftStatus_Kirby_CopyLuigi_SpecialN), fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, nFTKirbyStatusCopyMarioSpecialN, nFTKirbyStatusCopyLuigiSpecialN), fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
     fp->proc_accessory = ftKirbyCopyMarioSpecialNProcAccessory;
 }
@@ -93,7 +93,7 @@ void ftKirbyCopyMarioSpecialNSwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
 
-    ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, ftStatus_Kirby_CopyMario_SpecialAirN, ftStatus_Kirby_CopyLuigi_SpecialAirN), fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, nFTKirbyStatusCopyMarioSpecialAirN, nFTKirbyStatusCopyLuigiSpecialAirN), fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
     ftPhysics_ClampAirVelXMax(fp);
 
@@ -114,7 +114,7 @@ void ftKirbyCopyMarioSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, ftStatus_Kirby_CopyMario_SpecialN, ftStatus_Kirby_CopyLuigi_SpecialN), 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, nFTKirbyStatusCopyMarioSpecialN, nFTKirbyStatusCopyLuigiSpecialN), 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyMarioSpecialNInitStatusVars(fighter_gobj);
 }
@@ -124,7 +124,7 @@ void ftKirbyCopyMarioSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, ftStatus_Kirby_CopyMario_SpecialAirN, ftStatus_Kirby_CopyLuigi_SpecialAirN), 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, nFTKirbyStatusCopyMarioSpecialAirN, nFTKirbyStatusCopyLuigiSpecialAirN), 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyMarioSpecialNInitStatusVars(fighter_gobj);
 }

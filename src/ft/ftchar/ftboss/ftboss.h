@@ -19,74 +19,74 @@ extern u32 gFTDataBossParticleBankID;
 
 typedef enum ftBossMotion
 {
-	ftMotion_MasterHand_Default = ftMotion_Common_SpecialStart,
-	ftMotion_MasterHand_Hippataku,	// Horizontal slap
-	ftMotion_MasterHand_Harau,		// Sweep
-	ftMotion_MasterHand_Okuhikouki1,
-	ftMotion_MasterHand_Okuhikouki2,
-	ftMotion_MasterHand_Okuhikouki3,
-	ftMotion_MasterHand_Walk,
-	ftMotion_MasterHand_WalkLoop,
-	ftMotion_MasterHand_WalkWait,
-	ftMotion_MasterHand_WalkShoot,	// Finger walk hit
-	ftMotion_MasterHand_GootsubusuUp,	// Fist slam 
-	ftMotion_MasterHand_GootsubusuWait,
-	ftMotion_MasterHand_GootsubusuEnd,
-	ftMotion_MasterHand_GootsubusuDown,
-	ftMotion_MasterHand_Tsutsuku1,	// Pointer poke
-	ftMotion_MasterHand_Tsutsuku3,
-	ftMotion_MasterHand_Tsutsuku2,
-	ftMotion_MasterHand_Drill,
-	ftMotion_MasterHand_Okukouki,
-	ftMotion_MasterHand_Yubideppou1, // Finger gun
-	ftMotion_MasterHand_Yubideppou3,
-	ftMotion_MasterHand_Yubideppou2,
-	ftMotion_MasterHand_Okupunch1,	// Fist rocket
-	ftMotion_MasterHand_Okupunch2,
-	ftMotion_MasterHand_Okupunch3,
-	ftMotion_MasterHand_Okutsubushi, // Vertical hand slap
-	ftMotion_MasterHand_DeadLeft,
-	ftMotion_MasterHand_DeadCenter,
-	ftMotion_MasterHand_DeadRight,
-	ftMotion_MasterHand_Appear
+	nFTBossMotionDefault = nFTCommonMotionSpecialStart,
+	nFTBossMotionHippataku,	// Horizontal slap
+	nFTBossMotionHarau,		// Sweep
+	nFTBossMotionOkuhikouki1,
+	nFTBossMotionOkuhikouki2,
+	nFTBossMotionOkuhikouki3,
+	nFTBossMotionWalk,
+	nFTBossMotionWalkLoop,
+	nFTBossMotionWalkWait,
+	nFTBossMotionWalkShoot,	// Finger walk hit
+	nFTBossMotionGootsubusuUp,	// Fist slam 
+	nFTBossMotionGootsubusuWait,
+	nFTBossMotionGootsubusuEnd,
+	nFTBossMotionGootsubusuDown,
+	nFTBossMotionTsutsuku1,	// Pointer poke
+	nFTBossMotionTsutsuku3,
+	nFTBossMotionTsutsuku2,
+	nFTBossMotionDrill,
+	nFTBossMotionOkukouki,
+	nFTBossMotionYubideppou1, // Finger gun
+	nFTBossMotionYubideppou3,
+	nFTBossMotionYubideppou2,
+	nFTBossMotionOkupunch1,	// Fist rocket
+	nFTBossMotionOkupunch2,
+	nFTBossMotionOkupunch3,
+	nFTBossMotionOkutsubushi, // Vertical hand slap
+	nFTBossMotionDeadLeft,
+	nFTBossMotionDeadCenter,
+	nFTBossMotionDeadRight,
+	nFTBossMotionAppear
 
 } ftBossMotion;
 
 typedef enum ftBossStatus
 {
-	ftStatus_Boss_Default = ftStatus_Common_SpecialStart,
-	ftStatus_Boss_Wait,
-	ftStatus_Boss_Move,
-	ftStatus_Boss_Hippataku,	// Horizontal slap
-	ftStatus_Boss_Harau,		// Sweep
-	ftStatus_Boss_Okuhikouki1,
-	ftStatus_Boss_Okuhikouki2,
-	ftStatus_Boss_Okuhikouki3,
-	ftStatus_Boss_Walk,
-	ftStatus_Boss_WalkLoop,
-	ftStatus_Boss_WalkWait,
-	ftStatus_Boss_WalkShoot,	// Finger walk hit
-	ftStatus_Boss_GootsubusuUp,	// Fist slam 
-	ftStatus_Boss_GootsubusuWait,
-	ftStatus_Boss_GootsubusuEnd,
-	ftStatus_Boss_GootsubusuDown,
-	ftStatus_Boss_Tsutsuku1,	// Pointer poke
-	ftStatus_Boss_Tsutsuku3,
-	ftStatus_Boss_Tsutsuku2,
-	ftStatus_Boss_Drill,
-	ftStatus_Boss_Okukouki,
-	ftStatus_Boss_Yubideppou1, // Finger gun
-	ftStatus_Boss_Yubideppou3,
-	ftStatus_Boss_Yubideppou2,
-	ftStatus_Boss_Okupunch1,	// Fist rocket
-	ftStatus_Boss_Okupunch2,
-	ftStatus_Boss_Okupunch3,
-	ftStatus_Boss_Okutsubushi, // Vertical hand slap
-	ftStatus_Boss_OkutsubushiStart,
-	ftStatus_Boss_DeadLeft,
-	ftStatus_Boss_DeadCenter,
-	ftStatus_Boss_DeadRight,
-	ftStatus_Boss_Appear
+	nFTBossStatusDefault = nFTCommonStatusSpecialStart,
+	nFTBossStatusWait,
+	nFTBossStatusMove,
+	nFTBossStatusHippataku,	// Horizontal slap
+	nFTBossStatusHarau,		// Sweep
+	nFTBossStatusOkuhikouki1,
+	nFTBossStatusOkuhikouki2,
+	nFTBossStatusOkuhikouki3,
+	nFTBossStatusWalk,
+	nFTBossStatusWalkLoop,
+	nFTBossStatusWalkWait,
+	nFTBossStatusWalkShoot,	// Finger walk hit
+	nFTBossStatusGootsubusuUp,	// Fist slam 
+	nFTBossStatusGootsubusuWait,
+	nFTBossStatusGootsubusuEnd,
+	nFTBossStatusGootsubusuDown,
+	nFTBossStatusTsutsuku1,	// Pointer poke
+	nFTBossStatusTsutsuku3,
+	nFTBossStatusTsutsuku2,
+	nFTBossStatusDrill,
+	nFTBossStatusOkukouki,
+	nFTBossStatusYubideppou1, // Finger gun
+	nFTBossStatusYubideppou3,
+	nFTBossStatusYubideppou2,
+	nFTBossStatusOkupunch1,	// Fist rocket
+	nFTBossStatusOkupunch2,
+	nFTBossStatusOkupunch3,
+	nFTBossStatusOkutsubushi, // Vertical hand slap
+	nFTBossStatusOkutsubushiStart,
+	nFTBossStatusDeadLeft,
+	nFTBossStatusDeadCenter,
+	nFTBossStatusDeadRight,
+	nFTBossStatusAppear
 
 } ftBossStatus;
 

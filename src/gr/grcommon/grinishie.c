@@ -365,7 +365,7 @@ void grInishieMakeScale(void)
     Vec3f yakumono_pos;
 
     map_head = gGRCommonStruct.inishie.map_head;
-    ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(ground_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
     grModelSetupInitDObj(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&lGRInishieScaleDObjDesc), map_dobj, dGRInishieScaleTransformKinds);
@@ -378,14 +378,14 @@ void grInishieMakeScale(void)
 
     for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.inishie.scale); i++)
     {
-        ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+        ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
         omAddGObjRenderProc(ground_gobj, odRenderDObjDLHead0, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
         platform_dobj = omAddDObjForGObj(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&lGRInishieMapHead));
         gGRCommonStruct.inishie.scale[i].platform_dobj = platform_dobj;
 
         omAddOMMtxForDObjFixed(platform_dobj, OMMtx_Transform_Tra, 0);
-        omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
+        omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
 
         mpCollisionGetMapObjIDsKind(dGRInishieScaleMapObjKinds[i], &mpoint);
         mpCollisionGetMapObjPositionID(mpoint, &yakumono_pos);
@@ -396,7 +396,7 @@ void grInishieMakeScale(void)
 
         mpCollisionSetYakumonoOnID(dGRInishieScaleLineGroups[i]);
     }
-    omAddGObjCommonProc(ground_gobj, grInishieScaleProcUpdate, GObjProcess_Kind_Proc, 4);
+    omAddGObjCommonProc(ground_gobj, grInishieScaleProcUpdate, nOMObjProcessKindProc, 4);
 
     // WARNING: gGRCommonStruct MUST be defined as extern in ground.h in order for this to match
     gGRCommonStruct.inishie.splat_status = nGRInishieScaleStatusWait;
@@ -436,7 +436,7 @@ void grInishieMakePakkun(void)
 
         vel.x = vel.y = vel.z = 0.0F;
 
-        gGRCommonStruct.inishie.pakkun_gobj[i] = itManagerMakeItemSetupCommon(NULL, It_Kind_Pakkun, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
+        gGRCommonStruct.inishie.pakkun_gobj[i] = itManagerMakeItemSetupCommon(NULL, nITKindPakkun, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
     }
 }
 
@@ -474,7 +474,7 @@ void grInishiePowerBlockUpdateMake(void)
 
         vel.x = vel.y = vel.z = 0.0F;
 
-        pblock_gobj = itManagerMakeItemSetupCommon(NULL, It_Kind_PowerBlock, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
+        pblock_gobj = itManagerMakeItemSetupCommon(NULL, nITKindPowerBlock, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
 
         if (pblock_gobj != NULL)
         {
@@ -520,7 +520,7 @@ void grInishieMakePowerBlock(void)
 {
     s32 pos_count, i, pos_ids[10];
 
-    omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT), grInishiePowerBlockProcUpdate, GObjProcess_Kind_Proc, 4);
+    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT), grInishiePowerBlockProcUpdate, nOMObjProcessKindProc, 4);
 
     gGRCommonStruct.inishie.pblock_pos_count = pos_count = mpCollisionGetMapObjCountKind(nMPMapObjKindPowerBlock);
 

@@ -101,19 +101,19 @@ void grYamabukiGateMakeMonster(void)
 
     vel.x = vel.y = vel.z = 0.0F;
 
-    if ((dITManagerMonsterSpawnID == 0) || (dITManagerMonsterSpawnID > (It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1)))
+    if ((dITManagerMonsterSpawnID == 0) || (dITManagerMonsterSpawnID > (nITKindGrMonsterEnd - nITKindGrMonsterStart + 1)))
     {
-        item_id = mtTrigGetRandomIntRange(It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1);
+        item_id = mtTrigGetRandomIntRange(nITKindGrMonsterEnd - nITKindGrMonsterStart + 1);
 
         if (item_id == gGRCommonStruct.yamabuki.monster_id_prev)
         {
-            item_id = (item_id == (It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart)) ? 0 : item_id + 1;
+            item_id = (item_id == (nITKindGrMonsterEnd - nITKindGrMonsterStart)) ? 0 : item_id + 1;
         }
         gGRCommonStruct.yamabuki.monster_id_prev = item_id;
     }
     else item_id = dITManagerMonsterSpawnID - 1;
 
-    gGRCommonStruct.yamabuki.monster_gobj = itManagerMakeItemSetupCommon(NULL, item_id + It_Kind_GrMonsterStart, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
+    gGRCommonStruct.yamabuki.monster_gobj = itManagerMakeItemSetupCommon(NULL, item_id + nITKindGrMonsterStart, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
 }
 
 // 0x8010AE3C
@@ -262,11 +262,11 @@ void grYamabukiMakeGate(void)
 {
     GObj *gate_gobj;
 
-    gGRCommonStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    gGRCommonStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gate_gobj, odRenderDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
     func_8000F590(gate_gobj, (DObjDesc*) ((uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)&lGRYamabukiMapHead), NULL, OMMtx_Transform_TraRotRpyR, 0, 0);
-    omAddGObjCommonProc(gate_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
+    omAddGObjCommonProc(gate_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
     grYamabukiGateAddAnimClose();
 }
 
@@ -282,7 +282,7 @@ void grYamabukiInitGroundVars(void)
 
     dGRYamabukiMonsterAttackKind = GRYAMABUKI_MONSTER_WEAPON_MAX;
 
-    gGRCommonStruct.yamabuki.monster_id_prev = It_Kind_GrMonsterEnd - It_Kind_GrMonsterStart + 1;
+    gGRCommonStruct.yamabuki.monster_id_prev = nITKindGrMonsterEnd - nITKindGrMonsterStart + 1;
     gGRCommonStruct.yamabuki.gate_pos.z = 0.0F;
 
     grYamabukiGateSetPositionNear();
@@ -295,9 +295,9 @@ void grYamabukiInitGroundVars(void)
 // 0x8010B2EC
 GObj* grYamabukiMakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
-    omAddGObjCommonProc(ground_gobj, grYamabukiGateProcUpdate, GObjProcess_Kind_Proc, 4);
+    omAddGObjCommonProc(ground_gobj, grYamabukiGateProcUpdate, nOMObjProcessKindProc, 4);
     grYamabukiInitGroundVars();
 
     return ground_gobj;

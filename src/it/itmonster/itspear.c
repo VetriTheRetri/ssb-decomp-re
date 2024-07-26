@@ -27,7 +27,7 @@ extern intptr_t lITSpearMatAnimJoint;       // 0x0000E12C
 // 0x8018AE00
 itCreateDesc dITSpearItemDesc =
 {
-    It_Kind_Spear,                          // Item Kind
+    nITKindSpear,                          // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITSpearItemAttributes,                // Offset of item attributes in file?
 
@@ -81,7 +81,7 @@ itStatusDesc dITSpearStatusDesc[/* */] =
 wpCreateDesc dITSpearWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
-    Wp_Kind_SpearSwarm,                     // Weapon Kind
+    nWPKindSpearSwarm,                     // Weapon Kind
     &gITManagerFileData,                           // Pointer to character's loaded files?
     &lITSpearWeaponSwarmWeaponAttributes,   // Offset of weapon attributes in loaded files
 
@@ -106,7 +106,7 @@ wpCreateDesc dITSpearWeaponSwarmWeaponDesc =
 wpCreateDesc dITPippiWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
-    Wp_Kind_SpearSwarm,                     // Weapon Kind
+    nWPKindSpearSwarm,                     // Weapon Kind
     &gITManagerFileData,                           // Pointer to character's loaded files?
     0xCBC,                                  // Offset of weapon attributes in loaded files
 
@@ -192,7 +192,7 @@ void itSpearNAppearInitItemVars(GObj *item_gobj)
 
     ip->phys_info.vel_air.y = 0;
 
-    if (ip->it_kind == It_Kind_Spear)
+    if (ip->it_kind == nITKindSpear)
     {
         void *anim_joint; 
         void *matanim_joint;
@@ -272,7 +272,7 @@ void itSpearNFlyInitItemVars(GObj *item_gobj)
     ip->item_vars.spear.spear_spawn_wait = 0;
     ip->item_vars.spear.spear_spawn_count = ITSPEAR_SPAWN_COUNT;
 
-    if (ip->it_kind == It_Kind_Spear)
+    if (ip->it_kind == nITKindSpear)
     {
         func_800269C0_275C0(alSound_Voice_MBallSpearSwarm);
     }
@@ -392,7 +392,7 @@ void itPippiWeaponSwarmProcRender(GObj *item_gobj)
 GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, ((it_kind == It_Kind_Spear) ? &dITSpearWeaponSwarmWeaponDesc : &dITPippiWeaponSwarmWeaponDesc), pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, ((it_kind == nITKindSpear) ? &dITSpearWeaponSwarmWeaponDesc : &dITPippiWeaponSwarmWeaponDesc), pos, WEAPON_MASK_SPAWN_ITEM);
     DObj *dobj;
     s32 unused;
     wpStruct *wp;
@@ -409,7 +409,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
     dobj = DObjGetStruct(weapon_gobj);
 
-    if (it_kind == It_Kind_Spear)
+    if (it_kind == nITKindSpear)
     {
         omAddOMMtxForDObjFixed(dobj->child->child, 0x48, 0);
 

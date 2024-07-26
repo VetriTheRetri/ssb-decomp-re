@@ -65,9 +65,9 @@ void ftCommonCliffQuickOrSlowSetStatus(GObj *fighter_gobj, s32 status_input)
 
     if (fp->percent_damage < FTCOMMON_CLIFF_DAMAGE_HIGH)
     {
-        status_id = ftStatus_Common_CliffQuick, status_queue = nFTCommonCliffKindClimbQuick;
+        status_id = nFTCommonStatusCliffQuick, status_queue = nFTCommonCliffKindClimbQuick;
     }
-    else status_id = ftStatus_Common_CliffSlow, status_queue = nFTCommonCliffKindClimbSlow;
+    else status_id = nFTCommonStatusCliffSlow, status_queue = nFTCommonCliffKindClimbSlow;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
@@ -132,7 +132,7 @@ void ftCommonCliffClimbQuick1SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CliffClimbQuick1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbQuick1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->is_cliff_hold = TRUE;
 
@@ -144,7 +144,7 @@ void ftCommonCliffClimbSlow1SetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CliffClimbSlow1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbSlow1, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->is_cliff_hold = TRUE;
 
@@ -276,7 +276,7 @@ void ftCommonCliffCommon2InitStatusVars(GObj *fighter_gobj)
 void ftCommonCliffClimbQuick2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CliffClimbQuick2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbQuick2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommonCliffCommon2InitStatusVars(fighter_gobj);
 }
 
@@ -284,6 +284,6 @@ void ftCommonCliffClimbQuick2SetStatus(GObj *fighter_gobj)
 void ftCommonCliffClimbSlow2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CliffClimbSlow2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbSlow2, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommonCliffCommon2InitStatusVars(fighter_gobj);
 }

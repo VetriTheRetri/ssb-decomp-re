@@ -20,7 +20,7 @@ lWPNessPKFireWeaponAttributes;              // 0x00000000
 wpCreateDesc dWPNessPKFireWeaponDesc =
 {
     0x00,                                   // Render flags?
-    Wp_Kind_PKFire,                         // Weapon Kind
+    nWPKindPKFire,                         // Weapon Kind
     &gFTDataNessSpecial1,                   // Pointer to character's loaded files?
     &lWPNessPKFireWeaponAttributes,         // Offset of weapon attributes in loaded files
 

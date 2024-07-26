@@ -19,7 +19,7 @@ lWPSamusBombWeaponAttributes;               // 0x0000000C
 wpCreateDesc dWPSamusBombWeaponDesc =
 {
     0x00,                                   // Render flags?
-    Wp_Kind_SamusBomb,                      // Weapon Kind
+    nWPKindSamusBomb,                      // Weapon Kind
     &gFTDataSamusMain,                      // Pointer to character's loaded files?
     &lWPSamusBombWeaponAttributes,          // Offset of weapon attributes in loaded files
 

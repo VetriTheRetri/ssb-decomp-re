@@ -84,7 +84,7 @@ void ftCommonCaptureKirbyProcPhysics(GObj *fighter_gobj)
 
     ftCommonCaptureKirbyUpdatePositionsAll(fighter_gobj);
 
-    if ((fp->status_info.status_id == ftStatus_Common_CaptureKirby) && (fp->status_vars.common.capturekirby.is_goto_capturewait != FALSE))
+    if ((fp->status_info.status_id == nFTCommonStatusCaptureKirby) && (fp->status_vars.common.capturekirby.is_goto_capturewait != FALSE))
     {
         ftCommonCaptureWaitKirbySetStatus(fighter_gobj);
     }
@@ -121,7 +121,7 @@ void ftCommonCaptureKirbyProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     this_fp->lr = -capture_fp->lr;
 
     ftMap_SetAir(this_fp);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CaptureKirby, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureKirby, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftMainMakeRumble(this_fp, 7, 0);
 
@@ -140,7 +140,7 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(ftStruct *this_fp, ftStruct *cap
 {
     sb32 is_wiggle = FALSE;
 
-    if ((capture_fp->status_info.status_id == ftStatus_Kirby_SpecialAirNWait) || (capture_fp->status_info.status_id == ftStatus_Kirby_SpecialNWait))
+    if ((capture_fp->status_info.status_id == nFTKirbyStatusSpecialAirNWait) || (capture_fp->status_info.status_id == nFTKirbyStatusSpecialNWait))
     {
         if ((this_fp->input.pl.stick_range.y >= FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN) && (this_fp->tap_stick_y < FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_FRAMES_MAX))
         {
@@ -246,7 +246,7 @@ void ftCommonCaptureWaitKirbySetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CaptureWaitKirby, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureWaitKirby, 0.0F, 1.0F, (FTSTATUPDATE_TEXTUREPART_PRESERVE | FTSTATUPDATE_MODELPART_PRESERVE));
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
     fp->is_invisible = TRUE;
@@ -258,7 +258,7 @@ void ftCommonCaptureWaitKirbySetStatus(GObj *fighter_gobj)
 // 0x8014BE24
 void ftCommonThrownKirbyEscape(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Fall, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFall, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
 }
 
 // 0x8014BE54
@@ -266,7 +266,7 @@ void ftCommonThrownCommonStarProcHit(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Fall, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFall, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftPhysics_ClampAirVelXMax(fp);
 }
 
@@ -325,11 +325,11 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
     {
         if (fp->command_vars.flags.flag2 == 1)
         {
-            if (((fp->ft_kind == Ft_Kind_Kirby) || (fp->ft_kind == Ft_Kind_PolyKirby)) && (fp->status_vars.common.capturekirby.is_kirby != FALSE))
+            if (((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindPolyKirby)) && (fp->status_vars.common.capturekirby.is_kirby != FALSE))
             {
                 ftKirbySpecialNInitFighterVars(fp);
 
-                fp->fighter_vars.kirby.copy_id = Ft_Kind_Kirby;
+                fp->fighter_vars.kirby.copy_id = nFTKindKirby;
 
                 ftCommon_SetModelPartRenderStateIndex(fighter_gobj, 6, 0);
                 ftCommon_ResetModelPartRenderAll(fighter_gobj);
@@ -493,7 +493,7 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
     }
     fp->proc_status = ftCommonThrownKirbyStarProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_ThrownKirbyStar, 0.0F, 1.0F, FTSTATUPDATE_THROWPOINTER_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusThrownKirbyStar, 0.0F, 1.0F, FTSTATUPDATE_THROWPOINTER_PRESERVE);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
     fp->proc_hit = ftCommonThrownCommonStarProcHit;
@@ -548,7 +548,7 @@ void ftCommonThrownCopyStarSetStatus(GObj *fighter_gobj)
     }
     fp->proc_status = ftCommonThrownCopyStarProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_ThrownCopyStar, 0.0F, 1.0F, FTSTATUPDATE_THROWPOINTER_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusThrownCopyStar, 0.0F, 1.0F, FTSTATUPDATE_THROWPOINTER_PRESERVE);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
     fp->proc_hit = ftCommonThrownCommonStarProcHit;

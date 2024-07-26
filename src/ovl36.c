@@ -380,8 +380,8 @@ void mvOpeningMarioCreatePosedFighter()
 	GObj* fighter_gobj;
 	ftCreateDesc spawn_info = dFTDefaultFighterDesc;
 
-	spawn_info.ft_kind = Ft_Kind_Mario;
-	spawn_info.costume = ftCostume_GetIndexFFA(Ft_Kind_Mario, 0);
+	spawn_info.ft_kind = nFTKindMario;
+	spawn_info.costume = ftCostume_GetIndexFFA(nFTKindMario, 0);
 	spawn_info.anim_heap = gMvOpeningMarioAnimHeap;
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 600.0f;
@@ -473,7 +473,7 @@ void mvOpeningMarioInit()
 	gBattleState->gr_kind = Gr_Kind_Castle;
 	gBattleState->pl_count = 1;
 
-	gBattleState->player_block[0].character_kind = Ft_Kind_Mario;
+	gBattleState->player_block[0].character_kind = nFTKindMario;
 	gBattleState->player_block[0].player_kind = Pl_Kind_Key;
 
 	mvOpeningMarioLoadFiles();
@@ -489,7 +489,7 @@ void mvOpeningMarioInit()
 	wpManagerAllocWeapons();
 	itManagerInitItems();
 	efManagerInitEffects();
-	ftManagerSetupDataKind(Ft_Kind_Mario);
+	ftManagerSetupDataKind(nFTKindMario);
 
 	gMvOpeningMarioAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
 	mvOpeningMarioCreateNameViewport();

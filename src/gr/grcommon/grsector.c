@@ -186,7 +186,7 @@ DObjTransformTypes dGRSectorArwingTransformKinds[/* */] =
 wpCreateDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
 {
     0,                                                  // Render flags?
-    Wp_Kind_ArwingLaser2D,                              // Weapon Kind
+    nWPKindArwingLaser2D,                              // Weapon Kind
     &gGRCommonStruct.sector.weapon_head,                  // Pointer to character's loaded files?
     &lGRSectorArwingLaser2DWeaponAttributes,            // Offset of weapon attributes in loaded files
     
@@ -211,7 +211,7 @@ wpCreateDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
 wpCreateDesc dGRSectorArwingWeaponLaser3DWeaponDesc =
 {
     0,                                                  // Render flags?
-    Wp_Kind_ArwingLaser3D,                              // Weapon Kind
+    nWPKindArwingLaser3D,                              // Weapon Kind
     &gGRCommonStruct.sector.weapon_head,                  // Pointer to character's loaded files?
     &lGRSectorArwingLaser3DWeaponAttributes,            // Offset of weapon attributes in loaded files
     
@@ -1118,13 +1118,13 @@ void grSectorInitAll(void)
 
     gGRCommonStruct.sector.map_file = map_file;
 
-    map_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    map_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
     gGRCommonStruct.sector.map_gobj = map_gobj;
 
     omAddGObjRenderProc(map_gobj, odRenderDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
     grModelSetupInitDObj(map_gobj, (DObjDesc*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002C30), gGRCommonStruct.sector.map_dobj, dGRSectorArwingTransformKinds);
-    omAddGObjCommonProc(map_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
+    omAddGObjCommonProc(map_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
 
     gGRCommonStruct.sector.arwing_status = 0;
     gGRCommonStruct.sector.arwing_flight_pattern = -1;
@@ -1145,10 +1145,10 @@ void grSectorInitAll(void)
 // 0x80107FCC
 GObj* grSectorMakeGround(void)
 {
-    GObj *map_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    GObj *map_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
     grSectorInitAll();
-    omAddGObjCommonProc(map_gobj, grSectorProcUpdate, GObjProcess_Kind_Proc, 4);
+    omAddGObjCommonProc(map_gobj, grSectorProcUpdate, nOMObjProcessKindProc, 4);
 
     return map_gobj;
 }

@@ -31,9 +31,9 @@ sb32 ftCommonPassiveStandCheckInterruptDamage(GObj *fighter_gobj)
         {
             if ((fp->input.pl.stick_range.x * fp->lr) >= 0)
             {
-                status_id = ftStatus_Common_PassiveStandF;
+                status_id = nFTCommonStatusPassiveStandF;
             }
-            else status_id = ftStatus_Common_PassiveStandB;
+            else status_id = nFTCommonStatusPassiveStandB;
 
             ftCommonPassiveStandSetStatus(fighter_gobj, status_id);
 

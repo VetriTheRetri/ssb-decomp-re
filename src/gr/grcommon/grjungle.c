@@ -125,17 +125,17 @@ void grJungleMakeTaruCann(void)
     map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRJungleMapHead);
     gGRCommonStruct.jungle.map_head = map_head;
 
-    gGRCommonStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    gGRCommonStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(tarucann_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     grModelSetupInitDObj(tarucann_gobj, (DObjDesc*) ((intptr_t)&lGRJungleMapHead + (uintptr_t)map_head), NULL, dGRJungleTaruCannTransformKinds);
-    omAddGObjCommonProc(tarucann_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
+    omAddGObjCommonProc(tarucann_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
 
     func_8000BD8C_C98C(tarucann_gobj, ((uintptr_t)map_head + (intptr_t)&lGRJungleTaruCannDefaultAnimJoint), 0.0F);
     func_8000DF34_EB34(tarucann_gobj);
 
-    omAddGObjCommonProc(tarucann_gobj, grJungleTaruCannProcUpdate, GObjProcess_Kind_Proc, 4);
+    omAddGObjCommonProc(tarucann_gobj, grJungleTaruCannProcUpdate, nOMObjProcessKindProc, 4);
     ftMainCheckSetMapObjectGObj(tarucann_gobj, grJungleTaruCannCheckGetDamageKind);
 
     gGRCommonStruct.jungle.tarucann_status = nGRJungleTaruCannStatusMove;
@@ -158,7 +158,7 @@ sb32 grJungleTaruCannCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s
     f32 dist_x;
     f32 dist_y;
 
-    if ((this_fp->tarucann_wait == 0) && (this_fp->status_info.status_id != ftStatus_Common_TaruCann) && !(this_fp->capture_immune_mask & FTCATCHKIND_MASK_TARUCANN))
+    if ((this_fp->tarucann_wait == 0) && (this_fp->status_info.status_id != nFTCommonStatusTaruCann) && !(this_fp->capture_immune_mask & FTCATCHKIND_MASK_TARUCANN))
     {
         DObj *gr_dobj = DObjGetStruct(ground_gobj);
         DObj *ft_dobj = DObjGetStruct(fighter_gobj);
@@ -185,7 +185,7 @@ sb32 grJungleTaruCannCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s
                 {
                     ftStruct *other_fp = ftGetStruct(other_gobj);
 
-                    if ((other_fp->status_info.status_id == ftStatus_Common_TaruCann) && (ground_gobj == other_fp->status_vars.common.tarucann.tarucann_gobj))
+                    if ((other_fp->status_info.status_id == nFTCommonStatusTaruCann) && (ground_gobj == other_fp->status_vars.common.tarucann.tarucann_gobj))
                     {
                         return FALSE;
                     }

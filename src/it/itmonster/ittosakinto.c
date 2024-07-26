@@ -20,7 +20,7 @@ extern intptr_t lITTosakintoMatAnimJoint;   // 0x0000B90C
 // 0x8018ABC0
 itCreateDesc dITTosakintoItemDesc =
 {
-    It_Kind_Tosakinto,                      // Item Kind
+    nITKindTosakinto,                      // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITTosakintoItemAttributes,            // Offset of item attributes in file?
 
@@ -124,7 +124,7 @@ void itTosakintoNAppearSetStatus(GObj *item_gobj)
 
     ip->it_multi = ITTOSAKINTO_LIFETIME;
 
-    if (ip->it_kind == It_Kind_Tosakinto)
+    if (ip->it_kind == nITKindTosakinto)
     {
         func_800269C0_275C0(alSound_Voice_MBallTosakintoSpawn);
     }
@@ -181,7 +181,7 @@ void itTosakintoNSplashInitItemVars(GObj *item_gobj)
     ip->phys_info.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
     ip->phys_info.vel_air.x = ITTOSAKINTO_FLAP_VEL_X;
 
-    if (ip->it_kind == It_Kind_Tosakinto)
+    if (ip->it_kind == nITKindTosakinto)
     {
         anim_joint = itGetPData(ip, lITTosakintoDataStart, lITTosakintoAnimJoint); // Linker thing
 

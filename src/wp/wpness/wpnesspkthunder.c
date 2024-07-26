@@ -34,7 +34,7 @@ lWPNessPKThunderTrailWeaponAttributes;      // 0x00000040
 wpCreateDesc dWPNessPKThunderHeadWeaponDesc =
 {
     0x03,                                   // Render flags?
-    Wp_Kind_PKThunderHead,                  // Weapon Kind
+    nWPKindPKThunderHead,                  // Weapon Kind
     &gFTDataNessMain,                       // Pointer to character's loaded files?
     &lWPNessPKThunderWeaponAttributes,      // Offset of weapon attributes in loaded files
 
@@ -58,7 +58,7 @@ wpCreateDesc dWPNessPKThunderHeadWeaponDesc =
 wpCreateDesc dWPNessPKThunderTrailWeaponDesc =
 {
     0x02,                                   // Render flags?
-    Wp_Kind_PKThunderTrail,                 // Weapon Kind
+    nWPKindPKThunderTrail,                 // Weapon Kind
     &gFTDataNessMain,                       // Pointer to character's loaded files?
     &lWPNessPKThunderTrailWeaponAttributes, // Offset of weapon attributes in loaded files
 
@@ -82,7 +82,7 @@ wpCreateDesc dWPNessPKThunderTrailWeaponDesc =
 wpCreateDesc dWPNessPKReflectHeadWeaponDesc =
 {
     0x03,                                   // Render flags?
-    Wp_Kind_PKThunderHead,                  // Weapon Kind
+    nWPKindPKThunderHead,                  // Weapon Kind
     &gFTDataNessMain,                       // Pointer to character's loaded files?
     &lWPNessPKThunderWeaponAttributes,      // Offset of weapon attributes in loaded files
 
@@ -106,7 +106,7 @@ wpCreateDesc dWPNessPKReflectHeadWeaponDesc =
 wpCreateDesc dWPNessPKReflectTrailWeaponDesc =
 {
     0x02,                                   // Render flags?
-    Wp_Kind_PKThunderTrail,                 // Weapon Kind
+    nWPKindPKThunderTrail,                 // Weapon Kind
     &gFTDataNessMain,                       // Pointer to character's loaded files?
     &lWPNessPKThunderTrailWeaponAttributes, // Offset of weapon attributes in loaded files
 
@@ -248,7 +248,7 @@ sb32 wpNessPKThunderHeadProcUpdate(GObj *weapon_gobj)
     }
     wpNessPKThunderTrailUpdatePositions(weapon_gobj);
 
-    if ((fp->status_info.status_id == ftStatus_Ness_SpecialHiHold) || (fp->status_info.status_id == ftStatus_Ness_SpecialAirHiHold))
+    if ((fp->status_info.status_id == nFTNessStatusSpecialHiHold) || (fp->status_info.status_id == nFTNessStatusSpecialAirHiHold))
     {
         if ((ABS(fp->input.pl.stick_range.x) + ABS(fp->input.pl.stick_range.y)) > WPPKTHUNDER_TURN_STICK_THRESHOLD)
         {

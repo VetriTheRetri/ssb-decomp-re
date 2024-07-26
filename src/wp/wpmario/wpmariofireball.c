@@ -58,7 +58,7 @@ wpMarioFireballAttributes dWPMarioFireballWeaponAttributes[/* */] =
 wpCreateDesc dWPMarioFireballWeaponDesc =
 {
     0x00,                                   // Render flags?
-    Wp_Kind_Fireball,                       // Weapon Kind
+    nWPKindFireball,                       // Weapon Kind
     &gFTDataMarioMain,                      // Pointer to character's loaded files?
     &lWPMariroFireballWeaponAttributes,     // Offset of weapon attributes in loaded files
 

@@ -25,7 +25,7 @@ extern intptr_t lITRBombEffectDisplayList;  // 0x000008A0
 
 itCreateDesc dITRBombItemDesc =
 {
-    It_Kind_RBomb,                          // Item Kind
+    nITKindRBomb,                          // Item Kind
     &gGRCommonStruct.bonus3.item_head,        // Pointer to item file data?
     &lITRBombItemAttributes,                // Offset of item attributes in file?
 
@@ -146,7 +146,7 @@ void itRBombContainerSmashMakeEffect(Vec3f *pos)
 
     if (ep != NULL)
     {
-        effect_gobj = omMakeGObjSPAfter(GObj_Kind_Effect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+        effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
 
         if (effect_gobj != NULL)
         {

@@ -56,7 +56,7 @@ void ftBossYubideppou3SetStatus(GObj *fighter_gobj)
     ftStruct *fp;
     Vec3f pos;
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Boss_Yubideppou3, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusYubideppou3, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp = ftGetStruct(fighter_gobj);
 

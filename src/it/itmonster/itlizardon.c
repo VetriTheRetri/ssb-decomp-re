@@ -28,7 +28,7 @@ lITLizardonMatAnimJoint;                    // 0x0000D688
 // 0x8018AD30
 itCreateDesc dITLizardonItemDesc = 
 {
-    It_Kind_Lizardon,                       // Item Kind
+    nITKindLizardon,                       // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITLizardonItemAttributes,             // Offset of item attributes in file?
 
@@ -94,7 +94,7 @@ itStatusDesc dITLizardonStatusDesc[/* */] =
 wpCreateDesc dITLizardonWeaponFlameWeaponDesc = 
 {
     0x00,                                   // Render flags?
-    Wp_Kind_LizardonFlame,                  // Weapon Kind
+    nWPKindLizardonFlame,                  // Weapon Kind
     &gITManagerFileData,                           // Pointer to character's loaded files?
     &lITLizardonWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
 
@@ -210,7 +210,7 @@ sb32 itLizardonNAttackProcUpdate(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f pos = dobj->translate.vec.f;
 
-    if (ip->it_kind == It_Kind_Lizardon)
+    if (ip->it_kind == nITKindLizardon)
     {
         pos.y += ITLIZARDON_LIZARDON_FLAME_OFF_Y;
 
@@ -244,7 +244,7 @@ sb32 itLizardonNAttackProcUpdate(GObj *item_gobj)
 
         efManagerDustHeavyMakeEffect(&pos, -ip->lr);
 
-        if (ip->it_kind == It_Kind_Pippi)
+        if (ip->it_kind == nITKindPippi)
         {
             dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F);
         }
@@ -283,7 +283,7 @@ void itLizardonNAttackInitItemVars(GObj *item_gobj)
 
     ip->lr = LR_Left;
 
-    if (ip->it_kind == It_Kind_Lizardon)
+    if (ip->it_kind == nITKindLizardon)
     {
         addr = (void*) ((uintptr_t)ip->attributes->model_desc - (intptr_t)&lITLizardonDataStart); // Linker thing
 
@@ -310,7 +310,7 @@ sb32 itLizardonSDefaultProcUpdate(GObj *item_gobj)
 
         ip->phys_info.vel_air.y = 0.0F;
 
-        if (ip->it_kind == It_Kind_Lizardon)
+        if (ip->it_kind == nITKindLizardon)
         {
             func_800269C0_275C0(alSound_Voice_MBallLizardonSpawn);
         }

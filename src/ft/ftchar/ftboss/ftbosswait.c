@@ -12,17 +12,17 @@ extern f32 ftCommon_GetStickAngleRadians(ftStruct*);
 // 0x80188DC0
 u8 dFTBossWaitRandomStatusIDs[/* */] =
 {
-    ftStatus_Boss_Hippataku,
-    ftStatus_Boss_Harau,
-    ftStatus_Boss_Walk,
-    ftStatus_Boss_GootsubusuUp,
-    ftStatus_Boss_Tsutsuku1,
-    ftStatus_Boss_Drill,
-    ftStatus_Boss_Okukouki,
-    ftStatus_Boss_Okuhikouki1,
-    ftStatus_Boss_Okupunch1,
-    ftStatus_Boss_OkutsubushiStart,
-    ftStatus_Boss_Yubideppou1
+    nFTBossStatusHippataku,
+    nFTBossStatusHarau,
+    nFTBossStatusWalk,
+    nFTBossStatusGootsubusuUp,
+    nFTBossStatusTsutsuku1,
+    nFTBossStatusDrill,
+    nFTBossStatusOkukouki,
+    nFTBossStatusOkuhikouki1,
+    nFTBossStatusOkupunch1,
+    nFTBossStatusOkutsubushiStart,
+    nFTBossStatusYubideppou1
 };
 
 // 0x80188DCC - Used to look up status IDs from dFTBossWaitRandomStatusIDs
@@ -224,56 +224,56 @@ void ftBossWaitDecideStatusComputer(GObj *fighter_gobj) // Decide Master Hand's 
 
         switch (status_id)
         {
-        case ftStatus_Boss_Hippataku:
+        case nFTBossStatusHippataku:
             ftBossCommonGotoTargetEdge(fighter_gobj, &pos);
             ftBossMoveSetStatus(fighter_gobj, ftBossHippatakuSetStatus, &pos);
             break;
 
-        case ftStatus_Boss_Okuhikouki1:
+        case nFTBossStatusOkuhikouki1:
             ftBossOkuhikouki1SetStatus(fighter_gobj);
             break;
 
-        case ftStatus_Boss_GootsubusuUp:
+        case nFTBossStatusGootsubusuUp:
             ftBossCommonSetPosOffsetY(fighter_gobj, &pos, 800.0F);
             ftBossMoveSetStatus(fighter_gobj, ftBossGootsubusuUpSetStatus, &pos);
             break;
 
-        case ftStatus_Boss_Walk:
+        case nFTBossStatusWalk:
             ftBossCommonGotoTargetEdge(fighter_gobj, &pos);
             ftBossMoveSetStatus(fighter_gobj, ftBossWalkSetStatus, &pos);
             break;
 
-        case ftStatus_Boss_Yubideppou1:
+        case nFTBossStatusYubideppou1:
             ftBossCommonSetPosAddVelAuto(fighter_gobj, &pos, 3000.0F, 0.0F);
             ftBossMoveSetStatus(fighter_gobj, ftBossYubideppou1SetStatus, &pos);
             break;
 
-        case ftStatus_Boss_Okupunch1:
+        case nFTBossStatusOkupunch1:
             ftBossCommonSetPosAddVelAuto(fighter_gobj, &pos, 600.0F, 0.0F);
             ftBossMoveSetStatus(fighter_gobj, ftBossOkupunch1SetStatus, &pos);
             break;
 
-        case ftStatus_Boss_OkutsubushiStart:
+        case nFTBossStatusOkutsubushiStart:
             ftBossCommonSetPosAddVelAuto(fighter_gobj, &pos, 600.0F, 0.0F);
             ftBossMoveSetStatus(fighter_gobj, ftBossOkutsubushiStartSetStatus, &pos);
             break;
 
-        case ftStatus_Boss_Okukouki:
+        case nFTBossStatusOkukouki:
             ftBossCommonSetPosAddVelAuto(fighter_gobj, &pos, 3000.0F, 100.0F);
             ftBossMoveSetStatus(fighter_gobj, ftBossOkukoukiSetStatus, &pos);
             break;
 
-        case ftStatus_Boss_Drill:
+        case nFTBossStatusDrill:
             ftBossCommonSetPosAddVelPlayer(fighter_gobj, &pos, 600.0F, 100.0F);
             ftBossMoveSetStatus(fighter_gobj, ftBossDrillSetStatus, &pos);
             break;
 
-        case ftStatus_Boss_Harau:
+        case nFTBossStatusHarau:
             ftBossCommonGotoTargetEdge(fighter_gobj, &pos);
             ftBossMoveSetStatus(fighter_gobj, ftBossHarauSetStatus, &pos);
             break;
 
-        case ftStatus_Boss_Tsutsuku1:
+        case nFTBossStatusTsutsuku1:
             ftBossCommonSetPosOffsetY(fighter_gobj, &pos, 800.0F);
             ftBossMoveSetStatus(fighter_gobj, ftBossTsutsuku1SetStatus, &pos);
             break;
@@ -327,7 +327,7 @@ void ftBossWaitSetStatus(GObj *fighter_gobj)
     Vec3f pos;
     s32 ground_line_id;
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Boss_Wait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusWait, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp = ftGetStruct(fighter_gobj);
 

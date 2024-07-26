@@ -15,7 +15,7 @@ sb32 itTargetSDefaultProcDamage(GObj* item_gobj);
 
 // 8018F130
 itCreateDesc dItTargetItemDesc = {
-	It_Kind_Target,			// Item Kind
+	nITKindTarget,			// Item Kind
 	&gBonusGameFileData[0], // Pointer to item file data?
 	0,						// Offset of item attributes in file?
 

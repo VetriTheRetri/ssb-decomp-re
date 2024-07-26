@@ -34,7 +34,7 @@ void ftCommonShieldBreakFlySetStatus(GObj *fighter_gobj)
     ftAttributes *attributes = fp->attributes;
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_ShieldBreakFly, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusShieldBreakFly, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->phys_info.vel_air.x = 0.0F;
@@ -56,7 +56,7 @@ void ftCommonShieldBreakFlyCommonSetStatus(GObj *fighter_gobj)
 
     ftParts_GetDObjWorldPosition(fp->joint[ftParts_Joint_YRotN], &offset);
 
-    if (fp->ft_kind == Ft_Kind_Yoshi)
+    if (fp->ft_kind == nFTKindYoshi)
     {
         efManagerYoshiEggExplodeMakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f);
         efManagerEggBreakMakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f);

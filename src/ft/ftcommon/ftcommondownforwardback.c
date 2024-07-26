@@ -31,17 +31,17 @@ sb32 ftCommonDownForwardOrBackCheckInterruptCommon(GObj *fighter_gobj)
         {
             if ((fp->input.pl.stick_range.x * fp->lr) >= 0)
             {
-                if ((fp->status_info.status_id == ftStatus_Common_DownBounceD) || (fp->status_info.status_id == ftStatus_Common_DownWaitD))
+                if ((fp->status_info.status_id == nFTCommonStatusDownBounceD) || (fp->status_info.status_id == nFTCommonStatusDownWaitD))
                 {
-                    status_id = ftStatus_Common_DownForwardD;
+                    status_id = nFTCommonStatusDownForwardD;
                 }
-                else status_id = ftStatus_Common_DownForwardU;
+                else status_id = nFTCommonStatusDownForwardU;
             }
-            else if ((fp->status_info.status_id == ftStatus_Common_DownBounceD) || (fp->status_info.status_id == ftStatus_Common_DownWaitD))
+            else if ((fp->status_info.status_id == nFTCommonStatusDownBounceD) || (fp->status_info.status_id == nFTCommonStatusDownWaitD))
             {
-                status_id = ftStatus_Common_DownBackD;
+                status_id = nFTCommonStatusDownBackD;
             }
-            else status_id = ftStatus_Common_DownBackU;
+            else status_id = nFTCommonStatusDownBackU;
 
             ftCommonDownForwardOrBackSetStatus(fighter_gobj, status_id);
 

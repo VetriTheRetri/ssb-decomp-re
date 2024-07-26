@@ -24,7 +24,7 @@ extern s32 dGRYamabukiMonsterAttackKind;
 
 itCreateDesc dITHitokageItemDesc =
 {
-    It_Kind_Hitokage,                       // Item Kind
+    nITKindHitokage,                       // Item Kind
     &gGRCommonStruct.yamabuki.item_head,      // Pointer to item file data?
     &lITHitokageItemAttributes,             // Offset of item attributes in file?
 
@@ -64,7 +64,7 @@ itStatusDesc dITHitokageStatusDesc[/* */] =
 wpCreateDesc dITHitokageWeaponFlameWeaponDesc =
 {
     0x00,                                   // Render flags?
-    Wp_Kind_HitokageFlame,                  // Weapon Kind
+    nWPKindHitokageFlame,                  // Weapon Kind
     &gGRCommonStruct.yamabuki.item_head,      // Pointer to character's loaded files?
     &lITHitokageWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
 

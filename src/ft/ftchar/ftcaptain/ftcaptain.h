@@ -32,49 +32,49 @@ extern u32 gFTDataPolyCaptainParticleBankID;
 
 typedef enum ftCaptainMotion
 {
-    ftMotion_Captain_Attack13 = ftMotion_Common_SpecialStart,
-    ftMotion_Captain_Attack100Start,
-    ftMotion_Captain_Attack100Loop,
-    ftMotion_Captain_Attack100End,
-    ftMotion_Captain_AppearRStart,
-    ftMotion_Captain_AppearLStart,
-    ftMotion_Captain_AppearREnd,
-    ftMotion_Captain_AppearLEnd,
-    ftMotion_Captain_SpecialN,
-    ftMotion_Captain_SpecialAirN,
-    ftMotion_Captain_SpecialLw,                                 // Grounded Falcon Kick
-    ftMotion_Captain_SpecialLwAir,                              // Grounded -> aerial Falcon Kick
-    ftMotion_Captain_SpecialLwLanding,                          // Landing from aerial Falcon Kick                             
-    ftMotion_Captain_SpecialAirLw,                              // Aerial Falcon Kick
-    ftMotion_Captain_SpecialLwBound,                            // Wall collision from Falcon Kick
-    ftMotion_Captain_SpecialHi,
-    ftMotion_Captain_SpecialHiCatch,
-    ftMotion_Captain_SpecialHiThrow,
-    ftMotion_Captain_SpecialAirHi
+    nFTCaptainMotionAttack13 = nFTCommonMotionSpecialStart,
+    nFTCaptainMotionAttack100Start,
+    nFTCaptainMotionAttack100Loop,
+    nFTCaptainMotionAttack100End,
+    nFTCaptainMotionAppearRStart,
+    nFTCaptainMotionAppearLStart,
+    nFTCaptainMotionAppearREnd,
+    nFTCaptainMotionAppearLEnd,
+    nFTCaptainMotionSpecialN,
+    nFTCaptainMotionSpecialAirN,
+    nFTCaptainMotionSpecialLw,                                 // Grounded Falcon Kick
+    nFTCaptainMotionSpecialLwAir,                              // Grounded -> aerial Falcon Kick
+    nFTCaptainMotionSpecialLwLanding,                          // Landing from aerial Falcon Kick                             
+    nFTCaptainMotionSpecialAirLw,                              // Aerial Falcon Kick
+    nFTCaptainMotionSpecialLwBound,                            // Wall collision from Falcon Kick
+    nFTCaptainMotionSpecialHi,
+    nFTCaptainMotionSpecialHiCatch,
+    nFTCaptainMotionSpecialHiThrow,
+    nFTCaptainMotionSpecialAirHi
 
 } ftCaptainMotion;
 
 typedef enum ftCaptainStatus
 {
-    ftStatus_Captain_Attack13 = ftStatus_Common_SpecialStart,
-    ftStatus_Captain_Attack100Start,
-    ftStatus_Captain_Attack100Loop,
-    ftStatus_Captain_Attack100End,
-    ftStatus_Captain_AppearRStart,
-    ftStatus_Captain_AppearLStart,
-    ftStatus_Captain_AppearREnd,
-    ftStatus_Captain_AppearLEnd,
-    ftStatus_Captain_SpecialN,
-    ftStatus_Captain_SpecialAirN,
-    ftStatus_Captain_SpecialLw,                                 // Grounded Falcon Kick
-    ftStatus_Captain_SpecialLwAir,                              // Grounded -> aerial Falcon Kick
-    ftStatus_Captain_SpecialLwLanding,                          // Landing from aerial Falcon Kick                             
-    ftStatus_Captain_SpecialAirLw,                              // Aerial Falcon Kick
-    ftStatus_Captain_SpecialLwBound,                            // Wall collision from Falcon Kick
-    ftStatus_Captain_SpecialHi,
-    ftStatus_Captain_SpecialHiCatch,
-    ftStatus_Captain_SpecialHiThrow,
-    ftStatus_Captain_SpecialAirHi
+    nFTCaptainStatusAttack13 = nFTCommonStatusSpecialStart,
+    nFTCaptainStatusAttack100Start,
+    nFTCaptainStatusAttack100Loop,
+    nFTCaptainStatusAttack100End,
+    nFTCaptainStatusAppearRStart,
+    nFTCaptainStatusAppearLStart,
+    nFTCaptainStatusAppearREnd,
+    nFTCaptainStatusAppearLEnd,
+    nFTCaptainStatusSpecialN,
+    nFTCaptainStatusSpecialAirN,
+    nFTCaptainStatusSpecialLw,                                 // Grounded Falcon Kick
+    nFTCaptainStatusSpecialLwAir,                              // Grounded -> aerial Falcon Kick
+    nFTCaptainStatusSpecialLwLanding,                          // Landing from aerial Falcon Kick                             
+    nFTCaptainStatusSpecialAirLw,                              // Aerial Falcon Kick
+    nFTCaptainStatusSpecialLwBound,                            // Wall collision from Falcon Kick
+    nFTCaptainStatusSpecialHi,
+    nFTCaptainStatusSpecialHiCatch,
+    nFTCaptainStatusSpecialHiThrow,
+    nFTCaptainStatusSpecialAirHi
 
 } ftCaptainStatus;
 

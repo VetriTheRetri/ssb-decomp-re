@@ -749,7 +749,7 @@ GObjProcess* omAddGObjCommonProc(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 p
 
 	switch (kind)
 	{
-	case GObjProcess_Kind_OSThread: {
+	case nOMObjProcessKindOSThread: {
 		gobjthread = omGetGObjThread();
 		gobjproc->gobjthread = gobjthread;
 
@@ -766,7 +766,7 @@ GObjProcess* omAddGObjCommonProc(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 p
 			sProcessThreadID = 10000000;
 		break;
 	}
-	case GObjProcess_Kind_Proc: {
+	case nOMObjProcessKindProc: {
 		gobjproc->proc_thread = proc;
 		break;
 	}
@@ -805,7 +805,7 @@ GObjProcess* unref_80008304(GObj* gobj, void (*proc)(GObj*), u32 pri, s32 thread
 	gobjproc->proc_common = proc;
 
 	gobjproc->gobjthread = gobjthread = omGetGObjThread();
-	gobjproc->kind = GObjProcess_Kind_OSThread;
+	gobjproc->kind = nOMObjProcessKindOSThread;
 
 	stacknode = stack_size == 0 ? omGetDefaultStack() : omGetStackOfSize(stack_size);
 	gobjthread->osstack = stacknode->stack;
@@ -833,7 +833,7 @@ void func_8000848C(GObjProcess* gobjproc)
 	{
 		D_80046A64 = 1;
 
-		if (D_80046A60->kind == GObjProcess_Kind_OSThread)
+		if (D_80046A60->kind == nOMObjProcessKindOSThread)
 			gsStopCurrentProcess(1);
 		return;
 	}
@@ -843,7 +843,7 @@ void func_8000848C(GObjProcess* gobjproc)
 
 	switch (gobjproc->kind)
 	{
-	case GObjProcess_Kind_OSThread:
+	case nOMObjProcessKindOSThread:
 		osDestroyThread(&gobjproc->gobjthread->osthread);
 		// cast from stack pointer back to stack node
 		tnode = (OMThreadStackNode*)((uintptr_t)(gobjproc->gobjthread->osstack) - offsetof(OMThreadStackNode, stack));
@@ -851,7 +851,7 @@ void func_8000848C(GObjProcess* gobjproc)
 		omSetGObjThreadPrevAlloc(gobjproc->gobjthread);
 		break;
 
-	case GObjProcess_Kind_Proc: break;
+	case nOMObjProcessKindProc: break;
 	}
 
 	func_800077D0(gobjproc);
@@ -2032,12 +2032,12 @@ GObjProcess* func_8000A49C(GObjProcess* gobjproc)
 
 	switch (gobjproc->kind)
 	{
-	case GObjProcess_Kind_OSThread:
+	case nOMObjProcessKindOSThread:
 		osStartThread(&gobjproc->gobjthread->osthread);
 		osRecvMesg(&gOMMesgQueue, NULL, OS_MESG_BLOCK);
 		break;
 
-	case GObjProcess_Kind_Proc: gobjproc->proc_thread(gobjproc->parent_gobj); break;
+	case nOMObjProcessKindProc: gobjproc->proc_thread(gobjproc->parent_gobj); break;
 	}
 
 	return_gobjproc = gobjproc->priority_next;

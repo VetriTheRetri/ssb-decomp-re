@@ -16,7 +16,7 @@ extern intptr_t lITTomatoItemAttributes;    // 0x000000B8
 
 itCreateDesc dITTomatoItemDesc =
 {
-    It_Kind_Tomato,                         // Item Kind
+    nITKindTomato,                         // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITTomatoItemAttributes,               // Offset of item attributes in file?
 

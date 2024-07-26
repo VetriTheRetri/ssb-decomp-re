@@ -45,13 +45,13 @@ void ftCommonLGunShootProcAccessory(GObj *fighter_gobj)
             make_effect_offset.y = 60.0F;
             make_effect_offset.z = 180.0F;
 
-            ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_SparkleWhiteScale, fp->attributes->joint_itemhold_light, &make_effect_offset, NULL, fp->lr, TRUE, FALSE);
+            ftParticle_MakeEffectKind(fighter_gobj, nEFKindSparkleWhiteScale, fp->attributes->joint_itemhold_light, &make_effect_offset, NULL, fp->lr, TRUE, FALSE);
 
             make_effect_offset.x = 0.0F;
             make_effect_offset.y = 0.0F;
             make_effect_offset.z = -180.0F;
 
-            ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustDashSmall, ftParts_Joint_TopN, &make_effect_offset, NULL, fp->lr, FALSE, FALSE);
+            ftParticle_MakeEffectKind(fighter_gobj, nEFKindDustDashSmall, ftParts_Joint_TopN, &make_effect_offset, NULL, fp->lr, FALSE, FALSE);
 
             func_800269C0_275C0(alSound_SFX_LGunShoot);
             ftMainMakeRumble(fp, 9, 0);
@@ -61,7 +61,7 @@ void ftCommonLGunShootProcAccessory(GObj *fighter_gobj)
             // 0x8018866C
             Vec3f dust_effect_offset = { FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_X, FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Y, FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Z };
 
-            ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, fp->attributes->joint_itemhold_light, &dust_effect_offset, NULL, -fp->lr, TRUE, FALSE);
+            ftParticle_MakeEffectKind(fighter_gobj, nEFKindDustLight, fp->attributes->joint_itemhold_light, &dust_effect_offset, NULL, -fp->lr, TRUE, FALSE);
             func_800269C0_275C0(alSound_SFX_LGunEmpty);
         }
         fp->command_vars.flags.flag0 = 0;
@@ -86,7 +86,7 @@ void ftCommonLGunShootAirSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_LGunShoot, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusLGunShoot, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->proc_accessory = ftCommonLGunShootProcAccessory;
 }
@@ -97,7 +97,7 @@ void ftCommonLGunShootSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_LGunShootAir, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusLGunShootAir, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_accessory = ftCommonLGunShootProcAccessory;
@@ -151,7 +151,7 @@ void ftCommonFireFlowerShootUpdateAmmoStats(ftStruct *fp, s32 ammo_sub)
     {
         fp->status_vars.common.fireflower.flame_vel_index = 0;
 
-        ftCommon_MotionCountIncSetAttackID(fp, ftMotion_AttackIndex_FireFlowerShoot);
+        ftCommon_MotionCountIncSetAttackID(fp, nFTMotionAttackIDFireFlowerShoot);
         ftCommon_StatUpdateCountIncSetFlags(fp, fp->stat_flags.halfword);
         ftCommon_Update1PGameAttackStats(fp, 0);
     }
@@ -195,7 +195,7 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
                     // 0x80188684
                     Vec3f effect_noammo_offset = { 60.0F, 100.0F, 0.0F };
 
-                    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, fp->attributes->joint_itemhold_light, &effect_noammo_offset, NULL, -fp->lr, TRUE, FALSE);
+                    ftParticle_MakeEffectKind(fighter_gobj, nEFKindDustLight, fp->attributes->joint_itemhold_light, &effect_noammo_offset, NULL, -fp->lr, TRUE, FALSE);
                     func_800269C0_275C0(alSound_SFX_FireFlowerBurn);
                 }
                 else
@@ -203,7 +203,7 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
                     // 0x80188690
                     Vec3f effect_haveammo_offset = { 0.0F, 0.0F, -180.0F };
 
-                    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, ftParts_Joint_TopN, &effect_haveammo_offset, NULL, fp->lr, FALSE, FALSE);
+                    ftParticle_MakeEffectKind(fighter_gobj, nEFKindDustLight, ftParts_Joint_TopN, &effect_haveammo_offset, NULL, fp->lr, FALSE, FALSE);
                     func_800269C0_275C0(alSound_SFX_BurnE);
                 }
             }
@@ -228,8 +228,8 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
                     // 0x801886B4
                     Vec3f effect_dust_offset = { 0.0F, 0.0F, -180.0F };
 
-                    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_SparkleWhiteScale, fp->attributes->joint_itemhold_light, &effect_spark_offset, &effect_spark_scatter, fp->lr, TRUE, FALSE);
-                    ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustDashSmall, ftParts_Joint_TopN, &effect_dust_offset, NULL, fp->lr, FALSE, FALSE);
+                    ftParticle_MakeEffectKind(fighter_gobj, nEFKindSparkleWhiteScale, fp->attributes->joint_itemhold_light, &effect_spark_offset, &effect_spark_scatter, fp->lr, TRUE, FALSE);
+                    ftParticle_MakeEffectKind(fighter_gobj, nEFKindDustDashSmall, ftParts_Joint_TopN, &effect_dust_offset, NULL, fp->lr, FALSE, FALSE);
                 }
                 fp->command_vars.flags.flag0 = 2;
 
@@ -263,7 +263,7 @@ void ftCommonFireFlowerShootAirSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_FireFlowerShoot, fighter_gobj->anim_frame, DObjGetStruct(fighter_gobj)->dobj_f1, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFireFlowerShoot, fighter_gobj->anim_frame, DObjGetStruct(fighter_gobj)->dobj_f1, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->proc_accessory = ftCommonFireFlowerShootProcAccessory;
 }
@@ -274,7 +274,7 @@ void ftCommonFireFlowerShootSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_FireFlowerShootAir, fighter_gobj->anim_frame, DObjGetStruct(fighter_gobj)->dobj_f1, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFireFlowerShootAir, fighter_gobj->anim_frame, DObjGetStruct(fighter_gobj)->dobj_f1, FTSTATUPDATE_NONE_PRESERVE);
     ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_accessory = ftCommonFireFlowerShootProcAccessory;
@@ -301,13 +301,13 @@ void ftCommonItemShootSetStatus(GObj *fighter_gobj)
 
     switch (ip->it_kind)
     {
-    case It_Kind_LGun:
-        status_id = ftStatus_Common_LGunShoot;
+    case nITKindLGun:
+        status_id = nFTCommonStatusLGunShoot;
         proc_accessory = ftCommonLGunShootProcAccessory;
         break;
 
-    case It_Kind_FFlower:
-        status_id = ftStatus_Common_FireFlowerShoot;
+    case nITKindFFlower:
+        status_id = nFTCommonStatusFireFlowerShoot;
         proc_accessory = ftCommonFireFlowerShootProcAccessory;
         break;
     }
@@ -331,13 +331,13 @@ void ftCommonItemShootAirSetStatus(GObj *fighter_gobj)
 
     switch (ip->it_kind)
     {
-    case It_Kind_LGun:
-        status_id = ftStatus_Common_LGunShootAir;
+    case nITKindLGun:
+        status_id = nFTCommonStatusLGunShootAir;
         proc_accessory = ftCommonLGunShootProcAccessory;
         break;
 
-    case It_Kind_FFlower:
-        status_id = ftStatus_Common_FireFlowerShootAir;
+    case nITKindFFlower:
+        status_id = nFTCommonStatusFireFlowerShootAir;
         proc_accessory = ftCommonFireFlowerShootProcAccessory;
         break;
     }

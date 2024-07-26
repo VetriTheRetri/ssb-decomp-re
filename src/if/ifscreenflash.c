@@ -66,9 +66,9 @@ void ifScreenFlashMakeInterface(u8 alpha)
 
     if (gSaveData.is_allow_screenflash != FALSE)
     {
-        GObj *interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
+        GObj *interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, GObj_LinkID_Interface, GOBJ_LINKORDER_DEFAULT);
 
         omAddGObjRenderProc(interface_gobj, ifScreenFlashProcRender, 22, GOBJ_DLLINKORDER_DEFAULT, -1);
-        omAddGObjCommonProc(interface_gobj, ifScreenFlashProcUpdate, GObjProcess_Kind_Proc, 1);
+        omAddGObjCommonProc(interface_gobj, ifScreenFlashProcUpdate, nOMObjProcessKindProc, 1);
     }
 }

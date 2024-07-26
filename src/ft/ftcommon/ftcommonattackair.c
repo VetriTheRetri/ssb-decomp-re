@@ -14,7 +14,7 @@ void ftCommonAttackAirLwProcHit(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind == Ft_Kind_Link) || (fp->ft_kind == Ft_Kind_PolyLink))
+    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindPolyLink))
     {
         ftCommon_ClearHitAll(fighter_gobj);
 
@@ -24,7 +24,7 @@ void ftCommonAttackAirLwProcHit(GObj *fighter_gobj)
 
         if (fighter_gobj->anim_frame > FTCOMMON_ATTACKAIRLW_LINK_REHIT_FRAME_BEGIN)
         {
-            ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_AttackAirLw, FTCOMMON_ATTACKAIRLW_LINK_REHIT_FRAME_BEGIN, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+            ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttackAirLw, FTCOMMON_ATTACKAIRLW_LINK_REHIT_FRAME_BEGIN, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
         }
         fp->status_vars.common.attackair.rehit_timer = FTCOMMON_ATTACKAIRLW_LINK_REHIT_TIMER;
     }
@@ -35,7 +35,7 @@ void ftCommonAttackAirLwProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind == Ft_Kind_Link) || (fp->ft_kind == Ft_Kind_PolyLink))
+    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindPolyLink))
     {
         if (fp->status_vars.common.attackair.rehit_timer != 0)
         {
@@ -60,7 +60,7 @@ void ftCommonAttackAirProcMap(GObj *fighter_gobj)
     {
         if ((fp->command_vars.flags.flag1 != 0) && (fp->time_since_last_z > FTCOMMON_ATTACKAIR_SMOOTH_LANDING_BUFFER_FRAMES_MAX))
         {
-            if (fp->ft_data->battlemotion->script_info[fp->status_info.motion_id + (ftStatus_Common_LandingAirN - ftStatus_Common_AttackAirN)].anim_id != 0)
+            if (fp->ft_data->battlemotion->script_info[fp->status_info.motion_id + (nFTCommonStatusLandingAirN - nFTCommonStatusAttackAirN)].anim_id != 0)
             {
                 ftCommonLandingAirSetStatus(fighter_gobj);
             }
@@ -92,9 +92,9 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
             {
                 if ((ABS(fp->input.pl.stick_range.x) < FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN) && (ABS(fp->input.pl.stick_range.y) < FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN))
                 {
-                    if (itGetStruct(fp->item_hold)->type == It_Type_Throw)
+                    if (itGetStruct(fp->item_hold)->type == nITTypeThrow)
                     {
-                        ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowAirF);
+                        ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowAirF);
 
                         return TRUE;
                     }
@@ -110,31 +110,31 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
                     {
                         if (fp->hold_stick_y < FTCOMMON_LIGHTTHROWAIR4_BUFFER_FRAMES_MAX)
                         {
-                            status_id = ftStatus_Common_LightThrowAirHi4;
+                            status_id = nFTCommonStatusLightThrowAirHi4;
                         }
-                        else status_id = ftStatus_Common_LightThrowAirHi;
+                        else status_id = nFTCommonStatusLightThrowAirHi;
                     }
                     else if (angle < F_CST_DTOR32(-50.0F)) // -0.87266463F
                     {
                         if (fp->hold_stick_y < FTCOMMON_LIGHTTHROWAIR4_BUFFER_FRAMES_MAX)
                         {
-                            status_id = ftStatus_Common_LightThrowAirLw4;
+                            status_id = nFTCommonStatusLightThrowAirLw4;
                         }
-                        else status_id = ftStatus_Common_LightThrowAirLw;
+                        else status_id = nFTCommonStatusLightThrowAirLw;
                     }
                     else if ((fp->input.pl.stick_range.x * fp->lr) >= 0)
                     {
                         if (fp->hold_stick_x < FTCOMMON_LIGHTTHROWAIR4_BUFFER_FRAMES_MAX)
                         {
-                            status_id = ftStatus_Common_LightThrowAirF4;
+                            status_id = nFTCommonStatusLightThrowAirF4;
                         }
-                        else status_id = ftStatus_Common_LightThrowAirF;
+                        else status_id = nFTCommonStatusLightThrowAirF;
                     }
                     else if (fp->hold_stick_x < FTCOMMON_LIGHTTHROWAIR4_BUFFER_FRAMES_MAX)
                     {
-                        status_id = ftStatus_Common_LightThrowAirB4;
+                        status_id = nFTCommonStatusLightThrowAirB4;
                     }
-                    else status_id = ftStatus_Common_LightThrowAirB;
+                    else status_id = nFTCommonStatusLightThrowAirB;
 
                     ftCommonItemThrowSetStatus(fighter_gobj, status_id);
 
@@ -145,7 +145,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
             {
                 if ((ABS(fp->input.pl.stick_range.x) < FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN) && (ABS(fp->input.pl.stick_range.y) < FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN))
                 {
-                    status_id = ftStatus_Common_AttackAirN;
+                    status_id = nFTCommonStatusAttackAirN;
                     is_have_attack_flag = attributes->is_have_attackairn;
                     is_goto_shoot = TRUE;
                 }
@@ -155,30 +155,30 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
 
                     if (angle > F_CST_DTOR32(50.0F)) // 0.87266463F
                     {
-                        status_id = ftStatus_Common_AttackAirHi;
+                        status_id = nFTCommonStatusAttackAirHi;
                         is_have_attack_flag = attributes->is_have_attackairhi;
                     }
                     else if (angle < F_CST_DTOR32(-50.0F)) // -0.87266463F
                     {
-                        status_id = ftStatus_Common_AttackAirLw;
+                        status_id = nFTCommonStatusAttackAirLw;
                         is_have_attack_flag = attributes->is_have_attackairlw;
                     }
                     else if ((fp->input.pl.stick_range.x * fp->lr) >= 0)
                     {
-                        status_id = ftStatus_Common_AttackAirF;
+                        status_id = nFTCommonStatusAttackAirF;
                         is_have_attack_flag = attributes->is_have_attackairf;
                         is_goto_shoot = TRUE;
                     }
                     else
                     {
-                        status_id = ftStatus_Common_AttackAirB;
+                        status_id = nFTCommonStatusAttackAirB;
                         is_have_attack_flag = attributes->is_have_attackairb;
                     }
                 }
             }
             if (is_goto_shoot != FALSE)
             {
-                if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->type == It_Type_Shoot))
+                if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->type == nITTypeShoot))
                 {
                     ftCommonItemShootAirSetStatus(fighter_gobj);
 
@@ -191,7 +191,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
 
                 ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
 
-                if (status_id == ftStatus_Common_AttackAirLw)
+                if (status_id == nFTCommonStatusAttackAirLw)
                 {
                     fp->proc_hit = ftCommonAttackAirLwProcHit;
 

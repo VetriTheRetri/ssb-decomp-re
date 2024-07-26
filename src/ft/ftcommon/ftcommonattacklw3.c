@@ -54,7 +54,7 @@ void ftCommonAttackLw3InitStatusVars(GObj *fighter_gobj)
 
     fp->status_vars.common.attacklw3.is_goto_attacklw3 = FALSE;
 
-    ftCommon_MotionCountIncSetAttackID(fp, ftMotion_AttackIndex_AttackLw3);
+    ftCommon_MotionCountIncSetAttackID(fp, nFTMotionAttackIDAttackLw3);
     ftCommon_StatUpdateCountIncSetFlags(fp, fp->stat_flags.halfword);
     ftCommon_Update1PGameAttackStats(fp, 0);
 }
@@ -68,7 +68,7 @@ void ftCommonAttackLw3SetStatus(GObj *fighter_gobj)
     {
         fp->proc_status = ftCommonAttackLw3InitStatusVars;
 
-        ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_AttackLw3, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttackLw3, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
         ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     }
 }
@@ -85,7 +85,7 @@ sb32 ftCommonAttackLw3CheckInterruptCommon(GObj *fighter_gobj)
         {
             if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
             {
-                ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowLw);
+                ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowLw);
 
                 return TRUE;
             }

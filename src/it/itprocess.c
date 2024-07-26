@@ -454,7 +454,7 @@ void itProcessUpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit,
 
     damage = itMainGetDamageOutput(attack_ip);
 
-    is_rehit = ((defend_ip->type == It_Type_Damage) && (attack_it_hit->can_rehit_item)) ? TRUE : FALSE;
+    is_rehit = ((defend_ip->type == nITTypeDamage) && (attack_it_hit->can_rehit_item)) ? TRUE : FALSE;
 
     itProcessSetHitInteractStats(attack_it_hit, defend_gobj, (is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt, 0);
 
@@ -557,7 +557,7 @@ void itProcessUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_
 
     damage = wpMainGetStaledDamageOutput(wp);
 
-    is_rehit = ((ip->type == It_Type_Damage) && (wp_hit->can_rehit_item)) ? TRUE : FALSE;
+    is_rehit = ((ip->type == nITTypeDamage) && (wp_hit->can_rehit_item)) ? TRUE : FALSE;
 
     wpProcessUpdateHitInteractStatsGroupID(wp, wp_hit, item_gobj, ((is_rehit != FALSE) ? gmHitCollision_Type_HurtRehit : gmHitCollision_Type_Hurt), 0);
 
@@ -1094,7 +1094,7 @@ next_check:
     }
     if (ip->damage_lag != 0)
     {
-        ip->hitlag_timer = gmCommon_DamageCalcHitLag(ip->damage_lag, ftStatus_Common_Wait, 1.0F); // Maybe 10 is the "none" status ID?
+        ip->hitlag_timer = gmCommon_DamageCalcHitLag(ip->damage_lag, nFTCommonStatusWait, 1.0F); // Maybe 10 is the "none" status ID?
     }
 
     ip->hit_normal_damage = 0;

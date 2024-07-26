@@ -16,16 +16,16 @@ extern intptr_t lFTKirbyAttack100Effect;            // 0x00001220
 
 #define ftCommonAttack100CheckFighterKind(fp) \
 (                                             \
-    ((fp)->ft_kind == Ft_Kind_Fox)        ||  \
-    ((fp)->ft_kind == Ft_Kind_PolyFox)    ||  \
-    ((fp)->ft_kind == Ft_Kind_Link)       ||  \
-    ((fp)->ft_kind == Ft_Kind_PolyLink)   ||  \
-    ((fp)->ft_kind == Ft_Kind_Kirby)      ||  \
-    ((fp)->ft_kind == Ft_Kind_PolyKirby)  ||  \
-    ((fp)->ft_kind == Ft_Kind_Purin)      ||  \
-    ((fp)->ft_kind == Ft_Kind_PolyPurin)  ||  \
-    ((fp)->ft_kind == Ft_Kind_Captain)    ||  \
-    ((fp)->ft_kind == Ft_Kind_PolyCaptain)    \
+    ((fp)->ft_kind == nFTKindFox)        ||  \
+    ((fp)->ft_kind == nFTKindPolyFox)    ||  \
+    ((fp)->ft_kind == nFTKindLink)       ||  \
+    ((fp)->ft_kind == nFTKindPolyLink)   ||  \
+    ((fp)->ft_kind == nFTKindKirby)      ||  \
+    ((fp)->ft_kind == nFTKindPolyKirby)  ||  \
+    ((fp)->ft_kind == nFTKindPurin)      ||  \
+    ((fp)->ft_kind == nFTKindPolyPurin)  ||  \
+    ((fp)->ft_kind == nFTKindCaptain)    ||  \
+    ((fp)->ft_kind == nFTKindPolyCaptain)    \
 )
 
 // // // // // // // // // // // //
@@ -50,29 +50,29 @@ void ftCommonAttack100StartSetStatus(GObj *fighter_gobj)
     {
         switch (fp->ft_kind)
         {
-        case Ft_Kind_Fox:
-        case Ft_Kind_PolyFox:
-            status_id = ftStatus_Fox_Attack100Start;
+        case nFTKindFox:
+        case nFTKindPolyFox:
+            status_id = nFTFoxStatusAttack100Start;
             break;
 
-        case Ft_Kind_Link:
-        case Ft_Kind_PolyLink:
-            status_id = ftStatus_Link_Attack100Start;
+        case nFTKindLink:
+        case nFTKindPolyLink:
+            status_id = nFTLinkStatusAttack100Start;
             break;
 
-        case Ft_Kind_Kirby:
-        case Ft_Kind_PolyKirby:
-            status_id = ftStatus_Kirby_Attack100Start;
+        case nFTKindKirby:
+        case nFTKindPolyKirby:
+            status_id = nFTKirbyStatusAttack100Start;
             break;
 
-        case Ft_Kind_Purin:
-        case Ft_Kind_PolyPurin:
-            status_id = ftStatus_Purin_Attack100Start;
+        case nFTKindPurin:
+        case nFTKindPolyPurin:
+            status_id = nFTPurinStatusAttack100Start;
             break;
 
-        case Ft_Kind_Captain:
-        case Ft_Kind_PolyCaptain:
-            status_id = ftStatus_Captain_Attack100Start;
+        case nFTKindCaptain:
+        case nFTKindPolyCaptain:
+            status_id = nFTCaptainStatusAttack100Start;
             break;
         }
         ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
@@ -91,7 +91,7 @@ void ftCommonAttack100LoopKirbyUpdateEffect(ftStruct *fp)
 {
     Vec3f pos;
 
-    if (fp->ft_kind == Ft_Kind_Kirby)
+    if (fp->ft_kind == nFTKindKirby)
     {
         if (fp->command_vars.flags.flag2 != 0)
         {
@@ -119,7 +119,7 @@ void ftCommonAttack100LoopProcUpdate(GObj *fighter_gobj)
     {
         fp->status_vars.common.attack100.is_anim_end = TRUE;
 
-        ftCommon_MotionCountIncSetAttackID(fp, ftMotion_AttackIndex_Attack100);
+        ftCommon_MotionCountIncSetAttackID(fp, nFTMotionAttackIDAttack100);
         ftCommon_StatUpdateCountIncSetFlags(fp, fp->stat_flags.halfword);
         ftCommon_Update1PGameAttackStats(fp, 0);
     }
@@ -161,29 +161,29 @@ void ftCommonAttack100LoopSetStatus(GObj *fighter_gobj)
 
     switch (fp->ft_kind)
     {
-    case Ft_Kind_Fox:
-    case Ft_Kind_PolyFox:
-        status_id = ftStatus_Fox_Attack100Loop;
+    case nFTKindFox:
+    case nFTKindPolyFox:
+        status_id = nFTFoxStatusAttack100Loop;
         break;
 
-    case Ft_Kind_Link:
-    case Ft_Kind_PolyLink:
-        status_id = ftStatus_Link_Attack100Loop;
+    case nFTKindLink:
+    case nFTKindPolyLink:
+        status_id = nFTLinkStatusAttack100Loop;
         break;
 
-    case Ft_Kind_Kirby:
-    case Ft_Kind_PolyKirby:
-        status_id = ftStatus_Kirby_Attack100Loop;
+    case nFTKindKirby:
+    case nFTKindPolyKirby:
+        status_id = nFTKirbyStatusAttack100Loop;
         break;
 
-    case Ft_Kind_Purin:
-    case Ft_Kind_PolyPurin:
-        status_id = ftStatus_Purin_Attack100Loop;
+    case nFTKindPurin:
+    case nFTKindPolyPurin:
+        status_id = nFTPurinStatusAttack100Loop;
         break;
 
-    case Ft_Kind_Captain:
-    case Ft_Kind_PolyCaptain:
-        status_id = ftStatus_Captain_Attack100Loop;
+    case nFTKindCaptain:
+    case nFTKindPolyCaptain:
+        status_id = nFTCaptainStatusAttack100Loop;
         break;
     }
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
@@ -198,29 +198,29 @@ void ftCommonAttack100EndSetStatus(GObj *fighter_gobj)
 
     switch (fp->ft_kind)
     {
-    case Ft_Kind_Fox:
-    case Ft_Kind_PolyFox:
-        status_id = ftStatus_Fox_Attack100End;
+    case nFTKindFox:
+    case nFTKindPolyFox:
+        status_id = nFTFoxStatusAttack100End;
         break;
 
-    case Ft_Kind_Link:
-    case Ft_Kind_PolyLink:
-        status_id = ftStatus_Link_Attack100End;
+    case nFTKindLink:
+    case nFTKindPolyLink:
+        status_id = nFTLinkStatusAttack100End;
         break;
 
-    case Ft_Kind_Kirby:
-    case Ft_Kind_PolyKirby:
-        status_id = ftStatus_Kirby_Attack100End;
+    case nFTKindKirby:
+    case nFTKindPolyKirby:
+        status_id = nFTKirbyStatusAttack100End;
         break;
 
-    case Ft_Kind_Purin:
-    case Ft_Kind_PolyPurin:
-        status_id = ftStatus_Purin_Attack100End;
+    case nFTKindPurin:
+    case nFTKindPolyPurin:
+        status_id = nFTPurinStatusAttack100End;
         break;
 
-    case Ft_Kind_Captain:
-    case Ft_Kind_PolyCaptain:
-        status_id = ftStatus_Captain_Attack100End;
+    case nFTKindCaptain:
+    case nFTKindPolyCaptain:
+        status_id = nFTCaptainStatusAttack100End;
         break;
     }
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
@@ -243,34 +243,34 @@ sb32 ftCommonAttack100StartCheckInterruptCommon(GObj *fighter_gobj)
 
         switch (fp->ft_kind)
         {
-        case Ft_Kind_Fox:
-        case Ft_Kind_PolyFox:
+        case nFTKindFox:
+        case nFTKindPolyFox:
             inputs_req = 4;
-            status_id = ftStatus_Common_Attack12;
+            status_id = nFTCommonStatusAttack12;
             break;
 
-        case Ft_Kind_Link:
-        case Ft_Kind_PolyLink:
+        case nFTKindLink:
+        case nFTKindPolyLink:
             inputs_req = 5;
-            status_id = ftStatus_Common_Attack12;
+            status_id = nFTCommonStatusAttack12;
             break;
 
-        case Ft_Kind_Kirby:
-        case Ft_Kind_PolyKirby:
+        case nFTKindKirby:
+        case nFTKindPolyKirby:
             inputs_req = 4;
-            status_id = ftStatus_Common_Attack12;
+            status_id = nFTCommonStatusAttack12;
             break;
 
-        case Ft_Kind_Purin:
-        case Ft_Kind_PolyPurin:
+        case nFTKindPurin:
+        case nFTKindPolyPurin:
             inputs_req = 4;
-            status_id = ftStatus_Common_Attack12;
+            status_id = nFTCommonStatusAttack12;
             break;
 
-        case Ft_Kind_Captain:
-        case Ft_Kind_PolyCaptain:
+        case nFTKindCaptain:
+        case nFTKindPolyCaptain:
             inputs_req = 6;
-            status_id = ftStatus_Captain_Attack13;
+            status_id = nFTCaptainStatusAttack13;
             break;
         }
         if (fp->attack1_input_count >= inputs_req)

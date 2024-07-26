@@ -17,7 +17,7 @@ extern intptr_t lITCapsuleHitEvents;        // 0x00000098
 
 itCreateDesc dITCapsuleItemDesc = 
 {
-    It_Kind_Capsule,                        // Item Kind
+    nITKindCapsule,                        // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITCapsuleItemAttributes,              // Offset of item attributes in file?
     

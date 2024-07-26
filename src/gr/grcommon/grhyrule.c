@@ -79,7 +79,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
     {
         return NULL;
     }
-    twister_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    twister_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
     if (twister_gobj != NULL)
     {
@@ -324,7 +324,7 @@ void grHyruleTwisterUpdateStop(void)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (fp->status_info.status_id != ftStatus_Common_Twister)
+        if (fp->status_info.status_id != nFTCommonStatusTwister)
         {
             fighter_gobj = fighter_gobj->link_next;
         }
@@ -427,9 +427,9 @@ void grHyruleTwisterInitVars(void)
 // 0x8010AB20
 GObj* grHyruleMakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
-    omAddGObjCommonProc(ground_gobj, grHyruleTwisterProcUpdate, GObjProcess_Kind_Proc, 4);
+    omAddGObjCommonProc(ground_gobj, grHyruleTwisterProcUpdate, nOMObjProcessKindProc, 4);
     grHyruleTwisterInitVars();
 
     return ground_gobj;
@@ -445,7 +445,7 @@ sb32 grHyruleTwisterCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s3
     if 
     (
         (fp->twister_wait == 0)                                && 
-        (fp->status_info.status_id != ftStatus_Common_Twister) && 
+        (fp->status_info.status_id != nFTCommonStatusTwister) && 
         !(fp->capture_immune_mask & FTCATCHKIND_MASK_TWISTER)  &&
         (ftCommon_GetBestHitStatusAll(fighter_gobj) == gmHitCollision_HitStatus_Normal)
     )

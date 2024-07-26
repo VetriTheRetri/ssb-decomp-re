@@ -80,7 +80,7 @@ void ftBossDrillSetStatus(GObj *fighter_gobj)
     ftStruct *fp;
     Vec3f pos;
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Boss_Drill, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusDrill, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftBossCommonCheckEdgeInvertLR(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);

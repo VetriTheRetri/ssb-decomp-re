@@ -36,7 +36,7 @@ void ftCommonHammerFallSetStatus(GObj *fighter_gobj)
     {
         ftMap_SetAir(fp);
     }
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusHammerFall, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
     ftHammerSetColAnim(fighter_gobj);
     ftPhysics_ClampAirVelXMax(fp);
 }
@@ -63,7 +63,7 @@ void ftCommonHammerFallSetStatusJump(GObj *fighter_gobj)
     s32 vel_x, vel_y;
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_HammerFall, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusHammerFall, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
     ftHammerSetColAnim(fighter_gobj);
 
     switch (fp->status_vars.common.hammer.input_source)
@@ -87,7 +87,7 @@ void ftCommonHammerFallSetStatusJump(GObj *fighter_gobj)
 // 0x80147E34
 void ftCommonHammerFallSetStatusPass(GObj *fighter_gobj)
 {
-    ftCommonPassSetStatusParam(fighter_gobj, ftStatus_Common_HammerFall, ftHammerGetAnimFrame(fighter_gobj), ftHammerGetStatUpdateFlags(fighter_gobj));
+    ftCommonPassSetStatusParam(fighter_gobj, nFTCommonStatusHammerFall, ftHammerGetAnimFrame(fighter_gobj), ftHammerGetStatUpdateFlags(fighter_gobj));
     ftHammerSetColAnim(fighter_gobj);
 }
 

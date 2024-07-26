@@ -17,7 +17,7 @@ extern intptr_t lITStarItemAttributes;      // 0x00000148
 
 itCreateDesc dITStarItemDesc =
 {
-    It_Kind_Star,                           // Item Kind
+    nITKindStar,                           // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITStarItemAttributes,                 // Offset of item attributes in file?
 

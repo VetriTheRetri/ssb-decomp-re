@@ -401,9 +401,9 @@ void ftPublicitySetup(void)
 {
     omAddGObjCommonProc
     (
-        omMakeGObjSPAfter(GObj_Kind_Publicity, NULL, 0xD, GOBJ_LINKORDER_DEFAULT), 
+        omMakeGObjSPAfter(nOMObjKindPublicity, NULL, 0xD, GOBJ_LINKORDER_DEFAULT), 
         ftPublicityProcUpdate, 
-        GObjProcess_Kind_Proc, 
+        nOMObjProcessKindProc, 
         0
     );
 

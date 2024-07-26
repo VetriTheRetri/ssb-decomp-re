@@ -20,7 +20,7 @@ extern intptr_t lITLuckyAnimJoint;          // 0x000100BC
 // 0x8018AFB0
 itCreateDesc dITMLuckyItemDesc = 
 {
-    It_Kind_MLucky,                         // Item Kind
+    nITKindMLucky,                         // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITMLuckyItemAttributes,               // Offset of item attributes in file?
 
@@ -121,7 +121,7 @@ void itMLuckyNSpawnInitItemVars(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if (ip->it_kind == It_Kind_MLucky)
+    if (ip->it_kind == nITKindMLucky)
     {
         omAddDObjAnimAll(dobj->child, itGetPData(ip, lITLuckyDataStart, lITLuckyAnimJoint), 0.0F); // Linker thing
         func_8000DF34_EB34(item_gobj);
@@ -207,7 +207,7 @@ void itMLuckyNAppearSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_kind == It_Kind_MLucky)
+    if (ip->it_kind == nITKindMLucky)
     {
         func_800269C0_275C0(alSound_Voice_MBallLuckySpawn);
     }
@@ -234,7 +234,7 @@ sb32 itMLuckyNSpawnProcUpdate(GObj *lucky_gobj)
     {
         if (!lucky_ip->item_vars.mlucky.egg_spawn_wait)
         {
-            if ((gBattleState->item_toggles & ITEM_TOGGLE_MASK_KIND(It_Kind_Egg)) && (gBattleState->item_switch != gmMatch_ItemSwitch_None))
+            if ((gBattleState->item_toggles & ITEM_TOGGLE_MASK_KIND(nITKindEgg)) && (gBattleState->item_switch != gmMatch_ItemSwitch_None))
             {
                 pos = dobj->translate.vec.f;
 
@@ -242,7 +242,7 @@ sb32 itMLuckyNSpawnProcUpdate(GObj *lucky_gobj)
                 vel.y = (mtTrigGetRandomFloat() * ITMLUCKY_EGG_SPAWN_BASE_VEL) + ITMLUCKY_EGG_SPAWN_ADD_VEL_Y;
                 vel.z = 0.0F;
 
-                egg_gobj = itManagerMakeItemSetupCommon(lucky_gobj, It_Kind_Egg, &pos, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+                egg_gobj = itManagerMakeItemSetupCommon(lucky_gobj, nITKindEgg, &pos, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
                 if (egg_gobj != NULL)
                 {

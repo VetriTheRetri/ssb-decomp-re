@@ -50,7 +50,7 @@ void ftDonkeyThrowFTurnSetStatus(GObj *fighter_gobj)
 
     fp->command_vars.flags.flag1 = 0;
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Donkey_ThrowFTurn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFTurn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }
 

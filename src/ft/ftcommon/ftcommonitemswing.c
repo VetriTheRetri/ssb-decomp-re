@@ -50,7 +50,7 @@ void ftCommonHarisenSwingProcHit(GObj *fighter_gobj)
     {
         itStruct *ip = itGetStruct(fp->item_hold);
 
-        if (ip->it_kind == It_Kind_Harisen)
+        if (ip->it_kind == nITKindHarisen)
         {
             itHarisenSDefaultSetScale(fp->item_hold, FTCOMMON_HARISENSWING_SCALE_HIT);
 
@@ -126,7 +126,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
             // 0x8018860C
             Vec3f effect_offset = { 0.0F, 200.0F, 0.0F };
 
-            ftParticle_MakeEffectKind(fighter_gobj, Ef_Kind_DustLight, fp->attributes->joint_itemhold_light, &effect_offset, NULL, -fp->lr, TRUE, FALSE);
+            ftParticle_MakeEffectKind(fighter_gobj, nEFKindDustLight, fp->attributes->joint_itemhold_light, &effect_offset, NULL, -fp->lr, TRUE, FALSE);
         }
         fp->command_vars.flags.flag0 = 0;
     }
@@ -136,10 +136,10 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
 // 0x80188618
 s32 dFTCommonItemSwingStatusIDs[/* */][ftItemSwing_Type_EnumMax] =
 {
-    { ftStatus_Common_SwordSwing1,   ftStatus_Common_SwordSwing3,   ftStatus_Common_SwordSwing4,   ftStatus_Common_SwordSwingDash   },
-    { ftStatus_Common_BatSwing1,     ftStatus_Common_BatSwing3,     ftStatus_Common_BatSwing4,     ftStatus_Common_BatSwingDash     },
-    { ftStatus_Common_HarisenSwing1, ftStatus_Common_HarisenSwing3, ftStatus_Common_HarisenSwing4, ftStatus_Common_HarisenSwingDash },
-    { ftStatus_Common_StarRodSwing1, ftStatus_Common_StarRodSwing3, ftStatus_Common_StarRodSwing4, ftStatus_Common_StarRodSwingDash }
+    { nFTCommonStatusSwordSwing1,   nFTCommonStatusSwordSwing3,   nFTCommonStatusSwordSwing4,   nFTCommonStatusSwordSwingDash   },
+    { nFTCommonStatusBatSwing1,     nFTCommonStatusBatSwing3,     nFTCommonStatusBatSwing4,     nFTCommonStatusBatSwingDash     },
+    { nFTCommonStatusHarisenSwing1, nFTCommonStatusHarisenSwing3, nFTCommonStatusHarisenSwing4, nFTCommonStatusHarisenSwingDash },
+    { nFTCommonStatusStarRodSwing1, nFTCommonStatusStarRodSwing3, nFTCommonStatusStarRodSwing4, nFTCommonStatusStarRodSwingDash }
 };
 
 // 0x80146E94
@@ -153,24 +153,24 @@ void ftCommonItemSwingSetStatus(GObj *fighter_gobj, s32 swing_type)
 
     switch (ip->it_kind)
     {
-    case It_Kind_Sword:
+    case nITKindSword:
         swing_item = ftItemSwing_Kind_Sword;
         break;
 
-    case It_Kind_Bat:
+    case nITKindBat:
         swing_item = ftItemSwing_Kind_Bat;
         break;
 
-    case It_Kind_Harisen:
+    case nITKindHarisen:
         swing_item = ftItemSwing_Kind_Harisen;
         break;
 
-    case It_Kind_StarRod:
+    case nITKindStarRod:
         swing_item = ftItemSwing_Kind_StarRod;
         break;
     }
     status_id = dFTCommonItemSwingStatusIDs[swing_item][swing_type];
-    anim_speed = F_PCT_TO_DEC(dFTCommonItemSwingAnimSpeeds[status_id - ftStatus_Common_SwordSwing1].anim_speed);
+    anim_speed = F_PCT_TO_DEC(dFTCommonItemSwingAnimSpeeds[status_id - nFTCommonStatusSwordSwing1].anim_speed);
 
     fp->command_vars.flags.flag0 = 0;
 

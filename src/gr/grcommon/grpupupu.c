@@ -718,7 +718,7 @@ void grPupupuProcUpdate(GObj *ground_gobj)
 // 0x801064C8
 GObj* grPupupuMakeMapGObj(intptr_t tk, intptr_t offset2, void (*proc_render)(GObj*), u8 dl_link)
 {
-    GObj *ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(ground_gobj, proc_render, dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -728,7 +728,7 @@ GObj* grPupupuMakeMapGObj(intptr_t tk, intptr_t offset2, void (*proc_render)(GOb
     {
         func_8000F8F4(ground_gobj, (uintptr_t)gGRCommonStruct.pupupu.map_head + offset2);
     }
-    omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, GObjProcess_Kind_Proc, 5);
+    omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
 
     return ground_gobj;
 }
@@ -769,9 +769,9 @@ void grPupupuInitAll(void)
 // 0x801066D4
 GObj* grPupupuMakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT);
 
-    omAddGObjCommonProc(ground_gobj, grPupupuProcUpdate, GObjProcess_Kind_Proc, 4);
+    omAddGObjCommonProc(ground_gobj, grPupupuProcUpdate, nOMObjProcessKindProc, 4);
     grPupupuInitAll();
 
     return ground_gobj;

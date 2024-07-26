@@ -43,33 +43,33 @@ extern u32 gFTDataPolySamusParticleBankID;
 
 typedef enum ftSamusMotion
 {
-    ftMotion_Samus_AppearR = ftMotion_Common_SpecialStart,
-    ftMotion_Samus_AppearL,
-    ftMotion_Samus_SpecialNStart,
-    ftMotion_Samus_SpecialNLoop,
-    ftMotion_Samus_SpecialNEnd,
-    ftMotion_Samus_SpecialAirNStart,
-    ftMotion_Samus_SpecialAirNEnd,
-    ftMotion_Samus_SpecialHi,
-    ftMotion_Samus_SpecialAirHi,
-    ftMotion_Samus_SpecialLw,
-    ftMotion_Samus_SpecialAirLw
+    nFTSamusMotionAppearR = nFTCommonMotionSpecialStart,
+    nFTSamusMotionAppearL,
+    nFTSamusMotionSpecialNStart,
+    nFTSamusMotionSpecialNLoop,
+    nFTSamusMotionSpecialNEnd,
+    nFTSamusMotionSpecialAirNStart,
+    nFTSamusMotionSpecialAirNEnd,
+    nFTSamusMotionSpecialHi,
+    nFTSamusMotionSpecialAirHi,
+    nFTSamusMotionSpecialLw,
+    nFTSamusMotionSpecialAirLw
 
 } ftSamusMotion;
 
 typedef enum ftSamusStatus
 {
-    ftStatus_Samus_AppearR = ftStatus_Common_SpecialStart,
-    ftStatus_Samus_AppearL,
-    ftStatus_Samus_SpecialNStart,
-    ftStatus_Samus_SpecialNLoop,
-    ftStatus_Samus_SpecialNEnd,
-    ftStatus_Samus_SpecialAirNStart,
-    ftStatus_Samus_SpecialAirNEnd,
-    ftStatus_Samus_SpecialHi,
-    ftStatus_Samus_SpecialAirHi,
-    ftStatus_Samus_SpecialLw,
-    ftStatus_Samus_SpecialAirLw
+    nFTSamusStatusAppearR = nFTCommonStatusSpecialStart,
+    nFTSamusStatusAppearL,
+    nFTSamusStatusSpecialNStart,
+    nFTSamusStatusSpecialNLoop,
+    nFTSamusStatusSpecialNEnd,
+    nFTSamusStatusSpecialAirNStart,
+    nFTSamusStatusSpecialAirNEnd,
+    nFTSamusStatusSpecialHi,
+    nFTSamusStatusSpecialAirHi,
+    nFTSamusStatusSpecialLw,
+    nFTSamusStatusSpecialAirLw
 
 } ftSamusStatus;
 

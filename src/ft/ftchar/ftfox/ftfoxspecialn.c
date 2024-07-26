@@ -43,7 +43,7 @@ void ftFoxSpecialNProcInterrupt(GObj *fighter_gobj)
         }
         else ftFoxSpecialNSetStatus(fighter_gobj);
 
-        ftCommon_MotionCountIncSetAttackID(fp, ftMotion_AttackIndex_SpecialN);
+        ftCommon_MotionCountIncSetAttackID(fp, nFTMotionAttackIDSpecialN);
         ftCommon_StatUpdateCountIncSetFlags(fp, fp->stat_flags.halfword);
         ftCommon_Update1PGameAttackStats(fp, 0);
     }
@@ -61,7 +61,7 @@ void ftFoxSpecialNInitStatusVars(GObj *fighter_gobj)
 // 0x8015BC78
 void ftFoxSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftFoxSpecialNInitStatusVars(fighter_gobj);
 }
@@ -69,7 +69,7 @@ void ftFoxSpecialNSetStatus(GObj *fighter_gobj)
 // 0x8015BCB8
 void ftFoxSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Fox_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftFoxSpecialNInitStatusVars(fighter_gobj);
 }

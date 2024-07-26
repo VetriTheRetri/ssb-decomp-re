@@ -64,7 +64,7 @@ void ftCommonCaptureYoshiProcPhysics(GObj *fighter_gobj)
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = pos.x;
     DObjGetStruct(fighter_gobj)->translate.vec.f.z = pos.z;
 
-    if (fp->status_info.status_id == ftStatus_Common_CaptureYoshi)
+    if (fp->status_info.status_id == nFTCommonStatusCaptureYoshi)
     {
         if (fp->status_vars.common.captureyoshi.stage == 3)
         {
@@ -112,7 +112,7 @@ void ftCommonCaptureYoshiProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     this_fp->lr = -capture_fp->lr;
 
     ftMap_SetAir(this_fp);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_CaptureYoshi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureYoshi, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     this_fp->status_vars.common.captureyoshi.stage = 0;
@@ -195,7 +195,7 @@ void ftCommonYoshiEggProcUpdate(GObj *fighter_gobj)
         DObjGetStruct(fighter_gobj)->translate.vec.f.y += FTCOMMON_YOSHIEGG_ESCAPE_OFF_Y;
 
         ftMap_SetAir(fp);
-        ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Fall, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
+        ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFall, 0.0F, 1.0F, FTSTATUPDATE_DAMAGEPORT_PRESERVE);
         ftCommon_ApplyIntangibleTimer(fp, FTCOMMON_YOSHIEGG_INTANGIBLE_TIMER);
     }
 }
@@ -361,7 +361,7 @@ void ftCommonYoshiEggSetStatus(GObj *fighter_gobj)
     this_fp->proc_status = ftCommonYoshiEggProcStatus;
 
     ftMap_SetAir(this_fp);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_YoshiEgg, 0.0F, 0.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusYoshiEgg, 0.0F, 0.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
 
     this_fp->is_invisible = TRUE;

@@ -44,7 +44,7 @@ void ftCommonThrownReleaseFighterLoseGrip(GObj *fighter_gobj)
 
     interact_fp = ftGetStruct(interact_gobj);
 
-    if ((this_fp->status_info.status_id >= ftStatus_Common_ThrownStart) && (this_fp->status_info.status_id <= ftStatus_Common_ThrownEnd))
+    if ((this_fp->status_info.status_id >= nFTCommonStatusThrownStart) && (this_fp->status_info.status_id <= nFTCommonStatusThrownEnd))
     {
         pos.x = pos.y = pos.z = 0.0F;
 

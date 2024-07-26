@@ -75,19 +75,19 @@ void ftCommonLandingSetStatus(GObj *fighter_gobj)
 
     if ((fp->is_fast_fall) && (fp->phys_info.vel_air.y <= -fp->attributes->fast_fall_speed))
     {
-        ftCommonLandingSetStatusParam(fighter_gobj, ftStatus_Common_LandingHeavy, TRUE, FTCOMMON_LANDING_HEAVY_ANIM_SPEED);
+        ftCommonLandingSetStatusParam(fighter_gobj, nFTCommonStatusLandingHeavy, TRUE, FTCOMMON_LANDING_HEAVY_ANIM_SPEED);
     }
-    else ftCommonLandingSetStatusParam(fighter_gobj, ftStatus_Common_LandingLight, TRUE, FTCOMMON_LANDING_LIGHT_ANIM_SPEED);
+    else ftCommonLandingSetStatusParam(fighter_gobj, nFTCommonStatusLandingLight, TRUE, FTCOMMON_LANDING_LIGHT_ANIM_SPEED);
 }
 
 // 0x80142E10
 void ftCommonLandingAirNullSetStatus(GObj *fighter_gobj, f32 anim_speed)
 {
-    ftCommonLandingSetStatusParam(fighter_gobj, ftStatus_Common_LandingAirNull, FALSE, anim_speed);
+    ftCommonLandingSetStatusParam(fighter_gobj, nFTCommonStatusLandingAirNull, FALSE, anim_speed);
 }
 
 // 0x80142E3C
 void ftCommonLandingFallSpecialSetStatus(GObj *fighter_gobj, sb32 is_allow_interrupt, f32 anim_speed)
 {
-    ftCommonLandingSetStatusParam(fighter_gobj, ftStatus_Common_LandingFallSpecial, is_allow_interrupt, anim_speed);
+    ftCommonLandingSetStatusParam(fighter_gobj, nFTCommonStatusLandingFallSpecial, is_allow_interrupt, anim_speed);
 }

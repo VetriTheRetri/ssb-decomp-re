@@ -32,7 +32,7 @@ Vec2f dITBoxItemSpawnVelocities[/* */] =
 // 0x8018A350
 itCreateDesc dITBoxItemDesc = 
 {
-    It_Kind_Box,                            // Item Kind
+    nITKindBox,                            // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITBoxItemAttributes,                  // Offset of item attributes in file?
 
@@ -193,7 +193,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
 
     if (ep != NULL)
     {
-        effect_gobj = omMakeGObjSPAfter(GObj_Kind_Effect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
+        effect_gobj = omMakeGObjSPAfter(nOMObjKindEffect, NULL, GObj_LinkID_Effect, GOBJ_LINKORDER_DEFAULT);
 
         if (effect_gobj != NULL)
         {
@@ -246,7 +246,7 @@ sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj)
     {
         index = itMainGetWeightedItemID(&gITManagerRandomWeights);
 
-        if (index <= It_Kind_CommonEnd)
+        if (index <= nITKindCommonEnd)
         {
             random = mtTrigGetRandomIntRange(5);
 

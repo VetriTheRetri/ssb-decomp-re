@@ -19,7 +19,7 @@ lWPYoshiEggThrowWeaponAttributes;           // 0x0000000C
 wpCreateDesc dWPYoshiEggThrowWeaponDesc =
 {
     0x00,                                   // Render flags?
-    Wp_Kind_EggThrow,                       // Weapon Kind
+    nWPKindEggThrow,                       // Weapon Kind
     &gFTDataYoshiMain,                      // Pointer to character's loaded files?
     &lWPYoshiEggThrowWeaponAttributes,      // Offset of weapon attributes in loaded files
 

@@ -434,7 +434,7 @@ typedef struct ftMotionEventSubroutineThrown2
 
 typedef struct ftMotionEventDamage
 {
-	void* p_script[2][Ft_Kind_EnumMax];
+	void* p_script[2][nFTKindEnumMax];
 
 } ftMotionEventDamage;
 

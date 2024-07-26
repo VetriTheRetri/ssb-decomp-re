@@ -17,7 +17,7 @@ extern intptr_t lITBatItemAttributes;       // 0x000001D8
 // 0x80189990
 itCreateDesc dITBatItemDesc =
 {
-    It_Kind_Bat,                            // Item Kind
+    nITKindBat,                            // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITBatItemAttributes,                  // Offset of item attributes in file?
 

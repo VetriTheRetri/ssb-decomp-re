@@ -37,7 +37,7 @@ void (*dITPippiStatusProcList[/* */])(GObj*) =
 // 0x8018B3A0
 itCreateDesc dITPippiItemDesc = 
 {
-    It_Kind_Pippi,                          // Item Kind
+    nITKindPippi,                          // Item Kind
     &gITManagerFileData,                         // Pointer to item file data?
     &lITPippiItemAttributes,                // Offset of item attributes in file?
 
@@ -82,9 +82,9 @@ void itPippiSDefaultSelectMonster(GObj *item_gobj)
 
     index = mtTrigGetRandomIntRange(ARRAY_COUNT(dITPippiStatusProcList));
 
-    it_kind = index + It_Kind_MbMonsterStart;
+    it_kind = index + nITKindMbMonsterStart;
 
-    if ((it_kind == It_Kind_Spear) || (it_kind == It_Kind_Kamex))
+    if ((it_kind == nITKindSpear) || (it_kind == nITKindKamex))
     {
         if (mtTrigGetRandomIntRange(2) == 0)
         {
@@ -94,21 +94,21 @@ void itPippiSDefaultSelectMonster(GObj *item_gobj)
         }
         else ip->lr = LR_Left;
     }
-    if ((it_kind == It_Kind_Pippi) || (it_kind == It_Kind_Tosakinto) || (it_kind == It_Kind_MLucky))
+    if ((it_kind == nITKindPippi) || (it_kind == nITKindTosakinto) || (it_kind == nITKindMLucky))
     {
         ip->item_hit.update_state = gmHitCollision_UpdateState_Disable;
     }
-    if (it_kind == It_Kind_Sawamura)
+    if (it_kind == nITKindSawamura)
     {
         ip->it_multi = ITSAWAMURA_KICK_WAIT;
     }
-    if ((it_kind == It_Kind_Sawamura) || (it_kind == It_Kind_Starmie))
+    if ((it_kind == nITKindSawamura) || (it_kind == nITKindStarmie))
     {
         item_gobj->proc_render = itPippiSDefaultMoveDLProcRender;
 
         omMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
     }
-    if (it_kind == It_Kind_Lizardon)
+    if (it_kind == nITKindLizardon)
     {
         ip->it_multi = ITLIZARDON_LIFETIME;
     }

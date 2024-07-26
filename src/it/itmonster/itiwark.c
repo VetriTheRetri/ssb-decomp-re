@@ -24,7 +24,7 @@ extern intptr_t lITIwarkDisplayList;        // 0x0000A640
 // 0x8018AA90
 itCreateDesc dITIwarkItemDesc =
 {
-    It_Kind_Iwark,                          // Item Kind
+    nITKindIwark,                          // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITIwarkItemAttributes,                // Offset of item attributes in file?
 
@@ -78,7 +78,7 @@ itStatusDesc dITIwarkStatusDesc[/* */] =
 wpCreateDesc dITIwarkWeaponRockWeaponDesc =
 {
     0x01,                                   // Render flags?
-    Wp_Kind_IwarkRock,                      // Weapon Kind
+    nWPKindIwarkRock,                      // Weapon Kind
     &gITManagerFileData,                           // Pointer to weapon's loaded files?
     &lITIwarkWeaponRockWeaponAttributes,    // Offset of weapon attributes in loaded files
 
@@ -222,7 +222,7 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
 
     pos = dobj->translate.vec.f;
 
-    if (ip->it_kind == It_Kind_Iwark)
+    if (ip->it_kind == nITKindIwark)
     {
         dobj->display_list = dl = (Gfx*)itGetPData(ip, lITIwarkDataStart, lITIwarkDisplayList); // Linker thing
 
@@ -232,7 +232,7 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
 
     efManagerDustHeavy2xMakeEffect(&pos, LR_Left, 1.0F);
 
-    if (ip->it_kind == It_Kind_Iwark)
+    if (ip->it_kind == nITKindIwark)
     {
         func_800269C0_275C0(alSound_Voice_MBallIwarkSpawn);
     }

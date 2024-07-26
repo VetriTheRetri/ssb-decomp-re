@@ -36,45 +36,45 @@ extern u32 gFTDataPolyLinkParticleBankID;
 
 typedef enum ftLinkMotion
 {
-    ftMotion_Link_Attack13 = ftMotion_Common_SpecialStart,
-    ftMotion_Link_Attack100Start,
-    ftMotion_Link_Attack100Loop,
-    ftMotion_Link_Attack100End,
-    ftMotion_Link_AppearR,
-    ftMotion_Link_AppearL,
-    ftMotion_Link_SpecialHi,
-    ftMotion_Link_SpecialHiEnd,
-    ftMotion_Link_SpecialAirHi,
-    ftMotion_Link_SpecialN,
-    ftMotion_Link_SpecialNReturn,
-    ftMotion_Link_SpecialNEmpty,
-    ftMotion_Link_SpecialAirN,
-    ftMotion_Link_SpecialAirNReturn,
-    ftMotion_Link_SpecialAirNEmpty,
-    ftMotion_Link_SpecialLw,
-    ftMotion_Link_SpecialAirLw
+    nFTLinkMotionAttack13 = nFTCommonMotionSpecialStart,
+    nFTLinkMotionAttack100Start,
+    nFTLinkMotionAttack100Loop,
+    nFTLinkMotionAttack100End,
+    nFTLinkMotionAppearR,
+    nFTLinkMotionAppearL,
+    nFTLinkMotionSpecialHi,
+    nFTLinkMotionSpecialHiEnd,
+    nFTLinkMotionSpecialAirHi,
+    nFTLinkMotionSpecialN,
+    nFTLinkMotionSpecialNReturn,
+    nFTLinkMotionSpecialNEmpty,
+    nFTLinkMotionSpecialAirN,
+    nFTLinkMotionSpecialAirNReturn,
+    nFTLinkMotionSpecialAirNEmpty,
+    nFTLinkMotionSpecialLw,
+    nFTLinkMotionSpecialAirLw
 
 } ftLinkMotion;
 
 typedef enum ftLinkStatus
 {
-    ftStatus_Link_Attack13 = ftStatus_Common_SpecialStart,
-    ftStatus_Link_Attack100Start,
-    ftStatus_Link_Attack100Loop,
-    ftStatus_Link_Attack100End,
-    ftStatus_Link_AppearR,
-    ftStatus_Link_AppearL,
-    ftStatus_Link_SpecialHi,
-    ftStatus_Link_SpecialHiEnd,
-    ftStatus_Link_SpecialAirHi,
-    ftStatus_Link_SpecialN,
-    ftStatus_Link_SpecialNReturn,
-    ftStatus_Link_SpecialNEmpty,
-    ftStatus_Link_SpecialAirN,
-    ftStatus_Link_SpecialAirNReturn,
-    ftStatus_Link_SpecialAirNEmpty,
-    ftStatus_Link_SpecialLw,
-    ftStatus_Link_SpecialAirLw
+    nFTLinkStatusAttack13 = nFTCommonStatusSpecialStart,
+    nFTLinkStatusAttack100Start,
+    nFTLinkStatusAttack100Loop,
+    nFTLinkStatusAttack100End,
+    nFTLinkStatusAppearR,
+    nFTLinkStatusAppearL,
+    nFTLinkStatusSpecialHi,
+    nFTLinkStatusSpecialHiEnd,
+    nFTLinkStatusSpecialAirHi,
+    nFTLinkStatusSpecialN,
+    nFTLinkStatusSpecialNReturn,
+    nFTLinkStatusSpecialNEmpty,
+    nFTLinkStatusSpecialAirN,
+    nFTLinkStatusSpecialAirNReturn,
+    nFTLinkStatusSpecialAirNEmpty,
+    nFTLinkStatusSpecialLw,
+    nFTLinkStatusSpecialAirLw
 
 } ftLinkStatus;
 

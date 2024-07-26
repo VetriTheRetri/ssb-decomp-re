@@ -16,7 +16,7 @@ extern intptr_t lITHeartItemAttributes;     // 0x00000100
 
 itCreateDesc dITHeartItemDesc =
 {
-    It_Kind_Heart,                          // Item Kind
+    nITKindHeart,                          // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITHeartItemAttributes,                // Offset of item attributes in file?
 

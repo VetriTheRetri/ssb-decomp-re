@@ -169,8 +169,8 @@ s32 scTrainingMode_GetSpawnableItemCount()
 
 	for (item_count = 0; item_gobj != NULL; item_gobj = item_gobj->link_next)
 	{
-		if ((itGetStruct(item_gobj)->it_kind <= It_Kind_CommonEnd)
-			|| (itGetStruct(item_gobj)->it_kind >= It_Kind_MbMonsterStart))
+		if ((itGetStruct(item_gobj)->it_kind <= nITKindCommonEnd)
+			|| (itGetStruct(item_gobj)->it_kind >= nITKindMbMonsterStart))
 			item_count++;
 	}
 	return item_count;
@@ -470,7 +470,7 @@ SObj* scTrainingMode_MakeStatDisplaySObj(GObj* interface_gobj, scTrainingSprites
 void scTrainingMode_InitStatDisplayTextInterface()
 {
 	s32 i;
-	GObj* interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+	GObj* interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xB, 0x80000000);
 
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -567,7 +567,7 @@ void scTrainingMode_MakeDamageDisplayInterface()
 	s32 i;
 
 	gTrainingModeStruct.damage_display_gobj = interface_gobj
-		= omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
+		= omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xBU, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateDamageInfo, 0x17U, 0x80000000, -1);
 	omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateDamageResetWait, 1, 4);
 
@@ -640,7 +640,7 @@ void scTrainingMode_MakeComboDisplayInterface()
 	s32 i;
 
 	gTrainingModeStruct.combo_display_gobj = interface_gobj
-		= omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xBU, 0x80000000);
+		= omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xBU, 0x80000000);
 
 	omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateComboInfo, 0x17U, 0x80000000, -1);
 	omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateComboResetWait, 1, 4);
@@ -668,7 +668,7 @@ void scTrainingMode_MakeSpeedDisplayInterface()
 	SObj* sobj;
 
 	gTrainingModeStruct.speed_display_gobj = interface_gobj
-		= omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+		= omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xB, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
 	sobj = gcAppendSObjWithSprite(
 		interface_gobj, gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.speed_menu_option + 27]);
@@ -692,7 +692,7 @@ void scTrainingMode_MakeCPDisplayInterface()
 	GObj* interface_gobj;
 	SObj* sobj;
 
-	gTrainingModeStruct.cp_display_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+	gTrainingModeStruct.cp_display_gobj = interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xB, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 	sobj = gcAppendSObjWithSprite(interface_gobj,
 								  gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.cp_menu_option + 31]);
@@ -725,7 +725,7 @@ void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 	{
 		itStruct* ip = itGetStruct(item_gobj);
 
-		if (ip->it_kind <= It_Kind_ContainerEnd)
+		if (ip->it_kind <= nITKindContainerEnd)
 		{
 			while (TRUE)
 			{
@@ -733,7 +733,7 @@ void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 				smRunPrintGObjStatus();
 			}
 		}
-		item_id = (ip->it_kind <= It_Kind_CommonEnd) ? scGetTrainingModeItemKind(ip->it_kind) : 0;
+		item_id = (ip->it_kind <= nITKindCommonEnd) ? scGetTrainingModeItemKind(ip->it_kind) : 0;
 	}
 	else
 		item_id = 0;
@@ -753,7 +753,7 @@ void scTrainingMode_MakeItemDisplayInterface()
 	SObj* sobj;
 
 	gTrainingModeStruct.item_display_gobj = interface_gobj
-		= omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xB, 0x80000000);
+		= omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xB, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateItemDisplay, 0x17, 0x80000000, -1);
 	sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[37]);
 
@@ -832,7 +832,7 @@ void scTrainingMode_RenderMainMenu(GObj* interface_gobj)
 // 8018EE10
 void scTrainingMode_MakeMainMenuInterface()
 {
-	omAddGObjRenderProc(omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000), scTrainingMode_RenderMainMenu,
+	omAddGObjRenderProc(omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xE, 0x80000000), scTrainingMode_RenderMainMenu,
 						0x16, 0x80000000, -1);
 }
 
@@ -864,7 +864,7 @@ void scTrainingMode_MakeCPOptionInterface()
 	GObj* interface_gobj;
 	SObj* sobj;
 
-	gTrainingModeStruct.cp_option_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+	gTrainingModeStruct.cp_option_gobj = interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xE, 0x80000000);
 
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -913,7 +913,7 @@ void scTrainingMode_MakeItemOptionInterface()
 	SObj* sobj;
 
 	gTrainingModeStruct.item_option_gobj = interface_gobj
-		= omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+		= omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xE, 0x80000000);
 
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -961,7 +961,7 @@ void scTrainingMode_MakeSpeedOptionInterface()
 	SObj* sobj;
 
 	gTrainingModeStruct.speed_option_gobj = interface_gobj
-		= omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+		= omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xE, 0x80000000);
 
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1008,7 +1008,7 @@ void scTrainingMode_MakeViewOptionInterface()
 	SObj* sobj;
 
 	gTrainingModeStruct.view_option_gobj = interface_gobj
-		= omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+		= omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xE, 0x80000000);
 
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
@@ -1082,7 +1082,7 @@ void scTrainingMode_MakeOptionArrowInterface()
 	GObj* interface_gobj;
 
 	gTrainingModeStruct.arrow_option_gobj = interface_gobj
-		= omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+		= omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xE, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 	scTrainingMode_InitOptionArrowColors(gcAppendSObjWithSprite(
 		interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_LeftArrow]));
@@ -1122,7 +1122,7 @@ void func_ovl7_8018F8FC() // Unused?
 	GObj* interface_gobj;
 
 	gTrainingModeStruct.unk_trainmenu_0x7C = interface_gobj
-		= omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+		= omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xE, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 	func_ovl7_8018F7C8(interface_gobj, &gTrainingModeStruct.unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option])
 		->pos.y
@@ -1179,7 +1179,7 @@ void func_ovl7_8018FB40() // Unused?
 {
 	GObj* interface_gobj;
 
-	gTrainingModeStruct.combo0 = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+	gTrainingModeStruct.combo0 = interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xE, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 	func_ovl7_8018F7C8(interface_gobj, gTrainingModeStruct.unk_trainmenu_0x38);
 	func_ovl7_8018FA54();
@@ -1199,7 +1199,7 @@ void scTrainingMode_MakeMenuCursorInterface()
 	GObj* interface_gobj;
 	SObj* target_sprite;
 
-	gTrainingModeStruct.cursor_gobj = interface_gobj = omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000);
+	gTrainingModeStruct.cursor_gobj = interface_gobj = omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xE, 0x80000000);
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 	target_sprite = gcAppendSObjWithSprite(interface_gobj,
 										   gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_Cursor]);
@@ -1268,7 +1268,7 @@ void scTrainingMode_UpdateCursorUnderline()
 // 80190070
 void scTrainingMode_MakeCursorUnderlineInterface()
 {
-	omAddGObjRenderProc(omMakeGObjSPAfter(GObj_Kind_Interface, NULL, 0xE, 0x80000000),
+	omAddGObjRenderProc(omMakeGObjSPAfter(nOMObjKindInterface, NULL, 0xE, 0x80000000),
 						scTrainingMode_RenderCursorUnderline, 0x16, 0x80000000, -1);
 	scTrainingMode_UpdateCursorUnderline();
 }

@@ -104,7 +104,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     {
         return NULL;
     }
-    weapon_gobj = omMakeGObjSPAfter(GObj_Kind_Weapon, NULL, GObj_LinkID_Weapon, GOBJ_LINKORDER_DEFAULT);
+    weapon_gobj = omMakeGObjSPAfter(nOMObjKindWeapon, NULL, GObj_LinkID_Weapon, GOBJ_LINKORDER_DEFAULT);
 
     if (weapon_gobj == NULL)
     {
@@ -183,10 +183,10 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
 
         wp->display_mode = sWPManagerDisplayMode;
 
-        wp->weapon_hit.attack_id = ftMotion_AttackIndex_None;
+        wp->weapon_hit.attack_id = nFTMotionAttackIDNone;
         wp->weapon_hit.stale = WEAPON_STALE_DEFAULT;
         wp->weapon_hit.motion_count = gmCommon_GetMotionCountInc();
-        wp->weapon_hit.stat_flags.stat_attack_id = ftStatus_AttackIndex_None;
+        wp->weapon_hit.stat_flags.stat_attack_id = nFTStatusAttackIDNone;
         wp->weapon_hit.stat_flags.is_smash_attack = wp->weapon_hit.stat_flags.is_ground_or_air = wp->weapon_hit.stat_flags.is_projectile = FALSE;
         wp->weapon_hit.stat_count = gmCommon_GetStatUpdateCountInc();
         break;
@@ -306,9 +306,9 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     wp->coll_data.vel_push.y = 0.0F;
     wp->coll_data.vel_push.z = 0.0F;
 
-    omAddGObjCommonProc(weapon_gobj, wpProcessProcWeaponMain, GObjProcess_Kind_Proc, 3);
-    omAddGObjCommonProc(weapon_gobj, wpProcessProcSearchHitWeapon, GObjProcess_Kind_Proc, 1);
-    omAddGObjCommonProc(weapon_gobj, wpProcessProcHitCollisions, GObjProcess_Kind_Proc, 0);
+    omAddGObjCommonProc(weapon_gobj, wpProcessProcWeaponMain, nOMObjProcessKindProc, 3);
+    omAddGObjCommonProc(weapon_gobj, wpProcessProcSearchHitWeapon, nOMObjProcessKindProc, 1);
+    omAddGObjCommonProc(weapon_gobj, wpProcessProcHitCollisions, nOMObjProcessKindProc, 0);
 
     wp->proc_update    = wp_desc->proc_update;
     wp->proc_map       = wp_desc->proc_map;

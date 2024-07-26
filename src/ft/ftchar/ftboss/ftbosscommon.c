@@ -216,7 +216,7 @@ void ftBossCommonUpdateDamageStats(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id = fp->status_info.status_id;
 
-    if ((status_id != ftStatus_Boss_DeadLeft) && (status_id != ftStatus_Boss_DeadCenter) && (status_id != ftStatus_Boss_DeadRight))
+    if ((status_id != nFTBossStatusDeadLeft) && (status_id != nFTBossStatusDeadCenter) && (status_id != nFTBossStatusDeadRight))
     {
         if (fp->percent_damage >= 300)
         {

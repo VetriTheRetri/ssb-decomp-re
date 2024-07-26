@@ -21,7 +21,7 @@ lWPPikachuThunderTrailWeaponAttributes;         // 0x00000040
 wpCreateDesc dWPPikachuThunderHeadWeaponDesc =
 {
     0x02,                                       // Render flags?
-    Wp_Kind_ThunderHead,                        // Weapon Kind
+    nWPKindThunderHead,                        // Weapon Kind
     &gFTDataPikachuMain,                        // Pointer to character's loaded files?
     &lWPPikachuThunderHeadWeaponAttributes,     // Offset of weapon attributes in loaded files
 
@@ -45,7 +45,7 @@ wpCreateDesc dWPPikachuThunderHeadWeaponDesc =
 wpCreateDesc dWPPikachuThunderTrailWeaponDesc =
 {
     0x02,                                       // Render flags?
-    Wp_Kind_ThunderTrail,                       // Weapon Kind
+    nWPKindThunderTrail,                       // Weapon Kind
     &gFTDataPikachuMain,                        // Pointer to character's loaded files?
     &lWPPikachuThunderTrailWeaponAttributes,    // Offset of weapon attributes in loaded files
 

@@ -285,7 +285,7 @@ sb32 itMainCheckShootNoAmmo(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (((ip->it_kind == It_Kind_StarRod) || (ip->it_kind == It_Kind_LGun) || (ip->it_kind == It_Kind_FFlower)) && (ip->it_multi == 0))
+    if (((ip->it_kind == nITKindStarRod) || (ip->it_kind == nITKindLGun) || (ip->it_kind == nITKindFFlower)) && (ip->it_multi == 0))
     {
         return TRUE;
     }
@@ -305,7 +305,7 @@ void itMainDestroyItem(GObj *item_gobj)
 
         ftCommon_GetHammerSetBGM(ip->owner_gobj);
     }
-    else if ((ip->it_kind < It_Kind_GrMonsterStart) || (ip->it_kind > It_Kind_GrMonsterEnd))
+    else if ((ip->it_kind < nITKindGrMonsterStart) || (ip->it_kind > nITKindGrMonsterEnd))
     {
         efManagerDustExpandLargeMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
     }
@@ -372,7 +372,7 @@ void itMainSetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 stale)
     {
         proc_drop(item_gobj);
     }
-    itMainSetFighterRelease(item_gobj, vel, stale, ftStatus_AttackIndex_ItemThrow, fp->stat_count);
+    itMainSetFighterRelease(item_gobj, vel, stale, nFTStatusAttackIDItemThrow, fp->stat_count);
 
     func_800269C0_275C0(ip->drop_sfx);
 }
@@ -519,7 +519,7 @@ void itMainSetItemStatus(GObj *item_gobj, itStatusDesc *status_desc, s32 status_
 
     ip->is_thrown = FALSE;
 
-    ip->item_hit.stat_flags.stat_attack_id = ftStatus_AttackIndex_Null;
+    ip->item_hit.stat_flags.stat_attack_id = nFTStatusAttackIDNull;
     ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ground_or_air = ip->item_hit.stat_flags.is_projectile = FALSE;
 
     ip->item_hit.stat_count = gmCommon_GetStatUpdateCountInc();
@@ -589,7 +589,7 @@ sb32 itMainMakeContainerItem(GObj *spawn_gobj)
     {
         index = itMainGetWeightedItemID(&gITManagerRandomWeights);
 
-        if (index <= It_Kind_CommonEnd)
+        if (index <= nITKindCommonEnd)
         {
             vel.x = 0.0F;
             vel.y = *(f32*) ((intptr_t)&lITContainerSpawnVelY + ((uintptr_t) &((u32*)gITManagerFileData)[index])); // Linker thing; quite ridiculous especially since lITContainerSpawnVelY is 0
@@ -641,17 +641,17 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     vel.z = 0.0F;
 
     // Is this checking to spawn Mew? Can only spawn once at least one character has been unlocked.
-    if ((gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NEWCOMERS) && (mtTrigGetRandomIntRange(151) == 0) && (gITManagerMonsterData.monster_curr != It_Kind_Mew) && (gITManagerMonsterData.monster_prev != It_Kind_Mew))
+    if ((gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NEWCOMERS) && (mtTrigGetRandomIntRange(151) == 0) && (gITManagerMonsterData.monster_curr != nITKindMew) && (gITManagerMonsterData.monster_prev != nITKindMew))
     {
-        index = It_Kind_Mew;
+        index = nITKindMew;
     }
     else
     {
-        for (i = j = It_Kind_MbMonsterStart; i < It_Kind_MbMonsterEnd; i++) // Pokémon IDs
+        for (i = j = nITKindMbMonsterStart; i < nITKindMbMonsterEnd; i++) // Pokémon IDs
         {
             if ((i != gITManagerMonsterData.monster_curr) && (i != gITManagerMonsterData.monster_prev))
             {
-                gITManagerMonsterData.monster_index[j - It_Kind_MbMonsterStart] = i;
+                gITManagerMonsterData.monster_index[j - nITKindMbMonsterStart] = i;
                 j++;
             }
         }
@@ -679,7 +679,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
 
         if (gBattleState->game_type == gmMatch_GameType_1PGame)
         {
-            if ((mp->player == gSceneData.spgame_player) && (mp->it_kind == It_Kind_Mew))
+            if ((mp->player == gSceneData.spgame_player) && (mp->it_kind == nITKindMew))
             {
                 g1PGameBonusStatMewCatcher = TRUE;
             }

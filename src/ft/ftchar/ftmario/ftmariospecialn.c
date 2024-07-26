@@ -32,9 +32,9 @@ void ftMarioSpecialNProcAccessory(GObj *fighter_gobj)
 
         switch (fp->ft_kind) // jtbl at 0x8018C630
         {
-        case Ft_Kind_Mario:
-        case Ft_Kind_MetalMario:
-        case Ft_Kind_PolyMario:
+        case nFTKindMario:
+        case nFTKindMetalMario:
+        case nFTKindPolyMario:
             fireball_item_id = 0;
             break;
 
@@ -45,8 +45,8 @@ void ftMarioSpecialNProcAccessory(GObj *fighter_gobj)
                 break; // Undefined behavior here, var is uninitialized, but projectile spawn function still runs
             #endif
 
-        case Ft_Kind_Luigi:
-        case Ft_Kind_PolyLuigi:
+        case nFTKindLuigi:
+        case nFTKindPolyLuigi:
             fireball_item_id = 1;
             break;
         }
@@ -73,7 +73,7 @@ void ftMarioSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialN, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
 
     fp->proc_accessory = ftMarioSpecialNProcAccessory;
 }
@@ -84,7 +84,7 @@ void ftMarioSpecialNSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_COLANIM_PRESERVE);
     ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_accessory = ftMarioSpecialNProcAccessory;
@@ -102,7 +102,7 @@ void ftMarioSpecialNInitStatusVars(GObj *fighter_gobj)
 // 0x80156014
 void ftMarioSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftMarioSpecialNInitStatusVars(fighter_gobj);
 }
@@ -110,7 +110,7 @@ void ftMarioSpecialNSetStatus(GObj *fighter_gobj)
 // 0x80156054
 void ftMarioSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Mario_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftMarioSpecialNInitStatusVars(fighter_gobj);
 }

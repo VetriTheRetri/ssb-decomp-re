@@ -17,7 +17,7 @@ extern intptr_t lITTaruHitEvents;           // 0x0000067C
 
 itCreateDesc dITTaruItemDesc =
 {
-    It_Kind_Taru,                           // Item Kind
+    nITKindTaru,                           // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITTaruItemAttributes,                 // Offset of item attributes in file?
 

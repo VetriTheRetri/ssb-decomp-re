@@ -19,7 +19,7 @@ lWPKirbyCutterWeaponAttributes;             // 0x00000008
 wpCreateDesc dWPKirbyCutterWeaponDesc =
 {
     0x03,                                   // Render flags?
-    Wp_Kind_Cutter,                         // Weapon Kind
+    nWPKindCutter,                         // Weapon Kind
     &gFTDataKirbyMain,                      // Pointer to character's loaded files?
     &lWPKirbyCutterWeaponAttributes,        // Offset of weapon attributes in loaded files
 

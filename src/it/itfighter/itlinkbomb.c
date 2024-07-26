@@ -22,7 +22,7 @@ extern intptr_t lITLinkBombBloatScale; 	// 0x000000A8
 
 itCreateDesc dItLinkBombItemDesc =
 {
-	It_Kind_LinkBomb, 					// Item Kind
+	nITKindLinkBomb, 					// Item Kind
 	&gFTDataLinkMain, 					// Pointer to item file data?
 	&lITLinkBombItemAttributes,			// Offset of item attributes in file?
 
@@ -367,7 +367,7 @@ sb32 itLinkBombFHoldProcUpdate(GObj* item_gobj)
 	itStruct* ip = itGetStruct(item_gobj);
 	ftStruct* fp = ftGetStruct(ip->owner_gobj);
 
-	if (fp->status_info.status_id == ftStatus_Common_DokanWait) // Odd but go off
+	if (fp->status_info.status_id == nFTCommonStatusDokanWait) // Odd but go off
 		return FALSE;
 	else
 	{

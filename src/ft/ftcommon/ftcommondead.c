@@ -201,7 +201,7 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
     u32 sfx_id;
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_DeadDown, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadDown, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftCommonDeadInitStatusVars(fighter_gobj);
 
@@ -243,7 +243,7 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
     u32 sfx_id;
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_DeadLeftRight, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftCommonDeadInitStatusVars(fighter_gobj);
 
@@ -285,7 +285,7 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
     u32 sfx_id;
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_DeadLeftRight, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftCommonDeadInitStatusVars(fighter_gobj);
 
@@ -390,7 +390,7 @@ void ftCommonDeadUpStarSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_DeadUpStar, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadUpStar, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftPhysics_StopVelAll(fighter_gobj);
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
@@ -511,7 +511,7 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_DeadUpFall, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadUpFall, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftPhysics_StopVelAll(fighter_gobj);
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
@@ -539,7 +539,7 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *pos = &fp->joint[ftParts_Joint_TopN]->translate.vec.f;
 
-    if (fp->ft_kind == Ft_Kind_MasterHand)
+    if (fp->ft_kind == nFTKindMasterHand)
     {
         return FALSE;
     }

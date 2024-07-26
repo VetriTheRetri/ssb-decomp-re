@@ -22,7 +22,7 @@ extern intptr_t lITNyarsAnimJoint;          // 0x0000C130
 // 0x8018ACA0
 itCreateDesc dITNyarsItemDesc =
 {
-    It_Kind_Nyars,                          // Item Kind
+    nITKindNyars,                          // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITNyarsItemAttributes,                // Offset of item attributes in file?
 
@@ -64,7 +64,7 @@ itStatusDesc dITNyarsStatusDesc[/* */] =
 wpCreateDesc dITNyarsWeaponCoinWeaponDesc =
 {
     0x01,                                   // Render flags?
-    Wp_Kind_NyarsCoin,                      // Weapon Kind
+    nWPKindNyarsCoin,                      // Weapon Kind
     &gITManagerFileData,                         // Pointer to character's loaded files?
     &lITNyarsWeaponCoinWeaponAttributes,    // Offset of weapon attributes in loaded files
 

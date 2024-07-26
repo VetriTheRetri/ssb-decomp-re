@@ -18,7 +18,7 @@ extern intptr_t lITMarumineHitEvents;       // 0x0000014C
 
 itCreateDesc dITMarumineItemDesc = 
 {
-    It_Kind_Marumine,                       // Item Kind
+    nITKindMarumine,                       // Item Kind
     &gGRCommonStruct.yamabuki.item_head,      // Pointer to item file data?
     &lITMarumineItemAttributes,             // Offset of item attributes in file?
 

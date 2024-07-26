@@ -48,7 +48,7 @@ void ftDonkeyThrowAirFFSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Donkey_ThrowFF, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFF, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->status_vars.common.throwff.is_turn = FALSE;
 
@@ -61,7 +61,7 @@ void ftDonkeyThrowFFSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Donkey_ThrowAirFF, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowAirFF, fighter_gobj->anim_frame, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 }
 
@@ -86,12 +86,12 @@ void ftDonkeyThrowFFSetStatus(GObj *fighter_gobj, sb32 is_turn)
 
     if (fp->ground_or_air == nMPKineticsGround)
     {
-        status_id = ftStatus_Donkey_ThrowFF;
+        status_id = nFTDonkeyStatusThrowFF;
         flags = FTSTATUPDATE_NONE_PRESERVE;
     }
     else
     {
-        status_id = ftStatus_Donkey_ThrowAirFF;
+        status_id = nFTDonkeyStatusThrowAirFF;
         flags = FTSTATUPDATE_FASTFALL_PRESERVE;
     }
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, flags);

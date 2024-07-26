@@ -21,7 +21,7 @@ extern intptr_t lITFFlowerFlameAngles;      // 0x00000360
 
 itCreateDesc dITFFlowerItemDesc = 
 {
-    It_Kind_FFlower,                        // Item Kind
+    nITKindFFlower,                        // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITFFlowerItemAttributes,              // Offset of item attributes in file?
 
@@ -109,7 +109,7 @@ itStatusDesc dITFFlowerStatusDesc[/* */] =
 wpCreateDesc dITFFlowerWeaponFlameWeaponDesc =
 {
     0x00,                                   // Render flags?
-    Wp_Kind_FFlowerFlame,                   // Weapon Kind
+    nWPKindFFlowerFlame,                   // Weapon Kind
     &gITManagerFileData,                           // Pointer to character's loaded files?
     &lITFFlowerWeaponFlameWeaponAttributes, // Offset of weapon attributes in loaded files
 

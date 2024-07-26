@@ -20,7 +20,7 @@ lITLGunWeaponAmmoWeaponAttributes;          // 0x000002B0
 
 itCreateDesc dITLGunItemDesc =
 {
-    It_Kind_LGun,                           // Item Kind
+    nITKindLGun,                           // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITLGunItemAttributes,                 // Offset of item attributes in file?
 
@@ -108,7 +108,7 @@ itStatusDesc dITLGunStatusDesc[/* */] =
 wpCreateDesc itLGunWeaponAmmoWeaponDesc =
 {
     0x00,                                   // Render flags?
-    Wp_Kind_LGunAmmo,                       // Weapon Kind
+    nWPKindLGunAmmo,                       // Weapon Kind
     &gITManagerFileData,                           // Pointer to character's loaded files?
     &lITLGunWeaponAmmoWeaponAttributes,     // Offset of weapon attributes in loaded files
 

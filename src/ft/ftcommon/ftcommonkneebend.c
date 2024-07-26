@@ -64,13 +64,13 @@ void ftCommonKneeBendSetStatusParam(GObj *fighter_gobj, s32 status_id, s32 input
 // 0x8013F408
 void ftCommonKneeBendSetStatus(GObj *fighter_gobj, s32 input_source)
 {
-    ftCommonKneeBendSetStatusParam(fighter_gobj, ftStatus_Common_KneeBend, input_source);
+    ftCommonKneeBendSetStatusParam(fighter_gobj, nFTCommonStatusKneeBend, input_source);
 }
 
 // 0x8013F42C
 void ftCommonGuardKneeBendSetStatus(GObj *fighter_gobj, s32 input_source)
 {
-    ftCommonKneeBendSetStatusParam(fighter_gobj, ftStatus_Common_GuardKneeBend, input_source);
+    ftCommonKneeBendSetStatusParam(fighter_gobj, nFTCommonStatusGuardKneeBend, input_source);
 }
 
 // 0x8013F450

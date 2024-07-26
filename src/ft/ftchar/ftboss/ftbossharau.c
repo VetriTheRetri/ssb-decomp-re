@@ -9,7 +9,7 @@
 // 0x801593E0
 void ftBossHarauResetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Boss_Harau, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusHarau, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 }
 
 // 0x8015940C
@@ -42,6 +42,6 @@ void ftBossHarauProcPhysics(GObj *fighter_gobj)
 // 0x801594BC
 void ftBossHarauSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Boss_Harau, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusHarau, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftBossCommonCheckEdgeInvertLR(fighter_gobj);
 }

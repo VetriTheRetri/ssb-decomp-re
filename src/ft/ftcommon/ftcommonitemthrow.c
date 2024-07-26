@@ -263,37 +263,37 @@ void ftCommonItemThrowProcUpdate(GObj *fighter_gobj)
         if 
         (
 
-            (fp->ft_kind == Ft_Kind_Donkey || fp->ft_kind == Ft_Kind_PolyDonkey || fp->ft_kind == Ft_Kind_GiantDonkey)
+            (fp->ft_kind == nFTKindDonkey || fp->ft_kind == nFTKindPolyDonkey || fp->ft_kind == nFTKindGiantDonkey)
 
                                                                     &&
 
-            (fp->status_info.status_id >= ftStatus_Donkey_HeavyThrowStart && fp->status_info.status_id <= ftStatus_Donkey_HeavyThrowEnd)
+            (fp->status_info.status_id >= nFTDonkeyStatusHeavyThrowStart && fp->status_info.status_id <= nFTDonkeyStatusHeavyThrowEnd)
 
         )
         {
-            status_id = fp->status_info.status_id - ftStatus_Common_HeavyThrow4Start;
+            status_id = fp->status_info.status_id - nFTCommonStatusHeavyThrow4Start;
         }
         else status_id = fp->status_info.status_id;
 
-        vel_base = dFTCommonItemThrowDescs[status_id - ftStatus_Common_LightThrowStart].velocity * fp->status_vars.common.itemthrow.throw_vel * fp->attributes->item_throw_vel * 0.01F;
+        vel_base = dFTCommonItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].velocity * fp->status_vars.common.itemthrow.throw_vel * fp->attributes->item_throw_vel * 0.01F;
 
         if (fp->status_vars.common.itemthrow.throw_angle == 361)
         {
-            angle = dFTCommonItemThrowDescs[status_id - ftStatus_Common_LightThrowStart].angle;
+            angle = dFTCommonItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].angle;
         }
         else angle = fp->status_vars.common.itemthrow.throw_angle;
 
-        damage_mul = dFTCommonItemThrowDescs[status_id - ftStatus_Common_LightThrowStart].damage * 0.01F * fp->status_vars.common.itemthrow.throw_damage * fp->attributes->item_throw_mul * 0.01F;
+        damage_mul = dFTCommonItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].damage * 0.01F * fp->status_vars.common.itemthrow.throw_damage * fp->attributes->item_throw_mul * 0.01F;
 
         vel.x = __cosf(F_CLC_DTOR32(angle)) * vel_base * fp->lr;
         vel.y = __sinf(F_CLC_DTOR32(angle)) * vel_base;
         vel.z = 0.0F;
 
-        if (status_id == ftStatus_Common_LightThrowDrop)
+        if (status_id == nFTCommonStatusLightThrowDrop)
         {
             itMainSetFighterDrop(fp->item_hold, &vel, damage_mul);
         }
-        else itMainSetFighterThrow(fp->item_hold, &vel, damage_mul, dFTCommonItemThrowDescs[status_id - ftStatus_Common_LightThrowStart].is_smash_throw);
+        else itMainSetFighterThrow(fp->item_hold, &vel, damage_mul, dFTCommonItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].is_smash_throw);
 
         fp->command_vars.flags.flag0 = 0;
     }
@@ -355,29 +355,29 @@ void ftCommonLightThrowDecideSetStatus(GObj *fighter_gobj)
 
     if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_LIGHTTHROW4_STICK_RANGE_X_MIN) && (fp->hold_stick_x < FTCOMMON_LIGHTTHROW4_F_OR_B_BUFFER_FRAMES_MAX))
     {
-        status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? ftStatus_Common_LightThrowF4 : ftStatus_Common_LightThrowB4;
+        status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusLightThrowF4 : nFTCommonStatusLightThrowB4;
     }
     else if ((fp->input.pl.stick_range.y >= FTCOMMON_LIGHTTHROW4_STICK_RANGE_Y_MIN) && (fp->hold_stick_y < (FTCOMMON_LIGHTTHROW4_HI_OR_LW_BUFFER_FRAMES_MAX + fp->attributes->kneebend_anim_length)))
     {
-        status_id = ftStatus_Common_LightThrowHi4;
+        status_id = nFTCommonStatusLightThrowHi4;
     }
     else if ((fp->input.pl.stick_range.y <= -FTCOMMON_LIGHTTHROW4_STICK_RANGE_Y_MIN) && (fp->hold_stick_y < FTCOMMON_LIGHTTHROW4_HI_OR_LW_BUFFER_FRAMES_MAX))
     {
-        status_id = ftStatus_Common_LightThrowLw4;
+        status_id = nFTCommonStatusLightThrowLw4;
     }
     else if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN) && (((ftCommon_GetStickAngleRadians(fp) < 0.0F) ? -ftCommon_GetStickAngleRadians(fp) : ftCommon_GetStickAngleRadians(fp)) <= FTCOMMON_LIGHTTHROW_HI_OR_LW_ANGLE))
     {
-        status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? ftStatus_Common_LightThrowF : ftStatus_Common_LightThrowB;
+        status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusLightThrowF : nFTCommonStatusLightThrowB;
     }
     else if ((fp->input.pl.stick_range.y >= FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN) && (ftCommon_GetStickAngleRadians(fp) > FTCOMMON_LIGHTTHROW_HI_OR_LW_ANGLE))
     {
-        status_id = ftStatus_Common_LightThrowHi;
+        status_id = nFTCommonStatusLightThrowHi;
     }
     else if ((fp->input.pl.stick_range.y <= -FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN) && (ftCommon_GetStickAngleRadians(fp) < -FTCOMMON_LIGHTTHROW_HI_OR_LW_ANGLE))
     {
-        status_id = ftStatus_Common_LightThrowLw; 
+        status_id = nFTCommonStatusLightThrowLw; 
     }
-    else status_id = (itGetStruct(fp->item_hold)->type == It_Type_Throw) ? ftStatus_Common_LightThrowF : ftStatus_Common_LightThrowDrop; // No NULL check
+    else status_id = (itGetStruct(fp->item_hold)->type == nITTypeThrow) ? nFTCommonStatusLightThrowF : nFTCommonStatusLightThrowDrop; // No NULL check
 
     ftCommonItemThrowSetStatus(fighter_gobj, status_id);
 }
@@ -390,17 +390,17 @@ void ftCommonHeavyThrowDecideSetStatus(GObj *fighter_gobj)
 
     if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_HEAVYTHROW4_STICK_RANGE_X_MIN) && (fp->hold_stick_x < FTCOMMON_HEAVYTHROW4_F_OR_B_BUFFER_FRAMES_MAX))
     {
-        status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? ftStatus_Common_HeavyThrowF4 : ftStatus_Common_HeavyThrowB4;
+        status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusHeavyThrowF4 : nFTCommonStatusHeavyThrowB4;
     }
     else if (((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_HEAVYTHROW_STICK_RANGE_XY_MIN) && ((ftCommon_GetStickAngleRadians(fp) < 0.0F) ? -ftCommon_GetStickAngleRadians(fp) : ftCommon_GetStickAngleRadians(fp)) <= FTCOMMON_HEAVYTHROW_HI_OR_LW_ANGLE))
     {
-        status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? ftStatus_Common_HeavyThrowF : ftStatus_Common_HeavyThrowB;
+        status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusHeavyThrowF : nFTCommonStatusHeavyThrowB;
     }
-    else status_id = ftStatus_Common_HeavyThrowStart;
+    else status_id = nFTCommonStatusHeavyThrowStart;
 
-    if ((fp->ft_kind == Ft_Kind_Donkey) || (fp->ft_kind == Ft_Kind_PolyDonkey) || (fp->ft_kind == Ft_Kind_GiantDonkey))
+    if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindPolyDonkey) || (fp->ft_kind == nFTKindGiantDonkey))
     {
-        status_id += ftStatus_Common_HeavyThrow4Start;
+        status_id += nFTCommonStatusHeavyThrow4Start;
     }
     ftCommonItemThrowSetStatus(fighter_gobj, status_id);
 
@@ -414,7 +414,7 @@ sb32 ftCommonLightThrowCheckItemTypeThrow(ftStruct *fp)
     {
         if (fp->input.pl.button_tap & fp->input.button_mask_a)
         {
-            if ((fp->input.pl.button_hold & fp->input.button_mask_z) || (itGetStruct(fp->item_hold)->type == It_Type_Throw))
+            if ((fp->input.pl.button_hold & fp->input.button_mask_z) || (itGetStruct(fp->item_hold)->type == nITTypeThrow))
             {
                 return TRUE;
             }
@@ -432,7 +432,7 @@ sb32 ftCommonLightThrowCheckInterruptGuardOn(GObj *fighter_gobj)
     {
         if (fp->status_vars.common.guard.slide_frames != 0)
         {
-            ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowDash);
+            ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowDash);
 
             return TRUE;
         }
@@ -455,11 +455,11 @@ sb32 ftCommonLightThrowCheckInterruptEscape(GObj *fighter_gobj) // Interrupt ite
 
     if ((ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE) && (fp->status_vars.common.escape.itemthrow_buffer_frames != 0))
     {
-        if (fp->status_info.status_id == ftStatus_Common_EscapeF)
+        if (fp->status_info.status_id == nFTCommonStatusEscapeF)
         {
-            status_id = ftStatus_Common_LightThrowF4;
+            status_id = nFTCommonStatusLightThrowF4;
         }
-        else status_id = ftStatus_Common_LightThrowB4;
+        else status_id = nFTCommonStatusLightThrowB4;
 
         ftCommonItemThrowSetStatus(fighter_gobj, status_id);
 

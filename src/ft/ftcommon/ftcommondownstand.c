@@ -25,11 +25,11 @@ void ftCommonDownStandSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    if ((fp->status_info.status_id == ftStatus_Common_DownBounceD) || (fp->status_info.status_id == ftStatus_Common_DownWaitD))
+    if ((fp->status_info.status_id == nFTCommonStatusDownBounceD) || (fp->status_info.status_id == nFTCommonStatusDownWaitD))
     {
-        status_id = ftStatus_Common_DownStandD;
+        status_id = nFTCommonStatusDownStandD;
     }
-    else status_id = ftStatus_Common_DownStandU;
+    else status_id = nFTCommonStatusDownStandU;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 

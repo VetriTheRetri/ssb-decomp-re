@@ -16,7 +16,7 @@ sb32 ftCommonSleepCheckIgnorePauseMenu(GObj *fighter_gobj)
     s32 player;
     s32 stock_count;
 
-    if ((gBattleState->match_rules & GMMATCH_GAMERULE_STOCK) && (gBattleState->is_team_battle == TRUE) && (fp->status_info.status_id == ftStatus_Common_Sleep))
+    if ((gBattleState->match_rules & GMMATCH_GAMERULE_STOCK) && (gBattleState->is_team_battle == TRUE) && (fp->status_info.status_id == nFTCommonStatusSleep))
     {
         if (fp->status_vars.common.sleep.stock_steal_wait == 0)
         {
@@ -121,7 +121,7 @@ void ftCommonSleepSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Sleep, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusSleep, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->is_invisible = TRUE;
     fp->x18E_flag_b0 = TRUE;

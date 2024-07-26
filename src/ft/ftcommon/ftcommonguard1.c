@@ -102,7 +102,7 @@ void ftCommonGuardUpdateShieldVars(GObj *fighter_gobj)
         if ((fp->status_vars.common.guard.release_lag == 0) && (fp->status_vars.common.guard.is_release != FALSE))
         {
         lag_end:
-            if (fp->ft_kind == Ft_Kind_Yoshi)
+            if (fp->ft_kind == nFTKindYoshi)
             {
                 ftCommon_ResetModelPartRenderAll(fighter_gobj);
                 ftCommonGuardOffSetHitStatusYoshi(fighter_gobj);
@@ -130,7 +130,7 @@ void ftCommonGuardUpdateShieldHitbox(ftStruct *fp)
     f32 scale_final;
     f32 scale_mul;
 
-    if (fp->ft_kind == Ft_Kind_Yoshi)
+    if (fp->ft_kind == nFTKindYoshi)
     {
         scale_mul = 1.0F;
     }
@@ -264,7 +264,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
     Vec3f *scale;
     s32 i;
 
-    if (fp->status_info.status_id != ftStatus_Common_GuardSetOff)
+    if (fp->status_info.status_id != nFTCommonStatusGuardSetOff)
     {
         ftCommonGuardUpdateShieldAngle(fp);
     }
@@ -349,7 +349,7 @@ void ftCommonGuardOnProcUpdate(GObj *fighter_gobj)
         {
             if (fp->status_vars.common.guard.is_release != FALSE)
             {
-                if (fp->ft_kind == Ft_Kind_Yoshi)
+                if (fp->ft_kind == nFTKindYoshi)
                 {
                     ftCommonGuardOffSetHitStatusYoshi(fighter_gobj);
                 }
@@ -357,7 +357,7 @@ void ftCommonGuardOnProcUpdate(GObj *fighter_gobj)
             }
             else
             {
-                if (fp->ft_kind == Ft_Kind_Yoshi)
+                if (fp->ft_kind == nFTKindYoshi)
                 {
                     fp->status_vars.common.guard.effect_gobj = efManagerYoshiShieldMakeEffect(fighter_gobj);
 
@@ -389,12 +389,12 @@ void ftCommonGuardOnSetStatus(GObj *fighter_gobj, s32 slide_frames)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_GuardOn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusGuardOn, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     if (fp->shield_health != 0)
     {
-        if (fp->ft_kind == Ft_Kind_Yoshi)
+        if (fp->ft_kind == nFTKindYoshi)
         {
             ftCommonGuardOnSetHitStatusYoshi(fighter_gobj);
         }
@@ -465,7 +465,7 @@ void ftCommonGuardSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Guard, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusGuard, 0.0F, 1.0F, (FTSTATUPDATE_MODELPART_PRESERVE | FTSTATUPDATE_HITSTATUS_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE));
     ftCommonGuardInitJoints(fighter_gobj);
 
     fp->is_shield = TRUE;

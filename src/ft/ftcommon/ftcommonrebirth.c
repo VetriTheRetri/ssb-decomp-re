@@ -45,7 +45,7 @@ loop: // This makes no sense
         {
             other_fp = ftGetStruct(other_gobj);
 
-            if ((other_fp->status_info.status_id >= ftStatus_Common_RebirthDown) && (other_fp->status_info.status_id <= ftStatus_Common_RebirthWait))
+            if ((other_fp->status_info.status_id >= nFTCommonStatusRebirthDown) && (other_fp->status_info.status_id <= nFTCommonStatusRebirthWait))
             {
                 if (halo_number == other_fp->status_vars.common.rebirth.halo_number)
                 {
@@ -73,7 +73,7 @@ loop: // This makes no sense
     this_fp->coll_data.ground_angle.x = 0.0F;
     this_fp->coll_data.ground_angle.z = 0.0F;
 
-    ftMainSetFighterStatus(this_gobj, ftStatus_Common_RebirthDown, 100.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(this_gobj, nFTCommonStatusRebirthDown, 100.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(this_gobj);
     ftPhysics_StopVelAll(this_gobj);
 
@@ -155,7 +155,7 @@ void ftCommonRebirthStandSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_RebirthStand, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRebirthStand, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->is_ignore_training_menu = TRUE;
@@ -196,7 +196,7 @@ void ftCommonRebirthWaitSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_RebirthWait, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRebirthWait, 0.0F, 1.0F, (FTSTATUPDATE_PLAYERTAG_PRESERVE | FTSTATUPDATE_EFFECT_PRESERVE | FTSTATUPDATE_COLANIM_PRESERVE));
 
     fp->is_nullstatus = TRUE;
     fp->x18E_flag_b0 = TRUE;

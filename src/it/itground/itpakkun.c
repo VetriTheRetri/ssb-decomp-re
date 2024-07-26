@@ -25,7 +25,7 @@ intptr_t lITPakkunNDamageMatAnimJoint;      // 0x00000E04
 
 itCreateDesc dITPakkunItemDesc =
 {
-    It_Kind_Pakkun,                         // Item Kind
+    nITKindPakkun,                         // Item Kind
     &gGRCommonStruct.inishie.item_head,       // Pointer to item file data?
     &lITPakkunItemAttributes,               // Offset of item attributes in file?
 

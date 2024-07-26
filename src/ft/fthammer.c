@@ -48,7 +48,7 @@ sb32 ftHammerCheckHoldHammer(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == It_Kind_Hammer))
+    if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer))
     {
         return TRUE;
     }
@@ -60,7 +60,7 @@ sb32 ftHammerCheckStatusHammerAll(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->status_info.status_id >= ftStatus_Common_HammerStart) && (fp->status_info.status_id <= ftStatus_Common_HammerEnd))
+    if ((fp->status_info.status_id >= nFTCommonStatusHammerStart) && (fp->status_info.status_id <= nFTCommonStatusHammerEnd))
     {
         return TRUE;
     }
@@ -72,7 +72,7 @@ sb32 ftHammerCheckMotionWaitOrWalk(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->status_info.motion_id == ftMotion_Common_HammerWait) || (fp->status_info.motion_id == ftMotion_Common_HammerWalk))
+    if ((fp->status_info.motion_id == nFTCommonMotionHammerWait) || (fp->status_info.motion_id == nFTCommonMotionHammerWalk))
     {
         return TRUE;
     }
@@ -143,7 +143,7 @@ void ftHammerSetStatusHammerWait(GObj *fighter_gobj)
     {
         ftMap_SetGround(fp);
     }
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_HammerWait, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusHammerWait, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
     ftHammerSetColAnim(fighter_gobj);
 }
 

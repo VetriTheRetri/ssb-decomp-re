@@ -84,7 +84,7 @@ void ftCommonCatchSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Catch, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCatch, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     fp->command_vars.flags.flag1 = 1;
@@ -97,7 +97,7 @@ void ftCommonCatchSetStatus(GObj *fighter_gobj)
 
     fp->is_shield_catch = FALSE;
 
-    if (((fp->ft_kind == Ft_Kind_Samus) || (fp->ft_kind == Ft_Kind_PolySamus)) && (efManagerSamusGrappleBeamGlowMakeEffect(fighter_gobj) != NULL))
+    if (((fp->ft_kind == nFTKindSamus) || (fp->ft_kind == nFTKindPolySamus)) && (efManagerSamusGrappleBeamGlowMakeEffect(fighter_gobj) != NULL))
     {
         fp->is_attach_effect = TRUE;
     }
@@ -150,7 +150,7 @@ sb32 ftCommonCatchCheckInterruptDashRun(GObj *fighter_gobj)
 
     if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
-        ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowDash);
+        ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowDash);
 
         return TRUE;
     }
@@ -171,7 +171,7 @@ sb32 ftCommonCatchCheckInterruptAttack11(GObj *fighter_gobj)
 
     if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
-        ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowDash);
+        ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowDash);
 
         return TRUE;
     }

@@ -10,7 +10,7 @@
 // 0x80150760
 void ftCommonAttackLw4SetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_AttackLw4, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttackLw4, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }
 
@@ -31,7 +31,7 @@ sb32 ftCommonAttackLw4CheckInterruptMain(ftStruct *fp)
 
     if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
-        ftCommonItemThrowSetStatus(fp->fighter_gobj, ftStatus_Common_LightThrowLw4);
+        ftCommonItemThrowSetStatus(fp->fighter_gobj, nFTCommonStatusLightThrowLw4);
 
         return TRUE;
     }

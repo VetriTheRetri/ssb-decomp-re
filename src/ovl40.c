@@ -226,8 +226,8 @@ void mvOpeningLinkCreatePosedFighter()
 	GObj* fighter_gobj;
 	ftCreateDesc spawn_info = dFTDefaultFighterDesc;
 
-	spawn_info.ft_kind = Ft_Kind_Link;
-	spawn_info.costume = ftCostume_GetIndexFFA(Ft_Kind_Link, 0);
+	spawn_info.ft_kind = nFTKindLink;
+	spawn_info.costume = ftCostume_GetIndexFFA(nFTKindLink, 0);
 	spawn_info.anim_heap = gMvOpeningLinkAnimHeap;
 	spawn_info.pos.x = 600.0f;
 	spawn_info.pos.y = 0.0f;
@@ -318,7 +318,7 @@ void mvOpeningLinkInit()
 	gBattleState->gr_kind = Gr_Kind_Hyrule;
 	gBattleState->pl_count = 1;
 
-	gBattleState->player_block[0].character_kind = Ft_Kind_Link;
+	gBattleState->player_block[0].character_kind = nFTKindLink;
 	gBattleState->player_block[0].player_kind = Pl_Kind_Key;
 
 	mvOpeningLinkLoadFiles();
@@ -334,7 +334,7 @@ void mvOpeningLinkInit()
 	wpManagerAllocWeapons();
 	itManagerInitItems();
 	efManagerInitEffects();
-	ftManagerSetupDataKind(Ft_Kind_Link);
+	ftManagerSetupDataKind(nFTKindLink);
 
 	gMvOpeningLinkAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
 	mvOpeningLinkCreateNameViewport();

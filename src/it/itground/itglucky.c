@@ -18,7 +18,7 @@ extern intptr_t lITGLuckyItemAttributes;    // 0x000000BC
 
 itCreateDesc dITGLuckyItemDesc =
 {
-    It_Kind_GLucky,                         // Item Kind
+    nITKindGLucky,                         // Item Kind
     &gGRCommonStruct.yamabuki.item_head,      // Pointer to item file data?
     &lITGLuckyItemAttributes,               // Offset of item attributes in file?
 
@@ -96,7 +96,7 @@ void itGLuckySDefaultUpdateEggSpawn(GObj *lucky_gobj)
     {
         if (lucky_ip->item_vars.glucky.egg_spawn_count != 0)
         {
-            if ((gBattleState->item_toggles & ITEM_TOGGLE_MASK_KIND(It_Kind_Egg)) && (gBattleState->item_switch != gmMatch_ItemSwitch_None)) // Return to this when 0x8 is mapped
+            if ((gBattleState->item_toggles & ITEM_TOGGLE_MASK_KIND(nITKindEgg)) && (gBattleState->item_switch != gmMatch_ItemSwitch_None)) // Return to this when 0x8 is mapped
             {
                 pos = dobj->translate.vec.f;
 
@@ -107,7 +107,7 @@ void itGLuckySDefaultUpdateEggSpawn(GObj *lucky_gobj)
                 vel.y = (mtTrigGetRandomFloat() * ITGLUCKY_EGG_SPAWN_MUL) + ITGLUCKY_EGG_SPAWN_ADD_Y;
                 vel.z = 0.0F;
 
-                egg_gobj = itManagerMakeItemSetupCommon(lucky_gobj, It_Kind_Egg, &pos, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+                egg_gobj = itManagerMakeItemSetupCommon(lucky_gobj, nITKindEgg, &pos, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
                 if (egg_gobj != NULL)
                 {

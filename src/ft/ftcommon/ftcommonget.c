@@ -96,11 +96,11 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        if (ip->type == It_Type_Consume)
+        if (ip->type == nITTypeConsume)
         {
             switch (ip->it_kind)
             {
-            case It_Kind_Tomato:
+            case nITKindTomato:
                 ftCommon_ApplyDamageHeal(fp, ITTOMATO_DAMAGE_HEAL);
                 itMainDestroyItem(item_gobj);
 
@@ -110,7 +110,7 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
                 }
                 break;
 
-            case It_Kind_Heart:
+            case nITKindHeart:
                 ftCommon_ApplyDamageHeal(fp, ITHEART_DAMAGE_HEAL);
                 itMainDestroyItem(item_gobj);
 
@@ -120,7 +120,7 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
                 }
                 break;
 
-            case It_Kind_Hammer:
+            case nITKindHammer:
                 fp->hammer_timer = ITHAMMER_TIME;
 
                 ftSpecialITem_BGMSetPlay(alSound_Music_Hammer);
@@ -154,7 +154,7 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
     {
         fp->command_vars.flags.flag1 = 0;
 
-        item_gobj = ftCommonGetFindItemPickupGObj(fighter_gobj, ((fp->status_info.status_id == ftStatus_Common_HeavyGet) ? FTCOMMON_GET_MASK_HEAVY : FTCOMMON_GET_MASK_LIGHT));
+        item_gobj = ftCommonGetFindItemPickupGObj(fighter_gobj, ((fp->status_info.status_id == nFTCommonStatusHeavyGet) ? FTCOMMON_GET_MASK_HEAVY : FTCOMMON_GET_MASK_LIGHT));
 
         if (item_gobj != NULL)
         {
@@ -163,11 +163,11 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
     }
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        if (fp->status_info.status_id == ftStatus_Common_HeavyGet)
+        if (fp->status_info.status_id == nFTCommonStatusHeavyGet)
         {
             if (fp->item_hold != NULL)
             {
-                if ((fp->ft_kind == Ft_Kind_Donkey) || (fp->ft_kind == Ft_Kind_PolyDonkey) || (fp->ft_kind == Ft_Kind_GiantDonkey))
+                if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindPolyDonkey) || (fp->ft_kind == nFTKindGiantDonkey))
                 {
                     ftDonkeyThrowFWaitSetStatus(fighter_gobj);
                 }
@@ -183,11 +183,11 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
             {
                 itStruct *ip = itGetStruct(item_gobj);
 
-                if (ip->type == It_Type_Consume)
+                if (ip->type == nITTypeConsume)
                 {
                     ftCommonLightGetProcDamage(fighter_gobj);
 
-                    if (ip->it_kind == It_Kind_Hammer)
+                    if (ip->it_kind == nITKindHammer)
                     {
                         ftHammerSetStatusHammerWait(fighter_gobj);
 
@@ -248,10 +248,10 @@ void ftCommonGetSetStatus(GObj *fighter_gobj, GObj *item_gobj)
 
     fp->command_vars.flags.flag1 = 0;
 
-    ftMainSetFighterStatus(fighter_gobj, ((ip->weight == It_Weight_Heavy) ? ftStatus_Common_HeavyGet : ftStatus_Common_LightGet), 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ((ip->weight == It_Weight_Heavy) ? nFTCommonStatusHeavyGet : nFTCommonStatusLightGet), 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
-    if (fp->status_info.status_id == ftStatus_Common_HeavyGet)
+    if (fp->status_info.status_id == nFTCommonStatusHeavyGet)
     {
         fp->proc_damage = ftCommonHeavyGetProcDamage;
     }
@@ -291,7 +291,7 @@ void ftCommonLiftWaitSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_LiftWait, 0.0F, 1.0F, FTSTATUPDATE_SLOPECONTOUR_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusLiftWait, 0.0F, 1.0F, FTSTATUPDATE_SLOPECONTOUR_PRESERVE);
 
     fp->proc_damage = ftCommonHeavyGetProcDamage;
 }
@@ -336,7 +336,7 @@ void ftCommonLiftTurnSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_LiftTurn, 0.0F, 1.0F, FTSTATUPDATE_SLOPECONTOUR_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusLiftTurn, 0.0F, 1.0F, FTSTATUPDATE_SLOPECONTOUR_PRESERVE);
 
     fp->proc_damage = ftCommonHeavyGetProcDamage;
 

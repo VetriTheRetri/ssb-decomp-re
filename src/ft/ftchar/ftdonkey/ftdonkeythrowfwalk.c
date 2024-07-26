@@ -28,15 +28,15 @@ f32 ftDonkeyThrowFWalkGetWalkAnimLength(ftStruct *fp, s32 status_id)
 
     switch (status_id)
     {
-    case ftStatus_Donkey_ThrowFWalkSlow:
+    case nFTDonkeyStatusThrowFWalkSlow:
         walk_anim_length = fp->attributes->throw_walkslow_anim_length;
         break;
 
-    case ftStatus_Donkey_ThrowFWalkMiddle:
+    case nFTDonkeyStatusThrowFWalkMiddle:
         walk_anim_length = fp->attributes->throw_walkmiddle_anim_length;
         break;
 
-    case ftStatus_Donkey_ThrowFWalkFast:
+    case nFTDonkeyStatusThrowFWalkFast:
         walk_anim_length = fp->attributes->throw_walkfast_anim_length;
         break;
     }
@@ -50,7 +50,7 @@ void ftDonkeyThrowFWalkProcInterrupt(GObj *fighter_gobj)
 
     if (!(ftDonkeyThrowFWalkCheckInterrupt(fighter_gobj)))
     {
-        s32 status_id = ftCommonWalkGetWalkStatus(ABS(fp->input.pl.stick_range.x)) + (ftStatus_Donkey_ThrowFWalkSlow - ftStatus_Common_WalkSlow);
+        s32 status_id = ftCommonWalkGetWalkStatus(ABS(fp->input.pl.stick_range.x)) + (nFTDonkeyStatusThrowFWalkSlow - nFTCommonStatusWalkSlow);
 
         if (status_id != fp->status_info.status_id)
         {
@@ -67,7 +67,7 @@ void ftDonkeyThrowFWalkSetStatusParam(GObj *fighter_gobj, f32 frame_begin)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ftCommonWalkGetWalkStatus(fp->input.pl.stick_range.x) + (ftStatus_Donkey_ThrowFWalkSlow - ftStatus_Common_WalkSlow), frame_begin, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, ftCommonWalkGetWalkStatus(fp->input.pl.stick_range.x) + (nFTDonkeyStatusThrowFWalkSlow - nFTCommonStatusWalkSlow), frame_begin, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 }
 

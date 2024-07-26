@@ -61,45 +61,45 @@ typedef enum ftPikachuMotion
 {
 	// Missing SpecialHiStart and SpecialAirHiStart; these action states don't have a script, so their ID is -1
 
-	ftMotion_Pikachu_AppearR = ftMotion_Common_SpecialStart,
-	ftMotion_Pikachu_AppearL,
-	ftMotion_Pikachu_SpecialN,
-	ftMotion_Pikachu_SpecialAirN,
-	ftMotion_Pikachu_SpecialLwStart,
-	ftMotion_Pikachu_SpecialLwLoop,
-	ftMotion_Pikachu_SpecialLwHit,
-	ftMotion_Pikachu_SpecialLwEnd,
-	ftMotion_Pikachu_SpecialAirLwStart,
-	ftMotion_Pikachu_SpecialAirLwLoop,
-	ftMotion_Pikachu_SpecialAirLwHit,
-	ftMotion_Pikachu_SpecialAirLwEnd,
-	ftMotion_Pikachu_SpecialHi,
-	ftMotion_Pikachu_SpecialHiEnd,
-	ftMotion_Pikachu_SpecialAirHi,
-	ftMotion_Pikachu_SpecialAirHiEnd
+	nFTPikachuMotionAppearR = nFTCommonMotionSpecialStart,
+	nFTPikachuMotionAppearL,
+	nFTPikachuMotionSpecialN,
+	nFTPikachuMotionSpecialAirN,
+	nFTPikachuMotionSpecialLwStart,
+	nFTPikachuMotionSpecialLwLoop,
+	nFTPikachuMotionSpecialLwHit,
+	nFTPikachuMotionSpecialLwEnd,
+	nFTPikachuMotionSpecialAirLwStart,
+	nFTPikachuMotionSpecialAirLwLoop,
+	nFTPikachuMotionSpecialAirLwHit,
+	nFTPikachuMotionSpecialAirLwEnd,
+	nFTPikachuMotionSpecialHi,
+	nFTPikachuMotionSpecialHiEnd,
+	nFTPikachuMotionSpecialAirHi,
+	nFTPikachuMotionSpecialAirHiEnd
 
 } ftPikachuMotion;
 
 typedef enum ftPikachuStatus
 {
-	ftStatus_Pikachu_AppearR = ftStatus_Common_SpecialStart,
-	ftStatus_Pikachu_AppearL,
-	ftStatus_Pikachu_SpecialN,
-	ftStatus_Pikachu_SpecialAirN,
-	ftStatus_Pikachu_SpecialLwStart,
-	ftStatus_Pikachu_SpecialLwLoop,
-	ftStatus_Pikachu_SpecialLwHit,
-	ftStatus_Pikachu_SpecialLwEnd,
-	ftStatus_Pikachu_SpecialAirLwStart,
-	ftStatus_Pikachu_SpecialAirLwLoop,
-	ftStatus_Pikachu_SpecialAirLwHit,
-	ftStatus_Pikachu_SpecialAirLwEnd,
-	ftStatus_Pikachu_SpecialHiStart,
-	ftStatus_Pikachu_SpecialHi,
-	ftStatus_Pikachu_SpecialHiEnd,
-	ftStatus_Pikachu_SpecialAirHiStart,
-	ftStatus_Pikachu_SpecialAirHi,
-	ftStatus_Pikachu_SpecialAirHiEnd
+	nFTPikachuStatusAppearR = nFTCommonStatusSpecialStart,
+	nFTPikachuStatusAppearL,
+	nFTPikachuStatusSpecialN,
+	nFTPikachuStatusSpecialAirN,
+	nFTPikachuStatusSpecialLwStart,
+	nFTPikachuStatusSpecialLwLoop,
+	nFTPikachuStatusSpecialLwHit,
+	nFTPikachuStatusSpecialLwEnd,
+	nFTPikachuStatusSpecialAirLwStart,
+	nFTPikachuStatusSpecialAirLwLoop,
+	nFTPikachuStatusSpecialAirLwHit,
+	nFTPikachuStatusSpecialAirLwEnd,
+	nFTPikachuStatusSpecialHiStart,
+	nFTPikachuStatusSpecialHi,
+	nFTPikachuStatusSpecialHiEnd,
+	nFTPikachuStatusSpecialAirHiStart,
+	nFTPikachuStatusSpecialAirHi,
+	nFTPikachuStatusSpecialAirHiEnd
 
 } ftPikachuStatus;
 

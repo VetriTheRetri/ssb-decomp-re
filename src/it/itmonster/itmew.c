@@ -18,7 +18,7 @@ extern intptr_t lITMewDataStart;            // 0x0000BCC0
 // 0x8018AC40
 itCreateDesc dITMewItemDesc =
 {
-    It_Kind_Mew,                            // Item Kind
+    nITKindMew,                            // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITMewItemAttributes,                  // Offset of item attributes in file?
 
@@ -116,7 +116,7 @@ void itMewNFlyInitItemVars(GObj *item_gobj)
 
     func_800269C0_275C0(alSound_SFX_MewFly);
 
-    if (ip->it_kind == It_Kind_Mew)
+    if (ip->it_kind == nITKindMew)
     {
         func_800269C0_275C0(alSound_Voice_MBallMewSpawn);
     }

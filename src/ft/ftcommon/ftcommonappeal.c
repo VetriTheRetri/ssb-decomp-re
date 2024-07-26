@@ -22,14 +22,14 @@ void ftCommonAppealSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind == Ft_Kind_Kirby) || (fp->ft_kind == Ft_Kind_PolyKirby))
+    if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindPolyKirby))
     {
-        if ((fp->fighter_vars.kirby.copy_id != Ft_Kind_Kirby) && (fp->fighter_vars.kirby.is_ignore_losecopy == FALSE))
+        if ((fp->fighter_vars.kirby.copy_id != nFTKindKirby) && (fp->fighter_vars.kirby.is_ignore_losecopy == FALSE))
         {
             ftKirbySpecialNLoseCopy(fighter_gobj);
         }
     }
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Common_Appeal, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAppeal, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
 
     fp->command_vars.flags.flag1 = 0;
 }

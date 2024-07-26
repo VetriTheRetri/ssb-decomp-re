@@ -44,29 +44,29 @@ extern u32 gFTDataPolyMarioParticleBankID;
 
 typedef enum ftMarioMotion
 {
-    ftMotion_Mario_Attack13 = ftMotion_Common_SpecialStart,
-    ftMotion_Mario_AppearR,
-    ftMotion_Mario_AppearL,
-    ftMotion_Mario_SpecialN,
-    ftMotion_Mario_SpecialAirN,
-    ftMotion_Mario_SpecialHi,
-    ftMotion_Mario_SpecialAirHi,
-    ftMotion_Mario_SpecialLw,
-    ftMotion_Mario_SpecialAirLw
+    nFTMarioMotionAttack13 = nFTCommonMotionSpecialStart,
+    nFTMarioMotionAppearR,
+    nFTMarioMotionAppearL,
+    nFTMarioMotionSpecialN,
+    nFTMarioMotionSpecialAirN,
+    nFTMarioMotionSpecialHi,
+    nFTMarioMotionSpecialAirHi,
+    nFTMarioMotionSpecialLw,
+    nFTMarioMotionSpecialAirLw
 
 } ftMarioMotion;
 
 typedef enum ftMarioStatus
 {
-    ftStatus_Mario_Attack13 = ftStatus_Common_SpecialStart,
-    ftStatus_Mario_AppearR,
-    ftStatus_Mario_AppearL,
-    ftStatus_Mario_SpecialN,
-    ftStatus_Mario_SpecialAirN,
-    ftStatus_Mario_SpecialHi,
-    ftStatus_Mario_SpecialAirHi,
-    ftStatus_Mario_SpecialLw,
-    ftStatus_Mario_SpecialAirLw
+    nFTMarioStatusAttack13 = nFTCommonStatusSpecialStart,
+    nFTMarioStatusAppearR,
+    nFTMarioStatusAppearL,
+    nFTMarioStatusSpecialN,
+    nFTMarioStatusSpecialAirN,
+    nFTMarioStatusSpecialHi,
+    nFTMarioStatusSpecialAirHi,
+    nFTMarioStatusSpecialLw,
+    nFTMarioStatusSpecialAirLw
 
 } ftMarioStatus;
 

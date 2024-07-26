@@ -20,7 +20,7 @@ void ftBossOkuhikouki3SetStatus(GObj *fighter_gobj)
 
     fp->lr = LR_Left;
 
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Boss_Okuhikouki3, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusOkuhikouki3, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
     translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;

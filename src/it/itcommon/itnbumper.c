@@ -21,7 +21,7 @@ extern intptr_t lITNBumperGWaitDisplayList; // 0x00007AF8
 // 0x8018A690
 itCreateDesc dITNBumperItemDesc =
 {
-    It_Kind_NBumper,                        // Item Kind
+    nITKindNBumper,                        // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITNBumperItemAttributes,              // Offset of item attributes in file?
 

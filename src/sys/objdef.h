@@ -3,34 +3,34 @@
 
 typedef enum GObjKind
 {
-    GObj_Kind_Fighter = 1000,     // 1000
-    GObj_Kind_FighterParts,       // 1001
-    GObj_Kind_MainCamera = 1002,  // 1002
-    GObj_Kind_WallpaperCamera,    // 1003 - Used to render stage backgrounds?
-    GObj_Kind_ScissorCamera,      // 1004 - Camera scissor?
-    GObj_Kind_UnkCamera1,         // 1005 - ???
-    GObj_Kind_UnkCamera2,         // 1006 - ???
-    GObj_Kind_UnkCamera3,         // 1007
-    GObj_Kind_Wallpaper = 1008,   // 1008 - Stage background?
-    GObj_Kind_GrRender,           // 1009 - Stage renderer?
-    GObj_Kind_Ground,             // 1010
-    GObj_Kind_Effect,             // 1011
-    GObj_Kind_Weapon,             // 1012
-    GObj_Kind_Item,               // 1013
-    GObj_Kind_Interface = 1016,   // 1016
-    GObj_Kind_Rumble,             // 1017
-    GObj_Kind_Publicity,          // 1018 - Audience reaction
-    GObj_Kind_PauseMenu = 1019,   // 1019
-    GObj_Kind_Shadow,             // 1020
-    GObj_Kind_BossWallpaper = 1023
+    nOMObjKindFighter = 1000,     // 1000
+    nOMObjKindFighterParts,       // 1001
+    nOMObjKindMainCamera = 1002,  // 1002
+    nOMObjKindWallpaperCamera,    // 1003 - Used to render stage backgrounds?
+    nOMObjKindScissorCamera,      // 1004 - Camera scissor?
+    nOMObjKindUnkCamera1,         // 1005 - ???
+    nOMObjKindUnkCamera2,         // 1006 - ???
+    nOMObjKindUnkCamera3,         // 1007
+    nOMObjKindWallpaper = 1008,   // 1008 - Stage background?
+    nOMObjKindGrRender,           // 1009 - Stage renderer?
+    nOMObjKindGround,             // 1010
+    nOMObjKindEffect,             // 1011
+    nOMObjKindWeapon,             // 1012
+    nOMObjKindItem,               // 1013
+    nOMObjKindInterface = 1016,   // 1016
+    nOMObjKindRumble,             // 1017
+    nOMObjKindPublicity,          // 1018 - Audience reaction
+    nOMObjKindPauseMenu = 1019,   // 1019
+    nOMObjKindShadow,             // 1020
+    nOMObjKindBossWallpaper = 1023
 
 } GObjKind;
 
 typedef enum GObjProcessKind
 {
-    GObjProcess_Kind_OSThread,
-    GObjProcess_Kind_Proc,
-    GObjProcess_Kind_EnumMax
+    nOMObjProcessKindOSThread,
+    nOMObjProcessKindProc,
+    nOMObjProcessKindEnumMax
 
 } GObjProcessKind;
 

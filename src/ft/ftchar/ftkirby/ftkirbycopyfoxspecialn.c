@@ -43,7 +43,7 @@ void ftKirbyCopyFoxSpecialNProcInterrupt(GObj *fighter_gobj)
         }
         else ftKirbyCopyFoxSpecialNSetStatus(fighter_gobj);
 
-        ftCommon_MotionCountIncSetAttackID(fp, ftMotion_AttackIndex_SpecialNCopyFox);
+        ftCommon_MotionCountIncSetAttackID(fp, nFTMotionAttackIDSpecialNCopyFox);
         ftCommon_StatUpdateCountIncSetFlags(fp, fp->stat_flags.halfword);
         ftCommon_Update1PGameAttackStats(fp, 0);
     }
@@ -61,7 +61,7 @@ void ftKirbyCopyFoxSpecialNInitStatusVars(GObj *fighter_gobj)
 // 0x80156DD8
 void ftKirbyCopyFoxSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyFox_SpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyFoxSpecialN, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyFoxSpecialNInitStatusVars(fighter_gobj);
 }
@@ -69,7 +69,7 @@ void ftKirbyCopyFoxSpecialNSetStatus(GObj *fighter_gobj)
 // 0x80156E18
 void ftKirbyCopyFoxSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Kirby_CopyFox_SpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyFoxSpecialAirN, 0.0F, 1.0F, FTSTATUPDATE_FASTFALL_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftKirbyCopyFoxSpecialNInitStatusVars(fighter_gobj);
 }

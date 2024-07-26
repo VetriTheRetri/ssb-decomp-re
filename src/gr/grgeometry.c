@@ -229,7 +229,7 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     {
         return NULL;
     }
-    ground_gobj = omMakeGObjSPAfter(GObj_Kind_GrRender, NULL, GObj_LinkID_GroundRender, GOBJ_LINKORDER_DEFAULT);
+    ground_gobj = omMakeGObjSPAfter(nOMObjKindGrRender, NULL, GObj_LinkID_GroundRender, GOBJ_LINKORDER_DEFAULT);
 
     if (gMPGroundData->layer_mask & (1 << gr_desc_id))
     {
@@ -247,12 +247,12 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     if ((gr_desc->anim_joint != NULL) || (gr_desc->matanim_joint != NULL))
     {
         func_8000BED8_CAD8(ground_gobj, gr_desc->anim_joint, gr_desc->matanim_joint, 0.0F);
-        omAddGObjCommonProc(ground_gobj, dGRGeometryDescs[gr_desc_id].proc_update, GObjProcess_Kind_Proc, 4);
+        omAddGObjCommonProc(ground_gobj, dGRGeometryDescs[gr_desc_id].proc_update, nOMObjProcessKindProc, 4);
         func_8000DF34_EB34(ground_gobj);
     }
     else if (gr_desc_id == 1)
     {
-        omAddGObjCommonProc(ground_gobj, mpCollisionAdvanceUpdateFrame, GObjProcess_Kind_Proc, 4);
+        omAddGObjCommonProc(ground_gobj, mpCollisionAdvanceUpdateFrame, nOMObjProcessKindProc, 4);
     }
     grGeometryDObjSetNoAnimMtx(ground_gobj, gr_desc->dobj_desc);
 

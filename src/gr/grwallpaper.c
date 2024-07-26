@@ -139,7 +139,7 @@ void grWallpaperCommonMakeSObj(void)
 
     sGRWallpaperGObj = bg_gobj = func_ovl0_800CD050
     (
-        GObj_Kind_Wallpaper, 
+        nOMObjKindWallpaper, 
         NULL, 
         GObj_LinkID_Wallpaper,
         GOBJ_LINKORDER_DEFAULT, 
@@ -169,7 +169,7 @@ void grWallpaperStaticMakeSObj(void)
 
     sGRWallpaperGObj = bg_gobj = func_ovl0_800CD050
     (
-        GObj_Kind_Wallpaper, 
+        nOMObjKindWallpaper, 
         NULL, 
         GObj_LinkID_Wallpaper,
         GOBJ_LINKORDER_DEFAULT, 
@@ -236,7 +236,7 @@ void grWallpaperSectorMakeSObj(void)
     GObj *bg_gobj;
     SObj *bg_sobj;
 
-    sGRWallpaperGObj = bg_gobj = omMakeGObjSPAfter(GObj_Kind_Wallpaper, NULL, GObj_LinkID_Wallpaper, GOBJ_LINKORDER_DEFAULT);
+    sGRWallpaperGObj = bg_gobj = omMakeGObjSPAfter(nOMObjKindWallpaper, NULL, GObj_LinkID_Wallpaper, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(bg_gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -247,7 +247,7 @@ void grWallpaperSectorMakeSObj(void)
 
     bg_sobj->sprite.attr = SP_TEXSHUF;
 
-    omAddGObjCommonProc(bg_gobj, grWallpaperSectorUpdatePersp, GObjProcess_Kind_Proc, 3);
+    omAddGObjCommonProc(bg_gobj, grWallpaperSectorUpdatePersp, nOMObjProcessKindProc, 3);
 }
 
 // 0x80104B58
@@ -261,7 +261,7 @@ void grWallpaperBonus3MakeSObj(void)
 {
     GObj *bg_gobj;
 
-    sGRWallpaperGObj = bg_gobj = omMakeGObjSPAfter(GObj_Kind_Wallpaper, NULL, GObj_LinkID_Wallpaper, GOBJ_LINKORDER_DEFAULT);
+    sGRWallpaperGObj = bg_gobj = omMakeGObjSPAfter(nOMObjKindWallpaper, NULL, GObj_LinkID_Wallpaper, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(bg_gobj, grWallpaperBonus3AddDL, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
@@ -341,7 +341,7 @@ void func_ovl2_80104D30(void)
 
     while (gobj != NULL)
     {
-        if (gobj->gobj_id == GObj_Kind_Wallpaper)
+        if (gobj->gobj_id == nOMObjKindWallpaper)
         {
             func_8000B2B8(gobj);
         }

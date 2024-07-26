@@ -23,7 +23,7 @@ extern intptr_t lITKamexDisplayList;        // 0x0000ED60
 // 0x8018AEE0
 itCreateDesc dITKamexItemDesc = 
 {
-    It_Kind_Kamex,                          // Item Kind
+    nITKindKamex,                          // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITKamexItemAttributes,                // Offset of item attributes in file?
 
@@ -89,7 +89,7 @@ itStatusDesc dITKamexStatusDesc[/* */] =
 wpCreateDesc dITKamexWeaponHydroWeaponDesc =
 {
     0x01,                                   // Render flags?
-    Wp_Kind_KamexHydro,                     // Weapon Kind
+    nWPKindKamexHydro,                     // Weapon Kind
     &gITManagerFileData,                         // Pointer to weapon's loaded files?
     &lITKamexWeaponHydroWeaponAttributes,   // Offset of weapon attributes in loaded files
 
@@ -139,7 +139,7 @@ void itKamexNAttackUpdateHydro(GObj *item_gobj)
     {
         Vec3f pos = dobj->translate.vec.f;
 
-        if (ip->it_kind == It_Kind_Kamex)
+        if (ip->it_kind == nITKindKamex)
         {
             pos.x += ITKAMEX_KAMEX_HYDRO_SPAWN_OFF_X * ip->lr;
             pos.y += ITKAMEX_KAMEX_HYDRO_SPAWN_OFF_Y;
@@ -156,7 +156,7 @@ void itKamexNAttackUpdateHydro(GObj *item_gobj)
 
         pos.y += ip->attributes->objectcoll_bottom;
 
-        if (ip->it_kind == It_Kind_Kamex)
+        if (ip->it_kind == nITKindKamex)
         {
             pos.x += (ip->attributes->objectcoll_width + ITKAMEX_DUST_SPAWN_OFF_X) * -ip->lr;
         }
@@ -248,7 +248,7 @@ void itKamexNAppearSetStatus(GObj *item_gobj)
 
     ip->it_multi = ITKAMEX_LIFETIME;
 
-    if (ip->it_kind == It_Kind_Kamex)
+    if (ip->it_kind == nITKindKamex)
     {
         func_800269C0_275C0(alSound_Voice_MBallKamexSpawn);
     }
@@ -295,7 +295,7 @@ void itKamexNAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
     {
         ip->it_multi = ITKAMEX_LIFETIME;
 
-        if (ip->it_kind == It_Kind_Kamex)
+        if (ip->it_kind == nITKindKamex)
         {
             Gfx *dl = (Gfx*)itGetPData(ip, lITKamexDataStart, lITKamexDisplayList); // Linker thing
 

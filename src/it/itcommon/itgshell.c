@@ -19,7 +19,7 @@ extern intptr_t lITGShellMatAnimJoint;      // 0x00006048
 
 itCreateDesc dITGShellItemDesc =
 {
-    It_Kind_GShell,                         // Item Kind
+    nITKindGShell,                         // Item Kind
     &gITManagerFileData,                           // Pointer to item file data?
     &lITGShellItemAttributes,               // Offset of item attributes in file?
 

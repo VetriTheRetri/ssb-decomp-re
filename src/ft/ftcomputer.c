@@ -3388,7 +3388,7 @@ Vec3f* ftComputerGetOwnWeaponPositionKind(ftStruct *fp, s32 wp_kind)
 // 0x80131BA0
 void ftComputerSetControlPKThunder(ftStruct *fp)
 {
-    Vec3f *pos = ftComputerGetOwnWeaponPositionKind(fp, Wp_Kind_PKThunderTrail);
+    Vec3f *pos = ftComputerGetOwnWeaponPositionKind(fp, nWPKindPKThunderTrail);
     ftComputer *ft_com = &fp->fighter_com;
 
     if (pos != NULL)
@@ -3550,7 +3550,7 @@ void ftComputerUpdateInputs(ftStruct *this_fp)
 
                         if (this_fp->ground_or_air == nMPKineticsGround)
                         {
-                            if (this_fp->status_info.status_id != ftStatus_Common_KneeBend)
+                            if (this_fp->status_info.status_id != nFTCommonStatusKneeBend)
                             {
                                 if (ft_com->target_line_id == this_fp->coll_data.ground_line_id)
                                 {
@@ -3560,8 +3560,8 @@ void ftComputerUpdateInputs(ftStruct *this_fp)
                                 (
                                     (ft_com->ftcom_flags_0x4A_b1) && 
                                     (
-                                        (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_CliffCatch) || 
-                                        (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_CliffWait)
+                                        (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusCliffCatch) || 
+                                        (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusCliffWait)
                                     )
                                 )
                                 {
@@ -3574,12 +3574,12 @@ void ftComputerUpdateInputs(ftStruct *this_fp)
                             if
                             (
                                 (
-                                    (this_fp->ft_kind != Ft_Kind_Fox) ||
+                                    (this_fp->ft_kind != nFTKindFox) ||
                                     (
-                                        (this_fp->status_info.status_id != ftStatus_Fox_SpecialHiStart) &&
-                                        (this_fp->status_info.status_id != ftStatus_Fox_SpecialAirHiStart) &&
-                                        (this_fp->status_info.status_id != ftStatus_Fox_SpecialHiHold) &&
-                                        (this_fp->status_info.status_id != ftStatus_Fox_SpecialAirHiHold)
+                                        (this_fp->status_info.status_id != nFTFoxStatusSpecialHiStart) &&
+                                        (this_fp->status_info.status_id != nFTFoxStatusSpecialAirHiStart) &&
+                                        (this_fp->status_info.status_id != nFTFoxStatusSpecialHiHold) &&
+                                        (this_fp->status_info.status_id != nFTFoxStatusSpecialAirHiHold)
                                     )
                                 ) 
                                 &&
@@ -3740,7 +3740,7 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
 
                 if 
                 (
-                    (other_fp->status_info.status_id >= ftStatus_Common_Wait) &&
+                    (other_fp->status_info.status_id >= nFTCommonStatusWait) &&
                     (
                         (
                             (func_ovl2_800F8FFC(&other_fp->joint[ftParts_Joint_TopN]->translate.vec.f) != FALSE) &&
@@ -3753,14 +3753,14 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
                         (
                             (this_fp->ground_or_air == nMPKineticsGround) &&
                             (
-                                (other_fp->status_info.status_id == ftStatus_Common_CliffCatch) ||
-                                (other_fp->status_info.status_id == ftStatus_Common_CliffWait)
+                                (other_fp->status_info.status_id == nFTCommonStatusCliffCatch) ||
+                                (other_fp->status_info.status_id == nFTCommonStatusCliffWait)
                             )
                         )
                     ) 
                     &&
                     (
-                        (this_fp->ft_kind != Ft_Kind_MetalMario) ||
+                        (this_fp->ft_kind != nFTKindMetalMario) ||
                         (other_fp->ground_or_air == nMPKineticsGround)
                     )
                 )
@@ -3824,7 +3824,7 @@ sb32 ftComputerCheckEvadeDistance(ftStruct *this_fp)
                 {
                     return TRUE;
                 }
-                else if ((other_fp->item_hold != NULL) && (itGetStruct(other_fp->item_hold)->it_kind == It_Kind_Hammer) && (sqrt_xy < 2500.0F))
+                else if ((other_fp->item_hold != NULL) && (itGetStruct(other_fp->item_hold)->it_kind == nITKindHammer) && (sqrt_xy < 2500.0F))
                 {
                     return TRUE;
                 }
@@ -3851,7 +3851,7 @@ ftStruct* ftComputerWaitGetTarget(ftStruct *this_fp)
 
             if (this_fp->team != other_fp->team)
             {
-                if (other_fp->status_info.status_id >= ftStatus_Common_ActionStart)
+                if (other_fp->status_info.status_id >= nFTCommonStatusActionStart)
                 {
                     if ((ft_com->target_gobj != NULL) && (other_fp->fighter_gobj == ft_com->target_gobj))
                     {
@@ -4017,7 +4017,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             is_attempt_cliffcatch = FALSE;
             this_predict_frame = -(this_fall_speed_max - this_pos_y) / this_gravity;
 
-            if ((this_fp->status_info.status_id == ftStatus_Common_Pass) || (this_predict_frame <= 0))
+            if ((this_fp->status_info.status_id == nFTCommonStatusPass) || (this_predict_frame <= 0))
             {
                 predict_adjust_y = (this_vel_y * hit_frame) + this_pos_y;
             }
@@ -4027,7 +4027,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             }
             else predict_adjust_y = (((hit_frame * this_vel_y) - ((this_gravity * SQUARE(this_predict_frame)) * 0.5F)) + (this_fall_speed_max * (hit_frame - this_predict_frame))) + this_pos_y;
 
-            if ((target_fp->status_info.status_id != ftStatus_Common_Pass) && (target_fp->ground_or_air != nMPKineticsGround))
+            if ((target_fp->status_info.status_id != nFTCommonStatusPass) && (target_fp->ground_or_air != nMPKineticsGround))
             {
                 target_predict_frame = -(target_fall_speed_max - target_vel_y) / target_gravity;
 
@@ -4056,7 +4056,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             detect_near_y = ft_comattack->detect_near_y;
             detect_far_y = ft_comattack->detect_far_y;
 
-            if (this_fp->ft_kind == Ft_Kind_GiantDonkey)
+            if (this_fp->ft_kind == nFTKindGiantDonkey)
             {
                 detect_near_x *= 1.4F;
                 detect_far_x *= 1.4F;
@@ -4079,9 +4079,9 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                             // B R U H
                             if
                             (
-                                (((itStruct*)user_data)->it_kind == It_Kind_Sword)  ||
-                                (((itStruct*)user_data)->it_kind == It_Kind_Bat)    ||
-                                (((itStruct*)user_data)->it_kind == It_Kind_StarRod)
+                                (((itStruct*)user_data)->it_kind == nITKindSword)  ||
+                                (((itStruct*)user_data)->it_kind == nITKindBat)    ||
+                                (((itStruct*)user_data)->it_kind == nITKindStarRod)
                             )
                             {
                                 detect_near_x *= 1.3F;
@@ -4097,42 +4097,42 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             }
             switch (this_fp->ft_kind)
             {
-            case Ft_Kind_Mario:
-            case Ft_Kind_Luigi:
-            case Ft_Kind_MetalMario:
-            case Ft_Kind_PolyMario:
-            case Ft_Kind_PolyLuigi:
+            case nFTKindMario:
+            case nFTKindLuigi:
+            case nFTKindMetalMario:
+            case nFTKindPolyMario:
+            case nFTKindPolyLuigi:
                 if (ft_comattack->input_kind == ftComputer_Input_StickSmashHiButtonB)
                 {
                     is_attempt_cliffcatch = TRUE;
                 }
                 break;
 
-            case Ft_Kind_Kirby:
-            case Ft_Kind_PolyKirby:
+            case nFTKindKirby:
+            case nFTKindPolyKirby:
                 if (ft_comattack->input_kind == ftComputer_Input_StickSmashHiButtonB)
                 {
                     is_attempt_cliffcatch = TRUE;
                 }
                 /* fallthrough */
-            case Ft_Kind_Yoshi:
-            case Ft_Kind_Captain:
-            case Ft_Kind_PolyYoshi:
-            case Ft_Kind_PolyCaptain:
+            case nFTKindYoshi:
+            case nFTKindCaptain:
+            case nFTKindPolyYoshi:
+            case nFTKindPolyCaptain:
                 if (ft_comattack->input_kind == ftComputer_Input_StickSmashLwButtonB)
                 {
                     is_attempt_cliffcatch = TRUE;
                 }
                 break;
 
-            case Ft_Kind_MasterHand:
-            case Ft_Kind_PolyFox:
-            case Ft_Kind_PolyDonkey:
-            case Ft_Kind_PolySamus:
-            case Ft_Kind_PolyLink:
-            case Ft_Kind_PolyPikachu:
-            case Ft_Kind_PolyNess:
-            case Ft_Kind_GiantDonkey:
+            case nFTKindMasterHand:
+            case nFTKindPolyFox:
+            case nFTKindPolyDonkey:
+            case nFTKindPolySamus:
+            case nFTKindPolyLink:
+            case nFTKindPolyPikachu:
+            case nFTKindPolyNess:
+            case nFTKindGiantDonkey:
                 break;
             }
             if (is_attempt_cliffcatch != FALSE)
@@ -4160,7 +4160,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                     goto l_continue;
                 }
             }
-            if (this_fp->ft_kind == Ft_Kind_GiantDonkey)
+            if (this_fp->ft_kind == nFTKindGiantDonkey)
             {
                 if
                 (
@@ -4189,14 +4189,14 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                     }
                 }
             }
-            if ((this_fp->ft_kind != Ft_Kind_GiantDonkey) || (this_fp->ground_or_air == nMPKineticsGround) || (ft_comattack->input_kind != ftComputer_Input_StickSmashHiButtonB))
+            if ((this_fp->ft_kind != nFTKindGiantDonkey) || (this_fp->ground_or_air == nMPKineticsGround) || (ft_comattack->input_kind != ftComputer_Input_StickSmashHiButtonB))
             {
                 if (ft_com->ftcom_flags_0x4A_b1)
                 {
                     if 
                     (
-                        (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_CliffCatch) ||
-                        (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_CliffWait)
+                        (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusCliffCatch) ||
+                        (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusCliffWait)
                     )
                     {
                         if (detect_near_y < 0.0F)
@@ -4222,14 +4222,14 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                         {
                             if (itGetStruct(this_fp->item_hold) != NULL)
                             {
-                                if (itGetStruct(this_fp->item_hold)->type == It_Type_Swing)
+                                if (itGetStruct(this_fp->item_hold)->type == nITTypeSwing)
                                 {
                                     detect_range_base = -0.8F;
                                 }
                             }
                             if (itGetStruct(this_fp->item_hold) != NULL)
                             {
-                                if (itGetStruct(this_fp->item_hold)->it_kind == It_Kind_Bat)
+                                if (itGetStruct(this_fp->item_hold)->it_kind == nITKindBat)
                                 {
                                     if (this_fp->ground_or_air == nMPKineticsGround)
                                     {
@@ -4249,19 +4249,19 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                         {
                             if (user_data != NULL)
                             {
-                                if ((((ftStruct*)user_data)->ft_kind == Ft_Kind_Ness) || (((ftStruct*)user_data)->ft_kind == Ft_Kind_Fox))
+                                if ((((ftStruct*)user_data)->ft_kind == nFTKindNess) || (((ftStruct*)user_data)->ft_kind == nFTKindFox))
                                 {
-                                    ft_kind = (this_fp->ft_kind == Ft_Kind_Kirby) ? this_fp->fighter_vars.kirby.copy_id : this_fp->ft_kind;
+                                    ft_kind = (this_fp->ft_kind == nFTKindKirby) ? this_fp->fighter_vars.kirby.copy_id : this_fp->ft_kind;
 
                                     switch (ft_kind)
                                     {
-                                    case Ft_Kind_Mario:
-                                    case Ft_Kind_Fox:
-                                    case Ft_Kind_Samus:
-                                    case Ft_Kind_Luigi:
-                                    case Ft_Kind_Link:
-                                    case Ft_Kind_Pikachu:
-                                    case Ft_Kind_MetalMario:
+                                    case nFTKindMario:
+                                    case nFTKindFox:
+                                    case nFTKindSamus:
+                                    case nFTKindLuigi:
+                                    case nFTKindLink:
+                                    case nFTKindPikachu:
+                                    case nFTKindMetalMario:
                                         goto l_continue;
                                     }
                                 }
@@ -4269,8 +4269,8 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                         }
                         switch (this_fp->ft_kind)
                         {
-                        case Ft_Kind_Donkey:
-                        case Ft_Kind_GiantDonkey:
+                        case nFTKindDonkey:
+                        case nFTKindGiantDonkey:
                             if (this_fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
                             {
                                 detect_ranges_x[attack_count++] = 4.0F;
@@ -4278,7 +4278,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                             else detect_ranges_x[attack_count++] = 1.0F + detect_range_base;
                             break;
 
-                        case Ft_Kind_Samus:
+                        case nFTKindSamus:
                             if (this_fp->fighter_vars.samus.charge_level == FTSAMUS_CHARGE_MAX)
                             {
                                 detect_ranges_x[attack_count++] = 4.0F;
@@ -4286,10 +4286,10 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                             else detect_ranges_x[attack_count++] = 1.0F + detect_range_base;
                             break;
 
-                        case Ft_Kind_Kirby:
+                        case nFTKindKirby:
                             switch (this_fp->fighter_vars.kirby.copy_id)
                             {
-                            case Ft_Kind_Donkey:
+                            case nFTKindDonkey:
                                 if (this_fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
                                 {
                                     detect_ranges_x[attack_count++] = 4.0F;
@@ -4297,7 +4297,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                                 else detect_ranges_x[attack_count++] = 1.0F + detect_range_base;
                                 break;
 
-                            case Ft_Kind_Samus:
+                            case nFTKindSamus:
                                 if (this_fp->fighter_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX)
                                 {
                                     detect_ranges_x[attack_count++] = 4.0F;
@@ -4323,7 +4323,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                         break;
 
                     case ftComputer_Input_StickNButtonZButtonA:
-                        if ((this_fp->ft_kind != Ft_Kind_Link) && (this_fp->ft_kind != Ft_Kind_Samus))
+                        if ((this_fp->ft_kind != nFTKindLink) && (this_fp->ft_kind != nFTKindSamus))
                         {
                             detect_ranges_x[attack_count++] = 4.0F;
                             break;
@@ -4500,7 +4500,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                 default:
                     break;
                 }
-                if ((this_fp->ft_kind == Ft_Kind_Purin) && (ft_com->input_kind == ftComputer_Input_StickSmashHiButtonB) && (mtTrigGetRandomFloat() < 0.9F))
+                if ((this_fp->ft_kind == nFTKindPurin) && (ft_com->input_kind == ftComputer_Input_StickSmashHiButtonB) && (mtTrigGetRandomFloat() < 0.9F))
                 {
                     return FALSE;
                 }
@@ -4535,7 +4535,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
     }
     edge_offset = ft_com->jump_predict * 0.75F;
 
-    if (fp->ft_kind == Ft_Kind_MetalMario)
+    if (fp->ft_kind == nFTKindMetalMario)
     {
         edge_offset = 0;
     }
@@ -4629,7 +4629,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
     }
     edge_offset = ft_com->jump_predict * 0.75F;
 
-    if (fp->ft_kind == Ft_Kind_MetalMario)
+    if (fp->ft_kind == nFTKindMetalMario)
     {
         edge_offset = 0;
     }
@@ -4711,22 +4711,22 @@ void func_ovl3_801346D4(ftStruct *fp)
     {
         switch (fp->ft_kind)
         {
-        case Ft_Kind_Fox:
-        case Ft_Kind_Donkey:
-        case Ft_Kind_GiantDonkey:
+        case nFTKindFox:
+        case nFTKindDonkey:
+        case nFTKindGiantDonkey:
             range *= 0.5F;
             break;
 
-        case Ft_Kind_Ness:
+        case nFTKindNess:
             range = -ft_com->jump_predict;
             break;
         }
     }
-    if (fp->ft_kind == Ft_Kind_MetalMario)
+    if (fp->ft_kind == nFTKindMetalMario)
     {
         range = 0;
     }
-    if (fp->ft_kind == Ft_Kind_GiantDonkey)
+    if (fp->ft_kind == nFTKindGiantDonkey)
     {
         range = 0;
     }
@@ -4859,7 +4859,7 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
             &&
             (
                 (
-                    (ip->it_kind == It_Kind_MSBomb) && (ip->is_damage_all == TRUE)
+                    (ip->it_kind == nITKindMSBomb) && (ip->is_damage_all == TRUE)
                 )
                 ||
                 (
@@ -5010,7 +5010,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
             ft_com->target_pos.y = sp90.y;
         }
     }
-    else if ((fp->ground_or_air == nMPKineticsGround) || (fp->phys_info.vel_air.y < 0.0F) || (fp->ft_kind == Ft_Kind_Kirby) || (fp->ft_kind == Ft_Kind_Purin))
+    else if ((fp->ground_or_air == nMPKineticsGround) || (fp->phys_info.vel_air.y < 0.0F) || (fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindPurin))
     {
         if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < ft_com->target_pos.x)
         {
@@ -5086,11 +5086,11 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                     {
                         if
                         (
-                            (fp->status_info.status_id == ftStatus_Common_DamageFlyHi)  ||
-                            (fp->status_info.status_id == ftStatus_Common_DamageFlyN)   ||
-                            (fp->status_info.status_id == ftStatus_Common_DamageFlyLw)  ||
-                            (fp->status_info.status_id == ftStatus_Common_DamageFlyTop) ||
-                            (fp->status_info.status_id == ftStatus_Common_DamageFlyRoll)
+                            (fp->status_info.status_id == nFTCommonStatusDamageFlyHi)  ||
+                            (fp->status_info.status_id == nFTCommonStatusDamageFlyN)   ||
+                            (fp->status_info.status_id == nFTCommonStatusDamageFlyLw)  ||
+                            (fp->status_info.status_id == nFTCommonStatusDamageFlyTop) ||
+                            (fp->status_info.status_id == nFTCommonStatusDamageFlyRoll)
                         )
                         {
                             if (fp->status_vars.common.damage.hitstun_timer == 0)
@@ -5104,11 +5104,11 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                     {
                         if
                         (
-                            (fp->status_info.status_id == ftStatus_Common_JumpF)        ||
-                            (fp->status_info.status_id == ftStatus_Common_JumpB)        ||
-                            (fp->status_info.status_id == ftStatus_Common_Fall)         ||
-                            (fp->status_info.status_id == ftStatus_Common_DamageFall)   ||
-                            (fp->status_info.status_id == ftStatus_Common_FallSpecial)
+                            (fp->status_info.status_id == nFTCommonStatusJumpF)        ||
+                            (fp->status_info.status_id == nFTCommonStatusJumpB)        ||
+                            (fp->status_info.status_id == nFTCommonStatusFall)         ||
+                            (fp->status_info.status_id == nFTCommonStatusDamageFall)   ||
+                            (fp->status_info.status_id == nFTCommonStatusFallSpecial)
                         )
                         {
                             ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
@@ -5117,19 +5117,19 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                     }
                     if ((ft_com->objective == ftComputer_Objective_Recover) && !(ft_com->is_attempt_specialhi_recovery))
                     {
-                        if ((fp->ft_kind != Ft_Kind_Yoshi) && (fp->ft_kind != Ft_Kind_Purin))
+                        if ((fp->ft_kind != nFTKindYoshi) && (fp->ft_kind != nFTKindPurin))
                         {
                             if
                             (
-                                (fp->status_info.status_id == ftStatus_Common_JumpAerialF) ||
-                                (fp->status_info.status_id == ftStatus_Common_JumpAerialB) ||
-                                (fp->status_info.status_id == ftStatus_Common_FallAerial) ||
-                                (fp->status_info.status_id == ftStatus_Common_DamageFall)
+                                (fp->status_info.status_id == nFTCommonStatusJumpAerialF) ||
+                                (fp->status_info.status_id == nFTCommonStatusJumpAerialB) ||
+                                (fp->status_info.status_id == nFTCommonStatusFallAerial) ||
+                                (fp->status_info.status_id == nFTCommonStatusDamageFall)
                             )
                             {
                                 ft_com->is_attempt_specialhi_recovery = TRUE;
 
-                                if ((fp->ft_kind == Ft_Kind_GiantDonkey) || (mtTrigGetRandomFloat() < (fp->cp_level + 2) / 9.0F))
+                                if ((fp->ft_kind == nFTKindGiantDonkey) || (mtTrigGetRandomFloat() < (fp->cp_level + 2) / 9.0F))
                                 {
                                     ftComputerSetCommandImmediate(fp, ftComputer_Input_StickSmashHiButtonB);
                                     return;
@@ -5172,7 +5172,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
             case ftComputer_Behavior_YoshiTeam:
             case ftComputer_Behavior_KirbyTeam:
             case ftComputer_Behavior_PolyTeam:
-                if (fp->status_info.status_id == ftStatus_Common_Fall)
+                if (fp->status_info.status_id == nFTCommonStatusFall)
                 {
                     if (func_ovl2_800F8FFC(&fp->joint[ftParts_Joint_TopN]->translate.vec.f) != FALSE)
                     {
@@ -5260,7 +5260,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
 
                 if ((edge_dist_x - ABSF(fp->phys_info.vel_air.x)) < 200.0F)
                 {
-                    if (fp->status_info.status_id != ftStatus_Common_KneeBend)
+                    if (fp->status_info.status_id != nFTCommonStatusKneeBend)
                     {
                         ftComputerSetCommandWaitShort(fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
                     }
@@ -5269,13 +5269,13 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
             }
             else ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAuto);
         }
-        else if (fp->status_info.status_id != ftStatus_Common_Dash)
+        else if (fp->status_info.status_id != nFTCommonStatusDash)
         {
             if (ft_com->target_line_id != fp->coll_data.ground_line_id)
             {
                 if (fp->joint[ftParts_Joint_TopN]->translate.vec.f.y < ft_com->target_pos.y)
                 {
-                    if (fp->status_info.status_id != ftStatus_Common_KneeBend)
+                    if (fp->status_info.status_id != nFTCommonStatusKneeBend)
                     {
                         ftComputerSetCommandWaitShort(fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
                     }
@@ -5329,7 +5329,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
 
         if (this_fp->team == ftGetStruct(fighter_gobj)->team) goto next_fighter;
 
-        if (other_fp->ft_kind == Ft_Kind_Donkey)
+        if (other_fp->ft_kind == nFTKindDonkey)
         {
             if (other_fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
             {
@@ -5386,10 +5386,10 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
                                             {
                                                 if
                                                 (
-                                                    (this_fp->ft_kind == (0, Ft_Kind_Fox))  || // WTF????????????????????????
-                                                    (this_fp->ft_kind == Ft_Kind_Ness)      ||
-                                                    (this_fp->ft_kind == Ft_Kind_PolyFox)   ||
-                                                    (this_fp->ft_kind == Ft_Kind_PolyNess)
+                                                    (this_fp->ft_kind == (0, nFTKindFox))  || // WTF????????????????????????
+                                                    (this_fp->ft_kind == nFTKindNess)      ||
+                                                    (this_fp->ft_kind == nFTKindPolyFox)   ||
+                                                    (this_fp->ft_kind == nFTKindPolyNess)
                                                 )
                                                 {
                                                     ft_com->is_opponent_ra = TRUE;
@@ -5453,10 +5453,10 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
                                             {
                                                 if
                                                 (
-                                                    (this_fp->ft_kind == (0, Ft_Kind_Fox))  || // I AM LOSING MY MIND
-                                                    (this_fp->ft_kind == Ft_Kind_Ness)      ||
-                                                    (this_fp->ft_kind == Ft_Kind_PolyFox)   ||
-                                                    (this_fp->ft_kind == Ft_Kind_PolyNess)
+                                                    (this_fp->ft_kind == (0, nFTKindFox))  || // I AM LOSING MY MIND
+                                                    (this_fp->ft_kind == nFTKindNess)      ||
+                                                    (this_fp->ft_kind == nFTKindPolyFox)   ||
+                                                    (this_fp->ft_kind == nFTKindPolyNess)
                                                 )
                                                 {
                                                     ft_com->is_opponent_ra = TRUE;
@@ -5508,17 +5508,17 @@ void func_ovl3_801361BC(ftStruct *fp)
                 var_v1 = 7;
                 break;
 
-            case Ft_Kind_Donkey:
-            case Ft_Kind_PolyDonkey:
-            case Ft_Kind_GiantDonkey:
+            case nFTKindDonkey:
+            case nFTKindPolyDonkey:
+            case nFTKindGiantDonkey:
                 var_v1 = 11;
                 break;
 
-            case Ft_Kind_MetalMario:
+            case nFTKindMetalMario:
                 var_v1 = 20;
                 break;
             }
-            if ((ft_com->unk_ftcom_0x38 < var_v1) || (fp->status_info.status_id == ftStatus_Common_Run) || (fp->status_info.status_id == ftStatus_Common_Dash))
+            if ((ft_com->unk_ftcom_0x38 < var_v1) || (fp->status_info.status_id == nFTCommonStatusRun) || (fp->status_info.status_id == nFTCommonStatusDash))
             {
                 ft_com->is_shield_item_weapon = TRUE;
             }
@@ -5679,7 +5679,7 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
         predict_x = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x + (target_fp->phys_info.vel_air.x * 3.0F);
         predict_y = target_fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + (target_fp->phys_info.vel_air.x * 3.0F);
 
-        if ((target_fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((target_fp->item_hold != NULL) && (itGetStruct(target_fp->item_hold)->it_kind == It_Kind_Hammer)))
+        if ((target_fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((target_fp->item_hold != NULL) && (itGetStruct(target_fp->item_hold)->it_kind == nITKindHammer)))
         {
             ft_com->target_user = target_fp;
 
@@ -5687,7 +5687,7 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
 
             break;
         }
-        else if ((target_fp->status_info.status_id >= ftStatus_Common_Wait) && (predict_x <= gMPEdgeBounds.d2.right) && (predict_x >= gMPEdgeBounds.d2.left) && (predict_y >= gMPEdgeBounds.d2.bottom))
+        else if ((target_fp->status_info.status_id >= nFTCommonStatusWait) && (predict_x <= gMPEdgeBounds.d2.right) && (predict_x >= gMPEdgeBounds.d2.left) && (predict_y >= gMPEdgeBounds.d2.bottom))
         {
             current_dist = SQUARE(this_pos_x - predict_x) + SQUARE(this_pos_y - predict_y);
 
@@ -5772,16 +5772,16 @@ sb32 ftComputerCheckTryChargeSpecialN(ftStruct *fp)
 {
     switch (fp->ft_kind)
     {
-    case Ft_Kind_Donkey:
+    case nFTKindDonkey:
         if
         (
-            (fp->status_info.status_id != ftStatus_Donkey_SpecialNStart)    &&
-            (fp->status_info.status_id != ftStatus_Donkey_SpecialAirNStart) &&
-            (fp->status_info.status_id != ftStatus_Donkey_SpecialNLoop)     &&
-            (fp->status_info.status_id != ftStatus_Donkey_SpecialAirNLoop)  &&
-            (fp->status_info.status_id != ftStatus_Donkey_SpecialLwStart)   &&
-            (fp->status_info.status_id != ftStatus_Donkey_SpecialLwLoop)    &&
-            (fp->status_info.status_id != ftStatus_Donkey_SpecialLwEnd)     &&
+            (fp->status_info.status_id != nFTDonkeyStatusSpecialNStart)    &&
+            (fp->status_info.status_id != nFTDonkeyStatusSpecialAirNStart) &&
+            (fp->status_info.status_id != nFTDonkeyStatusSpecialNLoop)     &&
+            (fp->status_info.status_id != nFTDonkeyStatusSpecialAirNLoop)  &&
+            (fp->status_info.status_id != nFTDonkeyStatusSpecialLwStart)   &&
+            (fp->status_info.status_id != nFTDonkeyStatusSpecialLwLoop)    &&
+            (fp->status_info.status_id != nFTDonkeyStatusSpecialLwEnd)     &&
             (fp->fighter_vars.donkey.charge_level < FTDONKEY_GIANTPUNCH_CHARGE_MAX)
         )
         {
@@ -5790,22 +5790,22 @@ sb32 ftComputerCheckTryChargeSpecialN(ftStruct *fp)
         }
         break;
 
-    case Ft_Kind_GiantDonkey:
+    case nFTKindGiantDonkey:
         switch (fp->status_info.status_id)
         {
-        case ftStatus_Common_Wait:
-        case ftStatus_Common_WalkSlow:
-        case ftStatus_Common_WalkMiddle:
-        case ftStatus_Common_WalkFast:
-        case ftStatus_Common_Dash:
-        case ftStatus_Common_Run:
-        case ftStatus_Common_RunBrake:
-        case ftStatus_Common_Squat:
-        case ftStatus_Common_SquatWait:
-        case ftStatus_Common_SquatRv:
-        case ftStatus_Common_LandingLight:
-        case ftStatus_Common_OttottoWait:
-        case ftStatus_Common_Ottotto:
+        case nFTCommonStatusWait:
+        case nFTCommonStatusWalkSlow:
+        case nFTCommonStatusWalkMiddle:
+        case nFTCommonStatusWalkFast:
+        case nFTCommonStatusDash:
+        case nFTCommonStatusRun:
+        case nFTCommonStatusRunBrake:
+        case nFTCommonStatusSquat:
+        case nFTCommonStatusSquatWait:
+        case nFTCommonStatusSquatRv:
+        case nFTCommonStatusLandingLight:
+        case nFTCommonStatusOttottoWait:
+        case nFTCommonStatusOttotto:
             if (fp->fighter_vars.donkey.charge_level < FTDONKEY_GIANTPUNCH_CHARGE_MAX)
             {
                 ftComputerSetCommandWaitShort(fp, 0xB);
@@ -5815,13 +5815,13 @@ sb32 ftComputerCheckTryChargeSpecialN(ftStruct *fp)
         }
         break;
 
-    case Ft_Kind_Samus:
+    case nFTKindSamus:
         if
         (
-            (fp->status_info.status_id != ftStatus_Samus_SpecialNStart)     &&
-            (fp->status_info.status_id != ftStatus_Samus_SpecialAirNStart)  &&
-            (fp->status_info.status_id != ftStatus_Samus_SpecialNLoop)      &&
-            (fp->status_info.status_id != ftStatus_Samus_SpecialAirNEnd)    &&
+            (fp->status_info.status_id != nFTSamusStatusSpecialNStart)     &&
+            (fp->status_info.status_id != nFTSamusStatusSpecialAirNStart)  &&
+            (fp->status_info.status_id != nFTSamusStatusSpecialNLoop)      &&
+            (fp->status_info.status_id != nFTSamusStatusSpecialAirNEnd)    &&
             (fp->fighter_vars.samus.charge_level < FTSAMUS_CHARGE_MAX)
         )
         {
@@ -5830,16 +5830,16 @@ sb32 ftComputerCheckTryChargeSpecialN(ftStruct *fp)
         }
         break;
 
-    case Ft_Kind_Kirby:
+    case nFTKindKirby:
         switch (fp->fighter_vars.kirby.copy_id)
         {
-        case Ft_Kind_Donkey:
+        case nFTKindDonkey:
             if
             (
-                (fp->status_info.status_id != ftStatus_Kirby_CopyDonkey_SpecialNStart)      &&
-                (fp->status_info.status_id != ftStatus_Kirby_CopyDonkey_SpecialAirNStart)   &&
-                (fp->status_info.status_id != ftStatus_Kirby_CopyDonkey_SpecialNLoop)       &&
-                (fp->status_info.status_id != ftStatus_Kirby_CopyDonkey_SpecialAirNLoop)    &&
+                (fp->status_info.status_id != nFTKirbyStatusCopyDonkeySpecialNStart)      &&
+                (fp->status_info.status_id != nFTKirbyStatusCopyDonkeySpecialAirNStart)   &&
+                (fp->status_info.status_id != nFTKirbyStatusCopyDonkeySpecialNLoop)       &&
+                (fp->status_info.status_id != nFTKirbyStatusCopyDonkeySpecialAirNLoop)    &&
                 (fp->fighter_vars.kirby.copydonkey_charge_level < FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
             )
             {
@@ -5848,13 +5848,13 @@ sb32 ftComputerCheckTryChargeSpecialN(ftStruct *fp)
             }
             break;
 
-        case Ft_Kind_Samus:
+        case nFTKindSamus:
             if
             (
-                (fp->status_info.status_id != ftStatus_Kirby_CopySamus_SpecialNStart)   &&
-                (fp->status_info.status_id != ftStatus_Kirby_CopySamus_SpecialAirNStart)&&
-                (fp->status_info.status_id != ftStatus_Kirby_CopySamus_SpecialNLoop)    &&
-                (fp->status_info.status_id != ftStatus_Kirby_CopySamus_SpecialAirNEnd)  &&
+                (fp->status_info.status_id != nFTKirbyStatusCopySamusSpecialNStart)   &&
+                (fp->status_info.status_id != nFTKirbyStatusCopySamusSpecialAirNStart)&&
+                (fp->status_info.status_id != nFTKirbyStatusCopySamusSpecialNLoop)    &&
+                (fp->status_info.status_id != nFTKirbyStatusCopySamusSpecialAirNEnd)  &&
                 (fp->fighter_vars.kirby.copysamus_charge_level < FTKIRBY_COPYSAMUS_CHARGE_MAX)
             )
             {
@@ -5871,20 +5871,20 @@ sb32 ftComputerCheckTryChargeSpecialN(ftStruct *fp)
 // 0x80136C0C
 sb32 ftComputerCheckTryCancelSpecialN(ftStruct *fp)
 {
-    switch ((fp->ft_kind == Ft_Kind_Kirby) ? fp->fighter_vars.kirby.copy_id : fp->ft_kind)
+    switch ((fp->ft_kind == nFTKindKirby) ? fp->fighter_vars.kirby.copy_id : fp->ft_kind)
     {
-    case Ft_Kind_Donkey:
-    case Ft_Kind_GiantDonkey:
+    case nFTKindDonkey:
+    case nFTKindGiantDonkey:
         if
         (
-            (fp->status_info.status_id == ftStatus_Donkey_SpecialNStart)                ||
-            (fp->status_info.status_id == ftStatus_Donkey_SpecialAirNStart)             ||
-            (fp->status_info.status_id == ftStatus_Donkey_SpecialNLoop)                 ||
-            (fp->status_info.status_id == ftStatus_Donkey_SpecialAirNLoop)              ||
-            (fp->status_info.status_id == ftStatus_Kirby_CopyDonkey_SpecialNStart)      ||
-            (fp->status_info.status_id == ftStatus_Kirby_CopyDonkey_SpecialAirNStart)   ||
-            (fp->status_info.status_id == ftStatus_Kirby_CopyDonkey_SpecialNLoop)       ||
-            (fp->status_info.status_id == ftStatus_Kirby_CopyDonkey_SpecialAirNLoop)
+            (fp->status_info.status_id == nFTDonkeyStatusSpecialNStart)                ||
+            (fp->status_info.status_id == nFTDonkeyStatusSpecialAirNStart)             ||
+            (fp->status_info.status_id == nFTDonkeyStatusSpecialNLoop)                 ||
+            (fp->status_info.status_id == nFTDonkeyStatusSpecialAirNLoop)              ||
+            (fp->status_info.status_id == nFTKirbyStatusCopyDonkeySpecialNStart)      ||
+            (fp->status_info.status_id == nFTKirbyStatusCopyDonkeySpecialAirNStart)   ||
+            (fp->status_info.status_id == nFTKirbyStatusCopyDonkeySpecialNLoop)       ||
+            (fp->status_info.status_id == nFTKirbyStatusCopyDonkeySpecialAirNLoop)
         )
         {
             ftComputerSetCommandWaitShort(fp, 0xC);
@@ -5892,17 +5892,17 @@ sb32 ftComputerCheckTryCancelSpecialN(ftStruct *fp)
         }
         break;
 
-    case Ft_Kind_Samus:
+    case nFTKindSamus:
         if
         (
-            (fp->status_info.status_id == ftStatus_Samus_SpecialNStart)             ||
-            (fp->status_info.status_id == ftStatus_Samus_SpecialAirNStart)          ||
-            (fp->status_info.status_id == ftStatus_Samus_SpecialNLoop)              ||
-            (fp->status_info.status_id == ftStatus_Samus_SpecialAirNEnd)            ||
-            (fp->status_info.status_id == ftStatus_Kirby_CopySamus_SpecialNStart)   ||
-            (fp->status_info.status_id == ftStatus_Kirby_CopySamus_SpecialAirNStart)||
-            (fp->status_info.status_id == ftStatus_Kirby_CopySamus_SpecialNLoop)    ||
-            (fp->status_info.status_id == ftStatus_Kirby_CopySamus_SpecialAirNEnd)
+            (fp->status_info.status_id == nFTSamusStatusSpecialNStart)             ||
+            (fp->status_info.status_id == nFTSamusStatusSpecialAirNStart)          ||
+            (fp->status_info.status_id == nFTSamusStatusSpecialNLoop)              ||
+            (fp->status_info.status_id == nFTSamusStatusSpecialAirNEnd)            ||
+            (fp->status_info.status_id == nFTKirbyStatusCopySamusSpecialNStart)   ||
+            (fp->status_info.status_id == nFTKirbyStatusCopySamusSpecialAirNStart)||
+            (fp->status_info.status_id == nFTKirbyStatusCopySamusSpecialNLoop)    ||
+            (fp->status_info.status_id == nFTKirbyStatusCopySamusSpecialAirNEnd)
         )
         {
             ftComputerSetCommandWaitShort(fp, 0xC);
@@ -5924,7 +5924,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     f32 acid_level_step;
     f32 fvar;
 
-    if (this_fp->status_info.status_id == ftStatus_Common_CliffWait)
+    if (this_fp->status_info.status_id == nFTCommonStatusCliffWait)
     {
         action_wait = (this_fp->status_vars.common.cliffwait.fall_wait > 480) ?
                       (1080- this_fp->status_vars.common.cliffwait.fall_wait) :
@@ -5953,7 +5953,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             return 0;
         }
     }
-    if ((this_fp->status_info.status_id == ftStatus_Common_DownWaitD) || (this_fp->status_info.status_id == ftStatus_Common_DownWaitU))
+    if ((this_fp->status_info.status_id == nFTCommonStatusDownWaitD) || (this_fp->status_info.status_id == nFTCommonStatusDownWaitU))
     {
         action_wait = 180 - this_fp->status_vars.common.downwait.stand_wait;
 
@@ -5961,7 +5961,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         {
             ftComputerCheckFindTarget(this_fp);
 
-            if ((this_fp->ft_kind != Ft_Kind_GiantDonkey) && (ft_com->target_dist < 800.0F) && (this_fp->cp_level >= 4))
+            if ((this_fp->ft_kind != nFTKindGiantDonkey) && (ft_com->target_dist < 800.0F) && (this_fp->cp_level >= 4))
             {
                 if ((mtTrigGetRandomFloat() * (11 - this_fp->cp_level)) < 1.0F)
                 {
@@ -5983,16 +5983,16 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     }
     if 
     (
-        (this_fp->status_info.status_id == ftStatus_Common_OttottoWait) ||
-        (this_fp->status_info.status_id == ftStatus_Common_Ottotto)     ||
-        (this_fp->status_info.status_id == ftStatus_Common_SquatWait)
+        (this_fp->status_info.status_id == nFTCommonStatusOttottoWait) ||
+        (this_fp->status_info.status_id == nFTCommonStatusOttotto)     ||
+        (this_fp->status_info.status_id == nFTCommonStatusSquatWait)
     )
     {
         ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
 
         return 0;
     }
-    if (this_fp->status_info.status_id == ftStatus_Common_TaruCann)
+    if (this_fp->status_info.status_id == nFTCommonStatusTaruCann)
     {
         grJungleTaruCannGetPosition(&tarucann_pos);
 
@@ -6010,7 +6010,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             }
         }
     }
-    if (this_fp->status_info.status_id == ftStatus_Common_CatchWait)
+    if (this_fp->status_info.status_id == nFTCommonStatusCatchWait)
     {
         if (this_fp->joint[ftParts_Joint_TopN]->translate.vec.f.x < 0.0F)
         {
@@ -6024,11 +6024,11 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
 
     if
     (
-        (this_fp->status_info.status_id == ftStatus_Common_CaptureWaitKirby) ||
-        (this_fp->status_info.status_id == ftStatus_Common_YoshiEgg)         ||
-        (this_fp->status_info.status_id == ftStatus_Common_FuraFura)         ||
-        (this_fp->status_info.status_id == ftStatus_Common_FuraSleep)        ||
-        (this_fp->status_info.status_id == ftStatus_Common_Shouldered)
+        (this_fp->status_info.status_id == nFTCommonStatusCaptureWaitKirby) ||
+        (this_fp->status_info.status_id == nFTCommonStatusYoshiEgg)         ||
+        (this_fp->status_info.status_id == nFTCommonStatusFuraFura)         ||
+        (this_fp->status_info.status_id == nFTCommonStatusFuraSleep)        ||
+        (this_fp->status_info.status_id == nFTCommonStatusShouldered)
     )
     {
         ft_com->target_find_wait++;
@@ -6042,29 +6042,29 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     }
     else ft_com->target_find_wait = 0;
 
-    if (this_fp->ft_kind == Ft_Kind_Kirby)
+    if (this_fp->ft_kind == nFTKindKirby)
     {
         if
         (
-            (this_fp->status_info.status_id == ftStatus_Kirby_SpecialNCatch)    ||
-            (this_fp->status_info.status_id == ftStatus_Kirby_SpecialAirNCatch) ||
-            (this_fp->status_info.status_id == ftStatus_Kirby_SpecialNEat)      ||
-            (this_fp->status_info.status_id == ftStatus_Kirby_SpecialAirNEat)
+            (this_fp->status_info.status_id == nFTKirbyStatusSpecialNCatch)    ||
+            (this_fp->status_info.status_id == nFTKirbyStatusSpecialAirNCatch) ||
+            (this_fp->status_info.status_id == nFTKirbyStatusSpecialNEat)      ||
+            (this_fp->status_info.status_id == nFTKirbyStatusSpecialAirNEat)
         )
         {
             ftComputerSetCommandImmediate(this_fp, ftComputer_Input_StickN);
             return 0;
         }
-        else if ((this_fp->status_info.status_id == ftStatus_Kirby_SpecialNWait) || (this_fp->status_info.status_id == ftStatus_Kirby_SpecialAirNWait))
+        else if ((this_fp->status_info.status_id == nFTKirbyStatusSpecialNWait) || (this_fp->status_info.status_id == nFTKirbyStatusSpecialAirNWait))
         {
             ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickSmashLwButtonB);
 
             return 0;
         }
     }
-    if (this_fp->ft_kind == Ft_Kind_Ness)
+    if (this_fp->ft_kind == nFTKindNess)
     {
-        if ((this_fp->status_info.status_id == ftStatus_Ness_SpecialHiHold) || (this_fp->status_info.status_id == ftStatus_Ness_SpecialAirHiHold))
+        if ((this_fp->status_info.status_id == nFTNessStatusSpecialHiHold) || (this_fp->status_info.status_id == nFTNessStatusSpecialAirHiHold))
         {
             if (func_ovl2_800F8FFC(&this_fp->joint[ftParts_Joint_TopN]->translate.vec.f) == FALSE)
             {
@@ -6188,7 +6188,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     }
     fvar = 0.0F;
 
-    if ((this_fp->status_info.status_id == ftStatus_Common_DamageFall) && (((this_fp->phys_info.vel_air.y * 5.0F) - this_fp->coll_data.ground_dist) <= fvar)) // real
+    if ((this_fp->status_info.status_id == nFTCommonStatusDamageFall) && (((this_fp->phys_info.vel_air.y * 5.0F) - this_fp->coll_data.ground_dist) <= fvar)) // real
     {
         if (!(ft_com->ftcom_flags_0x49_b3))
         {
@@ -6235,19 +6235,19 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         {
             switch (this_fp->status_info.status_id)
             {
-            case ftStatus_Common_Wait:
-            case ftStatus_Common_WalkSlow:
-            case ftStatus_Common_WalkMiddle:
-            case ftStatus_Common_WalkFast:
-            case ftStatus_Common_Dash:
-            case ftStatus_Common_Run:
-            case ftStatus_Common_RunBrake:
-            case ftStatus_Common_Squat:
-            case ftStatus_Common_SquatWait:
-            case ftStatus_Common_SquatRv:
-            case ftStatus_Common_LandingLight:
-            case ftStatus_Common_OttottoWait:
-            case ftStatus_Common_Ottotto:
+            case nFTCommonStatusWait:
+            case nFTCommonStatusWalkSlow:
+            case nFTCommonStatusWalkMiddle:
+            case nFTCommonStatusWalkFast:
+            case nFTCommonStatusDash:
+            case nFTCommonStatusRun:
+            case nFTCommonStatusRunBrake:
+            case nFTCommonStatusSquat:
+            case nFTCommonStatusSquatWait:
+            case nFTCommonStatusSquatRv:
+            case nFTCommonStatusLandingLight:
+            case nFTCommonStatusOttottoWait:
+            case nFTCommonStatusOttotto:
                 ft_com->appeal_attempt_frames = 0;
 
                 ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickNButtonL);
@@ -6275,7 +6275,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
         ft_com->objective = ftComputer_Objective_Evade;
         return TRUE;
     }
-    if ((fp->ft_kind != Ft_Kind_MetalMario) && (fp->ft_kind != Ft_Kind_GiantDonkey))
+    if ((fp->ft_kind != nFTKindMetalMario) && (fp->ft_kind != nFTKindGiantDonkey))
     {
         if (func_ovl3_80135B78(fp) != FALSE)
         {
@@ -6285,25 +6285,25 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
     }
     switch (fp->ft_kind)
     {
-    case Ft_Kind_Fox:
-    case Ft_Kind_PolyFox:
-        if ((fp->status_info.status_id >= ftStatus_Fox_SpecialLwScopeStart) && (fp->status_info.status_id <= ftStatus_Fox_SpecialLwScopeEnd))
+    case nFTKindFox:
+    case nFTKindPolyFox:
+        if ((fp->status_info.status_id >= nFTFoxStatusSpecialLwScopeStart) && (fp->status_info.status_id <= nFTFoxStatusSpecialLwScopeEnd))
         {
             ftComputerSetCommandWaitShort(fp, ftComputer_Input_StickNButtonBRelease);
             return FALSE;
         }
         break;
 
-    case Ft_Kind_Ness:
-    case Ft_Kind_PolyNess:
-        if ((fp->status_info.status_id >= ftStatus_Ness_SpecialLwScopeStart) && (fp->status_info.status_id <= ftStatus_Ness_SpecialLwScopeEnd))
+    case nFTKindNess:
+    case nFTKindPolyNess:
+        if ((fp->status_info.status_id >= nFTNessStatusSpecialLwScopeStart) && (fp->status_info.status_id <= nFTNessStatusSpecialLwScopeEnd))
         {
             ftComputerSetCommandWaitShort(fp, ftComputer_Input_StickNButtonBRelease);
             return FALSE;
         }
         break;
     }
-    if ((fp->status_info.status_id >= ftStatus_Common_GuardStart) && (fp->status_info.status_id <= ftStatus_Common_GuardEnd))
+    if ((fp->status_info.status_id >= nFTCommonStatusGuardStart) && (fp->status_info.status_id <= nFTCommonStatusGuardEnd))
     {
         ftComputerSetCommandWaitShort(fp, 0x24);
         return FALSE;
@@ -6338,9 +6338,9 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
 
         switch (ip->type)
         {
-        case It_Type_Damage:
-        case It_Type_Shoot:
-        case It_Type_Throw:
+        case nITTypeDamage:
+        case nITTypeShoot:
+        case nITTypeThrow:
             ft_com->objective = ftComputer_Objective_UseItem;
             return TRUE;
 
@@ -6366,7 +6366,7 @@ s32 ftComputerProcStand(GObj *fighter_gobj)
     {
         return objective_status;
     }
-    if (fp->status_info.status_id == ftStatus_Common_RebirthWait)
+    if (fp->status_info.status_id == nFTCommonStatusRebirthWait)
     {
         ft_com->target_pos.x = ft_com->origin_pos.x;
         ft_com->target_pos.y = ft_com->origin_pos.y;
@@ -6529,15 +6529,15 @@ void ftComputerFollowObjectiveRecover(ftStruct *fp)
     {
         func_ovl3_80134964(fp);
 
-        if (fp->ft_kind == Ft_Kind_Pikachu)
+        if (fp->ft_kind == nFTKindPikachu)
         {
             switch (fp->status_info.status_id)
             {
-            case ftStatus_Pikachu_SpecialAirHiStart:
+            case nFTPikachuStatusSpecialAirHiStart:
                 ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
                 ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y + 1100.0F;
                 break;
-            case ftStatus_Pikachu_SpecialAirHi:
+            case nFTPikachuStatusSpecialAirHi:
                 ft_com->target_pos.x = 0.0F;
                 ft_com->target_pos.y = fp->joint[ftParts_Joint_TopN]->translate.vec.f.y;
                 break;
@@ -6566,17 +6566,17 @@ void ftComputerFollowObjectiveCounterAttack(ftStruct *fp)
 
         switch (fp->ft_kind)
         {
-        case Ft_Kind_Fox:
-        case Ft_Kind_PolyFox:
-            if ((fp->status_info.status_id < ftStatus_Fox_SpecialLwScopeStart) || (fp->status_info.status_id > ftStatus_Fox_SpecialLwScopeEnd))
+        case nFTKindFox:
+        case nFTKindPolyFox:
+            if ((fp->status_info.status_id < nFTFoxStatusSpecialLwScopeStart) || (fp->status_info.status_id > nFTFoxStatusSpecialLwScopeEnd))
             {
                 ftComputerSetCommandImmediate(fp, ftComputer_Input_StickNXSmashLwButtonBReleaseBHold);
             }
             break;
 
-        case Ft_Kind_Ness:
-        case Ft_Kind_PolyNess:
-            if ((fp->status_info.status_id < ftStatus_Ness_SpecialLwScopeStart) || (fp->status_info.status_id > ftStatus_Ness_SpecialLwScopeEnd))
+        case nFTKindNess:
+        case nFTKindPolyNess:
+            if ((fp->status_info.status_id < nFTNessStatusSpecialLwScopeStart) || (fp->status_info.status_id > nFTNessStatusSpecialLwScopeEnd))
             {
                 ftComputerSetCommandImmediate(fp, ftComputer_Input_StickNXSmashLwButtonBReleaseBHold);
             }
@@ -6587,7 +6587,7 @@ void ftComputerFollowObjectiveCounterAttack(ftStruct *fp)
     {
         ft_com->is_shield_item_weapon = FALSE;
 
-        if ((fp->status_info.status_id < ftStatus_Common_GuardStart) || (fp->status_info.status_id > ftStatus_Common_GuardEnd))
+        if ((fp->status_info.status_id < nFTCommonStatusGuardStart) || (fp->status_info.status_id > nFTCommonStatusGuardEnd))
         {
             ftComputerSetCommandImmediate(fp, ftComputer_Input_StickNButtonZHold);
         }
@@ -6600,7 +6600,7 @@ void ftComputerFollowObjectiveTrackItem(ftStruct *fp)
 {
     if ((ftComputerCheckTargetItemInRange(fp) != FALSE))
     {
-        if ((fp->status_info.status_id == ftStatus_Common_Wait) || (fp->status_info.status_id == ftStatus_Common_Squat))
+        if ((fp->status_info.status_id == nFTCommonStatusWait) || (fp->status_info.status_id == nFTCommonStatusSquat))
         {
             ftComputerSetCommandWaitShort(fp, ftComputer_Input_StickNButtonBZReleaseAPress);
             return;
@@ -6618,7 +6618,7 @@ void ftComputerFollowObjectiveUseItem(ftStruct *fp)
 
     switch (ip->type)
     {
-    case It_Type_Shoot:
+    case nITTypeShoot:
         if (ip->it_multi != 0)
         {
             ftComputerCheckFindTarget(fp);
@@ -6626,7 +6626,7 @@ void ftComputerFollowObjectiveUseItem(ftStruct *fp)
 
             if ((fp->cp_level >= 5) && (target_fp != NULL))
             {
-                if ((target_fp->ft_kind == Ft_Kind_Ness) || (target_fp->ft_kind == Ft_Kind_Fox))
+                if ((target_fp->ft_kind == nFTKindNess) || (target_fp->ft_kind == nFTKindFox))
                 {
                     ftComputerSetCommandWaitShort(fp, ftComputer_Input_ThrowItemImmediate);
                     return;
@@ -6636,7 +6636,7 @@ void ftComputerFollowObjectiveUseItem(ftStruct *fp)
             {
                 if
                 (
-                    (ip->it_kind == It_Kind_FFlower) &&
+                    (ip->it_kind == nITKindFFlower) &&
                     (
                         ((ft_com->target_pos.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) * fp->lr < 0.0F)     ||
                         ((ft_com->target_pos.x - fp->joint[ftParts_Joint_TopN]->translate.vec.f.x) * fp->lr > 1500.0F)
@@ -6654,11 +6654,11 @@ void ftComputerFollowObjectiveUseItem(ftStruct *fp)
         }
         ft_com->item_throw_wait++;
         /* fallthrough */
-    case It_Type_Damage:
-    case It_Type_Throw:
+    case nITTypeDamage:
+    case nITTypeThrow:
         ftComputerCheckFindTarget(fp);
 
-        if ((ft_com->item_throw_wait >= 3) || (ip->it_kind == It_Kind_MBall))
+        if ((ft_com->item_throw_wait >= 3) || (ip->it_kind == nITKindMBall))
         {
             ftComputerSetCommandWaitShort(fp, ftComputer_Input_ThrowItemWait);
 
@@ -6683,7 +6683,7 @@ s32 func_ovl3_8013837C(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
 
-    if ((this_fp->fighter_com.behavior != ftComputer_Behavior_YoshiTeam) && (this_fp->ft_kind != Ft_Kind_GiantDonkey))
+    if ((this_fp->fighter_com.behavior != ftComputer_Behavior_YoshiTeam) && (this_fp->ft_kind != nFTKindGiantDonkey))
     {
         ftStruct *target_fp = ftComputerWaitGetTarget(this_fp);
 
@@ -6831,7 +6831,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
 
             switch (this_fp->ft_kind)
             {
-            case Ft_Kind_Link:
+            case nFTKindLink:
                 if (ftComputerCheckFindTarget(this_fp) != FALSE)
                 {
                     if (ft_com->target_dist < 1500.0F)
@@ -6841,7 +6841,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
                 }
                 break;
 
-            case Ft_Kind_Ness:
+            case nFTKindNess:
                 if (mtTrigGetRandomFloat() < 0.25F)
                 {
                     ftComputerSetCommandWaitShort(this_fp, ftComputer_Input_StickSmashHiButtonB);
@@ -6872,25 +6872,25 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 is_delay)
         }
         if ((mtTrigGetRandomFloat() < ((this_fp->cp_level - 1) / 9.0F)) && (target_fp != NULL))
         {
-            if ((target_fp->ft_kind == Ft_Kind_Ness) || (target_fp->ft_kind == Ft_Kind_Fox))
+            if ((target_fp->ft_kind == nFTKindNess) || (target_fp->ft_kind == nFTKindFox))
             {
                 return FALSE;
             }
         }
-        ft_kind = (this_fp->ft_kind == Ft_Kind_Kirby) ? this_fp->fighter_vars.kirby.copy_id : this_fp->ft_kind;
+        ft_kind = (this_fp->ft_kind == nFTKindKirby) ? this_fp->fighter_vars.kirby.copy_id : this_fp->ft_kind;
 
-        if (ft_kind == Ft_Kind_Samus)
+        if (ft_kind == nFTKindSamus)
         {
             if
             (
-                (this_fp->status_info.status_id == ftStatus_Samus_SpecialNStart)                ||
-                (this_fp->status_info.status_id == ftStatus_Samus_SpecialAirNStart)             ||
-                (this_fp->status_info.status_id == ftStatus_Samus_SpecialNLoop)                 ||
-                (this_fp->status_info.status_id == ftStatus_Samus_SpecialAirNEnd)               ||
-                (this_fp->status_info.status_id == ftStatus_Kirby_CopySamus_SpecialNStart)      ||
-                (this_fp->status_info.status_id == ftStatus_Kirby_CopySamus_SpecialAirNStart)   ||
-                (this_fp->status_info.status_id == ftStatus_Kirby_CopySamus_SpecialNLoop)       ||
-                (this_fp->status_info.status_id == ftStatus_Kirby_CopySamus_SpecialAirNEnd)
+                (this_fp->status_info.status_id == nFTSamusStatusSpecialNStart)                ||
+                (this_fp->status_info.status_id == nFTSamusStatusSpecialAirNStart)             ||
+                (this_fp->status_info.status_id == nFTSamusStatusSpecialNLoop)                 ||
+                (this_fp->status_info.status_id == nFTSamusStatusSpecialAirNEnd)               ||
+                (this_fp->status_info.status_id == nFTKirbyStatusCopySamusSpecialNStart)      ||
+                (this_fp->status_info.status_id == nFTKirbyStatusCopySamusSpecialAirNStart)   ||
+                (this_fp->status_info.status_id == nFTKirbyStatusCopySamusSpecialNLoop)       ||
+                (this_fp->status_info.status_id == nFTKirbyStatusCopySamusSpecialAirNEnd)
             )
             {
                 return FALSE;
@@ -6898,7 +6898,7 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 is_delay)
         }
         switch (ft_kind)
         {
-        case Ft_Kind_Link:
+        case nFTKindLink:
             if (ft_com->target_dist < 1500.0F)
             {
                 if (mtTrigGetRandomFloat() < 0.3F)
@@ -6907,12 +6907,12 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 is_delay)
                 }
             }
             /* fallthrough */
-        case Ft_Kind_Mario:
-        case Ft_Kind_Fox:
-        case Ft_Kind_Samus:
-        case Ft_Kind_Luigi:
-        case Ft_Kind_Pikachu:
-        case Ft_Kind_MetalMario:
+        case nFTKindMario:
+        case nFTKindFox:
+        case nFTKindSamus:
+        case nFTKindLuigi:
+        case nFTKindPikachu:
+        case nFTKindMetalMario:
             ft_com->unk_ftcom_0x35++;
 
             if (ft_com->unk_ftcom_0x35 >= 5)
@@ -6972,46 +6972,46 @@ sb32 func_ovl3_80138EE4(ftStruct *fp)
     Vec3f edge_left_pos;
     Vec3f edge_right_pos;
 
-    if (fp->ft_kind == Ft_Kind_GiantDonkey)
+    if (fp->ft_kind == nFTKindGiantDonkey)
     {
         return FALSE;
     }
-    ft_kind = (fp->ft_kind == Ft_Kind_Kirby) ? fp->fighter_vars.kirby.copy_id : fp->ft_kind;
+    ft_kind = (fp->ft_kind == nFTKindKirby) ? fp->fighter_vars.kirby.copy_id : fp->ft_kind;
 
-    if (ft_kind == Ft_Kind_Samus)
+    if (ft_kind == nFTKindSamus)
     {
         if
         (
-           (fp->status_info.status_id == ftStatus_Samus_SpecialNStart)             ||
-           (fp->status_info.status_id == ftStatus_Samus_SpecialAirNStart)          ||
-           (fp->status_info.status_id == ftStatus_Samus_SpecialNLoop)              ||
-           (fp->status_info.status_id == ftStatus_Samus_SpecialAirNEnd)            ||
-           (fp->status_info.status_id == ftStatus_Kirby_CopySamus_SpecialNStart)   ||
-           (fp->status_info.status_id == ftStatus_Kirby_CopySamus_SpecialAirNStart)||
-           (fp->status_info.status_id == ftStatus_Kirby_CopySamus_SpecialNLoop)    ||
-           (fp->status_info.status_id == ftStatus_Kirby_CopySamus_SpecialAirNEnd)
+           (fp->status_info.status_id == nFTSamusStatusSpecialNStart)             ||
+           (fp->status_info.status_id == nFTSamusStatusSpecialAirNStart)          ||
+           (fp->status_info.status_id == nFTSamusStatusSpecialNLoop)              ||
+           (fp->status_info.status_id == nFTSamusStatusSpecialAirNEnd)            ||
+           (fp->status_info.status_id == nFTKirbyStatusCopySamusSpecialNStart)   ||
+           (fp->status_info.status_id == nFTKirbyStatusCopySamusSpecialAirNStart)||
+           (fp->status_info.status_id == nFTKirbyStatusCopySamusSpecialNLoop)    ||
+           (fp->status_info.status_id == nFTKirbyStatusCopySamusSpecialAirNEnd)
         )
         {
             return FALSE;
         }
     }
-    if ((ft_kind == Ft_Kind_Donkey) || (ft_kind == Ft_Kind_PolyDonkey) || (ft_kind == Ft_Kind_GiantDonkey))
+    if ((ft_kind == nFTKindDonkey) || (ft_kind == nFTKindPolyDonkey) || (ft_kind == nFTKindGiantDonkey))
     {
         if
         (
-            (fp->status_info.status_id == ftStatus_Donkey_SpecialNStart)                ||
-            (fp->status_info.status_id == ftStatus_Donkey_SpecialAirNStart)             ||
-            (fp->status_info.status_id == ftStatus_Donkey_SpecialNLoop)                 ||
-            (fp->status_info.status_id == ftStatus_Donkey_SpecialAirNLoop)              ||
-            (fp->status_info.status_id == ftStatus_Kirby_CopyDonkey_SpecialNStart)      ||
-            (fp->status_info.status_id == ftStatus_Kirby_CopyDonkey_SpecialAirNStart)   ||
-            (fp->status_info.status_id == ftStatus_Kirby_CopyDonkey_SpecialNLoop)       ||
-            (fp->status_info.status_id == ftStatus_Kirby_CopyDonkey_SpecialAirNLoop)    ||
-            (fp->status_info.status_id == ftStatus_Donkey_ThrowFWait)                   ||
-            (fp->status_info.status_id == ftStatus_Donkey_ThrowFWalkSlow)               ||
-            (fp->status_info.status_id == ftStatus_Donkey_ThrowFWalkMiddle)             ||
-            (fp->status_info.status_id == ftStatus_Donkey_ThrowFWalkFast)               ||
-            (fp->status_info.status_id == ftStatus_Donkey_ThrowFTurn)
+            (fp->status_info.status_id == nFTDonkeyStatusSpecialNStart)                ||
+            (fp->status_info.status_id == nFTDonkeyStatusSpecialAirNStart)             ||
+            (fp->status_info.status_id == nFTDonkeyStatusSpecialNLoop)                 ||
+            (fp->status_info.status_id == nFTDonkeyStatusSpecialAirNLoop)              ||
+            (fp->status_info.status_id == nFTKirbyStatusCopyDonkeySpecialNStart)      ||
+            (fp->status_info.status_id == nFTKirbyStatusCopyDonkeySpecialAirNStart)   ||
+            (fp->status_info.status_id == nFTKirbyStatusCopyDonkeySpecialNLoop)       ||
+            (fp->status_info.status_id == nFTKirbyStatusCopyDonkeySpecialAirNLoop)    ||
+            (fp->status_info.status_id == nFTDonkeyStatusThrowFWait)                   ||
+            (fp->status_info.status_id == nFTDonkeyStatusThrowFWalkSlow)               ||
+            (fp->status_info.status_id == nFTDonkeyStatusThrowFWalkMiddle)             ||
+            (fp->status_info.status_id == nFTDonkeyStatusThrowFWalkFast)               ||
+            (fp->status_info.status_id == nFTDonkeyStatusThrowFTurn)
         )
         {
             return FALSE;
@@ -7019,7 +7019,7 @@ sb32 func_ovl3_80138EE4(ftStruct *fp)
     }
     if (ft_com->ftcom_flags_0x4A_b1)
     {
-        if ((ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_CliffCatch) || (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_CliffWait))
+        if ((ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusCliffCatch) || (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusCliffWait))
         {
             return FALSE;
         }
@@ -7122,12 +7122,12 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
                     {
                         if
                         (
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyHi)   ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyN)    ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyLw)   ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyTop)  ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFall)    ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyRoll)
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyHi)   ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyN)    ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyLw)   ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyTop)  ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFall)    ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyRoll)
                         )
                         {
                             ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
@@ -7171,7 +7171,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
                     ft_com->walk_stop_wait = 0;
                     return;
                 }
-                if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == It_Kind_Hammer)))
+                if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7253,12 +7253,12 @@ void func_ovl3_801397F4(ftStruct *fp)
                     {
                         if
                         (
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyHi)   ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyN)    ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyLw)   ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyTop)  ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFall)    ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyRoll)
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyHi)   ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyN)    ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyLw)   ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyTop)  ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFall)    ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyRoll)
                         )
                         {
                             ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
@@ -7278,7 +7278,7 @@ void func_ovl3_801397F4(ftStruct *fp)
                 {
                     ft_com->walk_stop_wait = 0;
                 }
-                else if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == It_Kind_Hammer)))
+                else if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7343,7 +7343,7 @@ void ftComputerFollowObjectiveAlly(ftStruct *fp)
                 ft_com->walk_stop_wait = 0;
                 return;
             }
-            if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == It_Kind_Hammer)))
+            if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
             {
                 ftComputerFollowObjectiveWalk(fp);
 
@@ -7422,12 +7422,12 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
                     {
                         if
                         (
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyHi)   ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyN)    ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyLw)   ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyTop)  ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFall)    ||
-                            (ftGetComTargetFighter(ft_com)->status_info.status_id == ftStatus_Common_DamageFlyRoll)
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyHi)   ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyN)    ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyLw)   ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyTop)  ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFall)    ||
+                            (ftGetComTargetFighter(ft_com)->status_info.status_id == nFTCommonStatusDamageFlyRoll)
                         )
                         {
                             ftComputerSetCommandImmediate(fp, ftComputer_Input_MoveAutoStickTiltHiReleaseZ);
@@ -7470,7 +7470,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
                     ft_com->walk_stop_wait = 0;
                     return;
                 }
-                if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == It_Kind_Hammer)))
+                if ((fp->star_hitstatus == gmHitCollision_HitStatus_Invincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7743,7 +7743,7 @@ void ftComputerProcessTrait(ftStruct *fp)
         break;
 
     case ftComputer_Trait_MarioBros:
-        if (fp->ft_kind == Ft_Kind_Mario)
+        if (fp->ft_kind == nFTKindMario)
         {
             ft_com->behavior = ftComputer_Behavior_Default;
         }
@@ -7777,7 +7777,7 @@ void ftComputerProcessAll(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftComputer *ft_com = &fp->fighter_com;
 
-    if (fp->ft_kind != Ft_Kind_MasterHand)
+    if (fp->ft_kind != nFTKindMasterHand)
     {
         if (ft_com->behavior_change_wait != 0)
         {
@@ -7808,7 +7808,7 @@ void ftComputerSetupAll(GObj *fighter_gobj)
 
     bzero(ft_com, sizeof(*ft_com));
 
-    if (fp->ft_kind != Ft_Kind_MasterHand)
+    if (fp->ft_kind != nFTKindMasterHand)
     {
         ft_com->origin_pos.x = ft_com->target_pos.x = fp->joint[ftParts_Joint_TopN]->translate.vec.f.x;
 

@@ -165,10 +165,10 @@ sb32 mnBattleGetIsLocked(s32 char_id)
 {
 	switch (char_id)
 	{
-	case Ft_Kind_Ness: return (gMnBattleCharacterUnlockedMask & (1 << Ft_Kind_Ness)) ? FALSE : TRUE;
-	case Ft_Kind_Purin: return (gMnBattleCharacterUnlockedMask & (1 << Ft_Kind_Purin)) ? FALSE : TRUE;
-	case Ft_Kind_Captain: return (gMnBattleCharacterUnlockedMask & (1 << Ft_Kind_Captain)) ? FALSE : TRUE;
-	case Ft_Kind_Luigi: return (gMnBattleCharacterUnlockedMask & (1 << Ft_Kind_Luigi)) ? FALSE : TRUE;
+	case nFTKindNess: return (gMnBattleCharacterUnlockedMask & (1 << nFTKindNess)) ? FALSE : TRUE;
+	case nFTKindPurin: return (gMnBattleCharacterUnlockedMask & (1 << nFTKindPurin)) ? FALSE : TRUE;
+	case nFTKindCaptain: return (gMnBattleCharacterUnlockedMask & (1 << nFTKindCaptain)) ? FALSE : TRUE;
+	case nFTKindLuigi: return (gMnBattleCharacterUnlockedMask & (1 << nFTKindLuigi)) ? FALSE : TRUE;
 	}
 	return FALSE;
 }
@@ -387,7 +387,7 @@ void mnBattleSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 	s32 logo_offsets[12] = dMnBattleLogoOffsets;
 	s32 name_offsets[12] = dMnBattleNameOffsets;
 
-	if (ft_kind != Ft_Kind_Null)
+	if (ft_kind != nFTKindNull)
 	{
 		func_8000B760(name_logo_gobj);
 
@@ -1007,17 +1007,17 @@ s32 mnBattleGetSelectedAnimation(s32 ft_kind)
 {
 	switch (ft_kind)
 	{
-	case Ft_Kind_Fox:
-	case Ft_Kind_Samus: return 0x10004;
-	case Ft_Kind_Donkey:
-	case Ft_Kind_Luigi:
-	case Ft_Kind_Link:
-	case Ft_Kind_Captain: return 0x10001;
-	case Ft_Kind_Yoshi:
-	case Ft_Kind_Purin:
-	case Ft_Kind_Ness: return 0x10002;
-	case Ft_Kind_Mario:
-	case Ft_Kind_Kirby: return 0x10003;
+	case nFTKindFox:
+	case nFTKindSamus: return 0x10004;
+	case nFTKindDonkey:
+	case nFTKindLuigi:
+	case nFTKindLink:
+	case nFTKindCaptain: return 0x10001;
+	case nFTKindYoshi:
+	case nFTKindPurin:
+	case nFTKindNess: return 0x10002;
+	case nFTKindMario:
+	case nFTKindKirby: return 0x10003;
 	default: return 0x10001;
 	}
 }
@@ -1065,7 +1065,7 @@ void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 cost
 	f32 initial_y_rotation;
 	ftCreateDesc spawn_info = dFTDefaultFighterDesc;
 
-	if (ft_kind != Ft_Kind_Null)
+	if (ft_kind != nFTKindNull)
 	{
 		if (fighter_gobj != NULL)
 		{
@@ -1218,7 +1218,7 @@ void mnBattleUpdatePanelsAndFighterCostumes()
 		for (i = 0; i < 4; i++)
 		{
 			mnUpdatePanel(gMnBattlePanels[i].panel, color_indexes[i], gMnBattlePanels[i].player_type);
-			if (gMnBattlePanels[i].char_id != Ft_Kind_Null)
+			if (gMnBattlePanels[i].char_id != nFTKindNull)
 			{
 				gMnBattlePanels[i].costume_id = ftCostume_GetIndexFFA(
 					gMnBattlePanels[i].char_id, mnBattleGetAvailableCostumeFFA(gMnBattlePanels[i].char_id, i));
@@ -1233,7 +1233,7 @@ void mnBattleUpdatePanelsAndFighterCostumes()
 		{
 			mnUpdatePanel(gMnBattlePanels[i].panel, gMnBattlePanels[i].team == 2 ? 3 : gMnBattlePanels[i].team,
 						  gMnBattlePanels[i].player_type);
-			if (gMnBattlePanels[i].char_id != Ft_Kind_Null)
+			if (gMnBattlePanels[i].char_id != nFTKindNull)
 			{
 				gMnBattlePanels[i].costume_id
 					= ftCostume_GetIndexTeam(gMnBattlePanels[i].char_id, gMnBattlePanels[i].team);
@@ -1307,7 +1307,7 @@ void mnHandleFFATeamBattleTogglePress()
 	{
 		for (i = 0; i < 4; i++)
 		{
-			if (gMnBattlePanels[i].char_id != Ft_Kind_Null)
+			if (gMnBattlePanels[i].char_id != nFTKindNull)
 				gMnBattlePanels[i].shade = 4;
 		}
 	}
@@ -1365,7 +1365,7 @@ sb32 mnCheckAnyTeamButtonPress(GObj* cursor_gobj, s32 cursor_port_id)
 						  gMnBattlePanels[port_id].player_type);
 			mnCreateOrReplaceTeamButton(gMnBattlePanels[port_id].team, port_id);
 
-			if (gMnBattlePanels[port_id].char_id != Ft_Kind_Null)
+			if (gMnBattlePanels[port_id].char_id != nFTKindNull)
 			{
 				gMnBattlePanels[port_id].costume_id
 					= ftCostume_GetIndexTeam(gMnBattlePanels[port_id].char_id, gMnBattlePanels[port_id].team);
@@ -1540,7 +1540,7 @@ void mnHandlePlayerTypeButtonPress(s32 port_id)
 		}
 
 		gMnBattlePanels[port_id].is_selected = FALSE;
-		gMnBattlePanels[port_id].char_id = Ft_Kind_Null;
+		gMnBattlePanels[port_id].char_id = nFTKindNull;
 		gMnBattlePanels[port_id].unk_0x88 = FALSE;
 		gMnBattlePanels[port_id].holder_port_id = port_id;
 		gMnBattlePanels[port_id].held_port_id = port_id;
@@ -1585,7 +1585,7 @@ void mnHandlePlayerTypeButtonPress(s32 port_id)
 
 		gMnBattlePanels[port_id].unk_0x88 = TRUE;
 
-		if (gMnBattlePanels[port_id].char_id == Ft_Kind_Null)
+		if (gMnBattlePanels[port_id].char_id == nFTKindNull)
 			gMnBattlePanels[port_id].char_id = mnSelectRandomFighter(gMnBattlePanels[port_id].token);
 
 		gMnBattlePanels[port_id].unk_0xA0 = FALSE;
@@ -1632,7 +1632,7 @@ void mnHandlePlayerTypeButtonPress(s32 port_id)
 
 		gMnBattlePanels[port_id].is_selected = FALSE;
 		gMnBattlePanels[port_id].held_port_id = -1;
-		gMnBattlePanels[port_id].char_id = Ft_Kind_Null;
+		gMnBattlePanels[port_id].char_id = nFTKindNull;
 		gMnBattlePanels[port_id].unk_0x88 = FALSE;
 		gMnBattlePanels[port_id].unk_0xA0 = FALSE;
 
@@ -1690,7 +1690,7 @@ void mnBattleSyncFighterDisplay(s32 port_id)
 			player_gobj->flags = 1;
 			var_v0 = 1;
 		}
-		else if ((gMnBattlePanels[port_id].char_id == Ft_Kind_Null) && (gMnBattlePanels[port_id].is_selected == 0))
+		else if ((gMnBattlePanels[port_id].char_id == nFTKindNull) && (gMnBattlePanels[port_id].is_selected == 0))
 		{
 			player_gobj->flags = 1;
 			var_v0 = 1;
@@ -1740,7 +1740,7 @@ void mnBattleSyncNameAndLogo(s32 port_id)
 	mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
 
 	if ((panel_info->player_type == mnPanelTypeNA)
-		|| ((panel_info->char_id == Ft_Kind_Null) && (panel_info->is_selected == FALSE)))
+		|| ((panel_info->char_id == nFTKindNull) && (panel_info->is_selected == FALSE)))
 	{
 		panel_info->name_logo->flags = 1;
 	}
@@ -2133,7 +2133,7 @@ sb32 mnBattleSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_but
 	if (panel_info->cursor_state != mnCursorStateHoldingToken)
 		return FALSE;
 
-	if (gMnBattlePanels[panel_info->held_port_id].char_id != Ft_Kind_Null)
+	if (gMnBattlePanels[panel_info->held_port_id].char_id != nFTKindNull)
 	{
 		mnBattleSelectCharWithToken(port_id, select_button);
 		panel_info->min_frames_elapsed_until_recall = gMnBattleFramesElapsed + 0x1E;
@@ -2314,7 +2314,7 @@ s32 mnBattleGetFtKindFromTokenPosition(s32 port_id)
 			char_id = mnBattleGetFtKind((s32)(current_y - 25) / 45);
 
 			if ((mnBattleCheckFighterIsXBoxed(char_id) != FALSE) || (mnBattleGetIsLocked(char_id) != FALSE))
-				return Ft_Kind_Null;
+				return nFTKindNull;
 
 			return char_id;
 		}
@@ -2331,12 +2331,12 @@ s32 mnBattleGetFtKindFromTokenPosition(s32 port_id)
 			char_id = mnBattleGetFtKind(((s32)(current_y - 25) / 45) + 6);
 
 			if ((mnBattleCheckFighterIsXBoxed(char_id) != FALSE) || (mnBattleGetIsLocked(char_id) != FALSE))
-				return Ft_Kind_Null;
+				return nFTKindNull;
 
 			return char_id;
 		}
 	}
-	return Ft_Kind_Null;
+	return nFTKindNull;
 }
 
 // 801379B8
@@ -2801,7 +2801,7 @@ void mnBattleSyncTokenAndFighter(GObj* token_gobj)
 	switch (gMnBattlePanels[port_id].player_type)
 	{
 	case mnPanelTypeNA:
-		if ((gMnBattleControllerOrderArray[port_id] != -1) && (ft_kind != Ft_Kind_Null))
+		if ((gMnBattleControllerOrderArray[port_id] != -1) && (ft_kind != nFTKindNull))
 		{
 			gMnBattlePanels[port_id].player_type = mnPanelTypeHuman;
 
@@ -2813,7 +2813,7 @@ void mnBattleSyncTokenAndFighter(GObj* token_gobj)
 			break;
 	default:
 		if ((gMnBattlePanels[port_id].player_type == mnPanelTypeCPU) && (ft_kind != gMnBattlePanels[port_id].char_id)
-			&& (ft_kind == Ft_Kind_Null))
+			&& (ft_kind == nFTKindNull))
 		{
 			if (gMnBattlePanels[port_id].holder_port_id != 4)
 				mnBattleSelectCharWithToken(gMnBattlePanels[port_id].holder_port_id, 4);
@@ -2925,7 +2925,7 @@ void mnBattleCreateToken(s32 port_id)
 	if ((panel_info->player_type == mnPanelTypeHuman) && (panel_info->held_port_id != -1))
 		omMoveGObjDL(panel_info->token, 0x20U, orders2[port_id] + 1);
 
-	if (panel_info->char_id == Ft_Kind_Null)
+	if (panel_info->char_id == nFTKindNull)
 	{
 		SObjGetStruct(token_gobj)->pos.x = 51.0F;
 		SObjGetStruct(token_gobj)->pos.y = 161.0F;
@@ -3025,7 +3025,7 @@ void mnBattleAutopositionPlacedToken(s32 port_id)
 		if (is_within_bounds != FALSE)
 		{
 			if ((gMnBattlePanels[port_id].char_id == gMnBattlePanels[i].char_id)
-				&& (gMnBattlePanels[port_id].char_id != Ft_Kind_Null) && (gMnBattlePanels[i].is_selected == 1))
+				&& (gMnBattlePanels[port_id].char_id != nFTKindNull) && (gMnBattlePanels[i].is_selected == 1))
 			{
 				mnBattleAutopositionOverlappedTokens(port_id, i, (15.0F - distances[i]) / 15.0F);
 			}
@@ -3126,7 +3126,7 @@ void mnBattleSyncShadeAndCostume(s32 unused)
 	{
 		for (i = 0; i < 4; i++)
 		{
-			if (gMnBattlePanels[i].char_id != Ft_Kind_Null)
+			if (gMnBattlePanels[i].char_id != nFTKindNull)
 			{
 				shade = mnBattleGetShade(i);
 				gMnBattlePanels[i].shade = shade;
@@ -3138,7 +3138,7 @@ void mnBattleSyncShadeAndCostume(s32 unused)
 	{
 		for (i = 0; i < 4; i++)
 		{
-			if ((gMnBattlePanels[i].char_id != Ft_Kind_Null)
+			if ((gMnBattlePanels[i].char_id != nFTKindNull)
 				&& (mnBattleGetAdditionalSelectedCount(gMnBattlePanels[i].char_id) == 0))
 			{
 				costume_id = ftCostume_GetIndexFFA(gMnBattlePanels[i].char_id, 0);
@@ -3167,7 +3167,7 @@ void mnBattleSyncWhiteCircleSizeAndDisplay(GObj* white_circle_gobj)
 	s32 portrait_id = white_circle_gobj->user_data.s;
 	f32 sizes[12] = dMnBattleWhiteCircleSizes;
 
-	if ((gMnBattlePanels[portrait_id].unk_0x88 == 0) && (gMnBattlePanels[portrait_id].char_id != Ft_Kind_Null))
+	if ((gMnBattlePanels[portrait_id].unk_0x88 == 0) && (gMnBattlePanels[portrait_id].char_id != nFTKindNull))
 	{
 		white_circle_gobj->flags = (white_circle_gobj->flags == 1) ? 0 : 1;
 
@@ -3391,7 +3391,7 @@ s32 mnGetNumSelectedChars()
 void mnSetTypeToNA(s32 port_id)
 {
 	gMnBattlePanels[port_id].player_type = mnPanelTypeNA;
-	gMnBattlePanels[port_id].char_id = Ft_Kind_Null;
+	gMnBattlePanels[port_id].char_id = nFTKindNull;
 	gMnBattlePanels[port_id].holder_port_id = 4;
 
 	mnRecreateTypeButton(gMnBattlePanels[port_id].type_button, port_id, mnPanelTypeNA);
@@ -3673,7 +3673,7 @@ void mnBattleInitPort(s32 port_id)
 		&& (controller_order = gMnBattleControllerOrderArray[port_id], (controller_order == unplugged)))
 	{
 		panel_info->player_type = mnPanelTypeNA;
-		panel_info->char_id = Ft_Kind_Null;
+		panel_info->char_id = nFTKindNull;
 	}
 	else
 	{
@@ -3685,7 +3685,7 @@ void mnBattleInitPort(s32 port_id)
 	panel_info->handicap = gTransferBattleState.player_block[port_id].handicap;
 	panel_info->team = gTransferBattleState.player_block[port_id].team_index;
 
-	if ((panel_info->player_type == mnPanelTypeHuman) && (panel_info->char_id == Ft_Kind_Null))
+	if ((panel_info->player_type == mnPanelTypeHuman) && (panel_info->char_id == nFTKindNull))
 	{
 		panel_info->holder_port_id = port_id;
 		panel_info->held_port_id = port_id;
@@ -3696,7 +3696,7 @@ void mnBattleInitPort(s32 port_id)
 		panel_info->held_port_id = -1;
 	}
 
-	if (panel_info->char_id == Ft_Kind_Null)
+	if (panel_info->char_id == nFTKindNull)
 	{
 		panel_info->unk_0x88 = FALSE;
 		panel_info->is_selected = FALSE;
@@ -3734,7 +3734,7 @@ void mnBattleResetPort(s32 port_id)
 	gMnBattlePanels[port_id].is_selected = FALSE;
 	gMnBattlePanels[port_id].cpu_level = gTransferBattleState.player_block[port_id].level;
 	gMnBattlePanels[port_id].handicap = gTransferBattleState.player_block[port_id].handicap;
-	gMnBattlePanels[port_id].char_id = Ft_Kind_Null;
+	gMnBattlePanels[port_id].char_id = nFTKindNull;
 	gMnBattlePanels[port_id].is_recalling = FALSE;
 	gMnBattlePanels[port_id].team = default_team[port_id];
 
@@ -3798,7 +3798,7 @@ void mnBattleInitPanel(s32 port_id)
 	if (gMnBattlePanels[port_id].is_selected != FALSE)
 	{
 		char_id = gMnBattlePanels[port_id].char_id;
-		if (char_id != Ft_Kind_Null)
+		if (char_id != nFTKindNull)
 			mnBattleSpawnFighter(gMnBattlePanels[port_id].player, port_id, char_id,
 								 gMnBattlePanels[port_id].costume_id);
 	}

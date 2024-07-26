@@ -17,10 +17,10 @@ void ftCommonThrownProcUpdate(GObj *fighter_gobj)
 
         if 
         (
-            (capture_fp->ft_kind != Ft_Kind_Donkey)                       &&
-            (capture_fp->ft_kind != Ft_Kind_PolyDonkey)                   &&
-            (capture_fp->ft_kind != Ft_Kind_GiantDonkey)                  ||
-            (capture_fp->status_info.status_id != ftStatus_Common_ThrowF)
+            (capture_fp->ft_kind != nFTKindDonkey)                       &&
+            (capture_fp->ft_kind != nFTKindPolyDonkey)                   &&
+            (capture_fp->ft_kind != nFTKindGiantDonkey)                  ||
+            (capture_fp->status_info.status_id != nFTCommonStatusThrowF)
         )
         {
             ftCommonThrownSetStatusImmediate(fighter_gobj, this_fp->status_vars.common.thrown.status_id);
@@ -69,7 +69,7 @@ void ftCommonThrownSetStatusQueue(GObj *fighter_gobj, s32 status_id_new, s32 sta
     ftMainSetFighterStatus(fighter_gobj, status_id_new, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
-    if ((capture_fp->ft_kind == Ft_Kind_Yoshi) || (capture_fp->ft_kind == Ft_Kind_PolyYoshi))
+    if ((capture_fp->ft_kind == nFTKindYoshi) || (capture_fp->ft_kind == nFTKindPolyYoshi))
     {
         this_fp->is_invisible = TRUE;
 
@@ -92,7 +92,7 @@ void ftCommonThrownSetStatusImmediate(GObj *fighter_gobj, s32 status_id)
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
-    if ((capture_fp->ft_kind == Ft_Kind_Yoshi) || (capture_fp->ft_kind == Ft_Kind_PolyYoshi))
+    if ((capture_fp->ft_kind == nFTKindYoshi) || (capture_fp->ft_kind == nFTKindPolyYoshi))
     {
         this_fp->is_invisible = TRUE;
 
@@ -102,14 +102,14 @@ void ftCommonThrownSetStatusImmediate(GObj *fighter_gobj, s32 status_id)
 
     if 
     (
-        (capture_fp->ft_kind == Ft_Kind_Mario)      ||
-        (capture_fp->ft_kind == Ft_Kind_MetalMario) ||
-        (capture_fp->ft_kind == Ft_Kind_Luigi)      ||
-        (capture_fp->ft_kind == Ft_Kind_PolyMario)  ||
-        (capture_fp->ft_kind == Ft_Kind_PolyLuigi)
+        (capture_fp->ft_kind == nFTKindMario)      ||
+        (capture_fp->ft_kind == nFTKindMetalMario) ||
+        (capture_fp->ft_kind == nFTKindLuigi)      ||
+        (capture_fp->ft_kind == nFTKindPolyMario)  ||
+        (capture_fp->ft_kind == nFTKindPolyLuigi)
     )
     {
-        if (capture_fp->status_info.status_id == ftStatus_Common_ThrowB)
+        if (capture_fp->status_info.status_id == nFTCommonStatusThrowB)
         {
             ftMainMakeRumble(this_fp, 7, 0);
         }

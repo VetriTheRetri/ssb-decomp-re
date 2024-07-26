@@ -23,7 +23,7 @@ extern intptr_t lITStarmieMatAnimJoint;     // 0x00011338
 // 0x8018B170
 itCreateDesc dITStarmieItemDesc = 
 {
-    It_Kind_Starmie,                        // Item Kind
+    nITKindStarmie,                        // Item Kind
     &gITManagerFileData,                         // Pointer to item file data?
     &lITStarmieItemAttributes,              // Offset of item attributes in file?
 
@@ -77,7 +77,7 @@ itStatusDesc dITStarmieStatusDesc[/* */] =
 wpCreateDesc dITStarmieWeaponSwiftWeaponDesc = 
 {
     0x03,                                   // Render flags?
-    Wp_Kind_StarmieSwift,                   // Weapon Kind
+    nWPKindStarmieSwift,                   // Weapon Kind
     &gITManagerFileData,                         // Pointer to character's loaded files?
     &lITStarmieWeaponSwiftWeaponAttributes, // Offset of weapon attributes in loaded files
 
@@ -127,7 +127,7 @@ void itStarmieNAttackUpdateSwift(GObj *item_gobj)
     {
         Vec3f pos = dobj->translate.vec.f;
 
-        if (ip->it_kind == It_Kind_Starmie)
+        if (ip->it_kind == nITKindStarmie)
         {
             pos.x += ITSTARMIE_STARMIE_SWIFT_SPAWN_OFF_X * ip->lr;
             pos.y += ITSTARMIE_STARMIE_SWIFT_SPAWN_OFF_Y;
@@ -251,7 +251,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
     {
         item_dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }
-    if (ip->it_kind == It_Kind_Starmie)
+    if (ip->it_kind == nITKindStarmie)
     {
         omAddMObjAnimAll(item_dobj->mobj, itGetPData(ip, lITStarmieDataStart, lITStarmieMatAnimJoint), 0); // Linker thing
 
@@ -300,7 +300,7 @@ void itStarmieNFollowInitItemVars(GObj *item_gobj)
     }
     itStarmieNFollowFindFollowPlayerLR(item_gobj, victim_gobj);
 
-    if (ip->it_kind == It_Kind_Starmie)
+    if (ip->it_kind == nITKindStarmie)
     {
         func_800269C0_275C0(alSound_Voice_MBallStarmieSpawn);
     }

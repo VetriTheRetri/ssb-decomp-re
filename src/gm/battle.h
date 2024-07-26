@@ -20,14 +20,14 @@
 #define gmSaveMapMask(kind) (1 << (kind))
 
 #define GMSAVEINFO_CHARACTER_MASK_ALL                                                                                  \
-	(gmSaveChrMask(Ft_Kind_Mario) | gmSaveChrMask(Ft_Kind_Fox) | gmSaveChrMask(Ft_Kind_Donkey)                         \
-	 | gmSaveChrMask(Ft_Kind_Samus) | gmSaveChrMask(Ft_Kind_Luigi) | gmSaveChrMask(Ft_Kind_Link)                       \
-	 | gmSaveChrMask(Ft_Kind_Yoshi) | gmSaveChrMask(Ft_Kind_Captain) | gmSaveChrMask(Ft_Kind_Kirby)                    \
-	 | gmSaveChrMask(Ft_Kind_Pikachu) | gmSaveChrMask(Ft_Kind_Purin) | gmSaveChrMask(Ft_Kind_Ness))
+	(gmSaveChrMask(nFTKindMario) | gmSaveChrMask(nFTKindFox) | gmSaveChrMask(nFTKindDonkey)                         \
+	 | gmSaveChrMask(nFTKindSamus) | gmSaveChrMask(nFTKindLuigi) | gmSaveChrMask(nFTKindLink)                       \
+	 | gmSaveChrMask(nFTKindYoshi) | gmSaveChrMask(nFTKindCaptain) | gmSaveChrMask(nFTKindKirby)                    \
+	 | gmSaveChrMask(nFTKindPikachu) | gmSaveChrMask(nFTKindPurin) | gmSaveChrMask(nFTKindNess))
 
 #define GMSAVEINFO_CHARACTER_MASK_UNLOCK                                                                               \
-	(gmSaveChrMask(Ft_Kind_Ness) | gmSaveChrMask(Ft_Kind_Purin) | gmSaveChrMask(Ft_Kind_Captain)                       \
-	 | gmSaveChrMask(Ft_Kind_Luigi))
+	(gmSaveChrMask(nFTKindNess) | gmSaveChrMask(nFTKindPurin) | gmSaveChrMask(nFTKindCaptain)                       \
+	 | gmSaveChrMask(nFTKindLuigi))
 
 #define GMSAVEINFO_CHARACTER_MASK_STARTER (GMSAVEINFO_CHARACTER_MASK_ALL & ~GMSAVEINFO_CHARACTER_MASK_UNLOCK)
 

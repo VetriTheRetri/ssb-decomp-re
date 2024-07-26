@@ -44,7 +44,7 @@ void grBonus3MakeBumpers(void)
 
     for (i = 0; dobj_desc->index != DOBJ_ARRAY_MAX; i++, dobj_desc++, atrack++)
     {
-        item_gobj = itManagerMakeItemSetupCommon(NULL, It_Kind_GBumper, &dobj_desc->translate, &vel, ITEM_MASK_SPAWN_GROUND);
+        item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &dobj_desc->translate, &vel, ITEM_MASK_SPAWN_GROUND);
 
         if ((*atrack != NULL) && (item_gobj != NULL))
         {
@@ -63,7 +63,7 @@ void grBonus3RBombProcUpdate(GObj *ground_gobj)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
-        itManagerMakeItemSetupCommon(NULL, It_Kind_RBomb, &gGRCommonStruct.bonus3.rbomb_make_pos, &vel, ITEM_MASK_SPAWN_GROUND);
+        itManagerMakeItemSetupCommon(NULL, nITKindRBomb, &gGRCommonStruct.bonus3.rbomb_make_pos, &vel, ITEM_MASK_SPAWN_GROUND);
 
         gGRCommonStruct.bonus3.rbomb_make_wait = 180;
     }
@@ -75,7 +75,7 @@ void grBonus3RBombMakeActor(void)
 {
     s32 pos_ids;
 
-    omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT), grBonus3RBombProcUpdate, GObjProcess_Kind_Proc, 4);
+    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT), grBonus3RBombProcUpdate, nOMObjProcessKindProc, 4);
 
     if (mpCollisionGetMapObjCountKind(nMPMapObjKind1PGameBonus3RBomb) != 1)
     {
@@ -106,7 +106,7 @@ void grBonus3FinishProcUpdate(GObj *ground_gobj)
 // 0x8010B784
 void grBonus3FinishMakeActor(void)
 {
-    omAddGObjCommonProc(omMakeGObjSPAfter(GObj_Kind_Ground, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT), grBonus3FinishProcUpdate, 1, 4);
+    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjKindGround, NULL, GObj_LinkID_Ground, GOBJ_LINKORDER_DEFAULT), grBonus3FinishProcUpdate, 1, 4);
 }
 
 // 0x8010B7C8

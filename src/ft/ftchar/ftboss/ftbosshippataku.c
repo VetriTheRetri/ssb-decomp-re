@@ -15,6 +15,6 @@ void ftBossHippatakuProcUpdate(GObj *fighter_gobj)
 // 0x801593A4
 void ftBossHippatakuSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, ftStatus_Boss_Hippataku, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
+    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusHippataku, 0.0F, 1.0F, FTSTATUPDATE_NONE_PRESERVE);
     ftBossCommonCheckEdgeInvertLR(fighter_gobj);
 }

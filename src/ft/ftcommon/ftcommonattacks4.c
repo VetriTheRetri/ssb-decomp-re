@@ -27,8 +27,8 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
 
     switch (fp->ft_kind)
     {
-    case Ft_Kind_Pikachu:
-    case Ft_Kind_PolyPikachu:
+    case nFTKindPikachu:
+    case nFTKindPolyPikachu:
         if ((fp->command_vars.flags.flag1 != 0) || (fp->command_vars.flags.flag2 != 0))
         {
             fp->status_vars.common.attack4.gfx_id += mtTrigGetRandomIntRange((FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_ID_MAX - 1)) + 1;
@@ -63,8 +63,8 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
             }
         }
         // Fallthrough, should break here for efficiency
-    case Ft_Kind_Ness:
-    case Ft_Kind_PolyNess:
+    case nFTKindNess:
+    case nFTKindPolyNess:
         if ((fp->command_vars.flags.flag1 != 0) && !(fp->is_reflect))
         {
             fp->is_reflect = TRUE;
@@ -85,36 +85,36 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
     f32 stick_angle;
     s32 status_id;
 
-    if (fp->ft_data->battlemotion->script_info[ftMotion_Common_AttackS4HiS].anim_id != 0)
+    if (fp->ft_data->battlemotion->script_info[nFTCommonMotionAttackS4HiS].anim_id != 0)
     {
         stick_angle = ftCommon_GetStickAngleRadians(fp);
 
-        status_id = (stick_angle > FTCOMMON_ATTACKS4_5ANGLE_HI_MIN)  ? ftStatus_Common_AttackS4Hi  :
-                    (stick_angle > FTCOMMON_ATTACKS4_5ANGLE_HIS_MIN) ? ftStatus_Common_AttackS4HiS :
-                    (stick_angle < FTCOMMON_ATTACKS4_5ANGLE_LW_MIN)  ? ftStatus_Common_AttackS4Lw  :
-                    (stick_angle < FTCOMMON_ATTACKS4_5ANGLE_LWS_MIN) ? ftStatus_Common_AttackS4LwS :
-                                                                       ftStatus_Common_AttackS4;
+        status_id = (stick_angle > FTCOMMON_ATTACKS4_5ANGLE_HI_MIN)  ? nFTCommonStatusAttackS4Hi  :
+                    (stick_angle > FTCOMMON_ATTACKS4_5ANGLE_HIS_MIN) ? nFTCommonStatusAttackS4HiS :
+                    (stick_angle < FTCOMMON_ATTACKS4_5ANGLE_LW_MIN)  ? nFTCommonStatusAttackS4Lw  :
+                    (stick_angle < FTCOMMON_ATTACKS4_5ANGLE_LWS_MIN) ? nFTCommonStatusAttackS4LwS :
+                                                                       nFTCommonStatusAttackS4;
     }
-    else if (fp->ft_data->battlemotion->script_info[ftMotion_Common_AttackS4Hi].anim_id != 0)
+    else if (fp->ft_data->battlemotion->script_info[nFTCommonMotionAttackS4Hi].anim_id != 0)
     {
         stick_angle = ftCommon_GetStickAngleRadians(fp);
 
-        status_id = (stick_angle > FTCOMMON_ATTACKS4_3ANGLE_HI_MIN)  ? ftStatus_Common_AttackS4Hi  :
-                    (stick_angle < FTCOMMON_ATTACKS4_3ANGLE_LW_MIN)  ? ftStatus_Common_AttackS4Lw  :
-                                                                       ftStatus_Common_AttackS4;
+        status_id = (stick_angle > FTCOMMON_ATTACKS4_3ANGLE_HI_MIN)  ? nFTCommonStatusAttackS4Hi  :
+                    (stick_angle < FTCOMMON_ATTACKS4_3ANGLE_LW_MIN)  ? nFTCommonStatusAttackS4Lw  :
+                                                                       nFTCommonStatusAttackS4;
     }
-    else status_id = ftStatus_Common_AttackS4;
+    else status_id = nFTCommonStatusAttackS4;
 
     switch (fp->ft_kind)
     {
-    case Ft_Kind_Pikachu:
-    case Ft_Kind_PolyPikachu:
+    case nFTKindPikachu:
+    case nFTKindPolyPikachu:
         fp->command_vars.flags.flag2 = 0;
         fp->command_vars.flags.flag1 = 0;
         break;
 
-    case Ft_Kind_Ness:
-    case Ft_Kind_PolyNess:
+    case nFTKindNess:
+    case nFTKindPolyNess:
         fp->command_vars.flags.flag1 = 0;
         break;
     }
@@ -123,16 +123,16 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
 
     switch (fp->ft_kind)
     {
-    case Ft_Kind_Pikachu:
-    case Ft_Kind_PolyPikachu:
+    case nFTKindPikachu:
+    case nFTKindPolyPikachu:
         fp->status_vars.common.attack4.gfx_id = 0;
 
         fp->proc_lagstart = ftCommon_ProcPauseGFX;
         fp->proc_lagend = ftCommon_ProcResumeGFX;
         break;
 
-    case Ft_Kind_Ness:
-    case Ft_Kind_PolyNess:
+    case nFTKindNess:
+    case nFTKindPolyNess:
         fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFTDataNessBattleMotion + (intptr_t)&lFTNessAttackS4Reflector); // Linker thing
         break;
     }
@@ -152,19 +152,19 @@ sb32 ftCommonAttackS4CheckInterruptDash(GObj *fighter_gobj)
         {
             itStruct *ip = itGetStruct(item_gobj);
 
-            if ((fp->input.pl.button_hold & fp->input.button_mask_z) || ((ip->type == It_Type_Throw) || (ip->type == It_Type_Shoot) && (itMainCheckShootNoAmmo(item_gobj) != FALSE)))
+            if ((fp->input.pl.button_hold & fp->input.button_mask_z) || ((ip->type == nITTypeThrow) || (ip->type == nITTypeShoot) && (itMainCheckShootNoAmmo(item_gobj) != FALSE)))
             {
-                ftCommonItemThrowSetStatus(fighter_gobj, ftStatus_Common_LightThrowF4);
+                ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowF4);
 
                 return TRUE;
             }
             switch (ip->type)
             {
-            case It_Type_Swing:
+            case nITTypeSwing:
                 ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
                 return TRUE;
 
-            case It_Type_Shoot:
+            case nITTypeShoot:
                 ftCommonItemShootSetStatus(fighter_gobj);
                 return TRUE;
             }
@@ -193,20 +193,20 @@ sb32 ftCommonAttackS4CheckInterruptTurn(GObj *fighter_gobj)
         {
             itStruct *ip = itGetStruct(item_gobj);
 
-            if ((fp->input.pl.button_hold & fp->input.button_mask_z) || ((ip->type == It_Type_Throw) || (ip->type == It_Type_Shoot) && (itMainCheckShootNoAmmo(item_gobj) != FALSE)))
+            if ((fp->input.pl.button_hold & fp->input.button_mask_z) || ((ip->type == nITTypeThrow) || (ip->type == nITTypeShoot) && (itMainCheckShootNoAmmo(item_gobj) != FALSE)))
             {
-                ftCommonItemThrowSetStatus(fighter_gobj, ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? ftStatus_Common_LightThrowF4 : ftStatus_Common_LightThrowB4);
+                ftCommonItemThrowSetStatus(fighter_gobj, ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusLightThrowF4 : nFTCommonStatusLightThrowB4);
 
                 return TRUE;
             }
             switch (ip->type)
             {
-            case It_Type_Swing:
+            case nITTypeSwing:
                 ftCommon_StickInputSetLR(fp);
                 ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
                 return TRUE;
 
-            case It_Type_Shoot:
+            case nITTypeShoot:
                 ftCommon_StickInputSetLR(fp);
                 ftCommonItemShootSetStatus(fighter_gobj);
                 return TRUE;
@@ -237,20 +237,20 @@ sb32 ftCommonAttackS4CheckInterruptCommon(GObj *fighter_gobj)
         {
             itStruct *ip = itGetStruct(item_gobj);
 
-            if ((fp->input.pl.button_hold & fp->input.button_mask_z) || ((ip->type == It_Type_Throw) || (ip->type == It_Type_Shoot) && (itMainCheckShootNoAmmo(item_gobj) != FALSE)))
+            if ((fp->input.pl.button_hold & fp->input.button_mask_z) || ((ip->type == nITTypeThrow) || (ip->type == nITTypeShoot) && (itMainCheckShootNoAmmo(item_gobj) != FALSE)))
             {
-                ftCommonItemThrowSetStatus(fighter_gobj, ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? ftStatus_Common_LightThrowF4 : ftStatus_Common_LightThrowB4);
+                ftCommonItemThrowSetStatus(fighter_gobj, ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusLightThrowF4 : nFTCommonStatusLightThrowB4);
 
                 return TRUE;
             }
             switch (ip->type)
             {
-            case It_Type_Swing:
+            case nITTypeSwing:
                 ftCommon_StickInputSetLR(fp);
                 ftCommonItemSwingSetStatus(fighter_gobj, ftItemSwing_Type_Attack4);
                 return TRUE;
 
-            case It_Type_Shoot:
+            case nITTypeShoot:
                 ftCommon_StickInputSetLR(fp);
                 ftCommonItemShootSetStatus(fighter_gobj);
                 return TRUE;

@@ -29,7 +29,7 @@ void scTrainingMode_CheckEnterTrainingMenu()
 
 	if (gPlayerControllers[player].button_new & HAL_BUTTON_START)
 	{
-		GObj* fighter_gobj = gBattleState->player_block[player].fighter_gobj;
+		GObj* fighter_gobj = gBattleState->players[player].fighter_gobj;
 		ftStruct* fp = ftGetStruct(fighter_gobj);
 
 		if (!(fp->is_ignore_training_menu))
@@ -37,8 +37,8 @@ void scTrainingMode_CheckEnterTrainingMenu()
 			ifCommonInterfaceSetGObjFlagsAll(1);
 			scTrainingMode_SetPauseGObjRenderFlags(0);
 			gmRumbleInitPlayers();
-			ftCommon_ResetControllerInputs(gBattleState->player_block[player].fighter_gobj);
-			ftCommon_ResetControllerInputs(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
+			ftCommon_ResetControllerInputs(gBattleState->players[player].fighter_gobj);
+			ftCommon_ResetControllerInputs(gBattleState->players[gTrainingModeStruct.opponent].fighter_gobj);
 
 			gBattleState->game_status = 2;
 
@@ -62,8 +62,8 @@ void scTrainingMode_CheckLeaveTrainingMenu()
 		scTrainingMode_SetPauseGObjRenderFlags(1);
 
 		gBattleState->game_status = 1;
-		func_ovl2_800E7F68(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
-		fighter_gobj = gBattleState->player_block[player].fighter_gobj;
+		func_ovl2_800E7F68(gBattleState->players[gTrainingModeStruct.opponent].fighter_gobj);
+		fighter_gobj = gBattleState->players[player].fighter_gobj;
 		func_ovl2_800E7F68(fighter_gobj);
 
 		if (gPlayerControllers[player].button_new & HAL_BUTTON_B)
@@ -197,7 +197,7 @@ sb32 scTrainingMode_UpdateItemOption()
 				vel.x = vel.z = 0.0F;
 				vel.y = 30.0F;
 
-				pos = DObjGetStruct(gBattleState->player_block[gSceneData.spgame_player].fighter_gobj)->translate.vec.f;
+				pos = DObjGetStruct(gBattleState->players[gSceneData.spgame_player].fighter_gobj)->translate.vec.f;
 
 				pos.y += 200.0F;
 				pos.z = 0.0F;
@@ -244,7 +244,7 @@ sb32 scTrainingMode_UpdateViewOption()
 		}
 		else
 		{
-			fighter_gobj = gBattleState->player_block[gSceneData.spgame_player].fighter_gobj;
+			fighter_gobj = gBattleState->players[gSceneData.spgame_player].fighter_gobj;
 			func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_cam_zoom, 0.1F,
 							   28.0F);
 			gIFPlayerCommonInterface.is_ifmagnify_display = FALSE;
@@ -373,29 +373,29 @@ void func_ovl7_8018DA98()
 	gBattleState->is_display_score = FALSE;
 	gBattleState->item_toggles = 0;
 
-	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
+	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
 		if (player == gSceneData.spgame_player)
 		{
-			gBattleState->player_block[player].player_kind = nFTPlayerKindMan;
-			gBattleState->player_block[player].character_kind = gSceneData.training_human_char_id;
-			gBattleState->player_block[player].costume_index = gSceneData.training_human_costume_id;
-			gBattleState->player_block[player].team_index = 0;
-			gBattleState->player_block[player].player_color_index = player;
+			gBattleState->players[player].pl_kind = nFTPlayerKindMan;
+			gBattleState->players[player].ft_kind = gSceneData.training_human_char_id;
+			gBattleState->players[player].costume = gSceneData.training_human_costume_id;
+			gBattleState->players[player].team_index = 0;
+			gBattleState->players[player].player_color_index = player;
 		}
 		else
-			gBattleState->player_block[player].player_kind = nFTPlayerKindNot;
+			gBattleState->players[player].pl_kind = nFTPlayerKindNot;
 	}
 
 	opponent = (gSceneData.spgame_player == 0) ? 1 : 0;
 
-	gBattleState->player_block[opponent].player_kind = 1;
-	gBattleState->player_block[opponent].tag_kind = 4;
-	gBattleState->player_block[opponent].character_kind = gSceneData.training_cpu_char_id;
-	gBattleState->player_block[opponent].costume_index = gSceneData.training_cpu_costume_id;
-	gBattleState->player_block[opponent].level = 3;
-	gBattleState->player_block[opponent].team_index = 1;
-	gBattleState->player_block[opponent].player_color_index = 4;
+	gBattleState->players[opponent].pl_kind = 1;
+	gBattleState->players[opponent].tag_kind = 4;
+	gBattleState->players[opponent].ft_kind = gSceneData.training_cpu_char_id;
+	gBattleState->players[opponent].costume = gSceneData.training_cpu_costume_id;
+	gBattleState->players[opponent].level = 3;
+	gBattleState->players[opponent].team_index = 1;
+	gBattleState->players[opponent].player_color_index = 4;
 	gBattleState->pl_count = 1;
 	gBattleState->cp_count = 1;
 
@@ -509,7 +509,7 @@ void scTrainingMode_UpdateDamageDisplay(GObj* interface_gobj, s32 index)
 // 8018E138
 void scTrainingMode_UpdateDamageInfo(GObj* interface_gobj)
 {
-	s32 damage = gBattleState->player_block[gTrainingModeStruct.opponent].combo_damage_foe;
+	s32 damage = gBattleState->players[gTrainingModeStruct.opponent].combo_damage_foe;
 	if (damage > 999)
 		damage = 999;
 	if (damage == 0)
@@ -611,7 +611,7 @@ void scTrainingMode_UpdateComboResetWait(GObj* interface_gobj)
 // 8018E56C
 void scTrainingMode_UpdateComboInfo(s32 interface_gobj)
 {
-	s32 combo = gBattleState->player_block[gTrainingModeStruct.opponent].combo_count_foe;
+	s32 combo = gBattleState->players[gTrainingModeStruct.opponent].combo_count_foe;
 
 	if (combo > 99)
 		combo = 99;
@@ -717,7 +717,7 @@ void scTrainingMode_InitItemDisplaySprite()
 // 8018E9AC
 void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 {
-	ftStruct* fp = ftGetStruct(gBattleState->player_block[gSceneData.spgame_player].fighter_gobj);
+	ftStruct* fp = ftGetStruct(gBattleState->players[gSceneData.spgame_player].fighter_gobj);
 	GObj* item_gobj = fp->item_hold;
 	s32 item_id;
 
@@ -1313,13 +1313,13 @@ void scTrainingMode_SetGameStatusGo()
 		ftCommon_SetAllowPlayerControl(fighter_gobj);
 		fighter_gobj = fighter_gobj->link_next;
 	}
-	gBattleState->game_status = gmMatch_GameStatus_Go;
+	gBattleState->game_status = nGMBattleGameStatusGo;
 }
 
 // 801901F4
 void scTrainingMode_UpdateOpponentBehavior()
 {
-	ftStruct* fp = ftGetStruct(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
+	ftStruct* fp = ftGetStruct(gBattleState->players[gTrainingModeStruct.opponent].fighter_gobj);
 
 	if (fp->status_info.pl_kind == nFTPlayerKindCom)
 	{
@@ -1349,37 +1349,37 @@ void scTrainingMode_InitTrainingMode()
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(2, GMMATCH_PLAYERS_MAX);
+	ftManagerAllocFighter(2, GMBATTLE_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
 	ftPublicitySetup();
 
-	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
+	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
 		player_spawn = dFTDefaultFighterDesc;
 
-		if (gBattleState->player_block[player].player_kind == nFTPlayerKindNot)
+		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
 			continue;
 
-		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
-		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
+		ftManagerSetupDataKind(gBattleState->players[player].ft_kind);
+		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
 		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? nGMDirectionL : nGMDirectionR;
-		player_spawn.team = gBattleState->player_block[player].team_index;
+		player_spawn.team = gBattleState->players[player].team_index;
 		player_spawn.player = player;
 		player_spawn.model_lod
 			= ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
-		player_spawn.costume = gBattleState->player_block[player].costume_index;
-		player_spawn.shade = gBattleState->player_block[player].shade_index;
-		player_spawn.handicap = gBattleState->player_block[player].handicap;
-		player_spawn.cp_level = gBattleState->player_block[player].level;
+		player_spawn.costume = gBattleState->players[player].costume;
+		player_spawn.shade = gBattleState->players[player].shade;
+		player_spawn.handicap = gBattleState->players[player].handicap;
+		player_spawn.cp_level = gBattleState->players[player].level;
 		player_spawn.stock_count = gBattleState->stock_setting;
 		player_spawn.damage = 0;
-		player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
+		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
 		player_spawn.controller = &gPlayerControllers[player];
-		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
 		player_spawn.is_skip_entry = TRUE;
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 		ftCommon_ClearPlayerMatchStats(player, fighter_gobj);

@@ -30,7 +30,7 @@
 #define ITEM_MASK_SPAWN_ALL 0xF // Mask all GObj classes that can spawn items?
 
 #define ITEM_TEAM_DEFAULT 4 // Item is teamless; deals damage to any eligible target
-#define ITEM_PORT_DEFAULT GMMATCH_PLAYERS_MAX
+#define ITEM_PORT_DEFAULT GMBATTLE_PLAYERS_MAX
 #define ITEM_HANDICAP_DEFAULT 9 // Handicap?
 #define ITEM_STALE_DEFAULT 1.0F
 #define ITEM_THROW_DEFAULT 1.0F

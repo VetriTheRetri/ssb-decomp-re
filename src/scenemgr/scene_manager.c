@@ -30,7 +30,7 @@ extern GObj* D_80046A5C_40A7C;
 
 // BSS
 u8 D_800A44D0[16];
-gmSaveInfo gSaveData;
+gmBackupInfo gSaveData;
 // current screen info
 gmSceneInfo gSceneData;
 gmBattleState D_800A4B18;
@@ -117,7 +117,7 @@ gsOverlay D_800A3070[65] = {
 };
 
 // gDefaultSaveData is the only non matching in .data
-gmSaveInfo gDefaultSaveData = {
+gmBackupInfo gDefaultSaveData = {
 	{{{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 0, 0, 0, 0, 0, {
 		{0, 0},
 		{0, 0},

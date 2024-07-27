@@ -23,7 +23,7 @@
 #define WEAPON_STALE_DEFAULT 1.0F
 
 #define WEAPON_TEAM_DEFAULT 4
-#define WEAPON_PORT_DEFAULT GMMATCH_PLAYERS_MAX
+#define WEAPON_PORT_DEFAULT GMBATTLE_PLAYERS_MAX
 #define WEAPON_HANDICAP_DEFAULT 9 // CPU level?
 
 #define WEAPON_FLAG_PROJECT (1 << 31) // Perform initial collision check when spawning weapon?

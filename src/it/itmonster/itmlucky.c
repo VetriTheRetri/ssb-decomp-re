@@ -234,7 +234,7 @@ sb32 itMLuckyNSpawnProcUpdate(GObj *lucky_gobj)
     {
         if (!lucky_ip->item_vars.mlucky.egg_spawn_wait)
         {
-            if ((gBattleState->item_toggles & ITEM_TOGGLE_MASK_KIND(nITKindEgg)) && (gBattleState->item_switch != gmMatch_ItemSwitch_None))
+            if ((gBattleState->item_toggles & ITEM_TOGGLE_MASK_KIND(nITKindEgg)) && (gBattleState->item_switch != nGMBattleItemSwitchNone))
             {
                 pos = dobj->translate.vec.f;
 

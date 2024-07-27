@@ -342,9 +342,9 @@ void itMSBombGAttachInitItemVars(GObj *item_gobj)
 
     ip->item_hit.update_state = nGMHitUpdateDisable;
 
-    if ((ip->player != -1) && (ip->player != GMMATCH_PLAYERS_MAX)) // Macro might be off though
+    if ((ip->player != -1) && (ip->player != GMBATTLE_PLAYERS_MAX)) // Macro might be off though
     {
-        GObj *fighter_gobj = gBattleState->player_block[ip->player].fighter_gobj;
+        GObj *fighter_gobj = gBattleState->players[ip->player].fighter_gobj;
 
         if (fighter_gobj != NULL)
         {

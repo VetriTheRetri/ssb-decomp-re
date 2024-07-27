@@ -277,7 +277,7 @@ sb32 itMapCheckMapCollideThrownLanding(GObj *item_gobj, f32 wall_ceil_rebound, f
         {
             if
             (
-                (gBattleState->game_type != gmMatch_GameType_Explain)   && 
+                (gBattleState->game_type != nGMBattleGameTypeExplain)   && 
                 (ip->times_thrown != 0)                                 && 
                 (
                     (ip->times_thrown == ITEM_THROW_NUM_MAX)            

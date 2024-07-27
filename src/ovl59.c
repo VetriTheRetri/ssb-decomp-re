@@ -336,25 +336,25 @@ void gmCreditsCheckUnlocksHidden()
 	s32 fzero[ARRAY_COUNT(dCreditsTextFZero)] = dCreditsTextFZero;
 	s32 classicmario[ARRAY_COUNT(dCreditsTextClassicMario)] = dCreditsTextClassicMario;
 
-	if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_LUIGI))
+	if (!(gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_LUIGI))
 	{
 		gmCreditsSetTextQMarks(luigi, ARRAY_COUNT(luigi));
 	}
-	if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_PURIN))
+	if (!(gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_PURIN))
 	{
 		gmCreditsSetTextQMarks(purin, ARRAY_COUNT(purin));
 	}
-	if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_CAPTAIN))
+	if (!(gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_CAPTAIN))
 	{
 		gmCreditsSetTextQMarks(captain, ARRAY_COUNT(captain));
 		gmCreditsSetTextQMarks(fzero, ARRAY_COUNT(fzero));
 	}
-	if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NESS))
+	if (!(gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_NESS))
 	{
 		gmCreditsSetTextQMarks(ness, ARRAY_COUNT(ness));
 		gmCreditsSetTextQMarks(earthbound, ARRAY_COUNT(earthbound));
 	}
-	if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_INISHIE))
+	if (!(gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_INISHIE))
 	{
 		gmCreditsSetTextQMarks(classicmario, ARRAY_COUNT(classicmario));
 	}

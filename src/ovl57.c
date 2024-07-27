@@ -264,7 +264,7 @@ void mnCongraStartScene()
 		break;
 
 	case scMajor_Kind_DebugChrSel:
-		sMNCongraFighterKind = gTransferBattleState.player_block[0].character_kind;
+		sMNCongraFighterKind = gTransferBattleState.players[0].ft_kind;
 		break;
 	}
 	D_ovl57_80132208.unk_scdatabounds_0xC = ((uintptr_t) &D_NF_800A5240 - 0x1900);

@@ -117,7 +117,7 @@ GObj* grZebesMakeAcid(void)
 // 0x80108240
 void grZebesAcidUpdateWait(void)
 {
-    if (gBattleState->game_status != gmMatch_GameStatus_Wait)
+    if (gBattleState->game_status != nGMBattleGameStatusWait)
     {
         gGRCommonStruct.zebes.acid_status = nGRZebesAcidStatusNormal;
     }

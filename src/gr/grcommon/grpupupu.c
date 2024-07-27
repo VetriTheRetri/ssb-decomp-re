@@ -269,7 +269,7 @@ void grPupupuWhispySetWindPush(void)
 // 0x80105AF0
 void grPupupuWhispyUpdateSleep(void)
 {
-    if (gBattleState->game_status != gmMatch_GameStatus_Wait)
+    if (gBattleState->game_status != nGMBattleGameStatusWait)
     {
         gGRCommonStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusWait;
     }

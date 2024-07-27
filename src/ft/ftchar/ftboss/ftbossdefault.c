@@ -10,7 +10,7 @@
 // 0x80158750
 void ftBossDefaultProcInterrupt(GObj *fighter_gobj)
 {
-    if (gBattleState->game_status != gmMatch_GameStatus_Wait)
+    if (gBattleState->game_status != nGMBattleGameStatusWait)
     {
         ftBossWaitSetStatus(fighter_gobj);
     }

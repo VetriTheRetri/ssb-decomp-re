@@ -2,7 +2,6 @@
 #define _BATTLE_H_
 
 #include <ssb_types.h>
-#include <PR/ultratypes.h>
 #include <sys/obj.h>
 #include <PR/gu.h>
 
@@ -12,171 +11,194 @@
 
 #define DAIRANTOU_CHR_PLAYABLE_MAX 12
 
-#define GMMATCH_TIMELIMIT_INFINITE 100
-#define GMMATCH_BONUSGAME_TASK_MAX 10
-#define GMMATCH_PLAYERS_MAX 4 // Global limit for simultaneous players in a match
+#define GMBATTLE_TIMELIMIT_INFINITE 100
+#define GMBATTLE_BONUSGAME_TASK_MAX 10
+#define GMBATTLE_PLAYERS_MAX 4 // Global limit for simultaneous players in a match
 
-#define gmSaveChrMask(kind) (1 << (kind))
-#define gmSaveMapMask(kind) (1 << (kind))
+#define gmBackupChrMask(kind) (1 << (kind))
+#define gmBackupMapMask(kind) (1 << (kind))
 
-#define GMSAVEINFO_CHARACTER_MASK_ALL                                                                                  \
-	(gmSaveChrMask(nFTKindMario) | gmSaveChrMask(nFTKindFox) | gmSaveChrMask(nFTKindDonkey)                         \
-	 | gmSaveChrMask(nFTKindSamus) | gmSaveChrMask(nFTKindLuigi) | gmSaveChrMask(nFTKindLink)                       \
-	 | gmSaveChrMask(nFTKindYoshi) | gmSaveChrMask(nFTKindCaptain) | gmSaveChrMask(nFTKindKirby)                    \
-	 | gmSaveChrMask(nFTKindPikachu) | gmSaveChrMask(nFTKindPurin) | gmSaveChrMask(nFTKindNess))
+#define GMBACKUPINFO_CHARACTER_MASK_ALL	\
+(									 	\
+	gmBackupChrMask(nFTKindMario) 	|	\
+	gmBackupChrMask(nFTKindFox) 	|	\
+	gmBackupChrMask(nFTKindDonkey)	|	\
+	gmBackupChrMask(nFTKindSamus) 	|	\
+	gmBackupChrMask(nFTKindLuigi) 	|	\
+	gmBackupChrMask(nFTKindLink) 	|	\
+	gmBackupChrMask(nFTKindYoshi) 	|	\
+	gmBackupChrMask(nFTKindCaptain) |	\
+	gmBackupChrMask(nFTKindKirby)	|	\
+	gmBackupChrMask(nFTKindPikachu) |	\
+	gmBackupChrMask(nFTKindPurin) 	|	\
+	gmBackupChrMask(nFTKindNess)		\
+)
 
-#define GMSAVEINFO_CHARACTER_MASK_UNLOCK                                                                               \
-	(gmSaveChrMask(nFTKindNess) | gmSaveChrMask(nFTKindPurin) | gmSaveChrMask(nFTKindCaptain)                       \
-	 | gmSaveChrMask(nFTKindLuigi))
+#define GMBACKUPINFO_CHARACTER_MASK_UNLOCK	\
+(											\
+	gmBackupChrMask(nFTKindNess) 		|	\
+	gmBackupChrMask(nFTKindPurin) 		| 	\
+	gmBackupChrMask(nFTKindCaptain) 	| 	\
+	gmBackupChrMask(nFTKindLuigi)			\
+)
 
-#define GMSAVEINFO_CHARACTER_MASK_STARTER (GMSAVEINFO_CHARACTER_MASK_ALL & ~GMSAVEINFO_CHARACTER_MASK_UNLOCK)
+#define GMBACKUPINFO_CHARACTER_MASK_STARTER (GMBACKUPINFO_CHARACTER_MASK_ALL & ~GMBACKUPINFO_CHARACTER_MASK_UNLOCK)
 
-typedef enum gmSaveUnlock
+typedef enum gmBackupUnlock
 {
-	gmSave_Unlock_Luigi,	 // Luigi
-	gmSave_Unlock_Ness,		 // Ness
-	gmSave_Unlock_Captain,	 // Captain Falcon
-	gmSave_Unlock_Purin,	 // Jigglypuff
-	gmSave_Unlock_Inishie,	 // Mushroom Kingdom
-	gmSave_Unlock_SoundTest, // Sound Test menu
-	gmSave_Unlock_ItemSwitch // Item Switch menu
+	nGMBackupUnlockLuigi,	 	// Luigi
+	nGMBackupUnlockNess,		// Ness
+	nGMBackupUnlockCaptain,	 	// Captain Falcon
+	nGMBackupUnlockPurin,	 	// Jigglypuff
+	nGMBackupUnlockInishie,	 	// Mushroom Kingdom
+	nGMBackupUnlockSoundTest, 	// Sound Test menu
+	nGMBackupUnlockItemSwitch 	// Item Switch menu
 
-} gmSaveUnlock;
+} gmBackupUnlock;
 
-#define GMSAVE_UNLOCK_MASK_LUIGI (1 << gmSave_Unlock_Luigi)
-#define GMSAVE_UNLOCK_MASK_NESS (1 << gmSave_Unlock_Ness)
-#define GMSAVE_UNLOCK_MASK_CAPTAIN (1 << gmSave_Unlock_Captain)
-#define GMSAVE_UNLOCK_MASK_PURIN (1 << gmSave_Unlock_Purin)
-#define GMSAVE_UNLOCK_MASK_INISHIE (1 << gmSave_Unlock_Inishie)
-#define GMSAVE_UNLOCK_MASK_SOUNDTEST (1 << gmSave_Unlock_SoundTest)
-#define GMSAVE_UNLOCK_MASK_ITEMSWITCH (1 << gmSave_Unlock_ItemSwitch)
+#define GMBACKUP_UNLOCK_MASK_LUIGI (1 << nGMBackupUnlockLuigi)
+#define GMBACKUP_UNLOCK_MASK_NESS (1 << nGMBackupUnlockNess)
+#define GMBACKUP_UNLOCK_MASK_CAPTAIN (1 << nGMBackupUnlockCaptain)
+#define GMBACKUP_UNLOCK_MASK_PURIN (1 << nGMBackupUnlockPurin)
+#define GMBACKUP_UNLOCK_MASK_INISHIE (1 << nGMBackupUnlockInishie)
+#define GMBACKUP_UNLOCK_MASK_SOUNDTEST (1 << nGMBackupUnlockSoundTest)
+#define GMBACKUP_UNLOCK_MASK_ITEMSWITCH (1 << nGMBackupUnlockItemSwitch)
 
-#define GMSAVE_UNLOCK_MASK_ALL                                                                                         \
-	(GMSAVE_UNLOCK_MASK_ITEMSWITCH | GMSAVE_UNLOCK_MASK_SOUNDTEST | GMSAVE_UNLOCK_MASK_INISHIE                         \
-	 | GMSAVE_UNLOCK_MASK_PURIN | GMSAVE_UNLOCK_MASK_CAPTAIN | GMSAVE_UNLOCK_MASK_NESS | GMSAVE_UNLOCK_MASK_LUIGI)
-#define GMSAVE_UNLOCK_MASK_NEWCOMERS (GMSAVE_UNLOCK_MASK_LUIGI | GMSAVE_UNLOCK_MASK_PURIN | GMSAVE_UNLOCK_MASK_CAPTAIN | GMSAVE_UNLOCK_MASK_NESS)
-#define GMSAVE_UNLOCK_MASK_PRIZE (GMSAVE_UNLOCK_MASK_ALL & ~GMSAVE_UNLOCK_MASK_NEWCOMERS)
+#define GMBACKUP_UNLOCK_MASK_ALL 		\
+(										\
+	GMBACKUP_UNLOCK_MASK_ITEMSWITCH | 	\
+	GMBACKUP_UNLOCK_MASK_SOUNDTEST 	| 	\
+	GMBACKUP_UNLOCK_MASK_INISHIE   	|	\
+	GMBACKUP_UNLOCK_MASK_PURIN 		| 	\
+	GMBACKUP_UNLOCK_MASK_CAPTAIN 	| 	\
+	GMBACKUP_UNLOCK_MASK_NESS 		| 	\
+	GMBACKUP_UNLOCK_MASK_LUIGI			\
+)
 
-#define GMSAVE_GROUND_MASK_ALL                                                                                         \
-	(gmSaveMapMask(Gr_Kind_Castle) | gmSaveMapMask(Gr_Kind_Sector) | gmSaveMapMask(Gr_Kind_Jungle)                     \
-	 | gmSaveMapMask(Gr_Kind_Zebes) | gmSaveMapMask(Gr_Kind_Hyrule) | gmSaveMapMask(Gr_Kind_Yoster)                    \
-	 | gmSaveMapMask(Gr_Kind_Pupupu) | gmSaveMapMask(Gr_Kind_Yamabuki))
+#define GMBACKUP_UNLOCK_MASK_NEWCOMERS (GMBACKUP_UNLOCK_MASK_LUIGI | GMBACKUP_UNLOCK_MASK_PURIN | GMBACKUP_UNLOCK_MASK_CAPTAIN | GMBACKUP_UNLOCK_MASK_NESS)
+#define GMBACKUP_UNLOCK_MASK_PRIZE (GMBACKUP_UNLOCK_MASK_ALL & ~GMBACKUP_UNLOCK_MASK_NEWCOMERS)
+
+#define GMBACKUP_GROUND_MASK_ALL 		\
+(										\
+	gmBackupMapMask(nGRKindCastle) 	| 	\
+	gmBackupMapMask(nGRKindSector) 	|	\
+	gmBackupMapMask(nGRKindJungle) 	|	\
+	gmBackupMapMask(nGRKindZebes) 	|	\
+	gmBackupMapMask(nGRKindHyrule) 	|	\
+	gmBackupMapMask(nGRKindYoster) 	|	\
+	gmBackupMapMask(nGRKindPupupu) 	| 	\
+	gmBackupMapMask(nGRKindYamabuki)	\
+)
 
 typedef enum gmMatchPlayerColor
 {
-	gmMatch_PlayerColor_Red,
-	gmMatch_PlayerColor_Blue,
-	gmMatch_PlayerColor_Yellow,
-	gmMatch_PlayerColor_Green,
-	gmMatch_PlayerColor_CP
+	nGMBattlePlayerColorRed,
+	nGMBattlePlayerColorBlue,
+	nGMBattlePlayerColorYellow,
+	nGMBattlePlayerColorGreen,
+	nGMBattlePlayerColorCP
 
 } gmMatchPlayerColor;
 
 typedef enum gmMatchGameStatus
 {
-	gmMatch_GameStatus_Wait,	   // Match not yet started
-	gmMatch_GameStatus_Go,		   // Ongoing match
-	gmMatch_GameStatus_Pause,	   // Player paused
-	gmMatch_GameStatus_Unpause,	   // Player unpaused
-	gmMatch_GameStatus_End = 5,	   // Normal match end
-	gmMatch_GameStatus_BossDefeat, // Master Hand defeated
-	gmMatch_GameStatus_Set		   // Player has input A + B + Z + R / 1P Game Stage End?
+	nGMBattleGameStatusWait,	   // Match not yet started
+	nGMBattleGameStatusGo,		   // Ongoing match
+	nGMBattleGameStatusPause,	   // Player paused
+	nGMBattleGameStatusUnpause,	   // Player unpaused
+	nGMBattleGameStatusEnd = 5,	   // Normal match end
+	nGMBattleGameStatusBossDefeat, // Master Hand defeated
+	nGMBattleGameStatusSet		   // Player has input A + B + Z + R / 1P Game Stage End?
 
 } gmMatchGameStatus;
 
 typedef enum gmMatchItemSwitch
 {
-	gmMatch_ItemSwitch_None,
-	gmMatch_ItemSwitch_VeryLow,
-	gmMatch_ItemSwitch_Low,
-	gmMatch_ItemSwitch_Middle,
-	gmMatch_ItemSwitch_High,
-	gmMatch_ItemSwitch_VeryHigh
+	nGMBattleItemSwitchNone,
+	nGMBattleItemSwitchVeryLow,
+	nGMBattleItemSwitchLow,
+	nGMBattleItemSwitchMiddle,
+	nGMBattleItemSwitchHigh,
+	nGMBattleItemSwitchVeryHigh
 
 } gmMatchItemSwitch;
 
 typedef enum gmMatchGameRules
 {
-	gmMatch_GameRule_Time,
-	gmMatch_GameRule_Stock,
-	gmMatch_GameRule_Bonus,
-	gmMatch_GameRule_1PGame
+	nGMBattleGameRuleTime,
+	nGMBattleGameRuleStock,
+	nGMBattleGameRuleBonus,
+	nGMBattleGameRule1PGame
 
 } gmMatchGameRules;
 
-#define GMMATCH_GAMERULE_TIME (1 << gmMatch_GameRule_Time)	   // 0x1
-#define GMMATCH_GAMERULE_STOCK (1 << gmMatch_GameRule_Stock)   // 0x2
-#define GMMATCH_GAMERULE_BONUS (1 << gmMatch_GameRule_Bonus)   // 0x4
-#define GMMATCH_GAMERULE_1PGAME (1 << gmMatch_GameRule_1PGame) // 0x8
+#define GMBATTLE_GAMERULE_TIME 	 (1 << nGMBattleGameRuleTime)	// 0x1
+#define GMBATTLE_GAMERULE_STOCK	 (1 << nGMBattleGameRuleStock)  // 0x2
+#define GMBATTLE_GAMERULE_BONUS  (1 << nGMBattleGameRuleBonus) 	// 0x4
+#define GMBATTLE_GAMERULE_1PGAME (1 << nGMBattleGameRule1PGame) // 0x8
 
-typedef enum gmMatchGameDifficulty
+typedef enum gm1PGameDifficulty
 {
-	gmMatch_Difficulty_VeryEasy,
-	gmMatch_Difficulty_Easy,
-	gmMatch_Difficulty_Normal,
-	gmMatch_Difficulty_Hard,
-	gmMatch_Difficulty_VeryHard
+	nGM1PGameDifficultyVeryEasy,
+	nGM1PGameDifficultyEasy,
+	nGM1PGameDifficultyNormal,
+	nGM1PGameDifficultyHard,
+	nGM1PGameDifficultyVeryHard
 
-} gmMatchGameDifficulty;
+} gm1PGameDifficulty;
 
-typedef enum gmSaveProtectPenalty
+typedef enum gmBackupProtectPenalty
 {
-	gmSave_ProtectFail_RandomKnockback,
-	gmSave_ProtectFail_HalfStickRange,
-	gmSave_ProtectFail_1PGameMario,
-	gmSave_ProtectFail_VSModeCastle
+	nGMBackupErrorRandomKnockback,
+	nGMBackupErrorHalfStickRange,
+	nGMBackupError1PGameMario,
+	nGMBackupErrorBattleCastle
 
-} gmSaveProtectPenalty;
+} gmBackupProtectPenalty;
 
-#define GMSAVE_PROTECTFAIL_RANDOMKNOCKBACK                                                                             \
-	(1 << gmSave_ProtectFail_RandomKnockback) // 0x1 - Random knockback between
-											  // 0.1 (?) and 1.0 x 200u
-#define GMSAVE_PROTECTFAIL_HALFSTICKRANGE                                                                              \
-	(1 << gmSave_ProtectFail_HalfStickRange)								 // 0x2 - Halves control stick
-																			 // input range
-#define GMSAVE_PROTECTFAIL_1PGAMEMARIO (1 << gmSave_ProtectFail_1PGameMario) // 0x4 - Forces Mario in 1P Game
-#define GMSAVE_PROTECTFAIL_VSMODECASTLE                                                                                \
-	(1 << gmSave_ProtectFail_VSModeCastle) // 0x8 - Forces Peach's Castle in VS
-										   // Mode
+#define GMBACKUP_PROTECTFAIL_RANDOMKNOCKBACK (1 << nGMBackupErrorRandomKnockback)	// 0x1 - Random knockback between 0.1 (?) and 1.0 x 200u
+#define GMBACKUP_PROTECTFAIL_HALFSTICKRANGE  (1 << nGMBackupErrorHalfStickRange)	// 0x2 - Halves control stick input range
+#define GMBACKUP_PROTECTFAIL_1PGAMEMARIO 	(1 << nGMBackupError1PGameMario) 			// 0x4 - Forces Mario in 1P Game
+#define GMBACKUP_PROTECTFAIL_VSMODECASTLE (1 << nGMBackupErrorBattleCastle) 		// 0x8 - Forces Peach's Castle in VS Mode
 
 typedef enum gmMatchGameType
 {
-    gmMatch_GameType_Demo,          // 0x0
-    gmMatch_GameType_VSMode,        // 0x1
-    gmMatch_GameType_Bonus,         // 0x2
-    gmMatch_GameType_Explain,       // 0x3
-    gmMatch_GameType_Intro,         // 0x4
-    gmMatch_GameType_1PGame,        // 0x5
-    gmMatch_GameType_Unk6,          // 0x6
-    gmMatch_GameType_TrainingMode   // 0x7
+    nGMBattleGameTypeDemo,          // 0x0
+    nGMBattleGameTypeVSMode,        // 0x1
+    nGMBattleGameTypeBonus,         // 0x2
+    nGMBattleGameTypeExplain,       // 0x3
+    nGMBattleGameTypeOpening,       // 0x4
+    nGMBattleGameType1PGame,        // 0x5
+    nGMBattleGameTypeUnk6,          // 0x6
+    nGMBattleGameTypeTraining   	// 0x7
 
 } gmMatchGameType;
 
-typedef enum gm1PStageKind
+typedef enum gm1PGameStageKind
 {
-	gm1PGame_Stage_Link,	// VS Link
-	gm1PGame_Stage_Yoshi,	// VS Yoshi Team
-	gm1PGame_Stage_Fox,		// VS Fox
-	gm1PGame_Stage_Bonus1,	// Break the Targets
-	gm1PGame_Stage_Mario,	// VS Mario Bros.
-	gm1PGame_Stage_Pikachu, // VS Pikachu
-	gm1PGame_Stage_Donkey,	// VS Giant Donkey Kong
-	gm1PGame_Stage_Bonus2,	// Board the Platforms
-	gm1PGame_Stage_Kirby,	// VS Kirby Team
-	gm1PGame_Stage_Samus,	// VS Samus
-	gm1PGame_Stage_Metal,	// VS Metal Mario
-	gm1PGame_Stage_Bonus3,	// Race to the Finish
-	gm1PGame_Stage_Zako,	// VS Fighting Polygon Team
-	gm1PGame_Stage_Boss,	// VS Master Hand
+	nGM1PGameStageLink,		// VS Link
+	nGM1PGameStageYoshi,	// VS Yoshi Team
+	nGM1PGameStageFox,		// VS Fox
+	nGM1PGameStageBonus1,	// Break the Targets
+	nGM1PGameStageMario,	// VS Mario Bros.
+	nGM1PGameStagePikachu, 	// VS Pikachu
+	nGM1PGameStageDonkey,	// VS Giant Donkey Kong
+	nGM1PGameStageBonus2,	// Board the Platforms
+	nGM1PGameStageKirby,	// VS Kirby Team
+	nGM1PGameStageSamus,	// VS Samus
+	nGM1PGameStageMetal,	// VS Metal Mario
+	nGM1PGameStageBonus3,	// Race to the Finish
+	nGM1PGameStageZako,		// VS Fighting Polygon Team
+	nGM1PGameStageBoss,		// VS Master Hand
 
-	gm1PGame_Stage_ChallengerStart,						   // Start of unlockable character stages
-	gm1PGame_Stage_Luigi = gm1PGame_Stage_ChallengerStart, // Challenger Approaching: Luigi
-	gm1PGame_Stage_Ness,								   // Challenger Approaching: Ness
-	gm1PGame_Stage_Purin,								   // Challenger Approaching: Jigglypuff
-	gm1PGame_Stage_Captain,								   // Challenger Approaching: Captain Falcon
-	gm1PGame_Stage_ChallengerEnd = gm1PGame_Stage_Captain  // End of unlockable character stages
+	nGM1PGameStageChallengerStart,						   	// Start of unlockable character stages
+	nGM1PGameStageLuigi = nGM1PGameStageChallengerStart, 	// Challenger Approaching: Luigi
+	nGM1PGameStageNess,								   		// Challenger Approaching: Ness
+	nGM1PGameStagePurin,								   	// Challenger Approaching: Jigglypuff
+	nGM1PGameStageCaptain,								   	// Challenger Approaching: Captain Falcon
+	nGM1PGameStageChallengerEnd = nGM1PGameStageCaptain  	// End of unlockable character stages
 
-} gm1PStageKind;
+} gm1PGameStageKind;
 
 typedef enum scMajorScene
 {
@@ -231,46 +253,31 @@ typedef struct scAutoDemoProc
 
 } scAutoDemoProc;
 
-typedef struct gmItemSpawn
-{
-	u8 max_items;		 // Maximum number of items allowed to spawn?
-	u8* item_toggles;	 // Pointer to array of item on/off toggles
-	u32 item_spawn_wait; // Spawn a random new item when this reaches 0
-	void* unk_0xC;
-	u32 unk_0x10;
-	s8 unk_0x14;
-	u8* unk_0x18;
-	u16 unk_0x1C; // Also max items?
-	u16* unk_0x20;
-
-} gmItemSpawn;
-
 typedef struct gm1PGameCom
 {
 	ub8 is_team_attack;
 	u8 item_switch;
-	u8 level[5];
-	u8 handicap[5];
-	u8 level2[5];
-	u8 handicap2[5];
+    u8 enemy_level[5];
+    u8 enemy_handicap[5];
+    u8 ally_level[5];
+    u8 ally_handicap[5];
 
 } gm1PGameCom;
 
 typedef struct gm1PGameStage
 {
-	u8 filler_0x0[0x1];
-	u8 gr_kind;
-	u8 filler_0x2[0x4 - 0x2];
-	u32 item_toggles;
-	u8 opponent_count; // Number of enemy players to spawn?
-	u8 character_kind[2];
-	u8 opponent_behavior;
-	u8 ally_count;
-	u8 ally_behavior;
+    u8 screenflash_alpha;
+    u8 gr_kind;
+    u32 item_toggles;
+    u8 opponent_count;            // Number of enemy players to spawn?
+    u8 ft_kind[2];
+    u8 opponent_behavior;
+    u8 ally_count;
+    u8 ally_behavior;
 
 } gm1PGameStage;
 
-typedef struct g1PGamePlayer
+typedef struct gm1PGameFighter
 {
 	s32 mapobj_kind; // Spawn position?
 	void* anim_bank;
@@ -278,10 +285,10 @@ typedef struct g1PGamePlayer
 	s32 team_order;
 	sb32 is_skip_entry;
 	sb32 is_skip_magnify;
-	u8 com_behavior;
+	u8 cp_trait;
 	f32 cam_frame_mul;
 
-} g1PGamePlayer;
+} gm1PGameFighter;
 
 typedef struct gm1PGameStats
 {
@@ -345,7 +352,7 @@ typedef struct scRuntimeInfo
 	s32 unk_0x84;
 	void (*proc_start)(); // 0x88
 
-} scRuntimeInfo;
+} scRuntimeInfo; // This is actually something from gtl.c, will have to move at a later point
 
 typedef struct gmStaleInfo
 {
@@ -365,15 +372,15 @@ typedef struct gmBattleResults
 
 typedef struct gmPlayerBlock
 {
-	u8 level;		   // Actually begins at 1 instead of 0
-	u8 handicap;	   // Master Hand's handicap value is 35!?
-	u8 player_kind;	   // 0 = HMN, 1 = CPU, 2 = none (?), 5 = How to Play (?)
-	u8 character_kind; // Same as ftKind
+	u8 level;		   		// Actually begins at 1 instead of 0
+	u8 handicap;	   		// Master Hand's handicap value is 35!?
+	u8 pl_kind;	   			// 0 = HMN, 1 = CPU, 2 = none (?), 5 = How to Play (?)
+	u8 ft_kind; 			// Same as ftKind
 	u8 team_index;
-	u8 player; // Identical to team index if team battle is on?
-	u8 costume_index;
-	u8 shade_index; // Color overlay applied when several players use the same
-					// costume
+	u8 player; 				// Identical to team index if team battle is on?
+	u8 costume;
+	u8 shade; 				// Color overlay applied when several players use the same
+							// costume
 	u8 player_color_index;	// Used for emblems, player tags, and possibly more
 	ub8 is_single_stockicon;// Whether player's stock is permanent or a limited
 							// amount
@@ -384,23 +391,18 @@ typedef struct gmPlayerBlock
 	u8 placement;			// Player's placement in battle results
 	s32 falls;
 	s32 score;								  // Caps at positive 999, crashes if way too low in the negatives
-	s32 total_ko_player[GMMATCH_PLAYERS_MAX]; // KOs scored on other players
+	s32 total_ko_player[GMBATTLE_PLAYERS_MAX]; // KOs scored on other players
 	s32 unk_pblock_0x28;
 	s32 unk_pblock_0x2C;
-	s32 total_self_destruct;					  // Applied when damaging player's ID is -1 or
-												  // GMMATCH_PLAYERS_MAX
+	s32 total_self_destruct;					  // Applied when damaging player's ID is -1 or GMBATTLE_PLAYERS_MAX
 	s32 total_damage_dealt;						  // Total damage dealt to all players
 	s32 total_damage_all;						  // Damage received from all hazards
-	s32 total_damage_player[GMMATCH_PLAYERS_MAX]; // Total damage received from
-												  // each player present
-	s32 stock_damage_all;						  // All damage received per current stock, from any
-												  // hazard
-	s32 combo_damage_foe;						  // Total damage from consecutive hits dealt by foes
-												  // (Resets when hitstun ends)
-	s32 combo_count_foe;						  // Number of consecutive hits received from foes
-												  // (Resets when hitstun ends)
-	GObj* fighter_gobj;							  // Pointer to player's fighter GObj
-	u32 stale_index;							  // Current position in stale queue?
+	s32 total_damage_player[GMBATTLE_PLAYERS_MAX];// Total damage received from each player present
+	s32 stock_damage_all;						  // All damage received per current stock, from any hazard
+	s32 combo_damage_foe;						  // Total damage from consecutive hits dealt by foes (Resets when hitstun ends)
+	s32 combo_count_foe;						  // Number of consecutive hits received from foes (Resets when hitstun ends)
+	GObj *fighter_gobj;							  // Pointer to player's fighter GObj
+	u32 stale_id;							  	  // Current position in stale queue?
 	gmStaleInfo stale_info[5];
 
 } gmPlayerBlock;
@@ -410,16 +412,16 @@ typedef struct gmBattleState
 	u8 game_type;
 	u8 gr_kind;
 	ub8 is_team_battle;
-	u8 match_rules; // Series of flags; 0x1 = time, 0x2 = stock
-	u8 pl_count;	// Number of human players registered
-	u8 cp_count;	// Number of computer players registered
+	u8 game_rules; 			// Series of flags; 0x1 = time, 0x2 = stock
+	u8 pl_count;			// Number of human players registered
+	u8 cp_count;			// Number of computer players registered
 	u8 time_limit;
-	u8 stock_setting;	 // Number of stocks set in game rules
-	u8 handicap_setting; // 0 = OFF, 1 = ON, 2 = AUTO
-	ub8 is_team_attack;	 // 0 = OFF, 1 = ON
-	ub8 is_stage_select; // 0 = OFF, 1 = ON
+	u8 stock_setting;	 	// Number of stocks set in game rules
+	u8 handicap_setting; 	// 0 = OFF, 1 = ON, 2 = AUTO
+	ub8 is_team_attack;	 	// 0 = OFF, 1 = ON
+	ub8 is_stage_select; 	// 0 = OFF, 1 = ON
 	u8 damage_ratio;
-	u32 item_toggles; // Bits = item's on/off switch from match settings
+	u32 item_toggles; 		// Bits = item's on/off switch from match settings
 	u8 unk_0x10;
 	u8 game_status;
 	u8 unk_0x12;
@@ -427,24 +429,24 @@ typedef struct gmBattleState
 	u32 match_time_remain;	// Frames remaining until timeout
 	u32 match_time_current; // Current match frame, counts up from 0
 	u8 item_switch;			// Has various settings (0x0 on Master Hand and Giant DK
-					// (?), 0x1 on Metal Mario battle, 0x2 on Hyrule Castle,
-					// 0x3 on various stages, 0x4 on Polygon Team?
-	ub32 is_display_score : 1;						 // Displays score when a fighter falls
-	ub32 is_not_teamshadows : 1;					 // If FALSE, shadows are colored based on
-													 // players' team affiliation, otherwise use
-													 // default shadow color
-	gmPlayerBlock player_block[GMMATCH_PLAYERS_MAX]; // Holds data for each player
+							// (?), 0x1 on Metal Mario battle, 0x2 on Hyrule Castle,
+							// 0x3 on various stages, 0x4 on Polygon Team?
+	ub32 is_display_score : 1;						// Displays score when a fighter falls
+	ub32 is_not_teamshadows : 1;					// If FALSE, shadows are colored based on
+													// players' team affiliation, otherwise use
+													// default shadow color
+	gmPlayerBlock players[GMBATTLE_PLAYERS_MAX]; 	// Holds data for each player
 
 } gmBattleState;
 
-typedef struct gmSaveVSRecordCombo
+typedef struct gmBackupVSRecordCombo
 {
 	/* 0x00 */ u16 games_with;
 	/* 0x02 */ u16 games_played_against;
 
-} gmSaveVSRecordCombo; // size == 4
+} gmBackupVSRecordCombo; // size == 4
 
-typedef struct gmSaveVSRecord
+typedef struct gmBackupVSRecord
 {
 	/* 0x00 */ u16 ko_count[DAIRANTOU_CHR_PLAYABLE_MAX];
 	/* 0x18 */ u32 time_used; //< in seconds
@@ -453,11 +455,11 @@ typedef struct gmSaveVSRecord
 	/* 0x24 */ u16 self_destructs;
 	/* 0x26 */ u16 games_played;
 	/* 0x28 */ u16 games_played_against;
-	/* 0x2C */ gmSaveVSRecordCombo combinations[DAIRANTOU_CHR_PLAYABLE_MAX];
+	/* 0x2C */ gmBackupVSRecordCombo combinations[DAIRANTOU_CHR_PLAYABLE_MAX];
 
-} gmSaveVSRecord; // size == 0x5C
+} gmBackupVSRecord; // size == 0x5C
 
-typedef struct gmSave1PRecord
+typedef struct gmBackup1PRecord
 {
 	u32 spgame_hiscore;
 	u32 spgame_continues;
@@ -469,12 +471,12 @@ typedef struct gmSave1PRecord
 	u8 bonus2_task_count; // Platforms boarded
 	u8 spgame_complete;	  // Whether character has completed 1P Game or not
 
-} gmSave1PRecord;
+} gmBackup1PRecord;
 
 // is this the saved data structure?
-typedef struct gmSaveInfo
+typedef struct gmBackupInfo
 {
-	gmSaveVSRecord vs_records[DAIRANTOU_CHR_PLAYABLE_MAX];
+	gmBackupVSRecord vs_records[DAIRANTOU_CHR_PLAYABLE_MAX];
 	ub8 is_allow_screenflash; // Toggle for enabling white screen flash when,
 							  // for example, a character takes too much
 							  // damage. Leftover from unused "background
@@ -488,7 +490,7 @@ typedef struct gmSaveInfo
 	u16 character_mask; // Mask of unlocked characters?
 	u8 spgame_difficulty;
 	u8 spgame_stock_count;
-	gmSave1PRecord spgame_records[DAIRANTOU_CHR_PLAYABLE_MAX];
+	gmBackup1PRecord spgame_records[DAIRANTOU_CHR_PLAYABLE_MAX];
 	u16 unlock_task_inishie;   // Records mask of unique stages played in VS mode
 	u8 unlock_task_itemswitch; // Records number of VS games played for Item
 							   // Switch unlock
@@ -503,7 +505,7 @@ typedef struct gmSaveInfo
 	u8 unk5E7;
 	s32 mprotect_hash; // Checksum of save data
 
-} gmSaveInfo; // size == 0x5EC
+} gmBackupInfo; // size == 0x5EC
 
 typedef struct gmSceneInfo
 {
@@ -521,7 +523,7 @@ typedef struct gmSceneInfo
 	ub8 is_reset; // Player did A + B + R + Z button combination
 	u8 spgame_player;
 	u8 ft_kind;
-	u8 costume_index;
+	u8 costume;
 	u8 spgame_time_limit;
 	u8 spgame_stage; // 1P Game stage (0 = VS Link, 1 = VS Yoshi Team, etc.)
 	u8 cpu_port[3];
@@ -555,7 +557,7 @@ typedef struct gmSceneInfo
 } gmSceneInfo; // size == 0x48
 
 extern gmBattleState *gBattleState, gDefaultBattleState, D_800A4B18, gTransferBattleState, D_800A4EF8;
-extern gmSaveInfo gSaveData, gDefaultSaveData;
+extern gmBackupInfo gSaveData, gDefaultSaveData;
 extern gmSceneInfo gSceneData, gDefaultSceneData;
 
 typedef struct Unk800D4060

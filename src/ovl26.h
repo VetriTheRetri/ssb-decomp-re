@@ -307,7 +307,7 @@ scRuntimeInfo D_ovl26_8013B99C
 		0x00000000, 0x00000000, 0x00000088, 0x00000000, 0x0000006c, 0x00000000, 0x00000090, 0x8013b0c8 };
 
 s32 D_8013BA80;											// ? referenced from scene_manager
-mnCharPanelBattle gMnBattlePanels[GMMATCH_PLAYERS_MAX]; // 8013BA88[GMMATCH_PLAYERS_MAX];
+mnCharPanelBattle gMnBattlePanels[GMBATTLE_PLAYERS_MAX]; // 8013BA88[GMBATTLE_PLAYERS_MAX];
 GObj* gMnBattlePickerGObj;								// 8013BD78; // stock/time picker
 s32 gMnBattleTimerValue;								// 8013BD7C;
 s32 gMnBattleStockValue;								// 8013BD80;

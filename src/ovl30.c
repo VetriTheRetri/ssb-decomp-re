@@ -355,7 +355,7 @@ sb32 mnStageGetIsLocked(s32 stage_id)
 {
 	if (stage_id == Gr_Kind_Inishie)
 	{
-		if (gMNStageUnlockedMask & GMSAVE_UNLOCK_MASK_INISHIE)
+		if (gMNStageUnlockedMask & GMBACKUP_UNLOCK_MASK_INISHIE)
 			return FALSE;
 
 		return TRUE;

@@ -641,7 +641,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     vel.z = 0.0F;
 
     // Is this checking to spawn Mew? Can only spawn once at least one character has been unlocked.
-    if ((gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_NEWCOMERS) && (mtTrigGetRandomIntRange(151) == 0) && (gITManagerMonsterData.monster_curr != nITKindMew) && (gITManagerMonsterData.monster_prev != nITKindMew))
+    if ((gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_NEWCOMERS) && (mtTrigGetRandomIntRange(151) == 0) && (gITManagerMonsterData.monster_curr != nITKindMew) && (gITManagerMonsterData.monster_prev != nITKindMew))
     {
         index = nITKindMew;
     }
@@ -677,7 +677,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
         mp->player_number = ip->player_number;
         mp->display_mode = ip->display_mode;
 
-        if (gBattleState->game_type == gmMatch_GameType_1PGame)
+        if (gBattleState->game_type == nGMBattleGameType1PGame)
         {
             if ((mp->player == gSceneData.spgame_player) && (mp->it_kind == nITKindMew))
             {

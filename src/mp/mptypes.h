@@ -224,7 +224,7 @@ struct mpGroundData
 	Sprite *wallpaper; 								// Background image?
 	gsColorRGB fog_color;
 	u8 fog_alpha;								 	// Unused padding?
-	gsColorRGB emblem_colors[GMMATCH_PLAYERS_MAX]; 	// What's this doing here?
+	gsColorRGB emblem_colors[GMBATTLE_PLAYERS_MAX]; 	// What's this doing here?
 	s32 unk_0x5C;
 	Vec3f light_angle;
 	s16 cam_bound_top;

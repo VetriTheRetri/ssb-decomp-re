@@ -104,7 +104,7 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
                 ftCommon_ApplyDamageHeal(fp, ITTOMATO_DAMAGE_HEAL);
                 itMainDestroyItem(item_gobj);
 
-                if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.spgame_player) && (g1PGameBonusStatTomatoCount < U8_MAX))
+                if ((gBattleState->game_type == nGMBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (g1PGameBonusStatTomatoCount < U8_MAX))
                 {
                     g1PGameBonusStatTomatoCount++;
                 }
@@ -114,7 +114,7 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
                 ftCommon_ApplyDamageHeal(fp, ITHEART_DAMAGE_HEAL);
                 itMainDestroyItem(item_gobj);
 
-                if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->player == gSceneData.spgame_player) && (g1PGameBonusStatHeartCount < U8_MAX))
+                if ((gBattleState->game_type == nGMBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (g1PGameBonusStatHeartCount < U8_MAX))
                 {
                     g1PGameBonusStatHeartCount++;
                 }

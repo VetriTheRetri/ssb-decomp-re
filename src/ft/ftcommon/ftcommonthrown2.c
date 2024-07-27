@@ -284,5 +284,5 @@ void ftCommonThrownSetStatusNoDamageRelease(GObj *fighter_gobj)
         knockback_final = 0.0F;
     }
     ftCommonDamageInitDamageVars(fighter_gobj, ft_throw->status_id, 0, knockback_final, ft_throw->angle, fp->lr, 1, ft_throw->element, 0, TRUE, TRUE, FALSE);
-    ftCommon_Update1PGameDamageStats(fp, GMMATCH_PLAYERS_MAX, nFTHitlogObjectNone, 0, 0, 0);
+    ftCommon_Update1PGameDamageStats(fp, GMBATTLE_PLAYERS_MAX, nFTHitlogObjectNone, 0, 0, 0);
 }

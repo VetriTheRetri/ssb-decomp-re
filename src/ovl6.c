@@ -31,8 +31,8 @@ void func_ovl6_8018D0F0()
 	gBonusBattleState = gDefaultBattleState;
 
 	gBattleState = &gBonusBattleState;
-	gBattleState->game_type = gmMatch_GameType_Bonus;
-	gBattleState->match_rules = GMMATCH_GAMERULE_BONUS | GMMATCH_GAMERULE_TIME;
+	gBattleState->game_type = nGMBattleGameTypeBonus;
+	gBattleState->game_rules = GMBATTLE_GAMERULE_BONUS | GMBATTLE_GAMERULE_TIME;
 	gBattleState->is_display_score = FALSE;
 	gBattleState->pl_count = 1;
 	gBattleState->cp_count = 0;
@@ -64,22 +64,22 @@ void func_ovl6_8018D0F0()
 		else
 			gBattleState->gr_kind = ft_kind + Gr_Kind_Bonus2Start;
 	}
-	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
+	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
 		if (player == gSceneData.spgame_player)
 		{
-			gBattleState->player_block[player].player_kind = nFTPlayerKindMan;
-			gBattleState->player_block[player].character_kind = ft_kind;
+			gBattleState->players[player].pl_kind = nFTPlayerKindMan;
+			gBattleState->players[player].ft_kind = ft_kind;
 
 			if (gSceneData.scene_previous == 0x34)
-				gBattleState->player_block[player].costume_index = gSceneData.costume_index;
+				gBattleState->players[player].costume = gSceneData.costume;
 			else
-				gBattleState->player_block[player].costume_index = gSceneData.bonus_costume_id;
+				gBattleState->players[player].costume = gSceneData.bonus_costume_id;
 
-			gBattleState->player_block[player].player_color_index = player;
+			gBattleState->players[player].player_color_index = player;
 		}
 		else
-			gBattleState->player_block[player].player_kind = nFTPlayerKindNot;
+			gBattleState->players[player].pl_kind = nFTPlayerKindNot;
 	}
 }
 
@@ -271,7 +271,7 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 	if (gGRCommonStruct.bonus2.platform_count == 0)
 	{
 		if ((gSceneData.scene_previous != 0x34)
-			&& (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_task_count == GMMATCH_BONUSGAME_TASK_MAX)
+			&& (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_task_count == GMBATTLE_BONUSGAME_TASK_MAX)
 			&& (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_time))
 			ifCommonAnnounceCompleteInitInterface(alSound_Voice_AnnounceNewRecord);
 		else
@@ -372,7 +372,7 @@ void scBonusGame_MakeInterface()
 {
 	omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xAU, 0x80000000U), scBonusGame_InitInterface, 0,
 						5);
-	gBattleState->game_status = gmMatch_GameStatus_Wait;
+	gBattleState->game_status = nGMBattleGameStatusWait;
 }
 
 // 8018DD14
@@ -380,16 +380,16 @@ void scBonusGame_InitCameraVars()
 {
 	s32 player;
 
-	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
+	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
-		if (gBattleState->player_block[player].player_kind == nFTPlayerKindNot)
+		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
 			continue;
 
 		if (gBattleState->gr_kind >= Gr_Kind_Bonus2Start)
-			func_ovl2_8010CFA8(gBattleState->player_block[player].fighter_gobj, 0.0F, F_CLC_DTOR32(-15.0F), 9000.0F,
+			func_ovl2_8010CFA8(gBattleState->players[player].fighter_gobj, 0.0F, F_CLC_DTOR32(-15.0F), 9000.0F,
 							   0.3F, 31.5F);
 		else
-			func_ovl2_8010CFA8(gBattleState->player_block[player].fighter_gobj, 0.0F, F_CLC_DTOR32(-9.0F), 9000.0F,
+			func_ovl2_8010CFA8(gBattleState->players[player].fighter_gobj, 0.0F, F_CLC_DTOR32(-9.0F), 9000.0F,
 							   0.3F, 31.5F);
 
 		break;
@@ -592,22 +592,22 @@ void scBonusGame_InitBonusGame()
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(2, GMMATCH_PLAYERS_MAX);
+	ftManagerAllocFighter(2, GMBATTLE_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
 	ftPublicitySetup();
 
-	for (player = 0, player_spawn = dFTDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->player_block);
+	for (player = 0, player_spawn = dFTDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->players);
 		 player++)
 	{
-		if (gBattleState->player_block[player].player_kind == nFTPlayerKindNot)
+		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
 			continue;
 
-		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
+		ftManagerSetupDataKind(gBattleState->players[player].ft_kind);
 
-		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
+		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 
 		scBonusGame_GetPlayerSpawnPosition(&player_spawn.pos);
 
@@ -616,12 +616,12 @@ void scBonusGame_InitBonusGame()
 		player_spawn.team = 0;
 		player_spawn.player = player;
 		player_spawn.model_lod = nFTPartsDetailHigh;
-		player_spawn.costume = gBattleState->player_block[player].costume_index;
+		player_spawn.costume = gBattleState->players[player].costume;
 
-		player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
+		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
 		player_spawn.is_skip_entry = TRUE;
 
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
@@ -656,7 +656,7 @@ void scBonusGame_InitBonusGame()
 // 8018E8D0
 void scBonusGame_SetBonusEndStats(sb32 is_practice)
 {
-	g1PGameTotalDamageTaken += gBattleState->player_block[gSceneData.spgame_player].total_damage_all;
+	g1PGameTotalDamageTaken += gBattleState->players[gSceneData.spgame_player].total_damage_all;
 
 	if (is_practice != FALSE)
 	{
@@ -692,7 +692,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 			}
 			else
 			{
-				gSaveData.spgame_records[ft_kind].bonus1_task_count = GMMATCH_BONUSGAME_TASK_MAX;
+				gSaveData.spgame_records[ft_kind].bonus1_task_count = GMBATTLE_BONUSGAME_TASK_MAX;
 
 				if (gBattleState->match_time_current < gSaveData.spgame_records[ft_kind].bonus1_time)
 				{
@@ -713,7 +713,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 		}
 		else
 		{
-			gSaveData.spgame_records[ft_kind].bonus2_task_count = GMMATCH_BONUSGAME_TASK_MAX;
+			gSaveData.spgame_records[ft_kind].bonus2_task_count = GMBATTLE_BONUSGAME_TASK_MAX;
 
 			if (gBattleState->match_time_current < gSaveData.spgame_records[ft_kind].bonus2_time)
 			{
@@ -759,12 +759,12 @@ void scManager_BonusGame_InitScene()
 	func_800266A0_272A0();
 	gmRumbleInitPlayers();
 
-	if (gBattleState->game_status != gmMatch_GameStatus_Pause)
+	if (gBattleState->game_status != nGMBattleGameStatusPause)
 	{
 		task_count = (gBattleState->gr_kind <= Gr_Kind_Bonus1End) ? gGRCommonStruct.bonus1.target_count
 																  : gGRCommonStruct.bonus2.platform_count;
 
-		tasks_complete = GMMATCH_BONUSGAME_TASK_MAX - task_count;
+		tasks_complete = GMBATTLE_BONUSGAME_TASK_MAX - task_count;
 
 		if (task_count > 0)
 			; // Needed for match; plausible leftover statement in original code, if (TRUE) and if (task_count) also work
@@ -786,22 +786,22 @@ void scManager_BonusGame_InitScene()
 			case 0x13:
 				gSceneData.scene_current = 0x13;
 
-				if (tasks_complete == GMMATCH_BONUSGAME_TASK_MAX)
+				if (tasks_complete == GMBATTLE_BONUSGAME_TASK_MAX)
 				{
-					if (!(gSaveData.unlock_mask & GMSAVE_UNLOCK_MASK_LUIGI))
+					if (!(gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_LUIGI))
 					{
 						for (bonus_complete_chars = i = 0; i < ARRAY_COUNT(gSaveData.spgame_records); i++)
 						{
-							if (gSaveData.spgame_records[i].bonus1_task_count == GMMATCH_BONUSGAME_TASK_MAX)
+							if (gSaveData.spgame_records[i].bonus1_task_count == GMBATTLE_BONUSGAME_TASK_MAX)
 								bonus_complete_chars |= (1 << i);
 						}
-						if ((bonus_complete_chars & GMSAVEINFO_CHARACTER_MASK_STARTER)
-							== GMSAVEINFO_CHARACTER_MASK_STARTER)
+						if ((bonus_complete_chars & GMBACKUPINFO_CHARACTER_MASK_STARTER)
+							== GMBACKUPINFO_CHARACTER_MASK_STARTER)
 						{
 							gSceneData.ft_kind = gSceneData.bonus_char_id;
-							gSceneData.costume_index = gSceneData.bonus_costume_id;
+							gSceneData.costume = gSceneData.bonus_costume_id;
 
-							gSceneData.spgame_stage = gm1PGame_Stage_Luigi;
+							gSceneData.spgame_stage = nGM1PGameStageLuigi;
 							gSceneData.scene_current = 0x34;
 
 							break;
@@ -820,7 +820,7 @@ void scManager_BonusGame_InitScene()
 			default:
 				gSceneData.scene_current = 0x14;
 
-				if ((tasks_complete == GMMATCH_BONUSGAME_TASK_MAX) && (func_ovl2_800D6630() != FALSE))
+				if ((tasks_complete == GMBATTLE_BONUSGAME_TASK_MAX) && (func_ovl2_800D6630() != FALSE))
 				{
 					gSceneData.unk02 = 5;
 					gSceneData.scene_current = 0xC;

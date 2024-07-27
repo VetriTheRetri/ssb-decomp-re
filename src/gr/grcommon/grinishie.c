@@ -443,7 +443,7 @@ void grInishieMakePakkun(void)
 // 0x80109838
 void grInishiePowerBlockUpdateWait(void)
 {
-    if (gBattleState->game_status != gmMatch_GameStatus_Wait)
+    if (gBattleState->game_status != nGMBattleGameStatusWait)
     {
         gGRCommonStruct.inishie.pblock_status = nGRInishiePowerBlockStatusMake;
         gGRCommonStruct.inishie.pblock_appear_wait = 1800;

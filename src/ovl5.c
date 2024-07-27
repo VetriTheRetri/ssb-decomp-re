@@ -103,11 +103,11 @@ void func_ovl5_8018D1A0()
 	gUnkExplainBattleState = gDefaultBattleState;
 	gBattleState = &gUnkExplainBattleState;
 
-	gBattleState->game_type = gmMatch_GameType_Unk6;
+	gBattleState->game_type = nGMBattleGameTypeUnk6;
 	gBattleState->gr_kind = Gr_Kind_Pupupu;
 	gBattleState->pl_count = 1;
-	gBattleState->player_block[0].character_kind = nFTKindMario;
-	gBattleState->player_block[0].player_kind = nFTPlayerKindKey;
+	gBattleState->players[0].ft_kind = nFTKindMario;
+	gBattleState->players[0].pl_kind = nFTPlayerKindKey;
 
 	func_ovl5_8018D0C0();
 	omMakeGObjSPAfter(0x3F7U, func_ovl5_8018D160, 0xDU, GOBJ_LINKORDER_DEFAULT);
@@ -127,31 +127,31 @@ void func_ovl5_8018D1A0()
 	gmRumbleMakeActor();
 	ftPublicitySetup();
 
-	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
+	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
 		player_spawn = dFTDefaultFighterDesc;
 
-		if (gBattleState->player_block[player].player_kind == nFTPlayerKindNot) continue;
+		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot) continue;
 
-		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
+		ftManagerSetupDataKind(gBattleState->players[player].ft_kind);
 
-		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
+		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 		player_spawn.pos.x = 0.0F;
 		player_spawn.pos.y = 150.0F;
 		player_spawn.pos.z = 0.0F;
 		player_spawn.lr_spawn = nGMDirectionR;
-		player_spawn.team = gBattleState->player_block[player].team_index;
+		player_spawn.team = gBattleState->players[player].team_index;
 		player_spawn.player = player;
 		player_spawn.model_lod = nFTPartsDetailHigh;
-		player_spawn.costume = gBattleState->player_block[player].costume_index;
-		player_spawn.handicap = gBattleState->player_block[player].handicap;
-		player_spawn.cp_level = gBattleState->player_block[player].level;
+		player_spawn.costume = gBattleState->players[player].costume;
+		player_spawn.handicap = gBattleState->players[player].handicap;
+		player_spawn.cp_level = gBattleState->players[player].level;
 		player_spawn.stock_count = gBattleState->stock_setting;
 		player_spawn.damage = 0;
-		player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
+		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
 
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 		gUnkExplainFighterGObj = fighter_gobj;

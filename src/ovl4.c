@@ -58,13 +58,13 @@ s32 scBattle_GetPlayerStartLR(s32 target_player)
 
 	mpCollisionGetPlayerMapObjPosition(target_player, &target_spawn_pos);
 
-	for (loop_player = 0; loop_player < ARRAY_COUNT(gBattleState->player_block); loop_player++)
+	for (loop_player = 0; loop_player < ARRAY_COUNT(gBattleState->players); loop_player++)
 	{
 		if (loop_player == target_player) continue;
 
-		if (gBattleState->player_block[loop_player].player_kind == nFTPlayerKindNot) continue;
+		if (gBattleState->players[loop_player].pl_kind == nFTPlayerKindNot) continue;
 
-		if (gBattleState->player_block[loop_player].player != gBattleState->player_block[target_player].player)
+		if (gBattleState->players[loop_player].player != gBattleState->players[target_player].player)
 		{
 			mpCollisionGetPlayerMapObjPosition(loop_player, &loop_spawn_pos);
 
@@ -97,7 +97,7 @@ void scBattle_StartStockBattle()
 
 	func_ovl4_8018E330();
 
-	if (!(gSaveData.mprotect_fail & GMSAVE_PROTECTFAIL_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
+	if (!(gSaveData.mprotect_fail & GMBACKUP_PROTECTFAIL_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
 	{
 		base_addr = rdManagerGetFileWithExternHeap((intptr_t)&D_NF_000000C7, gsMemoryAlloc(rdManagerGetFileSize((intptr_t)&D_NF_000000C7), 0x10));
 
@@ -108,7 +108,7 @@ void scBattle_StartStockBattle()
 
 		if (proc_cache() == FALSE)
 		{
-			gSaveData.mprotect_fail |= GMSAVE_PROTECTFAIL_1PGAMEMARIO;
+			gSaveData.mprotect_fail |= GMBACKUP_PROTECTFAIL_1PGAMEMARIO;
 		}
 	}
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
@@ -121,40 +121,40 @@ void scBattle_StartStockBattle()
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(2, GMMATCH_PLAYERS_MAX);
+	ftManagerAllocFighter(2, GMBATTLE_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
 	ftPublicitySetup();
 
-	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
+	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
 		player_spawn = dFTDefaultFighterDesc;
 
-		if (gBattleState->player_block[player].player_kind == nFTPlayerKindNot) continue;
+		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot) continue;
 
-		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
-		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
+		ftManagerSetupDataKind(gBattleState->players[player].ft_kind);
+		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 
 		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
 		player_spawn.lr_spawn = scBattle_GetPlayerStartLR(player);
 
-		player_spawn.team = gBattleState->player_block[player].player;
+		player_spawn.team = gBattleState->players[player].player;
 		player_spawn.player = player;
 
 		player_spawn.model_lod = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-		player_spawn.costume = gBattleState->player_block[player].costume_index;
-		player_spawn.shade = gBattleState->player_block[player].shade_index;
-		player_spawn.handicap = gBattleState->player_block[player].handicap;
-		player_spawn.cp_level = gBattleState->player_block[player].level;
+		player_spawn.costume = gBattleState->players[player].costume;
+		player_spawn.shade = gBattleState->players[player].shade;
+		player_spawn.handicap = gBattleState->players[player].handicap;
+		player_spawn.cp_level = gBattleState->players[player].level;
 		player_spawn.stock_count = gBattleState->stock_setting;
 		player_spawn.damage = 0;
-		player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
+		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
 
 		ftCommon_ClearPlayerMatchStats(player, ftManagerMakeFighter(&player_spawn));
 	}
@@ -189,32 +189,32 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 	s32 tied_players;
 	s32 i, j;
 	gmBattleResults winner_results;
-	gmBattleResults player_results[GMMATCH_PLAYERS_MAX];
+	gmBattleResults player_results[GMBATTLE_PLAYERS_MAX];
 
-	if (!(gBattleState->match_rules & GMMATCH_GAMERULE_TIME))
+	if (!(gBattleState->game_rules & GMBATTLE_GAMERULE_TIME))
 	{
 		return FALSE;
 	}
 	D_800A4EF8 = gTransferBattleState;
 	D_800A4EF8.pl_count = D_800A4EF8.cp_count = 0;
 
-	for (i = 0; i < ARRAY_COUNT(D_800A4EF8.player_block); i++)
+	for (i = 0; i < ARRAY_COUNT(D_800A4EF8.players); i++)
 	{
-		D_800A4EF8.player_block[i].player_kind = nFTPlayerKindNot;
+		D_800A4EF8.players[i].pl_kind = nFTPlayerKindNot;
 	}
 	switch (gBattleState->is_team_battle)
 	{
 	case FALSE:
-		for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
+		for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 		{
-			if (gBattleState->player_block[i].player_kind == nFTPlayerKindNot) continue;
+			if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
 
-			player_results[result_count].tko = gBattleState->player_block[i].score - gBattleState->player_block[i].falls;
-			player_results[result_count].kos = gBattleState->player_block[i].score;
+			player_results[result_count].tko = gBattleState->players[i].score - gBattleState->players[i].falls;
+			player_results[result_count].kos = gBattleState->players[i].score;
 			player_results[result_count].player_or_team = i;
 			player_results[result_count].unk_battleres_0x9 = FALSE;
 
-			if (gBattleState->player_block[i].player_kind == nFTPlayerKindMan)
+			if (gBattleState->players[i].pl_kind == nFTPlayerKindMan)
 			{
 				player_results[result_count].is_human_player = TRUE;
 			}
@@ -250,9 +250,9 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 		}
 		for (i = 0; i < tied_players; i++)
 		{
-			D_800A4EF8.player_block[player_results[i].player_or_team].player_kind = gBattleState->player_block[player_results[i].player_or_team].player_kind;
+			D_800A4EF8.players[player_results[i].player_or_team].pl_kind = gBattleState->players[player_results[i].player_or_team].pl_kind;
 
-			switch (D_800A4EF8.player_block[player_results[i].player_or_team].player_kind)
+			switch (D_800A4EF8.players[player_results[i].player_or_team].pl_kind)
 			{
 			case nFTPlayerKindMan:
 				D_800A4EF8.pl_count++;
@@ -266,18 +266,18 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 		break;
 
 	case TRUE:
-		for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
+		for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 		{
-			if (gBattleState->player_block[i].player_kind == nFTPlayerKindNot) continue;
+			if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
 
 			for (j = 0; j < result_count; j++)
 			{
-				if (gBattleState->player_block[i].team_index == player_results[j].player_or_team)
+				if (gBattleState->players[i].team_index == player_results[j].player_or_team)
 				{
-					player_results[j].tko += gBattleState->player_block[i].score - gBattleState->player_block[i].falls;
-					player_results[j].kos += gBattleState->player_block[i].score;
+					player_results[j].tko += gBattleState->players[i].score - gBattleState->players[i].falls;
+					player_results[j].kos += gBattleState->players[i].score;
 
-					if ((player_results[j].is_human_player != FALSE) || (gBattleState->player_block[i].player_kind == nFTPlayerKindMan))
+					if ((player_results[j].is_human_player != FALSE) || (gBattleState->players[i].pl_kind == nFTPlayerKindMan))
 					{
 						player_results[j].is_human_player = TRUE;
 					}
@@ -286,12 +286,12 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 					goto l_continue;
 				}
 			}
-			player_results[result_count].tko = gBattleState->player_block[i].score - gBattleState->player_block[i].falls;
-			player_results[result_count].kos = gBattleState->player_block[i].score;
-			player_results[result_count].player_or_team = gBattleState->player_block[i].team_index;
+			player_results[result_count].tko = gBattleState->players[i].score - gBattleState->players[i].falls;
+			player_results[result_count].kos = gBattleState->players[i].score;
+			player_results[result_count].player_or_team = gBattleState->players[i].team_index;
 			player_results[result_count].unk_battleres_0x9 = FALSE;
 
-			if ((player_results[result_count].is_human_player != FALSE) || (gBattleState->player_block[i].player_kind == nFTPlayerKindMan))
+			if ((player_results[result_count].is_human_player != FALSE) || (gBattleState->players[i].pl_kind == nFTPlayerKindMan))
 			{
 				player_results[result_count].is_human_player = TRUE;
 			}
@@ -330,15 +330,15 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 		}
 		for (i = 0; i < tied_players; i++)
 		{
-			for (j = 0; j < ARRAY_COUNT(gBattleState->player_block); j++)
+			for (j = 0; j < ARRAY_COUNT(gBattleState->players); j++)
 			{
-				if (gBattleState->player_block[j].player_kind == nFTPlayerKindNot) continue;
+				if (gBattleState->players[j].pl_kind == nFTPlayerKindNot) continue;
 
-				if (gBattleState->player_block[j].team_index == player_results[i].player_or_team)
+				if (gBattleState->players[j].team_index == player_results[i].player_or_team)
 				{
-					D_800A4EF8.player_block[j].player_kind = gBattleState->player_block[j].player_kind;
+					D_800A4EF8.players[j].pl_kind = gBattleState->players[j].pl_kind;
 
-					switch (D_800A4EF8.player_block[j].player_kind)
+					switch (D_800A4EF8.players[j].pl_kind)
 					{
 					case nFTPlayerKindMan:
 						D_800A4EF8.pl_count++;
@@ -353,7 +353,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 		}
 		break;
 	}
-	D_800A4EF8.match_rules = GMMATCH_GAMERULE_STOCK;
+	D_800A4EF8.game_rules = GMBATTLE_GAMERULE_STOCK;
 	D_800A4EF8.is_display_score = FALSE;
 
 	gSceneData.unk10 = 1;
@@ -383,48 +383,48 @@ void scBattle_StartSDBattle()
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(2, GMMATCH_PLAYERS_MAX);
+	ftManagerAllocFighter(2, GMBATTLE_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
 	ftPublicitySetup();
 
-	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
+	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
 		player_spawn = dFTDefaultFighterDesc;
 
-		if (gBattleState->player_block[player].player_kind == nFTPlayerKindNot) continue;
+		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot) continue;
 
-		ftManagerSetupDataKind(gBattleState->player_block[player].character_kind);
-		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
+		ftManagerSetupDataKind(gBattleState->players[player].ft_kind);
+		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 
 		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
 
 		player_spawn.lr_spawn = scBattle_GetPlayerStartLR(player);
 
-		player_spawn.team = gBattleState->player_block[player].player;
+		player_spawn.team = gBattleState->players[player].player;
 		player_spawn.player = player;
 
 		player_spawn.model_lod = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-		player_spawn.costume = gBattleState->player_block[player].costume_index;
-		player_spawn.shade = gBattleState->player_block[player].shade_index;
-		player_spawn.handicap = gBattleState->player_block[player].handicap;
-		player_spawn.cp_level = gBattleState->player_block[player].level;
+		player_spawn.costume = gBattleState->players[player].costume;
+		player_spawn.shade = gBattleState->players[player].shade;
+		player_spawn.handicap = gBattleState->players[player].handicap;
+		player_spawn.cp_level = gBattleState->players[player].level;
 		player_spawn.stock_count = 0;
 		player_spawn.damage = 300;
 		player_spawn.is_skip_entry = TRUE;
-		player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
+		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->player_block[player].character_kind);
+		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
 
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 
 		ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
 
-		gBattleState->player_block[player].is_single_stockicon = FALSE;
+		gBattleState->players[player].is_single_stockicon = FALSE;
 	}
 	ftManagerSetupDataPlayables();
 	ifCommonBattleSetGameStatusWait();
@@ -463,11 +463,11 @@ void scBattleRoyalStartScene()
 {
 	gBattleState = &gTransferBattleState;
 
-	gBattleState->game_type = gmMatch_GameType_VSMode;
+	gBattleState->game_type = nGMBattleGameTypeVSMode;
 
 	gBattleState->gr_kind = gSceneData.gr_kind;
 
-	if (gSaveData.mprotect_fail & GMSAVE_PROTECTFAIL_VSMODECASTLE)
+	if (gSaveData.mprotect_fail & GMBACKUP_PROTECTFAIL_VSMODECASTLE)
 	{
 		gBattleState->gr_kind = Gr_Kind_Castle;
 	}
@@ -490,7 +490,7 @@ void scBattleRoyalStartScene()
 	{
 		gBattleState = &D_800A4EF8;
 
-		gBattleState->game_type = gmMatch_GameType_VSMode;
+		gBattleState->game_type = nGMBattleGameTypeVSMode;
 
 		D_ovl4_8018E3F4.proc_start = scBattle_StartSDBattle;
 

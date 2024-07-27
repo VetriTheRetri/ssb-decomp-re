@@ -6317,7 +6317,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
     {
         if (ft_com->target_dist < (400.0F * (fp->cp_level + 3)))
         {
-            s32 track_wait = (gBattleState->game_type == gmMatch_GameType_1PGame) ? (-fp->cp_level * 35) + 315 : (-fp->cp_level * 25) + 225;
+            s32 track_wait = (gBattleState->game_type == nGMBattleGameType1PGame) ? (-fp->cp_level * 35) + 315 : (-fp->cp_level * 25) + 225;
 
             ft_com->item_track_wait++;
 

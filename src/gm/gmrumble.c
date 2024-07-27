@@ -7,13 +7,13 @@
 // // // // // // // // // // // //
 
 // 0x80131870
-gmRumbleEvent sGMRumbleEvents[GMMATCH_PLAYERS_MAX * GMRUMBLE_ARRAY_COLS];
+gmRumbleEvent sGMRumbleEvents[GMBATTLE_PLAYERS_MAX * GMRUMBLE_ARRAY_COLS];
 
 // 0x80131960
-gmRumbleLink sGMRumbleLinks[GMMATCH_PLAYERS_MAX * GMRUMBLE_ARRAY_COLS];
+gmRumbleLink sGMRumbleLinks[GMBATTLE_PLAYERS_MAX * GMRUMBLE_ARRAY_COLS];
 
 // 0x801319F0
-gmRumblePlayer sGMRumblePlayers[GMMATCH_PLAYERS_MAX];
+gmRumblePlayer sGMRumblePlayers[GMBATTLE_PLAYERS_MAX];
 
 // // // // // // // // // // // //
 //                               //
@@ -680,7 +680,7 @@ void gmRumbleInitPlayers(void)
 {
     s32 player;
 
-    for (player = 0; player < GMMATCH_PLAYERS_MAX; player++)
+    for (player = 0; player < GMBATTLE_PLAYERS_MAX; player++)
     {
         func_800044B4(player);
         func_80004494(player);

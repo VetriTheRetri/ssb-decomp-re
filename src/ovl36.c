@@ -293,30 +293,30 @@ void mvOpeningMarioInitFighterStagePanel()
 	gmRumbleMakeActor();
 	ftPublicitySetup();
 
-	for (i = 0; i < ARRAY_COUNT(gBattleState->player_block); i++)
+	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 	{
 		ftCreateDesc spawn_info = dFTDefaultFighterDesc;
 
-		if (gBattleState->player_block[i].player_kind == nFTPlayerKindNot) continue;
+		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
 
-		ftManagerSetupDataKind(gBattleState->player_block[i].character_kind);
+		ftManagerSetupDataKind(gBattleState->players[i].ft_kind);
 
-		spawn_info.ft_kind = gBattleState->player_block[i].character_kind;
+		spawn_info.ft_kind = gBattleState->players[i].ft_kind;
 		spawn_info.pos.x = spawn_position.x;
 		spawn_info.pos.y = spawn_position.y;
 		spawn_info.pos.z = spawn_position.z;
 		spawn_info.lr_spawn = nGMDirectionR;
-		spawn_info.team = gBattleState->player_block[i].team_index;
+		spawn_info.team = gBattleState->players[i].team_index;
 		spawn_info.player = i;
 		spawn_info.model_lod = nFTPartsDetailHigh;
-		spawn_info.costume = gBattleState->player_block[i].costume_index;
-		spawn_info.handicap = gBattleState->player_block[i].handicap;
-		spawn_info.cp_level = gBattleState->player_block[i].level;
+		spawn_info.costume = gBattleState->players[i].costume;
+		spawn_info.handicap = gBattleState->players[i].handicap;
+		spawn_info.cp_level = gBattleState->players[i].level;
 		spawn_info.stock_count = gBattleState->stock_setting;
 		spawn_info.damage = 0;
-		spawn_info.pl_kind = gBattleState->player_block[i].player_kind;
+		spawn_info.pl_kind = gBattleState->players[i].pl_kind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->player_block[i].character_kind);
+		spawn_info.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
 
 		gMvOpeningMarioStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -468,13 +468,13 @@ void mvOpeningMarioInit()
 	gMvOpeningMarioBattleState = gDefaultBattleState;
 	gBattleState = &gMvOpeningMarioBattleState;
 
-	gBattleState->game_type = gmMatch_GameType_Intro;
+	gBattleState->game_type = nGMBattleGameTypeOpening;
 
 	gBattleState->gr_kind = Gr_Kind_Castle;
 	gBattleState->pl_count = 1;
 
-	gBattleState->player_block[0].character_kind = nFTKindMario;
-	gBattleState->player_block[0].player_kind = nFTPlayerKindKey;
+	gBattleState->players[0].ft_kind = nFTKindMario;
+	gBattleState->players[0].pl_kind = nFTPlayerKindKey;
 
 	mvOpeningMarioLoadFiles();
 	omMakeGObjSPAfter(0x3F7, mvOpeningMarioMainProc, 0xD, 0x80000000);

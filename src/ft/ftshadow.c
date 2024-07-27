@@ -101,7 +101,7 @@ void ftShadowProcRender(GObj *shadow_gobj)
     }
     fs = (ftShadow*)shadow_gobj->user_data.p;
 
-    fighter_gobj = gBattleState->player_block[fs->player].fighter_gobj;
+    fighter_gobj = gBattleState->players[fs->player].fighter_gobj;
 
     fp = ftGetStruct(fighter_gobj);
 

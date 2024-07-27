@@ -60,7 +60,7 @@ enum grYamabukiGateStatus
 // 0x8010ACD0
 void grYamabukiGateUpdateSleep(void)
 {
-    if (gBattleState->game_status != gmMatch_GameStatus_Wait)
+    if (gBattleState->game_status != nGMBattleGameStatusWait)
     {
         gGRCommonStruct.yamabuki.gate_status = nGRYamabukiGateStatusWait;
         gGRCommonStruct.yamabuki.monster_wait = mtTrigGetRandomIntRange(1000) + 1000;

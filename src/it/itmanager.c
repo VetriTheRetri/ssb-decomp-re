@@ -499,7 +499,7 @@ void itManagerMakeRandomItem(GObj *item_gobj)
     Vec3f pos;
     Vec3f vel;
 
-    if (gBattleState->game_status != gmMatch_GameStatus_Wait)
+    if (gBattleState->game_status != nGMBattleGameStatusWait)
     {
         if (gITManagerSpawnActor.item_spawn_wait > 0)
         {
@@ -539,7 +539,7 @@ GObj* itManagerMakeItemSpawnActor(void)
     mpItemWeights *item_weight_qty;
     u32 item_num_toggles;
 
-    if (gBattleState->item_switch != gmMatch_ItemSwitch_None)
+    if (gBattleState->item_switch != nGMBattleItemSwitchNone)
     {
         if (gBattleState->item_toggles != 0)
         {
@@ -644,7 +644,7 @@ void itManagerSetupContainerDrops(void)
     mpItemWeights *item_weight_qty;
     s32 item_tenth_round;
 
-    if ((gBattleState->item_switch != gmMatch_ItemSwitch_None) && (gBattleState->item_toggles != 0) && (gMPGroundData->item_weights != NULL))
+    if ((gBattleState->item_switch != nGMBattleItemSwitchNone) && (gBattleState->item_toggles != 0) && (gMPGroundData->item_weights != NULL))
     {
         item_num_toggles = gBattleState->item_toggles >> nITKindUtilityStart;
         item_count_qty = gMPGroundData->item_weights;

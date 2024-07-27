@@ -319,7 +319,7 @@ void ftPublicityProcUpdate(GObj *public_gobj)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (!(gBattleState->match_rules & GMMATCH_GAMERULE_STOCK) || (fp->stock_count != -1))
+        if (!(gBattleState->game_rules & GMBATTLE_GAMERULE_STOCK) || (fp->stock_count != -1))
         {
             if (DObjGetStruct(fighter_gobj)->translate.vec.f.y < (gMPEdgeBounds.d2.bottom - 100.0F)) // 0x80131308 = stage data?
             {

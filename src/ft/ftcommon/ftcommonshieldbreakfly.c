@@ -65,7 +65,7 @@ void ftCommonShieldBreakFlyCommonSetStatus(GObj *fighter_gobj)
 
     ftCommon_Update1PGameDamageStats(fp, fp->shield_player, nFTHitlogObjectNone, 0, 0, 0);
 
-    if ((gBattleState->game_type == gmMatch_GameType_1PGame) && (fp->shield_damage != 0))
+    if ((gBattleState->game_type == nGMBattleGameType1PGame) && (fp->shield_damage != 0))
     {
         if ((fp->shield_player == gSceneData.spgame_player) && (fp->shield_player != fp->player))
         {

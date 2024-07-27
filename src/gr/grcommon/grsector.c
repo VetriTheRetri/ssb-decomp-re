@@ -372,7 +372,7 @@ void func_ovl2_80106A40(DObj *dobj, ATrack *atrack, f32 arg2)
 // 0x80106A98
 void func_ovl2_80106A98(void)
 {
-    if (gBattleState->game_status != gmMatch_GameStatus_Wait)
+    if (gBattleState->game_status != nGMBattleGameStatusWait)
     {
         gGRCommonStruct.sector.arwing_status = nGRSectorArwingStatusWait;
     }

@@ -94,7 +94,7 @@ void grBonus3RBombMakeActor(void)
 // 0x8010B700
 void grBonus3FinishProcUpdate(GObj *ground_gobj)
 {
-    ftStruct *fp = ftGetStruct(gBattleState->player_block[gSceneData.spgame_player].fighter_gobj);
+    ftStruct *fp = ftGetStruct(gBattleState->players[gSceneData.spgame_player].fighter_gobj);
 
     if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
     {

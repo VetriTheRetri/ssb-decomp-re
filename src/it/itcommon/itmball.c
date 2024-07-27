@@ -395,9 +395,9 @@ void itMBallGOpenInitItemVars(GObj *item_gobj)
 
     ip->is_attach_surface = TRUE;
 
-    if ((ip->player != -1) && (ip->player != GMMATCH_PLAYERS_MAX))
+    if ((ip->player != -1) && (ip->player != GMBATTLE_PLAYERS_MAX))
     {
-        GObj *fighter_gobj = gBattleState->player_block[ip->player].fighter_gobj;
+        GObj *fighter_gobj = gBattleState->players[ip->player].fighter_gobj;
 
         if (fighter_gobj != NULL)
         {

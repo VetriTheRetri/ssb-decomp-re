@@ -1115,7 +1115,7 @@ AObj* omAddAObjForDObj(DObj* dobj, u8 index)
 {
 	AObj* aobj = omGetAObjSetNextAlloc();
 
-	aobj->param = index;
+	aobj->track = index;
 	aobj->kind = 0;
 	aobj->interpolate = NULL;
 	aobj->rate_target = 0.0F;
@@ -1153,7 +1153,7 @@ AObj* omAddAObjForMObj(MObj* mobj, u8 index)
 {
 	AObj* aobj = omGetAObjSetNextAlloc();
 
-	aobj->param = index;
+	aobj->track = index;
 	aobj->kind = 0;
 	aobj->interpolate = NULL;
 	aobj->rate_target = 0.0F;
@@ -1192,7 +1192,7 @@ AObj* omAddAObjForCamera(Camera* cam, u8 index)
 {
 	AObj* aobj = omGetAObjSetNextAlloc();
 
-	aobj->param = index;
+	aobj->track = index;
 	aobj->kind = 0;
 	aobj->interpolate = NULL;
 	aobj->rate_target = 0.0F;

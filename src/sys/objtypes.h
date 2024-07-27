@@ -89,7 +89,7 @@ union AObjActor
 struct _AObj
 {
     /* 0x00 */ AObj *next;
-    /* 0x04 */ u8 param;
+    /* 0x04 */ u8 track;
     /* 0x05 */ u8 kind;
     /* 0x08 */ f32 length_invert;
     /* 0x0C */ f32 length;
@@ -98,7 +98,7 @@ struct _AObj
     /* 0x18 */ f32 rate_base;
     /* 0x1C */ f32 rate_target;
     // interpolation control struct?
-    /* 0x20 */ ACommand *interpolate;
+    /* 0x20 */ void *interpolate;
 }; // size == 0x24
 
 struct _GObjThread

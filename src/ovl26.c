@@ -186,7 +186,7 @@ s32 mnBattleGetFtKind(s32 portrait_id)
 // 80132168
 s32 mnBattleGetPortraitId(s32 ft_kind)
 {
-	s32 portrait_id_order[DAIRANTOU_CHR_PLAYABLE_MAX] = dMnBattlePortraitOrder;
+	s32 portrait_id_order[GMCOMMON_CHAR_NUM_PLAYABLE] = dMnBattlePortraitOrder;
 	return portrait_id_order[ft_kind];
 }
 

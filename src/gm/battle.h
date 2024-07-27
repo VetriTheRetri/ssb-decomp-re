@@ -9,7 +9,7 @@
 #include "gmscript.h"
 #include "gmfunctions.h"
 
-#define DAIRANTOU_CHR_PLAYABLE_MAX 12
+#define GMCOMMON_CHAR_NUM_PLAYABLE 12
 
 #define GMBATTLE_TIMELIMIT_INFINITE 100
 #define GMBATTLE_BONUSGAME_TASK_MAX 10
@@ -448,14 +448,14 @@ typedef struct gmBackupVSRecordCombo
 
 typedef struct gmBackupVSRecord
 {
-	/* 0x00 */ u16 ko_count[DAIRANTOU_CHR_PLAYABLE_MAX];
+	/* 0x00 */ u16 ko_count[GMCOMMON_CHAR_NUM_PLAYABLE];
 	/* 0x18 */ u32 time_used; //< in seconds
 	/* 0x1C */ u32 damage_dealt;
 	/* 0x20 */ u32 damage_taken;
 	/* 0x24 */ u16 self_destructs;
 	/* 0x26 */ u16 games_played;
 	/* 0x28 */ u16 games_played_against;
-	/* 0x2C */ gmBackupVSRecordCombo combinations[DAIRANTOU_CHR_PLAYABLE_MAX];
+	/* 0x2C */ gmBackupVSRecordCombo combinations[GMCOMMON_CHAR_NUM_PLAYABLE];
 
 } gmBackupVSRecord; // size == 0x5C
 
@@ -476,7 +476,7 @@ typedef struct gmBackup1PRecord
 // is this the saved data structure?
 typedef struct gmBackupInfo
 {
-	gmBackupVSRecord vs_records[DAIRANTOU_CHR_PLAYABLE_MAX];
+	gmBackupVSRecord vs_records[GMCOMMON_CHAR_NUM_PLAYABLE];
 	ub8 is_allow_screenflash; // Toggle for enabling white screen flash when,
 							  // for example, a character takes too much
 							  // damage. Leftover from unused "background
@@ -490,7 +490,7 @@ typedef struct gmBackupInfo
 	u16 character_mask; // Mask of unlocked characters?
 	u8 spgame_difficulty;
 	u8 spgame_stock_count;
-	gmBackup1PRecord spgame_records[DAIRANTOU_CHR_PLAYABLE_MAX];
+	gmBackup1PRecord spgame_records[GMCOMMON_CHAR_NUM_PLAYABLE];
 	u16 unlock_task_inishie;   // Records mask of unique stages played in VS mode
 	u8 unlock_task_itemswitch; // Records number of VS games played for Item
 							   // Switch unlock

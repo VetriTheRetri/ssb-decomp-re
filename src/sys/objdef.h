@@ -120,6 +120,97 @@ typedef enum OMMtxTransformKind
 
 } OMMtxTransformKind;
 
+typedef enum AObjInterpolateKind
+{
+    nOMObjAnimLerpNone, 
+    nOMObjAnimLerpStep,
+    nOMObjAnimLerpLinear, 
+    nOMObjAnimLerpCubic
+
+} AObjInterpolateKind;
+
+typedef enum AObjCommandKind
+{
+    nOMObjAnimCommandEnd,
+    nOMObjAnimCommandJump,
+    nOMObjAnimCommandWait,
+    nOMObjAnimCommandSetValLast,
+    nOMObjAnimCommandSetVal,
+    nOMObjAnimCommandSetValRateLast,
+    nOMObjAnimCommandSetValRate,
+    nOMObjAnimCommandSetTargetRate,
+    nOMObjAnimCommandSetVal0RateLast,
+    nOMObjAnimCommandSetVal0Rate,
+    nOMObjAnimCommandSetValAfterLast,
+    nOMObjAnimCommandSetValAfter,
+    ANIM_CMD_12 = 12,
+    ANIM_CMD_13 = 13,
+    nOMObjAnimCommandSetAnim,
+    nOMObjAnimCommandSetFlags,
+    ANIM_CMD_16 = 16,
+    ANIM_CMD_17 = 17,
+    nOMObjAnimCommandSetExtValAfterLast,
+    nOMObjAnimCommandSetExtValAfter,
+    nOMObjAnimCommandSetExtValLast,
+    nOMObjAnimCommandSetExtVal,
+    ANIM_CMD_22 = 22,
+    ANIM_CMD_23 = 23
+
+} AObjCommandKind;
+
+typedef enum AObjTrackKind
+{
+    // model
+    nOMObjAnimTrackNone,
+    nOMObjAnimTrackMeshStart,                       // Start of Mesh tracks
+    nOMObjAnimTrackRotX = nOMObjAnimTrackMeshStart, // Rotation X (Roll)
+    nOMObjAnimTrackRotY,                            // Rotation Y (Pitch)
+    nOMObjAnimTrackRotZ,                            // Rotation Z (Yaw)
+    nOMObjAnimTrackRotA,                            // Rotation angle?
+    nOMObjAnimTrackTraX,                            // Translation X 
+    nOMObjAnimTrackTraY,                            // Translation Y
+    nOMObjAnimTrackTraZ,                            // Translation Z
+    nOMObjAnimTrackScaX,                            // Scale X
+    nOMObjAnimTrackScaY,                            // Scale Y
+    nOMObjAnimTrackScaZ,                            // Scale Z
+    nOMObjAnimTrackMeshEnd = nOMObjAnimTrackScaZ,   // End of Mesh tracks
+    // texture
+    nOMObjAnimTrackTextureStart = 13,
+    nOMObjAnimTrackTexture13 = 13,
+    nOMObjAnimTrackTexture14 = 14,
+    nOMObjAnimTrackTexture15 = 15,
+    nOMObjAnimTrackTexture16 = 16,
+    nOMObjAnimTrackTexture17 = 17,
+    nOMObjAnimTrackTexture18 = 18,
+    nOMObjAnimTrackTexture19 = 19,
+    nOMObjAnimTrackTexture20 = 20,
+    nOMObjAnimTrackTexture21 = 21,
+    nOMObjAnimTrackTexture22 = 22,
+    nOMObjAnimTrackTextureEnd = 22,
+    // camera
+    nOMObjAnimTrackCameraStart = 25,
+    nOMObjAnimTrackCameraEyeX = nOMObjAnimTrackCameraStart,
+    nOMObjAnimTrackCameraEyeY,
+    nOMObjAnimTrackCameraEyeZ,
+    nOMObjAnimTrackCamera28,
+    nOMObjAnimTrackCameraAtX,
+    nOMObjAnimTrackCameraAtY,
+    nOMObjAnimTrackCameraAtZ,
+    nOMObjAnimTrackCamera32,
+    nOMObjAnimTrackCameraRoll,
+    nOMObjAnimTrackCameraFOVY,
+    nOMObjAnimTrackCameraEnd = nOMObjAnimTrackCameraFOVY,
+    // texture extra
+    nOMObjAnimTrackTextureSpecialStart = 37,
+    nOMObjAnimTrackTextureSpecial37 = 37,
+    nOMObjAnimTrackTextureSpecial38 = 38,
+    nOMObjAnimTrackTextureSpecial39 = 39,
+    nOMObjAnimTrackTextureSpecial40 = 40,
+    nOMObjAnimTrackTextureSpecial41 = 41,
+    nOMObjAnimTrackTextureSpecialEnd = 41
+
+} AObjTrackKind;
+
 typedef union  ATrack               ATrack;
 typedef union  ACommand             ACommand;
 typedef struct GObj                 GObj;

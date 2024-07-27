@@ -155,7 +155,7 @@ segments:
       - [0x0078E0, c, sys/ml]
       - [0x007970, c, sys/system_00]
       - [0x007C80, c, sys/rdp_reset]
-      - [0x007FE0, c, sys/obj_manager]
+      - [0x007FE0, c, sys/objmanager]
       - [0x00B8D0, c, sys/system_03]
       - [0x00BAF0, c, sys/system_03_1]
       - [0x00C7B0, c, sys/system_04]
@@ -316,7 +316,7 @@ segments:
       - [0x03C2B0, .data, sys/main]
       - [0x03C2E0, .data, sys/gsgtl]
       - [0x03C350, .data, sys/rdp_reset]
-      - [0x03C470, .data, sys/obj_manager]
+      - [0x03C470, .data, sys/objmanager]
       - [0x03C530, .data, sys/system_04]
       - [0x03C540, .data, sys/trig_rand]
       - [0x03C550, .data, sys/sintable]
@@ -348,7 +348,7 @@ segments:
       - [0x03E2D0, .rodata, sys/thread6]
       - [0x03E2F0, .rodata, sys/gsgtl]
       - [0x03E510, .rodata, sys/ml]
-      - [0x03E530, .rodata, sys/obj_manager]
+      - [0x03E530, .rodata, sys/objmanager]
       - [0x03E980, .rodata, sys/system_03]
       - [0x03E9A0, .rodata, sys/system_03_1]
       - [0x03E9D0, .rodata, sys/system_04]
@@ -380,7 +380,7 @@ segments:
       - { start: auto, type: .bss, name: sys/gsgtl,                vram: 0x80045480 }
       - { start: auto, type: .bss, name: sys/system_00,            vram: 0x80046670 }
       - { start: auto, type: .bss, name: sys/rdp_reset,            vram: 0x800466A0 }
-      - { start: auto, type: .bss, name: sys/obj_manager,          vram: 0x800466B0 }
+      - { start: auto, type: .bss, name: sys/objmanager,          vram: 0x800466B0 }
       - { start: auto, type: .bss, name: sys/objdraw,              vram: 0x80046FA0 }
       - { start: auto, type:  bss, name: sys/hal_audio,            vram: 0x800472D0 }
       - { start: auto, type: .bss, name: sys/gserror,              vram: 0x8009DA00 }
@@ -435,6 +435,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Model animation parser
+      - [0x067960, c, gm/gmanim]
     # General collision and position calculation
       - [0x068580, c, gm/gmcollision]
     # Fighter main renderer
@@ -488,6 +490,10 @@ segments:
 
     # ovl2 data
       - [0x0923D0, data, ovl2]
+    # Model animation parser
+      - [0x0A7110, .data, gm/gmanim]
+    # Temp ASM block
+      - [0x0A7130, data, ovl2temp]
     # Effect manager and common effects
       - [0x0A9680, .data, ef/efmanager]
     # Stage background image setup
@@ -516,6 +522,8 @@ segments:
 
     # ovl2 read-only data
       - [0x0AB250, rodata, ovl2]
+    # Model animation parser
+      - [0x0AB900, .rodata, gm/gmanim]
     # General collision and position calculation
       - [0x0AB980, .rodata, gm/gmcollision]
     # Fighter main renderer

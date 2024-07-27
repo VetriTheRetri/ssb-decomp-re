@@ -99,7 +99,7 @@ void gmAnimParseAnimJoint(DObj *root_dobj)
         {
             if ((current_aobj->track > 0) && (current_aobj->track <= ARRAY_COUNT(setup_aobj)))
             {
-                setup_aobj[current_aobj->track - 1] = current_aobj;
+                setup_aobj[current_aobj->track - nOMObjAnimTrackMeshStart] = current_aobj;
             }
             current_aobj = current_aobj->next;
         }

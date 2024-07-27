@@ -93,7 +93,7 @@ void gmAnimParseAnimJoint(DObj *root_dobj)
         {
             setup_aobj[i] = NULL;
         }
-        current_aobj =root_dobj->aobj;
+        current_aobj = root_dobj->aobj;
 
         while (current_aobj != NULL)
         {

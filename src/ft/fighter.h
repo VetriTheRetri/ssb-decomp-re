@@ -17,6 +17,9 @@ extern sb32 gFTMainIsHitDetect[4];
 extern s32 gFighterHitLogIndex;
 extern ftHitCollisionLog gFighterHitLogTable[/* */];
 
+extern u16 gFTManagerMotionCount;
+extern u16 gFTManagerStatUpdateCount; // Updated each time an entity's status is changed? e.g. PK Fire pillar increments this twice, desyncing it from gFTManagerMotionCount
+
 // Data - 0x80116DD0
 extern ftCreateDesc dFTDefaultFighterDesc;
 extern f32 dFTMainMapSurfaceFrictions[/* */];

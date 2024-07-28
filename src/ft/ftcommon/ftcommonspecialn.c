@@ -96,7 +96,7 @@ sb32 ftCommonSpecialNCheckInterruptCommon(GObj *fighter_gobj)
         {
             if ((fp->input.pl.stick_range.x * fp->lr) < FTCOMMON_SPECIALN_TURN_STICK_RANGE_MIN)
             {
-                ftCommon_StickInputSetLR(fp);
+                ftParamSetStickLR(fp);
             }
             dFTCommonSpecialNStatusList[fp->ft_kind](fighter_gobj);
 

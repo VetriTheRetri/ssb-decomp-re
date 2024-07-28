@@ -95,7 +95,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
     mpCollisionGetMapObjPositionID(new_point_id, &fp->status_vars.common.dokan.pos_current);
 
     func_800269C0_275C0(alSound_SFX_MarioDokan);
-    ftCommon_SetPlayerTagWait(fighter_gobj, 1);
+    ftParamSetPlayerTagWait(fighter_gobj, 1);
 
     if
     (
@@ -258,7 +258,7 @@ void ftCommonDokanEndUpdatePlayerTag(GObj *fighter_gobj)
 
         if (fp->status_vars.common.dokan.playertag_wait == 0)
         {
-            ftCommon_SetPlayerTagWait(fighter_gobj, 1);
+            ftParamSetPlayerTagWait(fighter_gobj, 1);
         }
     }
 }

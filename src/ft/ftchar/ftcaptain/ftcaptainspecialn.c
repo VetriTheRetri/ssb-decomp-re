@@ -1,8 +1,5 @@
 #include <ft/fighter.h>
 
-extern void ftCommon_ProcPauseGFX(GObj*);
-extern void ftCommon_ProcResumeGFX(GObj*);
-
 // 0x8015F7F0
 void ftCaptainSpecialNUpdateEffect(GObj *fighter_gobj) // Falcon Punch
 {
@@ -22,7 +19,7 @@ void ftCaptainSpecialNUpdateEffect(GObj *fighter_gobj) // Falcon Punch
 
     else if (fp->command_vars.flags.flag0 == 1)
     {
-        ftCommon_ProcStopGFX(fighter_gobj);
+        ftParamProcStopEffect(fighter_gobj);
 
         fp->command_vars.flags.flag0 = 2;
     }
@@ -105,8 +102,8 @@ void ftCaptainSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
     ftMap_SetGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
 
-    fp->proc_lagstart = ftCommon_ProcPauseGFX;
-    fp->proc_lagend = ftCommon_ProcResumeGFX;
+    fp->proc_lagstart = ftParamProcPauseEffect;
+    fp->proc_lagend = ftParamProcResumeEffect;
 }
 
 // 0x8015FA8C
@@ -118,8 +115,8 @@ void ftCaptainSpecialNSwitchStatusAir(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
     ftPhysics_ClampAirVelXMax(fp);
 
-    fp->proc_lagstart = ftCommon_ProcPauseGFX;
-    fp->proc_lagend = ftCommon_ProcResumeGFX;
+    fp->proc_lagstart = ftParamProcPauseEffect;
+    fp->proc_lagend = ftParamProcResumeEffect;
 }
 
 // 0x8015FAF8
@@ -159,8 +156,8 @@ void ftCaptainSpecialNSetStatus(GObj *fighter_gobj)
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftCaptainSpecialNInitStatusVars(fighter_gobj);
 
-    fp->proc_lagstart = ftCommon_ProcPauseGFX;
-    fp->proc_lagend = ftCommon_ProcResumeGFX;
+    fp->proc_lagstart = ftParamProcPauseEffect;
+    fp->proc_lagend = ftParamProcResumeEffect;
 }
 
 // 0x8015FBC0
@@ -172,6 +169,6 @@ void ftCaptainSpecialAirNSetStatus(GObj *fighter_gobj)
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
     ftCaptainSpecialNInitStatusVars(fighter_gobj);
 
-    fp->proc_lagstart = ftCommon_ProcPauseGFX;
-    fp->proc_lagend = ftCommon_ProcResumeGFX;
+    fp->proc_lagstart = ftParamProcPauseEffect;
+    fp->proc_lagend = ftParamProcResumeEffect;
 }

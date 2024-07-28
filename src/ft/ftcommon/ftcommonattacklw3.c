@@ -1,7 +1,5 @@
 #include <ft/fighter.h>
 
-extern f32 ftCommon_GetStickAngleRadians(ftStruct*);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -54,9 +52,9 @@ void ftCommonAttackLw3InitStatusVars(GObj *fighter_gobj)
 
     fp->status_vars.common.attacklw3.is_goto_attacklw3 = FALSE;
 
-    ftCommon_MotionCountIncSetAttackID(fp, nFTMotionAttackIDAttackLw3);
-    ftCommon_StatUpdateCountIncSetFlags(fp, fp->stat_flags.halfword);
-    ftCommon_Update1PGameAttackStats(fp, 0);
+    ftParamSetMotionID(fp, nFTMotionAttackIDAttackLw3);
+    ftParamSetStatUpdate(fp, fp->stat_flags.halfword);
+    ftParamUpdate1PGameAttackStats(fp, 0);
 }
 
 // 0x8014FD14
@@ -81,7 +79,7 @@ sb32 ftCommonAttackLw3CheckInterruptCommon(GObj *fighter_gobj)
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (fp->input.pl.stick_range.y <= FTCOMMON_ATTACKLW3_STICK_RANGE_MIN))
     {
-        if (ftCommon_GetStickAngleRadians(fp) < F_CST_DTOR32(-50.0F)) // -0.87266463F
+        if (ftParamGetStickAngleRads(fp) < F_CST_DTOR32(-50.0F)) // -0.87266463F
         {
             if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
             {

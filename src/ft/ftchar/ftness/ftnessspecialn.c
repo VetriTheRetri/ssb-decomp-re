@@ -7,7 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
-#define FTNESS_SPECIALN_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM)
+#define FTNESS_SPECIALN_STATUS_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM)
 
 // // // // // // // // // // // //
 //                               //
@@ -74,7 +74,7 @@ void ftNessSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUPDATE_FLAGS); // Action State Change
+    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUS_FLAGS); // Action State Change
 
     fp->proc_accessory = ftNessSpecialNProcAccessory;
 }
@@ -86,7 +86,7 @@ void ftNessSpecialNSwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUPDATE_FLAGS); // Action State Change
+    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUS_FLAGS); // Action State Change
 
     ftPhysics_ClampAirVelXMax(fp);
 

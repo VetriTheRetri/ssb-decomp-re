@@ -255,7 +255,7 @@ sb32 itPakkunDAppearProcUpdate(GObj *item_gobj)
 
     if (ip->item_vars.pakkun.is_wait_fighter != FALSE)
     {
-        DObjGetStruct(item_gobj)->dobj_f0 = AOBJ_FRAME_NULL;
+        DObjGetStruct(item_gobj)->anim_remain = AOBJ_FRAME_NULL;
 
         itPakkunDWaitInitItemVars(item_gobj);
 
@@ -263,7 +263,7 @@ sb32 itPakkunDAppearProcUpdate(GObj *item_gobj)
     }
     dobj = DObjGetStruct(item_gobj);
 
-    if (dobj->dobj_f0 == AOBJ_FRAME_NULL)
+    if (dobj->anim_remain == AOBJ_FRAME_NULL)
     {
         itPakkunDWaitInitItemVars(item_gobj);
     }
@@ -298,7 +298,7 @@ sb32 itPakkunDAppearProcDamage(GObj *item_gobj)
 
         itPakkunNDamageSetStatus(item_gobj);
 
-        dobj->dobj_f0 = AOBJ_FRAME_NULL;
+        dobj->anim_remain = AOBJ_FRAME_NULL;
 
         omAddMObjAnimAll(dobj->mobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunNDamageMatAnimJoint, 0.0F);
         func_8000DF34_EB34(item_gobj);
@@ -332,7 +332,7 @@ sb32 itPakkunNDamageProcDead(GObj *item_gobj)
 
     dobj->rotate.vec.f.z = 0.0F;
 
-    dobj->mobj->mobj_f0 = AOBJ_FRAME_NULL;
+    dobj->mobj->anim_remain = AOBJ_FRAME_NULL;
 
     itPakkunDWaitSetStatus(item_gobj);
 

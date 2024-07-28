@@ -6,7 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
-#define FTCOMMON_SHIELDBREAKDOWN_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM)
+#define FTCOMMON_SHIELDBREAKDOWN_STATUS_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM)
 
 // // // // // // // // // // // //
 //                               //
@@ -32,6 +32,6 @@ void ftCommonShieldBreakDownSetStatus(GObj *fighter_gobj)
     }
     status_id = (ftCommonDownBounceCheckUpOrDown(fighter_gobj) != 0) ? nFTCommonStatusShieldBreakDownD : nFTCommonStatusShieldBreakDownU;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKDOWN_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKDOWN_STATUS_FLAGS);
     ftCommonDownBounceUpdateEffects(fighter_gobj);
 }

@@ -138,7 +138,7 @@ sb32 itMarumineSDefaultProcUpdate(GObj *item_gobj)
     dobj->translate.vec.f.x += ip->item_vars.marumine.offset.x;
     dobj->translate.vec.f.y += ip->item_vars.marumine.offset.y;
 
-    if (dobj->dobj_f0 == AOBJ_FRAME_NULL)
+    if (dobj->anim_remain == AOBJ_FRAME_NULL)
     {
         itMainRefreshHit(item_gobj);
         itMainClearOwnerStats(item_gobj);

@@ -10,7 +10,7 @@
 extern intptr_t lFTKirbySpecialNCopyData;           // 0x00000000
 
 extern void func_ovl0_800C87F4(DObj*, void*, f32);
-extern void ftCollision_SetHitStatusAll(GObj*, s32);
+extern void ftParamSetHitStatusAll(GObj*, s32);
 
 // // // // // // // // // // // //
 //                               //
@@ -96,7 +96,7 @@ void ftCommonCaptureKirbyProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp;
 
-    ftCommon_ProcDamageStopVoice(fighter_gobj);
+    ftParamStopVoiceRunProcDamage(fighter_gobj);
 
     if ((this_fp->item_hold != NULL) && (itGetStruct(this_fp->item_hold)->weight == nITWeightHeavy))
     {
@@ -123,7 +123,7 @@ void ftCommonCaptureKirbyProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     ftMap_SetAir(this_fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureKirby, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
-    ftMainMakeRumble(this_fp, 7, 0);
+    ftParamMakeRumble(this_fp, 7, 0);
 
     this_fp->status_vars.common.capturekirby.is_goto_capturewait = FALSE;
     this_fp->status_vars.common.capturekirby.lr = nGMDirectionC;
@@ -251,7 +251,7 @@ void ftCommonCaptureWaitKirbySetStatus(GObj *fighter_gobj)
 
     fp->is_invisible = TRUE;
 
-    ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
+    ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
     ftCommonCaptureTrappedInitBreakoutVars(fp, 500);
 }
 
@@ -331,13 +331,13 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
 
                 fp->fighter_vars.kirby.copy_id = nFTKindKirby;
 
-                ftCommon_SetModelPartRenderStateIndex(fighter_gobj, 6, 0);
-                ftCommon_ResetModelPartRenderAll(fighter_gobj);
+                ftParamSetModelPartDefaultID(fighter_gobj, 6, 0);
+                ftParamResetModelPartAll(fighter_gobj);
             }
             fp->is_invisible = FALSE;
 
-            ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
-            ftCommon_ProcStopGFX(fighter_gobj);
+            ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
+            ftParamProcStopEffect(fighter_gobj);
             ftCommonThrownKirbyEscape(fighter_gobj);
 
             if (efManagerStarSplashMakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f, (-fp->phys_info.vel_air.x < 0.0F) ? nGMDirectionL : nGMDirectionR) != NULL)
@@ -360,7 +360,7 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
                 }
                 else fp->phys_info.vel_air.x = ((fp->phys_info.vel_air.x < 0.0F) ? nGMDirectionL : nGMDirectionR) * FTCOMMON_THROWNKIRBYSTAR_RELEASE_VEL_X;
 
-                ftCommon_ProcStopGFX(fighter_gobj);
+                ftParamProcStopEffect(fighter_gobj);
 
                 if (efManagerStarSplashMakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f, (-fp->phys_info.vel_air.x < 0.0F) ? nGMDirectionL : nGMDirectionR) != NULL)
                 {
@@ -368,7 +368,7 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
                 }
                 fp->is_invisible = FALSE;
 
-                ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
+                ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
             }
             if (fp->command_vars.flags.flag2 == 3)
             {
@@ -458,7 +458,7 @@ void ftCommonThrownKirbyStarInitStatusVars(GObj *fighter_gobj)
         ftCommonThrownReleaseFighterLoseGrip(fighter_gobj);
         ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_NONE);
         ftParamSetCaptureImmuneMask(capture_fp, FTCATCHKIND_MASK_NONE);
-        ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
+        ftParamUpdate1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
 
         this_fp->capture_gobj = NULL;
         this_fp->catch_gobj = NULL;
@@ -509,8 +509,8 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
     }
     fp->is_invisible = fp->x18E_flag_b0 = TRUE;
 
-    ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
-    ftCommon_SetPlayerTagWait(fighter_gobj, 1);
+    ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
+    ftParamSetPlayerTagWait(fighter_gobj, 1);
     ftCommonCaptureTrappedInitBreakoutVars(fp, FTCOMMON_THROWNKIRBYSTAR_BREAKOUT_INPUTS_MIN);
 }
 
@@ -554,6 +554,6 @@ void ftCommonThrownCopyStarSetStatus(GObj *fighter_gobj)
     fp->proc_hit = ftCommonThrownCommonStarProcHit;
     fp->is_invisible = fp->x18E_flag_b0 = TRUE;
 
-    ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
-    ftCommon_SetPlayerTagWait(fighter_gobj, 1);
+    ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
+    ftParamSetPlayerTagWait(fighter_gobj, 1);
 }

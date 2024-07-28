@@ -539,7 +539,7 @@ typedef struct ftMotionEventAfterImage
 {
 	u32 opcode : 6;
 	u32 is_itemswing : 8;
-	s32 render_state : 18;
+	s32 drawstatus : 18;
 
 } ftMotionEventAfterImage;
 

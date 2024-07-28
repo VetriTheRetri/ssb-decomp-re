@@ -336,7 +336,7 @@ void ftFoxSpecialHiDecideSetStatus(GObj *fighter_gobj)
         }
         else
         {
-            ftCommon_StickInputSetLR(fp);
+            ftParamSetStickLR(fp);
             ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
             ftFoxSpecialHiInitStatusVars(fp);
 
@@ -360,7 +360,7 @@ void ftFoxSpecialAirHiSetStatusFromGround(GObj *fighter_gobj)
     {
         if (ABS(fp->input.pl.stick_range.x) >= FTFOX_FIREFOX_MODEL_STICK_THRESHOLD)
         {
-            ftCommon_StickInputSetLR(fp);
+            ftParamSetStickLR(fp);
         }
         fp->status_vars.fox.specialhi.angle = atan2f(fp->input.pl.stick_range.y, fp->input.pl.stick_range.x * fp->lr);
     }

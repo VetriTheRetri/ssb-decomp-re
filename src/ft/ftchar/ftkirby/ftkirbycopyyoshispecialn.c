@@ -3,7 +3,7 @@
 // 0x8015F180
 void ftKirbyCopyYoshiSpecialNInitCatchVars(ftStruct *fp, void (*proc_catch)(GObj*)) // Kirby's Yoshi Copy
 {
-    ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_YOSHISPECIALN, proc_catch, ftCommonCaptureYoshiProcCapture);
+    ftParamSetCatchParams(fp, FTCATCHKIND_MASK_YOSHISPECIALN, proc_catch, ftCommonCaptureYoshiProcCapture);
 }
 
 // 0x8015F1AC

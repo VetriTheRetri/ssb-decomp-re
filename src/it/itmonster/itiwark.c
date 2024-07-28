@@ -230,7 +230,7 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
     }
     else pos.y += ITIWARK_OTHER_ADD_POS_Y;
 
-    efManagerDustHeavy2xMakeEffect(&pos, nGMDirectionL, 1.0F);
+    efManagerDustHeavyDoubleMakeEffect(&pos, nGMDirectionL, 1.0F);
 
     if (ip->it_kind == nITKindIwark)
     {

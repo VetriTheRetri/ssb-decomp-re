@@ -1,8 +1,6 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
 
-extern f32 ftCommon_GetStickAngleRadians(ftStruct*);
-
 // // // // // // // // // // // //
 //                               //
 //        INITIALIZED DATA       //
@@ -89,7 +87,7 @@ void ftBossWaitDecideStatusPlayer(GObj *fighter_gobj)
         fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
     }
 
-    angle = ftCommon_GetStickAngleRadians(fp);
+    angle = ftParamGetStickAngleRads(fp);
 
     target_fp = ftGetStruct(fp->fighter_vars.boss.p->target_gobj);
 

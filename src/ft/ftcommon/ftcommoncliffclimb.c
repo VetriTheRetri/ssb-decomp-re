@@ -1,7 +1,5 @@
 #include <ft/fighter.h>
 
-extern f32 ftCommon_GetStickAngleRadians(ftStruct*);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -87,7 +85,7 @@ sb32 ftCommonCliffClimbOrFallCheckInterruptCommon(GObj *fighter_gobj)
 
     if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_CLIFF_MOTION_STICK_RANGE_MIN) || (ABS(fp->input.pl.stick_range.y) >= FTCOMMON_CLIFF_MOTION_STICK_RANGE_MIN))
     {
-        f32 angle = ftCommon_GetStickAngleRadians(fp);
+        f32 angle = ftParamGetStickAngleRads(fp);
 
         if ((angle > F_CST_DTOR32(50.0F)) || ((angle > F_CST_DTOR32(-50.0F)) && ((fp->input.pl.stick_range.x * fp->lr) >= 0)))
         {
@@ -236,7 +234,7 @@ void ftCommonCliffCommon2UpdateCollData(GObj *fighter_gobj)
     mpCollData *coll_data = &fp->coll_data;
     Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    if (fp->attributes->cliff_status_ground_air_id[fp->status_vars.common.cliffmotion.status_id] == nMPKineticsGround)
+    if (fp->attributes->cliff_status_ga[fp->status_vars.common.cliffmotion.status_id] == nMPKineticsGround)
     {
         ftMap_SetGround(fp);
     }

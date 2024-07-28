@@ -35,39 +35,39 @@ void ftCommonGuardCheckScheduleRelease(ftStruct *fp)
 // 0x80148144
 void ftCommonGuardOnSetHitStatusYoshi(GObj *fighter_gobj) // Set all of Yoshi's hurtbox collision states to invincible (GuardOn)
 {
-    ftCommon_SetHitStatusPart(fighter_gobj, 5,  nGMHitStatusInvincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 6,  nGMHitStatusInvincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 7,  nGMHitStatusInvincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 15, nGMHitStatusInvincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 11, nGMHitStatusInvincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 16, nGMHitStatusInvincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 12, nGMHitStatusInvincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 27, nGMHitStatusInvincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 22, nGMHitStatusInvincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 28, nGMHitStatusInvincible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 23, nGMHitStatusInvincible);
+    ftParamSetHitStatusPartID(fighter_gobj, 5,  nGMHitStatusInvincible);
+    ftParamSetHitStatusPartID(fighter_gobj, 6,  nGMHitStatusInvincible);
+    ftParamSetHitStatusPartID(fighter_gobj, 7,  nGMHitStatusInvincible);
+    ftParamSetHitStatusPartID(fighter_gobj, 15, nGMHitStatusInvincible);
+    ftParamSetHitStatusPartID(fighter_gobj, 11, nGMHitStatusInvincible);
+    ftParamSetHitStatusPartID(fighter_gobj, 16, nGMHitStatusInvincible);
+    ftParamSetHitStatusPartID(fighter_gobj, 12, nGMHitStatusInvincible);
+    ftParamSetHitStatusPartID(fighter_gobj, 27, nGMHitStatusInvincible);
+    ftParamSetHitStatusPartID(fighter_gobj, 22, nGMHitStatusInvincible);
+    ftParamSetHitStatusPartID(fighter_gobj, 28, nGMHitStatusInvincible);
+    ftParamSetHitStatusPartID(fighter_gobj, 23, nGMHitStatusInvincible);
 }
 
 // 0x80148214
 void ftCommonGuardSetHitStatusYoshi(GObj *fighter_gobj) // Set all of Yoshi's hurtbox collision states to intangible (Guard)
 {
-    ftCommon_SetHitStatusPart(fighter_gobj, 5,  nGMHitStatusNormal);
-    ftCommon_SetHitStatusPart(fighter_gobj, 6,  nGMHitStatusIntangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 7,  nGMHitStatusIntangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 15, nGMHitStatusIntangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 11, nGMHitStatusIntangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 16, nGMHitStatusIntangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 12, nGMHitStatusIntangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 27, nGMHitStatusIntangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 22, nGMHitStatusIntangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 28, nGMHitStatusIntangible);
-    ftCommon_SetHitStatusPart(fighter_gobj, 23, nGMHitStatusIntangible);
+    ftParamSetHitStatusPartID(fighter_gobj, 5,  nGMHitStatusNormal);
+    ftParamSetHitStatusPartID(fighter_gobj, 6,  nGMHitStatusIntangible);
+    ftParamSetHitStatusPartID(fighter_gobj, 7,  nGMHitStatusIntangible);
+    ftParamSetHitStatusPartID(fighter_gobj, 15, nGMHitStatusIntangible);
+    ftParamSetHitStatusPartID(fighter_gobj, 11, nGMHitStatusIntangible);
+    ftParamSetHitStatusPartID(fighter_gobj, 16, nGMHitStatusIntangible);
+    ftParamSetHitStatusPartID(fighter_gobj, 12, nGMHitStatusIntangible);
+    ftParamSetHitStatusPartID(fighter_gobj, 27, nGMHitStatusIntangible);
+    ftParamSetHitStatusPartID(fighter_gobj, 22, nGMHitStatusIntangible);
+    ftParamSetHitStatusPartID(fighter_gobj, 28, nGMHitStatusIntangible);
+    ftParamSetHitStatusPartID(fighter_gobj, 23, nGMHitStatusIntangible);
 }
 
 // 0x801482E4
 void ftCommonGuardOffSetHitStatusYoshi(GObj *fighter_gobj)
 {
-    ftCommon_SetHitStatusPartAll(fighter_gobj, nGMHitStatusNormal);
+    ftParamSetHitStatusPartAll(fighter_gobj, nGMHitStatusNormal);
 }
 
 // 0x80148304
@@ -104,7 +104,7 @@ void ftCommonGuardUpdateShieldVars(GObj *fighter_gobj)
         lag_end:
             if (fp->ft_kind == nFTKindYoshi)
             {
-                ftCommon_ResetModelPartRenderAll(fighter_gobj);
+                ftParamResetModelPartAll(fighter_gobj);
                 ftCommonGuardOffSetHitStatusYoshi(fighter_gobj);
 
                 if (fp->is_attach_effect)
@@ -116,7 +116,7 @@ void ftCommonGuardUpdateShieldVars(GObj *fighter_gobj)
                     efManagerEggBreakMakeEffect(&egg_gfx_offset);
                 }
             }
-            ftCommon_ProcStopGFX(fighter_gobj);
+            ftParamProcStopEffect(fighter_gobj);
 
             fp->is_shield = FALSE;
         }
@@ -246,7 +246,7 @@ void ftCommonGuardUpdateJoints(GObj *fighter_gobj)
         }
         else ftCommonGuardGetJointTransform(yrotn_joint, &fp->attributes->dobj_lookup[joint_num], fp->status_vars.common.guard.shield_rotate_range);
 
-        yrotn_joint->dobj_f0 = AOBJ_FRAME_NULL;
+        yrotn_joint->anim_remain = AOBJ_FRAME_NULL;
 
         ftCommonGuardUpdateShieldHitbox(fp);
         func_ovl2_800EB528(fp->joint[nFTPartsJointYRotN]);
@@ -283,22 +283,22 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
 
             if (joint != NULL)
             {
-                if (joint->dobj_f0 != AOBJ_FRAME_NULL)
+                if (joint->anim_remain != AOBJ_FRAME_NULL)
                 {
                     ftCommonGuardGetJointTransformScale(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range, scale);
 
-                    joint->dobj_f0 = AOBJ_FRAME_NULL;
+                    joint->anim_remain = AOBJ_FRAME_NULL;
                 }
                 dobj_desc++;
             }
         }
         joint = fp->joint[nFTPartsJointYRotN];
 
-        if (joint->dobj_f0 != AOBJ_FRAME_NULL)
+        if (joint->anim_remain != AOBJ_FRAME_NULL)
         {
             ftCommonGuardGetJointTransformScale(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range, &fp->attributes->translate_scales[nFTPartsJointYRotN]);
 
-            joint->dobj_f0 = AOBJ_FRAME_NULL;
+            joint->anim_remain = AOBJ_FRAME_NULL;
         }
     }
     else
@@ -309,22 +309,22 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
 
             if (joint != NULL)
             {
-                if (joint->dobj_f0 != AOBJ_FRAME_NULL)
+                if (joint->anim_remain != AOBJ_FRAME_NULL)
                 {
                     ftCommonGuardGetJointTransform(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range);
 
-                    joint->dobj_f0 = AOBJ_FRAME_NULL;
+                    joint->anim_remain = AOBJ_FRAME_NULL;
                 }
                 dobj_desc++;
             }
         }
         joint = fp->joint[nFTPartsJointYRotN];
 
-        if (joint->dobj_f0 != AOBJ_FRAME_NULL)
+        if (joint->anim_remain != AOBJ_FRAME_NULL)
         {
             ftCommonGuardGetJointTransform(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range);
 
-            joint->dobj_f0 = AOBJ_FRAME_NULL;
+            joint->anim_remain = AOBJ_FRAME_NULL;
         }
     }
     ftCommonGuardUpdateShieldHitbox(fp);
@@ -361,7 +361,7 @@ void ftCommonGuardOnProcUpdate(GObj *fighter_gobj)
                 {
                     fp->status_vars.common.guard.effect_gobj = efManagerYoshiShieldMakeEffect(fighter_gobj);
 
-                    ftCommon_HideModelPartAll(fighter_gobj);
+                    ftParamHideModelPartAll(fighter_gobj);
                     ftCommonGuardSetHitStatusYoshi(fighter_gobj);
 
                     fp->is_shield = TRUE;

@@ -13,7 +13,7 @@ typedef enum ftStatusUpdateFlags
     nFTStatusPreserveSlopeContour,      // Preserve inverse kinematics mode between action states
     nFTStatusPreserveTexturePart,       // Preserve modified texture part display state between action states
     nFTStatusPreservePlayerTag,         // Preserve player indicator wait timer
-    nFTStatusPreserveThrowPointer,         // Preserve thrower's GObj pointer between action states; used to tell the game not to check thrower's collateral hitbox on thrown victim?  
+    nFTStatusPreserveThrowPointer,      // Preserve thrower's GObj pointer between action states; used to tell the game not to check thrower's collateral hitbox on thrown victim?  
     nFTStatusPreserveShuffleTime,       // Preserve model vibration frames from hitlag between action states
     nFTStatusPreserveLoopSFX,           // Preserve looping SFX
     nFTStatusPreserveDamagePlayer,      // Preserve damaging player's port ID if grounded?
@@ -916,13 +916,15 @@ typedef struct ftDataUnkContainer3		ftDataUnkContainer3;
 typedef struct ftScriptInfo				ftScriptInfo;
 typedef struct ftScriptInfoArray		ftScriptInfoArray;
 typedef struct ftData					ftData;
+typedef struct ftBackupPart             ftBackupPart;
+typedef struct ftBackupPartContainer    ftBackupPartContainer;
 typedef struct ftModelPart				ftModelPart;
 typedef struct ftModelPartDesc			ftModelPartDesc;
 typedef struct ftModelPartContainer		ftModelPartContainer;
-typedef struct ftModelPartRenderState	ftModelPartRenderState;
-typedef struct ftTexturePartInfo		ftTexturePartInfo;
+typedef struct ftModelPartDrawStatus	ftModelPartDrawStatus;
+typedef struct ftTexturePart		    ftTexturePart;
 typedef struct ftTexturePartContainer	ftTexturePartContainer;
-typedef struct ftTexturePartRenderState ftTexturePartRenderState;
+typedef struct ftTexturePartDrawStatus  ftTexturePartDrawStatus;
 typedef union  ftAnimFlags				ftAnimFlags;
 typedef struct ftMotionFlags		    ftMotionFlags;
 typedef struct ftStatusDesc				ftStatusDesc;
@@ -939,9 +941,8 @@ typedef struct ftItemThrow				ftItemThrow;
 typedef struct ftItemSwing				ftItemSwing;
 typedef struct ftParts                  ftParts;
 typedef struct ftPartIndex				ftPartIndex;
-typedef struct ftPartsUnkIndexTable		ftPartsUnkIndexTable;
 typedef struct ftShadow                 ftShadow;
-typedef struct ftCostumeIndex           ftCostumeIndex;
+typedef struct ftCostume                ftCostume;
 typedef struct ftSkeleton               ftSkeleton;
 typedef struct ftAfterImage				ftAfterImage;
 typedef struct ftCamera                 ftCamera;

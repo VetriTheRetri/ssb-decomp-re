@@ -584,7 +584,7 @@ void scBonusGame_InitBonusGame()
 	func_ovl6_8018D330();
 	func_8000B9FC(9, 0x80000000U, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
-	func_ovl2_800EC130();
+	ftParamGameSet();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
@@ -626,7 +626,7 @@ void scBonusGame_InitBonusGame()
 
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 
-		ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
+		ftParamInitPlayerBattleStats(player, fighter_gobj);
 
 		break;
 	}

@@ -3,7 +3,6 @@
 #include <ft/fighter.h>
 
 extern void func_8000BED8_CAD8(GObj*, void*, void*, f32);
-extern f32 gmCommon_DamageGetStaleMul(s32, s32, u16);
 
 // // // // // // // // // // // //
 //                               //
@@ -129,7 +128,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
 
         wp->display_mode = fp->display_mode;
 
-        wp->weapon_hit.stale = gmCommon_DamageGetStaleMul(fp->player, fp->attack_id, fp->motion_count);
+        wp->weapon_hit.stale = ftParamGetStale(fp->player, fp->attack_id, fp->motion_count);
         wp->weapon_hit.attack_id = fp->attack_id;
         wp->weapon_hit.motion_count = fp->motion_count;
         wp->weapon_hit.stat_flags = fp->stat_flags;
@@ -185,10 +184,10 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
 
         wp->weapon_hit.attack_id = nFTMotionAttackIDNone;
         wp->weapon_hit.stale = WEAPON_STALE_DEFAULT;
-        wp->weapon_hit.motion_count = gmCommon_GetMotionCountInc();
+        wp->weapon_hit.motion_count = ftParamGetMotionCount();
         wp->weapon_hit.stat_flags.stat_attack_id = nFTStatusAttackIDNone;
         wp->weapon_hit.stat_flags.is_smash_attack = wp->weapon_hit.stat_flags.is_ga = wp->weapon_hit.stat_flags.is_projectile = FALSE;
-        wp->weapon_hit.stat_count = gmCommon_GetStatUpdateCountInc();
+        wp->weapon_hit.stat_count = ftParamGetStatUpdateCount();
         break;
     }
     wp->weapon_hit.update_state = nGMHitUpdateNew;

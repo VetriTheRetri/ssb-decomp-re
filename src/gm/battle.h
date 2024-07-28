@@ -156,10 +156,10 @@ typedef enum gmBackupProtectPenalty
 
 } gmBackupProtectPenalty;
 
-#define GMBACKUP_PROTECTFAIL_RANDOMKNOCKBACK (1 << nGMBackupErrorRandomKnockback)	// 0x1 - Random knockback between 0.1 (?) and 1.0 x 200u
-#define GMBACKUP_PROTECTFAIL_HALFSTICKRANGE  (1 << nGMBackupErrorHalfStickRange)	// 0x2 - Halves control stick input range
-#define GMBACKUP_PROTECTFAIL_1PGAMEMARIO 	(1 << nGMBackupError1PGameMario) 			// 0x4 - Forces Mario in 1P Game
-#define GMBACKUP_PROTECTFAIL_VSMODECASTLE (1 << nGMBackupErrorBattleCastle) 		// 0x8 - Forces Peach's Castle in VS Mode
+#define GMBACKUP_ERROR_RANDOMKNOCKBACK (1 << nGMBackupErrorRandomKnockback)		// 0x1 - Random knockback between 0.1 (?) and 1.0 x 200u
+#define GMBACKUP_ERROR_HALFSTICKRANGE  (1 << nGMBackupErrorHalfStickRange)		// 0x2 - Halves control stick input range
+#define GMBACKUP_ERROR_1PGAMEMARIO 	(1 << nGMBackupError1PGameMario) 			// 0x4 - Forces Mario in 1P Game
+#define GMBACKUP_ERROR_VSMODECASTLE (1 << nGMBackupErrorBattleCastle) 			// 0x8 - Forces Peach's Castle in VS Mode
 
 typedef enum gmMatchGameType
 {
@@ -376,8 +376,8 @@ typedef struct gmPlayerBlock
 	u8 handicap;	   		// Master Hand's handicap value is 35!?
 	u8 pl_kind;	   			// 0 = HMN, 1 = CPU, 2 = none (?), 5 = How to Play (?)
 	u8 ft_kind; 			// Same as ftKind
-	u8 team_index;
-	u8 player; 				// Identical to team index if team battle is on?
+	u8 team;
+	u8 player; 				// Identical to team if team battle is on?
 	u8 costume;
 	u8 shade; 				// Color overlay applied when several players use the same
 							// costume

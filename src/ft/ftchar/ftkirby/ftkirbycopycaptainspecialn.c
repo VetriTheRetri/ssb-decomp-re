@@ -24,7 +24,7 @@ void ftKirbyCopyCaptainSpecialNUpdateEffect(GObj *fighter_gobj)
     }
     else if (fp->command_vars.flags.flag0 == 1)
     {
-        ftCommon_ProcStopGFX(fighter_gobj);
+        ftParamProcStopEffect(fighter_gobj);
 
         fp->command_vars.flags.flag0 = 2;
     }

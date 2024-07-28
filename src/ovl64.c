@@ -21,9 +21,7 @@ extern intptr_t lAutoDemoNameSpritePurin;   // 00000F78
 extern intptr_t lAutoDemoNameSpriteNess;    // 00001098
 extern void func_ovl64_8018D19C();
 extern void func_ovl2_8010CF44(GObj *fighter_gobj, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5);
-extern void ftCommon_SetModelPartLevelDetailAll(GObj*, s32);
 extern void func_ovl0_800CCF00();
-extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 
 
 // Forward declarations
@@ -198,7 +196,7 @@ void scAutoDemoBeginMatch()
 
 	while (fighter_gobj != NULL)
 	{
-		ftCommon_SetAllowPlayerControl(fighter_gobj);
+		ftParamUnlockPlayerControl(fighter_gobj);
 
 		fighter_gobj = fighter_gobj->link_next;
 	}
@@ -280,9 +278,9 @@ void scAutoDemoSetFocusPlayer1()
 			ftGetStruct(gBattleState->players[3].fighter_gobj)->cp_level = 1;
 
 		func_ovl64_8018D220(fighter_gobj);
-		ftCommon_SetModelPartLevelDetailAll(fighter_gobj, nFTPartsDetailHigh);
+		ftParamSetModelPartDetailAll(fighter_gobj, nFTPartsDetailHigh);
 
-		fp->lod_match = nFTPartsDetailHigh;
+		fp->detail_default = nFTPartsDetailHigh;
 
 		SObjGetStruct(sAutoDemoFighterNameGObj)->sprite.attr &= ~SP_HIDDEN;
 
@@ -308,8 +306,8 @@ void scAutoDemoSetFocusPlayer2()
 
 	SObjGetStruct(sAutoDemoFighterNameGObj)->sprite.attr |= SP_HIDDEN;
 
-	ftCommon_SetModelPartLevelDetailAll(p1_gobj, nFTPartsDetailLow);
-	ftGetStruct(p1_gobj)->lod_match = nFTPartsDetailLow;
+	ftParamSetModelPartDetailAll(p1_gobj, nFTPartsDetailLow);
+	ftGetStruct(p1_gobj)->detail_default = nFTPartsDetailLow;
 
 	if (scAutoDemoCheckStopFocusPlayer(p2_fp) != FALSE)
 	{
@@ -324,9 +322,9 @@ void scAutoDemoSetFocusPlayer2()
 		ftGetStruct(gBattleState->players[3].fighter_gobj)->cp_level = 1;
 
 		func_ovl64_8018D220(p2_gobj);
-		ftCommon_SetModelPartLevelDetailAll(p2_gobj, nFTPartsDetailHigh);
+		ftParamSetModelPartDetailAll(p2_gobj, nFTPartsDetailHigh);
 
-		p2_fp->lod_match = nFTPartsDetailHigh;
+		p2_fp->detail_default = nFTPartsDetailHigh;
 
 		SObjGetStruct(sAutoDemoFighterNameGObj)->next->sprite.attr &= ~SP_HIDDEN;
 	}
@@ -353,9 +351,9 @@ void scAutoDemoResetFocusPlayerAll()
 	ftGetStruct(gBattleState->players[2].fighter_gobj)->cp_level =
 	ftGetStruct(gBattleState->players[3].fighter_gobj)->cp_level = 9;
 
-	ftCommon_SetModelPartLevelDetailAll(p2_gobj, nFTPartsDetailLow);
+	ftParamSetModelPartDetailAll(p2_gobj, nFTPartsDetailLow);
 
-	ftGetStruct(p2_gobj)->lod_match = nFTPartsDetailLow;
+	ftGetStruct(p2_gobj)->detail_default = nFTPartsDetailLow;
 
 	SObjGetStruct(sAutoDemoFighterNameGObj)->next->sprite.attr |= SP_HIDDEN;
 }
@@ -596,7 +594,7 @@ void func_ovl64_8018DCC4()
 	func_ovl64_8018E0C0();
 	func_8000B9FC(9, 0x80000000U, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
-	func_ovl2_800EC130();
+	ftParamGameSet();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
@@ -623,7 +621,7 @@ void func_ovl64_8018DCC4()
 
 		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? nGMDirectionL : nGMDirectionR;
 
-		player_spawn.team = gBattleState->players[player].team_index;
+		player_spawn.team = gBattleState->players[player].team;
 
 		player_spawn.player = player;
 
@@ -654,7 +652,7 @@ void func_ovl64_8018DCC4()
 		gBattleState->players[player].player_color_index = player;
 		gBattleState->players[player].tag_kind = player;
 
-		ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
+		ftParamInitPlayerBattleStats(player, fighter_gobj);
 	}
 	ftManagerSetupDataPlayables();
 	scAutoDemoBeginMatch();

@@ -220,8 +220,6 @@ typedef struct _GObjThread          GObjThread;
 typedef struct _DObj                DObj;           // Some structs are temporarily prefixed with underscore to avoid conflict with types in om.h
 typedef struct DObjDesc             DObjDesc;
 typedef struct DObjTransformTypes   DObjTransformTypes;
-typedef struct DObjDescArray        DObjDescArray;
-typedef struct DObjDescContainer    DObjDescContainer;
 typedef struct DObjDynamicStore     DObjDynamicStore;
 typedef struct DObjDLLink           DObjDLLink;
 typedef struct DObjDistDL           DObjDistDL;

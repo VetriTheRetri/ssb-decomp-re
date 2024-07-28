@@ -77,7 +77,7 @@ enum itPowerBlockStatus
 // 0x8017C090
 sb32 itPowerBlockSDefaultProcUpdate(GObj *item_gobj)
 {
-    if (DObjGetStruct(item_gobj)->dobj_f0 == AOBJ_FRAME_NULL)
+    if (DObjGetStruct(item_gobj)->anim_remain == AOBJ_FRAME_NULL)
     {
         itPowerBlockNWaitSetStatus(item_gobj);
     }
@@ -97,7 +97,7 @@ void itPowerBlockNWaitSetStatus(GObj *item_gobj)
 // 0x8017C110
 sb32 itPowerBlockNDamageProcUpdate(GObj *item_gobj)
 {
-    if (DObjGetStruct(item_gobj)->dobj_f0 == AOBJ_FRAME_NULL)
+    if (DObjGetStruct(item_gobj)->anim_remain == AOBJ_FRAME_NULL)
     {
         grInishiePowerBlockSetWait();
 

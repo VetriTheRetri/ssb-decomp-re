@@ -7,6 +7,8 @@
 
 #define FTKIRBY_COPYDAMAGE_LOSECOPY_RANDOM (1.0F / 12.0F)  // 0.083333336F
 
+#define FTKIRBY_CHARGE_EFFECT_JOINT 16
+
 #define FTKIRBY_VACUUM_RELEASE_LAG 40                   // Automatic lag frames before Inhale can be released
 #define FTKIRBY_VACUUM_COPY_STICK_RANGE_MIN -40         // Minimum control stick threshold on Y-axis to get copy ability
 #define FTKIRBY_VACUUM_TURN_STICK_RANGE_MIN 28

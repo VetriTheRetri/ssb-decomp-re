@@ -7,7 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern ub8 g1PGameBonusStatShieldBreaker; // Bonus for breaking an enemy's shield in 1P game
+extern ub8 gGM1PGameBonusShieldBreaker; // Bonus for breaking an enemy's shield in 1P game
 
 // // // // // // // // // // // //
 //                               //
@@ -40,7 +40,7 @@ void ftCommonShieldBreakFlySetStatus(GObj *fighter_gobj)
     fp->phys_info.vel_air.x = 0.0F;
     fp->phys_info.vel_air.y = attributes->shield_break_vel_y;
 
-    ftColor_CheckSetColAnimIndex(fighter_gobj, FTCOMMON_SHIELDBREAK_COLANIM_ID, FTCOMMON_SHIELDBREAK_COLANIM_LENGTH);
+    ftParamCheckSetFighterColAnimID(fighter_gobj, FTCOMMON_SHIELDBREAK_COLANIM_ID, FTCOMMON_SHIELDBREAK_COLANIM_LENGTH);
     func_800269C0_275C0(alSound_SFX_ShieldBreak);
 }
 
@@ -63,13 +63,13 @@ void ftCommonShieldBreakFlyCommonSetStatus(GObj *fighter_gobj)
     }
     else efManagerShieldBreakMakeEffect(&offset);
 
-    ftCommon_Update1PGameDamageStats(fp, fp->shield_player, nFTHitlogObjectNone, 0, 0, 0);
+    ftParamUpdate1PGameDamageStats(fp, fp->shield_player, nFTHitlogObjectNone, 0, 0, 0);
 
     if ((gBattleState->game_type == nGMBattleGameType1PGame) && (fp->shield_damage != 0))
     {
         if ((fp->shield_player == gSceneData.spgame_player) && (fp->shield_player != fp->player))
         {
-            g1PGameBonusStatShieldBreaker = TRUE;
+            gGM1PGameBonusShieldBreaker = TRUE;
         }
     }
     ftCommonShieldBreakFlySetStatus(fighter_gobj);

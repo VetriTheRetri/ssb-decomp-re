@@ -126,7 +126,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
             // 0x8018860C
             Vec3f effect_offset = { 0.0F, 200.0F, 0.0F };
 
-            ftParticle_MakeEffectKind(fighter_gobj, nEFKindDustLight, fp->attributes->joint_itemhold_light, &effect_offset, NULL, -fp->lr, TRUE, FALSE);
+            ftParamMakeEffect(fighter_gobj, nEFKindDustLight, fp->attributes->joint_itemhold_light, &effect_offset, NULL, -fp->lr, TRUE, FALSE);
         }
         fp->command_vars.flags.flag0 = 0;
     }

@@ -3,6 +3,8 @@
 
 #include "ftdonkeyfunctions.h"
 
+#define FTDONKEY_CHARGE_EFFECT_JOINT 16
+
 #define FTDONKEY_GIANTPUNCH_CHARGE_MAX 10
 #define FTDONKEY_GIANTPUNCH_CHARGE_DAMAGE_MUL 2 // Uncharged Giant Punch damage = base hitbox damage + charge level * this value
 #define FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID 6

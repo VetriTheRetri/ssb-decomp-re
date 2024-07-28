@@ -111,7 +111,7 @@ void ftCommonCliffWaitSetStatus(GObj *fighter_gobj)
 
     fp->is_cliff_hold = TRUE;
 
-    ftCommon_SetPlayerTagWait(fighter_gobj, 120);
+    ftParamSetPlayerTagWait(fighter_gobj, 120);
 
     fp->proc_damage = ftCommonCliffCommonProcDamage;
 

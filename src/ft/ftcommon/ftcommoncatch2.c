@@ -50,7 +50,7 @@ void ftCommonCatchPullProcCatch(GObj *fighter_gobj)
 
     gmCollisionGetFighterPartsWorldPosition(fp->joint[fp->attributes->joint_itemhold_heavy], &pos);
     efManagerCatchSwirlMakeEffect(&pos);
-    ftMainMakeRumble(fp, 9, 0);
+    ftParamMakeRumble(fp, 9, 0);
 }
 
 // 0x80149FCC
@@ -78,11 +78,11 @@ void ftCommonCatchWaitSetStatus(GObj *fighter_gobj)
 
     if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindPolyLink))
     {
-        ftCommon_SetModelPartRenderIndex(fighter_gobj, 21, 0);
-        ftCommon_SetModelPartRenderIndex(fighter_gobj, 19, -1);
+        ftParamSetModelPartID(fighter_gobj, 21, 0);
+        ftParamSetModelPartID(fighter_gobj, 19, -1);
     }
     else if ((fp->ft_kind == nFTKindYoshi) || (fp->ft_kind == nFTKindPolyYoshi))
     {
-        ftCommon_SetModelPartRenderIndex(fighter_gobj, 7, 1);
+        ftParamSetModelPartID(fighter_gobj, 7, 1);
     }
 }

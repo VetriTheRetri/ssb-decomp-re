@@ -1,8 +1,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 
-extern f32 ftCommon_GetStickAngleRadians(ftStruct*);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -20,7 +18,7 @@ void ftCommonAttackS3SetStatus(GObj *fighter_gobj)
     {
         if (fp->ft_data->battlemotion->script_info[nFTCommonMotionAttackS3HiS].anim_id != 0)
         {
-            stick_angle = ftCommon_GetStickAngleRadians(fp);
+            stick_angle = ftParamGetStickAngleRads(fp);
 
             status_id = (stick_angle > FTCOMMON_ATTACKS3_5ANGLE_HI_MIN)  ? nFTCommonStatusAttackS3Hi  : // High-Angled Forward Tilt
                         (stick_angle > FTCOMMON_ATTACKS3_5ANGLE_HIS_MIN) ? nFTCommonStatusAttackS3HiS : // Middle High-Angled Forward Tilt
@@ -30,7 +28,7 @@ void ftCommonAttackS3SetStatus(GObj *fighter_gobj)
         }
         else if (fp->ft_data->battlemotion->script_info[nFTCommonMotionAttackS3Hi].anim_id != 0)
         {
-            stick_angle = ftCommon_GetStickAngleRadians(fp);
+            stick_angle = ftParamGetStickAngleRads(fp);
 
             status_id = (stick_angle > FTCOMMON_ATTACKS3_3ANGLE_HI_MIN)  ? nFTCommonStatusAttackS3Hi  : // High-Angled Forward Tilt
                         (stick_angle < FTCOMMON_ATTACKS3_3ANGLE_LW_MIN)  ? nFTCommonStatusAttackS3Lw  : // Low-Angled Forward Tilt
@@ -51,7 +49,7 @@ sb32 ftCommonAttackS3CheckInterruptCommon(GObj *fighter_gobj)
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_a) && ((fp->input.pl.stick_range.x * fp->lr) >= FTCOMMON_ATTACKS3_STICK_RANGE_MIN))
     {
-        if (((ftCommon_GetStickAngleRadians(fp) < 0.0F) ? -ftCommon_GetStickAngleRadians(fp) : ftCommon_GetStickAngleRadians(fp)) <= F_CST_DTOR32(50.0F)) // 0.87266463F
+        if (((ftParamGetStickAngleRads(fp) < 0.0F) ? -ftParamGetStickAngleRads(fp) : ftParamGetStickAngleRads(fp)) <= F_CST_DTOR32(50.0F)) // 0.87266463F
         {
             if (fp->item_hold != NULL)
             {

@@ -180,9 +180,9 @@ union ftAnimFlags
         u32 x19B_flag_b2 : 1;
         u32 x19B_flag_b3 : 1;
         u32 x19B_flag_b4 : 1;
-        u32 x19B_flag_b5 : 1;
+        u32 is_have_translate_scale : 1;
         u32 x19B_flag_b6 : 1;
-        u32 x19B_flag_b7 : 1;
+        u32 is_parts_anim_lock : 1;
 
     } flags;
 
@@ -238,41 +238,54 @@ struct ftData
 struct ftModelPart
 {
     void *display_list;
-    void *unk_modelpart_0x4;
-    void *unk_modelpart_0x8;
-    void *unk_modelpart_0xC;
-    u8 unk_modelpart_0x10;
+    MObjSub **mobjsub;
+    void **temp_matanim_joint;
+    void **main_matanim_joint;
+    u8 flags;
+};
+
+struct ftBackupPart
+{
+    DObjDesc *dobj_desc;
+    MObjSub ***mobjsub;
+    void ***temp_matanim_joint;
+    u8 flags;
+};
+
+struct ftBackupPartContainer
+{
+    ftBackupPart backup_parts[2];
 };
 
 struct ftModelPartDesc
 {
-    ftModelPart model_part[4][2];
+    ftModelPart model_parts[1][2];
 };
 
 struct ftModelPartContainer
 {
-    ftModelPartDesc *model_part_desc[FTPARTS_JOINT_NUM_MAX];
+    ftModelPartDesc *model_parts_desc[FTPARTS_JOINT_NUM_MAX - nFTPartsJointEnumMax];
 };
 
-struct ftModelPartRenderState
+struct ftModelPartDrawStatus
 {
-    s8 render_state_b0, render_state_b1;
+    s8 drawstatus_default, drawstatus_current;
 };
 
-struct ftTexturePartInfo
+struct ftTexturePart
 {
     u8 joint_id;
-    u8 lod[2];
+    u8 detail[2];
 };
 
 struct ftTexturePartContainer
 {
-    ftTexturePartInfo texture_part_info[2];
+    ftTexturePart texture_parts[2];
 };
 
-struct ftTexturePartRenderState
+struct ftTexturePartDrawStatus
 {
-    s8 frame_index_default, frame_index_current;
+    s8 drawstatus_default, drawstatus_current;
 };
 
 struct ftMotionFlags
@@ -437,10 +450,18 @@ struct ftParts
     // 1 = lock transformation updates
     // 2 = ???
     // 3 = ???
-    u8 unk_dobjtrans_0x4;
-    u8 unk_dobjtrans_0x5;
-    u8 unk_dobjtrans_0x6;
-    u8 unk_dobjtrans_0x7;
+    union
+    {
+        struct
+        {
+            u8 unk_dobjtrans_0x4;
+            u8 unk_dobjtrans_0x5;
+            u8 unk_dobjtrans_0x6;
+            u8 unk_dobjtrans_0x7;
+        };
+        s32 unk_dobjtrans_word;
+    };
+
     ftParts *alloc_next;
     u8 flags;
     u8 joint_id;
@@ -459,12 +480,6 @@ struct ftPartIndex
     s32 partindex_0x4;
     s32 partindex_0x8;
     s32 partindex_0xC;
-};
-
-struct ftPartsUnkIndexTable // Probably animation-related
-{
-    s32 unk_ftpartunkindex_0x0;
-    s32 unk_ftpartunkindex_0x4;
 };
 
 // Skeleton joints for electric shock effects?
@@ -486,11 +501,11 @@ struct ftShadow
     s32 unk_0x104;
 };
 
-struct ftCostumeIndex
+struct ftCostume
 {
-    u8 ffa[4];
+    u8 royal[4];
     u8 team[3];
-    u8 unk_ftcostume_0x7;
+    u8 develop;
 };
 
 struct ftAfterImage
@@ -720,12 +735,13 @@ struct ftAttributes
     ftHurtboxDesc fighter_hurt_desc[FTPARTS_HURT_NUM_MAX];
     Vec3f hit_detect_range;         // This is a radius around the fighter within which hitbox detection can occur
     s32 unk_ftca_0x29C;
-    ftPartsUnkIndexTable *unk_ftca_0x2A0;
-    s32 gfx_joint_cycle_index[5]; // The game will cycle through these joints when applying certain particles such as electricity and flames
-    sb32 cliff_status_ground_air_id[5];
+    u32 *anim_lock;                 // Pointer to two sets of flags marking joints that should not be animated;
+                                    // Ignores special joints, so count starts from 4
+    s32 effect_joint_ids[5];        // The game will cycle through these joints when applying certain particles such as electricity and flames
+    sb32 cliff_status_ga[5];        // Bool for whether fighter is grounded or airborne during each cliff state
     u8 filler_0x2CC[0x2D0 - 0x2CC];
     ftPartIndex *p_ftpart_lookup;
-    DObjDescContainer *dobj_desc_container;
+    ftBackupPartContainer *backup_parts_container;
     DObjDesc *dobj_lookup; // WARNING: Not actually DObjDesc* but I don't know what this struct is or what its bounds are; bunch of consecutive floats
     void **shield_keys[8];  // One for each ordinal direction
     s32 joint_id1; // What does this do?
@@ -736,9 +752,9 @@ struct ftAttributes
     f32 unk_0x31C;
     f32 unk_0x320;
     Vec3f *translate_scales; // Scales the translation vector of a given joint?
-    ftModelPartContainer *model_parts;
+    ftModelPartContainer *model_parts_container;
     ftMesh *mesh;
-    ftTexturePartContainer *texture_parts;
+    ftTexturePartContainer *texture_parts_container;
     s32 joint_itemhold_heavy;
     ftThrownStatusArray *thrown_status;
     s32 joint_itemhold_light;
@@ -750,8 +766,8 @@ struct ftMesh
 {
     s32 joint_id;
     Gfx *dl;
-    s32 unk_ftdobj_0x8;
-    s32 unk_ftdobj_0xC;
+    MObjSub **mobjsub;
+    void **temp_matanim_joint;
 };
 
 // Main fighter struct
@@ -762,8 +778,8 @@ struct ftStruct
     ftKind ft_kind;
     u8 team;
     u8 player;
-    u8 lod_current;             // Hi-Poly = 1, Low-Poly = 2
-    u8 lod_match;               // Hi-Poly = 1, Low-Poly = 2
+    u8 detail_current;          // Hi-Poly = 1, Low-Poly = 2
+    u8 detail_default;          // Hi-Poly = 1, Low-Poly = 2
     u8 costume;
     u8 shade;                   // i.e. When multiple instances of the same character costume are in-game
     u8 handicap;
@@ -867,7 +883,7 @@ struct ftStruct
     ub32 is_playertag_hide : 1;         // Skip rendering player indicator if TRUE
     ub32 is_playertag_bossend : 1;      // Also skips rendering player indicator? Used only in "Master Hand defeated" cinematic from what I can tell so far
     ub32 is_playing_gfx : 1;
-    u32 joint_cycle_array_index : 4;    // Goes up to 5 by default; index of the array from gfx_joint_cycle_index from ftAttributes which houses the actual joint ID
+    u32 effect_joint_array_id : 4;    // Goes up to 5 by default; index of the array from effect_joint_ids from ftAttributes which houses the actual joint ID
     ub32 is_shield : 1;                 // Fighter's shield bubble is active
     ub32 is_attach_effect : 1;          // Destroy GFX on action state change if TRUE, not sure why this and is_playing_gfx are different
     ub32 is_ignore_jostle : 1;
@@ -876,7 +892,7 @@ struct ftStruct
     ub32 is_hitstun : 1;
 
     u32 slope_contour : 3;
-    ub32 x190_flag_b3 : 1;
+    ub32 is_parts_anim_lock : 1;
     ub32 is_playing_sfx : 1;
     ub32 x190_flag_b5 : 1;
     ub32 is_show_item : 1;
@@ -1017,8 +1033,8 @@ struct ftStruct
 
     DObj *joint[FTPARTS_JOINT_NUM_MAX];
 
-    ftModelPartRenderState joint_render_state[FTPARTS_JOINT_NUM_MAX - nFTPartsJointEnumMax]; // Display List active = 0, inactive = -1?
-    ftTexturePartRenderState texture_render_state[2];
+    ftModelPartDrawStatus joint_drawstatus[FTPARTS_JOINT_NUM_MAX - nFTPartsJointEnumMax]; // Display List active = 0, inactive = -1?
+    ftTexturePartDrawStatus texture_drawstatus[2];
 
     ftData *ft_data;
     ftAttributes *attributes;
@@ -1059,7 +1075,7 @@ struct ftStruct
     struct ftAfterImageInfo
     {
         ub8 is_itemswing;
-        s8 render_state;
+        s8 drawstatus;
         u8 desc_index;
         ftAfterImage desc[3];
 

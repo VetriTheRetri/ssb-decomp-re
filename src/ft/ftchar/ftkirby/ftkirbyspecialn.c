@@ -8,17 +8,14 @@
 
 extern intptr_t lFTKirbySpecialNCopyData;       // 0x00000000
 
-extern s32 gmCommon_DamageApplyStale(s32, s32, s32, u16);
-extern f32 gmCommonObject_DamageCalcKnockback(s32 percent_damage, s32 recent_damage, s32 hit_damage, s32 knockback_weight, s32 knockback_scale, s32 knockback_base, f32 weight, s32 attack_handicap, s32 defend_handicap);
-
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //
 //                               //
 // // // // // // // // // // // //
 
-#define FTKIRBY_SPECIALNSTART_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_LOOPSFX | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT)
-#define FTKIRBY_SPECIALNLOOP_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_LOOPSFX | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_HIT)
+#define FTKIRBY_SPECIALNSTART_STATUS_FLAGS (FTSTATUS_PRESERVE_LOOPSFX | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT)
+#define FTKIRBY_SPECIALNLOOP_STATUS_FLAGS (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_LOOPSFX | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_HIT)
 
 // // // // // // // // // // // //
 //                               //
@@ -31,14 +28,14 @@ void ftKirbySpecialNApplyCaptureDamage(GObj *kirby_gobj, GObj *victim_gobj, s32 
 {
     ftStruct *kirby_fp = ftGetStruct(kirby_gobj);
     ftStruct *victim_fp = ftGetStruct(victim_gobj);
-    s32 star_dmg_victim = gmCommon_DamageApplyStale(kirby_fp->player, damage, kirby_fp->attack_id, kirby_fp->motion_count);
+    s32 star_dmg_victim = ftParamGetStaledDamageOutput(kirby_fp->player, damage, kirby_fp->attack_id, kirby_fp->motion_count);
 
     damage = star_dmg_victim;
 
-    ftCommonDamageUpdateDamageColAnim(victim_gobj, gmCommonObject_DamageCalcKnockback(victim_fp->percent_damage, star_dmg_victim, star_dmg_victim, 0, 100, 0, victim_fp->attributes->weight, kirby_fp->handicap, victim_fp->handicap), 0);
-    ftDamageUpdateCheckDropItem(victim_fp, damage);
-    ftAttackUpdateMatchStats(kirby_fp->player, victim_fp->player, damage);
-    ftAttackAddStaleQueue(kirby_fp->player, victim_fp->player, kirby_fp->attack_id, kirby_fp->motion_count);
+    ftCommonDamageUpdateDamageColAnim(victim_gobj, ftParamGetCommonKnockback(victim_fp->percent_damage, star_dmg_victim, star_dmg_victim, 0, 100, 0, victim_fp->attributes->weight, kirby_fp->handicap, victim_fp->handicap), 0);
+    ftParamUpdateDamage(victim_fp, damage);
+    ftParamUpdateBattleStats(kirby_fp->player, victim_fp->player, damage);
+    ftParamUpdateStaleQueue(kirby_fp->player, victim_fp->player, kirby_fp->attack_id, kirby_fp->motion_count);
 }
 
 // 0x80161D6C - distance between Kirby and inhale victim
@@ -80,9 +77,9 @@ void ftKirbySpecialNInitCatchVars(ftStruct *fp)
 {
     if (fp->ga == nMPKineticsGround)
     {
-        ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_KIRBYSPECIALN, ftKirbySpecialNCatchProcCatch, ftCommonCaptureKirbyProcCapture);
+        ftParamSetCatchParams(fp, FTCATCHKIND_MASK_KIRBYSPECIALN, ftKirbySpecialNCatchProcCatch, ftCommonCaptureKirbyProcCapture);
     }
-    else ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_KIRBYSPECIALN, ftKirbySpecialAirNCatchProcCatch, ftCommonCaptureKirbyProcCapture);
+    else ftParamSetCatchParams(fp, FTCATCHKIND_MASK_KIRBYSPECIALN, ftKirbySpecialAirNCatchProcCatch, ftCommonCaptureKirbyProcCapture);
 }
 
 // 0x80161E94
@@ -135,8 +132,8 @@ void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
             index = fp->status_vars.kirby.specialn.copy_id;
             fp->fighter_vars.kirby.copy_id = index;
 
-            ftCommon_SetModelPartRenderStateIndex(fighter_gobj, 6, copy_data[index].copy_hat_rs);
-            ftCommon_ResetModelPartRenderAll(fighter_gobj);
+            ftParamSetModelPartDefaultID(fighter_gobj, 6, copy_data[index].copy_hat_rs);
+            ftParamResetModelPartAll(fighter_gobj);
             ftKirbySpecialNInitFighterVars(fp);
         }
         fp->command_vars.flags.flag1 = 0;
@@ -150,7 +147,7 @@ void ftKirbySpecialNStopEffect(GObj *fighter_gobj)
 
     if (fp->is_attach_effect == TRUE)
     {
-        ftCommon_ProcStopGFX(fighter_gobj);
+        ftParamProcStopEffect(fighter_gobj);
     }
 }
 
@@ -254,7 +251,7 @@ void ftKirbySpecialNThrowUpdateCheckThrowStar(GObj *fighter_gobj)
             ftStruct *victim_fp = ftGetStruct(kirby_fp->catch_gobj);
 
             ftCommonThrownKirbyStarSetStatus(kirby_fp->catch_gobj);
-            ftCommon_ThrownUpdateEnemyInfo(victim_fp, fighter_gobj);
+            ftParamSetThrowParams(victim_fp, fighter_gobj);
 
             victim_fp->phys_info.vel_air.z = 0.0F;
             victim_fp->phys_info.vel_air.y = 0.0F;
@@ -557,7 +554,7 @@ void ftKirbySpecialAirNCopyProcMap(GObj *fighter_gobj)
 void ftKirbySpecialAirNStartSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNStart, fighter_gobj->anim_frame, 1.0F, FTKIRBY_SPECIALNSTART_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNStart, fighter_gobj->anim_frame, 1.0F, FTKIRBY_SPECIALNSTART_STATUS_FLAGS);
     ftKirbySpecialNGotoInitCatchVars(fighter_gobj);
 }
 
@@ -567,7 +564,7 @@ void ftKirbySpecialAirNLoopSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNLoop, fighter_gobj->anim_frame, 1.0F, FTKIRBY_SPECIALNLOOP_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNLoop, fighter_gobj->anim_frame, 1.0F, FTKIRBY_SPECIALNLOOP_STATUS_FLAGS);
     ftKirbySpecialNInitCatchVars(fp);
 }
 
@@ -585,7 +582,7 @@ void ftKirbySpecialAirNEndSwitchStatusGround(GObj *fighter_gobj)
 void ftKirbySpecialNStartSwitchStatusAir(GObj *fighter_gobj)
 {
     ftMap_SetAir(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNStart, fighter_gobj->anim_frame, 1.0F, FTKIRBY_SPECIALNSTART_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNStart, fighter_gobj->anim_frame, 1.0F, FTKIRBY_SPECIALNSTART_STATUS_FLAGS);
     ftKirbySpecialNGotoInitCatchVars(fighter_gobj);
 }
 
@@ -595,7 +592,7 @@ void ftKirbySpecialNLoopSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, FTKIRBY_SPECIALNLOOP_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, FTKIRBY_SPECIALNLOOP_STATUS_FLAGS);
     ftKirbySpecialNInitCatchVars(fp);
 }
 
@@ -960,8 +957,8 @@ void ftKirbySpecialNLoseCopy(GObj *fighter_gobj)
 
     fp->fighter_vars.kirby.copy_id = nFTKindKirby;
 
-    ftCommon_SetModelPartRenderStateIndex(fighter_gobj, 6, 0);
-    ftCommon_ResetColAnimStatUpdate(fighter_gobj);
+    ftParamSetModelPartDefaultID(fighter_gobj, 6, 0);
+    ftParamResetStatUpdateColAnim(fighter_gobj);
 }
 
 // 0x80163648

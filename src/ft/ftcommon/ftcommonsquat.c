@@ -189,7 +189,7 @@ void ftCommonSquatWaitSetStatus(GObj *fighter_gobj)
 
     fp->is_special_interrupt = TRUE;
 
-    ftCommon_SetPlayerTagWait(fighter_gobj, 120);
+    ftParamSetPlayerTagWait(fighter_gobj, 120);
 }
 
 // 0x801432F0
@@ -201,7 +201,7 @@ void ftCommonSquatWaitSetStatusNoPass(GObj *fighter_gobj)
 
     fp->is_special_interrupt = TRUE;
 
-    ftCommon_SetPlayerTagWait(fighter_gobj, 120);
+    ftParamSetPlayerTagWait(fighter_gobj, 120);
 
     fp->status_vars.common.squat.is_allow_pass = FALSE;
     fp->status_vars.common.squat.unk_0x8 = 0;

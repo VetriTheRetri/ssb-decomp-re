@@ -447,7 +447,7 @@ sb32 grHyruleTwisterCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s3
         (fp->twister_wait == 0)                                && 
         (fp->status_info.status_id != nFTCommonStatusTwister) && 
         !(fp->capture_immune_mask & FTCATCHKIND_MASK_TWISTER)  &&
-        (ftCommon_GetBestHitStatusAll(fighter_gobj) == nGMHitStatusNormal)
+        (ftParamGetBestHitStatusAll(fighter_gobj) == nGMHitStatusNormal)
     )
     {
         DObj *gr_dobj = DObjGetStruct(ground_gobj);

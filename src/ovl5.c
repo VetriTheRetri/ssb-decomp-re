@@ -84,7 +84,7 @@ void func_ovl5_8018D0C0()
 // 8018D160
 void func_ovl5_8018D160(GObj *gobj)
 {
-	if (ftCommon_CheckHowToPlayInputSeq(gUnkExplainFighterGObj) == FALSE)
+	if (ftParamCheckExplainInputSeq(gUnkExplainFighterGObj) == FALSE)
 	{
 		func_800269C0_275C0(alSound_SFX_TitlePressStart);
 		leoInitUnit_atten();
@@ -113,7 +113,7 @@ void func_ovl5_8018D1A0()
 	omMakeGObjSPAfter(0x3F7U, func_ovl5_8018D160, 0xDU, GOBJ_LINKORDER_DEFAULT);
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
-	func_ovl2_800EC130();
+	ftParamGameSet();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
@@ -140,7 +140,7 @@ void func_ovl5_8018D1A0()
 		player_spawn.pos.y = 150.0F;
 		player_spawn.pos.z = 0.0F;
 		player_spawn.lr_spawn = nGMDirectionR;
-		player_spawn.team = gBattleState->players[player].team_index;
+		player_spawn.team = gBattleState->players[player].team;
 		player_spawn.player = player;
 		player_spawn.model_lod = nFTPartsDetailHigh;
 		player_spawn.costume = gBattleState->players[player].costume;
@@ -156,8 +156,8 @@ void func_ovl5_8018D1A0()
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 		gUnkExplainFighterGObj = fighter_gobj;
 
-		ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
-		ftCommon_SetHowToPlayInputSeq(fighter_gobj, D_ovl5_8018D580);
+		ftParamInitPlayerBattleStats(player, fighter_gobj);
+		ftParamSetExplainInputSeq(fighter_gobj, D_ovl5_8018D580);
 
 	}
 	unk_struct = D_ovl5_8018D5B8;

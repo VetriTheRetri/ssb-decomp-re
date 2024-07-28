@@ -4,6 +4,7 @@
 #include "ftsamusfunctions.h"
 
 #define FTSAMUS_CHARGE_JOINT 16             // Bone to attach Charge Shot
+#define FTSAMUS_CHARGE_EFFECT_JOINT FTSAMUS_CHARGE_JOINT
 #define FTSAMUS_CHARGE_MAX 7                // Maximum charge level
 #define FTSAMUS_CHARGE_INT 20               // Charge interval, level increrments once this timer hits zero, then begins counting the next iteration
 #define FTSAMUS_CHARGE_COLANIM_ID 0x6

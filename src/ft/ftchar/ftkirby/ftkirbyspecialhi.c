@@ -1,9 +1,6 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
 
-extern void ftCommon_ProcPauseGFX(GObj*);
-extern void ftCommon_ProcResumeGFX(GObj*);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -22,7 +19,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
         case 1:
             if (fp->is_attach_effect)
             {
-                ftCommon_ProcStopGFX(fighter_gobj);
+                ftParamProcStopEffect(fighter_gobj);
                 fp->command_vars.flags.flag1 = 0;
             }
             break;
@@ -43,7 +40,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
     case 1:
         if (fp->is_attach_effect)
         {
-            ftCommon_ProcStopGFX(fighter_gobj);
+            ftParamProcStopEffect(fighter_gobj);
             fp->command_vars.flags.flag2 = 0;
         }
         break;
@@ -239,8 +236,8 @@ void ftKirbySpecialAirHiFallProcMap(GObj *fighter_gobj)
             ftMap_SetGround(fp);
             ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialHiLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-            fp->proc_lagstart = ftCommon_ProcPauseGFX;
-            fp->proc_lagend = ftCommon_ProcResumeGFX;
+            fp->proc_lagstart = ftParamProcPauseEffect;
+            fp->proc_lagend = ftParamProcResumeEffect;
         }
         else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
@@ -267,8 +264,8 @@ void ftKirbySpecialHiSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
-    fp->proc_lagstart = ftCommon_ProcPauseGFX;
-    fp->proc_lagend = ftCommon_ProcResumeGFX;
+    fp->proc_lagstart = ftParamProcPauseEffect;
+    fp->proc_lagend = ftParamProcResumeEffect;
 }
 
 // 0x80161210
@@ -279,8 +276,8 @@ void ftKirbySpecialHiLandingSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialHiLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
-    fp->proc_lagstart = ftCommon_ProcPauseGFX;
-    fp->proc_lagend = ftCommon_ProcResumeGFX;
+    fp->proc_lagstart = ftParamProcPauseEffect;
+    fp->proc_lagend = ftParamProcResumeEffect;
 }
 
 // 0x80161270
@@ -293,8 +290,8 @@ void ftKirbySpecialAirHiSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
-    fp->proc_lagstart = ftCommon_ProcPauseGFX;
-    fp->proc_lagend = ftCommon_ProcResumeGFX;
+    fp->proc_lagstart = ftParamProcPauseEffect;
+    fp->proc_lagend = ftParamProcResumeEffect;
 }
 
 // 0x801612D8
@@ -306,8 +303,8 @@ void ftKirbySpecialAirHiFallSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirHiFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
-    fp->proc_lagstart = ftCommon_ProcPauseGFX;
-    fp->proc_lagend = ftCommon_ProcResumeGFX;
+    fp->proc_lagstart = ftParamProcPauseEffect;
+    fp->proc_lagend = ftParamProcResumeEffect;
 
     fp->jumps_used = fp->attributes->jumps_max;
 

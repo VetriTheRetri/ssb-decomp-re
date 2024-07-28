@@ -189,12 +189,12 @@ typedef struct gmColAnim
 
 } gmColAnim;
 
-typedef struct ColAnimDesc
+typedef struct gmColDesc
 {
-	void* p_script;
-	u8 unk_colanimdesc_0x4;
+	void *p_script;
+	u8 priority;
 	u8 unk_colanimdesc_0x5;
 
-} ColAnimDesc;
+} gmColDesc;
 
 #endif

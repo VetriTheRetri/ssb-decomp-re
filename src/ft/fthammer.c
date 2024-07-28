@@ -26,7 +26,7 @@ void ftHammerUpdateStats(GObj *fighter_gobj)
         sb32 is_colanim_reset = FALSE;
 
         itMainDestroyItem(fp->item_hold);
-        ftSpecialItem_BGMCheckFighters();
+        ftParamTryUpdateItemMusic();
 
         if (fp->colanim.colanim_id == FTCOMMON_HAMMER_COLANIM_ID)
         {
@@ -38,7 +38,7 @@ void ftHammerUpdateStats(GObj *fighter_gobj)
         }
         if (is_colanim_reset != FALSE)
         {
-            ftCommon_ResetColAnimStatUpdate(fighter_gobj);
+            ftParamResetStatUpdateColAnim(fighter_gobj);
         }
     }
 }
@@ -110,7 +110,7 @@ void ftHammerSetColAnim(GObj *fighter_gobj)
 
     if (fp->colanim.colanim_id != FTCOMMON_HAMMER_COLANIM_ID)
     {
-        ftColor_CheckSetColAnimIndex(fighter_gobj, FTCOMMON_HAMMER_COLANIM_ID, FTCOMMON_HAMMER_COLANIM_LENGTH);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, FTCOMMON_HAMMER_COLANIM_ID, FTCOMMON_HAMMER_COLANIM_LENGTH);
     }
 }
 

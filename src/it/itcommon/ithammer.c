@@ -216,7 +216,7 @@ void itHammerFThrowSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
-    ftSpecialItem_BGMCheckFighters();
+    ftParamTryUpdateItemMusic();
 }
 
 // 0x80176348
@@ -233,7 +233,7 @@ void itHammerFDropSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
-    ftSpecialItem_BGMCheckFighters();
+    ftParamTryUpdateItemMusic();
 }
 
 // 0x8017633C8

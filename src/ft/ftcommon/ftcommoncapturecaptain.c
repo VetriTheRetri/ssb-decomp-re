@@ -68,7 +68,7 @@ void ftCommonCaptureCaptainProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp;
 
-    ftCommon_ProcDamageStopVoice(fighter_gobj);
+    ftParamStopVoiceRunProcDamage(fighter_gobj);
 
     if ((this_fp->item_hold != NULL) && (itGetStruct(this_fp->item_hold)->weight == nITWeightHeavy))
     {

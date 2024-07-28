@@ -2,8 +2,6 @@
 #include <it/item.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);
-extern f32 ftCommon_DamageCalcHitStun(f32 knockback);
-extern s32 gmCommon_DamageCalcHitLag(s32 damage, s32 status_id, f32 hitlag_mul);
 
 // // // // // // // // // // // //
 //                               //
@@ -77,7 +75,7 @@ void ftCommonDamageUpdateDustEffect(GObj *fighter_gobj)
 
         if (fp->status_vars.common.damage.dust_effect_int == 0)
         {
-            ftParticle_MakeEffectKind(fighter_gobj, nEFKindDustExpandLarge, 4, NULL, NULL, fp->lr, FALSE, FALSE);
+            ftParamMakeEffect(fighter_gobj, nEFKindDustExpandLarge, 4, NULL, NULL, fp->lr, FALSE, FALSE);
             ftCommonDamageSetDustEffectInterval(fp);
         }
     }
@@ -135,7 +133,7 @@ void ftCommonDamageCheckSetInvincible(GObj *fighter_gobj)
     {
         fp->status_vars.common.damage.is_knockback_over = FALSE;
 
-        ftCommon_ApplyInvincibleTimer(fp, 1);
+        ftParamSetTimedHitStatusInvincible(fp, 1);
     }
 }
 
@@ -159,7 +157,7 @@ void ftCommonDamageSetStatus(GObj *fighter_gobj)
         {
             fp->status_vars.common.damage.is_knockback_over = FALSE;
 
-            ftCommon_ApplyInvincibleTimer(fp, 1);
+            ftParamSetTimedHitStatusInvincible(fp, 1);
         }
     }
 }
@@ -233,7 +231,7 @@ void ftCommonDamageCommonProcPhysics(GObj *fighter_gobj)
     }
     if ((fp->throw_gobj != NULL) && (lbVector_Vec3fMagnitude(&fp->phys_info.vel_damage_air) < 70.0F))
     {
-        ftCommon_ClearHitAll(fighter_gobj);
+        ftParamClearHitAll(fighter_gobj);
     }
 }
 
@@ -337,7 +335,7 @@ s32 ftCommonDamageGetDamageLevel(f32 hitstun)
 // 0x80140B00
 void ftCommonDamageSetPublicity(ftStruct *this_fp, f32 knockback, f32 angle)
 {
-    GObj *attacker_gobj = ftCommon_GetPlayerNumGObj(this_fp->damage_player_number);
+    GObj *attacker_gobj = ftParamGetPlayerNumGObj(this_fp->damage_player_number);
     sb32 is_force_current_knockback;
 
     this_fp->status_vars.common.damage.publicity_knockback = knockback;
@@ -365,19 +363,19 @@ sb32 ftCommonDamageCheckElementSetColAnim(GObj *fighter_gobj, s32 element, s32 d
     switch (element)
     {
     case nGMHitElementFire:
-        is_set_colanim = ftColor_CheckSetColAnimIndex(fighter_gobj, damage_level + 0xC, 0);
+        is_set_colanim = ftParamCheckSetFighterColAnimID(fighter_gobj, damage_level + 0xC, 0);
         break;
 
     case nGMHitElementElectric:
-        is_set_colanim = func_ovl2_800E9AF4(fighter_gobj, damage_level);
+        is_set_colanim = ftParamCheckSetSkeletonColAnimID(fighter_gobj, damage_level);
         break;
 
     case nGMHitElementFreezing:
-        is_set_colanim = ftColor_CheckSetColAnimIndex(fighter_gobj, damage_level + 0x20, 0);
+        is_set_colanim = ftParamCheckSetFighterColAnimID(fighter_gobj, damage_level + 0x20, 0);
         break;
 
     default:
-        is_set_colanim = ftColor_CheckSetColAnimIndex(fighter_gobj, 5, 0);
+        is_set_colanim = ftParamCheckSetFighterColAnimID(fighter_gobj, 5, 0);
         break;
     }
     return is_set_colanim;
@@ -438,7 +436,7 @@ sb32 ftCommonDamageCheckCatchResist(ftStruct *fp)
     }
     if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindPolyDonkey) || (fp->ft_kind == nFTKindGiantDonkey))
     {
-        if ((fp->status_info.status_id >= nFTDonkeyStatusThrowFStartDamage) && (fp->status_info.status_id <= nFTDonkeyStatusThrowFEndDamage) && (ftCommonDamageGetDamageLevel(ftCommon_DamageCalcHitStun(fp->damage_knockback)) < 3))
+        if ((fp->status_info.status_id >= nFTDonkeyStatusThrowFStartDamage) && (fp->status_info.status_id <= nFTDonkeyStatusThrowFEndDamage) && (ftCommonDamageGetDamageLevel(ftPararmGetHitStun(fp->damage_knockback)) < 3))
         {
             return TRUE;
         }
@@ -457,7 +455,7 @@ void ftCommonDamageUpdateCatchResist(GObj *fighter_gobj)
     }
     else
     {
-        ftCommon_ProcDamageStopVoice(fighter_gobj);
+        ftParamStopVoiceRunProcDamage(fighter_gobj);
         ftDonkeyThrowFDamageSetStatus(fighter_gobj);
     }
 }
@@ -482,7 +480,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     f32 vel_x = __cosf(angle_end) * knockback;
     s32 unused2;
     f32 vel_y = __sinf(angle_end) * knockback;
-    f32 hitstun_timer = ftCommon_DamageCalcHitStun(knockback);
+    f32 hitstun_timer = ftPararmGetHitStun(knockback);
     s32 unused1;
     s32 damage_level;
     s32 status_id_set;
@@ -544,8 +542,8 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
                 this_fp->phys_info.vel_damage_air.y = -vel_damage.y * 0.8F;
                 this_fp->phys_info.vel_damage_ground = 0.0F;
 
-                ftParticle_MakeEffectKind(this_gobj, nEFKindImpactWave, 0, NULL, NULL, this_fp->lr, 0, 0);
-                ftParticle_MakeEffectKind(this_gobj, nEFKindQuakeMag0, 0, NULL, NULL, this_fp->lr, 0, 0);
+                ftParamMakeEffect(this_gobj, nEFKindImpactWave, 0, NULL, NULL, this_fp->lr, 0, 0);
+                ftParamMakeEffect(this_gobj, nEFKindQuakeMag0, 0, NULL, NULL, this_fp->lr, 0, 0);
             }
             else
             {
@@ -625,7 +623,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
 
     if ((damage_level == 3) || (is_rumble != FALSE))
     {
-        ftMainMakeRumble(this_fp, 2, 0);
+        ftParamMakeRumble(this_fp, 2, 0);
     }
     if (this_fp->status_info.status_id == nFTCommonStatusDamageFlyRoll)
     {
@@ -647,11 +645,11 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
 
     if ((damage_level == 3) && (knockback >= FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_KNOCKBACK_MIN))
     {
-        ftCommon_SetPlayerTagWait(this_gobj, FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_HIDE_FRAMES);
+        ftParamSetPlayerTagWait(this_gobj, FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_HIDE_FRAMES);
     }
     this_fp->status_vars.common.damage.coll_mask_curr = 0;
 
-    attacker_gobj = ftCommon_GetPlayerNumGObj(damage_player_number);
+    attacker_gobj = ftParamGetPlayerNumGObj(damage_player_number);
 
     if (attacker_gobj != NULL)
     {
@@ -681,7 +679,7 @@ void ftCommonDamageGotoDamageStatus(GObj *fighter_gobj)
 // 0x801415F8
 void ftCommonDamageUpdateDamageColAnim(GObj *fighter_gobj, f32 knockback, s32 element)
 {
-    if (ftCommonDamageCheckElementSetColAnim(fighter_gobj, element, ftCommonDamageGetDamageLevel(ftCommon_DamageCalcHitStun(knockback))) != 0)
+    if (ftCommonDamageCheckElementSetColAnim(fighter_gobj, element, ftCommonDamageGetDamageLevel(ftPararmGetHitStun(knockback))) != 0)
     {
         ftMainRunUpdateColAnim(fighter_gobj);
     }
@@ -722,7 +720,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
                 else
                 {
                     ftCommonThrownDecideFighterLoseGrip(fighter_gobj, grab_gobj);
-                    ftCommon_ProcDamageStopVoice(fighter_gobj);
+                    ftParamStopVoiceRunProcDamage(fighter_gobj);
                     ftCommonDamageGotoDamageStatus(fighter_gobj);
 
                     grab_fp->damage_kind = 1;
@@ -737,14 +735,14 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
                 ftCommonThrownUpdateDamageStats(grab_fp);
             }
             ftCommonThrownDecideFighterLoseGrip(fighter_gobj, grab_gobj);
-            ftCommon_ProcDamageStopVoice(fighter_gobj);
+            ftParamStopVoiceRunProcDamage(fighter_gobj);
             ftCommonDamageGotoDamageStatus(fighter_gobj);
 
             grab_fp->damage_kind = 1;
         }
         else
         {
-            ftCommon_ProcDamageStopVoice(grab_gobj);
+            ftParamStopVoiceRunProcDamage(grab_gobj);
             ftCommonThrownSetStatusDamageRelease(grab_gobj);
 
             if (this_fp->x192_flag_b3)
@@ -753,7 +751,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
             }
             this_fp->catch_gobj = NULL;
 
-            ftCommon_ProcDamageStopVoice(fighter_gobj);
+            ftParamStopVoiceRunProcDamage(fighter_gobj);
             ftCommonDamageGotoDamageStatus(fighter_gobj);
         }
         return;
@@ -780,7 +778,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
                 {
                     ftCommonThrownUpdateDamageStats(this_fp);
                     ftCommonThrownDecideFighterLoseGrip(grab_gobj, fighter_gobj);
-                    ftCommon_ProcDamageStopVoice(fighter_gobj);
+                    ftParamStopVoiceRunProcDamage(fighter_gobj);
                     ftCommonDamageGotoDamageStatus(fighter_gobj);
 
                     grab_fp->damage_kind = 1;
@@ -788,7 +786,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
             }
             else
             {
-                grab_fp->hitlag_timer = gmCommon_DamageCalcHitLag(this_fp->damage_lag, grab_fp->status_info.status_id, grab_fp->hitlag_mul);
+                grab_fp->hitlag_timer = ftParamGetHitLag(this_fp->damage_lag, grab_fp->status_info.status_id, grab_fp->hitlag_mul);
 
                 this_fp->input.pl.button_tap = this_fp->input.pl.button_tap_prev = 0;
 
@@ -802,7 +800,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
         else if (grab_fp->damage_knockback != 0)
         {
             ftCommonThrownDecideFighterLoseGrip(grab_gobj, fighter_gobj);
-            ftCommon_ProcDamageStopVoice(fighter_gobj);
+            ftParamStopVoiceRunProcDamage(fighter_gobj);
             ftCommonDamageGotoDamageStatus(fighter_gobj);
 
             grab_fp->damage_kind = 1;
@@ -810,9 +808,9 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
         else
         {
             ftCommonThrownDecideFighterLoseGrip(grab_gobj, fighter_gobj);
-            ftCommon_ProcDamageStopVoice(fighter_gobj);
+            ftParamStopVoiceRunProcDamage(fighter_gobj);
             ftCommonDamageGotoDamageStatus(fighter_gobj);
-            ftCommon_ProcDamageStopVoice(grab_gobj);
+            ftParamStopVoiceRunProcDamage(grab_gobj);
             ftCommonThrownSetStatusNoDamageRelease(grab_gobj);
         }
         return;
@@ -828,7 +826,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
             else
             {
                 ftSetupDropItem(this_fp);
-                ftCommon_ProcDamageStopVoice(fighter_gobj);
+                ftParamStopVoiceRunProcDamage(fighter_gobj);
                 ftCommonDamageGotoDamageStatus(fighter_gobj);
             }
             return;
@@ -840,7 +838,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
     }
     else
     {
-        ftCommon_ProcDamageStopVoice(fighter_gobj);
+        ftParamStopVoiceRunProcDamage(fighter_gobj);
         ftCommonDamageGotoDamageStatus(fighter_gobj);
     }
 }

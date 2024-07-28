@@ -1,7 +1,5 @@
 #include <ft/fighter.h>
 
-extern f32 ftCommon_GetStickAngleRadians(ftStruct*);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -41,7 +39,7 @@ sb32 ftCommonDownStandCheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (((fp->input.pl.stick_range.y >= FTCOMMON_DOWNWAIT_STAND_STICK_RANGE_MIN) && (ftCommon_GetStickAngleRadians(fp) >= F_CST_DTOR32(50.0F)) || (fp->input.pl.button_tap & fp->input.button_mask_z)))
+    if (((fp->input.pl.stick_range.y >= FTCOMMON_DOWNWAIT_STAND_STICK_RANGE_MIN) && (ftParamGetStickAngleRads(fp) >= F_CST_DTOR32(50.0F)) || (fp->input.pl.button_tap & fp->input.button_mask_z)))
     {
         ftCommonDownStandSetStatus(fighter_gobj);
 

@@ -137,8 +137,8 @@ sb32 itFushigibanaSDefaultProcUpdate(GObj *item_gobj)
     if 
     (
         (ip->item_vars.fushigibana.flags == GRYAMABUKI_MONSTER_WEAPON_INSTANT)                                                     || 
-        ((ip->item_vars.fushigibana.flags & GRYAMABUKI_MONSTER_WEAPON_WAIT) && (dobj->dobj_f2 >= ITFUSHIGIBANA_RAZOR_SPAWN_BEGIN)) &&
-        (dobj->dobj_f2 <= ITFUSHIGIBANA_RAZOR_SPAWN_END)
+        ((ip->item_vars.fushigibana.flags & GRYAMABUKI_MONSTER_WEAPON_WAIT) && (dobj->anim_frame >= ITFUSHIGIBANA_RAZOR_SPAWN_BEGIN)) &&
+        (dobj->anim_frame <= ITFUSHIGIBANA_RAZOR_SPAWN_END)
     )
     {
         dobj->mobj->current_image_id = 1;
@@ -160,7 +160,7 @@ sb32 itFushigibanaSDefaultProcUpdate(GObj *item_gobj)
     }
     else dobj->mobj->current_image_id = 0;
 
-    if (dobj->dobj_f0 == AOBJ_FRAME_NULL)
+    if (dobj->anim_remain == AOBJ_FRAME_NULL)
     {
         grYamabukiGateSetClosedWait();
 

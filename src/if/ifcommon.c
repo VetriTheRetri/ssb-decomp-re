@@ -2107,7 +2107,7 @@ void ifCommonAnnounceGoSetStatus(void)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        ftCommon_SetAllowPlayerControl(fighter_gobj);
+        ftParamUnlockPlayerControl(fighter_gobj);
 
         fp->camera_mode = 0;
 
@@ -2599,7 +2599,7 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
                     {
                         gMPMusicIDDefault = alSound_Music_InishieHurry;
 
-                        ftSpecialItem_BGMCheckFighters();
+                        ftParamTryUpdateItemMusic();
                     }
                     if (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(5))
                     {
@@ -2678,7 +2678,7 @@ void ifCommonBattleInitPlacement(void)
         {
             if (gBattleState->players[i].pl_kind != nFTPlayerKindNot)
             {
-                members[gBattleState->players[i].team_index]++;
+                members[gBattleState->players[i].team]++;
             }
         }
         break;
@@ -2797,7 +2797,7 @@ void ifCommonBattleUpdateScoreStocks(ftStruct *fp)
             break;
 
         case TRUE:
-            current_team = gBattleState->players[i].team_index;
+            current_team = gBattleState->players[i].team;
             break;
         }
         if ((current_team == team) && (gBattleState->players[i].stock_count != -1))
@@ -2818,7 +2818,7 @@ void ifCommonBattleUpdateScoreStocks(ftStruct *fp)
             {
                 if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
 
-                if (gBattleState->players[i].team_index == team)
+                if (gBattleState->players[i].team == team)
                 {
                     gBattleState->players[i].placement = sIFCommonBattlePlacement;
                 }
@@ -3041,9 +3041,9 @@ void ifCommonBattleGoUpdateInterface(void)
 
                             sIFCommonBattlePauseKindInterface = ifPause_Kind_Default;
 
-                            sIFCommonBattlePausePlayerLOD = fp->lod_current;
+                            sIFCommonBattlePausePlayerLOD = fp->detail_current;
 
-                            ftCommon_SetModelPartLevelDetailAll(fighter_gobj, nFTPartsDetailHigh);
+                            ftParamSetModelPartDetailAll(fighter_gobj, nFTPartsDetailHigh);
                         }
                         ifCommonBattlePauseInitInterface(player);
 
@@ -3192,7 +3192,7 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
 
     if (sIFCommonBattlePauseKindInterface == ifPause_Kind_Default)
     {
-        ftCommon_SetModelPartLevelDetailAll(gBattleState->players[sIFCommonBattlePausePlayer].fighter_gobj, sIFCommonBattlePausePlayerLOD);
+        ftParamSetModelPartDetailAll(gBattleState->players[sIFCommonBattlePausePlayer].fighter_gobj, sIFCommonBattlePausePlayerLOD);
     }
     func_8000A5E4();
 }

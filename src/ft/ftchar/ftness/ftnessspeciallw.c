@@ -15,10 +15,10 @@ extern intptr_t lFTNessSpecialLwAbsorb;         // 0x000016D4
 //                               //
 // // // // // // // // // // // //
 
-#define FTNESS_SPECIALLWSTART_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM)
-#define FTNESS_SPECIALLWHOLD_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM | FTSTATUS_PRESERVE_HIT)
-#define FTNESS_SPECIALLWHIT_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_LOOPSFX | FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM | FTSTATUS_PRESERVE_HIT)
-#define FTNESS_SPECIALLWEND_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM)
+#define FTNESS_SPECIALLWSTART_STATUS_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM)
+#define FTNESS_SPECIALLWHOLD_STATUS_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM | FTSTATUS_PRESERVE_HIT)
+#define FTNESS_SPECIALLWHIT_STATUS_FLAGS (FTSTATUS_PRESERVE_LOOPSFX | FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM | FTSTATUS_PRESERVE_HIT)
+#define FTNESS_SPECIALLWEND_STATUS_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM)
 
 // // // // // // // // // // // //
 //                               //
@@ -119,7 +119,7 @@ void ftNessSpecialAirLwStartProcMap(GObj *fighter_gobj)
 void ftNessSpecialAirLwStartSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialLwStart, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWSTART_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialLwStart, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWSTART_STATUS_FLAGS);
 }
 
 // 0x80155408
@@ -128,7 +128,7 @@ void ftNessSpecialLwStartSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirLwStart, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWSTART_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirLwStart, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWSTART_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 }
 
@@ -216,7 +216,7 @@ void ftNessSpecialAirLwHoldSwitchStatusGround(GObj *fighter_gobj)
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialLwHold, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWHOLD_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialLwHold, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWHOLD_STATUS_FLAGS);
 
     fp->is_absorb = TRUE;
 }
@@ -227,7 +227,7 @@ void ftNessSpecialLwHoldSwitchStatusAir(GObj *fighter_gobj)
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirLwHold, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWHOLD_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirLwHold, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWHOLD_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 
     fp->is_absorb = TRUE;
@@ -308,7 +308,7 @@ void ftNessSpecialAirLwHitSwitchStatusGround(GObj *fighter_gobj)
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialLwHit, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWHIT_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialLwHit, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWHIT_STATUS_FLAGS);
     fp->is_absorb = TRUE;
 }
 
@@ -318,7 +318,7 @@ void ftNessSpecialLwHitSwitchStatusAir(GObj *fighter_gobj)
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirLwHit, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWHIT_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirLwHit, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWHIT_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 
     fp->is_absorb = TRUE;
@@ -370,7 +370,7 @@ void ftNessSpecialAirLwEndProcMap(GObj *fighter_gobj)
 void ftNessSpecialAirLwEndSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialLwEnd, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWEND_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialLwEnd, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWEND_STATUS_FLAGS);
 }
 
 // 0x80155A7C
@@ -379,7 +379,7 @@ void ftNessSpecialLwEndSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirLwEnd, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWEND_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirLwEnd, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALLWEND_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 }
 

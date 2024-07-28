@@ -71,19 +71,19 @@ void gmAnimParseAnimJoint(DObj *root_dobj)
     u16 command_kind;
     u16 aflags;
 
-    if (root_dobj->dobj_f0 != AOBJ_FRAME_NULL)
+    if (root_dobj->anim_remain != AOBJ_FRAME_NULL)
     {
-        if (root_dobj->dobj_f0 == -F32_HALF)
+        if (root_dobj->anim_remain == -F32_HALF)
         {
-            root_dobj->dobj_f0 = -root_dobj->dobj_f2;
+            root_dobj->anim_remain = -root_dobj->anim_frame;
         }
         else
         {
-            root_dobj->dobj_f0 -= root_dobj->dobj_f1;
-            root_dobj->dobj_f2 += root_dobj->dobj_f1;
-            root_dobj->parent_gobj->anim_frame = root_dobj->dobj_f2;
+            root_dobj->anim_remain -= root_dobj->anim_rate;
+            root_dobj->anim_frame += root_dobj->anim_rate;
+            root_dobj->parent_gobj->anim_frame = root_dobj->anim_frame;
 
-            if (root_dobj->dobj_f0 > 0.0F)
+            if (root_dobj->anim_remain > 0.0F)
             {
                 return;
             }
@@ -113,13 +113,13 @@ void gmAnimParseAnimJoint(DObj *root_dobj)
                 {
                     if (current_aobj->kind != 0)
                     {
-                        current_aobj->length += root_dobj->dobj_f1 + root_dobj->dobj_f0;
+                        current_aobj->length += root_dobj->anim_rate + root_dobj->anim_remain;
                     }
                     current_aobj = current_aobj->next;
                 }
-                root_dobj->dobj_f2 = root_dobj->dobj_f0;
-                root_dobj->parent_gobj->anim_frame = root_dobj->dobj_f0;
-                root_dobj->dobj_f0 = -1.1342745e38F;
+                root_dobj->anim_frame = root_dobj->anim_remain;
+                root_dobj->parent_gobj->anim_frame = root_dobj->anim_remain;
+                root_dobj->anim_remain = -1.1342745e38F;
 
                 return;
             }
@@ -155,12 +155,12 @@ void gmAnimParseAnimJoint(DObj *root_dobj)
                         {
                             setup_aobj[i]->length_invert = 1.0F / var_f20;
                         }
-                        setup_aobj[i]->length = -root_dobj->dobj_f0 - root_dobj->dobj_f1;
+                        setup_aobj[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandSetTargetRate)
                 {
-                    root_dobj->dobj_f0 += var_f20;
+                    root_dobj->anim_remain += var_f20;
                 }
                 break;
 
@@ -190,13 +190,13 @@ void gmAnimParseAnimJoint(DObj *root_dobj)
                         {
                             setup_aobj[i]->rate_base = (setup_aobj[i]->value_target - setup_aobj[i]->value_base) / var_f20;
                         }
-                        setup_aobj[i]->length = -root_dobj->dobj_f0 - root_dobj->dobj_f1;
+                        setup_aobj[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
                         setup_aobj[i]->rate_target = 0.0F;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandWait)
                 {
-                    root_dobj->dobj_f0 += var_f20;
+                    root_dobj->anim_remain += var_f20;
                 }
                 break;
 
@@ -230,12 +230,12 @@ void gmAnimParseAnimJoint(DObj *root_dobj)
                         {
                             setup_aobj[i]->length_invert = 1.0F / var_f20;
                         }
-                        setup_aobj[i]->length = -root_dobj->dobj_f0 - root_dobj->dobj_f1;
+                        setup_aobj[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandSetVal)
                 {
-                    root_dobj->dobj_f0 += var_f20;
+                    root_dobj->anim_remain += var_f20;
                 }
                 break;
 
@@ -262,7 +262,7 @@ void gmAnimParseAnimJoint(DObj *root_dobj)
             case nOMObjAnimCommandJump:
                 if (ACommandAdvance(root_dobj->actor.acommand)->command.toggle)
                 {
-                    root_dobj->dobj_f0 += ACommandAdvance(root_dobj->actor.acommand)->uhalf;
+                    root_dobj->anim_remain += ACommandAdvance(root_dobj->actor.acommand)->uhalf;
                 }
                 break;
 
@@ -290,14 +290,14 @@ void gmAnimParseAnimJoint(DObj *root_dobj)
 
                         setup_aobj[i]->length_invert = var_f20;
 
-                        setup_aobj[i]->length = -root_dobj->dobj_f0 - root_dobj->dobj_f1;
+                        setup_aobj[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
 
                         setup_aobj[i]->rate_target = 0.0F;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandSetVal0Rate)
                 {
-                    root_dobj->dobj_f0 += var_f20;
+                    root_dobj->anim_remain += var_f20;
                 }
                 break;
 
@@ -306,8 +306,8 @@ void gmAnimParseAnimJoint(DObj *root_dobj)
 
                 root_dobj->actor.acommand += root_dobj->actor.acommand->shalf / 2;
 
-                root_dobj->dobj_f2 = -root_dobj->dobj_f0;
-                root_dobj->parent_gobj->anim_frame = -root_dobj->dobj_f0;
+                root_dobj->anim_frame = -root_dobj->anim_remain;
+                root_dobj->parent_gobj->anim_frame = -root_dobj->anim_remain;
 
                 if (root_dobj->unk_dobj_0x55 != 0)
                 {
@@ -357,13 +357,13 @@ void gmAnimParseAnimJoint(DObj *root_dobj)
                 {
                     if (current_aobj->kind != 0)
                     {
-                        current_aobj->length += root_dobj->dobj_f1 + root_dobj->dobj_f0;
+                        current_aobj->length += root_dobj->anim_rate + root_dobj->anim_remain;
                     }
                     current_aobj = current_aobj->next;
                 }
-                root_dobj->dobj_f2 = root_dobj->dobj_f0;
-                root_dobj->parent_gobj->anim_frame = root_dobj->dobj_f0;
-                root_dobj->dobj_f0 = -1.1342745e38F;
+                root_dobj->anim_frame = root_dobj->anim_remain;
+                root_dobj->parent_gobj->anim_frame = root_dobj->anim_remain;
+                root_dobj->anim_remain = -1.1342745e38F;
 
                 if (root_dobj->unk_dobj_0x55 != 0)
                 {
@@ -379,7 +379,7 @@ void gmAnimParseAnimJoint(DObj *root_dobj)
 
                 if (ACommandAdvance(root_dobj->actor.acommand)->command.toggle)
                 {
-                    root_dobj->dobj_f0 += ACommandAdvance(root_dobj->actor.acommand)->uhalf;
+                    root_dobj->anim_remain += ACommandAdvance(root_dobj->actor.acommand)->uhalf;
                 }
                 break;
 
@@ -387,7 +387,7 @@ void gmAnimParseAnimJoint(DObj *root_dobj)
                 break;
             }
         } 
-        while (root_dobj->dobj_f0 <= 0.0F);
+        while (root_dobj->anim_remain <= 0.0F);
     }
 }
 

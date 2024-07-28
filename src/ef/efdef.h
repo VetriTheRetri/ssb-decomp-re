@@ -41,12 +41,12 @@ typedef enum efKind
     nEFKindBoxSmash = 46,              // Crate / Barrel smash effect
     nEFKindCrashTheGame,               // Literally crashes the game; this takes an argument which acts as a timer; must be extra specific, during a certain scene
     nEFKindKirbyStar = 54,             // Can be created manually but this plays when Kirby makes impact with stage collision
-    nEFKindThunderHit = 70,            // Pikachu's Thunder self-hit
+    nEFKindThunderAmp = 70,            // Pikachu's Thunder self-hit
     nEFKindRipple,                     // Pikachu's Quick-Attack, Ness's PSI Magnet, Mew spawn, etc.
     nEFKindChargeSparkle = 73,         // Fully charged Neutral Special, e.g. DK or Samus
     nEFKindHealSparkles,               // Used for Heart, Maxim Tomato and Star Man
-    nEFKindYoshiEggRoll = 87,
-    nEFKindSingNote = 90,
+    nEFKindYoshiEggEscape = 87,
+    nEFKindMusicNote = 90,
     nEFKindEggBreak
 
 } efKind;

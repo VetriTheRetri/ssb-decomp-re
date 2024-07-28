@@ -20,7 +20,7 @@ void ftCommonGuardSetStatusFromEscape(GObj *fighter_gobj)
         {
             fp->status_vars.common.guard.effect_gobj = efManagerYoshiShieldMakeEffect(fighter_gobj);
 
-            ftCommon_HideModelPartAll(fighter_gobj);
+            ftParamHideModelPartAll(fighter_gobj);
             ftCommonGuardSetHitStatusYoshi(fighter_gobj);
         }
         else fp->status_vars.common.guard.effect_gobj = efManagerShieldMakeEffect(fighter_gobj);

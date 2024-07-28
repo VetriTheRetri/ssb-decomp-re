@@ -22,7 +22,7 @@ void ftCommonDeadUpdateRumble(ftStruct *this_fp)
 {
     s32 i;
 
-    ftMainMakeRumble(this_fp, 0, 30);
+    ftParamMakeRumble(this_fp, 0, 30);
 
     for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
     {
@@ -36,7 +36,7 @@ void ftCommonDeadUpdateRumble(ftStruct *this_fp)
 
                 if ((!(gBattleState->game_rules & GMBATTLE_GAMERULE_STOCK)) || (other_fp->stock_count != -1))
                 {
-                    ftMainMakeRumble(other_fp, 1, 15);
+                    ftParamMakeRumble(other_fp, 1, 15);
                 }
                 else continue;
             }
@@ -128,7 +128,7 @@ void ftCommonDeadResetCommonVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_ProcDamageStopVoice(fighter_gobj);
+    ftParamStopVoiceRunProcDamage(fighter_gobj);
     func_ovl2_800D7994(fighter_gobj);
     ftCommonThrownDecideDeadResult(fighter_gobj);
 
@@ -150,7 +150,7 @@ void ftCommonDeadClearSpecialStats(GObj *fighter_gobj)
     fp->is_nullstatus = TRUE;
     fp->x18E_flag_b0 = TRUE;
 
-    ftSpecialItem_BGMCheckFighters(fighter_gobj);
+    ftParamTryUpdateItemMusic();
 }
 
 // 0x8013C0EC
@@ -402,14 +402,14 @@ void ftCommonDeadUpStarSetStatus(GObj *fighter_gobj)
     fp->command_vars.flags.flag1 = 0;
 
     ftCommonDeadClearSpecialStats(fighter_gobj);
-    ftCommon_SetPlayerTagWait(fighter_gobj, 1);
+    ftParamSetPlayerTagWait(fighter_gobj, 1);
 
     if (fp->attributes->deadup_sfx != 0x2B7)
     {
         func_800269C0_275C0(fp->attributes->deadup_sfx);
     }
-    ftRenderSwapDLLink(fighter_gobj, 1);
-    ftCommon_ResetColAnim(fighter_gobj);
+    ftParamMoveFighterDLLink(fighter_gobj, 1);
+    ftParamResetFighterColAnim(fighter_gobj);
 }
 
 // 0x8013C80C
@@ -523,14 +523,14 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
     fp->command_vars.flags.flag1 = 0;
 
     ftCommonDeadClearSpecialStats(fighter_gobj);
-    ftCommon_SetPlayerTagWait(fighter_gobj, 1);
+    ftParamSetPlayerTagWait(fighter_gobj, 1);
 
     if (fp->attributes->deadup_sfx != 0x2B7)
     {
         func_800269C0_275C0(fp->attributes->deadup_sfx);
     }
-    ftRenderSwapDLLink(fighter_gobj, 19);
-    ftCommon_SetModelPartLevelDetailAll(fighter_gobj, 1);
+    ftParamMoveFighterDLLink(fighter_gobj, 19);
+    ftParamSetModelPartDetailAll(fighter_gobj, 1);
 }
 
 // 0x8013CB7C

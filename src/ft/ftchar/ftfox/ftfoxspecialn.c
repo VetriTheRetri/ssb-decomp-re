@@ -43,9 +43,9 @@ void ftFoxSpecialNProcInterrupt(GObj *fighter_gobj)
         }
         else ftFoxSpecialNSetStatus(fighter_gobj);
 
-        ftCommon_MotionCountIncSetAttackID(fp, nFTMotionAttackIDSpecialN);
-        ftCommon_StatUpdateCountIncSetFlags(fp, fp->stat_flags.halfword);
-        ftCommon_Update1PGameAttackStats(fp, 0);
+        ftParamSetMotionID(fp, nFTMotionAttackIDSpecialN);
+        ftParamSetStatUpdate(fp, fp->stat_flags.halfword);
+        ftParamUpdate1PGameAttackStats(fp, 0);
     }
 }
 

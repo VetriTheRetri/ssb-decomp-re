@@ -55,7 +55,7 @@ void ftMarioSpecialHiProcInterrupt(GObj *fighter_gobj)
 
         if (stick_x > FTMARIO_SUPERJUMP_TURN_MODEL_THRESHOLD)
         {
-            ftCommon_StickInputSetLR(fp);
+            ftParamSetStickLR(fp);
 
             fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
         }

@@ -128,8 +128,8 @@ sb32 itHitokageSDefaultProcUpdate(GObj *item_gobj)
     if 
     (
         (ip->item_vars.hitokage.flags == GRYAMABUKI_MONSTER_WEAPON_INSTANT)                                                  ||
-        ((ip->item_vars.hitokage.flags & GRYAMABUKI_MONSTER_WEAPON_WAIT) && (dobj->dobj_f2 >= ITHITOKAGE_FLAME_SPAWN_BEGIN)) &&
-        (dobj->dobj_f2 <= ITHITOKAGE_FLAME_SPAWN_END)
+        ((ip->item_vars.hitokage.flags & GRYAMABUKI_MONSTER_WEAPON_WAIT) && (dobj->anim_frame >= ITHITOKAGE_FLAME_SPAWN_BEGIN)) &&
+        (dobj->anim_frame <= ITHITOKAGE_FLAME_SPAWN_END)
     )
     {
         dobj->mobj->current_image_id = 1;
@@ -144,7 +144,7 @@ sb32 itHitokageSDefaultProcUpdate(GObj *item_gobj)
     }
     else dobj->mobj->current_image_id = 0;
 
-    if (dobj->dobj_f0 == AOBJ_FRAME_NULL)
+    if (dobj->anim_remain == AOBJ_FRAME_NULL)
     {
         grYamabukiGateSetClosedWait();
 
@@ -190,7 +190,7 @@ sb32 itHitokageSDefaultProcDamage(GObj *item_gobj)
         ip->item_hit.update_state = nGMHitUpdateDisable;
         ip->item_hurt.hitstatus = nGMHitStatusNone;
 
-        dobj->dobj_f0 = AOBJ_FRAME_NULL;
+        dobj->anim_remain = AOBJ_FRAME_NULL;
 
         grYamabukiGateClearMonsterGObj();
         itHitokageNDamageSetStatus(item_gobj);

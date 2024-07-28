@@ -94,7 +94,7 @@ void ftCommonCapturePulledProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp;
 
-    ftCommon_ProcDamageStopVoice(fighter_gobj);
+    ftParamStopVoiceRunProcDamage(fighter_gobj);
 
     if ((this_fp->item_hold != NULL) && (itGetStruct(this_fp->item_hold)->weight == nITWeightHeavy))
     {
@@ -124,7 +124,7 @@ void ftCommonCapturePulledProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     this_fp->status_vars.common.capture.is_goto_pulled_wait = FALSE;
 
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
-    ftMainMakeRumble(this_fp, 9, 0);
+    ftParamMakeRumble(this_fp, 9, 0);
     ftPhysics_StopVelAll(fighter_gobj);
     ftCommonCapturePulledProcPhysics(fighter_gobj);
     ftCommonCapturePulledProcMap(fighter_gobj);

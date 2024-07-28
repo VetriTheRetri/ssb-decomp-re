@@ -264,7 +264,7 @@ void ftFoxSpecialLwEndProcUpdate(GObj *fighter_gobj)
 
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        ftCommon_ProcStopGFX(fighter_gobj);
+        ftParamProcStopEffect(fighter_gobj);
         ftMap_SetStatusWaitOrFall(fighter_gobj);
     }
 }

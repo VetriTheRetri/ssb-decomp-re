@@ -1,9 +1,6 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
 
-extern f32 gmCommonObject_DamageCalcKnockback(s32 percent_damage, s32 recent_damage, s32 hit_damage, s32 knockback_weight, s32 knockback_scale, s32 knockback_base, f32 weight, s32 attack_handicap, s32 defend_handicap);
-extern s32 gmCommon_DamageApplyStale(s32 player, s32 damage, s32 attack_id, u16 flags);
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
@@ -107,7 +104,7 @@ void ftCommonThrownProcStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_ThrownUpdateEnemyInfo(fp, fp->capture_gobj);
+    ftParamSetThrowParams(fp, fp->capture_gobj);
 
     fp->status_vars.common.damage.script_index = sFTCommonThrownScriptID;
 }
@@ -130,7 +127,7 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
 
     if (this_fp->hitstatus != nGMHitStatusNormal)
     {
-        ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
+        ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
     }
     if (!(this_fp->x192_flag_b3))
     {
@@ -140,7 +137,7 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
 
     ft_throw = capture_fp->fighter_throw;
 
-    knockback_calc = gmCommonObject_DamageCalcKnockback(this_fp->percent_damage, ft_throw->damage, ft_throw->damage, ft_throw->knockback_weight, ft_throw->knockback_scale, ft_throw->knockback_base, this_fp->attributes->weight, capture_fp->handicap, this_fp->handicap);
+    knockback_calc = ftParamGetCommonKnockback(this_fp->percent_damage, ft_throw->damage, ft_throw->damage, ft_throw->knockback_weight, ft_throw->knockback_scale, ft_throw->knockback_base, this_fp->attributes->weight, capture_fp->handicap, this_fp->handicap);
 
     knockback_final = knockback_calc - knockback_resist;
 
@@ -148,13 +145,13 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
     {
         knockback_final = 0.0F;
     }
-    damage = gmCommon_DamageApplyStale(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);
+    damage = ftParamGetStaledDamageOutput(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);
 
     if (capture_fp->is_shield_catch)
     {
         damage = ((damage * 0.5F) + 0.999F);
     }
-    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != nGMHitStatusNormal)
+    if (ftParamGetBestHitStatusAll(fighter_gobj) != nGMHitStatusNormal)
     {
         damage = 0;
     }
@@ -163,21 +160,21 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
         this_fp->proc_status = ftCommonThrownProcStatus;
     }
     ftCommonDamageInitDamageVars(fighter_gobj, ft_throw->status_id, damage, knockback_final, ft_throw->angle, lr, 1, ft_throw->element, capture_fp->player_number, TRUE, TRUE, TRUE);
-    ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
+    ftParamUpdate1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
 
     if (damage != 0)
     {
-        ftDamageUpdateCheckDropItem(this_fp, damage);
-        ftAttackUpdateMatchStats(capture_fp->player, this_fp->player, damage);
-        ftAttackAddStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);
+        ftParamUpdateDamage(this_fp, damage);
+        ftParamUpdateBattleStats(capture_fp->player, this_fp->player, damage);
+        ftParamUpdateStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);
 
         if ((s32) ((damage * 0.75F) + 4.0F) > 0)
         {
-            ftMainMakeRumble(this_fp, 0, (s32) ((damage * 0.75F) + 4.0F));
+            ftParamMakeRumble(this_fp, 0, (s32) ((damage * 0.75F) + 4.0F));
         }
         if ((s32) ((damage * 0.5F) + 2.0F) > 0)
         {
-            ftMainMakeRumble(capture_fp, 5, (s32) ((damage * 0.5F) + 2.0F));
+            ftParamMakeRumble(capture_fp, 5, (s32) ((damage * 0.5F) + 2.0F));
         }
     }
     this_fp->capture_gobj = NULL;
@@ -189,11 +186,11 @@ void ftCommonThrownUpdateDamageStats(ftStruct *this_fp)
     GObj *capture_gobj = this_fp->capture_gobj;
     ftStruct *capture_fp = ftGetStruct(capture_gobj);
     ftThrowHitDesc *ft_throw = &capture_fp->fighter_throw[1];
-    s32 damage = gmCommon_DamageApplyStale(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);
+    s32 damage = ftParamGetStaledDamageOutput(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);
 
-    ftDamageUpdateCheckDropItem(this_fp, damage);
-    ftAttackUpdateMatchStats(capture_fp->player, this_fp->player, damage);
-    ftAttackAddStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);
+    ftParamUpdateDamage(this_fp, damage);
+    ftParamUpdateBattleStats(capture_fp->player, this_fp->player, damage);
+    ftParamUpdateStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);
 }
 
 // 0x8014B330
@@ -213,7 +210,7 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
 
     if (this_fp->hitstatus != nGMHitStatusNormal)
     {
-        ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
+        ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
     }
     if (!(this_fp->x192_flag_b3))
     {
@@ -225,7 +222,7 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
     }
     ft_throw = &capture_fp->fighter_throw[1];
 
-    knockback_calc = gmCommonObject_DamageCalcKnockback(this_fp->percent_damage, ft_throw->damage, ft_throw->damage, ft_throw->knockback_weight, ft_throw->knockback_scale, ft_throw->knockback_base, this_fp->attributes->weight, capture_fp->handicap, this_fp->handicap);
+    knockback_calc = ftParamGetCommonKnockback(this_fp->percent_damage, ft_throw->damage, ft_throw->damage, ft_throw->knockback_weight, ft_throw->knockback_scale, ft_throw->knockback_base, this_fp->attributes->weight, capture_fp->handicap, this_fp->handicap);
 
     knockback_final = knockback_calc - knockback_resist;
 
@@ -235,25 +232,25 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
     }
     lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(capture_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
 
-    damage = gmCommon_DamageApplyStale(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);;
+    damage = ftParamGetStaledDamageOutput(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);;
 
     if (capture_fp->is_shield_catch)
     {
         damage = ((damage * 0.5F) + 0.999F);
     }
 
-    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != nGMHitStatusNormal)
+    if (ftParamGetBestHitStatusAll(fighter_gobj) != nGMHitStatusNormal)
     {
         damage = 0;
     }
     ftCommonDamageInitDamageVars(fighter_gobj, ft_throw->status_id, damage, knockback_final, ft_throw->angle, lr, 1, nGMHitElementNormal, capture_fp->player_number, FALSE, FALSE, TRUE);
-    ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
+    ftParamUpdate1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
 
     if (damage != 0)
     {
-        ftDamageUpdateCheckDropItem(this_fp, damage);
-        ftAttackUpdateMatchStats(capture_fp->player, this_fp->player, damage);
-        ftAttackAddStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);
+        ftParamUpdateDamage(this_fp, damage);
+        ftParamUpdateBattleStats(capture_fp->player, this_fp->player, damage);
+        ftParamUpdateStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);
     }
     this_fp->capture_gobj = NULL;
 }
@@ -275,7 +272,7 @@ void ftCommonThrownSetStatusNoDamageRelease(GObj *fighter_gobj)
 
     DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
 
-    knockback_calc = gmCommonObject_DamageCalcKnockback(fp->percent_damage, ft_throw->damage, ft_throw->damage, ft_throw->knockback_weight, ft_throw->knockback_scale, ft_throw->knockback_base, fp->attributes->weight, 9, fp->handicap);
+    knockback_calc = ftParamGetCommonKnockback(fp->percent_damage, ft_throw->damage, ft_throw->damage, ft_throw->knockback_weight, ft_throw->knockback_scale, ft_throw->knockback_base, fp->attributes->weight, 9, fp->handicap);
 
     knockback_final = knockback_calc - knockback_resist;
 
@@ -284,5 +281,5 @@ void ftCommonThrownSetStatusNoDamageRelease(GObj *fighter_gobj)
         knockback_final = 0.0F;
     }
     ftCommonDamageInitDamageVars(fighter_gobj, ft_throw->status_id, 0, knockback_final, ft_throw->angle, fp->lr, 1, ft_throw->element, 0, TRUE, TRUE, FALSE);
-    ftCommon_Update1PGameDamageStats(fp, GMBATTLE_PLAYERS_MAX, nFTHitlogObjectNone, 0, 0, 0);
+    ftParamUpdate1PGameDamageStats(fp, GMBATTLE_PLAYERS_MAX, nFTHitlogObjectNone, 0, 0, 0);
 }

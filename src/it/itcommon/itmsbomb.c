@@ -348,7 +348,7 @@ void itMSBombGAttachInitItemVars(GObj *item_gobj)
 
         if (fighter_gobj != NULL)
         {
-            ftMainMakeRumble(ftGetStruct(fighter_gobj), 6, 0);
+            ftParamMakeRumble(ftGetStruct(fighter_gobj), 6, 0);
         }
     }
     func_800269C0_275C0(alSound_SFX_MSBombAttach);
@@ -370,7 +370,7 @@ void itMSBombNExplodeMakeEffect(GObj *item_gobj)
 
         translate.y += attributes->objectcoll_bottom;
 
-        efManagerDustHeavy2xMakeEffect(&translate, ip->lr, 1.0F);
+        efManagerDustHeavyDoubleMakeEffect(&translate, ip->lr, 1.0F);
     }
 }
 

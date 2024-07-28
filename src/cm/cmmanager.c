@@ -801,7 +801,7 @@ void jtgt_ovl2_8010CC74(GObj *camera_gobj)
 {
     func_ovl2_8010CBE4(camera_gobj);
 
-    if (CameraGetStruct(camera_gobj)->cam_f0 == AOBJ_FRAME_NULL)
+    if (CameraGetStruct(camera_gobj)->anim_remain == AOBJ_FRAME_NULL)
     {
         cmManagerSetCameraStatusDefault();
     }

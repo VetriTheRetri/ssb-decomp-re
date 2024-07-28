@@ -11,7 +11,7 @@ extern intptr_t
 lWPSamusChargeShotWeaponAttributes;         // 0x00000000
 
 extern alSoundEffect* func_800269C0_275C0(u16);
-extern void ftCommon_PlayLoopSFXStoreInfo(ftStruct*, u16);
+extern void ftParamPlayLoopSFX(ftStruct*, u16);
 
 // // // // // // // // // // // //
 //                               //
@@ -301,7 +301,7 @@ GObj* wpSamusChargeShotMakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_lev
 
         wp->weapon_vars.charge_shot.owner_gobj = fighter_gobj;
 
-        ftCommon_PlayLoopSFXStoreInfo(fp, dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].charge_sfx_id);
+        ftParamPlayLoopSFX(fp, dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].charge_sfx_id);
     }
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = DObjGetStruct(weapon_gobj)->scale.vec.f.y = dWPSamusChargeShotWeaponAttributes[charge_level].gfx_size / WPCHARGESHOT_GFX_SIZE_DIV;
 

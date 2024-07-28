@@ -94,7 +94,7 @@ void grYosterUpdateCloudSolid(s32 cloud_id)
     Vec3f pos;
     DObj *dobj;
 
-    if (gGRCommonStruct.yoster.clouds[cloud_id].dobj[0]->mobj->mobj_f0 == AOBJ_FRAME_NULL)
+    if (gGRCommonStruct.yoster.clouds[cloud_id].dobj[0]->mobj->anim_remain == AOBJ_FRAME_NULL)
     {
         if (gGRCommonStruct.yoster.clouds[cloud_id].is_cloud_line_active == FALSE)
         {

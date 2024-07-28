@@ -306,7 +306,7 @@ void mvOpeningMarioInitFighterStagePanel()
 		spawn_info.pos.y = spawn_position.y;
 		spawn_info.pos.z = spawn_position.z;
 		spawn_info.lr_spawn = nGMDirectionR;
-		spawn_info.team = gBattleState->players[i].team_index;
+		spawn_info.team = gBattleState->players[i].team;
 		spawn_info.player = i;
 		spawn_info.model_lod = nFTPartsDetailHigh;
 		spawn_info.costume = gBattleState->players[i].costume;
@@ -320,8 +320,8 @@ void mvOpeningMarioInitFighterStagePanel()
 
 		gMvOpeningMarioStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
-		ftCommon_ClearPlayerMatchStats(i, fighter_gobj);
-		ftCommon_SetHowToPlayInputSeq(fighter_gobj, dMvOpeningMarioInputSeq);
+		ftParamInitPlayerBattleStats(i, fighter_gobj);
+		ftParamSetExplainInputSeq(fighter_gobj, dMvOpeningMarioInputSeq);
 	}
 }
 
@@ -381,7 +381,7 @@ void mvOpeningMarioCreatePosedFighter()
 	ftCreateDesc spawn_info = dFTDefaultFighterDesc;
 
 	spawn_info.ft_kind = nFTKindMario;
-	spawn_info.costume = ftCostume_GetIndexFFA(nFTKindMario, 0);
+	spawn_info.costume = ftParamGetCostumeRoyalID(nFTKindMario, 0);
 	spawn_info.anim_heap = gMvOpeningMarioAnimHeap;
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 600.0f;
@@ -481,7 +481,7 @@ void mvOpeningMarioInit()
 	func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
 	mvOpeningMarioInitFramesElapsed();
 	efAllocInitParticleBank();
-	func_ovl2_800EC130();
+	ftParamGameSet();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();

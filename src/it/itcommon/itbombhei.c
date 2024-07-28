@@ -256,7 +256,7 @@ void itBombHeiSDefaultCheckMakeDustEffect(GObj *item_gobj, u8 override)
 
         pos.y += attributes->objectcoll_bottom;
 
-        efManagerDustHeavy2xMakeEffect(&pos, ip->lr, 1.0F);
+        efManagerDustHeavyDoubleMakeEffect(&pos, ip->lr, 1.0F);
     }
 }
 

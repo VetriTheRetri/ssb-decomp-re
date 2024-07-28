@@ -263,7 +263,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
 
     if ((fp->ft_kind == nFTKindCaptain) && (fp->status_vars.common.entry.lr_entry == nGMDirectionL))
     {
-        ftRenderSwapDLLink(fighter_gobj, 1);
+        ftParamMoveFighterDLLink(fighter_gobj, 1);
     }
 }
 
@@ -326,7 +326,7 @@ void ftCaptainAppearStartProcUpdate(GObj *fighter_gobj)
 
     if ((fp->status_vars.common.entry.lr_entry == nGMDirectionL) && (fp->dl_link != 9) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > -1000.0F))
     {
-        ftRenderSwapDLLink(fighter_gobj, 9);
+        ftParamMoveFighterDLLink(fighter_gobj, 9);
     }
     ftStatusSetOnAnimEnd(fighter_gobj, ftCaptainAppearEndSetStatus);
 }

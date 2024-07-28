@@ -7,7 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
-#define FTKIRBY_COPYNESS_SPECIALN_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM)
+#define FTKIRBY_COPYNESS_SPECIALN_STATUS_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM)
 
 // // // // // // // // // // // //
 //                               //
@@ -73,7 +73,7 @@ void ftKirbyCopyNessSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYNESS_SPECIALN_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYNESS_SPECIALN_STATUS_FLAGS);
 
     fp->proc_accessory = ftKirbyCopyNessSpecialNProcAccessory;
 }
@@ -84,7 +84,7 @@ void ftKirbyCopyNessSpecialNSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYNESS_SPECIALN_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYNESS_SPECIALN_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_accessory = ftKirbyCopyNessSpecialNProcAccessory;

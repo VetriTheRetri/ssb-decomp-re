@@ -5,6 +5,7 @@
 #include "ftmain.h"
 #include "ftanimgoto.h"
 #include "ftphysics.h"
+#include "ftparam.h"
 #include "ftrendermain.h"
 #include "ftrenderlights.h"
 #include "fthammer.h"

@@ -1,8 +1,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 
-extern f32 ftCommon_GetStickAngleRadians(ftStruct*);
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //
@@ -365,15 +363,15 @@ void ftCommonLightThrowDecideSetStatus(GObj *fighter_gobj)
     {
         status_id = nFTCommonStatusLightThrowLw4;
     }
-    else if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN) && (((ftCommon_GetStickAngleRadians(fp) < 0.0F) ? -ftCommon_GetStickAngleRadians(fp) : ftCommon_GetStickAngleRadians(fp)) <= FTCOMMON_LIGHTTHROW_HI_OR_LW_ANGLE))
+    else if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN) && (((ftParamGetStickAngleRads(fp) < 0.0F) ? -ftParamGetStickAngleRads(fp) : ftParamGetStickAngleRads(fp)) <= FTCOMMON_LIGHTTHROW_HI_OR_LW_ANGLE))
     {
         status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusLightThrowF : nFTCommonStatusLightThrowB;
     }
-    else if ((fp->input.pl.stick_range.y >= FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN) && (ftCommon_GetStickAngleRadians(fp) > FTCOMMON_LIGHTTHROW_HI_OR_LW_ANGLE))
+    else if ((fp->input.pl.stick_range.y >= FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN) && (ftParamGetStickAngleRads(fp) > FTCOMMON_LIGHTTHROW_HI_OR_LW_ANGLE))
     {
         status_id = nFTCommonStatusLightThrowHi;
     }
-    else if ((fp->input.pl.stick_range.y <= -FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN) && (ftCommon_GetStickAngleRadians(fp) < -FTCOMMON_LIGHTTHROW_HI_OR_LW_ANGLE))
+    else if ((fp->input.pl.stick_range.y <= -FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN) && (ftParamGetStickAngleRads(fp) < -FTCOMMON_LIGHTTHROW_HI_OR_LW_ANGLE))
     {
         status_id = nFTCommonStatusLightThrowLw; 
     }
@@ -392,7 +390,7 @@ void ftCommonHeavyThrowDecideSetStatus(GObj *fighter_gobj)
     {
         status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusHeavyThrowF4 : nFTCommonStatusHeavyThrowB4;
     }
-    else if (((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_HEAVYTHROW_STICK_RANGE_XY_MIN) && ((ftCommon_GetStickAngleRadians(fp) < 0.0F) ? -ftCommon_GetStickAngleRadians(fp) : ftCommon_GetStickAngleRadians(fp)) <= FTCOMMON_HEAVYTHROW_HI_OR_LW_ANGLE))
+    else if (((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_HEAVYTHROW_STICK_RANGE_XY_MIN) && ((ftParamGetStickAngleRads(fp) < 0.0F) ? -ftParamGetStickAngleRads(fp) : ftParamGetStickAngleRads(fp)) <= FTCOMMON_HEAVYTHROW_HI_OR_LW_ANGLE))
     {
         status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusHeavyThrowF : nFTCommonStatusHeavyThrowB;
     }

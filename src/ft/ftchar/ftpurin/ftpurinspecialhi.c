@@ -6,7 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
-#define FTPURIN_SPECIALHI_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM | FTSTATUS_PRESERVE_HIT)
+#define FTPURIN_SPECIALHI_STATUS_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM | FTSTATUS_PRESERVE_HIT)
 
 // // // // // // // // // // // //
 //                               //
@@ -50,7 +50,7 @@ void ftPurinSpecialAirHiProcMap(GObj *fighter_gobj)
 void ftPurinSpecialAirHiSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialHi, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALHI_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialHi, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALHI_STATUS_FLAGS);
 }
 
 // 0x80151654
@@ -59,7 +59,7 @@ void ftPurinSpecialHiSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirHi, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALHI_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirHi, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALHI_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 }
 

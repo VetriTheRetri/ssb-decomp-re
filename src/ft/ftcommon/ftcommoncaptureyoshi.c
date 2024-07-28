@@ -76,7 +76,7 @@ void ftCommonCaptureYoshiProcPhysics(GObj *fighter_gobj)
 
             fp->is_invisible = fp->x18E_flag_b0 = TRUE;
 
-            ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
+            ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
         }
     }
 }
@@ -87,7 +87,7 @@ void ftCommonCaptureYoshiProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     ftStruct *capture_fp;
 
-    ftCommon_ProcDamageStopVoice(fighter_gobj);
+    ftParamStopVoiceRunProcDamage(fighter_gobj);
 
     if ((this_fp->item_hold != NULL) && (itGetStruct(this_fp->item_hold)->weight == nITWeightHeavy))
     {
@@ -152,7 +152,7 @@ void ftCommonYoshiEggProcUpdate(GObj *fighter_gobj)
 
         if (fp->status_vars.common.captureyoshi.effect_gobj != NULL)
         {
-            ftCommon_ProcStopGFX(fighter_gobj);
+            ftParamProcStopEffect(fighter_gobj);
 
             fp->status_vars.common.captureyoshi.effect_gobj = NULL;
         }
@@ -196,7 +196,7 @@ void ftCommonYoshiEggProcUpdate(GObj *fighter_gobj)
 
         ftMap_SetAir(fp);
         ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_DAMAGEPLAYER);
-        ftCommon_ApplyIntangibleTimer(fp, FTCOMMON_YOSHIEGG_INTANGIBLE_TIMER);
+        ftParamSetTimedHitStatusIntangible(fp, FTCOMMON_YOSHIEGG_INTANGIBLE_TIMER);
     }
 }
 
@@ -369,7 +369,7 @@ void ftCommonYoshiEggSetStatus(GObj *fighter_gobj)
     ftCommonYoshiEggSetHurtCollisions(fighter_gobj);
     ftCommonCaptureTrappedInitBreakoutVars(this_fp, FTCOMMON_YOSHIEGG_BREAKOUT_INPUTS_MIN);
     ftKirbySpecialNApplyCaptureDamage(this_fp->capture_gobj, fighter_gobj, 5); // Br0h why
-    ftCommon_SetPlayerTagWait(fighter_gobj, 1);
+    ftParamSetPlayerTagWait(fighter_gobj, 1);
 
     capture_fp = ftGetStruct(this_fp->capture_gobj);
 
@@ -392,6 +392,6 @@ void ftCommonYoshiEggSetStatus(GObj *fighter_gobj)
     this_fp->status_vars.common.captureyoshi.effect_gobj = NULL;
     this_fp->status_vars.common.captureyoshi.is_damagefloor = FALSE;
 
-    ftCommon_Update1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
+    ftParamUpdate1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
     ftCommonYoshiEggMakeEffect(fighter_gobj);
 }

@@ -3,7 +3,6 @@
 #include <gr/ground.h>
 #include <gm/battle.h>
 
-extern f32 gmCommonObject_DamageCalcKnockback(s32 percent_damage, s32 recent_damage, s32 hit_damage, s32 knockback_weight, s32 knockback_scale, s32 knockback_base, f32 weight, s32 attack_handicap, s32 defend_handicap);
 extern f32 bitmap_cosf(f32);
 extern f32 bitmap_sinf(f32);
 
@@ -72,7 +71,7 @@ void ftCommonTwisterSetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_ProcDamageStopVoice(fighter_gobj);
+    ftParamStopVoiceRunProcDamage(fighter_gobj);
 
     if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->weight == nITWeightHeavy))
     {
@@ -113,20 +112,20 @@ void ftCommonTwisterShootFighter(GObj *fighter_gobj)
 
     DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
 
-    knockback = gmCommonObject_DamageCalcKnockback(fp->percent_damage, tornado->damage, tornado->damage, tornado->knockback_weight, tornado->knockback_scale, tornado->knockback_base, fp->attributes->weight, 9, fp->handicap);
+    knockback = ftParamGetCommonKnockback(fp->percent_damage, tornado->damage, tornado->damage, tornado->knockback_weight, tornado->knockback_scale, tornado->knockback_base, fp->attributes->weight, 9, fp->handicap);
 
-    if (ftCommon_GetBestHitStatusAll(fighter_gobj) != nGMHitStatusNormal)
+    if (ftParamGetBestHitStatusAll(fighter_gobj) != nGMHitStatusNormal)
     {
         damage = 0;
     }
     else damage = tornado->damage;
 
     ftCommonDamageInitDamageVars(fighter_gobj, -1, damage, knockback, tornado->angle, fp->lr, 0, tornado->element, 0, TRUE, TRUE, TRUE);
-    ftCommon_Update1PGameDamageStats(fp, GMBATTLE_PLAYERS_MAX, nFTHitlogObjectGround, nGMHitEnvironmentTwister, 0, 0);
+    ftParamUpdate1PGameDamageStats(fp, GMBATTLE_PLAYERS_MAX, nFTHitlogObjectGround, nGMHitEnvironmentTwister, 0, 0);
 
     if (damage != 0)
     {
-        ftDamageUpdateCheckDropItem(fp, damage);
+        ftParamUpdateDamage(fp, damage);
     }
     fp->twister_wait = FTCOMMON_TORNADO_PICKUP_WAIT;
 }

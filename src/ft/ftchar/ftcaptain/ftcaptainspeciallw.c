@@ -1,8 +1,5 @@
 #include <ft/fighter.h>
 
-extern void ftCommon_ProcPauseGFX(GObj*);
-extern void ftCommon_ProcResumeGFX(GObj*);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -27,7 +24,7 @@ void ftCaptainSpecialLwUpdateEffect(GObj *fighter_gobj)
     }
     else if (fp->command_vars.flags.flag2 == 2)
     {
-        ftCommon_ProcStopGFX(fighter_gobj);
+        ftParamProcStopEffect(fighter_gobj);
         fp->command_vars.flags.flag2 = 0;
     }
 }
@@ -221,8 +218,8 @@ void ftCaptainSpecialLwAirSetStatus(GObj *fighter_gobj)
     fp->joint[nFTPartsJointTopN]->rotate.vec.f.z = rot_z;
     fp->joint[nFTPartsJointTransN]->rotate.vec.f.z = fp->joint[nFTPartsJointTopN]->rotate.vec.f.z;
 
-    fp->proc_lagstart = ftCommon_ProcPauseGFX;
-    fp->proc_lagend = ftCommon_ProcResumeGFX;
+    fp->proc_lagstart = ftParamProcPauseEffect;
+    fp->proc_lagend = ftParamProcResumeEffect;
 }
 
 // 0x801600EC
@@ -245,8 +242,8 @@ void ftCaptainSpecialLwSetStatus(GObj *fighter_gobj)
     fp->proc_shield = ftCaptainSpecialLwProcHit;
     fp->proc_hit = ftCaptainSpecialLwProcHit;
 
-    fp->proc_lagstart = ftCommon_ProcPauseGFX;
-    fp->proc_lagend = ftCommon_ProcResumeGFX;
+    fp->proc_lagstart = ftParamProcPauseEffect;
+    fp->proc_lagend = ftParamProcResumeEffect;
 }
 
 // 0x801601A0
@@ -259,8 +256,8 @@ void jtgt_ovl3_801601A0(GObj *fighter_gobj) // Unused
 
     fp->proc_hit = ftCaptainSpecialLwProcHit;
 
-    fp->proc_lagstart = ftCommon_ProcPauseGFX;
-    fp->proc_lagend = ftCommon_ProcResumeGFX;
+    fp->proc_lagstart = ftParamProcPauseEffect;
+    fp->proc_lagend = ftParamProcResumeEffect;
 }
 
 // 0x8016020C
@@ -273,6 +270,6 @@ void ftCaptainSpecialAirLwSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainUpdateAnimCheckInterrupt(fighter_gobj);
 
-    fp->proc_lagstart = ftCommon_ProcPauseGFX;
-    fp->proc_lagend = ftCommon_ProcResumeGFX;
+    fp->proc_lagstart = ftParamProcPauseEffect;
+    fp->proc_lagend = ftParamProcResumeEffect;
 }

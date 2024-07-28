@@ -435,6 +435,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Parameter manager for (mainly) fighters
+      - [0x0632D0, c, ft/ftparam]
     # Model animation parser
       - [0x067960, c, gm/gmanim]
     # General collision and position calculation
@@ -490,6 +492,8 @@ segments:
 
     # ovl2 data
       - [0x0923D0, data, ovl2]
+    # Parameter manager for (mainly) fighters
+      - [0x0A6FB0, .data, ft/ftparam]
     # Model animation parser
       - [0x0A7110, .data, gm/gmanim]
     # Temp ASM block
@@ -522,6 +526,8 @@ segments:
 
     # ovl2 read-only data
       - [0x0AB250, rodata, ovl2]
+    # Parameter update for (mainly) fighters
+      - [0x0AB6A0, .rodata, ft/ftparam]
     # Model animation parser
       - [0x0AB900, .rodata, gm/gmanim]
     # General collision and position calculation

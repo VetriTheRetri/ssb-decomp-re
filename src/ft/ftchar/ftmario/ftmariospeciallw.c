@@ -18,11 +18,11 @@ void ftMarioSpecialLwProcUpdate(GObj *fighter_gobj)
 
         if (fp->status_vars.mario.speciallw.dust_effect_int == 4)
         {
-            ftParticle_MakeEffectKind(fighter_gobj, nEFKindDustLight, nFTPartsJointTopN, NULL, NULL, -fp->lr, FALSE, FALSE); // Spawn GFX
+            ftParamMakeEffect(fighter_gobj, nEFKindDustLight, nFTPartsJointTopN, NULL, NULL, -fp->lr, FALSE, FALSE); // Spawn GFX
         }
         else if (fp->status_vars.mario.speciallw.dust_effect_int == 0)
         {
-            ftParticle_MakeEffectKind(fighter_gobj, nEFKindDustLight, nFTPartsJointTopN, NULL, NULL, fp->lr, FALSE, FALSE); // Spawn GFX 
+            ftParamMakeEffect(fighter_gobj, nEFKindDustLight, nFTPartsJointTopN, NULL, NULL, fp->lr, FALSE, FALSE); // Spawn GFX 
 
             fp->status_vars.mario.speciallw.dust_effect_int = 8;
         }

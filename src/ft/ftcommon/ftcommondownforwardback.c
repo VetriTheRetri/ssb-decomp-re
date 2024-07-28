@@ -1,7 +1,5 @@
 #include <ft/fighter.h>
 
-extern f32 ftCommon_GetStickAngleRadians(ftStruct*);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -27,7 +25,7 @@ sb32 ftCommonDownForwardOrBackCheckInterruptCommon(GObj *fighter_gobj)
 
     if (ABS(fp->input.pl.stick_range.x) >= FTCOMMON_DOWN_FORWARD_BACK_RANGE_MIN)
     {
-        if (ftCommon_GetStickAngleRadians(fp) < F_CST_DTOR32(50.0F)) // 0.87266463F
+        if (ftParamGetStickAngleRads(fp) < F_CST_DTOR32(50.0F)) // 0.87266463F
         {
             if ((fp->input.pl.stick_range.x * fp->lr) >= 0)
             {

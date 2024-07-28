@@ -1,8 +1,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 
-extern f32 ftCommon_GetStickAngleRadians(ftStruct*);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -16,7 +14,7 @@ void ftCommonAttackAirLwProcHit(GObj *fighter_gobj)
 
     if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindPolyLink))
     {
-        ftCommon_ClearHitAll(fighter_gobj);
+        ftParamClearHitAll(fighter_gobj);
 
         fp->is_fast_fall = FALSE;
 
@@ -43,8 +41,8 @@ void ftCommonAttackAirLwProcUpdate(GObj *fighter_gobj)
 
             if ((fp->status_vars.common.attackair.rehit_timer == 0) && (fighter_gobj->anim_frame < FTCOMMON_ATTACKAIRLW_LINK_REHIT_FRAME_END))
             {
-                ftCollision_RefreshHitIndex(fighter_gobj, 0);
-                ftCollision_RefreshHitIndex(fighter_gobj, 1);
+                ftParamRefreshHitID(fighter_gobj, 0);
+                ftParamRefreshHitID(fighter_gobj, 1);
             }
         }
     }
@@ -104,7 +102,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
                 }
                 else
                 {
-                    angle = ftCommon_GetStickAngleRadians(fp);
+                    angle = ftParamGetStickAngleRads(fp);
 
                     if (angle > F_CST_DTOR32(50.0F)) // 0.87266463F
                     {
@@ -151,7 +149,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
                 }
                 else
                 {
-                    angle = ftCommon_GetStickAngleRadians(fp);
+                    angle = ftParamGetStickAngleRads(fp);
 
                     if (angle > F_CST_DTOR32(50.0F)) // 0.87266463F
                     {

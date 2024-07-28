@@ -4,8 +4,6 @@
 #include <gm/battle.h>
 
 extern void func_8000DF34_EB34(GObj*);
-extern f32 gmCommonObject_DamageCalcKnockback(s32 percent_damage, s32 recent_damage, s32 hit_damage, s32 knockback_weight, s32 knockback_scale, s32 knockback_base, f32 weight, s32 attack_handicap, s32 defend_handicap);
-extern s32 gmCommon_DamageCalcHitLag(s32, s32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -330,7 +328,7 @@ void itProcessUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *
         }
         if (ip->is_allow_knockback)
         {
-            damage_knockback = gmCommonObject_DamageCalcKnockback(ip->percent_damage, ip->damage_queue, damage, ft_hit->knockback_weight, ft_hit->knockback_scale, ft_hit->knockback_base, 1.0F, fp->handicap, ip->handicap);
+            damage_knockback = ftParamGetCommonKnockback(ip->percent_damage, ip->damage_queue, damage, ft_hit->knockback_weight, ft_hit->knockback_scale, ft_hit->knockback_base, 1.0F, fp->handicap, ip->handicap);
 
             if (ip->damage_knockback < damage_knockback)
             {
@@ -508,7 +506,7 @@ void itProcessUpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit,
         }
         if (defend_ip->is_allow_knockback)
         {
-            knockback = gmCommonObject_DamageCalcKnockback(defend_ip->percent_damage, defend_ip->damage_queue, damage, attack_it_hit->knockback_weight, attack_it_hit->knockback_scale, attack_it_hit->knockback_base, 1.0F, attack_ip->handicap, defend_ip->handicap);
+            knockback = ftParamGetCommonKnockback(defend_ip->percent_damage, defend_ip->damage_queue, damage, attack_it_hit->knockback_weight, attack_it_hit->knockback_scale, attack_it_hit->knockback_base, 1.0F, attack_ip->handicap, defend_ip->handicap);
 
             if (defend_ip->damage_knockback < knockback)
             {
@@ -599,7 +597,7 @@ void itProcessUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_
         }
         if (ip->is_allow_knockback)
         {
-            knockback = gmCommonObject_DamageCalcKnockback(ip->percent_damage, ip->damage_queue, damage, wp_hit->knockback_weight, wp_hit->knockback_scale, wp_hit->knockback_base, 1.0F, wp->handicap, ip->handicap);
+            knockback = ftParamGetCommonKnockback(ip->percent_damage, ip->damage_queue, damage, wp_hit->knockback_weight, wp_hit->knockback_scale, wp_hit->knockback_base, 1.0F, wp->handicap, ip->handicap);
 
             if (ip->damage_knockback < knockback)
             {
@@ -1090,7 +1088,7 @@ next_check:
     }
     if (ip->damage_lag != 0)
     {
-        ip->hitlag_timer = gmCommon_DamageCalcHitLag(ip->damage_lag, nFTCommonStatusWait, 1.0F); // Maybe 10 is the "none" status ID?
+        ip->hitlag_timer = ftParamGetHitLag(ip->damage_lag, nFTCommonStatusWait, 1.0F); // Maybe 10 is the "none" status ID?
     }
 
     ip->hit_normal_damage = 0;

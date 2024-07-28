@@ -98,8 +98,8 @@ loop: // This makes no sense
     {
         this_fp->is_attach_effect = TRUE;
     }
-    ftColor_CheckSetColAnimIndex(this_gobj, 0xB, 0);
-    ftCommon_SetPlayerTagWait(this_gobj, 1);
+    ftParamCheckSetFighterColAnimID(this_gobj, 0xB, 0);
+    ftParamSetPlayerTagWait(this_gobj, 1);
 }
 
 // 0x8013D1D4
@@ -175,7 +175,7 @@ void ftCommonRebirthWaitProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.common.rebirth.halo_despawn_wait == 0)
     {
-        ftCommon_ApplyInvincibleTimer(fp, FTCOMMON_REBIRTH_INVINCIBLE_FRAMES);
+        ftParamSetTimedHitStatusInvincible(fp, FTCOMMON_REBIRTH_INVINCIBLE_FRAMES);
         ftCommonFallSetStatus(fighter_gobj);
     }
 }
@@ -187,7 +187,7 @@ void ftCommonRebirthWaitProcInterrupt(GObj *fighter_gobj)
 
     if (ftCommonGroundCheckInterrupt(fighter_gobj))
     {
-        ftCommon_ApplyInvincibleTimer(fp, FTCOMMON_REBIRTH_INVINCIBLE_FRAMES);
+        ftParamSetTimedHitStatusInvincible(fp, FTCOMMON_REBIRTH_INVINCIBLE_FRAMES);
     }
 }
 

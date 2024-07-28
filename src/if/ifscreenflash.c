@@ -22,7 +22,7 @@ u8 sIFScreenFlashAlpha;
 // 0x80115BF0
 void ifScreenFlashSetColAnimID(s32 colanim_id, s32 colanim_duration)
 {
-    gmColAnimCheckSetID(&sIFScreenFlashColAnim, colanim_id, colanim_duration);
+    ftParamCheckSetColAnimID(&sIFScreenFlashColAnim, colanim_id, colanim_duration);
 }
 
 // 0x80115C20
@@ -53,7 +53,7 @@ void ifScreenFlashProcUpdate(GObj *fighter_gobj)
 {
     if (ftMainUpdateColAnim(&sIFScreenFlashColAnim, fighter_gobj, FALSE, FALSE) != FALSE)
     {
-        caResetColAnim(&sIFScreenFlashColAnim);
+        ftParamResetColAnim(&sIFScreenFlashColAnim);
     }
 }
 
@@ -62,7 +62,7 @@ void ifScreenFlashMakeInterface(u8 alpha)
 {
     sIFScreenFlashAlpha = alpha;
 
-    caResetColAnim(&sIFScreenFlashColAnim);
+    ftParamResetColAnim(&sIFScreenFlashColAnim);
 
     if (gSaveData.is_allow_screenflash != FALSE)
     {

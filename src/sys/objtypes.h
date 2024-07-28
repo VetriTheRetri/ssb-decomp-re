@@ -321,10 +321,10 @@ struct _MObj
     u8 filler_0x8C[0x90 - 0x8C];
     AObj *aobj;
     AObjActor actor;
-    f32 mobj_f0;            // Animation frames remaining, multi-purpose?
-    f32 mobj_f1;            // Animation playback rate / interpolation, multi-purpose?
-    f32 mobj_f2;            // Current animation frame, multi-purpose?
-	OMUserData user_data;   // Actually just padding?
+    f32 anim_remain;            // Animation frames remaining, multi-purpose?
+    f32 anim_rate;              // Animation playback rate / interpolation, multi-purpose?
+    f32 anim_frame;             // Current animation frame, multi-purpose?
+	OMUserData user_data;       // Actually just padding?
 };
 
 struct DObjTransformTypes
@@ -340,19 +340,6 @@ struct DObjDesc
     Vec3f translate;
     Vec3f rotate;
     Vec3f scale;
-};
-
-struct DObjDescArray
-{
-    DObjDesc *dobj_desc;
-    DObjDesc **d2;
-    DObjDesc **d3;
-    u8 unk_dobjcontain_0xC;
-};
-
-struct DObjDescContainer
-{
-    DObjDescArray dobj_desc_array[2];
 };
 
 struct DObjMultiList
@@ -430,9 +417,9 @@ struct _DObj
     AObj *aobj;
     AObjActor actor;
 
-    f32 dobj_f0; // Multi-purpose? Usually FLOAT32_MAX, used as rotation step in Crate/Barrel smash GFX?
-    f32 dobj_f1; // Multi-purpose? Fighters use this as animation playback rate / interpolation, but it is used as rotation step in Crate/Barrel smash GFX?
-    f32 dobj_f2; // Multi-purpose? Usually animation frame, but used as rotation step in Crate/Barrel smash GFX?
+    f32 anim_remain;// Multi-purpose? Usually frames remaining, but used as rotation step in Crate/Barrel smash GFX?
+    f32 anim_rate;  // Multi-purpose? Fighters use this as animation playback rate / interpolation, but it is used as rotation step in Crate/Barrel smash GFX?
+    f32 anim_frame; // Multi-purpose? Usually current animation frame, but used as rotation step in Crate/Barrel smash GFX?
 
     MObj *mobj;
 
@@ -494,9 +481,9 @@ struct _Camera
     AObj *aobj;
     AObjActor actor;
 
-    f32 cam_f0;
-    f32 cam_f1;
-    f32 cam_f2;
+    f32 anim_remain;
+    f32 anim_rate;
+    f32 anim_frame;
 
     u32 flags;
     u32 color;

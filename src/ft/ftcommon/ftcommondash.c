@@ -134,7 +134,7 @@ sb32 ftCommonDashCheckInterruptCommon(GObj *fighter_gobj)
 
             return TRUE;
         }
-        ftCommon_StickInputSetLR(fp);
+        ftParamSetStickLR(fp);
         ftCommonDashSetStatus(fighter_gobj, 1);
 
         return TRUE;

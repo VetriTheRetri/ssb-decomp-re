@@ -7,7 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
-#define FTPIKACHU_SPECIALN_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM)
+#define FTPIKACHU_SPECIALN_STATUS_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM)
 
 // // // // // // // // // // // //
 //                               //
@@ -37,7 +37,7 @@ void ftPikachuSpecialNProcAccessory(GObj *fighter_gobj)
         vel.z = 0.0F;
 
         wpPikachuThunderJoltAirMakeWeapon(fighter_gobj, &pos, &vel);
-        ftColor_CheckSetColAnimIndex(fighter_gobj, FTPIKACHU_THUNDERJOLT_COLANIM_ID, FTPIKACHU_THUNDERJOLT_COLANIM_LENGTH);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, FTPIKACHU_THUNDERJOLT_COLANIM_ID, FTPIKACHU_THUNDERJOLT_COLANIM_LENGTH);
     }
 }
 
@@ -59,7 +59,7 @@ void ftPikachuSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALN_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALN_STATUS_FLAGS);
 
     fp->proc_accessory = ftPikachuSpecialNProcAccessory;
 }
@@ -70,7 +70,7 @@ void ftPikachuSpecialNSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALN_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALN_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_accessory = ftPikachuSpecialNProcAccessory;

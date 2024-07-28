@@ -9,7 +9,7 @@
 // 0x8015E310
 void ftYoshiSpecialNInitCatchVars(ftStruct *fp, void (*proc_catch)(GObj*))
 {
-    ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_YOSHISPECIALN, proc_catch, ftCommonCaptureYoshiProcCapture);
+    ftParamSetCatchParams(fp, FTCATCHKIND_MASK_YOSHISPECIALN, proc_catch, ftCommonCaptureYoshiProcCapture);
 }
 
 // 0x8015E33C

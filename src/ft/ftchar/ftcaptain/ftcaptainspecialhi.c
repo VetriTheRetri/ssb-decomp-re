@@ -9,7 +9,7 @@
 // 0x80160280
 void ftCaptainSpecialHiInitCatchVars(ftStruct *fp)
 {
-    ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_CAPTAINSPECIALHI, ftCaptainSpecialHiProcCatch, ftCommonCaptureCaptainProcCapture);
+    ftParamSetCatchParams(fp, FTCATCHKIND_MASK_CAPTAINSPECIALHI, ftCaptainSpecialHiProcCatch, ftCommonCaptureCaptainProcCapture);
 }
 
 // 0x801602B0
@@ -48,7 +48,7 @@ void ftCaptainSpecialHiProcInterrupt(GObj *fighter_gobj)
 
         if (ABS(fp->input.pl.stick_range.x) > FTCAPTAIN_FALCONDIVE_TURN_STICK_RANGE_MIN)
         {
-            ftCommon_StickInputSetLR(fp);
+            ftParamSetStickLR(fp);
 
             fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * HALF_PI32;
         }

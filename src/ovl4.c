@@ -97,7 +97,7 @@ void scBattle_StartStockBattle()
 
 	func_ovl4_8018E330();
 
-	if (!(gSaveData.mprotect_fail & GMBACKUP_PROTECTFAIL_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
+	if (!(gSaveData.mprotect_fail & GMBACKUP_ERROR_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
 	{
 		base_addr = rdManagerGetFileWithExternHeap((intptr_t)&D_NF_000000C7, gsMemoryAlloc(rdManagerGetFileSize((intptr_t)&D_NF_000000C7), 0x10));
 
@@ -108,12 +108,12 @@ void scBattle_StartStockBattle()
 
 		if (proc_cache() == FALSE)
 		{
-			gSaveData.mprotect_fail |= GMBACKUP_PROTECTFAIL_1PGAMEMARIO;
+			gSaveData.mprotect_fail |= GMBACKUP_ERROR_1PGAMEMARIO;
 		}
 	}
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
-	func_ovl2_800EC130();
+	ftParamGameSet();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
@@ -156,7 +156,7 @@ void scBattle_StartStockBattle()
 
 		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
 
-		ftCommon_ClearPlayerMatchStats(player, ftManagerMakeFighter(&player_spawn));
+		ftParamInitPlayerBattleStats(player, ftManagerMakeFighter(&player_spawn));
 	}
 	ftManagerSetupDataPlayables();
 	ifCommonBattleSetGameStatusWait();
@@ -272,7 +272,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 
 			for (j = 0; j < result_count; j++)
 			{
-				if (gBattleState->players[i].team_index == player_results[j].player_or_team)
+				if (gBattleState->players[i].team == player_results[j].player_or_team)
 				{
 					player_results[j].tko += gBattleState->players[i].score - gBattleState->players[i].falls;
 					player_results[j].kos += gBattleState->players[i].score;
@@ -288,7 +288,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 			}
 			player_results[result_count].tko = gBattleState->players[i].score - gBattleState->players[i].falls;
 			player_results[result_count].kos = gBattleState->players[i].score;
-			player_results[result_count].player_or_team = gBattleState->players[i].team_index;
+			player_results[result_count].player_or_team = gBattleState->players[i].team;
 			player_results[result_count].unk_battleres_0x9 = FALSE;
 
 			if ((player_results[result_count].is_human_player != FALSE) || (gBattleState->players[i].pl_kind == nFTPlayerKindMan))
@@ -334,7 +334,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 			{
 				if (gBattleState->players[j].pl_kind == nFTPlayerKindNot) continue;
 
-				if (gBattleState->players[j].team_index == player_results[i].player_or_team)
+				if (gBattleState->players[j].team == player_results[i].player_or_team)
 				{
 					D_800A4EF8.players[j].pl_kind = gBattleState->players[j].pl_kind;
 
@@ -375,7 +375,7 @@ void scBattle_StartSDBattle()
 	func_ovl4_8018E330();
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
-	func_ovl2_800EC130();
+	ftParamGameSet();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
@@ -422,7 +422,7 @@ void scBattle_StartSDBattle()
 
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 
-		ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
+		ftParamInitPlayerBattleStats(player, fighter_gobj);
 
 		gBattleState->players[player].is_single_stockicon = FALSE;
 	}
@@ -467,7 +467,7 @@ void scBattleRoyalStartScene()
 
 	gBattleState->gr_kind = gSceneData.gr_kind;
 
-	if (gSaveData.mprotect_fail & GMBACKUP_PROTECTFAIL_VSMODECASTLE)
+	if (gSaveData.mprotect_fail & GMBACKUP_ERROR_VSMODECASTLE)
 	{
 		gBattleState->gr_kind = Gr_Kind_Castle;
 	}

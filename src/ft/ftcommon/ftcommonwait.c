@@ -31,7 +31,7 @@ void ftCommonWaitSetStatus(GObj *fighter_gobj)
 
         fp->is_special_interrupt = TRUE;
 
-        ftCommon_SetPlayerTagWait(fighter_gobj, 120);
+        ftParamSetPlayerTagWait(fighter_gobj, 120);
     }
 }
 

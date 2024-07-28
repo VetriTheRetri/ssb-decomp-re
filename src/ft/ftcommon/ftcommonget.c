@@ -8,8 +8,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern u8 g1PGameBonusStatTomatoCount;
-extern u8 g1PGameBonusStatHeartCount;
+extern u8 gGM1PGameBonusTomatoCount;
+extern u8 gGM1PGameBonusHeartCount;
 
 // // // // // // // // // // // //
 //                               //
@@ -101,29 +101,29 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
             switch (ip->it_kind)
             {
             case nITKindTomato:
-                ftCommon_ApplyDamageHeal(fp, ITTOMATO_DAMAGE_HEAL);
+                ftParamHealDamage(fp, ITTOMATO_DAMAGE_HEAL);
                 itMainDestroyItem(item_gobj);
 
-                if ((gBattleState->game_type == nGMBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (g1PGameBonusStatTomatoCount < U8_MAX))
+                if ((gBattleState->game_type == nGMBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gGM1PGameBonusTomatoCount < U8_MAX))
                 {
-                    g1PGameBonusStatTomatoCount++;
+                    gGM1PGameBonusTomatoCount++;
                 }
                 break;
 
             case nITKindHeart:
-                ftCommon_ApplyDamageHeal(fp, ITHEART_DAMAGE_HEAL);
+                ftParamHealDamage(fp, ITHEART_DAMAGE_HEAL);
                 itMainDestroyItem(item_gobj);
 
-                if ((gBattleState->game_type == nGMBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (g1PGameBonusStatHeartCount < U8_MAX))
+                if ((gBattleState->game_type == nGMBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gGM1PGameBonusHeartCount < U8_MAX))
                 {
-                    g1PGameBonusStatHeartCount++;
+                    gGM1PGameBonusHeartCount++;
                 }
                 break;
 
             case nITKindHammer:
                 fp->hammer_timer = ITHAMMER_TIME;
 
-                ftSpecialITem_BGMSetPlay(alSound_Music_Hammer);
+                ftParamTryPlayItemMusic(alSound_Music_Hammer);
                 break;
 
             default:

@@ -16,7 +16,7 @@ void ftCommonPassiveSetStatus(GObj *fighter_gobj)
         ftMap_SetGround(fp);
     }
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusPassive, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommon_VelDamageTransferGround(fp);
+    ftParamVelDamageTransferGround(fp);
 }
 
 // 0x801446BC

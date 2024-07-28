@@ -1279,7 +1279,7 @@ void efGroundCommonProcUpdate(GObj *effect_gobj)
     {
         func_8000DF34_EB34(effect_gobj);
 
-        if (child_dobj->dobj_f0 == AOBJ_FRAME_NULL)
+        if (child_dobj->anim_remain == AOBJ_FRAME_NULL)
         {
             if ((ep->effect_vars.ground_effect.effect_status == -1) || (ep->effect_vars.ground_effect.effect_status != 0))
             {

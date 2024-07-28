@@ -3,8 +3,6 @@
 #include <gr/ground.h>
 #include <gm/battle.h>
 
-extern f32 grMapObject_DamageCalcKnockback(s32 percent_damage, s32 recent_damage, s32 hit_damage, s32 knockback_weight, s32 knockback_scale, s32 knockback_base, f32 weight, s32 attack_handicap, s32 defend_handicap);
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //
@@ -77,7 +75,7 @@ void ftCommonTaruCannSetStatus(GObj *fighter_gobj, GObj *tarucann_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_ProcDamageStopVoice(fighter_gobj);
+    ftParamStopVoiceRunProcDamage(fighter_gobj);
 
     if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->weight == nITWeightHeavy))
     {
@@ -101,7 +99,7 @@ void ftCommonTaruCannSetStatus(GObj *fighter_gobj, GObj *tarucann_gobj)
     fp->status_vars.common.tarucann.release_wait = 0;
     fp->status_vars.common.tarucann.tarucann_gobj = tarucann_gobj;
 
-    ftCollision_SetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
+    ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
 
     fp->is_invisible = TRUE;
 
@@ -119,13 +117,13 @@ void ftCommonTaruCannShootFighter(GObj *fighter_gobj)
 
     DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
 
-    knockback = grMapObject_DamageCalcKnockback(fp->percent_damage, tarucann->damage, tarucann->damage, tarucann->knockback_weight, tarucann->knockback_scale, tarucann->knockback_base, fp->attributes->weight, 9, 9);
+    knockback = ftParamGetGroundHazardKnockback(fp->percent_damage, tarucann->damage, tarucann->damage, tarucann->knockback_weight, tarucann->knockback_scale, tarucann->knockback_base, fp->attributes->weight, 9, 9);
 
     angle = ((I_CLC_RTOD32(grJungleTaruCannGetRotate()) * -fp->lr) + 90);
     angle -= (angle / 360) * 360;
 
     ftCommonDamageInitDamageVars(fighter_gobj, nFTCommonStatusDamageFlyRoll, tarucann->damage, knockback, angle, fp->lr, 0, tarucann->element, 0, TRUE, TRUE, FALSE);
-    ftCommon_Update1PGameDamageStats(fp, GMBATTLE_PLAYERS_MAX, nFTHitlogObjectGround, nGMHitEnvironmentTaruCann, 0, 0);
+    ftParamUpdate1PGameDamageStats(fp, GMBATTLE_PLAYERS_MAX, nFTHitlogObjectGround, nGMHitEnvironmentTaruCann, 0, 0);
 
     fp->playertag_wait = 0;
     fp->tarucann_wait = FTCOMMON_TARUCANN_PICKUP_WAIT;

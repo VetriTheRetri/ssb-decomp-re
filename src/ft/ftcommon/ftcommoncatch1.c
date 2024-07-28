@@ -1,7 +1,5 @@
 #include <ft/fighter.h>
 
-extern void ftCommon_SetCatchVars();
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -93,7 +91,7 @@ void ftCommonCatchSetStatus(GObj *fighter_gobj)
     fp->status_vars.common.catchmain.catch_pull_anim_frames = 0.0F;
     fp->status_vars.common.catchmain.catch_pull_frame_begin = 0.0F;
 
-    ftCommon_SetCatchVars(fp, FTCATCHKIND_MASK_COMMON, ftCommonCatchPullProcCatch, ftCommonCapturePulledProcCapture);
+    ftParamSetCatchParams(fp, FTCATCHKIND_MASK_COMMON, ftCommonCatchPullProcCatch, ftCommonCapturePulledProcCapture);
 
     fp->is_shield_catch = FALSE;
 

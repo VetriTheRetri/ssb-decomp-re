@@ -1145,7 +1145,7 @@ void omRemoveAObjFromDObj(DObj* dobj)
 		current_aobj = next_aobj;
 	}
 	dobj->aobj = NULL;
-	dobj->dobj_f0 = AOBJ_FRAME_NULL;
+	dobj->anim_remain = AOBJ_FRAME_NULL;
 }
 
 // 80008F44
@@ -1184,7 +1184,7 @@ void omRemoveAObjFromMObj(MObj* mobj)
 		current_aobj = next_aobj;
 	}
 	mobj->aobj = NULL;
-	mobj->mobj_f0 = AOBJ_FRAME_NULL;
+	mobj->anim_remain = AOBJ_FRAME_NULL;
 }
 
 // 80009010
@@ -1222,7 +1222,7 @@ void omRemoveAObjFromCamera(Camera* cam)
 		current_aobj = next_aobj;
 	}
 	cam->aobj = NULL;
-	cam->cam_f0 = AOBJ_FRAME_NULL;
+	cam->anim_remain = AOBJ_FRAME_NULL;
 }
 
 // 800090DC
@@ -1242,8 +1242,7 @@ MObj* omAddMObjForDObj(DObj* dobj, MObjSub* mobjsub)
 		}
 		prior_mobj->next = mobj;
 	}
-	else
-		dobj->mobj = mobj;
+	else dobj->mobj = mobj;
 
 	mobj->next = NULL;
 	mobj->lfrac = mobjsub->prim_l / 255.0F;
@@ -1256,9 +1255,9 @@ MObj* omAddMObjForDObj(DObj* dobj, MObjSub* mobjsub)
 	mobj->image_frame = 0;
 	mobj->aobj = NULL;
 	mobj->actor.p = NULL;
-	mobj->mobj_f0 = AOBJ_FRAME_NULL;
-	mobj->mobj_f1 = 1.0F;
-	mobj->mobj_f2 = 0.0F;
+	mobj->anim_remain = AOBJ_FRAME_NULL;
+	mobj->anim_rate = 1.0F;
+	mobj->anim_frame = 0.0F;
 
 	return mobj;
 }
@@ -1305,9 +1304,9 @@ void omInitDObj(DObj* dobj)
 
 	dobj->aobj = NULL;
 	dobj->actor.p = NULL;
-	dobj->dobj_f0 = AOBJ_FRAME_NULL;
-	dobj->dobj_f1 = 1.0F;
-	dobj->dobj_f2 = 0.0F;
+	dobj->anim_remain = AOBJ_FRAME_NULL;
+	dobj->anim_rate = 1.0F;
+	dobj->anim_frame = 0.0F;
 	dobj->mobj = NULL;
 	dobj->user_data.p = NULL;
 }
@@ -1552,9 +1551,9 @@ Camera* omAddCameraForGObj(GObj* gobj)
 	new_cam->aobj = NULL;
 	new_cam->actor.p = NULL;
 
-	new_cam->cam_f0 = AOBJ_FRAME_NULL;
-	new_cam->cam_f1 = 1.0F;
-	new_cam->cam_f2 = 0.0F;
+	new_cam->anim_remain = AOBJ_FRAME_NULL;
+	new_cam->anim_rate = 1.0F;
+	new_cam->anim_frame = 0.0F;
 
 	return new_cam;
 }

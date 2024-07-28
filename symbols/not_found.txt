@@ -740,6 +740,9 @@ gFTCommonFile = 0x80130D98;
 
 gFTDataLinkMain = 0x80130FB0;
 
+gFTManagerMotionCount = 0x80130D94;
+gFTManagerStatUpdateCount = 0x80130D96;
+
 gFTMainIsHurtDetect = 0x801311A0;
 gFTMainIsHitDetect = 0x801311B0;
 
@@ -884,12 +887,22 @@ sIFScreenFlashAlpha = 0x80131AA4;
 
 sEFGroundActor = 0x80131AD8;
 
-g1PGameBonusStatTomatoCount = 0x801936A8;
-g1PGameBonusStatHeartCount = 0x801936A9;
-g1PGameBonusStatShieldBreaker = 0x801936AB;
-g1PGameBonusStatMewCatcher = 0x801936AD;
+gGM1PGameBonusTomatoCount = 0x801936A8;
+gGM1PGameBonusHeartCount = 0x801936A9;
+gGM1PGameBonusShieldBreaker = 0x801936AB;
+gGM1PGameBonusMewCatcher = 0x801936AD;
 
 gTransferBattleState = 0x800A4D08;
+
+gGM1PGameBonusAttackIDCount = 0x801936B0;
+gGM1PGameBonusAttackIsSmashCount = 0x80193798;
+gGM1PGameBonusAttackGroundAirCount = 0x801937A0;
+gGM1PGameBonusAttackIsProjectileCount = 0x801937A8;
+
+gGM1PGameBonusDefendIDCount = 0x801937B0;
+gGM1PGameBonusDefendIsSmashCount = 0x80193898;
+gGM1PGameBonusDefendGroundAirCount = 0x801938A0;
+gGM1PGameBonusDefendIsProjectileCount = 0x801938A8;
 
 .L80134E84_AF8C4 = 0x80134E84;
 

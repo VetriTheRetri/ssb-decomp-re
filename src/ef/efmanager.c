@@ -7,8 +7,6 @@
 #include <gm/battle.h>
 #include <ovl0/reloc_data_mgr.h>
 
-extern void ftCommon_ProcPauseGFX(GObj*);
-extern void ftCommon_ProcResumeGFX(GObj*);
 extern void func_8000DF34_EB34(GObj*);
 extern void func_ovl0_800CB4B0(GObj*);
 extern void func_8000BD8C_C98C(void*, void*, f32);
@@ -1849,7 +1847,7 @@ efCreateDesc dEFManagerFoxEntryArwingEffectDesc =
 };
 
 // 0x8012E71C
-u8 dEFManagerPurinSingNoteGenIDs[/* */] = { 0x40, 0x41, 0x42 };
+u8 dEFManagerMusicNoteGenIDs[/* */] = { 0x40, 0x41, 0x42 };
 
 // 0x8012E720
 efCreateDesc dEFCaptureKirbyStarEffectDesc =
@@ -2580,7 +2578,7 @@ void efManagerVelAddDestroyAnimEnd(GObj *effect_gobj)
 
     func_8000DF34_EB34(effect_gobj);
 
-    if (dobj->mobj->mobj_f2 <= 0.0F)
+    if (dobj->mobj->anim_frame <= 0.0F)
     {
         efManagerSetPrevAlloc(ep);
         omEjectGObj(effect_gobj);
@@ -3207,7 +3205,7 @@ efParticle* efManagerDustHeavyMakeEffect(Vec3f *pos, s32 lr)
 }
 
 // 0x800FF384
-void efManagerDustHeavy2xProcUpdate(GObj *effect_gobj)
+void efManagerDustHeavyDoubleProcUpdate(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
     s32 unused;
@@ -3225,7 +3223,7 @@ void efManagerDustHeavy2xProcUpdate(GObj *effect_gobj)
 }
 
 // 0x800FF3F4
-efParticle* efManagerDustHeavy2xMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
+efParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 {
     GObj *effect_gobj;
     efParticle *efpart;
@@ -3259,7 +3257,7 @@ efParticle* efManagerDustHeavy2xMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 
         if (eftrans != NULL)
         {
-            omAddGObjCommonProc(effect_gobj, efManagerDustHeavy2xProcUpdate, nOMObjProcessKindProc, 3);
+            omAddGObjCommonProc(effect_gobj, efManagerDustHeavyDoubleProcUpdate, nOMObjProcessKindProc, 3);
 
             eftrans->effect_gobj = effect_gobj;
 
@@ -5676,7 +5674,7 @@ GObj* efManagerYoshiEggEscapeMakeEffect(GObj *fighter_gobj)
     {
         return NULL;
     }
-    ftCommon_HideModelPartAll(fighter_gobj);
+    ftParamHideModelPartAll(fighter_gobj);
 
     fp->is_attach_effect = TRUE;
 
@@ -5787,8 +5785,8 @@ GObj* efManagerLinkSpinAttackMakeEffect(GObj *fighter_gobj)
 
     fp = ftGetStruct(fighter_gobj);
 
-    fp->proc_lagstart = ftCommon_ProcPauseGFX;
-    fp->proc_lagend = ftCommon_ProcResumeGFX;
+    fp->proc_lagstart = ftParamProcPauseEffect;
+    fp->proc_lagend = ftParamProcResumeEffect;
 
     dobj = DObjGetStruct(effect_gobj);
 
@@ -5844,7 +5842,7 @@ void efManagerCaptainEntryCarProcUpdate(GObj *effect_gobj)
 
     func_8000DF34_EB34(effect_gobj);
 
-    if (dobj->dobj_f2 <= 0.0F)
+    if (dobj->anim_frame <= 0.0F)
     {
         efManagerSetPrevAlloc(efGetStruct(effect_gobj));
         omEjectGObj(effect_gobj);
@@ -5941,7 +5939,7 @@ void efManagerFoxEntryArwingProcUpdate(GObj *effect_gobj)
 
     func_8000DF34_EB34(effect_gobj);
 
-    if (dobj->dobj_f2 <= 0.0F)
+    if (dobj->anim_frame <= 0.0F)
     {
         efManagerSetPrevAlloc(efGetStruct(effect_gobj));
         omEjectGObj(effect_gobj);
@@ -6011,12 +6009,12 @@ void func_ovl2_801039B4(f32 arg0, f32 arg1)
 }
 
 // 0x801039D4
-efParticle* efManagerPurinSingNoteMakeEffect(Vec3f *pos)
+efParticle* efManagerMusicNoteMakeEffect(Vec3f *pos)
 {
     efParticle *efpart = func_ovl0_800CE9E8
     (
         gEFManagerParticleBankID | 8, 
-        dEFManagerPurinSingNoteGenIDs[mtTrigGetRandomIntRange(ARRAY_COUNT(dEFManagerPurinSingNoteGenIDs))]
+        dEFManagerMusicNoteGenIDs[mtTrigGetRandomIntRange(ARRAY_COUNT(dEFManagerMusicNoteGenIDs))]
     );
 
     if (efpart != NULL)

@@ -119,9 +119,9 @@ void ftCommonAttack11ProcStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommon_MotionCountIncSetAttackID(fp, nFTMotionAttackIDAttack11);
-    ftCommon_StatUpdateCountIncSetFlags(fp, fp->stat_flags.halfword);
-    ftCommon_Update1PGameAttackStats(fp, 0);
+    ftParamSetMotionID(fp, nFTMotionAttackIDAttack11);
+    ftParamSetStatUpdate(fp, fp->stat_flags.halfword);
+    ftParamUpdate1PGameAttackStats(fp, 0);
 }
 
 // 0x8014EA44
@@ -322,7 +322,7 @@ sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
     }
     if (fp->attack1_followup_frames != 0.0F)
     {
-        fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->dobj_f1;
+        fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_rate;
     }
     return FALSE;
 }
@@ -335,7 +335,7 @@ sb32 ftCommonAttack11CheckGoto(GObj *fighter_gobj)
 
     if (fp->attack1_followup_frames != 0.0F)
     {
-        fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->dobj_f1;
+        fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_rate;
 
         if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attributes->is_have_attack11))
         {
@@ -359,7 +359,7 @@ sb32 ftCommonAttack12CheckGoto(GObj *fighter_gobj)
 
     if (fp->attack1_followup_frames != 0.0F)
     {
-        fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->dobj_f1;
+        fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_rate;
 
         if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attributes->is_have_attack12))
         {
@@ -388,7 +388,7 @@ sb32 ftCommonAttack13CheckGoto(GObj *fighter_gobj)
     {
         if (fp->attack1_followup_frames != 0.0F)
         {
-            fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->dobj_f1;
+            fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_rate;
 
             if (fp->input.pl.button_tap & fp->input.button_mask_a)
             {

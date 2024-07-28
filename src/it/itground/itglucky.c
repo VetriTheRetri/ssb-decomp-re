@@ -146,11 +146,11 @@ sb32 itGLuckySDefaultProcUpdate(GObj *item_gobj)
     dobj->translate.vec.f.x += ip->item_vars.glucky.pos.x;
     dobj->translate.vec.f.y += ip->item_vars.glucky.pos.y;
 
-    if ((dobj->dobj_f2 >= ITGLUCKY_EGG_SPAWN_BEGIN) && (dobj->dobj_f2 <= ITGLUCKY_EGG_SPAWN_END))
+    if ((dobj->anim_frame >= ITGLUCKY_EGG_SPAWN_BEGIN) && (dobj->anim_frame <= ITGLUCKY_EGG_SPAWN_END))
     {
         itGLuckySDefaultUpdateEggSpawn(item_gobj);
     }
-    if (dobj->dobj_f0 == AOBJ_FRAME_NULL)
+    if (dobj->anim_remain == AOBJ_FRAME_NULL)
     {
         grYamabukiGateSetClosedWait();
 
@@ -206,7 +206,7 @@ sb32 itGLuckySDefaultProcDamage(GObj *item_gobj)
         ip->item_hit.update_state = nGMHitUpdateDisable;
         ip->item_hurt.hitstatus = nGMHitStatusNone;
 
-        dobj->dobj_f0 = AOBJ_FRAME_NULL;
+        dobj->anim_remain = AOBJ_FRAME_NULL;
 
         grYamabukiGateClearMonsterGObj();
         itGLuckyNDamageSetStatus(item_gobj);

@@ -347,10 +347,10 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     ip->item_hit.interact_mask      = GMHITCOLLISION_MASK_ALL;
 
     ip->item_hit.attack_id                  = nFTMotionAttackIDNone;
-    ip->item_hit.motion_count               = gmCommon_GetMotionCountInc();
+    ip->item_hit.motion_count               = ftParamGetMotionCount();
     ip->item_hit.stat_flags.stat_attack_id  = nFTStatusAttackIDNull;
     ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ga = ip->item_hit.stat_flags.is_projectile = 0;
-    ip->item_hit.stat_count                 = gmCommon_GetStatUpdateCountInc();
+    ip->item_hit.stat_count                 = ftParamGetStatUpdateCount();
 
     itMainClearHitRecord(ip);
 

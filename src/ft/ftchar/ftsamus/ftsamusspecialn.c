@@ -99,7 +99,7 @@ void ftSamusSpecialAirNStartSwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialNStart, fighter_gobj->anim_frame, fp->joint[nFTPartsJointTopN]->dobj_f1, FTSTATUS_PRESERVE_COLANIM);
+    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialNStart, fighter_gobj->anim_frame, fp->joint[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
 
     fp->proc_damage = ftSamusSpecialNProcDamage;
 }
@@ -110,7 +110,7 @@ void ftSamusSpecialNStartSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirNStart, fighter_gobj->anim_frame, fp->joint[nFTPartsJointTopN]->dobj_f1, FTSTATUS_PRESERVE_COLANIM);
+    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirNStart, fighter_gobj->anim_frame, fp->joint[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
     ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_damage = ftSamusSpecialNProcDamage;
@@ -135,7 +135,7 @@ void ftSamusSpecialNLoopProcUpdate(GObj *fighter_gobj)
 
             if (fp->fighter_vars.samus.charge_level == FTSAMUS_CHARGE_MAX)
             {
-                ftColor_CheckSetColAnimIndex(fighter_gobj, FTSAMUS_CHARGE_COLANIM_ID, FTSAMUS_CHARGE_COLANIM_LENGTH);
+                ftParamCheckSetFighterColAnimID(fighter_gobj, FTSAMUS_CHARGE_COLANIM_ID, FTSAMUS_CHARGE_COLANIM_LENGTH);
                 ftSamusSpecialNDestroyChargeShot(fp);
                 ftCommonWaitSetStatus(fighter_gobj);
             }
@@ -218,7 +218,7 @@ void ftSamusSpecialNEndProcUpdate(GObj *fighter_gobj)
         if (fp->status_vars.samus.specialn.charge_gobj != NULL)
         {
             wp = wpGetStruct(fp->status_vars.samus.specialn.charge_gobj);
-            ftCommon_StopLoopSFX(fp);
+            ftParamStopLoopSFX(fp);
 
             DObjGetStruct(fp->status_vars.samus.specialn.charge_gobj)->translate.vec.f = pos;
 

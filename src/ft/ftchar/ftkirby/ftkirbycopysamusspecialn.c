@@ -99,7 +99,7 @@ void ftKirbyCopySamusSpecialAirNStartSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopySamusSpecialNStart, fighter_gobj->anim_frame, fp->joint[nFTPartsJointTopN]->dobj_f1, FTSTATUS_PRESERVE_COLANIM);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopySamusSpecialNStart, fighter_gobj->anim_frame, fp->joint[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
 
     fp->proc_damage = ftKirbyCopySamusSpecialNProcDamage;
 }
@@ -110,7 +110,7 @@ void ftKirbyCopySamusSpecialNStartSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopySamusSpecialAirNStart, fighter_gobj->anim_frame, fp->joint[nFTPartsJointTopN]->dobj_f1, FTSTATUS_PRESERVE_COLANIM);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopySamusSpecialAirNStart, fighter_gobj->anim_frame, fp->joint[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
     ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_damage = ftKirbyCopySamusSpecialNProcDamage;
@@ -135,7 +135,7 @@ void ftKirbyCopySamusSpecialNLoopProcUpdate(GObj *fighter_gobj)
 
             if (fp->fighter_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX)
             {
-                ftColor_CheckSetColAnimIndex(fighter_gobj, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_ID, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_LENGTH);
+                ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_ID, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_LENGTH);
                 ftKirbyCopySamusSpecialNDestroyChargeShot(fp);
                 ftCommonWaitSetStatus(fighter_gobj);
             }
@@ -222,7 +222,7 @@ void ftKirbyCopySamusSpecialNEndProcUpdate(GObj *fighter_gobj)
         if (fp->status_vars.kirby.copysamus_specialn.charge_gobj != NULL)
         {
             wp = wpGetStruct(fp->status_vars.kirby.copysamus_specialn.charge_gobj);
-            ftCommon_StopLoopSFX(fp);
+            ftParamStopLoopSFX(fp);
 
             DObjGetStruct(fp->status_vars.kirby.copysamus_specialn.charge_gobj)->translate.vec.f = pos;
 

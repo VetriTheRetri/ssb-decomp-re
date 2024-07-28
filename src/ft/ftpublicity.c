@@ -77,7 +77,7 @@ u16 sFTPublicityDefeatedCurrentOrder;           // Current "<player> defeated" a
 sb32 ftPublicityChantTryStart(GObj *gobj, f32 knockback, s32 player_number)
 {
     ftStruct *fp;
-    GObj *fighter_gobj = ftCommon_GetPlayerNumGObj(player_number);
+    GObj *fighter_gobj = ftParamGetPlayerNumGObj(player_number);
     u16 sfx_id;
 
     if (fighter_gobj == NULL)

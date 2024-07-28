@@ -23,19 +23,19 @@ void ftKirbySpecialLwUpdateColAnim(GObj *fighter_gobj)
         {
             if (fp->status_vars.kirby.speciallw.colanim_id != FTKIRBY_STONE_COLANIM_ID_LOW)
             {
-                ftColor_CheckSetColAnimIndex(fighter_gobj, FTKIRBY_STONE_COLANIM_ID_LOW, FTKIRBY_STONE_COLANIM_LENGTH_LOW);
+                ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_STONE_COLANIM_ID_LOW, FTKIRBY_STONE_COLANIM_LENGTH_LOW);
                 fp->status_vars.kirby.speciallw.colanim_id = FTKIRBY_STONE_COLANIM_ID_LOW;
             }
         }
         else if (fp->status_vars.kirby.speciallw.colanim_id != FTKIRBY_STONE_COLANIM_ID_MID)
         {
-            ftColor_CheckSetColAnimIndex(fighter_gobj, FTKIRBY_STONE_COLANIM_ID_MID, FTKIRBY_STONE_COLANIM_LENGTH_MID);
+            ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_STONE_COLANIM_ID_MID, FTKIRBY_STONE_COLANIM_LENGTH_MID);
             fp->status_vars.kirby.speciallw.colanim_id = FTKIRBY_STONE_COLANIM_ID_MID;
         }
     }
     else if (fp->status_vars.kirby.speciallw.colanim_id != FTKIRBY_STONE_COLANIM_ID_HIGH)
     {
-        ftColor_CheckSetColAnimIndex(fighter_gobj, FTKIRBY_STONE_COLANIM_ID_HIGH, FTKIRBY_STONE_COLANIM_LENGTH_HIGH);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_STONE_COLANIM_ID_HIGH, FTKIRBY_STONE_COLANIM_LENGTH_HIGH);
         fp->status_vars.kirby.speciallw.colanim_id = FTKIRBY_STONE_COLANIM_ID_HIGH;
     }
 }
@@ -51,7 +51,7 @@ void ftKirbySpecialLwSetDamageResist(GObj *fighter_gobj)
     fp->status_vars.kirby.speciallw.duration = FTKIRBY_STONE_DURATION_MAX;
     fp->status_vars.kirby.speciallw.colanim_id = FTKIRBY_STONE_COLANIM_ID_HIGH;
 
-    ftColor_CheckSetColAnimIndex(fighter_gobj, FTKIRBY_STONE_COLANIM_ID_HIGH, FTKIRBY_STONE_COLANIM_LENGTH_HIGH);
+    ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_STONE_COLANIM_ID_HIGH, FTKIRBY_STONE_COLANIM_LENGTH_HIGH);
 }
 
 // 0x80161468

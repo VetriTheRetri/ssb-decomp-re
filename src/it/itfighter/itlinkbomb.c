@@ -209,7 +209,7 @@ void func_ovl3_80185B18(GObj* item_gobj)
 
 	pos.y += attributes->objectcoll_bottom;
 
-	efManagerDustHeavy2xMakeEffect(&pos, ip->lr, 1.0F);
+	efManagerDustHeavyDoubleMakeEffect(&pos, ip->lr, 1.0F);
 }
 
 // 80185B84

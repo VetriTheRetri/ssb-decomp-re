@@ -115,11 +115,11 @@ void ftRenderMainDrawAfterImage(ftStruct *fp)
     }
     else index = ARRAY_COUNT(fp->afterimage.desc) - 1;
 
-    for (i = fp->afterimage.render_state - 1; i >= 0; index = next_index, i--)
+    for (i = fp->afterimage.drawstatus - 1; i >= 0; index = next_index, i--)
     {
         afterimage = &fp->afterimage.desc[index];
 
-        alpha = (((base_alpha - add_alpha) / (fp->afterimage.render_state - 1)) * i) + add_alpha;
+        alpha = (((base_alpha - add_alpha) / (fp->afterimage.drawstatus - 1)) * i) + add_alpha;
 
         p_vtx->v.ob[0] = (afterimage->translate_x + (afterimage->vec.x * var_f20));
         p_vtx->v.ob[1] = (afterimage->translate_y + (afterimage->vec.y * var_f20));
@@ -191,7 +191,7 @@ void ftRenderMainDrawAfterImage(ftStruct *fp)
 
                     spAC = afterimage->vec;
 
-                    alphainc = (((((base_alpha - add_alpha) / (fp->afterimage.render_state - 1)) * (i - 1)) + add_alpha) - alpha) * scale;
+                    alphainc = (((((base_alpha - add_alpha) / (fp->afterimage.drawstatus - 1)) * (i - 1)) + add_alpha) - alpha) * scale;
 
                     for (j = 0; j < target_angle - 1; j++)
                     {
@@ -598,7 +598,7 @@ void ftRenderMainDrawAll(GObj *fighter_gobj)
     }
     else ftRenderMainDrawDefault(DObjGetStruct(fighter_gobj));
 
-    if (fp->afterimage.render_state >= 2)
+    if (fp->afterimage.drawstatus >= 2)
     {
         switch (fp->afterimage.is_itemswing)
         {

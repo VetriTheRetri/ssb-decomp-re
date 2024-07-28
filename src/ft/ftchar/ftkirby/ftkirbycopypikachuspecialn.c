@@ -7,7 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
-#define FTKIRBY_COPYPIKACHU_SPECIALN_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM)
+#define FTKIRBY_COPYPIKACHU_SPECIALN_STATUS_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM)
 
 // // // // // // // // // // // //
 //                               //
@@ -40,7 +40,7 @@ void ftKirbyCopyPikachuSpecialNProcAccessory(GObj *fighter_gobj)
         vel.z = 0.0F;
 
         wpPikachuThunderJoltAirMakeWeapon(fighter_gobj, &pos, &vel);
-        ftColor_CheckSetColAnimIndex(fighter_gobj, FTKIRBY_COPYPIKACHU_THUNDERJOLT_COLANIM_ID, FTKIRBY_COPYPIKACHU_THUNDERJOLT_COLANIM_LENGTH);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_COPYPIKACHU_THUNDERJOLT_COLANIM_ID, FTKIRBY_COPYPIKACHU_THUNDERJOLT_COLANIM_LENGTH);
     }
 }
 
@@ -62,7 +62,7 @@ void ftKirbyCopyPikachuSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPikachuSpecialN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYPIKACHU_SPECIALN_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPikachuSpecialN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYPIKACHU_SPECIALN_STATUS_FLAGS);
 
     fp->proc_accessory = ftKirbyCopyPikachuSpecialNProcAccessory;
 }
@@ -73,7 +73,7 @@ void ftKirbyCopyPikachuSpecialNSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMap_SetAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPikachuSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYPIKACHU_SPECIALN_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPikachuSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYPIKACHU_SPECIALN_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 
     fp->proc_accessory = ftKirbyCopyPikachuSpecialNProcAccessory;

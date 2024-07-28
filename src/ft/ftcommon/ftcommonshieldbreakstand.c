@@ -6,7 +6,7 @@
 //                               //
 // // // // // // // // // // // //
 
-#define FTCOMMON_SHIELDBREAKSTAND_STATUPDATE_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM)
+#define FTCOMMON_SHIELDBREAKSTAND_STATUS_FLAGS (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM)
 
 // // // // // // // // // // // //
 //                               //
@@ -26,5 +26,5 @@ void ftCommonShieldBreakStandSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id = (fp->status_info.status_id == nFTCommonStatusShieldBreakDownD) ? nFTCommonStatusShieldBreakStandD : nFTCommonStatusShieldBreakStandU;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKSTAND_STATUPDATE_FLAGS);
+    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKSTAND_STATUS_FLAGS);
 }

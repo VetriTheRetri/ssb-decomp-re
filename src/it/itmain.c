@@ -9,7 +9,7 @@
 // // // // // // // // // // // //
 
 extern intptr_t lITContainerSpawnVelY;  // 0x00000000
-extern ub8 g1PGameBonusStatMewCatcher;
+extern ub8 gGM1PGameBonusMewCatcher;
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 extern void func_8000F988();
@@ -303,7 +303,7 @@ void itMainDestroyItem(GObj *item_gobj)
 
         fp->item_hold = NULL;
 
-        ftCommon_GetHammerSetBGM(ip->owner_gobj);
+        ftParamSetHammerParams(ip->owner_gobj);
     }
     else if ((ip->it_kind < nITKindGrMonsterStart) || (ip->it_kind > nITKindGrMonsterEnd))
     {
@@ -356,7 +356,7 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
     ip->item_hit.stat_flags = *(gmStatFlags*)&stat_flags;
     ip->item_hit.stat_count = stat_count;
 
-    ftCommon_GetHammerSetBGM(fighter_gobj);
+    ftParamSetHammerParams(fighter_gobj);
     itMainRefreshHit(item_gobj);
 }
 
@@ -389,10 +389,10 @@ void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash
     {
         if (is_smash_throw != FALSE)
         {
-            ftMainMakeRumble(fp, 6, 0);
+            ftParamMakeRumble(fp, 6, 0);
         }
     }
-    else ftMainMakeRumble(fp, (is_smash_throw != FALSE) ? 9 : 6, 0);
+    else ftParamMakeRumble(fp, (is_smash_throw != FALSE) ? 9 : 6, 0);
     
     proc_throw = dITThrowProcList[ip->it_kind];
 
@@ -470,7 +470,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
     {
         proc_pickup(item_gobj);
     }
-    ftLink_SetModelPartHideShield(fighter_gobj);
+    ftParamLinkResetShieldModelParts(fighter_gobj);
 
     if (ip->weight == nITWeightLight)
     {
@@ -481,7 +481,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
         func_800269C0_275C0(fp->attributes->heavyget_sfx);
     }
     
-    ftMainMakeRumble(fp, 6, 0);
+    ftParamMakeRumble(fp, 6, 0);
 
     ip->pickup_wait = ITEM_PICKUP_WAIT_DEFAULT;
 }
@@ -522,7 +522,7 @@ void itMainSetItemStatus(GObj *item_gobj, itStatusDesc *status_desc, s32 status_
     ip->item_hit.stat_flags.stat_attack_id = nFTStatusAttackIDNull;
     ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ga = ip->item_hit.stat_flags.is_projectile = FALSE;
 
-    ip->item_hit.stat_count = gmCommon_GetStatUpdateCountInc();
+    ip->item_hit.stat_count = ftParamGetStatUpdateCount();
 }
 
 // 0x80172F98
@@ -530,7 +530,7 @@ sb32 itMainCheckSetColAnimID(GObj *item_gobj, s32 colanim_id, s32 duration)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    return gmColAnimCheckSetID(&ip->colanim, colanim_id, duration);
+    return ftParamCheckSetColAnimID(&ip->colanim, colanim_id, duration);
 }
 
 // 0x80172FBC
@@ -538,7 +538,7 @@ void itMainClearColAnim(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    caResetColAnim(&ip->colanim);
+    ftParamResetColAnim(&ip->colanim);
 }
 
 // 0x80172FE0
@@ -681,7 +681,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
         {
             if ((mp->player == gSceneData.spgame_player) && (mp->it_kind == nITKindMew))
             {
-                g1PGameBonusStatMewCatcher = TRUE;
+                gGM1PGameBonusMewCatcher = TRUE;
             }
         }
     }

@@ -1856,7 +1856,7 @@ void ifCommonPlayerArrowsProcRun(GObj *interface_gobj)
     {
         if (sIFCommonPlayerMagnifySoundWait == 0)
         {
-            func_800269C0_275C0(alSound_SFX_Magnify);
+            func_800269C0_275C0(nGMSoundFGMMagnify);
 
             sIFCommonPlayerMagnifySoundWait = 30;
         }
@@ -2595,9 +2595,9 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
                     }
                     else gBattleState->match_time_remain -= time_update;
 
-                    if ((gBattleState->gr_kind == nGRKindInishie) && (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(30)) && (gMPMusicIDDefault != alSound_Music_InishieHurry))
+                    if ((gBattleState->gr_kind == nGRKindInishie) && (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(30)) && (gMPMusicIDDefault != nGMSoundBGMInishieHurry))
                     {
-                        gMPMusicIDDefault = alSound_Music_InishieHurry;
+                        gMPMusicIDDefault = nGMSoundBGMInishieHurry;
 
                         ftParamTryUpdateItemMusic();
                     }
@@ -2984,7 +2984,7 @@ void ifCommonBattlePauseInitInterface(s32 player)
     sIFCommonBattlePausePlayer = player;
 
     func_80026594_27194();
-    func_800269C0_275C0(alSound_SFX_GamePause);
+    func_800269C0_275C0(nGMSoundFGMGamePause);
     auSetBGMVolume(0, 0x3C00);
     ifCommonBattlePauseMakeInterface(player);
 }
@@ -3369,7 +3369,7 @@ void ifCommonBattleSetInterface(void (*proc_update)(void), void (*proc_set)(void
 
     ifCommonBattleEndInitSoundNum();
 
-    if (sfx_id != 0x2B7)
+    if (sfx_id != nGMSoundFGMVoiceEnd)
     {
         ifCommonBattleEndAddSoundQueueID(sfx_id);
     }

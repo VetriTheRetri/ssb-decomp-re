@@ -2,47 +2,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8012C970
-extern u16 dFTCommonDownBounceSFX[/* */];
-
-/*
-{
-    alSound_SFX_DownBounceMario,        // Mario
-    alSound_SFX_DownBounceFox,          // Fox
-    alSound_SFX_DownBounceDonkey,       // Donkey Kong
-    alSound_SFX_DownBounceSamus,        // Samus
-    alSound_SFX_DownBounceMario,        // Luigi
-    alSound_SFX_DownBounceLink,         // Link
-    alSound_SFX_DownBounceYoshi,        // Yoshi
-    alSound_SFX_DownBounceCaptain,      // Captain Falcon
-    alSound_SFX_DownBounceKirby,        // Kirby
-    alSound_SFX_DownBouncePikachu,      // Pikachu
-    alSound_SFX_DownBouncePurin,        // Jigglypuff
-    alSound_SFX_DownBounceNess,         // Ness
-    alSound_SFX_DownBounceMario,        // Master Hand
-    alSound_SFX_DownBounceMario,        // Metal Mario
-    alSound_SFX_DownBounceMario,        // Poly Mario
-    alSound_SFX_DownBounceFox,          // Poly Fox
-    alSound_SFX_DownBounceDonkey,       // Poly Donkey Kong
-    alSound_SFX_DownBounceSamus,        // Poly Samus
-    alSound_SFX_DownBounceMario,        // Poly Luigi
-    alSound_SFX_DownBounceLink,         // Poly Link
-    alSound_SFX_DownBounceYoshi,        // Poly Yoshi
-    alSound_SFX_DownBounceCaptain,      // Poly Captain Falcon
-    alSound_SFX_DownBounceKirby,        // Poly Kirby
-    alSound_SFX_DownBouncePikachu,      // Poly Pikachu
-    alSound_SFX_DownBouncePurin,        // Poly Jigglypuff
-    alSound_SFX_DownBounceNess,         // Poly Ness
-    alSound_SFX_DownBounceDonkey        // Giant Donkey Kong
-};
-*/
-
-// // // // // // // // // // // //
-//                               //
 //             MACROS            //
 //                               //
 // // // // // // // // // // // //
@@ -140,7 +99,7 @@ void ftCommonDownBounceUpdateEffects(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamMakeEffect(fighter_gobj, nEFKindImpactWave, nFTPartsJointTopN, NULL, NULL, fp->lr, FALSE, FALSE);
-    func_800269C0_275C0(dFTCommonDownBounceSFX[fp->ft_kind]);
+    func_800269C0_275C0(dFTCommonDataDownBounceSFX[fp->ft_kind]);
     ftParamMakeRumble(fp, 4, 0);
 }
 

@@ -230,7 +230,7 @@ GObj* itHitokageMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         }
         dGRYamabukiMonsterAttackKind = ip->item_vars.hitokage.flags;
 
-        func_800269C0_275C0(alSound_Voice_YamabukiHitokage);
+        func_800269C0_275C0(nGMSoundVoiceYamabukiHitokage);
     }
     return item_gobj;
 }
@@ -262,7 +262,7 @@ sb32 itHitokageWeaponFlameProcMap(GObj *weapon_gobj)
 // 0x801841CC
 sb32 itHitokageWeaponFlameProcHit(GObj *weapon_gobj)
 {
-    func_800269C0_275C0(alSound_SFX_ExplodeS);
+    func_800269C0_275C0(nGMSoundFGMExplodeS);
     efManagerSparkleWhiteMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return FALSE;
@@ -323,5 +323,5 @@ void itHitokageSDefaultMakeFlame(GObj *item_gobj, Vec3f *pos)
 
     itHitokageWeaponFlameMakeWeapon(item_gobj, pos, &vel);
 
-    func_800269C0_275C0(alSound_SFX_LizardonFlame);
+    func_800269C0_275C0(nGMSoundFGMLizardonFlame);
 }

@@ -606,7 +606,7 @@ sb32 gmCreditsCheckCursorHighlightPrompt(GObj *gobj, gmCreditsProjection *proj)
 		(gmCreditsCheckCursorNameOverlap(&sp28) == FALSE)
 	)
 	{
-		func_800269C0_275C0(alSound_SFX_TModeSel);
+		func_800269C0_275C0(nGMSoundFGMTModeSel);
 
 		b = FALSE;
 

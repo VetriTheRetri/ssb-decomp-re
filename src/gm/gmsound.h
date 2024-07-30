@@ -25,433 +25,447 @@ typedef struct alSoundEffect
 
 } alSoundEffect;
 
-typedef enum alMusicID
+typedef enum gmMusicID
 {
-	alSound_Music_Pupupu,					// Dream Land
-	alSound_Music_Zebes,					// Planet Zebes
-	alSound_Music_Inishie,					// Mushroom Kingdom
-	alSound_Music_InishieHurry,				// Mushroom Kingdom 20-second countdown warning
-	alSound_Music_Sector,					// Sector Z
-	alSound_Music_Jungle,					// Kongo Jungle
-	alSound_Music_Castle,					// Peach's Castle
-	alSound_Music_Yamabuki,					// Saffron City
-	alSound_Music_Yoster,					// Yoshi's Island
-	alSound_Music_Hyrule,					// Hyrule Castle
-	alSound_Music_MenuFGSelect,				// Character / Stage Select
-	alSound_Music_UnusedClear,				// Unused fanfare?
-	alSound_Music_WinMario,					// Mario Victory
-	alSound_Music_WinSamus,					// Samus Victory
-	alSound_Music_WinDonkey,				// Donkey Kong Victory
-	alSound_Music_WinKirby,					// Kirby Victory
-	alSound_Music_WinFox,					// Fox Victory
-	alSound_Music_WinMother,				// Ness Victory
-	alSound_Music_WinYoshi,					// Yoshi Victory
-	alSound_Music_WinCaptain,				// Captain Falcon Victory
-	alSound_Music_WinMonster,				// Pokémon Victory
-	alSound_Music_WinZelda,					// Link Victory
-	alSound_Music_Results,					// VS Mode Results Screen
-	alSound_Music_BossStage,				// Final Stage Card (VS. Master Hand)
-	alSound_Music_BossEntry,				// Master Hand Appears
-	alSound_Music_Last,						// Final Destination
-	alSound_Music_Bonus,					// Bonus Stage
-	alSound_Music_StageClear,				// 1P Game Stage Cleared
-	alSound_Music_BonusClear,				// Bonus Stage Cleared
-	alSound_Music_GameClear,				// Final Stage Cleared
-	alSound_Music_BonusFailure,				// Bonus Stage Failed
-	alSound_Music_1PGameEndChoice,			// Continue or Game Over?
-	alSound_Music_1PGameOver,				// Game Over
-	alSound_Music_Opening,					// Opening Movie
-	alSound_Music_Explain,					// How to Play
-	alSound_Music_1PGameStage,				// 1P Game Stage Cards
-	alSound_Music_Zako,						// Battlefield
-	alSound_Music_Metal,					// Meta Crystal
-	alSound_Music_Ending,					// Ending Movie
-	alSound_Music_StaffRoll,				// Credits
-	alSound_Music_Secret,					// Secret Found
-	alSound_Music_ChallengerStage,			// Challenger Approaching
-	alSound_Music_TrainingMode,				// Training Mode
-	alSound_Music_Data,						// Character Data / VS Records
-	alSound_Music_ModeSelect,				// Main Menu
-	alSound_Music_Hammer,            		// Hammer
-    alSound_Music_Starman                   // Star
+	nGMSoundBGMPupupu,						// Dream Land
+	nGMSoundBGMZebes,						// Planet Zebes
+	nGMSoundBGMInishie,						// Mushroom Kingdom
+	nGMSoundBGMInishieHurry,				// Mushroom Kingdom 20-second countdown warning
+	nGMSoundBGMSector,						// Sector Z
+	nGMSoundBGMJungle,						// Kongo Jungle
+	nGMSoundBGMCastle,						// Peach's Castle
+	nGMSoundBGMYamabuki,					// Saffron City
+	nGMSoundBGMYoster,						// Yoshi's Island
+	nGMSoundBGMHyrule,						// Hyrule Castle
+	nGMSoundBGMMenuFGSelect,				// Character / Stage Select
+	nGMSoundBGMUnusedClear,					// Unused fanfare?
+	nGMSoundBGMWinMario,					// Mario Victory
+	nGMSoundBGMWinSamus,					// Samus Victory
+	nGMSoundBGMWinDonkey,					// Donkey Kong Victory
+	nGMSoundBGMWinKirby,					// Kirby Victory
+	nGMSoundBGMWinFox,						// Fox Victory
+	nGMSoundBGMWinMother,					// Ness Victory
+	nGMSoundBGMWinYoshi,					// Yoshi Victory
+	nGMSoundBGMWinCaptain,					// Captain Falcon Victory
+	nGMSoundBGMWinMonster,					// Pokémon Victory
+	nGMSoundBGMWinZelda,					// Link Victory
+	nGMSoundBGMResults,						// VS Mode Results Screen
+	nGMSoundBGMBossStage,					// Final Stage Card (VS. Master Hand)
+	nGMSoundBGMBossEntry,					// Master Hand Appears
+	nGMSoundBGMLast,						// Final Destination
+	nGMSoundBGMBonus,						// Bonus Stage
+	nGMSoundBGMStageClear,					// 1P Game Stage Cleared
+	nGMSoundBGMBonusClear,					// Bonus Stage Cleared
+	nGMSoundBGMGameClear,					// Final Stage Cleared
+	nGMSoundBGMBonusFailure,				// Bonus Stage Failed
+	nGMSoundBGM1PGameEndChoice,				// Continue or Game Over?
+	nGMSoundBGM1PGameOver,					// Game Over
+	nGMSoundBGMOpening,						// Opening Movie
+	nGMSoundBGMExplain,						// How to Play
+	nGMSoundBGM1PGameStage,					// 1P Game Stage Cards
+	nGMSoundBGMZako,						// Battlefield
+	nGMSoundBGMMetal,						// Meta Crystal
+	nGMSoundBGMEnding,						// Ending Movie
+	nGMSoundBGMStaffRoll,					// Credits
+	nGMSoundBGMSecret,						// Secret Found
+	nGMSoundBGMChallengerStage,				// Challenger Approaching
+	nGMSoundBGMTrainingMode,				// Training Mode
+	nGMSoundBGMData,						// Character Data / VS Records
+	nGMSoundBGMModeSelect,					// Main Menu
+	nGMSoundBGMHammer,            			// Hammer
+    nGMSoundBGMStarman,                   	// Star
+	nGMSoundBGMEnd
 
-} alMusicID;
+} gmMusicID;
 
-typedef enum alSoundEffectID
+typedef enum gmFGMVoiceID
 {
-	alSound_SFX_ExplodeS,
-	alSound_SFX_ExplodeL,
-	alSound_SFX_FireShoot1,
-	alSound_SFX_UnkShoot1,
-	alSound_SFX_UnkDial1,
-	alSound_SFX_ChargeShotAll,
-	alSound_SFX_UnkSmallPing1,
-	alSound_SFX_Blaster,
-	alSound_SFX_SamusJump1,
-	alSound_SFX_DonkeySlap1,
-	alSound_SFX_DonkeySlap2,
-	alSound_SFX_Escape,		// Roll
-	alSound_SFX_DeadUpStar, // Star KO spark
-	alSound_SFX_GuardOn,	// Put up shield
-	alSound_SFX_GuardOff,
-	alSound_SFX_ShieldBreak,
-	alSound_SFX_ShieldBreakPitchLw,
-	alSound_SFX_HeavySwing1,
-	alSound_SFX_LightSwingLw1,
-	alSound_SFX_Catch, // Grab
-	alSound_SFX_DoorClose,
-	alSound_SFX_TModeSel,
-	alSound_SFX_ShockL,
-	alSound_SFX_ShockM,
-	alSound_SFX_ShockS,
-	alSound_SFX_BurnL,
-	alSound_SFX_BurnE, // Burn empty (empty Fire Flower)
-	alSound_SFX_BurnM,
-	alSound_SFX_BurnS,
-	alSound_SFX_ShockML,
-	alSound_SFX_Firefox,
-	alSound_SFX_KickL,
-	alSound_SFX_KickM,
-	alSound_SFX_DeadFall, // Plays when dying in a blast zone?
-	alSound_SFX_KickS,
-	alSound_SFX_UnkTap1,
-	alSound_SFX_FireShoot2,
-	alSound_SFX_PunchL,
-	alSound_SFX_PunchM,
-	alSound_SFX_UnkSlam1,
-	alSound_SFX_PunchS,
-	alSound_SFX_LightSwingL,
-	alSound_SFX_LightSwingM,
-	alSound_SFX_LightSwingS,
-	alSound_SFX_MSBombAttach,
-	alSound_SFX_BombHeiFuse,
-	alSound_SFX_ItemMapCollide, // Item falls on ground
-	alSound_SFX_BumperHit,
-	alSound_SFX_FireFlowerBurn,
-	alSound_SFX_ItemPickup,
-	alSound_SFX_HammerSwing,
-	alSound_SFX_HarisenHit,
-	alSound_SFX_BatHit,
-	alSound_SFX_StarMapCollide,
-	alSound_SFX_StarCollect,
-	alSound_SFX_BombHeiWalkStart,
-	alSound_SFX_ShellHit,
-	alSound_SFX_ItemThrow,
-	alSound_SFX_ItemSpawn1,
-	alSound_SFX_ContainerSmash,
-	alSound_SFX_FireFlowerShoot,
-	alSound_SFX_LGunShoot,
-	alSound_SFX_LGunEmpty,
-	alSound_SFX_StarRodSwing4,
-	alSound_SFX_StarRodSwing3,
-	alSound_SFX_StarRodSwing1,
-	alSound_SFX_StarRodEmpty,
-	alSound_SFX_SwordSwing4,
-	alSound_SFX_SwordSwing3,
-	alSound_SFX_SwordSwing1,
-	alSound_SFX_RBombHit, // Hit entity?
-	alSound_SFX_RBombMap, // Collide with wall?
-	alSound_SFX_Footstep1,
-	alSound_SFX_Footstep2,
-	alSound_SFX_Footstep3,
-	alSound_SFX_Footstep4,
-	alSound_SFX_Footstep5,
-	alSound_SFX_Footstep6,
-	alSound_SFX_Footstep7,
-	alSound_SFX_Footstep8,
-	alSound_SFX_Footstep9,
-	alSound_SFX_SamusLandingClick,
-	alSound_SFX_Footstep10,
-	alSound_SFX_UnkGrind2,
-	alSound_SFX_UnkGrind3,
-	alSound_SFX_UnkGrind4,
-	alSound_SFX_InflateJump1,
-	alSound_SFX_UnkGrind5,
-	alSound_SFX_SamusJump2,
-	alSound_SFX_UnkNessPSI,
-	alSound_SFX_InflateJump2,
-	alSound_SFX_InflateJump3,
-	alSound_SFX_SamusJumpAerial,
-	alSound_SFX_InflateJump4,
-	alSound_SFX_KirbyPurinJump,
-	alSound_SFX_GroundGrind1,
-	alSound_SFX_GroundGrind2,
-	alSound_SFX_InflateJump5,
-	alSound_SFX_GroundGrind3,
-	alSound_SFX_InflateJump6,
-	alSound_SFX_NessJump,
-	alSound_SFX_InflateJump7,
-	alSound_SFX_InflateJump8,
-	alSound_SFX_GroundGrind4,
-	alSound_SFX_InflateJump9,
-	alSound_SFX_Footstep11, // Might be footsteps? They are very quiet
-	alSound_SFX_Footstep12,
-	alSound_SFX_Footstep13,
-	alSound_SFX_Footstep14,
-	alSound_SFX_Footstep15,
-	alSound_SFX_Footstep16,
-	alSound_SFX_Footstep17,
-	alSound_SFX_Footstep18,
-	alSound_SFX_Footstep19,
-	alSound_SFX_Footstep20,
-	alSound_SFX_Footstep21,
-	alSound_SFX_Footstep22,
-	alSound_SFX_MetalMarioFoot = 0x7A,
-	alSound_SFX_MetalMarioLanding, // Unconfirmed
-	alSound_SFX_SamusTurnClick = 0x7F,
-	alSound_SFX_GroundBrakeGrind,
-	alSound_SFX_UnkEchoHit1,
-	alSound_SFX_DogasSmog = 0x83,
-	alSound_SFX_IwarkRockCreate,
-	alSound_SFX_KabigonFall,
-	alSound_SFX_KabigonJump, // ???
-	alSound_SFX_KamexHydro,
-	alSound_SFX_LizardonFlame,
-	alSound_SFX_MewFly,
-	alSound_SFX_NyarsCoin,
-	alSound_SFX_MBallOpen,
-	alSound_SFX_MonsterShoot, // Venusaur and Starmie firing sound effect
-	alSound_SFX_TosakintoSplash,
-	alSound_SFX_JKickL,
-	alSound_SFX_JKickM,
-	alSound_SFX_JKickS,
-	alSound_SFX_JPunchL,
-	alSound_SFX_JPunchM,
-	alSound_SFX_JPunchS,
-	alSound_SFX_WindAmbient1,
-	alSound_SFX_UnkWhirr3,
-	alSound_SFX_PublicCheer1,
-	alSound_SFX_UnkBatS,
-	alSound_SFX_UnkBatM,
-	alSound_SFX_DeadPortalLw,	// Bottom blastzone warning sound?
-	alSound_SFX_DeadPortalHitL, // One of many sounds that play when hitting
+	nGMSoundFGMExplodeS,
+	nGMSoundFGMExplodeL,
+	nGMSoundFGMFireShoot1,
+	nGMSoundFGMUnkShoot1,
+	nGMSoundFGMUnkDial1,
+	nGMSoundFGMChargeShotAll,
+	nGMSoundFGMUnkSmallPing1,
+	nGMSoundFGMBlaster,
+	nGMSoundFGMSamusJump1,
+	nGMSoundFGMDonkeySlap1,
+	nGMSoundFGMDonkeySlap2,
+	nGMSoundFGMEscape,		// Roll
+	nGMSoundFGMDeadUpStar, // Star KO spark
+	nGMSoundFGMGuardOn,	// Put up shield
+	nGMSoundFGMGuardOff,
+	nGMSoundFGMShieldBreak,
+	nGMSoundFGMShieldBreakPitchLw,
+	nGMSoundFGMHeavySwing1,
+	nGMSoundFGMLightSwingLw1,
+	nGMSoundFGMCatch, // Grab
+	nGMSoundFGMDoorClose,
+	nGMSoundFGMTModeSel,
+	nGMSoundFGMShockL,
+	nGMSoundFGMShockM,
+	nGMSoundFGMShockS,
+	nGMSoundFGMBurnL,
+	nGMSoundFGMBurnE, // Burn empty (empty Fire Flower)
+	nGMSoundFGMBurnM,
+	nGMSoundFGMBurnS,
+	nGMSoundFGMShockML,
+	nGMSoundFGMFirefox,
+	nGMSoundFGMKickL,
+	nGMSoundFGMKickM,
+	nGMSoundFGMDeadFall, // Plays when dying in a blast zone?
+	nGMSoundFGMKickS,
+	nGMSoundFGMUnkTap1,
+	nGMSoundFGMFireShoot2,
+	nGMSoundFGMPunchL,
+	nGMSoundFGMPunchM,
+	nGMSoundFGMUnkSlam1,
+	nGMSoundFGMPunchS,
+	nGMSoundFGMLightSwingL,
+	nGMSoundFGMLightSwingM,
+	nGMSoundFGMLightSwingS,
+	nGMSoundFGMMSBombAttach,
+	nGMSoundFGMBombHeiFuse,
+	nGMSoundFGMItemMapCollide, // Item falls on ground
+	nGMSoundFGMBumperHit,
+	nGMSoundFGMFireFlowerBurn,
+	nGMSoundFGMItemPickup,
+	nGMSoundFGMHammerSwing,
+	nGMSoundFGMHarisenHit,
+	nGMSoundFGMBatHit,
+	nGMSoundFGMStarMapCollide,
+	nGMSoundFGMStarCollect,
+	nGMSoundFGMBombHeiWalkStart,
+	nGMSoundFGMShellHit,
+	nGMSoundFGMItemThrow,
+	nGMSoundFGMItemSpawn1,
+	nGMSoundFGMContainerSmash,
+	nGMSoundFGMFireFlowerShoot,
+	nGMSoundFGMLGunShoot,
+	nGMSoundFGMLGunEmpty,
+	nGMSoundFGMStarRodSwing4,
+	nGMSoundFGMStarRodSwing3,
+	nGMSoundFGMStarRodSwing1,
+	nGMSoundFGMStarRodEmpty,
+	nGMSoundFGMSwordSwing4,
+	nGMSoundFGMSwordSwing3,
+	nGMSoundFGMSwordSwing1,
+	nGMSoundFGMRBombHit, // Hit entity?
+	nGMSoundFGMRBombMap, // Collide with wall?
+	nGMSoundFGMFootstep1,
+	nGMSoundFGMFootstep2,
+	nGMSoundFGMFootstep3,
+	nGMSoundFGMFootstep4,
+	nGMSoundFGMFootstep5,
+	nGMSoundFGMFootstep6,
+	nGMSoundFGMFootstep7,
+	nGMSoundFGMFootstep8,
+	nGMSoundFGMFootstep9,
+	nGMSoundFGMSamusLandingClick,
+	nGMSoundFGMFootstep10,
+	nGMSoundFGMUnkGrind2,
+	nGMSoundFGMUnkGrind3,
+	nGMSoundFGMUnkGrind4,
+	nGMSoundFGMInflateJump1,
+	nGMSoundFGMUnkGrind5,
+	nGMSoundFGMSamusJump2,
+	nGMSoundFGMUnkNessPSI,
+	nGMSoundFGMInflateJump2,
+	nGMSoundFGMInflateJump3,
+	nGMSoundFGMSamusJumpAerial,
+	nGMSoundFGMInflateJump4,
+	nGMSoundFGMKirbyPurinJump,
+	nGMSoundFGMGroundGrind1,
+	nGMSoundFGMGroundGrind2,
+	nGMSoundFGMInflateJump5,
+	nGMSoundFGMGroundGrind3,
+	nGMSoundFGMInflateJump6,
+	nGMSoundFGMNessJump,
+	nGMSoundFGMInflateJump7,
+	nGMSoundFGMInflateJump8,
+	nGMSoundFGMGroundGrind4,
+	nGMSoundFGMInflateJump9,
+	nGMSoundFGMFootstep11, // Might be footsteps? They are very quiet
+	nGMSoundFGMFootstep12,
+	nGMSoundFGMFootstep13,
+	nGMSoundFGMFootstep14,
+	nGMSoundFGMFootstep15,
+	nGMSoundFGMFootstep16,
+	nGMSoundFGMFootstep17,
+	nGMSoundFGMFootstep18,
+	nGMSoundFGMFootstep19,
+	nGMSoundFGMFootstep20,
+	nGMSoundFGMFootstep21,
+	nGMSoundFGMFootstep22,
+	nGMSoundFGMMetalMarioFoot = 0x7A,
+	nGMSoundFGMMetalMarioLanding, // Unconfirmed
+	nGMSoundFGMSamusTurnClick = 0x7F,
+	nGMSoundFGMGroundBrakeGrind,
+	nGMSoundFGMUnkEchoHit1,
+	nGMSoundFGMDogasSmog = 0x83,
+	nGMSoundFGMIwarkRockCreate,
+	nGMSoundFGMKabigonFall,
+	nGMSoundFGMKabigonJump, // ???
+	nGMSoundFGMKamexHydro,
+	nGMSoundFGMLizardonFlame,
+	nGMSoundFGMMewFly,
+	nGMSoundFGMNyarsCoin,
+	nGMSoundFGMMBallOpen,
+	nGMSoundFGMMonsterShoot, // Venusaur and Starmie firing sound effect
+	nGMSoundFGMTosakintoSplash,
+	nGMSoundFGMJKickL,
+	nGMSoundFGMJKickM,
+	nGMSoundFGMJKickS,
+	nGMSoundFGMJPunchL,
+	nGMSoundFGMJPunchM,
+	nGMSoundFGMJPunchS,
+	nGMSoundFGMWindAmbient1,
+	nGMSoundFGMUnkWhirr3,
+	nGMSoundFGMPublicCheer1,
+	nGMSoundFGMUnkBatS,
+	nGMSoundFGMUnkBatM,
+	nGMSoundFGMDeadPortalLw,	// Bottom blastzone warning sound?
+	nGMSoundFGMDeadPortalHitL, // One of many sounds that play when hitting
 								// the blastzone
-	alSound_SFX_DeadPortalHitS,
-	alSound_SFX_UnkMechanical1, // Menu sound?
-	alSound_SFX_TitlePressStart,
-	alSound_SFX_MenuSelect,
-	alSound_SFX_MapSelect,
-	alSound_SFX_1PGameContinue,
-	alSound_SFX_1PGameContinueMulti,
-	alSound_SFX_TModeSel2,
-	alSound_SFX_MenuScroll1, // Scroll vertically?
-	alSound_SFX_MenuScroll2, // Scroll horizontally / vertically in Training Mode
-	alSound_SFX_MenuDenied,
-	alSound_SFX_PlayerGateClose,  // Plays when player's character portrait is
+	nGMSoundFGMDeadPortalHitS,
+	nGMSoundFGMUnkMechanical1, // Menu sound?
+	nGMSoundFGMTitlePressStart,
+	nGMSoundFGMMenuSelect,
+	nGMSoundFGMMapSelect,
+	nGMSoundFGM1PGameContinue,
+	nGMSoundFGM1PGameContinueMulti,
+	nGMSoundFGMTModeSel2,
+	nGMSoundFGMMenuScroll1, // Scroll vertically?
+	nGMSoundFGMMenuScroll2, // Scroll horizontally / vertically in Training Mode
+	nGMSoundFGMMenuDenied,
+	nGMSoundFGMPlayerGateClose,  // Plays when player's character portrait is
 								  // closed on the CSS?
-	alSound_SFX_PlayerGateWhoosh, // Might be unrelated
-	alSound_SFX_UnkMetallic2,
-	alSound_SFX_UnkSoftPing1,
-	alSound_SFX_UnkClick1, // Samus?
-	alSound_SFX_UnkSwoosh1,
-	alSound_SFX_UnkHeavyLaser,
-	alSound_SFX_UnkGate1,
-	alSound_SFX_MasterHandYubi,
-	alSound_SFX_MasterHandSlam,
-	alSound_SFX_MasterHandUnk1,
-	alSound_SFX_MasterHandUnk2,
-	alSound_SFX_DonkeySpin,	  // Spinning kong swing sound effect
-	alSound_SFX_DonkeyCharge, // These two might be swapped
-	alSound_SFX_CaptainAppearCar1,
-	alSound_SFX_CaptainAppearCar2,
-	alSound_SFX_CaptainSpecialHi,
-	alSound_SFX_CaptainSpecialNStart,
-	alSound_SFX_CaptainSpecialNPunch,
-	alSound_SFX_FoxSpecialN, // Blaster again???
-	alSound_SFX_FoxSpecialHiStart,
-	alSound_SFX_FoxSpecialHiFly,
-	alSound_SFX_FoxSpecialLwHit,
-	alSound_SFX_FoxSpecialLwStart,
-	alSound_SFX_FoxAttackAirLw,
-	alSound_SFX_FoxAppearArwing,
-	alSound_SFX_UnkMechanical4,
-	alSound_SFX_UnkLongWind,
-	alSound_SFX_KirbySpecialLwLanding,
-	alSound_SFX_KirbyAttackAirHi,
-	alSound_SFX_KirbySpecialNThrow,
-	alSound_SFX_KirbySpecialNCopyEat,
-	alSound_SFX_KirbySpecialNCopyThrow,
-	alSound_SFX_KirbySpecialNCopyUnk,
-	alSound_SFX_KirbyStarPing1,
-	alSound_SFX_KirbyStarPing2,
-	alSound_SFX_KirbySpecialLwStart,
-	alSound_SFX_KirbySpecialNStart,
-	alSound_SFX_KirbySpecialNLoseCopy,
-	alSound_SFX_LinkSpecialLwGet,
-	alSound_SFX_LinkSpecialNThrow,
-	alSound_SFX_LinkSpecialNDraw,
-	alSound_SFX_LinkSpecialNReturn,
-	alSound_SFX_LinkSpecialHi,
-	alSound_SFX_LinkCatchHookshot,
-	alSound_SFX_LinkAppear,
-	alSound_SFX_MarioAppealGrow,
-	alSound_SFX_MarioAppealShrink,
-	alSound_SFX_MarioDokan,
-	alSound_SFX_MarioSpecialN,
-	alSound_SFX_MarioSpecialHiCoin,
-	alSound_SFX_MarioSpecialHiJump,
-	alSound_SFX_MarioUnkSwing1, // Down air or down special?
-	alSound_SFX_MarioUnkSwing2,
-	alSound_SFX_CharacterUnk1,
-	alSound_SFX_NessPKThunderLoop,
-	alSound_SFX_NessPSI,
-	alSound_SFX_NessPSIAgain, // Huh
-	alSound_SFX_NessSpecialLwStart,
-	alSound_SFX_NessSpecialHiCrack1, // Might be Pikachu's Thunder Jolt
-	alSound_SFX_NessSpecialHiCrack2,
-	alSound_SFX_NessSpecialHiCrack3,
-	alSound_SFX_NessSpecialHiCrack4,
-	alSound_SFX_NessSpecialHiCrack5,
-	alSound_SFX_NessSpecialHiCrackLoop,
-	alSound_SFX_PikachuSpecialHiStart,
-	alSound_SFX_PikachuSpecialLwThunder,
-	alSound_SFX_CharacterUnk2,
-	alSound_SFX_CharacterUnk3,
-	alSound_SFX_SamusSpecialNShootF,
-	alSound_SFX_SamusSpecialNShootL,
-	alSound_SFX_SamusSpecialNShootM,
-	alSound_SFX_SamusSpecialNShootS,
-	alSound_SFX_SamusSpecialNCharge0,
-	alSound_SFX_SamusSpecialNCharge1,
-	alSound_SFX_SamusSpecialNCharge2,
-	alSound_SFX_SamusSpecialNCharge3,
-	alSound_SFX_SamusSpecialNCharge4,
-	alSound_SFX_SamusSpecialNCharge5,
-	alSound_SFX_SamusSpecialNCharge6,
-	alSound_SFX_SamusSpecialNCharge7,
-	alSound_SFX_SamusSpecialLw,
-	alSound_SFX_SamusCatchGrappleBeam,
-	alSound_SFX_SamusSpecialHi,
-	alSound_SFX_SamusUnkSwing,
-	alSound_SFX_SamusUnkCharge,
-	alSound_SFX_YoshiEggShatter1,
-	alSound_SFX_YoshiEggShatter2,
-	alSound_SFX_YoshiSpecialNTongue,
-	alSound_SFX_YoshiEggShatter3,
-	alSound_SFX_YoshiSpecialHiThrow,
-	alSound_SFX_YoshiEggLayShatter,
-	alSound_SFX_BladeSwing4,
-	alSound_SFX_BladeSwing3,
-	alSound_SFX_BladeSwing1,
-	alSound_SFX_SlashL,
-	alSound_SFX_SlashM,
-	alSound_SFX_SlashS,
-	alSound_SFX_BladeDraw,
-	alSound_SFX_SectorArwingLaser,
-	alSound_SFX_SectorAmbient1,
-	alSound_SFX_SectorAmbient2,
-	alSound_SFX_SectorAmbient3,
-	alSound_SFX_OptionsDataErase,
-	alSound_SFX_YamabukiGate, // Empty?
-	alSound_SFX_Magnify,
-	alSound_SFX_ShinePingUnk,
-	alSound_SFX_BonusComplete,
-	alSound_SFX_PlayerHeal, // High-pitched short click, sped up Mario Fireball?
-	alSound_SFX_YosterCloudVapor,
-	alSound_SFX_StockSteal,
-	alSound_SFX_Bonus2PlatformLanding, // Land on Bonus 2 platform
-	alSound_SFX_GamePause,
-	alSound_SFX_InishiePowerBlock, // POW Block
-	alSound_SFX_Bonus1TargetBreak, // Break Bonus 1 target
-    alSound_SFX_JungleTaruCannShoot,
-    alSound_SFX_JungleTaruCannEnter,
-	alSound_SFX_HyruleTwisterSpawn,
-	alSound_SFX_HyruleTwisterTrapped,
-	alSound_SFX_PupupuWhispyWind, // Despawn?
-	alSound_SFX_FloorDamageBurn,
-	alSound_SFX_FighterBodySlamL,		  // This continues until 0x12A
-	alSound_SFX_DownBounceDonkey = 0x12A, // 0x12A; This continues until 0x135
-	alSound_SFX_DownBounceCaptain,		  // 0x12B
-	alSound_SFX_DownBounceFox,			  // 0x12C
-	alSound_SFX_DownBounceKirby,		  // 0x12D
-	alSound_SFX_DownBounceLink,			  // 0x12E
-	alSound_SFX_DownBounceMario,		  // 0x12F
-	alSound_SFX_DownBounceNess,			  // 0x130
-	alSound_SFX_DownBouncePikachu,		  // 0x131
-	alSound_SFX_DownBouncePurin,		  // 0x132
-	alSound_SFX_DownBounceSamus,		  // 0x133
-	alSound_SFX_DownBounceYoshi,		  // 0x134
-	alSound_Voice_MBallDogasSpawn,
-	alSound_Voice_MBallIwarkSpawn,
-	alSound_Voice_MBallKabigonFall,
-	alSound_Voice_MBallKabigonSpawn,
-	alSound_Voice_MBallKamexSpawn,
-	alSound_Voice_MBallLuckySpawn,
-	alSound_Voice_MBallMewSpawn,
-	alSound_Voice_MBallPippiSpawn,
-	alSound_Voice_MBallLizardonSpawn,
-	alSound_Voice_MBallSawamuraSpawn,
-	alSound_Voice_MBallSawamuraKick,
-	alSound_Voice_MBallSpearSpawn,
-	alSound_Voice_MBallSpearSwarm,
-	alSound_Voice_MBallStarmieSpawn,
-	alSound_Voice_MBallTosakintoSpawn,
-	alSound_Voice_DonkeyFuraSleep,
-	alSound_Voice_DonkeyAppeal,
-	alSound_Voice_DonkeySmash1,
-	alSound_Voice_DonkeySmash2,
-	alSound_Voice_DonkeySmash3,
-	alSound_Voice_DonkeySpecialNPunch,
-	alSound_Voice_DonkeyDeadUp,
-	alSound_Voice_DonkeyFuraFura,
-	alSound_Voice_DonkeyDamage,
-	alSound_Voice_DonkeyDead1,
-	alSound_Voice_DonkeyHeavyGet,
-	alSound_Voice_DonkeyHeavyUnk,
-	alSound_Voice_DonkeyDead2,
-	alSound_Voice_CaptainAppeal,
-	alSound_Voice_CaptainYes,
-	alSound_Voice_CaptainSmash1,
-	alSound_Voice_CaptainSmash2,
-	alSound_Voice_CaptainSmash3,
-	alSound_Voice_CaptainSmash4,
-	alSound_Voice_CaptainFinalComeOn,
-	alSound_Voice_CaptainSmash5, // Same as Smash 3 or 4?
-	alSound_Voice_CaptainAttackS4,
-	alSound_Voice_CaptainSpecialLw,
-	alSound_Voice_CaptainSpecialNPunch,
-	alSound_Voice_CaptainSpecialNFalcon,
-	alSound_Voice_CaptainDeadUp,
-	alSound_Voice_CaptainFuraFura,
-	alSound_Voice_CaptainDamage,
-	alSound_Voice_CaptainUnkPing1,
-	alSound_Voice_CaptainJumpAerial, // ??? Same as Captain Falcon's airdodge
+	nGMSoundFGMPlayerGateWhoosh, // Might be unrelated
+	nGMSoundFGMUnkMetallic2,
+	nGMSoundFGMUnkSoftPing1,
+	nGMSoundFGMUnkClick1, // Samus?
+	nGMSoundFGMUnkSwoosh1,
+	nGMSoundFGMUnkHeavyLaser,
+	nGMSoundFGMUnkGate1,
+	nGMSoundFGMMasterHandYubi,
+	nGMSoundFGMMasterHandSlam,
+	nGMSoundFGMMasterHandUnk1,
+	nGMSoundFGMMasterHandUnk2,
+	nGMSoundFGMDonkeySpin,	  // Spinning kong swing sound effect
+	nGMSoundFGMDonkeyCharge, // These two might be swapped
+	nGMSoundFGMCaptainAppearCar1,
+	nGMSoundFGMCaptainAppearCar2,
+	nGMSoundFGMCaptainSpecialHi,
+	nGMSoundFGMCaptainSpecialNStart,
+	nGMSoundFGMCaptainSpecialNPunch,
+	nGMSoundFGMFoxSpecialN, // Blaster again???
+	nGMSoundFGMFoxSpecialHiStart,
+	nGMSoundFGMFoxSpecialHiFly,
+	nGMSoundFGMFoxSpecialLwHit,
+	nGMSoundFGMFoxSpecialLwStart,
+	nGMSoundFGMFoxAttackAirLw,
+	nGMSoundFGMFoxAppearArwing,
+	nGMSoundFGMUnkMechanical4,
+	nGMSoundFGMUnkLongWind,
+	nGMSoundFGMKirbySpecialLwLanding,
+	nGMSoundFGMKirbyAttackAirHi,
+	nGMSoundFGMKirbySpecialNThrow,
+	nGMSoundFGMKirbySpecialNCopyEat,
+	nGMSoundFGMKirbySpecialNCopyThrow,
+	nGMSoundFGMKirbySpecialNCopyUnk,
+	nGMSoundFGMKirbyStarPing1,
+	nGMSoundFGMKirbyStarPing2,
+	nGMSoundFGMKirbySpecialLwStart,
+	nGMSoundFGMKirbySpecialNStart,
+	nGMSoundFGMKirbySpecialNLoseCopy,
+	nGMSoundFGMLinkSpecialLwGet,
+	nGMSoundFGMLinkSpecialNThrow,
+	nGMSoundFGMLinkSpecialNDraw,
+	nGMSoundFGMLinkSpecialNReturn,
+	nGMSoundFGMLinkSpecialHi,
+	nGMSoundFGMLinkCatchHookshot,
+	nGMSoundFGMLinkAppear,
+	nGMSoundFGMMarioAppealGrow,
+	nGMSoundFGMMarioAppealShrink,
+	nGMSoundFGMMarioDokan,
+	nGMSoundFGMMarioSpecialN,
+	nGMSoundFGMMarioSpecialHiCoin,
+	nGMSoundFGMMarioSpecialHiJump,
+	nGMSoundFGMMarioUnkSwing1, // Down air or down special?
+	nGMSoundFGMMarioUnkSwing2,
+	nGMSoundFGMCharacterUnk1,
+	nGMSoundFGMNessPKThunderLoop,
+	nGMSoundFGMNessPSI,
+	nGMSoundFGMNessPSIAgain, // Huh
+	nGMSoundFGMNessSpecialLwStart,
+	nGMSoundFGMNessSpecialHiCrack1, // Might be Pikachu's Thunder Jolt
+	nGMSoundFGMNessSpecialHiCrack2,
+	nGMSoundFGMNessSpecialHiCrack3,
+	nGMSoundFGMNessSpecialHiCrack4,
+	nGMSoundFGMNessSpecialHiCrack5,
+	nGMSoundFGMNessSpecialHiCrackLoop,
+	nGMSoundFGMPikachuSpecialHiStart,
+	nGMSoundFGMPikachuSpecialLwThunder,
+	nGMSoundFGMCharacterUnk2,
+	nGMSoundFGMCharacterUnk3,
+	nGMSoundFGMSamusSpecialNShootF,
+	nGMSoundFGMSamusSpecialNShootL,
+	nGMSoundFGMSamusSpecialNShootM,
+	nGMSoundFGMSamusSpecialNShootS,
+	nGMSoundFGMSamusSpecialNCharge0,
+	nGMSoundFGMSamusSpecialNCharge1,
+	nGMSoundFGMSamusSpecialNCharge2,
+	nGMSoundFGMSamusSpecialNCharge3,
+	nGMSoundFGMSamusSpecialNCharge4,
+	nGMSoundFGMSamusSpecialNCharge5,
+	nGMSoundFGMSamusSpecialNCharge6,
+	nGMSoundFGMSamusSpecialNCharge7,
+	nGMSoundFGMSamusSpecialLw,
+	nGMSoundFGMSamusCatchGrappleBeam,
+	nGMSoundFGMSamusSpecialHi,
+	nGMSoundFGMSamusUnkSwing,
+	nGMSoundFGMSamusUnkCharge,
+	nGMSoundFGMYoshiEggShatter1,
+	nGMSoundFGMYoshiEggShatter2,
+	nGMSoundFGMYoshiSpecialNTongue,
+	nGMSoundFGMYoshiEggShatter3,
+	nGMSoundFGMYoshiSpecialHiThrow,
+	nGMSoundFGMYoshiEggLayShatter,
+	nGMSoundFGMBladeSwing4,
+	nGMSoundFGMBladeSwing3,
+	nGMSoundFGMBladeSwing1,
+	nGMSoundFGMSlashL,
+	nGMSoundFGMSlashM,
+	nGMSoundFGMSlashS,
+	nGMSoundFGMBladeDraw,
+	nGMSoundFGMSectorArwingLaser,
+	nGMSoundFGMSectorAmbient1,
+	nGMSoundFGMSectorAmbient2,
+	nGMSoundFGMSectorAmbient3,
+	nGMSoundFGMOptionsDataErase,
+	nGMSoundFGMYamabukiGate, // Empty?
+	nGMSoundFGMMagnify,
+	nGMSoundFGMShinePingUnk,
+	nGMSoundFGMBonusComplete,
+	nGMSoundFGMPlayerHeal, // High-pitched short click, sped up Mario Fireball?
+	nGMSoundFGMYosterCloudVapor,
+	nGMSoundFGMStockSteal,
+	nGMSoundFGMBonus2PlatformLanding, // Land on Bonus 2 platform
+	nGMSoundFGMGamePause,
+	nGMSoundFGMInishiePowerBlock, // POW Block
+	nGMSoundFGMBonus1TargetBreak, // Break Bonus 1 target
+    nGMSoundFGMJungleTaruCannShoot,
+    nGMSoundFGMJungleTaruCannEnter,
+	nGMSoundFGMHyruleTwisterSpawn,
+	nGMSoundFGMHyruleTwisterTrapped,
+	nGMSoundFGMPupupuWhispyWind, // Despawn?
+	nGMSoundFGMFloorDamageBurn,
+	nGMSoundFGMFighterBodySlamL,		  // This continues until 0x12A
+	nGMSoundFGMDownBounceDonkey = 0x12A, // 0x12A; This continues until 0x135
+	nGMSoundFGMDownBounceCaptain,		  // 0x12B
+	nGMSoundFGMDownBounceFox,			  // 0x12C
+	nGMSoundFGMDownBounceKirby,		  // 0x12D
+	nGMSoundFGMDownBounceLink,			  // 0x12E
+	nGMSoundFGMDownBounceMario,		  // 0x12F
+	nGMSoundFGMDownBounceNess,			  // 0x130
+	nGMSoundFGMDownBouncePikachu,		  // 0x131
+	nGMSoundFGMDownBouncePurin,		  // 0x132
+	nGMSoundFGMDownBounceSamus,		  // 0x133
+	nGMSoundFGMDownBounceYoshi,		  // 0x134
+	nGMSoundVoiceMBallDogasSpawn,
+	nGMSoundVoiceMBallIwarkSpawn,
+	nGMSoundVoiceMBallKabigonFall,
+	nGMSoundVoiceMBallKabigonSpawn,
+	nGMSoundVoiceMBallKamexSpawn,
+	nGMSoundVoiceMBallLuckySpawn,
+	nGMSoundVoiceMBallMewSpawn,
+	nGMSoundVoiceMBallPippiSpawn,
+	nGMSoundVoiceMBallLizardonSpawn,
+	nGMSoundVoiceMBallSawamuraSpawn,
+	nGMSoundVoiceMBallSawamuraKick,
+	nGMSoundVoiceMBallSpearSpawn,
+	nGMSoundVoiceMBallSpearSwarm,
+	nGMSoundVoiceMBallStarmieSpawn,
+	nGMSoundVoiceMBallTosakintoSpawn,
+	nGMSoundVoiceDonkeyFuraSleep,
+	nGMSoundVoiceDonkeyAppeal,
+	nGMSoundVoiceDonkeySmash1,
+	nGMSoundVoiceDonkeySmash2,
+	nGMSoundVoiceDonkeySmash3,
+	nGMSoundVoiceDonkeySpecialNPunch,
+	nGMSoundVoiceDonkeyDeadUp,
+	nGMSoundVoiceDonkeyFuraFura,
+	nGMSoundVoiceDonkeyDamage,
+	nGMSoundVoiceDonkeyDead1,
+	nGMSoundVoiceDonkeyHeavyGet,
+	nGMSoundVoiceDonkeyHeavyUnk,
+	nGMSoundVoiceDonkeyDead2,
+	nGMSoundVoiceCaptainAppeal,
+	nGMSoundVoiceCaptainYes,
+	nGMSoundVoiceCaptainSmash1,
+	nGMSoundVoiceCaptainSmash2,
+	nGMSoundVoiceCaptainSmash3,
+	nGMSoundVoiceCaptainSmash4,
+	nGMSoundVoiceCaptainFinalComeOn,
+	nGMSoundVoiceCaptainSmash5, // Same as Smash 3 or 4?
+	nGMSoundVoiceCaptainAttackS4,
+	nGMSoundVoiceCaptainSpecialLw,
+	nGMSoundVoiceCaptainSpecialNPunch,
+	nGMSoundVoiceCaptainSpecialNFalcon,
+	nGMSoundVoiceCaptainDeadUp,
+	nGMSoundVoiceCaptainFuraFura,
+	nGMSoundVoiceCaptainDamage,
+	nGMSoundVoiceCaptainUnkPing1,
+	nGMSoundVoiceCaptainJumpAerial, // ??? Same as Captain Falcon's airdodge
 									 // in Melee
-	alSound_Voice_CaptainHeavyGet,
-	alSound_Voice_CaptainDead,
-	alSound_Voice_CaptainFuraSleep,
-	alSound_Voice_CaptainUnkQuick,
-	alSound_Voice_CaptainUnkPing2,
-	alSound_Voice_CaptainUnkPing3,
-	alSound_Voice_FoxDeadUp,
-	alSound_Voice_FoxAppeal,
-	alSound_Voice_FoxSpecialHiFire,
-	alSound_Voice_FoxJumpAerial,
-	alSound_Voice_FoxEscape,
-	alSound_Voice_FoxSelected,
-	alSound_Voice_FoxFinalIke,
-	alSound_Voice_FoxUnkGrunt,
-	alSound_Voice_FoxResult, // Same as Appeal and Selected
-	alSound_Voice_FoxGrunt2,
-	alSound_Voice_FoxDead,
-	alSound_Voice_FoxFuraSleep,
-	alSound_Voice_FoxSmash1,
-	alSound_Voice_FoxSmash2,
-	alSound_Voice_FoxSmash3,
-	alSound_Voice_FoxDamage,
-	alSound_Voice_FoxFuraFura,
-	alSound_Voice_KirbyAppeal,
-	alSound_Voice_KirbySmash1,
-	alSound_Voice_KirbySmash2,
-	alSound_Voice_KirbySmash3,
-	alSound_Voice_AnnounceComplete = 0x1CB,
-	alSound_Voice_AnnounceNewRecord = 0x1D0,
-	alSound_Voice_YamabukiFushigibana = 0x228,
-	alSound_Voice_YamabukiHitokage,
-	alSound_Voice_YamabukiLucky,
-	alSound_Voice_YamabukiMarumine,
-	alSound_Voice_YamabukiPorygon
+	nGMSoundVoiceCaptainHeavyGet,
+	nGMSoundVoiceCaptainDead,
+	nGMSoundVoiceCaptainFuraSleep,
+	nGMSoundVoiceCaptainUnkQuick,
+	nGMSoundVoiceCaptainUnkPing2,
+	nGMSoundVoiceCaptainUnkPing3,
+	nGMSoundVoiceFoxDeadUp,
+	nGMSoundVoiceFoxAppeal,
+	nGMSoundVoiceFoxSpecialHiFire,
+	nGMSoundVoiceFoxJumpAerial,
+	nGMSoundVoiceFoxEscape,
+	nGMSoundVoiceFoxSelected,
+	nGMSoundVoiceFoxFinalIke,
+	nGMSoundVoiceFoxUnkGrunt,
+	nGMSoundVoiceFoxResult, // Same as Appeal and Selected
+	nGMSoundVoiceFoxGrunt2,
+	nGMSoundVoiceFoxDead,
+	nGMSoundVoiceFoxFuraSleep,
+	nGMSoundVoiceFoxSmash1,
+	nGMSoundVoiceFoxSmash2,
+	nGMSoundVoiceFoxSmash3,
+	nGMSoundVoiceFoxDamage,
+	nGMSoundVoiceFoxFuraFura,
+	nGMSoundVoiceKirbyAppeal,
+	nGMSoundVoiceKirbySmash1,
+	nGMSoundVoiceKirbySmash2,
+	nGMSoundVoiceKirbySmash3,
+	nGMSoundVoiceAnnounceComplete = 0x1CB,
+	nGMSoundVoiceAnnounceNewRecord = 0x1D0,
+	nGMSoundVoiceYamabukiFushigibana = 0x228,
+	nGMSoundVoiceYamabukiHitokage,
+	nGMSoundVoiceYamabukiLucky,
+	nGMSoundVoiceYamabukiMarumine,
+	nGMSoundVoiceYamabukiPorygon,
+	nGMSoundVoicePublicityDonkey = 0x25B,	// 0x25B
+	nGMSoundVoicePublicityCaptain,		  	// 0x25C
+	nGMSoundVoicePublicityFox,			  	// 0x25D
+	nGMSoundVoicePublicityKirby,		  	// 0x25E
+	nGMSoundVoicePublicityLink,		  	// 0x25F
+	nGMSoundVoicePublicityLuigi,			// 0x260
+	nGMSoundVoicePublicityMario,		  	// 0x261
+	nGMSoundVoicePublicityNess,			// 0x262
+	nGMSoundVoicePublicityPikachu,		  	// 0x263
+	nGMSoundVoicePublicityPurin,		 	// 0x264
+	nGMSoundVoicePublicitySamus,		 	// 0x265
+	nGMSoundVoicePublicityYoshi,		  	// 0x266
+	nGMSoundFGMVoiceEnd = 0x2B7
 
-} alSoundEffectID;
+} gmFGMVoiceID;
 
 #endif

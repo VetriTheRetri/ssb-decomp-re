@@ -175,7 +175,7 @@ sb32 itTaruGWaitProcMap(GObj *item_gobj)
 // 0x80179C20
 sb32 itTaruSDefaultProcHit(GObj *item_gobj)
 {
-    func_800269C0_275C0(alSound_SFX_ContainerSmash);
+    func_800269C0_275C0(nGMSoundFGMContainerSmash);
 
     itBoxContainerSmashMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
@@ -421,7 +421,7 @@ void itTaruNExplodeInitItemVars(GObj *item_gobj)
     ip->it_multi = 0;
     ip->item_event_index = 0;
 
-    ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
+    ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
 
     ip->item_hit.can_rehit_item = TRUE;
     ip->item_hit.can_reflect = FALSE;

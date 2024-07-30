@@ -157,11 +157,11 @@ void itKabigonNFallInitItemVars(GObj *item_gobj)
 
     ip->item_vars.kabigon.rumble_wait = 0;
 
-    func_800269C0_275C0(alSound_SFX_KabigonFall);
+    func_800269C0_275C0(nGMSoundFGMKabigonFall);
 
     if (ip->it_kind == nITKindKabigon)
     {
-        func_800269C0_275C0(alSound_Voice_MBallKabigonFall);
+        func_800269C0_275C0(nGMSoundVoiceMBallKabigonFall);
 
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = ITKABIGON_DROP_SIZE_KABIGON;
 
@@ -256,7 +256,7 @@ void itKabigonNJumpInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    func_800269C0_275C0(alSound_SFX_KabigonJump);
+    func_800269C0_275C0(nGMSoundFGMKabigonJump);
 
     ip->it_multi = ITKABIGON_DROP_WAIT;
 
@@ -307,7 +307,7 @@ GObj* itKabigonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         if (ip->it_kind == nITKindKabigon)
         {
-            func_800269C0_275C0(alSound_Voice_MBallKabigonSpawn);
+            func_800269C0_275C0(nGMSoundVoiceMBallKabigonSpawn);
         }
         item_gobj->proc_render = itKabigonSDefaultProcRender;
     }

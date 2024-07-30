@@ -136,7 +136,7 @@ void itStarmieNAttackUpdateSwift(GObj *item_gobj)
 
         itStarmieNAttackMakeSwift(item_gobj, &pos);
 
-        func_800269C0_275C0(alSound_SFX_MonsterShoot);
+        func_800269C0_275C0(nGMSoundFGMMonsterShoot);
 
         ip->item_vars.starmie.swift_spawn_wait = (mtTrigGetRandomIntRange(ITSTARMIE_SWIFT_SPAWN_WAIT_RANDOM) + ITSTARMIE_SWIFT_SPAWN_WAIT_CONST);
 
@@ -302,7 +302,7 @@ void itStarmieNFollowInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == nITKindStarmie)
     {
-        func_800269C0_275C0(alSound_Voice_MBallStarmieSpawn);
+        func_800269C0_275C0(nGMSoundVoiceMBallStarmieSpawn);
     }
 }
 

@@ -121,7 +121,7 @@ GObj* itPorygonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->item_event_index = 0;
 
-        func_800269C0_275C0(alSound_Voice_YamabukiPorygon);
+        func_800269C0_275C0(nGMSoundVoiceYamabukiPorygon);
     }
     return item_gobj;
 }

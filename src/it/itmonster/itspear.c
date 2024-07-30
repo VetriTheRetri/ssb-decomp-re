@@ -205,7 +205,7 @@ void itSpearNAppearInitItemVars(GObj *item_gobj)
 
         omAddMObjAnimAll(dobj->child->mobj, matanim_joint, 0.0F);
         func_8000DF34_EB34(item_gobj);
-        func_800269C0_275C0(alSound_Voice_MBallSpearSpawn);
+        func_800269C0_275C0(nGMSoundVoiceMBallSpearSpawn);
     }
 }
 
@@ -274,7 +274,7 @@ void itSpearNFlyInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == nITKindSpear)
     {
-        func_800269C0_275C0(alSound_Voice_MBallSpearSwarm);
+        func_800269C0_275C0(nGMSoundVoiceMBallSpearSwarm);
     }
 }
 

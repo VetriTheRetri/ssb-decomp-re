@@ -123,7 +123,7 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
             case nITKindHammer:
                 fp->hammer_timer = ITHAMMER_TIME;
 
-                ftParamTryPlayItemMusic(alSound_Music_Hammer);
+                ftParamTryPlayItemMusic(nGMSoundBGMHammer);
                 break;
 
             default:

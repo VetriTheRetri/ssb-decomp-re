@@ -171,7 +171,7 @@ void grYamabukiGateUpdateWait(void)
     else if (--gGRCommonStruct.yamabuki.gate_wait == 0)
     {
         grYamabukiGateAddAnimOpenEntry();
-        func_800269C0_275C0(alSound_SFX_YamabukiGate);
+        func_800269C0_275C0(nGMSoundFGMYamabukiGate);
     }
     gGRCommonStruct.yamabuki.monster_wait--;
 
@@ -180,7 +180,7 @@ void grYamabukiGateUpdateWait(void)
         if (gGRCommonStruct.yamabuki.gate_wait != 0)
         {
             grYamabukiGateAddAnimOpen();
-            func_800269C0_275C0(alSound_SFX_YamabukiGate);
+            func_800269C0_275C0(nGMSoundFGMYamabukiGate);
         }
         grYamabukiGateMakeMonster();
     }

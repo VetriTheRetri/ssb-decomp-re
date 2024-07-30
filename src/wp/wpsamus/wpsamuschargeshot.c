@@ -28,9 +28,9 @@ wpSamusChargeShotAttributes dWPSamusChargeShotWeaponAttributes[/* */] =
         3,                                  // Damage
         100,                                // Hitbox size
         10,                                 // Object collision size
-        alSound_SFX_SamusSpecialNShootS,    // Shoot SFX
-        alSound_SFX_SamusSpecialNCharge0,   // Charge SFX
-        alSound_SFX_ShockS,                 // Hit SFX
+        nGMSoundFGMSamusSpecialNShootS,    // Shoot SFX
+        nGMSoundFGMSamusSpecialNCharge0,   // Charge SFX
+        nGMSoundFGMShockS,                 // Hit SFX
         1                                   // Priority
     },
 
@@ -41,9 +41,9 @@ wpSamusChargeShotAttributes dWPSamusChargeShotWeaponAttributes[/* */] =
         6,                                  // Damage
         120,                                // Hitbox size
         10,                                 // Object collision size
-        alSound_SFX_SamusSpecialNShootS,    // Shoot SFX
-        alSound_SFX_SamusSpecialNCharge1,   // Charge SFX
-        alSound_SFX_ShockS,                 // Hit SFX
+        nGMSoundFGMSamusSpecialNShootS,    // Shoot SFX
+        nGMSoundFGMSamusSpecialNCharge1,   // Charge SFX
+        nGMSoundFGMShockS,                 // Hit SFX
         1                                   // Priority
     },
 
@@ -54,9 +54,9 @@ wpSamusChargeShotAttributes dWPSamusChargeShotWeaponAttributes[/* */] =
         9,                                  // Damage
         140,                                // Hitbox size
         10,                                 // Object collision size
-        alSound_SFX_SamusSpecialNShootM,    // Shoot SFX
-        alSound_SFX_SamusSpecialNCharge2,   // Charge SFX
-        alSound_SFX_ShockM,                 // Hit SFX
+        nGMSoundFGMSamusSpecialNShootM,    // Shoot SFX
+        nGMSoundFGMSamusSpecialNCharge2,   // Charge SFX
+        nGMSoundFGMShockM,                 // Hit SFX
         1                                   // Priority
     },
 
@@ -67,9 +67,9 @@ wpSamusChargeShotAttributes dWPSamusChargeShotWeaponAttributes[/* */] =
         12,                                 // Damage
         160,                                // Hitbox size
         10,                                 // Object collision size
-        alSound_SFX_SamusSpecialNShootM,    // Shoot SFX
-        alSound_SFX_SamusSpecialNCharge3,   // Charge SFX
-        alSound_SFX_ShockM,                 // Hit SFX
+        nGMSoundFGMSamusSpecialNShootM,    // Shoot SFX
+        nGMSoundFGMSamusSpecialNCharge3,   // Charge SFX
+        nGMSoundFGMShockM,                 // Hit SFX
         1                                   // Priority
     },
 
@@ -80,9 +80,9 @@ wpSamusChargeShotAttributes dWPSamusChargeShotWeaponAttributes[/* */] =
         15,                                 // Damage
         180,                                // Hitbox size
         10,                                 // Object collision size
-        alSound_SFX_SamusSpecialNShootM,    // Shoot SFX
-        alSound_SFX_SamusSpecialNCharge4,   // Charge SFX
-        alSound_SFX_ShockM,                 // Hit SFX
+        nGMSoundFGMSamusSpecialNShootM,    // Shoot SFX
+        nGMSoundFGMSamusSpecialNCharge4,   // Charge SFX
+        nGMSoundFGMShockM,                 // Hit SFX
         1                                   // Priority
     },
 
@@ -93,9 +93,9 @@ wpSamusChargeShotAttributes dWPSamusChargeShotWeaponAttributes[/* */] =
         18,                                 // Damage
         200,                                // Hitbox size
         10,                                 // Object collision size
-        alSound_SFX_SamusSpecialNShootL,    // Shoot SFX
-        alSound_SFX_SamusSpecialNCharge5,   // Charge SFX
-        alSound_SFX_ShockL,                 // Hit SFX
+        nGMSoundFGMSamusSpecialNShootL,    // Shoot SFX
+        nGMSoundFGMSamusSpecialNCharge5,   // Charge SFX
+        nGMSoundFGMShockL,                 // Hit SFX
         1                                   // Priority
     },
 
@@ -106,9 +106,9 @@ wpSamusChargeShotAttributes dWPSamusChargeShotWeaponAttributes[/* */] =
         21,                                 // Damage
         240,                                // Hitbox size
         10,                                 // Object collision size
-        alSound_SFX_SamusSpecialNShootL,    // Shoot SFX
-        alSound_SFX_SamusSpecialNCharge6,   // Charge SFX
-        alSound_SFX_ShockL,                 // Hit SFX
+        nGMSoundFGMSamusSpecialNShootL,    // Shoot SFX
+        nGMSoundFGMSamusSpecialNCharge6,   // Charge SFX
+        nGMSoundFGMShockL,                 // Hit SFX
         1                                   // Priority
     },
 
@@ -119,9 +119,9 @@ wpSamusChargeShotAttributes dWPSamusChargeShotWeaponAttributes[/* */] =
         26,                                 // Damage
         260,                                // Hitbox size
         10,                                 // Object collision size
-        alSound_SFX_SamusSpecialNShootF,    // Shoot SFX
-        alSound_SFX_SamusSpecialNCharge7,   // Charge SFX
-        alSound_SFX_ShockL,                 // Hit SFX
+        nGMSoundFGMSamusSpecialNShootF,    // Shoot SFX
+        nGMSoundFGMSamusSpecialNCharge7,   // Charge SFX
+        nGMSoundFGMShockL,                 // Hit SFX
         2                                   // Priority
     }
 };

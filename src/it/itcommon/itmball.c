@@ -389,7 +389,7 @@ void itMBallGOpenInitItemVars(GObj *item_gobj)
     sibling = dobj->child->sib_next;
     sibling->flags ^= DOBJ_FLAG_NORENDER;
 
-    func_800269C0_275C0(alSound_SFX_MBallOpen);
+    func_800269C0_275C0(nGMSoundFGMMBallOpen);
 
     ip->attach_line_id = ip->coll_data.ground_line_id;
 

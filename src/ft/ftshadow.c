@@ -11,9 +11,6 @@ extern intptr_t lFTShadowTextureImage;          // 0x00003A68
 
 extern u32 gGtlTaskId;
 
-extern gsColorRGBA dFTShadowColorDefault;
-extern gsColorRGBA dFTShadowColorTeams[/* */];
-
 // // // // // // // // // // // //
 //                               //
 //        INITIALIZED DATA       //
@@ -305,9 +302,9 @@ void ftShadowProcRender(GObj *shadow_gobj)
 
                     if ((gBattleState->is_team_battle == TRUE) && !(gBattleState->is_not_teamshadows))
                     {
-                        gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dFTShadowColorTeams[fp->team].r, dFTShadowColorTeams[fp->team].g, dFTShadowColorTeams[fp->team].b, dFTShadowColorTeams[fp->team].a);
+                        gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dFTCommonDataShadowColorTeams[fp->team].r, dFTCommonDataShadowColorTeams[fp->team].g, dFTCommonDataShadowColorTeams[fp->team].b, dFTCommonDataShadowColorTeams[fp->team].a);
                     }
-                    else gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dFTShadowColorDefault.r, dFTShadowColorDefault.g, dFTShadowColorDefault.b, dFTShadowColorDefault.a);
+                    else gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dFTCommonDataShadowColorDefault.r, dFTCommonDataShadowColorDefault.g, dFTCommonDataShadowColorDefault.b, dFTCommonDataShadowColorDefault.a);
 
                     sv = shadow_vertex;
 

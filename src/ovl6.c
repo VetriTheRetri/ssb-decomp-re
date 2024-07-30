@@ -266,18 +266,18 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 	gGRCommonStruct.bonus2.platform_count--;
 
 	scBonusGame_UpdateBonus2PlatformInterface();
-	func_800269C0_275C0(alSound_SFX_Bonus2PlatformLanding);
+	func_800269C0_275C0(nGMSoundFGMBonus2PlatformLanding);
 
 	if (gGRCommonStruct.bonus2.platform_count == 0)
 	{
 		if ((gSceneData.scene_previous != 0x34)
 			&& (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_task_count == GMBATTLE_BONUSGAME_TASK_MAX)
 			&& (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_time))
-			ifCommonAnnounceCompleteInitInterface(alSound_Voice_AnnounceNewRecord);
+			ifCommonAnnounceCompleteInitInterface(nGMSoundVoiceAnnounceNewRecord);
 		else
-			ifCommonAnnounceCompleteInitInterface(alSound_Voice_AnnounceComplete);
+			ifCommonAnnounceCompleteInitInterface(nGMSoundVoiceAnnounceComplete);
 
-		ifCommonBattleEndAddSoundQueueID(alSound_SFX_Bonus2PlatformLanding);
+		ifCommonBattleEndAddSoundQueueID(nGMSoundFGMBonus2PlatformLanding);
 	}
 }
 

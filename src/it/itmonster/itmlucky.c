@@ -209,7 +209,7 @@ void itMLuckyNAppearSetStatus(GObj *item_gobj)
 
     if (ip->it_kind == nITKindMLucky)
     {
-        func_800269C0_275C0(alSound_Voice_MBallLuckySpawn);
+        func_800269C0_275C0(nGMSoundVoiceMBallLuckySpawn);
     }
     itMainSetItemStatus(item_gobj, dITMLuckyStatusDesc, itStatus_MLucky_NAppear);
 }
@@ -248,7 +248,7 @@ sb32 itMLuckyNSpawnProcUpdate(GObj *lucky_gobj)
                 {
                     egg_ip = itGetStruct(egg_gobj);
 
-                    func_800269C0_275C0(alSound_SFX_KirbySpecialLwStart);
+                    func_800269C0_275C0(nGMSoundFGMKirbySpecialLwStart);
 
                     lucky_ip->item_vars.mlucky.egg_spawn_wait = ITMLUCKY_EGG_SPAWN_WAIT_CONST;
                     lucky_ip->it_multi--;

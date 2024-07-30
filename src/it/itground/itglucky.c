@@ -113,7 +113,7 @@ void itGLuckySDefaultUpdateEggSpawn(GObj *lucky_gobj)
                 {
                     egg_ip = itGetStruct(egg_gobj);
 
-                    func_800269C0_275C0(alSound_SFX_KirbySpecialLwStart); // Bruh lol
+                    func_800269C0_275C0(nGMSoundFGMKirbySpecialLwStart); // Bruh lol
 
                     lucky_ip->it_multi = 10;
                     lucky_ip->item_vars.glucky.egg_spawn_count--;
@@ -233,7 +233,7 @@ GObj* itGLuckyMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->item_vars.glucky.egg_spawn_count = ITGLUCKY_EGG_SPAWN_COUNT;
 
-        func_800269C0_275C0(alSound_Voice_YamabukiLucky);
+        func_800269C0_275C0(nGMSoundVoiceYamabukiLucky);
     }
     return item_gobj;
 }

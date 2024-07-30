@@ -90,7 +90,7 @@ sb32 wpSamusBombProcUpdate(GObj *weapon_gobj)
     {
         efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
         wpSamusBombExplodeInitWeaponVars(weapon_gobj);
-        func_800269C0_275C0(alSound_SFX_ExplodeS);
+        func_800269C0_275C0(nGMSoundFGMExplodeS);
 
         return FALSE;
     }
@@ -167,7 +167,7 @@ sb32 wpSamusBombProcMap(GObj *weapon_gobj)
 // 0x801691FC
 sb32 wpSamusBombProcHit(GObj *weapon_gobj)
 {
-    func_800269C0_275C0(alSound_SFX_ExplodeS);
+    func_800269C0_275C0(nGMSoundFGMExplodeS);
     efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
     wpSamusBombExplodeInitWeaponVars(weapon_gobj);
 
@@ -177,7 +177,7 @@ sb32 wpSamusBombProcHit(GObj *weapon_gobj)
 // 0x8016923C
 sb32 wpSamusBombProcAbsorb(GObj *weapon_gobj)
 {
-    func_800269C0_275C0(alSound_SFX_ExplodeS);
+    func_800269C0_275C0(nGMSoundFGMExplodeS);
     efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;

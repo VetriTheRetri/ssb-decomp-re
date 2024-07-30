@@ -168,7 +168,7 @@ void itDogasNAttackUpdateSmog(GObj *item_gobj)
             vel.y = -vel.y;
         }
         itDogasWeaponSmogMakeWeapon(item_gobj, &pos, &vel);
-        func_800269C0_275C0(alSound_SFX_DogasSmog);
+        func_800269C0_275C0(nGMSoundFGMDogasSmog);
 
         ip->item_vars.dogas.smog_spawn_wait = ITDOGAS_SMOG_SPAWN_WAIT;
 
@@ -211,7 +211,7 @@ void itDogasNAttackInitItemVars(GObj *item_gobj)
         omAddDObjAnimAll(dobj->child, itGetPData(ip, lITDogasDataStart, lITDogasAnimJoint), 0.0F); // Linker thing
 
         func_8000DF34_EB34(item_gobj);
-        func_800269C0_275C0(alSound_Voice_MBallDogasSpawn);
+        func_800269C0_275C0(nGMSoundVoiceMBallDogasSpawn);
     }
 }
 

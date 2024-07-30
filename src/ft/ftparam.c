@@ -117,10 +117,10 @@ s32 ftParamGetItemMusicLength(u32 bgm_id)
 {
     switch (bgm_id)
     {
-    case alSound_Music_Starman:
+    case nGMSoundBGMStarman:
         return ITHAMMER_BGM_DURATION;
 
-    case alSound_Music_Hammer:
+    case nGMSoundBGMHammer:
         return ITSTAR_BGM_DURATION;
 
     default:
@@ -154,11 +154,11 @@ void ftParamTryUpdateItemMusic(void)
 
         if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer))
         {
-            bgm_id = alSound_Music_Hammer;
+            bgm_id = nGMSoundBGMHammer;
         }
         if (fp->star_invincible_timer > ITSTAR_WARN_BEGIN_FRAME)
         {
-            bgm_id = alSound_Music_Starman;
+            bgm_id = nGMSoundBGMStarman;
         }
         length_new = ftParamGetItemMusicLength(bgm_id);
 
@@ -1209,13 +1209,13 @@ void ftParamResetTexturePartAll(GObj *fighter_gobj)
 // 0x800E974C
 sb32 ftParamCheckSetColAnimID(gmColAnim *colanim, s32 colanim_id, s32 duration)
 {
-    if (dFTParamColAnimDescs[colanim_id].priority >= dFTParamColAnimDescs[colanim->colanim_id].priority)
+    if (dFTCommonDataColAnimDescs[colanim_id].priority >= dFTCommonDataColAnimDescs[colanim->colanim_id].priority)
     {
         s32 i;
 
         colanim->colanim_id = colanim_id;
         colanim->duration = duration;
-        colanim->cs[0].p_script = dFTParamColAnimDescs[colanim_id].p_script;
+        colanim->cs[0].p_script = dFTCommonDataColAnimDescs[colanim_id].p_script;
         colanim->cs[0].color_event_timer = 0;
         colanim->cs[0].script_index = 0;
 

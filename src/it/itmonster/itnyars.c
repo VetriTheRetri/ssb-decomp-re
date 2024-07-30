@@ -120,7 +120,7 @@ sb32 itNyarsNAttackProcUpdate(GObj *item_gobj)
         ip->item_vars.nyars.coin_rotate_step++;
         ip->item_vars.nyars.coin_spawn_wait = ip->it_multi - ITNYARS_COIN_SPAWN_WAIT;
 
-        func_800269C0_275C0(alSound_SFX_NyarsCoin);
+        func_800269C0_275C0(nGMSoundFGMNyarsCoin);
     }
     if (ip->item_vars.nyars.model_rotate_wait == 0)
     {

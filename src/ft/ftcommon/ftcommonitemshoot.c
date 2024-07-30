@@ -53,7 +53,7 @@ void ftCommonLGunShootProcAccessory(GObj *fighter_gobj)
 
             ftParamMakeEffect(fighter_gobj, nEFKindDustDashSmall, nFTPartsJointTopN, &make_effect_offset, NULL, fp->lr, FALSE, FALSE);
 
-            func_800269C0_275C0(alSound_SFX_LGunShoot);
+            func_800269C0_275C0(nGMSoundFGMLGunShoot);
             ftParamMakeRumble(fp, 9, 0);
         }
         else
@@ -62,7 +62,7 @@ void ftCommonLGunShootProcAccessory(GObj *fighter_gobj)
             Vec3f dust_effect_offset = { FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_X, FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Y, FTCOMMON_LGUNSHOOT_AMMO_SPAWN_OFF_Z };
 
             ftParamMakeEffect(fighter_gobj, nEFKindDustLight, fp->attributes->joint_itemhold_light, &dust_effect_offset, NULL, -fp->lr, TRUE, FALSE);
-            func_800269C0_275C0(alSound_SFX_LGunEmpty);
+            func_800269C0_275C0(nGMSoundFGMLGunEmpty);
         }
         fp->command_vars.flags.flag0 = 0;
     }
@@ -196,7 +196,7 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
                     Vec3f effect_noammo_offset = { 60.0F, 100.0F, 0.0F };
 
                     ftParamMakeEffect(fighter_gobj, nEFKindDustLight, fp->attributes->joint_itemhold_light, &effect_noammo_offset, NULL, -fp->lr, TRUE, FALSE);
-                    func_800269C0_275C0(alSound_SFX_FireFlowerBurn);
+                    func_800269C0_275C0(nGMSoundFGMFireFlowerBurn);
                 }
                 else
                 {
@@ -204,7 +204,7 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
                     Vec3f effect_haveammo_offset = { 0.0F, 0.0F, -180.0F };
 
                     ftParamMakeEffect(fighter_gobj, nEFKindDustLight, nFTPartsJointTopN, &effect_haveammo_offset, NULL, fp->lr, FALSE, FALSE);
-                    func_800269C0_275C0(alSound_SFX_BurnE);
+                    func_800269C0_275C0(nGMSoundFGMBurnE);
                 }
             }
             fp->status_vars.common.fireflower.ammo_sub--;

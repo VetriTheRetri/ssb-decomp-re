@@ -87,7 +87,7 @@ sb32 itMapProcAllCheckCollEnd(mpCollData *coll_data, GObj *item_gobj, u32 flags)
     {
         coll_data->is_coll_end = TRUE;
 
-        func_800269C0_275C0(alSound_SFX_ItemMapCollide);
+        func_800269C0_275C0(nGMSoundFGMItemMapCollide);
 
         ip->rotate_step = 0.0F;
         joint->rotate.vec.f.z = 0.0F;
@@ -131,7 +131,7 @@ sb32 itMapProcAllCheckCollisionFlag(mpCollData *coll_data, GObj *item_gobj, u32 
         if (coll_data->coll_mask_stat & MPCOLL_KIND_GROUND)
         {
             mpObjectProc_RunGroundEdgeAdjust(coll_data);
-            func_800269C0_275C0(alSound_SFX_ItemMapCollide);
+            func_800269C0_275C0(nGMSoundFGMItemMapCollide);
 
             ip->rotate_step = 0.0F;
             joint->rotate.vec.f.z = 0.0F;
@@ -173,7 +173,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
 
             return_bool = TRUE;
 
-            func_800269C0_275C0(alSound_SFX_ItemMapCollide);
+            func_800269C0_275C0(nGMSoundFGMItemMapCollide);
         }
     }
     if (coll_flags & check_flags & MPCOLL_KIND_RWALL)
@@ -187,7 +187,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
 
             return_bool = TRUE;
 
-            func_800269C0_275C0(alSound_SFX_ItemMapCollide);
+            func_800269C0_275C0(nGMSoundFGMItemMapCollide);
         }
     }
     if (coll_flags & check_flags & MPCOLL_KIND_CEIL)
@@ -213,7 +213,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
 
             return_bool = TRUE;
 
-            func_800269C0_275C0(alSound_SFX_ItemMapCollide);
+            func_800269C0_275C0(nGMSoundFGMItemMapCollide);
         }
     }
     if (return_bool != FALSE)

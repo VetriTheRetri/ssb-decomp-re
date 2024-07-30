@@ -183,11 +183,11 @@ void ftCommonDeadInitStatusVars(GObj *fighter_gobj)
     ftCommonDeadUpdateRumble(fp);
     ftCommonDeadUpdateScore(fp);
 
-    if (fp->attributes->dead_sfx[0] != 0x2B7)
+    if (fp->attributes->dead_sfx[0] != nGMSoundFGMVoiceEnd)
     {
         ftCommonDeadAddDeadSFXSoundQueue(fp->attributes->dead_sfx[0]);
     }
-    if (fp->attributes->dead_sfx[1] != 0x2B7)
+    if (fp->attributes->dead_sfx[1] != nGMSoundFGMVoiceEnd)
     {
         ftCommonDeadAddDeadSFXSoundQueue(fp->attributes->dead_sfx[1]);
     }
@@ -228,9 +228,9 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
         ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
     )
     {
-        sfx_id = alSound_SFX_DeadPortalHitS;
+        sfx_id = nGMSoundFGMDeadPortalHitS;
     }
-    else sfx_id = alSound_SFX_DeadPortalHitL;
+    else sfx_id = nGMSoundFGMDeadPortalHitL;
 
     ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 }
@@ -270,9 +270,9 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
         ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
     )
     {
-        sfx_id = alSound_SFX_DeadPortalHitS;
+        sfx_id = nGMSoundFGMDeadPortalHitS;
     }
-    else sfx_id = alSound_SFX_DeadPortalHitL;
+    else sfx_id = nGMSoundFGMDeadPortalHitL;
 
     ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 }
@@ -311,9 +311,9 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
         ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
     )
     {
-        sfx_id = alSound_SFX_DeadPortalHitS;
+        sfx_id = nGMSoundFGMDeadPortalHitS;
     }
-    else sfx_id = alSound_SFX_DeadPortalHitL;
+    else sfx_id = nGMSoundFGMDeadPortalHitL;
 
     ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 }
@@ -364,7 +364,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
             fp->is_ignore_training_menu = TRUE;
 
             ftCommonDeadUpdateScore(fp);
-            ftCommonDeadAddDeadSFXSoundQueue(alSound_SFX_DeadUpStar);
+            ftCommonDeadAddDeadSFXSoundQueue(nGMSoundFGMDeadUpStar);
 
             fp->is_playertag_hide = TRUE;
             fp->colanim.is_use_maincolor = FALSE;
@@ -404,7 +404,7 @@ void ftCommonDeadUpStarSetStatus(GObj *fighter_gobj)
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftParamSetPlayerTagWait(fighter_gobj, 1);
 
-    if (fp->attributes->deadup_sfx != 0x2B7)
+    if (fp->attributes->deadup_sfx != nGMSoundFGMVoiceEnd)
     {
         func_800269C0_275C0(fp->attributes->deadup_sfx);
     }
@@ -477,17 +477,17 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
                 ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
             )
             {
-                sfx_id = alSound_SFX_DeadPortalHitS;
+                sfx_id = nGMSoundFGMDeadPortalHitS;
             }
-            else sfx_id = alSound_SFX_DeadPortalHitL;
+            else sfx_id = nGMSoundFGMDeadPortalHitL;
 
             ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 
-            if (fp->attributes->dead_sfx[0] != 0x2B7)
+            if (fp->attributes->dead_sfx[0] != nGMSoundFGMVoiceEnd)
             {
                 ftCommonDeadAddDeadSFXSoundQueue(fp->attributes->dead_sfx[0]);
             }
-            if (fp->attributes->dead_sfx[1] != 0x2B7)
+            if (fp->attributes->dead_sfx[1] != nGMSoundFGMVoiceEnd)
             {
                 ftCommonDeadAddDeadSFXSoundQueue(fp->attributes->dead_sfx[1]);
             }
@@ -525,7 +525,7 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftParamSetPlayerTagWait(fighter_gobj, 1);
 
-    if (fp->attributes->deadup_sfx != 0x2B7)
+    if (fp->attributes->deadup_sfx != nGMSoundFGMVoiceEnd)
     {
         func_800269C0_275C0(fp->attributes->deadup_sfx);
     }

@@ -86,7 +86,7 @@ void func_ovl5_8018D160(GObj *gobj)
 {
 	if (ftParamCheckExplainInputSeq(gUnkExplainFighterGObj) == FALSE)
 	{
-		func_800269C0_275C0(alSound_SFX_TitlePressStart);
+		func_800269C0_275C0(nGMSoundFGMTitlePressStart);
 		leoInitUnit_atten();
 	}
 }

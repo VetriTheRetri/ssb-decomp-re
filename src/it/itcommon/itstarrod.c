@@ -321,7 +321,7 @@ sb32 itStarRodWeaponStarProcMap(GObj *weapon_gobj)
     {
         efManagerStarSplashMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->lr);
 
-        func_800269C0_275C0(alSound_SFX_StarMapCollide);
+        func_800269C0_275C0(nGMSoundFGMStarMapCollide);
 
         return TRUE;
     }

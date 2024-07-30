@@ -312,7 +312,7 @@ sb32 itLizardonSDefaultProcUpdate(GObj *item_gobj)
 
         if (ip->it_kind == nITKindLizardon)
         {
-            func_800269C0_275C0(alSound_Voice_MBallLizardonSpawn);
+            func_800269C0_275C0(nGMSoundVoiceMBallLizardonSpawn);
         }
         itLizardonAFallSetStatus(item_gobj);
     }
@@ -390,7 +390,7 @@ sb32 itLizardonWeaponFlameProcMap(GObj *weapon_gobj)
 // 0x8017FB3C
 sb32 itLizardonWeaponFlameProcHit(GObj *weapon_gobj)
 {
-    func_800269C0_275C0(alSound_SFX_ExplodeS);
+    func_800269C0_275C0(nGMSoundFGMExplodeS);
     efManagerSparkleWhiteMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return FALSE;
@@ -449,5 +449,5 @@ void itLizardonNAttackMakeFlame(GObj *item_gobj, Vec3f *pos, s32 lr)
 
     itLizardonWeaponFlameMakeWeapon(item_gobj, pos, &vel);
 
-    func_800269C0_275C0(alSound_SFX_LizardonFlame);
+    func_800269C0_275C0(nGMSoundFGMLizardonFlame);
 }

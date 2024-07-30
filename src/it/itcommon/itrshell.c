@@ -637,7 +637,7 @@ void itRShellGSpinInitItemVars(GObj *item_gobj)
     ip->item_vars.shell.dust_effect_int = ITRSHELL_EFFECT_SPAWN_INT;
 
     itRShellGSpinAddAnim(item_gobj);
-    func_800269C0_275C0(alSound_SFX_BombHeiWalkStart);
+    func_800269C0_275C0(nGMSoundFGMBombHeiWalkStart);
     itMainClearOwnerStats(item_gobj);
     itMapSetGround(ip);
 }

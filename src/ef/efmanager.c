@@ -6173,7 +6173,7 @@ void efManagerLoseKirbyStarProcUpdate(GObj *effect_gobj)
     }
     if (ep->effect_vars.lose_kirby_star.lifetime-- <= 0)
     {
-        func_800269C0_275C0(alSound_SFX_KirbyStarPing1);
+        func_800269C0_275C0(nGMSoundFGMKirbyStarPing1);
         efManagerStarSplashMakeEffect(translate, ep->effect_vars.lose_kirby_star.lr);
         efManagerSetPrevAlloc(ep);
         omEjectGObj(effect_gobj);

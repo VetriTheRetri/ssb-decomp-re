@@ -87,7 +87,7 @@ void wpBossBulletExplodeInitWeaponVars(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    wp->weapon_hit.hit_sfx = alSound_SFX_ExplodeL;
+    wp->weapon_hit.hit_sfx = nGMSoundFGMExplodeL;
 
     wp->weapon_hit.can_rehit_item = TRUE;
     wp->weapon_hit.can_hop = FALSE;
@@ -118,7 +118,7 @@ sb32 wpBossBulletProcMap(GObj *weapon_gobj)
     if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
         wpBossBulletExplodeInitWeaponVars(weapon_gobj);
-        func_800269C0_275C0(alSound_SFX_ExplodeS);
+        func_800269C0_275C0(nGMSoundFGMExplodeS);
         efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
         return TRUE;

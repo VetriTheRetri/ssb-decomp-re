@@ -3,195 +3,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8012C9E0
-extern ftItemThrow dFTCommonItemThrowDescs[/* */];
-
-/*
-{
-    // LightThrowDrop
-    {
-        FALSE,  // Is Smash throw?
-        36,     // Velocity
-        110,    // Angle
-        50      // Damage Multiplier %
-    },
-
-    // LightThrowDash
-    {
-        FALSE,  // Is Smash throw?
-        120,    // Velocity
-        10,     // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowF
-    {
-        FALSE,  // Is Smash throw?
-        60,     // Velocity
-        15,     // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowB
-    {
-        FALSE,  // Is Smash throw?
-        60,     // Velocity
-        15,     // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowHi
-    {
-        FALSE,  // Is Smash throw?
-        65,     // Velocity
-        90,     // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowLw
-    {
-        FALSE,  // Is Smash throw?
-        65,     // Velocity
-        -70,    // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowF4
-    {
-        TRUE,   // Is Smash throw?
-        110,    // Velocity
-        8,      // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowB4
-    {
-        TRUE,   // Is Smash throw?
-        110,    // Velocity
-        8,      // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowHi4
-    {
-        TRUE,   // Is Smash throw?
-        110,    // Velocity
-        90,     // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowLw4
-    {
-       TRUE,   // Is Smash throw?
-       110,    // Velocity
-       -70,    // Angle
-       100     // Damage Multiplier %
-    },
-
-    // LightThrowAirF
-    {
-        FALSE,  // Is Smash throw?
-        75,     // Velocity
-        8,      // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowAirB
-    {
-        FALSE,  // Is Smash throw?
-        75,     // Velocity
-        8,      // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowAirHi
-    {
-        FALSE,  // Is Smash throw?
-        80,     // Velocity
-        90,     // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowAirLw
-    {
-        FALSE,  // Is Smash throw?
-        75,     // Velocity
-        -90,    // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowAirF4
-    {
-        TRUE,   // Is Smash throw?
-        120,    // Velocity
-        7,      // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowAirB4
-    {
-        TRUE,   // Is Smash throw?
-        120,    // Velocity
-        7,      // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowAirHi4
-    {
-        TRUE,   // Is Smash throw?
-        120,    // Velocity
-        90,     // Angle
-        100     // Damage Multiplier %
-    },
-
-    // LightThrowAirLw4
-    {
-        TRUE,   // Is Smash throw?
-        140,    // Velocity
-        -90,    // Angle
-        100     // Damage Multiplier %
-    },
-
-    // HeavyThrowF
-    {
-        FALSE,  // Is Smash throw?
-        70,     // Velocity
-        60,     // Angle
-        100     // Damage Multiplier %
-    },
-
-    // HeavyThrowB
-    {
-        FALSE,  // Is Smash throw?
-        70,     // Velocity
-        60,     // Angle
-        100     // Damage Multiplier %
-    },
-
-    // HeavyThrowF4
-    {
-        TRUE,   // Is Smash throw?
-        90,     // Velocity
-        14,     // Angle
-        100     // Damage Multiplier %
-    },
-
-    // HeavyThrowB4
-    {
-        TRUE,   // Is Smash throw?
-        90,     // Velocity
-        14,     // Angle
-        100     // Damage Multiplier %
-    }
-};
-*/
-
-// // // // // // // // // // // //
-//                               //
 //           FUNCTIONS           //
 //                               //
 // // // // // // // // // // // //
@@ -273,15 +84,15 @@ void ftCommonItemThrowProcUpdate(GObj *fighter_gobj)
         }
         else status_id = fp->status_info.status_id;
 
-        vel_base = dFTCommonItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].velocity * fp->status_vars.common.itemthrow.throw_vel * fp->attributes->item_throw_vel * 0.01F;
+        vel_base = dFTCommonDataItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].velocity * fp->status_vars.common.itemthrow.throw_vel * fp->attributes->item_throw_vel * 0.01F;
 
         if (fp->status_vars.common.itemthrow.throw_angle == 361)
         {
-            angle = dFTCommonItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].angle;
+            angle = dFTCommonDataItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].angle;
         }
         else angle = fp->status_vars.common.itemthrow.throw_angle;
 
-        damage_mul = dFTCommonItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].damage * 0.01F * fp->status_vars.common.itemthrow.throw_damage * fp->attributes->item_throw_mul * 0.01F;
+        damage_mul = dFTCommonDataItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].damage * 0.01F * fp->status_vars.common.itemthrow.throw_damage * fp->attributes->item_throw_mul * 0.01F;
 
         vel.x = __cosf(F_CLC_DTOR32(angle)) * vel_base * fp->lr;
         vel.y = __sinf(F_CLC_DTOR32(angle)) * vel_base;
@@ -291,7 +102,7 @@ void ftCommonItemThrowProcUpdate(GObj *fighter_gobj)
         {
             itMainSetFighterDrop(fp->item_hold, &vel, damage_mul);
         }
-        else itMainSetFighterThrow(fp->item_hold, &vel, damage_mul, dFTCommonItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].is_smash_throw);
+        else itMainSetFighterThrow(fp->item_hold, &vel, damage_mul, dFTCommonDataItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].is_smash_throw);
 
         fp->command_vars.flags.flag0 = 0;
     }

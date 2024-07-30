@@ -99,7 +99,7 @@ void ftCommonTwisterSetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
     fp->status_vars.common.twister.tornado_gobj = tornado_gobj;
 
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
-    func_800269C0_275C0(alSound_SFX_HyruleTwisterTrapped);
+    func_800269C0_275C0(nGMSoundFGMHyruleTwisterTrapped);
 }
 
 // 0x80143CC4

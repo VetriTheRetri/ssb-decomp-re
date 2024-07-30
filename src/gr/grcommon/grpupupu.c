@@ -365,7 +365,7 @@ void grPupupuWhispyUpdateOpen(void)
 
         grPupupuWhispyLeavesMakeEffect();
 
-        func_800269C0_275C0(alSound_SFX_PupupuWhispyWind);
+        func_800269C0_275C0(nGMSoundFGMPupupuWhispyWind);
     }
 }
 

@@ -183,7 +183,7 @@ void grHyruleTwisterUpdateSummon(void)
 
         ftMainCheckSetMapObjectGObj(gGRCommonStruct.hyrule.twister_gobj, grHyruleTwisterCheckGetDamageKind);
 
-        func_800269C0_275C0(alSound_SFX_HyruleTwisterSpawn);
+        func_800269C0_275C0(nGMSoundFGMHyruleTwisterSpawn);
     }
 }
 

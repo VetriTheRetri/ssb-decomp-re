@@ -211,7 +211,7 @@ void itBombHeiSDefaultSetExplode(GObj *item_gobj, u8 unused_arg)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
-    ip->item_hit.hit_sfx = alSound_SFX_ExplodeL;
+    ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
 
     itMainRefreshHit(item_gobj);
     itMainClearOwnerStats(item_gobj);
@@ -563,7 +563,7 @@ void itBombHeiGWalkInitItemVars(GObj *item_gobj)
     }
     itMainClearOwnerStats(item_gobj);
 
-    func_800269C0_275C0(alSound_SFX_BombHeiFuse);
+    func_800269C0_275C0(nGMSoundFGMBombHeiFuse);
 }
 
 // 0x801779A8
@@ -583,7 +583,7 @@ void itBombHeiSDefaultClearVelSetExplode(GObj *item_gobj, u8 unused)
 
     itBombHeiSDefaultSetExplode(item_gobj, unused);
 
-    func_800269C0_275C0(alSound_SFX_ExplodeL);
+    func_800269C0_275C0(nGMSoundFGMExplodeL);
 }
 
 // 0x80177A24
@@ -687,7 +687,7 @@ sb32 itBombHeiGExplodeWaitProcUpdate(GObj *item_gobj)
     {
         itBombHeiSDefaultCheckMakeDustEffect(item_gobj, TRUE);
         itBombHeiSDefaultClearVelSetExplode(item_gobj, 0);
-        func_800269C0_275C0(alSound_SFX_ExplodeL);
+        func_800269C0_275C0(nGMSoundFGMExplodeL);
     }
     ip->it_multi++;
 

@@ -8,7 +8,163 @@
 //                               //
 // // // // // // // // // // // //
 
-extern grFileInfo D_ovl2_8012C520[/* */];
+extern intptr_t lGRPupupuGroundFileID;              // 0x000000FF
+extern intptr_t lGRPupupuSmallGroundFileID;         // 0x00000100
+extern intptr_t lGRZebesGroundFileID;               // 0x00000101
+extern intptr_t lGRPupupuTestGroundFileID;          // 0x00000102
+extern intptr_t lGRCastleGroundFileID;              // 0x00000103
+extern intptr_t lGRInishieGroundFileID;             // 0x00000104
+extern intptr_t lGRJungleGroundFileID;              // 0x00000105
+extern intptr_t lGRSectorGroundFileID;              // 0x00000106
+extern intptr_t lGRYosterGroundFileID;              // 0x00000107
+extern intptr_t lGRYamabukiGroundFileID;            // 0x00000108
+extern intptr_t lGRHyruleGroundFileID;              // 0x00000109
+extern intptr_t lGRLastGroundFileID;                // 0x0000010A
+extern intptr_t lGRExplainGroundFileID;             // 0x0000010B
+extern intptr_t lGRZakoGroundFileID;                // 0x0000010C
+extern intptr_t lGRMetalGroundFileID;               // 0x0000010D
+extern intptr_t lGRYosterSmallGroundFileID;         // 0x0000010E
+extern intptr_t lGRBonus1MarioGroundFileID;         // 0x0000010F
+extern intptr_t lGRBonus1FoxGroundFileID;           // 0x00000110
+extern intptr_t lGRBonus1DonkeyGroundFileID;        // 0x00000111
+extern intptr_t lGRBonus1SamusGroundFileID;         // 0x00000112
+extern intptr_t lGRBonus1LuigiGroundFileID;         // 0x00000113
+extern intptr_t lGRBonus1LinkGroundFileID;          // 0x00000114
+extern intptr_t lGRBonus1YoshiGroundFileID;         // 0x00000115
+extern intptr_t lGRBonus1CaptainGroundFileID;       // 0x00000116
+extern intptr_t lGRBonus1KirbyGroundFileID;         // 0x00000117
+extern intptr_t lGRBonus1PikachuGroundFileID;       // 0x00000118
+extern intptr_t lGRBonus1PurinGroundFileID;         // 0x00000119
+extern intptr_t lGRBonus1NessGroundFileID;          // 0x0000011A
+extern intptr_t lGRBonus2MarioGroundFileID;         // 0x0000011B
+extern intptr_t lGRBonus2FoxGroundFileID;           // 0x0000011C
+extern intptr_t lGRBonus2DonkeyGroundFileID;        // 0x0000011D
+extern intptr_t lGRBonus2SamusGroundFileID;         // 0x0000011E
+extern intptr_t lGRBonus2LuigiGroundFileID;         // 0x0000011F
+extern intptr_t lGRBonus2LinkGroundFileID;          // 0x00000120
+extern intptr_t lGRBonus2YoshiGroundFileID;         // 0x00000121
+extern intptr_t lGRBonus2CaptainGroundFileID;       // 0x00000122
+extern intptr_t lGRBonus2KirbyGroundFileID;         // 0x00000123
+extern intptr_t lGRBonus2PikachuGroundFileID;       // 0x00000124
+extern intptr_t lGRBonus2PurinGroundFileID;         // 0x00000125
+extern intptr_t lGRBonus2NessGroundFileID;          // 0x00000126
+extern intptr_t lGRBonus3GroundFileID;              // 0x00000127
+
+// // // // // // // // // // // //
+//                               //
+//        INITIALIZED DATA       //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8012C4E0
+f32 dMPCollisionSurfaceFrictions[/* */] =
+{
+    4.0F, 
+    3.0F, 
+    3.0F, 
+    1.0F, 
+    2.0F, 
+    2.0F, 
+    4.0F, 
+    4.0F, 
+    4.0F, 
+    4.0F, 
+    4.0F, 
+    4.0F, 
+    4.0F, 
+    4.0F, 
+    4.0F, 
+    4.0F 
+};
+
+// 0x8012C520
+grFileInfo dMPCollisionGroundFileInfos[/* */] =
+{
+    { &lGRCastleGroundFileID, &lGRCommonHeaderStart },      // Peach's Castle
+    { &lGRSectorGroundFileID, &lGRCommonHeaderStart },      // Sector Z
+    { &lGRJungleGroundFileID, &lGRCommonHeaderStart },      // Kongo Jungle
+    { &lGRZebesGroundFileID, &lGRCommonHeaderStart },       // Planet Zebes
+    { &lGRHyruleGroundFileID, &lGRCommonHeaderStart },      // Hyrule Castle
+    { &lGRYosterGroundFileID, &lGRCommonHeaderStart },      // Yoshi's Island
+    { &lGRPupupuGroundFileID, &lGRCommonHeaderStart },      // Dream Land
+    { &lGRYamabukiGroundFileID, &lGRCommonHeaderStart },    // Saffron City
+    { &lGRInishieGroundFileID, &lGRCommonHeaderStart },     // Mushroom Kingdom
+    { &lGRPupupuSmallGroundFileID, &lGRCommonHeaderStart }, // Beta Dream Land
+    { &lGRPupupuTestGroundFileID, &lGRCommonHeaderStart },  // Test Stage
+    { &lGRExplainGroundFileID, 0x0 },                       // How to Play
+    { &lGRYosterSmallGroundFileID, &lGRCommonHeaderStart }, // Small Yoshi's Island (1P Game)
+    { &lGRMetalGroundFileID, &lGRCommonHeaderStart },       // Meta Crystal
+    { &lGRZakoGroundFileID, &lGRCommonHeaderStart },        // Duel Zone
+    { &lGRBonus3GroundFileID, 0x0 },                        // Race to the Finish
+    { &lGRLastGroundFileID, 0x0 },                          // Final Destination
+    { &lGRBonus1MarioGroundFileID, 0x0 },                   // Break the Targets Mario
+    { &lGRBonus1FoxGroundFileID, 0x0 },                     // Break the Targets Fox
+    { &lGRBonus1DonkeyGroundFileID, 0x0 },                  // Break the Targets Donkey Kong
+    { &lGRBonus1SamusGroundFileID, 0x0 },                   // Break the Targets Samus
+    { &lGRBonus1LuigiGroundFileID, 0x0 },                   // Break the Targets Luigi
+    { &lGRBonus1LinkGroundFileID, 0x0 },                    // Break the Targets Link
+    { &lGRBonus1YoshiGroundFileID, 0x0 },                   // Break the Targets Yoshi
+    { &lGRBonus1CaptainGroundFileID, 0x0 },                 // Break the Targets Captain Falcon
+    { &lGRBonus1KirbyGroundFileID, 0x0 },                   // Break the Targets Kirby
+    { &lGRBonus1PikachuGroundFileID, 0x0 },                 // Break the Targets Pikachu
+    { &lGRBonus1PurinGroundFileID, 0x0 },                   // Break the Targets Jigglypuff
+    { &lGRBonus1NessGroundFileID, 0x0 },                    // Break the Targets Ness
+    { &lGRBonus2MarioGroundFileID, 0x0 },                   // Board the Platforms Mario
+    { &lGRBonus2FoxGroundFileID, 0x0 },                     // Board the Platforms Fox
+    { &lGRBonus2DonkeyGroundFileID, 0x0 },                  // Board the Platforms Donkey Kong
+    { &lGRBonus2SamusGroundFileID, 0x0 },                   // Board the Platforms Samus
+    { &lGRBonus2LuigiGroundFileID, 0x0 },                   // Board the Platforms Luigi
+    { &lGRBonus2LinkGroundFileID, 0x0 },                    // Board the Platforms Link
+    { &lGRBonus2YoshiGroundFileID, 0x0 },                   // Board the Platforms Yoshi
+    { &lGRBonus2CaptainGroundFileID, 0x0 },                 // Board the Platforms Captain Falcon
+    { &lGRBonus2KirbyGroundFileID, 0x0 },                   // Board the Platforms Kirby
+    { &lGRBonus2PikachuGroundFileID, 0x0 },                 // Board the Platforms Pikachu
+    { &lGRBonus2PurinGroundFileID, 0x0 },                   // Board the Platforms Jigglypuff
+    { &lGRBonus2NessGroundFileID, 0x0 }                     // Board the Platforms Ness
+};
+
+// 0x8012C668 - I can't for the life of me figure out if these are referenced at all and I'm too lazy to transcribe these if they're not used
+u8 dMPCollisionUnusedFloats[/* */] =
+{
+    0x45, 0x9C, 0x40, 0x00, 0xC5, 0x1C, 0x40, 0x00, 0x45, 0xDA, 0xC0, 0x00,
+    0xC5, 0xDA, 0xC0, 0x00, 0x46, 0x0C, 0xA0, 0x00, 0xC5, 0x9C, 0x40, 0x00,
+    0x46, 0x3B, 0x80, 0x00, 0xC6, 0x3B, 0x80, 0x00, 0x41, 0xA0, 0x00, 0x00,
+    0x42, 0x34, 0x00, 0x00, 0x44, 0xC2, 0xA9, 0x9A, 0x00, 0x00, 0x00, 0x00,
+    0x45, 0x26, 0xE0, 0x00, 0xC5, 0x26, 0xE0, 0x00, 0x45, 0x7A, 0x00, 0x00,
+    0xC5, 0x1C, 0x40, 0x00, 0x45, 0xAB, 0xE0, 0x00, 0xC5, 0xAB, 0xE0, 0x00,
+    0x46, 0x0C, 0xA0, 0x00, 0xC5, 0x9C, 0x40, 0x00, 0x46, 0x2B, 0xE0, 0x00,
+    0xC6, 0x2B, 0xE0, 0x00, 0x41, 0xA0, 0x00, 0x00, 0x42, 0x34, 0x00, 0x00,
+    0x44, 0xC1, 0xCC, 0xCD, 0x00, 0x00, 0x00, 0x00, 0x44, 0xFC, 0x1C, 0xCD,
+    0xC4, 0xFC, 0x1C, 0xCD, 0x45, 0x9C, 0x40, 0x00, 0xC5, 0x1C, 0x40, 0x00,
+    0x45, 0xCB, 0x20, 0x00, 0xC5, 0xCB, 0x20, 0x00, 0x46, 0x0C, 0xA0, 0x00,
+    0xC5, 0x9C, 0x40, 0x00, 0x46, 0x33, 0xB0, 0x00, 0xC6, 0x33, 0xB0, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x42, 0xB4, 0x00, 0x00, 0x44, 0xC4, 0x50, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x45, 0x26, 0xCC, 0xCD, 0xC5, 0x2D, 0xEC, 0xCD,
+    0x45, 0x7A, 0x00, 0x00, 0xC5, 0x1C, 0x40, 0x00, 0x45, 0xAB, 0xE0, 0x00,
+    0xC5, 0xAB, 0xE0, 0x00, 0x46, 0x0C, 0xA0, 0x00, 0xC5, 0x9C, 0x40, 0x00,
+    0x46, 0x2B, 0xE0, 0x00, 0xC6, 0x2B, 0xE0, 0x00, 0x41, 0xA0, 0x00, 0x00,
+    0x42, 0x34, 0x00, 0x00, 0x44, 0xC1, 0xCC, 0xCD, 0x00, 0x00, 0x00, 0x00,
+    0x44, 0xFC, 0x1C, 0xCD, 0xC4, 0xFC, 0x1C, 0xCD, 0x45, 0x9C, 0x40, 0x00,
+    0xC5, 0x1C, 0x40, 0x00, 0x45, 0xDA, 0xC0, 0x00, 0xC5, 0xDA, 0xC0, 0x00,
+    0x46, 0x0C, 0xA0, 0x00, 0xC5, 0x9C, 0x40, 0x00, 0x46, 0x3B, 0x80, 0x00,
+    0xC6, 0x3B, 0x80, 0x00, 0x41, 0xA0, 0x00, 0x00, 0x42, 0x34, 0x00, 0x00,
+    0x44, 0xC2, 0xA9, 0x9A, 0x00, 0x00, 0x00, 0x00, 0x45, 0x26, 0xE0, 0x00,
+    0xC5, 0x26, 0xE0, 0x00, 0x45, 0x9C, 0x40, 0x00, 0xC5, 0x1C, 0x40, 0x00,
+    0x45, 0xDA, 0xC0, 0x00, 0xC5, 0xDA, 0xC0, 0x00, 0x46, 0x0C, 0xA0, 0x00,
+    0xC5, 0x9C, 0x40, 0x00, 0x46, 0x3B, 0x80, 0x00, 0xC6, 0x3B, 0x80, 0x00,
+    0x41, 0xA0, 0x00, 0x00, 0x42, 0x34, 0x00, 0x00, 0x44, 0xC2, 0xA9, 0x9A,
+    0x00, 0x00, 0x00, 0x00, 0x45, 0x26, 0xE0, 0x00, 0xC5, 0x26, 0xE0, 0x00,
+    0x45, 0x9C, 0x40, 0x00, 0xC5, 0x1C, 0x40, 0x00, 0x45, 0xDA, 0xC0, 0x00,
+    0xC5, 0xDA, 0xC0, 0x00, 0x46, 0x0C, 0xA0, 0x00, 0xC5, 0x9C, 0x40, 0x00,
+    0x46, 0x3B, 0x80, 0x00, 0xC6, 0x3B, 0x80, 0x00, 0x41, 0xA0, 0x00, 0x00,
+    0x42, 0x34, 0x00, 0x00, 0x44, 0xC2, 0xA9, 0x9A, 0x00, 0x00, 0x00, 0x00,
+    0x45, 0x26, 0xE0, 0x00, 0xC5, 0x26, 0xE0, 0x00, 0x45, 0x9C, 0x40, 0x00,
+    0xC5, 0x1C, 0x40, 0x00, 0x45, 0xDA, 0xC0, 0x00, 0xC5, 0xDA, 0xC0, 0x00,
+    0x46, 0x0C, 0xA0, 0x00, 0xC5, 0x9C, 0x40, 0x00, 0x46, 0x3B, 0x80, 0x00,
+    0xC6, 0x3B, 0x80, 0x00, 0x41, 0xA0, 0x00, 0x00, 0x42, 0x34, 0x00, 0x00,
+    0x44, 0xC2, 0xA9, 0x9A, 0x00, 0x00, 0x00, 0x00, 0x45, 0x26, 0xE0, 0x00,
+    0xC5, 0x26, 0xE0, 0x00  
+};
 
 // // // // // // // // // // // //
 //                               //
@@ -3878,15 +4034,17 @@ void mpCollisionInitGroundData(void)
 {
     mpGeometryInfo *geometry_info;
 
-    gMPGroundData = 
+    gMPGroundData = (mpGroundData*)
     (
-        rdManagerGetFileWithExternHeap
+        (uintptr_t)rdManagerGetFileWithExternHeap
         (
-            D_ovl2_8012C520[gBattleState->gr_kind].file_id, gsMemoryAlloc
+            dMPCollisionGroundFileInfos[gBattleState->gr_kind].file_id, 
+            gsMemoryAlloc
             (
-                rdManagerGetFileSize(D_ovl2_8012C520[gBattleState->gr_kind].file_id), 0x10
+                rdManagerGetFileSize(dMPCollisionGroundFileInfos[gBattleState->gr_kind].file_id), 0x10
             )
-        )                                                                                                           + D_ovl2_8012C520[gBattleState->gr_kind].offset
+        )
+        + dMPCollisionGroundFileInfos[gBattleState->gr_kind].offset
     );
 
     gMPGeometry = gMPGroundData->map_geometry;

@@ -469,7 +469,7 @@ void scBattleRoyalStartScene()
 
 	if (gSaveData.mprotect_fail & GMBACKUP_ERROR_VSMODECASTLE)
 	{
-		gBattleState->gr_kind = Gr_Kind_Castle;
+		gBattleState->gr_kind = nGRKindCastle;
 	}
 	D_ovl4_8018E3D8.unk_scdatabounds_0xC = (void*)((uintptr_t)&D_NF_800A5240 - 0x1900);
 	func_80007024(&D_ovl4_8018E3D8);

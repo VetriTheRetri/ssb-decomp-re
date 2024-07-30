@@ -274,26 +274,26 @@ void grWallpaperMakeGroundWallpaper(void)
         scTrainingMode_SetBackgroundSprite();
         grWallpaperStaticMakeSObj();
     }
-    else if (gBattleState->gr_kind >= Gr_Kind_BonusGameStart)
+    else if (gBattleState->gr_kind >= nGRKindBonusGameStart)
     {
         grWallpaperStaticMakeSObj();
     }
     else switch (gBattleState->gr_kind)
     {
-    case Gr_Kind_Yoster:
-    case Gr_Kind_Yoster1P:
+    case nGRKindYoster:
+    case nGRKindYosterSmall:
         grWallpaperStaticMakeSObj();
         break;
 
-    case Gr_Kind_Sector:
+    case nGRKindSector:
         grWallpaperSectorMakeSObj();
         break;
 
-    case Gr_Kind_Bonus3:
+    case nGRKindBonus3:
         grWallpaperBonus3MakeSObj();
         break;
 
-    case Gr_Kind_Last:
+    case nGRKindLast:
         gm1PGameBossInitBackgroundMain();
         grWallpaperCommonMakeSObj();
         break;

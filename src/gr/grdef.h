@@ -3,61 +3,65 @@
 
 typedef enum grKind
 {
-	Gr_Kind_CommonStart,
+	nGRKindCommonStart,							// Start of common stages
+	
+	nGRKindBattleStart = nGRKindCommonStart,	// Start of VS Mode Stages
+	nGRKindCastle = nGRKindBattleStart, 		// Peach's Castle
+	nGRKindSector,								// Sector Z
+	nGRKindJungle,								// Kongo Jungle
+	nGRKindZebes,								// Planet Zebes
+	nGRKindHyrule,								// Hyrule Castle
+	nGRKindYoster,	  							// Yoshi's Island
+	nGRKindPupupu,	 							// Dream Land
+	nGRKindYamabuki, 							// Saffron City
+	nGRKindInishie,  							// Mushroom Kingdom
+	nGRKindBattleEnd = nGRKindInishie,			// End of VS Mode Stages
 
-	Gr_Kind_VSStart = Gr_Kind_CommonStart,
-	Gr_Kind_Castle = Gr_Kind_VSStart, // Peach's Castle
-	Gr_Kind_Sector,
-	Gr_Kind_Jungle,
-	Gr_Kind_Zebes,
-	Gr_Kind_Hyrule,
-	Gr_Kind_Yoster,	  // Yoshi's Island
-	Gr_Kind_Pupupu,	  // Dream Land
-	Gr_Kind_Yamabuki, // Saffron City
-	Gr_Kind_Inishie,  // Mushroom Kingdom
-	Gr_Kind_BattleEnd = Gr_Kind_Inishie,
+	nGRKindPupupuSmall,							// Beta Dream Land
+	nGRKindPupupuNew,							// Test Stage
+	nGRKindExplain,  							// How to Play
+	nGRKindYosterSmall,							// Small Yoshi's Island (1P Game)
+	nGRKindMetal,  								// Meta Crystal
+	nGRKindZako,	  							// Duel Zone
+	nGRKindBonus3,	  							// Race to the Finish
+	nGRKindLast,	  							// Final Destination
+	
+	nGRKindCommonEnd = nGRKindLast,				// End of common stages
 
-	Gr_Kind_PPPTest1,
-	Gr_Kind_PPPTest2,
-	Gr_Kind_Explain,  // How to Play
-	Gr_Kind_Yoster1P, // Small Yoshi's Island
-	Gr_Kind_Crystal,  // Meta Crystal
-	Gr_Kind_Zako,	  // Duel Zone
-	Gr_Kind_Bonus3,	  // Race to the Finish
-	Gr_Kind_Last,	  // Final Destination
-	Gr_Kind_CommonEnd = Gr_Kind_Last,
 
-	Gr_Kind_BonusGameStart,
-	Gr_Kind_Bonus1Start = Gr_Kind_BonusGameStart, // Start of Target Test stages
-	Gr_Kind_Bonus1Mario = Gr_Kind_Bonus1Start,
-	Gr_Kind_Bonus1Fox,
-	Gr_Kind_Bonus1Donkey,
-	Gr_Kind_Bonus1Samus,
-	Gr_Kind_Bonus1Luigi,
-	Gr_Kind_Bonus1Link,
-	Gr_Kind_Bonus1Yoshi,
-	Gr_Kind_Bonus1Captain,
-	Gr_Kind_Bonus1Kirby,
-	Gr_Kind_Bonus1Pikachu,
-	Gr_Kind_Bonus1Purin,
-	Gr_Kind_Bonus1Ness,
-	Gr_Kind_Bonus1End = Gr_Kind_Bonus1Ness,
+	nGRKindBonusGameStart,						// Start of bonus stages
 
-	Gr_Kind_Bonus2Start, // Start of Board the Platforms stages
-	Gr_Kind_Bonus2Mario = Gr_Kind_Bonus2Start,
-	Gr_Kind_Bonus2Fox,
-	Gr_Kind_Bonus2Donkey,
-	Gr_Kind_Bonus2Samus,
-	Gr_Kind_Bonus2Luigi,
-	Gr_Kind_Bonus2Link,
-	Gr_Kind_Bonus2Yoshi,
-	Gr_Kind_Bonus2Captain,
+	nGRKindBonus1Start = nGRKindBonusGameStart, // Start of Target Test stages
+	nGRKindBonus1Mario = nGRKindBonus1Start,
+	nGRKindBonus1Fox,
+	nGRKindBonus1Donkey,
+	nGRKindBonus1Samus,
+	nGRKindBonus1Luigi,
+	nGRKindBonus1Link,
+	nGRKindBonus1Yoshi,
+	nGRKindBonus1Captain,
+	nGRKindBonus1Kirby,
+	nGRKindBonus1Pikachu,
+	nGRKindBonus1Purin,
+	nGRKindBonus1Ness,
+	nGRKindBonus1End = nGRKindBonus1Ness,
+
+	nGRKindBonus2Start, 						// Start of Board the Platforms stages
+	nGRKindBonus2Mario = nGRKindBonus2Start,
+	nGRKindBonus2Fox,
+	nGRKindBonus2Donkey,
+	nGRKindBonus2Samus,
+	nGRKindBonus2Luigi,
+	nGRKindBonus2Link,
+	nGRKindBonus2Yoshi,
+	nGRKindBonus2Captain,
 	Gr_kind_Bonus2Kirby,
-	Gr_Kind_Bonus2Pikachu,
-	Gr_Kind_Bonus2Purin,
-	Gr_Kind_Bonus2Ness,
-	Gr_Kind_Bonus2End = Gr_Kind_Bonus2Ness,
-	Gr_Kind_BonusGameEnd = Gr_Kind_Bonus2End
+	nGRKindBonus2Pikachu,
+	nGRKindBonus2Purin,
+	nGRKindBonus2Ness,
+	nGRKindBonus2End = nGRKindBonus2Ness,
+
+	nGRKindBonusGameEnd = nGRKindBonus2End		// End of bonus stages
 
 } grKind;
 

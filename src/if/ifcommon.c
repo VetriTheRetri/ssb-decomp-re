@@ -2595,7 +2595,7 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
                     }
                     else gBattleState->match_time_remain -= time_update;
 
-                    if ((gBattleState->gr_kind == Gr_Kind_Inishie) && (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(30)) && (gMPMusicIDDefault != alSound_Music_InishieHurry))
+                    if ((gBattleState->gr_kind == nGRKindInishie) && (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(30)) && (gMPMusicIDDefault != alSound_Music_InishieHurry))
                     {
                         gMPMusicIDDefault = alSound_Music_InishieHurry;
 
@@ -3004,7 +3004,7 @@ void ifCommonBattleGoUpdateInterface(void)
         {
             if (gBattleState->players[player].pl_kind != nFTPlayerKindNot)
             {
-                if ((gBattleState->gr_kind != Gr_Kind_Bonus3) || (gBattleState->players[player].pl_kind != nFTPlayerKindCom))
+                if ((gBattleState->gr_kind != nGRKindBonus3) || (gBattleState->players[player].pl_kind != nFTPlayerKindCom))
                 {
                     fighter_gobj = gBattleState->players[player].fighter_gobj;
 
@@ -3405,7 +3405,7 @@ void ifCommon1PGameInterfaceProcSet(void)
 // 0x80114C80
 void ifCommonAnnounceEndMessage(void)
 {
-    if (gBattleState->gr_kind >= Gr_Kind_BonusGameStart)
+    if (gBattleState->gr_kind >= nGRKindBonusGameStart)
     {
         ifCommonBattleSetInterface(ifCommonBattleInterfaceProcUpdate, ifCommonBattleInterfaceProcSet, 0x1CC, 90);
         ifCommonAnnounceFailureMakeInterface();

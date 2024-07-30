@@ -113,7 +113,7 @@ GObj* itGBumperMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->mobj->image_frame = 0;
 
-        if (gBattleState->gr_kind == Gr_Kind_Castle)
+        if (gBattleState->gr_kind == nGRKindCastle)
         {
             ip->item_hit.knockback_weight = ITBUMPER_CASTLE_KNOCKBACK;
             ip->item_hit.angle = ITBUMPER_CASTLE_ANGLE;

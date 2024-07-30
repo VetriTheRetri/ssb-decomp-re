@@ -61,14 +61,14 @@ s32 D_ovl64_8018E164 = 0;
 // 8018E168
 u8 dAutoDemoGroundOrder[] = 
 {
-	Gr_Kind_Pupupu,
-	Gr_Kind_Zebes,
-	Gr_Kind_Castle,
-	Gr_Kind_Jungle,
-	Gr_Kind_Sector,
-	Gr_Kind_Yoster,
-	Gr_Kind_Yamabuki,
-	Gr_Kind_Hyrule
+	nGRKindPupupu,
+	nGRKindZebes,
+	nGRKindCastle,
+	nGRKindJungle,
+	nGRKindSector,
+	nGRKindYoster,
+	nGRKindYamabuki,
+	nGRKindHyrule
 };
 
 // 8018E170

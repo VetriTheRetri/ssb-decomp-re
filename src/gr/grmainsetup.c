@@ -30,19 +30,19 @@ GObj* (*dGRMainSetupProcMakeList[/* */])(void) =
 // 0x801056C0
 void grMainSetupMakeGround(void) // New file
 {
-    if (gBattleState->gr_kind <= Gr_Kind_BattleEnd)
+    if (gBattleState->gr_kind <= nGRKindBattleEnd)
     {
         dGRMainSetupProcMakeList[gBattleState->gr_kind]();
     }
-    else if (gBattleState->gr_kind == Gr_Kind_Bonus3)
+    else if (gBattleState->gr_kind == nGRKindBonus3)
     {
         grBonus3MakeGround();
     }
-    else if (gBattleState->gr_kind >= Gr_Kind_Bonus2Start)
+    else if (gBattleState->gr_kind >= nGRKindBonus2Start)
     {
         func_ovl6_8018DC38();
     }
-    else if (gBattleState->gr_kind >= Gr_Kind_Bonus1Start)
+    else if (gBattleState->gr_kind >= nGRKindBonus1Start)
     {
         func_ovl6_8018D5C8();
     }

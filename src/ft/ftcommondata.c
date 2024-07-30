@@ -44,24 +44,3 @@ f32 dFTCommonDataHandicapTable[/* */][2] =
     {  1.5F,              9.0F / 9.0F },
     { 1.08F,   8.333333333333F / 9.0F }
 };
-
-// 0x8012C4E0
-f32 dFTMainMapSurfaceFrictions[/* */] =
-{
-    4.0F, 
-    3.0F, 
-    3.0F, 
-    1.0F, 
-    2.0F, 
-    2.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F 
-};

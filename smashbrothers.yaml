@@ -498,8 +498,10 @@ segments:
       - [0x0A7110, .data, gm/gmanim]
     # Fighter main renderer
       - [0x0A7130, .data, ft/ftrendermain]
+    # Map collisions and stage data
+      - [0x0A7CE0, .data, mp/mpcollision]
     # Temp ASM block
-      - [0x0A7CE0, data, ovl2temp]
+      - [0x0A8030, data, ovl2temp]
     # Effect manager and common effects
       - [0x0A9680, .data, ef/efmanager]
     # Stage background image setup

@@ -224,8 +224,8 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
 
     if 
     (
-        ((gBattleState->gr_kind >= Gr_Kind_Bonus1Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus1End)) ||
-        ((gBattleState->gr_kind >= Gr_Kind_Bonus2Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus2End))
+        ((gBattleState->gr_kind >= nGRKindBonus1Start) && (gBattleState->gr_kind <= nGRKindBonus1End)) ||
+        ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
     )
     {
         sfx_id = alSound_SFX_DeadPortalHitS;
@@ -266,8 +266,8 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
 
     if 
     (
-        ((gBattleState->gr_kind >= Gr_Kind_Bonus1Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus1End)) ||
-        ((gBattleState->gr_kind >= Gr_Kind_Bonus2Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus2End))
+        ((gBattleState->gr_kind >= nGRKindBonus1Start) && (gBattleState->gr_kind <= nGRKindBonus1End)) ||
+        ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
     )
     {
         sfx_id = alSound_SFX_DeadPortalHitS;
@@ -307,8 +307,8 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
 
     if 
     (
-        ((gBattleState->gr_kind >= Gr_Kind_Bonus1Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus1End)) ||
-        ((gBattleState->gr_kind >= Gr_Kind_Bonus2Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus2End))
+        ((gBattleState->gr_kind >= nGRKindBonus1Start) && (gBattleState->gr_kind <= nGRKindBonus1End)) ||
+        ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
     )
     {
         sfx_id = alSound_SFX_DeadPortalHitS;
@@ -473,8 +473,8 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
 
             if 
             (
-                ((gBattleState->gr_kind >= Gr_Kind_Bonus1Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus1End)) ||
-                ((gBattleState->gr_kind >= Gr_Kind_Bonus2Start) && (gBattleState->gr_kind <= Gr_Kind_Bonus2End))
+                ((gBattleState->gr_kind >= nGRKindBonus1Start) && (gBattleState->gr_kind <= nGRKindBonus1End)) ||
+                ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
             )
             {
                 sfx_id = alSound_SFX_DeadPortalHitS;

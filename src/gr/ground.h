@@ -4,7 +4,7 @@
 #include "grtypes.h"
 #include "grfunctions.h"
 
-extern intptr_t lGRCommonHeaderStart;               // 0x00000014
+extern intptr_t lGRCommonHeaderStart;                   // 0x00000014
 
 extern grMapHazard gMapObjects[2];
 extern grMapEnvironment gMapEnvironments[1];

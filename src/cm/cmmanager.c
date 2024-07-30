@@ -1160,11 +1160,11 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 
     switch (gBattleState->gr_kind)
     {
-    case Gr_Kind_Zebes:
+    case nGRKindZebes:
         gCMManagerCameraStruct.status_curr = 6;
         break;
 
-    case Gr_Kind_Inishie:
+    case nGRKindInishie:
         gCMManagerCameraStruct.status_curr = 3;
         break;
 

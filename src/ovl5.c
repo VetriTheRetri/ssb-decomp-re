@@ -104,7 +104,7 @@ void func_ovl5_8018D1A0()
 	gBattleState = &gUnkExplainBattleState;
 
 	gBattleState->game_type = nGMBattleGameTypeUnk6;
-	gBattleState->gr_kind = Gr_Kind_Pupupu;
+	gBattleState->gr_kind = nGRKindPupupu;
 	gBattleState->pl_count = 1;
 	gBattleState->players[0].ft_kind = nFTKindMario;
 	gBattleState->players[0].pl_kind = nFTPlayerKindKey;

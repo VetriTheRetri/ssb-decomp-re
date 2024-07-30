@@ -353,7 +353,7 @@ void mnStageSetLighting(Gfx** display_list)
 // 80131BAC
 sb32 mnStageGetIsLocked(s32 stage_id)
 {
-	if (stage_id == Gr_Kind_Inishie)
+	if (stage_id == nGRKindInishie)
 	{
 		if (gMNStageUnlockedMask & GMBACKUP_UNLOCK_MASK_INISHIE)
 			return FALSE;
@@ -956,12 +956,12 @@ void mnStageCreateStageGeos(s32 stage_id, mpGroundData* stage_info, s32 heap_id)
 	stage_info_array[2] = mnStageCreateStageGeo(stage_id, stage_info, &stage_info->gr_desc[2], 2);
 	stage_info_array[3] = mnStageCreateStageGeo(stage_id, stage_info, &stage_info->gr_desc[3], 3);
 
-	if (stage_id == Gr_Kind_Yamabuki)
+	if (stage_id == nGRKindYamabuki)
 	{
 		DObjGetChild(DObjGetChild(DObjGetStruct(stage_info_array[3])))->flags = DOBJ_FLAG_NORENDER;
 	}
 
-	if (stage_id == Gr_Kind_Yoster)
+	if (stage_id == nGRKindYoster)
 	{
 		for (next_dobj = stage_dobj = DObjGetStruct(stage_info_array[0]), i = 1; next_dobj != NULL; next_dobj = func_ovl0_800C86E8(next_dobj, stage_dobj), i += 1)
 		{

@@ -31,7 +31,7 @@ struct grHitbox
 	s32 element;
 };
 
-struct grMapObject
+struct grMapHazard
 {
 	GObj* ogobj;
 	sb32 (*proc_update)(GObj*, GObj*, s32*);
@@ -45,7 +45,7 @@ struct grMapEnvironment
 
 struct grFileInfo
 {
-	intptr_t size, offset;
+	intptr_t file_id, offset;
 };
 
 union grStruct

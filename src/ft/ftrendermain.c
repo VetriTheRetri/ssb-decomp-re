@@ -1,7 +1,6 @@
 #include <ft/fighter.h>
 #include <if/interface.h>
 #include <cm/camera.h>
-#include <gm/gmdata.h>
 #include <sys/ml.h>
 #include <sys/hal_gu.h>
 #include <sys/develop.h>
@@ -16,6 +15,7 @@ extern u8 func_ovl1_80390534(Gfx**);
 //                               //
 // // // // // // // // // // // //
 
+extern mlBumpAllocRegion gGraphicsHeap;
 extern Vec3f D_800D62D0;
 
 // // // // // // // // // // // //
@@ -39,7 +39,354 @@ gsColorRGBA sFTRenderMainFogColor;
 //                               //
 // // // // // // // // // // // //
 
-extern mlBumpAllocRegion gGraphicsHeap;
+// 0x8012B930
+Vec2f dFTRenderMainShufflePositions[/* */][4] = 
+{
+    // Non-electric
+    { 
+        {   0.0F, -100.0F }, 
+        {   0.0F,  -50.0F },
+        {   0.0F,  100.0F }, 
+        {   0.0F,   50.0F } 
+    },
+
+    // Electric
+    { 
+        {   0.0F,  -20.0F }, 
+        {  15.0F,    5.0F },
+        { -15.0F,    5.0F }, 
+        {   0.0F,    0.0F } 
+    }
+};
+
+// 0x8012B970
+s32 dFTRenderMainPad0x8012B970[2] = { 0, 0 };
+
+// 0x8012B978
+u16 dFTRenderMainCollisionTexture[/* */] = 
+{
+    #include "ft/fttexcollision.h"
+};
+
+// 0x8012BB78
+Vtx_tn dFTRenderMainCollisionCuboidVtx[/* */] =
+{
+    { { -15, 15, 15 }, 0, { -16, 512 }, { 0, 0, 127 }, 0xFF },
+    { { -15, -15, 15 }, 0, { -16, -16 }, { 0, 0, 127 }, 0xFF },
+    { { 15, -15, 15 }, 0, { 512, -16 }, { 0, 0, 127 }, 0xFF },
+    { { 15, 15, 15 }, 0, { 512, 512 }, { 0, 0, 127 }, 0xFF },
+    { { -15, 15, -15 }, 0, { -16, 512 }, { 0, 127, 0 }, 0xFF },
+    { { -15, 15, 15 }, 0, { -16, -16 }, { 0, 127, 0 }, 0xFF },
+    { { 15, 15, 15 }, 0, { 512, -16 }, { 0, 127, 0 }, 0xFF },
+    { { 15, 15, -15 }, 0, { 512, 512 }, { 0, 127, 0 }, 0xFF },
+    { { -15, -15, -15 }, 0, { -16, 512 }, { 0, 0, -127 }, 0xFF },
+    { { -15, 15, -15 }, 0, { -16, -16 }, { 0, 0, -127 }, 0xFF },
+    { { 15, 15, -15 }, 0, { 512, -16 }, { 0, 0, -127 }, 0xFF },
+    { { 15, -15, -15 }, 0, { 512, 512 }, { 0, 0, -127 }, 0xFF },
+    { { -15, -15, 15 }, 0, { -16, 512 }, { 0, -127, 0 }, 0xFF },
+    { { -15, -15, -15 }, 0, { -16, -16 }, { 0, -127, 0 }, 0xFF },
+    { { 15, -15, -15 }, 0, { 512, -16 }, { 0, -127, 0 }, 0xFF },
+    { { 15, -15, 15 }, 0, { 512, 512 }, { 0, -127, 0 }, 0xFF },
+    { { 15, 15, 15 }, 0, { -16, 512 }, { 127, 0, 0 }, 0xFF },
+    { { 15, -15, 15 }, 0, { -16, -16 }, { 127, 0, 0 }, 0xFF },
+    { { 15, -15, -15 }, 0, { 512, -16 }, { 127, 0, 0 }, 0xFF },
+    { { 15, 15, -15 }, 0, { 512, 512 }, { 127, 0, 0 }, 0xFF },
+    { { -15, 15, -15 }, 0, { -16, 512 }, { -128, 0, 0 }, 0xFF },
+    { { -15, -15, -15 }, 0, { -16, -16 }, { -128, 0, 0 }, 0xFF },
+    { { -15, -15, 15 }, 0, { 512, -16 }, { -128, 0, 0 }, 0xFF },
+    { { -15, 15, 15 }, 0, { 512, 512 }, { -128, 0, 0 }, 0xFF }
+};
+
+// 0x8012BCF8
+Vtx_t dFTRenderMainCollisionEdgeVtx[/* */] = 
+{ 
+    { { -15, 15, 15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, -15, 15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, -15, 15 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, 15, 15 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, 15, -15 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, 15, 15 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, 15, 15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, 15, -15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, -15, -15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, 15, -15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, 15, -15 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, -15, -15 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, -15, 15 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, -15, -15 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, -15, -15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, -15, 15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, 15, 15 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, -15, 15 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, -15, -15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, 15, -15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, 15, -15 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, -15, -15 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, -15, 15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, 15, 15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } }
+};
+
+// 0x8012BE78
+Vtx_t dFTRenderMainCollisionCubeCommonVtx0[/* */] = 
+{
+    { { -15, 15, 15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, -15, 15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, -15, 15 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, 15, 15 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } }
+};
+
+// 0x8012BEB8
+Vtx_t dFTRenderMainCollisionCubeCommonVtx1[/* */] = 
+{ 
+    { { -15, 15, -15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, 15, 15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, 15, 15 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, 15, -15 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } }
+};
+
+// 0x8012BEF8
+Vtx_t dFTRenderMainCollisionCubeCommonVtx2[/* */] =
+{ 
+    { { -15, -15, -15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, 15, -15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, 15, -15 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, -15, -15 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } }
+};
+
+// 0x8012BF38
+Vtx_t dFTRenderMainCollisionCubeCommonVtx3[/* */] = 
+{
+    { { -15, -15, 15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, -15, -15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, -15, -15 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, -15, 15 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } }
+};
+
+// 0x8012BF78
+Vtx_t dFTRenderMainCollisionCubeCommonVtx4[/* */] = 
+{
+    { { 15, 15, 15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, -15, 15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, -15, -15 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 15, 15, -15 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } }
+};
+
+// 0x8012BFB8
+Vtx_t dFTRenderMainCollisionCubeCommonVtx5[/* */] = 
+{
+    { { -15, 15, -15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, -15, -15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, -15, 15 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { -15, 15, 15 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } }
+};
+
+// 0x8012BFF8
+Vtx_t dFTRenderMainMapCollisionBottomVtx[/* */] = 
+{
+    { { -30, 30, 0 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 0, 0, 0 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 30, 30, 0 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } }
+};
+
+// 0x8012C028
+Vtx_t dFTRenderMainMapCollisionTopVtx[/* */] =
+{
+    { { -30, 0, 0 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 30, 0, 0 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
+    { { 0, 30, 0 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } }
+};
+
+// 0x8012C058
+Gfx dFTRenderMainHurtCollisionCuboidDL[/* */] =
+{
+    gsDPPipeSync(),
+    gsDPSetCycleType(G_CYC_2CYCLE),
+    gsDPSetRenderMode(G_RM_PASS, G_RM_AA_ZB_OPA_SURF2),
+    gsSPLightColor(LIGHT_1, GPACK_RGBA8888(0x40, 0x40, 0x40, 0x00)),
+    gsSPLightColor(LIGHT_2, GPACK_RGBA8888(0xC0, 0xC0, 0xC0, 0x00)),
+    gsDPSetCombineLERP(PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, COMBINED, 0, SHADE, 0, 0, 0, 0, COMBINED),
+    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, dFTRenderMainCollisionTexture),
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD),
+    gsDPLoadSync(),
+    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 255, 512),
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 4, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD),
+    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x003C, 0x003C),
+    gsSPVertex(dFTRenderMainCollisionCuboidVtx, ARRAY_COUNT(dFTRenderMainCollisionCuboidVtx), 0),
+    gsSP2Triangles(0, 1, 2, 0, 3, 0, 2, 0),
+    gsSP2Triangles(4, 5, 6, 0, 7, 4, 6, 0),
+    gsSP2Triangles(8, 9, 10, 0, 11, 8, 10, 0),
+    gsSP2Triangles(12, 13, 14, 0, 15, 12, 14, 0),
+    gsSP2Triangles(16, 17, 18, 0, 19, 16, 18, 0),
+    gsSP2Triangles(20, 21, 22, 0, 23, 20, 22, 0),
+    gsDPPipeSync(),
+    gsDPSetCycleType(G_CYC_1CYCLE),
+    gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
+    gsSPEndDisplayList()
+};
+
+// 0x8012C128
+Gfx dFTRenderMainHitCollisionEdgeDL[/* */] =
+{
+    gsDPPipeSync(),
+    gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
+    gsSPSetGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK),
+    gsSPVertex(dFTRenderMainCollisionEdgeVtx, ARRAY_COUNT(dFTRenderMainCollisionEdgeVtx), 0),
+    gsDPPipeSync(),
+    gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
+    gsSPEndDisplayList()
+};
+
+// 0x8012C160
+Gfx dFTRenderMainHitCollisionBlendDL[/* */] =
+{
+    gsDPPipeSync(),
+    gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
+    gsSPSetGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK),
+    gsDPSetCombineMode(G_CC_BLENDPEDECALA, G_CC_BLENDPEDECALA),
+    gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
+    gsDPSetAlphaCompare(G_AC_THRESHOLD),
+    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, dFTRenderMainCollisionTexture),
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD),
+    gsDPLoadSync(),
+    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 255, 512),
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 4, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD),
+    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x003C, 0x003C),
+    gsSP2Triangles(0, 1, 2, 0, 3, 0, 2, 0),
+    gsSP2Triangles(4, 5, 6, 0, 7, 4, 6, 0),
+    gsSP2Triangles(8, 9, 10, 0, 11, 8, 10, 0),
+    gsSP2Triangles(12, 13, 14, 0, 15, 12, 14, 0),
+    gsSP2Triangles(16, 17, 18, 0, 19, 16, 18, 0),
+    gsSP2Triangles(20, 21, 22, 0, 23, 20, 22, 0),
+    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx0, ARRAY_COUNT(dFTRenderMainCollisionCubeCommonVtx0), 24),
+    gsSP2Triangles(0, 24, 27, 0, 3, 0, 27, 0),
+    gsSP2Triangles(1, 25, 26, 0, 2, 1, 26, 0),
+    gsSP2Triangles(27, 24, 0, 0, 27, 0, 3, 0),
+    gsSP2Triangles(26, 25, 1, 0, 26, 1, 2, 0),
+    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx1, ARRAY_COUNT(dFTRenderMainCollisionCubeCommonVtx1), 24),
+    gsSP2Triangles(5, 25, 24, 0, 4, 5, 24, 0),
+    gsSP2Triangles(6, 26, 27, 0, 7, 6, 27, 0),
+    gsSP2Triangles(24, 25, 5, 0, 24, 5, 4, 0),
+    gsSP2Triangles(27, 26, 6, 0, 27, 6, 7, 0),
+    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx2, ARRAY_COUNT(dFTRenderMainCollisionCubeCommonVtx2), 24),
+    gsSP2Triangles(8, 24, 27, 0, 11, 8, 27, 0),
+    gsSP2Triangles(9, 25, 26, 0, 10, 9, 26, 0),
+    gsSP2Triangles(27, 24, 8, 0, 27, 8, 11, 0),
+    gsSP2Triangles(26, 25, 9, 0, 26, 9, 10, 0),
+    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx3, ARRAY_COUNT(dFTRenderMainCollisionCubeCommonVtx3), 24),
+    gsSP2Triangles(13, 25, 24, 0, 12, 13, 24, 0),
+    gsSP2Triangles(14, 26, 27, 0, 15, 14, 27, 0),
+    gsSP2Triangles(24, 25, 13, 0, 24, 13, 12, 0),
+    gsSP2Triangles(27, 26, 14, 0, 27, 14, 15, 0),
+    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx4, ARRAY_COUNT(dFTRenderMainCollisionCubeCommonVtx4), 24),
+    gsSP2Triangles(17, 25, 24, 0, 16, 17, 24, 0),
+    gsSP2Triangles(18, 26, 27, 0, 19, 18, 27, 0),
+    gsSP2Triangles(24, 25, 17, 0, 24, 17, 16, 0),
+    gsSP2Triangles(27, 26, 18, 0, 27, 18, 19, 0),
+    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx5, ARRAY_COUNT(dFTRenderMainCollisionCubeCommonVtx5), 24),
+    gsSP2Triangles(21, 25, 24, 0, 20, 21, 24, 0),
+    gsSP2Triangles(22, 26, 27, 0, 23, 22, 27, 0),
+    gsSP2Triangles(24, 25, 21, 0, 24, 21, 20, 0),
+    gsSP2Triangles(27, 26, 22, 0, 27, 22, 23, 0),
+    gsDPPipeSync(),
+    gsDPSetAlphaCompare(G_AC_NONE),
+    gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
+    gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
+    gsSPEndDisplayList()
+};
+
+// 0x8012C310
+Gfx dFTRenderMainHitCollisionCubeDL[/* */] =
+{
+    gsDPPipeSync(),
+    gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
+    gsSPSetGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK),
+    gsDPSetCombineMode(G_CC_BLENDPEDECALA, G_CC_BLENDPEDECALA),
+    gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
+    gsDPSetAlphaCompare(G_AC_THRESHOLD),
+    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, dFTRenderMainCollisionTexture),
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD),
+    gsDPLoadSync(),
+    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 255, 512),
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 4, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD),
+    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x003C, 0x003C),
+    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx0, 24, 0), // WARNING: Reads 24 vertices in a row, most of which are out of the bounds of this array!
+    gsSP2Triangles(0, 1, 2, 0, 3, 0, 2, 0),
+    gsSP2Triangles(4, 5, 6, 0, 7, 4, 6, 0),
+    gsSP2Triangles(8, 9, 10, 0, 11, 8, 10, 0),
+    gsSP2Triangles(12, 13, 14, 0, 15, 12, 14, 0),
+    gsSP2Triangles(16, 17, 18, 0, 19, 16, 18, 0),
+    gsSP2Triangles(20, 21, 22, 0, 23, 20, 22, 0),
+    gsDPPipeSync(),
+    gsDPSetAlphaCompare(G_AC_NONE),
+    gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
+    gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
+    gsSPEndDisplayList()
+};
+
+// 0x8012C3D8
+Gfx dFTRenderMainMapCollisionBottomDL[/* */] =
+{
+    gsDPPipeSync(),
+    gsSPClearGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
+    gsDPSetPrimColor(0, 0, 0xFF, 0xFF, 0xFF, 0xAC),
+    gsDPSetEnvColor(0xB0, 0x00, 0xB0, 0xFF),
+    gsDPSetCombineLERP(PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, 0, 0, 0, PRIMITIVE, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, 0, 0, 0, PRIMITIVE),
+    gsDPSetRenderMode(AA_EN | Z_UPD | IM_RD | CLR_ON_CVG | CVG_DST_WRAP | ZMODE_OPA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_UPD | IM_RD | CLR_ON_CVG | CVG_DST_WRAP | ZMODE_OPA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)),
+    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, dFTRenderMainCollisionTexture),
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD),
+    gsDPLoadSync(),
+    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 255, 512),
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 4, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD),
+    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x003C, 0x003C),
+    gsSPVertex(dFTRenderMainMapCollisionBottomVtx, ARRAY_COUNT(dFTRenderMainMapCollisionBottomVtx), 0),
+    gsSP1Triangle(0, 1, 2, 0),
+    gsSPEndDisplayList()
+};
+
+// 0x8012C458
+Gfx dFTRenderMainMapCollisionTopDL[/* */] =
+{
+    gsDPPipeSync(),
+    gsSPVertex(dFTRenderMainMapCollisionTopVtx, ARRAY_COUNT(dFTRenderMainMapCollisionTopVtx), 0),
+    gsSP1Triangle(0, 1, 2, 0),
+    gsDPPipeSync(),
+    gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
+    gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
+    gsSPEndDisplayList()
+};
+
+// 0x8012C490
+Gfx dFTRenderMainAfterImageVertexDL[/* */] =
+{
+    gsDPPipeSync(),
+    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+    gsSPClearGeometryMode(G_CULL_BOTH | G_LIGHTING),
+    gsSPEndDisplayList()
+};
+
+// 0x8012C4B0
+Gfx dFTRenderMainAfterImageTriangleDL[/* */] =
+{
+    gsDPPipeSync(),
+    gsSPSetGeometryMode(G_CULL_BACK | G_LIGHTING),
+    gsSPEndDisplayList()
+};
+
+// 0x8012C4C8
+gsColorRGBA dFTRenderMainDefaultAfterImageColor1 = { 0x00, 0xFF, 0xFF, 0x00 };
+
+// 0x8012C4CC
+gsColorRGBA dFTRenderMainDefaultAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
+
+// 0x8012C4D0
+gsColorRGBA dFTRenderMainItemAfterImageColor1 = { 0xFF, 0x40, 0xC0, 0x00 };
+
+// 0x8012C4D4
+gsColorRGBA dFTRenderMainItemAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
 
 // // // // // // // // // // // //
 //                               //
@@ -84,11 +431,11 @@ void ftRenderMainDrawAfterImage(ftStruct *fp)
 
         rotate = F_CLC_DTOR32(30.0F); // 0.5235988F
 
-        color1 = &D_ovl2_8012C4C8;
-        color2 = &D_ovl2_8012C4CC;
+        color1 = &dFTRenderMainDefaultAfterImageColor1;
+        color2 = &dFTRenderMainDefaultAfterImageColor2;
 
-        vtx_dl = &D_ovl2_8012C490;
-        tri_dl = &D_ovl2_8012C4B0;
+        vtx_dl = dFTRenderMainAfterImageVertexDL;
+        tri_dl = dFTRenderMainAfterImageTriangleDL;
         break;
 
     case TRUE:
@@ -100,11 +447,11 @@ void ftRenderMainDrawAfterImage(ftStruct *fp)
 
         rotate = F_CLC_DTOR32(30.0F); // 0.5235988F
 
-        color1 = &D_ovl2_8012C4D0;
-        color2 = &D_ovl2_8012C4D4;
+        color1 = &dFTRenderMainItemAfterImageColor1;
+        color2 = &dFTRenderMainItemAfterImageColor2;
 
-        vtx_dl = &D_ovl2_8012C490;
-        tri_dl = &D_ovl2_8012C4B0;
+        vtx_dl = dFTRenderMainAfterImageVertexDL;
+        tri_dl = dFTRenderMainAfterImageTriangleDL;
         break;
     }
     base_p_vtx = p_vtx = (Vtx*)gGraphicsHeap.ptr;
@@ -689,7 +1036,7 @@ void ftRenderMainDrawParts(DObj *dobj)
                 gDPSetEnvColor(gDisplayListHead[0]++, 0x00, 0x00, 0xD0, 0xFF);
                 break;
             }
-            gSPDisplayList(gDisplayListHead[0]++, dGMHurtCollisionCuboidGfx);
+            gSPDisplayList(gDisplayListHead[0]++, dFTRenderMainHurtCollisionCuboidDL);
 
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
 
@@ -870,8 +1217,8 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
             hlMtxTranslate
             (
                 mtx_store.gbi,
-                D_ovl2_8012B930[fp->is_shuffle_electric][fp->shuffle_frame_index].x,
-                D_ovl2_8012B930[fp->is_shuffle_electric][fp->shuffle_frame_index].y,
+                dFTRenderMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].x,
+                dFTRenderMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].y,
                 0.0F
             );
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
@@ -926,7 +1273,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            gSPDisplayList(gDisplayListHead[0]++, dGMMapCollisionBottomGfx);
+            gSPDisplayList(gDisplayListHead[0]++, dFTRenderMainMapCollisionBottomDL);
 
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
 
@@ -948,7 +1295,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            gSPDisplayList(gDisplayListHead[0]++, dGMMapCollisionTopGfx);
+            gSPDisplayList(gDisplayListHead[0]++, dFTRenderMainMapCollisionTopDL);
 
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
 
@@ -976,7 +1323,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
             gDPSetEnvColor(gDisplayListHead[0]++, 0xD0, 0x00, 0xD0, 0xFF);
 
-            gSPDisplayList(gDisplayListHead[0]++, dGMHurtCollisionCuboidGfx);
+            gSPDisplayList(gDisplayListHead[0]++, dFTRenderMainHurtCollisionCuboidDL);
 
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }
@@ -1033,7 +1380,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
                     gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                    gSPDisplayList(gDisplayListHead[0]++, dGMHitCollisionEdgeGfx);
+                    gSPDisplayList(gDisplayListHead[0]++, dFTRenderMainHitCollisionEdgeDL);
 
                     gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
                 }
@@ -1051,9 +1398,9 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
                 if (ft_hit->update_state == nGMHitUpdateInterpolate)
                 {
-                    gSPDisplayList(gDisplayListHead[0]++, dGMHitCollisionBlendGfx);
+                    gSPDisplayList(gDisplayListHead[0]++, dFTRenderMainHitCollisionBlendDL);
                 }
-                gSPDisplayList(gDisplayListHead[0]++, dGMHitCollisionCubeGfx);
+                gSPDisplayList(gDisplayListHead[0]++, dFTRenderMainHitCollisionCubeDL);
 
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }

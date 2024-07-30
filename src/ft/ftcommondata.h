@@ -1,0 +1,16 @@
+#ifndef _FTPROGRAMDATA_H_
+#define _FTPROGRAMDATA_H_
+
+// Massive file containing data from various files
+
+#include <ssb_types.h>
+#include <sys/obj.h>
+#include <gm/gmmisc.h>
+
+// 0x8012C830
+extern f32 dFTCommonDataHandicapTable[/* */][2];
+
+// 0x8012DBD0
+extern gmColDesc dFTParamColAnimDescs[/* */]; // 0x8012DBD0
+
+#endif

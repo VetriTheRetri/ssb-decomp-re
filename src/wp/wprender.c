@@ -1,17 +1,10 @@
 #include <wp/weapon.h>
-
+#include <ft/fighter.h>
 #include <sys/develop.h>
 #include <sys/hal_gu.h>
-#include <sys/obj.h>
 #include <sys/ml.h>
 
 extern mlBumpAllocRegion gGraphicsHeap;
-
-extern Gfx dGMHitCollisionEdgeGfx[/* */];
-extern Gfx dGMHitCollisionBlendGfx[/* */];
-extern Gfx dGMHitCollisionCubeGfx[/* */];
-extern Gfx dGMMapCollisionBottomGfx[/* */];
-extern Gfx dGMMapCollisionTopGfx[/* */];
 
 extern void func_ovl0_800CB4B0(GObj*);
 
@@ -22,10 +15,10 @@ extern void func_ovl0_800CB4B0(GObj*);
 // // // // // // // // // // // //
 
 // 0x80188E10
-gsColorRGB dWPRenderPKThunderPrimColor[/* */] = { { 0x5E, 0xA3, 0xFF }, { 0x98, 0xBD, 0xFF }, { 0xC2, 0xD9, 0xFF }, { 0xB3, 0xF1, 0xFF } };
+gsColorRGB dWPRenderPKThunderPrimColors[/* */] = { { 0x5E, 0xA3, 0xFF }, { 0x98, 0xBD, 0xFF }, { 0xC2, 0xD9, 0xFF }, { 0xB3, 0xF1, 0xFF } };
 
 // 0x80188E1C
-gsColorRGB dWPRenderPKThunderEnvColor[/* */] = { { 0x3A, 0x00, 0x83 }, { 0x5B, 0x00, 0xB2 }, { 0x86, 0x33, 0xD9 }, { 0xA7, 0x74, 0xF8 } };
+gsColorRGB dWPRenderPKThunderEnvColors[/* */] = { { 0x3A, 0x00, 0x83 }, { 0x5B, 0x00, 0xB2 }, { 0x86, 0x33, 0xD9 }, { 0xA7, 0x74, 0xF8 } };
 
 // // // // // // // // // // // //
 //                               //
@@ -73,7 +66,7 @@ void wpRenderHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 
                 gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                gSPDisplayList(gDisplayListHead[0]++, dGMHitCollisionEdgeGfx);
+                gSPDisplayList(gDisplayListHead[0]++, dFTRenderMainHitCollisionEdgeDL);
 
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
@@ -91,9 +84,9 @@ void wpRenderHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 
             if (weapon_hit->update_state == nGMHitUpdateInterpolate)
             {
-                gSPDisplayList(gDisplayListHead[0]++, dGMHitCollisionBlendGfx);
+                gSPDisplayList(gDisplayListHead[0]++, dFTRenderMainHitCollisionBlendDL);
             }
-            gSPDisplayList(gDisplayListHead[0]++, dGMHitCollisionCubeGfx);
+            gSPDisplayList(gDisplayListHead[0]++, dFTRenderMainHitCollisionCubeDL);
 
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }
@@ -101,7 +94,7 @@ void wpRenderHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 }
 
 // 0x801671F0
-void wpRenderMapCollisions(GObj *weapon_gobj) // Render item ECB?
+void wpRenderMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
@@ -122,7 +115,7 @@ void wpRenderMapCollisions(GObj *weapon_gobj) // Render item ECB?
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    gSPDisplayList(gDisplayListHead[1]++, dGMMapCollisionBottomGfx);
+    gSPDisplayList(gDisplayListHead[1]++, dFTRenderMainMapCollisionBottomDL);
 
     gSPPopMatrix(gDisplayListHead[1]++, G_MTX_MODELVIEW);
 
@@ -138,7 +131,7 @@ void wpRenderMapCollisions(GObj *weapon_gobj) // Render item ECB?
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    gSPDisplayList(gDisplayListHead[1]++, dGMMapCollisionTopGfx);
+    gSPDisplayList(gDisplayListHead[1]++, dFTRenderMainMapCollisionTopDL);
 
     gSPPopMatrix(gDisplayListHead[1]++, G_MTX_MODELVIEW);
 }
@@ -225,9 +218,9 @@ void wpRenderPKThunder(GObj *weapon_gobj)
 
         gDPPipeSync(gDisplayListHead[1]++);
 
-        gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, dWPRenderPKThunderPrimColor[index].r, dWPRenderPKThunderPrimColor[index].g, dWPRenderPKThunderPrimColor[index].b, 0xFF);
+        gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, dWPRenderPKThunderPrimColors[index].r, dWPRenderPKThunderPrimColors[index].g, dWPRenderPKThunderPrimColors[index].b, 0xFF);
 
-        gDPSetEnvColor(gDisplayListHead[1]++, dWPRenderPKThunderEnvColor[index].r, dWPRenderPKThunderEnvColor[index].g, dWPRenderPKThunderEnvColor[index].b, 0xFF);
+        gDPSetEnvColor(gDisplayListHead[1]++, dWPRenderPKThunderEnvColors[index].r, dWPRenderPKThunderEnvColors[index].g, dWPRenderPKThunderEnvColors[index].b, 0xFF);
 
         odRenderDObjDLLinksForGObj(weapon_gobj);
 
@@ -241,9 +234,9 @@ void wpRenderPKThunder(GObj *weapon_gobj)
 
         gDPPipeSync(gDisplayListHead[1]++);
 
-        gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, dWPRenderPKThunderPrimColor[index].r, dWPRenderPKThunderPrimColor[index].g, dWPRenderPKThunderPrimColor[index].b, 0xFF);
+        gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, dWPRenderPKThunderPrimColors[index].r, dWPRenderPKThunderPrimColors[index].g, dWPRenderPKThunderPrimColors[index].b, 0xFF);
 
-        gDPSetEnvColor(gDisplayListHead[1]++, dWPRenderPKThunderEnvColor[index].r, dWPRenderPKThunderEnvColor[index].g, dWPRenderPKThunderEnvColor[index].b, 0xFF);
+        gDPSetEnvColor(gDisplayListHead[1]++, dWPRenderPKThunderEnvColors[index].r, dWPRenderPKThunderEnvColors[index].g, dWPRenderPKThunderEnvColors[index].b, 0xFF);
 
         odRenderDObjDLLinksForGObj(weapon_gobj);
 

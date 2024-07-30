@@ -1,7 +1,6 @@
 #include <mp/map.h>
 #include <gr/ground.h>
 #include <gm/battle.h>
-#include <gm/gmmisc.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -3881,11 +3880,13 @@ void mpCollisionInitGroundData(void)
 
     gMPGroundData = 
     (
-        rdManagerGetFileWithExternHeap(
-                                    D_ovl2_8012C520[gBattleState->gr_kind].size, gsMemoryAlloc(
-                                                                                      rdManagerGetFileSize(D_ovl2_8012C520[gBattleState->gr_kind].size), 0x10))
-        
-                                                                                                                   + D_ovl2_8012C520[gBattleState->gr_kind].offset
+        rdManagerGetFileWithExternHeap
+        (
+            D_ovl2_8012C520[gBattleState->gr_kind].file_id, gsMemoryAlloc
+            (
+                rdManagerGetFileSize(D_ovl2_8012C520[gBattleState->gr_kind].file_id), 0x10
+            )
+        )                                                                                                           + D_ovl2_8012C520[gBattleState->gr_kind].offset
     );
 
     gMPGeometry = gMPGroundData->map_geometry;

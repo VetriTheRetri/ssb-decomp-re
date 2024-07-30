@@ -3,6 +3,7 @@
 
 #include "fttypes.h"
 #include "ftfunctions.h"
+#include "ftcommondata.h"
 
 // Globals
 
@@ -24,6 +25,13 @@ extern u16 gFTManagerStatUpdateCount; // Updated each time an entity's status is
 extern ftCreateDesc dFTDefaultFighterDesc;
 extern f32 dFTMainMapSurfaceFrictions[/* */];
 extern ftData *dFTManagerDataFiles[/* */];
+
+extern Gfx dFTRenderMainHurtCollisionCuboidDL[/* */];
+extern Gfx dFTRenderMainHitCollisionEdgeDL[/* */];
+extern Gfx dFTRenderMainHitCollisionBlendDL[/* */];
+extern Gfx dFTRenderMainHitCollisionCubeDL[/* */];
+extern Gfx dFTRenderMainMapCollisionBottomDL[/* */];
+extern Gfx dFTRenderMainMapCollisionTopDL[/* */];
 
 #define ftGetStruct(fighter_gobj) ((ftStruct*)(fighter_gobj)->user_data.p)
 

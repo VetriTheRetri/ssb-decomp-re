@@ -63,7 +63,7 @@ typedef enum grKind
 
 typedef struct grGeometryDesc grGeometryDesc;
 typedef struct grHitbox grHitbox;
-typedef struct grMapObject grMapObject;
+typedef struct grMapHazard grMapHazard;
 typedef struct grMapEnvironment grMapEnvironment;
 typedef struct grFileInfo grFileInfo;
 typedef union  grStruct grStruct;

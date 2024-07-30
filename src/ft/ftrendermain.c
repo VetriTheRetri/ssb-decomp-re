@@ -62,7 +62,10 @@ Vec2f dFTRenderMainShufflePositions[/* */][4] =
 // 0x8012B970
 s32 dFTRenderMainPad0x8012B970[2] = { 0, 0 };
 
-// 0x8012B978
+/* 0x8012B978 - use xxd -i in Linux to convert your collision box texture into an unsigned char[] array;
+ * I went out of my way to convert them into unsigned short[] instead, but as long as the bytes match,
+ * it doesn't really matter what the datatype is, as the gbi macro doesn't care.
+ */
 u16 dFTRenderMainCollisionTexture[/* */] = 
 {
     #include <ft/ftcollision.txt>

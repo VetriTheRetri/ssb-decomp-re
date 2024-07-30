@@ -65,7 +65,7 @@ s32 dFTRenderMainPad0x8012B970[2] = { 0, 0 };
 // 0x8012B978
 u16 dFTRenderMainCollisionTexture[/* */] = 
 {
-    #include "ft/fttexcollision.h"
+    #include <ft/ftcollision.txt>
 };
 
 // 0x8012BB78

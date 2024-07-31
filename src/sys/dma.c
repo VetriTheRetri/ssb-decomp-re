@@ -538,4 +538,4 @@ void gsReadVpkDma(u32 dev_addr, void *ram_dst)
 }
 
 // Best I can do with this is functionally equivalent. Somewhat disappointing, but not a big deal; this function is unreferenced.
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/gsdma/unref_800036B4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/dma/unref_800036B4.s")

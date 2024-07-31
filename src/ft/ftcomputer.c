@@ -29,7 +29,7 @@ ftComputerAttack dFTComputerAttacksMario[/* */] =
 {
     // Attack11
     {
-        nFTComputerInputStickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                      // Input script index
         2,                                                  // First frame of hitbox
         6,                                                  // Last frame of hitbox
         150.0F,                                             // Horizontal range nearest

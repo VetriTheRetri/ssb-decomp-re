@@ -1,7 +1,7 @@
 #ifndef _FTCOMMON_STATUS_H_
 #define _FTCOMMON_STATUS_H_
 
-#include <ft/fttypes.h>
+#include <ft/fighter.h>
 
 // 0x80128DD8
 ftStatusDesc dFTCommonNullStatusDesc[/* */] =
@@ -10,17 +10,17 @@ ftStatusDesc dFTCommonNullStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-1,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    	// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DeadCommon_ProcUpdate,			// Proc Update
+		ftCommonDeadCommonProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		NULL									// Proc Map
@@ -30,17 +30,17 @@ ftStatusDesc dFTCommonNullStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-1,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    	// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DeadCommon_ProcUpdate,			// Proc Update
+		ftCommonDeadCommonProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		NULL									// Proc Map
@@ -50,17 +50,17 @@ ftStatusDesc dFTCommonNullStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageFall,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DeadUpStar_ProcUpdate,			// Proc Update
+		ftCommonDeadUpStarProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		NULL									// Proc Map
@@ -70,17 +70,17 @@ ftStatusDesc dFTCommonNullStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageFall,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DeadUpFall_ProcUpdate,			// Proc Update
+		ftCommonDeadUpFallProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		NULL									// Proc Map
@@ -90,17 +90,17 @@ ftStatusDesc dFTCommonNullStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-1,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Sleep_ProcUpdate,				// Proc Update
+		ftCommonSleepProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		NULL									// Proc Map
@@ -110,14 +110,14 @@ ftStatusDesc dFTCommonNullStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionWait,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
@@ -134,17 +134,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionWait,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_EntryNull_ProcUpdate,			// Proc Update
+		ftCommonEntryNullProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		NULL									// Proc Map
@@ -154,78 +154,78 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionRebirthDown,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_RebirthDown_ProcUpdate,		// Proc Update
+		ftCommonRebirthDownProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
-		ftCommon_RebirthCommon_ProcMap			// Proc Map
+		ftCommonRebirthCommonProcMap			// Proc Map
 	},
 
 	// Status 8 (0x8): RebirthStand
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionRebirthStand,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_RebirthStand_ProcUpdate,		// Proc Update
+		ftCommonRebirthStandProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
-		ftCommon_RebirthCommon_ProcMap			// Proc Map
+		ftCommonRebirthCommonProcMap			// Proc Map
 	},
 
 	// Status 9 (0x9): RebirthWait
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionRebirthWait,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionRebirthWait,				// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_RebirthWait_ProcUpdate,		// Proc Update
-		ftCommon_RebirthWait_ProcInterrupt,		// Proc Interrupt
+		ftCommonRebirthWaitProcUpdate,			// Proc Update
+		ftCommonRebirthWaitProcInterrupt,		// Proc Interrupt
 		NULL,									// Proc Physics
-		ftCommon_RebirthCommon_ProcMap			// Proc Map
+		ftCommonRebirthCommonProcMap			// Proc Map
 	},
 
 	// Status 10 (0xA): Wait
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionWait,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_Wait_ProcInterrupt,			// Proc Interrupt
+		ftCommonWaitProcInterrupt,				// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
 	},
@@ -234,19 +234,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionWalkSlow,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_Walk_ProcInterrupt,			// Proc Interrupt
-		ftCommon_Walk_ProcPhysics,				// Proc Physics
+		ftCommonWalkProcInterrupt,				// Proc Interrupt
+		ftCommonWalkProcPhysics,				// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
 	},
 
@@ -254,19 +254,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionWalkMiddle,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_Walk_ProcInterrupt,			// Proc Interrupt
-		ftCommon_Walk_ProcPhysics,				// Proc Physics
+		ftCommonWalkProcInterrupt,				// Proc Interrupt
+		ftCommonWalkProcPhysics,				// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
 	},
 
@@ -274,34 +274,34 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionWalkFast,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_Walk_ProcInterrupt,			// Proc Interrupt
-		ftCommon_Walk_ProcPhysics,				// Proc Physics
+		ftCommonWalkProcInterrupt,				// Proc Interrupt
+		ftCommonWalkProcPhysics,				// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
 	},
 
 	// Status 14 (0xE): WalkEnd
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionWalkEnd,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionWalkEnd,					// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
@@ -314,38 +314,38 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDash,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Dash_ProcUpdate,				// Proc Update
-		ftCommon_Dash_ProcInterrupt,			// Proc Interrupt
-		ftCommon_Dash_ProcPhysics,				// Proc Physics
-		ftCommon_Dash_ProcMap					// Proc Map
+		ftCommonDashProcUpdate,					// Proc Update
+		ftCommonDashProcInterrupt,				// Proc Interrupt
+		ftCommonDashProcPhysics,				// Proc Physics
+		ftCommonDashProcMap						// Proc Map
 	},
 
 	// Status 16 (0x10): Run
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionRun,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_Run_ProcInterrupt,				// Proc Interrupt
+		ftCommonRunProcInterrupt,				// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransferAir,	// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -354,19 +354,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionRunBrake,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
-		ftCommon_RunBrake_ProcInterrupt,		// Proc Interrupt
-		ftCommon_RunBrake_ProcPhysics,			// Proc Physics
+		ftStatusWaitOnAnimEnd,		            // Proc Update
+		ftCommonRunBrakeProcInterrupt,			// Proc Interrupt
+		ftCommonRunBrakeProcPhysics,			// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
 	},
 
@@ -374,18 +374,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionTurn,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Turn_ProcUpdate,				// Proc Update
-		ftCommon_Turn_ProcInterrupt,			// Proc Interrupt
+		ftCommonTurnProcUpdate,					// Proc Update
+		ftCommonTurnProcInterrupt,				// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -393,19 +393,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 19 (0x13): TurnRun
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionTurnRun,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionTurnRun,					// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_TurnRun_ProcUpdate,			// Proc Update
-		ftCommon_TurnRun_ProcInterrupt,			// Proc Interrupt
+		ftCommonTurnRunProcUpdate,				// Proc Update
+		ftCommonTurnRunProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -414,18 +414,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionKneeBend,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_KneeBend_ProcUpdate,			// Proc Update
-		ftCommon_KneeBend_ProcInterrupt,		// Proc Interrupt
+		ftCommonKneeBendProcUpdate,				// Proc Update
+		ftCommonKneeBendProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -434,18 +434,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionGuardKneeBend,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_KneeBend_ProcUpdate,			// Proc Update
-		ftCommon_KneeBend_ProcInterrupt,		// Proc Interrupt
+		ftCommonKneeBendProcUpdate,				// Proc Update
+		ftCommonKneeBendProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -454,18 +454,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionJumpF,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,		// Proc Update
-		ftCommon_Jump_ProcInterrupt,			// Proc Interrupt
+		ftStatusFallOnAnimEnd,		            // Proc Update
+		ftCommonJumpProcInterrupt,				// Proc Interrupt
 		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
 		ftMap_CheckCliffGroundCeilStatus		// Proc Map
 	},
@@ -474,18 +474,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionJumpB,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,		// Proc Update
-		ftCommon_Jump_ProcInterrupt,			// Proc Interrupt
+		ftStatusFallOnAnimEnd,		            // Proc Update
+		ftCommonJumpProcInterrupt,				// Proc Interrupt
 		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
 		ftMap_CheckCliffGroundCeilStatus		// Proc Map
 	},
@@ -493,19 +493,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 24 (0x18): JumpAerialF
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionJumpAerialF,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionJumpAerialF,				// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_JumpAerial_ProcUpdate,			// Proc Update
-		ftCommon_JumpAerial_ProcInterrupt,		// Proc Interrupt
+		ftCommonJumpAerialProcUpdate,			// Proc Update
+		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
 		ftMap_CheckCliffGroundCeilStatus		// Proc Map
 	},
@@ -513,19 +513,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 25 (0x19): JumpAerialB
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionJumpAerialB,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionJumpAerialB,				// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_JumpAerial_ProcUpdate,			// Proc Update
-		ftCommon_JumpAerial_ProcInterrupt,		// Proc Interrupt
+		ftCommonJumpAerialProcUpdate,			// Proc Update
+		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
 		ftMap_CheckCliffGroundCeilStatus		// Proc Map
 	},
@@ -534,18 +534,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionFall,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_Fall_ProcInterrupt,			// Proc Interrupt
+		ftCommonFallProcInterrupt,				// Proc Interrupt
 		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
 		ftMap_CheckCliffGroundCeilStatus		// Proc Map
 	},
@@ -554,18 +554,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionFall,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_Fall_ProcInterrupt,			// Proc Interrupt
+		ftCommonFallProcInterrupt,				// Proc Interrupt
 		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
 		ftMap_CheckCliffGroundCeilStatus		// Proc Map
 	},
@@ -574,18 +574,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionSquat,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Squat_ProcUpdate,				// Proc Update
-		ftCommon_Squat_ProcInterrupt,			// Proc Interrupt
+		ftCommonSquatProcUpdate,				// Proc Update
+		ftCommonSquatProcInterrupt,				// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -594,18 +594,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionSquatWait,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_SquatWait_ProcUpdate,			// Proc Update
-		ftCommon_SquatWait_ProcInterrupt,		// Proc Interrupt
+		ftCommonSquatWaitProcUpdate,			// Proc Update
+		ftCommonSquatWaitProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -613,19 +613,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 30 (0x1E): SquatRv
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionSquatRv,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionSquatRv,					// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
-		ftCommon_SquatRv_ProcInterrupt,			// Proc Interrupt
+		ftStatusWaitOnAnimEnd,		            // Proc Update
+		ftCommonSquatRvProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -634,18 +634,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLandingLight,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
-		ftCommon_Landing_ProcInterrupt,			// Proc Interrupt
+		ftStatusWaitOnAnimEnd,		            // Proc Update
+		ftCommonLandingProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
 	},
@@ -654,18 +654,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLandingHeavy,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
-		ftCommon_Landing_ProcInterrupt,			// Proc Interrupt
+		ftStatusWaitOnAnimEnd,		            // Proc Update
+		ftCommonLandingProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
 	},
@@ -674,18 +674,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionPass,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,		// Proc Update
-		ftCommon_Pass_ProcInterrupt,			// Proc Interrupt
+		ftStatusFallOnAnimEnd,		            // Proc Update
+		ftCommonPassProcInterrupt,				// Proc Interrupt
 		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
 		ftMap_CheckCliffGroundCeilStatus		// Proc Map
 	},
@@ -694,18 +694,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionGuardPass,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,		// Proc Update
-		ftCommon_Pass_ProcInterrupt,			// Proc Interrupt
+		ftStatusFallOnAnimEnd,		            // Proc Update
+		ftCommonPassProcInterrupt,				// Proc Interrupt
 		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
 		ftMap_CheckCliffGroundCeilStatus		// Proc Map
 	},
@@ -713,60 +713,60 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 35 (0x23): OttottoWait
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionOttottoWait,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionOttottoWait,				// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_Ottotto_ProcInterrupt,			// Proc Interrupt
+		ftCommonOttottoProcInterrupt,			// Proc Interrupt
 		NULL,									// Proc Physics
-		ftCommon_Ottotto_ProcMap				// Proc Map
+		ftCommonOttottoProcMap					// Proc Map
 	},
 
 	// Status 36 (0x24): Ottotto
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionOttotto,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionOttotto,					// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Ottotto_ProcUpdate,			// Proc Update
-		ftCommon_Ottotto_ProcInterrupt,			// Proc Interrupt
+		ftCommonOttottoProcUpdate,				// Proc Update
+		ftCommonOttottoProcInterrupt,			// Proc Interrupt
 		NULL,									// Proc Physics
-		ftCommon_Ottotto_ProcMap				// Proc Map
+		ftCommonOttottoProcMap					// Proc Map
 	},
 
 	// Status 37 (0x25): DamageHi1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageHi1,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageCommon_ProcUpdate,		// Proc Update
-		ftCommon_DamageCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcUpdate,		    // Proc Update
+		ftCommonDamageCommonProcInterrupt,	    // Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -774,19 +774,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageHi2,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageCommon_ProcUpdate,		// Proc Update
-		ftCommon_DamageCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcUpdate,		  	// Proc Update
+		ftCommonDamageCommonProcInterrupt,	    // Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -794,19 +794,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageHi3,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageCommon_ProcUpdate,		// Proc Update
-		ftCommon_DamageCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcUpdate,		    // Proc Update
+		ftCommonDamageCommonProcInterrupt,	    // Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -814,19 +814,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageN1,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageCommon_ProcUpdate,		// Proc Update
-		ftCommon_DamageCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcUpdate,		    // Proc Update
+		ftCommonDamageCommonProcInterrupt,	    // Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -834,19 +834,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageN2,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageCommon_ProcUpdate,		// Proc Update
-		ftCommon_DamageCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcUpdate,		    // Proc Update
+		ftCommonDamageCommonProcInterrupt,	    // Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -854,19 +854,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageN3,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageCommon_ProcUpdate,		// Proc Update
-		ftCommon_DamageCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcUpdate,		    // Proc Update
+		ftCommonDamageCommonProcInterrupt,	    // Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -874,19 +874,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageLw1,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageCommon_ProcUpdate,		// Proc Update
-		ftCommon_DamageCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcUpdate,		    // Proc Update
+		ftCommonDamageCommonProcInterrupt,	    // Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -894,19 +894,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageLw2,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageCommon_ProcUpdate,		// Proc Update
-		ftCommon_DamageCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcUpdate,		    // Proc Update
+		ftCommonDamageCommonProcInterrupt,	    // Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -914,19 +914,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageLw3,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageCommon_ProcUpdate,		// Proc Update
-		ftCommon_DamageCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcUpdate,		    // Proc Update
+		ftCommonDamageCommonProcInterrupt,	    // Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -934,19 +934,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageAir1,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageCommon_ProcUpdate,		// Proc Update
-		ftCommon_DamageCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcUpdate,		    // Proc Update
+		ftCommonDamageCommonProcInterrupt,	    // Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -954,19 +954,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageAir2,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageCommon_ProcUpdate,		// Proc Update
-		ftCommon_DamageCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcUpdate,		    // Proc Update
+		ftCommonDamageCommonProcInterrupt,	    // Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -974,238 +974,238 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageAir3,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageCommon_ProcUpdate,		// Proc Update
-		ftCommon_DamageCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcUpdate,		    // Proc Update
+		ftCommonDamageCommonProcInterrupt,	    // Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
 	// Status 49 (0x31): DamageE1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionDamageE,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionDamageE,					// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageCommon_ProcUpdate,		// Proc Update
-		ftCommon_DamageCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcUpdate,		    // Proc Update
+		ftCommonDamageCommonProcInterrupt,	    // Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
 	// Status 50 (0x32): DamageE2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionDamageE,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionDamageE,					// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageAirCommon_ProcUpdate,	// Proc Update
-		ftCommon_DamageAirCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
-		ftCommon_DamageAirCommon_ProcMap		// Proc Map
+		ftCommonDamageAirCommonProcUpdate,		// Proc Update
+		ftCommonDamageAirCommonProcInterrupt,	// Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
+		ftCommonDamageAirCommonProcMap			// Proc Map
 	},
 
 	// Status 51 (0x33): DamageFlyHi
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionDamageFlyHi,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionDamageFlyHi,				// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageAirCommon_ProcUpdate,	// Proc Update
-		ftCommon_DamageAirCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
-		ftCommon_DamageAirCommon_ProcMap		// Proc Map
+		ftCommonDamageAirCommonProcUpdate,		// Proc Update
+		ftCommonDamageAirCommonProcInterrupt,	// Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
+		ftCommonDamageAirCommonProcMap			// Proc Map
 	},
 
 	// Status 52 (0x34): DamageFlyN
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageFlyN,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageAirCommon_ProcUpdate,	// Proc Update
-		ftCommon_DamageAirCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
-		ftCommon_DamageAirCommon_ProcMap		// Proc Map
+		ftCommonDamageAirCommonProcUpdate,		// Proc Update
+		ftCommonDamageAirCommonProcInterrupt,	// Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
+		ftCommonDamageAirCommonProcMap			// Proc Map
 	},
 
 	// Status 53 (0x35): DamageFlyLw
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionDamageFlyLw,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionDamageFlyLw,				// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageAirCommon_ProcUpdate,	// Proc Update
-		ftCommon_DamageAirCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
-		ftCommon_DamageAirCommon_ProcMap		// Proc Map
+		ftCommonDamageAirCommonProcUpdate,		// Proc Update
+		ftCommonDamageAirCommonProcInterrupt,	// Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
+		ftCommonDamageAirCommonProcMap			// Proc Map
 	},
 
 	// Status 54 (0x36): DamageFlyTop
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageFlyTop,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageAirCommon_ProcUpdate,	// Proc Update
-		ftCommon_DamageAirCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
-		ftCommon_DamageAirCommon_ProcMap		// Proc Map
+		ftCommonDamageAirCommonProcUpdate,		// Proc Update
+		ftCommonDamageAirCommonProcInterrupt,	// Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
+		ftCommonDamageAirCommonProcMap			// Proc Map
 	},
 
 	// Status 55 (0x37): DamageFlyRoll
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageFlyRoll,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DamageAirCommon_ProcUpdate,	// Proc Update
-		ftCommon_DamageAirCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
-		ftCommon_DamageAirCommon_ProcMap		// Proc Map
+		ftCommonDamageAirCommonProcUpdate,		// Proc Update
+		ftCommonDamageAirCommonProcInterrupt,	// Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
+		ftCommonDamageAirCommonProcMap			// Proc Map
 	},
 
 	// Status 56 (0x38): WallDamage
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionWallDamage,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_WallDamage_ProcUpdate,			// Proc Update
-		ftCommon_DamageAirCommon_ProcInterrupt,	// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
-		ftCommon_DamageAirCommon_ProcMap		// Proc Map
+		ftCommonWallDamageProcUpdate,			// Proc Update
+		ftCommonDamageAirCommonProcInterrupt,	// Proc Interrupt
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
+		ftCommonDamageAirCommonProcMap			// Proc Map
 	},
 
 	// Status 57 (0x39): DamageFall
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageFall,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_DamageFall_ProcInterrupt,		// Proc Interrupt
+		ftCommonDamageFallProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
-		ftCommon_DamageFall_ProcMap				// Proc Map
+		ftCommonDamageFallProcMap				// Proc Map
 	},
 
 	// Status 58 (0x3A): FallSpecial
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionFallSpecial,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionFallSpecial,				// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_FallSpecial_ProcInterrupt,		// Proc Interrupt
-		ftCommon_FallSpecial_ProcPhysics,		// Proc Physics
-		ftCommon_FallSpecial_ProcMap			// Proc Map
+		ftCommonFallSpecialProcInterrupt,		// Proc Interrupt
+		ftCommonFallSpecialProcPhysics,			// Proc Physics
+		ftCommonFallSpecialProcMap				// Proc Map
 	},
 
 	// Status 59 (0x3B): LandingFallSpecial
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLandingFallSpecial,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
-		ftCommon_Landing_ProcInterrupt,			// Proc Interrupt
+		ftStatusWaitOnAnimEnd,		            // Proc Update
+		ftCommonLandingProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
 	},
@@ -1213,20 +1213,20 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 60 (0x3C): Twister
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionTwister,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionTwister,					// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Twister_ProcUpdate,			// Proc Update
+		ftCommonTwisterProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Twister_ProcPhysics,			// Proc Physics
+		ftCommonTwisterProcPhysics,				// Proc Physics
 		ftMap_CheckGroundEnvCatch				// Proc Map
 	},
 
@@ -1234,19 +1234,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-1,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_TaruCann_ProcUpdate,			// Proc Update
-		ftCommon_TaruCann_ProcInterrupt,		// Proc Interrupt
-		ftCommon_TaruCann_ProcPhysics,			// Proc Physics
+		ftCommonTaruCannProcUpdate,				// Proc Update
+		ftCommonTaruCannProcInterrupt,			// Proc Interrupt
+		ftCommonTaruCannProcPhysics,			// Proc Physics
 		ftMap_CheckGroundEnvCatch				// Proc Map
 	},
 
@@ -1254,19 +1254,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDokanStart,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DokanStart_ProcUpdate,			// Proc Update
+		ftCommonDokanStartProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_DokanStart_ProcPhysics,		// Proc Physics
+		ftCommonDokanStartProcPhysics,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 
@@ -1274,37 +1274,37 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-1,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DokanWait_ProcUpdate,			// Proc Update
+		ftCommonDokanWaitProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
-		ftCommon_DokanWait_ProcMap				// Proc Map
+		ftCommonDokanWaitProcMap				// Proc Map
 	},
 
 	// Status 64 (0x40): DokanEnd
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDokanEnd,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DokanEnd_ProcUpdate,			// Proc Update
+		ftCommonDokanEndProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -1314,17 +1314,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDokanWalk,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DokanEnd_ProcUpdate,			// Proc Update
+		ftCommonDokanEndProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
@@ -1334,17 +1334,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionStopCeil,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,		// Proc Update
+		ftStatusFallOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
 		ftMap_CheckCliffGroundCeilStatus		// Proc Map
@@ -1353,18 +1353,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 67 (0x43): DownBounceD
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionDownBounceD,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionDownBounceD,				// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DownBounce_ProcUpdate,			// Proc Update
+		ftCommonDownBounceProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -1373,18 +1373,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 68 (0x44): DownBounceU
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionDownBounceU,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionDownBounceU,				// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DownBounce_ProcUpdate,			// Proc Update
+		ftCommonDownBounceProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -1394,18 +1394,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-2,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DownWait_ProcUpdate,			// Proc Update
-		ftCommon_DownWait_ProcInterrupt,		// Proc Interrupt
+		ftCommonDownWaitProcUpdate,				// Proc Update
+		ftCommonDownWaitProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -1414,18 +1414,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-2,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_DownWait_ProcUpdate,			// Proc Update
-		ftCommon_DownWait_ProcInterrupt,		// Proc Interrupt
+		ftCommonDownWaitProcUpdate,				// Proc Update
+		ftCommonDownWaitProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -1434,18 +1434,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDownStandD,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
-		ftCommon_DownStand_ProcInterrupt,		// Proc Interrupt
+		ftStatusWaitOnAnimEnd,		            // Proc Update
+		ftCommonDownStandProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -1454,18 +1454,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDownStandU,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
-		ftCommon_DownStand_ProcInterrupt,		// Proc Interrupt
+		ftStatusWaitOnAnimEnd,		            // Proc Update
+		ftCommonDownStandProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -1474,17 +1474,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionPassiveStandF,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -1494,17 +1494,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionPassiveStandB,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -1514,17 +1514,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDownForwardD,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -1534,17 +1534,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDownForwardU,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -1554,17 +1554,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDownBackD,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -1574,17 +1574,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDownBackU,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -1593,18 +1593,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 79 (0x4F): DownAttackD
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionDownAttackD,			// Script ID
-		nFTMotionAttackIDDownAttackD,		// Motion attack ID
+		nFTCommonMotionDownAttackD,				// Script ID
+		nFTMotionAttackIDDownAttackD,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDDownAttackD,		// Status attack ID
+		nFTStatusAttackIDDownAttackD,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -1613,18 +1613,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 80 (0x50): DownAttackU
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionDownAttackU,			// Script ID
-		nFTMotionAttackIDDownAttackU,		// Motion attack ID
+		nFTCommonMotionDownAttackU,				// Script ID
+		nFTMotionAttackIDDownAttackU,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDDownAttackU,		// Status attack ID
+		nFTStatusAttackIDDownAttackU,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -1633,18 +1633,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 81 (0x51): Passive
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionPassive,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionPassive,					// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -1654,17 +1654,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-1,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ReboundWait_ProcUpdate,		// Proc Update
+		ftCommonReboundWaitProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -1673,18 +1673,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 83 (0x53): Rebound
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionRebound,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionRebound,					// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Rebound_ProcUpdate,			// Proc Update
+		ftCommonReboundProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -1694,417 +1694,417 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffCatch,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffCatch_ProcUpdate,			// Proc Update
+		ftCommonCliffCatchProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon_ProcPhysics,		// Proc Physics
-		ftCommon_CliffCommon_ProcMap			// Proc Map
+		ftCommonCliffCommonProcPhysics,			// Proc Physics
+		ftCommonCliffCommonProcMap				// Proc Map
 	},
 
 	// Status 85 (0x55): CliffWait
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffWait,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_CliffWait_ProcInterrupt,		// Proc Interrupt
-		ftCommon_CliffCommon_ProcPhysics,		// Proc Physics
-		ftCommon_CliffCommon_ProcMap			// Proc Map
+		ftCommonCliffWaitProcInterrupt,			// Proc Interrupt
+		ftCommonCliffCommonProcPhysics,			// Proc Physics
+		ftCommonCliffCommonProcMap				// Proc Map
 	},
 
 	// Status 86 (0x56): CliffQuick
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffQuick,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffQuick_ProcUpdate,			// Proc Update
+		ftCommonCliffQuickProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon_ProcPhysics,		// Proc Physics
-		ftCommon_CliffCommon_ProcMap			// Proc Map
+		ftCommonCliffCommonProcPhysics,			// Proc Physics
+		ftCommonCliffCommonProcMap				// Proc Map
 	},
 
 	// Status 87 (0x57): CliffClimbQuick1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffClimbQuick1,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffClimbQuick1_ProcUpdate,	// Proc Update
+		ftCommonCliffClimbQuick1ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon_ProcPhysics,		// Proc Physics
-		ftCommon_CliffCommon_ProcMap			// Proc Map
+		ftCommonCliffCommonProcPhysics,			// Proc Physics
+		ftCommonCliffCommonProcMap				// Proc Map
 	},
 
 	// Status 88 (0x58): CliffClimbQuick2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffClimbQuick2,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffCommon2_ProcUpdate,		// Proc Update
+		ftCommonCliffCommon2ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon2_ProcPhysics,		// Proc Physics
-		ftCommon_CliffClimbCommon2_ProcMap		// Proc Map
+		ftCommonCliffCommon2ProcPhysics,		// Proc Physics
+		ftCommonCliffClimbCommon2ProcMap		// Proc Map
 	},
 
 	// Status 89 (0x59): CliffSlow
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffSlow,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffSlow_ProcUpdate,			// Proc Update
+		ftCommonCliffSlowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon_ProcPhysics,		// Proc Physics
-		ftCommon_CliffCommon_ProcMap			// Proc Map
+		ftCommonCliffCommonProcPhysics,			// Proc Physics
+		ftCommonCliffCommonProcMap				// Proc Map
 	},
 
 	// Status 90 (0x5A): CliffClimbSlow1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionCliffClimbSlow1,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionCliffClimbSlow1,			// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffClimbSlow1_ProcUpdate,	// Proc Update
+		ftCommonCliffClimbSlow1ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon_ProcPhysics,		// Proc Physics
-		ftCommon_CliffCommon_ProcMap			// Proc Map
+		ftCommonCliffCommonProcPhysics,			// Proc Physics
+		ftCommonCliffCommonProcMap				// Proc Map
 	},
 
 	// Status 91 (0x5B): CliffClimbSlow2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionCliffClimbSlow2,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionCliffClimbSlow2,			// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffCommon2_ProcUpdate,		// Proc Update
+		ftCommonCliffCommon2ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon2_ProcPhysics,		// Proc Physics
-		ftCommon_CliffClimbCommon2_ProcMap		// Proc Map
+		ftCommonCliffCommon2ProcPhysics,		// Proc Physics
+		ftCommonCliffClimbCommon2ProcMap		// Proc Map
 	},
 
 	// Status 92 (0x5C): CliffAttackQuick1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffAttackQuick1,		// Script ID
-		nFTMotionAttackIDCliffAttackQuick,	// Motion attack ID
+		nFTMotionAttackIDCliffAttackQuick,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDCliffAttackQuick,	// Status attack ID
+		nFTStatusAttackIDCliffAttackQuick,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffAttackQuick1_ProcUpdate,	// Proc Update
+		ftCommonCliffAttackQuick1ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon_ProcPhysics,		// Proc Physics
-		ftCommon_CliffCommon_ProcMap			// Proc Map
+		ftCommonCliffCommonProcPhysics,			// Proc Physics
+		ftCommonCliffCommonProcMap				// Proc Map
 	},
 
 	// Status 93 (0x5D): CliffAttackQuick2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffAttackQuick2,		// Script ID
-		nFTMotionAttackIDCliffAttackQuick,	// Motion attack ID
+		nFTMotionAttackIDCliffAttackQuick,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDCliffAttackQuick,	// Status attack ID
+		nFTStatusAttackIDCliffAttackQuick,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffCommon2_ProcUpdate,		// Proc Update
+		ftCommonCliffCommon2ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon2_ProcPhysics,		// Proc Physics
-		ftCommon_CliffAttackEscape2_ProcMap		// Proc Map
+		ftCommonCliffCommon2ProcPhysics,		// Proc Physics
+		ftCommonCliffAttackEscape2ProcMap		// Proc Map
 	},
 
 	// Status 94 (0x5E): CliffAttackSlow1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffAttackSlow1,		// Script ID
-		nFTMotionAttackIDCliffAttackSlow,	// Motion attack ID
+		nFTMotionAttackIDCliffAttackSlow,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDCliffAttackSlow,	// Status attack ID
+		nFTStatusAttackIDCliffAttackSlow,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffAttackSlow1_ProcUpdate,	// Proc Update
+		ftCommonCliffAttackSlow1ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon_ProcPhysics,		// Proc Physics
-		ftCommon_CliffCommon_ProcMap			// Proc Map
+		ftCommonCliffCommonProcPhysics,			// Proc Physics
+		ftCommonCliffCommonProcMap				// Proc Map
 	},
 
 	// Status 95 (0x5F): CliffAttackSlow2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffAttackSlow2,		// Script ID
-		nFTMotionAttackIDCliffAttackSlow,	// Motion attack ID
+		nFTMotionAttackIDCliffAttackSlow,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDCliffAttackSlow,	// Status attack ID
+		nFTStatusAttackIDCliffAttackSlow,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffCommon2_ProcUpdate,		// Proc Update
+		ftCommonCliffCommon2ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon2_ProcPhysics,		// Proc Physics
-		ftCommon_CliffAttackEscape2_ProcMap		// Proc Map
+		ftCommonCliffCommon2ProcPhysics,		// Proc Physics
+		ftCommonCliffAttackEscape2ProcMap		// Proc Map
 	},
 
 	// Status 96 (0x60): CliffEscapeQuick1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffEscapeQuick1,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffEscapeQuick1_ProcUpdate,	// Proc Update
+		ftCommonCliffEscapeQuick1ProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon_ProcPhysics,		// Proc Physics
-		ftCommon_CliffCommon_ProcMap			// Proc Map
+		ftCommonCliffCommonProcPhysics,			// Proc Physics
+		ftCommonCliffCommonProcMap				// Proc Map
 	},
 
 	// Status 97 (0x61): CliffEscapeQuick2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffEscapeQuick2,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffCommon2_ProcUpdate,		// Proc Update
+		ftCommonCliffCommon2ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon2_ProcPhysics,		// Proc Physics
-		ftCommon_CliffAttackEscape2_ProcMap		// Proc Map
+		ftCommonCliffCommon2ProcPhysics,		// Proc Physics
+		ftCommonCliffAttackEscape2ProcMap		// Proc Map
 	},
 
 	// Status 98 (0x62): CliffEscapeSlow1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffEscapeSlow1,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffEscapeSlow1_ProcUpdate,	// Proc Update
+		ftCommonCliffEscapeSlow1ProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon_ProcPhysics,		// Proc Physics
-		ftCommon_CliffCommon_ProcMap			// Proc Map
+		ftCommonCliffCommonProcPhysics,			// Proc Physics
+		ftCommonCliffCommonProcMap				// Proc Map
 	},
 
 	// Status 99 (0x63): CliffEscapeSlow2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCliffEscapeSlow2,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CliffCommon2_ProcUpdate,		// Proc Update
+		ftCommonCliffCommon2ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CliffCommon2_ProcPhysics,		// Proc Physics
-		ftCommon_CliffAttackEscape2_ProcMap		// Proc Map
+		ftCommonCliffCommon2ProcPhysics,		// Proc Physics
+		ftCommonCliffAttackEscape2ProcMap		// Proc Map
 	},
 
 	// Status 100 (0x64): LightGet
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightGet,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Get_ProcUpdate,				// Proc Update
+		ftCommonGetProcUpdate,					// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftCommon_LightGet_ProcMap				// Proc Map
+		ftCommonLightGetProcMap					// Proc Map
 	},
 
 	// Status 101 (0x65): HeavyGet
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionHeavyGet,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Get_ProcUpdate,				// Proc Update
+		ftCommonGetProcUpdate,					// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftCommon_HeavyGet_ProcMap				// Proc Map
+		ftCommonHeavyGetProcMap					// Proc Map
 	},
 
 	// Status 102 (0x66): LiftWait
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-2,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_LiftWait_ProcInterrupt,		// Proc Interrupt
+		ftCommonLiftWaitProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftCommon_HeavyGet_ProcMap				// Proc Map
+		ftCommonHeavyGetProcMap					// Proc Map
 	},
 
 	// Status 103 (0x67): LiftTurn
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-2,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_LiftTurn_ProcUpdate,			// Proc Update
-		ftCommon_LiftTurn_ProcInterrupt,		// Proc Interrupt
+		ftCommonLiftTurnProcUpdate,				// Proc Update
+		ftCommonLiftTurnProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftCommon_HeavyGet_ProcMap				// Proc Map
+		ftCommonHeavyGetProcMap					// Proc Map
 	},
 
 	// Status 104 (0x68): LightThrowDrop
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightThrowDrop,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2114,17 +2114,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightThrowDash,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2133,18 +2133,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 106 (0x6A): LightThrowF
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionLightThrowF,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionLightThrowF,				// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2153,18 +2153,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 107 (0x6B): LightThrowB
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionLightThrowB,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionLightThrowB,				// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2174,17 +2174,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightThrowHi,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2194,17 +2194,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightThrowLw,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2214,17 +2214,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightThrowF4,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2234,17 +2234,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightThrowB4,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2254,17 +2254,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightThrowHi4,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2274,17 +2274,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightThrowLw4,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2294,257 +2294,257 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightThrowAirF,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding		// Proc Map
 	},
 
 	// Status 115 (0x73): LightThrowAirB
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightThrowAirB,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding		// Proc Map
 	},
 
 	// Status 116 (0x74): LightThrowAirHi
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightThrowAirHi,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding		// Proc Map
 	},
 
 	// Status 117 (0x75): LightThrowAirLw
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionLightThrowAirLw,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionLightThrowAirLw,			// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding		// Proc Map
 	},
 
 	// Status 118 (0x76): LightThrowAirF4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionLightThrowAirF4,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionLightThrowAirF4,			// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding		// Proc Map
 	},
 
 	// Status 119 (0x77): LightThrowAirB4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionLightThrowAirB4,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionLightThrowAirB4,			// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding		// Proc Map
 	},
 
 	// Status 120 (0x78): LightThrowAirHi4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightThrowAirHi4,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding		// Proc Map
 	},
 
 	// Status 121 (0x79): LightThrowAirLw4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLightThrowAirLw4,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		ftMap_CheckGroundSetWaitOrLanding		// Proc Map
 	},
 
 	// Status 122 (0x7A): HeavyThrowF
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionHeavyThrowF,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionHeavyThrowF,				// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftCommon_HeavyThrow_ProcMap				// Proc Map
+		ftCommonHeavyThrowProcMap				// Proc Map
 	},
 
 	// Status 123 (0x7B): HeavyThrowB
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionHeavyThrowB,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionHeavyThrowB,				// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftCommon_HeavyThrow_ProcMap				// Proc Map
+		ftCommonHeavyThrowProcMap				// Proc Map
 	},
 
 	// Status 124 (0x7C): HeavyThrowF4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionHeavyThrowF4,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftCommon_HeavyThrow_ProcMap				// Proc Map
+		ftCommonHeavyThrowProcMap				// Proc Map
 	},
 
 	// Status 125 (0x7D): HeavyThrowB4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionHeavyThrowB4,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDItemThrow,			// Status attack ID
+		nFTStatusAttackIDItemThrow,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftCommon_HeavyThrow_ProcMap				// Proc Map
+		ftCommonHeavyThrowProcMap				// Proc Map
 	},
 
 	// Status 126 (0x7E): SwordSwing1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionSwordSwing1,			// Script ID
-		nFTMotionAttackIDSwordSwing1,		// Motion attack ID
+		nFTCommonMotionSwordSwing1,				// Script ID
+		nFTMotionAttackIDSwordSwing1,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDSwordSwing1,		// Status attack ID
+		nFTStatusAttackIDSwordSwing1,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2553,18 +2553,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 127 (0x7F): SwordSwing3
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionSwordSwing3,			// Script ID
-		nFTMotionAttackIDSwordSwing3,		// Motion attack ID
+		nFTCommonMotionSwordSwing3,				// Script ID
+		nFTMotionAttackIDSwordSwing3,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDSwordSwing3,		// Status attack ID
+		nFTStatusAttackIDSwordSwing3,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2573,18 +2573,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 128 (0x80): SwordSwing4
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionSwordSwing4,			// Script ID
-		nFTMotionAttackIDSwordSwing4,		// Motion attack ID
+		nFTCommonMotionSwordSwing4,				// Script ID
+		nFTMotionAttackIDSwordSwing4,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDSwordSwing4,		// Status attack ID
+		nFTStatusAttackIDSwordSwing4,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2594,17 +2594,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionSwordSwingDash,			// Script ID
-		nFTMotionAttackIDSwordSwingDash,	// Motion attack ID
+		nFTMotionAttackIDSwordSwingDash,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDSwordSwingDash,	// Status attack ID
+		nFTStatusAttackIDSwordSwingDash,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2614,17 +2614,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionBatSwing1,				// Script ID
-		nFTMotionAttackIDBatSwing1,			// Motion attack ID
+		nFTMotionAttackIDBatSwing1,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDBatSwing1,			// Status attack ID
+		nFTStatusAttackIDBatSwing1,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2634,17 +2634,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionBatSwing3,				// Script ID
-		nFTMotionAttackIDBatSwing3,			// Motion attack ID
+		nFTMotionAttackIDBatSwing3,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDBatSwing3,			// Status attack ID
+		nFTStatusAttackIDBatSwing3,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2654,17 +2654,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionBatSwing4,				// Script ID
-		nFTMotionAttackIDBatSwing4,			// Motion attack ID
+		nFTMotionAttackIDBatSwing4,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDBatSwing4,			// Status attack ID
+		nFTStatusAttackIDBatSwing4,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2674,17 +2674,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionBatSwingDash,			// Script ID
-		nFTMotionAttackIDBatSwingDash,		// Motion attack ID
+		nFTMotionAttackIDBatSwingDash,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDBatSwingDash,		// Status attack ID
+		nFTStatusAttackIDBatSwingDash,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2694,17 +2694,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionHarisenSwing1,			// Script ID
-		nFTMotionAttackIDHarisenSwing1,		// Motion attack ID
+		nFTMotionAttackIDHarisenSwing1,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDHarisenSwing1,		// Status attack ID
+		nFTStatusAttackIDHarisenSwing1,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_HarisenSwing_ProcUpdate,		// Proc Update
+		ftCommonHarisenSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2714,17 +2714,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionHarisenSwing3,			// Script ID
-		nFTMotionAttackIDHarisenSwing3,		// Motion attack ID
+		nFTMotionAttackIDHarisenSwing3,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDHarisenSwing3,		// Status attack ID
+		nFTStatusAttackIDHarisenSwing3,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_HarisenSwing_ProcUpdate,		// Proc Update
+		ftCommonHarisenSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2734,17 +2734,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionHarisenSwing4,			// Script ID
-		nFTMotionAttackIDHarisenSwing4,		// Motion attack ID
+		nFTMotionAttackIDHarisenSwing4,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDHarisenSwing4,		// Status attack ID
+		nFTStatusAttackIDHarisenSwing4,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_HarisenSwing_ProcUpdate,		// Proc Update
+		ftCommonHarisenSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2754,17 +2754,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionHarisenSwingDash,		// Script ID
-		nFTMotionAttackIDHarisenSwingDash,	// Motion attack ID
+		nFTMotionAttackIDHarisenSwingDash,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDHarisenSwingDash,	// Status attack ID
+		nFTStatusAttackIDHarisenSwingDash,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_HarisenSwing_ProcUpdate,		// Proc Update
+		ftCommonHarisenSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2774,17 +2774,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionStarRodSwing1,			// Script ID
-		nFTMotionAttackIDStarRodSwing1,		// Motion attack ID
+		nFTMotionAttackIDStarRodSwing1,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDStarRodSwing1,		// Status attack ID
+		nFTStatusAttackIDStarRodSwing1,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_StarRodSwing_ProcUpdate,		// Proc Update
+		ftCommonStarRodSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2794,17 +2794,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionStarRodSwing3,			// Script ID
-		nFTMotionAttackIDStarRodSwing3,		// Motion attack ID
+		nFTMotionAttackIDStarRodSwing3,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDStarRodSwing3,		// Status attack ID
+		nFTStatusAttackIDStarRodSwing3,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_StarRodSwing_ProcUpdate,		// Proc Update
+		ftCommonStarRodSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2814,17 +2814,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionStarRodSwing4,			// Script ID
-		nFTMotionAttackIDStarRodSwing4,		// Motion attack ID
+		nFTMotionAttackIDStarRodSwing4,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDStarRodSwing4,		// Status attack ID
+		nFTStatusAttackIDStarRodSwing4,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_StarRodSwing_ProcUpdate,		// Proc Update
+		ftCommonStarRodSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2834,17 +2834,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionStarRodSwingDash,		// Script ID
-		nFTMotionAttackIDStarRodSwingDash,	// Motion attack ID
+		nFTMotionAttackIDStarRodSwingDash,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDStarRodSwingDash,	// Status attack ID
+		nFTStatusAttackIDStarRodSwingDash,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_StarRodSwing_ProcUpdate,		// Proc Update
+		ftCommonStarRodSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -2854,218 +2854,218 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLGunShoot,				// Script ID
-		nFTMotionAttackIDLGunShoot,			// Motion attack ID
+		nFTMotionAttackIDLGunShoot,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDLGunShoot,			// Status attack ID
+		nFTStatusAttackIDLGunShoot,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_LGunShoot_ProcUpdate,			// Proc Update
+		ftCommonLGunShootProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftCommon_LGunShoot_ProcMap				// Proc Map
+		ftCommonLGunShootProcMap				// Proc Map
 	},
 
 	// Status 143 (0x8F): LGunShootAir
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLGunShootAir,			// Script ID
-		nFTMotionAttackIDLGunShoot,			// Motion attack ID
+		nFTMotionAttackIDLGunShoot,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDLGunShoot,			// Status attack ID
+		nFTStatusAttackIDLGunShoot,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_LGunShoot_ProcUpdate,			// Proc Update
+		ftCommonLGunShootProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftCommon_LGunShootAir_ProcMap			// Proc Map
+		ftCommonLGunShootAirProcMap				// Proc Map
 	},
 
 	// Status 144 (0x90): FireFlowerShoot
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionFireFlowerShoot,		// Script ID
-		nFTMotionAttackIDFireFlowerShoot,	// Motion attack ID
+		nFTCommonMotionFireFlowerShoot,			// Script ID
+		nFTMotionAttackIDFireFlowerShoot,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDFireFlowerShoot,	// Status attack ID
+		nFTStatusAttackIDFireFlowerShoot,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_FireFlowerShoot_ProcUpdate,	// Proc Update
+		ftCommonFireFlowerShootProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftCommon_FireFlowerShoot_ProcMap		// Proc Map
+		ftCommonFireFlowerShootProcMap			// Proc Map
 	},
 
 	// Status 145 (0x91): FireFlowerShootAir
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionFireFlowerShootAir,		// Script ID
-		nFTMotionAttackIDFireFlowerShoot,	// Motion attack ID
+		nFTMotionAttackIDFireFlowerShoot,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDFireFlowerShoot,	// Status attack ID
+		nFTStatusAttackIDFireFlowerShoot,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_FireFlowerShoot_ProcUpdate,	// Proc Update
+		ftCommonFireFlowerShootProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftCommon_FireFlowerShootAir_ProcMap		// Proc Map
+		ftCommonFireFlowerShootAirProcMap		// Proc Map
 	},
 
 	// Status 146 (0x92): HammerWait
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionHammerWait,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDHammer,			// Status attack ID
+		nFTStatusAttackIDHammer,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftHammer_ProcInterrupt,					// Proc Interrupt
+		ftHammerProcInterrupt,					// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftHammer_ProcMap						// Proc Map
+		ftHammerProcMap							// Proc Map
 	},
 
 	// Status 147 (0x93): HammerWalk
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionHammerWalk,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDHammer,			// Status attack ID
+		nFTStatusAttackIDHammer,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_HammerWalk_ProcInterrupt,		// Proc Interrupt
-		ftCommon_Walk_ProcPhysics,				// Proc Physics
-		ftHammer_ProcMap						// Proc Map
+		ftCommonHammerWalkProcInterrupt,		// Proc Interrupt
+		ftCommonWalkProcPhysics,				// Proc Physics
+		ftHammerProcMap							// Proc Map
 	},
 
 	// Status 148 (0x94): HammerTurn
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionHammerWalk,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDHammer,			// Status attack ID
+		nFTStatusAttackIDHammer,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_HammerTurn_ProcUpdate,			// Proc Update
-		ftCommon_HammerTurn_ProcInterrupt,		// Proc Interrupt
+		ftCommonHammerTurnProcUpdate,			// Proc Update
+		ftCommonHammerTurnProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftHammer_ProcMap						// Proc Map
+		ftHammerProcMap							// Proc Map
 	},
 
 	// Status 149 (0x95): HammerKneeBend
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionHammerWalk,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDHammer,			// Status attack ID
+		nFTStatusAttackIDHammer,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_HammerKneeBend_ProcUpdate,		// Proc Update
-		ftCommon_HammerKneeBend_ProcInterrupt,		// Proc Interrupt
+		ftCommonHammerKneeBendProcUpdate,		// Proc Update
+		ftCommonHammerKneeBendProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftHammer_ProcMap						// Proc Map
+		ftHammerProcMap							// Proc Map
 	},
 
 	// Status 150 (0x96): HammerFall
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionHammerWalk,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDHammer,			// Status attack ID
+		nFTStatusAttackIDHammer,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_HammerFall_ProcInterrupt,		// Proc Interrupt
+		ftCommonHammerFallProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
-		ftCommon_HammerFall_ProcMap				// Proc Map
+		ftCommonHammerFallProcMap				// Proc Map
 	},
 
 	// Status 151 (0x97): HammerLanding
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionHammerWalk,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDHammer,			// Status attack ID
+		nFTStatusAttackIDHammer,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_HammerLanding_ProcUpdate,		// Proc Update
+		ftCommonHammerLandingProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftHammer_ProcMap						// Proc Map
+		ftHammerProcMap							// Proc Map
 	},
 
 	// Status 152 (0x98): GuardOn
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionGuardOn,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionGuardOn,					// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_GuardOn_ProcUpdate,			// Proc Update
-		ftCommon_GuardCommon_ProcInterrupt,		// Proc Interrupt
+		ftCommonGuardOnProcUpdate,				// Proc Update
+		ftCommonGuardCommonProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -3074,18 +3074,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-1,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Guard_ProcUpdate,				// Proc Update
-		ftCommon_GuardCommon_ProcInterrupt,		// Proc Interrupt
+		ftCommonGuardProcUpdate,				// Proc Update
+		ftCommonGuardCommonProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
 	},
@@ -3094,17 +3094,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionGuardOff,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_GuardOff_ProcUpdate,			// Proc Update
+		ftCommonGuardOffProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -3114,17 +3114,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-1,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_GuardSetOff_ProcUpdate,		// Proc Update
+		ftCommonGuardSetOffProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -3133,19 +3133,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 156 (0x9C): EscapeF
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionEscapeF,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionEscapeF,					// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Escape_ProcUpdate,				// Proc Update
-		ftCommon_Escape_ProcInterrupt,			// Proc Interrupt
+		ftCommonEscapeProcUpdate,				// Proc Update
+		ftCommonEscapeProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
@@ -3153,19 +3153,19 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 157 (0x9D): EscapeB
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionEscapeB,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionEscapeB,					// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Escape_ProcUpdate,				// Proc Update
-		ftCommon_Escape_ProcInterrupt,			// Proc Interrupt
+		ftCommonEscapeProcUpdate,				// Proc Update
+		ftCommonEscapeProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
@@ -3174,57 +3174,57 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionShieldBreakFly,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ShieldBreakFly_ProcUpdate,		// Proc Update
+		ftCommonShieldBreakFlyProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftCommon_ShieldBreakFly_ProcMap			// Proc Map
+		ftCommonShieldBreakFlyProcMap			// Proc Map
 	},
 
 	// Status 159 (0x9F): ShieldBreakFall
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionShieldBreakFall,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionShieldBreakFall,			// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftCommon_ShieldBreakFall_ProcMap		// Proc Map
+		ftCommonShieldBreakFallProcMap			// Proc Map
 	},
 
 	// Status 160 (0xA0): ShieldBreakDownD
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionShieldBreakDownD,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ShieldBreakDown_ProcUpdate,	// Proc Update
+		ftCommonShieldBreakDownProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -3234,17 +3234,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionShieldBreakDownU,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ShieldBreakDown_ProcUpdate,	// Proc Update
+		ftCommonShieldBreakDownProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -3254,17 +3254,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionShieldBreakStandD,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ShieldBreakStand_ProcUpdate,	// Proc Update
+		ftCommonShieldBreakStandProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -3274,17 +3274,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionShieldBreakStandU,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ShieldBreakStand_ProcUpdate,	// Proc Update
+		ftCommonShieldBreakStandProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -3294,17 +3294,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionFuraFura,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_FuraFura_ProcUpdate,			// Proc Update
+		ftCommonFuraFuraProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -3314,17 +3314,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionFuraSleep,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_FuraFura_ProcUpdate,			// Proc Update
+		ftCommonFuraFuraProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -3334,159 +3334,159 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCatch,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Catch_ProcUpdate,				// Proc Update
+		ftCommonCatchProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftCommon_Catch_ProcMap					// Proc Map
+		ftCommonCatchProcMap					// Proc Map
 	},
 
 	// Status 167 (0xA7): CatchPull
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCatchPull,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_CatchPull_ProcUpdate,			// Proc Update
+		ftCommonCatchPullProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftCommon_Catch_ProcMap					// Proc Map
+		ftCommonCatchProcMap					// Proc Map
 	},
 
 	// Status 168 (0xA8): CatchWait
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-2,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_CatchWait_ProcInterrupt,		// Proc Interrupt
+		ftCommonCatchWaitProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftCommon_Catch_ProcMap					// Proc Map
+		ftCommonCatchProcMap					// Proc Map
 	},
 
 	// Status 169 (0xA9): ThrowF
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionThrowF,					// Script ID
-		nFTMotionAttackIDThrowF,			// Motion attack ID
+		nFTMotionAttackIDThrowF,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDThrowF,			// Status attack ID
+		nFTStatusAttackIDThrowF,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Throw_ProcUpdate,				// Proc Update
+		ftCommonThrowProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
-		ftCommon_Catch_ProcMap					// Proc Map
+		ftCommonCatchProcMap					// Proc Map
 	},
 
 	// Status 170 (0xAA): ThrowB
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionThrowB,					// Script ID
-		nFTMotionAttackIDThrowB,			// Motion attack ID
+		nFTMotionAttackIDThrowB,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDThrowB,			// Status attack ID
+		nFTStatusAttackIDThrowB,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Throw_ProcUpdate,				// Proc Update
+		ftCommonThrowProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
-		ftCommon_Catch_ProcMap					// Proc Map
+		ftCommonCatchProcMap					// Proc Map
 	},
 
 	// Status 171 (0xAB): CapturePulled
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCapturePulled,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Capture_ProcPhysics,			// Proc Physics
-		ftCommon_CapturePulled_ProcMap			// Proc Map
+		ftCommonCaptureProcPhysics,				// Proc Physics
+		ftCommonCapturePulledProcMap			// Proc Map
 	},
 
 	// Status 172 (0xAC): CaptureWait
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-2,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Capture_ProcPhysics,			// Proc Physics
-		ftCommon_CaptureWait_ProcMap			// Proc Map
+		ftCommonCaptureProcPhysics,				// Proc Physics
+		ftCommonCaptureWaitProcMap				// Proc Map
 	},
 
 	// Status 173 (0xAD): CaptureKirby
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionDamageFall,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CaptureKirby_ProcPhysics,		// Proc Physics
+		ftCommonCaptureKirbyProcPhysics,		// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -3494,79 +3494,79 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-1,										// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_CaptureWaitKirby_ProcInterrupt,// Proc Interrupt
+		ftCommonCaptureWaitKirbyProcInterrupt,	// Proc Interrupt
 		NULL,									// Proc Physics
-		ftCommon_CaptureWaitKirby_ProcMap		// Proc Map
+		ftCommonCaptureWaitKirbyProcMap			// Proc Map
 	},
 
 	// Status 175 (0xAF): ThrownKirbyStar
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionThrownKirbyStar,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionThrownKirbyStar,			// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ThrownKirbyStar_ProcUpdate,	// Proc Update
+		ftCommonThrownKirbyStarProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_ThrownKirbyStar_ProcPhysics,	// Proc Physics
-		ftCommon_ThrownCommonStar_ProcMap		// Proc Map
+		ftCommonThrownKirbyStarProcPhysics,		// Proc Physics
+		ftCommonThrownCommonStarProcMap			// Proc Map
 	},
 
 	// Status 176 (0xB0): ThrownCopyStar
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionThrownCopyStar,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ThrownCopyStar_ProcUpdate,		// Proc Update
+		ftCommonThrownCopyStarProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_ThrownCopyStar_ProcPhysics,	// Proc Physics
-		ftCommon_ThrownCommonStar_ProcMap		// Proc Map
+		ftCommonThrownCopyStarProcPhysics,		// Proc Physics
+		ftCommonThrownCommonStarProcMap			// Proc Map
 	},
 
 	// Status 177 (0xB1): CaptureYoshi
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCapturePulled,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CaptureYoshi_ProcPhysics,		// Proc Physics
+		ftCommonCaptureYoshiProcPhysics,		// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -3574,54 +3574,54 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionYoshiEgg,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_YoshiEgg_ProcUpdate,			// Proc Update
-		ftCommon_YoshiEgg_ProcInterrupt,		// Proc Interrupt
-		ftCommon_YoshiEgg_ProcPhysics,			// Proc Physics
-		ftCommon_YoshiEgg_ProcMap				// Proc Map
+		ftCommonYoshiEggProcUpdate,				// Proc Update
+		ftCommonYoshiEggProcInterrupt,			// Proc Interrupt
+		ftCommonYoshiEggProcPhysics,			// Proc Physics
+		ftCommonYoshiEggProcMap					// Proc Map
 	},
 
 	// Status 179 (0xB3): CaptureCaptain
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionCaptureCaptain,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_CaptureCaptain_ProcPhysics,	// Proc Physics
+		ftCommonCaptureCaptainProcPhysics,		// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
 	// Status 180 (0xB4): ThrownDonkeyUnk
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionThrownDonkeyUnk,		// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTCommonMotionThrownDonkeyUnk,			// Script ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
@@ -3634,178 +3634,178 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionThrownDonkeyF,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Thrown_ProcUpdate,				// Proc Update
+		ftCommonThrownProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Thrown_ProcPhysics,			// Proc Physics
-		ftCommon_Thrown_ProcMap					// Proc Map
+		ftCommonThrownProcPhysics,				// Proc Physics
+		ftCommonThrownProcMap					// Proc Map
 	},
 
 	// Status 182 (0xB6): ThrownMarioB1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionThrownMarioB1,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Thrown_ProcUpdate,				// Proc Update
+		ftCommonThrownProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Thrown_ProcPhysics,			// Proc Physics
-		ftCommon_Thrown_ProcMap					// Proc Map
+		ftCommonThrownProcPhysics,				// Proc Physics
+		ftCommonThrownProcMap					// Proc Map
 	},
 
 	// Status 183 (0xB7): ThrownUnk1
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionThrownUnk1,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Thrown_ProcUpdate,				// Proc Update
+		ftCommonThrownProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Thrown_ProcPhysics,			// Proc Physics
-		ftCommon_Thrown_ProcMap					// Proc Map
+		ftCommonThrownProcPhysics,				// Proc Physics
+		ftCommonThrownProcMap					// Proc Map
 	},
 
 	// Status 184 (0xB8): Shouldered
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionShouldered,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommon_Shouldered_ProcInterrupt,		// Proc Interrupt
-		ftCommon_Thrown_ProcPhysics,			// Proc Physics
-		ftCommon_Thrown_ProcMap					// Proc Map
+		ftCommonShoulderedProcInterrupt,		// Proc Interrupt
+		ftCommonThrownProcPhysics,				// Proc Physics
+		ftCommonThrownProcMap					// Proc Map
 	},
 
 	// Status 185 (0xB9): ThrownMarioB2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionThrownMarioB2,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Thrown_ProcPhysics,			// Proc Physics
-		ftCommon_Thrown_ProcMap					// Proc Map
+		ftCommonThrownProcPhysics,				// Proc Physics
+		ftCommonThrownProcMap					// Proc Map
 	},
 
 	// Status 186 (0xBA): ThrownCommon
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionThrownCommon,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Thrown_ProcPhysics,			// Proc Physics
-		ftCommon_Thrown_ProcMap					// Proc Map
+		ftCommonThrownProcPhysics,				// Proc Physics
+		ftCommonThrownProcMap					// Proc Map
 	},
 
 	// Status 187 (0xBB): ThrownUnk2
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionThrownUnk2,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Thrown_ProcPhysics,			// Proc Physics
-		ftCommon_Thrown_ProcMap					// Proc Map
+		ftCommonThrownProcPhysics,				// Proc Physics
+		ftCommonThrownProcMap					// Proc Map
 	},
 
 	// Status 188 (0xBC): ThrownUnk3
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionThrownUnk3,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Thrown_ProcPhysics,			// Proc Physics
-		ftCommon_Thrown_ProcMap					// Proc Map
+		ftCommonThrownProcPhysics,				// Proc Physics
+		ftCommonThrownProcMap					// Proc Map
 	},
 
 	// Status 189 (0xBD): Appeal
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAppeal,					// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
-		ftCommon_Appeal_ProcInterrupt,			// Proc Interrupt
+		ftStatusWaitOnAnimEnd,		            // Proc Update
+		ftCommonAppealProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
 	},
@@ -3814,18 +3814,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttack11,				// Script ID
-		nFTMotionAttackIDAttack11,			// Motion attack ID
+		nFTMotionAttackIDAttack11,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttack11,			// Status attack ID
+		nFTStatusAttackIDAttack11,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Attack11_ProcUpdate,			// Proc Update
-		ftCommon_Attack11_ProcInterrupt,		// Proc Interrupt
+		ftCommonAttack11ProcUpdate,				// Proc Update
+		ftCommonAttack11ProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
@@ -3834,18 +3834,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttack12,				// Script ID
-		nFTMotionAttackIDAttack12,			// Motion attack ID
+		nFTMotionAttackIDAttack12,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttack12,			// Status attack ID
+		nFTStatusAttackIDAttack12,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Attack12_ProcUpdate,			// Proc Update
-		ftCommon_Attack12_ProcInterrupt,		// Proc Interrupt
+		ftCommonAttack12ProcUpdate,				// Proc Update
+		ftCommonAttack12ProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
@@ -3854,17 +3854,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackDash,				// Script ID
-		nFTMotionAttackIDAttackDash,		// Motion attack ID
+		nFTMotionAttackIDAttackDash,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackDash,		// Status attack ID
+		nFTStatusAttackIDAttackDash,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -3874,17 +3874,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackS3Hi,				// Script ID
-		nFTMotionAttackIDAttackS3,			// Motion attack ID
+		nFTMotionAttackIDAttackS3,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackS3,			// Status attack ID
+		nFTStatusAttackIDAttackS3,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -3893,18 +3893,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 194 (0xC2): AttackS3HiS
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionAttackS3HiS,			// Script ID
-		nFTMotionAttackIDAttackS3,			// Motion attack ID
+		nFTCommonMotionAttackS3HiS,				// Script ID
+		nFTMotionAttackIDAttackS3,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackS3,			// Status attack ID
+		nFTStatusAttackIDAttackS3,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -3914,17 +3914,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackS3,				// Script ID
-		nFTMotionAttackIDAttackS3,			// Motion attack ID
+		nFTMotionAttackIDAttackS3,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackS3,			// Status attack ID
+		nFTStatusAttackIDAttackS3,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -3933,18 +3933,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 196 (0xC4): AttackS3LwS
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionAttackS3LwS,			// Script ID
-		nFTMotionAttackIDAttackS3,			// Motion attack ID
+		nFTCommonMotionAttackS3LwS,				// Script ID
+		nFTMotionAttackIDAttackS3,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackS3,			// Status attack ID
+		nFTStatusAttackIDAttackS3,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -3954,17 +3954,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackS3Lw,				// Script ID
-		nFTMotionAttackIDAttackS3,			// Motion attack ID
+		nFTMotionAttackIDAttackS3,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackS3,			// Status attack ID
+		nFTStatusAttackIDAttackS3,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -3974,17 +3974,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackHi3F,				// Script ID
-		nFTMotionAttackIDAttackHi3,			// Motion attack ID
+		nFTMotionAttackIDAttackHi3,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackHi3,			// Status attack ID
+		nFTStatusAttackIDAttackHi3,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -3994,17 +3994,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackHi3,				// Script ID
-		nFTMotionAttackIDAttackHi3,			// Motion attack ID
+		nFTMotionAttackIDAttackHi3,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackHi3,			// Status attack ID
+		nFTStatusAttackIDAttackHi3,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -4014,17 +4014,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackHi3B,				// Script ID
-		nFTMotionAttackIDAttackHi3,			// Motion attack ID
+		nFTMotionAttackIDAttackHi3,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackHi3,			// Status attack ID
+		nFTStatusAttackIDAttackHi3,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -4034,18 +4034,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackLw3,				// Script ID
-		nFTMotionAttackIDAttackLw3,			// Motion attack ID
+		nFTMotionAttackIDAttackLw3,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackLw3,			// Status attack ID
+		nFTStatusAttackIDAttackLw3,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_AttackLw3_ProcUpdate,			// Proc Update
-		ftCommon_AttackLw3_ProcInterrupt,		// Proc Interrupt
+		ftCommonAttackLw3ProcUpdate,			// Proc Update
+		ftCommonAttackLw3ProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
@@ -4054,17 +4054,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackS4Hi,				// Script ID
-		nFTMotionAttackIDAttackS4,			// Motion attack ID
+		nFTMotionAttackIDAttackS4,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackS4,			// Status attack ID
+		nFTStatusAttackIDAttackS4,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_AttackS4_ProcUpdate,			// Proc Update
+		ftCommonAttackS4ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -4073,18 +4073,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 203 (0xCB): AttackS4HiS
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionAttackS4HiS,			// Script ID
-		nFTMotionAttackIDAttackS4,			// Motion attack ID
+		nFTCommonMotionAttackS4HiS,				// Script ID
+		nFTMotionAttackIDAttackS4,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackS4,			// Status attack ID
+		nFTStatusAttackIDAttackS4,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_AttackS4_ProcUpdate,			// Proc Update
+		ftCommonAttackS4ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -4094,17 +4094,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackS4,				// Script ID
-		nFTMotionAttackIDAttackS4,			// Motion attack ID
+		nFTMotionAttackIDAttackS4,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackS4,			// Status attack ID
+		nFTStatusAttackIDAttackS4,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_AttackS4_ProcUpdate,			// Proc Update
+		ftCommonAttackS4ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -4113,18 +4113,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 205 (0xCD): AttackS4LwS
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionAttackS4LwS,			// Script ID
-		nFTMotionAttackIDAttackS4,			// Motion attack ID
+		nFTCommonMotionAttackS4LwS,				// Script ID
+		nFTMotionAttackIDAttackS4,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackS4,			// Status attack ID
+		nFTStatusAttackIDAttackS4,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_AttackS4_ProcUpdate,			// Proc Update
+		ftCommonAttackS4ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -4134,17 +4134,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackS4Lw,				// Script ID
-		nFTMotionAttackIDAttackS4,			// Motion attack ID
+		nFTMotionAttackIDAttackS4,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackS4,			// Status attack ID
+		nFTStatusAttackIDAttackS4,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_AttackS4_ProcUpdate,			// Proc Update
+		ftCommonAttackS4ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -4161,10 +4161,10 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackHi4,			// Status attack ID
+		nFTStatusAttackIDAttackHi4,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -4174,17 +4174,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackLw4,				// Script ID
-		nFTMotionAttackIDAttackLw4,			// Motion attack ID
+		nFTMotionAttackIDAttackLw4,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		TRUE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackLw4,			// Status attack ID
+		nFTStatusAttackIDAttackLw4,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -4194,100 +4194,100 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackAirN,				// Script ID
-		nFTMotionAttackIDAttackAirN,		// Motion attack ID
+		nFTMotionAttackIDAttackAirN,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackAirN,		// Status attack ID
+		nFTStatusAttackIDAttackAirN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,		// Proc Update
+		ftStatusFallOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftCommon_AttackAir_ProcMap				// Proc Map
+		ftCommonAttackAirProcMap				// Proc Map
 	},
 
 	// Status 210 (0xD2): AttackAirF
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackAirF,				// Script ID
-		nFTMotionAttackIDAttackAirF,		// Motion attack ID
+		nFTMotionAttackIDAttackAirF,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackAirF,		// Status attack ID
+		nFTStatusAttackIDAttackAirF,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,		// Proc Update
+		ftStatusFallOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftCommon_AttackAir_ProcMap				// Proc Map
+		ftCommonAttackAirProcMap				// Proc Map
 	},
 
 	// Status 211 (0xD3): AttackAirB
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionAttackAirB,				// Script ID
-		nFTMotionAttackIDAttackAirB,		// Motion attack ID
+		nFTMotionAttackIDAttackAirB,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackAirB,		// Status attack ID
+		nFTStatusAttackIDAttackAirB,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,		// Proc Update
+		ftStatusFallOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftCommon_AttackAir_ProcMap				// Proc Map
+		ftCommonAttackAirProcMap				// Proc Map
 	},
 
 	// Status 212 (0xD4): AttackAirHi
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionAttackAirHi,			// Script ID
-		nFTMotionAttackIDAttackAirHi,		// Motion attack ID
+		nFTCommonMotionAttackAirHi,				// Script ID
+		nFTMotionAttackIDAttackAirHi,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackAirHi,		// Status attack ID
+		nFTStatusAttackIDAttackAirHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,		// Proc Update
+		ftStatusFallOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftCommon_AttackAir_ProcMap				// Proc Map
+		ftCommonAttackAirProcMap				// Proc Map
 	},
 
 	// Status 213 (0xD5): AttackAirLw
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionAttackAirLw,			// Script ID
-		nFTMotionAttackIDAttackAirLw,		// Motion attack ID
+		nFTCommonMotionAttackAirLw,				// Script ID
+		nFTMotionAttackIDAttackAirLw,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackAirLw,		// Status attack ID
+		nFTStatusAttackIDAttackAirLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_AttackAirLw_ProcUpdate,		// Proc Update
+		ftCommonAttackAirLwProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftCommon_AttackAir_ProcMap				// Proc Map
+		ftCommonAttackAirProcMap				// Proc Map
 	},
 
 	// Status 214 (0xD6): LandingAirN
@@ -4301,10 +4301,10 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackAirN,		// Status attack ID
+		nFTStatusAttackIDAttackAirN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
@@ -4313,18 +4313,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 215 (0xD7): LandingAirF
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionLandingAirF,			// Script ID
-		nFTMotionAttackIDAttackAirF,		// Motion attack ID
+		nFTCommonMotionLandingAirF,				// Script ID
+		nFTMotionAttackIDAttackAirF,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackAirF,		// Status attack ID
+		nFTStatusAttackIDAttackAirF,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
@@ -4333,18 +4333,18 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 216 (0xD8): LandingAirB
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionLandingAirB,			// Script ID
-		nFTMotionAttackIDAttackAirB,		// Motion attack ID
+		nFTCommonMotionLandingAirB,				// Script ID
+		nFTMotionAttackIDAttackAirB,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackAirB,		// Status attack ID
+		nFTStatusAttackIDAttackAirB,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
@@ -4354,17 +4354,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLandingAirHi,			// Script ID
-		nFTMotionAttackIDAttackAirHi,		// Motion attack ID
+		nFTMotionAttackIDAttackAirHi,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackAirHi,		// Status attack ID
+		nFTStatusAttackIDAttackAirHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
@@ -4374,17 +4374,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLandingAirLw,			// Script ID
-		nFTMotionAttackIDAttackAirLw,		// Motion attack ID
+		nFTMotionAttackIDAttackAirLw,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDAttackAirLw,		// Status attack ID
+		nFTStatusAttackIDAttackAirLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map
@@ -4394,17 +4394,17 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTCommonMotionLandingAirNull,			// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundEdgeOttottoOrFall		// Proc Map

@@ -20,9 +20,9 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Appear_ProcUpdate,				// Proc Update
+		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Appear_ProcPhysics,			// Proc Physics
+		ftCommonAppearProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -40,9 +40,9 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Appear_ProcUpdate,				// Proc Update
+		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Appear_ProcPhysics,			// Proc Physics
+		ftCommonAppearProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -321,9 +321,9 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftDonkey_ThrowFWait_ProcInterrupt,		// Proc Interrupt
+		ftDonkeyThrowFWaitProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
+		ftDonkeyThrowFCommonProcMap			// Proc Map
 	},
 
 	// Status 236 (0xEC): ThrowFWalkSlow
@@ -341,9 +341,9 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftDonkey_ThrowFWalk_ProcInterrupt,		// Proc Interrupt
-		ftCommon_Walk_ProcPhysics,				// Proc Physics
-		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
+		ftDonkeyThrowFWalkProcInterrupt,		// Proc Interrupt
+		ftCommonWalkProcPhysics,				// Proc Physics
+		ftDonkeyThrowFCommonProcMap			// Proc Map
 	},
 
 	// Status 237 (0xED): ThrowFWalkMiddle
@@ -361,9 +361,9 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftDonkey_ThrowFWalk_ProcInterrupt,		// Proc Interrupt
-		ftCommon_Walk_ProcPhysics,				// Proc Physics
-		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
+		ftDonkeyThrowFWalkProcInterrupt,		// Proc Interrupt
+		ftCommonWalkProcPhysics,				// Proc Physics
+		ftDonkeyThrowFCommonProcMap			// Proc Map
 	},
 
 	// Status 238 (0xEE): ThrowFWalkFast
@@ -381,9 +381,9 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftDonkey_ThrowFWalk_ProcInterrupt,		// Proc Interrupt
-		ftCommon_Walk_ProcPhysics,				// Proc Physics
-		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
+		ftDonkeyThrowFWalkProcInterrupt,		// Proc Interrupt
+		ftCommonWalkProcPhysics,				// Proc Physics
+		ftDonkeyThrowFCommonProcMap			// Proc Map
 	},
 
 	// Status 239 (0xEF): ThrowFTurn
@@ -400,10 +400,10 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDThrowF,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_ThrowFTurn_ProcUpdate,			// Proc Update
-		ftDonkey_ThrowFTurn_ProcInterrupt,		// Proc Interrupt
+		ftDonkeyThrowFTurnProcUpdate,			// Proc Update
+		ftDonkeyThrowFTurnProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
+		ftDonkeyThrowFCommonProcMap			// Proc Map
 	},
 
 	// Status 240 (0xF0): ThrowFKneeBend
@@ -420,10 +420,10 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDThrowF,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_ThrowFKneeBend_ProcUpdate,		// Proc Update
-		ftDonkey_ThrowFKneeBend_ProcInterrupt,	// Proc Interrupt
+		ftDonkeyThrowFKneeBendProcUpdate,		// Proc Update
+		ftDonkeyThrowFKneeBendProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
+		ftDonkeyThrowFCommonProcMap			// Proc Map
 	},
 
 	// Status 241 (0xF1): ThrowFFall
@@ -441,9 +441,9 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftDonkey_ThrowFFall_ProcInterrupt,		// Proc Interrupt
+		ftDonkeyThrowFFallProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
-		ftDonkey_ThrowFFall_ProcMap				// Proc Map
+		ftDonkeyThrowFFallProcMap				// Proc Map
 	},
 
 	// Status 242 (0xF2): ThrowFLanding
@@ -460,10 +460,10 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDThrowF,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_ThrowFLanding_ProcUpdate,		// Proc Update
+		ftDonkeyThrowFLandingProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftDonkey_ThrowFCommon_ProcMap			// Proc Map
+		ftDonkeyThrowFCommonProcMap			// Proc Map
 	},
 
 	// Status 243 (0xF3): ThrowFDamage
@@ -480,9 +480,9 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDThrowF,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_ThrowFDamage_ProcUpdate,		// Proc Update
+		ftDonkeyThrowFDamageProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_DamageCommon_ProcPhysics,		// Proc Physics
+		ftCommonDamageCommonProcPhysics,		// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -500,10 +500,10 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDThrowF,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_ThrowFF_ProcUpdate,			// Proc Update
+		ftDonkeyThrowFFProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftDonkey_ThrowFF_ProcMap				// Proc Map
+		ftDonkeyThrowFFProcMap				// Proc Map
 	},
 
 	// Status 245 (0xF5): ThrowAirFF
@@ -520,10 +520,10 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDThrowF,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftDonkey_ThrowFF_ProcUpdate,			// Proc Update
+		ftDonkeyThrowFFProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftDonkey_ThrowAirFF_ProcMap				// Proc Map
+		ftDonkeyThrowAirFFProcMap				// Proc Map
 	},
 
 	// Status 246 (0xF6): HeavyThrowF
@@ -540,9 +540,9 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_ItemThrow_ProcPhysics,			// Proc Physics
+		ftCommonItemThrowProcPhysics,			// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -560,9 +560,9 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_ItemThrow_ProcPhysics,			// Proc Physics
+		ftCommonItemThrowProcPhysics,			// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -580,9 +580,9 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_ItemThrow_ProcPhysics,			// Proc Physics
+		ftCommonItemThrowProcPhysics,			// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	},
 
@@ -600,9 +600,9 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDItemThrow,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_ItemThrow_ProcUpdate,			// Proc Update
+		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_ItemThrow_ProcPhysics,			// Proc Physics
+		ftCommonItemThrowProcPhysics,			// Proc Physics
 		ftMap_UpdateFighterGroundOrAir			// Proc Map
 	}
 };

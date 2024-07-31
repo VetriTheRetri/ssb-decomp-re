@@ -20,7 +20,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDAttack100,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Attack100Start_ProcUpdate,		// Proc Update
+		ftCommonAttack100StartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -40,8 +40,8 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDAttack100,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Attack100Loop_ProcUpdate,		// Proc Update
-		ftCommon_Attack100Loop_ProcInterrupt,	// Proc Interrupt
+		ftCommonAttack100LoopProcUpdate,		// Proc Update
+		ftCommonAttack100LoopProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
@@ -80,9 +80,9 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_JumpAerial_ProcUpdate,			// Proc Update
-		ftCommon_JumpAerial_ProcInterrupt,		// Proc Interrupt
-		ftCommon_JumpAerial_ProcPhysics,		// Proc Physics
+		ftCommonJumpAerialProcUpdate,			// Proc Update
+		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
+		ftCommonJumpAerialProcPhysics,		// Proc Physics
 		ftMap_CheckGroundCliffSetWaitOrLanding						// Proc Map
 	},
 
@@ -100,9 +100,9 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_JumpAerial_ProcUpdate,			// Proc Update
-		ftCommon_JumpAerial_ProcInterrupt,		// Proc Interrupt
-		ftCommon_JumpAerial_ProcPhysics,		// Proc Physics
+		ftCommonJumpAerialProcUpdate,			// Proc Update
+		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
+		ftCommonJumpAerialProcPhysics,		// Proc Physics
 		ftMap_CheckGroundCliffSetWaitOrLanding						// Proc Map
 	},
 	
@@ -120,9 +120,9 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_JumpAerial_ProcUpdate,			// Proc Update
-		ftCommon_JumpAerial_ProcInterrupt,		// Proc Interrupt
-		ftCommon_JumpAerial_ProcPhysics,		// Proc Physics
+		ftCommonJumpAerialProcUpdate,			// Proc Update
+		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
+		ftCommonJumpAerialProcPhysics,		// Proc Physics
 		ftMap_CheckGroundCliffSetWaitOrLanding						// Proc Map
 	},
 
@@ -140,9 +140,9 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_JumpAerial_ProcUpdate,			// Proc Update
-		ftCommon_JumpAerial_ProcInterrupt,		// Proc Interrupt
-		ftCommon_JumpAerial_ProcPhysics,		// Proc Physics
+		ftCommonJumpAerialProcUpdate,			// Proc Update
+		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
+		ftCommonJumpAerialProcPhysics,		// Proc Physics
 		ftMap_CheckGroundCliffSetWaitOrLanding						// Proc Map
 	},
 
@@ -160,9 +160,9 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_JumpAerial_ProcUpdate,			// Proc Update
-		ftCommon_JumpAerial_ProcInterrupt,		// Proc Interrupt
-		ftCommon_JumpAerial_ProcPhysics,		// Proc Physics
+		ftCommonJumpAerialProcUpdate,			// Proc Update
+		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
+		ftCommonJumpAerialProcPhysics,		// Proc Physics
 		ftMap_CheckGroundCliffSetWaitOrLanding						// Proc Map
 	},
 
@@ -180,9 +180,9 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Appear_ProcUpdate,				// Proc Update
+		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Appear_ProcPhysics,			// Proc Physics
+		ftCommonAppearProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -200,9 +200,9 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Appear_ProcUpdate,				// Proc Update
+		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Appear_ProcPhysics,			// Proc Physics
+		ftCommonAppearProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 

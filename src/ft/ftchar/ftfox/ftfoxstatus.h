@@ -20,7 +20,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDAttack100,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Attack100Start_ProcUpdate,		// Proc Update
+		ftCommonAttack100StartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
@@ -40,8 +40,8 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDAttack100,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Attack100Loop_ProcUpdate,		// Proc Update
-		ftCommon_Attack100Loop_ProcInterrupt,	// Proc Interrupt
+		ftCommonAttack100LoopProcUpdate,		// Proc Update
+		ftCommonAttack100LoopProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
@@ -80,9 +80,9 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Appear_ProcUpdate,				// Proc Update
+		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Appear_ProcPhysics,			// Proc Physics
+		ftCommonAppearProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -100,9 +100,9 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Appear_ProcUpdate,				// Proc Update
+		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Appear_ProcPhysics,			// Proc Physics
+		ftCommonAppearProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -320,10 +320,10 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFox_SpecialAirHiBound_ProcUpdate,		// Proc Update
+		ftFoxSpecialAirHiBoundProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftFox_SpecialAirHiBound_ProcPhysics,	// Proc Physics
-		ftFox_SpecialAirHiBound_ProcMap			// Proc Map
+		ftFoxSpecialAirHiBoundProcPhysics,	// Proc Physics
+		ftFoxSpecialAirHiBoundProcMap			// Proc Map
 	},
 
 	// Status 236 (0xEC): SpecialLwStart

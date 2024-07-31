@@ -22,9 +22,9 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Appear_ProcUpdate,				// Proc Update
+		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Appear_ProcPhysics,			// Proc Physics
+		ftCommonAppearProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 
@@ -42,9 +42,9 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommon_Appear_ProcUpdate,				// Proc Update
+		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommon_Appear_ProcPhysics,			// Proc Physics
+		ftCommonAppearProcPhysics,			// Proc Physics
 		ftMap_UpdateProjectGroundID				// Proc Map
 	},
 

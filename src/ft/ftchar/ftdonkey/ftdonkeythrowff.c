@@ -38,7 +38,7 @@ void ftDonkeyThrowFFProcUpdate(GObj *fighter_gobj)
     }
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        ftMap_SetStatusWaitOrFall(fighter_gobj);
+        mpCommonSetFighterWaitOrFall(fighter_gobj);
     }
 }
 
@@ -47,7 +47,7 @@ void ftDonkeyThrowAirFFSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFF, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->status_vars.common.throwff.is_turn = FALSE;
@@ -60,7 +60,7 @@ void ftDonkeyThrowFFSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowAirFF, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 }
@@ -68,13 +68,13 @@ void ftDonkeyThrowFFSwitchStatusAir(GObj *fighter_gobj)
 // 0x8014DECC
 void ftDonkeyThrowFFProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftDonkeyThrowFFSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftDonkeyThrowFFSwitchStatusAir);
 }
 
 // 0x8014DEF0
 void ftDonkeyThrowAirFFProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkeyThrowAirFFSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftDonkeyThrowAirFFSwitchStatusGround);
 }
 
 // 0x8014DF14

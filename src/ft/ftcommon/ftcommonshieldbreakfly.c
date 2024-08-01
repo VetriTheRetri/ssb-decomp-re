@@ -24,7 +24,7 @@ void ftCommonShieldBreakFlyProcUpdate(GObj *fighter_gobj)
 // 0x80149464
 void ftCommonShieldBreakFlyProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftCommonShieldBreakDownSetStatus);
+    mpCommonProcFighterLanding(fighter_gobj, ftCommonShieldBreakDownSetStatus);
 }
 
 // 0x80149488
@@ -33,7 +33,7 @@ void ftCommonShieldBreakFlySetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusShieldBreakFly, 0.0F, 1.0F, FTSTATUS_PRESERVE_DAMAGEPLAYER);
     ftMainPlayAnimNoEffect(fighter_gobj);
 

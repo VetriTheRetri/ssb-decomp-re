@@ -23,7 +23,7 @@ ftStatusDesc dFTMarioSpecialStatusDesc[/* */] =
 		ftStatusWaitOnAnimEnd,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 221 (0xDD): AppearR
@@ -43,7 +43,7 @@ ftStatusDesc dFTMarioSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 222 (0xDE): AppearL
@@ -63,7 +63,7 @@ ftStatusDesc dFTMarioSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 223 (0xDF): SpecialN

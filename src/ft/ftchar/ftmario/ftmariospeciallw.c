@@ -93,13 +93,13 @@ void ftMarioSpecialAirLwProcPhysics(GObj *fighter_gobj)
 // 0x8015675C
 void ftMarioSpecialLwProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftMarioSpecialLwSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftMarioSpecialLwSwitchStatusAir);
 }
 
 // 0x80156780
 void ftMarioSpecialAirLwProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftMarioSpecialAirLwSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftMarioSpecialAirLwSwitchStatusGround);
 }
 
 // 0x801567A4
@@ -116,7 +116,7 @@ void ftMarioSpecialAirLwSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMarioSpecialAirLwSetDisableRise(fighter_gobj);
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_RUMBLE);
     ftPhysics_ClampGroundVel(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
 }
@@ -127,7 +127,7 @@ void ftMarioSpecialLwSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMarioSpecialAirLwSetDisableRise(fighter_gobj);
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_RUMBLE);
     ftPhysics_ClampAirVelY(fp, FTMARIO_TORNADO_VEL_Y_CLAMP);
     ftPhysics_ClampAirVelX(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
@@ -151,7 +151,7 @@ void ftMarioSpecialLwSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMarioSpecialAirLwSetDisableRise(fighter_gobj);
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
@@ -160,7 +160,7 @@ void ftMarioSpecialLwSetStatus(GObj *fighter_gobj)
     ftPhysics_ClampAirVelX(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
     ftMarioSpecialLwInitStatusVars(fighter_gobj);
 
-    fp->stat_flags.is_ga = nMPKineticsGround;
+    fp->stat_flags.ga = nMPKineticsGround;
 }
 
 // 0x80156910

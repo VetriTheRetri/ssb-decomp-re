@@ -106,7 +106,7 @@ void ftCommonDamageCommonProcUpdate(GObj *fighter_gobj)
 
     if ((fighter_gobj->anim_frame <= 0.0F) && (fp->status_vars.common.damage.hitstun_timer == 0))
     {
-        ftMap_SetStatusWaitOrFall(fighter_gobj);
+        mpCommonSetFighterWaitOrFall(fighter_gobj);
     }
 }
 
@@ -270,7 +270,7 @@ void ftCommonDamageAirCommonProcMap(GObj *fighter_gobj)
 
     if 
     (
-        (ftMap_CheckAllFighterDamage(fighter_gobj) != FALSE)                &&
+        (mpCommonCheckFighterDamageCollision(fighter_gobj) != FALSE)                &&
         (ftCommonWallDamageCheckGoto(fighter_gobj) == FALSE)                &&
         (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_KIND_GROUND) &&
         (ftCommonPassiveStandCheckInterruptDamage(fighter_gobj) == FALSE)   &&
@@ -524,7 +524,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
         {
             status_id_var = status_id_set = dFTCommonDamageStatusGroundIDs[damage_level][damage_index];
 
-            ftMap_SetAir(this_fp);
+            mpCommonSetFighterAir(this_fp);
 
             this_fp->phys_info.vel_damage_air.x = vel_damage.x;
             this_fp->phys_info.vel_damage_air.y = vel_damage.y;
@@ -532,7 +532,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
         }
         else if (damage_level == 3)
         {
-            ftMap_SetAir(this_fp);
+            mpCommonSetFighterAir(this_fp);
 
             status_id_var = status_id_set = dFTCommonDamageStatusGroundIDs[damage_level][damage_index];
 

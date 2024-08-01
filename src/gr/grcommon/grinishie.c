@@ -246,7 +246,7 @@ void grInishieScaleUpdateFall(void)
     gGRCommonStruct.inishie.scale[0].platform_dobj->translate.vec.f.y -= gGRCommonStruct.inishie.splat_accelerate;
     gGRCommonStruct.inishie.scale[1].platform_dobj->translate.vec.f.y -= gGRCommonStruct.inishie.splat_accelerate;
 
-    deadzone = gMPGroundData->blastzone_bottom + (-1000.0F);
+    deadzone = gMPCollisionGroundData->blastzone_bottom + (-1000.0F);
 
     if ((gGRCommonStruct.inishie.scale[0].platform_dobj->translate.vec.f.y < deadzone) && (gGRCommonStruct.inishie.scale[1].platform_dobj->translate.vec.f.y < deadzone))
     {
@@ -541,7 +541,7 @@ void grInishieMakePowerBlock(void)
         gGRCommonStruct.inishie.pblock_pos_ids[i] = pos_ids[i];
     }
     gGRCommonStruct.inishie.pblock_status = nGRInishiePowerBlockStatusWait;
-    gGRCommonStruct.inishie.gr_hit = (grHitbox*) (((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRInishiePowerBlockHit);
+    gGRCommonStruct.inishie.gr_hit = (grHitbox*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRInishiePowerBlockHit);
 }
 
 // 0x80109B4C
@@ -576,8 +576,8 @@ sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, 
 // 0x80109BD4
 void grInishieInitHeaders(void)
 {
-    gGRCommonStruct.inishie.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRInishieMapHead);
-    gGRCommonStruct.inishie.item_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart);
+    gGRCommonStruct.inishie.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRInishieMapHead);
+    gGRCommonStruct.inishie.item_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart);
 }
 
 // 0x80109C0C

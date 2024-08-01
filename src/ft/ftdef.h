@@ -645,6 +645,14 @@ typedef enum ftCameraModes
 
 } ftCameraModes;
 
+typedef enum ftSlopeContours
+{
+    nFTSlopeContourLFoot,
+    nFTSlopeContourRFoot,
+    nFTSlopeContourFull
+
+} ftSlopeContours;
+
 typedef enum ftHitlogObjectKind
 {
 	nFTHitlogObjectNone,

@@ -94,7 +94,7 @@ void grYamabukiGateMakeMonster(void)
     s32 item_id;
 
     gGRCommonStruct.yamabuki.gate_status = nGRYamabukiGateStatusOpen;
-    gGRCommonStruct.yamabuki.is_gate_noentry = FALSE;
+    gGRCommonStruct.yamabuki.gate_noentry = FALSE;
 
     mpCollisionGetMapObjIDsKind(dGRYamabukiMonsterMapObjKinds[0], &mpoint);
     mpCollisionGetMapObjPositionID(mpoint, &pos);
@@ -120,14 +120,14 @@ void grYamabukiGateMakeMonster(void)
 void grYamabukiGateSetPositionFar(void)
 {
     gGRCommonStruct.yamabuki.gate_pos.x = 1600.0F;
-    gGRCommonStruct.yamabuki.gate_pos.y = gMPYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
+    gGRCommonStruct.yamabuki.gate_pos.y = gMPCollisionYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
 }
 
 // 0x8010AE68
 void grYamabukiGateSetPositionNear(void)
 {
     gGRCommonStruct.yamabuki.gate_pos.x = 960.0F;
-    gGRCommonStruct.yamabuki.gate_pos.y = gMPYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
+    gGRCommonStruct.yamabuki.gate_pos.y = gMPCollisionYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
 }
 
 // 0x8010AE94
@@ -193,18 +193,18 @@ void grYamabukiGateUpdateOpen(void)
     {
         grYamabukiGateSetClosedWait();
     }
-    else if (gGRCommonStruct.yamabuki.is_gate_noentry == FALSE)
+    else if (gGRCommonStruct.yamabuki.gate_noentry == FALSE)
     {
         itStruct *ip = itGetStruct(gGRCommonStruct.yamabuki.monster_gobj);
 
         gGRCommonStruct.yamabuki.gate_pos.x = DObjGetStruct(gGRCommonStruct.yamabuki.monster_gobj)->translate.vec.f.x - ip->coll_data.object_coll.width;
-        gGRCommonStruct.yamabuki.gate_pos.y = gMPYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
+        gGRCommonStruct.yamabuki.gate_pos.y = gMPCollisionYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
 
         if (gGRCommonStruct.yamabuki.gate_pos.x < 960.0F)
         {
             gGRCommonStruct.yamabuki.gate_pos.x = 960.0F;
 
-            gGRCommonStruct.yamabuki.is_gate_noentry = TRUE;
+            gGRCommonStruct.yamabuki.gate_noentry = TRUE;
         }
         else if (gGRCommonStruct.yamabuki.gate_pos.x > 1600.0F)
         {
@@ -273,12 +273,12 @@ void grYamabukiMakeGate(void)
 // 0x8010B250
 void grYamabukiInitGroundVars(void)
 {
-    gGRCommonStruct.yamabuki.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRYamabukiMapHead);
+    gGRCommonStruct.yamabuki.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRYamabukiMapHead);
 
     mpCollisionSetYakumonoOnID(3);
 
     gGRCommonStruct.yamabuki.gate_wait = 1;
-    gGRCommonStruct.yamabuki.item_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRYamabukiItemHead);
+    gGRCommonStruct.yamabuki.item_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRYamabukiItemHead);
 
     dGRYamabukiMonsterAttackKind = GRYAMABUKI_MONSTER_WEAPON_MAX;
 

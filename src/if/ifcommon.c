@@ -138,7 +138,7 @@ extern intptr_t lIFCommonBattlePauseDecalRetry;             // 0x00000828
 
 extern mlBumpAllocRegion gGeneralHeap;
 
-extern u32 gMPMusicIDDefault;
+extern u32 gMPCollisionBGMDefault;
 extern s32 gCurrScreenWidth;
 extern s32 gPixelComponentSize;
 extern s32 gZBuffer;
@@ -1055,9 +1055,9 @@ void ifCommonPlayerDamageInitInterface(void)
 
                 emblem = gBattleState->players[player].player_color_index;
 
-                sobj->sprite.red = gMPGroundData->emblem_colors[emblem].r;
-                sobj->sprite.green = gMPGroundData->emblem_colors[emblem].g;
-                sobj->sprite.blue = gMPGroundData->emblem_colors[emblem].b;
+                sobj->sprite.red = gMPCollisionGroundData->emblem_colors[emblem].r;
+                sobj->sprite.green = gMPCollisionGroundData->emblem_colors[emblem].g;
+                sobj->sprite.blue = gMPCollisionGroundData->emblem_colors[emblem].b;
 
                 sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
             }
@@ -1576,7 +1576,7 @@ void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly
     gDPSetAlphaCompare(dl++, G_AC_THRESHOLD);
     gDPSetBlendColor(dl++, 0, 0, 0, 0x8);
 
-    color = &gMPGroundData->fog_color;
+    color = &gMPCollisionGroundData->fog_color;
 
     gDPSetPrimColor(dl++, 0, 0, color->r, color->g, color->b, 0xFF);
     gDPSetEnvColor(dl++, dIFCommonPlayerMagnifyColorsR[color_id], dIFCommonPlayerMagnifyColorsG[color_id], dIFCommonPlayerMagnifyColorsB[color_id], 0xFF);
@@ -2595,9 +2595,9 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
                     }
                     else gBattleState->match_time_remain -= time_update;
 
-                    if ((gBattleState->gr_kind == nGRKindInishie) && (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(30)) && (gMPMusicIDDefault != nGMSoundBGMInishieHurry))
+                    if ((gBattleState->gr_kind == nGRKindInishie) && (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(30)) && (gMPCollisionBGMDefault != nGMSoundBGMInishieHurry))
                     {
-                        gMPMusicIDDefault = nGMSoundBGMInishieHurry;
+                        gMPCollisionBGMDefault = nGMSoundBGMInishieHurry;
 
                         ftParamTryUpdateItemMusic();
                     }
@@ -3016,13 +3016,13 @@ void ifCommonBattleGoUpdateInterface(void)
                     {
                         if (gBattleState->game_type == nGMBattleGameTypeBonus)
                         {
-                            sp68.x = gMPGroundData->unk_groundinfo_0x9A.x;
-                            sp68.y = gMPGroundData->unk_groundinfo_0x9A.y;
-                            sp68.z = gMPGroundData->unk_groundinfo_0x9A.z;
+                            sp68.x = gMPCollisionGroundData->unk_groundinfo_0x9A.x;
+                            sp68.y = gMPCollisionGroundData->unk_groundinfo_0x9A.y;
+                            sp68.z = gMPCollisionGroundData->unk_groundinfo_0x9A.z;
 
-                            sp5C.x = gMPGroundData->unk_groundinfo_0xA0.x;
-                            sp5C.y = gMPGroundData->unk_groundinfo_0xA0.y;
-                            sp5C.z = gMPGroundData->unk_groundinfo_0xA0.z;
+                            sp5C.x = gMPCollisionGroundData->unk_groundinfo_0xA0.x;
+                            sp5C.y = gMPCollisionGroundData->unk_groundinfo_0xA0.y;
+                            sp5C.z = gMPCollisionGroundData->unk_groundinfo_0xA0.z;
 
                             func_ovl2_8010D0A4(&sp68, &sp5C);
 

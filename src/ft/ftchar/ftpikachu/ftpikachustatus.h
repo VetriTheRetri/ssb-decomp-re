@@ -25,7 +25,7 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 221 (0xDD): AppearL
@@ -45,7 +45,7 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 222 (0xDE): SpecialN

@@ -1112,7 +1112,7 @@ void grSectorInitAll(void)
     GObj *map_gobj;
     void *map_file;
 
-    gGRCommonStruct.sector.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRSectorMapHead);
+    gGRCommonStruct.sector.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRSectorMapHead);
 
     map_file = rldm_get_file_force((intptr_t)&D_NF_000000A1);
 
@@ -1139,7 +1139,7 @@ void grSectorInitAll(void)
     omAddDObjAnimAll(gGRCommonStruct.sector.map_dobj[10], (ATrack*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002E74), 0.0F);
     func_8000DF34_EB34(map_gobj);
     mpCollisionSetYakumonoOffID(1);
-    gGRCommonStruct.sector.weapon_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart);
+    gGRCommonStruct.sector.weapon_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart);
 }
 
 // 0x80107FCC

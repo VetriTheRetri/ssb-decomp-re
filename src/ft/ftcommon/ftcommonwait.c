@@ -25,7 +25,7 @@ void ftCommonWaitSetStatus(GObj *fighter_gobj)
     {
         if (fp->ga == nMPKineticsAir)
         {
-            ftMap_SetGround(fp);
+            mpCommonSetFighterGround(fp);
         }
         ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 

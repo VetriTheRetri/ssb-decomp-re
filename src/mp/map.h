@@ -6,25 +6,25 @@
 
 extern f32 dMPCollisionSurfaceFrictions[/* */];
 
-extern mpGroundData* gMPGroundData; // TO DO: move this to the correct file (is this the correct
+extern mpGroundData* gMPCollisionGroundData; // TO DO: move this to the correct file (is this the correct
 								  // file? NO, this is Patrick!)
-extern mpEdgeBounds gMPEdgeBounds;
-extern mpYakumonoDObj *gMPYakumonoDObjs;
-extern mpLineGroup gMPLineTypeGroups[/* */];
-extern mpGeometryInfo *gMPGeometry;
-extern mpVertexInfoContainer *gMPVertexInfo;
-extern mpVertexArray *gMPVertexID;
-extern mpVertexLinks *gMPVertexLinks;   //
-extern mpVertexPosContainer *gMPVertexData; // Vertex positions
-extern Vec3f *gMPDynamicCollisions;
-extern mpMapObjContainer *gMPMapObjs;
-extern s32 gMPLineCount;
-extern gsColorRGBA gMPLightColor;
-extern s32 gMPYakumonoCount;
-extern f32 gMPLightAngleX;
-extern f32 gMPLightAngleY;
-extern u16 gMPCollUpdateFrame;
-extern u32 gMPMusicIDCurrent;
-extern u32 gMPMusicIDDefault;
+extern mpEdgeBounds gMPCollisionEdgeBounds;
+extern mpYakumonoDObj *gMPCollisionYakumonoDObjs;
+extern mpLineGroup gMPCollisionLineGroups[/* */];
+extern mpGeometryInfo *gMPCollisionGeometry;
+extern mpVertexInfoContainer *gMPCollisionVertexInfo;
+extern mpVertexArray *gMPCollisionVertexIDs;
+extern mpVertexLinks *gMPCollisionVertexLinks;   //
+extern mpVertexPosContainer *gMPCollisionVertexData; // Vertex positions
+extern Vec3f *gMPCollisionDynamics;
+extern mpMapObjContainer *gMPCollisionMapObjs;
+extern s32 gMPCollisionLinesNum;
+extern gsColorRGBA gMPCollisionLightColor;
+extern s32 gMPCollisionYakumonosNum;
+extern f32 gMPCollisionLightAngleX;
+extern f32 gMPCollisionLightAngleY;
+extern u16 gMPCollisionUpdateFrame;
+extern u32 gMPCollisionBGMCurrent;
+extern u32 gMPCollisionBGMDefault;
 
 #endif

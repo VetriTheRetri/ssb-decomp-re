@@ -100,9 +100,9 @@ void scBonusGame_InitBonus1Targets()
 
 	sp48.x = sp48.y = sp48.z = 0.0F;
 
-	dobj_desc = (DObjDesc*)((uintptr_t)((uintptr_t)gMPGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
+	dobj_desc = (DObjDesc*)((uintptr_t)((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
 							+ (intptr_t)bonus_desc->o_dobjdesc);
-	atrack = (void**)((uintptr_t)((uintptr_t)gMPGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
+	atrack = (void**)((uintptr_t)((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
 					  + (intptr_t)bonus_desc->o_anim);
 
 	gGRCommonStruct.bonus1.target_count = 0;
@@ -189,7 +189,7 @@ void func_ovl6_8018D6A8(s32 line_id)
 	s32 index;
 
 	index = mpCollisionSetDObjNoID(line_id);
-	dobj = gMPYakumonoDObjs->yakumono_dobj[index];
+	dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[index];
 	index = scBonusGame_GetBonus2PlatformKind(line_id);
 
 	func_ovl0_800C8B28(dobj,
@@ -227,7 +227,7 @@ void scBonusGame_InitBonus2Platforms()
 		if ((mpCollisionGetVertexFlagsLineID(line_ids[i]) & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect)
 		{
 			room_id = mpCollisionSetDObjNoID(line_ids[i]);
-			if (gMPYakumonoDObjs->yakumono_dobj[room_id]->actor.atrack == NULL)
+			if (gMPCollisionYakumonoDObjs->yakumono_dobj[room_id]->actor.atrack == NULL)
 				mpCollisionSetYakumonoOnID(room_id);
 			func_ovl6_8018D6A8(line_ids[i]);
 			gGRCommonStruct.bonus2.platform_count++;
@@ -292,7 +292,7 @@ void scBonusGame_CheckBonus2PlatformLanding(GObj* ground_gobj)
 		if ((fp->ga == nMPKineticsGround)
 			&& ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
 		{
-			DObj* dobj = gMPYakumonoDObjs->yakumono_dobj[mpCollisionSetDObjNoID(fp->coll_data.ground_line_id)];
+			DObj* dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[mpCollisionSetDObjNoID(fp->coll_data.ground_line_id)];
 
 			if (dobj->child->user_data.s != 0)
 				scBonusGame_UpdateBonus2PlatformCount(dobj);
@@ -317,9 +317,9 @@ void scBonusGame_InitBonus2Bumpers()
 	Vec3f vel;
 	GObj* item_gobj;
 
-	if (gMPGroundData->map_nodes != NULL)
+	if (gMPCollisionGroundData->map_nodes != NULL)
 	{
-		bonus_desc = ((uintptr_t)gMPGroundData->map_nodes
+		bonus_desc = ((uintptr_t)gMPCollisionGroundData->map_nodes
 					  - (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - nGRKindBonus2Start].o_main);
 
 		vel.x = vel.y = vel.z = 0.0F;
@@ -730,7 +730,7 @@ void scBonusGame_SetGeometryRenderLights(Gfx** display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 
-	ftRenderLightsDrawReflect(display_list, gMPLightAngleX, gMPLightAngleY);
+	ftRenderLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
 // 8018EACC

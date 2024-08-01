@@ -103,9 +103,9 @@ void ftCommonDashProcMap(GObj *fighter_gobj)
 
     if (attributes->dash_to_run <= fighter_gobj->anim_frame)
     {
-        ftMap_CheckGroundEdgeOttottoOrFall(fighter_gobj);
+        mpCommonProcFighterOnCliffEdge(fighter_gobj);
     }
-    else ftMap_CheckGroundBreakSetFall(fighter_gobj);
+    else mpCommonSetFighterFallOnGroundBreak(fighter_gobj);
 }
 
 // 0x8013ED00

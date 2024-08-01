@@ -23,7 +23,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		ftStatusWaitOnAnimEnd,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 221 (0xDD): AppearRStart
@@ -43,7 +43,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		ftNessAppearStartProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 222 (0xDE): AppearLStart
@@ -63,7 +63,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		ftNessAppearStartProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 223 (0xDF): AppearWait
@@ -83,7 +83,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		ftNessAppearWaitProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 224 (0xE0): AppearREnd
@@ -103,7 +103,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 225 (0xE1): AppearLEnd
@@ -123,7 +123,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 226 (0xE2): SpecialN

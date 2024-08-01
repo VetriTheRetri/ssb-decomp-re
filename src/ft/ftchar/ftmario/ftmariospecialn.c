@@ -10,7 +10,7 @@
 // 0x80155E40
 void ftMarioSpecialNProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftMap_SetStatusWaitOrFall);
+    ftStatusSetOnAnimEnd(fighter_gobj, mpCommonSetFighterWaitOrFall);
 }
 
 // 0x80155E64
@@ -57,13 +57,13 @@ void ftMarioSpecialNProcAccessory(GObj *fighter_gobj)
 // 0x80155F04
 void ftMarioSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftMarioSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnEdge(fighter_gobj, ftMarioSpecialNSwitchStatusAir);
 }
 
 // 0x80155F28
 void ftMarioSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftMarioSpecialAirNSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftMarioSpecialAirNSwitchStatusGround);
 }
 
 // 0x80155F4C
@@ -71,7 +71,7 @@ void ftMarioSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
 
     ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
 
@@ -83,7 +83,7 @@ void ftMarioSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
     ftPhysics_ClampAirVelXMax(fp);
 

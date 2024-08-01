@@ -186,7 +186,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
         wp->weapon_hit.stale = WEAPON_STALE_DEFAULT;
         wp->weapon_hit.motion_count = ftParamGetMotionCount();
         wp->weapon_hit.stat_flags.stat_attack_id = nFTStatusAttackIDNone;
-        wp->weapon_hit.stat_flags.is_smash_attack = wp->weapon_hit.stat_flags.is_ga = wp->weapon_hit.stat_flags.is_projectile = FALSE;
+        wp->weapon_hit.stat_flags.is_smash_attack = wp->weapon_hit.stat_flags.ga = wp->weapon_hit.stat_flags.is_projectile = FALSE;
         wp->weapon_hit.stat_count = ftParamGetStatUpdateCount();
         break;
     }
@@ -298,7 +298,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     wp->coll_data.lwall_line_id = -1;
     wp->coll_data.rwall_line_id = -1;
 
-    wp->coll_data.coll_update_frame = gMPCollUpdateFrame;
+    wp->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
     wp->coll_data.coll_mask_curr = 0;
 
     wp->coll_data.vel_push.x = 0.0F;
@@ -330,15 +330,15 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
             break;
 
         case WEAPON_MASK_SPAWN_FIGHTER:
-            wpMap_RunCollisionDefault(weapon_gobj, ftGetStruct(spawn_gobj)->coll_data.p_translate, &ftGetStruct(spawn_gobj)->coll_data);
+            mpCommonRunWeaponCollisionDefault(weapon_gobj, ftGetStruct(spawn_gobj)->coll_data.p_translate, &ftGetStruct(spawn_gobj)->coll_data);
             break;
 
         case WEAPON_MASK_SPAWN_WEAPON:
-            wpMap_RunCollisionDefault(weapon_gobj, wpGetStruct(spawn_gobj)->coll_data.p_translate, &wpGetStruct(spawn_gobj)->coll_data);
+            mpCommonRunWeaponCollisionDefault(weapon_gobj, wpGetStruct(spawn_gobj)->coll_data.p_translate, &wpGetStruct(spawn_gobj)->coll_data);
             break;
 
         case WEAPON_MASK_SPAWN_ITEM:
-            wpMap_RunCollisionDefault(weapon_gobj, itGetStruct(spawn_gobj)->coll_data.p_translate, &itGetStruct(spawn_gobj)->coll_data);
+            mpCommonRunWeaponCollisionDefault(weapon_gobj, itGetStruct(spawn_gobj)->coll_data.p_translate, &itGetStruct(spawn_gobj)->coll_data);
             break;
         }
     }

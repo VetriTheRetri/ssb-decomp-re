@@ -17,7 +17,7 @@ void ftKirbyThrowFProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((ftMap_CheckAirLanding(fighter_gobj) != FALSE) && (fp->phys_info.vel_air.y < 0.0F))
+    if ((mpCommonCheckFighterLanding(fighter_gobj) != FALSE) && (fp->phys_info.vel_air.y < 0.0F))
     {
         ftKirbyThrowFLandingSetStatus(fighter_gobj);
     }
@@ -56,9 +56,9 @@ void ftKirbyThrowFLandingProcMap(GObj *fighter_gobj)
     {
         ftCommonCatchProcMap(fighter_gobj);
     }
-    else if ((ftMap_CheckAirLanding(fighter_gobj) != FALSE) && (fp->phys_info.vel_air.y < 0.0F))
+    else if ((mpCommonCheckFighterLanding(fighter_gobj) != FALSE) && (fp->phys_info.vel_air.y < 0.0F))
     {
-        ftMap_SetStatusWaitOrLanding(fighter_gobj);
+        mpCommonSetFighterWaitOrLanding(fighter_gobj);
     }
 }
 
@@ -67,6 +67,6 @@ void ftKirbyThrowFLandingSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusThrowFLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_TEXTUREPART);
 }

@@ -41,7 +41,7 @@ void grCastleInitAll(void)
     s32 pos_id;
     DObj *dobj;
 
-    gGRCommonStruct.castle.map_head = map_head = (void*)((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRCastleMapHead);
+    gGRCommonStruct.castle.map_head = map_head = (void*)((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRCastleMapHead);
 
     ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
@@ -52,7 +52,7 @@ void grCastleInitAll(void)
 
     omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
 
-    func_8000BD8C_C98C(ground_gobj, gMPGroundData->map_nodes, 0.0F);
+    func_8000BD8C_C98C(ground_gobj, gMPCollisionGroundData->map_nodes, 0.0F);
     func_8000DF34_EB34(ground_gobj);
 
     mpCollisionGetMapObjIDsKind(nMPMapObjKindBumper, &pos_id);

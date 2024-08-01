@@ -47,13 +47,13 @@ void ftKirbyCopyPikachuSpecialNProcAccessory(GObj *fighter_gobj)
 // 0x801537B8
 void ftKirbyCopyPikachuSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirbyCopyPikachuSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftKirbyCopyPikachuSpecialNSwitchStatusAir);
 }
 
 // 0x801537DC
 void ftKirbyCopyPikachuSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirbyCopyPikachuSpecialAirNSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftKirbyCopyPikachuSpecialAirNSwitchStatusGround);
 }
 
 // 0x80153800
@@ -61,7 +61,7 @@ void ftKirbyCopyPikachuSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPikachuSpecialN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYPIKACHU_SPECIALN_STATUS_FLAGS);
 
     fp->proc_accessory = ftKirbyCopyPikachuSpecialNProcAccessory;
@@ -72,7 +72,7 @@ void ftKirbyCopyPikachuSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPikachuSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYPIKACHU_SPECIALN_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 

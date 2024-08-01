@@ -13,33 +13,33 @@ sb32 itMapProcLRWallCheckGround(mpCollData *coll_data, GObj *item_gobj, u32 flag
     s32 ground_line_id = coll_data->ground_line_id;
     sb32 is_collide_ground = FALSE;
 
-    if (mpObjectProc_CheckTestLWallCollision(coll_data) != FALSE)
+    if (mpProcessCheckTestLWallCollision(coll_data) != FALSE)
     {
-        mpObjectProc_RunLWallCollision(coll_data);
+        mpProcessRunLWallCollision(coll_data);
         coll_data->is_coll_end = TRUE;
     }
-    if (mpObjectProc_CheckTestRWallCollision(coll_data) != FALSE)
+    if (mpProcessCheckTestRWallCollision(coll_data) != FALSE)
     {
-        mpObjectProc_RunRWallCollision(coll_data);
+        mpProcessRunRWallCollision(coll_data);
         coll_data->is_coll_end = TRUE;
     }
-    if (mpObjectProc_CheckTestGroundCollisionNew(coll_data) != FALSE)
+    if (mpProcessCheckTestGroundCollisionNew(coll_data) != FALSE)
     {
         if (coll_data->coll_mask_stat & MPCOLL_KIND_GROUND)
         {
-            mpObjectProc_RunGroundEdgeAdjust(coll_data);
+            mpProcessRunGroundEdgeAdjust(coll_data);
             is_collide_ground = TRUE;
         }
     }
     else coll_data->is_coll_end = TRUE;
     
-    if (mpObjectProc_CheckTestGroundCollision(coll_data, ground_line_id) != FALSE)
+    if (mpProcessCheckTestGroundCollision(coll_data, ground_line_id) != FALSE)
     {
         func_ovl2_800DD59C(coll_data);
 
         if (coll_data->coll_mask_stat & MPCOLL_KIND_GROUND)
         {
-            mpObjectProc_RunGroundEdgeAdjust(coll_data);
+            mpProcessRunGroundEdgeAdjust(coll_data);
             is_collide_ground = TRUE;
         }
         coll_data->is_coll_end = FALSE;
@@ -50,7 +50,7 @@ sb32 itMapProcLRWallCheckGround(mpCollData *coll_data, GObj *item_gobj, u32 flag
 // 0x8017356C
 sb32 itMapTestLRWallCheckGround(GObj *item_gobj)
 {
-    return mpObjectProc_UpdateMapProcMain(&itGetStruct(item_gobj)->coll_data, itMapProcLRWallCheckGround, item_gobj, 0);
+    return mpProcessUpdateMapProcMain(&itGetStruct(item_gobj)->coll_data, itMapProcLRWallCheckGround, item_gobj, 0);
 }
 
 // 0x801735A0
@@ -71,19 +71,19 @@ sb32 itMapProcAllCheckCollEnd(mpCollData *coll_data, GObj *item_gobj, u32 flags)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    if (mpObjectProc_CheckTestLWallCollisionAdjNew(coll_data) != FALSE)
+    if (mpProcessCheckTestLWallCollisionAdjNew(coll_data) != FALSE)
     {
         coll_data->is_coll_end = TRUE;
     }
-    if (mpObjectProc_CheckTestRWallCollisionAdjNew(coll_data) != FALSE)
+    if (mpProcessCheckTestRWallCollisionAdjNew(coll_data) != FALSE)
     {
         coll_data->is_coll_end = TRUE;
     }
-    if (mpObjectProc_CheckTestCeilCollisionAdjNew(coll_data) != FALSE)
+    if (mpProcessCheckTestCeilCollisionAdjNew(coll_data) != FALSE)
     {
         coll_data->is_coll_end = TRUE;
     }
-    if (mpObjectProc_RunGroundCollisionAdjNewNULL(coll_data) != FALSE)
+    if (mpProcessRunGroundCollisionAdjNewNULL(coll_data) != FALSE)
     {
         coll_data->is_coll_end = TRUE;
 
@@ -98,7 +98,7 @@ sb32 itMapProcAllCheckCollEnd(mpCollData *coll_data, GObj *item_gobj, u32 flags)
 // 0x80173680
 sb32 itMapTestAllCheckCollEnd(GObj *item_gobj)
 {
-    return mpObjectProc_UpdateMapProcMain(&itGetStruct(item_gobj)->coll_data, itMapProcAllCheckCollEnd, item_gobj, 0);
+    return mpProcessUpdateMapProcMain(&itGetStruct(item_gobj)->coll_data, itMapProcAllCheckCollEnd, item_gobj, 0);
 }
 
 // 0x801736B4
@@ -107,30 +107,30 @@ sb32 itMapProcAllCheckCollisionFlag(mpCollData *coll_data, GObj *item_gobj, u32 
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    if (mpObjectProc_CheckTestLWallCollisionAdjNew(coll_data) != FALSE)
+    if (mpProcessCheckTestLWallCollisionAdjNew(coll_data) != FALSE)
     {
-        mpObjectProc_RunLWallCollisionAdjNew(coll_data);
+        mpProcessRunLWallCollisionAdjNew(coll_data);
     }
-    if (mpObjectProc_CheckTestRWallCollisionAdjNew(coll_data) != FALSE)
+    if (mpProcessCheckTestRWallCollisionAdjNew(coll_data) != FALSE)
     {
-        mpObjectProc_RunRWallCollisionAdjNew(coll_data);
+        mpProcessRunRWallCollisionAdjNew(coll_data);
     }
-    if (mpObjectProc_CheckTestCeilCollisionAdjNew(coll_data) != FALSE)
+    if (mpProcessCheckTestCeilCollisionAdjNew(coll_data) != FALSE)
     {
-        mpObjectProc_RunCeilCollisionAdjNew(coll_data);
+        mpProcessRunCeilCollisionAdjNew(coll_data);
 
         if (coll_data->coll_mask_stat & MPCOLL_KIND_CEIL)
         {
-            mpObjectProc_RunCeilEdgeAdjust(coll_data);
+            mpProcessRunCeilEdgeAdjust(coll_data);
         }
     }
-    if (mpObjectProc_RunGroundCollisionAdjNewNULL(coll_data) != FALSE)
+    if (mpProcessRunGroundCollisionAdjNewNULL(coll_data) != FALSE)
     {
         func_ovl2_800DD59C(coll_data);
 
         if (coll_data->coll_mask_stat & MPCOLL_KIND_GROUND)
         {
-            mpObjectProc_RunGroundEdgeAdjust(coll_data);
+            mpProcessRunGroundEdgeAdjust(coll_data);
             func_800269C0_275C0(nGMSoundFGMItemMapCollide);
 
             ip->rotate_step = 0.0F;
@@ -149,7 +149,7 @@ sb32 itMapProcAllCheckCollisionFlag(mpCollData *coll_data, GObj *item_gobj, u32 
 // 0x801737B8
 sb32 itMapTestAllCollisionFlag(GObj *item_gobj, u32 flag)
 {
-    return mpObjectProc_UpdateMapProcMain(&itGetStruct(item_gobj)->coll_data, itMapProcAllCheckCollisionFlag, item_gobj, flag);
+    return mpProcessUpdateMapProcMain(&itGetStruct(item_gobj)->coll_data, itMapProcAllCheckCollisionFlag, item_gobj, flag);
 }
 
 // 0x801737EC

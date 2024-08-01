@@ -71,7 +71,7 @@ void ftBossDrillProcMap(GObj *fighter_gobj)
     {
         translate->x = fp->status_vars.boss.drill.edgeleft_pos_x;
     }
-    ftMap_UpdateProjectGroundID(fighter_gobj);
+    mpCommonUpdateFighterProjectGround(fighter_gobj);
 }
 
 // 0x8015A268

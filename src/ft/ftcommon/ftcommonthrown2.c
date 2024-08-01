@@ -51,11 +51,11 @@ void ftCommonThrownReleaseFighterLoseGrip(GObj *fighter_gobj)
 
         DObjGetStruct(fighter_gobj)->translate.vec.f = pos;
     }
-    ftMap_RunCollisionDefault(fighter_gobj, &DObjGetStruct(interact_gobj)->translate.vec.f, &interact_fp->coll_data);
+    mpCommonRunFighterCollisionDefault(fighter_gobj, &DObjGetStruct(interact_gobj)->translate.vec.f, &interact_fp->coll_data);
 
     if ((this_fp->ga == nMPKineticsGround) && ((this_fp->coll_data.ground_line_id == -1) || (this_fp->coll_data.ground_dist != 0.0F)))
     {
-        ftMap_SetAir(this_fp);
+        mpCommonSetFighterAir(this_fp);
     }
 }
 
@@ -94,8 +94,8 @@ void ftCommonThrownDecideDeadResult(GObj *fighter_gobj)
         ftCommonThrownDecideFighterLoseGrip(interact_gobj, fighter_gobj);
 
     next:
-        ftMap_SetStatusWaitOrFall(fighter_gobj);
-        ftMap_SetStatusWaitOrFall(interact_gobj);
+        mpCommonSetFighterWaitOrFall(fighter_gobj);
+        mpCommonSetFighterWaitOrFall(interact_gobj);
     }
 }
 
@@ -133,7 +133,7 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
     {
         ftCommonThrownReleaseFighterLoseGrip(fighter_gobj);
     }
-    ftMap_SetAir(this_fp);
+    mpCommonSetFighterAir(this_fp);
 
     ft_throw = capture_fp->fighter_throw;
 
@@ -218,7 +218,7 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
     }
     if (this_fp->ga == nMPKineticsAir)
     {
-        ftMap_SetAir(this_fp);
+        mpCommonSetFighterAir(this_fp);
     }
     ft_throw = &capture_fp->fighter_throw[1];
 

@@ -79,37 +79,37 @@ void ftKirbyCopyYoshiSpecialAirNReleaseProcUpdate(GObj *fighter_gobj)
 // 0x8015F314
 void ftKirbyCopyYoshiSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirbyCopyYoshiSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftKirbyCopyYoshiSpecialNSwitchStatusAir);
 }
 
 // 0x8015F338
 void ftKirbyCopyYoshiSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirbyCopyYoshiSpecialAirNSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftKirbyCopyYoshiSpecialAirNSwitchStatusGround);
 }
 
 // 0x8015F35C
 void ftKirbyCopyYoshiSpecialNCatchProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirbyCopyYoshiSpecialNCatchSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftKirbyCopyYoshiSpecialNCatchSwitchStatusAir);
 }
 
 // 0x8015F380
 void ftKirbyCopyYoshiSpecialAirNCatchProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirbyCopyYoshiSpecialAirNCatchSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftKirbyCopyYoshiSpecialAirNCatchSwitchStatusGround);
 }
 
 // 0x8015F3A4
 void ftKirbyCopyYoshiSpecialNReleaseProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirbyCopyYoshiSpecialNReleaseSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftKirbyCopyYoshiSpecialNReleaseSwitchStatusAir);
 }
 
 // 0x8015F3C8
 void ftKirbyCopyYoshiSpecialAirNReleaseProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirbyCopyYoshiSpecialAirNReleaseSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftKirbyCopyYoshiSpecialAirNReleaseSwitchStatusGround);
 }
 
 // 0x8015F3EC
@@ -134,7 +134,7 @@ void ftKirbyCopyYoshiSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_HIT));
     ftKirbyCopyYoshiSpecialNSetCatchParams(fp, ftKirbyCopyYoshiSpecialNCatchProcCatch);
 }
@@ -144,7 +144,7 @@ void ftKirbyCopyYoshiSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_HIT));
     ftKirbyCopyYoshiSpecialNSetCatchParams(fp, ftKirbyCopyYoshiSpecialAirNCatchProcCatch);
 }
@@ -152,28 +152,28 @@ void ftKirbyCopyYoshiSpecialNSwitchStatusAir(GObj *fighter_gobj)
 // 0x8015F4B0
 void ftKirbyCopyYoshiSpecialAirNCatchSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
 }
 
 // 0x8015F4F0
 void ftKirbyCopyYoshiSpecialNCatchSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftMap_SetAir(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterAir(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
 }
 
 // 0x8015F530
 void ftKirbyCopyYoshiSpecialAirNReleaseSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialNRelease, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
 }
 
 // 0x8015F570
 void ftKirbyCopyYoshiSpecialNReleaseSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftMap_SetAir(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterAir(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirNRelease, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
 }
 

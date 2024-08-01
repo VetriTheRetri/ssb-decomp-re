@@ -6180,10 +6180,10 @@ void efManagerLoseKirbyStarProcUpdate(GObj *effect_gobj)
     }
     else if
     (
-        (gMPGroundData->blastzone_bottom > translate->y) ||
-        (gMPGroundData->blastzone_right  < translate->x) ||
-        (gMPGroundData->blastzone_left   > translate->x) ||
-        (gMPGroundData->blastzone_top    < translate->y)
+        (gMPCollisionGroundData->blastzone_bottom > translate->y) ||
+        (gMPCollisionGroundData->blastzone_right  < translate->x) ||
+        (gMPCollisionGroundData->blastzone_left   > translate->x) ||
+        (gMPCollisionGroundData->blastzone_top    < translate->y)
     )
     {
         efManagerSetPrevAlloc(ep);

@@ -23,7 +23,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftCommonAttack100StartProcUpdate,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundStopEdgeFall					// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak					// Proc Map
 	},
 
 	// Status 221 (0xDD): Attack100Loop
@@ -43,7 +43,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftCommonAttack100LoopProcUpdate,				// Proc Update
 		ftCommonAttack100LoopProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundStopEdgeFall					// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak					// Proc Map
 	},
 
 	// Status 222 (0xDE): Attack100End
@@ -63,7 +63,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftStatusWaitOnAnimEnd,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundStopEdgeFall					// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak					// Proc Map
 	},
 
 	// Status 223 (0xDF): JumpAerialF1
@@ -83,7 +83,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftCommonJumpAerialProcUpdate,					// Proc Update
 		ftCommonJumpAerialProcInterrupt,				// Proc Interrupt
 		ftCommonJumpAerialProcPhysics,				// Proc Physics
-		ftMap_CheckGroundCliffSetWaitOrLanding								// Proc Map
+		mpCommonProcFighterCliffWaitOrLanding								// Proc Map
 	},
 
 	// Status 224 (0xE0): JumpAerialF2
@@ -103,7 +103,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftCommonJumpAerialProcUpdate,					// Proc Update
 		ftCommonJumpAerialProcInterrupt,				// Proc Interrupt
 		ftCommonJumpAerialProcPhysics,				// Proc Physics
-		ftMap_CheckGroundCliffSetWaitOrLanding								// Proc Map
+		mpCommonProcFighterCliffWaitOrLanding								// Proc Map
 	},
 
 	// Status 225 (0xE1): JumpAerialF3
@@ -123,7 +123,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftCommonJumpAerialProcUpdate,					// Proc Update
 		ftCommonJumpAerialProcInterrupt,				// Proc Interrupt
 		ftCommonJumpAerialProcPhysics,				// Proc Physics
-		ftMap_CheckGroundCliffSetWaitOrLanding								// Proc Map
+		mpCommonProcFighterCliffWaitOrLanding								// Proc Map
 	},
 
 	// Status 226 (0xE2): JumpAerialF4
@@ -143,7 +143,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftCommonJumpAerialProcUpdate,					// Proc Update
 		ftCommonJumpAerialProcInterrupt,				// Proc Interrupt
 		ftCommonJumpAerialProcPhysics,				// Proc Physics
-		ftMap_CheckGroundCliffSetWaitOrLanding								// Proc Map
+		mpCommonProcFighterCliffWaitOrLanding								// Proc Map
 	},
 
 	// Status 227 (0xE3): JumpAerialF5
@@ -163,7 +163,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftCommonJumpAerialProcUpdate,					// Proc Update
 		ftCommonJumpAerialProcInterrupt,				// Proc Interrupt
 		ftCommonJumpAerialProcPhysics,				// Proc Physics
-		ftMap_CheckGroundCliffSetWaitOrLanding								// Proc Map
+		mpCommonProcFighterCliffWaitOrLanding								// Proc Map
 	},
 
 	// Status 228 (0xE4): ThrowF
@@ -323,7 +323,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftKirbyCopyFoxSpecialNProcUpdate,			// Proc Update
 		ftKirbyCopyFoxSpecialNProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundStopEdgeFall					// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak					// Proc Map
 	},
 
 	// Status 236 (0xEC): CopyFoxSpecialAirN
@@ -343,7 +343,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftKirbyCopyFoxSpecialNProcUpdate,			// Proc Update
 		ftKirbyCopyFoxSpecialNProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,						// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding								// Proc Map
+		mpCommonProcFighterWaitOrLanding								// Proc Map
 	},
 
 	// Status 237 (0xED): CopySamusSpecialNStart
@@ -543,7 +543,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftKirbyCopyDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundStopEdgeFall					// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak					// Proc Map
 	},
 
 	// Status 247 (0xF7): CopyDonkeySpecialAirNEnd
@@ -583,7 +583,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftKirbyCopyDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundStopEdgeFall					// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak					// Proc Map
 	},
 
 	// Status 249 (0xF9): CopyDonkeySpecialAirNFull
@@ -623,7 +623,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,						// Proc Update
 		NULL,											// Proc Interrupt
 		ftCommonAppearProcPhysics,					// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		mpCommonUpdateFighterProjectGround						// Proc Map
 	},
 
 	// Status 251 (0xFB): AppearL
@@ -643,7 +643,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,						// Proc Update
 		NULL,											// Proc Interrupt
 		ftCommonAppearProcPhysics,					// Proc Physics
-		ftMap_UpdateProjectGroundID						// Proc Map
+		mpCommonUpdateFighterProjectGround						// Proc Map
 	},
 
 	// Status 252 (0xFC): CopyPikachuSpecialN
@@ -763,7 +763,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftKirbySpecialHiLandingProcUpdate,			// Proc Update
 		NULL,											// Proc Interrupt
 		ftKirbySpecialHiLandingProcPhysics,			// Proc Physics
-		ftMap_CheckGroundBreakSetFall					// Proc Map
+		mpCommonSetFighterFallOnGroundBreak					// Proc Map
 	},
 
 	// Status 258 (0x102): SpecialAirHi
@@ -883,7 +883,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftStatusFallOnAnimEnd,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,					// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding								// Proc Map
+		mpCommonProcFighterWaitOrLanding								// Proc Map
 	},
 
 	// Status 264 (0x108): SpecialAirLwStart
@@ -983,7 +983,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftStatusFallOnAnimEnd,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,					// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding								// Proc Map
+		mpCommonProcFighterWaitOrLanding								// Proc Map
 	},
 
 	// Status 269 (0x10D): SpecialNStart
@@ -1383,7 +1383,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftStatusWaitOnAnimEnd,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
-		ftMap_CheckGroundBreakSetFall					// Proc Map
+		mpCommonSetFighterFallOnGroundBreak					// Proc Map
 	},
 
 	// Status 289 (0x121): CopyLinkSpecialNEmpty
@@ -1443,7 +1443,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftStatusFallOnAnimEnd,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,					// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding								// Proc Map
+		mpCommonProcFighterWaitOrLanding								// Proc Map
 	},
 
 	// Status 292 (0x124): CopyLinkSpecialAirNEmpty

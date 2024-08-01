@@ -224,7 +224,7 @@ void grYosterInitAll(void)
     void *map_head;
     s32 i, j;
 
-    map_head = (uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRYosterMapHead;
+    map_head = (uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRYosterMapHead;
     gGRCommonStruct.yoster.map_head = map_head;
 
     for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.yoster.clouds); i++)
@@ -241,7 +241,7 @@ void grYosterInitAll(void)
         func_8000BD8C_C98C(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
 
         coll_dobj = DObjGetStruct(map_gobj);
-        coll_dobj->translate.vec.f = gMPYakumonoDObjs->yakumono_dobj[dGRYosterCloudLineIDs[i]]->translate.vec.f;
+        coll_dobj->translate.vec.f = gMPCollisionYakumonoDObjs->yakumono_dobj[dGRYosterCloudLineIDs[i]]->translate.vec.f;
 
         gGRCommonStruct.yoster.clouds[i].altitude = coll_dobj->translate.vec.f.y;
 

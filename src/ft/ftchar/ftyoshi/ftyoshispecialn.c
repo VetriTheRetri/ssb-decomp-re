@@ -85,37 +85,37 @@ void ftYoshiSpecialAirNReleaseProcUpdate(GObj *fighter_gobj)
 // 0x8015E4A4
 void ftYoshiSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftYoshiSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftYoshiSpecialNSwitchStatusAir);
 }
 
 // 0x8015E4C8
 void ftYoshiSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftYoshiSpecialAirNSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftYoshiSpecialAirNSwitchStatusGround);
 }
 
 // 0x8015E4EC
 void ftYoshiSpecialNCatchProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftYoshiSpecialNCatchSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftYoshiSpecialNCatchSwitchStatusAir);
 }
 
 // 0x8015E510
 void ftYoshiSpecialAirNCatchProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftYoshiSpecialAirNCatchSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftYoshiSpecialAirNCatchSwitchStatusGround);
 }
 
 // 0x8015E534
 void ftYoshiSpecialNReleaseProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftYoshiSpecialNReleaseSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftYoshiSpecialNReleaseSwitchStatusAir);
 }
 
 // 0x8015E558
 void ftYoshiSpecialAirNReleaseProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftYoshiSpecialAirNReleaseSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftYoshiSpecialAirNReleaseSwitchStatusGround);
 }
 
 // 0x8015E57C
@@ -140,7 +140,7 @@ void ftYoshiSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_HIT));
     ftYoshiSpecialNSetCatchParams(fp, ftYoshiSpecialNCatchProcCatch);
 }
@@ -150,7 +150,7 @@ void ftYoshiSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_HIT));
     ftYoshiSpecialNSetCatchParams(fp, ftYoshiSpecialAirNCatchProcCatch);
 }
@@ -158,28 +158,28 @@ void ftYoshiSpecialNSwitchStatusAir(GObj *fighter_gobj)
 // 0x8015E640
 void ftYoshiSpecialAirNCatchSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
 }
 
 // 0x8015E680
 void ftYoshiSpecialNCatchSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftMap_SetAir(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterAir(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialAirNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
 }
 
 // 0x8015E6C0
 void ftYoshiSpecialAirNReleaseSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialNRelease, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
 }
 
 // 0x8015E700
 void ftYoshiSpecialNReleaseSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftMap_SetAir(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterAir(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialAirNRelease, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
 }
 

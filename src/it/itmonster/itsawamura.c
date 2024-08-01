@@ -169,11 +169,11 @@ sb32 itSawamuraNAttackProcUpdate(GObj *item_gobj)
 
     itMainApplyGClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
 
-    if ((ip->lr == nGMDirectionR) && (dobj->translate.vec.f.x >= (gMPGroundData->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X)))
+    if ((ip->lr == nGMDirectionR) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X)))
     {
         return TRUE;
     }
-    else if ((ip->lr == nGMDirectionL) && (dobj->translate.vec.f.x <= (gMPGroundData->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
+    else if ((ip->lr == nGMDirectionL) && (dobj->translate.vec.f.x <= (gMPCollisionGroundData->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
     {
         return TRUE;
     }

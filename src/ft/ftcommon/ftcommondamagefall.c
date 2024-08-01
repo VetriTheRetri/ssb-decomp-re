@@ -25,7 +25,7 @@ void ftCommonDamageFallProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (mpObjectProc_ProcFighterCliff(fighter_gobj) != FALSE)
+    if (mpCommonCheckFighterCliff(fighter_gobj) != FALSE)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {

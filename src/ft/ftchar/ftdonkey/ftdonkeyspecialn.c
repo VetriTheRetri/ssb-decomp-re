@@ -42,13 +42,13 @@ void ftDonkeySpecialNStartProcInterrupt(GObj *fighter_gobj)
 // 0x8015AF94
 void ftDonkeySpecialNStartProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftDonkeySpecialNStartSwitchStatusAir);
+    mpCommonProcFighterOnEdge(fighter_gobj, ftDonkeySpecialNStartSwitchStatusAir);
 }
 
 // 0x8015AFB8
 void ftDonkeySpecialAirNStartProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkeySpecialAirNStartSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftDonkeySpecialAirNStartSwitchStatusGround);
 }
 
 // 0x8015AFDC
@@ -56,7 +56,7 @@ void ftDonkeySpecialAirNStartSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialNStart, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
 
     fp->proc_damage = ftDonkeySpecialNProcDamage;
@@ -67,7 +67,7 @@ void ftDonkeySpecialNStartSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirNStart, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
 
     fp->proc_damage = ftDonkeySpecialNProcDamage;
@@ -100,7 +100,7 @@ void ftDonkeySpecialNLoopProcUpdate(GObj *fighter_gobj)
         }
         if (fp->status_vars.donkey.specialn.is_cancel != FALSE)
         {
-            ftMap_SetStatusWaitOrFall(fighter_gobj);
+            mpCommonSetFighterWaitOrFall(fighter_gobj);
         }
         else if (fp->status_vars.donkey.specialn.is_release != FALSE)
         {
@@ -135,13 +135,13 @@ void ftDonkeySpecialNLoopProcInterrupt(GObj *fighter_gobj)
 // 0x8015B1FC
 void ftDonkeySpecialNLoopProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftDonkeySpecialNLoopSwitchStatusAir);
+    mpCommonProcFighterOnEdge(fighter_gobj, ftDonkeySpecialNLoopSwitchStatusAir);
 }
 
 // 0x8015B220
 void ftDonkeySpecialAirNLoopProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkeySpecialAirNLoopSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftDonkeySpecialAirNLoopSwitchStatusGround);
 }
 
 // 0x8015B244
@@ -160,7 +160,7 @@ void ftDonkeySpecialNLoopSetProcDamageAnimRate(GObj *fighter_gobj)
 // 0x8015B284
 void ftDonkeySpecialAirNLoopSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_COLANIM));
     ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
 }
@@ -170,7 +170,7 @@ void ftDonkeySpecialNLoopSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_COLANIM));
     ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
     ftPhysics_ClampAirVelXMax(fp);
@@ -197,7 +197,7 @@ void ftDonkeySpecialNEndProcUpdate(GObj *fighter_gobj)
 
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        ftMap_SetStatusWaitOrFall(fighter_gobj);
+        mpCommonSetFighterWaitOrFall(fighter_gobj);
     }
     else if ((fp->status_info.status_id == nFTDonkeyStatusSpecialNEnd) || (fp->status_info.status_id == nFTDonkeyStatusSpecialAirNEnd))
     {
@@ -218,7 +218,7 @@ void ftDonkeySpecialNEndProcUpdate(GObj *fighter_gobj)
 // 0x8015B488
 void ftDonkeySpecialAirNEndProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftDonkeySpecialAirNEndSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftDonkeySpecialAirNEndSwitchStatusGround);
 }
 
 // 0x8015B4AC
@@ -227,7 +227,7 @@ void ftDonkeySpecialAirNEndSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
 
     status_id = (fp->status_info.status_id == nFTDonkeyStatusSpecialAirNEnd) ? nFTDonkeyStatusSpecialNEnd : nFTDonkeyStatusSpecialNFull;
 

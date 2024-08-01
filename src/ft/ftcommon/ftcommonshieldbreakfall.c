@@ -17,7 +17,7 @@
 // 0x80149720
 void ftCommonShieldBreakFallProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftCommonShieldBreakDownSetStatus);
+    mpCommonProcFighterLanding(fighter_gobj, ftCommonShieldBreakDownSetStatus);
 }
 
 // 0x80149744

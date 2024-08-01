@@ -59,26 +59,26 @@ void ftPikachuSpecialAirHiStartProcPhysics(GObj *fighter_gobj)
 // 0x8015286C
 void ftPikachuSpecialHiStartProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftPikachuSpecialHiStartSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftPikachuSpecialHiStartSwitchStatusAir);
 }
 
 // 0x80152890
 void ftPikachuSpecialAirHiStartProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftPikachuSpecialAirHiStartSwitchStatusGround);
+    mpCommonProcFighterCliff(fighter_gobj, ftPikachuSpecialAirHiStartSwitchStatusGround);
 }
 
 // 0x801528B4
 void ftPikachuSpecialAirHiStartSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialHiStart, fighter_gobj->anim_frame, 0.0F, FTPIKACHU_SPECIALHI_STATUS_FLAGS);
 }
 
 // 0x801528F4
 void ftPikachuSpecialHiStartSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftMap_SetAir(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterAir(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirHiStart, fighter_gobj->anim_frame, 0.0F, FTPIKACHU_SPECIALHI_STATUS_FLAGS);
 }
 
@@ -182,11 +182,11 @@ void ftPikachuSpecialHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
         if (fp->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
         {
-            ftMap_SetAir(fp);
+            mpCommonSetFighterAir(fp);
             ftPikachuSpecialAirHiEndSetStatus(fighter_gobj);
         }
         else ftPikachuSpecialHiSwitchStatusAir(fighter_gobj);
@@ -216,7 +216,7 @@ void ftPikachuSpecialAirHiProcMap(GObj *fighter_gobj)
 
     fp->status_vars.pikachu.specialhi.pass_timer++;
 
-    if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftPikachuSpecialHiCheckIgnorePass) != FALSE)
+    if (mpCommonCheckFighterPassCliff(fighter_gobj, ftPikachuSpecialHiCheckIgnorePass) != FALSE)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
@@ -225,7 +225,7 @@ void ftPikachuSpecialAirHiProcMap(GObj *fighter_gobj)
         }
         else if (lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &fp->phys_info.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE)
         {
-            ftMap_SetGround(fp);
+            mpCommonSetFighterGround(fp);
             ftPikachuSpecialHiEndSetStatus(fighter_gobj);
         }
         else ftPikachuSpecialAirHiSwitchStatusGround(fighter_gobj);
@@ -250,7 +250,7 @@ void ftPikachuSpecialAirHiProcMap(GObj *fighter_gobj)
 // 0x80152D98
 void ftPikachuSpecialAirHiSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialHi, fighter_gobj->anim_frame, 0.0F, FTPIKACHU_SPECIALHI_STATUS_FLAGS);
 }
 
@@ -259,7 +259,7 @@ void ftPikachuSpecialHiSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirHi, fighter_gobj->anim_frame, 0.0F, FTPIKACHU_SPECIALHI_STATUS_FLAGS);
 
     fp->jumps_used = fp->attributes->jumps_max;
@@ -318,7 +318,7 @@ void ftPikachuSpecialHiSetStatus(GObj *fighter_gobj)
         return;
     }
 block_end:
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
 
     ftPikachuSpecialAirHiSetStatus(fighter_gobj);
 }
@@ -486,7 +486,7 @@ void ftPikachuSpecialAirHiEndProcPhysics(GObj *fighter_gobj)
 // 0x801534BC
 void ftPikachuSpecialHiEndProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftPikachuSpecialHiEndSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftPikachuSpecialHiEndSwitchStatusAir);
 }
 
 // 0x801534E0
@@ -494,7 +494,7 @@ void ftPikachuSpecialAirHiEndProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (mpObjectProc_ProcFighterCliff(fighter_gobj) != FALSE)
+    if (mpCommonCheckFighterCliff(fighter_gobj) != FALSE)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
@@ -507,14 +507,14 @@ void ftPikachuSpecialAirHiEndProcMap(GObj *fighter_gobj)
 // 0x80153544
 void ftPikachuSpecialAirHiEndSwitchStatusGround(GObj *fighter_gobj) // Unused
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialHiEnd, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALHI_STATUS_FLAGS);
 }
 
 // 0x80153584
 void ftPikachuSpecialHiEndSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftMap_SetAir(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterAir(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirHiEnd, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALHI_STATUS_FLAGS);
 }
 

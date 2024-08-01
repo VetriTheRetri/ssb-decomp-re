@@ -88,7 +88,7 @@ GObj* grZebesMakeAcid(void)
     GObj *map_gobj;
     void *map_head;
 
-    map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRZebesAcidDObjSetup);
+    map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRZebesAcidDObjSetup);
     gGRCommonStruct.zebes.map_head = map_head;
 
     map_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
@@ -105,7 +105,7 @@ GObj* grZebesMakeAcid(void)
     gGRCommonStruct.zebes.acid_level_current = dGRZebesAcidAttributes[15].acid_level;
     gGRCommonStruct.zebes.acid_attr_id = 0;
 
-    gGRCommonStruct.zebes.gr_hit = (void*) (((uintptr_t)gMPGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRZebesAcidHit);
+    gGRCommonStruct.zebes.gr_hit = (void*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRZebesAcidHit);
 
     grZebesAcidSetRandomWait();
 

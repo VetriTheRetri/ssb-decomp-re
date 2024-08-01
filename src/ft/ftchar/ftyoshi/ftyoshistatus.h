@@ -23,7 +23,7 @@ ftStatusDesc dFTYoshiSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 221 (0xDD): AppearL
@@ -43,7 +43,7 @@ ftStatusDesc dFTYoshiSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 222 (0xDE): SpecialHi
@@ -123,7 +123,7 @@ ftStatusDesc dFTYoshiSpecialStatusDesc[/* */] =
 		ftYoshiSpecialLwLandingProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundBreakSetFall			// Proc Map
+		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
 	// Status 226 (0xE2): SpecialAirLwStart

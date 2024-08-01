@@ -162,10 +162,10 @@ void wpProcessProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
 
         if 
         (
-            (translate->y < gMPGroundData->blastzone_bottom)  || 
-            (translate->x > gMPGroundData->blastzone_right)   || 
-            (translate->x < gMPGroundData->blastzone_left)    || 
-            (translate->y > gMPGroundData->blastzone_top)     || 
+            (translate->y < gMPCollisionGroundData->blastzone_bottom)  || 
+            (translate->x > gMPCollisionGroundData->blastzone_right)   || 
+            (translate->x < gMPCollisionGroundData->blastzone_left)    || 
+            (translate->y > gMPCollisionGroundData->blastzone_top)     || 
             (translate->z < -20000.0F)                      ||
             (translate->z > 20000.0F)
         )

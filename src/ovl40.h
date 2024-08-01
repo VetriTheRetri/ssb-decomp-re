@@ -22,8 +22,8 @@ extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay40ArenaHi;  // 803903E0
 extern intptr_t lOverlay40ArenaLo;  // 8018E5E0
 extern u32 gFTAnimHeapSize;			// 80130D9C
-extern f32 gMPLightAngleX;          // 80131390
-extern f32 gMPLightAngleY;          // 80131394
+extern f32 gMPCollisionLightAngleX;          // 80131390
+extern f32 gMPCollisionLightAngleY;          // 80131394
 
 extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;

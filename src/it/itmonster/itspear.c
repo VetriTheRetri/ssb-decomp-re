@@ -228,7 +228,7 @@ sb32 itSpearNFlyProcUpdate(GObj *item_gobj)
 
     if (ip->lr == nGMDirectionR)
     {
-        if (dobj->translate.vec.f.x >= (gMPGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X))
+        if (dobj->translate.vec.f.x >= (gMPCollisionGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X))
         {
             ip->phys_info.vel_air.x = 0.0F;
             ip->phys_info.vel_air.y = 0.0F;
@@ -244,7 +244,7 @@ sb32 itSpearNFlyProcUpdate(GObj *item_gobj)
     }
     if (ip->lr == nGMDirectionL)
     {
-        if (dobj->translate.vec.f.x <= (gMPGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X))
+        if (dobj->translate.vec.f.x <= (gMPCollisionGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X))
         {
             ip->phys_info.vel_air.x = 0.0F;
             ip->phys_info.vel_air.y = 0.0F;
@@ -359,11 +359,11 @@ sb32 itSpearWeaponSwarmProcUpdate(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj);
 
-    if ((wp->lr == nGMDirectionR) && (dobj->translate.vec.f.x >= (gMPGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X)))
+    if ((wp->lr == nGMDirectionR) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }
-    else if ((wp->lr == nGMDirectionL) && (dobj->translate.vec.f.x <= (gMPGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
+    else if ((wp->lr == nGMDirectionL) && (dobj->translate.vec.f.x <= (gMPCollisionGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }

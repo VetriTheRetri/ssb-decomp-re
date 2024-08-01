@@ -45,7 +45,7 @@ void ftCommonThrowProcUpdate(GObj *fighter_gobj)
                 return;
             }
         }
-        ftMap_SetStatusWaitOrFall(fighter_gobj);
+        mpCommonSetFighterWaitOrFall(fighter_gobj);
     }
 }
 
@@ -67,7 +67,7 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
         {
             status_id = nFTKirbyStatusThrowF;
 
-            ftMap_SetAir(this_fp);
+            mpCommonSetFighterAir(this_fp);
         }
         else status_id = nFTCommonStatusThrowF;
         thrown_status = &this_fp->attributes->thrown_status[catch_fp->ft_kind].ft_thrown[0];

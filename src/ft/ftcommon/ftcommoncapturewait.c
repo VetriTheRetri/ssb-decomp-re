@@ -35,7 +35,7 @@ void ftCommonCaptureWaitProcMap(GObj *fighter_gobj)
 
         this_pos->y = capture_pos.y;
 
-        mpObjectProc_SetFighterProjectGroundID(fighter_gobj);
+        mpCommonSetFighterProjectGround(fighter_gobj);
 
         this_fp->ga = nMPKineticsAir;
         this_fp->jumps_used = 1;

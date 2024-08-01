@@ -20,7 +20,7 @@ void ftDonkeyThrowFFallProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckAirLanding(fighter_gobj) != FALSE)
+    if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
         if (fp->phys_info.vel_air.y > FTCOMMON_THROWFFALL_SKIPLANDING_VEL_Y_MAX)
         {
@@ -37,7 +37,7 @@ void ftDonkeyThrowFFallSetStatus(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        ftMap_SetAir(fp);
+        mpCommonSetFighterAir(fp);
     }
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFFall, 0.0F, 0.0F, FTSTATUS_PRESERVE_FASTFALL);
     ftPhysics_ClampAirVelXMax(fp);
@@ -51,7 +51,7 @@ void ftDonkeyThrowFJumpSetStatus(GObj *fighter_gobj)
     s32 vel_x;
     s32 vel_y;
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFFall, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
 
     switch (fp->status_vars.common.throwf.input_source)

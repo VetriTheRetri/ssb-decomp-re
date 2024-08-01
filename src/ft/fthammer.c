@@ -34,7 +34,7 @@ void ftHammerUpdateStats(GObj *fighter_gobj)
         }
         if (ftHammerCheckStatusHammerAll(fighter_gobj) != FALSE)
         {
-            ftMap_SetStatusWaitOrFall(fighter_gobj);
+            mpCommonSetFighterWaitOrFall(fighter_gobj);
         }
         if (is_colanim_reset != FALSE)
         {
@@ -131,7 +131,7 @@ void ftHammerProcInterrupt(GObj *fighter_gobj)
 // 0x800F3914
 void ftHammerProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftCommonHammerFallSetStatus);
+    mpCommonProcFighterOnGround(fighter_gobj, ftCommonHammerFallSetStatus);
 }
 
 // 0x800F3938
@@ -141,7 +141,7 @@ void ftHammerSetStatusHammerWait(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsAir)
     {
-        ftMap_SetGround(fp);
+        mpCommonSetFighterGround(fp);
     }
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusHammerWait, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
     ftHammerSetColAnim(fighter_gobj);

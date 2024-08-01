@@ -175,7 +175,7 @@ void itProcessProcItemMain(GObj *item_gobj)
         }
         else ip->coll_data.pos_speed.x = ip->coll_data.pos_speed.y = ip->coll_data.pos_speed.z = 0.0F;
 
-        if ((translate->y < gMPGroundData->blastzone_bottom) || (translate->x > gMPGroundData->blastzone_right) || (translate->x < gMPGroundData->blastzone_left) || (translate->y > gMPGroundData->blastzone_top))
+        if ((translate->y < gMPCollisionGroundData->blastzone_bottom) || (translate->x > gMPCollisionGroundData->blastzone_right) || (translate->x < gMPCollisionGroundData->blastzone_left) || (translate->y > gMPCollisionGroundData->blastzone_top))
         {
             if ((ip->proc_dead == NULL) || (ip->proc_dead(item_gobj) != FALSE))
             {

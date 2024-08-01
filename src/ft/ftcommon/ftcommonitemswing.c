@@ -85,7 +85,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
             make_star_offset.y *= scale_mul;
             make_star_offset.z *= scale_mul;
 
-            gmCollisionGetFighterPartsWorldPosition(fp->joint[fp->attributes->joint_itemhold_light], &make_star_offset);
+            gmCollisionGetFighterPartsWorldPosition(fp->joint[fp->attributes->joint_itemlight_id], &make_star_offset);
 
             itStarRodMakeStar(fighter_gobj, &make_star_offset, (fp->command_vars.flags.flag0 == 1) ? FALSE : TRUE);
         }
@@ -94,7 +94,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
             // 0x8018860C
             Vec3f effect_offset = { 0.0F, 200.0F, 0.0F };
 
-            ftParamMakeEffect(fighter_gobj, nEFKindDustLight, fp->attributes->joint_itemhold_light, &effect_offset, NULL, -fp->lr, TRUE, FALSE);
+            ftParamMakeEffect(fighter_gobj, nEFKindDustLight, fp->attributes->joint_itemlight_id, &effect_offset, NULL, -fp->lr, TRUE, FALSE);
         }
         fp->command_vars.flags.flag0 = 0;
     }

@@ -62,7 +62,7 @@ void ftYoshiSpecialHiUpdateEggVars(GObj *fighter_gobj)
             wp->weapon_vars.egg_throw.throw_force = fp->status_vars.yoshi.specialhi.throw_force;
             wp->weapon_vars.egg_throw.stick_range = fp->input.pl.stick_range.x;
 
-            wpMap_RunCollisionDefault(fp->status_vars.yoshi.specialhi.egg_gobj, fp->coll_data.p_translate, &fp->coll_data);
+            mpCommonRunWeaponCollisionDefault(fp->status_vars.yoshi.specialhi.egg_gobj, fp->coll_data.p_translate, &fp->coll_data);
 
             fp->status_vars.yoshi.specialhi.egg_gobj = NULL;
         }
@@ -124,7 +124,7 @@ void ftYoshiSpecialAirHiSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialHi, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_EFFECT);
 
     fp->proc_damage = ftYoshiSpecialHiProcDamage;
@@ -135,7 +135,7 @@ void ftYoshiSpecialHiSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialAirHi, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_EFFECT);
 
     fp->proc_damage = ftYoshiSpecialHiProcDamage;
@@ -146,7 +146,7 @@ void ftYoshiSpecialHiSwitchStatusAir(GObj *fighter_gobj)
 // 0x8015ECAC
 void ftYoshiSpecialHiProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftYoshiSpecialHiSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftYoshiSpecialHiSwitchStatusAir);
 }
 
 // 0x8015ECD0
@@ -156,9 +156,9 @@ void ftYoshiSpecialAirHiProcMap(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag1 != 0)
     {
-        mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftYoshiSpecialAirHiSwitchStatusGround);
+        mpCommonProcFighterCliff(fighter_gobj, ftYoshiSpecialAirHiSwitchStatusGround);
     }
-    else mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftYoshiSpecialAirHiSwitchStatusGround);
+    else mpCommonProcFighterLanding(fighter_gobj, ftYoshiSpecialAirHiSwitchStatusGround);
 }
 
 // 0x8015ED18

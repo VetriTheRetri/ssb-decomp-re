@@ -144,7 +144,7 @@ typedef union gmStatFlags
 	{
 		u16 unused : 3;
 		ub16 is_smash_attack : 1;
-		ub16 is_ga : 1;
+		ub16 ga : 1;
 		ub16 is_projectile : 1;
 		u16 stat_attack_id : 10;
 	};

@@ -1250,7 +1250,7 @@ sb32 efGroundCheckEffectInBounds(GObj *effect_gobj)
 
     if (ep->effect_vars.ground_effect.lr == nGMDirectionL)
     {
-        if (dobj->translate.vec.f.x <= (gMPGroundData->blastzone_left + 500.0F))
+        if (dobj->translate.vec.f.x <= (gMPCollisionGroundData->blastzone_left + 500.0F))
         {
             efManagerSetPrevAlloc(ep);
             omEjectGObj(effect_gobj);
@@ -1258,7 +1258,7 @@ sb32 efGroundCheckEffectInBounds(GObj *effect_gobj)
             return FALSE;
         }
     }
-    else if (dobj->translate.vec.f.x >= (gMPGroundData->blastzone_right - 500.0F))
+    else if (dobj->translate.vec.f.x >= (gMPCollisionGroundData->blastzone_right - 500.0F))
     {
         efManagerSetPrevAlloc(ep);
         omEjectGObj(effect_gobj);
@@ -1379,9 +1379,9 @@ void efGroundUpdatePhysics(GObj *effect_gobj, s32 effect_id)
     if (ep->effect_vars.ground_effect.lr == nGMDirectionR)
     {
         dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F);
-        dobj->translate.vec.f.x = gMPGroundData->blastzone_left + 500.0F;
+        dobj->translate.vec.f.x = gMPCollisionGroundData->blastzone_left + 500.0F;
     }
-    else dobj->translate.vec.f.x = gMPGroundData->blastzone_right - 500.0F;
+    else dobj->translate.vec.f.x = gMPCollisionGroundData->blastzone_right - 500.0F;
 
     if (sEFGroundActor.effect_data->effect_descs[effect_id].proc_groundeffect != NULL)
     {
@@ -1692,7 +1692,7 @@ void efGroundMakeEffectSpawnActor(void)
             sEFGroundActor.effect_id = 0;
             sEFGroundActor.effect_data = &dEFGroundDatas[gBattleState->gr_kind];
 
-            sEFGroundActor.file_head = (void*) ((uintptr_t)gMPGroundData->gr_desc[1].dobj_desc - (intptr_t)dEFGroundDatas[gBattleState->gr_kind].o_data);
+            sEFGroundActor.file_head = (void*) ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)dEFGroundDatas[gBattleState->gr_kind].o_data);
             sEFGroundActor.make_queue = 0;
 
             efGroundSetupRandomWeights();

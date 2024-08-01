@@ -251,7 +251,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
 
         break;
     }
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonAppearInitStatusVars(fighter_gobj);
 
@@ -276,7 +276,7 @@ void ftCommonAppearSetPosition(GObj *fighter_gobj)
 
     fp->entry_pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    DObjGetStruct(fighter_gobj)->translate.vec.f.y = (gMPGroundData->cam_bound_top + gMPGroundData->blastzone_top) * 0.5F;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.y = (gMPCollisionGroundData->cam_bound_top + gMPCollisionGroundData->blastzone_top) * 0.5F;
 
     ftCommonFallSetStatus(fighter_gobj);
 }

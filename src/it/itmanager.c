@@ -349,7 +349,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     ip->item_hit.attack_id                  = nFTMotionAttackIDNone;
     ip->item_hit.motion_count               = ftParamGetMotionCount();
     ip->item_hit.stat_flags.stat_attack_id  = nFTStatusAttackIDNull;
-    ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ga = ip->item_hit.stat_flags.is_projectile = 0;
+    ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.ga = ip->item_hit.stat_flags.is_projectile = 0;
     ip->item_hit.stat_count                 = ftParamGetStatUpdateCount();
 
     itMainClearHitRecord(ip);
@@ -407,7 +407,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     ip->coll_data.object_coll.width     = attributes->objectcoll_width;
     ip->coll_data.p_object_coll         = &ip->coll_data.object_coll;
     ip->coll_data.ignore_line_id        = -1;
-    ip->coll_data.coll_update_frame     = gMPCollUpdateFrame;
+    ip->coll_data.coll_update_frame     = gMPCollisionUpdateFrame;
     ip->coll_data.coll_mask_curr        = 0;
     ip->coll_data.vel_push.x            = 0.0F;
     ip->coll_data.vel_push.y            = 0.0F;
@@ -438,15 +438,15 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
             break;
 
         case ITEM_MASK_SPAWN_FIGHTER:
-            itMapRunCollisionDefault(item_gobj, ftGetStruct(spawn_gobj)->coll_data.p_translate, &ftGetStruct(spawn_gobj)->coll_data);
+            mpCommonRunItemCollisionDefault(item_gobj, ftGetStruct(spawn_gobj)->coll_data.p_translate, &ftGetStruct(spawn_gobj)->coll_data);
             break;
 
         case ITEM_MASK_SPAWN_WEAPON:
-            itMapRunCollisionDefault(item_gobj, wpGetStruct(spawn_gobj)->coll_data.p_translate, &wpGetStruct(spawn_gobj)->coll_data);
+            mpCommonRunItemCollisionDefault(item_gobj, wpGetStruct(spawn_gobj)->coll_data.p_translate, &wpGetStruct(spawn_gobj)->coll_data);
             break;
 
         case ITEM_MASK_SPAWN_ITEM:
-            itMapRunCollisionDefault(item_gobj, itGetStruct(spawn_gobj)->coll_data.p_translate, &itGetStruct(spawn_gobj)->coll_data);
+            mpCommonRunItemCollisionDefault(item_gobj, itGetStruct(spawn_gobj)->coll_data.p_translate, &itGetStruct(spawn_gobj)->coll_data);
             break;
 
         default:
@@ -543,9 +543,9 @@ GObj* itManagerMakeItemSpawnActor(void)
     {
         if (gBattleState->item_toggles != 0)
         {
-            if (gMPGroundData->item_weights != NULL)
+            if (gMPCollisionGroundData->item_weights != NULL)
             {
-                item_count_qty = gMPGroundData->item_weights;
+                item_count_qty = gMPCollisionGroundData->item_weights;
 
                 item_num_toggles = gBattleState->item_toggles;
 
@@ -593,7 +593,7 @@ GObj* itManagerMakeItemSpawnActor(void)
 
                 item_count_toggles = gBattleState->item_toggles;
 
-                item_weight_qty = gMPGroundData->item_weights;
+                item_weight_qty = gMPCollisionGroundData->item_weights;
 
                 for (i = 0, j = 0; i <= nITKindCommonEnd; i++, item_count_toggles >>= 1)
                 {
@@ -644,10 +644,10 @@ void itManagerSetupContainerDrops(void)
     mpItemWeights *item_weight_qty;
     s32 item_tenth_round;
 
-    if ((gBattleState->item_switch != nGMBattleItemSwitchNone) && (gBattleState->item_toggles != 0) && (gMPGroundData->item_weights != NULL))
+    if ((gBattleState->item_switch != nGMBattleItemSwitchNone) && (gBattleState->item_toggles != 0) && (gMPCollisionGroundData->item_weights != NULL))
     {
         item_num_toggles = gBattleState->item_toggles >> nITKindUtilityStart;
-        item_count_qty = gMPGroundData->item_weights;
+        item_count_qty = gMPCollisionGroundData->item_weights;
 
         item_count = 0;
 
@@ -663,7 +663,7 @@ void itManagerSetupContainerDrops(void)
         if (item_count != 0)
         {
             item_id_toggles = gBattleState->item_toggles >> nITKindUtilityStart;
-            item_weight_qty = gMPGroundData->item_weights;
+            item_weight_qty = gMPCollisionGroundData->item_weights;
 
             for (j = 0, i = nITKindUtilityStart; i <= nITKindUtilityEnd; i++, item_id_toggles >>= 1)
             {

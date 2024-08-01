@@ -28,7 +28,7 @@ void ftCommonFallSetStatus(GObj *fighter_gobj)
     {
         if (fp->ga == nMPKineticsGround)
         {
-            ftMap_SetAir(fp);
+            mpCommonSetFighterAir(fp);
         }
         ftMainSetFighterStatus(fighter_gobj, ((fp->jumps_used >= fp->attributes->jumps_max) ? nFTCommonStatusFallAerial : nFTCommonStatusFall), 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
 

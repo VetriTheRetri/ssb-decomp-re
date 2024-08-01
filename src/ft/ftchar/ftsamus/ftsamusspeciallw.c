@@ -81,13 +81,13 @@ void ftSamusSpecialAirLwProcPhysics(GObj *fighter_gobj)
 // 0x8015E0E8
 void ftSamusSpecialLwProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftSamusSpecialLwSwitchStatusAir);
+    mpCommonProcFighterOnEdge(fighter_gobj, ftSamusSpecialLwSwitchStatusAir);
 }
 
 // 0x8015E10C
 void ftSamusSpecialAirLwProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftSamusSpecialAirLwSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftSamusSpecialAirLwSwitchStatusGround);
 }
 
 // 0x8015E130
@@ -97,7 +97,7 @@ void ftSamusSpecialAirLwSwitchStatusGround(GObj *fighter_gobj)
 
     fp->command_vars.flags.flag3 = FALSE;
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
@@ -107,7 +107,7 @@ void ftSamusSpecialLwTransferStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->phys_info.vel_air.y = FTSAMUS_BOMB_VEL_Y_BASE;
@@ -117,7 +117,7 @@ void ftSamusSpecialLwTransferStatusAir(GObj *fighter_gobj)
 // 0x8015E1DC
 void ftSamusSpecialLwSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftMap_SetAir(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterAir(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 

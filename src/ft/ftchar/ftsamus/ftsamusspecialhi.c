@@ -54,9 +54,9 @@ void ftSamusSpecialHiProcMap(GObj *fighter_gobj)
     {
         if (fp->phys_info.vel_air.y >= 0.0F)
         {
-            mpObjectProc_ProcFighterEnvCatch(fighter_gobj);
+            mpCommonCheckFighterProject(fighter_gobj);
         }
-        else if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftSamusSpecialHiCheckIgnorePass) != FALSE)
+        else if (mpCommonCheckFighterPassCliff(fighter_gobj, ftSamusSpecialHiCheckIgnorePass) != FALSE)
         {
             if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {
@@ -65,7 +65,7 @@ void ftSamusSpecialHiProcMap(GObj *fighter_gobj)
             else ftCommonLandingFallSpecialSetStatus(fighter_gobj, FALSE, FTSAMUS_SCREWATTACK_LANDING_LAG);
         }
     }
-    else ftMap_CheckGroundStopEdgeFall(fighter_gobj);
+    else mpCommonSetFighterFallOnEdgeBreak(fighter_gobj);
 }
 
 // 0x8015DE0C

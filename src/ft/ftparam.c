@@ -131,25 +131,25 @@ s32 ftParamGetItemMusicLength(u32 bgm_id)
 // 0x800E7AFC
 void ftParamTryPlayItemMusic(u32 bgm_id)
 {
-    if (ftParamGetItemMusicLength(bgm_id) >= ftParamGetItemMusicLength(gMPMusicIDCurrent))
+    if (ftParamGetItemMusicLength(bgm_id) >= ftParamGetItemMusicLength(gMPCollisionBGMCurrent))
     {
         auPlaySong(0, bgm_id);
 
-        gMPMusicIDCurrent = bgm_id;
+        gMPCollisionBGMCurrent = bgm_id;
     }
 }
 
 // 0x800E7B54
 void ftParamTryUpdateItemMusic(void)
 {
-    u32 bgm_play = gMPMusicIDDefault;
+    u32 bgm_play = gMPCollisionBGMDefault;
     s32 length = ftParamGetItemMusicLength(bgm_play);
     GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
-        u32 bgm_id = gMPMusicIDDefault;
+        u32 bgm_id = gMPCollisionBGMDefault;
         s32 length_new;
 
         if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer))
@@ -169,10 +169,10 @@ void ftParamTryUpdateItemMusic(void)
         }
         fighter_gobj = fighter_gobj->link_next;
     }
-    if (bgm_play != gMPMusicIDCurrent)
+    if (bgm_play != gMPCollisionBGMCurrent)
     {
         auPlaySong(0, bgm_play);
-        gMPMusicIDCurrent = bgm_play;
+        gMPCollisionBGMCurrent = bgm_play;
     }
 }
 
@@ -557,7 +557,7 @@ s32 ftParamGetJointID(ftStruct *fp, s32 joint_id)
 {
     if (joint_id == -2)
     {
-        joint_id = fp->attributes->joint_itemhold_light;
+        joint_id = fp->attributes->joint_itemlight_id;
     }
     return joint_id;
 }
@@ -1704,7 +1704,7 @@ void ftParamUpdate1PGameAttackStats(ftStruct *fp, u16 flags)
 
             gGM1PGameBonusAttackIsSmashCount[fp->stat_flags.is_smash_attack]++;
 
-            gGM1PGameBonusAttackGroundAirCount[fp->stat_flags.is_ga]++;
+            gGM1PGameBonusAttackGroundAirCount[fp->stat_flags.ga]++;
 
             gGM1PGameBonusAttackIsProjectileCount[fp->stat_flags.is_projectile]++;
         }
@@ -1780,7 +1780,7 @@ void ftParamUpdate1PGameDamageStats(ftStruct *fp, s32 damage_player, s32 damage_
             {
                 gGM1PGameBonusDefendIDCount[fp->damage_stat_flags.stat_attack_id]++;
                 gGM1PGameBonusDefendIsSmashCount[fp->damage_stat_flags.is_smash_attack]++;
-                gGM1PGameBonusDefendGroundAirCount[fp->damage_stat_flags.is_ga]++;
+                gGM1PGameBonusDefendGroundAirCount[fp->damage_stat_flags.ga]++;
                 gGM1PGameBonusDefendIsProjectileCount[fp->damage_stat_flags.is_projectile]++;
             }
         }

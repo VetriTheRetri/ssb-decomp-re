@@ -54,7 +54,7 @@ void ftCommonFallSpecialProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftCommonFallSpecialCheckIgnorePass) != FALSE)
+    if (mpCommonCheckFighterPassCliff(fighter_gobj, ftCommonFallSpecialCheckIgnorePass) != FALSE)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
@@ -82,7 +82,7 @@ void ftCommonFallSpecialSetStatus(GObj *fighter_gobj, f32 drift, sb32 unknown, s
 
     if (fp->ga == nMPKineticsGround)
     {
-        ftMap_SetAir(fp);
+        mpCommonSetFighterAir(fp);
     }
     fp->jumps_used = attributes->jumps_max;
 

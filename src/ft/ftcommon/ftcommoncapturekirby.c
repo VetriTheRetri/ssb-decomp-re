@@ -120,7 +120,7 @@ void ftCommonCaptureKirbyProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     this_fp->lr = -capture_fp->lr;
 
-    ftMap_SetAir(this_fp);
+    mpCommonSetFighterAir(this_fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureKirby, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftParamMakeRumble(this_fp, 7, 0);
@@ -132,7 +132,7 @@ void ftCommonCaptureKirbyProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
     ftPhysics_StopVelAll(fighter_gobj);
     ftCommonCaptureKirbyProcPhysics(fighter_gobj);
-    ftMap_UpdateProjectGroundID(fighter_gobj);
+    mpCommonUpdateFighterProjectGround(fighter_gobj);
 }
 
 // 0x8014BA98
@@ -404,7 +404,7 @@ void ftCommonThrownCommonStarProcMap(GObj *fighter_gobj)
 
     angle = NULL;
 
-    if (ftMap_CheckAirLanding(fighter_gobj) != FALSE)
+    if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
         angle = &fp->coll_data.ground_angle;
     }
@@ -489,7 +489,7 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        ftMap_SetAir(fp);
+        mpCommonSetFighterAir(fp);
     }
     fp->proc_status = ftCommonThrownKirbyStarProcStatus;
 
@@ -544,7 +544,7 @@ void ftCommonThrownCopyStarSetStatus(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        ftMap_SetAir(fp);
+        mpCommonSetFighterAir(fp);
     }
     fp->proc_status = ftCommonThrownCopyStarProcStatus;
 

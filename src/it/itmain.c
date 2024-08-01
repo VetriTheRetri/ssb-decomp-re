@@ -330,7 +330,7 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
 
     pos.x = pos.y = pos.z = 0.0F;
 
-    joint_id = (ip->weight == nITWeightHeavy) ? fp->attributes->joint_itemhold_heavy : fp->attributes->joint_itemhold_light;
+    joint_id = (ip->weight == nITWeightHeavy) ? fp->attributes->joint_itemheavy_id : fp->attributes->joint_itemlight_id;
 
     gmCollisionGetFighterPartsWorldPosition(fp->joint[joint_id], &pos);
 
@@ -338,7 +338,7 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
     DObjGetStruct(item_gobj)->translate.vec.f.y = pos.y;
     DObjGetStruct(item_gobj)->translate.vec.f.z = 0.0F;
 
-    itMapRunCollisionDefault(item_gobj, fp->coll_data.p_translate, &fp->coll_data);
+    mpCommonRunItemCollisionDefault(item_gobj, fp->coll_data.p_translate, &fp->coll_data);
 
     fp->item_hold = NULL;
 
@@ -450,7 +450,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     omAddOMMtxForDObjFixed(joint, 0x52, 0);
 
-    joint_id = (ip->weight == nITWeightHeavy) ? fp->attributes->joint_itemhold_heavy : fp->attributes->joint_itemhold_light;
+    joint_id = (ip->weight == nITWeightHeavy) ? fp->attributes->joint_itemheavy_id : fp->attributes->joint_itemlight_id;
 
     joint->user_data.p = fp->joint[joint_id];
 
@@ -520,7 +520,7 @@ void itMainSetItemStatus(GObj *item_gobj, itStatusDesc *status_desc, s32 status_
     ip->is_thrown = FALSE;
 
     ip->item_hit.stat_flags.stat_attack_id = nFTStatusAttackIDNull;
-    ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.is_ga = ip->item_hit.stat_flags.is_projectile = FALSE;
+    ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.ga = ip->item_hit.stat_flags.is_projectile = FALSE;
 
     ip->item_hit.stat_count = ftParamGetStatUpdateCount();
 }

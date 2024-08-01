@@ -86,19 +86,19 @@ void ftKirbyCopyPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
 // 0x801519F0
 void ftKirbyCopyPurinSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftKirbyCopyPurinSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftKirbyCopyPurinSpecialNSwitchStatusAir);
 }
 
 // 0x80151A14
 void ftKirbyCopyPurinSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirbyCopyPurinSpecialAirNSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftKirbyCopyPurinSpecialAirNSwitchStatusGround);
 }
 
 // 0x80151A38
 void ftKirbyCopyPurinSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPurinSpecialN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
 }
 
@@ -107,7 +107,7 @@ void ftKirbyCopyPurinSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPurinSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
     ftPhysics_ClampAirVelXMax(fp);
 }

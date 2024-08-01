@@ -231,7 +231,7 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     }
     ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGrRender, NULL, nOMObjCommonLinkIDGroundRender, GOBJ_LINKORDER_DEFAULT);
 
-    if (gMPGroundData->layer_mask & (1 << gr_desc_id))
+    if (gMPCollisionGroundData->layer_mask & (1 << gr_desc_id))
     {
         proc_render = dGRGeometryDescs[gr_desc_id].proc_rendersec;
     }

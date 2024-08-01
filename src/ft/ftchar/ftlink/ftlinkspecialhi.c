@@ -269,9 +269,9 @@ void ftLinkSpecialHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
-        ftMap_SetAir(fp);
+        mpCommonSetFighterAir(fp);
         ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirHi, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_HIT));
 
         fp->proc_damage = ftLinkSpecialHiProcDamage;
@@ -283,7 +283,7 @@ void ftLinkSpecialHiProcMap(GObj *fighter_gobj)
 // 0x80164198
 void ftLinkSpecialHiEndProcMap(GObj *fighter_gobj)
 {
-    if (ftMap_ProcFighterAirProcMap(fighter_gobj, ftCommonFallSetStatus) == FALSE)
+    if (mpCommonProcFighterOnGround(fighter_gobj, ftCommonFallSetStatus) == FALSE)
     {
         ftLinkSpecialHiProcDamage(fighter_gobj);
     }
@@ -294,7 +294,7 @@ void ftLinkSpecialAirHiProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE)
+    if (mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE)
     {
         ftLinkSpecialHiProcDamage(fighter_gobj);
 
@@ -304,7 +304,7 @@ void ftLinkSpecialAirHiProcMap(GObj *fighter_gobj)
         }
         else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
         {
-            ftMap_SetGround(fp);
+            mpCommonSetFighterGround(fp);
             ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialHiEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
             fp->proc_damage = ftLinkSpecialHiProcDamage;

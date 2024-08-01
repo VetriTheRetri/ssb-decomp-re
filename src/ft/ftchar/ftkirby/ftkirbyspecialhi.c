@@ -202,14 +202,14 @@ void ftKirbySpecialHiProcMap(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        if (ftMap_CheckGroundStopEdge(fighter_gobj) == FALSE)
+        if (mpCommonCheckFighterOnEdge(fighter_gobj) == FALSE)
         {
             fp->ga = nMPKineticsAir;
         }
     }
     else
     {
-        if (mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE)
+        if (mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE)
         {
             if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {
@@ -217,7 +217,7 @@ void ftKirbySpecialHiProcMap(GObj *fighter_gobj)
             }
             else if ((fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND) && (fp->phys_info.vel_air.y < 0.0F))
             {
-                ftMap_SetGround(fp);
+                mpCommonSetFighterGround(fp);
                 ftKirbySpecialHiLandingSetStatus(fighter_gobj);
             }
         }
@@ -229,11 +229,11 @@ void ftKirbySpecialAirHiFallProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE)
+    if (mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
         {
-            ftMap_SetGround(fp);
+            mpCommonSetFighterGround(fp);
             ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialHiLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
             fp->proc_lagstart = ftParamProcPauseEffect;

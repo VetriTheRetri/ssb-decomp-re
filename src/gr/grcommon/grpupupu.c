@@ -738,7 +738,7 @@ void grPupupuInitAll(void)
 {
     // Many linker things here
 
-    gGRCommonStruct.pupupu.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRPupupuMapHead);
+    gGRCommonStruct.pupupu.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRPupupuMapHead);
 
     gGRCommonStruct.pupupu.map_gobj[0] = grPupupuMakeMapGObj(&lGRPupupuMapHead, &D_NF_00000F00, grGeometryLayer0ProcRenderPri, 4);
     gGRCommonStruct.pupupu.map_gobj[1] = grPupupuMakeMapGObj(&lGRPupupuWhispyMouthTransformKinds, &D_NF_000013B0, grGeometryLayer0ProcRenderPri, 4);

@@ -34,7 +34,7 @@ void ftDonkeyThrowFWaitProcInterrupt(GObj *fighter_gobj)
 // 0x8014D478
 void ftDonkeyThrowFCommonProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftDonkeyThrowFFallSetStatus);
+    mpCommonProcFighterOnGround(fighter_gobj, ftDonkeyThrowFFallSetStatus);
 }
 
 // 0x8014D49C
@@ -44,7 +44,7 @@ void ftDonkeyThrowFWaitSetStatus(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsAir)
     {
-        ftMap_SetGround(fp);
+        mpCommonSetFighterGround(fp);
     }
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 }

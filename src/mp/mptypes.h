@@ -11,7 +11,7 @@
 #define MPCOLL_KIND_LWALL (1 << 0)		// 0x1
 #define MPCOLL_KIND_RWALL (1 << 5)		// 0x20
 #define MPCOLL_KIND_CEIL (1 << 10)		// 0x400
-#define MPCOLL_KIND_GROUND (1 << 11)	// 800
+#define MPCOLL_KIND_GROUND (1 << 11)	// 0x800
 #define MPCOLL_KIND_LCLIFF (1 << 12)	// 0x1000
 #define MPCOLL_KIND_RCLIFF (1 << 13)	// 0x2000
 #define MPCOLL_KIND_CEILHEAVY (1 << 14) // 0x4000 - head bonk?
@@ -23,7 +23,7 @@
 #define MPCOLL_VERTEX_ATTR_BITS 8
 
 #define MPCOLL_VERTEX_CLL_PASS (1 << 14)  // Line ID can be passed through
-#define MPCOLL_VERTEX_CLL_CLIFF (1 << 15) // 8000
+#define MPCOLL_VERTEX_CLL_CLIFF (1 << 15) // 0x8000
 
 #define MPCOLL_VERTEX_CLL_BITS (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 1))
 #define MPCOLL_VERTEX_MAT_BITS (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 0))
@@ -40,7 +40,7 @@
 #define MPCOLL_PROC_TYPE_DEFAULT (0)
 #define MPCOLL_PROC_TYPE_CLIFF (1 << 0)
 #define MPCOLL_PROC_TYPE_CLIFFEDGE (1 << 0)
-#define MPCOLL_PROC_TYPE_UNK (1 << 1)
+#define MPCOLL_PROC_TYPE_PROJECT (1 << 1)
 #define MPCOLL_PROC_TYPE_STOPEDGE (1 << 1)
 #define MPCOLL_PROC_TYPE_PASS (1 << 2)
 #define MPCOLL_PROC_TYPE_CEILHEAVY (1 << 3)

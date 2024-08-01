@@ -23,7 +23,7 @@ ftStatusDesc dFTLinkSpecialStatusDesc[/* */] =
 		ftStatusWaitOnAnimEnd,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 221 (0xDD): Attack100Start
@@ -43,7 +43,7 @@ ftStatusDesc dFTLinkSpecialStatusDesc[/* */] =
 		ftCommonAttack100StartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 222 (0xDE): Attack100Loop
@@ -63,7 +63,7 @@ ftStatusDesc dFTLinkSpecialStatusDesc[/* */] =
 		ftCommonAttack100LoopProcUpdate,		// Proc Update
 		ftCommonAttack100LoopProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 223 (0xDF): Attack100End
@@ -83,7 +83,7 @@ ftStatusDesc dFTLinkSpecialStatusDesc[/* */] =
 		ftStatusWaitOnAnimEnd,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 224 (0xE0): AppearR
@@ -103,7 +103,7 @@ ftStatusDesc dFTLinkSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 225 (0xE1): AppearL
@@ -123,7 +123,7 @@ ftStatusDesc dFTLinkSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 226 (0xE2): SpecialHi
@@ -223,7 +223,7 @@ ftStatusDesc dFTLinkSpecialStatusDesc[/* */] =
 		ftStatusWaitOnAnimEnd,					// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundBreakSetFall			// Proc Map
+		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
 	// Status 231 (0xE7): SpecialNEmpty
@@ -283,7 +283,7 @@ ftStatusDesc dFTLinkSpecialStatusDesc[/* */] =
 		ftStatusFallOnAnimEnd,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		mpCommonProcFighterWaitOrLanding						// Proc Map
 	},
 
 	// Status 234 (0xEA): SpecialAirNEmpty

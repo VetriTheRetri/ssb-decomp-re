@@ -23,7 +23,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftCommonAttack100StartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 221 (0xDD): Attack100Loop
@@ -43,7 +43,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftCommonAttack100LoopProcUpdate,		// Proc Update
 		ftCommonAttack100LoopProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 222 (0xDE): Attack100End
@@ -63,7 +63,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftStatusWaitOnAnimEnd,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 223 (0xDF): AppearR
@@ -83,7 +83,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 224 (0xE0): AppearL
@@ -103,7 +103,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 225 (0xE1): SpecialN
@@ -123,7 +123,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftFoxSpecialNProcUpdate,				// Proc Update
 		ftFoxSpecialNProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 226 (0xE2): SpecialAirN
@@ -143,7 +143,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftFoxSpecialNProcUpdate,				// Proc Update
 		ftFoxSpecialNProcInterrupt,			// Proc Interrupt
 		ftPhysics_ApplyAirVelDrift,				// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		mpCommonProcFighterWaitOrLanding						// Proc Map
 	},
 
 	// Status 227 (0xE3): SpecialHiStart
@@ -283,7 +283,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftStatusWaitOnAnimEnd,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftFoxSpecialHiEndProcPhysics,			// Proc Physics
-		ftMap_CheckGroundBreakSetFall				// Proc Map
+		mpCommonSetFighterFallOnGroundBreak				// Proc Map
 	},
 
 	// Status 234 (0xEA): SpecialAirHiEnd
@@ -343,7 +343,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftFoxSpecialLwStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 237 (0xED): SpecialLwHit
@@ -363,7 +363,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftFoxSpecialLwHitProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 238 (0xEE): SpecialLwEnd
@@ -383,7 +383,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftFoxSpecialLwEndProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 239 (0xEF): SpecialLwLoop
@@ -403,7 +403,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftFoxSpecialLwLoopProcUpdate,			// Proc Update
 		ftFoxSpecialLwLoopProcInterrupt,		// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 240 (0xF0): SpecialLwTurn
@@ -423,7 +423,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftFoxSpecialLwTurnProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 241 (0xF1): SpecialAirLwStart
@@ -443,7 +443,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftFoxSpecialLwStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftFoxSpecialAirLwCommonProcPhysics,	// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		mpCommonProcFighterWaitOrLanding						// Proc Map
 	},
 
 	// Status 242 (0xF2): SpecialAirLwHit
@@ -463,7 +463,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftFoxSpecialLwHitProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftFoxSpecialAirLwCommonProcPhysics,	// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		mpCommonProcFighterWaitOrLanding						// Proc Map
 	},
 
 	// Status 243 (0xF3): SpecialAirLwEnd
@@ -483,7 +483,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftFoxSpecialLwEndProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftFoxSpecialAirLwCommonProcPhysics,	// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		mpCommonProcFighterWaitOrLanding						// Proc Map
 	},
 
 	// Status 244 (0xF4): SpecialAirLwLoop
@@ -503,7 +503,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftFoxSpecialLwLoopProcUpdate,			// Proc Update
 		ftFoxSpecialLwLoopProcInterrupt,		// Proc Interrupt
 		ftFoxSpecialAirLwCommonProcPhysics,	// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		mpCommonProcFighterWaitOrLanding						// Proc Map
 	},
 
 	// Status 245 (0xF5): SpecialAirLwTurn
@@ -523,7 +523,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		ftFoxSpecialLwTurnProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftFoxSpecialAirLwCommonProcPhysics,	// Proc Physics
-		ftMap_CheckGroundSetWaitOrLanding						// Proc Map
+		mpCommonProcFighterWaitOrLanding						// Proc Map
 	}
 };
 

@@ -41,10 +41,10 @@ void ftCommonCliffCatchSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f vel;
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffCatch, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftPhysics_StopVelAll(fighter_gobj);
 
     fp->coll_data.ground_line_id = -1;
@@ -82,7 +82,7 @@ void ftCommonCliffCommonProcDamage(GObj *fighter_gobj)
     vel.x -= ((object_coll->width + 30.0F) * fp->lr);
     vel.y -= object_coll->center;
 
-    ftMap_RunCollisionDefault(fighter_gobj, &vel, &fp->coll_data);
+    mpCommonRunFighterCollisionDefault(fighter_gobj, &vel, &fp->coll_data);
 }
 
 // 0x80144DA4

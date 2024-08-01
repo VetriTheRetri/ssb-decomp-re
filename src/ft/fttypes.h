@@ -75,6 +75,10 @@
     FTCATCHKIND_MASK_YOSHISPECIALN      \
 )
 
+#define FTSLOPECONTOUR_FLAG_RFOOT   (1 << nFTSlopeContourRFoot)
+#define FTSLOPECONTOUR_FLAG_LFOOT   (1 << nFTSlopeContourLFoot)
+#define FTSLOPECONTOUR_FLAG_FULL    (1 << nFTSlopeContourFull)
+
 #define FTCOMPUTER_COMMAND_TIMER_BITS           (0x4)
 #define FTCOMPUTER_COMMAND_OPCODE_BITS          (0x4)
 
@@ -744,10 +748,10 @@ struct ftAttributes
     ftCommonPartContainer *common_parts_container;
     DObjDesc *dobj_lookup; // WARNING: Not actually DObjDesc* but I don't know what this struct is or what its bounds are; bunch of consecutive floats
     void **shield_keys[8];  // One for each ordinal direction
-    s32 joint_id1; // What does this do?
-    f32 joint_float1;
-    s32 joint_id2;
-    f32 joint_float2;
+    s32 joint_rfoot_id; // What does this do?
+    f32 joint_rfoot_rotate;
+    s32 joint_lfoot_id;
+    f32 joint_lfoot_rotate;
     u8 filler_0x304[0x31C - 0x30C];
     f32 unk_0x31C;
     f32 unk_0x320;
@@ -755,9 +759,9 @@ struct ftAttributes
     ftModelPartContainer *model_parts_container;
     ftMesh *mesh;
     ftTexturePartContainer *texture_parts_container;
-    s32 joint_itemhold_heavy;
+    s32 joint_itemheavy_id;
     ftThrownStatusArray *thrown_status;
-    s32 joint_itemhold_light;
+    s32 joint_itemlight_id;
     ftSprites *sprites;
     ftSkeleton **skeleton;
 };
@@ -876,7 +880,6 @@ struct ftStruct
     ub32 x18D_flag_b5 : 1;
     ub32 is_ignore_blastzone : 1;       // When Master Hand is defeated, this is set to TRUE so the player cannot die if they are offstage
     ub32 is_invisible : 1;
-
     ub32 x18E_flag_b0 : 1;
     ub32 x18E_flag_b1 : 1;
     ub32 is_ignore_magnify : 1;         // Skip rendering magnifying glass if TRUE?
@@ -890,7 +893,6 @@ struct ftStruct
     ub32 is_have_translate_scale : 1;
     ub32 is_disable_control : 1;        // Fighter cannot be controlled if TRUE; enabled when training mode menu is up
     ub32 is_hitstun : 1;
-
     u32 slope_contour : 3;
     ub32 is_use_anim_locks : 1;
     ub32 is_playing_sfx : 1;

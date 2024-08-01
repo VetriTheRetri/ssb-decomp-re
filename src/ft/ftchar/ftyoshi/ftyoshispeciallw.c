@@ -51,11 +51,11 @@ void ftYoshiSpecialLwStartProcMap(GObj *fighter_gobj)
 
     if ((fp->command_vars.flags.flag1 != 0) && (fp->phys_info.vel_air.y <= 0.0F))
     {
-        if (mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE)
+        if (mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE)
         {
             if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
             {
-                ftMap_SetGround(fp);
+                mpCommonSetFighterGround(fp);
                 ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialLwLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
             }
             else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
@@ -64,7 +64,7 @@ void ftYoshiSpecialLwStartProcMap(GObj *fighter_gobj)
             }
         }
     }
-    else if ((mpObjectProc_ProcFighterCeilHeavy(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_curr & MPCOLL_KIND_CEILHEAVY))
+    else if ((mpCommonCheckFighterCeilHeavy(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_curr & MPCOLL_KIND_CEILHEAVY))
     {
         ftYoshiSpecialAirLwLoopSetStatus(fighter_gobj);
     }
@@ -75,11 +75,11 @@ void ftYoshiSpecialAirLwLoopProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE)
+    if (mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
         {
-            ftMap_SetGround(fp);
+            mpCommonSetFighterGround(fp);
             ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialLwLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
         }
         else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
@@ -105,7 +105,7 @@ void ftYoshiSpecialLwStartSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftYoshiSpecialLwStartProcStatus;
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 

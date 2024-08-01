@@ -62,7 +62,7 @@ void ftCommonCatchCaptureSetStatusRelease(GObj *fighter_gobj)
 // 0x80149B48
 void func_ovl3_80149B48(GObj *fighter_gobj) // Unused
 {
-    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
         ftCommonCatchCaptureSetStatusRelease(fighter_gobj);
     }
@@ -71,7 +71,7 @@ void func_ovl3_80149B48(GObj *fighter_gobj) // Unused
 // 0x80149B78
 void ftCommonCatchProcMap(GObj *fighter_gobj)
 {
-    if (ftMap_CheckGroundStopEdge(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnEdge(fighter_gobj) == FALSE)
     {
         ftCommonCatchCaptureSetStatusRelease(fighter_gobj);
     }

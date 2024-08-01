@@ -152,7 +152,7 @@ void ftCommonCliffClimbSlow1SetStatus(GObj *fighter_gobj)
 // 0x80145290
 void ftCommonCliffCommon2ProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftMap_SetStatusWaitOrFall);
+    ftStatusSetOnAnimEnd(fighter_gobj, mpCommonSetFighterWaitOrFall);
 }
 
 // 0x801452B4
@@ -204,11 +204,11 @@ void ftCommonCliffClimbCommon2ProcMap(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        ftMap_CheckGroundBreakSetFall(fighter_gobj);
+        mpCommonSetFighterFallOnGroundBreak(fighter_gobj);
     }
-    else if (ftMap_CheckAirLanding(fighter_gobj) != FALSE)
+    else if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
-        ftMap_SetGround(fp);
+        mpCommonSetFighterGround(fp);
     }
 }
 
@@ -219,11 +219,11 @@ void ftCommonCliffAttackEscape2ProcMap(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        ftMap_CheckGroundStopEdgeFall(fighter_gobj);
+        mpCommonSetFighterFallOnEdgeBreak(fighter_gobj);
     }
-    else if (ftMap_CheckAirLanding(fighter_gobj) != FALSE)
+    else if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
-        ftMap_SetGround(fp);
+        mpCommonSetFighterGround(fp);
     }
 }
 
@@ -236,7 +236,7 @@ void ftCommonCliffCommon2UpdateCollData(GObj *fighter_gobj)
 
     if (fp->attributes->cliff_status_ga[fp->status_vars.common.cliffmotion.status_id] == nMPKineticsGround)
     {
-        ftMap_SetGround(fp);
+        mpCommonSetFighterGround(fp);
     }
     if (fp->lr == nGMDirectionR)
     {

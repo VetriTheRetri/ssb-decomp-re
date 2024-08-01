@@ -436,12 +436,12 @@ void scTrainingMode_LoadSprites()
 // 8018DDB0
 void scTrainingMode_SetBackgroundSprite()
 {
-	gMPGroundData->wallpaper
+	gMPCollisionGroundData->wallpaper
 		= (void*)(rldm_get_file_external_force_heap(
 					  scTrainingMode_Files_BackgroundImageInfo
 						  [scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 							  .file_id,
-					  (void*)((uintptr_t)gMPGroundData->wallpaper - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind]))
+					  (void*)((uintptr_t)gMPCollisionGroundData->wallpaper - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind]))
 				  + scTrainingMode_Files_BackgroundImageInfo
 						[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 							.addr);
@@ -450,7 +450,7 @@ void scTrainingMode_SetBackgroundSprite()
 // 8018DE60
 void scTrainingMode_InitMiscVars()
 {
-	gMPGroundData->fog_color
+	gMPCollisionGroundData->fog_color
 		= scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 			  .fog_color;
 	ifCommonPlayerMagnifyMakeInterface();
@@ -1298,9 +1298,9 @@ void scTrainingMode_InitTrainingMenuAll()
 // 80190164
 void scTrainingMode_SetPlayDefaultMusicID()
 {
-	gMPMusicIDDefault = 0x2A;
-	auPlaySong(0, gMPMusicIDDefault);
-	gMPMusicIDCurrent = gMPMusicIDDefault;
+	gMPCollisionBGMDefault = 0x2A;
+	auPlaySong(0, gMPCollisionBGMDefault);
+	gMPCollisionBGMCurrent = gMPCollisionBGMDefault;
 }
 
 // 801901A0
@@ -1414,7 +1414,7 @@ void scTrainingMode_InitTrainingMode()
 void scTrainingMode_SetGeometryRenderLights(Gfx** display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRenderLightsDrawReflect(display_list, gMPLightAngleX, gMPLightAngleY);
+	ftRenderLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
 // 801905F4

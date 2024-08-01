@@ -203,7 +203,7 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
 // 0x80145ED8
 void ftCommonLightGetProcMap(GObj *fighter_gobj)
 {
-    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
         ftCommonLightGetProcDamage(fighter_gobj);
         ftCommonFallSetStatus(fighter_gobj);
@@ -215,7 +215,7 @@ void ftCommonHeavyGetProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
         if (fp->item_hold != NULL)
         {
@@ -230,7 +230,7 @@ void ftCommonHeavyThrowProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckGroundStopEdge(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnEdge(fighter_gobj) == FALSE)
     {
         if (fp->item_hold != NULL)
         {

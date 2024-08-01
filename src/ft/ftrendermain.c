@@ -1250,7 +1250,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
         if (fp->status_info.pl_kind != nFTPlayerKindDemo)
         {
-            ftRenderLightsDrawReflect(gDisplayListHead, gMPLightAngleX, gMPLightAngleY);
+            ftRenderLightsDrawReflect(gDisplayListHead, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
         }
         else ftRenderLightsDrawReflect(gDisplayListHead, func_ovl1_8039051C(), func_ovl1_80390528());
 

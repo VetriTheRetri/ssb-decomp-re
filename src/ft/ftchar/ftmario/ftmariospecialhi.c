@@ -114,12 +114,11 @@ void ftMarioSpecialHiProcMap(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsAir)
     {
-        if ((fp->command_vars.flags.flag1 == FALSE) || ((fp->phys_info.vel_air.y >= 0.0F)))
+        if ((fp->command_vars.flags.flag1 == 0) || ((fp->phys_info.vel_air.y >= 0.0F)))
         {
-            mpObjectProc_ProcFighterEnvCatch(fighter_gobj);
+            mpCommonCheckFighterProject(fighter_gobj);
         }
-
-        else if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftMarioSpecialHiCheckIgnorePass) != FALSE)
+        else if (mpCommonCheckFighterPassCliff(fighter_gobj, ftMarioSpecialHiCheckIgnorePass) != FALSE)
         {
             if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {
@@ -128,7 +127,7 @@ void ftMarioSpecialHiProcMap(GObj *fighter_gobj)
             else ftCommonLandingFallSpecialSetStatus(fighter_gobj, FALSE, FTMARIO_SUPERJUMP_LANDING_LAG);
         }
     }
-    else ftMap_CheckGroundStopEdgeFall(fighter_gobj);
+    else mpCommonSetFighterFallOnEdgeBreak(fighter_gobj);
 }
 
 // 0x80156418

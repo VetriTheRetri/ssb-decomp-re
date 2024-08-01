@@ -58,13 +58,13 @@ void ftNessSpecialNProcAccessory(GObj *fighter_gobj) // PK Fire setup
 // 0x80153AC0
 void ftNessSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftNessSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnEdge(fighter_gobj, ftNessSpecialNSwitchStatusAir);
 }
 
 // 0x80153AE4
 void ftNessSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftNessSpecialAirNSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftNessSpecialAirNSwitchStatusGround);
 }
 
 // 0x80153B08
@@ -72,7 +72,7 @@ void ftNessSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
 
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUS_FLAGS); // Action State Change
 
@@ -84,7 +84,7 @@ void ftNessSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
 
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUS_FLAGS); // Action State Change
 

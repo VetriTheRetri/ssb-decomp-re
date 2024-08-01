@@ -76,6 +76,6 @@ typedef struct mpGroundData
 
 } mpGroundData;
 
-extern mpGroundData* gMPGroundData; // TO DO: move this to the correct file
+extern mpGroundData* gMPCollisionGroundData; // TO DO: move this to the correct file
 
 #endif

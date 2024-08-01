@@ -57,25 +57,25 @@ void ftLinkSpecialAirNProcUpdate(GObj *fighter_gobj)
 // 0x801637C0
 void ftLinkSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftLinkSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftLinkSpecialNSwitchStatusAir);
 }
 
 // 0x801637E4
 void ftLinkSpecialNEmptyProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftLinkSpecialNEmptySwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftLinkSpecialNEmptySwitchStatusAir);
 }
 
 // 0x80163808
 void ftLinkSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftLinkSpecialAirNSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftLinkSpecialAirNSwitchStatusGround);
 }
 
 // 0x8016382C
 void ftLinkSpecialAirNEmptyProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftLinkSpecialAirNEmptySwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftLinkSpecialAirNEmptySwitchStatusGround);
 }
 
 // 0x80163850 - Check for Smash-B input and reset flag0
@@ -97,14 +97,14 @@ void ftLinkSpecialNProcStatus(GObj *fighter_gobj)
 // 0x801638AC
 void ftLinkSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftMap_SetAir(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterAir(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_MODELPART);
 }
 
 // 0x801638EC
 void ftLinkSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_MODELPART);
 }
 
@@ -113,7 +113,7 @@ void ftLinkSpecialNEmptySwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
     fp->is_special_interrupt = TRUE;
 }
@@ -123,7 +123,7 @@ void ftLinkSpecialAirNEmptySwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
     fp->is_special_interrupt = TRUE;
 }

@@ -28,7 +28,7 @@ void ftCommonShieldBreakDownSetStatus(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsAir)
     {
-        ftMap_SetGround(fp);
+        mpCommonSetFighterGround(fp);
     }
     status_id = (ftCommonDownBounceCheckUpOrDown(fighter_gobj) != 0) ? nFTCommonStatusShieldBreakDownD : nFTCommonStatusShieldBreakDownU;
 

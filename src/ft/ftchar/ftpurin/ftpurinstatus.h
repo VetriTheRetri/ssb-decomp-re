@@ -23,7 +23,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		ftCommonAttack100StartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 221 (0xDD): Attack100Loop
@@ -43,7 +43,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		ftCommonAttack100LoopProcUpdate,		// Proc Update
 		ftCommonAttack100LoopProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 222 (0xDE): Attack100End
@@ -63,7 +63,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		ftStatusWaitOnAnimEnd,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 223 (0xDF): JumpAerialF1
@@ -83,7 +83,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		ftCommonJumpAerialProcUpdate,			// Proc Update
 		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
 		ftCommonJumpAerialProcPhysics,		// Proc Physics
-		ftMap_CheckGroundCliffSetWaitOrLanding						// Proc Map
+		mpCommonProcFighterCliffWaitOrLanding						// Proc Map
 	},
 
 	// Status 224 (0xE0): JumpAerialF2
@@ -103,7 +103,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		ftCommonJumpAerialProcUpdate,			// Proc Update
 		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
 		ftCommonJumpAerialProcPhysics,		// Proc Physics
-		ftMap_CheckGroundCliffSetWaitOrLanding						// Proc Map
+		mpCommonProcFighterCliffWaitOrLanding						// Proc Map
 	},
 	
 	// Status 225 (0xE1): JumpAerialF3
@@ -123,7 +123,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		ftCommonJumpAerialProcUpdate,			// Proc Update
 		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
 		ftCommonJumpAerialProcPhysics,		// Proc Physics
-		ftMap_CheckGroundCliffSetWaitOrLanding						// Proc Map
+		mpCommonProcFighterCliffWaitOrLanding						// Proc Map
 	},
 
 	// Status 226 (0xE2): JumpAerialF4
@@ -143,7 +143,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		ftCommonJumpAerialProcUpdate,			// Proc Update
 		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
 		ftCommonJumpAerialProcPhysics,		// Proc Physics
-		ftMap_CheckGroundCliffSetWaitOrLanding						// Proc Map
+		mpCommonProcFighterCliffWaitOrLanding						// Proc Map
 	},
 
 	// Status 227 (0xE3): JumpAerialF5
@@ -163,7 +163,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		ftCommonJumpAerialProcUpdate,			// Proc Update
 		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
 		ftCommonJumpAerialProcPhysics,		// Proc Physics
-		ftMap_CheckGroundCliffSetWaitOrLanding						// Proc Map
+		mpCommonProcFighterCliffWaitOrLanding						// Proc Map
 	},
 
 	// Status 228 (0xE4): AppearR
@@ -183,7 +183,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 229 (0xE5): AppearL
@@ -203,7 +203,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 230 (0xE6): SpecialN

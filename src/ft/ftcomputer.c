@@ -3742,10 +3742,10 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
                     (
                         (
                             (func_ovl2_800F8FFC(&other_fp->joint[nFTPartsJointTopN]->translate.vec.f) != FALSE) &&
-                            (other_pos_x <= gMPEdgeBounds.d2.right) &&
-                            (gMPEdgeBounds.d2.left <= other_pos_x) &&
-                            (gMPEdgeBounds.d2.bottom <= other_pos_y) &&
-                            (other_pos_y < gMPGroundData->cam_bound_top)
+                            (other_pos_x <= gMPCollisionEdgeBounds.d2.right) &&
+                            (gMPCollisionEdgeBounds.d2.left <= other_pos_x) &&
+                            (gMPCollisionEdgeBounds.d2.bottom <= other_pos_y) &&
+                            (other_pos_y < gMPCollisionGroundData->cam_bound_top)
                         ) 
                         ||
                         (
@@ -4162,8 +4162,8 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             {
                 if
                 (
-                    (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x < (gMPEdgeBounds.d2.left + 500.0F)) || 
-                    (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x > (gMPEdgeBounds.d2.right - 500.0F))
+                    (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionEdgeBounds.d2.left + 500.0F)) || 
+                    (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.right - 500.0F))
                 )
                 {
                     switch (ft_comattack->input_kind)
@@ -4541,9 +4541,9 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
     {
         edge_offset = 0;
     }
-    line_ids = &gMPLineTypeGroups[nMPLineKindGround].line_id[0];
+    line_ids = &gMPCollisionLineGroups[nMPLineKindGround].line_id[0];
 
-    for (i = 0; i < gMPLineTypeGroups[nMPLineKindGround].line_count; i++)
+    for (i = 0; i < gMPCollisionLineGroups[nMPLineKindGround].line_count; i++)
     {
         if (mpCollisionCheckExistLineID(line_ids[i]) != FALSE)
         {
@@ -4635,9 +4635,9 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
     {
         edge_offset = 0;
     }
-    line_ids = &gMPLineTypeGroups[nMPLineKindGround].line_id[0];
+    line_ids = &gMPCollisionLineGroups[nMPLineKindGround].line_id[0];
 
-    for (i = 0; i < gMPLineTypeGroups[nMPLineKindGround].line_count; i++)
+    for (i = 0; i < gMPCollisionLineGroups[nMPLineKindGround].line_count; i++)
     {
         if (mpCollisionCheckExistLineID(line_ids[i]) != FALSE)
         {
@@ -4728,7 +4728,7 @@ void func_ovl3_801346D4(ftStruct *fp)
     {
         range = 0;
     }
-    if (pos.x > gMPEdgeBounds.d2.right)
+    if (pos.x > gMPCollisionEdgeBounds.d2.right)
     {
         if (fp->lr > 0)
         {
@@ -4740,7 +4740,7 @@ void func_ovl3_801346D4(ftStruct *fp)
         {
             range = 0.0F;
         }
-        if (((fp->jumps_used < fp->attributes->jumps_max) && ((pos.x - gMPEdgeBounds.d2.right) > 1500.0F)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.y + fp->phys_info.vel_air.y) < (ft_com->cliff_right_pos.y - range)))
+        if (((fp->jumps_used < fp->attributes->jumps_max) && ((pos.x - gMPCollisionEdgeBounds.d2.right) > 1500.0F)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.y + fp->phys_info.vel_air.y) < (ft_com->cliff_right_pos.y - range)))
         {
             ft_com->target_pos.y = pos.y + 1100.0F;
         }
@@ -4763,7 +4763,7 @@ void func_ovl3_801346D4(ftStruct *fp)
             (
                 (fp->jumps_used < fp->attributes->jumps_max) && 
                 (
-                    (gMPEdgeBounds.d2.left - pos.x) > 1500.0F
+                    (gMPCollisionEdgeBounds.d2.left - pos.x) > 1500.0F
                 )
             ) 
             || 
@@ -4787,7 +4787,7 @@ void func_ovl3_80134964(ftStruct *fp)
     ft_com->target_line_id = -1;
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-    if (!(ft_com->is_within_vertical_bounds) && (pos.x <= gMPEdgeBounds.d2.right) && (pos.x >= gMPEdgeBounds.d2.left))
+    if (!(ft_com->is_within_vertical_bounds) && (pos.x <= gMPCollisionEdgeBounds.d2.right) && (pos.x >= gMPCollisionEdgeBounds.d2.left))
     {
         if (fp->phys_info.vel_air.x < 0.0F)
         {
@@ -4818,7 +4818,7 @@ void func_ovl3_80134964(ftStruct *fp)
         }
         else ft_com->target_pos.x = -500.0F;
 
-        if ((pos.y + 1100.0F) > gMPGroundData->cam_bound_top)
+        if ((pos.y + 1100.0F) > gMPCollisionGroundData->cam_bound_top)
         {
             ft_com->target_pos.y = pos.y;
         }
@@ -5078,7 +5078,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                 }
                 ft_com->ftcom_flags_0x4A_b0 = FALSE;
 
-                if ((fp->joint[nFTPartsJointTopN]->translate.vec.f.y < (gMPGroundData->blastzone_top - 4000.0F)) && (fp->phys_info.vel_air.y < 0.0F))
+                if ((fp->joint[nFTPartsJointTopN]->translate.vec.f.y < (gMPCollisionGroundData->blastzone_top - 4000.0F)) && (fp->phys_info.vel_air.y < 0.0F))
                 {
                     if (fp->jumps_used < fp->attributes->jumps_max)
                     {
@@ -5566,7 +5566,7 @@ sb32 ftComputerCheckFindItem(ftStruct *fp)
             f32 it_pos_x = DObjGetStruct(item_gobj)->translate.vec.f.x;
             f32 it_pos_y = DObjGetStruct(item_gobj)->translate.vec.f.y;
 
-            if ((it_pos_x <= gMPEdgeBounds.d2.right) && (it_pos_x >= gMPEdgeBounds.d2.left) && (it_pos_y >= gMPEdgeBounds.d2.bottom) && (it_pos_y < gMPGroundData->cam_bound_top))
+            if ((it_pos_x <= gMPCollisionEdgeBounds.d2.right) && (it_pos_x >= gMPCollisionEdgeBounds.d2.left) && (it_pos_y >= gMPCollisionEdgeBounds.d2.bottom) && (it_pos_y < gMPCollisionGroundData->cam_bound_top))
             {
                 f32 current_dist = SQUARE(ft_pos_x - it_pos_x) + SQUARE(ft_pos_y - it_pos_y);
 
@@ -5685,7 +5685,7 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
 
             break;
         }
-        else if ((target_fp->status_info.status_id >= nFTCommonStatusWait) && (predict_x <= gMPEdgeBounds.d2.right) && (predict_x >= gMPEdgeBounds.d2.left) && (predict_y >= gMPEdgeBounds.d2.bottom))
+        else if ((target_fp->status_info.status_id >= nFTCommonStatusWait) && (predict_x <= gMPCollisionEdgeBounds.d2.right) && (predict_x >= gMPCollisionEdgeBounds.d2.left) && (predict_y >= gMPCollisionEdgeBounds.d2.bottom))
         {
             current_dist = SQUARE(this_pos_x - predict_x) + SQUARE(this_pos_y - predict_y);
 
@@ -7857,9 +7857,9 @@ void ftComputerSetupAll(GObj *fighter_gobj)
 
         ft_com->cliff_left_pos.y = ft_com->cliff_right_pos.y = 9999.9F;
 
-        line_ids = gMPLineTypeGroups[nMPLineKindGround].line_id;
+        line_ids = gMPCollisionLineGroups[nMPLineKindGround].line_id;
 
-        for (i = 0; i < gMPLineTypeGroups[nMPLineKindGround].line_count; i++)
+        for (i = 0; i < gMPCollisionLineGroups[nMPLineKindGround].line_count; i++)
         {
             if ((mpCollisionCheckExistLineID(line_ids[i]) != FALSE) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) == FALSE))
             {
@@ -7875,7 +7875,7 @@ void ftComputerSetupAll(GObj *fighter_gobj)
                         ft_com->cliff_left_pos.y = edge_pos.y;
                     }
                 }
-                else if (((edge_pos.x - gMPEdgeBounds.d2.left) < 500.0F) && (ft_com->cliff_left_pos.y > edge_pos.y))
+                else if (((edge_pos.x - gMPCollisionEdgeBounds.d2.left) < 500.0F) && (ft_com->cliff_left_pos.y > edge_pos.y))
                 {
                     ft_com->cliff_left_pos.x = edge_pos.x;
                     ft_com->cliff_left_pos.y = edge_pos.y;
@@ -7892,7 +7892,7 @@ void ftComputerSetupAll(GObj *fighter_gobj)
                         ft_com->cliff_right_pos.y = edge_pos.y;
                     }
                 }
-                else if (((gMPEdgeBounds.d2.right - edge_pos.x) < 500.0F) && (ft_com->cliff_right_pos.y > edge_pos.y))
+                else if (((gMPCollisionEdgeBounds.d2.right - edge_pos.x) < 500.0F) && (ft_com->cliff_right_pos.y > edge_pos.y))
                 {
                     ft_com->cliff_right_pos.x = edge_pos.x;
                     ft_com->cliff_right_pos.y = edge_pos.y;

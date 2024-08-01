@@ -2336,13 +2336,13 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
     ftCommonDeadCheckInterruptCommon(fighter_gobj);
 
-    if ((fp->coll_data.pos_curr.y >= gMPGroundData->altitude_warning) && (topn_translate->y < gMPGroundData->altitude_warning) && (fp->ft_kind != nFTKindBoss))
+    if ((fp->coll_data.pos_curr.y >= gMPCollisionGroundData->altitude_warning) && (topn_translate->y < gMPCollisionGroundData->altitude_warning) && (fp->ft_kind != nFTKindBoss))
     {
         func_800269C0_275C0(nGMSoundFGMDeadPortalLw);
     }
     if (fp->publicity_knockback != 0)
     {
-        if ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > (gMPEdgeBounds.d2.left + 450.0F)) && (fp->joint[nFTPartsJointTopN]->translate.vec.f.x < (gMPEdgeBounds.d2.right - 450.0F)))
+        if ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.left + 450.0F)) && (fp->joint[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionEdgeBounds.d2.right - 450.0F)))
         {
             fp->publicity_knockback = 0.0F;
         }
@@ -4555,7 +4555,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
                 s32 unused;
                 Mtx44f mtx;
 
-                func_ovl0_800C9A38(mtx, fp->joint[fp->attributes->joint_itemhold_light]);
+                func_ovl0_800C9A38(mtx, fp->joint[fp->attributes->joint_itemlight_id]);
 
                 fp->afterimage.desc[fp->afterimage.desc_index].translate_x = mtx[3][0];
                 fp->afterimage.desc[fp->afterimage.desc_index].translate_y = mtx[3][1];
@@ -5304,7 +5304,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
         fp->proc_interrupt = status_struct[status_struct_id].proc_interrupt;
         fp->proc_physics = status_struct[status_struct_id].proc_physics;
         fp->proc_map = status_struct[status_struct_id].proc_map;
-        fp->proc_slope = ftMap_UpdateSlopeContour;
+        fp->proc_slope = mpCommonUpdateFighterSlopeContour;
         fp->proc_accessory = NULL;
         fp->proc_damage = NULL;
         fp->proc_trap = NULL;

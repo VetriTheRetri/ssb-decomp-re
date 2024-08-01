@@ -17,19 +17,19 @@
 // 0x80151710
 void ftPurinSpecialLwProcMap(GObj *fighter_gobj)
 {
-    ftMap_ProcFighterAirProcMap(fighter_gobj, ftPurinSpecialLwSwitchStatusAir);
+    mpCommonProcFighterOnGround(fighter_gobj, ftPurinSpecialLwSwitchStatusAir);
 }
 
 // 0x80151734
 void ftPurinSpecialAirLwProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPurinSpecialAirLwSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftPurinSpecialAirLwSwitchStatusGround);
 }
 
 // 0x80151758
 void ftPurinSpecialAirLwSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialLw, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALLW_STATUS_FLAGS);
 }
 
@@ -38,7 +38,7 @@ void ftPurinSpecialLwSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALLW_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 }

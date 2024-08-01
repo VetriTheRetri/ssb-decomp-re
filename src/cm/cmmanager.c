@@ -78,19 +78,19 @@ u32 cmManagerGetCamBoundsMask(Vec3f *pos)
 {
     u32 bounds = 0;
 
-    if (pos->x < gMPGroundData->cam_bound_left)
+    if (pos->x < gMPCollisionGroundData->cam_bound_left)
     {
         bounds |= CAMERA_FLAG_BOUND_LEFT;
     }
-    if (pos->x > gMPGroundData->cam_bound_right)
+    if (pos->x > gMPCollisionGroundData->cam_bound_right)
     {
         bounds |= CAMERA_FLAG_BOUND_RIGHT;
     }
-    if (pos->y < gMPGroundData->cam_bound_bottom)
+    if (pos->y < gMPCollisionGroundData->cam_bound_bottom)
     {
         bounds |= CAMERA_FLAG_BOUND_BOTTOM;
     }
-    if (pos->y > gMPGroundData->cam_bound_top)
+    if (pos->y > gMPCollisionGroundData->cam_bound_top)
     {
         bounds |= CAMERA_FLAG_BOUND_TOP;
     }
@@ -108,19 +108,19 @@ void cmManagerSetCameraBoundsPos(Vec3f *pos)
         {
             if (bounds & CAMERA_FLAG_BOUND_LEFT)
             {
-                pos->x = gMPGroundData->cam_bound_left;
+                pos->x = gMPCollisionGroundData->cam_bound_left;
             }
             else if (bounds & CAMERA_FLAG_BOUND_RIGHT)
             {
-                pos->x = gMPGroundData->cam_bound_right;
+                pos->x = gMPCollisionGroundData->cam_bound_right;
             }
             else if (bounds & CAMERA_FLAG_BOUND_BOTTOM)
             {
-                pos->y = gMPGroundData->cam_bound_bottom;
+                pos->y = gMPCollisionGroundData->cam_bound_bottom;
             }
             else if (bounds & CAMERA_FLAG_BOUND_TOP)
             {
-                pos->y = gMPGroundData->cam_bound_top;
+                pos->y = gMPCollisionGroundData->cam_bound_top;
             }
         }
         else break;
@@ -132,19 +132,19 @@ u32 cmManagerGetCamTeamBoundsMask(Vec3f *pos)
 {
     u32 bounds = 0;
 
-    if (pos->x < gMPGroundData->cam_bound_team_left)
+    if (pos->x < gMPCollisionGroundData->cam_bound_team_left)
     {
         bounds |= CAMERA_FLAG_BOUND_LEFT;
     }
-    if (pos->x > gMPGroundData->cam_bound_team_right)
+    if (pos->x > gMPCollisionGroundData->cam_bound_team_right)
     {
         bounds |= CAMERA_FLAG_BOUND_RIGHT;
     }
-    if (pos->y < gMPGroundData->cam_bound_team_bottom)
+    if (pos->y < gMPCollisionGroundData->cam_bound_team_bottom)
     {
         bounds |= CAMERA_FLAG_BOUND_BOTTOM;
     }
-    if (pos->y > gMPGroundData->cam_bound_team_top)
+    if (pos->y > gMPCollisionGroundData->cam_bound_team_top)
     {
         bounds |= CAMERA_FLAG_BOUND_TOP;
     }
@@ -162,19 +162,19 @@ void cmManagerSetCameraTeamBoundsPos(Vec3f *pos)
         {
             if (bounds & CAMERA_FLAG_BOUND_LEFT)
             {
-                pos->x = gMPGroundData->cam_bound_team_left;
+                pos->x = gMPCollisionGroundData->cam_bound_team_left;
             }
             else if (bounds & CAMERA_FLAG_BOUND_RIGHT)
             {
-                pos->x = gMPGroundData->cam_bound_team_right;
+                pos->x = gMPCollisionGroundData->cam_bound_team_right;
             }
             else if (bounds & CAMERA_FLAG_BOUND_BOTTOM)
             {
-                pos->y = gMPGroundData->cam_bound_team_bottom;
+                pos->y = gMPCollisionGroundData->cam_bound_team_bottom;
             }
             else if (bounds & CAMERA_FLAG_BOUND_TOP)
             {
-                pos->y = gMPGroundData->cam_bound_team_top;
+                pos->y = gMPCollisionGroundData->cam_bound_team_top;
             }
         }
         else break;
@@ -184,8 +184,8 @@ void cmManagerSetCameraTeamBoundsPos(Vec3f *pos)
 // 0x8010BB08
 void cmManagerSetCameraDeadUpStarPos(Vec3f *pos)
 {
-    pos->x = (gMPGroundData->cam_bound_top * pos->x) / gMPGroundData->blastzone_top;
-    pos->y = gMPGroundData->cam_bound_top;
+    pos->x = (gMPCollisionGroundData->cam_bound_top * pos->x) / gMPCollisionGroundData->blastzone_top;
+    pos->y = gMPCollisionGroundData->cam_bound_top;
 }
 
 // 0x8010BB58
@@ -493,7 +493,7 @@ void cmManagerGetAdjustAtAngle(Vec3f *at, Vec3f *vec, f32 x, f32 y)
     f32 angle_x;
     f32 angle_y;
 
-    angle_x = gCMManagerPauseCameraEyeX + y + gMPGroundData->light_angle.z;
+    angle_x = gCMManagerPauseCameraEyeX + y + gMPCollisionGroundData->light_angle.z;
 
     vec->y = -bitmap_sinf(angle_x);
     vec->z = bitmap_cosf(angle_x);

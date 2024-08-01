@@ -37,19 +37,19 @@ void ftPurinSpecialHiProcUpdate(GObj *fighter_gobj)
 // 0x801515CC
 void ftPurinSpecialHiProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftPurinSpecialHiSwitchStatusAir);
+    mpCommonProcFighterOnEdge(fighter_gobj, ftPurinSpecialHiSwitchStatusAir);
 }
 
 // 0x801515F0
 void ftPurinSpecialAirHiProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPurinSpecialAirHiSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftPurinSpecialAirHiSwitchStatusGround);
 }
 
 // 0x80151614
 void ftPurinSpecialAirHiSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialHi, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALHI_STATUS_FLAGS);
 }
 
@@ -58,7 +58,7 @@ void ftPurinSpecialHiSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirHi, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALHI_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 }

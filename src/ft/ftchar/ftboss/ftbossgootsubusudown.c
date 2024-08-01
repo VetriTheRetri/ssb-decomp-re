@@ -9,7 +9,7 @@
 // 0x80159E20
 void ftBossGootsubusuDownProcMap(GObj *fighter_gobj)
 {
-    if (ftMap_CheckAirLanding(fighter_gobj) != FALSE)
+    if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
         ftBossGootsubusuEndSetStatus(fighter_gobj);
     }

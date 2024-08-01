@@ -311,7 +311,7 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 	GObj* reflect_gobj;				// GObj that reflected this item
 	gmStatFlags reflect_stat_flags; // Status flags of GObj reflecting this
 									// item (e.g. is_smash_attack,
-									// is_ga, is_projectile, etc.)
+									// ga, is_projectile, etc.)
 	u16 reflect_stat_count;			// Status update count at the time the item is
 									// reflected?
 

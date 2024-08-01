@@ -23,7 +23,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 221 (0xDD): AppearL
@@ -43,7 +43,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 222 (0xDE): SpecialNStart
@@ -143,7 +143,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		ftDonkeySpecialNEndProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 227 (0xE3): SpecialAirNEnd
@@ -183,7 +183,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		ftDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 229 (0xE5): SpecialAirNFull
@@ -263,7 +263,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		ftDonkeySpecialLwStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 233 (0xE9): SpecialLwLoop
@@ -283,7 +283,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		ftDonkeySpecialLwLoopProcUpdate,		// Proc Update
 		ftDonkeySpecialLwLoopProcInterrupt,	// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 234 (0xEA): SpecialLwEnd
@@ -303,7 +303,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		ftStatusWaitOnAnimEnd,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
-		ftMap_CheckGroundStopEdgeFall			// Proc Map
+		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
 	// Status 235 (0xEB): ThrowFWait
@@ -483,7 +483,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		ftDonkeyThrowFDamageProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonDamageCommonProcPhysics,		// Proc Physics
-		ftMap_UpdateFighterGroundOrAir			// Proc Map
+		mpCommonUpdateFighterKinetics			// Proc Map
 	},
 
 	// Status 244 (0xF4): ThrowFF
@@ -543,7 +543,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonItemThrowProcPhysics,			// Proc Physics
-		ftMap_UpdateFighterGroundOrAir			// Proc Map
+		mpCommonUpdateFighterKinetics			// Proc Map
 	},
 
 	// Status 247 (0xF7): HeavyThrowB
@@ -563,7 +563,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonItemThrowProcPhysics,			// Proc Physics
-		ftMap_UpdateFighterGroundOrAir			// Proc Map
+		mpCommonUpdateFighterKinetics			// Proc Map
 	},
 
 	// Status 248 (0xF8): HeavyThrowF4
@@ -583,7 +583,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonItemThrowProcPhysics,			// Proc Physics
-		ftMap_UpdateFighterGroundOrAir			// Proc Map
+		mpCommonUpdateFighterKinetics			// Proc Map
 	},
 
 	// Status 249 (0xF9): HeavyThrowB4
@@ -603,7 +603,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonItemThrowProcPhysics,			// Proc Physics
-		ftMap_UpdateFighterGroundOrAir			// Proc Map
+		mpCommonUpdateFighterKinetics			// Proc Map
 	}
 };
 

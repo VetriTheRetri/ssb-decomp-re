@@ -17,7 +17,7 @@ void ftCommonHammerFallProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckAirLanding(fighter_gobj) != FALSE)
+    if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
         if (fp->phys_info.vel_air.y > FTCOMMON_HAMMER_SKIPLANDING_VEL_Y_MAX)
         {
@@ -34,7 +34,7 @@ void ftCommonHammerFallSetStatus(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        ftMap_SetAir(fp);
+        mpCommonSetFighterAir(fp);
     }
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusHammerFall, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
     ftHammerSetColAnim(fighter_gobj);
@@ -62,7 +62,7 @@ void ftCommonHammerFallSetStatusJump(GObj *fighter_gobj)
     ftAttributes *attributes = fp->attributes;
     s32 vel_x, vel_y;
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusHammerFall, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
     ftHammerSetColAnim(fighter_gobj);
 

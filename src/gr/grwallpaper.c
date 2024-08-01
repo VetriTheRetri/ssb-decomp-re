@@ -147,7 +147,7 @@ void grWallpaperCommonMakeSObj(void)
         0, 
         GOBJ_DLLINKORDER_DEFAULT, 
         -1, 
-        gMPGroundData->wallpaper, 
+        gMPCollisionGroundData->wallpaper, 
         1, 
         grWallpaperCommonUpdatePersp, 
         3
@@ -177,7 +177,7 @@ void grWallpaperStaticMakeSObj(void)
         0, 
         GOBJ_DLLINKORDER_DEFAULT, 
         -1, 
-        gMPGroundData->wallpaper, 
+        gMPCollisionGroundData->wallpaper, 
         1, 
         NULL, 
         3
@@ -240,7 +240,7 @@ void grWallpaperSectorMakeSObj(void)
 
     omAddGObjRenderProc(bg_gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    bg_sobj = gcAppendSObjWithSprite(bg_gobj, gMPGroundData->wallpaper);
+    bg_sobj = gcAppendSObjWithSprite(bg_gobj, gMPCollisionGroundData->wallpaper);
 
     bg_sobj->pos.x = 10.0F;
     bg_sobj->pos.y = 10.0F;

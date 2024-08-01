@@ -101,7 +101,7 @@ void ftKirbyCopyCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
 // 0x80160A40
 void ftKirbyCopyCaptainSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
 }
 
@@ -110,7 +110,7 @@ void ftKirbyCopyCaptainSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
     ftPhysics_ClampAirVelXMax(fp);
 }
@@ -118,13 +118,13 @@ void ftKirbyCopyCaptainSpecialNSwitchStatusAir(GObj *fighter_gobj)
 // 0x80160ACC
 void ftKirbyCopyCaptainSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftKirbyCopyCaptainSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnEdge(fighter_gobj, ftKirbyCopyCaptainSpecialNSwitchStatusAir);
 }
 
 // 0x80160AF0
 void ftKirbyCopyCaptainSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirbyCopyCaptainSpecialAirNSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftKirbyCopyCaptainSpecialAirNSwitchStatusGround);
 }
 
 // 0x80160B14

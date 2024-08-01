@@ -216,7 +216,7 @@ typedef struct grCommonGroundVarsYamabuki
 	GObj* gate_gobj;
 	Vec3f gate_pos;
 	u8 gate_status;
-	ub8 is_gate_noentry;
+	ub8 gate_noentry;
 	u16 monster_wait;
 	u16 gate_wait;
 	u8 monster_id_prev;

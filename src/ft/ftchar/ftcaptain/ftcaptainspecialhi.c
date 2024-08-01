@@ -107,15 +107,15 @@ void ftCaptainSpecialHiProcMap(GObj *fighter_gobj)
     {
         if (fp->command_vars.flags.flag2 == 0)
         {
-            ftMap_CheckGroundCliffSetWaitOrLanding(fighter_gobj);
+            mpCommonProcFighterCliffWaitOrLanding(fighter_gobj);
         }
         else
         {
-            ftMap_CheckGroundEnvCatch(fighter_gobj);
+            mpCommonProcFighterProject(fighter_gobj);
             fp->command_vars.flags.flag2--;
         }
     }
-    else if ((mpObjectProc_ProcFighterCeilHeavyCliff(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK))
+    else if ((mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK))
     {
         ftCommonCliffCatchSetStatus(fighter_gobj);
     }
@@ -143,7 +143,7 @@ void ftCaptainSpecialHiSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
 
     fp->proc_status = ftCaptainSpecialHiProcStatus;
 

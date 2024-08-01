@@ -54,7 +54,7 @@ void ftCommonThrownProcMap(GObj *fighter_gobj)
             return;
         }
     }
-    mpObjectProc_SetFighterProjectGroundID(fighter_gobj);
+    mpCommonSetFighterProjectGround(fighter_gobj);
 }
 
 // 0x8014AC0C

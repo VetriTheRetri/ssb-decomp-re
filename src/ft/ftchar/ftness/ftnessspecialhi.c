@@ -147,19 +147,19 @@ void ftNessSpecialAirHiProcPhysics(GObj *fighter_gobj)
 // 0x80153EF8
 void ftNessSpecialHiStartProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftNessSpecialHiStartSwitchStatusAir);
+    mpCommonProcFighterOnEdge(fighter_gobj, ftNessSpecialHiStartSwitchStatusAir);
 }
 
 // 0x80153F1C
 void ftNessSpecialAirHiStartProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftNessSpecialAirHiStartSwitchStatusGround);
+    mpCommonProcFighterCliff(fighter_gobj, ftNessSpecialAirHiStartSwitchStatusGround);
 }
 
 // 0x80153F40
 void ftNessSpecialAirHiStartSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialHiStart, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALHISTART_STATUS_FLAGS);
 }
 
@@ -168,7 +168,7 @@ void ftNessSpecialHiStartSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirHiStart, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALHISTART_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 }
@@ -265,13 +265,13 @@ void ftNessSpecialAirHiHoldProcUpdate(GObj *fighter_gobj)
 // 0x801541EC
 void ftNessSpecialHiHoldProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftNessSpecialHiHoldSwitchStatusAir);
+    mpCommonProcFighterOnEdge(fighter_gobj, ftNessSpecialHiHoldSwitchStatusAir);
 }
 
 // 0x80154210
 void ftNessSpecialAirHiHoldProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftNessSpecialAirHiHoldSwitchStatusGround);
+    mpCommonProcFighterCliff(fighter_gobj, ftNessSpecialAirHiHoldSwitchStatusGround);
 }
 
 // 0x80154234
@@ -291,7 +291,7 @@ void ftNessSpecialHiSetPKThunderDestroy(GObj *fighter_gobj) // Unused
 // 0x80154268
 void ftNessSpecialAirHiHoldSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialHiHold, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALHIHOLD_STATUS_FLAGS);
 }
 
@@ -300,7 +300,7 @@ void ftNessSpecialHiHoldSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirHiHold, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALHIHOLD_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 }
@@ -347,19 +347,19 @@ void ftNessSpecialAirHiEndProcUpdate(GObj *fighter_gobj)
 // 0x80154438
 void ftNessSpecialHiEndProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftNessSpecialHiEndSwitchStatusAir);
+    mpCommonProcFighterOnEdge(fighter_gobj, ftNessSpecialHiEndSwitchStatusAir);
 }
 
 // 0x8015445C
 void ftNessSpecialAirHiEndProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterCliffProcMap(fighter_gobj, ftNessSpecialAirHiEndSwitchStatusGround);
+    mpCommonProcFighterCliff(fighter_gobj, ftNessSpecialAirHiEndSwitchStatusGround);
 }
 
 // 0x80154480
 void ftNessSpecialAirHiEndSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialHiEnd, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALHIEND_STATUS_FLAGS);
 }
 
@@ -368,7 +368,7 @@ void ftNessSpecialHiEndSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirHiEnd, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALHIEND_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 }
@@ -544,11 +544,11 @@ void ftNessJibakuProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftMap_CheckGroundStanding(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
         if (fp->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
         {
-            ftMap_SetAir(fp);
+            mpCommonSetFighterAir(fp);
             ftNessSpecialAirHiEndSetStatus(fighter_gobj);
         }
         else ftNessJibakuSwitchStatusAir(fighter_gobj);
@@ -567,7 +567,7 @@ void ftNessJibakuAirProcMap(GObj *fighter_gobj)
     f32 unused;
     Vec3f pos;
 
-    if (mpObjectProc_ProcFighterPassCliff(fighter_gobj, ftNessSpecialHiCheckIgnorePass) != FALSE)
+    if (mpCommonCheckFighterPassCliff(fighter_gobj, ftNessSpecialHiCheckIgnorePass) != FALSE)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
@@ -578,7 +578,7 @@ void ftNessJibakuAirProcMap(GObj *fighter_gobj)
             fp->phys_info.vel_air.x = 0.0F;
             fp->phys_info.vel_air.y = 0.0F;
 
-            ftMap_SetGround(fp);
+            mpCommonSetFighterGround(fp);
             ftCommonDownBounceSetStatus(fighter_gobj);
         }
         else ftNessJibakuAirSwitchStatusGround(fighter_gobj);
@@ -628,7 +628,7 @@ void ftNessJibakuAirSwitchStatusGround(GObj *fighter_gobj)
 {
     f32 frame_begin;
 
-    ftMap_SetGround(ftGetStruct(fighter_gobj));
+    mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
 
     frame_begin = fighter_gobj->anim_frame;
 
@@ -645,7 +645,7 @@ void ftNessJibakuSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 frame_begin;
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
 
     frame_begin = fighter_gobj->anim_frame;
 
@@ -708,7 +708,7 @@ void ftNessJibakuSetStatus(GObj *fighter_gobj)
     return;  
    
 setair:
-    ftMap_SetAir(fp);       
+    mpCommonSetFighterAir(fp);       
     ftNessJibakuAirSetStatus(fighter_gobj);       
     return;
     
@@ -750,7 +750,7 @@ void ftNessJibakuAirBoundProcMap(GObj *fighter_gobj)
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
-    if (mpObjectProc_ProcFighterCliff(fighter_gobj) != FALSE)
+    if (mpCommonCheckFighterCliff(fighter_gobj) != FALSE)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {
@@ -758,7 +758,7 @@ void ftNessJibakuAirBoundProcMap(GObj *fighter_gobj)
         }
         else
         {
-            ftMap_SetGround(fp);
+            mpCommonSetFighterGround(fp);
             ftCommonDownBounceSetStatus(fighter_gobj);
         }
     }

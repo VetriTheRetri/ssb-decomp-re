@@ -44,13 +44,13 @@ void ftPikachuSpecialNProcAccessory(GObj *fighter_gobj)
 // 0x80151C14
 void ftPikachuSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftPikachuSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnEdge(fighter_gobj, ftPikachuSpecialNSwitchStatusAir);
 }
 
 // 0x80151C38
 void ftPikachuSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftPikachuSpecialAirNSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftPikachuSpecialAirNSwitchStatusGround);
 }
 
 // 0x80151C5C
@@ -58,7 +58,7 @@ void ftPikachuSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALN_STATUS_FLAGS);
 
     fp->proc_accessory = ftPikachuSpecialNProcAccessory;
@@ -69,7 +69,7 @@ void ftPikachuSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALN_STATUS_FLAGS);
     ftPhysics_ClampAirVelXMax(fp);
 

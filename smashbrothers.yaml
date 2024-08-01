@@ -435,8 +435,11 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Common object map collisions
+      - [0x059020, c, mp/mpcommon]
+      - [0x05A8E0, pad, pad0x05A8E0]
     # Fighter main file
-      - [0x5A8F0, c, ft/ftmain]
+      - [0x05A8F0, c, ft/ftmain]
       - [0x0632C0, pad, pad0x0632C0]
     # Parameter manager for (mainly) fighters
       - [0x0632D0, c, ft/ftparam]
@@ -537,6 +540,8 @@ segments:
 
     # ovl2 read-only data
       - [0x0AB250, rodata, ovl2]
+    # Common object map collisions
+      - [0x0AB300, .rodata, mp/mpcommon]
     # Fighter main file
       - [0x0AB380, .rodata, ft/ftmain]
     # Parameter update for (mainly) fighters

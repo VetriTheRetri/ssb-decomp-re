@@ -22,8 +22,8 @@ extern intptr_t lGRBonus3BumpersAnimJoint;          // 0x00000110
 // 0x8010B4D0
 void grBonus3InitHeaders(void)
 {
-    gGRCommonStruct.bonus3.map_head = (void*) ((uintptr_t)gMPGroundData->map_nodes - (intptr_t)&lGRBonus3MapHead);
-    gGRCommonStruct.bonus3.item_head = (void*) ((uintptr_t)gMPGroundData - (intptr_t)&lGRBonus3ItemHead);
+    gGRCommonStruct.bonus3.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRBonus3MapHead);
+    gGRCommonStruct.bonus3.item_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRBonus3ItemHead);
 }
 
 // 0x8010B508

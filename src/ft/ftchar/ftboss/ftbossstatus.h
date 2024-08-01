@@ -23,7 +23,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		NULL,									// Proc Update
 		ftBossDefaultProcInterrupt,				// Proc Interrupt
 		NULL,									// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 221 (0xDD): Wait
@@ -43,7 +43,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		NULL,									// Proc Update
 		ftBossWaitProcInterrupt,				// Proc Interrupt
 		ftBossWaitProcPhysics,					// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 222 (0xDE): Move
@@ -83,7 +83,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossHippatakuProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 224 (0xE0): Harau
@@ -103,7 +103,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossHarauProcUpdate,					// Proc Update
 		NULL,									// Proc Interrupt
 		ftBossHarauProcPhysics,					// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 225 (0xE1): Okuhikouki1
@@ -123,7 +123,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossOkuhikouki1ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 226 (0xE2): Okuhikouki2
@@ -143,7 +143,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossOkuhikouki2ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftBossOkuhikouki2ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 227 (0xE3): Okuhikouki3
@@ -163,7 +163,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossOkuhikouki3ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 228 (0xE4): Walk
@@ -223,7 +223,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossWalkWaitProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 231 (0xE7): WalkShoot
@@ -243,7 +243,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossWalkShootProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 232 (0xE8): GootsubusuUp
@@ -303,7 +303,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossGootsubusuEndProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 235 (0xEB): GootsubusuDown
@@ -343,7 +343,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossTsutsuku1ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 237 (0xED): Tsutsuku3
@@ -363,7 +363,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossTsutsuku3ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 238 (0xEE): Tsutsuku2
@@ -383,7 +383,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		ftBossTsutsuku2ProcPhysics,				// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 239 (0xEF): Drill
@@ -423,7 +423,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossOkukoukiProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 241 (0xF1): Yubideppou1
@@ -443,7 +443,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossYubideppou1ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 242 (0xF2): Yubideppou3
@@ -463,7 +463,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossYubideppou3ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftBossYubideppou3ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 243 (0xF3): Yubideppou2
@@ -483,7 +483,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		ftBossYubideppou2ProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 244 (0xF4): Okupunch1
@@ -503,7 +503,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossOkupunch1ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNYZ,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 245 (0xF5): Okupunch2
@@ -523,7 +523,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossOkupunch2ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftBossOkupunch2ProcPhysics,				// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 246 (0xF6): Okupunch3
@@ -543,7 +543,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossOkupunch3ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNYZ,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 247 (0xF7): Okutsubushi
@@ -563,7 +563,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossOkutsubushiProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftBossOkutsubushiProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 248 (0xF8): OkutsubushiStart
@@ -583,7 +583,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftBossOkutsubushiStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNYZ,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 249 (0xF9): DeadLeft
@@ -623,7 +623,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		ftBossDeadCenterProcPhysics,			// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
 	// Status 251 (0xFB): DeadRight
@@ -663,7 +663,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftBossAppearProcPhysics,				// Proc Physics
-		ftMap_UpdateProjectGroundID				// Proc Map
+		mpCommonUpdateFighterProjectGround				// Proc Map
 	}
 };
 

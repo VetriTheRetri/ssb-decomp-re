@@ -111,7 +111,7 @@ void ftCommonDownBounceSetStatus(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsAir)
     {
-        ftMap_SetGround(fp);
+        mpCommonSetFighterGround(fp);
     }
     if (ftCommonDownBounceCheckUpOrDown(fighter_gobj) != 0)
     {

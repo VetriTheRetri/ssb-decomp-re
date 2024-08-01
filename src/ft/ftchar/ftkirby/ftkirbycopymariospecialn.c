@@ -19,7 +19,7 @@
 // 0x801569B0
 void ftKirbyCopyMarioSpecialNProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftMap_SetStatusWaitOrFall);
+    ftStatusSetOnAnimEnd(fighter_gobj, mpCommonSetFighterWaitOrFall);
 }
 
 // 0x801569D4
@@ -65,13 +65,13 @@ void ftKirbyCopyMarioSpecialNProcAccessory(GObj *fighter_gobj)
 // 0x80156A74
 void ftKirbyCopyMarioSpecialNProcMap(GObj *fighter_gobj)
 {
-    ftMap_CheckGroundBreakEdgeProcMap(fighter_gobj, ftKirbyCopyMarioSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnEdge(fighter_gobj, ftKirbyCopyMarioSpecialNSwitchStatusAir);
 }
 
 // 0x80156A98
 void ftKirbyCopyMarioSpecialAirNProcMap(GObj *fighter_gobj)
 {
-    mpObjectProc_ProcFighterGroundProcMap(fighter_gobj, ftKirbyCopyMarioSpecialAirNSwitchStatusGround);
+    mpCommonProcFighterLanding(fighter_gobj, ftKirbyCopyMarioSpecialAirNSwitchStatusGround);
 }
 
 // 0x80156ABC
@@ -79,7 +79,7 @@ void ftKirbyCopyMarioSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetGround(fp);
+    mpCommonSetFighterGround(fp);
 
     ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, nFTKirbyStatusCopyMarioSpecialN, nFTKirbyStatusCopyLuigiSpecialN), fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
 
@@ -91,7 +91,7 @@ void ftKirbyCopyMarioSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMap_SetAir(fp);
+    mpCommonSetFighterAir(fp);
 
     ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, nFTKirbyStatusCopyMarioSpecialAirN, nFTKirbyStatusCopyLuigiSpecialAirN), fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
 

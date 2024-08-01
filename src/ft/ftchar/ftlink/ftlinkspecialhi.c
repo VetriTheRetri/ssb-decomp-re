@@ -332,7 +332,7 @@ void ftLinkSpecialHiSetStatus(GObj *fighter_gobj)
     fp->proc_status = ftLinkSpecialHiProcStatus;
 
     ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->proc_damage = ftLinkSpecialHiProcDamage;
     fp->proc_effect = ftLinkSpecialHiProcEffect;
@@ -344,7 +344,7 @@ void ftLinkSpecialHiEndSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialHiEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->proc_damage = ftLinkSpecialHiProcDamage;
     fp->proc_effect = ftLinkSpecialHiProcEffect;
@@ -358,7 +358,7 @@ void ftLinkSpecialAirHiSetStatus(GObj *fighter_gobj)
     fp->proc_status = ftLinkSpecialHiProcStatus;
 
     ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->phys_info.vel_air.y = FTLINK_SPINATTACK_AIR_VEL_Y;
 

@@ -153,7 +153,7 @@ void ftMarioSpecialLwSetStatus(GObj *fighter_gobj)
     ftMarioSpecialAirLwSetDisableRise(fighter_gobj);
     ftMap_SetAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->phys_info.vel_air.y = -7.0F;
 
@@ -171,7 +171,7 @@ void ftMarioSpecialAirLwSetStatus(GObj *fighter_gobj)
 
     ftMarioSpecialAirLwSetDisableRise(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     tornado_vel_y = (fp->fighter_vars.mario.is_expend_tornado != FALSE) ? 0.0F : FTMARIO_TORNADO_VEL_Y_TAP;
 

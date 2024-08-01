@@ -145,7 +145,7 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
     {
         knockback_final = 0.0F;
     }
-    damage = ftParamGetStaledDamageOutput(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);
+    damage = ftParamGetStaledDamage(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);
 
     if (capture_fp->is_shield_catch)
     {
@@ -186,7 +186,7 @@ void ftCommonThrownUpdateDamageStats(ftStruct *this_fp)
     GObj *capture_gobj = this_fp->capture_gobj;
     ftStruct *capture_fp = ftGetStruct(capture_gobj);
     ftThrowHitDesc *ft_throw = &capture_fp->fighter_throw[1];
-    s32 damage = ftParamGetStaledDamageOutput(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);
+    s32 damage = ftParamGetStaledDamage(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);
 
     ftParamUpdateDamage(this_fp, damage);
     ftParamUpdateBattleStats(capture_fp->player, this_fp->player, damage);
@@ -232,7 +232,7 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
     }
     lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(capture_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
 
-    damage = ftParamGetStaledDamageOutput(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);;
+    damage = ftParamGetStaledDamage(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);;
 
     if (capture_fp->is_shield_catch)
     {

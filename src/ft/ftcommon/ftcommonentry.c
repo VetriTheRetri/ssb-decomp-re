@@ -69,7 +69,7 @@ void ftCommonEntryNullProcUpdate(GObj *fighter_gobj)
 
         if (fp->status_vars.common.entry.entry_wait == 0)
         {
-            if (fp->ft_kind == nFTKindMasterHand)
+            if (fp->ft_kind == nFTKindBoss)
             {
                 ftBossWaitSetStatus(fighter_gobj);
             }
@@ -123,7 +123,7 @@ void ftCommonAppearProcUpdate(GObj *fighter_gobj)
 
         fp->coll_data.ground_line_id = fp->status_vars.common.entry.ground_line_id;
 
-        if (fp->ft_kind == nFTKindMasterHand)
+        if (fp->ft_kind == nFTKindBoss)
         {
             ftBossWaitSetStatus(fighter_gobj);
         }
@@ -236,7 +236,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
         efManagerCaptainEntryCarMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
         break;
 
-    case nFTKindMasterHand:
+    case nFTKindBoss:
         boss_target_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
         while (boss_target_gobj != NULL)
@@ -263,7 +263,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
 
     if ((fp->ft_kind == nFTKindCaptain) && (fp->status_vars.common.entry.lr_entry == nGMDirectionL))
     {
-        ftParamMoveFighterDLLink(fighter_gobj, 1);
+        ftParamMoveDLLink(fighter_gobj, 1);
     }
 }
 
@@ -326,7 +326,7 @@ void ftCaptainAppearStartProcUpdate(GObj *fighter_gobj)
 
     if ((fp->status_vars.common.entry.lr_entry == nGMDirectionL) && (fp->dl_link != 9) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > -1000.0F))
     {
-        ftParamMoveFighterDLLink(fighter_gobj, 9);
+        ftParamMoveDLLink(fighter_gobj, 9);
     }
     ftStatusSetOnAnimEnd(fighter_gobj, ftCaptainAppearEndSetStatus);
 }

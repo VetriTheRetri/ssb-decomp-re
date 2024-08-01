@@ -408,7 +408,7 @@ void ftCommonDeadUpStarSetStatus(GObj *fighter_gobj)
     {
         func_800269C0_275C0(fp->attributes->deadup_sfx);
     }
-    ftParamMoveFighterDLLink(fighter_gobj, 1);
+    ftParamMoveDLLink(fighter_gobj, 1);
     ftParamResetFighterColAnim(fighter_gobj);
 }
 
@@ -529,7 +529,7 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
     {
         func_800269C0_275C0(fp->attributes->deadup_sfx);
     }
-    ftParamMoveFighterDLLink(fighter_gobj, 19);
+    ftParamMoveDLLink(fighter_gobj, 19);
     ftParamSetModelPartDetailAll(fighter_gobj, 1);
 }
 
@@ -539,7 +539,7 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *pos = &fp->joint[nFTPartsJointTopN]->translate.vec.f;
 
-    if (fp->ft_kind == nFTKindMasterHand)
+    if (fp->ft_kind == nFTKindBoss)
     {
         return FALSE;
     }

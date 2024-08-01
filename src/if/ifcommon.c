@@ -738,7 +738,7 @@ void ifCommonPlayerDamageUpdateDigits(GObj *interface_gobj)
     }
     else color_id = player;
 
-    if (gBattleState->players[player].ft_kind == nFTKindMasterHand)
+    if (gBattleState->players[player].ft_kind == nFTKindBoss)
     {
         hitpoints = 300 - damage;
 
@@ -1932,7 +1932,7 @@ void ifCommonPlayerTagProcRender(GObj *interface_gobj)
         {
             pos = fp->joint[nFTPartsJointTopN]->translate.vec.f;
 
-            pos.y += fp->attributes->cam_zoom_default;
+            pos.y += fp->attributes->camera_zoom_default;
 
             func_ovl2_800EB924(CameraGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &pos, &x, &y);
 
@@ -2378,7 +2378,7 @@ void ifCommonEntryFocusThread(GObj *interface_gobj)
         {
             gsStopCurrentProcess(0x1E);
 
-            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_cam_zoom, 0.1F, 28.0F);
+            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom, 0.1F, 28.0F);
             gsStopCurrentProcess(process_id - 0x1E);
         }
         else gsStopCurrentProcess(process_id);
@@ -2731,7 +2731,7 @@ void func_ovl2_80113744(GObj *fighter_gobj, s32 arg1)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     
-    if (fp->ft_kind == nFTKindMasterHand) 
+    if (fp->ft_kind == nFTKindBoss) 
     {
         func_8000B2B8();
         
@@ -3034,7 +3034,7 @@ void ifCommonBattleGoUpdateInterface(void)
                         }
                         else
                         {
-                            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_cam_zoom, 0.1F, 29.0F);
+                            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom, 0.1F, 29.0F);
 
                             sIFCommonBattlePauseCameraEyeXOrigin = gCMManagerPauseCameraEyeY;
                             sIFCommonBattlePauseCameraEyeYOrigin = gCMManagerPauseCameraEyeX;

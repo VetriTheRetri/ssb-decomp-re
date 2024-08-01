@@ -232,14 +232,14 @@ typedef enum ftCommonStatus
     nFTCommonStatusSleep,
     nFTCommonStatusEntry,
 
-    nFTCommonStatusMovesetStart,    // Start of uh... I don't know a better name for this.
-    nFTCommonStatusEntryNull = nFTCommonStatusMovesetStart,
+    nFTCommonStatusActionStart,    // Start of uh... I don't know a better name for this.
+    nFTCommonStatusEntryNull = nFTCommonStatusActionStart,
     nFTCommonStatusRebirthDown,
     nFTCommonStatusRebirthStand,
     nFTCommonStatusRebirthWait,
 
-    nFTCommonStatusActionStart,    // Start of (mostly) actionable (or rather player-influenced) moves
-    nFTCommonStatusWait = nFTCommonStatusActionStart,
+    nFTCommonStatusControlStart,    // Start of (mostly) actionable (or rather player-influenced) moves
+    nFTCommonStatusWait = nFTCommonStatusControlStart,
     nFTCommonStatusWalkSlow,
     nFTCommonStatusWalkMiddle,
     nFTCommonStatusWalkFast,
@@ -675,6 +675,14 @@ typedef enum ftItemSwingType
 	
 } ftItemSwingType;
 
+typedef enum ftSpecialHitKind
+{
+    nFTSpecialHitKindFoxReflector,
+    nFTSpecialHitKindNessAbsorb,
+    nFTSpecialHitKindNessReflector
+
+} ftSpecialHitKind;
+
 typedef enum ftCatchKind
 {
     nFTCatchKindYoshiSpecialN,              // Yoshi's Egg Lay, also used for Kirby's copy ability version of it
@@ -729,7 +737,7 @@ typedef enum ftKind
     nFTKindNess,
     nFTKindPlayableEnd = nFTKindNess,
 
-    nFTKindMasterHand,
+    nFTKindBoss,
     nFTKindMetalMario,
 
     nFTKindPolyStart,
@@ -916,8 +924,8 @@ typedef struct ftDataUnkContainer3		ftDataUnkContainer3;
 typedef struct ftScriptInfo				ftScriptInfo;
 typedef struct ftScriptInfoArray		ftScriptInfoArray;
 typedef struct ftData					ftData;
-typedef struct ftBackupPart             ftBackupPart;
-typedef struct ftBackupPartContainer    ftBackupPartContainer;
+typedef struct ftCommonPart             ftCommonPart;
+typedef struct ftCommonPartContainer    ftCommonPartContainer;
 typedef struct ftModelPart				ftModelPart;
 typedef struct ftModelPartDesc			ftModelPartDesc;
 typedef struct ftModelPartContainer		ftModelPartContainer;
@@ -928,7 +936,7 @@ typedef struct ftTexturePartDrawStatus  ftTexturePartDrawStatus;
 typedef union  ftAnimFlags				ftAnimFlags;
 typedef struct ftMotionFlags		    ftMotionFlags;
 typedef struct ftStatusDesc				ftStatusDesc;
-typedef struct ftIntroStatusDesc		ftIntroStatusDesc;
+typedef struct ftOpeningDesc		ftOpeningDesc;
 typedef struct ftThrowHitDesc			ftThrowHitDesc;
 typedef struct ftThrowReleaseDesc		ftThrowReleaseDesc;
 typedef struct ftCreateDesc				ftCreateDesc;
@@ -936,11 +944,11 @@ typedef struct ftHitMatrix              ftHitMatrix;
 typedef struct ftHitbox					ftHitbox;
 typedef struct ftHurtboxDesc			ftHurtboxDesc;
 typedef struct ftHurtbox				ftHurtbox;
-typedef struct ftHitCollisionLog		ftHitCollisionLog;
+typedef struct ftHitlog		ftHitlog;
 typedef struct ftItemThrow				ftItemThrow;
 typedef struct ftItemSwing				ftItemSwing;
 typedef struct ftParts                  ftParts;
-typedef struct ftPartIndex				ftPartIndex;
+typedef struct ftWithheldPart				ftWithheldPart;
 typedef struct ftShadow                 ftShadow;
 typedef struct ftCostume                ftCostume;
 typedef struct ftSkeleton               ftSkeleton;

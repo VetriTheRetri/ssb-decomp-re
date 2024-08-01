@@ -1,4 +1,4 @@
-#include <sys/obj.h>
+#include <ft/fighter.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -62,7 +62,7 @@ f32 func_ovl2_800EC160(s16 arg0, s32 arg1, s32 arg2)
 }
 
 // 0x800EC238
-void gmAnimParseAnimJoint(DObj *root_dobj)
+void ftAnimParseAnimJoint(DObj *root_dobj)
 {
     AObj *setup_aobj[nOMObjAnimTrackMeshEnd];
     AObj *current_aobj;
@@ -399,7 +399,7 @@ void func_ovl2_800ECCA4(GObj *gobj)
 
     while (main_dobj != NULL)
     {
-        gmAnimParseAnimJoint(main_dobj);
+        ftAnimParseAnimJoint(main_dobj);
         func_8000CCBC_D8BC(main_dobj);
 
         mobj = main_dobj->mobj;

@@ -304,7 +304,7 @@ void ftFoxSpecialLwStartInitStatusVars(GObj *fighter_gobj)
 void ftFoxSpecialLwStartSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
     ftFoxSpecialLwStartInitStatusVars(fighter_gobj);
 }
 
@@ -314,7 +314,7 @@ void ftFoxSpecialAirLwStartSetStatus(GObj* fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
     ftFoxSpecialLwStartInitStatusVars(fighter_gobj);
 
     fp->phys_info.vel_air.y = 0.0F;

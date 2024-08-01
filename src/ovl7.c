@@ -245,7 +245,7 @@ sb32 scTrainingMode_UpdateViewOption()
 		else
 		{
 			fighter_gobj = gBattleState->players[gSceneData.spgame_player].fighter_gobj;
-			func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_cam_zoom, 0.1F,
+			func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom, 0.1F,
 							   28.0F);
 			gIFPlayerCommonInterface.is_ifmagnify_display = FALSE;
 			gTrainingModeStruct.magnify_wait = 0;
@@ -1358,7 +1358,7 @@ void scTrainingMode_InitTrainingMode()
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
-		player_spawn = dFTDefaultFighterDesc;
+		player_spawn = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
 			continue;

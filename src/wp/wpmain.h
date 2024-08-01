@@ -32,7 +32,7 @@ void wpMainApplyGClampTVel(wpStruct* wp, f32 gravity, f32 terminal_velocity);
 void wpMainReflectorSetLR(wpStruct* wp, ftStruct* fp);
 
 // Apply stale multiplier to final hitbox damage output (+ 0.999% bonus)
-s32 wpMainGetStaledDamageOutput(wpStruct* wp);
+s32 wpMainGetStaledDamage(wpStruct* wp);
 
 // Reset weapon's record of previously hit targets
 void wpMainClearHitRecord(wpStruct* wp);

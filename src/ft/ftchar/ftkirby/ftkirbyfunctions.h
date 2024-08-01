@@ -62,8 +62,8 @@ extern void ftKirbySpecialNApplyCaptureDamage(GObj* kirby_gobj, GObj* victim_gob
 extern f32 ftKirbySpecialNGetCaptureDistance(Vec3f* kirby_pos, Vec3f* victim_pos);
 extern void ftKirbySpecialNAddCaptureDistance(ftStruct* fp, GObj* fighter_gobj, Vec3f* pos);
 extern void ftKirbySpecialNInitStatusVars(GObj* fighter_gobj, sb32 unused);
-extern void ftKirbySpecialNInitCatchVars(ftStruct* fp);
-extern void ftKirbySpecialNGotoInitCatchVars(GObj* fighter_gobj);
+extern void ftKirbySpecialNSetCatchParams(ftStruct* fp);
+extern void ftKirbySpecialNGotoSetCatchParams(GObj* fighter_gobj);
 extern void ftKirbySpecialNInitFighterVars(ftStruct* fp);
 extern void ftKirbySpecialNCopyInitCopyVars(GObj* fighter_gobj);
 extern void ftKirbySpecialNStopEffect(GObj* fighter_gobj);
@@ -288,7 +288,7 @@ extern void ftKirbyCopyCaptainSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyCaptainSpecialAirNSetStatus(GObj* fighter_gobj);
 
 // CopyYoshiSpecialN
-extern void ftKirbyCopyYoshiSpecialNInitCatchVars(ftStruct* fp, void (*proc_catch)(GObj*));
+extern void ftKirbyCopyYoshiSpecialNSetCatchParams(ftStruct* fp, void (*proc_catch)(GObj*));
 extern void ftKirbyCopyYoshiSpecialNCatchUpdateProcStatus(GObj* fighter_gobj, void (*proc_status)(GObj*));
 extern void ftKirbyCopyYoshiSpecialNCatchProcUpdate(GObj* fighter_gobj);
 extern void ftKirbyCopyYoshiSpecialAirNCatchProcUpdate(GObj* fighter_gobj);

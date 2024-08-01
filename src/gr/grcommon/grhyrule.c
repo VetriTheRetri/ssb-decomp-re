@@ -181,7 +181,7 @@ void grHyruleTwisterUpdateSummon(void)
         gGRCommonStruct.hyrule.twister_vel = lr * 10.0F;
         gGRCommonStruct.hyrule.twister_speed_wait = mtTrigGetRandomIntRange(120) + 180;
 
-        ftMainCheckSetMapObjectGObj(gGRCommonStruct.hyrule.twister_gobj, grHyruleTwisterCheckGetDamageKind);
+        ftMainCheckAddGroundObstacle(gGRCommonStruct.hyrule.twister_gobj, grHyruleTwisterCheckGetDamageKind);
 
         func_800269C0_275C0(nGMSoundFGMHyruleTwisterSpawn);
     }
@@ -333,7 +333,7 @@ void grHyruleTwisterUpdateStop(void)
     gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusSubside;
     gGRCommonStruct.hyrule.twister_wait = 32;
 
-    ftMainClearMapObjectGObj(gGRCommonStruct.hyrule.twister_gobj);
+    ftMainClearGroundObstacle(gGRCommonStruct.hyrule.twister_gobj);
 
     if (gGRCommonStruct.hyrule.twister_eftrans != NULL)
     {

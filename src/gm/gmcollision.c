@@ -339,7 +339,7 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
     ftParts *current_dobjdata;
     DObj *setup_dobj[18];
     DObj *second_dobj;
-    u32 flag = ftGetStruct(main_dobj->parent_gobj)->is_parts_anim_lock;
+    u32 flag = ftGetStruct(main_dobj->parent_gobj)->is_use_anim_locks;
     s32 i;
 
     if (flag == FALSE)
@@ -494,7 +494,7 @@ void func_ovl2_800EDE5C(DObj *main_dobj)
 void gmCollisionGetFighterPartsWorldPosition(DObj *main_dobj, Vec3f *vec)
 {
     ftParts *ft_parts;
-    u32 flag = ftGetStruct(main_dobj->parent_gobj)->is_parts_anim_lock;
+    u32 flag = ftGetStruct(main_dobj->parent_gobj)->is_use_anim_locks;
 
     if (flag == FALSE)
     {

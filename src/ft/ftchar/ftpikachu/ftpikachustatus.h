@@ -138,12 +138,12 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		0,										// ??? (Might be 3 individual bits?)
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
-		FALSE,									// Is projectile?
+		TRUE,									// Is projectile?
 		nFTStatusAttackIDSpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialLwHitProcUpdate,		// Proc Update
-		TRUE,									// Proc Interrupt
+		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		ftPikachuSpecialLwHitProcMap			// Proc Map
 	},

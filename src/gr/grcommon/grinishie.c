@@ -492,7 +492,7 @@ void grInishiePowerBlockUpdateDamage(void)
 
     if (gGRCommonStruct.inishie.pblock_appear_wait == 0)
     {
-        ftMainClearMapEnvGObj(gGRCommonStruct.inishie.pblock_gobj);
+        ftMainClearHazard(gGRCommonStruct.inishie.pblock_gobj);
     }
 }
 
@@ -547,7 +547,7 @@ void grInishieMakePowerBlock(void)
 // 0x80109B4C
 void grInishiePowerBlockSetDamage(void)
 {
-    ftMainCheckSetMapEnvGObj(gGRCommonStruct.inishie.pblock_gobj, grInishiePowerBlockCheckGetDamageKind);
+    ftMainCheckAddGroundHazard(gGRCommonStruct.inishie.pblock_gobj, grInishiePowerBlockCheckGetDamageKind);
 
     gGRCommonStruct.inishie.pblock_appear_wait = 2;
     gGRCommonStruct.inishie.pblock_status = nGRInishiePowerBlockStatusDamage;

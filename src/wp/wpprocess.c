@@ -317,8 +317,8 @@ void wpProcessUpdateHitInteractStatsGroupID(wpStruct *this_wp, wpHitbox *wp_hit,
 // 0x80166854
 void wpProcessUpdateAttackStatWeapon(wpStruct *this_wp, wpHitbox *this_hit, s32 this_hit_id, wpStruct *victim_wp, wpHitbox *victim_hit, s32 victim_hit_id, GObj *this_gobj, GObj *victim_gobj)
 {
-    s32 this_hit_damage = wpMainGetStaledDamageOutput(this_wp);
-    s32 victim_hit_damage = wpMainGetStaledDamageOutput(victim_wp);
+    s32 this_hit_damage = wpMainGetStaledDamage(this_wp);
+    s32 victim_hit_damage = wpMainGetStaledDamage(victim_wp);
     Vec3f pos;
     s32 priority_high;
 

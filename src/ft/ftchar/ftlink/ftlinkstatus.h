@@ -220,7 +220,7 @@ ftStatusDesc dFTLinkSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd		// Proc Update
+		ftStatusWaitOnAnimEnd,					// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map

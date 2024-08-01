@@ -109,7 +109,7 @@ void wpMainReflectorSetLR(wpStruct *wp, ftStruct *fp) // Invert direction on ref
 }
 
 // 0x80168128
-s32 wpMainGetStaledDamageOutput(wpStruct *wp) // Return final damage after applying staling and bonus 0.999%
+s32 wpMainGetStaledDamage(wpStruct *wp) // Return final damage after applying staling and bonus 0.999%
 {
     return (wp->weapon_hit.damage * wp->weapon_hit.stale) + 0.999F;
 }

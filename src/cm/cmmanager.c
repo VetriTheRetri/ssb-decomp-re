@@ -201,16 +201,16 @@ f32 cmManagerGetPlayerNumZoomRange(s32 player_num)
 }
 
 // 0x8010BB98
-f32 cmManagerCalcFighterZoomRange(ftStruct *fp, f32 cam_zoom)
+f32 cmManagerCalcFighterZoomRange(ftStruct *fp, f32 camera_zoom)
 {
-    cam_zoom *= fp->cam_zoom_frame;
-    cam_zoom *= fp->cam_zoom_range;
+    camera_zoom *= fp->camera_zoom_frame;
+    camera_zoom *= fp->camera_zoom_range;
 
     if ((fp->status_info.status_id == nFTCommonStatusWait) && (fp->status_info.status_time_spent >= 120))
     {
-        cam_zoom *= 0.75F;
+        camera_zoom *= 0.75F;
     }
-    return cam_zoom;
+    return camera_zoom;
 }
 
 // 0x8010BBE4

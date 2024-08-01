@@ -28,7 +28,7 @@ void ftKirbySpecialNApplyCaptureDamage(GObj *kirby_gobj, GObj *victim_gobj, s32 
 {
     ftStruct *kirby_fp = ftGetStruct(kirby_gobj);
     ftStruct *victim_fp = ftGetStruct(victim_gobj);
-    s32 star_dmg_victim = ftParamGetStaledDamageOutput(kirby_fp->player, damage, kirby_fp->attack_id, kirby_fp->motion_count);
+    s32 star_dmg_victim = ftParamGetStaledDamage(kirby_fp->player, damage, kirby_fp->attack_id, kirby_fp->motion_count);
 
     damage = star_dmg_victim;
 
@@ -73,7 +73,7 @@ void ftKirbySpecialNInitStatusVars(GObj *fighter_gobj, sb32 unused)
 }
 
 // 0x80161E3C
-void ftKirbySpecialNInitCatchVars(ftStruct *fp)
+void ftKirbySpecialNSetCatchParams(ftStruct *fp)
 {
     if (fp->ga == nMPKineticsGround)
     {
@@ -83,9 +83,9 @@ void ftKirbySpecialNInitCatchVars(ftStruct *fp)
 }
 
 // 0x80161E94
-void ftKirbySpecialNGotoInitCatchVars(GObj *fighter_gobj)
+void ftKirbySpecialNGotoSetCatchParams(GObj *fighter_gobj)
 {
-    ftKirbySpecialNInitCatchVars(ftGetStruct(fighter_gobj));
+    ftKirbySpecialNSetCatchParams(ftGetStruct(fighter_gobj));
 }
 
 // 0x80161EB4
@@ -115,7 +115,7 @@ void ftKirbySpecialNInitFighterVars(ftStruct *fp)
 // 0x80161F0C
 void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
 {
-    s16 index;
+    s16 copy_id;
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lFTKirbySpecialNCopyData); // Linker thing
 
@@ -129,10 +129,10 @@ void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
         {
             func_800269C0_275C0(nGMSoundFGMKirbySpecialNCopyThrow); // SFX?
 
-            index = fp->status_vars.kirby.specialn.copy_id;
-            fp->fighter_vars.kirby.copy_id = index;
+            copy_id = fp->status_vars.kirby.specialn.copy_id;
+            fp->fighter_vars.kirby.copy_id = copy_id;
 
-            ftParamSetModelPartDefaultID(fighter_gobj, 6, copy_data[index].copy_hat_rs);
+            ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy_data[copy_id].copy_drawstatus);
             ftParamResetModelPartAll(fighter_gobj);
             ftKirbySpecialNInitFighterVars(fp);
         }
@@ -392,11 +392,12 @@ sb32 ftKirbySpecialNCopyCheckGotoCopy(GObj *fighter_gobj, void (*proc_status)(GO
 sb32 ftKirbySpecialNTurnCheckGotoTurn(GObj *fighter_gobj, void (*proc_status)(GObj*))
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-
     s32 stick_x = fp->input.pl.stick_range.x;
 
-    if (ABS(stick_x) < FTKIRBY_VACUUM_TURN_STICK_RANGE_MIN) stick_x = 0; // HAL Meme Laboratory
-
+    if (ABS(stick_x) < FTKIRBY_VACUUM_TURN_STICK_RANGE_MIN) 
+    {
+        stick_x = 0; // HAL Meme Laboratory
+    }
     if (((stick_x < 0) && (fp->lr == nGMDirectionR)) || ((stick_x > 0) && (fp->lr == nGMDirectionL)))
     {
         proc_status(fighter_gobj);
@@ -555,7 +556,7 @@ void ftKirbySpecialAirNStartSwitchStatusGround(GObj *fighter_gobj)
 {
     ftMap_SetGround(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNStart, fighter_gobj->anim_frame, 1.0F, FTKIRBY_SPECIALNSTART_STATUS_FLAGS);
-    ftKirbySpecialNGotoInitCatchVars(fighter_gobj);
+    ftKirbySpecialNGotoSetCatchParams(fighter_gobj);
 }
 
 // 0x80162A20
@@ -565,7 +566,7 @@ void ftKirbySpecialAirNLoopSwitchStatusGround(GObj *fighter_gobj)
 
     ftMap_SetGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNLoop, fighter_gobj->anim_frame, 1.0F, FTKIRBY_SPECIALNLOOP_STATUS_FLAGS);
-    ftKirbySpecialNInitCatchVars(fp);
+    ftKirbySpecialNSetCatchParams(fp);
 }
 
 // 0x80162A6C
@@ -583,7 +584,7 @@ void ftKirbySpecialNStartSwitchStatusAir(GObj *fighter_gobj)
 {
     ftMap_SetAir(ftGetStruct(fighter_gobj));
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNStart, fighter_gobj->anim_frame, 1.0F, FTKIRBY_SPECIALNSTART_STATUS_FLAGS);
-    ftKirbySpecialNGotoInitCatchVars(fighter_gobj);
+    ftKirbySpecialNGotoSetCatchParams(fighter_gobj);
 }
 
 // 0x80162B04
@@ -593,7 +594,7 @@ void ftKirbySpecialNLoopSwitchStatusAir(GObj *fighter_gobj)
 
     ftMap_SetAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, FTKIRBY_SPECIALNLOOP_STATUS_FLAGS);
-    ftKirbySpecialNInitCatchVars(fp);
+    ftKirbySpecialNSetCatchParams(fp);
 }
 
 // 0x80162B50
@@ -767,7 +768,7 @@ void ftKirbySpecialNEatSetStatusParam(GObj *fighter_gobj, s32 status_id)
     {
         fp->proc_slope(fighter_gobj);
     }
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x801630A0
@@ -787,7 +788,7 @@ void ftKirbySpecialNCatchEatSetStatusParam(GObj *fighter_gobj, s32 status_id)
     {
         fp->proc_slope(fighter_gobj);
     }
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
     ftKirbySpecialNAddCaptureDistance(fp, fighter_gobj, &pos);
 
     fp->status_vars.kirby.specialn.dist.x = DObjGetStruct(fp->catch_gobj)->translate.vec.f.x - pos.x;
@@ -799,16 +800,16 @@ void ftKirbySpecialNStartSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftKirbySpecialNInitStatusVars(fighter_gobj, FALSE);
-    ftKirbySpecialNGotoInitCatchVars(fighter_gobj);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftKirbySpecialNGotoSetCatchParams(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x801631A0
 void ftKirbySpecialNLoopSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNLoop, 0.0F, 1.0F, (FTSTATUS_PRESERVE_LOOPSFX | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
-    ftKirbySpecialNGotoInitCatchVars(fighter_gobj);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftKirbySpecialNGotoSetCatchParams(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x801630A0
@@ -830,7 +831,7 @@ void ftKirbySpecialNThrowSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNThrow, 0.0F, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x80163274
@@ -840,7 +841,7 @@ void ftKirbySpecialNWaitSetStatusFromEat(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNWait, 0.0F, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART));
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x801632C4
@@ -850,7 +851,7 @@ void ftKirbySpecialNTurnSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNTurn, 0.0F, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x80163314
@@ -860,14 +861,14 @@ void ftKirbySpecialNCopySetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNCopy, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x80163364
 void ftKirbySpecialNEndSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x801633A0
@@ -875,16 +876,16 @@ void ftKirbySpecialAirNStartSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftKirbySpecialNInitStatusVars(fighter_gobj, TRUE);
-    ftKirbySpecialNGotoInitCatchVars(fighter_gobj);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftKirbySpecialNGotoSetCatchParams(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x801633EC
 void ftKirbySpecialAirNLoopSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNLoop, 0.0F, 1.0F, (FTSTATUS_PRESERVE_LOOPSFX | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
-    ftKirbySpecialNGotoInitCatchVars(fighter_gobj);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftKirbySpecialNGotoSetCatchParams(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x80163430
@@ -906,7 +907,7 @@ void ftKirbySpecialAirNThrowSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNThrow, 0.0F, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x801634C0
@@ -916,7 +917,7 @@ void ftKirbySpecialAirNWaitSetStatusFromEat(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNWait, 0.0F, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART));
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x80163510
@@ -926,7 +927,7 @@ void ftKirbySpecialAirNTurnSetStatus(GObj *fighter_gobj) // Unused
 
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNTurn, 0.0F, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x80163560
@@ -936,14 +937,14 @@ void ftKirbySpecialAirNCopySetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNCopy, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x801635B0
 void ftKirbySpecialAirNEndSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x801635EC

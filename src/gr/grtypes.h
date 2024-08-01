@@ -21,7 +21,7 @@ struct grGeometryDesc
 
 struct grHitbox
 {
-	s32 env_kind; // Not actually UpdateState, no idea what this is; something
+	s32 kind; // Not actually UpdateState, no idea what this is; something
 				  // to do with sound effects?
 	s32 damage;
 	s32 angle;
@@ -31,16 +31,16 @@ struct grHitbox
 	s32 element;
 };
 
-struct grMapHazard
+struct grObstacle
 {
-	GObj* ogobj;
+	GObj *gobj;
 	sb32 (*proc_update)(GObj*, GObj*, s32*);
 };
 
-struct grMapEnvironment
+struct grHazard
 {
-	GObj* egobj;
-	sb32 (*proc_update)(GObj*, GObj*, grHitbox*, s32*);
+	GObj *gobj;
+	sb32 (*proc_update)(GObj*, GObj*, grHitbox**, s32*);
 };
 
 struct grFileInfo

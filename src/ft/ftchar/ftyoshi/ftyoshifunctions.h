@@ -28,7 +28,7 @@ extern void ftYoshiSpecialHiSetStatus(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirHiSetStatus(GObj* fighter_gobj);
 
 // SpecialN / SpecialAirN
-extern void ftYoshiSpecialNInitCatchVars(ftStruct* fp, void (*proc_catch)(GObj*));
+extern void ftYoshiSpecialNSetCatchParams(ftStruct* fp, void (*proc_catch)(GObj*));
 extern void ftYoshiSpecialNCatchUpdateProcStatus(GObj* fighter_gobj, void (*proc_status)(GObj*));
 extern void ftYoshiSpecialNCatchProcUpdate(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirNCatchProcUpdate(GObj* fighter_gobj);

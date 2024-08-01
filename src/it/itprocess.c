@@ -299,7 +299,7 @@ void itProcessUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *
     f32 damage_knockback;
     Vec3f pos;
 
-    ftMainSetHitVictimInteractStats(fp, ft_hit->group_id, item_gobj, nGMHitTypeHurt, 0, FALSE);
+    ftMainSetHitInteractStats(fp, ft_hit->group_id, item_gobj, nGMHitTypeHurt, 0, FALSE);
 
     damage = ft_hit->damage;
 
@@ -360,7 +360,7 @@ void itProcessUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *
             break;
         }
     }
-    func_ovl2_800E2C24(fp, ft_hit);
+    ftMainPlayHitSFX(fp, ft_hit);
 }
 
 // 0x8016FD4C
@@ -402,7 +402,7 @@ void itProcessUpdateAttackStatItem(itStruct *this_ip, itHitbox *this_hit, s32 th
 // 0x8016FE4C
 void itProcessUpdateAttackStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 wp_hit_id, itStruct *ip, itHitbox *it_hit, s32 it_hit_id, GObj *weapon_gobj, GObj *item_gobj)
 {
-    s32 wp_hit_damage = wpMainGetStaledDamageOutput(wp);
+    s32 wp_hit_damage = wpMainGetStaledDamage(wp);
     s32 it_hit_damage = itMainGetDamageOutput(ip);
     Vec3f pos;
     s32 highest_priority;
@@ -549,7 +549,7 @@ void itProcessUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_
     f32 vel;
     s32 lr;
 
-    damage = wpMainGetStaledDamageOutput(wp);
+    damage = wpMainGetStaledDamage(wp);
 
     is_rehit = ((ip->type == nITTypeDamage) && (wp_hit->can_rehit_item)) ? TRUE : FALSE;
 

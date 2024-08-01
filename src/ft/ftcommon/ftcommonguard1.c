@@ -271,7 +271,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
     fp->anim_flags.flags.x19B_flag_b4 = TRUE;
 
     func_ovl0_800C8758(fp->joint[nFTPartsJointXRotN], attributes->shield_keys[fp->status_vars.common.guard.angle_i], fp->status_vars.common.guard.angle_f);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     if (fp->is_have_translate_scale)
     {
@@ -390,7 +390,7 @@ void ftCommonGuardOnSetStatus(GObj *fighter_gobj, s32 slide_frames)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusGuardOn, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     if (fp->shield_health != 0)
     {

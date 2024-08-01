@@ -237,7 +237,7 @@ void ftCaptainSpecialLwSetStatus(GObj *fighter_gobj)
     fp->proc_status = ftCaptainSpecialLwProcStatus;
 
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->proc_shield = ftCaptainSpecialLwProcHit;
     fp->proc_hit = ftCaptainSpecialLwProcHit;
@@ -252,7 +252,7 @@ void jtgt_ovl3_801601A0(GObj *fighter_gobj) // Unused
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwAir, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->proc_hit = ftCaptainSpecialLwProcHit;
 
@@ -268,7 +268,7 @@ void ftCaptainSpecialAirLwSetStatus(GObj *fighter_gobj)
     fp->proc_status = ftCaptainSpecialLwProcStatus;
 
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->proc_lagstart = ftParamProcPauseEffect;
     fp->proc_lagend = ftParamProcResumeEffect;

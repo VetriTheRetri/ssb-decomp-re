@@ -30,82 +30,82 @@
 
 typedef enum ftMotionEventKind
 {
-	ftMotionEvent_Kind_End,
-	ftMotionEvent_Kind_SyncWait,
-	ftMotionEvent_Kind_AsyncWait,
-	ftMotionEvent_Kind_MakeHit,
-	ftMotionEvent_Kind_MakeHitScaleOffset,
-	ftMotionEvent_Kind_ClearHitIndex,
-	ftMotionEvent_Kind_ClearHitAll,
-	ftMotionEvent_Kind_SetHitOffset,
-	ftMotionEvent_Kind_SetHitDamage,
-	ftMotionEvent_Kind_SetHitSize,
-	ftMotionEvent_Kind_SetHitSoundLevel,
-	ftMotionEvent_Kind_RefreshHitIndex,
-	ftMotionEvent_Kind_SetFighterThrow,
-	ftMotionEvent_Kind_SubroutineThrown,
-	ftMotionEvent_Kind_PlaySFX,
-	ftMotionEvent_Kind_PlayLoopSFXStoreInfo,
-	ftMotionEvent_Kind_StopLoopSFX,
-	ftMotionEvent_Kind_PlayVoiceStoreInfo,
-	ftMotionEvent_Kind_PlayLoopVoiceStoreInfo,
-	ftMotionEvent_Kind_PlaySFXStoreInfo,
-	ftMotionEvent_Kind_PlaySmashVoice,
-	ftMotionEvent_Kind_SetFlag0,
-	ftMotionEvent_Kind_SetFlag1,
-	ftMotionEvent_Kind_SetFlag2,
-	ftMotionEvent_Kind_SetFlag3,
-	ftMotionEvent_Kind_SetAirJumpAdd,
-	ftMotionEvent_Kind_SetAirJumpMax,
-	ftMotionEvent_Kind_SetHitStatusPartAll,
-	ftMotionEvent_Kind_SetHitStatusPart,
-	ftMotionEvent_Kind_SetHitStatusAll,
-	ftMotionEvent_Kind_ResetHurtAll,
-	ftMotionEvent_Kind_SetHurtPart,
-	ftMotionEvent_Kind_LoopBegin,
-	ftMotionEvent_Kind_LoopEnd,
-	ftMotionEvent_Kind_Subroutine,
-	ftMotionEvent_Kind_Return,
-	ftMotionEvent_Kind_Goto,
-	ftMotionEvent_Kind_ScriptPause,
-	ftMotionEvent_Kind_Effect,
-	ftMotionEvent_Kind_EffectScaleOffset, // ???
-	ftMotionEvent_Kind_SetModelPart,
-	ftMotionEvent_Kind_ResetModelPartAll,
-	ftMotionEvent_Kind_HideModelPartAll,
-	ftMotionEvent_Kind_SetTexturePart,
-	ftMotionEvent_Kind_SetColAnim,
-	ftMotionEvent_Kind_ResetColAnim,
-	ftMotionEvent_Kind_SetParallelScript, // What
-	ftMotionEvent_Kind_SlopeContour,
-	ftMotionEvent_Kind_HideItem,
-	ftMotionEvent_Kind_MakeRumble,
-	ftMotionEvent_Kind_StopRumble,
-	ftMotionEvent_Kind_AfterImage // Sword Trail
+	nFTMotionEventKindEnd,
+	nFTMotionEventKindSyncWait,
+	nFTMotionEventKindAsyncWait,
+	nFTMotionEventKindMakeHit,
+	nFTMotionEventKindMakeHitScaleOffset,
+	nFTMotionEventKindClearHitID,
+	nFTMotionEventKindClearHitAll,
+	nFTMotionEventKindSetHitOffset,
+	nFTMotionEventKindSetHitDamage,
+	nFTMotionEventKindSetHitSize,
+	nFTMotionEventKindSetHitSoundLevel,
+	nFTMotionEventKindRefrershHitID,
+	nFTMotionEventKindSetFighterThrow,
+	nFTMotionEventKindSubroutineThrown,
+	nFTMotionEventKindPlaySFX,
+	nFTMotionEventKindPlayLoopSFXStoreInfo,
+	nFTMotionEventKindStopLoopSFX,
+	nFTMotionEventKindPlayVoiceStoreInfo,
+	nFTMotionEventKindPlayLoopVoiceStoreInfo,
+	nFTMotionEventKindPlaySFXStoreInfo,
+	nFTMotionEventKindPlaySmashVoice,
+	nFTMotionEventKindSetFlag0,
+	nFTMotionEventKindSetFlag1,
+	nFTMotionEventKindSetFlag2,
+	nFTMotionEventKindSetFlag3,
+	nFTMotionEventKindSetAirJumpAdd,
+	nFTMotionEventKindSetAirJumpMax,
+	nFTMotionEventKindSetHitStatusPartAll,
+	nFTMotionEventKindSetHitStatusPartID,
+	nFTMotionEventKindSetHitStatusAll,
+	nFTMotionEventKindResetHurtPartAll,
+	nFTMotionEventKindSetHurtPartID,
+	nFTMotionEventKindLoopBegin,
+	nFTMotionEventKindLoopEnd,
+	nFTMotionEventKindSubroutine,
+	nFTMotionEventKindReturn,
+	nFTMotionEventKindGoto,
+	nFTMotionEventKindScriptPause,
+	nFTMotionEventKindEffect,
+	nFTMotionEventKindEffectScaleOffset, // ???
+	nFTMotionEventKindSetModelPart,
+	nFTMotionEventKindResetModelPartAll,
+	nFTMotionEventKindHideModelPartAll,
+	nFTMotionEventKindSetTexturePart,
+	nFTMotionEventKindSetColAnim,
+	nFTMotionEventKindResetColAnim,
+	nFTMotionEventKindSetParallelScript, // What
+	nFTMotionEventKindSlopeContour,
+	nFTMotionEventKindHideItem,
+	nFTMotionEventKindMakeRumble,
+	nFTMotionEventKindStopRumble,
+	nFTMotionEventKindAfterImage // Sword Trail
 
 } ftMotionEventKind;
 
 typedef enum gmColEventKind
 {
-	gmColEvent_Kind_End,
-	gmColEvent_Kind_Wait,
-	gmColEvent_Kind_Goto,
-	gmColEvent_Kind_LoopBegin,
-	gmColEvent_Kind_LoopEnd,
-	gmColEvent_Kind_Subroutine,
-	gmColEvent_Kind_Return,
-	gmColEvent_Kind_SetParallelScript,
-	gmColEvent_Kind_ToggleColorOff,
-	gmColEvent_Kind_SetColor1,
-	gmColEvent_Kind_BlendColor1,
-	gmColEvent_Kind_SetColor2,
-	gmColEvent_Kind_BlendColor2,
-	gmColEvent_Kind_Effect,
-	gmColEvent_Kind_EffectScaleOffset, // ???
-	gmColEvent_Kind_SetLight,
-	gmColEvent_Kind_ToggleLightOff,
-	gmColEvent_Kind_PlaySFX,
-	gmColEvent_Kind_SetSkeletonID
+	nGMColEventKindEnd,
+	nGMColEventKindWait,
+	nGMColEventKindGoto,
+	nGMColEventKindLoopBegin,
+	nGMColEventKindLoopEnd,
+	nGMColEventKindSubroutine,
+	nGMColEventKindReturn,
+	nGMColEventKindSetParallelScript,
+	nGMColEventKindToggleColorOff,
+	nGMColEventKindSetColor1,
+	nGMColEventKindBlendColor1,
+	nGMColEventKindSetColor2,
+	nGMColEventKindBlendColor2,
+	nGMColEventKindEffect,
+	nGMColEventKindEffectScaleOffset, // ???
+	nGMColEventKindSetLight,
+	nGMColEventKindToggleLightOff,
+	nGMColEventKindPlaySFX,
+	nGMColEventKindSetSkeletonID
 
 } gmColEventKind;
 
@@ -162,7 +162,7 @@ typedef struct ftMotionEventMakeHit1
 	u32 opcode : 6;
 	u32 hit_id : 3;
 	u32 group_id : 3;
-	s32 joint_index : 7;
+	s32 joint_id : 7;
 	u32 damage : 8;
 	ub32 can_rebound : 1;
 	u32 element : 4;
@@ -257,19 +257,19 @@ typedef struct ftMotionEventSetHitSound
 
 } ftMotionEventSetHitSound;
 
-typedef struct ftMotionEventRefreshHitIndex
+typedef struct ftMotionEventRefrershHitID
 {
 	u32 opcode : 6;
 	u32 hit_id : 26;
 
-} ftMotionEventRefreshHitIndex;
+} ftMotionEventRefrershHitID;
 
-typedef struct ftMotionEventClearHitIndex
+typedef struct ftMotionEventClearHitID
 {
 	u32 opcode : 6;
 	u32 hit_id : 26;
 
-} ftMotionEventClearHitIndex;
+} ftMotionEventClearHitID;
 
 typedef struct ftMotionEventClearHitAll
 {
@@ -303,44 +303,44 @@ typedef struct ftMotionEventPlaySFX
 
 } ftMotionEventPlaySFX;
 
-typedef struct ftMotionEventMakeGFX1
+typedef struct ftMotionEventMakeEffect1
 {
 	u32 opcode : 6;
-	s32 joint_index : 7;
-	u32 gfx_id : 9;
+	s32 joint_id : 7;
+	u32 effect_id : 9;
 	u32 flag : 10;
 
-} ftMotionEventMakeGFX1;
+} ftMotionEventMakeEffect1;
 
-typedef struct ftMotionEventMakeGFX2
+typedef struct ftMotionEventMakeEffect2
 {
 	s32 off_x : 16;
 	s32 off_y : 16;
 
-} ftMotionEventMakeGFX2;
+} ftMotionEventMakeEffect2;
 
-typedef struct ftMotionEventMakeGFX3
+typedef struct ftMotionEventMakeEffect3
 {
 	s32 off_z : 16;
 	s32 rng_x : 16;
 
-} ftMotionEventMakeGFX3;
+} ftMotionEventMakeEffect3;
 
-typedef struct ftMotionEventMakeGFX4
+typedef struct ftMotionEventMakeEffect4
 {
 	s32 rng_y : 16;
 	s32 rng_z : 16;
 
-} ftMotionEventMakeGFX4;
+} ftMotionEventMakeEffect4;
 
-typedef struct ftMotionEventMakeGFX
+typedef struct ftMotionEventMakeEffect
 {
-	ftMotionEventMakeGFX1 s1;
-	ftMotionEventMakeGFX2 s2;
-	ftMotionEventMakeGFX3 s3;
-	ftMotionEventMakeGFX4 s4;
+	ftMotionEventMakeEffect1 s1;
+	ftMotionEventMakeEffect2 s2;
+	ftMotionEventMakeEffect3 s3;
+	ftMotionEventMakeEffect4 s4;
 
-} ftMotionEventMakeGFX;
+} ftMotionEventMakeEffect;
 
 typedef struct ftMotionEventSetHitStatusAll
 {
@@ -352,7 +352,7 @@ typedef struct ftMotionEventSetHitStatusAll
 typedef struct ftMotionEventSetHitStatusPart
 {
 	u32 opcode : 6;
-	s32 joint_index : 7;
+	s32 joint_id : 7;
 	u32 hitstatus : 19;
 
 } ftMotionEventSetHitStatusPart;
@@ -360,7 +360,7 @@ typedef struct ftMotionEventSetHitStatusPart
 typedef struct ftMotionEventSetHurtPart1
 {
 	u32 opcode : 6;
-	s32 joint_index : 7;
+	s32 joint_id : 7;
 
 } ftMotionEventSetHurtPart1;
 
@@ -492,7 +492,7 @@ typedef struct ftMotionEventParallel
 typedef struct ftMotionEventSetModelPart
 {
 	u32 opcode : 6;
-	s32 joint_index : 7;
+	s32 joint_id : 7;
 	s32 mode : 19;
 
 } ftMotionEventSetModelPart;
@@ -500,7 +500,7 @@ typedef struct ftMotionEventSetModelPart
 typedef struct ftMotionEventSetTexturePart
 {
 	u32 opcode : 6;
-	u32 obj_index : 6;
+	u32 texture_part_id : 6;
 	u32 frame : 20;
 
 } ftMotionEventSetTexturePart;
@@ -677,8 +677,8 @@ typedef struct gmColEventBlendRGBA
 typedef struct gmColEventMakeEffect1
 {
 	u32 opcode : 6;
-	s32 joint_index : 7;
-	u32 gfx_id : 9;
+	s32 joint_id : 7;
+	u32 effect_id : 9;
 	u32 flag : 10;
 
 } gmColEventMakeEffect1;
@@ -742,10 +742,10 @@ typedef union gmColEventAll
 	gmColEventSetRGBA2 ca_rgba2;
 	gmColEventBlendRGBA1 ca_blend1;
 	gmColEventBlendRGBA2 ca_blend2;
-	gmColEventMakeEffect1 ca_gfx1;
-	gmColEventMakeEffect2 ca_gfx2;
-	gmColEventMakeEffect3 ca_gfx3;
-	gmColEventMakeEffect4 ca_gfx4;
+	gmColEventMakeEffect1 ca_effect1;
+	gmColEventMakeEffect2 ca_effect2;
+	gmColEventMakeEffect3 ca_effect3;
+	gmColEventMakeEffect4 ca_effect4;
 	gmColEventSetLight ca_light;
 	gmColEventPlaySFX ca_sfx;
 
@@ -761,116 +761,116 @@ typedef union gmColEventAll
 // (https://www.coranac.com/documents/working-with-bits-and-bitfields/)
 
 // Now watch me make dollar store display list commands like a clown
-#define gmColCommandEndS1() GC_FIELDSET(gmColEvent_Kind_End, 26, 6)
+#define gmColCommandEndS1() GC_FIELDSET(nGMColEventKindEnd, 26, 6)
 
-#define gmColCommandWaitS1(frames) (GC_FIELDSET(gmColEvent_Kind_Wait, 26, 6) | GC_FIELDSET(frames, 0, 26))
+#define gmColCommandWaitS1(frames) (GC_FIELDSET(nGMColEventKindWait, 26, 6) | GC_FIELDSET(frames, 0, 26))
 
-#define gmColCommandGotoS1() GC_FIELDSET(gmColEvent_Kind_Goto, 26, 6)
+#define gmColCommandGotoS1() GC_FIELDSET(nGMColEventKindGoto, 26, 6)
 #define gmColCommandGotoS2(addr) ((uintptr_t)addr)
 
-#define gmColCommandLoopBeginS1(count) (GC_FIELDSET(gmColEvent_Kind_LoopBegin, 26, 6) | GC_FIELDSET(count, 0, 26))
-#define gmColCommandLoopEndS1() GC_FIELDSET(gmColEvent_Kind_LoopEnd, 26, 6)
+#define gmColCommandLoopBeginS1(count) (GC_FIELDSET(nGMColEventKindLoopBegin, 26, 6) | GC_FIELDSET(count, 0, 26))
+#define gmColCommandLoopEndS1() GC_FIELDSET(nGMColEventKindLoopEnd, 26, 6)
 
-#define gmColCommandSubroutineS1() GC_FIELDSET(gmColEvent_Kind_Subroutine, 26, 6)
+#define gmColCommandSubroutineS1() GC_FIELDSET(nGMColEventKindSubroutine, 26, 6)
 #define gmColCommandSubroutineS2(addr) ((uintptr_t)addr)
 
-#define gmColCommandReturnS1() GC_FIELDSET(gmColEvent_Kind_Return, 26, 6)
+#define gmColCommandReturnS1() GC_FIELDSET(nGMColEventKindReturn, 26, 6)
 
-#define gmColCommandParallelS1() GC_FIELDSET(gmColEvent_Kind_SetParallelScript, 26, 6)
+#define gmColCommandParallelS1() GC_FIELDSET(nGMColEventKindSetParallelScript, 26, 6)
 #define gmColCommandParallelS2(addr) ((uintptr_t)addr)
 
-#define gmColCommandToggleColorOffS1() GC_FIELDSET(gmColEvent_Kind_ToggleColorOff, 26, 6)
+#define gmColCommandToggleColorOffS1() GC_FIELDSET(nGMColEventKindToggleColorOff, 26, 6)
 
-#define gmColCommandSetColor1S1() GC_FIELDSET(gmColEvent_Kind_SetColor1, 26, 6)
+#define gmColCommandSetColor1S1() GC_FIELDSET(nGMColEventKindSetColor1, 26, 6)
 #define gmColCommandSetColor1S2(r, g, b, a)                                                                          \
 	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
 #define gmColCommandBlendColor1S1(frames)                                                                            \
-	(GC_FIELDSET(gmColEvent_Kind_BlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
+	(GC_FIELDSET(nGMColEventKindBlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
 #define gmColCommandBlendColor1S2(r, g, b, a)                                                                        \
 	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
-#define gmColCommandSetColor2S1() GC_FIELDSET(gmColEvent_Kind_SetColor2, 26, 6)
+#define gmColCommandSetColor2S1() GC_FIELDSET(nGMColEventKindSetColor2, 26, 6)
 #define gmColCommandSetColor2S2(r, g, b, a)                                                                          \
 	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
 #define gmColCommandBlendColor2S1(frames)                                                                            \
-	(GC_FIELDSET(gmColEvent_Kind_BlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
+	(GC_FIELDSET(nGMColEventKindBlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
 #define gmColCommandBlendColor2S2(r, g, b, a)                                                                        \
 	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
-#define gmColCommandEffectS1(joint, gfx_id, flag)                                                                    \
-	(GC_FIELDSET(gmColEvent_Kind_Effect, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(gfx_id, 10, 9)             \
+#define gmColCommandEffectS1(joint, effect_id, flag)                                                                    \
+	(GC_FIELDSET(nGMColEventKindEffect, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(effect_id, 10, 9)             \
 	 | GC_FIELDSET(flag, 0, 10))
 #define gmColCommandEffectS2(off_x, off_y) (GC_FIELDSET(off_x, 16, 16) | GC_FIELDSET(off_y, 0, 16))
 #define gmColCommandEffectS3(off_z, rng_x) (GC_FIELDSET(off_z, 16, 16) | GC_FIELDSET(rng_x, 0, 16))
 #define gmColCommandEffectS4(rng_y, rng_z) (GC_FIELDSET(rng_y, 16, 16) | GC_FIELDSET(rng_z, 0, 16))
 
-#define gmColCommandEffectScaleS1(joint, gfx_id, flag)                                                               \
-	(GC_FIELDSET(gmColEvent_Kind_EffectScaleOffset, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(gfx_id, 10, 9)  \
+#define gmColCommandEffectScaleS1(joint, effect_id, flag)                                                               \
+	(GC_FIELDSET(nGMColEventKindEffectScaleOffset, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(effect_id, 10, 9)  \
 	 | GC_FIELDSET(flag, 0, 10))
 #define gmColCommandEffectScaleS2(off_x, off_y) (GC_FIELDSET(off_x, 16, 16) | GC_FIELDSET(off_y, 0, 16))
 #define gmColCommandEffectScaleS3(off_z, rng_x) (GC_FIELDSET(off_z, 16, 16) | GC_FIELDSET(rng_x, 0, 16))
 #define gmColCommandEffectSScale4(rng_y, rng_z) (GC_FIELDSET(rng_y, 16, 16) | GC_FIELDSET(rng_z, 0, 16))
 
 #define gmColCommandSetLightS1(angle1, angle2)                                                                       \
-	(GC_FIELDSET(gmColEvent_Kind_SetLight, 26, 6) | GC_FIELDSET(angle1, 13, 13) | GC_FIELDSET(angle2, 0, 13))
+	(GC_FIELDSET(nGMColEventKindSetLight, 26, 6) | GC_FIELDSET(angle1, 13, 13) | GC_FIELDSET(angle2, 0, 13))
 
-#define gmColCommandToggleLightOff() GC_FIELDSET(gmColEvent_Kind_ToggleLightOff, 26, 6)
+#define gmColCommandToggleLightOff() GC_FIELDSET(nGMColEventKindToggleLightOff, 26, 6)
 
-#define gmColCommandPlaySFX(sfx_id) (GC_FIELDSET(gmColEvent_Kind_PlaySFX, 26, 6) | GC_FIELDSET(sfx_id, 0, 26))
+#define gmColCommandPlaySFX(sfx_id) (GC_FIELDSET(nGMColEventKindPlaySFX, 26, 6) | GC_FIELDSET(sfx_id, 0, 26))
 
 #define gmColCommandSetSkeletonID(skeleton_id)                                                                       \
-	(GC_FIELDSET(gmColEvent_Kind_SetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
+	(GC_FIELDSET(nGMColEventKindSetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
 
 // // ColAnim Script 0 is NULL
 
 // // 0x8012CA90 - ColAnim Script 1
 // gmColEventSetRGBA     gmColEvents_Col1_Ev0 = {
-// gmColEvent_Kind_SetColor1, 0xFF, 0xFF, 0xFF, 0x30 }; gmColEventDefault
-// gmColEvents_Col1_Ev1 = { gmColEvent_Kind_Wait, 65535 }; gmColEventGoto
-// gmColEvents_Col1_Ev2 = { gmColEvent_Kind_Goto, &gmColEvents_Col1_Ev0 };
+// nGMColEventKindSetColor1, 0xFF, 0xFF, 0xFF, 0x30 }; gmColEventDefault
+// gmColEvents_Col1_Ev1 = { nGMColEventKindWait, 65535 }; gmColEventGoto
+// gmColEvents_Col1_Ev2 = { nGMColEventKindGoto, &gmColEvents_Col1_Ev0 };
 
 // // 0x8012CAA4 - ColAnim Script 2
 // gmColEventDefault     gmColEvents_Col2_Ev0 = {
-// gmColEvent_Kind_ToggleColorOff }; gmColEventDefault
-// gmColEvents_Col2_Ev1 = { gmColEvent_Kind_End };
+// nGMColEventKindToggleColorOff }; gmColEventDefault
+// gmColEvents_Col2_Ev1 = { nGMColEventKindEnd };
 
 // // 0x8012CAAC - ColAnim Script 3
 // gmColEventSetRGBA     gmColEvents_Col3_Ev0 = {
-// gmColEvent_Kind_SetColor1, 0xFF, 0xFF, 0xFF, 0x82 }; gmColEventBlendRGBA
-// gmColEvents_Col3_Ev1 = { gmColEvent_Kind_BlendColor1, 3, 0xFF, 0xFF,
+// nGMColEventKindSetColor1, 0xFF, 0xFF, 0xFF, 0x82 }; gmColEventBlendRGBA
+// gmColEvents_Col3_Ev1 = { nGMColEventKindBlendColor1, 3, 0xFF, 0xFF,
 // 0xFF, 0x32 }; gmColEventDefault     gmColEvents_Col3_Ev2 = {
-// gmColEvent_Kind_Wait, 3 }; gmColEventDefault     gmColEvents_Col3_Ev3
-// = { gmColEvent_Kind_ToggleColorOff }; gmColEventDefault
-// gmColEvents_Col3_Ev4 = { gmColEvent_Kind_Wait, 1 }; gmColEventGoto
-// gmColEvents_Col3_Ev5 = { gmColEvent_Kind_Goto, &gmColEvents_Col3_Ev0
+// nGMColEventKindWait, 3 }; gmColEventDefault     gmColEvents_Col3_Ev3
+// = { nGMColEventKindToggleColorOff }; gmColEventDefault
+// gmColEvents_Col3_Ev4 = { nGMColEventKindWait, 1 }; gmColEventGoto
+// gmColEvents_Col3_Ev5 = { nGMColEventKindGoto, &gmColEvents_Col3_Ev0
 // };
 
 // // 0x8012CAD0 - ColAnim Script 4
 // gmColEventSetRGBA     gmColEvents_Col4_Ev0 = {
-// gmColEvent_Kind_SetColor1, 0x80, 0xFF, 0x80, 0x50 }; gmColEventBlendRGBA
-// gmColEvents_Col4_Ev1 = { gmColEvent_Kind_BlendColor1, 3, 0x80, 0xFF,
+// nGMColEventKindSetColor1, 0x80, 0xFF, 0x80, 0x50 }; gmColEventBlendRGBA
+// gmColEvents_Col4_Ev1 = { nGMColEventKindBlendColor1, 3, 0x80, 0xFF,
 // 0x80, 0x14 }; gmColEventDefault     gmColEvents_Col4_Ev2 = {
-// gmColEvent_Kind_Wait, 3 }; gmColEventDefault     gmColEvents_Col4_Ev3
-// = { gmColEvent_Kind_ToggleColorOff }; gmColEventDefault
-// gmColEvents_Col4_Ev4 = { gmColEvent_Kind_Wait, 1 }; gmColEventGoto
-// gmColEvents_Col4_Ev5 = { gmColEvent_Kind_Goto, &gmColEvents_Col4_Ev0
+// nGMColEventKindWait, 3 }; gmColEventDefault     gmColEvents_Col4_Ev3
+// = { nGMColEventKindToggleColorOff }; gmColEventDefault
+// gmColEvents_Col4_Ev4 = { nGMColEventKindWait, 1 }; gmColEventGoto
+// gmColEvents_Col4_Ev5 = { nGMColEventKindGoto, &gmColEvents_Col4_Ev0
 // };
 
 // // 0x8012CAF4 - ColAnim Script 5
 // gmColEventSetLight    gmColEvents_Col5_Ev0 = {
-// gmColEvent_Kind_SetLight, 90, 0 }; gmColEventDefault
-// gmColEvents_Col5_Ev1 = { gmColEvent_Kind_ToggleColorOff };
-// gmColEventDefault     gmColEvents_Col5_Ev2 = { gmColEvent_Kind_Wait, 1
+// nGMColEventKindSetLight, 90, 0 }; gmColEventDefault
+// gmColEvents_Col5_Ev1 = { nGMColEventKindToggleColorOff };
+// gmColEventDefault     gmColEvents_Col5_Ev2 = { nGMColEventKindWait, 1
 // }; gmColEventSetRGBA     gmColEvents_Col5_Ev3 = {
-// gmColEvent_Kind_SetColor1, 0xFF, 0xFF, 0xFF, 0xE6 }; gmColEventDefault
-// gmColEvents_Col5_Ev4 = { gmColEvent_Kind_Wait, 1 }; gmColEventBlendRGBA
-// gmColEvents_Col5_Ev5 = { gmColEvent_Kind_BlendColor1, 6, 0xFF, 0xFF,
+// nGMColEventKindSetColor1, 0xFF, 0xFF, 0xFF, 0xE6 }; gmColEventDefault
+// gmColEvents_Col5_Ev4 = { nGMColEventKindWait, 1 }; gmColEventBlendRGBA
+// gmColEvents_Col5_Ev5 = { nGMColEventKindBlendColor1, 6, 0xFF, 0xFF,
 // 0xFF, 0x1E }; gmColEventDefault     gmColEvents_Col5_Ev6 = {
-// gmColEvent_Kind_Wait, 6 }; gmColEventDefault     gmColEvents_Col5_Ev7
-// = { gmColEvent_Kind_ToggleColorOff }; gmColEventDefault
-// gmColEvents_Col5_Ev8 = { gmColEvent_Kind_End };
+// nGMColEventKindWait, 6 }; gmColEventDefault     gmColEvents_Col5_Ev7
+// = { nGMColEventKindToggleColorOff }; gmColEventDefault
+// gmColEvents_Col5_Ev8 = { nGMColEventKindEnd };
 
 // // Next: 8012CB20
 

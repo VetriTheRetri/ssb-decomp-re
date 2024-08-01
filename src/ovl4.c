@@ -10,7 +10,7 @@ extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000030;
 extern intptr_t D_NF_000000C7;
 extern struct gmBattleState gTransferBattleState;
-extern ftCreateDesc dFTDefaultFighterDesc;
+extern ftCreateDesc dFTManagerDefaultFighterDesc;
 
 void ifCommonAnnounceTimeUpInitInterface();
 void gmRumbleInitPlayers();
@@ -97,7 +97,7 @@ void scBattle_StartStockBattle()
 
 	func_ovl4_8018E330();
 
-	if (!(gSaveData.mprotect_fail & GMBACKUP_ERROR_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
+	if (!(gSaveData.error_flags & GMBACKUP_ERROR_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
 	{
 		base_addr = rdManagerGetFileWithExternHeap((intptr_t)&D_NF_000000C7, gsMemoryAlloc(rdManagerGetFileSize((intptr_t)&D_NF_000000C7), 0x10));
 
@@ -108,7 +108,7 @@ void scBattle_StartStockBattle()
 
 		if (proc_cache() == FALSE)
 		{
-			gSaveData.mprotect_fail |= GMBACKUP_ERROR_1PGAMEMARIO;
+			gSaveData.error_flags |= GMBACKUP_ERROR_1PGAMEMARIO;
 		}
 	}
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
@@ -130,7 +130,7 @@ void scBattle_StartStockBattle()
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
-		player_spawn = dFTDefaultFighterDesc;
+		player_spawn = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot) continue;
 
@@ -392,7 +392,7 @@ void scBattle_StartSDBattle()
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
-		player_spawn = dFTDefaultFighterDesc;
+		player_spawn = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot) continue;
 
@@ -467,7 +467,7 @@ void scBattleRoyalStartScene()
 
 	gBattleState->gr_kind = gSceneData.gr_kind;
 
-	if (gSaveData.mprotect_fail & GMBACKUP_ERROR_VSMODECASTLE)
+	if (gSaveData.error_flags & GMBACKUP_ERROR_VSMODECASTLE)
 	{
 		gBattleState->gr_kind = nGRKindCastle;
 	}

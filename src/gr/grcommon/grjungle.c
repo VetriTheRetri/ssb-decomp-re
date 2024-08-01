@@ -136,7 +136,7 @@ void grJungleMakeTaruCann(void)
     func_8000DF34_EB34(tarucann_gobj);
 
     omAddGObjCommonProc(tarucann_gobj, grJungleTaruCannProcUpdate, nOMObjProcessKindProc, 4);
-    ftMainCheckSetMapObjectGObj(tarucann_gobj, grJungleTaruCannCheckGetDamageKind);
+    ftMainCheckAddGroundObstacle(tarucann_gobj, grJungleTaruCannCheckGetDamageKind);
 
     gGRCommonStruct.jungle.tarucann_status = nGRJungleTaruCannStatusMove;
     gGRCommonStruct.jungle.tarucann_wait = mtTrigGetRandomIntRange(180) + 180;

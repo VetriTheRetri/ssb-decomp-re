@@ -1063,7 +1063,7 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id)
 {
 	f32 initial_y_rotation;
-	ftCreateDesc spawn_info = dFTDefaultFighterDesc;
+	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	if (ft_kind != nFTKindNull)
 	{

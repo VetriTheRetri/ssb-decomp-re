@@ -599,7 +599,7 @@ void scBonusGame_InitBonusGame()
 	gmRumbleMakeActor();
 	ftPublicitySetup();
 
-	for (player = 0, player_spawn = dFTDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->players);
+	for (player = 0, player_spawn = dFTManagerDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->players);
 		 player++)
 	{
 		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)

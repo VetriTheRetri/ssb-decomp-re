@@ -66,7 +66,7 @@ typedef struct mpGroundData
 	u32 unk_0x7C;
 	u32 unk_0x80;
 	gmGroundUnkBytes* unk_0x84;
-	s16 unk_groundinfo_0x88;
+	s16 altitude_warning;
 	s16 cam_bound_team_top;
 	u8 filler_0x88[0x92 - 0x8C];
 	s16 unk_bound_top;

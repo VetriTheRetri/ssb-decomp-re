@@ -553,7 +553,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 	// Status 27 (0x1B): FallAerial
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTCommonMotionFall,					// Script ID
+		nFTCommonMotionFallAerial,				// Script ID
 		nFTMotionAttackIDNone,				    // Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
@@ -3324,7 +3324,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		nFTStatusAttackIDNone,				    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftCommonFuraFuraProcUpdate,				// Proc Update
+		ftCommonFuraSleepProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundBreakSetFall			// Proc Map
@@ -3446,7 +3446,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommonCaptureProcPhysics,				// Proc Physics
+		ftCommonCapturePulledProcPhysics,		// Proc Physics
 		ftCommonCapturePulledProcMap			// Proc Map
 	},
 
@@ -3466,7 +3466,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommonCaptureProcPhysics,				// Proc Physics
+		ftCommonCapturePulledProcPhysics,		// Proc Physics
 		ftCommonCaptureWaitProcMap				// Proc Map
 	},
 
@@ -3705,7 +3705,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
-		ftCommonShoulderedProcInterrupt,		// Proc Interrupt
+		ftCommonCaptureShoulderedProcInterrupt,	// Proc Interrupt
 		ftCommonThrownProcPhysics,				// Proc Physics
 		ftCommonThrownProcMap					// Proc Map
 	},
@@ -4006,7 +4006,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftStatusWaitOnAnimEnd,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map
 	},
 

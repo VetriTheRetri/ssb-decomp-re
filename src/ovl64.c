@@ -255,7 +255,7 @@ void func_ovl64_8018D220(GObj *fighter_gobj)
 		fighter_gobj,
 		F_DEG_TO_RAD(D_ovl64_8018E1D4[mtTrigGetRandomIntRange(ARRAY_COUNT(D_ovl64_8018E1D4))]),
 		F_DEG_TO_RAD(D_ovl64_8018E1EC[mtTrigGetRandomIntRange(ARRAY_COUNT(D_ovl64_8018E1EC))]),
-		ftGetStruct(fighter_gobj)->attributes->closeup_cam_zoom,
+		ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom,
 		0.3F,
 		28.0F
 	);
@@ -611,7 +611,7 @@ void func_ovl64_8018DCC4()
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
-		player_spawn = dFTDefaultFighterDesc;
+		player_spawn = dFTManagerDefaultFighterDesc;
 
 		ftManagerSetupDataKind(gBattleState->players[player].ft_kind);
 

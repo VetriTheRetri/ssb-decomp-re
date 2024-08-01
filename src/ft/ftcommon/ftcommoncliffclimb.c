@@ -68,7 +68,7 @@ void ftCommonCliffQuickOrSlowSetStatus(GObj *fighter_gobj, s32 status_input)
     else status_id = nFTCommonStatusCliffSlow, status_queue = nFTCommonCliffKindClimbSlow;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->status_vars.common.cliffmotion.status_id = status_input + status_queue;
     fp->status_vars.common.cliffmotion.cliff_id = fp->coll_data.cliff_id;

@@ -35,9 +35,7 @@ typedef enum ftPurinMotion
     nFTPurinMotionSpecialN,
     nFTPurinMotionSpecialAirN,
     nFTPurinMotionSpecialHi,
-    nFTPurinMotionSpecialAirHi,
-    nFTPurinMotionSpecialLw,
-    nFTPurinMotionSpecialAirLw
+    nFTPurinMotionSpecialLw
 
 } ftPurinMotion;
 

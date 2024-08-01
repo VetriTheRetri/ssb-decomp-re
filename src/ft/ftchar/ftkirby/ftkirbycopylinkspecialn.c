@@ -143,7 +143,7 @@ void ftKirbyCopyLinkSpecialNSetStatus(GObj *fighter_gobj)
     }
     else ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x801649C0
@@ -161,7 +161,7 @@ void ftKirbyCopyLinkSpecialAirNSetStatus(GObj *fighter_gobj)
     }
     else ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x80164A40
@@ -175,5 +175,5 @@ void ftKirbyCopyLinkSpecialNReturnSetStatus(GObj *fighter_gobj)
     }
     else ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialNReturn, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }

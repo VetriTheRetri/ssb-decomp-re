@@ -313,7 +313,7 @@ void ftCommonCliffClimbSlow1SetStatus(GObj* fighter_gobj);
 void ftCommonCliffCommon2ProcUpdate(GObj* fighter_gobj);
 void ftCommonCliffCommon2ProcPhysics(GObj* fighter_gobj);
 void ftCommonCliffClimbCommon2ProcMap(GObj* fighter_gobj);
-void ftCommon_CliffAttackEscape2_ProcMap(GObj* fighter_gobj);
+void ftCommonCliffAttackEscape2ProcMap(GObj* fighter_gobj);
 void ftCommonCliffCommon2UpdateCollData(GObj* fighter_gobj);
 void ftCommonCliffCommon2InitStatusVars(GObj* fighter_gobj);
 void ftCommonCliffClimbQuick2SetStatus(GObj* fighter_gobj);
@@ -450,8 +450,8 @@ void ftCommonGuardSetStatusFromEscape(GObj* fighter_gobj);
 sb32 ftCommonGuardCheckInterruptEscape(GObj* fighter_gobj);
 void ftCommonGuardOffProcUpdate(GObj* fighter_gobj);
 void ftCommonGuardOffSetStatus(GObj* fighter_gobj);
-void ftCommon_GuardSetOff_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_GuardSetOff_SetStatus(GObj* fighter_gobj);
+void ftCommonGuardSetOffProcUpdate(GObj* fighter_gobj);
+void ftCommonGuardSetOffSetStatus(GObj* fighter_gobj);
 
 // EscapeF / EscapeB
 void ftCommonEscapeProcUpdate(GObj* fighter_gobj);
@@ -659,17 +659,17 @@ sb32 ftCommonAttackHi4CheckInterruptKneeBend(GObj* fighter_gobj);
 sb32 ftCommonAttackHi4CheckInterruptCommon(GObj* fighter_gobj);
 
 // AttackLw4
-void ftCommon_AttackLw4_SetStatus(GObj* fighter_gobj);
-sb32 ftCommon_AttackLw4_CheckInputSuccess(ftStruct* fp);
-sb32 ftCommon_AttackLw4_CheckInterruptMain(ftStruct* fp);
-sb32 ftCommon_AttackLw4_CheckInterruptSquat(GObj* fighter_gobj);
-sb32 ftCommon_AttackLw4_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonAttackLw4SetStatus(GObj* fighter_gobj);
+sb32 ftCommonAttackLw4CheckInputSuccess(ftStruct* fp);
+sb32 ftCommonAttackLw4CheckInterruptMain(ftStruct* fp);
+sb32 ftCommonAttackLw4CheckInterruptSquat(GObj* fighter_gobj);
+sb32 ftCommonAttackLw4CheckInterruptCommon(GObj* fighter_gobj);
 
 // AttackAirN / AttackAirF / AttackAirB / AttackAirHi / AttackAirLw
-void ftCommon_AttackAirLw_ProcHit(GObj* fighter_gobj);
-void ftCommon_AttackAirLw_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_AttackAir_ProcMap(GObj* fighter_gobj);
-sb32 ftCommon_AttackAir_CheckInterruptCommon(GObj* fighter_gobj);
+void ftCommonAttackAirLwProcHit(GObj* fighter_gobj);
+void ftCommonAttackAirLwProcUpdate(GObj* fighter_gobj);
+void ftCommonAttackAirProcMap(GObj* fighter_gobj);
+sb32 ftCommonAttackAirCheckInterruptCommon(GObj* fighter_gobj);
 
 // LandingAirN / LandingAirF / LandingAirB / LandingAirHi / LandingAirLw
 void ftCommonLandingAirSetStatus(GObj* fighter_gobj);

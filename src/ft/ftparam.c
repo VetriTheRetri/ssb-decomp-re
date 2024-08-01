@@ -373,7 +373,7 @@ void ftParamStopVoiceRunProcDamage(GObj *fighter_gobj)
 }
 
 // Update render priority? Runs when a fighter gets Screen KO'd
-void ftParamMoveFighterDLLink(GObj *fighter_gobj, u8 dl_link)
+void ftParamMoveDLLink(GObj *fighter_gobj, u8 dl_link)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -409,7 +409,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
                     {
                         func_8000BFE8_CBE8(joint);
                     }
-                    else gmAnimParseAnimJoint(joint);
+                    else ftAnimParseAnimJoint(joint);
                     
                     func_ovl0_800C9488(joint, translate_scales);
 
@@ -435,7 +435,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
                 {
                     func_8000BFE8_CBE8(joint);
                 }
-                else gmAnimParseAnimJoint(joint);
+                else ftAnimParseAnimJoint(joint);
                 
                 func_8000CCBC_D8BC(joint);
 
@@ -708,7 +708,7 @@ s32 ftParamGetBestHitStatusAll(GObj *fighter_gobj)
 }
 
 // 0x800E8B00
-void ftParamInitFighterHurtPartAll(GObj *fighter_gobj)
+void ftParamResetFighterHurtPartAll(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftHurtbox *ft_hurt = &fp->fighter_hurt[0];
@@ -767,17 +767,17 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 drawstatus)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
-    ftBackupPartContainer *backup_parts_container;
+    ftCommonPartContainer *common_parts_container;
     ftModelPart *model_part;
     ftModelPartDrawStatus *joint_drawstatus;
     ftParts *ft_parts;
     DObj *joint;
     s32 detail_id;
-    void **temp_matanim_joint;
+    void **costume_matanim_joint;
     MObjSub **mobjsub;
 
     joint = fp->joint[joint_id];
-    backup_parts_container = attributes->backup_parts_container;
+    common_parts_container = attributes->common_parts_container;
     joint_drawstatus = &fp->joint_drawstatus[joint_id - nFTPartsJointEnumMax];
     ft_parts = joint->user_data.p;
 
@@ -797,35 +797,35 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 drawstatus)
 
                     joint->display_list = model_part->display_list;
 
-                    func_ovl0_800C8CB8(joint, model_part->mobjsub, model_part->temp_matanim_joint, model_part->main_matanim_joint, fp->costume);
+                    func_ovl0_800C8CB8(joint, model_part->mobjsub, model_part->costume_matanim_joint, model_part->main_matanim_joint, fp->costume);
 
                     ft_parts->flags = model_part->flags;
                 }
                 else
                 {
-                    if ((fp->detail_current == nFTPartsDetailHigh) || (backup_parts_container->backup_parts[1].dobj_desc[joint_id - nFTPartsJointEnumMax].display_list == NULL))
+                    if ((fp->detail_current == nFTPartsDetailHigh) || (common_parts_container->common_parts[1].dobj_desc[joint_id - nFTPartsJointEnumMax].display_list == NULL))
                     {
                         detail_id = 0;
                     }
                     else detail_id = 1;
 
-                    joint->display_list = backup_parts_container->backup_parts[detail_id].dobj_desc[joint_id - nFTPartsJointEnumMax].display_list;
+                    joint->display_list = common_parts_container->common_parts[detail_id].dobj_desc[joint_id - nFTPartsJointEnumMax].display_list;
 
-                    if (backup_parts_container->backup_parts[detail_id].mobjsub != NULL)
+                    if (common_parts_container->common_parts[detail_id].mobjsub != NULL)
                     {
-                        mobjsub = backup_parts_container->backup_parts[detail_id].mobjsub[joint_id - nFTPartsJointEnumMax];
+                        mobjsub = common_parts_container->common_parts[detail_id].mobjsub[joint_id - nFTPartsJointEnumMax];
                     }
                     else mobjsub = NULL;
 
-                    if (backup_parts_container->backup_parts[detail_id].temp_matanim_joint != NULL)
+                    if (common_parts_container->common_parts[detail_id].costume_matanim_joint != NULL)
                     {
-                        temp_matanim_joint = backup_parts_container->backup_parts[detail_id].temp_matanim_joint[joint_id - nFTPartsJointEnumMax];
+                        costume_matanim_joint = common_parts_container->common_parts[detail_id].costume_matanim_joint[joint_id - nFTPartsJointEnumMax];
                     }
-                    else temp_matanim_joint = NULL;
+                    else costume_matanim_joint = NULL;
 
-                    func_ovl0_800C8CB8(joint, mobjsub, temp_matanim_joint, NULL, fp->costume);
+                    func_ovl0_800C8CB8(joint, mobjsub, costume_matanim_joint, NULL, fp->costume);
 
-                    ft_parts->flags = backup_parts_container->backup_parts[detail_id].flags;
+                    ft_parts->flags = common_parts_container->common_parts[detail_id].flags;
                 }
             }
             else joint->display_list = NULL;
@@ -850,17 +850,17 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
-    ftBackupPartContainer *backup_parts_container;
+    ftCommonPartContainer *common_parts_container;
     ftModelPart *model_part;
     ftModelPartDrawStatus *joint_drawstatus;
     ftParts *ft_parts;
     DObj *joint;
     s32 detail_id;
-    void **temp_matanim_joint;
+    void **costume_matanim_joint;
     MObjSub **mobjsub;
     s32 i;
 
-    backup_parts_container = attributes->backup_parts_container;
+    common_parts_container = attributes->common_parts_container;
 
     for (i = 0; i < ARRAY_COUNT(fp->joint) - nFTPartsJointEnumMax; i++)
     {
@@ -890,35 +890,35 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
 
                         joint->display_list = model_part->display_list;
 
-                        func_ovl0_800C8CB8(joint, model_part->mobjsub, model_part->temp_matanim_joint, model_part->main_matanim_joint, fp->costume);
+                        func_ovl0_800C8CB8(joint, model_part->mobjsub, model_part->costume_matanim_joint, model_part->main_matanim_joint, fp->costume);
 
                         ft_parts->flags = model_part->flags;
                     }
                     else
                     {
-                        if ((fp->detail_current == nFTPartsDetailHigh) || (backup_parts_container->backup_parts[1].dobj_desc[i].display_list == NULL))
+                        if ((fp->detail_current == nFTPartsDetailHigh) || (common_parts_container->common_parts[1].dobj_desc[i].display_list == NULL))
                         {
                             detail_id = 0;
                         }
                         else detail_id = 1;
 
-                        joint->display_list = backup_parts_container->backup_parts[detail_id].dobj_desc[i].display_list;
+                        joint->display_list = common_parts_container->common_parts[detail_id].dobj_desc[i].display_list;
 
-                        if (backup_parts_container->backup_parts[detail_id].mobjsub != NULL)
+                        if (common_parts_container->common_parts[detail_id].mobjsub != NULL)
                         {
-                            mobjsub = backup_parts_container->backup_parts[detail_id].mobjsub[i];
+                            mobjsub = common_parts_container->common_parts[detail_id].mobjsub[i];
                         }
                         else mobjsub = NULL;
 
-                        if (backup_parts_container->backup_parts[detail_id].temp_matanim_joint != NULL)
+                        if (common_parts_container->common_parts[detail_id].costume_matanim_joint != NULL)
                         {
-                            temp_matanim_joint = backup_parts_container->backup_parts[detail_id].temp_matanim_joint[i];
+                            costume_matanim_joint = common_parts_container->common_parts[detail_id].costume_matanim_joint[i];
                         }
-                        else temp_matanim_joint = NULL;
+                        else costume_matanim_joint = NULL;
 
-                        func_ovl0_800C8CB8(joint, mobjsub, temp_matanim_joint, NULL, fp->costume);
+                        func_ovl0_800C8CB8(joint, mobjsub, costume_matanim_joint, NULL, fp->costume);
 
-                        ft_parts->flags = backup_parts_container->backup_parts[detail_id].flags;
+                        ft_parts->flags = common_parts_container->common_parts[detail_id].flags;
                     }
                 }
             }
@@ -998,16 +998,16 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
     DObj *joint;
     GObj *ft_parts_gobj;
     ftParts *ft_parts;
-    ftBackupPartContainer *backup_parts_container;
+    ftCommonPartContainer *common_parts_container;
     ftMesh *ft_mesh;
     ftModelPartDrawStatus *joint_drawstatus;
     s32 detail_id;
     ftModelPart *model_part;
     MObjSub **mobjsub;
-    void **temp_matanim_joint;
+    void **costume_matanim_joint;
     s32 i;
 
-    backup_parts_container = attributes->backup_parts_container;
+    common_parts_container = attributes->common_parts_container;
     ft_mesh = attributes->mesh;
 
     for (i = 0; i < ARRAY_COUNT(fp->joint) - nFTPartsJointEnumMax; i++)
@@ -1026,29 +1026,29 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
                 {
                     model_part = &attributes->model_parts_container->model_parts_desc[i]->model_parts[joint_drawstatus->drawstatus_current][fp->detail_current - 1];
 
-                    func_ovl0_800C8CB8(joint, model_part->mobjsub, model_part->temp_matanim_joint, model_part->main_matanim_joint, costume);
+                    func_ovl0_800C8CB8(joint, model_part->mobjsub, model_part->costume_matanim_joint, model_part->main_matanim_joint, costume);
                 }
                 else
                 {
-                    if ((fp->detail_current == nFTPartsDetailHigh) || (backup_parts_container->backup_parts[1].dobj_desc[i].display_list == NULL))
+                    if ((fp->detail_current == nFTPartsDetailHigh) || (common_parts_container->common_parts[1].dobj_desc[i].display_list == NULL))
                     {
                         detail_id = 0;
                     }
                     else detail_id = 1;
 
-                    if (backup_parts_container->backup_parts[detail_id].mobjsub != NULL)
+                    if (common_parts_container->common_parts[detail_id].mobjsub != NULL)
                     {
-                        mobjsub = backup_parts_container->backup_parts[detail_id].mobjsub[i];
+                        mobjsub = common_parts_container->common_parts[detail_id].mobjsub[i];
                     }
                     else mobjsub = NULL;
 
-                    if (backup_parts_container->backup_parts[detail_id].temp_matanim_joint != NULL)
+                    if (common_parts_container->common_parts[detail_id].costume_matanim_joint != NULL)
                     {
-                        temp_matanim_joint = backup_parts_container->backup_parts[detail_id].temp_matanim_joint[i];
+                        costume_matanim_joint = common_parts_container->common_parts[detail_id].costume_matanim_joint[i];
                     }
-                    else temp_matanim_joint = NULL;
+                    else costume_matanim_joint = NULL;
 
-                    func_ovl0_800C8CB8(joint, mobjsub, temp_matanim_joint, NULL, costume);
+                    func_ovl0_800C8CB8(joint, mobjsub, costume_matanim_joint, NULL, costume);
                 }
             }
             if ((ft_mesh != NULL) && ((i + nFTPartsJointEnumMax) == ft_mesh->joint_id))
@@ -1068,7 +1068,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
 
                     omAddDObjForGObj(ft_parts_gobj, ft_mesh->dl);
 
-                    func_ovl0_800C8CB8(DObjGetStruct(ft_parts->gobj), ft_mesh->mobjsub, ft_mesh->temp_matanim_joint, NULL, costume);
+                    func_ovl0_800C8CB8(DObjGetStruct(ft_parts->gobj), ft_mesh->mobjsub, ft_mesh->costume_matanim_joint, NULL, costume);
                 }
             }
         }
@@ -1484,7 +1484,7 @@ f32 ftParamGetCommonKnockback(s32 percent_damage, s32 recent_damage, s32 hit_dam
     {
         knockback = 2500.0F;
     }
-    if (gSaveData.mprotect_fail & GMBACKUP_ERROR_RANDOMKNOCKBACK)
+    if (gSaveData.error_flags & GMBACKUP_ERROR_RANDOMKNOCKBACK)
     {
         knockback = mtTrigGetRandomFloat() * 200.0F;
     }
@@ -1510,7 +1510,7 @@ f32 ftParamGetGroundHazardKnockback(s32 percent_damage, s32 recent_damage, s32 h
     {
         knockback = 2500.0F;
     }
-    if (gSaveData.mprotect_fail & GMBACKUP_ERROR_RANDOMKNOCKBACK)
+    if (gSaveData.error_flags & GMBACKUP_ERROR_RANDOMKNOCKBACK)
     {
         knockback = mtTrigGetRandomFloat() * 200.0F;
     }
@@ -1617,7 +1617,7 @@ f32 ftParamGetStale(s32 player, s32 attack_id, u16 motion_count)
 }
 
 // 0x800EA54C
-s32 ftParamGetStaledDamageOutput(s32 player, s32 damage, s32 attack_id, u16 motion_count)
+s32 ftParamGetStaledDamage(s32 player, s32 damage, s32 attack_id, u16 motion_count)
 {
     f32 stale = ftParamGetStale(player, attack_id, motion_count);
 
@@ -2385,7 +2385,7 @@ void ftParamSetAnimLocks(ftStruct *fp)
         }
         else current_flags = flags1;
 
-        if (current_flags & 0x80000000)
+        if (current_flags & (1 << 31))
         {
             if (fp->joint[i] != NULL)
             {
@@ -2673,6 +2673,6 @@ s32 ftParamGetCostumeDevelop(s32 ft_kind)
 // 0x800EC130
 void ftParamGameSet(void)
 {
-    ftMainClearMapElementsAll();
+    ftMainClearGroundElementsAll();
     ifCommonBattleInitPlacement();
 }

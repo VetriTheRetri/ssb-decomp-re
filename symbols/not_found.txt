@@ -827,6 +827,14 @@ gFTDataNessParticleBankID = 0x80131148;
 
 gFTDataBossBattleMotion = 0x80131174;
 
+sFTMainGroundObstacles = 0x80131180;
+sFTMainGroundHazards = 0x80131190;
+sFTMainGroundObstaclesNum = 0x80131198;
+sFTMainGroundHazardsNum = 0x8013119C;
+
+sFTMainHitlogID = 0x801311C0;
+sFTMainHitlogs = 0x801311C8;
+
 sFTRenderMainSkyFogAlpha = 0x801312F0;
 sFTRenderMainIsShadeFog = 0x801312F1;
 sFTRenderMainFogColor = 0x801312F4;
@@ -911,7 +919,9 @@ sEFGroundActor = 0x80131AD8;
 
 gGM1PGameBonusTomatoCount = 0x801936A8;
 gGM1PGameBonusHeartCount = 0x801936A9;
+gGM1PGameBonusStarCount = 0x801936AA;
 gGM1PGameBonusShieldBreaker = 0x801936AB;
+gGM1PGameBonusGiantImpact = 0x801936AC;
 gGM1PGameBonusMewCatcher = 0x801936AD;
 
 gTransferBattleState = 0x800A4D08;

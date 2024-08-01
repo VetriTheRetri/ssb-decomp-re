@@ -314,7 +314,7 @@ void ftCommonItemShootSetStatus(GObj *fighter_gobj)
     fp->command_vars.flags.flag0 = 0;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->proc_accessory = proc_accessory;
 
@@ -344,7 +344,7 @@ void ftCommonItemShootAirSetStatus(GObj *fighter_gobj)
     fp->command_vars.flags.flag0 = 0;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->proc_accessory = proc_accessory;
 

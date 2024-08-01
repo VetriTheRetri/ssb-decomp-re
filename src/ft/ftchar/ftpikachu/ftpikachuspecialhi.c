@@ -111,7 +111,7 @@ void ftPikachuSpecialHiStartSetStatus(GObj *fighter_gobj)
 {
     ftPikachuSpecialHiStartInitStatusVars(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialHiStart, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
     ftPikachuSpecialHiInitMiscVars(fighter_gobj);
 }
 
@@ -120,7 +120,7 @@ void ftPikachuSpecialAirHiStartSetStatus(GObj *fighter_gobj)
 {
     ftPikachuSpecialHiStartInitStatusVars(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirHiStart, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
     ftPikachuSpecialHiInitMiscVars(fighter_gobj);
 }
 
@@ -313,7 +313,7 @@ void ftPikachuSpecialHiSetStatus(GObj *fighter_gobj)
             fp->phys_info.vel_ground.x *= FTPIKACHU_QUICKATTACK_VEL_MUL;
         }
         ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialHi, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
-        ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+        ftMainPlayAnimNoEffect(fighter_gobj);
 
         return;
     }
@@ -363,7 +363,7 @@ void ftPikachuSpecialAirHiSetStatus(GObj *fighter_gobj)
         fp->phys_info.vel_air.y *= FTPIKACHU_QUICKATTACK_VEL_MUL;
     }
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirHi, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x801531AC
@@ -541,7 +541,7 @@ void ftPikachuSpecialHiEndSetStatus(GObj *fighter_gobj)
     fp->phys_info.vel_ground.x = fp->status_vars.pikachu.specialhi.vel_ground_bak * FTPIKACHU_QUICKATTACK_VEL_BAK_MUL;
 
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialHiEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x80153654
@@ -555,5 +555,5 @@ void ftPikachuSpecialAirHiEndSetStatus(GObj *fighter_gobj)
     fp->phys_info.vel_air.y = fp->status_vars.pikachu.specialhi.vel_y_bak * FTPIKACHU_QUICKATTACK_VEL_BAK_MUL;
 
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirHiEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }

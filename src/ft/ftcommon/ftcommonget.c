@@ -249,7 +249,7 @@ void ftCommonGetSetStatus(GObj *fighter_gobj, GObj *item_gobj)
     fp->command_vars.flags.flag1 = 0;
 
     ftMainSetFighterStatus(fighter_gobj, ((ip->weight == nITWeightHeavy) ? nFTCommonStatusHeavyGet : nFTCommonStatusLightGet), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     if (fp->status_info.status_id == nFTCommonStatusHeavyGet)
     {

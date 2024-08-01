@@ -216,7 +216,7 @@ GObj* grZebesMakeGround(void)
     GObj *acid_gobj = grZebesMakeAcid();
 
     omAddGObjCommonProc(ground_gobj, grZebesProcUpdate, nOMObjProcessKindProc, 4);
-    ftMainCheckSetMapEnvGObj(acid_gobj, grZebesAcidCheckGetDamageKind);
+    ftMainCheckAddGroundHazard(acid_gobj, grZebesAcidCheckGetDamageKind);
 
     return ground_gobj;
 }

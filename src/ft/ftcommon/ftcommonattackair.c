@@ -58,7 +58,7 @@ void ftCommonAttackAirProcMap(GObj *fighter_gobj)
     {
         if ((fp->command_vars.flags.flag1 != 0) && (fp->time_since_last_z > FTCOMMON_ATTACKAIR_SMOOTH_LANDING_BUFFER_FRAMES_MAX))
         {
-            if (fp->ft_data->battlemotion->script_info[fp->status_info.motion_id + (nFTCommonStatusLandingAirN - nFTCommonStatusAttackAirN)].anim_id != 0)
+            if (fp->ft_data->battlemotion->script_info[fp->status_info.motion_id + (nFTCommonStatusLandingAirN - nFTCommonStatusAttackAirN)].anim_file_id != 0)
             {
                 ftCommonLandingAirSetStatus(fighter_gobj);
             }
@@ -195,7 +195,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
 
                     fp->status_vars.common.attackair.rehit_timer = 0;
                 }
-                ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+                ftMainPlayAnimNoEffect(fighter_gobj);
 
                 fp->time_since_last_z = FTINPUT_ZTRIGLAST_FRAMES_MAX;
 

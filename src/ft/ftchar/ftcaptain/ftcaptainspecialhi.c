@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 // 0x80160280
-void ftCaptainSpecialHiInitCatchVars(ftStruct *fp)
+void ftCaptainSpecialHiSetCatchParams(ftStruct *fp)
 {
     ftParamSetCatchParams(fp, FTCATCHKIND_MASK_CAPTAINSPECIALHI, ftCaptainSpecialHiProcCatch, ftCommonCaptureCaptainProcCapture);
 }
@@ -148,8 +148,8 @@ void ftCaptainSpecialHiSetStatus(GObj *fighter_gobj)
     fp->proc_status = ftCaptainSpecialHiProcStatus;
 
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCaptainSpecialHiInitCatchVars(fp);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftCaptainSpecialHiSetCatchParams(fp);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x80160690
@@ -159,7 +159,7 @@ void ftCaptainSpecialHiProcCatch(GObj *fighter_gobj)
     GObj *search_gobj;
 
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialHiCatch, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
     ftPhysics_StopVelAll(fighter_gobj);
 
@@ -182,7 +182,7 @@ void ftCaptainSpecialHiThrowSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialHiThrow, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_NONE);
 
     if ((fp->x192_flag_b3 == TRUE) && (fp->catch_gobj != NULL))
@@ -200,6 +200,6 @@ void ftCaptainSpecialAirHiSetStatus(GObj *fighter_gobj)
     fp->proc_status = ftCaptainSpecialHiProcStatus;
 
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCaptainSpecialHiInitCatchVars(fp);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftCaptainSpecialHiSetCatchParams(fp);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }

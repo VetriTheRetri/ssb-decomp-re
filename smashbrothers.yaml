@@ -435,12 +435,13 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
-    # Will this work?
+    # Fighter main file
+      - [0x5A8F0, c, ft/ftmain]
       - [0x0632C0, pad, pad0x0632C0]
     # Parameter manager for (mainly) fighters
       - [0x0632D0, c, ft/ftparam]
     # Model animation parser
-      - [0x067960, c, gm/gmanim]
+      - [0x067960, c, ft/ftanim]
     # General collision and position calculation
       - [0x068580, c, gm/gmcollision]
     # Fighter main renderer
@@ -494,10 +495,12 @@ segments:
 
     # ovl2 data
       - [0x0923D0, data, ovl2]
+    # Fighter main file
+      - [0x0A4500, .data, ft/ftmain]
     # Parameter manager for (mainly) fighters
       - [0x0A6FB0, .data, ft/ftparam]
     # Model animation parser
-      - [0x0A7110, .data, gm/gmanim]
+      - [0x0A7110, .data, ft/ftanim]
     # Fighter main renderer
       - [0x0A7130, .data, ft/ftrendermain]
     # Map collisions and stage data
@@ -534,10 +537,12 @@ segments:
 
     # ovl2 read-only data
       - [0x0AB250, rodata, ovl2]
+    # Fighter main file
+      - [0x0AB380, .rodata, ft/ftmain]
     # Parameter update for (mainly) fighters
       - [0x0AB6A0, .rodata, ft/ftparam]
     # Model animation parser
-      - [0x0AB900, .rodata, gm/gmanim]
+      - [0x0AB900, .rodata, ft/ftanim]
     # General collision and position calculation
       - [0x0AB980, .rodata, gm/gmcollision]
     # Fighter main renderer

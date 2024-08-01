@@ -238,7 +238,7 @@ struct mpGroundData
 	u32 music_id;
 	void *map_nodes;
 	mpItemWeights *item_weights; // Randomizer weights of items
-	s16 unk_groundinfo_0x88;
+	s16 altitude_warning;
 	s16 cam_bound_team_top;
 	s16 cam_bound_team_bottom;
 	s16 cam_bound_team_right;

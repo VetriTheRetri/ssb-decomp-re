@@ -5,6 +5,8 @@
 
 #define FTKIRBY_JUMPAERIAL_VEL_MUL 0.8F
 
+#define FTKIRBY_COPY_MODELPARTS_JOINT 6
+
 #define FTKIRBY_COPYDAMAGE_LOSECOPY_RANDOM (1.0F / 12.0F)  // 0.083333336F
 
 #define FTKIRBY_CHARGE_EFFECT_JOINT 16
@@ -282,7 +284,7 @@ typedef enum ftKirbyStatus
 typedef struct ftKirbyCopy
 {
     u16 copy_id;
-    s16 copy_hat_rs;
+    s16 copy_drawstatus;
     f32 effect_scale; // Random position offset used for blue sparkle effect?
     s32 star_damage;
 

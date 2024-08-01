@@ -142,7 +142,7 @@ typedef union gmStatFlags
 {
 	struct
 	{
-		u16 unknown : 3;
+		u16 unused : 3;
 		ub16 is_smash_attack : 1;
 		ub16 is_ga : 1;
 		ub16 is_projectile : 1;
@@ -154,7 +154,7 @@ typedef union gmStatFlags
 
 typedef struct gmColScript
 {
-	u32* p_script; // Pointer to Color Animation script?
+	u32 *p_script; // Pointer to Color Animation script?
 	u16 color_event_timer;
 	u16 script_index;
 	void* p_subroutine[1];
@@ -167,7 +167,7 @@ typedef struct gmColScript
 typedef struct gmColKeys
 {
 	u8 r, g, b, a;
-	s16 ir, ig, ib, ia; // Interpolation step
+	s16 ir, ig, ib, ia; 		// Interpolation step
 
 } gmColKeys;
 
@@ -176,24 +176,22 @@ typedef struct gmColAnim
 	gmColScript cs[2];
 	s32 duration;
 	s32 colanim_id;
-	gmColKeys maincolor; // Used as both PrimColor and EnvColor? DK VS Samus intro
-						   // scene uses it for Prim and items render it as Env
+	gmColKeys maincolor; 		// Used as both PrimColor and EnvColor? Screen flashes use it as Prim and items as Env
 	f32 light_angle1;
 	f32 light_angle2;
 	gmColKeys blendcolor;
 	ub8 is_use_maincolor : 1;
 	ub8 is_use_light : 1;
 	ub8 is_use_blendcolor : 1;
-	u8 skeleton_id : 2; // ID of skeleton model to use during electric shock
-						// ColAnim?
+	u8 skeleton_id : 2; 		// ID of skeleton model to use during electric shock ColAnim?
 
 } gmColAnim;
 
 typedef struct gmColDesc
 {
 	void *p_script;
-	u8 priority;
-	u8 unk_colanimdesc_0x5;
+	u8 priority;				// If this is >= current ColAnim's priority, the new ColAnim gets applied
+	ub8 is_unlocked;			// If TRUE, ColAnim can be interrupted on fighter status change
 
 } gmColDesc;
 

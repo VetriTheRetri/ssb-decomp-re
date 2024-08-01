@@ -3849,7 +3849,7 @@ ftStruct* ftComputerWaitGetTarget(ftStruct *this_fp)
 
             if (this_fp->team != other_fp->team)
             {
-                if (other_fp->status_info.status_id >= nFTCommonStatusActionStart)
+                if (other_fp->status_info.status_id >= nFTCommonStatusControlStart)
                 {
                     if ((ft_com->target_gobj != NULL) && (other_fp->fighter_gobj == ft_com->target_gobj))
                     {
@@ -4123,7 +4123,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                 }
                 break;
 
-            case nFTKindMasterHand:
+            case nFTKindBoss:
             case nFTKindPolyFox:
             case nFTKindPolyDonkey:
             case nFTKindPolySamus:
@@ -7775,7 +7775,7 @@ void ftComputerProcessAll(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftComputer *ft_com = &fp->fighter_com;
 
-    if (fp->ft_kind != nFTKindMasterHand)
+    if (fp->ft_kind != nFTKindBoss)
     {
         if (ft_com->behavior_change_wait != 0)
         {
@@ -7806,7 +7806,7 @@ void ftComputerSetupAll(GObj *fighter_gobj)
 
     bzero(ft_com, sizeof(*ft_com));
 
-    if (fp->ft_kind != nFTKindMasterHand)
+    if (fp->ft_kind != nFTKindBoss)
     {
         ft_com->origin_pos.x = ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
 

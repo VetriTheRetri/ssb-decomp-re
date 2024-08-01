@@ -114,7 +114,7 @@ void ftCommonDashSetStatus(GObj *fighter_gobj, u32 flag)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDash, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->phys_info.vel_ground.x = fp->attributes->dash_speed;
     fp->tap_stick_x = FTINPUT_STICKBUFFER_FRAMES_MAX;

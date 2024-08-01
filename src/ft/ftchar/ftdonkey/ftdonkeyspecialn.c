@@ -290,7 +290,7 @@ void ftDonkeySpecialNStartSetStatus(GObj *fighter_gobj)
 
     fp->proc_damage = ftDonkeySpecialNProcDamage;
 
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
     ftDonkeySpecialNInitStatusVars(fighter_gobj);
 }
 
@@ -303,6 +303,6 @@ void ftDonkeySpecialAirNStartSetStatus(GObj *fighter_gobj)
 
     fp->proc_damage = ftDonkeySpecialNProcDamage;
 
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
     ftDonkeySpecialNInitStatusVars(fighter_gobj);
 }

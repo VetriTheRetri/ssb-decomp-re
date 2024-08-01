@@ -48,7 +48,7 @@ extern void jtgt_ovl3_801601A0(GObj* fighter_gobj);
 extern void ftCaptainSpecialAirLwSetStatus(GObj* fighter_gobj);
 
 // SpecialHi / SpecialAirHi
-extern void ftCaptainSpecialHiInitCatchVars(ftStruct* fp);
+extern void ftCaptainSpecialHiSetCatchParams(ftStruct* fp);
 extern void ftCaptainSpecialHiProcUpdate(GObj* fighter_gobj);
 extern void ftCaptainSpecialHiCatchProcUpdate(GObj* fighter_gobj);
 extern void ftCaptainSpecialHiProcInterrupt(GObj* fighter_gobj);

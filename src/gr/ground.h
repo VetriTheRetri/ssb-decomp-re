@@ -6,10 +6,10 @@
 
 extern intptr_t lGRCommonHeaderStart;                   // 0x00000014
 
-extern grMapHazard gMapObjects[2];
-extern grMapEnvironment gMapEnvironments[1];
-extern s32 gMapObjectCount;
-extern s32 gMapEnvironmentCount;
+extern grObstacle gHazards[2];
+extern grHazard gEnvironmentironments[1];
+extern s32 gHazardCount;
+extern s32 gEnvironmentironmentCount;
 extern grStruct gGRCommonStruct;
 
 #endif

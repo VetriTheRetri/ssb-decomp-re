@@ -129,7 +129,7 @@ void func_ovl5_8018D1A0()
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
-		player_spawn = dFTDefaultFighterDesc;
+		player_spawn = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot) continue;
 

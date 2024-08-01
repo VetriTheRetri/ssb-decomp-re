@@ -380,7 +380,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftFoxSpecialLwHitProcUpdate,			// Proc Update
+		ftFoxSpecialLwEndProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		ftMap_CheckGroundStopEdgeFall			// Proc Map

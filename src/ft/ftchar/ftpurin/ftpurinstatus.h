@@ -269,7 +269,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 	// Status 233 (0xE9): SpecialAirHi
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTPurinMotionSpecialAirHi,			// Script ID
+		nFTPurinMotionSpecialHi,			// Script ID - no SpecialAirHi ID, reuses SpecialHi
 		nFTMotionAttackIDSpecialHi,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
@@ -309,7 +309,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 	// Status 235 (0xEB): SpecialAirLw
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTPurinMotionSpecialAirLw,			// Script ID
+		nFTPurinMotionSpecialLw,			// Script ID - no SpecialAirLw ID, reuses SpecialLw
 		nFTMotionAttackIDSpecialLw,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////

@@ -16,13 +16,13 @@ extern sb32 gFTMainIsHurtDetect[4];
 extern sb32 gFTMainIsHitDetect[4];
 
 extern s32 gFighterHitLogIndex;
-extern ftHitCollisionLog gFighterHitLogTable[/* */];
+extern ftHitlog gFighterHitLogTable[/* */];
 
 extern u16 gFTManagerMotionCount;
 extern u16 gFTManagerStatUpdateCount; // Updated each time an entity's status is changed? e.g. PK Fire pillar increments this twice, desyncing it from gFTManagerMotionCount
 
 // Data - 0x80116DD0
-extern ftCreateDesc dFTDefaultFighterDesc;
+extern ftCreateDesc dFTManagerDefaultFighterDesc;
 extern f32 dMPCollisionSurfaceFrictions[/* */];
 extern ftData *dFTManagerDataFiles[/* */];
 
@@ -32,6 +32,9 @@ extern Gfx dFTRenderMainHitCollisionBlendDL[/* */];
 extern Gfx dFTRenderMainHitCollisionCubeDL[/* */];
 extern Gfx dFTRenderMainMapCollisionBottomDL[/* */];
 extern Gfx dFTRenderMainMapCollisionTopDL[/* */];
+
+extern ftOpeningDesc *D_ovl1_80390D20[/* */];
+extern ftOpeningDesc D_ovl1_80390BE8;
 
 #define ftGetStruct(fighter_gobj) ((ftStruct*)(fighter_gobj)->user_data.p)
 

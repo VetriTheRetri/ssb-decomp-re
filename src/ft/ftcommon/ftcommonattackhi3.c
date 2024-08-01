@@ -13,7 +13,7 @@ void ftCommonAttackHi3SetStatus(GObj *fighter_gobj)
     f32 stick_angle;
     s32 status_id;
 
-    if (fp->ft_data->battlemotion->script_info[nFTCommonMotionAttackHi3F].anim_id != 0)
+    if (fp->ft_data->battlemotion->script_info[nFTCommonMotionAttackHi3F].anim_file_id != 0)
     {
         stick_angle = atan2f(fp->input.pl.stick_range.y, fp->input.pl.stick_range.x * fp->lr);
 
@@ -24,7 +24,7 @@ void ftCommonAttackHi3SetStatus(GObj *fighter_gobj)
     else status_id = nFTCommonStatusAttackHi3;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x8014FB1C

@@ -170,7 +170,7 @@ scRuntimeInfo D_ovl6_8018F09C
 		0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000088, 0x00000000, 0x800d5cac, 0x00000000, 0x00000000,
 		0x00000000, 0x00000000, 0x00000088, 0x00000000, 0x0000006c, 0x00000000, 0x00000090, 0x8018e5f8 };
 
-extern ftCreateDesc dFTDefaultFighterDesc; // ovl2 80116DD0
+extern ftCreateDesc dFTManagerDefaultFighterDesc; // ovl2 80116DD0
 extern intptr_t D_NF_00000088;
 extern intptr_t D_NF_00000097;
 extern intptr_t D_NF_000000C0;

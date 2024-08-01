@@ -119,7 +119,7 @@ void ftPurinSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftPurinSpecialNInitStatusVars(fighter_gobj);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
 // 0x80151504
@@ -127,5 +127,5 @@ void ftPurinSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftPurinSpecialNInitStatusVars(fighter_gobj);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 }

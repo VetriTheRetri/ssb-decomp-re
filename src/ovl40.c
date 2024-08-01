@@ -145,7 +145,7 @@ void mvOpeningLinkInitFighterStagePanel()
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 	{
-		ftCreateDesc spawn_info = dFTDefaultFighterDesc;
+		ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
 
@@ -224,7 +224,7 @@ void mvOpeningLinkAnimatePosedFighter(GObj* fighter_gobj)
 void mvOpeningLinkCreatePosedFighter()
 {
 	GObj* fighter_gobj;
-	ftCreateDesc spawn_info = dFTDefaultFighterDesc;
+	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = nFTKindLink;
 	spawn_info.costume = ftParamGetCostumeRoyalID(nFTKindLink, 0);

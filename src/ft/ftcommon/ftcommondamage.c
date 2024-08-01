@@ -145,7 +145,7 @@ void ftCommonDamageSetStatus(GObj *fighter_gobj)
     if (fp->hitlag_timer <= 0)
     {
         ftMainSetFighterStatus(fighter_gobj, fp->status_vars.common.damage.status_id, 0.0F, 1.0F, (FTSTATUS_PRESERVE_DAMAGEPLAYER | FTSTATUS_PRESERVE_SHUFFLETIME));
-        ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+        ftMainPlayAnimNoEffect(fighter_gobj);
 
         if (fp->status_info.status_id == nFTCommonStatusDamageFlyRoll)
         {
@@ -600,7 +600,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
         ftKirbySpecialNDamageCheckLoseCopy(this_gobj);
     }
     ftMainSetFighterStatus(this_gobj, status_id_set, 0.0F, 1.0F, FTSTATUS_PRESERVE_DAMAGEPLAYER);
-    ftMainUpdateAnimCheckInterrupt(this_gobj);
+    ftMainPlayAnimNoEffect(this_gobj);
 
     if (knockback >= 65000.0F)
     {

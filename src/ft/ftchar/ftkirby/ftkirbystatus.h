@@ -166,10 +166,10 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		ftMap_CheckGroundCliffSetWaitOrLanding								// Proc Map
 	},
 
-	// Status 228 (0xE4): ThrowFJump
+	// Status 228 (0xE4): ThrowF
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTKirbyMotionThrowFJump,						// Script ID
+		nFTKirbyMotionThrowF,						// Script ID
 		nFTMotionAttackIDThrowF,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
@@ -180,10 +180,10 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDThrowF,					// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftKirbyThrowFJumpProcUpdate,					// Proc Update
+		ftKirbyThrowFProcUpdate,					// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,					// Proc Physics
-		ftKirbyThrowFJumpProcMap						// Proc Map
+		ftKirbyThrowFProcMap							// Proc Map
 	},
 
 	// Status 229 (0xE5): ThrowFFall
@@ -203,7 +203,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		NULL,											// Proc Update
 		NULL,											// Proc Interrupt
 		NULL,											// Proc Physics
-		ftKirbyThrowFJumpProcMap						// Proc Map
+		ftKirbyThrowFProcMap							// Proc Map
 	},
 
 	// Status 230 (0xE6): ThrowFLanding
@@ -335,7 +335,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		/////////////////////////// Status Info ////////////////////////////////
 		0,												// ??? (Might be 3 individual bits?)
 		FALSE,											// Is Smash attack?
-		nMPKineticsGround,								// Grounded or aerial attack?
+		nMPKineticsAir,									// Grounded or aerial attack?
 		TRUE,											// Is projectile?
 		nFTStatusAttackIDSpecialNCopyFox,			// Status attack ID
 
@@ -1235,7 +1235,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		/////////////////////////// Status Info ////////////////////////////////
 		0,												// ??? (Might be 3 individual bits?)
 		FALSE,											// Is Smash attack?
-		nMPKineticsAir,									// Grounded or aerial attack?
+		nMPKineticsGround,								// Grounded or aerial attack? - bruh moment here
 		FALSE,											// Is projectile?
 		nFTStatusAttackIDSpecialN,					// Status attack ID
 
@@ -1495,7 +1495,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		/////////////////////////// Status Info ////////////////////////////////
 		0,												// ??? (Might be 3 individual bits?)
 		FALSE,											// Is Smash attack?
-		nMPKineticsGround,								// Grounded or aerial attack?
+		nMPKineticsAir,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
 		nFTStatusAttackIDSpecialNCopyPurin,			// Status attack ID
 

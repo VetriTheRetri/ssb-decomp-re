@@ -99,7 +99,7 @@ void ftCommonCaptureCaptainProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     ftMap_SetAir(this_fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureCaptain, FTCOMMON_CAPTURECAPTAIN_FRAME_BEGIN, FTCOMMON_CAPTURECAPTAIN_ANIM_SPEED, FTSTATUS_PRESERVE_NONE);
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
     ftPhysics_StopVelAll(fighter_gobj);
     ftCommonCaptureCaptainProcPhysics(fighter_gobj);
 }

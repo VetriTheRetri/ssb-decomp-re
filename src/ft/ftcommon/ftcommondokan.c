@@ -75,7 +75,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
     s32 new_point_id;
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
@@ -199,7 +199,7 @@ void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
 
     fp->is_invisible = TRUE;
     fp->is_playertag_hide = TRUE;
-    fp->is_playing_gfx = TRUE;
+    fp->is_playing_effect = TRUE;
 
     fp->status_vars.common.dokan.pos_adjust_wait = 0;
 

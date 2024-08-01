@@ -21,7 +21,7 @@ f32 dFTCommonRebirthOffsetsX[/* */] = { 0.0F, -1000.0F, 1000.0F, -2000.0F };
 void ftCommonRebirthDownSetStatus(GObj *this_gobj)
 {
     ftStruct *this_fp = ftGetStruct(this_gobj);
-    ftCreateDesc rebirth_vars = dFTDefaultFighterDesc;
+    ftCreateDesc rebirth_vars = dFTManagerDefaultFighterDesc;
     GObj *other_gobj;
     ftStruct *other_fp;
     s32 halo_number;
@@ -74,7 +74,7 @@ loop: // This makes no sense
     this_fp->coll_data.ground_angle.z = 0.0F;
 
     ftMainSetFighterStatus(this_gobj, nFTCommonStatusRebirthDown, 100.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(this_gobj);
+    ftMainPlayAnimNoEffect(this_gobj);
     ftPhysics_StopVelAll(this_gobj);
 
     this_fp->status_vars.common.rebirth.halo_lower_wait = FTCOMMON_REBIRTH_HALO_LOWER_WAIT;
@@ -92,7 +92,7 @@ loop: // This makes no sense
 
     this_fp->status_vars.common.rebirth.halo_number = halo_number;
 
-    this_fp->cam_zoom_range = 0.6F;
+    this_fp->camera_zoom_range = 0.6F;
 
     if (efManagerRebirthHaloMakeEffect(this_gobj, this_fp->attributes->halo_size) != NULL)
     {
@@ -156,14 +156,14 @@ void ftCommonRebirthStandSetStatus(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRebirthStand, 0.0F, 1.0F, (FTSTATUS_PRESERVE_PLAYERTAG | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->is_ignore_training_menu = TRUE;
     fp->is_nullstatus = TRUE;
     fp->x18E_flag_b0 = TRUE;
     fp->x18E_flag_b1 = TRUE;
 
-    fp->cam_zoom_range = 0.6F;
+    fp->camera_zoom_range = 0.6F;
 }
 
 // 0x8013D358
@@ -202,5 +202,5 @@ void ftCommonRebirthWaitSetStatus(GObj *fighter_gobj)
     fp->x18E_flag_b0 = TRUE;
     fp->x18E_flag_b1 = TRUE;
 
-    fp->cam_zoom_range = 0.6F;
+    fp->camera_zoom_range = 0.6F;
 }

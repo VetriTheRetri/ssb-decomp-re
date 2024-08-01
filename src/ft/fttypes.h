@@ -178,11 +178,11 @@ union ftAnimFlags
         u32 x19B_flag_b0 : 1;
         u32 x19B_flag_b1 : 1;
         u32 x19B_flag_b2 : 1;
-        u32 x19B_flag_b3 : 1;
+        u32 is_use_submotion_script : 1;
         u32 x19B_flag_b4 : 1;
         u32 is_have_translate_scale : 1;
-        u32 x19B_flag_b6 : 1;
-        u32 is_parts_anim_lock : 1;
+        u32 is_use_shieldpose : 1;
+        u32 is_use_anim_locks : 1;
 
     } flags;
 
@@ -191,7 +191,7 @@ union ftAnimFlags
 
 struct ftScriptInfo
 {
-    s32 anim_id;            // Animation file ID
+    intptr_t anim_file_id;  // Animation file ID
     intptr_t offset;        // Offset?
     ftAnimFlags anim_flags; // Animation flags
 };
@@ -239,22 +239,22 @@ struct ftModelPart
 {
     void *display_list;
     MObjSub **mobjsub;
-    void **temp_matanim_joint;
+    void **costume_matanim_joint;
     void **main_matanim_joint;
     u8 flags;
 };
 
-struct ftBackupPart
+struct ftCommonPart
 {
     DObjDesc *dobj_desc;
     MObjSub ***mobjsub;
-    void ***temp_matanim_joint;
+    void ***costume_matanim_joint;
     u8 flags;
 };
 
-struct ftBackupPartContainer
+struct ftCommonPartContainer
 {
-    ftBackupPart backup_parts[2];
+    ftCommonPart common_parts[2];
 };
 
 struct ftModelPartDesc
@@ -305,7 +305,7 @@ struct ftStatusDesc
     void (*proc_map)(GObj*);
 };
 
-struct ftIntroStatusDesc
+struct ftOpeningDesc
 {
     s32 motion_id;
     void (*proc_update)(GObj*);
@@ -418,7 +418,7 @@ struct ftHurtbox
     Vec3f size;
 };
 
-struct ftHitCollisionLog // Might have to return once structs are cleaned up (alas once forward declarations are implemented to replace void* with struct*)
+struct ftHitlog // Might have to return once structs are cleaned up (alas once forward declarations are implemented to replace void* with struct*)
 {
     s32 attacker_object_class;
     void *attacker_hit;
@@ -474,12 +474,12 @@ struct ftParts
     GObj *gobj;
 };
 
-struct ftPartIndex
+struct ftWithheldPart
 {
-    s32 joint_id;
-    s32 partindex_0x4;
+    s32 root_joint_id;
+    s32 parent_joint_id;
     s32 partindex_0x8;
-    s32 partindex_0xC;
+    s32 joint_kind;
 };
 
 // Skeleton joints for electric shock effects?
@@ -567,7 +567,7 @@ struct ftComputer
     u8 sticktilts_button_a_count;           // Forward Tilt
     u8 sticksmashs_button_a_count;          // Forward Smash
     u8 sticktilthi_button_a_count;          // Up Tilt
-    u8 sticksmashhi_button_a_count;      // Up Tilt / Up Aerial / Down Tilt / Down Aerial?
+    u8 sticksmashhi_button_a_count;         // Up Tilt / Up Aerial / Down Tilt / Down Aerial?
     u8 sticktiltlw_button_a_count;          // Down Tilt
     u8 sticksmashlw_button_a_count;         // Down Smash / Down Aerial
     u8 sticksmashs_button_b_count;          // Neutral Special
@@ -692,9 +692,9 @@ struct ftAttributes
     f32 jostle_x;
     sb32 is_metallic; // So far only seen this used to determine whether the character makes blue sparks or gray metal dust particles when hit; used by Metal Mario and Samus
     f32 cam_offset_y;
-    f32 closeup_cam_zoom;
-    f32 cam_zoom;
-    f32 cam_zoom_default;
+    f32 closeup_camera_zoom;
+    f32 camera_zoom;
+    f32 camera_zoom_default;
     mpObjectColl object_coll;
     Vec2f cliff_catch; // Ledge grab box
     u16 dead_sfx[2]; // KO voices
@@ -740,8 +740,8 @@ struct ftAttributes
     s32 effect_joint_ids[5];        // The game will cycle through these joints when applying certain particles such as electricity and flames
     sb32 cliff_status_ga[5];        // Bool for whether fighter is grounded or airborne during each cliff state
     u8 filler_0x2CC[0x2D0 - 0x2CC];
-    ftPartIndex *p_ftpart_lookup;
-    ftBackupPartContainer *backup_parts_container;
+    ftWithheldPart *withheld_parts;
+    ftCommonPartContainer *common_parts_container;
     DObjDesc *dobj_lookup; // WARNING: Not actually DObjDesc* but I don't know what this struct is or what its bounds are; bunch of consecutive floats
     void **shield_keys[8];  // One for each ordinal direction
     s32 joint_id1; // What does this do?
@@ -767,7 +767,7 @@ struct ftMesh
     s32 joint_id;
     Gfx *dl;
     MObjSub **mobjsub;
-    void **temp_matanim_joint;
+    void **costume_matanim_joint;
 };
 
 // Main fighter struct
@@ -882,17 +882,17 @@ struct ftStruct
     ub32 is_ignore_magnify : 1;         // Skip rendering magnifying glass if TRUE?
     ub32 is_playertag_hide : 1;         // Skip rendering player indicator if TRUE
     ub32 is_playertag_bossend : 1;      // Also skips rendering player indicator? Used only in "Master Hand defeated" cinematic from what I can tell so far
-    ub32 is_playing_gfx : 1;
+    ub32 is_playing_effect : 1;
     u32 effect_joint_array_id : 4;    // Goes up to 5 by default; index of the array from effect_joint_ids from ftAttributes which houses the actual joint ID
     ub32 is_shield : 1;                 // Fighter's shield bubble is active
-    ub32 is_attach_effect : 1;          // Destroy GFX on action state change if TRUE, not sure why this and is_playing_gfx are different
+    ub32 is_attach_effect : 1;          // Destroy GFX on action state change if TRUE, not sure why this and is_playing_effect are different
     ub32 is_ignore_jostle : 1;
     ub32 is_have_translate_scale : 1;
     ub32 is_disable_control : 1;        // Fighter cannot be controlled if TRUE; enabled when training mode menu is up
     ub32 is_hitstun : 1;
 
     u32 slope_contour : 3;
-    ub32 is_parts_anim_lock : 1;
+    ub32 is_use_anim_locks : 1;
     ub32 is_playing_sfx : 1;
     ub32 x190_flag_b5 : 1;
     ub32 is_show_item : 1;
@@ -1026,8 +1026,8 @@ struct ftStruct
 
     Vec3f entry_pos;
 
-    f32 cam_zoom_frame; // Maximum size of fighter's camera range?
-    f32 cam_zoom_range; // Multiplier of fighter's camera range?
+    f32 camera_zoom_frame; // Maximum size of fighter's camera range?
+    f32 camera_zoom_range; // Multiplier of fighter's camera range?
 
     ftMotionEvent motion_event[2][2];
 

@@ -145,7 +145,7 @@ void func_ovl3_80160B28() // Unused
 void ftKirbyCopyCaptainSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
     ftKirbyCopyCaptainSpecialNInitStatusVars(fighter_gobj);
 }
 
@@ -153,6 +153,6 @@ void ftKirbyCopyCaptainSpecialNSetStatus(GObj *fighter_gobj)
 void ftKirbyCopyCaptainSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
     ftKirbyCopyCaptainSpecialNInitStatusVars(fighter_gobj);
 }

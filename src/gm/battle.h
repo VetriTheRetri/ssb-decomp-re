@@ -495,7 +495,7 @@ typedef struct gmBackupInfo
 	u8 unlock_task_itemswitch; // Records number of VS games played for Item
 							   // Switch unlock
 	u16 vsgame_total;		   // Total amount of VS games played?
-	u8 mprotect_fail;		   // Some kind of anti-piracy measure??? 0x1 results in
+	u8 error_flags;		   // Some kind of anti-piracy measure??? 0x1 results in
 							   // random knockback velocity, 0x2 halves stick range, 0x4
 							   // forces Mario in 1P game, 0x8 forces Peach's Castle
 	u8 unk5E3;

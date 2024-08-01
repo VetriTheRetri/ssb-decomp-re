@@ -78,7 +78,7 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
         thrown_status = &this_fp->attributes->thrown_status[catch_fp->ft_kind].ft_thrown[1];
     }
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainUpdateAnimCheckInterrupt(fighter_gobj);
+    ftMainPlayAnimNoEffect(fighter_gobj);
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
 
     this_fp->command_vars.flags.flag2 = 0;

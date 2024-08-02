@@ -20,7 +20,7 @@ extern void ftMarioSpecialAirNSetStatus(GObj* fighter_gobj);
 extern void ftMarioSpecialHiProcUpdate(GObj* fighter_gobj);
 extern void ftMarioSpecialHiProcInterrupt(GObj* fighter_gobj);
 extern void ftMarioSpecialHiProcPhysics(GObj* fighter_gobj);
-extern sb32 ftMarioSpecialHiCheckIgnorePass(GObj* fighter_gobj);
+extern sb32 ftMarioSpecialHiProcPass(GObj* fighter_gobj);
 extern void ftMarioSpecialHiProcMap(GObj* fighter_gobj);
 extern void ftMarioSpecialHiInitStatusVars(GObj* fighter_gobj);
 extern void ftMarioSpecialHiSetStatus(GObj* fighter_gobj);

@@ -528,7 +528,7 @@ void ftNessJibakuAirProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x801549B0
-sb32 ftNessSpecialHiCheckIgnorePass(GObj *fighter_gobj) // Check if Ness can pass through platforms, TRUE actually denies?
+sb32 ftNessSpecialHiProcPass(GObj *fighter_gobj) // Check if Ness can pass through platforms, TRUE actually denies?
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
@@ -567,7 +567,7 @@ void ftNessJibakuAirProcMap(GObj *fighter_gobj)
     f32 unused;
     Vec3f pos;
 
-    if (mpCommonCheckFighterPassCliff(fighter_gobj, ftNessSpecialHiCheckIgnorePass) != FALSE)
+    if (mpCommonCheckFighterPassCliff(fighter_gobj, ftNessSpecialHiProcPass) != FALSE)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {

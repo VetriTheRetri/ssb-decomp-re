@@ -205,7 +205,7 @@ void ftFoxSpecialHiProcMap(GObj *fighter_gobj)
 }
 
 // 0x8015C264
-sb32 ftFoxSpecialHiCheckIgnorePass(GObj *fighter_gobj)
+sb32 ftFoxSpecialHiProcPass(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -224,7 +224,7 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
 
     fp->status_vars.fox.specialhi.pass_timer++;
 
-    if (mpCommonCheckFighterPass(fighter_gobj, ftFoxSpecialHiCheckIgnorePass) != FALSE)
+    if (mpCommonCheckFighterPass(fighter_gobj, ftFoxSpecialHiProcPass) != FALSE)
     {
         coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_curr) & fp->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND;
 

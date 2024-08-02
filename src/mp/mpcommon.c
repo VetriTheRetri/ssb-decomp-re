@@ -11,7 +11,7 @@ extern f32 func_ovl0_800C7A84();
 // // // // // // // // // // // //
 
 // 0x80130E20 
-sb32 (*gMPCommonProcPass)(GObj*);
+sb32 (*sMPCommonProcPass)(GObj*);
 
 // // // // // // // // // // // //
 //                               //
@@ -513,7 +513,7 @@ sb32 mpCommonRunFighterSpecialCollisions(mpCollData *coll_data, GObj *fighter_go
 
                                             ? 
         
-    mpProcessCheckTestGroundCollisionAdjNew(coll_data, gMPCommonProcPass, fighter_gobj) 
+    mpProcessCheckTestGroundCollisionAdjNew(coll_data, sMPCommonProcPass, fighter_gobj) 
         
                                             :
         
@@ -612,7 +612,7 @@ sb32 mpCommonCheckFighterPass(GObj *fighter_gobj, sb32(*proc_map)(GObj*))
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    gMPCommonProcPass = proc_map;
+    sMPCommonProcPass = proc_map;
 
     return mpProcessUpdateMapProcMain(&fp->coll_data, mpCommonRunFighterSpecialCollisions, fighter_gobj, MPCOLL_PROC_TYPE_PASS);
 }
@@ -622,7 +622,7 @@ sb32 mpCommonCheckFighterPassCliff(GObj *fighter_gobj, sb32(*proc_map)(GObj*))
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    gMPCommonProcPass = proc_map;
+    sMPCommonProcPass = proc_map;
 
     return mpProcessUpdateMapProcMain(&fp->coll_data, mpCommonRunFighterSpecialCollisions, fighter_gobj, MPCOLL_PROC_TYPE_PASS | MPCOLL_PROC_TYPE_CLIFF);
 }

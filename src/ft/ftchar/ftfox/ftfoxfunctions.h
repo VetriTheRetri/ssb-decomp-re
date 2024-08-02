@@ -33,7 +33,7 @@ extern void ftFoxSpecialHiProcUpdate(GObj* fighter_gobj);
 extern void ftFoxSpecialHiProcPhysics(GObj* fighter_gobj);
 extern void ftFoxSpecialAirHiProcPhysics(GObj* fighter_gobj);
 extern void ftFoxSpecialHiProcMap(GObj* fighter_gobj);
-extern sb32 ftFoxSpecialHiCheckIgnorePass(GObj* fighter_gobj);
+extern sb32 ftFoxSpecialHiProcPass(GObj* fighter_gobj);
 extern void ftFoxSpecialAirHiProcMap(GObj* fighter_gobj);
 extern void ftFoxSpecialAirHiSetStatus(GObj* fighter_gobj);
 extern void ftFoxSpecialHiInitStatusVars(ftStruct* fp);

@@ -34,7 +34,7 @@ void ftSamusSpecialHiProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x8015DD20
-sb32 ftSamusSpecialHiCheckIgnorePass(GObj *fighter_gobj)
+sb32 ftSamusSpecialHiProcPass(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -56,7 +56,7 @@ void ftSamusSpecialHiProcMap(GObj *fighter_gobj)
         {
             mpCommonCheckFighterProject(fighter_gobj);
         }
-        else if (mpCommonCheckFighterPassCliff(fighter_gobj, ftSamusSpecialHiCheckIgnorePass) != FALSE)
+        else if (mpCommonCheckFighterPassCliff(fighter_gobj, ftSamusSpecialHiProcPass) != FALSE)
         {
             if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {

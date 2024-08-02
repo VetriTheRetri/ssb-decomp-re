@@ -198,7 +198,7 @@ void ftPikachuSpecialHiProcMap(GObj *fighter_gobj)
 }
 
 // 0x80152BF4
-sb32 ftPikachuSpecialHiCheckIgnorePass(GObj *fighter_gobj)
+sb32 ftPikachuSpecialHiProcPass(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -216,7 +216,7 @@ void ftPikachuSpecialAirHiProcMap(GObj *fighter_gobj)
 
     fp->status_vars.pikachu.specialhi.pass_timer++;
 
-    if (mpCommonCheckFighterPassCliff(fighter_gobj, ftPikachuSpecialHiCheckIgnorePass) != FALSE)
+    if (mpCommonCheckFighterPassCliff(fighter_gobj, ftPikachuSpecialHiProcPass) != FALSE)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {

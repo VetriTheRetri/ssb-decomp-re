@@ -38,7 +38,7 @@ void ftCommonFallSpecialProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x80143808
-sb32 ftCommonFallSpecialCheckIgnorePass(GObj *fighter_gobj)
+sb32 ftCommonFallSpecialProcPass(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -54,7 +54,7 @@ void ftCommonFallSpecialProcMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (mpCommonCheckFighterPassCliff(fighter_gobj, ftCommonFallSpecialCheckIgnorePass) != FALSE)
+    if (mpCommonCheckFighterPassCliff(fighter_gobj, ftCommonFallSpecialProcPass) != FALSE)
     {
         if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
         {

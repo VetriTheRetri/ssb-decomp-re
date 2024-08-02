@@ -11,7 +11,7 @@ void mpProcessSetMultiWallLineID(s32 line_id);
 void mpProcessSetLastWallCollideLeft();
 void mpProcessSetLastWallCollideRight();
 void mpProcessSetLastWallCollideStats(f32 pos, s32 line_id, u32 flags, Vec3f* angle);
-void mpProcessGetLastWallCollideStats(f32* pos, s32* line_id, u32* flags, Vec3f* angle);
+void mpProcessGetLastWallCollideStats(f32* pos, s32* line_id, u32 *flags, Vec3f* angle);
 sb32 mpProcessCheckCeilEdgeCollisionLeft(mpCollData* coll_data);
 void mpProcessCeilEdgeAdjustLeft(mpCollData* coll_data);
 sb32 mpProcessCheckCeilEdgeCollisionRight(mpCollData* coll_data);

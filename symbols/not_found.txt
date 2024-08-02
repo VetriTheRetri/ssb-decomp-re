@@ -773,7 +773,14 @@ g1PGameTotalDamageTaken = 0x80130D6C;
 omAddDObjAnimAll = 0x8000BD1C;
 D_ovl2_801313F4 = 0x801313F4;
 
-gMPCommonProcPass = 0x80130E20;
+sMPProcessMultiWallCollidesNum = 0x80130DE0;
+sMPProcessMultiWallCollideLineIDs = 0x80130DE8;
+sMPProcessLastWallCollidePosition = 0x80130DFC;
+sMPProcessLastWallLineID = 0x80130E00;
+sMPProcessLastWallFlags = 0x80130E04;
+sMPProcessLastWallAngle = 0x80130E08;
+
+sMPCommonProcPass = 0x80130E20;
 
 gFTDataMarioMain = 0x80130E30;
 gFTDataMarioSpecial1 = 0x80130E3C;

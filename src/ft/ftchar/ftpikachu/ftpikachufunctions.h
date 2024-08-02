@@ -77,7 +77,7 @@ extern void ftPikachuSpecialHiProcPhysics(GObj* fighter_gobj);
 extern void ftPikachuSpecialHiProcPhysics(GObj* fighter_gobj);
 extern void ftPikachuSpecialAirHiProcPhysics(GObj* fighter_gobj);
 extern void ftPikachuSpecialHiProcMap(GObj* fighter_gobj);
-extern sb32 ftPikachuSpecialHiCheckIgnorePass(GObj* fighter_gobj);
+extern sb32 ftPikachuSpecialHiProcPass(GObj* fighter_gobj);
 extern void ftPikachuSpecialAirHiProcMap(GObj* fighter_gobj);
 extern void ftPikachuSpecialAirHiSwitchStatusGround(GObj* fighter_gobj);
 extern void ftPikachuSpecialHiSwitchStatusAir(GObj* fighter_gobj);

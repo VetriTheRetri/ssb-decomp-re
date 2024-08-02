@@ -96,7 +96,7 @@ void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x80156320
-sb32 ftMarioSpecialHiCheckIgnorePass(GObj *fighter_gobj) // TRUE = no platform pass?
+sb32 ftMarioSpecialHiProcPass(GObj *fighter_gobj) // TRUE = no platform pass?
 {
     ftStruct* fp = ftGetStruct(fighter_gobj);
 
@@ -118,7 +118,7 @@ void ftMarioSpecialHiProcMap(GObj *fighter_gobj)
         {
             mpCommonCheckFighterProject(fighter_gobj);
         }
-        else if (mpCommonCheckFighterPassCliff(fighter_gobj, ftMarioSpecialHiCheckIgnorePass) != FALSE)
+        else if (mpCommonCheckFighterPassCliff(fighter_gobj, ftMarioSpecialHiProcPass) != FALSE)
         {
             if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
             {

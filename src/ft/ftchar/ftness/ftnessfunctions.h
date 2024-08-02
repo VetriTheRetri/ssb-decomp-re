@@ -65,7 +65,7 @@ extern void ftNessJibakuProcUpdate(GObj* fighter_gobj);
 extern void ftNessJibakuAirProcUpdate(GObj* fighter_gobj);
 extern void ftNessJibakuProcPhysics(GObj* fighter_gobj);
 extern void ftNessJibakuAirProcPhysics(GObj* fighter_gobj);
-extern sb32 ftNessSpecialHiCheckIgnorePass(GObj* fighter_gobj);
+extern sb32 ftNessSpecialHiProcPass(GObj* fighter_gobj);
 extern void ftNessJibakuProcMap(GObj* fighter_gobj);
 extern void ftNessJibakuAirProcMap(GObj* fighter_gobj);
 extern void ftNessJibakuAirSwitchStatusGround(GObj* fighter_gobj);

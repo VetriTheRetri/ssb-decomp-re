@@ -220,7 +220,7 @@ void func_ovl3_801436F0(GObj* fighter_gobj);
 // FallSpecial
 void ftCommonFallSpecialProcInterrupt(GObj* fighter_gobj);
 void ftCommonFallSpecialProcPhysics(GObj* fighter_gobj);
-sb32 ftCommonFallSpecialCheckIgnorePass(GObj* fighter_gobj);
+sb32 ftCommonFallSpecialProcPass(GObj* fighter_gobj);
 void ftCommonFallSpecialProcMap(GObj* fighter_gobj);
 void ftCommonFallSpecialSetStatus(GObj* fighter_gobj, f32 drift, sb32 unknown, sb32 is_fall_accelerate,
 									sb32 is_goto_landing, f32 landing_lag, sb32 is_allow_interrupt);

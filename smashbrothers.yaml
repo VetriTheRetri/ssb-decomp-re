@@ -435,6 +435,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Process map collisions
+      - [0x054D10, c, mp/mpprocess]
     # Common object map collisions
       - [0x059020, c, mp/mpcommon]
       - [0x05A8E0, pad, pad0x05A8E0]
@@ -451,7 +453,7 @@ segments:
       - [0x06C820, c, ft/ftrendermain]
     # Hammer stuff for fighters
       - [0x06EEE0, c, ft/fthammer]
-    # Map collisions and stage data
+    # Calculate map collisions and handle stage data
       - [0x06F1F0, c, mp/mpcollision]
     # Fighter lights renderer?
       - [0x078370, c, ft/ftrenderlights]
@@ -506,7 +508,7 @@ segments:
       - [0x0A7110, .data, ft/ftanim]
     # Fighter main renderer
       - [0x0A7130, .data, ft/ftrendermain]
-    # Map collisions and stage data
+    # Calculate map collisions and handle stage data
       - [0x0A7CE0, .data, mp/mpcollision]
     # Common fighter data
       - [0x0A8030, .data, ft/ftcommondata]
@@ -552,7 +554,7 @@ segments:
       - [0x0AB980, .rodata, gm/gmcollision]
     # Fighter main renderer
       - [0x0ABA60, .rodata, ft/ftrendermain]
-    # Map collisions and data
+    # Calculate map collisions and handle stage data
       - [0x0ABA70, .rodata, mp/mpcollision]
     # Fighter lights renderer?
       - [0x0AC110, .rodata, ft/ftrenderlights]

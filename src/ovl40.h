@@ -21,17 +21,14 @@ extern intptr_t FILE_041_LINK_CAMERA_PARAMS_OFFSET; // 0xC0
 extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay40ArenaHi;  // 803903E0
 extern intptr_t lOverlay40ArenaLo;  // 8018E5E0
-extern u32 gFTAnimHeapSize;			// 80130D9C
+extern u32 gFTManagerAnimHeapSize;			// 80130D9C
 extern f32 gMPCollisionLightAngleX;          // 80131390
 extern f32 gMPCollisionLightAngleY;          // 80131394
-
-extern uintptr_t D_NF_001AC870;
-extern uintptr_t D_NF_00000854;
 
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern void func_8000FA3C(void*, void*, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
-extern void ftManagerSetupDataKind(s32);
+extern void ftManagerSetupFilesAllKind(s32);
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern func_ovl0_800CCF00();
 extern func_ovl0_800CD2CC();
@@ -60,7 +57,7 @@ ftExplainCommand dMvOpeningLinkInputSeq[/* */] =
     FTEXPLAIN_EVENT_END()                          // 0x0000
 };
 
-RldmFileId D_ovl40_8018E0B0[2] = {0x00000025, 0x00000041};
+rdFileID D_ovl40_8018E0B0[2] = {0x00000025, 0x00000041};
 
 // 8018E0B8
 intptr_t dMvOpeningLinkNameOffsets[5] = {

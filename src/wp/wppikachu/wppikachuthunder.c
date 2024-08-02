@@ -177,7 +177,7 @@ GObj* wpPikachuThunderHeadMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
     wp->weapon_hit.update_state = nGMHitUpdateDisable;
     wp->weapon_vars.thunder.thunder_state = wpPikachuThunder_Status_Active;
 
-    wp->group_id = wpManagerGetGroupIndexInc();
+    wp->group_id = wpManagerGetGroupID();
 
     DObjGetStruct(weapon_gobj)->mobj->current_image_id = 3;
 

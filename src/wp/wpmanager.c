@@ -49,7 +49,7 @@ void wpManagerAllocWeapons(void)
 }
 
 // 0x80165558
-wpStruct* wpManagerGetWeaponSetNextAlloc()
+wpStruct* wpManagerGetNextStructAlloc(void)
 {
     wpStruct *new_weapon = sWPManagerStructsAllocFree;
     wpStruct *get_weapon;
@@ -66,7 +66,7 @@ wpStruct* wpManagerGetWeaponSetNextAlloc()
 }
 
 // 0x80165588
-void wpManagerSetPrevWeaponAlloc(wpStruct *wp)
+void wpManagerSetPrevStructAlloc(wpStruct *wp)
 {
     wp->alloc_next = sWPManagerStructsAllocFree;
 
@@ -74,7 +74,7 @@ void wpManagerSetPrevWeaponAlloc(wpStruct *wp)
 }
 
 // 0x801655A0 - Do NOT declare this with a void argument! PK Thunder passes unused arguments to this function.
-u32 wpManagerGetGroupIndexInc()
+u32 wpManagerGetGroupID()
 {
     u32 group_id = sWPManagerGroupID++;
 
@@ -97,7 +97,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     ftStruct *fp;
     s32 unused[7];
 
-    wp = wpManagerGetWeaponSetNextAlloc(spawn_gobj);
+    wp = wpManagerGetNextStructAlloc();
 
     if (wp == NULL)
     {
@@ -107,7 +107,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
 
     if (weapon_gobj == NULL)
     {
-        wpManagerSetPrevWeaponAlloc(wp);
+        wpManagerSetPrevStructAlloc(wp);
         return NULL;
     }
     attributes = (wpAttributes*) ((uintptr_t)*wp_desc->p_weapon + (intptr_t)wp_desc->o_attributes); // I hope this is correct?

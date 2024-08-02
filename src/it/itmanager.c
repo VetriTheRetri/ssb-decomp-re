@@ -172,7 +172,7 @@ void itManagerInitItems(void) // Many linker things here
 }
 
 // 0x8016DFAC
-itStruct* itManagerGetItemSetNextAlloc(void) // Set global Item user_data link pointer to next member
+itStruct* itManagerGetNextStructAlloc(void) // Set global Item user_data link pointer to next member
 {
     itStruct *new_item = gITManagerStructsAllocFree;
     itStruct *get_item;
@@ -189,7 +189,7 @@ itStruct* itManagerGetItemSetNextAlloc(void) // Set global Item user_data link p
 }
 
 // 0x8016DFDC
-void itManagerSetPrevAlloc(itStruct *ip) // Set global Item user_data link pointer to previous member
+void itManagerSetPrevStructAlloc(itStruct *ip) // Set global Item user_data link pointer to previous member
 {
     ip->alloc_next = gITManagerStructsAllocFree;
 
@@ -238,7 +238,7 @@ void itManagerDObjSetup(GObj *gobj, DObjDesc *dobj_desc, DObj **p_dobj, u8 trans
 // 0x8016E174
 GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    itStruct *ip = itManagerGetItemSetNextAlloc();
+    itStruct *ip = itManagerGetNextStructAlloc();
     GObj *item_gobj;
     itAttributes *attributes;
     void (*proc_render)(GObj*);
@@ -252,7 +252,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
 
     if (item_gobj == NULL)
     {
-        itManagerSetPrevAlloc(ip);
+        itManagerSetPrevStructAlloc(ip);
 
         return NULL;
     }
@@ -478,7 +478,7 @@ GObj* itManagerMakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3
 }
 
 // 0x8016EB00
-itStruct* itManagerGetAllocFree(void)
+itStruct* itManagerGetCurrentAlloc(void)
 {
     return gITManagerStructsAllocFree;
 }
@@ -507,7 +507,7 @@ void itManagerMakeRandomItem(GObj *item_gobj)
 
             return;
         }
-        if (itManagerGetAllocFree() != NULL)
+        if (itManagerGetCurrentAlloc() != NULL)
         {
             index = itMainGetWeightedItemID(&gITManagerSpawnActor.weights);
 

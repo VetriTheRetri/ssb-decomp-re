@@ -6,10 +6,10 @@
 #include <ef/efdef.h>
 
 extern void efManagerInitEffects(void);
-extern efStruct* efManagerGetEffectSetNextAlloc(sb32 is_force_return);
+extern efStruct* efManagerGetNextStructAlloc(sb32 is_force_return);
 extern efStruct* efManagerGetEffectNoForce(void);
 extern efStruct* efManagerGetEffectForce(void);
-extern void efManagerSetPrevAlloc(efStruct *ep);
+extern void efManagerSetPrevStructAlloc(efStruct *ep);
 extern void efManagerNoStructProcUpdate(GObj *effect_gobj);
 extern void efManagerHaveStructProcUpdate(GObj *effect_gobj);
 extern void efManagerNoEjectProcUpdate(GObj *effect_gobj);

@@ -129,7 +129,7 @@ void ftCommonDeadResetCommonVars(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamStopVoiceRunProcDamage(fighter_gobj);
-    func_ovl2_800D7994(fighter_gobj);
+    ftManagerDestroyFighterWeapons(fighter_gobj);
     ftCommonThrownDecideDeadResult(fighter_gobj);
 
     fp->ga = nMPKineticsAir;

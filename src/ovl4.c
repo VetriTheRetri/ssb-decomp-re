@@ -134,7 +134,7 @@ void scBattle_StartStockBattle()
 
 		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot) continue;
 
-		ftManagerSetupDataKind(gBattleState->players[player].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
 		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 
 		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
@@ -158,7 +158,7 @@ void scBattle_StartStockBattle()
 
 		ftParamInitPlayerBattleStats(player, ftManagerMakeFighter(&player_spawn));
 	}
-	ftManagerSetupDataPlayables();
+	ftManagerSetupFilesPlayablesAll();
 	ifCommonBattleSetGameStatusWait();
 	func_ovl2_8010E2D4();
 	ifCommonPlayerArrowsInitInterface();
@@ -396,7 +396,7 @@ void scBattle_StartSDBattle()
 
 		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot) continue;
 
-		ftManagerSetupDataKind(gBattleState->players[player].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
 		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 
 		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
@@ -426,7 +426,7 @@ void scBattle_StartSDBattle()
 
 		gBattleState->players[player].is_single_stockicon = FALSE;
 	}
-	ftManagerSetupDataPlayables();
+	ftManagerSetupFilesPlayablesAll();
 	ifCommonBattleSetGameStatusWait();
 	func_ovl2_8010E2D4();
 	ifCommonPlayerArrowsInitInterface();

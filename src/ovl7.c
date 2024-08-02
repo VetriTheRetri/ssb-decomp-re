@@ -1363,7 +1363,7 @@ void scTrainingMode_InitTrainingMode()
 		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
 			continue;
 
-		ftManagerSetupDataKind(gBattleState->players[player].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
 		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
 		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? nGMDirectionL : nGMDirectionR;
@@ -1385,7 +1385,7 @@ void scTrainingMode_InitTrainingMode()
 		ftParamInitPlayerBattleStats(player, fighter_gobj);
 	}
 	scTrainingMode_UpdateOpponentBehavior();
-	ftManagerSetupDataPlayables();
+	ftManagerSetupFilesPlayablesAll();
 	scTrainingMode_SetGameStatusGo();
 	func_ovl2_8010E2D4();
 	ifCommonPlayerArrowsInitInterface();
@@ -1448,14 +1448,14 @@ void scTrainingMode_LoadFiles()
 {
 	rdSetup rldm_setup;
 
-	rldm_setup.tableRomAddr = &D_NF_001AC870;
-	rldm_setup.tableFileCount = &D_NF_00000854;
-	rldm_setup.fileHeap = NULL;
-	rldm_setup.fileHeapSize = 0;
-	rldm_setup.statusBuf = gOverlay7StatusBuf;
-	rldm_setup.statusBufSize = ARRAY_COUNT(gOverlay7StatusBuf);
-	rldm_setup.forceBuf = gOverlay7ForceBuf;
-	rldm_setup.forceBufSize = ARRAY_COUNT(gOverlay7ForceBuf);
+	rldm_setup.table_addr = &lRDManagerTableAddr;
+	rldm_setup.table_files_num = &lRDManagerTableFilesNum;
+	rldm_setup.file_heap = NULL;
+	rldm_setup.file_heap_size = 0;
+	rldm_setup.status_buf = gOverlay7StatusBuf;
+	rldm_setup.status_buf_size = ARRAY_COUNT(gOverlay7StatusBuf);
+	rldm_setup.force_buf = gOverlay7ForceBuf;
+	rldm_setup.force_buf_size = ARRAY_COUNT(gOverlay7ForceBuf);
 
 	rdManagerInitSetup(&rldm_setup);
 	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles,

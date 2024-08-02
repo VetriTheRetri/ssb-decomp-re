@@ -102,14 +102,11 @@ extern SObj* gcAppendSObjWithSprite(GObj*, void*);
 extern f32 menu_zoom[12]; // D_ovl1_80390D90
 // ovl2
 extern u8 D_ovl2_8012EF40[4];
-extern u32 gFTAnimHeapSize;
-
-extern uintptr_t D_NF_001AC870;
-extern uintptr_t D_NF_00000854;
+extern u32 gFTManagerAnimHeapSize;
 
 // ovl26 stuff
 
-RldmFileId D_ovl26_8013B3A0[20] = { // 8013B3A0
+rdFileID D_ovl26_8013B3A0[20] = { // 8013B3A0
 	0x00000011, 0x00000000, 0x00000014, 0x00000015, 0x00000012, 0x00000013, 0x00000016,
 	0x00000000, 0x20202000, 0x20202000, 0xFFFFFF00, 0xFFFFFF00, 0x14141400, 0x00000000,
 	0x20202000, 0x20202000, 0xFFFFFF00, 0xFFFFFF00, 0x00EC0000, 0x00000000

@@ -22,6 +22,9 @@
 
 // Macros
 
+#define FTRENDER_DLLINK_DEFAULT 9
+#define FTRENDER_DLLINK_DEADUPFALL 22
+
 #define FTPARTS_HURT_NUM_MAX 11
 #define FTPARTS_JOINT_NUM_MAX 37
 #define FTPARTS_FLAG_NOFOG 0x40
@@ -145,11 +148,6 @@ struct ftThrownStatusArray
     ftThrownStatus ft_thrown[2];
 };
 
-struct ftDataUnkContainer3
-{
-    s32 x0;
-};
-
 union ftAnimFlags
 {
     struct
@@ -181,7 +179,7 @@ union ftAnimFlags
         u32 x19B_flag_b0 : 1;
         u32 x19B_flag_b1 : 1;
         u32 x19B_flag_b2 : 1;
-        u32 is_use_submotion_script : 1;
+        u32 is_use_moviemotion_script : 1;
         u32 x19B_flag_b4 : 1;
         u32 is_have_translate_scale : 1;
         u32 is_use_shieldpose : 1;
@@ -204,37 +202,44 @@ struct ftScriptInfoArray
     ftScriptInfo script_info[1]; // Array size = last animation ID?
 };
 
+struct ftFileSize
+{
+    size_t main;
+    size_t gamemotion_largest_anim;
+    size_t moviemotion_largest_anim;
+};
+
 struct ftData
 {
-    intptr_t file_main_id; // File size in bytes?
-    intptr_t file_battlemotion_id;
-    intptr_t file_submotion_id;
-    intptr_t file_model_id;
-    intptr_t file_shieldpose_id;
-    intptr_t file_special1_id;
-    intptr_t file_special2_id;
-    intptr_t file_special3_id;
-    intptr_t file_special4_id;
+    u32 file_main_id; // File size in bytes?
+    u32 file_gamemotion_id;
+    u32 file_moviemotion_id;
+    u32 file_model_id;
+    u32 file_shieldpose_id;
+    u32 file_special1_id;
+    u32 file_special2_id;
+    u32 file_special3_id;
+    u32 file_special4_id;
     size_t file_main_size;
     void **p_file_main; // Pointer to character's file?
-    s32 **p_file_battlemotion;
-    s32 **p_file_submotion;
-    s32 **p_file_model;
-    s32 **p_file_shieldpose;
-    s32 **p_file_special1;
-    s32 **p_file_special2;
-    s32 **p_file_special3;
-    s32 **p_file_special4;
+    void **p_file_gamemotion;
+    void **p_file_moviemotion;
+    void **p_file_model;
+    void **p_file_shieldpose;
+    void **p_file_special1;
+    void **p_file_special2;
+    void **p_file_special3;
+    void **p_file_special4;
     s32 *p_particle;
-    intptr_t o_particles1;
-    intptr_t o_particles2;
-    intptr_t o_particles3;
-    intptr_t o_particles4;
+    uintptr_t particles_header_lo;
+    uintptr_t particles_header_hi;
+    uintptr_t particles_texture_lo;
+    uintptr_t particles_texture_hi;
     intptr_t o_attributes; // Offset to fighter's attributes
-    ftScriptInfoArray *battlemotion;
-    ftScriptInfoArray *submotion;
-    s32 battlemotion_array_count;
-    s32 *submotion_array_count;
+    ftScriptInfoArray *gamemotion;
+    ftScriptInfoArray *moviemotion;
+    s32 gamemotion_array_count;
+    s32 *moviemotion_array_count;
     size_t file_anim_size;
 };
 
@@ -699,7 +704,7 @@ struct ftAttributes
     f32 camera_zoom;
     f32 camera_zoom_default;
     mpObjectColl object_coll;
-    Vec2f cliff_catch; // Ledge grab box
+    Vec2f cliffcatch_coll; // Ledge grab box
     u16 dead_sfx[2]; // KO voices
     u16 deadup_sfx;  // Star-KO voice
     u16 damage_sfx;
@@ -806,7 +811,7 @@ struct ftStruct
     s32 damage_resist;          // Resits a specific amount of % damage before breaking, effectively damage-based armor
     s32 shield_health;
     f32 unk_ft_0x38;
-    s32 x3C_unk;
+    s32 unk_ft_0x3C;
     u32 hitlag_timer;
     s32 lr;                     // Facing direction; -1 = nGMDirectionL, 1 = nGMDirectionR
 
@@ -837,7 +842,7 @@ struct ftStruct
     s32 tarucann_wait;      // Wait this many frames before fighter can enter Barrel Cannon again
     s32 damagefloor_wait;   // Wait this many frames before fighter can be hurt by damaging floors again (e.g. Mario's Board the Platforms stage)
     s32 playertag_wait;     // Wait this many frames before fighter's player indicator is shown again; tag is shown when this reaches 1 or is overridden by position on stage
-    s32 unk_0x178;
+    s32 unk_ft_0x178;
 
     union ftCommandVars
     {
@@ -885,7 +890,7 @@ struct ftStruct
     ub32 is_playertag_hide : 1;         // Skip rendering player indicator if TRUE
     ub32 is_playertag_bossend : 1;      // Also skips rendering player indicator? Used only in "Master Hand defeated" cinematic from what I can tell so far
     ub32 is_playing_effect : 1;
-    u32 effect_joint_array_id : 4;    // Goes up to 5 by default; index of the array from effect_joint_ids from ftAttributes which houses the actual joint ID
+    u32 effect_joint_array_id : 4;      // Goes up to 5 by default; index of the array from effect_joint_ids from ftAttributes which houses the actual joint ID
     ub32 is_shield : 1;                 // Fighter's shield bubble is active
     ub32 is_attach_effect : 1;          // Destroy GFX on action state change if TRUE, not sure why this and is_playing_effect are different
     ub32 is_ignore_jostle : 1;

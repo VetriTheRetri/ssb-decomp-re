@@ -147,8 +147,6 @@ extern intptr_t D_NF_000001B8;
 extern uintptr_t D_NF_800A5240;
 extern uintptr_t lOverlay7ArenaHi; // 80392A00
 extern uintptr_t lOverlay7ArenaLo; // 80190FA0
-extern intptr_t D_NF_00000854;
-extern intptr_t D_NF_001AC870;
 
 extern void* gGMCommonFiles[/* */];
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];

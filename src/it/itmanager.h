@@ -9,10 +9,10 @@
 void itManagerInitItems();
 
 // Get memory region for item struct and advance global region pointer
-itStruct* itManagerGetItemSetNextAlloc();
+itStruct* itManagerGetNextStructAlloc();
 
 // Roll back local and global item struct pointer by one unit
-void itManagerSetPrevAlloc(itStruct* ip);
+void itManagerSetPrevStructAlloc(itStruct* ip);
 
 // Unknown, something to do with setting up item models?
 void itManagerDObjSetup(GObj* gobj, DObjDesc* dobj_desc, DObj** p_ptr_dobj, u8 transform_kind);
@@ -24,7 +24,7 @@ GObj* itManagerMakeItem(GObj* spawn_gobj, itCreateDesc* item_desc, Vec3f* pos, V
 GObj* itManagerMakeItemSetupCommon(GObj* spawn_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 spawn_flags);
 
 // Get current item user_data to see if != NULL
-itStruct* itManagerGetAllocFree();
+itStruct* itManagerGetCurrentAlloc();
 
 // Set wait timer for next item spawn
 void itManagerSetItemSpawnWait();

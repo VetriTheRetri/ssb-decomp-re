@@ -614,7 +614,7 @@ void func_ovl64_8018DCC4()
 	{
 		player_spawn = dFTManagerDefaultFighterDesc;
 
-		ftManagerSetupDataKind(gBattleState->players[player].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
 
 		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 
@@ -655,7 +655,7 @@ void func_ovl64_8018DCC4()
 
 		ftParamInitPlayerBattleStats(player, fighter_gobj);
 	}
-	ftManagerSetupDataPlayables();
+	ftManagerSetupFilesPlayablesAll();
 	scAutoDemoBeginMatch();
 	func_ovl2_8010E2D4();
 	ifCommonPlayerArrowsInitInterface();

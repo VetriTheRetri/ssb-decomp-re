@@ -1343,14 +1343,14 @@ void func_ovl59_801349DC()
 {
 	rdSetup rldm_setup;
 
-	rldm_setup.tableRomAddr = (intptr_t)&D_NF_001AC870;
-	rldm_setup.tableFileCount = (intptr_t)&D_NF_00000854;
-	rldm_setup.fileHeap = NULL;
-	rldm_setup.fileHeapSize = 0;
-	rldm_setup.statusBuf = gCreditsStatusBuf;
-	rldm_setup.statusBufSize = ARRAY_COUNT(gCreditsStatusBuf);
-	rldm_setup.forceBuf = NULL;
-	rldm_setup.forceBufSize = 0;
+	rldm_setup.table_addr = (intptr_t)&lRDManagerTableAddr;
+	rldm_setup.table_files_num = (intptr_t)&lRDManagerTableFilesNum;
+	rldm_setup.file_heap = NULL;
+	rldm_setup.file_heap_size = 0;
+	rldm_setup.status_buf = gCreditsStatusBuf;
+	rldm_setup.status_buf_size = ARRAY_COUNT(gCreditsStatusBuf);
+	rldm_setup.force_buf = NULL;
+	rldm_setup.force_buf_size = 0;
 
 	rdManagerInitSetup(&rldm_setup);
 	rdManagerLoadFiles(dCreditsFileIDs, ARRAY_COUNT(dCreditsFileIDs), gCreditsFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCreditsFileIDs, ARRAY_COUNT(dCreditsFileIDs)), 0x10));

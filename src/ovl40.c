@@ -12,14 +12,14 @@ void mvOpeningLinkLoadFiles()
 {
 	rdSetup rldmSetup;
 
-	rldmSetup.tableRomAddr = &D_NF_001AC870;
-	rldmSetup.tableFileCount = &D_NF_00000854;
-	rldmSetup.fileHeap = 0;
-	rldmSetup.fileHeapSize = 0;
-	rldmSetup.statusBuf = D_ovl40_8018E228;
-	rldmSetup.statusBufSize = ARRAY_COUNT(D_ovl40_8018E228);
-	rldmSetup.forceBuf = D_ovl40_8018E3A8;
-	rldmSetup.forceBufSize = ARRAY_COUNT(D_ovl40_8018E3A8);
+	rldmSetup.table_addr = &lRDManagerTableAddr;
+	rldmSetup.table_files_num = &lRDManagerTableFilesNum;
+	rldmSetup.file_heap = 0;
+	rldmSetup.file_heap_size = 0;
+	rldmSetup.status_buf = D_ovl40_8018E228;
+	rldmSetup.status_buf_size = ARRAY_COUNT(D_ovl40_8018E228);
+	rldmSetup.force_buf = D_ovl40_8018E3A8;
+	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl40_8018E3A8);
 	rdManagerInitSetup(&rldmSetup);
 	rdManagerLoadFiles(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0), gMvOpeningLinkFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0)), 0x10));
 }
@@ -149,7 +149,7 @@ void mvOpeningLinkInitFighterStagePanel()
 
 		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
 
-		ftManagerSetupDataKind(gBattleState->players[i].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[i].ft_kind);
 
 		spawn_info.ft_kind = gBattleState->players[i].ft_kind;
 		spawn_info.pos.x = spawn_position.x;
@@ -334,9 +334,9 @@ void mvOpeningLinkInit()
 	wpManagerAllocWeapons();
 	itManagerInitItems();
 	efManagerInitEffects();
-	ftManagerSetupDataKind(nFTKindLink);
+	ftManagerSetupFilesAllKind(nFTKindLink);
 
-	gMvOpeningLinkAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
+	gMvOpeningLinkAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
 	mvOpeningLinkCreateNameViewport();
 	mvOpeningLinkCreatePosedFighterBackgroundViewport();
 	mvOpeningLinkCreatePosedFighterViewport();

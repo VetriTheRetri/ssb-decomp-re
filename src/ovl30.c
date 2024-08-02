@@ -8,8 +8,6 @@
 #define F_DEG_TO_RAD(x) ((f32)(((x) * PI32) / 180.0F))
 
 // EXTERN
-extern uintptr_t D_NF_001AC870;
-extern uintptr_t D_NF_00000854;
 extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay30ArenaLo;  // 80134E30
 extern intptr_t lOverlay30ArenaHi;  // 803903E0
@@ -47,7 +45,7 @@ typedef struct mnStageFileInfo
 
 // DATA
 // 801344D0
-RldmFileId D_ovl30_801344D0[5] = {
+rdFileID D_ovl30_801344D0[5] = {
 	0x14, 0x15, 0x1e, 0x21, 0x1a
 };
 
@@ -1404,14 +1402,14 @@ void mnStageInitSSS()
 	rdSetup rldmSetup;
 	s32 baz;
 
-	rldmSetup.tableRomAddr = &D_NF_001AC870;
-	rldmSetup.tableFileCount = &D_NF_00000854;
-	rldmSetup.fileHeap = 0;
-	rldmSetup.fileHeapSize = 0;
-	rldmSetup.statusBuf = (rdFileNode*) &D_ovl30_80134C30;
-	rldmSetup.statusBufSize = 0x1E;
-	rldmSetup.forceBuf = (rdFileNode*) &D_ovl30_80134D20;
-	rldmSetup.forceBufSize = 0x1E;
+	rldmSetup.table_addr = &lRDManagerTableAddr;
+	rldmSetup.table_files_num = &lRDManagerTableFilesNum;
+	rldmSetup.file_heap = 0;
+	rldmSetup.file_heap_size = 0;
+	rldmSetup.status_buf = (rdFileNode*) &D_ovl30_80134C30;
+	rldmSetup.status_buf_size = 0x1E;
+	rldmSetup.force_buf = (rdFileNode*) &D_ovl30_80134D20;
+	rldmSetup.force_buf_size = 0x1E;
 	rdManagerInitSetup(&rldmSetup);
 	rdManagerLoadFiles(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMNStageFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));
 

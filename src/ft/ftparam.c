@@ -1402,7 +1402,7 @@ void ftParamStopEffect(GObj *effect_gobj, efStruct *ep)
     {
         func_ovl0_800D39D4(einfo->unk_effect_0xB8, ep->unk_effectstruct_0x8 >> 3);
     }
-    efManagerSetPrevAlloc(ep);
+    efManagerSetPrevStructAlloc(ep);
     omEjectGObj(effect_gobj);
 }
 

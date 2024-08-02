@@ -1,21 +1,36 @@
-/*
-
 #include <ft/fighter.h>
 #include <gm/battle.h>
 #include <sys/develop.h>
 #include <ovl0/reloc_data_mgr.h>
 
-extern RldmFileSize D_800A50F8[nFTKindEnumMax];
-extern intptr_t D_NF_00000854;
-extern intptr_t D_NF_001AC870;
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern ftFileSize D_800A50F8[nFTKindEnumMax];
+
 extern intptr_t D_NF_000000A3;
 extern intptr_t D_NF_000000C9;
 
+extern void func_ovl0_800C8CB8(void*, void*, void*, void*, f32);
+extern void func_ovl0_800C8DB4(void*, void*, u8, void*, s32, s32, s32, s32, f32, s32);
+
+extern void func_ovl1_80390584(GObj*);
+extern void func_ovl1_803904E0(f32, f32, u8, u8, u8, u8);
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80130D80
-ftStruct *sFTManagerFighterAllocFree;
+ftStruct *sFTManagerStructsAllocFree;
 
 // 0x80130D84
-ftStruct *sFTManagerFighterAllocBuf;
+ftStruct *sFTManagerStructsAllocBuf;
 
 // 0x80130D88
 ftParts *sFTManagerPartsAllocFree;
@@ -24,7 +39,7 @@ ftParts *sFTManagerPartsAllocFree;
 ftParts *sFTManagerPartsAllocBuf;
 
 // 0x80130D90
-u32 gFTManagerBattlePlayerNum;
+u32 gFTManagerPlayersNum;
 
 // 0x80130D94
 u16 gFTManagerMotionCount;
@@ -33,15 +48,24 @@ u16 gFTManagerMotionCount;
 u16 gFTManagerStatUpdateCount;
 
 // 0x80130D98
-void *gFTCommonFile;
+void *gFTManagerCommonFile;
 
 // 0x80130D9C
-size_t gFTAnimHeapSize;
+size_t gFTManagerAnimHeapSize;
 
 // 0x80130DA0
 rdFileNode sFTManagerForceBuf[7];
 
+// // // // // // // // // // // //
+//                               //
+//        INITIALIZED DATA       //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80116E10
+extern ftData *dFTManagerDataFiles[nFTKindEnumMax];
+
+/*
 ftData *dFTManagerDataFiles[] =
 {
     D_ovl2_80117810,
@@ -73,6 +97,14 @@ ftData *dFTManagerDataFiles[] =
     D_ovl2_8011C24C
 };
 
+*/
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x800D6FE0
 void ftManagerSetupFileSize(void)
 {
@@ -80,41 +112,41 @@ void ftManagerSetupFileSize(void)
     size_t largest_size;
     size_t current_anim_size;
     ftData *ft_data;
-    RldmFileSize *rldm_size;
-    rdSetup rldm_setup;
+    ftFileSize *ft_size;
+    rdSetup rd_setup;
     ftScriptInfo *script_info;
 
-    rldm_setup.tableRomAddr = &D_NF_001AC870;
-    rldm_setup.tableFileCount = &D_NF_00000854;
-    rldm_setup.fileHeap = NULL;
-    rldm_setup.fileHeapSize = 0;
-    rldm_setup.statusBuf = NULL;
-    rldm_setup.statusBufSize = 0;
-    rldm_setup.forceBuf = sFTManagerForceBuf;
-    rldm_setup.forceBufSize = ARRAY_COUNT(sFTManagerForceBuf);
+    rd_setup.table_addr = &lRDManagerTableAddr;
+    rd_setup.table_files_num = &lRDManagerTableFilesNum;
+    rd_setup.file_heap = NULL;
+    rd_setup.file_heap_size = 0;
+    rd_setup.status_buf = NULL;
+    rd_setup.status_buf_size = 0;
+    rd_setup.force_buf = sFTManagerForceBuf;
+    rd_setup.force_buf_size = ARRAY_COUNT(sFTManagerForceBuf);
 
-    rdManagerInitSetup(&rldm_setup);
+    rdManagerInitSetup(&rd_setup);
 
     for (i = 0; i < ARRAY_COUNT(dFTManagerDataFiles); i++)
     {
-        rldm_size = &D_800A50F8[i];
+        ft_size = &D_800A50F8[i];
         ft_data = dFTManagerDataFiles[i];
 
         largest_size = 0;
 
-        rldm_size->file_size = rdManagerGetFileSize(ft_data->file_main_id);
+        ft_size->main = rdManagerGetFileSize(ft_data->file_main_id);
 
-        for (j = 0; j < ft_data->battlemotion_array_count; j++)
+        for (j = 0; j < ft_data->gamemotion_array_count; j++)
         {
-            script_info = &ft_data->battlemotion->script_info[j];
+            script_info = &ft_data->gamemotion->script_info[j];
 
-            current_anim_size = ft_data->battlemotion->script_info[j].anim_id;
+            current_anim_size = ft_data->gamemotion->script_info[j].anim_file_id;
 
-            if (script_info->anim_id != 0)
+            if (script_info->anim_file_id != 0)
             {
-                if (!(script_info->anim_flags.flags.x19B_flag_b6))
+                if (!(script_info->anim_flags.flags.is_use_shieldpose))
                 {
-                    current_anim_size = rdManagerGetFileSize(script_info->anim_id);
+                    current_anim_size = rdManagerGetFileSize(script_info->anim_file_id);
 
                     if (largest_size < current_anim_size)
                     {
@@ -123,19 +155,19 @@ void ftManagerSetupFileSize(void)
                 }
             }
         }
-        rldm_size->largest_size1 = largest_size;
+        ft_size->gamemotion_largest_anim = largest_size;
 
-        for (j = 0; j < *ft_data->submotion_array_count; j++)
+        for (j = 0; j < *ft_data->moviemotion_array_count; j++)
         {
-            script_info = &ft_data->submotion->script_info[j];
+            script_info = &ft_data->moviemotion->script_info[j];
 
-            current_anim_size = ft_data->submotion->script_info[j].anim_id;
+            current_anim_size = ft_data->moviemotion->script_info[j].anim_file_id;
 
-            if (script_info->anim_id != 0)
+            if (script_info->anim_file_id != 0)
             {
-                if (!(script_info->anim_flags.flags.x19B_flag_b6))
+                if (!(script_info->anim_flags.flags.is_use_shieldpose))
                 {
-                    current_anim_size = rdManagerGetFileSize(script_info->anim_id);
+                    current_anim_size = rdManagerGetFileSize(script_info->anim_file_id);
 
                     if (largest_size < current_anim_size)
                     {
@@ -144,62 +176,62 @@ void ftManagerSetupFileSize(void)
                 }
             }
         }
-        rldm_size->largest_size2 = largest_size;
+        ft_size->moviemotion_largest_anim = largest_size;
     }
 }
 
 // 0x800D7194
-void ftManagerAllocFighter(u32 data_flags, s32 alloc_count)
+void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
 {
     size_t largest_size;
     s32 i;
     size_t current_size;
     ftData *ft_data;
-    RldmFileSize *rldm_size;
+    ftFileSize *ft_size;
     size_t heap_size;
 
     heap_size = 0;
 
-    sFTManagerFighterAllocBuf = sFTManagerFighterAllocFree = gsMemoryAlloc(sizeof(ftStruct) * alloc_count, 0x8);
+    sFTManagerStructsAllocBuf = sFTManagerStructsAllocFree = gsMemoryAlloc(sizeof(ftStruct) * allocs_num, 0x8);
 
-    _bzero(sFTManagerFighterAllocBuf, sizeof(ftStruct) * alloc_count);
+    bzero(sFTManagerStructsAllocBuf, sizeof(ftStruct) * allocs_num);
 
-    for (i = 0; i < (alloc_count - 1); i++)
+    for (i = 0; i < (allocs_num - 1); i++)
     {
-        sFTManagerFighterAllocBuf[i].alloc_next = &sFTManagerFighterAllocBuf[i + 1];
+        sFTManagerStructsAllocBuf[i].alloc_next = &sFTManagerStructsAllocBuf[i + 1];
     }
-    sFTManagerFighterAllocBuf[i].alloc_next = NULL;
+    sFTManagerStructsAllocBuf[i].alloc_next = NULL;
 
-    sFTManagerPartsAllocFree = sFTManagerPartsAllocBuf = gsMemoryAlloc(sizeof(ftParts) * alloc_count * FTPARTS_JOINT_NUM_MAX, 0x8);
+    sFTManagerPartsAllocFree = sFTManagerPartsAllocBuf = gsMemoryAlloc(sizeof(ftParts) * allocs_num * FTPARTS_JOINT_NUM_MAX, 0x8);
 
-    for (i = 0; i < ((alloc_count * FTPARTS_JOINT_NUM_MAX) - 1); i++)
+    for (i = 0; i < ((allocs_num * FTPARTS_JOINT_NUM_MAX) - 1); i++)
     {
         sFTManagerPartsAllocBuf[i].alloc_next = &sFTManagerPartsAllocBuf[i + 1];
     }
     sFTManagerPartsAllocBuf[i].alloc_next = NULL;
 
-    gFTManagerBattlePlayerNum = 1;
+    gFTManagerPlayersNum = 1;
     gFTManagerMotionCount = 1;
     gFTManagerStatUpdateCount = 1;
 
-    gFTCommonFile = rdManagerGetFileWithExternHeap((u32)&D_NF_000000A3, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000A3), 0x10));
+    gFTManagerCommonFile = rdManagerGetFileWithExternHeap((rdFileID)&D_NF_000000A3, gsMemoryAlloc(rdManagerGetFileSize((rdFileID)&D_NF_000000A3), 0x10));
 
-    rdManagerGetFileWithExternHeap((u32)&D_NF_000000C9, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000C9), 0x10));
+    rdManagerGetFileWithExternHeap((rdFileID)&D_NF_000000C9, gsMemoryAlloc(rdManagerGetFileSize((rdFileID)&D_NF_000000C9), 0x10));
 
     for (i = 0; i < (ARRAY_COUNT(dFTManagerDataFiles) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
     {
         ft_data = dFTManagerDataFiles[i];
-        rldm_size = &D_800A50F8[i];
+        ft_size = &D_800A50F8[i];
 
         largest_size = 0;
 
         *ft_data->p_file_main = NULL;
 
-        ft_data->file_main_size = rldm_size->file_size;
+        ft_data->file_main_size = ft_size->main;
 
         if (data_flags & FTDATA_FLAG_ANIM_GAME)
         {
-            current_size = rldm_size->largest_size1;
+            current_size = ft_size->gamemotion_largest_anim;
 
             if (current_size != 0)
             {
@@ -208,7 +240,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 alloc_count)
         }
         if (data_flags & FTDATA_FLAG_ANIM_MOVIE)
         {
-            current_size = rldm_size->largest_size2;
+            current_size = ft_size->moviemotion_largest_anim;
 
             if (largest_size < current_size)
             {
@@ -222,7 +254,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 alloc_count)
             heap_size = ft_data->file_anim_size;
         }
     }
-    gFTAnimHeapSize = heap_size;
+    gFTManagerAnimHeapSize = heap_size;
 
     if (data_flags & FTDATA_FLAG_ANIM_MOVIE)
     {
@@ -231,12 +263,12 @@ void ftManagerAllocFighter(u32 data_flags, s32 alloc_count)
 }
 
 // 0x800D7594
-ftStruct* ftManagerGetStructSetNextAlloc(void)
+ftStruct* ftManagerGetNextStructAlloc(void)
 {
     ftStruct *current_fighter;
-    ftStruct *next_fighter = sFTManagerFighterAllocFree;
+    ftStruct *new_fighter = sFTManagerStructsAllocFree;
 
-    if (next_fighter == NULL)
+    if (new_fighter == NULL)
     {
         while (TRUE)
         {
@@ -244,29 +276,29 @@ ftStruct* ftManagerGetStructSetNextAlloc(void)
             smRunPrintGObjStatus();
         }
     }
-    else current_fighter = next_fighter;
+    else current_fighter = new_fighter;
 
-    sFTManagerFighterAllocFree = next_fighter->alloc_next;
+    sFTManagerStructsAllocFree = new_fighter->alloc_next;
 
     return current_fighter;
 }
 
 // 0x800D75EC
-void ftManagerSetPrevAlloc(ftStruct *fp)
+void ftManagerSetPrevStructAlloc(ftStruct *fp)
 {
-    fp->alloc_next = sFTManagerFighterAllocFree;
-    sFTManagerFighterAllocFree = fp;
+    fp->alloc_next = sFTManagerStructsAllocFree;
+    sFTManagerStructsAllocFree = fp;
 }
 
 // 0x800D7604
-ftParts* ftManagerGetFighterPartsSetNextAlloc(void)
+ftParts* ftManagerGetNextPartsAlloc(void)
 {
-    ftParts *current_ftpart;
-    ftParts *next_ftpart;
+    ftParts *current_part;
+    ftParts *new_part;
 
-    next_ftpart = sFTManagerPartsAllocFree;
+    new_part = sFTManagerPartsAllocFree;
 
-    if (next_ftpart == NULL)
+    if (new_part == NULL)
     {
         while (TRUE)
         {
@@ -274,56 +306,60 @@ ftParts* ftManagerGetFighterPartsSetNextAlloc(void)
             smRunPrintGObjStatus();
         }
     }
-    current_ftpart = next_ftpart;
+    current_part = new_part;
 
-    sFTManagerPartsAllocFree = next_ftpart->alloc_next;
+    sFTManagerPartsAllocFree = new_part->alloc_next;
 
-    next_ftpart->transform_update_mode =
-    next_ftpart->unk_dobjtrans_0x5 =
-    next_ftpart->unk_dobjtrans_0x7 = 0;
-    next_ftpart->unk_dobjtrans_0x6 = 0;
+    new_part->transform_update_mode =
+    new_part->unk_dobjtrans_0x5 =
+    new_part->unk_dobjtrans_0x7 = 0;
+    new_part->unk_dobjtrans_0x6 = 0;
 
-    next_ftpart->ftparts_gobj = NULL;
-    next_ftpart->unk_dobjtrans_0xE = 0;
+    new_part->gobj = NULL;
+    new_part->unk_dobjtrans_0xE = 0;
 
-    return current_ftpart;
+    return current_part;
 }
 
 // 0x800D767C
-void ftManagerSetFighterPartsPrevAlloc(ftParts *ft_parts)
+void ftManagerSetPrevPartsAlloc(ftParts *ft_parts)
 {
     ft_parts->alloc_next = sFTManagerPartsAllocFree;
     sFTManagerPartsAllocFree = ft_parts;
 }
 
 // 0x800D7694
-void ftManagerSetupDataMain(s32 ft_kind)
+void ftManagerSetupFilesMainKind(s32 ft_kind)
 {
     ftData *ft_data = dFTManagerDataFiles[ft_kind];
 
     *ft_data->p_file_main = rdManagerGetFileWithExternHeap(ft_data->file_main_id, gsMemoryAlloc(rdManagerGetFileSize(ft_data->file_main_id), 0x10));
 
-    if (ft_data->o_particles1 != 0)
+    if (ft_data->particles_header_lo != 0)
     {
-        *ft_data->p_particle = efAlloc_SetParticleBank(ft_data->o_particles1, ft_data->o_particles2, ft_data->o_particles3, ft_data->o_particles4);
+        *ft_data->p_particle = efAllocGetAddParticleBankID
+        (
+            ft_data->particles_header_lo, 
+            ft_data->particles_header_hi, 
+            ft_data->particles_texture_lo, 
+            ft_data->particles_texture_hi
+        );
     }
 }
 
 // 0x800D7710
-void ftManagerSetupDataFiles(s32 ft_kind)
+void ftManagerSetupFilesKind(s32 ft_kind)
 {
     ftData *ft_data = dFTManagerDataFiles[ft_kind];
 
-    if (ft_data->file_battlemotion_id != 0)
+    if (ft_data->file_gamemotion_id != 0)
     {
-        *ft_data->p_file_battlemotion = rldm_get_file_standard(ft_data->file_battlemotion_id);
+        *ft_data->p_file_gamemotion = rldm_get_file_standard(ft_data->file_gamemotion_id);
     }
-
-    if (ft_data->file_submotion_id != 0)
+    if (ft_data->file_moviemotion_id != 0)
     {
-        *ft_data->p_file_submotion = rldm_get_file_standard(ft_data->file_submotion_id);
+        *ft_data->p_file_moviemotion = rldm_get_file_standard(ft_data->file_moviemotion_id);
     }
-
     *ft_data->p_file_model = rldm_get_file_standard(ft_data->file_model_id);
 
     if (ft_data->file_shieldpose_id != 0)
@@ -346,32 +382,32 @@ void ftManagerSetupDataFiles(s32 ft_kind)
     {
         *ft_data->p_file_special4 = rldm_get_file_standard(ft_data->file_special4_id);
     }
-    if (ft_data->o_particles1 != 0)
+    if (ft_data->particles_header_lo != 0)
     {
-        *ft_data->p_particle = func_ovl2_801159B0(ft_data->o_particles1);
+        *ft_data->p_particle = efAllocGetParticleBankID(ft_data->particles_header_lo);
     }
 }
 
 // 0x800D782C
-void ftManagerSetupDataPlayables(void)
+void ftManagerSetupFilesPlayablesAll(void)
 {
     s32 i;
 
     for (i = 0; i <= nFTKindPlayableEnd; i++)
     {
-        ftManagerSetupDataFiles(i);
+        ftManagerSetupFilesKind(i);
     }
 }
 
 // 0x800D786C
-void ftManagerSetupDataKind(s32 ft_kind)
+void ftManagerSetupFilesAllKind(s32 ft_kind)
 {
     ftData *ft_data = dFTManagerDataFiles[ft_kind];
 
     if (*ft_data->p_file_main == NULL)
     {
-        ftManagerSetupDataMain(ft_kind);
-        ftManagerSetupDataFiles(ft_kind);
+        ftManagerSetupFilesMainKind(ft_kind);
+        ftManagerSetupFilesKind(ft_kind);
     }
 }
 
@@ -391,7 +427,7 @@ void ftManagerDestroyFighter(GObj *fighter_gobj)
 
     if (fp->is_attach_effect)
     {
-        ftCommon_ProcStopGFX(fighter_gobj);
+        ftParamProcStopEffect(fighter_gobj);
     }
     for (i = 0; i < ARRAY_COUNT(fp->joint); i++)
     {
@@ -399,19 +435,19 @@ void ftManagerDestroyFighter(GObj *fighter_gobj)
         {
             ftParts *ft_parts = fp->joint[i]->user_data.p;
 
-            if (ft_parts->ftparts_gobj != NULL)
+            if (ft_parts->gobj != NULL)
             {
-                omEjectGObj(ft_parts->ftparts_gobj);
+                omEjectGObj(ft_parts->gobj);
             }
-            ftManagerSetFighterPartsPrevAlloc(ft_parts);
+            ftManagerSetPrevPartsAlloc(ft_parts);
         }
     }
-    ftManagerSetPrevAlloc(fp);
+    ftManagerSetPrevStructAlloc(fp);
     omEjectGObj(fighter_gobj);
 }
 
 // 0x800D7994
-void func_ovl2_800D7994(GObj *fighter_gobj)
+void ftManagerDestroyFighterWeapons(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -429,18 +465,15 @@ void func_ovl2_800D7994(GObj *fighter_gobj)
     }
 }
 
-extern intptr_t lFTKirbySpecialNCopyData;
-extern void *gFTDataKirbyBattleMotion; // Pointer to fighter files?
-
 // 0x800D79F0
-void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *spawn)
+void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
     f32 scale;
 
-    fp->lr = spawn->lr_spawn;
-    fp->percent_damage = spawn->damage;
+    fp->lr = ft_desc->lr_spawn;
+    fp->percent_damage = ft_desc->damage;
 
     if (fp->status_info.pl_kind != nFTPlayerKindDemo)
     {
@@ -452,7 +485,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *spawn)
     fp->hitlag_timer = 0;
     fp->x192_flag_b6 = FALSE;
 
-    ftPhysics_StopVelAll(fighter_gobj);
+    ftPhysicsStopVelAll(fighter_gobj);
 
     fp->jumps_used = 0;
     fp->is_reflect = FALSE;
@@ -495,8 +528,8 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *spawn)
 
     fp->item_hold = NULL;
 
-    fp->lr_reflect = LR_Center;
-    fp->lr_absorb = LR_Center;
+    fp->lr_reflect = nGMDirectionC;
+    fp->lr_absorb = nGMDirectionC;
 
     fp->reflect_damage = 0;
 
@@ -515,12 +548,12 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *spawn)
 
     fp->is_fast_fall = FALSE;
 
-    fp->player_number = gFTManagerBattlePlayerNum++;
+    fp->player_number = gFTManagerPlayersNum++;
 
     fp->publicity_knockback = 0.0F;
 
     fp->is_hitstun = FALSE;
-    fp->is_parts_anim_lock = FALSE;
+    fp->is_use_anim_locks = FALSE;
 
     fp->shuffle_frame_index = fp->shuffle_index_max = 0;
 
@@ -532,25 +565,25 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *spawn)
     fp->attack_id = nFTMotionAttackIDNone;
     fp->motion_count = 0;
     fp->stat_flags.stat_attack_id = nFTStatusAttackIDNone;
-    fp->stat_flags.is_smash_attack = fp->stat_flags.is_ga = fp->stat_flags.is_projectile = FALSE;
+    fp->stat_flags.is_smash_attack = fp->stat_flags.ga = fp->stat_flags.is_projectile = 0;
 
     fp->stat_count = fp->damage_stat_count = 0;
     fp->damage_stat_flags = fp->stat_flags;
 
     fp->afterimage.desc_index = 0;
 
-    DObjGetStruct(fighter_gobj)->translate.vec.f = spawn->pos;
+    DObjGetStruct(fighter_gobj)->translate.vec.f = ft_desc->pos;
     DObjGetStruct(fighter_gobj)->scale.vec.f.x = DObjGetStruct(fighter_gobj)->scale.vec.f.y = DObjGetStruct(fighter_gobj)->scale.vec.f.z = attributes->size_mul;
 
     if (fp->status_info.pl_kind != nFTPlayerKindDemo)
     {
-        sb32 is_collide_ground = func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &fp->coll_data.ground_line_id, &fp->coll_data.ground_dist, &fp->coll_data.ground_flags, &fp->coll_data.ground_angle.x);
+        sb32 is_collide_ground = func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &fp->coll_data.ground_line_id, &fp->coll_data.ground_dist, &fp->coll_data.ground_flags, &fp->coll_data.ground_angle);
 
         if (is_collide_ground == FALSE)
         {
             fp->coll_data.ground_line_id = -1;
         }
-        if ((is_collide_ground != FALSE) && (fp->coll_data.ground_dist > -300.0F) && (fp->ft_kind != nFTKindMasterHand))
+        if ((is_collide_ground != FALSE) && (fp->coll_data.ground_dist > -300.0F) && (fp->ft_kind != nFTKindBoss))
         {
             fp->ga = nMPKineticsGround;
 
@@ -569,7 +602,6 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *spawn)
         fp->ga = nMPKineticsAir;
         fp->jumps_used = 1;
     }
-
     fp->coll_data.pos_curr = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     switch (fp->ft_kind)
@@ -608,7 +640,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *spawn)
 
     case nFTKindKirby:
     case nFTKindPolyKirby:
-        fp->fighter_vars.kirby.copy_id = spawn->copy_kind;
+        fp->fighter_vars.kirby.copy_id = ft_desc->copy_kind;
 
         fp->fighter_vars.kirby.copysamus_charge_level = 0;
         fp->fighter_vars.kirby.copysamus_charge_recoil = 0;
@@ -617,7 +649,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *spawn)
         fp->fighter_vars.kirby.copypurin_unk = 0;
         fp->fighter_vars.kirby.copylink_boomerang_gobj = NULL;
 
-        if (spawn->copy_kind == nFTKindKirby)
+        if (ft_desc->copy_kind == nFTKindKirby)
         {
             fp->fighter_vars.kirby.is_ignore_losecopy = FALSE;
         }
@@ -627,7 +659,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *spawn)
         {
             ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lFTKirbySpecialNCopyData);
 
-            ftCommon_SetModelPartRenderStateIndex(fighter_gobj, 6, copy_data[fp->fighter_vars.kirby.copy_id].copy_hat_rs);
+            ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy_data[fp->fighter_vars.kirby.copy_id].copy_drawstatus);
         }
         break;
 
@@ -635,8 +667,8 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *spawn)
     case nFTKindPolyLink:
         fp->fighter_vars.link.boomerang_gobj = NULL;
 
-        ftCommon_SetModelPartRenderStateIndex(fighter_gobj, 0x15, -1);
-        ftCommon_SetModelPartRenderStateIndex(fighter_gobj, 0x13, 0);
+        ftParamSetModelPartDefaultID(fighter_gobj, 0x15, -1);
+        ftParamSetModelPartDefaultID(fighter_gobj, 0x13, 0);
         break;
 
     case nFTKindPurin:
@@ -644,7 +676,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *spawn)
         fp->fighter_vars.purin.unk_0x0 = 0;
         break;
 
-    case nFTKindMasterHand:
+    case nFTKindBoss:
         fp->fighter_vars.boss.p = &fp->fighter_vars.boss.s;
         fp->fighter_vars.boss.p->wait_div = 1.0F;
         fp->fighter_vars.boss.p->status_index = -1;
@@ -653,64 +685,64 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *spawn)
 
         if (fp->status_info.pl_kind != nFTPlayerKindDemo)
         {
-            ftBoss_Common_SetNextAttackWait(fighter_gobj);
-            ftBoss_Common_SetDefaultLineID(fighter_gobj);
+            ftBossCommonSetNextAttackWait(fighter_gobj);
+            ftBossCommonSetDefaultLineID(fighter_gobj);
         }
         break;
     }
-    ftCommon_ClearHitAll(fighter_gobj);
-    ftCommon_SetHitStatusPartAll(fighter_gobj, nGMHitStatusNormal);
-    ftCommon_ResetColAnim(fighter_gobj);
+    ftParamClearHitAll(fighter_gobj);
+    ftParamSetHitStatusPartAll(fighter_gobj, nGMHitStatusNormal);
+    ftParamResetFighterColAnim(fighter_gobj);
 }
 
 // 0x800D7F3C
-GObj* ftManagerMakeFighter(ftCreateDesc *spawn) // Create fighter
+GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
 {
     ftStruct *fp;
     GObj *fighter_gobj;
     s32 i;
-    ftParts *ftparts;
+    ftParts *ft_parts;
     ftAttributes *attributes;
     s32 unused;
     DObj *topn_joint;
-    ftMesh *ftmesh;
+    ftMesh *ft_mesh;
 
-    fighter_gobj = omMakeGObjSPAfter(nOMObjCommonKindFighter, NULL, GObj_LinkID_Fighter, GOBJ_LINKORDER_DEFAULT);
+    fighter_gobj = omMakeGObjSPAfter(nOMObjCommonKindFighter, NULL, nOMObjCommonLinkIDFighter, GOBJ_LINKORDER_DEFAULT);
 
-    omAddGObjRenderProc(fighter_gobj, spawn->proc_render, 9, GOBJ_DLLINKORDER_DEFAULT, -1);
+    omAddGObjRenderProc(fighter_gobj, ft_desc->proc_render, FTRENDER_DLLINK_DEFAULT, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    fp = ftManagerGetStructSetNextAlloc();
+    fp = ftManagerGetNextStructAlloc();
 
     fighter_gobj->user_data.p = fp;
 
-    fp->status_info.pl_kind = spawn->pl_kind;
+    fp->status_info.pl_kind = ft_desc->pl_kind;
     fp->fighter_gobj = fighter_gobj;
-    fp->ft_kind = spawn->ft_kind;
+    fp->ft_kind = ft_desc->ft_kind;
     fp->ft_data = dFTManagerDataFiles[fp->ft_kind];
     attributes = fp->attributes = (ftAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
-    fp->anim_load = spawn->anim_heap;
-    fp->team = spawn->team;
-    fp->player = spawn->player;
-    fp->stock_count = spawn->stock_count;
+    fp->anim_load = ft_desc->anim_heap;
+    fp->team = ft_desc->team;
+    fp->player = ft_desc->player;
+    fp->stock_count = ft_desc->stock_count;
 
     if (fp->status_info.pl_kind != nFTPlayerKindDemo)
     {
-        gBattleState->players[fp->player].stock_count = spawn->stock_count;
+        gBattleState->players[fp->player].stock_count = ft_desc->stock_count;
     }
-    fp->detail_current = fp->detail_default = spawn->model_lod;
+    fp->detail_current = fp->detail_default = ft_desc->model_lod;
 
-    fp->costume = spawn->costume;
-    fp->shade = spawn->shade;
+    fp->costume = ft_desc->costume;
+    fp->shade = ft_desc->shade;
 
     fp->shade_color.r = (attributes->shade_color[fp->shade - 1].r * attributes->shade_color[fp->shade - 1].a) / 0xFF;
     fp->shade_color.g = (attributes->shade_color[fp->shade - 1].g * attributes->shade_color[fp->shade - 1].a) / 0xFF;
     fp->shade_color.b = (attributes->shade_color[fp->shade - 1].b * attributes->shade_color[fp->shade - 1].a) / 0xFF;
 
-    fp->handicap = spawn->handicap;
-    fp->cp_level = spawn->cp_level;
+    fp->handicap = ft_desc->handicap;
+    fp->cp_level = ft_desc->cp_level;
 
-    fp->unk_0x178 = 0;
-    fp->x3C_unk = 0;
+    fp->unk_ft_0x178 = 0;
+    fp->unk_ft_0x3C = 0;
     fp->anim_flags.word = 0;
 
     fp->p_sfx = NULL;
@@ -732,11 +764,11 @@ GObj* ftManagerMakeFighter(ftCreateDesc *spawn) // Create fighter
 
     fp->proc_status = NULL;
 
-    fp->unk_ft_0x149 = spawn->unk_rebirth_0x1C;
-    fp->team_order = spawn->team_order;
-    fp->dl_link = 9;
+    fp->unk_ft_0x149 = ft_desc->unk_rebirth_0x1C;
+    fp->team_order = ft_desc->team_order;
+    fp->dl_link = FTRENDER_DLLINK_DEFAULT;
 
-    fp->is_ignore_magnify = spawn->is_skip_magnify;
+    fp->is_ignore_magnify = ft_desc->is_skip_magnify;
 
     fp->status_info.status_time_spent = 0;
 
@@ -757,30 +789,30 @@ GObj* ftManagerMakeFighter(ftCreateDesc *spawn) // Create fighter
 
     func_ovl0_800C89BC(topn_joint, 0x4B, 0, 0);
 
-    fp->joint[nFTPartsJointTopN]->ommtx[0]->unk05 = spawn->unk_rebirth_0x1D;
+    fp->joint[nFTPartsJointTopN]->ommtx[0]->unk05 = ft_desc->unk_rebirth_0x1D;
 
-    func_ovl0_800C8DB4(fighter_gobj->obj, attributes->dobj_desc_container, fp->detail_current, &fp->joint[nFTPartsJointEnumMax], attributes->unk_ftca_0x29C, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
+    func_ovl0_800C8DB4(DObjGetStruct(fighter_gobj), attributes->common_parts_container, fp->detail_current, &fp->joint[nFTPartsJointEnumMax], attributes->unk_ftca_0x29C, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
 
     for (i = 0; i < ARRAY_COUNT(fp->joint); i++)
     {
         if (fp->joint[i] != NULL)
         {
-            fp->joint[i]->user_data.p = ftManagerGetFighterPartsSetNextAlloc();
+            fp->joint[i]->user_data.p = ftManagerGetNextPartsAlloc();
 
-            ftparts = fp->joint[i]->user_data.p;
-            ftparts->unk_0xC = attributes->dobj_desc_container->dobj_desc_array[fp->detail_current - 1].unk_dobjcontain_0xC;
-            ftparts->joint_id = i;
+            ft_parts = fp->joint[i]->user_data.p;
+            ft_parts->flags = attributes->common_parts_container->common_parts[fp->detail_current - 1].flags;
+            ft_parts->joint_id = i;
 
             if (fp->costume != 0)
             {
                 if ((attributes->mesh != NULL) && (i == attributes->mesh->joint_id))
                 {
-                    ftmesh = attributes->mesh;
+                    ft_mesh = attributes->mesh;
 
-                    ftparts->ftparts_gobj = omMakeGObjSPAfter(nOMObjCommonKindFighterParts, NULL, GObj_LinkID_FighterParts, GOBJ_LINKORDER_DEFAULT);
+                    ft_parts->gobj = omMakeGObjSPAfter(nOMObjCommonKindFighterParts, NULL, nOMObjCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
 
-                    omAddDObjForGObj(ftparts->ftparts_gobj, ftmesh->dl);
-                    func_ovl0_800C8CB8(ftparts->ftparts_gobj->obj, ftmesh->unk_ftdobj_0x8, ftmesh->unk_ftdobj_0xC, 0, fp->costume);
+                    omAddDObjForGObj(ft_parts->gobj, ft_mesh->dl);
+                    func_ovl0_800C8CB8(DObjGetStruct(ft_parts->gobj), ft_mesh->mobjsub, ft_mesh->costume_matanim_joint, NULL, fp->costume);
                 }
             }
         }
@@ -789,26 +821,25 @@ GObj* ftManagerMakeFighter(ftCreateDesc *spawn) // Create fighter
     {
         if (fp->joint[i] != NULL)
         {
-            fp->joint_render_state[i - nFTPartsJointEnumMax].render_state_b0 = 
-            fp->joint_render_state[i - nFTPartsJointEnumMax].render_state_b1 = (fp->joint[i]->display_ptr != NULL) ? 0 : -1;
+            fp->joint_drawstatus[i - nFTPartsJointEnumMax].drawstatus_default = 
+            fp->joint_drawstatus[i - nFTPartsJointEnumMax].drawstatus_current = (fp->joint[i]->display_ptr != NULL) ? 0 : -1;
         }
     }
-    for (i = 0; i < ARRAY_COUNT(fp->texture_render_state); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->texture_drawstatus); i++)
     {
-        fp->texture_render_state[i].frame_index_default = fp->texture_render_state[i].frame_index_current = 0;
+        fp->texture_drawstatus[i].drawstatus_default = fp->texture_drawstatus[i].drawstatus_current = 0;
     }
-
-    ftParamSetPartsAnimLock(fp);
+    ftParamSetAnimLocks(fp);
 
     fp->input.pl.stick_range.x = fp->input.pl.stick_range.y = fp->input.pl.stick_prev.x = fp->input.pl.stick_prev.y = fp->input.cp.stick_range.x = fp->input.cp.stick_range.y = 0;
     fp->input.pl.button_hold = fp->input.pl.button_tap = fp->input.cp.button_inputs = 0;
 
-    fp->input.controller = spawn->controller;
+    fp->input.controller = ft_desc->controller;
 
-    fp->input.button_mask_a = spawn->button_mask_a;
-    fp->input.button_mask_b = spawn->button_mask_b;
-    fp->input.button_mask_z = spawn->button_mask_z;
-    fp->input.button_mask_l = spawn->button_mask_l;
+    fp->input.button_mask_a = ft_desc->button_mask_a;
+    fp->input.button_mask_b = ft_desc->button_mask_b;
+    fp->input.button_mask_z = ft_desc->button_mask_z;
+    fp->input.button_mask_l = ft_desc->button_mask_l;
 
     fp->tap_stick_x = fp->tap_stick_y = fp->hold_stick_x = fp->hold_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
@@ -836,25 +867,25 @@ GObj* ftManagerMakeFighter(ftCreateDesc *spawn) // Create fighter
     fp->coll_data.p_object_coll = &fp->coll_data.object_coll;
     fp->coll_data.cliffcatch_coll = attributes->cliffcatch_coll;
     fp->coll_data.ignore_line_id = -1;
-    fp->coll_data.coll_update_frame = gMPCollUpdateFrame;
+    fp->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
     fp->coll_data.coll_mask_curr = 0;
 
     if (fp->status_info.pl_kind != nFTPlayerKindDemo)
     {
-        omAddGObjCommonProc(fighter_gobj, ftMainProcInterruptMain, 1, 5);
-        omAddGObjCommonProc(fighter_gobj, ftMainProcPhysicsMapNormal, 1, 4);
-        omAddGObjCommonProc(fighter_gobj, ftMainProcPhysicsMapCapture, 1, 3);
-        omAddGObjCommonProc(fighter_gobj, ftMainProcSearchAllCatch, 1, 2);
-        omAddGObjCommonProc(fighter_gobj, ftMainProcSearchAllHit, 1, 1);
-        omAddGObjCommonProc(fighter_gobj, ftMainProcUpdateMain, 1, 0);
+        omAddGObjCommonProc(fighter_gobj, ftMainProcInterruptMain, nOMObjProcessKindProc, 5);
+        omAddGObjCommonProc(fighter_gobj, ftMainProcPhysicsMapDefault, nOMObjProcessKindProc, 4);
+        omAddGObjCommonProc(fighter_gobj, ftMainProcPhysicsMapCapture, nOMObjProcessKindProc, 3);
+        omAddGObjCommonProc(fighter_gobj, ftMainProcSearchAllCatch, nOMObjProcessKindProc, 2);
+        omAddGObjCommonProc(fighter_gobj, ftMainProcSearchAllHit, nOMObjProcessKindProc, 1);
+        omAddGObjCommonProc(fighter_gobj, ftMainProcUpdateMain, nOMObjProcessKindProc, 0);
     }
-    else omAddGObjCommonProc(fighter_gobj, func_ovl1_80390584, 1, 5);
+    else omAddGObjCommonProc(fighter_gobj, func_ovl1_80390584, nOMObjProcessKindProc, 5);
 
-    ftManagerInitFighter(fighter_gobj, spawn);
+    ftManagerInitFighter(fighter_gobj, ft_desc);
 
     if (fp->status_info.pl_kind == nFTPlayerKindCom)
     {
-        func_unkmulti_8013A8A8(fighter_gobj);
+        ftComputerSetupAll(fighter_gobj);
     }
     if ((fp->status_info.pl_kind == nFTPlayerKindKey) || (fp->status_info.pl_kind == nFTPlayerKindGameKey))
     {
@@ -868,31 +899,29 @@ GObj* ftManagerMakeFighter(ftCreateDesc *spawn) // Create fighter
         break;
 
     case nFTPlayerKindKey:
-        ftMap_SetStatusWaitOrFall(fighter_gobj);
+        mpCommonSetFighterWaitOrFall(fighter_gobj);
         break;
 
     default:
-        if (spawn->is_skip_entry)
+        if (ft_desc->is_skip_entry)
         {
-            ftMap_SetStatusWaitOrFall(fighter_gobj);
-            ftCommon_ResetControllerInputs(fighter_gobj);
+            mpCommonSetFighterWaitOrFall(fighter_gobj);
+            ftParamLockPlayerControl(fighter_gobj);
         }
         else
         {
-            ftCommon_Entry_SetStatus(fighter_gobj);
-            ftCommon_ResetControllerInputs(fighter_gobj);
+            ftCommonEntrySetStatus(fighter_gobj);
+            ftParamLockPlayerControl(fighter_gobj);
         }
         break;
     }
     if ((fp->status_info.pl_kind == nFTPlayerKindMan) || (fp->status_info.pl_kind == nFTPlayerKindCom))
     {
-        func_unkmulti_8013AC00(fighter_gobj);
+        ftComputerSetFighterHurtboxSizeInfo(fighter_gobj);
     }
-    if ((fp->status_info.pl_kind != nFTPlayerKindDemo) && !(spawn->is_skip_shadow_setup))
+    if ((fp->status_info.pl_kind != nFTPlayerKindDemo) && !(ft_desc->is_skip_shadow_setup))
     {
-        ftShadowMakeShadowForFighter(fighter_gobj);
+        ftShadowMakeShadow(fighter_gobj);
     }
     return fighter_gobj;
 }
-
-*/

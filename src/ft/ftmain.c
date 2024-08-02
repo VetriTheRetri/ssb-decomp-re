@@ -604,7 +604,7 @@ ftHitlog sFTMainHitlogs[10];
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//        INITIALIZED DATA       //
 //                               //
 // // // // // // // // // // // //
 
@@ -4334,7 +4334,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
 
     if (fp->unk_ft_0x7AC != 0)
     {
-        fp->x3C_unk += fp->unk_ft_0x7AC;
+        fp->unk_ft_0x3C += fp->unk_ft_0x7AC;
     }
     if (!(fp->is_shield) && (fp->shield_health < 55))
     {
@@ -4689,7 +4689,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
     }
     fp->joint[withheld_part->root_joint_id] = root_joint;
 
-    root_joint->user_data.p = ft_parts = ftManagerGetFighterPartsSetNextAlloc();
+    root_joint->user_data.p = ft_parts = ftManagerGetNextPartsAlloc();
 
     ft_parts->flags = attributes->common_parts_container->common_parts[fp->detail_current - 1].flags;
     ft_parts->joint_id = withheld_part->root_joint_id;
@@ -4806,7 +4806,7 @@ void ftMainEjectWithheldPartID(ftStruct *fp, s32 withheld_part_id)
     DObj *sibling_joint;
     DObj *new_sibling_joint;
 
-    ftManagerSetFighterPartsPrevAlloc(root_joint->user_data.p);
+    ftManagerSetPrevPartsAlloc(root_joint->user_data.p);
 
     child_joint = root_joint->child;
     parent_joint = root_joint->parent;
@@ -5042,7 +5042,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     {
         fp->attack1_followup_frames = 0.0F;
     }
-    if ((fp->status_info.pl_kind != nFTPlayerKindDemo) && (fp->dl_link != 9))
+    if ((fp->status_info.pl_kind != nFTPlayerKindDemo) && (fp->dl_link != FTRENDER_DLLINK_DEFAULT))
     {
         ftParamMoveDLLink(fighter_gobj, 9);
     }
@@ -5103,13 +5103,13 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     {
         motion_id = status_struct[status_struct_id].mflags.motion_id;
         fp->status_info.motion_id = motion_id;
-        script_array = fp->ft_data->battlemotion;
+        script_array = fp->ft_data->gamemotion;
     }
     else
     {
         motion_id = opening_struct[status_struct_id].motion_id - 0x10000;
         fp->status_info.motion_id = motion_id;
-        script_array = fp->ft_data->submotion;
+        script_array = fp->ft_data->moviemotion;
     }
     if ((motion_id != -1) && (motion_id != -2))
     {
@@ -5246,15 +5246,15 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
             if (script_info->offset != 0x80000000)
             {
                 // Actually subaction scripts?
-                if (fp->anim_flags.flags.is_use_submotion_script)
+                if (fp->anim_flags.flags.is_use_moviemotion_script)
                 {
-                    event_file_head = *fp->ft_data->p_file_submotion;
+                    event_file_head = *fp->ft_data->p_file_moviemotion;
 
                     event_script_ptr = (void*)((intptr_t)script_info->offset + (intptr_t)event_file_head);
                 }
                 else
                 {
-                    event_file_head = *fp->ft_data->p_file_battlemotion;
+                    event_file_head = *fp->ft_data->p_file_gamemotion;
 
                     event_script_ptr = (void*)((intptr_t)script_info->offset + (intptr_t)event_file_head);
                 }

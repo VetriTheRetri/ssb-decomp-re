@@ -1,7 +1,5 @@
 #include <ovl0/reloc_data_mgr.h>
 
-extern intptr_t D_NF_00000854;
-extern intptr_t D_NF_001AC870;
 extern u32 dCommonFileIDs[8];
 extern void *gGMCommonFiles[];
 
@@ -15,14 +13,14 @@ void func_ovl64_8018E0C0()
 {
 	rdSetup rldm_setup;
 
-	rldm_setup.tableRomAddr = (intptr_t)&D_NF_001AC870;
-	rldm_setup.tableFileCount = (uintptr_t)&D_NF_00000854;
-	rldm_setup.fileHeap = NULL;
-	rldm_setup.fileHeapSize = 0;
-	rldm_setup.statusBuf = sAutoDemoStatusBuf;
-	rldm_setup.statusBufSize = ARRAY_COUNT(sAutoDemoStatusBuf);
-	rldm_setup.forceBuf = sAutoDemoForceBuf;
-	rldm_setup.forceBufSize = ARRAY_COUNT(sAutoDemoForceBuf);
+	rldm_setup.table_addr = (intptr_t)&lRDManagerTableAddr;
+	rldm_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
+	rldm_setup.file_heap = NULL;
+	rldm_setup.file_heap_size = 0;
+	rldm_setup.status_buf = sAutoDemoStatusBuf;
+	rldm_setup.status_buf_size = ARRAY_COUNT(sAutoDemoStatusBuf);
+	rldm_setup.force_buf = sAutoDemoForceBuf;
+	rldm_setup.force_buf_size = ARRAY_COUNT(sAutoDemoForceBuf);
 
 	rdManagerInitSetup(&rldm_setup);
 	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));

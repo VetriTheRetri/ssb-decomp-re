@@ -102,7 +102,7 @@ D_NF_00000734 = 0x000734;
 D_NF_00000758 = 0x000758;
 D_NF_00000788 = 0x000788;
 D_NF_00000828 = 0x000828;
-D_NF_00000854 = 0x000854;
+lRDManagerTableFilesNum = 0x000854;
 D_NF_000008A0 = 0x0008A0;
 D_NF_000008C0 = 0x0008C0;
 D_NF_000008D8 = 0x0008D8;
@@ -534,7 +534,7 @@ D_NF_00100000 = 0x100000;
 D_NF_00100003 = 0x100003;
 D_NF_00100004 = 0x100004;
 D_NF_00180000 = 0x180000;
-D_NF_001AC870 = 0x1AC870;
+lRDManagerTableAddr = 0x1AC870;
 D_NF_00AC7340 = 0xAC7340;
 D_NF_00AC9DE0 = 0xAC9DE0;
 D_NF_00B16C80 = 0xB16C80;
@@ -703,7 +703,6 @@ gIFPlayerCommonInterface = 0x80131580;
 menu_zoom = 0x80390D90;
 gcAppendSObjWithSprite = 0x800ccfdc;
 gSaveData = 0x800A44E0;
-gFTAnimHeapSize = 0x80130D9C;
 D_ovl2_8012EF40 = 0x8012EF40;
 func_ovl26_801365D0 = 0x801365D0;
 
@@ -758,12 +757,18 @@ D_8018E220 = 0x8018E220;
 
 omAddMObjAnimAll = 0x8000BD54;
 
-gFTCommonFile = 0x80130D98;
-
-gFTDataLinkMain = 0x80130FB0;
-
+sFTManagerStructsAllocFree = 0x80130D80;
+sFTManagerStructsAllocBuf = 0x80130D84;
+sFTManagerPartsAllocFree = 0x80130D88;
+sFTManagerPartsAllocBuf = 0x80130D8C;
+gFTManagerPlayersNum = 0x80130D90;
 gFTManagerMotionCount = 0x80130D94;
 gFTManagerStatUpdateCount = 0x80130D96;
+gFTManagerCommonFile = 0x80130D98;
+gFTManagerAnimHeapSize = 0x80130D9C;
+sFTManagerForceBuf = 0x80130DA0;
+
+gFTDataLinkMain = 0x80130FB0;
 
 gFTMainIsHurtDetect = 0x801311A0;
 gFTMainIsHitDetect = 0x801311B0;
@@ -872,7 +877,7 @@ sEFManagerTexturesFile1 = 0x801313B0;
 sEFManagerTexturesFile2 = 0x801313B4;
 sEFManagerTexturesFile3 = 0x801313B8;
 sEFManagerStructsAllocFree = 0x801313BC;
-sEFManagerNumStructsFree = 0x801313C0;
+sEFManagerStructsFreeNum = 0x801313C0;
 gEFManagerParticleBankID = 0x801313C4;
 
 sGRWallpaperIsPausePerspUpdate = 0x801313D0;

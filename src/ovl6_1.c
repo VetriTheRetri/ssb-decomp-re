@@ -5,8 +5,6 @@
 #include <gm/gmsound.h>
 #include <it/item.h>
 
-extern intptr_t D_NF_00000854;
-extern intptr_t D_NF_001AC870;
 extern u32 dCommonFileIDs[8];
 extern void* gGMCommonFiles[/* */];
 extern void* gBonusGameFileData[/* */];
@@ -48,14 +46,14 @@ void func_ovl6_8018ED70()
 {
 	rdSetup rldm_setup;
 
-	rldm_setup.tableRomAddr = &D_NF_001AC870;
-	rldm_setup.tableFileCount = &D_NF_00000854;
-	rldm_setup.fileHeap = NULL;
-	rldm_setup.fileHeapSize = 0;
-	rldm_setup.statusBuf = gOverlay6StatusBuf;
-	rldm_setup.statusBufSize = ARRAY_COUNT(gOverlay6StatusBuf);
-	rldm_setup.forceBuf = gOverlay6ForceBuf;
-	rldm_setup.forceBufSize = ARRAY_COUNT(gOverlay6ForceBuf);
+	rldm_setup.table_addr = &lRDManagerTableAddr;
+	rldm_setup.table_files_num = &lRDManagerTableFilesNum;
+	rldm_setup.file_heap = NULL;
+	rldm_setup.file_heap_size = 0;
+	rldm_setup.status_buf = gOverlay6StatusBuf;
+	rldm_setup.status_buf_size = ARRAY_COUNT(gOverlay6StatusBuf);
+	rldm_setup.force_buf = gOverlay6ForceBuf;
+	rldm_setup.force_buf_size = ARRAY_COUNT(gOverlay6ForceBuf);
 
 	rdManagerInitSetup(&rldm_setup);
 	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles,

@@ -3,8 +3,6 @@
 #include <ovl0/reloc_data_mgr.h>
 
 extern void *gGMCommonFiles[];
-extern intptr_t D_NF_00000854;
-extern intptr_t D_NF_001AC870;
 extern u32 dCommonFileIDs[8];
 extern intptr_t D_NF_80000023;
 extern s32 D_NF_800A5240[];
@@ -68,14 +66,14 @@ void func_ovl5_8018D0C0()
 {
 	rdSetup rldm_setup;
 
-	rldm_setup.tableRomAddr = (s32)&D_NF_001AC870;
-	rldm_setup.tableFileCount = (u32)&D_NF_00000854;
-	rldm_setup.fileHeap = NULL;
-	rldm_setup.fileHeapSize = 0;
-	rldm_setup.statusBuf = D_ovl5_8018D678;
-	rldm_setup.statusBufSize = ARRAY_COUNT(D_ovl5_8018D678);
-	rldm_setup.forceBuf = D_ovl5_8018D718;
-	rldm_setup.forceBufSize = ARRAY_COUNT(D_ovl5_8018D718);
+	rldm_setup.table_addr = (s32)&lRDManagerTableAddr;
+	rldm_setup.table_files_num = (u32)&lRDManagerTableFilesNum;
+	rldm_setup.file_heap = NULL;
+	rldm_setup.file_heap_size = 0;
+	rldm_setup.status_buf = D_ovl5_8018D678;
+	rldm_setup.status_buf_size = ARRAY_COUNT(D_ovl5_8018D678);
+	rldm_setup.force_buf = D_ovl5_8018D718;
+	rldm_setup.force_buf_size = ARRAY_COUNT(D_ovl5_8018D718);
 
 	rdManagerInitSetup(&rldm_setup);
 	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
@@ -133,7 +131,7 @@ void func_ovl5_8018D1A0()
 
 		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot) continue;
 
-		ftManagerSetupDataKind(gBattleState->players[player].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
 
 		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 		player_spawn.pos.x = 0.0F;

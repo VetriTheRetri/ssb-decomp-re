@@ -3,8 +3,6 @@
 #include <ovl0/reloc_data_mgr.h>
 
 extern intptr_t D_NF_800A5240;
-extern intptr_t D_NF_001AC870;
-extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_000000C2;
 extern intptr_t D_NF_000073C0;
 extern intptr_t lMNN64ArenaLo;          // 80132080
@@ -13,7 +11,6 @@ extern void func_ovl0_800CD2CC(GObj*);
 extern void func_ovl0_800CCF00();
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void func_80007080(void*, f32, f32, f32, f32);
-
 
 // BSS
 // 80132040
@@ -149,14 +146,14 @@ void mnN64InitAll()
 	sMNN64SkipAllowWait = 8;
 	sMNN64IsProceedOpening = FALSE;
 
-	rldm_setup.tableRomAddr = &D_NF_001AC870;
-	rldm_setup.tableFileCount = &D_NF_00000854;
-	rldm_setup.fileHeap = 0;
-	rldm_setup.fileHeapSize = 0;
-	rldm_setup.statusBuf = sMNN64StatusBuf;
-	rldm_setup.statusBufSize = ARRAY_COUNT(sMNN64StatusBuf);
-	rldm_setup.forceBuf = NULL;
-	rldm_setup.forceBufSize = 0;
+	rldm_setup.table_addr = &lRDManagerTableAddr;
+	rldm_setup.table_files_num = &lRDManagerTableFilesNum;
+	rldm_setup.file_heap = 0;
+	rldm_setup.file_heap_size = 0;
+	rldm_setup.status_buf = sMNN64StatusBuf;
+	rldm_setup.status_buf_size = ARRAY_COUNT(sMNN64StatusBuf);
+	rldm_setup.force_buf = NULL;
+	rldm_setup.force_buf_size = 0;
 
 	rdManagerInitSetup(&rldm_setup);
 

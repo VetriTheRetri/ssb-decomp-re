@@ -129,8 +129,6 @@ extern uintptr_t D_NF_80392A00;             // 80392A00
 extern intptr_t lCreditsInterpolation;      // 00007304
 extern intptr_t lCreditsATrack;             // 00007338
 extern intptr_t lCreditsDObjDesc;           // 000078C0
-extern intptr_t D_NF_001AC870;
-extern intptr_t D_NF_00000854;
 extern intptr_t lCreditsCrosshairSprite;    // 00006D58
 extern intptr_t lCreditsTextBoxBracketLeft; // 00006F98
 extern intptr_t lCreditsTextBoxBracketRight;// 000071D8

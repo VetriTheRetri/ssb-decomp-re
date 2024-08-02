@@ -163,7 +163,7 @@ void itBoxContainerSmashUpdateEffect(GObj *effect_gobj) // Barrel/Crate smash GF
 
     if (ep->effect_vars.container.lifetime == 0)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
         omEjectGObj(effect_gobj);
     }
     else while (dobj != NULL)

@@ -1070,7 +1070,7 @@ void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 cost
 		if (fighter_gobj != NULL)
 		{
 			initial_y_rotation = DObjGetStruct(fighter_gobj)->rotate.vec.f.y;
-			func_ovl2_800D78E8(fighter_gobj);
+			ftManagerDestroyFighter(fighter_gobj);
 		}
 		else
 			initial_y_rotation = 0.0F;
@@ -3822,14 +3822,14 @@ void mnBattleInitCSS()
 	s32 i;
 	s32 j;
 
-	rldmSetup.tableRomAddr = &D_NF_001AC870;
-	rldmSetup.tableFileCount = &D_NF_00000854;
-	rldmSetup.fileHeap = 0;
-	rldmSetup.fileHeapSize = 0;
-	rldmSetup.statusBuf = (rdFileNode*)&D_ovl26_8013C0E0;
-	rldmSetup.statusBufSize = 0x78;
-	rldmSetup.forceBuf = (rdFileNode*)&D_ovl26_8013C0A8;
-	rldmSetup.forceBufSize = 7;
+	rldmSetup.table_addr = &lRDManagerTableAddr;
+	rldmSetup.table_files_num = &lRDManagerTableFilesNum;
+	rldmSetup.file_heap = 0;
+	rldmSetup.file_heap_size = 0;
+	rldmSetup.status_buf = (rdFileNode*)&D_ovl26_8013C0E0;
+	rldmSetup.status_buf_size = 0x78;
+	rldmSetup.force_buf = (rdFileNode*)&D_ovl26_8013C0A8;
+	rldmSetup.force_buf_size = 7;
 	rdManagerInitSetup(&rldmSetup);
 	rdManagerLoadFiles(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray,
 						 gsMemoryAlloc(rdManagerGetAllocSize(D_ovl26_8013B3A0, 7U), 0x10U));
@@ -3845,10 +3845,10 @@ void mnBattleInitCSS()
 	ftManagerAllocFighter(1U, 4);
 
 	for (i = 0; i < 12; i++)
-		ftManagerSetupDataKind(i);
+		ftManagerSetupFilesAllKind(i);
 
 	for (i = 0; i < 4; i++)
-		gMnBattlePanels[i].anim_heap = gsMemoryAlloc(gFTAnimHeapSize, 0x10U);
+		gMnBattlePanels[i].anim_heap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10U);
 
 	mnBattleCreatePortraitViewport();
 	mnBattleCreateCursorViewport();

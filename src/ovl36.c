@@ -23,8 +23,6 @@ typedef struct CameraVec7
 
 
 // EXTERN
-extern uintptr_t D_NF_001AC870;
-extern uintptr_t D_NF_00000854;
 extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay36ArenaLo;  // 8018E620
 extern intptr_t lOverlay36ArenaHi;  // 803903E0
@@ -35,7 +33,7 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void func_8000FA3C(void*, void*, f32);
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
-extern u32 gFTAnimHeapSize; // 80130D9C
+extern u32 gFTManagerAnimHeapSize; // 80130D9C
 // Offsets
 extern intptr_t FILE_041_MARIO_CAMERA_PARAMS_OFFSET; // 00000000 file 0x041 offset for Mario's fighter pose camera settings
 
@@ -69,7 +67,7 @@ ftExplainCommand dMvOpeningMarioInputSeq[] =
 };
 
 // 8018E0E8
-RldmFileId D_ovl36_8018E0E8[2] = {
+rdFileID D_ovl36_8018E0E8[2] = {
 	0x25, 0x41
 };
 
@@ -162,14 +160,14 @@ void mvOpeningMarioLoadFiles()
 {
 	rdSetup rldmSetup;
 
-	rldmSetup.tableRomAddr = &D_NF_001AC870;
-	rldmSetup.tableFileCount = &D_NF_00000854;
-	rldmSetup.fileHeap = 0;
-	rldmSetup.fileHeapSize = 0;
-	rldmSetup.statusBuf = D_ovl36_8018E268;
-	rldmSetup.statusBufSize = ARRAY_COUNT(D_ovl36_8018E268);
-	rldmSetup.forceBuf = D_ovl36_8018E3E8;
-	rldmSetup.forceBufSize = ARRAY_COUNT(D_ovl36_8018E3E8);
+	rldmSetup.table_addr = &lRDManagerTableAddr;
+	rldmSetup.table_files_num = &lRDManagerTableFilesNum;
+	rldmSetup.file_heap = 0;
+	rldmSetup.file_heap_size = 0;
+	rldmSetup.status_buf = D_ovl36_8018E268;
+	rldmSetup.status_buf_size = ARRAY_COUNT(D_ovl36_8018E268);
+	rldmSetup.force_buf = D_ovl36_8018E3E8;
+	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl36_8018E3E8);
 	rdManagerInitSetup(&rldmSetup);
 	rdManagerLoadFiles(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), gMvOpeningMarioFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
 }
@@ -299,7 +297,7 @@ void mvOpeningMarioInitFighterStagePanel()
 
 		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
 
-		ftManagerSetupDataKind(gBattleState->players[i].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[i].ft_kind);
 
 		spawn_info.ft_kind = gBattleState->players[i].ft_kind;
 		spawn_info.pos.x = spawn_position.x;
@@ -489,9 +487,9 @@ void mvOpeningMarioInit()
 	wpManagerAllocWeapons();
 	itManagerInitItems();
 	efManagerInitEffects();
-	ftManagerSetupDataKind(nFTKindMario);
+	ftManagerSetupFilesAllKind(nFTKindMario);
 
-	gMvOpeningMarioAnimHeap = gsMemoryAlloc(gFTAnimHeapSize, 0x10);
+	gMvOpeningMarioAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
 	mvOpeningMarioCreateNameViewport();
 	mvOpeningMarioCreatePosedFighterBackgroundViewport();
 	mvOpeningMarioCreatePosedFighterViewport();

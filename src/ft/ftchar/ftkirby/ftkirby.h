@@ -94,6 +94,8 @@
 #define FTKIRBY_COPYNESS_PKFIRE_SPARK_VEL_AIR 95.0F
 #define FTKIRBY_COPYNESS_PKFIRE_SPARK_VEL_GROUND 73.0F
 
+extern intptr_t lFTKirbySpecialNCopyData;
+
 extern ftStatusDesc dFTKirbySpecialStatusDesc[/* */];
 
 extern void *gFTDataKirbyMain;

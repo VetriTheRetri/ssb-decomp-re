@@ -265,7 +265,7 @@ void *sEFManagerTexturesFile3;
 efStruct *sEFManagerStructsAllocFree;
 
 // 0x801313C0
-s32 sEFManagerNumStructsFree;
+s32 sEFManagerStructsFreeNum;
 
 // 0x801313C4
 s32 gEFManagerParticleBankID;
@@ -726,7 +726,7 @@ efCreateDesc dEFManagerShieldEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTCommonFile,                         // Texture file
+    &gFTManagerCommonFile,                         // Texture file
 
     // DObj transformation struct 1
     {
@@ -1985,7 +1985,7 @@ void efManagerInitEffects(void)
     s32 unused;
 
     sEFManagerStructsAllocFree = ep = gsMemoryAlloc(sizeof(efStruct) * EFFECT_ALLOC_NUM, 0x8);
-    sEFManagerNumStructsFree = EFFECT_ALLOC_NUM;
+    sEFManagerStructsFreeNum = EFFECT_ALLOC_NUM;
 
     for (i = 0; i < (EFFECT_ALLOC_NUM - 1); i++)
     {
@@ -2006,11 +2006,11 @@ void efManagerInitEffects(void)
 }
 
 // 0x800FD43C
-efStruct* efManagerGetEffectSetNextAlloc(sb32 is_force_return)
+efStruct* efManagerGetNextStructAlloc(sb32 is_force_return)
 {
     efStruct *ep;
 
-    if ((is_force_return == FALSE) && (sEFManagerNumStructsFree < 5))
+    if ((is_force_return == FALSE) && (sEFManagerStructsFreeNum < 5))
     {
         return NULL;
     }
@@ -2026,7 +2026,7 @@ efStruct* efManagerGetEffectSetNextAlloc(sb32 is_force_return)
     ep->eftrans = NULL;
     ep->is_pause_effect = FALSE;
 
-    sEFManagerNumStructsFree--;
+    sEFManagerStructsFreeNum--;
 
     return ep;
 }
@@ -2034,23 +2034,23 @@ efStruct* efManagerGetEffectSetNextAlloc(sb32 is_force_return)
 // 0x800FD4B8
 efStruct* efManagerGetEffectNoForce(void)
 {
-    return efManagerGetEffectSetNextAlloc(FALSE);
+    return efManagerGetNextStructAlloc(FALSE);
 }
 
 // 0x800FD4D8
 efStruct* efManagerGetEffectForce(void)
 {
-    return efManagerGetEffectSetNextAlloc(TRUE);
+    return efManagerGetNextStructAlloc(TRUE);
 }
 
 // 0x800FD4F8
-void efManagerSetPrevAlloc(efStruct *ep)
+void efManagerSetPrevStructAlloc(efStruct *ep)
 {
     ep->alloc_next = sEFManagerStructsAllocFree;
 
     sEFManagerStructsAllocFree = ep;
 
-    sEFManagerNumStructsFree++;
+    sEFManagerStructsFreeNum++;
 }
 
 // 0x800FD524
@@ -2075,7 +2075,7 @@ void efManagerHaveStructProcUpdate(GObj *effect_gobj)
 
         if (effect_gobj->anim_frame <= 0.0F)
         {
-            efManagerSetPrevAlloc(efGetStruct(effect_gobj));
+            efManagerSetPrevStructAlloc(efGetStruct(effect_gobj));
 
             omEjectGObj(effect_gobj);
         }
@@ -2193,7 +2193,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
 
     if (effect_flags & EFFECT_FLAG_USERDATA)
     {
-        ep = efManagerGetEffectSetNextAlloc(is_force_return);
+        ep = efManagerGetNextStructAlloc(is_force_return);
 
         if (ep == NULL)
         {
@@ -2209,7 +2209,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
     {
         if (ep != NULL)
         {
-            efManagerSetPrevAlloc(ep);
+            efManagerSetPrevStructAlloc(ep);
         }
         return NULL;
     }
@@ -2324,7 +2324,7 @@ efParticle* efManagerDestroyParticleGObj(efParticle *efpart, GObj *effect_gobj)
     {
         efStruct *ep = efGetStruct(effect_gobj);
 
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
     }
     omEjectGObj(effect_gobj);
 
@@ -2338,7 +2338,7 @@ void efManagerDefaultProcDead(efTransform *eftrans)
     {
         efStruct *ep = efGetStruct(eftrans->effect_gobj);
 
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
     }
     omEjectGObj(eftrans->effect_gobj);
 }
@@ -2379,7 +2379,7 @@ efParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -2433,7 +2433,7 @@ void efManagerDamageNormalHeavyProcDead(efTransform *eftrans)
     Vec3f pos = eftrans->translate;
 
     efManagerDamageNormalLightMakeEffect(&pos, ep->effect_vars.damage_normal_heavy.player, ep->effect_vars.damage_normal_heavy.size, FALSE);
-    efManagerSetPrevAlloc(efGetStruct(eftrans->effect_gobj));
+    efManagerSetPrevStructAlloc(efGetStruct(eftrans->effect_gobj));
     omEjectGObj(eftrans->effect_gobj);
 }
 
@@ -2455,7 +2455,7 @@ efParticle* efManagerDamageNormalHeavyMakeEffect(Vec3f *pos, s32 player, s32 siz
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -2523,7 +2523,7 @@ efParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -2580,7 +2580,7 @@ void efManagerVelAddDestroyAnimEnd(GObj *effect_gobj)
 
     if (dobj->mobj->anim_frame <= 0.0F)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
         omEjectGObj(effect_gobj);
     }
     else
@@ -2611,7 +2611,7 @@ efParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -2679,7 +2679,7 @@ efParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -2773,7 +2773,7 @@ efParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -2840,7 +2840,7 @@ efParticle* efManagerFlameRandomMakeEffect(Vec3f *pos)
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -2904,7 +2904,7 @@ efParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -2966,7 +2966,7 @@ efParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -3103,7 +3103,7 @@ efParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_i
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -3243,7 +3243,7 @@ efParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -3340,7 +3340,7 @@ efParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -3435,7 +3435,7 @@ void efManagerDamageFlyOrbsProcUpdate(GObj *effect_gobj)
 
     if (ep->effect_vars.damage_fly_orbs.lifetime < 0)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
         omEjectGObj(effect_gobj);
     }
     else
@@ -3485,7 +3485,7 @@ void efManagerDamageSpawnOrbsProcUpdate(GObj *this_gobj)
 
     if (this_ep->effect_vars.damage_spawn_orbs.lifetime < 0)
     {
-        efManagerSetPrevAlloc(this_ep);
+        efManagerSetPrevStructAlloc(this_ep);
         omEjectGObj(this_gobj);
     }
 }
@@ -3553,7 +3553,7 @@ void efManagerImpactWaveProcUpdate(GObj *effect_gobj)
 
     if (effect_gobj->anim_frame <= 0.0F)
     {
-        efManagerSetPrevAlloc(efGetStruct(effect_gobj));
+        efManagerSetPrevStructAlloc(efGetStruct(effect_gobj));
         omEjectGObj(effect_gobj);
     }
     else
@@ -3611,7 +3611,7 @@ void efManagerStarRodSparkProcUpdate(GObj *effect_gobj)
 
     if (effect_gobj->anim_frame <= 0.0F)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
         omEjectGObj(effect_gobj);
 
         return;
@@ -3665,7 +3665,7 @@ void efManagerDamageFlySparksProcUpdate(GObj *effect_gobj)
 
     if (effect_gobj->anim_frame <= 0.0F)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
         omEjectGObj(effect_gobj);
     }
     else
@@ -3730,7 +3730,7 @@ void efManagerDamageSpawnSparksProcUpdate(GObj *effect_gobj)
 
     if (this_ep->effect_vars.damage_spawn_sparks.lifetime < 0)
     {
-        efManagerSetPrevAlloc(this_ep);
+        efManagerSetPrevStructAlloc(this_ep);
         omEjectGObj(effect_gobj);
     }
 }
@@ -3811,7 +3811,7 @@ void efManagerDamageSpawnMDustProcUpdate(GObj *effect_gobj)
 
     if (this_ep->effect_vars.damage_spawn_mdust.lifetime < 0)
     {
-        efManagerSetPrevAlloc(this_ep);
+        efManagerSetPrevStructAlloc(this_ep);
         omEjectGObj(effect_gobj);
     }
 }
@@ -4013,7 +4013,7 @@ void efManagerQuakeProcUpdate(GObj *effect_gobj)
 
     if (effect_gobj->anim_frame <= 0.0F)
     {
-        efManagerSetPrevAlloc(efGetStruct(effect_gobj));
+        efManagerSetPrevStructAlloc(efGetStruct(effect_gobj));
         omEjectGObj(effect_gobj);
     }
     else
@@ -4113,7 +4113,7 @@ void efManagerDamageCoinProcDead(efTransform *eftrans)
     pos.y += 200.0F;
 
     efManagerDustExpandSmallMakeEffect(&pos, 2.0F);
-    efManagerSetPrevAlloc(efGetStruct(eftrans->effect_gobj));
+    efManagerSetPrevStructAlloc(efGetStruct(eftrans->effect_gobj));
     omEjectGObj(eftrans->effect_gobj);
 }
 
@@ -4139,7 +4139,7 @@ efParticle* efManagerDamageCoinMakeEffect(Vec3f *pos)
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -4194,7 +4194,7 @@ efParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }
@@ -4302,7 +4302,7 @@ void efManagerFoxReflectorProcUpdate(GObj *effect_gobj)
             break;
 
         case 3:
-            efManagerSetPrevAlloc(ep);
+            efManagerSetPrevStructAlloc(ep);
             omEjectGObj(effect_gobj);
             return;
         }
@@ -4623,7 +4623,7 @@ void func_ovl2_801017E8(GObj *effect_gobj)
 
     if (ep->effect_vars.unknown1.efvars_unk1_0x0 == 0)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
         omEjectGObj(effect_gobj);
     }
     else ep->effect_vars.unknown1.efvars_unk1_0x0--;
@@ -4700,7 +4700,7 @@ void efManagerPikachuThunderTrailProcUpdate(GObj *effect_gobj)
 
     if (ep->effect_vars.thunder_trail.lifetime == 0)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
         omEjectGObj(effect_gobj);
 
         return;
@@ -4801,7 +4801,7 @@ void efManagerKirbyVulcanJabProcUpdate(GObj *effect_gobj)
     }
     else
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
         omEjectGObj(effect_gobj);
     }
 }
@@ -5216,7 +5216,7 @@ void efManagerNessPKThunderTrailProcUpdate(GObj *effect_gobj)
 
     if (ep->effect_vars.pkthunder.status & wpNessPKThunder_Status_Destroy)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
         omEjectGObj(effect_gobj);
 
         return;
@@ -5296,7 +5296,7 @@ void efManagerNessPKReflectTrailProcUpdate(GObj *effect_gobj)
 
     if (ep->effect_vars.pkthunder.status & wpNessPKThunder_Status_Destroy)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
         omEjectGObj(effect_gobj);
     }
     else
@@ -5844,7 +5844,7 @@ void efManagerCaptainEntryCarProcUpdate(GObj *effect_gobj)
 
     if (dobj->anim_frame <= 0.0F)
     {
-        efManagerSetPrevAlloc(efGetStruct(effect_gobj));
+        efManagerSetPrevStructAlloc(efGetStruct(effect_gobj));
         omEjectGObj(effect_gobj);
     }
     else if (DObjGetStruct(effect_gobj)->rotate.vec.f.y == F_CLC_DTOR32(0.0F)) // This could mean trouble if the macro is changed... Need different zero literals
@@ -5941,7 +5941,7 @@ void efManagerFoxEntryArwingProcUpdate(GObj *effect_gobj)
 
     if (dobj->anim_frame <= 0.0F)
     {
-        efManagerSetPrevAlloc(efGetStruct(effect_gobj));
+        efManagerSetPrevStructAlloc(efGetStruct(effect_gobj));
         omEjectGObj(effect_gobj);
     }
     else efManagerSortZNeg(dobj);
@@ -6175,7 +6175,7 @@ void efManagerLoseKirbyStarProcUpdate(GObj *effect_gobj)
     {
         func_800269C0_275C0(nGMSoundFGMKirbyStarPing1);
         efManagerStarSplashMakeEffect(translate, ep->effect_vars.lose_kirby_star.lr);
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
         omEjectGObj(effect_gobj);
     }
     else if
@@ -6186,7 +6186,7 @@ void efManagerLoseKirbyStarProcUpdate(GObj *effect_gobj)
         (gMPCollisionGroundData->blastzone_top    < translate->y)
     )
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
         omEjectGObj(effect_gobj);
     }
 }
@@ -6342,7 +6342,7 @@ efParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
 
     if (effect_gobj == NULL)
     {
-        efManagerSetPrevAlloc(ep);
+        efManagerSetPrevStructAlloc(ep);
 
         return NULL;
     }

@@ -98,7 +98,7 @@ typedef struct ftBossInfo
     f32 wait_div;
     u32 wait_timer; // Wait this many frames until next attack
     s8 status_index;
-    u8 status_index_random;
+    s8 status_index_random;
     u8 status_index_guard; // Struct probably ends here
 
 } ftBossInfo;

@@ -4,9 +4,6 @@
 #include <sys/thread6.h>
 #include <ovl0/reloc_data_mgr.h>
 
-
-extern intptr_t D_NF_001AC870;
-extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_800A5240;
 extern intptr_t lMNCongraArenaLo;       // 80132300
 extern intptr_t lSubSystemArenaLo;
@@ -153,14 +150,14 @@ void mnCongraInitAll()
 	sMNCongraIsProceed = FALSE;
 	sMNCongraIsSceneChange = 0;
 
-	rldm_setup.tableRomAddr = &D_NF_001AC870;
-	rldm_setup.tableFileCount = &D_NF_00000854;
-	rldm_setup.fileHeap = 0;
-	rldm_setup.fileHeapSize = 0;
-	rldm_setup.statusBuf = sMNCongraStatusBuf;
-	rldm_setup.statusBufSize = ARRAY_COUNT(sMNCongraStatusBuf);
-	rldm_setup.forceBuf = NULL;
-	rldm_setup.forceBufSize = 0;
+	rldm_setup.table_addr = &lRDManagerTableAddr;
+	rldm_setup.table_files_num = &lRDManagerTableFilesNum;
+	rldm_setup.file_heap = 0;
+	rldm_setup.file_heap_size = 0;
+	rldm_setup.status_buf = sMNCongraStatusBuf;
+	rldm_setup.status_buf_size = ARRAY_COUNT(sMNCongraStatusBuf);
+	rldm_setup.force_buf = NULL;
+	rldm_setup.force_buf_size = 0;
 
 	rdManagerInitSetup(&rldm_setup);
 

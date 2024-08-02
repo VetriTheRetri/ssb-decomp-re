@@ -451,7 +451,7 @@ GObj* wpNessPKThunderTrailMakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_inde
 
     if (trail_index == 0)
     {
-        trail_wp->group_id = wpManagerGetGroupIndexInc(head_gobj, trail_gobj); // Bruh this doesn't any take arguments but it doesn't match otherwise
+        trail_wp->group_id = wpManagerGetGroupID(head_gobj, trail_gobj); // Bruh this doesn't any take arguments but it doesn't match otherwise
     }
     else trail_wp->group_id = head_wp->group_id;
 
@@ -601,7 +601,7 @@ GObj* wpNessPKReflectHeadMakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
 
     wp->lifetime = WPPKTHUNDER_LIFETIME;
 
-    wp->group_id = wpManagerGetGroupIndexInc();
+    wp->group_id = wpManagerGetGroupID();
 
     for (i = 0; i < ARRAY_COUNT(wp->weapon_vars.pkthunder.trail_gobj); i++)
     {

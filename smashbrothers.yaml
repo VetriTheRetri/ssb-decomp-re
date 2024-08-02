@@ -435,10 +435,12 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Fighter manager
+      - [0x0527E0, c, ft/ftmanager]
     # Fighter physics
       - [0x053FD0, c, ft/ftphysics]
     # Fighter animation end status handler
-      - [0x054C80, c, ftanimend]
+      - [0x054C80, c, ft/ftanimend]
     # Process map collisions
       - [0x054D10, c, mp/mpprocess]
     # Common object map collisions
@@ -545,7 +547,8 @@ segments:
       - [0x0AAA40, .data, ef/efground]
 
     # ovl2 read-only data
-      - [0x0AB250, rodata, ovl2]
+    # Fighter manager
+      - [0x0AB250, .rodata, ft/ftmanager]
     # Common object map collisions
       - [0x0AB300, .rodata, mp/mpcommon]
     # Fighter main file

@@ -313,7 +313,7 @@ void itMainDestroyItem(GObj *item_gobj)
     {
         omEjectGObj(ip->indicator_gobj);
     }
-    itManagerSetPrevAlloc(ip);
+    itManagerSetPrevStructAlloc(ip);
     omEjectGObj(item_gobj);
 }
 

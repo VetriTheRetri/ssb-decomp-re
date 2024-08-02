@@ -19,16 +19,11 @@
 extern ftStatusDesc dFTCaptainSpecialStatusDesc[/* */];
 
 extern void *gFTDataCaptainMain;
-extern void *gFTDataCaptainBattleMotion;
+extern void *gFTDataCaptainMainMotion;
 extern void *gFTDataCaptainModel;
 extern void *gFTDataCaptainSpecial2;
 extern void *gFTDataCaptainSpecial3;
-extern u32 gFTDataCaptainParticleBankID;
-
-extern void *gFTDataPolyCaptainMain;
-extern void *gFTDataPolyCaptainSubMotion;
-extern void *gFTDataPolyCaptainModel;
-extern u32 gFTDataPolyCaptainParticleBankID;
+extern s32 gFTDataCaptainParticleBankID;
 
 typedef enum ftCaptainMotion
 {

@@ -12,7 +12,7 @@ void ftCommonAttackAirLwProcHit(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindPolyLink))
+    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindNLink))
     {
         ftParamClearHitAll(fighter_gobj);
 
@@ -33,7 +33,7 @@ void ftCommonAttackAirLwProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindPolyLink))
+    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindNLink))
     {
         if (fp->status_vars.common.attackair.rehit_timer != 0)
         {
@@ -58,7 +58,7 @@ void ftCommonAttackAirProcMap(GObj *fighter_gobj)
     {
         if ((fp->command_vars.flags.flag1 != 0) && (fp->time_since_last_z > FTCOMMON_ATTACKAIR_SMOOTH_LANDING_BUFFER_FRAMES_MAX))
         {
-            if (fp->ft_data->gamemotion->script_info[fp->status_info.motion_id + (nFTCommonStatusLandingAirN - nFTCommonStatusAttackAirN)].anim_file_id != 0)
+            if (fp->ft_data->mainmotion->script_info[fp->status_info.motion_id + (nFTCommonStatusLandingAirN - nFTCommonStatusAttackAirN)].anim_file_id != 0)
             {
                 ftCommonLandingAirSetStatus(fighter_gobj);
             }

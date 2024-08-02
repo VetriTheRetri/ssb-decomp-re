@@ -179,7 +179,7 @@ union ftAnimFlags
         u32 x19B_flag_b0 : 1;
         u32 x19B_flag_b1 : 1;
         u32 x19B_flag_b2 : 1;
-        u32 is_use_moviemotion_script : 1;
+        u32 is_use_submotion_script : 1;
         u32 x19B_flag_b4 : 1;
         u32 is_have_translate_scale : 1;
         u32 is_use_shieldpose : 1;
@@ -205,15 +205,15 @@ struct ftScriptInfoArray
 struct ftFileSize
 {
     size_t main;
-    size_t gamemotion_largest_anim;
-    size_t moviemotion_largest_anim;
+    size_t mainmotion_largest_anim;
+    size_t submotion_largest_anim;
 };
 
 struct ftData
 {
     u32 file_main_id; // File size in bytes?
-    u32 file_gamemotion_id;
-    u32 file_moviemotion_id;
+    u32 file_mainmotion_id;
+    u32 file_submotion_id;
     u32 file_model_id;
     u32 file_shieldpose_id;
     u32 file_special1_id;
@@ -222,8 +222,8 @@ struct ftData
     u32 file_special4_id;
     size_t file_main_size;
     void **p_file_main; // Pointer to character's file?
-    void **p_file_gamemotion;
-    void **p_file_moviemotion;
+    void **p_file_mainmotion;
+    void **p_file_submotion;
     void **p_file_model;
     void **p_file_shieldpose;
     void **p_file_special1;
@@ -236,10 +236,10 @@ struct ftData
     uintptr_t particles_texture_lo;
     uintptr_t particles_texture_hi;
     intptr_t o_attributes; // Offset to fighter's attributes
-    ftScriptInfoArray *gamemotion;
-    ftScriptInfoArray *moviemotion;
-    s32 gamemotion_array_count;
-    s32 *moviemotion_array_count;
+    ftScriptInfoArray *mainmotion;
+    ftScriptInfoArray *submotion;
+    s32 mainmotion_array_count;
+    s32 *submotion_array_count;
     size_t file_anim_size;
 };
 

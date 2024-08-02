@@ -325,7 +325,7 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
     {
         if (fp->command_vars.flags.flag2 == 1)
         {
-            if (((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindPolyKirby)) && (fp->status_vars.common.capturekirby.is_kirby != FALSE))
+            if (((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindNKirby)) && (fp->status_vars.common.capturekirby.is_kirby != FALSE))
             {
                 ftKirbySpecialNInitFighterVars(fp);
 
@@ -485,7 +485,7 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
 {
     s32 i;
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lFTKirbySpecialNCopyData);
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
 
     if (fp->ga == nMPKineticsGround)
     {

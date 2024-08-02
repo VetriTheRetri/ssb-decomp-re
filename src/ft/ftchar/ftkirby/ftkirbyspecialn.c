@@ -117,7 +117,7 @@ void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
 {
     s16 copy_id;
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lFTKirbySpecialNCopyData); // Linker thing
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData); // Linker thing
 
     if (fp->command_vars.flags.flag1 != 0)
     {
@@ -176,7 +176,7 @@ void ftKirbySpecialNLoopProcUpdate(GObj *fighter_gobj)
 void ftKirbySpecialNCatchProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *kirby_fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lFTKirbySpecialNCopyData); // Linker thing
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData); // Linker thing
     ftStruct *victim_fp;
     Vec3f kirby_pos;
     f32 dist;
@@ -191,7 +191,7 @@ void ftKirbySpecialNCatchProcUpdate(GObj *fighter_gobj)
 
         victim_fp->status_vars.common.capturekirby.is_goto_capturewait = TRUE;
 
-        if ((victim_fp->ft_kind == nFTKindKirby) || (victim_fp->ft_kind == nFTKindPolyKirby))
+        if ((victim_fp->ft_kind == nFTKindKirby) || (victim_fp->ft_kind == nFTKindNKirby))
         {
             kirby_fp->status_vars.kirby.specialn.copy_id = victim_fp->fighter_vars.kirby.copy_id;
             victim_fp->status_vars.common.capturekirby.is_kirby = TRUE;
@@ -971,7 +971,7 @@ void ftKirbySpecialNDamageCheckLoseCopy(GObj *fighter_gobj)
     (
         (
             (fp->ft_kind == nFTKindKirby)    ||
-            (fp->ft_kind == nFTKindPolyKirby)
+            (fp->ft_kind == nFTKindNKirby)
         )                                                       &&
         (fp->fighter_vars.kirby.copy_id != nFTKindKirby)       &&
         (fp->fighter_vars.kirby.is_ignore_losecopy == FALSE)    &&

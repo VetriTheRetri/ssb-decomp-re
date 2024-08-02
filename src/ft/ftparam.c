@@ -567,7 +567,7 @@ void ftParamLinkResetShieldModelParts(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindPolyLink))
+    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindNLink))
     {
         ftParamSetModelPartDefaultID(fighter_gobj, 0x15, 0);
         ftParamSetModelPartDefaultID(fighter_gobj, 0x13, -1);
@@ -579,7 +579,7 @@ void ftParamSetHammerParams(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindPolyLink))
+    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindNLink))
     {
         ftParamSetModelPartDefaultID(fighter_gobj, 0x15, -1);
         ftParamSetModelPartDefaultID(fighter_gobj, 0x13, 0);
@@ -1281,8 +1281,8 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
     switch (fp->ft_kind)
     {
     case nFTKindDonkey:
-    case nFTKindPolyDonkey:
-    case nFTKindGiantDonkey:
+    case nFTKindNDonkey:
+    case nFTKindGDonkey:
         if (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
         {
             ftParamCheckSetFighterColAnimID(fighter_gobj, FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID, FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_LENGTH);
@@ -1290,7 +1290,7 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
         break;
 
     case nFTKindSamus:
-    case nFTKindPolySamus:
+    case nFTKindNSamus:
         if (fp->fighter_vars.samus.charge_level == FTSAMUS_CHARGE_MAX)
         {
             ftParamCheckSetFighterColAnimID(fighter_gobj, FTSAMUS_CHARGE_COLANIM_ID, FTSAMUS_CHARGE_COLANIM_LENGTH);
@@ -1298,14 +1298,14 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
         break;
 
     case nFTKindKirby:
-        if ((fp->fighter_vars.kirby.copy_id == nFTKindSamus) || (fp->fighter_vars.kirby.copy_id == nFTKindPolySamus))
+        if ((fp->fighter_vars.kirby.copy_id == nFTKindSamus) || (fp->fighter_vars.kirby.copy_id == nFTKindNSamus))
         {
             if (fp->fighter_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX)
             {
                 ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_ID, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_LENGTH);
             }
         }
-        if ((fp->fighter_vars.kirby.copy_id == nFTKindDonkey) || (fp->fighter_vars.kirby.copy_id == nFTKindPolyDonkey) || (fp->fighter_vars.kirby.copy_id == nFTKindGiantDonkey))
+        if ((fp->fighter_vars.kirby.copy_id == nFTKindDonkey) || (fp->fighter_vars.kirby.copy_id == nFTKindNDonkey) || (fp->fighter_vars.kirby.copy_id == nFTKindGDonkey))
         {
             if (fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
             {
@@ -1315,7 +1315,7 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
         break;
 
     case nFTKindNess:
-    case nFTKindPolyNess:
+    case nFTKindNNess:
         if (fp->is_absorb)
         {
             ftParamCheckSetFighterColAnimID(fighter_gobj, FTNESS_PSI_MAGNET_COLANIM_ID, FTNESS_PSI_MAGNET_COLANIM_LENGTH);
@@ -1554,7 +1554,7 @@ void ftParamUpdateDamage(ftStruct *fp, s32 damage)
         {
             itStruct *ip = itGetStruct(fp->item_hold);
 
-            if ((ip->weight != nITWeightHeavy) || (fp->ft_kind != nFTKindDonkey) && (fp->ft_kind != nFTKindPolyDonkey) && (fp->ft_kind != nFTKindGiantDonkey))
+            if ((ip->weight != nITWeightHeavy) || (fp->ft_kind != nFTKindDonkey) && (fp->ft_kind != nFTKindNDonkey) && (fp->ft_kind != nFTKindGDonkey))
             {
                 if ((damage > mtTrigGetRandomIntRange(60)) || ((itMainCheckShootNoAmmo(fp->item_hold) != FALSE) && (mtTrigGetRandomIntRange(2) == 0)))
                 {
@@ -1847,7 +1847,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
             effect_pos = &effect_pos_mod;
             break;
 
-        case nFTKindGiantDonkey:
+        case nFTKindGDonkey:
             joint_id = FTDONKEY_CHARGE_EFFECT_JOINT;
 
             effect_pos_mod.z = effect_pos_mod.y = 0.0F;

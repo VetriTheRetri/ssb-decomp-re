@@ -296,7 +296,7 @@ void wpLinkBoomerangClearGObjs(wpStruct *wp)
     {
         ftStruct *fp = ftGetStruct(wp->weapon_vars.boomerang.spawn_gobj);
 
-        if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindPolyKirby))
+        if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindNKirby))
         {
             fp->fighter_vars.kirby.copylink_boomerang_gobj = NULL;
         }
@@ -319,7 +319,7 @@ void wpLinkBoomerangCheckOwnerCatch(GObj *weapon_gobj, f32 distance)
 
             if (fp->is_special_interrupt)
             {
-                if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindPolyKirby))
+                if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindNKirby))
                 {
                     ftKirbyCopyLinkSpecialNReturnSetStatus(wp->weapon_vars.boomerang.spawn_gobj);
                 }

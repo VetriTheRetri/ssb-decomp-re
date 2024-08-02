@@ -443,28 +443,28 @@ void mpCommonSetFighterLandingParams(GObj *fighter_gobj)
     switch (fp->ft_kind)
     {
     case nFTKindMario:
-    case nFTKindMetalMario:
-    case nFTKindPolyMario:
+    case nFTKindMMario:
+    case nFTKindNMario:
         fp->fighter_vars.mario.is_expend_tornado = FALSE;
         break;
 
     case nFTKindSamus:
-    case nFTKindPolySamus:
+    case nFTKindNSamus:
         fp->fighter_vars.samus.charge_recoil = 0;
         return;
 
     case nFTKindLuigi:
-    case nFTKindPolyLuigi:
+    case nFTKindNLuigi:
         fp->fighter_vars.mario.is_expend_tornado = FALSE;
         break;
 
     case nFTKindCaptain:
-    case nFTKindPolyCaptain:
+    case nFTKindNCaptain:
         fp->fighter_vars.captain.falcon_punch_unk = FALSE;
         break;
 
     case nFTKindPurin:
-    case nFTKindPolyPurin:
+    case nFTKindNPurin:
         fp->fighter_vars.purin.unk_0x0 = FALSE;
         break;
     }

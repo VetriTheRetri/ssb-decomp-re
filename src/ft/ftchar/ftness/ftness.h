@@ -40,17 +40,12 @@
 extern ftStatusDesc dFTNessSpecialStatusDesc[/* */];
 
 extern void *gFTDataNessMain;
-extern void *gFTDataNessBattleMotion;
+extern void *gFTDataNessMainMotion;
 extern void *gFTDataNessModel;
 extern void *gFTDataNessSpecial1;
 extern void *gFTDataNessSpecial2;
 extern void *gFTDataNessSpecial3;
-extern u32 gFTDataNessParticleBankID;
-
-extern void *gFTDataPolyNessMain;
-extern void *gFTDataPolyNessSubMotion;
-extern void *gFTDataPolyNessModel;
-extern u32 gFTDataPolyNessParticleBankID;
+extern s32 gFTDataNessParticleBankID;
 
 // Moveset script IDs
 typedef enum ftNessMotion

@@ -197,8 +197,8 @@ typedef enum gmFGMVoiceID
 	nGMSoundFGMFootstep20,
 	nGMSoundFGMFootstep21,
 	nGMSoundFGMFootstep22,
-	nGMSoundFGMMetalMarioFoot = 0x7A,
-	nGMSoundFGMMetalMarioLanding, // Unconfirmed
+	nGMSoundFGMMMarioFoot = 0x7A,
+	nGMSoundFGMMMarioLanding, // Unconfirmed
 	nGMSoundFGMSamusTurnClick = 0x7F,
 	nGMSoundFGMGroundBrakeGrind,
 	nGMSoundFGMUnkEchoHit1,

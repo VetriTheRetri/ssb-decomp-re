@@ -19,5 +19,19 @@
 #include <ft/ftchar/ftpurin/ftpurin.h>
 #include <ft/ftchar/ftness/ftness.h>
 #include <ft/ftchar/ftboss/ftboss.h>
+#include <ft/ftchar/ftmmario/ftmmario.h>
+#include <ft/ftchar/ftnmario/ftnmario.h>
+#include <ft/ftchar/ftnfox/ftnfox.h>
+#include <ft/ftchar/ftndonkey/ftndonkey.h>
+#include <ft/ftchar/ftnsamus/ftnsamus.h>
+#include <ft/ftchar/ftnluigi/ftnluigi.h>
+#include <ft/ftchar/ftnlink/ftnlink.h>
+#include <ft/ftchar/ftnyoshi/ftnyoshi.h>
+#include <ft/ftchar/ftncaptain/ftncaptain.h>
+#include <ft/ftchar/ftnkirby/ftnkirby.h>
+#include <ft/ftchar/ftnpikachu/ftnpikachu.h>
+#include <ft/ftchar/ftnpurin/ftnpurin.h>
+#include <ft/ftchar/ftnness/ftnness.h>
+#include <ft/ftchar/ftgdonkey/ftgdonkey.h>
 
 #endif

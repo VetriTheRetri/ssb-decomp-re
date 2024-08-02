@@ -78,7 +78,7 @@ u16 dFTCommonDataDownBounceSFX[/* */] =
 };
 
 // 0x8012C9A8
-u16 dFTCommonDataPublicityFighterChantSFX[/* */] =
+u16 dFTCommonDataPublicityFighterChantFGMs[/* */] =
 {
     nGMSoundVoicePublicityMario,
     nGMSoundVoicePublicityFox,

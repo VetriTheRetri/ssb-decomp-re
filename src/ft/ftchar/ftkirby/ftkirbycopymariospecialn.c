@@ -8,7 +8,7 @@
 // // // // // // // // // // // //
 
 #define FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, id_true, id_false) \
-(((fp->fighter_vars.kirby.copy_id == nFTKindMario) || (fp->fighter_vars.kirby.copy_id == nFTKindPolyMario) || (fp->fighter_vars.kirby.copy_id == nFTKindMetalMario)) ? id_true : id_false) \
+(((fp->fighter_vars.kirby.copy_id == nFTKindMario) || (fp->fighter_vars.kirby.copy_id == nFTKindNMario) || (fp->fighter_vars.kirby.copy_id == nFTKindMMario)) ? id_true : id_false) \
 
 // // // // // // // // // // // //
 //                               //
@@ -42,8 +42,8 @@ void ftKirbyCopyMarioSpecialNProcAccessory(GObj *fighter_gobj)
         switch (fp->fighter_vars.kirby.copy_id) // jtbl at 0x8018C6A0
         {
         case nFTKindMario:
-        case nFTKindMetalMario:
-        case nFTKindPolyMario:
+        case nFTKindMMario:
+        case nFTKindNMario:
             fireball_kind = 0;
             break;
 
@@ -54,7 +54,7 @@ void ftKirbyCopyMarioSpecialNProcAccessory(GObj *fighter_gobj)
         #endif
 
         case nFTKindLuigi:
-        case nFTKindPolyLuigi:
+        case nFTKindNLuigi:
             fireball_kind = 1;
             break;
         }

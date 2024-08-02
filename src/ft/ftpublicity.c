@@ -1,7 +1,6 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
 
-extern u16 dFTPublicityChantFighterFGMs[/* */];
 extern alSoundEffect* func_800269C0_275C0(u16);
 
 // // // // // // // // // // // //
@@ -92,7 +91,7 @@ sb32 ftPublicityChantTryStart(GObj *gobj, f32 knockback, s32 player_number)
     {
         return FALSE;
     }
-    else sFTPublicityChantID = dFTPublicityChantFighterFGMs[ftGetStruct(fighter_gobj)->ft_kind];
+    else sFTPublicityChantID = dFTCommonDataPublicityFighterChantFGMs[ftGetStruct(fighter_gobj)->ft_kind];
 
     if (sFTPublicityChantID == nGMSoundFGMVoiceEnd)
     {

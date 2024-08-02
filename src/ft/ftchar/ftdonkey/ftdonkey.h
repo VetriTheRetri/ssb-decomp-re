@@ -25,21 +25,10 @@
 extern ftStatusDesc dFTDonkeySpecialStatusDesc[/* */];
 
 extern void *gFTDataDonkeyMain;
-extern void *gFTDataDonkeyBattleMotion;
+extern void *gFTDataDonkeyMainMotion;
 extern void *gFTDataDonkeyModel;
 extern void *gFTDataDonkeySpecial2;
-extern u32 gFTDataDonkeyParticleBankID;
-
-extern void *gFTDataPolyDonkeyMain;
-extern void *gFTDataPolyDonkeySubMotion;
-extern void *gFTDataPolyDonkeyModel;
-extern u32 gFTDataPolyDonkeyParticleBankID;
-
-extern void *gFTDataGiantDonkeyMain;
-extern void *gFTDataGiantDonkeySubMotion;
-extern void *gFTDataGiantDonkeyModel;
-extern void *gFTDataGiantDonkeySpecial2;
-extern u32 gFTDataGiantDonkeyParticleBankID;
+extern s32 gFTDataDonkeyParticleBankID;
 
 typedef enum ftDonkeyMotion
 {

@@ -746,24 +746,24 @@ typedef enum ftKind
     nFTKindPlayableEnd = nFTKindNess,
 
     nFTKindBoss,
-    nFTKindMetalMario,
+    nFTKindMMario,
 
-    nFTKindPolyStart,
-    nFTKindPolyMario = nFTKindPolyStart,
-    nFTKindPolyFox,
-    nFTKindPolyDonkey,
-    nFTKindPolySamus,
-    nFTKindPolyLuigi,
-    nFTKindPolyLink,
-    nFTKindPolyYoshi,
-    nFTKindPolyCaptain,
-    nFTKindPolyKirby,
-    nFTKindPolyPikachu,
-    nFTKindPolyPurin,
-    nFTKindPolyNess,
-    nFTKindPolyEnd = nFTKindPolyNess,
+    nFTKindNStart,
+    nFTKindNMario = nFTKindNStart,
+    nFTKindNFox,
+    nFTKindNDonkey,
+    nFTKindNSamus,
+    nFTKindNLuigi,
+    nFTKindNLink,
+    nFTKindNYoshi,
+    nFTKindNCaptain,
+    nFTKindNKirby,
+    nFTKindNPikachu,
+    nFTKindNPurin,
+    nFTKindNNess,
+    nFTKindNEnd = nFTKindNNess,
 
-    nFTKindGiantDonkey,
+    nFTKindGDonkey,
     nFTKindEnumMax,
     nFTKindNull        // NONE
 
@@ -864,7 +864,7 @@ typedef enum ftComputerTraitKind
     nFTComputerTraitKirbyTeam,         // Kirby (Is this specifically 1P Game Kirby Team?)
     nFTComputerTraitPolyTeam,          // Fighting Polygon Team (1P Game)
     nFTComputerTraitMarioBros,         // Mario & Luigi (1P Game)
-    nFTComputerTraitGiantDonkey,       // Giant Donkey Kong (1P Game)
+    nFTComputerTraitGDonkey,       // Giant Donkey Kong (1P Game)
     nFTComputerTraitUnk1,              // Unknown
     nFTComputerTraitBonus3,            // Race to the Finish Fighting Polygons
     nFTComputerTraitAlly,              // Ally fighter in 1P Game

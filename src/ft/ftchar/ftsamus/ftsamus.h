@@ -30,17 +30,12 @@
 extern ftStatusDesc dFTSamusSpecialStatusDesc[/* */];
 
 extern void *gFTDataSamusMain;
-extern void *gFTDataSamusBattleMotion;
+extern void *gFTDataSamusMainMotion;
 extern void *gFTDataSamusModel;
 extern void *gFTDataSamusSpecial1;
 extern void *gFTDataSamusSpecial2;
 extern void *gFTDataSamusSpecial3;
-extern u32 gFTDataSamusParticleBankID;
-
-extern void *gFTDataPolySamusMain;
-extern void *gFTDataPolySamusSubMotion;
-extern void *gFTDataPolySamusModel;
-extern u32 gFTDataPolySamusParticleBankID;
+extern s32 gFTDataSamusParticleBankID;
 
 typedef enum ftSamusMotion
 {

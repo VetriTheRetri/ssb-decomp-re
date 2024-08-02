@@ -297,7 +297,7 @@ void ftFoxSpecialLwStartInitStatusVars(GObj *fighter_gobj)
     {
         fp->is_attach_effect = TRUE;
     }
-    fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFTDataFoxBattleMotion + (intptr_t)&lFTFoxSpecialLwReflector); // Another linker thing
+    fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFTDataFoxMainMotion + (intptr_t)&lFTFoxSpecialLwReflector); // Another linker thing
 }
 
 // 0x8015D250

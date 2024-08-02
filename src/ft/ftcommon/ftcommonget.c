@@ -167,7 +167,7 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
         {
             if (fp->item_hold != NULL)
             {
-                if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindPolyDonkey) || (fp->ft_kind == nFTKindGiantDonkey))
+                if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindNDonkey) || (fp->ft_kind == nFTKindGDonkey))
                 {
                     ftDonkeyThrowFWaitSetStatus(fighter_gobj);
                 }

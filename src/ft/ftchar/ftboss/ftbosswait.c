@@ -183,9 +183,9 @@ void ftBossWaitDecideStatusComputer(GObj *fighter_gobj) // Decide Master Hand's 
 
     if (fp->fighter_vars.boss.p->wait_timer == 0)
     {
-        if (fp->fighter_vars.boss.p->status_index_guard == 3)
+        if (fp->fighter_vars.boss.p->status_id_guard == 3)
         {
-            fp->fighter_vars.boss.p->status_index_guard = 0;
+            fp->fighter_vars.boss.p->status_id_guard = 0;
 
             var = 2;
         }
@@ -193,13 +193,13 @@ void ftBossWaitDecideStatusComputer(GObj *fighter_gobj) // Decide Master Hand's 
         {
             random = mtTrigGetRandomIntRange(3);
 
-            var = dFTBossWaitRandomArrayLookup[fp->fighter_vars.boss.p->status_index * 3 + random];
+            var = dFTBossWaitRandomArrayLookup[fp->fighter_vars.boss.p->status_id * 3 + random];
 
             if (var == 2)
             {
-                fp->fighter_vars.boss.p->status_index_guard = 0;
+                fp->fighter_vars.boss.p->status_id_guard = 0;
             }
-            else fp->fighter_vars.boss.p->status_index_guard++;
+            else fp->fighter_vars.boss.p->status_id_guard++;
         }
 
         if 
@@ -214,11 +214,11 @@ void ftBossWaitDecideStatusComputer(GObj *fighter_gobj) // Decide Master Hand's 
 
         random = dFTBossWaitRandomStatusLookup[p_random[0] + mtTrigGetRandomIntRange(p_random[1])];
 
-        fp->fighter_vars.boss.p->status_index = var;
+        fp->fighter_vars.boss.p->status_id = var;
 
         status_id = dFTBossWaitRandomStatusIDs[random];
 
-        fp->fighter_vars.boss.p->status_index_random = random;
+        fp->fighter_vars.boss.p->status_id_random = random;
 
         switch (status_id)
         {

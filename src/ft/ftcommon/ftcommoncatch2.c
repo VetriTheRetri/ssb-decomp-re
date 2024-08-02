@@ -76,12 +76,12 @@ void ftCommonCatchWaitSetStatus(GObj *fighter_gobj)
 
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
-    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindPolyLink))
+    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindNLink))
     {
         ftParamSetModelPartID(fighter_gobj, 21, 0);
         ftParamSetModelPartID(fighter_gobj, 19, -1);
     }
-    else if ((fp->ft_kind == nFTKindYoshi) || (fp->ft_kind == nFTKindPolyYoshi))
+    else if ((fp->ft_kind == nFTKindYoshi) || (fp->ft_kind == nFTKindNYoshi))
     {
         ftParamSetModelPartID(fighter_gobj, 7, 1);
     }

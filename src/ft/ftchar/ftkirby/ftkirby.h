@@ -99,15 +99,10 @@ extern intptr_t lFTKirbySpecialNCopyData;
 extern ftStatusDesc dFTKirbySpecialStatusDesc[/* */];
 
 extern void *gFTDataKirbyMain;
-extern void *gFTDataKirbyBattleMotion;
+extern void *gFTDataKirbyMainMotion;
 extern void *gFTDataKirbyModel;
 extern void *gFTDataKirbySpecial2;
-extern u32 gFTDataKirbyParticleBankID;
-
-extern void *gFTDataPolyKirbyMain;
-extern void *gFTDataPolyKirbySubMotion;
-extern void *gFTDataPolyKirbyModel;
-extern u32 gFTDataPolyKirbyParticleBankID;
+extern s32 gFTDataKirbyParticleBankID;
 
 typedef enum ftKirbyMotion
 {

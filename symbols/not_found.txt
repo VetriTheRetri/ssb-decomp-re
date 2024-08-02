@@ -791,7 +791,7 @@ gFTDataMarioMain = 0x80130E30;
 gFTDataMarioSpecial1 = 0x80130E3C;
 gFTDataMarioSpecial2 = 0x80130E40;
 
-gFTDataFoxBattleMotion = 0x80130E94;
+gFTDataFoxMainMotion = 0x80130E94;
 gFTDataFoxSpecial1 = 0x80130E9C;
 gFTDataFoxSpecial2 = 0x80130EA0;
 gFTDataFoxSpecial3 = 0x80130EA4;
@@ -815,12 +815,12 @@ gFTDataYoshiSpecial3 = 0x80131000;
 gFTDataYoshiParticleBankID = 0x80131004;
 
 gFTDataCaptainMain = 0x80131030;
-gFTDataCaptainBattleMotion = 0x80131034;
+gFTDataCaptainMainMotion = 0x80131034;
 gFTDataCaptainSpecial2 = 0x8013103C;
 gFTDataCaptainSpecial3 = 0x80131040;
 
 gFTDataKirbyMain = 0x80131070;
-gFTDataKirbyBattleMotion = 0x80131074;
+gFTDataKirbyMainMotion = 0x80131074;
 gFTDataKirbySpecial2 = 0x8013107C;
 gFTDataKirbyParticleBankID = 0x80131080;
 
@@ -833,13 +833,13 @@ gFTDataPikachuSpecial3 = 0x801310C4;
 gFTDataPurinSpecial2 = 0x801310FC;
 
 gFTDataNessMain = 0x80131130;
-gFTDataNessBattleMotion = 0x80131134;
+gFTDataNessMainMotion = 0x80131134;
 gFTDataNessModel = 0x80131138;
 gFTDataNessSpecial1 = 0x8013113C;
 gFTDataNessSpecial2 = 0x80131140;
 gFTDataNessParticleBankID = 0x80131148;
 
-gFTDataBossBattleMotion = 0x80131174;
+gFTDataBossMainMotion = 0x80131174;
 
 sFTMainGroundObstacles = 0x80131180;
 sFTMainGroundHazards = 0x80131190;

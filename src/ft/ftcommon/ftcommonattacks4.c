@@ -24,7 +24,7 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
     switch (fp->ft_kind)
     {
     case nFTKindPikachu:
-    case nFTKindPolyPikachu:
+    case nFTKindNPikachu:
         if ((fp->command_vars.flags.flag1 != 0) || (fp->command_vars.flags.flag2 != 0))
         {
             fp->status_vars.common.attack4.gfx_id += mtTrigGetRandomIntRange((FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_ID_MAX - 1)) + 1;
@@ -60,7 +60,7 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
         }
         // Fallthrough, should break here for efficiency
     case nFTKindNess:
-    case nFTKindPolyNess:
+    case nFTKindNNess:
         if ((fp->command_vars.flags.flag1 != 0) && !(fp->is_reflect))
         {
             fp->is_reflect = TRUE;
@@ -81,7 +81,7 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
     f32 stick_angle;
     s32 status_id;
 
-    if (fp->ft_data->gamemotion->script_info[nFTCommonMotionAttackS4HiS].anim_file_id != 0)
+    if (fp->ft_data->mainmotion->script_info[nFTCommonMotionAttackS4HiS].anim_file_id != 0)
     {
         stick_angle = ftParamGetStickAngleRads(fp);
 
@@ -91,7 +91,7 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
                     (stick_angle < FTCOMMON_ATTACKS4_5ANGLE_LWS_MIN) ? nFTCommonStatusAttackS4LwS :
                                                                        nFTCommonStatusAttackS4;
     }
-    else if (fp->ft_data->gamemotion->script_info[nFTCommonMotionAttackS4Hi].anim_file_id != 0)
+    else if (fp->ft_data->mainmotion->script_info[nFTCommonMotionAttackS4Hi].anim_file_id != 0)
     {
         stick_angle = ftParamGetStickAngleRads(fp);
 
@@ -104,13 +104,13 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
     switch (fp->ft_kind)
     {
     case nFTKindPikachu:
-    case nFTKindPolyPikachu:
+    case nFTKindNPikachu:
         fp->command_vars.flags.flag2 = 0;
         fp->command_vars.flags.flag1 = 0;
         break;
 
     case nFTKindNess:
-    case nFTKindPolyNess:
+    case nFTKindNNess:
         fp->command_vars.flags.flag1 = 0;
         break;
     }
@@ -120,7 +120,7 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
     switch (fp->ft_kind)
     {
     case nFTKindPikachu:
-    case nFTKindPolyPikachu:
+    case nFTKindNPikachu:
         fp->status_vars.common.attack4.gfx_id = 0;
 
         fp->proc_lagstart = ftParamProcPauseEffect;
@@ -128,8 +128,8 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
         break;
 
     case nFTKindNess:
-    case nFTKindPolyNess:
-        fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFTDataNessBattleMotion + (intptr_t)&lFTNessAttackS4Reflector); // Linker thing
+    case nFTKindNNess:
+        fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFTDataNessMainMotion + (intptr_t)&lFTNessAttackS4Reflector); // Linker thing
         break;
     }
 }

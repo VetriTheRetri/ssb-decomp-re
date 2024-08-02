@@ -4929,7 +4929,7 @@ GObj* efManagerCaptainFalconPunchMakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    joint = ((fp->ft_kind == nFTKindCaptain) || (fp->ft_kind == nFTKindPolyCaptain)) ? fp->joint[16] : fp->joint[30];
+    joint = ((fp->ft_kind == nFTKindCaptain) || (fp->ft_kind == nFTKindNCaptain)) ? fp->joint[16] : fp->joint[30];
 
     dobj->user_data.p = joint;
 
@@ -6084,7 +6084,7 @@ void efManagerCaptureKirbyStarProcUpdate(GObj *effect_gobj)
     fp = ftGetStruct(ep->fighter_gobj);
     topn_dobj = DObjGetStruct(effect_gobj);
 
-    copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lFTKirbySpecialNCopyData);
+    copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
 
     child_dobj = topn_dobj->child;
 
@@ -6122,7 +6122,7 @@ GObj* efManagerCaptureKirbyStarMakeEffect(GObj *fighter_gobj)
     DObj *dobj;
     ftKirbyCopy *copy_data;
 
-    copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lFTKirbySpecialNCopyData);
+    copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
 
     dEFCaptureKirbyStarEffectDesc.file_head = &addr;
 

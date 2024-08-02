@@ -35,7 +35,7 @@ void ftCommonThrowProcUpdate(GObj *fighter_gobj)
     }
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindPolyDonkey) || (fp->ft_kind == nFTKindGiantDonkey))
+        if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindNDonkey) || (fp->ft_kind == nFTKindGDonkey))
         {
             if (fp->status_info.status_id == nFTCommonStatusThrowF)
             {
@@ -63,7 +63,7 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
 
     if ((is_throwf != FALSE) || ((this_fp->input.pl.stick_range.x * this_fp->lr) >= 0))
     {
-        if ((this_fp->ft_kind == nFTKindKirby) || (this_fp->ft_kind == nFTKindPolyKirby))
+        if ((this_fp->ft_kind == nFTKindKirby) || (this_fp->ft_kind == nFTKindNKirby))
         {
             status_id = nFTKirbyStatusThrowF;
 
@@ -84,7 +84,7 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
     this_fp->command_vars.flags.flag2 = 0;
     this_fp->command_vars.flags.flag1 = 0;
 
-    if ((this_fp->ft_kind == nFTKindSamus) || (this_fp->ft_kind == nFTKindPolySamus))
+    if ((this_fp->ft_kind == nFTKindSamus) || (this_fp->ft_kind == nFTKindNSamus))
     {
         if (efManagerSamusGrappleBeamGlowMakeEffect(fighter_gobj) != NULL)
         {
@@ -97,7 +97,7 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
     }
     else ftCommonThrownSetStatusImmediate(catch_gobj, thrown_status->status2);
 
-    if ((this_fp->ft_kind == nFTKindKirby) || (this_fp->ft_kind == nFTKindPolyKirby))
+    if ((this_fp->ft_kind == nFTKindKirby) || (this_fp->ft_kind == nFTKindNKirby))
     {
         if (status_id == nFTKirbyStatusThrowF)
         {

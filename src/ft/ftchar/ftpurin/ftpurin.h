@@ -10,15 +10,10 @@
 extern ftStatusDesc dFTPurinSpecialStatusDesc[/* */];
 
 extern void *gFTDataPurinMain;
-extern void *gFTDataPurinBattleMotion;
+extern void *gFTDataPurinMainMotion;
 extern void *gFTDataPurinModel;
 extern void *gFTDataPurinSpecial2;
-extern u32 gFTDataPurinParticleBankID;
-
-extern void *gFTDataPolyPurinMain;
-extern void *gFTDataPolyPurinSubMotion;
-extern void *gFTDataPolyPurinModel;
-extern u32 gFTDataPolyPurinParticleBankID;
+extern s32 gFTDataPurinParticleBankID;
 
 typedef enum ftPurinMotion
 {

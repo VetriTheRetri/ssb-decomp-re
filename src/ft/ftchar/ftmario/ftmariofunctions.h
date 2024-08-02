@@ -1,9 +1,9 @@
 #ifndef _FTMARIOFUNCTIONS_H_
 #define _FTMARIOFUNCTIONS_H_
 
-#include <ft/ftdef.h>
-#include <sys/objdef.h>
 #include <ssb_types.h>
+#include <sys/objdef.h>
+#include <ft/ftdef.h>
 
 // SpecialN / SpecialAirN
 extern void ftMarioSpecialNProcUpdate(GObj* fighter_gobj);

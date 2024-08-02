@@ -13,9 +13,9 @@
 extern ftStatusDesc dFTBossSpecialStatusDesc[/* */];
 
 extern void *gFTDataBossMain;
-extern void *gFTDataBossBattleMotion;
+extern void *gFTDataBossMainMotion;
 extern void *gFTDataBossModel;
-extern u32 gFTDataBossParticleBankID;
+extern s32 gFTDataBossParticleBankID;
 
 typedef enum ftBossMotion
 {
@@ -97,9 +97,9 @@ typedef struct ftBossInfo
     s32 default_line_id;
     f32 wait_div;
     u32 wait_timer; // Wait this many frames until next attack
-    s8 status_index;
-    s8 status_index_random;
-    u8 status_index_guard; // Struct probably ends here
+    s8 status_id;
+    s8 status_id_random;
+    u8 status_id_guard; // Struct probably ends here
 
 } ftBossInfo;
 

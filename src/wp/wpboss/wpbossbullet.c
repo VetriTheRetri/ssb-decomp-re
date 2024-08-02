@@ -22,7 +22,7 @@ wpCreateDesc dWPBossBulletNormalWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindBulletNormal,                   // Weapon Kind
-    &gFTDataBossBattleMotion,               // Pointer to character's loaded files?
+    &gFTDataBossMainMotion,               // Pointer to character's loaded files?
     &lWPBossBulletNormalWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
@@ -46,7 +46,7 @@ wpCreateDesc dWPBossBulletHardWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindBulletHard,                     // Weapon Kind
-    &gFTDataBossBattleMotion,               // Pointer to character's loaded files?
+    &gFTDataBossMainMotion,               // Pointer to character's loaded files?
     &lWPBossBulletHardWeaponAttributes,     // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

@@ -434,7 +434,7 @@ sb32 ftCommonDamageCheckCatchResist(ftStruct *fp)
     {
         return TRUE;
     }
-    if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindPolyDonkey) || (fp->ft_kind == nFTKindGiantDonkey))
+    if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindNDonkey) || (fp->ft_kind == nFTKindGDonkey))
     {
         if ((fp->status_info.status_id >= nFTDonkeyStatusThrowFStartDamage) && (fp->status_info.status_id <= nFTDonkeyStatusThrowFEndDamage) && (ftCommonDamageGetDamageLevel(ftPararmGetHitStun(fp->damage_knockback)) < 3))
         {
@@ -817,7 +817,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
     }
     if (this_fp->item_hold != NULL)
     {
-        if ((itGetStruct(this_fp->item_hold)->weight == nITWeightHeavy) && ((this_fp->ft_kind == nFTKindDonkey) || (this_fp->ft_kind == nFTKindPolyDonkey) || (this_fp->ft_kind == nFTKindGiantDonkey)))
+        if ((itGetStruct(this_fp->item_hold)->weight == nITWeightHeavy) && ((this_fp->ft_kind == nFTKindDonkey) || (this_fp->ft_kind == nFTKindNDonkey) || (this_fp->ft_kind == nFTKindGDonkey)))
         {
             if (ftCommonDamageCheckCatchResist(this_fp) != FALSE)
             {

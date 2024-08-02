@@ -94,7 +94,7 @@ void ftCommonAppearUpdateEffects(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag1 != 0)
     {
-        if ((fp->ft_kind == nFTKindPikachu) || (fp->ft_kind == nFTKindPurin) || (fp->ft_kind == nFTKindPolyPikachu) || (fp->ft_kind == nFTKindPolyPurin))
+        if ((fp->ft_kind == nFTKindPikachu) || (fp->ft_kind == nFTKindPurin) || (fp->ft_kind == nFTKindNPikachu) || (fp->ft_kind == nFTKindNPurin))
         {
             efManagerMBallRaysMakeEffect(&fp->entry_pos);
         }
@@ -193,7 +193,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
     {
     case nFTKindMario:
     case nFTKindLuigi:
-    case nFTKindMetalMario:
+    case nFTKindMMario:
         efManagerMarioEntryDokanMakeEffect(&fp->entry_pos, fp->ft_kind);
         break;
 
@@ -202,7 +202,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
         break;
 
     case nFTKindDonkey:
-    case nFTKindGiantDonkey:
+    case nFTKindGDonkey:
         efManagerDonkeyEntryTaruMakeEffect(&fp->entry_pos);
         break;
 

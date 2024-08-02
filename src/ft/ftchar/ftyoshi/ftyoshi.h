@@ -14,16 +14,11 @@
 extern ftStatusDesc dFTYoshiSpecialStatusDesc[/* */];
 
 extern void *gFTDataYoshiMain;
-extern void *gFTDataYoshiBattleMotion;
+extern void *gFTDataYoshiMainMotion;
 extern void *gFTDataYoshiModel;
 extern void *gFTDataYoshiSpecial2;
 extern void *gFTDataYoshiSpecial3;
-extern u32 gFTDataYoshiParticleBankID;
-
-extern void *gFTDataPolyYoshiMain;
-extern void *gFTDataPolyYoshiSubMotion;
-extern void *gFTDataPolyYoshiModel;
-extern u32 gFTDataPolyYoshiParticleBankID;
+extern s32 gFTDataYoshiParticleBankID;
 
 typedef enum ftYoshiMotion
 {

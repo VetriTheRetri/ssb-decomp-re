@@ -136,11 +136,11 @@ void ftManagerSetupFileSize(void)
 
         ft_size->main = rdManagerGetFileSize(ft_data->file_main_id);
 
-        for (j = 0; j < ft_data->gamemotion_array_count; j++)
+        for (j = 0; j < ft_data->mainmotion_array_count; j++)
         {
-            script_info = &ft_data->gamemotion->script_info[j];
+            script_info = &ft_data->mainmotion->script_info[j];
 
-            current_anim_size = ft_data->gamemotion->script_info[j].anim_file_id;
+            current_anim_size = ft_data->mainmotion->script_info[j].anim_file_id;
 
             if (script_info->anim_file_id != 0)
             {
@@ -155,13 +155,13 @@ void ftManagerSetupFileSize(void)
                 }
             }
         }
-        ft_size->gamemotion_largest_anim = largest_size;
+        ft_size->mainmotion_largest_anim = largest_size;
 
-        for (j = 0; j < *ft_data->moviemotion_array_count; j++)
+        for (j = 0; j < *ft_data->submotion_array_count; j++)
         {
-            script_info = &ft_data->moviemotion->script_info[j];
+            script_info = &ft_data->submotion->script_info[j];
 
-            current_anim_size = ft_data->moviemotion->script_info[j].anim_file_id;
+            current_anim_size = ft_data->submotion->script_info[j].anim_file_id;
 
             if (script_info->anim_file_id != 0)
             {
@@ -176,7 +176,7 @@ void ftManagerSetupFileSize(void)
                 }
             }
         }
-        ft_size->moviemotion_largest_anim = largest_size;
+        ft_size->submotion_largest_anim = largest_size;
     }
 }
 
@@ -231,7 +231,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
 
         if (data_flags & FTDATA_FLAG_ANIM_GAME)
         {
-            current_size = ft_size->gamemotion_largest_anim;
+            current_size = ft_size->mainmotion_largest_anim;
 
             if (current_size != 0)
             {
@@ -240,7 +240,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
         }
         if (data_flags & FTDATA_FLAG_ANIM_MOVIE)
         {
-            current_size = ft_size->moviemotion_largest_anim;
+            current_size = ft_size->submotion_largest_anim;
 
             if (largest_size < current_size)
             {
@@ -352,13 +352,13 @@ void ftManagerSetupFilesKind(s32 ft_kind)
 {
     ftData *ft_data = dFTManagerDataFiles[ft_kind];
 
-    if (ft_data->file_gamemotion_id != 0)
+    if (ft_data->file_mainmotion_id != 0)
     {
-        *ft_data->p_file_gamemotion = rldm_get_file_standard(ft_data->file_gamemotion_id);
+        *ft_data->p_file_mainmotion = rldm_get_file_standard(ft_data->file_mainmotion_id);
     }
-    if (ft_data->file_moviemotion_id != 0)
+    if (ft_data->file_submotion_id != 0)
     {
-        *ft_data->p_file_moviemotion = rldm_get_file_standard(ft_data->file_moviemotion_id);
+        *ft_data->p_file_submotion = rldm_get_file_standard(ft_data->file_submotion_id);
     }
     *ft_data->p_file_model = rldm_get_file_standard(ft_data->file_model_id);
 
@@ -454,12 +454,12 @@ void ftManagerDestroyFighterWeapons(GObj *fighter_gobj)
     switch (fp->ft_kind)
     {
     case nFTKindKirby:
-    case nFTKindPolyKirby:
+    case nFTKindNKirby:
         ftKirbyCopyLinkSpecialNDestroyBoomerang(fighter_gobj);
         break;
 
     case nFTKindLink:
-    case nFTKindPolyLink:
+    case nFTKindNLink:
         ftLinkSpecialNDestroyBoomerang(fighter_gobj);
         break;
     }
@@ -606,40 +606,40 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
 
     switch (fp->ft_kind)
     {
-    case nFTKindMetalMario:
+    case nFTKindMMario:
         fp->knockback_resist_passive = 30.0F;
 
     case nFTKindMario:
-    case nFTKindPolyMario:
+    case nFTKindNMario:
         fp->fighter_vars.mario.is_expend_tornado = FALSE;
         break;
 
-    case nFTKindGiantDonkey:
+    case nFTKindGDonkey:
         fp->knockback_resist_passive = 48.0F;
 
     case nFTKindDonkey:
-    case nFTKindPolyDonkey:
+    case nFTKindNDonkey:
         fp->fighter_vars.donkey.charge_level = 0;
         break;
 
     case nFTKindSamus:
-    case nFTKindPolySamus:
+    case nFTKindNSamus:
         fp->fighter_vars.samus.charge_level = 0;
         fp->fighter_vars.samus.charge_recoil = 0;
         break;
 
     case nFTKindLuigi:
-    case nFTKindPolyLuigi:
+    case nFTKindNLuigi:
         fp->fighter_vars.mario.is_expend_tornado = FALSE;
         break;
 
     case nFTKindCaptain:
-    case nFTKindPolyCaptain:
+    case nFTKindNCaptain:
         fp->fighter_vars.captain.falcon_punch_unk = 0;
         break;
 
     case nFTKindKirby:
-    case nFTKindPolyKirby:
+    case nFTKindNKirby:
         fp->fighter_vars.kirby.copy_id = ft_desc->copy_kind;
 
         fp->fighter_vars.kirby.copysamus_charge_level = 0;
@@ -657,14 +657,14 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
 
         if (fp->ft_kind == nFTKindKirby)
         {
-            ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyBattleMotion + (intptr_t)&lFTKirbySpecialNCopyData);
+            ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
 
             ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy_data[fp->fighter_vars.kirby.copy_id].copy_drawstatus);
         }
         break;
 
     case nFTKindLink:
-    case nFTKindPolyLink:
+    case nFTKindNLink:
         fp->fighter_vars.link.boomerang_gobj = NULL;
 
         ftParamSetModelPartDefaultID(fighter_gobj, 0x15, -1);
@@ -672,16 +672,16 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
         break;
 
     case nFTKindPurin:
-    case nFTKindPolyPurin:
+    case nFTKindNPurin:
         fp->fighter_vars.purin.unk_0x0 = 0;
         break;
 
     case nFTKindBoss:
         fp->fighter_vars.boss.p = &fp->fighter_vars.boss.s;
         fp->fighter_vars.boss.p->wait_div = 1.0F;
-        fp->fighter_vars.boss.p->status_index = -1;
-        fp->fighter_vars.boss.p->status_index_random = -1;
-        fp->fighter_vars.boss.p->status_index_guard = 0;
+        fp->fighter_vars.boss.p->status_id = -1;
+        fp->fighter_vars.boss.p->status_id_random = -1;
+        fp->fighter_vars.boss.p->status_id_guard = 0;
 
         if (fp->status_info.pl_kind != nFTPlayerKindDemo)
         {

@@ -18,8 +18,8 @@ void ftCommonThrownProcUpdate(GObj *fighter_gobj)
         if 
         (
             (capture_fp->ft_kind != nFTKindDonkey)                       &&
-            (capture_fp->ft_kind != nFTKindPolyDonkey)                   &&
-            (capture_fp->ft_kind != nFTKindGiantDonkey)                  ||
+            (capture_fp->ft_kind != nFTKindNDonkey)                   &&
+            (capture_fp->ft_kind != nFTKindGDonkey)                  ||
             (capture_fp->status_info.status_id != nFTCommonStatusThrowF)
         )
         {
@@ -69,7 +69,7 @@ void ftCommonThrownSetStatusQueue(GObj *fighter_gobj, s32 status_id_new, s32 sta
     ftMainSetFighterStatus(fighter_gobj, status_id_new, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    if ((capture_fp->ft_kind == nFTKindYoshi) || (capture_fp->ft_kind == nFTKindPolyYoshi))
+    if ((capture_fp->ft_kind == nFTKindYoshi) || (capture_fp->ft_kind == nFTKindNYoshi))
     {
         this_fp->is_invisible = TRUE;
 
@@ -92,7 +92,7 @@ void ftCommonThrownSetStatusImmediate(GObj *fighter_gobj, s32 status_id)
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    if ((capture_fp->ft_kind == nFTKindYoshi) || (capture_fp->ft_kind == nFTKindPolyYoshi))
+    if ((capture_fp->ft_kind == nFTKindYoshi) || (capture_fp->ft_kind == nFTKindNYoshi))
     {
         this_fp->is_invisible = TRUE;
 
@@ -103,10 +103,10 @@ void ftCommonThrownSetStatusImmediate(GObj *fighter_gobj, s32 status_id)
     if 
     (
         (capture_fp->ft_kind == nFTKindMario)      ||
-        (capture_fp->ft_kind == nFTKindMetalMario) ||
+        (capture_fp->ft_kind == nFTKindMMario) ||
         (capture_fp->ft_kind == nFTKindLuigi)      ||
-        (capture_fp->ft_kind == nFTKindPolyMario)  ||
-        (capture_fp->ft_kind == nFTKindPolyLuigi)
+        (capture_fp->ft_kind == nFTKindNMario)  ||
+        (capture_fp->ft_kind == nFTKindNLuigi)
     )
     {
         if (capture_fp->status_info.status_id == nFTCommonStatusThrowB)

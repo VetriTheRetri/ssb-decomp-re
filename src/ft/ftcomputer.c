@@ -3758,7 +3758,7 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
                     ) 
                     &&
                     (
-                        (this_fp->ft_kind != nFTKindMetalMario) ||
+                        (this_fp->ft_kind != nFTKindMMario) ||
                         (other_fp->ga == nMPKineticsGround)
                     )
                 )
@@ -4054,7 +4054,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             detect_near_y = ft_comattack->detect_near_y;
             detect_far_y = ft_comattack->detect_far_y;
 
-            if (this_fp->ft_kind == nFTKindGiantDonkey)
+            if (this_fp->ft_kind == nFTKindGDonkey)
             {
                 detect_near_x *= 1.4F;
                 detect_far_x *= 1.4F;
@@ -4097,9 +4097,9 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             {
             case nFTKindMario:
             case nFTKindLuigi:
-            case nFTKindMetalMario:
-            case nFTKindPolyMario:
-            case nFTKindPolyLuigi:
+            case nFTKindMMario:
+            case nFTKindNMario:
+            case nFTKindNLuigi:
                 if (ft_comattack->input_kind == nFTComputerInputStickSmashHiButtonB)
                 {
                     is_attempt_cliffcatch = TRUE;
@@ -4107,7 +4107,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                 break;
 
             case nFTKindKirby:
-            case nFTKindPolyKirby:
+            case nFTKindNKirby:
                 if (ft_comattack->input_kind == nFTComputerInputStickSmashHiButtonB)
                 {
                     is_attempt_cliffcatch = TRUE;
@@ -4115,8 +4115,8 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                 /* fallthrough */
             case nFTKindYoshi:
             case nFTKindCaptain:
-            case nFTKindPolyYoshi:
-            case nFTKindPolyCaptain:
+            case nFTKindNYoshi:
+            case nFTKindNCaptain:
                 if (ft_comattack->input_kind == nFTComputerInputStickSmashLwButtonB)
                 {
                     is_attempt_cliffcatch = TRUE;
@@ -4124,13 +4124,13 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                 break;
 
             case nFTKindBoss:
-            case nFTKindPolyFox:
-            case nFTKindPolyDonkey:
-            case nFTKindPolySamus:
-            case nFTKindPolyLink:
-            case nFTKindPolyPikachu:
-            case nFTKindPolyNess:
-            case nFTKindGiantDonkey:
+            case nFTKindNFox:
+            case nFTKindNDonkey:
+            case nFTKindNSamus:
+            case nFTKindNLink:
+            case nFTKindNPikachu:
+            case nFTKindNNess:
+            case nFTKindGDonkey:
                 break;
             }
             if (is_attempt_cliffcatch != FALSE)
@@ -4158,7 +4158,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                     goto l_continue;
                 }
             }
-            if (this_fp->ft_kind == nFTKindGiantDonkey)
+            if (this_fp->ft_kind == nFTKindGDonkey)
             {
                 if
                 (
@@ -4187,7 +4187,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                     }
                 }
             }
-            if ((this_fp->ft_kind != nFTKindGiantDonkey) || (this_fp->ga == nMPKineticsGround) || (ft_comattack->input_kind != nFTComputerInputStickSmashHiButtonB))
+            if ((this_fp->ft_kind != nFTKindGDonkey) || (this_fp->ga == nMPKineticsGround) || (ft_comattack->input_kind != nFTComputerInputStickSmashHiButtonB))
             {
                 if (ft_com->ftcom_flags_0x4A_b1)
                 {
@@ -4259,7 +4259,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                                     case nFTKindLuigi:
                                     case nFTKindLink:
                                     case nFTKindPikachu:
-                                    case nFTKindMetalMario:
+                                    case nFTKindMMario:
                                         goto l_continue;
                                     }
                                 }
@@ -4268,7 +4268,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                         switch (this_fp->ft_kind)
                         {
                         case nFTKindDonkey:
-                        case nFTKindGiantDonkey:
+                        case nFTKindGDonkey:
                             if (this_fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
                             {
                                 detect_ranges_x[attack_count++] = 4.0F;
@@ -4533,7 +4533,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
     }
     edge_offset = ft_com->jump_predict * 0.75F;
 
-    if (fp->ft_kind == nFTKindMetalMario)
+    if (fp->ft_kind == nFTKindMMario)
     {
         edge_offset = 0;
     }
@@ -4627,7 +4627,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
     }
     edge_offset = ft_com->jump_predict * 0.75F;
 
-    if (fp->ft_kind == nFTKindMetalMario)
+    if (fp->ft_kind == nFTKindMMario)
     {
         edge_offset = 0;
     }
@@ -4711,7 +4711,7 @@ void func_ovl3_801346D4(ftStruct *fp)
         {
         case nFTKindFox:
         case nFTKindDonkey:
-        case nFTKindGiantDonkey:
+        case nFTKindGDonkey:
             range *= 0.5F;
             break;
 
@@ -4720,11 +4720,11 @@ void func_ovl3_801346D4(ftStruct *fp)
             break;
         }
     }
-    if (fp->ft_kind == nFTKindMetalMario)
+    if (fp->ft_kind == nFTKindMMario)
     {
         range = 0;
     }
-    if (fp->ft_kind == nFTKindGiantDonkey)
+    if (fp->ft_kind == nFTKindGDonkey)
     {
         range = 0;
     }
@@ -5127,7 +5127,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                             {
                                 ft_com->is_attempt_specialhi_recovery = TRUE;
 
-                                if ((fp->ft_kind == nFTKindGiantDonkey) || (mtTrigGetRandomFloat() < (fp->cp_level + 2) / 9.0F))
+                                if ((fp->ft_kind == nFTKindGDonkey) || (mtTrigGetRandomFloat() < (fp->cp_level + 2) / 9.0F))
                                 {
                                     ftComputerSetCommandImmediate(fp, nFTComputerInputStickSmashHiButtonB);
                                     return;
@@ -5386,8 +5386,8 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
                                                 (
                                                     (this_fp->ft_kind == (0, nFTKindFox))  || // WTF????????????????????????
                                                     (this_fp->ft_kind == nFTKindNess)      ||
-                                                    (this_fp->ft_kind == nFTKindPolyFox)   ||
-                                                    (this_fp->ft_kind == nFTKindPolyNess)
+                                                    (this_fp->ft_kind == nFTKindNFox)   ||
+                                                    (this_fp->ft_kind == nFTKindNNess)
                                                 )
                                                 {
                                                     ft_com->is_opponent_ra = TRUE;
@@ -5453,8 +5453,8 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
                                                 (
                                                     (this_fp->ft_kind == (0, nFTKindFox))  || // I AM LOSING MY MIND
                                                     (this_fp->ft_kind == nFTKindNess)      ||
-                                                    (this_fp->ft_kind == nFTKindPolyFox)   ||
-                                                    (this_fp->ft_kind == nFTKindPolyNess)
+                                                    (this_fp->ft_kind == nFTKindNFox)   ||
+                                                    (this_fp->ft_kind == nFTKindNNess)
                                                 )
                                                 {
                                                     ft_com->is_opponent_ra = TRUE;
@@ -5507,12 +5507,12 @@ void func_ovl3_801361BC(ftStruct *fp)
                 break;
 
             case nFTKindDonkey:
-            case nFTKindPolyDonkey:
-            case nFTKindGiantDonkey:
+            case nFTKindNDonkey:
+            case nFTKindGDonkey:
                 var_v1 = 11;
                 break;
 
-            case nFTKindMetalMario:
+            case nFTKindMMario:
                 var_v1 = 20;
                 break;
             }
@@ -5788,7 +5788,7 @@ sb32 ftComputerCheckTryChargeSpecialN(ftStruct *fp)
         }
         break;
 
-    case nFTKindGiantDonkey:
+    case nFTKindGDonkey:
         switch (fp->status_info.status_id)
         {
         case nFTCommonStatusWait:
@@ -5872,7 +5872,7 @@ sb32 ftComputerCheckTryCancelSpecialN(ftStruct *fp)
     switch ((fp->ft_kind == nFTKindKirby) ? fp->fighter_vars.kirby.copy_id : fp->ft_kind)
     {
     case nFTKindDonkey:
-    case nFTKindGiantDonkey:
+    case nFTKindGDonkey:
         if
         (
             (fp->status_info.status_id == nFTDonkeyStatusSpecialNStart)                ||
@@ -5959,7 +5959,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         {
             ftComputerCheckFindTarget(this_fp);
 
-            if ((this_fp->ft_kind != nFTKindGiantDonkey) && (ft_com->target_dist < 800.0F) && (this_fp->cp_level >= 4))
+            if ((this_fp->ft_kind != nFTKindGDonkey) && (ft_com->target_dist < 800.0F) && (this_fp->cp_level >= 4))
             {
                 if ((mtTrigGetRandomFloat() * (11 - this_fp->cp_level)) < 1.0F)
                 {
@@ -6273,7 +6273,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
         ft_com->objective = nFTComputerObjectiveEvade;
         return TRUE;
     }
-    if ((fp->ft_kind != nFTKindMetalMario) && (fp->ft_kind != nFTKindGiantDonkey))
+    if ((fp->ft_kind != nFTKindMMario) && (fp->ft_kind != nFTKindGDonkey))
     {
         if (func_ovl3_80135B78(fp) != FALSE)
         {
@@ -6284,7 +6284,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
     switch (fp->ft_kind)
     {
     case nFTKindFox:
-    case nFTKindPolyFox:
+    case nFTKindNFox:
         if ((fp->status_info.status_id >= nFTFoxStatusSpecialLwScopeStart) && (fp->status_info.status_id <= nFTFoxStatusSpecialLwScopeEnd))
         {
             ftComputerSetCommandWaitShort(fp, nFTComputerInputStickNButtonBRelease);
@@ -6293,7 +6293,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
         break;
 
     case nFTKindNess:
-    case nFTKindPolyNess:
+    case nFTKindNNess:
         if ((fp->status_info.status_id >= nFTNessStatusSpecialLwScopeStart) && (fp->status_info.status_id <= nFTNessStatusSpecialLwScopeEnd))
         {
             ftComputerSetCommandWaitShort(fp, nFTComputerInputStickNButtonBRelease);
@@ -6565,7 +6565,7 @@ void ftComputerFollowObjectiveCounterAttack(ftStruct *fp)
         switch (fp->ft_kind)
         {
         case nFTKindFox:
-        case nFTKindPolyFox:
+        case nFTKindNFox:
             if ((fp->status_info.status_id < nFTFoxStatusSpecialLwScopeStart) || (fp->status_info.status_id > nFTFoxStatusSpecialLwScopeEnd))
             {
                 ftComputerSetCommandImmediate(fp, nFTComputerInputStickNXSmashLwButtonBReleaseBHold);
@@ -6573,7 +6573,7 @@ void ftComputerFollowObjectiveCounterAttack(ftStruct *fp)
             break;
 
         case nFTKindNess:
-        case nFTKindPolyNess:
+        case nFTKindNNess:
             if ((fp->status_info.status_id < nFTNessStatusSpecialLwScopeStart) || (fp->status_info.status_id > nFTNessStatusSpecialLwScopeEnd))
             {
                 ftComputerSetCommandImmediate(fp, nFTComputerInputStickNXSmashLwButtonBReleaseBHold);
@@ -6681,7 +6681,7 @@ s32 func_ovl3_8013837C(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
 
-    if ((this_fp->fighter_com.behavior != nFTComputerBehaviorYoshiTeam) && (this_fp->ft_kind != nFTKindGiantDonkey))
+    if ((this_fp->fighter_com.behavior != nFTComputerBehaviorYoshiTeam) && (this_fp->ft_kind != nFTKindGDonkey))
     {
         ftStruct *target_fp = ftComputerWaitGetTarget(this_fp);
 
@@ -6910,7 +6910,7 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 is_delay)
         case nFTKindSamus:
         case nFTKindLuigi:
         case nFTKindPikachu:
-        case nFTKindMetalMario:
+        case nFTKindMMario:
             ft_com->unk_ftcom_0x35++;
 
             if (ft_com->unk_ftcom_0x35 >= 5)
@@ -6970,7 +6970,7 @@ sb32 func_ovl3_80138EE4(ftStruct *fp)
     Vec3f edge_left_pos;
     Vec3f edge_right_pos;
 
-    if (fp->ft_kind == nFTKindGiantDonkey)
+    if (fp->ft_kind == nFTKindGDonkey)
     {
         return FALSE;
     }
@@ -6993,7 +6993,7 @@ sb32 func_ovl3_80138EE4(ftStruct *fp)
             return FALSE;
         }
     }
-    if ((ft_kind == nFTKindDonkey) || (ft_kind == nFTKindPolyDonkey) || (ft_kind == nFTKindGiantDonkey))
+    if ((ft_kind == nFTKindDonkey) || (ft_kind == nFTKindNDonkey) || (ft_kind == nFTKindGDonkey))
     {
         if
         (
@@ -7748,7 +7748,7 @@ void ftComputerProcessTrait(ftStruct *fp)
         else ft_com->behavior = nFTComputerBehaviorAlly;
         break;
 
-    case nFTComputerTraitGiantDonkey:
+    case nFTComputerTraitGDonkey:
         ft_com->behavior = nFTComputerBehaviorDefault;
         break;
 

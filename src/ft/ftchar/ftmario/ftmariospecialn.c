@@ -33,8 +33,8 @@ void ftMarioSpecialNProcAccessory(GObj *fighter_gobj)
         switch (fp->ft_kind) // jtbl at 0x8018C630
         {
         case nFTKindMario:
-        case nFTKindMetalMario:
-        case nFTKindPolyMario:
+        case nFTKindMMario:
+        case nFTKindNMario:
             fireball_item_id = 0;
             break;
 
@@ -46,7 +46,7 @@ void ftMarioSpecialNProcAccessory(GObj *fighter_gobj)
             #endif
 
         case nFTKindLuigi:
-        case nFTKindPolyLuigi:
+        case nFTKindNLuigi:
             fireball_item_id = 1;
             break;
         }

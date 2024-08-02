@@ -22,17 +22,12 @@
 extern ftStatusDesc dFTLinkSpecialStatusDesc[/* */];
 
 extern void *gFTDataLinkMain;
-extern void *gFTDataLinkBattleMotion;
+extern void *gFTDataLinkMainMotion;
 extern void *gFTDataLinkModel;
 extern void *gFTDataLinkSpecial1;
 extern void *gFTDataLinkSpecial2;
 extern void *gFTDataLinkSpecial3;
-extern u32 gFTDataLinkParticleBankID;
-
-extern void *gFTDataPolyLinkMain;
-extern void *gFTDataPolyLinkSubMotion;
-extern void *gFTDataPolyLinkModel;
-extern u32 gFTDataPolyLinkParticleBankID;
+extern s32 gFTDataLinkParticleBankID;
 
 typedef enum ftLinkMotion
 {

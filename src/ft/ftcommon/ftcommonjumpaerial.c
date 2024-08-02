@@ -103,7 +103,7 @@ void ftCommonJumpAerialProcPhysics(GObj *fighter_gobj)
     switch (fp->ft_kind)
     {
     case nFTKindKirby:
-    case nFTKindPolyKirby:
+    case nFTKindNKirby:
         if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {
             ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_JUMPAERIAL_VEL_MUL, attributes->aerial_speed_max_x * FTKIRBY_JUMPAERIAL_VEL_MUL);
@@ -111,7 +111,7 @@ void ftCommonJumpAerialProcPhysics(GObj *fighter_gobj)
         break;
 
     case nFTKindPurin:
-    case nFTKindPolyPurin:
+    case nFTKindNPurin:
         if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {
             ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTPURIN_JUMPAERIAL_VEL_MUL, attributes->aerial_speed_max_x * FTPURIN_JUMPAERIAL_VEL_MUL);
@@ -134,12 +134,12 @@ void ftCommonJumpAerialSetStatus(GObj *fighter_gobj, s32 input_source)
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_PLAYERTAG);
 
-    if ((fp->ft_kind == nFTKindYoshi) || (fp->ft_kind == nFTKindPolyYoshi))
+    if ((fp->ft_kind == nFTKindYoshi) || (fp->ft_kind == nFTKindNYoshi))
     {
         fp->proc_physics = ftYoshiJumpAerialProcPhysics;
         fp->knockback_resist_status = FTYOSHI_JUMPAERIAL_KNOCKBACK_RESIST;
     }
-    else if ((fp->ft_kind == nFTKindNess) || (fp->ft_kind == nFTKindPolyNess))
+    else if ((fp->ft_kind == nFTKindNess) || (fp->ft_kind == nFTKindNNess))
     {
         fp->proc_physics = ftNessJumpAerialProcPhysics;
         fp->status_vars.common.jumpaerial.drift = 0.0F;
@@ -157,7 +157,7 @@ void ftCommonJumpAerialSetStatus(GObj *fighter_gobj, s32 input_source)
     } 
     fp->phys_info.vel_air.y = (((stick_range_y * attributes->jump_height_mul) + attributes->jump_height_base) * attributes->aerial_jump_height);
 
-    if ((fp->ft_kind == nFTKindNess) || (fp->ft_kind == nFTKindPolyNess))
+    if ((fp->ft_kind == nFTKindNess) || (fp->ft_kind == nFTKindNNess))
     {
         fp->status_vars.common.jumpaerial.vel_x = stick_range_x * attributes->aerial_jump_vel_x;
     }
@@ -169,7 +169,7 @@ void ftCommonJumpAerialSetStatus(GObj *fighter_gobj, s32 input_source)
 
     fp->is_special_interrupt = TRUE;
 
-    if (((fp->ft_kind == nFTKindYoshi) || (fp->ft_kind == nFTKindPolyYoshi)) && ((fp->input.pl.stick_range.x * fp->lr) < FTCOMMON_JUMPAERIAL_TURN_STICK_RANGE_MIN))
+    if (((fp->ft_kind == nFTKindYoshi) || (fp->ft_kind == nFTKindNYoshi)) && ((fp->input.pl.stick_range.x * fp->lr) < FTCOMMON_JUMPAERIAL_TURN_STICK_RANGE_MIN))
     {
         fp->status_vars.common.jumpaerial.turn_frames = FTCOMMON_JUMPAERIAL_TURN_FRAMES;
     }
@@ -190,12 +190,12 @@ void ftCommonJumpAerialMultiSetStatus(GObj *fighter_gobj, s32 input_source)
     switch (fp->ft_kind)
     {
     case nFTKindKirby:
-    case nFTKindPolyKirby:
+    case nFTKindNKirby:
         status_id = fp->jumps_used + nFTKirbyStatusJumpAerialF1 - 1;
         break;
 
     case nFTKindPurin:
-    case nFTKindPolyPurin:
+    case nFTKindNPurin:
         status_id = fp->jumps_used + nFTPurinStatusJumpAerialF1 - 1;
         break;
     }
@@ -224,13 +224,13 @@ void ftCommonJumpAerialMultiSetStatus(GObj *fighter_gobj, s32 input_source)
     else switch (fp->ft_kind)
     {
     case nFTKindKirby:
-    case nFTKindPolyKirby:
+    case nFTKindNKirby:
         fp->phys_info.vel_air.y = dFTKirbyJumpAerialFVelocities[fp->jumps_used - 2] * (stick_range_y / F_CONTROLLER_RANGE_MAX);
 
         break;
 
     case nFTKindPurin:
-    case nFTKindPolyPurin:
+    case nFTKindNPurin:
         fp->phys_info.vel_air.y = dFTPurinJumpAerialFVelocities[fp->jumps_used - 2] * (stick_range_y / F_CONTROLLER_RANGE_MAX);
 
         break;
@@ -284,7 +284,7 @@ sb32 ftCommonJumpAerialCheckInterruptCommon(GObj *fighter_gobj)
     {
         return FALSE;
     }
-    else if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindPolyKirby) || (fp->ft_kind == nFTKindPurin) || (fp->ft_kind == nFTKindPolyPurin))
+    else if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindNKirby) || (fp->ft_kind == nFTKindPurin) || (fp->ft_kind == nFTKindNPurin))
     {
         if (fp->jumps_used < fp->attributes->jumps_max)
         {
@@ -302,7 +302,7 @@ sb32 ftCommonJumpAerialCheckInterruptCommon(GObj *fighter_gobj)
             else switch (fp->ft_kind)
             {
             case nFTKindKirby:
-            case nFTKindPolyKirby:
+            case nFTKindNKirby:
                 if ((fp->status_info.status_id < nFTKirbyStatusJumpAerialF1) || (fp->status_info.status_id > nFTKirbyStatusJumpAerialF5) || (fp->command_vars.flags.flag1 != 0))
                 {
                     input_source = ftCommonJumpAerialMultiGetJumpInputType(fp);
@@ -317,7 +317,7 @@ sb32 ftCommonJumpAerialCheckInterruptCommon(GObj *fighter_gobj)
                 break;
 
             case nFTKindPurin:
-            case nFTKindPolyPurin:
+            case nFTKindNPurin:
                 if ((fp->status_info.status_id < nFTPurinStatusJumpAerialF1) || (fp->status_info.status_id > nFTPurinStatusJumpAerialF5) || (fp->command_vars.flags.flag1 != 0))
                 {
                     input_source = ftCommonJumpAerialMultiGetJumpInputType(fp);

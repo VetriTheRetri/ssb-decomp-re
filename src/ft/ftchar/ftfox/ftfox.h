@@ -27,18 +27,13 @@
 extern ftStatusDesc dFTFoxSpecialStatusDesc[/* */];
 
 extern void *gFTDataFoxMain;
-extern void *gFTDataFoxBattleMotion;
+extern void *gFTDataFoxMainMotion;
 extern void *gFTDataFoxModel;
 extern void *gFTDataFoxSpecial1;
 extern void *gFTDataFoxSpecial2;
 extern void *gFTDataFoxSpecial3;
 extern void *gFTDataFoxSpecial4;
-extern u32 gFTDataFoxParticleBankID;
-
-extern void *gFTDataPolyFoxMain;
-extern void *gFTDataPolyFoxSubMotion;
-extern void *gFTDataPolyFoxModel;
-extern u32 gFTDataPolyFoxParticleBankID;
+extern s32 gFTDataFoxParticleBankID;
 
 typedef enum ftFoxMotion
 {

@@ -38,7 +38,7 @@
 // 0x80142850
 void ftCommonOttottoProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftCommonOttottoWaitSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonOttottoWaitSetStatus);
 }
 
 // 0x80142874

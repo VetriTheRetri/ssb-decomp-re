@@ -154,7 +154,7 @@ void ftKirbySpecialNStopEffect(GObj *fighter_gobj)
 // 0x80161FF8
 void ftKirbySpecialNStartProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftKirbySpecialNLoopSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftKirbySpecialNLoopSetStatus);
 }
 
 // 0x8016201C
@@ -215,19 +215,19 @@ void ftKirbySpecialNCatchProcUpdate(GObj *fighter_gobj)
 // 0x801621A8
 void ftKirbySpecialAirNStartProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftKirbySpecialAirNLoopSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftKirbySpecialAirNLoopSetStatus);
 }
 
 // 0x801621CC
 void ftKirbySpecialNTurnProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftKirbySpecialNWaitSetStatusFromTurn);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftKirbySpecialNWaitSetStatusFromTurn);
 }
 
 // 0x801621F0
 void ftKirbySpecialAirNTurnProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftKirbySpecialAirNWaitSetStatusFromTurn);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftKirbySpecialAirNWaitSetStatusFromTurn);
 }
 
 // 0x80162214
@@ -236,7 +236,7 @@ void ftKirbySpecialNEatProcUpdate(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     void (*proc_status)(GObj*) = (fp->ga == nMPKineticsGround) ? ftKirbySpecialNWaitSetStatusFromEat : ftKirbySpecialAirNWaitSetStatusFromEat;
 
-    ftAnimEndSetStatus(fighter_gobj, proc_status);
+    ftAnimEndCheckSetStatus(fighter_gobj, proc_status);
 }
 
 // 0x80162258

@@ -66,13 +66,13 @@ void ftNessSpecialLwProcAbsorb(GObj *fighter_gobj)
 // 0x801552A0
 void ftNessSpecialLwStartProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftNessSpecialLwHoldSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftNessSpecialLwHoldSetStatus);
 }
 
 // 0x801552C4
 void ftNessSpecialAirLwStartProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftNessSpecialAirLwHoldSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftNessSpecialAirLwHoldSetStatus);
 }
 
 // 0x801552E8
@@ -351,7 +351,7 @@ void ftNessSpecialAirLwHitSetStatus(GObj *fighter_gobj)
 // 0x801559D0
 void ftNessSpecialAirLwEndProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftCommonFallSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonFallSetStatus);
 }
 
 // 0x801559F4

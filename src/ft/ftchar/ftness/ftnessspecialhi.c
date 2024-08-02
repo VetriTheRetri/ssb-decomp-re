@@ -105,13 +105,13 @@ sb32 ftNessSpecialHiCheckCollidePKThunder(GObj *fighter_gobj)
 // 0x80153E04
 void ftNessSpecialHiStartProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftNessSpecialHiHoldSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftNessSpecialHiHoldSetStatus);
 }
 
 // 0x80153E28
 void ftNessSpecialAirHiStartProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftNessSpecialAirHiHoldSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftNessSpecialAirHiHoldSetStatus);
 }
 
 // 0x80153E4C

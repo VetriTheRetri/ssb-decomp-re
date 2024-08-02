@@ -18,7 +18,7 @@ extern ub8 gGM1PGameBonusShieldBreaker; // Bonus for breaking an enemy's shield 
 // 0x80149440
 void ftCommonShieldBreakFlyProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftCommonShieldBreakFallSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonShieldBreakFallSetStatus);
 }
 
 // 0x80149464

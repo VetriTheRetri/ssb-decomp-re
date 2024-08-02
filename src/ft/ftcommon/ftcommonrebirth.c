@@ -147,7 +147,7 @@ void ftCommonRebirthCommonProcMap(GObj *fighter_gobj)
 void ftCommonRebirthStandProcUpdate(GObj *fighter_gobj)
 {
     ftCommonRebirthCommonUpdateHaloWait(fighter_gobj);
-    ftAnimEndSetStatus(fighter_gobj, ftCommonRebirthWaitSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonRebirthWaitSetStatus);
 }
 
 // 0x8013D2DC

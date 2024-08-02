@@ -116,13 +116,13 @@ sb32 ftCommonCliffClimbOrFallCheckInterruptCommon(GObj *fighter_gobj)
 // 0x801451A8
 void ftCommonCliffClimbQuick1ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftCommonCliffClimbQuick2SetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonCliffClimbQuick2SetStatus);
 }
 
 // 0x801451CC
 void ftCommonCliffClimbSlow1ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftCommonCliffClimbSlow2SetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonCliffClimbSlow2SetStatus);
 }
 
 // 0x801451F0
@@ -152,7 +152,7 @@ void ftCommonCliffClimbSlow1SetStatus(GObj *fighter_gobj)
 // 0x80145290
 void ftCommonCliffCommon2ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, mpCommonSetFighterWaitOrFall);
+    ftAnimEndCheckSetStatus(fighter_gobj, mpCommonSetFighterWaitOrFall);
 }
 
 // 0x801452B4

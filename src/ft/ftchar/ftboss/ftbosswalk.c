@@ -9,7 +9,7 @@
 // 0x80159830
 void ftBossWalkProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftBossWalkLoopSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftBossWalkLoopSetStatus);
 }
 
 // 0x80159854

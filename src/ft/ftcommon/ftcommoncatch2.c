@@ -20,7 +20,7 @@ void ftCommonCatchPullProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
 
-    if (ftAnimEndSetStatus(fighter_gobj, ftCommonCatchWaitSetStatus) != FALSE)
+    if (ftAnimEndCheckSetStatus(fighter_gobj, ftCommonCatchWaitSetStatus) != FALSE)
     {
         ftStruct *catch_fp = ftGetStruct(this_fp->catch_gobj);
 

@@ -9,7 +9,7 @@
 // 0x80159EA0
 void ftBossTsutsuku1ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftBossTsutsuku2SetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftBossTsutsuku2SetStatus);
 }
 
 // 0x80159EC4

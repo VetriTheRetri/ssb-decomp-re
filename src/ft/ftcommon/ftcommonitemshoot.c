@@ -12,7 +12,7 @@ extern void gcSetDObjAnimPlaybackRate(GObj*, f32);
 // 0x80146FB0
 void ftCommonLGunShootProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, mpCommonSetFighterWaitOrFall);
+    ftAnimEndCheckSetStatus(fighter_gobj, mpCommonSetFighterWaitOrFall);
 }
 
 // 0x80146FD4
@@ -106,7 +106,7 @@ void ftCommonLGunShootSwitchStatusAir(GObj *fighter_gobj)
 // 0x801472B0
 void ftCommonFireFlowerShootProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, mpCommonSetFighterWaitOrFall);
+    ftAnimEndCheckSetStatus(fighter_gobj, mpCommonSetFighterWaitOrFall);
 }
 
 // 0x801472D4

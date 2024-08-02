@@ -9,7 +9,7 @@
 // 0x80159500
 void ftBossOkuhikouki1ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftBossOkuhikouki2SetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftBossOkuhikouki2SetStatus);
 }
 
 // 0x80159524

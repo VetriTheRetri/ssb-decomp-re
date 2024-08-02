@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 
 // 0x800D9480
-sb32 ftAnimEndSetStatus(GObj *fighter_gobj, void (*proc_status)(GObj*))
+sb32 ftAnimEndCheckSetStatus(GObj *fighter_gobj, void (*proc_status)(GObj*))
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -15,11 +15,11 @@ sb32 ftAnimEndSetStatus(GObj *fighter_gobj, void (*proc_status)(GObj*))
 // 0x800D94C4
 void ftAnimEndSetWait(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftCommonWaitSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonWaitSetStatus);
 }
 
 // 0x800D94E8
 void ftAnimEndSetFall(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftCommonFallSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonFallSetStatus);
 }

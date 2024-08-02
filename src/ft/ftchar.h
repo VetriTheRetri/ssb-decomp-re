@@ -3,7 +3,7 @@
 
 // This file's sole purpose is to collect every chara header so it doesn't take
 // up a ludicrous amount of space in the main fighter header; also hope it is
-// easier to understand this way Add any newly created character's main header
+// easier to understand this way; add any newly created character's main header
 // file here!
 
 #include <ft/ftchar/ftmario/ftmario.h>

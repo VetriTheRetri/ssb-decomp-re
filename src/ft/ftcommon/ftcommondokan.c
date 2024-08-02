@@ -28,7 +28,7 @@ void ftCommonDokanStartProcUpdate(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDokanStartUpdateModelPitch(fp);
-    ftAnimEndSetStatus(fighter_gobj, ftCommonDokanWaitSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonDokanWaitSetStatus);
 }
 
 // 0x80142080
@@ -268,7 +268,7 @@ void ftCommonDokanEndProcUpdate(GObj *fighter_gobj)
 {
     ftCommonDokanEndUpdatePlayerTag(fighter_gobj);
     ftCommonDokanEndUpdateModelPitch(fighter_gobj);
-    ftAnimEndSetStatus(fighter_gobj, mpCommonSetFighterWaitOrFall);
+    ftAnimEndCheckSetStatus(fighter_gobj, mpCommonSetFighterWaitOrFall);
 }
 
 // 0x801426D0

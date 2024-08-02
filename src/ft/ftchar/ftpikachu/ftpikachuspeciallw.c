@@ -55,14 +55,14 @@ void ftPikachuSpecialLwStartUpdateThunder(GObj *fighter_gobj)
 void ftPikachuSpecialLwStartProcUpdate(GObj *fighter_gobj)
 {
     ftPikachuSpecialLwStartUpdateThunder(fighter_gobj);
-    ftAnimEndSetStatus(fighter_gobj, ftPikachuSpecialLwLoopSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftPikachuSpecialLwLoopSetStatus);
 }
 
 // 0x80151EA4
 void ftPikachuSpecialAirLwStartProcUpdate(GObj *fighter_gobj)
 {
     ftPikachuSpecialLwStartUpdateThunder(fighter_gobj);
-    ftAnimEndSetStatus(fighter_gobj, ftPikachuSpecialAirLwLoopSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftPikachuSpecialAirLwLoopSetStatus);
 }
 
 // 0x80151ED4
@@ -388,7 +388,7 @@ void ftPikachuSpecialAirLwHitSetStatus(GObj *fighter_gobj)
 // 0x80152620
 void ftPikachuSpecialAirLwEndProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftCommonFallSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonFallSetStatus);
 }
 
 // 0x80152644

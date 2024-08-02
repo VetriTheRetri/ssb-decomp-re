@@ -9,7 +9,7 @@
 // 0x8015A7A0
 void ftBossOkupunch1ProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftBossOkupunch2SetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftBossOkupunch2SetStatus);
 }
 
 // 0x8015A7C4

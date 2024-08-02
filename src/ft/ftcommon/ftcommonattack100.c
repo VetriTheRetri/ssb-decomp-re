@@ -37,7 +37,7 @@ extern intptr_t lFTKirbyAttack100Effect;            // 0x00001220
 // 0x8014F0D0
 void ftCommonAttack100StartProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftCommonAttack100LoopSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonAttack100LoopSetStatus);
 }
 
 // 0x8014F0F4

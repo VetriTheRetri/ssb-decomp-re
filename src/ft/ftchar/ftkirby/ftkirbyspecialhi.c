@@ -89,7 +89,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
 // 0x80160D1C
 void ftKirbySpecialHiProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftKirbySpecialAirHiFallSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftKirbySpecialAirHiFallSetStatus);
 }
 
 // 0x80160D40
@@ -114,7 +114,7 @@ void ftKirbySpecialHiLandingProcUpdate(GObj *fighter_gobj)
 
         wpKirbyCutterMakeWeapon(fighter_gobj, &pos);
     }
-    ftAnimEndSetStatus(fighter_gobj, ftCommonWaitSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonWaitSetStatus);
 }
 
 // 0x80160DF0

@@ -104,7 +104,7 @@ sb32 ftCommonSquatCheckGotoPass(GObj *fighter_gobj)
 // 0x80142ED8
 void ftCommonSquatProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftCommonSquatWaitSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftCommonSquatWaitSetStatus);
 }
 
 // 0x80142EFC

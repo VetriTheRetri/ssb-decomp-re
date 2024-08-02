@@ -9,7 +9,7 @@
 // 0x8015AD50
 void ftBossDeadLeftProcUpdate(GObj *fighter_gobj)
 {
-    ftAnimEndSetStatus(fighter_gobj, ftBossDeadCenterSetStatus);
+    ftAnimEndCheckSetStatus(fighter_gobj, ftBossDeadCenterSetStatus);
 }
 
 // 0x8015AD74

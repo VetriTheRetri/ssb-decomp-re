@@ -579,7 +579,7 @@ void mpProcessRunLWallCollision(mpCollData *coll_data)
 {
     mpObjectColl *object_coll = &coll_data->object_coll;
     Vec3f *translate = coll_data->p_translate;
-    Vec3f sp94;
+    Vec3f wall_pos;
     Vec3f wall_angle;
     Vec3f vertex_pos;
     s32 i;
@@ -595,52 +595,52 @@ void mpProcessRunLWallCollision(mpCollData *coll_data)
     {
         wall_line_id = sMPProcessMultiWallCollideLineIDs[i];
 
-        mpCollisionGetUDEdgeUp(wall_line_id, &sp94);
+        mpCollisionGetUDEdgeUp(wall_line_id, &wall_pos);
 
-        if (sp94.y < (translate->y + object_coll->bottom))
+        if (wall_pos.y < (translate->y + object_coll->bottom))
         {
-            if ((sp94.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &sp94, NULL, &wall_flags, &wall_angle) != FALSE))
+            if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
             {
-                mpProcessSetLastWallCollideStats(sp94.x, wall_line_id, wall_flags, &wall_angle);
+                mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
             }
         }
         else
         {
-            mpCollisionGetUDEdgeDown(wall_line_id, &sp94);
+            mpCollisionGetUDEdgeDown(wall_line_id, &wall_pos);
 
-            if ((translate->y + object_coll->top) < sp94.y)
+            if ((translate->y + object_coll->top) < wall_pos.y)
             {
-                if ((sp94.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &sp94, NULL, &wall_flags, &wall_angle) != FALSE))
+                if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                 {
-                    mpProcessSetLastWallCollideStats(sp94.x, wall_line_id, wall_flags, &wall_angle);
+                    mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
                 }
             }
             else
             {
-                sp94.x = translate->x;
-                sp94.y = translate->y + object_coll->bottom;
+                wall_pos.x = translate->x;
+                wall_pos.y = translate->y + object_coll->bottom;
 
-                if (mpCollisionGetLRCommonLeft(wall_line_id, &sp94, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) < sMPProcessLastWallCollidePosition)
                     {
                         mpProcessSetLastWallCollideStats((translate->x + last_wall_x), wall_line_id, wall_flags, &wall_angle);
                     }
                 }
-                sp94.x = translate->x + object_coll->width;
-                sp94.y = translate->y + object_coll->center;
+                wall_pos.x = translate->x + object_coll->width;
+                wall_pos.y = translate->y + object_coll->center;
 
-                if (mpCollisionGetLRCommonLeft(wall_line_id, &sp94, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) < sMPProcessLastWallCollidePosition)
                     {
                         mpProcessSetLastWallCollideStats((translate->x + last_wall_x), wall_line_id, wall_flags, &wall_angle);
                     }
                 }
-                sp94.x = translate->x;
-                sp94.y = translate->y + object_coll->top;
+                wall_pos.x = translate->x;
+                wall_pos.y = translate->y + object_coll->top;
 
-                if (mpCollisionGetLRCommonLeft(wall_line_id, &sp94, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) < sMPProcessLastWallCollidePosition)
                     {
@@ -803,7 +803,7 @@ void mpProcessRunRWallCollision(mpCollData *coll_data)
 {
     mpObjectColl *object_coll = &coll_data->object_coll;
     Vec3f *translate = coll_data->p_translate;
-    Vec3f sp94;
+    Vec3f wall_pos;
     Vec3f wall_angle;
     Vec3f vertex_pos;
     s32 i;
@@ -819,52 +819,52 @@ void mpProcessRunRWallCollision(mpCollData *coll_data)
     {
         wall_line_id = sMPProcessMultiWallCollideLineIDs[i];
 
-        func_ovl2_800F4690(wall_line_id, &sp94);
+        func_ovl2_800F4690(wall_line_id, &wall_pos);
 
-        if (sp94.y < (translate->y + object_coll->bottom))
+        if (wall_pos.y < (translate->y + object_coll->bottom))
         {
-            if ((sMPProcessLastWallCollidePosition < sp94.x) && (mpCollisionGetLRCommonRight(wall_line_id, &sp94, NULL, &wall_flags, &wall_angle) != FALSE))
+            if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
             {
-                mpProcessSetLastWallCollideStats(sp94.x, wall_line_id, wall_flags, &wall_angle);
+                mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
             }
         }
         else
         {
-            func_ovl2_800F46B0(wall_line_id, &sp94);
+            func_ovl2_800F46B0(wall_line_id, &wall_pos);
 
-            if ((translate->y + object_coll->top) < sp94.y)
+            if ((translate->y + object_coll->top) < wall_pos.y)
             {
-                if ((sMPProcessLastWallCollidePosition < sp94.x) && (mpCollisionGetLRCommonRight(wall_line_id, &sp94, NULL, &wall_flags, &wall_angle) != FALSE))
+                if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                 {
-                    mpProcessSetLastWallCollideStats(sp94.x, wall_line_id, wall_flags, &wall_angle);
+                    mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
                 }
             }
             else
             {
-                sp94.x = translate->x;
-                sp94.y = translate->y + object_coll->bottom;
+                wall_pos.x = translate->x;
+                wall_pos.y = translate->y + object_coll->bottom;
 
-                if (mpCollisionGetLRCommonRight(wall_line_id, &sp94, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) > sMPProcessLastWallCollidePosition)
                     {
                         mpProcessSetLastWallCollideStats((translate->x + last_wall_x), wall_line_id, wall_flags, &wall_angle);
                     }
                 }
-                sp94.x = translate->x - object_coll->width;
-                sp94.y = translate->y + object_coll->center;
+                wall_pos.x = translate->x - object_coll->width;
+                wall_pos.y = translate->y + object_coll->center;
 
-                if (mpCollisionGetLRCommonRight(wall_line_id, &sp94, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) > sMPProcessLastWallCollidePosition)
                     {
                         mpProcessSetLastWallCollideStats((translate->x + last_wall_x), wall_line_id, wall_flags, &wall_angle);
                     }
                 }
-                sp94.x = translate->x;
-                sp94.y = translate->y + object_coll->top;
+                wall_pos.x = translate->x;
+                wall_pos.y = translate->y + object_coll->top;
 
-                if (mpCollisionGetLRCommonRight(wall_line_id, &sp94, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) > sMPProcessLastWallCollidePosition)
                     {
@@ -1387,7 +1387,7 @@ void mpProcessRunLWallCollisionAdjNew(mpCollData *coll_data)
 {
     mpObjectColl *object_coll = &coll_data->object_coll;
     Vec3f *translate = coll_data->p_translate;
-    Vec3f sp94;
+    Vec3f wall_pos;
     Vec3f wall_angle;
     Vec3f vertex_pos;
     s32 i;
@@ -1403,52 +1403,52 @@ void mpProcessRunLWallCollisionAdjNew(mpCollData *coll_data)
     {
         wall_line_id = sMPProcessMultiWallCollideLineIDs[i];
 
-        mpCollisionGetUDEdgeUp(wall_line_id, &sp94);
+        mpCollisionGetUDEdgeUp(wall_line_id, &wall_pos);
 
-        if (sp94.y < (translate->y + object_coll->bottom))
+        if (wall_pos.y < (translate->y + object_coll->bottom))
         {
-            if ((sp94.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &sp94, NULL, &wall_flags, &wall_angle) != FALSE))
+            if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
             {
-                mpProcessSetLastWallCollideStats(sp94.x, wall_line_id, wall_flags, &wall_angle);
+                mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
             }
         }
         else
         {
-            mpCollisionGetUDEdgeDown(wall_line_id, &sp94);
+            mpCollisionGetUDEdgeDown(wall_line_id, &wall_pos);
 
-            if ((translate->y + object_coll->top) < sp94.y)
+            if ((translate->y + object_coll->top) < wall_pos.y)
             {
-                if ((sp94.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &sp94, NULL, &wall_flags, &wall_angle) != FALSE))
+                if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                 {
-                    mpProcessSetLastWallCollideStats(sp94.x, wall_line_id, wall_flags, &wall_angle);
+                    mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
                 }
             }
             else
             {
-                sp94.x = translate->x;
-                sp94.y = translate->y + object_coll->bottom;
+                wall_pos.x = translate->x;
+                wall_pos.y = translate->y + object_coll->bottom;
 
-                if (mpCollisionGetLRCommonLeft(wall_line_id, &sp94, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) < sMPProcessLastWallCollidePosition)
                     {
                         mpProcessSetLastWallCollideStats((translate->x + last_wall_x), wall_line_id, wall_flags, &wall_angle);
                     }
                 }
-                sp94.x = translate->x + object_coll->width;
-                sp94.y = translate->y + object_coll->center;
+                wall_pos.x = translate->x + object_coll->width;
+                wall_pos.y = translate->y + object_coll->center;
 
-                if (mpCollisionGetLRCommonLeft(wall_line_id, &sp94, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) < sMPProcessLastWallCollidePosition)
                     {
                         mpProcessSetLastWallCollideStats((translate->x + last_wall_x), wall_line_id, wall_flags, &wall_angle);
                     }
                 }
-                sp94.x = translate->x;
-                sp94.y = translate->y + object_coll->top;
+                wall_pos.x = translate->x;
+                wall_pos.y = translate->y + object_coll->top;
 
-                if (mpCollisionGetLRCommonLeft(wall_line_id, &sp94, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) < sMPProcessLastWallCollidePosition)
                     {
@@ -1757,7 +1757,7 @@ void mpProcessRunRWallCollisionAdjNew(mpCollData *coll_data)
 {
     mpObjectColl *object_coll = &coll_data->object_coll;
     Vec3f *translate = coll_data->p_translate;
-    Vec3f sp94;
+    Vec3f wall_pos;
     Vec3f wall_angle;
     Vec3f vertex_pos;
     s32 i;
@@ -1773,52 +1773,52 @@ void mpProcessRunRWallCollisionAdjNew(mpCollData *coll_data)
     {
         wall_line_id = sMPProcessMultiWallCollideLineIDs[i];
 
-        func_ovl2_800F4690(wall_line_id, &sp94);
+        func_ovl2_800F4690(wall_line_id, &wall_pos);
 
-        if (sp94.y < (translate->y + object_coll->bottom))
+        if (wall_pos.y < (translate->y + object_coll->bottom))
         {
-            if ((sMPProcessLastWallCollidePosition < sp94.x) && (mpCollisionGetLRCommonRight(wall_line_id, &sp94, NULL, &wall_flags, &wall_angle) != FALSE))
+            if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
             {
-                mpProcessSetLastWallCollideStats(sp94.x, wall_line_id, wall_flags, &wall_angle);
+                mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
             }
         }
         else
         {
-            func_ovl2_800F46B0(wall_line_id, &sp94);
+            func_ovl2_800F46B0(wall_line_id, &wall_pos);
 
-            if ((translate->y + object_coll->top) < sp94.y)
+            if ((translate->y + object_coll->top) < wall_pos.y)
             {
-                if ((sMPProcessLastWallCollidePosition < sp94.x) && (mpCollisionGetLRCommonRight(wall_line_id, &sp94, NULL, &wall_flags, &wall_angle) != FALSE))
+                if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                 {
-                    mpProcessSetLastWallCollideStats(sp94.x, wall_line_id, wall_flags, &wall_angle);
+                    mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
                 }
             }
             else
             {
-                sp94.x = translate->x;
-                sp94.y = translate->y + object_coll->bottom;
+                wall_pos.x = translate->x;
+                wall_pos.y = translate->y + object_coll->bottom;
 
-                if (mpCollisionGetLRCommonRight(wall_line_id, &sp94, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) > sMPProcessLastWallCollidePosition)
                     {
                         mpProcessSetLastWallCollideStats((translate->x + last_wall_x), wall_line_id, wall_flags, &wall_angle);
                     }
                 }
-                sp94.x = translate->x - object_coll->width;
-                sp94.y = translate->y + object_coll->center;
+                wall_pos.x = translate->x - object_coll->width;
+                wall_pos.y = translate->y + object_coll->center;
 
-                if (mpCollisionGetLRCommonRight(wall_line_id, &sp94, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) > sMPProcessLastWallCollidePosition)
                     {
                         mpProcessSetLastWallCollideStats((translate->x + last_wall_x), wall_line_id, wall_flags, &wall_angle);
                     }
                 }
-                sp94.x = translate->x;
-                sp94.y = translate->y + object_coll->top;
+                wall_pos.x = translate->x;
+                wall_pos.y = translate->y + object_coll->top;
 
-                if (mpCollisionGetLRCommonRight(wall_line_id, &sp94, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) > sMPProcessLastWallCollidePosition)
                     {

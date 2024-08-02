@@ -1,4 +1,5 @@
 #include <ft/fighter.h>
+#include <if/interface.h>
 #include <gm/battle.h>
 
 // // // // // // // // // // // //

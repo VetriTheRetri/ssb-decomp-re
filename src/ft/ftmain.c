@@ -4689,7 +4689,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
     }
     fp->joint[withheld_part->root_joint_id] = root_joint;
 
-    root_joint->user_data.p = ft_parts = ftManager_GetFighterPartsSetNextAlloc();
+    root_joint->user_data.p = ft_parts = ftManagerGetFighterPartsSetNextAlloc();
 
     ft_parts->flags = attributes->common_parts_container->common_parts[fp->detail_current - 1].flags;
     ft_parts->joint_id = withheld_part->root_joint_id;
@@ -4806,7 +4806,7 @@ void ftMainEjectWithheldPartID(ftStruct *fp, s32 withheld_part_id)
     DObj *sibling_joint;
     DObj *new_sibling_joint;
 
-    ftManager_SetFighterPartsPrevAlloc(root_joint->user_data.p);
+    ftManagerSetFighterPartsPrevAlloc(root_joint->user_data.p);
 
     child_joint = root_joint->child;
     parent_joint = root_joint->parent;

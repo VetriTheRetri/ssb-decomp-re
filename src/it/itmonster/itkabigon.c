@@ -119,13 +119,13 @@ void itKabigonNFallProcRender(GObj *item_gobj)
 
     if (itRenderCheckItemVisible(ip) != FALSE)
     {
-        if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
+        if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
             odRenderDObjTreeForGObj(item_gobj);
         }
-        else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
+        else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
@@ -227,13 +227,13 @@ void itKabigonSDefaultProcRender(GObj *item_gobj)
 
     if (itRenderCheckItemVisible(ip) != FALSE)
     {
-        if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
+        if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
             odRenderDObjTreeForGObj(item_gobj);
         }
-        else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
+        else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 

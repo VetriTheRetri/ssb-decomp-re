@@ -9,14 +9,13 @@
 #include <sys/thread6.h>
 #include <cm/camera.h>
 #include <ef/effect.h>
-#include <if/interface.h>
 #include <mp/map.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
 #include <gm/gmscript.h>
 #include <ovl0/halbitmap.h>
 
-#include "ftdef.h"
+#include <ft/ftdef.h>
 
 #include <ft/ftcommon.h>
 #include <ft/ftchar.h>

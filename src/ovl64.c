@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
+#include <if/interface.h>
 #include <gm/battle.h>
 
 extern intptr_t D_NF_0000000C;

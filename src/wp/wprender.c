@@ -40,7 +40,7 @@ void wpRenderHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
         {
             gDPPipeSync(gDisplayListHead[0]++);
 
-            if (wp->display_mode == dbObject_DisplayMode_HitAttackOutline)
+            if (wp->display_mode == nDBDisplayModeHitAttackOutline)
             {
                 gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xB0, 0x00, 0x00, 0xFF);
                 gDPSetEnvColor(gDisplayListHead[0]++, 0xB0, 0x00, 0x00, 0xFF);
@@ -161,7 +161,7 @@ void wpRenderMain(GObj *weapon_gobj, void(*proc_render)(GObj*))
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wp->display_mode == dbObject_DisplayMode_MapCollision)
+    if (wp->display_mode == nDBDisplayModeMapCollision)
     {
         wpRenderDrawNormal();
 
@@ -171,7 +171,7 @@ void wpRenderMain(GObj *weapon_gobj, void(*proc_render)(GObj*))
 
         wpRenderMapCollisions(weapon_gobj);
     }
-    else if ((wp->display_mode == dbObject_DisplayMode_Master) || (wp->weapon_hit.update_state == nGMHitUpdateDisable))
+    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->weapon_hit.update_state == nGMHitUpdateDisable))
     {
         wpRenderDrawNormal();
 
@@ -212,7 +212,7 @@ void wpRenderPKThunder(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     s32 index = wp->weapon_vars.pkthunder_trail.trail_index;
 
-    if (wp->display_mode == dbObject_DisplayMode_MapCollision)
+    if (wp->display_mode == nDBDisplayModeMapCollision)
     {
         wpRenderDrawNormal();
 
@@ -228,7 +228,7 @@ void wpRenderPKThunder(GObj *weapon_gobj)
 
         wpRenderMapCollisions(weapon_gobj);
     }
-    else if ((wp->display_mode == dbObject_DisplayMode_Master) || (wp->weapon_hit.update_state == nGMHitUpdateDisable))
+    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->weapon_hit.update_state == nGMHitUpdateDisable))
     {
         wpRenderDrawNormal();
 

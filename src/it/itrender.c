@@ -30,7 +30,7 @@ void itRenderHitCollisions(GObj *item_gobj)
         {
             gDPPipeSync(gDisplayListHead[0]++);
 
-            if (ip->display_mode == dbObject_DisplayMode_HitAttackOutline)
+            if (ip->display_mode == nDBDisplayModeHitAttackOutline)
             {
                 gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xB0, 0x00, 0x00, 0xFF);
                 gDPSetEnvColor(gDisplayListHead[0]++, 0xB0, 0x00, 0x00, 0xFF);
@@ -192,11 +192,11 @@ void itRenderProcRenderOPA(GObj *item_gobj)
 
     if (itRenderCheckItemVisible(ip) != FALSE)
     {
-        if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
+        if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
             odRenderDObjTreeForGObj(item_gobj);
         }
-        else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
+        else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
             odRenderDObjTreeForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
@@ -216,11 +216,11 @@ void itRenderProcRenderXLU(GObj *item_gobj)
 
     if (itRenderCheckItemVisible(ip) != FALSE)
     {
-        if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
+        if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
             odRenderDObjTreeDLLinksForGObj(item_gobj);
         }
-        else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
+        else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
             odRenderDObjTreeDLLinksForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
@@ -262,11 +262,11 @@ void itRenderProcRenderColAnimOPA(GObj *item_gobj)
 
     if (itRenderCheckItemVisible(ip) != FALSE)
     {
-        if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
+        if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
             itRenderColAnimOPA(item_gobj);
         }
-        else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
+        else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
             itRenderColAnimOPA(item_gobj);
             itRenderMapCollisions(item_gobj);
@@ -318,11 +318,11 @@ void itRenderProcRenderColAnimXLU(GObj *item_gobj)
 
     if (itRenderCheckItemVisible(ip) != FALSE)
     {
-        if ((ip->display_mode == dbObject_DisplayMode_Master) || (ip->is_hold))
+        if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
             itRenderColAnimXLU(item_gobj);
         }
-        else if (ip->display_mode == dbObject_DisplayMode_MapCollision)
+        else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
             itRenderColAnimXLU(item_gobj);
             itRenderMapCollisions(item_gobj);

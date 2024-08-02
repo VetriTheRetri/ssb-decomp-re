@@ -1091,7 +1091,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
     sFTRenderMainSkyFogAlpha = 0xFF;
     sFTRenderMainIsShadeFog = FALSE;
 
-    if ((fp->is_invisible) && (fp->display_mode == dbObject_DisplayMode_Master))
+    if ((fp->is_invisible) && (fp->display_mode == nDBDisplayModeMaster))
     {
         fp->x18D_flag_b5 = FALSE;
 
@@ -1170,7 +1170,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
     }
     D_800D62D0.x = D_800D62D0.y = D_800D62D0.z = 1.0F;
 
-    if ((fp->display_mode == dbObject_DisplayMode_Master) || (fp->display_mode == dbObject_DisplayMode_MapCollision))
+    if ((fp->display_mode == nDBDisplayModeMaster) || (fp->display_mode == nDBDisplayModeMapCollision))
     {
         gDPPipeSync(gDisplayListHead[0]++);
 
@@ -1254,7 +1254,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
         }
         else ftRenderLightsDrawReflect(gDisplayListHead, func_ovl1_8039051C(), func_ovl1_80390528());
 
-        if (fp->display_mode == dbObject_DisplayMode_MapCollision)
+        if (fp->display_mode == nDBDisplayModeMapCollision)
         {
             gDPPipeSync(gDisplayListHead[0]++);
 
@@ -1353,7 +1353,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
             {
                 gDPPipeSync(gDisplayListHead[0]++);
 
-                if (fp->display_mode == dbObject_DisplayMode_HitAttackOutline)
+                if (fp->display_mode == nDBDisplayModeHitAttackOutline)
                 {
                     gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xB0, 0x00, 0x00, 0xFF);
 

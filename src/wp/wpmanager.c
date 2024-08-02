@@ -45,7 +45,7 @@ void wpManagerAllocWeapons(void)
         wp[i].alloc_next = NULL;
     }
     sWPManagerGroupID = 1;
-    sWPManagerDisplayMode = dbObject_DisplayMode_Master;
+    sWPManagerDisplayMode = nDBDisplayModeMaster;
 }
 
 // 0x80165558

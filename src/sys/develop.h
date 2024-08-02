@@ -7,10 +7,10 @@
 
 typedef enum dbObjectDisplayMode
 {
-	dbObject_DisplayMode_Master,
-	dbObject_DisplayMode_HitCollisionFill,
-	dbObject_DisplayMode_HitAttackOutline,
-	dbObject_DisplayMode_MapCollision
+	nDBDisplayModeMaster,
+	nDBDisplayModeHitCollisionFill,
+	nDBDisplayModeHitAttackOutline,
+	nDBDisplayModeMapCollision
 
 } dbObjectDisplayMode;
 

@@ -1,5 +1,5 @@
 #include <ft/fighter.h>
-#include <gr/ground.h>
+#include <if/interface.h>
 #include <gm/battle.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);

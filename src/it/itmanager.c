@@ -168,7 +168,7 @@ void itManagerInitItems(void) // Many linker things here
     itManagerInitMonsterVars();
     ifCommonItemArrowSetAttr();
 
-    gITManagerDisplayMode = dbObject_DisplayMode_Master;
+    gITManagerDisplayMode = nDBDisplayModeMaster;
 }
 
 // 0x8016DFAC

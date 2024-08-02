@@ -8,9 +8,9 @@
 void ftManagerSetupFileSize();
 void ftManagerAllocFighter(u32 data_flags, s32 alloc_count);
 ftStruct* ftManagerGetStructSetNextAlloc();
-void ftManager_SetPrevAlloc(ftStruct* fp);
-ftParts* ftManager_GetFighterPartsSetNextAlloc();
-void ftManager_SetFighterPartsPrevAlloc(ftParts* ft_parts);
+void ftManagerSetPrevAlloc(ftStruct* fp);
+ftParts* ftManagerGetFighterPartsSetNextAlloc();
+void ftManagerSetFighterPartsPrevAlloc(ftParts* ft_parts);
 void ftManagerSetupDataMain(s32 ft_kind);
 void func_ovl2_800D7710(s32 ft_kind);
 void ftManagerSetupDataPlayables();

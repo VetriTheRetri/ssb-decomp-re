@@ -1,13 +1,8 @@
-#include <gm/battle.h>
-#include <gr/grdef.h>
-#include <ft/fttypes.h>
-#include <ft/ftdef.h>
 #include <ft/fighter.h>
+#include <it/item.h>
 #include <gr/ground.h>
-#include <gm/gmsound.h>
-#include <sys/objtypes.h>
-#include <mp/map.h>
-#include <it/ittypes.h>
+#include <if/interface.h>
+#include <gm/battle.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "ovl6.h"

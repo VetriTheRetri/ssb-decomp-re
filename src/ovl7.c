@@ -1,7 +1,7 @@
-#include <ssb_types.h>
 #include <ft/fighter.h>
 #include <it/item.h>
 #include <gr/ground.h>
+#include <if/interface.h>
 #include <gm/battle.h>
 #include <sc/scene.h>
 #include <buttons.h>

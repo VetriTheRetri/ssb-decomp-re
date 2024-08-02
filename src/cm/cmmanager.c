@@ -1,6 +1,7 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <wp/weapon.h>
+#include <if/interface.h>
 #include <gm/battle.h>
 #include <sys/ml.h>
 

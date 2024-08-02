@@ -11,13 +11,13 @@ extern sb32 func_ovl0_800C7C98(Vec3f*, Vec3f*, f32);
 // 0x8015BD00
 void ftFoxSpecialHiStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftFoxSpecialHiHoldSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftFoxSpecialHiHoldSetStatus);
 }
 
 // 0x8015BD24
 void ftFoxSpecialAirHiStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftFoxSpecialAirHiHoldSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftFoxSpecialAirHiHoldSetStatus);
 }
 
 // 0x8015BD48

@@ -19,13 +19,13 @@ void ftKirbyCopyDonkeySpecialNProcDamage(GObj *fighter_gobj)
 // 0x801577AC
 void ftKirbyCopyDonkeySpecialNStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftKirbyCopyDonkeySpecialNLoopSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftKirbyCopyDonkeySpecialNLoopSetStatus);
 }
 
 // 0x801577D0
 void ftKirbyCopyDonkeySpecialAirNStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftKirbyCopyDonkeySpecialAirNLoopSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftKirbyCopyDonkeySpecialAirNLoopSetStatus);
 }
 
 // 0x801577F4

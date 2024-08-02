@@ -44,7 +44,7 @@ void ftCommonHarisenSwingProcUpdate(GObj *fighter_gobj)
             }
         }
     }
-    ftStatusWaitOnAnimEnd(fighter_gobj);
+    ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x80146CF4
@@ -98,7 +98,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
         }
         fp->command_vars.flags.flag0 = 0;
     }
-    ftStatusWaitOnAnimEnd(fighter_gobj);
+    ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x80188618

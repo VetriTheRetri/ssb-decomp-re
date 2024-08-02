@@ -42,7 +42,7 @@ void ftCommonJumpAerialProcUpdate(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonJumpAerialUpdateModelPitch(fp);
-    ftStatusFallOnAnimEnd(fighter_gobj);
+    ftAnimEndSetFall(fighter_gobj);
 }
 
 // 0x8013FB2C

@@ -18,7 +18,7 @@ void ftCommonTurnRunProcUpdate(GObj *fighter_gobj)
         fp->lr = -fp->lr;
         fp->phys_info.vel_ground.x = -fp->phys_info.vel_ground.x;
     }
-    ftStatusSetOnAnimEnd(fighter_gobj, ftCommonRunSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftCommonRunSetStatus);
 }
 
 // 0x8013F1C0

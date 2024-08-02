@@ -60,7 +60,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDAttack100,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
@@ -220,7 +220,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		ftPurinSpecialNProcMap				// Proc Map
@@ -240,7 +240,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialN,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,		// Proc Update
+		ftAnimEndSetFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPurinSpecialAirNProcPhysics,		// Proc Physics
 		ftPurinSpecialAirNProcMap				// Proc Map
@@ -300,7 +300,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		ftPurinSpecialLwProcMap				// Proc Map
@@ -320,7 +320,7 @@ ftStatusDesc dFTPurinSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,		// Proc Update
+		ftAnimEndSetFall,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,			// Proc Physics
 		ftPurinSpecialAirLwProcMap			// Proc Map

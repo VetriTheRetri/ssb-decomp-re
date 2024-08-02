@@ -9,7 +9,7 @@
 // 0x80159DB0
 void ftBossGootsubusuEndProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftBossWaitSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftBossWaitSetStatus);
 }
 
 // 0x80159DD4

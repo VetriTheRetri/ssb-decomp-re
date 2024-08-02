@@ -9,7 +9,7 @@
 // 0x8015B6D0
 void ftDonkeySpecialHiProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusWaitOnAnimEnd(fighter_gobj);
+    ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x8015B6F0

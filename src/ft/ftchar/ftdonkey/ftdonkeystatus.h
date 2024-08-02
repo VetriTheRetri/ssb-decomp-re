@@ -300,7 +300,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialLw,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map

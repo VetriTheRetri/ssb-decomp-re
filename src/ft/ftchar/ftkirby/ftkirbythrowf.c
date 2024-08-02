@@ -9,7 +9,7 @@
 // 0x8014A430
 void ftKirbyThrowFProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftKirbyThrowFFallSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftKirbyThrowFFallSetStatus);
 }
 
 // 0x8014A454

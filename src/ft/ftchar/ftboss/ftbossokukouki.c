@@ -9,7 +9,7 @@
 // 0x8015A2F0
 void ftBossOkukoukiProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftBossWaitSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftBossWaitSetStatus);
 }
 
 // 0x8015A314

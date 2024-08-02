@@ -10,7 +10,7 @@
 // 0x80155E40
 void ftMarioSpecialNProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, mpCommonSetFighterWaitOrFall);
+    ftAnimEndSetStatus(fighter_gobj, mpCommonSetFighterWaitOrFall);
 }
 
 // 0x80155E64

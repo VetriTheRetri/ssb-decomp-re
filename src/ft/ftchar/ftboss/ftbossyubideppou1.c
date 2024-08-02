@@ -9,7 +9,7 @@
 // 0x8015A350
 void ftBossYubideppou1ProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftBossYubideppou2SetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftBossYubideppou2SetStatus);
 }
 
 // 0x8015A374

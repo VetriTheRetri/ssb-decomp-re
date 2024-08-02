@@ -3,7 +3,7 @@
 
 #include "ftmanager.h"
 #include "ftmain.h"
-#include "ftanimgoto.h"
+#include "ftanimend.h"
 #include "ftphysics.h"
 #include "ftparam.h"
 #include "ftanim.h"

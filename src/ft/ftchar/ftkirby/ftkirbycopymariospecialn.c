@@ -19,7 +19,7 @@
 // 0x801569B0
 void ftKirbyCopyMarioSpecialNProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, mpCommonSetFighterWaitOrFall);
+    ftAnimEndSetStatus(fighter_gobj, mpCommonSetFighterWaitOrFall);
 }
 
 // 0x801569D4

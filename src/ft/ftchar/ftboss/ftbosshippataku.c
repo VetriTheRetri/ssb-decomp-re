@@ -9,7 +9,7 @@
 // 0x80159380
 void ftBossHippatakuProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftBossWaitSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftBossWaitSetStatus);
 }
 
 // 0x801593A4

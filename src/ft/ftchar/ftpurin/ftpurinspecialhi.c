@@ -29,9 +29,9 @@ void ftPurinSpecialHiProcUpdate(GObj *fighter_gobj)
     }
     if (fp->status_info.status_id == nFTPurinStatusSpecialHi)
     {
-        ftStatusWaitOnAnimEnd(fighter_gobj);
+        ftAnimEndSetWait(fighter_gobj);
     }
-    else ftStatusFallOnAnimEnd(fighter_gobj);
+    else ftAnimEndSetFall(fighter_gobj);
 }
 
 // 0x801515CC

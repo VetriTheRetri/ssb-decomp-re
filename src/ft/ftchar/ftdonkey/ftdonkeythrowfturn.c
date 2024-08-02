@@ -31,7 +31,7 @@ void ftDonkeyThrowFTurnProcUpdate(GObj *fighter_gobj)
 
         fp->phys_info.vel_ground.x = -fp->phys_info.vel_ground.x;
     }
-    ftStatusSetOnAnimEnd(fighter_gobj, ftDonkeyThrowFWaitSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftDonkeyThrowFWaitSetStatus);
 }
 
 // 0x8014D790

@@ -23,13 +23,13 @@ sb32 ftCommonCliffEscapeCheckInterruptCommon(GObj *fighter_gobj)
 // 0x80145824
 void ftCommonCliffEscapeQuick1ProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftCommonCliffEscapeQuick2SetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftCommonCliffEscapeQuick2SetStatus);
 }
 
 // 0x80145848
 void ftCommonCliffEscapeSlow1ProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftCommonCliffEscapeSlow2SetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftCommonCliffEscapeSlow2SetStatus);
 }
 
 // 0x8014586C

@@ -94,7 +94,7 @@ void ftYoshiSpecialHiProcUpdate(GObj *fighter_gobj)
 {
     ftYoshiSpecialHiUpdateEggThrowForce(fighter_gobj);
     ftYoshiSpecialHiUpdateEggVars(fighter_gobj);
-    ftStatusSetOnAnimEnd(fighter_gobj, ftCommonWaitSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftCommonWaitSetStatus);
 }
 
 // 0x8015EB70
@@ -102,7 +102,7 @@ void ftYoshiSpecialAirHiProcUpdate(GObj *fighter_gobj)
 {
     ftYoshiSpecialHiUpdateEggThrowForce(fighter_gobj);
     ftYoshiSpecialHiUpdateEggVars(fighter_gobj);
-    ftStatusSetOnAnimEnd(fighter_gobj, ftCommonFallSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftCommonFallSetStatus);
 }
 
 // 0x8015EBA8

@@ -28,7 +28,7 @@ void ftCommonCatchProcUpdate(GObj *fighter_gobj)
 
         fp->command_vars.flags.flag2 = 0;
     }
-    ftStatusWaitOnAnimEnd(fighter_gobj);
+    ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x80149AC8

@@ -60,7 +60,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDAttack100,					// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,				// Proc Update
+		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak					// Proc Map
@@ -660,7 +660,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyPikachu,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,				// Proc Update
+		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyPikachuSpecialNProcMap			// Proc Map
@@ -680,7 +680,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyPikachu,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,				// Proc Update
+		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyPikachuSpecialAirNProcMap			// Proc Map
@@ -700,7 +700,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyNess,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,				// Proc Update
+		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyNessSpecialNProcMap				// Proc Map
@@ -720,7 +720,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyNess,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,				// Proc Update
+		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyNessSpecialAirNProcMap			// Proc Map
@@ -880,7 +880,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialLw,					// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,				// Proc Update
+		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,					// Proc Physics
 		mpCommonProcFighterWaitOrLanding								// Proc Map
@@ -980,7 +980,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialLw,					// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,				// Proc Update
+		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,					// Proc Physics
 		mpCommonProcFighterWaitOrLanding								// Proc Map
@@ -1040,7 +1040,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialN,					// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,				// Proc Update
+		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
 		ftKirbySpecialNEndProcMap						// Proc Map
@@ -1220,7 +1220,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialN,					// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,				// Proc Update
+		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,					// Proc Physics
 		ftKirbySpecialAirNEndProcMap					// Proc Map
@@ -1380,7 +1380,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyLink,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,				// Proc Update
+		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak					// Proc Map
@@ -1400,7 +1400,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyLink,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,				// Proc Update
+		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyLinkSpecialNEmptyProcMap			// Proc Map
@@ -1440,7 +1440,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyLink,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,				// Proc Update
+		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,					// Proc Physics
 		mpCommonProcFighterWaitOrLanding								// Proc Map
@@ -1460,7 +1460,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyLink,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,				// Proc Update
+		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyLinkSpecialAirNEmptyProcMap		// Proc Map
@@ -1480,7 +1480,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyPurin,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,				// Proc Update
+		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,					// Proc Physics
 		ftKirbyCopyPurinSpecialNProcMap				// Proc Map
@@ -1500,7 +1500,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyPurin,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,				// Proc Update
+		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftKirbyCopyPurinSpecialAirNProcPhysics,		// Proc Physics
 		ftKirbyCopyPurinSpecialAirNProcMap			// Proc Map
@@ -1520,7 +1520,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyCaptain,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,				// Proc Update
+		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftKirbyCopyCaptainSpecialNProcPhysics,		// Proc Physics
 		ftKirbyCopyCaptainSpecialNProcMap			// Proc Map
@@ -1540,7 +1540,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyCaptain,		// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,				// Proc Update
+		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftKirbyCopyCaptainSpecialAirNProcPhysics,	// Proc Physics
 		ftKirbyCopyCaptainSpecialAirNProcMap			// Proc Map
@@ -1560,7 +1560,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyYoshi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,				// Proc Update
+		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyYoshiSpecialNProcMap				// Proc Map
@@ -1620,7 +1620,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialNCopyYoshi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,				// Proc Update
+		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
 		ftPhysics_ApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyYoshiSpecialAirNProcMap			// Proc Map

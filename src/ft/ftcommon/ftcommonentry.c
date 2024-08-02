@@ -285,14 +285,14 @@ void ftCommonAppearSetPosition(GObj *fighter_gobj)
 void ftNessAppearStartProcUpdate(GObj *fighter_gobj)
 {
     ftCommonAppearUpdateEffects(fighter_gobj);
-    ftStatusSetOnAnimEnd(fighter_gobj, ftNessAppearWaitSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftNessAppearWaitSetStatus);
 }
 
 // 0x8013DE90
 void ftNessAppearWaitProcUpdate(GObj *fighter_gobj)
 {
     ftCommonAppearUpdateEffects(fighter_gobj);
-    ftStatusSetOnAnimEnd(fighter_gobj, ftNessAppearEndSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftNessAppearEndSetStatus);
 }
 
 // 0x8013DEC0
@@ -328,7 +328,7 @@ void ftCaptainAppearStartProcUpdate(GObj *fighter_gobj)
     {
         ftParamMoveDLLink(fighter_gobj, 9);
     }
-    ftStatusSetOnAnimEnd(fighter_gobj, ftCaptainAppearEndSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftCaptainAppearEndSetStatus);
 }
 
 // 0x8013E008

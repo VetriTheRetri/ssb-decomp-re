@@ -154,7 +154,7 @@ void ftKirbySpecialNStopEffect(GObj *fighter_gobj)
 // 0x80161FF8
 void ftKirbySpecialNStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftKirbySpecialNLoopSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftKirbySpecialNLoopSetStatus);
 }
 
 // 0x8016201C
@@ -215,19 +215,19 @@ void ftKirbySpecialNCatchProcUpdate(GObj *fighter_gobj)
 // 0x801621A8
 void ftKirbySpecialAirNStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftKirbySpecialAirNLoopSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftKirbySpecialAirNLoopSetStatus);
 }
 
 // 0x801621CC
 void ftKirbySpecialNTurnProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftKirbySpecialNWaitSetStatusFromTurn);
+    ftAnimEndSetStatus(fighter_gobj, ftKirbySpecialNWaitSetStatusFromTurn);
 }
 
 // 0x801621F0
 void ftKirbySpecialAirNTurnProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftKirbySpecialAirNWaitSetStatusFromTurn);
+    ftAnimEndSetStatus(fighter_gobj, ftKirbySpecialAirNWaitSetStatusFromTurn);
 }
 
 // 0x80162214
@@ -236,7 +236,7 @@ void ftKirbySpecialNEatProcUpdate(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     void (*proc_status)(GObj*) = (fp->ga == nMPKineticsGround) ? ftKirbySpecialNWaitSetStatusFromEat : ftKirbySpecialAirNWaitSetStatusFromEat;
 
-    ftStatusSetOnAnimEnd(fighter_gobj, proc_status);
+    ftAnimEndSetStatus(fighter_gobj, proc_status);
 }
 
 // 0x80162258
@@ -284,14 +284,14 @@ void ftKirbySpecialNCopyUpdateCheckCopyStar(GObj *fighter_gobj)
 void ftKirbySpecialNThrowProcUpdate(GObj *fighter_gobj)
 {
     ftKirbySpecialNThrowUpdateCheckThrowStar(fighter_gobj);
-    ftStatusWaitOnAnimEnd(fighter_gobj);
+    ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x8016239C
 void ftKirbySpecialAirNThrowProcUpdate(GObj *fighter_gobj)
 {
     ftKirbySpecialNThrowUpdateCheckThrowStar(fighter_gobj);
-    ftStatusFallOnAnimEnd(fighter_gobj);
+    ftAnimEndSetFall(fighter_gobj);
 }
 
 // 0x801623C4
@@ -299,7 +299,7 @@ void ftKirbySpecialNCopyProcUpdate(GObj *fighter_gobj)
 {
     ftKirbySpecialNCopyInitCopyVars(fighter_gobj);
     ftKirbySpecialNCopyUpdateCheckCopyStar(fighter_gobj);
-    ftStatusWaitOnAnimEnd(fighter_gobj);
+    ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x801623F4
@@ -307,7 +307,7 @@ void ftKirbySpecialAirNCopyProcUpdate(GObj *fighter_gobj)
 {
     ftKirbySpecialNCopyInitCopyVars(fighter_gobj);
     ftKirbySpecialNCopyUpdateCheckCopyStar(fighter_gobj);
-    ftStatusFallOnAnimEnd(fighter_gobj);
+    ftAnimEndSetFall(fighter_gobj);
 }
 
 // 0x80162424

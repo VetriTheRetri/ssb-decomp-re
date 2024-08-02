@@ -27,7 +27,7 @@ void ftMarioSpecialLwProcUpdate(GObj *fighter_gobj)
             fp->status_vars.mario.speciallw.dust_effect_int = 8;
         }
     }
-    ftStatusWaitOnAnimEnd(fighter_gobj);
+    ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x801565A8
@@ -40,7 +40,7 @@ void ftMarioSpecialAirLwProcUpdate(GObj *fighter_gobj)
         fp->command_vars.flags.flag2 = 0;
         fp->fighter_vars.mario.is_expend_tornado = TRUE;
     }
-    ftStatusFallOnAnimEnd(fighter_gobj);
+    ftAnimEndSetFall(fighter_gobj);
 }
 
 // 0x801565E4

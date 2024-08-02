@@ -60,7 +60,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDAttack100,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
@@ -280,7 +280,7 @@ ftStatusDesc dFTFoxSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,		// Proc Update
+		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftFoxSpecialHiEndProcPhysics,			// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak				// Proc Map

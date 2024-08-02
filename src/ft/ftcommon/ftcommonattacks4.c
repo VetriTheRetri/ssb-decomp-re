@@ -71,7 +71,7 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
         }
         break;
     }
-    ftStatusWaitOnAnimEnd(fighter_gobj);
+    ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x8014FFE0

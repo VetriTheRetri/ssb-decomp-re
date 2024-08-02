@@ -17,7 +17,7 @@
 // 0x801497A0
 void ftCommonShieldBreakStandProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftCommonFuraFuraSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftCommonFuraFuraSetStatus);
 }
 
 // 0x801497C4

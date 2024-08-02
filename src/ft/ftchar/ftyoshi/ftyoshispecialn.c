@@ -72,14 +72,14 @@ void ftYoshiSpecialNCatchUpdateCaptureVars(ftStruct *fp)
 void ftYoshiSpecialNReleaseProcUpdate(GObj *fighter_gobj)
 {
     ftYoshiSpecialNCatchUpdateCaptureVars(ftGetStruct(fighter_gobj));
-    ftStatusWaitOnAnimEnd(fighter_gobj);
+    ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x8015E478
 void ftYoshiSpecialAirNReleaseProcUpdate(GObj *fighter_gobj)
 {
     ftYoshiSpecialNCatchUpdateCaptureVars(ftGetStruct(fighter_gobj));
-    ftStatusFallOnAnimEnd(fighter_gobj);
+    ftAnimEndSetFall(fighter_gobj);
 }
 
 // 0x8015E4A4

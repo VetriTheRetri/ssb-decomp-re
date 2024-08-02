@@ -44,14 +44,14 @@ void ftKirbyCopyLinkSpecialNCreateBoomerang(GObj *fighter_gobj)
 void ftKirbyCopyLinkSpecialNProcUpdate(GObj *fighter_gobj)
 {
     ftKirbyCopyLinkSpecialNCreateBoomerang(fighter_gobj);
-    ftStatusWaitOnAnimEnd(fighter_gobj);
+    ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x80164718
 void ftKirbyCopyLinkSpecialAirNProcUpdate(GObj *fighter_gobj)
 {
     ftKirbyCopyLinkSpecialNCreateBoomerang(fighter_gobj);
-    ftStatusFallOnAnimEnd(fighter_gobj);
+    ftAnimEndSetFall(fighter_gobj);
 }
 
 // 0x80164740

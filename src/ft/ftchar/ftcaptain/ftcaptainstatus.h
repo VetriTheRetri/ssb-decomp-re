@@ -79,7 +79,7 @@ ftStatusDesc dFTCaptainSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDAttack100,			    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,					// Proc Update
+		ftAnimEndSetWait,					// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
@@ -179,7 +179,7 @@ ftStatusDesc dFTCaptainSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialN,			    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,					// Proc Update
+		ftAnimEndSetWait,					// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptainSpecialNProcPhysics,			// Proc Physics
 		ftCaptainSpecialNProcMap				// Proc Map
@@ -199,7 +199,7 @@ ftStatusDesc dFTCaptainSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialN,			    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,					// Proc Update
+		ftAnimEndSetFall,					// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptainSpecialAirNProcPhysics,		// Proc Physics
 		ftCaptainSpecialAirNProcMap				// Proc Map
@@ -259,7 +259,7 @@ ftStatusDesc dFTCaptainSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialLw,			    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusWaitOnAnimEnd,					// Proc Update
+		ftAnimEndSetWait,					// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptainSpecialLwLandingProcPhysics,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
@@ -279,7 +279,7 @@ ftStatusDesc dFTCaptainSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialLw,			    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,					// Proc Update
+		ftAnimEndSetFall,					// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptainSpecialAirLwProcPhysics,		// Proc Physics
 		ftCaptainSpecialAirLwProcMap			// Proc Map
@@ -299,7 +299,7 @@ ftStatusDesc dFTCaptainSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialLw,			    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,					// Proc Update
+		ftAnimEndSetFall,					// Proc Update
 		NULL,									// Proc Interrupt
 		ftCaptainSpecialLwBoundProcPhysics,		// Proc Physics
 		mpCommonProcFighterWaitOrLanding		// Proc Map
@@ -359,7 +359,7 @@ ftStatusDesc dFTCaptainSpecialStatusDesc[/* */] =
 		nFTStatusAttackIDSpecialHi,			    // Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftStatusFallOnAnimEnd,					// Proc Update
+		ftAnimEndSetFall,					// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
 		mpCommonProcFighterWaitOrLanding		// Proc Map

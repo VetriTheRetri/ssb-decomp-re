@@ -9,7 +9,7 @@
 // 0x8015B9F0
 void ftDonkeySpecialLwStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStatusSetOnAnimEnd(fighter_gobj, ftDonkeySpecialLwLoopSetStatus);
+    ftAnimEndSetStatus(fighter_gobj, ftDonkeySpecialLwLoopSetStatus);
 }
 
 // 0x8015BA14

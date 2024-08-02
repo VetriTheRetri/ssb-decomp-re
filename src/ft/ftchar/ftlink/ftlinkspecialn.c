@@ -44,14 +44,14 @@ void ftLinkSpecialNCreateBoomerang(GObj *fighter_gobj)
 void ftLinkSpecialNProcUpdate(GObj *fighter_gobj)
 {
     ftLinkSpecialNCreateBoomerang(fighter_gobj);
-    ftStatusWaitOnAnimEnd(fighter_gobj);
+    ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x80163798
 void ftLinkSpecialAirNProcUpdate(GObj *fighter_gobj)
 {
     ftLinkSpecialNCreateBoomerang(fighter_gobj);
-    ftStatusFallOnAnimEnd(fighter_gobj);
+    ftAnimEndSetFall(fighter_gobj);
 }
 
 // 0x801637C0

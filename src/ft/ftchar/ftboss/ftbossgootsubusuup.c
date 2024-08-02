@@ -11,7 +11,7 @@ void ftBossGootsubusuUpProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp;
 
-    ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
+    ftPhysicsApplyAirVelTransNYZ(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 

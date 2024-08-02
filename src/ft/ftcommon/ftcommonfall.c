@@ -32,7 +32,7 @@ void ftCommonFallSetStatus(GObj *fighter_gobj)
         }
         ftMainSetFighterStatus(fighter_gobj, ((fp->jumps_used >= fp->attributes->jumps_max) ? nFTCommonStatusFallAerial : nFTCommonStatusFall), 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
 
-        ftPhysics_ClampAirVelXMax(fp);
+        ftPhysicsClampAirVelXMax(fp);
 
         fp->is_special_interrupt = TRUE;
     }

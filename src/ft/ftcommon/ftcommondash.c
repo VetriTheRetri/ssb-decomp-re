@@ -90,9 +90,9 @@ void ftCommonDashProcPhysics(GObj *fighter_gobj)
 
     if (fighter_gobj->anim_frame >= FTCOMMON_DASH_DECELERATE_BEGIN)
     {
-        ftPhysics_SetGroundVelFriction(fp, attributes->dash_decelerate);
+        ftPhysicsSetGroundVelFriction(fp, attributes->dash_decelerate);
     }
-    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
+    ftPhysicsSetGroundVelTransferAir(fighter_gobj);
 }
 
 // 0x8013ECB0

@@ -23,7 +23,7 @@ void ftBossOkupunch2ProcPhysics(GObj *fighter_gobj)
     ftStruct *fp;
     f32 dist_x;
 
-    ftPhysics_SetAirVelTransN(fighter_gobj);
+    ftPhysicsSetAirVelTransN(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 

@@ -40,7 +40,7 @@ void ftDonkeyThrowFFallSetStatus(GObj *fighter_gobj)
         mpCommonSetFighterAir(fp);
     }
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFFall, 0.0F, 0.0F, FTSTATUS_PRESERVE_FASTFALL);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x8014DAF8

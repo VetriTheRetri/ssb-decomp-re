@@ -22,7 +22,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -142,7 +142,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftNessSpecialNProcMap					// Proc Map
 	},
 
@@ -162,7 +162,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftNessSpecialAirNProcMap				// Proc Map
 	},
 
@@ -202,7 +202,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftNessSpecialHiHoldProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftNessSpecialHiHoldProcMap			// Proc Map
 	},
 
@@ -222,7 +222,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftNessSpecialHiEndProcMap				// Proc Map
 	},
 
@@ -322,7 +322,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftNessJibakuAirBoundProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftNessJibakuAirBoundProcMap			// Proc Map
 	},
 
@@ -382,7 +382,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftNessSpecialLwHoldProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftNessSpecialLwHoldProcMap			// Proc Map
 	},
 
@@ -402,7 +402,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftNessSpecialLwHitProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftNessSpecialLwHitProcMap				// Proc Map
 	},
 
@@ -422,7 +422,7 @@ ftStatusDesc dFTNessSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftNessSpecialLwEndProcMap				// Proc Map
 	},
 

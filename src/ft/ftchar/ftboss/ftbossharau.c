@@ -32,7 +32,7 @@ void ftBossHarauProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp;
 
-    ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
+    ftPhysicsApplyAirVelTransNAll(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 

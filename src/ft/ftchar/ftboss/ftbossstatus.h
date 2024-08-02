@@ -82,7 +82,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftBossHippatakuProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,			// Proc Physics
 		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
@@ -122,7 +122,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftBossOkuhikouki1ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,			// Proc Physics
 		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
@@ -162,7 +162,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftBossOkuhikouki3ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,			// Proc Physics
 		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
@@ -302,7 +302,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftBossGootsubusuEndProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,			// Proc Physics
 		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
@@ -342,7 +342,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftBossTsutsuku1ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,			// Proc Physics
 		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
@@ -362,7 +362,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftBossTsutsuku3ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,			// Proc Physics
 		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
@@ -422,7 +422,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftBossOkukoukiProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,			// Proc Physics
 		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
@@ -442,7 +442,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftBossYubideppou1ProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,			// Proc Physics
 		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
@@ -502,7 +502,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftBossOkupunch1ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNYZ,			// Proc Physics
+		ftPhysicsApplyAirVelTransNYZ,			// Proc Physics
 		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
@@ -542,7 +542,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftBossOkupunch3ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNYZ,			// Proc Physics
+		ftPhysicsApplyAirVelTransNYZ,			// Proc Physics
 		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 
@@ -582,7 +582,7 @@ ftStatusDesc dFTBossSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftBossOkutsubushiStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNYZ,			// Proc Physics
+		ftPhysicsApplyAirVelTransNYZ,			// Proc Physics
 		mpCommonUpdateFighterProjectGround				// Proc Map
 	},
 

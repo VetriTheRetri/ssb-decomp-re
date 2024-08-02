@@ -42,9 +42,9 @@ void ftKirbyThrowFLandingProcPhysics(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        ftPhysics_ApplyGroundVelFriction(fighter_gobj);
+        ftPhysicsApplyGroundVelFriction(fighter_gobj);
     }
-    else ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
+    else ftPhysicsApplyAirVelTransNAll(fighter_gobj);
 }
 
 // 0x8014A538

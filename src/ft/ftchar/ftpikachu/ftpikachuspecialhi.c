@@ -48,11 +48,11 @@ void ftPikachuSpecialAirHiStartProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    ftPhysics_ApplyGClampTVel(fp, 0.8F, attributes->fall_speed_max);
+    ftPhysicsApplyGClampTVel(fp, 0.8F, attributes->fall_speed_max);
 
-    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ApplyAirVelXFriction(fp, attributes);
+        ftPhysicsApplyAirVelXFriction(fp, attributes);
     }
 }
 
@@ -167,7 +167,7 @@ void ftPikachuSpecialHiUpdateModelRollScale(GObj *fighter_gobj)
 // 0x80152B24
 void ftPikachuSpecialHiProcPhysics(GObj *fighter_gobj)
 {
-    ftPhysics_ApplyGroundVelTransferAir(fighter_gobj);
+    ftPhysicsApplyGroundVelTransferAir(fighter_gobj);
     ftPikachuSpecialHiUpdateModelRollScale(fighter_gobj);
 }
 
@@ -454,7 +454,7 @@ void ftPikachuSpecialHiEndProcPhysics(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag1 != 0)
     {
-        ftPhysics_ApplyGroundVelFriction(fighter_gobj);
+        ftPhysicsApplyGroundVelFriction(fighter_gobj);
     }
 }
 
@@ -467,19 +467,19 @@ void ftPikachuSpecialAirHiEndProcPhysics(GObj *fighter_gobj)
     {
         ftAttributes *attributes;
 
-        ftPhysics_ApplyGravityDefault(fp, fp->attributes);
+        ftPhysicsApplyGravityDefault(fp, fp->attributes);
 
         attributes = fp->attributes;
 
-        ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTPIKACHU_QUICKATTACK_AIR_ACCEL_MUL, attributes->aerial_speed_max_x * FTPIKACHU_QUICKATTACK_AIR_SPEED_MUL);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTPIKACHU_QUICKATTACK_AIR_ACCEL_MUL, attributes->aerial_speed_max_x * FTPIKACHU_QUICKATTACK_AIR_SPEED_MUL);
        
-        ftPhysics_ApplyAirVelXFriction(fp, fp->attributes);
+        ftPhysicsApplyAirVelXFriction(fp, fp->attributes);
     }
     else
     {
         fp->phys_info.vel_air.y -= (fp->phys_info.vel_air.y / FTPIKACHU_QUICKATTACK_VEL_Y_DIV);
 
-        ftPhysics_ApplyAirVelXFriction(fp, fp->attributes);
+        ftPhysicsApplyAirVelXFriction(fp, fp->attributes);
     }
 }
 

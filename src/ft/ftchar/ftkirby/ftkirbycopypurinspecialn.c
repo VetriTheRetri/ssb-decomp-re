@@ -69,7 +69,7 @@ void ftKirbyCopyPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
     switch (fp->command_vars.flags.flag2)
     {
     case 0:
-        ftPhysics_ApplyAirVelFriction(fighter_gobj);
+        ftPhysicsApplyAirVelFriction(fighter_gobj);
         break;
 
     case 1:
@@ -78,7 +78,7 @@ void ftKirbyCopyPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
         break;
 
     case 2:
-        ftPhysics_ApplyAirVelDriftFastFall(fighter_gobj);
+        ftPhysicsApplyAirVelDriftFastFall(fighter_gobj);
         break;
     }
 }
@@ -109,7 +109,7 @@ void ftKirbyCopyPurinSpecialNSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPurinSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x80151AC4

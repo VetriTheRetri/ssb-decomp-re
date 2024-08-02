@@ -22,7 +22,7 @@ ftStatusDesc dFTLuigiSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -82,7 +82,7 @@ ftStatusDesc dFTLuigiSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftMarioSpecialNProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftMarioSpecialNProcMap				// Proc Map
 	},
 
@@ -102,7 +102,7 @@ ftStatusDesc dFTLuigiSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftMarioSpecialNProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		ftMarioSpecialAirNProcMap				// Proc Map
 	},
 

@@ -125,7 +125,7 @@ void ftCommonCapturePulledProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
     ftParamMakeRumble(this_fp, 9, 0);
-    ftPhysics_StopVelAll(fighter_gobj);
+    ftPhysicsStopVelAll(fighter_gobj);
     ftCommonCapturePulledProcPhysics(fighter_gobj);
     ftCommonCapturePulledProcMap(fighter_gobj);
 }

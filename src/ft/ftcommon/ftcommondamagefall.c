@@ -43,7 +43,7 @@ void ftCommonDamageFallClampRumble(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
     ftParamMakeRumble(fp, 3, 0);
 }
 

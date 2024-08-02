@@ -102,7 +102,7 @@ ftStatusDesc dFTYoshiSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftYoshiSpecialLwStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,			// Proc Physics
 		ftYoshiSpecialLwStartProcMap			// Proc Map
 	},
 
@@ -122,7 +122,7 @@ ftStatusDesc dFTYoshiSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftYoshiSpecialLwLandingProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -142,7 +142,7 @@ ftStatusDesc dFTYoshiSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftYoshiSpecialLwStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,			// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,			// Proc Physics
 		ftYoshiSpecialLwStartProcMap			// Proc Map
 	},
 
@@ -182,7 +182,7 @@ ftStatusDesc dFTYoshiSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftYoshiSpecialNProcMap				// Proc Map
 	},
 
@@ -202,7 +202,7 @@ ftStatusDesc dFTYoshiSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftYoshiSpecialNCatchProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftYoshiSpecialNCatchProcMap			// Proc Map
 	},
 
@@ -222,7 +222,7 @@ ftStatusDesc dFTYoshiSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftYoshiSpecialNReleaseProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftYoshiSpecialNReleaseProcMap			// Proc Map
 	},
 
@@ -242,7 +242,7 @@ ftStatusDesc dFTYoshiSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftYoshiSpecialAirNProcMap				// Proc Map
 	},
 
@@ -262,7 +262,7 @@ ftStatusDesc dFTYoshiSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftYoshiSpecialAirNCatchProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftYoshiSpecialAirNCatchProcMap		// Proc Map
 	},
 
@@ -282,7 +282,7 @@ ftStatusDesc dFTYoshiSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftYoshiSpecialAirNReleaseProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftYoshiSpecialAirNReleaseProcMap		// Proc Map
 	}
 };

@@ -72,7 +72,7 @@ void ftKirbyCopyDonkeySpecialNStartSwitchStatusAir(GObj *fighter_gobj)
 
     fp->proc_damage = ftKirbyCopyDonkeySpecialNProcDamage;
 
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x80157918
@@ -173,7 +173,7 @@ void ftKirbyCopyDonkeySpecialNLoopSwitchStatusAir(GObj *fighter_gobj)
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyDonkeySpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_COLANIM));
     ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x80157BB0

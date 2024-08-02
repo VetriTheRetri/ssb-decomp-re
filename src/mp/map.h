@@ -4,7 +4,7 @@
 #include "mptypes.h"
 #include "mpfunctions.h"
 
-extern f32 dMPCollisionSurfaceFrictions[/* */];
+extern f32 dMPCollisionMaterialFrictions[/* */];
 
 extern mpGroundData* gMPCollisionGroundData; // TO DO: move this to the correct file (is this the correct
 								  // file? NO, this is Patrick!)

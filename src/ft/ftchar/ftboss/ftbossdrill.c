@@ -17,7 +17,7 @@ void ftBossDrillProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp;
 
-    ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
+    ftPhysicsApplyAirVelTransNYZ(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 
@@ -36,7 +36,7 @@ void ftBossDrillProcPhysicsFollow(GObj *fighter_gobj)
     ftStruct *fp;
     f32 dist_x;
 
-    ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
+    ftPhysicsApplyAirVelTransNYZ(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 
@@ -53,7 +53,7 @@ void ftBossDrillProcPhysicsFollow(GObj *fighter_gobj)
     if (fp->status_vars.boss.drill.follow_timer == 0)
     {
         fp->phys_info.vel_air.x = 0.0F;
-        fp->proc_physics = ftPhysics_ApplyAirVelTransNYZ;
+        fp->proc_physics = ftPhysicsApplyAirVelTransNYZ;
     }
 }
 

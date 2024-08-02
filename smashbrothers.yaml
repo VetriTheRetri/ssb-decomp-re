@@ -435,6 +435,8 @@ segments:
     subsegments:
     # ovl2 text
       - [0x051C90, asm, ovl2]
+    # Fighter physics
+      - [0x053FD0, c, ft/ftphysics]
     # Fighter animation end status handler
       - [0x054C80, c, ftanimend]
     # Process map collisions

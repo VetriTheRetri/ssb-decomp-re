@@ -40,7 +40,7 @@ void ftPurinSpecialLwSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALLW_STATUS_FLAGS);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x801517E4

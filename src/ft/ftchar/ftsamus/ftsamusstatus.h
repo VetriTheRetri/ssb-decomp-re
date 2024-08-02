@@ -62,7 +62,7 @@ ftStatusDesc dFTSamusSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftSamusSpecialNStartProcUpdate,		// Proc Update
 		ftSamusSpecialNStartProcInterrupt,	// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftSamusSpecialNStartProcMap			// Proc Map
 	},
 
@@ -82,7 +82,7 @@ ftStatusDesc dFTSamusSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftSamusSpecialNLoopProcUpdate,		// Proc Update
 		ftSamusSpecialNLoopProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftSamusSpecialNLoopProcMap			// Proc Map
 	},
 
@@ -102,7 +102,7 @@ ftStatusDesc dFTSamusSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftSamusSpecialNEndProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftSamusSpecialNEndProcMap				// Proc Map
 	},
 
@@ -122,7 +122,7 @@ ftStatusDesc dFTSamusSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftSamusSpecialNStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		ftSamusSpecialAirNStartProcMap		// Proc Map
 	},
 
@@ -142,7 +142,7 @@ ftStatusDesc dFTSamusSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftSamusSpecialNEndProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftSamusSpecialAirNEndProcMap			// Proc Map
 	},
 

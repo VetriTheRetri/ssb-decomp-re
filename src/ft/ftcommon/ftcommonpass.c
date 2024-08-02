@@ -22,7 +22,7 @@ void ftCommonPassSetStatusParam(GObj *fighter_gobj, s32 status_id, f32 frame_beg
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, status_id, frame_begin, 1.0F, flags);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 
     fp->phys_info.vel_air.y = 0.0F;
 

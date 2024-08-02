@@ -27,10 +27,10 @@ void ftSamusSpecialHiProcPhysics(GObj *fighter_gobj)
     }
     if (fp->ga == nMPKineticsAir)
     {
-        ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
-        ftPhysics_ClampAirVelXStickRange(fp, 0, FTSAMUS_SCREWATTACK_DRIFT_MUL, FTSAMUS_SCREWATTACK_DRIFT_CLAMP);
+        ftPhysicsApplyAirVelTransNYZ(fighter_gobj);
+        ftPhysicsClampAirVelXStickRange(fp, 0, FTSAMUS_SCREWATTACK_DRIFT_MUL, FTSAMUS_SCREWATTACK_DRIFT_CLAMP);
     }
-    else ftPhysics_ApplyGroundVelFriction(fighter_gobj);
+    else ftPhysicsApplyGroundVelFriction(fighter_gobj);
 }
 
 // 0x8015DD20
@@ -84,8 +84,8 @@ void ftSamusSpecialAirHiProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftPhysics_ApplyGravityDefault(fp, fp->attributes);
-    ftPhysics_ClampAirVelXStickRange(fp, 0, FTSAMUS_SCREWATTACK_DRIFT_MUL, FTSAMUS_SCREWATTACK_DRIFT_CLAMP);
+    ftPhysicsApplyGravityDefault(fp, fp->attributes);
+    ftPhysicsClampAirVelXStickRange(fp, 0, FTSAMUS_SCREWATTACK_DRIFT_MUL, FTSAMUS_SCREWATTACK_DRIFT_CLAMP);
 }
 
 // 0x8015DE90
@@ -99,5 +99,5 @@ void ftSamusSpecialAirHiSetStatus(GObj *fighter_gobj)
     fp->jumps_used = fp->attributes->jumps_max;
     fp->phys_info.vel_air.y = FTSAMUS_SCREWATTACK_VEL_Y_BASE;
 
-    ftPhysics_ClampAirVelX(fp, FTSAMUS_SCREWATTACK_DRIFT_CLAMP);
+    ftPhysicsClampAirVelX(fp, FTSAMUS_SCREWATTACK_DRIFT_CLAMP);
 }

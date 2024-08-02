@@ -221,8 +221,8 @@ void ftKirbySpecialLwHoldProcPhysics(GObj *fighter_gobj)
         fp->phys_info.vel_ground.x = -FTKIRBY_STONE_SLIDE_CLAMP_VEL_X;
     }
 
-    ftPhysics_SetGroundVelFriction(fp, (dMPCollisionSurfaceFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * attributes->traction * FTKIRBY_STONE_SLIDE_TRACTION_MUL));
-    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
+    ftPhysicsSetGroundVelFriction(fp, (dMPCollisionMaterialFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * attributes->traction * FTKIRBY_STONE_SLIDE_TRACTION_MUL));
+    ftPhysicsSetGroundVelTransferAir(fighter_gobj);
 }
 
 // 0x801618C4

@@ -226,7 +226,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		ftCommonWaitProcInterrupt,				// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonProcFighterOnCliffEdge		// Proc Map
 	},
 
@@ -346,7 +346,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		ftCommonRunProcInterrupt,				// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransferAir,	// Proc Physics
+		ftPhysicsApplyGroundVelTransferAir,	// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -386,7 +386,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonTurnProcUpdate,					// Proc Update
 		ftCommonTurnProcInterrupt,				// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -406,7 +406,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonTurnRunProcUpdate,				// Proc Update
 		ftCommonTurnRunProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -426,7 +426,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonKneeBendProcUpdate,				// Proc Update
 		ftCommonKneeBendProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -446,7 +446,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonKneeBendProcUpdate,				// Proc Update
 		ftCommonKneeBendProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -466,7 +466,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,		            // Proc Update
 		ftCommonJumpProcInterrupt,				// Proc Interrupt
-		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
+		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
 		mpCommonProcFighterCliffGroundCeil		// Proc Map
 	},
 
@@ -486,7 +486,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,		            // Proc Update
 		ftCommonJumpProcInterrupt,				// Proc Interrupt
-		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
+		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
 		mpCommonProcFighterCliffGroundCeil		// Proc Map
 	},
 
@@ -506,7 +506,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonJumpAerialProcUpdate,			// Proc Update
 		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
+		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
 		mpCommonProcFighterCliffGroundCeil		// Proc Map
 	},
 
@@ -526,7 +526,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonJumpAerialProcUpdate,			// Proc Update
 		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
+		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
 		mpCommonProcFighterCliffGroundCeil		// Proc Map
 	},
 
@@ -546,7 +546,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		ftCommonFallProcInterrupt,				// Proc Interrupt
-		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
+		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
 		mpCommonProcFighterCliffGroundCeil		// Proc Map
 	},
 
@@ -566,7 +566,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		ftCommonFallProcInterrupt,				// Proc Interrupt
-		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
+		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
 		mpCommonProcFighterCliffGroundCeil		// Proc Map
 	},
 
@@ -586,7 +586,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonSquatProcUpdate,				// Proc Update
 		ftCommonSquatProcInterrupt,				// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -606,7 +606,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonSquatWaitProcUpdate,			// Proc Update
 		ftCommonSquatWaitProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -626,7 +626,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		ftCommonSquatRvProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -646,7 +646,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		ftCommonLandingProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonProcFighterOnCliffEdge		// Proc Map
 	},
 
@@ -666,7 +666,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		ftCommonLandingProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonProcFighterOnCliffEdge		// Proc Map
 	},
 
@@ -686,7 +686,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,		            // Proc Update
 		ftCommonPassProcInterrupt,				// Proc Interrupt
-		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
+		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
 		mpCommonProcFighterCliffGroundCeil		// Proc Map
 	},
 
@@ -706,7 +706,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,		            // Proc Update
 		ftCommonPassProcInterrupt,				// Proc Interrupt
-		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
+		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
 		mpCommonProcFighterCliffGroundCeil		// Proc Map
 	},
 
@@ -1166,7 +1166,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		ftCommonDamageFallProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
+		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
 		ftCommonDamageFallProcMap				// Proc Map
 	},
 
@@ -1206,7 +1206,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		ftCommonLandingProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonProcFighterOnCliffEdge		// Proc Map
 	},
 
@@ -1366,7 +1366,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonDownBounceProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -1386,7 +1386,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonDownBounceProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -1406,7 +1406,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonDownWaitProcUpdate,				// Proc Update
 		ftCommonDownWaitProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -1426,7 +1426,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonDownWaitProcUpdate,				// Proc Update
 		ftCommonDownWaitProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -1446,7 +1446,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		ftCommonDownStandProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -1466,7 +1466,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		ftCommonDownStandProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -1486,7 +1486,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -1506,7 +1506,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -1526,7 +1526,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -1546,7 +1546,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -1566,7 +1566,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -1586,7 +1586,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -1606,7 +1606,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -1626,7 +1626,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -1646,7 +1646,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -1666,7 +1666,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonReboundWaitProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -1686,7 +1686,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonReboundProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -2026,7 +2026,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonGetProcUpdate,					// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftCommonLightGetProcMap					// Proc Map
 	},
 
@@ -2046,7 +2046,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonGetProcUpdate,					// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftCommonHeavyGetProcMap					// Proc Map
 	},
 
@@ -2066,7 +2066,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		ftCommonLiftWaitProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftCommonHeavyGetProcMap					// Proc Map
 	},
 
@@ -2086,7 +2086,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonLiftTurnProcUpdate,				// Proc Update
 		ftCommonLiftTurnProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftCommonHeavyGetProcMap					// Proc Map
 	},
 
@@ -2106,7 +2106,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2126,7 +2126,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2146,7 +2146,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2166,7 +2166,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2186,7 +2186,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2206,7 +2206,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2226,7 +2226,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2246,7 +2246,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2266,7 +2266,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2286,7 +2286,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2306,7 +2306,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		mpCommonProcFighterWaitOrLanding		// Proc Map
 	},
 
@@ -2326,7 +2326,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		mpCommonProcFighterWaitOrLanding		// Proc Map
 	},
 
@@ -2346,7 +2346,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		mpCommonProcFighterWaitOrLanding		// Proc Map
 	},
 
@@ -2366,7 +2366,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		mpCommonProcFighterWaitOrLanding		// Proc Map
 	},
 
@@ -2386,7 +2386,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		mpCommonProcFighterWaitOrLanding		// Proc Map
 	},
 
@@ -2406,7 +2406,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		mpCommonProcFighterWaitOrLanding		// Proc Map
 	},
 
@@ -2426,7 +2426,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		mpCommonProcFighterWaitOrLanding		// Proc Map
 	},
 
@@ -2446,7 +2446,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		mpCommonProcFighterWaitOrLanding		// Proc Map
 	},
 
@@ -2466,7 +2466,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftCommonHeavyThrowProcMap				// Proc Map
 	},
 
@@ -2486,7 +2486,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftCommonHeavyThrowProcMap				// Proc Map
 	},
 
@@ -2506,7 +2506,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftCommonHeavyThrowProcMap				// Proc Map
 	},
 
@@ -2526,7 +2526,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonItemThrowProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftCommonHeavyThrowProcMap				// Proc Map
 	},
 
@@ -2546,7 +2546,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2566,7 +2566,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2586,7 +2586,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2606,7 +2606,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2626,7 +2626,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2646,7 +2646,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2666,7 +2666,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2686,7 +2686,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2706,7 +2706,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonHarisenSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2726,7 +2726,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonHarisenSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2746,7 +2746,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonHarisenSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2766,7 +2766,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonHarisenSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2786,7 +2786,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonStarRodSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2806,7 +2806,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonStarRodSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2826,7 +2826,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonStarRodSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2846,7 +2846,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonStarRodSwingProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -2866,7 +2866,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonLGunShootProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftCommonLGunShootProcMap				// Proc Map
 	},
 
@@ -2886,7 +2886,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonLGunShootProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		ftCommonLGunShootAirProcMap				// Proc Map
 	},
 
@@ -2906,7 +2906,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonFireFlowerShootProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftCommonFireFlowerShootProcMap			// Proc Map
 	},
 
@@ -2926,7 +2926,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonFireFlowerShootProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		ftCommonFireFlowerShootAirProcMap		// Proc Map
 	},
 
@@ -2946,7 +2946,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		ftHammerProcInterrupt,					// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftHammerProcMap							// Proc Map
 	},
 
@@ -2986,7 +2986,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonHammerTurnProcUpdate,			// Proc Update
 		ftCommonHammerTurnProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftHammerProcMap							// Proc Map
 	},
 
@@ -3006,7 +3006,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonHammerKneeBendProcUpdate,		// Proc Update
 		ftCommonHammerKneeBendProcInterrupt,	// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftHammerProcMap							// Proc Map
 	},
 
@@ -3026,7 +3026,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		ftCommonHammerFallProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
+		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
 		ftCommonHammerFallProcMap				// Proc Map
 	},
 
@@ -3046,7 +3046,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonHammerLandingProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftHammerProcMap							// Proc Map
 	},
 
@@ -3066,7 +3066,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonGuardOnProcUpdate,				// Proc Update
 		ftCommonGuardCommonProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -3086,7 +3086,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonGuardProcUpdate,				// Proc Update
 		ftCommonGuardCommonProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -3106,7 +3106,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonGuardOffProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -3126,7 +3126,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonGuardSetOffProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -3146,7 +3146,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonEscapeProcUpdate,				// Proc Update
 		ftCommonEscapeProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -3166,7 +3166,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonEscapeProcUpdate,				// Proc Update
 		ftCommonEscapeProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -3186,7 +3186,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonShieldBreakFlyProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftCommonShieldBreakFlyProcMap			// Proc Map
 	},
 
@@ -3206,7 +3206,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftCommonShieldBreakFallProcMap			// Proc Map
 	},
 
@@ -3226,7 +3226,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonShieldBreakDownProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -3246,7 +3246,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonShieldBreakDownProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -3266,7 +3266,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonShieldBreakStandProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -3286,7 +3286,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonShieldBreakStandProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -3306,7 +3306,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonFuraFuraProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -3326,7 +3326,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonFuraSleepProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak			// Proc Map
 	},
 
@@ -3346,7 +3346,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonCatchProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftCommonCatchProcMap					// Proc Map
 	},
 
@@ -3366,7 +3366,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonCatchPullProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftCommonCatchProcMap					// Proc Map
 	},
 
@@ -3386,7 +3386,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		ftCommonCatchWaitProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftCommonCatchProcMap					// Proc Map
 	},
 
@@ -3406,7 +3406,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonThrowProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		ftCommonCatchProcMap					// Proc Map
 	},
 
@@ -3426,7 +3426,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonThrowProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		ftCommonCatchProcMap					// Proc Map
 	},
 
@@ -3806,7 +3806,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		ftCommonAppealProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonProcFighterOnCliffEdge		// Proc Map
 	},
 
@@ -3826,7 +3826,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonAttack11ProcUpdate,				// Proc Update
 		ftCommonAttack11ProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -3846,7 +3846,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonAttack12ProcUpdate,				// Proc Update
 		ftCommonAttack12ProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -3866,7 +3866,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,			// Proc Physics
+		ftPhysicsApplyGroundVelTransN,			// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -3886,7 +3886,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -3906,7 +3906,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -3926,7 +3926,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -3946,7 +3946,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -3966,7 +3966,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -3986,7 +3986,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -4006,7 +4006,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -4026,7 +4026,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -4046,7 +4046,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonAttackLw3ProcUpdate,			// Proc Update
 		ftCommonAttackLw3ProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -4066,7 +4066,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonAttackS4ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -4086,7 +4086,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonAttackS4ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -4106,7 +4106,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonAttackS4ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -4126,7 +4126,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonAttackS4ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -4146,7 +4146,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonAttackS4ProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -4166,7 +4166,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundFrictionOrTransN,	// Proc Physics
+		ftPhysicsApplyGroundFrictionOrTransN,	// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -4186,7 +4186,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -4206,7 +4206,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		ftCommonAttackAirProcMap				// Proc Map
 	},
 
@@ -4226,7 +4226,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		ftCommonAttackAirProcMap				// Proc Map
 	},
 
@@ -4246,7 +4246,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		ftCommonAttackAirProcMap				// Proc Map
 	},
 
@@ -4266,7 +4266,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		ftCommonAttackAirProcMap				// Proc Map
 	},
 
@@ -4286,7 +4286,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonAttackAirLwProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		ftCommonAttackAirProcMap				// Proc Map
 	},
 
@@ -4306,7 +4306,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonProcFighterOnCliffEdge		// Proc Map
 	},
 
@@ -4326,7 +4326,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonProcFighterOnCliffEdge		// Proc Map
 	},
 
@@ -4346,7 +4346,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonProcFighterOnCliffEdge		// Proc Map
 	},
 
@@ -4366,7 +4366,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonProcFighterOnCliffEdge		// Proc Map
 	},
 
@@ -4386,7 +4386,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonProcFighterOnCliffEdge		// Proc Map
 	},
 
@@ -4406,7 +4406,7 @@ ftStatusDesc dFTCommonActionStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		            // Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonProcFighterOnCliffEdge		// Proc Map
 	}
 };

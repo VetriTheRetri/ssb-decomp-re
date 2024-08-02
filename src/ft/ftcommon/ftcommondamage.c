@@ -219,11 +219,11 @@ void ftCommonDamageCommonProcPhysics(GObj *fighter_gobj)
     {
         if (fp->status_vars.common.damage.hitstun_timer == 0)
         {
-            ftPhysics_ApplyAirVelDriftFastFall(fighter_gobj);
+            ftPhysicsApplyAirVelDriftFastFall(fighter_gobj);
         }
-        else ftPhysics_ApplyAirVelFriction(fighter_gobj);
+        else ftPhysicsApplyAirVelFriction(fighter_gobj);
     }
-    else ftPhysics_ApplyGroundVelFriction(fighter_gobj);
+    else ftPhysicsApplyGroundVelFriction(fighter_gobj);
     
     if (fp->status_info.status_id == nFTCommonStatusDamageFlyRoll)
     {

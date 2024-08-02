@@ -79,7 +79,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
 
     fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
-    ftPhysics_StopVelAll(fighter_gobj);
+    ftPhysicsStopVelAll(fighter_gobj);
 
     fp->is_ignore_jostle = TRUE;
 

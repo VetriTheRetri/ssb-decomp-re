@@ -38,7 +38,7 @@ void ftCommonHammerFallSetStatus(GObj *fighter_gobj)
     }
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusHammerFall, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
     ftHammerSetColAnim(fighter_gobj);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x80147CCC

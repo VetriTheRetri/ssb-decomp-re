@@ -119,9 +119,9 @@ void ftCommonItemThrowProcPhysics(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsAir)
     {
-        ftPhysics_ApplyAirVelDrift(fighter_gobj);
+        ftPhysicsApplyAirVelDrift(fighter_gobj);
     }
-    else ftPhysics_ApplyGroundVelFriction(fighter_gobj);
+    else ftPhysicsApplyGroundVelFriction(fighter_gobj);
 }
 
 // 0x8014665C

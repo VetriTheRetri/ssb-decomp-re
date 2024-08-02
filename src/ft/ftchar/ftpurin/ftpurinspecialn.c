@@ -71,7 +71,7 @@ void ftPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
     switch (fp->command_vars.flags.flag2)
     {
     case 0:
-        ftPhysics_ApplyAirVelFriction(fighter_gobj);
+        ftPhysicsApplyAirVelFriction(fighter_gobj);
         break;
 
     case 1:
@@ -80,7 +80,7 @@ void ftPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
         break;
 
     case 2:
-        ftPhysics_ApplyAirVelDriftFastFall(fighter_gobj);
+        ftPhysicsApplyAirVelDriftFastFall(fighter_gobj);
         break;
     }
 }
@@ -111,7 +111,7 @@ void ftPurinSpecialNSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALN_STATUS_FLAGS);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x801514C4

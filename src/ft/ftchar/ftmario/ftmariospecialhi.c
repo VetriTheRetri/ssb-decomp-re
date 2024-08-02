@@ -72,13 +72,13 @@ void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj)
     {
         if (fp->ga == nMPKineticsAir)
         {
-            ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
+            ftPhysicsApplyAirVelTransNAll(fighter_gobj);
         }
-        else ftPhysics_ApplyGroundVelTransN(fighter_gobj);
+        else ftPhysicsApplyGroundVelTransN(fighter_gobj);
     }
     else if (fp->command_vars.flags.flag1 != 0)
     {
-        ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
+        ftPhysicsApplyAirVelTransNAll(fighter_gobj);
 
         fp->phys_info.vel_air.x *= 0.95F;
         fp->phys_info.vel_air.y *= 0.95F;
@@ -86,11 +86,11 @@ void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj)
     }
     else
     {
-        ftPhysics_ApplyGClampTVel(fp, 0.5F, attributes->fall_speed_max);
+        ftPhysicsApplyGClampTVel(fp, 0.5F, attributes->fall_speed_max);
 
-        if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
+        if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {
-            ftPhysics_ApplyAirVelXFriction(fp, attributes);
+            ftPhysicsApplyAirVelXFriction(fp, attributes);
         }
     }
 }

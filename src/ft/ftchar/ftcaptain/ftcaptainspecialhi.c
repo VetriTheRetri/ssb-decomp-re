@@ -65,15 +65,15 @@ void ftCaptainSpecialHiProcPhysics(GObj *fighter_gobj)
     fp->phys_info.vel_air.y = fp->status_vars.captain.specialhi.vel.y;
     fp->phys_info.vel_air.z = 0.0F;
 
-    if (ftPhysics_CheckClampAirVelXDec(fp, attributes->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDec(fp, attributes->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL) == FALSE)
     {
-        ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTCAPTAIN_FALCONDIVE_AIR_ACCEL_MUL, attributes->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL);
-        ftPhysics_ApplyAirVelXFriction(fp, attributes);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTCAPTAIN_FALCONDIVE_AIR_ACCEL_MUL, attributes->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL);
+        ftPhysicsApplyAirVelXFriction(fp, attributes);
     }
     fp->status_vars.captain.specialhi.vel.x = fp->phys_info.vel_air.x;
     fp->status_vars.captain.specialhi.vel.y = fp->phys_info.vel_air.y;
 
-    ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
+    ftPhysicsApplyAirVelTransNAll(fighter_gobj);
 
     fp->phys_info.vel_air.x += fp->status_vars.captain.specialhi.vel.x;
     fp->phys_info.vel_air.y += fp->status_vars.captain.specialhi.vel.y;
@@ -161,7 +161,7 @@ void ftCaptainSpecialHiProcCatch(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialHiCatch, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
-    ftPhysics_StopVelAll(fighter_gobj);
+    ftPhysicsStopVelAll(fighter_gobj);
 
     search_gobj = fp->search_gobj;
     fp->catch_gobj = search_gobj;

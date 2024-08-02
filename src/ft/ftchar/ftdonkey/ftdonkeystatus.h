@@ -62,7 +62,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeySpecialNStartProcUpdate,		// Proc Update
 		ftDonkeySpecialNStartProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftDonkeySpecialNStartProcMap			// Proc Map
 	},
 
@@ -82,7 +82,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeySpecialAirNStartProcUpdate,		// Proc Update
 		ftDonkeySpecialNStartProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftDonkeySpecialAirNStartProcMap			// Proc Map
 	},
 
@@ -102,7 +102,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeySpecialNLoopProcUpdate,			// Proc Update
 		ftDonkeySpecialNLoopProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftDonkeySpecialNLoopProcMap				// Proc Map
 	},
 
@@ -122,7 +122,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeySpecialNLoopProcUpdate,			// Proc Update
 		ftDonkeySpecialNLoopProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftDonkeySpecialAirNLoopProcMap			// Proc Map
 	},
 
@@ -142,7 +142,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeySpecialNEndProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -162,7 +162,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftDonkeySpecialAirNEndProcMap			// Proc Map
 	},
 
@@ -182,7 +182,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -202,7 +202,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftDonkeySpecialAirNEndProcMap			// Proc Map
 	},
 
@@ -262,7 +262,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeySpecialLwStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -282,7 +282,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeySpecialLwLoopProcUpdate,		// Proc Update
 		ftDonkeySpecialLwLoopProcInterrupt,	// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -302,7 +302,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak			// Proc Map
 	},
 
@@ -322,7 +322,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		ftDonkeyThrowFWaitProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftDonkeyThrowFCommonProcMap			// Proc Map
 	},
 
@@ -402,7 +402,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeyThrowFTurnProcUpdate,			// Proc Update
 		ftDonkeyThrowFTurnProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftDonkeyThrowFCommonProcMap			// Proc Map
 	},
 
@@ -422,7 +422,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeyThrowFKneeBendProcUpdate,		// Proc Update
 		ftDonkeyThrowFKneeBendProcInterrupt,	// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftDonkeyThrowFCommonProcMap			// Proc Map
 	},
 
@@ -442,7 +442,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,									// Proc Update
 		ftDonkeyThrowFFallProcInterrupt,		// Proc Interrupt
-		ftPhysics_ApplyAirVelDriftFastFall,		// Proc Physics
+		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
 		ftDonkeyThrowFFallProcMap				// Proc Map
 	},
 
@@ -462,7 +462,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeyThrowFLandingProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftDonkeyThrowFCommonProcMap			// Proc Map
 	},
 
@@ -502,7 +502,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeyThrowFFProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,		// Proc Physics
+		ftPhysicsApplyGroundVelFriction,		// Proc Physics
 		ftDonkeyThrowFFProcMap				// Proc Map
 	},
 
@@ -522,7 +522,7 @@ ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftDonkeyThrowFFProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,				// Proc Physics
+		ftPhysicsApplyAirVelDrift,				// Proc Physics
 		ftDonkeyThrowAirFFProcMap				// Proc Map
 	},
 

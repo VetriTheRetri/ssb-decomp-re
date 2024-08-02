@@ -59,7 +59,7 @@ f32 ftKirbyCopyCaptainSpecialNGetAngle(s32 stick_y)
 void ftKirbyCopyCaptainSpecialNProcPhysics(GObj *fighter_gobj)
 {
     ftKirbyCopyCaptainSpecialNUpdateEffect(fighter_gobj);
-    ftPhysics_ApplyGroundVelTransN(fighter_gobj);
+    ftPhysicsApplyGroundVelTransN(fighter_gobj);
 }
 
 // 0x80160934
@@ -84,7 +84,7 @@ void ftKirbyCopyCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
     switch (fp->command_vars.flags.flag2)
     {
     case 0:
-        ftPhysics_ApplyAirVelFriction(fighter_gobj);
+        ftPhysicsApplyAirVelFriction(fighter_gobj);
         break;
 
     case 1:
@@ -93,7 +93,7 @@ void ftKirbyCopyCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
         break;
 
     case 2:
-        ftPhysics_ApplyAirVelDriftFastFall(fighter_gobj);
+        ftPhysicsApplyAirVelDriftFastFall(fighter_gobj);
         break;
     }
 }
@@ -112,7 +112,7 @@ void ftKirbyCopyCaptainSpecialNSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x80160ACC

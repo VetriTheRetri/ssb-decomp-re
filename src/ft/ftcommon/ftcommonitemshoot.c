@@ -98,7 +98,7 @@ void ftCommonLGunShootSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusLGunShootAir, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 
     fp->proc_accessory = ftCommonLGunShootProcAccessory;
 }
@@ -275,7 +275,7 @@ void ftCommonFireFlowerShootSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFireFlowerShootAir, fighter_gobj->anim_frame, DObjGetStruct(fighter_gobj)->anim_rate, FTSTATUS_PRESERVE_NONE);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 
     fp->proc_accessory = ftCommonFireFlowerShootProcAccessory;
 }
@@ -348,6 +348,6 @@ void ftCommonItemShootAirSetStatus(GObj *fighter_gobj)
 
     fp->proc_accessory = proc_accessory;
 
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
     ftCommonFireFlowerShootInitStatusVars(fp);
 }

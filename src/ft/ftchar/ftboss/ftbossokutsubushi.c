@@ -27,7 +27,7 @@ void ftBossOkutsubushiProcPhysics(GObj *fighter_gobj)
     ftStruct *fp;
     f32 dist_x;
 
-    ftPhysics_SetAirVelTransN(fighter_gobj);
+    ftPhysicsSetAirVelTransN(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 
@@ -46,7 +46,7 @@ void ftBossOkutsubushiProcPhysics(GObj *fighter_gobj)
     if (fp->status_vars.boss.okutsubushi.follow_timer == 0)
     {
         fp->phys_info.vel_air.x = 0.0F;
-        fp->proc_physics = ftPhysics_SetAirVelTransN;
+        fp->proc_physics = ftPhysicsSetAirVelTransN;
     }
     ftBossCommonUpdateFogColor(fighter_gobj);
 }

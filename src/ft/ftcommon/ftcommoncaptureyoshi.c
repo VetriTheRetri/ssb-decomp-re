@@ -119,7 +119,7 @@ void ftCommonCaptureYoshiProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     this_fp->status_vars.common.captureyoshi.breakout_wait = 0;
 
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
-    ftPhysics_StopVelAll(fighter_gobj);
+    ftPhysicsStopVelAll(fighter_gobj);
     ftCommonCaptureYoshiProcPhysics(fighter_gobj);
     mpCommonUpdateFighterProjectGround(fighter_gobj);
 }
@@ -270,9 +270,9 @@ void ftCommonYoshiEggProcPhysics(GObj *fighter_gobj)
     }
     if (fp->ga == nMPKineticsGround)
     {
-        ftPhysics_ApplyGroundVelFriction(fighter_gobj);
+        ftPhysicsApplyGroundVelFriction(fighter_gobj);
     }
-    else ftPhysics_ApplyAirVelDriftFastFall(fighter_gobj);
+    else ftPhysicsApplyAirVelDriftFastFall(fighter_gobj);
 }
 
 // 0x8014CD24

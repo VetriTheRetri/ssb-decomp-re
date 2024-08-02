@@ -111,7 +111,7 @@ void ftSamusSpecialNStartSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirNStart, fighter_gobj->anim_frame, fp->joint[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 
     fp->proc_damage = ftSamusSpecialNProcDamage;
 
@@ -287,7 +287,7 @@ void ftSamusSpecialNEndSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirNEnd, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 
     fp->proc_damage = ftSamusSpecialNProcDamage;
 }
@@ -310,7 +310,7 @@ void ftSamusSpecialAirNEndSetStatus(GObj *fighter_gobj)
     if (fp->ga == nMPKineticsGround)
     {
         mpCommonSetFighterAir(fp);
-        ftPhysics_ClampAirVelXMax(fp);
+        ftPhysicsClampAirVelXMax(fp);
     }
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirNEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
 

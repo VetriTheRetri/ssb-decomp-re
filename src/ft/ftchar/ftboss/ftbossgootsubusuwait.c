@@ -11,7 +11,7 @@ void ftBossGootsubusuWaitProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
+    ftPhysicsApplyAirVelTransNYZ(fighter_gobj);
 
     fp->status_vars.boss.gootsubu.wait_timer--;
 

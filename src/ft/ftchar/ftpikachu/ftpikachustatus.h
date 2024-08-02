@@ -64,7 +64,7 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftPikachuSpecialNProcMap				// Proc Map
 	},
 
@@ -84,7 +84,7 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftPikachuSpecialAirNProcMap			// Proc Map
 	},
 
@@ -104,7 +104,7 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialLwStartProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftPikachuSpecialLwStartProcMap		// Proc Map
 	},
 
@@ -124,7 +124,7 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialLwLoopProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftPikachuSpecialLwLoopProcMap			// Proc Map
 	},
 
@@ -144,7 +144,7 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialLwHitProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftPikachuSpecialLwHitProcMap			// Proc Map
 	},
 
@@ -164,7 +164,7 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftPikachuSpecialLwEndProcMap			// Proc Map
 	},
 
@@ -184,7 +184,7 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialAirLwStartProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftPikachuSpecialAirLwStartProcMap		// Proc Map
 	},
 
@@ -204,7 +204,7 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialAirLwLoopProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftPikachuSpecialAirLwLoopProcMap		// Proc Map
 	},
 
@@ -244,7 +244,7 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialAirLwEndProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,			// Proc Physics
+		ftPhysicsApplyAirVelFriction,			// Proc Physics
 		ftPikachuSpecialAirLwEndProcMap		// Proc Map
 	},
 
@@ -264,7 +264,7 @@ ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialHiStartProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,	    // Proc Physics
+		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftPikachuSpecialHiStartProcMap		// Proc Map
 	},
 

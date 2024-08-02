@@ -72,7 +72,7 @@ void ftDonkeySpecialNStartSwitchStatusAir(GObj *fighter_gobj)
 
     fp->proc_damage = ftDonkeySpecialNProcDamage;
 
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x8015B088
@@ -173,7 +173,7 @@ void ftDonkeySpecialNLoopSwitchStatusAir(GObj *fighter_gobj)
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_COLANIM));
     ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x8015B320

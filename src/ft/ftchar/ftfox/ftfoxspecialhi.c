@@ -30,11 +30,11 @@ void ftFoxSpecialAirHiStartProcPhysics(GObj *fighter_gobj)
     {
         fp->status_vars.fox.specialhi.gravity_delay--;
     }
-    else ftPhysics_ApplyGClampTVel(fp, 0.5F, attributes->fall_speed_max);
+    else ftPhysicsApplyGClampTVel(fp, 0.5F, attributes->fall_speed_max);
     
-    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ApplyAirVelXFriction(fp, attributes);
+        ftPhysicsApplyAirVelXFriction(fp, attributes);
     }
 }
 
@@ -64,7 +64,7 @@ void ftFoxSpecialHiStartSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirHiStart, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x8015BE94
@@ -110,7 +110,7 @@ void ftFoxSpecialHiHoldSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirHiHold, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_COLANIM));
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x8015BFBC
@@ -171,9 +171,9 @@ void ftFoxSpecialHiProcPhysics(GObj *fighter_gobj)
 
     if (fp->status_vars.fox.specialhi.decelerate_wait >= FTFOX_FIREFOX_DECELERATE_DELAY)
     {
-        ftPhysics_SetGroundVelFriction(fp, FTFOX_FIREFOX_DECELERATE_VEL);
+        ftPhysicsSetGroundVelFriction(fp, FTFOX_FIREFOX_DECELERATE_VEL);
     }
-    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
+    ftPhysicsSetGroundVelTransferAir(fighter_gobj);
 }
 
 // 0x8015C15C
@@ -391,8 +391,8 @@ void ftFoxSpecialAirHiEndProcUpdate(GObj *fighter_gobj)
 // 0x8015C7A4
 void ftFoxSpecialHiEndProcPhysics(GObj *fighter_gobj)
 {
-    ftPhysics_SetGroundVelFriction(ftGetStruct(fighter_gobj), FTFOX_FIREFOX_DECELERATE_END);
-    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
+    ftPhysicsSetGroundVelFriction(ftGetStruct(fighter_gobj), FTFOX_FIREFOX_DECELERATE_END);
+    ftPhysicsSetGroundVelTransferAir(fighter_gobj);
 }
 
 // 0x8015C7D4
@@ -454,14 +454,14 @@ void ftFoxSpecialAirHiBoundProcPhysics(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsAir)
     {
-        ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
+        ftPhysicsApplyAirVelTransNYZ(fighter_gobj);
 
-        if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
+        if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {
-            ftPhysics_ApplyAirVelXFriction(fp, attributes);
+            ftPhysicsApplyAirVelXFriction(fp, attributes);
         }
     }
-    else ftPhysics_ApplyGroundVelFriction(fighter_gobj);
+    else ftPhysicsApplyGroundVelFriction(fighter_gobj);
 }
 
 // 0x8015C9E8

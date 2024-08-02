@@ -22,7 +22,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonAttack100StartProcUpdate,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak					// Proc Map
 	},
 
@@ -42,7 +42,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonAttack100LoopProcUpdate,				// Proc Update
 		ftCommonAttack100LoopProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak					// Proc Map
 	},
 
@@ -62,7 +62,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak					// Proc Map
 	},
 
@@ -182,7 +182,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyThrowFProcUpdate,					// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,					// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,					// Proc Physics
 		ftKirbyThrowFProcMap							// Proc Map
 	},
 
@@ -242,7 +242,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyMarioSpecialNProcUpdate,			// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyMarioSpecialNProcMap				// Proc Map
 	},
 
@@ -262,7 +262,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyMarioSpecialNProcUpdate,			// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,						// Proc Physics
+		ftPhysicsApplyAirVelDrift,						// Proc Physics
 		ftKirbyCopyMarioSpecialAirNProcMap			// Proc Map
 	},
 
@@ -282,7 +282,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyMarioSpecialNProcUpdate,			// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyMarioSpecialNProcMap				// Proc Map
 	},
 
@@ -302,7 +302,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyMarioSpecialNProcUpdate,			// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,						// Proc Physics
+		ftPhysicsApplyAirVelDrift,						// Proc Physics
 		ftKirbyCopyMarioSpecialAirNProcMap			// Proc Map
 	},
 
@@ -322,7 +322,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyFoxSpecialNProcUpdate,			// Proc Update
 		ftKirbyCopyFoxSpecialNProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak					// Proc Map
 	},
 
@@ -342,7 +342,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyFoxSpecialNProcUpdate,			// Proc Update
 		ftKirbyCopyFoxSpecialNProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,						// Proc Physics
+		ftPhysicsApplyAirVelDrift,						// Proc Physics
 		mpCommonProcFighterWaitOrLanding								// Proc Map
 	},
 
@@ -362,7 +362,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopySamusSpecialNStartProcUpdate,		// Proc Update
 		ftKirbyCopySamusSpecialNStartProcInterrupt,	// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopySamusSpecialNStartProcMap			// Proc Map
 	},
 
@@ -382,7 +382,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopySamusSpecialNLoopProcUpdate,		// Proc Update
 		ftKirbyCopySamusSpecialNLoopProcInterrupt,	// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopySamusSpecialNLoopProcMap			// Proc Map
 	},
 
@@ -402,7 +402,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopySamusSpecialNEndProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopySamusSpecialNEndProcMap			// Proc Map
 	},
 
@@ -422,7 +422,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopySamusSpecialNStartProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelDrift,						// Proc Physics
+		ftPhysicsApplyAirVelDrift,						// Proc Physics
 		ftKirbyCopySamusSpecialAirNStartProcMap		// Proc Map
 	},
 
@@ -442,7 +442,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopySamusSpecialNEndProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopySamusSpecialAirNEndProcMap		// Proc Map
 	},
 
@@ -462,7 +462,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyDonkeySpecialNStartProcUpdate,	// Proc Update
 		ftKirbyCopyDonkeySpecialNStartProcInterrupt,	// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyDonkeySpecialNStartProcMap		// Proc Map
 	},
 
@@ -482,7 +482,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyDonkeySpecialAirNStartProcUpdate,	// Proc Update
 		ftKirbyCopyDonkeySpecialNStartProcInterrupt,	// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyDonkeySpecialAirNStartProcMap		// Proc Map
 	},
 
@@ -502,7 +502,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyDonkeySpecialNLoopProcUpdate,		// Proc Update
 		ftKirbyCopyDonkeySpecialNLoopProcInterrupt,	// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyDonkeySpecialNLoopProcMap			// Proc Map
 	},
 
@@ -522,7 +522,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyDonkeySpecialNLoopProcUpdate,		// Proc Update
 		ftKirbyCopyDonkeySpecialNLoopProcInterrupt,	// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyDonkeySpecialAirNLoopProcMap		// Proc Map
 	},
 
@@ -542,7 +542,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak					// Proc Map
 	},
 
@@ -562,7 +562,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyDonkeySpecialAirNEndProcMap		// Proc Map
 	},
 
@@ -582,7 +582,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		mpCommonSetFighterFallOnEdgeBreak					// Proc Map
 	},
 
@@ -602,7 +602,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyDonkeySpecialNEndProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyDonkeySpecialAirNEndProcMap		// Proc Map
 	},
 
@@ -662,7 +662,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyPikachuSpecialNProcMap			// Proc Map
 	},
 
@@ -682,7 +682,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyPikachuSpecialAirNProcMap			// Proc Map
 	},
 
@@ -702,7 +702,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyNessSpecialNProcMap				// Proc Map
 	},
 
@@ -722,7 +722,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyNessSpecialAirNProcMap			// Proc Map
 	},
 
@@ -842,7 +842,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialLwUnkProcUpdate,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbySpecialLwUnkProcMap					// Proc Map
 	},
 
@@ -882,7 +882,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,					// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,					// Proc Physics
 		mpCommonProcFighterWaitOrLanding								// Proc Map
 	},
 
@@ -982,7 +982,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,					// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,					// Proc Physics
 		mpCommonProcFighterWaitOrLanding								// Proc Map
 	},
 
@@ -1002,7 +1002,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialNStartProcUpdate,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbySpecialNStartProcMap					// Proc Map
 	},
 
@@ -1022,7 +1022,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialNLoopProcUpdate,				// Proc Update
 		ftKirbySpecialNLoopProcInterrupt,				// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbySpecialNLoopProcMap					// Proc Map
 	},
 
@@ -1042,7 +1042,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbySpecialNEndProcMap						// Proc Map
 	},
 
@@ -1062,7 +1062,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialNCatchProcUpdate,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbySpecialNCatchProcMap					// Proc Map
 	},
 
@@ -1082,7 +1082,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialNEatProcUpdate,					// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbySpecialNEatProcMap						// Proc Map
 	},
 
@@ -1102,7 +1102,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialNThrowProcUpdate,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,					// Proc Physics
+		ftPhysicsApplyGroundVelTransN,					// Proc Physics
 		ftKirbySpecialNThrowProcMap					// Proc Map
 	},
 
@@ -1122,7 +1122,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		NULL,											// Proc Update
 		ftKirbySpecialNWaitProcInterrupt,				// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbySpecialNWaitProcMap					// Proc Map
 	},
 
@@ -1142,7 +1142,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialNTurnProcUpdate,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbySpecialNTurnProcMap					// Proc Map
 	},
 
@@ -1162,7 +1162,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialNCopyProcUpdate,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbySpecialNCopyProcMap					// Proc Map
 	},
 
@@ -1182,7 +1182,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialAirNStartProcUpdate,			// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbySpecialAirNStartProcMap				// Proc Map
 	},
 
@@ -1202,7 +1202,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialNLoopProcUpdate,				// Proc Update
 		ftKirbySpecialAirNLoopProcInterrupt,			// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbySpecialAirNLoopProcMap					// Proc Map
 	},
 
@@ -1222,7 +1222,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbySpecialAirNEndProcMap					// Proc Map
 	},
 
@@ -1242,7 +1242,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialNCatchProcUpdate,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbySpecialAirNCatchProcMap				// Proc Map
 	},
 
@@ -1262,7 +1262,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialNEatProcUpdate,					// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbySpecialAirNEatProcMap					// Proc Map
 	},
 
@@ -1282,7 +1282,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialAirNThrowProcUpdate,			// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelTransNAll,					// Proc Physics
+		ftPhysicsApplyAirVelTransNAll,					// Proc Physics
 		ftKirbySpecialAirNThrowProcMap				// Proc Map
 	},
 
@@ -1342,7 +1342,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbySpecialAirNCopyProcUpdate,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbySpecialAirNCopyProcMap					// Proc Map
 	},
 
@@ -1362,7 +1362,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyLinkSpecialNProcUpdate,			// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyLinkSpecialNProcMap				// Proc Map
 	},
 
@@ -1382,7 +1382,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		mpCommonSetFighterFallOnGroundBreak					// Proc Map
 	},
 
@@ -1402,7 +1402,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyLinkSpecialNEmptyProcMap			// Proc Map
 	},
 
@@ -1422,7 +1422,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyLinkSpecialAirNProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyLinkSpecialAirNProcMap			// Proc Map
 	},
 
@@ -1442,7 +1442,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		mpCommonProcFighterWaitOrLanding								// Proc Map
 	},
 
@@ -1462,7 +1462,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyLinkSpecialAirNEmptyProcMap		// Proc Map
 	},
 
@@ -1482,7 +1482,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelTransN,					// Proc Physics
+		ftPhysicsApplyGroundVelTransN,					// Proc Physics
 		ftKirbyCopyPurinSpecialNProcMap				// Proc Map
 	},
 
@@ -1562,7 +1562,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyYoshiSpecialNProcMap				// Proc Map
 	},
 
@@ -1582,7 +1582,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyYoshiSpecialNCatchProcUpdate,		// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyYoshiSpecialNCatchProcMap			// Proc Map
 	},
 
@@ -1602,7 +1602,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyYoshiSpecialNReleaseProcUpdate,	// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyGroundVelFriction,				// Proc Physics
+		ftPhysicsApplyGroundVelFriction,				// Proc Physics
 		ftKirbyCopyYoshiSpecialNReleaseProcMap		// Proc Map
 	},
 
@@ -1622,7 +1622,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetFall,				// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyYoshiSpecialAirNProcMap			// Proc Map
 	},
 
@@ -1642,7 +1642,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyYoshiSpecialAirNCatchProcUpdate,	// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyYoshiSpecialAirNCatchProcMap		// Proc Map
 	},
 
@@ -1662,7 +1662,7 @@ ftStatusDesc dFTKirbySpecialStatusDesc[/* */] =
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftKirbyCopyYoshiSpecialAirNReleaseProcUpdate,// Proc Update
 		NULL,											// Proc Interrupt
-		ftPhysics_ApplyAirVelFriction,					// Proc Physics
+		ftPhysicsApplyAirVelFriction,					// Proc Physics
 		ftKirbyCopyYoshiSpecialAirNReleaseProcMap	// Proc Map
 	}
 };

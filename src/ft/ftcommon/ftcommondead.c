@@ -173,7 +173,7 @@ void ftCommonDeadInitStatusVars(GObj *fighter_gobj)
 
     fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEAD_REBIRTH_WAIT;
 
-    ftPhysics_StopVelAll(fighter_gobj);
+    ftPhysicsStopVelAll(fighter_gobj);
 
     fp->is_invisible = TRUE;
     fp->is_ignore_training_menu = TRUE;
@@ -357,7 +357,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
             break;
 
         case 1:
-            ftPhysics_StopVelAll(fighter_gobj);
+            ftPhysicsStopVelAll(fighter_gobj);
             efManagerSparkleWhiteDeadMakeEffect(&fp->joint[nFTPartsJointTopN]->translate.vec.f, 5.0F);
 
             fp->is_invisible = TRUE;
@@ -391,7 +391,7 @@ void ftCommonDeadUpStarSetStatus(GObj *fighter_gobj)
 
     ftCommonDeadResetCommonVars(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadUpStar, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftPhysics_StopVelAll(fighter_gobj);
+    ftPhysicsStopVelAll(fighter_gobj);
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
@@ -460,7 +460,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
             break;
 
         case 1:
-            ftPhysics_StopVelAll(fighter_gobj);
+            ftPhysicsStopVelAll(fighter_gobj);
             ifScreenFlashSetColAnimID(0x51, 0);
             efManagerQuakeMakeEffect(2);
             ftCommonDeadUpdateRumble(fp);
@@ -512,7 +512,7 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
 
     ftCommonDeadResetCommonVars(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadUpFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftPhysics_StopVelAll(fighter_gobj);
+    ftPhysicsStopVelAll(fighter_gobj);
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 

@@ -123,7 +123,7 @@ void ftNessSpecialHiProcPhysics(GObj *fighter_gobj)
     {
         fp->status_vars.ness.specialhi.pkthunder_gravity_delay--;
     }
-    ftPhysics_ApplyGroundVelFriction(fighter_gobj);
+    ftPhysicsApplyGroundVelFriction(fighter_gobj);
 }
 
 // 0x80153E80
@@ -136,11 +136,11 @@ void ftNessSpecialAirHiProcPhysics(GObj *fighter_gobj)
     {
         fp->status_vars.ness.specialhi.pkthunder_gravity_delay--;
     }
-    else ftPhysics_ApplyGClampTVel(fp, 0.5F, attributes->fall_speed_max);
+    else ftPhysicsApplyGClampTVel(fp, 0.5F, attributes->fall_speed_max);
 
-    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ApplyAirVelXFriction(fp, attributes);
+        ftPhysicsApplyAirVelXFriction(fp, attributes);
     }
 }
 
@@ -170,7 +170,7 @@ void ftNessSpecialHiStartSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirHiStart, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALHISTART_STATUS_FLAGS);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x80153FCC
@@ -302,7 +302,7 @@ void ftNessSpecialHiHoldSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirHiHold, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALHIHOLD_STATUS_FLAGS);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x801542F4
@@ -370,7 +370,7 @@ void ftNessSpecialHiEndSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirHiEnd, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALHIEND_STATUS_FLAGS);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x8015450C
@@ -500,7 +500,7 @@ void ftNessJibakuProcPhysics(GObj *fighter_gobj)
         fp->phys_info.vel_ground.x -= FTNESS_PKJIBAKU_DECELERATE;
     }
 
-    ftPhysics_ApplyGroundVelTransferAir(fighter_gobj);
+    ftPhysicsApplyGroundVelTransferAir(fighter_gobj);
     ftNessSpecialHiUpdateModelRoll(fighter_gobj);
 }
 
@@ -773,7 +773,7 @@ void ftNessJibakuAirBoundSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
     func_ovl0_800C7B08(vel, angle);
     func_ovl0_800C7AE0(vel, FTNESS_PKJIBAKU_REBOUND_VEL_MAG);
     func_ovl0_800C7A84(vel);
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 
     fp->lr = (fp->phys_info.vel_air.x < 0.0F) ? nGMDirectionR : nGMDirectionL;
 

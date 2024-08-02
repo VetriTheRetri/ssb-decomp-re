@@ -24,7 +24,7 @@ void ftBossOkuhikouki2ProcPhysics(GObj *fighter_gobj)
     f32 dist_x;
     f32 vel_x;
 
-    ftPhysics_SetAirVelTransN(fighter_gobj);
+    ftPhysicsSetAirVelTransN(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 

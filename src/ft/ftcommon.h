@@ -67,8 +67,8 @@
 																// characters who can turn around
 																// during their double jump
 
-#define FTCOMMON_FALL_FAST_STICK_RANGE_MIN (-53)
-#define FTCOMMON_FALL_FAST_BUFFER_FRAMES_MAX 4
+#define FTCOMMON_FASTFALL_STICK_RANGE_MIN (-53)
+#define FTCOMMON_FASTFALL_BUFFER_FRAMES_MAX 4
 
 #define FTCOMMON_DAMAGE_SMASH_DI_BUFFER_FRAMES_MAX 4
 #define FTCOMMON_DAMAGE_SMASH_DI_RANGE_MIN 53

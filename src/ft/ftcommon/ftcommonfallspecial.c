@@ -18,22 +18,22 @@ void ftCommonFallSpecialProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    ftPhysics_CheckSetFastFall(fp);
+    ftPhysicsCheckSetFastFall(fp);
 
     if (fp->is_fast_fall)
     {
-        ftPhysics_ApplyFastFall(fp, attributes);
+        ftPhysicsApplyFastFall(fp, attributes);
     }
     else if (fp->status_vars.common.fallspecial.is_fall_accelerate != FALSE) // Accelerate until fighter reaches terminal velocity?
     {
-        ftPhysics_ApplyGravityDefault(fp, attributes);
+        ftPhysicsApplyGravityDefault(fp, attributes);
     }
-    else ftPhysics_ApplyGClampTVel(fp, attributes->gravity, attributes->fast_fall_speed);
+    else ftPhysicsApplyGClampTVel(fp, attributes->gravity, attributes->fast_fall_speed);
 
-    if (ftPhysics_CheckClampAirVelXDec(fp, fp->status_vars.common.fallspecial.drift) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDec(fp, fp->status_vars.common.fallspecial.drift) == FALSE)
     {
-        ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration, fp->status_vars.common.fallspecial.drift);
-        ftPhysics_ApplyAirVelXFriction(fp, attributes);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration, fp->status_vars.common.fallspecial.drift);
+        ftPhysicsApplyAirVelXFriction(fp, attributes);
     }
 }
 
@@ -78,7 +78,7 @@ void ftCommonFallSpecialSetStatus(GObj *fighter_gobj, f32 drift, sb32 unknown, s
 
     fp->status_vars.common.fallspecial.drift = (attributes->aerial_speed_max_x * drift);
 
-    ftPhysics_ClampAirVelX(fp, fp->status_vars.common.fallspecial.drift);
+    ftPhysicsClampAirVelX(fp, fp->status_vars.common.fallspecial.drift);
 
     if (fp->ga == nMPKineticsGround)
     {

@@ -207,7 +207,7 @@ void ftKirbyCopyYoshiSpecialNCatchInitStatusVars(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
-    ftPhysics_StopVelAll(fighter_gobj);
+    ftPhysicsStopVelAll(fighter_gobj);
 
     fp->catch_gobj = fp->search_gobj;
 }

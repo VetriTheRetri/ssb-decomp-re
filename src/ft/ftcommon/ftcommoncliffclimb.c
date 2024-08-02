@@ -166,7 +166,7 @@ void ftCommonCliffCommon2ProcPhysics(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        ftPhysics_ApplyGroundVelTransN(fighter_gobj);
+        ftPhysicsApplyGroundVelTransN(fighter_gobj);
     }
     else
     {
@@ -174,7 +174,7 @@ void ftCommonCliffCommon2ProcPhysics(GObj *fighter_gobj)
 
         pos = *translate;
 
-        ftPhysics_GetAirVelTransN(fp, &vel.x, NULL, &vel.z);
+        ftPhysicsGetAirVelTransN(fp, &vel.x, NULL, &vel.z);
 
         pos.x += vel.x;
         pos.z += vel.z;
@@ -193,7 +193,7 @@ void ftCommonCliffCommon2ProcPhysics(GObj *fighter_gobj)
             fp->phys_info.vel_air.y = pos.y - translate->y;
             fp->phys_info.vel_air.z = pos.z - translate->z;
         }
-        else ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
+        else ftPhysicsApplyAirVelTransNAll(fighter_gobj);
     }
 }
 

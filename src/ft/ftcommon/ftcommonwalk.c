@@ -99,8 +99,8 @@ void ftCommonWalkProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftPhysics_SetGroundVelAbsStickRange(fp, fp->attributes->walk_speed_mul, fp->attributes->traction);
-    ftPhysics_SetGroundVelTransferAir(fighter_gobj);
+    ftPhysicsSetGroundVelAbsStickRange(fp, fp->attributes->walk_speed_mul, fp->attributes->traction);
+    ftPhysicsSetGroundVelTransferAir(fighter_gobj);
 }
 
 // 0x8013E580

@@ -109,14 +109,14 @@ void ftYoshiSpecialAirHiProcUpdate(GObj *fighter_gobj)
 void ftYoshiSpecialHiProcPhysics(GObj *fighter_gobj)
 {
     ftYoshiSpecialHiUpdateEggVectors(ftGetStruct(fighter_gobj));
-    ftPhysics_ApplyGroundVelFriction(fighter_gobj);
+    ftPhysicsApplyGroundVelFriction(fighter_gobj);
 }
 
 // 0x8015EBD4
 void ftYoshiSpecialAirHiProcPhysics(GObj *fighter_gobj)
 {
     ftYoshiSpecialHiUpdateEggVectors(ftGetStruct(fighter_gobj));
-    ftPhysics_ApplyAirVelFriction(fighter_gobj);
+    ftPhysicsApplyAirVelFriction(fighter_gobj);
 }
 
 // 0x8015EC00
@@ -140,7 +140,7 @@ void ftYoshiSpecialHiSwitchStatusAir(GObj *fighter_gobj)
 
     fp->proc_damage = ftYoshiSpecialHiProcDamage;
 
-    ftPhysics_ClampAirVelXMax(fp);
+    ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x8015ECAC

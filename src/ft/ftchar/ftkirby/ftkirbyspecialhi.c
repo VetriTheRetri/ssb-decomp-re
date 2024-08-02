@@ -124,12 +124,12 @@ void ftKirbySpecialHiProcPhysics(GObj *fighter_gobj)
     ftAttributes *attributes = fp->attributes;
 
     ftKirbySpecialHiUpdateEffect(fighter_gobj);
-    ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
+    ftPhysicsApplyAirVelTransNYZ(fighter_gobj);
 
-    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
-        ftPhysics_ApplyAirVelXFriction(fp, attributes);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
+        ftPhysicsApplyAirVelXFriction(fp, attributes);
     }
 }
 
@@ -143,17 +143,17 @@ void ftKirbySpecialHiLandingProcPhysics(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        ftPhysics_ApplyGroundVelTransN(fighter_gobj);
+        ftPhysicsApplyGroundVelTransN(fighter_gobj);
     }
 
     else
     {
-        ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
+        ftPhysicsApplyAirVelTransNYZ(fighter_gobj);
 
-        if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
+        if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {
-            ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
-            ftPhysics_ApplyAirVelXFriction(fp, attributes);
+            ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
+            ftPhysicsApplyAirVelXFriction(fp, attributes);
         }
     }
 }
@@ -169,14 +169,14 @@ void ftKirbySpecialAirHiProcPhysics(GObj *fighter_gobj)
 
     fp->joint[nFTPartsJointTopN]->scale.vec.f.x = fp->joint[nFTPartsJointTopN]->scale.vec.f.y = fp->joint[nFTPartsJointTopN]->scale.vec.f.z = 0.8F;
 
-    ftPhysics_ApplyAirVelTransNYZ(fighter_gobj);
+    ftPhysicsApplyAirVelTransNYZ(fighter_gobj);
 
     fp->joint[nFTPartsJointTopN]->scale.vec.f.x = fp->joint[nFTPartsJointTopN]->scale.vec.f.y = fp->joint[nFTPartsJointTopN]->scale.vec.f.z = 1.0F;
 
-    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
-        ftPhysics_ApplyAirVelXFriction(fp, attributes);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
+        ftPhysicsApplyAirVelXFriction(fp, attributes);
     }
 }
 
@@ -188,10 +188,10 @@ void ftKirbySpecialAirHiFallProcPhysics(GObj *fighter_gobj)
 
     ftKirbySpecialHiUpdateEffect(fighter_gobj);
 
-    if (ftPhysics_CheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
-        ftPhysics_ClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
-        ftPhysics_ApplyAirVelXFriction(fp, attributes);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attributes->aerial_speed_max_x);
+        ftPhysicsApplyAirVelXFriction(fp, attributes);
     }
 }
 

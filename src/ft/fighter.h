@@ -23,7 +23,7 @@ extern u16 gFTManagerStatUpdateCount; // Updated each time an entity's status is
 
 // Data - 0x80116DD0
 extern ftCreateDesc dFTManagerDefaultFighterDesc;
-extern f32 dMPCollisionSurfaceFrictions[/* */];
+extern f32 dMPCollisionMaterialFrictions[/* */];
 extern ftData *dFTManagerDataFiles[/* */];
 
 extern Gfx dFTRenderMainHurtCollisionCuboidDL[/* */];

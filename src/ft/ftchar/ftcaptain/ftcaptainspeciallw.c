@@ -86,13 +86,13 @@ void ftCaptainSpecialLwProcPhysics(GObj *fighter_gobj)
     if (fp->ga == nMPKineticsGround)
     {
         fp->joint[nFTPartsJointTopN]->rotate.vec.f.z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
-        ftPhysics_ApplyGroundVelTransN(fighter_gobj);
+        ftPhysicsApplyGroundVelTransN(fighter_gobj);
     }
     else if (fp->command_vars.flags.flag0 != 0)
     {
-        ftPhysics_ApplyAirVelFriction(fighter_gobj);
+        ftPhysicsApplyAirVelFriction(fighter_gobj);
     }
-    else ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
+    else ftPhysicsApplyAirVelTransNAll(fighter_gobj);
 
     lbVector_Vec3fScale(&fp->phys_info.vel_air, fp->status_vars.captain.speciallw.vel_scale);
 
@@ -102,20 +102,20 @@ void ftCaptainSpecialLwProcPhysics(GObj *fighter_gobj)
 // 0x8015FE4C
 void ftCaptainSpecialLwLandingProcPhysics(GObj *fighter_gobj)
 {
-    ftPhysics_ApplyGroundVelTransN(fighter_gobj);
+    ftPhysicsApplyGroundVelTransN(fighter_gobj);
 }
 
 // 0x8015FE6C
 void ftCaptainSpecialAirLwProcPhysics(GObj *fighter_gobj)
 {
     ftCaptainSpecialLwUpdateEffect(fighter_gobj);
-    ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
+    ftPhysicsApplyAirVelTransNAll(fighter_gobj);
 }
 
 // 0x8015FE94
 void ftCaptainSpecialLwBoundProcPhysics(GObj *fighter_gobj)
 {
-    ftPhysics_ApplyAirVelTransNAll(fighter_gobj);
+    ftPhysicsApplyAirVelTransNAll(fighter_gobj);
 }
 
 // 0x8015FEB4

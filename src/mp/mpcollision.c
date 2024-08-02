@@ -57,7 +57,7 @@ extern intptr_t lGRBonus3GroundFileID;              // 0x00000127
 // // // // // // // // // // // //
 
 // 0x8012C4E0
-f32 dMPCollisionSurfaceFrictions[/* */] =
+f32 dMPCollisionMaterialFrictions[/* */] =
 {
     4.0F, 
     3.0F, 

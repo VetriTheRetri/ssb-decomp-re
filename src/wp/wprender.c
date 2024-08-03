@@ -10,7 +10,7 @@ extern void func_ovl0_800CB4B0(GObj*);
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

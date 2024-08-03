@@ -14,7 +14,7 @@ extern intptr_t lITBoxEffectDisplayList;    // 0x000068F0
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -55,7 +55,7 @@ itCreateDesc dITBoxItemDesc =
 };
 
 // 0x8018A384
-itStatusDesc dITBoxStatusDesc[/* */] =
+itStatusDesc dITBoxStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -369,7 +369,7 @@ void itBoxGWaitSetStatus(GObj *item_gobj)
     DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CST_DTOR32(90.0F); // HALF_PI32
 
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_GWait);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, itStatus_Box_GWait);
 }
 
 // 0x801797A4
@@ -380,7 +380,7 @@ void itBoxAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_AFall);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, itStatus_Box_AFall);
 }
 
 // 0x801797E8
@@ -389,7 +389,7 @@ void itBoxFHoldSetStatus(GObj *item_gobj)
     DObjGetStruct(item_gobj)->child->rotate.vec.f.z = 0.0F;
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_FHold);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, itStatus_Box_FHold);
 }
 
 // 0x8017982C
@@ -411,7 +411,7 @@ void itBoxFThrowSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
-    itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_FThrow);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, itStatus_Box_FThrow);
 }
 
 // 0x801798B8
@@ -433,7 +433,7 @@ void itBoxFDropSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
-    itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_FDrop);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, itStatus_Box_FDrop);
 }
 
 // 0x80179948
@@ -501,7 +501,7 @@ void itBoxNExplodeInitItemVars(GObj *item_gobj)
 void itBoxNExplodeSetStatus(GObj *item_gobj)
 {
     itBoxNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBoxStatusDesc, itStatus_Box_NExplode);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, itStatus_Box_NExplode);
 }
 
 // 0x80179B08

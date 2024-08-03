@@ -24,7 +24,7 @@
 #define FTFOX_REFLECTOR_GRAVITY_DELAY 4                 // Frames required for gravity to take effect
 #define FTFOX_REFLECTOR_GRAVITY 0.8F
 
-extern ftStatusDesc dFTFoxSpecialStatusDesc[/* */];
+extern ftStatusDesc dFTFoxSpecialStatusDescs[/* */];
 
 extern void *gFTDataFoxMain;
 extern void *gFTDataFoxMainMotion;

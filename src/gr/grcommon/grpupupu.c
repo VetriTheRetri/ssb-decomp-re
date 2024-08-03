@@ -130,7 +130,7 @@ enum grPupupuFlowerStatus
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

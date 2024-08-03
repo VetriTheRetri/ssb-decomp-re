@@ -19,7 +19,7 @@ extern void func_8000BED8_CAD8(GObj*, void*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

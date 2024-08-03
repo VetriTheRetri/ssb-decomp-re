@@ -44,7 +44,7 @@ extern void gmCollisionGetWorldPosition();
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

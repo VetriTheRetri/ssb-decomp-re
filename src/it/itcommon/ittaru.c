@@ -11,7 +11,7 @@ extern intptr_t lITTaruHitEvents;           // 0x0000067C
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -39,7 +39,7 @@ itCreateDesc dITTaruItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITTaruStatusDesc[/* */] = 
+itStatusDesc dITTaruStatusDescs[/* */] = 
 {
     // Status 0 (Ground Wait)
     {
@@ -210,7 +210,7 @@ sb32 itTaruAFallProcMap(GObj *item_gobj)
 void itTaruGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTaruStatusDesc, itStatus_Taru_GWait);
+    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_GWait);
 }
 
 // 0x80179D1C
@@ -221,13 +221,13 @@ void itTaruAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITTaruStatusDesc, itStatus_Taru_AFall);
+    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_AFall);
 }
 
 // 0x80179D60
 void itTaruFHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITTaruStatusDesc, itStatus_Taru_FHold);
+    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_FHold);
 }
 
 // 0x80179D88
@@ -257,7 +257,7 @@ void itTaruGRollSetStatus(GObj *item_gobj)
 
     ip->phys_info.vel_air.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITTaruStatusDesc, itStatus_Taru_GRoll);
+    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_GRoll);
 }
 
 // 0x80179E28
@@ -304,7 +304,7 @@ void itTaruFThrowInitItemVars(GObj *item_gobj)
 // 0x80179F1C
 void itTaruFThrowSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITTaruStatusDesc, itStatus_Taru_FThrow);
+    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_FThrow);
     itTaruFThrowInitItemVars(item_gobj);
 }
 
@@ -319,7 +319,7 @@ sb32 func_ovl3_80179F50(GObj *item_gobj)
 // 0x80179F74
 void itTaruFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITTaruStatusDesc, itStatus_Taru_FDrop);
+    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_FDrop);
     itTaruFThrowInitItemVars(item_gobj);
 }
 
@@ -384,7 +384,7 @@ sb32 itTaruGRollProcMap(GObj *item_gobj)
 
     if (itMapTestLRWallCheckGround(item_gobj) == FALSE)
     {
-        itMainSetItemStatus(item_gobj, dITTaruStatusDesc, itStatus_Taru_FDrop);
+        itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_FDrop);
     }
     else if (ip->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
@@ -442,7 +442,7 @@ void itTaruNExplodeInitItemVars(GObj *item_gobj)
 void itTaruNExplodeSetStatus(GObj *item_gobj)
 {
     itTaruNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTaruStatusDesc, itStatus_Taru_NExplode);
+    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_NExplode);
 }
 
 // 0x8017A30C

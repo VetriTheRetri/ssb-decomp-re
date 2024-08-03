@@ -13,7 +13,7 @@ extern intptr_t lITLuckyAnimJoint;          // 0x000100BC
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -43,7 +43,7 @@ itCreateDesc dITMLuckyItemDesc =
 };
 
 // 0x8018AFE4
-itStatusDesc dITMLuckyStatusDesc[/* */] =
+itStatusDesc dITMLuckyStatusDescs[/* */] =
 {
     // Status 0 (Air Fall)
     {
@@ -171,7 +171,7 @@ void itMLuckyAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITMLuckyStatusDesc, itStatus_MLucky_AFall);
+    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, itStatus_MLucky_AFall);
 }
 
 // 0x80181124
@@ -211,7 +211,7 @@ void itMLuckyNAppearSetStatus(GObj *item_gobj)
     {
         func_800269C0_275C0(nGMSoundVoiceMBallLuckySpawn);
     }
-    itMainSetItemStatus(item_gobj, dITMLuckyStatusDesc, itStatus_MLucky_NAppear);
+    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, itStatus_MLucky_NAppear);
 }
 
 // 0x80181200
@@ -291,7 +291,7 @@ sb32 itMLuckyNSpawnProcDamage(GObj *item_gobj)
 // 0x801813A8
 void itMLuckyNSpawnSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITMLuckyStatusDesc, itStatus_MLucky_NSpawn);
+    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, itStatus_MLucky_NSpawn);
 }
 
 // 0x801813D0
@@ -317,7 +317,7 @@ void itMLuckyNDisappearSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = nGMHitStatusNone;
 
-    itMainSetItemStatus(item_gobj, dITMLuckyStatusDesc, itStatus_MLucky_NDisappear);
+    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, itStatus_MLucky_NDisappear);
 }
 
 // 0x80181430

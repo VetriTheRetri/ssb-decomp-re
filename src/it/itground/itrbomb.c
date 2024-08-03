@@ -19,7 +19,7 @@ extern intptr_t lITRBombEffectDisplayList;  // 0x000008A0
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -47,7 +47,7 @@ itCreateDesc dITRBombItemDesc =
     itRBombSDefaultProcDamage               // Proc Damage
 };
 
-itStatusDesc dITRBombStatusDesc[/* */] =
+itStatusDesc dITRBombStatusDescs[/* */] =
 {
     // Status 0 (Air Wait Fall)
     {
@@ -222,7 +222,7 @@ void itRBombGRollSetStatus(GObj *item_gobj)
 
     ip->phys_info.vel_air.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITRBombStatusDesc, itStatus_RBomb_GRoll);
+    itMainSetItemStatus(item_gobj, dITRBombStatusDescs, itStatus_RBomb_GRoll);
 }
 
 // 0x80184E78
@@ -331,7 +331,7 @@ sb32 itRBombGRollProcMap(GObj *item_gobj)
 
     if (itMapTestLRWallCheckGround(item_gobj) == FALSE)
     {
-        itMainSetItemStatus(item_gobj, dITRBombStatusDesc, itStatus_RBomb_AFall);
+        itMainSetItemStatus(item_gobj, dITRBombStatusDescs, itStatus_RBomb_AFall);
     }
     else if (ip->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
@@ -384,7 +384,7 @@ void itRBombNExplodeInitItemVars(GObj *item_gobj)
 void itRBombNExplodeSetStatus(GObj *item_gobj)
 {
     itRBombNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITRBombStatusDesc, itStatus_RBomb_NExplode);
+    itMainSetItemStatus(item_gobj, dITRBombStatusDescs, itStatus_RBomb_NExplode);
 }
 
 // 0x801852B8

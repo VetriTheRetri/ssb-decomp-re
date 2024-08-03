@@ -254,7 +254,7 @@ ub8 sIFCommonIsAnnouncedSecond[5];
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

@@ -22,7 +22,7 @@ extern void func_ovl0_800C8758(void*, void*, f32);
 
 // Globals
 
-extern ftYoshiEggDesc dFTCommonYoshiEggHurtboxDesc[/* */];
+extern ftYoshiEggDesc dFTCommonYoshiEggHurtboxDescs[/* */];
 
 // Reloc Data Manager File IDs
 
@@ -272,7 +272,7 @@ s32 gEFManagerParticleBankID;
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -1791,7 +1791,7 @@ efCreateDesc dEFManagerMarioEntryDokanEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
-    &gFTDataMarioSpecial2,                  // Texture file
+    &gFTMarioFileSpecial2,                  // Texture file
 
     // DObj transformation struct 1
     {
@@ -5647,7 +5647,7 @@ GObj* efManagerYoshiEggLayMakeEffect(GObj *fighter_gobj)
     dobj = DObjGetStruct(effect_gobj);
     dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
 
-    dobj->scale.vec.f.x = dobj->scale.vec.f.y = dFTCommonYoshiEggHurtboxDesc[fp->ft_kind].effect_size;
+    dobj->scale.vec.f.x = dobj->scale.vec.f.y = dFTCommonYoshiEggHurtboxDescs[fp->ft_kind].effect_size;
     dobj->scale.vec.f.z = 1.0F;
 
     dobj->child->child->ommtx[0]->kind = nOMTransformTra;
@@ -5912,7 +5912,7 @@ GObj* efManagerMarioEntryDokanMakeEffect(Vec3f *pos, s32 ft_kind)
     switch (ft_kind)
     {
     case nFTKindMario:
-        dEFManagerMarioEntryDokanEffectDesc.file_head = &gFTDataMarioSpecial2;
+        dEFManagerMarioEntryDokanEffectDesc.file_head = &gFTMarioFileSpecial2;
         break;
 
     case nFTKindLuigi:

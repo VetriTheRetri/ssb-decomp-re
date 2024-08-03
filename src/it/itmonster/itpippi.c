@@ -13,7 +13,7 @@ extern intptr_t lITPippiDataStart;          // 0x00013598
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

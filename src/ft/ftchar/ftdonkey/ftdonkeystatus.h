@@ -4,7 +4,7 @@
 #include <ft/fighter.h>
 
 // 0x80129FBC
-ftStatusDesc dFTDonkeySpecialStatusDesc[/* */] =
+ftStatusDesc dFTDonkeySpecialStatusDescs[/* */] =
 {
 	// Status 220 (0xDC): AppearR
 	{

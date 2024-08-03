@@ -12,7 +12,7 @@ extern intptr_t lITGLuckyItemAttributes;    // 0x000000BC
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -40,7 +40,7 @@ itCreateDesc dITGLuckyItemDesc =
     itGLuckySDefaultProcDamage              // Proc Damage
 };
 
-itStatusDesc dITGLuckyStatusDesc[/* */] =
+itStatusDesc dITGLuckyStatusDescs[/* */] =
 {
     // Status 0 (Neutral Damage)
     {
@@ -76,7 +76,7 @@ enum itGLuckyStatus
 // 0x8017C240
 void itGLuckyNDamageSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITGLuckyStatusDesc, itStatus_GLucky_NDamage);
+    itMainSetItemStatus(item_gobj, dITGLuckyStatusDescs, itStatus_GLucky_NDamage);
 
     itGetStruct(item_gobj)->proc_dead = itGLuckyNDamageProcDead;
 }

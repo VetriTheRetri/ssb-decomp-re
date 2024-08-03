@@ -15,7 +15,7 @@ extern intptr_t lITFFlowerFlameAngles;      // 0x00000360
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -43,7 +43,7 @@ itCreateDesc dITFFlowerItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITFFlowerStatusDesc[/* */] =
+itStatusDesc dITFFlowerStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -181,7 +181,7 @@ sb32 itFFlowerAFallProcMap(GObj *item_gobj)
 void itFFlowerGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDesc, itStatus_FFlower_GWait);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, itStatus_FFlower_GWait);
 }
 
 // 0x80175BE4
@@ -192,13 +192,13 @@ void itFFlowerAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDesc, itStatus_FFlower_AFall);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, itStatus_FFlower_AFall);
 }
 
 // 0x80175C28
 void itFFlowerFHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDesc, itStatus_FFlower_FHold);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, itStatus_FFlower_FHold);
 }
 
 // 0x80175C50
@@ -228,7 +228,7 @@ sb32 itFFlowerSDefaultProcHit(GObj *item_gobj)
 // 0x80175CC4
 void itFFlowerFThrowSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDesc, itStatus_FFlower_FThrow);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, itStatus_FFlower_FThrow);
 }
 
 // 0x80175CEC
@@ -246,7 +246,7 @@ sb32 itFFlowerFDropProcMap(GObj *item_gobj)
 // 0x80175D38
 void itFFlowerFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDesc, itStatus_FFlower_FDrop);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, itStatus_FFlower_FDrop);
 }
 
 // 0x80175D60

@@ -58,7 +58,7 @@ rdFileNode sFTManagerForceBuf[7];
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -114,7 +114,7 @@ void ftManagerSetupFileSize(void)
     ftData *ft_data;
     ftFileSize *ft_size;
     rdSetup rd_setup;
-    ftScriptInfo *script_info;
+    ftMotionDesc *script_info;
 
     rd_setup.table_addr = &lRDManagerTableAddr;
     rd_setup.table_files_num = &lRDManagerTableFilesNum;

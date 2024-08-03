@@ -25,7 +25,8 @@ typedef enum ftStatusUpdateFlags
 typedef enum ftCommonMotion
 {
     nFTCommonMotionNull = -1,
-    nFTCommonMotionRebirthDown = 0x1,
+    nFTCommonMotionEntryNull,
+    nFTCommonMotionRebirthDown,
     nFTCommonMotionRebirthStand,
     nFTCommonMotionRebirthWait,
     nFTCommonMotionWait,
@@ -985,8 +986,8 @@ typedef struct ftSpecialHit				        ftSpecialHit;
 typedef struct ftItemPickup				        ftItemPickup;
 typedef struct ftThrownStatus			        ftThrownStatus;
 typedef struct ftThrownStatusArray		        ftThrownStatusArray;
-typedef struct ftScriptInfo				        ftScriptInfo;
-typedef struct ftScriptInfoArray		        ftScriptInfoArray;
+typedef struct ftMotionDesc				        ftMotionDesc;
+typedef struct ftMotionDescArray		        ftMotionDescArray;
 typedef struct ftFileSize                       ftFileSize;
 typedef struct ftData					        ftData;
 typedef struct ftCommonPart                     ftCommonPart;

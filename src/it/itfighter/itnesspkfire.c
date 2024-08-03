@@ -12,7 +12,7 @@ extern intptr_t lITNessPKFireItemAttributes;// 0x00000034
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -40,7 +40,7 @@ itCreateDesc dITNessPKFireItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITNessPKFireStatusDesc[/* */] =
+itStatusDesc dITNessPKFireStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -218,7 +218,7 @@ void itNessPKFireGWaitSetStatus(GObj *item_gobj)
     stat_flags = ip->item_hit.stat_flags;
     stat_count = ip->item_hit.stat_count;
 
-    itMainSetItemStatus(item_gobj, dITNessPKFireStatusDesc, itStatus_PKFire_GWait);
+    itMainSetItemStatus(item_gobj, dITNessPKFireStatusDescs, itStatus_PKFire_GWait);
 
     ip->item_hit.stat_flags = stat_flags;
     ip->item_hit.stat_count = stat_count;
@@ -238,7 +238,7 @@ void itNessPKFireAFallSetStatus(GObj *item_gobj)
     stat_flags = ip->item_hit.stat_flags;
     stat_count = ip->item_hit.stat_count;
 
-    itMainSetItemStatus(item_gobj, dITNessPKFireStatusDesc, itStatus_PKFire_AFall);
+    itMainSetItemStatus(item_gobj, dITNessPKFireStatusDescs, itStatus_PKFire_AFall);
 
     ip->item_hit.stat_flags = stat_flags;
     ip->item_hit.stat_count = stat_count;

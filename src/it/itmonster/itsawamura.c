@@ -14,7 +14,7 @@ extern intptr_t lITSawamuraDisplayList;     // 0x00012340
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -44,7 +44,7 @@ itCreateDesc dITSawamuraItemDesc =
 };
 
 // 0x8018B254
-itStatusDesc dITSawamuraStatusDesc[/* */] =
+itStatusDesc dITSawamuraStatusDescs[/* */] =
 {
     // Status 0 (Air Fall)
     {
@@ -130,7 +130,7 @@ sb32 itSawamuraAFallProcMap(GObj *item_gobj)
 // 0x801826A8
 void itSawamuraAFallSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSawamuraStatusDesc, itStatus_Sawamura_AFall);
+    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, itStatus_Sawamura_AFall);
 }
 
 // 0x801826D0
@@ -158,7 +158,7 @@ sb32 itSawamuraGWaitProcMap(GObj *item_gobj)
 // 0x8018273C
 void itSawamuraGWaitSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSawamuraStatusDesc, itStatus_Sawamura_GWait);
+    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, itStatus_Sawamura_GWait);
 }
 
 // 0x80182764
@@ -274,7 +274,7 @@ void itSawamuraNAttackInitItemVars(GObj *item_gobj)
 void itSawamuraNAttackSetStatus(GObj *item_gobj)
 {
     itSawamuraNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITSawamuraStatusDesc, itStatus_Sawamura_NAttack);
+    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, itStatus_Sawamura_NAttack);
 }
 
 // 0x80182AE0

@@ -4,7 +4,7 @@
 #include <ft/fighter.h>
 
 // 0x80129F08
-ftStatusDesc dFTMarioSpecialStatusDesc[/* */] =
+ftStatusDesc dFTMarioSpecialStatusDescs[/* */] =
 {
 	// Status 220 (0xDC): Attack13
 	{

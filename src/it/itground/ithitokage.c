@@ -18,7 +18,7 @@ extern s32 dGRYamabukiMonsterAttackKind;
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -46,7 +46,7 @@ itCreateDesc dITHitokageItemDesc =
     itHitokageSDefaultProcDamage            // Proc Damage
 };
 
-itStatusDesc dITHitokageStatusDesc[/* */] =
+itStatusDesc dITHitokageStatusDescs[/* */] =
 {
     // Status 0 (Neutral Damage)
     {
@@ -106,7 +106,7 @@ enum itHitokageStatus
 // 0x80183DA0
 void itHitokageNDamageSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHitokageStatusDesc, itStatus_Hitokage_NDamage);
+    itMainSetItemStatus(item_gobj, dITHitokageStatusDescs, itStatus_Hitokage_NDamage);
 
     itGetStruct(item_gobj)->proc_dead = itHitokageNDamageProcDead;
 }

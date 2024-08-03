@@ -16,7 +16,7 @@ extern intptr_t lITStarmieMatAnimJoint;     // 0x00011338
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -46,7 +46,7 @@ itCreateDesc dITStarmieItemDesc =
 };
 
 // 0x8018B1A4
-itStatusDesc dITStarmieStatusDesc[/* */] =
+itStatusDesc dITStarmieStatusDescs[/* */] =
 {
     // Status 0 (Neutral Follow)
     {
@@ -187,7 +187,7 @@ void itStarmieNAttackInitItemVars(GObj *item_gobj)
 void itStarmieNAttackSetStatus(GObj *item_gobj)
 {
     itStarmieNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITStarmieStatusDesc, itStatus_Starmie_NAttack);
+    itMainSetItemStatus(item_gobj, dITStarmieStatusDescs, itStatus_Starmie_NAttack);
 }
 
 // 0x80181E40
@@ -310,7 +310,7 @@ void itStarmieNFollowInitItemVars(GObj *item_gobj)
 void itStarmieNFollowSetStatus(GObj *item_gobj)
 {
     itStarmieNFollowInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITStarmieStatusDesc, itStatus_Starmie_NFollow);
+    itMainSetItemStatus(item_gobj, dITStarmieStatusDescs, itStatus_Starmie_NFollow);
 }
 
 // 0x8018221C

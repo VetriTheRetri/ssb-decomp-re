@@ -27,7 +27,7 @@
 #define FTSAMUS_BOMB_VEL_Y_SUB 10.0F
 #define FTSAMUS_BOMB_DRIFT 0.66F
 
-extern ftStatusDesc dFTSamusSpecialStatusDesc[/* */];
+extern ftStatusDesc dFTSamusSpecialStatusDescs[/* */];
 
 extern void *gFTDataSamusMain;
 extern void *gFTDataSamusMainMotion;

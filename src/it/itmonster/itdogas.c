@@ -15,7 +15,7 @@ extern intptr_t lITDogasAnimJoint;          // 0x000128DC
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -45,7 +45,7 @@ itCreateDesc dITDogasItemDesc =
 };
 
 // 0x80182BF4
-itStatusDesc dITDogasStatusDesc[/* */] =
+itStatusDesc dITDogasStatusDescs[/* */] =
 {
     // Status 0 (Neutral Active)
     {
@@ -137,7 +137,7 @@ void itDogasNDisappearSetStatus(GObj *item_gobj)
 
     ip->it_multi = ITDOGAS_DESPAWN_WAIT;
 
-    itMainSetItemStatus(item_gobj, dITDogasStatusDesc, itStatus_Dogas_NDisappear);
+    itMainSetItemStatus(item_gobj, dITDogasStatusDescs, itStatus_Dogas_NDisappear);
 }
 
 // 0x80182CDC
@@ -219,7 +219,7 @@ void itDogasNAttackInitItemVars(GObj *item_gobj)
 void itDogasNAttackSetStatus(GObj *item_gobj)
 {
     itDogasNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITDogasStatusDesc, itStatus_Dogas_NAttack);
+    itMainSetItemStatus(item_gobj, dITDogasStatusDescs, itStatus_Dogas_NAttack);
 }
 
 // 0x80182F40

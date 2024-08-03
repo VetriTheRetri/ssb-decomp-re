@@ -4,7 +4,7 @@
 #include <ft/fighter.h>
 
 // 0x8012AEF8
-ftStatusDesc dFTYoshiSpecialStatusDesc[/* */] =
+ftStatusDesc dFTYoshiSpecialStatusDescs[/* */] =
 {
 	// Status 220 (0xDC): AppearR
 	{

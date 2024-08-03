@@ -10,7 +10,7 @@ extern intptr_t lITTomatoItemAttributes;    // 0x000000B8
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -38,7 +38,7 @@ itCreateDesc dITTomatoItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITTomatoStatusDesc[/* */] =
+itStatusDesc dITTomatoStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -126,7 +126,7 @@ sb32 itTomatoAFallProcMap(GObj *item_gobj)
 void itTomatoGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTomatoStatusDesc, itStatus_Tomato_GWait);
+    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, itStatus_Tomato_GWait);
 }
 
 // 0x80174588
@@ -137,7 +137,7 @@ void itTomatoAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITTomatoStatusDesc, itStatus_Tomato_AFall);
+    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, itStatus_Tomato_AFall);
 }
 
 // 0x801745CC
@@ -149,7 +149,7 @@ sb32 itTomatoFDropProcMap(GObj *item_gobj)
 // 0x801745FC
 void itTomatoFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITTomatoStatusDesc, itStatus_Tomato_FDrop);
+    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, itStatus_Tomato_FDrop);
 }
 
 // 0x80174624

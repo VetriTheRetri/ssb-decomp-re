@@ -15,7 +15,7 @@ extern intptr_t lITBombHeiWalkMatAnimJoint;     // 0x000035B8
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -52,7 +52,7 @@ itCreateDesc dITBombHeiItemDesc =
 };
 
 // 0x80189FCC
-itStatusDesc dITBombHeiStatusDesc[/* */] =
+itStatusDesc dITBombHeiStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -378,7 +378,7 @@ void itBombHeiGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_GWait);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_GWait);
 }
 
 // 0x801774B0
@@ -390,14 +390,14 @@ void itBombHeiAFallSetStatus(GObj *item_gobj)
 
     itMapSetAir(ip);
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_AFall);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_AFall);
 }
 
 // 0x801774FC
 void itBombHeiFHoldSetStatus(GObj *item_gobj)
 {
     itBombHeiSDefaultSetHitStatusNone(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_FHold);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_FHold);
 }
 
 // 0x80177530
@@ -421,7 +421,7 @@ sb32 itBombHeiFThrowProcMap(GObj *item_gobj)
 void itBombHeiFThrowSetStatus(GObj *item_gobj)
 {
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_FThrow);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_FThrow);
 }
 
 // 0x801775C4
@@ -434,7 +434,7 @@ sb32 itBombHeiFDropProcMap(GObj *item_gobj)
 void itBombHeiFDropSetStatus(GObj *item_gobj)
 {
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_FDrop);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_FDrop);
 }
 
 // 0x8017761C
@@ -571,7 +571,7 @@ void itBombHeiGWalkSetStatus(GObj *item_gobj)
 {
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
     itBombHeiGWalkInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_GWalk);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_GWalk);
 }
 
 // 0x801779E4
@@ -636,7 +636,7 @@ sb32 itBombHeiMExplodeProcHit(GObj *item_gobj)
 void itBombHeiMExplodeSetStatus(GObj *item_gobj)
 {
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_MExplode);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_MExplode);
 }
 
 // 0x80177BAC
@@ -673,7 +673,7 @@ sb32 itBombHeiNExplodeProcUpdate(GObj *item_gobj)
 void itBombHeiNExplodeSetStatus(GObj *item_gobj)
 {
     itBombHeiNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_NExplode);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_NExplode);
 }
 
 // 0x80177C64
@@ -720,7 +720,7 @@ void itBombHeiGExplodeWaitSetStatus(GObj *item_gobj)
 {
     itBombHeiSDefaultSetHitStatusNormal(item_gobj);
     itBombHeiGExplodeWaitInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDesc, itStatus_BombHei_GExplodeWait);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_GExplodeWait);
 }
 
 // 0x80177D9C

@@ -10,7 +10,7 @@ extern intptr_t lITHammerItemAttributes;    // 0x00000374
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -38,7 +38,7 @@ itCreateDesc dITHammerItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITHammerStatusDesc[/* */] =
+itStatusDesc dITHammerStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -158,7 +158,7 @@ sb32 itHammerAFallProcMap(GObj *item_gobj)
 void itHammerGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITHammerStatusDesc, itStatus_Hammer_GWait);
+    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, itStatus_Hammer_GWait);
 }
 
 // 0x801761F8
@@ -169,7 +169,7 @@ void itHammerAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITHammerStatusDesc, itStatus_Hammer_AFall);
+    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, itStatus_Hammer_AFall);
 }
 
 // 0x8017623C
@@ -177,7 +177,7 @@ void itHammerFHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITHammerStatusDesc, itStatus_Hammer_FHold);
+    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, itStatus_Hammer_FHold);
 }
 
 // 0x80176270
@@ -212,7 +212,7 @@ sb32 itHammerSDefaultProcHit(GObj *item_gobj)
 // 0x80176300
 void itHammerFThrowSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHammerStatusDesc, itStatus_Hammer_FThrow);
+    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, itStatus_Hammer_FThrow);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
@@ -229,7 +229,7 @@ sb32 itHammerFDropProcMap(GObj *item_gobj)
 void itHammerFDropSetStatus(GObj *item_gobj)
 {
     itMainClearColAnim(item_gobj);
-    itMainSetItemStatus(item_gobj, dITHammerStatusDesc, itStatus_Hammer_FDrop);
+    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, itStatus_Hammer_FDrop);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 

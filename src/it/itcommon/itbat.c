@@ -10,7 +10,7 @@ extern intptr_t lITBatItemAttributes;       // 0x000001D8
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -40,7 +40,7 @@ itCreateDesc dITBatItemDesc =
 };
 
 // 0x801899C4
-itStatusDesc dITBatStatusDesc[/* */] =
+itStatusDesc dITBatStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -156,7 +156,7 @@ sb32 itBatAFallProcMap(GObj *item_gobj)
 void itBatGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBatStatusDesc, itStatus_Bat_GWait);
+    itMainSetItemStatus(item_gobj, dITBatStatusDescs, itStatus_Bat_GWait);
 }
 
 // 0x80174EF8
@@ -167,7 +167,7 @@ void itBatAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITBatStatusDesc, itStatus_Bat_AFall);
+    itMainSetItemStatus(item_gobj, dITBatStatusDescs, itStatus_Bat_AFall);
 }
 
 // 0x80174F3C
@@ -175,7 +175,7 @@ void itBatFHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
-    itMainSetItemStatus(item_gobj, dITBatStatusDesc, itStatus_Bat_FHold);
+    itMainSetItemStatus(item_gobj, dITBatStatusDescs, itStatus_Bat_FHold);
 }
 
 // 0x80174F70
@@ -208,7 +208,7 @@ sb32 itBatFThrowProcHit(GObj *item_gobj)
 // 0x80175000
 void itBatFThrowSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITBatStatusDesc, itStatus_Bat_FThrow);
+    itMainSetItemStatus(item_gobj, dITBatStatusDescs, itStatus_Bat_FThrow);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 }
@@ -222,7 +222,7 @@ sb32 itBatFDropProcMap(GObj *item_gobj)
 // 0x80175074
 void itBatFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITBatStatusDesc, itStatus_Bat_FDrop);
+    itMainSetItemStatus(item_gobj, dITBatStatusDescs, itStatus_Bat_FDrop);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 }

@@ -50,7 +50,7 @@ ftHitlog sFTMainHitlogs[10];
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -117,33 +117,33 @@ grHitbox dFTMainGroundHitCollisionAttributes[/* */] =
 // 0x8012B740
 ftStatusDesc *dFTMainSpecialStatusDescs[/* */] =
 {
-    dFTMarioSpecialStatusDesc,
-    dFTFoxSpecialStatusDesc,
-    dFTDonkeySpecialStatusDesc,
-    dFTSamusSpecialStatusDesc,
-    dFTLuigiSpecialStatusDesc,
-    dFTLinkSpecialStatusDesc,
-    dFTYoshiSpecialStatusDesc,
-    dFTCaptainSpecialStatusDesc,
-    dFTKirbySpecialStatusDesc,
-    dFTPikachuSpecialStatusDesc,
-    dFTPurinSpecialStatusDesc,
-    dFTNessSpecialStatusDesc,
-    dFTBossSpecialStatusDesc,
-    dFTMarioSpecialStatusDesc,
-    dFTMarioSpecialStatusDesc,
-    dFTFoxSpecialStatusDesc,
-    dFTDonkeySpecialStatusDesc,
-    dFTSamusSpecialStatusDesc,
-    dFTLuigiSpecialStatusDesc,
-    dFTLinkSpecialStatusDesc,
-    dFTYoshiSpecialStatusDesc,
-    dFTCaptainSpecialStatusDesc,
-    dFTKirbySpecialStatusDesc,
-    dFTPikachuSpecialStatusDesc,
-    dFTPurinSpecialStatusDesc,
-    dFTNessSpecialStatusDesc,
-    dFTDonkeySpecialStatusDesc
+    dFTMarioSpecialStatusDescs,
+    dFTFoxSpecialStatusDescs,
+    dFTDonkeySpecialStatusDescs,
+    dFTSamusSpecialStatusDescs,
+    dFTLuigiSpecialStatusDescs,
+    dFTLinkSpecialStatusDescs,
+    dFTYoshiSpecialStatusDescs,
+    dFTCaptainSpecialStatusDescs,
+    dFTKirbySpecialStatusDescs,
+    dFTPikachuSpecialStatusDescs,
+    dFTPurinSpecialStatusDescs,
+    dFTNessSpecialStatusDescs,
+    dFTBossSpecialStatusDescs,
+    dFTMarioSpecialStatusDescs,
+    dFTMarioSpecialStatusDescs,
+    dFTFoxSpecialStatusDescs,
+    dFTDonkeySpecialStatusDescs,
+    dFTSamusSpecialStatusDescs,
+    dFTLuigiSpecialStatusDescs,
+    dFTLinkSpecialStatusDescs,
+    dFTYoshiSpecialStatusDescs,
+    dFTCaptainSpecialStatusDescs,
+    dFTKirbySpecialStatusDescs,
+    dFTPikachuSpecialStatusDescs,
+    dFTPurinSpecialStatusDescs,
+    dFTNessSpecialStatusDescs,
+    dFTDonkeySpecialStatusDescs
 };
 
 // // // // // // // // // // // //
@@ -4346,8 +4346,8 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     DObjDesc *dobj_desc;
     s32 unused3;
     ftStatusDesc *status_desc;
-    ftScriptInfoArray *script_array;
-    ftScriptInfo *script_info;
+    ftMotionDescArray *script_array;
+    ftMotionDesc *script_info;
     DObj *joint;
     DObj *transn_parent;                // Parent of TrasnN_Joint
     DObj *transn_child;                 // Child of TransN_Joint
@@ -4532,12 +4532,12 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     }
     else if (status_id >= nFTCommonStatusActionStart)
     {
-        status_struct = dFTCommonActionStatusDesc;
+        status_struct = dFTCommonActionStatusDescs;
         status_struct_id = status_id - nFTCommonStatusActionStart;
     }
     else
     {
-        status_struct = dFTCommonNullStatusDesc;
+        status_struct = dFTCommonNullStatusDescs;
         status_struct_id = status_id;
     }
     status_desc = &status_struct[status_struct_id];

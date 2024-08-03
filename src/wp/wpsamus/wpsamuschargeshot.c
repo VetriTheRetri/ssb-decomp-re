@@ -15,7 +15,7 @@ extern void ftParamPlayLoopSFX(ftStruct*, u16);
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

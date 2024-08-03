@@ -15,7 +15,7 @@ extern intptr_t lITNyarsAnimJoint;          // 0x0000C130
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -45,7 +45,7 @@ itCreateDesc dITNyarsItemDesc =
 };
 
 // 0x8018ACD4
-itStatusDesc dITNyarsStatusDesc[/* */] =
+itStatusDesc dITNyarsStatusDescs[/* */] =
 {
     // Status 0 (Neutral Attack)
     {
@@ -151,7 +151,7 @@ void itNyarsNAttackInitItemVars(GObj *item_gobj)
 void itNyarsNAttackSetStatus(GObj *item_gobj)
 {
     itNyarsNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITNyarsStatusDesc, itStatus_Nyars_NAttack);
+    itMainSetItemStatus(item_gobj, dITNyarsStatusDescs, itStatus_Nyars_NAttack);
 }
 
 // 0x8017EFF8

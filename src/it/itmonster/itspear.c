@@ -20,7 +20,7 @@ extern intptr_t lITSpearMatAnimJoint;       // 0x0000E12C
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -50,7 +50,7 @@ itCreateDesc dITSpearItemDesc =
 };
 
 // 0x8018AE34
-itStatusDesc dITSpearStatusDesc[/* */] =
+itStatusDesc dITSpearStatusDescs[/* */] =
 {
     // Status 0 (Neutral Appear)
     {
@@ -213,7 +213,7 @@ void itSpearNAppearInitItemVars(GObj *item_gobj)
 void itSpearNAppearSetStatus(GObj *item_gobj)
 {
     itSpearNAppearInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITSpearStatusDesc, itStatus_Spear_NAppear);
+    itMainSetItemStatus(item_gobj, dITSpearStatusDescs, itStatus_Spear_NAppear);
 }
 
 // 0x8017FFA8
@@ -282,7 +282,7 @@ void itSpearNFlyInitItemVars(GObj *item_gobj)
 void itSpearNFlySetStatus(GObj *item_gobj)
 {
     itSpearNFlyInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITSpearStatusDesc, itStatus_Spear_NFly);
+    itMainSetItemStatus(item_gobj, dITSpearStatusDescs, itStatus_Spear_NFly);
 }
 
 // 0x80180194

@@ -52,7 +52,7 @@ extern intptr_t lGRBonus3GroundFileID;              // 0x00000127
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

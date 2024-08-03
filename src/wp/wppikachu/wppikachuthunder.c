@@ -14,7 +14,7 @@ lWPPikachuThunderTrailWeaponAttributes;         // 0x00000040
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

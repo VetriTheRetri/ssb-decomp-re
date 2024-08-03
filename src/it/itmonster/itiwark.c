@@ -17,7 +17,7 @@ extern intptr_t lITIwarkDisplayList;        // 0x0000A640
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -47,7 +47,7 @@ itCreateDesc dITIwarkItemDesc =
 };
 
 // 0x8018AAC4
-itStatusDesc dITIwarkStatusDesc[/* */] = 
+itStatusDesc dITIwarkStatusDescs[/* */] = 
 {
     // Status 0 (Neutral Fly)
     {
@@ -242,7 +242,7 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
 void itIwarkNAttackSetStatus(GObj *item_gobj)
 {
     itIwarkNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITIwarkStatusDesc, itStatus_Iwark_NAttack);
+    itMainSetItemStatus(item_gobj, dITIwarkStatusDescs, itStatus_Iwark_NAttack);
 }
 
 // 0x8017DA94
@@ -268,7 +268,7 @@ void itIwarkNFlySetStatus(GObj *item_gobj)
 
     ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITIwarkStatusDesc, itStatus_Iwark_NFly);
+    itMainSetItemStatus(item_gobj, dITIwarkStatusDescs, itStatus_Iwark_NFly);
 }
 
 // 0x8017DB18

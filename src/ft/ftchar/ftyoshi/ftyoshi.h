@@ -11,7 +11,7 @@
 #define FTYOSHI_YOSHIBOMB_VEL_X_CLAMP 30.0F     // Not sure how this takes effect
 #define FTYOSHI_YOSHIBOMB_VEL_Y_CLAMP -150.0F   // Constant downward velocity during ground pound
 
-extern ftStatusDesc dFTYoshiSpecialStatusDesc[/* */];
+extern ftStatusDesc dFTYoshiSpecialStatusDescs[/* */];
 
 extern void *gFTDataYoshiMain;
 extern void *gFTDataYoshiMainMotion;

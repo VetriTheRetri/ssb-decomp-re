@@ -12,7 +12,7 @@ extern intptr_t lITMarumineHitEvents;       // 0x0000014C
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -40,7 +40,7 @@ itCreateDesc dITMarumineItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITMarumineStatusDesc[/* */] = 
+itStatusDesc dITMarumineStatusDescs[/* */] = 
 {
     // Status 0 (Neutral Explosion)
     {
@@ -186,7 +186,7 @@ void itMarumineNExplodeSetStatus(GObj *item_gobj)
     ip->item_event_index = 0;
 
     itMarumineNExplodeUpdateHitEvent(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMarumineStatusDesc, itStatus_Marumine_NExplode);
+    itMainSetItemStatus(item_gobj, dITMarumineStatusDescs, itStatus_Marumine_NExplode);
 }
 
 // 0x80183A74

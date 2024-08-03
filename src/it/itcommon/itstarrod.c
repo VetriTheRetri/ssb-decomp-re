@@ -16,7 +16,7 @@ lITStarRodWeaponStarSmashAttributes;        // 0x00000508
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -44,7 +44,7 @@ itCreateDesc dITStarRodItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITStarRodStatusDesc[/* */] =
+itStatusDesc dITStarRodStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -184,7 +184,7 @@ sb32 itStarRodAFallProcMap(GObj *item_gobj)
 void itStarRodGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDesc, itStatus_StarRod_GWait);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_GWait);
 }
 
 // 0x80177F4C
@@ -195,7 +195,7 @@ void itStarRodAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDesc, itStatus_StarRod_AFall);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_AFall);
 }
 
 // 0x80177F90
@@ -203,7 +203,7 @@ void itStarRodFHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDesc, itStatus_StarRod_FHold);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_FHold);
 }
 
 // 0x80177FC4
@@ -238,7 +238,7 @@ sb32 itStarRodFThrowProcHit(GObj *item_gobj)
 // 0x80178058
 void itStarRodFThrowSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDesc, itStatus_StarRod_FThrow);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_FThrow);
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 }
 
@@ -257,7 +257,7 @@ sb32 itStarRodFDropProcMap(GObj *item_gobj)
 // 0x801780F0
 void itStarRodFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDesc, itStatus_StarRod_FDrop);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_FDrop);
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 }
 

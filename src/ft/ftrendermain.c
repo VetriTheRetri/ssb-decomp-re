@@ -35,7 +35,7 @@ gsColorRGBA sFTRenderMainFogColor;
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

@@ -21,7 +21,7 @@ GObj *sGRWallpaperGObj;
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

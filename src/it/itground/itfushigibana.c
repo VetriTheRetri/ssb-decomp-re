@@ -22,7 +22,7 @@ extern s32 dGRYamabukiMonsterAttackKind;
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

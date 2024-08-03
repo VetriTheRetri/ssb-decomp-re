@@ -13,7 +13,7 @@ extern intptr_t lITPowerBlockAnimJoint;     // 0x00001288
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -41,7 +41,7 @@ itCreateDesc dITPowerBlockItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITPowerBlockStatusDesc[/* */] =
+itStatusDesc dITPowerBlockStatusDescs[/* */] =
 {
     // Status 0 (Neutral Wait)
     {
@@ -89,7 +89,7 @@ void itPowerBlockNWaitSetStatus(GObj *item_gobj)
 {
     itStruct *ip;
 
-    itMainSetItemStatus(item_gobj, dITPowerBlockStatusDesc, itStatus_PowerBlock_NWait);
+    itMainSetItemStatus(item_gobj, dITPowerBlockStatusDescs, itStatus_PowerBlock_NWait);
 
     ip = itGetStruct(item_gobj), ip->item_hurt.hitstatus = nGMHitStatusNormal;
 }

@@ -29,7 +29,7 @@ extern u32 gGM1PGameBonusDefendIsProjectileCount[/* */];                    // S
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

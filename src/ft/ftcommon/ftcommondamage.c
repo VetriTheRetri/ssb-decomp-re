@@ -5,7 +5,7 @@ extern alSoundEffect* func_800269C0_275C0(u16);
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

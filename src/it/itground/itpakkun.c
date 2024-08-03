@@ -19,7 +19,7 @@ intptr_t lITPakkunNDamageMatAnimJoint;      // 0x00000E04
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -47,7 +47,7 @@ itCreateDesc dITPakkunItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITPakkunStatusDesc[/* */] = 
+itStatusDesc dITPakkunStatusDescs[/* */] = 
 {
     // Status 0 (Dokan Wait)
     {
@@ -109,7 +109,7 @@ enum itPakkunStatus
 // 0x8017CF20
 void itPakkunDWaitSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITPakkunStatusDesc, itStatus_Pakkun_DWait);
+    itMainSetItemStatus(item_gobj, dITPakkunStatusDescs, itStatus_Pakkun_DWait);
 
     itGetStruct(item_gobj)->proc_dead = NULL;
 
@@ -120,13 +120,13 @@ void itPakkunDWaitSetStatus(GObj *item_gobj)
 // 0x8017CF58
 void itPakkunDAppearSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITPakkunStatusDesc, itStatus_Pakkun_DAppear);
+    itMainSetItemStatus(item_gobj, dITPakkunStatusDescs, itStatus_Pakkun_DAppear);
 }
 
 // 0x8017CF80
 void itPakkunNDamageSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITPakkunStatusDesc, itStatus_Pakkun_NDamage);
+    itMainSetItemStatus(item_gobj, dITPakkunStatusDescs, itStatus_Pakkun_NDamage);
 
     itGetStruct(item_gobj)->proc_dead = itPakkunNDamageProcDead;
 }

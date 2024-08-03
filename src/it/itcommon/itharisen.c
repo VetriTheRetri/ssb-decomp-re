@@ -13,7 +13,7 @@ extern void func_8000BD8C_C98C(GObj*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -44,7 +44,7 @@ itCreateDesc dITHarisenItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITHarisenStatusDesc[/* */] =
+itStatusDesc dITHarisenStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -168,7 +168,7 @@ sb32 itHarisenAFallProcMap(GObj *item_gobj)
 void itHarisenGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDesc, itStatus_Harisen_GWait);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_GWait);
 }
 
 // 0x80175228
@@ -179,7 +179,7 @@ void itHarisenAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDesc, itStatus_Harisen_AFall);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_AFall);
 }
 
 // 0x8017526C
@@ -191,7 +191,7 @@ void itHarisenFHoldSetStatus(GObj *item_gobj)
 
     dobj->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDesc, itStatus_Harisen_FHold);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_FHold);
 }
 
 // 0x801752C0
@@ -226,7 +226,7 @@ sb32 itHarisenSDefaultProcHit(GObj *item_gobj)
 // 0x80175350
 void itHarisenFThrowSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDesc, itStatus_Harisen_FThrow);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_FThrow);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(-90.0F); // HALF_PI32
 }
@@ -240,7 +240,7 @@ sb32 itHarisenFDropProcMap(GObj *item_gobj)
 // 0x801753C4
 void itHarisenFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDesc, itStatus_Harisen_FDrop);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_FDrop);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(-90.0F);
 }

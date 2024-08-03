@@ -19,7 +19,7 @@
 #define FTLINK_SPINATTACK_FALLSPECIAL_DRIFT 0.6F       // Aerial drift multiplier once Link enters freefall after aerial Spin Attack
 #define FTLINK_SPINATTACK_LANDING_LAG 0.65F            // Divide landing animation length by this value
 
-extern ftStatusDesc dFTLinkSpecialStatusDesc[/* */];
+extern ftStatusDesc dFTLinkSpecialStatusDescs[/* */];
 
 extern void *gFTDataLinkMain;
 extern void *gFTDataLinkMainMotion;

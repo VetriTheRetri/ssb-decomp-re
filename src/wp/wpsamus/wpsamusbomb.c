@@ -12,7 +12,7 @@ lWPSamusBombWeaponAttributes;               // 0x0000000C
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

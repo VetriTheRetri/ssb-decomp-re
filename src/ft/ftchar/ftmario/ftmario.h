@@ -18,15 +18,16 @@
 #define FTMARIO_TORNADO_VEL_Y_BASE 15.0F            // Subtract 0.0 or FTMARIO_TORNADO_VEL_Y_TAP based on whether tornado charge is empty or full, respectively
 #define FTMARIO_TORNADO_VEL_Y_TAP 22.0F             // Y-velocity added per B-tap during Mario Tornado
 
-extern ftStatusDesc dFTMarioSpecialStatusDesc[/* */];
+extern ftStatusDesc dFTMarioSpecialStatusDescs[/* */];
+extern ftMotionDesc dFTMarioMotionDescs[/* */];
 
-extern void *gFTDataMarioMain;
-extern void *gFTDataMarioMainMotion;
-extern void *gFTDataMarioModel;
-extern void *gFTDataMarioSpecial1;
-extern void *gFTDataMarioSpecial2;
-extern void *gFTDataMarioSpecial3;
-extern s32 gFTDataMarioParticleBankID;
+extern void *gFTMarioFileMain;
+extern void *gFTMarioFileMainMotion;
+extern void *gFTMarioFileModel;
+extern void *gFTMarioFileSpecial1;
+extern void *gFTMarioFileSpecial2;
+extern void *gFTMarioFileSpecial3;
+extern s32 gFTMarioParticleBankID;
 
 typedef enum ftMarioMotion
 {

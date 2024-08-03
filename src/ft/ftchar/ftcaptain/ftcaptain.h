@@ -16,7 +16,7 @@
 #define FTCAPTAIN_FALCONKICK_VEL_SCALE_APPLY_TIME 6
 #define FTCAPTAIN_FALCONKICK_VEL_SCALE_DIV 2.0F
 
-extern ftStatusDesc dFTCaptainSpecialStatusDesc[/* */];
+extern ftStatusDesc dFTCaptainSpecialStatusDescs[/* */];
 
 extern void *gFTDataCaptainMain;
 extern void *gFTDataCaptainMainMotion;

@@ -16,7 +16,7 @@ extern intptr_t lITKamexDisplayList;        // 0x0000ED60
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -46,7 +46,7 @@ itCreateDesc dITKamexItemDesc =
 };
 
 // 0x8018AF14
-itStatusDesc dITKamexStatusDesc[/* */] =
+itStatusDesc dITKamexStatusDescs[/* */] =
 {
     // Status 0 (Air Fall)
     {
@@ -211,7 +211,7 @@ void itKamexAFallInitItemVars(GObj *item_gobj)
 void itKamexAFallSetStatus(GObj *item_gobj)
 {
     itKamexAFallInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITKamexStatusDesc, itStatus_Kamex_AFall);
+    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, itStatus_Kamex_AFall);
 }
 
 // 0x801808D8
@@ -252,7 +252,7 @@ void itKamexNAppearSetStatus(GObj *item_gobj)
     {
         func_800269C0_275C0(nGMSoundVoiceMBallKamexSpawn);
     }
-    itMainSetItemStatus(item_gobj, dITKamexStatusDesc, itStatus_Kamex_NAppear);
+    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, itStatus_Kamex_NAppear);
 }
 
 // 0x801809BC
@@ -317,7 +317,7 @@ void itKamexNAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
 // 0x80180AF4
 void itKamexNAttackSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITKamexStatusDesc, itStatus_Kamex_NAttack);
+    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, itStatus_Kamex_NAttack);
 }
 
 // 0x80180B1C

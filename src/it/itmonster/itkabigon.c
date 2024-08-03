@@ -13,7 +13,7 @@ extern intptr_t lITKabigonAnimJoint;        // 0x0000B158
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -43,7 +43,7 @@ itCreateDesc dITKabigonItemDesc =
 };
 
 // 0x8018AB74
-itStatusDesc dITKabigonStatusDesc[/* */] = 
+itStatusDesc dITKabigonStatusDescs[/* */] = 
 {
     // Status 0 (Neutral Jump)
     {
@@ -182,7 +182,7 @@ void itKabigonNFallInitItemVars(GObj *item_gobj)
 void itKabigonNFallSetStatus(GObj *item_gobj)
 {
     itKabigonNFallInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITKabigonStatusDesc, itStatus_Kabigon_NFall);
+    itMainSetItemStatus(item_gobj, dITKabigonStatusDescs, itStatus_Kabigon_NFall);
 }
 
 // 0x8017E384
@@ -269,7 +269,7 @@ void itKabigonNJumpInitItemVars(GObj *item_gobj)
 void itKabigonNJumpSetStatus(GObj *item_gobj)
 {
     itKabigonNJumpInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITKabigonStatusDesc, itStatus_Kabigon_NJump);
+    itMainSetItemStatus(item_gobj, dITKabigonStatusDescs, itStatus_Kabigon_NJump);
 }
 
 // 0x8017E67C

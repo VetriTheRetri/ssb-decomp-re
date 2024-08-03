@@ -14,7 +14,7 @@ extern void ftParamSetHitStatusAll(GObj*, s32);
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

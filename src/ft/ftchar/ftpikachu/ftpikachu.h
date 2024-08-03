@@ -42,7 +42,7 @@
 #define FTPIKACHU_THUNDER_HIT_GRAVITY 0.5F
 #define FTPIKACHU_THUNDER_HIT_VEL_Y	20.0F						// Vertical velocity gained if Thunder connects with Pikachu
 
-extern ftStatusDesc dFTPikachuSpecialStatusDesc[/* */];
+extern ftStatusDesc dFTPikachuSpecialStatusDescs[/* */];
 
 extern void *gFTDataPikachuMain;
 extern void *gFTDataPikachuMainMotion;

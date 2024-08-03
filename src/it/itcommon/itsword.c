@@ -10,7 +10,7 @@ extern intptr_t lITSwordItemAttributes;     // 0x00000190
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -38,7 +38,7 @@ itCreateDesc dITSwordITemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITSwordStatusDesc[/* */] = 
+itStatusDesc dITSwordStatusDescs[/* */] = 
 {
     // Status 0 (Ground Wait)
     {
@@ -152,7 +152,7 @@ sb32 itSwordAFallProcMap(GObj *item_gobj)
 void itSwordGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITSwordStatusDesc, itStatus_Sword_GWait);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_GWait);
 }
 
 // 0x80174C18
@@ -163,7 +163,7 @@ void itSwordAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITSwordStatusDesc, itStatus_Sword_AFall);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_AFall);
 }
 
 // 0x80174C5C
@@ -171,7 +171,7 @@ void itSwordFHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
-    itMainSetItemStatus(item_gobj, dITSwordStatusDesc, itStatus_Sword_FHold);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_FHold);
 }
 
 // 0x80174C90
@@ -195,7 +195,7 @@ sb32 itSwordFThrowProcHit(GObj *item_gobj)
 // 0x80174CE8
 void itSwordFThrowSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSwordStatusDesc, itStatus_Sword_FThrow);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_FThrow);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }
@@ -209,7 +209,7 @@ sb32 itSwordFDropProcMap(GObj *item_gobj)
 // 0x80174D5C
 void itSwordFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSwordStatusDesc, itStatus_Sword_FDrop);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_FDrop);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }

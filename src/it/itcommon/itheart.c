@@ -10,7 +10,7 @@ extern intptr_t lITHeartItemAttributes;     // 0x00000100
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -38,7 +38,7 @@ itCreateDesc dITHeartItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITHeartStatusDesc[/* */] =
+itStatusDesc dITHeartStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -126,7 +126,7 @@ sb32 itHeartAFallProcMap(GObj *item_gobj)
 void itHeartGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITHeartStatusDesc, itStatus_Heart_GWait);
+    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, itStatus_Heart_GWait);
 }
 
 // 0x801747B4
@@ -137,7 +137,7 @@ void itHeartAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITHeartStatusDesc, itStatus_Heart_AFall);
+    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, itStatus_Heart_AFall);
 }
 
 // 0x801747F8
@@ -149,7 +149,7 @@ sb32 itHeartFDropProcMap(GObj *item_gobj)
 // 0x80174828
 void itHeartFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHeartStatusDesc, itStatus_Heart_FDrop);
+    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, itStatus_Heart_FDrop);
 }
 
 // 0x80174850

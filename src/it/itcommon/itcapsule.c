@@ -11,7 +11,7 @@ extern intptr_t lITCapsuleHitEvents;        // 0x00000098
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -39,7 +39,7 @@ itCreateDesc dITCapsuleItemDesc =
     itCapsuleSDefaultProcHit                // Proc Damage
 };
 
-itStatusDesc dITCapsuleStatusDesc[/* */] =
+itStatusDesc dITCapsuleStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -178,7 +178,7 @@ sb32 itCapsuleAFallProcMap(GObj *item_gobj)
 void itCapsuleGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_GWait);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, itStatus_Capsule_GWait);
 }
 
 // 0x80174098
@@ -194,13 +194,13 @@ void itCapsuleAFallSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_AFall);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, itStatus_Capsule_AFall);
 }
 
 // 0x801740FC
 void itCapsuleFHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_FHold);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, itStatus_Capsule_FHold);
 }
 
 // 0x80174124
@@ -237,7 +237,7 @@ void itCapsuleFThrowSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_FThrow);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, itStatus_Capsule_FThrow);
 }
 
 // 0x801741F0
@@ -257,7 +257,7 @@ sb32 itCapsuleFDropProcMap(GObj *item_gobj)
 // 0x80174248
 void itCapsuleFDropSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_FDrop);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, itStatus_Capsule_FDrop);
 }
 
 // 0x80174270
@@ -323,7 +323,7 @@ void itCapsuleNExplodeInitItemVars(GObj *item_gobj)
 void itCapsuleNExplodeSetStatus(GObj *item_gobj)
 {
     itCapsuleNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDesc, itStatus_Capsule_NExplode);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, itStatus_Capsule_NExplode);
 }
 
 // 0x80174428

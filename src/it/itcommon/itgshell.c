@@ -13,7 +13,7 @@ extern intptr_t lITGShellMatAnimJoint;      // 0x00006048
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -41,7 +41,7 @@ itCreateDesc dITGShellItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITGShellStatusDesc[/* */] =
+itStatusDesc dITGShellStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -244,7 +244,7 @@ void itGShellGWaitInitItemVars(GObj *item_gobj)
         ip->phys_info.vel_air.x = 0.0F;
 
         itGShellSDefaultClearAnim(item_gobj);
-        itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_GWait);
+        itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_GWait);
     }
     else if (ip->item_vars.shell.is_damage != FALSE)
     {
@@ -265,7 +265,7 @@ void itGShellGWaitInitItemVars(GObj *item_gobj)
         ip->phys_info.vel_air.x = 0.0F;
 
         itGShellSDefaultClearAnim(item_gobj);
-        itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_GWait);
+        itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_GWait);
     }
 }
 
@@ -287,7 +287,7 @@ void itGShellAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_AFall);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_AFall);
 }
 
 // 0x8017897C
@@ -333,7 +333,7 @@ void itGShellFHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_FHold);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_FHold);
 }
 
 // 0x80178AC4
@@ -362,7 +362,7 @@ void itGShellFThrowSetStatus(GObj *item_gobj)
     ip->item_vars.shell.health = 1;
     ip->item_vars.shell.is_damage = TRUE;
 
-    itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_FThrow);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_FThrow);
 }
 
 // 0x80178B60
@@ -373,7 +373,7 @@ void itGShellFDropSetStatus(GObj *item_gobj)
     ip->item_vars.shell.health = 1;
     ip->item_vars.shell.is_damage = TRUE;
 
-    itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_FDrop);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_FDrop);
 }
 
 // 0x80178B98
@@ -508,7 +508,7 @@ void itGShellGSpinInitItemVars(GObj *item_gobj)
 void itGShellGSpinSetStatus(GObj *item_gobj)
 {
     itGShellGSpinInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_GSpin);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_GSpin);
 }
 
 // 0x80178F10
@@ -539,7 +539,7 @@ void itGShellASpinInitItemVars(GObj *item_gobj)
 void itGShellASpinSetStatus(GObj *item_gobj)
 {
     itGShellASpinInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITGShellStatusDesc, itStatus_GShell_ASpin);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_ASpin);
 }
 
 // 0x80178FDC

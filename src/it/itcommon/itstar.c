@@ -11,7 +11,7 @@ extern intptr_t lITStarItemAttributes;      // 0x00000148
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

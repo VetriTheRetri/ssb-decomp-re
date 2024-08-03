@@ -12,7 +12,7 @@ extern intptr_t lITEggHitEvents;            // 0x00000B14
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -40,7 +40,7 @@ itCreateDesc dITEggItemDesc =
     itEggSDefaultProcHit                    // Proc Damage
 };
 
-itStatusDesc dITEggStatusDesc[/* */] =
+itStatusDesc dITEggStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -195,7 +195,7 @@ void itEggGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
     itEggGWaitSetModelVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITEggStatusDesc, itStatus_Egg_GWait);
+    itMainSetItemStatus(item_gobj, dITEggStatusDescs, itStatus_Egg_GWait);
 }
 
 // 0x8018171C
@@ -211,13 +211,13 @@ void itEggAFallSetStatus(GObj *item_gobj)
     ip->is_damage_all = TRUE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITEggStatusDesc, itStatus_Egg_AFall);
+    itMainSetItemStatus(item_gobj, dITEggStatusDescs, itStatus_Egg_AFall);
 }
 
 // 0x80181778
 void itEggFHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITEggStatusDesc, itStatus_Egg_FHold);
+    itMainSetItemStatus(item_gobj, dITEggStatusDescs, itStatus_Egg_FHold);
 }
 
 // 0x801817A0
@@ -259,7 +259,7 @@ void itEggFThrowSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
-    itMainSetItemStatus(item_gobj, dITEggStatusDesc, itStatus_Egg_FThrow);
+    itMainSetItemStatus(item_gobj, dITEggStatusDescs, itStatus_Egg_FThrow);
 }
 
 // 0x80181894
@@ -285,7 +285,7 @@ void itEggFDropSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
-    itMainSetItemStatus(item_gobj, dITEggStatusDesc, itStatus_Egg_FDrop);
+    itMainSetItemStatus(item_gobj, dITEggStatusDescs, itStatus_Egg_FDrop);
 }
 
 // 0x80181928
@@ -372,7 +372,7 @@ void itEggNExplodeInitItemVars(GObj *item_gobj)
 void itEggNExplodeSetStatus(GObj *item_gobj)
 {
     itEggNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITEggStatusDesc, itStatus_Egg_NExplode);
+    itMainSetItemStatus(item_gobj, dITEggStatusDescs, itStatus_Egg_NExplode);
 }
 
 // 0x80181B90

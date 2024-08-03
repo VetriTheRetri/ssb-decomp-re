@@ -21,7 +21,7 @@ lITLizardonMatAnimJoint;                    // 0x0000D688
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -51,7 +51,7 @@ itCreateDesc dITLizardonItemDesc =
 };
 
 // 0x8018AD64
-itStatusDesc dITLizardonStatusDesc[/* */] = 
+itStatusDesc dITLizardonStatusDescs[/* */] = 
 {
     // Status 0 (Unused Fall)
     {
@@ -167,7 +167,7 @@ sb32 itLizardonUFallSetStatus(GObj *item_gobj) // Unused
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITLizardonStatusDesc, itStatus_Lizardon_UFall);
+    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, itStatus_Lizardon_UFall);
 }
 
 // 0x8017F53C
@@ -200,7 +200,7 @@ sb32 itLizardonAFallProcMap(GObj *item_gobj)
 // 0x8017F5C4
 void itLizardonAFallSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITLizardonStatusDesc, itStatus_Lizardon_AFall);
+    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, itStatus_Lizardon_AFall);
 }
 
 // 0x8017F5EC
@@ -296,7 +296,7 @@ void itLizardonNAttackInitItemVars(GObj *item_gobj)
 // 0x8017F8E4
 void itLizardonNAttackSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITLizardonStatusDesc, itStatus_Lizardon_NAttack);
+    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, itStatus_Lizardon_NAttack);
 }
 
 // 0x8017F90C

@@ -50,7 +50,7 @@ itSpawnActor gITManagerSpawnActor;
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

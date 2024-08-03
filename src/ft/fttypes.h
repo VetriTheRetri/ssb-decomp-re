@@ -42,6 +42,16 @@
 
 #define FTMOTION_SCRIPT_NULL            0x80000000
 
+#define FTANIM_USE_TRANSN_JOINT         0x80000000
+#define FTANIM_USE_XROTN_JOINT          0x40000000
+#define FTANIM_USE_YROTN_JOINT          0x20000000
+
+#define FTANIM_USE_SUBMOTION_SCRIPT     0x00000010
+#define FTANIM_USE_TRANSLATE_SCALES     0x00000004
+#define FTANIM_USE_SHIELDPOSE           0x00000002
+#define FTANIM_USE_ANIMLOCKS            0x00000001
+#define FTANIM_USE_NONE                 0x00000000
+
 #define FTSTATUS_PRESERVE_NONE          (0)                                     // 0x0 - Just zero
 #define FTSTATUS_PRESERVE_HIT           (1 << nFTStatusPreserveHit)             // 0x1
 #define FTSTATUS_PRESERVE_COLANIM       (1 << nFTStatusPreserveColAnim)         // 0x2
@@ -157,11 +167,13 @@ struct ftThrownStatusArray
 
 union ftAnimFlags
 {
+    u32 word;
+
     struct
     {
-        u32 is_use_xrotn_joint : 1;  // 0x80000000
-        u32 is_use_transn_joint : 1; // 0x40000000
-        u32 is_use_yrotn_joint : 1;  // 0x20000000
+        u32 is_use_xrotn_joint : 1;         // 0x80000000
+        u32 is_use_transn_joint : 1;        // 0x40000000
+        u32 is_use_yrotn_joint : 1;         // 0x20000000
         u32 x198_flag_b3 : 1;
         u32 x198_flag_b4 : 1;
         u32 x198_flag_b5 : 1;
@@ -186,27 +198,25 @@ union ftAnimFlags
         u32 x19B_flag_b0 : 1;
         u32 x19B_flag_b1 : 1;
         u32 x19B_flag_b2 : 1;
-        u32 is_use_submotion_script : 1;
-        u32 x19B_flag_b4 : 1;
-        u32 is_have_translate_scale : 1;
-        u32 is_use_shieldpose : 1;
-        u32 is_use_animlocks : 1;
+        u32 is_use_submotion_script : 1;    // 0x00000010
+        u32 x19B_flag_b4 : 1;               // 0x00000008
+        u32 is_have_translate_scale : 1;    // 0x00000004
+        u32 is_use_shieldpose : 1;          // 0x00000002
+        u32 is_use_animlocks : 1;           // 0x00000001
 
     } flags;
-
-    u32 word;
 };
 
-struct ftScriptInfo
+struct ftMotionDesc
 {
     intptr_t anim_file_id;  // Animation file ID
     intptr_t offset;        // Offset?
     ftAnimFlags anim_flags; // Animation flags
 };
 
-struct ftScriptInfoArray
+struct ftMotionDescArray
 {
-    ftScriptInfo script_info[1]; // Array size = last animation ID?
+    ftMotionDesc script_info[1]; // Array size = last animation ID?
 };
 
 struct ftFileSize
@@ -243,8 +253,8 @@ struct ftData
     uintptr_t particles_texture_lo;
     uintptr_t particles_texture_hi;
     intptr_t o_attributes; // Offset to fighter's attributes
-    ftScriptInfoArray *mainmotion;
-    ftScriptInfoArray *submotion;
+    ftMotionDescArray *mainmotion;
+    ftMotionDescArray *submotion;
     s32 mainmotion_array_count;
     s32 *submotion_array_count;
     size_t file_anim_size;

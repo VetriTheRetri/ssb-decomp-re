@@ -14,7 +14,7 @@ lITLGunWeaponAmmoWeaponAttributes;          // 0x000002B0
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -42,7 +42,7 @@ itCreateDesc dITLGunItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITLGunStatusDesc[/* */] =
+itStatusDesc dITLGunStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -180,7 +180,7 @@ sb32 itLGunAFallProcMap(GObj *item_gobj)
 void itLGunGWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITLGunStatusDesc, itStatus_LGun_GWait);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, itStatus_LGun_GWait);
 }
 
 // 0x801755B8
@@ -191,7 +191,7 @@ void itLGunAFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITLGunStatusDesc, itStatus_LGun_AFall);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, itStatus_LGun_AFall);
 }
 
 // 0x801755FC
@@ -199,7 +199,7 @@ void itLGunFHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITLGunStatusDesc, itStatus_LGun_FHold);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, itStatus_LGun_FHold);
 }
 
 // 0x80175630
@@ -231,7 +231,7 @@ void itLGunFThrowSetStatus(GObj *item_gobj)
 {
     s32 lr = ftGetStruct(itGetStruct(item_gobj)->owner_gobj)->lr;
 
-    itMainSetItemStatus(item_gobj, dITLGunStatusDesc, itStatus_LGun_FThrow);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, itStatus_LGun_FThrow);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == nGMDirectionL) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
 }
@@ -253,7 +253,7 @@ void itLGunFDropSetStatus(GObj *item_gobj)
 {
     s32 lr = ftGetStruct(itGetStruct(item_gobj)->owner_gobj)->lr;
 
-    itMainSetItemStatus(item_gobj, dITLGunStatusDesc, itStatus_LGun_FDrop);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, itStatus_LGun_FDrop);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == nGMDirectionL) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
 }

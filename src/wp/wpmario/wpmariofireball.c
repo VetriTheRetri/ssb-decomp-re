@@ -16,7 +16,7 @@ lWPMarioFireballLuigiWeaponAttributes;      // 0x00000000
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -33,7 +33,7 @@ wpMarioFireballAttributes dWPMarioFireballWeaponAttributes[/* */] =
         F_CLC_DTOR32(-5.0F),                    // Grounded launch angle (-0.0872664675117F)
         F_CLC_DTOR32(-5.0F),                    // Aerial launch angle (-0.0872664675117F)
         50.0F,                                  // Base velocity
-        &gFTDataMarioSpecial1,                  // Pointer to ???
+        &gFTMarioFileSpecial1,                  // Pointer to ???
         &lWPMarioFireballMarioWeaponAttributes, // Offset of hitbox/attributes?
         0.0F                                    // Animation starting frame?
     },
@@ -59,7 +59,7 @@ wpCreateDesc dWPMarioFireballWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindFireball,                       // Weapon Kind
-    &gFTDataMarioMain,                      // Pointer to character's loaded files?
+    &gFTMarioFileMain,                      // Pointer to character's loaded files?
     &lWPMariroFireballWeaponAttributes,     // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

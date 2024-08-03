@@ -10,7 +10,7 @@
 
 #define FTBOSS_OKUHIKOUKI_VEL_ADD 40.0F	
 
-extern ftStatusDesc dFTBossSpecialStatusDesc[/* */];
+extern ftStatusDesc dFTBossSpecialStatusDescs[/* */];
 
 extern void *gFTDataBossMain;
 extern void *gFTDataBossMainMotion;

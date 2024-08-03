@@ -11,7 +11,7 @@ extern intptr_t lITMewDataStart;            // 0x0000BCC0
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -41,7 +41,7 @@ itCreateDesc dITMewItemDesc =
 };
 
 // 0x8018AC74
-itStatusDesc dITMewStatusDesc[/* */] =
+itStatusDesc dITMewStatusDescs[/* */] =
 {
     // Status 0 (Neutral FLy)
     {
@@ -129,7 +129,7 @@ void itMewNFlyInitItemVars(GObj *item_gobj)
 void itMewNFlySetStatus(GObj *item_gobj)
 {
     itMewNFlyInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMewStatusDesc, itStatus_Mew_NFly);
+    itMainSetItemStatus(item_gobj, dITMewStatusDescs, itStatus_Mew_NFly);
 }
 
 // 0x8017ED54

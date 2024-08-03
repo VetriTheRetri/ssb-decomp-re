@@ -6,7 +6,7 @@
 // NOTE: Scuffed attack IDs, SpecialHi and SpecialLw are swapped
 
 // 0x8012B010
-ftStatusDesc dFTPikachuSpecialStatusDesc[/* */] = 
+ftStatusDesc dFTPikachuSpecialStatusDescs[/* */] = 
 {
 	// Status 220 (0xDC): AppearR
 	{

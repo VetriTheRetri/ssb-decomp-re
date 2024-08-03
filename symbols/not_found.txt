@@ -787,9 +787,9 @@ sMPProcessLastWallAngle = 0x80130E08;
 
 sMPCommonProcPass = 0x80130E20;
 
-gFTDataMarioMain = 0x80130E30;
-gFTDataMarioSpecial1 = 0x80130E3C;
-gFTDataMarioSpecial2 = 0x80130E40;
+gFTMarioFileMain = 0x80130E30;
+gFTMarioFileSpecial1 = 0x80130E3C;
+gFTMarioFileSpecial2 = 0x80130E40;
 
 gFTDataFoxMainMotion = 0x80130E94;
 gFTDataFoxSpecial1 = 0x80130E9C;

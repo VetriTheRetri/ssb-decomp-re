@@ -16,7 +16,7 @@ extern intptr_t lITLinkBombBloatScale; 	// 0x000000A8
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -44,7 +44,7 @@ itCreateDesc dItLinkBombItemDesc =
 	NULL								// Proc Damage
 };
 
-itStatusDesc dItLinkBombStatusDesc[/* */] = 
+itStatusDesc dItLinkBombStatusDescs[/* */] = 
 {
 	// Status 0 (Ground Wait)
 	{
@@ -346,7 +346,7 @@ void itLinkBombGWaitSetStatus(GObj* item_gobj)
 
 	itMapSetGround(ip);
 	itLinkBombSDefaultSetHitStatusNormal(item_gobj);
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_GWait);
+	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_GWait);
 }
 
 // 80185FD8
@@ -358,7 +358,7 @@ void itLinkBombAFallSetStatus(GObj* item_gobj)
 
 	itMapSetAir(ip);
 	itLinkBombSDefaultSetHitStatusNormal(item_gobj);
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_AFall);
+	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_AFall);
 }
 
 // 80186024
@@ -401,7 +401,7 @@ sb32 itLinkBombFHoldProcUpdate(GObj* item_gobj)
 void itLinkBombFHoldSetStatus(GObj* item_gobj)
 {
 	itLinkBombSDefaultSetHitStatusNone(item_gobj);
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_FHold);
+	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_FHold);
 }
 
 // 80186150
@@ -428,7 +428,7 @@ void itLinkBombFThrowSetStatus(GObj* item_gobj)
 
 	ip->is_damage_all = TRUE;
 
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_FThrow);
+	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_FThrow);
 }
 
 // 80186270
@@ -475,7 +475,7 @@ void itLinkBombFDropSetStatus(GObj* item_gobj)
 
 	ip->is_damage_all = TRUE;
 
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_FDrop);
+	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_FDrop);
 }
 
 void itLinkBombNExplodeInitItemVars(GObj* item_gobj)
@@ -564,7 +564,7 @@ sb32 itLinkBombNExplodeProcUpdate(GObj* item_gobj)
 void itLinkBombNExplodeSetStatus(GObj* item_gobj)
 {
 	itLinkBombNExplodeInitHitbox(item_gobj);
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDesc, itStatus_LinkBomb_NExplode);
+	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_NExplode);
 }
 
 // 801865A0

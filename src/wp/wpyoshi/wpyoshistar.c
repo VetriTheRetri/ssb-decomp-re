@@ -12,7 +12,7 @@ intptr_t lWPYoshiStarWeaponAttributes;      // 0x00000040
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

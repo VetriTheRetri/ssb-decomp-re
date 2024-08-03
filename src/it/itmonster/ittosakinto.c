@@ -13,7 +13,7 @@ extern intptr_t lITTosakintoMatAnimJoint;   // 0x0000B90C
 
 // // // // // // // // // // // //
 //                               //
-//        INITIALIZED DATA       //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -43,7 +43,7 @@ itCreateDesc dITTosakintoItemDesc =
 };
 
 // 0x8018ABF4 
-itStatusDesc dITTosakintoStatusDesc[/* */] =
+itStatusDesc dITTosakintoStatusDescs[/* */] =
 {
     // Status 0 (Neutral Appear)
     {
@@ -128,7 +128,7 @@ void itTosakintoNAppearSetStatus(GObj *item_gobj)
     {
         func_800269C0_275C0(nGMSoundVoiceMBallTosakintoSpawn);
     }
-    itMainSetItemStatus(item_gobj, dITTosakintoStatusDesc, itStatus_Tosakinto_NAppear);
+    itMainSetItemStatus(item_gobj, dITTosakintoStatusDescs, itStatus_Tosakinto_NAppear);
 }
 
 // 0x8017E880
@@ -199,7 +199,7 @@ void itTosakintoNSplashInitItemVars(GObj *item_gobj)
 void itTosakintoNSplashSetStatus(GObj *item_gobj)
 {
     itTosakintoNSplashInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTosakintoStatusDesc, itStatus_Tosakinto_NSplash);
+    itMainSetItemStatus(item_gobj, dITTosakintoStatusDescs, itStatus_Tosakinto_NSplash);
 }
 
 // 0x8017EA48

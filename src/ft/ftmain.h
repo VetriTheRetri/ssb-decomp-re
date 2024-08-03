@@ -8,7 +8,7 @@
 #include <sys/objdef.h>
 #include <gm/gmscript.h>
 
-extern void ftMainParseMotionEvent(GObj* fighter_gobj, ftStruct* fp, ftMotionEvent* p_event, u32 ev_kind);
+extern void ftMainParseMotionEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionScript *ms, u32 ev_kind);
 extern void ftMainUpdateMotionEventsNoEffect(GObj* fighter_gobj);
 extern void ftMainUpdateMotionEventsDefault(GObj* fighter_gobj);
 extern void ftMainUpdateMotionEventsDefaultEffect(GObj* fighter_gobj);

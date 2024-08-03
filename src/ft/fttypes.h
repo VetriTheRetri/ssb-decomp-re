@@ -309,7 +309,7 @@ struct ftMotionFlags
     u16 motion_attack_id : 6;
 };
 
-struct ftMotionEvent
+struct ftMotionScript
 {
 	f32 frame_timer;
 	u32* p_script;
@@ -329,12 +329,6 @@ struct ftMotionEventDouble // Event with no arguments
 	u32 opcode : 6;
 	u32 pad1 : 26;
 	u32 pad2 : 32;
-};
-
-struct ftMotionEventWait
-{
-	u32 opcode : 6;
-	u32 frames : 26;
 };
 
 struct ftMotionEventMakeHit1
@@ -1364,7 +1358,7 @@ struct ftStruct
     f32 camera_zoom_frame; // Maximum size of fighter's camera range?
     f32 camera_zoom_range; // Multiplier of fighter's camera range?
 
-    ftMotionEvent motion_event[2][2];
+    ftMotionScript motion_script[2][2];
 
     DObj *joint[FTPARTS_JOINT_NUM_MAX];
 

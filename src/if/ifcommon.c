@@ -1819,7 +1819,7 @@ void ifCommonPlayerArrowsProcRun(GObj *interface_gobj)
         {
             ftStruct *fp = ftGetStruct(fighter_gobj);
 
-            if (!(fp->is_ignore_magnify) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
+            if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
             {
                 if (ABSF(fp->ifpos_x) > ABSF(fp->ifpos_y))
                 {

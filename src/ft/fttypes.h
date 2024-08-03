@@ -190,7 +190,7 @@ union ftAnimFlags
         u32 x19B_flag_b4 : 1;
         u32 is_have_translate_scale : 1;
         u32 is_use_shieldpose : 1;
-        u32 is_use_anim_locks : 1;
+        u32 is_use_animlocks : 1;
 
     } flags;
 
@@ -269,20 +269,20 @@ struct ftCommonPart
 
 struct ftCommonPartContainer
 {
-    ftCommonPart common_parts[2];
+    ftCommonPart commonparts[2];
 };
 
 struct ftModelPartDesc
 {
-    ftModelPart model_parts[1][2];
+    ftModelPart modelparts[1][2];
 };
 
 struct ftModelPartContainer
 {
-    ftModelPartDesc *model_parts_desc[FTPARTS_JOINT_NUM_MAX - nFTPartsJointEnumMax];
+    ftModelPartDesc *modelparts_desc[FTPARTS_JOINT_NUM_MAX - nFTPartsJointEnumMax];
 };
 
-struct ftModelPartDrawStatus
+struct ftModelPartStatus
 {
     s8 drawstatus_default, drawstatus_current;
 };
@@ -295,12 +295,12 @@ struct ftTexturePart
 
 struct ftTexturePartContainer
 {
-    ftTexturePart texture_parts[2];
+    ftTexturePart textureparts[2];
 };
 
-struct ftTexturePartDrawStatus
+struct ftTexturePartStatus
 {
-    s8 drawstatus_default, drawstatus_current;
+    s8 texture_id_default, texture_id_current;
 };
 
 struct ftMotionFlags
@@ -593,7 +593,7 @@ struct ftMotionEventSetModelPartID
 struct ftMotionEventSetTexturePartID
 {
 	u32 opcode : 6;
-	u32 texture_part_id : 6;
+	u32 texturepart_id : 6;
 	u32 frame : 20;
 };
 
@@ -1072,13 +1072,13 @@ struct ftAttributes
     ftHurtboxDesc fighter_hurt_desc[FTPARTS_HURT_NUM_MAX];
     Vec3f hit_detect_range;         // This is a radius around the fighter within which hitbox detection can occur
     s32 unk_ftca_0x29C;
-    u32 *anim_lock;                 // Pointer to two sets of flags marking joints that should not be animated;
+    u32 *animlock;                 // Pointer to two sets of flags marking joints that should not be animated;
                                     // Ignores special joints, so count starts from 4
     s32 effect_joint_ids[5];        // The game will cycle through these joints when applying certain particles such as electricity and flames
     sb32 cliff_status_ga[5];        // Bool for whether fighter is grounded or airborne during each cliff state
     u8 filler_0x2CC[0x2D0 - 0x2CC];
     ftWithheldPart *withheld_parts;
-    ftCommonPartContainer *common_parts_container;
+    ftCommonPartContainer *commonparts_container;
     DObjDesc *dobj_lookup; // WARNING: Not actually DObjDesc* but I don't know what this struct is or what its bounds are; bunch of consecutive floats
     void **shield_keys[8];  // One for each ordinal direction
     s32 joint_rfoot_id; // What does this do?
@@ -1089,9 +1089,9 @@ struct ftAttributes
     f32 unk_0x31C;
     f32 unk_0x320;
     Vec3f *translate_scales; // Scales the translation vector of a given joint?
-    ftModelPartContainer *model_parts_container;
+    ftModelPartContainer *modelparts_container;
     ftMesh *mesh;
-    ftTexturePartContainer *texture_parts_container;
+    ftTexturePartContainer *textureparts_container;
     s32 joint_itemheavy_id;
     ftThrownStatusArray *thrown_status;
     s32 joint_itemlight_id;
@@ -1215,7 +1215,7 @@ struct ftStruct
     ub32 is_invisible : 1;
     ub32 x18E_flag_b0 : 1;
     ub32 x18E_flag_b1 : 1;
-    ub32 is_ignore_magnify : 1;         // Skip rendering magnifying glass if TRUE?
+    ub32 is_magnify_hide : 1;           // Skip rendering magnifying glass if TRUE?
     ub32 is_playertag_hide : 1;         // Skip rendering player indicator if TRUE
     ub32 is_playertag_bossend : 1;      // Also skips rendering player indicator? Used only in "Master Hand defeated" cinematic from what I can tell so far
     ub32 is_playing_effect : 1;
@@ -1227,7 +1227,7 @@ struct ftStruct
     ub32 is_disable_control : 1;        // Fighter cannot be controlled if TRUE; enabled when training mode menu is up
     ub32 is_hitstun : 1;
     u32 slope_contour : 3;
-    ub32 is_use_anim_locks : 1;
+    ub32 is_use_animlocks : 1;
     ub32 is_playing_sfx : 1;
     ub32 x190_flag_b5 : 1;
     ub32 is_show_item : 1;
@@ -1368,8 +1368,8 @@ struct ftStruct
 
     DObj *joint[FTPARTS_JOINT_NUM_MAX];
 
-    ftModelPartDrawStatus joint_drawstatus[FTPARTS_JOINT_NUM_MAX - nFTPartsJointEnumMax]; // Display List active = 0, inactive = -1?
-    ftTexturePartDrawStatus texture_drawstatus[2];
+    ftModelPartStatus modelpart_status[FTPARTS_JOINT_NUM_MAX - nFTPartsJointEnumMax]; // -1 = hidden, 0 and up = draw model part ID
+    ftTexturePartStatus texturepart_status[2];
 
     ftData *ft_data;
     ftAttributes *attributes;

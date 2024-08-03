@@ -990,7 +990,7 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
 
         if (flags & 0x4)
         {
-            gDPSetTextureImage(branch_dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mobj->sub.images[(s32)mobj->image_frame]);
+            gDPSetTextureImage(branch_dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mobj->sub.images[(s32)mobj->texture_frame]);
 
             if (flags & (0x2 | 0x1))
             {
@@ -1040,8 +1040,8 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
                     mobj->sub.primcolor.b,
                     mobj->sub.primcolor.a
                 );
-                mobj->current_image_id = trunc;
-                mobj->next_image_id = trunc + 1;
+                mobj->texture_id_current = trunc;
+                mobj->texture_id_next = trunc + 1;
             }
             else
             {
@@ -1089,7 +1089,7 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
                 mobj->sub.block_fmt,
                 block_siz,
                 1,
-                mobj->sub.sprites[mobj->next_image_id]
+                mobj->sub.sprites[mobj->texture_id_next]
             );
             if (flags & (0x10 | 0x1))
             {
@@ -1156,7 +1156,7 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
                 mobj->sub.fmt,
                 mobj->sub.siz,
                 1,
-                mobj->sub.sprites[mobj->current_image_id]
+                mobj->sub.sprites[mobj->texture_id_current]
             );
         }
         if (flags & 0x20)

@@ -174,7 +174,7 @@ typedef struct gmColKeys
 typedef struct gmColAnim
 {
 	gmColScript cs[2];
-	s32 duration;
+	s32 length;
 	s32 colanim_id;
 	gmColKeys maincolor; 		// Used as both PrimColor and EnvColor? Screen flashes use it as Prim and items as Env
 	f32 light_angle1;

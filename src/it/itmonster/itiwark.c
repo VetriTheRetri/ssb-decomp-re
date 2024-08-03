@@ -466,7 +466,7 @@ GObj* itIwarkWeaponRockMakeWeapon(GObj *spawn_gobj, Vec3f *pos, u8 random)
 
     dobj->translate.vec.f = *pos;
 
-    dobj->child->mobj->current_image_id = random;
+    dobj->child->mobj->texture_id_current = random;
 
     wp->weapon_vars.rock.owner_gobj = spawn_gobj;
 

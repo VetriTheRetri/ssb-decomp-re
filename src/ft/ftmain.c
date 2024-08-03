@@ -604,7 +604,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionEvent *p_e
         ftParamSetTexturePartID
         (
             fighter_gobj, 
-            ftMotionEventCast(p_event, ftMotionEventSetTexturePartID)->texture_part_id, 
+            ftMotionEventCast(p_event, ftMotionEventSetTexturePartID)->texturepart_id, 
             ftMotionEventCast(p_event, ftMotionEventSetTexturePartID)->frame
         );
         ftMotionEventAdvance(p_event, ftMotionEventSetTexturePartID);
@@ -1168,11 +1168,11 @@ sb32 ftMainUpdateColAnim(gmColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
         colanim->blendcolor.b += colanim->blendcolor.ib;
         colanim->blendcolor.a += colanim->blendcolor.ia;
     }
-    if (colanim->duration != 0)
+    if (colanim->length != 0)
     {
-        colanim->duration--;
+        colanim->length--;
 
-        if (colanim->duration == 0)
+        if (colanim->length == 0)
         {
             return TRUE;
         }
@@ -3986,7 +3986,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
         switch (fp->afterimage.is_itemswing)
         {
         case FALSE:
-            if ((fp->ft_kind == nFTKindLink) && (fp->joint_drawstatus[11 - nFTPartsJointEnumMax].drawstatus_current == 0))
+            if ((fp->ft_kind == nFTKindLink) && (fp->modelpart_status[11 - nFTPartsJointEnumMax].drawstatus_current == 0))
             {
                 ftParts *ft_parts = fp->joint[11]->user_data.p;
 
@@ -4054,7 +4054,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
     DObj *child_joint;
     DObj *sibling_joint;
     ftAttributes *attributes;
-    ftCommonPart *common_part;
+    ftCommonPart *commonpart;
     DObj *parent_joint;
     ftParts *ft_parts;
 
@@ -4065,17 +4065,17 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
     {
         if (fp->detail_current == nFTPartsDetailHigh)
         {
-            common_part = &fp->attributes->common_parts_container->common_parts[0];
+            commonpart = &fp->attributes->commonparts_container->commonparts[0];
         }
-        else if (attributes->common_parts_container->common_parts[1].dobj_desc[withheld_part->root_joint_id - nFTPartsJointEnumMax].display_list != NULL)
+        else if (attributes->commonparts_container->commonparts[1].dobj_desc[withheld_part->root_joint_id - nFTPartsJointEnumMax].display_list != NULL)
         {
-            common_part = &attributes->common_parts_container->common_parts[1];
+            commonpart = &attributes->commonparts_container->commonparts[1];
         }
-        else common_part = &attributes->common_parts_container->common_parts[0];
+        else commonpart = &attributes->commonparts_container->commonparts[0];
     }
-    else common_part = NULL;
+    else commonpart = NULL;
 
-    dl = (common_part != NULL) ? common_part->dobj_desc[withheld_part->root_joint_id - nFTPartsJointEnumMax].display_list : NULL;
+    dl = (commonpart != NULL) ? commonpart->dobj_desc[withheld_part->root_joint_id - nFTPartsJointEnumMax].display_list : NULL;
 
     root_joint = omAddDObjForGObj(fp->fighter_gobj, dl);
     root_joint->sib_prev->sib_next = NULL;
@@ -4083,11 +4083,11 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
 
     if (dl != NULL)
     {
-        func_ovl0_800C8CB8(root_joint, common_part->mobjsub[withheld_part->root_joint_id - nFTPartsJointEnumMax], common_part->costume_matanim_joint[withheld_part->root_joint_id - nFTPartsJointEnumMax], NULL, fp->costume);
+        func_ovl0_800C8CB8(root_joint, commonpart->mobjsub[withheld_part->root_joint_id - nFTPartsJointEnumMax], commonpart->costume_matanim_joint[withheld_part->root_joint_id - nFTPartsJointEnumMax], NULL, fp->costume);
     }
-    if (common_part != NULL)
+    if (commonpart != NULL)
     {
-        fp->joint_drawstatus[withheld_part->root_joint_id - nFTPartsJointEnumMax].drawstatus_default = fp->joint_drawstatus[withheld_part->root_joint_id - nFTPartsJointEnumMax].drawstatus_current = (dl != NULL) ? 0 : -1;
+        fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointEnumMax].drawstatus_default = fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointEnumMax].drawstatus_current = (dl != NULL) ? 0 : -1;
     }
     parent_joint = fp->joint[withheld_part->parent_joint_id];
 
@@ -4154,7 +4154,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
 
     root_joint->user_data.p = ft_parts = ftManagerGetNextPartsAlloc();
 
-    ft_parts->flags = attributes->common_parts_container->common_parts[fp->detail_current - 1].flags;
+    ft_parts->flags = attributes->commonparts_container->commonparts[fp->detail_current - 1].flags;
     ft_parts->joint_id = withheld_part->root_joint_id;
 
     if (withheld_part->partindex_0x8 != 0)
@@ -4611,7 +4611,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
                 else ftMainEjectWithheldPartID(fp, i);
             }
 
-            dobj_desc = attributes->common_parts_container->common_parts[fp->detail_current - 1].dobj_desc;
+            dobj_desc = attributes->commonparts_container->commonparts[fp->detail_current - 1].dobj_desc;
 
             for (i = nFTPartsJointEnumMax; dobj_desc->index != DOBJ_ARRAY_MAX; i++, dobj_desc++)
             {
@@ -4682,18 +4682,18 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
                 joint->child = NULL;
             }
 
-            if (fp->is_use_anim_locks)
+            if (fp->is_use_animlocks)
             {
-                if (!(fp->anim_flags.flags.is_use_anim_locks))
+                if (!(fp->anim_flags.flags.is_use_animlocks))
                 {
                     ftParamSetAnimLocks(fp);
                 }
             }
-            else if (fp->anim_flags.flags.is_use_anim_locks)
+            else if (fp->anim_flags.flags.is_use_animlocks)
             {
                 ftParamClearAnimLocks(fp);
             }
-            fp->is_use_anim_locks = fp->anim_flags.flags.is_use_anim_locks;
+            fp->is_use_animlocks = fp->anim_flags.flags.is_use_animlocks;
 
             if (attributes->translate_scales != NULL)
             {

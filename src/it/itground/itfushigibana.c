@@ -141,7 +141,7 @@ sb32 itFushigibanaSDefaultProcUpdate(GObj *item_gobj)
         (dobj->anim_frame <= ITFUSHIGIBANA_RAZOR_SPAWN_END)
     )
     {
-        dobj->mobj->current_image_id = 1;
+        dobj->mobj->texture_id_current = 1;
 
         if (!ip->item_vars.fushigibana.razor_spawn_wait)
         {
@@ -158,7 +158,7 @@ sb32 itFushigibanaSDefaultProcUpdate(GObj *item_gobj)
             ip->item_vars.fushigibana.razor_spawn_wait--;
         }
     }
-    else dobj->mobj->current_image_id = 0;
+    else dobj->mobj->texture_id_current = 0;
 
     if (dobj->anim_remain == AOBJ_FRAME_NULL)
     {
@@ -201,7 +201,7 @@ GObj* itFushigibanaMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         }
         if (ip->item_vars.fushigibana.flags == GRYAMABUKI_MONSTER_WEAPON_INSTANT)
         {
-            dobj->mobj->current_image_id = 1;
+            dobj->mobj->texture_id_current = 1;
         }
         dGRYamabukiMonsterAttackKind = ip->item_vars.fushigibana.flags;
 

@@ -1148,7 +1148,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
                     if (gIFPlayerCommonInterface.is_ifmagnify_display != FALSE)
                     {
-                        if (!(fp->is_ignore_magnify) && !(fp->x18E_flag_b1))
+                        if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1))
                         {
                             gIFPlayerCommonInterface.ifmagnify_mode = 1;
 
@@ -1162,7 +1162,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
                 break;
             }
         }
-        else if (!(fp->is_ignore_magnify) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
+        else if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
         {
             ifCommonPlayerMagnifyUpdateViewport(gDisplayListHead, fp);
         }
@@ -1413,7 +1413,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
     {
         if (gOMObjCurrentRendering->gobj_id != nOMObjCommonKindMainCamera)
         {
-            if (!(fp->is_ignore_magnify) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
+            if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
             {
                 ifCommonPlayerMagnifyProcRender(fp);
             }

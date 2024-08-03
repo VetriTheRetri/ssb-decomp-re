@@ -553,7 +553,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
     fp->publicity_knockback = 0.0F;
 
     fp->is_hitstun = FALSE;
-    fp->is_use_anim_locks = FALSE;
+    fp->is_use_animlocks = FALSE;
 
     fp->shuffle_frame_index = fp->shuffle_index_max = 0;
 
@@ -768,7 +768,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
     fp->team_order = ft_desc->team_order;
     fp->dl_link = FTRENDER_DLLINK_DEFAULT;
 
-    fp->is_ignore_magnify = ft_desc->is_skip_magnify;
+    fp->is_magnify_hide = ft_desc->is_skip_magnify;
 
     fp->status_info.status_time_spent = 0;
 
@@ -791,7 +791,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
 
     fp->joint[nFTPartsJointTopN]->ommtx[0]->unk05 = ft_desc->unk_rebirth_0x1D;
 
-    func_ovl0_800C8DB4(DObjGetStruct(fighter_gobj), attributes->common_parts_container, fp->detail_current, &fp->joint[nFTPartsJointEnumMax], attributes->unk_ftca_0x29C, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
+    func_ovl0_800C8DB4(DObjGetStruct(fighter_gobj), attributes->commonparts_container, fp->detail_current, &fp->joint[nFTPartsJointEnumMax], attributes->unk_ftca_0x29C, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
 
     for (i = 0; i < ARRAY_COUNT(fp->joint); i++)
     {
@@ -800,7 +800,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
             fp->joint[i]->user_data.p = ftManagerGetNextPartsAlloc();
 
             ft_parts = fp->joint[i]->user_data.p;
-            ft_parts->flags = attributes->common_parts_container->common_parts[fp->detail_current - 1].flags;
+            ft_parts->flags = attributes->commonparts_container->commonparts[fp->detail_current - 1].flags;
             ft_parts->joint_id = i;
 
             if (fp->costume != 0)
@@ -821,13 +821,13 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
     {
         if (fp->joint[i] != NULL)
         {
-            fp->joint_drawstatus[i - nFTPartsJointEnumMax].drawstatus_default = 
-            fp->joint_drawstatus[i - nFTPartsJointEnumMax].drawstatus_current = (fp->joint[i]->display_ptr != NULL) ? 0 : -1;
+            fp->modelpart_status[i - nFTPartsJointEnumMax].drawstatus_default = 
+            fp->modelpart_status[i - nFTPartsJointEnumMax].drawstatus_current = (fp->joint[i]->display_ptr != NULL) ? 0 : -1;
         }
     }
-    for (i = 0; i < ARRAY_COUNT(fp->texture_drawstatus); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->texturepart_status); i++)
     {
-        fp->texture_drawstatus[i].drawstatus_default = fp->texture_drawstatus[i].drawstatus_current = 0;
+        fp->texturepart_status[i].texture_id_default = fp->texturepart_status[i].texture_id_current = 0;
     }
     ftParamSetAnimLocks(fp);
 

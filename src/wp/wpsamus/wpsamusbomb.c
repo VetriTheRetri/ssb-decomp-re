@@ -112,7 +112,7 @@ sb32 wpSamusBombProcUpdate(GObj *weapon_gobj)
         {
             MObj *mobj = DObjGetStruct(weapon_gobj)->mobj;
 
-            mobj->image_frame = (mobj->image_frame != 0) ? 0.0F : 1.0F;
+            mobj->texture_frame = (mobj->texture_frame != 0) ? 0.0F : 1.0F;
 
             if (wp->lifetime > WPSAMUSBOMB_WAIT_BLINK_SLOW)
             {

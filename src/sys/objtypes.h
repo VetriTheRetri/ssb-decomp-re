@@ -314,10 +314,10 @@ struct _MObj
     MObj *next;
     GObj *parent_gobj;      // Unconfirmed
     MObjSub sub;
-    u16 current_image_id;
-    u16 next_image_id;
+    u16 texture_id_current;
+    u16 texture_id_next;
     f32 lfrac;
-    f32 image_frame;
+    f32 texture_frame;
     u8 filler_0x8C[0x90 - 0x8C];
     AObj *aobj;
     AObjActor actor;

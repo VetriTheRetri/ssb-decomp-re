@@ -1250,9 +1250,9 @@ MObj* omAddMObjForDObj(DObj* dobj, MObjSub* mobjsub)
 
 	mobj->sub.unk24 = mobjsub->unk14;
 	mobj->sub.unk28 = mobjsub->unk1C;
-	mobj->current_image_id = 0;
-	mobj->next_image_id = 0;
-	mobj->image_frame = 0;
+	mobj->texture_id_current = 0;
+	mobj->texture_id_next = 0;
+	mobj->texture_frame = 0;
 	mobj->aobj = NULL;
 	mobj->actor.p = NULL;
 	mobj->anim_remain = AOBJ_FRAME_NULL;

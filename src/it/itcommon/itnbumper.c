@@ -225,7 +225,7 @@ sb32 itNBumperFThrowProcHit(GObj *item_gobj)
 
     ip->item_vars.bumper.hit_anim_length = ITBUMPER_HIT_ANIM_LENGTH;
 
-    dobj->mobj->image_frame = 1.0F;
+    dobj->mobj->texture_frame = 1.0F;
 
     ip->phys_info.vel_air.x = ITBUMPER_REBOUND_AIR_X * ip->lr_attack;
     ip->phys_info.vel_air.y = ITBUMPER_REBOUND_AIR_Y;
@@ -404,7 +404,7 @@ sb32 itNBumperGWaitHitProcHit(GObj *item_gobj)
 
     ip->item_vars.bumper.hit_anim_length = ITBUMPER_HIT_ANIM_LENGTH;
 
-    dobj->mobj->image_frame = 1.0F;
+    dobj->mobj->texture_frame = 1.0F;
 
     ip->lr = -ip->lr_attack;
 
@@ -423,9 +423,9 @@ sb32 itNBumperGWaitHitProcUpdate(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f edge_pos;
 
-    if ((ip->item_vars.bumper.hit_anim_length == 0) && (dobj->mobj->image_frame == 1.0F))
+    if ((ip->item_vars.bumper.hit_anim_length == 0) && (dobj->mobj->texture_frame == 1.0F))
     {
-        dobj->mobj->image_frame = 0.0F;
+        dobj->mobj->texture_frame = 0.0F;
     }
     else ip->item_vars.bumper.hit_anim_length--;
 
@@ -487,7 +487,7 @@ sb32 itNBumperGWaitHitProcMap(GObj *item_gobj)
 
             joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
 
-            joint->mobj->image_frame = 0.0F;
+            joint->mobj->texture_frame = 0.0F;
         }
         else if (ip->it_multi == 0)
         {
@@ -509,7 +509,7 @@ sb32 itNBumperGWaitHitProcReflector(GObj *item_gobj)
 
     ip->item_vars.bumper.hit_anim_length = 3;
 
-    dobj->mobj->image_frame = 1.0F;
+    dobj->mobj->texture_frame = 1.0F;
 
     ip->phys_info.vel_air.x = (-fp->lr * ITBUMPER_REBOUND_VEL_X);
 
@@ -535,9 +535,9 @@ sb32 itNBumperAHitProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if ((ip->item_vars.bumper.hit_anim_length == 0) && (dobj->mobj->image_frame == 1.0F))
+    if ((ip->item_vars.bumper.hit_anim_length == 0) && (dobj->mobj->texture_frame == 1.0F))
     {
-        dobj->mobj->image_frame = 0.0F;
+        dobj->mobj->texture_frame = 0.0F;
     }
     else ip->item_vars.bumper.hit_anim_length--;
 
@@ -600,7 +600,7 @@ void itNBumperGDisappearSetStatus(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    dobj->mobj->image_frame = 0;
+    dobj->mobj->texture_frame = 0;
 
     dobj->scale.vec.f.x = 1.0F;
     dobj->scale.vec.f.y = 1.0F;
@@ -638,7 +638,7 @@ GObj* itNBumperMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->item_hit.can_rehit_shield = TRUE;
 
-        dobj->mobj->image_frame = 0.0F;
+        dobj->mobj->texture_frame = 0.0F;
 
         omAddOMMtxForDObjFixed(dobj, 0x2E, 0);
 

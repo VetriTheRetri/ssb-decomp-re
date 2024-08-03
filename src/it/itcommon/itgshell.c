@@ -560,7 +560,7 @@ GObj* itGShellMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f = translate;
 
-        dobj->mobj->image_frame = 1.0F;
+        dobj->mobj->texture_frame = 1.0F;
 
         ip = itGetStruct(item_gobj);
 

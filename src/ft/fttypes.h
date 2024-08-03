@@ -12,7 +12,6 @@
 #include <mp/map.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
-#include <gm/gmscript.h>
 #include <ovl0/halbitmap.h>
 
 #include <ft/ftdef.h>
@@ -23,14 +22,13 @@
 // Macros
 
 #define FTRENDER_DLLINK_DEFAULT 9
-#define FTRENDER_DLLINK_DEADUPFALL 22
 
 #define FTPARTS_HURT_NUM_MAX 11
 #define FTPARTS_JOINT_NUM_MAX 37
 #define FTPARTS_FLAG_NOFOG 0x40
 #define FTPARTS_FLAG_TOGGLEFOG 0x80
 
-#define FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN 8                                            // Default minimum stick range required to clamp air drift in respective physics routine
+#define FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN  8                                            // Default minimum stick range required to clamp air drift in respective physics routine
 
 #define FTINPUT_STICKBUFFER_FRAMES_MAX      ( U8_MAX - 1)
 #define FTINPUT_ZTRIGLAST_FRAMES_MAX        (U16_MAX + 1)
@@ -39,8 +37,10 @@
 #define FTSTAT_OPENING1_START 0x1000F
 #define FTSTAT_OPENING2_START 0x10000
 
-#define FTDATA_FLAG_ANIM_MOVIE              0x1
-#define FTDATA_FLAG_ANIM_GAME               0x2
+#define FTDATA_FLAG_SUBMOTION           0x1
+#define FTDATA_FLAG_MAINMOTION          0x2
+
+#define FTMOTION_SCRIPT_NULL            0x80000000
 
 #define FTSTATUS_PRESERVE_NONE          (0)                                     // 0x0 - Just zero
 #define FTSTATUS_PRESERVE_HIT           (1 << nFTStatusPreserveHit)             // 0x1
@@ -119,6 +119,13 @@
 #define FTEXPLAIN_EVENT_STICK(x, y, t)          FTEXPLAIN_EVENT_INSTRUCTION(nFTExplainCommandStick, t), (((((x) << 8) & 0xFF00) | (((y) << 0) & 0x00FF)) & U16_MAX)
 #define FTEXPLAIN_EVENT_BUTTON(b, t)            FTEXPLAIN_EVENT_INSTRUCTION(nFTExplainCommandButton, t), ((b) & U16_MAX)
 #define FTEXPLAIN_EVENT_END()                   FTEXPLAIN_EVENT_INSTRUCTION(nFTExplainCommandEnd, 0)
+
+#define ftMotionEventAdvance(event, type) ((event)->p_script = (void*)((uintptr_t)(event)->p_script + (sizeof(type))))
+
+#define ftMotionEventCast(event, type) ((type*)(event)->p_script)
+
+// WARNING: Only advances 4 bytes at a time
+#define ftMotionEventCastAdvance(event, type) ((type*)(event)->p_script++)
 
 // Structs
 struct ftSpecialHit
@@ -300,6 +307,328 @@ struct ftMotionFlags
 {
     s16 motion_id : 10;
     u16 motion_attack_id : 6;
+};
+
+struct ftMotionEvent
+{
+	f32 frame_timer;
+	u32* p_script;
+	s32 script_id;
+	void* p_goto[1];
+	s32 loop_count[4];
+};
+
+struct ftMotionEventDefault // Event with no arguments
+{
+	u32 opcode : 6;
+    u32 value : 26;
+};
+
+struct ftMotionEventDouble // Event with no arguments
+{
+	u32 opcode : 6;
+	u32 pad1 : 26;
+	u32 pad2 : 32;
+};
+
+struct ftMotionEventWait
+{
+	u32 opcode : 6;
+	u32 frames : 26;
+};
+
+struct ftMotionEventMakeHit1
+{
+	u32 opcode : 6;
+	u32 hit_id : 3;
+	u32 group_id : 3;
+	s32 joint_id : 7;
+	u32 damage : 8;
+	ub32 can_rebound : 1;
+	u32 element : 4;
+};
+
+struct ftMotionEventMakeHit2
+{
+	u32 size : 16;
+	s32 off_x : 16;
+};
+
+struct ftMotionEventMakeHit3
+{
+	s32 off_y : 16;
+	s32 off_z : 16;
+};
+
+struct ftMotionEventMakeHit4
+{
+	s32 angle : 10;
+	u32 knockback_scale : 10;
+	u32 knockback_weight : 10;
+	u32 is_hit_ground_air : 2;  // This should really be two separate bits, but it doesn't match that way
+};
+
+struct ftMotionEventMakeHit5
+{
+	s32 shield_damage : 8;
+	u32 sfx_level : 3;
+	u32 sfx_kind : 4;
+	u32 knockback_base : 10;
+};
+
+struct ftMotionEventMakeHit
+{
+	ftMotionEventMakeHit1 s1;
+	ftMotionEventMakeHit2 s2;
+	ftMotionEventMakeHit3 s3;
+	ftMotionEventMakeHit4 s4;
+	ftMotionEventMakeHit5 s5;
+};
+
+struct ftMotionEventSetHitOffset1
+{
+	u32 opcode : 6;
+	u32 hit_id : 3;
+	s32 off_x : 16;
+};
+
+struct ftMotionEventSetHitOffset2
+{
+	s32 off_y : 16;
+	s32 off_z : 16;
+};
+
+struct ftMotionEventSetHitOffset
+{
+	ftMotionEventSetHitOffset1 s1;
+	ftMotionEventSetHitOffset2 s2;
+};
+
+struct ftMotionEventSetHitDamage
+{
+	u32 opcode : 6;
+	u32 hit_id : 3;
+	u32 damage : 8;
+};
+
+struct ftMotionEventSetHitSize
+{
+	u32 opcode : 6;
+	u32 hit_id : 3;
+	u32 size : 16;
+};
+
+struct ftMotionEventSetHitSound
+{
+	u32 opcode : 6;
+	u32 hit_id : 3;
+	u32 sfx_level : 3;
+};
+
+struct ftMotionEventSetThrow1
+{
+	u32 opcode : 6;
+};
+
+struct ftMotionEventSetThrow2
+{
+	ftThrowHitDesc* fighter_throw;
+};
+
+struct ftMotionEventSetThrow
+{
+	ftMotionEventSetThrow1 s1;
+	ftMotionEventSetThrow2 s2;
+};
+
+struct ftMotionEventMakeEffect1
+{
+	u32 opcode : 6;
+	s32 joint_id : 7;
+	u32 effect_id : 9;
+	u32 flag : 10;
+};
+
+struct ftMotionEventMakeEffect2
+{
+	s32 off_x : 16;
+	s32 off_y : 16;
+};
+
+struct ftMotionEventMakeEffect3
+{
+	s32 off_z : 16;
+	s32 rng_x : 16;
+};
+
+struct ftMotionEventMakeEffect4
+{
+	s32 rng_y : 16;
+	s32 rng_z : 16;
+};
+
+struct ftMotionEventMakeEffect
+{
+	ftMotionEventMakeEffect1 s1;
+	ftMotionEventMakeEffect2 s2;
+	ftMotionEventMakeEffect3 s3;
+	ftMotionEventMakeEffect4 s4;
+};
+
+struct ftMotionEventSetHitStatusPartID
+{
+	u32 opcode : 6;
+	s32 joint_id : 7;
+	u32 hitstatus : 19;
+};
+
+struct ftMotionEventModifyHurtPartID1
+{
+	u32 opcode : 6;
+	s32 joint_id : 7;
+};
+
+struct ftMotionEventModifyHurtPartID2
+{
+	s32 off_x : 16;
+	s32 off_y : 16;
+};
+
+struct ftMotionEventModifyHurtPartID3
+{
+	s32 off_z : 16;
+	s32 size_x : 16;
+};
+
+struct ftMotionEventModifyHurtPartID4
+{
+	s32 size_y : 16;
+	s32 size_z : 16;
+};
+
+struct ftMotionEventModifyHurtPartID
+{
+	ftMotionEventModifyHurtPartID1 s1;
+	ftMotionEventModifyHurtPartID2 s2;
+	ftMotionEventModifyHurtPartID3 s3;
+	ftMotionEventModifyHurtPartID4 s4;
+};
+
+struct ftMotionEventSubroutine1
+{
+	u32 opcode : 6;
+};
+
+struct ftMotionEventSubroutine2
+{
+	void* p_goto;
+};
+
+struct ftMotionEventSubroutine
+{
+	ftMotionEventSubroutine1 s1;
+	ftMotionEventSubroutine2 s2;
+};
+
+struct ftMotionEventSetDamageThrown1
+{
+	u32 opcode : 6;
+};
+
+struct ftMotionEventSetDamageThrown2
+{
+	void* p_subroutine;
+};
+
+struct ftMotionDamageScript
+{
+	void* p_script[2][nFTKindEnumMax];
+};
+
+struct ftMotionEventSetDamageThrown
+{
+	ftMotionEventSetDamageThrown1 s1;
+	ftMotionEventSetDamageThrown2 s2;
+};
+
+struct ftMotionEventGoto1
+{
+	u32 opcode : 6;
+};
+
+struct ftMotionEventGoto2
+{
+	void* p_goto;
+};
+
+struct ftMotionEventGoto
+{
+	ftMotionEventGoto1 s1;
+	ftMotionEventGoto2 s2;
+};
+
+struct ftMotionEventParallel1
+{
+	u32 opcode : 6;
+};
+
+struct ftMotionEventParallel2
+{
+	void* p_goto;
+};
+
+struct ftMotionEventParallel
+{
+	ftMotionEventParallel1 s1;
+	ftMotionEventParallel2 s2;
+};
+
+struct ftMotionEventSetModelPartID
+{
+	u32 opcode : 6;
+	s32 joint_id : 7;
+	s32 drawstatus : 19;
+};
+
+struct ftMotionEventSetTexturePartID
+{
+	u32 opcode : 6;
+	u32 texture_part_id : 6;
+	u32 frame : 20;
+};
+
+struct ftMotionEventSetColAnimID
+{
+	u32 opcode : 6;
+	u32 colanim_id : 8;
+	u32 length : 18;
+};
+
+struct ftMotionEventSetSlopeContour
+{
+	u32 opcode : 6;
+	u32 pad : 23;
+	u32 flags : 3;
+};
+
+struct ftMotionEventSetAfterImage
+{
+	u32 opcode : 6;
+	u32 is_itemswing : 8;
+	s32 drawstatus : 18;
+};
+
+struct ftMotionEventMakeRumble
+{
+	u32 opcode : 6;
+	u32 length : 13;
+	u32 rumble_id : 13;
+};
+
+struct ftMotionEventStopRumble
+{
+	u32 opcode : 6;
+	u32 rumble_id : 26;
 };
 
 struct ftStatusDesc

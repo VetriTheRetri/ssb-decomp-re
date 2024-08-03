@@ -588,7 +588,7 @@ void ftCommonThrownReleaseFighterLoseGrip(GObj* fighter_gobj);
 void ftCommonThrownDecideFighterLoseGrip(GObj* fighter_gobj, GObj* interact_gobj);
 void ftCommonThrownDecideDeadResult(GObj* fighter_gobj);
 void ftCommonThrownProcStatus(GObj* fighter_gobj);
-void ftCommonThrownReleaseThrownUpdateStats(GObj* fighter_gobj, s32 lr, s32 script_index, sb32 is_proc_status);
+void ftCommonThrownReleaseThrownUpdateStats(GObj* fighter_gobj, s32 lr, s32 script_id, sb32 is_proc_status);
 void ftCommonThrownUpdateDamageStats(ftStruct* this_fp);
 void ftCommonThrownSetStatusDamageRelease(GObj* fighter_gobj);
 void ftCommonThrownSetStatusNoDamageRelease(GObj* fighter_gobj);

@@ -440,7 +440,7 @@ typedef struct ftCommonDamageStatusVars
 	Vec3f wall_collide_angle;
 	s32 unk_0xB38;
 	s32 unk_0xB3C;
-	s32 script_index;
+	s32 script_id;
 	s32 status_id;
 	sb32 is_knockback_over;
 

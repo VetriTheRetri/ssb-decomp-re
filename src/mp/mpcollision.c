@@ -803,7 +803,7 @@ sb32 mpCollisionCheckGroundSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d
 
             if (vddiv < 0.0F)
             {
-                if (vddiv < (-0.001F))
+                if (vddiv < -0.001F)
                 {
                     return FALSE;
                 }
@@ -811,7 +811,7 @@ sb32 mpCollisionCheckGroundSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d
             }
             else if (vddiv > 1.0F)
             {
-                if (1.001F < vddiv)
+                if (vddiv > 1.001F)
                 {
                     return FALSE;
                 }
@@ -819,7 +819,7 @@ sb32 mpCollisionCheckGroundSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d
             }
             vddistdiv = ((vdist_x * vddist_y) - (vdist_y * vddist_x)) / scale;
 
-            if ((vddistdiv < (-0.001F)) || (1.001F < vddistdiv))
+            if ((vddistdiv < -0.001F) || (vddistdiv > 1.001F))
             {
                 return FALSE;
             }
@@ -1946,7 +1946,7 @@ sb32 mpCollisionCheckRWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1
 
             if (vddiv < 0.0F)
             {
-                if (vddiv < (-0.001F))
+                if (vddiv < -0.001F)
                 {
                     return FALSE;
                 }
@@ -1954,7 +1954,7 @@ sb32 mpCollisionCheckRWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1
             }
             else if (vddiv > 1.0F)
             {
-                if (1.001F < vddiv)
+                if (vddiv > 1.001F)
                 {
                     return FALSE;
                 }
@@ -1962,7 +1962,7 @@ sb32 mpCollisionCheckRWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1
             }
             vddistdiv = ((vdist_x * vddist_y) - (vdist_y * vddist_x)) / scale;
 
-            if ((vddistdiv < (-0.001F)) || (1.001F < vddistdiv))
+            if ((vddistdiv < -0.001F) || (vddistdiv > 1.001F))
             {
                 return FALSE;
             }
@@ -2452,7 +2452,7 @@ sb32 mpCollisionCheckLWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1
 
             if (vddiv < 0.0F)
             {
-                if (vddiv < (-0.001F))
+                if (vddiv < -0.001F)
                 {
                     return FALSE;
                 }
@@ -2460,7 +2460,7 @@ sb32 mpCollisionCheckLWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1
             }
             else if (vddiv > 1.0F)
             {
-                if (1.001F < vddiv)
+                if (vddiv > 1.001F)
                 {
                     return FALSE;
                 }
@@ -2468,7 +2468,7 @@ sb32 mpCollisionCheckLWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1
             }
             vddistdiv = ((vdist_x * vddist_y) - (vdist_y * vddist_x)) / scale;
 
-            if ((vddistdiv < (-0.001F)) || (1.001F < vddistdiv))
+            if ((vddistdiv < -0.001F) || (vddistdiv > 1.001F))
             {
                 return FALSE;
             }

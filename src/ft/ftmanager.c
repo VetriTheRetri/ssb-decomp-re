@@ -229,7 +229,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
 
         ft_data->file_main_size = ft_size->main;
 
-        if (data_flags & FTDATA_FLAG_ANIM_GAME)
+        if (data_flags & FTDATA_FLAG_MAINMOTION)
         {
             current_size = ft_size->mainmotion_largest_anim;
 
@@ -238,7 +238,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
                 largest_size = current_size;
             }
         }
-        if (data_flags & FTDATA_FLAG_ANIM_MOVIE)
+        if (data_flags & FTDATA_FLAG_SUBMOTION)
         {
             current_size = ft_size->submotion_largest_anim;
 
@@ -256,7 +256,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
     }
     gFTManagerAnimHeapSize = heap_size;
 
-    if (data_flags & FTDATA_FLAG_ANIM_MOVIE)
+    if (data_flags & FTDATA_FLAG_SUBMOTION)
     {
         func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
     }

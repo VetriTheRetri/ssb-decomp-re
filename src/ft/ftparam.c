@@ -1217,7 +1217,7 @@ sb32 ftParamCheckSetColAnimID(gmColAnim *colanim, s32 colanim_id, s32 duration)
         colanim->duration = duration;
         colanim->cs[0].p_script = dFTCommonDataColAnimDescs[colanim_id].p_script;
         colanim->cs[0].color_event_timer = 0;
-        colanim->cs[0].script_index = 0;
+        colanim->cs[0].script_id = 0;
 
         for (i = 1; i < ARRAY_COUNT(colanim->cs); i++)
         {

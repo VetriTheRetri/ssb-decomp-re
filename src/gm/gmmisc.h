@@ -156,7 +156,7 @@ typedef struct gmColScript
 {
 	u32 *p_script; // Pointer to Color Animation script?
 	u16 color_event_timer;
-	u16 script_index;
+	u16 script_id;
 	void* p_subroutine[1];
 	s32 loop_count[1];
 	void* p_goto[2];

@@ -106,11 +106,11 @@ void ftCommonThrownProcStatus(GObj *fighter_gobj)
 
     ftParamSetThrowParams(fp, fp->capture_gobj);
 
-    fp->status_vars.common.damage.script_index = sFTCommonThrownScriptID;
+    fp->status_vars.common.damage.script_id = sFTCommonThrownScriptID;
 }
 
 // 0x8014AFD0
-void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 script_index, sb32 is_proc_status)
+void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 script_id, sb32 is_proc_status)
 {
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
@@ -123,7 +123,7 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
 
     knockback_resist = (this_fp->knockback_resist_status < this_fp->knockback_resist_passive) ? this_fp->knockback_resist_passive : this_fp->knockback_resist_status;
 
-    sFTCommonThrownScriptID = script_index;
+    sFTCommonThrownScriptID = script_id;
 
     if (this_fp->hitstatus != nGMHitStatusNormal)
     {

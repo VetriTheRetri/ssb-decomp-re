@@ -23,6 +23,11 @@ To set up and build the rom, see below
 
 or with parallel jobs for faster build: `make -j$(nproc)`
 
+### MacOS specific
+
+- MIPS binutils can be obtained from [macports](https://ports.macports.org/port/mips-elf-binutils/)
+- GNU make can be obtained from [macports](https://ports.macports.org/port/gmake/)
+
 ## Debugging
 There's a few handy scripts to help with debugging non matches after making changes.
 

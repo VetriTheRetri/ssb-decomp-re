@@ -3,25 +3,36 @@ RED="\e[31m"
 GREEN="\e[32m"
 ENDCOLOR="\e[0m"
 
-missing_packages=""
-which git 2>&1 > /dev/null
-if [ $? != 0 ] ; then missing_packages=$"${missing_packages}git " ; fi
-which python3 2>&1 > /dev/null
-if [ $? != 0 ] ; then missing_packages=$"${missing_packages}python3 " ; fi
-which mips-linux-gnu-ld 2>&1 > /dev/null
-if [ $? != 0 ] ; then missing_packages=$"${missing_packages}binutils-mips-linux-gnu " ; fi
-which clang 2>&1 > /dev/null
-if [ $? != 0 ] ; then missing_packages=$"${missing_packages}clang " ; fi
-if [[ $(dpkg -l | grep -c build-essential) == 0 ]] ; then missing_packages=$"${missing_packages}build-essential " ; fi
-if [[ $(dpkg -l | grep -c gcc-multilib) == 0 ]] ; then missing_packages=$"${missing_packages}gcc-multilib " ; fi
-if [[ $(dpkg -l | grep -c libcapstone-dev) == 0 ]] ; then missing_packages=$"${missing_packages}libcapstone-dev " ; fi
-if [[ $(dpkg -l | grep -c python3-pip) == 0 ]] ; then missing_packages=$"${missing_packages}python3-pip " ; fi
-if [[ $(dpkg -l | grep -c ripgrep) == 0 ]] ; then missing_packages=$"${missing_packages}ripgrep " ; fi
-if [[ $(dpkg -l | grep -c clang-format) == 0 ]] ; then missing_packages=$"${missing_packages}clang-format " ; fi
+# fetch ido recomp if not there
+unameOut="$(uname -s)"
+case "${unameOut}" in
+	Linux*)     DETECTED_OS=linux;;
+	Darwin*)    DETECTED_OS=macos;;
+	*)          DETECTED_OS="UNKNOWN:${unameOut}"
+esac
 
-if [ ! -z "$missing_packages" ]
+if [ "$DETECTED_OS" = "linux" ]
 then
-	sudo apt install ${missing_packages}
+	missingAptPackages=""
+	which git 2>&1 > /dev/null
+	if [ $? != 0 ] ; then missingAptPackages=$"${missingAptPackages}git " ; fi
+	which python3 2>&1 > /dev/null
+	if [ $? != 0 ] ; then missingAptPackages=$"${missingAptPackages}python3 " ; fi
+	which mips-linux-gnu-ld 2>&1 > /dev/null
+	if [ $? != 0 ] ; then missingAptPackages=$"${missingAptPackages}binutils-mips-linux-gnu " ; fi
+	which clang 2>&1 > /dev/null
+	if [ $? != 0 ] ; then missingAptPackages=$"${missingAptPackages}clang " ; fi
+	if [[ $(dpkg -l | grep -c build-essential) == 0 ]] ; then missingAptPackages=$"${missingAptPackages}build-essential " ; fi
+	if [[ $(dpkg -l | grep -c gcc-multilib) == 0 ]] ; then missingAptPackages=$"${missingAptPackages}gcc-multilib " ; fi
+	if [[ $(dpkg -l | grep -c libcapstone-dev) == 0 ]] ; then missingAptPackages=$"${missingAptPackages}libcapstone-dev " ; fi
+	if [[ $(dpkg -l | grep -c python3-pip) == 0 ]] ; then missingAptPackages=$"${missingAptPackages}python3-pip " ; fi
+	if [[ $(dpkg -l | grep -c ripgrep) == 0 ]] ; then missingAptPackages=$"${missingAptPackages}ripgrep " ; fi
+	if [[ $(dpkg -l | grep -c clang-format) == 0 ]] ; then missingAptPackages=$"${missingAptPackages}clang-format " ; fi
+
+	if [ ! -z "$missingAptPackages" ]
+	then
+		sudo apt install ${missingAptPackages}
+	fi
 fi
 
 git submodule update --init --recursive
@@ -34,13 +45,6 @@ then
 	exit
 fi
 
-# fetch ido recomp if not there
-unameOut="$(uname -s)"
-case "${unameOut}" in
-	Linux*)     DETECTED_OS=linux;;
-	Darwin*)    DETECTED_OS=macos;;
-	*)          DETECTED_OS="UNKNOWN:${unameOut}"
-esac
 RECOMP_DIR7=tools/ido-recomp/7.1
 RECOMP_DIR5=tools/ido-recomp/5.3
 if [ ! -f "${RECOMP_DIR7}/cc" ]
@@ -58,4 +62,4 @@ then
 	rm ido-5.3-recomp-${DETECTED_OS}.tar.gz
 fi
 
-echo -e ${GREEN}All requirements satisfied${ENDCOLOR}
+printf "${GREEN}All requirements satisfied${ENDCOLOR}\n"

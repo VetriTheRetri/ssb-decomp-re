@@ -24,6 +24,11 @@ ifeq ($(OS),Windows_NT)
 $(error Native Windows is currently unsupported for building this repository, use WSL instead c:)
 else ifeq ($(UNAME_S),Darwin)
     MAKE := gmake
+    BIG_MIPS_OBJCOPY_TARGET := elf32-bigmips
+    BINUTILS_PREFIX := mips-elf
+else ifeq ($(UNAME_S),Linux)
+    BIG_MIPS_OBJCOPY_TARGET := elf32-tradbigmips
+    BINUTILS_PREFIX := mips-linux-gnu
 endif
 
 # Support python venv's if one is installed.
@@ -71,10 +76,10 @@ LD_MAP    := $(BUILD_DIR)/$(TARGET).$(VERSION).map
 
 IDO7            := tools/ido-recomp/7.1/cc
 IDO5            := tools/ido-recomp/5.3/cc
-AS              := mips-linux-gnu-as
-LD              := mips-linux-gnu-ld
-OBJCOPY         := mips-linux-gnu-objcopy
-OBJDUMP         := mips-linux-gnu-objdump
+AS              := $(BINUTILS_PREFIX)-as
+LD              := $(BINUTILS_PREFIX)-ld
+OBJCOPY         := $(BINUTILS_PREFIX)-objcopy
+OBJDUMP         := $(BINUTILS_PREFIX)-objdump
 ASM_PROC        := $(PYTHON) tools/asm-processor/build.py
 CCFLAGS         := -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624,568
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
@@ -226,7 +231,7 @@ rom: $(ROM)
 
 nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
 	@echo "Comparing object files:"
-	$(V)bash tools/compareObjects.sh
+	$(V)$(PYTHON) tools/compareObjects.py
 
 diff: $(ROM)
 	$(V)$(PYTHON) tools/matchbin.py -x $(ROM) $(BASEROM)
@@ -319,8 +324,8 @@ src/credits/companies.credits.encoded: src/credits/companies.credits.txt tools/c
 $(BUILD_DIR)/%.o: %.bin
 	$(call print_3,Making binary:,$<,$@)
 	@mkdir -p $(@D)
-	$(V)$(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
-	$(V)@bash tools/createPaletteObjectIfNeeded.sh $(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
+	$(V)$(OBJCOPY) -I binary -O $(BIG_MIPS_OBJCOPY_TARGET) -B mips $< $@
+	$(V)@bash tools/createPaletteObjectIfNeeded.sh $(OBJCOPY) -I binary -O $(BIG_MIPS_OBJCOPY_TARGET) -B mips $< $@
 
 # Images
 .PRECIOUS: assets/%.bin

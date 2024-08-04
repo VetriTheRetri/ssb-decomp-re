@@ -361,7 +361,7 @@ void grInishieMakeScale(void)
     DObj *map_dobj[5];
     DObj *platform_dobj;
     s32 i;
-    s32 mpoint;
+    s32 mapobj;
     Vec3f yakumono_pos;
 
     map_head = gGRCommonStruct.inishie.map_head;
@@ -387,8 +387,8 @@ void grInishieMakeScale(void)
         omAddOMMtxForDObjFixed(platform_dobj, nOMTransformTra, 0);
         omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
 
-        mpCollisionGetMapObjIDsKind(dGRInishieScaleMapObjKinds[i], &mpoint);
-        mpCollisionGetMapObjPositionID(mpoint, &yakumono_pos);
+        mpCollisionGetMapObjIDsKind(dGRInishieScaleMapObjKinds[i], &mapobj);
+        mpCollisionGetMapObjPositionID(mapobj, &yakumono_pos);
 
         platform_dobj->translate.vec.f = yakumono_pos;
 
@@ -427,12 +427,12 @@ void grInishieMakePakkun(void)
     s32 i;
     Vec3f pos;
     Vec3f vel;
-    s32 mpoint;
+    s32 mapobj;
 
     for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.inishie.pakkun_gobj); i++)
     {
-        mpCollisionGetMapObjIDsKind(dGRInishiePakkunMapObjKinds[i], &mpoint);
-        mpCollisionGetMapObjPositionID(mpoint, &pos);
+        mpCollisionGetMapObjIDsKind(dGRInishiePakkunMapObjKinds[i], &mapobj);
+        mpCollisionGetMapObjPositionID(mapobj, &pos);
 
         vel.x = vel.y = vel.z = 0.0F;
 

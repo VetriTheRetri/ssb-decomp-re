@@ -42,6 +42,6 @@ void itManagerSetupContainerDrops();
 void itManagerInitMonsterVars();
 
 // Make immediate item with index
-GObj* itManagerMakeItemID(GObj* spawn_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 flags);
+GObj* itManagerMakeItemKind(GObj* spawn_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 flags);
 
 #endif

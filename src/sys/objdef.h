@@ -50,6 +50,7 @@ typedef enum GObjLinkIndex
     nOMObjCommonLinkIDGround = 1,         // ID 1: Stage object
 
     nOMObjCommonLinkIDGroundRender = 2,   // ID 2: Stage renderer?
+    nOMObjCommonLinkIDItemActor = 2,      // ID 2: Item spawn actor
     nOMObjCommonLinkID02 = 2,             // ID 2: ???
 
     // GObj link indexes with ID 3

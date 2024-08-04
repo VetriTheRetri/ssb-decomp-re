@@ -80,7 +80,7 @@ u16 dITManagerAppearanceRatesMax[/* */] =
 };
 
 // 0x8018946C
-GObj* (*dITManagerMakeProcList[/* */])(GObj*, Vec3f*, Vec3f*, u32) = 
+GObj* (*dITManagerProcMakeList[/* */])(GObj*, Vec3f*, Vec3f*, u32) = 
 {
     // Containers
     itBoxMakeItem,          // Box
@@ -469,7 +469,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
 // 0x8016EA78
 GObj* itManagerMakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 spawn_flags)
 {
-    GObj *item_gobj = dITManagerMakeProcList[index](spawn_gobj, pos, vel, spawn_flags);
+    GObj *item_gobj = dITManagerProcMakeList[index](spawn_gobj, pos, vel, spawn_flags);
 
     if (item_gobj != NULL)
     {
@@ -537,7 +537,7 @@ GObj* itManagerMakeItemSpawnActor(void)
     mpItemWeights *item_count_qty;
     s32 item_weights;
     s32 item_mapobj_count;
-    s32 item_mpoint_ids[30];
+    s32 item_mapobj_ids[30];
     u32 item_count_toggles;
     s32 j;
     u32 item_id_toggles;
@@ -575,24 +575,24 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     return NULL;
                 }
-                if (item_mapobj_count > ARRAY_COUNT(item_mpoint_ids))
+                if (item_mapobj_count > ARRAY_COUNT(item_mapobj_ids))
                 {
                     while (TRUE)
                     {
-                        gsFatalPrintF("Item positions are over %d!\n", ARRAY_COUNT(item_mpoint_ids));
+                        gsFatalPrintF("Item positions are over %d!\n", ARRAY_COUNT(item_mapobj_ids));
                         smRunPrintGObjStatus();
                     }
                 }
                 gITManagerSpawnActor.item_mapobj_count = item_mapobj_count;
                 gITManagerSpawnActor.item_mapobjs = (u8*)gsMemoryAlloc(item_mapobj_count * sizeof(*gITManagerSpawnActor.item_mapobjs), 0);
 
-                mpCollisionGetMapObjIDsKind(nMPMapObjKindItemSpawn, item_mpoint_ids);
+                mpCollisionGetMapObjIDsKind(nMPMapObjKindItemSpawn, item_mapobj_ids);
 
                 for (i = 0; i < item_mapobj_count; i++)
                 {
-                    gITManagerSpawnActor.item_mapobjs[i] = item_mpoint_ids[i];
+                    gITManagerSpawnActor.item_mapobjs[i] = item_mapobj_ids[i];
                 }
-                gobj = omMakeGObjSPAfter(nOMObjCommonKindItem, NULL, 2, GOBJ_LINKORDER_DEFAULT);
+                gobj = omMakeGObjSPAfter(nOMObjCommonKindItem, NULL, nOMObjCommonLinkIDItemActor, GOBJ_LINKORDER_DEFAULT);
 
                 omAddGObjCommonProc(gobj, itManagerMakeRandomItem, nOMObjProcessKindProc, 3);
 
@@ -600,7 +600,7 @@ GObj* itManagerMakeItemSpawnActor(void)
 
                 item_weight_qty = gMPCollisionGroundData->item_weights;
 
-                for (i = 0, j = 0; i <= nITKindCommonEnd; i++, item_count_toggles >>= 1)
+                for (i = nITKindCommonStart, j = 0; i <= nITKindCommonEnd; i++, item_count_toggles >>= 1)
                 {
                     if ((item_count_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                     {
@@ -615,7 +615,7 @@ GObj* itManagerMakeItemSpawnActor(void)
 
                 item_weights = 0;
 
-                for (i = 0, j = 0; i <= nITKindCommonEnd; i++, item_id_toggles >>= 1)
+                for (i = nITKindCommonStart, j = 0; i <= nITKindCommonEnd; i++, item_id_toggles >>= 1)
                 {
                     if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                     {
@@ -722,7 +722,7 @@ void itManagerInitMonsterVars(void)
 }
 
 // 0x8016F238
-GObj* itManagerMakeItemID(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itManagerMakeItemKind(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    return dITManagerMakeProcList[index](spawn_gobj, pos, vel, flags);
+    return dITManagerProcMakeList[index](spawn_gobj, pos, vel, flags);
 }

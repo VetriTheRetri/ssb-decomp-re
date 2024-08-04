@@ -449,10 +449,10 @@ void scBonusGame_InitBonusGameSprites()
 // 8018E0E0
 void scBonusGame_GetPlayerSpawnPosition(Vec3f* pos)
 {
-	s32 mpoint;
+	s32 mapobj;
 
-	mpCollisionGetMapObjIDsKind(nMPMapObjKind1PGamePlayerSpawn, &mpoint);
-	mpCollisionGetMapObjPositionID(mpoint, pos);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKind1PGamePlayerSpawn, &mapobj);
+	mpCollisionGetMapObjPositionID(mapobj, pos);
 }
 
 // 8018E114

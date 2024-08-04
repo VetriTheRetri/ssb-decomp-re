@@ -76,7 +76,6 @@ typedef enum itKind
 	nITKindDogas,										// Koffing
 	nITKindPippi,										// Clefairy
 	nITKindMBallCommonEnd = nITKindPippi,				// End of Pokémon with a common appearance rate
-
 	nITKindMew,											// Mew
 	nITKindMBallMonsterEnd = nITKindMew,				// End of Pokémon item IDs
 

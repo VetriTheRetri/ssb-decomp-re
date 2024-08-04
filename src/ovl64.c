@@ -421,22 +421,22 @@ GObj* scAutoDemoMakeFocusInterface()
 }
 
 // 8018D758
-void scAutoDemoGetPlayerSpawnPosition(s32 mapobj_kind, Vec3f *mpoint_pos)
+void scAutoDemoGetPlayerSpawnPosition(s32 mapobj_kind, Vec3f *mapobj_pos)
 {
 	s32 i, j;
-	s32 mpoint_random;
-	s32 mpoint_select;
-	s32 mpoint;
+	s32 mapobj_random;
+	s32 mapobj_select;
+	s32 mapobj;
 
-	mpoint_random = mtTrigGetRandomIntRange(((ARRAY_COUNT(dAutoDemoMapObjKindList) + ARRAY_COUNT(sAutoDemoMapObjs)) / 2) - mapobj_kind);
+	mapobj_random = mtTrigGetRandomIntRange(((ARRAY_COUNT(dAutoDemoMapObjKindList) + ARRAY_COUNT(sAutoDemoMapObjs)) / 2) - mapobj_kind);
 
 	for (i = j = 0; i < (ARRAY_COUNT(dAutoDemoMapObjKindList) + ARRAY_COUNT(sAutoDemoMapObjs)) / 2; i++)
 	{
-		mpoint_select = dAutoDemoMapObjKindList[i];
+		mapobj_select = dAutoDemoMapObjKindList[i];
 
 		if (sAutoDemoMapObjs[i] != -1)
 		{
-			if (mpoint_random == j)
+			if (mapobj_random == j)
 			{
 				sAutoDemoMapObjs[i] = -1;
 
@@ -445,10 +445,10 @@ void scAutoDemoGetPlayerSpawnPosition(s32 mapobj_kind, Vec3f *mpoint_pos)
 			else j++;
 		}
 	}
-	if (mpCollisionGetMapObjCountKind(mpoint_select) != 0)
+	if (mpCollisionGetMapObjCountKind(mapobj_select) != 0)
 	{
-		mpCollisionGetMapObjIDsKind(mpoint_select, &mpoint);
-		mpCollisionGetMapObjPositionID(mpoint, mpoint_pos);
+		mpCollisionGetMapObjIDsKind(mapobj_select, &mapobj);
+		mpCollisionGetMapObjPositionID(mapobj, mapobj_pos);
 	}
 }
 

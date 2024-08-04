@@ -90,14 +90,14 @@ void grYamabukiGateMakeMonster(void)
 {
     Vec3f pos;
     Vec3f vel;
-    s32 mpoint;
+    s32 mapobj;
     s32 item_id;
 
     gGRCommonStruct.yamabuki.gate_status = nGRYamabukiGateStatusOpen;
     gGRCommonStruct.yamabuki.gate_noentry = FALSE;
 
-    mpCollisionGetMapObjIDsKind(dGRYamabukiMonsterMapObjKinds[0], &mpoint);
-    mpCollisionGetMapObjPositionID(mpoint, &pos);
+    mpCollisionGetMapObjIDsKind(dGRYamabukiMonsterMapObjKinds[0], &mapobj);
+    mpCollisionGetMapObjPositionID(mapobj, &pos);
 
     vel.x = vel.y = vel.z = 0.0F;
 

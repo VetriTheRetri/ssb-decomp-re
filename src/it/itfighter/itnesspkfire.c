@@ -30,7 +30,7 @@ itCreateDesc dITNessPKFireItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itNessPKFireSDefaultProcUpdate,         // Proc Update
+    itNessPKFireCommonProcUpdate,         // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
@@ -44,26 +44,26 @@ itStatusDesc dITNessPKFireStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
-        itNessPKFireGWaitProcUpdate,        // Proc Update
-        itNessPKFireGWaitProcMap,           // Proc Map
+        itNessPKFireWaitProcUpdate,        // Proc Update
+        itNessPKFireWaitProcMap,           // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itNessPKFireSDefaultProcDamage      // Proc Damage
+        itNessPKFireCommonProcDamage      // Proc Damage
     },
 
     // Status 1 (Air Wait Fall)
     {
-        itNessPKFireAFallProcUpdate,        // Proc Update
-        itNessPKFireAFallProcMap,           // Proc Map
+        itNessPKFireFallProcUpdate,        // Proc Update
+        itNessPKFireFallProcMap,           // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itNessPKFireSDefaultProcDamage      // Proc Damage
+        itNessPKFireCommonProcDamage      // Proc Damage
     }
 };
 
@@ -75,8 +75,8 @@ itStatusDesc dITNessPKFireStatusDescs[/* */] =
 
 enum itPKFireStatus
 {
-    itStatus_PKFire_GWait,
-    itStatus_PKFire_AFall,
+    itStatus_PKFire_Wait,
+    itStatus_PKFire_Fall,
     itStatus_PKFire_EnumMax
 };
 
@@ -87,15 +87,15 @@ enum itPKFireStatus
 // // // // // // // // // // // //
 
 // 0x80185350
-sb32 itNessPKFireSDefaultProcUpdate(GObj *item_gobj)
+sb32 itNessPKFireCommonProcUpdate(GObj *item_gobj)
 {
-    itNessPKFireAFallSetStatus(item_gobj);
+    itNessPKFireFallSetStatus(item_gobj);
 
     return FALSE;
 }
 
 // 0x80185374
-sb32 itNessPKFireSDefaultUpdateAllCheckDestroy(GObj *item_gobj)
+sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itAttributes *attributes;
@@ -148,9 +148,9 @@ sb32 itNessPKFireSDefaultUpdateAllCheckDestroy(GObj *item_gobj)
 }
 
 // 0x801855E4
-sb32 itNessPKFireGWaitProcUpdate(GObj *item_gobj)
+sb32 itNessPKFireWaitProcUpdate(GObj *item_gobj)
 {
-    if (itNessPKFireSDefaultUpdateAllCheckDestroy(item_gobj) == TRUE)
+    if (itNessPKFireCommonUpdateAllCheckDestroy(item_gobj) == TRUE)
     {
         return TRUE;
     }
@@ -158,37 +158,37 @@ sb32 itNessPKFireGWaitProcUpdate(GObj *item_gobj)
 }
 
 // 0x80185614
-sb32 itNessPKFireAFallProcUpdate(GObj *item_gobj)
+sb32 itNessPKFireFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itNessPKFireSDefaultUpdateAllCheckDestroy(item_gobj) == TRUE)
+    if (itNessPKFireCommonUpdateAllCheckDestroy(item_gobj) == TRUE)
     {
         return TRUE;
     }
-    else itMainApplyGClampTVel(ip, ITPKFIRE_GRAVITY, ITPKFIRE_T_VEL);
+    else itMainApplyGravityClampTVel(ip, ITPKFIRE_GRAVITY, ITPKFIRE_TVEL);
 
     return FALSE;
 }
 
 // 0x80185660
-sb32 itNessPKFireGWaitProcMap(GObj *item_gobj)
+sb32 itNessPKFireWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itNessPKFireAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itNessPKFireFallSetStatus);
 
     return FALSE;
 }
 
 // 0x80185688
-sb32 itNessPKFireAFallProcMap(GObj *item_gobj)
+sb32 itNessPKFireFallProcMap(GObj *item_gobj)
 {
-    itMapCheckMapCollideLanding(item_gobj, 0.2F, 0.5F, itNessPKFireGWaitSetStatus);
+    itMapCheckMapCollideLanding(item_gobj, 0.2F, 0.5F, itNessPKFireWaitSetStatus);
 
     return FALSE;
 }
 
 // 0x801856BC
-sb32 itNessPKFireSDefaultProcDamage(GObj *item_gobj)
+sb32 itNessPKFireCommonProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -196,7 +196,7 @@ sb32 itNessPKFireSDefaultProcDamage(GObj *item_gobj)
     {
         ip->lifetime -= ip->damage_highest * ITPKFIRE_HURT_DAMAGE_MUL;
     }
-    if (itNessPKFireSDefaultUpdateAllCheckDestroy(item_gobj) == TRUE)
+    if (itNessPKFireCommonUpdateAllCheckDestroy(item_gobj) == TRUE)
     {
         return TRUE;
     }
@@ -204,7 +204,7 @@ sb32 itNessPKFireSDefaultProcDamage(GObj *item_gobj)
 }
 
 // 0x80185710
-void itNessPKFireGWaitSetStatus(GObj *item_gobj)
+void itNessPKFireWaitSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     gmStatFlags stat_flags;
@@ -218,14 +218,14 @@ void itNessPKFireGWaitSetStatus(GObj *item_gobj)
     stat_flags = ip->item_hit.stat_flags;
     stat_count = ip->item_hit.stat_count;
 
-    itMainSetItemStatus(item_gobj, dITNessPKFireStatusDescs, itStatus_PKFire_GWait);
+    itMainSetItemStatus(item_gobj, dITNessPKFireStatusDescs, itStatus_PKFire_Wait);
 
     ip->item_hit.stat_flags = stat_flags;
     ip->item_hit.stat_count = stat_count;
 }
 
 // 0x8018579C
-void itNessPKFireAFallSetStatus(GObj *item_gobj)
+void itNessPKFireFallSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     gmStatFlags stat_flags;
@@ -238,7 +238,7 @@ void itNessPKFireAFallSetStatus(GObj *item_gobj)
     stat_flags = ip->item_hit.stat_flags;
     stat_count = ip->item_hit.stat_count;
 
-    itMainSetItemStatus(item_gobj, dITNessPKFireStatusDescs, itStatus_PKFire_AFall);
+    itMainSetItemStatus(item_gobj, dITNessPKFireStatusDescs, itStatus_PKFire_Fall);
 
     ip->item_hit.stat_flags = stat_flags;
     ip->item_hit.stat_count = stat_count;

@@ -34,8 +34,8 @@ itCreateDesc dITNyarsItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itNyarsSDefaultProcUpdate,              // Proc Update
-    itNyarsSDefaultProcMap,                 // Proc Map
+    itNyarsCommonProcUpdate,              // Proc Update
+    itNyarsCommonProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -155,7 +155,7 @@ void itNyarsNAttackSetStatus(GObj *item_gobj)
 }
 
 // 0x8017EFF8
-sb32 itNyarsSDefaultProcUpdate(GObj *item_gobj)
+sb32 itNyarsCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -171,7 +171,7 @@ sb32 itNyarsSDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017F04C
-sb32 itNyarsSDefaultProcMap(GObj *item_gobj)
+sb32 itNyarsCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

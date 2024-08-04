@@ -7,7 +7,7 @@
 
 #define FTPIKACHU_THUNDERJOLT_SPAWN_JOINT 11					// Spawn Thunder Jolt relative to this bone
 #define FTPIKACHU_THUNDERJOLT_SPAWN_ANGLE F_CLC_DTOR32(-45.0F)	// Launch angle of Thunder Jolt in Radians (-0.7853982F)
-#define FTPIKACHU_THUNDERJOLT_VEL 40.0F							// Constant velocity of aerial Thunder Jolt
+#define FTPIKACHU_THUNDERJOLTVEL 40.0F							// Constant velocity of aerial Thunder Jolt
 #define FTPIKACHU_THUNDERJOLT_COLANIM_ID 0x3B					// ID of color animation applied to Pikachu's model
 #define FTPIKACHU_THUNDERJOLT_COLANIM_LENGTH 0
 
@@ -40,7 +40,7 @@
 #define FTPIKACHU_THUNDER_COLLIDE_X 200.0F						// Width of Thunder collision box
 #define FTPIKACHU_THUNDER_COLLIDE_Y	800.0F						// Height of Thunder collision box
 #define FTPIKACHU_THUNDER_HIT_GRAVITY 0.5F
-#define FTPIKACHU_THUNDER_HIT_VEL_Y	20.0F						// Vertical velocity gained if Thunder connects with Pikachu
+#define FTPIKACHU_THUNDER_HITVEL_Y	20.0F						// Vertical velocity gained if Thunder connects with Pikachu
 
 extern ftStatusDesc dFTPikachuSpecialStatusDescs[/* */];
 

@@ -318,7 +318,7 @@ void ftPikachuSpecialAirLwHitProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    ftPhysicsApplyGClampTVel(fp, FTPIKACHU_THUNDER_HIT_GRAVITY, attributes->fall_speed_max);
+    ftPhysicsApplyGravityClampTVel(fp, FTPIKACHU_THUNDER_HIT_GRAVITY, attributes->tvel_default);
 
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {
@@ -382,7 +382,7 @@ void ftPikachuSpecialAirLwHitSetStatus(GObj *fighter_gobj)
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftPikachuSpecialLwHitInitStatusVars(fighter_gobj);
 
-    fp->phys_info.vel_air.y = FTPIKACHU_THUNDER_HIT_VEL_Y;
+    fp->phys_info.vel_air.y = FTPIKACHU_THUNDER_HITVEL_Y;
 }
 
 // 0x80152620

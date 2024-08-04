@@ -5,23 +5,23 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern sb32 itCapsuleAFallProcUpdate(GObj *item_gobj);
-extern sb32 itCapsuleGWaitProcMap(GObj *item_gobj);
-extern sb32 itCapsuleSDefaultProcHit(GObj *item_gobj);
-extern sb32 itCapsuleAFallProcMap(GObj *item_gobj);
-extern void itCapsuleGWaitSetStatus(GObj *item_gobj);
-extern void itCapsuleAFallSetStatus(GObj *item_gobj);
-extern void itCapsuleFHoldSetStatus(GObj *item_gobj);
-extern sb32 itCapsuleFThrowProcUpdate(GObj *item_gobj);
-extern sb32 itCapsuleFThrowProcMap(GObj *item_gobj);
-extern void itCapsuleFThrowSetStatus(GObj *item_gobj);
+extern sb32 itCapsuleFallProcUpdate(GObj *item_gobj);
+extern sb32 itCapsuleWaitProcMap(GObj *item_gobj);
+extern sb32 itCapsuleCommonProcHit(GObj *item_gobj);
+extern sb32 itCapsuleFallProcMap(GObj *item_gobj);
+extern void itCapsuleWaitSetStatus(GObj *item_gobj);
+extern void itCapsuleFallSetStatus(GObj *item_gobj);
+extern void itCapsuleHoldSetStatus(GObj *item_gobj);
+extern sb32 itCapsuleThrownProcUpdate(GObj *item_gobj);
+extern sb32 itCapsuleThrownProcMap(GObj *item_gobj);
+extern void itCapsuleThrownSetStatus(GObj *item_gobj);
 extern sb32 func_ovl3_801741F0(GObj *item_gobj);
-extern sb32 itCapsuleFDropProcMap(GObj *item_gobj);
-extern void itCapsuleFDropSetStatus(GObj *item_gobj);
-extern sb32 itCapsuleNExplodeProcUpdate(GObj *item_gobj);
+extern sb32 itCapsuleDroppedProcMap(GObj *item_gobj);
+extern void itCapsuleDroppedSetStatus(GObj *item_gobj);
+extern sb32 itCapsuleExplodeNProcUpdate(GObj *item_gobj);
 extern GObj* itCapsuleMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
-extern void itCapsuleNExplodeInitItemVars(GObj *item_gobj);
-extern void itCapsuleNExplodeSetStatus(GObj *item_gobj);
-extern void itCapsuleNExplodeMakeEffectGotoSetStatus(GObj *item_gobj);
+extern void itCapsuleExplodeNInitItemVars(GObj *item_gobj);
+extern void itCapsuleExplodeNSetStatus(GObj *item_gobj);
+extern void itCapsuleExplodeNMakeEffectGotoSetStatus(GObj *item_gobj);
 
 #endif

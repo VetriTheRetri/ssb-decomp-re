@@ -28,8 +28,8 @@ itCreateDesc dITHeartItemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itHeartAFallProcUpdate,                 // Proc Update
-    itHeartAFallProcMap,                    // Proc Map
+    itHeartFallProcUpdate,                 // Proc Update
+    itHeartFallProcMap,                    // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -43,7 +43,7 @@ itStatusDesc dITHeartStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itHeartGWaitProcMap,                // Proc Map
+        itHeartWaitProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -54,8 +54,8 @@ itStatusDesc dITHeartStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itHeartAFallProcUpdate,             // Proc Update
-        itHeartAFallProcMap,                // Proc Map
+        itHeartFallProcUpdate,             // Proc Update
+        itHeartFallProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -66,8 +66,8 @@ itStatusDesc dITHeartStatusDescs[/* */] =
 
     // Status 2 (Fighter Drop)
     {
-        itHeartAFallProcUpdate,             // Proc Update
-        itHeartFDropProcMap,                // Proc Map
+        itHeartFallProcUpdate,             // Proc Update
+        itHeartDroppedProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -85,9 +85,9 @@ itStatusDesc dITHeartStatusDescs[/* */] =
 
 enum itHeartStatus
 {
-    itStatus_Heart_GWait,
-    itStatus_Heart_AFall,
-    itStatus_Heart_FDrop,
+    itStatus_Heart_Wait,
+    itStatus_Heart_Fall,
+    itStatus_Heart_Dropped,
     itStatus_Heart_EnumMax
 };
 
@@ -98,58 +98,58 @@ enum itHeartStatus
 // // // // // // // // // // // //
 
 // 0x801746F0
-sb32 itHeartAFallProcUpdate(GObj *item_gobj)
+sb32 itHeartFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITHEART_GRAVITY, ITHEART_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITHEART_GRAVITY, ITHEART_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
 
 // 0x80174728
-sb32 itHeartGWaitProcMap(GObj *item_gobj)
+sb32 itHeartWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itHeartAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itHeartFallSetStatus);
 
     return FALSE;
 }
 
 // 0x80174750
-sb32 itHeartAFallProcMap(GObj *item_gobj)
+sb32 itHeartFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.1F, 0.0F, itHeartGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.1F, 0.0F, itHeartWaitSetStatus);
 }
 
 // 0x80174780
-void itHeartGWaitSetStatus(GObj *item_gobj)
+void itHeartWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, itStatus_Heart_GWait);
+    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, itStatus_Heart_Wait);
 }
 
 // 0x801747B4
-void itHeartAFallSetStatus(GObj *item_gobj)
+void itHeartFallSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, itStatus_Heart_AFall);
+    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, itStatus_Heart_Fall);
 }
 
 // 0x801747F8
-sb32 itHeartFDropProcMap(GObj *item_gobj)
+sb32 itHeartDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.1F, 0.0F, itHeartGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.1F, 0.0F, itHeartWaitSetStatus);
 }
 
 // 0x80174828
-void itHeartFDropSetStatus(GObj *item_gobj)
+void itHeartDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, itStatus_Heart_FDrop);
+    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, itStatus_Heart_Dropped);
 }
 
 // 0x80174850

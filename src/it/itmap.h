@@ -29,7 +29,7 @@ sb32 itMapTestAllCollisionFlag(GObj* item_gobj, u32 flag);
 sb32 itMapCheckCollideAllRebound(GObj* item_gobj, u32 check_flags, f32 mod_vel, Vec3f* pos);
 
 // Set recoil velocity when item hits ground
-void itMapSetGroundCollisionRecoil(Vec3f* vel, Vec3f* ground_angle, f32 ground_rebound);
+void itMapSetGroundCollisionRebound(Vec3f* vel, Vec3f* ground_angle, f32 ground_rebound);
 
 // Check if item should be destroyed upon landing after being dropped / thrown
 sb32 itMapCheckMapCollideThrownLanding(GObj* item_gobj, f32 wall_ceil_rebound, f32 ground_rebound,

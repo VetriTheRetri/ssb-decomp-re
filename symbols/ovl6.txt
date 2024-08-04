@@ -35,7 +35,7 @@ scBonusGame_SaveBonusRecordSRAM = 0x8018E95C; // segment:ovl6
 scBonusGame_SetGeometryRenderLights = 0x8018EA80; // segment:ovl6
 scManager_BonusGame_InitScene = 0x8018EACC; // segment:ovl6
 func_ovl6_8018ED70 = 0x8018ED70; // segment:ovl6
-itTarget_SDefault_ProcDamage = 0x8018EE10; // segment:ovl6
+itTarget_Common_ProcDamage = 0x8018EE10; // segment:ovl6
 func_ovl6_8018EE5C = 0x8018EE5C; // segment:ovl6
 
 D_ovl6_8018EEC0 = 0x8018EEC0; // segment:ovl6

@@ -32,8 +32,8 @@ itCreateDesc dITMBallItemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itMBallAFallProcUpdate,                 // Proc Update
-    itMBallAFallProcMap,                    // Proc Map
+    itMBallFallProcUpdate,                 // Proc Update
+    itMBallFallProcMap,                    // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -47,7 +47,7 @@ itStatusDesc dITMBallStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itMBallGWaitProcMap,              // Proc Map
+        itMBallWaitProcMap,              // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -58,8 +58,8 @@ itStatusDesc dITMBallStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itMBallAFallProcUpdate,             // Proc Update
-        itMBallAFallProcMap,                // Proc Map
+        itMBallFallProcUpdate,             // Proc Update
+        itMBallFallProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -82,25 +82,25 @@ itStatusDesc dITMBallStatusDescs[/* */] =
 
     // Status 3 (Fighter Throw)
     {
-        itMBallFThrowProcUpdate,            // Proc Update
-        itMBallFThrowProcMap,               // Proc Map
-        itMBallSDefaultProcHit,             // Proc Hit
-        itMBallSDefaultProcHit,             // Proc Shield
-        itMainSDefaultProcHop,            // Proc Hop
-        itMBallSDefaultProcHit,             // Proc Set-Off
-        itMBallSDefaultProcReflector,       // Proc Reflector
+        itMBallThrownProcUpdate,            // Proc Update
+        itMBallThrownProcMap,               // Proc Map
+        itMBallCommonProcHit,             // Proc Hit
+        itMBallCommonProcHit,             // Proc Shield
+        itMainCommonProcHop,                // Proc Hop
+        itMBallCommonProcHit,             // Proc Set-Off
+        itMBallCommonProcReflector,       // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itMBallAFallProcUpdate,             // Proc Update
-        itMBallFThrowProcMap,               // Proc Map
-        itMBallSDefaultProcHit,             // Proc Hit
-        itMBallSDefaultProcHit,             // Proc Shield
-        itMainSDefaultProcHop,            // Proc Hop
-        itMBallSDefaultProcHit,             // Proc Set-Off
-        itMBallSDefaultProcReflector,       // Proc Reflector
+        itMBallFallProcUpdate,             // Proc Update
+        itMBallThrownProcMap,               // Proc Map
+        itMBallCommonProcHit,             // Proc Hit
+        itMBallCommonProcHit,             // Proc Shield
+        itMainCommonProcHop,                // Proc Hop
+        itMBallCommonProcHit,             // Proc Set-Off
+        itMBallCommonProcReflector,       // Proc Reflector
         NULL                                // Proc Damage
     },
 
@@ -124,7 +124,7 @@ itStatusDesc dITMBallStatusDescs[/* */] =
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
-        itMBallSDefaultProcReflector,       // Proc Reflector
+        itMBallCommonProcReflector,       // Proc Reflector
         NULL                                // Proc Damage
     }
 };
@@ -137,11 +137,11 @@ itStatusDesc dITMBallStatusDescs[/* */] =
 
 enum itMBallStatus
 {
-    itStatus_MBall_GWait,
-    itStatus_MBall_AFall,
-    itStatus_MBall_FHold,
-    itStatus_MBall_FThrow,
-    itStatus_MBall_FDrop,
+    itStatus_MBall_Wait,
+    itStatus_MBall_Fall,
+    itStatus_MBall_Hold,
+    itStatus_MBall_Thrown,
+    itStatus_MBall_Dropped,
     itStatus_MBall_GOpen,
     itStatus_MBall_AOpen,
     itStatus_MBall_EnumMax
@@ -173,12 +173,12 @@ void itMBallGOpenClearAnim(GObj *item_gobj)
 }
 
 // 0x8017C710
-sb32 itMBallAFallProcUpdate(GObj *item_gobj)
+sb32 itMBallFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     dobj->child->sib_next->rotate.vec.f.z = dobj->rotate.vec.f.z;
@@ -187,41 +187,41 @@ sb32 itMBallAFallProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017C768
-sb32 itMBallGWaitProcMap(GObj *item_gobj)
+sb32 itMBallWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itMBallAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itMBallFallSetStatus);
 
     return FALSE;
 }
 
 // 0x8017C790
-sb32 itMBallAFallProcMap(GObj *item_gobj)
+sb32 itMBallFallProcMap(GObj *item_gobj)
 {
-    itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.2F, itMBallGWaitSetStatus);
+    itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.2F, itMBallWaitSetStatus);
 
     return FALSE;
 }
 
 // 0x8017C7C8
-void itMBallGWaitSetStatus(GObj *item_gobj)
+void itMBallWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_GWait);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_Wait);
 }
 
 // 0x8017C7FC
-void itMBallAFallSetStatus(GObj *item_gobj)
+void itMBallFallSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_AFall);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_Fall);
 }
 
 // 0x8017C840
-void itMBallFHoldSetStatus(GObj *item_gobj)
+void itMBallHoldSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -229,16 +229,16 @@ void itMBallFHoldSetStatus(GObj *item_gobj)
 
     ip->item_vars.m_ball.owner_gobj = ip->owner_gobj;
 
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_FHold);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_Hold);
 }
 
 // 0x8017C880
-sb32 itMBallFThrowProcUpdate(GObj *item_gobj)
+sb32 itMBallThrownProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     dobj->child->sib_next->rotate.vec.f.z = dobj->rotate.vec.f.z;
@@ -247,7 +247,7 @@ sb32 itMBallFThrowProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017C8D8
-sb32 itMBallFThrowProcMap(GObj *item_gobj)
+sb32 itMBallThrownProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -261,7 +261,7 @@ sb32 itMBallFThrowProcMap(GObj *item_gobj)
 }
 
 // 0x8017C94C
-sb32 itMBallSDefaultProcHit(GObj *item_gobj)
+sb32 itMBallCommonProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -275,7 +275,7 @@ sb32 itMBallSDefaultProcHit(GObj *item_gobj)
 }
 
 // 0x8017C97C
-sb32 itMBallSDefaultProcReflector(GObj *item_gobj)
+sb32 itMBallCommonProcReflector(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     ftStruct *fp;
@@ -300,17 +300,17 @@ sb32 itMBallSDefaultProcReflector(GObj *item_gobj)
 }
 
 // 0x8017C9E0
-void itMBallFThrowSetStatus(GObj *item_gobj)
+void itMBallThrownSetStatus(GObj *item_gobj)
 {
     itMBallGOpenAddAnim(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_FThrow);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_Thrown);
 }
 
 // 0x8017CA14
-void itMBallFDropSetStatus(GObj *item_gobj)
+void itMBallDroppedSetStatus(GObj *item_gobj)
 {
     itMBallGOpenAddAnim(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_FDrop);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_Dropped);
 }
 
 // 0x8017CA48

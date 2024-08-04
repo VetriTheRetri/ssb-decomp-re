@@ -3798,11 +3798,11 @@ void efManagerDamageSpawnMDustProcUpdate(GObj *effect_gobj)
 
             angle = F_CLC_DTOR32(var);
 
-            new_ep->effect_vars.damage_fly_mdust.vel.x = __cosf(angle) * EFPART_DAMAGESPAWNMDUST_VEL_BASE * this_ep->effect_vars.damage_spawn_mdust.lr;
-            new_ep->effect_vars.damage_fly_mdust.vel.y = __sinf(angle) * EFPART_DAMAGESPAWNMDUST_VEL_BASE;
+            new_ep->effect_vars.damage_fly_mdust.vel.x = __cosf(angle) * EFPART_DAMAGESPAWNMDUSTVEL_BASE * this_ep->effect_vars.damage_spawn_mdust.lr;
+            new_ep->effect_vars.damage_fly_mdust.vel.y = __sinf(angle) * EFPART_DAMAGESPAWNMDUSTVEL_BASE;
 
-            new_ep->effect_vars.damage_fly_mdust.add.x = -new_ep->effect_vars.damage_fly_mdust.vel.x * EFPART_DAMAGESPAWNMDUST_VEL_ADD;
-            new_ep->effect_vars.damage_fly_mdust.add.y = -new_ep->effect_vars.damage_fly_mdust.vel.y * EFPART_DAMAGESPAWNMDUST_VEL_ADD;
+            new_ep->effect_vars.damage_fly_mdust.add.x = -new_ep->effect_vars.damage_fly_mdust.vel.x * EFPART_DAMAGESPAWNMDUSTVEL_ADD;
+            new_ep->effect_vars.damage_fly_mdust.add.y = -new_ep->effect_vars.damage_fly_mdust.vel.y * EFPART_DAMAGESPAWNMDUSTVEL_ADD;
 
             new_ep->effect_vars.damage_fly_mdust.add_timer = EFPART_DAMAGESPAWNMDUST_ADD_TIMER;
         }

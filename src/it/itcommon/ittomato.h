@@ -5,13 +5,13 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern sb32 itTomatoAFallProcUpdate(GObj *item_gobj);
-extern sb32 itTomatoGWaitProcMap(GObj *item_gobj);
-extern sb32 itTomatoAFallProcMap(GObj *item_gobj);
-extern void itTomatoGWaitSetStatus(GObj *item_gobj);
-extern void itTomatoAFallSetStatus(GObj *item_gobj);
-extern sb32 itTomatoFDropProcMap(GObj *item_gobj);
-extern void itTomatoFDropSetStatus(GObj *item_gobj);
+extern sb32 itTomatoFallProcUpdate(GObj *item_gobj);
+extern sb32 itTomatoWaitProcMap(GObj *item_gobj);
+extern sb32 itTomatoFallProcMap(GObj *item_gobj);
+extern void itTomatoWaitSetStatus(GObj *item_gobj);
+extern void itTomatoFallSetStatus(GObj *item_gobj);
+extern sb32 itTomatoDroppedProcMap(GObj *item_gobj);
+extern void itTomatoDroppedSetStatus(GObj *item_gobj);
 extern GObj* itTomatoMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

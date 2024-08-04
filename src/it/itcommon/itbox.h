@@ -7,24 +7,24 @@
 
 extern void itBoxContainerSmashUpdateEffect(GObj *effect_gobj);
 extern void itBoxContainerSmashMakeEffect(Vec3f *pos);
-extern sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj);
-extern sb32 itBoxAFallProcUpdate(GObj *item_gobj);
-extern sb32 itBoxGWaitProcMap(GObj *item_gobj);
-extern sb32 itBoxSDefaultProcHit(GObj *item_gobj);
-extern sb32 itBoxSDefaultProcDamage(GObj *item_gobj);
-extern sb32 itBoxAFallProcMap(GObj *item_gobj);
-extern void itBoxGWaitSetStatus(GObj *item_gobj);
-extern void itBoxAFallSetStatus(GObj *item_gobj);
-extern void itBoxFHoldSetStatus(GObj *item_gobj);
-extern sb32 itBoxFThrowProcMap(GObj *item_gobj);
-extern void itBoxFThrowSetStatus(GObj *item_gobj);
+extern sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj);
+extern sb32 itBoxFallProcUpdate(GObj *item_gobj);
+extern sb32 itBoxWaitProcMap(GObj *item_gobj);
+extern sb32 itBoxCommonProcHit(GObj *item_gobj);
+extern sb32 itBoxCommonProcDamage(GObj *item_gobj);
+extern sb32 itBoxFallProcMap(GObj *item_gobj);
+extern void itBoxWaitSetStatus(GObj *item_gobj);
+extern void itBoxFallSetStatus(GObj *item_gobj);
+extern void itBoxHoldSetStatus(GObj *item_gobj);
+extern sb32 itBoxThrownProcMap(GObj *item_gobj);
+extern void itBoxThrownSetStatus(GObj *item_gobj);
 extern sb32 func_ovl3_801798B8(GObj *item_gobj);
-extern sb32 itBoxFDropProcMap(GObj *item_gobj);
-extern void itBoxFDropSetStatus(GObj *item_gobj);
-extern sb32 itBoxNExplodeProcUpdate(GObj *item_gobj);
+extern sb32 itBoxDroppedProcMap(GObj *item_gobj);
+extern void itBoxDroppedSetStatus(GObj *item_gobj);
+extern sb32 itBoxExplodeNProcUpdate(GObj *item_gobj);
 extern GObj *itBoxMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
-extern void itBoxNExplodeInitItemVars(GObj *item_gobj);
-extern void itBoxNExplodeSetStatus(GObj *item_gobj);
-extern void itBoxNExplodeMakeEffectGotoSetStatus(GObj *item_gobj);
+extern void itBoxExplodeNInitItemVars(GObj *item_gobj);
+extern void itBoxExplodeNSetStatus(GObj *item_gobj);
+extern void itBoxExplodeNMakeEffectGotoSetStatus(GObj *item_gobj);
 
 #endif

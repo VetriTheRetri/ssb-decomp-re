@@ -98,7 +98,7 @@ sb32 wpSamusBombProcUpdate(GObj *weapon_gobj)
     {
         if (wp->ga == nMPKineticsAir)
         {
-            wpMainApplyGClampTVel(wp, WPSAMUSBOMB_WAIT_GRAVITY, WPSAMUSBOMB_WAIT_T_VEL);
+            wpMainApplyGravityClampTVel(wp, WPSAMUSBOMB_WAIT_GRAVITY, WPSAMUSBOMB_WAIT_TVEL);
             DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= (WPSAMUSBOMB_WAIT_ROTATE_SPEED_AIR * wp->lr);
         }
         else
@@ -228,7 +228,7 @@ GObj* wpSamusBombMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->weapon_vars.samus_bomb.bomb_blink_timer = WPSAMUSBOMB_WAIT_BLINK_TIMER_SLOW;
 
-    wp->phys_info.vel_air.y = WPSAMUSBOMB_WAIT_VEL_Y;
+    wp->phys_info.vel_air.y = WPSAMUSBOMB_WAITVEL_Y;
 
     return weapon_gobj;
 }

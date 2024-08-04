@@ -26,7 +26,7 @@ void wpMainDestroyWeapon(GObj* weapon_gobj);
 void wpMainVelGroundTransferAir(GObj* weapon_gobj);
 
 // Update weapon's gravity and clamp to terminal velocity if greater than
-void wpMainApplyGClampTVel(wpStruct* wp, f32 gravity, f32 terminal_velocity);
+void wpMainApplyGravityClampTVel(wpStruct* wp, f32 gravity, f32 terminal_velocity);
 
 // Set weapon's facing direction when reflected
 void wpMainReflectorSetLR(wpStruct* wp, ftStruct* fp);

@@ -253,7 +253,7 @@ void ftLinkSpecialAirHiProcPhysics(GObj *fighter_gobj)
 
     gravity = (fp->command_vars.flags.flag1 != 0) ? fp->attributes->gravity : fp->attributes->gravity * FTLINK_SPINATTACK_GRAVITY_MUL;
 
-    ftPhysicsApplyGClampTVel(fp, gravity, fp->attributes->fall_speed_max);
+    ftPhysicsApplyGravityClampTVel(fp, gravity, fp->attributes->tvel_default);
 
     if (ftPhysicsCheckClampAirVelXDecMax(fp, fp->attributes) == FALSE)
     {

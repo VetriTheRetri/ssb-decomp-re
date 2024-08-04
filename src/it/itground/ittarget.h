@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern sb32 itTargetSDefaultProcDamage(GObj *item_gobj);
+extern sb32 itTargetCommonProcDamage(GObj *item_gobj);
 extern GObj* itTargetMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

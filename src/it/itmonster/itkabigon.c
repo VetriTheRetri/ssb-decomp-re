@@ -32,7 +32,7 @@ itCreateDesc dITKabigonItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itKabigonSDefaultProcUpdate,            // Proc Update
+    itKabigonCommonProcUpdate,            // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
@@ -219,7 +219,7 @@ sb32 itKabigonNJumpProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017E4A4
-void itKabigonSDefaultProcRender(GObj *item_gobj)
+void itKabigonCommonProcRender(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -273,7 +273,7 @@ void itKabigonNJumpSetStatus(GObj *item_gobj)
 }
 
 // 0x8017E67C
-sb32 itKabigonSDefaultProcUpdate(GObj *item_gobj)
+sb32 itKabigonCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -309,7 +309,7 @@ GObj* itKabigonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         {
             func_800269C0_275C0(nGMSoundVoiceMBallKabigonSpawn);
         }
-        item_gobj->proc_render = itKabigonSDefaultProcRender;
+        item_gobj->proc_render = itKabigonCommonProcRender;
     }
     return item_gobj;
 }

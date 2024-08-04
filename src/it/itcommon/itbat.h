@@ -5,18 +5,18 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern sb32 itBatAFallProcUpdate(GObj *item_gobj);
-extern sb32 itBatGWaitProcMap(GObj *item_gobj);
-extern sb32 itBatAFallProcMap(GObj *item_gobj);
-extern void itBatGWaitSetStatus(GObj *item_gobj);
-extern void itBatAFallSetStatus(GObj *item_gobj);
-extern void itBatFHoldSetStatus(GObj *item_gobj);
-extern sb32 itBatFThrowProcUpdate(GObj *item_gobj);
-extern sb32 itBatFThrowProcMap(GObj *item_gobj);
-extern sb32 itBatFThrowProcHit(GObj *item_gobj);
-extern void itBatFThrowSetStatus(GObj *item_gobj);
-extern sb32 itBatFDropProcMap(GObj *item_gobj);
-extern void itBatFDropSetStatus(GObj *item_gobj);
+extern sb32 itBatFallProcUpdate(GObj *item_gobj);
+extern sb32 itBatWaitProcMap(GObj *item_gobj);
+extern sb32 itBatFallProcMap(GObj *item_gobj);
+extern void itBatWaitSetStatus(GObj *item_gobj);
+extern void itBatFallSetStatus(GObj *item_gobj);
+extern void itBatHoldSetStatus(GObj *item_gobj);
+extern sb32 itBatThrownProcUpdate(GObj *item_gobj);
+extern sb32 itBatThrownProcMap(GObj *item_gobj);
+extern sb32 itBatThrownProcHit(GObj *item_gobj);
+extern void itBatThrownSetStatus(GObj *item_gobj);
+extern sb32 itBatDroppedProcMap(GObj *item_gobj);
+extern void itBatDroppedSetStatus(GObj *item_gobj);
 extern GObj* itBatMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

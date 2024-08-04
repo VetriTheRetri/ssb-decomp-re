@@ -30,7 +30,7 @@ itCreateDesc dITMarumineItemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itMarumineSDefaultProcUpdate,           // Proc Update
+    itMarumineCommonProcUpdate,           // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
@@ -44,7 +44,7 @@ itStatusDesc dITMarumineStatusDescs[/* */] =
 {
     // Status 0 (Neutral Explosion)
     {
-        itMarumineNExplodeProcUpdate,       // Proc Update
+        itMarumineExplodeNProcUpdate,       // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -63,7 +63,7 @@ itStatusDesc dITMarumineStatusDescs[/* */] =
 
 enum itMarumineStatus
 {
-    itStatus_Marumine_NExplode,
+    itStatus_Marumine_ExplodeN,
     itStatus_Marumine_EnumMax
 };
 
@@ -74,7 +74,7 @@ enum itMarumineStatus
 // // // // // // // // // // // //
 
 // 0x801837A0
-void itMarumineNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
+void itMarumineExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
 {
     s32 unused;
     efParticle *efpart;
@@ -98,11 +98,11 @@ void itMarumineNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
 
     itMainRefreshHit(item_gobj);
-    itMarumineNExplodeSetStatus(item_gobj);
+    itMarumineExplodeNSetStatus(item_gobj);
 }
 
 // 0x80183830
-void itMarumineNExplodeUpdateHitEvent(GObj *item_gobj)
+void itMarumineExplodeNUpdateHitEvent(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itHitEvent *ev = itGetHitEvent(dITMarumineItemDesc, lITMarumineHitEvents); // (itHitEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&lITMarumineHitEvents); // Linker thing
@@ -130,7 +130,7 @@ void itMarumineNExplodeUpdateHitEvent(GObj *item_gobj)
 }
 
 // 0x80183914
-sb32 itMarumineSDefaultProcUpdate(GObj *item_gobj)
+sb32 itMarumineCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -146,14 +146,14 @@ sb32 itMarumineSDefaultProcUpdate(GObj *item_gobj)
         ip->item_vars.marumine.offset.x = 0.0F;
         ip->item_vars.marumine.offset.y = 0.0F;
 
-        itMarumineNExplodeMakeEffectGotoSetStatus(item_gobj);
+        itMarumineExplodeNMakeEffectGotoSetStatus(item_gobj);
         func_800269C0_275C0(nGMSoundFGMExplodeL);
     }
     return FALSE;
 }
 
 // 0x801839A8
-sb32 itMarumineNExplodeProcUpdate(GObj *item_gobj)
+sb32 itMarumineExplodeNProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -161,7 +161,7 @@ sb32 itMarumineNExplodeProcUpdate(GObj *item_gobj)
     dobj->translate.vec.f.x += ip->item_vars.marumine.offset.x;
     dobj->translate.vec.f.y += ip->item_vars.marumine.offset.y;
 
-    itMarumineNExplodeUpdateHitEvent(item_gobj);
+    itMarumineExplodeNUpdateHitEvent(item_gobj);
 
     ip->it_multi++;
 
@@ -175,7 +175,7 @@ sb32 itMarumineNExplodeProcUpdate(GObj *item_gobj)
 }
 
 // 0x80183A20
-void itMarumineNExplodeSetStatus(GObj *item_gobj)
+void itMarumineExplodeNSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -185,8 +185,8 @@ void itMarumineNExplodeSetStatus(GObj *item_gobj)
 
     ip->item_event_index = 0;
 
-    itMarumineNExplodeUpdateHitEvent(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMarumineStatusDescs, itStatus_Marumine_NExplode);
+    itMarumineExplodeNUpdateHitEvent(item_gobj);
+    itMainSetItemStatus(item_gobj, dITMarumineStatusDescs, itStatus_Marumine_ExplodeN);
 }
 
 // 0x80183A74

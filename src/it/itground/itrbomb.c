@@ -37,33 +37,33 @@ itCreateDesc dITRBombItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itRBombAFallProcUpdate,                 // Proc Update
-    itRBombAFallProcMap,                    // Proc Map
-    itRBombSDefaultProcHit,                 // Proc Hit
-    itRBombSDefaultProcHit,                 // Proc Shield
+    itRBombFallProcUpdate,                 // Proc Update
+    itRBombFallProcMap,                    // Proc Map
+    itRBombCommonProcHit,                 // Proc Hit
+    itRBombCommonProcHit,                 // Proc Shield
     NULL,                                   // Proc Hop
-    itRBombSDefaultProcHit,                 // Proc Set-Off
-    itRBombSDefaultProcHit,                 // Proc Reflector
-    itRBombSDefaultProcDamage               // Proc Damage
+    itRBombCommonProcHit,                 // Proc Set-Off
+    itRBombCommonProcHit,                 // Proc Reflector
+    itRBombCommonProcDamage               // Proc Damage
 };
 
 itStatusDesc dITRBombStatusDescs[/* */] =
 {
     // Status 0 (Air Wait Fall)
     {
-        itRBombAFallProcUpdate,             // Proc Update
-        itRBombAFallProcMap,                // Proc Map
-        itRBombSDefaultProcHit,             // Proc Hit
-        itRBombSDefaultProcHit,             // Proc Shield
+        itRBombFallProcUpdate,             // Proc Update
+        itRBombFallProcMap,                // Proc Map
+        itRBombCommonProcHit,             // Proc Hit
+        itRBombCommonProcHit,             // Proc Shield
         NULL,                               // Proc Hop
-        itRBombSDefaultProcHit,             // Proc Set-Off
-        itRBombSDefaultProcHit,             // Proc Reflector
-        itRBombSDefaultProcDamage           // Proc Damage
+        itRBombCommonProcHit,             // Proc Set-Off
+        itRBombCommonProcHit,             // Proc Reflector
+        itRBombCommonProcDamage           // Proc Damage
     },
 
     // Status 1 (Neutral Explosion)
     {
-        itRBombNExplodeProcUpdate,          // Proc Update
+        itRBombExplodeNProcUpdate,          // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -77,12 +77,12 @@ itStatusDesc dITRBombStatusDescs[/* */] =
     {
         itRBombGRollProcUpdate,             // Proc Update
         itRBombGRollProcMap,                // Proc Map
-        itRBombSDefaultProcHit,             // Proc Hit
-        itRBombSDefaultProcHit,             // Proc Shield
+        itRBombCommonProcHit,             // Proc Hit
+        itRBombCommonProcHit,             // Proc Shield
         NULL,                               // Proc Hop
-        itRBombSDefaultProcHit,             // Proc Set-Off
-        itRBombSDefaultProcHit,             // Proc Reflector
-        itRBombSDefaultProcDamage           // Proc Damage
+        itRBombCommonProcHit,             // Proc Set-Off
+        itRBombCommonProcHit,             // Proc Reflector
+        itRBombCommonProcDamage           // Proc Damage
     }
 };
 
@@ -94,8 +94,8 @@ itStatusDesc dITRBombStatusDescs[/* */] =
 
 enum itRBombStatus
 {
-    itStatus_RBomb_AFall,
-    itStatus_RBomb_NExplode,
+    itStatus_RBomb_Fall,
+    itStatus_RBomb_ExplodeN,
     itStatus_RBomb_GRoll,
     itStatus_RBomb_EnumMax
 };
@@ -180,12 +180,12 @@ void itRBombContainerSmashMakeEffect(Vec3f *pos)
 }
 
 // 0x80184D74
-sb32 itRBombAFallProcUpdate(GObj *item_gobj)
+sb32 itRBombFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj;
 
-    itMainApplyGClampTVel(ip, ITRBOMB_GRAVITY, ITRBOMB_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITRBOMB_GRAVITY, ITRBOMB_TVEL);
 
     dobj = DObjGetStruct(item_gobj);
     dobj->rotate.vec.f.z += ip->item_vars.rbomb.roll_rotate_step;
@@ -194,23 +194,23 @@ sb32 itRBombAFallProcUpdate(GObj *item_gobj)
 }
 
 // 0x80184DC4
-sb32 itRBombSDefaultProcHit(GObj *item_gobj)
+sb32 itRBombCommonProcHit(GObj *item_gobj)
 {
     func_800269C0_275C0(nGMSoundFGMRBombHit);
     itRBombContainerSmashMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
-    itRBombNExplodeMakeEffectGotoSetStatus(item_gobj);
+    itRBombExplodeNMakeEffectGotoSetStatus(item_gobj);
 
     return FALSE;
 }
 
 // 0x80184E04
-sb32 itRBombSDefaultProcDamage(GObj *item_gobj)
+sb32 itRBombCommonProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     if (ip->percent_damage >= ITRBOMB_HEALTH_MAX)
     {
-        return itRBombSDefaultProcHit(item_gobj);
+        return itRBombCommonProcHit(item_gobj);
     }
     return FALSE;
 } 
@@ -226,7 +226,7 @@ void itRBombGRollSetStatus(GObj *item_gobj)
 }
 
 // 0x80184E78
-sb32 itRBombAFallCheckCollideGround(GObj *item_gobj, f32 vel_mod)
+sb32 itRBombFallCheckCollideGround(GObj *item_gobj, f32 vel_mod)
 {
     s32 unused;
     itStruct *ip;
@@ -244,15 +244,15 @@ sb32 itRBombAFallCheckCollideGround(GObj *item_gobj, f32 vel_mod)
 }
 
 // 0x80184EDC
-sb32 itRBombAFallProcMap(GObj *item_gobj)
+sb32 itRBombFallProcMap(GObj *item_gobj)
 {
-    if (itRBombAFallCheckCollideGround(item_gobj, 0.5F) != FALSE)
+    if (itRBombFallCheckCollideGround(item_gobj, 0.5F) != FALSE)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
         if (ip->phys_info.vel_air.y >= 90.0F) // Is it even possible to meet this condition? Didn't they mean ABSF(ap->phys_info.vel_air.y)?
         {
-            itRBombSDefaultProcHit(item_gobj); // This causes the bomb to smash on impact when landing from too high; doesn't seem possible to trigger
+            itRBombCommonProcHit(item_gobj); // This causes the bomb to smash on impact when landing from too high; doesn't seem possible to trigger
 
             return TRUE;
         }
@@ -276,7 +276,7 @@ sb32 itRBombAFallProcMap(GObj *item_gobj)
 
 
 // 0x80184FAC
-void itRBombSDefaultSetMapCollisionBox(GObj *item_gobj)
+void itRBombCommonSetMapCollisionBox(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -287,7 +287,7 @@ void itRBombSDefaultSetMapCollisionBox(GObj *item_gobj)
 }
 
 // 0x80184FD4
-sb32 itRBombNExplodeProcUpdate(GObj *item_gobj)
+sb32 itRBombExplodeNProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -331,11 +331,11 @@ sb32 itRBombGRollProcMap(GObj *item_gobj)
 
     if (itMapTestLRWallCheckGround(item_gobj) == FALSE)
     {
-        itMainSetItemStatus(item_gobj, dITRBombStatusDescs, itStatus_RBomb_AFall);
+        itMainSetItemStatus(item_gobj, dITRBombStatusDescs, itStatus_RBomb_Fall);
     }
     else if (ip->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
-        return itRBombSDefaultProcHit(item_gobj);
+        return itRBombCommonProcHit(item_gobj);
     }
     return FALSE;
 }
@@ -351,13 +351,13 @@ GObj* itRBombMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->item_vars.rbomb.roll_rotate_step = 0.0F;
 
-        itRBombSDefaultSetMapCollisionBox(item_gobj);
+        itRBombCommonSetMapCollisionBox(item_gobj);
     }
     return item_gobj;
 }
 
 // 0x801851F4
-void itRBombNExplodeInitItemVars(GObj *item_gobj)
+void itRBombExplodeNInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -381,14 +381,14 @@ void itRBombNExplodeInitItemVars(GObj *item_gobj)
 }
 
 // 0x80185284
-void itRBombNExplodeSetStatus(GObj *item_gobj)
+void itRBombExplodeNSetStatus(GObj *item_gobj)
 {
-    itRBombNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITRBombStatusDescs, itStatus_RBomb_NExplode);
+    itRBombExplodeNInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITRBombStatusDescs, itStatus_RBomb_ExplodeN);
 }
 
 // 0x801852B8
-void itRBombNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
+void itRBombExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
 {
     efParticle *efpart;
     itStruct *ip = itGetStruct(item_gobj);
@@ -410,5 +410,5 @@ void itRBombNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
-    itRBombNExplodeSetStatus(item_gobj);
+    itRBombExplodeNSetStatus(item_gobj);
 }

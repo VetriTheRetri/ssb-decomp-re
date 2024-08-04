@@ -44,7 +44,7 @@ void ftPhysicsClampAirVelY(ftStruct* fp, f32 clamp);
 void ftPhysicsAddClampAirVelY(ftStruct* fp, f32 vel, f32 clamp);
 
 // Apply gravity and clamp to terminal velocity
-void ftPhysicsApplyGClampTVel(ftStruct* fp, f32 gravity, f32 t_vel);
+void ftPhysicsApplyGravityClampTVel(ftStruct* fp, f32 gravity, f32 t_vel);
 
 // Set aerial Y velocity to fast fall speed
 void ftPhysicsApplyFastFall(ftStruct* fp, ftAttributes* attributes);
@@ -52,7 +52,7 @@ void ftPhysicsApplyFastFall(ftStruct* fp, ftAttributes* attributes);
 // Check for fast fall input from player
 void ftPhysicsCheckSetFastFall(ftStruct* fp);
 
-// Runs ftPhysicsApplyGClampTVel
+// Runs ftPhysicsApplyGravityClampTVel
 void ftPhysicsApplyGravityDefault(ftStruct* fp, ftAttributes* attributes);
 
 // Clamp aerial X velocity

@@ -97,7 +97,7 @@ sb32 wpMarioFireballProcUpdate(GObj *weapon_gobj)
 
         return TRUE;
     }
-    wpMainApplyGClampTVel(wp, dWPMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].gravity, dWPMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].vel_terminal);
+    wpMainApplyGravityClampTVel(wp, dWPMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].gravity, dWPMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].vel_terminal);
 
     dobj = DObjGetStruct(weapon_gobj);
 

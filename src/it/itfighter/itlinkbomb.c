@@ -34,7 +34,7 @@ itCreateDesc dItLinkBombItemDesc =
 	},
 
 	nGMHitUpdateDisable, // Hitbox Update State
-	itLinkBombFHoldProcUpdate,			// Proc Update
+	itLinkBombHoldProcUpdate,			// Proc Update
 	NULL,								// Proc Map
 	NULL,								// Proc Hit
 	NULL,								// Proc Shield
@@ -48,31 +48,31 @@ itStatusDesc dItLinkBombStatusDescs[/* */] =
 {
 	// Status 0 (Ground Wait)
 	{
-		itLinkBombGWaitProcUpdate,	 // Proc Update
-		itLinkBombGWaitProcMap,		 // Proc Map
+		itLinkBombWaitProcUpdate,	 // Proc Update
+		itLinkBombWaitProcMap,		 // Proc Map
 		NULL,						 // Proc Hit
 		NULL,						 // Proc Shield
 		NULL,						 // Proc Hop
 		NULL,						 // Proc Set-Off
 		NULL,						 // Proc Reflector
-		itLinkBombSDefaultProcDamage // Proc Damage
+		itLinkBombCommonProcDamage // Proc Damage
 	},
 
 	// Status 1 (Air Wait Fall)
 	{
-		itLinkBombAFallProcUpdate,	 // Proc Update
-		itLinkBombAFallProcMap,		 // Proc Map
+		itLinkBombFallProcUpdate,	 // Proc Update
+		itLinkBombFallProcMap,		 // Proc Map
 		NULL,						 // Proc Hit
 		NULL,						 // Proc Shield
 		NULL,						 // Proc Hop
 		NULL,						 // Proc Set-Off
 		NULL,						 // Proc Reflector
-		itLinkBombSDefaultProcDamage // Proc Damage
+		itLinkBombCommonProcDamage // Proc Damage
 	},
 
 	// Status 2 (Fighter Hold)
 	{
-		itLinkBombFHoldProcUpdate, // Proc Update
+		itLinkBombHoldProcUpdate, // Proc Update
 		NULL,					   // Proc Map
 		NULL,					   // Proc Hit
 		NULL,					   // Proc Shield
@@ -84,31 +84,31 @@ itStatusDesc dItLinkBombStatusDescs[/* */] =
 
 	// Status 3 (Fighter Throw)
 	{
-		itLinkBombAFallProcUpdate,	   // Proc Update
-		itLinkBombFThrowProcMap,	   // Proc Map
-		itLinkBombFThrowProcHit,	   // Proc Hit
-		itLinkBombSDefaultProcShield,  // Proc Shield
-		itMainSDefaultProcHop,	   // Proc Hop
+		itLinkBombFallProcUpdate,	   // Proc Update
+		itLinkBombThrownProcMap,	   // Proc Map
+		itLinkBombThrownProcHit,	   // Proc Hit
+		itLinkBombCommonProcShield,  // Proc Shield
+		itMainCommonProcHop,	   // Proc Hop
 		NULL,						   // Proc Set-Off
-		itMainSDefaultProcReflector, // Proc Reflector
-		itLinkBombSDefaultProcDamage   // Proc Damage
+		itMainCommonProcReflector, // Proc Reflector
+		itLinkBombCommonProcDamage   // Proc Damage
 	},
 
 	// Status 4 (Fighter Drop)
 	{
-		itLinkBombFDropProcUpdate,	   // Proc Update
-		itLinkBombFThrowProcMap,	   // Proc Map
-		itLinkBombFDropProcHit,		   // Proc Hit
-		itLinkBombSDefaultProcShield,  // Proc Shield
-		itMainSDefaultProcHop,	   // Proc Hop
+		itLinkBombDroppedProcUpdate,	   // Proc Update
+		itLinkBombThrownProcMap,	   // Proc Map
+		itLinkBombDroppedProcHit,		   // Proc Hit
+		itLinkBombCommonProcShield,  // Proc Shield
+		itMainCommonProcHop,	   // Proc Hop
 		NULL,						   // Proc Set-Off
-		itMainSDefaultProcReflector, // Proc Reflector
-		itLinkBombFDropProcDamage	   // Proc Damage
+		itMainCommonProcReflector, // Proc Reflector
+		itLinkBombDroppedProcDamage	   // Proc Damage
 	},
 
 	// Status 5 (Neutral Explosion)
 	{
-		itLinkBombNExplodeProcUpdate, // Proc Update
+		itLinkBombExplodeNProcUpdate, // Proc Update
 		NULL,						  // Proc Map
 		NULL,						  // Proc Hit
 		NULL,						  // Proc Shield
@@ -127,12 +127,12 @@ itStatusDesc dItLinkBombStatusDescs[/* */] =
 
 enum itLinkBombStatus
 {
-	itStatus_LinkBomb_GWait,
-	itStatus_LinkBomb_AFall,
-	itStatus_LinkBomb_FHold,
-	itStatus_LinkBomb_FThrow,
-	itStatus_LinkBomb_FDrop,
-	itStatus_LinkBomb_NExplode,
+	itStatus_LinkBomb_Wait,
+	itStatus_LinkBomb_Fall,
+	itStatus_LinkBomb_Hold,
+	itStatus_LinkBomb_Thrown,
+	itStatus_LinkBomb_Dropped,
+	itStatus_LinkBomb_ExplodeN,
 	itStatus_LinkBomb_EnumMax
 };
 
@@ -143,7 +143,7 @@ enum itLinkBombStatus
 // // // // // // // // // // // //
 
 // 801859C0
-void itLinkBombNExplodeWaitUpdateScale(GObj* item_gobj)
+void itLinkBombExplodeNWaitUpdateScale(GObj* item_gobj)
 {
 	DObj* dobj = DObjGetStruct(item_gobj);
 	itStruct* ip = itGetStruct(item_gobj);
@@ -171,14 +171,14 @@ void itLinkBombNExplodeWaitUpdateScale(GObj* item_gobj)
 }
 
 // 80185A80
-void itLinkBombNExplodeMakeEffectGotoSetStatus(GObj* item_gobj)
+void itLinkBombExplodeNMakeEffectGotoSetStatus(GObj* item_gobj)
 {
 	s32 unused;
 	DObj* dobj = DObjGetStruct(item_gobj);
 	itStruct* ip = itGetStruct(item_gobj);
 	efParticle* efpart;
 
-	itLinkBombSDefaultSetHitStatusNone(item_gobj);
+	itLinkBombCommonSetHitStatusNone(item_gobj);
 
 	efpart = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
@@ -195,7 +195,7 @@ void itLinkBombNExplodeMakeEffectGotoSetStatus(GObj* item_gobj)
 	ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
 
 	itMainRefreshHit(item_gobj);
-	itLinkBombNExplodeSetStatus(item_gobj);
+	itLinkBombExplodeNSetStatus(item_gobj);
 }
 
 // 0x80185B18 - Called only by unused function
@@ -213,12 +213,12 @@ void func_ovl3_80185B18(GObj* item_gobj)
 }
 
 // 80185B84
-sb32 itLinkBombSDefaultProcDamage(GObj* item_gobj)
+sb32 itLinkBombCommonProcDamage(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
 	if (ip->damage_queue >= ITLINKBOMB_HEALTH)
-		itLinkBombNExplodeInitItemVars(item_gobj);
+		itLinkBombExplodeNInitItemVars(item_gobj);
 	else
 	{
 		ip->lr = -ip->lr_damage;
@@ -230,14 +230,14 @@ sb32 itLinkBombSDefaultProcDamage(GObj* item_gobj)
 }
 
 // 80185BFC
-sb32 itLinkBombFThrowProcHit(GObj* item_gobj)
+sb32 itLinkBombThrownProcHit(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
 	if ((ABSF(ip->phys_info.vel_air.x) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_X)
 		|| (ABSF(ip->phys_info.vel_air.y) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_Y))
 	{
-		itLinkBombNExplodeInitItemVars(item_gobj);
+		itLinkBombExplodeNInitItemVars(item_gobj);
 	}
 	else
 	{
@@ -246,13 +246,13 @@ sb32 itLinkBombFThrowProcHit(GObj* item_gobj)
 		ip->phys_info.vel_air.x = -ip->lr_attack * ITLINKBOMB_HIT_RECOIL_VEL_X;
 		ip->phys_info.vel_air.y = ITLINKBOMB_HIT_RECOIL_VEL_Y;
 
-		itLinkBombAFallSetStatus(item_gobj);
+		itLinkBombFallSetStatus(item_gobj);
 	}
 	return FALSE;
 }
 
 // 80185CD4
-void itLinkBombSDefaultSetHitStatusNormal(GObj* item_gobj)
+void itLinkBombCommonSetHitStatusNormal(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
@@ -260,7 +260,7 @@ void itLinkBombSDefaultSetHitStatusNormal(GObj* item_gobj)
 }
 
 // 80185CE4
-void itLinkBombSDefaultSetHitStatusNone(GObj* item_gobj)
+void itLinkBombCommonSetHitStatusNone(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
@@ -268,14 +268,14 @@ void itLinkBombSDefaultSetHitStatusNone(GObj* item_gobj)
 }
 
 // 80185CF0
-sb32 itLinkBombAFallProcUpdate(GObj* item_gobj)
+sb32 itLinkBombFallProcUpdate(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
-	itMainApplyGClampTVel(ip, ITLINKBOMB_GRAVITY, ITLINKBOMB_T_VEL);
+	itMainApplyGravityClampTVel(ip, ITLINKBOMB_GRAVITY, ITLINKBOMB_TVEL);
 
 	if (ip->lifetime == 0)
-		itLinkBombNExplodeInitItemVars(item_gobj);
+		itLinkBombExplodeNInitItemVars(item_gobj);
 	if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
 	{
 		itMainCheckSetColAnimID(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
@@ -283,7 +283,7 @@ sb32 itLinkBombAFallProcUpdate(GObj* item_gobj)
 		ip->item_vars.link_bomb.scale_index = 1;
 	}
 	if (ip->lifetime < ITLINKBOMB_BLOAT_BEGIN)
-		itLinkBombNExplodeWaitUpdateScale(item_gobj);
+		itLinkBombExplodeNWaitUpdateScale(item_gobj);
 	ip->lifetime--;
 
 	itVisualsUpdateSpin(item_gobj);
@@ -292,7 +292,7 @@ sb32 itLinkBombAFallProcUpdate(GObj* item_gobj)
 }
 
 // 80185DCC
-sb32 itLinkBombGWaitProcUpdate(GObj* item_gobj)
+sb32 itLinkBombWaitProcUpdate(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
@@ -301,7 +301,7 @@ sb32 itLinkBombGWaitProcUpdate(GObj* item_gobj)
 	if (ABSF(ip->phys_info.vel_air.x) < 1.0F)
 		ip->phys_info.vel_air.x = 0;
 	if (ip->lifetime == 0)
-		itLinkBombNExplodeInitItemVars(item_gobj);
+		itLinkBombExplodeNInitItemVars(item_gobj);
 	if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
 	{
 		itMainCheckSetColAnimID(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
@@ -309,30 +309,30 @@ sb32 itLinkBombGWaitProcUpdate(GObj* item_gobj)
 		ip->item_vars.link_bomb.scale_index = 1;
 	}
 	if (ip->lifetime < ITLINKBOMB_BLOAT_BEGIN)
-		itLinkBombNExplodeWaitUpdateScale(item_gobj);
+		itLinkBombExplodeNWaitUpdateScale(item_gobj);
 	ip->lifetime--;
 
 	return FALSE;
 }
 
 // 80185F10
-sb32 itLinkBombGWaitProcMap(GObj* item_gobj)
+sb32 itLinkBombWaitProcMap(GObj* item_gobj)
 {
-	itMapCheckLRWallProcGround(item_gobj, itLinkBombAFallSetStatus);
+	itMapCheckLRWallProcGround(item_gobj, itLinkBombFallSetStatus);
 
 	return FALSE;
 }
 
 // 80185F38
-sb32 itLinkBombAFallProcMap(GObj* item_gobj)
+sb32 itLinkBombFallProcMap(GObj* item_gobj)
 {
-	itMapCheckMapCollideThrownLanding(item_gobj, 0.4F, 0.3F, itLinkBombGWaitSetStatus);
+	itMapCheckMapCollideThrownLanding(item_gobj, 0.4F, 0.3F, itLinkBombWaitSetStatus);
 
 	return FALSE;
 }
 
 // 80185F70
-void itLinkBombGWaitSetStatus(GObj* item_gobj)
+void itLinkBombWaitSetStatus(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
@@ -345,24 +345,24 @@ void itLinkBombGWaitSetStatus(GObj* item_gobj)
 	ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
 
 	itMapSetGround(ip);
-	itLinkBombSDefaultSetHitStatusNormal(item_gobj);
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_GWait);
+	itLinkBombCommonSetHitStatusNormal(item_gobj);
+	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_Wait);
 }
 
 // 80185FD8
-void itLinkBombAFallSetStatus(GObj* item_gobj)
+void itLinkBombFallSetStatus(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
 	ip->is_allow_pickup = FALSE;
 
 	itMapSetAir(ip);
-	itLinkBombSDefaultSetHitStatusNormal(item_gobj);
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_AFall);
+	itLinkBombCommonSetHitStatusNormal(item_gobj);
+	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_Fall);
 }
 
 // 80186024
-sb32 itLinkBombFHoldProcUpdate(GObj* item_gobj)
+sb32 itLinkBombHoldProcUpdate(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 	ftStruct* fp = ftGetStruct(ip->owner_gobj);
@@ -381,7 +381,7 @@ sb32 itLinkBombFHoldProcUpdate(GObj* item_gobj)
 										   // comment. Update  7/2/2023: variadic match confirmed fake, so does this
 										   // file use an erroneous decleration?
 			itMainClearOwnerStats(item_gobj);
-			itLinkBombNExplodeInitItemVars(item_gobj);
+			itLinkBombExplodeNInitItemVars(item_gobj);
 		}
 		if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
 		{
@@ -390,7 +390,7 @@ sb32 itLinkBombFHoldProcUpdate(GObj* item_gobj)
 			ip->item_vars.link_bomb.scale_index = 1;
 		}
 		if (ip->lifetime < ITLINKBOMB_BLOAT_BEGIN)
-			itLinkBombNExplodeWaitUpdateScale(item_gobj);
+			itLinkBombExplodeNWaitUpdateScale(item_gobj);
 		ip->lifetime--;
 
 		return FALSE;
@@ -398,99 +398,99 @@ sb32 itLinkBombFHoldProcUpdate(GObj* item_gobj)
 }
 
 // 8018611C
-void itLinkBombFHoldSetStatus(GObj* item_gobj)
+void itLinkBombHoldSetStatus(GObj* item_gobj)
 {
-	itLinkBombSDefaultSetHitStatusNone(item_gobj);
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_FHold);
+	itLinkBombCommonSetHitStatusNone(item_gobj);
+	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_Hold);
 }
 
 // 80186150
-sb32 itLinkBombFThrowProcMap(GObj* item_gobj)
+sb32 itLinkBombThrownProcMap(GObj* item_gobj)
 {
 	s32 unused;
 	itStruct* ip = itGetStruct(item_gobj);
 	Vec3f vel = ip->phys_info.vel_air;
 
-	if (itMapCheckMapReboundProcAll(item_gobj, 0.4F, 0.3F, itLinkBombAFallSetStatus) != FALSE)
+	if (itMapCheckMapReboundProcAll(item_gobj, 0.4F, 0.3F, itLinkBombFallSetStatus) != FALSE)
 	{
 		if ((ABSF(vel.x) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_X) || (ABSF(vel.y) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_Y))
-			itLinkBombNExplodeInitItemVars(item_gobj);
+			itLinkBombExplodeNInitItemVars(item_gobj);
 	}
 	return FALSE;
 }
 
 // 80186224
-void itLinkBombFThrowSetStatus(GObj* item_gobj)
+void itLinkBombThrownSetStatus(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
-	itLinkBombSDefaultSetHitStatusNormal(item_gobj);
+	itLinkBombCommonSetHitStatusNormal(item_gobj);
 
 	ip->is_damage_all = TRUE;
 
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_FThrow);
+	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_Thrown);
 }
 
 // 80186270
-sb32 itLinkBombFDropProcUpdate(GObj* item_gobj)
+sb32 itLinkBombDroppedProcUpdate(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
 	if (ip->item_vars.link_bomb.drop_update_wait != 0)
 		ip->item_vars.link_bomb.drop_update_wait--;
 	else
-		itLinkBombAFallProcUpdate(item_gobj);
+		itLinkBombFallProcUpdate(item_gobj);
 
 	return FALSE;
 }
 
 // 801862AC
-sb32 itLinkBombFDropProcHit(GObj* item_gobj)
+sb32 itLinkBombDroppedProcHit(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
 	if (ip->item_vars.link_bomb.drop_update_wait == 0)
-		itLinkBombFThrowProcHit(item_gobj);
+		itLinkBombThrownProcHit(item_gobj);
 	return FALSE;
 }
 
 // 801862E0
-sb32 itLinkBombFDropProcDamage(GObj* item_gobj)
+sb32 itLinkBombDroppedProcDamage(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
 	if (ip->item_vars.link_bomb.drop_update_wait == 0)
-		itLinkBombSDefaultProcDamage(item_gobj);
+		itLinkBombCommonProcDamage(item_gobj);
 	return FALSE;
 }
 
 // 80186314
-void itLinkBombFDropSetStatus(GObj* item_gobj)
+void itLinkBombDroppedSetStatus(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
-	itLinkBombSDefaultSetHitStatusNormal(item_gobj);
+	itLinkBombCommonSetHitStatusNormal(item_gobj);
 
 	ip->item_vars.link_bomb.drop_update_wait = 10;
 
 	ip->is_damage_all = TRUE;
 
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_FDrop);
+	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_Dropped);
 }
 
-void itLinkBombNExplodeInitItemVars(GObj* item_gobj)
+void itLinkBombExplodeNInitItemVars(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
 	ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
 
 	itMainClearOwnerStats(item_gobj);
-	itLinkBombNExplodeMakeEffectGotoSetStatus(item_gobj);
+	itLinkBombExplodeNMakeEffectGotoSetStatus(item_gobj);
 	func_800269C0_275C0(nGMSoundFGMExplodeL);
 }
 
 // 801863AC
-void itLinkBombNExplodeUpdateHitEvent(GObj* item_gobj)
+void itLinkBombExplodeNUpdateHitEvent(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 	itHitEvent* ev = itGetHitEvent(dItLinkBombItemDesc, lITLinkBombHitEvents);
@@ -516,7 +516,7 @@ void itLinkBombNExplodeUpdateHitEvent(GObj* item_gobj)
 }
 
 // 80186498
-sb32 itLinkBombSDefaultProcShield(GObj* item_gobj)
+sb32 itLinkBombCommonProcShield(GObj* item_gobj)
 {
 	itMainVelSetRebound(item_gobj);
 
@@ -527,13 +527,13 @@ sb32 itLinkBombSDefaultProcShield(GObj* item_gobj)
 sb32 func_ovl3_801864BC(GObj* item_gobj) // Unused
 {
 	func_ovl3_80185B18(item_gobj);
-	itLinkBombNExplodeInitItemVars(item_gobj);
+	itLinkBombExplodeNInitItemVars(item_gobj);
 
 	return FALSE;
 }
 
 // 801864E8
-void itLinkBombNExplodeInitHitbox(GObj* item_gobj)
+void itLinkBombExplodeNInitHitbox(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
@@ -542,15 +542,15 @@ void itLinkBombNExplodeInitHitbox(GObj* item_gobj)
 
 	ip->item_hit.throw_mul = 1.0F;
 
-	itLinkBombNExplodeUpdateHitEvent(item_gobj);
+	itLinkBombExplodeNUpdateHitEvent(item_gobj);
 }
 
 // 80186524
-sb32 itLinkBombNExplodeProcUpdate(GObj* item_gobj)
+sb32 itLinkBombExplodeNProcUpdate(GObj* item_gobj)
 {
 	itStruct* ip = itGetStruct(item_gobj);
 
-	itLinkBombNExplodeUpdateHitEvent(item_gobj);
+	itLinkBombExplodeNUpdateHitEvent(item_gobj);
 
 	ip->it_multi++;
 
@@ -561,10 +561,10 @@ sb32 itLinkBombNExplodeProcUpdate(GObj* item_gobj)
 }
 
 // 8018656C
-void itLinkBombNExplodeSetStatus(GObj* item_gobj)
+void itLinkBombExplodeNSetStatus(GObj* item_gobj)
 {
-	itLinkBombNExplodeInitHitbox(item_gobj);
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_NExplode);
+	itLinkBombExplodeNInitHitbox(item_gobj);
+	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, itStatus_LinkBomb_ExplodeN);
 }
 
 // 801865A0

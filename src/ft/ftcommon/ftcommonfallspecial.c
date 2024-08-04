@@ -28,7 +28,7 @@ void ftCommonFallSpecialProcPhysics(GObj *fighter_gobj)
     {
         ftPhysicsApplyGravityDefault(fp, attributes);
     }
-    else ftPhysicsApplyGClampTVel(fp, attributes->gravity, attributes->fast_fall_speed);
+    else ftPhysicsApplyGravityClampTVel(fp, attributes->gravity, attributes->tvel_fast);
 
     if (ftPhysicsCheckClampAirVelXDec(fp, fp->status_vars.common.fallspecial.drift) == FALSE)
     {

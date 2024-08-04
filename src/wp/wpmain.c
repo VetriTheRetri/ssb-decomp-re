@@ -88,7 +88,7 @@ void wpMainVelGroundTransferAir(GObj *weapon_gobj) // Transfer weapon's base gro
 }
 
 // 0x80168088
-void wpMainApplyGClampTVel(wpStruct *wp, f32 gravity, f32 terminal_velocity) // Subtract vertical velocity every frame and clamp to terminal velocity
+void wpMainApplyGravityClampTVel(wpStruct *wp, f32 gravity, f32 terminal_velocity) // Subtract vertical velocity every frame and clamp to terminal velocity
 {
     wp->phys_info.vel_air.y -= gravity;
 

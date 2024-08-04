@@ -24,12 +24,12 @@ void (*dITPippiStatusProcList[/* */])(GObj*) =
     itKabigonNJumpSetStatus, 
     itTosakintoNAppearSetStatus, 
     itNyarsNAttackSetStatus,
-    itLizardonAFallSetStatus, 
+    itLizardonFallSetStatus, 
     itSpearNFlySetStatus, 
     itKamexNAppearSetStatus, 
     itMLuckyNAppearSetStatus,
     itStarmieNFollowSetStatus, 
-    itSawamuraAFallSetStatus, 
+    itSawamuraFallSetStatus, 
     itDogasNAttackSetStatus, 
     itMewNFlySetStatus
 };
@@ -49,8 +49,8 @@ itCreateDesc dITPippiItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itPippiSDefaultProcUpdate,              // Proc Update
-    itPippiSDefaultProcMap,                 // Proc Map
+    itPippiCommonProcUpdate,              // Proc Update
+    itPippiCommonProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -73,7 +73,7 @@ itStatusDesc dITPippiStatusDesc = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NU
 // // // // // // // // // // // //
 
 // 0x80183210
-void itPippiSDefaultSelectMonster(GObj *item_gobj)
+void itPippiCommonSelectMonster(GObj *item_gobj)
 {
     s32 it_kind;
     s32 index;
@@ -104,7 +104,7 @@ void itPippiSDefaultSelectMonster(GObj *item_gobj)
     }
     if ((it_kind == nITKindSawamura) || (it_kind == nITKindStarmie))
     {
-        item_gobj->proc_render = itPippiSDefaultMoveDLProcRender;
+        item_gobj->proc_render = itPippiCommonMoveDLProcRender;
 
         omMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
     }
@@ -116,7 +116,7 @@ void itPippiSDefaultSelectMonster(GObj *item_gobj)
 }
 
 // 0x80183344
-void itPippiSDefaultProcRender(GObj *item_gobj)
+void itPippiCommonProcRender(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -149,7 +149,7 @@ void itPippiSDefaultProcRender(GObj *item_gobj)
 }
 
 // 0x801834A0 - Render routine of Hitmonlee / Starmie metronome abilities
-void itPippiSDefaultMoveDLProcRender(GObj *item_gobj)
+void itPippiCommonMoveDLProcRender(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -182,7 +182,7 @@ void itPippiSDefaultMoveDLProcRender(GObj *item_gobj)
 }
 
 // 0x801835FC
-sb32 itPippiSDefaultProcUpdate(GObj *item_gobj)
+sb32 itPippiCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -190,7 +190,7 @@ sb32 itPippiSDefaultProcUpdate(GObj *item_gobj)
     {
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
 
-        itPippiSDefaultSelectMonster(item_gobj);
+        itPippiCommonSelectMonster(item_gobj);
     }
     ip->it_multi--;
 
@@ -198,7 +198,7 @@ sb32 itPippiSDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x80183650
-sb32 itPippiSDefaultProcMap(GObj *item_gobj)
+sb32 itPippiCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -233,7 +233,7 @@ GObj* itPippiMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITPippiDataStart), 0.0F); // Linker thing
         func_800269C0_275C0(nGMSoundVoiceMBallPippiSpawn);
 
-        item_gobj->proc_render = itPippiSDefaultProcRender;
+        item_gobj->proc_render = itPippiCommonProcRender;
     }
     return item_gobj;
 }

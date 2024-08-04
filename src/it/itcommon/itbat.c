@@ -17,20 +17,20 @@ extern intptr_t lITBatItemAttributes;       // 0x000001D8
 // 0x80189990
 itCreateDesc dITBatItemDesc =
 {
-    nITKindBat,                            // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindBat,                             // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITBatItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itBatAFallProcUpdate,                   // Proc Update
-    itBatAFallProcMap,                      // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itBatFallProcUpdate,                    // Proc Update
+    itBatFallProcMap,                       // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -45,7 +45,7 @@ itStatusDesc dITBatStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itBatGWaitProcMap,                  // Proc Map
+        itBatWaitProcMap,                   // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -56,8 +56,8 @@ itStatusDesc dITBatStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itBatAFallProcUpdate,               // Proc Update
-        itBatAFallProcMap,                  // Proc Map
+        itBatFallProcUpdate,                // Proc Update
+        itBatFallProcMap,                   // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -80,25 +80,25 @@ itStatusDesc dITBatStatusDescs[/* */] =
 
     // Status 3 (Fighter Throw)
     {
-        itBatFThrowProcUpdate,              // Proc Update
-        itBatFThrowProcMap,                 // Proc Map
-        itBatFThrowProcHit,                 // Proc Hit
-        itBatFThrowProcHit,                 // Proc Shield
-        itMainSDefaultProcHop,            // Proc Hop
-        itBatFThrowProcHit,                 // Proc Set-Off
-        itMainSDefaultProcReflector,      // Proc Reflector
+        itBatThrownProcUpdate,              // Proc Update
+        itBatThrownProcMap,                 // Proc Map
+        itBatThrownProcHit,                 // Proc Hit
+        itBatThrownProcHit,                 // Proc Shield
+        itMainCommonProcHop,                // Proc Hop
+        itBatThrownProcHit,                 // Proc Set-Off
+        itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itBatAFallProcUpdate,               // Proc Update
-        itBatFDropProcMap,                  // Proc Map
-        itBatFThrowProcHit,                 // Proc Hit
-        itBatFThrowProcHit,                 // Proc Shield
-        itMainSDefaultProcHop,            // Proc Hop
-        itBatFThrowProcHit,                 // Proc Set-Off
-        itMainSDefaultProcReflector,      // Proc Reflector
+        itBatFallProcUpdate,                // Proc Update
+        itBatDroppedProcMap,                // Proc Map
+        itBatThrownProcHit,                 // Proc Hit
+        itBatThrownProcHit,                 // Proc Shield
+        itMainCommonProcHop,                // Proc Hop
+        itBatThrownProcHit,                 // Proc Set-Off
+        itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     }
 };
@@ -111,12 +111,12 @@ itStatusDesc dITBatStatusDescs[/* */] =
 
 enum itBatStatus
 {
-    itStatus_Bat_GWait,
-    itStatus_Bat_AFall,
-    itStatus_Bat_FHold,
-    itStatus_Bat_FThrow,
-    itStatus_Bat_FDrop,
-    itStatus_Bat_EnumMax
+    nITBatStatusWait,
+    nITBatStatusFall,
+    nITBatStatusHold,
+    nITBatStatusThrown,
+    nITBatStatusDropped,
+    nITBatStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -126,75 +126,75 @@ enum itBatStatus
 // // // // // // // // // // // //
 
 // 0x80174E30 
-sb32 itBatAFallProcUpdate(GObj *item_gobj)
+sb32 itBatFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITBAT_GRAVITY, ITBAT_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITBAT_GRAVITY, ITBAT_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
 
 // 0x80174E68
-sb32 itBatGWaitProcMap(GObj *item_gobj)
+sb32 itBatWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itBatAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itBatFallSetStatus);
 
     return FALSE;
 }
 
 // 0x80174E90
-sb32 itBatAFallProcMap(GObj *item_gobj)
+sb32 itBatFallProcMap(GObj *item_gobj)
 {
-    itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itBatGWaitSetStatus);
+    itMapCheckMapCollideThrownLanding(item_gobj, ITBAT_MAP_REBOUND_COMMON, ITBAT_MAP_REBOUND_GROUND, itBatWaitSetStatus);
 
     return FALSE;
 }
 
 // 0x80174EC4
-void itBatGWaitSetStatus(GObj *item_gobj)
+void itBatWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBatStatusDescs, itStatus_Bat_GWait);
+    itMainSetItemStatus(item_gobj, dITBatStatusDescs, nITBatStatusWait);
 }
 
 // 0x80174EF8
-void itBatAFallSetStatus(GObj *item_gobj)
+void itBatFallSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITBatStatusDescs, itStatus_Bat_AFall);
+    itMainSetItemStatus(item_gobj, dITBatStatusDescs, nITBatStatusFall);
 }
 
 // 0x80174F3C
-void itBatFHoldSetStatus(GObj *item_gobj)
+void itBatHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
-    itMainSetItemStatus(item_gobj, dITBatStatusDescs, itStatus_Bat_FHold);
+    itMainSetItemStatus(item_gobj, dITBatStatusDescs, nITBatStatusHold);
 }
 
 // 0x80174F70
-sb32 itBatFThrowProcUpdate(GObj *item_gobj)
+sb32 itBatThrownProcUpdate(GObj *item_gobj)
 {
-    itMainApplyGClampTVel(itGetStruct(item_gobj), ITBAT_GRAVITY, ITBAT_T_VEL);
+    itMainApplyGravityClampTVel(itGetStruct(item_gobj), ITBAT_GRAVITY, ITBAT_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
 
 // 0x80174FA8
-sb32 itBatFThrowProcMap(GObj *item_gobj)
+sb32 itBatThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itBatGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, ITBAT_MAP_REBOUND_COMMON, ITBAT_MAP_REBOUND_GROUND, itBatWaitSetStatus);
 }
 
 // 0x80174FD8
-sb32 itBatFThrowProcHit(GObj *item_gobj)
+sb32 itBatThrownProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -206,23 +206,23 @@ sb32 itBatFThrowProcHit(GObj *item_gobj)
 }
 
 // 0x80175000
-void itBatFThrowSetStatus(GObj *item_gobj)
+void itBatThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITBatStatusDescs, itStatus_Bat_FThrow);
+    itMainSetItemStatus(item_gobj, dITBatStatusDescs, nITBatStatusThrown);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 }
 
 // 0x80175044
-sb32 itBatFDropProcMap(GObj *item_gobj)
+sb32 itBatDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itBatGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, ITBAT_MAP_REBOUND_COMMON, ITBAT_MAP_REBOUND_GROUND, itBatWaitSetStatus);
 }
 
 // 0x80175074
-void itBatFDropSetStatus(GObj *item_gobj)
+void itBatDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITBatStatusDescs, itStatus_Bat_FDrop);
+    itMainSetItemStatus(item_gobj, dITBatStatusDescs, nITBatStatusDropped);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 }

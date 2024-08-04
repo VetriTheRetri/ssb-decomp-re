@@ -35,8 +35,8 @@ itCreateDesc dITKamexItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itKamexSDefaultProcUpdate,              // Proc Update
-    itKamexSDefaultProcMap,                 // Proc Map
+    itKamexCommonProcUpdate,              // Proc Update
+    itKamexCommonProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -50,8 +50,8 @@ itStatusDesc dITKamexStatusDescs[/* */] =
 {
     // Status 0 (Air Fall)
     {
-        itKamexAFallProcUpdate,             // Proc Update
-        itKamexAFallProcMap,                // Proc Map
+        itKamexFallProcUpdate,             // Proc Update
+        itKamexFallProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -118,7 +118,7 @@ wpCreateDesc dITKamexWeaponHydroWeaponDesc =
 
 enum itKamexStatus
 {
-    itStatus_Kamex_AFall,
+    itStatus_Kamex_Fall,
     itStatus_Kamex_NAppear,
     itStatus_Kamex_NAttack
 };
@@ -162,24 +162,24 @@ void itKamexNAttackUpdateHydro(GObj *item_gobj)
         }
         ip->item_vars.kamex.is_apply_push = TRUE;
 
-        ip->phys_info.vel_air.x = -ip->lr * ITKAMEX_CONST_VEL_X;
+        ip->phys_info.vel_air.x = -ip->lr * ITKAMEX_CONSTVEL_X;
 
         efManagerDustHeavyMakeEffect(&pos, -ip->lr);
     }
 }
 
 // 0x801807DC
-sb32 itKamexAFallProcUpdate(GObj *item_gobj)
+sb32 itKamexFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_TVEL);
 
     return FALSE;
 }
 
 // 0x80180808
-sb32 itKamexAFallProcMap(GObj *item_gobj)
+sb32 itKamexFallProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -194,7 +194,7 @@ sb32 itKamexAFallProcMap(GObj *item_gobj)
 }
 
 // 0x80180860
-void itKamexAFallInitItemVars(GObj *item_gobj)
+void itKamexFallInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -208,10 +208,10 @@ void itKamexAFallInitItemVars(GObj *item_gobj)
 }
 
 // 0x801808A4
-void itKamexAFallSetStatus(GObj *item_gobj)
+void itKamexFallSetStatus(GObj *item_gobj)
 {
-    itKamexAFallInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, itStatus_Kamex_AFall);
+    itKamexFallInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, itStatus_Kamex_Fall);
 }
 
 // 0x801808D8
@@ -219,7 +219,7 @@ sb32 itKamexNAppearProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_TVEL);
 
     return FALSE;
 }
@@ -280,7 +280,7 @@ sb32 itKamexNAttackProcUpdate(GObj *item_gobj)
 // 0x80180A30
 sb32 itKamexNAttackProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itKamexAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itKamexFallSetStatus);
 
     return FALSE;
 }
@@ -321,7 +321,7 @@ void itKamexNAttackSetStatus(GObj *item_gobj)
 }
 
 // 0x80180B1C
-sb32 itKamexSDefaultProcUpdate(GObj *item_gobj)
+sb32 itKamexCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -337,7 +337,7 @@ sb32 itKamexSDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x80180B6C
-sb32 itKamexSDefaultProcMap(GObj *item_gobj)
+sb32 itKamexCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -349,7 +349,7 @@ sb32 itKamexSDefaultProcMap(GObj *item_gobj)
 }
 
 // 0x80180BAC - Turn Blastoise towards the side with the most enemy players
-void itKamexSDefaultFindTargetsSetLR(GObj *item_gobj)
+void itKamexCommonFindTargetsSetLR(GObj *item_gobj)
 {
     GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
     s32 unused1;
@@ -421,7 +421,7 @@ GObj* itKamexMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         kamex_ip->owner_gobj = mball_ip->owner_gobj;
         kamex_ip->team = mball_ip->team;
 
-        itKamexSDefaultFindTargetsSetLR(item_gobj);
+        itKamexCommonFindTargetsSetLR(item_gobj);
 
         if (kamex_ip->lr == nGMDirectionL)
         {

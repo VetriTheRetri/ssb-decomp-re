@@ -35,8 +35,8 @@ itCreateDesc dITStarmieItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itStarmieSDefaultProcUpdate,            // Proc Update
-    itStarmieSDefaultProcMap,               // Proc Map
+    itStarmieCommonProcUpdate,            // Proc Update
+    itStarmieCommonProcMap,               // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -314,7 +314,7 @@ void itStarmieNFollowSetStatus(GObj *item_gobj)
 }
 
 // 0x8018221C
-sb32 itStarmieSDefaultProcUpdate(GObj *item_gobj)
+sb32 itStarmieCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -330,7 +330,7 @@ sb32 itStarmieSDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182270
-sb32 itStarmieSDefaultProcMap(GObj *item_gobj)
+sb32 itStarmieCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -445,7 +445,7 @@ GObj* itStarmieWeaponSwiftMakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     wp->lr = ip->lr;
 
-    wp->phys_info.vel_air.x = wp->lr * ITSTARMIE_SWIFT_VEL_X;
+    wp->phys_info.vel_air.x = wp->lr * ITSTARMIE_SWIFTVEL_X;
 
     dobj = DObjGetStruct(weapon_gobj);
 

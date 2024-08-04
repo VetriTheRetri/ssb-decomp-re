@@ -29,20 +29,20 @@ intptr_t dITBombHeiDisplayListOffsets[/* */] =
 // 0x80189F98
 itCreateDesc dITBombHeiItemDesc =
 {
-    nITKindBombHei,                        // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindBombHei,                         // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITBombHeiItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTra,                // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTra,                    // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itBombHeiAFallProcUpdate,               // Proc Update
-    itBombHeiAFallProcMap,                  // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itBombHeiFallProcUpdate,                // Proc Update
+    itBombHeiFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -56,26 +56,26 @@ itStatusDesc dITBombHeiStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
-        itBombHeiGWaitProcUpdate,           // Proc Update
-        itBombHeiGWaitProcMap,              // Proc Map
-        itBombHeiSDefaultProcHit,           // Proc Hit
+        itBombHeiWaitProcUpdate,            // Proc Update
+        itBombHeiWaitProcMap,               // Proc Map
+        itBombHeiCommonProcHit,             // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itBombHeiSDefaultProcHit            // Proc Damage
+        itBombHeiCommonProcHit              // Proc Damage
     },
 
     // Status 1 (Air Wait Fall)
     {
-        itBombHeiAFallProcUpdate,           // Proc Update
-        itBombHeiAFallProcMap,              // Proc Map
+        itBombHeiFallProcUpdate,            // Proc Update
+        itBombHeiFallProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itBombHeiSDefaultProcHit            // Proc Damage
+        itBombHeiCommonProcHit              // Proc Damage
     },
 
     // Status 2 (Fighter Hold)
@@ -92,55 +92,55 @@ itStatusDesc dITBombHeiStatusDescs[/* */] =
 
     // Status 3 (Fighter Throw)
     {
-        itBombHeiFThrowProcUpdate,          // Proc Update
-        itBombHeiFThrowProcMap,             // Proc Map
-        itBombHeiSDefaultProcHit,           // Proc Hit
-        itBombHeiSDefaultProcHit,           // Proc Shield
-        itMainSDefaultProcHop,            // Proc Hop
-        itBombHeiSDefaultProcHit,           // Proc Set-Off
-        itMainSDefaultProcReflector,      // Proc Reflector
-        itBombHeiSDefaultProcHit            // Proc Damage
+        itBombHeiThrownProcUpdate,          // Proc Update
+        itBombHeiThrownProcMap,             // Proc Map
+        itBombHeiCommonProcHit,             // Proc Hit
+        itBombHeiCommonProcHit,             // Proc Shield
+        itMainCommonProcHop,                // Proc Hop
+        itBombHeiCommonProcHit,             // Proc Set-Off
+        itMainCommonProcReflector,          // Proc Reflector
+        itBombHeiCommonProcHit              // Proc Damage
     },
 
     // Status 4 (Fighter Throw)
     {
-        itBombHeiAFallProcUpdate,           // Proc Update
-        itBombHeiFDropProcMap,              // Proc Map
-        itBombHeiSDefaultProcHit,           // Proc Hit
-        itBombHeiSDefaultProcHit,           // Proc Shield
-        itMainSDefaultProcHop,            // Proc Hop
-        itBombHeiSDefaultProcHit,           // Proc Set-Off
-        itMainSDefaultProcReflector,      // Proc Reflector
-        itBombHeiSDefaultProcHit            // Proc Damage
+        itBombHeiFallProcUpdate,            // Proc Update
+        itBombHeiDroppedProcMap,            // Proc Map
+        itBombHeiCommonProcHit,             // Proc Hit
+        itBombHeiCommonProcHit,             // Proc Shield
+        itMainCommonProcHop,                // Proc Hop
+        itBombHeiCommonProcHit,             // Proc Set-Off
+        itMainCommonProcReflector,          // Proc Reflector
+        itBombHeiCommonProcHit              // Proc Damage
     },
 
     // Status 5 (Ground Walk)
     {
-        itBombHeiGWalkProcUpdate,           // Proc Update
-        itBombHeiGWalkProcMap,              // Proc Map
-        itBombHeiMExplodeProcHit,           // Proc Hit
-        itBombHeiMExplodeProcHit,           // Proc Shield
+        itBombHeiWalkProcUpdate,            // Proc Update
+        itBombHeiWalkProcMap,               // Proc Map
+        itBombHeiExplodeCommonProcHit,      // Proc Hit
+        itBombHeiExplodeCommonProcHit,      // Proc Shield
         NULL,                               // Proc Hop
-        itBombHeiMExplodeProcHit,           // Proc Set-Off
-        itBombHeiMExplodeProcHit,           // Proc Reflector
-        itBombHeiMExplodeProcHit            // Proc Damage
+        itBombHeiExplodeCommonProcHit,      // Proc Set-Off
+        itBombHeiExplodeCommonProcHit,      // Proc Reflector
+        itBombHeiExplodeCommonProcHit       // Proc Damage
     },
 
     // Status 6 (Map Collision Explosion)
     {
-        itBombHeiMExplodeProcUpdate,        // Proc Update
+        itBombHeiExplodeMapProcUpdate,      // Proc Update
         NULL,                               // Proc Map
-        itBombHeiMExplodeProcUpdate,        // Proc Hit
-        itBombHeiMExplodeProcUpdate,        // Proc Shield
+        itBombHeiExplodeMapProcUpdate,      // Proc Hit
+        itBombHeiExplodeMapProcUpdate,      // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
-        itBombHeiMExplodeProcUpdate,        // Proc Reflector
-        itBombHeiMExplodeProcUpdate         // Proc Damage
+        itBombHeiExplodeMapProcUpdate,      // Proc Reflector
+        itBombHeiExplodeMapProcUpdate       // Proc Damage
     },
 
     // Status 7 (Neutral / Hit Explosion)
     {
-        itBombHeiNExplodeProcUpdate,        // Proc Update
+        itBombHeiExplodeNProcUpdate,        // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -152,14 +152,14 @@ itStatusDesc dITBombHeiStatusDescs[/* */] =
 
     // Status 8 (Ground Walk Explosion Stall)
     {
-        itBombHeiGExplodeWaitProcUpdate,    // Proc Update
-        itBombHeiGExplodeWaitProcMap,       // Proc Map
-        itBombHeiMExplodeProcHit,           // Proc Hit
-        itBombHeiMExplodeProcHit,           // Proc Shield
+        itBombHeiExplodeWaitProcUpdate,     // Proc Update
+        itBombHeiExplodeWaitProcMap,        // Proc Map
+        itBombHeiExplodeCommonProcHit,      // Proc Hit
+        itBombHeiExplodeCommonProcHit,      // Proc Shield
         NULL,                               // Proc Hop
-        itBombHeiMExplodeProcHit,           // Proc Set-Off
-        itBombHeiMExplodeProcHit,           // Proc Reflector
-        itBombHeiMExplodeProcHit            // Proc Damage
+        itBombHeiExplodeCommonProcHit,      // Proc Set-Off
+        itBombHeiExplodeCommonProcHit,      // Proc Reflector
+        itBombHeiExplodeCommonProcHit       // Proc Damage
     }
 };
 
@@ -171,16 +171,16 @@ itStatusDesc dITBombHeiStatusDescs[/* */] =
 
 enum itBombHeiStatus
 {
-    itStatus_BombHei_GWait,
-    itStatus_BombHei_AFall,
-    itStatus_BombHei_FHold,
-    itStatus_BombHei_FThrow,
-    itStatus_BombHei_FDrop,
-    itStatus_BombHei_GWalk,
-    itStatus_BombHei_MExplode,              // Explode on map collision
-    itStatus_BombHei_NExplode,              // Neutral explosion
-    itStatus_BombHei_GExplodeWait,          // Stall until explosion
-    itStatus_BombHei_EnumMax
+    nITBombHeiStatusWait,
+    nITBombHeiStatusFall,
+    nITBombHeiStatusHold,
+    nITBombHeiStatusThrown,
+    nITBombHeiStatusDropped,
+    nITBombHeiStatusWalk,
+    nITBombHeiStatusExplodeMap,             // Explode on map collision
+    nITBombHeiStatusExplodeN,               // Neutral explosion
+    nITBombHeiStatusExplodeWait,            // Stall until explosion
+    nITBombHeiStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -190,14 +190,14 @@ enum itBombHeiStatus
 // // // // // // // // // // // //
 
 // 0x80177060
-void itBombHeiSDefaultSetExplode(GObj *item_gobj, u8 unused_arg)
+void itBombHeiCommonSetExplode(GObj *item_gobj, u8 unused_arg)
 {
     s32 unused;
     DObj *dobj = DObjGetStruct(item_gobj);
     itStruct *ip = itGetStruct(item_gobj);
     efParticle *efpart;
 
-    itBombHeiSDefaultSetHitStatusNone(item_gobj);
+    itBombHeiCommonSetHitStatusNone(item_gobj);
 
     efpart = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f); // WARNING: Actually some sprite struct
 
@@ -215,11 +215,11 @@ void itBombHeiSDefaultSetExplode(GObj *item_gobj, u8 unused_arg)
 
     itMainRefreshHit(item_gobj);
     itMainClearOwnerStats(item_gobj);
-    itBombHeiNExplodeSetStatus(item_gobj);
+    itBombHeiExplodeNSetStatus(item_gobj);
 }
 
 // 0x80177104
-void itBombHeiSDefaultSetWalkDirection(GObj *item_gobj, ub8 lr)
+void itBombHeiCommonSetWalkLR(GObj *item_gobj, ub8 lr)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -243,7 +243,7 @@ void itBombHeiSDefaultSetWalkDirection(GObj *item_gobj, ub8 lr)
 }
 
 // 0x80177180
-void itBombHeiSDefaultCheckMakeDustEffect(GObj *item_gobj, u8 override)
+void itBombHeiCommonCheckMakeDustEffect(GObj *item_gobj, u8 override)
 {
     s32 unused[4];
     itStruct *ip = itGetStruct(item_gobj);
@@ -261,7 +261,7 @@ void itBombHeiSDefaultCheckMakeDustEffect(GObj *item_gobj, u8 override)
 }
 
 // 0x80177208
-void itBombHeiSDefaultSetHitStatusNormal(GObj *item_gobj)
+void itBombHeiCommonSetHitStatusNormal(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -269,7 +269,7 @@ void itBombHeiSDefaultSetHitStatusNormal(GObj *item_gobj)
 }
 
 // 0x80177218
-void itBombHeiSDefaultSetHitStatusNone(GObj *item_gobj)
+void itBombHeiCommonSetHitStatusNone(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -277,18 +277,18 @@ void itBombHeiSDefaultSetHitStatusNone(GObj *item_gobj)
 }
 
 // 0x80177224
-sb32 itBombHeiAFallProcUpdate(GObj *item_gobj)
+sb32 itBombHeiFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
 
 // 0x80177260
-s32 itBombHeiGWalkGetMostPlayersLR(GObj *item_gobj)
+s32 itBombHeiWalkGetLR(GObj *item_gobj)
 {
     GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
     Vec3f *translate;
@@ -316,7 +316,7 @@ s32 itBombHeiGWalkGetMostPlayersLR(GObj *item_gobj)
 }
 
 // 0x80177304
-sb32 itBombHeiGWaitProcUpdate(GObj *item_gobj)
+sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -325,7 +325,7 @@ sb32 itBombHeiGWaitProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi == ITBOMBHEI_WALK_WAIT)
     {
-        lr = itBombHeiGWalkGetMostPlayersLR(item_gobj);
+        lr = itBombHeiWalkGetLR(item_gobj);
 
         if (lr == nGMDirectionC)
         {
@@ -344,7 +344,7 @@ sb32 itBombHeiGWaitProcUpdate(GObj *item_gobj)
 
             ip->lr = nGMDirectionL;
         }
-        itBombHeiGWalkSetStatus(item_gobj);
+        itBombHeiWalkSetStatus(item_gobj);
     }
     ip->it_multi++;
 
@@ -352,93 +352,93 @@ sb32 itBombHeiGWaitProcUpdate(GObj *item_gobj)
 }
 
 // 0x801773F4
-sb32 itBombHeiGWaitProcMap(GObj *item_gobj)
+sb32 itBombHeiWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itBombHeiAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itBombHeiFallSetStatus);
 
     return FALSE;
 }
 
 // 0x8017741C
-sb32 itBombHeiSDefaultProcHit(GObj *item_gobj)
+sb32 itBombHeiCommonProcHit(GObj *item_gobj)
 {
-    itBombHeiSDefaultClearVelSetExplode(item_gobj, TRUE);
+    itBombHeiCommonClearVelSetExplode(item_gobj, TRUE);
 
     return FALSE;
 }
 
 // 0x80177440
-sb32 itBombHeiAFallProcMap(GObj *item_gobj)
+sb32 itBombHeiFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.4F, 0.3F, itBombHeiGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, ITBOMBHEI_MAP_REBOUND_COMMON, ITBOMBHEI_MAP_REBOUND_GROUND, itBombHeiWaitSetStatus);
 }
 
 // 0x80177474
-void itBombHeiGWaitSetStatus(GObj *item_gobj)
+void itBombHeiWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_GWait);
+    itBombHeiCommonSetHitStatusNormal(item_gobj);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusWait);
 }
 
 // 0x801774B0
-void itBombHeiAFallSetStatus(GObj *item_gobj)
+void itBombHeiFallSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_AFall);
+    itBombHeiCommonSetHitStatusNormal(item_gobj);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusFall);
 }
 
 // 0x801774FC
-void itBombHeiFHoldSetStatus(GObj *item_gobj)
+void itBombHeiHoldSetStatus(GObj *item_gobj)
 {
-    itBombHeiSDefaultSetHitStatusNone(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_FHold);
+    itBombHeiCommonSetHitStatusNone(item_gobj);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusHold);
 }
 
 // 0x80177530
-sb32 itBombHeiFThrowProcUpdate(GObj *item_gobj)
+sb32 itBombHeiThrownProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITBOMBHEI_GRAVITY, ITBOMBHEI_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
 
 // 0x8017756C
-sb32 itBombHeiFThrowProcMap(GObj *item_gobj)
+sb32 itBombHeiThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapProcAll(item_gobj, itBombHeiMExplodeSetStatus);
+    return itMapCheckMapProcAll(item_gobj, itBombHeiExplodeMapSetStatus);
 }
 
 // 0x80177590
-void itBombHeiFThrowSetStatus(GObj *item_gobj)
+void itBombHeiThrownSetStatus(GObj *item_gobj)
 {
-    itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_FThrow);
+    itBombHeiCommonSetHitStatusNormal(item_gobj);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusThrown);
 }
 
 // 0x801775C4
-sb32 itBombHeiFDropProcMap(GObj *item_gobj)
+sb32 itBombHeiDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapProcAll(item_gobj, itBombHeiMExplodeSetStatus);
+    return itMapCheckMapProcAll(item_gobj, itBombHeiExplodeMapSetStatus);
 }
 
 // 0x801775E8
-void itBombHeiFDropSetStatus(GObj *item_gobj)
+void itBombHeiDroppedSetStatus(GObj *item_gobj)
 {
-    itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_FDrop);
+    itBombHeiCommonSetHitStatusNormal(item_gobj);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusDropped);
 }
 
 // 0x8017761C
-void itBombHeiGWalkUpdateEffect(GObj *item_gobj)
+void itBombHeiWalkUpdateEffect(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -457,14 +457,14 @@ void itBombHeiGWalkUpdateEffect(GObj *item_gobj)
 }
 
 // 0x801776A0
-sb32 itBombHeiGWalkProcUpdate(GObj *item_gobj)
+sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itAttributes *attributes = ip->attributes;
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f pos;
 
-    itBombHeiGWalkUpdateEffect(item_gobj);
+    itBombHeiWalkUpdateEffect(item_gobj);
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
@@ -474,7 +474,7 @@ sb32 itBombHeiGWalkProcUpdate(GObj *item_gobj)
 
             if (pos.x >= (dobj->translate.vec.f.x - attributes->objectcoll_width))
             {
-                itBombHeiSDefaultSetWalkDirection(item_gobj, 1);
+                itBombHeiCommonSetWalkLR(item_gobj, 1);
             }
         }
         else
@@ -483,7 +483,7 @@ sb32 itBombHeiGWalkProcUpdate(GObj *item_gobj)
 
             if (pos.x <= (dobj->translate.vec.f.x + attributes->objectcoll_width))
             {
-                itBombHeiSDefaultSetWalkDirection(item_gobj, 0);
+                itBombHeiCommonSetWalkLR(item_gobj, 0);
             }
         }
     }
@@ -491,7 +491,7 @@ sb32 itBombHeiGWalkProcUpdate(GObj *item_gobj)
     {
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
 
-        itBombHeiGExplodeWaitSetStatus(item_gobj);
+        itBombHeiExplodeWaitSetStatus(item_gobj);
     }
     ip->it_multi++;
 
@@ -499,25 +499,25 @@ sb32 itBombHeiGWalkProcUpdate(GObj *item_gobj)
 }
 
 // 0x801777D8
-sb32 itBombHeiGWalkProcMap(GObj *item_gobj)
+sb32 itBombHeiWalkProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMapCheckLRWallProcGround(item_gobj, itBombHeiFDropSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itBombHeiDroppedSetStatus);
 
     if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_LWALL)
     {
-        itBombHeiSDefaultSetWalkDirection(item_gobj, 0);
+        itBombHeiCommonSetWalkLR(item_gobj, 0);
     }
     if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_RWALL)
     {
-        itBombHeiSDefaultSetWalkDirection(item_gobj, 1);
+        itBombHeiCommonSetWalkLR(item_gobj, 1);
     }
     return FALSE;
 }
 
 // 0x80177848
-void itBombHeiGWalkInitItemVars(GObj *item_gobj)
+void itBombHeiWalkInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itAttributes *attributes = ip->attributes;
@@ -548,7 +548,7 @@ void itBombHeiGWalkInitItemVars(GObj *item_gobj)
 
             if (pos.x >= (dobj->translate.vec.f.x - attributes->objectcoll_width))
             {
-                itBombHeiSDefaultSetWalkDirection(item_gobj, 1);
+                itBombHeiCommonSetWalkLR(item_gobj, 1);
             }
         }
         else
@@ -557,7 +557,7 @@ void itBombHeiGWalkInitItemVars(GObj *item_gobj)
 
             if (pos.x <= (dobj->translate.vec.f.x + attributes->objectcoll_width))
             {
-                itBombHeiSDefaultSetWalkDirection(item_gobj, 0);
+                itBombHeiCommonSetWalkLR(item_gobj, 0);
             }
         }
     }
@@ -567,27 +567,27 @@ void itBombHeiGWalkInitItemVars(GObj *item_gobj)
 }
 
 // 0x801779A8
-void itBombHeiGWalkSetStatus(GObj *item_gobj)
+void itBombHeiWalkSetStatus(GObj *item_gobj)
 {
-    itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itBombHeiGWalkInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_GWalk);
+    itBombHeiCommonSetHitStatusNormal(item_gobj);
+    itBombHeiWalkInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusWalk);
 }
 
 // 0x801779E4
-void itBombHeiSDefaultClearVelSetExplode(GObj *item_gobj, u8 unused)
+void itBombHeiCommonClearVelSetExplode(GObj *item_gobj, u8 unused)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
 
-    itBombHeiSDefaultSetExplode(item_gobj, unused);
+    itBombHeiCommonSetExplode(item_gobj, unused);
 
     func_800269C0_275C0(nGMSoundFGMExplodeL);
 }
 
 // 0x80177A24
-void itBombHeiSDefaultUpdateHitEvent(GObj *item_gobj)
+void itBombHeiCommonUpdateHitEvent(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itHitEvent *ev = itGetHitEvent(dITBombHeiItemDesc, lITBombHeiHitEvents); // Linker thing
@@ -615,32 +615,32 @@ void itBombHeiSDefaultUpdateHitEvent(GObj *item_gobj)
 }
 
 // 0x80177B10
-sb32 itBombHeiMExplodeProcUpdate(GObj *item_gobj)
+sb32 itBombHeiExplodeMapProcUpdate(GObj *item_gobj)
 {
-    itBombHeiSDefaultCheckMakeDustEffect(item_gobj, FALSE);
-    itBombHeiSDefaultClearVelSetExplode(item_gobj, TRUE);
+    itBombHeiCommonCheckMakeDustEffect(item_gobj, FALSE);
+    itBombHeiCommonClearVelSetExplode(item_gobj, TRUE);
 
     return FALSE;
 }
 
 // 0x80177B44
-sb32 itBombHeiMExplodeProcHit(GObj *item_gobj)
+sb32 itBombHeiExplodeCommonProcHit(GObj *item_gobj)
 {
-    itBombHeiSDefaultCheckMakeDustEffect(item_gobj, TRUE);
-    itBombHeiSDefaultClearVelSetExplode(item_gobj, FALSE);
+    itBombHeiCommonCheckMakeDustEffect(item_gobj, TRUE);
+    itBombHeiCommonClearVelSetExplode(item_gobj, FALSE);
 
     return FALSE;
 }
 
 // 0x80177B78
-void itBombHeiMExplodeSetStatus(GObj *item_gobj)
+void itBombHeiExplodeMapSetStatus(GObj *item_gobj)
 {
-    itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_MExplode);
+    itBombHeiCommonSetHitStatusNormal(item_gobj);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusExplodeMap);
 }
 
 // 0x80177BAC
-void itBombHeiNExplodeInitItemVars(GObj *item_gobj)
+void itBombHeiExplodeNInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -650,15 +650,15 @@ void itBombHeiNExplodeInitItemVars(GObj *item_gobj)
 
     ip->item_event_index = 0;
 
-    itBombHeiSDefaultUpdateHitEvent(item_gobj);
+    itBombHeiCommonUpdateHitEvent(item_gobj);
 }
 
 // 0x80177BE8
-sb32 itBombHeiNExplodeProcUpdate(GObj *item_gobj)
+sb32 itBombHeiExplodeNProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itBombHeiSDefaultUpdateHitEvent(item_gobj);
+    itBombHeiCommonUpdateHitEvent(item_gobj);
 
     ip->it_multi++;
 
@@ -670,23 +670,23 @@ sb32 itBombHeiNExplodeProcUpdate(GObj *item_gobj)
 }
 
 // 0x80177C30
-void itBombHeiNExplodeSetStatus(GObj *item_gobj)
+void itBombHeiExplodeNSetStatus(GObj *item_gobj)
 {
-    itBombHeiNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_NExplode);
+    itBombHeiExplodeNInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusExplodeN);
 }
 
 // 0x80177C64
-sb32 itBombHeiGExplodeWaitProcUpdate(GObj *item_gobj)
+sb32 itBombHeiExplodeWaitProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itBombHeiGWalkUpdateEffect(item_gobj);
+    itBombHeiWalkUpdateEffect(item_gobj);
 
     if (ip->it_multi == ITBOMBHEI_EXPLODE_WAIT)
     {
-        itBombHeiSDefaultCheckMakeDustEffect(item_gobj, TRUE);
-        itBombHeiSDefaultClearVelSetExplode(item_gobj, 0);
+        itBombHeiCommonCheckMakeDustEffect(item_gobj, TRUE);
+        itBombHeiCommonClearVelSetExplode(item_gobj, 0);
         func_800269C0_275C0(nGMSoundFGMExplodeL);
     }
     ip->it_multi++;
@@ -695,15 +695,15 @@ sb32 itBombHeiGExplodeWaitProcUpdate(GObj *item_gobj)
 }
 
 // 0x80177D00
-sb32 itBombHeiGExplodeWaitProcMap(GObj *item_gobj)
+sb32 itBombHeiExplodeWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itBombHeiFDropSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itBombHeiDroppedSetStatus);
 
     return FALSE;
 }
 
 // 0x80177D28
-void itBombHeiGExplodeWaitInitItemVars(GObj *item_gobj)
+void itBombHeiExplodeWaitInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -716,11 +716,11 @@ void itBombHeiGExplodeWaitInitItemVars(GObj *item_gobj)
 }
 
 // 0x80177D60
-void itBombHeiGExplodeWaitSetStatus(GObj *item_gobj)
+void itBombHeiExplodeWaitSetStatus(GObj *item_gobj)
 {
-    itBombHeiSDefaultSetHitStatusNormal(item_gobj);
-    itBombHeiGExplodeWaitInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, itStatus_BombHei_GExplodeWait);
+    itBombHeiCommonSetHitStatusNormal(item_gobj);
+    itBombHeiExplodeWaitInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusExplodeWait);
 }
 
 // 0x80177D9C

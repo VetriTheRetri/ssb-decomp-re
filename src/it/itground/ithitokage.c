@@ -36,14 +36,14 @@ itCreateDesc dITHitokageItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itHitokageSDefaultProcUpdate,           // Proc Update
+    itHitokageCommonProcUpdate,           // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
     NULL,                                   // Proc Set-Off
     NULL,                                   // Proc Reflector
-    itHitokageSDefaultProcDamage            // Proc Damage
+    itHitokageCommonProcDamage            // Proc Damage
 };
 
 itStatusDesc dITHitokageStatusDescs[/* */] =
@@ -112,7 +112,7 @@ void itHitokageNDamageSetStatus(GObj *item_gobj)
 }
 
 // 0x80183DE0
-sb32 itHitokageSDefaultProcUpdate(GObj *item_gobj)
+sb32 itHitokageCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -136,7 +136,7 @@ sb32 itHitokageSDefaultProcUpdate(GObj *item_gobj)
 
         if (ip->item_vars.hitokage.flame_spawn_wait <= 0)
         {
-            itHitokageSDefaultMakeFlame(item_gobj, &pos);
+            itHitokageCommonMakeFlame(item_gobj, &pos);
 
             ip->item_vars.hitokage.flame_spawn_wait = ITHITOKAGE_FLAME_SPAWN_WAIT;
         }
@@ -159,7 +159,7 @@ sb32 itHitokageNDamageProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj;
 
-    itMainApplyGClampTVel(ip, ITHITOKAGE_GRAVITY, ITHITOKAGE_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITHITOKAGE_GRAVITY, ITHITOKAGE_TVEL);
 
     dobj = DObjGetStruct(item_gobj);
 
@@ -175,7 +175,7 @@ sb32 itHitokageNDamageProcDead(GObj *item_gobj)
 }
 
 // 0x80183F94
-sb32 itHitokageSDefaultProcDamage(GObj *item_gobj)
+sb32 itHitokageCommonProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -312,7 +312,7 @@ GObj* itHitokageWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 }
 
 // 0x801843C4
-void itHitokageSDefaultMakeFlame(GObj *item_gobj, Vec3f *pos)
+void itHitokageCommonMakeFlame(GObj *item_gobj, Vec3f *pos)
 {
     itStruct *ip;
     Vec3f vel;

@@ -1020,8 +1020,8 @@ struct ftAttributes
     f32 aerial_speed_max_x;
     f32 aerial_friction;
     f32 gravity;
-    f32 fall_speed_max;
-    f32 fast_fall_speed;
+    f32 tvel_default;
+    f32 tvel_fast;
     s32 jumps_max; // Number of jumps
     f32 weight;
     f32 attack1_followup_frames; // Jab combo connection frames

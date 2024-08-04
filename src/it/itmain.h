@@ -16,7 +16,7 @@ void func_ovl3_8017245C(GObj* item_gobj, Vec3f* vel, sb32 is_smash_throw);
 void itMainVelSetRotateStepLR(GObj* item_gobj);
 
 // Update item's gravity and clamp to terminal velocity if greater than
-void itMainApplyGClampTVel(itStruct* ip, f32 gravity, f32 terminal_velocity);
+void itMainApplyGravityClampTVel(itStruct* ip, f32 gravity, f32 terminal_velocity);
 
 // Reset item's player-related variables
 void itMainResetPlayerVars(GObj* item_gobj);
@@ -85,10 +85,10 @@ void itMainUpdateHitEvent(GObj* item_gobj, itHitEvent* ev);
 // Create Pokémon
 GObj* itMainMakeMonster(GObj* item_gobj);
 
-// Default process run when item bounces off a shield (SDefault = status default)
-sb32 itMainSDefaultProcHop(GObj* item_gobj);
+// Default process run when item bounces off a shield (Common = status default)
+sb32 itMainCommonProcHop(GObj* item_gobj);
 
-// Default process run when item is reflected (SDefault = status default)
-sb32 itMainSDefaultProcReflector(GObj* item_gobj);
+// Default process run when item is reflected (Common = status default)
+sb32 itMainCommonProcReflector(GObj* item_gobj);
 
 #endif

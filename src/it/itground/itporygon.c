@@ -30,7 +30,7 @@ itCreateDesc dITPorygonItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itPorygonSDefaultProcUpdate,            // Proc Update
+    itPorygonCommonProcUpdate,            // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
@@ -47,7 +47,7 @@ itCreateDesc dITPorygonItemDesc =
 // // // // // // // // // // // //
 
 // 0x80183B10
-void itPorygonSDefaultUpdateHitParty(GObj *item_gobj)
+void itPorygonCommonUpdateHitParty(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itHitParty *hit_party = itGetHitParty(dITPorygonItemDesc, lITPorygonHitParties); // (itHitParty*) ((uintptr_t)*dITPorygonItemDesc.p_file + (intptr_t)&Porygon_Event); // Linker thing
@@ -85,7 +85,7 @@ void itPorygonSDefaultUpdateHitParty(GObj *item_gobj)
 }
 
 // 0x80183C84
-sb32 itPorygonSDefaultProcUpdate(GObj *item_gobj)
+sb32 itPorygonCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -93,7 +93,7 @@ sb32 itPorygonSDefaultProcUpdate(GObj *item_gobj)
     dobj->translate.vec.f.x += ip->item_vars.porygon.offset.x;
     dobj->translate.vec.f.y += ip->item_vars.porygon.offset.y;
 
-    itPorygonSDefaultUpdateHitParty(item_gobj);
+    itPorygonCommonUpdateHitParty(item_gobj);
 
     if (dobj->anim_remain == AOBJ_FRAME_NULL)
     {

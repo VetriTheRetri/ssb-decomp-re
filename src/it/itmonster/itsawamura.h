@@ -5,18 +5,18 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern sb32 itSawamuraAFallProcUpdate(GObj *item_gobj);
-extern sb32 itSawamuraAFallProcMap(GObj *item_gobj);
-extern void itSawamuraAFallSetStatus(GObj *item_gobj);
-extern sb32 itSawamuraGWaitProcUpdate(GObj *item_gobj);
-extern sb32 itSawamuraGWaitProcMap(GObj *item_gobj);
-extern void itSawamuraGWaitSetStatus(GObj *item_gobj);
+extern sb32 itSawamuraFallProcUpdate(GObj *item_gobj);
+extern sb32 itSawamuraFallProcMap(GObj *item_gobj);
+extern void itSawamuraFallSetStatus(GObj *item_gobj);
+extern sb32 itSawamuraWaitProcUpdate(GObj *item_gobj);
+extern sb32 itSawamuraWaitProcMap(GObj *item_gobj);
+extern void itSawamuraWaitSetStatus(GObj *item_gobj);
 extern sb32 itSawamuraNAttackProcUpdate(GObj *item_gobj);
 extern void itSawamuraNAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj);
 extern void itSawamuraNAttackInitItemVars(GObj *item_gobj);
 extern void itSawamuraNAttackSetStatus(GObj *item_gobj);
-extern sb32 itSawamuraSDefaultProcUpdate(GObj *item_gobj);
-extern sb32 itSawamuraSDefaultProcMap(GObj *item_gobj);
+extern sb32 itSawamuraCommonProcUpdate(GObj *item_gobj);
+extern sb32 itSawamuraCommonProcMap(GObj *item_gobj);
 extern GObj* itSawamuraMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

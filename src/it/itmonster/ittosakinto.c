@@ -32,8 +32,8 @@ itCreateDesc dITTosakintoItemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itTosakintoSDefaultProcUpdate,          // Proc Update
-    itTosakintoSDefaultProcMap,             // Proc Map
+    itTosakintoCommonProcUpdate,          // Proc Update
+    itTosakintoCommonProcMap,             // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -94,7 +94,7 @@ sb32 itTosakintoNAppearProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_TVEL);
 
     return FALSE;
 }
@@ -136,7 +136,7 @@ sb32 itTosakintoNSplashProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_TVEL);
 
     if (ip->it_multi == 0)
     {
@@ -203,7 +203,7 @@ void itTosakintoNSplashSetStatus(GObj *item_gobj)
 }
 
 // 0x8017EA48
-sb32 itTosakintoSDefaultProcUpdate(GObj *item_gobj)
+sb32 itTosakintoCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -219,7 +219,7 @@ sb32 itTosakintoSDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017EA98
-sb32 itTosakintoSDefaultProcMap(GObj *item_gobj)
+sb32 itTosakintoCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

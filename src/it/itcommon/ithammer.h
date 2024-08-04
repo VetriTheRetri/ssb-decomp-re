@@ -5,19 +5,19 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern void itHammerSDefaultSetColAnim(GObj *item_gobj);
-extern sb32 itHammerAFallProcUpdate(GObj *item_gobj);
-extern sb32 itHammerGWaitProcMap(GObj *item_gobj);
-extern sb32 itHammerAFallProcMap(GObj *item_gobj);
-extern void itHammerGWaitSetStatus(GObj *item_gobj);
-extern void itHammerAFallSetStatus(GObj *item_gobj);
-extern void itHammerFHoldSetStatus(GObj *item_gobj);
-extern sb32 itHammerFThrowProcUpdate(GObj *item_gobj);
-extern sb32 itHammerFThrowProcMap(GObj *item_gobj);
-extern sb32 itHammerSDefaultProcHit(GObj *item_gobj);
-extern void itHammerFThrowSetStatus(GObj *item_gobj);
-extern sb32 itHammerFDropProcMap(GObj *item_gobj);
-extern void itHammerFDropSetStatus(GObj *item_gobj);
+extern void itHammerCommonSetColAnim(GObj *item_gobj);
+extern sb32 itHammerFallProcUpdate(GObj *item_gobj);
+extern sb32 itHammerWaitProcMap(GObj *item_gobj);
+extern sb32 itHammerFallProcMap(GObj *item_gobj);
+extern void itHammerWaitSetStatus(GObj *item_gobj);
+extern void itHammerFallSetStatus(GObj *item_gobj);
+extern void itHammerHoldSetStatus(GObj *item_gobj);
+extern sb32 itHammerThrownProcUpdate(GObj *item_gobj);
+extern sb32 itHammerThrownProcMap(GObj *item_gobj);
+extern sb32 itHammerCommonProcHit(GObj *item_gobj);
+extern void itHammerThrownSetStatus(GObj *item_gobj);
+extern sb32 itHammerDroppedProcMap(GObj *item_gobj);
+extern void itHammerDroppedSetStatus(GObj *item_gobj);
 extern GObj* itHammerMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

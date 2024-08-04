@@ -21,99 +21,99 @@ extern void func_8000F988();
 // // // // // // // // // // // //
 
 // 0x80189520
-void (*dITDropProcList[/* */])(GObj*) =
+void (*dITMainProcDroppedList[/* */])(GObj*) =
 {
     // Containers
-    itBoxFDropSetStatus,                // Box
-    itTaruFDropSetStatus,               // Barrel
-    itCapsuleFDropSetStatus,            // Capsule
-    itEggFDropSetStatus,                // Egg
+    itBoxDroppedSetStatus,              // Box
+    itTaruDroppedSetStatus,             // Barrel
+    itCapsuleDroppedSetStatus,          // Capsule
+    itEggDroppedSetStatus,              // Egg
     
     // Usable items
-    itTomatoFDropSetStatus,             // Maxim Tomato
-    itHeartFDropSetStatus,              // Heart Container
+    itTomatoDroppedSetStatus,           // Maxim Tomato
+    itHeartDroppedSetStatus,            // Heart Container
     NULL,                               // Star Man
-    itSwordFDropSetStatus,              // Beam Sword
-    itBatFDropSetStatus,                // Home Run Bat
-    itHarisenFDropSetStatus,            // Fan
-    itStarRodFDropSetStatus,            // Star Rod
-    itLGunFDropSetStatus,               // Ray Gun
-    itFFlowerFDropSetStatus,            // Fire Flower
-    itHammerFDropSetStatus,             // Hammer
-    itMSBombFDropSetStatus,             // Motion-sensor Bomb
-    itBombHeiFDropSetStatus,            // Bob-omb
-    itNBumperFDropSetStatus,            // Normal Bumper
-    itGShellFDropSetStatus,             // Green Shell
-    itRShellFDropSetStatus,             // Red Shell
-    itMBallFDropSetStatus,              // Poké Ball
+    itSwordDroppedSetStatus,            // Beam Sword
+    itBatDroppedSetStatus,              // Home Run Bat
+    itHarisenDroppedSetStatus,          // Fan
+    itStarRodDroppedSetStatus,          // Star Rod
+    itLGunDroppedSetStatus,             // Ray Gun
+    itFFlowerDroppedSetStatus,          // Fire Flower
+    itHammerDroppedSetStatus,           // Hammer
+    itMSBombDroppedSetStatus,           // Motion-sensor Bomb
+    itBombHeiDroppedSetStatus,          // Bob-omb
+    itNBumperDroppedSetStatus,          // Normal Bumper
+    itGShellDroppedSetStatus,           // Green Shell
+    itRShellDroppedSetStatus,           // Red Shell
+    itMBallDroppedSetStatus,            // Poké Ball
 
     // Fighter items
     NULL,                               // Ness PK Fire
-    itLinkBombFDropSetStatus            // Link Bomb
+    itLinkBombDroppedSetStatus          // Link Bomb
 };
 
 // 0x80189578
-void (*dITThrowProcList[/* */])(GObj*) =
+void (*dITMainProcThrownList[/* */])(GObj*) =
 {
     // Containers
-    itBoxFThrowSetStatus,               // Box
-    itTaruFThrowSetStatus,              // Barrel
-    itCapsuleFThrowSetStatus,           // Capsule
-    itEggFThrowSetStatus,               // Egg
+    itBoxThrownSetStatus,               // Box
+    itTaruThrownSetStatus,              // Barrel
+    itCapsuleThrownSetStatus,           // Capsule
+    itEggThrownSetStatus,               // Egg
     
     // Usable items
     NULL,                               // Maxim Tomato
     NULL,                               // Heart Container
     NULL,                               // Star Man
-    itSwordFThrowSetStatus,             // Beam Sword
-    itBatFThrowSetStatus,               // Home Run Bat
-    itHarisenFThrowSetStatus,           // Fan
-    itStarRodFThrowSetStatus,           // Star Rod
-    itLGunFThrowSetStatus,              // Ray Gun
-    itFFlowerFThrowSetStatus,           // Fire Flower
-    itHammerFThrowSetStatus,            // Hammer
-    itMSBombFThrowSetStatus,            // Motion-sensor Bomb
-    itBombHeiFThrowSetStatus,           // Bob-omb
-    itNBumperFThrowSetStatus,           // Normal Bumper
-    itGShellFThrowSetStatus,            // Green Shell
-    itRShellFThrowSetStatus,            // Red Shell
-    itMBallFThrowSetStatus,             // Poké Ball
+    itSwordThrownSetStatus,             // Beam Sword
+    itBatThrownSetStatus,               // Home Run Bat
+    itHarisenThrownSetStatus,           // Fan
+    itStarRodThrownSetStatus,           // Star Rod
+    itLGunThrownSetStatus,              // Ray Gun
+    itFFlowerThrownSetStatus,           // Fire Flower
+    itHammerThrownSetStatus,            // Hammer
+    itMSBombThrownSetStatus,            // Motion-sensor Bomb
+    itBombHeiThrownSetStatus,           // Bob-omb
+    itNBumperThrownSetStatus,           // Normal Bumper
+    itGShellThrownSetStatus,            // Green Shell
+    itRShellThrownSetStatus,            // Red Shell
+    itMBallThrownSetStatus,             // Poké Ball
 
     // Fighter items
     NULL,                               // Ness PK Fire
-    itLinkBombFThrowSetStatus           // Link Bomb
+    itLinkBombThrownSetStatus           // Link Bomb
 };
 
 // 0x801895D0
-void (*dITPickupProcList[/* */])(GObj*) =
+void (*dITMainProcHoldList[/* */])(GObj*) =
 {
     // Containers
-    itBoxFHoldSetStatus,                // Box
-    itTaruFHoldSetStatus,               // Barrel
-    itCapsuleFHoldSetStatus,            // Capsule
-    itEggFHoldSetStatus,                // Egg
+    itBoxHoldSetStatus,                // Box
+    itTaruHoldSetStatus,               // Barrel
+    itCapsuleHoldSetStatus,            // Capsule
+    itEggHoldSetStatus,                // Egg
 
     // Usable items
-    NULL,                               // Maxim Tomato
-    NULL,                               // Heart Container
-    NULL,                               // Star Man
-    itSwordFHoldSetStatus,              // Beam Sword
-    itBatFHoldSetStatus,                // Home Run Bat
-    itHarisenFHoldSetStatus,            // Fan
-    itStarRodFHoldSetStatus,            // Star Rod
-    itLGunFHoldSetStatus,               // Ray Gun
-    itFFlowerFHoldSetStatus,            // Fire Flower
-    itHammerFHoldSetStatus,             // Hammer
-    itMSBombFHoldSetStatus,             // Motion-sensor Bomb
-    itBombHeiFHoldSetStatus,            // Bob-omb
-    itNBumperFHoldSetStatus,            // Normal Bumper
-    itGShellFHoldSetStatus,             // Green Shell
-    itRShellFHoldSetStatus,             // Red Shell
-    itMBallFHoldSetStatus,              // Poké Ball
+    NULL,                              // Maxim Tomato
+    NULL,                              // Heart Container
+    NULL,                              // Star Man
+    itSwordHoldSetStatus,              // Beam Sword
+    itBatHoldSetStatus,                // Home Run Bat
+    itHarisenHoldSetStatus,            // Fan
+    itStarRodHoldSetStatus,            // Star Rod
+    itLGunHoldSetStatus,               // Ray Gun
+    itFFlowerHoldSetStatus,            // Fire Flower
+    itHammerHoldSetStatus,             // Hammer
+    itMSBombHoldSetStatus,             // Motion-sensor Bomb
+    itBombHeiHoldSetStatus,            // Bob-omb
+    itNBumperHoldSetStatus,            // Normal Bumper
+    itGShellHoldSetStatus,             // Green Shell
+    itRShellHoldSetStatus,             // Red Shell
+    itMBallHoldSetStatus,              // Poké Ball
 
     // Fighter items
-    NULL,                               // Ness PK Fire
-    itLinkBombFHoldSetStatus            // Link Bomb
+    NULL,                              // Ness PK Fire
+    itLinkBombHoldSetStatus            // Link Bomb
 };
 
 // // // // // // // // // // // //
@@ -182,7 +182,7 @@ void itMainVelSetRotateStepLR(GObj *item_gobj)
 }
 
 // 0x80172558
-void itMainApplyGClampTVel(itStruct *ip, f32 gravity, f32 terminal_velocity)
+void itMainApplyGravityClampTVel(itStruct *ip, f32 gravity, f32 terminal_velocity)
 {
     ip->phys_info.vel_air.y -= gravity;
 
@@ -366,7 +366,7 @@ void itMainSetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 stale)
     itStruct *ip = itGetStruct(item_gobj);
     GObj *owner_gobj = ip->owner_gobj;
     ftStruct *fp = ftGetStruct(owner_gobj);
-    void (*proc_drop)(GObj*) = dITDropProcList[ip->it_kind];
+    void (*proc_drop)(GObj*) = dITMainProcDroppedList[ip->it_kind];
 
     if (proc_drop != NULL)
     {
@@ -394,7 +394,7 @@ void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash
     }
     else ftParamMakeRumble(fp, (is_smash_throw != FALSE) ? 9 : 6, 0);
     
-    proc_throw = dITThrowProcList[ip->it_kind];
+    proc_throw = dITMainProcThrownList[ip->it_kind];
 
     if (proc_throw != NULL)
     {
@@ -464,7 +464,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     func_8000F988(item_gobj, ip->attributes->model_desc);
 
-    proc_pickup = dITPickupProcList[ip->it_kind];
+    proc_pickup = dITMainProcHoldList[ip->it_kind];
 
     if (proc_pickup != NULL)
     {
@@ -689,7 +689,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
 }
 
 // 0x801733E4
-sb32 itMainSDefaultProcHop(GObj *item_gobj)
+sb32 itMainCommonProcHop(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -700,7 +700,7 @@ sb32 itMainSDefaultProcHop(GObj *item_gobj)
 }
 
 // 0x80173434
-sb32 itMainSDefaultProcReflector(GObj *item_gobj)
+sb32 itMainCommonProcReflector(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     ftStruct *fp = ftGetStruct(ip->owner_gobj);

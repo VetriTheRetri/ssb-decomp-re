@@ -34,8 +34,8 @@ itCreateDesc dITStarRodItemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itStarRodAFallProcUpdate,               // Proc Update
-    itStarRodAFallProcMap,                  // Proc Map
+    itStarRodFallProcUpdate,               // Proc Update
+    itStarRodFallProcMap,                  // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -49,7 +49,7 @@ itStatusDesc dITStarRodStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itStarRodGWaitProcMap,              // Proc Map
+        itStarRodWaitProcMap,              // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -60,8 +60,8 @@ itStatusDesc dITStarRodStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itStarRodAFallProcUpdate,           // Proc Update
-        itStarRodAFallProcMap,              // Proc Map
+        itStarRodFallProcUpdate,           // Proc Update
+        itStarRodFallProcMap,              // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -84,25 +84,25 @@ itStatusDesc dITStarRodStatusDescs[/* */] =
 
     // Status 3 (Fighter Throw)
     {
-        itStarRodFThrowProcUpdate,          // Proc Update
-        itStarRodFThrowProcMap,             // Proc Map
-        itStarRodFThrowProcHit,             // Proc Hit
-        itStarRodFThrowProcHit,             // Proc Shield
-        itMainSDefaultProcHop,            // Proc Hop
-        itStarRodFThrowProcHit,             // Proc Set-Off
-        itMainSDefaultProcReflector,      // Proc Reflector
+        itStarRodThrownProcUpdate,          // Proc Update
+        itStarRodThrownProcMap,             // Proc Map
+        itStarRodThrownProcHit,             // Proc Hit
+        itStarRodThrownProcHit,             // Proc Shield
+        itMainCommonProcHop,                // Proc Hop
+        itStarRodThrownProcHit,             // Proc Set-Off
+        itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itStarRodAFallProcUpdate,           // Proc Update
-        itStarRodFDropProcMap,              // Proc Map
-        itStarRodFThrowProcHit,             // Proc Hit
-        itStarRodFThrowProcHit,             // Proc Shield
-        itMainSDefaultProcHop,            // Proc Hop
-        itStarRodFThrowProcHit,             // Proc Set-Off
-        itMainSDefaultProcReflector,      // Proc Reflector
+        itStarRodFallProcUpdate,           // Proc Update
+        itStarRodDroppedProcMap,              // Proc Map
+        itStarRodThrownProcHit,             // Proc Hit
+        itStarRodThrownProcHit,             // Proc Shield
+        itMainCommonProcHop,                // Proc Hop
+        itStarRodThrownProcHit,             // Proc Set-Off
+        itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     }
 };
@@ -139,11 +139,11 @@ wpCreateDesc dITStarRodWeaponStarWeaponDesc =
 
 enum itStarRodStatus
 {
-    itStatus_StarRod_GWait,
-    itStatus_StarRod_AFall,
-    itStatus_StarRod_FHold,
-    itStatus_StarRod_FThrow,
-    itStatus_StarRod_FDrop,
+    itStatus_StarRod_Wait,
+    itStatus_StarRod_Fall,
+    itStatus_StarRod_Hold,
+    itStatus_StarRod_Thrown,
+    itStatus_StarRod_Dropped,
     itStatus_StarRod_EnumMax
 };
 
@@ -154,77 +154,77 @@ enum itStarRodStatus
 // // // // // // // // // // // //
 
 // 0x80177E80
-sb32 itStarRodAFallProcUpdate(GObj *item_gobj)
+sb32 itStarRodFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
 
 // 0x80177EBC
-sb32 itStarRodGWaitProcMap(GObj *item_gobj)
+sb32 itStarRodWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itStarRodAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itStarRodFallSetStatus);
 
     return FALSE;
 }
 
 // 0x80177EE4
-sb32 itStarRodAFallProcMap(GObj *item_gobj)
+sb32 itStarRodFallProcMap(GObj *item_gobj)
 {
-    itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodGWaitSetStatus);
+    itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodWaitSetStatus);
 
     return FALSE;
 }
 
 // 0x80177F18
-void itStarRodGWaitSetStatus(GObj *item_gobj)
+void itStarRodWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_GWait);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_Wait);
 }
 
 // 0x80177F4C
-void itStarRodAFallSetStatus(GObj *item_gobj)
+void itStarRodFallSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_AFall);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_Fall);
 }
 
 // 0x80177F90
-void itStarRodFHoldSetStatus(GObj *item_gobj)
+void itStarRodHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_FHold);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_Hold);
 }
 
 // 0x80177FC4
-sb32 itStarRodFThrowProcUpdate(GObj *item_gobj)
+sb32 itStarRodThrownProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
 
 // 0x80178000
-sb32 itStarRodFThrowProcMap(GObj *item_gobj)
+sb32 itStarRodThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodWaitSetStatus);
 }
 
 // 0x80178030
-sb32 itStarRodFThrowProcHit(GObj *item_gobj)
+sb32 itStarRodThrownProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -236,14 +236,14 @@ sb32 itStarRodFThrowProcHit(GObj *item_gobj)
 }
 
 // 0x80178058
-void itStarRodFThrowSetStatus(GObj *item_gobj)
+void itStarRodThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_FThrow);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_Thrown);
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 }
 
 // 0x8017809C
-sb32 itStarRodFDropProcMap(GObj *item_gobj)
+sb32 itStarRodDroppedProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -251,13 +251,13 @@ sb32 itStarRodFDropProcMap(GObj *item_gobj)
     {
         return itMapCheckMapReboundGround(item_gobj, 0.2F);
     }
-    else return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodGWaitSetStatus);
+    else return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodWaitSetStatus);
 }
 
 // 0x801780F0
-void itStarRodFDropSetStatus(GObj *item_gobj)
+void itStarRodDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_FDrop);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_Dropped);
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 }
 
@@ -393,7 +393,7 @@ GObj* itStarRodWeaponStarMakeWeapon(GObj *fighter_gobj, Vec3f *pos, ub8 is_smash
     dobj = DObjGetStruct(weapon_gobj);
     wp = wpGetStruct(weapon_gobj);
 
-    wp->phys_info.vel_air.x = ((!(is_smash)) ? ITSTARROD_AMMO_TILT_VEL_X : ITSTARROD_AMMO_SMASH_VEL_X) * wp->lr;
+    wp->phys_info.vel_air.x = ((!(is_smash)) ? ITSTARROD_AMMO_TILTVEL_X : ITSTARROD_AMMO_SMASH_VEL_X) * wp->lr;
 
     wp->weapon_vars.star.lifetime = (!(is_smash)) ? ITSTARROD_AMMO_TILT_LIFETIME : ITSTARROD_AMMO_SMASH_LIFETIME; // Why float lol
 

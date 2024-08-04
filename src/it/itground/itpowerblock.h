@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern sb32 itPowerBlockSDefaultProcUpdate(GObj *item_gobj);
+extern sb32 itPowerBlockCommonProcUpdate(GObj *item_gobj);
 extern void itPowerBlockNWaitSetStatus(GObj *item_gobj);
 extern sb32 itPowerBlockNDamageProcUpdate(GObj *item_gobj);
 extern sb32 itPowerBlockNWaitProcDamage(GObj *item_gobj);

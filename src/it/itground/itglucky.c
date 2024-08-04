@@ -30,14 +30,14 @@ itCreateDesc dITGLuckyItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itGLuckySDefaultProcUpdate,             // Proc Update
+    itGLuckyCommonProcUpdate,             // Proc Update
     NULL,                                   // Proc Map
-    itGLuckySDefaultProcHit,                // Proc Hit
+    itGLuckyCommonProcHit,                // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
     NULL,                                   // Proc Set-Off
     NULL,                                   // Proc Reflector
-    itGLuckySDefaultProcDamage              // Proc Damage
+    itGLuckyCommonProcDamage              // Proc Damage
 };
 
 itStatusDesc dITGLuckyStatusDescs[/* */] =
@@ -82,7 +82,7 @@ void itGLuckyNDamageSetStatus(GObj *item_gobj)
 }
 
 // 0x8017C280
-void itGLuckySDefaultUpdateEggSpawn(GObj *lucky_gobj)
+void itGLuckyCommonUpdateEggSpawn(GObj *lucky_gobj)
 {
     itStruct *lucky_ip = itGetStruct(lucky_gobj);
     itStruct *egg_ip;
@@ -138,7 +138,7 @@ void itGLuckySDefaultUpdateEggSpawn(GObj *lucky_gobj)
 }
 
 // 0x8017C400
-sb32 itGLuckySDefaultProcUpdate(GObj *item_gobj)
+sb32 itGLuckyCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -148,7 +148,7 @@ sb32 itGLuckySDefaultProcUpdate(GObj *item_gobj)
 
     if ((dobj->anim_frame >= ITGLUCKY_EGG_SPAWN_BEGIN) && (dobj->anim_frame <= ITGLUCKY_EGG_SPAWN_END))
     {
-        itGLuckySDefaultUpdateEggSpawn(item_gobj);
+        itGLuckyCommonUpdateEggSpawn(item_gobj);
     }
     if (dobj->anim_remain == AOBJ_FRAME_NULL)
     {
@@ -160,7 +160,7 @@ sb32 itGLuckySDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017C4AC
-sb32 itGLuckySDefaultProcHit(GObj *item_gobj)
+sb32 itGLuckyCommonProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -175,7 +175,7 @@ sb32 itGLuckyNDamageProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj;
 
-    itMainApplyGClampTVel(ip, ITGLUCKY_GRAVITY, ITGLUCKY_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITGLUCKY_GRAVITY, ITGLUCKY_TVEL);
 
     dobj = DObjGetStruct(item_gobj);
 
@@ -191,7 +191,7 @@ sb32 itGLuckyNDamageProcDead(GObj *item_gobj)
 }
 
 // 0x8017C530
-sb32 itGLuckySDefaultProcDamage(GObj *item_gobj)
+sb32 itGLuckyCommonProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);

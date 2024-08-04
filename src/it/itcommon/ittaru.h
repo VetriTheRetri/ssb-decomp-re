@@ -5,27 +5,27 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern sb32 itTaruAFallProcUpdate(GObj *item_gobj);
-extern sb32 itTaruGWaitProcMap(GObj *item_gobj);
-extern sb32 itTaruSDefaultProcHit(GObj *item_gobj);
-extern sb32 itTaruSDefaultProcDamage(GObj *item_gobj);
-extern sb32 itTaruAFallProcMap(GObj *item_gobj);
-extern void itTaruGWaitSetStatus(GObj *item_gobj);
-extern void itTaruAFallSetStatus(GObj *item_gobj);
-extern void itTaruFHoldSetStatus(GObj *item_gobj);
-extern sb32 itTaruFThrowCheckMapCollision(GObj *item_gobj, f32 vel_mod);
+extern sb32 itTaruFallProcUpdate(GObj *item_gobj);
+extern sb32 itTaruWaitProcMap(GObj *item_gobj);
+extern sb32 itTaruCommonProcHit(GObj *item_gobj);
+extern sb32 itTaruCommonProcDamage(GObj *item_gobj);
+extern sb32 itTaruFallProcMap(GObj *item_gobj);
+extern void itTaruWaitSetStatus(GObj *item_gobj);
+extern void itTaruFallSetStatus(GObj *item_gobj);
+extern void itTaruHoldSetStatus(GObj *item_gobj);
+extern sb32 itTaruThrownCheckMapCollision(GObj *item_gobj, f32 vel_mod);
 extern void itTaruGRollSetStatus(GObj *item_gobj);
-extern sb32 itTaruFThrowProcMap(GObj *item_gobj);
-extern void itTaruFThrowInitItemVars(GObj *item_gobj);
-extern void itTaruFThrowSetStatus(GObj *item_gobj);
+extern sb32 itTaruThrownProcMap(GObj *item_gobj);
+extern void itTaruThrownInitItemVars(GObj *item_gobj);
+extern void itTaruThrownSetStatus(GObj *item_gobj);
 extern sb32 func_ovl3_80179F50(GObj *item_gobj);
-extern void itTaruFDropSetStatus(GObj *item_gobj);
-extern sb32 itTaruNExplodeProcUpdate(GObj *item_gobj);
+extern void itTaruDroppedSetStatus(GObj *item_gobj);
+extern sb32 itTaruExplodeNProcUpdate(GObj *item_gobj);
 extern sb32 itTaruGRollProcUpdate(GObj *item_gobj);
 extern sb32 itTaruGRollProcMap(GObj *item_gobj);
 extern GObj* itTaruMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
-extern void itTaruNExplodeInitItemVars(GObj *item_gobj);
-extern void itTaruNExplodeSetStatus(GObj *item_gobj);
-extern void itTaruNExplodeMakeEffectGotoSetStatus(GObj *item_gobj);
+extern void itTaruExplodeNInitItemVars(GObj *item_gobj);
+extern void itTaruExplodeNSetStatus(GObj *item_gobj);
+extern void itTaruExplodeNMakeEffectGotoSetStatus(GObj *item_gobj);
 
 #endif

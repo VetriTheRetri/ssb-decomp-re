@@ -40,7 +40,7 @@ itCreateDesc dITFushigibanaItemDesc =
     },
 
     nGMHitUpdateNew,             // Hitbox Update State
-    itFushigibanaSDefaultProcUpdate,            // Proc Update
+    itFushigibanaCommonProcUpdate,            // Proc Update
     NULL,                                       // Proc Map
     NULL,                                       // Proc Hit
     NULL,                                       // Proc Shield
@@ -81,7 +81,7 @@ wpCreateDesc dITFushigibanaWeaponRazorWeaponDesc =
 // // // // // // // // // // // //
 
 // 0x80184440
-void itFushigibanaSDefaultUpdateHitParty(GObj *item_gobj)
+void itFushigibanaCommonUpdateHitParty(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itHitParty *hit_party = itGetHitParty(dITFushigibanaItemDesc, lITFushigibanaHitParties); // (itHitParty*) ((uintptr_t)*dITFushigibanaItemDesc.p_file + (intptr_t)&Fushigibana_Event); // Linker thing
@@ -119,7 +119,7 @@ void itFushigibanaSDefaultUpdateHitParty(GObj *item_gobj)
 }
 
 // 0x801845B4
-sb32 itFushigibanaSDefaultProcUpdate(GObj *item_gobj)
+sb32 itFushigibanaCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -128,7 +128,7 @@ sb32 itFushigibanaSDefaultProcUpdate(GObj *item_gobj)
     dobj->translate.vec.f.x += ip->item_vars.fushigibana.offset.x;
     dobj->translate.vec.f.y += ip->item_vars.fushigibana.offset.y;
 
-    itFushigibanaSDefaultUpdateHitParty(item_gobj);
+    itFushigibanaCommonUpdateHitParty(item_gobj);
 
     pos = dobj->translate.vec.f;
 

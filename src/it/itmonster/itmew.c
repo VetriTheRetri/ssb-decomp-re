@@ -30,8 +30,8 @@ itCreateDesc dITMewItemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itMewSDefaultProcUpdate,                // Proc Update
-    itMewSDefaultProcMap,                   // Proc Map
+    itMewCommonProcUpdate,                // Proc Update
+    itMewCommonProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -108,11 +108,11 @@ void itMewNFlyInitItemVars(GObj *item_gobj)
 
     if (mtTrigGetRandomIntRange(2) != 0)
     {
-        ip->phys_info.vel_air.x = ITMEW_START_VEL_X;
+        ip->phys_info.vel_air.x = ITMEW_STARTVEL_X;
     }
-    else ip->phys_info.vel_air.x = -ITMEW_START_VEL_X;
+    else ip->phys_info.vel_air.x = -ITMEW_STARTVEL_X;
     
-    ip->phys_info.vel_air.y = ITMEW_START_VEL_Y;
+    ip->phys_info.vel_air.y = ITMEW_STARTVEL_Y;
 
     func_800269C0_275C0(nGMSoundFGMMewFly);
 
@@ -133,7 +133,7 @@ void itMewNFlySetStatus(GObj *item_gobj)
 }
 
 // 0x8017ED54
-sb32 itMewSDefaultProcUpdate(GObj *item_gobj)
+sb32 itMewCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -149,7 +149,7 @@ sb32 itMewSDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017EDA4
-sb32 itMewSDefaultProcMap(GObj *item_gobj)
+sb32 itMewCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

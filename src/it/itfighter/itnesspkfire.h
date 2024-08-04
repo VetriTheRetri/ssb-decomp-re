@@ -5,15 +5,15 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern sb32 itNessPKFireSDefaultProcUpdate(GObj *item_gobj);
-extern sb32 itNessPKFireSDefaultUpdateAllCheckDestroy(GObj *item_gobj);
-extern sb32 itNessPKFireGWaitProcUpdate(GObj *item_gobj);
-extern sb32 itNessPKFireAFallProcUpdate(GObj *item_gobj);
-extern sb32 itNessPKFireGWaitProcMap(GObj *item_gobj);
-extern sb32 itNessPKFireAFallProcMap(GObj *item_gobj);
-extern sb32 itNessPKFireSDefaultProcDamage(GObj *item_gobj);
-extern void itNessPKFireGWaitSetStatus(GObj *item_gobj);
-extern void itNessPKFireAFallSetStatus(GObj *item_gobj);
+extern sb32 itNessPKFireCommonProcUpdate(GObj *item_gobj);
+extern sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj);
+extern sb32 itNessPKFireWaitProcUpdate(GObj *item_gobj);
+extern sb32 itNessPKFireFallProcUpdate(GObj *item_gobj);
+extern sb32 itNessPKFireWaitProcMap(GObj *item_gobj);
+extern sb32 itNessPKFireFallProcMap(GObj *item_gobj);
+extern sb32 itNessPKFireCommonProcDamage(GObj *item_gobj);
+extern void itNessPKFireWaitSetStatus(GObj *item_gobj);
+extern void itNessPKFireFallSetStatus(GObj *item_gobj);
 extern GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel);
 
 #endif

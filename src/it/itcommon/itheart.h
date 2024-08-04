@@ -5,13 +5,13 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern sb32 itHeartAFallProcUpdate(GObj *item_gobj);
-extern sb32 itHeartGWaitProcMap(GObj *item_gobj);
-extern sb32 itHeartAFallProcMap(GObj *item_gobj);
-extern void itHeartGWaitSetStatus(GObj *item_gobj);
-extern void itHeartAFallSetStatus(GObj *item_gobj);
-extern sb32 itHeartFDropProcMap(GObj *item_gobj);
-extern void itHeartFDropSetStatus(GObj *item_gobj);
+extern sb32 itHeartFallProcUpdate(GObj *item_gobj);
+extern sb32 itHeartWaitProcMap(GObj *item_gobj);
+extern sb32 itHeartFallProcMap(GObj *item_gobj);
+extern void itHeartWaitSetStatus(GObj *item_gobj);
+extern void itHeartFallSetStatus(GObj *item_gobj);
+extern sb32 itHeartDroppedProcMap(GObj *item_gobj);
+extern void itHeartDroppedSetStatus(GObj *item_gobj);
 extern GObj* itHeartMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

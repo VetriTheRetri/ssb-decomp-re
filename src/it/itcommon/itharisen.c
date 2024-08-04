@@ -34,8 +34,8 @@ itCreateDesc dITHarisenItemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itHarisenAFallProcUpdate,               // Proc Update
-    itHarisenAFallProcMap,                  // Proc Map
+    itHarisenFallProcUpdate,               // Proc Update
+    itHarisenFallProcMap,                  // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -49,7 +49,7 @@ itStatusDesc dITHarisenStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itHarisenGWaitProcMap,              // Proc Map
+        itHarisenWaitProcMap,              // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -60,8 +60,8 @@ itStatusDesc dITHarisenStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itHarisenAFallProcUpdate,           // Proc Update
-        itHarisenAFallProcMap,              // Proc Map
+        itHarisenFallProcUpdate,           // Proc Update
+        itHarisenFallProcMap,              // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -84,25 +84,25 @@ itStatusDesc dITHarisenStatusDescs[/* */] =
 
     // Status 3 (Fighter Throw)
     {
-        itHarisenFThrowProcUpdate,          // Proc Update
-        itHarisenFThrowProcMap,             // Proc Map
-        itHarisenSDefaultProcHit,           // Proc Hit
-        itHarisenSDefaultProcHit,           // Proc Shield
-        itMainSDefaultProcHop,            // Proc Hop
-        itHarisenSDefaultProcHit,           // Proc Set-Off
-        itMainSDefaultProcReflector,      // Proc Reflector
+        itHarisenThrownProcUpdate,          // Proc Update
+        itHarisenThrownProcMap,             // Proc Map
+        itHarisenCommonProcHit,           // Proc Hit
+        itHarisenCommonProcHit,           // Proc Shield
+        itMainCommonProcHop,                // Proc Hop
+        itHarisenCommonProcHit,           // Proc Set-Off
+        itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itHarisenAFallProcUpdate,           // Proc Update
-        itHarisenFDropProcMap,              // Proc Map
-        itHarisenSDefaultProcHit,           // Proc Hit
-        itHarisenSDefaultProcHit,           // Proc Shield
-        itMainSDefaultProcHop,            // Proc Hop
-        itHarisenSDefaultProcHit,           // Proc Set-Off
-        itMainSDefaultProcReflector,      // Proc Reflector
+        itHarisenFallProcUpdate,           // Proc Update
+        itHarisenDroppedProcMap,              // Proc Map
+        itHarisenCommonProcHit,           // Proc Hit
+        itHarisenCommonProcHit,           // Proc Shield
+        itMainCommonProcHop,                // Proc Hop
+        itHarisenCommonProcHit,           // Proc Set-Off
+        itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     }
 };
@@ -115,11 +115,11 @@ itStatusDesc dITHarisenStatusDescs[/* */] =
 
 enum itHarisenStatus
 {
-    itStatus_Harisen_GWait,
-    itStatus_Harisen_AFall,
-    itStatus_Harisen_FHold,
-    itStatus_Harisen_FThrow,
-    itStatus_Harisen_FDrop,
+    itStatus_Harisen_Wait,
+    itStatus_Harisen_Fall,
+    itStatus_Harisen_Hold,
+    itStatus_Harisen_Thrown,
+    itStatus_Harisen_Dropped,
     itStatus_Harisen_EnumMax
 };
 
@@ -130,7 +130,7 @@ enum itHarisenStatus
 // // // // // // // // // // // //
 
 // 0x80175140
-void itHarisenSDefaultSetScale(GObj *item_gobj, f32 scale)
+void itHarisenCommonSetScale(GObj *item_gobj, f32 scale)
 {
     DObjGetStruct(item_gobj)->scale.vec.f.x = scale;
     DObjGetStruct(item_gobj)->scale.vec.f.y = scale;
@@ -138,52 +138,52 @@ void itHarisenSDefaultSetScale(GObj *item_gobj, f32 scale)
 }
 
 // 0x80175160
-sb32 itHarisenAFallProcUpdate(GObj *item_gobj)
+sb32 itHarisenFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
 
 // 0x80175198
-sb32 itHarisenGWaitProcMap(GObj *item_gobj)
+sb32 itHarisenWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itHarisenAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itHarisenFallSetStatus);
 
     return FALSE;
 }
 
 // 0x801751C0
-sb32 itHarisenAFallProcMap(GObj *item_gobj)
+sb32 itHarisenFallProcMap(GObj *item_gobj)
 {
-    itMapCheckMapCollideThrownLanding(item_gobj, 0.0F, 0.3F, itHarisenGWaitSetStatus);
+    itMapCheckMapCollideThrownLanding(item_gobj, 0.0F, 0.3F, itHarisenWaitSetStatus);
 
     return FALSE;
 }
 
 // 0x801751F4
-void itHarisenGWaitSetStatus(GObj *item_gobj)
+void itHarisenWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_GWait);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_Wait);
 }
 
 // 0x80175228
-void itHarisenAFallSetStatus(GObj *item_gobj)
+void itHarisenFallSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_AFall);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_Fall);
 }
 
 // 0x8017526C
-void itHarisenFHoldSetStatus(GObj *item_gobj)
+void itHarisenHoldSetStatus(GObj *item_gobj)
 {
     DObj *dobj = DObjGetStruct(item_gobj);
 
@@ -191,28 +191,28 @@ void itHarisenFHoldSetStatus(GObj *item_gobj)
 
     dobj->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_FHold);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_Hold);
 }
 
 // 0x801752C0
-sb32 itHarisenFThrowProcUpdate(GObj *item_gobj)
+sb32 itHarisenThrownProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
 
 // 0x801752F8
-sb32 itHarisenFThrowProcMap(GObj *item_gobj)
+sb32 itHarisenThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.0F, 0.3F, itHarisenGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.0F, 0.3F, itHarisenWaitSetStatus);
 }
 
 // 0x80175328
-sb32 itHarisenSDefaultProcHit(GObj *item_gobj)
+sb32 itHarisenCommonProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -224,23 +224,23 @@ sb32 itHarisenSDefaultProcHit(GObj *item_gobj)
 }
 
 // 0x80175350
-void itHarisenFThrowSetStatus(GObj *item_gobj)
+void itHarisenThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_FThrow);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_Thrown);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(-90.0F); // HALF_PI32
 }
 
 // 0x80175394
-sb32 itHarisenFDropProcMap(GObj *item_gobj)
+sb32 itHarisenDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.0F, 0.3F, itHarisenGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.0F, 0.3F, itHarisenWaitSetStatus);
 }
 
 // 0x801753C4
-void itHarisenFDropSetStatus(GObj *item_gobj)
+void itHarisenDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_FDrop);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_Dropped);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(-90.0F);
 }

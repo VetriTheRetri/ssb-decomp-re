@@ -175,7 +175,7 @@ sb32 wpYoshiEggThrowProcUpdate(GObj *weapon_gobj)
         else
         {
             DObjGetStruct(weapon_gobj)->rotate.vec.f.z += wp->weapon_vars.egg_throw.angle;
-            wpMainApplyGClampTVel(wp, WPEGGTHROW_GRAVITY, WPEGGTHROW_T_VEL);
+            wpMainApplyGravityClampTVel(wp, WPEGGTHROW_GRAVITY, WPEGGTHROW_TVEL);
 
             return FALSE;
         }

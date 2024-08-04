@@ -90,7 +90,7 @@ sb32 wpPikachuThunderJoltAirProcUpdate(GObj *weapon_gobj)
 
         return TRUE;
     }
-    else wpMainApplyGClampTVel(wp, WPPIKACHUJOLT_GRAVITY, WPPIKACHUJOLT_T_VEL);
+    else wpMainApplyGravityClampTVel(wp, WPPIKACHUJOLT_GRAVITY, WPPIKACHUJOLT_TVEL);
 
     return FALSE;
 }
@@ -230,8 +230,8 @@ sb32 wpPikachuThunderJoltGroundProcUpdate(GObj *weapon_gobj)
         efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         return TRUE;
     }
-    wp->phys_info.vel_air.x = cosf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * WPPIKACHUJOLT_VEL;
-    wp->phys_info.vel_air.y = __sinf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * WPPIKACHUJOLT_VEL;
+    wp->phys_info.vel_air.x = cosf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * WPPIKACHUJOLTVEL;
+    wp->phys_info.vel_air.y = __sinf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * WPPIKACHUJOLTVEL;
 
     switch (wp->weapon_vars.thunder_jolt.line_type)
     {

@@ -28,8 +28,8 @@ itCreateDesc dITTomatoItemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itTomatoAFallProcUpdate,                // Proc Update
-    itTomatoAFallProcMap,                   // Proc Map
+    itTomatoFallProcUpdate,                // Proc Update
+    itTomatoFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -43,7 +43,7 @@ itStatusDesc dITTomatoStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itTomatoGWaitProcMap,               // Proc Map
+        itTomatoWaitProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -54,8 +54,8 @@ itStatusDesc dITTomatoStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itTomatoAFallProcUpdate,            // Proc Update
-        itTomatoAFallProcMap,               // Proc Map
+        itTomatoFallProcUpdate,            // Proc Update
+        itTomatoFallProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -66,8 +66,8 @@ itStatusDesc dITTomatoStatusDescs[/* */] =
 
     // Status 2 (Fighter Drop)
     {
-        itTomatoAFallProcUpdate,            // Proc Update
-        itTomatoFDropProcMap,               // Proc Map
+        itTomatoFallProcUpdate,            // Proc Update
+        itTomatoDroppedProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -85,9 +85,9 @@ itStatusDesc dITTomatoStatusDescs[/* */] =
 
 enum itTomatoStatus
 {
-    itStatus_Tomato_GWait,
-    itStatus_Tomato_AFall,
-    itStatus_Tomato_FDrop,
+    itStatus_Tomato_Wait,
+    itStatus_Tomato_Fall,
+    itStatus_Tomato_Dropped,
     itStatus_Tomato_EnumMax
 };
 
@@ -98,58 +98,58 @@ enum itTomatoStatus
 // // // // // // // // // // // //
 
 // 0x801744C0
-sb32 itTomatoAFallProcUpdate(GObj *item_gobj)
+sb32 itTomatoFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITTOMATO_GRAVITY, ITTOMATO_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITTOMATO_GRAVITY, ITTOMATO_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
 
 // 0x801744FC
-sb32 itTomatoGWaitProcMap(GObj *item_gobj)
+sb32 itTomatoWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itTomatoAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itTomatoFallSetStatus);
 
     return FALSE;
 }
 
 // 0x80174524
-sb32 itTomatoAFallProcMap(GObj *item_gobj)
+sb32 itTomatoFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.3F, 0.5F, itTomatoGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.3F, 0.5F, itTomatoWaitSetStatus);
 }
 
 // 0x80174554
-void itTomatoGWaitSetStatus(GObj *item_gobj)
+void itTomatoWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, itStatus_Tomato_GWait);
+    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, itStatus_Tomato_Wait);
 }
 
 // 0x80174588
-void itTomatoAFallSetStatus(GObj *item_gobj)
+void itTomatoFallSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, itStatus_Tomato_AFall);
+    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, itStatus_Tomato_Fall);
 }
 
 // 0x801745CC
-sb32 itTomatoFDropProcMap(GObj *item_gobj)
+sb32 itTomatoDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.3F, 0.5F, itTomatoGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.3F, 0.5F, itTomatoWaitSetStatus);
 }
 
 // 0x801745FC
-void itTomatoFDropSetStatus(GObj *item_gobj)
+void itTomatoDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, itStatus_Tomato_FDrop);
+    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, itStatus_Tomato_Dropped);
 }
 
 // 0x80174624

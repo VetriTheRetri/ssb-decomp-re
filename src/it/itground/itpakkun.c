@@ -132,7 +132,7 @@ void itPakkunNDamageSetStatus(GObj *item_gobj)
 }
 
 // 0x8017CFC0
-void itPakkunSDefaultSetWaitFighter(GObj *item_gobj)
+void itPakkunCommonSetWaitFighter(GObj *item_gobj)
 {
     if (item_gobj != NULL)
     {
@@ -143,7 +143,7 @@ void itPakkunSDefaultSetWaitFighter(GObj *item_gobj)
 }
 
 // 0x8017CFDC
-sb32 itPakkunSDefaultCheckNoFighterNear(GObj *item_gobj)
+sb32 itPakkunCommonCheckNoFighterNear(GObj *item_gobj)
 {
     if (item_gobj != NULL)
     {
@@ -190,7 +190,7 @@ sb32 itPakkunDWaitProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        if (itPakkunSDefaultCheckNoFighterNear(item_gobj) != FALSE)
+        if (itPakkunCommonCheckNoFighterNear(item_gobj) != FALSE)
         {
             DObj *dobj = DObjGetStruct(item_gobj);
 
@@ -311,7 +311,7 @@ sb32 itPakkunNDamageProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITPAKKUN_GRAVITY, ITPAKKUN_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITPAKKUN_GRAVITY, ITPAKKUN_TVEL);
 
     return FALSE;
 }

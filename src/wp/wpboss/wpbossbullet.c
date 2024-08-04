@@ -169,8 +169,8 @@ GObj* wpBossBulletNormalMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->phys_info.vel_air.x = WPYUBIBULLET_VEL_X * wp->lr;
-    wp->phys_info.vel_air.y = WPYUBIBULLET_VEL_Y;
+    wp->phys_info.vel_air.x = WPYUBIBULLETVEL_X * wp->lr;
+    wp->phys_info.vel_air.y = WPYUBIBULLETVEL_Y;
 
     wpMainReflectorRotateWeaponModel(weapon_gobj);
 
@@ -189,8 +189,8 @@ GObj* wpBossBulletHardMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->phys_info.vel_air.x = WPYUBIBULLET_VEL_X * wp->lr;
-    wp->phys_info.vel_air.y = WPYUBIBULLET_VEL_Y;
+    wp->phys_info.vel_air.x = WPYUBIBULLETVEL_X * wp->lr;
+    wp->phys_info.vel_air.y = WPYUBIBULLETVEL_Y;
 
     wpMainReflectorRotateWeaponModel(weapon_gobj);
 

@@ -435,7 +435,7 @@ void ftKirbySpecialAirNWaitProcPhysics(GObj *fighter_gobj)
     {
         ftPhysicsApplyFastFall(fp, attributes);
     }
-    else ftPhysicsApplyGClampTVel(fp, FTKIRBY_VACUUM_GRAVITY_MUL * attributes->gravity, FTKIRBY_VACUUM_FALL_MAX_MUL * attributes->fall_speed_max);
+    else ftPhysicsApplyGravityClampTVel(fp, FTKIRBY_VACUUM_GRAVITY_MUL * attributes->gravity, FTKIRBY_VACUUM_FALL_MAX_MUL * attributes->tvel_default);
     
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {

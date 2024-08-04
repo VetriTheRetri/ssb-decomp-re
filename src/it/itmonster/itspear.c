@@ -39,8 +39,8 @@ itCreateDesc dITSpearItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itSpearSDefaultProcUpdate,              // Proc Update
-    itSpearSDefaultProcMap,                 // Proc Map
+    itSpearCommonProcUpdate,              // Proc Update
+    itSpearCommonProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -222,7 +222,7 @@ sb32 itSpearNFlyProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITSPEAR_GRAVITY, ITSPEAR_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSPEAR_GRAVITY, ITSPEAR_TVEL);
 
     ip->phys_info.vel_air.x += ITSPEAR_SWARM_CALL_VEL_X * ip->lr;
 
@@ -286,7 +286,7 @@ void itSpearNFlySetStatus(GObj *item_gobj)
 }
 
 // 0x80180194
-sb32 itSpearSDefaultProcUpdate(GObj *item_gobj)
+sb32 itSpearCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -300,7 +300,7 @@ sb32 itSpearSDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x801801D8
-sb32 itSpearSDefaultProcMap(GObj *item_gobj)
+sb32 itSpearCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

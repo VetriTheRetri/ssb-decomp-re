@@ -31,7 +31,7 @@ itCreateDesc dITPowerBlockItemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itPowerBlockSDefaultProcUpdate,         // Proc Update
+    itPowerBlockCommonProcUpdate,         // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
@@ -75,7 +75,7 @@ enum itPowerBlockStatus
 // // // // // // // // // // // //
 
 // 0x8017C090
-sb32 itPowerBlockSDefaultProcUpdate(GObj *item_gobj)
+sb32 itPowerBlockCommonProcUpdate(GObj *item_gobj)
 {
     if (DObjGetStruct(item_gobj)->anim_remain == AOBJ_FRAME_NULL)
     {

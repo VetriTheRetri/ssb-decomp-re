@@ -86,7 +86,7 @@ void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj)
     }
     else
     {
-        ftPhysicsApplyGClampTVel(fp, 0.5F, attributes->fall_speed_max);
+        ftPhysicsApplyGravityClampTVel(fp, 0.5F, attributes->tvel_default);
 
         if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
         {

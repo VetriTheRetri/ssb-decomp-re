@@ -28,8 +28,8 @@ itCreateDesc dITSwordITemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itSwordAFallProcUpdate,                 // Proc Update
-    itSwordAFallProcMap,                    // Proc Map
+    itSwordFallProcUpdate,                 // Proc Update
+    itSwordFallProcMap,                    // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -43,7 +43,7 @@ itStatusDesc dITSwordStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itSwordGWaitProcMap,                // Proc Map
+        itSwordWaitProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -54,8 +54,8 @@ itStatusDesc dITSwordStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itSwordAFallProcUpdate,             // Proc Update
-        itSwordAFallProcMap,                // Proc Map
+        itSwordFallProcUpdate,             // Proc Update
+        itSwordFallProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -78,25 +78,25 @@ itStatusDesc dITSwordStatusDescs[/* */] =
 
     // Status 3 (Fighter Throw)
     {
-        itSwordAFallProcUpdate,             // Proc Update
-        itSwordFThrowProcMap,               // Proc Map
-        itSwordFThrowProcHit,               // Proc Hit
-        itSwordFThrowProcHit,               // Proc Shield
-        itMainSDefaultProcHop,            // Proc Hop
-        itSwordFThrowProcHit,               // Proc Set-Off
-        itMainSDefaultProcReflector,      // Proc Reflector
+        itSwordFallProcUpdate,             // Proc Update
+        itSwordThrownProcMap,               // Proc Map
+        itSwordThrownProcHit,               // Proc Hit
+        itSwordThrownProcHit,               // Proc Shield
+        itMainCommonProcHop,                // Proc Hop
+        itSwordThrownProcHit,               // Proc Set-Off
+        itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itSwordAFallProcUpdate,             // Proc Update
-        itSwordFDropProcMap,                // Proc Map
-        itSwordFThrowProcHit,               // Proc Hit
-        itSwordFThrowProcHit,               // Proc Shield
-        itMainSDefaultProcHop,            // Proc Hop
-        itSwordFThrowProcHit,               // Proc Set-Off
-        itMainSDefaultProcReflector,      // Proc Reflector
+        itSwordFallProcUpdate,             // Proc Update
+        itSwordDroppedProcMap,                // Proc Map
+        itSwordThrownProcHit,               // Proc Hit
+        itSwordThrownProcHit,               // Proc Shield
+        itMainCommonProcHop,                // Proc Hop
+        itSwordThrownProcHit,               // Proc Set-Off
+        itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     }
 };
@@ -109,11 +109,11 @@ itStatusDesc dITSwordStatusDescs[/* */] =
 
 enum itSwordStatus
 {
-    itStatus_Sword_GWait,
-    itStatus_Sword_AFall,
-    itStatus_Sword_FHold,
-    itStatus_Sword_FThrow,
-    itStatus_Sword_FDrop,
+    itStatus_Sword_Wait,
+    itStatus_Sword_Fall,
+    itStatus_Sword_Hold,
+    itStatus_Sword_Thrown,
+    itStatus_Sword_Dropped,
     itStatus_Sword_EnumMax
 };
 
@@ -124,64 +124,64 @@ enum itSwordStatus
 // // // // // // // // // // // //
 
 // 0x80174B50
-sb32 itSwordAFallProcUpdate(GObj *item_gobj)
+sb32 itSwordFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITSWORD_GRAVITY, ITSWORD_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSWORD_GRAVITY, ITSWORD_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
 
 // 0x80174B8C
-sb32 itSwordGWaitProcMap(GObj *item_gobj)
+sb32 itSwordWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itSwordAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itSwordFallSetStatus);
 
     return FALSE;
 }
 
 // 0x80174BB4
-sb32 itSwordAFallProcMap(GObj *item_gobj)
+sb32 itSwordFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itSwordGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itSwordWaitSetStatus);
 }
 
 // 0x80174BE4
-void itSwordGWaitSetStatus(GObj *item_gobj)
+void itSwordWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_GWait);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_Wait);
 }
 
 // 0x80174C18
-void itSwordAFallSetStatus(GObj *item_gobj)
+void itSwordFallSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_AFall);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_Fall);
 }
 
 // 0x80174C5C
-void itSwordFHoldSetStatus(GObj *item_gobj)
+void itSwordHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
-    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_FHold);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_Hold);
 }
 
 // 0x80174C90
-sb32 itSwordFThrowProcMap(GObj *item_gobj)
+sb32 itSwordThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itSwordGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itSwordWaitSetStatus);
 }
 
 // 0x80174CC0
-sb32 itSwordFThrowProcHit(GObj *item_gobj)
+sb32 itSwordThrownProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -193,23 +193,23 @@ sb32 itSwordFThrowProcHit(GObj *item_gobj)
 }
 
 // 0x80174CE8
-void itSwordFThrowSetStatus(GObj *item_gobj)
+void itSwordThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_FThrow);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_Thrown);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }
 
 // 0x80174D2C
-sb32 itSwordFDropProcMap(GObj *item_gobj)
+sb32 itSwordDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itSwordGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itSwordWaitSetStatus);
 }
 
 // 0x80174D5C
-void itSwordFDropSetStatus(GObj *item_gobj)
+void itSwordDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_FDrop);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_Dropped);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }

@@ -29,9 +29,9 @@ itCreateDesc dITStarItemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itStarSDefaultProcUpdate,               // Proc Update
-    itStarSDefaultProcMap,                  // Proc Map
-    itStarSDefaultProcHit,                  // Proc Hit
+    itStarCommonProcUpdate,               // Proc Update
+    itStarCommonProcMap,                  // Proc Map
+    itStarCommonProcHit,                  // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
     NULL,                                   // Proc Set-Off
@@ -46,11 +46,11 @@ itCreateDesc dITStarItemDesc =
 // // // // // // // // // // // //
 
 // 0x80174930
-sb32 itStarSDefaultProcUpdate(GObj *item_gobj)
+sb32 itStarCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITSTAR_GRAVITY, ITSTAR_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSTAR_GRAVITY, ITSTAR_TVEL);
 
     ip->it_multi--;
 
@@ -64,7 +64,7 @@ sb32 itStarSDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x80174990
-sb32 itStarSDefaultProcMap(GObj *item_gobj)
+sb32 itStarCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     s32 unused;
@@ -84,7 +84,7 @@ sb32 itStarSDefaultProcMap(GObj *item_gobj)
 }
 
 // 0x80174A0C
-sb32 itStarSDefaultProcHit(GObj *item_gobj)
+sb32 itStarCommonProcHit(GObj *item_gobj)
 {
     return TRUE;
 }

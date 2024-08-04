@@ -15,12 +15,12 @@
 #define WPSAMUSBOMB_EXPLODE_LIFETIME 6
 #define WPSAMUSBOMB_EXPLODE_SIZE 180.0F
 #define WPSAMUSBOMB_WAIT_LIFETIME 100					 			// Countdown of Bomb until it explodes
-#define WPSAMUSBOMB_WAIT_VEL_Y 10.0F					 			// Initial velocity of Bomb
+#define WPSAMUSBOMB_WAITVEL_Y 10.0F					 			// Initial velocity of Bomb
 #define WPSAMUSBOMB_WAIT_ROTATE_SPEED_AIR F_CLC_DTOR32(20.0F)	 	// Bomb spins at this rate while airborne
 #define WPSAMUSBOMB_WAIT_ROTATE_SPEED_GROUND F_CLC_DTOR32(10.0F) 	// Bomb spins at this rate while grounded
 #define WPSAMUSBOMB_WAIT_COLLIDE_MOD_VEL 0.9F			 			// Modify velocity when colliding with an obstruction?
 #define WPSAMUSBOMB_WAIT_GRAVITY 1.0F					 			// Bomb's gravity
-#define WPSAMUSBOMB_WAIT_T_VEL 50.0F					 			// Bomb's terminal velocity
+#define WPSAMUSBOMB_WAIT_TVEL 50.0F					 			// Bomb's terminal velocity
 #define WPSAMUSBOMB_WAIT_BLINK_SLOW                                                                                    \
 	40 // The light in the center of the bomb blinks at its "slow" rate while
 	   // lifetime is greater than this value
@@ -32,9 +32,9 @@
 #define WPSAMUSBOMB_WAIT_BLINK_TIMER_FAST 3 // Switch out Bomb's texture animation frame when this timer reaches 0
 
 #define WPPIKACHUJOLT_LIFETIME 100
-#define WPPIKACHUJOLT_VEL 55.0F
+#define WPPIKACHUJOLTVEL 55.0F
 #define WPPIKACHUJOLT_GRAVITY 0.0F
-#define WPPIKACHUJOLT_T_VEL 50.0F
+#define WPPIKACHUJOLT_TVEL 50.0F
 #define WPPIKACHUJOLT_ROTATE_ANGLE_MAX F_CLC_DTOR32(100.0F)
 #define WPPIKACHUJOLT_ANIM_PUSH_FRAME 7.5F // Frame on which Thunder Jolt gets pushed ahead to simulate movement?
 #define WPPIKACHUJOLT_COLL_GROUND 0		   // ID of Thunder Jolt collision type
@@ -84,7 +84,7 @@
 #define WPEGGTHROW_ANGLE_FORCE_MUL (-2.1F)
 #define WPEGGTHROW_ANGLE_ADD (-1.5F)
 #define WPEGGTHROW_GRAVITY 2.7F
-#define WPEGGTHROW_T_VEL 120.0F
+#define WPEGGTHROW_TVEL 120.0F
 
 #define WPYOSHISTAR_LIFETIME 16
 #define WPYOSHISTAR_LIFETIME_SCALE_MUL 0.175F
@@ -118,8 +118,8 @@
 
 #define WPYUBIBULLET_EXPLODE_LIFETIME 6
 #define WPYUBIBULLET_EXPLODE_SIZE 180.0F
-#define WPYUBIBULLET_VEL_X 160.0F
-#define WPYUBIBULLET_VEL_Y -25.0F
+#define WPYUBIBULLETVEL_X 160.0F
+#define WPYUBIBULLETVEL_Y -25.0F
 
 typedef enum wpPikachuThunderCollide
 {

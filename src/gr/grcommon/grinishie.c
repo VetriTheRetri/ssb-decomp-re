@@ -417,7 +417,7 @@ void grInishiePakkunSetWaitFighter(void)
 
     for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.inishie.pakkun_gobj); i++)
     {
-        itPakkunSDefaultSetWaitFighter(gGRCommonStruct.inishie.pakkun_gobj[i]);
+        itPakkunCommonSetWaitFighter(gGRCommonStruct.inishie.pakkun_gobj[i]);
     }
 }
 

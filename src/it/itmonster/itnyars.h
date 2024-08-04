@@ -8,8 +8,8 @@
 extern sb32 itNyarsNAttackProcUpdate(GObj *item_gobj);
 extern void itNyarsNAttackInitItemVars(GObj *item_gobj);
 extern void itNyarsNAttackSetStatus(GObj *item_gobj);
-extern sb32 itNyarsSDefaultProcUpdate(GObj *item_gobj);
-extern sb32 itNyarsSDefaultProcMap(GObj *item_gobj);
+extern sb32 itNyarsCommonProcUpdate(GObj *item_gobj);
+extern sb32 itNyarsCommonProcMap(GObj *item_gobj);
 extern GObj* itNyarsMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itNyarsWeaponCoinProcUpdate(GObj *weapon_gobj);
 extern sb32 itNyarsWeaponCoinProcHit(GObj *weapon_gobj);

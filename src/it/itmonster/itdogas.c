@@ -34,8 +34,8 @@ itCreateDesc dITDogasItemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itDogasSDefaultProcUpdate,              // Proc Update
-    itDogasSDefaultProcMap,                 // Proc Map
+    itDogasCommonProcUpdate,              // Proc Update
+    itDogasCommonProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -223,7 +223,7 @@ void itDogasNAttackSetStatus(GObj *item_gobj)
 }
 
 // 0x80182F40
-sb32 itDogasSDefaultProcUpdate(GObj *item_gobj)
+sb32 itDogasCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -239,7 +239,7 @@ sb32 itDogasSDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182F94
-sb32 itDogasSDefaultProcMap(GObj *item_gobj)
+sb32 itDogasCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

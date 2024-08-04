@@ -33,8 +33,8 @@ itCreateDesc dITSawamuraItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itSawamuraSDefaultProcUpdate,           // Proc Update
-    itSawamuraSDefaultProcMap,              // Proc Map
+    itSawamuraCommonProcUpdate,           // Proc Update
+    itSawamuraCommonProcMap,              // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -48,8 +48,8 @@ itStatusDesc dITSawamuraStatusDescs[/* */] =
 {
     // Status 0 (Air Fall)
     {
-        itSawamuraAFallProcUpdate,          // Proc Update
-        itSawamuraAFallProcMap,             // Proc Map
+        itSawamuraFallProcUpdate,          // Proc Update
+        itSawamuraFallProcMap,             // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -60,8 +60,8 @@ itStatusDesc dITSawamuraStatusDescs[/* */] =
 
     // Status 1 (Air Fall)
     {
-        itSawamuraGWaitProcUpdate,          // Proc Update
-        itSawamuraGWaitProcMap,             // Proc Map
+        itSawamuraWaitProcUpdate,          // Proc Update
+        itSawamuraWaitProcMap,             // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -91,8 +91,8 @@ itStatusDesc dITSawamuraStatusDescs[/* */] =
 
 enum itSawamuraStatus
 {
-    itStatus_Sawamura_AFall,
-    itStatus_Sawamura_GWait,
+    itStatus_Sawamura_Fall,
+    itStatus_Sawamura_Wait,
     itStatus_Sawamura_NAttack,
     itStatus_Sawamura_EnumMax
 };
@@ -104,17 +104,17 @@ enum itSawamuraStatus
 // // // // // // // // // // // //
 
 // 0x80182630
-sb32 itSawamuraAFallProcUpdate(GObj *item_gobj)
+sb32 itSawamuraFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_TVEL);
 
     return FALSE;
 }
 
 // 0x80182660
-sb32 itSawamuraAFallProcMap(GObj *item_gobj)
+sb32 itSawamuraFallProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -122,19 +122,19 @@ sb32 itSawamuraAFallProcMap(GObj *item_gobj)
     {
         ip->phys_info.vel_air.y = 0.0F;
 
-        itSawamuraGWaitSetStatus(item_gobj);
+        itSawamuraWaitSetStatus(item_gobj);
     }
     return FALSE;
 }
 
 // 0x801826A8
-void itSawamuraAFallSetStatus(GObj *item_gobj)
+void itSawamuraFallSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, itStatus_Sawamura_AFall);
+    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, itStatus_Sawamura_Fall);
 }
 
 // 0x801826D0
-sb32 itSawamuraGWaitProcUpdate(GObj *item_gobj)
+sb32 itSawamuraWaitProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -148,17 +148,17 @@ sb32 itSawamuraGWaitProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182714
-sb32 itSawamuraGWaitProcMap(GObj *item_gobj)
+sb32 itSawamuraWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itSawamuraAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itSawamuraFallSetStatus);
 
     return FALSE;
 }
 
 // 0x8018273C
-void itSawamuraGWaitSetStatus(GObj *item_gobj)
+void itSawamuraWaitSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, itStatus_Sawamura_GWait);
+    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, itStatus_Sawamura_Wait);
 }
 
 // 0x80182764
@@ -167,7 +167,7 @@ sb32 itSawamuraNAttackProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_TVEL);
 
     if ((ip->lr == nGMDirectionR) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X)))
     {
@@ -278,7 +278,7 @@ void itSawamuraNAttackSetStatus(GObj *item_gobj)
 }
 
 // 0x80182AE0
-sb32 itSawamuraSDefaultProcUpdate(GObj *item_gobj)
+sb32 itSawamuraCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -288,7 +288,7 @@ sb32 itSawamuraSDefaultProcUpdate(GObj *item_gobj)
 
         ip->phys_info.vel_air.y = 0.0F;
 
-        itSawamuraAFallSetStatus(item_gobj);
+        itSawamuraFallSetStatus(item_gobj);
     }
     ip->it_multi--;
 
@@ -296,7 +296,7 @@ sb32 itSawamuraSDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182B34
-sb32 itSawamuraSDefaultProcMap(GObj *item_gobj)
+sb32 itSawamuraCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

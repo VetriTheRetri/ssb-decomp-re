@@ -29,8 +29,8 @@ itCreateDesc dITTaruItemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itTaruAFallProcUpdate,                  // Proc Update
-    itTaruAFallProcMap,                     // Proc Map
+    itTaruFallProcUpdate,                  // Proc Update
+    itTaruFallProcMap,                     // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -44,19 +44,19 @@ itStatusDesc dITTaruStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itTaruGWaitProcMap,                 // Proc Map
+        itTaruWaitProcMap,                 // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itTaruSDefaultProcDamage            // Proc Damage
+        itTaruCommonProcDamage            // Proc Damage
     },
 
     // Status 1 (Air Wait Fall)
     {
-        itTaruAFallProcUpdate,              // Proc Update
-        itTaruAFallProcMap,                 // Proc Map
+        itTaruFallProcUpdate,              // Proc Update
+        itTaruFallProcMap,                 // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -79,31 +79,31 @@ itStatusDesc dITTaruStatusDescs[/* */] =
 
     // Status 3 (Fighter Throw)
     {
-        itTaruAFallProcUpdate,              // Proc Update
-        itTaruFThrowProcMap,                // Proc Map
-        itTaruSDefaultProcHit,              // Proc Hit
-        itTaruSDefaultProcHit,              // Proc Shield
+        itTaruFallProcUpdate,              // Proc Update
+        itTaruThrownProcMap,                // Proc Map
+        itTaruCommonProcHit,              // Proc Hit
+        itTaruCommonProcHit,              // Proc Shield
         NULL,                               // Proc Hop
-        itTaruSDefaultProcHit,              // Proc Set-Off
-        itTaruSDefaultProcHit,              // Proc Reflector
-        itTaruSDefaultProcDamage            // Proc Damage
+        itTaruCommonProcHit,              // Proc Set-Off
+        itTaruCommonProcHit,              // Proc Reflector
+        itTaruCommonProcDamage            // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itTaruAFallProcUpdate,              // Proc Update
-        itTaruFThrowProcMap,                // Proc Map
-        itTaruSDefaultProcHit,              // Proc Hit
-        itTaruSDefaultProcHit,              // Proc Shield
+        itTaruFallProcUpdate,              // Proc Update
+        itTaruThrownProcMap,                // Proc Map
+        itTaruCommonProcHit,              // Proc Hit
+        itTaruCommonProcHit,              // Proc Shield
         NULL,                               // Proc Hop
-        itTaruSDefaultProcHit,              // Proc Set-Off
-        itTaruSDefaultProcHit,              // Proc Reflector
-        itTaruSDefaultProcDamage            // Proc Damage
+        itTaruCommonProcHit,              // Proc Set-Off
+        itTaruCommonProcHit,              // Proc Reflector
+        itTaruCommonProcDamage            // Proc Damage
     },
 
     // Status 5 (Neutral Explosion)
     {
-        itTaruNExplodeProcUpdate,           // Proc Update
+        itTaruExplodeNProcUpdate,           // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -117,12 +117,12 @@ itStatusDesc dITTaruStatusDescs[/* */] =
     {
         itTaruGRollProcUpdate,              // Proc Update
         itTaruGRollProcMap,                 // Proc Map
-        itTaruSDefaultProcHit,              // Proc Hit
-        itTaruSDefaultProcHit,              // Proc Shield
+        itTaruCommonProcHit,              // Proc Hit
+        itTaruCommonProcHit,              // Proc Shield
         NULL,                               // Proc Hop
-        itTaruSDefaultProcHit,              // Proc Set-Off
-        itTaruSDefaultProcHit,              // Proc Reflector
-        itTaruSDefaultProcDamage            // Proc Damage
+        itTaruCommonProcHit,              // Proc Set-Off
+        itTaruCommonProcHit,              // Proc Reflector
+        itTaruCommonProcDamage            // Proc Damage
     }
 };
 
@@ -134,12 +134,12 @@ itStatusDesc dITTaruStatusDescs[/* */] =
 
 enum itTaruStatus
 {
-    itStatus_Taru_GWait,
-    itStatus_Taru_AFall,
-    itStatus_Taru_FHold,
-    itStatus_Taru_FThrow,
-    itStatus_Taru_FDrop,
-    itStatus_Taru_NExplode,
+    itStatus_Taru_Wait,
+    itStatus_Taru_Fall,
+    itStatus_Taru_Hold,
+    itStatus_Taru_Thrown,
+    itStatus_Taru_Dropped,
+    itStatus_Taru_ExplodeN,
     itStatus_Taru_GRoll,
     itStatus_Taru_EnumMax
 };
@@ -151,11 +151,11 @@ enum itTaruStatus
 // // // // // // // // // // // //
 
 // 0x80179BA0
-sb32 itTaruAFallProcUpdate(GObj *item_gobj)
+sb32 itTaruFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITTARU_GRAVITY, ITTARU_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITTARU_GRAVITY, ITTARU_TVEL);
 
     DObjGetStruct(item_gobj)->rotate.vec.f.z += ip->item_vars.taru.roll_rotate_step;
 
@@ -165,15 +165,15 @@ sb32 itTaruAFallProcUpdate(GObj *item_gobj)
 }
 
 // 0x80179BF8
-sb32 itTaruGWaitProcMap(GObj *item_gobj)
+sb32 itTaruWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itTaruAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itTaruFallSetStatus);
 
     return FALSE;
 }
 
 // 0x80179C20
-sb32 itTaruSDefaultProcHit(GObj *item_gobj)
+sb32 itTaruCommonProcHit(GObj *item_gobj)
 {
     func_800269C0_275C0(nGMSoundFGMContainerSmash);
 
@@ -183,55 +183,55 @@ sb32 itTaruSDefaultProcHit(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itTaruNExplodeMakeEffectGotoSetStatus(item_gobj);
+    else itTaruExplodeNMakeEffectGotoSetStatus(item_gobj);
 
     return FALSE;
 }
 
 // 0x80179C78
-sb32 itTaruSDefaultProcDamage(GObj *item_gobj)
+sb32 itTaruCommonProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     if (ip->percent_damage >= ITTARU_HEALTH_MAX)
     {
-        return itTaruSDefaultProcHit(item_gobj);
+        return itTaruCommonProcHit(item_gobj);
     }
     else return FALSE;
 }
 
 // 0x80179CB8
-sb32 itTaruAFallProcMap(GObj *item_gobj)
+sb32 itTaruFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.5F, 0.2F, itTaruGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, 0.5F, 0.2F, itTaruWaitSetStatus);
 }
 
 // 0x80179CE8
-void itTaruGWaitSetStatus(GObj *item_gobj)
+void itTaruWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_GWait);
+    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_Wait);
 }
 
 // 0x80179D1C
-void itTaruAFallSetStatus(GObj *item_gobj)
+void itTaruFallSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_AFall);
+    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_Fall);
 }
 
 // 0x80179D60
-void itTaruFHoldSetStatus(GObj *item_gobj)
+void itTaruHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_FHold);
+    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_Hold);
 }
 
 // 0x80179D88
-sb32 itTaruFThrowCheckMapCollision(GObj *item_gobj, f32 vel_mod)
+sb32 itTaruThrownCheckMapCollision(GObj *item_gobj, f32 vel_mod)
 {
     s32 unused;
     itStruct *ip;
@@ -261,15 +261,15 @@ void itTaruGRollSetStatus(GObj *item_gobj)
 }
 
 // 0x80179E28
-sb32 itTaruFThrowProcMap(GObj *item_gobj)
+sb32 itTaruThrownProcMap(GObj *item_gobj)
 {
-    if (itTaruFThrowCheckMapCollision(item_gobj, 0.5F) != FALSE)
+    if (itTaruThrownCheckMapCollision(item_gobj, 0.5F) != FALSE)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
         if (ip->phys_info.vel_air.y >= 90.0F)       // Is it even possible to meet this condition? Didn't they mean ABSF(ip->phys_info.vel_air.y)?
         {
-            itTaruSDefaultProcHit(item_gobj);       // This causes the barrel to smash on impact when landing from too high; doesn't seem possible to trigger
+            itTaruCommonProcHit(item_gobj);       // This causes the barrel to smash on impact when landing from too high; doesn't seem possible to trigger
 
             return TRUE;
         }
@@ -291,7 +291,7 @@ sb32 itTaruFThrowProcMap(GObj *item_gobj)
 }
 
 // 0x80179EF0
-void itTaruFThrowInitItemVars(GObj *item_gobj)
+void itTaruThrownInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -302,10 +302,10 @@ void itTaruFThrowInitItemVars(GObj *item_gobj)
 }
 
 // 0x80179F1C
-void itTaruFThrowSetStatus(GObj *item_gobj)
+void itTaruThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_FThrow);
-    itTaruFThrowInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_Thrown);
+    itTaruThrownInitItemVars(item_gobj);
 }
 
 // 0x80179F50 - Unused
@@ -317,14 +317,14 @@ sb32 func_ovl3_80179F50(GObj *item_gobj)
 }
 
 // 0x80179F74
-void itTaruFDropSetStatus(GObj *item_gobj)
+void itTaruDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_FDrop);
-    itTaruFThrowInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_Dropped);
+    itTaruThrownInitItemVars(item_gobj);
 }
 
 // 0x80179FA8
-sb32 itTaruNExplodeProcUpdate(GObj *item_gobj)
+sb32 itTaruExplodeNProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -384,11 +384,11 @@ sb32 itTaruGRollProcMap(GObj *item_gobj)
 
     if (itMapTestLRWallCheckGround(item_gobj) == FALSE)
     {
-        itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_FDrop);
+        itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_Dropped);
     }
     else if (ip->coll_data.coll_mask_curr & (MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL))
     {
-        return itTaruSDefaultProcHit(item_gobj);
+        return itTaruCommonProcHit(item_gobj);
     }
     return FALSE;
 }
@@ -414,7 +414,7 @@ GObj* itTaruMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 }
 
 // 0x8017A240
-void itTaruNExplodeInitItemVars(GObj *item_gobj)
+void itTaruExplodeNInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -439,14 +439,14 @@ void itTaruNExplodeInitItemVars(GObj *item_gobj)
 }
 
 // 0x8017A2D8
-void itTaruNExplodeSetStatus(GObj *item_gobj)
+void itTaruExplodeNSetStatus(GObj *item_gobj)
 {
-    itTaruNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_NExplode);
+    itTaruExplodeNInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, itStatus_Taru_ExplodeN);
 }
 
 // 0x8017A30C
-void itTaruNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
+void itTaruExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
 {
     efParticle *efpart;
     itStruct *ip = itGetStruct(item_gobj);
@@ -468,5 +468,5 @@ void itTaruNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
-    itTaruNExplodeSetStatus(item_gobj);
+    itTaruExplodeNSetStatus(item_gobj);
 }

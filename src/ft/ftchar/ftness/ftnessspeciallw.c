@@ -96,7 +96,7 @@ void ftNessSpecialAirLwProcPhysics(GObj *fighter_gobj)
     {
         fp->status_vars.ness.speciallw.gravity_delay--;
     }
-    else ftPhysicsApplyGClampTVel(fp, 0.8F, attributes->fall_speed_max);
+    else ftPhysicsApplyGravityClampTVel(fp, 0.8F, attributes->tvel_default);
     
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {

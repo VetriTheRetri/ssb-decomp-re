@@ -9,17 +9,17 @@
 #define ITBOX_EXPLODE_FRAME_END 8
 
 #define ITCAPSULE_GRAVITY 1.2F
-#define ITCAPSULE_T_VEL 100.0F
+#define ITCAPSULE_TVEL 100.0F
 #define ITCAPSULE_EXPLODE_SCALE 1.4F // Size of explosion graphics
 #define ITCAPSULE_EXPLODE_FRAME_END 6
 
 #define ITTOMATO_DAMAGE_HEAL 100
 #define ITTOMATO_GRAVITY 1.2F
-#define ITTOMATO_T_VEL 100.0F
+#define ITTOMATO_TVEL 100.0F
 
 #define ITHEART_DAMAGE_HEAL 999
 #define ITHEART_GRAVITY 0.25F
-#define ITHEART_T_VEL 30.0F
+#define ITHEART_TVEL 30.0F
 
 #define ITSTAR_COLANIM_ID 0x4A
 #define ITSTAR_COLANIM_LENGTH 0
@@ -29,22 +29,24 @@
 #define ITSTAR_WARN_BEGIN_FRAME (ITSTAR_INVINCIBLE_TIME - 480)
 #define ITSTAR_INTERACT_DELAY 16 // Wait this many frames before becoming tangible
 #define ITSTAR_GRAVITY 1.2F
-#define ITSTAR_T_VEL 100.0F
+#define ITSTAR_TVEL 100.0F
 #define ITSTAR_VEL_X 8.0F
 #define ITSTAR_BOUNCE_Y 50.0F // Y-velocity added when Star Man touches the ground
 
 #define ITSWORD_GRAVITY 1.2F
-#define ITSWORD_T_VEL 100.0F
+#define ITSWORD_TVEL 100.0F
 
 #define ITBAT_GRAVITY 1.5F
-#define ITBAT_T_VEL 120.0F
+#define ITBAT_TVEL 120.0F
+#define ITBAT_MAP_REBOUND_COMMON 0.2F
+#define ITBAT_MAP_REBOUND_GROUND 0.5F
 
 #define ITHARISEN_GRAVITY 1.0F
-#define ITHARISEN_T_VEL 80.0F
+#define ITHARISEN_TVEL 80.0F
 
 #define ITLGUN_AMMO_MAX 16
 #define ITLGUN_GRAVITY 1.5F
-#define ITLGUN_T_VEL 130.0F
+#define ITLGUN_TVEL 130.0F
 #define ITLGUN_AMMO_VEL_X 300.0F
 #define ITLGUN_AMMO_STEP_SCALE_X 10.0F
 #define ITLGUN_AMMO_CLAMP_SCALE_X 53.333332F
@@ -53,7 +55,7 @@
 #define ITFFLOWER_AMMO_LIFETIME 30
 #define ITFFLOWER_AMMO_VEL 30.0F
 #define ITFFLOWER_GRAVITY 1.2F
-#define ITFFLOWER_T_VEL 100.0F
+#define ITFFLOWER_TVEL 100.0F
 
 #define ITHAMMER_TIME 720
 #define ITHAMMER_BGM_ID 0x2E
@@ -62,7 +64,7 @@
 #define ITHAMMER_WEAR_COLANIM_LENGTH 0
 #define ITHAMMER_WARN_BEGIN_FRAME (ITHAMMER_TIME - 600)
 #define ITHAMMER_GRAVITY 1.5F
-#define ITHAMMER_T_VEL 120.0F
+#define ITHAMMER_TVEL 120.0F
 
 #define ITMSBOMB_EXPLODE_LIFETIME 16
 #define ITMSBOMB_DETECT_FIGHTER_DELAY 100
@@ -70,7 +72,7 @@
 	SQUARE(400.0F) // Radius is actually 400 units, but it is not sqrt'd in the
 				   // detection function, so it ends up checking 160000.0F
 #define ITMSBOMB_GRAVITY 1.5F
-#define ITMSBOMB_T_VEL 80.0F
+#define ITMSBOMB_TVEL 80.0F
 #define ITMSBOMB_COLL_SIZE 30.0F	// Size of Motion Sensor Bomb collision box
 #define ITMSBOMB_EXPLODE_SCALE 1.2F // Size of explosion graphics
 
@@ -85,14 +87,16 @@
 		  // flashing? Also a float for some reason
 #define ITBOMBHEI_WALK_VEL_X 24.0F
 #define ITBOMBHEI_GRAVITY 1.2F
-#define ITBOMBHEI_T_VEL 100.0F
+#define ITBOMBHEI_TVEL 100.0F
+#define ITBOMBHEI_MAP_REBOUND_COMMON 0.4F
+#define ITBOMBHEI_MAP_REBOUND_GROUND 0.3F
 #define ITBOMBHEI_EXPLODE_SCALE 1.4F
 
 #define ITSTARROD_AMMO_MAX 20
 #define ITSTARROD_GRAVITY 1.2F
-#define ITSTARROD_T_VEL 100.0F
+#define ITSTARROD_TVEL 100.0F
 #define ITSTARROD_AMMO_SMASH_VEL_X 120.0F
-#define ITSTARROD_AMMO_TILT_VEL_X 80.0F
+#define ITSTARROD_AMMO_TILTVEL_X 80.0F
 #define ITSTARROD_AMMO_SMASH_LIFETIME 30.0F
 #define ITSTARROD_AMMO_TILT_LIFETIME 30.0F
 
@@ -113,7 +117,7 @@
 	3.0F // Multiplies damage taken and adds it to horizontal velocity; run whe
 		 // Shell is hit out of its "slide" state
 #define ITGSHELL_GRAVITY 1.2F
-#define ITGSHELL_T_VEL 100.0F
+#define ITGSHELL_TVEL 100.0F
 
 #define ITCONTAINER_GFX_COUNT                                                                                          \
 	7								// Number of pieces Barrel and Crate containers burst into when smashed
@@ -123,7 +127,9 @@
 #define ITBOX_HEALTH_MAX 15		 // Maximum damage box can resist before breaking
 #define ITBOX_EXPLODE_SCALE 1.4F // Size of explosion graphics
 #define ITBOX_GRAVITY 4.0F
-#define ITBOX_T_VEL 120.0F
+#define ITBOX_TVEL 120.0F
+#define ITBOX_MAP_REBOUND_COMMON 0.2F
+#define ITBOX_MAP_REBOUND_GROUND 0.5F
 
 #define ITTARU_LIFETIME 360
 #define ITTARU_EXPLODE_LIFETIME 8
@@ -134,7 +140,7 @@
 #define ITTARU_ROLL_ROTATE_MUL 0.0045F // Multiplies rotation of barrel
 #define ITTARU_EXPLODE_SCALE 1.4F	   // Size of explosion graphics
 #define ITTARU_GRAVITY 4.0F
-#define ITTARU_T_VEL 90.0F
+#define ITTARU_TVEL 90.0F
 
 #define ITRSHELL_INTERACT_MAX 24
 #define ITRSHELL_LIFETIME 480
@@ -145,7 +151,7 @@
 #define ITRSHELL_CLAMP_AIR_X                                                                                           \
 	90.0F // Leftover from Green Shell? This is checked only when the ground
 		  // beneath the Red Shell collapses
-#define ITRSHELL_HIT_INIT_VEL_X                                                                                        \
+#define ITRSHELL_HIT_INITVEL_X                                                                                        \
 	8.0F // Initialize hitbox if it is currently inactive and velocity is less
 		 // than this value
 #define ITRSHELL_MUL_VEL_X 1.2F
@@ -159,7 +165,7 @@
 	10.0F // Multiplies damage taken and turns it into horizontal velocity; run
 		  // when Shell is hit out of its "wait" state
 #define ITRSHELL_GRAVITY 1.2F
-#define ITRSHELL_T_VEL 100.0F
+#define ITRSHELL_TVEL 100.0F
 
 #define ITBUMPER_CASTLE_KNOCKBACK 300 // Weight-Dependent Set Knockback of Bumper on Peach's Castle
 #define ITBUMPER_CASTLE_ANGLE 361	  // Knockback angle of Bumper on Peach's Castle
@@ -167,7 +173,7 @@
 #define ITBUMPER_DESPAWN_TIMER                                                                                         \
 	60 // Bumper's lifetime is reset to this value; there is no hitbox during
 	   // this state, and it vanishes for good once it runs out
-#define ITBUMPER_RESET_VEL_TIMER                                                                                       \
+#define ITBUMPER_RESETVEL_TIMER                                                                                       \
 	4 // Bumper's X-velocity is reset to 0.0 when it_multi is less than this
 	  // value
 #define ITBUMPER_DAMAGE_ALL_WAIT 16
@@ -179,7 +185,7 @@
 #define ITBUMPER_REBOUND_AIR_Y 200.0F	 // Applied when bumper hits a target while airborne
 #define ITBUMPER_GRAVITY_NORMAL 1.4F
 #define ITBUMPER_GRAVITY_HIT 4.0F
-#define ITBUMPER_T_VEL 80.0F
+#define ITBUMPER_TVEL 80.0F
 
 #define ITGLUCKY_EGG_SPAWN_COUNT                                                                                      \
 	1									 // Wait this many frames before spawning egg (read only when egg spawn
@@ -196,11 +202,11 @@
 				// hut? Not actually applied?
 #define ITGLUCKY_GRAVITY 1.2F
 #define ITGLUCKY_NDAMAGE_KNOCKBACK_MIN 100.0F
-#define ITGLUCKY_T_VEL 100.0F
+#define ITGLUCKY_TVEL 100.0F
 
 #define ITMBALL_SPAWN_WAIT 30 // Wait this many frames before releasing Pokémon once thrown and landed
 #define ITMBALL_GRAVITY 1.5F
-#define ITMBALL_T_VEL 120.0F
+#define ITMBALL_TVEL 120.0F
 
 #define ITMONSTER_RISE_STOP_WAIT                                                                                       \
 	22 // Universal attribute for Pokémon to stop slowly levitating upward and
@@ -225,7 +231,7 @@
 		   // inside the pipe
 #define ITPAKKUN_NDAMAGE_KNOCKBACK_MIN 100.0F
 #define ITPAKKUN_GRAVITY 1.5F
-#define ITPAKKUN_T_VEL 100.0F
+#define ITPAKKUN_TVEL 100.0F
 
 #define ITIWARK_FLY_WAIT 30 // Unconfirmed?
 #define ITIWARK_MODEL_ROTATE_WAIT                                                                                      \
@@ -245,7 +251,7 @@
 
 #define WPIWARK_ROCK_RANDOM_VEL_MAX 3		 // Maximum number of random initial Y-velocities possible
 #define WPIWARK_ROCK_GRAVITY 2.0F			 // Gravity of rock projectile
-#define WPIWARK_ROCK_T_VEL 200.0F			 // Terminal velocity of rock projectile
+#define WPIWARK_ROCK_TVEL 200.0F			 // Terminal velocity of rock projectile
 #define WPIWARK_ROCK_ROTATE_STEP (-0.5F)	 // Z-rotation step of rock projectile
 #define WPIWARK_ROCK_VEL_Y_START_A (-100.0F) // One of three random initial Y-velocities possible
 #define WPIWARK_ROCK_VEL_Y_START_B (-50.0F)	 // One of three random initial Y-velocities possible
@@ -278,12 +284,12 @@
 #define ITTOSAKINTO_FLAP_VEL_X 10.0F // Semi-constant horizontal velocity that may randomly be inverted
 #define ITTOSAKINTO_FLAP_VEL_Y 60.0F // Vertical velocity gained from touching the ground
 #define ITTOSAKINTO_GRAVITY 6.0F
-#define ITTOSAKINTO_T_VEL 90.0F
+#define ITTOSAKINTO_TVEL 90.0F
 
 #define ITMEW_LIFETIME 480
 #define ITMEW_EFFECT_SPAWN_INT 3
-#define ITMEW_START_VEL_X 8.0F	 // Mew's initial X-velocity
-#define ITMEW_START_VEL_Y -20.0F // Mew's initial Y-velocity
+#define ITMEW_STARTVEL_X 8.0F	 // Mew's initial X-velocity
+#define ITMEW_STARTVEL_Y -20.0F // Mew's initial Y-velocity
 #define ITMEW_FLY_ADD_VEL_Y 0.8F // Added to Mew's Y-velocity every frame
 
 #define ITNYARS_LIFETIME 240
@@ -306,7 +312,7 @@
 #define ITLIZARDON_OTHER_FLAME_OFF_X 100.0F	   // X-offset of other flame spawn position (Clefairy)
 #define ITLIZARDON_DUST_GFX_OFF_X (-400.0F)	   // X-offset of dust GFX when turning around
 #define ITLIZARDON_GRAVITY 1.0F
-#define ITLIZARDON_T_VEL 40.0F
+#define ITLIZARDON_TVEL 40.0F
 
 #define ITSPEAR_SPAWN_COUNT 16			  // Swarm will have this many member Beedrill
 #define ITSPEAR_SPAWN_WAIT_CONST 12		  // Minimum number of frames between Beedrill swarm member spawns
@@ -325,7 +331,7 @@
 	51.0F // Fly off into the distance and call Beedrill swarm on this frame of
 		  // the leader's wait animation
 #define ITSPEAR_GRAVITY 1.0F
-#define ITSPEAR_T_VEL 90.0F
+#define ITSPEAR_TVEL 90.0F
 
 #define ITKAMEX_LIFETIME 360
 #define ITKAMEX_HYDRO_LIFETIME 20
@@ -337,9 +343,9 @@
 #define ITKAMEX_DUST_SPAWN_OFF_X (-150.0F)	   // X-offset of dust GFX
 #define ITKAMEX_COLL_SIZE 341.0F
 #define ITKAMEX_PUSH_VEL_X 2.3F
-#define ITKAMEX_CONST_VEL_X 38.0F // Constant velocity after Blastoise lands
+#define ITKAMEX_CONSTVEL_X 38.0F // Constant velocity after Blastoise lands
 #define ITKAMEX_GRAVITY 1.0F
-#define ITKAMEX_T_VEL 40.0F
+#define ITKAMEX_TVEL 40.0F
 
 #define ITMLUCKY_LIFETIME 90		   // Used only after Chansey has spawned all of its eggs
 #define ITMLUCKY_EGG_SPAWN_WAIT_ADD 4 // Added when Chansey gets hit
@@ -349,18 +355,18 @@
 #define ITMLUCKY_EGG_SPAWN_ADD_VEL_X 7.0F	// Added to multiplied random X-velocity
 #define ITMLUCKY_EGG_SPAWN_ADD_VEL_Y 40.0F // Added to multiplide random Y-velocity
 #define ITMLUCKY_GRAVITY 1.0F
-#define ITMLUCKY_T_VEL 40.0F
+#define ITMLUCKY_TVEL 40.0F
 
 #define ITEGG_EXPLODE_GFX_WAIT 8	 // Wait this many frames before spawning eggshell break GFX on explosion
 #define ITEGG_EXPLODE_GFX_SCALE 1.4F // Scale of explosion GFX
 #define ITEGG_GRAVITY 1.2F
-#define ITEGG_T_VEL 100.0F
+#define ITEGG_TVEL 100.0F
 
 #define ITSTARMIE_LIFETIME 240
 #define ITSTARMIE_SWIFT_LIFETIME 30
 #define ITSTARMIE_SWIFT_SPAWN_WAIT_CONST 12 // Constant wait frames to spawn Hydro Pump
 #define ITSTARMIE_SWIFT_SPAWN_WAIT_RANDOM 1 // Maximum random wait frames to spawn Swift
-#define ITSTARMIE_SWIFT_VEL_X 150.0F
+#define ITSTARMIE_SWIFTVEL_X 150.0F
 #define ITSTARMIE_STARMIE_SWIFT_SPAWN_OFF_X 200.0F // X-offset of Starmie Swift spawn position
 #define ITSTARMIE_STARMIE_SWIFT_SPAWN_OFF_Y 100.0F // Y-offset of Starmie Swift spawn position
 #define ITSTARMIE_OTHER_SWIFT_SPAWN_OFF_X 100.0F   // X-offset of other Swift spawn position (Clefairy)
@@ -381,7 +387,7 @@
 #define ITSAWAMURA_KICK_SIZE 300.0F // Size of kick hitbox
 #define ITSAWAMURA_KICK_VEL_X 400.0F
 #define ITSAWAMURA_GRAVITY 2.4F
-#define ITSAWAMURA_T_VEL 100.0F
+#define ITSAWAMURA_TVEL 100.0F
 
 #define ITDOGAS_DESPAWN_WAIT 90 // Wait this many frames after running out of gas before despawning
 #define ITDOGAS_SMOG_SPAWN_WAIT 8
@@ -408,7 +414,7 @@
 #define ITHITOKAGE_HIT_ROTATE_Z F_CLC_DTOR32(6.0F) // 0.10471976F
 #define ITHITOKAGE_NDAMAGE_KNOCKBACK_MIN 100.0F	   // Minimum knockback required to send Charmander into damage state
 #define ITHITOKAGE_GRAVITY 1.2F
-#define ITHITOKAGE_T_VEL 100.0F
+#define ITHITOKAGE_TVEL 100.0F
 
 #define ITFUSHIGIBANA_RETURN_WAIT 128 // Wait this many frames before deactivating hitbox?
 #define ITFUSHIGIBANA_RAZOR_LIFETIME 24
@@ -429,12 +435,12 @@
 #define ITRBOMB_MIN_VEL_XY 0.1F			// Decrement lifetime if Barrel's XY velocity is less than this value
 #define ITRBOMB_ROLL_ROTATE_MUL 0.0045F // Multiplies rotation of barrel
 #define ITRBOMB_GRAVITY 4.0F
-#define ITRBOMB_T_VEL 90.0F
+#define ITRBOMB_TVEL 90.0F
 
 #define ITPKFIRE_LIFETIME 100
 #define ITPKFIRE_HURT_DAMAGE_MUL 3 // Multiplies damage taken, result gets subtracted from lifetime
 #define ITPKFIRE_GRAVITY 0.45F
-#define ITPKFIRE_T_VEL 55.0F
+#define ITPKFIRE_TVEL 55.0F
 
 #define ITLINKBOMB_HEALTH 7
 #define ITLINKBOMB_LIFETIME 300
@@ -463,7 +469,7 @@
 #define ITLINKBOMB_HIT_RECOIL_VEL_Y 20.0F // Y-velocity upon hitting a target without exploding
 #define ITLINKBOMB_EXPLODE_GFX_SCALE 1.3F
 #define ITLINKBOMB_GRAVITY 1.2F
-#define ITLINKBOMB_T_VEL 100.0F
+#define ITLINKBOMB_TVEL 100.0F
 
 typedef struct itCommonItemVarsBombHei
 {

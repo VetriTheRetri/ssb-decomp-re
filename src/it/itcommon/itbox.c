@@ -32,20 +32,20 @@ Vec2f dITBoxItemSpawnVelocities[/* */] =
 // 0x8018A350
 itCreateDesc dITBoxItemDesc = 
 {
-    nITKindBox,                            // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindBox,                             // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITBoxItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itBoxAFallProcUpdate,                   // Proc Update
-    itBoxAFallProcMap,                      // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itBoxFallProcUpdate,                    // Proc Update
+    itBoxFallProcMap,                       // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -60,19 +60,19 @@ itStatusDesc dITBoxStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itBoxGWaitProcMap,                  // Proc Map
+        itBoxWaitProcMap,                   // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itBoxSDefaultProcDamage             // Proc Damage
+        itBoxCommonProcDamage               // Proc Damage
     },
 
     // Status 1 (Air Wait Fall)
     {
-        itBoxAFallProcUpdate,               // Proc Update
-        itBoxAFallProcMap,                  // Proc Map
+        itBoxFallProcUpdate,                // Proc Update
+        itBoxFallProcMap,                   // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -95,31 +95,31 @@ itStatusDesc dITBoxStatusDescs[/* */] =
 
     // Status 3 (Fighter Throw)
     {
-        itBoxAFallProcUpdate,               // Proc Update
-        itBoxFThrowProcMap,                 // Proc Map
-        itBoxSDefaultProcHit,               // Proc Hit
-        itBoxSDefaultProcHit,               // Proc Shield
+        itBoxFallProcUpdate,                // Proc Update
+        itBoxThrownProcMap,                 // Proc Map
+        itBoxCommonProcHit,                 // Proc Hit
+        itBoxCommonProcHit,                 // Proc Shield
         NULL,                               // Proc Hop
-        itBoxSDefaultProcHit,               // Proc Set-Off
-        itBoxSDefaultProcHit,               // Proc Reflector
-        itBoxSDefaultProcDamage             // Proc Damage
+        itBoxCommonProcHit,                 // Proc Set-Off
+        itBoxCommonProcHit,                 // Proc Reflector
+        itBoxCommonProcDamage               // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itBoxAFallProcUpdate,               // Proc Update
-        itBoxFDropProcMap,                  // Proc Map
-        itBoxSDefaultProcHit,               // Proc Hit
-        itBoxSDefaultProcHit,               // Proc Shield
+        itBoxFallProcUpdate,                // Proc Update
+        itBoxDroppedProcMap,                // Proc Map
+        itBoxCommonProcHit,                 // Proc Hit
+        itBoxCommonProcHit,                 // Proc Shield
         NULL,                               // Proc Hop
-        itBoxSDefaultProcHit,               // Proc Set-Off
-        itBoxSDefaultProcHit,               // Proc Reflector
-        itBoxSDefaultProcDamage             // Proc Damage
+        itBoxCommonProcHit,                 // Proc Set-Off
+        itBoxCommonProcHit,                 // Proc Reflector
+        itBoxCommonProcDamage               // Proc Damage
     },
 
     // Status 5 (Neutral Explosion)
     {
-        itBoxNExplodeProcUpdate,            // Proc Update
+        itBoxExplodeNProcUpdate,            // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -138,13 +138,13 @@ itStatusDesc dITBoxStatusDescs[/* */] =
 
 enum itBoxStatus
 {
-    itStatus_Box_GWait,
-    itStatus_Box_AFall,
-    itStatus_Box_FHold,
-    itStatus_Box_FThrow,
-    itStatus_Box_FDrop,
-    itStatus_Box_NExplode,
-    itStatus_Box_EnumMax
+    nITBoxStatusWait,
+    nITBoxStatusFall,
+    nITBoxStatusHold,
+    nITBoxStatusThrown,
+    nITBoxStatusDropped,
+    nITBoxStatusExplodeN,
+    nITBoxStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -227,7 +227,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
 }
 
 // 0x80179424
-sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj)
+sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
 {
     s32 random, spawn_item_num, index;
     s32 i, j;
@@ -313,105 +313,105 @@ sb32 itBoxSDefaultCheckSpawnItems(GObj *item_gobj)
 }
 
 // 0x8017963C
-sb32 itBoxAFallProcUpdate(GObj *item_gobj)
+sb32 itBoxFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITBOX_GRAVITY, ITBOX_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITBOX_GRAVITY, ITBOX_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
     return FALSE;
 }
 
 // 0x80179674
-sb32 itBoxGWaitProcMap(GObj *item_gobj)
+sb32 itBoxWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itBoxAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itBoxFallSetStatus);
 
     return FALSE;
 }
 
 // 0x8017969C
-sb32 itBoxSDefaultProcHit(GObj *item_gobj)
+sb32 itBoxCommonProcHit(GObj *item_gobj)
 {
-    if (itBoxSDefaultCheckSpawnItems(item_gobj) != FALSE)
+    if (itBoxCommonCheckSpawnItems(item_gobj) != FALSE)
     {
         return TRUE;
     }
-    else itBoxNExplodeMakeEffectGotoSetStatus(item_gobj);
+    else itBoxExplodeNMakeEffectGotoSetStatus(item_gobj);
 
     return FALSE;
 }
 
 // 0x801796D8
-sb32 itBoxSDefaultProcDamage(GObj *item_gobj)
+sb32 itBoxCommonProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     if (ip->percent_damage >= ITBOX_HEALTH_MAX)
     {
-        return itBoxSDefaultProcHit(item_gobj);
+        return itBoxCommonProcHit(item_gobj);
     }
     else return FALSE;
 }
 
 // 0x80179718
-sb32 itBoxAFallProcMap(GObj *item_gobj)
+sb32 itBoxFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itBoxGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, ITBOX_MAP_REBOUND_COMMON, ITBOX_MAP_REBOUND_GROUND, itBoxWaitSetStatus);
 }
 
 // 0x80179748
-void itBoxGWaitSetStatus(GObj *item_gobj)
+void itBoxWaitSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CST_DTOR32(90.0F); // HALF_PI32
 
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, itStatus_Box_GWait);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusWait);
 }
 
 // 0x801797A4
-void itBoxAFallSetStatus(GObj *item_gobj)
+void itBoxFallSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, itStatus_Box_AFall);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusFall);
 }
 
 // 0x801797E8
-void itBoxFHoldSetStatus(GObj *item_gobj)
+void itBoxHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->child->rotate.vec.f.z = 0.0F;
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, itStatus_Box_FHold);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusHold);
 }
 
 // 0x8017982C
-sb32 itBoxFThrowProcMap(GObj *item_gobj)
+sb32 itBoxThrownProcMap(GObj *item_gobj)
 {
     if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
     {
-        if (itBoxSDefaultCheckSpawnItems(item_gobj) != FALSE)
+        if (itBoxCommonCheckSpawnItems(item_gobj) != FALSE)
         {
             return TRUE;
         }
-        else itBoxNExplodeMakeEffectGotoSetStatus(item_gobj);
+        else itBoxExplodeNMakeEffectGotoSetStatus(item_gobj);
     }
     return FALSE;
 }
 
 // 0x8017987C
-void itBoxFThrowSetStatus(GObj *item_gobj)
+void itBoxThrownSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
-    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, itStatus_Box_FThrow);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusThrown);
 }
 
 // 0x801798B8
@@ -423,21 +423,21 @@ sb32 func_ovl3_801798B8(GObj *item_gobj) // Unused
 }
 
 // 0x801798DC
-sb32 itBoxFDropProcMap(GObj *item_gobj)
+sb32 itBoxDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itBoxGWaitSetStatus);
+    return itMapCheckMapCollideThrownLanding(item_gobj, ITBOX_MAP_REBOUND_COMMON, ITBOX_MAP_REBOUND_GROUND, itBoxWaitSetStatus);
 }
 
 // 0x8017990C
-void itBoxFDropSetStatus(GObj *item_gobj)
+void itBoxDroppedSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
-    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, itStatus_Box_FDrop);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusDropped);
 }
 
 // 0x80179948
-sb32 itBoxNExplodeProcUpdate(GObj *item_gobj)
+sb32 itBoxExplodeNProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -472,7 +472,7 @@ GObj* itBoxMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 }
 
 // 0x80179A34
-void itBoxNExplodeInitItemVars(GObj *item_gobj)
+void itBoxExplodeNInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -498,14 +498,14 @@ void itBoxNExplodeInitItemVars(GObj *item_gobj)
 }
 
 // 0x80179AD4
-void itBoxNExplodeSetStatus(GObj *item_gobj)
+void itBoxExplodeNSetStatus(GObj *item_gobj)
 {
-    itBoxNExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, itStatus_Box_NExplode);
+    itBoxExplodeNInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusExplodeN);
 }
 
 // 0x80179B08
-void itBoxNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
+void itBoxExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
 {
     efParticle *efpart;
     itStruct *ip = itGetStruct(item_gobj);
@@ -521,11 +521,13 @@ void itBoxNExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
     if (efpart != NULL)
     {
-        efpart->effect_info->scale.x = efpart->effect_info->scale.y = efpart->effect_info->scale.z = ITBOX_EXPLODE_SCALE;
+        efpart->effect_info->scale.x = 
+        efpart->effect_info->scale.y = 
+        efpart->effect_info->scale.z = ITBOX_EXPLODE_SCALE;
     }
     efManagerQuakeMakeEffect(1);
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
-    itBoxNExplodeSetStatus(item_gobj);
+    itBoxExplodeNSetStatus(item_gobj);
 }

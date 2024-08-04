@@ -3902,13 +3902,13 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
     f32 this_pos_y;
     f32 this_vel_x;
     f32 this_vel_y;
-    f32 this_fall_speed_max;
+    f32 this_tvel_default;
     f32 this_gravity;
     f32 target_pos_x;
     f32 target_pos_y;
     f32 target_vel_x;
     f32 target_vel_y;
-    f32 target_fall_speed_max;
+    f32 target_tvel_default;
     f32 target_gravity;
     void *user_data; // Originally "reflect_fp" but need to rename it appropriately for the silly hack in the item kind check
     f32 hurtbox_detect_width;
@@ -3979,13 +3979,13 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
     target_vel_x = target_fp->phys_info.vel_air.x;
     target_vel_y = target_fp->phys_info.vel_air.y;
 
-    target_fall_speed_max = -target_fp->attributes->fall_speed_max;
+    target_tvel_default = -target_fp->attributes->tvel_default;
     target_gravity = target_fp->attributes->gravity;
 
     this_vel_x = this_fp->phys_info.vel_air.x;
     this_vel_y = this_fp->phys_info.vel_air.y;
 
-    this_fall_speed_max = -this_fp->attributes->fall_speed_max;
+    this_tvel_default = -this_fp->attributes->tvel_default;
     this_gravity = this_fp->attributes->gravity;
 
     ft_comattack = dFTComputerAttackList[this_fp->ft_kind];
@@ -4013,7 +4013,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             predict_pos_x = ((target_pos_x + (target_vel_x * ft_comattack->hit_start_frame)) - (this_pos_x + (this_vel_x * ft_comattack->hit_start_frame))) * this_fp->lr;
             hit_frame = ft_comattack->hit_start_frame;
             is_attempt_cliffcatch = FALSE;
-            this_predict_frame = -(this_fall_speed_max - this_pos_y) / this_gravity;
+            this_predict_frame = -(this_tvel_default - this_pos_y) / this_gravity;
 
             if ((this_fp->status_info.status_id == nFTCommonStatusPass) || (this_predict_frame <= 0))
             {
@@ -4023,11 +4023,11 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             {
                 predict_adjust_y = ((this_vel_y * hit_frame) - ((this_gravity * SQUARE(hit_frame)) * 0.5F)) + this_pos_y;
             }
-            else predict_adjust_y = (((hit_frame * this_vel_y) - ((this_gravity * SQUARE(this_predict_frame)) * 0.5F)) + (this_fall_speed_max * (hit_frame - this_predict_frame))) + this_pos_y;
+            else predict_adjust_y = (((hit_frame * this_vel_y) - ((this_gravity * SQUARE(this_predict_frame)) * 0.5F)) + (this_tvel_default * (hit_frame - this_predict_frame))) + this_pos_y;
 
             if ((target_fp->status_info.status_id != nFTCommonStatusPass) && (target_fp->ga != nMPKineticsGround))
             {
-                target_predict_frame = -(target_fall_speed_max - target_vel_y) / target_gravity;
+                target_predict_frame = -(target_tvel_default - target_vel_y) / target_gravity;
 
                 if (target_predict_frame <= 0)
                 {
@@ -4037,7 +4037,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                 {
                     predict_pos_y = (((ft_comattack->hit_start_frame * target_vel_y) + target_pos_y) - ((target_gravity * SQUARE(ft_comattack->hit_start_frame)) * 0.5F)) - predict_adjust_y;
                 }
-                else predict_pos_y = ((((ft_comattack->hit_start_frame * target_vel_y) + target_pos_y) - ((target_gravity * SQUARE(target_predict_frame)) * 0.5F)) + (target_fall_speed_max * (ft_comattack->hit_start_frame - target_predict_frame))) - predict_adjust_y;
+                else predict_pos_y = ((((ft_comattack->hit_start_frame * target_vel_y) + target_pos_y) - ((target_gravity * SQUARE(target_predict_frame)) * 0.5F)) + (target_tvel_default * (ft_comattack->hit_start_frame - target_predict_frame))) - predict_adjust_y;
             }
             else predict_pos_y = ((ft_comattack->hit_start_frame * target_vel_y) + target_pos_y) - predict_adjust_y;
 
@@ -4567,7 +4567,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
             if (edge_dist_x > 0.0F)
             {
                 edge_predict_x = (edge_dist_x / fp->attributes->aerial_speed_max_x);
-                fall_predict = -(-fp->attributes->fall_speed_max - fp->phys_info.vel_air.y) / fp->attributes->gravity;
+                fall_predict = -(-fp->attributes->tvel_default - fp->phys_info.vel_air.y) / fp->attributes->gravity;
 
                 if (fall_predict <= 0)
                 {
@@ -4583,7 +4583,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
                 else edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y +
                 (
                     ((fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(fall_predict) * 0.5F)) -
-                    (fp->attributes->fall_speed_max * (edge_predict_x - fall_predict))
+                    (fp->attributes->tvel_default * (edge_predict_x - fall_predict))
                 );
                 if ((is_find_edge_target == FALSE) && (edge_predict_y < (edge_pos.y - ft_com->jump_predict)))
                 {
@@ -4661,7 +4661,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
             if (edge_dist_x < 0.0F)
             {
                 edge_predict_x = (edge_dist_x / -fp->attributes->aerial_speed_max_x);
-                fall_predict = -(-fp->attributes->fall_speed_max - fp->phys_info.vel_air.y) / fp->attributes->gravity;
+                fall_predict = -(-fp->attributes->tvel_default - fp->phys_info.vel_air.y) / fp->attributes->gravity;
 
                 if (fall_predict <= 0)
                 {
@@ -4677,7 +4677,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
                 else edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y +
                 (
                     ((fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(fall_predict) * 0.5F)) -
-                    (fp->attributes->fall_speed_max * (edge_predict_x - fall_predict))
+                    (fp->attributes->tvel_default * (edge_predict_x - fall_predict))
                 );
                 if ((is_find_edge_target == FALSE) && (edge_predict_y < (edge_pos.y - ft_com->jump_predict)))
                 {

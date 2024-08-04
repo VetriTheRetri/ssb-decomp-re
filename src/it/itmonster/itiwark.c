@@ -36,8 +36,8 @@ itCreateDesc dITIwarkItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itIwarkSDefaultProcUpdate,              // Proc Update
-    itIwarkSDefaultProcMap,                 // Proc Map
+    itIwarkCommonProcUpdate,              // Proc Update
+    itIwarkCommonProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -272,7 +272,7 @@ void itIwarkNFlySetStatus(GObj *item_gobj)
 }
 
 // 0x8017DB18
-sb32 itIwarkSDefaultProcUpdate(GObj *item_gobj)
+sb32 itIwarkCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -286,7 +286,7 @@ sb32 itIwarkSDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017DB5C
-sb32 itIwarkSDefaultProcMap(GObj *item_gobj)
+sb32 itIwarkCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -350,7 +350,7 @@ sb32 itIwarkWeaponRockProcUpdate(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj;
 
-    wpMainApplyGClampTVel(wp, WPIWARK_ROCK_GRAVITY, WPIWARK_ROCK_T_VEL);
+    wpMainApplyGravityClampTVel(wp, WPIWARK_ROCK_GRAVITY, WPIWARK_ROCK_TVEL);
 
     dobj = DObjGetStruct(weapon_gobj);
 

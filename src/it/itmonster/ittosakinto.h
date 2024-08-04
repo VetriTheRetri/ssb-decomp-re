@@ -12,8 +12,8 @@ extern sb32 itTosakintoNSplashProcUpdate(GObj *item_gobj);
 extern sb32 itTosakintoNSplashProcMap(GObj *item_gobj);
 extern void itTosakintoNSplashInitItemVars(GObj *item_gobj);
 extern void itTosakintoNSplashSetStatus(GObj *item_gobj);
-extern sb32 itTosakintoSDefaultProcUpdate(GObj *item_gobj);
-extern sb32 itTosakintoSDefaultProcMap(GObj *item_gobj);
+extern sb32 itTosakintoCommonProcUpdate(GObj *item_gobj);
+extern sb32 itTosakintoCommonProcMap(GObj *item_gobj);
 extern GObj* itTosakintoMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

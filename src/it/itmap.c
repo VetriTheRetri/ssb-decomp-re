@@ -231,7 +231,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
 }
 
 // 0x80173A48
-void itMapSetGroundCollisionRecoil(Vec3f *vel, Vec3f *ground_angle, f32 ground_rebound)
+void itMapSetGroundCollisionRebound(Vec3f *vel, Vec3f *ground_angle, f32 ground_rebound)
 {
     f32 scale;
     f32 inverse;
@@ -268,7 +268,7 @@ sb32 itMapCheckMapCollideThrownLanding(GObj *item_gobj, f32 wall_ceil_rebound, f
     }
     if (is_collide_ground != FALSE)
     {
-        itMapSetGroundCollisionRecoil(&ip->phys_info.vel_air, &ip->coll_data.ground_angle, ground_rebound);
+        itMapSetGroundCollisionRebound(&ip->phys_info.vel_air, &ip->coll_data.ground_angle, ground_rebound);
         itMainVelSetRotateStepLR(item_gobj);
 
         ip->times_landed++;

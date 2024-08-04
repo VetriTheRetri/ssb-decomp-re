@@ -32,8 +32,8 @@ itCreateDesc dITMLuckyItemDesc =
     },
 
     nGMHitUpdateDisable,     // Hitbox Update State
-    itMLuckySDefaultProcUpdate,             // Proc Update
-    itMLuckySDefaultProcMap,                // Proc Map
+    itMLuckyCommonProcUpdate,             // Proc Update
+    itMLuckyCommonProcMap,                // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -47,8 +47,8 @@ itStatusDesc dITMLuckyStatusDescs[/* */] =
 {
     // Status 0 (Air Fall)
     {
-        itMLuckyAFallProcUpdate,            // Proc Update
-        itMLuckyAFallProcMap,               // Proc Map
+        itMLuckyFallProcUpdate,            // Proc Update
+        itMLuckyFallProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -102,7 +102,7 @@ itStatusDesc dITMLuckyStatusDescs[/* */] =
 
 enum itMLuckyStatus
 {
-    itStatus_MLucky_AFall,
+    itStatus_MLucky_Fall,
     itStatus_MLucky_NAppear,
     itStatus_MLucky_NSpawn,
     itStatus_MLucky_NDisappear,
@@ -134,17 +134,17 @@ void itMLuckyNSpawnInitItemVars(GObj *item_gobj)
 }
 
 // 0x80181048
-sb32 itMLuckyAFallProcUpdate(GObj *item_gobj)
+sb32 itMLuckyFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITMLUCKY_GRAVITY, ITMLUCKY_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITMLUCKY_GRAVITY, ITMLUCKY_TVEL);
 
     return FALSE;
 }
 
 // 0x80181074
-sb32 itMLuckyAFallProcMap(GObj *item_gobj)
+sb32 itMLuckyFallProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -164,14 +164,14 @@ sb32 itMLuckyAFallProcMap(GObj *item_gobj)
 }
 
 // 0x801810E0
-void itMLuckyAFallSetStatus(GObj *item_gobj)
+void itMLuckyFallSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, itStatus_MLucky_AFall);
+    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, itStatus_MLucky_Fall);
 }
 
 // 0x80181124
@@ -179,7 +179,7 @@ sb32 itMLuckyNAppearProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITMLUCKY_GRAVITY, ITMLUCKY_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITMLUCKY_GRAVITY, ITMLUCKY_TVEL);
 
     return FALSE;
 }
@@ -273,7 +273,7 @@ sb32 itMLuckyNSpawnProcUpdate(GObj *lucky_gobj)
 // 0x80181368
 sb32 itMLuckyNSpawnProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itMLuckyAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itMLuckyFallSetStatus);
 
     return FALSE;
 }
@@ -321,7 +321,7 @@ void itMLuckyNDisappearSetStatus(GObj *item_gobj)
 }
 
 // 0x80181430
-sb32 itMLuckySDefaultProcUpdate(GObj *item_gobj)
+sb32 itMLuckyCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -337,7 +337,7 @@ sb32 itMLuckySDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x80181480
-sb32 itMLuckySDefaultProcMap(GObj *item_gobj)
+sb32 itMLuckyCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

@@ -707,8 +707,8 @@ lITRShellMatAnimJoint = 0x00006048;
 
 lITNBumperItemAttributes = 0x0000069C;
 lITNBumperDataStart = 0x00007648;
-lITNBumperGWaitMObjSub = 0x00007A38;
-lITNBumperGWaitDisplayList = 0x00007AF8;
+lITNBumperWaitMObjSub = 0x00007A38;
+lITNBumperWaitDisplayList = 0x00007AF8;
 
 lITPowerBlockItemAttributes = 0x000000D8;
 lITPowerBlockDataStart = 0x000011F8;

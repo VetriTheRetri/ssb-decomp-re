@@ -32,8 +32,8 @@ void ftPikachuSpecialNProcAccessory(GObj *fighter_gobj)
 
         gmCollisionGetFighterPartsWorldPosition(fp->joint[FTPIKACHU_THUNDERJOLT_SPAWN_JOINT], &pos);
 
-        vel.x = __cosf(FTPIKACHU_THUNDERJOLT_SPAWN_ANGLE) * FTPIKACHU_THUNDERJOLT_VEL * fp->lr;
-        vel.y = __sinf(FTPIKACHU_THUNDERJOLT_SPAWN_ANGLE) * FTPIKACHU_THUNDERJOLT_VEL;
+        vel.x = __cosf(FTPIKACHU_THUNDERJOLT_SPAWN_ANGLE) * FTPIKACHU_THUNDERJOLTVEL * fp->lr;
+        vel.y = __sinf(FTPIKACHU_THUNDERJOLT_SPAWN_ANGLE) * FTPIKACHU_THUNDERJOLTVEL;
         vel.z = 0.0F;
 
         wpPikachuThunderJoltAirMakeWeapon(fighter_gobj, &pos, &vel);

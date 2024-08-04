@@ -48,7 +48,7 @@ void ftPikachuSpecialAirHiStartProcPhysics(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
 
-    ftPhysicsApplyGClampTVel(fp, 0.8F, attributes->fall_speed_max);
+    ftPhysicsApplyGravityClampTVel(fp, 0.8F, attributes->tvel_default);
 
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {

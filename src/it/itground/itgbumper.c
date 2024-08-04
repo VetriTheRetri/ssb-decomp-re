@@ -30,9 +30,9 @@ itCreateDesc dITGBumperItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itGBumperSDefaultProcUpdate,            // Proc Update
+    itGBumperCommonProcUpdate,            // Proc Update
     NULL,                                   // Proc Map
-    itGBumperSDefaultProcHit,               // Proc Hit
+    itGBumperCommonProcHit,               // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
     NULL,                                   // Proc Set-Off
@@ -47,7 +47,7 @@ itCreateDesc dITGBumperItemDesc =
 // // // // // // // // // // // //
 
 // 0x8017D590
-sb32 itGBumperSDefaultProcUpdate(GObj *item_gobj)
+sb32 itGBumperCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -70,7 +70,7 @@ sb32 itGBumperSDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017D63C
-sb32 itGBumperSDefaultProcHit(GObj *item_gobj)
+sb32 itGBumperCommonProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);

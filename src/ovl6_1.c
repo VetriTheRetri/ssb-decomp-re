@@ -9,7 +9,7 @@ extern u32 dCommonFileIDs[8];
 extern void* gGMCommonFiles[/* */];
 extern void* gBonusGameFileData[/* */];
 
-sb32 itTargetSDefaultProcDamage(GObj* item_gobj);
+sb32 itTargetCommonProcDamage(GObj* item_gobj);
 
 // 8018F130
 itCreateDesc dItTargetItemDesc = {
@@ -32,7 +32,7 @@ itCreateDesc dItTargetItemDesc = {
 	NULL,								// Proc Hop
 	NULL,								// Proc Set-Off
 	NULL,								// Proc Reflector
-	itTargetSDefaultProcDamage			// Proc Damage
+	itTargetCommonProcDamage			// Proc Damage
 };
 
 // 8018F3B0
@@ -61,7 +61,7 @@ void func_ovl6_8018ED70()
 }
 
 // 8018EE10
-sb32 itTargetSDefaultProcDamage(GObj* item_gobj)
+sb32 itTargetCommonProcDamage(GObj* item_gobj)
 {
 	efManagerShieldBreakMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 	efManagerFireGrindMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);

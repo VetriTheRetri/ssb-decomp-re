@@ -40,8 +40,8 @@ itCreateDesc dITLizardonItemDesc =
     },
 
     nGMHitUpdateNew,         // Hitbox Update State
-    itLizardonSDefaultProcUpdate,           // Proc Update
-    itLizardonSDefaultProcMap,              // Proc Map
+    itLizardonCommonProcUpdate,           // Proc Update
+    itLizardonCommonProcMap,              // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -67,8 +67,8 @@ itStatusDesc dITLizardonStatusDescs[/* */] =
 
     // Status 1 (Air Fall)
     {
-        itLizardonAFallProcUpdate,          // Proc Update
-        itLizardonAFallProcMap,             // Proc Map
+        itLizardonFallProcUpdate,          // Proc Update
+        itLizardonFallProcMap,             // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -124,7 +124,7 @@ wpCreateDesc dITLizardonWeaponFlameWeaponDesc =
 enum itLizardonStatus
 {
     itStatus_Lizardon_UFall,    // Unused
-    itStatus_Lizardon_AFall,
+    itStatus_Lizardon_Fall,
     itStatus_Lizardon_NAttack,
     itStatus_Lizardon_EnumMax
 };
@@ -140,7 +140,7 @@ sb32 itLizardonUFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_TVEL);
 
     return FALSE;
 }
@@ -171,17 +171,17 @@ sb32 itLizardonUFallSetStatus(GObj *item_gobj) // Unused
 }
 
 // 0x8017F53C
-sb32 itLizardonAFallProcUpdate(GObj *item_gobj)
+sb32 itLizardonFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMainApplyGClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_T_VEL);
+    itMainApplyGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_TVEL);
 
     return FALSE;
 }
 
 // 0x8017F568
-sb32 itLizardonAFallProcMap(GObj *item_gobj)
+sb32 itLizardonFallProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -198,9 +198,9 @@ sb32 itLizardonAFallProcMap(GObj *item_gobj)
 }
 
 // 0x8017F5C4
-void itLizardonAFallSetStatus(GObj *item_gobj)
+void itLizardonFallSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, itStatus_Lizardon_AFall);
+    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, itStatus_Lizardon_Fall);
 }
 
 // 0x8017F5EC
@@ -259,7 +259,7 @@ sb32 itLizardonNAttackProcUpdate(GObj *item_gobj)
 // 0x8017F7E8
 sb32 itLizardonNAttackProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itLizardonAFallSetStatus);
+    itMapCheckLRWallProcGround(item_gobj, itLizardonFallSetStatus);
 
     return FALSE;
 }
@@ -300,7 +300,7 @@ void itLizardonNAttackSetStatus(GObj *item_gobj)
 }
 
 // 0x8017F90C
-sb32 itLizardonSDefaultProcUpdate(GObj *item_gobj)
+sb32 itLizardonCommonProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -314,7 +314,7 @@ sb32 itLizardonSDefaultProcUpdate(GObj *item_gobj)
         {
             func_800269C0_275C0(nGMSoundVoiceMBallLizardonSpawn);
         }
-        itLizardonAFallSetStatus(item_gobj);
+        itLizardonFallSetStatus(item_gobj);
     }
     ip->it_multi--;
 
@@ -322,7 +322,7 @@ sb32 itLizardonSDefaultProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017F98C
-sb32 itLizardonSDefaultProcMap(GObj *item_gobj)
+sb32 itLizardonCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

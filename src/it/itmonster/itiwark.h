@@ -5,12 +5,12 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern void itIwarkNAttackUpdateRock(GObj *iwark_gobj);
-extern sb32 itIwarkNAttackProcUpdate(GObj *item_gobj);
-extern void itIwarkNAttackInitItemVars(GObj *item_gobj);
-extern void itIwarkNAttackSetStatus(GObj *item_gobj);
-extern sb32 itIwarkNFlyProcUpdate(GObj *item_gobj);
-extern void itIwarkNFlySetStatus(GObj *item_gobj);
+extern void itIwarkAttackUpdateRock(GObj *iwark_gobj);
+extern sb32 itIwarkAttackProcUpdate(GObj *item_gobj);
+extern void itIwarkAttackInitItemVars(GObj *item_gobj);
+extern void itIwarkAttackSetStatus(GObj *item_gobj);
+extern sb32 itIwarkFlyProcUpdate(GObj *item_gobj);
+extern void itIwarkFlySetStatus(GObj *item_gobj);
 extern sb32 itIwarkCommonProcUpdate(GObj *item_gobj);
 extern sb32 itIwarkCommonProcMap(GObj *item_gobj);
 extern GObj* itIwarkMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);

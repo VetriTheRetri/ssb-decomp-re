@@ -272,7 +272,7 @@ f32 ftParamGetStickAngleRads(ftStruct *fp)
 // 0x800E8044
 void ftParamSetStickLR(ftStruct *fp)
 {
-    fp->lr = (fp->input.pl.stick_range.x >= 0) ? nGMDirectionR : nGMDirectionL;
+    fp->lr = (fp->input.pl.stick_range.x >= 0) ? nGMFacingR : nGMFacingL;
 }
 
 // 0x800E806C
@@ -1566,7 +1566,7 @@ void ftParamUpdateDamage(ftStruct *fp, s32 damage)
 }
 
 // 0x800EA3D4
-void ftParamHealDamage(ftStruct *fp, s32 heal)
+void ftParamSetHealDamage(ftStruct *fp, s32 heal)
 {
     fp->damage_heal += heal;
 

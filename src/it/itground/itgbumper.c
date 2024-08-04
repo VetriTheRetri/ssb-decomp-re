@@ -18,21 +18,21 @@ extern intptr_t lITGBumperItemAttributes;   // 0x00000CF0
 
 itCreateDesc dITGBumperItemDesc =
 {
-    nITKindGBumper,                        // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindGBumper,                         // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITGBumperItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateNew,         // Hitbox Update State
-    itGBumperCommonProcUpdate,            // Proc Update
+    nGMHitUpdateNew,                        // Hitbox Update State
+    itGBumperCommonProcUpdate,              // Proc Update
     NULL,                                   // Proc Map
-    itGBumperCommonProcHit,               // Proc Hit
+    itGBumperCommonProcHit,                 // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
     NULL,                                   // Proc Set-Off
@@ -104,7 +104,7 @@ GObj* itGBumperMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = 0;
 
-        ip->item_hit.interact_mask = GMHITCOLLISION_MASK_FIGHTER;
+        ip->item_hit.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
         ip->item_hit.can_rehit_shield = TRUE;
 
         ip->phys_info.vel_air.x = 0.0F;

@@ -21,22 +21,22 @@
 
 #define FTCOMPUTER_LEVEL_MAX 9
 
-#define GMHITCOLLISION_MASK_FIGHTER (1 << 0) // Can interact with fighters
-#define GMHITCOLLISION_MASK_WEAPON (1 << 1)	 // Can interact with weapons
-#define GMHITCOLLISION_MASK_ITEM (1 << 2)	 // Can interact with items
+#define GMHITCOLLISION_FLAG_FIGHTER (1 << 0) // Can interact with fighters
+#define GMHITCOLLISION_FLAG_WEAPON (1 << 1)	 // Can interact with weapons
+#define GMHITCOLLISION_FLAG_ITEM (1 << 2)	 // Can interact with items
 
-#define GMHITCOLLISION_MASK_ALL (GMHITCOLLISION_MASK_FIGHTER | GMHITCOLLISION_MASK_WEAPON | GMHITCOLLISION_MASK_ITEM)
+#define GMHITCOLLISION_FLAG_ALL (GMHITCOLLISION_FLAG_FIGHTER | GMHITCOLLISION_FLAG_WEAPON | GMHITCOLLISION_FLAG_ITEM)
 #define GMHITRECORD_NUM_MAX 4
 
 typedef enum gmDirectionSign
 {
-	nGMDirectionL = -1,
-	nGMDirectionD = -1,
-	nGMDirectionC = 0,
-	nGMDirectionR = 1,
-	nGMDirectionU = 1,
-	nGMDirectionWallU = 2,    	// Exclusive to Pikachu's Thunder Jolt for riding walls up?
-	nGMDirectionWallD = 3     	// Exclusive to Pikachu's Thunder Jolt for riding walls down?
+	nGMFacingL = -1,
+	nGMFacingD = -1,
+	nGMFacingC = 0,
+	nGMFacingR = 1,
+	nGMFacingU = 1,
+	nGMFacingWallU = 2,    	// Exclusive to Pikachu's Thunder Jolt for riding walls up?
+	nGMFacingWallD = 3     	// Exclusive to Pikachu's Thunder Jolt for riding walls down?
 
 } gmDirectionSign;
 

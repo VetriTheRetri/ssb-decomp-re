@@ -5,12 +5,12 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern sb32 itDogasNDisappearProcUpdate(GObj *item_gobj);
-extern void itDogasNDisappearSetStatus(GObj *item_gobj);
-extern void itDogasNAttackUpdateSmog(GObj *item_gobj);
-extern sb32 itDogasNAttackProcUpdate(GObj *item_gobj);
-extern void itDogasNAttackInitItemVars(GObj *item_gobj);
-extern void itDogasNAttackSetStatus(GObj *item_gobj);
+extern sb32 itDogasDisappearProcUpdate(GObj *item_gobj);
+extern void itDogasDisappearSetStatus(GObj *item_gobj);
+extern void itDogasAttackUpdateSmog(GObj *item_gobj);
+extern sb32 itDogasAttackProcUpdate(GObj *item_gobj);
+extern void itDogasAttackInitItemVars(GObj *item_gobj);
+extern void itDogasAttackSetStatus(GObj *item_gobj);
 extern sb32 itDogasCommonProcUpdate(GObj *item_gobj);
 extern sb32 itDogasCommonProcMap(GObj *item_gobj);
 extern GObj* itDogasMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);

@@ -95,7 +95,7 @@ typedef enum mpMapObjKind
     nMPMapObjKind1PGameEnemy4Spawn,                                                            // 0x28
     nMPMapObjKind1PGameEnemySpawnEnd = nMPMapObjKind1PGameEnemy4Spawn,                        // 0x28
 
-    nMPMapObjKind1PGameBonus3RBomb,                                                            // 0x29
+    nMPMapObjKind1PGameBonus3TaruBomb,                                                            // 0x29
     nMPMapObjKind1PGameUnknown,                                                                // 0x2A
     nMPMapObjKind1PGameEnemyTeamSpawn,                                                         // 0x2B
     nMPMapObjKind1PGameChallengerPlayerSpawn,                                                  // 0x2C

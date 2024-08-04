@@ -353,7 +353,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
                                                                         cam_fp->status_vars.common.entry.lr_entry   :
                                                                                                        cam_fp->lr;
 
-            if (lr == nGMDirectionL)
+            if (lr == nGMFacingL)
             {
                 pos_left = ft_cam[cam_num].target_pos.x - (1000.0F * adjust);
                 pos_right = ft_cam[cam_num].target_pos.x + (700.0F * adjust);

@@ -20,20 +20,20 @@ lITLGunWeaponAmmoWeaponAttributes;          // 0x000002B0
 
 itCreateDesc dITLGunItemDesc =
 {
-    nITKindLGun,                           // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindLGun,                            // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITLGunItemAttributes,                 // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itLGunFallProcUpdate,                  // Proc Update
-    itLGunFallProcMap,                     // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itLGunFallProcUpdate,                   // Proc Update
+    itLGunFallProcMap,                      // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -47,7 +47,7 @@ itStatusDesc dITLGunStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itLGunWaitProcMap,                 // Proc Map
+        itLGunWaitProcMap,                  // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -58,8 +58,8 @@ itStatusDesc dITLGunStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itLGunFallProcUpdate,              // Proc Update
-        itLGunFallProcMap,                 // Proc Map
+        itLGunFallProcUpdate,               // Proc Update
+        itLGunFallProcMap,                  // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -82,24 +82,24 @@ itStatusDesc dITLGunStatusDescs[/* */] =
 
     // Status 3 (Fighter Throw)
     {
-        itLGunFallProcUpdate,              // Proc Update
+        itLGunFallProcUpdate,               // Proc Update
         itLGunThrownProcMap,                // Proc Map
-        itLGunCommonProcHit,              // Proc Hit
-        itLGunCommonProcHit,              // Proc Shield
+        itLGunCommonProcHit,                // Proc Hit
+        itLGunCommonProcHit,                // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itLGunCommonProcHit,              // Proc Set-Off
+        itLGunCommonProcHit,                // Proc Set-Off
         itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itLGunFallProcUpdate,              // Proc Update
-        itLGunDroppedProcMap,                 // Proc Map
-        itLGunCommonProcHit,              // Proc Hit
-        itLGunCommonProcHit,              // Proc Shield
+        itLGunFallProcUpdate,               // Proc Update
+        itLGunDroppedProcMap,               // Proc Map
+        itLGunCommonProcHit,                // Proc Hit
+        itLGunCommonProcHit,                // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itLGunCommonProcHit,              // Proc Set-Off
+        itLGunCommonProcHit,                // Proc Set-Off
         itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     }
@@ -108,14 +108,14 @@ itStatusDesc dITLGunStatusDescs[/* */] =
 wpCreateDesc itLGunWeaponAmmoWeaponDesc =
 {
     0x00,                                   // Render flags?
-    nWPKindLGunAmmo,                       // Weapon Kind
-    &gITManagerFileData,                           // Pointer to character's loaded files?
+    nWPKindLGunAmmo,                        // Weapon Kind
+    &gITManagerFileData,                    // Pointer to character's loaded files?
     &lITLGunWeaponAmmoWeaponAttributes,     // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -137,12 +137,12 @@ wpCreateDesc itLGunWeaponAmmoWeaponDesc =
 
 enum itLGunStatus
 {
-    itStatus_LGun_Wait,
-    itStatus_LGun_Fall,
-    itStatus_LGun_Hold,
-    itStatus_LGun_Thrown,
-    itStatus_LGun_Dropped,
-    itStatus_LGun_EnumMax
+    nITLGunStatusWait,
+    nITLGunStatusFall,
+    nITLGunStatusHold,
+    nITLGunStatusThrown,
+    nITLGunStatusDropped,
+    nITLGunStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -173,14 +173,14 @@ sb32 itLGunWaitProcMap(GObj *item_gobj)
 // 0x80175550
 sb32 itLGunFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.2F, 0.1F, itLGunWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITLGUN_MAP_REBOUND_COMMON, ITLGUN_MAP_REBOUND_GROUND, itLGunWaitSetStatus);
 }
 
 // 0x80175584
 void itLGunWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, itStatus_LGun_Wait);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusWait);
 }
 
 // 0x801755B8
@@ -191,15 +191,15 @@ void itLGunFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, itStatus_LGun_Fall);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusFall);
 }
 
 // 0x801755FC
 void itLGunHoldSetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
+    DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
-    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, itStatus_LGun_Hold);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusHold);
 }
 
 // 0x80175630
@@ -209,9 +209,9 @@ sb32 itLGunThrownProcMap(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        return itMapCheckDestroyLanding(item_gobj, 0.2F);
+        return itMapCheckDestroyLanding(item_gobj, ITLGUN_MAP_REBOUND_COMMON);
     }
-    else return itMapCheckThrownLanding(item_gobj, 0.2F, 0.1F, itLGunWaitSetStatus);
+    else return itMapCheckDestroyDropped(item_gobj, ITLGUN_MAP_REBOUND_COMMON, ITLGUN_MAP_REBOUND_GROUND, itLGunWaitSetStatus);
 }
 
 // 0x80175684
@@ -231,9 +231,9 @@ void itLGunThrownSetStatus(GObj *item_gobj)
 {
     s32 lr = ftGetStruct(itGetStruct(item_gobj)->owner_gobj)->lr;
 
-    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, itStatus_LGun_Thrown);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusThrown);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == nGMDirectionL) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == nGMFacingL) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
 }
 
 // 0x8017572C
@@ -243,9 +243,9 @@ sb32 itLGunDroppedProcMap(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        return itMapCheckDestroyLanding(item_gobj, 0.2F);
+        return itMapCheckDestroyLanding(item_gobj, ITLGUN_MAP_REBOUND_COMMON);
     }
-    else return itMapCheckThrownLanding(item_gobj, 0.2F, 0.1F, itLGunWaitSetStatus);
+    else return itMapCheckDestroyDropped(item_gobj, ITLGUN_MAP_REBOUND_COMMON, ITLGUN_MAP_REBOUND_GROUND, itLGunWaitSetStatus);
 }
 
 // 0x80175780
@@ -253,9 +253,9 @@ void itLGunDroppedSetStatus(GObj *item_gobj)
 {
     s32 lr = ftGetStruct(itGetStruct(item_gobj)->owner_gobj)->lr;
 
-    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, itStatus_LGun_Dropped);
+    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusDropped);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == nGMDirectionL) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == nGMFacingL) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
 }
 
 // 0x80175800

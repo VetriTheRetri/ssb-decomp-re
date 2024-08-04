@@ -27,20 +27,20 @@ extern intptr_t lITSpearMatAnimJoint;       // 0x0000E12C
 // 0x8018AE00
 itCreateDesc dITSpearItemDesc =
 {
-    nITKindSpear,                          // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindSpear,                           // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITSpearItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,         // Hitbox Update State
-    itSpearCommonProcUpdate,              // Proc Update
-    itSpearCommonProcMap,                 // Proc Map
+    nGMHitUpdateNew,                        // Hitbox Update State
+    itSpearCommonProcUpdate,                // Proc Update
+    itSpearCommonProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -54,7 +54,7 @@ itStatusDesc dITSpearStatusDescs[/* */] =
 {
     // Status 0 (Neutral Appear)
     {
-        itSpearNAppearProcUpdate,           // Proc Update
+        itSpearAppearProcUpdate,            // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -66,7 +66,7 @@ itStatusDesc dITSpearStatusDescs[/* */] =
 
     // Status 1 (Neutral Fly)
     {
-        itSpearNFlyProcUpdate,              // Proc Update
+        itSpearFlyProcUpdate,               // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -81,14 +81,14 @@ itStatusDesc dITSpearStatusDescs[/* */] =
 wpCreateDesc dITSpearWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
-    nWPKindSpearSwarm,                     // Weapon Kind
-    &gITManagerFileData,                           // Pointer to character's loaded files?
+    nWPKindSpearSwarm,                      // Weapon Kind
+    &gITManagerFileData,                    // Pointer to character's loaded files?
     &lITSpearWeaponSwarmWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -106,14 +106,14 @@ wpCreateDesc dITSpearWeaponSwarmWeaponDesc =
 wpCreateDesc dITPippiWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
-    nWPKindSpearSwarm,                     // Weapon Kind
-    &gITManagerFileData,                           // Pointer to character's loaded files?
-    0xCBC,                                  // Offset of weapon attributes in loaded files
+    nWPKindSpearSwarm,                      // Weapon Kind
+    &gITManagerFileData,                    // Pointer to character's loaded files?
+    &lITPippiWeaponSwarmWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -135,9 +135,9 @@ wpCreateDesc dITPippiWeaponSwarmWeaponDesc =
 
 enum itSpearStatus
 {
-    itStatus_Spear_NAppear,
-    itStatus_Spear_NFly,
-    itStatus_Spear_EnumMax
+    nITSpearStatusAppear,
+    nITSpearStatusFly,
+    nITSpearStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -147,7 +147,7 @@ enum itSpearStatus
 // // // // // // // // // // // //
 
 // 0x8017FDC0
-void itSpearNFlyCallSwarmMember(GObj *item_gobj)
+void itSpearFlyCallSwarmMember(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -161,7 +161,7 @@ void itSpearNFlyCallSwarmMember(GObj *item_gobj)
 
         pos.y += (ITSPEAR_SPAWN_OFF_Y_MUL * mtTrigGetRandomFloat()) + ITSPEAR_SPAWN_OFF_Y_ADD;
 
-        itSpearNFlyMakeSwarm(item_gobj, &pos, ip->it_kind);
+        itSpearFlyMakeSwarm(item_gobj, &pos, ip->it_kind);
 
         ip->item_vars.spear.spear_spawn_count--;
         ip->item_vars.spear.spear_spawn_wait = mtTrigGetRandomIntRange(ITSPEAR_SPAWN_WAIT_RANDOM) + ITSPEAR_SPAWN_WAIT_CONST;
@@ -169,7 +169,7 @@ void itSpearNFlyCallSwarmMember(GObj *item_gobj)
 }
 
 // 0x8017FE70
-sb32 itSpearNAppearProcUpdate(GObj *item_gobj)
+sb32 itSpearAppearProcUpdate(GObj *item_gobj)
 {
     DObj *dobj = DObjGetStruct(item_gobj);
 
@@ -177,13 +177,13 @@ sb32 itSpearNAppearProcUpdate(GObj *item_gobj)
     {
         dobj->child->actor.p = NULL;
 
-        itSpearNFlySetStatus(item_gobj);
+        itSpearFlySetStatus(item_gobj);
     }
     return FALSE;
 }
 
 // 0x8017FEB8
-void itSpearNAppearInitItemVars(GObj *item_gobj)
+void itSpearAppearInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -210,14 +210,14 @@ void itSpearNAppearInitItemVars(GObj *item_gobj)
 }
 
 // 0x8017FF74
-void itSpearNAppearSetStatus(GObj *item_gobj)
+void itSpearAppearSetStatus(GObj *item_gobj)
 {
-    itSpearNAppearInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITSpearStatusDescs, itStatus_Spear_NAppear);
+    itSpearAppearInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITSpearStatusDescs, nITSpearStatusAppear);
 }
 
 // 0x8017FFA8
-sb32 itSpearNFlyProcUpdate(GObj *item_gobj)
+sb32 itSpearFlyProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -226,7 +226,7 @@ sb32 itSpearNFlyProcUpdate(GObj *item_gobj)
 
     ip->phys_info.vel_air.x += ITSPEAR_SWARM_CALL_VEL_X * ip->lr;
 
-    if (ip->lr == nGMDirectionR)
+    if (ip->lr == nGMFacingR)
     {
         if (dobj->translate.vec.f.x >= (gMPCollisionGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X))
         {
@@ -235,14 +235,14 @@ sb32 itSpearNFlyProcUpdate(GObj *item_gobj)
 
             if (ip->item_vars.spear.spear_spawn_count != 0)
             {
-                itSpearNFlyCallSwarmMember(item_gobj);
+                itSpearFlyCallSwarmMember(item_gobj);
             }
             else return TRUE;
 
             ip->item_vars.spear.spear_spawn_wait--;
         }
     }
-    if (ip->lr == nGMDirectionL)
+    if (ip->lr == nGMFacingL)
     {
         if (dobj->translate.vec.f.x <= (gMPCollisionGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X))
         {
@@ -251,7 +251,7 @@ sb32 itSpearNFlyProcUpdate(GObj *item_gobj)
 
             if (ip->item_vars.spear.spear_spawn_count != 0)
             {
-                itSpearNFlyCallSwarmMember(item_gobj);
+                itSpearFlyCallSwarmMember(item_gobj);
             }
             else return TRUE;
 
@@ -262,7 +262,7 @@ sb32 itSpearNFlyProcUpdate(GObj *item_gobj)
 }
 
 // 0x8018010C
-void itSpearNFlyInitItemVars(GObj *item_gobj)
+void itSpearFlyInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -279,10 +279,10 @@ void itSpearNFlyInitItemVars(GObj *item_gobj)
 }
 
 // 0x80180160
-void itSpearNFlySetStatus(GObj *item_gobj)
+void itSpearFlySetStatus(GObj *item_gobj)
 {
-    itSpearNFlyInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITSpearStatusDescs, itStatus_Spear_NFly);
+    itSpearFlyInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITSpearStatusDescs, nITSpearStatusFly);
 }
 
 // 0x80180194
@@ -292,7 +292,7 @@ sb32 itSpearCommonProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        itSpearNAppearSetStatus(item_gobj);
+        itSpearAppearSetStatus(item_gobj);
     }
     ip->it_multi--;
 
@@ -334,14 +334,14 @@ GObj* itSpearMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         {
             dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
 
-            ip->lr = nGMDirectionL;
+            ip->lr = nGMFacingL;
 
         }
-        else ip->lr = nGMDirectionR;
+        else ip->lr = nGMFacingR;
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->item_hit.interact_mask = GMHITCOLLISION_MASK_FIGHTER;
+        ip->item_hit.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
@@ -359,11 +359,11 @@ sb32 itSpearWeaponSwarmProcUpdate(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj);
 
-    if ((wp->lr == nGMDirectionR) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X)))
+    if ((wp->lr == nGMFacingR) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }
-    else if ((wp->lr == nGMDirectionL) && (dobj->translate.vec.f.x <= (gMPCollisionGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
+    else if ((wp->lr == nGMFacingL) && (dobj->translate.vec.f.x <= (gMPCollisionGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }
@@ -413,7 +413,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
     {
         omAddOMMtxForDObjFixed(dobj->child->child, 0x48, 0);
 
-        if (wp->lr == nGMDirectionL)
+        if (wp->lr == nGMFacingL)
         {
             dobj->child->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }
@@ -424,7 +424,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
         omAddOMMtxForDObjFixed(dobj->child, 0x48, 0);
 
-        if (wp->lr == nGMDirectionR)
+        if (wp->lr == nGMFacingR)
         {
             dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }
@@ -437,7 +437,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 }
 
 // 0x80180608
-void itSpearNFlyMakeSwarm(GObj *item_gobj, Vec3f *pos, s32 it_kind)
+void itSpearFlyMakeSwarm(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 {
     itSpearWeaponSwarmMakeWeapon(item_gobj, pos, it_kind);
 }

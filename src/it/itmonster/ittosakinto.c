@@ -20,20 +20,20 @@ extern intptr_t lITTosakintoMatAnimJoint;   // 0x0000B90C
 // 0x8018ABC0
 itCreateDesc dITTosakintoItemDesc =
 {
-    nITKindTosakinto,                      // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindTosakinto,                       // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITTosakintoItemAttributes,            // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformNull,               // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformNull,                   // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itTosakintoCommonProcUpdate,          // Proc Update
-    itTosakintoCommonProcMap,             // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itTosakintoCommonProcUpdate,            // Proc Update
+    itTosakintoCommonProcMap,               // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -47,8 +47,8 @@ itStatusDesc dITTosakintoStatusDescs[/* */] =
 {
     // Status 0 (Neutral Appear)
     {
-        itTosakintoNAppearProcUpdate,       // Proc Update
-        itTosakintoNAppearProcMap,          // Proc Map
+        itTosakintoAppearProcUpdate,        // Proc Update
+        itTosakintoAppearProcMap,           // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -59,8 +59,8 @@ itStatusDesc dITTosakintoStatusDescs[/* */] =
 
     // Status 1 (Neutral Splash)
     {
-        itTosakintoNSplashProcUpdate,       // Proc Update
-        itTosakintoNSplashProcMap,          // Proc Map
+        itTosakintoBounceProcUpdate,        // Proc Update
+        itTosakintoBounceProcMap,           // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -78,9 +78,9 @@ itStatusDesc dITTosakintoStatusDescs[/* */] =
 
 enum itTosakintoStatus
 {
-    itStatus_Tosakinto_NAppear,
-    itStatus_Tosakinto_NSplash,
-    itStatus_Tosakinto_EnumMax
+    nITTosakintoStatusAppear,
+    nITTosakintoStatusBounce,
+    nITTosakintoStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -90,7 +90,7 @@ enum itTosakintoStatus
 // // // // // // // // // // // //
 
 // 0x8017E7A0
-sb32 itTosakintoNAppearProcUpdate(GObj *item_gobj)
+sb32 itTosakintoAppearProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -100,7 +100,7 @@ sb32 itTosakintoNAppearProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017E7CC
-sb32 itTosakintoNAppearProcMap(GObj *item_gobj)
+sb32 itTosakintoAppearProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -110,7 +110,7 @@ sb32 itTosakintoNAppearProcMap(GObj *item_gobj)
     {
         ip->phys_info.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
 
-        itTosakintoNSplashSetStatus(item_gobj);
+        itTosakintoBounceSetStatus(item_gobj);
 
         func_800269C0_275C0(nGMSoundFGMTosakintoSplash);
     }
@@ -118,7 +118,7 @@ sb32 itTosakintoNAppearProcMap(GObj *item_gobj)
 }
 
 // 0x8017E828
-void itTosakintoNAppearSetStatus(GObj *item_gobj)
+void itTosakintoAppearSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -128,11 +128,11 @@ void itTosakintoNAppearSetStatus(GObj *item_gobj)
     {
         func_800269C0_275C0(nGMSoundVoiceMBallTosakintoSpawn);
     }
-    itMainSetItemStatus(item_gobj, dITTosakintoStatusDescs, itStatus_Tosakinto_NAppear);
+    itMainSetItemStatus(item_gobj, dITTosakintoStatusDescs, nITTosakintoStatusAppear);
 }
 
 // 0x8017E880
-sb32 itTosakintoNSplashProcUpdate(GObj *item_gobj)
+sb32 itTosakintoBounceProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -148,7 +148,7 @@ sb32 itTosakintoNSplashProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017E8CC
-sb32 itTosakintoNSplashProcMap(GObj *item_gobj)
+sb32 itTosakintoBounceProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -168,7 +168,7 @@ sb32 itTosakintoNSplashProcMap(GObj *item_gobj)
 }
 
 // 0x8017E93C
-void itTosakintoNSplashInitItemVars(GObj *item_gobj)
+void itTosakintoBounceInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -196,10 +196,10 @@ void itTosakintoNSplashInitItemVars(GObj *item_gobj)
 }
 
 // 0x8017EA14
-void itTosakintoNSplashSetStatus(GObj *item_gobj)
+void itTosakintoBounceSetStatus(GObj *item_gobj)
 {
-    itTosakintoNSplashInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTosakintoStatusDescs, itStatus_Tosakinto_NSplash);
+    itTosakintoBounceInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITTosakintoStatusDescs, nITTosakintoStatusBounce);
 }
 
 // 0x8017EA48
@@ -211,7 +211,7 @@ sb32 itTosakintoCommonProcUpdate(GObj *item_gobj)
     {
         ip->phys_info.vel_air.y = 0.0F;
 
-        itTosakintoNAppearSetStatus(item_gobj);
+        itTosakintoAppearSetStatus(item_gobj);
     }
     ip->it_multi--;
 

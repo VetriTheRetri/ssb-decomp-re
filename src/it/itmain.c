@@ -8,7 +8,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lITContainerSpawnVelY;  // 0x00000000
+extern intptr_t lITMainContainerVelocitiesY;  // 0x00000000
 extern ub8 gGM1PGameBonusMewCatcher;
 
 extern alSoundEffect* func_800269C0_275C0(u16);
@@ -129,7 +129,7 @@ void func_ovl3_80172310(GObj *item_gobj)
 
     ip->rotate_step = (ip->attributes->spin_speed != 0) ? (ip->attributes->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ITEM_SPIN_SPEED_MUL_DEFAULT) : 0.0F;
 
-    if (ip->lr == nGMDirectionL)
+    if (ip->lr == nGMFacingL)
     {
         ip->rotate_step = -ip->rotate_step;
     }
@@ -176,7 +176,7 @@ void itMainVelSetRotateStepLR(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? nGMDirectionR : nGMDirectionL;
+    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;
 
     func_ovl3_80172310(item_gobj);
 }
@@ -305,7 +305,7 @@ void itMainDestroyItem(GObj *item_gobj)
 
         ftParamSetHammerParams(ip->owner_gobj);
     }
-    else if ((ip->it_kind < nITKindGrMonsterStart) || (ip->it_kind > nITKindGrMonsterEnd))
+    else if ((ip->it_kind < nITKindGroundMonsterStart) || (ip->it_kind > nITKindGroundMonsterEnd))
     {
         efManagerDustExpandLargeMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
     }
@@ -551,7 +551,7 @@ void itMainVelSetRebound(GObj *item_gobj)
 }
 
 // 0x8017301C - Binary search function to get item ID for container drop?
-s32 itMainSearchWeightedItemID(s32 random, itRandomWeights *weights, u32 min, u32 max) // Recursive!
+s32 itMainSearchWeightedItemKind(s32 random, itRandomWeights *weights, u32 min, u32 max) // Recursive!
 {
     s32 avg;
 
@@ -563,39 +563,39 @@ s32 itMainSearchWeightedItemID(s32 random, itRandomWeights *weights, u32 min, u3
 
     if (random < weights->item_totals[avg])
     {
-        itMainSearchWeightedItemID(random, weights, min, avg);
+        itMainSearchWeightedItemKind(random, weights, min, avg);
     }
     else if (random < weights->item_totals[avg + 1])
     {
         return avg;
     }
-    else itMainSearchWeightedItemID(random, weights, avg, max);
+    else itMainSearchWeightedItemKind(random, weights, avg, max);
 }
 
 // 0x80173090
-s32 itMainGetWeightedItemID(itRandomWeights *weights)
+s32 itMainGetWeightedItemKind(itRandomWeights *weights)
 {
-    return weights->item_ids[itMainSearchWeightedItemID(mtTrigGetRandomIntRange(weights->item_num), weights, 0, weights->item_count)];
+    return weights->item_kinds[itMainSearchWeightedItemKind(mtTrigGetRandomIntRange(weights->item_num), weights, 0, weights->item_count)];
 }
 
 // 0x801730D4
 sb32 itMainMakeContainerItem(GObj *spawn_gobj)
 {
     s32 unused;
-    s32 index;
+    s32 item_kind;
     Vec3f vel; // Item's spawn velocity when falling out of a container
 
     if (gITManagerRandomWeights.item_num != 0)
     {
-        index = itMainGetWeightedItemID(&gITManagerRandomWeights);
+        item_kind = itMainGetWeightedItemKind(&gITManagerRandomWeights);
 
-        if (index <= nITKindCommonEnd)
+        if (item_kind <= nITKindCommonEnd)
         {
             vel.x = 0.0F;
-            vel.y = *(f32*) ((intptr_t)&lITContainerSpawnVelY + ((uintptr_t) &((u32*)gITManagerFileData)[index])); // Linker thing; quite ridiculous especially since lITContainerSpawnVelY is 0
+            vel.y = *(f32*) ((intptr_t)&lITMainContainerVelocitiesY + ((uintptr_t) &((u32*)gITManagerFileData)[item_kind])); // Linker thing; quite ridiculous especially since lITMainContainerVelocitiesY is 0
             vel.z = 0;
 
-            if (itManagerMakeItemSetupCommon(spawn_gobj, index, &DObjGetStruct(spawn_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM)) != NULL)
+            if (itManagerMakeItemSetupCommon(spawn_gobj, item_kind, &DObjGetStruct(spawn_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM)) != NULL)
             {
                 func_ovl3_80172394(spawn_gobj, TRUE);
             }
@@ -647,15 +647,15 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     }
     else
     {
-        for (i = j = nITKindMbMonsterStart; i < nITKindMbMonsterEnd; i++) // Pokémon IDs
+        for (i = j = nITKindMBallCommonStart; i <= nITKindMBallCommonEnd; i++) // Pokémon IDs
         {
             if ((i != gITManagerMonsterData.monster_curr) && (i != gITManagerMonsterData.monster_prev))
             {
-                gITManagerMonsterData.monster_index[j - nITKindMbMonsterStart] = i;
+                gITManagerMonsterData.monster_id[j - nITKindMBallMonsterStart] = i;
                 j++;
             }
         }
-        index = gITManagerMonsterData.monster_index[mtTrigGetRandomIntRange(gITManagerMonsterData.monster_count)];
+        index = gITManagerMonsterData.monster_id[mtTrigGetRandomIntRange(gITManagerMonsterData.monster_count)];
     }
     if (gITManagerMonsterData.monster_count != 10)
     {

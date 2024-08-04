@@ -23,20 +23,20 @@ extern intptr_t lITKamexDisplayList;        // 0x0000ED60
 // 0x8018AEE0
 itCreateDesc dITKamexItemDesc = 
 {
-    nITKindKamex,                          // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindKamex,                           // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITKamexItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,         // Hitbox Update State
-    itKamexCommonProcUpdate,              // Proc Update
-    itKamexCommonProcMap,                 // Proc Map
+    nGMHitUpdateNew,                        // Hitbox Update State
+    itKamexCommonProcUpdate,                // Proc Update
+    itKamexCommonProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -50,8 +50,8 @@ itStatusDesc dITKamexStatusDescs[/* */] =
 {
     // Status 0 (Air Fall)
     {
-        itKamexFallProcUpdate,             // Proc Update
-        itKamexFallProcMap,                // Proc Map
+        itKamexFallProcUpdate,              // Proc Update
+        itKamexFallProcMap,                 // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -62,8 +62,8 @@ itStatusDesc dITKamexStatusDescs[/* */] =
 
     // Status 1 (Neutral Appear)
     {
-        itKamexNAppearProcUpdate,           // Proc Update
-        itKamexNAppearProcMap,              // Proc Map
+        itKamexAppearProcUpdate,           // Proc Update
+        itKamexAppearProcMap,              // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -74,8 +74,8 @@ itStatusDesc dITKamexStatusDescs[/* */] =
 
     // Status 2 (Neutral Attack)
     {
-        itKamexNAttackProcUpdate,           // Proc Update
-        itKamexNAttackProcMap,              // Proc Map
+        itKamexAttackProcUpdate,            // Proc Update
+        itKamexAttackProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -89,14 +89,14 @@ itStatusDesc dITKamexStatusDescs[/* */] =
 wpCreateDesc dITKamexWeaponHydroWeaponDesc =
 {
     0x01,                                   // Render flags?
-    nWPKindKamexHydro,                     // Weapon Kind
-    &gITManagerFileData,                         // Pointer to weapon's loaded files?
+    nWPKindKamexHydro,                      // Weapon Kind
+    &gITManagerFileData,                    // Pointer to weapon's loaded files?
     &lITKamexWeaponHydroWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -118,9 +118,9 @@ wpCreateDesc dITKamexWeaponHydroWeaponDesc =
 
 enum itKamexStatus
 {
-    itStatus_Kamex_Fall,
-    itStatus_Kamex_NAppear,
-    itStatus_Kamex_NAttack
+    nITKamexStatusFall,
+    nITKamexStatusAppear,
+    nITKamexStatusAttack
 };
 
 // // // // // // // // // // // //
@@ -130,7 +130,7 @@ enum itKamexStatus
 // // // // // // // // // // // //
 
 // 0x80180630
-void itKamexNAttackUpdateHydro(GObj *item_gobj)
+void itKamexAttackUpdateHydro(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -146,7 +146,7 @@ void itKamexNAttackUpdateHydro(GObj *item_gobj)
         }
         else pos.x += ITKAMEX_OTHER_HYDRO_SPAWN_OFF_X * ip->lr;
 
-        itKamexNAttackMakeHydro(item_gobj, &pos);
+        itKamexAttackMakeHydro(item_gobj, &pos);
         efManagerDamageSpawnSparksMakeEffect(&pos, ip->lr);
         func_800269C0_275C0(nGMSoundFGMKamexHydro);
 
@@ -187,8 +187,8 @@ sb32 itKamexFallProcMap(GObj *item_gobj)
 
     if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
-        itKamexNAttackInitItemVars(item_gobj, TRUE);
-        itKamexNAttackSetStatus(item_gobj);
+        itKamexAttackInitItemVars(item_gobj, TRUE);
+        itKamexAttackSetStatus(item_gobj);
     }
     return FALSE;
 }
@@ -211,11 +211,11 @@ void itKamexFallInitItemVars(GObj *item_gobj)
 void itKamexFallSetStatus(GObj *item_gobj)
 {
     itKamexFallInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, itStatus_Kamex_Fall);
+    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, nITKamexStatusFall);
 }
 
 // 0x801808D8
-sb32 itKamexNAppearProcUpdate(GObj *item_gobj)
+sb32 itKamexAppearProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -225,7 +225,7 @@ sb32 itKamexNAppearProcUpdate(GObj *item_gobj)
 }
 
 // 0x80180904
-sb32 itKamexNAppearProcMap(GObj *item_gobj)
+sb32 itKamexAppearProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -235,14 +235,14 @@ sb32 itKamexNAppearProcMap(GObj *item_gobj)
     {
         ip->phys_info.vel_air.y = 0.0F;
 
-        itKamexNAttackInitItemVars(item_gobj, FALSE);
-        itKamexNAttackSetStatus(item_gobj);
+        itKamexAttackInitItemVars(item_gobj, FALSE);
+        itKamexAttackSetStatus(item_gobj);
     }
     return FALSE;
 }
 
 // 0x80180964
-void itKamexNAppearSetStatus(GObj *item_gobj)
+void itKamexAppearSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -252,11 +252,11 @@ void itKamexNAppearSetStatus(GObj *item_gobj)
     {
         func_800269C0_275C0(nGMSoundVoiceMBallKamexSpawn);
     }
-    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, itStatus_Kamex_NAppear);
+    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, nITKamexStatusAppear);
 }
 
 // 0x801809BC
-sb32 itKamexNAttackProcUpdate(GObj *item_gobj)
+sb32 itKamexAttackProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -264,7 +264,7 @@ sb32 itKamexNAttackProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    itKamexNAttackUpdateHydro(item_gobj);
+    itKamexAttackUpdateHydro(item_gobj);
 
     if (ip->item_vars.kamex.is_apply_push != FALSE)
     {
@@ -278,7 +278,7 @@ sb32 itKamexNAttackProcUpdate(GObj *item_gobj)
 }
 
 // 0x80180A30
-sb32 itKamexNAttackProcMap(GObj *item_gobj)
+sb32 itKamexAttackProcMap(GObj *item_gobj)
 {
     itMapCheckLRWallProcGround(item_gobj, itKamexFallSetStatus);
 
@@ -286,7 +286,7 @@ sb32 itKamexNAttackProcMap(GObj *item_gobj)
 }
 
 // 0x80180A58
-void itKamexNAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
+void itKamexAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -315,9 +315,9 @@ void itKamexNAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
 }
 
 // 0x80180AF4
-void itKamexNAttackSetStatus(GObj *item_gobj)
+void itKamexAttackSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, itStatus_Kamex_NAttack);
+    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, nITKamexStatusAttack);
 }
 
 // 0x80180B1C
@@ -329,7 +329,7 @@ sb32 itKamexCommonProcUpdate(GObj *item_gobj)
     {
         ip->phys_info.vel_air.y = 0.0F;
 
-        itKamexNAppearSetStatus(item_gobj);
+        itKamexAppearSetStatus(item_gobj);
     }
     ip->it_multi--;
 
@@ -390,7 +390,7 @@ void itKamexCommonFindTargetsSetLR(GObj *item_gobj)
     }
     dist_x = DObjGetStruct(victim_gobj)->translate.vec.f.x - dobj->translate.vec.f.x;
 
-    ip->lr = (dist_x < 0.0F) ? nGMDirectionL : nGMDirectionR;
+    ip->lr = (dist_x < 0.0F) ? nGMFacingL : nGMFacingR;
 }
 
 // 0x80180CDC
@@ -423,7 +423,7 @@ GObj* itKamexMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         itKamexCommonFindTargetsSetLR(item_gobj);
 
-        if (kamex_ip->lr == nGMDirectionL)
+        if (kamex_ip->lr == nGMFacingL)
         {
             dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }
@@ -495,7 +495,7 @@ GObj* itKamexWeaponHydroMakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     efManagerSparkleWhiteScaleMakeEffect(&translate, 1.0F);
 
-    if (wp->lr == nGMDirectionL)
+    if (wp->lr == nGMFacingL)
     {
         dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }
@@ -508,7 +508,7 @@ GObj* itKamexWeaponHydroMakeWeapon(GObj *item_gobj, Vec3f *pos)
 }
 
 // 0x80180F9C
-void itKamexNAttackMakeHydro(GObj *item_gobj, Vec3f *pos)
+void itKamexAttackMakeHydro(GObj *item_gobj, Vec3f *pos)
 {
     itKamexWeaponHydroMakeWeapon(item_gobj, pos);
 }

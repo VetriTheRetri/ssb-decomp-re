@@ -1,5 +1,4 @@
 #include <it/item.h>
-#include <gr/ground.h>
 #include <sys/develop.h>
 
 // // // // // // // // // // // //
@@ -20,19 +19,19 @@ extern intptr_t lITKabigonAnimJoint;        // 0x0000B158
 // 0x8018AB40
 itCreateDesc dITKabigonItemDesc = 
 {
-    nITKindKabigon,                        // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindKabigon,                         // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITKabigonItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,         // Hitbox Update State
-    itKabigonCommonProcUpdate,            // Proc Update
+    nGMHitUpdateNew,                        // Hitbox Update State
+    itKabigonCommonProcUpdate,              // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
@@ -47,7 +46,7 @@ itStatusDesc dITKabigonStatusDescs[/* */] =
 {
     // Status 0 (Neutral Jump)
     {
-        itKabigonNJumpProcUpdate,           // Proc Update
+        itKabigonJumpProcUpdate,           // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -59,7 +58,7 @@ itStatusDesc dITKabigonStatusDescs[/* */] =
 
     // Status 1 (Neutral Fall)
     {
-        itKabigonNFallProcUpdate,           // Proc Update
+        itKabigonFallProcUpdate,           // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -78,9 +77,9 @@ itStatusDesc dITKabigonStatusDescs[/* */] =
 
 enum itKabigonStatus
 {
-    itStatus_Kabigon_NJump,
-    itStatus_Kabigon_NFall,
-    itStatus_Kabigon_EnumMax
+    nITKabigonStatusJump,
+    nITKabigonStatusFall,
+    nITKabigonStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -90,7 +89,7 @@ enum itKabigonStatus
 // // // // // // // // // // // //
 
 // 0x8017E070
-sb32 itKabigonNFallProcUpdate(GObj *item_gobj)
+sb32 itKabigonFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -111,7 +110,7 @@ sb32 itKabigonNFallProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017E100
-void itKabigonNFallProcRender(GObj *item_gobj)
+void itKabigonFallProcRender(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -144,7 +143,7 @@ void itKabigonNFallProcRender(GObj *item_gobj)
 }
 
 // 0x8017E25C
-void itKabigonNFallInitItemVars(GObj *item_gobj)
+void itKabigonFallInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -173,20 +172,20 @@ void itKabigonNFallInitItemVars(GObj *item_gobj)
 
         ip->item_hit.size *= ITKABIGON_DROP_SIZE_OTHER;
     }
-    item_gobj->proc_render = itKabigonNFallProcRender;
+    item_gobj->proc_render = itKabigonFallProcRender;
 
     omMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
 }
 
 // 0x8017E350
-void itKabigonNFallSetStatus(GObj *item_gobj)
+void itKabigonFallSetStatus(GObj *item_gobj)
 {
-    itKabigonNFallInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITKabigonStatusDescs, itStatus_Kabigon_NFall);
+    itKabigonFallInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITKabigonStatusDescs, nITKabigonStatusFall);
 }
 
 // 0x8017E384
-sb32 itKabigonNJumpProcUpdate(GObj *item_gobj)
+sb32 itKabigonJumpProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -199,7 +198,7 @@ sb32 itKabigonNJumpProcUpdate(GObj *item_gobj)
 
         if (ip->it_multi == 0)
         {
-            itKabigonNFallSetStatus(item_gobj);
+            itKabigonFallSetStatus(item_gobj);
         }
     }
     if (ip->item_vars.kabigon.dust_effect_int == 0)
@@ -252,7 +251,7 @@ void itKabigonCommonProcRender(GObj *item_gobj)
 }
 
 // 0x8017E600
-void itKabigonNJumpInitItemVars(GObj *item_gobj)
+void itKabigonJumpInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -266,10 +265,10 @@ void itKabigonNJumpInitItemVars(GObj *item_gobj)
 }
 
 // 0x8017E648
-void itKabigonNJumpSetStatus(GObj *item_gobj)
+void itKabigonJumpSetStatus(GObj *item_gobj)
 {
-    itKabigonNJumpInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITKabigonStatusDescs, itStatus_Kabigon_NJump);
+    itKabigonJumpInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITKabigonStatusDescs, nITKabigonStatusJump);
 }
 
 // 0x8017E67C
@@ -279,7 +278,7 @@ sb32 itKabigonCommonProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        itKabigonNJumpSetStatus(item_gobj);
+        itKabigonJumpSetStatus(item_gobj);
     }
     ip->it_multi--;
 
@@ -298,7 +297,7 @@ GObj* itKabigonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->item_hit.interact_mask = GMHITCOLLISION_MASK_FIGHTER;
+        ip->item_hit.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;

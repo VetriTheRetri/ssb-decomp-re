@@ -150,8 +150,8 @@ typedef enum gmFGMVoiceID
 	nGMSoundFGMSwordSwing4,
 	nGMSoundFGMSwordSwing3,
 	nGMSoundFGMSwordSwing1,
-	nGMSoundFGMRBombHit, // Hit entity?
-	nGMSoundFGMRBombMap, // Collide with wall?
+	nGMSoundFGMTaruBombHit, // Hit entity?
+	nGMSoundFGMTaruBombMap, // Collide with wall?
 	nGMSoundFGMFootstep1,
 	nGMSoundFGMFootstep2,
 	nGMSoundFGMFootstep3,

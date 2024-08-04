@@ -17,21 +17,21 @@ extern intptr_t lITStarItemAttributes;      // 0x00000148
 
 itCreateDesc dITStarItemDesc =
 {
-    nITKindStar,                           // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindStar,                            // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITStarItemAttributes,                 // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itStarCommonProcUpdate,               // Proc Update
-    itStarCommonProcMap,                  // Proc Map
-    itStarCommonProcHit,                  // Proc Hit
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itStarCommonProcUpdate,                 // Proc Update
+    itStarCommonProcMap,                    // Proc Map
+    itStarCommonProcHit,                    // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
     NULL,                                   // Proc Set-Off
@@ -70,7 +70,7 @@ sb32 itStarCommonProcMap(GObj *item_gobj)
     s32 unused;
     sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND);
 
-    if (itMapCheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), 1.0F, NULL) != FALSE)
+    if (itMapCheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), ITSTAR_MAP_REBOUND_COMMON, NULL) != FALSE)
     {
         itMainVelSetRotateStepLR(item_gobj);
     }
@@ -113,7 +113,7 @@ GObj* itStarMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->item_hit.interact_mask = GMHITCOLLISION_MASK_FIGHTER; // Star Man can only interact with fighters
+        ip->item_hit.interact_mask = GMHITCOLLISION_FLAG_FIGHTER; // Star Man can only interact with fighters
         
         ip->it_multi = ITSTAR_INTERACT_DELAY;
 

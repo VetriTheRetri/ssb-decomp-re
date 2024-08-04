@@ -29,20 +29,20 @@ sb32 itMapTestAllCollisionFlag(GObj* item_gobj, u32 flag);
 sb32 itMapCheckCollideAllRebound(GObj* item_gobj, u32 check_flags, f32 mod_vel, Vec3f* pos);
 
 // Set recoil velocity when item hits ground
-void itMapSetGroundCollisionRebound(Vec3f* vel, Vec3f* ground_angle, f32 ground_rebound);
+void itMapSetGroundRebound(Vec3f* vel, Vec3f* ground_angle, f32 ground_rebound);
 
 // Check if item should be destroyed upon landing after being dropped / thrown
-sb32 itMapCheckThrownLanding(GObj* item_gobj, f32 wall_ceil_rebound, f32 ground_rebound,
+sb32 itMapCheckDestroyDropped(GObj* item_gobj, f32 common_rebound, f32 ground_rebound,
 									   void (*proc_status)(GObj*));
 
 // Check if item is landing normally
-sb32 itMapCheckLanding(GObj* item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_map)(GObj*));
+sb32 itMapCheckLanding(GObj* item_gobj, f32 common_rebound, f32 ground_rebound, void (*proc_map)(GObj*));
 
 // Check if item recoils from collision with any type of surface; run proc_map if true
-sb32 itMapCheckMapReboundProcAll(GObj* item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_map)(GObj*));
+sb32 itMapCheckMapReboundProcAll(GObj* item_gobj, f32 common_rebound, f32 ground_rebound, void (*proc_map)(GObj*));
 
 // Check if item recoils from collision with ground
-sb32 itMapCheckDestroyLanding(GObj* item_gobj, f32 wall_ceil_rebound);
+sb32 itMapCheckDestroyLanding(GObj* item_gobj, f32 common_rebound);
 
 // Test for all collisions; run proc_map if true; always returns FALSE
 sb32 itMapCheckMapProcAll(GObj* item_gobj, void (*proc_map)(GObj*));
@@ -52,7 +52,7 @@ sb32 func_ovl3_80173E9C(GObj* item_gobj, void (*proc_map)(GObj*));
 
 // Test for all collisions; if item recoils from collision with ground, run proc_map; otherwise check all other surface
 // types; always returns FALSE
-sb32 itMapCheckMapReboundProcGround(GObj* item_gobj, f32 wall_ceil_rebound, void (*proc)(GObj*));
+sb32 itMapCheckMapReboundProcGround(GObj* item_gobj, f32 common_rebound, void (*proc)(GObj*));
 
 // Make item grounded
 void itMapSetGround(itStruct* ip);

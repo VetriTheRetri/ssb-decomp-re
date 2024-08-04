@@ -103,7 +103,7 @@ itStatusDesc dITCapsuleStatusDescs[/* */] =
 
     // Status 5 (Fighter Hold)
     {
-        itCapsuleExplodeNProcUpdate,        // Proc Update
+        itCapsuleExplodeProcUpdate,         // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -127,7 +127,7 @@ enum itCapsuleStatus
     nITCapsuleStatusHold,
     nITCapsuleStatusThrown,
     nITCapsuleStatusDropped,
-    nITCapsuleStatusExplodeN,
+    nITCapsuleStatusExplode,
     nITCapsuleStatusEnumMax
 };
 
@@ -163,7 +163,7 @@ sb32 itCapsuleCommonProcHit(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itCapsuleExplodeNMakeEffectGotoSetStatus(item_gobj);
+    else itCapsuleExplodeMakeEffectGotoSetStatus(item_gobj);
 
     return FALSE;
 }
@@ -171,7 +171,7 @@ sb32 itCapsuleCommonProcHit(GObj *item_gobj)
 // 0x80174030
 sb32 itCapsuleFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, ITCAPSULE_MAP_REBOUND_COMMON, ITCAPSULE_MAP_REBOUND_GROUND, itCapsuleWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITCAPSULE_MAP_REBOUND_COMMON, ITCAPSULE_MAP_REBOUND_GROUND, itCapsuleWaitSetStatus);
 }
 
 // 0x80174064
@@ -223,7 +223,7 @@ sb32 itCapsuleThrownProcMap(GObj *item_gobj)
         {
             return TRUE;
         }
-        else itCapsuleExplodeNMakeEffectGotoSetStatus(item_gobj);
+        else itCapsuleExplodeMakeEffectGotoSetStatus(item_gobj);
     }
     return FALSE;
 }
@@ -251,7 +251,7 @@ sb32 func_ovl3_801741F0(GObj *item_gobj) // Unused
 // 0x80174214
 sb32 itCapsuleDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, ITCAPSULE_MAP_REBOUND_COMMON, ITCAPSULE_MAP_REBOUND_GROUND, itCapsuleWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITCAPSULE_MAP_REBOUND_COMMON, ITCAPSULE_MAP_REBOUND_GROUND, itCapsuleWaitSetStatus);
 }
 
 // 0x80174248
@@ -261,7 +261,7 @@ void itCapsuleDroppedSetStatus(GObj *item_gobj)
 }
 
 // 0x80174270
-sb32 itCapsuleExplodeNProcUpdate(GObj *item_gobj)
+sb32 itCapsuleExplodeProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -292,7 +292,7 @@ GObj* itCapsuleMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 }
 
 // 0x80174340
-void itCapsuleExplodeNInitItemVars(GObj *item_gobj)
+void itCapsuleExplodeInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -320,14 +320,14 @@ void itCapsuleExplodeNInitItemVars(GObj *item_gobj)
 }
 
 // 0x801743F4
-void itCapsuleExplodeNSetStatus(GObj *item_gobj)
+void itCapsuleExplodeSetStatus(GObj *item_gobj)
 {
-    itCapsuleExplodeNInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusExplodeN);
+    itCapsuleExplodeInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusExplode);
 }
 
 // 0x80174428
-void itCapsuleExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
+void itCapsuleExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -349,5 +349,5 @@ void itCapsuleExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
-    itCapsuleExplodeNSetStatus(item_gobj);
+    itCapsuleExplodeSetStatus(item_gobj);
 }

@@ -28,19 +28,19 @@ extern s32 dGRYamabukiMonsterAttackKind;
 
 itCreateDesc dITFushigibanaItemDesc =
 {
-    nITKindFushigibana,                        // Item Kind
-    &gGRCommonStruct.yamabuki.item_head,          // Pointer to item file data?
+    nITKindFushigibana,                         // Item Kind
+    &gGRCommonStruct.yamabuki.item_head,        // Pointer to item file data?
     &lITFushigibanaItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,             // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,                 // Main matrix transformations
+        nOMTransformNull,                       // Secondary matrix transformations?
         0                                       // ???
     },
 
-    nGMHitUpdateNew,             // Hitbox Update State
-    itFushigibanaCommonProcUpdate,            // Proc Update
+    nGMHitUpdateNew,                            // Hitbox Update State
+    itFushigibanaCommonProcUpdate,              // Proc Update
     NULL,                                       // Proc Map
     NULL,                                       // Proc Hit
     NULL,                                       // Proc Shield
@@ -53,14 +53,14 @@ itCreateDesc dITFushigibanaItemDesc =
 wpCreateDesc dITFushigibanaWeaponRazorWeaponDesc =
 {
     0x03,                                       // Render flags?
-    nWPKindFushigibanaRazor,                   // Weapon Kind
-    &gGRCommonStruct.yamabuki.item_head,          // Pointer to item's loaded files?
+    nWPKindFushigibanaRazor,                    // Weapon Kind
+    &gGRCommonStruct.yamabuki.item_head,        // Pointer to item's loaded files?
     &lITFushigibanaWeaponRazorWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,          // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,              // Main matrix transformations
+        nOMTransformNull,                       // Secondary matrix transformations?
         0                                       // ???
     },
 
@@ -114,7 +114,7 @@ void itFushigibanaCommonUpdateHitParty(GObj *item_gobj)
 
         pos.y = 0.0F;
 
-        efManagerDustLightMakeEffect(&pos, nGMDirectionL, 1.0F);
+        efManagerDustLightMakeEffect(&pos, nGMFacingL, 1.0F);
     }
 }
 
@@ -246,9 +246,9 @@ sb32 itFushigibanaWeaponRazorProcHop(GObj *weapon_gobj)
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
-        wp->lr = nGMDirectionR;
+        wp->lr = nGMFacingR;
     }
-    else wp->lr = nGMDirectionL;
+    else wp->lr = nGMFacingL;
 
     return FALSE;
 }
@@ -282,7 +282,7 @@ GObj* itFushigibanaWeaponRazorMakeWeapon(GObj *item_gobj, Vec3f *pos)
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->lr = nGMDirectionL;
+    wp->lr = nGMFacingL;
 
     wp->phys_info.vel_air.x = ITFUSHIGIBANA_RAZOR_VEL_X;
 

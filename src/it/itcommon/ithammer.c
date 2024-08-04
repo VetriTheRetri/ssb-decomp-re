@@ -16,20 +16,20 @@ extern intptr_t lITHammerItemAttributes;    // 0x00000374
 
 itCreateDesc dITHammerItemDesc =
 {
-    nITKindHammer,                         // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindHammer,                          // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITHammerItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itHammerFallProcUpdate,                // Proc Update
-    itHammerFallProcMap,                   // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itHammerFallProcUpdate,                 // Proc Update
+    itHammerFallProcMap,                    // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -43,7 +43,7 @@ itStatusDesc dITHammerStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itHammerWaitProcMap,               // Proc Map
+        itHammerWaitProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -54,8 +54,8 @@ itStatusDesc dITHammerStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itHammerFallProcUpdate,            // Proc Update
-        itHammerFallProcMap,               // Proc Map
+        itHammerFallProcUpdate,             // Proc Update
+        itHammerFallProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -80,22 +80,22 @@ itStatusDesc dITHammerStatusDescs[/* */] =
     {
         itHammerThrownProcUpdate,           // Proc Update
         itHammerThrownProcMap,              // Proc Map
-        itHammerCommonProcHit,            // Proc Hit
-        itHammerCommonProcHit,            // Proc Shield
+        itHammerCommonProcHit,              // Proc Hit
+        itHammerCommonProcHit,              // Proc Shield
         NULL,                               // Proc Hop
-        itHammerCommonProcHit,            // Proc Set-Off
+        itHammerCommonProcHit,              // Proc Set-Off
         NULL,                               // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itHammerFallProcUpdate,            // Proc Update
-        itHammerDroppedProcMap,               // Proc Map
-        itHammerCommonProcHit,            // Proc Hit
-        itHammerCommonProcHit,            // Proc Shield
+        itHammerFallProcUpdate,             // Proc Update
+        itHammerDroppedProcMap,             // Proc Map
+        itHammerCommonProcHit,              // Proc Hit
+        itHammerCommonProcHit,              // Proc Shield
         NULL,                               // Proc Hop
-        itHammerCommonProcHit,            // Proc Set-Off
+        itHammerCommonProcHit,              // Proc Set-Off
         NULL,                               // Proc Reflector
         NULL                                // Proc Damage
     }
@@ -109,12 +109,12 @@ itStatusDesc dITHammerStatusDescs[/* */] =
 
 enum itHammerStatus
 {
-    itStatus_Hammer_Wait,
-    itStatus_Hammer_Fall,
-    itStatus_Hammer_Hold,
-    itStatus_Hammer_Thrown,
-    itStatus_Hammer_Dropped,
-    itStatus_Hammer_EnumMax
+    nITHammerStatusWait,
+    nITHammerStatusFall,
+    nITHammerStatusHold,
+    nITHammerStatusThrown,
+    nITHammerStatusDropped,
+    nITHammerStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -151,14 +151,14 @@ sb32 itHammerWaitProcMap(GObj *item_gobj)
 // 0x80176194
 sb32 itHammerFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.5F, 0.2F, itHammerWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITHAMMER_MAP_REBOUND_COMMON, ITHAMMER_MAP_REBOUND_GROUND, itHammerWaitSetStatus);
 }
 
 // 0x801761C4
 void itHammerWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, itStatus_Hammer_Wait);
+    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusWait);
 }
 
 // 0x801761F8
@@ -169,15 +169,15 @@ void itHammerFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, itStatus_Hammer_Fall);
+    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusFall);
 }
 
 // 0x8017623C
 void itHammerHoldSetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
+    DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
-    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, itStatus_Hammer_Hold);
+    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusHold);
 }
 
 // 0x80176270
@@ -194,7 +194,7 @@ sb32 itHammerThrownProcUpdate(GObj *item_gobj)
 // 0x801762A8
 sb32 itHammerThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.5F, 0.2F, itHammerWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITHAMMER_MAP_REBOUND_COMMON, ITHAMMER_MAP_REBOUND_GROUND, itHammerWaitSetStatus);
 }
 
 // 0x801762D8
@@ -212,7 +212,7 @@ sb32 itHammerCommonProcHit(GObj *item_gobj)
 // 0x80176300
 void itHammerThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, itStatus_Hammer_Thrown);
+    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusThrown);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
@@ -222,14 +222,14 @@ void itHammerThrownSetStatus(GObj *item_gobj)
 // 0x80176348
 sb32 itHammerDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.5F, 0.2F, itHammerWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITHAMMER_MAP_REBOUND_COMMON, ITHAMMER_MAP_REBOUND_GROUND, itHammerWaitSetStatus);
 }
 
 // 0x80176378
 void itHammerDroppedSetStatus(GObj *item_gobj)
 {
     itMainClearColAnim(item_gobj);
-    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, itStatus_Hammer_Dropped);
+    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusDropped);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 

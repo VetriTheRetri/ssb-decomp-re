@@ -101,19 +101,19 @@ void grYamabukiGateMakeMonster(void)
 
     vel.x = vel.y = vel.z = 0.0F;
 
-    if ((dITManagerMonsterSpawnID == 0) || (dITManagerMonsterSpawnID > (nITKindGrMonsterEnd - nITKindGrMonsterStart + 1)))
+    if ((dITManagerMonsterSpawnID == 0) || (dITManagerMonsterSpawnID > (nITKindGroundMonsterEnd - nITKindGroundMonsterStart + 1)))
     {
-        item_id = mtTrigGetRandomIntRange(nITKindGrMonsterEnd - nITKindGrMonsterStart + 1);
+        item_id = mtTrigGetRandomIntRange(nITKindGroundMonsterEnd - nITKindGroundMonsterStart + 1);
 
         if (item_id == gGRCommonStruct.yamabuki.monster_id_prev)
         {
-            item_id = (item_id == (nITKindGrMonsterEnd - nITKindGrMonsterStart)) ? 0 : item_id + 1;
+            item_id = (item_id == (nITKindGroundMonsterEnd - nITKindGroundMonsterStart)) ? 0 : item_id + 1;
         }
         gGRCommonStruct.yamabuki.monster_id_prev = item_id;
     }
     else item_id = dITManagerMonsterSpawnID - 1;
 
-    gGRCommonStruct.yamabuki.monster_gobj = itManagerMakeItemSetupCommon(NULL, item_id + nITKindGrMonsterStart, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
+    gGRCommonStruct.yamabuki.monster_gobj = itManagerMakeItemSetupCommon(NULL, item_id + nITKindGroundMonsterStart, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
 }
 
 // 0x8010AE3C
@@ -282,7 +282,7 @@ void grYamabukiInitGroundVars(void)
 
     dGRYamabukiMonsterAttackKind = GRYAMABUKI_MONSTER_WEAPON_MAX;
 
-    gGRCommonStruct.yamabuki.monster_id_prev = nITKindGrMonsterEnd - nITKindGrMonsterStart + 1;
+    gGRCommonStruct.yamabuki.monster_id_prev = nITKindGroundMonsterEnd - nITKindGroundMonsterStart + 1;
     gGRCommonStruct.yamabuki.gate_pos.z = 0.0F;
 
     grYamabukiGateSetPositionNear();

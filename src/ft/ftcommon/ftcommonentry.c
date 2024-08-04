@@ -175,7 +175,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
     s32 entry_id;
     GObj *boss_target_gobj;
 
-    entry_id = (fp->lr == nGMDirectionR) ? 0 : 1;
+    entry_id = (fp->lr == nGMFacingR) ? 0 : 1;
 
     fp->entry_pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
@@ -183,7 +183,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.entry.lr_entry = fp->lr;
 
-    fp->lr = nGMDirectionC;
+    fp->lr = nGMFacingC;
 
     fp->status_vars.common.entry.ground_line_id = fp->coll_data.ground_line_id;
 
@@ -229,7 +229,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
         break;
 
     case nFTKindCaptain:
-        if (fp->status_vars.common.entry.lr_entry == nGMDirectionL)
+        if (fp->status_vars.common.entry.lr_entry == nGMFacingL)
         {
             fp->status_vars.common.entry.is_rotate = TRUE;
         }
@@ -261,7 +261,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
     fp->command_vars.flags.flag2 = 0;
     fp->command_vars.flags.flag0 = 0;
 
-    if ((fp->ft_kind == nFTKindCaptain) && (fp->status_vars.common.entry.lr_entry == nGMDirectionL))
+    if ((fp->ft_kind == nFTKindCaptain) && (fp->status_vars.common.entry.lr_entry == nGMFacingL))
     {
         ftParamMoveDLLink(fighter_gobj, 1);
     }
@@ -311,7 +311,7 @@ void ftNessAppearEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == nGMDirectionR) ? nFTNessStatusAppearREnd : nFTNessStatusAppearLEnd), 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_COLANIM));
+    ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == nGMFacingR) ? nFTNessStatusAppearREnd : nFTNessStatusAppearLEnd), 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_COLANIM));
     ftCommonAppearInitStatusVars(fighter_gobj);
 
     fp->x18E_flag_b0 = FALSE;
@@ -324,7 +324,7 @@ void ftCaptainAppearStartProcUpdate(GObj *fighter_gobj)
 
     ftCommonAppearUpdateEffects(fighter_gobj);
 
-    if ((fp->status_vars.common.entry.lr_entry == nGMDirectionL) && (fp->dl_link != FTRENDER_DLLINK_DEFAULT) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > -1000.0F))
+    if ((fp->status_vars.common.entry.lr_entry == nGMFacingL) && (fp->dl_link != FTRENDER_DLLINK_DEFAULT) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > -1000.0F))
     {
         ftParamMoveDLLink(fighter_gobj, FTRENDER_DLLINK_DEFAULT);
     }
@@ -336,7 +336,7 @@ void ftCaptainAppearEndSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == nGMDirectionR) ? nFTCaptainStatusAppearREnd : nFTCaptainStatusAppearLEnd), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == nGMFacingR) ? nFTCaptainStatusAppearREnd : nFTCaptainStatusAppearLEnd), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonAppearInitStatusVars(fighter_gobj);
 
     fp->x18E_flag_b0 = FALSE;

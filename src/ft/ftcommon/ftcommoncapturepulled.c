@@ -73,7 +73,7 @@ void ftCommonCapturePulledProcMap(GObj *fighter_gobj)
     }
     else
     {
-        if (capture_fp->lr == nGMDirectionR)
+        if (capture_fp->lr == nGMFacingR)
         {
             mpCollisionGetLREdgeRight(capture_fp->coll_data.ground_line_id, &capture_pos);
         }

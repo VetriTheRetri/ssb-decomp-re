@@ -170,7 +170,7 @@ s32 scTrainingMode_GetSpawnableItemCount()
 	for (item_count = 0; item_gobj != NULL; item_gobj = item_gobj->link_next)
 	{
 		if ((itGetStruct(item_gobj)->it_kind <= nITKindCommonEnd)
-			|| (itGetStruct(item_gobj)->it_kind >= nITKindMbMonsterStart))
+			|| (itGetStruct(item_gobj)->it_kind >= nITKindMBallMonsterStart))
 			item_count++;
 	}
 	return item_count;
@@ -1366,7 +1366,7 @@ void scTrainingMode_InitTrainingMode()
 		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
 		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
-		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? nGMDirectionL : nGMDirectionR;
+		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? nGMFacingL : nGMFacingR;
 		player_spawn.team = gBattleState->players[player].team;
 		player_spawn.player = player;
 		player_spawn.model_lod

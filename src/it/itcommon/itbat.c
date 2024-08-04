@@ -147,7 +147,7 @@ sb32 itBatWaitProcMap(GObj *item_gobj)
 // 0x80174E90
 sb32 itBatFallProcMap(GObj *item_gobj)
 {
-    itMapCheckThrownLanding(item_gobj, ITBAT_MAP_REBOUND_COMMON, ITBAT_MAP_REBOUND_GROUND, itBatWaitSetStatus);
+    itMapCheckDestroyDropped(item_gobj, ITBAT_MAP_REBOUND_COMMON, ITBAT_MAP_REBOUND_GROUND, itBatWaitSetStatus);
 
     return FALSE;
 }
@@ -190,7 +190,7 @@ sb32 itBatThrownProcUpdate(GObj *item_gobj)
 // 0x80174FA8
 sb32 itBatThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, ITBAT_MAP_REBOUND_COMMON, ITBAT_MAP_REBOUND_GROUND, itBatWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITBAT_MAP_REBOUND_COMMON, ITBAT_MAP_REBOUND_GROUND, itBatWaitSetStatus);
 }
 
 // 0x80174FD8
@@ -216,7 +216,7 @@ void itBatThrownSetStatus(GObj *item_gobj)
 // 0x80175044
 sb32 itBatDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, ITBAT_MAP_REBOUND_COMMON, ITBAT_MAP_REBOUND_GROUND, itBatWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITBAT_MAP_REBOUND_COMMON, ITBAT_MAP_REBOUND_GROUND, itBatWaitSetStatus);
 }
 
 // 0x80175074

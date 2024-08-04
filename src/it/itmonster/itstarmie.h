@@ -5,10 +5,10 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern void itStarmieNAttackUpdateSwift(GObj *item_gobj);
-extern sb32 itStarmieNAttackProcUpdate(GObj *item_gobj);
-extern void itStarmieNAttackInitItemVars(GObj *item_gobj);
-extern void itStarmieNAttackSetStatus(GObj *item_gobj);
+extern void itStarmieAttackUpdateSwift(GObj *item_gobj);
+extern sb32 itStarmieAttackProcUpdate(GObj *item_gobj);
+extern void itStarmieAttackInitItemVars(GObj *item_gobj);
+extern void itStarmieAttackSetStatus(GObj *item_gobj);
 extern sb32 itStarmieNFollowProcUpdate(GObj *item_gobj);
 extern void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj);
 extern void itStarmieNFollowInitItemVars(GObj *item_gobj);
@@ -21,6 +21,6 @@ extern sb32 itStarmieWeaponSwiftProcHit(GObj *weapon_gobj);
 extern sb32 itStarmieWeaponSwiftProcHop(GObj *weapon_gobj);
 extern sb32 itStarmieWeaponSwiftProcReflector(GObj *weapon_gobj);
 extern GObj* itStarmieWeaponSwiftMakeWeapon(GObj *item_gobj, Vec3f *pos);
-extern void itStarmieNAttackMakeSwift(GObj *item_gobj, Vec3f *pos);
+extern void itStarmieAttackMakeSwift(GObj *item_gobj, Vec3f *pos);
 
 #endif

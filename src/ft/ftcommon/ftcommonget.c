@@ -18,7 +18,7 @@ extern u8 gGM1PGameBonusHeartCount;
 // // // // // // // // // // // //
 
 // 0x80145990
-GObj* ftCommonGetFindItemPickupGObj(GObj *fighter_gobj, u8 pickup_mask)
+GObj* ftCommonGetFindItem(GObj *fighter_gobj, u8 pickup_mask)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     GObj *pickup_gobj = NULL;
@@ -101,7 +101,7 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
             switch (ip->it_kind)
             {
             case nITKindTomato:
-                ftParamHealDamage(fp, ITTOMATO_DAMAGE_HEAL);
+                ftParamSetHealDamage(fp, ITTOMATO_DAMAGE_HEAL);
                 itMainDestroyItem(item_gobj);
 
                 if ((gBattleState->game_type == nGMBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gGM1PGameBonusTomatoCount < U8_MAX))
@@ -111,7 +111,7 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
                 break;
 
             case nITKindHeart:
-                ftParamHealDamage(fp, ITHEART_DAMAGE_HEAL);
+                ftParamSetHealDamage(fp, ITHEART_DAMAGE_HEAL);
                 itMainDestroyItem(item_gobj);
 
                 if ((gBattleState->game_type == nGMBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gGM1PGameBonusHeartCount < U8_MAX))
@@ -154,7 +154,7 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
     {
         fp->command_vars.flags.flag1 = 0;
 
-        item_gobj = ftCommonGetFindItemPickupGObj(fighter_gobj, ((fp->status_info.status_id == nFTCommonStatusHeavyGet) ? FTCOMMON_GET_MASK_HEAVY : FTCOMMON_GET_MASK_LIGHT));
+        item_gobj = ftCommonGetFindItem(fighter_gobj, ((fp->status_info.status_id == nFTCommonStatusHeavyGet) ? FTCOMMON_GET_MASK_HEAVY : FTCOMMON_GET_MASK_LIGHT));
 
         if (item_gobj != NULL)
         {
@@ -265,7 +265,7 @@ sb32 ftCommonGetCheckInterruptCommon(GObj *fighter_gobj)
 
     if (fp->item_hold == NULL)
     {
-        GObj *item_gobj = ftCommonGetFindItemPickupGObj(fighter_gobj, (FTCOMMON_GET_MASK_LIGHT | FTCOMMON_GET_MASK_HEAVY));
+        GObj *item_gobj = ftCommonGetFindItem(fighter_gobj, (FTCOMMON_GET_MASK_LIGHT | FTCOMMON_GET_MASK_HEAVY));
 
         if (item_gobj != NULL)
         {

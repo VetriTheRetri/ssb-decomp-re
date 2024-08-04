@@ -22,20 +22,20 @@ lITStarRodWeaponStarSmashAttributes;        // 0x00000508
 
 itCreateDesc dITStarRodItemDesc =
 {
-    nITKindStarRod,                        // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindStarRod,                         // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITStarRodItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itStarRodFallProcUpdate,               // Proc Update
-    itStarRodFallProcMap,                  // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itStarRodFallProcUpdate,                // Proc Update
+    itStarRodFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -49,7 +49,7 @@ itStatusDesc dITStarRodStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itStarRodWaitProcMap,              // Proc Map
+        itStarRodWaitProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -60,8 +60,8 @@ itStatusDesc dITStarRodStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itStarRodFallProcUpdate,           // Proc Update
-        itStarRodFallProcMap,              // Proc Map
+        itStarRodFallProcUpdate,            // Proc Update
+        itStarRodFallProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -96,8 +96,8 @@ itStatusDesc dITStarRodStatusDescs[/* */] =
 
     // Status 4 (Fighter Drop)
     {
-        itStarRodFallProcUpdate,           // Proc Update
-        itStarRodDroppedProcMap,              // Proc Map
+        itStarRodFallProcUpdate,            // Proc Update
+        itStarRodDroppedProcMap,            // Proc Map
         itStarRodThrownProcHit,             // Proc Hit
         itStarRodThrownProcHit,             // Proc Shield
         itMainCommonProcHop,                // Proc Hop
@@ -110,14 +110,14 @@ itStatusDesc dITStarRodStatusDescs[/* */] =
 wpCreateDesc dITStarRodWeaponStarWeaponDesc =
 {
     0x00,                                   // Render flags?
-    nWPKindStarRodStar,                    // Weapon Kind
-    &gITManagerFileData,                           // Pointer to character's loaded files?
+    nWPKindStarRodStar,                     // Weapon Kind
+    &gITManagerFileData,                    // Pointer to character's loaded files?
     &lITStarRodWeaponStarWeaponAttributes,  // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -139,12 +139,12 @@ wpCreateDesc dITStarRodWeaponStarWeaponDesc =
 
 enum itStarRodStatus
 {
-    itStatus_StarRod_Wait,
-    itStatus_StarRod_Fall,
-    itStatus_StarRod_Hold,
-    itStatus_StarRod_Thrown,
-    itStatus_StarRod_Dropped,
-    itStatus_StarRod_EnumMax
+    nITStarRodStatusWait,
+    nITStarRodStatusFall,
+    nITStarRodStatusHold,
+    nITStarRodStatusThrown,
+    nITStarRodStatusDropped,
+    nITStarRodStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -175,7 +175,7 @@ sb32 itStarRodWaitProcMap(GObj *item_gobj)
 // 0x80177EE4
 sb32 itStarRodFallProcMap(GObj *item_gobj)
 {
-    itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodWaitSetStatus);
+    itMapCheckDestroyDropped(item_gobj, ITSTARROD_MAP_REBOUND_COMMON, ITSTARROD_MAP_REBOUND_GROUND, itStarRodWaitSetStatus);
 
     return FALSE;
 }
@@ -184,7 +184,7 @@ sb32 itStarRodFallProcMap(GObj *item_gobj)
 void itStarRodWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_Wait);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusWait);
 }
 
 // 0x80177F4C
@@ -195,15 +195,15 @@ void itStarRodFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_Fall);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusFall);
 }
 
 // 0x80177F90
 void itStarRodHoldSetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
+    DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_Hold);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusHold);
 }
 
 // 0x80177FC4
@@ -220,7 +220,7 @@ sb32 itStarRodThrownProcUpdate(GObj *item_gobj)
 // 0x80178000
 sb32 itStarRodThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITSTARROD_MAP_REBOUND_COMMON, ITSTARROD_MAP_REBOUND_GROUND, itStarRodWaitSetStatus);
 }
 
 // 0x80178030
@@ -238,7 +238,7 @@ sb32 itStarRodThrownProcHit(GObj *item_gobj)
 // 0x80178058
 void itStarRodThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_Thrown);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusThrown);
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 }
 
@@ -249,15 +249,15 @@ sb32 itStarRodDroppedProcMap(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        return itMapCheckDestroyLanding(item_gobj, 0.2F);
+        return itMapCheckDestroyLanding(item_gobj, ITSTARROD_MAP_REBOUND_COMMON);
     }
-    else return itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodWaitSetStatus);
+    else return itMapCheckDestroyDropped(item_gobj, ITSTARROD_MAP_REBOUND_COMMON, ITSTARROD_MAP_REBOUND_GROUND, itStarRodWaitSetStatus);
 }
 
 // 0x801780F0
 void itStarRodDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, itStatus_StarRod_Dropped);
+    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusDropped);
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 }
 
@@ -350,9 +350,9 @@ sb32 itStarRodWeaponStarProcHop(GObj *weapon_gobj)
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
-        wp->lr = nGMDirectionR;
+        wp->lr = nGMFacingR;
     }
-    else wp->lr = nGMDirectionL;
+    else wp->lr = nGMFacingL;
 
     return FALSE;
 }

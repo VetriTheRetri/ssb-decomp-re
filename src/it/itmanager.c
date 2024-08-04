@@ -12,10 +12,10 @@
 // // // // // // // // // // // //
 
 extern intptr_t D_NF_000000FB;
-extern intptr_t D_NF_00B1BCA0;
-extern intptr_t D_NF_00B1BDE0;
-extern intptr_t D_NF_00B1BDE0_other;
-extern intptr_t D_NF_00B1E640;
+extern intptr_t lITManagerParticleBankHeaderLo;         // 0x00B1BCA0
+extern intptr_t lITManagerParticleBankHeaderHi;         // 0x00B1BDE0
+extern intptr_t lITManagerParticleBankTextureLo;        // 0x00B1BDE0
+extern intptr_t lITManagerParticleBankTextureHi;        // 0x00B1E640
 
 extern void func_8000F364_FF64(DObj*, u8, void*, void*, void*);
 extern void func_8000DF34_EB34(GObj*);
@@ -115,7 +115,7 @@ GObj* (*dITManagerMakeProcList[/* */])(GObj*, Vec3f*, Vec3f*, u32) =
     itGBumperMakeItem,      // Common Stage Bumper
     itPakkunMakeItem,       // Mushroom Kingdom Piranha Plant
     itTargetMakeItem,       // Bonus Stage Target
-    itRBombMakeItem,        // Race to the Finish Bomb
+    itTaruBombMakeItem,        // Race to the Finish Bomb
     itGLuckyMakeItem,       // Saffron City Chansey
     itMarumineMakeItem,     // Saffron City Electrode
     itHitokageMakeItem,     // Saffron City Charmander
@@ -162,8 +162,13 @@ void itManagerInitItems(void) // Many linker things here
     }
     gITManagerFileData = (void*)rdManagerGetFileWithExternHeap(&D_NF_000000FB, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_000000FB), 0x10));
 
-    gITManagerParticleBankID = efAllocGetAddParticleBankID(&D_NF_00B1BCA0, &D_NF_00B1BDE0, &D_NF_00B1BDE0_other, &D_NF_00B1E640);
-
+    gITManagerParticleBankID = efAllocGetAddParticleBankID
+    (
+        &lITManagerParticleBankHeaderLo, 
+        &lITManagerParticleBankHeaderHi,
+        &lITManagerParticleBankTextureLo, 
+        &lITManagerParticleBankTextureHi
+    );
     itManagerSetupContainerDrops();
     itManagerInitMonsterVars();
     ifCommonItemArrowSetAttr();
@@ -344,7 +349,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     ip->item_hit.can_reflect        = attributes->can_reflect;
     ip->item_hit.can_shield         = attributes->can_shield;
     ip->item_hit.hitbox_count       = attributes->hitbox_count;
-    ip->item_hit.interact_mask      = GMHITCOLLISION_MASK_ALL;
+    ip->item_hit.interact_mask      = GMHITCOLLISION_FLAG_ALL;
 
     ip->item_hit.attack_id                  = nFTMotionAttackIDNone;
     ip->item_hit.motion_count               = ftParamGetMotionCount();
@@ -361,7 +366,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     ip->item_hurt.size.x        = attributes->hurt_size.x * 0.5F;
     ip->item_hurt.size.y        = attributes->hurt_size.y * 0.5F;
     ip->item_hurt.size.z        = attributes->hurt_size.z * 0.5F;
-    ip->item_hurt.interact_mask = GMHITCOLLISION_MASK_ALL;
+    ip->item_hurt.interact_mask = GMHITCOLLISION_FLAG_ALL;
 
     ip->shield_collide_angle = 0.0F;
     ip->shield_collide_vec.x = 0.0F;
@@ -509,7 +514,7 @@ void itManagerMakeRandomItem(GObj *item_gobj)
         }
         if (itManagerGetCurrentAlloc() != NULL)
         {
-            index = itMainGetWeightedItemID(&gITManagerSpawnActor.weights);
+            index = itMainGetWeightedItemKind(&gITManagerSpawnActor.weights);
 
             mpCollisionGetMapObjPositionID(gITManagerSpawnActor.item_mapobjs[mtTrigGetRandomIntRange(gITManagerSpawnActor.item_mapobj_count)], &pos);
 
@@ -603,7 +608,7 @@ GObj* itManagerMakeItemSpawnActor(void)
                     }
                 }
                 gITManagerSpawnActor.weights.item_count = j;
-                gITManagerSpawnActor.weights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gITManagerSpawnActor.weights.item_ids), 0x0);
+                gITManagerSpawnActor.weights.item_kinds = (u8*)gsMemoryAlloc(j * sizeof(*gITManagerSpawnActor.weights.item_kinds), 0x0);
                 gITManagerSpawnActor.weights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gITManagerSpawnActor.weights.item_totals), 0x2);
 
                 item_id_toggles = gBattleState->item_toggles;
@@ -614,7 +619,7 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                     {
-                        gITManagerSpawnActor.weights.item_ids[j] = i;
+                        gITManagerSpawnActor.weights.item_kinds[j] = i;
                         gITManagerSpawnActor.weights.item_totals[j] = item_weights;
                         item_weights += item_weight_qty->item_quantities[i];
 
@@ -675,7 +680,7 @@ void itManagerSetupContainerDrops(void)
             j++;
 
             gITManagerRandomWeights.item_count = j;
-            gITManagerRandomWeights.item_ids = (u8*)gsMemoryAlloc(j * sizeof(*gITManagerRandomWeights.item_ids), 0x0);
+            gITManagerRandomWeights.item_kinds = (u8*)gsMemoryAlloc(j * sizeof(*gITManagerRandomWeights.item_kinds), 0x0);
             gITManagerRandomWeights.item_totals = (u16*)gsMemoryAlloc(j * sizeof(*gITManagerRandomWeights.item_totals), 0x2);
 
             item_id_toggles = gBattleState->item_toggles >> nITKindUtilityStart;
@@ -686,13 +691,13 @@ void itManagerSetupContainerDrops(void)
             {
                 if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
                 {
-                    gITManagerRandomWeights.item_ids[j] = i;
+                    gITManagerRandomWeights.item_kinds[j] = i;
                     gITManagerRandomWeights.item_totals[j] = item_weights;
                     item_weights += item_weight_qty->item_quantities[i];
                     j++;
                 }
             }
-            gITManagerRandomWeights.item_ids[j] = nITKindMbMonsterStart;
+            gITManagerRandomWeights.item_kinds[j] = nITKindMBallMonsterStart;
             gITManagerRandomWeights.item_totals[j] = item_weights;
 
             item_tenth_round = (gITManagerRandomWeights.item_num * 0.1F);
@@ -713,7 +718,7 @@ void itManagerSetupContainerDrops(void)
 void itManagerInitMonsterVars(void)
 {
     gITManagerMonsterData.monster_curr = gITManagerMonsterData.monster_prev = U8_MAX;
-    gITManagerMonsterData.monster_count = (nITKindMbMonsterEnd - nITKindMbMonsterStart);
+    gITManagerMonsterData.monster_count = (nITKindMBallMonsterEnd - nITKindMBallMonsterStart);
 }
 
 // 0x8016F238

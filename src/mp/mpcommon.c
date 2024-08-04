@@ -41,7 +41,7 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
 
         if (translate->x <= edge_pos.x)
         {
-            if ((fp->lr == nGMDirectionL) && (fp->input.pl.stick_range.x > -60))
+            if ((fp->lr == nGMFacingL) && (fp->input.pl.stick_range.x > -60))
             {
                 edge_pos.x += 40.0F;
 
@@ -53,13 +53,13 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
 
                 if (mpCollisionCheckLWallLineCollisionSame(&edge_pos, &sp4C, NULL, NULL, NULL, NULL) == FALSE)
                 {
-                    fp->lr = nGMDirectionL;
+                    fp->lr = nGMFacingL;
 
                     goto setground;
                 }
             }
         }
-        else if ((fp->lr == nGMDirectionR) && (fp->input.pl.stick_range.x < 60))
+        else if ((fp->lr == nGMFacingR) && (fp->input.pl.stick_range.x < 60))
         {
             mpCollisionGetLREdgeRight(ground_line_id, &edge_pos);
 
@@ -73,7 +73,7 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
 
             if (mpCollisionCheckRWallLineCollisionSame(&edge_pos, &sp4C, NULL, NULL, NULL, NULL) == FALSE)
             {
-                fp->lr = nGMDirectionR;
+                fp->lr = nGMFacingR;
 
                 goto setground;
             }

@@ -19,7 +19,7 @@ void ftCommonCliffCommonProcPhysics(GObj *fighter_gobj)
     DObj *topn_joint = fp->joint[nFTPartsJointTopN], *transn_joint = fp->joint[nFTPartsJointTransN];
     Vec3f vel;
 
-    if (fp->lr == nGMDirectionR)
+    if (fp->lr == nGMFacingR)
     {
         mpCollisionGetLREdgeLeft(fp->coll_data.cliff_id, &vel);
     }
@@ -53,7 +53,7 @@ void ftCommonCliffCatchSetStatus(GObj *fighter_gobj)
 
     fp->is_cliff_hold = TRUE;
 
-    if (fp->lr == nGMDirectionR)
+    if (fp->lr == nGMFacingR)
     {
         mpCollisionGetLREdgeLeft(fp->coll_data.cliff_id, &vel);
     }
@@ -73,7 +73,7 @@ void ftCommonCliffCommonProcDamage(GObj *fighter_gobj)
     mpObjectColl *object_coll = &fp->coll_data.object_coll;
     Vec3f vel;
 
-    if (fp->lr == nGMDirectionR)
+    if (fp->lr == nGMFacingR)
     {
         mpCollisionGetLREdgeLeft(fp->coll_data.cliff_id, &vel);
     }

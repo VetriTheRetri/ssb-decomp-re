@@ -16,20 +16,20 @@ extern intptr_t lITHeartItemAttributes;     // 0x00000100
 
 itCreateDesc dITHeartItemDesc =
 {
-    nITKindHeart,                          // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindHeart,                           // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITHeartItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itHeartFallProcUpdate,                 // Proc Update
-    itHeartFallProcMap,                    // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itHeartFallProcUpdate,                  // Proc Update
+    itHeartFallProcMap,                     // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -43,7 +43,7 @@ itStatusDesc dITHeartStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itHeartWaitProcMap,                // Proc Map
+        itHeartWaitProcMap,                 // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -54,8 +54,8 @@ itStatusDesc dITHeartStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itHeartFallProcUpdate,             // Proc Update
-        itHeartFallProcMap,                // Proc Map
+        itHeartFallProcUpdate,              // Proc Update
+        itHeartFallProcMap,                 // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -66,8 +66,8 @@ itStatusDesc dITHeartStatusDescs[/* */] =
 
     // Status 2 (Fighter Drop)
     {
-        itHeartFallProcUpdate,             // Proc Update
-        itHeartDroppedProcMap,                // Proc Map
+        itHeartFallProcUpdate,              // Proc Update
+        itHeartDroppedProcMap,              // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -85,10 +85,10 @@ itStatusDesc dITHeartStatusDescs[/* */] =
 
 enum itHeartStatus
 {
-    itStatus_Heart_Wait,
-    itStatus_Heart_Fall,
-    itStatus_Heart_Dropped,
-    itStatus_Heart_EnumMax
+    nITHeartStatusWait,
+    nITHeartStatusFall,
+    nITHeartStatusDropped,
+    nITHeartStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -119,14 +119,14 @@ sb32 itHeartWaitProcMap(GObj *item_gobj)
 // 0x80174750
 sb32 itHeartFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.1F, 0.0F, itHeartWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITHEART_MAP_REBOUND_COMMON, ITHEART_MAP_REBOUND_GROUND, itHeartWaitSetStatus);
 }
 
 // 0x80174780
 void itHeartWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, itStatus_Heart_Wait);
+    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusWait);
 }
 
 // 0x801747B4
@@ -137,19 +137,19 @@ void itHeartFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, itStatus_Heart_Fall);
+    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusFall);
 }
 
 // 0x801747F8
 sb32 itHeartDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.1F, 0.0F, itHeartWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITHEART_MAP_REBOUND_COMMON, ITHEART_MAP_REBOUND_GROUND, itHeartWaitSetStatus);
 }
 
 // 0x80174828
 void itHeartDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, itStatus_Heart_Dropped);
+    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusDropped);
 }
 
 // 0x80174850

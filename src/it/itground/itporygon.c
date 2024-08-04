@@ -18,19 +18,19 @@ extern intptr_t lITPorygonHitParties;       // 0x000001B4
 
 itCreateDesc dITPorygonItemDesc = 
 {
-    nITKindPorygon,                        // Item Kind
-    &gGRCommonStruct.yamabuki.item_head,      // Pointer to item file data?
+    nITKindPorygon,                         // Item Kind
+    &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?
     &lITPorygonItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateNew,         // Hitbox Update State
-    itPorygonCommonProcUpdate,            // Proc Update
+    nGMHitUpdateNew,                        // Hitbox Update State
+    itPorygonCommonProcUpdate,              // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
@@ -80,7 +80,7 @@ void itPorygonCommonUpdateHitParty(GObj *item_gobj)
 
         pos.y = 0.0F;
 
-        efManagerDustLightMakeEffect(&pos, nGMDirectionL, 1.0F);
+        efManagerDustLightMakeEffect(&pos, nGMFacingL, 1.0F);
     }
 }
 

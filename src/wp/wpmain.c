@@ -45,7 +45,7 @@ void wpMainVelSetLR(GObj *weapon_gobj) // Set weapon's facing direction based on
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    wp->lr = (wp->phys_info.vel_air.x >= 0.0F) ? nGMDirectionR : nGMDirectionL;
+    wp->lr = (wp->phys_info.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;
 }
 
 // 0x80167FA0
@@ -174,7 +174,7 @@ void wpMainReflectorRotateWeaponModel(GObj *weapon_gobj)
 
     direction.x = 0;
     direction.y = 0;
-    direction.z = (vel.x > 0.0F) ? nGMDirectionL : nGMDirectionR;
+    direction.z = (vel.x > 0.0F) ? nGMFacingL : nGMFacingR;
 
     lbVector_Vec3fNormalize(&vel);
 
@@ -182,7 +182,7 @@ void wpMainReflectorRotateWeaponModel(GObj *weapon_gobj)
 
     rotate = &DObjGetStruct(weapon_gobj)->rotate.vec.f;
 
-    if (direction.z == nGMDirectionL)
+    if (direction.z == nGMFacingL)
     {
         rotate->y = F_CST_DTOR32(90.0F); // HALF_PI32
         rotate->x = atan2f(angle.x, angle.y);

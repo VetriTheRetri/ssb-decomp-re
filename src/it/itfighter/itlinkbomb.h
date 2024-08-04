@@ -5,8 +5,8 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern void itLinkBombExplodeNWaitUpdateScale(GObj* item_gobj);
-extern void itLinkBombExplodeNMakeEffectGotoSetStatus(GObj* item_gobj);
+extern void itLinkBombExplodeWaitUpdateScale(GObj* item_gobj);
+extern void itLinkBombExplodeMakeEffectGotoSetStatus(GObj* item_gobj);
 extern void func_ovl3_80185B18(GObj* item_gobj);
 extern sb32 itLinkBombCommonProcDamage(GObj* item_gobj);
 extern sb32 itLinkBombThrownProcHit(GObj* item_gobj);
@@ -26,13 +26,13 @@ extern sb32 itLinkBombDroppedProcUpdate(GObj* item_gobj);
 extern sb32 itLinkBombDroppedProcHit(GObj* item_gobj);
 extern sb32 itLinkBombDroppedProcDamage(GObj* item_gobj);
 extern void itLinkBombDroppedSetStatus(GObj* item_gobj);
-extern void itLinkBombExplodeNInitItemVars(GObj* item_gobj);
-extern void itLinkBombExplodeNUpdateHitEvent(GObj* item_gobj);
+extern void itLinkBombExplodeInitItemVars(GObj* item_gobj);
+extern void itLinkBombExplodeUpdateHitEvent(GObj* item_gobj);
 extern sb32 itLinkBombCommonProcShield(GObj* item_gobj);
 extern sb32 func_ovl3_801864BC(GObj* item_gobj);
-extern void itLinkBombExplodeNInitHitbox(GObj* item_gobj);
-extern sb32 itLinkBombExplodeNProcUpdate(GObj* item_gobj);
-extern void itLinkBombExplodeNSetStatus(GObj* item_gobj);
+extern void itLinkBombExplodeInitHitbox(GObj* item_gobj);
+extern sb32 itLinkBombExplodeProcUpdate(GObj* item_gobj);
+extern void itLinkBombExplodeSetStatus(GObj* item_gobj);
 extern GObj* itLinkBombMakeItem(GObj* fighter_gobj, Vec3f* pos, Vec3f* vel);
 
 #endif

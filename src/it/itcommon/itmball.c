@@ -20,20 +20,20 @@ extern intptr_t lITMBallMatAnimJoint;       // 0x00009520
 
 itCreateDesc dITMBallItemDesc =
 {
-    nITKindMBall,                          // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindMBall,                           // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITMBallITemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformNull,               // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformNull,                   // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itMBallFallProcUpdate,                 // Proc Update
-    itMBallFallProcMap,                    // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itMBallFallProcUpdate,                  // Proc Update
+    itMBallFallProcMap,                     // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -47,7 +47,7 @@ itStatusDesc dITMBallStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itMBallWaitProcMap,              // Proc Map
+        itMBallWaitProcMap,                 // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -58,8 +58,8 @@ itStatusDesc dITMBallStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itMBallFallProcUpdate,             // Proc Update
-        itMBallFallProcMap,                // Proc Map
+        itMBallFallProcUpdate,              // Proc Update
+        itMBallFallProcMap,                 // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -84,30 +84,30 @@ itStatusDesc dITMBallStatusDescs[/* */] =
     {
         itMBallThrownProcUpdate,            // Proc Update
         itMBallThrownProcMap,               // Proc Map
-        itMBallCommonProcHit,             // Proc Hit
-        itMBallCommonProcHit,             // Proc Shield
+        itMBallCommonProcHit,               // Proc Hit
+        itMBallCommonProcHit,               // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itMBallCommonProcHit,             // Proc Set-Off
-        itMBallCommonProcReflector,       // Proc Reflector
+        itMBallCommonProcHit,               // Proc Set-Off
+        itMBallCommonProcReflector,         // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itMBallFallProcUpdate,             // Proc Update
+        itMBallFallProcUpdate,              // Proc Update
         itMBallThrownProcMap,               // Proc Map
-        itMBallCommonProcHit,             // Proc Hit
-        itMBallCommonProcHit,             // Proc Shield
+        itMBallCommonProcHit,               // Proc Hit
+        itMBallCommonProcHit,               // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itMBallCommonProcHit,             // Proc Set-Off
-        itMBallCommonProcReflector,       // Proc Reflector
+        itMBallCommonProcHit,               // Proc Set-Off
+        itMBallCommonProcReflector,         // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 5 (Ground Open)
     {
-        itMBallGOpenProcUpdate,             // Proc Update
-        itMBallGOpenProcMap,                // Proc Map
+        itMBallOpenProcUpdate,             // Proc Update
+        itMBallOpenProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -118,13 +118,13 @@ itStatusDesc dITMBallStatusDescs[/* */] =
 
     // Status 6 (Air Open)
     {
-        itMBallAOpenProcUpdate,             // Proc Update
-        itMBallAOpenProcMap,                // Proc Map
+        itMBallOpenAirProcUpdate,             // Proc Update
+        itMBallOpenAirProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
-        itMBallCommonProcReflector,       // Proc Reflector
+        itMBallCommonProcReflector,         // Proc Reflector
         NULL                                // Proc Damage
     }
 };
@@ -137,14 +137,14 @@ itStatusDesc dITMBallStatusDescs[/* */] =
 
 enum itMBallStatus
 {
-    itStatus_MBall_Wait,
-    itStatus_MBall_Fall,
-    itStatus_MBall_Hold,
-    itStatus_MBall_Thrown,
-    itStatus_MBall_Dropped,
-    itStatus_MBall_GOpen,
-    itStatus_MBall_AOpen,
-    itStatus_MBall_EnumMax
+    nITMBallStatusWait,
+    nITMBallStatusFall,
+    nITMBallStatusHold,
+    nITMBallStatusThrown,
+    nITMBallStatusDropped,
+    nITMBallStatusOpen,
+    nITMBallStatusOpenAir,
+    nITMBallStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -154,7 +154,7 @@ enum itMBallStatus
 // // // // // // // // // // // //
 
 // 0x8017C690
-void itMBallGOpenAddAnim(GObj *item_gobj)
+void itMBallOpenAddAnim(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -165,7 +165,7 @@ void itMBallGOpenAddAnim(GObj *item_gobj)
 }
 
 // 0x8017C6F8
-void itMBallGOpenClearAnim(GObj *item_gobj)
+void itMBallOpenClearAnim(GObj *item_gobj)
 {
     DObj *dobj = DObjGetStruct(item_gobj);
 
@@ -197,7 +197,7 @@ sb32 itMBallWaitProcMap(GObj *item_gobj)
 // 0x8017C790
 sb32 itMBallFallProcMap(GObj *item_gobj)
 {
-    itMapCheckThrownLanding(item_gobj, 0.2F, 0.2F, itMBallWaitSetStatus);
+    itMapCheckDestroyDropped(item_gobj, ITMBALL_MAP_REBOUND_COMMON, ITMBALL_MAP_REBOUND_GROUND, itMBallWaitSetStatus);
 
     return FALSE;
 }
@@ -206,7 +206,7 @@ sb32 itMBallFallProcMap(GObj *item_gobj)
 void itMBallWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_Wait);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusWait);
 }
 
 // 0x8017C7FC
@@ -217,7 +217,7 @@ void itMBallFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_Fall);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusFall);
 }
 
 // 0x8017C840
@@ -227,9 +227,9 @@ void itMBallHoldSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    ip->item_vars.m_ball.owner_gobj = ip->owner_gobj;
+    ip->item_vars.mball.owner_gobj = ip->owner_gobj;
 
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_Hold);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusHold);
 }
 
 // 0x8017C880
@@ -251,11 +251,11 @@ sb32 itMBallThrownProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->item_vars.m_ball.is_rebound != FALSE)
+    if (ip->item_vars.mball.is_rebound != FALSE)
     {
-        itMapCheckLanding(item_gobj, 0.2F, 0.2F, itMBallGOpenSetStatus);
+        itMapCheckLanding(item_gobj, ITMBALL_MAP_REBOUND_COMMON, ITMBALL_MAP_REBOUND_GROUND, itMBallOpenSetStatus);
     }
-    else itMapCheckThrownLanding(item_gobj, 0.2F, 0.2F, itMBallGOpenSetStatus);
+    else itMapCheckDestroyDropped(item_gobj, ITMBALL_MAP_REBOUND_COMMON, ITMBALL_MAP_REBOUND_GROUND, itMBallOpenSetStatus);
     
     return FALSE;
 }
@@ -267,7 +267,7 @@ sb32 itMBallCommonProcHit(GObj *item_gobj)
 
     ip->item_hit.update_state = nGMHitUpdateDisable;
 
-    ip->item_vars.m_ball.is_rebound = TRUE;
+    ip->item_vars.mball.is_rebound = TRUE;
 
     itMainVelSetRebound(item_gobj);
 
@@ -283,11 +283,11 @@ sb32 itMBallCommonProcReflector(GObj *item_gobj)
 
     ip->item_hit.update_state = nGMHitUpdateDisable;
 
-    ip->item_vars.m_ball.is_rebound = TRUE;
+    ip->item_vars.mball.is_rebound = TRUE;
 
     itMainVelSetRebound(item_gobj);
 
-    fighter_gobj = ip->item_vars.m_ball.owner_gobj;
+    fighter_gobj = ip->item_vars.mball.owner_gobj;
     ip->owner_gobj = fighter_gobj;
     fp = ftGetStruct(fighter_gobj);
 
@@ -302,62 +302,62 @@ sb32 itMBallCommonProcReflector(GObj *item_gobj)
 // 0x8017C9E0
 void itMBallThrownSetStatus(GObj *item_gobj)
 {
-    itMBallGOpenAddAnim(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_Thrown);
+    itMBallOpenAddAnim(item_gobj);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusThrown);
 }
 
 // 0x8017CA14
 void itMBallDroppedSetStatus(GObj *item_gobj)
 {
-    itMBallGOpenAddAnim(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_Dropped);
+    itMBallOpenAddAnim(item_gobj);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusDropped);
 }
 
 // 0x8017CA48
-sb32 itMBallGOpenProcUpdate(GObj *m_ball_gobj)
+sb32 itMBallOpenProcUpdate(GObj *mball_gobj)
 {
-    itStruct *m_ball_ip = itGetStruct(m_ball_gobj);
+    itStruct *mball_ip = itGetStruct(mball_gobj);
     itStruct *monster_ip;
     GObj *monster_gobj;
     Vec3f vel;
     s32 unused[2];
 
-    if (m_ball_ip->it_multi == 0)
+    if (mball_ip->it_multi == 0)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
         if (dITManagerMonsterSpawnID == 0)
         {
-            itMainMakeMonster(m_ball_gobj);
+            itMainMakeMonster(mball_gobj);
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemID(m_ball_gobj, dITManagerMonsterSpawnID + (nITKindMbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemID(mball_gobj, dITManagerMonsterSpawnID + (nITKindMBallMonsterStart - 1), &DObjGetStruct(mball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {
             monster_ip = itGetStruct(monster_gobj);
 
-            monster_ip->owner_gobj = m_ball_ip->owner_gobj;
-            monster_ip->team = m_ball_ip->team;
-            monster_ip->player = m_ball_ip->player;
-            monster_ip->handicap = m_ball_ip->handicap;
-            monster_ip->player_number = m_ball_ip->player_number;
-            monster_ip->display_mode = m_ball_ip->display_mode;
+            monster_ip->owner_gobj = mball_ip->owner_gobj;
+            monster_ip->team = mball_ip->team;
+            monster_ip->player = mball_ip->player;
+            monster_ip->handicap = mball_ip->handicap;
+            monster_ip->player_number = mball_ip->player_number;
+            monster_ip->display_mode = mball_ip->display_mode;
         }
         return TRUE;
     }
-    m_ball_ip->it_multi--;
+    mball_ip->it_multi--;
 
-    if (m_ball_ip->item_vars.m_ball.effect_gobj != NULL)
+    if (mball_ip->item_vars.mball.effect_gobj != NULL)
     {
-        DObjGetStruct(m_ball_ip->item_vars.m_ball.effect_gobj)->translate.vec.f = DObjGetStruct(m_ball_gobj)->translate.vec.f;
+        DObjGetStruct(mball_ip->item_vars.mball.effect_gobj)->translate.vec.f = DObjGetStruct(mball_gobj)->translate.vec.f;
     }
     return FALSE;
 }
 
 // 0x8017CB38
-sb32 itMBallGOpenProcMap(GObj *item_gobj)
+sb32 itMBallOpenProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -365,13 +365,13 @@ sb32 itMBallGOpenProcMap(GObj *item_gobj)
     {
         ip->is_attach_surface = FALSE;
 
-        itMBallAOpenSetStatus(item_gobj);
+        itMBallOpenAirSetStatus(item_gobj);
     }
     return FALSE;
 }
 
 // 0x8017CB84
-void itMBallGOpenInitItemVars(GObj *item_gobj)
+void itMBallOpenInitItemVars(GObj *item_gobj)
 {
     s32 unused[2];
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -406,76 +406,76 @@ void itMBallGOpenInitItemVars(GObj *item_gobj)
             ftParamMakeRumble(fp, 8, 20);
         }
     }
-    ip->item_vars.m_ball.effect_gobj = efManagerMBallRaysMakeEffect(&dobj->translate.vec.f);
+    ip->item_vars.mball.effect_gobj = efManagerMBallRaysMakeEffect(&dobj->translate.vec.f);
 
-    itMBallGOpenClearAnim(item_gobj);
+    itMBallOpenClearAnim(item_gobj);
 
     ip->item_hit.update_state = nGMHitUpdateDisable;
     ip->item_hit.can_reflect = FALSE;
 }
 
 // 0x8017CC88
-void itMBallGOpenSetStatus(GObj *item_gobj)
+void itMBallOpenSetStatus(GObj *item_gobj)
 {
-    itMBallGOpenInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_GOpen);
+    itMBallOpenInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusOpen);
 }
 
 // 0x8017CCBC
-sb32 itMBallAOpenProcUpdate(GObj *m_ball_gobj)
+sb32 itMBallOpenAirProcUpdate(GObj *mball_gobj)
 {
-    itStruct *m_ball_ip = itGetStruct(m_ball_gobj);
+    itStruct *mball_ip = itGetStruct(mball_gobj);
     itStruct *monster_ip;
     GObj *monster_gobj;
     Vec3f vel;
     s32 unused[2];
 
-    if (m_ball_ip->it_multi == 0)
+    if (mball_ip->it_multi == 0)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
         if (dITManagerMonsterSpawnID == 0)
         {
-            itMainMakeMonster(m_ball_gobj);
+            itMainMakeMonster(mball_gobj);
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemID(m_ball_gobj, dITManagerMonsterSpawnID + (nITKindMbMonsterStart - 1), &DObjGetStruct(m_ball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemID(mball_gobj, dITManagerMonsterSpawnID + (nITKindMBallMonsterStart - 1), &DObjGetStruct(mball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
 
         if (monster_gobj != NULL)
         {
             monster_ip = itGetStruct(monster_gobj);
 
-            monster_ip->owner_gobj = m_ball_ip->owner_gobj;
-            monster_ip->team = m_ball_ip->team;
-            monster_ip->player = m_ball_ip->player;
-            monster_ip->handicap = m_ball_ip->handicap;
-            monster_ip->player_number = m_ball_ip->player_number;
-            monster_ip->display_mode = m_ball_ip->display_mode;
+            monster_ip->owner_gobj = mball_ip->owner_gobj;
+            monster_ip->team = mball_ip->team;
+            monster_ip->player = mball_ip->player;
+            monster_ip->handicap = mball_ip->handicap;
+            monster_ip->player_number = mball_ip->player_number;
+            monster_ip->display_mode = mball_ip->display_mode;
         }
         return TRUE;
     }
-    m_ball_ip->it_multi--;
+    mball_ip->it_multi--;
 
-    if (m_ball_ip->item_vars.m_ball.effect_gobj != NULL)
+    if (mball_ip->item_vars.mball.effect_gobj != NULL)
     {
-        DObjGetStruct(m_ball_ip->item_vars.m_ball.effect_gobj)->translate.vec.f = DObjGetStruct(m_ball_gobj)->translate.vec.f;
+        DObjGetStruct(mball_ip->item_vars.mball.effect_gobj)->translate.vec.f = DObjGetStruct(mball_gobj)->translate.vec.f;
     }
     return FALSE;
 }
 
 // 0x8017CDAC
-sb32 itMBallAOpenProcMap(GObj *item_gobj)
+sb32 itMBallOpenAirProcMap(GObj *item_gobj)
 {
-    itMapCheckThrownLanding(item_gobj, 0.2F, 0.2F, itMBallGOpenSetStatus);
+    itMapCheckDestroyDropped(item_gobj, ITMBALL_MAP_REBOUND_COMMON, ITMBALL_MAP_REBOUND_GROUND, itMBallOpenSetStatus);
 
     return FALSE;
 }
 
 // 0x8017CDE4
-void itMBallAOpenSetStatus(GObj *item_gobj)
+void itMBallOpenAirSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, itStatus_MBall_AOpen);
+    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusOpenAir);
 }
 
 // 0x8017CE0C
@@ -499,7 +499,7 @@ GObj* itMBallMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = ITMBALL_SPAWN_WAIT;
 
-        ip->item_vars.m_ball.is_rebound = FALSE;
+        ip->item_vars.mball.is_rebound = FALSE;
 
         ip->is_unused_item_bool = TRUE;
 

@@ -21,20 +21,20 @@ extern intptr_t lITSawamuraDisplayList;     // 0x00012340
 // 0x8018B220
 itCreateDesc dITSawamuraItemDesc =
 {
-    nITKindSawamura,                       // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindSawamura,                        // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITSawamuraItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,         // Hitbox Update State
-    itSawamuraCommonProcUpdate,           // Proc Update
-    itSawamuraCommonProcMap,              // Proc Map
+    nGMHitUpdateNew,                        // Hitbox Update State
+    itSawamuraCommonProcUpdate,             // Proc Update
+    itSawamuraCommonProcMap,                // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -48,8 +48,8 @@ itStatusDesc dITSawamuraStatusDescs[/* */] =
 {
     // Status 0 (Air Fall)
     {
-        itSawamuraFallProcUpdate,          // Proc Update
-        itSawamuraFallProcMap,             // Proc Map
+        itSawamuraFallProcUpdate,           // Proc Update
+        itSawamuraFallProcMap,              // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -60,8 +60,8 @@ itStatusDesc dITSawamuraStatusDescs[/* */] =
 
     // Status 1 (Air Fall)
     {
-        itSawamuraWaitProcUpdate,          // Proc Update
-        itSawamuraWaitProcMap,             // Proc Map
+        itSawamuraWaitProcUpdate,           // Proc Update
+        itSawamuraWaitProcMap,              // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -72,7 +72,7 @@ itStatusDesc dITSawamuraStatusDescs[/* */] =
 
     // Status 2 (Neutral Attack)
     {
-        itSawamuraNAttackProcUpdate,        // Proc Update
+        itSawamuraAttackProcUpdate,         // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -91,10 +91,10 @@ itStatusDesc dITSawamuraStatusDescs[/* */] =
 
 enum itSawamuraStatus
 {
-    itStatus_Sawamura_Fall,
-    itStatus_Sawamura_Wait,
-    itStatus_Sawamura_NAttack,
-    itStatus_Sawamura_EnumMax
+    nITSawamuraStatusFall,
+    nITSawamuraStatusWait,
+    nITSawamuraStatusAttack,
+    nITSawamuraStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -130,7 +130,7 @@ sb32 itSawamuraFallProcMap(GObj *item_gobj)
 // 0x801826A8
 void itSawamuraFallSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, itStatus_Sawamura_Fall);
+    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, nITSawamuraStatusFall);
 }
 
 // 0x801826D0
@@ -140,7 +140,7 @@ sb32 itSawamuraWaitProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        itSawamuraNAttackSetStatus(item_gobj);
+        itSawamuraAttackSetStatus(item_gobj);
     }
     ip->it_multi--;
 
@@ -158,22 +158,22 @@ sb32 itSawamuraWaitProcMap(GObj *item_gobj)
 // 0x8018273C
 void itSawamuraWaitSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, itStatus_Sawamura_Wait);
+    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, nITSawamuraStatusWait);
 }
 
 // 0x80182764
-sb32 itSawamuraNAttackProcUpdate(GObj *item_gobj)
+sb32 itSawamuraAttackProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_TVEL);
 
-    if ((ip->lr == nGMDirectionR) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X)))
+    if ((ip->lr == nGMFacingR) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->blastzone_right - ITSAWAMURA_DESPAWN_OFF_X)))
     {
         return TRUE;
     }
-    else if ((ip->lr == nGMDirectionL) && (dobj->translate.vec.f.x <= (gMPCollisionGroundData->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
+    else if ((ip->lr == nGMFacingL) && (dobj->translate.vec.f.x <= (gMPCollisionGroundData->blastzone_left + ITSAWAMURA_DESPAWN_OFF_X)))
     {
         return TRUE;
     }
@@ -187,7 +187,7 @@ sb32 itSawamuraNAttackProcUpdate(GObj *item_gobj)
 }
 
 // 0x8018285C
-void itSawamuraNAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
+void itSawamuraAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     ftStruct *fp = ftGetStruct(fighter_gobj);
@@ -208,16 +208,16 @@ void itSawamuraNAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     lbVector_Vec3fGetEulerRotation(&ip->phys_info.vel_air, MTVECTOR_AXIS_Z, atan2f(dist.y, dist.x));
 
-    ip->lr = (dist.x < 0.0F) ? nGMDirectionL : nGMDirectionR;
+    ip->lr = (dist.x < 0.0F) ? nGMFacingL : nGMFacingR;
 
-    if (ip->lr == nGMDirectionR)
+    if (ip->lr == nGMFacingR)
     {
         ij->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }
 }
 
 // 0x80182958
-void itSawamuraNAttackInitItemVars(GObj *item_gobj)
+void itSawamuraAttackInitItemVars(GObj *item_gobj)
 {
     GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
     itStruct *ip = itGetStruct(item_gobj);
@@ -255,7 +255,7 @@ void itSawamuraNAttackInitItemVars(GObj *item_gobj)
         }
         fighter_gobj = fighter_gobj->link_next;
     }
-    itSawamuraNAttackSetFollowPlayerLR(item_gobj, victim_gobj);
+    itSawamuraAttackSetFollowPlayerLR(item_gobj, victim_gobj);
 
     if (ip->it_kind == nITKindSawamura)
     {
@@ -271,10 +271,10 @@ void itSawamuraNAttackInitItemVars(GObj *item_gobj)
 }
 
 // 0x80182AAC
-void itSawamuraNAttackSetStatus(GObj *item_gobj)
+void itSawamuraAttackSetStatus(GObj *item_gobj)
 {
-    itSawamuraNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, itStatus_Sawamura_NAttack);
+    itSawamuraAttackInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, nITSawamuraStatusAttack);
 }
 
 // 0x80182AE0

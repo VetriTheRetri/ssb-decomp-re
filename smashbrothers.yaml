@@ -847,7 +847,7 @@ segments:
       - [0x0FE550, c, it/itground/itporygon]
       - [0x0FE7E0, c, it/itground/ithitokage]
       - [0x0FEE80, c, it/itground/itfushigibana]
-      - [0x0FF4B0, c, it/itground/itrbomb]
+      - [0x0FF4B0, c, it/itground/ittarubomb]
       - [0x0FFD90, c, it/itfighter/itnesspkfire]
       - [0x100400, c, it/itfighter/itlinkbomb]
 
@@ -939,7 +939,7 @@ segments:
       - [0x105EA0, .data, it/itground/itporygon]
       - [0x105EE0, .data, it/itground/ithitokage]
       - [0x105F70, .data, it/itground/itfushigibana]
-      - [0x105FE0, .data, it/itground/itrbomb]
+      - [0x105FE0, .data, it/itground/ittarubomb]
       - [0x106080, .data, it/itfighter/itnesspkfire]
       - [0x106100, .data, it/itfighter/itlinkbomb]
 
@@ -1069,7 +1069,7 @@ segments:
       - [0x107940, .rodata, it/itground/itporygon]
       - [0x107950, .rodata, it/itground/ithitokage]
       - [0x107970, .rodata, it/itground/itfushigibana]
-      - [0x107980, .rodata, it/itground/itrbomb]
+      - [0x107980, .rodata, it/itground/ittarubomb]
       - [0x1079B0, .rodata, it/itfighter/itlinkbomb]
     # ovl3 bss
       - { start: auto, type: .bss, name: ft/ftcommon/ftcommonthrown2, vram: 0x8018CF80 }

@@ -7,8 +7,8 @@
 
 extern void grBonus3InitHeaders(void);
 extern void grBonus3MakeBumpers(void);
-extern void grBonus3RBombProcUpdate(GObj *ground_gobj);
-extern void grBonus3RBombMakeActor(void);
+extern void grBonus3TaruBombProcUpdate(GObj *ground_gobj);
+extern void grBonus3TaruBombMakeActor(void);
 extern void grBonus3FinishProcUpdate(GObj *ground_gobj);
 extern void grBonus3FinishMakeActor(void);
 extern GObj* grBonus3MakeGround(void);

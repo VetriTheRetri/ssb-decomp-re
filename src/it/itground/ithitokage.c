@@ -24,33 +24,33 @@ extern s32 dGRYamabukiMonsterAttackKind;
 
 itCreateDesc dITHitokageItemDesc =
 {
-    nITKindHitokage,                       // Item Kind
-    &gGRCommonStruct.yamabuki.item_head,      // Pointer to item file data?
+    nITKindHitokage,                        // Item Kind
+    &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?
     &lITHitokageItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateNew,         // Hitbox Update State
-    itHitokageCommonProcUpdate,           // Proc Update
+    nGMHitUpdateNew,                        // Hitbox Update State
+    itHitokageCommonProcUpdate,             // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
     NULL,                                   // Proc Set-Off
     NULL,                                   // Proc Reflector
-    itHitokageCommonProcDamage            // Proc Damage
+    itHitokageCommonProcDamage              // Proc Damage
 };
 
 itStatusDesc dITHitokageStatusDescs[/* */] =
 {
     // Status 0 (Neutral Damage)
     {
-        itHitokageNDamageProcUpdate,        // Proc Update
+        itHitokageDamagedProcUpdate,        // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -64,14 +64,14 @@ itStatusDesc dITHitokageStatusDescs[/* */] =
 wpCreateDesc dITHitokageWeaponFlameWeaponDesc =
 {
     0x00,                                   // Render flags?
-    nWPKindHitokageFlame,                  // Weapon Kind
-    &gGRCommonStruct.yamabuki.item_head,      // Pointer to character's loaded files?
+    nWPKindHitokageFlame,                   // Weapon Kind
+    &gGRCommonStruct.yamabuki.item_head,    // Pointer to character's loaded files?
     &lITHitokageWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -93,8 +93,8 @@ wpCreateDesc dITHitokageWeaponFlameWeaponDesc =
 
 enum itHitokageStatus
 {
-    itStatus_Hitokage_NDamage,
-    itStatus_Hitokage_EnumMax
+    itHitokageStatusDamaged,
+    itHitokageStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -104,11 +104,11 @@ enum itHitokageStatus
 // // // // // // // // // // // //
 
 // 0x80183DA0
-void itHitokageNDamageSetStatus(GObj *item_gobj)
+void itHitokageDamagedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHitokageStatusDescs, itStatus_Hitokage_NDamage);
+    itMainSetItemStatus(item_gobj, dITHitokageStatusDescs, itHitokageStatusDamaged);
 
-    itGetStruct(item_gobj)->proc_dead = itHitokageNDamageProcDead;
+    itGetStruct(item_gobj)->proc_dead = itHitokageDamagedProcDead;
 }
 
 // 0x80183DE0
@@ -154,7 +154,7 @@ sb32 itHitokageCommonProcUpdate(GObj *item_gobj)
 }
 
 // 0x80183F20
-sb32 itHitokageNDamageProcUpdate(GObj *item_gobj)
+sb32 itHitokageDamagedProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj;
@@ -169,7 +169,7 @@ sb32 itHitokageNDamageProcUpdate(GObj *item_gobj)
 }
 
 // 0x80183F88
-sb32 itHitokageNDamageProcDead(GObj *item_gobj)
+sb32 itHitokageDamagedProcDead(GObj *item_gobj)
 {
     return TRUE;
 }
@@ -193,7 +193,7 @@ sb32 itHitokageCommonProcDamage(GObj *item_gobj)
         dobj->anim_remain = AOBJ_FRAME_NULL;
 
         grYamabukiGateClearMonsterGObj();
-        itHitokageNDamageSetStatus(item_gobj);
+        itHitokageDamagedSetStatus(item_gobj);
     }
     return FALSE;
 }
@@ -303,7 +303,7 @@ GObj* itHitokageWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->lifetime = ITHITOKAGE_FLAME_LIFETIME;
 
-    wp->lr = nGMDirectionL;
+    wp->lr = nGMFacingL;
 
     func_ovl0_800CE8C0(gITManagerParticleBankID | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
     func_ovl0_800CE8C0(gITManagerParticleBankID | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);

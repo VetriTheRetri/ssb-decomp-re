@@ -20,20 +20,20 @@ extern intptr_t lITLuckyAnimJoint;          // 0x000100BC
 // 0x8018AFB0
 itCreateDesc dITMLuckyItemDesc = 
 {
-    nITKindMLucky,                         // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindMLucky,                          // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITMLuckyItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itMLuckyCommonProcUpdate,             // Proc Update
-    itMLuckyCommonProcMap,                // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itMLuckyCommonProcUpdate,               // Proc Update
+    itMLuckyCommonProcMap,                  // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -47,8 +47,8 @@ itStatusDesc dITMLuckyStatusDescs[/* */] =
 {
     // Status 0 (Air Fall)
     {
-        itMLuckyFallProcUpdate,            // Proc Update
-        itMLuckyFallProcMap,               // Proc Map
+        itMLuckyFallProcUpdate,             // Proc Update
+        itMLuckyFallProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -59,8 +59,8 @@ itStatusDesc dITMLuckyStatusDescs[/* */] =
 
     // Status 1 (Neutral Appear)
     {
-        itMLuckyNAppearProcUpdate,          // Proc Update
-        itMLuckyNAppearProcMap,             // Proc Map
+        itMLuckyAppearProcUpdate,           // Proc Update
+        itMLuckyAppearProcMap,              // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -71,20 +71,20 @@ itStatusDesc dITMLuckyStatusDescs[/* */] =
 
     // Status 2 (Neutral Egg Spawn)
     {
-        itMLuckyNSpawnProcUpdate,           // Proc Update
-        itMLuckyNSpawnProcMap,              // Proc Map
+        itMLuckyMakeEggProcUpdate,          // Proc Update
+        itMLuckyMakeEggProcMap,             // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itMLuckyNSpawnProcDamage            // Proc Damage
+        itMLuckyMakeEggProcDamage           // Proc Damage
     },
 
     // Status 3 (Neutral Disappear)
     {
-        itMLuckyNDisappearProcUpdate,       // Proc Update
-        itMLuckyNSpawnProcMap,              // Proc Map
+        itMLuckyDisappearProcUpdate,        // Proc Update
+        itMLuckyMakeEggProcMap,             // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -102,11 +102,11 @@ itStatusDesc dITMLuckyStatusDescs[/* */] =
 
 enum itMLuckyStatus
 {
-    itStatus_MLucky_Fall,
-    itStatus_MLucky_NAppear,
-    itStatus_MLucky_NSpawn,
-    itStatus_MLucky_NDisappear,
-    itStatus_MLucky_EnumMax
+    nITMLuckyStatusFall,
+    nITMLuckyStatusAppear,
+    nITMLuckyStatusMakeEgg,
+    nITMLuckyStatusDisappear,
+    nITMLuckyStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -116,7 +116,7 @@ enum itMLuckyStatus
 // // // // // // // // // // // //
 
 // 0x80180FC0
-void itMLuckyNSpawnInitItemVars(GObj *item_gobj)
+void itMLuckyMakeEggInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -156,9 +156,9 @@ sb32 itMLuckyFallProcMap(GObj *item_gobj)
 
         if (ip->it_multi != 0)
         {
-            itMLuckyNSpawnSetStatus(item_gobj);
+            itMLuckyMakeEggSetStatus(item_gobj);
         }
-        else itMLuckyNDisappearSetStatus(item_gobj);
+        else itMLuckyDisappearSetStatus(item_gobj);
     }
     return FALSE;
 }
@@ -171,11 +171,11 @@ void itMLuckyFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, itStatus_MLucky_Fall);
+    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusFall);
 }
 
 // 0x80181124
-sb32 itMLuckyNAppearProcUpdate(GObj *item_gobj)
+sb32 itMLuckyAppearProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -185,25 +185,25 @@ sb32 itMLuckyNAppearProcUpdate(GObj *item_gobj)
 }
 
 // 0x80181150
-sb32 itMLuckyNAppearProcMap(GObj *item_gobj)
+sb32 itMLuckyAppearProcMap(GObj *item_gobj)
 {
-    itStruct *ap = itGetStruct(item_gobj);
+    itStruct *ip = itGetStruct(item_gobj);
 
     itMapTestAllCheckCollEnd(item_gobj);
 
-    if (ap->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
+    if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
-        ap->phys_info.vel_air.y = 0.0F;
+        ip->phys_info.vel_air.y = 0.0F;
 
-        itMLuckyNSpawnSetStatus(item_gobj);
+        itMLuckyMakeEggSetStatus(item_gobj);
 
-        itMLuckyNSpawnInitItemVars(item_gobj);
+        itMLuckyMakeEggInitItemVars(item_gobj);
     }
     return FALSE;
 }
 
 // 0x801811AC
-void itMLuckyNAppearSetStatus(GObj *item_gobj)
+void itMLuckyAppearSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -211,11 +211,11 @@ void itMLuckyNAppearSetStatus(GObj *item_gobj)
     {
         func_800269C0_275C0(nGMSoundVoiceMBallLuckySpawn);
     }
-    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, itStatus_MLucky_NAppear);
+    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusAppear);
 }
 
 // 0x80181200
-sb32 itMLuckyNSpawnProcUpdate(GObj *lucky_gobj)
+sb32 itMLuckyMakeEggProcUpdate(GObj *lucky_gobj)
 {
     itStruct *lucky_ip = itGetStruct(lucky_gobj), *egg_ip;
     DObj *dobj = DObjGetStruct(lucky_gobj);
@@ -226,7 +226,7 @@ sb32 itMLuckyNSpawnProcUpdate(GObj *lucky_gobj)
 
     if (lucky_ip->it_multi == 0)
     {
-        itMLuckyNDisappearSetStatus(lucky_gobj);
+        itMLuckyDisappearSetStatus(lucky_gobj);
 
         return FALSE;
     }
@@ -271,7 +271,7 @@ sb32 itMLuckyNSpawnProcUpdate(GObj *lucky_gobj)
 }
 
 // 0x80181368
-sb32 itMLuckyNSpawnProcMap(GObj *item_gobj)
+sb32 itMLuckyMakeEggProcMap(GObj *item_gobj)
 {
     itMapCheckLRWallProcGround(item_gobj, itMLuckyFallSetStatus);
 
@@ -279,7 +279,7 @@ sb32 itMLuckyNSpawnProcMap(GObj *item_gobj)
 }
 
 // 0x80181390
-sb32 itMLuckyNSpawnProcDamage(GObj *item_gobj)
+sb32 itMLuckyMakeEggProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -289,13 +289,13 @@ sb32 itMLuckyNSpawnProcDamage(GObj *item_gobj)
 }
 
 // 0x801813A8
-void itMLuckyNSpawnSetStatus(GObj *item_gobj)
+void itMLuckyMakeEggSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, itStatus_MLucky_NSpawn);
+    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusMakeEgg);
 }
 
 // 0x801813D0
-sb32 itMLuckyNDisappearProcUpdate(GObj *item_gobj)
+sb32 itMLuckyDisappearProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -309,7 +309,7 @@ sb32 itMLuckyNDisappearProcUpdate(GObj *item_gobj)
 }
 
 // 0x801813F8
-void itMLuckyNDisappearSetStatus(GObj *item_gobj)
+void itMLuckyDisappearSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -317,7 +317,7 @@ void itMLuckyNDisappearSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = nGMHitStatusNone;
 
-    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, itStatus_MLucky_NDisappear);
+    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusDisappear);
 }
 
 // 0x80181430
@@ -329,7 +329,7 @@ sb32 itMLuckyCommonProcUpdate(GObj *item_gobj)
     {
         ip->phys_info.vel_air.y = 0.0F;
 
-        itMLuckyNAppearSetStatus(item_gobj);
+        itMLuckyAppearSetStatus(item_gobj);
     }
     ip->it_multi--;
 

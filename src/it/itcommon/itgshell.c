@@ -19,20 +19,20 @@ extern intptr_t lITGShellMatAnimJoint;      // 0x00006048
 
 itCreateDesc dITGShellItemDesc =
 {
-    nITKindGShell,                         // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindGShell,                          // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITGShellItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformNull,               // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformNull,                   // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itGShellFallProcUpdate,                // Proc Update
-    itGShellFallProcMap,                   // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itGShellFallProcUpdate,                 // Proc Update
+    itGShellFallProcMap,                    // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -46,19 +46,19 @@ itStatusDesc dITGShellStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itGShellWaitProcMap,               // Proc Map
+        itGShellWaitProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itGShellCommonProcDamage          // Proc Damage
+        itGShellCommonProcDamage            // Proc Damage
     },
 
     // Status 1 (Air Wait Fall)
     {
-        itGShellFallProcUpdate,            // Proc Update
-        itGShellFallProcMap,               // Proc Map
+        itGShellFallProcUpdate,             // Proc Update
+        itGShellFallProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -83,48 +83,48 @@ itStatusDesc dITGShellStatusDescs[/* */] =
     {
         itGShellThrownProcUpdate,           // Proc Update
         itGShellThrownProcMap,              // Proc Map
-        itGShellCommonProcHit,            // Proc Hit
-        itGShellCommonProcShield,         // Proc Shield
+        itGShellCommonProcHit,              // Proc Hit
+        itGShellCommonProcShield,           // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itGShellCommonProcShield,         // Proc Set-Off
+        itGShellCommonProcShield,           // Proc Set-Off
         itMainCommonProcReflector,          // Proc Reflector
-        itGShellCommonProcDamage          // Proc Damage
+        itGShellCommonProcDamage            // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itGShellFallProcUpdate,            // Proc Update
+        itGShellFallProcUpdate,             // Proc Update
         itGShellThrownProcMap,              // Proc Map
-        itGShellCommonProcHit,            // Proc Hit
-        itGShellCommonProcShield,         // Proc Shield
+        itGShellCommonProcHit,              // Proc Hit
+        itGShellCommonProcShield,           // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itGShellCommonProcShield,         // Proc Set-Off
+        itGShellCommonProcShield,           // Proc Set-Off
         itMainCommonProcReflector,          // Proc Reflector
-        itGShellCommonProcDamage          // Proc Damage
+        itGShellCommonProcDamage            // Proc Damage
     },
 
     // Status 5 (Ground Spin)
     {
-        itGShellGSpinProcUpdate,            // Proc Update
-        itGShellGSpinProcMap,               // Proc Map
-        itGShellCommonProcHit,            // Proc Hit
-        itGShellCommonProcHit,            // Proc Shield
+        itGShellSpinProcUpdate,             // Proc Update
+        itGShellSpinProcMap,                // Proc Map
+        itGShellCommonProcHit,              // Proc Hit
+        itGShellCommonProcHit,              // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         itMainCommonProcReflector,          // Proc Reflector
-        itGShellGASpinProcDamage            // Proc Damage
+        itGShellSpinProcDamage              // Proc Damage
     },
 
     // Status 6 (Air Spin)
     {
-        itGShellFallProcUpdate,            // Proc Update
+        itGShellFallProcUpdate,             // Proc Update
         itGShellThrownProcMap,              // Proc Map
-        itGShellCommonProcHit,            // Proc Hit
-        itGShellCommonProcHit,            // Proc Shield
+        itGShellCommonProcHit,              // Proc Hit
+        itGShellCommonProcHit,              // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         itMainCommonProcReflector,          // Proc Reflector
-        itGShellGASpinProcDamage            // Proc Damage
+        itGShellSpinProcDamage              // Proc Damage
     }
 };
 
@@ -136,14 +136,14 @@ itStatusDesc dITGShellStatusDescs[/* */] =
 
 enum itGShellStatus
 {
-    itStatus_GShell_Wait,
-    itStatus_GShell_Fall,
-    itStatus_GShell_Hold,
-    itStatus_GShell_Thrown,
-    itStatus_GShell_Dropped,
-    itStatus_GShell_GSpin,
-    itStatus_GShell_ASpin,
-    itStatus_GShell_EnumMax
+    nITGShellStatusWait,
+    nITGShellStatusFall,
+    nITGShellStatusHold,
+    nITGShellStatusThrown,
+    nITGShellStatusDropped,
+    nITGShellStatusSpin,
+    nITGShellStatusSpinAir,
+    nITGShellStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -153,7 +153,7 @@ enum itGShellStatus
 // // // // // // // // // // // //
 
 // 0x801785E0
-void itGShellGSpinUpdateEffect(GObj *item_gobj)
+void itGShellSpinUpdateEffect(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -173,7 +173,7 @@ void itGShellGSpinUpdateEffect(GObj *item_gobj)
 }
 
 // 0x80178670
-void itGShellGSpinAddAnim(GObj *item_gobj)
+void itGShellSpinAddAnim(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -216,9 +216,9 @@ sb32 itGShellFallProcMap(GObj *item_gobj)
 
     if (ip->item_vars.shell.health == 0)
     {
-        return itMapCheckDestroyLanding(item_gobj, 0.2F);
+        return itMapCheckDestroyLanding(item_gobj, ITGSHELL_MAP_REBOUND_COMMON);
     }
-    else itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itGShellWaitSetStatus);
+    else itMapCheckDestroyDropped(item_gobj, ITGSHELL_MAP_REBOUND_COMMON, ITGSHELL_MAP_REBOUND_GROUND, itGShellWaitSetStatus);
 
     return FALSE;
 }
@@ -244,14 +244,14 @@ void itGShellWaitInitItemVars(GObj *item_gobj)
         ip->phys_info.vel_air.x = 0.0F;
 
         itGShellCommonClearAnim(item_gobj);
-        itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_Wait);
+        itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusWait);
     }
     else if (ip->item_vars.shell.is_damage != FALSE)
     {
         ip->item_hit.update_state = nGMHitUpdateNew;
 
         itProcessUpdateHitPositions(item_gobj);
-        itGShellGSpinSetStatus(item_gobj);
+        itGShellSpinSetStatus(item_gobj);
     }
     else
     {
@@ -265,7 +265,7 @@ void itGShellWaitInitItemVars(GObj *item_gobj)
         ip->phys_info.vel_air.x = 0.0F;
 
         itGShellCommonClearAnim(item_gobj);
-        itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_Wait);
+        itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusWait);
     }
 }
 
@@ -287,7 +287,7 @@ void itGShellFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_Fall);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusFall);
 }
 
 // 0x8017897C
@@ -311,9 +311,9 @@ sb32 itGShellCommonProcDamage(GObj *item_gobj)
 
         if (ip->ga != nMPKineticsGround)
         {
-            itGShellASpinSetStatus(item_gobj);
+            itGShellSpinAirSetStatus(item_gobj);
         }
-        else itGShellGSpinSetStatus(item_gobj);
+        else itGShellSpinSetStatus(item_gobj);
     }
     else
     {
@@ -333,13 +333,13 @@ void itGShellHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_Hold);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusHold);
 }
 
 // 0x80178AC4
 sb32 itGShellThrownProcMap(GObj *item_gobj)
 {
-    itMapCheckLanding(item_gobj, 0.2F, 0.5F, itGShellWaitSetStatus);
+    itMapCheckLanding(item_gobj, ITGSHELL_MAP_REBOUND_COMMON, ITGSHELL_MAP_REBOUND_GROUND, itGShellWaitSetStatus);
 
     return FALSE;
 }
@@ -362,7 +362,7 @@ void itGShellThrownSetStatus(GObj *item_gobj)
     ip->item_vars.shell.health = 1;
     ip->item_vars.shell.is_damage = TRUE;
 
-    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_Thrown);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusThrown);
 }
 
 // 0x80178B60
@@ -373,15 +373,15 @@ void itGShellDroppedSetStatus(GObj *item_gobj)
     ip->item_vars.shell.health = 1;
     ip->item_vars.shell.is_damage = TRUE;
 
-    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_Dropped);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusDropped);
 }
 
 // 0x80178B98
-sb32 itGShellGSpinProcUpdate(GObj *item_gobj)
+sb32 itGShellSpinProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itGShellGSpinUpdateEffect(item_gobj);
+    itGShellSpinUpdateEffect(item_gobj);
 
     if (!(ip->item_vars.shell.damage_all_delay))
     {
@@ -403,7 +403,7 @@ sb32 itGShellGSpinProcUpdate(GObj *item_gobj)
 }
 
 // 0x80178C10
-sb32 itGShellGSpinProcMap(GObj *item_gobj)
+sb32 itGShellSpinProcMap(GObj *item_gobj)
 {
     itMapCheckLRWallProcGround(item_gobj, itGShellFallSetStatus);
 
@@ -436,7 +436,7 @@ sb32 itGShellCommonProcHit(GObj *item_gobj)
 }
 
 // 0x80178CF8
-sb32 itGShellGASpinProcDamage(GObj *item_gobj)
+sb32 itGShellSpinProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -451,9 +451,9 @@ sb32 itGShellGASpinProcDamage(GObj *item_gobj)
 
         if (ip->ga != FALSE)
         {
-            itGShellASpinSetStatus(item_gobj);
+            itGShellSpinAirSetStatus(item_gobj);
         }
-        else itGShellGSpinSetStatus(item_gobj);
+        else itGShellSpinSetStatus(item_gobj);
     }
     else
     {
@@ -469,7 +469,7 @@ sb32 itGShellGASpinProcDamage(GObj *item_gobj)
 }
 
 // 0x80178E04
-void itGShellGSpinInitItemVars(GObj *item_gobj)
+void itGShellSpinInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -489,14 +489,14 @@ void itGShellGSpinInitItemVars(GObj *item_gobj)
 
     if (ip->phys_info.vel_air.x < 0.0F)
     {
-        ip->lr = nGMDirectionL;
+        ip->lr = nGMFacingL;
     }
-    else ip->lr = nGMDirectionR;
+    else ip->lr = nGMFacingR;
 
     ip->item_vars.shell.dust_effect_int = ITGSHELL_EFFECT_SPAWN_INT;
     ip->item_vars.shell.damage_all_delay = ITGSHELL_DAMAGE_ALL_WAIT;
 
-    itGShellGSpinAddAnim(item_gobj);
+    itGShellSpinAddAnim(item_gobj);
 
     ip->is_damage_all = FALSE;
 
@@ -505,14 +505,14 @@ void itGShellGSpinInitItemVars(GObj *item_gobj)
 }
 
 // 0x80178EDC
-void itGShellGSpinSetStatus(GObj *item_gobj)
+void itGShellSpinSetStatus(GObj *item_gobj)
 {
-    itGShellGSpinInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_GSpin);
+    itGShellSpinInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusSpin);
 }
 
 // 0x80178F10
-void itGShellASpinInitItemVars(GObj *item_gobj)
+void itGShellSpinAirInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -526,9 +526,9 @@ void itGShellASpinInitItemVars(GObj *item_gobj)
     }
     if (ip->phys_info.vel_air.x < 0.0F)
     {
-        ip->lr = nGMDirectionL;
+        ip->lr = nGMFacingL;
     }
-    else ip->lr = nGMDirectionR;
+    else ip->lr = nGMFacingR;
 
     ip->is_damage_all = FALSE;
 
@@ -536,10 +536,10 @@ void itGShellASpinInitItemVars(GObj *item_gobj)
 }
 
 // 0x80178FA8
-void itGShellASpinSetStatus(GObj *item_gobj)
+void itGShellSpinAirSetStatus(GObj *item_gobj)
 {
-    itGShellASpinInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, itStatus_GShell_ASpin);
+    itGShellSpinAirInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusSpinAir);
 }
 
 // 0x80178FDC

@@ -5,18 +5,18 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern void itPakkunDWaitSetStatus(GObj *item_gobj);
-extern void itPakkunDAppearSetStatus(GObj *item_gobj);
-extern void itPakkunNDamageSetStatus(GObj *item_gobj);
+extern void itPakkunWaitSetStatus(GObj *item_gobj);
+extern void itPakkunAppearSetStatus(GObj *item_gobj);
+extern void itPakkunDamagedSetStatus(GObj *item_gobj);
 extern void itPakkunCommonSetWaitFighter(GObj *item_gobj);
-extern sb32 itPakkunCommonCheckNoFighterNear(GObj *item_gobj);
-extern sb32 itPakkunDWaitProcUpdate(GObj *item_gobj);
-extern void itPakkunDWaitInitItemVars(GObj *item_gobj);
-extern void itPakkunDAppearUpdateHurtbox(GObj *item_gobj);
-extern sb32 itPakkunDAppearProcUpdate(GObj *item_gobj);
-extern sb32 itPakkunDAppearProcDamage(GObj *item_gobj);
-extern sb32 itPakkunNDamageProcUpdate(GObj *item_gobj);
-extern sb32 itPakkunNDamageProcDead(GObj *item_gobj);
+extern sb32 itPakkunCommonCheckNoPlayersNear(GObj *item_gobj);
+extern sb32 itPakkunWaitProcUpdate(GObj *item_gobj);
+extern void itPakkunWaitInitItemVars(GObj *item_gobj);
+extern void itPakkunAppearUpdateHurtbox(GObj *item_gobj);
+extern sb32 itPakkunAppearProcUpdate(GObj *item_gobj);
+extern sb32 itPakkunAppearProcDamage(GObj *item_gobj);
+extern sb32 itPakkunDamagedProcUpdate(GObj *item_gobj);
+extern sb32 itPakkunDamagedProcDead(GObj *item_gobj);
 extern GObj* itPakkunMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

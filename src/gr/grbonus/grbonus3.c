@@ -55,29 +55,29 @@ void grBonus3MakeBumpers(void)
 }
 
 // 0x8010B5F0
-void grBonus3RBombProcUpdate(GObj *ground_gobj)
+void grBonus3TaruBombProcUpdate(GObj *ground_gobj)
 {
     Vec3f vel;
 
-    if (gGRCommonStruct.bonus3.rbomb_make_wait == 0)
+    if (gGRCommonStruct.bonus3.tarubomb_make_wait == 0)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
-        itManagerMakeItemSetupCommon(NULL, nITKindRBomb, &gGRCommonStruct.bonus3.rbomb_make_pos, &vel, ITEM_MASK_SPAWN_GROUND);
+        itManagerMakeItemSetupCommon(NULL, nITKindTaruBomb, &gGRCommonStruct.bonus3.tarubomb_make_pos, &vel, ITEM_MASK_SPAWN_GROUND);
 
-        gGRCommonStruct.bonus3.rbomb_make_wait = 180;
+        gGRCommonStruct.bonus3.tarubomb_make_wait = 180;
     }
-    gGRCommonStruct.bonus3.rbomb_make_wait--;
+    gGRCommonStruct.bonus3.tarubomb_make_wait--;
 }
 
 // 0x8010B660
-void grBonus3RBombMakeActor(void)
+void grBonus3TaruBombMakeActor(void)
 {
     s32 pos_ids;
 
-    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT), grBonus3RBombProcUpdate, nOMObjProcessKindProc, 4);
+    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT), grBonus3TaruBombProcUpdate, nOMObjProcessKindProc, 4);
 
-    if (mpCollisionGetMapObjCountKind(nMPMapObjKind1PGameBonus3RBomb) != 1)
+    if (mpCollisionGetMapObjCountKind(nMPMapObjKind1PGameBonus3TaruBomb) != 1)
     {
         while (TRUE)
         {
@@ -85,10 +85,10 @@ void grBonus3RBombMakeActor(void)
             smRunPrintGObjStatus();
         }
     }
-    mpCollisionGetMapObjIDsKind(nMPMapObjKind1PGameBonus3RBomb, &pos_ids);
-    mpCollisionGetMapObjPositionID(pos_ids, &gGRCommonStruct.bonus3.rbomb_make_pos);
+    mpCollisionGetMapObjIDsKind(nMPMapObjKind1PGameBonus3TaruBomb, &pos_ids);
+    mpCollisionGetMapObjPositionID(pos_ids, &gGRCommonStruct.bonus3.tarubomb_make_pos);
 
-    gGRCommonStruct.bonus3.rbomb_make_wait = 180;
+    gGRCommonStruct.bonus3.tarubomb_make_wait = 180;
 }
 
 // 0x8010B700
@@ -114,7 +114,7 @@ GObj* grBonus3MakeGround(void)
 {
     grBonus3InitHeaders();
     grBonus3MakeBumpers();
-    grBonus3RBombMakeActor();
+    grBonus3TaruBombMakeActor();
     grBonus3FinishMakeActor();
 
     return NULL;

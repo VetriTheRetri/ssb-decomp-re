@@ -18,20 +18,20 @@ extern intptr_t lITMewDataStart;            // 0x0000BCC0
 // 0x8018AC40
 itCreateDesc dITMewItemDesc =
 {
-    nITKindMew,                            // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindMew,                             // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITMewItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itMewCommonProcUpdate,                // Proc Update
-    itMewCommonProcMap,                   // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itMewCommonProcUpdate,                  // Proc Update
+    itMewCommonProcMap,                     // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -45,7 +45,7 @@ itStatusDesc dITMewStatusDescs[/* */] =
 {
     // Status 0 (Neutral FLy)
     {
-        itMewNFlyProcUpdate,                // Proc Update
+        itMewFlyProcUpdate,                 // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -64,8 +64,8 @@ itStatusDesc dITMewStatusDescs[/* */] =
 
 enum itMewStatus
 {
-    itStatus_Mew_NFly,
-    itStatus_Mew_EnumMax
+    nITMewStatusFly,
+    nITMewStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -75,7 +75,7 @@ enum itMewStatus
 // // // // // // // // // // // //
 
 // 0x8017EBE0
-sb32 itMewNFlyProcUpdate(GObj *item_gobj)
+sb32 itMewFlyProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     Vec3f pos = DObjGetStruct(item_gobj)->translate.vec.f;
@@ -100,7 +100,7 @@ sb32 itMewNFlyProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017EC84
-void itMewNFlyInitItemVars(GObj *item_gobj)
+void itMewFlyInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -126,10 +126,10 @@ void itMewNFlyInitItemVars(GObj *item_gobj)
 }
 
 // 0x8017ED20
-void itMewNFlySetStatus(GObj *item_gobj)
+void itMewFlySetStatus(GObj *item_gobj)
 {
-    itMewNFlyInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMewStatusDescs, itStatus_Mew_NFly);
+    itMewFlyInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITMewStatusDescs, nITMewStatusFly);
 }
 
 // 0x8017ED54
@@ -141,7 +141,7 @@ sb32 itMewCommonProcUpdate(GObj *item_gobj)
     {
         ip->phys_info.vel_air.y = 0.0F;
 
-        itMewNFlySetStatus(item_gobj);
+        itMewFlySetStatus(item_gobj);
     }
     ip->it_multi--;
 

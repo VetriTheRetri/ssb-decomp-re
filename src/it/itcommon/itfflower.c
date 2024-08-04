@@ -174,7 +174,7 @@ sb32 itFFlowerWaitProcMap(GObj *item_gobj)
 // 0x80175B84
 sb32 itFFlowerFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON, ITFFLOWER_MAP_REBOUND_GROUND, itFFlowerWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON, ITFFLOWER_MAP_REBOUND_GROUND, itFFlowerWaitSetStatus);
 }
 
 // 0x80175BB0
@@ -210,7 +210,7 @@ sb32 itFFlowerThrownProcMap(GObj *item_gobj)
     {
         return itMapCheckDestroyLanding(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON);
     }
-    else return itMapCheckThrownLanding(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON, ITFFLOWER_MAP_REBOUND_GROUND, itFFlowerWaitSetStatus);
+    else return itMapCheckDestroyDropped(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON, ITFFLOWER_MAP_REBOUND_GROUND, itFFlowerWaitSetStatus);
 }
 
 // 0x80175C9C
@@ -240,7 +240,7 @@ sb32 itFFlowerDroppedProcMap(GObj *item_gobj)
     {
         return itMapCheckDestroyLanding(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON);
     }
-    else return itMapCheckThrownLanding(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON, ITFFLOWER_MAP_REBOUND_GROUND, itFFlowerWaitSetStatus);
+    else return itMapCheckDestroyDropped(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON, ITFFLOWER_MAP_REBOUND_GROUND, itFFlowerWaitSetStatus);
 }
 
 // 0x80175D38

@@ -18,19 +18,19 @@ extern intptr_t lITMarumineHitEvents;       // 0x0000014C
 
 itCreateDesc dITMarumineItemDesc = 
 {
-    nITKindMarumine,                       // Item Kind
-    &gGRCommonStruct.yamabuki.item_head,      // Pointer to item file data?
+    nITKindMarumine,                        // Item Kind
+    &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?
     &lITMarumineItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTra,                // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTra,                    // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itMarumineCommonProcUpdate,           // Proc Update
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itMarumineCommonProcUpdate,             // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
@@ -44,7 +44,7 @@ itStatusDesc dITMarumineStatusDescs[/* */] =
 {
     // Status 0 (Neutral Explosion)
     {
-        itMarumineExplodeNProcUpdate,       // Proc Update
+        itMarumineExplodeProcUpdate,        // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -63,8 +63,8 @@ itStatusDesc dITMarumineStatusDescs[/* */] =
 
 enum itMarumineStatus
 {
-    itStatus_Marumine_ExplodeN,
-    itStatus_Marumine_EnumMax
+    nITMarumineStatusExplode,
+    nITMarumineStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -74,7 +74,7 @@ enum itMarumineStatus
 // // // // // // // // // // // //
 
 // 0x801837A0
-void itMarumineExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
+void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
     s32 unused;
     efParticle *efpart;
@@ -98,11 +98,11 @@ void itMarumineExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
     ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
 
     itMainRefreshHit(item_gobj);
-    itMarumineExplodeNSetStatus(item_gobj);
+    itMarumineExplodeSetStatus(item_gobj);
 }
 
 // 0x80183830
-void itMarumineExplodeNUpdateHitEvent(GObj *item_gobj)
+void itMarumineExplodeUpdateHitEvent(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itHitEvent *ev = itGetHitEvent(dITMarumineItemDesc, lITMarumineHitEvents); // (itHitEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&lITMarumineHitEvents); // Linker thing
@@ -146,14 +146,14 @@ sb32 itMarumineCommonProcUpdate(GObj *item_gobj)
         ip->item_vars.marumine.offset.x = 0.0F;
         ip->item_vars.marumine.offset.y = 0.0F;
 
-        itMarumineExplodeNMakeEffectGotoSetStatus(item_gobj);
+        itMarumineExplodeMakeEffectGotoSetStatus(item_gobj);
         func_800269C0_275C0(nGMSoundFGMExplodeL);
     }
     return FALSE;
 }
 
 // 0x801839A8
-sb32 itMarumineExplodeNProcUpdate(GObj *item_gobj)
+sb32 itMarumineExplodeProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -161,7 +161,7 @@ sb32 itMarumineExplodeNProcUpdate(GObj *item_gobj)
     dobj->translate.vec.f.x += ip->item_vars.marumine.offset.x;
     dobj->translate.vec.f.y += ip->item_vars.marumine.offset.y;
 
-    itMarumineExplodeNUpdateHitEvent(item_gobj);
+    itMarumineExplodeUpdateHitEvent(item_gobj);
 
     ip->it_multi++;
 
@@ -175,7 +175,7 @@ sb32 itMarumineExplodeNProcUpdate(GObj *item_gobj)
 }
 
 // 0x80183A20
-void itMarumineExplodeNSetStatus(GObj *item_gobj)
+void itMarumineExplodeSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -185,8 +185,8 @@ void itMarumineExplodeNSetStatus(GObj *item_gobj)
 
     ip->item_event_id = 0;
 
-    itMarumineExplodeNUpdateHitEvent(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMarumineStatusDescs, itStatus_Marumine_ExplodeN);
+    itMarumineExplodeUpdateHitEvent(item_gobj);
+    itMainSetItemStatus(item_gobj, dITMarumineStatusDescs, nITMarumineStatusExplode);
 }
 
 // 0x80183A74

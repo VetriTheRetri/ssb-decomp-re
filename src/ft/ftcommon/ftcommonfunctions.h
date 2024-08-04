@@ -338,7 +338,7 @@ void ftCommonCliffEscapeQuick2SetStatus(GObj* fighter_gobj);
 void ftCommonCliffEscapeSlow2SetStatus(GObj* fighter_gobj);
 
 // LightGet / HeavyGet / LiftWait / LiftTurn
-GObj* ftCommonGetFindItemPickupGObj(GObj* fighter_gobj, u8 pickup_mask);
+GObj* ftCommonGetFindItem(GObj* fighter_gobj, u8 pickup_mask);
 void ftCommonLightGetProcDamage(GObj* fighter_gobj);
 void ftCommonHeavyGetProcDamage(GObj* fighter_gobj);
 void ftCommonGetProcUpdate(GObj* fighter_gobj);

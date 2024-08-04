@@ -9,8 +9,8 @@
 
 extern intptr_t lITNBumperItemAttributes;   // 0x0000069C
 extern intptr_t lITNBumperDataStart;        // 0x00007648
-extern intptr_t lITNBumperWaitMObjSub;     // 0x00007A38
-extern intptr_t lITNBumperWaitDisplayList; // 0x00007AF8
+extern intptr_t lITNBumperWaitMObjSub;      // 0x00007A38
+extern intptr_t lITNBumperWaitDisplayList;  // 0x00007AF8
 
 // // // // // // // // // // // //
 //                               //
@@ -21,20 +21,20 @@ extern intptr_t lITNBumperWaitDisplayList; // 0x00007AF8
 // 0x8018A690
 itCreateDesc dITNBumperItemDesc =
 {
-    nITKindNBumper,                        // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindNBumper,                         // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITNBumperItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTra,                // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTra,                    // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itNBumperFallProcUpdate,               // Proc Update
-    itNBumperFallProcMap,                  // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itNBumperFallProcUpdate,                // Proc Update
+    itNBumperFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -49,7 +49,7 @@ itStatusDesc dITNBumperStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itNBumperWaitProcMap,              // Proc Map
+        itNBumperWaitProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -60,8 +60,8 @@ itStatusDesc dITNBumperStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itNBumperFallProcUpdate,           // Proc Update
-        itNBumperFallProcMap,              // Proc Map
+        itNBumperFallProcUpdate,            // Proc Update
+        itNBumperFallProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -108,19 +108,19 @@ itStatusDesc dITNBumperStatusDescs[/* */] =
 
     // Status 5 (Ground Active Wait)
     {
-        itNBumperWaitHitProcUpdate,        // Proc Update
-        itNBumperWaitHitProcMap,           // Proc Map
-        itNBumperWaitHitProcHit,           // Proc Hit
+        itNBumperAttachedProcUpdate,        // Proc Update
+        itNBumperAttachedProcMap,           // Proc Map
+        itNBumperAttachedProcHit,           // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
-        itNBumperWaitHitProcReflector,     // Proc Reflector
+        itNBumperAttachedProcReflector,     // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 6 (Airborne after Ground Active Wait)
     {
-        itNBumperAHitProcUpdate,            // Proc Update
+        itNBumperHitAirProcUpdate,          // Proc Update
         itNBumperThrownProcMap,             // Proc Map
         itNBumperThrownProcHit,             // Proc Hit
         itNBumperThrownProcShield,          // Proc Shield
@@ -151,15 +151,15 @@ itStatusDesc dITNBumperStatusDescs[/* */] =
 
 enum itNBumperStatus
 {
-    itStatus_NBumper_Wait,                 // Ground neutral
-    itStatus_NBumper_Fall,                 // Airborne neutral
-    itStatus_NBumper_Hold,                 // Fighter hold
-    itStatus_NBumper_Thrown,                // Fighter throw
-    itStatus_NBumper_Dropped,                 // Fighter drop
-    itStatus_NBumper_WaitHit,              // Ground active
-    itStatus_NBumper_AHit,                  // Airborne hit
-    itStatus_NBumper_GDisappear,            // Ground despawn
-    itStatus_NBumper_EnumMax
+    nITNBumperStatusWait,                   // Ground neutral
+    nITNBumperStatusFall,                   // Airborne neutral
+    nITNBumperStatusHold,                   // Fighter hold
+    nITNBumperStatusThrown,                 // Fighter throw
+    nITNBumperStatusDropped,                // Fighter drop
+    nITNBumperStatusAttached,                // Ground active
+    nITNBumperStatusHitAir,                   // Airborne hit
+    nITNBumperStatusGDisappear,             // Ground despawn
+    nITNBumperStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -210,7 +210,7 @@ sb32 itNBumperWaitProcMap(GObj *item_gobj)
 // 0x8017B548
 sb32 itNBumperFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.8F, 0.8F, itNBumperWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITBUMPER_MAP_REBOUND_COMMON, ITBUMPER_MAP_REBOUND_GROUND, itNBumperWaitSetStatus);
 }
 
 // 0x8017B57C
@@ -232,7 +232,7 @@ sb32 itNBumperThrownProcHit(GObj *item_gobj)
 
     ip->it_multi = ITBUMPER_HIT_SCALE;
 
-    itNBumperAHitSetStatus(item_gobj);
+    itNBumperHitAirSetStatus(item_gobj);
 
     return FALSE;
 }
@@ -241,7 +241,7 @@ sb32 itNBumperThrownProcHit(GObj *item_gobj)
 void itNBumperWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, itStatus_NBumper_Wait);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusWait);
 }
 
 // 0x8017B634
@@ -252,13 +252,13 @@ void itNBumperFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, itStatus_NBumper_Fall);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusFall);
 }
 
 // 0x8017B678
 void itNBumperHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, itStatus_NBumper_Hold);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusHold);
 }
 
 // 0x8017B6A0
@@ -286,7 +286,7 @@ sb32 itNBumperThrownProcUpdate(GObj *item_gobj)
 // 0x8017B720
 sb32 itNBumperThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapReboundProcGround(item_gobj, 0.8F, itNBumperWaitHitSetStatus);
+    return itMapCheckMapReboundProcGround(item_gobj, 0.8F, itNBumperAttachedSetStatus);
 }
 
 // 0x8017B74C
@@ -323,7 +323,7 @@ void itNBumperThrownSetStatus(GObj *item_gobj)
     ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
     ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
 
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, itStatus_NBumper_Thrown);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusThrown);
 }
 
 // 0x8017B828
@@ -336,11 +336,11 @@ void itNBumperDroppedSetStatus(GObj *item_gobj)
     ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
     ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
 
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, itStatus_NBumper_Dropped);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusDropped);
 }
 
 // 0x8017B874
-void itNBumperWaitHitSetModelYaw(GObj *item_gobj)
+void itNBumperAttachedSetModelYaw(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     s32 unused;
@@ -355,7 +355,7 @@ void itNBumperWaitHitSetModelYaw(GObj *item_gobj)
 }
 
 // 0x8017B8DC
-void itNBumperWaitHitInitItemVars(GObj *item_gobj)
+void itNBumperAttachedInitItemVars(GObj *item_gobj)
 {
     s32 unused[2];
     DObj *dobj;
@@ -384,7 +384,7 @@ void itNBumperWaitHitInitItemVars(GObj *item_gobj)
     ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
     ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
 
-    itNBumperWaitHitSetModelYaw(item_gobj);
+    itNBumperAttachedSetModelYaw(item_gobj);
 
     ip->is_attach_surface = TRUE;
 
@@ -394,7 +394,7 @@ void itNBumperWaitHitInitItemVars(GObj *item_gobj)
 }
 
 // 0x8017B9C8
-sb32 itNBumperWaitHitProcHit(GObj *item_gobj)
+sb32 itNBumperAttachedProcHit(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -416,7 +416,7 @@ sb32 itNBumperWaitHitProcHit(GObj *item_gobj)
 }
 
 // 0x8017BA2C
-sb32 itNBumperWaitHitProcUpdate(GObj *item_gobj)
+sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itAttributes *attributes = ip->attributes;
@@ -431,7 +431,7 @@ sb32 itNBumperWaitHitProcUpdate(GObj *item_gobj)
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == nGMDirectionL)
+        if (ip->lr == nGMFacingL)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &edge_pos);
 
@@ -472,7 +472,7 @@ sb32 itNBumperWaitHitProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017BBFC
-sb32 itNBumperWaitHitProcMap(GObj *item_gobj)
+sb32 itNBumperAttachedProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
@@ -491,14 +491,14 @@ sb32 itNBumperWaitHitProcMap(GObj *item_gobj)
         }
         else if (ip->it_multi == 0)
         {
-            itNBumperWaitHitSetModelYaw(item_gobj);
+            itNBumperAttachedSetModelYaw(item_gobj);
         }
     }
     return FALSE;
 }
 
 // 0x8017BCC0
-sb32 itNBumperWaitHitProcReflector(GObj *item_gobj)
+sb32 itNBumperAttachedProcReflector(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     ftStruct *fp = ftGetStruct(ip->owner_gobj);
@@ -523,14 +523,14 @@ sb32 itNBumperWaitHitProcReflector(GObj *item_gobj)
 }
 
 // 0x8017BD4C
-void itNBumperWaitHitSetStatus(GObj *item_gobj)
+void itNBumperAttachedSetStatus(GObj *item_gobj)
 {
-    itNBumperWaitHitInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, itStatus_NBumper_WaitHit);
+    itNBumperAttachedInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusAttached);
 }
 
 // 0x8017BD80
-sb32 itNBumperAHitProcUpdate(GObj *item_gobj)
+sb32 itNBumperHitAirProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -565,13 +565,13 @@ sb32 itNBumperAHitProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017BEA0
-void itNBumperAHitSetStatus(GObj *item_gobj)
+void itNBumperHitAirSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->item_vars.bumper.damage_all_delay = ITBUMPER_DAMAGE_ALL_WAIT;
 
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, itStatus_NBumper_AHit);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusHitAir);
 }
 
 // 0x8017BED4
@@ -616,7 +616,7 @@ void itNBumperGDisappearSetStatus(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, itStatus_NBumper_GDisappear);
+    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusGDisappear);
 }
 
 // 0x8017BF8C
@@ -634,7 +634,7 @@ GObj* itNBumperMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = 0;
 
-        ip->item_hit.interact_mask = GMHITCOLLISION_MASK_FIGHTER;
+        ip->item_hit.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
         ip->item_hit.can_rehit_shield = TRUE;
 

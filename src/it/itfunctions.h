@@ -43,7 +43,7 @@
 #include <it/itground/itporygon.h>
 #include <it/itground/ithitokage.h>
 #include <it/itground/itfushigibana.h>
-#include <it/itground/itrbomb.h>
+#include <it/itground/ittarubomb.h>
 #include <it/itground/ittarget.h>
 
 // Pokémon item headers

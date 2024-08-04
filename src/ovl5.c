@@ -137,7 +137,7 @@ void func_ovl5_8018D1A0()
 		player_spawn.pos.x = 0.0F;
 		player_spawn.pos.y = 150.0F;
 		player_spawn.pos.z = 0.0F;
-		player_spawn.lr_spawn = nGMDirectionR;
+		player_spawn.lr_spawn = nGMFacingR;
 		player_spawn.team = gBattleState->players[player].team;
 		player_spawn.player = player;
 		player_spawn.model_lod = nFTPartsDetailHigh;

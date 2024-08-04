@@ -644,9 +644,12 @@ lWPLinkBoomerangWeaponAttributes = 0x00000000;
 lWPBossBulletNormalWeaponAttributes = 0x00000774;
 lWPBossBulletHardWeaponAttributes = 0x000007A8;
 
-lITContainerSpawnVelY = 0x00000000;
+lITManagerParticleBankHeaderLo = 0x00B1BCA0;
+lITManagerParticleBankHeaderHi = 0x00B1BDE0;
+lITManagerParticleBankTextureLo = 0x00B1BDE0;
+lITManagerParticleBankTextureHi = 0x00B1E640;
 
-D_NF_00B1BDE0_other = 0xB1BDE0;
+lITMainContainerVelocitiesY = 0x00000000;
 
 lITCapsuleItemAttributes = 0x00000050;
 lITCapsuleHitEvents = 0x00000098;
@@ -721,9 +724,9 @@ lITMBallDataStart = 0x00009430;
 lITMBallMatAnimJoint = 0x00009520;
 
 lITPakkunItemAttributes = 0x00000120;
-lITPakkunDAppearAnimJoint = 0x00000CC8;
-lITPakkunDAppearMatAnimJoint = 0x00000CF8;
-lITPakkunNDamageMatAnimJoint = 0x00000E04;
+lITPakkunAppearAnimJoint = 0x00000CC8;
+lITPakkunAppearMatAnimJoint = 0x00000CF8;
+lITPakkunDamagedMatAnimJoint = 0x00000E04;
 
 lITGBumperItemAttributes = 0x00000CF0;
 
@@ -802,10 +805,10 @@ lITFushigibanaItemAttributes = 0x00000278;
 lITFushigibanaHitParties = 0x000002C0;
 lITFushigibanaWeaponRazorWeaponAttributes = 0x00000308;
 
-lITRBombItemAttributes = 0x000000A8;
-lITRBombHitEvents = 0x000000F0;
-lITRBombDataStart = 0x00000788;
-lITRBombEffectDisplayList = 0x000008A0;
+lITTaruBombItemAttributes = 0x000000A8;
+lITTaruBombHitEvents = 0x000000F0;
+lITTaruBombDataStart = 0x00000788;
+lITTaruBombEffectDisplayList = 0x000008A0;
 
 lITNessPKFireItemAttributes = 0x00000034;
 

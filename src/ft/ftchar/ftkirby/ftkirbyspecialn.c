@@ -398,7 +398,7 @@ sb32 ftKirbySpecialNTurnCheckGotoTurn(GObj *fighter_gobj, void (*proc_status)(GO
     {
         stick_x = 0; // HAL Meme Laboratory
     }
-    if (((stick_x < 0) && (fp->lr == nGMDirectionR)) || ((stick_x > 0) && (fp->lr == nGMDirectionL)))
+    if (((stick_x < 0) && (fp->lr == nGMFacingR)) || ((stick_x > 0) && (fp->lr == nGMFacingL)))
     {
         proc_status(fighter_gobj);
 

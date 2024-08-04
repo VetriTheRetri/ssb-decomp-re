@@ -119,7 +119,7 @@ itStatusDesc dITBoxStatusDescs[/* */] =
 
     // Status 5 (Neutral Explosion)
     {
-        itBoxExplodeNProcUpdate,            // Proc Update
+        itBoxExplodeProcUpdate,             // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -143,7 +143,7 @@ enum itBoxStatus
     nITBoxStatusHold,
     nITBoxStatusThrown,
     nITBoxStatusDropped,
-    nITBoxStatusExplodeN,
+    nITBoxStatusExplode,
     nITBoxStatusEnumMax
 };
 
@@ -201,7 +201,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
 
             dl = (Gfx*) ((*(uintptr_t*) ((uintptr_t)*dITBoxItemDesc.p_file + dITBoxItemDesc.o_attributes) - (intptr_t)&lITBoxDataStart) + (intptr_t)&lITBoxEffectDisplayList); // Linker thing
 
-            for (i = 0; i < ITCONTAINER_GFX_COUNT; i++)
+            for (i = 0; i < ITCONTAINER_EFFECT_COUNT; i++)
             {
                 dobj = omAddDObjForGObj(effect_gobj, dl);
 
@@ -244,7 +244,7 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
 
     if (gITManagerRandomWeights.item_num != 0)
     {
-        index = itMainGetWeightedItemID(&gITManagerRandomWeights);
+        index = itMainGetWeightedItemKind(&gITManagerRandomWeights);
 
         if (index <= nITKindCommonEnd)
         {
@@ -294,7 +294,7 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
                 {
                     if (j != 0)
                     {
-                        index = itMainGetWeightedItemID(&gITManagerRandomWeights);
+                        index = itMainGetWeightedItemKind(&gITManagerRandomWeights);
                     }
                     vel_different.x = spawn_pos[j].x;
                     vel_different.y = spawn_pos[j].y;
@@ -338,7 +338,7 @@ sb32 itBoxCommonProcHit(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itBoxExplodeNMakeEffectGotoSetStatus(item_gobj);
+    else itBoxExplodeMakeEffectGotoSetStatus(item_gobj);
 
     return FALSE;
 }
@@ -358,7 +358,7 @@ sb32 itBoxCommonProcDamage(GObj *item_gobj)
 // 0x80179718
 sb32 itBoxFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, ITBOX_MAP_REBOUND_COMMON, ITBOX_MAP_REBOUND_GROUND, itBoxWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITBOX_MAP_REBOUND_COMMON, ITBOX_MAP_REBOUND_GROUND, itBoxWaitSetStatus);
 }
 
 // 0x80179748
@@ -401,7 +401,7 @@ sb32 itBoxThrownProcMap(GObj *item_gobj)
         {
             return TRUE;
         }
-        else itBoxExplodeNMakeEffectGotoSetStatus(item_gobj);
+        else itBoxExplodeMakeEffectGotoSetStatus(item_gobj);
     }
     return FALSE;
 }
@@ -425,7 +425,7 @@ sb32 func_ovl3_801798B8(GObj *item_gobj) // Unused
 // 0x801798DC
 sb32 itBoxDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, ITBOX_MAP_REBOUND_COMMON, ITBOX_MAP_REBOUND_GROUND, itBoxWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITBOX_MAP_REBOUND_COMMON, ITBOX_MAP_REBOUND_GROUND, itBoxWaitSetStatus);
 }
 
 // 0x8017990C
@@ -437,7 +437,7 @@ void itBoxDroppedSetStatus(GObj *item_gobj)
 }
 
 // 0x80179948
-sb32 itBoxExplodeNProcUpdate(GObj *item_gobj)
+sb32 itBoxExplodeProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -472,7 +472,7 @@ GObj* itBoxMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 }
 
 // 0x80179A34
-void itBoxExplodeNInitItemVars(GObj *item_gobj)
+void itBoxExplodeInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -498,14 +498,14 @@ void itBoxExplodeNInitItemVars(GObj *item_gobj)
 }
 
 // 0x80179AD4
-void itBoxExplodeNSetStatus(GObj *item_gobj)
+void itBoxExplodeSetStatus(GObj *item_gobj)
 {
-    itBoxExplodeNInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusExplodeN);
+    itBoxExplodeInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusExplode);
 }
 
 // 0x80179B08
-void itBoxExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
+void itBoxExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
     efParticle *efpart;
     itStruct *ip = itGetStruct(item_gobj);
@@ -529,5 +529,5 @@ void itBoxExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
-    itBoxExplodeNSetStatus(item_gobj);
+    itBoxExplodeSetStatus(item_gobj);
 }

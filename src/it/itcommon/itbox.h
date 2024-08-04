@@ -21,10 +21,10 @@ extern void itBoxThrownSetStatus(GObj *item_gobj);
 extern sb32 func_ovl3_801798B8(GObj *item_gobj);
 extern sb32 itBoxDroppedProcMap(GObj *item_gobj);
 extern void itBoxDroppedSetStatus(GObj *item_gobj);
-extern sb32 itBoxExplodeNProcUpdate(GObj *item_gobj);
+extern sb32 itBoxExplodeProcUpdate(GObj *item_gobj);
 extern GObj *itBoxMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
-extern void itBoxExplodeNInitItemVars(GObj *item_gobj);
-extern void itBoxExplodeNSetStatus(GObj *item_gobj);
-extern void itBoxExplodeNMakeEffectGotoSetStatus(GObj *item_gobj);
+extern void itBoxExplodeInitItemVars(GObj *item_gobj);
+extern void itBoxExplodeSetStatus(GObj *item_gobj);
+extern void itBoxExplodeMakeEffectGotoSetStatus(GObj *item_gobj);
 
 #endif

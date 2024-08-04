@@ -298,8 +298,8 @@ typedef struct grBonusGroundVarsBonus3
 {
 	void* map_head;
 	void* item_head;
-	Vec3f rbomb_make_pos;
-	s32 rbomb_make_wait;
+	Vec3f tarubomb_make_pos;
+	s32 tarubomb_make_wait;
 
 } grBonusGroundVarsBonus3;
 

@@ -259,7 +259,7 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
     else if ((coll_mask & MPCOLL_KIND_RWALL) && (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.rwall_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) != FALSE))
     {
     coll_end:
-        fp->lr = (fp->phys_info.vel_air.x >= 0.0F) ? nGMDirectionR : nGMDirectionL;
+        fp->lr = (fp->phys_info.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;
 
         fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
 

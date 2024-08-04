@@ -23,20 +23,20 @@ extern intptr_t lITStarmieMatAnimJoint;     // 0x00011338
 // 0x8018B170
 itCreateDesc dITStarmieItemDesc = 
 {
-    nITKindStarmie,                        // Item Kind
-    &gITManagerFileData,                         // Pointer to item file data?
+    nITKindStarmie,                         // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITStarmieItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,         // Hitbox Update State
-    itStarmieCommonProcUpdate,            // Proc Update
-    itStarmieCommonProcMap,               // Proc Map
+    nGMHitUpdateNew,                        // Hitbox Update State
+    itStarmieCommonProcUpdate,              // Proc Update
+    itStarmieCommonProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -62,7 +62,7 @@ itStatusDesc dITStarmieStatusDescs[/* */] =
 
     // Status 1 (Neutral Attack)
     {
-        itStarmieNAttackProcUpdate,         // Proc Update
+        itStarmieAttackProcUpdate,          // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -77,14 +77,14 @@ itStatusDesc dITStarmieStatusDescs[/* */] =
 wpCreateDesc dITStarmieWeaponSwiftWeaponDesc = 
 {
     0x03,                                   // Render flags?
-    nWPKindStarmieSwift,                   // Weapon Kind
-    &gITManagerFileData,                         // Pointer to character's loaded files?
+    nWPKindStarmieSwift,                    // Weapon Kind
+    &gITManagerFileData,                    // Pointer to character's loaded files?
     &lITStarmieWeaponSwiftWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -106,9 +106,9 @@ wpCreateDesc dITStarmieWeaponSwiftWeaponDesc =
 
 enum itStarmieStatus
 {
-    itStatus_Starmie_NFollow,
-    itStatus_Starmie_NAttack,
-    itStatus_Starmie_EnumMax
+    nITStarmieStatusNFollow,
+    nITStarmieStatusAttack,
+    nITStarmieStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -118,7 +118,7 @@ enum itStarmieStatus
 // // // // // // // // // // // //
 
 // 0x80181C20
-void itStarmieNAttackUpdateSwift(GObj *item_gobj)
+void itStarmieAttackUpdateSwift(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -134,7 +134,7 @@ void itStarmieNAttackUpdateSwift(GObj *item_gobj)
         }
         else pos.x += ITSTARMIE_OTHER_SWIFT_SPAWN_OFF_X * ip->lr;
 
-        itStarmieNAttackMakeSwift(item_gobj, &pos);
+        itStarmieAttackMakeSwift(item_gobj, &pos);
 
         func_800269C0_275C0(nGMSoundFGMMonsterShoot);
 
@@ -145,7 +145,7 @@ void itStarmieNAttackUpdateSwift(GObj *item_gobj)
 }
 
 // 0x80181D24
-sb32 itStarmieNAttackProcUpdate(GObj *item_gobj)
+sb32 itStarmieAttackProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -153,7 +153,7 @@ sb32 itStarmieNAttackProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    itStarmieNAttackUpdateSwift(item_gobj);
+    itStarmieAttackUpdateSwift(item_gobj);
 
     ip->item_vars.starmie.swift_spawn_wait--;
 
@@ -165,13 +165,13 @@ sb32 itStarmieNAttackProcUpdate(GObj *item_gobj)
 }
 
 // 0x80181D8C
-void itStarmieNAttackInitItemVars(GObj *item_gobj)
+void itStarmieAttackInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 lr_bak = ip->lr;
 
-    ip->lr = (ip->item_vars.starmie.victim_pos.x < dobj->translate.vec.f.x) ? nGMDirectionL : nGMDirectionR;
+    ip->lr = (ip->item_vars.starmie.victim_pos.x < dobj->translate.vec.f.x) ? nGMFacingL : nGMFacingR;
 
     if (ip->lr != lr_bak)
     {
@@ -184,10 +184,10 @@ void itStarmieNAttackInitItemVars(GObj *item_gobj)
 }
 
 // 0x80181E0C
-void itStarmieNAttackSetStatus(GObj *item_gobj)
+void itStarmieAttackSetStatus(GObj *item_gobj)
 {
-    itStarmieNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITStarmieStatusDescs, itStatus_Starmie_NAttack);
+    itStarmieAttackInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITStarmieStatusDescs, nITStarmieStatusAttack);
 }
 
 // 0x80181E40
@@ -196,19 +196,19 @@ sb32 itStarmieNFollowProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if ((ip->lr == nGMDirectionR) && (dobj->translate.vec.f.x >= ip->item_vars.starmie.target_pos.x))
+    if ((ip->lr == nGMFacingR) && (dobj->translate.vec.f.x >= ip->item_vars.starmie.target_pos.x))
     {
         ip->phys_info.vel_air.x = 0.0F;
         ip->phys_info.vel_air.y = 0.0F;
 
-        itStarmieNAttackSetStatus(item_gobj);
+        itStarmieAttackSetStatus(item_gobj);
     }
-    if ((ip->lr == nGMDirectionL) && (dobj->translate.vec.f.x <= ip->item_vars.starmie.target_pos.x))
+    if ((ip->lr == nGMFacingL) && (dobj->translate.vec.f.x <= ip->item_vars.starmie.target_pos.x))
     {
         ip->phys_info.vel_air.x = 0.0F;
         ip->phys_info.vel_air.y = 0.0F;
 
-        itStarmieNAttackSetStatus(item_gobj);
+        itStarmieAttackSetStatus(item_gobj);
     }
     return FALSE;
 }
@@ -230,7 +230,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     target_pos.y += ITSTARMIE_TARGET_POS_OFF_Y - fp->coll_data.object_coll.bottom;
 
-    target_pos.x -= (fp->coll_data.object_coll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? nGMDirectionL : nGMDirectionR);
+    target_pos.x -= (fp->coll_data.object_coll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? nGMFacingL : nGMFacingR);
 
     victim_pos = &fighter_dobj->translate.vec.f;
 
@@ -245,9 +245,9 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     ip->item_vars.starmie.victim_pos = *victim_pos;
 
-    ip->lr = (dist.x < 0.0F) ? nGMDirectionL : nGMDirectionR;
+    ip->lr = (dist.x < 0.0F) ? nGMFacingL : nGMFacingR;
 
-    if (ip->lr == nGMDirectionR)
+    if (ip->lr == nGMFacingR)
     {
         item_dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }
@@ -310,7 +310,7 @@ void itStarmieNFollowInitItemVars(GObj *item_gobj)
 void itStarmieNFollowSetStatus(GObj *item_gobj)
 {
     itStarmieNFollowInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITStarmieStatusDescs, itStatus_Starmie_NFollow);
+    itMainSetItemStatus(item_gobj, dITStarmieStatusDescs, nITStarmieStatusNFollow);
 }
 
 // 0x8018221C
@@ -405,9 +405,9 @@ sb32 itStarmieWeaponSwiftProcHop(GObj *weapon_gobj)
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
-        wp->lr = nGMDirectionR;
+        wp->lr = nGMFacingR;
     }
-    else wp->lr = nGMDirectionL;
+    else wp->lr = nGMFacingL;
 
     return FALSE;
 }
@@ -455,7 +455,7 @@ GObj* itStarmieWeaponSwiftMakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     wp->lifetime = ITSTARMIE_SWIFT_LIFETIME;
 
-    if (wp->lr == nGMDirectionR)
+    if (wp->lr == nGMFacingR)
     {
         dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }
@@ -463,7 +463,7 @@ GObj* itStarmieWeaponSwiftMakeWeapon(GObj *item_gobj, Vec3f *pos)
 }
 
 // 0x80182608
-void itStarmieNAttackMakeSwift(GObj *item_gobj, Vec3f *pos)
+void itStarmieAttackMakeSwift(GObj *item_gobj, Vec3f *pos)
 {
     itStarmieWeaponSwiftMakeWeapon(item_gobj, pos);
 }

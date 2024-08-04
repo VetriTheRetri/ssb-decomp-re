@@ -16,20 +16,20 @@ extern intptr_t lITSwordItemAttributes;     // 0x00000190
 
 itCreateDesc dITSwordITemDesc =
 {
-    nITKindSword,                          // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindSword,                           // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITSwordItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itSwordFallProcUpdate,                 // Proc Update
-    itSwordFallProcMap,                    // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itSwordFallProcUpdate,                  // Proc Update
+    itSwordFallProcMap,                     // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -43,7 +43,7 @@ itStatusDesc dITSwordStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itSwordWaitProcMap,                // Proc Map
+        itSwordWaitProcMap,                 // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -54,8 +54,8 @@ itStatusDesc dITSwordStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itSwordFallProcUpdate,             // Proc Update
-        itSwordFallProcMap,                // Proc Map
+        itSwordFallProcUpdate,              // Proc Update
+        itSwordFallProcMap,                 // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -78,7 +78,7 @@ itStatusDesc dITSwordStatusDescs[/* */] =
 
     // Status 3 (Fighter Throw)
     {
-        itSwordFallProcUpdate,             // Proc Update
+        itSwordFallProcUpdate,              // Proc Update
         itSwordThrownProcMap,               // Proc Map
         itSwordThrownProcHit,               // Proc Hit
         itSwordThrownProcHit,               // Proc Shield
@@ -90,8 +90,8 @@ itStatusDesc dITSwordStatusDescs[/* */] =
 
     // Status 4 (Fighter Drop)
     {
-        itSwordFallProcUpdate,             // Proc Update
-        itSwordDroppedProcMap,                // Proc Map
+        itSwordFallProcUpdate,              // Proc Update
+        itSwordDroppedProcMap,              // Proc Map
         itSwordThrownProcHit,               // Proc Hit
         itSwordThrownProcHit,               // Proc Shield
         itMainCommonProcHop,                // Proc Hop
@@ -109,12 +109,12 @@ itStatusDesc dITSwordStatusDescs[/* */] =
 
 enum itSwordStatus
 {
-    itStatus_Sword_Wait,
-    itStatus_Sword_Fall,
-    itStatus_Sword_Hold,
-    itStatus_Sword_Thrown,
-    itStatus_Sword_Dropped,
-    itStatus_Sword_EnumMax
+    nITSwordStatusWait,
+    nITSwordStatusFall,
+    nITSwordStatusHold,
+    nITSwordStatusThrown,
+    nITSwordStatusDropped,
+    nITSwordStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -145,14 +145,14 @@ sb32 itSwordWaitProcMap(GObj *item_gobj)
 // 0x80174BB4
 sb32 itSwordFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itSwordWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITSWORD_MAP_REBOUND_COMMON, ITSWORD_MAP_REBOUND_GROUND, itSwordWaitSetStatus);
 }
 
 // 0x80174BE4
 void itSwordWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_Wait);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, nITSwordStatusWait);
 }
 
 // 0x80174C18
@@ -163,7 +163,7 @@ void itSwordFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_Fall);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, nITSwordStatusFall);
 }
 
 // 0x80174C5C
@@ -171,13 +171,13 @@ void itSwordHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
-    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_Hold);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, nITSwordStatusHold);
 }
 
 // 0x80174C90
 sb32 itSwordThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itSwordWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITSWORD_MAP_REBOUND_COMMON, ITSWORD_MAP_REBOUND_GROUND, itSwordWaitSetStatus);
 }
 
 // 0x80174CC0
@@ -195,7 +195,7 @@ sb32 itSwordThrownProcHit(GObj *item_gobj)
 // 0x80174CE8
 void itSwordThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_Thrown);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, nITSwordStatusThrown);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }
@@ -203,13 +203,13 @@ void itSwordThrownSetStatus(GObj *item_gobj)
 // 0x80174D2C
 sb32 itSwordDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itSwordWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITSWORD_MAP_REBOUND_COMMON, ITSWORD_MAP_REBOUND_GROUND, itSwordWaitSetStatus);
 }
 
 // 0x80174D5C
 void itSwordDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, itStatus_Sword_Dropped);
+    itMainSetItemStatus(item_gobj, dITSwordStatusDescs, nITSwordStatusDropped);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }

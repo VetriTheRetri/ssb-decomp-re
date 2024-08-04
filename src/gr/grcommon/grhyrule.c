@@ -175,7 +175,7 @@ void grHyruleTwisterUpdateSummon(void)
         gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusMove;
         gGRCommonStruct.hyrule.twister_wait = mtTrigGetRandomIntRange(600) + 520;
 
-        lr = ((mtTrigGetRandomUShort() % 2) != 0) ? nGMDirectionR : nGMDirectionL;
+        lr = ((mtTrigGetRandomUShort() % 2) != 0) ? nGMFacingR : nGMFacingL;
 
         gGRCommonStruct.hyrule.twister_turn_wait = 0;
         gGRCommonStruct.hyrule.twister_vel = lr * 10.0F;
@@ -227,15 +227,15 @@ s32 grHyruleTwisterGetLR(void)
     {
         if (players_lside == players_rside)
         {
-            return ((mtTrigGetRandomUShort() % 2) != 0) ? nGMDirectionL : nGMDirectionR;
+            return ((mtTrigGetRandomUShort() % 2) != 0) ? nGMFacingL : nGMFacingR;
         }
         else if (players_rside < players_lside)
         {
-            return nGMDirectionL;
+            return nGMFacingL;
         }
-        else return nGMDirectionR;
+        else return nGMFacingR;
     }
-    else return nGMDirectionC;
+    else return nGMFacingC;
 }
 
 // 0x8010A610
@@ -269,7 +269,7 @@ void grHyruleTwisterUpdateMove(void)
             {
                 lr = grHyruleTwisterGetLR();
 
-                if ((lr != nGMDirectionC) && (mtTrigGetRandomIntRange(5) == 0))
+                if ((lr != nGMFacingC) && (mtTrigGetRandomIntRange(5) == 0))
                 {
                     gGRCommonStruct.hyrule.twister_turn_wait = mtTrigGetRandomIntRange(180) + 300;
                     gGRCommonStruct.hyrule.twister_vel = lr * 50.0F;

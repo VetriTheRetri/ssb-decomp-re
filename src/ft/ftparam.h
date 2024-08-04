@@ -73,7 +73,7 @@ extern f32 ftParamGetGroundHazardKnockback(s32 percent_damage, s32 recent_damage
 extern f32 ftPararmGetHitStun(f32 knockback);
 extern s32 ftParamGetHitLag(s32 damage, s32 status_id, f32 hitlag_mul);
 extern void ftParamUpdateDamage(ftStruct *fp, s32 damage);
-extern void ftParamHealDamage(ftStruct *fp, s32 heal);
+extern void ftParamSetHealDamage(ftStruct *fp, s32 heal);
 extern s32 ftParamGetCapturedDamage(ftStruct *fp, s32 damage);
 extern f32 ftParamGetStale(s32 player, s32 attack_id, u16 motion_count);
 extern s32 ftParamGetStaledDamage(s32 player, s32 damage, s32 attack_id, u16 motion_count);

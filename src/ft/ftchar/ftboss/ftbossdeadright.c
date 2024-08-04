@@ -11,7 +11,7 @@ void ftBossDeadRightSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->lr = nGMDirectionL;
+    fp->lr = nGMFacingL;
 
     ftMainSetFighterStatus(fighter_gobj, nFTBossStatusDeadRight, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 

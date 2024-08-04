@@ -19,19 +19,19 @@ extern intptr_t lITPowerBlockAnimJoint;     // 0x00001288
 
 itCreateDesc dITPowerBlockItemDesc =
 {
-    nITKindPowerBlock,                     // Item Kind
-    &gGRCommonStruct.inishie.item_head,       // Pointer to item file data?
+    nITKindPowerBlock,                      // Item Kind
+    &gGRCommonStruct.inishie.item_head,     // Pointer to item file data?
     &lITPowerBlockItemAttributes,           // Offset of item attributes in file?
 
     // DObj transformation struct
     {
         0x44,                               // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itPowerBlockCommonProcUpdate,         // Proc Update
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itPowerBlockCommonProcUpdate,           // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
@@ -52,7 +52,7 @@ itStatusDesc dITPowerBlockStatusDescs[/* */] =
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itPowerBlockNWaitProcDamage         // Proc Damage
+        itPowerBlockWaitProcDamage          // Proc Damage
     }
 };
 
@@ -64,8 +64,8 @@ itStatusDesc dITPowerBlockStatusDescs[/* */] =
 
 enum itPowerBlockStatus
 {
-    itStatus_PowerBlock_NWait,
-    itStatus_PowerBlock_EnumMax
+    nITPowerBlockStatusWait,
+    nITPowerBlockStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -79,17 +79,17 @@ sb32 itPowerBlockCommonProcUpdate(GObj *item_gobj)
 {
     if (DObjGetStruct(item_gobj)->anim_remain == AOBJ_FRAME_NULL)
     {
-        itPowerBlockNWaitSetStatus(item_gobj);
+        itPowerBlockWaitSetStatus(item_gobj);
     }
     return FALSE;
 }
 
 // 0x8017C0D4
-void itPowerBlockNWaitSetStatus(GObj *item_gobj)
+void itPowerBlockWaitSetStatus(GObj *item_gobj)
 {
     itStruct *ip;
 
-    itMainSetItemStatus(item_gobj, dITPowerBlockStatusDescs, itStatus_PowerBlock_NWait);
+    itMainSetItemStatus(item_gobj, dITPowerBlockStatusDescs, nITPowerBlockStatusWait);
 
     ip = itGetStruct(item_gobj), ip->item_hurt.hitstatus = nGMHitStatusNormal;
 }
@@ -107,7 +107,7 @@ sb32 itPowerBlockNDamageProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017C15C
-sb32 itPowerBlockNWaitProcDamage(GObj *item_gobj)
+sb32 itPowerBlockWaitProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -132,7 +132,7 @@ GObj* itPowerBlockMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        ip->item_hurt.interact_mask = GMHITCOLLISION_MASK_FIGHTER;
+        ip->item_hurt.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
     }
     return item_gobj;
 }

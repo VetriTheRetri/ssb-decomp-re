@@ -1,7 +1,6 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-#include <gr/ground.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -24,20 +23,20 @@ extern intptr_t lITIwarkDisplayList;        // 0x0000A640
 // 0x8018AA90
 itCreateDesc dITIwarkItemDesc =
 {
-    nITKindIwark,                          // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindIwark,                           // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITIwarkItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformNull,               // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformNull,                   // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,         // Hitbox Update State
-    itIwarkCommonProcUpdate,              // Proc Update
-    itIwarkCommonProcMap,                 // Proc Map
+    nGMHitUpdateNew,                        // Hitbox Update State
+    itIwarkCommonProcUpdate,                // Proc Update
+    itIwarkCommonProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -51,7 +50,7 @@ itStatusDesc dITIwarkStatusDescs[/* */] =
 {
     // Status 0 (Neutral Fly)
     {
-        itIwarkNFlyProcUpdate,              // Proc Update
+        itIwarkFlyProcUpdate,              // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -63,7 +62,7 @@ itStatusDesc dITIwarkStatusDescs[/* */] =
 
     // Status 1 (Neutral Attack)
     {
-        itIwarkNAttackProcUpdate,           // Proc Update
+        itIwarkAttackProcUpdate,            // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -78,14 +77,14 @@ itStatusDesc dITIwarkStatusDescs[/* */] =
 wpCreateDesc dITIwarkWeaponRockWeaponDesc =
 {
     0x01,                                   // Render flags?
-    nWPKindIwarkRock,                      // Weapon Kind
-    &gITManagerFileData,                           // Pointer to weapon's loaded files?
+    nWPKindIwarkRock,                       // Weapon Kind
+    &gITManagerFileData,                    // Pointer to weapon's loaded files?
     &lITIwarkWeaponRockWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nOMTransformNull,               // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformNull,                   // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -107,9 +106,9 @@ wpCreateDesc dITIwarkWeaponRockWeaponDesc =
 
 enum itIwarkStatus
 {
-    itStatus_Iwark_NFly,
-    itStatus_Iwark_NAttack,
-    itStatus_Iwark_EnumMax
+    nITIwarkStatusFly,
+    nITIwarkStatusAttack,
+    nITIwarkStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -119,7 +118,7 @@ enum itIwarkStatus
 // // // // // // // // // // // //
 
 // 0x8017D740
-void itIwarkNAttackUpdateRock(GObj *iwark_gobj)
+void itIwarkAttackUpdateRock(GObj *iwark_gobj)
 {
     itStruct *ip = itGetStruct(iwark_gobj);
     DObj *dobj = DObjGetStruct(iwark_gobj);
@@ -156,7 +155,7 @@ void itIwarkNAttackUpdateRock(GObj *iwark_gobj)
 }
 
 // 0x8017D820
-sb32 itIwarkNAttackProcUpdate(GObj *item_gobj)
+sb32 itIwarkAttackProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -170,7 +169,7 @@ sb32 itIwarkNAttackProcUpdate(GObj *item_gobj)
 
         if (ip->item_vars.iwark.rock_spawn_remain != 0)
         {
-            itIwarkNAttackUpdateRock(item_gobj);
+            itIwarkAttackUpdateRock(item_gobj);
         }
         else if (ip->item_vars.iwark.rock_spawn_count == ip->item_vars.iwark.rock_spawn_max)
         {
@@ -200,7 +199,7 @@ sb32 itIwarkNAttackProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017D948
-void itIwarkNAttackInitItemVars(GObj *item_gobj)
+void itIwarkAttackInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -230,7 +229,7 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
     }
     else pos.y += ITIWARK_OTHER_ADD_POS_Y;
 
-    efManagerDustHeavyDoubleMakeEffect(&pos, nGMDirectionL, 1.0F);
+    efManagerDustHeavyDoubleMakeEffect(&pos, nGMFacingL, 1.0F);
 
     if (ip->it_kind == nITKindIwark)
     {
@@ -239,20 +238,20 @@ void itIwarkNAttackInitItemVars(GObj *item_gobj)
 }
 
 // 0x8017DA60
-void itIwarkNAttackSetStatus(GObj *item_gobj)
+void itIwarkAttackSetStatus(GObj *item_gobj)
 {
-    itIwarkNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITIwarkStatusDescs, itStatus_Iwark_NAttack);
+    itIwarkAttackInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITIwarkStatusDescs, nITIwarkStatusAttack);
 }
 
 // 0x8017DA94
-sb32 itIwarkNFlyProcUpdate(GObj *item_gobj)
+sb32 itIwarkFlyProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
-        itIwarkNAttackSetStatus(item_gobj);
+        itIwarkAttackSetStatus(item_gobj);
     }
     ip->it_multi--;
 
@@ -260,7 +259,7 @@ sb32 itIwarkNFlyProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017DAD8
-void itIwarkNFlySetStatus(GObj *item_gobj)
+void itIwarkFlySetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -268,7 +267,7 @@ void itIwarkNFlySetStatus(GObj *item_gobj)
 
     ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITIwarkStatusDescs, itStatus_Iwark_NFly);
+    itMainSetItemStatus(item_gobj, dITIwarkStatusDescs, nITIwarkStatusFly);
 }
 
 // 0x8017DB18
@@ -278,7 +277,7 @@ sb32 itIwarkCommonProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        itIwarkNFlySetStatus(item_gobj);
+        itIwarkFlySetStatus(item_gobj);
     }
     ip->it_multi--;
 
@@ -321,7 +320,7 @@ GObj* itIwarkMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->item_hit.interact_mask = GMHITCOLLISION_MASK_FIGHTER;
+        ip->item_hit.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
@@ -405,9 +404,9 @@ sb32 itIwarkWeaponRockProcHop(GObj *weapon_gobj)
 
     if (wp->phys_info.vel_air.x > 0.0F)
     {
-        wp->lr = nGMDirectionR;
+        wp->lr = nGMFacingR;
     }
-    else wp->lr = nGMDirectionL;
+    else wp->lr = nGMFacingL;
 
     return FALSE;
 }
@@ -455,9 +454,9 @@ GObj* itIwarkWeaponRockMakeWeapon(GObj *spawn_gobj, Vec3f *pos, u8 random)
 
     if (mtTrigGetRandomIntRange(2) == 0)
     {
-        wp->lr = nGMDirectionL;
+        wp->lr = nGMFacingL;
     }
-    else wp->lr = nGMDirectionR;
+    else wp->lr = nGMFacingR;
 
     dobj = DObjGetStruct(weapon_gobj);
 

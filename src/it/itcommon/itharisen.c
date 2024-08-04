@@ -18,24 +18,27 @@ extern void func_8000BD8C_C98C(GObj*, void*, f32);
 // // // // // // // // // // // //
 
 // 0x80189A70
-intptr_t dITHarisenAnimJoint[/* */] = { 0x2250, 0x2270 };
+intptr_t dITHarisenAnimJoint[/* */] = 
+{ 
+    0x2250, 0x2270 
+};
 
 itCreateDesc dITHarisenItemDesc =
 {
-    nITKindHarisen,                        // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindHarisen,                         // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITHarisenItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itHarisenFallProcUpdate,               // Proc Update
-    itHarisenFallProcMap,                  // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itHarisenFallProcUpdate,                // Proc Update
+    itHarisenFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -49,7 +52,7 @@ itStatusDesc dITHarisenStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itHarisenWaitProcMap,              // Proc Map
+        itHarisenWaitProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -60,8 +63,8 @@ itStatusDesc dITHarisenStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itHarisenFallProcUpdate,           // Proc Update
-        itHarisenFallProcMap,              // Proc Map
+        itHarisenFallProcUpdate,            // Proc Update
+        itHarisenFallProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -86,22 +89,22 @@ itStatusDesc dITHarisenStatusDescs[/* */] =
     {
         itHarisenThrownProcUpdate,          // Proc Update
         itHarisenThrownProcMap,             // Proc Map
-        itHarisenCommonProcHit,           // Proc Hit
-        itHarisenCommonProcHit,           // Proc Shield
+        itHarisenCommonProcHit,             // Proc Hit
+        itHarisenCommonProcHit,             // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itHarisenCommonProcHit,           // Proc Set-Off
+        itHarisenCommonProcHit,             // Proc Set-Off
         itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itHarisenFallProcUpdate,           // Proc Update
-        itHarisenDroppedProcMap,              // Proc Map
-        itHarisenCommonProcHit,           // Proc Hit
-        itHarisenCommonProcHit,           // Proc Shield
+        itHarisenFallProcUpdate,            // Proc Update
+        itHarisenDroppedProcMap,            // Proc Map
+        itHarisenCommonProcHit,             // Proc Hit
+        itHarisenCommonProcHit,             // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itHarisenCommonProcHit,           // Proc Set-Off
+        itHarisenCommonProcHit,             // Proc Set-Off
         itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     }
@@ -115,12 +118,12 @@ itStatusDesc dITHarisenStatusDescs[/* */] =
 
 enum itHarisenStatus
 {
-    itStatus_Harisen_Wait,
-    itStatus_Harisen_Fall,
-    itStatus_Harisen_Hold,
-    itStatus_Harisen_Thrown,
-    itStatus_Harisen_Dropped,
-    itStatus_Harisen_EnumMax
+    nITHarisenStatusWait,
+    nITHarisenStatusFall,
+    nITHarisenStatusHold,
+    nITHarisenStatusThrown,
+    nITHarisenStatusDropped,
+    nITHarisenStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -159,7 +162,7 @@ sb32 itHarisenWaitProcMap(GObj *item_gobj)
 // 0x801751C0
 sb32 itHarisenFallProcMap(GObj *item_gobj)
 {
-    itMapCheckThrownLanding(item_gobj, 0.0F, 0.3F, itHarisenWaitSetStatus);
+    itMapCheckDestroyDropped(item_gobj, ITHARISEN_MAP_REBOUND_COMMON, ITHARISEN_MAP_REBOUND_GROUND, itHarisenWaitSetStatus);
 
     return FALSE;
 }
@@ -168,7 +171,7 @@ sb32 itHarisenFallProcMap(GObj *item_gobj)
 void itHarisenWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_Wait);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, nITHarisenStatusWait);
 }
 
 // 0x80175228
@@ -179,7 +182,7 @@ void itHarisenFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_Fall);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, nITHarisenStatusFall);
 }
 
 // 0x8017526C
@@ -191,7 +194,7 @@ void itHarisenHoldSetStatus(GObj *item_gobj)
 
     dobj->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_Hold);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, nITHarisenStatusHold);
 }
 
 // 0x801752C0
@@ -208,7 +211,7 @@ sb32 itHarisenThrownProcUpdate(GObj *item_gobj)
 // 0x801752F8
 sb32 itHarisenThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.0F, 0.3F, itHarisenWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITHARISEN_MAP_REBOUND_COMMON, ITHARISEN_MAP_REBOUND_GROUND, itHarisenWaitSetStatus);
 }
 
 // 0x80175328
@@ -226,7 +229,7 @@ sb32 itHarisenCommonProcHit(GObj *item_gobj)
 // 0x80175350
 void itHarisenThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_Thrown);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, nITHarisenStatusThrown);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(-90.0F); // HALF_PI32
 }
@@ -234,13 +237,13 @@ void itHarisenThrownSetStatus(GObj *item_gobj)
 // 0x80175394
 sb32 itHarisenDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.0F, 0.3F, itHarisenWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITHARISEN_MAP_REBOUND_COMMON, ITHARISEN_MAP_REBOUND_GROUND, itHarisenWaitSetStatus);
 }
 
 // 0x801753C4
 void itHarisenDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, itStatus_Harisen_Dropped);
+    itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, nITHarisenStatusDropped);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(-90.0F);
 }

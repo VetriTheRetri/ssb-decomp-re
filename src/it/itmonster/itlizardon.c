@@ -28,20 +28,20 @@ lITLizardonMatAnimJoint;                    // 0x0000D688
 // 0x8018AD30
 itCreateDesc dITLizardonItemDesc = 
 {
-    nITKindLizardon,                       // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindLizardon,                        // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITLizardonItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformNull,               // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformNull,                   // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,         // Hitbox Update State
-    itLizardonCommonProcUpdate,           // Proc Update
-    itLizardonCommonProcMap,              // Proc Map
+    nGMHitUpdateNew,                        // Hitbox Update State
+    itLizardonCommonProcUpdate,             // Proc Update
+    itLizardonCommonProcMap,                // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -55,8 +55,8 @@ itStatusDesc dITLizardonStatusDescs[/* */] =
 {
     // Status 0 (Unused Fall)
     {
-        itLizardonUFallProcUpdate,          // Proc Update
-        itLizardonUFallProcMap,             // Proc Map
+        itLizardonFallUnusedProcUpdate,     // Proc Update
+        itLizardonFallUnusedProcMap,        // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -67,8 +67,8 @@ itStatusDesc dITLizardonStatusDescs[/* */] =
 
     // Status 1 (Air Fall)
     {
-        itLizardonFallProcUpdate,          // Proc Update
-        itLizardonFallProcMap,             // Proc Map
+        itLizardonFallProcUpdate,           // Proc Update
+        itLizardonFallProcMap,              // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -79,8 +79,8 @@ itStatusDesc dITLizardonStatusDescs[/* */] =
 
     // Status 2 (Neutral Attack)
     {
-        itLizardonNAttackProcUpdate,        // Proc Update
-        itLizardonNAttackProcMap,           // Proc Map
+        itLizardonAttackProcUpdate,         // Proc Update
+        itLizardonAttackProcMap,            // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -94,14 +94,14 @@ itStatusDesc dITLizardonStatusDescs[/* */] =
 wpCreateDesc dITLizardonWeaponFlameWeaponDesc = 
 {
     0x00,                                   // Render flags?
-    nWPKindLizardonFlame,                  // Weapon Kind
-    &gITManagerFileData,                           // Pointer to character's loaded files?
+    nWPKindLizardonFlame,                   // Weapon Kind
+    &gITManagerFileData,                    // Pointer to character's loaded files?
     &lITLizardonWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -123,10 +123,10 @@ wpCreateDesc dITLizardonWeaponFlameWeaponDesc =
 
 enum itLizardonStatus
 {
-    itStatus_Lizardon_UFall,    // Unused
-    itStatus_Lizardon_Fall,
-    itStatus_Lizardon_NAttack,
-    itStatus_Lizardon_EnumMax
+    nITLizardonStatusFallUnused,            // Unused
+    nITLizardonStatusFall,
+    nITLizardonStatusAttack,
+    nITLizardonStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -136,7 +136,7 @@ enum itLizardonStatus
 // // // // // // // // // // // //
 
 // 0x8017F470
-sb32 itLizardonUFallProcUpdate(GObj *item_gobj)
+sb32 itLizardonFallUnusedProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -146,11 +146,11 @@ sb32 itLizardonUFallProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017F49C
-sb32 itLizardonUFallProcMap(GObj *item_gobj)
+sb32 itLizardonFallUnusedProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMapCheckLanding(item_gobj, 0.2F, 1.0F, itLizardonNAttackSetStatus);
+    itMapCheckLanding(item_gobj, ITLIZARDON_MAP_REBOUND_COMMON, ITLIZARDON_MAP_REBOUND_GROUND, itLizardonAttackSetStatus);
 
     if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {
@@ -160,14 +160,14 @@ sb32 itLizardonUFallProcMap(GObj *item_gobj)
 }
 
 // 0x8017F49C
-sb32 itLizardonUFallSetStatus(GObj *item_gobj) // Unused
+sb32 itLizardonFallUnusedSetStatus(GObj *item_gobj) // Unused
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, itStatus_Lizardon_UFall);
+    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, nITLizardonStatusFallUnused);
 }
 
 // 0x8017F53C
@@ -191,8 +191,8 @@ sb32 itLizardonFallProcMap(GObj *item_gobj)
     {
         ip->phys_info.vel_air.y = 0.0F;
 
-        itLizardonNAttackSetStatus(item_gobj);
-        itLizardonNAttackInitItemVars(item_gobj);
+        itLizardonAttackSetStatus(item_gobj);
+        itLizardonAttackInitItemVars(item_gobj);
     }
     return FALSE;
 }
@@ -200,11 +200,11 @@ sb32 itLizardonFallProcMap(GObj *item_gobj)
 // 0x8017F5C4
 void itLizardonFallSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, itStatus_Lizardon_Fall);
+    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, nITLizardonStatusFall);
 }
 
 // 0x8017F5EC
-sb32 itLizardonNAttackProcUpdate(GObj *item_gobj)
+sb32 itLizardonAttackProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -220,7 +220,7 @@ sb32 itLizardonNAttackProcUpdate(GObj *item_gobj)
     
     if (ip->item_vars.lizardon.flame_spawn_wait == 0)
     {
-        itLizardonNAttackMakeFlame(item_gobj, &pos, ip->lr);
+        itLizardonAttackMakeFlame(item_gobj, &pos, ip->lr);
 
         ip->item_vars.lizardon.flame_spawn_wait = ITLIZARDON_FLAME_SPAWN_WAIT;
     }
@@ -257,7 +257,7 @@ sb32 itLizardonNAttackProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017F7E8
-sb32 itLizardonNAttackProcMap(GObj *item_gobj)
+sb32 itLizardonAttackProcMap(GObj *item_gobj)
 {
     itMapCheckLRWallProcGround(item_gobj, itLizardonFallSetStatus);
 
@@ -265,7 +265,7 @@ sb32 itLizardonNAttackProcMap(GObj *item_gobj)
 }
 
 // 0x8017F810
-void itLizardonNAttackInitItemVars(GObj *item_gobj)
+void itLizardonAttackInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -281,7 +281,7 @@ void itLizardonNAttackInitItemVars(GObj *item_gobj)
 
     ip->item_vars.lizardon.flame_spawn_wait = 0;
 
-    ip->lr = nGMDirectionL;
+    ip->lr = nGMFacingL;
 
     if (ip->it_kind == nITKindLizardon)
     {
@@ -294,9 +294,9 @@ void itLizardonNAttackInitItemVars(GObj *item_gobj)
 }
 
 // 0x8017F8E4
-void itLizardonNAttackSetStatus(GObj *item_gobj)
+void itLizardonAttackSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, itStatus_Lizardon_NAttack);
+    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, nITLizardonStatusAttack);
 }
 
 // 0x8017F90C
@@ -438,7 +438,7 @@ GObj* itLizardonWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 }
 
 // 0x8017FD2C
-void itLizardonNAttackMakeFlame(GObj *item_gobj, Vec3f *pos, s32 lr)
+void itLizardonAttackMakeFlame(GObj *item_gobj, Vec3f *pos, s32 lr)
 {
     itStruct *ip = itGetStruct(item_gobj);
     Vec3f vel;

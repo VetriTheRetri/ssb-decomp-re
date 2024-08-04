@@ -4864,7 +4864,7 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
                     (ip->item_hit.update_state != nGMHitUpdateDisable) && (ip->item_hit.update_state != nGMHitUpdateNew)
                 )
                 &&
-                (ip->item_hit.interact_mask & GMHITCOLLISION_MASK_FIGHTER)
+                (ip->item_hit.interact_mask & GMHITCOLLISION_FLAG_FIGHTER)
             )
         )
         {
@@ -5347,7 +5347,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
         {
             if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (wp->team != this_fp->team))
             {
-                if ((wp->weapon_hit.update_state != nGMHitUpdateDisable) && (wp->weapon_hit.update_state != nGMHitUpdateNew) && (wp->weapon_hit.interact_mask & GMHITCOLLISION_MASK_FIGHTER))
+                if ((wp->weapon_hit.update_state != nGMHitUpdateDisable) && (wp->weapon_hit.update_state != nGMHitUpdateNew) && (wp->weapon_hit.interact_mask & GMHITCOLLISION_FLAG_FIGHTER))
                 {
                     wp_hit = &wp->weapon_hit;
 
@@ -5416,7 +5416,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
         {
             if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (ip->team != this_fp->team))
             {
-                if ((ip->item_hit.update_state != nGMHitUpdateDisable) && (ip->item_hit.update_state != nGMHitUpdateNew) && (ip->item_hit.interact_mask & GMHITCOLLISION_MASK_FIGHTER))
+                if ((ip->item_hit.update_state != nGMHitUpdateDisable) && (ip->item_hit.update_state != nGMHitUpdateNew) && (ip->item_hit.interact_mask & GMHITCOLLISION_FLAG_FIGHTER))
                 {
                     it_hit = &ip->item_hit;
 
@@ -7095,7 +7095,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMDirectionR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMDirectionL)))
+            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
             {
                 var_a1 = FALSE;
             }
@@ -7227,7 +7227,7 @@ void func_ovl3_801397F4(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMDirectionR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMDirectionL)))
+            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
             {
                 var_a1 = FALSE;
             }
@@ -7313,7 +7313,7 @@ void ftComputerFollowObjectiveAlly(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMDirectionR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMDirectionL)))
+            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
             {
                 var_a1 = FALSE;
             }
@@ -7395,7 +7395,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMDirectionR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMDirectionL)))
+            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
             {
                 var_a1 = FALSE;
             }
@@ -7519,7 +7519,7 @@ void ftComputerFollowObjectiveRush(ftStruct *fp)
         mtTrigGetRandomFloat();
         random = mtTrigGetRandomFloat();
 
-        if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMDirectionR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMDirectionL)))
+        if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
         {
             var_a1 = FALSE;
         }

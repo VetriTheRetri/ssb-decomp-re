@@ -178,7 +178,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
         wp->player = WEAPON_PORT_DEFAULT;
         wp->handicap = WEAPON_HANDICAP_DEFAULT;
         wp->player_number = 0;
-        wp->lr = nGMDirectionR;
+        wp->lr = nGMFacingR;
 
         wp->display_mode = sWPManagerDisplayMode;
 
@@ -235,7 +235,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     
     wp->weapon_hit.hitbox_count = attributes->hitbox_count;
 
-    wp->weapon_hit.interact_mask = GMHITCOLLISION_MASK_ALL;
+    wp->weapon_hit.interact_mask = GMHITCOLLISION_FLAG_ALL;
 
     wpMainClearHitRecord(wp);
 

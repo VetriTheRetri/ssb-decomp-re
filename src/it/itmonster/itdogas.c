@@ -22,20 +22,20 @@ extern intptr_t lITDogasAnimJoint;          // 0x000128DC
 // 0x8018B2C0
 itCreateDesc dITDogasItemDesc =
 {
-    nITKindDogas,                          // Item Kind
-    &gITManagerFileData,                         // Pointer to item file data?
+    nITKindDogas,                           // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITDogasItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformNull,               // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformNull,                   // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itDogasCommonProcUpdate,              // Proc Update
-    itDogasCommonProcMap,                 // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itDogasCommonProcUpdate,                // Proc Update
+    itDogasCommonProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -49,7 +49,7 @@ itStatusDesc dITDogasStatusDescs[/* */] =
 {
     // Status 0 (Neutral Active)
     {
-        itDogasNAttackProcUpdate,           // Proc Update
+        itDogasAttackProcUpdate,            // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -61,7 +61,7 @@ itStatusDesc dITDogasStatusDescs[/* */] =
 
     // Status 1 (Neutral Disappear)
     {
-        itDogasNDisappearProcUpdate,        // Proc Update
+        itDogasDisappearProcUpdate,         // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -76,14 +76,14 @@ itStatusDesc dITDogasStatusDescs[/* */] =
 wpCreateDesc dITDogasWeaponSmogWeaponDesc = 
 {
     0x03,                                   // Render flags?
-    nWPKindDogasSmog,                      // Weapon Kind
-    &gITManagerFileData,                         // Pointer to weapon's loaded files?
+    nWPKindDogasSmog,                       // Weapon Kind
+    &gITManagerFileData,                    // Pointer to weapon's loaded files?
     &lITDogasWeaponSmogWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -105,9 +105,9 @@ wpCreateDesc dITDogasWeaponSmogWeaponDesc =
 
 enum itDogasStatus
 {
-    itStatus_Dogas_NAttack,
-    itStatus_Dogas_NDisappear,
-    itStatus_Dogas_EnumMax
+    itDogasStatusAttack,
+    itDogasStatusDisappear,
+    itDogasStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -117,7 +117,7 @@ enum itDogasStatus
 // // // // // // // // // // // //
 
 // 0x80182C80
-sb32 itDogasNDisappearProcUpdate(GObj *item_gobj)
+sb32 itDogasDisappearProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -131,17 +131,17 @@ sb32 itDogasNDisappearProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182CA8
-void itDogasNDisappearSetStatus(GObj *item_gobj)
+void itDogasDisappearSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = ITDOGAS_DESPAWN_WAIT;
 
-    itMainSetItemStatus(item_gobj, dITDogasStatusDescs, itStatus_Dogas_NDisappear);
+    itMainSetItemStatus(item_gobj, dITDogasStatusDescs, itDogasStatusDisappear);
 }
 
 // 0x80182CDC
-void itDogasNAttackUpdateSmog(GObj *item_gobj)
+void itDogasAttackUpdateSmog(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -177,15 +177,15 @@ void itDogasNAttackUpdateSmog(GObj *item_gobj)
 }
 
 // 0x80182E1C
-sb32 itDogasNAttackProcUpdate(GObj *item_gobj)
+sb32 itDogasAttackProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itDogasNAttackUpdateSmog(item_gobj);
+    itDogasAttackUpdateSmog(item_gobj);
 
     if (ip->it_multi == 0)
     {
-        itDogasNDisappearSetStatus(item_gobj);
+        itDogasDisappearSetStatus(item_gobj);
 
         return FALSE;
     }
@@ -195,7 +195,7 @@ sb32 itDogasNAttackProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182E78
-void itDogasNAttackInitItemVars(GObj *item_gobj)
+void itDogasAttackInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -216,10 +216,10 @@ void itDogasNAttackInitItemVars(GObj *item_gobj)
 }
 
 // 0x80182F0C
-void itDogasNAttackSetStatus(GObj *item_gobj)
+void itDogasAttackSetStatus(GObj *item_gobj)
 {
-    itDogasNAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITDogasStatusDescs, itStatus_Dogas_NAttack);
+    itDogasAttackInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITDogasStatusDescs, itDogasStatusAttack);
 }
 
 // 0x80182F40
@@ -231,7 +231,7 @@ sb32 itDogasCommonProcUpdate(GObj *item_gobj)
     {   
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
 
-        itDogasNAttackSetStatus(item_gobj);
+        itDogasAttackSetStatus(item_gobj);
     }
     ip->it_multi--;
 

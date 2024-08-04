@@ -18,33 +18,33 @@ extern intptr_t lITGLuckyItemAttributes;    // 0x000000BC
 
 itCreateDesc dITGLuckyItemDesc =
 {
-    nITKindGLucky,                         // Item Kind
-    &gGRCommonStruct.yamabuki.item_head,      // Pointer to item file data?
+    nITKindGLucky,                          // Item Kind
+    &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?
     &lITGLuckyItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateNew,         // Hitbox Update State
-    itGLuckyCommonProcUpdate,             // Proc Update
+    nGMHitUpdateNew,                        // Hitbox Update State
+    itGLuckyCommonProcUpdate,               // Proc Update
     NULL,                                   // Proc Map
-    itGLuckyCommonProcHit,                // Proc Hit
+    itGLuckyCommonProcHit,                  // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
     NULL,                                   // Proc Set-Off
     NULL,                                   // Proc Reflector
-    itGLuckyCommonProcDamage              // Proc Damage
+    itGLuckyCommonProcDamage                // Proc Damage
 };
 
 itStatusDesc dITGLuckyStatusDescs[/* */] =
 {
     // Status 0 (Neutral Damage)
     {
-        itGLuckyNDamageProcUpdate,          // Proc Update
+        itGLuckyDamagedProcUpdate,          // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -63,8 +63,8 @@ itStatusDesc dITGLuckyStatusDescs[/* */] =
 
 enum itGLuckyStatus
 {
-    itStatus_GLucky_NDamage,
-    itStatus_GLucky_EnumMax
+    nITGLuckyStatusDamaged,
+    nITGLuckyStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -74,11 +74,11 @@ enum itGLuckyStatus
 // // // // // // // // // // // //
 
 // 0x8017C240
-void itGLuckyNDamageSetStatus(GObj *item_gobj)
+void itGLuckyDamagedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITGLuckyStatusDescs, itStatus_GLucky_NDamage);
+    itMainSetItemStatus(item_gobj, dITGLuckyStatusDescs, nITGLuckyStatusDamaged);
 
-    itGetStruct(item_gobj)->proc_dead = itGLuckyNDamageProcDead;
+    itGetStruct(item_gobj)->proc_dead = itGLuckyDamagedProcDead;
 }
 
 // 0x8017C280
@@ -170,7 +170,7 @@ sb32 itGLuckyCommonProcHit(GObj *item_gobj)
 }
 
 // 0x8017C4BC
-sb32 itGLuckyNDamageProcUpdate(GObj *item_gobj)
+sb32 itGLuckyDamagedProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj;
@@ -185,7 +185,7 @@ sb32 itGLuckyNDamageProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017C524
-sb32 itGLuckyNDamageProcDead(GObj *item_gobj)
+sb32 itGLuckyDamagedProcDead(GObj *item_gobj)
 {
     return TRUE;
 }
@@ -209,7 +209,7 @@ sb32 itGLuckyCommonProcDamage(GObj *item_gobj)
         dobj->anim_remain = AOBJ_FRAME_NULL;
 
         grYamabukiGateClearMonsterGObj();
-        itGLuckyNDamageSetStatus(item_gobj);
+        itGLuckyDamagedSetStatus(item_gobj);
     }
     return FALSE;
 }
@@ -223,7 +223,7 @@ GObj* itGLuckyMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         itStruct *ip = itGetStruct(item_gobj);
 
-        ip->item_hit.interact_mask = GMHITCOLLISION_MASK_FIGHTER;
+        ip->item_hit.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
         ip->item_vars.glucky.pos = *pos;
 

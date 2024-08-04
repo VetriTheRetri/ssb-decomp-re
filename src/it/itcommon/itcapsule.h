@@ -18,10 +18,10 @@ extern void itCapsuleThrownSetStatus(GObj *item_gobj);
 extern sb32 func_ovl3_801741F0(GObj *item_gobj);
 extern sb32 itCapsuleDroppedProcMap(GObj *item_gobj);
 extern void itCapsuleDroppedSetStatus(GObj *item_gobj);
-extern sb32 itCapsuleExplodeNProcUpdate(GObj *item_gobj);
+extern sb32 itCapsuleExplodeProcUpdate(GObj *item_gobj);
 extern GObj* itCapsuleMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
-extern void itCapsuleExplodeNInitItemVars(GObj *item_gobj);
-extern void itCapsuleExplodeNSetStatus(GObj *item_gobj);
-extern void itCapsuleExplodeNMakeEffectGotoSetStatus(GObj *item_gobj);
+extern void itCapsuleExplodeInitItemVars(GObj *item_gobj);
+extern void itCapsuleExplodeSetStatus(GObj *item_gobj);
+extern void itCapsuleExplodeMakeEffectGotoSetStatus(GObj *item_gobj);
 
 #endif

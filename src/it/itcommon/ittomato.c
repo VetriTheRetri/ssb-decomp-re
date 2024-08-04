@@ -16,20 +16,20 @@ extern intptr_t lITTomatoItemAttributes;    // 0x000000B8
 
 itCreateDesc dITTomatoItemDesc =
 {
-    nITKindTomato,                         // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindTomato,                          // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITTomatoItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itTomatoFallProcUpdate,                // Proc Update
-    itTomatoFallProcMap,                   // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itTomatoFallProcUpdate,                 // Proc Update
+    itTomatoFallProcMap,                    // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -43,7 +43,7 @@ itStatusDesc dITTomatoStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itTomatoWaitProcMap,               // Proc Map
+        itTomatoWaitProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -54,8 +54,8 @@ itStatusDesc dITTomatoStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itTomatoFallProcUpdate,            // Proc Update
-        itTomatoFallProcMap,               // Proc Map
+        itTomatoFallProcUpdate,             // Proc Update
+        itTomatoFallProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -66,8 +66,8 @@ itStatusDesc dITTomatoStatusDescs[/* */] =
 
     // Status 2 (Fighter Drop)
     {
-        itTomatoFallProcUpdate,            // Proc Update
-        itTomatoDroppedProcMap,               // Proc Map
+        itTomatoFallProcUpdate,             // Proc Update
+        itTomatoDroppedProcMap,             // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -85,10 +85,10 @@ itStatusDesc dITTomatoStatusDescs[/* */] =
 
 enum itTomatoStatus
 {
-    itStatus_Tomato_Wait,
-    itStatus_Tomato_Fall,
-    itStatus_Tomato_Dropped,
-    itStatus_Tomato_EnumMax
+    nITTomatoStatusWait,
+    nITTomatoStatusFall,
+    nITTomatoStatusDropped,
+    nITTomatoStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -119,14 +119,14 @@ sb32 itTomatoWaitProcMap(GObj *item_gobj)
 // 0x80174524
 sb32 itTomatoFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.3F, 0.5F, itTomatoWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITTOMATO_MAP_REBOUND_COMMON, ITTOMATO_MAP_REBOUND_GROUND, itTomatoWaitSetStatus);
 }
 
 // 0x80174554
 void itTomatoWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, itStatus_Tomato_Wait);
+    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, nITTomatoStatusWait);
 }
 
 // 0x80174588
@@ -137,19 +137,19 @@ void itTomatoFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, itStatus_Tomato_Fall);
+    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, nITTomatoStatusFall);
 }
 
 // 0x801745CC
 sb32 itTomatoDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.3F, 0.5F, itTomatoWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITTOMATO_MAP_REBOUND_COMMON, ITTOMATO_MAP_REBOUND_GROUND, itTomatoWaitSetStatus);
 }
 
 // 0x801745FC
 void itTomatoDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, itStatus_Tomato_Dropped);
+    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, nITTomatoStatusDropped);
 }
 
 // 0x80174624

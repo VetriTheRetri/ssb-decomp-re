@@ -159,7 +159,7 @@ struct wpStruct
     u8 player;                          // Weapon's port index
     u8 handicap;                        // Weapon's handicap
     s32 player_number;                  // Weapon's player number
-    s32 lr;                             // Weapon's facing direction; -1 = nGMDirectionL, 0 = nGMDirectionC, 1 = nGMDirectionR, 2 = WALL_UP (Thunder Jolt only?), 3 = WALL_DOWN (Thunder Jolt only?)
+    s32 lr;                             // Weapon's facing direction; -1 = nGMFacingL, 0 = nGMFacingC, 1 = nGMFacingR, 2 = WALL_UP (Thunder Jolt only?), 3 = WALL_DOWN (Thunder Jolt only?)
 
     struct wpPhysicsInfo
     {

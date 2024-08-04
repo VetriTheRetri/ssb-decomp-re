@@ -1550,7 +1550,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
             }
             if ((is_jostle == FALSE) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z != 0.0F))
             {
-                this_fp->phys_info.vel_jostle_z = ((DObjGetStruct(fighter_gobj)->translate.vec.f.z < 0.0F) ? nGMDirectionR : nGMDirectionL) * 3.0F;
+                this_fp->phys_info.vel_jostle_z = ((DObjGetStruct(fighter_gobj)->translate.vec.f.z < 0.0F) ? nGMFacingR : nGMFacingL) * 3.0F;
             }
         }
     }
@@ -2004,7 +2004,7 @@ void ftMainSetHitRebound(GObj *attacker_gobj, ftStruct *fp, ftHitbox *ft_hit, GO
         {
             fp->attack_rebound = (fp->attack_shield_push * 1.62F) + 4.0F;
 
-            fp->lr_attack = (DObjGetStruct(attacker_gobj)->translate.vec.f.x < DObjGetStruct(victim_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
+            fp->lr_attack = (DObjGetStruct(attacker_gobj)->translate.vec.f.x < DObjGetStruct(victim_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
         }
     }
 }
@@ -2057,7 +2057,7 @@ void ftMainUpdateShieldStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hit
     {
         victim_fp->shield_damage = attacker_hit->damage;
 
-        victim_fp->lr_shield = (DObjGetStruct(victim_gobj)->translate.vec.f.x < DObjGetStruct(attacker_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
+        victim_fp->lr_shield = (DObjGetStruct(victim_gobj)->translate.vec.f.x < DObjGetStruct(attacker_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
 
         victim_fp->shield_player = attacker_fp->player;
     }
@@ -2240,7 +2240,7 @@ void ftMainUpdateShieldStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id,
         wp->shield_collide_vec.x = 0.0F;
         wp->shield_collide_vec.y = 0.0F;
 
-        wp->shield_collide_vec.z = (fp->lr == nGMDirectionR) ? -vec->x : vec->x;
+        wp->shield_collide_vec.z = (fp->lr == nGMFacingR) ? -vec->x : vec->x;
 
         lbVector_Vec3fNormalize(&wp->shield_collide_vec);
     }
@@ -2250,7 +2250,7 @@ void ftMainUpdateShieldStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id,
     {
         fp->shield_damage = damage;
 
-        fp->lr_shield = (wp->phys_info.vel_air.x < 0.0F) ? nGMDirectionR : nGMDirectionL;
+        fp->lr_shield = (wp->phys_info.vel_air.x < 0.0F) ? nGMFacingR : nGMFacingL;
 
         fp->shield_player = wp->player;
     }
@@ -2280,7 +2280,7 @@ void ftMainUpdateReflectorStatWeapon(wpStruct *wp, wpHitbox *wp_hit, ftStruct *f
         }
         fp->reflect_damage = damage;
 
-        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(wp->weapon_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
+        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(wp->weapon_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
     }
     else
     {
@@ -2289,7 +2289,7 @@ void ftMainUpdateReflectorStatWeapon(wpStruct *wp, wpHitbox *wp_hit, ftStruct *f
         wp->reflect_stat_flags = fp->stat_flags;
         wp->reflect_stat_count = fp->stat_count;
 
-        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(wp->weapon_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
+        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(wp->weapon_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
     }
 }
 
@@ -2302,7 +2302,7 @@ void ftMainUpdateAbsorbStatWeapon(wpStruct *ip, wpHitbox *wp_hit, ftStruct *fp, 
 
     ip->absorb_gobj = fighter_gobj;
 
-    fp->lr_absorb = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(ip->weapon_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
+    fp->lr_absorb = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(ip->weapon_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
 
     if (!(wp_hit->can_not_heal))
     {
@@ -2414,7 +2414,7 @@ void ftMainUpdateShieldStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
         ip->shield_collide_vec.x = 0.0F;
         ip->shield_collide_vec.y = 0.0F;
 
-        ip->shield_collide_vec.z = (fp->lr == nGMDirectionR) ? -vec->x : vec->x;
+        ip->shield_collide_vec.z = (fp->lr == nGMFacingR) ? -vec->x : vec->x;
 
         lbVector_Vec3fNormalize(&ip->shield_collide_vec);
     }
@@ -2424,7 +2424,7 @@ void ftMainUpdateShieldStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
     {
         fp->shield_damage = damage;
 
-        fp->lr_shield = (ip->phys_info.vel_air.x < 0.0F) ? nGMDirectionR : nGMDirectionL;
+        fp->lr_shield = (ip->phys_info.vel_air.x < 0.0F) ? nGMFacingR : nGMFacingL;
 
         fp->shield_player = ip->player;
     }
@@ -2454,7 +2454,7 @@ void ftMainUpdateReflectorStatItem(itStruct *ip, itHitbox *it_hit, ftStruct *fp,
         }
         fp->reflect_damage = damage;
 
-        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(ip->item_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
+        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(ip->item_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
     }
     else
     {
@@ -2463,7 +2463,7 @@ void ftMainUpdateReflectorStatItem(itStruct *ip, itHitbox *it_hit, ftStruct *fp,
         ip->reflect_stat_flags = fp->stat_flags;
         ip->reflect_stat_count = fp->stat_count;
 
-        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(ip->item_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
+        fp->lr_reflect = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(ip->item_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
     }
 }
 
@@ -2495,7 +2495,7 @@ void ftMainUpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
             break;
 
         case nITKindGLucky:
-            ftParamHealDamage(fp, it_hit->damage);
+            ftParamSetHealDamage(fp, it_hit->damage);
             break;
         }
     }
@@ -2516,11 +2516,11 @@ void ftMainUpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
         }
         if (ABSF(ip->phys_info.vel_air.x) < 5.0F)
         {
-            ip->lr_attack = lr_attack = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(item_gobj)->translate.vec.f.x) ? nGMDirectionL : nGMDirectionR;
+            ip->lr_attack = lr_attack = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(item_gobj)->translate.vec.f.x) ? nGMFacingL : nGMFacingR;
         }
         else
         {
-            lr_attack = (ip->phys_info.vel_air.x < 0) ? nGMDirectionL : nGMDirectionR;
+            lr_attack = (ip->phys_info.vel_air.x < 0) ? nGMFacingL : nGMFacingR;
 
             ip->lr_attack = lr_attack;
         }
@@ -2615,7 +2615,7 @@ void ftMainGetBumperDamageAngle(GObj *fighter_gobj, GObj *attacker_gobj)
         f32 dist_x = DObjGetStruct(fighter_gobj)->translate.vec.f.x - DObjGetStruct(attacker_gobj)->translate.vec.f.x;
         f32 dist_y;
 
-        fp->lr_damage = (dist_x < 0) ? nGMDirectionR : nGMDirectionL;
+        fp->lr_damage = (dist_x < 0) ? nGMFacingR : nGMFacingL;
 
         if (dist_x < 0.0F)
         {
@@ -2827,7 +2827,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         this_fp->damage_angle = ft_hit->angle;
         this_fp->damage_element = ft_hit->element;
 
-        this_fp->lr_damage = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(attacker_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
+        this_fp->lr_damage = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(attacker_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
 
         this_fp->damage_player_number = hitlog->attacker_player_number;
 
@@ -2850,11 +2850,11 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
         if (ABSF(wp->phys_info.vel_air.x) < 5.0F)
         {
-            this_fp->lr_damage = lr_damage = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(attacker_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
+            this_fp->lr_damage = lr_damage = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(attacker_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
         }
         else
         {
-            lr_damage = (wp->phys_info.vel_air.x < 0) ? nGMDirectionR : nGMDirectionL;
+            lr_damage = (wp->phys_info.vel_air.x < 0) ? nGMFacingR : nGMFacingL;
 
             this_fp->lr_damage = lr_damage;
         }
@@ -2885,11 +2885,11 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
         if (ABSF(ip->phys_info.vel_air.x) < 5.0F)
         {
-            this_fp->lr_damage = lr_damage = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(attacker_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
+            this_fp->lr_damage = lr_damage = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(attacker_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
         }
         else
         {
-            lr_damage = (ip->phys_info.vel_air.x < 0) ? nGMDirectionR : nGMDirectionL;
+            lr_damage = (ip->phys_info.vel_air.x < 0) ? nGMFacingR : nGMFacingL;
 
             this_fp->lr_damage = lr_damage;
         }
@@ -3216,7 +3216,7 @@ void ftMainSearchWeaponHit(GObj *fighter_gobj)
 
         if ((fighter_gobj != wp->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->team != wp->team)) && (wp_hit->update_state != nGMHitUpdateDisable))
         {
-            if (wp_hit->interact_mask & GMHITCOLLISION_MASK_FIGHTER)
+            if (wp_hit->interact_mask & GMHITCOLLISION_FLAG_FIGHTER)
             {
                 item_flags.is_interact_hurt = item_flags.is_interact_shield = item_flags.is_interact_reflect = item_flags.is_interact_absorb = FALSE;
 
@@ -3413,7 +3413,7 @@ void ftMainSearchItemHit(GObj *fighter_gobj)
 
         if ((fighter_gobj != ip->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->team != ip->team)) && (it_hit->update_state != nGMHitUpdateDisable))
         {
-            if (it_hit->interact_mask & GMHITCOLLISION_MASK_FIGHTER)
+            if (it_hit->interact_mask & GMHITCOLLISION_FLAG_FIGHTER)
             {
                 article_flags.is_interact_hurt = article_flags.is_interact_shield = article_flags.is_interact_reflect = FALSE;
 
@@ -3931,7 +3931,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
     {
         ftCommonShieldBreakFlyReflectorSetStatus(fighter_gobj);
     }
-    else if (fp->lr_reflect != nGMDirectionC)
+    else if (fp->lr_reflect != nGMFacingC)
     {
         switch (fp->special_hit->hit_type)
         {
@@ -3944,7 +3944,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
             break;
         }
     }
-    else if (fp->lr_absorb != nGMDirectionC)
+    else if (fp->lr_absorb != nGMFacingC)
     {
         ftNessSpecialLwProcAbsorb(fighter_gobj);
     }
@@ -3972,9 +3972,9 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
     fp->damage_queue = 0;
     fp->damage_kind = 0;
 
-    fp->lr_reflect = nGMDirectionC;
+    fp->lr_reflect = nGMFacingC;
     fp->reflect_damage = 0;
-    fp->lr_absorb = nGMDirectionC;
+    fp->lr_absorb = nGMFacingC;
 
     fp->unk_ft_0x7A0 = 0;
     fp->attack_rebound = 0;

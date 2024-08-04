@@ -317,7 +317,7 @@ void itProcessUpdateDamageStatFighter(ftStruct *fp, ftHitbox *ft_hit, itStruct *
             ip->damage_angle = ft_hit->angle;
             ip->damage_element = ft_hit->element;
 
-            ip->lr_damage = (DObjGetStruct(item_gobj)->translate.vec.f.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
+            ip->lr_damage = (DObjGetStruct(item_gobj)->translate.vec.f.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
 
             ip->damage_gobj = fighter_gobj;
             ip->damage_team = fp->team;
@@ -467,11 +467,11 @@ void itProcessUpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit,
 
     if (vel < 5.0F)
     {
-        attack_ip->lr_attack = lr = (DObjGetStruct(defend_gobj)->translate.vec.f.x < DObjGetStruct(attack_gobj)->translate.vec.f.x) ? nGMDirectionL : nGMDirectionR;
+        attack_ip->lr_attack = lr = (DObjGetStruct(defend_gobj)->translate.vec.f.x < DObjGetStruct(attack_gobj)->translate.vec.f.x) ? nGMFacingL : nGMFacingR;
     }
     else
     {
-        lr = (attack_ip->phys_info.vel_air.x < 0) ? nGMDirectionL : nGMDirectionR;
+        lr = (attack_ip->phys_info.vel_air.x < 0) ? nGMFacingL : nGMFacingR;
 
         attack_ip->lr_attack = lr;
     }
@@ -489,11 +489,11 @@ void itProcessUpdateDamageStatItem(itStruct *attack_ip, itHitbox *attack_it_hit,
 
             if (vel < 5.0F)
             {
-                defend_ip->lr_damage = lr = (DObjGetStruct(defend_gobj)->translate.vec.f.x < DObjGetStruct(attack_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
+                defend_ip->lr_damage = lr = (DObjGetStruct(defend_gobj)->translate.vec.f.x < DObjGetStruct(attack_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
             }
             else
             {
-                lr = (attack_ip->phys_info.vel_air.x < 0) ? nGMDirectionR : nGMDirectionL;
+                lr = (attack_ip->phys_info.vel_air.x < 0) ? nGMFacingR : nGMFacingL;
 
                 defend_ip->lr_damage = lr;
             }
@@ -580,11 +580,11 @@ void itProcessUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_
 
             if (vel < 5.0F)
             {
-                ip->lr_damage = lr = (DObjGetStruct(item_gobj)->translate.vec.f.x < DObjGetStruct(weapon_gobj)->translate.vec.f.x) ? nGMDirectionR : nGMDirectionL;
+                ip->lr_damage = lr = (DObjGetStruct(item_gobj)->translate.vec.f.x < DObjGetStruct(weapon_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
             }
             else
             {
-                lr = (wp->phys_info.vel_air.x < 0) ? nGMDirectionR : nGMDirectionL;
+                lr = (wp->phys_info.vel_air.x < 0) ? nGMFacingR : nGMFacingL;
 
                 ip->lr_damage = lr;
             }
@@ -648,7 +648,7 @@ void itProcessSearchFighterHit(GObj *item_gobj) // Check fighters for hit detect
     itStruct *ip = itGetStruct(item_gobj);
     ftStruct *fp;
 
-    if (ip->item_hurt.interact_mask & GMHITCOLLISION_MASK_FIGHTER)
+    if (ip->item_hurt.interact_mask & GMHITCOLLISION_FLAG_FIGHTER)
     {
         fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
@@ -739,7 +739,7 @@ void itProcessSearchItemHit(GObj *this_gobj) // Check other items for hit detect
     this_ip = itGetStruct(this_gobj);
     this_hit = &this_ip->item_hit;
 
-    if (this_ip->item_hurt.interact_mask & GMHITCOLLISION_MASK_ITEM)
+    if (this_ip->item_hurt.interact_mask & GMHITCOLLISION_FLAG_ITEM)
     {
         other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDItem];
 
@@ -762,7 +762,7 @@ void itProcessSearchItemHit(GObj *this_gobj) // Check other items for hit detect
 
                 if (other_hit->update_state == nGMHitUpdateDisable) goto next_gobj;
                 
-                if (!(other_hit->interact_mask & GMHITCOLLISION_MASK_ITEM)) goto next_gobj;
+                if (!(other_hit->interact_mask & GMHITCOLLISION_FLAG_ITEM)) goto next_gobj;
                 
                 those_flags.is_interact_hurt = those_flags.is_interact_shield = FALSE;
 
@@ -785,7 +785,7 @@ void itProcessSearchItemHit(GObj *this_gobj) // Check other items for hit detect
                     {
                         if (this_hit->update_state != nGMHitUpdateDisable)
                         {
-                            if (this_hit->interact_mask & GMHITCOLLISION_MASK_ITEM)
+                            if (this_hit->interact_mask & GMHITCOLLISION_FLAG_ITEM)
                             {
                                 these_flags.is_interact_hurt = these_flags.is_interact_shield = FALSE;
 
@@ -860,7 +860,7 @@ void itProcessSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detectio
     ip = itGetStruct(item_gobj);
     it_hit = &ip->item_hit;
 
-    if (ip->item_hurt.interact_mask & GMHITCOLLISION_MASK_WEAPON)
+    if (ip->item_hurt.interact_mask & GMHITCOLLISION_FLAG_WEAPON)
     {
         weapon_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
 
@@ -875,7 +875,7 @@ void itProcessSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detectio
 
             if (wp_hit->update_state != nGMHitUpdateDisable)
             {
-                if (wp_hit->interact_mask & GMHITCOLLISION_MASK_ITEM)
+                if (wp_hit->interact_mask & GMHITCOLLISION_FLAG_ITEM)
                 {
                     those_flags.is_interact_hurt = those_flags.is_interact_shield = FALSE;
 
@@ -898,7 +898,7 @@ void itProcessSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detectio
                         {
                             if (it_hit->update_state != nGMHitUpdateDisable)
                             {
-                                if(it_hit->interact_mask & GMHITCOLLISION_MASK_WEAPON)
+                                if(it_hit->interact_mask & GMHITCOLLISION_FLAG_WEAPON)
                                 {
                                     these_flags.is_interact_hurt = these_flags.is_interact_shield = FALSE;
 

@@ -77,7 +77,7 @@ s32 scBattle_GetPlayerStartLR(s32 target_player)
 			}
 		}
 	}
-	lr = (near_spawn >= 0.0F) ? nGMDirectionR : nGMDirectionL;
+	lr = (near_spawn >= 0.0F) ? nGMFacingR : nGMFacingL;
 
 	return lr;
 }

@@ -363,7 +363,7 @@ void wpProcessProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision 
     this_wp = wpGetStruct(this_gobj);
     this_hit = &this_wp->weapon_hit;
 
-    if ((this_hit->can_setoff) && (this_hit->update_state != nGMHitUpdateDisable) && (this_hit->interact_mask & GMHITCOLLISION_MASK_WEAPON))
+    if ((this_hit->can_setoff) && (this_hit->update_state != nGMHitUpdateDisable) && (this_hit->interact_mask & GMHITCOLLISION_FLAG_WEAPON))
     {
         other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
 
@@ -386,7 +386,7 @@ void wpProcessProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision 
                 
                 if ((other_hit->update_state != nGMHitUpdateDisable) && (other_hit->can_setoff))
                 {
-                    if (other_hit->interact_mask & GMHITCOLLISION_MASK_WEAPON)
+                    if (other_hit->interact_mask & GMHITCOLLISION_FLAG_WEAPON)
                     {
                         those_flags.group_id = 7;
 

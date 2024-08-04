@@ -104,7 +104,7 @@ itStatusDesc dITEggStatusDescs[/* */] =
 
     // Status 5 (Neutral Explosion)
     {
-        itEggExplodeNProcUpdate,            // Proc Update
+        itEggExplodeProcUpdate,             // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -128,7 +128,7 @@ enum itEggStatus
     nITEggStatusHold,
     nITEggStatusThrown,
     nITEggStatusDropped,
-    nITEggStatusExplodeN,
+    nITEggStatusExplode,
     nITEggStatusEnumMax
 };
 
@@ -169,7 +169,7 @@ sb32 itEggCommonProcHit(GObj *item_gobj)
 
         return TRUE;
     }
-    else itEggExplodeNMakeEffectGotoSetStatus(item_gobj);
+    else itEggExplodeMakeEffectGotoSetStatus(item_gobj);
 
     return FALSE;
 }
@@ -177,7 +177,7 @@ sb32 itEggCommonProcHit(GObj *item_gobj)
 // 0x80181688
 sb32 itEggFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, ITEGG_MAP_REBOUND_COMMON, ITEGG_MAP_REBOUND_GROUND, itEggWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITEGG_MAP_REBOUND_COMMON, ITEGG_MAP_REBOUND_GROUND, itEggWaitSetStatus);
 }
 
 // 0x801816B8
@@ -245,7 +245,7 @@ sb32 itEggThrownProcMap(GObj *item_gobj)
 
             return TRUE;
         }
-        else itEggExplodeNMakeEffectGotoSetStatus(item_gobj);
+        else itEggExplodeMakeEffectGotoSetStatus(item_gobj);
     }
     return FALSE;
 }
@@ -273,7 +273,7 @@ sb32 func_ovl3_80181894(GObj *item_gobj) // Unused
 // 0x801818B8
 sb32 itEggDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, ITEGG_MAP_REBOUND_COMMON, ITEGG_MAP_REBOUND_GROUND, itEggWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITEGG_MAP_REBOUND_COMMON, ITEGG_MAP_REBOUND_GROUND, itEggWaitSetStatus);
 }
 
 // 0x801818E8
@@ -289,7 +289,7 @@ void itEggDroppedSetStatus(GObj *item_gobj)
 }
 
 // 0x80181928
-sb32 itEggExplodeNProcUpdate(GObj *item_gobj)
+sb32 itEggExplodeProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -342,7 +342,7 @@ GObj* itEggMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 }
 
 // 0x80181AA8
-void itEggExplodeNInitItemVars(GObj *item_gobj)
+void itEggExplodeInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -369,14 +369,14 @@ void itEggExplodeNInitItemVars(GObj *item_gobj)
 }
 
 // 0x80181B5C
-void itEggExplodeNSetStatus(GObj *item_gobj)
+void itEggExplodeSetStatus(GObj *item_gobj)
 {
-    itEggExplodeNInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusExplodeN);
+    itEggExplodeInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusExplode);
 }
 
 // 0x80181B90
-void itEggExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
+void itEggExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -398,5 +398,5 @@ void itEggExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
-    itEggExplodeNSetStatus(item_gobj);
+    itEggExplodeSetStatus(item_gobj);
 }

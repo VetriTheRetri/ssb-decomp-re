@@ -20,37 +20,37 @@ extern intptr_t lITPippiDataStart;          // 0x00013598
 // 0x8018B370
 void (*dITPippiStatusProcList[/* */])(GObj*) =
 {
-    itIwarkNAttackSetStatus, 
-    itKabigonNJumpSetStatus, 
-    itTosakintoNAppearSetStatus, 
-    itNyarsNAttackSetStatus,
+    itIwarkAttackSetStatus, 
+    itKabigonJumpSetStatus, 
+    itTosakintoAppearSetStatus, 
+    itNyarsAttackSetStatus,
     itLizardonFallSetStatus, 
-    itSpearNFlySetStatus, 
-    itKamexNAppearSetStatus, 
-    itMLuckyNAppearSetStatus,
+    itSpearFlySetStatus, 
+    itKamexAppearSetStatus, 
+    itMLuckyAppearSetStatus,
     itStarmieNFollowSetStatus, 
     itSawamuraFallSetStatus, 
-    itDogasNAttackSetStatus, 
-    itMewNFlySetStatus
+    itDogasAttackSetStatus, 
+    itMewFlySetStatus
 };
 
 // 0x8018B3A0
 itCreateDesc dITPippiItemDesc = 
 {
-    nITKindPippi,                          // Item Kind
-    &gITManagerFileData,                         // Pointer to item file data?
+    nITKindPippi,                           // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITPippiItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,         // Hitbox Update State
-    itPippiCommonProcUpdate,              // Proc Update
-    itPippiCommonProcMap,                 // Proc Map
+    nGMHitUpdateNew,                        // Hitbox Update State
+    itPippiCommonProcUpdate,                // Proc Update
+    itPippiCommonProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -82,7 +82,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
 
     index = mtTrigGetRandomIntRange(ARRAY_COUNT(dITPippiStatusProcList));
 
-    it_kind = index + nITKindMbMonsterStart;
+    it_kind = index + nITKindMBallMonsterStart;
 
     if ((it_kind == nITKindSpear) || (it_kind == nITKindKamex))
     {
@@ -90,9 +90,9 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
         {
             dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
 
-            ip->lr = nGMDirectionR;
+            ip->lr = nGMFacingR;
         }
-        else ip->lr = nGMDirectionL;
+        else ip->lr = nGMFacingL;
     }
     if ((it_kind == nITKindPippi) || (it_kind == nITKindTosakinto) || (it_kind == nITKindMLucky))
     {

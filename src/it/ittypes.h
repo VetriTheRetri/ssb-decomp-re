@@ -80,7 +80,7 @@ struct itMonsterInfo
 {
 	u8 monster_curr;
 	u8 monster_prev;
-	u8 monster_index[44];
+	u8 monster_id[44];
 	u8 monster_count;
 };
 
@@ -122,7 +122,7 @@ struct itRandomWeights          // Random item drop struct?
 {
     u8 filler_0x0[0x8];
     u8 item_count;              // Maximum number of items that can be spawned
-    u8 *item_ids;               // Array of item IDs that can be spawned
+    u8 *item_kinds;               // Array of item IDs that can be spawned
     u16 item_num;               // Randomizer weight?
     u16 *item_totals;           // Consecutive sum of item quantities? This is pretty weird
 };
@@ -382,7 +382,7 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 		itCommonItemVarsBombHei bombhei;
 		itCommonItemVarsBumper bumper;
 		itCommonItemVarsShell shell;
-		itCommonItemVarsMBall m_ball;
+		itCommonItemVarsMBall mball;
 
 		// Fighter items
 		itFighterItemVarsPKFire pkfire;
@@ -390,7 +390,7 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 
 		// Stage items
 		itGroundItemVarsPakkun pakkun;
-		itGroundItemVarsRaceBomb rbomb;
+		itGroundItemVarsRaceBomb tarubomb;
 		itGroundItemVarsGrLucky glucky;
 		itGroundItemVarsMarumine marumine;
 		itGroundItemVarsHitokage hitokage;

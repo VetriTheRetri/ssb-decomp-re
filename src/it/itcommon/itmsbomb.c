@@ -8,7 +8,7 @@
 // // // // // // // // // // // //
 
 extern intptr_t lITMSBombItemAttributes;    // 0x000003BC
-extern intptr_t lITMSBombHitEvents;          // 0x00000404
+extern intptr_t lITMSBombHitEvents;         // 0x00000404
 
 // // // // // // // // // // // //
 //                               //
@@ -18,20 +18,20 @@ extern intptr_t lITMSBombHitEvents;          // 0x00000404
 
 itCreateDesc dITMSBombItemDesc =
 {
-    nITKindMSBomb,                         // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindMSBomb,                          // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITMSBombItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformNull,               // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformNull,                   // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itMSBombFallProcUpdate,                // Proc Update
-    itMSBombFallProcMap,                   // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itMSBombFallProcUpdate,                 // Proc Update
+    itMSBombFallProcMap,                    // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -45,7 +45,7 @@ itStatusDesc dITMSBombStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itMSBombWaitProcMap,               // Proc Map
+        itMSBombWaitProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -56,8 +56,8 @@ itStatusDesc dITMSBombStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itMSBombFallProcUpdate,            // Proc Update
-        itMSBombFallProcMap,               // Proc Map
+        itMSBombFallProcUpdate,             // Proc Update
+        itMSBombFallProcMap,                // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -82,53 +82,53 @@ itStatusDesc dITMSBombStatusDescs[/* */] =
     {
         itMSBombThrownProcUpdate,           // Proc Update
         itMSBombThrownProcMap,              // Proc Map
-        itMSBombCommonProcHit,            // Proc Hit
-        itMSBombCommonProcHit,            // Proc Shield
+        itMSBombCommonProcHit,              // Proc Hit
+        itMSBombCommonProcHit,              // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itMSBombCommonProcHit,            // Proc Set-Off
+        itMSBombCommonProcHit,              // Proc Set-Off
         itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itMSBombFallProcUpdate,            // Proc Update
-        itMSBombDroppedProcMap,               // Proc Map
-        itMSBombCommonProcHit,            // Proc Hit
-        itMSBombCommonProcHit,            // Proc Shield
+        itMSBombFallProcUpdate,             // Proc Update
+        itMSBombDroppedProcMap,             // Proc Map
+        itMSBombCommonProcHit,              // Proc Hit
+        itMSBombCommonProcHit,              // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itMSBombCommonProcHit,            // Proc Set-Off
+        itMSBombCommonProcHit,              // Proc Set-Off
         itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 5 (Ground Attach)
     {
-        itMSBombGAttachProcUpdate,          // Proc Update
-        itMSBombGAttachProcMap,             // Proc Map
+        itMSBombAttachedProcUpdate,          // Proc Update
+        itMSBombAttachedProcMap,             // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itMSBombCommonProcDamage          // Proc Damage
+        itMSBombCommonProcDamage            // Proc Damage
     },
 
     // Status 6 (Air Detach from Surface)
     {
-        itMSBombADetachProcUpdate,          // Proc Update
-        itMSBombDroppedProcMap,               // Proc Map
+        itMSBombDetachedProcUpdate,          // Proc Update
+        itMSBombDroppedProcMap,             // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itMSBombCommonProcDamage          // Proc Damage
+        itMSBombCommonProcDamage            // Proc Damage
     },
 
     // Status 7 (Neutral Explosion)
     {
-        itMSBombExplodeNProcUpdate,         // Proc Update
+        itMSBombExplodeProcUpdate,          // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -148,15 +148,15 @@ itStatusDesc dITMSBombStatusDescs[/* */] =
 
 enum itMSBombStatus
 {
-    itStatus_MSBomb_Wait,
-    itStatus_MSBomb_Fall,
-    itStatus_MSBomb_Hold,
-    itStatus_MSBomb_Thrown,
-    itStatus_MSBomb_Dropped,
-    itStatus_MSBomb_GAttach,
-    itStatus_MSBomb_ADetach,
-    itStatus_MSBomb_ExplodeN,
-    itStatus_MSBomb_EnumMax
+    nITMSBombStatusWait,
+    nITMSBombStatusFall,
+    nITMSBombStatusHold,
+    nITMSBombStatusThrown,
+    nITMSBombStatusDropped,
+    nITMSBombStatusAttached,
+    nITMSBombStatusDetached,
+    nITMSBombStatusExplode,
+    nITMSBombStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -169,12 +169,12 @@ enum itMSBombStatus
 sb32 itMSBombFallProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    DObj *joint = DObjGetStruct(item_gobj);
+    DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
-    joint->child->sib_next->rotate.vec.f.z = joint->rotate.vec.f.z;
+    dobj->child->sib_next->rotate.vec.f.z = dobj->rotate.vec.f.z;
 
     return FALSE;
 }
@@ -190,14 +190,14 @@ sb32 itMSBombWaitProcMap(GObj *item_gobj)
 // 0x801764D0
 sb32 itMSBombFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, 0.4F, 0.3F, itMSBombWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITMSBOMB_MAP_REBOUND_COMMON, ITMSBOMB_MAP_REBOUND_GROUND, itMSBombWaitSetStatus);
 }
 
 // 0x80176504
 void itMSBombWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, itStatus_MSBomb_Wait);
+    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, nITMSBombStatusWait);
 }
 
 // 0x80176538
@@ -208,25 +208,25 @@ void itMSBombFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, itStatus_MSBomb_Fall);
+    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, nITMSBombStatusFall);
 }
 
 // 0x8017657C
 void itMSBombHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, itStatus_MSBomb_Hold);
+    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, nITMSBombStatusHold);
 }
 
 // 0x801765A4
 sb32 itMSBombThrownProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    DObj *joint = DObjGetStruct(item_gobj);
+    DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_TVEL);
     itVisualsUpdateSpin(item_gobj);
 
-    joint->child->sib_next->rotate.vec.f.z = joint->rotate.vec.f.z;
+    dobj->child->sib_next->rotate.vec.f.z = dobj->rotate.vec.f.z;
 
     return FALSE;
 }
@@ -234,7 +234,7 @@ sb32 itMSBombThrownProcUpdate(GObj *item_gobj)
 // 0x801765FC
 sb32 itMSBombThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapProcAll(item_gobj, itMSBombGAttachSetStatus);
+    return itMapCheckMapProcAll(item_gobj, itMSBombAttachedSetStatus);
 }
 
 // 0x80176620
@@ -255,13 +255,13 @@ void itMSBombThrownSetStatus(GObj *item_gobj)
     ip->coll_data.object_coll.bottom = -ITMSBOMB_COLL_SIZE;
     ip->coll_data.object_coll.width = ITMSBOMB_COLL_SIZE;
 
-    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, itStatus_MSBomb_Thrown);
+    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, nITMSBombStatusThrown);
 }
 
 // 0x80176694
 sb32 itMSBombDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapProcAll(item_gobj, itMSBombGAttachSetStatus);
+    return itMapCheckMapProcAll(item_gobj, itMSBombAttachedSetStatus);
 }
 
 // 0x801766B8
@@ -274,16 +274,16 @@ void itMSBombDroppedSetStatus(GObj *item_gobj)
     ip->coll_data.object_coll.bottom = -ITMSBOMB_COLL_SIZE;
     ip->coll_data.object_coll.width = ITMSBOMB_COLL_SIZE;
 
-    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, itStatus_MSBomb_Dropped);
+    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, nITMSBombStatusDropped);
 }
 
 // 0x80176708
-void itMSBombGAttachUpdateSurface(GObj *item_gobj)
+void itMSBombAttachedUpdateSurface(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     mpCollData *coll_data = &ip->coll_data;
     Vec3f angle;
-    DObj *joint = DObjGetStruct(item_gobj);
+    DObj *dobj = DObjGetStruct(item_gobj);
 
     if ((coll_data->coll_mask_curr & MPCOLL_KIND_CEIL) || (coll_data->coll_mask_curr & MPCOLL_KIND_GROUND))
     {
@@ -315,11 +315,11 @@ void itMSBombGAttachUpdateSurface(GObj *item_gobj)
             ip->attach_line_id = coll_data->rwall_line_id;
         }
     }
-    joint->rotate.vec.f.z = atan2f(angle.y, angle.x) - F_CST_DTOR32(90.0F); // HALF_PI32
+    dobj->rotate.vec.f.z = atan2f(angle.y, angle.x) - F_CST_DTOR32(90.0F); // HALF_PI32
 }
 
 // 0x80176840
-void itMSBombGAttachInitItemVars(GObj *item_gobj)
+void itMSBombAttachedInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -334,7 +334,7 @@ void itMSBombGAttachInitItemVars(GObj *item_gobj)
     dobj->child->flags = DOBJ_FLAG_NONE;
     dobj->child->sib_next->flags = DOBJ_FLAG_NORENDER;
 
-    itMSBombGAttachUpdateSurface(item_gobj);
+    itMSBombAttachedUpdateSurface(item_gobj);
 
     ip->is_attach_surface = TRUE;
 
@@ -342,7 +342,7 @@ void itMSBombGAttachInitItemVars(GObj *item_gobj)
 
     ip->item_hit.update_state = nGMHitUpdateDisable;
 
-    if ((ip->player != -1) && (ip->player != GMBATTLE_PLAYERS_MAX)) // Macro might be off though
+    if ((ip->player != -1) && (ip->player != GMBATTLE_PLAYERS_MAX))
     {
         GObj *fighter_gobj = gBattleState->players[ip->player].fighter_gobj;
 
@@ -357,7 +357,7 @@ void itMSBombGAttachInitItemVars(GObj *item_gobj)
 }
 
 // 0x80176934
-void itMSBombExplodeNMakeEffect(GObj *item_gobj)
+void itMSBombExplodeMakeEffect(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itAttributes *attributes = ip->attributes;
@@ -375,14 +375,14 @@ void itMSBombExplodeNMakeEffect(GObj *item_gobj)
 }
 
 // 0x801769AC
-void itMSBombExplodeNInitStatusVars(GObj *item_gobj, sb32 is_make_effect)
+void itMSBombExplodeInitStatusVars(GObj *item_gobj, sb32 is_make_effect)
 {
     efParticle *efpart;
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if (is_make_effect != FALSE)
     {
-        itMSBombExplodeNMakeEffect(item_gobj);
+        itMSBombExplodeMakeEffect(item_gobj);
     }
     efpart = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
@@ -394,7 +394,7 @@ void itMSBombExplodeNInitStatusVars(GObj *item_gobj, sb32 is_make_effect)
     }
     efManagerQuakeMakeEffect(1);
     itMainRefreshHit(item_gobj);
-    itMSBombExplodeNSetStatus(item_gobj);
+    itMSBombExplodeSetStatus(item_gobj);
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 }
@@ -403,13 +403,13 @@ void itMSBombExplodeNInitStatusVars(GObj *item_gobj, sb32 is_make_effect)
 sb32 itMSBombCommonProcDamage(GObj *item_gobj)
 {
     func_800269C0_275C0(nGMSoundFGMExplodeL);
-    itMSBombExplodeNInitStatusVars(item_gobj, FALSE);
+    itMSBombExplodeInitStatusVars(item_gobj, FALSE);
 
     return FALSE;
 }
 
 // 0x80176A68
-sb32 itMSBombGAttachProcUpdate(GObj *item_gobj)
+sb32 itMSBombAttachedProcUpdate(GObj *item_gobj)
 {
     s32 unused[2];
     GObj *fighter_gobj;
@@ -443,7 +443,7 @@ sb32 itMSBombGAttachProcUpdate(GObj *item_gobj)
 
             if ((SQUARE(dist.x) + SQUARE(dist.y) + SQUARE(dist.z)) < ITMSBOMB_DETECT_FIGHTER_RADIUS)
             {
-                itMSBombExplodeNInitStatusVars(item_gobj, TRUE); // We might want to break out of the loop here
+                itMSBombExplodeInitStatusVars(item_gobj, TRUE); // We might want to break out of the loop here
             }
             fighter_gobj = fighter_gobj->link_next;
         }
@@ -452,14 +452,14 @@ sb32 itMSBombGAttachProcUpdate(GObj *item_gobj)
 }
 
 // 0x80176B94
-void itMSBombGAttachSetStatus(GObj *item_gobj)
+void itMSBombAttachedSetStatus(GObj *item_gobj)
 {
-    itMSBombGAttachInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, itStatus_MSBomb_GAttach);
+    itMSBombAttachedInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, nITMSBombStatusAttached);
 }
 
 // 0x80176BC8
-sb32 itMSBombGAttachProcMap(GObj *item_gobj)
+sb32 itMSBombAttachedProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -467,12 +467,12 @@ sb32 itMSBombGAttachProcMap(GObj *item_gobj)
     {
         ip->is_attach_surface = FALSE;
 
-        itMSBombADetachSetStatus(item_gobj);
+        itMSBombDetachedSetStatus(item_gobj);
     }
     return FALSE;
 }
 
-void itMSBombExplodeNUpdateHitEvent(GObj *item_gobj)
+void itMSBombExplodeUpdateHitEvent(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     itHitEvent *ev = itGetHitEvent(dITMSBombItemDesc, lITMSBombHitEvents); // (itHitEvent *)((uintptr_t)*dITMSBombItemDesc.p_file + &lITMSBombHitEvents); - Linker thing
@@ -500,7 +500,7 @@ void itMSBombExplodeNUpdateHitEvent(GObj *item_gobj)
 }
 
 // 0x80176D00
-void itMSBombADetachInitItemVars(GObj *item_gobj)
+void itMSBombDetachedInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -511,7 +511,7 @@ void itMSBombADetachInitItemVars(GObj *item_gobj)
 }
 
 // 0x80176D2C
-sb32 itMSBombADetachProcUpdate(GObj *item_gobj)
+sb32 itMSBombDetachedProcUpdate(GObj *item_gobj)
 {
     s32 unused[2];
     GObj *fighter_gobj;
@@ -547,7 +547,7 @@ sb32 itMSBombADetachProcUpdate(GObj *item_gobj)
 
             if ((SQUARE(dist.x) + SQUARE(dist.y) + SQUARE(dist.z)) < ITMSBOMB_DETECT_FIGHTER_RADIUS)
             {
-                itMSBombExplodeNInitStatusVars(item_gobj, FALSE); // We might want to break out of the loop here
+                itMSBombExplodeInitStatusVars(item_gobj, FALSE); // We might want to break out of the loop here
             }
             fighter_gobj = fighter_gobj->link_next;
         }
@@ -556,14 +556,14 @@ sb32 itMSBombADetachProcUpdate(GObj *item_gobj)
 }
 
 // 0x80176E68
-void itMSBombADetachSetStatus(GObj *item_gobj)
+void itMSBombDetachedSetStatus(GObj *item_gobj)
 {
-    itMSBombADetachInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, itStatus_MSBomb_ADetach);
+    itMSBombDetachedInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, nITMSBombStatusDetached);
 }
 
 // 0x80176E9C
-void itMSBombExplodeNInitItemVars(GObj *item_gobj)
+void itMSBombExplodeInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -576,15 +576,15 @@ void itMSBombExplodeNInitItemVars(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = nGMHitStatusNone;
 
-    itMSBombExplodeNUpdateHitEvent(item_gobj);
+    itMSBombExplodeUpdateHitEvent(item_gobj);
 }
 
 // 0x80176EE4
-sb32 itMSBombExplodeNProcUpdate(GObj *item_gobj)
+sb32 itMSBombExplodeProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMSBombExplodeNUpdateHitEvent(item_gobj);
+    itMSBombExplodeUpdateHitEvent(item_gobj);
 
     ip->it_multi++;
 
@@ -596,10 +596,10 @@ sb32 itMSBombExplodeNProcUpdate(GObj *item_gobj)
 }
 
 // 0x80176F2C
-void itMSBombExplodeNSetStatus(GObj *item_gobj)
+void itMSBombExplodeSetStatus(GObj *item_gobj)
 {
-    itMSBombExplodeNInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, itStatus_MSBomb_ExplodeN);
+    itMSBombExplodeInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, nITMSBombStatusExplode);
 }
 
 // 0x80176F60

@@ -11,11 +11,11 @@
 extern
 intptr_t lITPakkunItemAttributes;           // 0x00000120
 extern 
-intptr_t lITPakkunDAppearAnimJoint;         // 0x00000CC8
+intptr_t lITPakkunAppearAnimJoint;         // 0x00000CC8
 extern 
-intptr_t lITPakkunDAppearMatAnimJoint;      // 0x00000CF8
+intptr_t lITPakkunAppearMatAnimJoint;      // 0x00000CF8
 extern 
-intptr_t lITPakkunNDamageMatAnimJoint;      // 0x00000E04
+intptr_t lITPakkunDamagedMatAnimJoint;      // 0x00000E04
 
 // // // // // // // // // // // //
 //                               //
@@ -25,19 +25,19 @@ intptr_t lITPakkunNDamageMatAnimJoint;      // 0x00000E04
 
 itCreateDesc dITPakkunItemDesc =
 {
-    nITKindPakkun,                         // Item Kind
-    &gGRCommonStruct.inishie.item_head,       // Pointer to item file data?
+    nITKindPakkun,                          // Item Kind
+    &gGRCommonStruct.inishie.item_head,     // Pointer to item file data?
     &lITPakkunItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTra,                // Main matrix transformations
+        nOMTransformTra,                    // Main matrix transformations
         0x30,                               // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itPakkunDWaitProcUpdate,                // Proc Update
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itPakkunWaitProcUpdate,                 // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
@@ -51,7 +51,7 @@ itStatusDesc dITPakkunStatusDescs[/* */] =
 {
     // Status 0 (Dokan Wait)
     {
-        itPakkunDWaitProcUpdate,            // Proc Update
+        itPakkunWaitProcUpdate,             // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -63,19 +63,19 @@ itStatusDesc dITPakkunStatusDescs[/* */] =
 
     // Status 1 (Dokan Appear)
     {
-        itPakkunDAppearProcUpdate,          // Proc Update
+        itPakkunAppearProcUpdate,           // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itPakkunDAppearProcDamage           // Proc Damage
+        itPakkunAppearProcDamage            // Proc Damage
     },
 
     // Status 2 (Neutral Damage)
     {
-        itPakkunNDamageProcUpdate,          // Proc Update
+        itPakkunDamagedProcUpdate,          // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -94,10 +94,10 @@ itStatusDesc dITPakkunStatusDescs[/* */] =
 
 enum itPakkunStatus
 {
-    itStatus_Pakkun_DWait,
-    itStatus_Pakkun_DAppear,
-    itStatus_Pakkun_NDamage,
-    itStatus_Pakkun_EnumMax
+    nITPakkunStatusWait,
+    nITPakkunStatusAppear,
+    nITPakkunStatusDamaged,
+    nITPakkunStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -107,28 +107,28 @@ enum itPakkunStatus
 // // // // // // // // // // // //
 
 // 0x8017CF20
-void itPakkunDWaitSetStatus(GObj *item_gobj)
+void itPakkunWaitSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITPakkunStatusDescs, itStatus_Pakkun_DWait);
+    itMainSetItemStatus(item_gobj, dITPakkunStatusDescs, nITPakkunStatusWait);
 
     itGetStruct(item_gobj)->proc_dead = NULL;
 
-    // The Piranha Plant's total damage never resets, so it can be knocked out with even the weakest attacks past a certain point.
+    // The Piranha Plant's total damage never resets, so it can be knocked out with even the weakest of attacks past a certain point.
     // Fix: itGetStruct(item_gobj)->percent_damage = 0;
 }
 
 // 0x8017CF58
-void itPakkunDAppearSetStatus(GObj *item_gobj)
+void itPakkunAppearSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITPakkunStatusDescs, itStatus_Pakkun_DAppear);
+    itMainSetItemStatus(item_gobj, dITPakkunStatusDescs, nITPakkunStatusAppear);
 }
 
 // 0x8017CF80
-void itPakkunNDamageSetStatus(GObj *item_gobj)
+void itPakkunDamagedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITPakkunStatusDescs, itStatus_Pakkun_NDamage);
+    itMainSetItemStatus(item_gobj, dITPakkunStatusDescs, nITPakkunStatusDamaged);
 
-    itGetStruct(item_gobj)->proc_dead = itPakkunNDamageProcDead;
+    itGetStruct(item_gobj)->proc_dead = itPakkunDamagedProcDead;
 }
 
 // 0x8017CFC0
@@ -143,7 +143,7 @@ void itPakkunCommonSetWaitFighter(GObj *item_gobj)
 }
 
 // 0x8017CFDC
-sb32 itPakkunCommonCheckNoFighterNear(GObj *item_gobj)
+sb32 itPakkunCommonCheckNoPlayersNear(GObj *item_gobj)
 {
     if (item_gobj != NULL)
     {
@@ -177,7 +177,7 @@ sb32 itPakkunCommonCheckNoFighterNear(GObj *item_gobj)
 }
 
 // 0x8017D0A4
-sb32 itPakkunDWaitProcUpdate(GObj *item_gobj)
+sb32 itPakkunWaitProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -190,17 +190,17 @@ sb32 itPakkunDWaitProcUpdate(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        if (itPakkunCommonCheckNoFighterNear(item_gobj) != FALSE)
+        if (itPakkunCommonCheckNoPlayersNear(item_gobj) != FALSE)
         {
             DObj *dobj = DObjGetStruct(item_gobj);
 
-            omAddDObjAnimAll(dobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunDAppearAnimJoint, 0.0F);
-            omAddMObjAnimAll(dobj->mobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunDAppearMatAnimJoint, 0.0F);
+            omAddDObjAnimAll(dobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunAppearAnimJoint, 0.0F);
+            omAddMObjAnimAll(dobj->mobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunAppearMatAnimJoint, 0.0F);
             func_8000DF34_EB34(item_gobj);
 
             dobj->translate.vec.f.y += ip->item_vars.pakkun.pos.y;
 
-            itPakkunDAppearSetStatus(item_gobj);
+            itPakkunAppearSetStatus(item_gobj);
         }
         else ip->it_multi = ITPAKKUN_APPEAR_WAIT;
     }
@@ -208,13 +208,13 @@ sb32 itPakkunDWaitProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017D190
-void itPakkunDWaitInitItemVars(GObj *item_gobj)
+void itPakkunWaitInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = ITPAKKUN_APPEAR_WAIT;
 
-    itPakkunDWaitSetStatus(item_gobj);
+    itPakkunWaitSetStatus(item_gobj);
 
     ip->item_hurt.hitstatus = nGMHitStatusNone;
     ip->item_hit.update_state = nGMHitUpdateDisable;
@@ -223,7 +223,7 @@ void itPakkunDWaitInitItemVars(GObj *item_gobj)
 }
 
 // 0x8017D1DC
-void itPakkunDAppearUpdateHurtbox(GObj *item_gobj)
+void itPakkunAppearUpdateHurtbox(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     f32 pos_y = DObjGetStruct(item_gobj)->translate.vec.f.y - ip->item_vars.pakkun.pos.y;
@@ -248,7 +248,7 @@ void itPakkunDAppearUpdateHurtbox(GObj *item_gobj)
 }
 
 // 0x8017D298
-sb32 itPakkunDAppearProcUpdate(GObj *item_gobj)
+sb32 itPakkunAppearProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj;
@@ -257,7 +257,7 @@ sb32 itPakkunDAppearProcUpdate(GObj *item_gobj)
     {
         DObjGetStruct(item_gobj)->anim_remain = AOBJ_FRAME_NULL;
 
-        itPakkunDWaitInitItemVars(item_gobj);
+        itPakkunWaitInitItemVars(item_gobj);
 
         ip->item_vars.pakkun.is_wait_fighter = FALSE;
     }
@@ -265,17 +265,17 @@ sb32 itPakkunDAppearProcUpdate(GObj *item_gobj)
 
     if (dobj->anim_remain == AOBJ_FRAME_NULL)
     {
-        itPakkunDWaitInitItemVars(item_gobj);
+        itPakkunWaitInitItemVars(item_gobj);
     }
     else dobj->translate.vec.f.y += ip->item_vars.pakkun.pos.y;
     
-    itPakkunDAppearUpdateHurtbox(item_gobj);
+    itPakkunAppearUpdateHurtbox(item_gobj);
 
     return FALSE;
 }
 
 // 0x8017D334
-sb32 itPakkunDAppearProcDamage(GObj *item_gobj)
+sb32 itPakkunAppearProcDamage(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -296,18 +296,18 @@ sb32 itPakkunDAppearProcDamage(GObj *item_gobj)
         ip->item_hurt.hitstatus = nGMHitStatusNone;
         ip->item_hit.update_state = nGMHitUpdateDisable;
 
-        itPakkunNDamageSetStatus(item_gobj);
+        itPakkunDamagedSetStatus(item_gobj);
 
         dobj->anim_remain = AOBJ_FRAME_NULL;
 
-        omAddMObjAnimAll(dobj->mobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunNDamageMatAnimJoint, 0.0F);
+        omAddMObjAnimAll(dobj->mobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunDamagedMatAnimJoint, 0.0F);
         func_8000DF34_EB34(item_gobj);
     }
     return FALSE;
 }
 
 // 0x8017D434
-sb32 itPakkunNDamageProcUpdate(GObj *item_gobj)
+sb32 itPakkunDamagedProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -317,7 +317,7 @@ sb32 itPakkunNDamageProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017D460
-sb32 itPakkunNDamageProcDead(GObj *item_gobj)
+sb32 itPakkunDamagedProcDead(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -334,7 +334,7 @@ sb32 itPakkunNDamageProcDead(GObj *item_gobj)
 
     dobj->mobj->anim_remain = AOBJ_FRAME_NULL;
 
-    itPakkunDWaitSetStatus(item_gobj);
+    itPakkunWaitSetStatus(item_gobj);
 
     ip->item_vars.pakkun.is_wait_fighter = FALSE;
 

@@ -140,7 +140,7 @@ itStatusDesc dITBombHeiStatusDescs[/* */] =
 
     // Status 7 (Neutral / Hit Explosion)
     {
-        itBombHeiExplodeNProcUpdate,        // Proc Update
+        itBombHeiExplodeProcUpdate,         // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -178,7 +178,7 @@ enum itBombHeiStatus
     nITBombHeiStatusDropped,
     nITBombHeiStatusWalk,
     nITBombHeiStatusExplodeMap,             // Explode on map collision
-    nITBombHeiStatusExplodeN,               // Neutral explosion
+    nITBombHeiStatusExplode,               // Neutral explosion
     nITBombHeiStatusExplodeWait,            // Stall until explosion
     nITBombHeiStatusEnumMax
 };
@@ -215,7 +215,7 @@ void itBombHeiCommonSetExplode(GObj *item_gobj, u8 unused_arg)
 
     itMainRefreshHit(item_gobj);
     itMainClearOwnerStats(item_gobj);
-    itBombHeiExplodeNSetStatus(item_gobj);
+    itBombHeiExplodeSetStatus(item_gobj);
 }
 
 // 0x80177104
@@ -228,14 +228,14 @@ void itBombHeiCommonSetWalkLR(GObj *item_gobj, ub8 lr)
 
     if (lr != 0)
     {
-        ip->lr = nGMDirectionR;
+        ip->lr = nGMFacingR;
         ip->phys_info.vel_air.x = ITBOMBHEI_WALK_VEL_X;
 
         dobj->display_list = dlr;
     }
     else
     {
-        ip->lr = nGMDirectionL;
+        ip->lr = nGMFacingL;
         ip->phys_info.vel_air.x = -ITBOMBHEI_WALK_VEL_X;
 
         dobj->display_list = dll;
@@ -306,7 +306,7 @@ s32 itBombHeiWalkGetLR(GObj *item_gobj)
 
         lbVector_Vec3fSubtract(&dist, translate, &fighter_dobj->translate.vec.f);
 
-        lr = (dist.x < 0.0F) ? nGMDirectionL : nGMDirectionR;
+        lr = (dist.x < 0.0F) ? nGMFacingL : nGMFacingR;
 
         fighter_gobj = fighter_gobj->link_next;
 
@@ -327,13 +327,13 @@ sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
     {
         lr = itBombHeiWalkGetLR(item_gobj);
 
-        if (lr == nGMDirectionC)
+        if (lr == nGMFacingC)
         {
             lr = mtTrigGetRandomIntRange(2) - 1;
         }
         if (lr < 0)
         {
-            ip->lr = nGMDirectionR;
+            ip->lr = nGMFacingR;
             ip->phys_info.vel_air.x = ITBOMBHEI_WALK_VEL_X;
         }
         else
@@ -342,7 +342,7 @@ sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
 
             dobj->display_list = dll;
 
-            ip->lr = nGMDirectionL;
+            ip->lr = nGMFacingL;
         }
         itBombHeiWalkSetStatus(item_gobj);
     }
@@ -370,7 +370,7 @@ sb32 itBombHeiCommonProcHit(GObj *item_gobj)
 // 0x80177440
 sb32 itBombHeiFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckThrownLanding(item_gobj, ITBOMBHEI_MAP_REBOUND_COMMON, ITBOMBHEI_MAP_REBOUND_GROUND, itBombHeiWaitSetStatus);
+    return itMapCheckDestroyDropped(item_gobj, ITBOMBHEI_MAP_REBOUND_COMMON, ITBOMBHEI_MAP_REBOUND_GROUND, itBombHeiWaitSetStatus);
 }
 
 // 0x80177474
@@ -468,7 +468,7 @@ sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == nGMDirectionL)
+        if (ip->lr == nGMFacingL)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
@@ -542,7 +542,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == nGMDirectionL)
+        if (ip->lr == nGMFacingL)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
@@ -640,7 +640,7 @@ void itBombHeiExplodeMapSetStatus(GObj *item_gobj)
 }
 
 // 0x80177BAC
-void itBombHeiExplodeNInitItemVars(GObj *item_gobj)
+void itBombHeiExplodeInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -654,7 +654,7 @@ void itBombHeiExplodeNInitItemVars(GObj *item_gobj)
 }
 
 // 0x80177BE8
-sb32 itBombHeiExplodeNProcUpdate(GObj *item_gobj)
+sb32 itBombHeiExplodeProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -670,10 +670,10 @@ sb32 itBombHeiExplodeNProcUpdate(GObj *item_gobj)
 }
 
 // 0x80177C30
-void itBombHeiExplodeNSetStatus(GObj *item_gobj)
+void itBombHeiExplodeSetStatus(GObj *item_gobj)
 {
-    itBombHeiExplodeNInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusExplodeN);
+    itBombHeiExplodeInitItemVars(item_gobj);
+    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusExplode);
 }
 
 // 0x80177C64

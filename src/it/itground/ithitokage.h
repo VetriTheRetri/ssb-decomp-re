@@ -6,8 +6,8 @@
 #include <it/itdef.h>
 
 extern sb32 itHitokageCommonProcUpdate(GObj *item_gobj);
-extern sb32 itHitokageNDamageProcUpdate(GObj *item_gobj);
-extern sb32 itHitokageNDamageProcDead(GObj *item_gobj);
+extern sb32 itHitokageDamagedProcUpdate(GObj *item_gobj);
+extern sb32 itHitokageDamagedProcDead(GObj *item_gobj);
 extern sb32 itHitokageCommonProcDamage(GObj *item_gobj);
 extern GObj* itHitokageMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itHitokageWeaponFlameProcUpdate(GObj *weapon_gobj);

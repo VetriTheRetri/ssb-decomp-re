@@ -24,10 +24,14 @@
 #define ITTOMATO_DAMAGE_HEAL 100
 #define ITTOMATO_GRAVITY 1.2F
 #define ITTOMATO_TVEL 100.0F
+#define ITTOMATO_MAP_REBOUND_COMMON 0.3F
+#define ITTOMATO_MAP_REBOUND_GROUND 0.5F
 
 #define ITHEART_DAMAGE_HEAL 999
 #define ITHEART_GRAVITY 0.25F
 #define ITHEART_TVEL 30.0F
+#define ITHEART_MAP_REBOUND_COMMON 0.1F
+#define ITHEART_MAP_REBOUND_GROUND 0.0F
 
 #define ITSTAR_COLANIM_ID 0x4A
 #define ITSTAR_COLANIM_LENGTH 0
@@ -38,11 +42,14 @@
 #define ITSTAR_INTERACT_DELAY 16 // Wait this many frames before becoming tangible
 #define ITSTAR_GRAVITY 1.2F
 #define ITSTAR_TVEL 100.0F
+#define ITSTAR_MAP_REBOUND_COMMON 1.0F
 #define ITSTAR_VEL_X 8.0F
 #define ITSTAR_BOUNCE_Y 50.0F // Y-velocity added when Star Man touches the ground
 
 #define ITSWORD_GRAVITY 1.2F
 #define ITSWORD_TVEL 100.0F
+#define ITSWORD_MAP_REBOUND_COMMON 0.2F
+#define ITSWORD_MAP_REBOUND_GROUND 0.5F
 
 #define ITBAT_GRAVITY 1.5F
 #define ITBAT_TVEL 120.0F
@@ -51,13 +58,17 @@
 
 #define ITHARISEN_GRAVITY 1.0F
 #define ITHARISEN_TVEL 80.0F
+#define ITHARISEN_MAP_REBOUND_COMMON 0.0F
+#define ITHARISEN_MAP_REBOUND_GROUND 0.3F
 
 #define ITLGUN_AMMO_MAX 16
 #define ITLGUN_GRAVITY 1.5F
 #define ITLGUN_TVEL 130.0F
+#define ITLGUN_MAP_REBOUND_COMMON 0.2F
+#define ITLGUN_MAP_REBOUND_GROUND 0.1F
 #define ITLGUN_AMMO_VEL_X 300.0F
 #define ITLGUN_AMMO_STEP_SCALE_X 10.0F
-#define ITLGUN_AMMO_CLAMP_SCALE_X 53.333332F
+#define ITLGUN_AMMO_CLAMP_SCALE_X (160.0F / 3.0F)
 
 #define ITFFLOWER_AMMO_MAX 60
 #define ITFFLOWER_AMMO_LIFETIME 30
@@ -75,6 +86,8 @@
 #define ITHAMMER_WARN_BEGIN_FRAME (ITHAMMER_TIME - 600)
 #define ITHAMMER_GRAVITY 1.5F
 #define ITHAMMER_TVEL 120.0F
+#define ITHAMMER_MAP_REBOUND_COMMON 0.5F
+#define ITHAMMER_MAP_REBOUND_GROUND 0.2F
 
 #define ITMSBOMB_EXPLODE_LIFETIME 16
 #define ITMSBOMB_DETECT_FIGHTER_DELAY 100
@@ -83,6 +96,8 @@
 				   // detection function, so it ends up checking 160000.0F
 #define ITMSBOMB_GRAVITY 1.5F
 #define ITMSBOMB_TVEL 80.0F
+#define ITMSBOMB_MAP_REBOUND_COMMON 0.4F
+#define ITMSBOMB_MAP_REBOUND_GROUND 0.3F
 #define ITMSBOMB_COLL_SIZE 30.0F	// Size of Motion Sensor Bomb collision box
 #define ITMSBOMB_EXPLODE_SCALE 1.2F // Size of explosion graphics
 
@@ -105,6 +120,8 @@
 #define ITSTARROD_AMMO_MAX 20
 #define ITSTARROD_GRAVITY 1.2F
 #define ITSTARROD_TVEL 100.0F
+#define ITSTARROD_MAP_REBOUND_COMMON 0.2F
+#define ITSTARROD_MAP_REBOUND_GROUND 0.5F
 #define ITSTARROD_AMMO_SMASH_VEL_X 120.0F
 #define ITSTARROD_AMMO_TILTVEL_X 80.0F
 #define ITSTARROD_AMMO_SMASH_LIFETIME 30.0F
@@ -128,8 +145,10 @@
 		 // Shell is hit out of its "slide" state
 #define ITGSHELL_GRAVITY 1.2F
 #define ITGSHELL_TVEL 100.0F
+#define ITGSHELL_MAP_REBOUND_COMMON 0.2F
+#define ITGSHELL_MAP_REBOUND_GROUND 0.5F
 
-#define ITCONTAINER_GFX_COUNT                                                                                          \
+#define ITCONTAINER_EFFECT_COUNT                                                                                          \
 	7								// Number of pieces Barrel and Crate containers burst into when smashed
 									// open
 #define ITCONTAINER_GFX_LIFETIME 90 // Smashed container pieces despawn once this runs out
@@ -144,6 +163,8 @@
 #define ITTARU_EXPLODE_SCALE 1.4F	   // Size of explosion graphics
 #define ITTARU_GRAVITY 4.0F
 #define ITTARU_TVEL 90.0F
+#define ITTARU_MAP_REBOUND_COMMON 0.5F
+#define ITTARU_MAP_REBOUND_GROUND 0.2F
 
 #define ITRSHELL_INTERACT_MAX 24
 #define ITRSHELL_LIFETIME 480
@@ -169,6 +190,8 @@
 		  // when Shell is hit out of its "wait" state
 #define ITRSHELL_GRAVITY 1.2F
 #define ITRSHELL_TVEL 100.0F
+#define ITRSHELL_MAP_REBOUND_COMMON 0.25F
+#define ITRSHELL_MAP_REBOUND_GROUND 0.5F
 
 #define ITBUMPER_CASTLE_KNOCKBACK 300 // Weight-Dependent Set Knockback of Bumper on Peach's Castle
 #define ITBUMPER_CASTLE_ANGLE 361	  // Knockback angle of Bumper on Peach's Castle
@@ -189,6 +212,8 @@
 #define ITBUMPER_GRAVITY_NORMAL 1.4F
 #define ITBUMPER_GRAVITY_HIT 4.0F
 #define ITBUMPER_TVEL 80.0F
+#define ITBUMPER_MAP_REBOUND_COMMON 0.8F
+#define ITBUMPER_MAP_REBOUND_GROUND 0.8F
 
 #define ITGLUCKY_EGG_SPAWN_COUNT                                                                                      \
 	1									 // Wait this many frames before spawning egg (read only when egg spawn
@@ -210,6 +235,8 @@
 #define ITMBALL_SPAWN_WAIT 30 // Wait this many frames before releasing Pokémon once thrown and landed
 #define ITMBALL_GRAVITY 1.5F
 #define ITMBALL_TVEL 120.0F
+#define ITMBALL_MAP_REBOUND_COMMON 0.2F
+#define ITMBALL_MAP_REBOUND_GROUND 0.2F
 
 #define ITMONSTER_RISE_STOP_WAIT                                                                                       \
 	22 // Universal attribute for Pokémon to stop slowly levitating upward and
@@ -316,6 +343,8 @@
 #define ITLIZARDON_DUST_GFX_OFF_X (-400.0F)	   // X-offset of dust GFX when turning around
 #define ITLIZARDON_GRAVITY 1.0F
 #define ITLIZARDON_TVEL 40.0F
+#define ITLIZARDON_MAP_REBOUND_COMMON 0.2F
+#define ITLIZARDON_MAP_REBOUND_GROUND 1.0F
 
 #define ITSPEAR_SPAWN_COUNT 16			  // Swarm will have this many member Beedrill
 #define ITSPEAR_SPAWN_WAIT_CONST 12		  // Minimum number of frames between Beedrill swarm member spawns
@@ -430,17 +459,18 @@
 #define ITFUSHIGIBANA_RAZOR_SPAWN_END 120.0F	  // Venusaur can no longer shoot Razor Leaf this frame onward
 #define ITFUSHIGIBANA_RAZOR_SPAWN_OFF_X (-540.0F) // X-offset of leaf spawn
 
-#define ITRBOMB_GFX_COUNT 7		// Number of pieces RTTF Bomb bursts into when smashed open
-#define ITRBOMB_GFX_LIFETIME 90 // Smashed RTTF Bomb pieces despawn once this runs out
+#define ITTARUBOMB_EFFECT_COUNT 7		// Number of pieces RTTF Bomb bursts into when smashed open
+#define ITTARUBOMB_GFX_LIFETIME 90 // Smashed RTTF Bomb pieces despawn once this runs out
 
-#define ITRBOMB_HEALTH_MAX 10
-#define ITRBOMB_EXPLODE_LIFETIME 6
-#define ITRBOMB_EXPLODE_EFFECT_SCALE 1.4F
-#define ITRBOMB_MUL_VEL_X 1.4F
-#define ITRBOMB_MIN_VEL_XY 0.1F			// Decrement lifetime if Barrel's XY velocity is less than this value
-#define ITRBOMB_ROLL_ROTATE_MUL 0.0045F // Multiplies rotation of barrel
-#define ITRBOMB_GRAVITY 4.0F
-#define ITRBOMB_TVEL 90.0F
+#define ITTARUBOMB_HEALTH_MAX 10
+#define ITTARUBOMB_EXPLODE_LIFETIME 6
+#define ITTARUBOMB_EXPLODE_EFFECT_SCALE 1.4F
+#define ITTARUBOMB_MUL_VEL_X 1.4F
+#define ITTARUBOMB_MIN_VEL_XY 0.1F			// Decrement lifetime if Barrel's XY velocity is less than this value
+#define ITTARUBOMB_ROLL_ROTATE_MUL 0.0045F // Multiplies rotation of barrel
+#define ITTARUBOMB_GRAVITY 4.0F
+#define ITTARUBOMB_TVEL 90.0F
+#define ITTARUBOMB_MAP_REBOUND_COMMON 0.5F
 
 #define ITPKFIRE_LIFETIME 100
 #define ITPKFIRE_HURT_DAMAGE_MUL 3 // Multiplies damage taken, result gets subtracted from lifetime

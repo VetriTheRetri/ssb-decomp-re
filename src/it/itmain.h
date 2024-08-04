@@ -71,10 +71,10 @@ void itMainClearColAnim(GObj* item_gobj);
 void itMainVelSetRebound(GObj* item_gobj);
 
 // Binary search function to get item ID for container drop ?
-s32 itMainSearchWeightedItemID(s32 random, itRandomWeights* container_drops, u32 min, u32 max);
+s32 itMainSearchWeightedItemKind(s32 random, itRandomWeights* container_drops, u32 min, u32 max);
 
 // Get item ID for container
-s32 itMainGetWeightedItemID(itRandomWeights* container_drops);
+s32 itMainGetWeightedItemKind(itRandomWeights* container_drops);
 
 // Spawn new item from container?
 sb32 itMainMakeContainerItem(GObj* gobj);

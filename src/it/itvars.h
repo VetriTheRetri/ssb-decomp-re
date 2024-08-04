@@ -7,11 +7,19 @@
 #include <ef/efdef.h>
 
 #define ITBOX_EXPLODE_FRAME_END 8
+#define ITBOX_HEALTH_MAX 15		 // Maximum damage box can resist before breaking
+#define ITBOX_EXPLODE_SCALE 1.4F // Size of explosion graphics
+#define ITBOX_GRAVITY 4.0F
+#define ITBOX_TVEL 120.0F
+#define ITBOX_MAP_REBOUND_COMMON 0.2F
+#define ITBOX_MAP_REBOUND_GROUND 0.5F
 
+#define ITCAPSULE_EXPLODE_FRAME_END 6
 #define ITCAPSULE_GRAVITY 1.2F
 #define ITCAPSULE_TVEL 100.0F
+#define ITCAPSULE_MAP_REBOUND_COMMON 0.2F
+#define ITCAPSULE_MAP_REBOUND_GROUND 0.4F
 #define ITCAPSULE_EXPLODE_SCALE 1.4F // Size of explosion graphics
-#define ITCAPSULE_EXPLODE_FRAME_END 6
 
 #define ITTOMATO_DAMAGE_HEAL 100
 #define ITTOMATO_GRAVITY 1.2F
@@ -56,6 +64,8 @@
 #define ITFFLOWER_AMMO_VEL 30.0F
 #define ITFFLOWER_GRAVITY 1.2F
 #define ITFFLOWER_TVEL 100.0F
+#define ITFFLOWER_MAP_REBOUND_COMMON 0.0F
+#define ITFFLOWER_MAP_REBOUND_GROUND 0.5F
 
 #define ITHAMMER_TIME 720
 #define ITHAMMER_BGM_ID 0x2E
@@ -123,13 +133,6 @@
 	7								// Number of pieces Barrel and Crate containers burst into when smashed
 									// open
 #define ITCONTAINER_GFX_LIFETIME 90 // Smashed container pieces despawn once this runs out
-
-#define ITBOX_HEALTH_MAX 15		 // Maximum damage box can resist before breaking
-#define ITBOX_EXPLODE_SCALE 1.4F // Size of explosion graphics
-#define ITBOX_GRAVITY 4.0F
-#define ITBOX_TVEL 120.0F
-#define ITBOX_MAP_REBOUND_COMMON 0.2F
-#define ITBOX_MAP_REBOUND_GROUND 0.5F
 
 #define ITTARU_LIFETIME 360
 #define ITTARU_EXPLODE_LIFETIME 8
@@ -357,9 +360,11 @@
 #define ITMLUCKY_GRAVITY 1.0F
 #define ITMLUCKY_TVEL 40.0F
 
-#define ITEGG_EXPLODE_GFX_WAIT 8	 // Wait this many frames before spawning eggshell break GFX on explosion
-#define ITEGG_EXPLODE_GFX_SCALE 1.4F // Scale of explosion GFX
+#define ITEGG_EXPLODE_EFFECT_WAIT 8	 // Wait this many frames before spawning eggshell break GFX on explosion
+#define ITEGG_EXPLODE_EFFECT_SCALE 1.4F // Scale of explosion GFX
 #define ITEGG_GRAVITY 1.2F
+#define ITEGG_MAP_REBOUND_COMMON 0.2F
+#define ITEGG_MAP_REBOUND_GROUND 0.5F
 #define ITEGG_TVEL 100.0F
 
 #define ITSTARMIE_LIFETIME 240
@@ -400,7 +405,7 @@
 #define ITDGOAS_SMOG_SUB_OFF_Y 400.0F // Subtracted from multiplied random spawn position
 
 #define ITMARUMINE_EXPLODE_LIFETIME 6
-#define ITMARUMINE_EXPLODE_GFX_SCALE 1.4F
+#define ITMARUMINE_EXPLODE_EFFECT_SCALE 1.4F
 
 #define ITPORYGON_SHAKE_STOP_WAIT 32 // Stop vertical shake after this many frames have passed?
 
@@ -430,7 +435,7 @@
 
 #define ITRBOMB_HEALTH_MAX 10
 #define ITRBOMB_EXPLODE_LIFETIME 6
-#define ITRBOMB_EXPLODE_GFX_SCALE 1.4F
+#define ITRBOMB_EXPLODE_EFFECT_SCALE 1.4F
 #define ITRBOMB_MUL_VEL_X 1.4F
 #define ITRBOMB_MIN_VEL_XY 0.1F			// Decrement lifetime if Barrel's XY velocity is less than this value
 #define ITRBOMB_ROLL_ROTATE_MUL 0.0045F // Multiplies rotation of barrel
@@ -467,9 +472,11 @@
 #define ITLINKBOMB_BLOAT_BEGIN 96.0F	  // Bomb begins bloating when lifetime is equal or less than this value
 #define ITLINKBOMB_HIT_RECOIL_VEL_X 8.0F  // X-velocity upon hitting a target without exploding
 #define ITLINKBOMB_HIT_RECOIL_VEL_Y 20.0F // Y-velocity upon hitting a target without exploding
-#define ITLINKBOMB_EXPLODE_GFX_SCALE 1.3F
+#define ITLINKBOMB_EXPLODE_EFFECT_SCALE 1.3F
 #define ITLINKBOMB_GRAVITY 1.2F
 #define ITLINKBOMB_TVEL 100.0F
+#define ITLINKBOMB_MAP_REBOUND_COMMON 0.4F
+#define ITLINKBOMB_MAP_REBOUND_GROUND 0.3F
 
 typedef struct itCommonItemVarsBombHei
 {
@@ -669,7 +676,7 @@ typedef struct itFighterItemVarsLinkBomb
 	u16 unk_0x0;
 	u16 drop_update_wait; // Wait frames when dropping bomb, must pass before
 						  // ProcUpdate, ProcHit and ProcDamage can be checked?
-	u16 scale_index;
+	u16 scale_id;
 	u16 scale_int; // Interval between Bomb inflate/deflate animation updates;
 				   // effectively animation speed
 

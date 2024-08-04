@@ -175,7 +175,7 @@ sb32 itStarRodWaitProcMap(GObj *item_gobj)
 // 0x80177EE4
 sb32 itStarRodFallProcMap(GObj *item_gobj)
 {
-    itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodWaitSetStatus);
+    itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodWaitSetStatus);
 
     return FALSE;
 }
@@ -220,7 +220,7 @@ sb32 itStarRodThrownProcUpdate(GObj *item_gobj)
 // 0x80178000
 sb32 itStarRodThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodWaitSetStatus);
 }
 
 // 0x80178030
@@ -249,9 +249,9 @@ sb32 itStarRodDroppedProcMap(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        return itMapCheckMapReboundGround(item_gobj, 0.2F);
+        return itMapCheckDestroyLanding(item_gobj, 0.2F);
     }
-    else return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodWaitSetStatus);
+    else return itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itStarRodWaitSetStatus);
 }
 
 // 0x801780F0

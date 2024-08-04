@@ -119,7 +119,7 @@ sb32 itTomatoWaitProcMap(GObj *item_gobj)
 // 0x80174524
 sb32 itTomatoFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.3F, 0.5F, itTomatoWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.3F, 0.5F, itTomatoWaitSetStatus);
 }
 
 // 0x80174554
@@ -143,7 +143,7 @@ void itTomatoFallSetStatus(GObj *item_gobj)
 // 0x801745CC
 sb32 itTomatoDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.3F, 0.5F, itTomatoWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.3F, 0.5F, itTomatoWaitSetStatus);
 }
 
 // 0x801745FC

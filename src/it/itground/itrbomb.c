@@ -362,7 +362,7 @@ void itRBombExplodeNInitItemVars(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = 0;
-    ip->item_event_index = 0;
+    ip->item_event_id = 0;
 
     ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
 
@@ -404,7 +404,7 @@ void itRBombExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
 
     if (efpart != NULL)
     {
-        efpart->effect_info->scale.x = efpart->effect_info->scale.y = efpart->effect_info->scale.z = ITRBOMB_EXPLODE_GFX_SCALE;
+        efpart->effect_info->scale.x = efpart->effect_info->scale.y = efpart->effect_info->scale.z = ITRBOMB_EXPLODE_EFFECT_SCALE;
     }
     efManagerQuakeMakeEffect(1);
 

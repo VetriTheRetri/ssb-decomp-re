@@ -86,24 +86,24 @@ void itFushigibanaCommonUpdateHitParty(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     itHitParty *hit_party = itGetHitParty(dITFushigibanaItemDesc, lITFushigibanaHitParties); // (itHitParty*) ((uintptr_t)*dITFushigibanaItemDesc.p_file + (intptr_t)&Fushigibana_Event); // Linker thing
 
-    if (ip->it_multi == hit_party[ip->item_event_index].timer)
+    if (ip->it_multi == hit_party[ip->item_event_id].timer)
     {
-        ip->item_hit.angle            = hit_party[ip->item_event_index].angle;
-        ip->item_hit.damage           = hit_party[ip->item_event_index].damage;
-        ip->item_hit.size             = hit_party[ip->item_event_index].size;
-        ip->item_hit.knockback_scale  = hit_party[ip->item_event_index].knockback_scale;
-        ip->item_hit.knockback_weight = hit_party[ip->item_event_index].knockback_weight;
-        ip->item_hit.knockback_base   = hit_party[ip->item_event_index].knockback_base;
-        ip->item_hit.element          = hit_party[ip->item_event_index].element;
-        ip->item_hit.can_setoff       = hit_party[ip->item_event_index].can_setoff;
-        ip->item_hit.shield_damage    = hit_party[ip->item_event_index].shield_damage;
-        ip->item_hit.hit_sfx          = hit_party[ip->item_event_index].hit_sfx;
+        ip->item_hit.angle            = hit_party[ip->item_event_id].angle;
+        ip->item_hit.damage           = hit_party[ip->item_event_id].damage;
+        ip->item_hit.size             = hit_party[ip->item_event_id].size;
+        ip->item_hit.knockback_scale  = hit_party[ip->item_event_id].knockback_scale;
+        ip->item_hit.knockback_weight = hit_party[ip->item_event_id].knockback_weight;
+        ip->item_hit.knockback_base   = hit_party[ip->item_event_id].knockback_base;
+        ip->item_hit.element          = hit_party[ip->item_event_id].element;
+        ip->item_hit.can_setoff       = hit_party[ip->item_event_id].can_setoff;
+        ip->item_hit.shield_damage    = hit_party[ip->item_event_id].shield_damage;
+        ip->item_hit.hit_sfx          = hit_party[ip->item_event_id].hit_sfx;
 
-        ip->item_event_index++;
+        ip->item_event_id++;
 
-        if (ip->item_event_index == 2)
+        if (ip->item_event_id == 2)
         {
-            ip->item_event_index = 1;
+            ip->item_event_id = 1;
         }
     }
     ip->it_multi++;
@@ -182,7 +182,7 @@ GObj* itFushigibanaMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip = itGetStruct(item_gobj);
         dobj = DObjGetStruct(item_gobj);
 
-        ip->item_event_index = 0;
+        ip->item_event_id = 0;
 
         ip->it_multi = 0;
 

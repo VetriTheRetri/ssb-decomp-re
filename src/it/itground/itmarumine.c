@@ -87,9 +87,9 @@ void itMarumineExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
 
     if (efpart != NULL)
     {
-        efpart->effect_info->scale.x = ITMARUMINE_EXPLODE_GFX_SCALE;
-        efpart->effect_info->scale.y = ITMARUMINE_EXPLODE_GFX_SCALE;
-        efpart->effect_info->scale.z = ITMARUMINE_EXPLODE_GFX_SCALE;
+        efpart->effect_info->scale.x = ITMARUMINE_EXPLODE_EFFECT_SCALE;
+        efpart->effect_info->scale.y = ITMARUMINE_EXPLODE_EFFECT_SCALE;
+        efpart->effect_info->scale.z = ITMARUMINE_EXPLODE_EFFECT_SCALE;
     }
     efManagerQuakeMakeEffect(1);
 
@@ -107,11 +107,11 @@ void itMarumineExplodeNUpdateHitEvent(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     itHitEvent *ev = itGetHitEvent(dITMarumineItemDesc, lITMarumineHitEvents); // (itHitEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&lITMarumineHitEvents); // Linker thing
 
-    if (ip->it_multi == ev[ip->item_event_index].timer)
+    if (ip->it_multi == ev[ip->item_event_id].timer)
     {
-        ip->item_hit.angle  = ev[ip->item_event_index].angle;
-        ip->item_hit.damage = ev[ip->item_event_index].damage;
-        ip->item_hit.size   = ev[ip->item_event_index].size;
+        ip->item_hit.angle  = ev[ip->item_event_id].angle;
+        ip->item_hit.damage = ev[ip->item_event_id].damage;
+        ip->item_hit.size   = ev[ip->item_event_id].size;
 
         ip->item_hit.can_reflect = FALSE;
         ip->item_hit.can_shield = FALSE;
@@ -120,11 +120,11 @@ void itMarumineExplodeNUpdateHitEvent(GObj *item_gobj)
 
         ip->item_hit.can_setoff = FALSE;
 
-        ip->item_event_index++;
+        ip->item_event_id++;
 
-        if (ip->item_event_index == 4)
+        if (ip->item_event_id == 4)
         {
-            ip->item_event_index = 3;
+            ip->item_event_id = 3;
         }
     }
 }
@@ -183,7 +183,7 @@ void itMarumineExplodeNSetStatus(GObj *item_gobj)
 
     ip->item_hit.throw_mul = 1.0F;
 
-    ip->item_event_index = 0;
+    ip->item_event_id = 0;
 
     itMarumineExplodeNUpdateHitEvent(item_gobj);
     itMainSetItemStatus(item_gobj, dITMarumineStatusDescs, itStatus_Marumine_ExplodeN);

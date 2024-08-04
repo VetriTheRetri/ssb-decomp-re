@@ -145,7 +145,7 @@ sb32 itSwordWaitProcMap(GObj *item_gobj)
 // 0x80174BB4
 sb32 itSwordFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itSwordWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itSwordWaitSetStatus);
 }
 
 // 0x80174BE4
@@ -177,7 +177,7 @@ void itSwordHoldSetStatus(GObj *item_gobj)
 // 0x80174C90
 sb32 itSwordThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itSwordWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itSwordWaitSetStatus);
 }
 
 // 0x80174CC0
@@ -203,7 +203,7 @@ void itSwordThrownSetStatus(GObj *item_gobj)
 // 0x80174D2C
 sb32 itSwordDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itSwordWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itSwordWaitSetStatus);
 }
 
 // 0x80174D5C

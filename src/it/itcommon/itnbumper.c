@@ -210,7 +210,7 @@ sb32 itNBumperWaitProcMap(GObj *item_gobj)
 // 0x8017B548
 sb32 itNBumperFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.8F, 0.8F, itNBumperWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.8F, 0.8F, itNBumperWaitSetStatus);
 }
 
 // 0x8017B57C

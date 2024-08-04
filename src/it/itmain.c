@@ -610,17 +610,17 @@ void itMainUpdateHitEvent(GObj *item_gobj, itHitEvent *ev)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == ev[ip->item_event_index].timer)
+    if (ip->it_multi == ev[ip->item_event_id].timer)
     {
-        ip->item_hit.angle  = ev[ip->item_event_index].angle;
-        ip->item_hit.damage = ev[ip->item_event_index].damage;
-        ip->item_hit.size   = ev[ip->item_event_index].size;
+        ip->item_hit.angle  = ev[ip->item_event_id].angle;
+        ip->item_hit.damage = ev[ip->item_event_id].damage;
+        ip->item_hit.size   = ev[ip->item_event_id].size;
 
-        ip->item_event_index++;
+        ip->item_event_id++;
 
-        if (ip->item_event_index == 4)
+        if (ip->item_event_id == 4)
         {
-            ip->item_event_index = 3;
+            ip->item_event_id = 3;
         }
     }
 }

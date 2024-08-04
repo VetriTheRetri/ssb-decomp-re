@@ -256,7 +256,7 @@ void itMapSetGroundCollisionRebound(Vec3f *vel, Vec3f *ground_angle, f32 ground_
 }
 
 // 0x80173B24
-sb32 itMapCheckMapCollideThrownLanding(GObj *item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_status)(GObj*))
+sb32 itMapCheckThrownLanding(GObj *item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_status)(GObj*))
 {
     itStruct *ip = itGetStruct(item_gobj);
     s32 unused;
@@ -298,7 +298,7 @@ sb32 itMapCheckMapCollideThrownLanding(GObj *item_gobj, f32 wall_ceil_rebound, f
 }
 
 // 0x80173C68
-sb32 itMapCheckMapCollideLanding(GObj *item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_map)(GObj*))
+sb32 itMapCheckLanding(GObj *item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_map)(GObj*))
 {
     itStruct *ip = itGetStruct(item_gobj);
     s32 unused;
@@ -352,7 +352,7 @@ sb32 itMapCheckMapReboundProcAll(GObj *item_gobj, f32 wall_ceil_rebound, f32 gro
 }
 
 // 0x80173DF4
-sb32 itMapCheckMapReboundGround(GObj *item_gobj, f32 wall_ceil_rebound)
+sb32 itMapCheckDestroyLanding(GObj *item_gobj, f32 wall_ceil_rebound)
 {
     sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND);
 

@@ -150,7 +150,7 @@ sb32 itLizardonUFallProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    itMapCheckMapCollideLanding(item_gobj, 0.2F, 1.0F, itLizardonNAttackSetStatus);
+    itMapCheckLanding(item_gobj, 0.2F, 1.0F, itLizardonNAttackSetStatus);
 
     if (ip->coll_data.coll_mask_curr & MPCOLL_KIND_GROUND)
     {

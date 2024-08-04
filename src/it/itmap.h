@@ -32,17 +32,17 @@ sb32 itMapCheckCollideAllRebound(GObj* item_gobj, u32 check_flags, f32 mod_vel, 
 void itMapSetGroundCollisionRebound(Vec3f* vel, Vec3f* ground_angle, f32 ground_rebound);
 
 // Check if item should be destroyed upon landing after being dropped / thrown
-sb32 itMapCheckMapCollideThrownLanding(GObj* item_gobj, f32 wall_ceil_rebound, f32 ground_rebound,
+sb32 itMapCheckThrownLanding(GObj* item_gobj, f32 wall_ceil_rebound, f32 ground_rebound,
 									   void (*proc_status)(GObj*));
 
 // Check if item is landing normally
-sb32 itMapCheckMapCollideLanding(GObj* item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_map)(GObj*));
+sb32 itMapCheckLanding(GObj* item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_map)(GObj*));
 
 // Check if item recoils from collision with any type of surface; run proc_map if true
 sb32 itMapCheckMapReboundProcAll(GObj* item_gobj, f32 wall_ceil_rebound, f32 ground_rebound, void (*proc_map)(GObj*));
 
 // Check if item recoils from collision with ground
-sb32 itMapCheckMapReboundGround(GObj* item_gobj, f32 wall_ceil_rebound);
+sb32 itMapCheckDestroyLanding(GObj* item_gobj, f32 wall_ceil_rebound);
 
 // Test for all collisions; run proc_map if true; always returns FALSE
 sb32 itMapCheckMapProcAll(GObj* item_gobj, void (*proc_map)(GObj*));

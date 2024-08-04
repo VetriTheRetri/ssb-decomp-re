@@ -306,9 +306,9 @@ sb32 itRShellFallProcMap(GObj *item_gobj)
 
     if (ip->item_vars.shell.health == 0)
     {
-        return itMapCheckMapReboundGround(item_gobj, 0.25F);
+        return itMapCheckDestroyLanding(item_gobj, 0.25F);
     }
-    itMapCheckMapCollideThrownLanding(item_gobj, 0.25F, 0.5F, func_ovl3_8017A964);
+    itMapCheckThrownLanding(item_gobj, 0.25F, 0.5F, func_ovl3_8017A964);
 
     return FALSE;
 }
@@ -451,7 +451,7 @@ sb32 itRShellThrownProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itMapCheckMapCollideLanding(item_gobj, 0.25F, 0.5F, itRShellGSpinSetStatus) != FALSE)
+    if (itMapCheckLanding(item_gobj, 0.25F, 0.5F, itRShellGSpinSetStatus) != FALSE)
     {
         if (ip->phys_info.vel_air.x < 0.0F)
         {

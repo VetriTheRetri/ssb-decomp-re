@@ -34,7 +34,7 @@ extern void ftCaptainSpecialLwProcPhysics(GObj* fighter_gobj);
 extern void ftCaptainSpecialLwLandingProcPhysics(GObj* fighter_gobj);
 extern void ftCaptainSpecialAirLwProcPhysics(GObj* fighter_gobj);
 extern void ftCaptainSpecialLwBoundProcPhysics(GObj* fighter_gobj);
-extern sb32 ftCaptainSpecialLwBoundCheckMapCollideGoto(GObj* fighter_gobj);
+extern sb32 ftCaptainSpecialLwBoundCheckGoto(GObj* fighter_gobj);
 extern sb32 ftCaptainSpecialLwAirCheckAirGoto(GObj* fighter_gobj);
 extern void ftCaptainSpecialLwProcMap(GObj* fighter_gobj);
 extern void ftCaptainSpecialLwAirProcMap(GObj* fighter_gobj);

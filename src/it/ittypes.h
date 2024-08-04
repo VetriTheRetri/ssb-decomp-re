@@ -367,7 +367,7 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 	u16 it_multi;			  // Some sort of universal multi-purpose variable, e.g. it is
 							  // used as intangibility delay for Star Man and ammo count
 							  // for Ray Gun
-	u32 item_event_index : 4; // Item hitbox script index? When in doubt, make
+	u32 item_event_id : 4; // Item hitbox script index? When in doubt, make
 							  // this u8 : 4
 
 	f32 rotate_step; // Item spin rotation step

@@ -216,9 +216,9 @@ sb32 itGShellFallProcMap(GObj *item_gobj)
 
     if (ip->item_vars.shell.health == 0)
     {
-        return itMapCheckMapReboundGround(item_gobj, 0.2F);
+        return itMapCheckDestroyLanding(item_gobj, 0.2F);
     }
-    else itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itGShellWaitSetStatus);
+    else itMapCheckThrownLanding(item_gobj, 0.2F, 0.5F, itGShellWaitSetStatus);
 
     return FALSE;
 }
@@ -339,7 +339,7 @@ void itGShellHoldSetStatus(GObj *item_gobj)
 // 0x80178AC4
 sb32 itGShellThrownProcMap(GObj *item_gobj)
 {
-    itMapCheckMapCollideLanding(item_gobj, 0.2F, 0.5F, itGShellWaitSetStatus);
+    itMapCheckLanding(item_gobj, 0.2F, 0.5F, itGShellWaitSetStatus);
 
     return FALSE;
 }

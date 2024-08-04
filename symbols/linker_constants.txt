@@ -811,7 +811,7 @@ lITNessPKFireItemAttributes = 0x00000034;
 
 lITLinkBombItemAttributes = 0x00000040;
 lITLinkBombHitEvents = 0x00000088;
-lITLinkBombBloatScale = 0x000000A8;
+lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;
 

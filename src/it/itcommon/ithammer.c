@@ -151,7 +151,7 @@ sb32 itHammerWaitProcMap(GObj *item_gobj)
 // 0x80176194
 sb32 itHammerFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.5F, 0.2F, itHammerWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.5F, 0.2F, itHammerWaitSetStatus);
 }
 
 // 0x801761C4
@@ -194,7 +194,7 @@ sb32 itHammerThrownProcUpdate(GObj *item_gobj)
 // 0x801762A8
 sb32 itHammerThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.5F, 0.2F, itHammerWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.5F, 0.2F, itHammerWaitSetStatus);
 }
 
 // 0x801762D8
@@ -222,7 +222,7 @@ void itHammerThrownSetStatus(GObj *item_gobj)
 // 0x80176348
 sb32 itHammerDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.5F, 0.2F, itHammerWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.5F, 0.2F, itHammerWaitSetStatus);
 }
 
 // 0x80176378

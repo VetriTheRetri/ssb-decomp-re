@@ -358,7 +358,7 @@ sb32 itBoxCommonProcDamage(GObj *item_gobj)
 // 0x80179718
 sb32 itBoxFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, ITBOX_MAP_REBOUND_COMMON, ITBOX_MAP_REBOUND_GROUND, itBoxWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, ITBOX_MAP_REBOUND_COMMON, ITBOX_MAP_REBOUND_GROUND, itBoxWaitSetStatus);
 }
 
 // 0x80179748
@@ -425,7 +425,7 @@ sb32 func_ovl3_801798B8(GObj *item_gobj) // Unused
 // 0x801798DC
 sb32 itBoxDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, ITBOX_MAP_REBOUND_COMMON, ITBOX_MAP_REBOUND_GROUND, itBoxWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, ITBOX_MAP_REBOUND_COMMON, ITBOX_MAP_REBOUND_GROUND, itBoxWaitSetStatus);
 }
 
 // 0x8017990C
@@ -476,7 +476,7 @@ void itBoxExplodeNInitItemVars(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_event_index = 0;
+    ip->item_event_id = 0;
     ip->it_multi = 0;
 
     ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;

@@ -119,7 +119,7 @@ sb32 itHeartWaitProcMap(GObj *item_gobj)
 // 0x80174750
 sb32 itHeartFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.1F, 0.0F, itHeartWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.1F, 0.0F, itHeartWaitSetStatus);
 }
 
 // 0x80174780
@@ -143,7 +143,7 @@ void itHeartFallSetStatus(GObj *item_gobj)
 // 0x801747F8
 sb32 itHeartDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.1F, 0.0F, itHeartWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.1F, 0.0F, itHeartWaitSetStatus);
 }
 
 // 0x80174828

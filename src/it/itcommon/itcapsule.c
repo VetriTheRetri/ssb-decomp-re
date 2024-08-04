@@ -17,26 +17,26 @@ extern intptr_t lITCapsuleHitEvents;        // 0x00000098
 
 itCreateDesc dITCapsuleItemDesc = 
 {
-    nITKindCapsule,                        // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindCapsule,                         // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITCapsuleItemAttributes,              // Offset of item attributes in file?
     
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itCapsuleFallProcUpdate,               // Proc Update
-    itCapsuleFallProcMap,                  // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itCapsuleFallProcUpdate,                // Proc Update
+    itCapsuleFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
     NULL,                                   // Proc Set-Off
     NULL,                                   // Proc Reflector
-    itCapsuleCommonProcHit                // Proc Damage
+    itCapsuleCommonProcHit                  // Proc Damage
 };
 
 itStatusDesc dITCapsuleStatusDescs[/* */] =
@@ -44,25 +44,25 @@ itStatusDesc dITCapsuleStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itCapsuleWaitProcMap,              // Proc Map
+        itCapsuleWaitProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itCapsuleCommonProcHit            // Proc Damage
+        itCapsuleCommonProcHit              // Proc Damage
     },
 
     // Status 1 (Air Fall Wait)
     {
-        itCapsuleFallProcUpdate,           // Proc Update
-        itCapsuleFallProcMap,              // Proc Map
+        itCapsuleFallProcUpdate,            // Proc Update
+        itCapsuleFallProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itCapsuleCommonProcHit            // Proc Damage
+        itCapsuleCommonProcHit              // Proc Damage
     },
 
     // Status 2 (Fighter Hold)
@@ -81,24 +81,24 @@ itStatusDesc dITCapsuleStatusDescs[/* */] =
     {
         itCapsuleThrownProcUpdate,          // Proc Update
         itCapsuleThrownProcMap,             // Proc Map
-        itCapsuleCommonProcHit,           // Proc Hit
-        itCapsuleCommonProcHit,           // Proc Shield
+        itCapsuleCommonProcHit,             // Proc Hit
+        itCapsuleCommonProcHit,             // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itCapsuleCommonProcHit,           // Proc Set-Off
-        itCapsuleCommonProcHit,           // Proc Reflector
-        itCapsuleCommonProcHit            // Proc Damage
+        itCapsuleCommonProcHit,             // Proc Set-Off
+        itCapsuleCommonProcHit,             // Proc Reflector
+        itCapsuleCommonProcHit              // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itCapsuleFallProcUpdate,           // Proc Update
-        itCapsuleDroppedProcMap,              // Proc Map
-        itCapsuleCommonProcHit,           // Proc Hit
-        itCapsuleCommonProcHit,           // Proc Shield
+        itCapsuleFallProcUpdate,            // Proc Update
+        itCapsuleDroppedProcMap,            // Proc Map
+        itCapsuleCommonProcHit,             // Proc Hit
+        itCapsuleCommonProcHit,             // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itCapsuleCommonProcHit,           // Proc Set-Off
-        itCapsuleCommonProcHit,           // Proc Reflector
-        itCapsuleCommonProcHit            // Proc Damage
+        itCapsuleCommonProcHit,             // Proc Set-Off
+        itCapsuleCommonProcHit,             // Proc Reflector
+        itCapsuleCommonProcHit              // Proc Damage
     },
 
     // Status 5 (Fighter Hold)
@@ -122,13 +122,13 @@ itStatusDesc dITCapsuleStatusDescs[/* */] =
 
 enum itCapsuleStatus
 {
-    itStatus_Capsule_Wait,
-    itStatus_Capsule_Fall,
-    itStatus_Capsule_Hold,
-    itStatus_Capsule_Thrown,
-    itStatus_Capsule_Dropped,
-    itStatus_Capsule_ExplodeN,
-    itStatus_Capsule_EnumMax
+    nITCapsuleStatusWait,
+    nITCapsuleStatusFall,
+    nITCapsuleStatusHold,
+    nITCapsuleStatusThrown,
+    nITCapsuleStatusDropped,
+    nITCapsuleStatusExplodeN,
+    nITCapsuleStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -171,14 +171,14 @@ sb32 itCapsuleCommonProcHit(GObj *item_gobj)
 // 0x80174030
 sb32 itCapsuleFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.4F, itCapsuleWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, ITCAPSULE_MAP_REBOUND_COMMON, ITCAPSULE_MAP_REBOUND_GROUND, itCapsuleWaitSetStatus);
 }
 
 // 0x80174064
 void itCapsuleWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, itStatus_Capsule_Wait);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusWait);
 }
 
 // 0x80174098
@@ -194,13 +194,13 @@ void itCapsuleFallSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, itStatus_Capsule_Fall);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusFall);
 }
 
 // 0x801740FC
 void itCapsuleHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, itStatus_Capsule_Hold);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusHold);
 }
 
 // 0x80174124
@@ -237,7 +237,7 @@ void itCapsuleThrownSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, itStatus_Capsule_Thrown);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusThrown);
 }
 
 // 0x801741F0
@@ -251,13 +251,13 @@ sb32 func_ovl3_801741F0(GObj *item_gobj) // Unused
 // 0x80174214
 sb32 itCapsuleDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.4F, itCapsuleWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, ITCAPSULE_MAP_REBOUND_COMMON, ITCAPSULE_MAP_REBOUND_GROUND, itCapsuleWaitSetStatus);
 }
 
 // 0x80174248
 void itCapsuleDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, itStatus_Capsule_Dropped);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusDropped);
 }
 
 // 0x80174270
@@ -297,7 +297,7 @@ void itCapsuleExplodeNInitItemVars(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = 0;
-    ip->item_event_index = 0;
+    ip->item_event_id = 0;
     ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
     ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
 
@@ -323,7 +323,7 @@ void itCapsuleExplodeNInitItemVars(GObj *item_gobj)
 void itCapsuleExplodeNSetStatus(GObj *item_gobj)
 {
     itCapsuleExplodeNInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, itStatus_Capsule_ExplodeN);
+    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusExplodeN);
 }
 
 // 0x80174428

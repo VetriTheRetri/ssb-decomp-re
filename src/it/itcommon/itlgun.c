@@ -173,7 +173,7 @@ sb32 itLGunWaitProcMap(GObj *item_gobj)
 // 0x80175550
 sb32 itLGunFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.1F, itLGunWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.2F, 0.1F, itLGunWaitSetStatus);
 }
 
 // 0x80175584
@@ -209,9 +209,9 @@ sb32 itLGunThrownProcMap(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        return itMapCheckMapReboundGround(item_gobj, 0.2F);
+        return itMapCheckDestroyLanding(item_gobj, 0.2F);
     }
-    else return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.1F, itLGunWaitSetStatus);
+    else return itMapCheckThrownLanding(item_gobj, 0.2F, 0.1F, itLGunWaitSetStatus);
 }
 
 // 0x80175684
@@ -243,9 +243,9 @@ sb32 itLGunDroppedProcMap(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        return itMapCheckMapReboundGround(item_gobj, 0.2F);
+        return itMapCheckDestroyLanding(item_gobj, 0.2F);
     }
-    else return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.1F, itLGunWaitSetStatus);
+    else return itMapCheckThrownLanding(item_gobj, 0.2F, 0.1F, itLGunWaitSetStatus);
 }
 
 // 0x80175780

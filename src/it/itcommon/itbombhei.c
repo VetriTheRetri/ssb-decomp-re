@@ -370,7 +370,7 @@ sb32 itBombHeiCommonProcHit(GObj *item_gobj)
 // 0x80177440
 sb32 itBombHeiFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, ITBOMBHEI_MAP_REBOUND_COMMON, ITBOMBHEI_MAP_REBOUND_GROUND, itBombHeiWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, ITBOMBHEI_MAP_REBOUND_COMMON, ITBOMBHEI_MAP_REBOUND_GROUND, itBombHeiWaitSetStatus);
 }
 
 // 0x80177474
@@ -592,11 +592,11 @@ void itBombHeiCommonUpdateHitEvent(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     itHitEvent *ev = itGetHitEvent(dITBombHeiItemDesc, lITBombHeiHitEvents); // Linker thing
 
-    if (ip->it_multi == ev[ip->item_event_index].timer)
+    if (ip->it_multi == ev[ip->item_event_id].timer)
     {
-        ip->item_hit.angle = ev[ip->item_event_index].angle;
-        ip->item_hit.damage = ev[ip->item_event_index].damage;
-        ip->item_hit.size = ev[ip->item_event_index].size;
+        ip->item_hit.angle = ev[ip->item_event_id].angle;
+        ip->item_hit.damage = ev[ip->item_event_id].damage;
+        ip->item_hit.size = ev[ip->item_event_id].size;
 
         ip->item_hit.can_rehit_item = TRUE;
         ip->item_hit.can_hop = FALSE;
@@ -605,11 +605,11 @@ void itBombHeiCommonUpdateHitEvent(GObj *item_gobj)
 
         ip->item_hit.element = nGMHitElementFire;
 
-        ip->item_event_index++;
+        ip->item_event_id++;
 
-        if (ip->item_event_index == 4)
+        if (ip->item_event_id == 4)
         {
-            ip->item_event_index = 3;
+            ip->item_event_id = 3;
         }
     }
 }
@@ -648,7 +648,7 @@ void itBombHeiExplodeNInitItemVars(GObj *item_gobj)
 
     ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
 
-    ip->item_event_index = 0;
+    ip->item_event_id = 0;
 
     itBombHeiCommonUpdateHitEvent(item_gobj);
 }

@@ -182,7 +182,7 @@ sb32 itNessPKFireWaitProcMap(GObj *item_gobj)
 // 0x80185688
 sb32 itNessPKFireFallProcMap(GObj *item_gobj)
 {
-    itMapCheckMapCollideLanding(item_gobj, 0.2F, 0.5F, itNessPKFireWaitSetStatus);
+    itMapCheckLanding(item_gobj, 0.2F, 0.5F, itNessPKFireWaitSetStatus);
 
     return FALSE;
 }

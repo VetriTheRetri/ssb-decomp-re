@@ -21,20 +21,20 @@ extern intptr_t lITFFlowerFlameAngles;      // 0x00000360
 
 itCreateDesc dITFFlowerItemDesc = 
 {
-    nITKindFFlower,                        // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindFFlower,                         // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITFFlowerItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,         // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyR,             // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itFFlowerFallProcUpdate,               // Proc Update
-    itFFlowerFallProcMap,                  // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itFFlowerFallProcUpdate,                // Proc Update
+    itFFlowerFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
@@ -48,7 +48,7 @@ itStatusDesc dITFFlowerStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itFFlowerWaitProcMap,              // Proc Map
+        itFFlowerWaitProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -59,8 +59,8 @@ itStatusDesc dITFFlowerStatusDescs[/* */] =
 
     // Status 1 (Air Wait Fall)
     {
-        itFFlowerFallProcUpdate,           // Proc Update
-        itFFlowerFallProcMap,              // Proc Map
+        itFFlowerFallProcUpdate,            // Proc Update
+        itFFlowerFallProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -83,24 +83,24 @@ itStatusDesc dITFFlowerStatusDescs[/* */] =
 
     // Status 3 (Fighter Throw)
     {
-        itFFlowerFallProcUpdate,           // Proc Update
+        itFFlowerFallProcUpdate,            // Proc Update
         itFFlowerThrownProcMap,             // Proc Map
-        itFFlowerCommonProcHit,           // Proc Hit
-        itFFlowerCommonProcHit,           // Proc Shield
+        itFFlowerCommonProcHit,             // Proc Hit
+        itFFlowerCommonProcHit,             // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itFFlowerCommonProcHit,           // Proc Set-Off
+        itFFlowerCommonProcHit,             // Proc Set-Off
         itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itFFlowerFallProcUpdate,           // Proc Update
-        itFFlowerDroppedProcMap,              // Proc Map
-        itFFlowerCommonProcHit,           // Proc Hit
-        itFFlowerCommonProcHit,           // Proc Shield
+        itFFlowerFallProcUpdate,            // Proc Update
+        itFFlowerDroppedProcMap,            // Proc Map
+        itFFlowerCommonProcHit,             // Proc Hit
+        itFFlowerCommonProcHit,             // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itFFlowerCommonProcHit,           // Proc Set-Off
+        itFFlowerCommonProcHit,             // Proc Set-Off
         itMainCommonProcReflector,          // Proc Reflector
         NULL                                // Proc Damage
     }
@@ -109,14 +109,14 @@ itStatusDesc dITFFlowerStatusDescs[/* */] =
 wpCreateDesc dITFFlowerWeaponFlameWeaponDesc =
 {
     0x00,                                   // Render flags?
-    nWPKindFFlowerFlame,                   // Weapon Kind
-    &gITManagerFileData,                           // Pointer to character's loaded files?
+    nWPKindFFlowerFlame,                    // Weapon Kind
+    &gITManagerFileData,                    // Pointer to character's loaded files?
     &lITFFlowerWeaponFlameWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -138,12 +138,12 @@ wpCreateDesc dITFFlowerWeaponFlameWeaponDesc =
 
 enum itFFlowerStatus
 {
-    itStatus_FFlower_Wait,
-    itStatus_FFlower_Fall,
-    itStatus_FFlower_Hold,
-    itStatus_FFlower_Thrown,
-    itStatus_FFlower_Dropped,
-    itStatus_FFlower_EnumMax
+    nITFFlowerStatusWait,
+    nITFFlowerStatusFall,
+    nITFFlowerStatusHold,
+    nITFFlowerStatusThrown,
+    nITFFlowerStatusDropped,
+    nITFFlowerStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -174,14 +174,14 @@ sb32 itFFlowerWaitProcMap(GObj *item_gobj)
 // 0x80175B84
 sb32 itFFlowerFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.0F, 0.5F, itFFlowerWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON, ITFFLOWER_MAP_REBOUND_GROUND, itFFlowerWaitSetStatus);
 }
 
 // 0x80175BB0
 void itFFlowerWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, itStatus_FFlower_Wait);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusWait);
 }
 
 // 0x80175BE4
@@ -192,13 +192,13 @@ void itFFlowerFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, itStatus_FFlower_Fall);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusFall);
 }
 
 // 0x80175C28
 void itFFlowerHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, itStatus_FFlower_Hold);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusHold);
 }
 
 // 0x80175C50
@@ -208,9 +208,9 @@ sb32 itFFlowerThrownProcMap(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        return itMapCheckMapReboundGround(item_gobj, 0.0F);
+        return itMapCheckDestroyLanding(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON);
     }
-    else return itMapCheckMapCollideThrownLanding(item_gobj, 0.0F, 0.5F, itFFlowerWaitSetStatus);
+    else return itMapCheckThrownLanding(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON, ITFFLOWER_MAP_REBOUND_GROUND, itFFlowerWaitSetStatus);
 }
 
 // 0x80175C9C
@@ -228,7 +228,7 @@ sb32 itFFlowerCommonProcHit(GObj *item_gobj)
 // 0x80175CC4
 void itFFlowerThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, itStatus_FFlower_Thrown);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusThrown);
 }
 
 // 0x80175CEC
@@ -238,15 +238,15 @@ sb32 itFFlowerDroppedProcMap(GObj *item_gobj)
 
     if (ip->it_multi == 0)
     {
-        return itMapCheckMapReboundGround(item_gobj, 0.0F);
+        return itMapCheckDestroyLanding(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON);
     }
-    else return itMapCheckMapCollideThrownLanding(item_gobj, 0.0F, 0.5F, itFFlowerWaitSetStatus);
+    else return itMapCheckThrownLanding(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON, ITFFLOWER_MAP_REBOUND_GROUND, itFFlowerWaitSetStatus);
 }
 
 // 0x80175D38
 void itFFlowerDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, itStatus_FFlower_Dropped);
+    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusDropped);
 }
 
 // 0x80175D60

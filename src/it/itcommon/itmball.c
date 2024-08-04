@@ -197,7 +197,7 @@ sb32 itMBallWaitProcMap(GObj *item_gobj)
 // 0x8017C790
 sb32 itMBallFallProcMap(GObj *item_gobj)
 {
-    itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.2F, itMBallWaitSetStatus);
+    itMapCheckThrownLanding(item_gobj, 0.2F, 0.2F, itMBallWaitSetStatus);
 
     return FALSE;
 }
@@ -253,9 +253,9 @@ sb32 itMBallThrownProcMap(GObj *item_gobj)
 
     if (ip->item_vars.m_ball.is_rebound != FALSE)
     {
-        itMapCheckMapCollideLanding(item_gobj, 0.2F, 0.2F, itMBallGOpenSetStatus);
+        itMapCheckLanding(item_gobj, 0.2F, 0.2F, itMBallGOpenSetStatus);
     }
-    else itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.2F, itMBallGOpenSetStatus);
+    else itMapCheckThrownLanding(item_gobj, 0.2F, 0.2F, itMBallGOpenSetStatus);
     
     return FALSE;
 }
@@ -467,7 +467,7 @@ sb32 itMBallAOpenProcUpdate(GObj *m_ball_gobj)
 // 0x8017CDAC
 sb32 itMBallAOpenProcMap(GObj *item_gobj)
 {
-    itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.2F, itMBallGOpenSetStatus);
+    itMapCheckThrownLanding(item_gobj, 0.2F, 0.2F, itMBallGOpenSetStatus);
 
     return FALSE;
 }

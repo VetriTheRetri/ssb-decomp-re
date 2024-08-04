@@ -203,7 +203,7 @@ sb32 itTaruCommonProcDamage(GObj *item_gobj)
 // 0x80179CB8
 sb32 itTaruFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.5F, 0.2F, itTaruWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, 0.5F, 0.2F, itTaruWaitSetStatus);
 }
 
 // 0x80179CE8
@@ -419,7 +419,7 @@ void itTaruExplodeNInitItemVars(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = 0;
-    ip->item_event_index = 0;
+    ip->item_event_id = 0;
 
     ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
 

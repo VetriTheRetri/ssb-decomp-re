@@ -18,26 +18,26 @@ extern intptr_t lITEggHitEvents;            // 0x00000B14
 
 itCreateDesc dITEggItemDesc =
 {
-    nITKindEgg,                            // Item Kind
-    &gITManagerFileData,                           // Pointer to item file data?
+    nITKindEgg,                             // Item Kind
+    &gITManagerFileData,                    // Pointer to item file data?
     &lITEggItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,     // Hitbox Update State
-    itEggFallProcUpdate,                   // Proc Update
-    itEggFallProcMap,                      // Proc Map
+    nGMHitUpdateDisable,                    // Hitbox Update State
+    itEggFallProcUpdate,                    // Proc Update
+    itEggFallProcMap,                       // Proc Map
     NULL,                                   // Proc Hit
     NULL,                                   // Proc Shield
     NULL,                                   // Proc Hop
     NULL,                                   // Proc Set-Off
     NULL,                                   // Proc Reflector
-    itEggCommonProcHit                    // Proc Damage
+    itEggCommonProcHit                      // Proc Damage
 };
 
 itStatusDesc dITEggStatusDescs[/* */] =
@@ -45,25 +45,25 @@ itStatusDesc dITEggStatusDescs[/* */] =
     // Status 0 (Ground Wait)
     {
         NULL,                               // Proc Update
-        itEggWaitProcMap,                  // Proc Map
+        itEggWaitProcMap,                   // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itEggCommonProcHit                // Proc Damage
+        itEggCommonProcHit                  // Proc Damage
     },
 
     // Status 1 (Air Fall Wait)
     {
-        itEggFallProcUpdate,               // Proc Update
-        itEggFallProcMap,                  // Proc Map
+        itEggFallProcUpdate,                // Proc Update
+        itEggFallProcMap,                   // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
         NULL,                               // Proc Set-Off
         NULL,                               // Proc Reflector
-        itEggCommonProcHit                // Proc Damage
+        itEggCommonProcHit                  // Proc Damage
     },
 
     // Status 2 (Fighter Hold)
@@ -82,24 +82,24 @@ itStatusDesc dITEggStatusDescs[/* */] =
     {
         itEggThrownProcUpdate,              // Proc Update
         itEggThrownProcMap,                 // Proc Map
-        itEggCommonProcHit,               // Proc Hit
-        itEggCommonProcHit,               // Proc Shield
+        itEggCommonProcHit,                 // Proc Hit
+        itEggCommonProcHit,                 // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itEggCommonProcHit,               // Proc Set-Off
-        itEggCommonProcHit,               // Proc Reflector
-        itEggCommonProcHit                // Proc Damage
+        itEggCommonProcHit,                 // Proc Set-Off
+        itEggCommonProcHit,                 // Proc Reflector
+        itEggCommonProcHit                  // Proc Damage
     },
 
     // Status 4 (Fighter Drop)
     {
-        itEggFallProcUpdate,               // Proc Update
-        itEggDroppedProcMap,                  // Proc Map
-        itEggCommonProcHit,               // Proc Hit
-        itEggCommonProcHit,               // Proc Shield
+        itEggFallProcUpdate,                // Proc Update
+        itEggDroppedProcMap,                // Proc Map
+        itEggCommonProcHit,                 // Proc Hit
+        itEggCommonProcHit,                 // Proc Shield
         itMainCommonProcHop,                // Proc Hop
-        itEggCommonProcHit,               // Proc Set-Off
-        itEggCommonProcHit,               // Proc Reflector
-        itEggCommonProcHit                // Proc Damage
+        itEggCommonProcHit,                 // Proc Set-Off
+        itEggCommonProcHit,                 // Proc Reflector
+        itEggCommonProcHit                  // Proc Damage
     },
 
     // Status 5 (Neutral Explosion)
@@ -123,13 +123,13 @@ itStatusDesc dITEggStatusDescs[/* */] =
 
 enum itEggStatus
 {
-    itStatus_Egg_Wait,
-    itStatus_Egg_Fall,
-    itStatus_Egg_Hold,
-    itStatus_Egg_Thrown,
-    itStatus_Egg_Dropped,
-    itStatus_Egg_ExplodeN,
-    itStatus_Egg_EnumMax
+    nITEggStatusWait,
+    nITEggStatusFall,
+    nITEggStatusHold,
+    nITEggStatusThrown,
+    nITEggStatusDropped,
+    nITEggStatusExplodeN,
+    nITEggStatusEnumMax
 };
 
 // // // // // // // // // // // //
@@ -177,7 +177,7 @@ sb32 itEggCommonProcHit(GObj *item_gobj)
 // 0x80181688
 sb32 itEggFallProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itEggWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, ITEGG_MAP_REBOUND_COMMON, ITEGG_MAP_REBOUND_GROUND, itEggWaitSetStatus);
 }
 
 // 0x801816B8
@@ -195,7 +195,7 @@ void itEggWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
     itEggWaitSetModelVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITEggStatusDescs, itStatus_Egg_Wait);
+    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusWait);
 }
 
 // 0x8018171C
@@ -211,13 +211,13 @@ void itEggFallSetStatus(GObj *item_gobj)
     ip->is_damage_all = TRUE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITEggStatusDescs, itStatus_Egg_Fall);
+    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusFall);
 }
 
 // 0x80181778
 void itEggHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITEggStatusDescs, itStatus_Egg_Hold);
+    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusHold);
 }
 
 // 0x801817A0
@@ -259,7 +259,7 @@ void itEggThrownSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
-    itMainSetItemStatus(item_gobj, dITEggStatusDescs, itStatus_Egg_Thrown);
+    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusThrown);
 }
 
 // 0x80181894
@@ -273,7 +273,7 @@ sb32 func_ovl3_80181894(GObj *item_gobj) // Unused
 // 0x801818B8
 sb32 itEggDroppedProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapCollideThrownLanding(item_gobj, 0.2F, 0.5F, itEggWaitSetStatus);
+    return itMapCheckThrownLanding(item_gobj, ITEGG_MAP_REBOUND_COMMON, ITEGG_MAP_REBOUND_GROUND, itEggWaitSetStatus);
 }
 
 // 0x801818E8
@@ -285,7 +285,7 @@ void itEggDroppedSetStatus(GObj *item_gobj)
 
     ip->item_hurt.hitstatus = nGMHitStatusNormal;
 
-    itMainSetItemStatus(item_gobj, dITEggStatusDescs, itStatus_Egg_Dropped);
+    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusDropped);
 }
 
 // 0x80181928
@@ -295,7 +295,7 @@ sb32 itEggExplodeNProcUpdate(GObj *item_gobj)
 
     ip->it_multi++;
 
-    if (ip->it_multi == ITEGG_EXPLODE_GFX_WAIT)
+    if (ip->it_multi == ITEGG_EXPLODE_EFFECT_WAIT)
     {
         efManagerEggBreakMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
@@ -348,7 +348,7 @@ void itEggExplodeNInitItemVars(GObj *item_gobj)
 
     ip->it_multi = 0;
 
-    ip->item_event_index = 0;
+    ip->item_event_id = 0;
 
     ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
     ip->item_hit.throw_mul = ITEM_THROW_DEFAULT;
@@ -372,7 +372,7 @@ void itEggExplodeNInitItemVars(GObj *item_gobj)
 void itEggExplodeNSetStatus(GObj *item_gobj)
 {
     itEggExplodeNInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITEggStatusDescs, itStatus_Egg_ExplodeN);
+    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusExplodeN);
 }
 
 // 0x80181B90
@@ -392,7 +392,7 @@ void itEggExplodeNMakeEffectGotoSetStatus(GObj *item_gobj)
 
     if (ep != NULL)
     {
-        ep->effect_info->scale.x = ep->effect_info->scale.y = ep->effect_info->scale.z = ITEGG_EXPLODE_GFX_SCALE;
+        ep->effect_info->scale.x = ep->effect_info->scale.y = ep->effect_info->scale.z = ITEGG_EXPLODE_EFFECT_SCALE;
     }
     efManagerQuakeMakeEffect(1);
 

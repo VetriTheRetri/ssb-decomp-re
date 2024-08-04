@@ -259,16 +259,16 @@ void itRShellSpinAddAnim(GObj *item_gobj) // Identical to Green Shell function
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 unused[2];
 
-    omAddDObjAnimAll(dobj, itGetPData(ip, lITRShellDataStart, lITRShellAnimJoint), 0.0F); // Linker thing
-    omAddMObjAnimAll(dobj->mobj, itGetPData(ip, lITRShellDataStart, lITRShellMatAnimJoint), 0.0F); // Linker thing
+    gcAddDObjAnimJoint(dobj, itGetPData(ip, lITRShellDataStart, lITRShellAnimJoint), 0.0F); // Linker thing
+    gcAddMObjMatAnimJoint(dobj->mobj, itGetPData(ip, lITRShellDataStart, lITRShellMatAnimJoint), 0.0F); // Linker thing
     func_8000DF34_EB34(item_gobj);
 }
 
 // 0x8017A734
 void itRShellCommonClearAnim(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->mobj->actor.p = NULL;
-    DObjGetStruct(item_gobj)->actor.p = NULL;
+    DObjGetStruct(item_gobj)->mobj->aobj_script = NULL;
+    DObjGetStruct(item_gobj)->aobj_script = NULL;
 }
 
 // 0x8017A74C

@@ -6,8 +6,8 @@
 // Function headers
 #include <sys/objfunctions.h>
 
-#define ACommandAdvance(acommand) \
-((acommand)++)
+#define AObjScriptAdvance(script) \
+((script)++)
 
 #define DObjGetStruct(gobj) \
 ((DObj*)(gobj)->obj)

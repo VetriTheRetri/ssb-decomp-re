@@ -175,7 +175,7 @@ sb32 itSpearAppearProcUpdate(GObj *item_gobj)
 
     if (item_gobj->anim_frame == ITSPEAR_SWARM_CALL_WAIT)
     {
-        dobj->child->actor.p = NULL;
+        dobj->child->aobj_script = NULL;
 
         itSpearFlySetStatus(item_gobj);
     }
@@ -199,11 +199,11 @@ void itSpearAppearInitItemVars(GObj *item_gobj)
 
         anim_joint = itGetPData(ip, lITSpearDataStart, lITSpearAnimJoint); // Linker thing
 
-        omAddDObjAnimAll(dobj->child, anim_joint, 0.0F);
+        gcAddDObjAnimJoint(dobj->child, anim_joint, 0.0F);
 
         matanim_joint = itGetPData(ip, lITSpearDataStart, lITSpearMatAnimJoint); // Linker thing
 
-        omAddMObjAnimAll(dobj->child->mobj, matanim_joint, 0.0F);
+        gcAddMObjMatAnimJoint(dobj->child->mobj, matanim_joint, 0.0F);
         func_8000DF34_EB34(item_gobj);
         func_800269C0_275C0(nGMSoundVoiceMBallSpearSpawn);
     }
@@ -348,7 +348,7 @@ GObj* itSpearMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj->child, itGetMonsterAnimNode(ip, lITSpearDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITSpearDataStart), 0.0F);
     }
     return item_gobj;
 }

@@ -160,7 +160,7 @@ void itMBallOpenAddAnim(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     void *matanim_joint = itGetPData(ip, lITMBallDataStart, lITMBallMatAnimJoint); // Linker thing
 
-    omAddMObjAnimAll(dobj->child->child->sib_next->mobj, matanim_joint, 0.0F);
+    gcAddMObjMatAnimJoint(dobj->child->child->sib_next->mobj, matanim_joint, 0.0F);
     func_8000DF34_EB34(item_gobj);
 }
 
@@ -169,7 +169,7 @@ void itMBallOpenClearAnim(GObj *item_gobj)
 {
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    dobj->child->sib_next->mobj->actor.p = NULL;
+    dobj->child->sib_next->mobj->aobj_script = NULL;
 }
 
 // 0x8017C710

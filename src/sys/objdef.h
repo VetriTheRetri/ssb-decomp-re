@@ -212,8 +212,7 @@ typedef enum AObjTrackKind
 
 } AObjTrackKind;
 
-typedef union  ATrack               ATrack;
-typedef union  ACommand             ACommand;
+typedef union  AObjScript           AObjScript;
 typedef struct GObj                 GObj;
 typedef struct GObjLink             GObjLink;
 typedef struct _GObjProcess         GObjProcess;
@@ -227,7 +226,6 @@ typedef struct DObjDistDL           DObjDistDL;
 typedef struct DObjDistDLLink       DObjDistDLLink;
 typedef struct DObjMultiList        DObjMultiList;
 typedef struct _AObj                AObj;
-typedef union  AObjActor            AObjActor;
 typedef struct _MObj                MObj;
 typedef struct _MObjSub             MObjSub;
 typedef struct _SObj                SObj;

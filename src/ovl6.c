@@ -89,7 +89,7 @@ void func_ovl6_8018D330()
 void scBonusGame_InitBonus1Targets()
 {
 	grBonusDesc* bonus_desc = &scBonusGame_Bonus1_TargetOffsets[gBattleState->gr_kind - nGRKindBonus1Start];
-	void** atrack;
+	void** aobj_script;
 	DObjDesc* dobj_desc;
 	Vec3f sp48;
 
@@ -97,21 +97,21 @@ void scBonusGame_InitBonus1Targets()
 
 	dobj_desc = (DObjDesc*)((uintptr_t)((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
 							+ (intptr_t)bonus_desc->o_dobjdesc);
-	atrack = (void**)((uintptr_t)((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
+	aobj_script = (void**)((uintptr_t)((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
 					  + (intptr_t)bonus_desc->o_anim);
 
 	gGRCommonStruct.bonus1.target_count = 0;
-	dobj_desc++, atrack++;
+	dobj_desc++, aobj_script++;
 
 	while (dobj_desc->index != 0x12)
 	{
 		GObj* item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindTarget, &dobj_desc->translate, &sp48, 1);
-		if (*atrack != NULL)
+		if (*aobj_script != NULL)
 		{
-			omAddDObjAnimAll(DObjGetStruct(item_gobj), *atrack, 0.0F);
+			gcAddDObjAnimJoint(DObjGetStruct(item_gobj), *aobj_script, 0.0F);
 			func_8000DF34_EB34(item_gobj);
 		}
-		dobj_desc++, atrack++, gGRCommonStruct.bonus1.target_count++;
+		dobj_desc++, aobj_script++, gGRCommonStruct.bonus1.target_count++;
 	}
 	if (gGRCommonStruct.bonus1.target_count != 10)
 	{
@@ -222,7 +222,7 @@ void scBonusGame_InitBonus2Platforms()
 		if ((mpCollisionGetVertexFlagsLineID(line_ids[i]) & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect)
 		{
 			room_id = mpCollisionSetDObjNoID(line_ids[i]);
-			if (gMPCollisionYakumonoDObjs->yakumono_dobj[room_id]->actor.atrack == NULL)
+			if (gMPCollisionYakumonoDObjs->yakumono_dobj[room_id]->aobj_script == NULL)
 				mpCollisionSetYakumonoOnID(room_id);
 			func_ovl6_8018D6A8(line_ids[i]);
 			gGRCommonStruct.bonus2.platform_count++;
@@ -308,7 +308,7 @@ void scBonusGame_InitBonus2Bumpers()
 {
 	grBonus2Bumpers* bonus_desc;
 	DObjDesc* dobj_desc;
-	ATrack** atrack;
+	AObjScript** aobj_script;
 	Vec3f vel;
 	GObj* item_gobj;
 
@@ -322,21 +322,21 @@ void scBonusGame_InitBonus2Bumpers()
 			= (DObjDesc*)((uintptr_t)bonus_desc
 						  + (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - nGRKindBonus2Start]
 								.o_main);
-		atrack = (ATrack**)((uintptr_t)bonus_desc
+		aobj_script = (AObjScript**)((uintptr_t)bonus_desc
 							+ (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - nGRKindBonus2Start]
 								  .o_anim);
-		dobj_desc++, atrack++;
+		dobj_desc++, aobj_script++;
 
 		while (dobj_desc->index != 0x12)
 		{
 			item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &dobj_desc->translate, &vel,
 													  ITEM_MASK_SPAWN_GROUND);
-			if (*atrack != NULL)
+			if (*aobj_script != NULL)
 			{
-				omAddDObjAnimAll(DObjGetStruct(item_gobj), *atrack, 0.0F);
+				gcAddDObjAnimJoint(DObjGetStruct(item_gobj), *aobj_script, 0.0F);
 				func_8000DF34_EB34(item_gobj);
 			}
-			dobj_desc++, atrack++;
+			dobj_desc++, aobj_script++;
 		}
 	}
 }

@@ -1,4 +1,4 @@
-#include "common.h"
+#include <sys/obj.h>
 
 /*********** data **********/
 s32 D_8003B930 = 10;
@@ -9,17 +9,100 @@ s32 D_8003B93C = 10;
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000BBB0_C7B0.s")
+void gcSetMatAnimJointRateAll(GObj *gobj, f32 anim_rate)
+{
+    MObj *mobj;
+    DObj *dobj = DObjGetStruct(gobj);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000BC10_C810.s")
+    while (dobj != NULL) 
+    {
+        mobj = dobj->mobj;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000BC54_C854.s")
+        while (mobj != NULL)
+        {
+            mobj->anim_rate = anim_rate;
+            mobj            = mobj->next;
+        }
+        dobj = func_8000BAA0(dobj);
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000BCBC_C8BC.s")
+void gcRemoveAnimJointAll(GObj *gobj)
+{
+    DObj *dobj = DObjGetStruct(gobj);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/omAddDObjAnimAll.s")
+    while (dobj != NULL) 
+    {
+        omRemoveAObjFromDObj(dobj);
+        dobj = func_8000BAA0(dobj);
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/omAddMObjAnimAll.s")
+void gcRemoveAnimAll(GObj *gobj) 
+{
+    DObj *dobj = DObjGetStruct(gobj);
+
+    while (dobj != NULL)
+    {
+        MObj *mobj;
+
+        omRemoveAObjFromDObj(dobj);
+
+        mobj = dobj->mobj;
+
+        while (mobj != NULL) 
+        {
+            omRemoveAObjFromMObj(mobj);
+            mobj = mobj->next;
+        }
+        dobj = func_8000BAA0(dobj);
+    }
+}
+
+void gcRemoveMatAnimJointAll(GObj *gobj) 
+{
+    DObj *dobj = DObjGetStruct(gobj);
+
+    while (dobj != NULL)
+    {
+        MObj *mobj = dobj->mobj;
+
+        while (mobj != NULL) 
+        {
+            omRemoveAObjFromMObj(mobj);
+            mobj = mobj->next;
+        }
+        dobj = func_8000BAA0(dobj);
+    }
+}
+
+void gcAddDObjAnimJoint(DObj *dobj, AObjScript *aobj_script, f32 anim_frame) 
+{
+    AObj *aobj = dobj->aobj;
+
+    while (aobj != NULL) 
+    {
+        aobj->kind = 0;
+        aobj       = aobj->next;
+    }
+    dobj->aobj_script = aobj_script;
+    dobj->anim_remain = -F32_HALF;
+    dobj->anim_frame  = anim_frame;
+}
+
+void gcAddMObjMatAnimJoint(MObj *mobj, AObjScript *aobj_script, f32 anim_frame) 
+{
+    AObj *aobj = mobj->aobj;
+
+    while (aobj != NULL) 
+    {
+        aobj->kind = 0;
+        aobj       = aobj->next;
+    }
+    mobj->aobj_script = aobj_script;
+    mobj->anim_remain = -F32_HALF;
+    mobj->anim_frame  = anim_frame;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000BD8C_C98C.s")
 

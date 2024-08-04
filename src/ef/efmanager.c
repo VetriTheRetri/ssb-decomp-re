@@ -5878,11 +5878,11 @@ GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr)
     {
         omAddOMMtxForDObjFixed(node_dobj, 0x2C, 0);
 
-        omAddDObjAnimAll(node_dobj, (uintptr_t)gFTDataCaptainSpecial2 + (intptr_t)&D_NF_00006518, 0.0F);
+        gcAddDObjAnimJoint(node_dobj, (uintptr_t)gFTDataCaptainSpecial2 + (intptr_t)&D_NF_00006518, 0.0F);
 
         node_dobj = node_dobj->sib_next;
 
-        omAddDObjAnimAll(node_dobj, (uintptr_t)gFTDataCaptainSpecial2 + (intptr_t)&D_NF_00006598, 0.0F);
+        gcAddDObjAnimJoint(node_dobj, (uintptr_t)gFTDataCaptainSpecial2 + (intptr_t)&D_NF_00006598, 0.0F);
 
         node_dobj = node_dobj->sib_next;
     }
@@ -5964,7 +5964,7 @@ GObj* efManagerFoxEntryArwingMakeEffect(Vec3f *pos, s32 lr)
     what = dobj->child->child->child->sib_next->sib_next->sib_next->sib_next->sib_next->sib_next->child;
 
     omAddOMMtxForDObjFixed(what, 0x2C, 0);
-    omAddDObjAnimAll(what, (uintptr_t)gFTDataFoxSpecial3 + (intptr_t)&D_NF_00002E74, 0.0F); // Linker thing
+    gcAddDObjAnimJoint(what, (uintptr_t)gFTDataFoxSpecial3 + (intptr_t)&D_NF_00002E74, 0.0F); // Linker thing
 
     if (lr == nGMFacingR)
     {

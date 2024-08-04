@@ -206,7 +206,7 @@ GObj* itNyarsMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITNyarsAnimJoint), 0.0F);
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITNyarsAnimJoint), 0.0F);
     }
     return item_gobj;
 }

@@ -178,7 +178,7 @@ GObj* itMewMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
             
         // This ptr stuff is likely also a macro
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITMewDataStart), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITMewDataStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

@@ -287,8 +287,8 @@ void itLizardonAttackInitItemVars(GObj *item_gobj)
     {
         addr = (void*) ((uintptr_t)ip->attributes->model_desc - (intptr_t)&lITLizardonDataStart); // Linker thing
 
-        omAddDObjAnimAll(dobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonAnimJoint), 0.0F); // Linker thing
-        omAddMObjAnimAll(dobj->mobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonMatAnimJoint), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonAnimJoint), 0.0F); // Linker thing
+        gcAddMObjMatAnimJoint(dobj->mobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonMatAnimJoint), 0.0F); // Linker thing
         func_8000DF34_EB34(item_gobj);
     }
 }
@@ -358,7 +358,7 @@ GObj* itLizardonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITLizardonDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITLizardonDataStart), 0.0F);
     }
     return item_gobj;
 }

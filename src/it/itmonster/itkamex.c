@@ -429,7 +429,7 @@ GObj* itKamexMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         }
         dobj->translate.vec.f.y -= kamex_ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(kamex_ip, lITKamexDataStart), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(kamex_ip, lITKamexDataStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

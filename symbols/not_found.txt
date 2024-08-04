@@ -755,7 +755,7 @@ D_8018E1C0 = 0x8018E1C0;
 D_80134E30 = 0x80134E30;
 D_8018E220 = 0x8018E220;
 
-omAddMObjAnimAll = 0x8000BD54;
+gcAddMObjMatAnimJoint = 0x8000BD54;
 
 sFTManagerStructsAllocFree = 0x80130D80;
 sFTManagerStructsAllocBuf = 0x80130D84;
@@ -775,7 +775,7 @@ gFTMainIsHitDetect = 0x801311B0;
 
 gGRCommonStruct = 0x801313F0;
 g1PGameTotalDamageTaken = 0x80130D6C;
-omAddDObjAnimAll = 0x8000BD1C;
+gcAddDObjAnimJoint = 0x8000BD1C;
 D_ovl2_801313F4 = 0x801313F4;
 
 sMPProcessMultiWallCollidesNum = 0x80130DE0;

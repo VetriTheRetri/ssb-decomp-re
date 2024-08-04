@@ -351,11 +351,11 @@ sb32 func_ovl2_80106904(Mtx *o_mtx, DObj *dobj, f32 arg2)
 }
 
 // 0x80106A40
-void func_ovl2_80106A40(DObj *dobj, ATrack *atrack, f32 arg2)
+void func_ovl2_80106A40(DObj *dobj, AObjScript *aobj_script, f32 arg2)
 {
-    if (atrack != NULL)
+    if (aobj_script != NULL)
     {
-        omAddDObjAnimAll(dobj, atrack, 0.0F);
+        gcAddDObjAnimJoint(dobj, aobj_script, 0.0F);
 
         dobj->unk_dobj_0x55 = 0;
 
@@ -483,7 +483,7 @@ void func_ovl2_80106D00(void)
         gGRCommonStruct.sector.map_dobj[9]->anim_remain = AOBJ_FRAME_NULL;
         gGRCommonStruct.sector.map_dobj[9]->flags = DOBJ_FLAG_NORENDER;
 
-        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (ATrack*) ((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (AObjScript*) ((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
     }
     else if (gGRCommonStruct.sector.map_dobj[8]->anim_remain == AOBJ_FRAME_NULL)
     {
@@ -535,7 +535,7 @@ void func_ovl2_80106DD8(void)
 
                 if (pilot_id != 0)
                 {
-                    func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[1], (ATrack*) ((intptr_t)dGRSectorArwingAnimJoints[pilot_id] + (uintptr_t)gGRCommonStruct.sector.map_head), 0.0F);
+                    func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[1], (AObjScript*) ((intptr_t)dGRSectorArwingAnimJoints[pilot_id] + (uintptr_t)gGRCommonStruct.sector.map_head), 0.0F);
                 }
                 gGRCommonStruct.sector.arwing_pilot_prev = gGRCommonStruct.sector.arwing_pilot_current = pilot_id;
             }
@@ -972,8 +972,8 @@ void func_ovl2_80107958(void)
             {
                 mh1 = gGRCommonStruct.sector.map_head;
 
-                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[4], (ATrack*)((uintptr_t)mh1 + (intptr_t)&D_NF_00001B84), 0.0F);
-                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[5], (ATrack*)((uintptr_t)mh1 + (intptr_t)&D_NF_00001B84), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[4], (AObjScript*)((uintptr_t)mh1 + (intptr_t)&D_NF_00001B84), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[5], (AObjScript*)((uintptr_t)mh1 + (intptr_t)&D_NF_00001B84), 0.0F);
 
                 gGRCommonStruct.sector.unk_sector_0x52++;
             }
@@ -983,8 +983,8 @@ void func_ovl2_80107958(void)
 
                 func_ovl2_80107910();
 
-                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[2], (ATrack*)((uintptr_t)mh2 + (intptr_t)&D_NF_00001B34), 0.0F);
-                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[3], (ATrack*)((uintptr_t)mh2 + (intptr_t)&D_NF_00001B34), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[2], (AObjScript*)((uintptr_t)mh2 + (intptr_t)&D_NF_00001B34), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[3], (AObjScript*)((uintptr_t)mh2 + (intptr_t)&D_NF_00001B34), 0.0F);
 
                 gGRCommonStruct.sector.arwing_laser_timer = 30;
                 gGRCommonStruct.sector.arwing_laser_ammo--;
@@ -1006,7 +1006,7 @@ void func_ovl2_80107B30(void)
 {
     if ((gGRCommonStruct.sector.map_dobj[8]->anim_remain == AOBJ_FRAME_NULL) && (gGRCommonStruct.sector.map_dobj[7]->flags == DOBJ_FLAG_NONE))
     {
-        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (ATrack*)((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (AObjScript*)((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
 
         func_800269C0_275C0(nGMSoundFGMSectorAmbient2);
     }
@@ -1075,10 +1075,10 @@ void func_ovl2_80107D50(void)
 
         desc = (grSectorDesc*) ((intptr_t)dGRSectorArwingSectorDescs[gGRCommonStruct.sector.arwing_flight_pattern] + (uintptr_t)gGRCommonStruct.sector.map_head);
 
-        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[0], desc->atrack_0x0, 0.0F);
-        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[7], desc->atrack_0x1C, 0.0F);
-        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[9], desc->atrack_0x24, 0.0F);
-        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[11], desc->atrack_0x2C, 0.0F);
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[0], desc->aobj_script_0x0, 0.0F);
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[7], desc->aobj_script_0x1C, 0.0F);
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[9], desc->aobj_script_0x24, 0.0F);
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[11], desc->aobj_script_0x2C, 0.0F);
 
         gGRCommonStruct.sector.arwing_flight_pattern = -1;
         map_gobj->flags = GOBJ_FLAG_NONE;
@@ -1136,7 +1136,7 @@ void grSectorInitAll(void)
 
     map_gobj->flags = GOBJ_FLAG_NORENDER;
 
-    omAddDObjAnimAll(gGRCommonStruct.sector.map_dobj[10], (ATrack*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002E74), 0.0F);
+    gcAddDObjAnimJoint(gGRCommonStruct.sector.map_dobj[10], (AObjScript*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002E74), 0.0F);
     func_8000DF34_EB34(map_gobj);
     mpCollisionSetYakumonoOffID(1);
     gGRCommonStruct.sector.weapon_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart);

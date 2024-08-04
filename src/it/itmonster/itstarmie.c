@@ -253,7 +253,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
     }
     if (ip->it_kind == nITKindStarmie)
     {
-        omAddMObjAnimAll(item_dobj->mobj, itGetPData(ip, lITStarmieDataStart, lITStarmieMatAnimJoint), 0); // Linker thing
+        gcAddMObjMatAnimJoint(item_dobj->mobj, itGetPData(ip, lITStarmieDataStart, lITStarmieMatAnimJoint), 0); // Linker thing
 
         func_8000DF34_EB34(item_gobj);
     }
@@ -362,7 +362,7 @@ GObj* itStarmieMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj, itGetMonsterAnimNode(ip, lITStarmieDataStart), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITStarmieDataStart), 0.0F); // Linker thing
 
         omMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
     }

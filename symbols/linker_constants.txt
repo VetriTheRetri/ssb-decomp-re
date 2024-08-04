@@ -820,7 +820,7 @@ lITMonsterAnimBankStart = 0x00013624;
 
 lCreditsArenaLo = 0x8013AA60;
 lCreditsInterpolation = 0x00007304;
-lCreditsATrack = 0x00007338;
+lCreditsAObjScript = 0x00007338;
 lCreditsDObjDesc = 0x000078C0;
 lCreditsCrosshairSprite = 0x00006D58;
 lCreditsTextBoxBracketLeft = 0x00006F98;

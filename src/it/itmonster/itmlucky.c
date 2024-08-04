@@ -123,7 +123,7 @@ void itMLuckyMakeEggInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == nITKindMLucky)
     {
-        omAddDObjAnimAll(dobj->child, itGetPData(ip, lITLuckyDataStart, lITLuckyAnimJoint), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj->child, itGetPData(ip, lITLuckyDataStart, lITLuckyAnimJoint), 0.0F); // Linker thing
         func_8000DF34_EB34(item_gobj);
     }
     ip->item_hurt.hitstatus = nGMHitStatusNormal;
@@ -372,7 +372,7 @@ GObj* itMLuckyMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        omAddDObjAnimAll(dobj->next, itGetMonsterAnimNode(ip, lITLuckyDataStart), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj->next, itGetMonsterAnimNode(ip, lITLuckyDataStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

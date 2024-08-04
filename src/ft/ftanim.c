@@ -105,7 +105,7 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
         }
         do
         {
-            if (root_dobj->actor.acommand == NULL)
+            if (root_dobj->aobj_script == NULL)
             {
                 current_aobj = root_dobj->aobj;
 
@@ -123,15 +123,15 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
 
                 return;
             }
-            command_kind = root_dobj->actor.acommand->command.opcode;
+            command_kind = root_dobj->aobj_script->command.opcode;
 
             switch (command_kind)
             {
             case nOMObjAnimCommandSetTargetRate:
             case nOMObjAnimCommandSetVal0RateLast:
-                aflags = root_dobj->actor.acommand->command.flags;
+                aflags = root_dobj->aobj_script->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->actor.acommand)->command.toggle) ? ACommandAdvance(root_dobj->actor.acommand)->uhalf : 0.0F;
+                var_f20 = (AObjScriptAdvance(root_dobj->aobj_script)->command.toggle) ? AObjScriptAdvance(root_dobj->aobj_script)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
@@ -145,7 +145,7 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
                         }
                         setup_aobj[i]->value_base = setup_aobj[i]->value_target;
 
-                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->actor.acommand)->shalf, i + 1, 0);
+                        setup_aobj[i]->value_target = func_ovl2_800EC160(AObjScriptAdvance(root_dobj->aobj_script)->shalf, i + 1, 0);
 
                         setup_aobj[i]->rate_base = setup_aobj[i]->rate_target;
                         setup_aobj[i]->rate_target = 0.0F;
@@ -166,9 +166,9 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
 
             case nOMObjAnimCommandWait:
             case nOMObjAnimCommandSetValLast:
-                aflags = root_dobj->actor.acommand->command.flags;
+                aflags = root_dobj->aobj_script->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->actor.acommand)->command.toggle) ? ACommandAdvance(root_dobj->actor.acommand)->uhalf : 0.0F;
+                var_f20 = (AObjScriptAdvance(root_dobj->aobj_script)->command.toggle) ? AObjScriptAdvance(root_dobj->aobj_script)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
@@ -182,7 +182,7 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
                         }
                         setup_aobj[i]->value_base = setup_aobj[i]->value_target;
 
-                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->actor.acommand)->shalf, i + 1, 0);
+                        setup_aobj[i]->value_target = func_ovl2_800EC160(AObjScriptAdvance(root_dobj->aobj_script)->shalf, i + 1, 0);
 
                         setup_aobj[i]->kind = 2;
 
@@ -202,9 +202,9 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
 
             case nOMObjAnimCommandSetVal:
             case nOMObjAnimCommandSetValRateLast:
-                aflags = root_dobj->actor.acommand->command.flags;
+                aflags = root_dobj->aobj_script->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->actor.acommand)->command.toggle) ? ACommandAdvance(root_dobj->actor.acommand)->uhalf : 0.0F;
+                var_f20 = (AObjScriptAdvance(root_dobj->aobj_script)->command.toggle) ? AObjScriptAdvance(root_dobj->aobj_script)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
@@ -218,11 +218,11 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
                         }
                         setup_aobj[i]->value_base = setup_aobj[i]->value_target;
 
-                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->actor.acommand)->shalf, i + 1, 0);
+                        setup_aobj[i]->value_target = func_ovl2_800EC160(AObjScriptAdvance(root_dobj->aobj_script)->shalf, i + 1, 0);
 
                         setup_aobj[i]->rate_base = setup_aobj[i]->rate_target;
 
-                        setup_aobj[i]->rate_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->actor.acommand)->shalf, i + 1, 1);
+                        setup_aobj[i]->rate_target = func_ovl2_800EC160(AObjScriptAdvance(root_dobj->aobj_script)->shalf, i + 1, 1);
 
                         setup_aobj[i]->kind = 3;
 
@@ -240,9 +240,9 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
                 break;
 
             case nOMObjAnimCommandSetValRate:
-                aflags = root_dobj->actor.acommand->command.flags;
+                aflags = root_dobj->aobj_script->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->actor.acommand)->command.toggle) ? ACommandAdvance(root_dobj->actor.acommand)->uhalf : 0.0F;
+                var_f20 = (AObjScriptAdvance(root_dobj->aobj_script)->command.toggle) ? AObjScriptAdvance(root_dobj->aobj_script)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
@@ -254,23 +254,23 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
                         {
                             setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->rate_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->actor.acommand)->shalf, i + 1, 1);
+                        setup_aobj[i]->rate_target = func_ovl2_800EC160(AObjScriptAdvance(root_dobj->aobj_script)->shalf, i + 1, 1);
                     }
                 }
                 break;
 
             case nOMObjAnimCommandJump:
-                if (ACommandAdvance(root_dobj->actor.acommand)->command.toggle)
+                if (AObjScriptAdvance(root_dobj->aobj_script)->command.toggle)
                 {
-                    root_dobj->anim_remain += ACommandAdvance(root_dobj->actor.acommand)->uhalf;
+                    root_dobj->anim_remain += AObjScriptAdvance(root_dobj->aobj_script)->uhalf;
                 }
                 break;
 
             case nOMObjAnimCommandSetVal0Rate:
             case nOMObjAnimCommandSetValAfterLast:
-                aflags = root_dobj->actor.acommand->command.flags;
+                aflags = root_dobj->aobj_script->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->actor.acommand)->command.toggle) ? ACommandAdvance(root_dobj->actor.acommand)->uhalf : 0.0F;
+                var_f20 = (AObjScriptAdvance(root_dobj->aobj_script)->command.toggle) ? AObjScriptAdvance(root_dobj->aobj_script)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
@@ -284,7 +284,7 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
                         }
                         setup_aobj[i]->value_base = setup_aobj[i]->value_target;
 
-                        setup_aobj[i]->value_target = func_ovl2_800EC160(ACommandAdvance(root_dobj->actor.acommand)->shalf, i + 1, 0);
+                        setup_aobj[i]->value_target = func_ovl2_800EC160(AObjScriptAdvance(root_dobj->aobj_script)->shalf, i + 1, 0);
 
                         setup_aobj[i]->kind = 1;
 
@@ -302,9 +302,9 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
                 break;
 
             case ANIM_CMD_13:
-                ACommandAdvance(root_dobj->actor.acommand);
+                AObjScriptAdvance(root_dobj->aobj_script);
 
-                root_dobj->actor.acommand += root_dobj->actor.acommand->shalf / 2;
+                root_dobj->aobj_script += root_dobj->aobj_script->shalf / 2;
 
                 root_dobj->anim_frame = -root_dobj->anim_remain;
                 root_dobj->parent_gobj->anim_frame = -root_dobj->anim_remain;
@@ -319,9 +319,9 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
                 break;
 
             case nOMObjAnimCommandSetValAfter:
-                aflags = root_dobj->actor.acommand->command.flags;
+                aflags = root_dobj->aobj_script->command.flags;
 
-                var_f20 = (ACommandAdvance(root_dobj->actor.acommand)->command.toggle) ? ACommandAdvance(root_dobj->actor.acommand)->uhalf : 0.0F;
+                var_f20 = (AObjScriptAdvance(root_dobj->aobj_script)->command.toggle) ? AObjScriptAdvance(root_dobj->aobj_script)->uhalf : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
                 {
@@ -339,15 +339,15 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
                 break;
 
             case ANIM_CMD_12:
-                ACommandAdvance(root_dobj->actor.acommand);
+                AObjScriptAdvance(root_dobj->aobj_script);
 
                 if (setup_aobj[3] == NULL)
                 {
                     setup_aobj[3] = omAddAObjForDObj(root_dobj, 4);
                 }
-                setup_aobj[3]->interpolate = root_dobj->actor.acommand + (root_dobj->actor.acommand->shalf / 2);
+                setup_aobj[3]->interpolate = root_dobj->aobj_script + (root_dobj->aobj_script->shalf / 2);
 
-                ACommandAdvance(root_dobj->actor.acommand);
+                AObjScriptAdvance(root_dobj->aobj_script);
                 break;
 
             case nOMObjAnimCommandEnd:
@@ -375,11 +375,11 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
                 return;
 
             case nOMObjAnimCommandSetAnim:
-                root_dobj->flags = root_dobj->actor.acommand->command.flags;
+                root_dobj->flags = root_dobj->aobj_script->command.flags;
 
-                if (ACommandAdvance(root_dobj->actor.acommand)->command.toggle)
+                if (AObjScriptAdvance(root_dobj->aobj_script)->command.toggle)
                 {
-                    root_dobj->anim_remain += ACommandAdvance(root_dobj->actor.acommand)->uhalf;
+                    root_dobj->anim_remain += AObjScriptAdvance(root_dobj->aobj_script)->uhalf;
                 }
                 break;
 

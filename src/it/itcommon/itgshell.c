@@ -179,16 +179,16 @@ void itGShellSpinAddAnim(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 unused[2];
 
-    omAddDObjAnimAll(dobj, itGetPData(ip, lITGShellDataStart, lITGShellAnimJoint), 0.0F); // Linker thing
-    omAddMObjAnimAll(dobj->mobj, itGetPData(ip, lITGShellDataStart, lITGShellMatAnimJoint), 0.0F); // Linker thing
+    gcAddDObjAnimJoint(dobj, itGetPData(ip, lITGShellDataStart, lITGShellAnimJoint), 0.0F); // Linker thing
+    gcAddMObjMatAnimJoint(dobj->mobj, itGetPData(ip, lITGShellDataStart, lITGShellMatAnimJoint), 0.0F); // Linker thing
     func_8000DF34_EB34(item_gobj);
 }
 
 // 0x80178704
 void itGShellCommonClearAnim(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->mobj->actor.p = NULL;
-    DObjGetStruct(item_gobj)->actor.p = NULL;
+    DObjGetStruct(item_gobj)->mobj->aobj_script = NULL;
+    DObjGetStruct(item_gobj)->aobj_script = NULL;
 }
 
 // 0x8017871C

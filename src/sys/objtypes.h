@@ -57,15 +57,8 @@ union OMUserData
     void *p;
 };
 
-union ATrack
-{
-    f32 f;
-    u32 w;
-    void *p;
-};
-
 // Not to be confused with SGI's Acmd
-union ACommand
+union AObjScript
 {
     struct
     {
@@ -77,13 +70,6 @@ union ACommand
 
     s16 shalf;
     u16 uhalf;
-};
-
-union AObjActor
-{
-    void *p;
-    ATrack *atrack;
-    ACommand *acommand;
 };
 
 struct _AObj
@@ -320,7 +306,7 @@ struct _MObj
     f32 texture_frame;
     u8 filler_0x8C[0x90 - 0x8C];
     AObj *aobj;
-    AObjActor actor;
+    AObjScript *aobj_script;
     f32 anim_remain;            // Animation frames remaining, multi-purpose?
     f32 anim_rate;              // Animation playback rate / interpolation, multi-purpose?
     f32 anim_frame;             // Current animation frame, multi-purpose?
@@ -415,7 +401,7 @@ struct _DObj
     u8 ommtx_len;
     OMMtx *ommtx[5];
     AObj *aobj;
-    AObjActor actor;
+    AObjScript *aobj_script;
 
     f32 anim_remain;// Multi-purpose? Usually frames remaining, but used as rotation step in Crate/Barrel smash GFX?
     f32 anim_rate;  // Multi-purpose? Fighters use this as animation playback rate / interpolation, but it is used as rotation step in Crate/Barrel smash GFX?
@@ -479,7 +465,7 @@ struct _Camera
     OMMtx *ommtx[2];
 
     AObj *aobj;
-    AObjActor actor;
+    AObjScript *aobj_script;
 
     f32 anim_remain;
     f32 anim_rate;

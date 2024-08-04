@@ -536,7 +536,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
 
     matanim_joint = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkMatAnimJoint); // ((uintptr_t)ip->attributes->model_desc - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkMatAnimJoint; // Linker thing
 
-    omAddMObjAnimAll(dobj->mobj, matanim_joint, 0.0F); // Set texture animation?
+    gcAddMObjMatAnimJoint(dobj->mobj, matanim_joint, 0.0F); // Set texture animation?
 
     func_8000DF34_EB34(item_gobj);
 
@@ -710,7 +710,7 @@ void itBombHeiExplodeWaitInitItemVars(GObj *item_gobj)
 
     ip->it_multi = 0;
 
-    dobj->mobj->actor.p = NULL;
+    dobj->mobj->aobj_script = NULL;
 
     itMainCheckSetColAnimID(item_gobj, ITBOMBHEI_EXPLODE_COLANIM_ID, ITBOMBHEI_EXPLODE_COLANIM_DURATION);
 }

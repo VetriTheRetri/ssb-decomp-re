@@ -35,7 +35,7 @@ wpCreateDesc dWPNessPKThunderHeadWeaponDesc =
 {
     0x03,                                   // Render flags?
     nWPKindPKThunderHead,                  // Weapon Kind
-    &gFTDataNessMain,                       // Pointer to character's loaded files?
+    &gFTNessFileMain,                       // Pointer to character's loaded files?
     &lWPNessPKThunderWeaponAttributes,      // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
@@ -59,7 +59,7 @@ wpCreateDesc dWPNessPKThunderTrailWeaponDesc =
 {
     0x02,                                   // Render flags?
     nWPKindPKThunderTrail,                 // Weapon Kind
-    &gFTDataNessMain,                       // Pointer to character's loaded files?
+    &gFTNessFileMain,                       // Pointer to character's loaded files?
     &lWPNessPKThunderTrailWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
@@ -83,7 +83,7 @@ wpCreateDesc dWPNessPKReflectHeadWeaponDesc =
 {
     0x03,                                   // Render flags?
     nWPKindPKThunderHead,                  // Weapon Kind
-    &gFTDataNessMain,                       // Pointer to character's loaded files?
+    &gFTNessFileMain,                       // Pointer to character's loaded files?
     &lWPNessPKThunderWeaponAttributes,      // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
@@ -107,7 +107,7 @@ wpCreateDesc dWPNessPKReflectTrailWeaponDesc =
 {
     0x02,                                   // Render flags?
     nWPKindPKThunderTrail,                 // Weapon Kind
-    &gFTDataNessMain,                       // Pointer to character's loaded files?
+    &gFTNessFileMain,                       // Pointer to character's loaded files?
     &lWPNessPKThunderTrailWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

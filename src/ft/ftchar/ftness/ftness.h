@@ -32,20 +32,20 @@
 #define FTNESS_PKJIBAKU_PASS_FRAME_END ((float)(FTNESS_PKJIBAKU_ANIM_LENGTH - 3))
 #define FTNESS_PKJIBAKU_REBOUND_VEL_MAG 0.5F
 
-#define FTNESS_PSI_MAGNET_RELEASE_LAG 30
-#define FTNESS_PSI_MAGNET_GRAVITY_DELAY 4
-#define FTNESS_PSI_MAGNET_COLANIM_ID 0x3F
-#define FTNESS_PSI_MAGNET_COLANIM_LENGTH 0
+#define FTNESS_PSYCHICMAGNET_RELEASE_LAG 30
+#define FTNESS_PSYCHICMAGNET_GRAVITY_DELAY 4
+#define FTNESS_PSYCHICMAGNET_COLANIM_ID 0x3F
+#define FTNESS_PSYCHICMAGNET_COLANIM_LENGTH 0
 
 extern ftStatusDesc dFTNessSpecialStatusDescs[/* */];
 
-extern void *gFTDataNessMain;
-extern void *gFTDataNessMainMotion;
-extern void *gFTDataNessModel;
-extern void *gFTDataNessSpecial1;
-extern void *gFTDataNessSpecial2;
-extern void *gFTDataNessSpecial3;
-extern s32 gFTDataNessParticleBankID;
+extern void *gFTNessFileMain;
+extern void *gFTNessFileMainMotion;
+extern void *gFTNessFileModel;
+extern void *gFTNessFileSpecial1;
+extern void *gFTNessFileSpecial2;
+extern void *gFTNessFileSpecial3;
+extern s32 gFTNessParticleBankID;
 
 // Moveset script IDs
 typedef enum ftNessMotion

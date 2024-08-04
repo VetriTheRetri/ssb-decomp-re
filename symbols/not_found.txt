@@ -832,12 +832,12 @@ gFTDataPikachuSpecial3 = 0x801310C4;
 
 gFTDataPurinSpecial2 = 0x801310FC;
 
-gFTDataNessMain = 0x80131130;
-gFTDataNessMainMotion = 0x80131134;
-gFTDataNessModel = 0x80131138;
-gFTDataNessSpecial1 = 0x8013113C;
-gFTDataNessSpecial2 = 0x80131140;
-gFTDataNessParticleBankID = 0x80131148;
+gFTNessFileMain = 0x80131130;
+gFTNessFileMainMotion = 0x80131134;
+gFTNessFileModel = 0x80131138;
+gFTNessFileSpecial1 = 0x8013113C;
+gFTNessFileSpecial2 = 0x80131140;
+gFTNessParticleBankID = 0x80131148;
 
 gFTDataBossMainMotion = 0x80131174;
 

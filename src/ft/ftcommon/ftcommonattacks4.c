@@ -129,7 +129,7 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
 
     case nFTKindNess:
     case nFTKindNNess:
-        fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFTDataNessMainMotion + (intptr_t)&lFTNessAttackS4Reflector); // Linker thing
+        fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFTNessFileMainMotion + (intptr_t)&lFTNessAttackS4Reflector); // Linker thing
         break;
     }
 }

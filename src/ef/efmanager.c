@@ -1278,7 +1278,7 @@ efCreateDesc dEFManagerNessPsychicMagnetEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTDataNessSpecial2,                   // Texture file
+    &gFTNessFileSpecial2,                   // Texture file
 
     // DObj transformation struct 1
     {
@@ -1308,7 +1308,7 @@ efCreateDesc dEFManagerNessPKThunderTrailEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     15,                                     // DL Link
-    &gFTDataNessModel,                      // Texture file
+    &gFTNessFileModel,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -1338,7 +1338,7 @@ efCreateDesc dEFManagerNessPKReflectTrailEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     18,                                     // DL Link
-    &gFTDataNessModel,                      // Texture file
+    &gFTNessFileModel,                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -1368,7 +1368,7 @@ efCreateDesc dEFManagerNessPKThunderWaveEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &gFTDataNessModel,                      // Texture file
+    &gFTNessFileModel,                      // Texture file
 
     // DObj transformation struct 1
     {

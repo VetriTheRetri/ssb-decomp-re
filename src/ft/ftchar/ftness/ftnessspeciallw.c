@@ -137,9 +137,9 @@ void ftNessSpecialLw_InitStatusVars(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.ness.speciallw.release_lag = FTNESS_PSI_MAGNET_RELEASE_LAG;
+    fp->status_vars.ness.speciallw.release_lag = FTNESS_PSYCHICMAGNET_RELEASE_LAG;
     fp->status_vars.ness.speciallw.is_release = FALSE;
-    fp->status_vars.ness.speciallw.gravity_delay = FTNESS_PSI_MAGNET_GRAVITY_DELAY;
+    fp->status_vars.ness.speciallw.gravity_delay = FTNESS_PSYCHICMAGNET_GRAVITY_DELAY;
 }
 
 // 0x80155470
@@ -247,7 +247,7 @@ void ftNessSpecialLwInitVars(GObj *fighter_gobj)
     }
     fp->is_absorb = TRUE;
 
-    fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFTDataNessMainMotion + (intptr_t)&lFTNessSpecialLwAbsorb); // Linker thing (attempt uintptr_t for 64-bit compatibility?)
+    fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFTNessFileMainMotion + (intptr_t)&lFTNessSpecialLwAbsorb); // Linker thing (attempt uintptr_t for 64-bit compatibility?)
 
     fp->command_vars.flags.flag1 = 0;
 }

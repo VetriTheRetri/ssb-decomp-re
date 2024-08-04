@@ -21,7 +21,7 @@ wpCreateDesc dWPNessPKFireWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindPKFire,                         // Weapon Kind
-    &gFTDataNessSpecial1,                   // Pointer to character's loaded files?
+    &gFTNessFileSpecial1,                   // Pointer to character's loaded files?
     &lWPNessPKFireWeaponAttributes,         // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

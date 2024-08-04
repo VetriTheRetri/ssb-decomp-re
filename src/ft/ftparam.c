@@ -1318,7 +1318,7 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
     case nFTKindNNess:
         if (fp->is_absorb)
         {
-            ftParamCheckSetFighterColAnimID(fighter_gobj, FTNESS_PSI_MAGNET_COLANIM_ID, FTNESS_PSI_MAGNET_COLANIM_LENGTH);
+            ftParamCheckSetFighterColAnimID(fighter_gobj, FTNESS_PSYCHICMAGNET_COLANIM_ID, FTNESS_PSYCHICMAGNET_COLANIM_LENGTH);
         }
         break;
     }

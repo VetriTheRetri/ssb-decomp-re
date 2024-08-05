@@ -21,4 +21,7 @@ extern void gcAddMatAnimJointAll(GObj *gobj, AObjAnimJoint ***p_matanim_joints, 
 // Add animation and material animation scripts to all DObjs and MObjs on a GObj
 extern void gcAddAnimAll(GObj *gobj, AObjAnimJoint **anim_joints, AObjAnimJoint ***p_matanim_joints, f32 anim_frame);
 
+// Parse AnimJoint on specific DObj
+extern void gcParseDObjAnimJoint(DObj *dobj);
+
 #endif

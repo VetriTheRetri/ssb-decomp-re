@@ -407,9 +407,9 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
                 {
                     if (fp->anim_flags.flags.x19B_flag_b4)
                     {
-                        func_8000BFE8_CBE8(joint);
+                        gcParseDObjAnimJoint(joint);
                     }
-                    else ftAnimParseAnimJoint(joint);
+                    else ftAnimParseFigatree(joint);
                     
                     func_ovl0_800C9488(joint, translate_scales);
 
@@ -433,9 +433,9 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
             {
                 if (fp->anim_flags.flags.x19B_flag_b4)
                 {
-                    func_8000BFE8_CBE8(joint);
+                    gcParseDObjAnimJoint(joint);
                 }
-                else ftAnimParseAnimJoint(joint);
+                else ftAnimParseFigatree(joint);
                 
                 func_8000CCBC_D8BC(joint);
 

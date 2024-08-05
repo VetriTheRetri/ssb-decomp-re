@@ -3769,7 +3769,7 @@ void func_ovl2_800FBAD0(GObj *ground_gobj)
             {
                 temp_s2 = dobj->flags;
 
-                func_8000BFE8_CBE8(dobj);
+                gcParseDObjAnimJoint(dobj);
 
                 translate = dobj->translate.vec.f;
 
@@ -3798,7 +3798,7 @@ void func_ovl2_800FBAD0(GObj *ground_gobj)
         }
         else
         {
-            func_8000BFE8_CBE8(dobj);
+            gcParseDObjAnimJoint(dobj);
             func_8000CCBC_D8BC(dobj);
         }
         mobj = dobj->mobj;

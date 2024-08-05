@@ -207,13 +207,13 @@ void gcAddAnimAll(GObj *gobj, AObjAnimJoint **anim_joints, AObjAnimJoint ***p_ma
     }
 }
 
-void func_8000BFE8_CBE8(DObj *dobj)
+void gcParseDObjAnimJoint(DObj *dobj)
 {
-    AObj *track_aobjs[10];
+    AObj *track_aobjs[nOMObjAnimTrackMeshEnd];
     AObj *aobj;
     s32 i;
-    u32 cmd;
-    u32 subcmd;
+    u32 command_kind;
+    u32 flags;
     f32 payload;
 
     if (dobj->anim_remain != AOBJ_FRAME_NULL)
@@ -267,32 +267,31 @@ void func_8000BFE8_CBE8(DObj *dobj)
 
                 return;
             }
+            command_kind = dobj->anim_joint->opcode;
 
-            cmd = dobj->anim_joint->u >> 25;
-
-            switch (cmd)
+            switch (command_kind)
             {
-            case 8:
-            case 9:
-                payload = (f32)(dobj->anim_joint->u & 0x7FFF);
-                subcmd = (dobj->anim_joint++->u << 7) >> 22;
+            case nOMObjAnimCommandSetVal0RateLast:
+            case nOMObjAnimCommandSetVal0Rate:
+                payload = dobj->anim_joint->payload;
+                flags = AObjAnimAdvance(dobj->anim_joint)->flags;
 
-                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags >>= 1)
                 {
-                    if (subcmd == 0)
+                    if (!(flags))
                     {
                         break;
                     }
-                    if (subcmd & 1)
+                    if (flags & 1)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + 1);
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackMeshStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint->f;
 
-                        dobj->anim_joint++;
+                        AObjAnimAdvance(dobj->anim_joint);
 
                         track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
                         track_aobjs[i]->rate_target = 0.0F;
@@ -304,36 +303,34 @@ void func_8000BFE8_CBE8(DObj *dobj)
                         }
                         track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
                     }
-                    subcmd >>= 1;
                 }
-
-                if (cmd == 8)
+                if (command_kind == nOMObjAnimCommandSetVal0RateLast)
                 {
                     dobj->anim_remain += payload;
                 }
                 break;
 
-            case 3:
-            case 4:
-                payload = (f32)(dobj->anim_joint->u & 0x7FFF);
-                subcmd = (dobj->anim_joint++->u << 7) >> 22;
+            case nOMObjAnimCommandSetValLast:
+            case nOMObjAnimCommandSetVal:
+                payload = dobj->anim_joint->payload;
+                flags = AObjAnimAdvance(dobj->anim_joint)->flags;
 
-                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags >>= 1)
                 {
-                    if (subcmd == 0)
+                    if (!(flags))
                     {
                         break;
                     }
-                    if (subcmd & 1)
+                    if (flags & 1)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + 1);
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackMeshStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint->f;
 
-                        dobj->anim_joint++;
+                        AObjAnimAdvance(dobj->anim_joint);
 
                         track_aobjs[i]->kind = 2;
 
@@ -344,41 +341,39 @@ void func_8000BFE8_CBE8(DObj *dobj)
                         track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
                         track_aobjs[i]->rate_target = 0.0F;
                     }
-                    subcmd >>= 1;
                 }
-
-                if (cmd == 3)
+                if (command_kind == nOMObjAnimCommandSetValLast)
                 {
                     dobj->anim_remain += payload;
                 }
                 break;
 
-            case 5:
-            case 6:
-                payload = (f32)(dobj->anim_joint->u & 0x7FFF);
-                subcmd = (dobj->anim_joint++->u << 7) >> 22;
+            case nOMObjAnimCommandSetValRateLast:
+            case nOMObjAnimCommandSetValRate:
+                payload = dobj->anim_joint->payload;
+                flags = AObjAnimAdvance(dobj->anim_joint)->flags;
 
-                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags >>= 1)
                 {
-                    if (subcmd == 0)
+                    if (!(flags))
                     {
                         break;
                     }
-                    if (subcmd & 1)
+                    if (flags & 1)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + 1);
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackMeshStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint->f;
 
-                        dobj->anim_joint++;
+                        AObjAnimAdvance(dobj->anim_joint);
 
                         track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
                         track_aobjs[i]->rate_target = dobj->anim_joint->f;
 
-                        dobj->anim_joint++;
+                        AObjAnimAdvance(dobj->anim_joint);
 
                         track_aobjs[i]->kind = 3;
 
@@ -388,79 +383,75 @@ void func_8000BFE8_CBE8(DObj *dobj)
                         }
                         track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
                     }
-
-                    subcmd >>= 1;
                 }
-
-                if (cmd == 5)
+                if (command_kind == nOMObjAnimCommandSetValRateLast)
                 {
                     dobj->anim_remain += payload;
                 }
                 break;
 
-            case 7:
-                subcmd = (dobj->anim_joint++->u << 7) >> 22;
+            case nOMObjAnimCommandSetTargetRate:
+                flags = AObjAnimAdvance(dobj->anim_joint)->flags;
 
-                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags >>= 1)
                 {
-                    if (subcmd == 0)
+                    if (!(flags))
                     {
                         break;
                     }
-                    if (subcmd & 1)
+                    if (flags & 1)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + 1);
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackMeshStart);
                         }
                         track_aobjs[i]->rate_target = dobj->anim_joint->f;
-                        dobj->anim_joint++;
+
+                        AObjAnimAdvance(dobj->anim_joint);
                     }
-                    subcmd >>= 1;
                 }
                 break;
 
-            case 2:
-                dobj->anim_remain += (f32)(dobj->anim_joint++->u & 0x7FFF);
+            case nOMObjAnimCommandWait:
+                dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->payload;
                 break;
 
-            case 10:
-            case 11:
-                payload = (f32)(dobj->anim_joint->u & 0x7FFF);
-                subcmd = (dobj->anim_joint++->u << 7) >> 22;
+            case nOMObjAnimCommandSetValAfterLast:
+            case nOMObjAnimCommandSetValAfter:
+                payload = dobj->anim_joint->payload;
+                flags = AObjAnimAdvance(dobj->anim_joint)->flags;
 
-                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags >>= 1)
                 {
-                    if (subcmd == 0)
+                    if (!(flags))
                     {
                         break;
                     }
-                    if (subcmd & 1)
+                    if (flags & 1)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + 1);
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackMeshStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint->f;
 
-                        dobj->anim_joint++;
+                        AObjAnimAdvance(dobj->anim_joint);
 
                         track_aobjs[i]->kind = 1;
                         track_aobjs[i]->length_invert = payload;
                         track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
                         track_aobjs[i]->rate_target = 0.0F;
                     }
-                    subcmd >>= 1;
                 }
-                if (cmd == 10)
+                if (command_kind == nOMObjAnimCommandSetValAfterLast)
                 {
                     dobj->anim_remain += payload;
                 }
                 break;
 
-            case 14:
-                dobj->anim_joint++;
+            case nOMObjAnimCommandSetAnim:
+                AObjAnimAdvance(dobj->anim_joint);
                 dobj->anim_joint = dobj->anim_joint->p;
                 dobj->anim_frame = -dobj->anim_remain;
                 dobj->parent_gobj->anim_frame = -dobj->anim_remain;
@@ -471,8 +462,8 @@ void func_8000BFE8_CBE8(DObj *dobj)
                 }
                 break;
 
-            case 1:
-                dobj->anim_joint++;
+            case nOMObjAnimCommandJump:
+                AObjAnimAdvance(dobj->anim_joint);
                 dobj->anim_joint = dobj->anim_joint->p;
 
                 if ((dobj->is_anim_root != FALSE) && (dobj->parent_gobj->dobjproc != NULL)) 
@@ -481,41 +472,40 @@ void func_8000BFE8_CBE8(DObj *dobj)
                 }
                 break;
 
-            case 12:
-                payload = (f32)(dobj->anim_joint->u & 0x7FFF);
-                subcmd = (dobj->anim_joint++->u << 7) >> 22;
+            case ANIM_CMD_12:
+                payload = dobj->anim_joint->payload;
+                flags = AObjAnimAdvance(dobj->anim_joint)->flags;
 
-                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags >>= 1)
                 {
-                    if (subcmd == 0)
+                    if (!(flags))
                     {
                         break;
                     }
-                    if (subcmd & 1)
+                    if (flags & 1)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + 1);
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackMeshStart);
                         }
                         track_aobjs[i]->length += payload;
                     }
-                    subcmd >>= 1;
                 }
                 break;
 
-            case 13:
-                dobj->anim_joint++;
+            case ANIM_CMD_13:
+                AObjAnimAdvance(dobj->anim_joint);
 
-                if (track_aobjs[3] == NULL) 
+                if (track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackMeshStart] == NULL) 
                 { 
-                    track_aobjs[3] = omAddAObjForDObj(dobj, 3 + 1); 
+                    track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackMeshStart] = omAddAObjForDObj(dobj, nOMObjAnimTrackRotA); 
                 }
-                track_aobjs[3]->interpolate = dobj->anim_joint->p;
+                track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackMeshStart]->interpolate = dobj->anim_joint->p;
 
-                dobj->anim_joint++;
+                AObjAnimAdvance(dobj->anim_joint);
                 break;
 
-            case 0:
+            case nOMObjAnimCommandEnd:
                 aobj = dobj->aobj;
 
                 while (aobj != NULL)
@@ -536,44 +526,43 @@ void func_8000BFE8_CBE8(DObj *dobj)
                 }
                 return; // not break
 
-            case 15:
-                dobj->flags = (dobj->anim_joint->u << 7) >> 22;
-                dobj->anim_remain += (f32)(dobj->anim_joint++->u & 0x7FFF);
+            case nOMObjAnimCommandSetFlags:
+                dobj->flags = dobj->anim_joint->flags;
+                dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->payload;
                 break;
 
-            case 16:
+            case ANIM_CMD_16:
                 if (dobj->parent_gobj->dobjproc != NULL)
                 {
                     // only seems to match when spelled out...
                     dobj->parent_gobj->dobjproc
                     (
                         dobj,
-                        ((dobj->anim_joint->u << 7) >> 22) >> 8,
-                        ((dobj->anim_joint->u << 7) >> 22) & 0xFF
+                        dobj->anim_joint->flags >> 8,
+                        dobj->anim_joint->flags & 0xFF
                     );
                 }
-                dobj->anim_remain += (f32)(dobj->anim_joint++->u & 0x7FFF);
+                dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->payload;
                 break;
 
-            case 17:
-                subcmd = (dobj->anim_joint->u << 7) >> 22;
-                dobj->anim_remain += (f32)(dobj->anim_joint++->u & 0x7FFF);
+            case ANIM_CMD_17:
+                flags = dobj->anim_joint->flags;
+                dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->payload;
 
-                for (i = 4; i < 14; i++)
+                for (i = 4; i < 14; i++, flags >>= 1)
                 {
-                    if (subcmd == 0)
+                    if (!(flags))
                     {
                         break;
                     }
-                    if (subcmd & 1)
+                    if (flags & 1)
                     {
                         if (dobj->parent_gobj->dobjproc != NULL)
                         {
                             dobj->parent_gobj->dobjproc(dobj, i, dobj->anim_joint->f);
                         }
-                        dobj->anim_joint++;
+                        AObjAnimAdvance(dobj->anim_joint);
                     }
-                    subcmd >>= 1;
                 }
                 break;
 

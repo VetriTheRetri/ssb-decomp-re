@@ -232,7 +232,7 @@ void ftCommonGuardUpdateJoints(GObj *fighter_gobj)
         joint_num--;
 
         gcAddDObjAnimJoint(yrotn_joint, fp->attributes->shield_keys[fp->status_vars.common.guard.angle_i][joint_num], fp->status_vars.common.guard.angle_f);
-        func_8000BFE8_CBE8(yrotn_joint);
+        gcParseDObjAnimJoint(yrotn_joint);
 
         if (fp->is_have_translate_scale)
         {

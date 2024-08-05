@@ -81,8 +81,8 @@ union AObjAnimJoint
     struct
     {
         u32 opcode : 7;
-        u32 flags : 22;
-        u32 toggle : 3;
+        u32 flags : 10;
+        u32 payload : 15;
     };
 };
 

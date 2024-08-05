@@ -19,7 +19,6 @@ extern intptr_t lITManagerParticleBankTextureHi;        // 0x00B1E640
 
 extern void func_8000F364_FF64(DObj*, u8, void*, void*, void*);
 extern void func_8000DF34_EB34(GObj*);
-extern void func_8000BED8_CAD8(GObj*, void*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -397,7 +396,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
         }
         if ((attributes->anim_joint != NULL) || (attributes->matanim_joint != NULL)) // Runs if item has joint or texture animation on spawn?
         {
-            func_8000BED8_CAD8(item_gobj, attributes->anim_joint, attributes->matanim_joint, 0.0F);
+            gcAddAnimAll(item_gobj, attributes->anim_joint, attributes->matanim_joint, 0.0F);
             func_8000DF34_EB34(item_gobj);
         }
         func_ovl0_800C9424(DObjGetStruct(item_gobj));

@@ -10,7 +10,6 @@
 extern void func_8000DF34_EB34(GObj*);
 extern void func_ovl0_800CB4B0(GObj*);
 extern void func_ovl0_800C88AC(void*, void*, void*, f32);
-extern void func_8000BED8_CAD8(void*, void*, void*, f32);
 extern void func_ovl0_800C8758(void*, void*, f32);
 
 // // // // // // // // // // // //
@@ -2293,7 +2292,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
         }
         if ((o_anim_joint != 0) || (o_matanim_joint != 0))
         {
-            func_8000BED8_CAD8(effect_gobj, (o_anim_joint != 0) ? (void*) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (void*) (addr + o_matanim_joint) : NULL, 0.0F);
+            gcAddAnimAll(effect_gobj, (o_anim_joint != 0) ? (void*) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (void*) (addr + o_matanim_joint) : NULL, 0.0F);
             func_8000DF34_EB34(effect_gobj);
         }
     }
@@ -4680,12 +4679,12 @@ GObj* efManagerPikachuThunderShockMakeEffect(GObj *fighter_gobj, Vec3f *pos, s32
     switch (frame)
     {
     case 1:
-        func_8000BED8_CAD8(effect_gobj, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001850, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001AC0, 0.0F); // Linker thing
+        gcAddAnimAll(effect_gobj, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001850, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001AC0, 0.0F); // Linker thing
         func_8000DF34_EB34(effect_gobj);
         break;
 
     case 2:
-        func_8000BED8_CAD8(effect_gobj, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001970, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001B10, 0.0F); // Linker thing
+        gcAddAnimAll(effect_gobj, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001970, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001B10, 0.0F); // Linker thing
         func_8000DF34_EB34(effect_gobj);
         break;
     }

@@ -64,7 +64,6 @@ extern intptr_t lGRPupupuParticleBankTextureHi;                 // 0x00B1F960
 extern void grGeometryLayer0ProcRenderPri(GObj*);
 extern void grGeometryLayer3ProcRenderPri(GObj*);
 extern void func_8000DF34_EB34(GObj*);
-extern void func_8000BED8_CAD8(void*, void*, void*, f32);
 extern void func_8000F590();
 
 // // // // // // // // // // // //
@@ -631,7 +630,7 @@ void grPupupuUpdateGObjAnims(void)
     {
         intptr_t offset = dGRPupupuWhispyEyesAnims[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_eyes_status][1];
 
-        func_8000BED8_CAD8
+        gcAddAnimAll
         (
             // arg0
             gGRCommonStruct.pupupu.map_gobj[0],
@@ -651,7 +650,7 @@ void grPupupuUpdateGObjAnims(void)
     }
     if (gGRCommonStruct.pupupu.whispy_mouth_status != -1)
     {
-        func_8000BED8_CAD8
+        gcAddAnimAll
         (
             // arg0
             gGRCommonStruct.pupupu.map_gobj[1],

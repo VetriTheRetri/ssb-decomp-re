@@ -27,7 +27,6 @@ extern intptr_t FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET; // file 0x1E imag
 
 extern void func_ovl0_800CCF00();
 extern void func_ovl0_800CD2CC();
-extern void func_8000BED8_CAD8(GObj*, void*, void*, f32);
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 
@@ -930,7 +929,7 @@ GObj* mnStageCreateStageGeo(s32 stage_id, mpGroundData* stage_info, mpGroundDesc
 
 	if ((stage_geo->anim_joint != NULL) || (stage_geo->matanim_joint != NULL))
 	{
-		func_8000BED8_CAD8(stage_geo_gobj, stage_geo->anim_joint, stage_geo->matanim_joint, 0.0f);
+		gcAddAnimAll(stage_geo_gobj, stage_geo->anim_joint, stage_geo->matanim_joint, 0.0f);
 		func_8000DF34_EB34(stage_geo_gobj);
 	}
 

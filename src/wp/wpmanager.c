@@ -2,8 +2,6 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 
-extern void func_8000BED8_CAD8(GObj*, void*, void*, f32);
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
@@ -281,7 +279,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     }
     if ((attributes->anim_joint != NULL) || (attributes->matanim_joint != NULL))
     {
-        func_8000BED8_CAD8(weapon_gobj, attributes->anim_joint, attributes->matanim_joint, 0.0F);
+        gcAddAnimAll(weapon_gobj, attributes->anim_joint, attributes->matanim_joint, 0.0F);
     }
     wp->coll_data.p_translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     wp->coll_data.p_lr = &wp->lr;

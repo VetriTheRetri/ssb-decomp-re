@@ -15,7 +15,6 @@ extern intptr_t lGRZebesAcidAnimJoint;              // 0x00000B90
 extern intptr_t lGRZebesAcidMatAnimJoint;           // 0x00000BD0
 
 extern void func_8000DF34_EB34(GObj*);
-extern void func_8000BED8_CAD8(GObj*, void*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -98,7 +97,7 @@ GObj* grZebesMakeAcid(void)
     func_8000F590(map_gobj, (DObjDesc*) ((intptr_t)&lGRZebesAcidDObjSetup + (uintptr_t)map_head), NULL, nOMTransformTra, nOMTransformNull, 0);
     func_8000F8F4(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000008C0);
     omAddGObjCommonProc(map_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
-    func_8000BED8_CAD8(map_gobj, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidAnimJoint, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidMatAnimJoint, 0.0F);
+    gcAddAnimAll(map_gobj, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidAnimJoint, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidMatAnimJoint, 0.0F);
     func_8000DF34_EB34(map_gobj);
 
     gGRCommonStruct.zebes.acid_status = nGRZebesAcidStatusWait;

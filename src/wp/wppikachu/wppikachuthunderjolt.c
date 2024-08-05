@@ -16,7 +16,6 @@ lWPPikachuThunderJoltAnimJoint;                         // 0x00001A20
 extern intptr_t 
 lWPPikachuThunderJoltMatAnimJoint;                      // 0x00001AE0
 
-extern void func_8000BED8_CAD8(GObj*, void*, void*, f32);
 extern void gcSetAllAnimPlaybackRate(GObj*, f32);
 
 // // // // // // // // // // // //
@@ -205,7 +204,7 @@ GObj* wpPikachuThunderJoltAirMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *v
 // 0x80169654
 void wpPikachuThunderJoltGroundAddAnim(GObj *weapon_gobj)
 {
-    func_8000BED8_CAD8
+    gcAddAnimAll
     (
         weapon_gobj, 
         (uintptr_t)gFTDataPikachuSpecial3 + (intptr_t)&lWPPikachuThunderJoltAnimJoint, 

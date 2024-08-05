@@ -129,9 +129,83 @@ void gcAddAnimJointAll(GObj *gobj, AObjAnimJoint **anim_joints, f32 anim_frame)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000BE28_CA28.s")
+void gcAddMatAnimJointAll(GObj *gobj, AObjAnimJoint ***p_matanim_joints, f32 anim_frame)
+{
+    DObj *dobj = DObjGetStruct(gobj);
+    
+    gobj->anim_frame = anim_frame;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000BED8_CAD8.s")
+    while (dobj != NULL)
+    {
+        if (p_matanim_joints != NULL)
+        {
+            if (*p_matanim_joints != NULL)
+            {
+                AObjAnimJoint **matanim_joints = *p_matanim_joints;
+                MObj *mobj = dobj->mobj;
+
+                while (mobj != NULL)
+                {
+                    if (*matanim_joints != NULL)
+                    { 
+                        gcAddMObjMatAnimJoint(mobj, *matanim_joints, anim_frame); 
+                    }
+                    matanim_joints++;
+                    mobj = mobj->next;
+                }
+            }
+            p_matanim_joints++;
+        }
+        dobj = func_8000BAA0(dobj);
+    }
+}
+
+void gcAddAnimAll(GObj *gobj, AObjAnimJoint **anim_joints, AObjAnimJoint ***p_matanim_joints, f32 anim_frame)
+{
+    DObj *dobj = DObjGetStruct(gobj);
+    ub8 is_anim_root = TRUE;
+
+    gobj->anim_frame = anim_frame;
+
+    while (dobj != NULL) 
+    {
+        if (anim_joints != NULL)
+        {
+            if (*anim_joints != NULL)
+            {
+                gcAddDObjAnimJoint(dobj, *anim_joints, anim_frame);
+                dobj->is_anim_root = is_anim_root;
+                is_anim_root = FALSE;
+            } 
+            else 
+            {
+                dobj->anim_remain = F32_MIN;
+                dobj->is_anim_root = FALSE;
+            }
+            anim_joints++;
+        }
+        if (p_matanim_joints != NULL) 
+        {
+            if (*p_matanim_joints != NULL) 
+            {
+                AObjAnimJoint **matanim_joints = *p_matanim_joints;
+                MObj *mobj = dobj->mobj;
+
+                while (mobj != NULL) 
+                {
+                    if (*matanim_joints != NULL) 
+                    { 
+                        gcAddMObjMatAnimJoint(mobj, *matanim_joints, anim_frame); 
+                    }
+                    matanim_joints++;
+                    mobj = mobj->next;
+                }
+            }
+            p_matanim_joints++;
+        }
+        dobj = func_8000BAA0(dobj);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000BFE8_CBE8.s")
 

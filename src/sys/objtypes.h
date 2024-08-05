@@ -391,7 +391,7 @@ struct _DObj
     };
 
     u8 flags;
-    ub8 is_anim_root;   // TRUE if this DObj's animation script is at the top of the hierarchy?
+    ub8 is_anim_root;       // TRUE if this DObj's animation script is at the top of the hierarchy?
     u8 ommtx_len;
     OMMtx *ommtx[5];
     AObj *aobj;

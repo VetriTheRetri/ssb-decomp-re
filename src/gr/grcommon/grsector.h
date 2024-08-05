@@ -7,7 +7,7 @@
 
 extern void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3);
 extern sb32 func_ovl2_80106904(Mtx *o_mtx, DObj *dobj, f32 arg2);
-extern void func_ovl2_80106A40(DObj *dobj, AObjScript *aobj_script, f32 arg2);
+extern void func_ovl2_80106A40(DObj *dobj, AObjAnimJoint *anim_joint, f32 arg2);
 extern void func_ovl2_80106A98(void);
 extern void grSectorArwingUpdateSleep(void);
 extern void func_ovl2_80106C88(void);

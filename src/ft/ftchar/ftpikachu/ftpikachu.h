@@ -34,7 +34,7 @@
 #define FTPIKACHU_QUICKATTACK_LANDING_LAG 0.4F					// Landing lag
 
 #define FTPIKACHU_THUNDER_SPAWN_JOINT 11						// Spawn Thunder relative to this bone
-#define FTPIKACHU_THUNDER_SPAWN_OFF_Y 500.0F					// Thunder spawns at (top blastzone - this value)
+#define FTPIKACHU_THUNDER_SPAWN_OFF_Y 500.0F					// Thunder spawns at (top map_bound - this value)
 #define FTPIKACHU_THUNDER_VEL_Y -450.0F							// Vertical velocity of Thunder
 #define FTPIKACHU_THUNDER_COLL_OFF_Y 225.0F						// Added to Thunder's Y-position before calculating distance from Pikachu
 #define FTPIKACHU_THUNDER_COLLIDE_X 200.0F						// Width of Thunder collision box

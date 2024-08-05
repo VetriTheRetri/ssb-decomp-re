@@ -29,7 +29,7 @@ void grBonus3InitHeaders(void)
 // 0x8010B508
 void grBonus3MakeBumpers(void)
 {
-    AObjScript **aobj_script;
+    AObjAnimJoint **anim_joint;
     GObj *item_gobj;
     Vec3f vel;
     DObjDesc *dobj_desc;
@@ -38,17 +38,17 @@ void grBonus3MakeBumpers(void)
     vel.x = vel.y = vel.z = 0.0F;
 
     dobj_desc = (DObjDesc*) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersDObjDesc);
-    aobj_script = (AObjScript**) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersAnimJoint);
+    anim_joint = (AObjAnimJoint**) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersAnimJoint);
 
-    aobj_script++, dobj_desc++;
+    anim_joint++, dobj_desc++;
 
-    for (i = 0; dobj_desc->index != DOBJ_ARRAY_MAX; i++, dobj_desc++, aobj_script++)
+    for (i = 0; dobj_desc->index != DOBJ_ARRAY_MAX; i++, dobj_desc++, anim_joint++)
     {
         item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &dobj_desc->translate, &vel, ITEM_MASK_SPAWN_GROUND);
 
-        if ((*aobj_script != NULL) && (item_gobj != NULL))
+        if ((*anim_joint != NULL) && (item_gobj != NULL))
         {
-            gcAddDObjAnimJoint(DObjGetStruct(item_gobj), *aobj_script, 0.0F);
+            gcAddDObjAnimJoint(DObjGetStruct(item_gobj), *anim_joint, 0.0F);
             func_8000DF34_EB34(item_gobj);
         }
     }

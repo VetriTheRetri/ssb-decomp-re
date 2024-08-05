@@ -41,7 +41,7 @@ extern void cmManagerSetCameraStatusDefault(void);
 extern void func_ovl2_8010CF44(GObj *fighter_gobj, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5);
 extern void func_ovl2_8010CFA8(GObj *fighter_gobj, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5);
 extern void cmManagerSetCameraStatusPrev(void);
-extern void func_ovl2_8010D030(AObjScript *arg0, f32 arg1, Vec3f *arg2);
+extern void func_ovl2_8010D030(AObjAnimJoint *arg0, f32 arg1, Vec3f *arg2);
 extern void func_ovl2_8010D0A4(Vec3f *arg0, Vec3f *arg1);
 extern void cmManagerSetAtMove(Vec3f *move);
 extern void func_ovl2_8010D14C(GObj *gCMManagerCameraGObj);

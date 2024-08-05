@@ -219,7 +219,7 @@ struct mpGroundDesc
 struct mpGroundData
 {
 	mpGroundDesc gr_desc[4];
-	mpGeometryInfo* map_geometry;
+	mpGeometryInfo *map_geometry;
 	u8 layer_mask; // render mask which determines render type for each geo layer (gr_desc) - 0 = primary, 1 = secondary (more alpha control w/2 display lists)
 	Sprite *wallpaper; 								// Background image?
 	gsColorRGB fog_color;
@@ -227,26 +227,26 @@ struct mpGroundData
 	gsColorRGB emblem_colors[GMBATTLE_PLAYERS_MAX]; 	// What's this doing here?
 	s32 unk_0x5C;
 	Vec3f light_angle;
-	s16 cam_bound_top;
+	s16 cam_bound_top;				// Normal bounds
 	s16 cam_bound_bottom;
 	s16 cam_bound_right;
 	s16 cam_bound_left;
-	s16 blastzone_top;
-	s16 blastzone_bottom;
-	s16 blastzone_right;
-	s16 blastzone_left;
-	u32 music_id;
+	s16 map_bound_top;
+	s16 map_bound_bottom;
+	s16 map_bound_right;
+	s16 map_bound_left;
+	u32 bgm_id;
 	void *map_nodes;
-	mpItemWeights *item_weights; // Randomizer weights of items
-	s16 altitude_warning;
-	s16 cam_bound_team_top;
+	mpItemWeights *item_weights; 	// Randomizer weights of items
+	s16 altitude_warning;			// Warning whistle plays if a player goes below this altitude
+	s16 cam_bound_team_top;			// 1P Game VS. <character> Team bounds
 	s16 cam_bound_team_bottom;
 	s16 cam_bound_team_right;
 	s16 cam_bound_team_left;
-	s16 unk_bound_top;
-	s16 unk_bound_bottom;
-	s16 unk_bound_right;
-	s16 unk_bound_left;
+	s16 map_bound_team_top;
+	s16 map_bound_team_bottom;
+	s16 map_bound_team_right;
+	s16 map_bound_team_left;
 	Vec3h unk_groundinfo_0x9A;
 	Vec3h unk_groundinfo_0xA0;
 };

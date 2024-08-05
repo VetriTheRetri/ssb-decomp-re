@@ -175,7 +175,7 @@ sb32 itSpearAppearProcUpdate(GObj *item_gobj)
 
     if (item_gobj->anim_frame == ITSPEAR_SWARM_CALL_WAIT)
     {
-        dobj->child->aobj_script = NULL;
+        dobj->child->anim_joint = NULL;
 
         itSpearFlySetStatus(item_gobj);
     }
@@ -228,7 +228,7 @@ sb32 itSpearFlyProcUpdate(GObj *item_gobj)
 
     if (ip->lr == nGMFacingR)
     {
-        if (dobj->translate.vec.f.x >= (gMPCollisionGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X))
+        if (dobj->translate.vec.f.x >= (gMPCollisionGroundData->map_bound_right - ITSPEAR_SWARM_CALL_OFF_X))
         {
             ip->phys_info.vel_air.x = 0.0F;
             ip->phys_info.vel_air.y = 0.0F;
@@ -244,7 +244,7 @@ sb32 itSpearFlyProcUpdate(GObj *item_gobj)
     }
     if (ip->lr == nGMFacingL)
     {
-        if (dobj->translate.vec.f.x <= (gMPCollisionGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X))
+        if (dobj->translate.vec.f.x <= (gMPCollisionGroundData->map_bound_left + ITSPEAR_SWARM_CALL_OFF_X))
         {
             ip->phys_info.vel_air.x = 0.0F;
             ip->phys_info.vel_air.y = 0.0F;
@@ -359,11 +359,11 @@ sb32 itSpearWeaponSwarmProcUpdate(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj);
 
-    if ((wp->lr == nGMFacingR) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->blastzone_right - ITSPEAR_SWARM_CALL_OFF_X)))
+    if ((wp->lr == nGMFacingR) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->map_bound_right - ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }
-    else if ((wp->lr == nGMFacingL) && (dobj->translate.vec.f.x <= (gMPCollisionGroundData->blastzone_left + ITSPEAR_SWARM_CALL_OFF_X)))
+    else if ((wp->lr == nGMFacingL) && (dobj->translate.vec.f.x <= (gMPCollisionGroundData->map_bound_left + ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }

@@ -23,10 +23,10 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 GObj* gCMManagerCameraGObj;
 
 // 0x80131464
-f32 gCMManagerPauseCameraEyeX;
+f32 gCMManagerPauseCameraEyeY;
 
 // 0x80131468
-f32 gCMManagerPauseCameraEyeY; // Also from .bss
+f32 gCMManagerPauseCameraEyeX; // Also from .bss
 
 // 0x80131470
 Mtx44f gCMManagerMtx; // Mtx44f?
@@ -185,7 +185,7 @@ void cmManagerSetCameraTeamBoundsPos(Vec3f *pos)
 // 0x8010BB08
 void cmManagerSetCameraDeadUpStarPos(Vec3f *pos)
 {
-    pos->x = (gMPCollisionGroundData->cam_bound_top * pos->x) / gMPCollisionGroundData->blastzone_top;
+    pos->x = (gMPCollisionGroundData->cam_bound_top * pos->x) / gMPCollisionGroundData->map_bound_top;
     pos->y = gMPCollisionGroundData->cam_bound_top;
 }
 
@@ -298,7 +298,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
             }
             ft_cam[player_num].target_pos.y += fp->attributes->cam_offset_y;
 
-            if ((gBattleState->game_type == nGMBattleGameType1PGame) && (gBattleState->players[fp->player].is_rebirth_multi != FALSE))
+            if ((gBattleState->game_type == nGMBattleGameType1PGame) && (gBattleState->players[fp->player].is_spgame_team != FALSE))
             {
                 switch (fp->camera_mode)
                 {
@@ -494,12 +494,12 @@ void cmManagerGetAdjustAtAngle(Vec3f *at, Vec3f *vec, f32 x, f32 y)
     f32 angle_x;
     f32 angle_y;
 
-    angle_x = gCMManagerPauseCameraEyeX + y + gMPCollisionGroundData->light_angle.z;
+    angle_x = gCMManagerPauseCameraEyeY + y + gMPCollisionGroundData->light_angle.z;
 
     vec->y = -bitmap_sinf(angle_x);
     vec->z = bitmap_cosf(angle_x);
 
-    angle_y = gCMManagerPauseCameraEyeY + x;
+    angle_y = gCMManagerPauseCameraEyeX + x;
 
     vec->x = (bitmap_sinf(angle_y) * vec->z);
 
@@ -724,8 +724,8 @@ void func_ovl2_8010C960(GObj *camera_gobj)
 
     func_ovl2_8010C55C(cam, &sp30, gCMManagerCameraStruct.unk_cmstruct_0x54);
 
-    sp54.y = gCMManagerPauseCameraEyeY + gCMManagerCameraStruct.unk_cmstruct_0x48;
-    sp54.x = gCMManagerPauseCameraEyeX + gCMManagerCameraStruct.unk_cmstruct_0x4C;
+    sp54.y = gCMManagerPauseCameraEyeX + gCMManagerCameraStruct.unk_cmstruct_0x48;
+    sp54.x = gCMManagerPauseCameraEyeY + gCMManagerCameraStruct.unk_cmstruct_0x4C;
 
     sp48.y = -bitmap_sinf(sp54.x);
     sp48.z = bitmap_cosf(sp54.x);
@@ -863,8 +863,8 @@ void jtgt_ovl2_8010CDAC(GObj *camera_gobj)
 
     func_ovl2_8010C55C(cam, &sp30, gCMManagerCameraStruct.unk_cmstruct_0x84);
 
-    sp58 = gCMManagerPauseCameraEyeY + gCMManagerCameraStruct.unk_cmstruct_0x78;
-    temp_f12 = gCMManagerPauseCameraEyeX + gCMManagerCameraStruct.unk_cmstruct_0x7C;
+    sp58 = gCMManagerPauseCameraEyeX + gCMManagerCameraStruct.unk_cmstruct_0x78;
+    temp_f12 = gCMManagerPauseCameraEyeY + gCMManagerCameraStruct.unk_cmstruct_0x7C;
 
     sp48.y = -bitmap_sinf(temp_f12);
     sp48.z = bitmap_cosf(temp_f12);
@@ -929,7 +929,7 @@ void cmManagerSetCameraStatusPrev(void)
 }
 
 // 0x8010D030
-void func_ovl2_8010D030(AObjScript *arg0, f32 arg1, Vec3f *arg2)
+void func_ovl2_8010D030(AObjAnimJoint *arg0, f32 arg1, Vec3f *arg2)
 {
     cmManagerSetCameraStatusID(2);
 
@@ -1143,12 +1143,12 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 
     gCMManagerCameraStruct.target_dist = 10000.0F;
 
-    gCMManagerPauseCameraEyeX = gCMManagerPauseCameraEyeY = 0.0F;
+    gCMManagerPauseCameraEyeY = gCMManagerPauseCameraEyeX = 0.0F;
 
-    sp4C.y = -bitmap_sinf(gCMManagerPauseCameraEyeX);
-    sp4C.z = bitmap_cosf(gCMManagerPauseCameraEyeX);
-    sp4C.x = bitmap_sinf(gCMManagerPauseCameraEyeY) * sp4C.z;
-    sp4C.z *= bitmap_cosf(gCMManagerPauseCameraEyeY);
+    sp4C.y = -bitmap_sinf(gCMManagerPauseCameraEyeY);
+    sp4C.z = bitmap_cosf(gCMManagerPauseCameraEyeY);
+    sp4C.x = bitmap_sinf(gCMManagerPauseCameraEyeX) * sp4C.z;
+    sp4C.z *= bitmap_cosf(gCMManagerPauseCameraEyeX);
 
     cam->vec.at.x = cam->vec.at.z = 0.0F;
     cam->vec.at.y = 300.0F;

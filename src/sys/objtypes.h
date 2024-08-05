@@ -57,8 +57,7 @@ union OMUserData
     void *p;
 };
 
-// Not to be confused with SGI's Acmd
-union AObjScript
+union AObjFigatree
 {
     struct
     {
@@ -70,6 +69,14 @@ union AObjScript
 
     s16 shalf;
     u16 uhalf;
+};
+
+union AObjAnimJoint
+{
+    f32 f;
+    s32 s;
+    u32 u;
+    void *p;
 };
 
 struct _AObj
@@ -306,7 +313,7 @@ struct _MObj
     f32 texture_frame;
     u8 filler_0x8C[0x90 - 0x8C];
     AObj *aobj;
-    AObjScript *aobj_script;
+    AObjAnimJoint *matanim_joint;
     f32 anim_remain;            // Animation frames remaining, multi-purpose?
     f32 anim_rate;              // Animation playback rate / interpolation, multi-purpose?
     f32 anim_frame;             // Current animation frame, multi-purpose?
@@ -401,7 +408,13 @@ struct _DObj
     u8 ommtx_len;
     OMMtx *ommtx[5];
     AObj *aobj;
-    AObjScript *aobj_script;
+
+    union AObjScripts
+    {
+        AObjAnimJoint *anim_joint;
+        AObjFigatree *figatree;
+    };
+    
 
     f32 anim_remain;// Multi-purpose? Usually frames remaining, but used as rotation step in Crate/Barrel smash GFX?
     f32 anim_rate;  // Multi-purpose? Fighters use this as animation playback rate / interpolation, but it is used as rotation step in Crate/Barrel smash GFX?
@@ -465,7 +478,7 @@ struct _Camera
     OMMtx *ommtx[2];
 
     AObj *aobj;
-    AObjScript *aobj_script;
+    AObjAnimJoint *camanim_joint;
 
     f32 anim_remain;
     f32 anim_rate;

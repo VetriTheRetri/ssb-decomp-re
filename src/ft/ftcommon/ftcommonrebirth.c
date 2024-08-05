@@ -60,7 +60,7 @@ loop: // This makes no sense
         other_gobj = other_gobj->link_next;
     }
     rebirth_vars.pos.x = dFTCommonRebirthOffsetsX[halo_number] + halo_spawn_pos.x;
-    rebirth_vars.pos.y = gMPCollisionGroundData->blastzone_top;
+    rebirth_vars.pos.y = gMPCollisionGroundData->map_bound_top;
     rebirth_vars.pos.z = 0.0F;
 
     ftManagerInitFighter(this_gobj, &rebirth_vars);

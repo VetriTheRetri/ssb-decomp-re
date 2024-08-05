@@ -1250,7 +1250,7 @@ sb32 efGroundCheckEffectInBounds(GObj *effect_gobj)
 
     if (ep->effect_vars.ground_effect.lr == nGMFacingL)
     {
-        if (dobj->translate.vec.f.x <= (gMPCollisionGroundData->blastzone_left + 500.0F))
+        if (dobj->translate.vec.f.x <= (gMPCollisionGroundData->map_bound_left + 500.0F))
         {
             efManagerSetPrevStructAlloc(ep);
             omEjectGObj(effect_gobj);
@@ -1258,7 +1258,7 @@ sb32 efGroundCheckEffectInBounds(GObj *effect_gobj)
             return FALSE;
         }
     }
-    else if (dobj->translate.vec.f.x >= (gMPCollisionGroundData->blastzone_right - 500.0F))
+    else if (dobj->translate.vec.f.x >= (gMPCollisionGroundData->map_bound_right - 500.0F))
     {
         efManagerSetPrevStructAlloc(ep);
         omEjectGObj(effect_gobj);
@@ -1379,9 +1379,9 @@ void efGroundUpdatePhysics(GObj *effect_gobj, s32 effect_id)
     if (ep->effect_vars.ground_effect.lr == nGMFacingR)
     {
         dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F);
-        dobj->translate.vec.f.x = gMPCollisionGroundData->blastzone_left + 500.0F;
+        dobj->translate.vec.f.x = gMPCollisionGroundData->map_bound_left + 500.0F;
     }
-    else dobj->translate.vec.f.x = gMPCollisionGroundData->blastzone_right - 500.0F;
+    else dobj->translate.vec.f.x = gMPCollisionGroundData->map_bound_right - 500.0F;
 
     if (sEFGroundActor.effect_data->effect_descs[effect_id].proc_groundeffect != NULL)
     {

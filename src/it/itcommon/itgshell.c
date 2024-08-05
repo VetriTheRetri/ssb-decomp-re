@@ -187,8 +187,8 @@ void itGShellSpinAddAnim(GObj *item_gobj)
 // 0x80178704
 void itGShellCommonClearAnim(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->mobj->aobj_script = NULL;
-    DObjGetStruct(item_gobj)->aobj_script = NULL;
+    DObjGetStruct(item_gobj)->mobj->matanim_joint = NULL;
+    DObjGetStruct(item_gobj)->anim_joint = NULL;
 }
 
 // 0x8017871C

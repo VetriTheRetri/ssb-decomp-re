@@ -308,7 +308,7 @@
 		   // jumps
 #define ITKABIGON_MAP_OFF_Y                                                                                            \
 	200.0F // Halt jump this many units away from top blastonze / despawn if
-		   // Y-position is less than bottom blastzone + this value
+		   // Y-position is less than bottom map_bound + this value
 
 #define ITTOSAKINTO_LIFETIME 360
 #define ITTOSAKINTO_FLAP_VEL_X 10.0F // Semi-constant horizontal velocity that may randomly be inverted
@@ -358,7 +358,7 @@
 #define ITSPEAR_SWARM_CALL_VEL_Y 60.0F // ???
 #define ITSPEAR_SWARM_CALL_OFF_X                                                                                       \
 	500.0F // Begin swarm when leader is this many units away from the side
-		   // blastzone
+		   // map_bound
 #define ITSPEAR_SWARM_CALL_WAIT                                                                                        \
 	51.0F // Fly off into the distance and call Beedrill swarm on this frame of
 		  // the leader's wait animation
@@ -417,7 +417,7 @@
 		   // box
 #define ITSAWAMURA_DESPAWN_OFF_X                                                                                       \
 	500.0F							// Despawn if Hitmonlee is within this many units of the side
-									// blastzones
+									// map_bounds
 #define ITSAWAMURA_KICK_SIZE 300.0F // Size of kick hitbox
 #define ITSAWAMURA_KICK_VEL_X 400.0F
 #define ITSAWAMURA_GRAVITY 2.4F

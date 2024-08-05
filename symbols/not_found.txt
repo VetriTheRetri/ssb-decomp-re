@@ -886,8 +886,8 @@ sGRWallpaperGObj = 0x801313D8;
 sGRCommonFileNodes = 0x801313E0;
 
 gCMManagerCameraGObj = 0x80131460;
-gCMManagerPauseCameraEyeX = 0x80131464;
-gCMManagerPauseCameraEyeY = 0x80131468;
+gCMManagerPauseCameraEyeY = 0x80131464;
+gCMManagerPauseCameraEyeX = 0x80131468;
 gCMManagerMtx = 0x80131470;
 gCMManagerCameraStruct = 0x801314B0;
 
@@ -898,7 +898,7 @@ sIFCommonPlayerStocksNum = 0x801317CC;
 sIFCommonPlayerStocksGObj = 0x801317D0;
 sIFCommonTimerLimit = 0x801317E0;
 sIFCommonBattlePausePlayer = 0x801317E4;
-sIFCommonBattlePausePlayerLOD = 0x801317E5;
+sIFCommonBattlePausePlayerDetail = 0x801317E5;
 sIFCommonBattlePauseCameraRestoreWait = 0x801317E6;
 sIFCommonBattlePauseCameraEyeXOrigin = 0x801317E8;
 sIFCommonBattlePauseCameraEyeYOrigin = 0x801317EC;

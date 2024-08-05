@@ -212,7 +212,8 @@ typedef enum AObjTrackKind
 
 } AObjTrackKind;
 
-typedef union  AObjScript           AObjScript;
+typedef union  AObjFigatree         AObjFigatree;
+typedef union  AObjAnimJoint        AObjAnimJoint;
 typedef struct GObj                 GObj;
 typedef struct GObjLink             GObjLink;
 typedef struct _GObjProcess         GObjProcess;

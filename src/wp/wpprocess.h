@@ -13,7 +13,7 @@ void wpProcessUpdateHitPositions(GObj* weapon_gobj);
 // available, clear targets if timer reaches 0)
 void wpProcessUpdateHitRecord(GObj* weapon_gobj);
 
-// Main weapon logic GObj process (animation, physics, collision, blastzone
+// Main weapon logic GObj process (animation, physics, collision, map_bound
 // check)
 void wpProcessProcWeaponMain(GObj* weapon_gobj);
 

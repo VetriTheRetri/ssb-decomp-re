@@ -102,7 +102,7 @@ sb32 itKabigonFallProcUpdate(GObj *item_gobj)
     }
     ip->item_vars.kabigon.rumble_wait--;
 
-    if (dobj->translate.vec.f.y < (gMPCollisionGroundData->blastzone_bottom + ITKABIGON_MAP_OFF_Y))
+    if (dobj->translate.vec.f.y < (gMPCollisionGroundData->map_bound_bottom + ITKABIGON_MAP_OFF_Y))
     {
         return TRUE;
     }
@@ -190,7 +190,7 @@ sb32 itKabigonJumpProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if (dobj->translate.vec.f.y >= (gMPCollisionGroundData->blastzone_top - ITKABIGON_MAP_OFF_Y))
+    if (dobj->translate.vec.f.y >= (gMPCollisionGroundData->map_bound_top - ITKABIGON_MAP_OFF_Y))
     {
         ip->it_multi--;
 

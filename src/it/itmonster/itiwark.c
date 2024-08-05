@@ -159,7 +159,7 @@ sb32 itIwarkAttackProcUpdate(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    f32 pos_y = gMPCollisionGroundData->blastzone_top - ITIWARK_FLY_STOP_Y;
+    f32 pos_y = gMPCollisionGroundData->map_bound_top - ITIWARK_FLY_STOP_Y;
 
     if (dobj->translate.vec.f.y >= pos_y)
     {

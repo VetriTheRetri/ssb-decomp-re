@@ -386,7 +386,7 @@ typedef struct gmPlayerBlock
 							// amount
 	u8 tag_kind;			// Player tag sprite index (i.e. 1P, 2P, 3P, 4P, CP or heart)
 	s8 stock_count;			// -1 = player has no stocks
-	ub8 is_rebirth_multi;	// Respawn flag of multi-man enemy teams (Yoshi,
+	ub8 is_spgame_team;	// Respawn flag of multi-man enemy teams (Yoshi,
 							// Kirby, Fighting Polygons) in 1P mode
 	u8 placement;			// Player's placement in battle results
 	s32 falls;

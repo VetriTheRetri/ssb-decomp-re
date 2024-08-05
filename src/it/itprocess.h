@@ -11,7 +11,7 @@ void itProcessUpdateHitPositions(GObj* item_gobj);
 // Update item's record of interacted targets (Decrement rehit timer if available, clear targets if timer reaches 0)
 void itProcessUpdateHitRecord(GObj* item_gobj);
 
-// Main item logic GObj process (animation, physics, collision, blastzone check)
+// Main item logic GObj process (animation, physics, collision, map_bound check)
 void itProcessProcItemMain(GObj* item_gobj);
 
 // Set type of interaction and record hit target when item's hitbox collides with another GObj

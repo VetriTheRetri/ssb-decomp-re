@@ -267,8 +267,8 @@ void itRShellSpinAddAnim(GObj *item_gobj) // Identical to Green Shell function
 // 0x8017A734
 void itRShellCommonClearAnim(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->mobj->aobj_script = NULL;
-    DObjGetStruct(item_gobj)->aobj_script = NULL;
+    DObjGetStruct(item_gobj)->mobj->matanim_joint = NULL;
+    DObjGetStruct(item_gobj)->anim_joint = NULL;
 }
 
 // 0x8017A74C

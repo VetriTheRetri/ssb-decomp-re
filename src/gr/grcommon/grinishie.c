@@ -246,7 +246,7 @@ void grInishieScaleUpdateFall(void)
     gGRCommonStruct.inishie.scale[0].platform_dobj->translate.vec.f.y -= gGRCommonStruct.inishie.splat_accelerate;
     gGRCommonStruct.inishie.scale[1].platform_dobj->translate.vec.f.y -= gGRCommonStruct.inishie.splat_accelerate;
 
-    deadzone = gMPCollisionGroundData->blastzone_bottom + (-1000.0F);
+    deadzone = gMPCollisionGroundData->map_bound_bottom + (-1000.0F);
 
     if ((gGRCommonStruct.inishie.scale[0].platform_dobj->translate.vec.f.y < deadzone) && (gGRCommonStruct.inishie.scale[1].platform_dobj->translate.vec.f.y < deadzone))
     {
@@ -269,8 +269,8 @@ void grInishieScaleUpdateStep(void)
     {
         gGRCommonStruct.inishie.splat_status = nGRInishieScaleStatusRetract;
 
-        gcAddDObjAnimJoint(gGRCommonStruct.inishie.scale[0].platform_dobj, (AObjScript*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
-        gcAddDObjAnimJoint(gGRCommonStruct.inishie.scale[1].platform_dobj, (AObjScript*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
+        gcAddDObjAnimJoint(gGRCommonStruct.inishie.scale[0].platform_dobj, (AObjAnimJoint*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
+        gcAddDObjAnimJoint(gGRCommonStruct.inishie.scale[1].platform_dobj, (AObjAnimJoint*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
     }
 }
 

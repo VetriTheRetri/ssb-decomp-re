@@ -107,7 +107,7 @@ void ftCommonDeadCheckRebirth(GObj *fighter_gobj)
     }
     else if (gBattleState->game_rules & GMBATTLE_GAMERULE_1PGAME)
     {
-        if (gBattleState->players[fp->player].is_rebirth_multi != FALSE)
+        if (gBattleState->players[fp->player].is_spgame_team != FALSE)
         {
             func_ovl65_8018E18C(fighter_gobj);
 
@@ -421,7 +421,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
     switch (fp->command_vars.flags.flag1)
     {
     case 1:
-        if (DObjGetStruct(fighter_gobj)->translate.vec.f.y < gMPCollisionGroundData->blastzone_bottom)
+        if (DObjGetStruct(fighter_gobj)->translate.vec.f.y < gMPCollisionGroundData->map_bound_bottom)
         {
             fp->phys_info.vel_air.y = 0.0F;
         }
@@ -450,9 +450,9 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
             DObjGetStruct(fighter_gobj)->translate.vec.f.x = CameraGetStruct(gCMManagerCameraGObj)->vec.eye.x;
             DObjGetStruct(fighter_gobj)->translate.vec.f.y = CameraGetStruct(gCMManagerCameraGObj)->vec.eye.y + 3000.0F;
 
-            if (gMPCollisionGroundData->blastzone_top < DObjGetStruct(fighter_gobj)->translate.vec.f.y)
+            if (gMPCollisionGroundData->map_bound_top < DObjGetStruct(fighter_gobj)->translate.vec.f.y)
             {
-                DObjGetStruct(fighter_gobj)->translate.vec.f.y = gMPCollisionGroundData->blastzone_top;
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y = gMPCollisionGroundData->map_bound_top;
             }
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEADUP_REBIRTH_WAIT;
 
@@ -547,35 +547,35 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
     {
         return FALSE;
     }
-    if (fp->is_ignore_blastzone)
+    if (fp->is_ignore_map_bound)
     {
-        if (pos->y < gMPCollisionGroundData->blastzone_bottom)
+        if (pos->y < gMPCollisionGroundData->map_bound_bottom)
         {
-            pos->y = gMPCollisionGroundData->blastzone_bottom + 500.0F;
+            pos->y = gMPCollisionGroundData->map_bound_bottom + 500.0F;
 
             fp->phys_info.vel_air.x = 0.0F;
             fp->phys_info.vel_air.y = 0.0F;
             fp->phys_info.vel_air.z = 0.0F;
         }
-        else if (pos->y > gMPCollisionGroundData->blastzone_top)
+        else if (pos->y > gMPCollisionGroundData->map_bound_top)
         {
-            pos->y = gMPCollisionGroundData->blastzone_top - 500.0F;
+            pos->y = gMPCollisionGroundData->map_bound_top - 500.0F;
 
             fp->phys_info.vel_air.x = 0.0F;
             fp->phys_info.vel_air.y = 0.0F;
             fp->phys_info.vel_air.z = 0.0F;
         }
-        if (pos->x > gMPCollisionGroundData->blastzone_right)
+        if (pos->x > gMPCollisionGroundData->map_bound_right)
         {
-            pos->x = gMPCollisionGroundData->blastzone_right - 500.0F;
+            pos->x = gMPCollisionGroundData->map_bound_right - 500.0F;
 
             fp->phys_info.vel_air.x = 0.0F;
             fp->phys_info.vel_air.y = 0.0F;
             fp->phys_info.vel_air.z = 0.0F;
         }
-        else if (pos->x < gMPCollisionGroundData->blastzone_left)
+        else if (pos->x < gMPCollisionGroundData->map_bound_left)
         {
-            pos->x = gMPCollisionGroundData->blastzone_left + 500.0F;
+            pos->x = gMPCollisionGroundData->map_bound_left + 500.0F;
 
             fp->phys_info.vel_air.x = 0.0F;
             fp->phys_info.vel_air.y = 0.0F;
@@ -585,27 +585,27 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
     }
     else if (!(fp->is_nullstatus))
     {
-        if ((gBattleState->game_type == nGMBattleGameType1PGame) && (gBattleState->players[fp->player].is_rebirth_multi != FALSE))
+        if ((gBattleState->game_type == nGMBattleGameType1PGame) && (gBattleState->players[fp->player].is_spgame_team != FALSE))
         {
-            if (pos->y < gMPCollisionGroundData->unk_bound_bottom)
+            if (pos->y < gMPCollisionGroundData->map_bound_team_bottom)
             {
                 ftCommonDeadDownSetStatus(fighter_gobj);
 
                 return TRUE;
             }
-            if (pos->x > gMPCollisionGroundData->unk_bound_right)
+            if (pos->x > gMPCollisionGroundData->map_bound_team_right)
             {
                 ftCommonDeadRightSetStatus(fighter_gobj);
 
                 return TRUE;
             }
-            if (pos->x < gMPCollisionGroundData->unk_bound_left)
+            if (pos->x < gMPCollisionGroundData->map_bound_team_left)
             {
                 ftCommonDeadLeftSetStatus(fighter_gobj);
 
                 return TRUE;
             }
-            if (pos->y > gMPCollisionGroundData->unk_bound_top)
+            if (pos->y > gMPCollisionGroundData->map_bound_team_top)
             {
                 if (mtTrigGetRandomFloat() < (1.0F / 6.0F))
                 {
@@ -618,25 +618,25 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
                 return TRUE;
             }
         }
-        else if (pos->y < gMPCollisionGroundData->blastzone_bottom)
+        else if (pos->y < gMPCollisionGroundData->map_bound_bottom)
         {
             ftCommonDeadDownSetStatus(fighter_gobj);
 
             return TRUE;
         }
-        else if (pos->x > gMPCollisionGroundData->blastzone_right)
+        else if (pos->x > gMPCollisionGroundData->map_bound_right)
         {
             ftCommonDeadRightSetStatus(fighter_gobj);
 
             return TRUE;
         }
-        else if (pos->x < gMPCollisionGroundData->blastzone_left)
+        else if (pos->x < gMPCollisionGroundData->map_bound_left)
         {
             ftCommonDeadLeftSetStatus(fighter_gobj);
 
             return TRUE;
         }
-        else if (pos->y > gMPCollisionGroundData->blastzone_top)
+        else if (pos->y > gMPCollisionGroundData->map_bound_top)
         {
             if (mtTrigGetRandomFloat() < (1.0F / 6.0F))
             {

@@ -76,7 +76,7 @@ void gcRemoveMatAnimJointAll(GObj *gobj)
     }
 }
 
-void gcAddDObjAnimJoint(DObj *dobj, AObjScript *aobj_script, f32 anim_frame) 
+void gcAddDObjAnimJoint(DObj *dobj, AObjAnimJoint *anim_joint, f32 anim_frame) 
 {
     AObj *aobj = dobj->aobj;
 
@@ -85,12 +85,12 @@ void gcAddDObjAnimJoint(DObj *dobj, AObjScript *aobj_script, f32 anim_frame)
         aobj->kind = 0;
         aobj       = aobj->next;
     }
-    dobj->aobj_script = aobj_script;
+    dobj->anim_joint = anim_joint;
     dobj->anim_remain = -F32_HALF;
     dobj->anim_frame  = anim_frame;
 }
 
-void gcAddMObjMatAnimJoint(MObj *mobj, AObjScript *aobj_script, f32 anim_frame) 
+void gcAddMObjMatAnimJoint(MObj *mobj, AObjAnimJoint *anim_joint, f32 anim_frame) 
 {
     AObj *aobj = mobj->aobj;
 
@@ -99,7 +99,7 @@ void gcAddMObjMatAnimJoint(MObj *mobj, AObjScript *aobj_script, f32 anim_frame)
         aobj->kind = 0;
         aobj       = aobj->next;
     }
-    mobj->aobj_script = aobj_script;
+    mobj->matanim_joint = anim_joint;
     mobj->anim_remain = -F32_HALF;
     mobj->anim_frame  = anim_frame;
 }

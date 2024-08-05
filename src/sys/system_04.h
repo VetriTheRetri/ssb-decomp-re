@@ -31,8 +31,8 @@ extern s32 D_8003B938;
 extern s32 D_8003B93C;
 
 // functions
-extern void gcAddDObjAnimJoint(DObj*, AObjScript*, f32);
-extern void gcAddMObjMatAnimJoint(MObj*, AObjScript*, f32);
+extern void gcAddDObjAnimJoint(DObj*, AObjAnimJoint*, f32);
+extern void gcAddMObjMatAnimJoint(MObj*, AObjAnimJoint*, f32);
 extern void func_8000BD8C(struct GObjCommon *, union AnimCmd **, f32);
 extern void func_8000BE28(struct GObjCommon *, union AnimCmd ***, f32);
 extern void func_8000BED8(struct GObjCommon *, union AnimCmd **, union AnimCmd ***, f32);

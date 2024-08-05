@@ -5078,7 +5078,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                 }
                 ft_com->ftcom_flags_0x4A_b0 = FALSE;
 
-                if ((fp->joint[nFTPartsJointTopN]->translate.vec.f.y < (gMPCollisionGroundData->blastzone_top - 4000.0F)) && (fp->phys_info.vel_air.y < 0.0F))
+                if ((fp->joint[nFTPartsJointTopN]->translate.vec.f.y < (gMPCollisionGroundData->map_bound_top - 4000.0F)) && (fp->phys_info.vel_air.y < 0.0F))
                 {
                     if (fp->jumps_used < fp->attributes->jumps_max)
                     {

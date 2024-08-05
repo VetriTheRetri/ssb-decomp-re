@@ -776,7 +776,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
     fp->camera_zoom_range = 1.0F;
 
     fp->is_playertag_bossend = FALSE;
-    fp->is_ignore_blastzone = FALSE;
+    fp->is_ignore_map_bound = FALSE;
 
     fp->is_have_translate_scale = (attributes->translate_scales != NULL) ? TRUE : FALSE;
 

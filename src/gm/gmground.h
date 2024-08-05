@@ -59,20 +59,20 @@ typedef struct mpGroundData
 	s16 cam_bound_bottom;
 	s16 cam_bound_right;
 	s16 cam_bound_left;
-	s16 blastzone_top;
-	s16 blastzone_bottom;
-	s16 blastzone_right;
-	s16 blastzone_left;
+	s16 map_bound_top;
+	s16 map_bound_bottom;
+	s16 map_bound_right;
+	s16 map_bound_left;
 	u32 unk_0x7C;
 	u32 unk_0x80;
 	gmGroundUnkBytes* unk_0x84;
 	s16 altitude_warning;
 	s16 cam_bound_team_top;
 	u8 filler_0x88[0x92 - 0x8C];
-	s16 unk_bound_top;
-	s16 unk_bound_bottom;
-	s16 unk_bound_right;
-	s16 unk_bound_left;
+	s16 map_bound_team_top;
+	s16 map_bound_team_bottom;
+	s16 map_bound_team_right;
+	s16 map_bound_team_left;
 
 } mpGroundData;
 

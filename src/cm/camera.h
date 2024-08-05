@@ -8,10 +8,10 @@
 extern GObj* gCMManagerCameraGObj;
 
 // 0x80131464
-extern f32 gCMManagerPauseCameraEyeX;
+extern f32 gCMManagerPauseCameraEyeY;
 
 // 0x80131468
-extern f32 gCMManagerPauseCameraEyeY; // Also from .bss
+extern f32 gCMManagerPauseCameraEyeX; // Also from .bss
 
 // 0x80131470
 extern Mtx44f gCMManagerMtx; // Mtx44f?

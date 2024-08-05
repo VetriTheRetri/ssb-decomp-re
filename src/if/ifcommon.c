@@ -1,5 +1,4 @@
-#include "interface.h"
-
+#include <if/interface.h>
 #include <ft/fighter.h>
 #include <it/item.h>
 #include <gr/ground.h>
@@ -144,9 +143,6 @@ extern s32 gPixelComponentSize;
 extern s32 gZBuffer;
 extern GObj *gOMObjCurrentRendering; // Some kind of camera GObj
 
-extern f32 gCMManagerPauseCameraEyeX;
-extern f32 gCMManagerPauseCameraEyeY;
-
 extern GObj *D_ovl2_80131A10; // I don't think these belong in this file
 extern GObj *D_ovl2_80131A14;
 
@@ -190,7 +186,7 @@ u32 sIFCommonTimerLimit;
 u8 sIFCommonBattlePausePlayer;
 
 // 0x801317E5 - Poly-mode of pausing player?
-u8 sIFCommonBattlePausePlayerLOD;
+u8 sIFCommonBattlePausePlayerDetail;
 
 // 0x801317E6 - Number of frames the camera takes to revert to its pre-pause position
 u16 sIFCommonBattlePauseCameraRestoreWait;
@@ -2906,7 +2902,7 @@ void ifCommonBattlePauseDecalMakeSObjID(GObj *interface_gobj, s32 id)
 void ifCommonBattlePauseMakeSObjsAll(GObj *interface_gobj)
 {
     // TO DO: make an enum for pause menu icon indexes
-    s32 draw_count = (sIFCommonBattlePauseKindInterface != ifPause_Kind_Default) ? 10 : 12;
+    s32 draw_count = (sIFCommonBattlePauseKindInterface != nIFPauseKindDefault) ? 10 : 12;
     s32 i;
 
     for (i = 0; i < draw_count; i++)
@@ -3010,8 +3006,10 @@ void ifCommonBattleGoUpdateInterface(void)
 
                     fp = ftGetStruct(fighter_gobj);
 
-                    if ((fp->status_info.status_id == nFTCommonStatusSleep) && (ftCommonSleepCheckIgnorePauseMenu(fighter_gobj) != FALSE)) continue;
-
+                    if ((fp->status_info.status_id == nFTCommonStatusSleep) && (ftCommonSleepCheckIgnorePauseMenu(fighter_gobj) != FALSE)) 
+                    {
+                        continue;
+                    }
                     if (!(fp->is_ignore_training_menu))
                     {
                         if (gBattleState->game_type == nGMBattleGameTypeBonus)
@@ -3026,22 +3024,22 @@ void ifCommonBattleGoUpdateInterface(void)
 
                             func_ovl2_8010D0A4(&sp68, &sp5C);
 
-                            sIFCommonBattlePauseKindInterface = ifPause_Kind_Bonus;
+                            sIFCommonBattlePauseKindInterface = nIFPauseKindBonus;
                         }
                         else if (cmManagerCheckPausePlayerOutBounds(&DObjGetStruct(fighter_gobj)->translate.vec.f) != FALSE)
                         {
-                            sIFCommonBattlePauseKindInterface = ifPause_Kind_PlayerNA;
+                            sIFCommonBattlePauseKindInterface = nIFPauseKindPlayerNA;
                         }
                         else
                         {
                             func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom, 0.1F, 29.0F);
 
-                            sIFCommonBattlePauseCameraEyeXOrigin = gCMManagerPauseCameraEyeY;
-                            sIFCommonBattlePauseCameraEyeYOrigin = gCMManagerPauseCameraEyeX;
+                            sIFCommonBattlePauseCameraEyeXOrigin = gCMManagerPauseCameraEyeX;
+                            sIFCommonBattlePauseCameraEyeYOrigin = gCMManagerPauseCameraEyeY;
 
-                            sIFCommonBattlePauseKindInterface = ifPause_Kind_Default;
+                            sIFCommonBattlePauseKindInterface = nIFPauseKindDefault;
 
-                            sIFCommonBattlePausePlayerLOD = fp->detail_current;
+                            sIFCommonBattlePausePlayerDetail = fp->detail_current;
 
                             ftParamSetModelPartDetailAll(fighter_gobj, nFTPartsDetailHigh);
                         }
@@ -3077,35 +3075,35 @@ void ifCommonBattlePauseUpdateInterface(void)
     u16 button_new = gPlayerControllers[sIFCommonBattlePausePlayer].button_new;
     u16 button_press = gPlayerControllers[sIFCommonBattlePausePlayer].button_press;
 
-    if (sIFCommonBattlePauseKindInterface == ifPause_Kind_Default)
+    if (sIFCommonBattlePauseKindInterface == nIFPauseKindDefault)
     {
         s32 stick_x = gPlayerControllers[sIFCommonBattlePausePlayer].stick_range.x;
         s32 stick_y = gPlayerControllers[sIFCommonBattlePausePlayer].stick_range.y;
 
         if (ABS(stick_x) > 8.0F)
         {
-            gCMManagerPauseCameraEyeY += (stick_x * 0.000333F);
+            gCMManagerPauseCameraEyeX += (stick_x * 0.000333F);
 
-            if (gCMManagerPauseCameraEyeY > F_CLC_DTOR32(50.0F))
+            if (gCMManagerPauseCameraEyeX > F_CLC_DTOR32(50.0F))
             {
-                gCMManagerPauseCameraEyeY = F_CLC_DTOR32(50.0F);
+                gCMManagerPauseCameraEyeX = F_CLC_DTOR32(50.0F);
             }
-            else if (gCMManagerPauseCameraEyeY < F_CLC_DTOR32(-50.0F))
+            else if (gCMManagerPauseCameraEyeX < F_CLC_DTOR32(-50.0F))
             {
-                gCMManagerPauseCameraEyeY = F_CLC_DTOR32(-50.0F);
+                gCMManagerPauseCameraEyeX = F_CLC_DTOR32(-50.0F);
             }
         }
         if (ABS(stick_y) > 8.0F)
         {
-            gCMManagerPauseCameraEyeX -= (stick_y * 0.000333F);
+            gCMManagerPauseCameraEyeY -= (stick_y * 0.000333F);
 
-            if (gCMManagerPauseCameraEyeX > F_CLC_DTOR32(20.0F))
+            if (gCMManagerPauseCameraEyeY > F_CLC_DTOR32(20.0F))
             {
-                gCMManagerPauseCameraEyeX = F_CLC_DTOR32(20.0F);
+                gCMManagerPauseCameraEyeY = F_CLC_DTOR32(20.0F);
             }
-            else if (gCMManagerPauseCameraEyeX < F_CLC_DTOR32(-20.0F))
+            else if (gCMManagerPauseCameraEyeY < F_CLC_DTOR32(-20.0F))
             {
-                gCMManagerPauseCameraEyeX = F_CLC_DTOR32(-20.0F);
+                gCMManagerPauseCameraEyeY = F_CLC_DTOR32(-20.0F);
             }
         }
     }
@@ -3113,7 +3111,7 @@ void ifCommonBattlePauseUpdateInterface(void)
     {
         if (button_new & START_BUTTON)
         {
-            if (sIFCommonBattlePauseKindInterface != ifPause_Kind_PlayerNA)
+            if (sIFCommonBattlePauseKindInterface != nIFPauseKindPlayerNA)
             {
                 cmManagerSetCameraStatusPrev();
 
@@ -3154,7 +3152,7 @@ void ifCommonBattlePauseUpdateInterface(void)
             return;
         }
     }
-    if (sIFCommonBattlePauseKindInterface != ifPause_Kind_PlayerNA)
+    if (sIFCommonBattlePauseKindInterface != nIFPauseKindPlayerNA)
     {
         cmManagerRunGlobalProcCamera(gCMManagerCameraGObj);
         grWallpaperRunGObjProcess();
@@ -3168,8 +3166,8 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
     {
         sIFCommonBattlePauseCameraRestoreWait--;
 
-        gCMManagerPauseCameraEyeY += (sIFCommonBattlePauseCameraEyeXOrigin - gCMManagerPauseCameraEyeY) * 0.1F;
-        gCMManagerPauseCameraEyeX += (sIFCommonBattlePauseCameraEyeYOrigin - gCMManagerPauseCameraEyeX) * 0.1F;
+        gCMManagerPauseCameraEyeX += (sIFCommonBattlePauseCameraEyeXOrigin - gCMManagerPauseCameraEyeX) * 0.1F;
+        gCMManagerPauseCameraEyeY += (sIFCommonBattlePauseCameraEyeYOrigin - gCMManagerPauseCameraEyeY) * 0.1F;
 
         cmManagerRunGlobalProcCamera(gCMManagerCameraGObj);
         grWallpaperRunGObjProcess();
@@ -3184,15 +3182,15 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
 
     gBattleState->game_status = nGMBattleGameStatusGo;
 
-    gCMManagerPauseCameraEyeY = sIFCommonBattlePauseCameraEyeXOrigin;
-    gCMManagerPauseCameraEyeX = sIFCommonBattlePauseCameraEyeYOrigin;
+    gCMManagerPauseCameraEyeX = sIFCommonBattlePauseCameraEyeXOrigin;
+    gCMManagerPauseCameraEyeY = sIFCommonBattlePauseCameraEyeYOrigin;
 
     func_800264A4_270A4();
     auSetBGMVolume(0, 0x7800);
 
-    if (sIFCommonBattlePauseKindInterface == ifPause_Kind_Default)
+    if (sIFCommonBattlePauseKindInterface == nIFPauseKindDefault)
     {
-        ftParamSetModelPartDetailAll(gBattleState->players[sIFCommonBattlePausePlayer].fighter_gobj, sIFCommonBattlePausePlayerLOD);
+        ftParamSetModelPartDetailAll(gBattleState->players[sIFCommonBattlePausePlayer].fighter_gobj, sIFCommonBattlePausePlayerDetail);
     }
     func_8000A5E4();
 }

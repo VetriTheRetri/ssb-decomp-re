@@ -1254,7 +1254,7 @@ MObj* omAddMObjForDObj(DObj* dobj, MObjSub* mobjsub)
 	mobj->texture_id_next = 0;
 	mobj->texture_frame = 0;
 	mobj->aobj = NULL;
-	mobj->aobj_script = NULL;
+	mobj->matanim_joint = NULL;
 	mobj->anim_remain = AOBJ_FRAME_NULL;
 	mobj->anim_rate = 1.0F;
 	mobj->anim_frame = 0.0F;
@@ -1303,7 +1303,7 @@ void omInitDObj(DObj* dobj)
 		dobj->ommtx[i] = NULL;
 
 	dobj->aobj = NULL;
-	dobj->aobj_script = NULL;
+	dobj->anim_joint = NULL;
 	dobj->anim_remain = AOBJ_FRAME_NULL;
 	dobj->anim_rate = 1.0F;
 	dobj->anim_frame = 0.0F;
@@ -1549,7 +1549,7 @@ Camera* omAddCameraForGObj(GObj* gobj)
 	new_cam->unk_camera_0x8C = 0;
 
 	new_cam->aobj = NULL;
-	new_cam->aobj_script = NULL;
+	new_cam->camanim_joint = NULL;
 
 	new_cam->anim_remain = AOBJ_FRAME_NULL;
 	new_cam->anim_rate = 1.0F;

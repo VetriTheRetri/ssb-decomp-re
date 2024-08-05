@@ -224,9 +224,9 @@ typedef enum gmFGMVoiceID
 	nGMSoundFGMPublicCheer1,
 	nGMSoundFGMUnkBatS,
 	nGMSoundFGMUnkBatM,
-	nGMSoundFGMDeadPortalLw,	// Bottom blastzone warning sound?
+	nGMSoundFGMDeadPortalLw,	// Bottom map_bound warning sound?
 	nGMSoundFGMDeadPortalHitL, // One of many sounds that play when hitting
-								// the blastzone
+								// the map_bound
 	nGMSoundFGMDeadPortalHitS,
 	nGMSoundFGMUnkMechanical1, // Menu sound?
 	nGMSoundFGMTitlePressStart,

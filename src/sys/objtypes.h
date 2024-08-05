@@ -88,18 +88,17 @@ union AObjAnimJoint
 
 struct _AObj
 {
-    /* 0x00 */ AObj *next;
-    /* 0x04 */ u8 track;
-    /* 0x05 */ u8 kind;
-    /* 0x08 */ f32 length_invert;
-    /* 0x0C */ f32 length;
-    /* 0x10 */ f32 value_base;
-    /* 0x14 */ f32 value_target;
-    /* 0x18 */ f32 rate_base;
-    /* 0x1C */ f32 rate_target;
-    // interpolation control struct?
-    /* 0x20 */ void *interpolate;
-}; // size == 0x24
+    AObj *next;
+    u8 track;
+    u8 kind;
+    f32 length_invert;
+    f32 length;
+    f32 value_base;
+    f32 value_target;
+    f32 step_base;
+    f32 step_target;
+    void *interpolate;
+};
 
 struct _GObjThread
 {

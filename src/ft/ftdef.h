@@ -980,6 +980,26 @@ typedef enum ftExplainCommandKind
 
 } ftExplainCommandKind;
 
+typedef enum ftAnimCommandKind
+{
+    nFTFigatreeCommandEnd,
+    nFTFigatreeCommandBlock,
+    nFTFigatreeCommandSetValBlock,
+    nFTFigatreeCommandSetVal,
+    nFTFigatreeCommandSetValStepBlock,
+    nFTFigatreeCommandSetValStep,
+    nFTFigatreeCommandSetStepTarget,
+    nFTFigatreeCommandSetVal0StepBlock,
+    nFTFigatreeCommandSetVal0Step,
+    nFTFigatreeCommandSetValAfterBlock,
+    nFTFigatreeCommandSetValAfter,
+    nFTFigatreeCommand11,
+    nFTFigatreeCommand12,
+    nFTFigatreeCommandLoop,
+    nFTFigatreeCommandSetFlags
+
+} ftAnimCommandKind;
+
 // Structs
 typedef struct ftStruct					        ftStruct;
 typedef struct ftSpecialHit				        ftSpecialHit;

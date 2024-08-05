@@ -1118,8 +1118,8 @@ AObj* omAddAObjForDObj(DObj* dobj, u8 track)
 	aobj->track = track;
 	aobj->kind = 0;
 	aobj->interpolate = NULL;
-	aobj->rate_target = 0.0F;
-	aobj->rate_base = 0.0F;
+	aobj->step_target = 0.0F;
+	aobj->step_base = 0.0F;
 	aobj->value_target = 0.0F;
 	aobj->value_base = 0.0F;
 	aobj->length = 0.0F;
@@ -1156,8 +1156,8 @@ AObj* omAddAObjForMObj(MObj* mobj, u8 index)
 	aobj->track = index;
 	aobj->kind = 0;
 	aobj->interpolate = NULL;
-	aobj->rate_target = 0.0F;
-	aobj->rate_base = 0.0F;
+	aobj->step_target = 0.0F;
+	aobj->step_base = 0.0F;
 	aobj->value_target = 0.0F;
 	aobj->value_base = 0.0F;
 	aobj->length = 0.0F;
@@ -1195,8 +1195,8 @@ AObj* omAddAObjForCamera(Camera* cam, u8 index)
 	aobj->track = index;
 	aobj->kind = 0;
 	aobj->interpolate = NULL;
-	aobj->rate_target = 0.0F;
-	aobj->rate_base = 0.0F;
+	aobj->step_target = 0.0F;
+	aobj->step_base = 0.0F;
 	aobj->value_target = 0.0F;
 	aobj->value_base = 0.0F;
 	aobj->length = 0.0F;

@@ -9,7 +9,7 @@ s32 D_8003B93C = 10;
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
-void gcSetMatAnimJointRateAll(GObj *gobj, f32 anim_rate)
+void gcSetMatAnimJointStepAll(GObj *gobj, f32 anim_rate)
 {
     MObj *mobj;
     DObj *dobj = DObjGetStruct(gobj);
@@ -271,8 +271,8 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
             switch (command_kind)
             {
-            case nOMObjAnimCommandSetVal0RateLast:
-            case nOMObjAnimCommandSetVal0Rate:
+            case nOMObjAnimCommandSetVal0StepBlock:
+            case nOMObjAnimCommandSetVal0Step:
                 payload = dobj->anim_joint->payload;
                 flags = AObjAnimAdvance(dobj->anim_joint)->flags;
 
@@ -293,8 +293,8 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
                         AObjAnimAdvance(dobj->anim_joint);
 
-                        track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
-                        track_aobjs[i]->rate_target = 0.0F;
+                        track_aobjs[i]->step_base = track_aobjs[i]->step_target;
+                        track_aobjs[i]->step_target = 0.0F;
                         track_aobjs[i]->kind = 3;
 
                         if (payload != 0.0F)
@@ -304,13 +304,13 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetVal0RateLast)
+                if (command_kind == nOMObjAnimCommandSetVal0StepBlock)
                 {
                     dobj->anim_remain += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetValLast:
+            case nOMObjAnimCommandSetValBlock:
             case nOMObjAnimCommandSetVal:
                 payload = dobj->anim_joint->payload;
                 flags = AObjAnimAdvance(dobj->anim_joint)->flags;
@@ -336,20 +336,20 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
                         if (payload != 0.0F)
                         {
-                            track_aobjs[i]->rate_base = (track_aobjs[i]->value_target - track_aobjs[i]->value_base) / payload;
+                            track_aobjs[i]->step_base = (track_aobjs[i]->value_target - track_aobjs[i]->value_base) / payload;
                         }
                         track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
-                        track_aobjs[i]->rate_target = 0.0F;
+                        track_aobjs[i]->step_target = 0.0F;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetValLast)
+                if (command_kind == nOMObjAnimCommandSetValBlock)
                 {
                     dobj->anim_remain += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetValRateLast:
-            case nOMObjAnimCommandSetValRate:
+            case nOMObjAnimCommandSetValStepBlock:
+            case nOMObjAnimCommandSetValStep:
                 payload = dobj->anim_joint->payload;
                 flags = AObjAnimAdvance(dobj->anim_joint)->flags;
 
@@ -370,8 +370,8 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
                         AObjAnimAdvance(dobj->anim_joint);
 
-                        track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
-                        track_aobjs[i]->rate_target = dobj->anim_joint->f;
+                        track_aobjs[i]->step_base = track_aobjs[i]->step_target;
+                        track_aobjs[i]->step_target = dobj->anim_joint->f;
 
                         AObjAnimAdvance(dobj->anim_joint);
 
@@ -384,13 +384,13 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetValRateLast)
+                if (command_kind == nOMObjAnimCommandSetValStepBlock)
                 {
                     dobj->anim_remain += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetTargetRate:
+            case nOMObjAnimCommandSetStepTarget:
                 flags = AObjAnimAdvance(dobj->anim_joint)->flags;
 
                 for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags >>= 1)
@@ -405,7 +405,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         {
                             track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
                         }
-                        track_aobjs[i]->rate_target = dobj->anim_joint->f;
+                        track_aobjs[i]->step_target = dobj->anim_joint->f;
 
                         AObjAnimAdvance(dobj->anim_joint);
                     }
@@ -416,7 +416,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->payload;
                 break;
 
-            case nOMObjAnimCommandSetValAfterLast:
+            case nOMObjAnimCommandSetValAfterBlock:
             case nOMObjAnimCommandSetValAfter:
                 payload = dobj->anim_joint->payload;
                 flags = AObjAnimAdvance(dobj->anim_joint)->flags;
@@ -441,10 +441,10 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         track_aobjs[i]->kind = 1;
                         track_aobjs[i]->length_invert = payload;
                         track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
-                        track_aobjs[i]->rate_target = 0.0F;
+                        track_aobjs[i]->step_target = 0.0F;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetValAfterLast)
+                if (command_kind == nOMObjAnimCommandSetValAfterBlock)
                 {
                     dobj->anim_remain += payload;
                 }

@@ -9,8 +9,6 @@
 extern intptr_t lITHarisenItemAttributes;   // 0x00000220
 extern intptr_t lITHarisenDataStart;        // 0x00002198
 
-extern void func_8000BD8C_C98C(GObj*, void*, f32);
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //
@@ -253,7 +251,7 @@ void func_ovl3_80175408(GObj *item_gobj, s32 index) // Unused
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    func_8000BD8C_C98C(item_gobj, (((uintptr_t)ip->attributes->model_desc + dITHarisenAnimJoint[index]) - (intptr_t)&lITHarisenDataStart), 0.0F); // Linker thing
+    gcAddAnimJointAll(item_gobj, (((uintptr_t)ip->attributes->model_desc + dITHarisenAnimJoint[index]) - (intptr_t)&lITHarisenDataStart), 0.0F); // Linker thing
     func_8000DF34_EB34(item_gobj);
 }
 

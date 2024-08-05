@@ -404,7 +404,7 @@ struct _DObj
     };
 
     u8 flags;
-    u8 unk_dobj_0x55;
+    ub8 is_anim_root;   // TRUE if this DObj's animation script is at the top of the hierarchy?
     u8 ommtx_len;
     OMMtx *ommtx[5];
     AObj *aobj;
@@ -415,10 +415,9 @@ struct _DObj
         AObjFigatree *figatree;
     };
     
-
-    f32 anim_remain;// Multi-purpose? Usually frames remaining, but used as rotation step in Crate/Barrel smash GFX?
-    f32 anim_rate;  // Multi-purpose? Fighters use this as animation playback rate / interpolation, but it is used as rotation step in Crate/Barrel smash GFX?
-    f32 anim_frame; // Multi-purpose? Usually current animation frame, but used as rotation step in Crate/Barrel smash GFX?
+    f32 anim_remain;    // Multi-purpose? Usually frames remaining, but used as rotation step in Crate/Barrel smash GFX?
+    f32 anim_rate;      // Multi-purpose? Fighters use this as animation playback rate / interpolation, but it is used as rotation step in Crate/Barrel smash GFX?
+    f32 anim_frame;     // Multi-purpose? Usually current animation frame, but used as rotation step in Crate/Barrel smash GFX?
 
     MObj *mobj;
 

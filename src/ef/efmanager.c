@@ -9,7 +9,6 @@
 
 extern void func_8000DF34_EB34(GObj*);
 extern void func_ovl0_800CB4B0(GObj*);
-extern void func_8000BD8C_C98C(void*, void*, f32);
 extern void func_ovl0_800C88AC(void*, void*, void*, f32);
 extern void func_8000BED8_CAD8(void*, void*, void*, f32);
 extern void func_ovl0_800C8758(void*, void*, f32);
@@ -4080,19 +4079,19 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude) // Linker things here
     switch (magnitude)
     {
     case 0:
-        func_8000BD8C_C98C(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CBC0, 0.0F);
+        gcAddAnimJointAll(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CBC0, 0.0F);
         break;
 
     case 1:
-        func_8000BD8C_C98C(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CC20, 0.0F);
+        gcAddAnimJointAll(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CC20, 0.0F);
         break;
 
     case 2:
-        func_8000BD8C_C98C(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CCF0, 0.0F);
+        gcAddAnimJointAll(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CCF0, 0.0F);
         break;
 
     case 3: // Used by POW Block 
-        func_8000BD8C_C98C(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CDC0, 0.0F);
+        gcAddAnimJointAll(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CDC0, 0.0F);
         break;
 
     default:
@@ -4278,7 +4277,7 @@ void efManagerFoxReflectorSetImageID(GObj *effect_gobj, s32 index)
 
     ep->effect_vars.reflector.index = index;
 
-    func_8000BD8C_C98C(effect_gobj, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)dEFManagerFoxReflectorAnimJointOffsets[index], 0.0F);
+    gcAddAnimJointAll(effect_gobj, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)dEFManagerFoxReflectorAnimJointOffsets[index], 0.0F);
     func_8000DF34_EB34(effect_gobj);
 }
 
@@ -5870,7 +5869,7 @@ GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    func_8000BD8C_C98C(effect_gobj, (uintptr_t)gFTDataCaptainSpecial2 + (intptr_t)&D_NF_00006200, 0.0F);
+    gcAddAnimJointAll(effect_gobj, (uintptr_t)gFTDataCaptainSpecial2 + (intptr_t)&D_NF_00006200, 0.0F);
 
     node_dobj = dobj->child->child->child;
 

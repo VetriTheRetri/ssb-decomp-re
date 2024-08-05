@@ -90,7 +90,7 @@ void gcAddDObjAnimJoint(DObj *dobj, AObjAnimJoint *anim_joint, f32 anim_frame)
     dobj->anim_frame  = anim_frame;
 }
 
-void gcAddMObjMatAnimJoint(MObj *mobj, AObjAnimJoint *anim_joint, f32 anim_frame) 
+void gcAddMObjMatAnimJoint(MObj *mobj, AObjAnimJoint *matanim_joint, f32 anim_frame) 
 {
     AObj *aobj = mobj->aobj;
 
@@ -99,12 +99,35 @@ void gcAddMObjMatAnimJoint(MObj *mobj, AObjAnimJoint *anim_joint, f32 anim_frame
         aobj->kind = 0;
         aobj       = aobj->next;
     }
-    mobj->matanim_joint = anim_joint;
+    mobj->matanim_joint = matanim_joint;
     mobj->anim_remain = -F32_HALF;
     mobj->anim_frame  = anim_frame;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000BD8C_C98C.s")
+void gcAddAnimJointAll(GObj *gobj, AObjAnimJoint **anim_joints, f32 anim_frame) 
+{
+    DObj *dobj = DObjGetStruct(gobj);
+    ub8 is_anim_root = TRUE;
+    
+    gobj->anim_frame = anim_frame;
+
+    while (dobj != NULL) 
+    {
+        if (*anim_joints != NULL) 
+        {
+            gcAddDObjAnimJoint(dobj, *anim_joints, anim_frame);
+            dobj->is_anim_root = is_anim_root;
+            is_anim_root = FALSE;
+        } 
+        else 
+        {
+            dobj->anim_remain = F32_MIN;
+            dobj->is_anim_root = FALSE;
+        }
+        anim_joints++;
+        dobj = func_8000BAA0(dobj);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000BE28_CA28.s")
 

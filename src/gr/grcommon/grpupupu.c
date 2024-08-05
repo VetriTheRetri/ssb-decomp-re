@@ -65,7 +65,6 @@ extern void grGeometryLayer0ProcRenderPri(GObj*);
 extern void grGeometryLayer3ProcRenderPri(GObj*);
 extern void func_8000DF34_EB34(GObj*);
 extern void func_8000BED8_CAD8(void*, void*, void*, f32);
-extern void func_8000BD8C_C98C(void*, void*, f32);
 extern void func_8000F590();
 
 // // // // // // // // // // // //
@@ -672,7 +671,7 @@ void grPupupuUpdateGObjAnims(void)
     }
     if (gGRCommonStruct.pupupu.whispy_mouth_texture != -1)
     {
-        func_8000BD8C_C98C
+        gcAddAnimJointAll
         (
             // arg0
             gGRCommonStruct.pupupu.map_gobj[2], 
@@ -689,7 +688,7 @@ void grPupupuUpdateGObjAnims(void)
     }
     if (gGRCommonStruct.pupupu.whispy_eyes_texture != -1)
     {
-        func_8000BD8C_C98C
+        gcAddAnimJointAll
         (
             // arg0
             gGRCommonStruct.pupupu.map_gobj[3],

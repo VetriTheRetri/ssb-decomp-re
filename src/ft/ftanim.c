@@ -19,11 +19,11 @@ f32 func_ovl2_800EC160(s16 arg0, s32 arg1, s32 arg2)
         1.0F / 512.0F,
         1.0F / 4.0F,
         1.0F / 4096.0F,
-        6.1035152612e-05F, // Huh
+        1.0F / 16384.0F - (3.0F / 1000000000000.0F), // why tho
         1.0F / 512.0F,
         1.0F / 32.0F,
         1.0F / 8192.0F,
-        6.1035152612e-05F // ???
+        1.0F / 16384.0F - (3.0F / 1000000000000.0F)  // ???
     };
 
     switch (arg1)
@@ -309,7 +309,7 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
                 root_dobj->anim_frame = -root_dobj->anim_remain;
                 root_dobj->parent_gobj->anim_frame = -root_dobj->anim_remain;
 
-                if (root_dobj->unk_dobj_0x55 != 0)
+                if (root_dobj->is_anim_root != 0)
                 {
                     if (root_dobj->parent_gobj->dobjproc != NULL)
                     {
@@ -365,7 +365,7 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
                 root_dobj->parent_gobj->anim_frame = root_dobj->anim_remain;
                 root_dobj->anim_remain = -1.1342745e38F;
 
-                if (root_dobj->unk_dobj_0x55 != 0)
+                if (root_dobj->is_anim_root != 0)
                 {
                     if (root_dobj->parent_gobj->dobjproc != NULL)
                     {

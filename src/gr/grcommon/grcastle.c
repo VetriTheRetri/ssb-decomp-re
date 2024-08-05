@@ -2,7 +2,6 @@
 #include <it/item.h>
 
 extern void func_8000DF34_EB34(GObj*);
-extern void func_8000BD8C_C98C(GObj*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -52,7 +51,7 @@ void grCastleInitAll(void)
 
     omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
 
-    func_8000BD8C_C98C(ground_gobj, gMPCollisionGroundData->map_nodes, 0.0F);
+    gcAddAnimJointAll(ground_gobj, gMPCollisionGroundData->map_nodes, 0.0F);
     func_8000DF34_EB34(ground_gobj);
 
     mpCollisionGetMapObjIDsKind(nMPMapObjKindBumper, &pos_id);

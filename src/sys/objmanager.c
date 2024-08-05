@@ -1296,7 +1296,7 @@ void omInitDObj(DObj* dobj)
 
 	dobj->dynstore = NULL;
 	dobj->flags = 0;
-	dobj->unk_dobj_0x55 = 0;
+	dobj->is_anim_root = 0;
 	dobj->ommtx_len = 0;
 
 	for (i = 0; i < ARRAY_COUNT(dobj->ommtx); i++)

@@ -357,7 +357,7 @@ void func_ovl2_80106A40(DObj *dobj, AObjAnimJoint *anim_joint, f32 arg2)
     {
         gcAddDObjAnimJoint(dobj, anim_joint, 0.0F);
 
-        dobj->unk_dobj_0x55 = 0;
+        dobj->is_anim_root = 0;
 
         func_8000BFE8_CBE8(dobj);
         func_8000CCBC_D8BC(dobj);
@@ -365,7 +365,7 @@ void func_ovl2_80106A40(DObj *dobj, AObjAnimJoint *anim_joint, f32 arg2)
     else
     {
         dobj->anim_remain = AOBJ_FRAME_NULL;
-        dobj->unk_dobj_0x55 = 0;
+        dobj->is_anim_root = 0;
     }
 }
 

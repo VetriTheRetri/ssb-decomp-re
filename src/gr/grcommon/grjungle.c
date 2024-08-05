@@ -12,7 +12,6 @@ extern intptr_t lGRJungleTaruCannDefaultAnimJoint;      // 0x00000B20
 extern intptr_t lGRJungleTaruCannFillAnimJoint;         // 0x00000B68
 extern intptr_t lGRJungleTaruCannShootAnimJoint;        // 0x00000BF8
 
-extern void func_8000BD8C_C98C(GObj*, void*, f32);
 extern void func_8000DF34_EB34(GObj*);
 
 // // // // // // // // // // // //
@@ -132,7 +131,7 @@ void grJungleMakeTaruCann(void)
     grModelSetupInitDObj(tarucann_gobj, (DObjDesc*) ((intptr_t)&lGRJungleMapHead + (uintptr_t)map_head), NULL, dGRJungleTaruCannTransformKinds);
     omAddGObjCommonProc(tarucann_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
 
-    func_8000BD8C_C98C(tarucann_gobj, ((uintptr_t)map_head + (intptr_t)&lGRJungleTaruCannDefaultAnimJoint), 0.0F);
+    gcAddAnimJointAll(tarucann_gobj, ((uintptr_t)map_head + (intptr_t)&lGRJungleTaruCannDefaultAnimJoint), 0.0F);
     func_8000DF34_EB34(tarucann_gobj);
 
     omAddGObjCommonProc(tarucann_gobj, grJungleTaruCannProcUpdate, nOMObjProcessKindProc, 4);

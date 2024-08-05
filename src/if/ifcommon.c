@@ -149,7 +149,7 @@ extern GObj *D_ovl2_80131A14;
 extern sb32 cmManagerCheckTargetInBounds(f32, f32);
 extern void func_ovl2_8010CF44(GObj*, f32, f32, f32, f32, f32);
 extern alSoundEffect* func_800269C0_275C0(u16);
-extern void func_8000BD8C_C98C(GObj*, void*, f32);
+
 extern void func_ovl0_800CCF00(GObj*);
 extern SObj* gcAppendSObjWithSprite(GObj*, Sprite*);
 extern void auSetBGMVolume(u32, u32);
@@ -1751,7 +1751,7 @@ void ifCommonPlayerArrowsRightProcRender(GObj *interface_gobj)
 // 0x801115BC
 void ifCommonPlayerArrowsAddAnim(GObj *interface_gobj)
 {
-    func_8000BD8C_C98C(interface_gobj, (void*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&D_NF_00000270), 0.0F);
+    gcAddAnimJointAll(interface_gobj, (void*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&D_NF_00000270), 0.0F);
     func_8000DF34_EB34(interface_gobj);
 }
 

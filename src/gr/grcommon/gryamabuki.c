@@ -17,7 +17,6 @@ extern intptr_t lGRYamabukiItemHead;                    // 0x00000014
 extern intptr_t lGRYamabukiMapHead;                     // 0x000008A0
 
 extern void func_8000DF34_EB34(GObj*);
-extern void func_8000BD8C_C98C(GObj*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -133,7 +132,7 @@ void grYamabukiGateSetPositionNear(void)
 // 0x8010AE94
 void grYamabukiGateAddAnimOffset(intptr_t offset)
 {
-    func_8000BD8C_C98C(gGRCommonStruct.yamabuki.gate_gobj, (uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)offset, 0.0F);
+    gcAddAnimJointAll(gGRCommonStruct.yamabuki.gate_gobj, (uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)offset, 0.0F);
     func_8000DF34_EB34(gGRCommonStruct.yamabuki.gate_gobj);
 }
 

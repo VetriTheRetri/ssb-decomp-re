@@ -58,8 +58,8 @@ struct wpCreateDesc
 {
     u8 flags;
     wpKind wp_kind;
-    void **p_weapon;               		// Pointer to various weapon data
-    intptr_t o_attributes;              // Offset to weapon's attributes
+    void **p_weapon;               		    // Pointer to various weapon data
+    intptr_t o_attributes;                  // Offset to weapon's attributes
     DObjTransformTypes transform_types;
     sb32  (*proc_update)    (GObj*);
     sb32  (*proc_map)       (GObj*);

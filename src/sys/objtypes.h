@@ -409,12 +409,12 @@ struct _DObj
     MObj *mobj;
 
     /* 
-    * Can be:
-    * Other DObj that this DObj is attached to
-    * ftParts
-    * YakumonoID
-    * Color for 1P Game Master Hand defeat fadeout (?)
-    */
+     * Can be:
+     * Other DObj that this DObj is attached to
+     * ftParts
+     * YakumonoID
+     * Color for 1P Game Master Hand defeat fadeout (?)
+     */
     OMUserData user_data;
 };
 

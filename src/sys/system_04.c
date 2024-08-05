@@ -21,7 +21,7 @@ void gcSetMatAnimJointRateAll(GObj *gobj, f32 anim_rate)
         while (mobj != NULL)
         {
             mobj->anim_rate = anim_rate;
-            mobj            = mobj->next;
+            mobj = mobj->next;
         }
         dobj = func_8000BAA0(dobj);
     }
@@ -83,11 +83,11 @@ void gcAddDObjAnimJoint(DObj *dobj, AObjAnimJoint *anim_joint, f32 anim_frame)
     while (aobj != NULL) 
     {
         aobj->kind = 0;
-        aobj       = aobj->next;
+        aobj = aobj->next;
     }
     dobj->anim_joint = anim_joint;
     dobj->anim_remain = -F32_HALF;
-    dobj->anim_frame  = anim_frame;
+    dobj->anim_frame = anim_frame;
 }
 
 void gcAddMObjMatAnimJoint(MObj *mobj, AObjAnimJoint *matanim_joint, f32 anim_frame) 
@@ -97,11 +97,11 @@ void gcAddMObjMatAnimJoint(MObj *mobj, AObjAnimJoint *matanim_joint, f32 anim_fr
     while (aobj != NULL) 
     {
         aobj->kind = 0;
-        aobj       = aobj->next;
+        aobj = aobj->next;
     }
     mobj->matanim_joint = matanim_joint;
     mobj->anim_remain = -F32_HALF;
-    mobj->anim_frame  = anim_frame;
+    mobj->anim_frame = anim_frame;
 }
 
 void gcAddAnimJointAll(GObj *gobj, AObjAnimJoint **anim_joints, f32 anim_frame) 

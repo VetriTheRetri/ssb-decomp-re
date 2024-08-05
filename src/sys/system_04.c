@@ -207,7 +207,384 @@ void gcAddAnimAll(GObj *gobj, AObjAnimJoint **anim_joints, AObjAnimJoint ***p_ma
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000BFE8_CBE8.s")
+void func_8000BFE8_CBE8(DObj *dobj)
+{
+    AObj *track_aobjs[10];
+    AObj *aobj;
+    s32 i;
+    u32 cmd;
+    u32 subcmd;
+    f32 payload;
+
+    if (dobj->anim_remain != AOBJ_FRAME_NULL)
+    {
+        if (dobj->anim_remain == -F32_HALF)
+        {
+            dobj->anim_remain = -dobj->anim_frame;
+        }
+        else
+        {
+            dobj->anim_remain -= dobj->anim_rate;
+            dobj->anim_frame += dobj->anim_rate;
+            dobj->parent_gobj->anim_frame = dobj->anim_frame;
+
+            if (dobj->anim_remain > 0.0F)
+            {
+                return;
+            }
+        }
+        for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+        {
+            track_aobjs[i] = NULL;
+        }
+        aobj = dobj->aobj;
+
+        while (aobj != NULL)
+        {
+            if ((aobj->track >= nOMObjAnimTrackMeshStart) && (aobj->track <= nOMObjAnimTrackMeshEnd))
+            {
+                track_aobjs[aobj->track - nOMObjAnimTrackMeshStart] = aobj;
+            }
+            aobj = aobj->next;
+        }
+        do
+        {
+            if (dobj->anim_joint == NULL)
+            {
+                aobj = dobj->aobj;
+
+                while (aobj != NULL)
+                {
+                    if (aobj->kind)
+                    {
+                        aobj->length += dobj->anim_rate + dobj->anim_remain;
+                    }
+                    aobj = aobj->next;
+                }
+                dobj->anim_frame = dobj->anim_remain;
+                dobj->parent_gobj->anim_frame = dobj->anim_remain;
+                dobj->anim_remain = -1.1342745e38F;
+
+                return;
+            }
+
+            cmd = dobj->anim_joint->u >> 25;
+
+            switch (cmd)
+            {
+            case 8:
+            case 9:
+                payload = (f32)(dobj->anim_joint->u & 0x7FFF);
+                subcmd = (dobj->anim_joint++->u << 7) >> 22;
+
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+                {
+                    if (subcmd == 0)
+                    {
+                        break;
+                    }
+                    if (subcmd & 1)
+                    {
+                        if (track_aobjs[i] == NULL)
+                        {
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + 1);
+                        }
+                        track_aobjs[i]->value_base = track_aobjs[i]->value_target;
+                        track_aobjs[i]->value_target = dobj->anim_joint->f;
+
+                        dobj->anim_joint++;
+
+                        track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
+                        track_aobjs[i]->rate_target = 0.0F;
+                        track_aobjs[i]->kind = 3;
+
+                        if (payload != 0.0F)
+                        {
+                            track_aobjs[i]->length_invert = 1.0F / payload;
+                        }
+                        track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
+                    }
+                    subcmd >>= 1;
+                }
+
+                if (cmd == 8)
+                {
+                    dobj->anim_remain += payload;
+                }
+                break;
+
+            case 3:
+            case 4:
+                payload = (f32)(dobj->anim_joint->u & 0x7FFF);
+                subcmd = (dobj->anim_joint++->u << 7) >> 22;
+
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+                {
+                    if (subcmd == 0)
+                    {
+                        break;
+                    }
+                    if (subcmd & 1)
+                    {
+                        if (track_aobjs[i] == NULL)
+                        {
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + 1);
+                        }
+                        track_aobjs[i]->value_base = track_aobjs[i]->value_target;
+                        track_aobjs[i]->value_target = dobj->anim_joint->f;
+
+                        dobj->anim_joint++;
+
+                        track_aobjs[i]->kind = 2;
+
+                        if (payload != 0.0F)
+                        {
+                            track_aobjs[i]->rate_base = (track_aobjs[i]->value_target - track_aobjs[i]->value_base) / payload;
+                        }
+                        track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
+                        track_aobjs[i]->rate_target = 0.0F;
+                    }
+                    subcmd >>= 1;
+                }
+
+                if (cmd == 3)
+                {
+                    dobj->anim_remain += payload;
+                }
+                break;
+
+            case 5:
+            case 6:
+                payload = (f32)(dobj->anim_joint->u & 0x7FFF);
+                subcmd = (dobj->anim_joint++->u << 7) >> 22;
+
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+                {
+                    if (subcmd == 0)
+                    {
+                        break;
+                    }
+                    if (subcmd & 1)
+                    {
+                        if (track_aobjs[i] == NULL)
+                        {
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + 1);
+                        }
+                        track_aobjs[i]->value_base = track_aobjs[i]->value_target;
+                        track_aobjs[i]->value_target = dobj->anim_joint->f;
+
+                        dobj->anim_joint++;
+
+                        track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
+                        track_aobjs[i]->rate_target = dobj->anim_joint->f;
+
+                        dobj->anim_joint++;
+
+                        track_aobjs[i]->kind = 3;
+
+                        if (payload != 0.0F)
+                        {
+                            track_aobjs[i]->length_invert = 1.0F / payload;
+                        }
+                        track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
+                    }
+
+                    subcmd >>= 1;
+                }
+
+                if (cmd == 5)
+                {
+                    dobj->anim_remain += payload;
+                }
+                break;
+
+            case 7:
+                subcmd = (dobj->anim_joint++->u << 7) >> 22;
+
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+                {
+                    if (subcmd == 0)
+                    {
+                        break;
+                    }
+                    if (subcmd & 1)
+                    {
+                        if (track_aobjs[i] == NULL)
+                        {
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + 1);
+                        }
+                        track_aobjs[i]->rate_target = dobj->anim_joint->f;
+                        dobj->anim_joint++;
+                    }
+                    subcmd >>= 1;
+                }
+                break;
+
+            case 2:
+                dobj->anim_remain += (f32)(dobj->anim_joint++->u & 0x7FFF);
+                break;
+
+            case 10:
+            case 11:
+                payload = (f32)(dobj->anim_joint->u & 0x7FFF);
+                subcmd = (dobj->anim_joint++->u << 7) >> 22;
+
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+                {
+                    if (subcmd == 0)
+                    {
+                        break;
+                    }
+                    if (subcmd & 1)
+                    {
+                        if (track_aobjs[i] == NULL)
+                        {
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + 1);
+                        }
+                        track_aobjs[i]->value_base = track_aobjs[i]->value_target;
+                        track_aobjs[i]->value_target = dobj->anim_joint->f;
+
+                        dobj->anim_joint++;
+
+                        track_aobjs[i]->kind = 1;
+                        track_aobjs[i]->length_invert = payload;
+                        track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
+                        track_aobjs[i]->rate_target = 0.0F;
+                    }
+                    subcmd >>= 1;
+                }
+                if (cmd == 10)
+                {
+                    dobj->anim_remain += payload;
+                }
+                break;
+
+            case 14:
+                dobj->anim_joint++;
+                dobj->anim_joint = dobj->anim_joint->p;
+                dobj->anim_frame = -dobj->anim_remain;
+                dobj->parent_gobj->anim_frame = -dobj->anim_remain;
+
+                if ((dobj->is_anim_root != FALSE) && (dobj->parent_gobj->dobjproc != NULL))
+                {
+                    dobj->parent_gobj->dobjproc(dobj, -2, 0);
+                }
+                break;
+
+            case 1:
+                dobj->anim_joint++;
+                dobj->anim_joint = dobj->anim_joint->p;
+
+                if ((dobj->is_anim_root != FALSE) && (dobj->parent_gobj->dobjproc != NULL)) 
+                {
+                    dobj->parent_gobj->dobjproc(dobj, -2, 0);
+                }
+                break;
+
+            case 12:
+                payload = (f32)(dobj->anim_joint->u & 0x7FFF);
+                subcmd = (dobj->anim_joint++->u << 7) >> 22;
+
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+                {
+                    if (subcmd == 0)
+                    {
+                        break;
+                    }
+                    if (subcmd & 1)
+                    {
+                        if (track_aobjs[i] == NULL)
+                        {
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + 1);
+                        }
+                        track_aobjs[i]->length += payload;
+                    }
+                    subcmd >>= 1;
+                }
+                break;
+
+            case 13:
+                dobj->anim_joint++;
+
+                if (track_aobjs[3] == NULL) 
+                { 
+                    track_aobjs[3] = omAddAObjForDObj(dobj, 3 + 1); 
+                }
+                track_aobjs[3]->interpolate = dobj->anim_joint->p;
+
+                dobj->anim_joint++;
+                break;
+
+            case 0:
+                aobj = dobj->aobj;
+
+                while (aobj != NULL)
+                {
+                    if (aobj->kind != 0)
+                    {
+                        aobj->length += dobj->anim_rate + dobj->anim_remain;
+                    }
+                    aobj = aobj->next;
+                }
+                dobj->anim_frame = dobj->anim_remain;
+                dobj->parent_gobj->anim_frame = dobj->anim_remain;
+                dobj->anim_remain = -1.1342745e38F;
+
+                if ((dobj->is_anim_root != FALSE) && (dobj->parent_gobj->dobjproc != NULL))
+                {
+                    dobj->parent_gobj->dobjproc(dobj, -1, 0);
+                }
+                return; // not break
+
+            case 15:
+                dobj->flags = (dobj->anim_joint->u << 7) >> 22;
+                dobj->anim_remain += (f32)(dobj->anim_joint++->u & 0x7FFF);
+                break;
+
+            case 16:
+                if (dobj->parent_gobj->dobjproc != NULL)
+                {
+                    // only seems to match when spelled out...
+                    dobj->parent_gobj->dobjproc
+                    (
+                        dobj,
+                        ((dobj->anim_joint->u << 7) >> 22) >> 8,
+                        ((dobj->anim_joint->u << 7) >> 22) & 0xFF
+                    );
+                }
+                dobj->anim_remain += (f32)(dobj->anim_joint++->u & 0x7FFF);
+                break;
+
+            case 17:
+                subcmd = (dobj->anim_joint->u << 7) >> 22;
+                dobj->anim_remain += (f32)(dobj->anim_joint++->u & 0x7FFF);
+
+                for (i = 4; i < 14; i++)
+                {
+                    if (subcmd == 0)
+                    {
+                        break;
+                    }
+                    if (subcmd & 1)
+                    {
+                        if (dobj->parent_gobj->dobjproc != NULL)
+                        {
+                            dobj->parent_gobj->dobjproc(dobj, i, dobj->anim_joint->f);
+                        }
+                        dobj->anim_joint++;
+                    }
+                    subcmd >>= 1;
+                }
+                break;
+
+                // empty, but necessary
+            default:
+                break;
+            }
+        } 
+        while (dobj->anim_remain <= 0.0F);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000CA28_D628.s")
 

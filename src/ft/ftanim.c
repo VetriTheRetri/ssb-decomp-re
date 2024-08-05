@@ -64,7 +64,7 @@ f32 func_ovl2_800EC160(s16 arg0, s32 arg1, s32 arg2)
 // 0x800EC238
 void ftAnimParseAnimJoint(DObj *root_dobj)
 {
-    AObj *setup_aobj[nOMObjAnimTrackMeshEnd];
+    AObj *track_aobjs[nOMObjAnimTrackMeshEnd];
     AObj *current_aobj;
     f32 var_f20;
     s32 i;
@@ -89,17 +89,17 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
             }
         }
 
-        for (i = 0; i < ARRAY_COUNT(setup_aobj); i++)
+        for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
         {
-            setup_aobj[i] = NULL;
+            track_aobjs[i] = NULL;
         }
         current_aobj = root_dobj->aobj;
 
         while (current_aobj != NULL)
         {
-            if ((current_aobj->track >= nOMObjAnimTrackMeshStart) && (current_aobj->track <= ARRAY_COUNT(setup_aobj)))
+            if ((current_aobj->track >= nOMObjAnimTrackMeshStart) && (current_aobj->track <= ARRAY_COUNT(track_aobjs)))
             {
-                setup_aobj[current_aobj->track - nOMObjAnimTrackMeshStart] = current_aobj;
+                track_aobjs[current_aobj->track - nOMObjAnimTrackMeshStart] = current_aobj;
             }
             current_aobj = current_aobj->next;
         }
@@ -131,31 +131,31 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
             case nOMObjAnimCommandSetVal0RateLast:
                 aflags = root_dobj->figatree->command.flags;
 
-                var_f20 = (AObjFigatreeAdvance(root_dobj->figatree)->command.toggle) ? AObjFigatreeAdvance(root_dobj->figatree)->uhalf : 0.0F;
+                var_f20 = (AObjAnimAdvance(root_dobj->figatree)->command.toggle) ? AObjAnimAdvance(root_dobj->figatree)->uhalf : 0.0F;
 
-                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, aflags = aflags >> 1)
                 {
                     if (!aflags) break;
 
                     if (aflags & 1)
                     {
-                        if (setup_aobj[i] == NULL)
+                        if (track_aobjs[i] == NULL)
                         {
-                            setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
+                            track_aobjs[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->value_base = setup_aobj[i]->value_target;
+                        track_aobjs[i]->value_base = track_aobjs[i]->value_target;
 
-                        setup_aobj[i]->value_target = func_ovl2_800EC160(AObjFigatreeAdvance(root_dobj->figatree)->shalf, i + 1, 0);
+                        track_aobjs[i]->value_target = func_ovl2_800EC160(AObjAnimAdvance(root_dobj->figatree)->shalf, i + 1, 0);
 
-                        setup_aobj[i]->rate_base = setup_aobj[i]->rate_target;
-                        setup_aobj[i]->rate_target = 0.0F;
-                        setup_aobj[i]->kind = 3;
+                        track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
+                        track_aobjs[i]->rate_target = 0.0F;
+                        track_aobjs[i]->kind = 3;
 
                         if (var_f20 != 0.0F)
                         {
-                            setup_aobj[i]->length_invert = 1.0F / var_f20;
+                            track_aobjs[i]->length_invert = 1.0F / var_f20;
                         }
-                        setup_aobj[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
+                        track_aobjs[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandSetTargetRate)
@@ -168,30 +168,30 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
             case nOMObjAnimCommandSetValLast:
                 aflags = root_dobj->figatree->command.flags;
 
-                var_f20 = (AObjFigatreeAdvance(root_dobj->figatree)->command.toggle) ? AObjFigatreeAdvance(root_dobj->figatree)->uhalf : 0.0F;
+                var_f20 = (AObjAnimAdvance(root_dobj->figatree)->command.toggle) ? AObjAnimAdvance(root_dobj->figatree)->uhalf : 0.0F;
 
-                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, aflags = aflags >> 1)
                 {
                     if (!aflags) break;
 
                     if (aflags & 1)
                     {
-                        if (setup_aobj[i] == NULL)
+                        if (track_aobjs[i] == NULL)
                         {
-                            setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
+                            track_aobjs[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->value_base = setup_aobj[i]->value_target;
+                        track_aobjs[i]->value_base = track_aobjs[i]->value_target;
 
-                        setup_aobj[i]->value_target = func_ovl2_800EC160(AObjFigatreeAdvance(root_dobj->figatree)->shalf, i + 1, 0);
+                        track_aobjs[i]->value_target = func_ovl2_800EC160(AObjAnimAdvance(root_dobj->figatree)->shalf, i + 1, 0);
 
-                        setup_aobj[i]->kind = 2;
+                        track_aobjs[i]->kind = 2;
 
                         if (var_f20 != 0.0F)
                         {
-                            setup_aobj[i]->rate_base = (setup_aobj[i]->value_target - setup_aobj[i]->value_base) / var_f20;
+                            track_aobjs[i]->rate_base = (track_aobjs[i]->value_target - track_aobjs[i]->value_base) / var_f20;
                         }
-                        setup_aobj[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
-                        setup_aobj[i]->rate_target = 0.0F;
+                        track_aobjs[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
+                        track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandWait)
@@ -204,33 +204,33 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
             case nOMObjAnimCommandSetValRateLast:
                 aflags = root_dobj->figatree->command.flags;
 
-                var_f20 = (AObjFigatreeAdvance(root_dobj->figatree)->command.toggle) ? AObjFigatreeAdvance(root_dobj->figatree)->uhalf : 0.0F;
+                var_f20 = (AObjAnimAdvance(root_dobj->figatree)->command.toggle) ? AObjAnimAdvance(root_dobj->figatree)->uhalf : 0.0F;
 
-                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, aflags = aflags >> 1)
                 {
                     if (!aflags) break;
 
                     if (aflags & 1)
                     {
-                        if (setup_aobj[i] == NULL)
+                        if (track_aobjs[i] == NULL)
                         {
-                            setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
+                            track_aobjs[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->value_base = setup_aobj[i]->value_target;
+                        track_aobjs[i]->value_base = track_aobjs[i]->value_target;
 
-                        setup_aobj[i]->value_target = func_ovl2_800EC160(AObjFigatreeAdvance(root_dobj->figatree)->shalf, i + 1, 0);
+                        track_aobjs[i]->value_target = func_ovl2_800EC160(AObjAnimAdvance(root_dobj->figatree)->shalf, i + 1, 0);
 
-                        setup_aobj[i]->rate_base = setup_aobj[i]->rate_target;
+                        track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
 
-                        setup_aobj[i]->rate_target = func_ovl2_800EC160(AObjFigatreeAdvance(root_dobj->figatree)->shalf, i + 1, 1);
+                        track_aobjs[i]->rate_target = func_ovl2_800EC160(AObjAnimAdvance(root_dobj->figatree)->shalf, i + 1, 1);
 
-                        setup_aobj[i]->kind = 3;
+                        track_aobjs[i]->kind = 3;
 
                         if (var_f20 != 0.0F)
                         {
-                            setup_aobj[i]->length_invert = 1.0F / var_f20;
+                            track_aobjs[i]->length_invert = 1.0F / var_f20;
                         }
-                        setup_aobj[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
+                        track_aobjs[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandSetVal)
@@ -242,27 +242,27 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
             case nOMObjAnimCommandSetValRate:
                 aflags = root_dobj->figatree->command.flags;
 
-                var_f20 = (AObjFigatreeAdvance(root_dobj->figatree)->command.toggle) ? AObjFigatreeAdvance(root_dobj->figatree)->uhalf : 0.0F;
+                var_f20 = (AObjAnimAdvance(root_dobj->figatree)->command.toggle) ? AObjAnimAdvance(root_dobj->figatree)->uhalf : 0.0F;
 
-                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, aflags = aflags >> 1)
                 {
                     if (!aflags) break;
 
                     if (aflags & 1)
                     {
-                        if (setup_aobj[i] == NULL)
+                        if (track_aobjs[i] == NULL)
                         {
-                            setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
+                            track_aobjs[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->rate_target = func_ovl2_800EC160(AObjFigatreeAdvance(root_dobj->figatree)->shalf, i + 1, 1);
+                        track_aobjs[i]->rate_target = func_ovl2_800EC160(AObjAnimAdvance(root_dobj->figatree)->shalf, i + 1, 1);
                     }
                 }
                 break;
 
             case nOMObjAnimCommandJump:
-                if (AObjFigatreeAdvance(root_dobj->figatree)->command.toggle)
+                if (AObjAnimAdvance(root_dobj->figatree)->command.toggle)
                 {
-                    root_dobj->anim_remain += AObjFigatreeAdvance(root_dobj->figatree)->uhalf;
+                    root_dobj->anim_remain += AObjAnimAdvance(root_dobj->figatree)->uhalf;
                 }
                 break;
 
@@ -270,29 +270,29 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
             case nOMObjAnimCommandSetValAfterLast:
                 aflags = root_dobj->figatree->command.flags;
 
-                var_f20 = (AObjFigatreeAdvance(root_dobj->figatree)->command.toggle) ? AObjFigatreeAdvance(root_dobj->figatree)->uhalf : 0.0F;
+                var_f20 = (AObjAnimAdvance(root_dobj->figatree)->command.toggle) ? AObjAnimAdvance(root_dobj->figatree)->uhalf : 0.0F;
 
-                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, aflags = aflags >> 1)
                 {
                     if (!aflags) break;
 
                     if (aflags & 1)
                     {
-                        if (setup_aobj[i] == NULL)
+                        if (track_aobjs[i] == NULL)
                         {
-                            setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
+                            track_aobjs[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->value_base = setup_aobj[i]->value_target;
+                        track_aobjs[i]->value_base = track_aobjs[i]->value_target;
 
-                        setup_aobj[i]->value_target = func_ovl2_800EC160(AObjFigatreeAdvance(root_dobj->figatree)->shalf, i + 1, 0);
+                        track_aobjs[i]->value_target = func_ovl2_800EC160(AObjAnimAdvance(root_dobj->figatree)->shalf, i + 1, 0);
 
-                        setup_aobj[i]->kind = 1;
+                        track_aobjs[i]->kind = 1;
 
-                        setup_aobj[i]->length_invert = var_f20;
+                        track_aobjs[i]->length_invert = var_f20;
 
-                        setup_aobj[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
+                        track_aobjs[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
 
-                        setup_aobj[i]->rate_target = 0.0F;
+                        track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandSetVal0Rate)
@@ -302,7 +302,7 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
                 break;
 
             case ANIM_CMD_13:
-                AObjFigatreeAdvance(root_dobj->figatree);
+                AObjAnimAdvance(root_dobj->figatree);
 
                 root_dobj->figatree += root_dobj->figatree->shalf / 2;
 
@@ -321,33 +321,33 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
             case nOMObjAnimCommandSetValAfter:
                 aflags = root_dobj->figatree->command.flags;
 
-                var_f20 = (AObjFigatreeAdvance(root_dobj->figatree)->command.toggle) ? AObjFigatreeAdvance(root_dobj->figatree)->uhalf : 0.0F;
+                var_f20 = (AObjAnimAdvance(root_dobj->figatree)->command.toggle) ? AObjAnimAdvance(root_dobj->figatree)->uhalf : 0.0F;
 
-                for (i = 0; i < ARRAY_COUNT(setup_aobj); i++, aflags = aflags >> 1)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, aflags = aflags >> 1)
                 {
                     if (!aflags) break;
 
                     if (aflags & 1)
                     {
-                        if (setup_aobj[i] == NULL)
+                        if (track_aobjs[i] == NULL)
                         {
-                            setup_aobj[i] = omAddAObjForDObj(root_dobj, i + 1);
+                            track_aobjs[i] = omAddAObjForDObj(root_dobj, i + 1);
                         }
-                        setup_aobj[i]->length += var_f20;
+                        track_aobjs[i]->length += var_f20;
                     }
                 }
                 break;
 
             case ANIM_CMD_12:
-                AObjFigatreeAdvance(root_dobj->figatree);
+                AObjAnimAdvance(root_dobj->figatree);
 
-                if (setup_aobj[3] == NULL)
+                if (track_aobjs[3] == NULL)
                 {
-                    setup_aobj[3] = omAddAObjForDObj(root_dobj, 4);
+                    track_aobjs[3] = omAddAObjForDObj(root_dobj, 4);
                 }
-                setup_aobj[3]->interpolate = root_dobj->figatree + (root_dobj->figatree->shalf / 2);
+                track_aobjs[3]->interpolate = root_dobj->figatree + (root_dobj->figatree->shalf / 2);
 
-                AObjFigatreeAdvance(root_dobj->figatree);
+                AObjAnimAdvance(root_dobj->figatree);
                 break;
 
             case nOMObjAnimCommandEnd:
@@ -377,9 +377,9 @@ void ftAnimParseAnimJoint(DObj *root_dobj)
             case nOMObjAnimCommandSetAnim:
                 root_dobj->flags = root_dobj->figatree->command.flags;
 
-                if (AObjFigatreeAdvance(root_dobj->figatree)->command.toggle)
+                if (AObjAnimAdvance(root_dobj->figatree)->command.toggle)
                 {
-                    root_dobj->anim_remain += AObjFigatreeAdvance(root_dobj->figatree)->uhalf;
+                    root_dobj->anim_remain += AObjAnimAdvance(root_dobj->figatree)->uhalf;
                 }
                 break;
 

@@ -77,6 +77,13 @@ union AObjAnimJoint
     s32 s;
     u32 u;
     void *p;
+
+    struct
+    {
+        u32 opcode : 7;
+        u32 flags : 22;
+        u32 toggle : 3;
+    };
 };
 
 struct _AObj

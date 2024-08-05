@@ -6,7 +6,7 @@
 // Function headers
 #include <sys/objfunctions.h>
 
-#define AObjFigatreeAdvance(script) \
+#define AObjAnimAdvance(script) \
 ((script)++)
 
 #define DObjGetStruct(gobj) \

@@ -1111,11 +1111,11 @@ OMMtx* omAddOMMtxForCamera(Camera* cam, u8 kind, u8 arg2)
 }
 
 // 80008E78
-AObj* omAddAObjForDObj(DObj* dobj, u8 index)
+AObj* omAddAObjForDObj(DObj* dobj, u8 track)
 {
 	AObj* aobj = omGetAObjSetNextAlloc();
 
-	aobj->track = index;
+	aobj->track = track;
 	aobj->kind = 0;
 	aobj->interpolate = NULL;
 	aobj->rate_target = 0.0F;

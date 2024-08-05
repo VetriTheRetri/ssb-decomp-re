@@ -267,16 +267,16 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
                 return;
             }
-            command_kind = dobj->anim_joint->opcode;
+            command_kind = dobj->anim_joint->command.opcode;
 
             switch (command_kind)
             {
             case nOMObjAnimCommandSetVal0StepBlock:
             case nOMObjAnimCommandSetVal0Step:
-                payload = dobj->anim_joint->payload;
-                flags = AObjAnimAdvance(dobj->anim_joint)->flags;
+                payload = dobj->anim_joint->command.payload;
+                flags = AObjAnimAdvance(dobj->anim_joint)->command.flags;
 
-                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags >>= 1)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
                 {
                     if (!(flags))
                     {
@@ -312,10 +312,10 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
             case nOMObjAnimCommandSetValBlock:
             case nOMObjAnimCommandSetVal:
-                payload = dobj->anim_joint->payload;
-                flags = AObjAnimAdvance(dobj->anim_joint)->flags;
+                payload = dobj->anim_joint->command.payload;
+                flags = AObjAnimAdvance(dobj->anim_joint)->command.flags;
 
-                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags >>= 1)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
                 {
                     if (!(flags))
                     {
@@ -350,10 +350,10 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
             case nOMObjAnimCommandSetValStepBlock:
             case nOMObjAnimCommandSetValStep:
-                payload = dobj->anim_joint->payload;
-                flags = AObjAnimAdvance(dobj->anim_joint)->flags;
+                payload = dobj->anim_joint->command.payload;
+                flags = AObjAnimAdvance(dobj->anim_joint)->command.flags;
 
-                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags >>= 1)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
                 {
                     if (!(flags))
                     {
@@ -391,9 +391,9 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 break;
 
             case nOMObjAnimCommandSetStepTarget:
-                flags = AObjAnimAdvance(dobj->anim_joint)->flags;
+                flags = AObjAnimAdvance(dobj->anim_joint)->command.flags;
 
-                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags >>= 1)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
                 {
                     if (!(flags))
                     {
@@ -413,15 +413,15 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 break;
 
             case nOMObjAnimCommandWait:
-                dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->payload;
+                dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->command.payload;
                 break;
 
             case nOMObjAnimCommandSetValAfterBlock:
             case nOMObjAnimCommandSetValAfter:
-                payload = dobj->anim_joint->payload;
-                flags = AObjAnimAdvance(dobj->anim_joint)->flags;
+                payload = dobj->anim_joint->command.payload;
+                flags = AObjAnimAdvance(dobj->anim_joint)->command.flags;
 
-                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags >>= 1)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
                 {
                     if (!(flags))
                     {
@@ -473,10 +473,10 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 break;
 
             case ANIM_CMD_12:
-                payload = dobj->anim_joint->payload;
-                flags = AObjAnimAdvance(dobj->anim_joint)->flags;
+                payload = dobj->anim_joint->command.payload;
+                flags = AObjAnimAdvance(dobj->anim_joint)->command.flags;
 
-                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags >>= 1)
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
                 {
                     if (!(flags))
                     {
@@ -527,8 +527,8 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 return; // not break
 
             case nOMObjAnimCommandSetFlags:
-                dobj->flags = dobj->anim_joint->flags;
-                dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->payload;
+                dobj->flags = dobj->anim_joint->command.flags;
+                dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->command.payload;
                 break;
 
             case ANIM_CMD_16:
@@ -538,18 +538,18 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     dobj->parent_gobj->dobjproc
                     (
                         dobj,
-                        dobj->anim_joint->flags >> 8,
-                        (u8)dobj->anim_joint->flags
+                        dobj->anim_joint->command.flags >> 8,
+                        (u8)dobj->anim_joint->command.flags
                     );
                 }
-                dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->payload;
+                dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->command.payload;
                 break;
 
             case ANIM_CMD_17:
-                flags = dobj->anim_joint->flags;
-                dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->payload;
+                flags = dobj->anim_joint->command.flags;
+                dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->command.payload;
 
-                for (i = 4; i < 14; i++, flags >>= 1)
+                for (i = 4; i < 14; i++, flags = flags >> 1)
                 {
                     if (!(flags))
                     {
@@ -575,9 +575,41 @@ void gcParseDObjAnimJoint(DObj *dobj)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000CA28_D628.s")
+f32 func_8000CA28_D628(f32 length_invert, f32 length, f32 value_base, f32 value_target, f32 step_base, f32 step_target) 
+{
+    f32 sp18;
+    f32 sp14;
+    f32 sp10;
+    f32 temp_f10;
+    f32 temp_f16;
+    f32 temp_f18;                                   // length_invert^2
+    f32 temp_f2;                                    // length^2
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000CADC_D6DC.s")
+    temp_f2  = SQUARE(length);
+    temp_f18 = SQUARE(length_invert);
+    temp_f16 = temp_f2 * length * temp_f18;         // length^3 * length_invert^2
+    temp_f10 = 2.0F * temp_f16 * length_invert;     // 2.0f * length^3 * length_invert^3
+    sp14     = 3.0F * temp_f2 * temp_f18;           // 3 * length^2 * length_invert^2
+    sp18     = temp_f2 * length_invert;             // length_invert^3
+    sp10     = temp_f16 - sp18;                     // length^3 * length_invert^2 - length_invert^3
+
+    return (((temp_f10 - sp14) + 1.0F) * value_base) + (value_target * (sp14 - temp_f10)) + 
+                            (step_base * ((sp10 - sp18) + length)) + (step_target * sp10);
+}
+
+f32 func_8000CADC_D6DC(f32 length_invert, f32 length, f32 value_base, f32 value_target, f32 step_base, f32 step_target) 
+{
+    f32 temp_f18;
+    f32 temp_f16;
+    f32 temp_f2;
+
+    temp_f2  = 2.0F * length * length_invert;
+    temp_f16 = 3.0F * length * length * length_invert * length_invert;
+    temp_f18 = 6.0F * length;
+
+    return (((temp_f18 * length * length_invert * length_invert * length_invert) - (temp_f18 * length_invert * length_invert)) * (value_base - value_target)) + 
+                (step_base * ((temp_f16 - (2.0F * temp_f2)) + 1.0F)) + (step_target * (temp_f16 - temp_f2));
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000CB94_D794.s")
 

@@ -24,4 +24,10 @@ extern void gcAddAnimAll(GObj *gobj, AObjAnimJoint **anim_joints, AObjAnimJoint 
 // Parse AnimJoint on specific DObj
 extern void gcParseDObjAnimJoint(DObj *dobj);
 
+// Interpolation?
+extern f32 func_8000CA28_D628(f32 length_invert, f32 length, f32 value_base, f32 value_target, f32 step_base, f32 step_target);
+
+// Other kind of interpolation?
+extern f32 func_8000CADC_D6DC(f32 length_invert, f32 length, f32 value_base, f32 value_target, f32 step_base, f32 step_target);
+
 #endif

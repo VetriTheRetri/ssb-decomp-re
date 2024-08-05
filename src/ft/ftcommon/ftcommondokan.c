@@ -1,7 +1,4 @@
 #include <ft/fighter.h>
-#include <gr/ground.h>
-
-extern f32 func_8000CA28_D628(f32, f32, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //

@@ -83,7 +83,8 @@ union AObjAnimJoint
         u32 opcode : 7;
         u32 flags : 10;
         u32 payload : 15;
-    };
+        
+    } command;
 };
 
 struct _AObj

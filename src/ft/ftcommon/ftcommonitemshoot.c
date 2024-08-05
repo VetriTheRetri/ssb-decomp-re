@@ -38,7 +38,7 @@ void ftCommonLGunShootProcAccessory(GObj *fighter_gobj)
             make_ammo_offset.y *= size_mul;
             make_ammo_offset.z *= size_mul;
 
-            gmCollisionGetFighterPartsWorldPosition(fp->joint[fp->attributes->joint_itemlight_id], &make_ammo_offset);
+            gmCollisionGetFighterPartsWorldPosition(fp->joints[fp->attributes->joint_itemlight_id], &make_ammo_offset);
             itLGunMakeAmmo(fighter_gobj, &make_ammo_offset);
 
             make_effect_offset.x = 0.0F;
@@ -128,7 +128,7 @@ void ftCommonFireFlowerShootUpdateAmmoStats(ftStruct *fp, s32 ammo_sub)
         make_flame_offset.y *= size_mul;
         make_flame_offset.z *= size_mul;
 
-        gmCollisionGetFighterPartsWorldPosition(fp->joint[fp->attributes->joint_itemlight_id], &make_flame_offset);
+        gmCollisionGetFighterPartsWorldPosition(fp->joints[fp->attributes->joint_itemlight_id], &make_flame_offset);
 
         if (fp->status_vars.common.fireflower.flame_vel_index >= FTCOMMON_FIREFLOWERSHOOT_AMMO_INDEX_LOOP)
         {

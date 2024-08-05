@@ -45,7 +45,7 @@ void ftCommonThrownReleaseFighterLoseGrip(GObj *fighter_gobj)
     {
         pos.x = pos.y = pos.z = 0.0F;
 
-        gmCollisionGetFighterPartsWorldPosition(this_fp->joint[4], &pos);
+        gmCollisionGetFighterPartsWorldPosition(this_fp->joints[4], &pos);
 
         pos.y -= 300.0F;
 

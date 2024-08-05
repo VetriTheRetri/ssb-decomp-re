@@ -46,7 +46,7 @@ void ftNessSpecialHiCreatePKThunder(GObj *fighter_gobj)
     pos.y = 0.0F;
     pos.z = 0.0F;
 
-    gmCollisionGetFighterPartsWorldPosition(fp->joint[FTNESS_PKTHUNDER_SPAWN_JOINT], &pos);
+    gmCollisionGetFighterPartsWorldPosition(fp->joints[FTNESS_PKTHUNDER_SPAWN_JOINT], &pos);
 
     pos.z = 0.0F;
 
@@ -455,13 +455,13 @@ void ftNessSpecialHiUpdateModelRoll(GObj *fighter_gobj) // Update joint's X rota
 
     /* 
 
-    fp->joint[4]->rotate.vec.f.x = (atan2f(((fp->phys_info.vel_air.x * fp->lr) < 0.0F) ? -fp->phys_info.vel_air.x : fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F); 
+    fp->joints[4]->rotate.vec.f.x = (atan2f(((fp->phys_info.vel_air.x * fp->lr) < 0.0F) ? -fp->phys_info.vel_air.x : fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F); 
     
     */
 
-    fp->joint[4]->rotate.vec.f.x = (atan2f(fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F);
+    fp->joints[4]->rotate.vec.f.x = (atan2f(fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F);
 
-    func_ovl2_800EB528(fp->joint[4]);
+    func_ovl2_800EB528(fp->joints[4]);
 }
 
 // 0x801547B8

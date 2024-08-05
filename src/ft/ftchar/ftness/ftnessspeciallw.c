@@ -48,13 +48,13 @@ void ftNessSpecialLwDecReleaseLag(ftStruct *fp)
 void ftNessSpecialLwProcAbsorb(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    DObj *joint = fp->joint[nFTPartsJointTopN];
+    DObj *joint = fp->joints[nFTPartsJointTopN];
 
     fp->lr = fp->lr_absorb;
 
     joint->rotate.vec.f.y += F_CST_DTOR32(-180.0F); // -PI32
 
-    func_ovl2_800EB528(fp->joint[nFTPartsJointTopN]);
+    func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
 
     if (fp->ga == nMPKineticsGround)
     {

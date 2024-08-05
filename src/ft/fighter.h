@@ -89,7 +89,7 @@ extern ftOpeningDesc D_ovl1_80390BE8;
 
 #define AttributesGetStruct(fp) ((ftAttributes*)fp->attributes)
 
-#define FighterGetJoint(fp, id) ((DObj*)fp->joint[id])
+#define FighterGetJoint(fp, id) ((DObj*)fp->joints[id])
 
 #define FighterCalcLandingLag(anim_length, target_length) ((f32)anim_length / target_length)
 

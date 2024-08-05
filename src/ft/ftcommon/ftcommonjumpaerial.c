@@ -25,9 +25,9 @@ void ftCommonJumpAerialUpdateModelPitch(ftStruct *fp)
     {
         fp->status_vars.common.jumpaerial.turn_frames--;
 
-        fp->joint[nFTPartsJointTopN]->rotate.vec.f.y += FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP;
+        fp->joints[nFTPartsJointTopN]->rotate.vec.f.y += FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP;
 
-        func_ovl2_800EB528(fp->joint[nFTPartsJointTopN]);
+        func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
 
         if (fp->status_vars.common.jumpaerial.turn_frames == (FTCOMMON_JUMPAERIAL_TURN_FRAMES / 2))
         {

@@ -70,6 +70,11 @@ lEFManagerYoshiShieldDObjSetup = 0x0000A860;
 
 lEFManagerKirbyStarDObjSetup = 0x00005458;
 
+lEFManagerQuakeMag0AnimJoint = 0x0000CBC0;
+lEFManagerQuakeMag1AnimJoint = 0x0000CC20;
+lEFManagerQuakeMag2AnimJoint = 0x0000CCF0;
+lEFManagerQuakeMag3AnimJoint = 0x0000CDC0;
+
 lEFManagerPikachuUnkMObjSub = 0x00000640;
 lEFManagerPikachuUnkDObjSetup = 0x00000800;
 lEFManagerPikachuUnkAnimJoint = 0x00000890;
@@ -77,8 +82,14 @@ lEFManagerPikachuUnkMatAnimJoint = 0x00000900;
 
 lEFManagerPikachuThunderShockMObjSub = 0x000013A0;
 lEFManagerPikachuThunderShockDObjSetup = 0x00001640;
-lEFManagerPikachuThunderShockAnimJoint = 0x00001720;
-lEFManagerPikachuThunderShockMatAnimJoint = 0x00001A80;
+lEFManagerPikachuThunderShockMObjSub = 0x000013A0;
+lEFManagerPikachuThunderShockDObjSetup = 0x00001640;
+lEFManagerPikachuThunderShock0AnimJoint = 0x00001720;
+lEFManagerPikachuThunderShock1AnimJoint = 0x00001850;
+lEFManagerPikachuThunderShock2AnimJoint = 0x00001970;
+lEFManagerPikachuThunderShock0MatAnimJoint = 0x00001A80;
+lEFManagerPikachuThunderShock1MatAnimJoint = 0x00001AC0;
+lEFManagerPikachuThunderShock2MatAnimJoint = 0x00001B10;
 
 lEFManagerPikachuThunderTrailMObjSub = 0x00009420;
 lEFManagerPikachuThunderTrailDObjSetup = 0x000095B0;

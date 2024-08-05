@@ -332,7 +332,7 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
 
     joint_id = (ip->weight == nITWeightHeavy) ? fp->attributes->joint_itemheavy_id : fp->attributes->joint_itemlight_id;
 
-    gmCollisionGetFighterPartsWorldPosition(fp->joint[joint_id], &pos);
+    gmCollisionGetFighterPartsWorldPosition(fp->joints[joint_id], &pos);
 
     DObjGetStruct(item_gobj)->translate.vec.f.x = pos.x;
     DObjGetStruct(item_gobj)->translate.vec.f.y = pos.y;
@@ -452,13 +452,13 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     joint_id = (ip->weight == nITWeightHeavy) ? fp->attributes->joint_itemheavy_id : fp->attributes->joint_itemlight_id;
 
-    joint->user_data.p = fp->joint[joint_id];
+    joint->user_data.p = fp->joints[joint_id];
 
     pos.x = 0.0F;
     pos.y = 0.0F;
     pos.z = 0.0F;
 
-    gmCollisionGetFighterPartsWorldPosition(fp->joint[joint_id], &pos);
+    gmCollisionGetFighterPartsWorldPosition(fp->joints[joint_id], &pos);
 
     efManagerItemGetSwirlProcUpdate(&pos);
 

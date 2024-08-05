@@ -65,7 +65,7 @@ f32 ftKirbySpecialLwGetGroundAxisYaw(ftStruct *fp)
 {
     f32 rot_z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
 
-    fp->joint[nFTPartsJointTopN]->rotate.vec.f.z = rot_z;
+    fp->joints[nFTPartsJointTopN]->rotate.vec.f.z = rot_z;
 
     return rot_z;
 }

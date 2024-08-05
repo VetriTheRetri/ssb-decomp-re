@@ -566,7 +566,7 @@ s32 grSectorArwingGetLaserAmmoCount(void)
 
         if (gGRCommonStruct.sector.arwing_laser_count == 2)
         {
-            DObj *joint = fp->joint[nFTPartsJointTopN];
+            DObj *joint = fp->joints[nFTPartsJointTopN];
 
             if (joint->translate.vec.f.x < pos_x)
             {
@@ -883,7 +883,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
     }
     else
     {
-        ft_pos = fp->joint[nFTPartsJointTopN]->translate.vec.f;
+        ft_pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
         ft_pos.y += fp->coll_data.ground_dist;
     }

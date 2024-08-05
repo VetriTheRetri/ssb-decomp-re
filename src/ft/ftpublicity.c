@@ -261,7 +261,7 @@ void ftPublicityKnockbackDecide(GObj *fighter_gobj, f32 knockback)
 void ftPublicityDownDecide(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    f32 pos_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+    f32 pos_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
     if ((pos_y >= gMPCollisionEdgeBounds.d2.bottom) || (pos_y < -2400.0F))
     {

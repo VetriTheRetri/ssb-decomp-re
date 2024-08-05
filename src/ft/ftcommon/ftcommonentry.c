@@ -135,8 +135,8 @@ void ftCommonAppearProcUpdate(GObj *fighter_gobj)
 void ftCommonAppearProcPhysics(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    DObj *topn_joint = fp->joint[nFTPartsJointTopN];
-    DObj *transn_joint = fp->joint[nFTPartsJointTransN];
+    DObj *topn_joint = fp->joints[nFTPartsJointTopN];
+    DObj *transn_joint = fp->joints[nFTPartsJointTransN];
 
     topn_joint->translate.vec.f.y = fp->entry_pos.y + transn_joint->translate.vec.f.y;
 

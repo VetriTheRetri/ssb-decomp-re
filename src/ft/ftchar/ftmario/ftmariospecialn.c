@@ -28,7 +28,7 @@ void ftMarioSpecialNProcAccessory(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        gmCollisionGetFighterPartsWorldPosition(fp->joint[FTMARIO_FIREBALL_SPAWN_JOINT], &pos);
+        gmCollisionGetFighterPartsWorldPosition(fp->joints[FTMARIO_FIREBALL_SPAWN_JOINT], &pos);
 
         switch (fp->ft_kind) // jtbl at 0x8018C630
         {

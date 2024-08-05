@@ -375,26 +375,26 @@ void mpCommonUpdateFighterSlopeContour(GObj *fighter_gobj)
         {
             if (fp->slope_contour & FTSLOPECONTOUR_FLAG_RFOOT)
             {
-                joint = fp->joint[attributes->joint_rfoot_id];
+                joint = fp->joints[attributes->joint_rfoot_id];
 
                 func_ovl2_800EBC0C(fp, &sp30, &sp2C, attributes->joint_rfoot_rotate, joint);
 
                 if (func_ovl2_800DDF74(fighter_gobj, fp, attributes, joint, &sp30) != FALSE)
                 {
-                    func_ovl2_800EE018(fp->joint[attributes->joint_rfoot_id], &sp30);
-                    func_ovl2_800EBD08(fp->joint[attributes->joint_rfoot_id], attributes->joint_rfoot_rotate, &sp30, sp2C);
+                    func_ovl2_800EE018(fp->joints[attributes->joint_rfoot_id], &sp30);
+                    func_ovl2_800EBD08(fp->joints[attributes->joint_rfoot_id], attributes->joint_rfoot_rotate, &sp30, sp2C);
                 }
             }
             if (fp->slope_contour & FTSLOPECONTOUR_FLAG_LFOOT)
             {
-                joint = fp->joint[attributes->joint_lfoot_id];
+                joint = fp->joints[attributes->joint_lfoot_id];
 
                 func_ovl2_800EBC0C(fp, &sp30, &sp2C, attributes->joint_lfoot_rotate, joint);
 
                 if (func_ovl2_800DDF74(fighter_gobj, fp, attributes, joint, &sp30) != FALSE)
                 {
-                    func_ovl2_800EE018(fp->joint[attributes->joint_lfoot_id], &sp30);
-                    func_ovl2_800EBD08(fp->joint[attributes->joint_lfoot_id], attributes->joint_lfoot_rotate, &sp30, sp2C);
+                    func_ovl2_800EE018(fp->joints[attributes->joint_lfoot_id], &sp30);
+                    func_ovl2_800EBD08(fp->joints[attributes->joint_lfoot_id], attributes->joint_lfoot_rotate, &sp30, sp2C);
                 }
             }
             if (fp->slope_contour & FTSLOPECONTOUR_FLAG_FULL)
@@ -431,8 +431,8 @@ void mpCommonSetFighterLandingParams(GObj *fighter_gobj)
         {
             if 
             (
-                (fp->joint[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionEdgeBounds.d2.left + 450.0F)) || 
-                (fp->joint[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.right - 450.0F))
+                (fp->joints[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionEdgeBounds.d2.left + 450.0F)) || 
+                (fp->joints[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.right - 450.0F))
             )
             {
                 ftPublicityKnockbackDecide(fighter_gobj, fp->publicity_knockback);
@@ -898,7 +898,7 @@ void mpCommonSetFighterAir(ftStruct *fp)
 {
     fp->ga = nMPKineticsAir;
 
-    fp->phys_info.vel_air.z = fp->joint[nFTPartsJointTopN]->translate.vec.f.z = 0.0F;
+    fp->phys_info.vel_air.z = fp->joints[nFTPartsJointTopN]->translate.vec.f.z = 0.0F;
 
     fp->jumps_used = 1;
 }

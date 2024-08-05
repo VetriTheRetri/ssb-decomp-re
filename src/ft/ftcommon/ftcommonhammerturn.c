@@ -19,9 +19,9 @@ void ftCommonHammerTurnUpdateModelPitch(GObj *fighter_gobj)
         {
             fp->lr = -fp->lr;
         }
-        fp->joint[nFTPartsJointTopN]->rotate.vec.f.y += FTCOMMON_HAMMER_TURN_ROTATE_STEP;
+        fp->joints[nFTPartsJointTopN]->rotate.vec.f.y += FTCOMMON_HAMMER_TURN_ROTATE_STEP;
 
-        func_ovl2_800EB528(fp->joint[nFTPartsJointTopN]);
+        func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
     }
 }
 

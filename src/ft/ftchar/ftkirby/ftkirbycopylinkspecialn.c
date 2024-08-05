@@ -34,7 +34,7 @@ void ftKirbyCopyLinkSpecialNCreateBoomerang(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        gmCollisionGetFighterPartsWorldPosition(fp->joint[FTKIRBY_COPYLINK_BOOMERANG_SPAWN_JOINT], &pos);
+        gmCollisionGetFighterPartsWorldPosition(fp->joints[FTKIRBY_COPYLINK_BOOMERANG_SPAWN_JOINT], &pos);
 
         fp->fighter_vars.kirby.copylink_boomerang_gobj = wpLinkBoomerangMakeWeapon(fighter_gobj, &pos);
     }

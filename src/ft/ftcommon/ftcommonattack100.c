@@ -101,7 +101,7 @@ void ftCommonAttack100LoopKirbyUpdateEffect(ftStruct *fp)
             pos.y = effect[fp->command_vars.flags.flag2 - 1].offset.y;
             pos.z = effect[fp->command_vars.flags.flag2 - 1].offset.z;
 
-            gmCollisionGetFighterPartsWorldPosition(fp->joint[nFTPartsJointTopN], &pos);
+            gmCollisionGetFighterPartsWorldPosition(fp->joints[nFTPartsJointTopN], &pos);
 
             efManagerKirbyVulcanJabMakeEffect(&pos, fp->lr, effect[fp->command_vars.flags.flag2 - 1].rotate, effect[fp->command_vars.flags.flag2 - 1].vel, effect[fp->command_vars.flags.flag2 - 1].add);
 

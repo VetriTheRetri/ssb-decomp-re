@@ -84,7 +84,7 @@ void ftBossWaitDecideStatusPlayer(GObj *fighter_gobj)
     if (ftCommonTurnCheckInputSuccess(fighter_gobj) != FALSE)
     {
         fp->lr = -fp->lr;
-        fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
+        fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
     }
 
     angle = ftParamGetStickAngleRads(fp);

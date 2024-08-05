@@ -429,11 +429,11 @@ void ftManagerDestroyFighter(GObj *fighter_gobj)
     {
         ftParamProcStopEffect(fighter_gobj);
     }
-    for (i = 0; i < ARRAY_COUNT(fp->joint); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->joints); i++)
     {
-        if (fp->joint[i] != NULL)
+        if (fp->joints[i] != NULL)
         {
-            ftParts *ft_parts = fp->joint[i]->user_data.p;
+            ftParts *ft_parts = fp->joints[i]->user_data.p;
 
             if (ft_parts->gobj != NULL)
             {
@@ -780,26 +780,26 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
 
     fp->is_have_translate_scale = (attributes->translate_scales != NULL) ? TRUE : FALSE;
 
-    for (i = 0; i < ARRAY_COUNT(fp->joint); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->joints); i++)
     {
-        fp->joint[i] = NULL;
+        fp->joints[i] = NULL;
     }
     topn_joint = omAddDObjForGObj(fighter_gobj, NULL);
-    fp->joint[nFTPartsJointTopN] = topn_joint;
+    fp->joints[nFTPartsJointTopN] = topn_joint;
 
     func_ovl0_800C89BC(topn_joint, 0x4B, 0, 0);
 
-    fp->joint[nFTPartsJointTopN]->ommtx[0]->unk05 = ft_desc->unk_rebirth_0x1D;
+    fp->joints[nFTPartsJointTopN]->ommtx[0]->unk05 = ft_desc->unk_rebirth_0x1D;
 
-    func_ovl0_800C8DB4(DObjGetStruct(fighter_gobj), attributes->commonparts_container, fp->detail_current, &fp->joint[nFTPartsJointEnumMax], attributes->unk_ftca_0x29C, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
+    func_ovl0_800C8DB4(DObjGetStruct(fighter_gobj), attributes->commonparts_container, fp->detail_current, &fp->joints[nFTPartsJointCommonStart], attributes->unk_ftca_0x29C, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
 
-    for (i = 0; i < ARRAY_COUNT(fp->joint); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->joints); i++)
     {
-        if (fp->joint[i] != NULL)
+        if (fp->joints[i] != NULL)
         {
-            fp->joint[i]->user_data.p = ftManagerGetNextPartsAlloc();
+            fp->joints[i]->user_data.p = ftManagerGetNextPartsAlloc();
 
-            ft_parts = fp->joint[i]->user_data.p;
+            ft_parts = fp->joints[i]->user_data.p;
             ft_parts->flags = attributes->commonparts_container->commonparts[fp->detail_current - 1].flags;
             ft_parts->joint_id = i;
 
@@ -817,12 +817,12 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
             }
         }
     }
-    for (i = nFTPartsJointEnumMax; i < ARRAY_COUNT(fp->joint); i++)
+    for (i = nFTPartsJointCommonStart; i < ARRAY_COUNT(fp->joints); i++)
     {
-        if (fp->joint[i] != NULL)
+        if (fp->joints[i] != NULL)
         {
-            fp->modelpart_status[i - nFTPartsJointEnumMax].drawstatus_default = 
-            fp->modelpart_status[i - nFTPartsJointEnumMax].drawstatus_current = (fp->joint[i]->display_ptr != NULL) ? 0 : -1;
+            fp->modelpart_status[i - nFTPartsJointCommonStart].drawstatus_default = 
+            fp->modelpart_status[i - nFTPartsJointCommonStart].drawstatus_current = (fp->joints[i]->display_ptr != NULL) ? 0 : -1;
         }
     }
     for (i = 0; i < ARRAY_COUNT(fp->texturepart_status); i++)
@@ -849,7 +849,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
         {
             fp->fighter_hurt[i].hitstatus = nGMHitStatusNormal;
             fp->fighter_hurt[i].joint_id = attributes->fighter_hurt_desc[i].joint_id;
-            fp->fighter_hurt[i].joint = fp->joint[fp->fighter_hurt[i].joint_id];
+            fp->fighter_hurt[i].joint = fp->joints[fp->fighter_hurt[i].joint_id];
             fp->fighter_hurt[i].placement = attributes->fighter_hurt_desc[i].placement;
             fp->fighter_hurt[i].is_grabbable = attributes->fighter_hurt_desc[i].is_grabbable;
             fp->fighter_hurt[i].offset = attributes->fighter_hurt_desc[i].offset;

@@ -35,9 +35,9 @@ void ftCommonItemThrowUpdateModelPitch(GObj *fighter_gobj)
                 fp->lr = -fp->lr;
             }
         }
-        fp->joint[nFTPartsJointTopN]->rotate.vec.f.y -= F_CLC_DTOR32(180.0F / fp->status_vars.common.itemthrow.turn_rotate_step);
+        fp->joints[nFTPartsJointTopN]->rotate.vec.f.y -= F_CLC_DTOR32(180.0F / fp->status_vars.common.itemthrow.turn_rotate_step);
 
-        func_ovl2_800EB528(fp->joint[nFTPartsJointTopN]);
+        func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
     }
 }
 

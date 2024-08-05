@@ -289,7 +289,7 @@ struct ftModelPartDesc
 
 struct ftModelPartContainer
 {
-    ftModelPartDesc *modelparts_desc[FTPARTS_JOINT_NUM_MAX - nFTPartsJointEnumMax];
+    ftModelPartDesc *modelparts_desc[FTPARTS_JOINT_NUM_MAX - nFTPartsJointCommonStart];
 };
 
 struct ftModelPartStatus
@@ -1370,9 +1370,9 @@ struct ftStruct
 
     ftMotionScript motion_script[2][2];
 
-    DObj *joint[FTPARTS_JOINT_NUM_MAX];
+    DObj *joints[FTPARTS_JOINT_NUM_MAX];
 
-    ftModelPartStatus modelpart_status[FTPARTS_JOINT_NUM_MAX - nFTPartsJointEnumMax]; // -1 = hidden, 0 and up = draw model part ID
+    ftModelPartStatus modelpart_status[FTPARTS_JOINT_NUM_MAX - nFTPartsJointCommonStart]; // -1 = hidden, 0 and up = draw model part ID
     ftTexturePartStatus texturepart_status[2];
 
     ftData *ft_data;

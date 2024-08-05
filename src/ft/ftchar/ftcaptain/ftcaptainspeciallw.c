@@ -85,7 +85,7 @@ void ftCaptainSpecialLwProcPhysics(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        fp->joint[nFTPartsJointTopN]->rotate.vec.f.z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
+        fp->joints[nFTPartsJointTopN]->rotate.vec.f.z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
         ftPhysicsApplyGroundVelTransN(fighter_gobj);
     }
     else if (fp->command_vars.flags.flag0 != 0)
@@ -210,13 +210,13 @@ void ftCaptainSpecialLwProcStatus(GObj *fighter_gobj)
 void ftCaptainSpecialLwAirSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    f32 rot_z = fp->joint[nFTPartsJointTopN]->rotate.vec.f.z;
+    f32 rot_z = fp->joints[nFTPartsJointTopN]->rotate.vec.f.z;
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwAir, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
 
-    fp->joint[nFTPartsJointTopN]->rotate.vec.f.z = rot_z;
-    fp->joint[nFTPartsJointTransN]->rotate.vec.f.z = fp->joint[nFTPartsJointTopN]->rotate.vec.f.z;
+    fp->joints[nFTPartsJointTopN]->rotate.vec.f.z = rot_z;
+    fp->joints[nFTPartsJointTransN]->rotate.vec.f.z = fp->joints[nFTPartsJointTopN]->rotate.vec.f.z;
 
     fp->proc_lagstart = ftParamProcPauseEffect;
     fp->proc_lagend = ftParamProcResumeEffect;

@@ -50,7 +50,7 @@ void ftCaptainSpecialHiProcInterrupt(GObj *fighter_gobj)
         {
             ftParamSetStickLR(fp);
 
-            fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * HALF_PI32;
+            fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * HALF_PI32;
         }
     }
 }

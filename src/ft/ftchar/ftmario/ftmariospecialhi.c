@@ -38,11 +38,11 @@ void ftMarioSpecialHiProcInterrupt(GObj *fighter_gobj)
 
             stick_rot = ABSF(rot_z);
 
-            joint_rot = ABSF(fp->joint[nFTPartsJointTransN]->rotate.vec.f.z);
+            joint_rot = ABSF(fp->joints[nFTPartsJointTransN]->rotate.vec.f.z);
 
             if (joint_rot < stick_rot)
             {
-                fp->joint[nFTPartsJointTransN]->rotate.vec.f.z = rot_z;
+                fp->joints[nFTPartsJointTransN]->rotate.vec.f.z = rot_z;
             }
         }
     }
@@ -57,7 +57,7 @@ void ftMarioSpecialHiProcInterrupt(GObj *fighter_gobj)
         {
             ftParamSetStickLR(fp);
 
-            fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
+            fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
         }
     }
 }

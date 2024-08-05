@@ -13,9 +13,9 @@ void ftCommonDokanStartUpdateModelPitch(ftStruct *fp)
     {
         fp->status_vars.common.dokan.turn_stop_wait--;
 
-        fp->joint[nFTPartsJointTopN]->rotate.vec.f.y += (-FTCOMMON_DOKAN_TURN_STEP * fp->lr);
+        fp->joints[nFTPartsJointTopN]->rotate.vec.f.y += (-FTCOMMON_DOKAN_TURN_STEP * fp->lr);
 
-        func_ovl2_800EB528(fp->joint[nFTPartsJointTopN]);
+        func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
     }
 }
 
@@ -237,9 +237,9 @@ void ftCommonDokanEndUpdateModelPitch(GObj *fighter_gobj)
         {
             fp->status_vars.common.dokan.turn_stop_wait--;
 
-            fp->joint[nFTPartsJointTopN]->rotate.vec.f.y += (FTCOMMON_DOKAN_TURN_STEP * fp->lr);
+            fp->joints[nFTPartsJointTopN]->rotate.vec.f.y += (FTCOMMON_DOKAN_TURN_STEP * fp->lr);
 
-            func_ovl2_800EB528(fp->joint[nFTPartsJointTopN]);
+            func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
         }
     }
 }
@@ -286,9 +286,9 @@ void ftCommonDokanEndSetStatus(GObj *fighter_gobj)
     if ((fp->ft_kind != nFTKindMario) && (fp->ft_kind != nFTKindMMario) && (fp->ft_kind != nFTKindNMario) && (fp->ft_kind != nFTKindLuigi) && (fp->ft_kind != nFTKindNLuigi))
     {
         fp->status_vars.common.dokan.turn_stop_wait = FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT;
-        fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = 0.0F;
+        fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = 0.0F;
 
-        func_ovl2_800EB528(fp->joint[nFTPartsJointTopN]);
+        func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
     }
     else fp->status_vars.common.dokan.turn_stop_wait = 0;
 

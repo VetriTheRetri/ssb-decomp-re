@@ -31,7 +31,7 @@ void ftNessSpecialNProcAccessory(GObj *fighter_gobj) // PK Fire setup
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        gmCollisionGetFighterPartsWorldPosition(fp->joint[FTNESS_PKFIRE_SPAWN_JOINT], &pos);
+        gmCollisionGetFighterPartsWorldPosition(fp->joints[FTNESS_PKFIRE_SPAWN_JOINT], &pos);
 
         pos.x += FTNESS_PKFIRE_SPAWN_OFF_X * fp->lr;
         pos.y += FTNESS_PKFIRE_SPAWN_OFF_Y;

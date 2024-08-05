@@ -36,11 +36,6 @@ extern intptr_t lEFManagerShieldDObjSetup;                   // 0x00000300
 
 extern intptr_t lEFManagerYoshiShieldDObjSetup;              // 0x0000A860
 
-extern intptr_t D_NF_00001850;
-extern intptr_t D_NF_00001970;
-extern intptr_t D_NF_00001AC0;
-extern intptr_t D_NF_00001B10;
-
 extern intptr_t D_NF_000004D4;
 extern intptr_t lEFManagerKirbyStarDObjSetup;                // 0x00005458
 
@@ -51,8 +46,13 @@ extern intptr_t lEFManagerPikachuUnkMatAnimJoint;            // 0x00000900
 
 extern intptr_t lEFManagerPikachuThunderShockMObjSub;               // 0x000013A0
 extern intptr_t lEFManagerPikachuThunderShockDObjSetup;             // 0x00001640
-extern intptr_t lEFManagerPikachuThunderShockAnimJoint;             // 0x00001720
-extern intptr_t lEFManagerPikachuThunderShockMatAnimJoint;          // 0x00001A80
+extern intptr_t lEFManagerPikachuThunderShock0AnimJoint;             // 0x00001720
+extern intptr_t lEFManagerPikachuThunderShock1AnimJoint;             // 0x00001850
+extern intptr_t lEFManagerPikachuThunderShock2AnimJoint;            // 0x00001970
+extern intptr_t lEFManagerPikachuThunderShock0MatAnimJoint;          // 0x00001A80
+extern intptr_t lEFManagerPikachuThunderShock1MatAnimJoint;         // 0x00001AC0
+extern intptr_t lEFManagerPikachuThunderShock2MatAnimJoint;         // 0x00001B10
+
 
 extern intptr_t lEFManagerPikachuThunderTrailMObjSub;               // 0x00009420
 extern intptr_t lEFManagerPikachuThunderTrailDObjSetup;             // 0x000095B0
@@ -234,10 +234,10 @@ extern intptr_t D_NF_00006200;                              // 0x00006200
 extern intptr_t D_NF_00006518;                              // 0x00006518
 extern intptr_t D_NF_00006598;                              // 0x00006598
 
-extern intptr_t D_NF_0000CBC0;                              // 0x0000CBC0
-extern intptr_t D_NF_0000CC20;                              // 0x0000CC20
-extern intptr_t D_NF_0000CCF0;                              // 0x0000CCF0
-extern intptr_t D_NF_0000CDC0;                              // 0x0000CDC0
+extern intptr_t lEFManagerQuakeMag0AnimJoint;               // 0x0000CBC0
+extern intptr_t lEFManagerQuakeMag1AnimJoint;               // 0x0000CC20
+extern intptr_t lEFManagerQuakeMag2AnimJoint;               // 0x0000CCF0
+extern intptr_t lEFManagerQuakeMag3AnimJoint;               // 0x0000CDC0
 
 extern intptr_t lEFManagerNessPKFlashMObjSub;                    // 0x00006B40
 extern intptr_t lEFManagerNessPKFlashDObjSetup;                  // 0x00006D00
@@ -895,8 +895,8 @@ efCreateDesc dEFManagerPikachuThunderShockEffectDesc =
 
     &lEFManagerPikachuThunderShockDObjSetup,              // DObj Setup attributes offset (?)
     &lEFManagerPikachuThunderShockMObjSub,                // MObjSub offset
-    &lEFManagerPikachuThunderShockAnimJoint,              // AnimJoint offset
-    &lEFManagerPikachuThunderShockMatAnimJoint            // MatAnimJoint offset
+    &lEFManagerPikachuThunderShock0AnimJoint,              // AnimJoint offset
+    &lEFManagerPikachuThunderShock0MatAnimJoint            // MatAnimJoint offset
 };
 
 // 0x8012E224
@@ -2288,11 +2288,11 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
         }
         if (o_mobjsub != 0)
         {
-            gcAddMObjSubAll(effect_gobj, (void*) (addr + o_mobjsub));
+            gcAddMObjSubAll(effect_gobj, (MObjSub***) (addr + o_mobjsub));
         }
         if ((o_anim_joint != 0) || (o_matanim_joint != 0))
         {
-            gcAddAnimAll(effect_gobj, (o_anim_joint != 0) ? (void*) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (void*) (addr + o_matanim_joint) : NULL, 0.0F);
+            gcAddAnimAll(effect_gobj, (o_anim_joint != 0) ? (AObjAnimJoint**) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (AObjAnimJoint***) (addr + o_matanim_joint) : NULL, 0.0F);
             func_8000DF34_EB34(effect_gobj);
         }
     }
@@ -4078,19 +4078,19 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude) // Linker things here
     switch (magnitude)
     {
     case 0:
-        gcAddAnimJointAll(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CBC0, 0.0F);
+        gcAddAnimJointAll(effect_gobj, gcGetAnimFromFile(AObjAnimJoint**, sEFManagerTexturesFile1, &lEFManagerQuakeMag0AnimJoint), 0.0F);
         break;
 
     case 1:
-        gcAddAnimJointAll(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CC20, 0.0F);
+        gcAddAnimJointAll(effect_gobj, gcGetAnimFromFile(AObjAnimJoint**, sEFManagerTexturesFile1, &lEFManagerQuakeMag1AnimJoint), 0.0F);
         break;
 
     case 2:
-        gcAddAnimJointAll(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CCF0, 0.0F);
+        gcAddAnimJointAll(effect_gobj, gcGetAnimFromFile(AObjAnimJoint**, sEFManagerTexturesFile1, &lEFManagerQuakeMag2AnimJoint), 0.0F);
         break;
 
     case 3: // Used by POW Block 
-        gcAddAnimJointAll(effect_gobj, (uintptr_t)sEFManagerTexturesFile1 + (intptr_t)&D_NF_0000CDC0, 0.0F);
+        gcAddAnimJointAll(effect_gobj, gcGetAnimFromFile(AObjAnimJoint**, sEFManagerTexturesFile1, &lEFManagerQuakeMag3AnimJoint), 0.0F);
         break;
 
     default:
@@ -4262,7 +4262,7 @@ GObj* efManagerFireSparkMakeEffect(GObj *fighter_gobj) // I really have no idea 
     dobj = DObjGetStruct(effect_gobj);
 
     dobj->translate.vec.f.y = 160.0F;
-    dobj->user_data.p = fp->joint[16];
+    dobj->user_data.p = fp->joints[16];
 
     func_ovl0_800C9314(dobj->child, (uintptr_t)sEFManagerTexturesFile2 + (intptr_t)&lEFManagerFireSparkDObjSetup, effect_gobj); // Linker thing
 
@@ -4270,13 +4270,13 @@ GObj* efManagerFireSparkMakeEffect(GObj *fighter_gobj) // I really have no idea 
 }
 
 // 0x80100E84
-void efManagerFoxReflectorSetImageID(GObj *effect_gobj, s32 index)
+void efManagerFoxReflectorSetAnimID(GObj *effect_gobj, s32 anim_id)
 {
     efStruct *ep = efGetStruct(effect_gobj);
 
-    ep->effect_vars.reflector.index = index;
+    ep->effect_vars.reflector.index = anim_id;
 
-    gcAddAnimJointAll(effect_gobj, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)dEFManagerFoxReflectorAnimJointOffsets[index], 0.0F);
+    gcAddAnimJointAll(effect_gobj, gcGetAnimFromFile(AObjAnimJoint**, gFTDataFoxSpecial2, dEFManagerFoxReflectorAnimJointOffsets[anim_id]), 0.0F);
     func_8000DF34_EB34(effect_gobj);
 }
 
@@ -4296,7 +4296,7 @@ void efManagerFoxReflectorProcUpdate(GObj *effect_gobj)
 
         case 0:
         case 2:
-            efManagerFoxReflectorSetImageID(effect_gobj, 1);
+            efManagerFoxReflectorSetAnimID(effect_gobj, 1);
             break;
 
         case 3:
@@ -4307,7 +4307,7 @@ void efManagerFoxReflectorProcUpdate(GObj *effect_gobj)
     }
     if (ep->effect_vars.reflector.status != 4)
     {
-        efManagerFoxReflectorSetImageID(effect_gobj, ep->effect_vars.reflector.status);
+        efManagerFoxReflectorSetAnimID(effect_gobj, ep->effect_vars.reflector.status);
 
         ep->effect_vars.reflector.status = 4;
     }
@@ -4327,7 +4327,7 @@ GObj* efManagerFoxReflectorMakeEffect(GObj *fighter_gobj)
 
     ep->fighter_gobj = fighter_gobj;
 
-    DObjGetStruct(effect_gobj)->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
+    DObjGetStruct(effect_gobj)->user_data.p = ftGetStruct(fighter_gobj)->joints[nFTPartsJointTopN];
 
     ep->effect_vars.reflector.index = 0;
     ep->effect_vars.reflector.status = 4;
@@ -4381,7 +4381,7 @@ GObj* efManagerShieldMakeEffect(GObj *fighter_gobj)
 
     fp->is_attach_effect = TRUE;
 
-    DObjGetStruct(effect_gobj)->user_data.p = fp->joint[nFTPartsJointYRotN];
+    DObjGetStruct(effect_gobj)->user_data.p = fp->joints[nFTPartsJointYRotN];
 
     ep->effect_vars.shield.player = fp->player;
     ep->effect_vars.shield.is_damage_shield = FALSE;
@@ -4434,7 +4434,7 @@ GObj* efManagerYoshiShieldMakeEffect(GObj *fighter_gobj)
 
     fp->is_attach_effect = TRUE;
 
-    DObjGetStruct(effect_gobj)->user_data.p = fp->joint[nFTPartsJointYRotN];
+    DObjGetStruct(effect_gobj)->user_data.p = fp->joints[nFTPartsJointYRotN];
     DObjGetStruct(effect_gobj)->scale.vec.f.x = DObjGetStruct(effect_gobj)->scale.vec.f.y = 1.5F;
 
     ep->effect_vars.shield.player = fp->player;
@@ -4668,7 +4668,7 @@ GObj* efManagerPikachuThunderShockMakeEffect(GObj *fighter_gobj, Vec3f *pos, s32
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[nFTPartsJointTopN];
 
     dobj->child->translate.vec.f = *pos;
 
@@ -4679,12 +4679,24 @@ GObj* efManagerPikachuThunderShockMakeEffect(GObj *fighter_gobj, Vec3f *pos, s32
     switch (frame)
     {
     case 1:
-        gcAddAnimAll(effect_gobj, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001850, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001AC0, 0.0F); // Linker thing
+        gcAddAnimAll
+        (
+            effect_gobj, 
+            gcGetAnimFromFile(AObjAnimJoint**, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock1AnimJoint), 
+            gcGetAnimFromFile(AObjAnimJoint***, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock1MatAnimJoint), 
+            0.0F
+        );
         func_8000DF34_EB34(effect_gobj);
         break;
 
     case 2:
-        gcAddAnimAll(effect_gobj, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001970, (uintptr_t)gFTDataPikachuSpecial2 + (intptr_t)&D_NF_00001B10, 0.0F); // Linker thing
+        gcAddAnimAll
+        (
+            effect_gobj, 
+            gcGetAnimFromFile(AObjAnimJoint**, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock2AnimJoint), 
+            gcGetAnimFromFile(AObjAnimJoint***, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock2MatAnimJoint), 
+            0.0F
+        );
         func_8000DF34_EB34(effect_gobj);
         break;
     }
@@ -4868,7 +4880,7 @@ GObj* efManagerSamusGrappleBeamGlowMakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[23];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[23];
 
     return effect_gobj;
 }
@@ -4894,7 +4906,7 @@ GObj* efManagerCaptainFalconKickMakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[23];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[23];
 
     dobj->rotate.vec.f.y = fp->lr * F_CLC_DTOR32(90.0F);
 
@@ -4927,7 +4939,7 @@ GObj* efManagerCaptainFalconPunchMakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    joint = ((fp->ft_kind == nFTKindCaptain) || (fp->ft_kind == nFTKindNCaptain)) ? fp->joint[16] : fp->joint[30];
+    joint = ((fp->ft_kind == nFTKindCaptain) || (fp->ft_kind == nFTKindNCaptain)) ? fp->joints[16] : fp->joints[30];
 
     dobj->user_data.p = joint;
 
@@ -4981,7 +4993,7 @@ GObj* efManagerPurinSingMakeEffect(GObj *fighter_gobj)
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[nFTPartsJointTopN];
 
     sibling_dobj = dobj->child;
 
@@ -5099,7 +5111,7 @@ GObj* efManagerKirbyCutterUpMakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[nFTPartsJointTopN];
     dobj->rotate.vec.f.y = fp->lr * F_CLC_DTOR32(90.0F);
 
     return effect_gobj;
@@ -5125,7 +5137,7 @@ GObj* efManagerKirbyCutterDownMakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[nFTPartsJointTopN];
     dobj->rotate.vec.f.y = fp->lr * F_CLC_DTOR32(90.0F);
 
     return effect_gobj;
@@ -5150,7 +5162,7 @@ GObj* efManagerKirbyCutterDrawMakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[17];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[17];
 
     return effect_gobj;
 }
@@ -5175,7 +5187,7 @@ GObj* efManagerKirbyCutterTrailMakeEffect(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[17];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[17];
     dobj->rotate.vec.f.y = fp->lr * F_CLC_DTOR32(90.0F);
 
     return effect_gobj;
@@ -5200,7 +5212,7 @@ GObj* efManagerNessPsychicMagnetMakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[nFTPartsJointTopN];
 
     return effect_gobj;
 }
@@ -5353,7 +5365,7 @@ GObj* efManagerNessPKThunderWaveMakeEffect(GObj *fighter_gobj)
 
         ep->fighter_gobj = fighter_gobj;
 
-        DObjGetStruct(effect_gobj)->user_data.p = fp->joint[5];
+        DObjGetStruct(effect_gobj)->user_data.p = fp->joints[5];
 
         DObjGetStruct(effect_gobj)->rotate.vec.f.y = fp->lr * F_CLC_DTOR32(90.0F);
         DObjGetStruct(effect_gobj)->translate.vec.f.z = 0.0F;
@@ -5643,7 +5655,7 @@ GObj* efManagerYoshiEggLayMakeEffect(GObj *fighter_gobj)
     ep->effect_vars.yoshi_egg_lay.index = ep->effect_vars.yoshi_egg_lay.force_index = 2;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[nFTPartsJointTopN];
 
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = dFTCommonYoshiEggHurtboxDescs[fp->ft_kind].effect_size;
     dobj->scale.vec.f.z = 1.0F;
@@ -5684,7 +5696,7 @@ GObj* efManagerYoshiEggEscapeMakeEffect(GObj *fighter_gobj)
 
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = 1.5F;
 
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[5];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[5];
 
     return effect_gobj;
 }
@@ -5788,7 +5800,7 @@ GObj* efManagerLinkSpinAttackMakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    dobj->user_data.p = fp->joint[nFTPartsJointTopN];
+    dobj->user_data.p = fp->joints[nFTPartsJointTopN];
 
     dobj->rotate.vec.f.y = (ftGetStruct(fighter_gobj)->lr == nGMFacingR) ? F_CLC_DTOR32(30.0F) : F_CLC_DTOR32(210.0F);
 
@@ -5868,19 +5880,19 @@ GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    gcAddAnimJointAll(effect_gobj, (uintptr_t)gFTDataCaptainSpecial2 + (intptr_t)&D_NF_00006200, 0.0F);
+    gcAddAnimJointAll(effect_gobj, gcGetAnimFromFile(AObjAnimJoint**, gFTDataCaptainSpecial2, &D_NF_00006200), 0.0F);
 
     node_dobj = dobj->child->child->child;
 
-    for (i = nFTPartsJointEnumMax; i > 0; i--)
+    for (i = nFTPartsJointCommonStart; i > 0; i--)
     {
         omAddOMMtxForDObjFixed(node_dobj, 0x2C, 0);
 
-        gcAddDObjAnimJoint(node_dobj, (uintptr_t)gFTDataCaptainSpecial2 + (intptr_t)&D_NF_00006518, 0.0F);
+        gcAddDObjAnimJoint(node_dobj, gcGetAnimFromFile(AObjAnimJoint**, gFTDataCaptainSpecial2, &D_NF_00006518), 0.0F);
 
         node_dobj = node_dobj->sib_next;
 
-        gcAddDObjAnimJoint(node_dobj, (uintptr_t)gFTDataCaptainSpecial2 + (intptr_t)&D_NF_00006598, 0.0F);
+        gcAddDObjAnimJoint(node_dobj, gcGetAnimFromFile(AObjAnimJoint**, gFTDataCaptainSpecial2, &D_NF_00006598), 0.0F);
 
         node_dobj = node_dobj->sib_next;
     }
@@ -5962,7 +5974,7 @@ GObj* efManagerFoxEntryArwingMakeEffect(Vec3f *pos, s32 lr)
     what = dobj->child->child->child->sib_next->sib_next->sib_next->sib_next->sib_next->sib_next->child;
 
     omAddOMMtxForDObjFixed(what, 0x2C, 0);
-    gcAddDObjAnimJoint(what, (uintptr_t)gFTDataFoxSpecial3 + (intptr_t)&D_NF_00002E74, 0.0F); // Linker thing
+    gcAddDObjAnimJoint(what, gcGetAnimFromFile(AObjAnimJoint**, gFTDataFoxSpecial3, &D_NF_00002E74), 0.0F); // Linker thing
 
     if (lr == nGMFacingR)
     {
@@ -6141,7 +6153,7 @@ GObj* efManagerCaptureKirbyStarMakeEffect(GObj *fighter_gobj)
 
     dobj->translate.vec.f.y += EFPART_CAPTUREKIRBYSTAR_SPARK_OFF_Y;
 
-    dobj->child->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
+    dobj->child->user_data.p = ftGetStruct(fighter_gobj)->joints[nFTPartsJointTopN];
 
     dobj->child->scale.vec.f.x = dobj->child->scale.vec.f.y = copy_data[ftGetStruct(fighter_gobj)->ft_kind].effect_scale;
     dobj->child->scale.vec.f.z = 1.0F;
@@ -6245,7 +6257,7 @@ GObj* efManagerRebirthHaloMakeEffect(GObj *fighter_gobj, f32 scale)
     ep->fighter_gobj = fighter_gobj;
 
     dobj = DObjGetStruct(effect_gobj);
-    dobj->user_data.p = ftGetStruct(fighter_gobj)->joint[nFTPartsJointTopN];
+    dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[nFTPartsJointTopN];
 
     child = DObjGetStruct(effect_gobj)->child;
     child->scale.vec.f.x = child->scale.vec.f.y = child->scale.vec.f.z = scale;

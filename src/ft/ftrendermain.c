@@ -866,9 +866,9 @@ void ftRenderMainDrawSkeleton(DObj *dobj)
     {
         sp50 = D_800D62D0;
 
-        if ((ft_parts != NULL) && (ft_parts->joint_id >= nFTPartsJointEnumMax))
+        if ((ft_parts != NULL) && (ft_parts->joint_id >= nFTPartsJointCommonStart))
         {
-            skeleton = &fp->attributes->skeleton[fp->colanim.skeleton_id][ft_parts->joint_id - nFTPartsJointEnumMax];
+            skeleton = &fp->attributes->skeleton[fp->colanim.skeleton_id][ft_parts->joint_id - nFTPartsJointCommonStart];
 
             switch (skeleton->flags & 0xF)
             {
@@ -940,8 +940,8 @@ void ftRenderMainDrawAll(GObj *fighter_gobj)
         (fp->colanim.skeleton_id)                                           &&
         (attributes->skeleton != NULL)                                      &&
         (attributes->skeleton[fp->colanim.skeleton_id] != NULL)             &&
-        (fp->joint[(s32)(attributes->skeleton[0])] != NULL)                 &&        // ???
-        (fp->joint[(s32)(attributes->skeleton[0])]->display_list != NULL)             // What kind of Flintstones gummies were you on I need them right now
+        (fp->joints[(s32)(attributes->skeleton[0])] != NULL)                 &&        // ???
+        (fp->joints[(s32)(attributes->skeleton[0])]->display_list != NULL)             // What kind of Flintstones gummies were you on I need them right now
     )
     {
         ftRenderMainDrawSkeleton(DObjGetStruct(fighter_gobj));
@@ -1109,7 +1109,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
                 break;
 
             default:
-                sp128 = fp->joint[nFTPartsJointTopN]->translate.vec.f;
+                sp128 = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
                 sp128.y += fp->attributes->cam_offset_y;
 
@@ -1138,7 +1138,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
                 if (cmManagerCheckTargetInBounds(cam_pos_x, cam_pos_y) == FALSE)
                 {
-                    sp128 = fp->joint[nFTPartsJointTopN]->translate.vec.f;
+                    sp128 = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
                     sp128.y += 300.0F;
 
@@ -1232,11 +1232,11 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
         }
         else
         {
-            fp->joint[nFTPartsJointTopN]->ommtx[0]->kind = nOMTransformRotRpyR;
+            fp->joints[nFTPartsJointTopN]->ommtx[0]->kind = nOMTransformRotRpyR;
 
             ftRenderMainDrawAll(fighter_gobj);
 
-            fp->joint[nFTPartsJointTopN]->ommtx[0]->kind = 0x4B;
+            fp->joints[nFTPartsJointTopN]->ommtx[0]->kind = 0x4B;
         }
         if (fp->shuffle_timer != 0)
         {
@@ -1339,11 +1339,11 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
         }
         else
         {
-            fp->joint[nFTPartsJointTopN]->ommtx[0]->kind = nOMTransformRotRpyR;
+            fp->joints[nFTPartsJointTopN]->ommtx[0]->kind = nOMTransformRotRpyR;
 
             ftRenderMainDrawParts(DObjGetStruct(fighter_gobj));
 
-            fp->joint[nFTPartsJointTopN]->ommtx[0]->kind = 0x4B;
+            fp->joints[nFTPartsJointTopN]->ommtx[0]->kind = 0x4B;
         }
         for (i = 0; i < ARRAY_COUNT(fp->fighter_hit); i++)
         {

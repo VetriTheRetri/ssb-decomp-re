@@ -155,13 +155,13 @@ void ftPikachuSpecialHiUpdateModelRollScale(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->rotate.vec.f.x = (atan2f(fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F); // HALF_PI32
+    fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->rotate.vec.f.x = (atan2f(fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F); // HALF_PI32
 
-    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.x = FTPIKACHU_QUICKATTACK_SCALE_X;
-    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.y = FTPIKACHU_QUICKATTACK_SCALE_Y;
-    fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.z = FTPIKACHU_QUICKATTACK_SCALE_Z;
+    fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.x = FTPIKACHU_QUICKATTACK_SCALE_X;
+    fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.y = FTPIKACHU_QUICKATTACK_SCALE_Y;
+    fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.z = FTPIKACHU_QUICKATTACK_SCALE_Z;
 
-    func_ovl2_800EB528(fp->joint[FTPIKACHU_QUICKATTACK_BASE_JOINT]);
+    func_ovl2_800EB528(fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]);
 }
 
 // 0x80152B24

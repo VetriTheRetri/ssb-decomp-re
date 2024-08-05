@@ -1562,7 +1562,7 @@ sb32 gmCollisionCheckWeaponHitShieldCollide(wpHitbox *wp_hit, s32 hit_id, GObj *
 // 0x800EFFCC
 sb32 gmCollisionCheckWeaponHitSpecialCollide(wpHitbox *wp_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
 {
-    DObj *dobj = fp->joint[special_hit->joint_id];
+    DObj *dobj = fp->joints[special_hit->joint_id];
     ftParts *ft_parts = dobj->user_data.p;
 
     func_ovl2_800EDE00(dobj);
@@ -1787,7 +1787,7 @@ sb32 gmCollisionCheckItemHitShieldCollide(itHitbox *it_hit, s32 hit_id, GObj *fi
 // 0x800F0518
 sb32 gmCollisionCheckItemHitSpecialCollide(itHitbox *it_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
 {
-    DObj *dobj = fp->joint[special_hit->joint_id];
+    DObj *dobj = fp->joints[special_hit->joint_id];
     ftParts *ft_parts = dobj->user_data.p;
 
     func_ovl2_800EDE00(dobj);

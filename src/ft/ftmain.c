@@ -224,7 +224,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionScript *ms
                 }
             }
             ft_hit->joint_id = ftParamGetJointID(fp, ftMotionEventCast(ms, ftMotionEventMakeHit1)->joint_id);
-            ft_hit->joint = fp->joint[ft_hit->joint_id];
+            ft_hit->joint = fp->joints[ft_hit->joint_id];
             ft_hit->damage = ftMotionEventCast(ms, ftMotionEventMakeHit1)->damage;
             ft_hit->can_rebound = ftMotionEventCast(ms, ftMotionEventMakeHit1)->can_rebound;
             ft_hit->element = ftMotionEventCast(ms, ftMotionEventMakeHit1)->element;
@@ -918,10 +918,10 @@ void ftMainPlayAnim(GObj *fighter_gobj)
 
     if (fp->anim_flags.flags.is_use_transn_joint)
     {
-        fp->anim_vel = fp->joint[nFTPartsJointTransN]->translate.vec.f;
+        fp->anim_vel = fp->joints[nFTPartsJointTransN]->translate.vec.f;
     }
     ftParamUpdateAnimKeys(fighter_gobj);
-    func_ovl2_800EB648(fp->joint[nFTPartsJointTopN]);
+    func_ovl2_800EB648(fp->joints[nFTPartsJointTopN]);
 }
 
 // 0x800E0830
@@ -1725,7 +1725,7 @@ void ftMainUpdateVelDamageGround(ftStruct *fp, f32 move)
 void ftMainProcPhysicsMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    Vec3f *topn_translate = &fp->joint[nFTPartsJointTopN]->translate.vec.f;
+    Vec3f *topn_translate = &fp->joints[nFTPartsJointTopN]->translate.vec.f;
     Vec3f *coll_translate = &fp->coll_data.pos_curr;
     Vec3f *ground_angle = &fp->coll_data.ground_angle;
     Vec3f *vel_damage_air;
@@ -1805,7 +1805,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
     }
     if (fp->publicity_knockback != 0)
     {
-        if ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.left + 450.0F)) && (fp->joint[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionEdgeBounds.d2.right - 450.0F)))
+        if ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.left + 450.0F)) && (fp->joints[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionEdgeBounds.d2.right - 450.0F)))
         {
             fp->publicity_knockback = 0.0F;
         }
@@ -1829,7 +1829,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
     {
         fp->proc_slope(fighter_gobj);
     }
-    func_ovl2_800EB528(fp->joint[nFTPartsJointTopN]);
+    func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
 
     if (fp->hitlag_timer == 0)
     {
@@ -2061,7 +2061,7 @@ void ftMainUpdateShieldStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hit
 
         victim_fp->shield_player = attacker_fp->player;
     }
-    gmCollisionGetFighterHitShieldPosition(&impact_pos, attacker_hit, victim_gobj, victim_fp->joint[nFTPartsJointYRotN]);
+    gmCollisionGetFighterHitShieldPosition(&impact_pos, attacker_hit, victim_gobj, victim_fp->joints[nFTPartsJointYRotN]);
     efManagerSetOffMakeEffect(&impact_pos, attacker_hit->damage);
 }
 
@@ -2094,7 +2094,7 @@ void ftMainPlayHitSFX(ftStruct *fp, ftHitbox *ft_hit)
     }
     fp->p_sfx = NULL, fp->sfx_id = 0;
 
-    func_ovl0_800C8654(dFTMainHitCollisionFGMs[ft_hit->sfx_kind][ft_hit->sfx_level], fp->joint[nFTPartsJointTopN]->translate.vec.f.x);
+    func_ovl0_800C8654(dFTMainHitCollisionFGMs[ft_hit->sfx_kind][ft_hit->sfx_level], fp->joints[nFTPartsJointTopN]->translate.vec.f.x);
 }
 
 // 0x800E2CC0
@@ -2254,7 +2254,7 @@ void ftMainUpdateShieldStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id,
 
         fp->shield_player = wp->player;
     }
-    gmCollisionGetWeaponHitShieldPosition(&impact_pos, wp_hit, hitbox_id, fighter_gobj, fp->joint[nFTPartsJointYRotN]);
+    gmCollisionGetWeaponHitShieldPosition(&impact_pos, wp_hit, hitbox_id, fighter_gobj, fp->joints[nFTPartsJointYRotN]);
     efManagerSetOffMakeEffect(&impact_pos, wp_hit->shield_damage + damage);
 }
 
@@ -2428,7 +2428,7 @@ void ftMainUpdateShieldStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
 
         fp->shield_player = ip->player;
     }
-    gmCollisionGetItemHitShieldPosition(&impact_pos, it_hit, hitbox_id, fighter_gobj, fp->joint[nFTPartsJointYRotN]);
+    gmCollisionGetItemHitShieldPosition(&impact_pos, it_hit, hitbox_id, fighter_gobj, fp->joints[nFTPartsJointYRotN]);
     efManagerSetOffMakeEffect(&impact_pos, it_hit->shield_damage + damage);
 }
 
@@ -3145,7 +3145,7 @@ void ftMainSearchFighterHit(GObj *this_gobj)
                                 {
                                     continue;
                                 }
-                                else if (gmCollisionCheckFighterHitShieldCollide(other_ft_hit, this_gobj, this_fp->joint[nFTPartsJointYRotN], &angle) != FALSE)
+                                else if (gmCollisionCheckFighterHitShieldCollide(other_ft_hit, this_gobj, this_fp->joints[nFTPartsJointYRotN], &angle) != FALSE)
                                 {
                                     ftMainUpdateShieldStatFighter(other_fp, other_ft_hit, this_fp, other_gobj, this_gobj);
                                 }
@@ -3344,7 +3344,7 @@ void ftMainSearchWeaponHit(GObj *fighter_gobj)
                                 {
                                     continue;
                                 }
-                                else if (gmCollisionCheckWeaponHitShieldCollide(wp_hit, i, fighter_gobj, fp->joint[nFTPartsJointYRotN], &angle, &vec) != FALSE)
+                                else if (gmCollisionCheckWeaponHitShieldCollide(wp_hit, i, fighter_gobj, fp->joints[nFTPartsJointYRotN], &angle, &vec) != FALSE)
                                 {
                                     ftMainUpdateShieldStatWeapon(wp, wp_hit, i, fp, weapon_gobj, fighter_gobj, angle, &vec);
 
@@ -3521,7 +3521,7 @@ void ftMainSearchItemHit(GObj *fighter_gobj)
                             {
                                 if (gFTMainIsHurtDetect[i] == FALSE) continue;
 
-                                else if (gmCollisionCheckItemHitShieldCollide(it_hit, i, fighter_gobj, fp->joint[nFTPartsJointYRotN], &angle, &vec) != FALSE)
+                                else if (gmCollisionCheckItemHitShieldCollide(it_hit, i, fighter_gobj, fp->joints[nFTPartsJointYRotN], &angle, &vec) != FALSE)
                                 {
                                     ftMainUpdateShieldStatItem(ip, it_hit, i, fp, item_gobj, fighter_gobj, angle, &vec);
 
@@ -3986,11 +3986,11 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
         switch (fp->afterimage.is_itemswing)
         {
         case FALSE:
-            if ((fp->ft_kind == nFTKindLink) && (fp->modelpart_status[11 - nFTPartsJointEnumMax].drawstatus_current == 0))
+            if ((fp->ft_kind == nFTKindLink) && (fp->modelpart_status[11 - nFTPartsJointCommonStart].drawstatus_current == 0))
             {
-                ftParts *ft_parts = fp->joint[11]->user_data.p;
+                ftParts *ft_parts = fp->joints[11]->user_data.p;
 
-                func_ovl2_800EDBA4(fp->joint[11]);
+                func_ovl2_800EDBA4(fp->joints[11]);
 
                 fp->afterimage.desc[fp->afterimage.desc_index].translate_x = ft_parts->mtx_translate[3][0];
                 fp->afterimage.desc[fp->afterimage.desc_index].translate_y = ft_parts->mtx_translate[3][1];
@@ -4018,7 +4018,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
                 s32 unused;
                 Mtx44f mtx;
 
-                func_ovl0_800C9A38(mtx, fp->joint[fp->attributes->joint_itemlight_id]);
+                func_ovl0_800C9A38(mtx, fp->joints[fp->attributes->joint_itemlight_id]);
 
                 fp->afterimage.desc[fp->afterimage.desc_index].translate_x = mtx[3][0];
                 fp->afterimage.desc[fp->afterimage.desc_index].translate_y = mtx[3][1];
@@ -4061,13 +4061,13 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
     attributes = fp->attributes;
     withheld_part = &attributes->withheld_parts[withheld_part_id];
 
-    if (withheld_part->root_joint_id >= nFTPartsJointEnumMax)
+    if (withheld_part->root_joint_id >= nFTPartsJointCommonStart)
     {
         if (fp->detail_current == nFTPartsDetailHigh)
         {
             commonpart = &fp->attributes->commonparts_container->commonparts[0];
         }
-        else if (attributes->commonparts_container->commonparts[1].dobj_desc[withheld_part->root_joint_id - nFTPartsJointEnumMax].display_list != NULL)
+        else if (attributes->commonparts_container->commonparts[1].dobj_desc[withheld_part->root_joint_id - nFTPartsJointCommonStart].display_list != NULL)
         {
             commonpart = &attributes->commonparts_container->commonparts[1];
         }
@@ -4075,7 +4075,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
     }
     else commonpart = NULL;
 
-    dl = (commonpart != NULL) ? commonpart->dobj_desc[withheld_part->root_joint_id - nFTPartsJointEnumMax].display_list : NULL;
+    dl = (commonpart != NULL) ? commonpart->dobj_desc[withheld_part->root_joint_id - nFTPartsJointCommonStart].display_list : NULL;
 
     root_joint = omAddDObjForGObj(fp->fighter_gobj, dl);
     root_joint->sib_prev->sib_next = NULL;
@@ -4083,13 +4083,13 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
 
     if (dl != NULL)
     {
-        func_ovl0_800C8CB8(root_joint, commonpart->mobjsub[withheld_part->root_joint_id - nFTPartsJointEnumMax], commonpart->costume_matanim_joint[withheld_part->root_joint_id - nFTPartsJointEnumMax], NULL, fp->costume);
+        func_ovl0_800C8CB8(root_joint, commonpart->mobjsub[withheld_part->root_joint_id - nFTPartsJointCommonStart], commonpart->costume_matanim_joint[withheld_part->root_joint_id - nFTPartsJointCommonStart], NULL, fp->costume);
     }
     if (commonpart != NULL)
     {
-        fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointEnumMax].drawstatus_default = fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointEnumMax].drawstatus_current = (dl != NULL) ? 0 : -1;
+        fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointCommonStart].drawstatus_default = fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointCommonStart].drawstatus_current = (dl != NULL) ? 0 : -1;
     }
-    parent_joint = fp->joint[withheld_part->parent_joint_id];
+    parent_joint = fp->joints[withheld_part->parent_joint_id];
 
     switch (withheld_part->joint_kind)
     {
@@ -4150,7 +4150,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
         root_joint->parent = parent_joint;
         break;
     }
-    fp->joint[withheld_part->root_joint_id] = root_joint;
+    fp->joints[withheld_part->root_joint_id] = root_joint;
 
     root_joint->user_data.p = ft_parts = ftManagerGetNextPartsAlloc();
 
@@ -4175,7 +4175,7 @@ void ftMainAddWithheldPartID(ftStruct *fp, s32 withheld_part_id)
     DObj *parent_joint; // new_var
 
     withheld_part = &fp->attributes->withheld_parts[withheld_part_id];
-    root_joint = fp->joint[withheld_part->root_joint_id];
+    root_joint = fp->joints[withheld_part->root_joint_id];
 
     if (withheld_part->root_joint_id == nFTPartsJointTransN)
     {
@@ -4240,7 +4240,7 @@ void ftMainAddWithheldPartID(ftStruct *fp, s32 withheld_part_id)
         root_joint->sib_next = NULL;
         root_joint->parent = NULL;
 
-        new_parent_joint = fp->joint[withheld_part->parent_joint_id];
+        new_parent_joint = fp->joints[withheld_part->parent_joint_id];
 
         if (new_parent_joint->child != NULL)
         {
@@ -4263,7 +4263,7 @@ void ftMainAddWithheldPartID(ftStruct *fp, s32 withheld_part_id)
 void ftMainEjectWithheldPartID(ftStruct *fp, s32 withheld_part_id)
 {
     ftWithheldPart *withheld_part = &fp->attributes->withheld_parts[withheld_part_id];
-    DObj *root_joint = fp->joint[withheld_part->root_joint_id];
+    DObj *root_joint = fp->joints[withheld_part->root_joint_id];
     DObj *parent_joint;
     DObj *child_joint;
     DObj *sibling_joint;
@@ -4317,7 +4317,7 @@ void ftMainEjectWithheldPartID(ftStruct *fp, s32 withheld_part_id)
             root_joint->sib_next->sib_prev = root_joint->sib_prev;
         }
     }
-    fp->joint[withheld_part->root_joint_id] = NULL;
+    fp->joints[withheld_part->root_joint_id] = NULL;
     root_joint->sib_next = NULL;
     root_joint->sib_prev = NULL;
     root_joint->child = NULL;
@@ -4438,11 +4438,11 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
         {
             gmRumbleSetRumbleID(fp->player, 7);
         }
-        fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CLC_DTOR32(90.0F); // HALF_PI32
+        fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CLC_DTOR32(90.0F); // HALF_PI32
 
         DObjGetStruct(fighter_gobj)->rotate.vec.f.z = 0.0F;
 
-        fp->joint[nFTPartsJointTopN]->rotate.vec.f.x = DObjGetStruct(fighter_gobj)->rotate.vec.f.z;
+        fp->joints[nFTPartsJointTopN]->rotate.vec.f.x = DObjGetStruct(fighter_gobj)->rotate.vec.f.z;
 
         fp->phys_info.vel_air.z = 0.0F;
         fp->phys_info.vel_ground.z = 0.0F;
@@ -4613,9 +4613,9 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
             dobj_desc = attributes->commonparts_container->commonparts[fp->detail_current - 1].dobj_desc;
 
-            for (i = nFTPartsJointEnumMax; dobj_desc->index != DOBJ_ARRAY_MAX; i++, dobj_desc++)
+            for (i = nFTPartsJointCommonStart; dobj_desc->index != DOBJ_ARRAY_MAX; i++, dobj_desc++)
             {
-                joint = fp->joint[i];
+                joint = fp->joints[i];
 
                 if (joint != NULL)
                 {
@@ -4630,7 +4630,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
             }
             if (fp->anim_flags.flags.is_use_transn_joint)
             {
-                joint = fp->joint[nFTPartsJointTransN];
+                joint = fp->joints[nFTPartsJointTransN];
                 
                 joint->translate.vec.f.x = joint->translate.vec.f.y = joint->translate.vec.f.z = 0.0F;
 
@@ -4640,7 +4640,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
             }
             if (fp->anim_flags.flags.is_use_xrotn_joint)
             {
-                joint = fp->joint[nFTPartsJointXRotN];
+                joint = fp->joints[nFTPartsJointXRotN];
 
                 joint->translate.vec.f.x = joint->translate.vec.f.y = joint->translate.vec.f.z = 0.0F;
                 
@@ -4652,7 +4652,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
             }
             if (fp->anim_flags.flags.is_use_yrotn_joint)
             {
-                joint = fp->joint[nFTPartsJointYRotN];
+                joint = fp->joints[nFTPartsJointYRotN];
 
                 joint->translate.vec.f.x = joint->translate.vec.f.y = joint->translate.vec.f.z = 0.0F;
 
@@ -4662,7 +4662,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
                 joint->flags = DOBJ_FLAG_NONE;
             }
-            func_ovl0_800C87F4(fp->joint[nFTPartsJointTopN]->child, fp->anim_bank, frame_begin);
+            func_ovl0_800C87F4(fp->joints[nFTPartsJointTopN]->child, fp->anim_bank, frame_begin);
 
             if (anim_rate != DObjGetStruct(fighter_gobj)->anim_rate)
             {
@@ -4670,7 +4670,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
             }
             if (fp->anim_flags.flags.is_use_transn_joint)
             {
-                joint = fp->joint[nFTPartsJointTransN];
+                joint = fp->joints[nFTPartsJointTransN];
 
                 transn_parent = joint->parent;
                 transn_child = joint->child;

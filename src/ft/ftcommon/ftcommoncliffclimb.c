@@ -187,7 +187,7 @@ void ftCommonCliffCommon2ProcPhysics(GObj *fighter_gobj)
         {
             pos.y += y;
 
-            pos.y += fp->joint[nFTPartsJointTransN]->translate.vec.f.y;
+            pos.y += fp->joints[nFTPartsJointTransN]->translate.vec.f.y;
 
             fp->phys_info.vel_air.x = pos.x - translate->x;
             fp->phys_info.vel_air.y = pos.y - translate->y;

@@ -186,7 +186,7 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(ftStruct *this_fp, ftStruct *cap
         {
             if (capture_fp->anim_bank != NULL)
             {
-                func_ovl0_800C87F4(capture_fp->joint[nFTPartsJointTopN]->child, capture_fp->anim_bank, 0.0F);
+                func_ovl0_800C87F4(capture_fp->joints[nFTPartsJointTopN]->child, capture_fp->anim_bank, 0.0F);
             }
         }
     }

@@ -85,7 +85,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
             make_star_offset.y *= scale_mul;
             make_star_offset.z *= scale_mul;
 
-            gmCollisionGetFighterPartsWorldPosition(fp->joint[fp->attributes->joint_itemlight_id], &make_star_offset);
+            gmCollisionGetFighterPartsWorldPosition(fp->joints[fp->attributes->joint_itemlight_id], &make_star_offset);
 
             itStarRodMakeStar(fighter_gobj, &make_star_offset, (fp->command_vars.flags.flag0 == 1) ? FALSE : TRUE);
         }

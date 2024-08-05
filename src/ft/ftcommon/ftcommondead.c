@@ -358,7 +358,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
 
         case 1:
             ftPhysicsStopVelAll(fighter_gobj);
-            efManagerSparkleWhiteDeadMakeEffect(&fp->joint[nFTPartsJointTopN]->translate.vec.f, 5.0F);
+            efManagerSparkleWhiteDeadMakeEffect(&fp->joints[nFTPartsJointTopN]->translate.vec.f, 5.0F);
 
             fp->is_invisible = TRUE;
             fp->is_ignore_training_menu = TRUE;
@@ -537,7 +537,7 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
 sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    Vec3f *pos = &fp->joint[nFTPartsJointTopN]->translate.vec.f;
+    Vec3f *pos = &fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
     if (fp->ft_kind == nFTKindBoss)
     {

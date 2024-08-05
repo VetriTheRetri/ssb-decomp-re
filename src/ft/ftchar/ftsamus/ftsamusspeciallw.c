@@ -21,7 +21,7 @@ void ftSamusSpecialLwCreateBomb(GObj *fighter_gobj)
         pos.x = pos.z = 0.0F;
         pos.y = FTSAMUS_BOMB_OFF_Y;
 
-        joint = fp->joint[nFTPartsJointTopN]; // Not required but stack frame might be suggesting they wrote it like this
+        joint = fp->joints[nFTPartsJointTopN]; // Not required but stack frame might be suggesting they wrote it like this
 
         gmCollisionGetFighterPartsWorldPosition(joint, &pos);
         wpSamusBombMakeWeapon(fighter_gobj, &pos);

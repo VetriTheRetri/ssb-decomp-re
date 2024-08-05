@@ -71,7 +71,7 @@ extern void efManagerDamageCoinProcDead(efTransform *eftrans);
 extern efParticle* efManagerDamageCoinMakeEffect(Vec3f *pos);
 extern efParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size);
 extern GObj* efManagerFireSparkMakeEffect(GObj *fighter_gobj);
-extern void efManagerFoxReflectorSetImageID(GObj *effect_gobj, s32 index);
+extern void efManagerFoxReflectorSetAnimID(GObj *effect_gobj, s32 index);
 extern void efManagerFoxReflectorProcUpdate(GObj *effect_gobj);
 extern GObj* efManagerFoxReflectorMakeEffect(GObj *fighter_gobj);
 extern void efManagerShieldProcUpdate(GObj *effect_gobj);

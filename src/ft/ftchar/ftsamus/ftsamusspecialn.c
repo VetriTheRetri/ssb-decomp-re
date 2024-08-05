@@ -34,7 +34,7 @@ void ftSamusSpecialNGetChargeShotPosition(ftStruct *fp, Vec3f *pos)
     pos->y = pos->z = 0.0F;
     pos->x = FTSAMUS_CHARGE_OFF_X;
 
-    gmCollisionGetFighterPartsWorldPosition(fp->joint[FTSAMUS_CHARGE_JOINT], pos);
+    gmCollisionGetFighterPartsWorldPosition(fp->joints[FTSAMUS_CHARGE_JOINT], pos);
 }
 
 // 0x8015D394
@@ -99,7 +99,7 @@ void ftSamusSpecialAirNStartSwitchStatusGround(GObj *fighter_gobj)
 
     mpCommonSetFighterGround(fp);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialNStart, fighter_gobj->anim_frame, fp->joint[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
+    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialNStart, fighter_gobj->anim_frame, fp->joints[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
 
     fp->proc_damage = ftSamusSpecialNProcDamage;
 }
@@ -110,7 +110,7 @@ void ftSamusSpecialNStartSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirNStart, fighter_gobj->anim_frame, fp->joint[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
+    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirNStart, fighter_gobj->anim_frame, fp->joints[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
     ftPhysicsClampAirVelXMax(fp);
 
     fp->proc_damage = ftSamusSpecialNProcDamage;

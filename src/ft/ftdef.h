@@ -774,7 +774,7 @@ typedef enum ftPartsJointLabels
     nFTPartsJointTransN,
     nFTPartsJointXRotN,
     nFTPartsJointYRotN,
-    nFTPartsJointEnumMax
+    nFTPartsJointCommonStart
 
 } ftPartsJointLabels;
 

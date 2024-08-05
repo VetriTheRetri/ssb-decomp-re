@@ -67,6 +67,6 @@ void ftBossMoveSetStatus(GObj *fighter_gobj, void (*proc_setstatus)(GObj*), Vec3
     if (((vel->x - DObjGetStruct(fighter_gobj)->translate.vec.f.x) * fp->lr) < 0.0F)
     {
         fp->lr = -fp->lr;
-        fp->joint[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
+        fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
     }
 }

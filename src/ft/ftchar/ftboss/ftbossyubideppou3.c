@@ -35,7 +35,7 @@ void ftBossYubideppou3ProcPhysics(GObj *fighter_gobj)
         {
             pos.x = pos.y = pos.z = 0.0F;
 
-            gmCollisionGetFighterPartsWorldPosition(fp->joint[19], &pos);
+            gmCollisionGetFighterPartsWorldPosition(fp->joints[19], &pos);
 
             if ((fp->fighter_vars.boss.p->wait_div == 1.5F) && (fp->status_vars.boss.yubideppou.bullet_count != 3))
             {
@@ -66,7 +66,7 @@ void ftBossYubideppou3SetStatus(GObj *fighter_gobj)
     pos.y = 0.0F;
     pos.z = 0.0F;
 
-    gmCollisionGetFighterPartsWorldPosition(fp->joint[15], &pos);
+    gmCollisionGetFighterPartsWorldPosition(fp->joints[15], &pos);
 
     if ((fp->fighter_vars.boss.p->wait_div == 1.5F) && (fp->status_vars.boss.yubideppou.bullet_count != 3))
     {

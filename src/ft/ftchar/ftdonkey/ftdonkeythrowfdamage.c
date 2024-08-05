@@ -47,6 +47,6 @@ void ftDonkeyThrowFDamageSetStatus(GObj *fighter_gobj)
         ftStruct *capture_fp = ftGetStruct(catch_gobj);
 
         ftCommonThrownProcPhysics(catch_gobj);
-        func_ovl2_800EB528(capture_fp->joint[nFTPartsJointTopN]);
+        func_ovl2_800EB528(capture_fp->joints[nFTPartsJointTopN]);
     }
 }

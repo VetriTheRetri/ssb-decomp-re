@@ -21,7 +21,7 @@ void ftFoxSpecialNProcUpdate(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        gmCollisionGetFighterPartsWorldPosition(fp->joint[FTFOX_BLASTER_HOLD_JOINT], &pos);
+        gmCollisionGetFighterPartsWorldPosition(fp->joints[FTFOX_BLASTER_HOLD_JOINT], &pos);
         wpFoxBlasterMakeWeapon(fighter_gobj, &pos);
     }
     if (fighter_gobj->anim_frame <= 0.0F)

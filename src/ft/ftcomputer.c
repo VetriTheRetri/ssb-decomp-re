@@ -3484,12 +3484,12 @@ void ftComputerUpdateInputs(ftStruct *this_fp)
                             break;
 
                         case FTCOMPUTER_STICK_AUTOFULL:
-                            this_fp->input.cp.stick_range.x = (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) ? (I_CONTROLLER_RANGE_MAX) : -(I_CONTROLLER_RANGE_MAX);
+                            this_fp->input.cp.stick_range.x = (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) ? (I_CONTROLLER_RANGE_MAX) : -(I_CONTROLLER_RANGE_MAX);
                             p_command++;
                             break;
 
                         case FTCOMPUTER_STICK_AUTOHALF:
-                            this_fp->input.cp.stick_range.x = (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) ? (I_CONTROLLER_RANGE_MAX / 2) : -(I_CONTROLLER_RANGE_MAX / 2);
+                            this_fp->input.cp.stick_range.x = (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) ? (I_CONTROLLER_RANGE_MAX / 2) : -(I_CONTROLLER_RANGE_MAX / 2);
                             p_command++;
                             break;
                         }
@@ -3503,20 +3503,20 @@ void ftComputerUpdateInputs(ftStruct *this_fp)
                             break;
 
                         case FTCOMPUTER_STICK_AUTOFULL:
-                            this_fp->input.cp.stick_range.y = (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y) ? (I_CONTROLLER_RANGE_MAX) : -(I_CONTROLLER_RANGE_MAX);
+                            this_fp->input.cp.stick_range.y = (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y) ? (I_CONTROLLER_RANGE_MAX) : -(I_CONTROLLER_RANGE_MAX);
                             p_command++;
                             break;
 
                         case FTCOMPUTER_STICK_AUTOHALF:
-                            this_fp->input.cp.stick_range.y = (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y) ? (I_CONTROLLER_RANGE_MAX / 2) : -(I_CONTROLLER_RANGE_MAX / 2);
+                            this_fp->input.cp.stick_range.y = (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y) ? (I_CONTROLLER_RANGE_MAX / 2) : -(I_CONTROLLER_RANGE_MAX / 2);
                             p_command++;
                             break;
                         }
                         break;
 
                     case FTCOMPUTER_COMMAND_MOVEAUTO:
-                        dist_x = ft_com->target_pos.x - this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-                        dist_y = ft_com->target_pos.y - this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+                        dist_x = ft_com->target_pos.x - this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+                        dist_y = ft_com->target_pos.y - this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
                         if ((this_fp->ga == nMPKineticsGround) && (this_fp->cp_level < 5))
                         {
@@ -3589,7 +3589,7 @@ void ftComputerUpdateInputs(ftStruct *this_fp)
                             switch (ft_com->behavior)
                             {
                             case nFTComputerBehaviorYoshiTeam:
-                                if (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < 0)
+                                if (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < 0)
                                 {
                                     stick_range_y = dist_y = 0.0F;
                                 }
@@ -3597,7 +3597,7 @@ void ftComputerUpdateInputs(ftStruct *this_fp)
 
                             case nFTComputerBehaviorKirbyTeam:
                             case nFTComputerBehaviorPolyTeam:
-                                if (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < -300.0F)
+                                if (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < -300.0F)
                                 {
                                     stick_range_y = dist_y = 0.0F;
                                 }
@@ -3717,8 +3717,8 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
     ftStruct *other_fp;
-    f32 this_pos_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-    f32 this_pos_y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+    f32 this_pos_x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+    f32 this_pos_y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
     GObj *other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
     f32 distance = F32_MAX;
     f32 square_xy;
@@ -3733,15 +3733,15 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
 
             if (this_fp->team != other_fp->team)
             {
-                other_pos_x = other_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-                other_pos_y = other_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+                other_pos_x = other_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+                other_pos_y = other_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
                 if 
                 (
                     (other_fp->status_info.status_id >= nFTCommonStatusWait) &&
                     (
                         (
-                            (func_ovl2_800F8FFC(&other_fp->joint[nFTPartsJointTopN]->translate.vec.f) != FALSE) &&
+                            (func_ovl2_800F8FFC(&other_fp->joints[nFTPartsJointTopN]->translate.vec.f) != FALSE) &&
                             (other_pos_x <= gMPCollisionEdgeBounds.d2.right) &&
                             (gMPCollisionEdgeBounds.d2.left <= other_pos_x) &&
                             (gMPCollisionEdgeBounds.d2.bottom <= other_pos_y) &&
@@ -3812,8 +3812,8 @@ sb32 ftComputerCheckEvadeDistance(ftStruct *this_fp)
 
             if (this_fp->team != other_fp->team)
             {
-                DObj *other_joint = other_fp->joint[nFTPartsJointTopN];
-                DObj *this_joint = this_fp->joint[nFTPartsJointTopN];
+                DObj *other_joint = other_fp->joints[nFTPartsJointTopN];
+                DObj *this_joint = this_fp->joints[nFTPartsJointTopN];
                 f32 other_x = (other_joint->translate.vec.f.x + other_fp->phys_info.vel_air.x * 3.0F);
                 f32 other_y = (other_joint->translate.vec.f.y + other_fp->phys_info.vel_air.x * 3.0F);
                 f32 sqrt_xy = sqrtf(SQUARE(this_joint->translate.vec.f.y - other_y) + SQUARE(this_joint->translate.vec.f.x - other_x));
@@ -3945,18 +3945,18 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
     {
         if (this_fp->phys_info.vel_air.x > 0.0F)
         {
-            detect_near_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-            detect_far_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + (this_fp->phys_info.vel_air.x * 40.0F);
+            detect_near_x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+            detect_far_x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x + (this_fp->phys_info.vel_air.x * 40.0F);
         }
         else
         {
-            detect_far_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-            detect_near_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + (this_fp->phys_info.vel_air.x * 40.0F);
+            detect_far_x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+            detect_near_x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x + (this_fp->phys_info.vel_air.x * 40.0F);
         }
-        this_detect_pos.y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
-        this_detect_pos.x = (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + detect_near_x) - 100.0F;
+        this_detect_pos.y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
+        this_detect_pos.x = (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x + detect_near_x) - 100.0F;
 
-        while (this_detect_pos.x < ((this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + detect_far_x) + 100.0F))
+        while (this_detect_pos.x < ((this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x + detect_far_x) + 100.0F))
         {
             if (func_ovl2_800F8FFC(&this_detect_pos) == FALSE)
             {
@@ -3965,16 +3965,16 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             this_detect_pos.x += 100.0F;
         }
     }
-    this_pos_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-    this_pos_y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+    this_pos_x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+    this_pos_y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
     hurtbox_size_mul = (((mtTrigGetRandomFloat() - 0.5F) * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level)) * 0.1F) + 1.0F;
 
     hurtbox_detect_width = target_fp->hurtbox_size.x * hurtbox_size_mul;
     hurtbox_detect_height = target_fp->hurtbox_size.y * hurtbox_size_mul;
 
-    target_pos_x = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-    target_pos_y = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+    target_pos_x = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+    target_pos_y = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
     target_vel_x = target_fp->phys_info.vel_air.x;
     target_vel_y = target_fp->phys_info.vel_air.y;
@@ -4135,10 +4135,10 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             }
             if (is_attempt_cliffcatch != FALSE)
             {
-                this_detect_pos.y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
-                this_detect_pos.x = (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + detect_near_x) - 100.0F;
+                this_detect_pos.y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
+                this_detect_pos.x = (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x + detect_near_x) - 100.0F;
 
-                while (this_detect_pos.x < ((this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + detect_far_x) + 100.0F))
+                while (this_detect_pos.x < ((this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x + detect_far_x) + 100.0F))
                 {
                     if (func_ovl2_800F8FFC(&this_detect_pos) == FALSE)
                     {
@@ -4146,7 +4146,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                     }
                     this_detect_pos.x += 100.0F;
                 }
-                if (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x)
+                if (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x)
                 {
                     if (ft_com->cliff_right_pos.x < (ft_com->target_pos.x + 1200.0F))
                     {
@@ -4162,8 +4162,8 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
             {
                 if
                 (
-                    (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionEdgeBounds.d2.left + 500.0F)) || 
-                    (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.right - 500.0F))
+                    (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionEdgeBounds.d2.left + 500.0F)) || 
+                    (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.right - 500.0F))
                 )
                 {
                     switch (ft_comattack->input_kind)
@@ -4172,7 +4172,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
                         goto l_continue;
 
                     case nFTComputerInputStickSmashAutoXButtonB:
-                        if ((this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x * this_fp->lr) > 0.0F)
+                        if ((this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x * this_fp->lr) > 0.0F)
                         {
                             goto l_continue;
                         }
@@ -4526,8 +4526,8 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
 
     if (fp->phys_info.vel_air.y >= 0.0F)
     {
-        ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x - 500.0F;
-        ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+        ft_com->target_pos.x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x - 500.0F;
+        ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
         return TRUE;
     }
@@ -4562,7 +4562,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
             {
                 continue;
             }
-            edge_dist_x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x - edge_pos.x;
+            edge_dist_x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x - edge_pos.x;
 
             if (edge_dist_x > 0.0F)
             {
@@ -4571,16 +4571,16 @@ sb32 ftComputerCheckSetTargetEdgeRight(ftStruct *fp, sb32 is_find_edge_target)
 
                 if (fall_predict <= 0)
                 {
-                    edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * edge_predict_x);
+                    edge_predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * edge_predict_x);
                 }
                 else if (edge_predict_x < fall_predict)
                 {
-                    edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y +
+                    edge_predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y +
                     (
                         (fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(edge_predict_x) * 0.5F)
                     );
                 }
-                else edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y +
+                else edge_predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y +
                 (
                     ((fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(fall_predict) * 0.5F)) -
                     (fp->attributes->tvel_default * (edge_predict_x - fall_predict))
@@ -4620,8 +4620,8 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
 
     if (fp->phys_info.vel_air.y >= 0.0F)
     {
-        ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x + 500.0F;
-        ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+        ft_com->target_pos.x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x + 500.0F;
+        ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
         return TRUE;
     }
@@ -4656,7 +4656,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
             {
                 continue;
             }
-            edge_dist_x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x - edge_pos.x;
+            edge_dist_x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x - edge_pos.x;
 
             if (edge_dist_x < 0.0F)
             {
@@ -4665,16 +4665,16 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
 
                 if (fall_predict <= 0)
                 {
-                    edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * edge_predict_x);
+                    edge_predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * edge_predict_x);
                 }
                 else if (edge_predict_x < fall_predict)
                 {
-                    edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y +
+                    edge_predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y +
                     (
                         (fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(edge_predict_x) * 0.5F)
                     );
                 }
-                else edge_predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y +
+                else edge_predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y +
                 (
                     ((fp->phys_info.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(fall_predict) * 0.5F)) -
                     (fp->attributes->tvel_default * (edge_predict_x - fall_predict))
@@ -4702,7 +4702,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
 void func_ovl3_801346D4(ftStruct *fp)
 {
     ftComputer *ft_com = &fp->fighter_com;
-    Vec3f pos = fp->joint[nFTPartsJointTopN]->translate.vec.f;
+    Vec3f pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
     f32 range = fp->fighter_com.jump_predict;
 
     if (fp->jumps_used == fp->attributes->jumps_max)
@@ -4740,7 +4740,7 @@ void func_ovl3_801346D4(ftStruct *fp)
         {
             range = 0.0F;
         }
-        if (((fp->jumps_used < fp->attributes->jumps_max) && ((pos.x - gMPCollisionEdgeBounds.d2.right) > 1500.0F)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.y + fp->phys_info.vel_air.y) < (ft_com->cliff_right_pos.y - range)))
+        if (((fp->jumps_used < fp->attributes->jumps_max) && ((pos.x - gMPCollisionEdgeBounds.d2.right) > 1500.0F)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->phys_info.vel_air.y) < (ft_com->cliff_right_pos.y - range)))
         {
             ft_com->target_pos.y = pos.y + 1100.0F;
         }
@@ -4768,7 +4768,7 @@ void func_ovl3_801346D4(ftStruct *fp)
             ) 
             || 
             (
-                (fp->joint[nFTPartsJointTopN]->translate.vec.f.y + fp->phys_info.vel_air.y) < (ft_com->cliff_left_pos.y - range)
+                (fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->phys_info.vel_air.y) < (ft_com->cliff_left_pos.y - range)
             )
         )
         {
@@ -4782,7 +4782,7 @@ void func_ovl3_801346D4(ftStruct *fp)
 void func_ovl3_80134964(ftStruct *fp)
 {
     ftComputer *ft_com = &fp->fighter_com;
-    Vec3f pos = fp->joint[nFTPartsJointTopN]->translate.vec.f;
+    Vec3f pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
     ft_com->target_line_id = -1;
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
@@ -4841,8 +4841,8 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
 
     item_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDItem];
 
-    predict_x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x + (fp->phys_info.vel_air.x * 5.0F);
-    predict_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * 5.0F);
+    predict_x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x + (fp->phys_info.vel_air.x * 5.0F);
+    predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * 5.0F);
 
     while (item_gobj != NULL)
     {
@@ -4897,8 +4897,8 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
                         }
                         else
                         {
-                            ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-                            ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + 1100.0F;
+                            ft_com->target_pos.x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+                            ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y + 1100.0F;
                         }
                     }
                 }
@@ -4923,7 +4923,7 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
                 {
                     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-                    if (fp->joint[nFTPartsJointTopN]->translate.vec.f.x < (twister_pos.x - 300.0F))
+                    if (fp->joints[nFTPartsJointTopN]->translate.vec.f.x < (twister_pos.x - 300.0F))
                     {
                         ft_com->target_pos.x = (twister_pos.x - 1200.0F);
                         ft_com->target_pos.y = (twister_pos.y + 1100.0F);
@@ -4962,27 +4962,27 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
 
     ft_com = &fp->fighter_com;
 
-    target_pos = fp->joint[nFTPartsJointTopN]->translate.vec.f;
+    target_pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
     target_pos.x = fp->fighter_com.target_pos.x;
     target_pos.y = fp->fighter_com.target_pos.y;
 
-    if ((fp->ga == nMPKineticsGround) && (fp->joint[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y))
+    if ((fp->ga == nMPKineticsGround) && (fp->joints[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y))
     {
-        if (mpCollisionCheckCeilLineCollisionSame(&fp->joint[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+        if (mpCollisionCheckCeilLineCollisionSame(&fp->joints[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
         {
             func_ovl2_800F4468(stand_line_id, &edge_left);
             func_ovl2_800F4448(stand_line_id, &edge_right);
 
-            if (GS_DISTANCE(edge_left.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x) < GS_DISTANCE(edge_right.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x))
+            if (GS_DISTANCE(edge_left.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < GS_DISTANCE(edge_right.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x))
             {
                 ft_com->target_pos.x = edge_left.x - 600.0F;
-                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+                ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
             }
             else
             {
                 ft_com->target_pos.x = edge_right.x + 600.0F;
-                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+                ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
             }
         }
     }
@@ -4990,14 +4990,14 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
     (
         !(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS) &&
         (fp->coll_data.ground_line_id >= 0) &&
-        (ft_com->target_pos.y < ((fp->joint[nFTPartsJointTopN]->translate.vec.f.y + fp->coll_data.ground_dist) - 500.0F)) &&
-        (GS_DISTANCE(ft_com->target_pos.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x) < (GS_DISTANCE(ft_com->target_pos.y, fp->joint[nFTPartsJointTopN]->translate.vec.f.y) * 0.2F))
+        (ft_com->target_pos.y < ((fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->coll_data.ground_dist) - 500.0F)) &&
+        (GS_DISTANCE(ft_com->target_pos.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < (GS_DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) * 0.2F))
     )
     {
         mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &sp9C);
         mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &sp90);
 
-        if (GS_DISTANCE(sp9C.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x) < GS_DISTANCE(sp90.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x))
+        if (GS_DISTANCE(sp9C.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < GS_DISTANCE(sp90.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x))
         {
             ft_com->target_pos.x = sp9C.x - 600.0F;
             ft_com->target_pos.y = sp9C.y;
@@ -5010,9 +5010,9 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
     }
     else if ((fp->ga == nMPKineticsGround) || (fp->phys_info.vel_air.y < 0.0F) || (fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindPurin))
     {
-        if (fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x)
+        if (fp->joints[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x)
         {
-            if (mpCollisionCheckLWallLineCollisionSame(&fp->joint[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+            if (mpCollisionCheckLWallLineCollisionSame(&fp->joints[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
                 mpCollisionGetUDEdgeUp(stand_line_id, &ga_last);
 
@@ -5021,15 +5021,15 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
 
                 if ((fp->ga == nMPKineticsGround) && (fp->lr < 0.0F))
                 {
-                    ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x + 100.0F;
-                    ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+                    ft_com->target_pos.x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x + 100.0F;
+                    ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
                     ftComputerSetCommandImmediate(fp, nFTComputerInputStickTiltAutoXD5);
                     return;
                 }
             }
         }
-        else if (mpCollisionCheckRWallLineCollisionSame(&fp->joint[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+        else if (mpCollisionCheckRWallLineCollisionSame(&fp->joints[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
         {
             func_ovl2_800F4690(stand_line_id, &ga_last);
 
@@ -5038,8 +5038,8 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
 
             if ((fp->ga == nMPKineticsGround) && (fp->lr > 0.0F))
             {
-                ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x - 100.0F;
-                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+                ft_com->target_pos.x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x - 100.0F;
+                ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
                 ftComputerSetCommandImmediate(fp, nFTComputerInputStickTiltAutoXD5);
                 return;
@@ -5054,7 +5054,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
         switch (ft_com->behavior)
         {
         case nFTComputerBehaviorYoshiTeam:
-            if (fp->joint[nFTPartsJointTopN]->translate.vec.f.y < 0.0F)
+            if (fp->joints[nFTPartsJointTopN]->translate.vec.f.y < 0.0F)
             {
                 break;
             }
@@ -5062,23 +5062,23 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
 
         case nFTComputerBehaviorKirbyTeam:
         case nFTComputerBehaviorPolyTeam:
-            if (fp->joint[nFTPartsJointTopN]->translate.vec.f.y < -300.0F)
+            if (fp->joints[nFTPartsJointTopN]->translate.vec.f.y < -300.0F)
             {
                 break;
             }
             /* fallthrough */
         default:
         block_52:
-            if (fp->joint[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y)
+            if (fp->joints[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y)
             {
-                if ((ft_com->objective != nFTComputerObjectiveRecover) && ((ft_com->target_pos.y - 200.0F) < fp->joint[nFTPartsJointTopN]->translate.vec.f.y))
+                if ((ft_com->objective != nFTComputerObjectiveRecover) && ((ft_com->target_pos.y - 200.0F) < fp->joints[nFTPartsJointTopN]->translate.vec.f.y))
                 {
-                    ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+                    ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
                     return;
                 }
                 ft_com->ftcom_flags_0x4A_b0 = FALSE;
 
-                if ((fp->joint[nFTPartsJointTopN]->translate.vec.f.y < (gMPCollisionGroundData->map_bound_top - 4000.0F)) && (fp->phys_info.vel_air.y < 0.0F))
+                if ((fp->joints[nFTPartsJointTopN]->translate.vec.f.y < (gMPCollisionGroundData->map_bound_top - 4000.0F)) && (fp->phys_info.vel_air.y < 0.0F))
                 {
                     if (fp->jumps_used < fp->attributes->jumps_max)
                     {
@@ -5172,10 +5172,10 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
             case nFTComputerBehaviorPolyTeam:
                 if (fp->status_info.status_id == nFTCommonStatusFall)
                 {
-                    if (func_ovl2_800F8FFC(&fp->joint[nFTPartsJointTopN]->translate.vec.f) != FALSE)
+                    if (func_ovl2_800F8FFC(&fp->joints[nFTPartsJointTopN]->translate.vec.f) != FALSE)
                     {
-                        ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-                        ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y - 500.0F;
+                        ft_com->target_pos.x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+                        ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y - 500.0F;
                     }
                 }
                 break;
@@ -5184,14 +5184,14 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
             (
                 (fp->cp_level >= 5)                                                                     && 
                 (ft_com->ftcom_flags_0x4A_b1)                                                           && 
-                ((ft_com->target_pos.y + 1100.0F) < fp->joint[nFTPartsJointTopN]->translate.vec.f.y)   && 
+                ((ft_com->target_pos.y + 1100.0F) < fp->joints[nFTPartsJointTopN]->translate.vec.f.y)   && 
                 (fp->phys_info.vel_air.y < 0.0F)
             )
             {
                 target_fp = ft_com->target_user;
 
-                sp80.x = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.x - (target_fp->lr * 1500.0F);
-                sp80.y = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+                sp80.x = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.x - (target_fp->lr * 1500.0F);
+                sp80.y = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
                 sp80.z = 0.0F;
 
                 if (func_ovl2_800F8FFC(&sp80) != FALSE)
@@ -5201,7 +5201,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                 }
                 else
                 {
-                    sp80.x = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + (target_fp->lr * 1500.0F);
+                    sp80.x = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.x + (target_fp->lr * 1500.0F);
 
                     if (func_ovl2_800F8FFC(&sp80) != FALSE)
                     {
@@ -5236,9 +5236,9 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
     }
     else
     {
-        if (ft_com->dash_predict <= GS_DISTANCE(ft_com->target_pos.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x))
+        if (ft_com->dash_predict <= GS_DISTANCE(ft_com->target_pos.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x))
         {
-            if (fp->joint[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y)
+            if (fp->joints[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y)
             {
                 if (fp->coll_data.ground_line_id >= 0)
                 {
@@ -5248,11 +5248,11 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                     }
                     else mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &sp58);
 
-                    if (sp58.x < fp->joint[nFTPartsJointTopN]->translate.vec.f.x)
+                    if (sp58.x < fp->joints[nFTPartsJointTopN]->translate.vec.f.x)
                     {
-                        edge_dist_x = -(sp58.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x);
+                        edge_dist_x = -(sp58.x - fp->joints[nFTPartsJointTopN]->translate.vec.f.x);
                     }
-                    else edge_dist_x = (sp58.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x);
+                    else edge_dist_x = (sp58.x - fp->joints[nFTPartsJointTopN]->translate.vec.f.x);
                 }
                 else edge_dist_x = 0.0F;
 
@@ -5271,7 +5271,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
         {
             if (ft_com->target_line_id != fp->coll_data.ground_line_id)
             {
-                if (fp->joint[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y)
+                if (fp->joints[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y)
                 {
                     if (fp->status_info.status_id != nFTCommonStatusKneeBend)
                     {
@@ -5314,8 +5314,8 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
 
     ft_com = &this_fp->fighter_com;
 
-    this_pos_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-    this_pos_y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+    this_pos_x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+    this_pos_y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
     fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
@@ -5490,13 +5490,13 @@ void func_ovl3_801361BC(ftStruct *fp)
     {
         if (fp->ga != nMPKineticsGround)
         {
-            ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+            ft_com->target_pos.x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
 
-            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.y + fp->hurtbox_size.y) < ft_com->target_pos.y) && (fp->phys_info.vel_air.y <= 0.0F))
+            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->hurtbox_size.y) < ft_com->target_pos.y) && (fp->phys_info.vel_air.y <= 0.0F))
             {
-                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y - 1100.0F;
+                ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y - 1100.0F;
             }
-            else ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + 1100.0F;
+            else ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y + 1100.0F;
         }
         else
         {
@@ -5522,8 +5522,8 @@ void func_ovl3_801361BC(ftStruct *fp)
             }
             else
             {
-                ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + 1100.0F;
+                ft_com->target_pos.x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+                ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y + 1100.0F;
             }
         }
     }
@@ -5546,8 +5546,8 @@ sb32 ftComputerCheckFindItem(ftStruct *fp)
     }
     nearest_dist = F32_MAX;
 
-    ft_pos_x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-    ft_pos_y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+    ft_pos_x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+    ft_pos_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
@@ -5659,8 +5659,8 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
 
     nearest_dist = 6250000.0F;
 
-    this_pos_x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-    this_pos_y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+    this_pos_x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+    this_pos_y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
@@ -5674,8 +5674,8 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
 
         if (this_fp->team == target_fp->team) goto next_fighter;
 
-        predict_x = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.x + (target_fp->phys_info.vel_air.x * 3.0F);
-        predict_y = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.y + (target_fp->phys_info.vel_air.x * 3.0F);
+        predict_x = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.x + (target_fp->phys_info.vel_air.x * 3.0F);
+        predict_y = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.y + (target_fp->phys_info.vel_air.x * 3.0F);
 
         if ((target_fp->star_hitstatus == nGMHitStatusInvincible) || ((target_fp->item_hold != NULL) && (itGetStruct(target_fp->item_hold)->it_kind == nITKindHammer)))
         {
@@ -5711,8 +5711,8 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
     {
         target_fp = ft_com->target_user;
 
-        predict_x = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-        predict_y = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+        predict_x = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+        predict_y = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
         if (this_fp->coll_data.ground_line_id >= 0)
         {
@@ -5724,7 +5724,7 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
             }
             else mpCollisionGetLREdgeRight(line_id, &edge_pos);
         }
-        else edge_pos = this_fp->joint[nFTPartsJointTopN]->translate.vec.f;
+        else edge_pos = this_fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
         if (target_fp->ga == nMPKineticsGround)
         {
@@ -5963,7 +5963,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
             {
                 if ((mtTrigGetRandomFloat() * (11 - this_fp->cp_level)) < 1.0F)
                 {
-                    if (ft_com->target_pos.x < this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x)
+                    if (ft_com->target_pos.x < this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x)
                     {
                         ftComputerSetCommandWaitShort(this_fp, nFTComputerInputEscapeL);
 
@@ -6010,7 +6010,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     }
     if (this_fp->status_info.status_id == nFTCommonStatusCatchWait)
     {
-        if (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x < 0.0F)
+        if (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x < 0.0F)
         {
             ftComputerSetCommandImmediate(this_fp, nFTComputerInputStickSmashL);
             return 0;
@@ -6064,17 +6064,17 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     {
         if ((this_fp->status_info.status_id == nFTNessStatusSpecialHiHold) || (this_fp->status_info.status_id == nFTNessStatusSpecialAirHiHold))
         {
-            if (func_ovl2_800F8FFC(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f) == FALSE)
+            if (func_ovl2_800F8FFC(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f) == FALSE)
             {
-                ft_com->target_pos.x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+                ft_com->target_pos.x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
 
-                if (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x > 0.0F)
+                if (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x > 0.0F)
                 {
                     ft_com->target_pos.x += 200.0F;
                 }
                 else ft_com->target_pos.x -= 200.0F;
 
-                ft_com->target_pos.y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y - 100.0F;
+                ft_com->target_pos.y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y - 100.0F;
             }
             else ftComputerCheckFindTarget(this_fp);
 
@@ -6088,15 +6088,15 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         if
         (
             (
-                SQUARE(this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x - ft_com->stand_pos.x) + 
-                SQUARE(this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y - ft_com->stand_pos.y) > SQUARE(100.0F)
+                SQUARE(this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x - ft_com->stand_pos.x) + 
+                SQUARE(this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y - ft_com->stand_pos.y) > SQUARE(100.0F)
             ) 
             ||
             (ft_com->behavior == nFTComputerBehaviorStand)
         )
         {
-            ft_com->stand_pos.x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-            ft_com->stand_pos.y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+            ft_com->stand_pos.x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+            ft_com->stand_pos.y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
             ft_com->stand_stop_wait = 0;
             ft_com->is_stop_stand = FALSE;
         }
@@ -6148,11 +6148,11 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     }
     if
     (
-        (func_ovl2_800F8FFC(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f) == FALSE) ||
+        (func_ovl2_800F8FFC(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f) == FALSE) ||
         (gBattleState->gr_kind == nGRKindInishie) &&
         (this_fp->coll_data.ground_line_id >= 0) &&
         (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE) &&
-        (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < -100.0F)
+        (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < -100.0F)
     )
     {
         if (ft_com->objective != nFTComputerObjectiveRecover)
@@ -6169,8 +6169,8 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
 
         if
         (
-            (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < (acid_level_current + 500.0F)) ||
-            (this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y < (acid_level_current + (5.0F * acid_level_step) + 500.0F))
+            (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < (acid_level_current + 500.0F)) ||
+            (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < (acid_level_current + (5.0F * acid_level_step) + 500.0F))
         )
         {
             ft_com->objective = nFTComputerObjectiveRecover;
@@ -6396,7 +6396,7 @@ s32 ftComputerProcWalk(GObj *fighter_gobj)
     ft_com->target_pos.y = ft_com->origin_pos.y;
     ft_com->target_line_id = ft_com->ground_line_id;
 
-    if (GS_DISTANCE(ft_com->target_pos.x, fp->joint[nFTPartsJointTopN]->translate.vec.f.x) < 100.0F)
+    if (GS_DISTANCE(ft_com->target_pos.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < 100.0F)
     {
         ft_com->target_pos.x = (((2.0 * mtTrigGetRandomFloat()) - 1.0) * 2500.0) + ft_com->origin_pos.x;
 
@@ -6423,7 +6423,7 @@ s32 ftComputerProcWalk(GObj *fighter_gobj)
     }
     ft_com->objective = nFTComputerObjectiveWalk;
 
-    dist = SQUARE(ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joint[nFTPartsJointTopN]->translate.vec.f.y);
+    dist = SQUARE(ft_com->target_pos.x - fp->joints[nFTPartsJointTopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joints[nFTPartsJointTopN]->translate.vec.f.y);
 
     if (dist < SQUARE(100.0F))
     {
@@ -6480,7 +6480,7 @@ s32 ftComputerProcJump(GObj *fighter_gobj)
     }
     ft_com->objective = nFTComputerObjectiveWalk;
 
-    dist = SQUARE(ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joint[nFTPartsJointTopN]->translate.vec.f.y);
+    dist = SQUARE(ft_com->target_pos.x - fp->joints[nFTPartsJointTopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joints[nFTPartsJointTopN]->translate.vec.f.y);
 
     if (dist < SQUARE(100.0F))
     {
@@ -6509,7 +6509,7 @@ s32 func_ovl3_80137E70(GObj *fighter_gobj)
 
     ft_com->objective = nFTComputerObjectiveWalk;
 
-    dist = SQUARE(ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joint[nFTPartsJointTopN]->translate.vec.f.y);
+    dist = SQUARE(ft_com->target_pos.x - fp->joints[nFTPartsJointTopN]->translate.vec.f.x) + SQUARE(ft_com->target_pos.y - fp->joints[nFTPartsJointTopN]->translate.vec.f.y);
 
     if (dist < SQUARE(100.0F))
     {
@@ -6532,12 +6532,12 @@ void ftComputerFollowObjectiveRecover(ftStruct *fp)
             switch (fp->status_info.status_id)
             {
             case nFTPikachuStatusSpecialAirHiStart:
-                ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + 1100.0F;
+                ft_com->target_pos.x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+                ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y + 1100.0F;
                 break;
             case nFTPikachuStatusSpecialAirHi:
                 ft_com->target_pos.x = 0.0F;
-                ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+                ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
                 break;
             }
         }
@@ -6630,14 +6630,14 @@ void ftComputerFollowObjectiveUseItem(ftStruct *fp)
                     return;
                 }
             }
-            if (GS_DISTANCE(fp->joint[nFTPartsJointTopN]->translate.vec.f.y, ft_com->target_pos.y) < 400.0F)
+            if (GS_DISTANCE(fp->joints[nFTPartsJointTopN]->translate.vec.f.y, ft_com->target_pos.y) < 400.0F)
             {
                 if
                 (
                     (ip->it_kind == nITKindFFlower) &&
                     (
-                        ((ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) * fp->lr < 0.0F)     ||
-                        ((ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) * fp->lr > 1500.0F)
+                        ((ft_com->target_pos.x - fp->joints[nFTPartsJointTopN]->translate.vec.f.x) * fp->lr < 0.0F)     ||
+                        ((ft_com->target_pos.x - fp->joints[nFTPartsJointTopN]->translate.vec.f.x) * fp->lr > 1500.0F)
                     )
                 )
                 {
@@ -6688,13 +6688,13 @@ s32 func_ovl3_8013837C(ftStruct *this_fp)
         if (target_fp != NULL)
         {
             ft_com->target_user = target_fp;
-            ft_com->target_pos.x = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-            ft_com->target_pos.y = target_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+            ft_com->target_pos.x = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+            ft_com->target_pos.y = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
             ft_com->target_dist = sqrtf
             (
-                SQUARE(this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x - ft_com->target_pos.x) +
-                SQUARE(this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y - ft_com->target_pos.y)
+                SQUARE(this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x - ft_com->target_pos.x) +
+                SQUARE(this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y - ft_com->target_pos.y)
             );
             ft_com->ftcom_flags_0x4A_b1 = TRUE;
 
@@ -6762,13 +6762,13 @@ void func_ovl3_8013877C(ftStruct *this_fp)
             {
                 ft_com->ground_line_id = this_fp->coll_data.ground_line_id;
 
-                ft_com->edge_pos.x = ft_com->origin_pos.x = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+                ft_com->edge_pos.x = ft_com->origin_pos.x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
 
                 if (this_fp->ga == nMPKineticsGround)
                 {
-                    ft_com->edge_pos.y = ft_com->origin_pos.y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+                    ft_com->edge_pos.y = ft_com->origin_pos.y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
                 }
-                else ft_com->edge_pos.y = ft_com->origin_pos.y = this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y + this_fp->coll_data.ground_dist;
+                else ft_com->edge_pos.y = ft_com->origin_pos.y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y + this_fp->coll_data.ground_dist;
             }
             else
             {
@@ -6787,7 +6787,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
         }
         else
         {
-            if (GS_DISTANCE(ft_com->edge_pos.x, this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x) < 100.0F)
+            if (GS_DISTANCE(ft_com->edge_pos.x, this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < 100.0F)
             {
                 ft_com->edge_pos.x = (((2.0 * mtTrigGetRandomFloat()) - 1.0) * 2500.0) + ft_com->origin_pos.x;
 
@@ -6862,7 +6862,7 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 is_delay)
 
     target_fp = ft_com->target_user;
 
-    if (GS_DISTANCE(this_fp->joint[nFTPartsJointTopN]->translate.vec.f.y, ft_com->target_pos.y) < 400.0F)
+    if (GS_DISTANCE(this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y, ft_com->target_pos.y) < 400.0F)
     {
         if (ft_com->unk_ftcom_0x35 == 0)
         {
@@ -6918,34 +6918,34 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 is_delay)
                 ftComputerFollowObjectiveWalk(this_fp);
                 return TRUE;
             }
-            pos = this_fp->joint[nFTPartsJointTopN]->translate.vec.f;
+            pos = this_fp->joints[nFTPartsJointTopN]->translate.vec.f;
             pos.x = ft_com->target_pos.x;
             pos.y = ft_com->target_pos.y;
 
-            if (ft_com->target_pos.x < this_fp->joint[nFTPartsJointTopN]->translate.vec.f.x)
+            if (ft_com->target_pos.x < this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x)
             {
-                if (mpCollisionCheckRWallLineCollisionSame(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+                if (mpCollisionCheckRWallLineCollisionSame(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
                 {
                     return FALSE;
                 }
-                if (mpCollisionCheckGroundLineCollisionSame(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+                if (mpCollisionCheckGroundLineCollisionSame(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
                 {
                     return FALSE;
                 }
-                if (mpCollisionCheckCeilLineCollisionSame(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+                if (mpCollisionCheckCeilLineCollisionSame(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
                 {
                     return FALSE;
                 }
             }
-            else if (mpCollisionCheckLWallLineCollisionSame(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
-            {
-                return FALSE;
-            }
-            else if (mpCollisionCheckGroundLineCollisionSame(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+            else if (mpCollisionCheckLWallLineCollisionSame(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
                 return FALSE;
             }
-            else if (mpCollisionCheckCeilLineCollisionSame(&this_fp->joint[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+            else if (mpCollisionCheckGroundLineCollisionSame(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+            {
+                return FALSE;
+            }
+            else if (mpCollisionCheckCeilLineCollisionSame(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
                 return FALSE;
             }
@@ -7035,7 +7035,7 @@ sb32 func_ovl3_80138EE4(ftStruct *fp)
                         (mtTrigGetRandomFloat() * (11 - fp->cp_level)) < 1.0F) ||
                         (
                             (fp->cp_level >= 3) &&
-                            (((ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) * fp->lr) < 0.0F)
+                            (((ft_com->target_pos.x - fp->joints[nFTPartsJointTopN]->translate.vec.f.x) * fp->lr) < 0.0F)
                         )
                     )
                 )
@@ -7044,7 +7044,7 @@ sb32 func_ovl3_80138EE4(ftStruct *fp)
                     (ft_com->target_dist < 800.0F) &&
                     (fp->cp_level >= 7) &&
                     ((mtTrigGetRandomFloat() * (10 - fp->cp_level)) < 1.0F) &&
-                    (((ft_com->target_pos.x - fp->joint[nFTPartsJointTopN]->translate.vec.f.x) * ftGetComTargetFighter(ft_com)->lr) < 0.0F)
+                    (((ft_com->target_pos.x - fp->joints[nFTPartsJointTopN]->translate.vec.f.x) * ftGetComTargetFighter(ft_com)->lr) < 0.0F)
                 )
             )
         )
@@ -7055,19 +7055,19 @@ sb32 func_ovl3_80138EE4(ftStruct *fp)
             mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &edge_left_pos);
             mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &edge_right_pos);
 
-            if (ft_com->target_pos.x < fp->joint[nFTPartsJointTopN]->translate.vec.f.x)
+            if (ft_com->target_pos.x < fp->joints[nFTPartsJointTopN]->translate.vec.f.x)
             {
-                if (fp->joint[nFTPartsJointTopN]->translate.vec.f.x < (edge_left_pos.x + 500.0F))
+                if (fp->joints[nFTPartsJointTopN]->translate.vec.f.x < (edge_left_pos.x + 500.0F))
                 {
                     return FALSE;
                 }
             }
-            else if (fp->joint[nFTPartsJointTopN]->translate.vec.f.x > (edge_right_pos.x - 500.0F))
+            else if (fp->joints[nFTPartsJointTopN]->translate.vec.f.x > (edge_right_pos.x - 500.0F))
             {
                 return FALSE;
             }
         }
-        if (ft_com->target_pos.x < fp->joint[nFTPartsJointTopN]->translate.vec.f.x)
+        if (ft_com->target_pos.x < fp->joints[nFTPartsJointTopN]->translate.vec.f.x)
         {
             ftComputerSetCommandWaitShort(fp, nFTComputerInputEscapeL);
         }
@@ -7095,7 +7095,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
+            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
             {
                 var_a1 = FALSE;
             }
@@ -7134,7 +7134,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
                         }
                     }
                 }
-                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7177,7 +7177,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
 
                     return;
                 }
-                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7227,7 +7227,7 @@ void func_ovl3_801397F4(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
+            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
             {
                 var_a1 = FALSE;
             }
@@ -7313,7 +7313,7 @@ void ftComputerFollowObjectiveAlly(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
+            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
             {
                 var_a1 = FALSE;
             }
@@ -7348,7 +7348,7 @@ void ftComputerFollowObjectiveAlly(ftStruct *fp)
                 ft_com->walk_stop_wait = 0;
                 return;
             }
-            if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+            if ((GS_DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
             {
                 ftComputerFollowObjectiveWalk(fp);
 
@@ -7395,7 +7395,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
+            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
             {
                 var_a1 = FALSE;
             }
@@ -7434,7 +7434,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
                         }
                     }
                 }
-                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7475,7 +7475,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
                     ft_com->walk_stop_wait = 0;
                     return;
                 }
-                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joint[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7519,7 +7519,7 @@ void ftComputerFollowObjectiveRush(ftStruct *fp)
         mtTrigGetRandomFloat();
         random = mtTrigGetRandomFloat();
 
-        if (((fp->joint[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joint[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
+        if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < ft_com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > ft_com->target_pos.x) && (fp->lr == nGMFacingL)))
         {
             var_a1 = FALSE;
         }
@@ -7808,13 +7808,13 @@ void ftComputerSetupAll(GObj *fighter_gobj)
 
     if (fp->ft_kind != nFTKindBoss)
     {
-        ft_com->origin_pos.x = ft_com->target_pos.x = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
+        ft_com->origin_pos.x = ft_com->target_pos.x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
 
         if (fp->ga == nMPKineticsGround)
         {
-            ft_com->origin_pos.y = ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+            ft_com->origin_pos.y = ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
         }
-        else ft_com->origin_pos.y = ft_com->target_pos.y = fp->joint[nFTPartsJointTopN]->translate.vec.f.y + fp->coll_data.ground_dist;
+        else ft_com->origin_pos.y = ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->coll_data.ground_dist;
 
         ft_com->ground_line_id = fp->coll_data.ground_line_id;
 
@@ -7917,8 +7917,8 @@ void ftComputerSetFighterHurtboxSizeInfo(GObj *fighter_gobj)
     s32 i, j;
     DObj *joint;
 
-    nearest_right = fp->joint[nFTPartsJointTopN]->translate.vec.f.x;
-    nearest_top = fp->joint[nFTPartsJointTopN]->translate.vec.f.y;
+    nearest_right = fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
+    nearest_top = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
     nearest_left = nearest_right;
     nearest_bottom = nearest_top;

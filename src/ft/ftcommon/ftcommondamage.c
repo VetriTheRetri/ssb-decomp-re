@@ -205,9 +205,9 @@ void ftCommonDamageFlyRollUpdateModelRoll(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joint[4]->rotate.vec.f.x = atan2f(fp->phys_info.vel_air.x + fp->phys_info.vel_damage_air.x, fp->phys_info.vel_air.y + fp->phys_info.vel_damage_air.y) * fp->lr;
+    fp->joints[4]->rotate.vec.f.x = atan2f(fp->phys_info.vel_air.x + fp->phys_info.vel_damage_air.x, fp->phys_info.vel_air.y + fp->phys_info.vel_damage_air.y) * fp->lr;
 
-    func_ovl2_800EB528(fp->joint[4]);
+    func_ovl2_800EB528(fp->joints[4]);
 }
 
 // 0x801407A8

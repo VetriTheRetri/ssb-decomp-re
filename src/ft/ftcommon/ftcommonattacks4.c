@@ -50,8 +50,8 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
                 offset.y = FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_OFF_Y;
 
             }
-            gmCollisionGetFighterPartsWorldPosition(fp->joint[11], &offset);
-            func_ovl2_800EE018(fp->joint[nFTPartsJointTopN], &offset);
+            gmCollisionGetFighterPartsWorldPosition(fp->joints[11], &offset);
+            func_ovl2_800EE018(fp->joints[nFTPartsJointTopN], &offset);
 
             if (efManagerPikachuThunderShockMakeEffect(fighter_gobj, &offset, fp->status_vars.common.attack4.gfx_id) != NULL)
             {

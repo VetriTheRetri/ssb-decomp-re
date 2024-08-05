@@ -169,8 +169,8 @@ void ftPhysicsApplyGroundVelTransN(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->phys_info.vel_ground.x = ((fp->joint[nFTPartsJointTransN]->translate.vec.f.z - fp->anim_vel.z) * DObjGetStruct(fighter_gobj)->scale.vec.f.z);
-    fp->phys_info.vel_ground.z = ((fp->joint[nFTPartsJointTransN]->translate.vec.f.x - fp->anim_vel.x) * -fp->lr * DObjGetStruct(fighter_gobj)->scale.vec.f.x);
+    fp->phys_info.vel_ground.x = ((fp->joints[nFTPartsJointTransN]->translate.vec.f.z - fp->anim_vel.z) * DObjGetStruct(fighter_gobj)->scale.vec.f.z);
+    fp->phys_info.vel_ground.z = ((fp->joints[nFTPartsJointTransN]->translate.vec.f.x - fp->anim_vel.x) * -fp->lr * DObjGetStruct(fighter_gobj)->scale.vec.f.x);
 
     if ((fp->lr * DObjGetStruct(fighter_gobj)->rotate.vec.f.y) < 0.0F)
     {
@@ -392,8 +392,8 @@ void ftPhysicsApplyAirVelFriction(GObj *fighter_gobj)
 // 0x800D9260
 void ftPhysicsGetAirVelTransN(ftStruct *fp, f32 *z, f32 *y, f32 *x) // Ness / Yoshi double jump physics
 {
-    DObj *topn_joint = fp->joint[nFTPartsJointTopN];
-    DObj *transn_joint = fp->joint[nFTPartsJointTransN];
+    DObj *topn_joint = fp->joints[nFTPartsJointTopN];
+    DObj *transn_joint = fp->joints[nFTPartsJointTransN];
     f32 anim_vel_z = (transn_joint->translate.vec.f.z - fp->anim_vel.z) * fp->lr * topn_joint->scale.vec.f.z;
     f32 anim_vel_y = (transn_joint->translate.vec.f.y - fp->anim_vel.y) * topn_joint->scale.vec.f.y;
     f32 cos = cosf(transn_joint->rotate.vec.f.z);
@@ -417,8 +417,8 @@ void ftPhysicsGetAirVelTransN(ftStruct *fp, f32 *z, f32 *y, f32 *x) // Ness / Yo
 void ftPhysicsSetAirVelTransN(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    DObj *topn_joint = fp->joint[nFTPartsJointTopN];
-    DObj *transn_joint = fp->joint[nFTPartsJointTransN];
+    DObj *topn_joint = fp->joints[nFTPartsJointTopN];
+    DObj *transn_joint = fp->joints[nFTPartsJointTransN];
 
     fp->phys_info.vel_air.x = (transn_joint->translate.vec.f.x - fp->anim_vel.x) * topn_joint->scale.vec.f.x;
     fp->phys_info.vel_air.y = (transn_joint->translate.vec.f.y - fp->anim_vel.y) * topn_joint->scale.vec.f.y;

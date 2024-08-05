@@ -204,7 +204,7 @@ s32 grPupupuWhispyGetLR(GObj *ground_gobj)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (fp->joint[nFTPartsJointTopN]->translate.vec.f.x > GRPUPUPU_WHISPY_POS_X)
+        if (fp->joints[nFTPartsJointTopN]->translate.vec.f.x > GRPUPUPU_WHISPY_POS_X)
         {
             players_rside++;
         }
@@ -232,7 +232,7 @@ void grPupupuWhispySetWindPush(void)
     while (fighter_gobj != NULL)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
-        DObj *joint = fp->joint[nFTPartsJointTopN];
+        DObj *joint = fp->joints[nFTPartsJointTopN];
         f32 dist_x;
         Vec3f push;
         f32 pos_x = joint->translate.vec.f.x, pos_y = joint->translate.vec.f.y;

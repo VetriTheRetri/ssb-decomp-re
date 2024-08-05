@@ -35,7 +35,7 @@ void ftKirbyCopySamusSpecialNGetChargeShotPosition(ftStruct *fp, Vec3f *pos)
     pos->y = FTKIRBY_COPYSAMUS_CHARGE_OFF_Y;
     pos->z = FTKIRBY_COPYSAMUS_CHARGE_OFF_Z;
 
-    gmCollisionGetFighterPartsWorldPosition(fp->joint[FTKIRBY_COPYSAMUS_CHARGE_JOINT], pos);
+    gmCollisionGetFighterPartsWorldPosition(fp->joints[FTKIRBY_COPYSAMUS_CHARGE_JOINT], pos);
 }
 
 // 0x80156EFC
@@ -99,7 +99,7 @@ void ftKirbyCopySamusSpecialAirNStartSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopySamusSpecialNStart, fighter_gobj->anim_frame, fp->joint[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopySamusSpecialNStart, fighter_gobj->anim_frame, fp->joints[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
 
     fp->proc_damage = ftKirbyCopySamusSpecialNProcDamage;
 }
@@ -110,7 +110,7 @@ void ftKirbyCopySamusSpecialNStartSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopySamusSpecialAirNStart, fighter_gobj->anim_frame, fp->joint[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
+    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopySamusSpecialAirNStart, fighter_gobj->anim_frame, fp->joints[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
     ftPhysicsClampAirVelXMax(fp);
 
     fp->proc_damage = ftKirbyCopySamusSpecialNProcDamage;

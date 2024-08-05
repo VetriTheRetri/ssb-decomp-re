@@ -215,7 +215,7 @@ s32 grHyruleTwisterGetLR(void)
 
         if ((fp->ga == nMPKineticsGround) && (fp->coll_data.ground_line_id == gGRCommonStruct.hyrule.twister_line_id))
         {
-            if (fp->joint[nFTPartsJointTopN]->translate.vec.f.x > twister_pos_x)
+            if (fp->joints[nFTPartsJointTopN]->translate.vec.f.x > twister_pos_x)
             {
                 players_rside++;
             }

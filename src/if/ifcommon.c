@@ -1926,7 +1926,7 @@ void ifCommonPlayerTagProcRender(GObj *interface_gobj)
     {
         if ((fp->playertag_wait == 1) || (CameraGetStruct(gCMManagerCameraGObj)->vec.eye.z > 6000.0F))
         {
-            pos = fp->joint[nFTPartsJointTopN]->translate.vec.f;
+            pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
             pos.y += fp->attributes->camera_zoom_default;
 

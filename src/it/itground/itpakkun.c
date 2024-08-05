@@ -155,7 +155,7 @@ sb32 itPakkunCommonCheckNoPlayersNear(GObj *item_gobj)
         while (fighter_gobj != NULL)
         {
             ftStruct *fp = ftGetStruct(fighter_gobj);
-            DObj *dobj = fp->joint[nFTPartsJointTopN];
+            DObj *dobj = fp->joints[nFTPartsJointTopN];
             f32 dist_x, ft_pos_y;
 
             if (dobj->translate.vec.f.x < it_pos_x)

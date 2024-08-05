@@ -15,7 +15,7 @@ void ftCommonCapturePulledRotateScale(GObj *fighter_gobj, Vec3f *this_pos, Vec3f
     DObj *joint = DObjGetStruct(fighter_gobj)->child;
     Mtx44f mtx;
 
-    func_ovl0_800C9A38(mtx, capture_fp->joint[capture_fp->attributes->joint_itemheavy_id]);
+    func_ovl0_800C9A38(mtx, capture_fp->joints[capture_fp->attributes->joint_itemheavy_id]);
     func_ovl2_800EDA0C(mtx, rotate);
 
     this_pos->x = (-joint->translate.vec.f.x * DObjGetStruct(fighter_gobj)->scale.vec.f.x);

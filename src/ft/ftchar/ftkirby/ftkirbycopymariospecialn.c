@@ -37,7 +37,7 @@ void ftKirbyCopyMarioSpecialNProcAccessory(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        gmCollisionGetFighterPartsWorldPosition(fp->joint[FTKIRBY_COPYMARIO_FIREBALL_SPAWN_JOINT], &pos);
+        gmCollisionGetFighterPartsWorldPosition(fp->joints[FTKIRBY_COPYMARIO_FIREBALL_SPAWN_JOINT], &pos);
 
         switch (fp->fighter_vars.kirby.copy_id) // jtbl at 0x8018C6A0
         {

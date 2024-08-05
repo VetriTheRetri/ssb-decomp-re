@@ -106,7 +106,7 @@ void ftKirbySpecialHiLandingProcUpdate(GObj *fighter_gobj)
         pos.y = 0.0F;
         pos.z = 0.0F;
 
-        gmCollisionGetFighterPartsWorldPosition(fp->joint[FTKIRBY_FINALCUTTER_BEAM_SPAWN_JOINT], &pos);
+        gmCollisionGetFighterPartsWorldPosition(fp->joints[FTKIRBY_FINALCUTTER_BEAM_SPAWN_JOINT], &pos);
 
         if (fp->lr == nGMFacingR) pos.x += FTKIRBY_FINALCUTTER_OFF_X; // Ternary doesn't match here, only if/else :(
 
@@ -167,11 +167,11 @@ void ftKirbySpecialAirHiProcPhysics(GObj *fighter_gobj)
 
     ftKirbySpecialHiUpdateEffect(fighter_gobj);
 
-    fp->joint[nFTPartsJointTopN]->scale.vec.f.x = fp->joint[nFTPartsJointTopN]->scale.vec.f.y = fp->joint[nFTPartsJointTopN]->scale.vec.f.z = 0.8F;
+    fp->joints[nFTPartsJointTopN]->scale.vec.f.x = fp->joints[nFTPartsJointTopN]->scale.vec.f.y = fp->joints[nFTPartsJointTopN]->scale.vec.f.z = 0.8F;
 
     ftPhysicsApplyAirVelTransNYZ(fighter_gobj);
 
-    fp->joint[nFTPartsJointTopN]->scale.vec.f.x = fp->joint[nFTPartsJointTopN]->scale.vec.f.y = fp->joint[nFTPartsJointTopN]->scale.vec.f.z = 1.0F;
+    fp->joints[nFTPartsJointTopN]->scale.vec.f.x = fp->joints[nFTPartsJointTopN]->scale.vec.f.y = fp->joints[nFTPartsJointTopN]->scale.vec.f.z = 1.0F;
 
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
     {

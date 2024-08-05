@@ -409,7 +409,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
                     {
                         gcParseDObjAnimJoint(joint);
                     }
-                    else ftAnimParseFigatree(joint);
+                    else ftAnimParseDObjFigatree(joint);
                     
                     func_ovl0_800C9488(joint, translate_scales);
 
@@ -435,7 +435,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
                 {
                     gcParseDObjAnimJoint(joint);
                 }
-                else ftAnimParseFigatree(joint);
+                else ftAnimParseDObjFigatree(joint);
                 
                 func_8000CCBC_D8BC(joint);
 

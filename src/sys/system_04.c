@@ -209,7 +209,7 @@ void gcAddAnimAll(GObj *gobj, AObjAnimJoint **anim_joints, AObjAnimJoint ***p_ma
 
 void gcParseDObjAnimJoint(DObj *dobj)
 {
-    AObj *track_aobjs[nOMObjAnimTrackMeshEnd];
+    AObj *track_aobjs[nOMObjAnimTrackJointEnd];
     AObj *aobj;
     s32 i;
     u32 command_kind;
@@ -241,9 +241,9 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
         while (aobj != NULL)
         {
-            if ((aobj->track >= nOMObjAnimTrackMeshStart) && (aobj->track <= nOMObjAnimTrackMeshEnd))
+            if ((aobj->track >= nOMObjAnimTrackJointStart) && (aobj->track <= nOMObjAnimTrackJointEnd))
             {
-                track_aobjs[aobj->track - nOMObjAnimTrackMeshStart] = aobj;
+                track_aobjs[aobj->track - nOMObjAnimTrackJointStart] = aobj;
             }
             aobj = aobj->next;
         }
@@ -286,7 +286,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackMeshStart);
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint->f;
@@ -325,7 +325,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackMeshStart);
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint->f;
@@ -363,7 +363,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackMeshStart);
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint->f;
@@ -403,7 +403,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackMeshStart);
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
                         }
                         track_aobjs[i]->rate_target = dobj->anim_joint->f;
 
@@ -431,7 +431,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackMeshStart);
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint->f;
@@ -486,7 +486,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackMeshStart);
+                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
                         }
                         track_aobjs[i]->length += payload;
                     }
@@ -496,11 +496,11 @@ void gcParseDObjAnimJoint(DObj *dobj)
             case ANIM_CMD_13:
                 AObjAnimAdvance(dobj->anim_joint);
 
-                if (track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackMeshStart] == NULL) 
+                if (track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackJointStart] == NULL) 
                 { 
-                    track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackMeshStart] = omAddAObjForDObj(dobj, nOMObjAnimTrackRotA); 
+                    track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackJointStart] = omAddAObjForDObj(dobj, nOMObjAnimTrackRotA); 
                 }
-                track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackMeshStart]->interpolate = dobj->anim_joint->p;
+                track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackJointStart]->interpolate = dobj->anim_joint->p;
 
                 AObjAnimAdvance(dobj->anim_joint);
                 break;
@@ -539,7 +539,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     (
                         dobj,
                         dobj->anim_joint->flags >> 8,
-                        dobj->anim_joint->flags & 0xFF
+                        (u8)dobj->anim_joint->flags
                     );
                 }
                 dobj->anim_remain += AObjAnimAdvance(dobj->anim_joint)->payload;

@@ -163,8 +163,8 @@ typedef enum AObjTrackKind
 {
     // model
     nOMObjAnimTrackNone,
-    nOMObjAnimTrackMeshStart,                       // Start of Mesh tracks
-    nOMObjAnimTrackRotX = nOMObjAnimTrackMeshStart, // Rotation X (Roll)
+    nOMObjAnimTrackJointStart,                       // Start of Mesh tracks
+    nOMObjAnimTrackRotX = nOMObjAnimTrackJointStart, // Rotation X (Roll)
     nOMObjAnimTrackRotY,                            // Rotation Y (Pitch)
     nOMObjAnimTrackRotZ,                            // Rotation Z (Yaw)
     nOMObjAnimTrackRotA,                            // Rotation angle?
@@ -174,7 +174,7 @@ typedef enum AObjTrackKind
     nOMObjAnimTrackScaX,                            // Scale X
     nOMObjAnimTrackScaY,                            // Scale Y
     nOMObjAnimTrackScaZ,                            // Scale Z
-    nOMObjAnimTrackMeshEnd = nOMObjAnimTrackScaZ,   // End of Mesh tracks
+    nOMObjAnimTrackJointEnd = nOMObjAnimTrackScaZ,   // End of Mesh tracks
     // texture
     nOMObjAnimTrackTextureStart = 13,
     nOMObjAnimTrackTexture13 = 13,

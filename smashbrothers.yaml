@@ -1607,9 +1607,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x17AD50, asm, ovl56]
-      - [0x17E130, data, ovl56]
-      - [0x17E4F0, rodata, ovl56]
+      - [0x17AD50, c, ovl56]
+      - [0x17E130, .data, ovl56]
+      - [0x17E4F0, .rodata, ovl56]
+      - { start: auto, type: .bss, vram: 0x801352C0, name: ovl56 }
 
   - name: ovl57
     type: code

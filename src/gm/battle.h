@@ -533,10 +533,7 @@ typedef struct gmSceneInfo
 	u32 bonus_count;	   // Number of bonuses player acquired throughout the game
 	u32 bonus_get_mask[2]; // Different bonuses the player has accumulated per
 						   // match
-	u8 bonus_tasks_complete;
-	u8 unk39;
-	u8 unk3A;
-	u8 unk3B;
+	u32 bonus_tasks_complete;
 	u8 bonus_tasks_current;
 	u8 bonus_char_id;
 	u8 bonus_costume_id;
@@ -555,6 +552,157 @@ typedef struct gmSceneInfo
 	u8 unk47;
 
 } gmSceneInfo; // size == 0x48
+
+
+typedef enum gmStageClearKind
+{
+    gmStageClear_Kind_Stage,        // Normal stage clear
+    gmStageClear_Kind_Game,         // Final stage clear
+    gmStageClear_Kind_Result        // Bonus stage results
+
+} gmStageClearKind;
+
+typedef enum gm1PGameBonus
+{
+    GM1PGAME_BONUS_KIND_CHEAPSHOT,
+    GM1PGAME_BONUS_KIND_STARFINISH,
+    GM1PGAME_BONUS_KIND_NOITEM,
+    GM1PGAME_BONUS_KIND_SHIELDBREAKER,
+    GM1PGAME_BONUS_KIND_JUDOWARRIOR,
+    GM1PGAME_BONUS_KIND_HAWK,
+    GM1PGAME_BONUS_KIND_SHOOTER,
+    GM1PGAME_BONUS_KIND_HEAVYDAMAGE,
+    GM1PGAME_BONUS_KIND_ALLVARIATIONS,
+    GM1PGAME_BONUS_KIND_ITEMSTRIKE,
+    GM1PGAME_BONUS_KIND_DOUBLEKO,
+    GM1PGAME_BONUS_KIND_TRICKSTER,
+    GM1PGAME_BONUS_KIND_GIANTIMPACT,
+    GM1PGAME_BONUS_KIND_SPEEDSTER,
+    GM1PGAME_BONUS_KIND_ITEMTHROW,
+    GM1PGAME_BONUS_KIND_TRIPLEKO,
+    GM1PGAME_BONUS_KIND_LASTCHANCE,
+    GM1PGAME_BONUS_KIND_PACIFIST,
+    GM1PGAME_BONUS_KIND_PERFECT,
+    GM1PGAME_BONUS_KIND_NOMISS,
+    GM1PGAME_BONUS_KIND_NODAMAGE,
+    GM1PGAME_BONUS_KIND_FULLPOWER,
+    GM1PGAME_BONUS_KIND_GAMECLEAR,
+    GM1PGAME_BONUS_KIND_NOMISSCLEAR,
+    GM1PGAME_BONUS_KIND_NODAMAGECLEAR,
+    GM1PGAME_BONUS_KIND_SPEEDKING,
+    GM1PGAME_BONUS_KIND_SPEEDDEMON,
+    GM1PGAME_BONUS_KIND_MEWCATCHER,
+    GM1PGAME_BONUS_KIND_STARCLEAR,
+    GM1PGAME_BONUS_KIND_VEGETARIAN,
+    GM1PGAME_BONUS_KIND_HEARTTHROB,
+    GM1PGAME_BONUS_KIND_THROWDOWN,
+    GM1PGAME_BONUS_KIND_SMASHMANIA,
+    GM1PGAME_BONUS_KIND_SMASHLESS,
+    GM1PGAME_BONUS_KIND_SPECIALMOVE,
+    GM1PGAME_BONUS_KIND_SINGLEMOVE,
+    GM1PGAME_BONUS_KIND_POKEMONFINISH,
+    GM1PGAME_BONUS_KIND_BOOBYTRAP,
+    GM1PGAME_BONUS_KIND_FIGHTERSTANCE,
+    GM1PGAME_BONUS_KIND_MYSTIC,
+    GM1PGAME_BONUS_KIND_COMETMYSTIC,
+    GM1PGAME_BONUS_KIND_ACIDCLEAR,
+    GM1PGAME_BONUS_KIND_BUMPERCLEAR,
+    GM1PGAME_BONUS_KIND_TORNADOCLEAR,
+    GM1PGAME_BONUS_KIND_ARWINGCLEAR,
+    GM1PGAME_BONUS_KIND_COUNTERATTACK,
+    GM1PGAME_BONUS_KIND_METEORSMASH,
+    GM1PGAME_BONUS_KIND_AERIAL,
+    GM1PGAME_BONUS_KIND_LASTSECOND,
+    GM1PGAME_BONUS_KIND_LUCKY3,
+    GM1PGAME_BONUS_KIND_JACKPOT,
+    GM1PGAME_BONUS_KIND_YOSHIRAINBOW,
+    GM1PGAME_BONUS_KIND_KIRBYRANKS,
+    GM1PGAME_BONUS_KIND_BROSCALAMITY,
+    GM1PGAME_BONUS_KIND_DKDEFENDER,
+    GM1PGAME_BONUS_KIND_DKPERFECT,
+    GM1PGAME_BONUS_KIND_GOODFRIEND,
+    GM1PGAME_BONUS_KIND_TRUEFRIEND,
+    GM1PGAME_BONUS_KIND_ENUMMAX
+
+} gm1PGameBonus;
+
+#define GM1PGAME_BONUS_MASK_CREATE(kind)    (1 << ((kind) - (((kind) / GS_BITCOUNT(u32, 1)) * GS_BITCOUNT(u32, 1))))
+
+// First set of bonuses
+#define GM1PGAME_BONUS_MASK0_CHEAPSHOT		(1 << GM1PGAME_BONUS_KIND_CHEAPSHOT)            // One attack made up >= 35% of all attacks used
+#define GM1PGAME_BONUS_MASK0_STARFINISH		(1 << GM1PGAME_BONUS_KIND_STARFINISH)	        // KO'd last enemy with a Star KO or Screen KO
+#define GM1PGAME_BONUS_MASK0_NOITEM			(1 << GM1PGAME_BONUS_KIND_NOITEM)			    // Did not use any items
+#define GM1PGAME_BONUS_MASK0_SHIELDBREAKER	(1 << GM1PGAME_BONUS_KIND_SHIELDBREAKER)        // Broke enemy's shield
+#define GM1PGAME_BONUS_MASK0_JUDOWARRIOR	(1 << GM1PGAME_BONUS_KIND_JUDOWARRIOR)		    // Only used throws
+#define GM1PGAME_BONUS_MASK0_HAWK			(1 << GM1PGAME_BONUS_KIND_HAWK)		            // Only used aerials
+#define GM1PGAME_BONUS_MASK0_SHOOTER		(1 << GM1PGAME_BONUS_KIND_SHOOTER)		        // Only used projectiles
+#define GM1PGAME_BONUS_MASK0_HEAVYDAMAGE	(1 << GM1PGAME_BONUS_KIND_HEAVYDAMAGE)		    // Accumulated over 200% damage
+#define GM1PGAME_BONUS_MASK0_ALLVARIATIONS	(1 << GM1PGAME_BONUS_KIND_ALLVARIATIONS)	    // Used all jabs, tilts, attacks and aerials
+#define GM1PGAME_BONUS_MASK0_ITEMSTRIKE		(1 << GM1PGAME_BONUS_KIND_ITEMSTRIKE)		    // Only used items
+#define GM1PGAME_BONUS_MASK0_DOUBLEKO		(1 << GM1PGAME_BONUS_KIND_DOUBLEKO) 		    // Unused, translated from Japanese
+#define GM1PGAME_BONUS_MASK0_TRICKSTER		(1 << GM1PGAME_BONUS_KIND_TRICKSTER)		    // KO'd every enemy of a team with a Star KO or Screen KO
+#define GM1PGAME_BONUS_MASK0_GIANTIMPACT	(1 << GM1PGAME_BONUS_KIND_GIANTIMPACT)		    // Unused, translated from Japanese
+#define GM1PGAME_BONUS_MASK0_SPEEDSTER		(1 << GM1PGAME_BONUS_KIND_SPEEDSTER)		    // Cleared stage in less than 30 seconds
+#define GM1PGAME_BONUS_MASK0_ITEMTHROW		(1 << GM1PGAME_BONUS_KIND_ITEMTHROW)		    // Threw or dropped all items, never used them in any other way
+#define GM1PGAME_BONUS_MASK0_TRIPLEKO		(1 << GM1PGAME_BONUS_KIND_TRIPLEKO)		        // Unused, translated from Japanese
+#define GM1PGAME_BONUS_MASK0_LASTCHANCE		(1 << GM1PGAME_BONUS_KIND_LASTCHANCE)		    // Unused, translated from Japanese
+#define GM1PGAME_BONUS_MASK0_PACIFIST		(1 << GM1PGAME_BONUS_KIND_PACIFIST)		        // Cleared stage without dealing any damage
+#define GM1PGAME_BONUS_MASK0_PERFECT		(1 << GM1PGAME_BONUS_KIND_PERFECT)		        // Cleared Bonus Stage with all targets broken or all platforms boarded
+#define GM1PGAME_BONUS_MASK0_NOMISS			(1 << GM1PGAME_BONUS_KIND_NOMISS)		        // Cleared stage without falling once throughout 1P Game progress; multiplied each time it is earned, lost after first fall
+#define GM1PGAME_BONUS_MASK0_NODAMAGE		(1 << GM1PGAME_BONUS_KIND_NODAMAGE)	            // Cleared stage without falling and taking any damage
+#define GM1PGAME_BONUS_MASK0_FULLPOWER		(1 << GM1PGAME_BONUS_KIND_FULLPOWER)	        // Cleared stage with 0% damage (does not yield No Damage)
+#define GM1PGAME_BONUS_MASK0_GAMECLEAR		(1 << GM1PGAME_BONUS_KIND_GAMECLEAR)	        // Cleared Final Stage (number of bonus points depends on difficulty?)
+#define GM1PGAME_BONUS_MASK0_NOMISSCLEAR	(1 << GM1PGAME_BONUS_KIND_NOMISSCLEAR)	        // Cleared all stages without falling once (except Bonus Stages?)
+#define GM1PGAME_BONUS_MASK0_NODAMAGECLEAR	(1 << GM1PGAME_BONUS_KIND_NODAMAGECLEAR)	    // Cleared all stages without taking any damage
+#define GM1PGAME_BONUS_MASK0_SPEEDKING		(1 << GM1PGAME_BONUS_KIND_SPEEDKING)	        // Cleared all stages in under 12 minutes (not earned if Speed Demon criteria is met)
+#define GM1PGAME_BONUS_MASK0_SPEEDDEMON		(1 << GM1PGAME_BONUS_KIND_SPEEDDEMON)	        // Cleared all stages in under 8 minutes
+#define GM1PGAME_BONUS_MASK0_MEWCATCHER		(1 << GM1PGAME_BONUS_KIND_MEWCATCHER)	        // Mew was released from player's Pok� Ball
+#define GM1PGAME_BONUS_MASK0_STARCLEAR		(1 << GM1PGAME_BONUS_KIND_STARCLEAR)	        // Cleared stage while under the effect of Star Man
+#define GM1PGAME_BONUS_MASK0_VEGETARIAN		(1 << GM1PGAME_BONUS_KIND_VEGETARIAN)	        // Consumed 3 or more Maxim Tomatoes
+#define GM1PGAME_BONUS_MASK0_HEARTTHROB		(1 << GM1PGAME_BONUS_KIND_HEARTTHROB)	        // Consumed 3 or more Hearts
+#define GM1PGAME_BONUS_MASK0_THROWDOWN		(1 << GM1PGAME_BONUS_KIND_THROWDOWN)	        // KO'd last enemy with a throw
+
+// Second set of bonuses
+#define GM1PGAME_BONUS_MASK1_SMASHMANIA		(1 << (GM1PGAME_BONUS_KIND_SMASHMANIA-32))      // Only used Smash Attacks
+#define GM1PGAME_BONUS_MASK1_SMASHLESS		(1 << (GM1PGAME_BONUS_KIND_SMASHLESS-32))	    // Never used Smash Attacks
+#define GM1PGAME_BONUS_MASK1_SPECIALMOVE	(1 << (GM1PGAME_BONUS_KIND_SPECIALMOVE-32))	    // Only used Special Attacks
+#define GM1PGAME_BONUS_MASK1_SINGLEMOVE		(1 << (GM1PGAME_BONUS_KIND_SINGLEMOVE-32))      // Only used the same Special Attack
+#define GM1PGAME_BONUS_MASK1_POKEMONFINISH	(1 << (GM1PGAME_BONUS_KIND_POKEMONFINISH-32))	// KO'd last enemy with a Pok�mon (Saffron City Pok�mon projectiles also count, but not the Pok�mon themselves?)
+#define GM1PGAME_BONUS_MASK1_BOOBYTRAP		(1 << (GM1PGAME_BONUS_KIND_BOOBYTRAP-32))		// KO'd last enemy with a Motion Sensor Bomb
+#define GM1PGAME_BONUS_MASK1_FIGHTERSTANCE	(1 << (GM1PGAME_BONUS_KIND_FIGHTERSTANCE-32))   // Player was taunting as stage ended
+#define GM1PGAME_BONUS_MASK1_MYSTIC			(1 << (GM1PGAME_BONUS_KIND_MYSTIC-32))		    // Player fell as stage ended
+#define GM1PGAME_BONUS_MASK1_COMETMYSTIC	(1 << (GM1PGAME_BONUS_KIND_COMETMYSTIC-32))     // Player was getting Star KO'd as stage ended (Screen KOs do not count)
+#define GM1PGAME_BONUS_MASK1_ACIDCLEAR		(1 << (GM1PGAME_BONUS_KIND_ACIDCLEAR-32))		// Last enemy got KO'd by Acid
+#define GM1PGAME_BONUS_MASK1_BUMPERCLEAR	(1 << (GM1PGAME_BONUS_KIND_BUMPERCLEAR-32))		// Last enemy got KO'd by Bumper
+#define GM1PGAME_BONUS_MASK1_TORNADOCLEAR	(1 << (GM1PGAME_BONUS_KIND_TORNADOCLEAR-32))    // Last enemy got KO'd by Tornado
+#define GM1PGAME_BONUS_MASK1_ARWINGCLEAR	(1 << (GM1PGAME_BONUS_KIND_ARWINGCLEAR-32))		// Last enemy got KO'd by ARWING
+#define GM1PGAME_BONUS_MASK1_COUNTERATTACK	(1 << (GM1PGAME_BONUS_KIND_COUNTERATTACK-32))   // Unused, translated from Japanese
+#define GM1PGAME_BONUS_MASK1_METEORSMASH	(1 << (GM1PGAME_BONUS_KIND_METEORSMASH-32))		// Unused, translated from Japanese
+#define GM1PGAME_BONUS_MASK1_AERIAL			(1 << (GM1PGAME_BONUS_KIND_AERIAL-32))		    // Unused, translated from Japanese
+#define GM1PGAME_BONUS_MASK1_LASTSECOND		(1 << (GM1PGAME_BONUS_KIND_LASTSECOND-32))		// Cleared stage with 1 second left on the timer
+#define GM1PGAME_BONUS_MASK1_LUCKY3			(1 << (GM1PGAME_BONUS_KIND_LUCKY3-32))		    // Cleared stage with 3:33 left on the timer
+#define GM1PGAME_BONUS_MASK1_JACKPOT		(1 << (GM1PGAME_BONUS_KIND_JACKPOT-32))		    // Cleared stage with a damage % of two or three identical digits (e.g. 44% or 111%)
+#define GM1PGAME_BONUS_MASK1_YOSHIRAINBOW	(1 << (GM1PGAME_BONUS_KIND_YOSHIRAINBOW-32))	// KO'd every member of Yoshi Team in the order they appeared
+#define GM1PGAME_BONUS_MASK1_KIRBYRANKS		(1 << (GM1PGAME_BONUS_KIND_KIRBYRANKS-32))	    // KO'd every member of Kirby Team in the order they appeared
+#define GM1PGAME_BONUS_MASK1_BROSCALAMITY	(1 << (GM1PGAME_BONUS_KIND_BROSCALAMITY-32))	// KO'd Luigi before damaging Mario on VS Mario Bros. stage
+#define GM1PGAME_BONUS_MASK1_DKDEFENDER		(1 << (GM1PGAME_BONUS_KIND_DKDEFENDER-32))	    // Allies did not fall on VS. Giant Donkey Kong stage
+#define GM1PGAME_BONUS_MASK1_DKPERFECT		(1 << (GM1PGAME_BONUS_KIND_DKPERFECT-32))	    // Allies did not fall and took no damage on VS. Giant Donkey Kong stage
+#define GM1PGAME_BONUS_MASK1_GOODFRIEND		(1 << (GM1PGAME_BONUS_KIND_GOODFRIEND-32))	    // Ally did not fall on VS Mario Bros. stage
+#define GM1PGAME_BONUS_MASK1_TRUEFRIEND		(1 << (GM1PGAME_BONUS_KIND_TRUEFRIEND-32))	    // Ally did not fall and took no damage on VS Mario Bros. stage
+
+typedef struct gmStageClearStats
+{
+    s32 bonus_array_id;
+    s32 bonus_id;
+
+} gmStageClearStats;
+
+typedef struct gmStageClearScore
+{
+    intptr_t offset;
+    s32 points;
+
+} gmStageClearScore;
 
 extern gmBattleState *gBattleState, gDefaultBattleState, D_800A4B18, gTransferBattleState, D_800A4EF8;
 extern gmBackupInfo gSaveData, gDefaultSaveData;

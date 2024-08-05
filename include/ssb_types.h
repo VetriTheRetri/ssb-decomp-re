@@ -102,4 +102,11 @@ typedef struct gsRectangle
 
 } gsRectangle;
 
+typedef struct gsPixelComponent
+{
+    s32 unk_framebuffer_0x0;
+    s32 unk_framebuffer_0x4;
+
+} gsPixelComponent;
+
 #endif /* SSB64_TYPES_H */

@@ -207,7 +207,7 @@ void ftCommonYoshiEggProcInterrupt(GObj *fighter_gobj)
 
     if (fp->status_vars.common.captureyoshi.effect_gobj != NULL)
     {
-        DObj *joint = DObjGetStruct(fp->status_vars.common.captureyoshi.effect_gobj)->next;
+        DObj *joint = DObjGetStruct(fp->status_vars.common.captureyoshi.effect_gobj)->child;
 
         if (fp->ga == nMPKineticsGround)
         {

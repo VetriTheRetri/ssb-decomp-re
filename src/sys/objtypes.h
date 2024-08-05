@@ -369,23 +369,10 @@ struct _DObj
 {
     DObj *alloc_free;       // Has to do with memory allocation
     GObj *parent_gobj;
-    union
-    {
-        struct
-        {
-            DObj *sib_next; // Next sibling? 0x8
-            DObj *sib_prev; // Previous sibling? 0xC
-            DObj *child;    // Child? 0x10
-            DObj *parent;
-        };
-        struct
-        {
-            DObj *unk_0x8;
-            DObj *unk_0xC;
-            DObj *next;
-            DObj *prev;
-        };
-    };
+    DObj *sib_next;         // Next sibling? 0x8
+    DObj *sib_prev;         // Previous sibling? 0xC
+    DObj *child;            // Child? 0x10
+    DObj *parent;
     OMTranslate translate;
     OMRotate rotate;
     OMScale scale;

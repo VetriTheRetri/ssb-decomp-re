@@ -372,7 +372,7 @@ GObj* itMLuckyMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
 
-        gcAddDObjAnimJoint(dobj->next, itGetMonsterAnimNode(ip, lITLuckyDataStart), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITLuckyDataStart), 0.0F); // Linker thing
     }
     return item_gobj;
 }

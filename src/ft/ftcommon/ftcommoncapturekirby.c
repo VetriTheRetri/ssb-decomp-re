@@ -372,7 +372,7 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
             }
             if (fp->command_vars.flags.flag2 == 3)
             {
-                DObj *joint = DObjGetStruct(fighter_gobj)->next;
+                DObj *joint = DObjGetStruct(fighter_gobj)->child;
                 f32 scale = (4.0F - fp->command_vars.flags.flag1) * 0.25F;
 
                 scale *= FTCOMMON_CAPTUREKIRBY_MAGNITUDE_MUL;

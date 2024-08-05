@@ -261,7 +261,7 @@ void gcAddAnimAll(GObj *gobj, AObjAnimJoint **anim_joints, AObjAnimJoint ***p_ma
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F720.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F8F4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/gcAddMObjSubAll.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F988.s")
 

@@ -24,16 +24,17 @@
 
 #define WEAPON_TEAM_DEFAULT 4
 #define WEAPON_PORT_DEFAULT GMBATTLE_PLAYERS_MAX
-#define WEAPON_HANDICAP_DEFAULT 9 // CPU level?
+#define WEAPON_HANDICAP_DEFAULT 9
 
-#define WEAPON_FLAG_PROJECT (1 << 31) // Perform initial collision check when spawning weapon?
+#define WEAPON_FLAG_DOBJSETUP 0x1                   // Weapon has a DObj node tree that needs to be set up
+#define WEAPON_FLAG_PROJECT (1 << 31)               // Perform initial collision check when spawning weapon?
 
-#define WEAPON_MASK_SPAWN_FIGHTER 0 // Weapon spawned by fighter
-#define WEAPON_MASK_SPAWN_GROUND 1	// Weapon spawned by stage
-#define WEAPON_MASK_SPAWN_WEAPON 2	// Weapon spawned by another weapon
-#define WEAPON_MASK_SPAWN_ITEM 3	// Weapon spawned by Item
+#define WEAPON_MASK_SPAWN_FIGHTER 0                 // Weapon spawned by fighter
+#define WEAPON_MASK_SPAWN_GROUND 1	                // Weapon spawned by stage
+#define WEAPON_MASK_SPAWN_WEAPON 2	                // Weapon spawned by another weapon
+#define WEAPON_MASK_SPAWN_ITEM 3	                // Weapon spawned by Item
 
-#define WEAPON_MASK_SPAWN_ALL 0xF // Mask all GObj classes that can spawn weapons?
+#define WEAPON_MASK_SPAWN_ALL 0xF                   // Mask all GObj classes that can spawn weapons?
 
 #define WEAPON_HITBOX_NUM_MAX 2
 #define WEAPON_REHIT_TIME_DEFAULT                                                                                      \
@@ -72,10 +73,10 @@ struct wpCreateDesc
 
 struct wpAttributes // Moreso hitbox stuff
 {
-    void *dobj_setup;
-    MObjSub ***mobjsub;        // Triple pointer???
-    void **anim_joint;
-    void ***matanim_joint;
+    void *dobj_setup;                       // If WEAPON_FLAG_DOBJSETUP is true, this is a DObjDesc*; else it's a display list
+    MObjSub ***mobjsub;                     // Triple pointer???
+    AObjAnimJoint **anim_joints;
+    AObjAnimJoint ***p_matanim_joints;
     Vec3h offset[2];
     s16 objectcoll_top;
     s16 objectcoll_center;

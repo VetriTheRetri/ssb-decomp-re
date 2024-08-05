@@ -251,7 +251,7 @@ void func_ovl3_80175408(GObj *item_gobj, s32 index) // Unused
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    gcAddAnimJointAll(item_gobj, (((uintptr_t)ip->attributes->model_desc + dITHarisenAnimJoint[index]) - (intptr_t)&lITHarisenDataStart), 0.0F); // Linker thing
+    gcAddAnimJointAll(item_gobj, (((uintptr_t)ip->attributes->dobj_setup + dITHarisenAnimJoint[index]) - (intptr_t)&lITHarisenDataStart), 0.0F); // Linker thing
     func_8000DF34_EB34(item_gobj);
 }
 

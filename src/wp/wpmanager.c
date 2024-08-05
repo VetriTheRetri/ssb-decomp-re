@@ -184,7 +184,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
         wp->weapon_hit.stale = WEAPON_STALE_DEFAULT;
         wp->weapon_hit.motion_count = ftParamGetMotionCount();
         wp->weapon_hit.stat_flags.stat_attack_id = nFTStatusAttackIDNone;
-        wp->weapon_hit.stat_flags.is_smash_attack = wp->weapon_hit.stat_flags.ga = wp->weapon_hit.stat_flags.is_projectile = FALSE;
+        wp->weapon_hit.stat_flags.is_smash_attack = wp->weapon_hit.stat_flags.ga = wp->weapon_hit.stat_flags.is_projectile = 0;
         wp->weapon_hit.stat_count = ftParamGetStatUpdateCount();
         break;
     }
@@ -275,11 +275,11 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
 
     if (attributes->mobjsub != NULL)
     {
-        func_8000F8F4(weapon_gobj, attributes->mobjsub);
+        gcAddMObjSubAll(weapon_gobj, attributes->mobjsub);
     }
-    if ((attributes->anim_joint != NULL) || (attributes->matanim_joint != NULL))
+    if ((attributes->anim_joints != NULL) || (attributes->p_matanim_joints != NULL))
     {
-        gcAddAnimAll(weapon_gobj, attributes->anim_joint, attributes->matanim_joint, 0.0F);
+        gcAddAnimAll(weapon_gobj, attributes->anim_joints, attributes->p_matanim_joints, 0.0F);
     }
     wp->coll_data.p_translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     wp->coll_data.p_lr = &wp->lr;

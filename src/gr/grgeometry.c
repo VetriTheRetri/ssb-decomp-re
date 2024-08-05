@@ -2,7 +2,7 @@
 
 extern void func_8000DF34_EB34(GObj*);
 extern void func_8000F590();
-extern void func_8000F8F4();
+extern void gcAddMObjSubAll();
 
 // // // // // // // // // // // //
 //                               //
@@ -241,7 +241,7 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
 
     if (gr_desc->aobj != NULL)
     {
-        func_8000F8F4(ground_gobj, gr_desc->aobj);
+        gcAddMObjSubAll(ground_gobj, gr_desc->aobj);
     }
     if ((gr_desc->anim_joint != NULL) || (gr_desc->matanim_joint != NULL))
     {

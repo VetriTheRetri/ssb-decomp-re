@@ -924,7 +924,7 @@ GObj* mnStageCreateStageGeo(s32 stage_id, mpGroundData* stage_info, mpGroundDesc
 
 	if (stage_geo->aobj != NULL)
 	{
-		func_8000F8F4(stage_geo_gobj, stage_geo->aobj);
+		gcAddMObjSubAll(stage_geo_gobj, stage_geo->aobj);
 	}
 
 	if ((stage_geo->anim_joint != NULL) || (stage_geo->matanim_joint != NULL))

@@ -3197,7 +3197,7 @@ void mnBattleCreateWhiteCircles()
 
 		white_circle_gobj->user_data.s = i;
 
-		func_8000F8F4(white_circle_gobj, GetAddressFromOffset(gMnBattleFilesArray[6], &FILE_016_WHITE_CIRCLE_OFFSET_1));
+		gcAddMObjSubAll(white_circle_gobj, GetAddressFromOffset(gMnBattleFilesArray[6], &FILE_016_WHITE_CIRCLE_OFFSET_1));
 
 		omAddGObjCommonProc(white_circle_gobj, mnBattleSyncWhiteCircleSizeAndDisplay, 1, 1);
 

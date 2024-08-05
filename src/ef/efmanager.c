@@ -2288,7 +2288,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
         }
         if (o_mobjsub != 0)
         {
-            func_8000F8F4(effect_gobj, (void*) (addr + o_mobjsub));
+            gcAddMObjSubAll(effect_gobj, (void*) (addr + o_mobjsub));
         }
         if ((o_anim_joint != 0) || (o_matanim_joint != 0))
         {

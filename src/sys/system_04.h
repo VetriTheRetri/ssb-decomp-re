@@ -54,7 +54,7 @@ extern void func_8000F720(
     u8,
     u8,
     u8);
-extern void func_8000F8F4(struct GObjCommon *, struct MObjSub ***);
+extern void gcAddMObjSubAll(struct GObjCommon *, struct MObjSub ***);
 extern void func_8000F988(struct GObjCommon *, struct UnkEC64Arg3 *);
 extern void func_8000FA3C(struct DObj *dobj, union AnimCmd *, f32);
 extern void func_80010580(struct GObjCommon *obj);

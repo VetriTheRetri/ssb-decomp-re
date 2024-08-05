@@ -379,24 +379,24 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
 
     ip->reflect_gobj = NULL;
 
-    if (attributes->model_desc != NULL)
+    if (attributes->dobj_setup != NULL)
     {
         if (!(attributes->unk_0x10_b1))
         {
-            func_8000F720(item_gobj, attributes->model_desc, attributes->mobjsub, NULL, item_desc->transform_types.tk1, item_desc->transform_types.tk2, item_desc->transform_types.unk_dobjtransform_0x2);
+            func_8000F720(item_gobj, attributes->dobj_setup, attributes->mobjsub, NULL, item_desc->transform_types.tk1, item_desc->transform_types.tk2, item_desc->transform_types.unk_dobjtransform_0x2);
         }
         else
         {
-            itManagerDObjSetup(item_gobj, attributes->model_desc, NULL, item_desc->transform_types.tk1);
+            itManagerDObjSetup(item_gobj, attributes->dobj_setup, NULL, item_desc->transform_types.tk1);
 
             if (attributes->mobjsub != NULL)
             {
-                func_8000F8F4(item_gobj, attributes->mobjsub);
+                gcAddMObjSubAll(item_gobj, attributes->mobjsub);
             }
         }
-        if ((attributes->anim_joint != NULL) || (attributes->matanim_joint != NULL)) // Runs if item has joint or texture animation on spawn?
+        if ((attributes->anim_joints != NULL) || (attributes->p_matanim_joints != NULL)) // Runs if item has joint or texture animation on spawn?
         {
-            gcAddAnimAll(item_gobj, attributes->anim_joint, attributes->matanim_joint, 0.0F);
+            gcAddAnimAll(item_gobj, attributes->anim_joints, attributes->p_matanim_joints, 0.0F);
             func_8000DF34_EB34(item_gobj);
         }
         func_ovl0_800C9424(DObjGetStruct(item_gobj));

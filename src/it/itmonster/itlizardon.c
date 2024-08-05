@@ -285,7 +285,7 @@ void itLizardonAttackInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == nITKindLizardon)
     {
-        addr = (void*) ((uintptr_t)ip->attributes->model_desc - (intptr_t)&lITLizardonDataStart); // Linker thing
+        addr = (void*) ((uintptr_t)ip->attributes->dobj_setup - (intptr_t)&lITLizardonDataStart); // Linker thing
 
         gcAddDObjAnimJoint(dobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonAnimJoint), 0.0F); // Linker thing
         gcAddMObjMatAnimJoint(dobj->mobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonMatAnimJoint), 0.0F); // Linker thing

@@ -724,7 +724,7 @@ GObj* grPupupuMakeMapGObj(intptr_t tk, intptr_t offset2, void (*proc_render)(GOb
 
     if (offset2 != 0)
     {
-        func_8000F8F4(ground_gobj, (uintptr_t)gGRCommonStruct.pupupu.map_head + offset2);
+        gcAddMObjSubAll(ground_gobj, (uintptr_t)gGRCommonStruct.pupupu.map_head + offset2);
     }
     omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
 

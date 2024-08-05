@@ -462,7 +462,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     efManagerItemGetSwirlProcUpdate(&pos);
 
-    func_8000F988(item_gobj, ip->attributes->model_desc);
+    func_8000F988(item_gobj, ip->attributes->dobj_setup);
 
     proc_pickup = dITMainProcHoldList[ip->it_kind];
 

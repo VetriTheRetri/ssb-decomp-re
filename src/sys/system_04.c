@@ -1425,11 +1425,67 @@ void gcPlayAnimAll(GObj *gobj)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000E008_EC08.s")
+AObj* gcGetTrackAObj(AObj *aobj, u8 track)
+{
+    while (aobj != NULL) 
+    {
+        if (aobj->track == track) 
+        { 
+            return aobj; 
+        }
+        aobj = aobj->next;
+    }
+    return NULL;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000E044_EC44.s")
+void gcSetDObjAnimLength(DObj *dobj, f32 length)
+{
+    AObj *aobj = dobj->aobj;
+    dobj->anim_remain = dobj->anim_rate + length;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000E084_EC84.s")
+    while (aobj != NULL) 
+    {
+        aobj->length_invert = 1.0F / length;
+        aobj = aobj->next;
+    }
+}
+
+f32 gcGetDObjValueTrack(DObj *dobj, s32 track)
+{
+    switch (track) 
+    {
+    case nOMObjAnimTrackRotX: 
+        return dobj->rotate.vec.f.x;
+
+    case nOMObjAnimTrackRotY: 
+        return dobj->rotate.vec.f.y;
+
+    case nOMObjAnimTrackRotZ: 
+        return dobj->rotate.vec.f.z;
+
+    case nOMObjAnimTrackTraX: 
+        return dobj->translate.vec.f.x;
+
+    case nOMObjAnimTrackTraY: 
+        return dobj->translate.vec.f.y;
+
+    case nOMObjAnimTrackTraZ: 
+        return dobj->translate.vec.f.z;
+
+    case nOMObjAnimTrackScaX: 
+        return dobj->scale.vec.f.x;
+
+    case nOMObjAnimTrackScaY: 
+        return dobj->scale.vec.f.y;
+
+    case nOMObjAnimTrackScaZ: 
+        return dobj->scale.vec.f.z;
+    }
+#if defined (AVOID_UB)
+    // todo: return NaN?
+    return 0.0F;
+#endif
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000E0F4_ECF4.s")
 

@@ -45,4 +45,13 @@ extern void gcPlayMObjMatAnim(MObj *mobj);
 // Play all DObj and MObj animations on a GObj
 extern void gcPlayAnimAll(GObj *gobj);
 
+// Get AObj with matching track ID
+extern AObj* gcGetTrackAObj(AObj *aobj, u8 track);
+
+// Set DObj animation length?
+extern void gcSetDObjAnimLength(DObj *dobj, f32 length);
+
+// Get DObj vector value of corresponding track ID
+extern f32 gcGetDObjValueTrack(DObj *dobj, s32 track);
+
 #endif

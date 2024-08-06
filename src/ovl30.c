@@ -38,10 +38,6 @@ typedef struct mnStageFileInfo
 
 } mnStageFileInfo;
 
-#define GetAddressFromOffset(file_ptr, offset) \
-((int*)((intptr_t)(file_ptr) + (intptr_t)(offset))) \
-
-
 // DATA
 // 801344D0
 rdFileID D_ovl30_801344D0[5] = {

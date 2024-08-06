@@ -8,20 +8,6 @@
 #include <ssb_types.h>
 #include <sys/objdraw.h>
 
-
-// Header stuff
-typedef struct CameraVec7
-{
-	Vec3f eye;
-	Vec3f at;
-	f32 upx;
-
-} CameraVec7;
-
-#define GetAddressFromOffset(file_ptr, offset) \
-((int*)((intptr_t)(file_ptr) + (intptr_t)(offset))) \
-
-
 // EXTERN
 extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay36ArenaLo;  // 8018E620

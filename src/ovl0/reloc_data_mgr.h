@@ -23,7 +23,9 @@ typedef struct rdSetup
     /* 0x14 */ size_t status_buf_size;
     /* 0x18 */ rdFileNode *force_buf;
     /* 0x1C */ size_t force_buf_size;
-} rdSetup; // size == 0x20    
+} rdSetup; // size == 0x20
+
+#define GetAddressFromOffset(file_ptr, offset) ((int*)((intptr_t)(file_ptr) + (intptr_t)(offset)))
 
 extern uintptr_t lRDManagerTableFilesNum;   // 0x00000854
 extern uintptr_t lRDManagerTableAddr;       // 0x001AC870

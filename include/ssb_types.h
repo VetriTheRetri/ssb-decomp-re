@@ -113,4 +113,12 @@ typedef struct gsPixelComponent
 
 } gsPixelComponent;
 
+typedef struct CameraVec7
+{
+    Vec3f eye;
+    Vec3f at;
+    f32 upx;
+
+} CameraVec7;
+
 #endif /* SSB64_TYPES_H */

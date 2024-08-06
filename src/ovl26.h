@@ -83,8 +83,6 @@ typedef enum mnCursorState
 
 } mnCursorState;
 
-#define GetAddressFromOffset(file_ptr, offset) ((int*)((intptr_t)(file_ptr) + (intptr_t)(offset)))
-
 extern intptr_t D_NF_800A5240;	   // 800A5240
 extern intptr_t lOverlay26ArenaLo; // 0x8013C4C0
 extern intptr_t lOverlay26ArenaHi; // 0x803903E0

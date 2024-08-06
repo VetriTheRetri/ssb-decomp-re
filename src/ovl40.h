@@ -4,17 +4,6 @@
 #include <ssb_types.h>
 #include <sys/objdraw.h>
 
-
-// Stuff - where does it go?!?
-typedef struct CameraVec7
-{
-	Vec3f eye;
-	Vec3f at;
-	f32 upx;
-
-} CameraVec7;
-
-
 // EXTERN
 
 extern intptr_t FILE_041_LINK_CAMERA_PARAMS_OFFSET; // 0xC0
@@ -110,10 +99,5 @@ rdFileNode D_ovl40_8018E228[48];
 rdFileNode D_ovl40_8018E3A8[7];
 uintptr_t gMvOpeningLinkFilesArray[2]; // 8018E3E0[2]
 gmBattleState gMvOpeningLinkBattleState; // 8018E3E8
-
-
-
-#define GetAddressFromOffset(file_ptr, offset) \
-((int*)((intptr_t)(file_ptr) + (intptr_t)(offset))) \
 
 #endif

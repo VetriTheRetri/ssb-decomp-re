@@ -64,7 +64,7 @@ f32 ftAnimGetTargetFrac(s16 arg, s32 track, sb32 value_or_step)
 // 0x800EC238
 void ftAnimParseDObjFigatree(DObj *root_dobj)
 {
-    AObj *track_aobjs[nOMObjAnimTrackJointEnd];
+    AObj *track_aobjs[nOMObjAnimTrackJointEnd - nOMObjAnimTrackJointStart + 1];
     AObj *current_aobj;
     f32 payload;
     s32 i;
@@ -414,7 +414,7 @@ void func_ovl2_800ECCA4(GObj *gobj)
 
         while (mobj != NULL)
         {
-            func_8000CF6C_DB6C(mobj);
+            gcParseMObjMatAnimJoint(mobj);
             func_8000DA40_E640(mobj);
 
             mobj = mobj->next;

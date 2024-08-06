@@ -219,7 +219,7 @@ void gcAddAnimAll(GObj *gobj, AObjAnimJoint **anim_joints, AObjAnimJoint ***p_ma
 
 void gcParseDObjAnimJoint(DObj *dobj)
 {
-    AObj *track_aobjs[nOMObjAnimTrackJointEnd];
+    AObj *track_aobjs[nOMObjAnimTrackJointEnd - nOMObjAnimTrackJointStart + 1];
     AObj *aobj;
     s32 i;
     u32 command_kind;
@@ -598,7 +598,7 @@ f32 func_8000CA28_D628(f32 length_invert, f32 length, f32 value_base, f32 value_
     temp_f2  = SQUARE(length);
     temp_f18 = SQUARE(length_invert);
     temp_f16 = temp_f2 * length * temp_f18;         // length^3 * length_invert^2
-    temp_f10 = 2.0F * temp_f16 * length_invert;     // 2.0f * length^3 * length_invert^3
+    temp_f10 = 2.0F * temp_f16 * length_invert;     // 2.0F * length^3 * length_invert^3
     sp14     = 3.0F * temp_f2 * temp_f18;           // 3 * length^2 * length_invert^2
     sp18     = temp_f2 * length_invert;             // length_invert^3
     sp10     = temp_f16 - sp18;                     // length^3 * length_invert^2 - length_invert^3
@@ -779,7 +779,421 @@ void gcPlayDObjAnim(DObj *dobj)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000CF6C_DB6C.s")
+// the arg typing may be off?
+void gcParseMObjMatAnimJoint(MObj *mobj)
+{
+    AObj *mat_aobjs[10];
+    AObj *matspecial_aobjs[5];
+    AObj *aobj;
+    s32 i;
+    u32 command_kind;
+    u32 flags;
+    f32 payload;
+
+    if (mobj->anim_remain != AOBJ_FRAME_NULL)
+    {
+        if (mobj->anim_remain == -F32_HALF)
+        {
+            mobj->anim_remain = -mobj->anim_frame;
+        }
+        else
+        {
+            mobj->anim_remain -= mobj->anim_rate;
+            mobj->anim_frame += mobj->anim_rate;
+
+            if (mobj->anim_remain > 0.0F)
+            {
+                return;
+            }
+        }
+        for (i = 0; i < ARRAY_COUNT(mat_aobjs); i++)
+        {
+            mat_aobjs[i] = NULL;
+        }
+        for (i = 0; i < ARRAY_COUNT(matspecial_aobjs); i++)
+        {
+            matspecial_aobjs[i] = NULL;
+        }
+        aobj = mobj->aobj;
+
+        while (aobj != NULL)
+        {
+            if ((aobj->track >= nOMObjAnimTrackMaterialStart) && (aobj->track <= nOMObjAnimTrackMaterialEnd))
+            {
+                mat_aobjs[aobj->track - nOMObjAnimTrackMaterialStart] = aobj;
+            }
+            if ((aobj->track >= nOMObjAnimTrackMaterialSpecialStart) && (aobj->track <= nOMObjAnimTrackMaterialSpecialEnd))
+            {
+                matspecial_aobjs[aobj->track - nOMObjAnimTrackMaterialSpecialStart] = aobj;
+            }
+            aobj = aobj->next;
+        }
+        do
+        {
+            if (mobj->matanim_joint == NULL)
+            {
+                aobj = mobj->aobj;
+
+                while (aobj != NULL)
+                {
+                    if (aobj->kind != 0)
+                    {
+                        aobj->length += mobj->anim_rate + mobj->anim_remain;
+                    }
+                    aobj = aobj->next;
+                }
+                mobj->anim_frame = mobj->anim_remain;
+                mobj->anim_remain = -1.1342745e38F;
+
+                break; // or return?
+            }
+            command_kind = mobj->matanim_joint->command.opcode;
+
+            switch (command_kind)
+            {
+            case nOMObjAnimCommandSetVal0StepBlock:
+            case nOMObjAnimCommandSetVal0Step:
+                payload = mobj->matanim_joint->command.payload;
+                flags = AObjAnimAdvance(mobj->matanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(mat_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (mat_aobjs[i] == NULL)
+                        {
+                            mat_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                        }
+                        mat_aobjs[i]->value_base = mat_aobjs[i]->value_target;
+                        mat_aobjs[i]->value_target = mobj->matanim_joint->f;
+
+                        AObjAnimAdvance(mobj->matanim_joint);
+
+                        mat_aobjs[i]->step_base = mat_aobjs[i]->step_target;
+                        mat_aobjs[i]->step_target = 0.0F;
+
+                        mat_aobjs[i]->kind = 3;
+
+                        if (payload != 0.0F)
+                        {
+                            mat_aobjs[i]->length_invert = 1.0F / payload;
+                        }
+                        mat_aobjs[i]->length = -mobj->anim_remain - mobj->anim_rate;
+                    }
+                }
+                if (command_kind == nOMObjAnimCommandSetVal0StepBlock)
+                {
+                    mobj->anim_remain += payload;
+                }
+                break;
+
+            case nOMObjAnimCommandSetValBlock:
+            case nOMObjAnimCommandSetVal:
+                payload = mobj->matanim_joint->command.payload;
+                flags = AObjAnimAdvance(mobj->matanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(mat_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (mat_aobjs[i] == NULL)
+                        {
+                            mat_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                        }
+                        mat_aobjs[i]->value_base = mat_aobjs[i]->value_target;
+                        mat_aobjs[i]->value_target = mobj->matanim_joint->f;
+
+                        AObjAnimAdvance(mobj->matanim_joint);
+
+                        mat_aobjs[i]->kind = 2;
+
+                        if (payload != 0.0F)
+                        {
+                            mat_aobjs[i]->step_base = (mat_aobjs[i]->value_target - mat_aobjs[i]->value_base) / payload;
+                        }
+                        mat_aobjs[i]->length = -mobj->anim_remain - mobj->anim_rate;
+                        mat_aobjs[i]->step_target = 0.0F;
+                    }
+                }
+
+                if (command_kind == nOMObjAnimCommandSetValBlock)
+                {
+                    mobj->anim_remain += payload;
+                }
+                break;
+
+            case nOMObjAnimCommandSetValStepBlock:
+            case nOMObjAnimCommandSetValStep:
+                payload = mobj->matanim_joint->command.payload;
+                flags = AObjAnimAdvance(mobj->matanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(mat_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (mat_aobjs[i] == NULL)
+                        {
+                            mat_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                        }
+                        mat_aobjs[i]->value_base = mat_aobjs[i]->value_target;
+                        mat_aobjs[i]->value_target = mobj->matanim_joint->f;
+
+                        AObjAnimAdvance(mobj->matanim_joint);
+
+                        mat_aobjs[i]->step_base = mat_aobjs[i]->step_target;
+                        mat_aobjs[i]->step_target = mobj->matanim_joint->f;
+
+                        AObjAnimAdvance(mobj->matanim_joint);
+
+                        mat_aobjs[i]->kind = 3;
+
+                        if (payload != 0.0F)
+                        {
+                            mat_aobjs[i]->length_invert = 1.0F / payload;
+                        }
+                        mat_aobjs[i]->length = -mobj->anim_remain - mobj->anim_rate;
+                    }
+                }
+                if (command_kind == nOMObjAnimCommandSetValStepBlock)
+                {
+                    mobj->anim_remain += payload;
+                }
+                break;
+
+            case nOMObjAnimCommandSetStepTarget:
+                flags = AObjAnimAdvance(mobj->matanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(mat_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (mat_aobjs[i] == NULL)
+                        {
+                            mat_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                        }
+                        mat_aobjs[i]->step_target = mobj->matanim_joint->f;
+
+                        AObjAnimAdvance(mobj->matanim_joint);
+                    }
+                }
+                break;
+
+            case nOMObjAnimCommandWait:
+                mobj->anim_remain += mobj->matanim_joint->command.payload;
+
+                AObjAnimAdvance(mobj->matanim_joint);
+                break;
+
+            case nOMObjAnimCommandSetValAfterBlock:
+            case nOMObjAnimCommandSetValAfter:
+                payload = mobj->matanim_joint->command.payload;
+                flags = AObjAnimAdvance(mobj->matanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(mat_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (mat_aobjs[i] == NULL)
+                        {
+                            mat_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                        }
+                        mat_aobjs[i]->value_base = mat_aobjs[i]->value_target;
+                        mat_aobjs[i]->value_target = mobj->matanim_joint->f;
+
+                        AObjAnimAdvance(mobj->matanim_joint);
+
+                        mat_aobjs[i]->kind = 1;
+
+                        mat_aobjs[i]->length_invert = payload;
+                        mat_aobjs[i]->length = -mobj->anim_remain - mobj->anim_rate;
+
+                        mat_aobjs[i]->step_target = 0.0F;
+                    }
+                }
+                if (command_kind == nOMObjAnimCommandSetValAfterBlock)
+                {
+                    mobj->anim_remain += payload;
+                }
+                break;
+
+            case nOMObjAnimCommandSetAnim:
+                AObjAnimAdvance(mobj->matanim_joint);
+
+                mobj->matanim_joint = mobj->matanim_joint->p;
+                mobj->anim_frame = -mobj->anim_remain;
+                break;
+
+            case nOMObjAnimCommandJump:
+                AObjAnimAdvance(mobj->matanim_joint);
+
+                mobj->matanim_joint = mobj->matanim_joint->p;
+                break;
+
+            case ANIM_CMD_12:
+                payload = mobj->matanim_joint->command.payload;
+                flags = AObjAnimAdvance(mobj->matanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(mat_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (mat_aobjs[i] == NULL)
+                        {
+                            mat_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                        }
+                        mat_aobjs[i]->length += payload;
+                    }
+                }
+                break;
+
+            case nOMObjAnimCommandEnd:
+                aobj = mobj->aobj;
+
+                while (aobj != NULL)
+                {
+                    if (aobj->kind != 0)
+                    {
+                        aobj->length += mobj->anim_rate + mobj->anim_remain;
+                    }
+                    aobj = aobj->next;
+                }
+                mobj->anim_frame = mobj->anim_remain;
+                mobj->anim_remain = -1.1342745e38F;
+                return; // not break
+
+            case nOMObjAnimCommandSetExtValAfterBlock:
+            case nOMObjAnimCommandSetExtValAfter:
+                payload = mobj->matanim_joint->command.payload;
+                flags = AObjAnimAdvance(mobj->matanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(matspecial_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (matspecial_aobjs[i] == NULL)
+                        {
+                            matspecial_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialSpecialStart);
+                        }
+                        matspecial_aobjs[i]->value_base = matspecial_aobjs[i]->value_target;
+                        matspecial_aobjs[i]->value_target = mobj->matanim_joint->f;
+
+                        AObjAnimAdvance(mobj->matanim_joint);
+
+                        matspecial_aobjs[i]->kind = 1;
+
+                        matspecial_aobjs[i]->length_invert = payload;
+                        matspecial_aobjs[i]->length = -mobj->anim_remain - mobj->anim_rate;
+                    }
+                }
+                if (command_kind == nOMObjAnimCommandSetExtValAfterBlock)
+                {
+                    mobj->anim_remain += payload;
+                }
+                break;
+
+            case nOMObjAnimCommandSetExtValBlock:
+            case nOMObjAnimCommandSetExtVal:
+                payload = mobj->matanim_joint->command.payload;
+                flags = AObjAnimAdvance(mobj->matanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(matspecial_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (matspecial_aobjs[i] == NULL)
+                        {
+                            matspecial_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialSpecialStart);
+                        }
+                        matspecial_aobjs[i]->value_base = matspecial_aobjs[i]->value_target;
+                        matspecial_aobjs[i]->value_target = mobj->matanim_joint->f;
+
+                        AObjAnimAdvance(mobj->matanim_joint);
+
+                        matspecial_aobjs[i]->kind = 2;
+
+                        if (payload != 0.0F)
+                        {
+                            matspecial_aobjs[i]->length_invert = 1.0F / payload;
+                        }
+                        matspecial_aobjs[i]->length = -mobj->anim_remain - mobj->anim_rate;
+                    }
+                }
+                if (command_kind == nOMObjAnimCommandSetExtValBlock)
+                {
+                    mobj->anim_remain += payload;
+                }
+                break;
+
+            case ANIM_CMD_22:
+                mobj->anim_remain = mobj->matanim_joint->command.payload;
+                flags = AObjAnimAdvance(mobj->matanim_joint)->command.flags;
+
+                if (flags & 0x01)
+                {
+                    mobj->sub.unk4C = mobj->matanim_joint->u;
+                    AObjAnimAdvance(mobj->matanim_joint);
+                }
+                if (flags & 0x02)
+                {
+                    mobj->sub.unk6C = mobj->matanim_joint->u;
+                    AObjAnimAdvance(mobj->matanim_joint);
+                }
+                if (flags & 0x04)
+                {
+                    mobj->sub.unk68 = mobj->matanim_joint->u;
+                    AObjAnimAdvance(mobj->matanim_joint);
+                }
+                if (flags & 0x08)
+                {
+                    mobj->sub.unk74 = mobj->matanim_joint->u;
+                    AObjAnimAdvance(mobj->matanim_joint);
+                }
+                if (flags & 0x10)
+                {
+                    mobj->sub.unk70 = mobj->matanim_joint->u;
+                    AObjAnimAdvance(mobj->matanim_joint);
+                }
+                break;
+
+            default:
+                break;
+            }
+        } 
+        while (mobj->anim_remain <= 0.0F);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000DA40_E640.s")
 

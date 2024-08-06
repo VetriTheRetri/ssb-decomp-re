@@ -176,8 +176,8 @@ typedef enum AObjTrackKind
     nOMObjAnimTrackScaZ,                            // Scale Z
     nOMObjAnimTrackJointEnd = nOMObjAnimTrackScaZ,  // End of joint tracks
     // texture
-    nOMObjAnimTrackTextureStart = 13,
-    nOMObjAnimTrackTexture13 = 13,
+    nOMObjAnimTrackMaterialStart = 13,
+    nOMObjAnimTrackSetTextureID = nOMObjAnimTrackMaterialStart,
     nOMObjAnimTrackTexture14 = 14,
     nOMObjAnimTrackTexture15 = 15,
     nOMObjAnimTrackTexture16 = 16,
@@ -187,7 +187,7 @@ typedef enum AObjTrackKind
     nOMObjAnimTrackTexture20 = 20,
     nOMObjAnimTrackTexture21 = 21,
     nOMObjAnimTrackTexture22 = 22,
-    nOMObjAnimTrackTextureEnd = 22,
+    nOMObjAnimTrackMaterialEnd = nOMObjAnimTrackTexture22,
     // camera
     nOMObjAnimTrackCameraStart = 25,
     nOMObjAnimTrackCameraEyeX = nOMObjAnimTrackCameraStart,
@@ -202,13 +202,13 @@ typedef enum AObjTrackKind
     nOMObjAnimTrackCameraFOVY,
     nOMObjAnimTrackCameraEnd = nOMObjAnimTrackCameraFOVY,
     // texture extra
-    nOMObjAnimTrackTextureSpecialStart = 37,
+    nOMObjAnimTrackMaterialSpecialStart = 37,
     nOMObjAnimTrackTextureSpecial37 = 37,
     nOMObjAnimTrackTextureSpecial38 = 38,
     nOMObjAnimTrackTextureSpecial39 = 39,
     nOMObjAnimTrackTextureSpecial40 = 40,
     nOMObjAnimTrackTextureSpecial41 = 41,
-    nOMObjAnimTrackTextureSpecialEnd = 41
+    nOMObjAnimTrackMaterialSpecialEnd = 41
 
 } AObjTrackKind;
 

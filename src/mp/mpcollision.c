@@ -3805,7 +3805,7 @@ void func_ovl2_800FBAD0(GObj *ground_gobj)
 
         while (mobj != NULL)
         {
-            func_8000CF6C_DB6C(mobj);
+            gcParseMObjMatAnimJoint(mobj);
             func_8000DA40_E640(mobj);
 
             mobj = mobj->next;

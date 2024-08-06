@@ -36,7 +36,7 @@ extern f32 dMNResultsFighterXPositions2P[2][4]; // 0x801390CC;
 extern f32 dMNResultsFighterXPositions3P[3][4]; // 0x801390EC;
 extern f32 dMNResultsFighterXPositions4P[4][4]; // 0x8013911C;
 extern Vec2f dMNResultsFighterYZPositions[4]; // 0x8013915C;
-extern s32 mnResultsVictoryAnims[3]; // 0x8013917C;
+extern s32 dMNResultsVictoryAnims[3]; // 0x8013917C;
 extern s32 D_ovl31_80139188[4]; // D_ovl31_80139188;
 extern s32 D_ovl31_80139198[5]; // D_ovl31_80139198;
 extern Vec2f dMNResultsIndicatorPositions2P[2][4]; // 0x801391AC;
@@ -737,7 +737,7 @@ void mnResultsMakeFighterFaceWinner(GObj* fighter_gobj, s32 port_id, s32 place)
 // 0x8013345C
 s32 mnResultsGetVictoryAnim(s32 ft_kind)
 {
-    s32 victory_anims[3] = mnResultsVictoryAnims;
+    s32 victory_anims[3] = dMNResultsVictoryAnims;
 
     if (ft_kind == Ft_Kind_Kirby)
     {
@@ -946,7 +946,7 @@ void mnResultsCreatePlayerIndicatorViewport()
 }
 
 // 0x80133F1C
-s32 mnResultsGetCharIndex(char c)
+s32 mnResultsGetChrIndex(char c)
 {
     switch (c)
     {
@@ -985,7 +985,7 @@ void mnResultsDrawString(const char *str, f32 x, f32 y, s32 color_index, f32 sca
         }
         else
         {
-            char_index = mnResultsGetCharIndex(str[i]);
+            char_index = mnResultsGetChrIndex(str[i]);
 
             if (char_index == 0x1C) // space
             {

@@ -6,13 +6,13 @@
 #  80136630 -> 80136C10
 
 
-glabel D_ovl32_80136630
+glabel dMNVsRecordsRankingColumnWidths
   .incbin "ovl32.raw.bin", 0x4B30, 0x1C
 
 glabel D_ovl32_8013664C
   .incbin "ovl32.raw.bin", 0x4B4C, 0x14
 
-glabel D_ovl32_80136660
+glabel dMNVsRecordsLights1
   /* 4B60 15D5A0 80136660 */
   .asciz "   "
   .balign 4
@@ -27,32 +27,32 @@ glabel D_ovl32_80136668
   .balign 4
   .incbin "ovl32.raw.bin", 0x4B74, 0x4
 
-glabel D_ovl32_80136678
+glabel dMNVsRecordsDisplayList
   .incbin "ovl32.raw.bin", 0x4B78, 0x14
   /* 4B8C 15D5CC 8013668C */  .4byte D_ovl32_80136668
   .incbin "ovl32.raw.bin", 0x4B90, 0x4
-  /* 4B94 15D5D4 80136694 */  .4byte D_ovl32_80136660
+  /* 4B94 15D5D4 80136694 */  .4byte dMNVsRecordsLights1
   .incbin "ovl32.raw.bin", 0x4B98, 0x8
 
-glabel D_ovl32_801366A0
+glabel dMNVsRecordsFtKindOrder
   .incbin "ovl32.raw.bin", 0x4BA0, 0x30
 
-glabel D_ovl32_801366D0
+glabel dMNVsRecordsNumberOffsets
   .incbin "ovl32.raw.bin", 0x4BD0, 0x28
 
-glabel D_ovl32_801366F8
+glabel dMNVsRecordsChrOffsets
   .incbin "ovl32.raw.bin", 0x4BF8, 0x74
 
-glabel D_ovl32_8013676C
+glabel dMNVsRecordsSubtitleOffsets
   .incbin "ovl32.raw.bin", 0x4C6C, 0x10
 
-glabel D_ovl32_8013677C
+glabel dMNVsRecordsIconColumnPositionOffsets
   .incbin "ovl32.raw.bin", 0x4C7C, 0x60
 
-glabel D_ovl32_801367DC
+glabel dMNVsRecordsColumnIconOffsets
   .incbin "ovl32.raw.bin", 0x4CDC, 0x30
 
-glabel D_ovl32_8013680C
+glabel dMNVsRecordsIconRowPositionOffsets
   .incbin "ovl32.raw.bin", 0x4D0C, 0x20
   /* 4D2C 15D76C 8013682C */
   .asciz "@@"
@@ -63,7 +63,7 @@ glabel D_ovl32_8013680C
   .balign 4
   .incbin "ovl32.raw.bin", 0x4D68, 0x4
 
-glabel D_ovl32_8013686C
+glabel dMNVsRecordsRowIconOffsets
   .incbin "ovl32.raw.bin", 0x4D6C, 0x30
 
 glabel D_ovl32_8013689C
@@ -136,10 +136,10 @@ glabel D_ovl32_801369E8
   /* 4EF0 15D930 801369F0 */  .4byte func_8000A340
   /* 4EF4 15D934 801369F4 */  .4byte D_NF_80136DA0
   .incbin "ovl32.raw.bin", 0x4EF8, 0x28
-  /* 4F20 15D960 80136A20 */  .4byte func_ovl32_80131B00
+  /* 4F20 15D960 80136A20 */  .4byte mnVsRecordsSetLighting
   /* 4F24 15D964 80136A24 */  .4byte update_contdata
   .incbin "ovl32.raw.bin", 0x4F28, 0x48
-  /* 4F70 15D9B0 80136A70 */  .4byte func_ovl32_80136488
+  /* 4F70 15D9B0 80136A70 */  .4byte mnVsRecordsInit
   .incbin "ovl32.raw.bin", 0x4F74, 0xC
 
 glabel D_ovl32_80136A80

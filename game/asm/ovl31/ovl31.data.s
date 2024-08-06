@@ -107,7 +107,7 @@ glabel dMNResultsFighterXPositions4P
 glabel dMNResultsFighterYZPositions
   .incbin "ovl31.raw.bin", 0x765C, 0x20
 
-glabel mnResultsVictoryAnims
+glabel dMNResultsVictoryAnims
   .incbin "ovl31.raw.bin", 0x767C, 0xC
 
 glabel D_ovl31_80139188

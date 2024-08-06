@@ -1822,14 +1822,14 @@ glabel mnResultsMakeFighterFaceWinner
 
 glabel mnResultsGetVictoryAnim
   /* 1525FC 8013345C 27BDFFD8 */     addiu $sp, $sp, -0x28
-  /* 152600 80133460 3C0F8014 */       lui $t7, %hi(mnResultsVictoryAnims)
+  /* 152600 80133460 3C0F8014 */       lui $t7, %hi(dMNResultsVictoryAnims)
   /* 152604 80133464 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 152608 80133468 25EF917C */     addiu $t7, $t7, %lo(mnResultsVictoryAnims)
-  /* 15260C 8013346C 8DF90000 */        lw $t9, ($t7) # mnResultsVictoryAnims + 0
+  /* 152608 80133468 25EF917C */     addiu $t7, $t7, %lo(dMNResultsVictoryAnims)
+  /* 15260C 8013346C 8DF90000 */        lw $t9, ($t7) # dMNResultsVictoryAnims + 0
   /* 152610 80133470 27AE001C */     addiu $t6, $sp, 0x1c
-  /* 152614 80133474 8DF80004 */        lw $t8, 4($t7) # mnResultsVictoryAnims + 4
+  /* 152614 80133474 8DF80004 */        lw $t8, 4($t7) # dMNResultsVictoryAnims + 4
   /* 152618 80133478 ADD90000 */        sw $t9, ($t6)
-  /* 15261C 8013347C 8DF90008 */        lw $t9, 8($t7) # mnResultsVictoryAnims + 8
+  /* 15261C 8013347C 8DF90008 */        lw $t9, 8($t7) # dMNResultsVictoryAnims + 8
   /* 152620 80133480 24010008 */     addiu $at, $zero, 8
   /* 152624 80133484 ADD80004 */        sw $t8, 4($t6)
   /* 152628 80133488 14810007 */       bne $a0, $at, .L801334A8
@@ -2563,7 +2563,7 @@ glabel mnResultsCreatePlayerIndicatorViewport
   /* 1530B4 80133F14 03E00008 */        jr $ra
   /* 1530B8 80133F18 00000000 */       nop
 
-glabel mnResultsGetCharIndex
+glabel mnResultsGetChrIndex
   /* 1530BC 80133F1C AFA40000 */        sw $a0, ($sp)
   /* 1530C0 80133F20 308400FF */      andi $a0, $a0, 0xff
   /* 1530C4 80133F24 24010020 */     addiu $at, $zero, 0x20
@@ -2707,7 +2707,7 @@ glabel mnResultsDrawString
   /* 1532BC 8013411C 10000032 */         b .L801341E8
   /* 1532C0 80134120 4606A500 */     add.s $f20, $f20, $f6
   .L80134124:
-  /* 1532C4 80134124 0C04CFC7 */       jal mnResultsGetCharIndex
+  /* 1532C4 80134124 0C04CFC7 */       jal mnResultsGetChrIndex
   /* 1532C8 80134128 00000000 */       nop
   /* 1532CC 8013412C 14540004 */       bne $v0, $s4, .L80134140
   /* 1532D0 80134130 00401825 */        or $v1, $v0, $zero

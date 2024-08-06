@@ -230,7 +230,8 @@ void mn1PCreateSmallerNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 color
 // 0x80131F5C
 s32 mn1PGetChrIndex(const char chr)
 {
-    switch (chr) {
+    switch (chr)
+    {
         case '\'':
             return 0x1A;
         case '%':
@@ -244,7 +245,7 @@ s32 mn1PGetChrIndex(const char chr)
             {
                 return 0x1D;
             }
-            else return chr - 0x41;
+            else return chr - 'A';
     }
 }
 

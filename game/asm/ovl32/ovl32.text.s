@@ -270,7 +270,7 @@ glabel mnVsRecordsSetTextureColors
   /* 158DC0 80131E80 03E00008 */        jr $ra
   /* 158DC4 80131E84 A08D002A */        sb $t5, 0x2a($a0)
 
-glabel func_ovl32_80131E88
+glabel mnVsRecordsGetNumberOfDigits
   /* 158DC8 80131E88 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 158DCC 80131E8C AFB20020 */        sw $s2, 0x20($sp)
   /* 158DD0 80131E90 AFB1001C */        sw $s1, 0x1c($sp)
@@ -507,7 +507,7 @@ glabel mnVsRecordsCreateNumber
   /* 159104 801321C4 10000004 */         b .L801321D8
   /* 159108 801321C8 02401825 */        or $v1, $s2, $zero
   .L801321CC:
-  /* 15910C 801321CC 0C04C7A2 */       jal func_ovl32_80131E88
+  /* 15910C 801321CC 0C04C7A2 */       jal mnVsRecordsGetNumberOfDigits
   /* 159110 801321D0 02402825 */        or $a1, $s2, $zero
   /* 159114 801321D4 00401825 */        or $v1, $v0, $zero
   .L801321D8:
@@ -587,7 +587,7 @@ glabel mnVsRecordsCreateNumber
   /* 15921C 801322DC 10000004 */         b .L801322F0
   /* 159220 801322E0 02401825 */        or $v1, $s2, $zero
   .L801322E4:
-  /* 159224 801322E4 0C04C7A2 */       jal func_ovl32_80131E88
+  /* 159224 801322E4 0C04C7A2 */       jal mnVsRecordsGetNumberOfDigits
   /* 159228 801322E8 02402825 */        or $a1, $s2, $zero
   /* 15922C 801322EC 00401825 */        or $v1, $v0, $zero
   .L801322F0:
@@ -1156,7 +1156,7 @@ glabel mnVsRecordsUpdatePortraitArrowsDisplay
   /* 1599B4 80132A74 03E00008 */        jr $ra
   /* 1599B8 80132A78 00000000 */       nop
 
-glabel mnVsRecordsCreatePortraitArrows
+glabel mnVsRecordsCreatePortraitAndStatsArrows
   /* 1599BC 80132A7C 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 1599C0 80132A80 AFBF001C */        sw $ra, 0x1c($sp)
   /* 1599C4 80132A84 00002025 */        or $a0, $zero, $zero
@@ -2402,12 +2402,12 @@ glabel mnVsRecordsGetRanking
   /* 15AB98 80133C58 03E00008 */        jr $ra
   /* 15AB9C 80133C5C 27BD0118 */     addiu $sp, $sp, 0x118
 
-glabel mnVsRecordsCreatePortrait
+glabel mnVsRecordsCreatePortraitAndStats
   /* 15ABA0 80133C60 27BDFF60 */     addiu $sp, $sp, -0xa0
-  /* 15ABA4 80133C64 3C0F8013 */       lui $t7, %hi(D_ovl32_8013689C)
+  /* 15ABA4 80133C64 3C0F8013 */       lui $t7, %hi(dMNVsRecordsPortraitOffsets)
   /* 15ABA8 80133C68 AFB10030 */        sw $s1, 0x30($sp)
   /* 15ABAC 80133C6C AFB0002C */        sw $s0, 0x2c($sp)
-  /* 15ABB0 80133C70 25EF689C */     addiu $t7, $t7, %lo(D_ovl32_8013689C)
+  /* 15ABB0 80133C70 25EF689C */     addiu $t7, $t7, %lo(dMNVsRecordsPortraitOffsets)
   /* 15ABB4 80133C74 00808025 */        or $s0, $a0, $zero
   /* 15ABB8 80133C78 27B10048 */     addiu $s1, $sp, 0x48
   /* 15ABBC 80133C7C AFBF0034 */        sw $ra, 0x34($sp)
@@ -2415,41 +2415,41 @@ glabel mnVsRecordsCreatePortrait
   /* 15ABC4 80133C84 25E80030 */     addiu $t0, $t7, 0x30
   /* 15ABC8 80133C88 27AE006C */     addiu $t6, $sp, 0x6c
   .L80133C8C:
-  /* 15ABCC 80133C8C 8DF90000 */        lw $t9, ($t7) # D_ovl32_8013689C + 0
+  /* 15ABCC 80133C8C 8DF90000 */        lw $t9, ($t7) # dMNVsRecordsPortraitOffsets + 0
   /* 15ABD0 80133C90 25EF000C */     addiu $t7, $t7, 0xc
   /* 15ABD4 80133C94 25CE000C */     addiu $t6, $t6, 0xc
   /* 15ABD8 80133C98 ADD9FFF4 */        sw $t9, -0xc($t6)
-  /* 15ABDC 80133C9C 8DF8FFF8 */        lw $t8, -8($t7) # D_ovl32_8013689C + -8
+  /* 15ABDC 80133C9C 8DF8FFF8 */        lw $t8, -8($t7) # dMNVsRecordsPortraitOffsets + -8
   /* 15ABE0 80133CA0 ADD8FFF8 */        sw $t8, -8($t6)
-  /* 15ABE4 80133CA4 8DF9FFFC */        lw $t9, -4($t7) # D_ovl32_8013689C + -4
+  /* 15ABE4 80133CA4 8DF9FFFC */        lw $t9, -4($t7) # dMNVsRecordsPortraitOffsets + -4
   /* 15ABE8 80133CA8 15E8FFF8 */       bne $t7, $t0, .L80133C8C
   /* 15ABEC 80133CAC ADD9FFFC */        sw $t9, -4($t6)
-  /* 15ABF0 80133CB0 3C0A8013 */       lui $t2, %hi(D_ovl32_801368CC)
-  /* 15ABF4 80133CB4 254A68CC */     addiu $t2, $t2, %lo(D_ovl32_801368CC)
-  /* 15ABF8 80133CB8 8D4C0000 */        lw $t4, ($t2) # D_ovl32_801368CC + 0
+  /* 15ABF0 80133CB0 3C0A8013 */       lui $t2, %hi(dMNVsRecordsIndividualChrColors)
+  /* 15ABF4 80133CB4 254A68CC */     addiu $t2, $t2, %lo(dMNVsRecordsIndividualChrColors)
+  /* 15ABF8 80133CB8 8D4C0000 */        lw $t4, ($t2) # dMNVsRecordsIndividualChrColors + 0
   /* 15ABFC 80133CBC 27A90060 */     addiu $t1, $sp, 0x60
-  /* 15AC00 80133CC0 8D4B0004 */        lw $t3, 4($t2) # D_ovl32_801368CC + 4
+  /* 15AC00 80133CC0 8D4B0004 */        lw $t3, 4($t2) # dMNVsRecordsIndividualChrColors + 4
   /* 15AC04 80133CC4 AD2C0000 */        sw $t4, ($t1)
-  /* 15AC08 80133CC8 8D4C0008 */        lw $t4, 8($t2) # D_ovl32_801368CC + 8
-  /* 15AC0C 80133CCC 3C0D8013 */       lui $t5, %hi(D_ovl32_801368D8)
-  /* 15AC10 80133CD0 25AD68D8 */     addiu $t5, $t5, %lo(D_ovl32_801368D8)
+  /* 15AC08 80133CC8 8D4C0008 */        lw $t4, 8($t2) # dMNVsRecordsIndividualChrColors + 8
+  /* 15AC0C 80133CCC 3C0D8013 */       lui $t5, %hi(dMNVsRecordsIndividualTopNumberColors)
+  /* 15AC10 80133CD0 25AD68D8 */     addiu $t5, $t5, %lo(dMNVsRecordsIndividualTopNumberColors)
   /* 15AC14 80133CD4 AD2B0004 */        sw $t3, 4($t1)
   /* 15AC18 80133CD8 AD2C0008 */        sw $t4, 8($t1)
-  /* 15AC1C 80133CDC 8DAF0000 */        lw $t7, ($t5) # D_ovl32_801368D8 + 0
+  /* 15AC1C 80133CDC 8DAF0000 */        lw $t7, ($t5) # dMNVsRecordsIndividualTopNumberColors + 0
   /* 15AC20 80133CE0 3C0E8013 */       lui $t6, %hi(D_ovl32_80136D88)
   /* 15AC24 80133CE4 3C180000 */       lui $t8, %hi(D_NF_00004D30)
   /* 15AC28 80133CE8 AE2F0000 */        sw $t7, ($s1)
-  /* 15AC2C 80133CEC 8DA80004 */        lw $t0, 4($t5) # D_ovl32_801368D8 + 4
+  /* 15AC2C 80133CEC 8DA80004 */        lw $t0, 4($t5) # dMNVsRecordsIndividualTopNumberColors + 4
   /* 15AC30 80133CF0 27184D30 */     addiu $t8, $t8, %lo(D_NF_00004D30)
   /* 15AC34 80133CF4 02002025 */        or $a0, $s0, $zero
   /* 15AC38 80133CF8 AE280004 */        sw $t0, 4($s1)
-  /* 15AC3C 80133CFC 8DAF0008 */        lw $t7, 8($t5) # D_ovl32_801368D8 + 8
+  /* 15AC3C 80133CFC 8DAF0008 */        lw $t7, 8($t5) # dMNVsRecordsIndividualTopNumberColors + 8
   /* 15AC40 80133D00 AE2F0008 */        sw $t7, 8($s1)
-  /* 15AC44 80133D04 8DA8000C */        lw $t0, 0xc($t5) # D_ovl32_801368D8 + 12
+  /* 15AC44 80133D04 8DA8000C */        lw $t0, 0xc($t5) # dMNVsRecordsIndividualTopNumberColors + 12
   /* 15AC48 80133D08 AE28000C */        sw $t0, 0xc($s1)
-  /* 15AC4C 80133D0C 8DAF0010 */        lw $t7, 0x10($t5) # D_ovl32_801368D8 + 16
+  /* 15AC4C 80133D0C 8DAF0010 */        lw $t7, 0x10($t5) # dMNVsRecordsIndividualTopNumberColors + 16
   /* 15AC50 80133D10 AE2F0010 */        sw $t7, 0x10($s1)
-  /* 15AC54 80133D14 8DA80014 */        lw $t0, 0x14($t5) # D_ovl32_801368D8 + 20
+  /* 15AC54 80133D14 8DA80014 */        lw $t0, 0x14($t5) # dMNVsRecordsIndividualTopNumberColors + 20
   /* 15AC58 80133D18 AE280014 */        sw $t0, 0x14($s1)
   /* 15AC5C 80133D1C 8DCE6D88 */        lw $t6, %lo(D_ovl32_80136D88)($t6)
   /* 15AC60 80133D20 0C0333F7 */       jal gcAppendSObjWithSprite
@@ -2483,12 +2483,12 @@ glabel mnVsRecordsCreatePortrait
   /* 15ACD0 80133D90 A4590024 */        sh $t9, 0x24($v0)
   /* 15ACD4 80133D94 37290001 */       ori $t1, $t9, 1
   /* 15ACD8 80133D98 A4490024 */        sh $t1, 0x24($v0)
-  /* 15ACDC 80133D9C 3C058013 */       lui $a1, %hi(D_ovl32_80136A80)
+  /* 15ACDC 80133D9C 3C058013 */       lui $a1, %hi(dMNVsRecordsStringRanking)
   /* 15ACE0 80133DA0 27AA0060 */     addiu $t2, $sp, 0x60
   /* 15ACE4 80133DA4 E4480058 */      swc1 $f8, 0x58($v0)
   /* 15ACE8 80133DA8 E44A005C */      swc1 $f10, 0x5c($v0)
   /* 15ACEC 80133DAC AFAA0010 */        sw $t2, 0x10($sp)
-  /* 15ACF0 80133DB0 24A56A80 */     addiu $a1, $a1, %lo(D_ovl32_80136A80)
+  /* 15ACF0 80133DB0 24A56A80 */     addiu $a1, $a1, %lo(dMNVsRecordsStringRanking)
   /* 15ACF4 80133DB4 02002025 */        or $a0, $s0, $zero
   /* 15ACF8 80133DB8 3C064316 */       lui $a2, 0x4316
   /* 15ACFC 80133DBC 0C04C932 */       jal mnVsRecordsDrawString
@@ -2544,10 +2544,10 @@ glabel mnVsRecordsCreatePortrait
   /* 15ADC4 80133E84 AFA00014 */        sw $zero, 0x14($sp)
   /* 15ADC8 80133E88 0C04C7CD */       jal mnVsRecordsCreateNumber
   /* 15ADCC 80133E8C AFA00020 */        sw $zero, 0x20($sp)
-  /* 15ADD0 80133E90 3C058013 */       lui $a1, %hi(D_ovl32_80136A88)
+  /* 15ADD0 80133E90 3C058013 */       lui $a1, %hi(dMNVsRecordsStringUsedPercentage)
   /* 15ADD4 80133E94 27A80060 */     addiu $t0, $sp, 0x60
   /* 15ADD8 80133E98 AFA80010 */        sw $t0, 0x10($sp)
-  /* 15ADDC 80133E9C 24A56A88 */     addiu $a1, $a1, %lo(D_ovl32_80136A88)
+  /* 15ADDC 80133E9C 24A56A88 */     addiu $a1, $a1, %lo(dMNVsRecordsStringUsedPercentage)
   /* 15ADE0 80133EA0 02002025 */        or $a0, $s0, $zero
   /* 15ADE4 80133EA4 3C064316 */       lui $a2, 0x4316
   /* 15ADE8 80133EA8 0C04C932 */       jal mnVsRecordsDrawString
@@ -2572,10 +2572,10 @@ glabel mnVsRecordsCreatePortrait
   /* 15AE34 80133EF4 44054000 */      mfc1 $a1, $f8
   /* 15AE38 80133EF8 0C04C7CD */       jal mnVsRecordsCreateNumber
   /* 15AE3C 80133EFC AFA00020 */        sw $zero, 0x20($sp)
-  /* 15AE40 80133F00 3C058013 */       lui $a1, %hi(D_ovl32_80136A90)
+  /* 15AE40 80133F00 3C058013 */       lui $a1, %hi(dMNVsRecordsStringAttackTotal)
   /* 15AE44 80133F04 27A90060 */     addiu $t1, $sp, 0x60
   /* 15AE48 80133F08 AFA90010 */        sw $t1, 0x10($sp)
-  /* 15AE4C 80133F0C 24A56A90 */     addiu $a1, $a1, %lo(D_ovl32_80136A90)
+  /* 15AE4C 80133F0C 24A56A90 */     addiu $a1, $a1, %lo(dMNVsRecordsStringAttackTotal)
   /* 15AE50 80133F10 02002025 */        or $a0, $s0, $zero
   /* 15AE54 80133F14 3C064315 */       lui $a2, 0x4315
   /* 15AE58 80133F18 0C04C932 */       jal mnVsRecordsDrawString
@@ -2603,10 +2603,10 @@ glabel mnVsRecordsCreatePortrait
   /* 15AEB0 80133F70 AFA00014 */        sw $zero, 0x14($sp)
   /* 15AEB4 80133F74 0C04C7CD */       jal mnVsRecordsCreateNumber
   /* 15AEB8 80133F78 AFA00020 */        sw $zero, 0x20($sp)
-  /* 15AEBC 80133F7C 3C058013 */       lui $a1, %hi(D_ovl32_80136AA0)
+  /* 15AEBC 80133F7C 3C058013 */       lui $a1, %hi(dMNVsRecordsStringDamageTotal)
   /* 15AEC0 80133F80 27AF0060 */     addiu $t7, $sp, 0x60
   /* 15AEC4 80133F84 AFAF0010 */        sw $t7, 0x10($sp)
-  /* 15AEC8 80133F88 24A56AA0 */     addiu $a1, $a1, %lo(D_ovl32_80136AA0)
+  /* 15AEC8 80133F88 24A56AA0 */     addiu $a1, $a1, %lo(dMNVsRecordsStringDamageTotal)
   /* 15AECC 80133F8C 02002025 */        or $a0, $s0, $zero
   /* 15AED0 80133F90 3C064316 */       lui $a2, 0x4316
   /* 15AED4 80133F94 0C04C932 */       jal mnVsRecordsDrawString
@@ -2631,7 +2631,7 @@ glabel mnVsRecordsCreatePortrait
   /* 15AF20 80133FE0 03E00008 */        jr $ra
   /* 15AF24 80133FE4 27BD00A0 */     addiu $sp, $sp, 0xa0
 
-glabel func_ovl32_80133FE8
+glabel mnVsRecordsSortData
   /* 15AF28 80133FE8 27BDFF18 */     addiu $sp, $sp, -0xe8
   /* 15AF2C 80133FEC AFB60030 */        sw $s6, 0x30($sp)
   /* 15AF30 80133FF0 AFB20020 */        sw $s2, 0x20($sp)
@@ -2761,7 +2761,7 @@ glabel func_ovl32_80133FE8
   glabel jtgt_ovl32_801341B0
   /* 15B0F0 801341B0 001278C0 */       sll $t7, $s2, 3
   /* 15B0F4 801341B4 028F8021 */      addu $s0, $s4, $t7
-  /* 15B0F8 801341B8 0C04D22D */       jal func_ovl32_801348B4
+  /* 15B0F8 801341B8 0C04D22D */       jal mnVsRecordsGetAverage
   /* 15B0FC 801341BC 02402025 */        or $a0, $s2, $zero
   /* 15B100 801341C0 46000121 */   cvt.d.s $f4, $f0
   /* 15B104 801341C4 F6040000 */      sdc1 $f4, ($s0)
@@ -2784,7 +2784,7 @@ glabel func_ovl32_80133FE8
   /* 15B13C 801341FC 02402825 */        or $a1, $s2, $zero
   /* 15B140 80134200 0018C880 */       sll $t9, $t8, 2
   /* 15B144 80134204 02394021 */      addu $t0, $s1, $t9
-  /* 15B148 80134208 0C04D4C7 */       jal func_ovl32_8013531C
+  /* 15B148 80134208 0C04D4C7 */       jal mnVsRecordsGetWinPercentageAgainst
   /* 15B14C 8013420C 8D040000 */        lw $a0, ($t0)
   /* 15B150 80134210 460001A1 */   cvt.d.s $f6, $f0
   /* 15B154 80134214 26520001 */     addiu $s2, $s2, 1
@@ -2919,7 +2919,7 @@ glabel func_ovl32_80133FE8
 
 glabel mnVsRecordsCreateBattleScoreTableValues
   /* 15B320 801343E0 27BDFF50 */     addiu $sp, $sp, -0xb0
-  /* 15B324 801343E4 3C0E8013 */       lui $t6, %hi(D_ovl32_801368F0)
+  /* 15B324 801343E4 3C0E8013 */       lui $t6, %hi(dMNVsRecordsBattleScoreNumberColors)
   /* 15B328 801343E8 AFBF006C */        sw $ra, 0x6c($sp)
   /* 15B32C 801343EC AFBE0068 */        sw $fp, 0x68($sp)
   /* 15B330 801343F0 AFB70064 */        sw $s7, 0x64($sp)
@@ -2933,24 +2933,24 @@ glabel mnVsRecordsCreateBattleScoreTableValues
   /* 15B350 80134410 F7B80040 */      sdc1 $f24, 0x40($sp)
   /* 15B354 80134414 F7B60038 */      sdc1 $f22, 0x38($sp)
   /* 15B358 80134418 F7B40030 */      sdc1 $f20, 0x30($sp)
-  /* 15B35C 8013441C 25CE68F0 */     addiu $t6, $t6, %lo(D_ovl32_801368F0)
-  /* 15B360 80134420 8DD80000 */        lw $t8, ($t6) # D_ovl32_801368F0 + 0
+  /* 15B35C 8013441C 25CE68F0 */     addiu $t6, $t6, %lo(dMNVsRecordsBattleScoreNumberColors)
+  /* 15B360 80134420 8DD80000 */        lw $t8, ($t6) # dMNVsRecordsBattleScoreNumberColors + 0
   /* 15B364 80134424 27B70090 */     addiu $s7, $sp, 0x90
   /* 15B368 80134428 3C108000 */       lui $s0, %hi(D_NF_80000001)
   /* 15B36C 8013442C AEF80000 */        sw $t8, ($s7)
-  /* 15B370 80134430 8DCF0004 */        lw $t7, 4($t6) # D_ovl32_801368F0 + 4
+  /* 15B370 80134430 8DCF0004 */        lw $t7, 4($t6) # dMNVsRecordsBattleScoreNumberColors + 4
   /* 15B374 80134434 02003825 */        or $a3, $s0, $zero
   /* 15B378 80134438 00002025 */        or $a0, $zero, $zero
   /* 15B37C 8013443C AEEF0004 */        sw $t7, 4($s7)
-  /* 15B380 80134440 8DD80008 */        lw $t8, 8($t6) # D_ovl32_801368F0 + 8
+  /* 15B380 80134440 8DD80008 */        lw $t8, 8($t6) # dMNVsRecordsBattleScoreNumberColors + 8
   /* 15B384 80134444 00002825 */        or $a1, $zero, $zero
   /* 15B388 80134448 24060006 */     addiu $a2, $zero, 6
   /* 15B38C 8013444C AEF80008 */        sw $t8, 8($s7)
-  /* 15B390 80134450 8DCF000C */        lw $t7, 0xc($t6) # D_ovl32_801368F0 + 12
+  /* 15B390 80134450 8DCF000C */        lw $t7, 0xc($t6) # dMNVsRecordsBattleScoreNumberColors + 12
   /* 15B394 80134454 AEEF000C */        sw $t7, 0xc($s7)
-  /* 15B398 80134458 8DD80010 */        lw $t8, 0x10($t6) # D_ovl32_801368F0 + 16
+  /* 15B398 80134458 8DD80010 */        lw $t8, 0x10($t6) # dMNVsRecordsBattleScoreNumberColors + 16
   /* 15B39C 8013445C AEF80010 */        sw $t8, 0x10($s7)
-  /* 15B3A0 80134460 8DCF0014 */        lw $t7, 0x14($t6) # D_ovl32_801368F0 + 20
+  /* 15B3A0 80134460 8DCF0014 */        lw $t7, 0x14($t6) # dMNVsRecordsBattleScoreNumberColors + 20
   /* 15B3A4 80134464 0C00265A */       jal omMakeGObjSPAfter
   /* 15B3A8 80134468 AEEF0014 */        sw $t7, 0x14($s7)
   /* 15B3AC 8013446C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -3218,7 +3218,7 @@ glabel mnVsRecordsRenderRankingRowHighlight
   /* 15B7A0 80134860 03E00008 */        jr $ra
   /* 15B7A4 80134864 00000000 */       nop
 
-glabel func_ovl32_80134868
+glabel mnVsRecordsCreateRankingRowHighlight
   /* 15B7A8 80134868 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 15B7AC 8013486C AFBF001C */        sw $ra, 0x1c($sp)
   /* 15B7B0 80134870 00002025 */        or $a0, $zero, $zero
@@ -3239,7 +3239,7 @@ glabel func_ovl32_80134868
   /* 15B7EC 801348AC 03E00008 */        jr $ra
   /* 15B7F0 801348B0 00000000 */       nop
 
-glabel func_ovl32_801348B4
+glabel mnVsRecordsGetAverage
   /* 15B7F4 801348B4 00047080 */       sll $t6, $a0, 2
   /* 15B7F8 801348B8 01C47023 */      subu $t6, $t6, $a0
   /* 15B7FC 801348BC 000E70C0 */       sll $t6, $t6, 3
@@ -3342,7 +3342,7 @@ glabel mnVsRecordsGetUsePercentage
   /* 15B954 80134A14 03E00008 */        jr $ra
   /* 15B958 80134A18 00000000 */       nop
 
-glabel mnVsRecordsGetWinPercentage
+glabel mnVsRecordsGetSDPercentage
   /* 15B95C 80134A1C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 15B960 80134A20 AFBF0014 */        sw $ra, 0x14($sp)
   /* 15B964 80134A24 0C04C703 */       jal mnVsRecordsGetTKOs
@@ -3383,7 +3383,7 @@ glabel mnVsRecordsGetWinPercentage
 
 glabel mnVsRecordsCreateRankingTableValues
   /* 15B9E8 80134AA8 27BDFF08 */     addiu $sp, $sp, -0xf8
-  /* 15B9EC 80134AAC 3C0E8013 */       lui $t6, %hi(D_ovl32_80136908)
+  /* 15B9EC 80134AAC 3C0E8013 */       lui $t6, %hi(dMNVsRecordsRankingColumnValueWidths)
   /* 15B9F0 80134AB0 AFBF006C */        sw $ra, 0x6c($sp)
   /* 15B9F4 80134AB4 AFBE0068 */        sw $fp, 0x68($sp)
   /* 15B9F8 80134AB8 AFB70064 */        sw $s7, 0x64($sp)
@@ -3397,42 +3397,42 @@ glabel mnVsRecordsCreateRankingTableValues
   /* 15BA18 80134AD8 F7B80040 */      sdc1 $f24, 0x40($sp)
   /* 15BA1C 80134ADC F7B60038 */      sdc1 $f22, 0x38($sp)
   /* 15BA20 80134AE0 F7B40030 */      sdc1 $f20, 0x30($sp)
-  /* 15BA24 80134AE4 25CE6908 */     addiu $t6, $t6, %lo(D_ovl32_80136908)
-  /* 15BA28 80134AE8 8DD80000 */        lw $t8, ($t6) # D_ovl32_80136908 + 0
+  /* 15BA24 80134AE4 25CE6908 */     addiu $t6, $t6, %lo(dMNVsRecordsRankingColumnValueWidths)
+  /* 15BA28 80134AE8 8DD80000 */        lw $t8, ($t6) # dMNVsRecordsRankingColumnValueWidths + 0
   /* 15BA2C 80134AEC 27B500DC */     addiu $s5, $sp, 0xdc
-  /* 15BA30 80134AF0 3C198013 */       lui $t9, %hi(D_ovl32_80136924)
+  /* 15BA30 80134AF0 3C198013 */       lui $t9, %hi(dMNVsRecordsRankingNumberColors)
   /* 15BA34 80134AF4 AEB80000 */        sw $t8, ($s5)
-  /* 15BA38 80134AF8 8DCF0004 */        lw $t7, 4($t6) # D_ovl32_80136908 + 4
-  /* 15BA3C 80134AFC 27396924 */     addiu $t9, $t9, %lo(D_ovl32_80136924)
+  /* 15BA38 80134AF8 8DCF0004 */        lw $t7, 4($t6) # dMNVsRecordsRankingColumnValueWidths + 4
+  /* 15BA3C 80134AFC 27396924 */     addiu $t9, $t9, %lo(dMNVsRecordsRankingNumberColors)
   /* 15BA40 80134B00 27B600C0 */     addiu $s6, $sp, 0xc0
   /* 15BA44 80134B04 AEAF0004 */        sw $t7, 4($s5)
-  /* 15BA48 80134B08 8DD80008 */        lw $t8, 8($t6) # D_ovl32_80136908 + 8
+  /* 15BA48 80134B08 8DD80008 */        lw $t8, 8($t6) # dMNVsRecordsRankingColumnValueWidths + 8
   /* 15BA4C 80134B0C 3C108000 */       lui $s0, %hi(D_NF_80000004)
   /* 15BA50 80134B10 27A2009C */     addiu $v0, $sp, 0x9c
   /* 15BA54 80134B14 AEB80008 */        sw $t8, 8($s5)
-  /* 15BA58 80134B18 8DCF000C */        lw $t7, 0xc($t6) # D_ovl32_80136908 + 12
+  /* 15BA58 80134B18 8DCF000C */        lw $t7, 0xc($t6) # dMNVsRecordsRankingColumnValueWidths + 12
   /* 15BA5C 80134B1C 27A300B8 */     addiu $v1, $sp, 0xb8
   /* 15BA60 80134B20 02003825 */        or $a3, $s0, $zero
   /* 15BA64 80134B24 AEAF000C */        sw $t7, 0xc($s5)
-  /* 15BA68 80134B28 8DD80010 */        lw $t8, 0x10($t6) # D_ovl32_80136908 + 16
+  /* 15BA68 80134B28 8DD80010 */        lw $t8, 0x10($t6) # dMNVsRecordsRankingColumnValueWidths + 16
   /* 15BA6C 80134B2C 00002825 */        or $a1, $zero, $zero
   /* 15BA70 80134B30 24060006 */     addiu $a2, $zero, 6
   /* 15BA74 80134B34 AEB80010 */        sw $t8, 0x10($s5)
-  /* 15BA78 80134B38 8DCF0014 */        lw $t7, 0x14($t6) # D_ovl32_80136908 + 20
+  /* 15BA78 80134B38 8DCF0014 */        lw $t7, 0x14($t6) # dMNVsRecordsRankingColumnValueWidths + 20
   /* 15BA7C 80134B3C AEAF0014 */        sw $t7, 0x14($s5)
-  /* 15BA80 80134B40 8DD80018 */        lw $t8, 0x18($t6) # D_ovl32_80136908 + 24
+  /* 15BA80 80134B40 8DD80018 */        lw $t8, 0x18($t6) # dMNVsRecordsRankingColumnValueWidths + 24
   /* 15BA84 80134B44 AEB80018 */        sw $t8, 0x18($s5)
-  /* 15BA88 80134B48 8F290000 */        lw $t1, ($t9) # D_ovl32_80136924 + 0
+  /* 15BA88 80134B48 8F290000 */        lw $t1, ($t9) # dMNVsRecordsRankingNumberColors + 0
   /* 15BA8C 80134B4C AEC90000 */        sw $t1, ($s6)
-  /* 15BA90 80134B50 8F280004 */        lw $t0, 4($t9) # D_ovl32_80136924 + 4
+  /* 15BA90 80134B50 8F280004 */        lw $t0, 4($t9) # dMNVsRecordsRankingNumberColors + 4
   /* 15BA94 80134B54 AEC80004 */        sw $t0, 4($s6)
-  /* 15BA98 80134B58 8F290008 */        lw $t1, 8($t9) # D_ovl32_80136924 + 8
+  /* 15BA98 80134B58 8F290008 */        lw $t1, 8($t9) # dMNVsRecordsRankingNumberColors + 8
   /* 15BA9C 80134B5C AEC90008 */        sw $t1, 8($s6)
-  /* 15BAA0 80134B60 8F28000C */        lw $t0, 0xc($t9) # D_ovl32_80136924 + 12
+  /* 15BAA0 80134B60 8F28000C */        lw $t0, 0xc($t9) # dMNVsRecordsRankingNumberColors + 12
   /* 15BAA4 80134B64 AEC8000C */        sw $t0, 0xc($s6)
-  /* 15BAA8 80134B68 8F290010 */        lw $t1, 0x10($t9) # D_ovl32_80136924 + 16
+  /* 15BAA8 80134B68 8F290010 */        lw $t1, 0x10($t9) # dMNVsRecordsRankingNumberColors + 16
   /* 15BAAC 80134B6C AEC90010 */        sw $t1, 0x10($s6)
-  /* 15BAB0 80134B70 8F280014 */        lw $t0, 0x14($t9) # D_ovl32_80136924 + 20
+  /* 15BAB0 80134B70 8F280014 */        lw $t0, 0x14($t9) # dMNVsRecordsRankingNumberColors + 20
   /* 15BAB4 80134B74 AEC80014 */        sw $t0, 0x14($s6)
   .L80134B78:
   /* 15BAB8 80134B78 28810007 */      slti $at, $a0, 7
@@ -3746,7 +3746,7 @@ glabel mnVsRecordsCreateRankingTableValues
   /* 15BF60 80135020 44885000 */      mtc1 $t0, $f10
   /* 15BF64 80135024 8E640000 */        lw $a0, ($s3) # gMNVsRecordsRankingFtKindOrder + 0
   /* 15BF68 80135028 46805420 */   cvt.s.w $f16, $f10
-  /* 15BF6C 8013502C 0C04D22D */       jal func_ovl32_801348B4
+  /* 15BF6C 8013502C 0C04D22D */       jal mnVsRecordsGetAverage
   /* 15BF70 80135030 46188500 */     add.s $f20, $f16, $f24
   /* 15BF74 80135034 8E0A0000 */        lw $t2, %lo(D_NF_80000000)($s0)
   /* 15BF78 80135038 46160482 */     mul.s $f18, $f0, $f22
@@ -3806,7 +3806,7 @@ glabel mnVsRecordsCreateRankingTableValues
 
 glabel mnVsRecordsCreateRankingTableHeaders
   /* 15C048 80135108 27BDFF40 */     addiu $sp, $sp, -0xc0
-  /* 15C04C 8013510C 3C0F8013 */       lui $t7, %hi(D_ovl32_8013693C)
+  /* 15C04C 8013510C 3C0F8013 */       lui $t7, %hi(dMNVsRecordsRankingTableHeaderOffsets)
   /* 15C050 80135110 AFBF004C */        sw $ra, 0x4c($sp)
   /* 15C054 80135114 AFBE0048 */        sw $fp, 0x48($sp)
   /* 15C058 80135118 AFB70044 */        sw $s7, 0x44($sp)
@@ -3818,37 +3818,37 @@ glabel mnVsRecordsCreateRankingTableHeaders
   /* 15C070 80135130 AFB1002C */        sw $s1, 0x2c($sp)
   /* 15C074 80135134 AFB00028 */        sw $s0, 0x28($sp)
   /* 15C078 80135138 F7B40020 */      sdc1 $f20, 0x20($sp)
-  /* 15C07C 8013513C 25EF693C */     addiu $t7, $t7, %lo(D_ovl32_8013693C)
-  /* 15C080 80135140 8DF90000 */        lw $t9, ($t7) # D_ovl32_8013693C + 0
+  /* 15C07C 8013513C 25EF693C */     addiu $t7, $t7, %lo(dMNVsRecordsRankingTableHeaderOffsets)
+  /* 15C080 80135140 8DF90000 */        lw $t9, ($t7) # dMNVsRecordsRankingTableHeaderOffsets + 0
   /* 15C084 80135144 27AE009C */     addiu $t6, $sp, 0x9c
-  /* 15C088 80135148 8DF80004 */        lw $t8, 4($t7) # D_ovl32_8013693C + 4
+  /* 15C088 80135148 8DF80004 */        lw $t8, 4($t7) # dMNVsRecordsRankingTableHeaderOffsets + 4
   /* 15C08C 8013514C ADD90000 */        sw $t9, ($t6)
-  /* 15C090 80135150 8DF90008 */        lw $t9, 8($t7) # D_ovl32_8013693C + 8
+  /* 15C090 80135150 8DF90008 */        lw $t9, 8($t7) # dMNVsRecordsRankingTableHeaderOffsets + 8
   /* 15C094 80135154 ADD80004 */        sw $t8, 4($t6)
-  /* 15C098 80135158 8DF8000C */        lw $t8, 0xc($t7) # D_ovl32_8013693C + 12
+  /* 15C098 80135158 8DF8000C */        lw $t8, 0xc($t7) # dMNVsRecordsRankingTableHeaderOffsets + 12
   /* 15C09C 8013515C ADD90008 */        sw $t9, 8($t6)
-  /* 15C0A0 80135160 8DF90010 */        lw $t9, 0x10($t7) # D_ovl32_8013693C + 16
+  /* 15C0A0 80135160 8DF90010 */        lw $t9, 0x10($t7) # dMNVsRecordsRankingTableHeaderOffsets + 16
   /* 15C0A4 80135164 ADD8000C */        sw $t8, 0xc($t6)
-  /* 15C0A8 80135168 8DF80014 */        lw $t8, 0x14($t7) # D_ovl32_8013693C + 20
+  /* 15C0A8 80135168 8DF80014 */        lw $t8, 0x14($t7) # dMNVsRecordsRankingTableHeaderOffsets + 20
   /* 15C0AC 8013516C ADD90010 */        sw $t9, 0x10($t6)
-  /* 15C0B0 80135170 8DF90018 */        lw $t9, 0x18($t7) # D_ovl32_8013693C + 24
-  /* 15C0B4 80135174 3C098013 */       lui $t1, %hi(D_ovl32_80136958)
-  /* 15C0B8 80135178 25296958 */     addiu $t1, $t1, %lo(D_ovl32_80136958)
+  /* 15C0B0 80135170 8DF90018 */        lw $t9, 0x18($t7) # dMNVsRecordsRankingTableHeaderOffsets + 24
+  /* 15C0B4 80135174 3C098013 */       lui $t1, %hi(dMNVsRecordsRankingTableHeaderXOffsets)
+  /* 15C0B8 80135178 25296958 */     addiu $t1, $t1, %lo(dMNVsRecordsRankingTableHeaderXOffsets)
   /* 15C0BC 8013517C ADD80014 */        sw $t8, 0x14($t6)
   /* 15C0C0 80135180 ADD90018 */        sw $t9, 0x18($t6)
-  /* 15C0C4 80135184 8D2B0000 */        lw $t3, ($t1) # D_ovl32_80136958 + 0
+  /* 15C0C4 80135184 8D2B0000 */        lw $t3, ($t1) # dMNVsRecordsRankingTableHeaderXOffsets + 0
   /* 15C0C8 80135188 27A80080 */     addiu $t0, $sp, 0x80
-  /* 15C0CC 8013518C 8D2A0004 */        lw $t2, 4($t1) # D_ovl32_80136958 + 4
+  /* 15C0CC 8013518C 8D2A0004 */        lw $t2, 4($t1) # dMNVsRecordsRankingTableHeaderXOffsets + 4
   /* 15C0D0 80135190 AD0B0000 */        sw $t3, ($t0)
-  /* 15C0D4 80135194 8D2B0008 */        lw $t3, 8($t1) # D_ovl32_80136958 + 8
+  /* 15C0D4 80135194 8D2B0008 */        lw $t3, 8($t1) # dMNVsRecordsRankingTableHeaderXOffsets + 8
   /* 15C0D8 80135198 AD0A0004 */        sw $t2, 4($t0)
-  /* 15C0DC 8013519C 8D2A000C */        lw $t2, 0xc($t1) # D_ovl32_80136958 + 12
+  /* 15C0DC 8013519C 8D2A000C */        lw $t2, 0xc($t1) # dMNVsRecordsRankingTableHeaderXOffsets + 12
   /* 15C0E0 801351A0 AD0B0008 */        sw $t3, 8($t0)
-  /* 15C0E4 801351A4 8D2B0010 */        lw $t3, 0x10($t1) # D_ovl32_80136958 + 16
+  /* 15C0E4 801351A4 8D2B0010 */        lw $t3, 0x10($t1) # dMNVsRecordsRankingTableHeaderXOffsets + 16
   /* 15C0E8 801351A8 AD0A000C */        sw $t2, 0xc($t0)
-  /* 15C0EC 801351AC 8D2A0014 */        lw $t2, 0x14($t1) # D_ovl32_80136958 + 20
+  /* 15C0EC 801351AC 8D2A0014 */        lw $t2, 0x14($t1) # dMNVsRecordsRankingTableHeaderXOffsets + 20
   /* 15C0F0 801351B0 AD0B0010 */        sw $t3, 0x10($t0)
-  /* 15C0F4 801351B4 8D2B0018 */        lw $t3, 0x18($t1) # D_ovl32_80136958 + 24
+  /* 15C0F4 801351B4 8D2B0018 */        lw $t3, 0x18($t1) # dMNVsRecordsRankingTableHeaderXOffsets + 24
   /* 15C0F8 801351B8 27B00064 */     addiu $s0, $sp, 0x64
   /* 15C0FC 801351BC 27A20080 */     addiu $v0, $sp, 0x80
   /* 15C100 801351C0 AD0A0014 */        sw $t2, 0x14($t0)
@@ -3942,7 +3942,7 @@ glabel mnVsRecordsCreateRankingTableHeaders
   /* 15C254 80135314 03E00008 */        jr $ra
   /* 15C258 80135318 27BD00C0 */     addiu $sp, $sp, 0xc0
 
-glabel func_ovl32_8013531C
+glabel mnVsRecordsGetWinPercentageAgainst
   /* 15C25C 8013531C 00047080 */       sll $t6, $a0, 2
   /* 15C260 80135320 01C47023 */      subu $t6, $t6, $a0
   /* 15C264 80135324 000E70C0 */       sll $t6, $t6, 3
@@ -4002,7 +4002,7 @@ glabel func_ovl32_8013531C
   /* 15C32C 801353EC 03E00008 */        jr $ra
   /* 15C330 801353F0 00000000 */       nop
 
-glabel func_ovl32_801353F4
+glabel mnVsRecordsGetAverageAgainst
   /* 15C334 801353F4 00047080 */       sll $t6, $a0, 2
   /* 15C338 801353F8 01C47023 */      subu $t6, $t6, $a0
   /* 15C33C 801353FC 000E70C0 */       sll $t6, $t6, 3
@@ -4047,7 +4047,7 @@ glabel func_ovl32_801353F4
 
 glabel mnVsRecordsCreateIndividualTableValues
   /* 15C3C4 80135484 27BDFF38 */     addiu $sp, $sp, -0xc8
-  /* 15C3C8 80135488 3C0F8013 */       lui $t7, %hi(D_ovl32_80136974)
+  /* 15C3C8 80135488 3C0F8013 */       lui $t7, %hi(dMNVsRecordsIndividualStatsYPositions)
   /* 15C3CC 8013548C AFBF006C */        sw $ra, 0x6c($sp)
   /* 15C3D0 80135490 AFBE0068 */        sw $fp, 0x68($sp)
   /* 15C3D4 80135494 AFB70064 */        sw $s7, 0x64($sp)
@@ -4061,35 +4061,35 @@ glabel mnVsRecordsCreateIndividualTableValues
   /* 15C3F4 801354B4 F7B80040 */      sdc1 $f24, 0x40($sp)
   /* 15C3F8 801354B8 F7B60038 */      sdc1 $f22, 0x38($sp)
   /* 15C3FC 801354BC F7B40030 */      sdc1 $f20, 0x30($sp)
-  /* 15C400 801354C0 25EF6974 */     addiu $t7, $t7, %lo(D_ovl32_80136974)
-  /* 15C404 801354C4 8DF90000 */        lw $t9, ($t7) # D_ovl32_80136974 + 0
-  /* 15C408 801354C8 8DF80004 */        lw $t8, 4($t7) # D_ovl32_80136974 + 4
+  /* 15C400 801354C0 25EF6974 */     addiu $t7, $t7, %lo(dMNVsRecordsIndividualStatsYPositions)
+  /* 15C404 801354C4 8DF90000 */        lw $t9, ($t7) # dMNVsRecordsIndividualStatsYPositions + 0
+  /* 15C408 801354C8 8DF80004 */        lw $t8, 4($t7) # dMNVsRecordsIndividualStatsYPositions + 4
   /* 15C40C 801354CC 27AE00B4 */     addiu $t6, $sp, 0xb4
   /* 15C410 801354D0 ADD90000 */        sw $t9, ($t6)
   /* 15C414 801354D4 ADD80004 */        sw $t8, 4($t6)
-  /* 15C418 801354D8 8DF8000C */        lw $t8, 0xc($t7) # D_ovl32_80136974 + 12
-  /* 15C41C 801354DC 8DF90008 */        lw $t9, 8($t7) # D_ovl32_80136974 + 8
-  /* 15C420 801354E0 3C088013 */       lui $t0, %hi(D_ovl32_80136984)
-  /* 15C424 801354E4 25086984 */     addiu $t0, $t0, %lo(D_ovl32_80136984)
+  /* 15C418 801354D8 8DF8000C */        lw $t8, 0xc($t7) # dMNVsRecordsIndividualStatsYPositions + 12
+  /* 15C41C 801354DC 8DF90008 */        lw $t9, 8($t7) # dMNVsRecordsIndividualStatsYPositions + 8
+  /* 15C420 801354E0 3C088013 */       lui $t0, %hi(dMNVsRecordsIndividualNumberColors)
+  /* 15C424 801354E4 25086984 */     addiu $t0, $t0, %lo(dMNVsRecordsIndividualNumberColors)
   /* 15C428 801354E8 ADD8000C */        sw $t8, 0xc($t6)
   /* 15C42C 801354EC ADD90008 */        sw $t9, 8($t6)
-  /* 15C430 801354F0 8D0A0000 */        lw $t2, ($t0) # D_ovl32_80136984 + 0
+  /* 15C430 801354F0 8D0A0000 */        lw $t2, ($t0) # dMNVsRecordsIndividualNumberColors + 0
   /* 15C434 801354F4 27B3009C */     addiu $s3, $sp, 0x9c
   /* 15C438 801354F8 3C108000 */       lui $s0, %hi(D_NF_80000000)
   /* 15C43C 801354FC AE6A0000 */        sw $t2, ($s3)
-  /* 15C440 80135500 8D090004 */        lw $t1, 4($t0) # D_ovl32_80136984 + 4
+  /* 15C440 80135500 8D090004 */        lw $t1, 4($t0) # dMNVsRecordsIndividualNumberColors + 4
   /* 15C444 80135504 02003825 */        or $a3, $s0, $zero
   /* 15C448 80135508 00002025 */        or $a0, $zero, $zero
   /* 15C44C 8013550C AE690004 */        sw $t1, 4($s3)
-  /* 15C450 80135510 8D0A0008 */        lw $t2, 8($t0) # D_ovl32_80136984 + 8
+  /* 15C450 80135510 8D0A0008 */        lw $t2, 8($t0) # dMNVsRecordsIndividualNumberColors + 8
   /* 15C454 80135514 00002825 */        or $a1, $zero, $zero
   /* 15C458 80135518 24060006 */     addiu $a2, $zero, 6
   /* 15C45C 8013551C AE6A0008 */        sw $t2, 8($s3)
-  /* 15C460 80135520 8D09000C */        lw $t1, 0xc($t0) # D_ovl32_80136984 + 12
+  /* 15C460 80135520 8D09000C */        lw $t1, 0xc($t0) # dMNVsRecordsIndividualNumberColors + 12
   /* 15C464 80135524 AE69000C */        sw $t1, 0xc($s3)
-  /* 15C468 80135528 8D0A0010 */        lw $t2, 0x10($t0) # D_ovl32_80136984 + 16
+  /* 15C468 80135528 8D0A0010 */        lw $t2, 0x10($t0) # dMNVsRecordsIndividualNumberColors + 16
   /* 15C46C 8013552C AE6A0010 */        sw $t2, 0x10($s3)
-  /* 15C470 80135530 8D090014 */        lw $t1, 0x14($t0) # D_ovl32_80136984 + 20
+  /* 15C470 80135530 8D090014 */        lw $t1, 0x14($t0) # dMNVsRecordsIndividualNumberColors + 20
   /* 15C474 80135534 0C00265A */       jal omMakeGObjSPAfter
   /* 15C478 80135538 AE690014 */        sw $t1, 0x14($s3)
   /* 15C47C 8013553C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
@@ -4128,7 +4128,7 @@ glabel mnVsRecordsCreateIndividualTableValues
   /* 15C4FC 801355BC 00129080 */       sll $s2, $s2, 2
   /* 15C500 801355C0 02519023 */      subu $s2, $s2, $s1
   /* 15C504 801355C4 8E050000 */        lw $a1, %lo(D_NF_80000000)($s0)
-  /* 15C508 801355C8 0C04D4C7 */       jal func_ovl32_8013531C
+  /* 15C508 801355C8 0C04D4C7 */       jal mnVsRecordsGetWinPercentageAgainst
   /* 15C50C 801355CC 8DC40000 */        lw $a0, ($t6)
   /* 15C510 801355D0 44924000 */      mtc1 $s2, $f8
   /* 15C514 801355D4 46160102 */     mul.s $f4, $f0, $f22
@@ -4202,7 +4202,7 @@ glabel mnVsRecordsCreateIndividualTableValues
   /* 15C624 801356E4 8E050000 */        lw $a1, %lo(D_NF_80000000)($s0)
   /* 15C628 801356E8 00194080 */       sll $t0, $t9, 2
   /* 15C62C 801356EC 02885021 */      addu $t2, $s4, $t0
-  /* 15C630 801356F0 0C04D4FD */       jal func_ovl32_801353F4
+  /* 15C630 801356F0 0C04D4FD */       jal mnVsRecordsGetAverageAgainst
   /* 15C634 801356F4 8D440000 */        lw $a0, ($t2)
   /* 15C638 801356F8 46160402 */     mul.s $f16, $f0, $f22
   /* 15C63C 801356FC 4406A000 */      mfc1 $a2, $f20
@@ -4243,7 +4243,7 @@ glabel mnVsRecordsCreateIndividualTableValues
 
 glabel mnVsRecordsCreateIndividualPortraitStatsAndTableHeaders
   /* 15C6C4 80135784 27BDFF70 */     addiu $sp, $sp, -0x90
-  /* 15C6C8 80135788 3C0F8013 */       lui $t7, %hi(D_ovl32_8013699C)
+  /* 15C6C8 80135788 3C0F8013 */       lui $t7, %hi(dMNVsRecordsIndividualTableRowHeaderOffsets)
   /* 15C6CC 8013578C AFBF0044 */        sw $ra, 0x44($sp)
   /* 15C6D0 80135790 AFBE0040 */        sw $fp, 0x40($sp)
   /* 15C6D4 80135794 AFB7003C */        sw $s7, 0x3c($sp)
@@ -4254,35 +4254,35 @@ glabel mnVsRecordsCreateIndividualPortraitStatsAndTableHeaders
   /* 15C6E8 801357A8 AFB20028 */        sw $s2, 0x28($sp)
   /* 15C6EC 801357AC AFB10024 */        sw $s1, 0x24($sp)
   /* 15C6F0 801357B0 AFB00020 */        sw $s0, 0x20($sp)
-  /* 15C6F4 801357B4 25EF699C */     addiu $t7, $t7, %lo(D_ovl32_8013699C)
-  /* 15C6F8 801357B8 8DF90000 */        lw $t9, ($t7) # D_ovl32_8013699C + 0
-  /* 15C6FC 801357BC 8DF80004 */        lw $t8, 4($t7) # D_ovl32_8013699C + 4
+  /* 15C6F4 801357B4 25EF699C */     addiu $t7, $t7, %lo(dMNVsRecordsIndividualTableRowHeaderOffsets)
+  /* 15C6F8 801357B8 8DF90000 */        lw $t9, ($t7) # dMNVsRecordsIndividualTableRowHeaderOffsets + 0
+  /* 15C6FC 801357BC 8DF80004 */        lw $t8, 4($t7) # dMNVsRecordsIndividualTableRowHeaderOffsets + 4
   /* 15C700 801357C0 27AE0078 */     addiu $t6, $sp, 0x78
   /* 15C704 801357C4 ADD90000 */        sw $t9, ($t6)
   /* 15C708 801357C8 ADD80004 */        sw $t8, 4($t6)
-  /* 15C70C 801357CC 8DF8000C */        lw $t8, 0xc($t7) # D_ovl32_8013699C + 12
-  /* 15C710 801357D0 8DF90008 */        lw $t9, 8($t7) # D_ovl32_8013699C + 8
-  /* 15C714 801357D4 3C098013 */       lui $t1, %hi(D_ovl32_801369AC)
-  /* 15C718 801357D8 252969AC */     addiu $t1, $t1, %lo(D_ovl32_801369AC)
+  /* 15C70C 801357CC 8DF8000C */        lw $t8, 0xc($t7) # dMNVsRecordsIndividualTableRowHeaderOffsets + 12
+  /* 15C710 801357D0 8DF90008 */        lw $t9, 8($t7) # dMNVsRecordsIndividualTableRowHeaderOffsets + 8
+  /* 15C714 801357D4 3C098013 */       lui $t1, %hi(dMNVsRecordsIndividualTableRowHeaderPositions)
+  /* 15C718 801357D8 252969AC */     addiu $t1, $t1, %lo(dMNVsRecordsIndividualTableRowHeaderPositions)
   /* 15C71C 801357DC ADD8000C */        sw $t8, 0xc($t6)
   /* 15C720 801357E0 ADD90008 */        sw $t9, 8($t6)
-  /* 15C724 801357E4 8D2A0004 */        lw $t2, 4($t1) # D_ovl32_801369AC + 4
-  /* 15C728 801357E8 8D2B0000 */        lw $t3, ($t1) # D_ovl32_801369AC + 0
+  /* 15C724 801357E4 8D2A0004 */        lw $t2, 4($t1) # dMNVsRecordsIndividualTableRowHeaderPositions + 4
+  /* 15C728 801357E8 8D2B0000 */        lw $t3, ($t1) # dMNVsRecordsIndividualTableRowHeaderPositions + 0
   /* 15C72C 801357EC 27A80058 */     addiu $t0, $sp, 0x58
   /* 15C730 801357F0 AD0A0004 */        sw $t2, 4($t0)
   /* 15C734 801357F4 AD0B0000 */        sw $t3, ($t0)
-  /* 15C738 801357F8 8D2B0008 */        lw $t3, 8($t1) # D_ovl32_801369AC + 8
-  /* 15C73C 801357FC 8D2A000C */        lw $t2, 0xc($t1) # D_ovl32_801369AC + 12
+  /* 15C738 801357F8 8D2B0008 */        lw $t3, 8($t1) # dMNVsRecordsIndividualTableRowHeaderPositions + 8
+  /* 15C73C 801357FC 8D2A000C */        lw $t2, 0xc($t1) # dMNVsRecordsIndividualTableRowHeaderPositions + 12
   /* 15C740 80135800 3C108000 */       lui $s0, %hi(D_NF_80000008)
   /* 15C744 80135804 AD0B0008 */        sw $t3, 8($t0)
   /* 15C748 80135808 AD0A000C */        sw $t2, 0xc($t0)
-  /* 15C74C 8013580C 8D2A0014 */        lw $t2, 0x14($t1) # D_ovl32_801369AC + 20
-  /* 15C750 80135810 8D2B0010 */        lw $t3, 0x10($t1) # D_ovl32_801369AC + 16
+  /* 15C74C 8013580C 8D2A0014 */        lw $t2, 0x14($t1) # dMNVsRecordsIndividualTableRowHeaderPositions + 20
+  /* 15C750 80135810 8D2B0010 */        lw $t3, 0x10($t1) # dMNVsRecordsIndividualTableRowHeaderPositions + 16
   /* 15C754 80135814 02003825 */        or $a3, $s0, $zero
   /* 15C758 80135818 AD0A0014 */        sw $t2, 0x14($t0)
   /* 15C75C 8013581C AD0B0010 */        sw $t3, 0x10($t0)
-  /* 15C760 80135820 8D2B0018 */        lw $t3, 0x18($t1) # D_ovl32_801369AC + 24
-  /* 15C764 80135824 8D2A001C */        lw $t2, 0x1c($t1) # D_ovl32_801369AC + 28
+  /* 15C760 80135820 8D2B0018 */        lw $t3, 0x18($t1) # dMNVsRecordsIndividualTableRowHeaderPositions + 24
+  /* 15C764 80135824 8D2A001C */        lw $t2, 0x1c($t1) # dMNVsRecordsIndividualTableRowHeaderPositions + 28
   /* 15C768 80135828 00002025 */        or $a0, $zero, $zero
   /* 15C76C 8013582C 00002825 */        or $a1, $zero, $zero
   /* 15C770 80135830 24060005 */     addiu $a2, $zero, 5
@@ -4336,7 +4336,7 @@ glabel mnVsRecordsCreateIndividualPortraitStatsAndTableHeaders
   /* 15C82C 801358EC 03C02025 */        or $a0, $fp, $zero
   /* 15C830 801358F0 00095080 */       sll $t2, $t1, 2
   /* 15C834 801358F4 00AA2821 */      addu $a1, $a1, $t2
-  /* 15C838 801358F8 0C04CF18 */       jal mnVsRecordsCreatePortrait
+  /* 15C838 801358F8 0C04CF18 */       jal mnVsRecordsCreatePortraitAndStats
   /* 15C83C 801358FC 8CA56C58 */        lw $a1, %lo(gMNVsRecordsRankingFtKindOrder)($a1)
   /* 15C840 80135900 8FBF0044 */        lw $ra, 0x44($sp)
   /* 15C844 80135904 03C01025 */        or $v0, $fp, $zero
@@ -4364,7 +4364,7 @@ glabel mnVsRecordsCreateStats
   /* 15C894 80135954 10000022 */         b .L801359E0
   /* 15C898 80135958 8FBF0014 */        lw $ra, 0x14($sp)
   .L8013595C:
-  /* 15C89C 8013595C 0C04CFFA */       jal func_ovl32_80133FE8
+  /* 15C89C 8013595C 0C04CFFA */       jal mnVsRecordsSortData
   /* 15C8A0 80135960 00000000 */       nop
   /* 15C8A4 80135964 0C04D184 */       jal mnVsRecordsCreateBattleScoreTableHeaders
   /* 15C8A8 80135968 00000000 */       nop
@@ -4375,7 +4375,7 @@ glabel mnVsRecordsCreateStats
   /* 15C8BC 8013597C 10000017 */         b .L801359DC
   /* 15C8C0 80135980 AC226C24 */        sw $v0, %lo(gMNVsRecordsTableValuesGObj)($at)
   .L80135984:
-  /* 15C8C4 80135984 0C04CFFA */       jal func_ovl32_80133FE8
+  /* 15C8C4 80135984 0C04CFFA */       jal mnVsRecordsSortData
   /* 15C8C8 80135988 00000000 */       nop
   /* 15C8CC 8013598C 3C048013 */       lui $a0, %hi(gMNVsRecordsFirstColumn)
   /* 15C8D0 80135990 0C04D442 */       jal mnVsRecordsCreateRankingTableHeaders
@@ -4389,7 +4389,7 @@ glabel mnVsRecordsCreateStats
   /* 15C8F0 801359B0 1000000A */         b .L801359DC
   /* 15C8F4 801359B4 AC226C24 */        sw $v0, %lo(gMNVsRecordsTableValuesGObj)($at)
   .L801359B8:
-  /* 15C8F8 801359B8 0C04CFFA */       jal func_ovl32_80133FE8
+  /* 15C8F8 801359B8 0C04CFFA */       jal mnVsRecordsSortData
   /* 15C8FC 801359BC 00000000 */       nop
   /* 15C900 801359C0 0C04D5E1 */       jal mnVsRecordsCreateIndividualPortraitStatsAndTableHeaders
   /* 15C904 801359C4 00000000 */       nop
@@ -4405,7 +4405,7 @@ glabel mnVsRecordsCreateStats
   /* 15C924 801359E4 03E00008 */        jr $ra
   /* 15C928 801359E8 00000000 */       nop
 
-glabel func_ovl32_801359EC
+glabel mnVsRecordsCreateTableValuesViewport
   /* 15C92C 801359EC 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 15C930 801359F0 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 15C934 801359F4 AFBF003C */        sw $ra, 0x3c($sp)
@@ -4447,7 +4447,7 @@ glabel func_ovl32_801359EC
   /* 15C9C4 80135A84 03E00008 */        jr $ra
   /* 15C9C8 80135A88 00000000 */       nop
 
-glabel func_ovl32_80135A8C
+glabel mnVsRecordsCreateTableHeadersViewport
   /* 15C9CC 80135A8C 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 15C9D0 80135A90 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 15C9D4 80135A94 AFBF003C */        sw $ra, 0x3c($sp)
@@ -4489,7 +4489,7 @@ glabel func_ovl32_80135A8C
   /* 15CA64 80135B24 03E00008 */        jr $ra
   /* 15CA68 80135B28 00000000 */       nop
 
-glabel func_ovl32_80135B2C
+glabel mnVsRecordsCreateTableGridViewport
   /* 15CA6C 80135B2C 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 15CA70 80135B30 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 15CA74 80135B34 AFBF003C */        sw $ra, 0x3c($sp)
@@ -4531,7 +4531,7 @@ glabel func_ovl32_80135B2C
   /* 15CB04 80135BC4 03E00008 */        jr $ra
   /* 15CB08 80135BC8 00000000 */       nop
 
-glabel func_ovl32_80135BCC
+glabel mnVsRecordsCreateRankingRowHighlightViewport
   /* 15CB0C 80135BCC 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 15CB10 80135BD0 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 15CB14 80135BD4 AFBF003C */        sw $ra, 0x3c($sp)
@@ -4573,7 +4573,7 @@ glabel func_ovl32_80135BCC
   /* 15CBA4 80135C64 03E00008 */        jr $ra
   /* 15CBA8 80135C68 00000000 */       nop
 
-glabel func_ovl32_80135C6C
+glabel mnVsRecordsCreateTitleViewport
   /* 15CBAC 80135C6C 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 15CBB0 80135C70 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 15CBB4 80135C74 AFBF003C */        sw $ra, 0x3c($sp)
@@ -4615,7 +4615,7 @@ glabel func_ovl32_80135C6C
   /* 15CC44 80135D04 03E00008 */        jr $ra
   /* 15CC48 80135D08 00000000 */       nop
 
-glabel func_ovl32_80135D0C
+glabel mnVsRecordsInitVars
   /* 15CC4C 80135D0C 3C018013 */       lui $at, %hi(gMNVsRecordsStatsKind)
   /* 15CC50 80135D10 AC206C18 */        sw $zero, %lo(gMNVsRecordsStatsKind)($at)
   /* 15CC54 80135D14 3C018013 */       lui $at, %hi(gMNVsRecordsRedrawSubtitle)
@@ -5209,23 +5209,23 @@ glabel mnVsRecordsInit
   /* 15D474 80136534 24060064 */     addiu $a2, $zero, 0x64
   /* 15D478 80136538 0C002E7F */       jal func_8000B9FC
   /* 15D47C 8013653C 24070002 */     addiu $a3, $zero, 2
-  /* 15D480 80136540 0C04D743 */       jal func_ovl32_80135D0C
+  /* 15D480 80136540 0C04D743 */       jal mnVsRecordsInitVars
   /* 15D484 80136544 00000000 */       nop
-  /* 15D488 80136548 0C04D71B */       jal func_ovl32_80135C6C
+  /* 15D488 80136548 0C04D71B */       jal mnVsRecordsCreateTitleViewport
   /* 15D48C 8013654C 00000000 */       nop
-  /* 15D490 80136550 0C04D6F3 */       jal func_ovl32_80135BCC
+  /* 15D490 80136550 0C04D6F3 */       jal mnVsRecordsCreateRankingRowHighlightViewport
   /* 15D494 80136554 00000000 */       nop
-  /* 15D498 80136558 0C04D6CB */       jal func_ovl32_80135B2C
+  /* 15D498 80136558 0C04D6CB */       jal mnVsRecordsCreateTableGridViewport
   /* 15D49C 8013655C 00000000 */       nop
-  /* 15D4A0 80136560 0C04D6A3 */       jal func_ovl32_80135A8C
+  /* 15D4A0 80136560 0C04D6A3 */       jal mnVsRecordsCreateTableHeadersViewport
   /* 15D4A4 80136564 00000000 */       nop
-  /* 15D4A8 80136568 0C04D67B */       jal func_ovl32_801359EC
+  /* 15D4A8 80136568 0C04D67B */       jal mnVsRecordsCreateTableValuesViewport
   /* 15D4AC 8013656C 00000000 */       nop
   /* 15D4B0 80136570 0C04C9EE */       jal mnVsRecordsCreateTitle
   /* 15D4B4 80136574 00000000 */       nop
   /* 15D4B8 80136578 0C04CA65 */       jal mnVsRecordsCreateSubtitle
   /* 15D4BC 8013657C 00000000 */       nop
-  /* 15D4C0 80136580 0C04CA9F */       jal mnVsRecordsCreatePortraitArrows
+  /* 15D4C0 80136580 0C04CA9F */       jal mnVsRecordsCreatePortraitAndStatsArrows
   /* 15D4C4 80136584 00000000 */       nop
   /* 15D4C8 80136588 0C04CAF5 */       jal mnVsRecordsCreateResortArrows
   /* 15D4CC 8013658C 00000000 */       nop
@@ -5236,7 +5236,7 @@ glabel mnVsRecordsInit
   /* 15D4E0 801365A0 3C048013 */       lui $a0, %hi(gMNVsRecordsStatsKind)
   /* 15D4E4 801365A4 0C04D64D */       jal mnVsRecordsCreateStats
   /* 15D4E8 801365A8 8C846C18 */        lw $a0, %lo(gMNVsRecordsStatsKind)($a0)
-  /* 15D4EC 801365AC 0C04D21A */       jal func_ovl32_80134868
+  /* 15D4EC 801365AC 0C04D21A */       jal mnVsRecordsCreateRankingRowHighlight
   /* 15D4F0 801365B0 00000000 */       nop
   /* 15D4F4 801365B4 00002025 */        or $a0, $zero, $zero
   /* 15D4F8 801365B8 0C0082AD */       jal func_80020AB4

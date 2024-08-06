@@ -8,12 +8,15 @@
 
 // Offsets
 extern intptr_t FILE_01F_QUESTION_MARK_IMAGE_OFFSET = 0x70; // file 0x01F image offset for question mark texture
+extern intptr_t FILE_01F_TOTAL_TEXTURE_IMAGE_OFFSET = 0x258; // file 0x01F image offset for Total texture
 extern intptr_t FILE_01F_DECIMAL_POINT_IMAGE_OFFSET = 0x910; // file 0x01F image offset for decimal point texture
+extern intptr_t FILE_01F_SLASH_IMAGE_OFFSET = 0x11D0; // file 0x01F image offset for forward slash texture
 extern intptr_t FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET = 0x15D0; // file 0x01F image offset for Battle Score subtitle texture
 extern intptr_t FILE_01F_DOUBLE_DOWN_ARROW_IMAGE_OFFSET = 0x1668; // file 0x01F image offset for double down arrow texture
 extern intptr_t FILE_01F_LEFT_AND_RIGHT_ARROW_IMAGE_OFFSET = 0x17A8; // file 0x01F image offset for left and right arrow texture
 extern intptr_t FILE_01F_PORTRAIT_BACKGROUND_IMAGE_OFFSET = 0x4D30; // file 0x01F image offset for portrait background texture
 extern intptr_t FILE_01F_VS_RECORD_IMAGE_OFFSET = 0x5428; // file 0x01F image offset for VS Record texture
+extern intptr_t FILE_01F_COLON_IMAGE_OFFSET = 0x54C0; // file 0x01F image offset for colon texture
 
 extern intptr_t FILE_020_DATA_HEADER_IMAGE_OFFSET = 0xB40; // file 0x020 image offset for Data header texture
 extern intptr_t FILE_020_ARROW_LEFT_IMAGE_OFFSET = 0xBE0; // file 0x020 image offset for left arrow texture
@@ -21,6 +24,7 @@ extern intptr_t FILE_020_ARROW_RIGHT_IMAGE_OFFSET = 0xC80; // file 0x020 image o
 
 // ovl0
 extern void func_ovl0_800CCF00();
+extern void func_ovl0_800CD2CC();
 
 // ovl32 stuff
 
@@ -117,16 +121,65 @@ extern intptr_t dMNVsRecordsRowIconOffsets[12] = {
     0x4308, 0x45A8, 0x4098, 0x3EB8
 };
 
-extern intptr_t D_ovl32_8013689C[12];
-extern s32 D_ovl32_801368CC[3];
-extern s32 D_ovl32_801368D8[6];
-extern char D_ovl32_80136A80[] = "RANKING";
-extern char D_ovl32_80136A88[] = "USED %";
-extern char D_ovl32_80136A90[] = "ATTACK 3TOTAL";
-extern char D_ovl32_80136AA0[] = "DAMAGE TOTAL";
+// 0x8013689C
+extern intptr_t dMNVsRecordsPortraitOffsets[12] = {
+    0x4728, 0xD068, 0x8BC8, 0xAE18,
+    0x6978, 0x11508, 0x13758, 0x19E48,
+    0xF2B8, 0x159A8, 0x1C098, 0x17BF8
+};
+
+// 0x801368CC
+extern s32 dMNVsRecordsIndividualChrColors[3] = { 0x8A, 0x88, 0x92 };
+
+// 0x801368D8
+extern s32 dMNVsRecordsIndividualTopNumberColors[6] = { 0x0, 0x0, 0x0, 0x8A, 0x88, 0x92 };
+
+// 0x801368F0
+extern s32 dMNVsRecordsBattleScoreNumberColors[6] = { 0x0, 0x0, 0x0, 0xE5, 0xD1, 0x99 };
+
+// 0x80136908
+extern s32 dMNVsRecordsRankingColumnValueWidths[7] = { 27, 30, 30, 23, 35, 27, 39 };
+
+// 0x80136924
+extern s32 dMNVsRecordsRankingNumberColors[6] = { 0x0, 0x0, 0x0, 0xE5, 0xD1, 0x99 };
+
+// 0x8013693C
+extern intptr_t dMNVsRecordsRankingTableHeaderOffsets[7] = { 0xA08, 0xAF8, 0xBE8, 0xCD8, 0xE10, 0xF08, 0x1008 };
+
+// 0x80136958
+extern s32 dMNVsRecordsRankingTableHeaderXOffsets[7] = { 2, 2, 2, 4, 4, 3, 1 };
+
+// 0x80136974
+extern f32 dMNVsRecordsIndividualStatsYPositions[4] = { 160.0f, 172.0f, 184.0f, 196.0f };
+
+// 0x80136984
+extern s32 dMNVsRecordsIndividualNumberColors[6] = { 0x0, 0x0, 0x0, 0xE5, 0xD1, 0x99 };
+
+// 0x8013699C
+extern intptr_t dMNVsRecordsIndividualTableRowHeaderOffsets[4] = { 0xA08, 0xAF8, 0x1140, 0x1008 };
+
+// 0x801369AC
+extern Vec2f dMNVsRecordsIndividualTableRowHeaderPositions[4] = {
+    { 29.0f, 159.0f },
+    { 28.0f, 171.0f },
+    { 25.0f, 183.0f },
+    { 26.0f, 195.0f }
+};
 
 extern scUnkDataBounds D_ovl32_801369CC;
 extern scRuntimeInfo D_ovl32_801369E8;
+
+// 0x80136A80
+extern char dMNVsRecordsStringRanking[] = "RANKING";
+
+// 0x80136A88
+extern char dMNVsRecordsStringUsedPercentage[] = "USED %";
+
+// 0x80136A90
+extern char dMNVsRecordsStringAttackTotal[] = "ATTACK 3TOTAL";
+
+// 0x80136AA0
+extern char dMNVsRecordsStringDamageTotal[] = "DAMAGE TOTAL";
 
 extern s32 gMNVsRecordsStatsKind; // 0x80136C18
 extern sb32 gMNVsRecordsRedrawSubtitle; // 0x80136C1C
@@ -260,7 +313,7 @@ void mnVsRecordsSetTextureColors(SObj* sobj, u32 colors[])
 }
 
 // 0x80131E88
-s32 func_ovl32_80131E88(s32 num, s32 maxDigits)
+s32 mnVsRecordsGetNumberOfDigits(s32 num, s32 maxDigits)
 {
     s32 numDigits;
 
@@ -343,9 +396,9 @@ void mnVsRecordsCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 color
 
     for
     (
-        place = 1, numDigits = (pad != FALSE) ? maxDigits : func_ovl32_80131E88(num, maxDigits);
+        place = 1, numDigits = (pad != FALSE) ? maxDigits : mnVsRecordsGetNumberOfDigits(num, maxDigits);
         place < numDigits;
-        place++, numDigits = (pad != FALSE) ? maxDigits : func_ovl32_80131E88(num, maxDigits)
+        place++, numDigits = (pad != FALSE) ? maxDigits : mnVsRecordsGetNumberOfDigits(num, maxDigits)
     )
     {
         digit = (mnVsRecordsPow(10, place) != 0) ? num / mnVsRecordsPow(10, place) : 0;
@@ -603,7 +656,7 @@ void mnVsRecordsUpdatePortraitArrowsDisplay(GObj* portrait_arrows_gobj)
 }
 
 // 0x80132A7C
-void mnVsRecordsCreatePortraitArrows()
+void mnVsRecordsCreatePortraitAndStatsArrows()
 {
     GObj* portrait_arrows_gobj;
     SObj* portrait_arrows_sobj;
@@ -1009,12 +1062,12 @@ s32 mnVsRecordsGetRanking(s32 ft_kind)
 }
 
 // 0x80133C60
-void mnVsRecordsCreatePortrait(GObj* individual_stats_gobj, s32 ft_kind)
+void mnVsRecordsCreatePortraitAndStats(GObj* individual_stats_gobj, s32 ft_kind)
 {
     SObj* sobj;
-    intptr_t offsets[12] = D_ovl32_8013689C;
-    s32 color[3] = D_ovl32_801368CC;
-    s32 colors[6] = D_ovl32_801368D8;
+    intptr_t offsets[12] = dMNVsRecordsPortraitOffsets;
+    s32 color[3] = dMNVsRecordsIndividualChrColors;
+    s32 colors[6] = dMNVsRecordsIndividualTopNumberColors;
 
     sobj = gcAppendSObjWithSprite(individual_stats_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_PORTRAIT_BACKGROUND_IMAGE_OFFSET));
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1028,10 +1081,10 @@ void mnVsRecordsCreatePortrait(GObj* individual_stats_gobj, s32 ft_kind)
     sobj->pos.x = 57.0f;
     sobj->pos.y = 60.0f;
 
-    mnVsRecordsDrawString(individual_stats_gobj, D_ovl32_80136A80, 150, 60, color);
+    mnVsRecordsDrawString(individual_stats_gobj, dMNVsRecordsStringRanking, 150, 60, color);
     mnVsRecordsCreateNumber(individual_stats_gobj, 12, 265, 58, colors, FALSE, TRUE, 2, FALSE);
 
-    sobj = gcAppendSObjWithSprite(individual_stats_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &D_NF_000011D0));
+    sobj = gcAppendSObjWithSprite(individual_stats_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_SLASH_IMAGE_OFFSET));
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
     sobj->pos.x = 251.0f;
@@ -1042,18 +1095,18 @@ void mnVsRecordsCreatePortrait(GObj* individual_stats_gobj, s32 ft_kind)
 
     mnVsRecordsCreateNumber(individual_stats_gobj, mnVsRecordsGetRanking(ft_kind), 250, 58, colors, FALSE, TRUE, 2, FALSE);
 
-    mnVsRecordsDrawString(individual_stats_gobj, D_ovl32_80136A88, 150, 68, color);
+    mnVsRecordsDrawString(individual_stats_gobj, dMNVsRecordsStringUsedPercentage, 150, 68, color);
     mnVsRecordsCreateNumber(individual_stats_gobj, mnVsRecordsGetUsePercentage(ft_kind) * 10, 265, 66, colors, TRUE, TRUE, 3, FALSE);
 
-    mnVsRecordsDrawString(individual_stats_gobj, D_ovl32_80136A90, 149, 78, color);
+    mnVsRecordsDrawString(individual_stats_gobj, dMNVsRecordsStringAttackTotal, 149, 78, color);
     mnVsRecordsCreateNumber(individual_stats_gobj, gSaveData.vs_records[ft_kind].damage_dealt, 265, 76, colors, FALSE, TRUE, 6, FALSE);
 
-    mnVsRecordsDrawString(individual_stats_gobj, D_ovl32_80136AA0, 150, 86, color);
+    mnVsRecordsDrawString(individual_stats_gobj, dMNVsRecordsStringDamageTotal, 150, 86, color);
     mnVsRecordsCreateNumber(individual_stats_gobj, gSaveData.vs_records[ft_kind].damage_taken, 265, 84, colors, FALSE, TRUE, 6, FALSE);
 }
 
 // 0x80133FE8
-void func_ovl32_80133FE8(s32 stats_kind)
+void mnVsRecordsSortData(s32 stats_kind)
 {
     s32 ft_kinds_ordered[12];
     f64 stats[12];
@@ -1095,7 +1148,7 @@ void func_ovl32_80133FE8(s32 stats_kind)
                         stats[i] = mnVsRecordsGetUsePercentage(i);
                         break;
                     case vsRecordsRankingColumnKindAverage:
-                        stats[i] = func_ovl32_801348B4(i);
+                        stats[i] = mnVsRecordsGetAverage(i);
                         break;
                 }
             }
@@ -1103,7 +1156,7 @@ void func_ovl32_80133FE8(s32 stats_kind)
         case vsRecordsKindIndividual:
             for (i = 0; i < 12; i++)
             {
-                stats[i] = func_ovl32_8013531C(gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex], i);
+                stats[i] = mnVsRecordsGetWinPercentageAgainst(gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex], i);
             }
             break;
     }
@@ -1154,7 +1207,7 @@ void func_ovl32_80133FE8(s32 stats_kind)
 GObj* mnVsRecordsCreateBattleScoreTableValues()
 {
     f32 x, y;
-    s32 colors[6] = D_ovl32_801368F0;
+    s32 colors[6] = dMNVsRecordsBattleScoreNumberColors;
     GObj* values_gobj;
     s32 i, j;
 
@@ -1192,7 +1245,7 @@ s32 mnVsRecordsCreateBattleScoreTableHeaders()
     headers_gobj = omMakeGObjSPAfter(0, 0, 5, 0x80000000);
     omAddGObjRenderProc(headers_gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
 
-    headers_sobj = gcAppendSObjWithSprite(headers_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &D_NF_00000258));
+    headers_sobj = gcAppendSObjWithSprite(headers_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_TOTAL_TEXTURE_IMAGE_OFFSET));
     headers_sobj->sprite.attr &= ~SP_FASTCOPY;
     headers_sobj->sprite.attr |= SP_TRANSPARENT;
     headers_sobj->sprite.red = 0x8A;
@@ -1227,14 +1280,14 @@ void mnVsRecordsRenderRankingRowHighlight(GObj* row_highlight_gobj)
 }
 
 // 0x80134868
-void func_ovl32_80134868()
+void mnVsRecordsCreateRankingRowHighlight()
 {
     GObj* row_highlight_gobj = omMakeGObjSPAfter(0, 0, 3, 0x80000000);
     omAddGObjRenderProc(row_highlight_gobj, mnVsRecordsRenderRankingRowHighlight, 2, 0x80000000, -1);
 }
 
 // 0x801348B4
-f32 func_ovl32_801348B4(s32 ft_kind)
+f32 mnVsRecordsGetAverage(s32 ft_kind)
 {
     if (gSaveData.vs_records[ft_kind].games_played != 0)
     {
@@ -1275,7 +1328,7 @@ f32 mnVsRecordsGetUsePercentage(s32 ft_kind)
 }
 
 // 0x80134A1C
-f32 mnVsRecordsGetWinPercentage(s32 ft_kind)
+f32 mnVsRecordsGetSDPercentage(s32 ft_kind)
 {
     f32 sd_percentage;
     f32 total_kos = mnVsRecordsGetTKOs(ft_kind);
@@ -1296,9 +1349,9 @@ f32 mnVsRecordsGetWinPercentage(s32 ft_kind)
 // 0x80134AA8
 GObj* mnVsRecordsCreateRankingTableValues(s32 column)
 {
-    s32 col_widths[7] = D_ovl32_80136908;
+    s32 col_widths[7] = dMNVsRecordsRankingColumnValueWidths;
     GObj* table_values_gobj;
-    s32 colors[6] = D_ovl32_80136924;
+    s32 colors[6] = dMNVsRecordsRankingNumberColors;
     s32 i;
     s32 j;
     s32 column_order[7];
@@ -1346,7 +1399,7 @@ GObj* mnVsRecordsCreateRankingTableValues(s32 column)
                     case vsRecordsRankingColumnKindTime:
                         mnVsRecordsCreateNumber(table_values_gobj, (gSaveData.vs_records[gMNVsRecordsRankingFtKindOrder[i]].time_used % 3600) / 60, col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 2, TRUE);
 
-                        table_values_sobj = gcAppendSObjWithSprite(table_values_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &D_NF_000054C0));
+                        table_values_sobj = gcAppendSObjWithSprite(table_values_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_COLON_IMAGE_OFFSET));
                         mnVsRecordsSetTextureColors(table_values_sobj, colors);
 
                         table_values_sobj->pos.x = col_widths[column_order[j]] + x - 11;
@@ -1358,7 +1411,7 @@ GObj* mnVsRecordsCreateRankingTableValues(s32 column)
                         mnVsRecordsCreateNumber(table_values_gobj, mnVsRecordsGetUsePercentage(gMNVsRecordsRankingFtKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x, y, colors, TRUE, FALSE, 3, FALSE);
                         break;
                     case vsRecordsRankingColumnKindAverage:
-                        mnVsRecordsCreateNumber(table_values_gobj, func_ovl32_801348B4(gMNVsRecordsRankingFtKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x - 15, y, colors, TRUE, FALSE, 1, FALSE);
+                        mnVsRecordsCreateNumber(table_values_gobj, mnVsRecordsGetAverage(gMNVsRecordsRankingFtKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x - 15, y, colors, TRUE, FALSE, 1, FALSE);
                         break;
                 }
 
@@ -1375,8 +1428,8 @@ GObj* mnVsRecordsCreateRankingTableHeaders(s32 column)
 {
     GObj* table_headers_gobj;
     SObj* table_headers_sobj;
-    intptr_t offsets[7] = D_ovl32_8013693C;
-    s32 x_padding[7] = D_ovl32_80136958;
+    intptr_t offsets[7] = dMNVsRecordsRankingTableHeaderOffsets;
+    s32 x_padding[7] = dMNVsRecordsRankingTableHeaderXOffsets;
     s32 column_order[7];
     s32 i;
     s32 j;
@@ -1417,7 +1470,7 @@ GObj* mnVsRecordsCreateRankingTableHeaders(s32 column)
 }
 
 // 0x8013531C
-f32 func_ovl32_8013531C(s32 ft_kind, s32 ft_kind_opponent)
+f32 mnVsRecordsGetWinPercentageAgainst(s32 ft_kind, s32 ft_kind_opponent)
 {
     f32 kos_for = gSaveData.vs_records[ft_kind].ko_count[ft_kind_opponent];
     f32 total_kos = kos_for + gSaveData.vs_records[ft_kind_opponent].ko_count[ft_kind];
@@ -1435,7 +1488,7 @@ f32 func_ovl32_8013531C(s32 ft_kind, s32 ft_kind_opponent)
 }
 
 // 0x801353F4
-f32 func_ovl32_801353F4(s32 ft_kind, s32 ft_kind_opponent)
+f32 mnVsRecordsGetAverageAgainst(s32 ft_kind, s32 ft_kind_opponent)
 {
     if (gSaveData.vs_records[ft_kind].played_against[ft_kind_opponent] != 0)
     {
@@ -1445,7 +1498,7 @@ f32 func_ovl32_801353F4(s32 ft_kind, s32 ft_kind_opponent)
 }
 
 // 0x8013547C - Unused?
-void func_ovl33_8013547C()
+void func_ovl32_8013547C()
 {
     return;
 }
@@ -1454,8 +1507,8 @@ void func_ovl33_8013547C()
 s32 mnVsRecordsCreateIndividualTableValues()
 {
     GObj* table_values_gobj;
-    f32 spB4[4] = D_ovl32_80136974;
-    s32 colors[6] = D_ovl32_80136984;
+    f32 y[4] = dMNVsRecordsIndividualStatsYPositions;
+    s32 colors[6] = dMNVsRecordsIndividualNumberColors;
     s32 i;
     f32 x;
     s32 unused, unused2;
@@ -1468,10 +1521,10 @@ s32 mnVsRecordsCreateIndividualTableValues()
         if (mnVsRecordsIsUnlocked(gMNVsRecordsRankingFtKindOrder[i]) != FALSE)
         {
             x = (i * 19) + 84.0f;
-            mnVsRecordsCreateNumber(table_values_gobj, func_ovl32_8013531C(gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex], gMNVsRecordsIndividualFtKindOrder[i]) * 10.0f, x, spB4[0], colors, TRUE, FALSE, 3, FALSE);
-            mnVsRecordsCreateNumber(table_values_gobj, gSaveData.vs_records[gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex]].ko_count[gMNVsRecordsIndividualFtKindOrder[i]], x, spB4[1], colors, FALSE, FALSE, 4, FALSE);
-            mnVsRecordsCreateNumber(table_values_gobj, gSaveData.vs_records[gMNVsRecordsIndividualFtKindOrder[i]].ko_count[gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex]], x, spB4[2], colors, FALSE, FALSE, 4, FALSE);
-            mnVsRecordsCreateNumber(table_values_gobj, func_ovl32_801353F4(gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex], gMNVsRecordsIndividualFtKindOrder[i]) * 10.0f, x, spB4[3], colors, TRUE, FALSE, 3, FALSE);
+            mnVsRecordsCreateNumber(table_values_gobj, mnVsRecordsGetWinPercentageAgainst(gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex], gMNVsRecordsIndividualFtKindOrder[i]) * 10.0f, x, y[0], colors, TRUE, FALSE, 3, FALSE);
+            mnVsRecordsCreateNumber(table_values_gobj, gSaveData.vs_records[gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex]].ko_count[gMNVsRecordsIndividualFtKindOrder[i]], x, y[1], colors, FALSE, FALSE, 4, FALSE);
+            mnVsRecordsCreateNumber(table_values_gobj, gSaveData.vs_records[gMNVsRecordsIndividualFtKindOrder[i]].ko_count[gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex]], x, y[2], colors, FALSE, FALSE, 4, FALSE);
+            mnVsRecordsCreateNumber(table_values_gobj, mnVsRecordsGetAverageAgainst(gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex], gMNVsRecordsIndividualFtKindOrder[i]) * 10.0f, x, y[3], colors, TRUE, FALSE, 3, FALSE);
         }
     }
 
@@ -1483,8 +1536,8 @@ s32 mnVsRecordsCreateIndividualPortraitStatsAndTableHeaders()
 {
     GObj* individual_stats_gobj;
     SObj* individual_stats_sobj;
-    intptr_t offsets[4] = D_ovl32_8013699C;
-    Vec2f positions[4] = D_ovl32_801369AC;
+    intptr_t offsets[4] = dMNVsRecordsIndividualTableRowHeaderOffsets;
+    Vec2f positions[4] = dMNVsRecordsIndividualTableRowHeaderPositions;
     s32 i;
 
     individual_stats_gobj = omMakeGObjSPAfter(0, 0, 5, 0x80000000);
@@ -1503,7 +1556,7 @@ s32 mnVsRecordsCreateIndividualPortraitStatsAndTableHeaders()
     }
 
     mnVsRecordsCreateColumnIcons(individual_stats_gobj);
-    mnVsRecordsCreatePortrait(individual_stats_gobj, gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex]);
+    mnVsRecordsCreatePortraitAndStats(individual_stats_gobj, gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex]);
 
     return individual_stats_gobj;
 }
@@ -1514,19 +1567,19 @@ void mnVsRecordsCreateStats(s32 stats_kind)
     switch (stats_kind)
     {
         case vsRecordsKindBattleScore:
-            func_ovl32_80133FE8(stats_kind);
+            mnVsRecordsSortData(stats_kind);
 
             gMNVsRecordsTableHeadersGObj = mnVsRecordsCreateBattleScoreTableHeaders();
             gMNVsRecordsTableValuesGObj = mnVsRecordsCreateBattleScoreTableValues();
             break;
         case vsRecordsKindRanking:
-            func_ovl32_80133FE8(stats_kind);
+            mnVsRecordsSortData(stats_kind);
 
             gMNVsRecordsTableHeadersGObj = mnVsRecordsCreateRankingTableHeaders(gMNVsRecordsFirstColumn);
             gMNVsRecordsTableValuesGObj = mnVsRecordsCreateRankingTableValues(gMNVsRecordsFirstColumn);
             break;
         case vsRecordsKindIndividual:
-            func_ovl32_80133FE8(stats_kind);
+            mnVsRecordsSortData(stats_kind);
 
             gMNVsRecordsTableHeadersGObj = mnVsRecordsCreateIndividualPortraitStatsAndTableHeaders();
             gMNVsRecordsTableValuesGObj = mnVsRecordsCreateIndividualTableValues();
@@ -1535,7 +1588,7 @@ void mnVsRecordsCreateStats(s32 stats_kind)
 }
 
 // 0x801359EC
-void func_ovl32_801359EC()
+void mnVsRecordsCreateTableValuesViewport()
 {
     GObj *camera_gobj = func_8000B93C(1, NULL, 1, 0x80000000U, func_ovl0_800CD2CC, 0x28, 0x00000020, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
@@ -1543,7 +1596,7 @@ void func_ovl32_801359EC()
 }
 
 // 0x80135A8C
-void func_ovl32_80135A8C()
+void mnVsRecordsCreateTableHeadersViewport()
 {
     GObj *camera_gobj = func_8000B93C(1, NULL, 1, 0x80000000U, func_ovl0_800CD2CC, 0x14, 0x00000010, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
@@ -1551,7 +1604,7 @@ void func_ovl32_80135A8C()
 }
 
 // 0x80135B2C
-void func_ovl32_80135B2C()
+void mnVsRecordsCreateTableGridViewport()
 {
     GObj *camera_gobj = func_8000B93C(1, NULL, 1, 0x80000000U, func_ovl0_800CD2CC, 0x3C, 0x00000008, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
@@ -1559,7 +1612,7 @@ void func_ovl32_80135B2C()
 }
 
 // 0x80135BCC
-void func_ovl32_80135BCC()
+void mnVsRecordsCreateRankingRowHighlightViewport()
 {
     GObj *camera_gobj = func_8000B93C(1, NULL, 1, 0x80000000U, func_ovl0_800CD2CC, 0x46, 0x00000004, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
@@ -1567,7 +1620,7 @@ void func_ovl32_80135BCC()
 }
 
 // 0x80135C6C
-void func_ovl32_80135C6C()
+void mnVsRecordsCreateTitleViewport()
 {
     GObj *camera_gobj = func_8000B93C(1, NULL, 1, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x00000002, -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
@@ -1575,7 +1628,7 @@ void func_ovl32_80135C6C()
 }
 
 // 0x80135D0C
-void func_ovl32_80135D0C()
+void mnVsRecordsInitVars()
 {
     gMNVsRecordsStatsKind = vsRecordsKindBattleScore;
     gMNVsRecordsRedrawSubtitle = FALSE;
@@ -1849,20 +1902,20 @@ void mnVsRecordsInit()
     omMakeGObjSPAfter(0, mnVsRecordsMain, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 2, 0xFF);
 
-    func_ovl32_80135D0C();
-    func_ovl32_80135C6C();
-    func_ovl32_80135BCC();
-    func_ovl32_80135B2C();
-    func_ovl32_80135A8C();
-    func_ovl32_801359EC();
+    mnVsRecordsInitVars();
+    mnVsRecordsCreateTitleViewport();
+    mnVsRecordsCreateRankingRowHighlightViewport();
+    mnVsRecordsCreateTableGridViewport();
+    mnVsRecordsCreateTableHeadersViewport();
+    mnVsRecordsCreateTableValuesViewport();
     mnVsRecordsCreateTitle();
     mnVsRecordsCreateSubtitle();
-    mnVsRecordsCreatePortraitArrows();
+    mnVsRecordsCreatePortraitAndStatsArrows();
     mnVsRecordsCreateResortArrows();
     mnVsRecordsCreateColumnArrows();
     mnVsRecordsCreateStatsGrid();
     mnVsRecordsCreateStats(gMNVsRecordsStatsKind);
-    func_ovl32_80134868();
+    mnVsRecordsCreateRankingRowHighlight();
 
     func_80020AB4(0, 0x2B);
 }

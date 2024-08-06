@@ -66,31 +66,31 @@ glabel dMNVsRecordsIconRowPositionOffsets
 glabel dMNVsRecordsRowIconOffsets
   .incbin "ovl32.raw.bin", 0x4D6C, 0x30
 
-glabel D_ovl32_8013689C
+glabel dMNVsRecordsPortraitOffsets
   .incbin "ovl32.raw.bin", 0x4D9C, 0x30
 
-glabel D_ovl32_801368CC
+glabel dMNVsRecordsIndividualChrColors
   .incbin "ovl32.raw.bin", 0x4DCC, 0xC
 
-glabel D_ovl32_801368D8
+glabel dMNVsRecordsIndividualTopNumberColors
   .incbin "ovl32.raw.bin", 0x4DD8, 0x18
 
-glabel D_ovl32_801368F0
+glabel dMNVsRecordsBattleScoreNumberColors
   .incbin "ovl32.raw.bin", 0x4DF0, 0x18
 
-glabel D_ovl32_80136908
+glabel dMNVsRecordsRankingColumnValueWidths
   .incbin "ovl32.raw.bin", 0x4E08, 0x1C
 
-glabel D_ovl32_80136924
+glabel dMNVsRecordsRankingNumberColors
   .incbin "ovl32.raw.bin", 0x4E24, 0x18
 
-glabel D_ovl32_8013693C
+glabel dMNVsRecordsRankingTableHeaderOffsets
   .incbin "ovl32.raw.bin", 0x4E3C, 0x1C
 
-glabel D_ovl32_80136958
+glabel dMNVsRecordsRankingTableHeaderXOffsets
   .incbin "ovl32.raw.bin", 0x4E58, 0x1C
 
-glabel D_ovl32_80136974
+glabel dMNVsRecordsIndividualStatsYPositions
   /* 4E74 15D8B4 80136974 */
   .asciz "C "
   .balign 4
@@ -104,13 +104,13 @@ glabel D_ovl32_80136974
   .asciz "CD"
   .balign 4
 
-glabel D_ovl32_80136984
+glabel dMNVsRecordsIndividualNumberColors
   .incbin "ovl32.raw.bin", 0x4E84, 0x18
 
-glabel D_ovl32_8013699C
+glabel dMNVsRecordsIndividualTableRowHeaderOffsets
   .incbin "ovl32.raw.bin", 0x4E9C, 0x10
 
-glabel D_ovl32_801369AC
+glabel dMNVsRecordsIndividualTableRowHeaderPositions
   .incbin "ovl32.raw.bin", 0x4EAC, 0xC
   /* 4EB8 15D8F8 801369B8 */
   .asciz "C+"
@@ -142,22 +142,22 @@ glabel D_ovl32_801369E8
   /* 4F70 15D9B0 80136A70 */  .4byte mnVsRecordsInit
   .incbin "ovl32.raw.bin", 0x4F74, 0xC
 
-glabel D_ovl32_80136A80
+glabel dMNVsRecordsStringRanking
   /* 4F80 15D9C0 80136A80 */
   .asciz "RANKING"
   .balign 4
 
-glabel D_ovl32_80136A88
+glabel dMNVsRecordsStringUsedPercentage
   /* 4F88 15D9C8 80136A88 */
   .asciz "USED %"
   .balign 4
 
-glabel D_ovl32_80136A90
+glabel dMNVsRecordsStringAttackTotal
   /* 4F90 15D9D0 80136A90 */
   .asciz "ATTACK 3TOTAL"
   .balign 4
 
-glabel D_ovl32_80136AA0
+glabel dMNVsRecordsStringDamageTotal
   /* 4FA0 15D9E0 80136AA0 */
   .asciz "DAMAGE TOTAL"
   .balign 4

@@ -994,7 +994,7 @@ typedef enum ftAnimCommandKind
     nFTFigatreeCommandSetValAfterBlock,
     nFTFigatreeCommandSetValAfter,
     nFTFigatreeCommand11,
-    nFTFigatreeCommand12,
+    nFTFigatreeCommandSetTranslateLerp,
     nFTFigatreeCommandLoop,
     nFTFigatreeCommandSetFlags
 
@@ -1019,7 +1019,7 @@ typedef struct ftModelPartStatus	            ftModelPartStatus;
 typedef struct ftTexturePart		            ftTexturePart;
 typedef struct ftTexturePartContainer	        ftTexturePartContainer;
 typedef struct ftTexturePartStatus              ftTexturePartStatus;
-typedef union  ftAnimFlags				        ftAnimFlags;
+typedef union  ftAnimDesc				        ftAnimDesc;
 typedef struct ftMotionFlags		            ftMotionFlags;
 typedef struct ftMotionScript                   ftMotionScript;
 typedef struct ftMotionEventDefault             ftMotionEventDefault;

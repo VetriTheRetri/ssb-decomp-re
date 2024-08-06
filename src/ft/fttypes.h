@@ -165,7 +165,7 @@ struct ftThrownStatusArray
     ftThrownStatus ft_thrown[2];
 };
 
-union ftAnimFlags
+union ftAnimDesc
 {
     u32 word;
 
@@ -199,7 +199,7 @@ union ftAnimFlags
         u32 x19B_flag_b1 : 1;
         u32 x19B_flag_b2 : 1;
         u32 is_use_submotion_script : 1;    // 0x00000010
-        u32 x19B_flag_b4 : 1;               // 0x00000008
+        u32 is_anim_joint : 1;              // 0x00000008 - whether current animation is type Figatree (0) or AnimJoint (1)
         u32 is_have_translate_scale : 1;    // 0x00000004
         u32 is_use_shieldpose : 1;          // 0x00000002
         u32 is_use_animlocks : 1;           // 0x00000001
@@ -211,7 +211,7 @@ struct ftMotionDesc
 {
     intptr_t anim_file_id;  // Animation file ID
     intptr_t offset;        // Offset?
-    ftAnimFlags anim_flags; // Animation flags
+    ftAnimDesc anim_desc; // Animation flags
 };
 
 struct ftMotionDescArray
@@ -1252,7 +1252,7 @@ struct ftStruct
     u8 capture_immune_mask;             // Fighter is immune to these grab types
     u8 catch_mask;                      // Fighter's current grab type
 
-    ftAnimFlags anim_flags;
+    ftAnimDesc anim_desc;
     Vec3f anim_vel;
 
     f32 ifpos_x;

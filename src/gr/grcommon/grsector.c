@@ -360,7 +360,7 @@ void func_ovl2_80106A40(DObj *dobj, AObjAnimJoint *anim_joint, f32 arg2)
         dobj->is_anim_root = 0;
 
         gcParseDObjAnimJoint(dobj);
-        func_8000CCBC_D8BC(dobj);
+        gcPlayDObjAnim(dobj);
     }
     else
     {

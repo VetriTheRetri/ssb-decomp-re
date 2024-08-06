@@ -145,7 +145,7 @@ typedef enum AObjCommandKind
     nOMObjAnimCommandSetValAfterBlock,
     nOMObjAnimCommandSetValAfter,
     ANIM_CMD_12 = 12,
-    ANIM_CMD_13 = 13,
+    nOMObjAnimCommandSetTranslateLerp = 13,
     nOMObjAnimCommandSetAnim,
     nOMObjAnimCommandSetFlags,
     ANIM_CMD_16 = 16,
@@ -163,18 +163,18 @@ typedef enum AObjTrackKind
 {
     // model
     nOMObjAnimTrackNone,
-    nOMObjAnimTrackJointStart,                       // Start of Mesh tracks
-    nOMObjAnimTrackRotX = nOMObjAnimTrackJointStart, // Rotation X (Roll)
+    nOMObjAnimTrackJointStart,                      // Start of joint tracks
+    nOMObjAnimTrackRotX = nOMObjAnimTrackJointStart,// Rotation X (Roll)
     nOMObjAnimTrackRotY,                            // Rotation Y (Pitch)
     nOMObjAnimTrackRotZ,                            // Rotation Z (Yaw)
-    nOMObjAnimTrackRotA,                            // Rotation angle?
+    nOMObjAnimTrackTraL,                            // Translation cubic interpolation?
     nOMObjAnimTrackTraX,                            // Translation X 
     nOMObjAnimTrackTraY,                            // Translation Y
     nOMObjAnimTrackTraZ,                            // Translation Z
     nOMObjAnimTrackScaX,                            // Scale X
     nOMObjAnimTrackScaY,                            // Scale Y
     nOMObjAnimTrackScaZ,                            // Scale Z
-    nOMObjAnimTrackJointEnd = nOMObjAnimTrackScaZ,   // End of Mesh tracks
+    nOMObjAnimTrackJointEnd = nOMObjAnimTrackScaZ,  // End of joint tracks
     // texture
     nOMObjAnimTrackTextureStart = 13,
     nOMObjAnimTrackTexture13 = 13,

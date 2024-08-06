@@ -916,7 +916,7 @@ void ftMainPlayAnim(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->anim_flags.flags.is_use_transn_joint)
+    if (fp->anim_desc.flags.is_use_transn_joint)
     {
         fp->anim_vel = fp->joints[nFTPartsJointTransN]->translate.vec.f;
     }
@@ -4335,8 +4335,8 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     ftOpeningDesc *opening_struct;
     f32 anim_frame;
     s32 status_struct_id;
-    s32 anim_flags_update;
-    s32 anim_flags_bak;
+    s32 anim_desc_update;
+    s32 anim_desc_bak;
     s32 unused1;
     gmStatFlags status_flags;
     gmStatFlags attack_flags;
@@ -4578,7 +4578,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     {
         script_info = &script_array->script_info[motion_id];
 
-        if (script_info->anim_flags.flags.is_use_shieldpose)
+        if (script_info->anim_desc.flags.is_use_shieldpose)
         {
             fp->anim_bank = (void*)((intptr_t)script_info->anim_file_id + (uintptr_t)fp->ft_data->p_file_shieldpose);
         }
@@ -4591,20 +4591,20 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
         
         if (fp->anim_bank != NULL)
         {
-            anim_flags_bak = fp->anim_flags.word & 0xFFFFFFE0;
-            fp->anim_flags.word = script_info->anim_flags.word;
-            anim_flags_update = fp->anim_flags.word & 0xFFFFFFE0;
+            anim_desc_bak = fp->anim_desc.word & 0xFFFFFFE0;
+            fp->anim_desc.word = script_info->anim_desc.word;
+            anim_desc_update = fp->anim_desc.word & 0xFFFFFFE0;
 
-            for (i = 0; ((anim_flags_bak != 0) || (anim_flags_update != 0)); i++, anim_flags_update <<= 1, anim_flags_bak <<= 1)
+            for (i = 0; ((anim_desc_bak != 0) || (anim_desc_update != 0)); i++, anim_desc_update <<= 1, anim_desc_bak <<= 1)
             {
-                if (!(anim_flags_bak & (1 << 31)))
+                if (!(anim_desc_bak & (1 << 31)))
                 {
-                    if (anim_flags_update & (1 << 31))
+                    if (anim_desc_update & (1 << 31))
                     {
                         ftMainUpdateWithheldPartID(fp, i);
                     }
                 }
-                else if (anim_flags_update & (1 << 31))
+                else if (anim_desc_update & (1 << 31))
                 {
                     ftMainAddWithheldPartID(fp, i);
                 }
@@ -4628,7 +4628,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
                     joint->flags = DOBJ_FLAG_NONE;
                 }
             }
-            if (fp->anim_flags.flags.is_use_transn_joint)
+            if (fp->anim_desc.flags.is_use_transn_joint)
             {
                 joint = fp->joints[nFTPartsJointTransN];
                 
@@ -4638,7 +4638,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
                 joint->flags = DOBJ_FLAG_NONE;
             }
-            if (fp->anim_flags.flags.is_use_xrotn_joint)
+            if (fp->anim_desc.flags.is_use_xrotn_joint)
             {
                 joint = fp->joints[nFTPartsJointXRotN];
 
@@ -4650,7 +4650,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
                 joint->flags = DOBJ_FLAG_NONE;
             }
-            if (fp->anim_flags.flags.is_use_yrotn_joint)
+            if (fp->anim_desc.flags.is_use_yrotn_joint)
             {
                 joint = fp->joints[nFTPartsJointYRotN];
 
@@ -4668,7 +4668,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
             {
                 gcSetDObjAnimPlaybackRate(fighter_gobj, anim_rate);
             }
-            if (fp->anim_flags.flags.is_use_transn_joint)
+            if (fp->anim_desc.flags.is_use_transn_joint)
             {
                 joint = fp->joints[nFTPartsJointTransN];
 
@@ -4684,20 +4684,20 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
             if (fp->is_use_animlocks)
             {
-                if (!(fp->anim_flags.flags.is_use_animlocks))
+                if (!(fp->anim_desc.flags.is_use_animlocks))
                 {
                     ftParamSetAnimLocks(fp);
                 }
             }
-            else if (fp->anim_flags.flags.is_use_animlocks)
+            else if (fp->anim_desc.flags.is_use_animlocks)
             {
                 ftParamClearAnimLocks(fp);
             }
-            fp->is_use_animlocks = fp->anim_flags.flags.is_use_animlocks;
+            fp->is_use_animlocks = fp->anim_desc.flags.is_use_animlocks;
 
             if (attributes->translate_scales != NULL)
             {
-                if (fp->anim_flags.flags.is_have_translate_scale)
+                if (fp->anim_desc.flags.is_have_translate_scale)
                 {
                     fp->is_have_translate_scale = FALSE;
                 }
@@ -4709,7 +4709,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
             if (script_info->offset != 0x80000000)
             {
                 // Actually subaction scripts?
-                if (fp->anim_flags.flags.is_use_submotion_script)
+                if (fp->anim_desc.flags.is_use_submotion_script)
                 {
                     event_file_head = *fp->ft_data->p_file_submotion;
 

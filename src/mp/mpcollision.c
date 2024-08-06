@@ -3773,7 +3773,7 @@ void func_ovl2_800FBAD0(GObj *ground_gobj)
 
                 translate = dobj->translate.vec.f;
 
-                func_8000CCBC_D8BC(dobj);
+                gcPlayDObjAnim(dobj);
 
                 gMPCollisionDynamics[i].x = dobj->translate.vec.f.x - translate.x;
                 gMPCollisionDynamics[i].y = dobj->translate.vec.f.y - translate.y;
@@ -3799,7 +3799,7 @@ void func_ovl2_800FBAD0(GObj *ground_gobj)
         else
         {
             gcParseDObjAnimJoint(dobj);
-            func_8000CCBC_D8BC(dobj);
+            gcPlayDObjAnim(dobj);
         }
         mobj = dobj->mobj;
 

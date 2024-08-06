@@ -1,13 +1,23 @@
 #include <sys/obj.h>
 
-/*********** data **********/
+extern void hal_interpolation_cubic(Vec3f*, void*, f32);
+
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
 s32 D_8003B930 = 10;
 s32 D_8003B934 = 10;
 s32 D_8003B938 = 10;
 s32 D_8003B93C = 10;
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 void gcSetMatAnimJointStepAll(GObj *gobj, f32 anim_rate)
 {
@@ -493,14 +503,14 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 }
                 break;
 
-            case ANIM_CMD_13:
+            case nOMObjAnimCommandSetTranslateLerp:
                 AObjAnimAdvance(dobj->anim_joint);
 
-                if (track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackJointStart] == NULL) 
+                if (track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart] == NULL) 
                 { 
-                    track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackJointStart] = omAddAObjForDObj(dobj, nOMObjAnimTrackRotA); 
+                    track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart] = omAddAObjForDObj(dobj, nOMObjAnimTrackTraL); 
                 }
-                track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackJointStart]->interpolate = dobj->anim_joint->p;
+                track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart]->interpolate = dobj->anim_joint->p;
 
                 AObjAnimAdvance(dobj->anim_joint);
                 break;
@@ -611,11 +621,163 @@ f32 func_8000CADC_D6DC(f32 length_invert, f32 length, f32 value_base, f32 value_
                 (step_base * ((temp_f16 - (2.0F * temp_f2)) + 1.0F)) + (step_target * (temp_f16 - temp_f2));
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000CB94_D794.s")
+f32 func_8000CB94_D794(AObj *aobj) 
+{
+    switch (aobj->kind) 
+    {
+    case 2: 
+        return aobj->value_base + (aobj->length * aobj->step_base);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000CC40_D840.s")
+    case 3:
+        return func_8000CA28_D628
+        (
+            aobj->length_invert, aobj->length, aobj->value_base, aobj->value_target, aobj->step_base, aobj->step_target
+        );
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000CCBC_D8BC.s")
+    case 1: 
+        return (aobj->length_invert <= aobj->length) ? aobj->value_target : aobj->value_base;
+    }
+#if defined (AVOID_UB)
+    return 0.0F;
+#endif
+}
+
+f32 func_8000CC40_D840(AObj *aobj) 
+{
+    switch (aobj->kind) 
+    {
+    case 2: 
+        return aobj->step_base;
+
+    case 3:
+        return func_8000CADC_D6DC
+        (
+            aobj->length_invert, aobj->length, aobj->value_base, aobj->value_target, aobj->step_base, aobj->step_target
+        );
+
+    case 1:
+        return 0.0F;
+    }
+#if defined (AVOID_UB)
+    return 0.0F;
+#endif
+}
+
+void gcPlayDObjAnim(DObj *dobj) 
+{
+    f32 value; // sp54
+    AObj *aobj;
+    f32 temp_f16;
+    f32 temp_f12;
+    f32 temp_f18;
+    f32 temp_f14;
+    f32 temp_f20;
+    f32 temp_f22;
+    f32 temp_f24;
+
+    if (dobj->anim_remain != AOBJ_FRAME_NULL) 
+    {
+        aobj = dobj->aobj;
+
+        while (aobj != NULL)
+        {
+            if (aobj->kind != 0)
+            {
+                if (dobj->anim_remain != -1.1342745e38F) 
+                { 
+                    aobj->length += dobj->anim_rate; 
+                }
+                if (!(dobj->parent_gobj->flags & GOBJ_FLAG_NOANIM)) 
+                {
+                    switch (aobj->kind) 
+                    {
+                    case 2: 
+                        value = aobj->value_base + (aobj->length * aobj->step_base); 
+                        break;
+                        
+                    case 3:
+                        temp_f16 = SQUARE(aobj->length_invert);
+                        temp_f12 = SQUARE(aobj->length);
+                        temp_f18 = aobj->length_invert * temp_f12;
+                        temp_f14 = aobj->length * temp_f12 * temp_f16;
+                        temp_f20 = 2.0F * temp_f14 * aobj->length_invert;
+                        temp_f22 = 3.0F * temp_f12 * temp_f16;
+                        temp_f24 = temp_f14 - temp_f18;
+
+                        value = 
+                            (aobj->value_base * ((temp_f20 - temp_f22) + 1.0F)) + 
+                            (aobj->value_target * (temp_f22 - temp_f20)) + 
+                            (aobj->step_base * ((temp_f24 - temp_f18) + aobj->length)) + 
+                            (aobj->step_target * temp_f24);
+                        break;
+                        
+                    case 1: 
+                        value = (aobj->length_invert <= aobj->length) ? aobj->value_target : aobj->value_base; 
+                        break;
+
+                    default:
+                        break;
+                    }
+                    switch (aobj->track)
+                    {
+                    case nOMObjAnimTrackRotX: 
+                        dobj->rotate.vec.f.x = value;
+                        break;
+
+                    case nOMObjAnimTrackRotY: 
+                        dobj->rotate.vec.f.y = value;
+                        break;
+
+                    case nOMObjAnimTrackRotZ: 
+                        dobj->rotate.vec.f.z = value;
+                        break;
+
+                    case nOMObjAnimTrackTraL:
+                        if (value < 0.0F) 
+                        {
+                            value = 0.0F;
+                        } 
+                        else if (value > 1.0F) 
+                        {
+                            value = 1.0F;
+                        }
+                        hal_interpolation_cubic(&dobj->translate.vec.f, aobj->interpolate, value);
+                        break;
+
+                    case nOMObjAnimTrackTraX: 
+                        dobj->translate.vec.f.x = value; 
+                        break;
+
+                    case nOMObjAnimTrackTraY: 
+                        dobj->translate.vec.f.y = value; 
+                        break;
+
+                    case nOMObjAnimTrackTraZ: 
+                        dobj->translate.vec.f.z = value; 
+                        break;
+
+                    case nOMObjAnimTrackScaX: 
+                        dobj->scale.vec.f.x = value; 
+                        break;
+                        
+                    case nOMObjAnimTrackScaY: 
+                        dobj->scale.vec.f.y = value; 
+                        break;
+
+                    case nOMObjAnimTrackScaZ: 
+                        dobj->scale.vec.f.z = value; 
+                        break;
+                    }
+                }
+            }
+            aobj = aobj->next;
+        }
+        if (dobj->anim_remain == -1.1342745e38F) 
+        { 
+            dobj->anim_remain = F32_MIN; 
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000CF6C_DB6C.s")
 

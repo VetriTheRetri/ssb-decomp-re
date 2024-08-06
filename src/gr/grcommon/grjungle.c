@@ -52,7 +52,7 @@ void grJungleTaruCannAddAnimOffset(GObj *ground_gobj, intptr_t offset)
 
     gcAddDObjAnimJoint(dobj, (AObjAnimJoint*) ((uintptr_t)gGRCommonStruct.jungle.map_head + (intptr_t)offset), 0.0F);
     gcParseDObjAnimJoint(dobj);
-    func_8000CCBC_D8BC(dobj);
+    gcPlayDObjAnim(dobj);
 }
 
 // 0x80109CFC

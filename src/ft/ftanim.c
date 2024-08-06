@@ -7,14 +7,14 @@
 // // // // // // // // // // // //
 
 // 0x800EC160
-f32 func_ovl2_800EC160(s16 arg0, s32 arg1, sb32 value_or_rate)
+f32 ftAnimGetTargetFrac(s16 arg, s32 track, sb32 value_or_step)
 {
-    f32 frac;
+    f32 unused;
     s32 id;
     f32 ret;
 
     // 0x8012B910
-    f32 f[/* */] =
+    f32 fracs[/* */] =
     {
         1.0F / 512.0F,
         1.0F / 4.0F,
@@ -26,37 +26,37 @@ f32 func_ovl2_800EC160(s16 arg0, s32 arg1, sb32 value_or_rate)
         1.0F / 16384.0F - (3.0F / 1000000000000.0F)  // ???
     };
 
-    switch (arg1)
+    switch (track)
     {
-    case 1:
-    case 2:
-    case 3:
+    case nOMObjAnimTrackRotX:
+    case nOMObjAnimTrackRotY:
+    case nOMObjAnimTrackRotZ:
         id = 0;
         break;
 
-    case 5:
-    case 6:
-    case 7:
+    case nOMObjAnimTrackTraX:
+    case nOMObjAnimTrackTraY:
+    case nOMObjAnimTrackTraZ:
         id = 1;
         break;
 
-    case 8:
-    case 9:
-    case 10:
+    case nOMObjAnimTrackScaX:
+    case nOMObjAnimTrackScaY:
+    case nOMObjAnimTrackScaZ:
         id = 2;
         break;
 
-    case 4:
+    case nOMObjAnimTrackTraL:
         id = 3;
         break;
     }
-    if (value_or_rate != 0)
+    if (value_or_step != 0)
     {
         id += 4;
     }
-    ret = arg0;
+    ret = arg;
 
-    ret *= f[id];
+    ret *= fracs[id];
 
     return ret;
 }
@@ -146,7 +146,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
 
-                        track_aobjs[i]->value_target = func_ovl2_800EC160(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 0);
+                        track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 0);
 
                         track_aobjs[i]->step_base = track_aobjs[i]->step_target;
                         track_aobjs[i]->step_target = 0.0F;
@@ -184,7 +184,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
 
-                        track_aobjs[i]->value_target = func_ovl2_800EC160(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 0);
+                        track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 0);
 
                         track_aobjs[i]->kind = 2;
 
@@ -221,11 +221,11 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
 
-                        track_aobjs[i]->value_target = func_ovl2_800EC160(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 0);
+                        track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 0);
 
                         track_aobjs[i]->step_base = track_aobjs[i]->step_target;
 
-                        track_aobjs[i]->step_target = func_ovl2_800EC160(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 1);
+                        track_aobjs[i]->step_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 1);
 
                         track_aobjs[i]->kind = 3;
 
@@ -259,7 +259,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         {
                             track_aobjs[i] = omAddAObjForDObj(root_dobj, i + nOMObjAnimTrackJointStart);
                         }
-                        track_aobjs[i]->step_target = func_ovl2_800EC160(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 1);
+                        track_aobjs[i]->step_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 1);
                     }
                 }
                 break;
@@ -290,7 +290,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
 
-                        track_aobjs[i]->value_target = func_ovl2_800EC160(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 0);
+                        track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 0);
 
                         track_aobjs[i]->kind = 1;
 
@@ -346,14 +346,14 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 }
                 break;
 
-            case nFTFigatreeCommand12:
+            case nFTFigatreeCommandSetTranslateLerp:
                 AObjAnimAdvance(root_dobj->figatree);
 
-                if (track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackJointStart] == NULL)
+                if (track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart] == NULL)
                 {
-                    track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackJointStart] = omAddAObjForDObj(root_dobj, nOMObjAnimTrackRotA);
+                    track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart] = omAddAObjForDObj(root_dobj, nOMObjAnimTrackTraL);
                 }
-                track_aobjs[nOMObjAnimTrackRotA - nOMObjAnimTrackJointStart]->interpolate = root_dobj->figatree + (root_dobj->figatree->shalf / 2);
+                track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart]->interpolate = root_dobj->figatree + (root_dobj->figatree->shalf / 2);
 
                 AObjAnimAdvance(root_dobj->figatree);
                 break;
@@ -408,7 +408,7 @@ void func_ovl2_800ECCA4(GObj *gobj)
     while (main_dobj != NULL)
     {
         ftAnimParseDObjFigatree(main_dobj);
-        func_8000CCBC_D8BC(main_dobj);
+        gcPlayDObjAnim(main_dobj);
 
         mobj = main_dobj->mobj;
 

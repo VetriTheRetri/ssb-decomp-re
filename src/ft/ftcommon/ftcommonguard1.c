@@ -238,7 +238,7 @@ void ftCommonGuardUpdateJoints(GObj *fighter_gobj)
         {
             func_ovl0_800C9488(yrotn_joint, scale);
         }
-        else func_8000CCBC_D8BC(yrotn_joint);
+        else gcPlayDObjAnim(yrotn_joint);
 
         if (fp->is_have_translate_scale)
         {
@@ -268,7 +268,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
     {
         ftCommonGuardUpdateShieldAngle(fp);
     }
-    fp->anim_flags.flags.x19B_flag_b4 = TRUE;
+    fp->anim_desc.flags.is_anim_joint = TRUE;
 
     func_ovl0_800C8758(fp->joints[nFTPartsJointXRotN], attributes->shield_keys[fp->status_vars.common.guard.angle_i], fp->status_vars.common.guard.angle_f);
     ftMainPlayAnimNoEffect(fighter_gobj);

@@ -7,7 +7,7 @@
 #include <sys/objfunctions.h>
 
 #define gcGetAnimFromFile(type, file, offset) \
-((type) ((uintptr_t)file + (intptr_t)offset))
+((type) ((uintptr_t)(file) + (intptr_t)(offset)))
 
 #define AObjAnimAdvance(script) \
 ((script)++)

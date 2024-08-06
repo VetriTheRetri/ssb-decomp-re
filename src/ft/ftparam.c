@@ -405,7 +405,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 
                 if (joint != NULL)
                 {
-                    if (fp->anim_flags.flags.x19B_flag_b4)
+                    if (fp->anim_desc.flags.is_anim_joint)
                     {
                         gcParseDObjAnimJoint(joint);
                     }
@@ -431,13 +431,13 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 
             if (joint != NULL)
             {
-                if (fp->anim_flags.flags.x19B_flag_b4)
+                if (fp->anim_desc.flags.is_anim_joint)
                 {
                     gcParseDObjAnimJoint(joint);
                 }
                 else ftAnimParseDObjFigatree(joint);
                 
-                func_8000CCBC_D8BC(joint);
+                gcPlayDObjAnim(joint);
 
                 mobj = joint->mobj;
 
@@ -490,7 +490,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 
                 joint->anim_remain = -1.1342745e38F;
 
-                func_8000CCBC_D8BC(joint);
+                gcPlayDObjAnim(joint);
 
                 joint->anim_remain = anim_remain_bak;
             }

@@ -30,4 +30,13 @@ extern f32 func_8000CA28_D628(f32 length_invert, f32 length, f32 value_base, f32
 // Other kind of interpolation?
 extern f32 func_8000CADC_D6DC(f32 length_invert, f32 length, f32 value_base, f32 value_target, f32 step_base, f32 step_target);
 
+// ???
+extern f32 func_8000CB94_D794(AObj *aobj);
+
+// ???
+extern f32 func_8000CC40_D840(AObj *aobj);
+
+// Apply AnimJoint values on current frame of animation to specific DObj
+extern void gcPlayDObjAnim(DObj *dobj);
+
 #endif

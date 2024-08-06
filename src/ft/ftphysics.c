@@ -185,7 +185,7 @@ void ftPhysicsApplyGroundFrictionOrTransN(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->anim_flags.flags.is_use_transn_joint)
+    if (fp->anim_desc.flags.is_use_transn_joint)
     {
         ftPhysicsApplyGroundVelTransN(fighter_gobj);
     }

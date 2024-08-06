@@ -144,7 +144,7 @@ void ftManagerSetupFileSize(void)
 
             if (script_info->anim_file_id != 0)
             {
-                if (!(script_info->anim_flags.flags.is_use_shieldpose))
+                if (!(script_info->anim_desc.flags.is_use_shieldpose))
                 {
                     current_anim_size = rdManagerGetFileSize(script_info->anim_file_id);
 
@@ -165,7 +165,7 @@ void ftManagerSetupFileSize(void)
 
             if (script_info->anim_file_id != 0)
             {
-                if (!(script_info->anim_flags.flags.is_use_shieldpose))
+                if (!(script_info->anim_desc.flags.is_use_shieldpose))
                 {
                     current_anim_size = rdManagerGetFileSize(script_info->anim_file_id);
 
@@ -743,7 +743,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
 
     fp->unk_ft_0x178 = 0;
     fp->unk_ft_0x3C = 0;
-    fp->anim_flags.word = 0;
+    fp->anim_desc.word = 0;
 
     fp->p_sfx = NULL;
     fp->sfx_id = 0;

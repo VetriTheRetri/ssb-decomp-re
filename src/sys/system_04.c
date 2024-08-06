@@ -1487,7 +1487,42 @@ f32 gcGetDObjValueTrack(DObj *dobj, s32 track)
 #endif
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000E0F4_ECF4.s")
+f32 gcGetDObjDescValueTrack(DObjDesc *dobj_desc, s32 track)
+{
+    switch (track) 
+    {
+    case nOMObjAnimTrackRotX: 
+        return dobj_desc->rotate.x;
+
+    case nOMObjAnimTrackRotY: 
+        return dobj_desc->rotate.y;
+
+    case nOMObjAnimTrackRotZ: 
+        return dobj_desc->rotate.z;
+
+    case nOMObjAnimTrackTraX: 
+        return dobj_desc->translate.x;
+
+    case nOMObjAnimTrackTraY: 
+        return dobj_desc->translate.y;
+
+    case nOMObjAnimTrackTraZ: 
+        return dobj_desc->translate.z;
+
+    case nOMObjAnimTrackScaX: 
+        return dobj_desc->scale.x;
+
+    case nOMObjAnimTrackScaY: 
+        return dobj_desc->scale.y;
+
+    case nOMObjAnimTrackScaZ: 
+        return dobj_desc->scale.z;
+    }
+#if defined (AVOID_UB)
+    // todo: return NaN?
+    return 0.0F;
+#endif
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000E164_ED64.s")
 

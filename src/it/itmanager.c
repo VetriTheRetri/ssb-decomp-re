@@ -382,15 +382,15 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     {
         if (!(attributes->unk_0x10_b1))
         {
-            func_8000F720(item_gobj, attributes->dobj_setup, attributes->mobjsub, NULL, item_desc->transform_types.tk1, item_desc->transform_types.tk2, item_desc->transform_types.unk_dobjtransform_0x2);
+            func_8000F720(item_gobj, attributes->dobj_setup, attributes->p_mobjsubs, NULL, item_desc->transform_types.tk1, item_desc->transform_types.tk2, item_desc->transform_types.unk_dobjtransform_0x2);
         }
         else
         {
             itManagerDObjSetup(item_gobj, attributes->dobj_setup, NULL, item_desc->transform_types.tk1);
 
-            if (attributes->mobjsub != NULL)
+            if (attributes->p_mobjsubs != NULL)
             {
-                gcAddMObjSubAll(item_gobj, attributes->mobjsub);
+                gcAddMObjSubAll(item_gobj, attributes->p_mobjsubs);
             }
         }
         if ((attributes->anim_joints != NULL) || (attributes->p_matanim_joints != NULL)) // Runs if item has joint or texture animation on spawn?

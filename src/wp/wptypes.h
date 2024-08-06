@@ -74,7 +74,7 @@ struct wpCreateDesc
 struct wpAttributes // Moreso hitbox stuff
 {
     void *dobj_setup;                       // If WEAPON_FLAG_DOBJSETUP is true, this is a DObjDesc*; else it's a display list
-    MObjSub ***mobjsub;                     // Triple pointer???
+    MObjSub ***p_mobjsubs;                     // Triple pointer???
     AObjAnimJoint **anim_joints;
     AObjAnimJoint ***p_matanim_joints;
     Vec3h offset[2];

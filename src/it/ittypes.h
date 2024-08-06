@@ -220,7 +220,7 @@ struct itHurtbox
 struct itAttributes
 {
 	void *dobj_setup; 		// DObjDesc?
-	MObjSub ***mobjsub;
+	MObjSub ***p_mobjsubs;
 	AObjAnimJoint **anim_joints;
 	AObjAnimJoint ***p_matanim_joints;
 	ub32 is_render_transparency : 1;

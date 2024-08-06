@@ -812,7 +812,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
                     ft_parts->gobj = omMakeGObjSPAfter(nOMObjCommonKindFighterParts, NULL, nOMObjCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
 
                     omAddDObjForGObj(ft_parts->gobj, ft_mesh->dl);
-                    func_ovl0_800C8CB8(DObjGetStruct(ft_parts->gobj), ft_mesh->mobjsub, ft_mesh->costume_matanim_joint, NULL, fp->costume);
+                    func_ovl0_800C8CB8(DObjGetStruct(ft_parts->gobj), ft_mesh->mobjsubs, ft_mesh->costume_matanim_joints, NULL, fp->costume);
                 }
             }
         }

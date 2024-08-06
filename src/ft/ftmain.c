@@ -4083,7 +4083,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
 
     if (dl != NULL)
     {
-        func_ovl0_800C8CB8(root_joint, commonpart->mobjsub[withheld_part->root_joint_id - nFTPartsJointCommonStart], commonpart->costume_matanim_joint[withheld_part->root_joint_id - nFTPartsJointCommonStart], NULL, fp->costume);
+        func_ovl0_800C8CB8(root_joint, commonpart->p_mobjsubs[withheld_part->root_joint_id - nFTPartsJointCommonStart], commonpart->p_costume_matanim_joints[withheld_part->root_joint_id - nFTPartsJointCommonStart], NULL, fp->costume);
     }
     if (commonpart != NULL)
     {

@@ -273,9 +273,9 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     }
     omAddGObjRenderProc(weapon_gobj, proc_render, 14, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    if (attributes->mobjsub != NULL)
+    if (attributes->p_mobjsubs != NULL)
     {
-        gcAddMObjSubAll(weapon_gobj, attributes->mobjsub);
+        gcAddMObjSubAll(weapon_gobj, attributes->p_mobjsubs);
     }
     if ((attributes->anim_joints != NULL) || (attributes->p_matanim_joints != NULL))
     {

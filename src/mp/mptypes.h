@@ -212,7 +212,7 @@ struct mpGroundDesc
 {
 	void *dobj_desc;
 	AObjAnimJoint **anim_joints;
-	MObjSub ***mobjsub;
+	MObjSub ***p_mobjsubs;
 	AObjAnimJoint ***p_matanim_joints;
 };
 

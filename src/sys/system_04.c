@@ -822,9 +822,9 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
             {
                 mat_aobjs[aobj->track - nOMObjAnimTrackMaterialStart] = aobj;
             }
-            if ((aobj->track >= nOMObjAnimTrackMaterialSpecialStart) && (aobj->track <= nOMObjAnimTrackMaterialSpecialEnd))
+            if ((aobj->track >= nOMObjAnimTrackMaterialSubStart) && (aobj->track <= nOMObjAnimTrackMaterialSubEnd))
             {
-                matspecial_aobjs[aobj->track - nOMObjAnimTrackMaterialSpecialStart] = aobj;
+                matspecial_aobjs[aobj->track - nOMObjAnimTrackMaterialSubStart] = aobj;
             }
             aobj = aobj->next;
         }
@@ -1100,7 +1100,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (matspecial_aobjs[i] == NULL)
                         {
-                            matspecial_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialSpecialStart);
+                            matspecial_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialSubStart);
                         }
                         matspecial_aobjs[i]->value_base = matspecial_aobjs[i]->value_target;
                         matspecial_aobjs[i]->value_target = mobj->matanim_joint->f;
@@ -1134,7 +1134,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (matspecial_aobjs[i] == NULL)
                         {
-                            matspecial_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialSpecialStart);
+                            matspecial_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialSubStart);
                         }
                         matspecial_aobjs[i]->value_base = matspecial_aobjs[i]->value_target;
                         matspecial_aobjs[i]->value_target = mobj->matanim_joint->f;
@@ -1195,9 +1195,235 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000DA40_E640.s")
+void gcPlayMObjMatAnim(MObj *mobj)
+{
+    f32 value;
+    AObj *aobj;
+    f32 temp_f16;
+    f32 temp_f12;
+    f32 temp_f18;
+    f32 temp_f14;
+    f32 temp_f20;
+    f32 temp_f22;
+    gsColorRGBA color; // color
+    f32 temp_f24;
+    s32 lerp;
+    gsColorRGBA sp38; // sp38
+    gsColorRGBA sp34; // sp34
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000DF34_EB34.s")
+    if (mobj->anim_remain != AOBJ_FRAME_NULL) 
+    {
+        aobj = mobj->aobj;
+        
+        while (aobj != NULL)
+        {
+            if (aobj->kind != 0) 
+            {
+                if (mobj->anim_remain != -1.1342745e38F) 
+                { 
+                    aobj->length += mobj->anim_rate; 
+                }
+                if (aobj->track < (nOMObjAnimTrackMaterialSubStart - 1))
+                {
+                    switch (aobj->kind) 
+                    {
+                        case 2: 
+                            value = aobj->value_base + (aobj->length * aobj->step_base); 
+                            break;
+                        
+                        case 3:
+                            temp_f16 = SQUARE(aobj->length_invert);
+                            temp_f12 = SQUARE(aobj->length);
+                            temp_f18 = aobj->length_invert * temp_f12;
+                            temp_f14 = aobj->length * temp_f12 * temp_f16;
+                            temp_f20 = 2.0F * temp_f14 * aobj->length_invert;
+                            temp_f22 = 3.0F * temp_f12 * temp_f16;
+                            temp_f24 = temp_f14 - temp_f18;
+
+                            value = (aobj->value_base * ((temp_f20 - temp_f22) + 1.0F)) + 
+                                    (aobj->value_target * (temp_f22 - temp_f20)) + 
+                                    (aobj->step_base * ((temp_f24 - temp_f18) + aobj->length)) + 
+                                    (aobj->step_target * temp_f24);
+                            break;
+                        
+                        case 1:
+                            value = (aobj->length_invert <= aobj->length) ? aobj->value_target : aobj->value_base;
+                            break;
+                        
+                        default: 
+                            break;
+                    }
+                    switch (aobj->track) 
+                    {
+                        case nOMObjAnimTrackSetTextureIDCurrent: 
+                            mobj->texture_id_current = value; 
+                            break;
+                        
+                        case nOMObjAnimTrackTexture14: 
+                            mobj->sub.unk14 = value; 
+                            break;
+                        
+                        case nOMObjAnimTrackTexture15: 
+                            mobj->sub.unk18 = value; 
+                            break;
+                        
+                        case nOMObjAnimTrackTexture16: 
+                            mobj->sub.unk1C = value; 
+                            break;
+                        
+                        case nOMObjAnimTrackTexture17: 
+                            mobj->sub.unk20 = value; 
+                            break;
+                        
+                        case nOMObjAnimTrackSetTextureIDNext: 
+                            mobj->texture_id_next = value; 
+                            break;
+                        
+                        case nOMObjAnimTrackTexture19: 
+                            mobj->sub.unk3C = value; 
+                            break;
+                        
+                        case nOMObjAnimTrackTexture20: 
+                            mobj->sub.unk40 = value; 
+                            break;
+                        
+                        case nOMObjAnimTrackSetLFrac: 
+                            mobj->lfrac = value; 
+                            break;
+                        
+                        case nOMObjAnimTrackSetTextureFrame: 
+                            mobj->texture_frame = value; 
+                            break;
+                        
+                        default: 
+                            break;
+                    }
+                } 
+                else 
+                {
+                    switch(aobj->kind)
+                    {
+                    case 2: 
+                        lerp = (aobj->length * aobj->length_invert * 256.0F);
+                    
+                        if (lerp < 0)
+                        { 
+                            lerp = 0; 
+                        }
+                        if (lerp > 256) 
+                        { 
+                            lerp = 256; 
+                        }
+                        sp34.pack = 0;
+                        sp38.pack = 0;
+
+                        sp38.g = ((u8*)&aobj->value_base)[0];
+                        sp38.a = ((u8*)&aobj->value_base)[1];
+                        
+                        sp34.g = ((u8*)&aobj->value_target)[0];
+                        sp34.a = ((u8*)&aobj->value_target)[1];
+
+                        sp38.pack = (256 - lerp) * sp38.pack + sp34.pack * lerp;
+
+                        color.r = sp38.r;
+                        color.g = sp38.b;
+
+                        sp38.pack = 0;
+                    
+                        sp38.g = ((u8*)&aobj->value_base)[2];
+                        sp38.a = ((u8*)&aobj->value_base)[3];
+                    
+                        sp34.g = ((u8*)&aobj->value_target)[2];
+                        sp34.a = ((u8*)&aobj->value_target)[3];
+
+                        sp38.pack = (256 - lerp) * sp38.pack + sp34.pack * lerp;
+
+                        color.b = sp38.r;
+                        color.a = sp38.b;
+                        break;
+                    
+                    case 1:
+                        color = (aobj->length_invert <= aobj->length) ? *(gsColorRGBA*)&aobj->value_target : *(gsColorRGBA*)&aobj->value_base;
+                        break;
+                    }
+                    switch(aobj->track)
+                    {
+                    case nOMObjAnimTrackPrimColor:
+                        mobj->sub.primcolor = color;
+                        break;
+
+                    case nOMObjAnimTrackEnvColor:
+                        mobj->sub.envcolor = color;
+                        break;
+
+                    case nOMObjAnimTrackBlendColor:
+                        mobj->sub.blendcolor = color;
+                        break;
+
+                    case nOMObjAnimTrackLight1Color:
+                        mobj->sub.light1color = color;
+                        break;
+
+                    case nOMObjAnimTrackLight2Color:
+                        mobj->sub.light2color = color;
+                        break;
+                    }
+                }
+            }
+            aobj = aobj->next;
+        }
+        if(mobj->anim_remain == -1.1342745e38F)
+        {
+            mobj->anim_remain = F32_MIN;
+        }
+    }
+}
+
+void gcPlayAnimAll(GObj *gobj)
+{
+    DObj *dobj = DObjGetStruct(gobj);
+    MObj *mobj;
+
+    while (dobj != NULL) 
+    {
+        gcParseDObjAnimJoint(dobj);
+        gcPlayDObjAnim(dobj);
+
+        mobj = dobj->mobj;
+
+        while (mobj != NULL) 
+        {
+            gcParseMObjMatAnimJoint(mobj);
+            gcPlayMObjMatAnim(mobj);
+
+            mobj = mobj->next;
+        }
+        if (dobj->child != NULL) 
+        {
+            dobj = dobj->child;
+        } 
+        else if (dobj->sib_next != NULL) 
+        {
+            dobj = dobj->sib_next;
+        } 
+        else while (TRUE) 
+        {
+            if (dobj->parent == DOBJ_PARENT_NULL)
+            {
+                dobj = NULL;
+
+                break;
+            }
+            else if (dobj->parent->sib_next != NULL)
+            {
+                dobj = dobj->parent->sib_next;
+
+                break;
+            }
+            else dobj = dobj->parent;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000E008_EC08.s")
 

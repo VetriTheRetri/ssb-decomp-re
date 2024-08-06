@@ -418,7 +418,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
                     while (mobj != NULL)
                     {
                         gcParseMObjMatAnimJoint(mobj);
-                        func_8000DA40_E640(mobj);
+                        gcPlayMObjMatAnim(mobj);
 
                         mobj = mobj->next;
                     }
@@ -444,7 +444,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
                 while (mobj != NULL)
                 {
                     gcParseMObjMatAnimJoint(mobj);
-                    func_8000DA40_E640(mobj);
+                    gcPlayMObjMatAnim(mobj);
 
                     mobj = mobj->next;
                 }

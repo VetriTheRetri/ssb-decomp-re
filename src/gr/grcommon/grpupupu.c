@@ -61,9 +61,6 @@ extern intptr_t lGRPupupuParticleBankHeaderHi;                  // 0x00B1E7E0
 extern intptr_t lGRPupupuParticleBankTextureLo;                 // 0x00B1E7E0
 extern intptr_t lGRPupupuParticleBankTextureHi;                 // 0x00B1F960
 
-extern void grGeometryLayer0ProcRenderPri(GObj*);
-extern void grGeometryLayer3ProcRenderPri(GObj*);
-extern void func_8000DF34_EB34(GObj*);
 extern void func_8000F590();
 
 // // // // // // // // // // // //
@@ -644,7 +641,7 @@ void grPupupuUpdateGObjAnims(void)
             // arg3
             0.0F
         );
-        func_8000DF34_EB34(gGRCommonStruct.pupupu.map_gobj[0]);
+        gcPlayAnimAll(gGRCommonStruct.pupupu.map_gobj[0]);
 
         gGRCommonStruct.pupupu.whispy_eyes_status = -1;
     }
@@ -664,7 +661,7 @@ void grPupupuUpdateGObjAnims(void)
             // arg3
             0.0F
         );
-        func_8000DF34_EB34(gGRCommonStruct.pupupu.map_gobj[1]);
+        gcPlayAnimAll(gGRCommonStruct.pupupu.map_gobj[1]);
 
         gGRCommonStruct.pupupu.whispy_mouth_status = -1;
     }
@@ -681,7 +678,7 @@ void grPupupuUpdateGObjAnims(void)
             // arg2
             0.0F
         );
-        func_8000DF34_EB34(gGRCommonStruct.pupupu.map_gobj[2]);
+        gcPlayAnimAll(gGRCommonStruct.pupupu.map_gobj[2]);
 
         gGRCommonStruct.pupupu.whispy_mouth_texture = -1;
     }
@@ -698,7 +695,7 @@ void grPupupuUpdateGObjAnims(void)
             // arg2
             0.0F
         );
-        func_8000DF34_EB34(gGRCommonStruct.pupupu.map_gobj[3]);
+        gcPlayAnimAll(gGRCommonStruct.pupupu.map_gobj[3]);
 
         gGRCommonStruct.pupupu.whispy_eyes_texture = -1;
     }
@@ -726,7 +723,7 @@ GObj* grPupupuMakeMapGObj(intptr_t tk, intptr_t offset2, void (*proc_render)(GOb
     {
         gcAddMObjSubAll(ground_gobj, (uintptr_t)gGRCommonStruct.pupupu.map_head + offset2);
     }
-    omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
+    omAddGObjCommonProc(ground_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
     return ground_gobj;
 }

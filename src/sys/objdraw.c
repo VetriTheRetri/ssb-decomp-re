@@ -1018,11 +1018,11 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
         }
         if (flags & MOBJ_FLAG_LIGHT1)
         {
-            gSPLightColor(branch_dl++, LIGHT_1, mobj->sub.light1_color);
+            gSPLightColor(branch_dl++, LIGHT_1, mobj->sub.light1color.pack);
         }
         if (flags & MOBJ_FLAG_LIGHT2)
         {
-            gSPLightColor(branch_dl++, LIGHT_2, mobj->sub.light2_color);
+            gSPLightColor(branch_dl++, LIGHT_2, mobj->sub.light2color.pack);
         }
         if (flags & (MOBJ_FLAG_PRIMCOLOR | 0x10 | 0x8))
         {

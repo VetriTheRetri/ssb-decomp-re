@@ -12,8 +12,6 @@ extern intptr_t lGRJungleTaruCannDefaultAnimJoint;      // 0x00000B20
 extern intptr_t lGRJungleTaruCannFillAnimJoint;         // 0x00000B68
 extern intptr_t lGRJungleTaruCannShootAnimJoint;        // 0x00000BF8
 
-extern void func_8000DF34_EB34(GObj*);
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //
@@ -129,10 +127,10 @@ void grJungleMakeTaruCann(void)
     omAddGObjRenderProc(tarucann_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     grModelSetupInitDObj(tarucann_gobj, (DObjDesc*) ((intptr_t)&lGRJungleMapHead + (uintptr_t)map_head), NULL, dGRJungleTaruCannTransformKinds);
-    omAddGObjCommonProc(tarucann_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
+    omAddGObjCommonProc(tarucann_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
     gcAddAnimJointAll(tarucann_gobj, ((uintptr_t)map_head + (intptr_t)&lGRJungleTaruCannDefaultAnimJoint), 0.0F);
-    func_8000DF34_EB34(tarucann_gobj);
+    gcPlayAnimAll(tarucann_gobj);
 
     omAddGObjCommonProc(tarucann_gobj, grJungleTaruCannProcUpdate, nOMObjProcessKindProc, 4);
     ftMainCheckAddGroundObstacle(tarucann_gobj, grJungleTaruCannCheckGetDamageKind);

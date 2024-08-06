@@ -49,7 +49,7 @@ void grBonus3MakeBumpers(void)
         if ((*anim_joint != NULL) && (item_gobj != NULL))
         {
             gcAddDObjAnimJoint(DObjGetStruct(item_gobj), *anim_joint, 0.0F);
-            func_8000DF34_EB34(item_gobj);
+            gcPlayAnimAll(item_gobj);
         }
     }
 }

@@ -302,8 +302,8 @@ struct _MObjSub
     u8 prim_pad[2];
     gsColorRGBA envcolor;
     gsColorRGBA blendcolor;
-    u32 light1_color;
-    u32 light2_color;
+    gsColorRGBA light1color;
+    gsColorRGBA light2color;
     s32 unk68;
     s32 unk6C;
     s32 unk70;

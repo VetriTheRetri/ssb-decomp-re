@@ -109,7 +109,7 @@ void scBonusGame_InitBonus1Targets()
 		if (*anim_joint != NULL)
 		{
 			gcAddDObjAnimJoint(DObjGetStruct(item_gobj), *anim_joint, 0.0F);
-			func_8000DF34_EB34(item_gobj);
+			gcPlayAnimAll(item_gobj);
 		}
 		dobj_desc++, anim_joint++, gGRCommonStruct.bonus1.target_count++;
 	}
@@ -334,7 +334,7 @@ void scBonusGame_InitBonus2Bumpers()
 			if (*anim_joint != NULL)
 			{
 				gcAddDObjAnimJoint(DObjGetStruct(item_gobj), *anim_joint, 0.0F);
-				func_8000DF34_EB34(item_gobj);
+				gcPlayAnimAll(item_gobj);
 			}
 			dobj_desc++, anim_joint++;
 		}

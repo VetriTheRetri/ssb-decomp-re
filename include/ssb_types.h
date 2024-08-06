@@ -89,9 +89,13 @@ typedef struct gsColorRGBPair
 
 } gsColorRGBPair;
 
-typedef struct gsColorRGBA
+typedef union gsColorRGBA
 {
-    u8 r, g, b, a;
+    struct
+    {
+        u8 r, g, b, a;
+    };
+    u32 pack;
 
 } gsColorRGBA;
 

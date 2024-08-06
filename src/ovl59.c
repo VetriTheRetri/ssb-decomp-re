@@ -800,7 +800,7 @@ void gmCreditsJobAndNameProcUpdate(GObj *gobj)
 		{
 			cn->interpolation = 1.0F;
 		}
-		func_8000DF34_EB34(gobj);
+		gcPlayAnimAll(gobj);
 		gsStopCurrentProcess(1);
 	}
 	if (cn->status == -1)

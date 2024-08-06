@@ -19,7 +19,6 @@ extern intptr_t lGRYosterParticleBankTextureLo;     // 0x00B22A00
 extern intptr_t lGRYosterParticleBankTextureHi;     // 0x00B22C30
 
 extern void func_ovl0_800C88AC(DObj*, void*, void*, f32);
-extern void func_8000DF34_EB34(GObj*);
 
 // // // // // // // // // // // //
 //                               //
@@ -235,7 +234,7 @@ void grYosterInitAll(void)
         omAddGObjRenderProc(map_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
         func_8000F590(map_gobj, (DObjDesc*) ((intptr_t)&lGRYosterMapHead + (uintptr_t)map_head), NULL, nOMTransformTra, nOMTransformNull, 0); // Make this nOMTransformTraRotRpyRSca to add static cloud animation
 
-        omAddGObjCommonProc(map_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
+        omAddGObjCommonProc(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
         gcAddAnimJointAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
 
@@ -255,7 +254,7 @@ void grYosterInitAll(void)
             omAddOMMtxForDObjFixed(cloud_dobj, 0x30, 0);
             func_ovl0_800C9228(cloud_dobj, (uintptr_t)map_head + (intptr_t)&D_NF_000004B8);
         }
-        func_8000DF34_EB34(map_gobj);
+        gcPlayAnimAll(map_gobj);
 
         gGRCommonStruct.yoster.clouds[i].status = nGRYosterCloudStatusSolid;
         gGRCommonStruct.yoster.clouds[i].anim_id = nGRYosterCloudStatusSolid;

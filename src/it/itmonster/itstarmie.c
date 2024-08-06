@@ -255,7 +255,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
     {
         gcAddMObjMatAnimJoint(item_dobj->mobj, itGetPData(ip, lITStarmieDataStart, lITStarmieMatAnimJoint), 0); // Linker thing
 
-        func_8000DF34_EB34(item_gobj);
+        gcPlayAnimAll(item_gobj);
     }
 }
 

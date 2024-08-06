@@ -196,7 +196,7 @@ sb32 itPakkunWaitProcUpdate(GObj *item_gobj)
 
             gcAddDObjAnimJoint(dobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunAppearAnimJoint, 0.0F);
             gcAddMObjMatAnimJoint(dobj->mobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunAppearMatAnimJoint, 0.0F);
-            func_8000DF34_EB34(item_gobj);
+            gcPlayAnimAll(item_gobj);
 
             dobj->translate.vec.f.y += ip->item_vars.pakkun.pos.y;
 
@@ -301,7 +301,7 @@ sb32 itPakkunAppearProcDamage(GObj *item_gobj)
         dobj->anim_remain = AOBJ_FRAME_NULL;
 
         gcAddMObjMatAnimJoint(dobj->mobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunDamagedMatAnimJoint, 0.0F);
-        func_8000DF34_EB34(item_gobj);
+        gcPlayAnimAll(item_gobj);
     }
     return FALSE;
 }

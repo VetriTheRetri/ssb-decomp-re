@@ -289,7 +289,7 @@ void itLizardonAttackInitItemVars(GObj *item_gobj)
 
         gcAddDObjAnimJoint(dobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonAnimJoint), 0.0F); // Linker thing
         gcAddMObjMatAnimJoint(dobj->mobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonMatAnimJoint), 0.0F); // Linker thing
-        func_8000DF34_EB34(item_gobj);
+        gcPlayAnimAll(item_gobj);
     }
 }
 

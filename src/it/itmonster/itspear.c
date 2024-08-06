@@ -204,7 +204,7 @@ void itSpearAppearInitItemVars(GObj *item_gobj)
         matanim_joint = itGetPData(ip, lITSpearDataStart, lITSpearMatAnimJoint); // Linker thing
 
         gcAddMObjMatAnimJoint(dobj->child->mobj, matanim_joint, 0.0F);
-        func_8000DF34_EB34(item_gobj);
+        gcPlayAnimAll(item_gobj);
         func_800269C0_275C0(nGMSoundVoiceMBallSpearSpawn);
     }
 }

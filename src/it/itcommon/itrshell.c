@@ -261,7 +261,7 @@ void itRShellSpinAddAnim(GObj *item_gobj) // Identical to Green Shell function
 
     gcAddDObjAnimJoint(dobj, itGetPData(ip, lITRShellDataStart, lITRShellAnimJoint), 0.0F); // Linker thing
     gcAddMObjMatAnimJoint(dobj->mobj, itGetPData(ip, lITRShellDataStart, lITRShellMatAnimJoint), 0.0F); // Linker thing
-    func_8000DF34_EB34(item_gobj);
+    gcPlayAnimAll(item_gobj);
 }
 
 // 0x8017A734

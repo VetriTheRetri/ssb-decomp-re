@@ -181,7 +181,7 @@ void itGShellSpinAddAnim(GObj *item_gobj)
 
     gcAddDObjAnimJoint(dobj, itGetPData(ip, lITGShellDataStart, lITGShellAnimJoint), 0.0F); // Linker thing
     gcAddMObjMatAnimJoint(dobj->mobj, itGetPData(ip, lITGShellDataStart, lITGShellMatAnimJoint), 0.0F); // Linker thing
-    func_8000DF34_EB34(item_gobj);
+    gcPlayAnimAll(item_gobj);
 }
 
 // 0x80178704

@@ -538,7 +538,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
 
     gcAddMObjMatAnimJoint(dobj->mobj, matanim_joint, 0.0F); // Set texture animation?
 
-    func_8000DF34_EB34(item_gobj);
+    gcPlayAnimAll(item_gobj);
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {

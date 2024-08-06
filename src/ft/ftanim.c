@@ -415,7 +415,7 @@ void func_ovl2_800ECCA4(GObj *gobj)
         while (mobj != NULL)
         {
             gcParseMObjMatAnimJoint(mobj);
-            func_8000DA40_E640(mobj);
+            gcPlayMObjMatAnim(mobj);
 
             mobj = mobj->next;
         }

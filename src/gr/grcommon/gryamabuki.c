@@ -16,8 +16,6 @@ extern intptr_t lGRYamabukiGateCloseAnimJoint;          // 0x00000A20
 extern intptr_t lGRYamabukiItemHead;                    // 0x00000014
 extern intptr_t lGRYamabukiMapHead;                     // 0x000008A0
 
-extern void func_8000DF34_EB34(GObj*);
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //
@@ -133,7 +131,7 @@ void grYamabukiGateSetPositionNear(void)
 void grYamabukiGateAddAnimOffset(intptr_t offset)
 {
     gcAddAnimJointAll(gGRCommonStruct.yamabuki.gate_gobj, (uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)offset, 0.0F);
-    func_8000DF34_EB34(gGRCommonStruct.yamabuki.gate_gobj);
+    gcPlayAnimAll(gGRCommonStruct.yamabuki.gate_gobj);
 }
 
 // 0x8010AED8
@@ -265,7 +263,7 @@ void grYamabukiMakeGate(void)
 
     omAddGObjRenderProc(gate_gobj, odRenderDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
     func_8000F590(gate_gobj, (DObjDesc*) ((uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)&lGRYamabukiMapHead), NULL, nOMTransformTraRotRpyR, 0, 0);
-    omAddGObjCommonProc(gate_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
+    omAddGObjCommonProc(gate_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
     grYamabukiGateAddAnimClose();
 }
 

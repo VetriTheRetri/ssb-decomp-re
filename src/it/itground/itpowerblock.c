@@ -115,7 +115,7 @@ sb32 itPowerBlockWaitProcDamage(GObj *item_gobj)
     ip->item_hurt.hitstatus = nGMHitStatusNone;
 
     gcAddDObjAnimJoint(DObjGetStruct(item_gobj), itGetPData(ip, lITPowerBlockDataStart, lITPowerBlockAnimJoint), 0.0F); // Linker thing
-    func_8000DF34_EB34(item_gobj);
+    gcPlayAnimAll(item_gobj);
     func_800269C0_275C0(nGMSoundFGMInishiePowerBlock);
     efManagerQuakeMakeEffect(3);
     grInishiePowerBlockSetDamage();

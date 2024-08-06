@@ -3201,7 +3201,7 @@ void mnBattleCreateWhiteCircles()
 
 		omAddGObjCommonProc(white_circle_gobj, mnBattleSyncWhiteCircleSizeAndDisplay, 1, 1);
 
-		func_8000DF34_EB34(white_circle_gobj);
+		gcPlayAnimAll(white_circle_gobj);
 
 		DObjGetStruct(white_circle_gobj)->translate.vec.f.x = x;
 		DObjGetStruct(white_circle_gobj)->translate.vec.f.y = y;

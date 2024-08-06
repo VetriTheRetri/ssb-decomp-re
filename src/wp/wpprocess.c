@@ -3,8 +3,6 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
 
-extern void func_8000DF34_EB34(GObj*);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -128,7 +126,7 @@ void wpProcessProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
 
     if (!(wp->is_hitlag_weapon))
     {
-        func_8000DF34_EB34(weapon_gobj);
+        gcPlayAnimAll(weapon_gobj);
 
         if (wp->proc_update != NULL)
         {

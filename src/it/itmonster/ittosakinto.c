@@ -191,7 +191,7 @@ void itTosakintoBounceInitItemVars(GObj *item_gobj)
 
         gcAddMObjMatAnimJoint(dobj->child->mobj, matanim_joint, 0.0F);
 
-        func_8000DF34_EB34(item_gobj);
+        gcPlayAnimAll(item_gobj);
     }
 }
 

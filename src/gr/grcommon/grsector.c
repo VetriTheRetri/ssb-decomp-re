@@ -37,10 +37,8 @@ extern intptr_t D_NF_00001B84;                              // 0x00001B84
 extern intptr_t D_NF_00002EB4;                              // 0x00002EB4
 
 extern f32 func_8000CB94_D794();
-extern void func_8000DF34_EB34(GObj*);
 extern void hal_interpolation_quadratic(void*, void*, f32);
 extern void hal_interpolation_cubic(void*, void*, f32);
-extern void gmCollisionGetWorldPosition();
 
 // // // // // // // // // // // //
 //                               //
@@ -1124,7 +1122,7 @@ void grSectorInitAll(void)
 
     omAddGObjRenderProc(map_gobj, odRenderDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
     grModelSetupInitDObj(map_gobj, (DObjDesc*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002C30), gGRCommonStruct.sector.map_dobj, dGRSectorArwingTransformKinds);
-    omAddGObjCommonProc(map_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
+    omAddGObjCommonProc(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
     gGRCommonStruct.sector.arwing_status = 0;
     gGRCommonStruct.sector.arwing_flight_pattern = -1;
@@ -1137,7 +1135,7 @@ void grSectorInitAll(void)
     map_gobj->flags = GOBJ_FLAG_NORENDER;
 
     gcAddDObjAnimJoint(gGRCommonStruct.sector.map_dobj[10], (AObjAnimJoint*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002E74), 0.0F);
-    func_8000DF34_EB34(map_gobj);
+    gcPlayAnimAll(map_gobj);
     mpCollisionSetYakumonoOffID(1);
     gGRCommonStruct.sector.weapon_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart);
 }

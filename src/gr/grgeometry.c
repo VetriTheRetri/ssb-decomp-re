@@ -1,6 +1,5 @@
 #include <gr/ground.h>
 
-extern void func_8000DF34_EB34(GObj*);
 extern void func_8000F590();
 extern void gcAddMObjSubAll();
 
@@ -18,7 +17,7 @@ grGeometryDesc dGRGeometryDescs[/* */] =
         grGeometryLayer0ProcRenderPri,
         grGeometryLayer0ProcRenderSec,
         4,
-        func_8000DF34_EB34
+        gcPlayAnimAll
     },
 
     // Layer 1
@@ -34,7 +33,7 @@ grGeometryDesc dGRGeometryDescs[/* */] =
         grGeometryLayer2ProcRenderPri,
         grGeometryLayer2ProcRenderSec,
         13,
-        func_8000DF34_EB34
+        gcPlayAnimAll
     },
 
     // Layer 3
@@ -42,7 +41,7 @@ grGeometryDesc dGRGeometryDescs[/* */] =
         grGeometryLayer3ProcRenderPri,
         grGeometryLayer3ProcRenderSec,
         17,
-        func_8000DF34_EB34
+        gcPlayAnimAll
     }
 };
 
@@ -239,15 +238,15 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     omAddGObjRenderProc(ground_gobj, proc_render, dGRGeometryDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
     func_8000F590(ground_gobj, gr_desc->dobj_desc, p_dobj, nOMTransformTraRotRpyRSca, nOMTransformNull, 0);
 
-    if (gr_desc->aobj != NULL)
+    if (gr_desc->mobjsub != NULL)
     {
-        gcAddMObjSubAll(ground_gobj, gr_desc->aobj);
+        gcAddMObjSubAll(ground_gobj, gr_desc->mobjsub);
     }
-    if ((gr_desc->anim_joint != NULL) || (gr_desc->matanim_joint != NULL))
+    if ((gr_desc->anim_joints != NULL) || (gr_desc->p_matanim_joints != NULL))
     {
-        gcAddAnimAll(ground_gobj, gr_desc->anim_joint, gr_desc->matanim_joint, 0.0F);
+        gcAddAnimAll(ground_gobj, gr_desc->anim_joints, gr_desc->p_matanim_joints, 0.0F);
         omAddGObjCommonProc(ground_gobj, dGRGeometryDescs[gr_desc_id].proc_update, nOMObjProcessKindProc, 4);
-        func_8000DF34_EB34(ground_gobj);
+        gcPlayAnimAll(ground_gobj);
     }
     else if (gr_desc_id == 1)
     {

@@ -161,7 +161,7 @@ void itMBallOpenAddAnim(GObj *item_gobj)
     void *matanim_joint = itGetPData(ip, lITMBallDataStart, lITMBallMatAnimJoint); // Linker thing
 
     gcAddMObjMatAnimJoint(dobj->child->child->sib_next->mobj, matanim_joint, 0.0F);
-    func_8000DF34_EB34(item_gobj);
+    gcPlayAnimAll(item_gobj);
 }
 
 // 0x8017C6F8

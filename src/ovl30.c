@@ -922,15 +922,15 @@ GObj* mnStageCreateStageGeo(s32 stage_id, mpGroundData* stage_info, mpGroundDesc
 	omAddGObjRenderProc(stage_geo_gobj, (stage_info->layer_mask & (1 << stage_geo_id)) ? mnStageRenderStagePreviewSecondary : mnStageRenderStagePreviewPrimary, 3U, 0x80000000U, -1);
 	func_8000F590(stage_geo_gobj, stage_geo->dobj_desc, NULL, 0x1CU, 0, 0);
 
-	if (stage_geo->aobj != NULL)
+	if (stage_geo->mobjsub != NULL)
 	{
-		gcAddMObjSubAll(stage_geo_gobj, stage_geo->aobj);
+		gcAddMObjSubAll(stage_geo_gobj, stage_geo->mobjsub);
 	}
 
-	if ((stage_geo->anim_joint != NULL) || (stage_geo->matanim_joint != NULL))
+	if ((stage_geo->anim_joints != NULL) || (stage_geo->p_matanim_joints != NULL))
 	{
-		gcAddAnimAll(stage_geo_gobj, stage_geo->anim_joint, stage_geo->matanim_joint, 0.0f);
-		func_8000DF34_EB34(stage_geo_gobj);
+		gcAddAnimAll(stage_geo_gobj, stage_geo->anim_joints, stage_geo->p_matanim_joints, 0.0F);
+		gcPlayAnimAll(stage_geo_gobj);
 	}
 
 	DObjGetStruct(stage_geo_gobj)->scale.vec.f.x = scale[stage_id];

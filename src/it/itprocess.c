@@ -3,8 +3,6 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
 
-extern void func_8000DF34_EB34(GObj*);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -99,7 +97,7 @@ void itProcessProcItemMain(GObj *item_gobj)
     }
     if (ip->hitlag_timer <= 0)
     {
-        func_8000DF34_EB34(item_gobj);
+        gcPlayAnimAll(item_gobj);
     }
     if (ip->hitlag_timer <= 0)
     {

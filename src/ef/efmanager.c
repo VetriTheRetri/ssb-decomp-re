@@ -7,7 +7,6 @@
 #include <gm/battle.h>
 #include <ovl0/reloc_data_mgr.h>
 
-extern void func_8000DF34_EB34(GObj*);
 extern void func_ovl0_800CB4B0(GObj*);
 extern void func_ovl0_800C88AC(void*, void*, void*, f32);
 extern void func_ovl0_800C8758(void*, void*, f32);
@@ -1010,7 +1009,7 @@ efCreateDesc dEFManagerSamusGrappleBeamEffectDesc =
         0x00                                // ???
     },
 
-    func_8000DF34_EB34,                          // Proc Update (WHAT IS THIS FUNCTION???)
+    gcPlayAnimAll,                          // Proc Update (WHAT IS THIS FUNCTION???)
     odRenderDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerSamusGrappleBeamDObjSetup,               // DObj Setup attributes offset (?)
@@ -1292,7 +1291,7 @@ efCreateDesc dEFManagerNessPsychicMagnetEffectDesc =
         0x00                                // ???
     },
 
-    func_8000DF34_EB34,                          // Proc Update
+    gcPlayAnimAll,                          // Proc Update
     odRenderDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerNessPsychicMagnetDObjSetup,             // DObj Setup attributes offset (?)
@@ -1382,7 +1381,7 @@ efCreateDesc dEFManagerNessPKThunderWaveEffectDesc =
         0x00                                // ???
     },
 
-    func_8000DF34_EB34,                          // Proc Update
+    gcPlayAnimAll,                          // Proc Update
     odRenderDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerNessPKThunderWaveDObjSetup,             // DObj Setup attributes offset (?)
@@ -1442,7 +1441,7 @@ efCreateDesc dEFManagerLinkEntryWaveEffectDesc =
         0x00                                // ???
     },
 
-    func_8000DF34_EB34,                          // Proc Update
+    gcPlayAnimAll,                          // Proc Update
     odRenderDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerLinkEntryWaveDObjSetup,             // DObj Setup attributes offset (?)
@@ -1472,7 +1471,7 @@ efCreateDesc dEFManagerLinkEntryBeamEffectDesc =
         0x00                                // ???
     },
 
-    func_8000DF34_EB34,                          // Proc Update
+    gcPlayAnimAll,                          // Proc Update
     odRenderDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerLinkEntryBeamDObjSetup,             // DObj Setup attributes offset (?)
@@ -1928,7 +1927,7 @@ efCreateDesc dEFManagerRebirthHaloEffectDesc =
         0x00                                // ???
     },
 
-    func_8000DF34_EB34,                          // Proc Update
+    gcPlayAnimAll,                          // Proc Update
     odRenderDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerRebirthHaloDObjSetup,               // DObj Setup attributes offset (?)
@@ -2054,7 +2053,7 @@ void efManagerSetPrevStructAlloc(efStruct *ep)
 // 0x800FD524
 void efManagerNoStructProcUpdate(GObj *effect_gobj)
 {
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     if (effect_gobj->anim_frame <= 0.0F)
     {
@@ -2069,7 +2068,7 @@ void efManagerHaveStructProcUpdate(GObj *effect_gobj)
 
     if (!(ep->is_pause_effect))
     {
-        func_8000DF34_EB34(effect_gobj);
+        gcPlayAnimAll(effect_gobj);
 
         if (effect_gobj->anim_frame <= 0.0F)
         {
@@ -2093,7 +2092,7 @@ void efManagerNoEjectProcUpdate(GObj *effect_gobj)
 
     if (!(ep->is_pause_effect))
     {
-        func_8000DF34_EB34(effect_gobj);
+        gcPlayAnimAll(effect_gobj);
     }
 }
 
@@ -2253,7 +2252,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
         if ((o_anim_joint != 0) || (o_matanim_joint != 0))
         {
             func_ovl0_800C88AC(main_dobj, (o_anim_joint != 0) ? (void*) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (void*) (addr + o_matanim_joint) : NULL, 0.0F);
-            func_8000DF34_EB34(effect_gobj);
+            gcPlayAnimAll(effect_gobj);
         }
     }
     else
@@ -2293,7 +2292,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
         if ((o_anim_joint != 0) || (o_matanim_joint != 0))
         {
             gcAddAnimAll(effect_gobj, (o_anim_joint != 0) ? (AObjAnimJoint**) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (AObjAnimJoint***) (addr + o_matanim_joint) : NULL, 0.0F);
-            func_8000DF34_EB34(effect_gobj);
+            gcPlayAnimAll(effect_gobj);
         }
     }
     return effect_gobj;
@@ -2574,7 +2573,7 @@ void efManagerVelAddDestroyAnimEnd(GObj *effect_gobj)
     efStruct *ep = efGetStruct(effect_gobj);
     DObj *dobj = DObjGetStruct(effect_gobj);
 
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     if (dobj->mobj->anim_frame <= 0.0F)
     {
@@ -3427,7 +3426,7 @@ void efManagerDamageFlyOrbsProcUpdate(GObj *effect_gobj)
     efStruct *ep = efGetStruct(effect_gobj);
     DObj *dobj = DObjGetStruct(effect_gobj);
 
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     ep->effect_vars.damage_fly_orbs.lifetime--;
 
@@ -3547,7 +3546,7 @@ void efManagerImpactWaveProcUpdate(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
 
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     if (effect_gobj->anim_frame <= 0.0F)
     {
@@ -3605,7 +3604,7 @@ void efManagerStarRodSparkProcUpdate(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
 
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     if (effect_gobj->anim_frame <= 0.0F)
     {
@@ -3659,7 +3658,7 @@ void efManagerDamageFlySparksProcUpdate(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
 
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     if (effect_gobj->anim_frame <= 0.0F)
     {
@@ -4007,7 +4006,7 @@ void efManagerQuakeProcUpdate(GObj *effect_gobj)
     Camera *cam;
     f32 mag;
 
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     if (effect_gobj->anim_frame <= 0.0F)
     {
@@ -4096,7 +4095,7 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude) // Linker things here
     default:
         break;
     }
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     ep->effect_vars.quake.priority = 3 - magnitude;
 
@@ -4277,7 +4276,7 @@ void efManagerFoxReflectorSetAnimID(GObj *effect_gobj, s32 anim_id)
     ep->effect_vars.reflector.index = anim_id;
 
     gcAddAnimJointAll(effect_gobj, gcGetAnimFromFile(AObjAnimJoint**, gFTDataFoxSpecial2, dEFManagerFoxReflectorAnimJointOffsets[anim_id]), 0.0F);
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 }
 
 // 0x80100ED4
@@ -4285,7 +4284,7 @@ void efManagerFoxReflectorProcUpdate(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
 
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     if (effect_gobj->anim_frame <= 0.0F)
     {
@@ -4617,7 +4616,7 @@ void func_ovl2_801017E8(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
 
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     if (ep->effect_vars.unknown1.efvars_unk1_0x0 == 0)
     {
@@ -4686,7 +4685,7 @@ GObj* efManagerPikachuThunderShockMakeEffect(GObj *fighter_gobj, Vec3f *pos, s32
             gcGetAnimFromFile(AObjAnimJoint***, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock1MatAnimJoint), 
             0.0F
         );
-        func_8000DF34_EB34(effect_gobj);
+        gcPlayAnimAll(effect_gobj);
         break;
 
     case 2:
@@ -4697,7 +4696,7 @@ GObj* efManagerPikachuThunderShockMakeEffect(GObj *fighter_gobj, Vec3f *pos, s32
             gcGetAnimFromFile(AObjAnimJoint***, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock2MatAnimJoint), 
             0.0F
         );
-        func_8000DF34_EB34(effect_gobj);
+        gcPlayAnimAll(effect_gobj);
         break;
     }
     return effect_gobj;
@@ -5625,7 +5624,7 @@ void efManagerYoshiEggLayProcUpdate(GObj *effect_gobj)
     {
         efManagerYoshiEggLaySetAnim(effect_gobj, ep->effect_vars.yoshi_egg_lay.force_index);
     }
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     if ((ep->effect_vars.yoshi_egg_lay.index == 2) && (effect_gobj->anim_frame <= 0.0F))
     {
@@ -5850,7 +5849,7 @@ void efManagerCaptainEntryCarProcUpdate(GObj *effect_gobj)
 {
     DObj *dobj = DObjGetStruct(effect_gobj)->child;
 
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     if (dobj->anim_frame <= 0.0F)
     {
@@ -5896,7 +5895,7 @@ GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr)
 
         node_dobj = node_dobj->sib_next;
     }
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     dobj->translate.vec.f = *pos;
 
@@ -5947,7 +5946,7 @@ void efManagerFoxEntryArwingProcUpdate(GObj *effect_gobj)
 {
     DObj *dobj = DObjGetStruct(effect_gobj)->child;
 
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     if (dobj->anim_frame <= 0.0F)
     {
@@ -5982,7 +5981,7 @@ GObj* efManagerFoxEntryArwingMakeEffect(Vec3f *pos, s32 lr)
     }
     else func_ovl0_800C8758(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_00000590, 0.0F); // Linker thing
 
-    func_8000DF34_EB34(effect_gobj);
+    gcPlayAnimAll(effect_gobj);
 
     dobj->translate.vec.f = *pos;
 

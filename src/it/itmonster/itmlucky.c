@@ -124,7 +124,7 @@ void itMLuckyMakeEggInitItemVars(GObj *item_gobj)
     if (ip->it_kind == nITKindMLucky)
     {
         gcAddDObjAnimJoint(dobj->child, itGetPData(ip, lITLuckyDataStart, lITLuckyAnimJoint), 0.0F); // Linker thing
-        func_8000DF34_EB34(item_gobj);
+        gcPlayAnimAll(item_gobj);
     }
     ip->item_hurt.hitstatus = nGMHitStatusNormal;
 

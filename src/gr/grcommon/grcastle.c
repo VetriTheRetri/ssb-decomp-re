@@ -1,8 +1,6 @@
 #include <gr/ground.h>
 #include <it/item.h>
 
-extern void func_8000DF34_EB34(GObj*);
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //
@@ -49,10 +47,10 @@ void grCastleInitAll(void)
     dobj = omAddDObjForGObj(ground_gobj, NULL);
     dobj->translate.vec.f.x = dobj->translate.vec.f.y = dobj->translate.vec.f.z = 0.0F;
 
-    omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
+    omAddGObjCommonProc(ground_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
     gcAddAnimJointAll(ground_gobj, gMPCollisionGroundData->map_nodes, 0.0F);
-    func_8000DF34_EB34(ground_gobj);
+    gcPlayAnimAll(ground_gobj);
 
     mpCollisionGetMapObjIDsKind(nMPMapObjKindBumper, &pos_id);
     mpCollisionGetMapObjPositionID(pos_id, &yakumono_pos);

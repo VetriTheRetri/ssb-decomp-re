@@ -39,4 +39,10 @@ extern f32 func_8000CC40_D840(AObj *aobj);
 // Apply AnimJoint values on current frame of animation to specific DObj
 extern void gcPlayDObjAnim(DObj *dobj);
 
+// Apply MatAnimJoint values on current frame of animation to specific MObj
+extern void gcPlayMObjMatAnim(MObj *mobj);
+
+// Play all DObj and MObj animations on a GObj
+extern void gcPlayAnimAll(GObj *gobj);
+
 #endif

@@ -210,10 +210,10 @@ struct mpItemWeights
 
 struct mpGroundDesc
 {
-	void* dobj_desc;
-	void* anim_joint;
-	void* aobj;
-	void* matanim_joint;
+	void *dobj_desc;
+	AObjAnimJoint **anim_joints;
+	MObjSub ***mobjsub;
+	AObjAnimJoint ***p_matanim_joints;
 };
 
 struct mpGroundData

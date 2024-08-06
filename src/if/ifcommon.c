@@ -1752,7 +1752,7 @@ void ifCommonPlayerArrowsRightProcRender(GObj *interface_gobj)
 void ifCommonPlayerArrowsAddAnim(GObj *interface_gobj)
 {
     gcAddAnimJointAll(interface_gobj, (void*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&D_NF_00000270), 0.0F);
-    func_8000DF34_EB34(interface_gobj);
+    gcPlayAnimAll(interface_gobj);
 }
 
 // 0x801115FC
@@ -1767,7 +1767,7 @@ void ifCommonPlayerArrowsLeftProcUpdate(GObj *interface_gobj)
         ifCommonPlayerArrowsAddAnim(interface_gobj);
         // Fallthrough
     default:
-        func_8000DF34_EB34(interface_gobj);
+        gcPlayAnimAll(interface_gobj);
         break;
     }
 }
@@ -1784,7 +1784,7 @@ void ifCommonPlayerArrowsRightProcUpdate(GObj *interface_gobj)
         ifCommonPlayerArrowsAddAnim(interface_gobj);
         // Fallthrough
     default:
-        func_8000DF34_EB34(interface_gobj);
+        gcPlayAnimAll(interface_gobj);
         break;
     }
 }

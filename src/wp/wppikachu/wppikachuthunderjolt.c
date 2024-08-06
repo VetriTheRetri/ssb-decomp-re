@@ -211,7 +211,7 @@ void wpPikachuThunderJoltGroundAddAnim(GObj *weapon_gobj)
         (uintptr_t)gFTDataPikachuSpecial3 + (intptr_t)&lWPPikachuThunderJoltMatAnimJoint, 
         0.0F
     ); // Linker thing
-    func_8000DF34_EB34(weapon_gobj);
+    gcPlayAnimAll(weapon_gobj);
 }
 
 // 0x801696A0

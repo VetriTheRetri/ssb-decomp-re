@@ -13,9 +13,6 @@ extern intptr_t lGRInishieMapHead;                      // 0x000005F0
 extern intptr_t lGRInishieScaleRetractAnimJoint;        // 0x00000734
 extern intptr_t lGRInishiePowerBlockHit;                // 0x000000BC
 
-extern void func_8000DF34_EB34(GObj*);
-extern void grModelSetupInitDObj();
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //
@@ -385,7 +382,7 @@ void grInishieMakeScale(void)
         gGRCommonStruct.inishie.scale[i].platform_dobj = platform_dobj;
 
         omAddOMMtxForDObjFixed(platform_dobj, nOMTransformTra, 0);
-        omAddGObjCommonProc(ground_gobj, func_8000DF34_EB34, nOMObjProcessKindProc, 5);
+        omAddGObjCommonProc(ground_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
         mpCollisionGetMapObjIDsKind(dGRInishieScaleMapObjKinds[i], &mapobj);
         mpCollisionGetMapObjPositionID(mapobj, &yakumono_pos);

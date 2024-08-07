@@ -691,11 +691,11 @@ typedef struct itGroundItemVarsFushigibana
 
 } itGroundItemVarsFushigibana;
 
-typedef struct itGroundItemVarsRaceBomb
+typedef struct itGroundItemVarsTaruBomb
 {
 	f32 roll_rotate_step;
 
-} itGroundItemVarsRaceBomb;
+} itGroundItemVarsTaruBomb;
 
 typedef struct itFighterItemVarsPKFire
 {

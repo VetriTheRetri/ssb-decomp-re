@@ -387,7 +387,7 @@ struct itStruct 					// Common items, stage hazards, fighter items and Pokémon
 
 		// Stage items
 		itGroundItemVarsPakkun pakkun;
-		itGroundItemVarsRaceBomb tarubomb;
+		itGroundItemVarsTaruBomb tarubomb;
 		itGroundItemVarsGrLucky glucky;
 		itGroundItemVarsMarumine marumine;
 		itGroundItemVarsHitokage hitokage;

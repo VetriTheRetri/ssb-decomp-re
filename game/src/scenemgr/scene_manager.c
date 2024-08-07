@@ -88,7 +88,7 @@ void start_scene_manager(UNUSED u32 set) {
         switch (gSceneData.scene_current) {
             case 0:
                 load_overlay(&D_800A3070[11]);
-                n64_logo_entry();
+                mnNoControllerStartScene();
                 break;
             case 1:
                 load_overlay(&D_800A3070[2]);
@@ -209,7 +209,7 @@ void start_scene_manager(UNUSED u32 set) {
                 load_overlay(&D_800A3070[5]);
                 overlay_set23_entry();
                 break;
-            case 52: 
+            case 52:
                 func_ovl2_800D67DC();
                 break;
             case 53:
@@ -1368,7 +1368,7 @@ struct BattleState gDefaultBattleState = {
         {
         /* 00 */ 3, 9, PLAYER_NOT_PRESENT, 0x1C,
         /* 04 */ 0, 0, 0,
-        /* 08 */ { 1, 0x000 }, 
+        /* 08 */ { 1, 0x000 },
         /* 10 */ // rest is zero
         },
         {

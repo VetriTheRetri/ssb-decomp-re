@@ -4,7 +4,7 @@
 // these will eventually find a home in their actual headers
 
 extern void title_screen_entry(void);         // ovl 10
-extern void n64_logo_entry(void);             // ovl 11
+extern void mnNoControllerStartScene(void);             // ovl 11
 extern void debug_sss_entry(void);            // ovl 12
 extern void debug_system_entry(void);         // ovl 13
 extern void debug_battle_entry(void);         // ovl 14

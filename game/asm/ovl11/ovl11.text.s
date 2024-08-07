@@ -12,7 +12,7 @@
 # Text Sections
 #  0x800D6490 -> 0x800D6700
 
-glabel func_ovl11_800D6490
+glabel mnNoControllerCreateViewport
   /* 119AC0 800D6490 27BDFFB8 */     addiu $sp, $sp, -0x48
   /* 119AC4 800D6494 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 119AC8 800D6498 AFBF003C */        sw $ra, 0x3c($sp)
@@ -54,9 +54,9 @@ glabel func_ovl11_800D6490
   /* 119B58 800D6528 8FA20044 */        lw $v0, 0x44($sp)
   /* 119B5C 800D652C 27BD0048 */     addiu $sp, $sp, 0x48
   /* 119B60 800D6530 03E00008 */        jr $ra
-  /* 119B64 800D6534 00000000 */       nop 
+  /* 119B64 800D6534 00000000 */       nop
 
-glabel func_ovl11_800D6538
+glabel mnNoControllerCreateNoControllerImage
   /* 119B68 800D6538 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 119B6C 800D653C AFBF001C */        sw $ra, 0x1c($sp)
   /* 119B70 800D6540 240403E9 */     addiu $a0, $zero, 0x3e9
@@ -82,19 +82,19 @@ glabel func_ovl11_800D6538
   /* 119BC0 800D6590 01F82821 */      addu $a1, $t7, $t8
   /* 119BC4 800D6594 3C014120 */       lui $at, (0x41200000 >> 16) # 10.0
   /* 119BC8 800D6598 44810000 */      mtc1 $at, $f0 # 10.0 to cop1
-  /* 119BCC 800D659C 00000000 */       nop 
+  /* 119BCC 800D659C 00000000 */       nop
   /* 119BD0 800D65A0 E4400058 */      swc1 $f0, 0x58($v0)
   /* 119BD4 800D65A4 E440005C */      swc1 $f0, 0x5c($v0)
   /* 119BD8 800D65A8 8FBF001C */        lw $ra, 0x1c($sp)
   /* 119BDC 800D65AC 27BD0028 */     addiu $sp, $sp, 0x28
   /* 119BE0 800D65B0 03E00008 */        jr $ra
-  /* 119BE4 800D65B4 00000000 */       nop 
+  /* 119BE4 800D65B4 00000000 */       nop
 
-glabel func_ovl11_800D65B8
+glabel mnNoControllerInit
   /* 119BE8 800D65B8 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 119BEC 800D65BC AFBF001C */        sw $ra, 0x1c($sp)
-  /* 119BF0 800D65C0 0C035998 */       jal func_ovl11_800D6660
-  /* 119BF4 800D65C4 00000000 */       nop 
+  /* 119BF0 800D65C0 0C035998 */       jal mnNoControllerLoadFiles
+  /* 119BF4 800D65C4 00000000 */       nop
   /* 119BF8 800D65C8 240E00FF */     addiu $t6, $zero, 0xff
   /* 119BFC 800D65CC AFAE0010 */        sw $t6, 0x10($sp)
   /* 119C00 800D65D0 00002025 */        or $a0, $zero, $zero
@@ -102,16 +102,16 @@ glabel func_ovl11_800D65B8
   /* 119C08 800D65D8 24060064 */     addiu $a2, $zero, 0x64
   /* 119C0C 800D65DC 0C002E7F */       jal func_8000B9FC
   /* 119C10 800D65E0 00003825 */        or $a3, $zero, $zero
-  /* 119C14 800D65E4 0C035924 */       jal func_ovl11_800D6490
-  /* 119C18 800D65E8 00000000 */       nop 
-  /* 119C1C 800D65EC 0C03594E */       jal func_ovl11_800D6538
-  /* 119C20 800D65F0 00000000 */       nop 
+  /* 119C14 800D65E4 0C035924 */       jal mnNoControllerCreateViewport
+  /* 119C18 800D65E8 00000000 */       nop
+  /* 119C1C 800D65EC 0C03594E */       jal mnNoControllerCreateNoControllerImage
+  /* 119C20 800D65F0 00000000 */       nop
   /* 119C24 800D65F4 8FBF001C */        lw $ra, 0x1c($sp)
   /* 119C28 800D65F8 27BD0020 */     addiu $sp, $sp, 0x20
   /* 119C2C 800D65FC 03E00008 */        jr $ra
-  /* 119C30 800D6600 00000000 */       nop 
+  /* 119C30 800D6600 00000000 */       nop
 
-glabel n64_logo_entry
+glabel mnNoControllerStartScene
   /* 119C34 800D6604 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
   /* 119C38 800D6608 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 119C3C 800D660C 3C04800D */       lui $a0, %hi(D_ovl11_800D6700)
@@ -133,12 +133,12 @@ glabel n64_logo_entry
   /* 119C7C 800D664C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 119C80 800D6650 27BD0018 */     addiu $sp, $sp, 0x18
   /* 119C84 800D6654 03E00008 */        jr $ra
-  /* 119C88 800D6658 00000000 */       nop 
+  /* 119C88 800D6658 00000000 */       nop
 
-  /* 119C8C 800D665C 00000000 */       nop 
+  /* 119C8C 800D665C 00000000 */       nop
 
 # Likely start of new file
-glabel func_ovl11_800D6660
+glabel mnNoControllerLoadFiles
   /* 119C90 800D6660 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 119C94 800D6664 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 119C98 800D6668 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -178,12 +178,12 @@ glabel func_ovl11_800D6660
   /* 119D20 800D66F0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 119D24 800D66F4 27BD0040 */     addiu $sp, $sp, 0x40
   /* 119D28 800D66F8 03E00008 */        jr $ra
-  /* 119D2C 800D66FC 00000000 */       nop 
+  /* 119D2C 800D66FC 00000000 */       nop
 #
 #glabel D_ovl11_800D6700   # Routine parsed as data
 #  /* 119D30 800D6700 80392A00 */        lb $t9, 0x2a00($at)
 #  /* 119D34 800D6704 803B6900 */        lb $k1, 0x6900($at)
 #  /* 119D38 800D6708 803DA800 */        lb $sp, -0x5800($at)
-#  /* 119D3C 800D670C 00000000 */       nop 
-#  /* 119D40 800D6710 00000140 */     pause 
+#  /* 119D3C 800D670C 00000000 */       nop
+#  /* 119D40 800D6710 00000140 */     pause
 #  /* 119D44 800D6714 000000F0 */       tge $zero, $zero, 3

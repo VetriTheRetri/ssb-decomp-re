@@ -20,7 +20,7 @@ glabel D_ovl11_800D671C
   .incbin "ovl11.raw.bin", 0x029C, 0x2C
   /* 2C8 119D88 800D6758 */  .4byte update_contdata
   .incbin "ovl11.raw.bin", 0x02CC, 0x48
-  /* 314 119DD4 800D67A4 */  .4byte func_ovl11_800D65B8
+  /* 314 119DD4 800D67A4 */  .4byte mnNoControllerInit
   .incbin "ovl11.raw.bin", 0x0318, 0x8
 
 glabel D_ovl11_800D67B0

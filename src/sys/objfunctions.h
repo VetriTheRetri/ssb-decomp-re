@@ -72,4 +72,7 @@ extern sb32 gcCheckGetDObjNoAxisTrack
     sb32 *is_get_axis_value
 );
 
+// Set up common DObj node tree for GObj
+extern void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5);
+
 #endif

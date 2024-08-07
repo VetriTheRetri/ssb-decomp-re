@@ -7,40 +7,40 @@
 // // // // // // // // // // // //
 
 // 0x80105760
-void grModelSetupInitDObj(GObj *gobj, DObjDesc *dobj_desc, DObj **p_dobj, DObjTransformTypes *transform_types)
+void grModelSetupGroundDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, DObjTransformTypes *transform_types)
 {
-    s32 i, index;
-    DObj *joint, *dobj_array[DOBJ_ARRAY_MAX];
+    s32 i, id;
+    DObj *dobj, *array_dobjs[DOBJ_ARRAY_MAX];
 
-    for (i = 0; i < ARRAY_COUNT(dobj_array); i++)
+    for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
     {
-        dobj_array[i] = NULL;
+        array_dobjs[i] = NULL;
     }
-    for (i = 0; dobj_desc->index != ARRAY_COUNT(dobj_array); i++, dobj_desc++)
+    for (i = 0; dobj_desc->index != ARRAY_COUNT(array_dobjs); i++, dobj_desc++)
     {
-        index = dobj_desc->index & 0xFFF;
+        id = dobj_desc->index & 0xFFF;
 
-        if (index != 0)
+        if (id != 0)
         {
-            joint = dobj_array[index] = omAddChildForDObj(dobj_array[index - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = omAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
         }
-        else joint = dobj_array[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
         
         if (transform_types[i].tk1 != nOMTransformNull)
         {
-            omAddOMMtxForDObjFixed(joint, transform_types[i].tk1, transform_types[i].unk_dobjtransform_0x2);
+            omAddOMMtxForDObjFixed(dobj, transform_types[i].tk1, transform_types[i].unk_dobjtransform_0x2);
         }
         if (transform_types[i].tk2 != nOMTransformNull)
         {
-            omAddOMMtxForDObjFixed(joint, transform_types[i].tk2, 0);
+            omAddOMMtxForDObjFixed(dobj, transform_types[i].tk2, 0);
         }
-        joint->translate.vec.f = dobj_desc->translate;
-        joint->rotate.vec.f = dobj_desc->rotate;
-        joint->scale.vec.f = dobj_desc->scale;
+        dobj->translate.vec.f = dobj_desc->translate;
+        dobj->rotate.vec.f = dobj_desc->rotate;
+        dobj->scale.vec.f = dobj_desc->scale;
 
-        if (p_dobj != NULL)
+        if (dobjs != NULL)
         {
-            p_dobj[i] = joint;
+            dobjs[i] = dobj;
         }
     }
 }

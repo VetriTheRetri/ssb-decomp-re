@@ -1799,7 +1799,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
     ftCommonDeadCheckInterruptCommon(fighter_gobj);
 
-    if ((fp->coll_data.pos_curr.y >= gMPCollisionGroundData->altitude_warning) && (topn_translate->y < gMPCollisionGroundData->altitude_warning) && (fp->ft_kind != nFTKindBoss))
+    if ((fp->coll_data.pos_curr.y >= gMPCollisionGroundData->alt_warning) && (topn_translate->y < gMPCollisionGroundData->alt_warning) && (fp->ft_kind != nFTKindBoss))
     {
         func_800269C0_275C0(nGMSoundFGMDeadPortalLw);
     }

@@ -77,8 +77,8 @@ typedef struct efGroundParam
 
 typedef struct efGroundCreateDesc
 {
-    f32 alt_high;                       // Maximum altitude
-    f32 alt_low;                        // Minimum altitude
+    f32 alt_high;                       // Maximum alt
+    f32 alt_low;                        // Minimum alt
     f32 pos_z;                          // Z-Axis position
     f32 scale;                          // Scale
     u16 effect_status;                  // Effect status? Always -1?

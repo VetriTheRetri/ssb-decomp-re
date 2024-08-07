@@ -1390,15 +1390,15 @@ void efGroundUpdatePhysics(GObj *effect_gobj, s32 effect_id)
 }
 
 // 0x8011633C
-void efGroundDObjSetup(GObj *effect_gobj, DObjDesc *dobj_desc, DObj **p_ptr_dobj, u8 tk1, u8 tk2, u8 arg5, s32 lr)
+void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5, s32 lr)
 {
     efStruct *ep;
     DObj *effect_dobj;
     s32 i;
     s32 j;
-    s32 index;
+    s32 id;
     DObj *current_dobj;
-    DObj *setup_dobj[18];
+    DObj *array_dobjs[18];
     f32 rotate_step;
     s32 index2;
 
@@ -1409,20 +1409,20 @@ void efGroundDObjSetup(GObj *effect_gobj, DObjDesc *dobj_desc, DObj **p_ptr_dobj
 
     effect_dobj = DObjGetStruct(effect_gobj);
 
-    for (i = 0; i < ARRAY_COUNT(setup_dobj); i++)
+    for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
     {
-        setup_dobj[i] = NULL;
+        array_dobjs[i] = NULL;
     }
 
-    while (dobj_desc->index != ARRAY_COUNT(setup_dobj))
+    while (dobj_desc->index != ARRAY_COUNT(array_dobjs))
     {
-        index = dobj_desc->index & 0xFFF;
+        id = dobj_desc->index & 0xFFF;
 
-        if (index != 0)
+        if (id != 0)
         {
-            current_dobj = setup_dobj[index] = omAddChildForDObj(setup_dobj[index - 1], dobj_desc->display_list);
+            current_dobj = array_dobjs[id] = omAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
         }
-        else current_dobj = setup_dobj[0] = omAddChildForDObj(effect_dobj, dobj_desc->display_list);
+        else current_dobj = array_dobjs[0] = omAddChildForDObj(effect_dobj, dobj_desc->display_list);
 
         func_8000F2FC_FEFC(current_dobj, tk1, tk2, arg5);
 
@@ -1446,9 +1446,9 @@ void efGroundDObjSetup(GObj *effect_gobj, DObjDesc *dobj_desc, DObj **p_ptr_dobj
         current_dobj->rotate.vec.f.y += rotate_step;
         current_dobj->scale.vec.f = dobj_desc->scale;
 
-        if (p_ptr_dobj != NULL)
+        if (dobjs != NULL)
         {
-            *p_ptr_dobj++ = current_dobj;
+            *dobjs++ = current_dobj;
         }
         dobj_desc++;
     }
@@ -1525,7 +1525,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
 
             if (effect_flags & 4)
             {
-                efGroundDObjSetup(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup), NULL, rtypes2->tk1, rtypes2->tk2, rtypes2->unk_dobjtransform_0x2, lr);
+                efGroundSetupEffectDObjs(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup), NULL, rtypes2->tk1, rtypes2->tk2, rtypes2->unk_dobjtransform_0x2, lr);
 
                 main_dobj = main_dobj->child;
             }

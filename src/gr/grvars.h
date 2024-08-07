@@ -128,7 +128,7 @@ typedef struct grYosterCloud
 {
 	GObj* gobj;
 	DObj* dobj[3];
-	f32 altitude;
+	f32 alt;
 	f32 pressure; // 0x18
 	u8 status;
 	s8 anim_id;
@@ -160,7 +160,7 @@ typedef struct grCommonGroundVarsInishie
 	void* map_head;
 	void* item_head;
 	grInishieScale scale[2];
-	f32 splat_altitude;	  // Scale platform uh... thing I don't know how to
+	f32 splat_alt;	  // Scale platform uh... thing I don't know how to
 						  // explain, splat_accelerate gets added to this
 	f32 splat_accelerate; // Scale platform fall acceleration
 	u16 splat_wait;		  // Wait this many frames before retracting if the platforms

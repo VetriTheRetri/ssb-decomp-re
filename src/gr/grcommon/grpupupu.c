@@ -61,8 +61,6 @@ extern intptr_t lGRPupupuParticleBankHeaderHi;                  // 0x00B1E7E0
 extern intptr_t lGRPupupuParticleBankTextureLo;                 // 0x00B1E7E0
 extern intptr_t lGRPupupuParticleBankTextureHi;                 // 0x00B1F960
 
-extern void func_8000F590();
-
 // // // // // // // // // // // //
 //                               //
 //          ENUMERATORS          //
@@ -717,7 +715,7 @@ GObj* grPupupuMakeMapGObj(intptr_t tk, intptr_t offset2, void (*proc_render)(GOb
 
     omAddGObjRenderProc(ground_gobj, proc_render, dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    func_8000F590(ground_gobj, (uintptr_t)gGRCommonStruct.pupupu.map_head + tk, NULL, nOMTransformTraRotRpyRSca, nOMTransformNull, 0);
+    gcSetupCommonDObjs(ground_gobj, (uintptr_t)gGRCommonStruct.pupupu.map_head + tk, NULL, nOMTransformTraRotRpyRSca, nOMTransformNull, 0);
 
     if (offset2 != 0)
     {

@@ -200,40 +200,40 @@ void itManagerSetPrevStructAlloc(itStruct *ip) // Set global Item user_data link
 }
 
 // 0x8016DFF4
-void itManagerDObjSetup(GObj *gobj, DObjDesc *dobj_desc, DObj **p_dobj, u8 transform_kind)
+void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 transform_kind)
 {
-    s32 i, index;
-    DObj *joint, *dobj_array[18];
+    s32 i, id;
+    DObj *dobj, *array_dobjs[DOBJ_ARRAY_MAX];
 
-    for (i = 0; i < ARRAY_COUNT(dobj_array); i++)
+    for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
     {
-        dobj_array[i] = NULL;
+        array_dobjs[i] = NULL;
     }
-    for (i = 0; dobj_desc->index != ARRAY_COUNT(dobj_array); i++, dobj_desc++)
+    for (i = 0; dobj_desc->index != ARRAY_COUNT(array_dobjs); i++, dobj_desc++)
     {
-        index = dobj_desc->index & 0xFFF;
+        id = dobj_desc->index & 0xFFF;
 
-        if (index != 0)
+        if (id != 0)
         {
-            joint = dobj_array[index] = omAddChildForDObj(dobj_array[index - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = omAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
         }
-        else joint = dobj_array[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
         
         if (i == 1)
         {
-            func_8000F364_FF64(joint, transform_kind, NULL, NULL, NULL);
+            func_8000F364_FF64(dobj, transform_kind, nOMTransformNull, nOMTransformNull, 0);
         }
         else if (transform_kind != nOMTransformNull)
         {
-            omAddOMMtxForDObjFixed(joint, transform_kind, NULL);
+            omAddOMMtxForDObjFixed(dobj, transform_kind, nOMTransformNull);
         }
-        joint->translate.vec.f = dobj_desc->translate;
-        joint->rotate.vec.f = dobj_desc->rotate;
-        joint->scale.vec.f = dobj_desc->scale;
+        dobj->translate.vec.f = dobj_desc->translate;
+        dobj->rotate.vec.f = dobj_desc->rotate;
+        dobj->scale.vec.f = dobj_desc->scale;
 
-        if (p_dobj != NULL) // I have yet to find a case where this point is actually reached
+        if (dobjs != NULL) // I have yet to find a case where this point is actually reached
         {
-            p_dobj[i] = joint;
+            dobjs[i] = dobj;
         }
     }
 }
@@ -386,7 +386,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
         }
         else
         {
-            itManagerDObjSetup(item_gobj, attributes->dobj_setup, NULL, item_desc->transform_types.tk1);
+            itManagerSetupItemDObjs(item_gobj, attributes->dobj_setup, NULL, item_desc->transform_types.tk1);
 
             if (attributes->p_mobjsubs != NULL)
             {

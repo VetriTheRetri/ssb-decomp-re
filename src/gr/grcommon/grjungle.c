@@ -126,7 +126,7 @@ void grJungleMakeTaruCann(void)
 
     omAddGObjRenderProc(tarucann_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    grModelSetupInitDObj(tarucann_gobj, (DObjDesc*) ((intptr_t)&lGRJungleMapHead + (uintptr_t)map_head), NULL, dGRJungleTaruCannTransformKinds);
+    grModelSetupGroundDObjs(tarucann_gobj, (DObjDesc*) ((intptr_t)&lGRJungleMapHead + (uintptr_t)map_head), NULL, dGRJungleTaruCannTransformKinds);
     omAddGObjCommonProc(tarucann_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
     gcAddAnimJointAll(tarucann_gobj, ((uintptr_t)map_head + (intptr_t)&lGRJungleTaruCannDefaultAnimJoint), 0.0F);

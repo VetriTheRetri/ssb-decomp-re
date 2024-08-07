@@ -1121,7 +1121,7 @@ void grSectorInitAll(void)
     gGRCommonStruct.sector.map_gobj = map_gobj;
 
     omAddGObjRenderProc(map_gobj, odRenderDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
-    grModelSetupInitDObj(map_gobj, (DObjDesc*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002C30), gGRCommonStruct.sector.map_dobj, dGRSectorArwingTransformKinds);
+    grModelSetupGroundDObjs(map_gobj, (DObjDesc*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002C30), gGRCommonStruct.sector.map_dobj, dGRSectorArwingTransformKinds);
     omAddGObjCommonProc(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
     gGRCommonStruct.sector.arwing_status = 0;

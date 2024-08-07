@@ -140,24 +140,24 @@ void grInishieScaleUpdateWait(void)
 
     if ((l_weight == 0.0F) && (r_weight == 0.0F))
     {
-        if (gGRCommonStruct.inishie.splat_altitude != 0.0F)
+        if (gGRCommonStruct.inishie.splat_alt != 0.0F)
         {
-            if (gGRCommonStruct.inishie.splat_altitude < 0.0F)
+            if (gGRCommonStruct.inishie.splat_alt < 0.0F)
             {
-                gGRCommonStruct.inishie.splat_altitude += 8.0F;
+                gGRCommonStruct.inishie.splat_alt += 8.0F;
 
-                if (gGRCommonStruct.inishie.splat_altitude > 0.0F)
+                if (gGRCommonStruct.inishie.splat_alt > 0.0F)
                 {
-                    gGRCommonStruct.inishie.splat_altitude = 0.0F;
+                    gGRCommonStruct.inishie.splat_alt = 0.0F;
                 }
             }
             else
             {
-                gGRCommonStruct.inishie.splat_altitude -= 8.0F;
+                gGRCommonStruct.inishie.splat_alt -= 8.0F;
 
-                if (gGRCommonStruct.inishie.splat_altitude < 0.0F)
+                if (gGRCommonStruct.inishie.splat_alt < 0.0F)
                 {
-                    gGRCommonStruct.inishie.splat_altitude = 0.0F;
+                    gGRCommonStruct.inishie.splat_alt = 0.0F;
                 }
             }
         }
@@ -189,9 +189,9 @@ void grInishieScaleUpdateWait(void)
                 gGRCommonStruct.inishie.splat_accelerate = 0.0F;
             }
         }
-        gGRCommonStruct.inishie.splat_altitude += gGRCommonStruct.inishie.splat_accelerate;
+        gGRCommonStruct.inishie.splat_alt += gGRCommonStruct.inishie.splat_accelerate;
     }
-    alt = ABSF(gGRCommonStruct.inishie.splat_altitude);
+    alt = ABSF(gGRCommonStruct.inishie.splat_alt);
 
     l_dobj = gGRCommonStruct.inishie.scale[0].platform_dobj;
     r_dobj = gGRCommonStruct.inishie.scale[1].platform_dobj;
@@ -200,7 +200,7 @@ void grInishieScaleUpdateWait(void)
     {
         ud = 0;
 
-        if (gGRCommonStruct.inishie.splat_altitude < 0.0F)
+        if (gGRCommonStruct.inishie.splat_alt < 0.0F)
         {
             ud = 1;
 
@@ -213,17 +213,17 @@ void grInishieScaleUpdateWait(void)
 
         if (ud != 0)
         {
-            gGRCommonStruct.inishie.splat_altitude = -1100.0F;
+            gGRCommonStruct.inishie.splat_alt = -1100.0F;
         }
-        else gGRCommonStruct.inishie.splat_altitude = 1100.0F;
+        else gGRCommonStruct.inishie.splat_alt = 1100.0F;
 
         gGRCommonStruct.inishie.splat_status = nGRInishieScaleStatusFall;
 
         efManagerSparkleWhiteScaleMakeEffect(&l_dobj->translate.vec.f, 1.0F);
         efManagerSparkleWhiteScaleMakeEffect(&r_dobj->translate.vec.f, 1.0F);
     }
-    l_dobj->translate.vec.f.y = gGRCommonStruct.inishie.scale[0].platform_base_y + gGRCommonStruct.inishie.splat_altitude;
-    r_dobj->translate.vec.f.y = gGRCommonStruct.inishie.scale[1].platform_base_y - gGRCommonStruct.inishie.splat_altitude;
+    l_dobj->translate.vec.f.y = gGRCommonStruct.inishie.scale[0].platform_base_y + gGRCommonStruct.inishie.splat_alt;
+    r_dobj->translate.vec.f.y = gGRCommonStruct.inishie.scale[1].platform_base_y - gGRCommonStruct.inishie.splat_alt;
 
     gGRCommonStruct.inishie.scale[0].string_dobj->translate.vec.f.y = l_dobj->translate.vec.f.y - gGRCommonStruct.inishie.scale[0].string_length;
     gGRCommonStruct.inishie.scale[1].string_dobj->translate.vec.f.y = r_dobj->translate.vec.f.y - gGRCommonStruct.inishie.scale[1].string_length;
@@ -278,22 +278,22 @@ void grInishieScaleUpdateRetract(void)
     DObj *r_dobj;
     sb32 is_complete = FALSE;
 
-    if (gGRCommonStruct.inishie.splat_altitude != 0.0F)
+    if (gGRCommonStruct.inishie.splat_alt != 0.0F)
     {
-        if (gGRCommonStruct.inishie.splat_altitude < 0.0F)
+        if (gGRCommonStruct.inishie.splat_alt < 0.0F)
         {
-            gGRCommonStruct.inishie.splat_altitude += 10.0F;
+            gGRCommonStruct.inishie.splat_alt += 10.0F;
 
-            if (gGRCommonStruct.inishie.splat_altitude >= 0.0F)
+            if (gGRCommonStruct.inishie.splat_alt >= 0.0F)
             {
                 is_complete = TRUE;
             }
         }
         else
         {
-            gGRCommonStruct.inishie.splat_altitude -= 10.0F;
+            gGRCommonStruct.inishie.splat_alt -= 10.0F;
 
-            if (gGRCommonStruct.inishie.splat_altitude <= 0.0F)
+            if (gGRCommonStruct.inishie.splat_alt <= 0.0F)
             {
                 is_complete = TRUE;
             }
@@ -304,7 +304,7 @@ void grInishieScaleUpdateRetract(void)
 
     if (is_complete != FALSE)
     {
-        gGRCommonStruct.inishie.splat_altitude = 0.0F;
+        gGRCommonStruct.inishie.splat_alt = 0.0F;
 
         l_dobj->anim_remain = AOBJ_FRAME_NULL;
         l_dobj->flags = DOBJ_FLAG_NONE;
@@ -318,8 +318,8 @@ void grInishieScaleUpdateRetract(void)
 
         gGRCommonStruct.inishie.splat_status = nGRInishieScaleStatusWait;
     }
-    l_dobj->translate.vec.f.y = gGRCommonStruct.inishie.scale[0].platform_base_y + gGRCommonStruct.inishie.splat_altitude;
-    r_dobj->translate.vec.f.y = gGRCommonStruct.inishie.scale[1].platform_base_y - gGRCommonStruct.inishie.splat_altitude;
+    l_dobj->translate.vec.f.y = gGRCommonStruct.inishie.scale[0].platform_base_y + gGRCommonStruct.inishie.splat_alt;
+    r_dobj->translate.vec.f.y = gGRCommonStruct.inishie.scale[1].platform_base_y - gGRCommonStruct.inishie.splat_alt;
 
     gGRCommonStruct.inishie.scale[0].string_dobj->translate.vec.f.y = l_dobj->translate.vec.f.y - gGRCommonStruct.inishie.scale[0].string_length;
     gGRCommonStruct.inishie.scale[1].string_dobj->translate.vec.f.y = r_dobj->translate.vec.f.y - gGRCommonStruct.inishie.scale[1].string_length;
@@ -365,7 +365,7 @@ void grInishieMakeScale(void)
     ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(ground_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
-    grModelSetupInitDObj(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&lGRInishieScaleDObjDesc), map_dobj, dGRInishieScaleTransformKinds);
+    grModelSetupGroundDObjs(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&lGRInishieScaleDObjDesc), map_dobj, dGRInishieScaleTransformKinds);
 
     gGRCommonStruct.inishie.scale[0].string_dobj = map_dobj[4];
     gGRCommonStruct.inishie.scale[0].string_length = map_dobj[0]->translate.vec.f.y + map_dobj[3]->translate.vec.f.y;
@@ -397,7 +397,7 @@ void grInishieMakeScale(void)
 
     // WARNING: gGRCommonStruct MUST be defined as extern in ground.h in order for this to match
     gGRCommonStruct.inishie.splat_status = nGRInishieScaleStatusWait;
-    gGRCommonStruct.inishie.splat_altitude = 0.0F;
+    gGRCommonStruct.inishie.splat_alt = 0.0F;
     gGRCommonStruct.inishie.splat_accelerate = 0.0F;
 
     for (i = 0; i < (ARRAY_COUNT(gGRCommonStruct.inishie.players_ga) + ARRAY_COUNT(gGRCommonStruct.inishie.players_tt)) / 2; i++)
@@ -591,7 +591,7 @@ GObj* grInishieMakeGround(void)
 // 0x80109C48
 void grInishieScaleGetPlatformInfo(f32 *alt, f32 *accel) // Unused?
 {
-    *alt = 1100.0F - ((gGRCommonStruct.inishie.splat_altitude < 0.0F) ? -gGRCommonStruct.inishie.splat_altitude : gGRCommonStruct.inishie.splat_altitude);
+    *alt = 1100.0F - ((gGRCommonStruct.inishie.splat_alt < 0.0F) ? -gGRCommonStruct.inishie.splat_alt : gGRCommonStruct.inishie.splat_alt);
 
     *accel = (gGRCommonStruct.inishie.splat_accelerate < 0.0F) ? -gGRCommonStruct.inishie.splat_accelerate : gGRCommonStruct.inishie.splat_accelerate;
 }

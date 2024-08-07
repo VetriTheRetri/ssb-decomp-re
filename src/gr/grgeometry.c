@@ -1,6 +1,5 @@
 #include <gr/ground.h>
 
-extern void func_8000F590();
 extern void gcAddMObjSubAll();
 
 // // // // // // // // // // // //
@@ -236,7 +235,7 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     else proc_render = dGRGeometryDescs[gr_desc_id].proc_renderpri;
 
     omAddGObjRenderProc(ground_gobj, proc_render, dGRGeometryDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
-    func_8000F590(ground_gobj, gr_desc->dobj_desc, p_dobj, nOMTransformTraRotRpyRSca, nOMTransformNull, 0);
+    gcSetupCommonDObjs(ground_gobj, gr_desc->dobj_desc, p_dobj, nOMTransformTraRotRpyRSca, nOMTransformNull, 0);
 
     if (gr_desc->p_mobjsubs != NULL)
     {

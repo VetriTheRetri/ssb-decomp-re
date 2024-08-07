@@ -161,7 +161,7 @@ void func_ovl59_8013202C(GObj *arg0)
 	{
 		gobj = omMakeGObjSPAfter(8, NULL, nOMObjCommonLinkID02, 0x80000000);
 		omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 3, 0x80000000, -1);
-		func_8000F590(gobj, gCreditsDObjDesc, NULL, nOMTransformTraRotRpyRSca, 0, 0);
+		gcSetupCommonDObjs(gobj, gCreditsDObjDesc, NULL, nOMTransformTraRotRpyRSca, 0, 0);
 		omAddGObjCommonProc(gobj, func_ovl59_80131F34, 1, 1);
 
 		gobj->user_data.p = arg0;

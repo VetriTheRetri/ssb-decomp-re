@@ -15,7 +15,7 @@ itStruct* itManagerGetNextStructAlloc();
 void itManagerSetPrevStructAlloc(itStruct* ip);
 
 // Unknown, something to do with setting up item models?
-void itManagerDObjSetup(GObj* gobj, DObjDesc* dobj_desc, DObj** p_ptr_dobj, u8 transform_kind);
+void itManagerSetupItemDObjs(GObj* gobj, DObjDesc* dobj_desc, DObj** dobjs, u8 transform_kind);
 
 // Create new item
 GObj* itManagerMakeItem(GObj* spawn_gobj, itCreateDesc* item_desc, Vec3f* pos, Vec3f* vel, u32 flags);

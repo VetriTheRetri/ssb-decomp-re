@@ -1,6 +1,8 @@
 #include <sys/obj.h>
 
 extern void hal_interpolation_cubic(Vec3f*, void*, f32);
+extern void func_8000F364_FF64(DObj *gobj, u8 arg1, u8 arg2, u8 arg3, s32 arg4);
+extern void func_8000F2FC_FEFC(DObj*, u8, u8, u8);
 
 // // // // // // // // // // // //
 //                               //
@@ -665,7 +667,7 @@ f32 func_8000CC40_D840(AObj *aobj)
 
 void gcPlayDObjAnim(DObj *dobj) 
 {
-    f32 value; // sp54
+    f32 value; // array_dobjs
     AObj *aobj;
     f32 temp_f16;
     f32 temp_f12;
@@ -1655,7 +1657,45 @@ sb32 gcCheckGetDObjNoAxisTrack
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F364_FF64.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F590.s")
+// 0x8000F590
+void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5)
+{
+    s32 i;
+    DObj *dobj;
+    s32 id;
+    DObj *array_dobjs[DOBJ_ARRAY_MAX];
+
+    for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
+    {
+        array_dobjs[i] = NULL;
+    }
+    while (dobj_desc->index != ARRAY_COUNT(array_dobjs)) 
+    {
+        id = dobj_desc->index & 0xFFF;
+
+        if (id != 0)
+        {
+            dobj = array_dobjs[id] = omAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+        } 
+        else dobj = array_dobjs[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
+        
+        if (dobj_desc->index & 0xF000) 
+        {
+            func_8000F364_FF64(dobj, tk1, tk2, arg5, dobj_desc->index & 0xF000);
+        } 
+        else func_8000F2FC_FEFC(dobj, tk1, tk2, arg5);
+        
+        dobj->translate.vec.f = dobj_desc->translate;
+        dobj->rotate.vec.f = dobj_desc->rotate;
+        dobj->scale.vec.f = dobj_desc->scale;
+
+        if (dobjs != NULL) 
+        {
+            *dobjs++ = dobj;
+        }
+        dobj_desc++;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F720.s")
 

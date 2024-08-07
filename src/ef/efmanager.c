@@ -2261,7 +2261,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
 
         if (effect_flags & 0x4)
         {
-            func_8000F590(effect_gobj, (void*)(addr + effect_desc->o_dobjsetup), NULL, nOMTransformNull, nOMTransformNull, 0);
+            gcSetupCommonDObjs(effect_gobj, (void*)(addr + effect_desc->o_dobjsetup), NULL, nOMTransformNull, nOMTransformNull, 0);
 
             other_dobj = DObjGetStruct(effect_gobj);
 

@@ -36,11 +36,11 @@ typedef enum GObjProcessKind
 
 typedef enum GObjObjKind
 {
-    GObj_ObjKind_None,
-    GObj_ObjKind_DObj,
-    GObj_ObjKind_SObj,
-    GObj_ObjKind_Camera,
-    GObj_ObjKind_EnumMax
+    nOMObjCommonAppendNone,
+    nOMObjCommonAppendDObj,
+    nOMObjCommonAppendSObj,
+    nOMObjCommonAppendCamera,
+    nOMObjCommonAppendEnumMax
 
 } GObjObjKind;
 
@@ -81,11 +81,11 @@ typedef enum GObjLinkIndex
 
 typedef enum DObjVecKind
 {
-    DObjVec_Kind_None,
-    DObjVec_Kind_Translate,
-    DObjVec_Kind_Rotate,
-    DObjVec_Kind_Scale,
-    DObjVec_Kind_EnumMax
+    nOMObjDrawVecKindNone,
+    nOMObjDrawVecKindTranslate,
+    nOMObjDrawVecKindRotate,
+    nOMObjDrawVecKindScale,
+    nOMObjDrawVecKindEnumMax
 
 } DObjVecKind;
 
@@ -121,14 +121,15 @@ typedef enum OMMtxTransformKind
 
 } OMMtxTransformKind;
 
-typedef enum AObjInterpolateKind
+typedef enum AObjAnimKind
 {
-    nOMObjAnimLerpNone, 
-    nOMObjAnimLerpStep,
-    nOMObjAnimLerpLinear, 
-    nOMObjAnimLerpCubic
+    nOMObjAnimKindNone, 
+    nOMObjAnimKindStep,
+    nOMObjAnimKindLinear, 
+    nOMObjAnimKindCubic,
+    nOMObjAnimKindSpecial
 
-} AObjInterpolateKind;
+} AObjAnimKind;
 
 typedef enum AObjCommandKind
 {
@@ -137,11 +138,11 @@ typedef enum AObjCommandKind
     nOMObjAnimCommandWait,
     nOMObjAnimCommandSetValBlock,
     nOMObjAnimCommandSetVal,
-    nOMObjAnimCommandSetValStepBlock,
-    nOMObjAnimCommandSetValStep,
-    nOMObjAnimCommandSetStepTarget,
-    nOMObjAnimCommandSetVal0StepBlock,
-    nOMObjAnimCommandSetVal0Step,
+    nOMObjAnimCommandSetValRateBlock,
+    nOMObjAnimCommandSetValRate,
+    nOMObjAnimCommandSetTargetRate,
+    nOMObjAnimCommandSetVal0RateBlock,
+    nOMObjAnimCommandSetVal0Rate,
     nOMObjAnimCommandSetValAfterBlock,
     nOMObjAnimCommandSetValAfter,
     ANIM_CMD_12 = 12,

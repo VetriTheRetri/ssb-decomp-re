@@ -36,7 +36,6 @@ extern intptr_t D_NF_00001B34;                              // 0x00001B34
 extern intptr_t D_NF_00001B84;                              // 0x00001B84
 extern intptr_t D_NF_00002EB4;                              // 0x00002EB4
 
-extern f32 func_8000CB94_D794();
 extern void hal_interpolation_quadratic(void*, void*, f32);
 extern void hal_interpolation_cubic(void*, void*, f32);
 
@@ -258,9 +257,9 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 
     while (aobj != NULL)
     {
-        if ((aobj->kind != 0) && !(arg0->parent_gobj->flags & 2) && (aobj->track == 4))
+        if ((aobj->kind != nOMObjAnimKindNone) && !(arg0->parent_gobj->flags & GOBJ_FLAG_NOANIM) && (aobj->track == 4))
         {
-            vlen = func_8000CB94_D794(aobj);
+            vlen = gcGetAObjValue(aobj);
 
             if (vlen < 0.0F)
             {
@@ -280,7 +279,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 
         while (aobj != NULL)
         {
-            if ((aobj->kind != 0) && !(arg0->parent_gobj->flags & 2) && (aobj->track == 4))
+            if ((aobj->kind != nOMObjAnimKindNone) && !(arg0->parent_gobj->flags & 2) && (aobj->track == 4))
             {
                 hal_interpolation_cubic(vec3, aobj->interpolate, vlen);
             }

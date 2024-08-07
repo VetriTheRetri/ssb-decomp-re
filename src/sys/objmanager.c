@@ -881,19 +881,19 @@ OMMtx* omAddOMMtxForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 ommtx_id)
 		{
 			switch (dobj->dynstore->kinds[i])
 			{
-			case DObjVec_Kind_None: break;
+			case nOMObjDrawVecKindNone: break;
 
-			case DObjVec_Kind_Translate:
+			case nOMObjDrawVecKindTranslate:
 				translate = (OMTranslate*)csr;
 				csr += sizeof(OMTranslate);
 				break;
 
-			case DObjVec_Kind_Rotate:
+			case nOMObjDrawVecKindRotate:
 				rotate = (OMRotate*)csr;
 				csr += sizeof(OMRotate);
 				break;
 
-			case DObjVec_Kind_Scale:
+			case nOMObjDrawVecKindScale:
 				scale = (OMScale*)csr;
 				csr += sizeof(OMScale);
 				break;
@@ -1116,10 +1116,10 @@ AObj* omAddAObjForDObj(DObj* dobj, u8 track)
 	AObj* aobj = omGetAObjSetNextAlloc();
 
 	aobj->track = track;
-	aobj->kind = 0;
+	aobj->kind = nOMObjAnimKindNone;
 	aobj->interpolate = NULL;
-	aobj->step_target = 0.0F;
-	aobj->step_base = 0.0F;
+	aobj->rate_target = 0.0F;
+	aobj->rate_base = 0.0F;
 	aobj->value_target = 0.0F;
 	aobj->value_base = 0.0F;
 	aobj->length = 0.0F;
@@ -1154,10 +1154,10 @@ AObj* omAddAObjForMObj(MObj* mobj, u8 index)
 	AObj* aobj = omGetAObjSetNextAlloc();
 
 	aobj->track = index;
-	aobj->kind = 0;
+	aobj->kind = nOMObjAnimKindNone;
 	aobj->interpolate = NULL;
-	aobj->step_target = 0.0F;
-	aobj->step_base = 0.0F;
+	aobj->rate_target = 0.0F;
+	aobj->rate_base = 0.0F;
 	aobj->value_target = 0.0F;
 	aobj->value_base = 0.0F;
 	aobj->length = 0.0F;
@@ -1193,10 +1193,10 @@ AObj* omAddAObjForCamera(Camera* cam, u8 index)
 	AObj* aobj = omGetAObjSetNextAlloc();
 
 	aobj->track = index;
-	aobj->kind = 0;
+	aobj->kind = nOMObjAnimKindNone;
 	aobj->interpolate = NULL;
-	aobj->step_target = 0.0F;
-	aobj->step_base = 0.0F;
+	aobj->rate_target = 0.0F;
+	aobj->rate_base = 0.0F;
 	aobj->value_target = 0.0F;
 	aobj->value_base = 0.0F;
 	aobj->length = 0.0F;
@@ -1334,7 +1334,7 @@ DObj* omAddDObjForGObj(GObj* gobj, void* dvar)
 	}
 	else
 	{
-		gobj->obj_kind = GObj_ObjKind_DObj;
+		gobj->obj_kind = nOMObjCommonAppendDObj;
 		gobj->obj = new_dobj;
 		new_dobj->sib_prev = NULL;
 	}
@@ -1424,7 +1424,7 @@ void omEjectDObj(DObj* dobj)
 		{
 			dobj->parent_gobj->obj = dobj->sib_next;
 			if (DObjGetStruct(dobj->parent_gobj) == NULL)
-				dobj->parent_gobj->obj_kind = GObj_ObjKind_None;
+				dobj->parent_gobj->obj_kind = nOMObjCommonAppendNone;
 		}
 	}
 	else if (dobj == dobj->parent->child)
@@ -1493,7 +1493,7 @@ SObj* omAddSObjForGObj(GObj* gobj, Sprite* sprite)
 	}
 	else
 	{
-		gobj->obj_kind = GObj_ObjKind_SObj;
+		gobj->obj_kind = nOMObjCommonAppendSObj;
 		gobj->obj = new_sobj;
 		new_sobj->prev = NULL;
 	}
@@ -1514,7 +1514,7 @@ void omEjectSObj(SObj* sobj)
 	{
 		sobj->parent_gobj->obj = sobj->next;
 		if (SObjGetStruct(sobj->parent_gobj) == NULL)
-			sobj->parent_gobj->obj_kind = GObj_ObjKind_None;
+			sobj->parent_gobj->obj_kind = nOMObjCommonAppendNone;
 	}
 	if (sobj->prev != NULL)
 		sobj->prev->next = sobj->next;
@@ -1530,7 +1530,7 @@ Camera* omAddCameraForGObj(GObj* gobj)
 
 	if (gobj == NULL)
 		gobj = D_80046A54;
-	gobj->obj_kind = GObj_ObjKind_Camera;
+	gobj->obj_kind = nOMObjCommonAppendCamera;
 
 	new_cam = omGetCameraSetNextAlloc();
 	gobj->obj = new_cam;
@@ -1567,7 +1567,7 @@ void omEjectCamera(Camera* cam)
 	AObj* next_aobj;
 
 	gobj = cam->parent_gobj;
-	gobj->obj_kind = GObj_ObjKind_None;
+	gobj->obj_kind = nOMObjCommonAppendNone;
 	gobj->obj = NULL;
 
 	for (i = 0; i < ARRAY_COUNT(cam->ommtx); i++)
@@ -1611,12 +1611,12 @@ GObj* omInitGObjCommon(u32 id, void (*proc_run)(GObj*), u8 link, u32 order)
 	new_gobj->gobjlink_len = 0;
 	new_gobj->flags = GOBJ_FLAG_NONE;
 
-	new_gobj->obj_kind = GObj_ObjKind_None;
+	new_gobj->obj_kind = nOMObjCommonAppendNone;
 	new_gobj->obj = NULL;
 
 	new_gobj->dl_link_id = ARRAY_COUNT(gOMObjCommonDLLinks);
 	new_gobj->anim_frame = 0.0F;
-	new_gobj->dobjproc = NULL;
+	new_gobj->proc_anim = NULL;
 	new_gobj->user_data.p = NULL;
 
 	return new_gobj;
@@ -1684,11 +1684,11 @@ void omEjectGObj(GObj* gobj)
 
 	switch (gobj->obj_kind)
 	{
-	case GObj_ObjKind_DObj: func_8000B70C(gobj); break;
+	case nOMObjCommonAppendDObj: func_8000B70C(gobj); break;
 
-	case GObj_ObjKind_SObj: func_8000B760(gobj); break;
+	case nOMObjCommonAppendSObj: func_8000B760(gobj); break;
 
-	case GObj_ObjKind_Camera: omEjectCamera(CameraGetStruct(gobj)); break;
+	case nOMObjCommonAppendCamera: omEjectCamera(CameraGetStruct(gobj)); break;
 	}
 
 	if (gobj->dl_link_id != ARRAY_COUNT(gOMObjCommonDLLinks))

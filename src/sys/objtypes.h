@@ -97,8 +97,8 @@ struct _AObj
     f32 length;
     f32 value_base;
     f32 value_target;
-    f32 step_base;
-    f32 step_target;
+    f32 rate_base;
+    f32 rate_target;
     void *interpolate;
 };
 
@@ -181,7 +181,7 @@ struct GObj
     void *obj;                          // Can be: NULL, DObj, SObj or Camera
     f32 anim_frame;                     // Current frame of animation?
     u32 flags;                          // GObj logic flags (e.g. 0x1 = skip rendering)
-    void(*dobjproc)(DObj*, s32, f32);   // DObj animation renderer?
+    void(*proc_anim)(DObj*, s32, f32);   // DObj animation renderer?
     OMUserData user_data;
 };
 

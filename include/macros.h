@@ -56,6 +56,8 @@
 #define I_CONTROLLER_RANGE_MAX 80									// Maximum control stick range in integer
 #define F_CONTROLLER_RANGE_MAX ((float)I_CONTROLLER_RANGE_MAX)		// Maximum control stick range in float
 
+#define TAKE_MAX(a, b) if((a) < (b)) (a) = (b)
+
 // Bitfield macros to set up in-game bytecode commands (e.g. colanim events, CPU input scripts)
 #define GC_BITFIELD(n) (1 << (n))
 #define GC_BITMASK(len) (GC_BITFIELD(len) - 1)

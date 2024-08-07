@@ -1635,7 +1635,110 @@ sb32 gcCheckGetDObjNoAxisTrack
     return FALSE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000E428_F028.s")
+void func_8000E428_F028(s32 track, f32 translate, f32 rotate, f32 scale, f32 *arg4, AObj *aobj)
+{
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 unused;
+    f32 value;
+    
+    switch (track)
+    {
+    case nOMObjAnimTrackRotX:
+    case nOMObjAnimTrackRotY:
+    case nOMObjAnimTrackRotZ:
+        value = rotate;
+        break;
+
+    case nOMObjAnimTrackTraX:
+    case nOMObjAnimTrackTraY:
+    case nOMObjAnimTrackTraZ:
+        value = translate;
+        break;
+
+    case nOMObjAnimTrackScaX:
+    case nOMObjAnimTrackScaY:
+    case nOMObjAnimTrackScaZ:
+        value = scale;
+        break;
+    }
+    if (value != 0.0F)
+    {
+        if (TRUE);
+
+        sp3C = (2.0F * aobj->step_base) + aobj->step_target;
+        sp38 = (-6.0F * value) * (aobj->value_target - aobj->value_base);
+        
+        if (sp38 < SQUARE(sp3C))
+        {
+            sp34 = (sqrtf(SQUARE(sp3C) - sp38) + -sp3C) / value;
+            
+            TAKE_MAX(*arg4, sp34);
+            
+            sp34 = (-sp3C - sqrtf(SQUARE(sp3C) - sp38)) / value;
+            
+            TAKE_MAX(*arg4, sp34);
+        }
+        else if ((SQUARE(sp3C) + -sp38) == (0, 0.0F))
+        {
+            sp34 = -sp3C / value;
+            
+            TAKE_MAX(*arg4, sp34);
+        }
+        if ((SQUARE(sp3C) + sp38) > 0.0F)
+        {
+            sp34 = (sqrtf(SQUARE(sp3C) + sp38) + -sp3C) / -value;
+
+            TAKE_MAX(*arg4, sp34);
+            
+            sp34 = (-sp3C - sqrtf(SQUARE(sp3C) + sp38)) / -value;
+
+            TAKE_MAX(*arg4, sp34);
+        }
+        else if ((SQUARE(sp3C) + sp38) == (0, 0.0F))
+        {
+            sp34 = -sp3C / -value;
+            
+            TAKE_MAX(*arg4, sp34);
+        }
+        sp3C = -(aobj->step_base + (2.0F * aobj->step_target));
+        sp38 = (-6.0F * value) * (aobj->value_base - aobj->value_target);
+        
+        if (sp38 < SQUARE(sp3C))
+        {
+            sp34 = (sqrtf(SQUARE(sp3C) - sp38) + -sp3C) / value;
+            
+            TAKE_MAX(*arg4, sp34);
+            
+            sp34 = (-sp3C - sqrtf(SQUARE(sp3C) - sp38)) / value;
+            
+            TAKE_MAX(*arg4, sp34);
+        }
+        else if ((SQUARE(sp3C) + -sp38) == (0, 0.0F))
+        {
+            sp34 = -sp3C / value;
+            
+            TAKE_MAX(*arg4, sp34);
+        }
+        if ((SQUARE(sp3C) + sp38) > 0.0F)
+        {
+            sp34 = (sqrtf(SQUARE(sp3C) + sp38) + -sp3C) / -value;
+            
+            TAKE_MAX(*arg4, sp34);
+            
+            sp34 = (-sp3C - sqrtf(sp38 + SQUARE(sp3C))) / -value;
+            
+            TAKE_MAX(*arg4, sp34);
+        }
+        else if ((SQUARE(sp3C) + sp38) == (0, 0.0F))
+        {
+            sp34 = -sp3C / -value;
+            
+            TAKE_MAX(*arg4, sp34);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000E8A8_F4A8.s")
 

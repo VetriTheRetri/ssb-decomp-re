@@ -101,7 +101,7 @@ void start_scene_manager(UNUSED u32 set) {
                 load_overlay(&D_800A3070[12]);
                 load_overlay(&D_800A3070[8]);
                 load_overlay(&D_800A3070[9]);
-                debug_sss_entry();
+                mnDebugStageSelectStartScene();
                 break;
             case 3:
                 load_overlay(&D_800A3070[2]);

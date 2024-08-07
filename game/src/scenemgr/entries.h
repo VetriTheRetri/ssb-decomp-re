@@ -5,7 +5,7 @@
 
 extern void title_screen_entry(void);         // ovl 10
 extern void mnNoControllerStartScene(void);             // ovl 11
-extern void debug_sss_entry(void);            // ovl 12
+extern void mnDebugStageSelectStartScene(void);            // ovl 12
 extern void debug_system_entry(void);         // ovl 13
 extern void debug_battle_entry(void);         // ovl 14
 extern void debug_falls_entry(void);          // ovl 15

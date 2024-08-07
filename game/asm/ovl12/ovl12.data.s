@@ -6,10 +6,10 @@
 #  800D6680 -> 800D69E0
 
 
-glabel D_ovl12_800D6680
+glabel dMNDebugStageSelectInterrupt
   .incbin "ovl12.raw.bin", 0x01F0, 0x4
 
-glabel D_ovl12_800D6684
+glabel dMNDebugStageSelectGrKind
   .incbin "ovl12.raw.bin", 0x01F4, 0x4
 
 glabel D_ovl12_800D6688
@@ -57,11 +57,11 @@ glabel D_ovl12_800D6688
 
 glabel D_ovl12_800D672C
   .incbin "ovl12.raw.bin", 0x029C, 0x4
-  /* 2A0 11A090 800D6730 */  .4byte func_ovl12_800D6490
+  /* 2A0 11A090 800D6730 */  .4byte mnDebugStageSelectTriggerInterrupt
   /* 2A4 11A094 800D6734 */  .4byte D_ovl12_800D69CC
   .incbin "ovl12.raw.bin", 0x02A8, 0x18
   /* 2C0 11A0B0 800D6750 */  .4byte D_ovl12_800D6688
-  /* 2C4 11A0B4 800D6754 */  .4byte D_ovl12_800D6684
+  /* 2C4 11A0B4 800D6754 */  .4byte dMNDebugStageSelectGrKind
   .incbin "ovl12.raw.bin", 0x02C8, 0x4
   /* 2CC 11A0BC 800D675C */
   .asciz "B "
@@ -82,7 +82,7 @@ glabel D_ovl12_800D6780
   .incbin "ovl12.raw.bin", 0x0300, 0x2C
   /* 32C 11A11C 800D67BC */  .4byte update_contdata
   .incbin "ovl12.raw.bin", 0x0330, 0x48
-  /* 378 11A168 800D6808 */  .4byte func_ovl12_800D65AC
+  /* 378 11A168 800D6808 */  .4byte mnDebugStageSelectInit
   .incbin "ovl12.raw.bin", 0x037C, 0x4
 
 glabel D_ovl12_800D6810

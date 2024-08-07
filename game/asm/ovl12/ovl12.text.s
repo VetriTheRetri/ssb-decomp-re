@@ -12,13 +12,13 @@
 # Text Sections
 #  0x800D6490 -> 0x800D6680
 
-glabel func_ovl12_800D6490
+glabel mnDebugStageSelectTriggerInterrupt
   /* 119DF0 800D6490 240E0001 */     addiu $t6, $zero, 1
-  /* 119DF4 800D6494 3C01800D */       lui $at, %hi(D_ovl12_800D6680)
+  /* 119DF4 800D6494 3C01800D */       lui $at, %hi(dMNDebugStageSelectInterrupt)
   /* 119DF8 800D6498 03E00008 */        jr $ra
-  /* 119DFC 800D649C AC2E6680 */        sw $t6, %lo(D_ovl12_800D6680)($at)
+  /* 119DFC 800D649C AC2E6680 */        sw $t6, %lo(dMNDebugStageSelectInterrupt)($at)
 
-glabel func_ovl12_800D64A0
+glabel mnDebugStageSelectMain
   /* 119E00 800D64A0 3C0E8004 */       lui $t6, %hi(gSysController + 2)
   /* 119E04 800D64A4 95CE5472 */       lhu $t6, %lo(gSysController + 2)($t6)
   /* 119E08 800D64A8 27BDFFE0 */     addiu $sp, $sp, -0x20
@@ -32,10 +32,10 @@ glabel func_ovl12_800D64A0
   /* 119E28 800D64C8 24050032 */     addiu $a1, $zero, 0x32
   /* 119E2C 800D64CC 13000005 */      beqz $t8, .L800D64E4
   /* 119E30 800D64D0 24060064 */     addiu $a2, $zero, 0x64
-  /* 119E34 800D64D4 0C035924 */       jal func_ovl12_800D6490
-  /* 119E38 800D64D8 00000000 */       nop 
+  /* 119E34 800D64D4 0C035924 */       jal mnDebugStageSelectTriggerInterrupt
+  /* 119E38 800D64D8 00000000 */       nop
   /* 119E3C 800D64DC 10000006 */         b .L800D64F8
-  /* 119E40 800D64E0 00000000 */       nop 
+  /* 119E40 800D64E0 00000000 */       nop
   .L800D64E4:
   /* 119E44 800D64E4 3C07800D */       lui $a3, %hi(D_ovl12_800D672C)
   /* 119E48 800D64E8 24190002 */     addiu $t9, $zero, 2
@@ -43,14 +43,14 @@ glabel func_ovl12_800D64A0
   /* 119E50 800D64F0 0C0DA75E */       jal func_ovl9_80369D78
   /* 119E54 800D64F4 24E7672C */     addiu $a3, $a3, %lo(D_ovl12_800D672C)
   .L800D64F8:
-  /* 119E58 800D64F8 3C08800D */       lui $t0, %hi(D_ovl12_800D6680)
-  /* 119E5C 800D64FC 8D086680 */        lw $t0, %lo(D_ovl12_800D6680)($t0)
+  /* 119E58 800D64F8 3C08800D */       lui $t0, %hi(dMNDebugStageSelectInterrupt)
+  /* 119E5C 800D64FC 8D086680 */        lw $t0, %lo(dMNDebugStageSelectInterrupt)($t0)
   /* 119E60 800D6500 51000027 */      beql $t0, $zero, .L800D65A0
   /* 119E64 800D6504 8FBF001C */        lw $ra, 0x1c($sp)
   /* 119E68 800D6508 0C0DA7B0 */       jal func_ovl9_80369EC0
-  /* 119E6C 800D650C 00000000 */       nop 
-  /* 119E70 800D6510 3C09800D */       lui $t1, %hi(D_ovl12_800D6684)
-  /* 119E74 800D6514 8D296684 */        lw $t1, %lo(D_ovl12_800D6684)($t1)
+  /* 119E6C 800D650C 00000000 */       nop
+  /* 119E70 800D6510 3C09800D */       lui $t1, %hi(dMNDebugStageSelectGrKind)
+  /* 119E74 800D6514 8D296684 */        lw $t1, %lo(dMNDebugStageSelectGrKind)($t1)
   /* 119E78 800D6518 3C02800A */       lui $v0, %hi(gSceneData)
   /* 119E7C 800D651C 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
   /* 119E80 800D6520 904A0000 */       lbu $t2, ($v0) # gSceneData + 0
@@ -86,18 +86,18 @@ glabel func_ovl12_800D64A0
   /* 119EF0 800D6590 A0590000 */        sb $t9, ($v0) # gSceneData + 0
   .L800D6594:
   /* 119EF4 800D6594 0C00171D */       jal func_80005C74
-  /* 119EF8 800D6598 00000000 */       nop 
+  /* 119EF8 800D6598 00000000 */       nop
   /* 119EFC 800D659C 8FBF001C */        lw $ra, 0x1c($sp)
   .L800D65A0:
   /* 119F00 800D65A0 27BD0020 */     addiu $sp, $sp, 0x20
   /* 119F04 800D65A4 03E00008 */        jr $ra
-  /* 119F08 800D65A8 00000000 */       nop 
+  /* 119F08 800D65A8 00000000 */       nop
 
-glabel func_ovl12_800D65AC
+glabel mnDebugStageSelectInit
   /* 119F0C 800D65AC 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 119F10 800D65B0 AFBF001C */        sw $ra, 0x1c($sp)
-  /* 119F14 800D65B4 3C05800D */       lui $a1, %hi(func_ovl12_800D64A0)
-  /* 119F18 800D65B8 24A564A0 */     addiu $a1, $a1, %lo(func_ovl12_800D64A0)
+  /* 119F14 800D65B4 3C05800D */       lui $a1, %hi(mnDebugStageSelectMain)
+  /* 119F18 800D65B8 24A564A0 */     addiu $a1, $a1, %lo(mnDebugStageSelectMain)
   /* 119F1C 800D65BC 00002025 */        or $a0, $zero, $zero
   /* 119F20 800D65C0 00003025 */        or $a2, $zero, $zero
   /* 119F24 800D65C4 0C00265A */       jal omMakeGObjSPAfter
@@ -110,7 +110,7 @@ glabel func_ovl12_800D65AC
   /* 119F40 800D65E0 0C002E7F */       jal func_8000B9FC
   /* 119F44 800D65E4 24070002 */     addiu $a3, $zero, 2
   /* 119F48 800D65E8 0C0DA7B8 */       jal func_ovl9_80369EE0
-  /* 119F4C 800D65EC 00000000 */       nop 
+  /* 119F4C 800D65EC 00000000 */       nop
   /* 119F50 800D65F0 3C07800D */       lui $a3, %hi(D_ovl12_800D672C)
   /* 119F54 800D65F4 240F0002 */     addiu $t7, $zero, 2
   /* 119F58 800D65F8 AFAF0010 */        sw $t7, 0x10($sp)
@@ -122,9 +122,9 @@ glabel func_ovl12_800D65AC
   /* 119F70 800D6610 8FBF001C */        lw $ra, 0x1c($sp)
   /* 119F74 800D6614 27BD0020 */     addiu $sp, $sp, 0x20
   /* 119F78 800D6618 03E00008 */        jr $ra
-  /* 119F7C 800D661C 00000000 */       nop 
+  /* 119F7C 800D661C 00000000 */       nop
 
-glabel debug_sss_entry
+glabel mnDebugStageSelectStartScene
   /* 119F80 800D6620 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
   /* 119F84 800D6624 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 119F88 800D6628 3C04800D */       lui $a0, %hi(D_ovl12_800D6764)
@@ -146,16 +146,16 @@ glabel debug_sss_entry
   /* 119FC8 800D6668 8FBF0014 */        lw $ra, 0x14($sp)
   /* 119FCC 800D666C 27BD0018 */     addiu $sp, $sp, 0x18
   /* 119FD0 800D6670 03E00008 */        jr $ra
-  /* 119FD4 800D6674 00000000 */       nop 
+  /* 119FD4 800D6674 00000000 */       nop
 
-  /* 119FD8 800D6678 00000000 */       nop 
-  /* 119FDC 800D667C 00000000 */       nop 
+  /* 119FD8 800D6678 00000000 */       nop
+  /* 119FDC 800D667C 00000000 */       nop
 
 # Likely start of new file
-#glabel D_ovl12_800D6680   # Routine parsed as data
-#  /* 119FE0 800D6680 00000000 */       nop 
-#glabel D_ovl12_800D6684   # Routine parsed as data
-#  /* 119FE4 800D6684 00000000 */       nop 
+#glabel dMNDebugStageSelectInterrupt   # Routine parsed as data
+#  /* 119FE0 800D6680 00000000 */       nop
+#glabel dMNDebugStageSelectGrKind   # Routine parsed as data
+#  /* 119FE4 800D6684 00000000 */       nop
 #glabel D_ovl12_800D6688   # Routine parsed as data
 #  /* 119FE8 800D6688 800D6810 */        lb $t5, 0x6810($zero)
 #  /* 119FEC 800D668C 800D6818 */        lb $t5, 0x6818($zero)
@@ -199,16 +199,16 @@ glabel debug_sss_entry
 #  /* 11A084 800D6724 800D69B4 */        lb $t5, 0x69b4($zero)
 #  /* 11A088 800D6728 800D69C0 */        lb $t5, 0x69c0($zero)
 #glabel D_ovl12_800D672C   # Routine parsed as data
-#  /* 11A08C 800D672C 00000000 */       nop 
+#  /* 11A08C 800D672C 00000000 */       nop
 #  /* 11A090 800D6730 800D6490 */        lb $t5, 0x6490($zero)
 #  /* 11A094 800D6734 800D69CC */        lb $t5, 0x69cc($zero)
-#  /* 11A098 800D6738 00000000 */       nop 
-#  /* 11A09C 800D673C 00000000 */       nop 
+#  /* 11A098 800D6738 00000000 */       nop
+#  /* 11A09C 800D673C 00000000 */       nop
 # Maybe start of new file
-#  /* 11A0A0 800D6740 00000000 */       nop 
-#  /* 11A0A4 800D6744 00000000 */       nop 
+#  /* 11A0A0 800D6740 00000000 */       nop
+#  /* 11A0A4 800D6744 00000000 */       nop
 #  /* 11A0A8 800D6748 00000003 */       sra $zero, $zero, 0
-#  /* 11A0AC 800D674C 00000000 */       nop 
+#  /* 11A0AC 800D674C 00000000 */       nop
 #  /* 11A0B0 800D6750 800D6688 */        lb $t5, 0x6688($zero)
 #  /* 11A0B4 800D6754 800D6684 */        lb $t5, 0x6684($zero)
-#  /* 11A0B8 800D6758 00000000 */       nop 
+#  /* 11A0B8 800D6758 00000000 */       nop

@@ -169,9 +169,9 @@ void wpSamusChargeShotLaunch(GObj *weapon_gobj) // Set Charge Shot's attributes 
 
     coll_size = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].coll_size * 0.5F;
 
-    wp->coll_data.object_coll.width = coll_size;
-    wp->coll_data.object_coll.top = coll_size;
-    wp->coll_data.object_coll.bottom = -coll_size;
+    wp->coll_data.objcoll.width = coll_size;
+    wp->coll_data.objcoll.top = coll_size;
+    wp->coll_data.objcoll.bottom = -coll_size;
 
     func_800269C0_275C0(dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].shoot_sfx_id);
 

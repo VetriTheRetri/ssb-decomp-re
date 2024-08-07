@@ -243,7 +243,7 @@ void itRShellSpinUpdateGFX(GObj *item_gobj)
     {
         Vec3f pos = dobj->translate.vec.f;
 
-        pos.y += ip->attributes->objectcoll_bottom;
+        pos.y += ip->attributes->objcoll_bottom;
 
         efManagerDustLightMakeEffect(&pos, ip->lr, 1.0F);
 
@@ -494,7 +494,7 @@ void itRShellSpinCheckCollisionEdge(GObj *item_gobj)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x >= (joint->translate.vec.f.x - attributes->objectcoll_width))
+            if (pos.x >= (joint->translate.vec.f.x - attributes->objcoll_width))
             {
                 itRShellSpinEdgeInvertVelLR(item_gobj, 1);
             }
@@ -503,7 +503,7 @@ void itRShellSpinCheckCollisionEdge(GObj *item_gobj)
         {
             mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x <= (joint->translate.vec.f.x + attributes->objectcoll_width))
+            if (pos.x <= (joint->translate.vec.f.x + attributes->objcoll_width))
             {
                 itRShellSpinEdgeInvertVelLR(item_gobj, 0);
             }

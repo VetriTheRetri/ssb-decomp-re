@@ -284,11 +284,11 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     wp->coll_data.p_translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     wp->coll_data.p_lr = &wp->lr;
 
-    wp->coll_data.object_coll.top = attributes->objectcoll_top;
-    wp->coll_data.object_coll.center = attributes->objectcoll_center;
-    wp->coll_data.object_coll.bottom = attributes->objectcoll_bottom;
-    wp->coll_data.object_coll.width = attributes->objectcoll_width;
-    wp->coll_data.p_object_coll = &wp->coll_data.object_coll;
+    wp->coll_data.objcoll.top = attributes->objcoll_top;
+    wp->coll_data.objcoll.center = attributes->objcoll_center;
+    wp->coll_data.objcoll.bottom = attributes->objcoll_bottom;
+    wp->coll_data.objcoll.width = attributes->objcoll_width;
+    wp->coll_data.p_objcoll = &wp->coll_data.objcoll;
 
     wp->coll_data.ignore_line_id = -1;
     wp->coll_data.ground_line_id = -1;

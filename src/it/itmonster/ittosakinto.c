@@ -255,7 +255,7 @@ GObj* itTosakintoMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->objcoll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITTosakintoDataStart), 0.0F); // Linker thing
     }

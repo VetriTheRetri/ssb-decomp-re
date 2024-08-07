@@ -1264,7 +1264,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
-                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->object_coll.bottom,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->objcoll.bottom,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z
             );
 
@@ -1272,7 +1272,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
             hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
-            hlMtxScale(mtx_store.gbi, attributes->object_coll.width / 30.0F, attributes->object_coll.center / 30.0F, 1.0F);
+            hlMtxScale(mtx_store.gbi, attributes->objcoll.width / 30.0F, attributes->objcoll.center / 30.0F, 1.0F);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1286,7 +1286,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
-                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->object_coll.center,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->objcoll.center,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z
             );
 
@@ -1294,7 +1294,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
             hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
-            hlMtxScale(mtx_store.gbi, attributes->object_coll.width / 30.0F, (attributes->object_coll.top - attributes->object_coll.center) / 30.0F, 1.0F);
+            hlMtxScale(mtx_store.gbi, attributes->objcoll.width / 30.0F, (attributes->objcoll.top - attributes->objcoll.center) / 30.0F, 1.0F);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 

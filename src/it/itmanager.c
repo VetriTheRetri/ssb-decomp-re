@@ -263,9 +263,9 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
 
     if (attributes->is_render_colanim)
     {
-        proc_render = (attributes->is_render_transparency) ? itRenderProcRenderColAnimXLU : itRenderProcRenderColAnimOPA;
+        proc_render = (attributes->is_render_xlu) ? itRenderProcRenderColAnimXLU : itRenderProcRenderColAnimOPA;
     }
-    else proc_render = (attributes->is_render_transparency) ? itRenderProcRenderXLU : itRenderProcRenderOPA;
+    else proc_render = (attributes->is_render_xlu) ? itRenderProcRenderXLU : itRenderProcRenderOPA;
 
     omAddGObjRenderProc(item_gobj, proc_render, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -380,7 +380,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
 
     if (attributes->dobj_setup != NULL)
     {
-        if (!(attributes->unk_0x10_b1))
+        if (!(attributes->is_item_dobjs))
         {
             func_8000F720(item_gobj, attributes->dobj_setup, attributes->p_mobjsubs, NULL, item_desc->transform_types.tk1, item_desc->transform_types.tk2, item_desc->transform_types.unk_dobjtransform_0x2);
         }
@@ -404,11 +404,11 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     
     ip->coll_data.p_translate           = &DObjGetStruct(item_gobj)->translate.vec.f;
     ip->coll_data.p_lr                  = &ip->lr;
-    ip->coll_data.object_coll.top       = attributes->objectcoll_top;
-    ip->coll_data.object_coll.center    = attributes->objectcoll_center;
-    ip->coll_data.object_coll.bottom    = attributes->objectcoll_bottom;
-    ip->coll_data.object_coll.width     = attributes->objectcoll_width;
-    ip->coll_data.p_object_coll         = &ip->coll_data.object_coll;
+    ip->coll_data.objcoll.top       = attributes->objcoll_top;
+    ip->coll_data.objcoll.center    = attributes->objcoll_center;
+    ip->coll_data.objcoll.bottom    = attributes->objcoll_bottom;
+    ip->coll_data.objcoll.width     = attributes->objcoll_width;
+    ip->coll_data.p_objcoll         = &ip->coll_data.objcoll;
     ip->coll_data.ignore_line_id        = -1;
     ip->coll_data.coll_update_frame     = gMPCollisionUpdateFrame;
     ip->coll_data.coll_mask_curr        = 0;

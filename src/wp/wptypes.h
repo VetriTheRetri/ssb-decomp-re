@@ -78,10 +78,10 @@ struct wpAttributes // Moreso hitbox stuff
     AObjAnimJoint **anim_joints;
     AObjAnimJoint ***p_matanim_joints;
     Vec3h offset[2];
-    s16 objectcoll_top;
-    s16 objectcoll_center;
-    s16 objectcoll_bottom;
-    s16 objectcoll_width;
+    s16 objcoll_top;
+    s16 objcoll_center;
+    s16 objcoll_bottom;
+    s16 objcoll_width;
     u16 size;
     s32 angle : 10;
     u32 knockback_scale : 10;

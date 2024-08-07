@@ -98,20 +98,20 @@ void wpRenderMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
-    mpObjectColl *object_coll = &wp->coll_data.object_coll;
+    mpObjectColl *objcoll = &wp->coll_data.objcoll;
     gsMtxStore mtx_store;
 
     gDPPipeSync(gDisplayListHead[1]++);
 
     hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
-    hlMtxTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->bottom, translate->z);
+    hlMtxTranslate(mtx_store.gbi, translate->x, translate->y + objcoll->bottom, translate->z);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
     hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
-    hlMtxScale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->center - object_coll->bottom) / 30.0F, 1.0F);
+    hlMtxScale(mtx_store.gbi, objcoll->width / 30.0F, (objcoll->center - objcoll->bottom) / 30.0F, 1.0F);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -121,13 +121,13 @@ void wpRenderMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 
     hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
-    hlMtxTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->center, translate->z);
+    hlMtxTranslate(mtx_store.gbi, translate->x, translate->y + objcoll->center, translate->z);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
     hlMtxStoreGbi(mtx_store, gGraphicsHeap);
 
-    hlMtxScale(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->top - object_coll->center) / 30.0F, 1.0F);
+    hlMtxScale(mtx_store.gbi, objcoll->width / 30.0F, (objcoll->top - objcoll->center) / 30.0F, 1.0F);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 

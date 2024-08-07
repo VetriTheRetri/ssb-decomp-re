@@ -194,7 +194,7 @@ void grYamabukiGateUpdateOpen(void)
     {
         itStruct *ip = itGetStruct(gGRCommonStruct.yamabuki.monster_gobj);
 
-        gGRCommonStruct.yamabuki.gate_pos.x = DObjGetStruct(gGRCommonStruct.yamabuki.monster_gobj)->translate.vec.f.x - ip->coll_data.object_coll.width;
+        gGRCommonStruct.yamabuki.gate_pos.x = DObjGetStruct(gGRCommonStruct.yamabuki.monster_gobj)->translate.vec.f.x - ip->coll_data.objcoll.width;
         gGRCommonStruct.yamabuki.gate_pos.y = gMPCollisionYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
 
         if (gGRCommonStruct.yamabuki.gate_pos.x < 960.0F)

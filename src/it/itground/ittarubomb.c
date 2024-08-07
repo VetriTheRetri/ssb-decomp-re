@@ -282,8 +282,8 @@ void itTaruBombCommonSetMapCollisionBox(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->rotate.vec.f.x = F_CLC_DTOR32(90.0F); // HALF_PI32
 
-    ip->coll_data.object_coll.top = ip->coll_data.object_coll.width;
-    ip->coll_data.object_coll.bottom = -ip->coll_data.object_coll.width;
+    ip->coll_data.objcoll.top = ip->coll_data.objcoll.width;
+    ip->coll_data.objcoll.bottom = -ip->coll_data.objcoll.width;
 }
 
 // 0x80184FD4

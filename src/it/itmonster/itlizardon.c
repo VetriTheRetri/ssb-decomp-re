@@ -238,9 +238,9 @@ sb32 itLizardonAttackProcUpdate(GObj *item_gobj)
 
         pos = dobj->translate.vec.f;
 
-        pos.y += ip->attributes->objectcoll_bottom;
+        pos.y += ip->attributes->objcoll_bottom;
 
-        pos.x += (ip->attributes->objectcoll_width + ITLIZARDON_DUST_GFX_OFF_X) * -ip->lr;
+        pos.x += (ip->attributes->objcoll_width + ITLIZARDON_DUST_GFX_OFF_X) * -ip->lr;
 
         efManagerDustHeavyMakeEffect(&pos, -ip->lr);
 
@@ -356,7 +356,7 @@ GObj* itLizardonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->objcoll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITLizardonDataStart), 0.0F);
     }

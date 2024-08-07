@@ -154,11 +154,11 @@ void itKamexAttackUpdateHydro(GObj *item_gobj)
 
         pos = dobj->translate.vec.f;
 
-        pos.y += ip->attributes->objectcoll_bottom;
+        pos.y += ip->attributes->objcoll_bottom;
 
         if (ip->it_kind == nITKindKamex)
         {
-            pos.x += (ip->attributes->objectcoll_width + ITKAMEX_DUST_SPAWN_OFF_X) * -ip->lr;
+            pos.x += (ip->attributes->objcoll_width + ITKAMEX_DUST_SPAWN_OFF_X) * -ip->lr;
         }
         ip->item_vars.kamex.is_apply_push = TRUE;
 
@@ -301,10 +301,10 @@ void itKamexAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
 
             dobj->display_list = dl;
 
-            ip->coll_data.object_coll.top = ITKAMEX_COLL_SIZE;
-            ip->coll_data.object_coll.center = 0.0F;
-            ip->coll_data.object_coll.bottom = -ITKAMEX_COLL_SIZE;
-            ip->coll_data.object_coll.width = ITKAMEX_COLL_SIZE;
+            ip->coll_data.objcoll.top = ITKAMEX_COLL_SIZE;
+            ip->coll_data.objcoll.center = 0.0F;
+            ip->coll_data.objcoll.bottom = -ITKAMEX_COLL_SIZE;
+            ip->coll_data.objcoll.width = ITKAMEX_COLL_SIZE;
         }
     }
     ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0;
@@ -427,7 +427,7 @@ GObj* itKamexMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         {
             dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }
-        dobj->translate.vec.f.y -= kamex_ip->attributes->objectcoll_bottom;
+        dobj->translate.vec.f.y -= kamex_ip->attributes->objcoll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(kamex_ip, lITKamexDataStart), 0.0F); // Linker thing
     }

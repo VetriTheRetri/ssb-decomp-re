@@ -39,7 +39,7 @@ GObj* ftCommonGetFindItem(GObj *fighter_gobj, u8 pickup_mask)
             {
                 Vec3f *ft_translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
                 Vec3f *it_translate = &DObjGetStruct(item_gobj)->translate.vec.f;
-                mpObjectColl *object_coll = &ip->coll_data.object_coll;
+                mpObjectColl *objcoll = &ip->coll_data.objcoll;
 
                 is_pickup = FALSE;
 
@@ -48,9 +48,9 @@ GObj* ftCommonGetFindItem(GObj *fighter_gobj, u8 pickup_mask)
                     pickup_range.x = ft_translate->x + (fp->lr * item_pickup->pickup_offset_light.x);
                     pickup_range.y = ft_translate->y + item_pickup->pickup_offset_light.y;
 
-                    if ((((pickup_range.x - item_pickup->pickup_range_light.x) - object_coll->width) < it_translate->x) && (it_translate->x < (item_pickup->pickup_range_light.x + pickup_range.x + object_coll->width)))
+                    if ((((pickup_range.x - item_pickup->pickup_range_light.x) - objcoll->width) < it_translate->x) && (it_translate->x < (item_pickup->pickup_range_light.x + pickup_range.x + objcoll->width)))
                     {
-                        if ((((pickup_range.y - item_pickup->pickup_range_light.y) - object_coll->top) < it_translate->y) && (it_translate->y < ((item_pickup->pickup_range_light.y + pickup_range.y) - object_coll->bottom)))
+                        if ((((pickup_range.y - item_pickup->pickup_range_light.y) - objcoll->top) < it_translate->y) && (it_translate->y < ((item_pickup->pickup_range_light.y + pickup_range.y) - objcoll->bottom)))
                         {
                             is_pickup = TRUE;
                         }
@@ -61,9 +61,9 @@ GObj* ftCommonGetFindItem(GObj *fighter_gobj, u8 pickup_mask)
                     pickup_range.x = ft_translate->x + (fp->lr * item_pickup->pickup_offset_heavy.x);
                     pickup_range.y = ft_translate->y + item_pickup->pickup_offset_heavy.y;
 
-                    if ((((pickup_range.x - item_pickup->pickup_range_heavy.x) - object_coll->width) < it_translate->x) && (it_translate->x < (item_pickup->pickup_range_heavy.x + pickup_range.x + object_coll->width)))
+                    if ((((pickup_range.x - item_pickup->pickup_range_heavy.x) - objcoll->width) < it_translate->x) && (it_translate->x < (item_pickup->pickup_range_heavy.x + pickup_range.x + objcoll->width)))
                     {
-                        if ((((pickup_range.y - item_pickup->pickup_range_heavy.y) - object_coll->top) < it_translate->y) && (it_translate->y < ((item_pickup->pickup_range_heavy.y + pickup_range.y) - object_coll->bottom)))
+                        if ((((pickup_range.y - item_pickup->pickup_range_heavy.y) - objcoll->top) < it_translate->y) && (it_translate->y < ((item_pickup->pickup_range_heavy.y + pickup_range.y) - objcoll->bottom)))
                         {
                             is_pickup = TRUE;
                         }

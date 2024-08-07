@@ -2621,7 +2621,7 @@ void ftMainGetBumperDamageAngle(GObj *fighter_gobj, GObj *attacker_gobj)
         {
             dist_x = -dist_x;
         }
-        dist_y = (DObjGetStruct(fighter_gobj)->translate.vec.f.y + fp->coll_data.object_coll.center) - DObjGetStruct(attacker_gobj)->translate.vec.f.y;
+        dist_y = (DObjGetStruct(fighter_gobj)->translate.vec.f.y + fp->coll_data.objcoll.center) - DObjGetStruct(attacker_gobj)->translate.vec.f.y;
 
         fp->damage_angle = (dist_x == 0) ? 0 : F_CLC_RTOD32(atanf(dist_y / dist_x));
     }

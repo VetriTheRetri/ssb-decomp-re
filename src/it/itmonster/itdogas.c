@@ -268,7 +268,7 @@ GObj* itDogasMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        dobj->translate.vec.f.y -= ip->attributes->objectcoll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->objcoll_bottom;
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 

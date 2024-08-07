@@ -167,8 +167,8 @@ struct mpCollData
 	Vec3f pos_correct;			 	// Unconfirmed
 	Vec3f pos_speed;			 	// Applied from moving collisions
 	Vec3f vel_push;				 	// Applied from extern stage objects such as Whispy's Wind
-	mpObjectColl object_coll;	 	// Environmental collision box
-	mpObjectColl *p_object_coll; 	// Points back to environmental collision box???
+	mpObjectColl objcoll;	 	// Environmental collision box
+	mpObjectColl *p_objcoll; 	// Points back to environmental collision box???
 	Vec2f cliffcatch_coll;		 	// Ledge grab collision box
 	u16 coll_mask_prev;			 	// Previous collision flags?
 	u16 coll_mask_curr;			 	// Current collision flags

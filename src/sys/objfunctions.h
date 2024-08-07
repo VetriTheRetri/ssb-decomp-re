@@ -51,7 +51,25 @@ extern AObj* gcGetTrackAObj(AObj *aobj, u8 track);
 // Set DObj animation length?
 extern void gcSetDObjAnimLength(DObj *dobj, f32 length);
 
-// Get DObj vector value of corresponding track ID
-extern f32 gcGetDObjValueTrack(DObj *dobj, s32 track);
+// Get DObj axis value of corresponding track ID
+extern f32 gcGetDObjAxisTrack(DObj *dobj, s32 track);
+
+// Get DObjDesc axis value of corresponding track ID
+extern f32 gcGetDObjDescAxisTrack(DObjDesc *dobj_desc, s32 track);
+
+// Check if DObj or DObjDesc axis value of corresponding track ID has been retreived
+extern sb32 gcCheckGetDObjNoAxis
+(
+    sb32 is_desc_or_dobj,
+    DObj *dobj,
+    f32 *axis_value,
+    f32 *arg3,
+    AObj *seek_aobj,
+    DObjDesc *dobj_desc,
+    s32 track,
+    sb32 arg7,
+    Vec3f *translate,
+    sb32 *is_get_axis_value
+);
 
 #endif

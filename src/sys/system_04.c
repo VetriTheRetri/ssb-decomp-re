@@ -19,7 +19,7 @@ s32 D_8003B93C = 10;
 //                               //
 // // // // // // // // // // // //
 
-void gcSetMatAnimJointStepAll(GObj *gobj, f32 anim_rate)
+void gcSetMatAnimJointPlaybackRateAll(GObj *gobj, f32 anim_rate)
 {
     MObj *mobj;
     DObj *dobj = DObjGetStruct(gobj);
@@ -779,7 +779,6 @@ void gcPlayDObjAnim(DObj *dobj)
     }
 }
 
-// the arg typing may be off?
 void gcParseMObjMatAnimJoint(MObj *mobj)
 {
     AObj *mat_aobjs[10];
@@ -1227,76 +1226,76 @@ void gcPlayMObjMatAnim(MObj *mobj)
                 {
                     switch (aobj->kind) 
                     {
-                        case 2: 
-                            value = aobj->value_base + (aobj->length * aobj->step_base); 
-                            break;
+                    case 2: 
+                        value = aobj->value_base + (aobj->length * aobj->step_base); 
+                        break;
                         
-                        case 3:
-                            temp_f16 = SQUARE(aobj->length_invert);
-                            temp_f12 = SQUARE(aobj->length);
-                            temp_f18 = aobj->length_invert * temp_f12;
-                            temp_f14 = aobj->length * temp_f12 * temp_f16;
-                            temp_f20 = 2.0F * temp_f14 * aobj->length_invert;
-                            temp_f22 = 3.0F * temp_f12 * temp_f16;
-                            temp_f24 = temp_f14 - temp_f18;
+                    case 3:
+                        temp_f16 = SQUARE(aobj->length_invert);
+                        temp_f12 = SQUARE(aobj->length);
+                        temp_f18 = aobj->length_invert * temp_f12;
+                        temp_f14 = aobj->length * temp_f12 * temp_f16;
+                        temp_f20 = 2.0F * temp_f14 * aobj->length_invert;
+                        temp_f22 = 3.0F * temp_f12 * temp_f16;
+                        temp_f24 = temp_f14 - temp_f18;
 
-                            value = (aobj->value_base * ((temp_f20 - temp_f22) + 1.0F)) + 
-                                    (aobj->value_target * (temp_f22 - temp_f20)) + 
-                                    (aobj->step_base * ((temp_f24 - temp_f18) + aobj->length)) + 
-                                    (aobj->step_target * temp_f24);
-                            break;
+                        value = (aobj->value_base * ((temp_f20 - temp_f22) + 1.0F)) + 
+                                (aobj->value_target * (temp_f22 - temp_f20)) + 
+                                (aobj->step_base * ((temp_f24 - temp_f18) + aobj->length)) + 
+                                (aobj->step_target * temp_f24);
+                        break;
                         
-                        case 1:
-                            value = (aobj->length_invert <= aobj->length) ? aobj->value_target : aobj->value_base;
-                            break;
+                    case 1:
+                        value = (aobj->length_invert <= aobj->length) ? aobj->value_target : aobj->value_base;
+                        break;
                         
-                        default: 
-                            break;
+                    default: 
+                        break;
                     }
                     switch (aobj->track) 
                     {
-                        case nOMObjAnimTrackSetTextureIDCurrent: 
-                            mobj->texture_id_current = value; 
-                            break;
+                    case nOMObjAnimTrackSetTextureIDCurrent: 
+                        mobj->texture_id_current = value; 
+                        break;
                         
-                        case nOMObjAnimTrackTexture14: 
-                            mobj->sub.unk14 = value; 
-                            break;
+                    case nOMObjAnimTrackTexture14: 
+                        mobj->sub.unk14 = value; 
+                        break;
                         
-                        case nOMObjAnimTrackTexture15: 
-                            mobj->sub.unk18 = value; 
-                            break;
+                    case nOMObjAnimTrackTexture15: 
+                        mobj->sub.unk18 = value; 
+                        break;
                         
-                        case nOMObjAnimTrackTexture16: 
-                            mobj->sub.unk1C = value; 
-                            break;
+                    case nOMObjAnimTrackTexture16: 
+                        mobj->sub.unk1C = value; 
+                        break;
                         
-                        case nOMObjAnimTrackTexture17: 
-                            mobj->sub.unk20 = value; 
-                            break;
+                    case nOMObjAnimTrackTexture17: 
+                        mobj->sub.unk20 = value; 
+                        break;
                         
-                        case nOMObjAnimTrackSetTextureIDNext: 
-                            mobj->texture_id_next = value; 
-                            break;
+                    case nOMObjAnimTrackSetTextureIDNext: 
+                        mobj->texture_id_next = value; 
+                        break;
                         
-                        case nOMObjAnimTrackTexture19: 
-                            mobj->sub.unk3C = value; 
-                            break;
+                    case nOMObjAnimTrackTexture19: 
+                        mobj->sub.unk3C = value; 
+                        break;
                         
-                        case nOMObjAnimTrackTexture20: 
-                            mobj->sub.unk40 = value; 
-                            break;
+                    case nOMObjAnimTrackTexture20: 
+                        mobj->sub.unk40 = value; 
+                        break;
                         
-                        case nOMObjAnimTrackSetLFrac: 
-                            mobj->lfrac = value; 
-                            break;
+                    case nOMObjAnimTrackSetLFrac: 
+                        mobj->lfrac = value; 
+                        break;
                         
-                        case nOMObjAnimTrackSetTextureFrame: 
-                            mobj->texture_frame = value; 
-                            break;
+                    case nOMObjAnimTrackSetTextureFrame: 
+                        mobj->texture_frame = value; 
+                        break;
                         
-                        default: 
-                            break;
+                    default: 
+                        break;
                     }
                 } 
                 else 
@@ -1450,7 +1449,7 @@ void gcSetDObjAnimLength(DObj *dobj, f32 length)
     }
 }
 
-f32 gcGetDObjValueTrack(DObj *dobj, s32 track)
+f32 gcGetDObjAxisTrack(DObj *dobj, s32 track)
 {
     switch (track) 
     {
@@ -1487,7 +1486,7 @@ f32 gcGetDObjValueTrack(DObj *dobj, s32 track)
 #endif
 }
 
-f32 gcGetDObjDescValueTrack(DObjDesc *dobj_desc, s32 track)
+f32 gcGetDObjDescAxisTrack(DObjDesc *dobj_desc, s32 track)
 {
     switch (track) 
     {
@@ -1524,7 +1523,115 @@ f32 gcGetDObjDescValueTrack(DObjDesc *dobj_desc, s32 track)
 #endif
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000E164_ED64.s")
+sb32 gcCheckGetDObjNoAxis
+(
+    sb32 is_desc_or_dobj,
+    DObj *dobj,
+    f32 *axis_value,
+    f32 *arg3,
+    AObj *seek_aobj,
+    DObjDesc *dobj_desc,
+    s32 track,
+    sb32 arg7,
+    Vec3f *translate,
+    sb32 *is_get_axis_value
+)
+{
+    AObj *aobj = gcGetTrackAObj(seek_aobj, track);
+
+    if ((aobj != NULL) && (aobj->kind != 0))
+    {
+        if ((is_desc_or_dobj == 0) && (dobj->anim_remain != -1.1342745e38F))
+        {
+            aobj->length += dobj->anim_rate;
+        }
+        *axis_value = func_8000CB94_D794(aobj);
+
+        if (arg7 != FALSE)
+        {
+            *arg3 = func_8000CC40_D840(aobj);
+        }
+    }
+    else if ((track == nOMObjAnimTrackTraX) || (track == nOMObjAnimTrackTraY) || (track == nOMObjAnimTrackTraZ))
+    {
+        if (*is_get_axis_value != FALSE)
+        {
+            switch (track)
+            {
+            case nOMObjAnimTrackTraX:
+                *axis_value = translate->x;
+                break;
+
+            case nOMObjAnimTrackTraY:
+                *axis_value = translate->y;
+                break;
+
+            case nOMObjAnimTrackTraZ:
+                *axis_value = translate->z;
+                break;
+            }
+        }
+        else
+        {
+            aobj = gcGetTrackAObj(seek_aobj, nOMObjAnimTrackTraL);
+
+            if ((aobj != NULL) && (aobj->kind != 0))
+            {
+                if ((is_desc_or_dobj == 0) && (dobj->anim_remain != -1.1342745e38F))
+                {
+                    aobj->length += dobj->anim_rate;
+                }
+                *axis_value = func_8000CB94_D794(aobj);
+
+                if (*axis_value < 0.0F)
+                {
+                    *axis_value = 0.0F;
+                }
+                else if (*axis_value > 1.0F)
+                {
+                    *axis_value = 1.0F;
+                }
+                hal_interpolation_cubic(translate, aobj->interpolate, *axis_value);
+
+                switch (track)
+                {
+                case nOMObjAnimTrackTraX:
+                    *axis_value = translate->x;
+                    break;
+
+                case nOMObjAnimTrackTraY:
+                    *axis_value = translate->y;
+                    break;
+
+                case nOMObjAnimTrackTraZ:
+                    *axis_value = translate->z;
+                    break;
+                }
+                *is_get_axis_value = TRUE;
+            }
+            else if (is_desc_or_dobj == 0)
+            {
+                if (dobj_desc == NULL)
+                {
+                    return TRUE;
+                }
+                else *axis_value = gcGetDObjDescAxisTrack(dobj_desc, track);
+            }
+            else *axis_value = gcGetDObjAxisTrack(dobj, track);
+        }
+    }
+    else if (is_desc_or_dobj == 0)
+    {
+        if (dobj_desc == NULL)
+        {
+            return TRUE;
+        }
+        *axis_value = gcGetDObjDescAxisTrack(dobj_desc, track);
+    }
+    else *axis_value = gcGetDObjAxisTrack(dobj, track);
+
+    return FALSE;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000E428_F028.s")
 

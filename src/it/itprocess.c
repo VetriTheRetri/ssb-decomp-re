@@ -1093,7 +1093,9 @@ next_check:
     ip->hit_refresh_damage = 0;
     ip->hit_attack_damage = 0;
     ip->hit_shield_damage = 0;
+
     ip->reflect_gobj = NULL;
+    
     ip->damage_highest = 0;
     ip->damage_queue = 0;
     ip->damage_lag = 0;

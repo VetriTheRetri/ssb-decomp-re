@@ -1523,7 +1523,7 @@ f32 gcGetDObjDescAxisTrack(DObjDesc *dobj_desc, s32 track)
 #endif
 }
 
-sb32 gcCheckGetDObjNoAxis
+sb32 gcCheckGetDObjNoAxisTrack
 (
     sb32 is_desc_or_dobj,
     DObj *dobj,

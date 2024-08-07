@@ -58,7 +58,7 @@ extern f32 gcGetDObjAxisTrack(DObj *dobj, s32 track);
 extern f32 gcGetDObjDescAxisTrack(DObjDesc *dobj_desc, s32 track);
 
 // Check if DObj or DObjDesc axis value of corresponding track ID has been retreived
-extern sb32 gcCheckGetDObjNoAxis
+extern sb32 gcCheckGetDObjNoAxisTrack
 (
     sb32 is_desc_or_dobj,
     DObj *dobj,

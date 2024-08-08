@@ -42,7 +42,7 @@ sb32 ftCommonRunCheckInterruptDash(GObj *fighter_gobj)
 
     if (attributes->dash_to_run <= fighter_gobj->anim_frame)
     {
-        if (fighter_gobj->anim_frame < (attributes->dash_to_run + DObjGetStruct(fighter_gobj)->anim_rate))
+        if (fighter_gobj->anim_frame < (attributes->dash_to_run + DObjGetStruct(fighter_gobj)->anim_speed))
         {
             if ((fp->input.pl.stick_range.x * fp->lr) >= FTCOMMON_RUN_STICK_RANGE_MIN)
             {

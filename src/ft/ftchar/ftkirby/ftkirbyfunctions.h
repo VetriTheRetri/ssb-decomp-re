@@ -191,7 +191,7 @@ extern void ftKirbyCopySamusSpecialAirNEndSwitchStatusGround(GObj* fighter_gobj)
 extern void ftKirbyCopySamusSpecialNEndSwitchStatusAir(GObj* fighter_gobj);
 extern void ftKirbyCopySamusSpecialNEndSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopySamusSpecialAirNEndSetStatus(GObj* fighter_gobj);
-extern f32 ftKirbyCopySamusSpecialNStartGetAnimPlaybackRate(ftStruct* fp);
+extern f32 ftKirbyCopySamusSpecialNStartGetAnimSpeed(ftStruct* fp);
 extern void ftKirbyCopySamusSpecialNInitStatusVars(ftStruct* fp);
 extern void ftKirbyCopySamusSpecialNStartSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopySamusSpecialAirNStartSetStatus(GObj* fighter_gobj);

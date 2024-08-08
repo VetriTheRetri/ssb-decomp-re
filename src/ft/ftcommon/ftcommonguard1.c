@@ -246,7 +246,7 @@ void ftCommonGuardUpdateJoints(GObj *fighter_gobj)
         }
         else ftCommonGuardGetJointTransform(yrotn_joint, &fp->attributes->dobj_lookup[joint_num], fp->status_vars.common.guard.shield_rotate_range);
 
-        yrotn_joint->anim_remain = AOBJ_FRAME_NULL;
+        yrotn_joint->anim_remain = AOBJ_ANIM_NULL;
 
         ftCommonGuardUpdateShieldHitbox(fp);
         func_ovl2_800EB528(fp->joints[nFTPartsJointYRotN]);
@@ -283,22 +283,22 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
 
             if (joint != NULL)
             {
-                if (joint->anim_remain != AOBJ_FRAME_NULL)
+                if (joint->anim_remain != AOBJ_ANIM_NULL)
                 {
                     ftCommonGuardGetJointTransformScale(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range, scale);
 
-                    joint->anim_remain = AOBJ_FRAME_NULL;
+                    joint->anim_remain = AOBJ_ANIM_NULL;
                 }
                 dobj_desc++;
             }
         }
         joint = fp->joints[nFTPartsJointYRotN];
 
-        if (joint->anim_remain != AOBJ_FRAME_NULL)
+        if (joint->anim_remain != AOBJ_ANIM_NULL)
         {
             ftCommonGuardGetJointTransformScale(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range, &fp->attributes->translate_scales[nFTPartsJointYRotN]);
 
-            joint->anim_remain = AOBJ_FRAME_NULL;
+            joint->anim_remain = AOBJ_ANIM_NULL;
         }
     }
     else
@@ -309,22 +309,22 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
 
             if (joint != NULL)
             {
-                if (joint->anim_remain != AOBJ_FRAME_NULL)
+                if (joint->anim_remain != AOBJ_ANIM_NULL)
                 {
                     ftCommonGuardGetJointTransform(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range);
 
-                    joint->anim_remain = AOBJ_FRAME_NULL;
+                    joint->anim_remain = AOBJ_ANIM_NULL;
                 }
                 dobj_desc++;
             }
         }
         joint = fp->joints[nFTPartsJointYRotN];
 
-        if (joint->anim_remain != AOBJ_FRAME_NULL)
+        if (joint->anim_remain != AOBJ_ANIM_NULL)
         {
             ftCommonGuardGetJointTransform(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range);
 
-            joint->anim_remain = AOBJ_FRAME_NULL;
+            joint->anim_remain = AOBJ_ANIM_NULL;
         }
     }
     ftCommonGuardUpdateShieldHitbox(fp);

@@ -71,7 +71,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
     u16 command_kind;
     u16 flags;
 
-    if (root_dobj->anim_remain != AOBJ_FRAME_NULL)
+    if (root_dobj->anim_remain != AOBJ_ANIM_NULL)
     {
         if (root_dobj->anim_remain == -F32_HALF)
         {
@@ -79,8 +79,8 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
         }
         else
         {
-            root_dobj->anim_remain -= root_dobj->anim_rate;
-            root_dobj->anim_frame += root_dobj->anim_rate;
+            root_dobj->anim_remain -= root_dobj->anim_speed;
+            root_dobj->anim_frame += root_dobj->anim_speed;
             root_dobj->parent_gobj->anim_frame = root_dobj->anim_frame;
 
             if (root_dobj->anim_remain > 0.0F)
@@ -113,13 +113,13 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 {
                     if (current_aobj->kind != nOMObjAnimKindNone)
                     {
-                        current_aobj->length += root_dobj->anim_rate + root_dobj->anim_remain;
+                        current_aobj->length += root_dobj->anim_speed + root_dobj->anim_remain;
                     }
                     current_aobj = current_aobj->next;
                 }
                 root_dobj->anim_frame = root_dobj->anim_remain;
                 root_dobj->parent_gobj->anim_frame = root_dobj->anim_remain;
-                root_dobj->anim_remain = -1.1342745e38F;
+                root_dobj->anim_remain = AOBJ_ANIM_END;
 
                 return;
             }
@@ -156,7 +156,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         {
                             track_aobjs[i]->length_invert = 1.0F / payload;
                         }
-                        track_aobjs[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
+                        track_aobjs[i]->length = -root_dobj->anim_remain - root_dobj->anim_speed;
                     }
                 }
                 if (command_kind == nFTFigatreeCommandSetVal0RateBlock)
@@ -192,7 +192,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         {
                             track_aobjs[i]->rate_base = (track_aobjs[i]->value_target - track_aobjs[i]->value_base) / payload;
                         }
-                        track_aobjs[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
+                        track_aobjs[i]->length = -root_dobj->anim_remain - root_dobj->anim_speed;
                         track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
@@ -233,7 +233,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         {
                             track_aobjs[i]->length_invert = 1.0F / payload;
                         }
-                        track_aobjs[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
+                        track_aobjs[i]->length = -root_dobj->anim_remain - root_dobj->anim_speed;
                     }
                 }
                 if (command_kind == nFTFigatreeCommandSetValRateBlock)
@@ -296,7 +296,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
 
                         track_aobjs[i]->length_invert = payload;
 
-                        track_aobjs[i]->length = -root_dobj->anim_remain - root_dobj->anim_rate;
+                        track_aobjs[i]->length = -root_dobj->anim_remain - root_dobj->anim_speed;
 
                         track_aobjs[i]->rate_target = 0.0F;
                     }
@@ -346,7 +346,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 }
                 break;
 
-            case nFTFigatreeCommandSetTranslateLerp:
+            case nFTFigatreeCommandSetTranslateInterp:
                 AObjAnimAdvance(root_dobj->figatree);
 
                 if (track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart] == NULL)
@@ -365,13 +365,13 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 {
                     if (current_aobj->kind != nOMObjAnimKindNone)
                     {
-                        current_aobj->length += root_dobj->anim_rate + root_dobj->anim_remain;
+                        current_aobj->length += root_dobj->anim_speed + root_dobj->anim_remain;
                     }
                     current_aobj = current_aobj->next;
                 }
                 root_dobj->anim_frame = root_dobj->anim_remain;
                 root_dobj->parent_gobj->anim_frame = root_dobj->anim_remain;
-                root_dobj->anim_remain = -1.1342745e38F;
+                root_dobj->anim_remain = AOBJ_ANIM_END;
 
                 if (root_dobj->is_anim_root != FALSE)
                 {

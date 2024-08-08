@@ -25,10 +25,10 @@ extern void gcAddAnimAll(GObj *gobj, AObjAnimJoint **anim_joints, AObjAnimJoint 
 extern void gcParseDObjAnimJoint(DObj *dobj);
 
 // Interpolation?
-extern f32 gcGetLerpValueCubic(f32 length_invert, f32 length, f32 value_base, f32 value_target, f32 rate_base, f32 rate_target);
+extern f32 gcGetInterpValueCubic(f32 length_invert, f32 length, f32 value_base, f32 value_target, f32 rate_base, f32 rate_target);
 
 // Other kind of interpolation?
-extern f32 gcGetLerpRateCubic(f32 length_invert, f32 length, f32 value_base, f32 value_target, f32 rate_base, f32 rate_target);
+extern f32 gcGetInterpRateCubic(f32 length_invert, f32 length, f32 value_base, f32 value_target, f32 rate_base, f32 rate_target);
 
 // ???
 extern f32 gcGetAObjValue(AObj *aobj);
@@ -63,17 +63,31 @@ extern sb32 gcCheckGetDObjNoAxisTrack
     sb32 is_desc_or_dobj,
     DObj *dobj,
     f32 *axis_value,
-    f32 *arg3,
+    f32 *rate,
     AObj *seek_aobj,
     DObjDesc *dobj_desc,
     s32 track,
-    sb32 arg7,
+    sb32 rate_kind,
     Vec3f *translate,
-    sb32 *is_get_axis_value
+    sb32 *is_axis_ready
 );
 
 // ???
-extern void func_8000E428_F028(s32 track, f32 translate, f32 rotate, f32 scale, f32 *arg4, AObj *aobj);
+extern void gcGetAObjTrackAnimTimeMax(s32 track, f32 translate, f32 rotate, f32 scale, f32 *anim_time_max, AObj *aobj);
+
+// ???
+extern f32 gcGetDObjTempAnimTimeMax
+(
+    DObj *dobj,
+    AObjAnimJoint **anim_joints,
+    f32 anim_frame,
+    DObjDesc *dobj_desc,
+    s32 rate_kind,
+    f32 length,
+    f32 translate,
+    f32 rotate,
+    f32 scale
+);
 
 // Set up common DObj node tree for GObj
 extern void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5);

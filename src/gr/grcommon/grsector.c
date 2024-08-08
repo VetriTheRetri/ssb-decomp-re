@@ -273,7 +273,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
         }
         aobj = aobj->next;
     }
-    if ((sp54->anim_remain != AOBJ_FRAME_NULL) && (gGRCommonStruct.sector.arwing_laser_count == 0))
+    if ((sp54->anim_remain != AOBJ_ANIM_NULL) && (gGRCommonStruct.sector.arwing_laser_count == 0))
     {
         aobj = sp54->aobj;
 
@@ -361,7 +361,7 @@ void func_ovl2_80106A40(DObj *dobj, AObjAnimJoint *anim_joint, f32 arg2)
     }
     else
     {
-        dobj->anim_remain = AOBJ_FRAME_NULL;
+        dobj->anim_remain = AOBJ_ANIM_NULL;
         dobj->is_anim_root = 0;
     }
 }
@@ -475,21 +475,21 @@ void func_ovl2_80106D00(void)
 {
     if (gGRCommonStruct.sector.arwing_state_timer == 0)
     {
-        gGRCommonStruct.sector.map_dobj[7]->anim_remain = AOBJ_FRAME_NULL;
+        gGRCommonStruct.sector.map_dobj[7]->anim_remain = AOBJ_ANIM_NULL;
         gGRCommonStruct.sector.map_dobj[7]->flags = DOBJ_FLAG_NONE;
-        gGRCommonStruct.sector.map_dobj[9]->anim_remain = AOBJ_FRAME_NULL;
+        gGRCommonStruct.sector.map_dobj[9]->anim_remain = AOBJ_ANIM_NULL;
         gGRCommonStruct.sector.map_dobj[9]->flags = DOBJ_FLAG_NORENDER;
 
         func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (AObjAnimJoint*) ((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
     }
-    else if (gGRCommonStruct.sector.map_dobj[8]->anim_remain == AOBJ_FRAME_NULL)
+    else if (gGRCommonStruct.sector.map_dobj[8]->anim_remain == AOBJ_ANIM_NULL)
     {
         gGRCommonStruct.sector.map_dobj[7]->flags = DOBJ_FLAG_NORENDER;
         gGRCommonStruct.sector.map_dobj[9]->flags = DOBJ_FLAG_NONE;
     }
-    if (gGRCommonStruct.sector.map_dobj[1]->anim_remain == AOBJ_FRAME_NULL)
+    if (gGRCommonStruct.sector.map_dobj[1]->anim_remain == AOBJ_ANIM_NULL)
     {
-        gGRCommonStruct.sector.map_dobj[0]->anim_remain = AOBJ_FRAME_NULL;
+        gGRCommonStruct.sector.map_dobj[0]->anim_remain = AOBJ_ANIM_NULL;
     }
 }
 
@@ -514,7 +514,7 @@ void func_ovl2_80106DD8(void)
                 func_ovl2_80106D00();
                 break;
             }
-            if (gGRCommonStruct.sector.map_dobj[1]->anim_remain == AOBJ_FRAME_NULL)
+            if (gGRCommonStruct.sector.map_dobj[1]->anim_remain == AOBJ_ANIM_NULL)
             {
                 gGRCommonStruct.sector.arwing_pilot_current = -1;
                 gGRCommonStruct.sector.arwing_state_timer = 120;
@@ -974,7 +974,7 @@ void func_ovl2_80107958(void)
 
                 gGRCommonStruct.sector.unk_sector_0x52++;
             }
-            else if (gGRCommonStruct.sector.map_dobj[4]->anim_remain == AOBJ_FRAME_NULL)
+            else if (gGRCommonStruct.sector.map_dobj[4]->anim_remain == AOBJ_ANIM_NULL)
             {
                 mh2 = gGRCommonStruct.sector.map_head;
 
@@ -1001,7 +1001,7 @@ void func_ovl2_80107958(void)
 // 0x80107B30
 void func_ovl2_80107B30(void)
 {
-    if ((gGRCommonStruct.sector.map_dobj[8]->anim_remain == AOBJ_FRAME_NULL) && (gGRCommonStruct.sector.map_dobj[7]->flags == DOBJ_FLAG_NONE))
+    if ((gGRCommonStruct.sector.map_dobj[8]->anim_remain == AOBJ_ANIM_NULL) && (gGRCommonStruct.sector.map_dobj[7]->flags == DOBJ_FLAG_NONE))
     {
         func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (AObjAnimJoint*)((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
 
@@ -1047,7 +1047,7 @@ void func_ovl2_80107CA0(void)
     func_ovl2_80107B30();
     grSectorArwingUpdateCollisions();
 
-    if (gGRCommonStruct.sector.map_dobj[0]->anim_remain == AOBJ_FRAME_NULL)
+    if (gGRCommonStruct.sector.map_dobj[0]->anim_remain == AOBJ_ANIM_NULL)
     {
         gGRCommonStruct.sector.map_gobj->flags = GOBJ_FLAG_NORENDER;
 

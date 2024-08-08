@@ -67,7 +67,7 @@ extern struct GObjCommon *func_8000B93C(
 extern struct GObjCommon *func_8000B9FC(s32 link, u32 arg1, s32 arg2, s32 arg3, s32 arg4);
 // these might in system_04
 extern struct DObj *func_8000BAA0(struct DObj *arg0);
-extern void gcSetDObjAnimPlaybackRate(struct GObjCommon *arg0, f32 arg1);
-extern void gcSetAllAnimPlaybackRate(struct GObjCommon *arg0, f32 arg1);
+extern void gcSetDObjAnimSpeed(struct GObjCommon *arg0, f32 arg1);
+extern void gcSetAllAnimSpeed(struct GObjCommon *arg0, f32 arg1);
 
 #endif /* SYS_SYSTEM_03_1_H */

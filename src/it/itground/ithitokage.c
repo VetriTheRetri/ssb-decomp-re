@@ -144,7 +144,7 @@ sb32 itHitokageCommonProcUpdate(GObj *item_gobj)
     }
     else dobj->mobj->texture_id_current = 0;
 
-    if (dobj->anim_remain == AOBJ_FRAME_NULL)
+    if (dobj->anim_remain == AOBJ_ANIM_NULL)
     {
         grYamabukiGateSetClosedWait();
 
@@ -190,7 +190,7 @@ sb32 itHitokageCommonProcDamage(GObj *item_gobj)
         ip->item_hit.update_state = nGMHitUpdateDisable;
         ip->item_hurt.hitstatus = nGMHitStatusNone;
 
-        dobj->anim_remain = AOBJ_FRAME_NULL;
+        dobj->anim_remain = AOBJ_ANIM_NULL;
 
         grYamabukiGateClearMonsterGObj();
         itHitokageDamagedSetStatus(item_gobj);

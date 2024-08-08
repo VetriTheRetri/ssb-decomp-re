@@ -9,7 +9,7 @@ extern ub8 gGM1PGameBonusStarCount;
 extern ub8 gGM1PGameBonusGiantImpact;
 
 extern alSoundEffect* func_800269C0_275C0(u16);
-extern void gcSetDObjAnimPlaybackRate(GObj*, f32);
+extern void gcSetDObjAnimSpeed(GObj*, f32);
 extern void func_ovl0_800C8CB8(void*, void*, void*, void*, f32);
 extern void func_ovl0_800C8654(u16, f32);
 extern void func_ovl0_800C87F4(void*, void*, f32);
@@ -565,7 +565,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionScript *ms
         {
             fp->motion_script[0][1].p_script = fp->motion_script[1][1].p_script = ftMotionEventCast(ms, ftMotionEventParallel2)->p_goto;
 
-            fp->motion_script[0][1].frame_timer = fp->motion_script[1][1].frame_timer = DObjGetStruct(fighter_gobj)->anim_rate - fighter_gobj->anim_frame;
+            fp->motion_script[0][1].frame_timer = fp->motion_script[1][1].frame_timer = DObjGetStruct(fighter_gobj)->anim_speed - fighter_gobj->anim_frame;
 
             fp->motion_script[0][1].script_id = fp->motion_script[1][1].script_id = 0;
         }
@@ -713,14 +713,14 @@ void ftMainUpdateMotionEventsNoEffect(GObj *fighter_gobj)
         {
             if (ms->frame_timer != F32_MAX)
             {
-                ms->frame_timer -= DObjGetStruct(fighter_gobj)->anim_rate;
+                ms->frame_timer -= DObjGetStruct(fighter_gobj)->anim_speed;
             }
         loop:
             if (ms->p_script != NULL)
             {
                 if (ms->frame_timer == F32_MAX)
                 {
-                    if ((DObjGetStruct(fighter_gobj)->anim_rate <= fighter_gobj->anim_frame)) 
+                    if ((DObjGetStruct(fighter_gobj)->anim_speed <= fighter_gobj->anim_frame)) 
                     {
                         continue;
                     }
@@ -767,14 +767,14 @@ void ftMainUpdateMotionEventsDefault(GObj *fighter_gobj)
         {
             if (ms->frame_timer != F32_MAX)
             {
-                ms->frame_timer -= DObjGetStruct(fighter_gobj)->anim_rate;
+                ms->frame_timer -= DObjGetStruct(fighter_gobj)->anim_speed;
             }
         loop:
             if (ms->p_script != NULL)
             {
                 if (ms->frame_timer == F32_MAX)
                 {
-                    if ((DObjGetStruct(fighter_gobj)->anim_rate <= fighter_gobj->anim_frame)) continue;
+                    if ((DObjGetStruct(fighter_gobj)->anim_speed <= fighter_gobj->anim_frame)) continue;
 
                     else ms->frame_timer = -fighter_gobj->anim_frame;
                 }
@@ -854,14 +854,14 @@ void ftMainUpdateMotionEventsDefaultEffect(GObj *fighter_gobj)
         {
             if (ms->frame_timer != F32_MAX)
             {
-                ms->frame_timer -= DObjGetStruct(fighter_gobj)->anim_rate;
+                ms->frame_timer -= DObjGetStruct(fighter_gobj)->anim_speed;
             }
         loop:
             if (ms->p_script != NULL)
             {
                 if (ms->frame_timer == F32_MAX)
                 {
-                    if ((DObjGetStruct(fighter_gobj)->anim_rate <= fighter_gobj->anim_frame)) continue;
+                    if ((DObjGetStruct(fighter_gobj)->anim_speed <= fighter_gobj->anim_frame)) continue;
 
                     else ms->frame_timer = -fighter_gobj->anim_frame;
                 }
@@ -4326,7 +4326,7 @@ void ftMainEjectWithheldPartID(ftStruct *fp, s32 withheld_part_id)
 }
 
 // 0x800E6F24
-void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 anim_rate, u32 flags)
+void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 anim_speed, u32 flags)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     intptr_t event_file_head;
@@ -4664,9 +4664,9 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
             }
             func_ovl0_800C87F4(fp->joints[nFTPartsJointTopN]->child, fp->anim_bank, frame_begin);
 
-            if (anim_rate != DObjGetStruct(fighter_gobj)->anim_rate)
+            if (anim_speed != DObjGetStruct(fighter_gobj)->anim_speed)
             {
-                gcSetDObjAnimPlaybackRate(fighter_gobj, anim_rate);
+                gcSetDObjAnimSpeed(fighter_gobj, anim_speed);
             }
             if (fp->anim_desc.flags.is_use_transn_joint)
             {
@@ -4736,7 +4736,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
             fp->motion_script[0][0].p_script = fp->motion_script[1][0].p_script = event_script_ptr;
         }
-        anim_frame = DObjGetStruct(fighter_gobj)->anim_rate - frame_begin;
+        anim_frame = DObjGetStruct(fighter_gobj)->anim_speed - frame_begin;
 
         fp->motion_script[0][0].frame_timer = fp->motion_script[1][0].frame_timer = anim_frame;
 

@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 
-extern void gcSetDObjAnimPlaybackRate(GObj*, f32);
+extern void gcSetDObjAnimSpeed(GObj*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -80,7 +80,7 @@ void ftKirbyCopyDonkeySpecialNLoopProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fighter_gobj->anim_frame >= 0.0F) && (fighter_gobj->anim_frame < DObjGetStruct(fighter_gobj)->anim_rate))
+    if ((fighter_gobj->anim_frame >= 0.0F) && (fighter_gobj->anim_frame < DObjGetStruct(fighter_gobj)->anim_speed))
     {
         if (fp->status_vars.kirby.copydonkey_specialn.is_charging != FALSE)
         {
@@ -90,7 +90,7 @@ void ftKirbyCopyDonkeySpecialNLoopProcUpdate(GObj *fighter_gobj)
 
                 if (fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
                 {
-                    gcSetDObjAnimPlaybackRate(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
+                    gcSetDObjAnimSpeed(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
 
                     ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_COLANIM_LENGTH);
 
@@ -153,7 +153,7 @@ void ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimRate(GObj *fighter_gobj)
 
     if (fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
     {
-        gcSetDObjAnimPlaybackRate(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
+        gcSetDObjAnimSpeed(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
     }
 }
 

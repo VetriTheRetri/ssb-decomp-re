@@ -37,7 +37,9 @@
 #define DOBJ_ARRAY_MAX          18
 
 // AObj defines
-#define AOBJ_FRAME_NULL F32_MIN             // Used to mark the lack of frames remaining in an animation
+#define AOBJ_ANIM_NULL F32_MIN             // Used to mark the lack of frames remaining in an animation
+#define AOBJ_ANIM_CHANGED (F32_MIN / 2.0F) // ???
+#define AOBJ_ANIM_END (F32_MIN / 3.0F)     // Used to mark the end of an animation?
 
 // MObj defines
 #define MOBJ_FLAG_PRIMCOLOR     (1 << 9)
@@ -323,7 +325,7 @@ struct _MObj
     AObj *aobj;
     AObjAnimJoint *matanim_joint;
     f32 anim_remain;            // Animation frames remaining, multi-purpose?
-    f32 anim_rate;              // Animation playback rate / interpolation, multi-purpose?
+    f32 anim_speed;              // Animation playback rate / interpolation, multi-purpose?
     f32 anim_frame;             // Current animation frame, multi-purpose?
 	OMUserData user_data;       // Actually just padding?
 };
@@ -411,7 +413,7 @@ struct _DObj
     };
     
     f32 anim_remain;    // Multi-purpose? Usually frames remaining, but used as rotation step in Crate/Barrel smash GFX?
-    f32 anim_rate;      // Multi-purpose? Fighters use this as animation playback rate / interpolation, but it is used as rotation step in Crate/Barrel smash GFX?
+    f32 anim_speed;      // Multi-purpose? Fighters use this as animation playback rate / interpolation, but it is used as rotation step in Crate/Barrel smash GFX?
     f32 anim_frame;     // Multi-purpose? Usually current animation frame, but used as rotation step in Crate/Barrel smash GFX?
 
     MObj *mobj;
@@ -475,7 +477,7 @@ struct _Camera
     AObjAnimJoint *camanim_joint;
 
     f32 anim_remain;
-    f32 anim_rate;
+    f32 anim_speed;
     f32 anim_frame;
 
     u32 flags;

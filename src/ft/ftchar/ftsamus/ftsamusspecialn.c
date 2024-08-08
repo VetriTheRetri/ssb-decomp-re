@@ -99,7 +99,7 @@ void ftSamusSpecialAirNStartSwitchStatusGround(GObj *fighter_gobj)
 
     mpCommonSetFighterGround(fp);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialNStart, fighter_gobj->anim_frame, fp->joints[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
+    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialNStart, fighter_gobj->anim_frame, fp->joints[nFTPartsJointTopN]->anim_speed, FTSTATUS_PRESERVE_COLANIM);
 
     fp->proc_damage = ftSamusSpecialNProcDamage;
 }
@@ -110,7 +110,7 @@ void ftSamusSpecialNStartSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirNStart, fighter_gobj->anim_frame, fp->joints[nFTPartsJointTopN]->anim_rate, FTSTATUS_PRESERVE_COLANIM);
+    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirNStart, fighter_gobj->anim_frame, fp->joints[nFTPartsJointTopN]->anim_speed, FTSTATUS_PRESERVE_COLANIM);
     ftPhysicsClampAirVelXMax(fp);
 
     fp->proc_damage = ftSamusSpecialNProcDamage;
@@ -318,7 +318,7 @@ void ftSamusSpecialAirNEndSetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015DB14
-f32 ftSamusSpecialNStartGetAnimPlaybackRate(ftStruct *fp)
+f32 ftSamusSpecialNStartGetAnimSpeed(ftStruct *fp)
 {
     f32 ret = fp->fighter_vars.samus.charge_level / (f32)FTSAMUS_CHARGE_MAX;
 
@@ -340,7 +340,7 @@ void ftSamusSpecialNStartSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialNStart, 0.0F, ftSamusSpecialNStartGetAnimPlaybackRate(fp), FTSTATUS_PRESERVE_NONE);
+    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialNStart, 0.0F, ftSamusSpecialNStartGetAnimSpeed(fp), FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftSamusSpecialNStartInitStatusVars(fp);
 
@@ -352,7 +352,7 @@ void ftSamusSpecialAirNStartSetStatus(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirNStart, 0.0F, ftSamusSpecialNStartGetAnimPlaybackRate(fp), FTSTATUS_PRESERVE_NONE);
+    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirNStart, 0.0F, ftSamusSpecialNStartGetAnimSpeed(fp), FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftSamusSpecialNStartInitStatusVars(fp);
 

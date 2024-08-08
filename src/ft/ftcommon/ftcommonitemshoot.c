@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 
-extern void gcSetDObjAnimPlaybackRate(GObj*, f32);
+extern void gcSetDObjAnimSpeed(GObj*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -233,14 +233,14 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
                 }
                 fp->command_vars.flags.flag0 = 2;
 
-                gcSetDObjAnimPlaybackRate(fighter_gobj, 0.0F);
+                gcSetDObjAnimSpeed(fighter_gobj, 0.0F);
             }
         }
         if ((fp->status_vars.common.fireflower.ammo_fire_count >= 5) && (fp->status_vars.common.fireflower.is_release != FALSE) && (fp->status_vars.common.fireflower.release_lag >= 20))
         {
             fp->command_vars.flags.flag0 = 0;
 
-            gcSetDObjAnimPlaybackRate(fighter_gobj, 1.0F);
+            gcSetDObjAnimSpeed(fighter_gobj, 1.0F);
         }
     }
 }
@@ -263,7 +263,7 @@ void ftCommonFireFlowerShootAirSwitchStatusGround(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFireFlowerShoot, fighter_gobj->anim_frame, DObjGetStruct(fighter_gobj)->anim_rate, FTSTATUS_PRESERVE_NONE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFireFlowerShoot, fighter_gobj->anim_frame, DObjGetStruct(fighter_gobj)->anim_speed, FTSTATUS_PRESERVE_NONE);
 
     fp->proc_accessory = ftCommonFireFlowerShootProcAccessory;
 }
@@ -274,7 +274,7 @@ void ftCommonFireFlowerShootSwitchStatusAir(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFireFlowerShootAir, fighter_gobj->anim_frame, DObjGetStruct(fighter_gobj)->anim_rate, FTSTATUS_PRESERVE_NONE);
+    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFireFlowerShootAir, fighter_gobj->anim_frame, DObjGetStruct(fighter_gobj)->anim_speed, FTSTATUS_PRESERVE_NONE);
     ftPhysicsClampAirVelXMax(fp);
 
     fp->proc_accessory = ftCommonFireFlowerShootProcAccessory;

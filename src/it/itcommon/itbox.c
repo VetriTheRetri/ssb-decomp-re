@@ -175,7 +175,7 @@ void itBoxContainerSmashUpdateEffect(GObj *effect_gobj) // Barrel/Crate smash GF
         dobj->translate.vec.f.z += dobj->scale.vec.f.z;
 
         dobj->rotate.vec.f.x += dobj->anim_remain; // ??? Seems to be rotation step, but only in this case? Otherwise -FLOAT32_MAX?
-        dobj->rotate.vec.f.y += dobj->anim_rate;
+        dobj->rotate.vec.f.y += dobj->anim_speed;
         dobj->rotate.vec.f.z += dobj->anim_frame;
 
         dobj = dobj->sib_next;
@@ -214,7 +214,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
                 dobj->scale.vec.f.z = (mtTrigGetRandomFloat() * 32.0F) + -16.0F;
 
                 dobj->anim_remain = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
-                dobj->anim_rate = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->anim_speed = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
                 dobj->anim_frame = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
             }
             ep->effect_vars.container.lifetime = ITCONTAINER_GFX_LIFETIME;

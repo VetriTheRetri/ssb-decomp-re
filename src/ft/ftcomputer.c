@@ -6184,9 +6184,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     {
         ft_com->objective = nFTComputerObjectiveWalk;
     }
-    fvar = 0.0F;
-
-    if ((this_fp->status_info.status_id == nFTCommonStatusDamageFall) && (((this_fp->phys_info.vel_air.y * 5.0F) - this_fp->coll_data.ground_dist) <= fvar)) // real
+    if ((this_fp->status_info.status_id == nFTCommonStatusDamageFall) && (((this_fp->phys_info.vel_air.y * 5.0F) + -this_fp->coll_data.ground_dist) <= 0.0F))
     {
         if (!(ft_com->ftcom_flags_0x49_b3))
         {

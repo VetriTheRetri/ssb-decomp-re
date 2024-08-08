@@ -27,7 +27,7 @@ extern void ftSamusSpecialAirNEndSwitchStatusGround(GObj* fighter_gobj);
 extern void ftSamusSpecialNEndSwitchStatusAir(GObj* fighter_gobj);
 extern void ftSamusSpecialNEndSetStatus(GObj* fighter_gobj);
 extern void ftSamusSpecialAirNEndSetStatus(GObj* fighter_gobj);
-extern f32 ftSamusSpecialNStartGetAnimPlaybackRate(ftStruct* fp);
+extern f32 ftSamusSpecialNStartGetAnimSpeed(ftStruct* fp);
 extern void ftSamusSpecialNStartInitStatusVars(ftStruct* fp);
 extern void ftSamusSpecialNStartSetStatus(GObj* fighter_gobj);
 extern void ftSamusSpecialAirNStartSetStatus(GObj* fighter_gobj);

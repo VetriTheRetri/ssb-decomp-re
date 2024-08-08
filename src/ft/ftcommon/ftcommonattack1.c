@@ -322,7 +322,7 @@ sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
     }
     if (fp->attack1_followup_frames != 0.0F)
     {
-        fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_rate;
+        fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_speed;
     }
     return FALSE;
 }
@@ -335,7 +335,7 @@ sb32 ftCommonAttack11CheckGoto(GObj *fighter_gobj)
 
     if (fp->attack1_followup_frames != 0.0F)
     {
-        fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_rate;
+        fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_speed;
 
         if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attributes->is_have_attack11))
         {
@@ -359,7 +359,7 @@ sb32 ftCommonAttack12CheckGoto(GObj *fighter_gobj)
 
     if (fp->attack1_followup_frames != 0.0F)
     {
-        fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_rate;
+        fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_speed;
 
         if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attributes->is_have_attack12))
         {
@@ -388,7 +388,7 @@ sb32 ftCommonAttack13CheckGoto(GObj *fighter_gobj)
     {
         if (fp->attack1_followup_frames != 0.0F)
         {
-            fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_rate;
+            fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_speed;
 
             if (fp->input.pl.button_tap & fp->input.button_mask_a)
             {

@@ -1,7 +1,7 @@
 #include <sys/obj.h>
 
 extern void hal_interpolation_cubic(Vec3f*, void*, f32);
-extern void func_8000F364_FF64(DObj *gobj, u8 arg1, u8 arg2, u8 arg3, s32 arg4);
+extern void func_8000F364_FF64(DObj *dobj, u8 arg1, u8 arg2, u8 arg3, s32 anim_time_max);
 extern void func_8000F2FC_FEFC(DObj*, u8, u8, u8);
 
 // // // // // // // // // // // //
@@ -21,7 +21,7 @@ s32 D_8003B93C = 10;
 //                               //
 // // // // // // // // // // // //
 
-void gcSetMatAnimJointPlaybackRateAll(GObj *gobj, f32 anim_rate)
+void gcSetMatAnimJointPlaybackRateAll(GObj *gobj, f32 anim_speed)
 {
     MObj *mobj;
     DObj *dobj = DObjGetStruct(gobj);
@@ -32,7 +32,7 @@ void gcSetMatAnimJointPlaybackRateAll(GObj *gobj, f32 anim_rate)
 
         while (mobj != NULL)
         {
-            mobj->anim_rate = anim_rate;
+            mobj->anim_speed = anim_speed;
             mobj = mobj->next;
         }
         dobj = func_8000BAA0(dobj);
@@ -228,7 +228,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
     u32 flags;
     f32 payload;
 
-    if (dobj->anim_remain != AOBJ_FRAME_NULL)
+    if (dobj->anim_remain != AOBJ_ANIM_NULL)
     {
         if (dobj->anim_remain == -F32_HALF)
         {
@@ -236,8 +236,8 @@ void gcParseDObjAnimJoint(DObj *dobj)
         }
         else
         {
-            dobj->anim_remain -= dobj->anim_rate;
-            dobj->anim_frame += dobj->anim_rate;
+            dobj->anim_remain -= dobj->anim_speed;
+            dobj->anim_frame += dobj->anim_speed;
             dobj->parent_gobj->anim_frame = dobj->anim_frame;
 
             if (dobj->anim_remain > 0.0F)
@@ -269,13 +269,13 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 {
                     if (aobj->kind)
                     {
-                        aobj->length += dobj->anim_rate + dobj->anim_remain;
+                        aobj->length += dobj->anim_speed + dobj->anim_remain;
                     }
                     aobj = aobj->next;
                 }
                 dobj->anim_frame = dobj->anim_remain;
                 dobj->parent_gobj->anim_frame = dobj->anim_remain;
-                dobj->anim_remain = -1.1342745e38F;
+                dobj->anim_remain = AOBJ_ANIM_END;
 
                 return;
             }
@@ -313,7 +313,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         {
                             track_aobjs[i]->length_invert = 1.0F / payload;
                         }
-                        track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
+                        track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_speed;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandSetVal0RateBlock)
@@ -350,7 +350,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         {
                             track_aobjs[i]->rate_base = (track_aobjs[i]->value_target - track_aobjs[i]->value_base) / payload;
                         }
-                        track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
+                        track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_speed;
                         track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
@@ -393,7 +393,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         {
                             track_aobjs[i]->length_invert = 1.0F / payload;
                         }
-                        track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
+                        track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_speed;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandSetValRateBlock)
@@ -452,7 +452,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
                         track_aobjs[i]->kind = 1;
                         track_aobjs[i]->length_invert = payload;
-                        track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_rate;
+                        track_aobjs[i]->length = -dobj->anim_remain - dobj->anim_speed;
                         track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
@@ -505,7 +505,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 }
                 break;
 
-            case nOMObjAnimCommandSetTranslateLerp:
+            case nOMObjAnimCommandSetTranslateInterp:
                 AObjAnimAdvance(dobj->anim_joint);
 
                 if (track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart] == NULL) 
@@ -524,13 +524,13 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 {
                     if (aobj->kind != nOMObjAnimKindNone)
                     {
-                        aobj->length += dobj->anim_rate + dobj->anim_remain;
+                        aobj->length += dobj->anim_speed + dobj->anim_remain;
                     }
                     aobj = aobj->next;
                 }
                 dobj->anim_frame = dobj->anim_remain;
                 dobj->parent_gobj->anim_frame = dobj->anim_remain;
-                dobj->anim_remain = -1.1342745e38F;
+                dobj->anim_remain = AOBJ_ANIM_END;
 
                 if ((dobj->is_anim_root != FALSE) && (dobj->parent_gobj->proc_anim != NULL))
                 {
@@ -587,7 +587,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
     }
 }
 
-f32 gcGetLerpValueCubic(f32 length_invert, f32 length, f32 value_base, f32 value_target, f32 rate_base, f32 rate_target) 
+f32 gcGetInterpValueCubic(f32 length_invert, f32 length, f32 value_base, f32 value_target, f32 rate_base, f32 rate_target) 
 {
     f32 sp18;
     f32 sp14;
@@ -609,7 +609,7 @@ f32 gcGetLerpValueCubic(f32 length_invert, f32 length, f32 value_base, f32 value
                             (rate_base * ((sp10 - sp18) + length)) + (rate_target * sp10);
 }
 
-f32 gcGetLerpRateCubic(f32 length_invert, f32 length, f32 value_base, f32 value_target, f32 rate_base, f32 rate_target) 
+f32 gcGetInterpRateCubic(f32 length_invert, f32 length, f32 value_base, f32 value_target, f32 rate_base, f32 rate_target) 
 {
     f32 temp_f18;
     f32 temp_f16;
@@ -631,7 +631,7 @@ f32 gcGetAObjValue(AObj *aobj)
         return aobj->value_base + (aobj->length * aobj->rate_base);
 
     case nOMObjAnimKindCubic:
-        return gcGetLerpValueCubic
+        return gcGetInterpValueCubic
         (
             aobj->length_invert, aobj->length, aobj->value_base, aobj->value_target, aobj->rate_base, aobj->rate_target
         );
@@ -652,7 +652,7 @@ f32 gcGetAObjRate(AObj *aobj)
         return aobj->rate_base;
 
     case nOMObjAnimKindCubic:
-        return gcGetLerpRateCubic
+        return gcGetInterpRateCubic
         (
             aobj->length_invert, aobj->length, aobj->value_base, aobj->value_target, aobj->rate_base, aobj->rate_target
         );
@@ -677,7 +677,7 @@ void gcPlayDObjAnim(DObj *dobj)
     f32 temp_f22;
     f32 temp_f24;
 
-    if (dobj->anim_remain != AOBJ_FRAME_NULL) 
+    if (dobj->anim_remain != AOBJ_ANIM_NULL) 
     {
         aobj = dobj->aobj;
 
@@ -685,9 +685,9 @@ void gcPlayDObjAnim(DObj *dobj)
         {
             if (aobj->kind != nOMObjAnimKindNone)
             {
-                if (dobj->anim_remain != -1.1342745e38F) 
+                if (dobj->anim_remain != AOBJ_ANIM_END) 
                 { 
-                    aobj->length += dobj->anim_rate; 
+                    aobj->length += dobj->anim_speed; 
                 }
                 if (!(dobj->parent_gobj->flags & GOBJ_FLAG_NOANIM)) 
                 {
@@ -774,7 +774,7 @@ void gcPlayDObjAnim(DObj *dobj)
             }
             aobj = aobj->next;
         }
-        if (dobj->anim_remain == -1.1342745e38F) 
+        if (dobj->anim_remain == AOBJ_ANIM_END) 
         { 
             dobj->anim_remain = F32_MIN; 
         }
@@ -791,7 +791,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
     u32 flags;
     f32 payload;
 
-    if (mobj->anim_remain != AOBJ_FRAME_NULL)
+    if (mobj->anim_remain != AOBJ_ANIM_NULL)
     {
         if (mobj->anim_remain == -F32_HALF)
         {
@@ -799,8 +799,8 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
         }
         else
         {
-            mobj->anim_remain -= mobj->anim_rate;
-            mobj->anim_frame += mobj->anim_rate;
+            mobj->anim_remain -= mobj->anim_speed;
+            mobj->anim_frame += mobj->anim_speed;
 
             if (mobj->anim_remain > 0.0F)
             {
@@ -839,12 +839,12 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                 {
                     if (aobj->kind != nOMObjAnimKindNone)
                     {
-                        aobj->length += mobj->anim_rate + mobj->anim_remain;
+                        aobj->length += mobj->anim_speed + mobj->anim_remain;
                     }
                     aobj = aobj->next;
                 }
                 mobj->anim_frame = mobj->anim_remain;
-                mobj->anim_remain = -1.1342745e38F;
+                mobj->anim_remain = AOBJ_ANIM_END;
 
                 break; // or return?
             }
@@ -883,7 +883,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         {
                             mat_aobjs[i]->length_invert = 1.0F / payload;
                         }
-                        mat_aobjs[i]->length = -mobj->anim_remain - mobj->anim_rate;
+                        mat_aobjs[i]->length = -mobj->anim_remain - mobj->anim_speed;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandSetVal0RateBlock)
@@ -920,7 +920,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         {
                             mat_aobjs[i]->rate_base = (mat_aobjs[i]->value_target - mat_aobjs[i]->value_base) / payload;
                         }
-                        mat_aobjs[i]->length = -mobj->anim_remain - mobj->anim_rate;
+                        mat_aobjs[i]->length = -mobj->anim_remain - mobj->anim_speed;
                         mat_aobjs[i]->rate_target = 0.0F;
                     }
                 }
@@ -964,7 +964,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         {
                             mat_aobjs[i]->length_invert = 1.0F / payload;
                         }
-                        mat_aobjs[i]->length = -mobj->anim_remain - mobj->anim_rate;
+                        mat_aobjs[i]->length = -mobj->anim_remain - mobj->anim_speed;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandSetValRateBlock)
@@ -1026,7 +1026,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         mat_aobjs[i]->kind = 1;
 
                         mat_aobjs[i]->length_invert = payload;
-                        mat_aobjs[i]->length = -mobj->anim_remain - mobj->anim_rate;
+                        mat_aobjs[i]->length = -mobj->anim_remain - mobj->anim_speed;
 
                         mat_aobjs[i]->rate_target = 0.0F;
                     }
@@ -1078,12 +1078,12 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                 {
                     if (aobj->kind != nOMObjAnimKindNone)
                     {
-                        aobj->length += mobj->anim_rate + mobj->anim_remain;
+                        aobj->length += mobj->anim_speed + mobj->anim_remain;
                     }
                     aobj = aobj->next;
                 }
                 mobj->anim_frame = mobj->anim_remain;
-                mobj->anim_remain = -1.1342745e38F;
+                mobj->anim_remain = AOBJ_ANIM_END;
                 return; // not break
 
             case nOMObjAnimCommandSetExtValAfterBlock:
@@ -1111,7 +1111,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         matspecial_aobjs[i]->kind = 1;
 
                         matspecial_aobjs[i]->length_invert = payload;
-                        matspecial_aobjs[i]->length = -mobj->anim_remain - mobj->anim_rate;
+                        matspecial_aobjs[i]->length = -mobj->anim_remain - mobj->anim_speed;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandSetExtValAfterBlock)
@@ -1148,7 +1148,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         {
                             matspecial_aobjs[i]->length_invert = 1.0F / payload;
                         }
-                        matspecial_aobjs[i]->length = -mobj->anim_remain - mobj->anim_rate;
+                        matspecial_aobjs[i]->length = -mobj->anim_remain - mobj->anim_speed;
                     }
                 }
                 if (command_kind == nOMObjAnimCommandSetExtValBlock)
@@ -1208,11 +1208,11 @@ void gcPlayMObjMatAnim(MObj *mobj)
     f32 temp_f22;
     gsColorRGBA color; // color
     f32 temp_f24;
-    s32 lerp;
+    s32 interp;
     gsColorRGBA sp38; // sp38
     gsColorRGBA sp34; // sp34
 
-    if (mobj->anim_remain != AOBJ_FRAME_NULL) 
+    if (mobj->anim_remain != AOBJ_ANIM_NULL) 
     {
         aobj = mobj->aobj;
         
@@ -1220,9 +1220,9 @@ void gcPlayMObjMatAnim(MObj *mobj)
         {
             if (aobj->kind != nOMObjAnimKindNone) 
             {
-                if (mobj->anim_remain != -1.1342745e38F) 
+                if (mobj->anim_remain != AOBJ_ANIM_END) 
                 { 
-                    aobj->length += mobj->anim_rate; 
+                    aobj->length += mobj->anim_speed; 
                 }
                 if (aobj->track < (nOMObjAnimTrackMaterialSubStart - 1))
                 {
@@ -1305,15 +1305,15 @@ void gcPlayMObjMatAnim(MObj *mobj)
                     switch(aobj->kind)
                     {
                     case nOMObjAnimKindLinear: 
-                        lerp = (aobj->length * aobj->length_invert * 256.0F);
+                        interp = (aobj->length * aobj->length_invert * 256.0F);
                     
-                        if (lerp < 0)
+                        if (interp < 0)
                         { 
-                            lerp = 0; 
+                            interp = 0; 
                         }
-                        if (lerp > 256) 
+                        if (interp > 256) 
                         { 
-                            lerp = 256; 
+                            interp = 256; 
                         }
                         sp34.pack = 0;
                         sp38.pack = 0;
@@ -1324,7 +1324,7 @@ void gcPlayMObjMatAnim(MObj *mobj)
                         sp34.g = ((u8*)&aobj->value_target)[0];
                         sp34.a = ((u8*)&aobj->value_target)[1];
 
-                        sp38.pack = (256 - lerp) * sp38.pack + sp34.pack * lerp;
+                        sp38.pack = (256 - interp) * sp38.pack + sp34.pack * interp;
 
                         color.r = sp38.r;
                         color.g = sp38.b;
@@ -1337,7 +1337,7 @@ void gcPlayMObjMatAnim(MObj *mobj)
                         sp34.g = ((u8*)&aobj->value_target)[2];
                         sp34.a = ((u8*)&aobj->value_target)[3];
 
-                        sp38.pack = (256 - lerp) * sp38.pack + sp34.pack * lerp;
+                        sp38.pack = (256 - interp) * sp38.pack + sp34.pack * interp;
 
                         color.b = sp38.r;
                         color.a = sp38.b;
@@ -1373,7 +1373,7 @@ void gcPlayMObjMatAnim(MObj *mobj)
             }
             aobj = aobj->next;
         }
-        if(mobj->anim_remain == -1.1342745e38F)
+        if(mobj->anim_remain == AOBJ_ANIM_END)
         {
             mobj->anim_remain = F32_MIN;
         }
@@ -1442,7 +1442,7 @@ AObj* gcGetTrackAObj(AObj *aobj, u8 track)
 void gcSetDObjAnimLength(DObj *dobj, f32 length)
 {
     AObj *aobj = dobj->aobj;
-    dobj->anim_remain = dobj->anim_rate + length;
+    dobj->anim_remain = dobj->anim_speed + length;
 
     while (aobj != NULL) 
     {
@@ -1534,29 +1534,29 @@ sb32 gcCheckGetDObjNoAxisTrack
     AObj *seek_aobj,
     DObjDesc *dobj_desc,
     s32 track,
-    sb32 is_get_rate,
+    s32 rate_kind,
     Vec3f *translate,
-    sb32 *is_get_axis_value
+    sb32 *is_axis_ready
 )
 {
     AObj *aobj = gcGetTrackAObj(seek_aobj, track);
 
     if ((aobj != NULL) && (aobj->kind != nOMObjAnimKindNone))
     {
-        if ((is_desc_or_dobj == 0) && (dobj->anim_remain != -1.1342745e38F))
+        if ((is_desc_or_dobj == 0) && (dobj->anim_remain != AOBJ_ANIM_END))
         {
-            aobj->length += dobj->anim_rate;
+            aobj->length += dobj->anim_speed;
         }
         *axis_value = gcGetAObjValue(aobj);
 
-        if (is_get_rate != FALSE)
+        if (rate_kind != 0)
         {
             *rate = gcGetAObjRate(aobj);
         }
     }
     else if ((track == nOMObjAnimTrackTraX) || (track == nOMObjAnimTrackTraY) || (track == nOMObjAnimTrackTraZ))
     {
-        if (*is_get_axis_value != FALSE)
+        if (*is_axis_ready != FALSE)
         {
             switch (track)
             {
@@ -1579,9 +1579,9 @@ sb32 gcCheckGetDObjNoAxisTrack
 
             if ((aobj != NULL) && (aobj->kind != nOMObjAnimKindNone))
             {
-                if ((is_desc_or_dobj == 0) && (dobj->anim_remain != -1.1342745e38F))
+                if ((is_desc_or_dobj == 0) && (dobj->anim_remain != AOBJ_ANIM_END))
                 {
-                    aobj->length += dobj->anim_rate;
+                    aobj->length += dobj->anim_speed;
                 }
                 *axis_value = gcGetAObjValue(aobj);
 
@@ -1609,7 +1609,7 @@ sb32 gcCheckGetDObjNoAxisTrack
                     *axis_value = translate->z;
                     break;
                 }
-                *is_get_axis_value = TRUE;
+                *is_axis_ready = TRUE;
             }
             else if (is_desc_or_dobj == 0)
             {
@@ -1635,11 +1635,11 @@ sb32 gcCheckGetDObjNoAxisTrack
     return FALSE;
 }
 
-void func_8000E428_F028(s32 track, f32 translate, f32 rotate, f32 scale, f32 *arg4, AObj *aobj)
+void gcGetAObjTrackAnimTimeMax(s32 track, f32 translate, f32 rotate, f32 scale, f32 *anim_time_max, AObj *aobj)
 {
-    f32 sp3C;
-    f32 sp38;
-    f32 sp34;
+    f32 rate_combine;
+    f32 value_diff;
+    f32 temp;
     f32 unused;
     f32 value;
     
@@ -1667,80 +1667,223 @@ void func_8000E428_F028(s32 track, f32 translate, f32 rotate, f32 scale, f32 *ar
     {
         if (TRUE);
 
-        sp3C = (2.0F * aobj->rate_base) + aobj->rate_target;
-        sp38 = (-6.0F * value) * (aobj->value_target - aobj->value_base);
+        rate_combine = (2.0F * aobj->rate_base) + aobj->rate_target;
+        value_diff = (-6.0F * value) * (aobj->value_target - aobj->value_base);
         
-        if (sp38 < SQUARE(sp3C))
+        if (value_diff < SQUARE(rate_combine))
         {
-            sp34 = (sqrtf(SQUARE(sp3C) - sp38) + -sp3C) / value;
+            temp = (sqrtf(SQUARE(rate_combine) - value_diff) + -rate_combine) / value;
             
-            TAKE_MAX(*arg4, sp34);
+            TAKE_MAX(*anim_time_max, temp);
             
-            sp34 = (-sp3C - sqrtf(SQUARE(sp3C) - sp38)) / value;
+            temp = (-rate_combine - sqrtf(SQUARE(rate_combine) - value_diff)) / value;
             
-            TAKE_MAX(*arg4, sp34);
+            TAKE_MAX(*anim_time_max, temp);
         }
-        else if ((SQUARE(sp3C) + -sp38) == (0, 0.0F))
+        else if ((SQUARE(rate_combine) + -value_diff) == (0, 0.0F))
         {
-            sp34 = -sp3C / value;
+            temp = -rate_combine / value;
             
-            TAKE_MAX(*arg4, sp34);
+            TAKE_MAX(*anim_time_max, temp);
         }
-        if ((SQUARE(sp3C) + sp38) > 0.0F)
+        if ((SQUARE(rate_combine) + value_diff) > 0.0F)
         {
-            sp34 = (sqrtf(SQUARE(sp3C) + sp38) + -sp3C) / -value;
+            temp = (sqrtf(SQUARE(rate_combine) + value_diff) + -rate_combine) / -value;
 
-            TAKE_MAX(*arg4, sp34);
+            TAKE_MAX(*anim_time_max, temp);
             
-            sp34 = (-sp3C - sqrtf(SQUARE(sp3C) + sp38)) / -value;
+            temp = (-rate_combine - sqrtf(SQUARE(rate_combine) + value_diff)) / -value;
 
-            TAKE_MAX(*arg4, sp34);
+            TAKE_MAX(*anim_time_max, temp);
         }
-        else if ((SQUARE(sp3C) + sp38) == (0, 0.0F))
+        else if ((SQUARE(rate_combine) + value_diff) == (0, 0.0F))
         {
-            sp34 = -sp3C / -value;
+            temp = -rate_combine / -value;
             
-            TAKE_MAX(*arg4, sp34);
+            TAKE_MAX(*anim_time_max, temp);
         }
-        sp3C = -(aobj->rate_base + (2.0F * aobj->rate_target));
-        sp38 = (-6.0F * value) * (aobj->value_base - aobj->value_target);
+        rate_combine = -(aobj->rate_base + (2.0F * aobj->rate_target));
+        value_diff = (-6.0F * value) * (aobj->value_base - aobj->value_target);
         
-        if (sp38 < SQUARE(sp3C))
+        if (value_diff < SQUARE(rate_combine))
         {
-            sp34 = (sqrtf(SQUARE(sp3C) - sp38) + -sp3C) / value;
+            temp = (sqrtf(SQUARE(rate_combine) - value_diff) + -rate_combine) / value;
             
-            TAKE_MAX(*arg4, sp34);
+            TAKE_MAX(*anim_time_max, temp);
             
-            sp34 = (-sp3C - sqrtf(SQUARE(sp3C) - sp38)) / value;
+            temp = (-rate_combine - sqrtf(SQUARE(rate_combine) - value_diff)) / value;
             
-            TAKE_MAX(*arg4, sp34);
+            TAKE_MAX(*anim_time_max, temp);
         }
-        else if ((SQUARE(sp3C) + -sp38) == (0, 0.0F))
+        else if ((SQUARE(rate_combine) + -value_diff) == (0, 0.0F))
         {
-            sp34 = -sp3C / value;
+            temp = -rate_combine / value;
             
-            TAKE_MAX(*arg4, sp34);
+            TAKE_MAX(*anim_time_max, temp);
         }
-        if ((SQUARE(sp3C) + sp38) > 0.0F)
+        if ((SQUARE(rate_combine) + value_diff) > 0.0F)
         {
-            sp34 = (sqrtf(SQUARE(sp3C) + sp38) + -sp3C) / -value;
+            temp = (sqrtf(SQUARE(rate_combine) + value_diff) + -rate_combine) / -value;
             
-            TAKE_MAX(*arg4, sp34);
+            TAKE_MAX(*anim_time_max, temp);
             
-            sp34 = (-sp3C - sqrtf(sp38 + SQUARE(sp3C))) / -value;
+            temp = (-rate_combine - sqrtf(value_diff + SQUARE(rate_combine))) / -value;
             
-            TAKE_MAX(*arg4, sp34);
+            TAKE_MAX(*anim_time_max, temp);
         }
-        else if ((SQUARE(sp3C) + sp38) == (0, 0.0F))
+        else if ((SQUARE(rate_combine) + value_diff) == (0, 0.0F))
         {
-            sp34 = -sp3C / -value;
+            temp = -rate_combine / -value;
             
-            TAKE_MAX(*arg4, sp34);
+            TAKE_MAX(*anim_time_max, temp);
         }
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000E8A8_F4A8.s")
+f32 gcGetDObjTempAnimTimeMax
+(
+    DObj *dobj,
+    AObjAnimJoint **anim_joints,
+    f32 anim_frame,
+    DObjDesc *dobj_desc,
+    s32 rate_kind,
+    f32 length,
+    f32 translate,
+    f32 rotate,
+    f32 scale
+)
+{
+    AObj *root_aobj;
+    AObj *parse_aobj;
+    AObj *new_aobj;
+    AObj *origin_aobj;
+    f32 value_old;
+    f32 value_new;
+    f32 rate_old;
+    f32 rate_new;
+    f32 spA4;
+    s32 i;
+    sb32 is_dobj_axis_ready;
+    sb32 is_desc_axis_ready;
+    Vec3f dobj_translate;
+    Vec3f desc_translate;
+
+    parse_aobj = NULL;
+
+    is_dobj_axis_ready = FALSE;
+    is_desc_axis_ready = FALSE;
+
+    spA4 = 0.0F;
+
+    if (anim_joints == NULL || *anim_joints == NULL)
+    {
+        if (dobj_desc == NULL)
+        {
+            omRemoveAObjFromDObj(dobj);
+
+            return 0;
+        }
+    }
+    root_aobj = dobj->aobj;
+    dobj->aobj = NULL;
+
+    if ((anim_joints != NULL) && (*anim_joints != NULL))
+    {
+        dobj->anim_joint = *anim_joints;
+        dobj->anim_remain = AOBJ_ANIM_CHANGED;
+        dobj->anim_frame = anim_frame;
+
+        gcParseDObjAnimJoint(dobj);
+
+        parse_aobj = dobj->aobj;
+        dobj->aobj = NULL;
+    }
+    for (i = nOMObjAnimTrackJointStart; i <= nOMObjAnimTrackJointEnd; i++)
+    {
+        if (i == nOMObjAnimTrackTraL)
+        {
+            continue;
+        }
+        rate_new = 0.0F;
+        rate_old = 0.0F;
+
+        if (gcCheckGetDObjNoAxisTrack(0, dobj, &value_new, &rate_new, parse_aobj, dobj_desc, i, rate_kind, &desc_translate, &is_desc_axis_ready))
+        {
+            continue;
+        }
+        gcCheckGetDObjNoAxisTrack(1, dobj, &value_old, &rate_old, root_aobj, dobj_desc, i, rate_kind, &dobj_translate, &is_dobj_axis_ready);
+
+        if ((value_new != value_old) || (rate_new != rate_old))
+        {
+            new_aobj = omAddAObjForDObj(dobj, i);
+
+            if ((i == nOMObjAnimTrackRotX) || (i == nOMObjAnimTrackRotY) || (i == nOMObjAnimTrackRotZ))
+            {
+                if (ABS(value_new - value_old) > ABS(value_new - (value_old + F_CST_DTOR32(360.0F))))
+                {
+                    value_old += F_CST_DTOR32(360.0F);
+                }
+                if (ABS(value_new - value_old) > ABS(value_new - (value_old - F_CST_DTOR32(360.0F))))
+                {
+                    value_old -= F_CST_DTOR32(360.0F);
+                }
+            }
+            switch (rate_kind)
+            {
+            case 0:
+                new_aobj->value_base = value_old;
+                new_aobj->value_target = value_new;
+
+                new_aobj->kind = nOMObjAnimKindLinear;
+
+                new_aobj->length_invert = 1.0F / length;
+                new_aobj->length = -dobj->anim_speed;
+
+                new_aobj->rate_base = (new_aobj->value_target - new_aobj->value_base) / length;
+                new_aobj->rate_target = 0.0F;
+                break;
+
+            case 1:
+            case 2:
+                new_aobj->value_base = value_old;
+                new_aobj->value_target = value_new;
+
+                new_aobj->kind = nOMObjAnimKindCubic;
+
+                new_aobj->length_invert = 1.0F / length;
+                new_aobj->length = -dobj->anim_speed;
+
+                new_aobj->rate_base = rate_old;
+                new_aobj->rate_target = rate_new;
+
+                if (rate_kind == nOMObjAnimKindLinear)
+                {
+                    gcGetAObjTrackAnimTimeMax(i, translate, rotate, scale, &spA4, new_aobj);
+                }
+                break;
+
+            default:
+                break;
+            }
+        }
+    }
+    origin_aobj = dobj->aobj;
+    dobj->aobj = root_aobj;
+
+    omRemoveAObjFromDObj(dobj);
+
+    dobj->aobj = parse_aobj;
+
+    omRemoveAObjFromDObj(dobj);
+
+    dobj->aobj = origin_aobj;
+    dobj->anim_joint = NULL;
+
+    dobj->anim_remain = dobj->anim_speed + length;
+    dobj->anim_frame = -dobj->anim_speed;
+
+    return spA4;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000EC64_F864.s")
 

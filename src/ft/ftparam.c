@@ -467,7 +467,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
                 {
                     anim_remain_bak = joint->anim_remain;
 
-                    joint->anim_remain = -1.1342745e38F;
+                    joint->anim_remain = AOBJ_ANIM_END;
 
                     func_ovl0_800C9488(joint, translate_scales);
 
@@ -488,7 +488,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
             {
                 anim_remain_bak = joint->anim_remain;
 
-                joint->anim_remain = -1.1342745e38F;
+                joint->anim_remain = AOBJ_ANIM_END;
 
                 gcPlayDObjAnim(joint);
 

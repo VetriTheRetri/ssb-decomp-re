@@ -994,7 +994,7 @@ typedef enum ftAnimCommandKind
     nFTFigatreeCommandSetValAfterBlock,
     nFTFigatreeCommandSetValAfter,
     nFTFigatreeCommand11,
-    nFTFigatreeCommandSetTranslateLerp,
+    nFTFigatreeCommandSetTranslateInterp,
     nFTFigatreeCommandLoop,
     nFTFigatreeCommandSetFlags
 

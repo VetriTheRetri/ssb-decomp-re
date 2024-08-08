@@ -146,7 +146,7 @@ typedef enum AObjCommandKind
     nOMObjAnimCommandSetValAfterBlock,
     nOMObjAnimCommandSetValAfter,
     ANIM_CMD_12 = 12,
-    nOMObjAnimCommandSetTranslateLerp = 13,
+    nOMObjAnimCommandSetTranslateInterp = 13,
     nOMObjAnimCommandSetAnim,
     nOMObjAnimCommandSetFlags,
     ANIM_CMD_16 = 16,

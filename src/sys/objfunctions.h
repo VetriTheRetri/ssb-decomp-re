@@ -89,6 +89,23 @@ extern f32 gcGetDObjTempAnimTimeMax
     f32 scale
 );
 
+// ???
+extern f32 func_8000EC64_F864
+(
+    GObj *gobj,
+    AObjAnimJoint **anim_joints,
+    f32 anim_frame,
+    DObjDesc *dobj_desc,
+    s32 rate_kind,
+    f32 length_max,
+    f32 length_min,
+    f32 translate,
+    f32 rotate,
+    f32 scale
+);
+
+extern void func_8000EE40_FA40(GObj *gobj, AObjAnimJoint **anim_joints, f32 anim_frame, DObjDesc *dobj_desc);
+
 // Set up common DObj node tree for GObj
 extern void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5);
 

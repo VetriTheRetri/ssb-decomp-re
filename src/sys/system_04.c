@@ -508,11 +508,11 @@ void gcParseDObjAnimJoint(DObj *dobj)
             case nOMObjAnimCommandSetTranslateInterp:
                 AObjAnimAdvance(dobj->anim_joint);
 
-                if (track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart] == NULL) 
+                if (track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart] == NULL) 
                 { 
-                    track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart] = omAddAObjForDObj(dobj, nOMObjAnimTrackTraL); 
+                    track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart] = omAddAObjForDObj(dobj, nOMObjAnimTrackTraI); 
                 }
-                track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart]->interpolate = dobj->anim_joint->p;
+                track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart]->interpolate = dobj->anim_joint->p;
 
                 AObjAnimAdvance(dobj->anim_joint);
                 break;
@@ -734,7 +734,7 @@ void gcPlayDObjAnim(DObj *dobj)
                         dobj->rotate.vec.f.z = value;
                         break;
 
-                    case nOMObjAnimTrackTraL:
+                    case nOMObjAnimTrackTraI:
                         if (value < 0.0F) 
                         {
                             value = 0.0F;
@@ -1575,7 +1575,7 @@ sb32 gcCheckGetDObjNoAxisTrack
         }
         else
         {
-            aobj = gcGetTrackAObj(seek_aobj, nOMObjAnimTrackTraL);
+            aobj = gcGetTrackAObj(seek_aobj, nOMObjAnimTrackTraI);
 
             if ((aobj != NULL) && (aobj->kind != nOMObjAnimKindNone))
             {
@@ -1761,7 +1761,7 @@ f32 gcGetDObjTempAnimTimeMax
     f32 value_new;
     f32 rate_old;
     f32 rate_new;
-    f32 spA4;
+    f32 time_max;
     s32 i;
     sb32 is_dobj_axis_ready;
     sb32 is_desc_axis_ready;
@@ -1773,9 +1773,9 @@ f32 gcGetDObjTempAnimTimeMax
     is_dobj_axis_ready = FALSE;
     is_desc_axis_ready = FALSE;
 
-    spA4 = 0.0F;
+    time_max = 0.0F;
 
-    if (anim_joints == NULL || *anim_joints == NULL)
+    if ((anim_joints == NULL) || (*anim_joints == NULL))
     {
         if (dobj_desc == NULL)
         {
@@ -1800,7 +1800,7 @@ f32 gcGetDObjTempAnimTimeMax
     }
     for (i = nOMObjAnimTrackJointStart; i <= nOMObjAnimTrackJointEnd; i++)
     {
-        if (i == nOMObjAnimTrackTraL)
+        if (i == nOMObjAnimTrackTraI)
         {
             continue;
         }
@@ -1858,7 +1858,7 @@ f32 gcGetDObjTempAnimTimeMax
 
                 if (rate_kind == nOMObjAnimKindLinear)
                 {
-                    gcGetAObjTrackAnimTimeMax(i, translate, rotate, scale, &spA4, new_aobj);
+                    gcGetAObjTrackAnimTimeMax(i, translate, rotate, scale, &time_max, new_aobj);
                 }
                 break;
 
@@ -1882,12 +1882,204 @@ f32 gcGetDObjTempAnimTimeMax
     dobj->anim_remain = dobj->anim_speed + length;
     dobj->anim_frame = -dobj->anim_speed;
 
-    return spA4;
+    return time_max;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000EC64_F864.s")
+#if defined (NON_MATCHING)
+f32 func_8000EC64_F864
+(
+    GObj *gobj,
+    AObjAnimJoint **anim_joints,
+    f32 anim_frame,
+    DObjDesc *dobj_desc,
+    s32 rate_kind,
+    f32 length_max,
+    f32 length_min,
+    f32 translate,
+    f32 rotate,
+    f32 scale
+) 
+{
+    DObj *dobj; // s2
+    f32 unused;
+    f32 length_current;
+    f32 length_max_old;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000EE40_FA40.s")
+    dobj = DObjGetStruct(gobj);
+    gobj->anim_frame = anim_frame;
+    
+    if (rate_kind == 2)
+    {
+        length_max_old = length_max;
+        
+        if(TRUE); if (TRUE); if(TRUE);
+        
+        length_current = 0.0F;
+        
+        while (dobj != NULL)
+        {
+            length_max = gcGetDObjTempAnimTimeMax(dobj, anim_joints, anim_frame, dobj_desc, rate_kind, length_current, translate, rotate, scale);
+            
+            if (length_current < length_max) 
+            {
+                length_current = length_max;
+            }
+            if (anim_joints != NULL)
+            {
+                anim_joints++;
+            }
+            if (dobj_desc != NULL)
+            {
+                dobj_desc++;
+            }
+            dobj = func_8000BAA0(dobj);
+        }
+        dobj = DObjGetStruct(gobj);
+
+        if (length_current < length_max_old)
+        {
+            length_current = length_max_old;
+        } 
+        else if (length_current > length_min)
+        {
+            length_current = length_min;
+        }
+        while (dobj != NULL)
+        {
+            gcSetDObjAnimLength(dobj, length_current);
+
+            dobj = func_8000BAA0(dobj);
+        }
+        length_max = length_current;
+    } 
+    else while (dobj != NULL)
+    {
+        gcGetDObjTempAnimTimeMax(dobj, anim_joints, anim_frame, dobj_desc, rate_kind, length_max, translate, rotate, scale);
+
+        if (anim_joints != NULL)
+        {
+            anim_joints++;
+        }
+        if (dobj_desc != NULL)
+        {
+            dobj_desc++;
+        }
+        dobj = func_8000BAA0(dobj);
+    }
+    gobj->anim_frame = 0.0F;
+    
+    return length_max;
+}
+
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000EC64_F864.s")
+#endif
+
+void func_8000EE40_FA40(GObj *gobj, AObjAnimJoint **anim_joints, f32 anim_frame, DObjDesc *dobj_desc)
+{
+    s32 i;
+    DObj *dobj;
+    f32 axis_value;
+    sb32 unused;
+    sb32 is_axis_ready;
+    Vec3f translate;
+    sb32 is_anim_root;
+
+    dobj = DObjGetStruct(gobj);
+    
+    is_axis_ready = FALSE;
+    is_anim_root = TRUE;
+    
+    gobj->anim_frame = anim_frame;
+
+    while (dobj != NULL) 
+    {
+        if (*anim_joints != NULL)
+        {
+            gcAddDObjAnimJoint(dobj, *anim_joints, anim_frame);
+            
+            dobj->is_anim_root = is_anim_root;
+            is_anim_root = FALSE;
+
+            for (i = nOMObjAnimTrackJointStart; i <= nOMObjAnimTrackJointEnd; i++)
+            {
+                if (i != nOMObjAnimTrackTraI)
+                {
+                    gcCheckGetDObjNoAxisTrack
+                    (
+                        0, 
+                        dobj,
+                        &axis_value, 
+                        NULL, 
+                        dobj->aobj, 
+                        dobj_desc, 
+                        i, 
+                        0, 
+                        &translate, 
+                        &is_axis_ready
+                    );
+                    switch (i) 
+                    {
+                    case nOMObjAnimTrackRotX:
+                        dobj->rotate.vec.f.x = axis_value;
+                        break;
+                    
+                    case nOMObjAnimTrackRotY:
+                        dobj->rotate.vec.f.y = axis_value; 
+                        break;
+                    
+                    case nOMObjAnimTrackRotZ:
+                        dobj->rotate.vec.f.z = axis_value; 
+                        break;
+                    
+                    case nOMObjAnimTrackTraX:
+                        dobj->translate.vec.f.x = axis_value; 
+                        break;
+                    
+                    case nOMObjAnimTrackTraY:
+                        dobj->translate.vec.f.y = axis_value; 
+                        break;
+                    
+                    case nOMObjAnimTrackTraZ:
+                        dobj->translate.vec.f.z = axis_value; 
+                        break;
+                    
+                    case nOMObjAnimTrackScaX:
+                        dobj->scale.vec.f.x = axis_value; 
+                        break;
+                    
+                    case nOMObjAnimTrackScaY:
+                        dobj->scale.vec.f.y = axis_value; 
+                        break;
+                    
+                    case nOMObjAnimTrackScaZ:
+                        dobj->scale.vec.f.z = axis_value; 
+                        break;
+                    }
+                }
+            }
+        }
+        else
+        {
+            dobj->anim_remain = AOBJ_ANIM_NULL;
+            dobj->is_anim_root = FALSE;
+            
+            if (dobj_desc != NULL)
+            {
+                dobj->translate.vec.f = dobj_desc->translate;
+                dobj->rotate.vec.f = dobj_desc->rotate;
+                dobj->scale.vec.f = dobj_desc->scale;
+            }
+        }
+        anim_joints++;
+
+        if (dobj_desc != NULL)
+        {
+            dobj_desc++;
+        }
+        dobj = func_8000BAA0(dobj);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F058_FC58.s")
 

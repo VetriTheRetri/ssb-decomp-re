@@ -46,7 +46,7 @@ f32 ftAnimGetTargetFrac(s16 arg, s32 track, sb32 value_or_step)
         id = 2;
         break;
 
-    case nOMObjAnimTrackTraL:
+    case nOMObjAnimTrackTraI:
         id = 3;
         break;
     }
@@ -349,11 +349,11 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
             case nFTFigatreeCommandSetTranslateInterp:
                 AObjAnimAdvance(root_dobj->figatree);
 
-                if (track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart] == NULL)
+                if (track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart] == NULL)
                 {
-                    track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart] = omAddAObjForDObj(root_dobj, nOMObjAnimTrackTraL);
+                    track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart] = omAddAObjForDObj(root_dobj, nOMObjAnimTrackTraI);
                 }
-                track_aobjs[nOMObjAnimTrackTraL - nOMObjAnimTrackJointStart]->interpolate = root_dobj->figatree + (root_dobj->figatree->shalf / 2);
+                track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart]->interpolate = root_dobj->figatree + (root_dobj->figatree->shalf / 2);
 
                 AObjAnimAdvance(root_dobj->figatree);
                 break;

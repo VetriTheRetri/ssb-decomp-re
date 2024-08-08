@@ -168,7 +168,7 @@ typedef enum AObjTrackKind
     nOMObjAnimTrackRotX = nOMObjAnimTrackJointStart,// Rotation X (Roll)
     nOMObjAnimTrackRotY,                            // Rotation Y (Pitch)
     nOMObjAnimTrackRotZ,                            // Rotation Z (Yaw)
-    nOMObjAnimTrackTraL,                            // Translation cubic interpolation?
+    nOMObjAnimTrackTraI,                            // Translation cubic interpolation?
     nOMObjAnimTrackTraX,                            // Translation X 
     nOMObjAnimTrackTraY,                            // Translation Y
     nOMObjAnimTrackTraZ,                            // Translation Z

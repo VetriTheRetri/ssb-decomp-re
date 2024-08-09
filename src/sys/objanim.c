@@ -1971,7 +1971,7 @@ f32 func_8000EC64_F864
 }
 
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000EC64_F864.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_8000EC64_F864.s")
 #endif
 
 void func_8000EE40_FA40(GObj *gobj, AObjAnimJoint **anim_joints, f32 anim_frame, DObjDesc *dobj_desc)
@@ -2431,31 +2431,31 @@ void gcSetTransformVectorsAll(GObj *gobj, DObjDesc *dobj_desc)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000FA3C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_8000FA3C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000FA74.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_8000FA74.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_80010344.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010344.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_80010580.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010580.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/unref_800105AC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/unref_800105AC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_80010704_11304.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010704_11304.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/unref_80010710.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/unref_80010710.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_80010734.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010734.s")
 
 void unref_80010740(void) 
 {
     return;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_80010748.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010748.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_80010918.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010918.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_80010AE8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010AE8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_80010C2C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010C2C.s")

@@ -17,10 +17,10 @@ extern intptr_t lOverlay13ArenaHi;  // 0x80369240
 typedef enum dbMenuItemKind
 {
     dbMenuItemKindExitLabel,        // Label which exits menu when selected
-    dbMenuItemKindNumeric,          // Number
+    dbMenuItemKindNumeric,          // Number, 4 bytes
     dbMenuItemKindString = 3,       // String
     dbMenuItemKindLabel,            // Label
-    dbMenuItemKindNumericNoSelect   // Number with no A press?
+    dbMenuItemKindNumericByte       // Number, 1 byte
 
 } dbMenuItemKind;
 

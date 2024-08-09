@@ -121,21 +121,21 @@ extern char (*dMNDebugCubeTransitionStrings[11])[] = {
 
 // 0x80132DC8
 extern dbMenuItem dMNDebugCubeMenuItems[15] = {
-    { dbMenuItemKindExitLabel,          0,                       dMNDebugCubeStrContinue,         0,                                0.0F, 0.0F,    0 },
-    { dbMenuItemKindNumeric,            mnDebugCubeStartRumble,  dMNDebugCubeStrRumble,           &gMNDebugCubeMenuValueRumble,     0.0F, 10.0F,   0 },
-    { dbMenuItemKindNumeric,            mnDebugCubeStartRumble,  dMNDebugCubeStrFrame,            &gMNDebugCubeMenuValueFrame,      0.0F, 8000.0F, 0 },
-    { dbMenuItemKindLabel,              mnDebugCubeStopRumble,   dMNDebugCubeStrStopRumble,       0,                                0.0F, 0.0F,    0 },
-    { dbMenuItemKindNumeric,            mnDebugCubePlayCall,     dMNDebugCubeStrCall,             &gMNDebugCubeMenuValueCall,       0.0F, 11.0F,   0 },
-    { dbMenuItemKindNumeric,            mnDebugCubePlayFGM,      dMNDebugCubeStrFGM,              &gMNDebugCubeMenuValueFGM,        0.0F, 695.0F,  0 },
-    { dbMenuItemKindLabel,              mnDebugCubeStopFGM,      dMNDebugCubeStrStopFGM,          0,                                0.0F, 0.0F,    0 },
-    { dbMenuItemKindNumeric,            mnDebugCubePlayBGM,      dMNDebugCubeStrBGM,              &gMNDebugCubeMenuValueBGM,        0.0F, 46.0F,   0 },
-    { dbMenuItemKindNumeric,            mnDebugCubePlayBGM,      dMNDebugCubeStrEffect,           &gMNDebugCubeMenuValueEffect,     0.0F, 6.0F,    0 },
-    { dbMenuItemKindLabel,              mnDebugCubeStopBGM,      dMNDebugCubeStrStopBGM,          0,                                0.0F, 0.0F,    0 },
-    { dbMenuItemKindString,             mnDebugCubeDoTransition, dMNDebugCubeTransitionStrings,   &gMNDebugCubeMenuValueTransition, 0.0F, 10.0F,   0 },
-    { dbMenuItemKindNumericNoSelect,    0,                       dMNDebugCubeStrCIC,              0x800A50EC,                       0.0F, 255.0F,  0 },
-    { dbMenuItemKindNumericNoSelect,    0,                       dMNDebugCubeStrBoot,             0x800A4AC3,                       0.0F, 255.0F,  0 },
-    { dbMenuItemKindNumeric,            0,                       dMNDebugCubeStrTvType,           0x80000300,                       0.0F, 255.0F,  0 },
-    { dbMenuItemKindExitLabel,          mnDebugCubeExit,         dMNDebugCubeStrExit,             0,                                0.0F, 0.0F,    0 }
+    { dbMenuItemKindExitLabel,      0,                       dMNDebugCubeStrContinue,         0,                                0.0F, 0.0F,    0 },
+    { dbMenuItemKindNumeric,        mnDebugCubeStartRumble,  dMNDebugCubeStrRumble,           &gMNDebugCubeMenuValueRumble,     0.0F, 10.0F,   0 },
+    { dbMenuItemKindNumeric,        mnDebugCubeStartRumble,  dMNDebugCubeStrFrame,            &gMNDebugCubeMenuValueFrame,      0.0F, 8000.0F, 0 },
+    { dbMenuItemKindLabel,          mnDebugCubeStopRumble,   dMNDebugCubeStrStopRumble,       0,                                0.0F, 0.0F,    0 },
+    { dbMenuItemKindNumeric,        mnDebugCubePlayCall,     dMNDebugCubeStrCall,             &gMNDebugCubeMenuValueCall,       0.0F, 11.0F,   0 },
+    { dbMenuItemKindNumeric,        mnDebugCubePlayFGM,      dMNDebugCubeStrFGM,              &gMNDebugCubeMenuValueFGM,        0.0F, 695.0F,  0 },
+    { dbMenuItemKindLabel,          mnDebugCubeStopFGM,      dMNDebugCubeStrStopFGM,          0,                                0.0F, 0.0F,    0 },
+    { dbMenuItemKindNumeric,        mnDebugCubePlayBGM,      dMNDebugCubeStrBGM,              &gMNDebugCubeMenuValueBGM,        0.0F, 46.0F,   0 },
+    { dbMenuItemKindNumeric,        mnDebugCubePlayBGM,      dMNDebugCubeStrEffect,           &gMNDebugCubeMenuValueEffect,     0.0F, 6.0F,    0 },
+    { dbMenuItemKindLabel,          mnDebugCubeStopBGM,      dMNDebugCubeStrStopBGM,          0,                                0.0F, 0.0F,    0 },
+    { dbMenuItemKindString,         mnDebugCubeDoTransition, dMNDebugCubeTransitionStrings,   &gMNDebugCubeMenuValueTransition, 0.0F, 10.0F,   0 },
+    { dbMenuItemKindNumericByte,    0,                       dMNDebugCubeStrCIC,              0x800A50EC,                       0.0F, 255.0F,  0 },
+    { dbMenuItemKindNumericByte,    0,                       dMNDebugCubeStrBoot,             0x800A4AC3,                       0.0F, 255.0F,  0 },
+    { dbMenuItemKindNumeric,        0,                       dMNDebugCubeStrTvType,           0x80000300,                       0.0F, 255.0F,  0 },
+    { dbMenuItemKindExitLabel,      mnDebugCubeExit,         dMNDebugCubeStrExit,             0,                                0.0F, 0.0F,    0 }
 };
 
 extern scUnkDataBounds D_ovl13_80132F6C;

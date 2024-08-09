@@ -9,7 +9,7 @@ extern sb32 itHitokageCommonProcUpdate(GObj *item_gobj);
 extern sb32 itHitokageDamagedProcUpdate(GObj *item_gobj);
 extern sb32 itHitokageDamagedProcDead(GObj *item_gobj);
 extern sb32 itHitokageCommonProcDamage(GObj *item_gobj);
-extern GObj* itHitokageMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itHitokageMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itHitokageWeaponFlameProcUpdate(GObj *weapon_gobj);
 extern sb32 itHitokageWeaponFlameProcMap(GObj *weapon_gobj);
 extern sb32 itHitokageWeaponFlameProcHit(GObj *weapon_gobj);

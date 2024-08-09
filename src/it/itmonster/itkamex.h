@@ -20,7 +20,7 @@ extern void itKamexAttackSetStatus(GObj *item_gobj);
 extern sb32 itKamexCommonProcUpdate(GObj *item_gobj);
 extern sb32 itKamexCommonProcMap(GObj *item_gobj);
 extern void itKamexCommonFindTargetsSetLR(GObj *item_gobj);
-extern GObj* itKamexMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itKamexMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itKamexWeaponHydroProcUpdate(GObj *weapon_gobj);
 extern sb32 itKamexWeaponHydroProcHit(GObj *weapon_gobj);
 extern sb32 itKamexWeaponHydroProcReflector(GObj *weapon_gobj);

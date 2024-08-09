@@ -242,7 +242,7 @@ sb32 itMLuckyMakeEggProcUpdate(GObj *lucky_gobj)
                 vel.y = (mtTrigGetRandomFloat() * ITMLUCKY_EGG_SPAWN_BASE_VEL) + ITMLUCKY_EGG_SPAWN_ADD_VEL_Y;
                 vel.z = 0.0F;
 
-                egg_gobj = itManagerMakeItemSetupCommon(lucky_gobj, nITKindEgg, &pos, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+                egg_gobj = itManagerMakeItemSetupCommon(lucky_gobj, nITKindEgg, &pos, &vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
 
                 if (egg_gobj != NULL)
                 {
@@ -349,9 +349,9 @@ sb32 itMLuckyCommonProcMap(GObj *item_gobj)
 }
 
 // 0x801814C0
-GObj* itMLuckyMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itMLuckyMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITMLuckyItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITMLuckyItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 

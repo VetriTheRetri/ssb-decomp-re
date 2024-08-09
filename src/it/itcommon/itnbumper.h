@@ -29,6 +29,6 @@ extern sb32 itNBumperHitAirProcUpdate(GObj *item_gobj);
 extern void itNBumperHitAirSetStatus(GObj *item_gobj);
 extern sb32 itNBumperGDisappearProcUpdate(GObj *item_gobj);
 extern void itNBumperGDisappearSetStatus(GObj *item_gobj);
-extern GObj* itNBumperMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itNBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

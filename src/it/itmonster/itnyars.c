@@ -183,9 +183,9 @@ sb32 itNyarsCommonProcMap(GObj *item_gobj)
 }
 
 // 0x8017F08C
-GObj* itNyarsMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itNyarsMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITNyarsItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITNyarsItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 
@@ -272,7 +272,7 @@ sb32 itNyarsWeaponCoinProcReflector(GObj *weapon_gobj)
 GObj* itNyarsWeaponCoinMakeWeapon(GObj *item_gobj, u8 coin_number, f32 rotate_angle)
 {
     wpStruct *wp;
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITNyarsWeaponCoinWeaponDesc, &DObjGetStruct(item_gobj)->translate.vec.f, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITNyarsWeaponCoinWeaponDesc, &DObjGetStruct(item_gobj)->translate.vec.f, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
 
     if (weapon_gobj == NULL)

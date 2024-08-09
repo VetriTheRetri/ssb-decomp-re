@@ -602,7 +602,7 @@ void itLinkBombExplodeSetStatus(GObj *item_gobj)
 // 801865A0
 GObj *itLinkBombMakeItem(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
-	GObj *item_gobj = itManagerMakeItem(fighter_gobj, &dItLinkBombItemDesc, pos, vel, ITEM_MASK_SPAWN_FIGHTER);
+	GObj *item_gobj = itManagerMakeItem(fighter_gobj, &dItLinkBombItemDesc, pos, vel, ITEM_FLAG_PARENT_FIGHTER);
 	DObj *dobj;
 	itStruct *ip;
 

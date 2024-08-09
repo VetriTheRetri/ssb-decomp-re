@@ -14,8 +14,8 @@
 extern void *gGMCommonFiles[/* */];
 
 extern intptr_t D_NF_00000057;                              // 0x00000057
-extern intptr_t D_NF_00000188;                              // 0x00000188
-extern intptr_t D_NF_00000270;                              // 0x00000270
+extern intptr_t lIFCommonPlayerArrowsDObjDesc;              // 0x00000188
+extern intptr_t lIFCommonPlayerArrowsAnimJoint;             // 0x00000270
 
 extern intptr_t lIFCommonPlayerMagnifyFrame;                // 0x000002C8
 extern intptr_t lIFCommonPlayerMagnifyDisplayList;          // 0x00000030
@@ -1751,7 +1751,7 @@ void ifCommonPlayerArrowsRightProcRender(GObj *interface_gobj)
 // 0x801115BC
 void ifCommonPlayerArrowsAddAnim(GObj *interface_gobj)
 {
-    gcAddAnimJointAll(interface_gobj, (void*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&D_NF_00000270), 0.0F);
+    gcAddAnimJointAll(interface_gobj, (AObjAnimJoint**) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerArrowsAnimJoint), 0.0F);
     gcPlayAnimAll(interface_gobj);
 }
 
@@ -1795,8 +1795,16 @@ GObj* ifCommonPlayerArrowsMakeInterface(void (*proc_render)(GObj*), void (*proc_
     GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(interface_gobj, proc_render, 8, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcSetupCustomDObjs(interface_gobj, (void*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&D_NF_00000188), NULL, 27, 0, 0);
-    omAddGObjCommonProc(interface_gobj, proc_update, 1, 5);
+    gcSetupCustomDObjs
+    (
+        interface_gobj, 
+        (DObjDesc*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerArrowsDObjDesc), 
+        NULL, 
+        nOMTransformTraRotRpyR, 
+        nOMTransformNull, 
+        nOMTransformNull
+    );
+    omAddGObjCommonProc(interface_gobj, proc_update, nOMObjProcessKindProc, 5);
 
     return interface_gobj;
 }

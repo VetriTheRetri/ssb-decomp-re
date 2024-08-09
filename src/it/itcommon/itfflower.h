@@ -16,7 +16,7 @@ extern sb32 itFFlowerCommonProcHit(GObj *item_gobj);
 extern void itFFlowerThrownSetStatus(GObj *item_gobj);
 extern sb32 itFFlowerDroppedProcMap(GObj *item_gobj);
 extern void itFFlowerDroppedSetStatus(GObj *item_gobj);
-extern GObj* itFFlowerMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itFFlowerMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itFFlowerWeaponFlameProcUpdate(GObj *weapon_gobj);
 extern sb32 itFFlowerWeaponFlameProcMap(GObj *weapon_gobj);
 extern sb32 itFFlowerWeaponFlameProcHit(GObj *weapon_gobj);

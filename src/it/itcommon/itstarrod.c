@@ -262,9 +262,9 @@ void itStarRodDroppedSetStatus(GObj *item_gobj)
 }
 
 // 0x80178134
-GObj* itStarRodMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itStarRodMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITStarRodItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITStarRodItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -384,7 +384,7 @@ GObj* itStarRodWeaponStarMakeWeapon(GObj *fighter_gobj, Vec3f *pos, ub8 is_smash
     {
         dITStarRodWeaponStarWeaponDesc.o_attributes = (intptr_t)&lITStarRodWeaponStarSmashAttributes; // Set attribute data on smash input - Linker thing
     }
-    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dITStarRodWeaponStarWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dITStarRodWeaponStarWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
 
     if (weapon_gobj == NULL)
     {

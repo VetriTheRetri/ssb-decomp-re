@@ -14,6 +14,6 @@ extern void itKabigonCommonProcRender(GObj *item_gobj);
 extern void itKabigonJumpInitItemVars(GObj *item_gobj);
 extern void itKabigonJumpSetStatus(GObj *item_gobj);
 extern sb32 itKabigonCommonProcUpdate(GObj *item_gobj);
-extern GObj* itKabigonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itKabigonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

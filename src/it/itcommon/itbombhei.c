@@ -724,9 +724,9 @@ void itBombHeiExplodeWaitSetStatus(GObj *item_gobj)
 }
 
 // 0x80177D9C
-GObj* itBombHeiMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itBombHeiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITBombHeiItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITBombHeiItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
     Vec3f translate;

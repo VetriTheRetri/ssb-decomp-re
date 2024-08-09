@@ -308,9 +308,9 @@ sb32 itSawamuraCommonProcMap(GObj *item_gobj)
 }
 
 // 0x80182B74
-GObj* itSawamuraMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itSawamuraMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITSawamuraItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITSawamuraItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

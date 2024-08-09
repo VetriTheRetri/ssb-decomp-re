@@ -12,6 +12,6 @@ extern void itHeartWaitSetStatus(GObj *item_gobj);
 extern void itHeartFallSetStatus(GObj *item_gobj);
 extern sb32 itHeartDroppedProcMap(GObj *item_gobj);
 extern void itHeartDroppedSetStatus(GObj *item_gobj);
-extern GObj* itHeartMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itHeartMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

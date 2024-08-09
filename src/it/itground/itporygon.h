@@ -7,6 +7,6 @@
 
 extern void itPorygonCommonUpdateHitParty(GObj *item_gobj);
 extern sb32 itPorygonCommonProcUpdate(GObj *item_gobj);
-extern GObj* itPorygonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itPorygonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

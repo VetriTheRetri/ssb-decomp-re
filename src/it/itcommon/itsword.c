@@ -215,9 +215,9 @@ void itSwordDroppedSetStatus(GObj *item_gobj)
 }
 
 // 0x80174DA0
-GObj* itSwordMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itSwordMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITSwordITemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITSwordITemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

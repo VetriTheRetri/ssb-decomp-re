@@ -61,7 +61,7 @@ void grCastleInitAll(void)
     vel.y = 0.0F;
     vel.z = 0.0F;
 
-    gGRCommonStruct.castle.bumper_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &yakumono_pos, &vel, ITEM_MASK_SPAWN_GROUND);
+    gGRCommonStruct.castle.bumper_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &yakumono_pos, &vel, ITEM_FLAG_PARENT_GROUND);
 }
 
 // 0x8010B4AC

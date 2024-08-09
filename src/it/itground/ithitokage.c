@@ -199,9 +199,9 @@ sb32 itHitokageCommonProcDamage(GObj *item_gobj)
 }
 
 // 0x80184058
-GObj* itHitokageMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itHitokageMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITHitokageItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITHitokageItemDesc, pos, vel, flags);
     s32 unused;
     DObj *dobj;
     itStruct *ip;
@@ -290,7 +290,7 @@ sb32 itHitokageWeaponFlameProcReflector(GObj *weapon_gobj)
 // 0x801842C8
 GObj* itHitokageWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITHitokageWeaponFlameWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITHitokageWeaponFlameWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

@@ -18,10 +18,10 @@ void itManagerSetPrevStructAlloc(itStruct* ip);
 void itManagerSetupItemDObjs(GObj* gobj, DObjDesc* dobj_desc, DObj** dobjs, u8 transform_kind);
 
 // Create new item
-GObj* itManagerMakeItem(GObj* spawn_gobj, itCreateDesc* item_desc, Vec3f* pos, Vec3f* vel, u32 flags);
+GObj* itManagerMakeItem(GObj* parent_gobj, itCreateDesc* item_desc, Vec3f* pos, Vec3f* vel, u32 flags);
 
 // Create item and init spawn GFX + spin rotation if common item (indexes 0 - 19)
-GObj* itManagerMakeItemSetupCommon(GObj* spawn_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 spawn_flags);
+GObj* itManagerMakeItemSetupCommon(GObj* parent_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 spawn_flags);
 
 // Get current item user_data to see if != NULL
 itStruct* itManagerGetCurrentAlloc();
@@ -42,6 +42,6 @@ void itManagerSetupContainerDrops();
 void itManagerInitMonsterVars();
 
 // Make immediate item with index
-GObj* itManagerMakeItemKind(GObj* spawn_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 flags);
+GObj* itManagerMakeItemKind(GObj* parent_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 flags);
 
 #endif

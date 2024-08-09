@@ -124,9 +124,9 @@ sb32 itPowerBlockWaitProcDamage(GObj *item_gobj)
 }
 
 // 0x8017C1E0
-GObj* itPowerBlockMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itPowerBlockMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITPowerBlockItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITPowerBlockItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

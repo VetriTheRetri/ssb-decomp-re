@@ -32,6 +32,6 @@ extern void itMSBombDetachedSetStatus(GObj *item_gobj);
 extern void itMSBombExplodeInitItemVars(GObj *item_gobj);
 extern sb32 itMSBombExplodeProcUpdate(GObj *item_gobj);
 extern void itMSBombExplodeSetStatus(GObj *item_gobj);
-extern GObj* itMSBombMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itMSBombMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

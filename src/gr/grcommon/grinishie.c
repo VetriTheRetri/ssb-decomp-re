@@ -433,7 +433,7 @@ void grInishieMakePakkun(void)
 
         vel.x = vel.y = vel.z = 0.0F;
 
-        gGRCommonStruct.inishie.pakkun_gobj[i] = itManagerMakeItemSetupCommon(NULL, nITKindPakkun, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
+        gGRCommonStruct.inishie.pakkun_gobj[i] = itManagerMakeItemSetupCommon(NULL, nITKindPakkun, &pos, &vel, ITEM_FLAG_PARENT_GROUND);
     }
 }
 
@@ -471,7 +471,7 @@ void grInishiePowerBlockUpdateMake(void)
 
         vel.x = vel.y = vel.z = 0.0F;
 
-        pblock_gobj = itManagerMakeItemSetupCommon(NULL, nITKindPowerBlock, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
+        pblock_gobj = itManagerMakeItemSetupCommon(NULL, nITKindPowerBlock, &pos, &vel, ITEM_FLAG_PARENT_GROUND);
 
         if (pblock_gobj != NULL)
         {

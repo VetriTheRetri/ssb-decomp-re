@@ -334,9 +334,9 @@ sb32 itLizardonCommonProcMap(GObj *item_gobj)
 }
 
 // 0x8017F9CC
-GObj* itLizardonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itLizardonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITLizardonItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITLizardonItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 
@@ -418,7 +418,7 @@ sb32 itLizardonWeaponFlameProcReflector(GObj *weapon_gobj)
 // 0x8017FC38
 GObj* itLizardonWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITLizardonWeaponFlameWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITLizardonWeaponFlameWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
     wpStruct *ip;
 
     if (weapon_gobj == NULL)

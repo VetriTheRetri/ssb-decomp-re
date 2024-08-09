@@ -17,7 +17,7 @@ extern void itLizardonAttackInitItemVars(GObj *item_gobj);
 extern void itLizardonAttackSetStatus(GObj *item_gobj);
 extern sb32 itLizardonCommonProcUpdate(GObj *item_gobj);
 extern sb32 itLizardonCommonProcMap(GObj *item_gobj);
-extern GObj* itLizardonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itLizardonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itLizardonWeaponFlameProcUpdate(GObj *weapon_gobj);
 extern sb32 itLizardonWeaponFlameProcMap(GObj *weapon_gobj);
 extern sb32 itLizardonWeaponFlameProcHit(GObj *weapon_gobj);

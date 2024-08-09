@@ -15,7 +15,7 @@ extern void itStarmieNFollowInitItemVars(GObj *item_gobj);
 extern void itStarmieNFollowSetStatus(GObj *item_gobj);
 extern sb32 itStarmieCommonProcUpdate(GObj *item_gobj);
 extern sb32 itStarmieCommonProcMap(GObj *item_gobj);
-extern GObj* itStarmieMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itStarmieMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itStarmieWeaponSwiftProcUpdate(GObj *weapon_gobj);
 extern sb32 itStarmieWeaponSwiftProcHit(GObj *weapon_gobj);
 extern sb32 itStarmieWeaponSwiftProcHop(GObj *weapon_gobj);

@@ -17,6 +17,6 @@ extern sb32 itPakkunAppearProcUpdate(GObj *item_gobj);
 extern sb32 itPakkunAppearProcDamage(GObj *item_gobj);
 extern sb32 itPakkunDamagedProcUpdate(GObj *item_gobj);
 extern sb32 itPakkunDamagedProcDead(GObj *item_gobj);
-extern GObj* itPakkunMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itPakkunMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

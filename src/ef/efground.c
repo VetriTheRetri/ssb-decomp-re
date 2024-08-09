@@ -1519,13 +1519,13 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
         {
             main_dobj = omAddDObjForGObj(effect_gobj, NULL);
 
-            func_ovl0_800C89BC(main_dobj, rtypes1->tk1, rtypes1->tk2, rtypes1->unk_dobjtransform_0x2);
+            func_ovl0_800C89BC(main_dobj, rtypes1->tk1, rtypes1->tk2, rtypes1->tk3);
 
             rtypes2 = &effect_desc->transform_types2;
 
             if (effect_flags & 4)
             {
-                efGroundSetupEffectDObjs(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup), NULL, rtypes2->tk1, rtypes2->tk2, rtypes2->unk_dobjtransform_0x2, lr);
+                efGroundSetupEffectDObjs(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup), NULL, rtypes2->tk1, rtypes2->tk2, rtypes2->tk3, lr);
 
                 main_dobj = main_dobj->child;
             }
@@ -1533,7 +1533,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
             {
                 main_dobj = omAddChildForDObj(main_dobj, (void*) (addr + effect_desc->o_dobjsetup));
 
-                func_ovl0_800C89BC(main_dobj, rtypes2->tk1, rtypes2->tk2, rtypes2->unk_dobjtransform_0x2);
+                func_ovl0_800C89BC(main_dobj, rtypes2->tk1, rtypes2->tk2, rtypes2->tk3);
             }
             if (o_mobsjub != 0)
             {

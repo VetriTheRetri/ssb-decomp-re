@@ -4,7 +4,6 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 #include <gr/grdef.h>
-#include <ef/efdef.h>
 
 extern s32 grPupupuWhispyGetLR(GObj *ground_gobj);
 extern void grPupupuWhispySetWindPush(void);
@@ -29,7 +28,7 @@ extern void grPupupuFlowersFrontLoopEnd(void);
 extern void grPupupuFlowersFrontUpdateAll(void);
 extern void grPupupuUpdateGObjAnims(void);
 extern void grPupupuProcUpdate(GObj *ground_gobj);
-extern GObj* grPupupuMakeMapGObj(intptr_t tk, intptr_t offset2, void (*proc_render)(GObj*), u8 dl_link);
+extern GObj* grPupupuMakeMapGObj(intptr_t o_dobj_desc, intptr_t o_mobjsub, void (*proc_render)(GObj*), u8 dl_link);
 extern void grPupupuInitAll(void);
 extern GObj* grPupupuMakeGround(void);
 

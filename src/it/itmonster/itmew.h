@@ -10,6 +10,6 @@ extern void itMewFlyInitItemVars(GObj *item_gobj);
 extern void itMewFlySetStatus(GObj *item_gobj);
 extern sb32 itMewCommonProcUpdate(GObj *item_gobj);
 extern sb32 itMewCommonProcMap(GObj *item_gobj);
-extern GObj* itMewMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itMewMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

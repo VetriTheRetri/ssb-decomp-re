@@ -17,6 +17,6 @@ extern sb32 itBatThrownProcHit(GObj *item_gobj);
 extern void itBatThrownSetStatus(GObj *item_gobj);
 extern sb32 itBatDroppedProcMap(GObj *item_gobj);
 extern void itBatDroppedSetStatus(GObj *item_gobj);
-extern GObj* itBatMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itBatMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

@@ -17,8 +17,6 @@ extern intptr_t lITManagerParticleBankHeaderHi;         // 0x00B1BDE0
 extern intptr_t lITManagerParticleBankTextureLo;        // 0x00B1BDE0
 extern intptr_t lITManagerParticleBankTextureHi;        // 0x00B1E640
 
-extern void func_8000F364_FF64(DObj*, u8, void*, void*, void*);
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
@@ -221,7 +219,7 @@ void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 t
         
         if (i == 1)
         {
-            func_8000F364_FF64(dobj, transform_kind, nOMTransformNull, nOMTransformNull, 0);
+            gcDecideDObjTriTransformKind(dobj, transform_kind, nOMTransformNull, nOMTransformNull, 0);
         }
         else if (transform_kind != nOMTransformNull)
         {
@@ -239,7 +237,7 @@ void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 t
 }
 
 // 0x8016E174
-GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     itStruct *ip = itManagerGetNextStructAlloc();
     GObj *item_gobj;
@@ -382,7 +380,7 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     {
         if (!(attributes->is_item_dobjs))
         {
-            func_8000F720(item_gobj, attributes->dobj_setup, attributes->p_mobjsubs, NULL, item_desc->transform_types.tk1, item_desc->transform_types.tk2, item_desc->transform_types.unk_dobjtransform_0x2);
+            gcSetupCustomDObjsWithMObj(item_gobj, attributes->dobj_setup, attributes->p_mobjsubs, NULL, item_desc->transform_types.tk1, item_desc->transform_types.tk2, item_desc->transform_types.tk3);
         }
         else
         {
@@ -390,10 +388,10 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
 
             if (attributes->p_mobjsubs != NULL)
             {
-                gcAddMObjSubAll(item_gobj, attributes->p_mobjsubs);
+                gcAddMObjAll(item_gobj, attributes->p_mobjsubs);
             }
         }
-        if ((attributes->anim_joints != NULL) || (attributes->p_matanim_joints != NULL)) // Runs if item has joint or texture animation on spawn?
+        if ((attributes->anim_joints != NULL) || (attributes->p_matanim_joints != NULL))
         {
             gcAddAnimAll(item_gobj, attributes->anim_joints, attributes->p_matanim_joints, 0.0F);
             gcPlayAnimAll(item_gobj);
@@ -402,19 +400,19 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
     }
     else omAddDObjForGObj(item_gobj, NULL);
     
-    ip->coll_data.p_translate           = &DObjGetStruct(item_gobj)->translate.vec.f;
-    ip->coll_data.p_lr                  = &ip->lr;
+    ip->coll_data.p_translate       = &DObjGetStruct(item_gobj)->translate.vec.f;
+    ip->coll_data.p_lr              = &ip->lr;
     ip->coll_data.objcoll.top       = attributes->objcoll_top;
     ip->coll_data.objcoll.center    = attributes->objcoll_center;
     ip->coll_data.objcoll.bottom    = attributes->objcoll_bottom;
     ip->coll_data.objcoll.width     = attributes->objcoll_width;
     ip->coll_data.p_objcoll         = &ip->coll_data.objcoll;
-    ip->coll_data.ignore_line_id        = -1;
-    ip->coll_data.coll_update_frame     = gMPCollisionUpdateFrame;
-    ip->coll_data.coll_mask_curr        = 0;
-    ip->coll_data.vel_push.x            = 0.0F;
-    ip->coll_data.vel_push.y            = 0.0F;
-    ip->coll_data.vel_push.z            = 0.0F;
+    ip->coll_data.ignore_line_id    = -1;
+    ip->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
+    ip->coll_data.coll_mask_curr    = 0;
+    ip->coll_data.vel_push.x        = 0.0F;
+    ip->coll_data.vel_push.y        = 0.0F;
+    ip->coll_data.vel_push.z        = 0.0F;
 
     omAddGObjCommonProc(item_gobj, itProcessProcItemMain, nOMObjProcessKindProc, 3);
     omAddGObjCommonProc(item_gobj, itProcessProcSearchHitAll, nOMObjProcessKindProc, 1);
@@ -432,24 +430,24 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
 
     ip->coll_data.pos_curr = DObjGetStruct(item_gobj)->translate.vec.f = *pos;
 
-    if (flags & ITEM_FLAG_PROJECT)
+    if (flags & ITEM_FLAG_COLLPROJECT)
     {
-        switch (flags & ITEM_MASK_SPAWN_ALL)
+        switch (flags & ITEM_FLAG_PARENT_ALL)
         {
-        case ITEM_MASK_SPAWN_GROUND:
-        case ITEM_MASK_SPAWN_DEFAULT: // Default?
+        case ITEM_FLAG_PARENT_GROUND:
+        case ITEM_FLAG_PARENT_DEFAULT: // Default?
             break;
 
-        case ITEM_MASK_SPAWN_FIGHTER:
-            mpCommonRunItemCollisionDefault(item_gobj, ftGetStruct(spawn_gobj)->coll_data.p_translate, &ftGetStruct(spawn_gobj)->coll_data);
+        case ITEM_FLAG_PARENT_FIGHTER:
+            mpCommonRunItemCollisionDefault(item_gobj, ftGetStruct(parent_gobj)->coll_data.p_translate, &ftGetStruct(parent_gobj)->coll_data);
             break;
 
-        case ITEM_MASK_SPAWN_WEAPON:
-            mpCommonRunItemCollisionDefault(item_gobj, wpGetStruct(spawn_gobj)->coll_data.p_translate, &wpGetStruct(spawn_gobj)->coll_data);
+        case ITEM_FLAG_PARENT_WEAPON:
+            mpCommonRunItemCollisionDefault(item_gobj, wpGetStruct(parent_gobj)->coll_data.p_translate, &wpGetStruct(parent_gobj)->coll_data);
             break;
 
-        case ITEM_MASK_SPAWN_ITEM:
-            mpCommonRunItemCollisionDefault(item_gobj, itGetStruct(spawn_gobj)->coll_data.p_translate, &itGetStruct(spawn_gobj)->coll_data);
+        case ITEM_FLAG_PARENT_ITEM:
+            mpCommonRunItemCollisionDefault(item_gobj, itGetStruct(parent_gobj)->coll_data.p_translate, &itGetStruct(parent_gobj)->coll_data);
             break;
 
         default:
@@ -465,9 +463,9 @@ GObj* itManagerMakeItem(GObj *spawn_gobj, itCreateDesc *item_desc, Vec3f *pos, V
 }
 
 // 0x8016EA78
-GObj* itManagerMakeItemSetupCommon(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 spawn_flags)
+GObj* itManagerMakeItemSetupCommon(GObj *parent_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 spawn_flags)
 {
-    GObj *item_gobj = dITManagerProcMakeList[index](spawn_gobj, pos, vel, spawn_flags);
+    GObj *item_gobj = dITManagerProcMakeList[index](parent_gobj, pos, vel, spawn_flags);
 
     if (item_gobj != NULL)
     {
@@ -520,7 +518,7 @@ void itManagerMakeRandomItem(GObj *item_gobj)
 
             func_800269C0_275C0(nGMSoundFGMItemSpawn1);
 
-            itManagerMakeItemSetupCommon(NULL, index, &pos, &vel, ITEM_MASK_SPAWN_DEFAULT);
+            itManagerMakeItemSetupCommon(NULL, index, &pos, &vel, ITEM_FLAG_PARENT_DEFAULT);
         }
         itManagerSetItemSpawnWait();
     }
@@ -720,7 +718,7 @@ void itManagerInitMonsterVars(void)
 }
 
 // 0x8016F238
-GObj* itManagerMakeItemKind(GObj *spawn_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itManagerMakeItemKind(GObj *parent_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    return dITManagerProcMakeList[index](spawn_gobj, pos, vel, flags);
+    return dITManagerProcMakeList[index](parent_gobj, pos, vel, flags);
 }

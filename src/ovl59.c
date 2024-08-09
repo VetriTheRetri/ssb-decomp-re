@@ -159,10 +159,10 @@ void func_ovl59_8013202C(GObj *arg0)
 
 	if (gobj == NULL)
 	{
-		gobj = omMakeGObjSPAfter(8, NULL, nOMObjCommonLinkID02, 0x80000000);
-		omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 3, 0x80000000, -1);
-		gcSetupCustomDObjs(gobj, gCreditsDObjDesc, NULL, nOMTransformTraRotRpyRSca, 0, 0);
-		omAddGObjCommonProc(gobj, func_ovl59_80131F34, 1, 1);
+		gobj = omMakeGObjSPAfter(8, NULL, nOMObjCommonLinkID02, GOBJ_LINKORDER_DEFAULT);
+		omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
+		gcSetupCustomDObjs(gobj, gCreditsDObjDesc, NULL, nOMTransformTraRotRpyRSca, nOMTransformNull, nOMTransformNull);
+		omAddGObjCommonProc(gobj, func_ovl59_80131F34, nOMObjProcessKindProc, 1);
 
 		gobj->user_data.p = arg0;
 		ugobj->unk_0x1C = gobj;

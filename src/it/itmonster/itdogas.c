@@ -251,9 +251,9 @@ sb32 itDogasCommonProcMap(GObj *item_gobj)
 }
 
 // 0x80182FD4
-GObj* itDogasMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itDogasMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITDogasItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITDogasItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 
@@ -300,7 +300,7 @@ sb32 itDogasWeaponSmogProcUpdate(GObj *weapon_gobj)
 GObj* itDogasWeaponSmogMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
     wpCreateDesc *weapon_desc = &dITDogasWeaponSmogWeaponDesc;
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITDogasWeaponSmogWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITDogasWeaponSmogWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
     wpStruct *wp;
 

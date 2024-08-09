@@ -107,7 +107,7 @@ void itGLuckyCommonUpdateEggSpawn(GObj *lucky_gobj)
                 vel.y = (mtTrigGetRandomFloat() * ITGLUCKY_EGG_SPAWN_MUL) + ITGLUCKY_EGG_SPAWN_ADD_Y;
                 vel.z = 0.0F;
 
-                egg_gobj = itManagerMakeItemSetupCommon(lucky_gobj, nITKindEgg, &pos, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+                egg_gobj = itManagerMakeItemSetupCommon(lucky_gobj, nITKindEgg, &pos, &vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
 
                 if (egg_gobj != NULL)
                 {
@@ -215,9 +215,9 @@ sb32 itGLuckyCommonProcDamage(GObj *item_gobj)
 }
 
 // 0x8017C5F4
-GObj* itGLuckyMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itGLuckyMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITGLuckyItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITGLuckyItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

@@ -26,6 +26,6 @@ extern void itMBallOpenSetStatus(GObj *item_gobj);
 extern sb32 itMBallOpenAirProcUpdate(GObj *mball_gobj);
 extern sb32 itMBallOpenAirProcMap(GObj *item_gobj);
 extern void itMBallOpenAirSetStatus(GObj *item_gobj);
-extern GObj* itMBallMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itMBallMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

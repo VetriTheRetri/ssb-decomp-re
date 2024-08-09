@@ -206,7 +206,7 @@ typedef struct _wpNessWeaponVarsPKThunder
 {
 	s32 status;
 	f32 angle;
-	GObj* spawn_gobj; // PK Thunder's original owner
+	GObj* parent_gobj; // PK Thunder's original owner
 	GObj* trail_gobj[WPPKTHUNDER_PARTS_COUNT];
 
 } wpNessWeaponVarsPKThunder;
@@ -216,7 +216,7 @@ typedef struct _wpNessWeaponVarsPKThunderTrail
 	s32 status;
 	s32 trail_index;  // Also key of RGB struct to use to set color of PK
 					  // Thunder trails?
-	GObj* spawn_gobj; // Original owner?
+	GObj* parent_gobj; // Original owner?
 	GObj* head_gobj;
 
 } wpNessWeaponVarsPKThunderTrail;
@@ -242,7 +242,7 @@ typedef struct wpLinkWeaponVarsSpinAttack
 
 typedef struct wpLinkWeaponVarsBoomerang
 {
-	GObj* spawn_gobj; // GObj that spawned Boomerang
+	GObj* parent_gobj; // GObj that spawned Boomerang
 	u8 flyforward_timer;
 	u8 homing_delay;
 	u8 flags;

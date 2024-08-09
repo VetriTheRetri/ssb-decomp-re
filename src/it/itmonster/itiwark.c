@@ -299,9 +299,9 @@ sb32 itIwarkCommonProcMap(GObj *item_gobj)
 }
 
 // 0x8017DBA0
-GObj* itIwarkMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itIwarkMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITIwarkItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITIwarkItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 
@@ -428,10 +428,10 @@ sb32 itIwarkWeaponRockProcReflector(GObj *weapon_gobj)
 }
 
 // 0x8017DF28
-GObj* itIwarkWeaponRockMakeWeapon(GObj *spawn_gobj, Vec3f *pos, u8 random)
+GObj* itIwarkWeaponRockMakeWeapon(GObj *parent_gobj, Vec3f *pos, u8 random)
 {
     u32 random32;
-    GObj *weapon_gobj = wpManagerMakeWeapon(spawn_gobj, &dITIwarkWeaponRockWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(parent_gobj, &dITIwarkWeaponRockWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
     f32 vel_y;
     wpStruct *wp;
@@ -467,7 +467,7 @@ GObj* itIwarkWeaponRockMakeWeapon(GObj *spawn_gobj, Vec3f *pos, u8 random)
 
     dobj->child->mobj->texture_id_current = random;
 
-    wp->weapon_vars.rock.owner_gobj = spawn_gobj;
+    wp->weapon_vars.rock.owner_gobj = parent_gobj;
 
     wp->is_hitlag_victim = TRUE;
 

@@ -1,7 +1,5 @@
 #include <gr/ground.h>
 
-extern void gcAddMObjSubAll();
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //
@@ -235,11 +233,11 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     else proc_render = dGRGeometryDescs[gr_desc_id].proc_renderpri;
 
     omAddGObjRenderProc(ground_gobj, proc_render, dGRGeometryDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcSetupCustomDObjs(ground_gobj, gr_desc->dobj_desc, p_dobj, nOMTransformTraRotRpyRSca, nOMTransformNull, 0);
+    gcSetupCustomDObjs(ground_gobj, gr_desc->dobj_desc, p_dobj, nOMTransformTraRotRpyRSca, nOMTransformNull, nOMTransformNull);
 
     if (gr_desc->p_mobjsubs != NULL)
     {
-        gcAddMObjSubAll(ground_gobj, gr_desc->p_mobjsubs);
+        gcAddMObjAll(ground_gobj, gr_desc->p_mobjsubs);
     }
     if ((gr_desc->anim_joints != NULL) || (gr_desc->p_matanim_joints != NULL))
     {

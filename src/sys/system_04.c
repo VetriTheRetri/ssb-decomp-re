@@ -1,8 +1,6 @@
 #include <sys/obj.h>
 
 extern void hal_interpolation_cubic(Vec3f*, void*, f32);
-extern void func_8000F364_FF64(DObj *dobj, u8 arg1, u8 arg2, u8 arg3, s32 anim_time_max);
-extern void gcAddDObjTriTransformKind(DObj*, u8, u8, u8);
 
 // // // // // // // // // // // //
 //                               //
@@ -2140,7 +2138,7 @@ void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs)
         }
         if (dobj_desc->index & 0x8000)
         {
-            omAddOMMtxForDObjFixed(dobj, nOMTransform44, 0);
+            omAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotRpyRSca, 0);
         } 
         else if (dobj_desc->index & 0x4000)
         {
@@ -2184,10 +2182,115 @@ void gcAddDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F364_FF64.s")
+void gcDecideDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, s32 flags)
+{
+    s32 tra_mode = 0;
+    s32 sca_mode = 0;
+    s32 rot_mode = 0;
+
+    switch (tk1)
+    {
+    case nOMTransformTra:
+        tra_mode = 1;
+        break;
+
+    case nOMTransformRotRpyR: 
+        rot_mode = 1;
+        break;
+
+    case nOMTransformTraRotRpyR:
+        rot_mode = 1;
+        tra_mode = 1;
+        break;
+            
+    case nOMTransformTraRotRpyRSca:
+        sca_mode = 1;
+        rot_mode = 1;
+        tra_mode = 1;
+        break;
+
+    case nOMTransformRotPyrR: 
+        rot_mode = 2; 
+        break;
+
+    case nOMTransformTraRotPyrR:
+        rot_mode = 2;
+        tra_mode = 1;
+        break;
+            
+    case nOMTransformTraRotPyrRSca:
+        rot_mode = 2;
+        sca_mode = 1;
+        tra_mode = 1;
+        break;
+
+    case nOMTransformSca: 
+        sca_mode = 1;
+        break;
+    }
+    switch (tk2)
+    {
+    case nOMTransformRotRpyR:
+        rot_mode = 1; 
+        break;
+
+    case nOMTransformRotPyrR:
+        rot_mode = 2;
+        break;
+
+    case nOMTransformSca:
+        sca_mode = 1;
+        break;
+    }
+    if (tk3 == nOMTransformSca)
+    {
+        sca_mode = 1;
+    }
+    if (tra_mode != 0)
+    {
+        omAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
+    }
+    if (flags & 0x4000)
+    {
+        if (rot_mode == 1)
+        {
+            omAddOMMtxForDObjFixed(dobj, nOMTransform46, 0);
+        } 
+        else omAddOMMtxForDObjFixed(dobj, nOMTransform45, 0);
+    }
+    else if (flags & 0x2000)
+    {
+        if (rot_mode == 1)
+        {
+            omAddOMMtxForDObjFixed(dobj, nOMTransform48, 0);
+        }
+        else omAddOMMtxForDObjFixed(dobj, nOMTransform47, 0);
+    } 
+    else if (flags & 0x1000)
+    {
+        if (rot_mode == 1)
+        {
+            omAddOMMtxForDObjFixed(dobj, nOMTransform50, 0);
+        }
+        else omAddOMMtxForDObjFixed(dobj, nOMTransform49, 0);
+    } 
+    else if (sca_mode != 0)
+    {
+        if (rot_mode == 1)
+        {
+            omAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotRpyRSca, 0);
+        }
+        else omAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotPyrRSca, 0);
+    }
+    else if (rot_mode == 1)
+    {
+        omAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotRpyR, 0);
+    }
+    else omAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotPyrR, 0);
+}
 
 // 0x8000F590
-void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5)
+void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3)
 {
     s32 i;
     DObj *dobj;
@@ -2210,9 +2313,9 @@ void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u
         
         if (dobj_desc->index & 0xF000) 
         {
-            func_8000F364_FF64(dobj, tk1, tk2, arg5, dobj_desc->index & 0xF000);
+            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, dobj_desc->index & 0xF000);
         } 
-        else gcAddDObjTriTransformKind(dobj, tk1, tk2, arg5);
+        else gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
         
         dobj->translate.vec.f = dobj_desc->translate;
         dobj->rotate.vec.f = dobj_desc->rotate;
@@ -2226,11 +2329,107 @@ void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F720.s")
+// 0x8000F720
+void gcSetupCustomDObjsWithMObj(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***p_mobjsubs, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3)
+{
+    s32 i;
+    DObj *dobj;
+    s32 id;
+    DObj *array_dobjs[DOBJ_ARRAY_MAX];
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/gcAddMObjSubAll.s")
+    for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
+    {
+        array_dobjs[i] = NULL;
+    }
+    while (dobj_desc->index != ARRAY_COUNT(array_dobjs)) 
+    {
+        id = dobj_desc->index & 0xFFF;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F988.s")
+        if (id != 0)
+        {
+            dobj = array_dobjs[id] = omAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+        } 
+        else dobj = array_dobjs[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
+        
+        if (dobj_desc->index & 0xF000) 
+        {
+            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, dobj_desc->index & 0xF000);
+        } 
+        else gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
+        
+        dobj->translate.vec.f = dobj_desc->translate;
+        dobj->rotate.vec.f = dobj_desc->rotate;
+        dobj->scale.vec.f = dobj_desc->scale;
+
+        if (p_mobjsubs != NULL)
+        {
+            if (*p_mobjsubs != NULL)
+            {
+                MObjSub **mobjsubs = *p_mobjsubs;
+                MObjSub *mobjsub = *mobjsubs;
+
+                while (mobjsub != NULL)
+                {
+                    omAddMObjForDObj(dobj, mobjsub);
+
+                    mobjsubs++;
+
+                    mobjsub = *mobjsubs;
+                }
+            }
+            p_mobjsubs++;
+        }
+        if (dobjs != NULL)
+        {
+            *dobjs++ = dobj;
+        }
+        dobj_desc++;
+    }
+}
+
+void gcAddMObjAll(GObj *gobj, MObjSub ***p_mobjsubs)
+{
+    DObj *dobj = DObjGetStruct(gobj);
+
+    while (dobj != NULL)
+    {
+        if (p_mobjsubs != NULL)
+        {
+            if (*p_mobjsubs != NULL)
+            {
+                MObjSub **mobjsubs = *p_mobjsubs;
+                MObjSub *mobjsub = *mobjsubs;
+
+                while (mobjsub != NULL)
+                {
+                    omAddMObjForDObj(dobj, mobjsub);
+
+                    mobjsubs++;
+
+                    mobjsub = *mobjsubs;
+                }
+            }
+            p_mobjsubs++;
+        }
+        dobj = func_8000BAA0(dobj);
+    }
+}
+
+void gcSetTransformVectorsAll(GObj *gobj, DObjDesc *dobj_desc)
+{
+    DObj *dobj = DObjGetStruct(gobj);
+
+    while ((dobj != NULL) && (dobj_desc->index != DOBJ_ARRAY_MAX))
+    {
+        dobj->translate.vec.f = dobj_desc->translate;
+        dobj->rotate.vec.f = dobj_desc->rotate;
+        dobj->scale.vec.f = dobj_desc->scale;
+
+        dobj_desc++;
+
+        dobj = func_8000BAA0(dobj);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000FA3C.s")
 

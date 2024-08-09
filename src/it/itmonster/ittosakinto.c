@@ -231,9 +231,9 @@ sb32 itTosakintoCommonProcMap(GObj *item_gobj)
 }
 
 // 0x8017EAD8
-GObj* itTosakintoMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itTosakintoMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITTosakintoItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITTosakintoItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 

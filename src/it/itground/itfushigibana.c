@@ -170,9 +170,9 @@ sb32 itFushigibanaCommonProcUpdate(GObj *item_gobj)
 }
 
 // 0x8018470C
-GObj* itFushigibanaMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itFushigibanaMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITFushigibanaItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITFushigibanaItemDesc, pos, vel, flags);
     s32 unused;
     DObj *dobj;
     itStruct *ip;
@@ -272,7 +272,7 @@ sb32 itFushigibanaWeaponRazorProcReflector(GObj *weapon_gobj)
 // 0x801849EC
 GObj* itFushigibanaWeaponRazorMakeWeapon(GObj *item_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITFushigibanaWeaponRazorWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITFushigibanaWeaponRazorWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
     wpStruct *wp;
 

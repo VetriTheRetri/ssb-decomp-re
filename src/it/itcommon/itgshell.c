@@ -543,9 +543,9 @@ void itGShellSpinAirSetStatus(GObj *item_gobj)
 }
 
 // 0x80178FDC
-GObj* itGShellMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itGShellMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITGShellItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITGShellItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

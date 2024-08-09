@@ -286,9 +286,9 @@ sb32 itKabigonCommonProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017E6C0
-GObj* itKabigonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itKabigonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITKabigonItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITKabigonItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

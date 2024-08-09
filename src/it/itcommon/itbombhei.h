@@ -41,6 +41,6 @@ extern sb32 itBombHeiExplodeWaitProcUpdate(GObj *item_gobj);
 extern sb32 itBombHeiExplodeWaitProcMap(GObj *item_gobj);
 extern void itBombHeiExplodeWaitInitItemVars(GObj *item_gobj);
 extern void itBombHeiExplodeWaitSetStatus(GObj *item_gobj);
-extern GObj *itBombHeiMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj *itBombHeiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

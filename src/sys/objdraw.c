@@ -956,7 +956,6 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
     {
         mobj = mobj->next;
     }
-
     mobj = dobj->mobj;
     branch_dl = (Gfx*)gGraphicsHeap.ptr + mobj_count;
     new_dl = gGraphicsHeap.ptr;

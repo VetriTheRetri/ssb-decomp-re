@@ -259,9 +259,9 @@ void itLGunDroppedSetStatus(GObj *item_gobj)
 }
 
 // 0x80175800
-GObj* itLGunMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itLGunMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITLGunItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITLGunItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -351,7 +351,7 @@ sb32 itLGunWeaponAmmoProcReflector(GObj *weapon_gobj)
 // 0x80175A60
 GObj* itLGunWeaponAmmoMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &itLGunWeaponAmmoWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &itLGunWeaponAmmoWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

@@ -17,7 +17,7 @@ extern sb32 itStarRodThrownProcHit(GObj *item_gobj);
 extern void itStarRodThrownSetStatus(GObj *item_gobj);
 extern sb32 itStarRodDroppedProcMap(GObj *item_gobj);
 extern void itStarRodDroppedSetStatus(GObj *item_gobj);
-extern GObj* itStarRodMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itStarRodMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itStarRodWeaponStarProcUpdate(GObj *weapon_gobj);
 extern sb32 itStarRodWeaponStarProcMap(GObj *weapon_gobj);
 extern sb32 itStarRodWeaponStarProcHit(GObj *weapon_gobj);

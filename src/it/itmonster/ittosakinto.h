@@ -14,6 +14,6 @@ extern void itTosakintoBounceInitItemVars(GObj *item_gobj);
 extern void itTosakintoBounceSetStatus(GObj *item_gobj);
 extern sb32 itTosakintoCommonProcUpdate(GObj *item_gobj);
 extern sb32 itTosakintoCommonProcMap(GObj *item_gobj);
-extern GObj* itTosakintoMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itTosakintoMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

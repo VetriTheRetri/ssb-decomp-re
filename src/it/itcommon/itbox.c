@@ -277,7 +277,7 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
                     vel_identical.x = spawn_pos[i].x;
                     vel_identical.y = spawn_pos[i].y;
 
-                    itManagerMakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel_identical, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+                    itManagerMakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel_identical, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
                 }
             }
             else
@@ -299,7 +299,7 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
                     vel_different.x = spawn_pos[j].x;
                     vel_different.y = spawn_pos[j].y;
 
-                    itManagerMakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel_different, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+                    itManagerMakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel_different, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
                 }
                 gITManagerRandomWeights.item_count++;
                 gITManagerRandomWeights.item_num = bak;
@@ -453,9 +453,9 @@ sb32 itBoxExplodeProcUpdate(GObj *item_gobj)
 }
 
 // 0x801799A4
-GObj* itBoxMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itBoxMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITBoxItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITBoxItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

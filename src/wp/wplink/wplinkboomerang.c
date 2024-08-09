@@ -224,10 +224,10 @@ f32 wpLinkBoomerangGetDistUpdateAngle(GObj *weapon_gobj)
     f32 angle;
     f32 sqrt_dist = 0.0F;
 
-    if (wp->weapon_vars.boomerang.spawn_gobj != NULL)
+    if (wp->weapon_vars.boomerang.parent_gobj != NULL)
     {
-        dist_x = DObjGetStruct(wp->weapon_vars.boomerang.spawn_gobj)->translate.vec.f.x - DObjGetStruct(weapon_gobj)->translate.vec.f.x;
-        dist_y = (DObjGetStruct(wp->weapon_vars.boomerang.spawn_gobj)->translate.vec.f.y - DObjGetStruct(weapon_gobj)->translate.vec.f.y) + 290.0F;
+        dist_x = DObjGetStruct(wp->weapon_vars.boomerang.parent_gobj)->translate.vec.f.x - DObjGetStruct(weapon_gobj)->translate.vec.f.x;
+        dist_y = (DObjGetStruct(wp->weapon_vars.boomerang.parent_gobj)->translate.vec.f.y - DObjGetStruct(weapon_gobj)->translate.vec.f.y) + 290.0F;
 
         sqrt_dist = sqrtf(SQUARE(dist_x) + SQUARE(dist_y));
 
@@ -292,9 +292,9 @@ f32 wpLinkBoomerangGetDistUpdateAngle(GObj *weapon_gobj)
 // 0x8016D31C
 void wpLinkBoomerangClearGObjs(wpStruct *wp)
 {
-    if (wp->weapon_vars.boomerang.spawn_gobj != NULL)
+    if (wp->weapon_vars.boomerang.parent_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(wp->weapon_vars.boomerang.spawn_gobj);
+        ftStruct *fp = ftGetStruct(wp->weapon_vars.boomerang.parent_gobj);
 
         if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindNKirby))
         {
@@ -302,7 +302,7 @@ void wpLinkBoomerangClearGObjs(wpStruct *wp)
         }
         else fp->fighter_vars.link.boomerang_gobj = NULL;
         
-        wp->weapon_vars.boomerang.spawn_gobj = NULL;
+        wp->weapon_vars.boomerang.parent_gobj = NULL;
     }
 }
 
@@ -313,17 +313,17 @@ void wpLinkBoomerangCheckOwnerCatch(GObj *weapon_gobj, f32 distance)
 
     if ((wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_MASK_RETURN) && (distance < 180.0F))
     {
-        if (wp->weapon_vars.boomerang.spawn_gobj != NULL)
+        if (wp->weapon_vars.boomerang.parent_gobj != NULL)
         {
-            ftStruct *fp = ftGetStruct(wp->weapon_vars.boomerang.spawn_gobj);
+            ftStruct *fp = ftGetStruct(wp->weapon_vars.boomerang.parent_gobj);
 
             if (fp->is_special_interrupt)
             {
                 if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindNKirby))
                 {
-                    ftKirbyCopyLinkSpecialNReturnSetStatus(wp->weapon_vars.boomerang.spawn_gobj);
+                    ftKirbyCopyLinkSpecialNReturnSetStatus(wp->weapon_vars.boomerang.parent_gobj);
                 }
-                else ftLinkSpecialNReturnSetStatus(wp->weapon_vars.boomerang.spawn_gobj);          
+                else ftLinkSpecialNReturnSetStatus(wp->weapon_vars.boomerang.parent_gobj);          
             }
         }
         wpLinkBoomerangClearGObjs(wp);
@@ -572,7 +572,7 @@ GObj* wpLinkBoomerangMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     offset.x = (fp->lr == nGMFacingR) ? offset.x + WPBOOMERANG_OFF_X : offset.x - WPBOOMERANG_OFF_X;
 
-    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPLinkBoomerangWeaponDesc, &offset, WEAPON_MASK_SPAWN_FIGHTER);
+    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPLinkBoomerangWeaponDesc, &offset, WEAPON_FLAG_PARENT_FIGHTER);
 
     if (weapon_gobj == NULL)
     {
@@ -599,7 +599,7 @@ GObj* wpLinkBoomerangMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wpMainPlaySFX(wp, nGMSoundFGMLinkSpecialNDraw);
 
-    wp->weapon_vars.boomerang.spawn_gobj = fighter_gobj;
+    wp->weapon_vars.boomerang.parent_gobj = fighter_gobj;
     wp->weapon_vars.boomerang.flags = WPLINK_BOOMERANG_MASK_FORWARD;
     wp->weapon_vars.boomerang.homing_delay = 130;
     wp->weapon_vars.boomerang.adjust_angle_delay = 0;

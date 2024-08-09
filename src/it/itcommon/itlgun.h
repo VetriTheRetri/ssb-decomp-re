@@ -16,7 +16,7 @@ extern sb32 itLGunCommonProcHit(GObj *item_gobj);
 extern void itLGunThrownSetStatus(GObj *item_gobj);
 extern sb32 itLGunDroppedProcMap(GObj *item_gobj);
 extern void itLGunDroppedSetStatus(GObj *item_gobj);
-extern GObj* itLGunMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itLGunMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itLGunWeaponAmmoProcUpdate(GObj *weapon_gobj);
 extern sb32 itLGunWeaponAmmoProcMap(GObj *weapon_gobj);
 extern sb32 itLGunWeaponAmmoProcHit(GObj *weapon_gobj);

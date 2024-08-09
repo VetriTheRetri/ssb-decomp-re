@@ -10,7 +10,7 @@ extern void itNyarsAttackInitItemVars(GObj *item_gobj);
 extern void itNyarsAttackSetStatus(GObj *item_gobj);
 extern sb32 itNyarsCommonProcUpdate(GObj *item_gobj);
 extern sb32 itNyarsCommonProcMap(GObj *item_gobj);
-extern GObj* itNyarsMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itNyarsMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itNyarsWeaponCoinProcUpdate(GObj *weapon_gobj);
 extern sb32 itNyarsWeaponCoinProcHit(GObj *weapon_gobj);
 extern sb32 itNyarsWeaponCoinProcHop(GObj *weapon_gobj);

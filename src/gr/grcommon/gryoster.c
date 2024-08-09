@@ -232,8 +232,15 @@ void grYosterInitAll(void)
         gGRCommonStruct.yoster.clouds[i].gobj = map_gobj;
 
         omAddGObjRenderProc(map_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
-        gcSetupCustomDObjs(map_gobj, (DObjDesc*) ((intptr_t)&lGRYosterMapHead + (uintptr_t)map_head), NULL, nOMTransformTra, nOMTransformNull, 0); // Make this nOMTransformTraRotRpyRSca to add static cloud animation
-
+        gcSetupCustomDObjs
+        (
+            map_gobj, 
+            (DObjDesc*) ((intptr_t)&lGRYosterMapHead + (uintptr_t)map_head), 
+            NULL, 
+            nOMTransformTra,    // Make this nOMTransformTraRotRpyRSca to see cloud scale animation
+            nOMTransformNull, 
+            nOMTransformNull
+        );
         omAddGObjCommonProc(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
         gcAddAnimJointAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
@@ -251,7 +258,7 @@ void grYosterInitAll(void)
             gGRCommonStruct.yoster.clouds[i].dobj[j] = cloud_dobj;
 
             omAddOMMtxForDObjFixed(cloud_dobj, nOMTransformTra, 0);
-            omAddOMMtxForDObjFixed(cloud_dobj, 0x30, 0);
+            omAddOMMtxForDObjFixed(cloud_dobj, nOMTransform48, 0);
             func_ovl0_800C9228(cloud_dobj, (uintptr_t)map_head + (intptr_t)&D_NF_000004B8);
         }
         gcPlayAnimAll(map_gobj);
@@ -263,7 +270,6 @@ void grYosterInitAll(void)
         gGRCommonStruct.yoster.clouds[i].pressure = 0.0F;
 
         mpCollisionSetYakumonoOnID(dGRYosterCloudLineIDs[i]);
-
     }
     gGRCommonStruct.yoster.particle_bank_id = efAllocGetAddParticleBankID(&lGRYosterParticleBankHeaderLo, &lGRYosterParticleBankHeaderHi, &lGRYosterParticleBankTextureLo, &lGRYosterParticleBankTextureHi);
 }

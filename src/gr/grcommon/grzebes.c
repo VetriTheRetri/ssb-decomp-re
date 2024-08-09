@@ -92,14 +92,22 @@ GObj* grZebesMakeAcid(void)
     gGRCommonStruct.zebes.map_gobj = map_gobj;
 
     omAddGObjRenderProc(map_gobj, odRenderDObjTreeDLLinksForGObj, 12, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcSetupCustomDObjs(map_gobj, (DObjDesc*) ((intptr_t)&lGRZebesAcidDObjSetup + (uintptr_t)map_head), NULL, nOMTransformTra, nOMTransformNull, 0);
-    gcAddMObjSubAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000008C0);
+    gcSetupCustomDObjs
+    (
+        map_gobj, 
+        (DObjDesc*) ((intptr_t)&lGRZebesAcidDObjSetup + (uintptr_t)map_head), 
+        NULL, 
+        nOMTransformTra, 
+        nOMTransformNull,
+        nOMTransformNull
+    );
+    gcAddMObjAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000008C0);
     omAddGObjCommonProc(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
     gcAddAnimAll(map_gobj, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidAnimJoint, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidMatAnimJoint, 0.0F);
     gcPlayAnimAll(map_gobj);
 
     gGRCommonStruct.zebes.acid_status = nGRZebesAcidStatusWait;
-    gGRCommonStruct.zebes.acid_level_current = dGRZebesAcidAttributes[15].acid_level;
+    gGRCommonStruct.zebes.acid_level_current = dGRZebesAcidAttributes[ARRAY_COUNT(dGRZebesAcidAttributes) - 1].acid_level;
     gGRCommonStruct.zebes.acid_attr_id = 0;
 
     gGRCommonStruct.zebes.gr_hit = (void*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRZebesAcidHit);

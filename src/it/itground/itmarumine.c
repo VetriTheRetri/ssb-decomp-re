@@ -190,9 +190,9 @@ void itMarumineExplodeSetStatus(GObj *item_gobj)
 }
 
 // 0x80183A74
-GObj* itMarumineMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itMarumineMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITMarumineItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITMarumineItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

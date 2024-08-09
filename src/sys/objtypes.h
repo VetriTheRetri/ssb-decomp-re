@@ -333,7 +333,7 @@ struct _MObj
 struct DObjTransformTypes
 {
     u8 tk1, tk2;
-    u8 unk_dobjtransform_0x2;
+    u8 tk3;
 };
 
 struct DObjDesc

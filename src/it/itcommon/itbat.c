@@ -228,9 +228,9 @@ void itBatDroppedSetStatus(GObj *item_gobj)
 }
 
 // 0x801750B8
-GObj* itBatMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itBatMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITBatItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITBatItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

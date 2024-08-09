@@ -250,9 +250,9 @@ void itFFlowerDroppedSetStatus(GObj *item_gobj)
 }
 
 // 0x80175D60
-GObj* itFFlowerMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itFFlowerMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITFFlowerItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITFFlowerItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -322,7 +322,7 @@ sb32 itFFlowerWeaponFlameProcReflector(GObj *weapon_gobj)
 // 0x80175F48
 GObj* itFFlowerWeaponFlameMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dITFFlowerWeaponFlameWeaponDesc, pos, (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dITFFlowerWeaponFlameWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

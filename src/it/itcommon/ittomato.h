@@ -12,6 +12,6 @@ extern void itTomatoWaitSetStatus(GObj *item_gobj);
 extern void itTomatoFallSetStatus(GObj *item_gobj);
 extern sb32 itTomatoDroppedProcMap(GObj *item_gobj);
 extern void itTomatoDroppedSetStatus(GObj *item_gobj);
-extern GObj* itTomatoMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itTomatoMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

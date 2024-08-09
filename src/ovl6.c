@@ -330,7 +330,7 @@ void scBonusGame_InitBonus2Bumpers()
 		while (dobj_desc->index != 0x12)
 		{
 			item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &dobj_desc->translate, &vel,
-													  ITEM_MASK_SPAWN_GROUND);
+													  ITEM_FLAG_PARENT_GROUND);
 			if (*anim_joint != NULL)
 			{
 				gcAddDObjAnimJoint(DObjGetStruct(item_gobj), *anim_joint, 0.0F);

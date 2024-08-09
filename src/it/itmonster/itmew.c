@@ -161,9 +161,9 @@ sb32 itMewCommonProcMap(GObj *item_gobj)
 }
 
 // 0x8017EDE4
-GObj* itMewMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itMewMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITMewItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITMewItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

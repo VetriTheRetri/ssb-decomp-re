@@ -125,7 +125,28 @@ extern void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs);
 // Add three OMMtxes of transformation kind for specific DObj
 extern void gcAddDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3);
 
+// Decide what transformation OMMtxes to add to specific DObj based on tk1, tk2, tk3 and flags
+extern void gcDecideDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, s32 flags);
+
 // Set up DObj node tree with custom OMMtx transformations for GObj
-extern void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5);
+extern void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3);
+
+// Set up DObj node tree with MObj and custom OMMtx transformations for GObj
+extern void gcSetupCustomDObjsWithMObj
+(
+    GObj *gobj, 
+    DObjDesc *dobj_desc, 
+    MObjSub ***p_mobjsubs, 
+    DObj **dobjs, 
+    u8 tk1, 
+    u8 tk2, 
+    u8 tk3
+);
+
+// Add MObj for all DObjs on a GObj
+extern void gcAddMObjAll(GObj *gobj, MObjSub ***p_mobjsubs);
+
+// Set transformation vectors for all DObjs on a GObj
+extern void gcSetTransformVectorsAll(GObj *gobj, DObjDesc *dobj_desc);
 
 #endif

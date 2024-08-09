@@ -332,7 +332,7 @@ sb32 itMBallOpenProcUpdate(GObj *mball_gobj)
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemKind(mball_gobj, dITManagerMonsterSpawnID + (nITKindMBallMonsterStart - 1), &DObjGetStruct(mball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemKind(mball_gobj, dITManagerMonsterSpawnID + (nITKindMBallMonsterStart - 1), &DObjGetStruct(mball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
 
         if (monster_gobj != NULL)
         {
@@ -440,7 +440,7 @@ sb32 itMBallOpenAirProcUpdate(GObj *mball_gobj)
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemKind(mball_gobj, dITManagerMonsterSpawnID + (nITKindMBallMonsterStart - 1), &DObjGetStruct(mball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+        monster_gobj = itManagerMakeItemKind(mball_gobj, dITManagerMonsterSpawnID + (nITKindMBallMonsterStart - 1), &DObjGetStruct(mball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
 
         if (monster_gobj != NULL)
         {
@@ -479,9 +479,9 @@ void itMBallOpenAirSetStatus(GObj *item_gobj)
 }
 
 // 0x8017CE0C
-GObj* itMBallMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itMBallMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITMBallItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITMBallItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

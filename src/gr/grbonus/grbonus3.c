@@ -44,7 +44,7 @@ void grBonus3MakeBumpers(void)
 
     for (i = 0; dobj_desc->index != DOBJ_ARRAY_MAX; i++, dobj_desc++, anim_joint++)
     {
-        item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &dobj_desc->translate, &vel, ITEM_MASK_SPAWN_GROUND);
+        item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &dobj_desc->translate, &vel, ITEM_FLAG_PARENT_GROUND);
 
         if ((*anim_joint != NULL) && (item_gobj != NULL))
         {
@@ -63,7 +63,7 @@ void grBonus3TaruBombProcUpdate(GObj *ground_gobj)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
-        itManagerMakeItemSetupCommon(NULL, nITKindTaruBomb, &gGRCommonStruct.bonus3.tarubomb_make_pos, &vel, ITEM_MASK_SPAWN_GROUND);
+        itManagerMakeItemSetupCommon(NULL, nITKindTaruBomb, &gGRCommonStruct.bonus3.tarubomb_make_pos, &vel, ITEM_FLAG_PARENT_GROUND);
 
         gGRCommonStruct.bonus3.tarubomb_make_wait = 180;
     }

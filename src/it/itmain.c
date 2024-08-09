@@ -12,7 +12,7 @@ extern intptr_t lITMainContainerVelocitiesY;  // 0x00000000
 extern ub8 gGM1PGameBonusMewCatcher;
 
 extern alSoundEffect* func_800269C0_275C0(u16);
-extern void func_8000F988();
+extern void gcSetTransformVectorsAll();
 
 // // // // // // // // // // // //
 //                               //
@@ -462,7 +462,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     efManagerItemGetSwirlProcUpdate(&pos);
 
-    func_8000F988(item_gobj, ip->attributes->dobj_setup);
+    gcSetTransformVectorsAll(item_gobj, ip->attributes->dobj_setup);
 
     proc_pickup = dITMainProcHoldList[ip->it_kind];
 
@@ -579,7 +579,7 @@ s32 itMainGetWeightedItemKind(itRandomWeights *weights)
 }
 
 // 0x801730D4
-sb32 itMainMakeContainerItem(GObj *spawn_gobj)
+sb32 itMainMakeContainerItem(GObj *parent_gobj)
 {
     s32 unused;
     s32 item_kind;
@@ -595,9 +595,9 @@ sb32 itMainMakeContainerItem(GObj *spawn_gobj)
             vel.y = *(f32*) ((intptr_t)&lITMainContainerVelocitiesY + ((uintptr_t) &((u32*)gITManagerFileData)[item_kind])); // Linker thing; quite ridiculous especially since lITMainContainerVelocitiesY is 0
             vel.z = 0;
 
-            if (itManagerMakeItemSetupCommon(spawn_gobj, item_kind, &DObjGetStruct(spawn_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM)) != NULL)
+            if (itManagerMakeItemSetupCommon(parent_gobj, item_kind, &DObjGetStruct(parent_gobj)->translate.vec.f, &vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM)) != NULL)
             {
-                func_ovl3_80172394(spawn_gobj, TRUE);
+                func_ovl3_80172394(parent_gobj, TRUE);
             }
             return TRUE;
         }
@@ -664,7 +664,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     gITManagerMonsterData.monster_prev = gITManagerMonsterData.monster_curr;
     gITManagerMonsterData.monster_curr = index;
 
-    monster_gobj = itManagerMakeItemKind(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel, (ITEM_FLAG_PROJECT | ITEM_MASK_SPAWN_ITEM));
+    monster_gobj = itManagerMakeItemKind(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
 
     if (monster_gobj != NULL)
     {

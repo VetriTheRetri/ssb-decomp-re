@@ -13,12 +13,12 @@ extern sb32 itIwarkFlyProcUpdate(GObj *item_gobj);
 extern void itIwarkFlySetStatus(GObj *item_gobj);
 extern sb32 itIwarkCommonProcUpdate(GObj *item_gobj);
 extern sb32 itIwarkCommonProcMap(GObj *item_gobj);
-extern GObj* itIwarkMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itIwarkMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itIwarkWeaponRockProcDead(GObj *weapon_gobj);
 extern sb32 itIwarkWeaponRockProcUpdate(GObj *weapon_gobj);
 extern sb32 itIwarkWeaponRockProcMap(GObj *weapon_gobj);
 extern sb32 itIwarkWeaponRockProcHop(GObj *weapon_gobj);
 extern sb32 itIwarkWeaponRockProcReflector(GObj *weapon_gobj);
-extern GObj* itIwarkWeaponRockMakeWeapon(GObj *spawn_gobj, Vec3f *pos, u8 random);
+extern GObj* itIwarkWeaponRockMakeWeapon(GObj *parent_gobj, Vec3f *pos, u8 random);
 
 #endif

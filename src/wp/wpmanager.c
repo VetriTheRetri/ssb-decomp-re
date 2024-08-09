@@ -71,7 +71,7 @@ void wpManagerSetPrevStructAlloc(wpStruct *wp)
     sWPManagerStructsAllocFree = wp;
 }
 
-// 0x801655A0 - Do NOT declare this with a void argument! PK Thunder passes unused arguments to this function.
+// 0x801655A0 - WARNING: Do NOT declare this with a void argument! PK Thunder passes unused arguments to this function.
 u32 wpManagerGetGroupID()
 {
     u32 group_id = sWPManagerGroupID++;
@@ -84,7 +84,7 @@ u32 wpManagerGetGroupID()
 }
 
 // 0x801655C8
-GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_pos, u32 flags)
+GObj* wpManagerMakeWeapon(GObj *parent_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_pos, u32 flags)
 {
     GObj *weapon_gobj;
     void (*proc_render)(GObj*);
@@ -113,11 +113,11 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
     wp->weapon_gobj = weapon_gobj;
     wp->wp_kind = wp_desc->wp_kind;
 
-    switch (flags & WEAPON_MASK_SPAWN_ALL)
+    switch (flags & WEAPON_FLAG_PARENT_ALL)
     {
-    case WEAPON_MASK_SPAWN_FIGHTER: // Weapons spawned by fighters
-        fp = ftGetStruct(spawn_gobj);
-        wp->owner_gobj = spawn_gobj;
+    case WEAPON_FLAG_PARENT_FIGHTER: // Weapons spawned by fighters
+        fp = ftGetStruct(parent_gobj);
+        wp->owner_gobj = parent_gobj;
         wp->team = fp->team;
         wp->player = fp->player;
         wp->handicap = fp->handicap;
@@ -133,8 +133,8 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
         wp->weapon_hit.stat_count = fp->stat_count;
         break;
 
-    case WEAPON_MASK_SPAWN_WEAPON: // Weapons spawned by other weapons
-        owner_wp = wpGetStruct(spawn_gobj);
+    case WEAPON_FLAG_PARENT_WEAPON: // Weapons spawned by other weapons
+        owner_wp = wpGetStruct(parent_gobj);
         wp->owner_gobj = owner_wp->owner_gobj;
         wp->team = owner_wp->team;
         wp->player = owner_wp->player;
@@ -151,8 +151,8 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
         wp->weapon_hit.stat_count = owner_wp->weapon_hit.stat_count;
         break;
 
-    case WEAPON_MASK_SPAWN_ITEM: // Weapons spawned by items
-        ip = itGetStruct(spawn_gobj);
+    case WEAPON_FLAG_PARENT_ITEM: // Weapons spawned by items
+        ip = itGetStruct(parent_gobj);
         wp->owner_gobj = ip->owner_gobj;
         wp->team = ip->team;
         wp->player = ip->player;
@@ -170,7 +170,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
         break;
 
     default: // Weapons spawned independently 
-    case WEAPON_MASK_SPAWN_GROUND:
+    case WEAPON_FLAG_PARENT_GROUND:
         wp->owner_gobj = NULL;
         wp->team = WEAPON_TEAM_DEFAULT;
         wp->player = WEAPON_PORT_DEFAULT;
@@ -259,23 +259,23 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
 
     wp->shield_collide_vec.x = wp->shield_collide_vec.y = wp->shield_collide_vec.z = 0.0F;
 
-    if (wp_desc->flags & 0x1)
+    if (wp_desc->flags & WEAPON_FLAG_DOBJSETUP)
     {
-        gcSetupCustomDObjs(weapon_gobj, attributes->dobj_setup, NULL, wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.unk_dobjtransform_0x2);
+        gcSetupCustomDObjs(weapon_gobj, attributes->dobj_setup, NULL, wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
 
-        proc_render = (wp_desc->flags & 0x2) ? wpRenderDObjTreeDLLinks : func_ovl3_80167618;
+        proc_render = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpRenderDObjTreeDLLinks : func_ovl3_80167618;
     }
     else
     {
-        func_ovl0_800C89BC(omAddDObjForGObj(weapon_gobj, attributes->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.unk_dobjtransform_0x2);
+        func_ovl0_800C89BC(omAddDObjForGObj(weapon_gobj, attributes->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
 
-        proc_render = (wp_desc->flags & 0x2) ? wpRenderDObjDLLinks : wpRenderDLHead1;
+        proc_render = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpRenderDObjDLLinks : wpRenderDLHead1;
     }
     omAddGObjRenderProc(weapon_gobj, proc_render, 14, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     if (attributes->p_mobjsubs != NULL)
     {
-        gcAddMObjSubAll(weapon_gobj, attributes->p_mobjsubs);
+        gcAddMObjAll(weapon_gobj, attributes->p_mobjsubs);
     }
     if ((attributes->anim_joints != NULL) || (attributes->p_matanim_joints != NULL))
     {
@@ -319,24 +319,24 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
 
     wp->coll_data.pos_curr = DObjGetStruct(weapon_gobj)->translate.vec.f = *spawn_pos;
 
-    if (flags & WEAPON_FLAG_PROJECT)
+    if (flags & WEAPON_FLAG_COLLPROJECT)
     {
-        switch (flags & WEAPON_MASK_SPAWN_ALL)
+        switch (flags & WEAPON_FLAG_PARENT_ALL)
         {
         default:
-        case WEAPON_MASK_SPAWN_GROUND:
+        case WEAPON_FLAG_PARENT_GROUND:
             break;
 
-        case WEAPON_MASK_SPAWN_FIGHTER:
-            mpCommonRunWeaponCollisionDefault(weapon_gobj, ftGetStruct(spawn_gobj)->coll_data.p_translate, &ftGetStruct(spawn_gobj)->coll_data);
+        case WEAPON_FLAG_PARENT_FIGHTER:
+            mpCommonRunWeaponCollisionDefault(weapon_gobj, ftGetStruct(parent_gobj)->coll_data.p_translate, &ftGetStruct(parent_gobj)->coll_data);
             break;
 
-        case WEAPON_MASK_SPAWN_WEAPON:
-            mpCommonRunWeaponCollisionDefault(weapon_gobj, wpGetStruct(spawn_gobj)->coll_data.p_translate, &wpGetStruct(spawn_gobj)->coll_data);
+        case WEAPON_FLAG_PARENT_WEAPON:
+            mpCommonRunWeaponCollisionDefault(weapon_gobj, wpGetStruct(parent_gobj)->coll_data.p_translate, &wpGetStruct(parent_gobj)->coll_data);
             break;
 
-        case WEAPON_MASK_SPAWN_ITEM:
-            mpCommonRunWeaponCollisionDefault(weapon_gobj, itGetStruct(spawn_gobj)->coll_data.p_translate, &itGetStruct(spawn_gobj)->coll_data);
+        case WEAPON_FLAG_PARENT_ITEM:
+            mpCommonRunWeaponCollisionDefault(weapon_gobj, itGetStruct(parent_gobj)->coll_data.p_translate, &itGetStruct(parent_gobj)->coll_data);
             break;
         }
     }

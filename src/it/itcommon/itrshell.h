@@ -31,7 +31,7 @@ extern void itRShellSpinInitItemVars(GObj *item_gobj);
 extern void itRShellSpinSetStatus(GObj *item_gobj);
 extern void itRShellSpinAirInitItemVars(GObj *item_gobj);
 extern void itRShellSpinAirSetStatus(GObj *item_gobj);
-extern GObj* itRShellMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itRShellMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itRShellCommonProcShield(GObj *item_gobj);
 extern sb32 itRShellCommonProcReflector(GObj *item_gobj);
 

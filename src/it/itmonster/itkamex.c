@@ -394,9 +394,9 @@ void itKamexCommonFindTargetsSetLR(GObj *item_gobj)
 }
 
 // 0x80180CDC
-GObj* itKamexMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itKamexMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITKamexItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITKamexItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *kamex_ip;
     itStruct *mball_ip;
@@ -416,7 +416,7 @@ GObj* itKamexMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         kamex_ip->phys_info.vel_air.x = kamex_ip->phys_info.vel_air.z = 0.0F;
         kamex_ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        mball_ip = itGetStruct(spawn_gobj);
+        mball_ip = itGetStruct(parent_gobj);
 
         kamex_ip->owner_gobj = mball_ip->owner_gobj;
         kamex_ip->team = mball_ip->team;
@@ -475,7 +475,7 @@ sb32 itKamexWeaponHydroProcReflector(GObj *weapon_gobj)
 GObj* itKamexWeaponHydroMakeWeapon(GObj *item_gobj, Vec3f *pos)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITKamexWeaponHydroWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITKamexWeaponHydroWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
     s32 unused;
     wpStruct *wp;

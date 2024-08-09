@@ -125,7 +125,7 @@ GObj* wpLinkSpinAttackMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     offset.y += WPSPINATTACK_OFF_Y;
 
-    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPLinkSpinAttackWeaponDesc, &offset, WEAPON_MASK_SPAWN_FIGHTER);
+    weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPLinkSpinAttackWeaponDesc, &offset, WEAPON_FLAG_PARENT_FIGHTER);
 
     if (weapon_gobj == NULL)
     {

@@ -7,7 +7,7 @@
 
 extern void itFushigibanaCommonUpdateHitParty(GObj *item_gobj);
 extern sb32 itFushigibanaCommonProcUpdate(GObj *item_gobj);
-extern GObj* itFushigibanaMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itFushigibanaMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itFushigibanaWeaponRazorProcUpdate(GObj *weapon_gobj);
 extern sb32 itFushigibanaWeaponRazorProcHit(GObj *weapon_gobj);
 extern sb32 itFushigibanaWeaponRazorProcHop(GObj *weapon_gobj);

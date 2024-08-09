@@ -74,9 +74,9 @@ sb32 itTargetCommonProcDamage(GObj* item_gobj)
 }
 
 // 8018EE5C
-GObj* itTargetMakeItem(GObj* spawn_gobj, Vec3f* pos, Vec3f* vel, u32 flags)
+GObj* itTargetMakeItem(GObj* parent_gobj, Vec3f* pos, Vec3f* vel, u32 flags)
 {
-	GObj* item_gobj = itManagerMakeItem(spawn_gobj, &dItTargetItemDesc, pos, vel, flags);
+	GObj* item_gobj = itManagerMakeItem(parent_gobj, &dItTargetItemDesc, pos, vel, flags);
 
 	if (item_gobj != NULL)
 	{

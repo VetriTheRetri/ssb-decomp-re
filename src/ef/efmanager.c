@@ -2229,13 +2229,13 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
     {
         main_dobj = omAddDObjForGObj(effect_gobj, NULL);
 
-        func_ovl0_800C89BC(main_dobj, transform_types1->tk1, transform_types1->tk2, transform_types1->unk_dobjtransform_0x2);
+        func_ovl0_800C89BC(main_dobj, transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
 
         transform_types2 = &effect_desc->transform_types2;
 
         if (effect_flags & 0x4)
         {
-            func_ovl0_800C8B28(main_dobj, (void*) (addr + effect_desc->o_dobjsetup), NULL, transform_types2->tk1, transform_types2->tk2, transform_types2->unk_dobjtransform_0x2);
+            func_ovl0_800C8B28(main_dobj, (void*) (addr + effect_desc->o_dobjsetup), NULL, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
 
             main_dobj = main_dobj->child;
         }
@@ -2243,7 +2243,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
         {
             main_dobj = omAddChildForDObj(main_dobj, (void*) (addr + effect_desc->o_dobjsetup));
 
-            func_ovl0_800C89BC(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->unk_dobjtransform_0x2);
+            func_ovl0_800C89BC(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
         }
         if (o_mobjsub != 0)
         {
@@ -2261,11 +2261,11 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
 
         if (effect_flags & 0x4)
         {
-            gcSetupCustomDObjs(effect_gobj, (void*)(addr + effect_desc->o_dobjsetup), NULL, nOMTransformNull, nOMTransformNull, 0);
+            gcSetupCustomDObjs(effect_gobj, (void*)(addr + effect_desc->o_dobjsetup), NULL, nOMTransformNull, nOMTransformNull, nOMTransformNull);
 
             other_dobj = DObjGetStruct(effect_gobj);
 
-            gcAddDObjTriTransformKind(other_dobj, transform_types1->tk1, transform_types1->tk2, transform_types1->unk_dobjtransform_0x2);
+            gcAddDObjTriTransformKind(other_dobj, transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
 
             transform_types2 = &effect_desc->transform_types2;
 
@@ -2273,21 +2273,21 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
 
             while (main_dobj != NULL)
             {
-                gcAddDObjTriTransformKind(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->unk_dobjtransform_0x2);
+                gcAddDObjTriTransformKind(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
 
                 main_dobj = func_ovl0_800C86E8(main_dobj, other_dobj);
             }
-            func_8000F988(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup));
+            gcSetTransformVectorsAll(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup));
         }
         else
         {
             transform_types1 = &effect_desc->transform_types1;
 
-            func_ovl0_800C89BC(omAddDObjForGObj(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup)), transform_types1->tk1, transform_types1->tk2, transform_types1->unk_dobjtransform_0x2);
+            func_ovl0_800C89BC(omAddDObjForGObj(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup)), transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
         }
         if (o_mobjsub != 0)
         {
-            gcAddMObjSubAll(effect_gobj, (MObjSub***) (addr + o_mobjsub));
+            gcAddMObjAll(effect_gobj, (MObjSub***) (addr + o_mobjsub));
         }
         if ((o_anim_joint != 0) || (o_matanim_joint != 0))
         {

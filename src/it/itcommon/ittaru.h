@@ -23,7 +23,7 @@ extern void itTaruDroppedSetStatus(GObj *item_gobj);
 extern sb32 itTaruExplodeProcUpdate(GObj *item_gobj);
 extern sb32 itTaruRollProcUpdate(GObj *item_gobj);
 extern sb32 itTaruRollProcMap(GObj *item_gobj);
-extern GObj* itTaruMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itTaruMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern void itTaruExplodeInitItemVars(GObj *item_gobj);
 extern void itTaruExplodeSetStatus(GObj *item_gobj);
 extern void itTaruExplodeMakeEffectGotoSetStatus(GObj *item_gobj);

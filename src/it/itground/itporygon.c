@@ -105,9 +105,9 @@ sb32 itPorygonCommonProcUpdate(GObj *item_gobj)
 }
 
 // 0x80183D00
-GObj* itPorygonMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itPorygonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITPorygonItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITPorygonItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

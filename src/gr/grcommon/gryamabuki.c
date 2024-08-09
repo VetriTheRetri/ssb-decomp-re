@@ -110,7 +110,7 @@ void grYamabukiGateMakeMonster(void)
     }
     else item_id = dITManagerMonsterSpawnID - 1;
 
-    gGRCommonStruct.yamabuki.monster_gobj = itManagerMakeItemSetupCommon(NULL, item_id + nITKindGroundMonsterStart, &pos, &vel, ITEM_MASK_SPAWN_GROUND);
+    gGRCommonStruct.yamabuki.monster_gobj = itManagerMakeItemSetupCommon(NULL, item_id + nITKindGroundMonsterStart, &pos, &vel, ITEM_FLAG_PARENT_GROUND);
 }
 
 // 0x8010AE3C
@@ -262,7 +262,16 @@ void grYamabukiMakeGate(void)
     gGRCommonStruct.yamabuki.gate_gobj = gate_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(gate_gobj, odRenderDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcSetupCustomDObjs(gate_gobj, (DObjDesc*) ((uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)&lGRYamabukiMapHead), NULL, nOMTransformTraRotRpyR, 0, 0);
+    gcSetupCustomDObjs
+    (
+        gate_gobj, 
+        (DObjDesc*) 
+        ((uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)&lGRYamabukiMapHead), 
+        NULL, 
+        nOMTransformTraRotRpyR, 
+        nOMTransformNull, 
+        nOMTransformNull
+    );
     omAddGObjCommonProc(gate_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
     grYamabukiGateAddAnimClose();
 }

@@ -13,7 +13,7 @@ extern void itDogasAttackInitItemVars(GObj *item_gobj);
 extern void itDogasAttackSetStatus(GObj *item_gobj);
 extern sb32 itDogasCommonProcUpdate(GObj *item_gobj);
 extern sb32 itDogasCommonProcMap(GObj *item_gobj);
-extern GObj* itDogasMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itDogasMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itDogasWeaponSmogProcUpdate(GObj *weapon_gobj);
 extern GObj* itDogasWeaponSmogMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel);
 

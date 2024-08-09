@@ -17,6 +17,6 @@ extern void itSawamuraAttackInitItemVars(GObj *item_gobj);
 extern void itSawamuraAttackSetStatus(GObj *item_gobj);
 extern sb32 itSawamuraCommonProcUpdate(GObj *item_gobj);
 extern sb32 itSawamuraCommonProcMap(GObj *item_gobj);
-extern GObj* itSawamuraMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itSawamuraMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

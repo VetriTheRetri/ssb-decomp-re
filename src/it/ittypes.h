@@ -19,15 +19,15 @@
 // Macros
 #define ITEM_ALLOC_MAX 16
 
-#define ITEM_FLAG_PROJECT (1 << 31) // Perform initial collision check when spawning item?
+#define ITEM_FLAG_COLLPROJECT (1 << 31) // Perform initial collision check when spawning item?
 
-#define ITEM_MASK_SPAWN_FIGHTER 0 // Item spawned by fighter
-#define ITEM_MASK_SPAWN_GROUND 1  // Item spawned by stage
-#define ITEM_MASK_SPAWN_WEAPON 2  // Item spawned by weapon
-#define ITEM_MASK_SPAWN_ITEM 3	  // Item spawned by another item
-#define ITEM_MASK_SPAWN_DEFAULT 4
+#define ITEM_FLAG_PARENT_FIGHTER 0 // Item spawned by fighter
+#define ITEM_FLAG_PARENT_GROUND 1  // Item spawned by stage
+#define ITEM_FLAG_PARENT_WEAPON 2  // Item spawned by weapon
+#define ITEM_FLAG_PARENT_ITEM 3	  // Item spawned by another item
+#define ITEM_FLAG_PARENT_DEFAULT 4
 
-#define ITEM_MASK_SPAWN_ALL 0xF // Mask all GObj classes that can spawn items?
+#define ITEM_FLAG_PARENT_ALL 0xF // Mask all GObj classes that can spawn items?
 
 #define ITEM_TEAM_DEFAULT 4 // Item is teamless; deals damage to any eligible target
 #define ITEM_PORT_DEFAULT GMBATTLE_PLAYERS_MAX

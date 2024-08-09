@@ -278,7 +278,7 @@ sb32 wpSamusChargeShotProcReflector(GObj *weapon_gobj)
 GObj* wpSamusChargeShotMakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_level, sb32 is_release) 
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPSamusChargeShotWeaponDesc, pos, (is_release != FALSE) ? (WEAPON_FLAG_PROJECT | WEAPON_MASK_SPAWN_FIGHTER) : WEAPON_MASK_SPAWN_FIGHTER);
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPSamusChargeShotWeaponDesc, pos, (is_release != FALSE) ? (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER) : WEAPON_FLAG_PARENT_FIGHTER);
     wpStruct *wp;
 
     if (weapon_gobj == NULL)

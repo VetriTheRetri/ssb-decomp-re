@@ -312,9 +312,9 @@ sb32 itSpearCommonProcMap(GObj *item_gobj)
 }
 
 // 0x80180218
-GObj* itSpearMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITSpearItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITSpearItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
 
@@ -392,7 +392,7 @@ void itPippiWeaponSwarmProcRender(GObj *item_gobj)
 GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, ((it_kind == nITKindSpear) ? &dITSpearWeaponSwarmWeaponDesc : &dITPippiWeaponSwarmWeaponDesc), pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, ((it_kind == nITKindSpear) ? &dITSpearWeaponSwarmWeaponDesc : &dITPippiWeaponSwarmWeaponDesc), pos, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
     s32 unused;
     wpStruct *wp;

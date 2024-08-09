@@ -16,6 +16,6 @@ void wpManagerSetPrevStructAlloc(wpStruct* wp);
 u32 wpManagerGetGroupID();
 
 // Create new weapon
-GObj* wpManagerMakeWeapon(GObj* spawn_gobj, wpCreateDesc* wp_desc, Vec3f* spawn_pos, u32 flags);
+GObj* wpManagerMakeWeapon(GObj* parent_gobj, wpCreateDesc* wp_desc, Vec3f* spawn_pos, u32 flags);
 
 #endif

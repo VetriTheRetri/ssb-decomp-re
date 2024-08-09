@@ -342,9 +342,9 @@ sb32 itStarmieCommonProcMap(GObj *item_gobj)
 }
 
 // 0x801822B0
-GObj* itStarmieMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itStarmieMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITStarmieItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITStarmieItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -432,7 +432,7 @@ sb32 itStarmieWeaponSwiftProcReflector(GObj *weapon_gobj)
 GObj* itStarmieWeaponSwiftMakeWeapon(GObj *item_gobj, Vec3f *pos)
 {
     itStruct *ip = itGetStruct(item_gobj);
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITStarmieWeaponSwiftWeaponDesc, pos, WEAPON_MASK_SPAWN_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITStarmieWeaponSwiftWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
     s32 unused;
     wpStruct *wp;

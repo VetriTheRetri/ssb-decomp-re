@@ -341,9 +341,9 @@ sb32 itTaruBombRollProcMap(GObj *item_gobj)
 }
 
 // 0x8018518C
-GObj* itTaruBombMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itTaruBombMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITTaruBombItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITTaruBombItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

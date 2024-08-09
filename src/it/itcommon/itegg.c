@@ -307,9 +307,9 @@ sb32 itEggExplodeProcUpdate(GObj *item_gobj)
 }
 
 // 0x80181998
-GObj* itEggMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itEggMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITEggItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITEggItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {
@@ -324,9 +324,9 @@ GObj* itEggMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f = *pos;
 
-        if (flags & ITEM_MASK_SPAWN_ITEM)
+        if (flags & ITEM_FLAG_PARENT_ITEM)
         {
-            itStruct *spawn_ip = itGetStruct(spawn_gobj);
+            itStruct *spawn_ip = itGetStruct(parent_gobj);
 
             if ((spawn_ip->it_kind == nITKindMLucky) && (mtTrigGetRandomIntRange(2) == 0))
             {

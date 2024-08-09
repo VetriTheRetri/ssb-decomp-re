@@ -46,7 +46,7 @@ extern void func_8000F120(struct GObjCommon *, struct UnkEC64Arg3 *, struct DObj
 extern void func_8000F2FC(struct DObj *, u8, u8, u8);
 extern void func_8000F364(struct DObj *, u8, u8, u8, s32);
 // extern void gcSetupCustomDObjs(struct GObjCommon *, struct UnkEC64Arg3 *, struct DObj **, u8, u8, u8);
-extern void func_8000F720(
+/* extern void gcSetupCustomDObjsWithMObj(
     struct GObjCommon *,
     struct UnkEC64Arg3 *,
     struct MObjSub ***,
@@ -54,8 +54,10 @@ extern void func_8000F720(
     u8,
     u8,
     u8);
-extern void gcAddMObjSubAll(struct GObjCommon *, struct MObjSub ***);
-extern void func_8000F988(struct GObjCommon *, struct UnkEC64Arg3 *);
+
+extern void gcAddMObjAll(struct GObjCommon *, struct MObjSub ***);
+extern void gcSetTransformVectorsAll(struct GObjCommon *, struct UnkEC64Arg3 *);
+*/
 extern void func_8000FA3C(struct DObj *dobj, union AnimCmd *, f32);
 extern void func_80010580(struct GObjCommon *obj);
 extern void func_80010734(void *);

@@ -603,9 +603,9 @@ void itMSBombExplodeSetStatus(GObj *item_gobj)
 }
 
 // 0x80176F60
-GObj* itMSBombMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itMSBombMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITMSBombItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITMSBombItemDesc, pos, vel, flags);
     DObj *dobj;
     itStruct *ip;
     Vec3f translate;

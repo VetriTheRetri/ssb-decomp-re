@@ -153,9 +153,9 @@ void itHeartDroppedSetStatus(GObj *item_gobj)
 }
 
 // 0x80174850
-GObj* itHeartMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itHeartMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITHeartItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITHeartItemDesc, pos, vel, flags);
     DObj *dobj;
     Vec3f translate;
     itStruct *ip;

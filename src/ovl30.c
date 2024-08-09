@@ -914,13 +914,13 @@ GObj* mnStageCreateStageGeo(s32 stage_id, mpGroundData* stage_info, mpGroundDesc
 		return NULL;
 	}
 
-	stage_geo_gobj = omMakeGObjSPAfter(0U, NULL, 5U, 0x80000000U);
+	stage_geo_gobj = omMakeGObjSPAfter(0U, NULL, 5U, GOBJ_LINKORDER_DEFAULT);
 	omAddGObjRenderProc(stage_geo_gobj, (stage_info->layer_mask & (1 << stage_geo_id)) ? mnStageRenderStagePreviewSecondary : mnStageRenderStagePreviewPrimary, 3U, 0x80000000U, -1);
-	gcSetupCustomDObjs(stage_geo_gobj, stage_geo->dobj_desc, NULL, 0x1CU, 0, 0);
+	gcSetupCustomDObjs(stage_geo_gobj, stage_geo->dobj_desc, NULL, nOMTransformTraRotRpyRSca, nOMTransformNull, nOMTransformNull);
 
 	if (stage_geo->p_mobjsubs != NULL)
 	{
-		gcAddMObjSubAll(stage_geo_gobj, stage_geo->p_mobjsubs);
+		gcAddMObjAll(stage_geo_gobj, stage_geo->p_mobjsubs);
 	}
 
 	if ((stage_geo->anim_joints != NULL) || (stage_geo->p_matanim_joints != NULL))

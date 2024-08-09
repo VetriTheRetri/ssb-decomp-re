@@ -14,7 +14,7 @@ extern void itSpearFlyInitItemVars(GObj *item_gobj);
 extern void itSpearFlySetStatus(GObj *item_gobj);
 extern sb32 itSpearCommonProcUpdate(GObj *item_gobj);
 extern sb32 itSpearCommonProcMap(GObj *item_gobj);
-extern GObj* itSpearMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itSpearWeaponSwarmProcUpdate(GObj *weapon_gobj);
 extern void itPippiWeaponSwarmRenderSwarm(GObj *item_gobj);
 extern void itPippiWeaponSwarmProcRender(GObj *item_gobj);

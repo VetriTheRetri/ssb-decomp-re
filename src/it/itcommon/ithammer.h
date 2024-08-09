@@ -18,6 +18,6 @@ extern sb32 itHammerCommonProcHit(GObj *item_gobj);
 extern void itHammerThrownSetStatus(GObj *item_gobj);
 extern sb32 itHammerDroppedProcMap(GObj *item_gobj);
 extern void itHammerDroppedSetStatus(GObj *item_gobj);
-extern GObj* itHammerMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itHammerMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

@@ -682,9 +682,9 @@ void itRShellSpinAirSetStatus(GObj *item_gobj)
 }
 
 // 0x8017B1D8
-GObj* itRShellMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itRShellMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(spawn_gobj, &dITRShellItemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITRShellItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

@@ -90,7 +90,7 @@ sb32 itStarCommonProcHit(GObj *item_gobj)
 }
 
 // 0x80174A18
-GObj* itStarMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itStarMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     Camera *cam = CameraGetStruct(gCMManagerCameraGObj);
     GObj *item_gobj;
@@ -103,7 +103,7 @@ GObj* itStarMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     vel_real.y = ITSTAR_BOUNCE_Y;
     vel_real.z = 0.0F;
 
-    item_gobj = itManagerMakeItem(spawn_gobj, &dITStarItemDesc, pos, &vel_real, flags);
+    item_gobj = itManagerMakeItem(parent_gobj, &dITStarItemDesc, pos, &vel_real, flags);
 
     if (item_gobj != NULL)
     {

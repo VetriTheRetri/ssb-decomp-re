@@ -28,7 +28,7 @@ void grModelSetupGroundDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, DObj
         
         if (transform_types[i].tk1 != nOMTransformNull)
         {
-            omAddOMMtxForDObjFixed(dobj, transform_types[i].tk1, transform_types[i].unk_dobjtransform_0x2);
+            omAddOMMtxForDObjFixed(dobj, transform_types[i].tk1, transform_types[i].tk3);
         }
         if (transform_types[i].tk2 != nOMTransformNull)
         {

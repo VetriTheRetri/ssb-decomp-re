@@ -20,6 +20,6 @@ extern sb32 itMLuckyDisappearProcUpdate(GObj *item_gobj);
 extern void itMLuckyDisappearSetStatus(GObj *item_gobj);
 extern sb32 itMLuckyCommonProcUpdate(GObj *item_gobj);
 extern sb32 itMLuckyCommonProcMap(GObj *item_gobj);
-extern GObj* itMLuckyMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itMLuckyMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

@@ -16,6 +16,6 @@ extern sb32 itSwordThrownProcHit(GObj *item_gobj);
 extern void itSwordThrownSetStatus(GObj *item_gobj);
 extern sb32 itSwordDroppedProcMap(GObj *item_gobj);
 extern void itSwordDroppedSetStatus(GObj *item_gobj);
-extern GObj* itSwordMakeItem(GObj *spawn_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
+extern GObj* itSwordMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

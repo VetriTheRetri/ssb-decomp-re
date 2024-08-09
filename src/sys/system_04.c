@@ -2,7 +2,7 @@
 
 extern void hal_interpolation_cubic(Vec3f*, void*, f32);
 extern void func_8000F364_FF64(DObj *dobj, u8 arg1, u8 arg2, u8 arg3, s32 anim_time_max);
-extern void func_8000F2FC_FEFC(DObj*, u8, u8, u8);
+extern void gcAddDObjTriTransformKind(DObj*, u8, u8, u8);
 
 // // // // // // // // // // // //
 //                               //
@@ -1886,6 +1886,7 @@ f32 gcGetDObjTempAnimTimeMax
 }
 
 #if defined (NON_MATCHING)
+// NON-MATCHING: lwc1 fv0, 0x8C(sp) instruction at the end of the function scheduled too late
 f32 func_8000EC64_F864
 (
     GObj *gobj,
@@ -2081,22 +2082,112 @@ void func_8000EE40_FA40(GObj *gobj, AObjAnimJoint **anim_joints, f32 anim_frame,
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F058_FC58.s")
+void gcAddDObjTransformTraRotSca(DObj *dobj)
+{
+    omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
+    omAddOMMtxForDObjFixed(dobj, nOMTransformSca, 0);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F090_FC90.s")
+DObj* gcAddDObjForGObjTraRotSca(GObj *gobj, void *dvar)
+{
+    DObj *dobj = omAddDObjForGObj(gobj, dvar);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F0C0_FCC0.s")
+    gcAddDObjTransformTraRotSca(dobj);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F0F0_FCF0.s")
+    return dobj;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F120_FD20.s")
+DObj* gcAddSiblingForDObjTraRotSca(DObj *dobj, void *dvar)
+{
+    DObj *sibling_dobj = omAddSiblingForDObj(dobj, dvar);
+    gcAddDObjTransformTraRotSca(sibling_dobj);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F2FC_FEFC.s")
+    return sibling_dobj;
+}
+
+DObj* gcAddChildForDObjTraRotSca(DObj *dobj, void *dvar)
+{
+    DObj *child_dobj = omAddChildForDObj(dobj, dvar);
+    gcAddDObjTransformTraRotSca(child_dobj);
+
+    return child_dobj;
+}
+
+void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs)
+{
+    s32 i;
+    DObj* dobj;
+    s32 id;
+    DObj* array_dobjs[DOBJ_ARRAY_MAX];
+
+    for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
+    {
+        array_dobjs[i] = NULL;
+    }
+    while (dobj_desc->index != ARRAY_COUNT(array_dobjs))
+    {
+        id = dobj_desc->index & 0xFFF;
+
+        if (id != 0)
+        {
+            dobj = array_dobjs[id] = omAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+        }
+        else dobj = array_dobjs[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
+        
+        if (dobj_desc->index & 0xF000)
+        {
+            omAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
+        }
+        if (dobj_desc->index & 0x8000)
+        {
+            omAddOMMtxForDObjFixed(dobj, nOMTransform44, 0);
+        } 
+        else if (dobj_desc->index & 0x4000)
+        {
+            omAddOMMtxForDObjFixed(dobj, nOMTransform46, 0);
+        }
+        else if (dobj_desc->index & 0x2000)
+        {
+            omAddOMMtxForDObjFixed(dobj, nOMTransform48, 0);
+        }
+        else if (dobj_desc->index & 0x1000)
+        {
+            omAddOMMtxForDObjFixed(dobj, nOMTransform50, 0);
+        }
+        else gcAddDObjTransformTraRotSca(dobj);
+        
+        dobj->translate.vec.f = dobj_desc->translate;
+        dobj->rotate.vec.f = dobj_desc->rotate;
+        dobj->scale.vec.f = dobj_desc->scale;
+
+        if (dobjs != NULL)
+        {
+            *dobjs++ = dobj;
+        }
+        dobj_desc++;
+    }
+}
+
+void gcAddDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
+{
+    if (tk1 != nOMTransformNull) 
+    {
+        omAddOMMtxForDObjFixed(dobj, tk1, 0);
+    }
+    if (tk2 != nOMTransformNull) 
+    {
+        omAddOMMtxForDObjFixed(dobj, tk2, 0);
+    }
+    if (tk3 != nOMTransformNull) 
+    {
+        omAddOMMtxForDObjFixed(dobj, tk3, 0);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_04/func_8000F364_FF64.s")
 
 // 0x8000F590
-void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5)
+void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5)
 {
     s32 i;
     DObj *dobj;
@@ -2121,7 +2212,7 @@ void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u
         {
             func_8000F364_FF64(dobj, tk1, tk2, arg5, dobj_desc->index & 0xF000);
         } 
-        else func_8000F2FC_FEFC(dobj, tk1, tk2, arg5);
+        else gcAddDObjTriTransformKind(dobj, tk1, tk2, arg5);
         
         dobj->translate.vec.f = dobj_desc->translate;
         dobj->rotate.vec.f = dobj_desc->rotate;

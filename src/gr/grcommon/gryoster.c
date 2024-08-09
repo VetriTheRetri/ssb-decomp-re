@@ -232,7 +232,7 @@ void grYosterInitAll(void)
         gGRCommonStruct.yoster.clouds[i].gobj = map_gobj;
 
         omAddGObjRenderProc(map_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
-        gcSetupCommonDObjs(map_gobj, (DObjDesc*) ((intptr_t)&lGRYosterMapHead + (uintptr_t)map_head), NULL, nOMTransformTra, nOMTransformNull, 0); // Make this nOMTransformTraRotRpyRSca to add static cloud animation
+        gcSetupCustomDObjs(map_gobj, (DObjDesc*) ((intptr_t)&lGRYosterMapHead + (uintptr_t)map_head), NULL, nOMTransformTra, nOMTransformNull, 0); // Make this nOMTransformTraRotRpyRSca to add static cloud animation
 
         omAddGObjCommonProc(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 

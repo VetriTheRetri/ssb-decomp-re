@@ -2261,11 +2261,11 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
 
         if (effect_flags & 0x4)
         {
-            gcSetupCommonDObjs(effect_gobj, (void*)(addr + effect_desc->o_dobjsetup), NULL, nOMTransformNull, nOMTransformNull, 0);
+            gcSetupCustomDObjs(effect_gobj, (void*)(addr + effect_desc->o_dobjsetup), NULL, nOMTransformNull, nOMTransformNull, 0);
 
             other_dobj = DObjGetStruct(effect_gobj);
 
-            func_8000F2FC_FEFC(other_dobj, transform_types1->tk1, transform_types1->tk2, transform_types1->unk_dobjtransform_0x2);
+            gcAddDObjTriTransformKind(other_dobj, transform_types1->tk1, transform_types1->tk2, transform_types1->unk_dobjtransform_0x2);
 
             transform_types2 = &effect_desc->transform_types2;
 
@@ -2273,7 +2273,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
 
             while (main_dobj != NULL)
             {
-                func_8000F2FC_FEFC(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->unk_dobjtransform_0x2);
+                gcAddDObjTriTransformKind(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->unk_dobjtransform_0x2);
 
                 main_dobj = func_ovl0_800C86E8(main_dobj, other_dobj);
             }

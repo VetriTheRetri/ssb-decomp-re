@@ -715,7 +715,7 @@ GObj* grPupupuMakeMapGObj(intptr_t tk, intptr_t offset2, void (*proc_render)(GOb
 
     omAddGObjRenderProc(ground_gobj, proc_render, dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    gcSetupCommonDObjs(ground_gobj, (uintptr_t)gGRCommonStruct.pupupu.map_head + tk, NULL, nOMTransformTraRotRpyRSca, nOMTransformNull, 0);
+    gcSetupCustomDObjs(ground_gobj, (uintptr_t)gGRCommonStruct.pupupu.map_head + tk, NULL, nOMTransformTraRotRpyRSca, nOMTransformNull, 0);
 
     if (offset2 != 0)
     {

@@ -261,7 +261,7 @@ GObj* wpManagerMakeWeapon(GObj *spawn_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_
 
     if (wp_desc->flags & 0x1)
     {
-        gcSetupCommonDObjs(weapon_gobj, attributes->dobj_setup, NULL, wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.unk_dobjtransform_0x2);
+        gcSetupCustomDObjs(weapon_gobj, attributes->dobj_setup, NULL, wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.unk_dobjtransform_0x2);
 
         proc_render = (wp_desc->flags & 0x2) ? wpRenderDObjTreeDLLinks : func_ovl3_80167618;
     }

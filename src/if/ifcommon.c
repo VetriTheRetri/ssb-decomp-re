@@ -1795,7 +1795,7 @@ GObj* ifCommonPlayerArrowsMakeInterface(void (*proc_render)(GObj*), void (*proc_
     GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     omAddGObjRenderProc(interface_gobj, proc_render, 8, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcSetupCommonDObjs(interface_gobj, (void*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&D_NF_00000188), NULL, 27, 0, 0);
+    gcSetupCustomDObjs(interface_gobj, (void*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&D_NF_00000188), NULL, 27, 0, 0);
     omAddGObjCommonProc(interface_gobj, proc_update, 1, 5);
 
     return interface_gobj;

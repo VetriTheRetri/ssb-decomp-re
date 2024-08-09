@@ -916,7 +916,7 @@ GObj* mnStageCreateStageGeo(s32 stage_id, mpGroundData* stage_info, mpGroundDesc
 
 	stage_geo_gobj = omMakeGObjSPAfter(0U, NULL, 5U, 0x80000000U);
 	omAddGObjRenderProc(stage_geo_gobj, (stage_info->layer_mask & (1 << stage_geo_id)) ? mnStageRenderStagePreviewSecondary : mnStageRenderStagePreviewPrimary, 3U, 0x80000000U, -1);
-	gcSetupCommonDObjs(stage_geo_gobj, stage_geo->dobj_desc, NULL, 0x1CU, 0, 0);
+	gcSetupCustomDObjs(stage_geo_gobj, stage_geo->dobj_desc, NULL, 0x1CU, 0, 0);
 
 	if (stage_geo->p_mobjsubs != NULL)
 	{

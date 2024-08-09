@@ -104,9 +104,28 @@ extern f32 func_8000EC64_F864
     f32 scale
 );
 
+// ???
 extern void func_8000EE40_FA40(GObj *gobj, AObjAnimJoint **anim_joints, f32 anim_frame, DObjDesc *dobj_desc);
 
-// Set up common DObj node tree for GObj
-extern void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5);
+// Add Translate, Rotate and Scale OMMtxes for specific DObj
+extern void gcAddDObjTransformTraRotSca(DObj *dobj);
+
+// Add DObj with Translate, Rotate and Scale OMMtxes for GObj
+extern DObj* gcAddDObjForGObjTraRotSca(GObj *gobj, void *dvar);
+
+// Add sibling with Transform, Rotate and Scale OMMtxes for specific DObj
+extern DObj* gcAddSiblingForDObjTraRotSca(DObj *dobj, void *dvar);
+
+// Add child with Transform, Rotate and Scale OMMtxes for specific DObj
+extern DObj* gcAddChildForDObjTraRotSca(DObj *dobj, void *dvar);
+
+// Set up DObj node tree with common OMMtx transformations for GObj
+extern void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs);
+
+// Add three OMMtxes of transformation kind for specific DObj
+extern void gcAddDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3);
+
+// Set up DObj node tree with custom OMMtx transformations for GObj
+extern void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5);
 
 #endif

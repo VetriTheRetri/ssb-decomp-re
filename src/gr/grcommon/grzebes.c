@@ -92,7 +92,7 @@ GObj* grZebesMakeAcid(void)
     gGRCommonStruct.zebes.map_gobj = map_gobj;
 
     omAddGObjRenderProc(map_gobj, odRenderDObjTreeDLLinksForGObj, 12, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcSetupCommonDObjs(map_gobj, (DObjDesc*) ((intptr_t)&lGRZebesAcidDObjSetup + (uintptr_t)map_head), NULL, nOMTransformTra, nOMTransformNull, 0);
+    gcSetupCustomDObjs(map_gobj, (DObjDesc*) ((intptr_t)&lGRZebesAcidDObjSetup + (uintptr_t)map_head), NULL, nOMTransformTra, nOMTransformNull, 0);
     gcAddMObjSubAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000008C0);
     omAddGObjCommonProc(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
     gcAddAnimAll(map_gobj, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidAnimJoint, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidMatAnimJoint, 0.0F);

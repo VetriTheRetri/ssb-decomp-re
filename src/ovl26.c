@@ -3190,7 +3190,7 @@ void mnBattleCreateWhiteCircles()
 	{
 		white_circle_gobj = omMakeGObjSPAfter(0U, NULL, 0x15U, 0x80000000U);
 
-		func_8000F120_FD20(white_circle_gobj, GetAddressFromOffset(gMnBattleFilesArray[6], &FILE_016_WHITE_CIRCLE_OFFSET_2),
+		gcSetupCommonDObjs(white_circle_gobj, GetAddressFromOffset(gMnBattleFilesArray[6], &FILE_016_WHITE_CIRCLE_OFFSET_2),
 					  0);
 
 		omAddGObjRenderProc(white_circle_gobj, odRenderDObjTreeDLLinksForGObj, 9U, 0x80000000U, -1);

@@ -110,6 +110,10 @@ typedef enum OMMtxTransformKind
     nOMTransformTraRotPyrR,         // DObj Translate + rotate Pitch/Yaw/Roll radians (?)
     nOMTransformTraRotPyrRSca,      // DObj Translate + rotate Pitch/Yaw/Roll radians (?) + scale
     nOMTransformSca,                // DObj Scale
+    nOMTransform44 = 44,
+    nOMTransform46 = 46,
+    nOMTransform48 = 48,
+    nOMTransform50 = 50,
     nOMTransformVecTra = 56,        // Standalone (?) vector translate
     nOMTransformVecRotR,            // Standalone (?) vector rotate radians
     nOMTransformVecRotRpyR,         // Standalone (?) vector rotate Roll/Pitch/Yaw radians

@@ -115,7 +115,7 @@ extern efGroundParam dEFGroundYosterParams[7];
 extern efGroundParam dEFGroundPupupuParams[6];
 extern efGroundParam dEFGroundYamabukiParams[6];
 
-extern void func_8000F2FC_FEFC(DObj*, u8, u8, u8);
+extern void gcAddDObjTriTransformKind(DObj*, u8, u8, u8);
 extern void func_ovl0_800C88AC(DObj*, void*, void*, f32);
 
 // // // // // // // // // // // //
@@ -1424,7 +1424,7 @@ void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobj_desc, DObj **dob
         }
         else current_dobj = array_dobjs[0] = omAddChildForDObj(effect_dobj, dobj_desc->display_list);
 
-        func_8000F2FC_FEFC(current_dobj, tk1, tk2, arg5);
+        gcAddDObjTriTransformKind(current_dobj, tk1, tk2, arg5);
 
         index2 = dobj_desc->index & 0xF000;
 

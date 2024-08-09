@@ -194,16 +194,16 @@ void itRenderProcRenderOPA(GObj *item_gobj)
     {
         if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
         }
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
         }
         else itRenderHitCollisions(item_gobj);
     }
@@ -218,16 +218,16 @@ void itRenderProcRenderXLU(GObj *item_gobj)
     {
         if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
-            odRenderDObjTreeDLLinksForGObj(item_gobj);
+            gcDrawDObjTreeDLLinksForGObj(item_gobj);
         }
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
-            odRenderDObjTreeDLLinksForGObj(item_gobj);
+            gcDrawDObjTreeDLLinksForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
-            odRenderDObjTreeDLLinksForGObj(item_gobj);
+            gcDrawDObjTreeDLLinksForGObj(item_gobj);
         }
         else itRenderHitCollisions(item_gobj);
     }
@@ -248,7 +248,7 @@ void itRenderColAnimOPA(GObj *item_gobj)
     }
     else gDPSetEnvColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, 0x00);
     
-    odRenderDObjTreeForGObj(item_gobj);
+    gcDrawDObjTreeForGObj(item_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
@@ -301,7 +301,7 @@ void itRenderColAnimXLU(GObj *item_gobj)
         gDPSetEnvColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, 0x00);
         gDPSetEnvColor(gDisplayListHead[1]++, 0x00, 0x00, 0x00, 0x00);
     }
-    odRenderDObjTreeDLLinksForGObj(item_gobj);
+    gcDrawDObjTreeDLLinksForGObj(item_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);

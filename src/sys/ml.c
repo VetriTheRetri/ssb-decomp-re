@@ -27,7 +27,7 @@ void* mlSetBumpAlloc(mlBumpAllocRegion *bp, u32 size, u32 alignment)
 
     if (bp->end < bp->ptr) 
     {
-        gsFatalPrintF("ml : alloc overflow #%d\n", bp->id);
+        gsFatalPrintf("ml : alloc overflow #%d\n", bp->id);
         while (TRUE); // { }
     }
     return (void*)aligned;

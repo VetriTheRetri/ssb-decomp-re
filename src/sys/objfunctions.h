@@ -6,6 +6,12 @@
 
 // Orphan functions (no header yet / header not cleaned up yet)
 
+// These are from objanim.c
+extern s32 D_8003B930;
+extern s32 D_8003B934;
+extern s32 D_8003B938;
+extern s32 D_8003B93C;
+
 // Add animation script to specific DObj
 extern void gcAddDObjAnimJoint(DObj*, AObjAnimJoint*, f32);
 

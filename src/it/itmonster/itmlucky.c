@@ -359,7 +359,7 @@ GObj* itMLuckyMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         dobj = DObjGetStruct(item_gobj);
 
-        omAddOMMtxForDObjFixed(dobj->child, 0x2C, 0);
+        gcAddOMMtxForDObjFixed(dobj->child, 0x2C, 0);
 
         dobj->translate.vec.f = *pos;
 

@@ -88,8 +88,8 @@ s32 efAllocGetAddParticleBankID(uintptr_t hdrlo, uintptr_t hdrhi, uintptr_t texl
     {
         while (TRUE)
         {
-            gsFatalPrintF("Particle Bank is over\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("Particle Bank is over\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     bank_id = efAllocGetParticleBankID(hdrlo);

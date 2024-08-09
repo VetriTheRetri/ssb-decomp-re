@@ -311,10 +311,10 @@ void itMainDestroyItem(GObj *item_gobj)
     }
     if (ip->indicator_gobj != NULL)
     {
-        omEjectGObj(ip->indicator_gobj);
+        gcEjectGObj(ip->indicator_gobj);
     }
     itManagerSetPrevStructAlloc(ip);
-    omEjectGObj(item_gobj);
+    gcEjectGObj(item_gobj);
 }
 
 // 0x80172984
@@ -438,7 +438,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     itMapSetAir(ip);
 
-    joint = omAddDObjForGObj(item_gobj, NULL);
+    joint = gcAddDObjForGObj(item_gobj, NULL);
 
     joint->sib_prev->sib_next = NULL;
     joint->sib_prev = NULL;
@@ -448,7 +448,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     item_gobj->obj = joint;
 
-    omAddOMMtxForDObjFixed(joint, 0x52, 0);
+    gcAddOMMtxForDObjFixed(joint, 0x52, 0);
 
     joint_id = (ip->weight == nITWeightHeavy) ? fp->attributes->joint_itemheavy_id : fp->attributes->joint_itemlight_id;
 

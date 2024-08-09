@@ -555,8 +555,8 @@ GObj* itGShellMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
-        omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
-        omAddOMMtxForDObjFixed(dobj, 0x48, 0);
+        gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
+        gcAddOMMtxForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = translate;
 

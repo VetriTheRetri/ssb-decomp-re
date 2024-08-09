@@ -101,7 +101,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     {
         return NULL;
     }
-    weapon_gobj = omMakeGObjSPAfter(nOMObjCommonKindWeapon, NULL, nOMObjCommonLinkIDWeapon, GOBJ_LINKORDER_DEFAULT);
+    weapon_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWeapon, NULL, nOMObjCommonLinkIDWeapon, GOBJ_LINKORDER_DEFAULT);
 
     if (weapon_gobj == NULL)
     {
@@ -267,11 +267,11 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     }
     else
     {
-        func_ovl0_800C89BC(omAddDObjForGObj(weapon_gobj, attributes->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
+        func_ovl0_800C89BC(gcAddDObjForGObj(weapon_gobj, attributes->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
 
         proc_render = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpRenderDObjDLLinks : wpRenderDLHead1;
     }
-    omAddGObjRenderProc(weapon_gobj, proc_render, 14, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjRenderProc(weapon_gobj, proc_render, 14, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     if (attributes->p_mobjsubs != NULL)
     {
@@ -303,9 +303,9 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     wp->coll_data.vel_push.y = 0.0F;
     wp->coll_data.vel_push.z = 0.0F;
 
-    omAddGObjCommonProc(weapon_gobj, wpProcessProcWeaponMain, nOMObjProcessKindProc, 3);
-    omAddGObjCommonProc(weapon_gobj, wpProcessProcSearchHitWeapon, nOMObjProcessKindProc, 1);
-    omAddGObjCommonProc(weapon_gobj, wpProcessProcHitCollisions, nOMObjProcessKindProc, 0);
+    gcAddGObjCommonProc(weapon_gobj, wpProcessProcWeaponMain, nOMObjProcessKindProc, 3);
+    gcAddGObjCommonProc(weapon_gobj, wpProcessProcSearchHitWeapon, nOMObjProcessKindProc, 1);
+    gcAddGObjCommonProc(weapon_gobj, wpProcessProcHitCollisions, nOMObjProcessKindProc, 0);
 
     wp->proc_update    = wp_desc->proc_update;
     wp->proc_map       = wp_desc->proc_map;

@@ -1115,13 +1115,13 @@ void grSectorInitAll(void)
 
     gGRCommonStruct.sector.map_file = map_file;
 
-    map_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    map_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     gGRCommonStruct.sector.map_gobj = map_gobj;
 
-    omAddGObjRenderProc(map_gobj, odRenderDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjRenderProc(map_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
     grModelSetupGroundDObjs(map_gobj, (DObjDesc*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002C30), gGRCommonStruct.sector.map_dobj, dGRSectorArwingTransformKinds);
-    omAddGObjCommonProc(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
+    gcAddGObjCommonProc(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
     gGRCommonStruct.sector.arwing_status = 0;
     gGRCommonStruct.sector.arwing_flight_pattern = -1;
@@ -1142,10 +1142,10 @@ void grSectorInitAll(void)
 // 0x80107FCC
 GObj* grSectorMakeGround(void)
 {
-    GObj *map_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *map_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     grSectorInitAll();
-    omAddGObjCommonProc(map_gobj, grSectorProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjCommonProc(map_gobj, grSectorProcUpdate, nOMObjProcessKindProc, 4);
 
     return map_gobj;
 }

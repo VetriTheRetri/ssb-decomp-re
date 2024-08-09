@@ -17,7 +17,7 @@ OSMesgQueue sDmaMesgQ;    // 800450C0
 
 void *sVpkBufRamAddr;
 u32 sVpkBufSize;
-u32 sVpkBufRomAddr;
+u32 sVpkBufRgcAddr;
 
 void gsCreateDmaMesgQueue(void) 
 {
@@ -513,15 +513,15 @@ loop_25:
 
 void gsInitVpkDmaStream(u32 dev_addr, void *ram_addr, u32 nbytes) 
 {
-    sVpkBufRomAddr = dev_addr;
+    sVpkBufRgcAddr = dev_addr;
     sVpkBufRamAddr = ram_addr;
     sVpkBufSize    = nbytes;
 }
 
 void gsFillVpkDmaBuffer(void)
 {
-    gsDmaRomRead(sVpkBufRomAddr, sVpkBufRamAddr, sVpkBufSize);
-    sVpkBufRomAddr += sVpkBufSize;
+    gsDmaRomRead(sVpkBufRgcAddr, sVpkBufRamAddr, sVpkBufSize);
+    sVpkBufRgcAddr += sVpkBufSize;
 }
 
 void func_80003648(u32 dev_addr, void *ram_dst, void *ram_addr, u32 nbytes) 

@@ -158,7 +158,7 @@ u8 sSysThread8CPUStack[0x800];
 OSMesgQueue sSysMesgQueueCPUFault;
 OSMesg sSysMesgCPUFault[1];
 u32 sUnref8009E3D4;
-void (*sCrashPrintFunction)(void);
+void (*sCrashPrintfunction)(void);
 MqListNode D_8009E3E0;
 OSMesg D_8009E3E8[1];
 OSMesgQueue D_8009E3F0;
@@ -481,7 +481,7 @@ char* gsMemcpyAdvance(char *dst, const char *src, size_t count)
 typedef char *outfun(char *, const char *, size_t);
 extern int _Printf(outfun prout, char *arg, const char *fmt, va_list args);
 
-void gsFramebufferPrintF(s32 ulx, s32 ulr, char *fmt, ...) 
+void gsFramebufferPrintf(s32 ulx, s32 ulr, char *fmt, ...) 
 {
     u8 *csr;
     u32 glyph;
@@ -525,30 +525,30 @@ void gsWaitMSec(s32 millisec)
     }
 }
 
-void gsFramebufferPrintFPReg(s32 x, s32 y, s32 regIdx, f32 *fpReg) 
+void gsFramebufferPrintfPReg(s32 x, s32 y, s32 regIdx, f32 *fpReg) 
 {
     u32 byterep = *(u32 *)fpReg;
     s32 small = ((byterep & 0x7F800000) >> 23) - 127;
 
     if ((small >= -126 && small < 128) || byterep == 0) 
     {
-        gsFramebufferPrintF(x, y, "F%02d:%.3e", regIdx, (f64)*fpReg);
+        gsFramebufferPrintf(x, y, "F%02d:%.3e", regIdx, (f64)*fpReg);
     } 
-    else gsFramebufferPrintF(x, y, "F%02d:%08XH", regIdx, byterep);
+    else gsFramebufferPrintf(x, y, "F%02d:%08XH", regIdx, byterep);
 }
 
-void gsFramebufferPrintFCSR(u32 fcsr)
+void gsFramebufferPrintfCSR(u32 fcsr)
 {
     s32 i;
     u32 mask = 0x20000;
 
-    gsFramebufferPrintF(30, 155, "FPCSR:%08XH", fcsr);
+    gsFramebufferPrintf(30, 155, "FPCSR:%08XH", fcsr);
 
     for (i = 0; i < ARRAY_COUNT(dFPUExceptionCauses); i++)
     {
         if (fcsr & mask)
         {
-            gsFramebufferPrintF(132, 155, "(%s)", dFPUExceptionCauses[i]);
+            gsFramebufferPrintf(132, 155, "(%s)", dFPUExceptionCauses[i]);
             break;
         }
         else mask >>= 1;
@@ -598,8 +598,8 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
     {
         ctx = &t->context;
         gsFramebufferDrawBlackRect(25, 20, 270, 25);
-        gsFramebufferPrintF(30, 25, "THREAD:%d  (%s)", t->id, dCPUExceptionCauses[adjusted_cause]);
-        gsFramebufferPrintF(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
+        gsFramebufferPrintf(30, 25, "THREAD:%d  (%s)", t->id, dCPUExceptionCauses[adjusted_cause]);
+        gsFramebufferPrintf(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
         osWritebackDCacheAll();
         gsWaitForFramebufferOrButtons(0, NULL);
         gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
@@ -608,35 +608,35 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
     // register dump
     ctx = &t->context;
     gsFramebufferDrawBlackRect(25, 20, 270, 210);
-    gsFramebufferPrintF(30, 25, "THREAD:%d  (%s)", t->id, dCPUExceptionCauses[adjusted_cause]);
-    gsFramebufferPrintF(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
-    gsFramebufferPrintF(30, 50, "AT:%08XH   V0:%08XH   V1:%08XH", (u32)ctx->at, (u32)ctx->v0, (u32)ctx->v1);
-    gsFramebufferPrintF(30, 60, "A0:%08XH   A1:%08XH   A2:%08XH", (u32)ctx->a0, (u32)ctx->a1, (u32)ctx->a2);
-    gsFramebufferPrintF(30, 70, "A3:%08XH   T0:%08XH   T1:%08XH", (u32)ctx->a3, (u32)ctx->t0, (u32)ctx->t1);
-    gsFramebufferPrintF(30, 80, "T2:%08XH   T3:%08XH   T4:%08XH", (u32)ctx->t2, (u32)ctx->t3, (u32)ctx->t4);
-    gsFramebufferPrintF(30, 90, "T5:%08XH   T6:%08XH   T7:%08XH", (u32)ctx->t5, (u32)ctx->t6, (u32)ctx->t7);
-    gsFramebufferPrintF(30, 100, "S0:%08XH   S1:%08XH   S2:%08XH", (u32)ctx->s0, (u32)ctx->s1, (u32)ctx->s2);
-    gsFramebufferPrintF(30, 110, "S3:%08XH   S4:%08XH   S5:%08XH", (u32)ctx->s3, (u32)ctx->s4, (u32)ctx->s5);
-    gsFramebufferPrintF(30, 120, "S6:%08XH   S7:%08XH   T8:%08XH", (u32)ctx->s6, (u32)ctx->s7, (u32)ctx->t8);
-    gsFramebufferPrintF(30, 130, "T9:%08XH   GP:%08XH   SP:%08XH", (u32)ctx->t9, (u32)ctx->gp, (u32)ctx->sp);
-    gsFramebufferPrintF(30, 140, "S8:%08XH   RA:%08XH", (u32)ctx->s8, (u32)ctx->ra);
-    gsFramebufferPrintFCSR(ctx->fpcsr);
-    gsFramebufferPrintFPReg(30, 170, 0, &ctx->fp0.f.f_even);
-    gsFramebufferPrintFPReg(120, 170, 2, &ctx->fp2.f.f_even);
-    gsFramebufferPrintFPReg(210, 170, 4, &ctx->fp4.f.f_even);
-    gsFramebufferPrintFPReg(30, 180, 6, &ctx->fp6.f.f_even);
-    gsFramebufferPrintFPReg(120, 180, 8, &ctx->fp8.f.f_even);
-    gsFramebufferPrintFPReg(210, 180, 10, &ctx->fp10.f.f_even);
-    gsFramebufferPrintFPReg(30, 190, 12, &ctx->fp12.f.f_even);
-    gsFramebufferPrintFPReg(120, 190, 14, &ctx->fp14.f.f_even);
-    gsFramebufferPrintFPReg(210, 190, 16, &ctx->fp16.f.f_even);
-    gsFramebufferPrintFPReg(30, 200, 18, &ctx->fp18.f.f_even);
-    gsFramebufferPrintFPReg(120, 200, 20, &ctx->fp20.f.f_even);
-    gsFramebufferPrintFPReg(210, 200, 22, &ctx->fp22.f.f_even);
-    gsFramebufferPrintFPReg(30, 210, 24, &ctx->fp24.f.f_even);
-    gsFramebufferPrintFPReg(120, 210, 26, &ctx->fp26.f.f_even);
-    gsFramebufferPrintFPReg(210, 210, 28, &ctx->fp28.f.f_even);
-    gsFramebufferPrintFPReg(30, 220, 30, &ctx->fp30.f.f_even);
+    gsFramebufferPrintf(30, 25, "THREAD:%d  (%s)", t->id, dCPUExceptionCauses[adjusted_cause]);
+    gsFramebufferPrintf(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
+    gsFramebufferPrintf(30, 50, "AT:%08XH   V0:%08XH   V1:%08XH", (u32)ctx->at, (u32)ctx->v0, (u32)ctx->v1);
+    gsFramebufferPrintf(30, 60, "A0:%08XH   A1:%08XH   A2:%08XH", (u32)ctx->a0, (u32)ctx->a1, (u32)ctx->a2);
+    gsFramebufferPrintf(30, 70, "A3:%08XH   T0:%08XH   T1:%08XH", (u32)ctx->a3, (u32)ctx->t0, (u32)ctx->t1);
+    gsFramebufferPrintf(30, 80, "T2:%08XH   T3:%08XH   T4:%08XH", (u32)ctx->t2, (u32)ctx->t3, (u32)ctx->t4);
+    gsFramebufferPrintf(30, 90, "T5:%08XH   T6:%08XH   T7:%08XH", (u32)ctx->t5, (u32)ctx->t6, (u32)ctx->t7);
+    gsFramebufferPrintf(30, 100, "S0:%08XH   S1:%08XH   S2:%08XH", (u32)ctx->s0, (u32)ctx->s1, (u32)ctx->s2);
+    gsFramebufferPrintf(30, 110, "S3:%08XH   S4:%08XH   S5:%08XH", (u32)ctx->s3, (u32)ctx->s4, (u32)ctx->s5);
+    gsFramebufferPrintf(30, 120, "S6:%08XH   S7:%08XH   T8:%08XH", (u32)ctx->s6, (u32)ctx->s7, (u32)ctx->t8);
+    gsFramebufferPrintf(30, 130, "T9:%08XH   GP:%08XH   SP:%08XH", (u32)ctx->t9, (u32)ctx->gp, (u32)ctx->sp);
+    gsFramebufferPrintf(30, 140, "S8:%08XH   RA:%08XH", (u32)ctx->s8, (u32)ctx->ra);
+    gsFramebufferPrintfCSR(ctx->fpcsr);
+    gsFramebufferPrintfPReg(30, 170, 0, &ctx->fp0.f.f_even);
+    gsFramebufferPrintfPReg(120, 170, 2, &ctx->fp2.f.f_even);
+    gsFramebufferPrintfPReg(210, 170, 4, &ctx->fp4.f.f_even);
+    gsFramebufferPrintfPReg(30, 180, 6, &ctx->fp6.f.f_even);
+    gsFramebufferPrintfPReg(120, 180, 8, &ctx->fp8.f.f_even);
+    gsFramebufferPrintfPReg(210, 180, 10, &ctx->fp10.f.f_even);
+    gsFramebufferPrintfPReg(30, 190, 12, &ctx->fp12.f.f_even);
+    gsFramebufferPrintfPReg(120, 190, 14, &ctx->fp14.f.f_even);
+    gsFramebufferPrintfPReg(210, 190, 16, &ctx->fp16.f.f_even);
+    gsFramebufferPrintfPReg(30, 200, 18, &ctx->fp18.f.f_even);
+    gsFramebufferPrintfPReg(120, 200, 20, &ctx->fp20.f.f_even);
+    gsFramebufferPrintfPReg(210, 200, 22, &ctx->fp22.f.f_even);
+    gsFramebufferPrintfPReg(30, 210, 24, &ctx->fp24.f.f_even);
+    gsFramebufferPrintfPReg(120, 210, 26, &ctx->fp26.f.f_even);
+    gsFramebufferPrintfPReg(210, 210, 28, &ctx->fp28.f.f_even);
+    gsFramebufferPrintfPReg(30, 220, 30, &ctx->fp30.f.f_even);
     osWritebackDCacheAll();
     gsWaitForFramebufferOrButtons(0, NULL);
     gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
@@ -646,7 +646,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
 
     stack_csr = (u8*)(uintptr_t)ctx->sp;
 
-    gsFramebufferPrintF(26, 20, "SP Base %08x", (u32)stack_csr);
+    gsFramebufferPrintf(26, 20, "SP Base %08x", (u32)stack_csr);
 
     y = 30;
 
@@ -657,7 +657,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
 
         if ((small >= -126 && small < 128) || word == 0) 
         {
-            gsFramebufferPrintF
+            gsFramebufferPrintf
             (
                 26,
                 y,
@@ -672,7 +672,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
         } 
         else 
         {
-            gsFramebufferPrintF
+            gsFramebufferPrintf
             (
                 26,
                 y,
@@ -692,7 +692,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
 
         if ((small >= -126 && small < 128) || word == 0) 
         {
-            gsFramebufferPrintF
+            gsFramebufferPrintf
             (
                 172,
                 y,
@@ -706,7 +706,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
         } 
         else 
         {
-            gsFramebufferPrintF
+            gsFramebufferPrintf
             (
                 172,
                 y,
@@ -748,9 +748,9 @@ OSThread* gsGetFaultedThread(void)
 /**
  * Set a function to call when a crash screen is displayed
  */
-void gsSetCrashPrintFunction(void (*fn)(void))
+void gsSetCrashPrintfunction(void (*fn)(void))
 {
-    sCrashPrintFunction = fn;
+    sCrashPrintfunction = fn;
 }
 
 void gsResetCrashMesgCursor(s32 x, s32 y) 
@@ -759,7 +759,7 @@ void gsResetCrashMesgCursor(s32 x, s32 y)
     dCrashMesgPositionY = y;
 }
 
-void gsFramebufferVPrintFNewLine(const char *fmt, va_list args) 
+void gsFramebufferVPrintfNewLine(const char *fmt, va_list args) 
 {
     u32 glyph;
     s32 ans;
@@ -806,19 +806,19 @@ void gsFramebufferVPrintFNewLine(const char *fmt, va_list args)
  * printf to an active crash/debug screen.
  *
  * You can call this function to print to a debug screen only when
- * a screen is active. Thus, you want to wrap calls to `gsDebugPrintF`
+ * a screen is active. Thus, you want to wrap calls to `gsDebugPrintf`
  * in a function and have that wrapper function to be called when a
- * crash occurs. You can do that by passing that wrapper function to `gsSetCrashPrintFunction`,
- * or by calling `gsFatalRunPrintFunction` with the wrapper function.
+ * crash occurs. You can do that by passing that wrapper function to `gsSetCrashPrintfunction`,
+ * or by calling `gsFatalRunPrintFunc` with the wrapper function.
  */
-void gsDebugPrintF(const char *fmt, ...) 
+void gsDebugPrintf(const char *fmt, ...) 
 {
     va_list ap;
 
     va_start(ap, fmt);
     VA_LIST_ALIGN(ap, fmt);
 
-    gsFramebufferVPrintFNewLine(fmt, ap);
+    gsFramebufferVPrintfNewLine(fmt, ap);
 
     va_end(ap);
 }
@@ -853,7 +853,7 @@ void gsCrashReportCPUBreakFault(UNUSED void *arg)
 
     gsFramebufferPrintThreadStatus(thread, TRUE);
 
-    if (sCrashPrintFunction != NULL)
+    if (sCrashPrintfunction != NULL)
     {
         while (TRUE) 
         {
@@ -864,7 +864,7 @@ void gsCrashReportCPUBreakFault(UNUSED void *arg)
 
             gsResetCrashMesgCursor(30, 25);
 
-            sCrashPrintFunction();
+            sCrashPrintfunction();
 
             gsWaitForFramebufferOrButtons(0, NULL);
             gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
@@ -938,13 +938,13 @@ void gsFileLoaderThread8Crash(void *arg)
                 gsWaitForFramebufferOrButtons(D_JPAD | D_CBUTTONS, NULL);
                 gsFramebufferPrintThreadStatus(&gThread5, TRUE);
 
-                if (sCrashPrintFunction != NULL)
+                if (sCrashPrintfunction != NULL)
                 {
                     gsWaitForFramebufferOrButtons(0, NULL);
                     gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
                     gsFramebufferDrawBlackRect(25, 20, 270, 210);
                     gsResetCrashMesgCursor(30, 25);
-                    sCrashPrintFunction();
+                    sCrashPrintfunction();
                 }
                 gsWaitForFramebufferOrButtons(0, NULL);
                 count = 0;
@@ -979,7 +979,7 @@ void gsStartRmonThread5Hang(void)
  * This will only show the message if the correct button sequence is entered.
  * This does not loop, so you could recover after printing a message.
  */
-void gsFatalPrintF(const char *fmt, ...) 
+void gsFatalPrintf(const char *fmt, ...) 
 {
     void *fb;
     OSPri origPri;
@@ -1009,7 +1009,7 @@ void gsFatalPrintF(const char *fmt, ...)
         fb = osViGetCurrentFramebuffer();
         gsFramebufferDrawBlackRect(25, 20, 270, 25);
         gsResetCrashMesgCursor(30, 25);
-        gsFramebufferVPrintFNewLine(fmt, ap);
+        gsFramebufferVPrintfNewLine(fmt, ap);
     }
     while (gsWaitForFramebufferOrButtons(0, fb) || gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, fb));
 
@@ -1021,11 +1021,11 @@ void gsFatalPrintF(const char *fmt, ...)
 /**
  * Show a crash screen and call `printFn` to print to the crash screen
  *
- * `printFn` is a wrapper function with calls to `gsDebugPrintF` for printing.
+ * `printFn` is a wrapper function with calls to `gsDebugPrintf` for printing.
  * Note that unlike the other crash screens functions, this will show the crash screen
  * without having to enter a button sequence on a controller
  */
-void gsFatalRunPrintFunction(void (*printFn)(void)) 
+void gsFatalRunPrintFunc(void (*printFn)(void)) 
 {
     OSPri origPri;
     void *fb;

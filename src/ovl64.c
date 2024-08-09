@@ -410,7 +410,7 @@ void scAutoDemoProcUpdateMain(GObj *gobj)
 // 8018D704
 GObj* scAutoDemoMakeFocusInterface()
 {
-	GObj *interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, scAutoDemoProcUpdateMain, 0xA, 0x80000000);
+	GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, scAutoDemoProcUpdateMain, 0xA, 0x80000000);
 
 	sAutoDemoProc = dAutoDemoProcList;
 	sAutoDemoFocusChangeWait = 0;
@@ -565,9 +565,9 @@ void func_ovl64_8018DB18()
 	void *file;
 
 	file = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_0000000C, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_0000000C), 0x10));
-	sAutoDemoFighterNameGObj = interface_gobj = omMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xB, 0x80000000);
+	sAutoDemoFighterNameGObj = interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xB, 0x80000000);
 
-	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+	gcAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
 	for (player = 0; player < ARRAY_COUNT(gSceneData.demo_ft_kind); player++)
 	{

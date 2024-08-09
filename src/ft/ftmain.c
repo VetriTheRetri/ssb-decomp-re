@@ -2702,16 +2702,16 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
                 if (ft_hit->sfx_level > 0) // Changed this to > 0 for now, makes a bit more sense to me since it only does this on moves with hit SFX levels greater than weak (0)
                 {
-                    efManagerDamageSpawnOrbsRandomMakeEffect(&pos);
+                    efManagerDamageSpawnOrbsRandgcMakeEffect(&pos);
 
                     switch (this_fp->attributes->is_metallic)
                     {
                     case FALSE:
-                        efManagerDamageSpawnSparksRandomMakeEffect(&pos, this_fp->lr);
+                        efManagerDamageSpawnSparksRandgcMakeEffect(&pos, this_fp->lr);
                         break;
 
                     case TRUE:
-                        efManagerDamageSpawnMDustRandomMakeEffect(&pos, this_fp->lr);
+                        efManagerDamageSpawnMDustRandgcMakeEffect(&pos, this_fp->lr);
                         break;
 
                     /* default: break; // This might not be necessary */
@@ -4077,7 +4077,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
 
     dl = (commonpart != NULL) ? commonpart->dobj_desc[withheld_part->root_joint_id - nFTPartsJointCommonStart].display_list : NULL;
 
-    root_joint = omAddDObjForGObj(fp->fighter_gobj, dl);
+    root_joint = gcAddDObjForGObj(fp->fighter_gobj, dl);
     root_joint->sib_prev->sib_next = NULL;
     root_joint->sib_prev = NULL;
 
@@ -4322,7 +4322,7 @@ void ftMainEjectWithheldPartID(ftStruct *fp, s32 withheld_part_id)
     root_joint->sib_prev = NULL;
     root_joint->child = NULL;
 
-    omEjectDObj(root_joint);
+    gcEjectDObj(root_joint);
 }
 
 // 0x800E6F24

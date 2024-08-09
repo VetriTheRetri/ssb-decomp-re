@@ -269,9 +269,9 @@ sb32 mpCollisionGetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flag
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetUUCommon() id = %d\n", line_id); // Since we're exclusively checking ground collision and the line ID passed isn't ground-valid, report the error
+            gsFatalPrintf("mpGetUUCommon() id = %d\n", line_id); // Since we're exclusively checking ground collision and the line ID passed isn't ground-valid, report the error
 
-            smRunPrintGObjStatus();
+            scManagerRunPrintGObjStatus();
         }
     }
     yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
@@ -280,9 +280,9 @@ sb32 mpCollisionGetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flag
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetUUCommon() no collsion\n");
+            gsFatalPrintf("mpGetUUCommon() no collsion\n");
 
-            smRunPrintGObjStatus();
+            scManagerRunPrintGObjStatus();
         }
     }
     vlinks = &gMPCollisionVertexLinks[line_id];
@@ -336,8 +336,8 @@ sb32 mpCollisionGetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flag
             {
                 while (TRUE)
                 {
-                    gsFatalPrintF("same vtx x error mpGetUUCommon\n");
-                    smRunPrintGObjStatus();
+                    gsFatalPrintf("same vtx x error mpGetUUCommon\n");
+                    scManagerRunPrintGObjStatus();
                 }
             }
             if (((v1x <= object_pos_x) && (object_pos_x <= v2x)) || ((v2x <= object_pos_x) && (object_pos_x <= v1x)))
@@ -398,9 +398,9 @@ sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flag
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetLRCommon() id = %d\n", line_id);
+            gsFatalPrintf("mpGetLRCommon() id = %d\n", line_id);
 
-            smRunPrintGObjStatus();
+            scManagerRunPrintGObjStatus();
         }
     }
     yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
@@ -409,9 +409,9 @@ sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flag
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetLRCommon() no collision\n");
+            gsFatalPrintf("mpGetLRCommon() no collision\n");
 
-            smRunPrintGObjStatus();
+            scManagerRunPrintGObjStatus();
         }
     }
     vlinks = &gMPCollisionVertexLinks[line_id];
@@ -465,8 +465,8 @@ sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flag
             {
                 while (TRUE)
                 {
-                    gsFatalPrintF("same vtx y error mpGetLRCommon\n");
-                    smRunPrintGObjStatus();
+                    gsFatalPrintf("same vtx y error mpGetLRCommon\n");
+                    scManagerRunPrintGObjStatus();
                 }
             }
             if (((v1y <= object_pos_y) && (object_pos_y <= v2y)) || ((v2y <= object_pos_y) && (object_pos_y <= v1y)))
@@ -522,8 +522,8 @@ void mpCollisionGetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetLREdge() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetLREdge() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
@@ -532,8 +532,8 @@ void mpCollisionGetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetLREdge() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetLREdge() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     vlinks = &gMPCollisionVertexLinks[line_id];
@@ -606,8 +606,8 @@ void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetUDEdge() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetUDEdge() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
@@ -616,8 +616,8 @@ void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetUDEdge() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetUDEdge() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     vlinks = &gMPCollisionVertexLinks[line_id];
@@ -3133,8 +3133,8 @@ s32 mpCollisionGetVertexCountLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetNbVertex() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetNbVertex() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
@@ -3143,8 +3143,8 @@ s32 mpCollisionGetVertexCountLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetNbVertex() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetNbVertex() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     return gMPCollisionVertexLinks[line_id].vertex2;
@@ -3159,8 +3159,8 @@ void mpCollisionGetVertexPositionID(s32 line_id, s32 vertex_id, Vec3f *pos)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetVertex() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetVertex() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
@@ -3169,8 +3169,8 @@ void mpCollisionGetVertexPositionID(s32 line_id, s32 vertex_id, Vec3f *pos)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetVertex() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetVertex() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     pos->x = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[gMPCollisionVertexLinks[line_id].vertex1 + vertex_id]].pos.x;
@@ -3196,8 +3196,8 @@ void mpCollisionGetSpeedLineID(s32 line_id, Vec3f *speed)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetSpeedId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetSpeedId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     yakumono_id = gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id;
@@ -3208,8 +3208,8 @@ void mpCollisionGetSpeedLineID(s32 line_id, Vec3f *speed)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetSpeedId() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetSpeedId() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     *speed = gMPCollisionDynamics[yakumono_id];
@@ -3226,8 +3226,8 @@ s32 mpCollisionGetLineTypeID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetKindId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetKindId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
@@ -3237,8 +3237,8 @@ s32 mpCollisionGetLineTypeID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetKindId() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetKindId() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     return vertex_info->line_type;
@@ -3254,8 +3254,8 @@ s32 mpCollisionGetEdgeUnderRLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeUnderRId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeUnderRId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
@@ -3265,8 +3265,8 @@ s32 mpCollisionGetEdgeUnderRLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeUnderRId() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeUnderRId() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     return vertex_info->edge_psign_id;
@@ -3282,8 +3282,8 @@ s32 mpCollisionGetEdgeUnderLLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeUnderLId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeUnderLId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
@@ -3293,8 +3293,8 @@ s32 mpCollisionGetEdgeUnderLLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeUnderLId() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeUnderLId() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     return vertex_info->edge_nsign_id;
@@ -3310,8 +3310,8 @@ s32 mpCollisionGetEdgeUpperRLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeUpperRId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeUpperRId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
@@ -3321,8 +3321,8 @@ s32 mpCollisionGetEdgeUpperRLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeUpperRId() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeUpperRId() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     return vertex_info->edge_psign_id;
@@ -3338,8 +3338,8 @@ s32 mpCollisionGetEdgeUpperLLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeUpperLId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeUpperLId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
@@ -3349,8 +3349,8 @@ s32 mpCollisionGetEdgeUpperLLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeUpperLId() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeUpperLId() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     return vertex_info->edge_nsign_id;
@@ -3366,8 +3366,8 @@ s32 mpCollisionGetEdgeRightULineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeRightUId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeRightUId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
@@ -3377,8 +3377,8 @@ s32 mpCollisionGetEdgeRightULineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeRightUId() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeRightUId() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     return vertex_info->edge_psign_id;
@@ -3394,8 +3394,8 @@ s32 mpCollisionGetEdgeRightDLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeRightDId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeRightDId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
@@ -3405,8 +3405,8 @@ s32 mpCollisionGetEdgeRightDLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeRightDId() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeRightDId() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     return vertex_info->edge_nsign_id;
@@ -3422,8 +3422,8 @@ s32 mpCollisionGetEdgeLeftULineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeLeftUId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeLeftUId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
@@ -3433,8 +3433,8 @@ s32 mpCollisionGetEdgeLeftULineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeLeftUId() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeLeftUId() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     return vertex_info->edge_psign_id;
@@ -3450,8 +3450,8 @@ s32 mpCollisionGetEdgeLeftDLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeLeftDId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeLeftDId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
@@ -3461,8 +3461,8 @@ s32 mpCollisionGetEdgeLeftDLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetEdgeLeftDId() no collision\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetEdgeLeftDId() no collision\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     return vertex_info->edge_nsign_id;
@@ -4054,8 +4054,8 @@ void mpCollisionInitGroundData(void)
     {
         while (TRUE)
         {
-            gsFatalPrintF("not found cll data!\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("not found cll data!\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     gMPCollisionVertexData  = geometry_info->vertex_data;
@@ -4117,8 +4117,8 @@ void mpCollisionSetYakumonoPosID(s32 line_id, Vec3f *yakumono_pos)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpSetYakumonoPosId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpSetYakumonoPosId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_id];
@@ -4139,8 +4139,8 @@ void mpCollisionSetYakumonoOnID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpSetYakumonoOnId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpSetYakumonoOnId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     gMPCollisionYakumonoDObjs->yakumono_dobj[line_id]->user_data.s = nMPYakumonoStatusOn;
@@ -4153,8 +4153,8 @@ void mpCollisionSetYakumonoOffID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpSetYakumonoOffId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpSetYakumonoOffId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     gMPCollisionYakumonoDObjs->yakumono_dobj[line_id]->user_data.s = nMPYakumonoStatusOff;
@@ -4167,8 +4167,8 @@ sb32 mpCollisionCheckExistLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetExistCollisionId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetExistCollisionId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     if (line_id == -2)
@@ -4189,8 +4189,8 @@ s32 mpCollisionSetDObjNoID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpSetDObjNoId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpSetDObjNoId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     return gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id;
@@ -4276,8 +4276,8 @@ sb32 mpCollisionCheckExistPlatformLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetCllFloatId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetCllFloatId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
@@ -4296,8 +4296,8 @@ u16 mpCollisionGetVertexFlagsLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintF("mpGetAttrId() id = %d\n", line_id);
-            smRunPrintGObjStatus();
+            gsFatalPrintf("mpGetAttrId() id = %d\n", line_id);
+            scManagerRunPrintGObjStatus();
         }
     }
     return gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[gMPCollisionVertexLinks[line_id].vertex1]].vertex_flags;

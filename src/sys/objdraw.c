@@ -3,13 +3,9 @@
 #include <sys/gtl.h>
 #include <sys/hal_gu.h>
 #include <sys/system_00.h>
-#include <sys/system_04.h>
 
 #include <config.h>
-#include <PR/gbi.h>
 #include "libc/math.h"
-#include <sys/objmanager.h>
-#include <PR/sp.h>
 
 extern f32 sqrtf(f32);
 
@@ -51,7 +47,7 @@ Gfx *D_800472C0;
 #define gsSPMvpRecalc()   gsImmp21(G_SPECIAL_1, 0, 1, 0)
 
 #ifdef NON_MATCHING
-s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
+s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
 {
     Gfx *current_dl = *dl;
     OMMtx *ommtx;
@@ -925,11 +921,11 @@ s32 odRenderDObjMain(Gfx **dl, DObj *dobj)
     return sp2CC;
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/odRenderDObjMain.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/gcDrawDObjMain.s")
 #endif
 
 // 0x80012D90
-void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
+void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
 {
     s32 mobj_count;
     s32 i;
@@ -1232,7 +1228,7 @@ void odRenderMObjForDObj(DObj *dobj, Gfx **dl_head)
 }
 
 // 0x80013D90
-void odRenderDObjForGObj(GObj *gobj, Gfx **dl_head)
+void gcDrawDObjForGObj(GObj *gobj, Gfx **dl_head)
 {
     s32 num;
     DObj *dobj = DObjGetStruct(gobj);
@@ -1243,8 +1239,8 @@ void odRenderDObjForGObj(GObj *gobj, Gfx **dl_head)
     {
         if (dobj->flags == DOBJ_FLAG_NONE)
         {
-            num = odRenderDObjMain(dl_head, dobj);
-            odRenderMObjForDObj(dobj, dl_head);
+            num = gcDrawDObjMain(dl_head, dobj);
+            gcDrawMObjForDObj(dobj, dl_head);
             gSPDisplayList(dl_head[0]++, dobj->display_list);
 
             if (num != 0)
@@ -1259,31 +1255,31 @@ void odRenderDObjForGObj(GObj *gobj, Gfx **dl_head)
 }
 
 // 0x80013E68
-void odRenderDObjDLHead0(GObj *gobj) 
+void gcDrawDObjDLHead0(GObj *gobj) 
 {
-    odRenderDObjForGObj(gobj, &gDisplayListHead[0]);
+    gcDrawDObjForGObj(gobj, &gDisplayListHead[0]);
 }
 
 // 0x80013E8C
-void odRenderDObjDLHead1(GObj *gobj)
+void gcDrawDObjDLHead1(GObj *gobj)
 {
-    odRenderDObjForGObj(gobj, &gDisplayListHead[1]);
+    gcDrawDObjForGObj(gobj, &gDisplayListHead[1]);
 }
 
 // 0x80013EB0
 void unref_80013EB0(GObj *gobj)
 {
-    odRenderDObjForGObj(gobj, &gDisplayListHead[2]);
+    gcDrawDObjForGObj(gobj, &gDisplayListHead[2]);
 }
 
 // 0x80013ED4
 void unref_80013ED4(GObj *gobj)
 {
-    odRenderDObjForGObj(gobj, &gDisplayListHead[3]);
+    gcDrawDObjForGObj(gobj, &gDisplayListHead[3]);
 }
 
 // 0x80013EF8
-void odRenderDObjTree(DObj *this_dobj) 
+void gcDrawDObjTree(DObj *this_dobj) 
 {
     s32 num;
     DObj *current_dobj;
@@ -1292,16 +1288,16 @@ void odRenderDObjTree(DObj *this_dobj)
     if (!(this_dobj->flags & DOBJ_FLAG_NORENDER))
     {
         bak = gSpriteLayerScale;
-        num = odRenderDObjMain(gDisplayListHead, this_dobj);
+        num = gcDrawDObjMain(gDisplayListHead, this_dobj);
 
         if ((this_dobj->display_list != NULL) && !(this_dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            odRenderMObjForDObj(this_dobj, gDisplayListHead);
+            gcDrawMObjForDObj(this_dobj, gDisplayListHead);
             gSPDisplayList(gDisplayListHead[0]++, this_dobj->display_list);
         }
         if (this_dobj->child != NULL)
         { 
-            odRenderDObjTree(this_dobj->child);
+            gcDrawDObjTree(this_dobj->child);
         }
         if (num != 0)
         {
@@ -1318,21 +1314,21 @@ void odRenderDObjTree(DObj *this_dobj)
 
         while (current_dobj != NULL)
         {
-            odRenderDObjTree(current_dobj);
+            gcDrawDObjTree(current_dobj);
             current_dobj = current_dobj->sib_next;
         }
     }
 }
 
 // 0x80014038
-void odRenderDObjTreeForGObj(GObj *gobj) 
+void gcDrawDObjTreeForGObj(GObj *gobj) 
 {
     gSpriteLayerScale = 1.0F;
-    odRenderDObjTree(DObjGetStruct(gobj));
+    gcDrawDObjTree(DObjGetStruct(gobj));
 }
 
 // 0x80014068
-void odRenderDObjDLLinks(DObj *dobj, DObjDLLink *dl_link)
+void gcDrawDObjDLLinks(DObj *dobj, DObjDLLink *dl_link)
 {
     s32 num;
     s32 list_id;
@@ -1346,14 +1342,14 @@ void odRenderDObjDLLinks(DObj *dobj, DObjDLLink *dl_link)
     if ((dl_link != NULL) && (dobj->flags == DOBJ_FLAG_NONE))
     {
         dl_start = gDisplayListHead[dl_link->list_id];
-        num = odRenderDObjMain(&gDisplayListHead[dl_link->list_id], dobj);
+        num = gcDrawDObjMain(&gDisplayListHead[dl_link->list_id], dobj);
         dl_end = gDisplayListHead[dl_link->list_id];
 
         if (dl_link->dl != NULL)
         {
             ptr = gGraphicsHeap.ptr;
 
-            odRenderMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
+            gcDrawMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
             gSPDisplayList(gDisplayListHead[dl_link->list_id]++, dl_link->dl);
 
             if (num != 0)
@@ -1401,13 +1397,13 @@ void odRenderDObjDLLinks(DObj *dobj, DObjDLLink *dl_link)
 }
 
 // 0x801143FC
-void odRenderDObjDLLinksForGObj(GObj *gobj)
+void gcDrawDObjDLLinksForGObj(GObj *gobj)
 {
     DObj *dobj;
 
     gSpriteLayerScale = 1.0F;
     dobj = DObjGetStruct(gobj);
-    odRenderDObjDLLinks(dobj, dobj->dl_link);
+    gcDrawDObjDLLinks(dobj, dobj->dl_link);
 }
 
 // 0x80014430
@@ -1421,7 +1417,7 @@ void func_80014430(void)
 }
 
 // 0x8001445C
-void odRenderDObjTreeDLLinks(DObj *dobj)
+void gcDrawDObjTreeDLLinks(DObj *dobj)
 {
     s32 i;
     s32 num;
@@ -1438,7 +1434,7 @@ void odRenderDObjTreeDLLinks(DObj *dobj)
         bak = gSpriteLayerScale;
         dl_link = dobj->dl_link;
         dl = D_800470B0;
-        num = odRenderDObjMain(&D_800470B0, dobj);
+        num = gcDrawDObjMain(&D_800470B0, dobj);
 
         if ((dl_link != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
@@ -1455,7 +1451,7 @@ void odRenderDObjTreeDLLinks(DObj *dobj)
                         if (ptr == NULL)
                         {
                             ptr = gGraphicsHeap.ptr;
-                            odRenderMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
+                            gcDrawMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
 
                             goto set_display_list; // The goto is required ONLY if we condense the gDisplayListHead and D_800470B8 increments into a single operation.
                         }
@@ -1469,7 +1465,7 @@ void odRenderDObjTreeDLLinks(DObj *dobj)
         }
         if (dobj->child != NULL)
         {
-            odRenderDObjTreeDLLinks(dobj->child);
+            gcDrawDObjTreeDLLinks(dobj->child);
         }
         D_800470B0 = dl;
 
@@ -1497,17 +1493,17 @@ void odRenderDObjTreeDLLinks(DObj *dobj)
 
         while (current_dobj != NULL)
         {
-            odRenderDObjTreeDLLinks(current_dobj);
+            gcDrawDObjTreeDLLinks(current_dobj);
             current_dobj = current_dobj->sib_next;
         }
     }
 }
 
 // 0x80014768
-void odRenderDObjTreeDLLinksForGObj(GObj *gobj)
+void gcDrawDObjTreeDLLinksForGObj(GObj *gobj)
 {
     gSpriteLayerScale = 1.0F;
-    odRenderDObjTreeDLLinks(DObjGetStruct(gobj));
+    gcDrawDObjTreeDLLinks(DObjGetStruct(gobj));
 }
 
 // 0x80014798
@@ -1546,8 +1542,8 @@ void unref_800147E0(GObj *gobj)
 
         if (dist_dl->dl != NULL) 
         {
-            num = odRenderDObjMain(gDisplayListHead, dobj);
-            odRenderMObjForDObj(dobj, gDisplayListHead);
+            num = gcDrawDObjMain(gDisplayListHead, dobj);
+            gcDrawMObjForDObj(dobj, gDisplayListHead);
             gSPDisplayList(gDisplayListHead[0]++, dist_dl->dl);
 
             if (num != 0)
@@ -1562,7 +1558,7 @@ void unref_800147E0(GObj *gobj)
 }
 
 // 0x8001490C
-void odRenderDObjTreeMultiList(DObj *dobj) 
+void gcDrawDObjTreeMultiList(DObj *dobj) 
 {
     s32 num;
     Gfx **dls;
@@ -1574,19 +1570,19 @@ void odRenderDObjTreeMultiList(DObj *dobj)
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
         bak = gSpriteLayerScale;
-        num = odRenderDObjMain(gDisplayListHead, dobj);
+        num = gcDrawDObjMain(gDisplayListHead, dobj);
 
         if ((dls != NULL) && (dls[D_800472A8] != NULL)) 
         {
             if (!(dobj->flags & DOBJ_FLAG_NOTEXTURE))
             {
-                odRenderMObjForDObj(dobj, gDisplayListHead);
+                gcDrawMObjForDObj(dobj, gDisplayListHead);
                 gSPDisplayList(gDisplayListHead[0]++, dls[D_800472A8]);
             }
         }
         if (dobj->child != NULL) 
         { 
-            odRenderDObjTreeMultiList(dobj->child);
+            gcDrawDObjTreeMultiList(dobj->child);
         }
         if (num != 0)
         {
@@ -1603,7 +1599,7 @@ void odRenderDObjTreeMultiList(DObj *dobj)
 
         while (current_dobj != NULL)
         {
-            odRenderDObjTreeMultiList(current_dobj);
+            gcDrawDObjTreeMultiList(current_dobj);
 
             current_dobj = current_dobj->sib_next;
         }
@@ -1635,16 +1631,16 @@ void unref_80014A84(GObj *gobj)
                 dist_dl++;
                 D_800472A8++;
             }
-            num = odRenderDObjMain(gDisplayListHead, dobj);
+            num = gcDrawDObjMain(gDisplayListHead, dobj);
 
             if ((dist_dl->dl != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
             {
-                odRenderMObjForDObj(dobj, gDisplayListHead);
+                gcDrawMObjForDObj(dobj, gDisplayListHead);
                 gSPDisplayList(gDisplayListHead[0]++, dist_dl->dl);
             }
             if (dobj->child != NULL)
             {
-                odRenderDObjTreeMultiList(dobj->child);
+                gcDrawDObjTreeMultiList(dobj->child);
             }
             if (num != 0)
             {
@@ -1659,7 +1655,7 @@ void unref_80014A84(GObj *gobj)
 
                 while (current_dobj != NULL)
                 {
-                    odRenderDObjTreeMultiList(current_dobj);
+                    gcDrawDObjTreeMultiList(current_dobj);
 
                     current_dobj = current_dobj->sib_next;
                 }
@@ -1691,7 +1687,7 @@ void unref_80014C38(GObj *gobj)
             { 
                 dist_dl_link++;
             }
-            odRenderDObjDLLinks(dobj, dist_dl_link->dl_link);
+            gcDrawDObjDLLinks(dobj, dist_dl_link->dl_link);
         }
     }
 }
@@ -1719,7 +1715,7 @@ void func_80014CD0(DObj *dobj)
             dl_link = s0[D_800472A8];
         }
         dl = D_800470B0;
-        num = odRenderDObjMain(&D_800470B0, dobj);
+        num = gcDrawDObjMain(&D_800470B0, dobj);
 
         if ((s0 != NULL) && (dl_link != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
@@ -1736,7 +1732,7 @@ void func_80014CD0(DObj *dobj)
                         if (ptr == NULL)
                         {
                             ptr = gGraphicsHeap.ptr;
-                            odRenderMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
+                            gcDrawMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
 
                             goto set_display_list; // *sigh* required to match...
                         }
@@ -1818,7 +1814,7 @@ void unref_80014FFC(GObj *gobj)
             }
             dl_link = dist_dl_link->dl_link;
             dl = D_800470B0;
-            num = odRenderDObjMain(&D_800470B0, dobj);
+            num = gcDrawDObjMain(&D_800470B0, dobj);
 
             if ((dl_link != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
             {
@@ -1835,7 +1831,7 @@ void unref_80014FFC(GObj *gobj)
                             if (ptr == NULL)
                             {
                                 ptr = gGraphicsHeap.ptr;
-                                odRenderMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
+                                gcDrawMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
 
                                 goto set_display_list;
                             }
@@ -1887,7 +1883,7 @@ void unref_80014FFC(GObj *gobj)
 }
 
 // 0x80015358
-void odRenderDObjTreeDLArray(DObj *dobj) 
+void gcDrawDObjTreeDLArray(DObj *dobj) 
 {
     s32 num;
     Gfx **dls;
@@ -1904,16 +1900,16 @@ void odRenderDObjTreeDLArray(DObj *dobj)
         {
             gSPDisplayList(gDisplayListHead[0]++, dls[0]);
         }
-        num = odRenderDObjMain(gDisplayListHead, dobj);
+        num = gcDrawDObjMain(gDisplayListHead, dobj);
 
         if ((dls != NULL) && (dls[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            odRenderMObjForDObj(dobj, gDisplayListHead);
+            gcDrawMObjForDObj(dobj, gDisplayListHead);
             gSPDisplayList(gDisplayListHead[0]++, dls[1]);
         }
         if (dobj->child != NULL)
         { 
-            odRenderDObjTreeDLArray(dobj->child);
+            gcDrawDObjTreeDLArray(dobj->child);
         }
         if (num != 0)
         {
@@ -1930,7 +1926,7 @@ void odRenderDObjTreeDLArray(DObj *dobj)
 
         while (current_dobj != NULL)
         {
-            odRenderDObjTreeDLArray(current_dobj);
+            gcDrawDObjTreeDLArray(current_dobj);
             current_dobj = current_dobj->sib_next;
         }
     }
@@ -1940,7 +1936,7 @@ void odRenderDObjTreeDLArray(DObj *dobj)
 void unref_800154F0(GObj *gobj) 
 {
     gSpriteLayerScale = 1.0F;
-    odRenderDObjTreeDLArray(DObjGetStruct(gobj));
+    gcDrawDObjTreeDLArray(DObjGetStruct(gobj));
 }
 
 // 0x80015520
@@ -1962,7 +1958,7 @@ void func_80015520(DObj *dobj)
         bak = gSpriteLayerScale;
         multi_list = dobj->multi_list;
         dl = D_800470B0;
-        num = odRenderDObjMain(&D_800470B0, dobj);
+        num = gcDrawDObjMain(&D_800470B0, dobj);
 
         if ((multi_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
@@ -1983,7 +1979,7 @@ void func_80015520(DObj *dobj)
                         if (ptr == NULL)
                         {
                             ptr = gGraphicsHeap.ptr;
-                            odRenderMObjForDObj(dobj, &gDisplayListHead[multi_list->id]);
+                            gcDrawMObjForDObj(dobj, &gDisplayListHead[multi_list->id]);
 
                             goto set_display_list;
                         }
@@ -2039,7 +2035,7 @@ void unref_80015860(GObj *gobj)
 }
 
 // 0x80015890
-void odRenderDObjTreeDLDoubleArray(DObj *dobj)
+void gcDrawDObjTreeDLDoubleArray(DObj *dobj)
 {
     s32 num;
     DObj *current_dobj;
@@ -2061,16 +2057,16 @@ void odRenderDObjTreeDLDoubleArray(DObj *dobj)
         {
             gSPDisplayList(gDisplayListHead[0]++, dls[0]);
         }
-        num = odRenderDObjMain(gDisplayListHead, dobj);
+        num = gcDrawDObjMain(gDisplayListHead, dobj);
 
         if ((p_dls != NULL) && (dls[1]) != NULL && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            odRenderMObjForDObj(dobj, gDisplayListHead);
+            gcDrawMObjForDObj(dobj, gDisplayListHead);
             gSPDisplayList(gDisplayListHead[0]++, dls[1]);
         }
         if (dobj->child != NULL)
         {
-            odRenderDObjTreeDLDoubleArray(dobj->child); 
+            gcDrawDObjTreeDLDoubleArray(dobj->child); 
         }
         if (num != 0)
         {
@@ -2087,7 +2083,7 @@ void odRenderDObjTreeDLDoubleArray(DObj *dobj)
 
         while (current_dobj != NULL) 
         {
-            odRenderDObjTreeDLDoubleArray(current_dobj);
+            gcDrawDObjTreeDLDoubleArray(current_dobj);
             current_dobj = current_dobj->sib_next;
         }
     }
@@ -2120,16 +2116,16 @@ void unref_80015A58(GObj *gobj)
                 D_800472A8++;
                 dist_dl++;
             }
-            num = odRenderDObjMain(gDisplayListHead, dobj);
+            num = gcDrawDObjMain(gDisplayListHead, dobj);
 
             if ((dist_dl->dl != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
             {
-                odRenderMObjForDObj(dobj, gDisplayListHead);
+                gcDrawMObjForDObj(dobj, gDisplayListHead);
                 gSPDisplayList(gDisplayListHead[0]++, dist_dl->dl);
             }
             if (dobj->child != NULL)
             {
-                odRenderDObjTreeDLDoubleArray(dobj->child);
+                gcDrawDObjTreeDLDoubleArray(dobj->child);
             }
             if (num != 0)
             {
@@ -2144,7 +2140,7 @@ void unref_80015A58(GObj *gobj)
 
                 while (current_dobj != NULL)
                 {
-                    odRenderDObjTreeDLDoubleArray(current_dobj);
+                    gcDrawDObjTreeDLDoubleArray(current_dobj);
 
                     current_dobj = current_dobj->sib_next;
                 }
@@ -2178,7 +2174,7 @@ void func_80015C0C(DObj *dobj)
             multi_list = p_multi_list[D_800472A8]; 
         }
         dl = D_800470B0;
-        num  = odRenderDObjMain(&D_800470B0, dobj);
+        num  = gcDrawDObjMain(&D_800470B0, dobj);
 
         if ((p_multi_list != NULL) && (multi_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
@@ -2199,7 +2195,7 @@ void func_80015C0C(DObj *dobj)
                         if (ptr == NULL) 
                         {
                             ptr = gGraphicsHeap.ptr;
-                            odRenderMObjForDObj(dobj, &gDisplayListHead[multi_list->id]);
+                            gcDrawMObjForDObj(dobj, &gDisplayListHead[multi_list->id]);
 
                             goto set_display_list;
                         }
@@ -2281,7 +2277,7 @@ void unref_80015F6C(GObj *gobj)
             }
             dl_link = dist_dl_link->dl_link;
             dl = D_800470B0;
-            num = odRenderDObjMain(&D_800470B0, dobj);
+            num = gcDrawDObjMain(&D_800470B0, dobj);
 
             if ((dl_link != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
             {
@@ -2298,7 +2294,7 @@ void unref_80015F6C(GObj *gobj)
                             if (ptr == NULL)
                             {
                                 ptr = gGraphicsHeap.ptr;
-                                odRenderMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
+                                gcDrawMObjForDObj(dobj, &gDisplayListHead[dl_link->list_id]);
 
                                 goto set_display_list;
                             }
@@ -2562,7 +2558,7 @@ void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, 
 }
 
 // 0x80016EDC
-void odRenderCameraMain(Gfx **dls, Camera *cam)
+void gcDrawCameraMain(Gfx **dls, Camera *cam)
 {
     Gfx *dl;
     s32 i;
@@ -3021,7 +3017,7 @@ void func_80017D3C(GObj *gobj, Gfx **dls, s32 index)
 {
     Camera *cam = CameraGetStruct(gobj);
     func_8001663C(dls, cam, index);
-    odRenderCameraMain(dls, cam);
+    gcDrawCameraMain(dls, cam);
     func_8001783C(cam, index);
     func_80017B80(gobj, (cam->flags & 0x8) ? TRUE : FALSE);
     func_80017CC8(cam);
@@ -3059,7 +3055,7 @@ void unref_80017E5C(void)
     func_800053CC();
     func_80004F78();
     func_8001663C(gDisplayListHead, cam, 0);
-    odRenderCameraMain(gDisplayListHead, cam);
+    gcDrawCameraMain(gDisplayListHead, cam);
     func_8001783C(cam, 0);
 }
 
@@ -3074,7 +3070,7 @@ void func_80017EC0(GObj *gobj)
     gSPDisplayList(gDisplayListHead[0], gDisplayListHead[0] + 2);
     gDisplayListHead[0] += 2;
 
-    odRenderCameraMain(gDisplayListHead, cam);
+    gcDrawCameraMain(gDisplayListHead, cam);
     gSPEndDisplayList(gDisplayListHead[0]++);
     gSPBranchList(D_800472C0, gDisplayListHead[0]);
 
@@ -3149,7 +3145,7 @@ void unref_8001810C(void)
 
     gDisplayListHead[0] += 2;
 
-    odRenderCameraMain(gDisplayListHead, cam);
+    gcDrawCameraMain(gDisplayListHead, cam);
     gSPEndDisplayList(gDisplayListHead[0]++);
     gSPBranchList(D_800472C0, gDisplayListHead[0]);
 

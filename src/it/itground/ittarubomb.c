@@ -117,7 +117,7 @@ void itTaruBombContainerSmashUpdateEffect(GObj *effect_gobj) // RTTF bomb explod
     if (ep->effect_vars.container.lifetime == 0)
     {
         efManagerSetPrevStructAlloc(ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
     else while (dobj != NULL)
     {
@@ -146,19 +146,19 @@ void itTaruBombContainerSmashMakeEffect(Vec3f *pos)
 
     if (ep != NULL)
     {
-        effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+        effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
         if (effect_gobj != NULL)
         {
-            omAddGObjRenderProc(effect_gobj, odRenderDObjTreeForGObj, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
+            gcAddGObjRenderProc(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
 
             dl = (Gfx*) ((*(uintptr_t*)((uintptr_t)*dITTaruBombItemDesc.p_file + dITTaruBombItemDesc.o_attributes) - (uintptr_t)&lITTaruBombDataStart) + (uintptr_t)&lITTaruBombEffectDisplayList); // Linker thing
 
             for (i = 0; i < ITTARUBOMB_EFFECT_COUNT; i++)
             {
-                dobj = omAddDObjForGObj(effect_gobj, dl);
+                dobj = gcAddDObjForGObj(effect_gobj, dl);
 
-                omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
+                gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
 
                 dobj->translate.vec.f = *pos;
 
@@ -174,7 +174,7 @@ void itTaruBombContainerSmashMakeEffect(Vec3f *pos)
 
             effect_gobj->user_data.p = ep;
 
-            omAddGObjCommonProc(effect_gobj, itTaruBombContainerSmashUpdateEffect, 1, 3);
+            gcAddGObjCommonProc(effect_gobj, itTaruBombContainerSmashUpdateEffect, 1, 3);
         }
     }
 }

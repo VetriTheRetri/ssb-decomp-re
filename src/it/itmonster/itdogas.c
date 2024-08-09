@@ -261,8 +261,8 @@ GObj* itDogasMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         dobj = DObjGetStruct(item_gobj);
 
-        omAddOMMtxForDObjFixed(dobj, 0x28, 0);
-        omAddOMMtxForDObjFixed(dobj->child, nOMTransformTraRotRpyRSca, 0);
+        gcAddOMMtxForDObjFixed(dobj, 0x28, 0);
+        gcAddOMMtxForDObjFixed(dobj->child, nOMTransformTraRotRpyRSca, 0);
 
         dobj->translate.vec.f = *pos;
 
@@ -318,7 +318,7 @@ GObj* itDogasWeaponSmogMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->phys_info.vel_air = *vel;
 
-    omAddOMMtxForDObjFixed(dobj->child, 0x2C, 0);
+    gcAddOMMtxForDObjFixed(dobj->child, 0x2C, 0);
 
     dobj->translate.vec.f = *pos;
 

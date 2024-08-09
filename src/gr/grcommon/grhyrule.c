@@ -79,11 +79,11 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
     {
         return NULL;
     }
-    twister_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    twister_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     if (twister_gobj != NULL)
     {
-        twister_dobj = omAddDObjForGObj(twister_gobj, NULL);
+        twister_dobj = gcAddDObjForGObj(twister_gobj, NULL);
 
         twister_dobj->translate.vec.f = *pos;
 
@@ -95,7 +95,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
         {
             gGRCommonStruct.hyrule.twister_eftrans = NULL;
 
-            omEjectGObj(twister_gobj);
+            gcEjectGObj(twister_gobj);
 
             return NULL;
         }
@@ -339,7 +339,7 @@ void grHyruleTwisterUpdateStop(void)
     {
         grHyruleTwisterMakeEffect(&gGRCommonStruct.hyrule.twister_eftrans->translate, 7);
     }
-    omEjectGObj(gGRCommonStruct.hyrule.twister_gobj);
+    gcEjectGObj(gGRCommonStruct.hyrule.twister_gobj);
 }
 
 // 0x8010A8B4
@@ -407,8 +407,8 @@ void grHyruleTwisterInitVars(void)
     {
         while (TRUE)
         {
-            gsFatalPrintF("Twister positions are error!\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("Twister positions are error!\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     gGRCommonStruct.hyrule.twister_pos_ids = (u8*) gsMemoryAlloc(pos_count * sizeof(*gGRCommonStruct.hyrule.twister_pos_ids), 0x0);
@@ -427,9 +427,9 @@ void grHyruleTwisterInitVars(void)
 // 0x8010AB20
 GObj* grHyruleMakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
-    omAddGObjCommonProc(ground_gobj, grHyruleTwisterProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjCommonProc(ground_gobj, grHyruleTwisterProcUpdate, nOMObjProcessKindProc, 4);
     grHyruleTwisterInitVars();
 
     return ground_gobj;

@@ -311,8 +311,8 @@ GObj* itIwarkMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj = DObjGetStruct(item_gobj);
 
-        omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
-        omAddOMMtxForDObjFixed(dobj, 0x48, 0);
+        gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
+        gcAddOMMtxForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 
@@ -460,8 +460,8 @@ GObj* itIwarkWeaponRockMakeWeapon(GObj *parent_gobj, Vec3f *pos, u8 random)
 
     dobj = DObjGetStruct(weapon_gobj);
 
-    omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
-    omAddOMMtxForDObjFixed(dobj, 0x46, 0);
+    gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
+    gcAddOMMtxForDObjFixed(dobj, 0x46, 0);
 
     dobj->translate.vec.f = *pos;
 

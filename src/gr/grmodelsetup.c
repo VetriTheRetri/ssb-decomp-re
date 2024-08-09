@@ -22,17 +22,17 @@ void grModelSetupGroundDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, DObj
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = omAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
         }
-        else dobj = array_dobjs[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobj_desc->display_list);
         
         if (transform_types[i].tk1 != nOMTransformNull)
         {
-            omAddOMMtxForDObjFixed(dobj, transform_types[i].tk1, transform_types[i].tk3);
+            gcAddOMMtxForDObjFixed(dobj, transform_types[i].tk1, transform_types[i].tk3);
         }
         if (transform_types[i].tk2 != nOMTransformNull)
         {
-            omAddOMMtxForDObjFixed(dobj, transform_types[i].tk2, 0);
+            gcAddOMMtxForDObjFixed(dobj, transform_types[i].tk2, 0);
         }
         dobj->translate.vec.f = dobj_desc->translate;
         dobj->rotate.vec.f = dobj_desc->rotate;

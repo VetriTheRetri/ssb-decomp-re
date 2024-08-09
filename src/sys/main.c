@@ -110,7 +110,7 @@ void gsCheckSPDmemOK(void)
 
 void gsFatalThreadStackOverflow(s32 tid)
 {
-    gsFatalPrintF("thread stack overflow  id = %d\n", tid);
+    gsFatalPrintf("thread stack overflow  id = %d\n", tid);
 
     while (TRUE); // { }
 }
@@ -126,7 +126,7 @@ void gsVerifyStackProbes(void)
 void gsThread5Main(UNUSED void *arg) 
 {
     osCreateViManager(OS_PRIORITY_VIMGR);
-    gRomPiHandle = osCartRomInit();
+    gRomPiHandle = osCartRgcInit();
     gsSramPiInit();
     osCreatePiManager(OS_PRIORITY_PIMGR, &sPIcmdQ, sPIcmdBuf, ARRAY_COUNT(sPIcmdBuf));
     gsCreateDmaMesgQueue();

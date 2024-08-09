@@ -361,7 +361,7 @@ efCreateDesc dEFManagerDamageSlashEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerDamageSlashDObjSetup,               // DObj Setup attributes offset (?)
     &lEFManagerDamageSlashMObjSub,                 // MObjSub offset
@@ -601,7 +601,7 @@ efCreateDesc dEFManagerDamageFlyMDustEffectDesc =
     },
 
     efManagerDamageFlySparksProcUpdate,  // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerDamageFlyMDustDObjSetup,            // DObj Setup attributes offset (?)
     &lEFManagerDamageFlyMDustMObjSub,              // MObjSub offset
@@ -700,7 +700,7 @@ efCreateDesc dEFManagerFoxReflectorEffectDesc =
     },
 
     efManagerFoxReflectorProcUpdate,        // Proc Update
-    odRenderDObjTreeForGObj,                // Proc Render
+    gcDrawDObjTreeForGObj,                // Proc Render
 
     &lEFManagerFoxReflectorDObjSetup,                 // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -800,7 +800,7 @@ efCreateDesc dEFCatchSwirlEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerCatchSwirlDObjSetup,                // DObj Setup attributes offset (?)
     &lEFManagerCatchSwirlMObjSub,                  // MObjSub offset
@@ -830,7 +830,7 @@ efCreateDesc dEFReflectBreakEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerReflectBreakDObjSetup,              // DObj Setup attributes offset (?)
     &lEFManagerReflectBreakMObjSub,                // MObjSub offset
@@ -860,7 +860,7 @@ efCreateDesc dEFManagerPikachuUnkEffectDesc =
     },
 
     func_ovl2_801017E8,                     // Proc Update
-    odRenderDObjTreeForGObj,                // Proc Render
+    gcDrawDObjTreeForGObj,                // Proc Render
 
     &lEFManagerPikachuUnkDObjSetup,                // DObj Setup attributes offset (?)
     &lEFManagerPikachuUnkMObjSub,                  // MObjSub offset
@@ -890,7 +890,7 @@ efCreateDesc dEFManagerPikachuThunderShockEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerPikachuThunderShockDObjSetup,              // DObj Setup attributes offset (?)
     &lEFManagerPikachuThunderShockMObjSub,                // MObjSub offset
@@ -950,7 +950,7 @@ efCreateDesc dEFThunderJoltEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    odRenderDObjTreeForGObj,                // Proc Render
+    gcDrawDObjTreeForGObj,                // Proc Render
 
     &lEFManagerPikachuThunderJoltDObjSetup,               // DObj Setup attributes offset (?)
     &lEFManagerPikachuThunderJoltMObjSub,                 // MObjSub offset
@@ -980,7 +980,7 @@ efCreateDesc dEFVulcanJabEffectDesc =
     },
 
     efManagerKirbyVulcanJabProcUpdate,        // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerKirbyVulcanJabDObjSetup,                 // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1010,7 +1010,7 @@ efCreateDesc dEFManagerSamusGrappleBeamEffectDesc =
     },
 
     gcPlayAnimAll,                          // Proc Update (WHAT IS THIS FUNCTION???)
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerSamusGrappleBeamDObjSetup,               // DObj Setup attributes offset (?)
     &lEFManagerSamusGrappleBeamMObjSub,                 // MObjSub offset
@@ -1040,7 +1040,7 @@ efCreateDesc dEFManagerCaptainFalconKickEffectDesc =
     },
 
     efManagerNoEjectProcUpdate,                     // Proc Update
-    odRenderDObjTreeForGObj,                // Proc Render
+    gcDrawDObjTreeForGObj,                // Proc Render
 
     &lEFManagerCaptainFalconKickDObjSetup,                // DObj Setup attributes offset (?)
     &lEFManagerCaptainFalconKickMObjSub,                  // MObjSub offset
@@ -1100,7 +1100,7 @@ efCreateDesc dEFManagerPurinSingEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,          // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerPurinSingDObjSetup,                 // DObj Setup attributes offset (?)
     &lEFManagerPurinSingMObjSub,                   // MObjSub offset
@@ -1130,7 +1130,7 @@ efCreateDesc dEFManagerDeadExplodeEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,          // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerDeadExplodeDefaultDObjSetup,        // DObj Setup attributes offset (?)
     &lEFManagerDeadExplodeDefaultMObjSub,          // MObjSub offset
@@ -1172,7 +1172,7 @@ efCreateDesc dEFManagerKirbyCutterUpEffectDesc =
     },
 
     efManagerNoEjectProcUpdate,                     // Proc Update
-    odRenderDObjTreeForGObj,                // Proc Render
+    gcDrawDObjTreeForGObj,                // Proc Render
 
     &lEFManagerKirbyCutterUpDObjSetup,             // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1202,7 +1202,7 @@ efCreateDesc dEFManagerKirbyCutterDownEffectDesc =
     },
 
     efManagerNoEjectProcUpdate,                     // Proc Update
-    odRenderDObjTreeForGObj,                // Proc Render
+    gcDrawDObjTreeForGObj,                // Proc Render
 
     &lEFManagerKirbyCutterDownDObjSetup,           // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1232,7 +1232,7 @@ efCreateDesc dEFManagerKirbyCutterDrawEffectDesc =
     },
 
     efManagerNoEjectProcUpdate,                     // Proc Update
-    odRenderDObjTreeForGObj,                // Proc Render
+    gcDrawDObjTreeForGObj,                // Proc Render
 
     &lEFManagerKirbyCutterDrawDObjSetup,           // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1262,7 +1262,7 @@ efCreateDesc dEFManagerKirbyCutterTrailEffectDesc =
     },
 
     efManagerNoEjectProcUpdate,                     // Proc Update
-    odRenderDObjTreeDLLinksForGObj,                // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,                // Proc Render
 
     &lEFManagerKirbyCutterTrailDObjSetup,          // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1292,7 +1292,7 @@ efCreateDesc dEFManagerNessPsychicMagnetEffectDesc =
     },
 
     gcPlayAnimAll,                          // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerNessPsychicMagnetDObjSetup,             // DObj Setup attributes offset (?)
     &lEFManagerNessPsychicMagnetMObjSub,               // MObjSub offset
@@ -1382,7 +1382,7 @@ efCreateDesc dEFManagerNessPKThunderWaveEffectDesc =
     },
 
     gcPlayAnimAll,                          // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerNessPKThunderWaveDObjSetup,             // DObj Setup attributes offset (?)
     &lEFManagerNessPKThunderWaveMObjSub,               // MObjSub offset
@@ -1412,7 +1412,7 @@ efCreateDesc dEFManagerNessPKFlashEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    odRenderDObjTreeForGObj,                // Proc Render
+    gcDrawDObjTreeForGObj,                // Proc Render
 
     &lEFManagerNessPKFlashDObjSetup,                   // DObj Setup attributes offset (?)
     &lEFManagerNessPKFlashMObjSub,                     // MObjSub offset
@@ -1442,7 +1442,7 @@ efCreateDesc dEFManagerLinkEntryWaveEffectDesc =
     },
 
     gcPlayAnimAll,                          // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerLinkEntryWaveDObjSetup,             // DObj Setup attributes offset (?)
     &lEFManagerLinkEntryWaveMObjSub,               // MObjSub offset
@@ -1472,7 +1472,7 @@ efCreateDesc dEFManagerLinkEntryBeamEffectDesc =
     },
 
     gcPlayAnimAll,                          // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerLinkEntryBeamDObjSetup,             // DObj Setup attributes offset (?)
     &lEFManagerLinkEntryBeamMObjSub,               // MObjSub offset
@@ -1502,7 +1502,7 @@ efCreateDesc dEFManagerKirbyEntryStarEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerKirbyEntryStarDObjSetup,            // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1532,7 +1532,7 @@ efCreateDesc dEFManagerMBallRaysEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerMBallRaysDObjSetup,                 // DObj Setup attributes offset (?)
     &lEFManagerMBallRaysMObjSub,                   // MObjSub offset
@@ -1562,7 +1562,7 @@ efCreateDesc dEFManagerMBallThrownEffectDesc =
     },
 
     efManagerMBallThrownProcUpdate,                // Proc Update
-    odRenderDObjTreeForGObj,                // Proc Render
+    gcDrawDObjTreeForGObj,                // Proc Render
 
     &lEFManagerMBallThrownDObjSetup,               // DObj Setup attributes offset (?)
     &lEFManagerMBallThrownMObjSub,                 // MObjSub offset
@@ -1625,7 +1625,7 @@ efCreateDesc dEFManagerYoshiEggLayEffectDesc =
     },
 
     efManagerYoshiEggLayProcUpdate,                     // Proc Update
-    odRenderDObjTreeForGObj,                // Proc Render
+    gcDrawDObjTreeForGObj,                // Proc Render
 
     &lEFManagerYoshiEggLayDObjSetup,               // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1685,7 +1685,7 @@ efCreateDesc dEFManagerLinkSpinAttackEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerLinkSpinAttackDObjSetup,                // DObj Setup attributes offset (?)
     &lEFManagerLinkSpinAttackMObjSub,                  // MObjSub offset
@@ -1715,7 +1715,7 @@ efCreateDesc dEFManagerDonkeyEntryTaruEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    odRenderDObjTreeForGObj,                // Proc Render
+    gcDrawDObjTreeForGObj,                // Proc Render
 
     &lEFManagerDonkeyEntryTaruDObjSetup,           // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1745,7 +1745,7 @@ efCreateDesc dEFManagerSamusEntryPointEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerSamusEntryPointDObjSetup,           // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1775,7 +1775,7 @@ efCreateDesc dEFManagerCaptainEntryCarEffectDesc =
     },
 
     efManagerCaptainEntryCarProcUpdate,            // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerCaptainEntryCarDObjSetup,           // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1805,7 +1805,7 @@ efCreateDesc dEFManagerMarioEntryDokanEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    odRenderDObjTreeForGObj,                // Proc Render
+    gcDrawDObjTreeForGObj,                // Proc Render
 
     &lEFManagerMarioEntryDokanDObjSetup,           // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1835,7 +1835,7 @@ efCreateDesc dEFManagerFoxEntryArwingEffectDesc =
     },
 
     efManagerFoxEntryArwingProcUpdate,             // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerFoxEntryArwingDObjSetup,            // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1928,7 +1928,7 @@ efCreateDesc dEFManagerRebirthHaloEffectDesc =
     },
 
     gcPlayAnimAll,                          // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerRebirthHaloDObjSetup,               // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1958,7 +1958,7 @@ efCreateDesc dEFManagerItemGetSwirlEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    odRenderDObjTreeDLLinksForGObj,         // Proc Render
+    gcDrawDObjTreeDLLinksForGObj,         // Proc Render
 
     &lEFManagerItemGetSwirlDObjSetup,              // DObj Setup attributes offset (?)
     &lEFManagerItemGetSwirlMObjSub,                // MObjSub offset
@@ -2057,7 +2057,7 @@ void efManagerNoStructProcUpdate(GObj *effect_gobj)
 
     if (effect_gobj->anim_frame <= 0.0F)
     {
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
 }
 
@@ -2074,7 +2074,7 @@ void efManagerHaveStructProcUpdate(GObj *effect_gobj)
         {
             efManagerSetPrevStructAlloc(efGetStruct(effect_gobj));
 
-            omEjectGObj(effect_gobj);
+            gcEjectGObj(effect_gobj);
         }
     }
 }
@@ -2107,7 +2107,7 @@ void efManagerSortZNeg(DObj *dobj)
 
         if (parent_gobj->dl_link_id != 2)
         {
-            omMoveGObjDL(parent_gobj, 2, 2);
+            gcMoveGObjDL(parent_gobj, 2, 2);
         }
     }
     else
@@ -2116,7 +2116,7 @@ void efManagerSortZNeg(DObj *dobj)
 
         if (parent_gobj->dl_link_id != 20)
         {
-            omMoveGObjDL(parent_gobj, 20, 2);
+            gcMoveGObjDL(parent_gobj, 20, 2);
         }
     }
 }
@@ -2132,7 +2132,7 @@ void efManagerSortZPos(DObj *dobj)
 
         if (parent_gobj->dl_link_id != 2)
         {
-            omMoveGObjDL(parent_gobj, 2, 2);
+            gcMoveGObjDL(parent_gobj, 2, 2);
         }
     }
     else
@@ -2141,7 +2141,7 @@ void efManagerSortZPos(DObj *dobj)
 
         if (parent_gobj->dl_link_id != 20)
         {
-            omMoveGObjDL(parent_gobj, 20, 2);
+            gcMoveGObjDL(parent_gobj, 20, 2);
         }
     }
 }
@@ -2161,10 +2161,10 @@ void efManagerProcRun(GObj *effect_gobj)
     {
         if (ep->proc_update != NULL)
         {
-            omAddGObjCommonProc(effect_gobj, ep->proc_update, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, ep->proc_update, nOMObjProcessKindProc, 3);
         }
     }
-    else omAddGObjCommonProc(effect_gobj, efManagerNoStructProcUpdate, nOMObjProcessKindProc, 3);
+    else gcAddGObjCommonProc(effect_gobj, efManagerNoStructProcUpdate, nOMObjProcessKindProc, 3);
 
     effect_gobj->proc_run = NULL;
 }
@@ -2200,7 +2200,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
     }
     else ep = NULL;
 
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, efManagerProcRun, (effect_flags & EFFECT_FLAG_SPECIALLINK) ? nOMObjCommonLinkIDSpecialEffect : nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, efManagerProcRun, (effect_flags & EFFECT_FLAG_SPECIALLINK) ? nOMObjCommonLinkIDSpecialEffect : nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2216,7 +2216,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
     {
         return effect_gobj;
     }
-    omAddGObjRenderProc(effect_gobj, effect_desc->proc_render, effect_desc->dl_link, 2, -1);
+    gcAddGObjRenderProc(effect_gobj, effect_desc->proc_render, effect_desc->dl_link, 2, -1);
 
     o_mobjsub = effect_desc->o_mobjsub;
     o_anim_joint = effect_desc->o_anim_joint;
@@ -2227,7 +2227,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
 
     if (effect_flags & 0x1)
     {
-        main_dobj = omAddDObjForGObj(effect_gobj, NULL);
+        main_dobj = gcAddDObjForGObj(effect_gobj, NULL);
 
         func_ovl0_800C89BC(main_dobj, transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
 
@@ -2241,7 +2241,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
         }
         else
         {
-            main_dobj = omAddChildForDObj(main_dobj, (void*) (addr + effect_desc->o_dobjsetup));
+            main_dobj = gcAddChildForDObj(main_dobj, (void*) (addr + effect_desc->o_dobjsetup));
 
             func_ovl0_800C89BC(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
         }
@@ -2283,7 +2283,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
         {
             transform_types1 = &effect_desc->transform_types1;
 
-            func_ovl0_800C89BC(omAddDObjForGObj(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup)), transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
+            func_ovl0_800C89BC(gcAddDObjForGObj(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup)), transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
         }
         if (o_mobjsub != 0)
         {
@@ -2323,7 +2323,7 @@ efParticle* efManagerDestroyParticleGObj(efParticle *efpart, GObj *effect_gobj)
 
         efManagerSetPrevStructAlloc(ep);
     }
-    omEjectGObj(effect_gobj);
+    gcEjectGObj(effect_gobj);
 
     return NULL;
 }
@@ -2337,7 +2337,7 @@ void efManagerDefaultProcDead(efTransform *eftrans)
 
         efManagerSetPrevStructAlloc(ep);
     }
-    omEjectGObj(eftrans->effect_gobj);
+    gcEjectGObj(eftrans->effect_gobj);
 }
 
 // 0x800FDBCC
@@ -2372,7 +2372,7 @@ efParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2399,7 +2399,7 @@ efParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
             {
                 return NULL;
             }
-            omAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2431,7 +2431,7 @@ void efManagerDamageNormalHeavyProcDead(efTransform *eftrans)
 
     efManagerDamageNormalLightMakeEffect(&pos, ep->effect_vars.damage_normal_heavy.player, ep->effect_vars.damage_normal_heavy.size, FALSE);
     efManagerSetPrevStructAlloc(efGetStruct(eftrans->effect_gobj));
-    omEjectGObj(eftrans->effect_gobj);
+    gcEjectGObj(eftrans->effect_gobj);
 }
 
 // 0x800FDEAC
@@ -2448,7 +2448,7 @@ efParticle* efManagerDamageNormalHeavyMakeEffect(Vec3f *pos, s32 player, s32 siz
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2516,7 +2516,7 @@ efParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2543,7 +2543,7 @@ efParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
             {
                 return NULL;
             }
-            omAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2578,7 +2578,7 @@ void efManagerVelAddDestroyAnimEnd(GObj *effect_gobj)
     if (dobj->mobj->anim_frame <= 0.0F)
     {
         efManagerSetPrevStructAlloc(ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
     else
     {
@@ -2604,7 +2604,7 @@ efParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2631,7 +2631,7 @@ efParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
             {
                 return NULL;
             }
-            omAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2672,7 +2672,7 @@ efParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2699,7 +2699,7 @@ efParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
             {
                 return NULL;
             }
-            omAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2766,7 +2766,7 @@ efParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2793,7 +2793,7 @@ efParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
             {
                 return NULL;
             }
-            omAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2817,7 +2817,7 @@ efParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
 }
 
 // 0x800FE9B4
-efParticle* efManagerFlameRandomMakeEffect(Vec3f *pos)
+efParticle* efManagerFlameRandgcMakeEffect(Vec3f *pos)
 {
     GObj *effect_gobj;
     efParticle *efpart;
@@ -2833,7 +2833,7 @@ efParticle* efManagerFlameRandomMakeEffect(Vec3f *pos)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2860,7 +2860,7 @@ efParticle* efManagerFlameRandomMakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            omAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2897,7 +2897,7 @@ efParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2924,7 +2924,7 @@ efParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            omAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2959,7 +2959,7 @@ efParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2986,7 +2986,7 @@ efParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            omAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -3096,7 +3096,7 @@ efParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_i
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3123,7 +3123,7 @@ efParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_i
             {
                 return NULL;
             }
-            omAddGObjCommonProc(effect_gobj, efManagerDustLightProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, efManagerDustLightProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.dust_light.eftrans = eftrans;
 
@@ -3166,7 +3166,7 @@ efParticle* efManagerDustHeavyMakeEffect(Vec3f *pos, s32 lr)
     f32 vel;
     f32 scale;
 
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3236,7 +3236,7 @@ efParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3254,7 +3254,7 @@ efParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 
         if (eftrans != NULL)
         {
-            omAddGObjCommonProc(effect_gobj, efManagerDustHeavyDoubleProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, efManagerDustHeavyDoubleProcUpdate, nOMObjProcessKindProc, 3);
 
             eftrans->effect_gobj = effect_gobj;
 
@@ -3333,7 +3333,7 @@ efParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3360,7 +3360,7 @@ efParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
             {
                 return NULL;
             }
-            omAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -3433,7 +3433,7 @@ void efManagerDamageFlyOrbsProcUpdate(GObj *effect_gobj)
     if (ep->effect_vars.damage_fly_orbs.lifetime < 0)
     {
         efManagerSetPrevStructAlloc(ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
     else
     {
@@ -3483,7 +3483,7 @@ void efManagerDamageSpawnOrbsProcUpdate(GObj *this_gobj)
     if (this_ep->effect_vars.damage_spawn_orbs.lifetime < 0)
     {
         efManagerSetPrevStructAlloc(this_ep);
-        omEjectGObj(this_gobj);
+        gcEjectGObj(this_gobj);
     }
 }
 
@@ -3509,7 +3509,7 @@ GObj* efManagerDamageSpawnOrbsMakeEffect(Vec3f *pos)
 }
 
 // 0x800FFB38
-GObj* efManagerDamageSpawnOrbsRandomMakeEffect(Vec3f *pos)
+GObj* efManagerDamageSpawnOrbsRandgcMakeEffect(Vec3f *pos)
 {
     if (mtTrigGetRandomIntRange(4) != 0)
     {
@@ -3538,7 +3538,7 @@ void efManagerImpactWaveProcRender(GObj *effect_gobj)
     gDPSetEnvColor(gDisplayListHead[0]++, dEFManagerImpactWaveEnvColorR[index], dEFManagerImpactWaveEnvColorG[index], dEFManagerImpactWaveEnvColorB[index], 0xFF);
 #endif
 
-    odRenderDObjDLHead0(effect_gobj);
+    gcDrawDObjDLHead0(effect_gobj);
 }
 
 // 0x800FFCA4
@@ -3551,7 +3551,7 @@ void efManagerImpactWaveProcUpdate(GObj *effect_gobj)
     if (effect_gobj->anim_frame <= 0.0F)
     {
         efManagerSetPrevStructAlloc(efGetStruct(effect_gobj));
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
     else
     {
@@ -3609,7 +3609,7 @@ void efManagerStarRodSparkProcUpdate(GObj *effect_gobj)
     if (effect_gobj->anim_frame <= 0.0F)
     {
         efManagerSetPrevStructAlloc(ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
 
         return;
     }
@@ -3663,7 +3663,7 @@ void efManagerDamageFlySparksProcUpdate(GObj *effect_gobj)
     if (effect_gobj->anim_frame <= 0.0F)
     {
         efManagerSetPrevStructAlloc(ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
     else
     {
@@ -3728,7 +3728,7 @@ void efManagerDamageSpawnSparksProcUpdate(GObj *effect_gobj)
     if (this_ep->effect_vars.damage_spawn_sparks.lifetime < 0)
     {
         efManagerSetPrevStructAlloc(this_ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
 }
 
@@ -3754,7 +3754,7 @@ GObj* efManagerDamageSpawnSparksMakeEffect(Vec3f *pos, s32 lr)
 }
 
 // 0x80100218
-GObj* efManagerDamageSpawnSparksRandomMakeEffect(Vec3f *pos, s32 lr)
+GObj* efManagerDamageSpawnSparksRandgcMakeEffect(Vec3f *pos, s32 lr)
 {
     if (mtTrigGetRandomIntRange(4) != 0)
     {
@@ -3809,7 +3809,7 @@ void efManagerDamageSpawnMDustProcUpdate(GObj *effect_gobj)
     if (this_ep->effect_vars.damage_spawn_mdust.lifetime < 0)
     {
         efManagerSetPrevStructAlloc(this_ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
 }
 
@@ -3835,7 +3835,7 @@ GObj* efManagerDamageSpawnMDustMakeEffect(Vec3f *pos, s32 lr)
 }
 
 // 0x80100440
-GObj* efManagerDamageSpawnMDustRandomMakeEffect(Vec3f *pos, s32 lr)
+GObj* efManagerDamageSpawnMDustRandgcMakeEffect(Vec3f *pos, s32 lr)
 {
     if (mtTrigGetRandomIntRange(4) != 0)
     {
@@ -4011,7 +4011,7 @@ void efManagerQuakeProcUpdate(GObj *effect_gobj)
     if (effect_gobj->anim_frame <= 0.0F)
     {
         efManagerSetPrevStructAlloc(efGetStruct(effect_gobj));
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
     else
     {
@@ -4046,7 +4046,7 @@ void efManagerQuakeAddProcUpdate(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
 
-    omAddGObjCommonProc(effect_gobj, efManagerQuakeProcUpdate, 1, ep->effect_vars.quake.priority);
+    gcAddGObjCommonProc(effect_gobj, efManagerQuakeProcUpdate, 1, ep->effect_vars.quake.priority);
 
     effect_gobj->proc_run = NULL;
 }
@@ -4064,7 +4064,7 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude) // Linker things here
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, efManagerQuakeAddProcUpdate, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, efManagerQuakeAddProcUpdate, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -4072,7 +4072,7 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude) // Linker things here
     }
     effect_gobj->user_data.p = ep;
 
-    omAddOMMtxForDObjFixed(omAddDObjForGObj(effect_gobj, NULL), nOMTransformTra, 0);
+    gcAddOMMtxForDObjFixed(gcAddDObjForGObj(effect_gobj, NULL), nOMTransformTra, 0);
 
     switch (magnitude)
     {
@@ -4111,7 +4111,7 @@ void efManagerDamageCoinProcDead(efTransform *eftrans)
 
     efManagerDustExpandSmallMakeEffect(&pos, 2.0F);
     efManagerSetPrevStructAlloc(efGetStruct(eftrans->effect_gobj));
-    omEjectGObj(eftrans->effect_gobj);
+    gcEjectGObj(eftrans->effect_gobj);
 }
 
 // 0x80100ACC
@@ -4132,7 +4132,7 @@ efParticle* efManagerDamageCoinMakeEffect(Vec3f *pos)
         return NULL;
     }
 
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -4187,7 +4187,7 @@ efParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -4214,7 +4214,7 @@ efParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
             {
                 return NULL;
             }
-            omAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -4300,7 +4300,7 @@ void efManagerFoxReflectorProcUpdate(GObj *effect_gobj)
 
         case 3:
             efManagerSetPrevStructAlloc(ep);
-            omEjectGObj(effect_gobj);
+            gcEjectGObj(effect_gobj);
             return;
         }
     }
@@ -4356,7 +4356,7 @@ void efManagerShieldProcRender(GObj *effect_gobj)
     gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, dEFManagerShieldColors[id].prim.r, dEFManagerShieldColors[id].prim.g, dEFManagerShieldColors[id].prim.b, 0xC0);
     gDPSetEnvColor(gDisplayListHead[1]++, dEFManagerShieldColors[id].env.r, dEFManagerShieldColors[id].env.g, dEFManagerShieldColors[id].env.b, 0xC0);
 
-    odRenderDObjTreeDLLinksForGObj(effect_gobj);
+    gcDrawDObjTreeDLLinksForGObj(effect_gobj);
 }
 
 // 0x80101108
@@ -4407,7 +4407,7 @@ void efManagerYoshiShieldProcRender(GObj *effect_gobj)
     gDPPipeSync(gDisplayListHead[1]++);
     gDPSetEnvColor(gDisplayListHead[1]++, color[gsColorRGBIndexR], color[gsColorRGBIndexG], color[gsColorRGBIndexB], 0x00);
 
-    odRenderDObjDLHead1(effect_gobj);
+    gcDrawDObjDLHead1(effect_gobj);
 
     efRenderProcRenderBlendCLD(effect_gobj);
 }
@@ -4621,7 +4621,7 @@ void func_ovl2_801017E8(GObj *effect_gobj)
     if (ep->effect_vars.unknown1.efvars_unk1_0x0 == 0)
     {
         efManagerSetPrevStructAlloc(ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
     else ep->effect_vars.unknown1.efvars_unk1_0x0--;
 }
@@ -4673,7 +4673,7 @@ GObj* efManagerPikachuThunderShockMakeEffect(GObj *fighter_gobj, Vec3f *pos, s32
 
     dobj->child->translate.vec.f.x = (ftGetStruct(fighter_gobj)->lr == nGMFacingL) ? -pos->x : pos->x;
 
-    omAddOMMtxForDObjFixed(dobj->child->child, 0x2E, 0);
+    gcAddOMMtxForDObjFixed(dobj->child->child, 0x2E, 0);
 
     switch (frame)
     {
@@ -4710,7 +4710,7 @@ void efManagerPikachuThunderTrailProcUpdate(GObj *effect_gobj)
     if (ep->effect_vars.thunder_trail.lifetime == 0)
     {
         efManagerSetPrevStructAlloc(ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
 
         return;
     }
@@ -4737,7 +4737,7 @@ void efManagerPikachuThunderTrailProcRender(GObj *effect_gobj)
 
     gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_NONE);
 
-    odRenderDObjDLLinksForGObj(effect_gobj);
+    gcDrawDObjDLLinksForGObj(effect_gobj);
 
     gDPPipeSync(gDisplayListHead[1]++);
 
@@ -4811,7 +4811,7 @@ void efManagerKirbyVulcanJabProcUpdate(GObj *effect_gobj)
     else
     {
         efManagerSetPrevStructAlloc(ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
 }
 
@@ -4842,7 +4842,7 @@ GObj* efManagerKirbyVulcanJabMakeEffect(Vec3f *pos, s32 lr, f32 rotate, f32 vel,
         vel = -vel;
         add = -add;
     }
-    omAddOMMtxForDObjFixed(dobj->child->child, 0x46, 0);
+    gcAddOMMtxForDObjFixed(dobj->child->child, 0x46, 0);
 
     dobj->rotate.vec.f.z = F_CLC_DTOR32(rotate);
 
@@ -4996,23 +4996,23 @@ GObj* efManagerPurinSingMakeEffect(GObj *fighter_gobj)
 
     sibling_dobj = dobj->child;
 
-    omAddOMMtxForDObjFixed(sibling_dobj, 0x46, 0);
+    gcAddOMMtxForDObjFixed(sibling_dobj, 0x46, 0);
 
     sibling_dobj = dobj->child->sib_next;
 
-    omAddOMMtxForDObjFixed(sibling_dobj, nOMTransformRotRpyR, 0);
+    gcAddOMMtxForDObjFixed(sibling_dobj, nOMTransformRotRpyR, 0);
 
     sibling_dobj = sibling_dobj->child;
 
-    omAddOMMtxForDObjFixed(sibling_dobj, 0x2A, 0);
+    gcAddOMMtxForDObjFixed(sibling_dobj, 0x2A, 0);
 
     sibling_dobj = sibling_dobj->sib_next;
 
-    omAddOMMtxForDObjFixed(sibling_dobj, 0x2A, 0);
+    gcAddOMMtxForDObjFixed(sibling_dobj, 0x2A, 0);
 
     sibling_dobj = sibling_dobj->sib_next;
 
-    omAddOMMtxForDObjFixed(sibling_dobj, 0x2A, 0);
+    gcAddOMMtxForDObjFixed(sibling_dobj, 0x2A, 0);
 
     return effect_gobj;
 }
@@ -5226,7 +5226,7 @@ void efManagerNessPKThunderTrailProcUpdate(GObj *effect_gobj)
     if (ep->effect_vars.pkthunder.status & wpNessPKThunder_Status_Destroy)
     {
         efManagerSetPrevStructAlloc(ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
 
         return;
     }
@@ -5259,7 +5259,7 @@ void efManagerNessPKThunderTrailProcRender(GObj *effect_gobj)
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_NONE);
 
-    odRenderDObjDLLinksForGObj(effect_gobj);
+    gcDrawDObjDLLinksForGObj(effect_gobj);
 
     gDPPipeSync(gDisplayListHead[1]++);
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
@@ -5306,7 +5306,7 @@ void efManagerNessPKReflectTrailProcUpdate(GObj *effect_gobj)
     if (ep->effect_vars.pkthunder.status & wpNessPKThunder_Status_Destroy)
     {
         efManagerSetPrevStructAlloc(ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
     else
     {
@@ -5479,12 +5479,12 @@ void efManagerMBallThrownProcUpdate(GObj *effect_gobj)
     {
         if (dobj->parent_gobj->dl_link_id != 20)
         {
-            omMoveGObjDL(dobj->parent_gobj, 20, 2);
+            gcMoveGObjDL(dobj->parent_gobj, 20, 2);
         }
     }
     else if (dobj->parent_gobj->dl_link_id != 10)
     {
-        omMoveGObjDL(dobj->parent_gobj, 10, 2);
+        gcMoveGObjDL(dobj->parent_gobj, 10, 2);
     }
     efManagerHaveStructProcUpdate(effect_gobj);
 }
@@ -5661,7 +5661,7 @@ GObj* efManagerYoshiEggLayMakeEffect(GObj *fighter_gobj)
 
     dobj->child->child->ommtx[0]->kind = nOMTransformTra;
 
-    omAddOMMtxForDObjFixed(dobj->child->child, 0x2E, 0);
+    gcAddOMMtxForDObjFixed(dobj->child->child, 0x2E, 0);
     func_ovl0_800C9314(dobj->child, (uintptr_t)gFTDataYoshiSpecial3 + (intptr_t)&lEFManagerYoshiEggLayDObjSetup);
 
     return effect_gobj;
@@ -5854,7 +5854,7 @@ void efManagerCaptainEntryCarProcUpdate(GObj *effect_gobj)
     if (dobj->anim_frame <= 0.0F)
     {
         efManagerSetPrevStructAlloc(efGetStruct(effect_gobj));
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
     else if (DObjGetStruct(effect_gobj)->rotate.vec.f.y == F_CLC_DTOR32(0.0F)) // This could mean trouble if the macro is changed... Need different zero literals
     {
@@ -5885,7 +5885,7 @@ GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr)
 
     for (i = nFTPartsJointCommonStart; i > 0; i--)
     {
-        omAddOMMtxForDObjFixed(node_dobj, 0x2C, 0);
+        gcAddOMMtxForDObjFixed(node_dobj, 0x2C, 0);
 
         gcAddDObjAnimJoint(node_dobj, gcGetAnimFromFile(AObjAnimJoint**, gFTDataCaptainSpecial2, &D_NF_00006518), 0.0F);
 
@@ -5951,7 +5951,7 @@ void efManagerFoxEntryArwingProcUpdate(GObj *effect_gobj)
     if (dobj->anim_frame <= 0.0F)
     {
         efManagerSetPrevStructAlloc(efGetStruct(effect_gobj));
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
     else efManagerSortZNeg(dobj);
 }
@@ -5972,7 +5972,7 @@ GObj* efManagerFoxEntryArwingMakeEffect(Vec3f *pos, s32 lr)
     dobj = DObjGetStruct(effect_gobj);
     what = dobj->child->child->child->sib_next->sib_next->sib_next->sib_next->sib_next->sib_next->child;
 
-    omAddOMMtxForDObjFixed(what, 0x2C, 0);
+    gcAddOMMtxForDObjFixed(what, 0x2C, 0);
     gcAddDObjAnimJoint(what, gcGetAnimFromFile(AObjAnimJoint**, gFTDataFoxSpecial3, &D_NF_00002E74), 0.0F); // Linker thing
 
     if (lr == nGMFacingR)
@@ -6185,7 +6185,7 @@ void efManagerLoseKirbyStarProcUpdate(GObj *effect_gobj)
         func_800269C0_275C0(nGMSoundFGMKirbyStarPing1);
         efManagerStarSplashMakeEffect(translate, ep->effect_vars.lose_kirby_star.lr);
         efManagerSetPrevStructAlloc(ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
     else if
     (
@@ -6196,7 +6196,7 @@ void efManagerLoseKirbyStarProcUpdate(GObj *effect_gobj)
     )
     {
         efManagerSetPrevStructAlloc(ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
     }
 }
 
@@ -6347,7 +6347,7 @@ efParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
     {
         return 0;
     }
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -6384,7 +6384,7 @@ efParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
 
             effect_gobj->user_data.p = ep; // y u do dis again
 
-            omAddGObjCommonProc(effect_gobj, efManagerKirbyInhaleWindProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjCommonProc(effect_gobj, efManagerKirbyInhaleWindProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->eftrans = efpart->effect_info;
 

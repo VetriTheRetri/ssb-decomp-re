@@ -326,7 +326,7 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj = DObjGetStruct(item_gobj);
 
-        omAddOMMtxForDObjFixed(dobj->child, 0x48, 0);
+        gcAddOMMtxForDObjFixed(dobj->child, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 
@@ -377,7 +377,7 @@ void itPippiWeaponSwarmRenderSwarm(GObj *item_gobj)
 
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-    odRenderDObjTreeForGObj(item_gobj);
+    gcDrawDObjTreeForGObj(item_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
 }
@@ -411,7 +411,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
     if (it_kind == nITKindSpear)
     {
-        omAddOMMtxForDObjFixed(dobj->child->child, 0x48, 0);
+        gcAddOMMtxForDObjFixed(dobj->child->child, 0x48, 0);
 
         if (wp->lr == nGMFacingL)
         {
@@ -422,7 +422,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
     {
         weapon_gobj->proc_render = itPippiWeaponSwarmProcRender;
 
-        omAddOMMtxForDObjFixed(dobj->child, 0x48, 0);
+        gcAddOMMtxForDObjFixed(dobj->child, 0x48, 0);
 
         if (wp->lr == nGMFacingR)
         {

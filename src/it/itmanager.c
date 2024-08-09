@@ -213,9 +213,9 @@ void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 t
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = omAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
         }
-        else dobj = array_dobjs[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobj_desc->display_list);
         
         if (i == 1)
         {
@@ -223,7 +223,7 @@ void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 t
         }
         else if (transform_kind != nOMTransformNull)
         {
-            omAddOMMtxForDObjFixed(dobj, transform_kind, nOMTransformNull);
+            gcAddOMMtxForDObjFixed(dobj, transform_kind, nOMTransformNull);
         }
         dobj->translate.vec.f = dobj_desc->translate;
         dobj->rotate.vec.f = dobj_desc->rotate;
@@ -249,7 +249,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     {
         return NULL;
     }
-    item_gobj = omMakeGObjSPAfter(nOMObjCommonKindItem, NULL, nOMObjCommonLinkIDItem, GOBJ_LINKORDER_DEFAULT);
+    item_gobj = gcMakeGObjSPAfter(nOMObjCommonKindItem, NULL, nOMObjCommonLinkIDItem, GOBJ_LINKORDER_DEFAULT);
 
     if (item_gobj == NULL)
     {
@@ -265,7 +265,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     }
     else proc_render = (attributes->is_render_xlu) ? itRenderProcRenderXLU : itRenderProcRenderOPA;
 
-    omAddGObjRenderProc(item_gobj, proc_render, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjRenderProc(item_gobj, proc_render, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     item_gobj->user_data.p = ip;
 
@@ -398,7 +398,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
         }
         func_ovl0_800C9424(DObjGetStruct(item_gobj));
     }
-    else omAddDObjForGObj(item_gobj, NULL);
+    else gcAddDObjForGObj(item_gobj, NULL);
     
     ip->coll_data.p_translate       = &DObjGetStruct(item_gobj)->translate.vec.f;
     ip->coll_data.p_lr              = &ip->lr;
@@ -414,9 +414,9 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     ip->coll_data.vel_push.y        = 0.0F;
     ip->coll_data.vel_push.z        = 0.0F;
 
-    omAddGObjCommonProc(item_gobj, itProcessProcItemMain, nOMObjProcessKindProc, 3);
-    omAddGObjCommonProc(item_gobj, itProcessProcSearchHitAll, nOMObjProcessKindProc, 1);
-    omAddGObjCommonProc(item_gobj, itProcessProcHitCollisions, nOMObjProcessKindProc, 0);
+    gcAddGObjCommonProc(item_gobj, itProcessProcItemMain, nOMObjProcessKindProc, 3);
+    gcAddGObjCommonProc(item_gobj, itProcessProcSearchHitAll, nOMObjProcessKindProc, 1);
+    gcAddGObjCommonProc(item_gobj, itProcessProcHitCollisions, nOMObjProcessKindProc, 0);
 
     ip->proc_update     = item_desc->proc_update;
     ip->proc_map        = item_desc->proc_map;
@@ -575,8 +575,8 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     while (TRUE)
                     {
-                        gsFatalPrintF("Item positions are over %d!\n", ARRAY_COUNT(item_mapobj_ids));
-                        smRunPrintGObjStatus();
+                        gsFatalPrintf("Item positions are over %d!\n", ARRAY_COUNT(item_mapobj_ids));
+                        scManagerRunPrintGObjStatus();
                     }
                 }
                 gITManagerSpawnActor.item_mapobj_count = item_mapobj_count;
@@ -588,9 +588,9 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     gITManagerSpawnActor.item_mapobjs[i] = item_mapobj_ids[i];
                 }
-                gobj = omMakeGObjSPAfter(nOMObjCommonKindItem, NULL, nOMObjCommonLinkIDItemActor, GOBJ_LINKORDER_DEFAULT);
+                gobj = gcMakeGObjSPAfter(nOMObjCommonKindItem, NULL, nOMObjCommonLinkIDItemActor, GOBJ_LINKORDER_DEFAULT);
 
-                omAddGObjCommonProc(gobj, itManagerMakeRandomItem, nOMObjProcessKindProc, 3);
+                gcAddGObjCommonProc(gobj, itManagerMakeRandomItem, nOMObjProcessKindProc, 3);
 
                 item_count_toggles = gBattleState->item_toggles;
 

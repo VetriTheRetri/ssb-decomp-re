@@ -46,8 +46,8 @@ void mvOpeningLinkDrawName()
 	f32 x_positions[4] = dMvOpeningLinkNameCharXPositions;
 	s32 i;
 
-	gMvOpeningLinkNameGObj = name_gobj = omMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	omAddGObjRenderProc(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
+	gMvOpeningLinkNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gcAddGObjRenderProc(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
@@ -91,7 +91,7 @@ void mvOpeningLinkCreateStageViewport(Vec3f arg0)
 	func_80007080(&cam->viewport, 10.0F, 90.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 15.0F / 7.0F;
 	func_8000B39C(gMvOpeningLinkStageCameraGObj);
-	omAddGObjCommonProc(gMvOpeningLinkStageCameraGObj, mvOpeningLinkAnimateStageCamera, 1, 1);
+	gcAddGObjCommonProc(gMvOpeningLinkStageCameraGObj, mvOpeningLinkAnimateStageCamera, 1, 1);
 
 	dMvOpeningLinkCameraSettingsAdjustedStart.eye.x += arg0.x;
 	dMvOpeningLinkCameraSettingsAdjustedStart.eye.y += arg0.y;
@@ -132,8 +132,8 @@ void mvOpeningLinkInitFighterStagePanel()
 	{
 		while (TRUE)
 		{
-			gsFatalPrintF("wrong number of mapobject\n");
-			smRunPrintGObjStatus();
+			gsFatalPrintf("wrong number of mapobject\n");
+			scManagerRunPrintGObjStatus();
 		}
 	}
 
@@ -191,7 +191,7 @@ void mvOpeningLinkRenderPosedFighterBackground(GObj *gobj)
 // 8018D924
 void mvOpeningLinkCreatePosedFighterBackground()
 {
-	omAddGObjRenderProc(omMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningLinkRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
+	gcAddGObjRenderProc(gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningLinkRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
 // 8018D970
@@ -235,8 +235,8 @@ void mvOpeningLinkCreatePosedFighter()
 
 	fighter_gobj = ftManagerMakeFighter(&spawn_info);
 	func_ovl1_803905CC(fighter_gobj, 0x1000C);
-	omMoveGObjDL(fighter_gobj, 0x1A, -1);
-	omAddGObjCommonProc(fighter_gobj, mvOpeningLinkAnimatePosedFighter, 1, 1);
+	gcMoveGObjDL(fighter_gobj, 0x1A, -1);
+	gcAddGObjCommonProc(fighter_gobj, mvOpeningLinkAnimatePosedFighter, 1, 1);
 
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0f;
 	DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0f;
@@ -259,7 +259,7 @@ void mvOpeningLinkCreatePosedFighterViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
 	cam->projection.persp.aspect = 3.75F;
 	func_8000FA3C(cam, GetAddressFromOffset(gMvOpeningLinkFilesArray[1], &FILE_041_LINK_CAMERA_PARAMS_OFFSET), 0.0F);
-	omAddGObjCommonProc(camera_gobj, func_80010580, 1, 1);
+	gcAddGObjCommonProc(camera_gobj, func_80010580, 1, 1);
 }
 
 // 8018DCD0
@@ -287,7 +287,7 @@ void mvOpeningLinkMainProc(GObj* arg0)
 
 	if (gMvOpeningLinkFramesElapsed == 15)
 	{
-		omEjectGObj(gMvOpeningLinkNameGObj);
+		gcEjectGObj(gMvOpeningLinkNameGObj);
 		mvOpeningLinkInitFighterStagePanel();
 		mvOpeningLinkCreatePosedFighterBackground();
 		mvOpeningLinkCreatePosedFighter();
@@ -322,7 +322,7 @@ void mvOpeningLinkInit()
 	gBattleState->players[0].pl_kind = nFTPlayerKindKey;
 
 	mvOpeningLinkLoadFiles();
-	omMakeGObjSPAfter(0x3F7, mvOpeningLinkMainProc, 0xD, 0x80000000);
+	gcMakeGObjSPAfter(0x3F7, mvOpeningLinkMainProc, 0xD, 0x80000000);
 	func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
 	mvOpeningLinkInitFramesElapsed();
 	efAllocInitParticleBank();

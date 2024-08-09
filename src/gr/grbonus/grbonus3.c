@@ -75,14 +75,14 @@ void grBonus3TaruBombMakeActor(void)
 {
     s32 pos_ids;
 
-    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT), grBonus3TaruBombProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjCommonProc(gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT), grBonus3TaruBombProcUpdate, nOMObjProcessKindProc, 4);
 
     if (mpCollisionGetMapObjCountKind(nMPMapObjKind1PGameBonus3TaruBomb) != 1)
     {
         while (TRUE)
         {
-            gsFatalPrintF("Too many barrels!\n");
-            smRunPrintGObjStatus();
+            gsFatalPrintf("Too many barrels!\n");
+            scManagerRunPrintGObjStatus();
         }
     }
     mpCollisionGetMapObjIDsKind(nMPMapObjKind1PGameBonus3TaruBomb, &pos_ids);
@@ -106,7 +106,7 @@ void grBonus3FinishProcUpdate(GObj *ground_gobj)
 // 0x8010B784
 void grBonus3FinishMakeActor(void)
 {
-    omAddGObjCommonProc(omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT), grBonus3FinishProcUpdate, 1, 4);
+    gcAddGObjCommonProc(gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT), grBonus3FinishProcUpdate, 1, 4);
 }
 
 // 0x8010B7C8

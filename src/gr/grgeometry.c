@@ -57,7 +57,7 @@ void grGeometryLayer0ProcRenderPri(GObj *ground_gobj)
 
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
-    odRenderDObjTreeForGObj(ground_gobj);
+    gcDrawDObjTreeForGObj(ground_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -81,7 +81,7 @@ void grGeometryLayer0ProcRenderSec(GObj *ground_gobj)
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-    odRenderDObjTreeDLLinksForGObj(ground_gobj);
+    gcDrawDObjTreeDLLinksForGObj(ground_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -109,7 +109,7 @@ void grGeometryLayer1ProcRenderPri(GObj *ground_gobj)
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    odRenderDObjTreeForGObj(ground_gobj);
+    gcDrawDObjTreeForGObj(ground_gobj);
 }
 
 // 0x80105088
@@ -127,7 +127,7 @@ void grGeometryLayer1ProcRenderSec(GObj *ground_gobj)
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    odRenderDObjTreeDLLinksForGObj(ground_gobj);
+    gcDrawDObjTreeDLLinksForGObj(ground_gobj);
 }
 
 // 0x80105154
@@ -139,7 +139,7 @@ void grGeometryLayer2ProcRenderPri(GObj *ground_gobj)
 
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
-    odRenderDObjTreeForGObj(ground_gobj);
+    gcDrawDObjTreeForGObj(ground_gobj);
 }
 
 // 0x801051D0
@@ -157,7 +157,7 @@ void grGeometryLayer2ProcRenderSec(GObj *ground_gobj)
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-    odRenderDObjTreeDLLinksForGObj(ground_gobj);
+    gcDrawDObjTreeDLLinksForGObj(ground_gobj);
 }
 
 // 0x80105290 - Identical to 0x80105154?
@@ -169,7 +169,7 @@ void grGeometryLayer3ProcRenderPri(GObj *ground_gobj)
 
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
-    odRenderDObjTreeForGObj(ground_gobj);
+    gcDrawDObjTreeForGObj(ground_gobj);
 }
 
 // 0x8010530C - Identical to 0x801051D0?
@@ -187,7 +187,7 @@ void grGeometryLayer3ProcRenderSec(GObj *ground_gobj)
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-    odRenderDObjTreeDLLinksForGObj(ground_gobj);
+    gcDrawDObjTreeDLLinksForGObj(ground_gobj);
 }
 
 // 0x801053CC
@@ -224,7 +224,7 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     {
         return NULL;
     }
-    ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGrRender, NULL, nOMObjCommonLinkIDGroundRender, GOBJ_LINKORDER_DEFAULT);
+    ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGrRender, NULL, nOMObjCommonLinkIDGroundRender, GOBJ_LINKORDER_DEFAULT);
 
     if (gMPCollisionGroundData->layer_mask & (1 << gr_desc_id))
     {
@@ -232,7 +232,7 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     }
     else proc_render = dGRGeometryDescs[gr_desc_id].proc_renderpri;
 
-    omAddGObjRenderProc(ground_gobj, proc_render, dGRGeometryDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjRenderProc(ground_gobj, proc_render, dGRGeometryDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcSetupCustomDObjs(ground_gobj, gr_desc->dobj_desc, p_dobj, nOMTransformTraRotRpyRSca, nOMTransformNull, nOMTransformNull);
 
     if (gr_desc->p_mobjsubs != NULL)
@@ -242,12 +242,12 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     if ((gr_desc->anim_joints != NULL) || (gr_desc->p_matanim_joints != NULL))
     {
         gcAddAnimAll(ground_gobj, gr_desc->anim_joints, gr_desc->p_matanim_joints, 0.0F);
-        omAddGObjCommonProc(ground_gobj, dGRGeometryDescs[gr_desc_id].proc_update, nOMObjProcessKindProc, 4);
+        gcAddGObjCommonProc(ground_gobj, dGRGeometryDescs[gr_desc_id].proc_update, nOMObjProcessKindProc, 4);
         gcPlayAnimAll(ground_gobj);
     }
     else if (gr_desc_id == 1)
     {
-        omAddGObjCommonProc(ground_gobj, mpCollisionAdvanceUpdateFrame, nOMObjProcessKindProc, 4);
+        gcAddGObjCommonProc(ground_gobj, mpCollisionAdvanceUpdateFrame, nOMObjProcessKindProc, 4);
     }
     grGeometryDObjSetNoAnimMtx(ground_gobj, gr_desc->dobj_desc);
 

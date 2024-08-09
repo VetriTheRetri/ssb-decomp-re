@@ -275,8 +275,8 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
             {
                 while (TRUE)
                 {
-                    gsFatalPrintF("Player Num is Over for Camera!\n");
-                    smRunPrintGObjStatus();
+                    gsFatalPrintf("Player Num is Over for Camera!\n");
+                    scManagerRunPrintGObjStatus();
                 }
             }
             ft_cam[player_num].target_fp = fp;
@@ -1054,7 +1054,7 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
 
     func_80017830(3);
     func_8001663C(gDisplayListHead, cam, 0);
-    odRenderCameraMain(gDisplayListHead, cam);
+    gcDrawCameraMain(gDisplayListHead, cam);
     func_8001783C(cam, 0);
 
     gIFPlayerCommonInterface.ifmagnify_mode = 0;
@@ -1125,11 +1125,11 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 
     cam = CameraGetStruct(camera_gobj);
 
-    omAddOMMtxForCamera(cam, tk1, 0);
+    gcAddOMMtxForCamera(cam, tk1, 0);
 
     if (tk2 != nOMTransformNull)
     {
-        omAddOMMtxForCamera(cam, tk2, 0);
+        gcAddOMMtxForCamera(cam, tk2, 0);
     }
     cam->projection.persp = dCMManagerPerspDefault;
     cam->vec = dCMManagerCameraVecDefault;
@@ -1315,7 +1315,7 @@ void func_ovl2_8010E134(GObj *camera_gobj)
     {
         Camera *cam = CameraGetStruct(camera_gobj);
 
-        odRenderCameraMain(gDisplayListHead, cam);
+        gcDrawCameraMain(gDisplayListHead, cam);
 
         func_80017B80(camera_gobj, (cam->flags & 0x8) ? 1 : 0);
         func_80017CC8(cam);
@@ -1344,7 +1344,7 @@ void func_ovl2_8010E254(GObj *camera_gobj)
     {
         Camera *cam = CameraGetStruct(camera_gobj);
 
-        odRenderCameraMain(gDisplayListHead, cam);
+        gcDrawCameraMain(gDisplayListHead, cam);
 
         func_80017B80(camera_gobj, (cam->flags & 0x8) ? 1 : 0);
         func_80017CC8(cam);

@@ -19,12 +19,12 @@ s32 D_8003B93C = 10;
 //                               //
 // // // // // // // // // // // //
 
-void gcSetMatAnimJointPlaybackRateAll(GObj *gobj, f32 anim_speed)
+void gcSetMatAnimJointSpeed(GObj *gobj, f32 anim_speed)
 {
     MObj *mobj;
     DObj *dobj = DObjGetStruct(gobj);
 
-    while (dobj != NULL) 
+    while (dobj != NULL)
     {
         mobj = dobj->mobj;
 
@@ -43,12 +43,12 @@ void gcRemoveAnimJointAll(GObj *gobj)
 
     while (dobj != NULL) 
     {
-        omRemoveAObjFromDObj(dobj);
+        gcRemoveAObjFromDObj(dobj);
         dobj = func_8000BAA0(dobj);
     }
 }
 
-void gcRemoveAnimAll(GObj *gobj) 
+void gcRemoveAnimAll(GObj *gobj)
 {
     DObj *dobj = DObjGetStruct(gobj);
 
@@ -56,13 +56,13 @@ void gcRemoveAnimAll(GObj *gobj)
     {
         MObj *mobj;
 
-        omRemoveAObjFromDObj(dobj);
+        gcRemoveAObjFromDObj(dobj);
 
         mobj = dobj->mobj;
 
         while (mobj != NULL) 
         {
-            omRemoveAObjFromMObj(mobj);
+            gcRemoveAObjFromMObj(mobj);
             mobj = mobj->next;
         }
         dobj = func_8000BAA0(dobj);
@@ -79,7 +79,7 @@ void gcRemoveMatAnimJointAll(GObj *gobj)
 
         while (mobj != NULL) 
         {
-            omRemoveAObjFromMObj(mobj);
+            gcRemoveAObjFromMObj(mobj);
             mobj = mobj->next;
         }
         dobj = func_8000BAA0(dobj);
@@ -296,7 +296,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
+                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint->f;
@@ -335,7 +335,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
+                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint->f;
@@ -373,7 +373,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
+                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint->f;
@@ -413,7 +413,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
+                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
                         }
                         track_aobjs[i]->rate_target = dobj->anim_joint->f;
 
@@ -441,7 +441,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
+                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint->f;
@@ -496,7 +496,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = omAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
+                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
                         }
                         track_aobjs[i]->length += payload;
                     }
@@ -508,7 +508,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
                 if (track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart] == NULL) 
                 { 
-                    track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart] = omAddAObjForDObj(dobj, nOMObjAnimTrackTraI); 
+                    track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart] = gcAddAObjForDObj(dobj, nOMObjAnimTrackTraI); 
                 }
                 track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart]->interpolate = dobj->anim_joint->p;
 
@@ -865,7 +865,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (mat_aobjs[i] == NULL)
                         {
-                            mat_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
                         }
                         mat_aobjs[i]->value_base = mat_aobjs[i]->value_target;
                         mat_aobjs[i]->value_target = mobj->matanim_joint->f;
@@ -905,7 +905,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (mat_aobjs[i] == NULL)
                         {
-                            mat_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
                         }
                         mat_aobjs[i]->value_base = mat_aobjs[i]->value_target;
                         mat_aobjs[i]->value_target = mobj->matanim_joint->f;
@@ -944,7 +944,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (mat_aobjs[i] == NULL)
                         {
-                            mat_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
                         }
                         mat_aobjs[i]->value_base = mat_aobjs[i]->value_target;
                         mat_aobjs[i]->value_target = mobj->matanim_joint->f;
@@ -984,7 +984,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (mat_aobjs[i] == NULL)
                         {
-                            mat_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
                         }
                         mat_aobjs[i]->rate_target = mobj->matanim_joint->f;
 
@@ -1014,7 +1014,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (mat_aobjs[i] == NULL)
                         {
-                            mat_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
                         }
                         mat_aobjs[i]->value_base = mat_aobjs[i]->value_target;
                         mat_aobjs[i]->value_target = mobj->matanim_joint->f;
@@ -1062,7 +1062,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (mat_aobjs[i] == NULL)
                         {
-                            mat_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
                         }
                         mat_aobjs[i]->length += payload;
                     }
@@ -1099,7 +1099,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (matspecial_aobjs[i] == NULL)
                         {
-                            matspecial_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialSubStart);
+                            matspecial_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialSubStart);
                         }
                         matspecial_aobjs[i]->value_base = matspecial_aobjs[i]->value_target;
                         matspecial_aobjs[i]->value_target = mobj->matanim_joint->f;
@@ -1133,7 +1133,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (matspecial_aobjs[i] == NULL)
                         {
-                            matspecial_aobjs[i] = omAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialSubStart);
+                            matspecial_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialSubStart);
                         }
                         matspecial_aobjs[i]->value_base = matspecial_aobjs[i]->value_target;
                         matspecial_aobjs[i]->value_target = mobj->matanim_joint->f;
@@ -1777,7 +1777,7 @@ f32 gcGetDObjTempAnimTimeMax
     {
         if (dobj_desc == NULL)
         {
-            omRemoveAObjFromDObj(dobj);
+            gcRemoveAObjFromDObj(dobj);
 
             return 0;
         }
@@ -1813,7 +1813,7 @@ f32 gcGetDObjTempAnimTimeMax
 
         if ((value_new != value_old) || (rate_new != rate_old))
         {
-            new_aobj = omAddAObjForDObj(dobj, i);
+            new_aobj = gcAddAObjForDObj(dobj, i);
 
             if ((i == nOMObjAnimTrackRotX) || (i == nOMObjAnimTrackRotY) || (i == nOMObjAnimTrackRotZ))
             {
@@ -1868,11 +1868,11 @@ f32 gcGetDObjTempAnimTimeMax
     origin_aobj = dobj->aobj;
     dobj->aobj = root_aobj;
 
-    omRemoveAObjFromDObj(dobj);
+    gcRemoveAObjFromDObj(dobj);
 
     dobj->aobj = parse_aobj;
 
-    omRemoveAObjFromDObj(dobj);
+    gcRemoveAObjFromDObj(dobj);
 
     dobj->aobj = origin_aobj;
     dobj->anim_joint = NULL;
@@ -2082,13 +2082,13 @@ void func_8000EE40_FA40(GObj *gobj, AObjAnimJoint **anim_joints, f32 anim_frame,
 
 void gcAddDObjTransformTraRotSca(DObj *dobj)
 {
-    omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
-    omAddOMMtxForDObjFixed(dobj, nOMTransformSca, 0);
+    gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
+    gcAddOMMtxForDObjFixed(dobj, nOMTransformSca, 0);
 }
 
 DObj* gcAddDObjForGObjTraRotSca(GObj *gobj, void *dvar)
 {
-    DObj *dobj = omAddDObjForGObj(gobj, dvar);
+    DObj *dobj = gcAddDObjForGObj(gobj, dvar);
 
     gcAddDObjTransformTraRotSca(dobj);
 
@@ -2097,7 +2097,7 @@ DObj* gcAddDObjForGObjTraRotSca(GObj *gobj, void *dvar)
 
 DObj* gcAddSiblingForDObjTraRotSca(DObj *dobj, void *dvar)
 {
-    DObj *sibling_dobj = omAddSiblingForDObj(dobj, dvar);
+    DObj *sibling_dobj = gcAddSiblingForDObj(dobj, dvar);
     gcAddDObjTransformTraRotSca(sibling_dobj);
 
     return sibling_dobj;
@@ -2105,7 +2105,7 @@ DObj* gcAddSiblingForDObjTraRotSca(DObj *dobj, void *dvar)
 
 DObj* gcAddChildForDObjTraRotSca(DObj *dobj, void *dvar)
 {
-    DObj *child_dobj = omAddChildForDObj(dobj, dvar);
+    DObj *child_dobj = gcAddChildForDObj(dobj, dvar);
     gcAddDObjTransformTraRotSca(child_dobj);
 
     return child_dobj;
@@ -2128,29 +2128,29 @@ void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs)
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = omAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
         }
-        else dobj = array_dobjs[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobj_desc->display_list);
         
         if (dobj_desc->index & 0xF000)
         {
-            omAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
+            gcAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
         }
         if (dobj_desc->index & 0x8000)
         {
-            omAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotRpyRSca, 0);
+            gcAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotRpyRSca, 0);
         } 
         else if (dobj_desc->index & 0x4000)
         {
-            omAddOMMtxForDObjFixed(dobj, nOMTransform46, 0);
+            gcAddOMMtxForDObjFixed(dobj, nOMTransform46, 0);
         }
         else if (dobj_desc->index & 0x2000)
         {
-            omAddOMMtxForDObjFixed(dobj, nOMTransform48, 0);
+            gcAddOMMtxForDObjFixed(dobj, nOMTransform48, 0);
         }
         else if (dobj_desc->index & 0x1000)
         {
-            omAddOMMtxForDObjFixed(dobj, nOMTransform50, 0);
+            gcAddOMMtxForDObjFixed(dobj, nOMTransform50, 0);
         }
         else gcAddDObjTransformTraRotSca(dobj);
         
@@ -2170,15 +2170,15 @@ void gcAddDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
 {
     if (tk1 != nOMTransformNull) 
     {
-        omAddOMMtxForDObjFixed(dobj, tk1, 0);
+        gcAddOMMtxForDObjFixed(dobj, tk1, 0);
     }
     if (tk2 != nOMTransformNull) 
     {
-        omAddOMMtxForDObjFixed(dobj, tk2, 0);
+        gcAddOMMtxForDObjFixed(dobj, tk2, 0);
     }
     if (tk3 != nOMTransformNull) 
     {
-        omAddOMMtxForDObjFixed(dobj, tk3, 0);
+        gcAddOMMtxForDObjFixed(dobj, tk3, 0);
     }
 }
 
@@ -2248,45 +2248,45 @@ void gcDecideDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, s32 flags)
     }
     if (tra_mode != 0)
     {
-        omAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
+        gcAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
     }
     if (flags & 0x4000)
     {
         if (rot_mode == 1)
         {
-            omAddOMMtxForDObjFixed(dobj, nOMTransform46, 0);
+            gcAddOMMtxForDObjFixed(dobj, nOMTransform46, 0);
         } 
-        else omAddOMMtxForDObjFixed(dobj, nOMTransform45, 0);
+        else gcAddOMMtxForDObjFixed(dobj, nOMTransform45, 0);
     }
     else if (flags & 0x2000)
     {
         if (rot_mode == 1)
         {
-            omAddOMMtxForDObjFixed(dobj, nOMTransform48, 0);
+            gcAddOMMtxForDObjFixed(dobj, nOMTransform48, 0);
         }
-        else omAddOMMtxForDObjFixed(dobj, nOMTransform47, 0);
+        else gcAddOMMtxForDObjFixed(dobj, nOMTransform47, 0);
     } 
     else if (flags & 0x1000)
     {
         if (rot_mode == 1)
         {
-            omAddOMMtxForDObjFixed(dobj, nOMTransform50, 0);
+            gcAddOMMtxForDObjFixed(dobj, nOMTransform50, 0);
         }
-        else omAddOMMtxForDObjFixed(dobj, nOMTransform49, 0);
+        else gcAddOMMtxForDObjFixed(dobj, nOMTransform49, 0);
     } 
     else if (sca_mode != 0)
     {
         if (rot_mode == 1)
         {
-            omAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotRpyRSca, 0);
+            gcAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotRpyRSca, 0);
         }
-        else omAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotPyrRSca, 0);
+        else gcAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotPyrRSca, 0);
     }
     else if (rot_mode == 1)
     {
-        omAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotRpyR, 0);
+        gcAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotRpyR, 0);
     }
-    else omAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotPyrR, 0);
+    else gcAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotPyrR, 0);
 }
 
 // 0x8000F590
@@ -2307,9 +2307,9 @@ void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = omAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
         } 
-        else dobj = array_dobjs[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobj_desc->display_list);
         
         if (dobj_desc->index & 0xF000) 
         {
@@ -2347,9 +2347,9 @@ void gcSetupCustomDObjsWithMObj(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***p_mo
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = omAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
         } 
-        else dobj = array_dobjs[0] = omAddDObjForGObj(gobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobj_desc->display_list);
         
         if (dobj_desc->index & 0xF000) 
         {
@@ -2370,7 +2370,7 @@ void gcSetupCustomDObjsWithMObj(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***p_mo
 
                 while (mobjsub != NULL)
                 {
-                    omAddMObjForDObj(dobj, mobjsub);
+                    gcAddMObjForDObj(dobj, mobjsub);
 
                     mobjsubs++;
 
@@ -2402,7 +2402,7 @@ void gcAddMObjAll(GObj *gobj, MObjSub ***p_mobjsubs)
 
                 while (mobjsub != NULL)
                 {
-                    omAddMObjForDObj(dobj, mobjsub);
+                    gcAddMObjForDObj(dobj, mobjsub);
 
                     mobjsubs++;
 

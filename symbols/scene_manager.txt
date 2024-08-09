@@ -4,9 +4,9 @@ func_800A26B8 = 0x800A26B8;
 func_800A26D8 = 0x800A26D8;
 func_800A2B18 = 0x800A2B18;
 unref_800A2BA8 = 0x800A2BA8;
-crash_inspect_gobj = 0x800A2C30;
-smProcPrintGObjStatus = 0x800A2E84;
-smRunPrintGObjStatus = 0x800A3040;
+scManagerInspectGObj = 0x800A2C30;
+scManagerProcPrintGObjStatus = 0x800A2E84;
+scManagerRunPrintGObjStatus = 0x800A3040;
 
 D_803903E0 = 0x803903E0;
 dCommonFileIDs = 0x80116BD0;

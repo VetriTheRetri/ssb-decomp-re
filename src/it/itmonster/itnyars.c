@@ -193,7 +193,7 @@ GObj* itNyarsMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         dobj = DObjGetStruct(item_gobj);
 
-        omAddOMMtxForDObjFixed(dobj, 0x48, 0);
+        gcAddOMMtxForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 
@@ -290,8 +290,8 @@ GObj* itNyarsWeaponCoinMakeWeapon(GObj *item_gobj, u8 coin_number, f32 rotate_an
 
     dobj = DObjGetStruct(weapon_gobj);
 
-    omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
-    omAddOMMtxForDObjFixed(dobj, 0x46, 0);
+    gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
+    gcAddOMMtxForDObjFixed(dobj, 0x46, 0);
 
     dobj->translate.vec.f = DObjGetStruct(item_gobj)->translate.vec.f;
 

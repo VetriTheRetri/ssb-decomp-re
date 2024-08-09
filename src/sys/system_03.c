@@ -63,7 +63,7 @@ s32 func_8000ADB0(void (*defaultHandler)(struct MaybeCommonLink)) {
     csr = s0->unk48;
     for (i = 0; i < s0->unk70; i++) {
         switch (csr[i].unk04 + 5) {
-            case 4: omEjectGObj(NULL); return 1;
+            case 4: gcEjectGObj(NULL); return 1;
             case 3: func_8000B284(NULL); break;
             case 2: func_8000B2B8(NULL); break;
             case 1: D_80046A54->unk7C |= 1; break;

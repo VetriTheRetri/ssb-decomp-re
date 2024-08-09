@@ -734,7 +734,7 @@ void ftRenderMainDrawAccessory(ftStruct *fp, DObj *dobj, ftParts *ft_parts)
     case 0:
         if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            odRenderMObjForDObj(root_dobj, gDisplayListHead);
+            gcDrawMObjForDObj(root_dobj, gDisplayListHead);
             ftRenderMainDecideFogDraw(ft_parts->flags, fp);
 
             gSPDisplayList(gDisplayListHead[0]++, root_dobj->display_list);
@@ -744,7 +744,7 @@ void ftRenderMainDrawAccessory(ftStruct *fp, DObj *dobj, ftParts *ft_parts)
     case 1:
         if ((dobj->dl_array != NULL) && (dobj->dl_array[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            odRenderMObjForDObj(root_dobj, gDisplayListHead);
+            gcDrawMObjForDObj(root_dobj, gDisplayListHead);
             ftRenderMainDecideFogDraw(ft_parts->flags, fp);
 
             gSPDisplayList(gDisplayListHead[0]++, root_dobj->display_list);
@@ -775,7 +775,7 @@ void ftRenderMainDrawDefault(DObj *dobj)
             switch (ft_parts->flags & 0xF)
             {
             case 0:
-                sp58 = odRenderDObjMain(gDisplayListHead, dobj);
+                sp58 = gcDrawDObjMain(gDisplayListHead, dobj);
 
                 if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->ft_kind == nFTKindPurin))
                 {
@@ -783,7 +783,7 @@ void ftRenderMainDrawDefault(DObj *dobj)
                 }
                 if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
-                    odRenderMObjForDObj(dobj, gDisplayListHead);
+                    gcDrawMObjForDObj(dobj, gDisplayListHead);
                     ftRenderMainDecideFogDraw(ft_parts->flags, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, dobj->display_list);
@@ -799,11 +799,11 @@ void ftRenderMainDrawDefault(DObj *dobj)
 
                     gSPDisplayList(gDisplayListHead[0]++, dls[0]);
                 }
-                sp58 = odRenderDObjMain(gDisplayListHead, dobj);
+                sp58 = gcDrawDObjMain(gDisplayListHead, dobj);
 
                 if ((dls != NULL) && (dls[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
-                    odRenderMObjForDObj(dobj, gDisplayListHead);
+                    gcDrawMObjForDObj(dobj, gDisplayListHead);
                     ftRenderMainDecideFogDraw(ft_parts->flags, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, dls[1]);
@@ -813,7 +813,7 @@ void ftRenderMainDrawDefault(DObj *dobj)
         }
         else
         {
-            sp58 = odRenderDObjMain(gDisplayListHead, dobj);
+            sp58 = gcDrawDObjMain(gDisplayListHead, dobj);
 
             if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->ft_kind == nFTKindPurin))
             {
@@ -873,11 +873,11 @@ void ftRenderMainDrawSkeleton(DObj *dobj)
             switch (skeleton->flags & 0xF)
             {
             case 0:
-                sp60 = odRenderDObjMain(gDisplayListHead, dobj);
+                sp60 = gcDrawDObjMain(gDisplayListHead, dobj);
 
                 if (!(dobj->flags & DOBJ_FLAG_NOTEXTURE) && (skeleton->display_list != NULL))
                 {
-                    odRenderMObjForDObj(dobj, gDisplayListHead);
+                    gcDrawMObjForDObj(dobj, gDisplayListHead);
                     ftRenderMainDecideFogDraw(skeleton->flags, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, skeleton->display_list);
@@ -893,11 +893,11 @@ void ftRenderMainDrawSkeleton(DObj *dobj)
 
                     gSPDisplayList(gDisplayListHead[0]++, dls[0]);
                 }
-                sp60 = odRenderDObjMain(gDisplayListHead, dobj);
+                sp60 = gcDrawDObjMain(gDisplayListHead, dobj);
 
                 if ((dls != NULL) && (dls[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
-                    odRenderMObjForDObj(dobj, gDisplayListHead);
+                    gcDrawMObjForDObj(dobj, gDisplayListHead);
                     ftRenderMainDecideFogDraw(skeleton->flags, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, dls[1]);
@@ -905,7 +905,7 @@ void ftRenderMainDrawSkeleton(DObj *dobj)
                 break;
             }
         }
-        else sp60 = odRenderDObjMain(gDisplayListHead, dobj);
+        else sp60 = gcDrawDObjMain(gDisplayListHead, dobj);
 
         if (dobj->child != NULL)
         {
@@ -978,7 +978,7 @@ void ftRenderMainDrawParts(DObj *dobj)
 
     sp74 = D_800D62D0;
 
-    sp90 = odRenderDObjMain(gDisplayListHead, dobj);
+    sp90 = gcDrawDObjMain(gDisplayListHead, dobj);
 
     for (i = 0; i < ARRAY_COUNT(fp->fighter_hurt); i++)
     {

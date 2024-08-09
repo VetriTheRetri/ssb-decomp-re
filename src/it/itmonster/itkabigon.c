@@ -122,20 +122,20 @@ void itKabigonFallProcRender(GObj *item_gobj)
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
         }
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
         }
         else itRenderHitCollisions(item_gobj);
     }
@@ -174,7 +174,7 @@ void itKabigonFallInitItemVars(GObj *item_gobj)
     }
     item_gobj->proc_render = itKabigonFallProcRender;
 
-    omMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
+    gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
 }
 
 // 0x8017E350
@@ -230,20 +230,20 @@ void itKabigonCommonProcRender(GObj *item_gobj)
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
         }
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
         }
         else itRenderHitCollisions(item_gobj);
     }

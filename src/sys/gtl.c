@@ -228,14 +228,14 @@ void gsCheckGtlBufferLengths()
 	{
 		if (D_80046570[gGtlTaskId][i].length + (uintptr_t)D_80046570[gGtlTaskId][i].start < (uintptr_t)gDisplayListHead[i])
 		{
-			gsFatalPrintF("gtl : DLBuffer over flow !  kind = %d  vol = %d byte\n", i, (uintptr_t)gDisplayListHead[i] - (uintptr_t)D_80046570[gGtlTaskId][i].start);
+			gsFatalPrintf("gtl : DLBuffer over flow !  kind = %d  vol = %d byte\n", i, (uintptr_t)gDisplayListHead[i] - (uintptr_t)D_80046570[gGtlTaskId][i].start);
 			while (TRUE);
 		}
 	}
 
 	if ((uintptr_t)gGraphicsHeap.end < (uintptr_t)gGraphicsHeap.ptr)
 	{
-		gsFatalPrintF("gtl : DynamicBuffer over flow !  %d byte\n", (uintptr_t)gGraphicsHeap.ptr - (uintptr_t)gGraphicsHeap.start);
+		gsFatalPrintf("gtl : DynamicBuffer over flow !  %d byte\n", (uintptr_t)gGraphicsHeap.ptr - (uintptr_t)gGraphicsHeap.start);
 		while (TRUE);
 	}
 }
@@ -253,7 +253,7 @@ void func_80004C5C(void *arg0, u32 buffer_size)
 
 	if ((uintptr_t)&D_80044FC0_407D0 & 7)
 	{
-		gsFatalPrintF("bad addr sc_rdp_output_len = %x\n", &D_80044FC0_407D0);
+		gsFatalPrintf("bad addr sc_rdp_output_len = %x\n", &D_80044FC0_407D0);
 		while (TRUE);
 	}
 }
@@ -269,7 +269,7 @@ void func_80004CB4(s32 arg0, void *arg1, u32 buffer_size)
 	{
 		if (buffer_size == 0)
 		{
-			gsFatalPrintF("gtl : Buffer size for RDP is zero !!\n");
+			gsFatalPrintf("gtl : Buffer size for RDP is zero !!\n");
 			while (TRUE);
 		}
 	}
@@ -287,13 +287,13 @@ DObj* func_80004D2C()
 
 	if (sDObjTasks[gGtlTaskId] == NULL)
 	{
-		gsFatalPrintF("gtl : not defined SCTaskGfx\n");
+		gsFatalPrintf("gtl : not defined SCTaskGfx\n");
 		while (TRUE);
 	}
 
 	if (D_80046550[gGtlTaskId] == D_80046558[gGtlTaskId])
 	{
-		gsFatalPrintF("gtl : couldn\'t get SCTaskGfx\n");
+		gsFatalPrintf("gtl : couldn\'t get SCTaskGfx\n");
 		while (TRUE);
 	}
 
@@ -339,7 +339,7 @@ void func_80004EFC()
 
 	if (mesg == NULL)
 	{
-		gsFatalPrintF("gtl : not defined SCTaskGfxEnd\n");
+		gsFatalPrintf("gtl : not defined SCTaskGfxEnd\n");
 		while (TRUE);
 	}
 
@@ -355,7 +355,7 @@ void func_80004F78()
 
 	if (mesg == NULL)
 	{
-		gsFatalPrintF("gtl : not defined SCTaskGfxEnd\n");
+		gsFatalPrintf("gtl : not defined SCTaskGfxEnd\n");
 		while (TRUE);
 	}
 
@@ -411,7 +411,7 @@ void func_80005018(SCTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u
 
 	if (ucode->text == NULL)
 	{
-		gsFatalPrintF("gtl : ucode isn\'t included  kind = %d\n", ucode_id);
+		gsFatalPrintf("gtl : ucode isn\'t included  kind = %d\n", ucode_id);
 		while (TRUE);
 	}
 	t->task.t.ucode           = ucode->text;
@@ -994,7 +994,7 @@ void unref_8000641C(Temp8000641C *arg0)
 
 	if (task == NULL)
 	{
-		gsFatalPrintF("gtl : not defined SCTaskGfxEnd\n");
+		gsFatalPrintf("gtl : not defined SCTaskGfxEnd\n");
 		while (TRUE); // { ; }
 	}
 	gsScheduleGfxEnd(task, NULL, gGtlTaskId, &D_80045500);
@@ -1127,7 +1127,7 @@ void gsGTLSceneInit(gsGTLSetupDesc *gtl_desc)
 	omsetup.num_cameras = gtl_desc->num_cameras;
 	omsetup.camera_size = gtl_desc->camera_size;
 
-	omSetupObjectManager(&omsetup);
+	gcSetupObjectManager(&omsetup);
 
 	D_800465F8.fn08 = func_80006350;
 	D_800465F8.fn10 = func_800063A0;

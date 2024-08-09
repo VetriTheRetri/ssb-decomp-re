@@ -376,8 +376,8 @@ void itNBumperAttachedInitItemVars(GObj *item_gobj)
 
     mobjsub = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attributes->dobj_setup - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitMObjSub); // Linker thing
 
-    omRemoveMObjFromDObj(dobj);
-    omAddMObjForDObj(dobj, mobjsub);
+    gcRemoveMObjFromDObj(dobj);
+    gcAddMObjForDObj(dobj, mobjsub);
 
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = 1.0F;
 
@@ -640,7 +640,7 @@ GObj* itNBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->mobj->texture_frame = 0.0F;
 
-        omAddOMMtxForDObjFixed(dobj, 0x2E, 0);
+        gcAddOMMtxForDObjFixed(dobj, 0x2E, 0);
 
         dobj->translate.vec.f = translate;
 

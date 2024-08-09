@@ -227,11 +227,11 @@ void grYosterInitAll(void)
 
     for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.yoster.clouds); i++)
     {
-        map_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+        map_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
         gGRCommonStruct.yoster.clouds[i].gobj = map_gobj;
 
-        omAddGObjRenderProc(map_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjRenderProc(map_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
         gcSetupCustomDObjs
         (
             map_gobj, 
@@ -241,7 +241,7 @@ void grYosterInitAll(void)
             nOMTransformNull, 
             nOMTransformNull
         );
-        omAddGObjCommonProc(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
+        gcAddGObjCommonProc(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
         gcAddAnimJointAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
 
@@ -254,11 +254,11 @@ void grYosterInitAll(void)
 
         for (j = 0; j < ARRAY_COUNT(gGRCommonStruct.yoster.clouds[i].dobj); j++, coll_dobj = coll_dobj->sib_next)
         {
-            cloud_dobj = omAddChildForDObj(coll_dobj, (uintptr_t)map_head + (intptr_t)&lGRYosterCloudDisplayList);
+            cloud_dobj = gcAddChildForDObj(coll_dobj, (uintptr_t)map_head + (intptr_t)&lGRYosterCloudDisplayList);
             gGRCommonStruct.yoster.clouds[i].dobj[j] = cloud_dobj;
 
-            omAddOMMtxForDObjFixed(cloud_dobj, nOMTransformTra, 0);
-            omAddOMMtxForDObjFixed(cloud_dobj, nOMTransform48, 0);
+            gcAddOMMtxForDObjFixed(cloud_dobj, nOMTransformTra, 0);
+            gcAddOMMtxForDObjFixed(cloud_dobj, nOMTransform48, 0);
             func_ovl0_800C9228(cloud_dobj, (uintptr_t)map_head + (intptr_t)&D_NF_000004B8);
         }
         gcPlayAnimAll(map_gobj);
@@ -277,10 +277,10 @@ void grYosterInitAll(void)
 // 0x80108C80
 GObj* grYosterMakeGround(void)
 {
-    GObj *ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     grYosterInitAll();
-    omAddGObjCommonProc(ground_gobj, grYosterProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjCommonProc(ground_gobj, grYosterProcUpdate, nOMObjProcessKindProc, 4);
 
     return ground_gobj;
 }

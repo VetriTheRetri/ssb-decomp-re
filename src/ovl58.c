@@ -157,16 +157,16 @@ void mnN64InitAll()
 
 	rdManagerInitSetup(&rldm_setup);
 
-	omMakeGObjSPAfter(0, mnN64ActorProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
+	gcMakeGObjSPAfter(0, mnN64ActorProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
 	func_8000B9FC(0, 0x80000000, 0x64, 2, 0xFF);
 
 	cam = CameraGetStruct(func_8000B93C(0x3EB, NULL, 9, 0x80000000, func_ovl0_800CD2CC, 0x50, 1, -1, 0, 1, 0, 1, 0));
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	gobj = omMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
+	gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjCommonProc(gobj, mnN64LogoProcUpdate, 0, 1);
-	omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
+	gcAddGObjCommonProc(gobj, mnN64LogoProcUpdate, 0, 1);
+	gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
 
 	sprite = (Sprite*)((uintptr_t)rdManagerGetFileWithExternHeap(&D_NF_000000C2, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_000000C2), 0x10)) + (intptr_t)&D_NF_000073C0);
 	sobj = gcAppendSObjWithSprite(gobj, sprite);

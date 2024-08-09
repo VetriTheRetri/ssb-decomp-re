@@ -106,7 +106,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
     {
         item_gobj->proc_render = itPippiCommonMoveDLProcRender;
 
-        omMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
+        gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
     }
     if (it_kind == nITKindLizardon)
     {
@@ -128,20 +128,20 @@ void itPippiCommonProcRender(GObj *item_gobj)
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
         }
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
         }
         else itRenderHitCollisions(item_gobj);
     }
@@ -161,20 +161,20 @@ void itPippiCommonMoveDLProcRender(GObj *item_gobj)
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
         }
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
             itRenderMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-            odRenderDObjTreeForGObj(item_gobj);
+            gcDrawDObjTreeForGObj(item_gobj);
         }
         else itRenderHitCollisions(item_gobj);
     }
@@ -224,7 +224,7 @@ GObj* itPippiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        omAddOMMtxForDObjFixed(dobj, 0x48, 0);
+        gcAddOMMtxForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 

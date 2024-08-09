@@ -40,14 +40,14 @@ void grCastleInitAll(void)
 
     gGRCommonStruct.castle.map_head = map_head = (void*)((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRCastleMapHead);
 
-    ground_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
-    omAddGObjCommonProc(ground_gobj, grCastleBumperProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjCommonProc(ground_gobj, grCastleBumperProcUpdate, nOMObjProcessKindProc, 4);
 
-    dobj = omAddDObjForGObj(ground_gobj, NULL);
+    dobj = gcAddDObjForGObj(ground_gobj, NULL);
     dobj->translate.vec.f.x = dobj->translate.vec.f.y = dobj->translate.vec.f.z = 0.0F;
 
-    omAddGObjCommonProc(ground_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
+    gcAddGObjCommonProc(ground_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
     gcAddAnimJointAll(ground_gobj, gMPCollisionGroundData->map_nodes, 0.0F);
     gcPlayAnimAll(ground_gobj);

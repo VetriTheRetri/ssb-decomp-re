@@ -356,7 +356,7 @@ GObj* itStarmieMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        omAddOMMtxForDObjFixed(dobj, 0x48, 0);
+        gcAddOMMtxForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 
@@ -364,7 +364,7 @@ GObj* itStarmieMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITStarmieDataStart), 0.0F); // Linker thing
 
-        omMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
+        gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
     }
     return item_gobj;
 }

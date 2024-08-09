@@ -185,13 +185,13 @@ void wpRenderMain(GObj *weapon_gobj, void(*proc_render)(GObj*))
 // 0x801675D0
 void wpRenderDLHead1(GObj *weapon_gobj)
 {
-    wpRenderMain(weapon_gobj, odRenderDObjDLHead1);
+    wpRenderMain(weapon_gobj, gcDrawDObjDLHead1);
 }
 
 // 0x801675F4
 void wpRenderDObjDLLinks(GObj *weapon_gobj)
 {
-    wpRenderMain(weapon_gobj, odRenderDObjDLLinksForGObj);
+    wpRenderMain(weapon_gobj, gcDrawDObjDLLinksForGObj);
 }
 
 // 0x80167618
@@ -203,7 +203,7 @@ void func_ovl3_80167618(GObj *weapon_gobj)
 // 0x8016763C
 void wpRenderDObjTreeDLLinks(GObj *weapon_gobj)
 {
-    wpRenderMain(weapon_gobj, odRenderDObjTreeDLLinksForGObj);
+    wpRenderMain(weapon_gobj, gcDrawDObjTreeDLLinksForGObj);
 }
 
 // 0x80167660
@@ -222,7 +222,7 @@ void wpRenderPKThunder(GObj *weapon_gobj)
 
         gDPSetEnvColor(gDisplayListHead[1]++, dWPRenderPKThunderEnvColors[index].r, dWPRenderPKThunderEnvColors[index].g, dWPRenderPKThunderEnvColors[index].b, 0xFF);
 
-        odRenderDObjDLLinksForGObj(weapon_gobj);
+        gcDrawDObjDLLinksForGObj(weapon_gobj);
 
         wpRenderDrawZBuffer();
 
@@ -238,7 +238,7 @@ void wpRenderPKThunder(GObj *weapon_gobj)
 
         gDPSetEnvColor(gDisplayListHead[1]++, dWPRenderPKThunderEnvColors[index].r, dWPRenderPKThunderEnvColors[index].g, dWPRenderPKThunderEnvColors[index].b, 0xFF);
 
-        odRenderDObjDLLinksForGObj(weapon_gobj);
+        gcDrawDObjDLLinksForGObj(weapon_gobj);
 
         wpRenderDrawZBuffer();
     }

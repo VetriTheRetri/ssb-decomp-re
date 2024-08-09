@@ -136,9 +136,9 @@ void func_ovl59_80131F34(GObj *arg0)
 
 	if ((credits->unk_gmcreditsmtx_0x14 + gCreditsRollSpeed) >= 1.0F)
 	{
-		omEjectGObj(NULL);
-		omEjectGObj(gCreditsStaffRoleTextGObj);
-		omEjectGObj(gCreditsCompanyTextGObj);
+		gcEjectGObj(NULL);
+		gcEjectGObj(gCreditsStaffRoleTextGObj);
+		gcEjectGObj(gCreditsCompanyTextGObj);
 	}
 	else
 	{
@@ -159,10 +159,10 @@ void func_ovl59_8013202C(GObj *arg0)
 
 	if (gobj == NULL)
 	{
-		gobj = omMakeGObjSPAfter(8, NULL, nOMObjCommonLinkID02, GOBJ_LINKORDER_DEFAULT);
-		omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
+		gobj = gcMakeGObjSPAfter(8, NULL, nOMObjCommonLinkID02, GOBJ_LINKORDER_DEFAULT);
+		gcAddGObjRenderProc(gobj, gcDrawDObjTreeForGObj, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
 		gcSetupCustomDObjs(gobj, gCreditsDObjDesc, NULL, nOMTransformTraRotRpyRSca, nOMTransformNull, nOMTransformNull);
-		omAddGObjCommonProc(gobj, func_ovl59_80131F34, nOMObjProcessKindProc, 1);
+		gcAddGObjCommonProc(gobj, func_ovl59_80131F34, nOMObjProcessKindProc, 1);
 
 		gobj->user_data.p = arg0;
 		ugobj->unk_0x1C = gobj;
@@ -264,7 +264,7 @@ void gmCreditsHighlightProcUpdate(GObj *gobj)
 			gsStopCurrentProcess(1);
 		}
 	}
-	omEjectGObj(NULL);
+	gcEjectGObj(NULL);
 	gsStopCurrentProcess(1);
 }
 
@@ -277,10 +277,10 @@ void gmCreditsMakeHighlightGObj(GObj *gobj)
 
 	if (highlight_gobj == NULL)
 	{
-		highlight_gobj = omMakeGObjSPAfter(9, NULL, 9, 0x80000000);
+		highlight_gobj = gcMakeGObjSPAfter(9, NULL, 9, 0x80000000);
 
-		omAddGObjRenderProc(highlight_gobj, gmCreditsHighlightProcRender, 8, 0x80000000, -1);
-		omAddGObjCommonProc(highlight_gobj, gmCreditsHighlightProcUpdate, 0, 1);
+		gcAddGObjRenderProc(highlight_gobj, gmCreditsHighlightProcRender, 8, 0x80000000, -1);
+		gcAddGObjCommonProc(highlight_gobj, gmCreditsHighlightProcUpdate, 0, 1);
 
 		gCreditsHighlightPositionX = sobj->pos.x + 8.0F;
 		gCreditsHighlightPositionY = sobj->pos.y + 20.0F;
@@ -466,11 +466,11 @@ void gmCreditsMakeStaffRoleTextGObj(GObj *staff_gobj)
 
 	if (gOMObjCommonLinks[10] != NULL)
 	{
-		omEjectGObj(gOMObjCommonLinks[10]);
+		gcEjectGObj(gOMObjCommonLinks[10]);
 	}
-	text_gobj = omMakeGObjSPAfter(6, NULL, 0xA, 0x80000000);
+	text_gobj = gcMakeGObjSPAfter(6, NULL, 0xA, 0x80000000);
 
-	omAddGObjRenderProc(text_gobj, func_ovl0_800CCF00, 5, 0x80000000, -1);
+	gcAddGObjRenderProc(text_gobj, func_ovl0_800CCF00, 5, 0x80000000, -1);
 
 	gCreditsStaffRoleTextGObj = text_gobj;
 
@@ -570,11 +570,11 @@ void gmCreditsMakeCompanyTextGObj(GObj *staff_gobj)
 
 	if (gOMObjCommonLinks[11] != NULL)
 	{
-		omEjectGObj(gOMObjCommonLinks[11]);
+		gcEjectGObj(gOMObjCommonLinks[11]);
 	}
-	text_gobj = omMakeGObjSPAfter(7, NULL, 0xB, 0x80000000);
+	text_gobj = gcMakeGObjSPAfter(7, NULL, 0xB, 0x80000000);
 
-	omAddGObjRenderProc(text_gobj, func_ovl0_800CCF00, 6, 0x80000000, -1);
+	gcAddGObjRenderProc(text_gobj, func_ovl0_800CCF00, 6, 0x80000000, -1);
 
 	gCreditsCompanyTextGObj = text_gobj;
 
@@ -808,7 +808,7 @@ void gmCreditsJobAndNameProcUpdate(GObj *gobj)
 		gCreditsStatus = -1;
 	}
 	gmCreditsNameSetPrevAlloc(cn);
-	omEjectGObj(NULL);
+	gcEjectGObj(NULL);
 	gsStopCurrentProcess(1);
 }
 
@@ -823,7 +823,7 @@ void gmCreditsJobProcRender(GObj *gobj)
 		gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x7F, 0x7F, 0x89, 0xFF);
 		gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
 	}
-	odRenderDObjTreeForGObj(gobj);
+	gcDrawDObjTreeForGObj(gobj);
 }
 
 // 80133930
@@ -837,7 +837,7 @@ void gmCreditsNameProcRender(GObj *gobj)
 		gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x88, 0x93, 0xFF, 0xFF);
 		gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
 	}
-	odRenderDObjTreeForGObj(gobj);
+	gcDrawDObjTreeForGObj(gobj);
 }
 
 // 80133A0C
@@ -884,9 +884,9 @@ gmCreditsSetup* gmCreditsMakeJobDObjs(gmCreditsSetup *name_setup, DObj *dobj, s3
 			width = dCreditsNameAndJobSpriteInfo[dCreditsJobCharacters[character_id]].width;
 			height = dCreditsNameAndJobSpriteInfo[dCreditsJobCharacters[character_id]].height;
 
-			new_dobj = omAddChildForDObj(dobj, dl);
+			new_dobj = gcAddChildForDObj(dobj, dl);
 
-			omAddOMMtxForDObjFixed(new_dobj, nOMTransformTra, 1);
+			gcAddOMMtxForDObjFixed(new_dobj, nOMTransformTra, 1);
 
 			if (job_character_id != -1)
 			{
@@ -999,13 +999,13 @@ GObj* gmCreditsMakeJobGObj(gmCreditsJob *job)
 
 	wbase = 0.0F;
 
-	gobj = omMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsJob, 0x80000000);
+	gobj = gcMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsJob, 0x80000000);
 
-	omAddGObjRenderProc(gobj, gmCreditsJobProcRender, 2, 0x80000000, -1);
+	gcAddGObjRenderProc(gobj, gmCreditsJobProcRender, 2, 0x80000000, -1);
 
-	dobj = omAddDObjForGObj(gobj, NULL);
+	dobj = gcAddDObjForGObj(gobj, NULL);
 
-	omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
+	gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
 
 	if (job->prefix_id != -1)
 	{
@@ -1014,7 +1014,7 @@ GObj* gmCreditsMakeJobGObj(gmCreditsJob *job)
 	}
 	gmCreditsMakeJobDObjs(&job_setup, dobj, job->job_id, wbase);
 	gmCreditsJobAndNameInitStruct(gobj, dobj, job_setup.dobj, 0);
-	omAddGObjCommonProc(gobj, gmCreditsJobAndNameProcUpdate, 0, 1);
+	gcAddGObjCommonProc(gobj, gmCreditsJobAndNameProcUpdate, 0, 1);
 
 	return gobj;
 }
@@ -1036,13 +1036,13 @@ GObj* gmCreditsMakeNameGObjAndDObjs()
 
 	name_character_id = -1;
 
-	gobj = omMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsName, 0x80000000);
+	gobj = gcMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsName, 0x80000000);
 
-	omAddGObjRenderProc(gobj, gmCreditsNameProcRender, 1, 0x80000000, -1);
+	gcAddGObjRenderProc(gobj, gmCreditsNameProcRender, 1, 0x80000000, -1);
 
-	new_dobj = dobj = omAddDObjForGObj(gobj, NULL);
+	new_dobj = dobj = gcAddDObjForGObj(gobj, NULL);
 
-	omAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
+	gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
 
 	wbase = 0.0F;
 
@@ -1066,9 +1066,9 @@ GObj* gmCreditsMakeNameGObjAndDObjs()
 			width = dCreditsNameAndJobSpriteInfo[dCreditsNameCharacters[character_id]].width;
 			height = dCreditsNameAndJobSpriteInfo[dCreditsNameCharacters[character_id]].height;
 
-			new_dobj = omAddChildForDObj(dobj, dl);
+			new_dobj = gcAddChildForDObj(dobj, dl);
 
-			omAddOMMtxForDObjFixed(new_dobj, nOMTransformTra, 1);
+			gcAddOMMtxForDObjFixed(new_dobj, nOMTransformTra, 1);
 
 			if (name_character_id != -1)
 			{
@@ -1164,7 +1164,7 @@ GObj* gmCreditsMakeNameGObjAndDObjs()
 
 	}
 	gmCreditsJobAndNameInitStruct(gobj, dobj, new_dobj, 1);
-	omAddGObjCommonProc(gobj, gmCreditsJobAndNameProcUpdate, 0, 1);
+	gcAddGObjCommonProc(gobj, gmCreditsJobAndNameProcUpdate, 0, 1);
 
 	return gobj;
 }
@@ -1215,11 +1215,11 @@ void gmCreditsMakeCrosshairGObj()
 	GObj *gobj;
 	SObj *sobj;
 
-	gobj = omMakeGObjSPAfter(3, NULL, 6, 0x80000000);
+	gobj = gcMakeGObjSPAfter(3, NULL, 6, 0x80000000);
 
-	omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
+	gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
 
-	omAddGObjCommonProc(gobj, gmCreditsCrosshairProcUpdate, 0, 1);
+	gcAddGObjCommonProc(gobj, gmCreditsCrosshairProcUpdate, 0, 1);
 
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsFiles[0], &lCreditsCrosshairSprite));
 
@@ -1242,15 +1242,15 @@ void gmCreditsMakeTextBoxBracketSObjs()
 	SObj *left_sobj;
 	SObj *right_sobj;
 
-	gobj = omMakeGObjSPAfter(3, NULL, 8, 0x80000000);
+	gobj = gcMakeGObjSPAfter(3, NULL, 8, 0x80000000);
 
-	omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 7, 0x80000000, -1);
+	gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 7, 0x80000000, -1);
 
 	left_sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsFiles[0], &lCreditsTextBoxBracketLeft));
 
-	gobj = omMakeGObjSPAfter(3, NULL, 8, 0x80000000);
+	gobj = gcMakeGObjSPAfter(3, NULL, 8, 0x80000000);
 
-	omAddGObjRenderProc(gobj, func_ovl0_800CCF00, 7, 0x80000000, -1);
+	gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 7, 0x80000000, -1);
 
 	right_sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsFiles[0], &lCreditsTextBoxBracketRight));
 
@@ -1272,10 +1272,10 @@ void gmCreditsMakeTextBoxBracketSObjs()
 // 801347F4
 void gmCreditsMakeTextBoxGObj()
 {
-	GObj *gobj = omMakeGObjSPAfter(4, NULL, 7, 0x80000000);
+	GObj *gobj = gcMakeGObjSPAfter(4, NULL, 7, 0x80000000);
 
-	omAddGObjRenderProc(gobj, odRenderDObjTreeForGObj, 9, 0x80000000, -1);
-	omAddDObjForGObj(gobj, dCreditsTextBoxDisplayList);
+	gcAddGObjRenderProc(gobj, gcDrawDObjTreeForGObj, 9, 0x80000000, -1);
+	gcAddDObjForGObj(gobj, dCreditsTextBoxDisplayList);
 }
 
 // 80134854
@@ -1324,16 +1324,16 @@ void gmCreditsStaffRollProcUpdate(GObj *gobj)
 
 	gCreditsStaffRollGObj = NULL;
 
-	omEjectGObj(NULL);
+	gcEjectGObj(NULL);
 	gsStopCurrentProcess(1);
 }
 
 // 8013498C
 void gmCreditsMakeStaffRollGObj()
 {
-	GObj *gobj = omMakeGObjSPAfter(0, NULL, 1, 0x80000000);
+	GObj *gobj = gcMakeGObjSPAfter(0, NULL, 1, 0x80000000);
 
-	omAddGObjCommonProc(gobj, gmCreditsStaffRollProcUpdate, 0, 1);
+	gcAddGObjCommonProc(gobj, gmCreditsStaffRollProcUpdate, 0, 1);
 
 	gCreditsStaffRollGObj = gobj;
 }
@@ -1455,7 +1455,7 @@ void gmCreditsMakeCamera()
 // 8013505C
 void gmCreditsInitAll()
 {
-	omMakeGObjSPAfter(0, func_ovl59_801334E4, 1, 0x80000000);
+	gcMakeGObjSPAfter(0, func_ovl59_801334E4, 1, 0x80000000);
 	func_8000B9FC(0xC, 0x80000000, 0x64, 2, 0xFF);
 	func_ovl59_801349DC();
 	gmCreditsInitNameAndJobDisplayLists();

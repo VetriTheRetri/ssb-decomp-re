@@ -993,9 +993,9 @@ extern "C"
 
 	/* Enhanced PI interface */
 
-	extern OSPiHandle* osCartRomInit(void);
+	extern OSPiHandle* osCartRgcInit(void);
 	extern OSPiHandle* osLeoDiskInit(void);
-	extern OSPiHandle* osDriveRomInit(void);
+	extern OSPiHandle* osDriveRgcInit(void);
 
 	extern s32 osEPiDeviceType(OSPiHandle*, OSPiInfo*);
 	extern s32 osEPiRawWriteIo(OSPiHandle*, u32, u32);

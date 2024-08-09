@@ -119,7 +119,7 @@ GObj* itStarMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_unused_item_bool = TRUE;
 
-        omAddOMMtxForDObjFixed(dobj, 0x2E, 0);
+        gcAddOMMtxForDObjFixed(dobj, 0x2E, 0);
 
         dobj->rotate.vec.f.z = 0.0F;
 

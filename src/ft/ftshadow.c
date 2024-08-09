@@ -432,7 +432,7 @@ void ftShadowProcRender(GObj *shadow_gobj)
 // 0x8013BB88
 GObj* ftShadowMakeShadow(GObj *fighter_gobj)
 {
-    GObj *shadow_gobj = omMakeGObjSPAfter(nOMObjCommonKindShadow, NULL, nOMObjCommonLinkIDShadow, GOBJ_LINKORDER_DEFAULT);
+    GObj *shadow_gobj = gcMakeGObjSPAfter(nOMObjCommonKindShadow, NULL, nOMObjCommonLinkIDShadow, GOBJ_LINKORDER_DEFAULT);
     ftStruct *fp;
     ftShadow *fs = gsMemoryAlloc(sizeof(ftShadow), 0x8);
     s32 i;
@@ -460,7 +460,7 @@ GObj* ftShadowMakeShadow(GObj *fighter_gobj)
     }
     shadow_gobj->user_data.p = fs;
 
-    omAddGObjRenderProc(shadow_gobj, ftShadowProcRender, 7, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjRenderProc(shadow_gobj, ftShadowProcRender, 7, GOBJ_LINKORDER_DEFAULT, -1);
 
     return shadow_gobj;
 }

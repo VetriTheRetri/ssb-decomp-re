@@ -377,7 +377,7 @@ void ftParamMoveDLLink(GObj *fighter_gobj, u8 dl_link)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    omMoveGObjDL(fighter_gobj, dl_link, GOBJ_DLLINKORDER_DEFAULT);
+    gcMoveGObjDL(fighter_gobj, dl_link, GOBJ_DLLINKORDER_DEFAULT);
 
     fp->dl_link = dl_link;
 }
@@ -787,7 +787,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 drawstatus)
         {
             modelpart_status->drawstatus_current = drawstatus;
 
-            omRemoveMObjFromDObj(joint);
+            gcRemoveMObjFromDObj(joint);
 
             if (drawstatus != -1)
             {
@@ -874,7 +874,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
             {
                 modelpart_status->drawstatus_current = modelpart_status->drawstatus_default;
 
-                omRemoveMObjFromDObj(joint);
+                gcRemoveMObjFromDObj(joint);
 
                 if (modelpart_status->drawstatus_current == -1)
                 {
@@ -947,7 +947,7 @@ void ftParamHideModelPartAll(GObj *fighter_gobj)
             {
                 fp->modelpart_status[i - nFTPartsJointCommonStart].drawstatus_current = -1;
 
-                omRemoveMObjFromDObj(joint);
+                gcRemoveMObjFromDObj(joint);
 
                 joint->display_list = NULL;
             }
@@ -1016,7 +1016,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
 
         if (joint != NULL)
         {
-            omRemoveMObjFromDObj(joint);
+            gcRemoveMObjFromDObj(joint);
 
             modelpart_status = &fp->modelpart_status[i];
 
@@ -1057,16 +1057,16 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
 
                 if (ft_parts->gobj != NULL)
                 {
-                    omEjectGObj(ft_parts->gobj);
+                    gcEjectGObj(ft_parts->gobj);
 
                     ft_parts->gobj = NULL;
                 }
                 if (costume != 0)
                 {
-                    ft_parts_gobj = omMakeGObjSPAfter(nOMObjCommonKindFighterParts, NULL, nOMObjCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
+                    ft_parts_gobj = gcMakeGObjSPAfter(nOMObjCommonKindFighterParts, NULL, nOMObjCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
                     ft_parts->gobj = ft_parts_gobj;
 
-                    omAddDObjForGObj(ft_parts_gobj, ft_mesh->dl);
+                    gcAddDObjForGObj(ft_parts_gobj, ft_mesh->dl);
 
                     func_ovl0_800C8CB8(DObjGetStruct(ft_parts->gobj), ft_mesh->mobjsubs, ft_mesh->costume_matanim_joints, NULL, costume);
                 }
@@ -1403,7 +1403,7 @@ void ftParamStopEffect(GObj *effect_gobj, efStruct *ep)
         func_ovl0_800D39D4(einfo->unk_effect_0xB8, ep->unk_effectstruct_0x8 >> 3);
     }
     efManagerSetPrevStructAlloc(ep);
-    omEjectGObj(effect_gobj);
+    gcEjectGObj(effect_gobj);
 }
 
 // 0x800E9C3C
@@ -1911,7 +1911,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
 
     case nEFKindFlameRandom:
         ftParamGetEffectJointPosition(fp, &pos);
-        effect = efManagerFlameRandomMakeEffect(&pos);
+        effect = efManagerFlameRandgcMakeEffect(&pos);
         break;
 
     case nEFKindFlameStatic:

@@ -680,9 +680,9 @@ void gmStageClearMakeTextSObjs()
 	GObj *gobj;
 	SObj *sobj;
 
-	gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextShadow));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -749,9 +749,9 @@ void gmStageClearMakeTextSObjs()
 		sobj->pos.x = 53.0F;
 		sobj->pos.y = 24.0F;
 	}
-	sGMStageClearBonusTextGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sGMStageClearBonusTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextBonus));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -771,9 +771,9 @@ void gmStageClearMakeScoreSObjs()
 	GObj *gobj;
 	SObj *sobj;
 
-	sGMStageClearScoreTextGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sGMStageClearScoreTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[1], &lGMStageClearSpriteTextScore));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -799,9 +799,9 @@ void gmStageClearMakeTimerTextSObjs(f32 y)
 	GObj *gobj;
 	SObj *sobj;
 
-	sGMStageClearTimerTextGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sGMStageClearTimerTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextTimer));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -846,9 +846,9 @@ void gmStageClearMakeTimerDigitSObjs(f32 y)
 	s32 multiplier;
 	s32 unused;
 
-	sGMStageClearTimerMultiplierGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sGMStageClearTimerMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[3], &lGMStageClearSpriteTextMultiplySign));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -894,9 +894,9 @@ s32 gmStageClearGetAppendTotalTimeScore(f32 y)
 	s32 time_score_total;
 	s32 multiplier;
 
-	sGMStageClearTimerMultiplierGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sGMStageClearTimerMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	switch (sGMStageClear1PGameStage)
 	{
@@ -927,8 +927,8 @@ void gmStageClearMakeDamageTextSObjs(f32 y)
 	SObj *sobj;
 	s32 unused;
 
-	sGMStageClearDamageTextGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	sGMStageClearDamageTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextDamage));
 
@@ -975,9 +975,9 @@ void gmStageClearMakeDamageDigitSObjs(f32 y)
 
 	x = (sGMStageClearDamageDealt > 1000) ? 184 : 171;
 
-	sGMStageClearDamageMultiplierGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sGMStageClearDamageMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	gmStageClearMakeScoreDigitSObjs(gobj, sGMStageClearDamageDealt, x, (s32)y - 1, NULL, 1, 0, 0, 4, FALSE);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[3], &lGMStageClearSpriteTextMultiplySign));
@@ -1006,9 +1006,9 @@ s32 gmStageClearGetAppendTotalDamageScore(f32 y)
 	s32 unused;
 	s32 damage_score_total;
 
-	sGMStageClearDamageMultiplierGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sGMStageClearDamageMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_LINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_LINKORDER_DEFAULT, -1);
 	damage_score_total = sGMStageClearDamageDealt * 10;
 
 	gmStageClearMakeScoreDigitSObjs(gobj, damage_score_total, 200.0F, (s32)y - 1, NULL, 1, 0, 0, 5, FALSE);
@@ -1024,9 +1024,9 @@ void gmStageClearMakeTargetTextSObjs()
 	SObj *sobj;
 	s32 y1 = 94, y2 = 96;
 
-	sGMStageClearTargetGObj = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sGMStageClearTargetGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextTarget));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1070,7 +1070,7 @@ void func_ovl56_80132DC0(GObj *gobj)
 	if (gobj->user_data.u == D_ovl56_801352CC)
 	{
 		func_800269C0_275C0(nGMSoundFGMUnkSoftPing1);
-		omEjectGObj(sGMStageClearScoreTextGObj);
+		gcEjectGObj(sGMStageClearScoreTextGObj);
 		sGMStageClearScoreTotal += 1000;
 		gmStageClearMakeScoreSObjs();
 	}
@@ -1082,10 +1082,10 @@ void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
 	GObj *gobj;
 	SObj *sobj;
 
-	sGMStageClearBonusObjectiveGObjs[objective_num] = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sGMStageClearBonusObjectiveGObjs[objective_num] = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-	omAddGObjCommonProc(gobj, func_ovl56_80132DC0, 1, 1);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjCommonProc(gobj, func_ovl56_80132DC0, 1, 1);
 
 	gobj->user_data.u = (objective_num * 10) + D_ovl56_801352CC;
 
@@ -1211,10 +1211,10 @@ s32 gmStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32
 	intptr_t offsets[5] = dGMStageClearDifficultySpriteOffsets;
 	gsColorRGBPair colors = dGMStageClearScoreDigitColors;
 
-	sGMStageClearBonusStatGObjs[bonus_num] = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sGMStageClearBonusStatGObjs[bonus_num] = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-	omAddGObjCommonProc(gobj, gmStageClearCommonProcUpdate, 1, 1);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjCommonProc(gobj, gmStageClearCommonProcUpdate, 1, 1);
 
 	gobj->user_data.u = (bonus_num * 10) + D_ovl56_801352CC;
 
@@ -1293,10 +1293,10 @@ void gmStageClearMakeBonusPageArrow()
 	GObj *gobj;
 	SObj *sobj;
 
-	sGMStageClearBonusStatGObjs[9] = gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sGMStageClearBonusStatGObjs[9] = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-	omAddGObjCommonProc(gobj, gmStageClearCommonProcUpdate, 1, 1);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjCommonProc(gobj, gmStageClearCommonProcUpdate, 1, 1);
 
 	gobj->user_data.u = D_ovl56_801352CC + 90;
 
@@ -1376,9 +1376,9 @@ void gmStageClearMakeBonusTable()
 	GObj *gobj;
 	SObj *sobj;
 
-	gobj = omMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteBonusBorder));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1435,9 +1435,9 @@ void gmStageClearMakeFrameCopyBackground()
 	GObj *gobj;
 	SObj *sobj;
 
-	gobj = omMakeGObjSPAfter(0, NULL, 0x12, GOBJ_LINKORDER_DEFAULT);
+	gobj = gcMakeGObjSPAfter(0, NULL, 0x12, GOBJ_LINKORDER_DEFAULT);
 
-	omAddGObjRenderProc(gobj, gmStageClearFrameCopyBackgroundProcRender, 0x1B, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, gmStageClearFrameCopyBackgroundProcRender, 0x1B, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[6], &D_NF_00020718));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1571,7 +1571,7 @@ void func_ovl56_80133F50()
 		for (i = 0; i < ARRAY_COUNT(sGMStageClearBonusStatGObjs); i++)
 		{
 			if (sGMStageClearBonusStatGObjs[i] != NULL)
-				omEjectGObj(sGMStageClearBonusStatGObjs[i]);
+				gcEjectGObj(sGMStageClearBonusStatGObjs[i]);
 		}
 		sGMStageClearScoreTotal += gmStageClearUpdateGetBonusStatPointsAll();
 
@@ -1581,7 +1581,7 @@ void func_ovl56_80133F50()
 	}
 	else if (D_ovl56_80135344 == D_ovl56_801352CC)
 	{
-		omEjectGObj(sGMStageClearScoreTextGObj);
+		gcEjectGObj(sGMStageClearScoreTextGObj);
 		func_ovl56_80133F00();
 
 		D_ovl56_80135334 = 1;
@@ -1607,12 +1607,12 @@ void gmStageClearUpdateGameClearScore()
 			gmStageClearMakeTimerDigitSObjs(94.0F);
 		if (D_ovl56_801352CC == D_ovl56_801353B0)
 		{
-			omEjectGObj(sGMStageClearTimerMultiplierGObj);
+			gcEjectGObj(sGMStageClearTimerMultiplierGObj);
 			sGMStageClearScoreTotal += gmStageClearGetAppendTotalTimeScore(94.0F);
 		}
 		if (D_ovl56_801352CC == D_ovl56_801353B4)
 		{
-			omEjectGObj(sGMStageClearScoreTextGObj);
+			gcEjectGObj(sGMStageClearScoreTextGObj);
 			func_ovl56_80133F00();
 		}
 	}
@@ -1626,12 +1626,12 @@ void gmStageClearUpdateGameClearScore()
 
 	if (D_ovl56_801352CC == D_ovl56_801353C0)
 	{
-		omEjectGObj(sGMStageClearDamageMultiplierGObj);
+		gcEjectGObj(sGMStageClearDamageMultiplierGObj);
 		sGMStageClearScoreTotal += gmStageClearGetAppendTotalDamageScore(y);
 	}
 	if (D_ovl56_801352CC == D_ovl56_801353C4)
 	{
-		omEjectGObj(sGMStageClearScoreTextGObj);
+		gcEjectGObj(sGMStageClearScoreTextGObj);
 		func_ovl56_80133F00();
 
 		if (D_ovl56_801352D8 != 0)
@@ -1642,21 +1642,21 @@ void gmStageClearUpdateGameClearScore()
 	}
 	if ((D_ovl56_801352D8 != 0) && (sGMStageClearBonusTextGObj != NULL) && (D_ovl56_80135340 == D_ovl56_801352CC))
 	{
-		omEjectGObj(sGMStageClearBonusTextGObj);
+		gcEjectGObj(sGMStageClearBonusTextGObj);
 		sGMStageClearBonusTextGObj = NULL;
 
 		if (sGMStageClearTimerTextGObj != NULL)
 		{
-			omEjectGObj(sGMStageClearTimerTextGObj);
+			gcEjectGObj(sGMStageClearTimerTextGObj);
 			sGMStageClearTimerTextGObj = NULL;
 
-			omEjectGObj(sGMStageClearTimerMultiplierGObj);
+			gcEjectGObj(sGMStageClearTimerMultiplierGObj);
 			sGMStageClearTimerMultiplierGObj = NULL;
 		}
-		omEjectGObj(sGMStageClearDamageTextGObj);
+		gcEjectGObj(sGMStageClearDamageTextGObj);
 		sGMStageClearDamageTextGObj = NULL;
 
-		omEjectGObj(sGMStageClearDamageMultiplierGObj);
+		gcEjectGObj(sGMStageClearDamageMultiplierGObj);
 		sGMStageClearDamageMultiplierGObj = NULL;
 
 		gmStageClearMakeBonusTable();
@@ -1681,12 +1681,12 @@ void gmStageClearUpdateStageClearScore()
 
 		if (D_ovl56_801352CC == D_ovl56_801353B0)
 		{
-			omEjectGObj(sGMStageClearTimerMultiplierGObj);
+			gcEjectGObj(sGMStageClearTimerMultiplierGObj);
 			sGMStageClearScoreTotal += gmStageClearGetAppendTotalTimeScore(94.0F);
 		}
 		if (D_ovl56_801352CC == D_ovl56_801353B4)
 		{
-			omEjectGObj(sGMStageClearScoreTextGObj);
+			gcEjectGObj(sGMStageClearScoreTextGObj);
 			func_ovl56_80133F00();
 		}
 	}
@@ -1700,12 +1700,12 @@ void gmStageClearUpdateStageClearScore()
 
 	if (D_ovl56_801352CC == D_ovl56_801353C0)
 	{
-		omEjectGObj(sGMStageClearDamageMultiplierGObj);
+		gcEjectGObj(sGMStageClearDamageMultiplierGObj);
 		sGMStageClearScoreTotal += gmStageClearGetAppendTotalDamageScore(y);
 	}
 	if (D_ovl56_801352CC == D_ovl56_801353C4)
 	{
-		omEjectGObj(sGMStageClearScoreTextGObj);
+		gcEjectGObj(sGMStageClearScoreTextGObj);
 		func_ovl56_80133F00();
 
 		if (D_ovl56_801352D8 != 0)
@@ -1715,21 +1715,21 @@ void gmStageClearUpdateStageClearScore()
 	}
 	if ((D_ovl56_801352D8 != 0) && (sGMStageClearBonusTextGObj != NULL) && (D_ovl56_80135340 == D_ovl56_801352CC))
 	{
-		omEjectGObj(sGMStageClearBonusTextGObj);
+		gcEjectGObj(sGMStageClearBonusTextGObj);
 		sGMStageClearBonusTextGObj = NULL;
 
 		if (sGMStageClearTimerTextGObj != NULL)
 		{
-			omEjectGObj(sGMStageClearTimerTextGObj);
+			gcEjectGObj(sGMStageClearTimerTextGObj);
 			sGMStageClearTimerTextGObj = NULL;
 
-			omEjectGObj(sGMStageClearTimerMultiplierGObj);
+			gcEjectGObj(sGMStageClearTimerMultiplierGObj);
 			sGMStageClearTimerMultiplierGObj = NULL;
 		}
-		omEjectGObj(sGMStageClearDamageTextGObj);
+		gcEjectGObj(sGMStageClearDamageTextGObj);
 		sGMStageClearDamageTextGObj = NULL;
 
-		omEjectGObj(sGMStageClearDamageMultiplierGObj);
+		gcEjectGObj(sGMStageClearDamageMultiplierGObj);
 		sGMStageClearDamageMultiplierGObj = NULL;
 
 		gmStageClearMakeBonusTable();
@@ -1788,13 +1788,13 @@ void gmStageClearUpdateResultScore()
 		{
 			if (sGMStageClear1PGameStage == nGM1PGameStageBonus3)
 			{
-				omEjectGObj(sGMStageClearTimerMultiplierGObj);
+				gcEjectGObj(sGMStageClearTimerMultiplierGObj);
 				sGMStageClearScoreTotal += gmStageClearGetAppendTotalTimeScore(94.0F);
 
 			}
 			else if (sGMStageClearBonusObjectivesCleared == ARRAY_COUNT(sGMStageClearBonusObjectiveGObjs))
 			{
-				omEjectGObj(sGMStageClearTimerMultiplierGObj);
+				gcEjectGObj(sGMStageClearTimerMultiplierGObj);
 				sGMStageClearScoreTotal += gmStageClearGetAppendTotalTimeScore(126.0F);
 			}
 		}
@@ -1802,7 +1802,7 @@ void gmStageClearUpdateResultScore()
 		{
 			if ((sGMStageClearBonusObjectivesCleared == ARRAY_COUNT(sGMStageClearBonusObjectiveGObjs)) || (sGMStageClear1PGameStage == nGM1PGameStageBonus3))
 			{
-				omEjectGObj(sGMStageClearScoreTextGObj);
+				gcEjectGObj(sGMStageClearScoreTextGObj);
 				func_ovl56_80133F00();
 			}
 			if (D_ovl56_801352D8 != 0)
@@ -1813,29 +1813,29 @@ void gmStageClearUpdateResultScore()
 	}
 	if ((D_ovl56_801352D8 != 0) && (sGMStageClearBonusTextGObj != NULL) && (D_ovl56_80135340 == D_ovl56_801352CC))
 	{
-		omEjectGObj(sGMStageClearBonusTextGObj);
+		gcEjectGObj(sGMStageClearBonusTextGObj);
 		sGMStageClearBonusTextGObj = NULL;
 
 		if (sGMStageClearTargetGObj != NULL)
 		{
-			omEjectGObj(sGMStageClearTargetGObj);
+			gcEjectGObj(sGMStageClearTargetGObj);
 			sGMStageClearTargetGObj = NULL;
 
 			for (i = 0; i < ARRAY_COUNT(sGMStageClearBonusObjectiveGObjs); i++)
 			{
 				if (sGMStageClearBonusObjectiveGObjs[i] != NULL)
 				{
-					omEjectGObj(sGMStageClearBonusObjectiveGObjs[i]);
+					gcEjectGObj(sGMStageClearBonusObjectiveGObjs[i]);
 					sGMStageClearBonusObjectiveGObjs[i] = NULL;
 				}
 			}
 		}
 		if (sGMStageClearTimerTextGObj != NULL)
 		{
-			omEjectGObj(sGMStageClearTimerTextGObj);
+			gcEjectGObj(sGMStageClearTimerTextGObj);
 			sGMStageClearTimerTextGObj = NULL;
 
-			omEjectGObj(sGMStageClearTimerMultiplierGObj);
+			gcEjectGObj(sGMStageClearTimerMultiplierGObj);
 			sGMStageClearTimerMultiplierGObj = NULL;
 		}
 		gmStageClearMakeBonusTable();
@@ -1945,7 +1945,7 @@ void gmStageClearInitAll()
 
 	rdManagerInitSetup(&rldm_setup);
 	rdManagerLoadFiles(dGMStageClearFileIDs, ARRAY_COUNT(dGMStageClearFileIDs), sGMStageClearFiles, gsMemoryAlloc(rdManagerGetAllocSize(dGMStageClearFileIDs, ARRAY_COUNT(dGMStageClearFileIDs)), 0x10));
-	omMakeGObjSPAfter(0, gmStageClearSceneProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
+	gcMakeGObjSPAfter(0, gmStageClearSceneProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
 	func_ovl56_80134AF4();
 	func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
 	func_ovl56_80133C88();

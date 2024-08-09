@@ -1025,14 +1025,14 @@ void func_800020D0(void) {
 
             t6 = 0; // this is to silence clang checks
             if (D_80044FC0_407D0 < t6) {
-                gsFatalPrintF("rdp_output_buff over !! size = %d\n byte", t6);
+                gsFatalPrintf("rdp_output_buff over !! size = %d\n byte", t6);
                 while (TRUE) { }
             }
             /*
             if ( sp18 >= (t6 >> 31)) {
                 if (sp18 >= (t6 >> 31)) {
                     if (t6 < sp1C) {
-                        gsFatalPrintF("rdp_output_buff over !! size = %d\n byte", t6);
+                        gsFatalPrintf("rdp_output_buff over !! size = %d\n byte", t6);
                         while (TRUE) { }
                     }
 

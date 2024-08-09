@@ -169,7 +169,7 @@ efGroundCreateDesc dEFGroundCastleEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundCastleLakituDObjSetup,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
@@ -208,7 +208,7 @@ efGroundCreateDesc dEFGroundCastleEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundCastleLakituDObjSetup,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
@@ -251,7 +251,7 @@ efGroundCreateDesc dEFGroundJungleEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundJungleBirdDObjSetup,          // DObj Setup attributes offset (?)
             &lEFGroundJungleBirdMObjSub,            // MObjSub offset
@@ -294,7 +294,7 @@ efGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
             },
 
             efGroundUpdateStepPositions,            // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundSectorRocketDObjSetup,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
@@ -333,7 +333,7 @@ efGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundSectorRocketDObjSetup,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
@@ -372,7 +372,7 @@ efGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundSectorRocketDObjSetup,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
@@ -411,7 +411,7 @@ efGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundSectorShipDObjSetup,          // DObj Setup attributes offset (?)
             &lEFGroundSectorShipMObjSub,            // MObjSub offset
@@ -450,7 +450,7 @@ efGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundSectorShipDObjSetup,          // DObj Setup attributes offset (?)
             &lEFGroundSectorShipMObjSub,            // MObjSub offset
@@ -493,7 +493,7 @@ efGroundCreateDesc dEFGroundZebesEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundZebesShipDObjSetup,           // DObj Setup attributes offset (?)
             &lEFGroundZebesShipMObjSub,             // MObjSub offset
@@ -532,7 +532,7 @@ efGroundCreateDesc dEFGroundZebesEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundZebesRidleyDObjSetup,         // DObj Setup attributes offset (?)
             &lEFGroundZebesRidleyMObjSub,           // MObjSub offset
@@ -575,7 +575,7 @@ efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundYosterBirdDObjSetup,          // DObj Setup attributes offset (?)
             &lEFGroundYosterBirdMObjSub,            // MObjSub offset
@@ -614,7 +614,7 @@ efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
             },
 
             efGroundUpdateEffectYaw,                // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundYosterHeihoFruitSlowLDObjSetup,       // DObj Setup attributes offset (?)
             &lEFGroundYosterHeihoFruitSlowMObjSub,    // MObjSub offset
@@ -653,7 +653,7 @@ efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
             },
 
             efGroundUpdateEffectYaw,                // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundYosterHeihoFruitSlowRDObjSetup,       // DObj Setup attributes offset (?)
             &lEFGroundYosterHeihoFruitSlowMObjSub,    // MObjSub offset
@@ -692,7 +692,7 @@ efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundYosterHeihoSlowDObjSetup,     // DObj Setup attributes offset (?)
             &lEFGroundYosterHeihoSlowMObjSub,       // MObjSub offset
@@ -731,7 +731,7 @@ efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundYosterHeihoFruitFastDObjSetup,        // DObj Setup attributes offset (?)
             &lEFGroundYosterHeihoFruitFastMObjSub,    // MObjSub offset
@@ -770,7 +770,7 @@ efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundYosterHeihoFastDObjSetup,     // DObj Setup attributes offset (?)
             &lEFGroundYosterHeihoFastMObjSub,       // MObjSub offset
@@ -813,7 +813,7 @@ efGroundCreateDesc dEFGroundPupupuEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundPupupuBrontoDObjSetup,        // DObj Setup attributes offset (?)
             &lEFGroundPupupuBrontoMObjSub,          // MObjSub offset
@@ -852,7 +852,7 @@ efGroundCreateDesc dEFGroundPupupuEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundPupupuBrontoDObjSetup,        // DObj Setup attributes offset (?)
             &lEFGroundPupupuBrontoMObjSub,          // MObjSub offset
@@ -891,7 +891,7 @@ efGroundCreateDesc dEFGroundPupupuEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundPupupuDededeDObjSetup,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
@@ -930,7 +930,7 @@ efGroundCreateDesc dEFGroundPupupuEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundPupupuDededeDObjSetup,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
@@ -973,7 +973,7 @@ efGroundCreateDesc dEFGroundYamabukiEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundYamabukiButterfreeDObjSetup,  // DObj Setup attributes offset (?)
             &lEFGroundYamabukiButterfreeMObjSub,    // MObjSub offset
@@ -1012,7 +1012,7 @@ efGroundCreateDesc dEFGroundYamabukiEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundYamabukiFireDObjSetup,        // DObj Setup attributes offset (?)
             &lEFGroundYamabukiFireMObjSub,          // MObjSub offset
@@ -1051,7 +1051,7 @@ efGroundCreateDesc dEFGroundYamabukiEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundYamabukiOnidrillDObjSetup,    // DObj Setup attributes offset (?)
             &lEFGroundYamabukiOnidrillMObjSub,      // MObjSub offset
@@ -1090,7 +1090,7 @@ efGroundCreateDesc dEFGroundYamabukiEffectDescs[/* */] =
             },
 
             efGroundCommonProcUpdate,               // Proc Update
-            odRenderDObjTreeForGObj,                // Proc Render
+            gcDrawDObjTreeForGObj,                // Proc Render
 
             &lEFGroundYamabukiPoppoDObjSetup,       // DObj Setup attributes offset (?)
             &lEFGroundYamabukiPoppoMObjSub,         // MObjSub offset
@@ -1253,7 +1253,7 @@ sb32 efGroundCheckEffectInBounds(GObj *effect_gobj)
         if (dobj->translate.vec.f.x <= (gMPCollisionGroundData->map_bound_left + 500.0F))
         {
             efManagerSetPrevStructAlloc(ep);
-            omEjectGObj(effect_gobj);
+            gcEjectGObj(effect_gobj);
 
             return FALSE;
         }
@@ -1261,7 +1261,7 @@ sb32 efGroundCheckEffectInBounds(GObj *effect_gobj)
     else if (dobj->translate.vec.f.x >= (gMPCollisionGroundData->map_bound_right - 500.0F))
     {
         efManagerSetPrevStructAlloc(ep);
-        omEjectGObj(effect_gobj);
+        gcEjectGObj(effect_gobj);
 
         return FALSE;
     }
@@ -1420,9 +1420,9 @@ void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobj_desc, DObj **dob
 
         if (id != 0)
         {
-            current_dobj = array_dobjs[id] = omAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            current_dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
         }
-        else current_dobj = array_dobjs[0] = omAddChildForDObj(effect_dobj, dobj_desc->display_list);
+        else current_dobj = array_dobjs[0] = gcAddChildForDObj(effect_dobj, dobj_desc->display_list);
 
         gcAddDObjTriTransformKind(current_dobj, tk1, tk2, arg5);
 
@@ -1432,9 +1432,9 @@ void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobj_desc, DObj **dob
         {
             if (ep->effect_vars.ground_effect.lr_bool != 0)
             {
-                omAddOMMtxForDObjFixed(current_dobj, 0x2E, 0);
+                gcAddOMMtxForDObjFixed(current_dobj, 0x2E, 0);
             }
-            else omAddOMMtxForDObjFixed(current_dobj, 0x48, 0);
+            else gcAddOMMtxForDObjFixed(current_dobj, 0x48, 0);
 
             if (lr == nGMFacingR)
             {
@@ -1484,7 +1484,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
     }
     else ep = NULL;
 
-    effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, efManagerProcRun, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, efManagerProcRun, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -1504,8 +1504,8 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
     }
     else
     {
-        omAddGObjRenderProc(effect_gobj, effect_desc->proc_render, effect_desc->dl_link, 2, -1);
-        omMoveGObjDLHead(effect_gobj, effect_desc->dl_link, GOBJ_DLLINKORDER_DEFAULT);
+        gcAddGObjRenderProc(effect_gobj, effect_desc->proc_render, effect_desc->dl_link, 2, -1);
+        gcMoveGObjDLHead(effect_gobj, effect_desc->dl_link, GOBJ_DLLINKORDER_DEFAULT);
 
         o_mobsjub = effect_desc->o_mobjsub;
         o_anim_joint = effect_desc->o_anim_joint;
@@ -1517,7 +1517,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
 
         if (effect_flags & 1)
         {
-            main_dobj = omAddDObjForGObj(effect_gobj, NULL);
+            main_dobj = gcAddDObjForGObj(effect_gobj, NULL);
 
             func_ovl0_800C89BC(main_dobj, rtypes1->tk1, rtypes1->tk2, rtypes1->tk3);
 
@@ -1531,7 +1531,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
             }
             else
             {
-                main_dobj = omAddChildForDObj(main_dobj, (void*) (addr + effect_desc->o_dobjsetup));
+                main_dobj = gcAddChildForDObj(main_dobj, (void*) (addr + effect_desc->o_dobjsetup));
 
                 func_ovl0_800C89BC(main_dobj, rtypes2->tk1, rtypes2->tk2, rtypes2->tk3);
             }
@@ -1680,11 +1680,11 @@ void efGroundMakeEffectSpawnActor(void)
 
     if ((gBattleState->gr_kind <= nGRKindBattleEnd) && (gSceneData.scene_current != scMajor_Kind_1PTrainingMode) && (dEFGroundDatas[gBattleState->gr_kind].effect_param != NULL))
     {
-        effect_gobj = omMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, 7, GOBJ_LINKORDER_DEFAULT);
+        effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, 7, GOBJ_LINKORDER_DEFAULT);
 
         if (effect_gobj != NULL)
         {
-            omAddGObjCommonProc(effect_gobj, efGroundActorProcUpdate, nOMObjProcessKindProc, 1);
+            gcAddGObjCommonProc(effect_gobj, efGroundActorProcUpdate, nOMObjProcessKindProc, 1);
 
             effect_gobj->user_data.p = &sEFGroundActor;
 

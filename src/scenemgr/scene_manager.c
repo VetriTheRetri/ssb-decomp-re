@@ -1,6 +1,9 @@
 #include "common.h"
 #include "scene_manager.h"
-
+#include <sys/obj.h>
+#include <ft/fighter.h>
+#include <wp/weapon.h>
+#include <it/item.h>
 #include <ovl0/halsprite.h>
 #include <ovl0/ovl0.h>
 #include "ovl2/ovl2.h"
@@ -9,19 +12,11 @@
 #include <sys/dma.h>
 #include <sys/gtl.h>
 #include <sys/hal_audio.h>
-#include <sys/objdraw.h>
 #include <sys/system_00.h>
 #include <sys/system_03_1.h>
-#include <sys/system_04.h>
+
 #include <sys/thread6.h>
 #include <gm/battle.h>
-#include <sys/objdef.h>
-#include <sys/objtypes.h>
-
-#include <macros.h>
-
-#include <PR/mbi.h>
-#include <PR/ultratypes.h>
 
 extern intptr_t D_NF_80392A00; // _ovl1SegNoloadEnd
 extern s32 D_8003B874_3C474;
@@ -45,7 +40,7 @@ u32 D_800A523C;
 
 
 // Forward declarations
-extern void smProcPrintGObjStatus();
+extern void scManagerProcPrintGObjStatus();
 
 // DATA
 gsOverlay D_800A3070[65] = {
@@ -202,7 +197,7 @@ gmBattleState gDefaultBattleState = {
 u32 D_800A41B8 = 0;
 u32 D_800A41BC = 0;
 
-char D_800A41C0[] = "Mar 16 1999 18:26:57";
+char D_800A41C0[/* */] = "Mar 16 1999 18:26:57";
 
 
 void n64_logo_entry();
@@ -276,7 +271,7 @@ void start_scene_manager(u32 set)
 	gmBattleState sp30;
 
 	set_contstatus_delay(60);
-	gsSetCrashPrintFunction(smProcPrintGObjStatus);
+	gsSetCrashPrintfunction(scManagerProcPrintGObjStatus);
 	gsStartRmonThread5Hang();
 	gsLoadOverlay(&D_800A3070[0]);
 	gsLoadOverlay(&D_800A3070[2]);
@@ -307,7 +302,7 @@ void start_scene_manager(u32 set)
 	csr = (u16*) &D_NF_80392A00;//(void *)_ovl1SegNoloadEnd; // 0x80392A00
 	end = 0x80400000;
 	while ((uintptr_t)csr < end)
-		*(csr++) = GPACK_RGBA5551(0, 0, 0, 1);
+		*(csr++) = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01);
 
 	if (D_800451A0 == 0)
 		gSceneData.scene_current = 0;
@@ -665,7 +660,7 @@ void func_800A26D8(GObj* arg0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(0x0000FFFF));
+	gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
 	gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
 
 	barY += 2;
@@ -675,7 +670,7 @@ void func_800A26D8(GObj* arg0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(0xFF4000FF));
+	gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0x40, 0x00, 0xFF)));
 	gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
 
 	barY += 2;
@@ -685,16 +680,15 @@ void func_800A26D8(GObj* arg0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(0xFFFFFFFF));
+	gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 	gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
 	gDPPipeSync((*gDisplayListHead)++);
 	// this needs to be in its own block to match. macro?
 	// could explain the double sync
 	{
-		uintptr_t freeSpace; // sp38
-		freeSpace = (uintptr_t)gGeneralHeap.end - (uintptr_t)gGeneralHeap.ptr;
+		size_t freeSpace = (uintptr_t)gGeneralHeap.end - (uintptr_t)gGeneralHeap.ptr;
 
-		gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(0xFFFFFFFF));
+		gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 		func_800218E0(0x14, 0x14, freeSpace, 7, 1);
 		gDPPipeSync((*gDisplayListHead)++);
 	}
@@ -719,104 +713,106 @@ void unref_800A2BA8(s32 link, u32 arg1, s32 arg2) // set_up_debug_objs ? somethi
 
 	com = find_gobj_with_id(0xFFFFFFFE);
 	if (com != NULL)
-		omEjectGObj(com);
+		gcEjectGObj(com);
 	else
 		func_80022368(link, arg1, arg2);
 
 	com = find_gobj_with_id(0xEFFFFFFF);
 	if (com != NULL)
-		omEjectGObj(com);
+		gcEjectGObj(com);
 	else
 		func_800A2B18(link, arg1, arg2);
 }
 
 // 800A2C30
-void crash_inspect_gobj(GObj* obj)
+void scManagerInspectGObj(GObj *gobj)
 {
-	gsDebugPrintF("gobj id:%d:", obj->gobj_id);
-	switch (obj->gobj_id) {
-		case 0x3E8:
-		{
-			FighterInfo* f = (FighterInfo *) obj->user_data.p;
+    ftStruct *fp;
+    wpStruct *wp;
+    itStruct *ip;
+    efStruct *ep;
 
-			gsDebugPrintF("fighter\n");
-			gsDebugPrintF("kind:%d, player:%d, pkind:%d\n", f->kind, f->player, f->pkind);
-			gsDebugPrintF("stat:%d, mstat:%d\n", f->stat, f->mstat);
-			gsDebugPrintF("ga:%d\n", f->ga);
-			break;
-		}
-		case 0x3F4:
-		{
-			WeaponInfo* w = (WeaponInfo *) obj->user_data.p;
+    gsDebugPrintf("gobj id:%d:", gobj->gobj_id);
 
-			gsDebugPrintF("weapon\n");
-			gsDebugPrintF("kind:%d, player:%d\n", w->kind, w->player);
-			gsDebugPrintF("atk stat:%d\n", w->attackStat);
-			gsDebugPrintF("ga:%d\n", w->ga);
-			break;
-		}
-		case 0x3F5:
-		{
-			ItemInfo* i = (ItemInfo *) obj->user_data.p;
+    switch (gobj->gobj_id)
+    {
+    case nOMObjCommonKindFighter:
+        fp = ftGetStruct(gobj);
 
-			gsDebugPrintF("item\n");
-			gsDebugPrintF("kind:%d, player:%d\n", i->kind, i->player);
-			gsDebugPrintF("atk stat:%d\n", i->attackStat);
-			gsDebugPrintF("ga:%d\n", i->ga);
-			gsDebugPrintF("proc update:%x\n", i->procUpdate);
-			gsDebugPrintF("proc map:%x\n", i->procMap);
-			gsDebugPrintF("proc hit:%x\n", i->procHit);
-			gsDebugPrintF("proc shield:%x\n", i->procShield);
-			gsDebugPrintF("proc hop:%x\n", i->procHop);
-			gsDebugPrintF("proc setoff:%x\n", i->procSetoff);
-			gsDebugPrintF("proc reflector:%x\n", i->procReflector);
-			gsDebugPrintF("proc damage:%x\n", i->procDamage);
-			break;
-		}
-		case 0x3F3:
-		{
-			EffectInfo* e = (EffectInfo *) obj->user_data.p;
+        gsDebugPrintf("fighter\n");
+        gsDebugPrintf("kind:%d, player:%d, pkind:%d\n", fp->ft_kind, fp->player, fp->status_info.pl_kind);
+        gsDebugPrintf("stat:%d, mstat:%d\n", fp->status_info.status_id, fp->status_info.motion_id);
+        gsDebugPrintf("ga:%d\n", fp->ga);
+        break;
 
-			if ((uintptr_t)e >= 0x80000000 && (uintptr_t)e < 0x80800000) {
-				gsDebugPrintF("effect\n");
-				gsDebugPrintF("fgobj:%x", e->fgObj);
-				gsDebugPrintF("proc func:%x\n", e->procFunc);
-			} else {
-				gsDebugPrintF("\n");
-			}
-			break;
-		}
-		default:
-		{
-			gsDebugPrintF("\n");
-			break;
-		}
-	}
+    case nOMObjCommonKindWeapon:
+        wp = wpGetStruct(gobj);
+
+        gsDebugPrintf("weapon\n");
+        gsDebugPrintf("kind:%d, player:%d\n", wp->wp_kind, wp->player);
+        gsDebugPrintf("atk stat:%d\n", wp->weapon_hit.update_state);
+        gsDebugPrintf("ga:%d\n", wp->ga);
+        break;
+
+    case nOMObjCommonKindItem:
+        ip = itGetStruct(gobj);
+
+        gsDebugPrintf("item\n");
+        gsDebugPrintf("kind:%d, player:%d\n", ip->it_kind, ip->player);
+        gsDebugPrintf("atk stat:%d\n", ip->item_hit.update_state);
+        gsDebugPrintf("ga:%d\n", ip->ga);
+        gsDebugPrintf("proc update:%x\n", ip->proc_update);
+        gsDebugPrintf("proc map:%x\n", ip->proc_map);
+        gsDebugPrintf("proc hit:%x\n", ip->proc_hit);
+        gsDebugPrintf("proc shield:%x\n", ip->proc_shield);
+        gsDebugPrintf("proc hop:%x\n", ip->proc_hop);
+        gsDebugPrintf("proc setoff:%x\n", ip->proc_setoff);
+        gsDebugPrintf("proc reflector:%x\n", ip->proc_reflector);
+        gsDebugPrintf("proc damage:%x\n", ip->proc_damage);
+        break;
+
+    case nOMObjCommonKindEffect:
+        ep = efGetStruct(gobj);
+
+        // Check if address is within base RDRAM + expansion pak bounds
+        if (((uintptr_t)ep >= 0x80000000) && ((uintptr_t)ep < 0x80800000))
+        {
+            gsDebugPrintf("effect\n");
+            gsDebugPrintf("fgobj:%x", ep->fighter_gobj);
+            gsDebugPrintf("proc func:%x\n", ep->proc_update);
+        }
+        else gsDebugPrintf("\n");
+        break;
+
+    default:
+        gsDebugPrintf("\n");
+        break;
+    }
 }
 
 // 800A2E84
-void smProcPrintGObjStatus()
+void scManagerProcPrintGObjStatus()
 {
 	switch (D_8003B874_3C474)
 	{
 		case 0:
 		{
-			gsDebugPrintF("SYS\n");
+			gsDebugPrintf("SYS\n");
 			break;
 		}
 		case 1:
 		{
-			gsDebugPrintF("BF\n");
+			gsDebugPrintf("BF\n");
 			if (D_80046A54 != NULL)
 			{
-				gsDebugPrintF("addr:%x\n", D_80046A54->proc_run);
-				crash_inspect_gobj(D_80046A54);
+				gsDebugPrintf("addr:%x\n", D_80046A54->proc_run);
+				scManagerInspectGObj(D_80046A54);
 			}
 			break;
 		}
 		case 2:
 		{
-			gsDebugPrintF("GP\n");
+			gsDebugPrintf("GP\n");
 			if (D_80046A54 != NULL)
 			{
 				if (D_80046A60 != NULL)
@@ -824,36 +820,36 @@ void smProcPrintGObjStatus()
 					switch (D_80046A60->kind)
 					{
 						case 0:
-							gsDebugPrintF("thread:%x\n", D_80046A60->gobjthread->osthread.context.pc);
+							gsDebugPrintf("thread:%x\n", D_80046A60->gobjthread->osthread.context.pc);
 							break;
 						case 1:
-							gsDebugPrintF("func:%x\n", D_80046A60->proc_thread);
+							gsDebugPrintf("func:%x\n", D_80046A60->proc_thread);
 							break;
 					}
 				}
-				crash_inspect_gobj(D_80046A54);
+				scManagerInspectGObj(D_80046A54);
 			}
 			break;
 		}
 		case 3:
 		{
-			gsDebugPrintF("DFC\n");
+			gsDebugPrintf("DFC\n");
 			if (gOMObjCurrentRendering != NULL)
 			{
-				gsDebugPrintF("addr:%x\n", gOMObjCurrentRendering->proc_render);
-				crash_inspect_gobj(gOMObjCurrentRendering);
+				gsDebugPrintf("addr:%x\n", gOMObjCurrentRendering->proc_render);
+				scManagerInspectGObj(gOMObjCurrentRendering);
 			}
 			break;
 		}
 		case 4:
 		{
-			gsDebugPrintF("DFO\n");
+			gsDebugPrintf("DFO\n");
 			if (gOMObjCurrentRendering != NULL)
-				gsDebugPrintF("cam addr:%x\n", gOMObjCurrentRendering->proc_render);
+				gsDebugPrintf("cam addr:%x\n", gOMObjCurrentRendering->proc_render);
 			if (D_80046A5C_40A7C != NULL)
 			{
-				gsDebugPrintF("disp addr:%x\n", D_80046A5C_40A7C->proc_render);
-				crash_inspect_gobj(D_80046A5C_40A7C);
+				gsDebugPrintf("disp addr:%x\n", D_80046A5C_40A7C->proc_render);
+				scManagerInspectGObj(D_80046A5C_40A7C);
 			}
 			break;
 		}
@@ -861,7 +857,7 @@ void smProcPrintGObjStatus()
 }
 
 // 800A3040
-void smRunPrintGObjStatus()
+void scManagerRunPrintGObjStatus()
 {
-	gsFatalRunPrintFunction(smProcPrintGObjStatus);
+	gsFatalRunPrintFunc(scManagerProcPrintGObjStatus);
 }

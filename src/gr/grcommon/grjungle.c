@@ -122,17 +122,17 @@ void grJungleMakeTaruCann(void)
     map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRJungleMapHead);
     gGRCommonStruct.jungle.map_head = map_head;
 
-    gGRCommonStruct.jungle.tarucann_gobj = tarucann_gobj = omMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    gGRCommonStruct.jungle.tarucann_gobj = tarucann_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
-    omAddGObjRenderProc(tarucann_gobj, odRenderDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjRenderProc(tarucann_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     grModelSetupGroundDObjs(tarucann_gobj, (DObjDesc*) ((intptr_t)&lGRJungleMapHead + (uintptr_t)map_head), NULL, dGRJungleTaruCannTransformKinds);
-    omAddGObjCommonProc(tarucann_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
+    gcAddGObjCommonProc(tarucann_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
     gcAddAnimJointAll(tarucann_gobj, ((uintptr_t)map_head + (intptr_t)&lGRJungleTaruCannDefaultAnimJoint), 0.0F);
     gcPlayAnimAll(tarucann_gobj);
 
-    omAddGObjCommonProc(tarucann_gobj, grJungleTaruCannProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjCommonProc(tarucann_gobj, grJungleTaruCannProcUpdate, nOMObjProcessKindProc, 4);
     ftMainCheckAddGroundObstacle(tarucann_gobj, grJungleTaruCannCheckGetDamageKind);
 
     gGRCommonStruct.jungle.tarucann_status = nGRJungleTaruCannStatusMove;

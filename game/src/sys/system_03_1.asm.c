@@ -194,14 +194,14 @@ void func_8000B39C(struct GObjCommon *obj) {
     }
 }
 
-void func_8000B3EC(DObj *dobj) 
+void func_8000B3EC(DObj *dobj)
 {
     omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_Tra, 0);
     omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_RotRpyD, 0);
     omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_Sca, 0);
 }
 
-void func_8000B434(DObj *dobj) 
+void func_8000B434(DObj *dobj)
 {
     omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_Tra, 0);
     omAddOMMtxForDObjFixed(dobj, OMMtx_Transform_RotRpyR, 0);
@@ -290,8 +290,8 @@ void unref_8000B618(struct GObjCommon *arg0, struct MaybeDObjChain *arg1, struct
     struct DObj *store[18];
 
     // clang-format off
-    for (i = 0; i < ARRAY_COUNT(store); i++) { 
-        store[i] = NULL; 
+    for (i = 0; i < ARRAY_COUNT(store); i++) {
+        store[i] = NULL;
     }
     // clang-format on
 
@@ -347,7 +347,7 @@ struct GObjCommon *func_8000B824(
     u32 arg3,
     void (*arg4)(struct GObjCommon *),
     u8 arg5,
-    s32 arg6,
+    u32 arg6,
     s32 arg7,
     void *arg8,
     s32 arg9,

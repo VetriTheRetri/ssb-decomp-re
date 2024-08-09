@@ -19,7 +19,7 @@ glabel D_ovl13_80132A68
 glabel D_ovl13_80132AE8
   .incbin "ovl13.raw.bin", 0x0FE8, 0x80
 
-glabel D_ovl13_80132B68
+glabel dMNDebugCubeKirbyCubeDisplayList
   .incbin "ovl13.raw.bin", 0x1068, 0x1C
   /* 1084 11B3C4 80132B84 */
   .asciz "LLL"
@@ -38,7 +38,7 @@ glabel D_ovl13_80132B68
   /* 1104 11B444 80132C04 */  .4byte D_ovl13_80132AE8
   .incbin "ovl13.raw.bin", 0x1108, 0xD0
 
-glabel D_ovl13_80132CD8
+glabel dMNDebugCubeLights1
   /* 11D8 11B518 80132CD8 */
   .asciz "   "
   .balign 4
@@ -53,58 +53,58 @@ glabel D_ovl13_80132CE0
   .balign 4
   .incbin "ovl13.raw.bin", 0x11EC, 0x4
 
-glabel D_ovl13_80132CF0
+glabel dMNDebugCubeDisplayList
   .incbin "ovl13.raw.bin", 0x11F0, 0x14
   /* 1204 11B544 80132D04 */  .4byte D_ovl13_80132CE0
   .incbin "ovl13.raw.bin", 0x1208, 0x4
-  /* 120C 11B54C 80132D0C */  .4byte D_ovl13_80132CD8
+  /* 120C 11B54C 80132D0C */  .4byte dMNDebugCubeLights1
   .incbin "ovl13.raw.bin", 0x1210, 0x8
 
-glabel D_ovl13_80132D18
+glabel dMNDebugCubeRotateVelX
   /* 1218 11B558 80132D18 */
   .asciz "?"
   .balign 4
 
-glabel D_ovl13_80132D1C
+glabel dMNDebugCubeRotateVelY
   .incbin "ovl13.raw.bin", 0x121C, 0x4
 
-glabel D_ovl13_80132D20
+glabel dMNDebugCubeRotateVelZ
   .incbin "ovl13.raw.bin", 0x1220, 0xC
 
-glabel D_ovl13_80132D2C
+glabel gMNDebugCubeMenuValueCall
   .incbin "ovl13.raw.bin", 0x122C, 0x4
 
-glabel D_ovl13_80132D30
+glabel gMNDebugCubeMenuValueFGM
   .incbin "ovl13.raw.bin", 0x1230, 0x4
 
-glabel D_ovl13_80132D34
+glabel gMNDebugCubeMenuValueBGM
   .incbin "ovl13.raw.bin", 0x1234, 0x4
 
-glabel D_ovl13_80132D38
+glabel gMNDebugCubeMenuValueEffect
   .incbin "ovl13.raw.bin", 0x1238, 0x4
 
-glabel D_ovl13_80132D3C
+glabel gMNDebugCubeBGMInterrupt
   .incbin "ovl13.raw.bin", 0x123C, 0x4
 
-glabel D_ovl13_80132D40
+glabel gMNDebugCubeMenuValueRumble
   .incbin "ovl13.raw.bin", 0x1240, 0x4
 
-glabel D_ovl13_80132D44
+glabel gMNDebugCubeMenuValueFrame
   .incbin "ovl13.raw.bin", 0x1244, 0x4
 
-glabel D_ovl13_80132D48
+glabel gMNDebugCubeQueuedFGM
   .incbin "ovl13.raw.bin", 0x1248, 0x4
 
-glabel D_ovl13_80132D4C
+glabel gMNDebugCubeSFX
   .incbin "ovl13.raw.bin", 0x124C, 0x4
 
-glabel D_ovl13_80132D50
+glabel gMNDebugCubeCurrentSFX
   .incbin "ovl13.raw.bin", 0x1250, 0x4
 
-glabel D_ovl13_80132D54
+glabel dMNDebugCubeCallFGMs
   .incbin "ovl13.raw.bin", 0x1254, 0x30
 
-glabel D_ovl13_80132D84
+glabel gMNDebugCubeMenuValueTransition
   .incbin "ovl13.raw.bin", 0x1284, 0x4
   /* 1288 11B5C8 80132D88 */  .4byte D_ovl13_80133020
   /* 128C 11B5CC 80132D8C */  .4byte D_ovl13_80133024
@@ -125,58 +125,58 @@ glabel D_ovl13_80132D9C
   /* 12C0 11B600 80132DC0 */  .4byte D_ovl13_80133084
   /* 12C4 11B604 80132DC4 */  .4byte D_ovl13_80133090
 
-glabel D_ovl13_80132DC8
+glabel dMNDebugCubeMenuItems
   .incbin "ovl13.raw.bin", 0x12C8, 0x8
   /* 12D0 11B610 80132DD0 */  .4byte D_ovl13_80133098
   .incbin "ovl13.raw.bin", 0x12D4, 0x14
-  /* 12E8 11B628 80132DE8 */  .4byte func_ovl13_80131BD4
+  /* 12E8 11B628 80132DE8 */  .4byte mnDebugCubeStartRumble
   /* 12EC 11B62C 80132DEC */  .4byte D_ovl13_801330A4
-  /* 12F0 11B630 80132DF0 */  .4byte D_ovl13_80132D40
+  /* 12F0 11B630 80132DF0 */  .4byte gMNDebugCubeMenuValueRumble
   .incbin "ovl13.raw.bin", 0x12F4, 0x4
   /* 12F8 11B638 80132DF8 */
   .asciz "A "
   .balign 4
   .incbin "ovl13.raw.bin", 0x12FC, 0x8
-  /* 1304 11B644 80132E04 */  .4byte func_ovl13_80131BD4
+  /* 1304 11B644 80132E04 */  .4byte mnDebugCubeStartRumble
   /* 1308 11B648 80132E08 */  .4byte D_ovl13_801330B0
-  /* 130C 11B64C 80132E0C */  .4byte D_ovl13_80132D44
+  /* 130C 11B64C 80132E0C */  .4byte gMNDebugCubeMenuValueFrame
   .incbin "ovl13.raw.bin", 0x1310, 0x10
-  /* 1320 11B660 80132E20 */  .4byte func_ovl13_80131C04
+  /* 1320 11B660 80132E20 */  .4byte mnDebugCubeStopRumble
   /* 1324 11B664 80132E24 */  .4byte D_ovl13_801330BC
   .incbin "ovl13.raw.bin", 0x1328, 0x14
-  /* 133C 11B67C 80132E3C */  .4byte func_ovl13_80131C70
+  /* 133C 11B67C 80132E3C */  .4byte mnDebugCubePlayCall
   /* 1340 11B680 80132E40 */  .4byte D_ovl13_801330C8
-  /* 1344 11B684 80132E44 */  .4byte D_ovl13_80132D2C
+  /* 1344 11B684 80132E44 */  .4byte gMNDebugCubeMenuValueCall
   .incbin "ovl13.raw.bin", 0x1348, 0x4
   /* 134C 11B68C 80132E4C */
   .asciz "A0"
   .balign 4
   .incbin "ovl13.raw.bin", 0x1350, 0x8
-  /* 1358 11B698 80132E58 */  .4byte func_ovl13_80131C2C
+  /* 1358 11B698 80132E58 */  .4byte mnDebugCubePlayFGM
   /* 135C 11B69C 80132E5C */  .4byte D_ovl13_801330D4
-  /* 1360 11B6A0 80132E60 */  .4byte D_ovl13_80132D30
+  /* 1360 11B6A0 80132E60 */  .4byte gMNDebugCubeMenuValueFGM
   .incbin "ovl13.raw.bin", 0x1364, 0x10
-  /* 1374 11B6B4 80132E74 */  .4byte func_ovl13_80131C50
+  /* 1374 11B6B4 80132E74 */  .4byte mnDebugCubeStopFGM
   /* 1378 11B6B8 80132E78 */  .4byte D_ovl13_801330DC
   .incbin "ovl13.raw.bin", 0x137C, 0x14
-  /* 1390 11B6D0 80132E90 */  .4byte func_ovl13_80131CB4
+  /* 1390 11B6D0 80132E90 */  .4byte mnDebugCubePlayBGM
   /* 1394 11B6D4 80132E94 */  .4byte D_ovl13_801330E8
-  /* 1398 11B6D8 80132E98 */  .4byte D_ovl13_80132D34
+  /* 1398 11B6D8 80132E98 */  .4byte gMNDebugCubeMenuValueBGM
   .incbin "ovl13.raw.bin", 0x139C, 0x4
   /* 13A0 11B6E0 80132EA0 */
   .asciz "B8"
   .balign 4
   .incbin "ovl13.raw.bin", 0x13A4, 0x8
-  /* 13AC 11B6EC 80132EAC */  .4byte func_ovl13_80131CB4
+  /* 13AC 11B6EC 80132EAC */  .4byte mnDebugCubePlayBGM
   /* 13B0 11B6F0 80132EB0 */  .4byte D_ovl13_801330F0
-  /* 13B4 11B6F4 80132EB4 */  .4byte D_ovl13_80132D38
+  /* 13B4 11B6F4 80132EB4 */  .4byte gMNDebugCubeMenuValueEffect
   .incbin "ovl13.raw.bin", 0x13B8, 0x10
-  /* 13C8 11B708 80132EC8 */  .4byte func_ovl13_80131C94
+  /* 13C8 11B708 80132EC8 */  .4byte mnDebugCubeStopBGM
   /* 13CC 11B70C 80132ECC */  .4byte D_ovl13_801330FC
   .incbin "ovl13.raw.bin", 0x13D0, 0x14
-  /* 13E4 11B724 80132EE4 */  .4byte func_ovl13_80131CE8
+  /* 13E4 11B724 80132EE4 */  .4byte mnDebugCubeDoTransition
   /* 13E8 11B728 80132EE8 */  .4byte D_ovl13_80132D9C
-  /* 13EC 11B72C 80132EEC */  .4byte D_ovl13_80132D84
+  /* 13EC 11B72C 80132EEC */  .4byte gMNDebugCubeMenuValueTransition
   .incbin "ovl13.raw.bin", 0x13F0, 0x4
   /* 13F4 11B734 80132EF4 */
   .asciz "A "
@@ -190,7 +190,7 @@ glabel D_ovl13_80132DC8
   .incbin "ovl13.raw.bin", 0x1428, 0x14
   /* 143C 11B77C 80132F3C */  .4byte D_ovl13_8013311C
   .incbin "ovl13.raw.bin", 0x1440, 0x14
-  /* 1454 11B794 80132F54 */  .4byte func_ovl13_80131BBC
+  /* 1454 11B794 80132F54 */  .4byte mnDebugCubeExit
   /* 1458 11B798 80132F58 */  .4byte D_ovl13_80133128
   .incbin "ovl13.raw.bin", 0x145C, 0x10
 
@@ -206,10 +206,10 @@ glabel D_ovl13_80132F88
   /* 1490 11B7D0 80132F90 */  .4byte func_8000A340
   /* 1494 11B7D4 80132F94 */  .4byte D_NF_80133170
   .incbin "ovl13.raw.bin", 0x1498, 0x28
-  /* 14C0 11B800 80132FC0 */  .4byte func_ovl13_80131B00
+  /* 14C0 11B800 80132FC0 */  .4byte mnDebugCubeSetLighting
   /* 14C4 11B804 80132FC4 */  .4byte update_contdata
   .incbin "ovl13.raw.bin", 0x14C8, 0x48
-  /* 1510 11B850 80133010 */  .4byte func_ovl13_80131FDC
+  /* 1510 11B850 80133010 */  .4byte mnDebugCubeInit
   .incbin "ovl13.raw.bin", 0x1514, 0xC
 
 glabel D_ovl13_80133020

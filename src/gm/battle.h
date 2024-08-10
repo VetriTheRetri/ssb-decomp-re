@@ -163,14 +163,14 @@ typedef enum gmBackupProtectPenalty
 
 typedef enum gmMatchGameType
 {
-    nGMBattleGameTypeDemo,          // 0x0
-    nGMBattleGameTypeVSMode,        // 0x1
-    nGMBattleGameTypeBonus,         // 0x2
-    nGMBattleGameTypeExplain,       // 0x3
-    nGMBattleGameTypeOpening,       // 0x4
-    nGMBattleGameType1PGame,        // 0x5
-    nGMBattleGameTypeUnk6,          // 0x6
-    nGMBattleGameTypeTraining   	// 0x7
+	nGMBattleGameTypeDemo,          // 0x0
+	nGMBattleGameTypeVSMode,        // 0x1
+	nGMBattleGameTypeBonus,         // 0x2
+	nGMBattleGameTypeExplain,       // 0x3
+	nGMBattleGameTypeOpening,       // 0x4
+	nGMBattleGameType1PGame,        // 0x5
+	nGMBattleGameTypeUnk6,          // 0x6
+	nGMBattleGameTypeTraining   	// 0x7
 
 } gmMatchGameType;
 
@@ -257,23 +257,23 @@ typedef struct gm1PGameCom
 {
 	ub8 is_team_attack;
 	u8 item_switch;
-    u8 enemy_level[5];
-    u8 enemy_handicap[5];
-    u8 ally_level[5];
-    u8 ally_handicap[5];
+	u8 enemy_level[5];
+	u8 enemy_handicap[5];
+	u8 ally_level[5];
+	u8 ally_handicap[5];
 
 } gm1PGameCom;
 
 typedef struct gm1PGameStage
 {
-    u8 screenflash_alpha;
-    u8 gr_kind;
-    u32 item_toggles;
-    u8 opponent_count;            // Number of enemy players to spawn?
-    u8 ft_kind[2];
-    u8 opponent_behavior;
-    u8 ally_count;
-    u8 ally_behavior;
+	u8 screenflash_alpha;
+	u8 gr_kind;
+	u32 item_toggles;
+	u8 opponent_count;            // Number of enemy players to spawn?
+	u8 ft_kind[2];
+	u8 opponent_behavior;
+	u8 ally_count;
+	u8 ally_behavior;
 
 } gm1PGameStage;
 
@@ -439,23 +439,18 @@ typedef struct gmBattleState
 
 } gmBattleState;
 
-typedef struct gmBackupVSRecordCombo
-{
-	/* 0x00 */ u16 games_with;
-	/* 0x02 */ u16 games_played_against;
-
-} gmBackupVSRecordCombo; // size == 4
-
 typedef struct gmBackupVSRecord
 {
 	/* 0x00 */ u16 ko_count[GMCOMMON_CHAR_NUM_PLAYABLE];
 	/* 0x18 */ u32 time_used; //< in seconds
 	/* 0x1C */ u32 damage_dealt;
 	/* 0x20 */ u32 damage_taken;
-	/* 0x24 */ u16 self_destructs;
-	/* 0x26 */ u16 games_played;
-	/* 0x28 */ u16 games_played_against;
-	/* 0x2C */ gmBackupVSRecordCombo combinations[GMCOMMON_CHAR_NUM_PLAYABLE];
+	/* 0x24 */ u16 unk;
+	/* 0x26 */ u16 self_destructs;
+	/* 0x28 */ u16 games_played;
+	/* 0x2A */ u16 player_count_tally;
+	/* 0x2C */ u16 player_count_tallies[GMCOMMON_CHAR_NUM_PLAYABLE];
+	/* 0x44 */ u16 played_against[GMCOMMON_CHAR_NUM_PLAYABLE];
 
 } gmBackupVSRecord; // size == 0x5C
 
@@ -556,73 +551,73 @@ typedef struct gmSceneInfo
 
 typedef enum gmStageClearKind
 {
-    gmStageClear_Kind_Stage,        // Normal stage clear
-    gmStageClear_Kind_Game,         // Final stage clear
-    gmStageClear_Kind_Result        // Bonus stage results
+	gmStageClear_Kind_Stage,        // Normal stage clear
+	gmStageClear_Kind_Game,         // Final stage clear
+	gmStageClear_Kind_Result        // Bonus stage results
 
 } gmStageClearKind;
 
 typedef enum gm1PGameBonus
 {
-    GM1PGAME_BONUS_KIND_CHEAPSHOT,
-    GM1PGAME_BONUS_KIND_STARFINISH,
-    GM1PGAME_BONUS_KIND_NOITEM,
-    GM1PGAME_BONUS_KIND_SHIELDBREAKER,
-    GM1PGAME_BONUS_KIND_JUDOWARRIOR,
-    GM1PGAME_BONUS_KIND_HAWK,
-    GM1PGAME_BONUS_KIND_SHOOTER,
-    GM1PGAME_BONUS_KIND_HEAVYDAMAGE,
-    GM1PGAME_BONUS_KIND_ALLVARIATIONS,
-    GM1PGAME_BONUS_KIND_ITEMSTRIKE,
-    GM1PGAME_BONUS_KIND_DOUBLEKO,
-    GM1PGAME_BONUS_KIND_TRICKSTER,
-    GM1PGAME_BONUS_KIND_GIANTIMPACT,
-    GM1PGAME_BONUS_KIND_SPEEDSTER,
-    GM1PGAME_BONUS_KIND_ITEMTHROW,
-    GM1PGAME_BONUS_KIND_TRIPLEKO,
-    GM1PGAME_BONUS_KIND_LASTCHANCE,
-    GM1PGAME_BONUS_KIND_PACIFIST,
-    GM1PGAME_BONUS_KIND_PERFECT,
-    GM1PGAME_BONUS_KIND_NOMISS,
-    GM1PGAME_BONUS_KIND_NODAMAGE,
-    GM1PGAME_BONUS_KIND_FULLPOWER,
-    GM1PGAME_BONUS_KIND_GAMECLEAR,
-    GM1PGAME_BONUS_KIND_NOMISSCLEAR,
-    GM1PGAME_BONUS_KIND_NODAMAGECLEAR,
-    GM1PGAME_BONUS_KIND_SPEEDKING,
-    GM1PGAME_BONUS_KIND_SPEEDDEMON,
-    GM1PGAME_BONUS_KIND_MEWCATCHER,
-    GM1PGAME_BONUS_KIND_STARCLEAR,
-    GM1PGAME_BONUS_KIND_VEGETARIAN,
-    GM1PGAME_BONUS_KIND_HEARTTHROB,
-    GM1PGAME_BONUS_KIND_THROWDOWN,
-    GM1PGAME_BONUS_KIND_SMASHMANIA,
-    GM1PGAME_BONUS_KIND_SMASHLESS,
-    GM1PGAME_BONUS_KIND_SPECIALMOVE,
-    GM1PGAME_BONUS_KIND_SINGLEMOVE,
-    GM1PGAME_BONUS_KIND_POKEMONFINISH,
-    GM1PGAME_BONUS_KIND_BOOBYTRAP,
-    GM1PGAME_BONUS_KIND_FIGHTERSTANCE,
-    GM1PGAME_BONUS_KIND_MYSTIC,
-    GM1PGAME_BONUS_KIND_COMETMYSTIC,
-    GM1PGAME_BONUS_KIND_ACIDCLEAR,
-    GM1PGAME_BONUS_KIND_BUMPERCLEAR,
-    GM1PGAME_BONUS_KIND_TORNADOCLEAR,
-    GM1PGAME_BONUS_KIND_ARWINGCLEAR,
-    GM1PGAME_BONUS_KIND_COUNTERATTACK,
-    GM1PGAME_BONUS_KIND_METEORSMASH,
-    GM1PGAME_BONUS_KIND_AERIAL,
-    GM1PGAME_BONUS_KIND_LASTSECOND,
-    GM1PGAME_BONUS_KIND_LUCKY3,
-    GM1PGAME_BONUS_KIND_JACKPOT,
-    GM1PGAME_BONUS_KIND_YOSHIRAINBOW,
-    GM1PGAME_BONUS_KIND_KIRBYRANKS,
-    GM1PGAME_BONUS_KIND_BROSCALAMITY,
-    GM1PGAME_BONUS_KIND_DKDEFENDER,
-    GM1PGAME_BONUS_KIND_DKPERFECT,
-    GM1PGAME_BONUS_KIND_GOODFRIEND,
-    GM1PGAME_BONUS_KIND_TRUEFRIEND,
-    GM1PGAME_BONUS_KIND_ENUMMAX
+	GM1PGAME_BONUS_KIND_CHEAPSHOT,
+	GM1PGAME_BONUS_KIND_STARFINISH,
+	GM1PGAME_BONUS_KIND_NOITEM,
+	GM1PGAME_BONUS_KIND_SHIELDBREAKER,
+	GM1PGAME_BONUS_KIND_JUDOWARRIOR,
+	GM1PGAME_BONUS_KIND_HAWK,
+	GM1PGAME_BONUS_KIND_SHOOTER,
+	GM1PGAME_BONUS_KIND_HEAVYDAMAGE,
+	GM1PGAME_BONUS_KIND_ALLVARIATIONS,
+	GM1PGAME_BONUS_KIND_ITEMSTRIKE,
+	GM1PGAME_BONUS_KIND_DOUBLEKO,
+	GM1PGAME_BONUS_KIND_TRICKSTER,
+	GM1PGAME_BONUS_KIND_GIANTIMPACT,
+	GM1PGAME_BONUS_KIND_SPEEDSTER,
+	GM1PGAME_BONUS_KIND_ITEMTHROW,
+	GM1PGAME_BONUS_KIND_TRIPLEKO,
+	GM1PGAME_BONUS_KIND_LASTCHANCE,
+	GM1PGAME_BONUS_KIND_PACIFIST,
+	GM1PGAME_BONUS_KIND_PERFECT,
+	GM1PGAME_BONUS_KIND_NOMISS,
+	GM1PGAME_BONUS_KIND_NODAMAGE,
+	GM1PGAME_BONUS_KIND_FULLPOWER,
+	GM1PGAME_BONUS_KIND_GAMECLEAR,
+	GM1PGAME_BONUS_KIND_NOMISSCLEAR,
+	GM1PGAME_BONUS_KIND_NODAMAGECLEAR,
+	GM1PGAME_BONUS_KIND_SPEEDKING,
+	GM1PGAME_BONUS_KIND_SPEEDDEMON,
+	GM1PGAME_BONUS_KIND_MEWCATCHER,
+	GM1PGAME_BONUS_KIND_STARCLEAR,
+	GM1PGAME_BONUS_KIND_VEGETARIAN,
+	GM1PGAME_BONUS_KIND_HEARTTHROB,
+	GM1PGAME_BONUS_KIND_THROWDOWN,
+	GM1PGAME_BONUS_KIND_SMASHMANIA,
+	GM1PGAME_BONUS_KIND_SMASHLESS,
+	GM1PGAME_BONUS_KIND_SPECIALMOVE,
+	GM1PGAME_BONUS_KIND_SINGLEMOVE,
+	GM1PGAME_BONUS_KIND_POKEMONFINISH,
+	GM1PGAME_BONUS_KIND_BOOBYTRAP,
+	GM1PGAME_BONUS_KIND_FIGHTERSTANCE,
+	GM1PGAME_BONUS_KIND_MYSTIC,
+	GM1PGAME_BONUS_KIND_COMETMYSTIC,
+	GM1PGAME_BONUS_KIND_ACIDCLEAR,
+	GM1PGAME_BONUS_KIND_BUMPERCLEAR,
+	GM1PGAME_BONUS_KIND_TORNADOCLEAR,
+	GM1PGAME_BONUS_KIND_ARWINGCLEAR,
+	GM1PGAME_BONUS_KIND_COUNTERATTACK,
+	GM1PGAME_BONUS_KIND_METEORSMASH,
+	GM1PGAME_BONUS_KIND_AERIAL,
+	GM1PGAME_BONUS_KIND_LASTSECOND,
+	GM1PGAME_BONUS_KIND_LUCKY3,
+	GM1PGAME_BONUS_KIND_JACKPOT,
+	GM1PGAME_BONUS_KIND_YOSHIRAINBOW,
+	GM1PGAME_BONUS_KIND_KIRBYRANKS,
+	GM1PGAME_BONUS_KIND_BROSCALAMITY,
+	GM1PGAME_BONUS_KIND_DKDEFENDER,
+	GM1PGAME_BONUS_KIND_DKPERFECT,
+	GM1PGAME_BONUS_KIND_GOODFRIEND,
+	GM1PGAME_BONUS_KIND_TRUEFRIEND,
+	GM1PGAME_BONUS_KIND_ENUMMAX
 
 } gm1PGameBonus;
 
@@ -692,15 +687,15 @@ typedef enum gm1PGameBonus
 
 typedef struct gmStageClearStats
 {
-    s32 bonus_array_id;
-    s32 bonus_id;
+	s32 bonus_array_id;
+	s32 bonus_id;
 
 } gmStageClearStats;
 
 typedef struct gmStageClearScore
 {
-    intptr_t offset;
-    s32 points;
+	intptr_t offset;
+	s32 points;
 
 } gmStageClearScore;
 

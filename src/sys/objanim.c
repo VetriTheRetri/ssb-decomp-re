@@ -8,6 +8,7 @@ extern void hal_interpolation_cubic(Vec3f*, void*, f32);
 //                               //
 // // // // // // // // // // // //
 
+// Belongs to system_05?
 s32 D_8003B930 = 10;
 s32 D_8003B934 = 10;
 s32 D_8003B938 = 10;
@@ -2414,7 +2415,7 @@ void gcAddMObjAll(GObj *gobj, MObjSub ***p_mobjsubs)
     }
 }
 
-void gcSetTransformVectorsAll(GObj *gobj, DObjDesc *dobj_desc)
+void gcSetDObjTransformsForGObj(GObj *gobj, DObjDesc *dobj_desc)
 {
     DObj *dobj = DObjGetStruct(gobj);
 
@@ -2881,15 +2882,128 @@ void gcUpdateCameraCamAnim(GObj *gobj)
     gcPlayCameraCamAnim(cam);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/unref_800105AC.s")
+s32 gcGetAnimTotalLength(AObjAnimJoint **anim_joints)
+{
+    AObjAnimJoint *anim_joint;
+    u32 flags;
+    s32 total = 0;
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010704_11304.s")
+    while (*anim_joints == NULL)
+    {
+        anim_joints++;
+    }
+    anim_joint = *anim_joints;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/unref_80010710.s")
+    while (TRUE)
+    {
+        switch (anim_joint->command.opcode)
+        {
+            case nOMObjAnimCommandSetValBlock:
+            case nOMObjAnimCommandSetVal0RateBlock:
+            case nOMObjAnimCommandSetValAfterBlock:
+                total += anim_joint->command.payload;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010734.s")
+                /* fallthrough */
 
-void unref_80010740(void) 
+            case nOMObjAnimCommandSetVal:
+            case nOMObjAnimCommandSetTargetRate:
+            case nOMObjAnimCommandSetVal0Rate:
+            case nOMObjAnimCommandSetValAfter:
+                flags = AObjAnimAdvance(anim_joint)->command.flags;
+
+                for (i = 0; i < 10; i++, flags = flags >> 1)
+                {
+                    if (flags == 0)
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        AObjAnimAdvance(anim_joint);
+                    }
+                }
+                break;
+
+            case nOMObjAnimCommandSetValRateBlock:
+                total += anim_joint->command.payload;
+
+                /* fallthrough */
+
+            case nOMObjAnimCommandSetValRate:
+                flags = AObjAnimAdvance(anim_joint)->command.flags;
+
+                for (i = 0; i < 10; i++, flags = flags >> 1)
+                {
+                    if (flags == 0)
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        anim_joint += 2;
+                    }
+                }
+                break;
+
+            case nOMObjAnimCommandWait:
+            case nOMObjAnimCommandSetFlags:
+                total += AObjAnimAdvance(anim_joint)->command.payload;
+                break;
+
+            case ANIM_CMD_12:
+                AObjAnimAdvance(anim_joint);
+                break;
+
+            case nOMObjAnimCommandSetInterp:
+                anim_joint += 2;
+                break;
+
+            case ANIM_CMD_17:
+                total += anim_joint->command.payload;
+                flags = AObjAnimAdvance(anim_joint)->command.flags;
+
+                for (i = 4; i < 14; i++, flags = flags >> 1)
+                {
+                    if (flags == 0)
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        AObjAnimAdvance(anim_joint);
+                    }
+                }
+                break;
+
+            case nOMObjAnimCommandEnd:
+                return total;
+
+            case nOMObjAnimCommandJump:
+            case nOMObjAnimCommandSetAnim:
+                return -total;
+
+            case ANIM_CMD_16:
+                break;
+        }
+    }
+}
+
+// New file here?
+void unref_80010710(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
+{
+    D_8003B930 = arg0;
+    D_8003B934 = arg1;
+    D_8003B938 = arg2;
+    D_8003B93C = arg3;
+}
+
+void func_80010734(void *arg0)
+{
+    D_800470AC = arg0;
+}
+
+void unref_80010740(void)
 {
     return;
 }

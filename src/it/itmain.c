@@ -12,7 +12,7 @@ extern intptr_t lITMainContainerVelocitiesY;  // 0x00000000
 extern ub8 gGM1PGameBonusMewCatcher;
 
 extern alSoundEffect* func_800269C0_275C0(u16);
-extern void gcSetTransformVectorsAll();
+extern void gcSetDObjTransformsForGObj();
 
 // // // // // // // // // // // //
 //                               //
@@ -462,7 +462,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     efManagerItemGetSwirlProcUpdate(&pos);
 
-    gcSetTransformVectorsAll(item_gobj, ip->attributes->dobj_setup);
+    gcSetDObjTransformsForGObj(item_gobj, ip->attributes->dobj_setup);
 
     proc_pickup = dITMainProcHoldList[ip->it_kind];
 

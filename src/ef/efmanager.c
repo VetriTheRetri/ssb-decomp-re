@@ -2277,7 +2277,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
 
                 main_dobj = func_ovl0_800C86E8(main_dobj, other_dobj);
             }
-            gcSetTransformVectorsAll(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup));
+            gcSetDObjTransformsForGObj(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup));
         }
         else
         {

@@ -56,10 +56,11 @@ extern void func_8000F364(struct DObj *, u8, u8, u8, s32);
     u8);
 
 extern void gcAddMObjAll(struct GObjCommon *, struct MObjSub ***);
-extern void gcSetTransformVectorsAll(struct GObjCommon *, struct UnkEC64Arg3 *);
+extern void gcSetDObjTransformsForGObj(struct GObjCommon *, struct UnkEC64Arg3 *);
 */
-extern void gcAddCameraCamAnimJoint(struct DObj *dobj, union AnimCmd *, f32);
-extern void gcUpdateCameraCamAnim(struct GObjCommon *obj);
+
+// extern void gcAddCameraCamAnimJoint(struct DObj *dobj, union AnimCmd *, f32);
+// extern void gcUpdateCameraCamAnim(struct GObjCommon *obj);
 extern void func_80010734(void *);
 
 // possible real start of system_05

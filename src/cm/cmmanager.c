@@ -10,7 +10,6 @@ extern mlRegion gGraphicsHeap;
 
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, u64, s32, s32, s32, s32, s32, s32);
 extern void func_ovl0_800CD2CC(GObj*);
-extern void gcAddCameraCamAnimJoint(void*, void*, f32);
 extern void func_80007080(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
@@ -785,7 +784,7 @@ void func_ovl2_8010CBE4(GObj *camera_gobj)
 {
     Camera *cam;
 
-    gcUpdateCameraCamAnim();
+    gcUpdateCameraCamAnim(camera_gobj);
 
     cam = CameraGetStruct(camera_gobj);
 

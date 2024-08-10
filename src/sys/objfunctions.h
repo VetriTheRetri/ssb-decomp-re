@@ -153,6 +153,21 @@ extern void gcSetupCustomDObjsWithMObj
 extern void gcAddMObjAll(GObj *gobj, MObjSub ***p_mobjsubs);
 
 // Set transformation vectors for all DObjs on a GObj
-extern void gcSetTransformVectorsAll(GObj *gobj, DObjDesc *dobj_desc);
+extern void gcSetDObjTransformsForGObj(GObj *gobj, DObjDesc *dobj_desc);
+
+// Add CamAnimJoint to Camera
+extern void gcAddCameraCamAnimJoint(Camera *cam, AObjAnimJoint *camanim_joint, f32 anim_frame); 
+
+// Parse CamAnimJoint on Camera
+extern void gcParseCameraCamAnimJoint(Camera *cam);
+
+// Play CamAnimJoint on Camera
+extern void gcPlayCameraCamAnim(Camera *cam);
+
+// Parse and update CamAnimJoint on GObj's Camera
+extern void gcUpdateCameraCamAnim(GObj *gobj);
+
+// Get total animation length
+extern s32 gcGetAnimTotalLength(AObjAnimJoint **anim_joints);
 
 #endif

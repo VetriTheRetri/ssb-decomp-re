@@ -14,10 +14,8 @@ extern intptr_t lOverlay36ArenaLo;  // 8018E620
 extern intptr_t lOverlay36ArenaHi;  // 803903E0
 extern void func_ovl0_800CCF00();
 extern void func_ovl0_800CD2CC();
-extern void gcUpdateCameraCamAnim();
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
-extern void gcAddCameraCamAnimJoint(void*, void*, f32);
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern u32 gFTManagerAnimHeapSize; // 80130D9C
 // Offsets

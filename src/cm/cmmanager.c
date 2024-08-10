@@ -5,8 +5,8 @@
 #include <gm/battle.h>
 #include <sys/ml.h>
 
-extern Mtx44f D_80046FA8;
-extern mlRegion gGraphicsHeap;
+extern Mtx44f sODMatrixPerspF;
+extern mlRegion gSYGtlGraphicsHeap;
 
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, u64, s32, s32, s32, s32, s32, s32);
 extern void func_ovl0_800CD2CC(GObj*);
@@ -999,28 +999,28 @@ sb32 cmManagerCameraLookAt(Mtx *mtx, Camera *cam, Gfx **dl)
     f32 max;
     s32 unused;
 
-    temp_mtx = gGraphicsHeap.ptr;
-    gGraphicsHeap.ptr = (Mtx*)gGraphicsHeap.ptr + 1;
+    temp_mtx = gSYGtlGraphicsHeap.ptr;
+    gSYGtlGraphicsHeap.ptr = (Mtx*)gSYGtlGraphicsHeap.ptr + 1;
 
-    syMatrixPerspFastF(D_80046FA8, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, cam->projection.persp.scale);
-    syMatrixF2L(D_80046FA8, temp_mtx);
+    syMatrixPerspFastF(sODMatrixPerspF, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, cam->projection.persp.scale);
+    syMatrixF2L(sODMatrixPerspF, temp_mtx);
 
-    D_80046FA0 = temp_mtx;
+    sODMatrixProjectL = temp_mtx;
 
     syMatrixLookAtReflectF(sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
-    guMtxCatF(sp5C, D_80046FA8, gCMManagerMtx);
+    guMtxCatF(sp5C, sODMatrixPerspF, gCMManagerMtx);
 
     max = cmManagerGetMtxMaxValue();
 
     if (max > 32000.0F)
     {
-        syMatrixPerspFastF(D_80046FA8, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, 32000.0F / max);
-        syMatrixF2L(D_80046FA8, temp_mtx);
+        syMatrixPerspFastF(sODMatrixPerspF, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, 32000.0F / max);
+        syMatrixF2L(sODMatrixPerspF, temp_mtx);
 
-        D_80046FA0 = temp_mtx;
+        sODMatrixProjectL = temp_mtx;
 
         syMatrixLookAtReflectF(sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
-        guMtxCatF(sp5C, D_80046FA8, gCMManagerMtx);
+        guMtxCatF(sp5C, sODMatrixPerspF, gCMManagerMtx);
     }
     syMatrixF2L(gCMManagerMtx, mtx);
 
@@ -1051,10 +1051,10 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
 {
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    func_80017830(3);
+    gcSetCameraMatrixMode(3);
     func_8001663C(gDisplayListHead, cam, 0);
-    gcDrawCameraMain(gDisplayListHead, cam);
-    func_8001783C(cam, 0);
+    gcPrepCameraMatrix(gDisplayListHead, cam);
+    gcRunProcCamera(cam, 0);
 
     gIFPlayerCommonInterface.ifmagnify_mode = 0;
     gIFPlayerCommonInterface.arrows_flags = 0;
@@ -1258,7 +1258,7 @@ sb32 func_ovl2_8010DE48(Mtx *mtx, s32 arg1, Gfx **dl)
     var_z = eye->z - at->z;
 
     syMatrixLookAtF(sp64, 0.0F, 300.0F, sqrtf(SQUARE(var_x) + SQUARE(var_y) + SQUARE(var_z)), 0.0F, 300.0F, 0.0F, 0.0F, 1.0F, 0.0F);
-    guMtxCatF(sp64, D_80046FA8, spA4);
+    guMtxCatF(sp64, sODMatrixPerspF, spA4);
 
     sp50.z = 0.0F;
     sp50.y = 900.0F;
@@ -1314,7 +1314,7 @@ void func_ovl2_8010E134(GObj *camera_gobj)
     {
         Camera *cam = CameraGetStruct(camera_gobj);
 
-        gcDrawCameraMain(gDisplayListHead, cam);
+        gcPrepCameraMatrix(gDisplayListHead, cam);
 
         func_80017B80(camera_gobj, (cam->flags & 0x8) ? 1 : 0);
         func_80017CC8(cam);
@@ -1337,13 +1337,13 @@ void func_ovl2_8010E1A4(void)
 // 0x8010E254
 void func_ovl2_8010E254(GObj *camera_gobj)
 {
-    func_80017830(1);
+    gcSetCameraMatrixMode(1);
 
     if (gIFPlayerCommonInterface.arrows_flags != 0)
     {
         Camera *cam = CameraGetStruct(camera_gobj);
 
-        gcDrawCameraMain(gDisplayListHead, cam);
+        gcPrepCameraMatrix(gDisplayListHead, cam);
 
         func_80017B80(camera_gobj, (cam->flags & 0x8) ? 1 : 0);
         func_80017CC8(cam);

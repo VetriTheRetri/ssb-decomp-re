@@ -118,7 +118,7 @@ typedef struct gmCreditsProjection
 
 
 extern void hal_interpolation_cubic(Vec3f*, void*, f32);
-extern void hal_rotate_rpy_translate_scale_f(Mtx44f mf,f32 dx,f32 dy,f32 dz,f32 r,f32 p,f32 h,f32 sx,f32 sy,f32 sz);
+extern void syMatrixTraRotRpyRSca_f(Mtx44f mf,f32 dx,f32 dy,f32 dz,f32 r,f32 p,f32 h,f32 sx,f32 sy,f32 sz);
 extern void syMatrixPerspFastF(Mtx44f a, u16* b, f32 c, f32 d, f32 e, f32 f, f32  g);
 extern void syMatrixLookAtF(Mtx44f mf, f32 xEye, f32 yEye, f32 zEye, f32 xAt, f32 yAt, f32 zAt, f32 xUp, f32 yUp, f32 zUp);
 extern void guMtxCatF(Mtx44f a, Mtx44f b, Mtx44f c);

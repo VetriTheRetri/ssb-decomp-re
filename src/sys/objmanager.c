@@ -1260,7 +1260,7 @@ MObj* gcAddMObjForDObj(DObj* dobj, MObjSub* mobjsub)
 	mobj->sub.unk28 = mobjsub->unk1C;
 	mobj->texture_id_current = 0;
 	mobj->texture_id_next = 0;
-	mobj->texture_frame = 0;
+	mobj->palette_id = 0;
 	mobj->aobj = NULL;
 	mobj->matanim_joint = NULL;
 	mobj->anim_remain = AOBJ_ANIM_NULL;
@@ -1792,7 +1792,7 @@ void gcLinkGObjDLCommon(GObj* gobj, void (*proc_render)(GObj*), u8 dl_link, u32 
 	gobj->dl_link_order = dl_order;
 	gobj->proc_render = proc_render;
 	gobj->unk_gobj_0x38 = arg4;
-	gobj->fd_last = D_8003B6E8.word - 1;
+	gobj->frame_draw_last = dSYGtlFrameDrawCount - 1;
 }
 
 // 80009DF4
@@ -1844,7 +1844,7 @@ void func_80009F28(GObj* gobj, void (*proc_render)(GObj*), u32 order, u64 arg3, 
 	gobj->unk_gobj_0x30 = arg3;
 	gobj->unk_gobj_0x38 = arg4;
 	gobj->unk_gobj_0x40 = 0;
-	gobj->fd_last = D_8003B6E8.word - 1;
+	gobj->frame_draw_last = dSYGtlFrameDrawCount - 1;
 }
 
 // 80009F74
@@ -1981,7 +1981,7 @@ void func_8000A340()
 	gOMObjCurrentRendering = NULL;
 	D_80046A5C_40A7C = NULL;
 
-	for (i = 0, v1 = D_8003B6E8.word - 1; i < ARRAY_COUNT(D_80046A88); i++)
+	for (i = 0, v1 = dSYGtlFrameDrawCount - 1; i < ARRAY_COUNT(D_80046A88); i++)
 		D_80046A88[i].id = v1;
 
 	gobj = gOMObjCommonDLLinks[ARRAY_COUNT(gOMObjCommonDLLinks) - 1];
@@ -2314,7 +2314,7 @@ void gcSetupObjectManager(OMSetup* setup)
 
 	sOMObjProcessCallback = NULL;
 
-	func_80017830(0);
+	gcSetCameraMatrixMode(0);
 
 	D_8003B874_3C474 = 0;
 }

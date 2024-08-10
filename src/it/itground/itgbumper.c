@@ -52,9 +52,9 @@ sb32 itGBumperCommonProcUpdate(GObj *item_gobj)
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if ((ip->item_vars.bumper.hit_anim_length == 0) && (dobj->mobj->texture_frame == 1.0F))
+    if ((ip->item_vars.bumper.hit_anim_length == 0) && (dobj->mobj->palette_id == 1.0F))
     {
-        dobj->mobj->texture_frame = 0;
+        dobj->mobj->palette_id = 0;
     }
     else ip->item_vars.bumper.hit_anim_length--;
     
@@ -80,7 +80,7 @@ sb32 itGBumperCommonProcHit(GObj *item_gobj)
 
     ip->item_vars.bumper.hit_anim_length = ITBUMPER_HIT_ANIM_LENGTH;
 
-    dobj->mobj->texture_frame = 1.0F;
+    dobj->mobj->palette_id = 1.0F;
 
     ip->it_multi = ITBUMPER_HIT_SCALE;
 
@@ -111,7 +111,7 @@ GObj* itGBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->phys_info.vel_air.y = 0.0F;
         ip->phys_info.vel_air.z = 0.0F;
 
-        dobj->mobj->texture_frame = 0;
+        dobj->mobj->palette_id = 0;
 
         if (gBattleState->gr_kind == nGRKindCastle)
         {

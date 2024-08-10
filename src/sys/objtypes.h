@@ -158,7 +158,7 @@ struct GObj
     GObj *link_prev;
     u8 link_id;
     u8 dl_link_id;
-    u8 fd_last;                         // Last frame drawn?
+    u8 frame_draw_last;                         // Last frame drawn?
     u8 obj_kind;                        // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = Camera
     u32 link_order;
     void (*proc_run)(GObj*);
@@ -273,7 +273,7 @@ struct _MObjSub
     u16 pad00;
     u8 fmt;
     u8 siz;
-    Sprite **sprites; // should this be a pointer to an array of images (sprite set)?
+    void **sprites; // should this be a pointer to an array of images (sprite set)?
     u16 unk08;
     u16 unk0A;
     u16 unk0C;
@@ -285,7 +285,7 @@ struct _MObjSub
     f32 unk20;
     f32 unk24;
     f32 unk28;
-    void **images;  // image pointers?
+    void **palettes;  // palette pointers?
     u16 flags;      // command flags?
     u8 block_fmt;   // texture image format?
     u8 block_siz;
@@ -320,7 +320,7 @@ struct _MObj
     u16 texture_id_current;
     u16 texture_id_next;
     f32 lfrac;
-    f32 texture_frame;
+    f32 palette_id;
     u8 filler_0x8C[0x90 - 0x8C];
     AObj *aobj;
     AObjAnimJoint *matanim_joint;

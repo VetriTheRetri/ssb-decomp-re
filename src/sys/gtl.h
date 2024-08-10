@@ -60,36 +60,25 @@ typedef struct gsGTLSetupDesc
 
 } gsGTLSetupDesc; // size >= 0x8C
 
-union WeirdBytewise
-{
-	u32 word;
-
-	struct
-	{
-		u8 b0, b1, b2, b3;
-
-	} bytes;
-};
-
 extern u32 D_8003B6E4;
-extern union WeirdBytewise D_8003B6E8;
+extern s32 dSYGtlFrameDrawCount;
 extern Gfx *gDisplayListHead[4];
 extern Gfx *D_800465C0[4];
-extern mlRegion gGraphicsHeap;
-extern mlRegion gGeneralHeap;
+extern mlRegion gSYGtlGraphicsHeap;
+extern mlRegion gSYGtlGeneralHeap;
 // Gfx *? Gfx
 extern u32 D_80046610;
 // Gfx *? Gfx
 extern u32 D_80046614;
 extern u16 D_80046626;
 extern u16 D_80046628;
-extern u32 gGtlTaskId;
+extern s32 gSYGtlTaskID;
 
 extern void func_800048D0(SCTaskGfxCallback arg0);
 extern void func_800048F8(Gfx **dl);
 extern void *gsMemoryAlloc(u32 size, u32 alignment);
 extern void func_80004F78(void);
-extern void gsAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
+extern void syGtlAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
 extern void func_800053CC(void);
 extern void func_800057C8(void);
 extern void leoInitUnit_atten(void);

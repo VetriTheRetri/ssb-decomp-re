@@ -73,7 +73,7 @@ void func_ovl59_80131D30(DObj *dobj, Vec3f *vec, f32 *width, f32 *height)
 {
 	Mtx44f m, r;
 
-	hal_rotate_rpy_translate_scale_f
+	syMatrixTraRotRpyRSca_f
 	(
 		m,
 		dobj->translate.vec.f.x,

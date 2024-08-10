@@ -9,7 +9,7 @@
 
 extern intptr_t lFTShadowTextureImage;          // 0x00003A68
 
-extern u32 gGtlTaskId;
+extern s32 gSYGtlTaskID;
 
 // // // // // // // // // // // //
 //                               //
@@ -292,7 +292,7 @@ void ftShadowProcRender(GObj *shadow_gobj)
 
                 if (gfx_vertex_num != 0)
                 {
-                    if (gGtlTaskId != 0)
+                    if (gSYGtlTaskID != 0)
                     {
                         shadow_vertex = &fs->shadow_vertex2[0];
                     }

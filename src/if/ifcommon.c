@@ -135,7 +135,7 @@ extern intptr_t lIFCommonBattlePauseDecalControlStick;      // 0x000017A8
 extern intptr_t lIFCommonBattlePauseDecalLTrigger;          // 0x000018C8
 extern intptr_t lIFCommonBattlePauseDecalRetry;             // 0x00000828
 
-extern mlRegion gGeneralHeap;
+extern mlRegion gSYGtlGeneralHeap;
 
 extern u32 gMPCollisionBGMDefault;
 extern s32 gSYDisplayResWidth;
@@ -3252,7 +3252,7 @@ void ifCommonBattleSetUpdateInterface(void)
 // 0x80114800
 void ifCommonSetMaxNumGObj(void)
 {
-    size_t free_space = (uintptr_t)gGeneralHeap.end - (uintptr_t)gGeneralHeap.ptr;
+    size_t free_space = (uintptr_t)gSYGtlGeneralHeap.end - (uintptr_t)gSYGtlGeneralHeap.ptr;
 
     if ((gcGetMaxNumGObj() == -1) && (free_space < ML_BYTES_TO_KBYTES(25)))
     {

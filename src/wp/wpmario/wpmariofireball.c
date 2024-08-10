@@ -192,7 +192,7 @@ GObj* wpMarioFireballMakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 index)
     wp->phys_info.vel_air.x = dWPMarioFireballWeaponAttributes[index].vel_base * __cosf(angle) * fp->lr;
     wp->phys_info.vel_air.y = dWPMarioFireballWeaponAttributes[index].vel_base * __sinf(angle);
 
-    DObjGetStruct(weapon_gobj)->mobj->texture_frame = dWPMarioFireballWeaponAttributes[index].anim_frame;
+    DObjGetStruct(weapon_gobj)->mobj->palette_id = dWPMarioFireballWeaponAttributes[index].anim_frame;
 
     wpMainVelSetModelPitch(weapon_gobj);
 

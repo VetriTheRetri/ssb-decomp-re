@@ -699,7 +699,7 @@ GObj* itRShellMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f = translate;
 
-        dobj->mobj->texture_frame = 0.0F;
+        dobj->mobj->palette_id = 0.0F;
 
         ip = itGetStruct(item_gobj);
 

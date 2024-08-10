@@ -17,25 +17,25 @@ typedef struct syMtxProcess
 } syMtxProcess;
 
 // gbi Mtx * ? pointer to some sort of matrix
-extern Mtx *D_80046FA0;
-extern f32 sODSpriteRowScale;
-extern Mtx44f D_80046FA8;
-extern syMtxProcess *sODMtxProcess;
+extern Mtx *sODMatrixProjectL;
+extern f32 sODScaleX;
+extern Mtx44f sODMatrixPerspF;
+extern syMtxProcess *sODMatrixProcess;
 
-extern void unref_80010710(s32 lrx, s32 lry, s32 ulx, s32 uly);
+extern void gcSetCameraScissor(s32 top, s32 bottom, s32 left, s32 right);
 extern void gcSetMatrixProcess(syMtxProcess *proc_mtx);
 extern void unref_80010740(void);
 extern void func_80010748(Mtx *mtx_l, DObj *dobj, sb32 is_translate);
 extern void func_80010918(Mtx *mtx_l, DObj *dobj, sb32 is_translate);
 extern void func_80010AE8(Mtx *mtx_l, DObj *dobj, sb32 is_translate);
 extern void func_80010C2C(Mtx *mtx_l, DObj *dobj, sb32 is_translate);
-extern s32 gcDrawDObjMain(Gfx **dl, DObj *dobj);
+extern s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj);
 extern void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head);
 extern void gcDrawDObjForGObj(GObj *gobj, Gfx **dl_head);
 extern void gcDrawDObjDLHead0(GObj *gobj);
 extern void gcDrawDObjDLHead1(GObj *gobj);
-extern void unref_80013EB0(GObj *gobj);
-extern void unref_80013ED4(GObj *gobj);
+extern void gcDrawDObjDLHead2(GObj *gobj);
+extern void gcDrawDObjDLHead3(GObj *gobj);
 extern void gcDrawDObjTree(DObj *this_dobj);
 extern void gcDrawDObjTreeForGObj(GObj *gobj);
 extern void gcDrawDObjDLLinks(DObj *dobj, DObjDLLink *dl_link);
@@ -62,9 +62,9 @@ extern void unref_800162C8(GObj *gobj);
 extern void func_80016338(Gfx **dls, Camera *cam, s32 arg2);
 extern void func_8001663C(Gfx **dls, Camera *cam, s32 arg2);
 extern void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, s32 max_lry, void *depth);
-extern void gcDrawCameraMain(Gfx **dls, Camera *cam);
-extern void func_80017830(s32 val);
-extern void func_8001783C(Camera *cam, s32 arg);
+extern void gcPrepCameraMatrix(Gfx **dls, Camera *cam);
+extern void gcSetCameraMatrixMode(s32 val);
+extern void gcRunProcCamera(Camera *cam, s32 arg);
 extern void func_80017868(GObj *this_gobj, s32 link_id, s32 arg2);
 extern void func_80017978(GObj *gobj, s32 index, s32 arg2);
 extern void func_80017AAC(s32 index);

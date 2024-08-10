@@ -676,7 +676,7 @@ void func_800A26D8(GObj* arg0)
 	// this needs to be in its own block to match. macro?
 	// could explain the double sync
 	{
-		size_t freeSpace = (uintptr_t)gGeneralHeap.end - (uintptr_t)gGeneralHeap.ptr;
+		size_t freeSpace = (uintptr_t)gSYGtlGeneralHeap.end - (uintptr_t)gSYGtlGeneralHeap.ptr;
 
 		gDPSetFillColor((*gDisplayListHead)++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 		func_800218E0(0x14, 0x14, freeSpace, 7, 1);

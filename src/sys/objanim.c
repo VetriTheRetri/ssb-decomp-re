@@ -1280,7 +1280,7 @@ void gcPlayMObjMatAnim(MObj *mobj)
                         break;
                         
                     case nOMObjAnimTrackSetTextureFrame: 
-                        mobj->texture_frame = value; 
+                        mobj->palette_id = value; 
                         break;
                         
                     default: 

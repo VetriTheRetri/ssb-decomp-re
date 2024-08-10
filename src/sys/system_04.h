@@ -25,10 +25,10 @@ struct UnkEC64Arg3 {
 }; // size == 0x2C
 
 // data
-extern s32 D_8003B930;
-extern s32 D_8003B934;
-extern s32 D_8003B938;
-extern s32 D_8003B93C;
+extern s32 dODScreenLrxDefault;
+extern s32 dODScreenLryDefault;
+extern s32 dODScreenUlxDefault;
+extern s32 dODScreenUlyDefault;
 
 // functions
 extern void gcAddDObjAnimJoint(DObj*, AObjAnimJoint*, f32);
@@ -61,12 +61,15 @@ extern void gcSetDObjTransformsForGObj(struct GObjCommon *, struct UnkEC64Arg3 *
 
 // extern void gcAddCameraCamAnimJoint(struct DObj *dobj, union AnimCmd *, f32);
 // extern void gcUpdateCameraCamAnim(struct GObjCommon *obj);
-extern void func_80010734(void *);
+// extern void gcSetMatrixProcess(void *);
 
 // possible real start of system_05
+
+/*
 extern void func_80010748(Mtx *, struct DObj *, s32);
 extern void func_80010918(Mtx *, struct DObj *, s32);
 extern void func_80010AE8(Mtx *, struct DObj *, s32);
 extern void func_80010C2C(Mtx *, struct DObj *, s32);
+*/
 
 #endif /* SYS_SYSTEM_04_H */

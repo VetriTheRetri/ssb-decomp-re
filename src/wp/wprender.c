@@ -54,15 +54,15 @@ void wpRenderHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
             }
             if (weapon_hit->update_state == nGMHitUpdateInterpolate)
             {
-                hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+                syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-                hlMtxTranslate(mtx_store.gbi, weapon_hit->hit_positions[i].pos_prev.x, weapon_hit->hit_positions[i].pos_prev.y, weapon_hit->hit_positions[i].pos_prev.z);
+                syMatrixTranslate(mtx_store.gbi, weapon_hit->hit_positions[i].pos_prev.x, weapon_hit->hit_positions[i].pos_prev.y, weapon_hit->hit_positions[i].pos_prev.z);
 
                 gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+                syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-                hlMtxScale(mtx_store.gbi, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F);
+                syMatrixScale(mtx_store.gbi, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F);
 
                 gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -70,15 +70,15 @@ void wpRenderHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
-            hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-            hlMtxTranslate(mtx_store.gbi, weapon_hit->hit_positions[i].pos.x, weapon_hit->hit_positions[i].pos.y, weapon_hit->hit_positions[i].pos.z);
+            syMatrixTranslate(mtx_store.gbi, weapon_hit->hit_positions[i].pos.x, weapon_hit->hit_positions[i].pos.y, weapon_hit->hit_positions[i].pos.z);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-            hlMtxScale(mtx_store.gbi, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F);
+            syMatrixScale(mtx_store.gbi, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -103,15 +103,15 @@ void wpRenderMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 
     gDPPipeSync(gDisplayListHead[1]++);
 
-    hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+    syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-    hlMtxTranslate(mtx_store.gbi, translate->x, translate->y + objcoll->bottom, translate->z);
+    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + objcoll->bottom, translate->z);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+    syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-    hlMtxScale(mtx_store.gbi, objcoll->width / 30.0F, (objcoll->center - objcoll->bottom) / 30.0F, 1.0F);
+    syMatrixScale(mtx_store.gbi, objcoll->width / 30.0F, (objcoll->center - objcoll->bottom) / 30.0F, 1.0F);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -119,15 +119,15 @@ void wpRenderMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 
     gSPPopMatrix(gDisplayListHead[1]++, G_MTX_MODELVIEW);
 
-    hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+    syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-    hlMtxTranslate(mtx_store.gbi, translate->x, translate->y + objcoll->center, translate->z);
+    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + objcoll->center, translate->z);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+    syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-    hlMtxScale(mtx_store.gbi, objcoll->width / 30.0F, (objcoll->top - objcoll->center) / 30.0F, 1.0F);
+    syMatrixScale(mtx_store.gbi, objcoll->width / 30.0F, (objcoll->top - objcoll->center) / 30.0F, 1.0F);
 
     gSPMatrix(gDisplayListHead[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 

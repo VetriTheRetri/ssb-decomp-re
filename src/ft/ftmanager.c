@@ -729,7 +729,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
     {
         gBattleState->players[fp->player].stock_count = ft_desc->stock_count;
     }
-    fp->detail_current = fp->detail_default = ft_desc->model_lod;
+    fp->detail_current = fp->detail_default = ft_desc->detail;
 
     fp->costume = ft_desc->costume;
     fp->shade = ft_desc->shade;
@@ -800,7 +800,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
             fp->joints[i]->user_data.p = ftManagerGetNextPartsAlloc();
 
             ft_parts = fp->joints[i]->user_data.p;
-            ft_parts->flags = attributes->commonparts_container->commonparts[fp->detail_current - 1].flags;
+            ft_parts->flags = attributes->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].flags;
             ft_parts->joint_id = i;
 
             if (fp->costume != 0)

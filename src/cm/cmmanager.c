@@ -1002,27 +1002,27 @@ sb32 cmManagerCameraLookAt(Mtx *mtx, Camera *cam, Gfx **dl)
     temp_mtx = gGraphicsHeap.ptr;
     gGraphicsHeap.ptr = (Mtx*)gGraphicsHeap.ptr + 1;
 
-    hlMtxPerspFastF(D_80046FA8, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, cam->projection.persp.scale);
-    hlMtxF2L(D_80046FA8, temp_mtx);
+    syMatrixPerspFastF(D_80046FA8, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, cam->projection.persp.scale);
+    syMatrixF2L(D_80046FA8, temp_mtx);
 
     D_80046FA0 = temp_mtx;
 
-    hlMtxLookAtReflectF(sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
+    syMatrixLookAtReflectF(sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
     guMtxCatF(sp5C, D_80046FA8, gCMManagerMtx);
 
     max = cmManagerGetMtxMaxValue();
 
     if (max > 32000.0F)
     {
-        hlMtxPerspFastF(D_80046FA8, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, 32000.0F / max);
-        hlMtxF2L(D_80046FA8, temp_mtx);
+        syMatrixPerspFastF(D_80046FA8, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, 32000.0F / max);
+        syMatrixF2L(D_80046FA8, temp_mtx);
 
         D_80046FA0 = temp_mtx;
 
-        hlMtxLookAtReflectF(sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
+        syMatrixLookAtReflectF(sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
         guMtxCatF(sp5C, D_80046FA8, gCMManagerMtx);
     }
-    hlMtxF2L(gCMManagerMtx, mtx);
+    syMatrixF2L(gCMManagerMtx, mtx);
 
     return 0;
 }
@@ -1257,7 +1257,7 @@ sb32 func_ovl2_8010DE48(Mtx *mtx, s32 arg1, Gfx **dl)
     var_y = eye->y - at->y;
     var_z = eye->z - at->z;
 
-    hlMtxLookAtF(sp64, 0.0F, 300.0F, sqrtf(SQUARE(var_x) + SQUARE(var_y) + SQUARE(var_z)), 0.0F, 300.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+    syMatrixLookAtF(sp64, 0.0F, 300.0F, sqrtf(SQUARE(var_x) + SQUARE(var_y) + SQUARE(var_z)), 0.0F, 300.0F, 0.0F, 0.0F, 1.0F, 0.0F);
     guMtxCatF(sp64, D_80046FA8, spA4);
 
     sp50.z = 0.0F;
@@ -1272,9 +1272,9 @@ sb32 func_ovl2_8010DE48(Mtx *mtx, s32 arg1, Gfx **dl)
     {
         gIFPlayerCommonInterface.ifmagnify_scale = 3.0F;
     }
-    hlMtxOrthoF(spA4, -450.0F, 450.0F, -450.0F, 450.0F, 256.0F, 39936.0F, 1.0F);
+    syMatrixOrthoF(spA4, -450.0F, 450.0F, -450.0F, 450.0F, 256.0F, 39936.0F, 1.0F);
     guMtxCatF(sp64, spA4, spA4);
-    hlMtxF2L(spA4, mtx);
+    syMatrixF2L(spA4, mtx);
 
     return 0;
 }
@@ -1290,11 +1290,11 @@ sb32 func_ovl2_8010E00C(Mtx *mtx, s32 arg1, Gfx **dl)
     width = (gCMManagerCameraStruct.viewport_width / 2);
     height = (gCMManagerCameraStruct.viewport_height / 2);
 
-    hlMtxOrthoF(sp78, -width, width, -height, height, 100.0F, 12800.0F, 1.0F);
-    hlMtxLookAtF(sp38, 0.0F, 0.0F, 1000.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+    syMatrixOrthoF(sp78, -width, width, -height, height, 100.0F, 12800.0F, 1.0F);
+    syMatrixLookAtF(sp38, 0.0F, 0.0F, 1000.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
 
     guMtxCatF(sp38, sp78, sp78);
-    hlMtxF2L(sp78, mtx);
+    syMatrixF2L(sp78, mtx);
 
     return 0;
 }

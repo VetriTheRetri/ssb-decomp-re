@@ -610,7 +610,7 @@ void scBonusGame_InitBonusGame()
 
 		player_spawn.team = 0;
 		player_spawn.player = player;
-		player_spawn.model_lod = nFTPartsDetailHigh;
+		player_spawn.detail = nFTPartsDetailHigh;
 		player_spawn.costume = gBattleState->players[player].costume;
 
 		player_spawn.pl_kind = gBattleState->players[player].pl_kind;

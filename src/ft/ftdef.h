@@ -780,9 +780,10 @@ typedef enum ftPartsJointLabels
 
 typedef enum ftPartsLevelDetail
 {
-    nFTPartsDetailNone,       // Unused?
-    nFTPartsDetailHigh,   // Hi-poly
-    nFTPartsDetailLow     // Lo-poly
+    nFTPartsDetailNone,                         // Unused?
+    nFTPartsDetailStart,                        // Start of actual detail values
+    nFTPartsDetailHigh = nFTPartsDetailStart,   // Hi-poly
+    nFTPartsDetailLow                           // Lo-poly
         
 } ftPartsLevelDetail;
 

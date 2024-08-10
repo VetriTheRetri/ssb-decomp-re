@@ -4154,7 +4154,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
 
     root_joint->user_data.p = ft_parts = ftManagerGetNextPartsAlloc();
 
-    ft_parts->flags = attributes->commonparts_container->commonparts[fp->detail_current - 1].flags;
+    ft_parts->flags = attributes->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].flags;
     ft_parts->joint_id = withheld_part->root_joint_id;
 
     if (withheld_part->partindex_0x8 != 0)
@@ -4611,7 +4611,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
                 else ftMainEjectWithheldPartID(fp, i);
             }
 
-            dobj_desc = attributes->commonparts_container->commonparts[fp->detail_current - 1].dobj_desc;
+            dobj_desc = attributes->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].dobj_desc;
 
             for (i = nFTPartsJointCommonStart; dobj_desc->index != DOBJ_ARRAY_MAX; i++, dobj_desc++)
             {

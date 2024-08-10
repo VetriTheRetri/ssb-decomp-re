@@ -626,7 +626,7 @@ void func_ovl64_8018DCC4()
 
 		player_spawn.player = player;
 
-		player_spawn.model_lod = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+		player_spawn.detail = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
 		player_spawn.costume = gBattleState->players[player].costume;
 

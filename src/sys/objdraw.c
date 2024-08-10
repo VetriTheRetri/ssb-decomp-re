@@ -7,8 +7,6 @@
 #include <config.h>
 #include "libc/math.h"
 
-extern f32 sqrtf(f32);
-
 /* These should no longer be required as they're included in obj.h
 #include <macros.h>
 #include <ssb_types.h>
@@ -18,24 +16,309 @@ extern f32 sqrtf(f32);
 #include <PR/ultratypes.h>
 */
 
-// gbi Mtx * ? pointer to some sort of matrix
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80046FA0 - gbi Mtx* ? pointer to some sort of matrix
 Mtx *D_80046FA0;
-f32 gSpriteLayerScale; // Sprite scale / depth? Appears to overlap objects in its own DLLink, so maybe depth?
+
+// 0x80046FA4
+f32 sODSpriteRowScale; // Sprite scale / depth? Appears to overlap objects in its own DLLink, so maybe depth?
+
+// 0x80046FA8
 Mtx44f D_80046FA8;
+
+// 0x80046FE8
 Mtx44f D_80046FE8;
+
+// 0x80047028
 Mtx44f D_80047028;
+
+// 0x80047068
 Mtx44f D_80047068;
+
+// 0x800470A8
 s32 D_800470A8;
-struct MtxProcTemp *D_800470AC;
+
+// 0x800470AC
+syMtxProcess *sODMtxProcess;
+
+// 0x800470B0
 Gfx *D_800470B0;
 
+// 0x800470B8
 Gfx *D_800470B8[4];
+
+// 0x800470C8
 Gfx D_800470C8[60];
 
+// 0x800472A8
 s32 D_800472A8;
-// the first pointer in the set of four doesn't seem to be used too much
+
+// 0x800472B0 - the first pointer in the set of four doesn't seem to be used too much
 Gfx *D_800472B0[4];
+
+// 0x800472C0
 Gfx *D_800472C0;
+
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// Belongs to objdraw?
+
+// 0x8003B930
+s32 dODScreenLrxDefault = 10;
+
+// 0x8003B934
+s32 dODScreenLryDefault = 10;
+
+// 0x8003B938
+s32 dODScreenUlxDefault = 10;
+
+// 0x8003B93C
+s32 dODScreenUlyDefault = 10;
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
+// New file here?
+void unref_80010710(s32 lrx, s32 lry, s32 ulx, s32 uly)
+{
+    dODScreenLrxDefault = lrx;
+    dODScreenLryDefault = lry;
+    dODScreenUlxDefault = ulx;
+    dODScreenUlyDefault = uly;
+}
+
+void gcSetMatrixProcess(syMtxProcess *proc_mtx)
+{
+    sODMtxProcess = proc_mtx;
+}
+
+void unref_80010740(void)
+{
+    return;
+}
+
+void func_80010748(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
+{
+    Mtx44f mtx_f;
+    f32 distx, disty, distz;
+
+    Camera *cam;
+    f32 res;
+
+    cam = CameraGetStruct(gOMObjCurrentRendering);
+
+    distx = dobj->translate.vec.f.x - cam->vec.eye.x;
+    disty = dobj->translate.vec.f.y - cam->vec.eye.y;
+    distz = dobj->translate.vec.f.z - cam->vec.eye.z;
+
+    res = 1.0F / sqrtf(SQUARE(distx) + SQUARE(disty) + SQUARE(distz));
+
+    distx *= res;
+    disty *= res;
+    distz *= res;
+
+    res = sqrtf(SQUARE(distx) + SQUARE(disty));
+
+    mtx_f[0][3] = mtx_f[1][3] = mtx_f[2][3] = mtx_f[1][2] = 0.0F;
+    mtx_f[3][3] = 1.0F;
+
+    if (res != 0.0F)
+    {
+        f32 inv = (1.0F / res);
+
+        mtx_f[2][2] = res;
+
+        mtx_f[0][0] = -distx;
+
+        mtx_f[1][0] = disty * inv;
+
+        mtx_f[2][0] = -distx * distz * inv;
+        mtx_f[0][1] = -disty;
+
+        mtx_f[1][1] = -distx * inv;
+        mtx_f[2][1] = -disty * distz * inv;
+
+        mtx_f[0][2] = -distz;
+    }
+    else
+    {
+        mtx_f[1][0] = mtx_f[2][0] = mtx_f[0][1] = mtx_f[2][1] = mtx_f[0][2] = 0.0F;
+        mtx_f[0][0] = mtx_f[1][1] = mtx_f[2][2] = 1.0F;
+    }
+    if (is_translate != FALSE)
+    {
+        mtx_f[3][0] = dobj->translate.vec.f.x;
+        mtx_f[3][1] = dobj->translate.vec.f.y;
+        mtx_f[3][2] = dobj->translate.vec.f.z;
+    }
+    else mtx_f[3][0] = mtx_f[3][1] = mtx_f[3][2] = 0.0F;
+
+    syMatrixF2LFixedW(&mtx_f, mtx_l);
+}
+
+void func_80010918(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
+{
+    Mtx44f mtx_f;
+    f32 distx, disty, distz;
+
+    Camera *cam;
+    f32 res;
+
+    cam = CameraGetStruct(gOMObjCurrentRendering);
+
+    distx = dobj->translate.vec.f.x - cam->vec.eye.x;
+    disty = dobj->translate.vec.f.y - cam->vec.eye.y;
+    distz = dobj->translate.vec.f.z - cam->vec.eye.z;
+
+    res = 1.0F / sqrtf(SQUARE(distx) + SQUARE(disty) + SQUARE(distz));
+
+    distx *= res;
+    disty *= res;
+    distz *= res;
+
+    res = sqrtf(SQUARE(distx) + SQUARE(distz));
+
+    mtx_f[0][3] = mtx_f[1][3] = mtx_f[2][3] = mtx_f[0][1] = 0.0F;
+    mtx_f[3][3] = 1.0F;
+
+    if (res != 0.0F)
+    {
+        f32 inv = (1.0F / res); // f16
+
+        mtx_f[0][0] = -distz * inv;
+        mtx_f[1][0] = -disty * distx * inv;
+        mtx_f[2][0] = -distx;
+
+        mtx_f[1][1] = res;
+        mtx_f[2][1] = -disty;
+
+        mtx_f[0][2] = distx * inv;
+        mtx_f[1][2] = -disty * distz * inv;
+        mtx_f[2][2] = -distz;
+    }
+    else
+    {
+        mtx_f[1][0] = mtx_f[2][0] = mtx_f[2][1] = mtx_f[0][2] = mtx_f[1][2] = 0.0F;
+        mtx_f[0][0] = mtx_f[1][1] = mtx_f[2][2] = 1.0F;
+    }
+    if (is_translate != FALSE)
+    {
+        mtx_f[3][0] = dobj->translate.vec.f.x;
+        mtx_f[3][1] = dobj->translate.vec.f.y;
+        mtx_f[3][2] = dobj->translate.vec.f.z;
+    }
+    else mtx_f[3][0] = mtx_f[3][1] = mtx_f[3][2] = 0.0F;
+
+    syMatrixF2LFixedW(&mtx_f, mtx_l);
+}
+
+void func_80010AE8(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
+{
+    Mtx44f mtx_f;
+    f32 distx;
+    f32 disty;
+
+    Camera *cam;
+    f32 res;
+
+    cam = CameraGetStruct(gOMObjCurrentRendering);
+
+    distx = dobj->translate.vec.f.x - cam->vec.eye.x;
+    disty = dobj->translate.vec.f.y - cam->vec.eye.y;
+
+    res = sqrtf(SQUARE(distx) + SQUARE(disty));
+
+    mtx_f[0][3] = mtx_f[1][3] = mtx_f[2][3] = mtx_f[2][0] = mtx_f[2][1] = mtx_f[0][2] = mtx_f[1][2] = 0.0F;
+    mtx_f[2][2] = mtx_f[3][3] = 1.0F;
+
+    if (res != 0.0F)
+    {
+        f32 inv = 1.0F / res;
+
+        distx *= inv;
+        disty *= inv;
+
+        mtx_f[0][0] = -distx;
+        mtx_f[0][1] = -disty;
+        mtx_f[1][0] = disty;
+        mtx_f[1][1] = -distx;
+    }
+    else
+    {
+        mtx_f[1][0] = mtx_f[0][1] = 0.0F;
+        mtx_f[0][0] = mtx_f[1][1] = 1.0F;
+    }
+
+    if (is_translate != FALSE)
+    {
+        mtx_f[3][0] = dobj->translate.vec.f.x;
+        mtx_f[3][1] = dobj->translate.vec.f.y;
+        mtx_f[3][2] = dobj->translate.vec.f.z;
+    }
+    else mtx_f[3][0] = mtx_f[3][1] = mtx_f[3][2] = 0;
+
+    syMatrixF2LFixedW(&mtx_f, mtx_l);
+}
+
+void func_80010C2C(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
+{
+    Mtx44f mtx_f;
+    f32 distx;
+    f32 distz;
+
+    Camera *cam;
+    f32 res;
+
+    cam = CameraGetStruct(gOMObjCurrentRendering);
+
+    distx = dobj->translate.vec.f.x - cam->vec.eye.x;
+    distz = dobj->translate.vec.f.z - cam->vec.eye.z;
+
+    res = sqrtf(SQUARE(distx) + SQUARE(distz));
+
+    mtx_f[0][3] = mtx_f[1][3] = mtx_f[2][3] = mtx_f[1][0] = mtx_f[0][1] = mtx_f[1][2] = mtx_f[2][1] = 0.0F;
+    mtx_f[1][1] = mtx_f[3][3] = 1.0F;
+
+    if (res != 0.0F)
+    {
+        f32 inv = 1.0F / res;
+
+        distx *= inv;
+        distz *= inv;
+
+        mtx_f[0][2] = distx;
+        mtx_f[2][0] = -distx;
+        mtx_f[0][0] = -distz;
+        mtx_f[2][2] = -distz;
+    }
+    else
+    {
+        mtx_f[2][0] = mtx_f[0][2] = 0.0F;
+        mtx_f[0][0] = mtx_f[2][2] = 1.0F;
+    }
+
+    if (is_translate != FALSE)
+    {
+        mtx_f[3][0] = dobj->translate.vec.f.x;
+        mtx_f[3][1] = dobj->translate.vec.f.y;
+        mtx_f[3][2] = dobj->translate.vec.f.z;
+    }
+    else mtx_f[3][0] = mtx_f[3][1] = mtx_f[3][2] = 0;
+
+    syMatrixF2LFixedW(&mtx_f, mtx_l);
+}
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
@@ -226,7 +509,7 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                 }
                 case nOMTransformTra:
                 {
-                    hlMtxTranslate(mtx_store.gbi, dobj->translate.vec.f.x, dobj->translate.vec.f.y, dobj->translate.vec.f.z);
+                    syMatrixTranslate(mtx_store.gbi, dobj->translate.vec.f.x, dobj->translate.vec.f.y, dobj->translate.vec.f.z);
                     break;
                 }
                 case nOMTransformRotD:
@@ -311,7 +594,7 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    gSpriteLayerScale *= dobj->scale.vec.f.x;
+                    sODSpriteRowScale *= dobj->scale.vec.f.x;
                     break;
                 }
                 case nOMTransformRotRpyR:
@@ -348,7 +631,7 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    gSpriteLayerScale *= dobj->scale.vec.f.x;
+                    sODSpriteRowScale *= dobj->scale.vec.f.x;
                     break;
                 }
                 case nOMTransformRotPyrR:
@@ -385,13 +668,13 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    gSpriteLayerScale *= dobj->scale.vec.f.x;
+                    sODSpriteRowScale *= dobj->scale.vec.f.x;
                     break;
                 }
                 case nOMTransformSca:
                 {
-                    hlMtxScale(mtx_store.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
-                    gSpriteLayerScale *= dobj->scale.vec.f.x;
+                    syMatrixScale(mtx_store.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
+                    sODSpriteRowScale *= dobj->scale.vec.f.x;
                     break;
                 }
                 case 33:
@@ -436,7 +719,7 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                 }
                 case nOMTransformVecTra:
                 {
-                    hlMtxTranslate(mtx_store.gbi, translate->vec.f.x, translate->vec.f.y, translate->vec.f.z);
+                    syMatrixTranslate(mtx_store.gbi, translate->vec.f.x, translate->vec.f.y, translate->vec.f.z);
                     break;
                 }
                 case nOMTransformVecRotR:
@@ -451,8 +734,8 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                 }
                 case nOMTransformVecSca:
                 {
-                    hlMtxScale(mtx_store.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
-                    gSpriteLayerScale *= scale->vec.f.x;
+                    syMatrixScale(mtx_store.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
+                    sODSpriteRowScale *= scale->vec.f.x;
                     break;
                 }
                 case nOMTransformVecTraRotR:
@@ -486,7 +769,7 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                         scale->vec.f.y,
                         scale->vec.f.z
                     );
-                    gSpriteLayerScale *= scale->vec.f.x;
+                    sODSpriteRowScale *= scale->vec.f.x;
                     break;
                 }
                 case nOMTransformVecTraRotRpyR:
@@ -518,7 +801,7 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                         scale->vec.f.y,
                         scale->vec.f.z
                     );
-                    gSpriteLayerScale *= scale->vec.f.x;
+                    sODSpriteRowScale *= scale->vec.f.x;
                     break;
                 }
                 case 41:
@@ -560,14 +843,14 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                 }
                 case 43:
                 {
-                    f12 = dobj->scale.vec.f.y * gSpriteLayerScale;
+                    f12 = dobj->scale.vec.f.y * sODSpriteRowScale;
 
-                    gSpriteLayerScale *= dobj->scale.vec.f.x;
+                    sODSpriteRowScale *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerScale;
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * sODSpriteRowScale;
                     D_80046FE8[1][1] = D_80046FA8[1][1] * f12;
-                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerScale;
-                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerScale;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * sODSpriteRowScale;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * sODSpriteRowScale;
 
                     D_80046FE8[0][1] = 0.0F;
                     D_80046FE8[0][2] = 0.0F;
@@ -578,7 +861,7 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                     D_80046FE8[2][0] = 0.0F;
                     D_80046FE8[2][1] = 0.0F;
 
-                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+                    syMatrixF2L(&D_80046FE8, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][0]);
@@ -599,14 +882,14 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                 }
                 case 44:
                 {
-                    f12 = dobj->scale.vec.f.y * gSpriteLayerScale;
+                    f12 = dobj->scale.vec.f.y * sODSpriteRowScale;
 
-                    gSpriteLayerScale *= dobj->scale.vec.f.x;
+                    sODSpriteRowScale *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerScale;
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * sODSpriteRowScale;
                     D_80046FE8[1][1] = D_80046FA8[1][1] * f12;
-                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerScale;
-                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerScale;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * sODSpriteRowScale;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * sODSpriteRowScale;
 
                     D_80046FE8[0][1] = 0.0F;
                     D_80046FE8[0][2] = 0.0F;
@@ -617,7 +900,7 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                     D_80046FE8[2][0] = 0.0F;
                     D_80046FE8[2][1] = 0.0F;
 
-                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+                    syMatrixF2L(&D_80046FE8, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
@@ -644,9 +927,9 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                     cosx = cosf(dobj->rotate.vec.f.x); // sp1C8 ?
 
                     // f2 * f8 -> f12
-                    f12 = dobj->scale.vec.f.y * gSpriteLayerScale;
+                    f12 = dobj->scale.vec.f.y * sODSpriteRowScale;
                     // f2 * f10 -> f4 store reload -> f2
-                    gSpriteLayerScale *= dobj->scale.vec.f.x;
+                    sODSpriteRowScale *= dobj->scale.vec.f.x;
 
                     D_80046FE8[0][2] = 0.0F;
                     D_80046FE8[1][2] = 0.0F;
@@ -655,14 +938,14 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                     D_80046FE8[2][0] = 0.0F;
                     D_80046FE8[2][1] = 0.0F;
 
-                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerScale * cosx;
-                    D_80046FE8[1][0] = D_80046FA8[0][0] * gSpriteLayerScale * -sinx;
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * sODSpriteRowScale * cosx;
+                    D_80046FE8[1][0] = D_80046FA8[0][0] * sODSpriteRowScale * -sinx;
                     D_80046FE8[0][1] = D_80046FA8[1][1] * f12 * sinx;
                     D_80046FE8[1][1] = D_80046FA8[1][1] * f12 * cosx;
-                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerScale;
-                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerScale;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * sODSpriteRowScale;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * sODSpriteRowScale;
 
-                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+                    syMatrixF2L(&D_80046FE8, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
@@ -688,9 +971,9 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                     sinz = __sinf(dobj->rotate.vec.f.z); // sp190
                     cosz = cosf(dobj->rotate.vec.f.z); // sp188 ?
 
-                    f12 = dobj->scale.vec.f.y * gSpriteLayerScale;
+                    f12 = dobj->scale.vec.f.y * sODSpriteRowScale;
 
-                    gSpriteLayerScale *= dobj->scale.vec.f.x;
+                    sODSpriteRowScale *= dobj->scale.vec.f.x;
 
                     D_80046FE8[0][2] = 0.0F;
                     D_80046FE8[1][2] = 0.0F;
@@ -699,14 +982,14 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                     D_80046FE8[2][0] = 0.0F;
                     D_80046FE8[2][1] = 0.0F;
 
-                    D_80046FE8[0][0] = D_80046FA8[0][0] * gSpriteLayerScale * cosz;
-                    D_80046FE8[1][0] = D_80046FA8[0][0] * gSpriteLayerScale * -sinz;
+                    D_80046FE8[0][0] = D_80046FA8[0][0] * sODSpriteRowScale * cosz;
+                    D_80046FE8[1][0] = D_80046FA8[0][0] * sODSpriteRowScale * -sinz;
                     D_80046FE8[0][1] = D_80046FA8[1][1] * f12 * sinz;
                     D_80046FE8[1][1] = D_80046FA8[1][1] * f12 * cosz;
-                    D_80046FE8[2][2] = D_80046FA8[2][2] * gSpriteLayerScale;
-                    D_80046FE8[2][3] = D_80046FA8[2][3] * gSpriteLayerScale;
+                    D_80046FE8[2][2] = D_80046FA8[2][2] * sODSpriteRowScale;
+                    D_80046FE8[2][3] = D_80046FA8[2][3] * sODSpriteRowScale;
 
-                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+                    syMatrixF2L(&D_80046FE8, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
@@ -727,24 +1010,24 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                 }
                 case 47:
                 {
-                    f12 = gSpriteLayerScale * dobj->scale.vec.f.y;
+                    f12 = sODSpriteRowScale * dobj->scale.vec.f.y;
 
-                    gSpriteLayerScale *= dobj->scale.vec.f.x;
+                    sODSpriteRowScale *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80047028[0][0] * gSpriteLayerScale;
-                    D_80046FE8[0][1] = D_80047028[0][1] * gSpriteLayerScale;
-                    D_80046FE8[0][2] = D_80047028[0][2] * gSpriteLayerScale;
-                    D_80046FE8[0][3] = D_80047028[0][3] * gSpriteLayerScale;
+                    D_80046FE8[0][0] = D_80047028[0][0] * sODSpriteRowScale;
+                    D_80046FE8[0][1] = D_80047028[0][1] * sODSpriteRowScale;
+                    D_80046FE8[0][2] = D_80047028[0][2] * sODSpriteRowScale;
+                    D_80046FE8[0][3] = D_80047028[0][3] * sODSpriteRowScale;
                     D_80046FE8[1][0] = D_80047028[1][0] * f12;
                     D_80046FE8[1][1] = D_80047028[1][1] * f12;
                     D_80046FE8[1][2] = D_80047028[1][2] * f12;
                     D_80046FE8[1][3] = D_80047028[1][3] * f12;
-                    D_80046FE8[2][0] = D_80047028[2][0] * gSpriteLayerScale;
-                    D_80046FE8[2][1] = D_80047028[2][1] * gSpriteLayerScale;
-                    D_80046FE8[2][2] = D_80047028[2][2] * gSpriteLayerScale;
-                    D_80046FE8[2][3] = D_80047028[2][3] * gSpriteLayerScale;
+                    D_80046FE8[2][0] = D_80047028[2][0] * sODSpriteRowScale;
+                    D_80046FE8[2][1] = D_80047028[2][1] * sODSpriteRowScale;
+                    D_80046FE8[2][2] = D_80047028[2][2] * sODSpriteRowScale;
+                    D_80046FE8[2][3] = D_80047028[2][3] * sODSpriteRowScale;
 
-                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+                    syMatrixF2L(&D_80046FE8, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][0]);
@@ -765,24 +1048,24 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                 }
                 case 48:
                 {
-                    f12 = gSpriteLayerScale * dobj->scale.vec.f.y;
+                    f12 = sODSpriteRowScale * dobj->scale.vec.f.y;
 
-                    gSpriteLayerScale *= dobj->scale.vec.f.x;
+                    sODSpriteRowScale *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80047028[0][0] * gSpriteLayerScale;
-                    D_80046FE8[0][1] = D_80047028[0][1] * gSpriteLayerScale;
-                    D_80046FE8[0][2] = D_80047028[0][2] * gSpriteLayerScale;
-                    D_80046FE8[0][3] = D_80047028[0][3] * gSpriteLayerScale;
+                    D_80046FE8[0][0] = D_80047028[0][0] * sODSpriteRowScale;
+                    D_80046FE8[0][1] = D_80047028[0][1] * sODSpriteRowScale;
+                    D_80046FE8[0][2] = D_80047028[0][2] * sODSpriteRowScale;
+                    D_80046FE8[0][3] = D_80047028[0][3] * sODSpriteRowScale;
                     D_80046FE8[1][0] = D_80047028[1][0] * f12;
                     D_80046FE8[1][1] = D_80047028[1][1] * f12;
                     D_80046FE8[1][2] = D_80047028[1][2] * f12;
                     D_80046FE8[1][3] = D_80047028[1][3] * f12;
-                    D_80046FE8[2][0] = D_80047028[2][0] * gSpriteLayerScale;
-                    D_80046FE8[2][1] = D_80047028[2][1] * gSpriteLayerScale;
-                    D_80046FE8[2][2] = D_80047028[2][2] * gSpriteLayerScale;
-                    D_80046FE8[2][3] = D_80047028[2][3] * gSpriteLayerScale;
+                    D_80046FE8[2][0] = D_80047028[2][0] * sODSpriteRowScale;
+                    D_80046FE8[2][1] = D_80047028[2][1] * sODSpriteRowScale;
+                    D_80046FE8[2][2] = D_80047028[2][2] * sODSpriteRowScale;
+                    D_80046FE8[2][3] = D_80047028[2][3] * sODSpriteRowScale;
 
-                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+                    syMatrixF2L(&D_80046FE8, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
@@ -803,24 +1086,24 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                 }
                 case 49:
                 {
-                    f12 = gSpriteLayerScale * dobj->scale.vec.f.y;
+                    f12 = sODSpriteRowScale * dobj->scale.vec.f.y;
 
-                    gSpriteLayerScale *= dobj->scale.vec.f.x;
+                    sODSpriteRowScale *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80047068[0][0] * gSpriteLayerScale;
-                    D_80046FE8[0][1] = D_80047068[0][1] * gSpriteLayerScale;
-                    D_80046FE8[0][2] = D_80047068[0][2] * gSpriteLayerScale;
-                    D_80046FE8[0][3] = D_80047068[0][3] * gSpriteLayerScale;
+                    D_80046FE8[0][0] = D_80047068[0][0] * sODSpriteRowScale;
+                    D_80046FE8[0][1] = D_80047068[0][1] * sODSpriteRowScale;
+                    D_80046FE8[0][2] = D_80047068[0][2] * sODSpriteRowScale;
+                    D_80046FE8[0][3] = D_80047068[0][3] * sODSpriteRowScale;
                     D_80046FE8[1][0] = D_80047068[1][0] * f12;
                     D_80046FE8[1][1] = D_80047068[1][1] * f12;
                     D_80046FE8[1][2] = D_80047068[1][2] * f12;
                     D_80046FE8[1][3] = D_80047068[1][3] * f12;
-                    D_80046FE8[2][0] = D_80047068[2][0] * gSpriteLayerScale;
-                    D_80046FE8[2][1] = D_80047068[2][1] * gSpriteLayerScale;
-                    D_80046FE8[2][2] = D_80047068[2][2] * gSpriteLayerScale;
-                    D_80046FE8[2][3] = D_80047068[2][3] * gSpriteLayerScale;
+                    D_80046FE8[2][0] = D_80047068[2][0] * sODSpriteRowScale;
+                    D_80046FE8[2][1] = D_80047068[2][1] * sODSpriteRowScale;
+                    D_80046FE8[2][2] = D_80047068[2][2] * sODSpriteRowScale;
+                    D_80046FE8[2][3] = D_80047068[2][3] * sODSpriteRowScale;
 
-                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+                    syMatrixF2L(&D_80046FE8, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][0]);
@@ -841,24 +1124,24 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                 }
                 case 50:
                 {
-                    f12 = gSpriteLayerScale * dobj->scale.vec.f.y;
+                    f12 = sODSpriteRowScale * dobj->scale.vec.f.y;
 
-                    gSpriteLayerScale *= dobj->scale.vec.f.x;
+                    sODSpriteRowScale *= dobj->scale.vec.f.x;
 
-                    D_80046FE8[0][0] = D_80047068[0][0] * gSpriteLayerScale;
-                    D_80046FE8[0][1] = D_80047068[0][1] * gSpriteLayerScale;
-                    D_80046FE8[0][2] = D_80047068[0][2] * gSpriteLayerScale;
-                    D_80046FE8[0][3] = D_80047068[0][3] * gSpriteLayerScale;
+                    D_80046FE8[0][0] = D_80047068[0][0] * sODSpriteRowScale;
+                    D_80046FE8[0][1] = D_80047068[0][1] * sODSpriteRowScale;
+                    D_80046FE8[0][2] = D_80047068[0][2] * sODSpriteRowScale;
+                    D_80046FE8[0][3] = D_80047068[0][3] * sODSpriteRowScale;
                     D_80046FE8[1][0] = D_80047068[1][0] * f12;
                     D_80046FE8[1][1] = D_80047068[1][1] * f12;
                     D_80046FE8[1][2] = D_80047068[1][2] * f12;
                     D_80046FE8[1][3] = D_80047068[1][3] * f12;
-                    D_80046FE8[2][0] = D_80047068[2][0] * gSpriteLayerScale;
-                    D_80046FE8[2][1] = D_80047068[2][1] * gSpriteLayerScale;
-                    D_80046FE8[2][2] = D_80047068[2][2] * gSpriteLayerScale;
-                    D_80046FE8[2][3] = D_80047068[2][3] * gSpriteLayerScale;
+                    D_80046FE8[2][0] = D_80047068[2][0] * sODSpriteRowScale;
+                    D_80046FE8[2][1] = D_80047068[2][1] * sODSpriteRowScale;
+                    D_80046FE8[2][2] = D_80047068[2][2] * sODSpriteRowScale;
+                    D_80046FE8[2][3] = D_80047068[2][3] * sODSpriteRowScale;
 
-                    hlMtxF2L(&D_80046FE8, mtx_store.gbi);
+                    syMatrixF2L(&D_80046FE8, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
@@ -880,9 +1163,9 @@ s32 gcDrawDObjMain(Gfx **dl, DObj *dobj)
                 default:
                     if (ommtx->kind >= 66)
                     {
-                        if (D_800470AC != NULL)
+                        if (sODMtxProcess != NULL)
                         {
-                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->fd_last != D_8003B6E8.bytes.b3) ? D_800470AC[ommtx->kind - 66].unk00 : D_800470AC[ommtx->kind - 66].unk04;
+                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->fd_last != D_8003B6E8.bytes.b3) ? sODMtxProcess[ommtx->kind - 66].proc_diff : sODMtxProcess[ommtx->kind - 66].proc_same;
 
                             // If proc's return value uses up a GPR and is assigned to a variable, IDO refuses to free up v0 later down.
                             ret = proc(mtx_store.gbi, dobj, &current_dl);
@@ -1233,7 +1516,7 @@ void gcDrawDObjForGObj(GObj *gobj, Gfx **dl_head)
     s32 num;
     DObj *dobj = DObjGetStruct(gobj);
 
-    gSpriteLayerScale = 1.0F;
+    sODSpriteRowScale = 1.0F;
 
     if (dobj->display_list != NULL)
     {
@@ -1287,7 +1570,7 @@ void gcDrawDObjTree(DObj *this_dobj)
 
     if (!(this_dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerScale;
+        bak = sODSpriteRowScale;
         num = gcDrawDObjMain(gDisplayListHead, this_dobj);
 
         if ((this_dobj->display_list != NULL) && !(this_dobj->flags & DOBJ_FLAG_NOTEXTURE))
@@ -1306,7 +1589,7 @@ void gcDrawDObjTree(DObj *this_dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        gSpriteLayerScale = bak;
+        sODSpriteRowScale = bak;
     }
     if (this_dobj->sib_prev == NULL) 
     {
@@ -1323,7 +1606,7 @@ void gcDrawDObjTree(DObj *this_dobj)
 // 0x80014038
 void gcDrawDObjTreeForGObj(GObj *gobj) 
 {
-    gSpriteLayerScale = 1.0F;
+    sODSpriteRowScale = 1.0F;
     gcDrawDObjTree(DObjGetStruct(gobj));
 }
 
@@ -1401,7 +1684,7 @@ void gcDrawDObjDLLinksForGObj(GObj *gobj)
 {
     DObj *dobj;
 
-    gSpriteLayerScale = 1.0F;
+    sODSpriteRowScale = 1.0F;
     dobj = DObjGetStruct(gobj);
     gcDrawDObjDLLinks(dobj, dobj->dl_link);
 }
@@ -1431,7 +1714,7 @@ void gcDrawDObjTreeDLLinks(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerScale;
+        bak = sODSpriteRowScale;
         dl_link = dobj->dl_link;
         dl = D_800470B0;
         num = gcDrawDObjMain(&D_800470B0, dobj);
@@ -1485,7 +1768,7 @@ void gcDrawDObjTreeDLLinks(DObj *dobj)
             }
             continue; // Required!
         }
-        gSpriteLayerScale = bak;
+        sODSpriteRowScale = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -1502,12 +1785,12 @@ void gcDrawDObjTreeDLLinks(DObj *dobj)
 // 0x80014768
 void gcDrawDObjTreeDLLinksForGObj(GObj *gobj)
 {
-    gSpriteLayerScale = 1.0F;
+    sODSpriteRowScale = 1.0F;
     gcDrawDObjTreeDLLinks(DObjGetStruct(gobj));
 }
 
 // 0x80014798
-f32 odGetDObjDistFromEye(DObj *dobj) 
+f32 gcGetDObjDistFromEye(DObj *dobj) 
 {
     f32 x, y, z;
     Camera *cam = CameraGetStruct(gOMObjCurrentRendering);
@@ -1532,13 +1815,13 @@ void unref_800147E0(GObj *gobj)
 
     if ((dist_dl != NULL) && (dobj->flags == DOBJ_FLAG_NONE)) 
     {
-        dist = odGetDObjDistFromEye(dobj);
+        dist = gcGetDObjDistFromEye(dobj);
 
         while (dist < dist_dl->target_dist)
         { 
             dist_dl++;
         }
-        gSpriteLayerScale = 1.0F;
+        sODSpriteRowScale = 1.0F;
 
         if (dist_dl->dl != NULL) 
         {
@@ -1569,7 +1852,7 @@ void gcDrawDObjTreeMultiList(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerScale;
+        bak = sODSpriteRowScale;
         num = gcDrawDObjMain(gDisplayListHead, dobj);
 
         if ((dls != NULL) && (dls[D_800472A8] != NULL)) 
@@ -1591,7 +1874,7 @@ void gcDrawDObjTreeMultiList(DObj *dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        gSpriteLayerScale = bak;
+        sODSpriteRowScale = bak;
     }
     if (dobj->sib_prev == NULL) 
     {
@@ -1616,7 +1899,7 @@ void unref_80014A84(GObj *gobj)
     DObj *current_dobj;
 
     dobj = DObjGetStruct(gobj);
-    gSpriteLayerScale = 1.0F;
+    sODSpriteRowScale = 1.0F;
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
@@ -1625,7 +1908,7 @@ void unref_80014A84(GObj *gobj)
         if (dist_dl != NULL)
         {
             D_800472A8 = 0;
-            dist = odGetDObjDistFromEye(dobj);
+            dist = gcGetDObjDistFromEye(dobj);
             while (dist < dist_dl->target_dist)
             {
                 dist_dl++;
@@ -1673,7 +1956,7 @@ void unref_80014C38(GObj *gobj)
     DObj *dobj;
 
     dobj = DObjGetStruct(gobj);
-    gSpriteLayerScale = 1.0F;
+    sODSpriteRowScale = 1.0F;
 
     if (dobj->flags == DOBJ_FLAG_NONE) 
     {
@@ -1681,7 +1964,7 @@ void unref_80014C38(GObj *gobj)
 
         if (dist_dl_link != NULL)
         {
-            dist = odGetDObjDistFromEye(dobj);
+            dist = gcGetDObjDistFromEye(dobj);
 
             while (dist < dist_dl_link->target_dist)
             { 
@@ -1708,7 +1991,7 @@ void func_80014CD0(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerScale;
+        bak = sODSpriteRowScale;
         s0 = (DObjDLLink**)dobj->display_ptr;
         if (s0 != NULL)
         {
@@ -1766,7 +2049,7 @@ void func_80014CD0(DObj *dobj)
             }
             else continue; // Required! Both the "else" and the "continue"!
         }
-        gSpriteLayerScale = bak;
+        sODSpriteRowScale = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -1794,7 +2077,7 @@ void unref_80014FFC(GObj *gobj)
     DObj *current_dobj;
 
     dobj = DObjGetStruct(gobj);
-    gSpriteLayerScale = 1.0F;
+    sODSpriteRowScale = 1.0F;
     ptr = NULL;
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
@@ -1805,7 +2088,7 @@ void unref_80014FFC(GObj *gobj)
         {
             D_800472A8 = 0;
 
-            dist = odGetDObjDistFromEye(dobj);
+            dist = gcGetDObjDistFromEye(dobj);
 
             while (dist < dist_dl_link->target_dist)
             {
@@ -1894,7 +2177,7 @@ void gcDrawDObjTreeDLArray(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerScale;
+        bak = sODSpriteRowScale;
 
         if ((dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
@@ -1918,7 +2201,7 @@ void gcDrawDObjTreeDLArray(DObj *dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        gSpriteLayerScale = bak;
+        sODSpriteRowScale = bak;
     }
     if (dobj->sib_prev == NULL) 
     {
@@ -1935,7 +2218,7 @@ void gcDrawDObjTreeDLArray(DObj *dobj)
 // 0x800154F0
 void unref_800154F0(GObj *gobj) 
 {
-    gSpriteLayerScale = 1.0F;
+    sODSpriteRowScale = 1.0F;
     gcDrawDObjTreeDLArray(DObjGetStruct(gobj));
 }
 
@@ -1955,7 +2238,7 @@ void func_80015520(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerScale;
+        bak = sODSpriteRowScale;
         multi_list = dobj->multi_list;
         dl = D_800470B0;
         num = gcDrawDObjMain(&D_800470B0, dobj);
@@ -2013,7 +2296,7 @@ void func_80015520(DObj *dobj)
                 else continue;
             }
         }
-        gSpriteLayerScale = bak;
+        sODSpriteRowScale = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2030,7 +2313,7 @@ void func_80015520(DObj *dobj)
 // 0x80015860
 void unref_80015860(GObj *gobj) 
 {
-    gSpriteLayerScale = 1.0F;
+    sODSpriteRowScale = 1.0F;
     func_80015520(DObjGetStruct(gobj));
 }
 
@@ -2047,7 +2330,7 @@ void gcDrawDObjTreeDLDoubleArray(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER)) 
     {
-        bak = gSpriteLayerScale;
+        bak = sODSpriteRowScale;
 
         if (p_dls != NULL)
         { 
@@ -2075,7 +2358,7 @@ void gcDrawDObjTreeDLDoubleArray(DObj *dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        gSpriteLayerScale = bak;
+        sODSpriteRowScale = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2106,10 +2389,10 @@ void unref_80015A58(GObj *gobj)
 
         if (dist_dl != NULL)
         {
-            gSpriteLayerScale = 1.0F;
+            sODSpriteRowScale = 1.0F;
             D_800472A8 = 0;
 
-            dist = odGetDObjDistFromEye(dobj);
+            dist = gcGetDObjDistFromEye(dobj);
 
             while (dist < dist_dl->target_dist)
             {
@@ -2166,7 +2449,7 @@ void func_80015C0C(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = gSpriteLayerScale;
+        bak = sODSpriteRowScale;
         p_multi_list = (DObjMultiList**)dobj->display_ptr;
 
         if (p_multi_list != NULL) 
@@ -2229,7 +2512,7 @@ void func_80015C0C(DObj *dobj)
                 continue; // Not required this time; this is for the sake of consistency.
             }
         }
-        gSpriteLayerScale = bak;
+        sODSpriteRowScale = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2266,9 +2549,9 @@ void unref_80015F6C(GObj *gobj)
 
         if (dist_dl_link != NULL)
         {
-            gSpriteLayerScale = 1.0F;
+            sODSpriteRowScale = 1.0F;
             D_800472A8 = 0;
-            dist = odGetDObjDistFromEye(dobj);
+            dist = gcGetDObjDistFromEye(dobj);
 
             while (dist < dist_dl_link->target_dist)
             {
@@ -2386,21 +2669,21 @@ void func_80016338(Gfx **dls, Camera *cam, s32 arg2)
     lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
     lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-    if (ulx < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938)
+    if (ulx < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODScreenUlxDefault)
     {
-        ulx = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938;
+        ulx = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODScreenUlxDefault;
     }
-    if (uly < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930)
+    if (uly < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODScreenLrxDefault)
     {
-        uly = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930;
+        uly = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODScreenLrxDefault;
     }
-    if (lrx > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C))
+    if (lrx > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODScreenUlyDefault))
     {
-        lrx = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C);
+        lrx = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODScreenUlyDefault);
     }
-    if (lry > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934))
+    if (lry > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODScreenLryDefault))
     {
-        lry = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934);
+        lry = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODScreenLryDefault);
     }
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
     gDPPipeSync(dl++);
@@ -2440,21 +2723,21 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
     lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
     lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-    if (ulx < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938)
+    if (ulx < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODScreenUlxDefault)
     {
-        ulx = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938;
+        ulx = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODScreenUlxDefault;
     }
-    if (uly < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930)
+    if (uly < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODScreenLrxDefault)
     {
-        uly = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930;
+        uly = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODScreenLrxDefault;
     }
-    if (lrx > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C))
+    if (lrx > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODScreenUlyDefault))
     {
-        lrx = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C);
+        lrx = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODScreenUlyDefault);
     }
-    if (lry > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934))
+    if (lry > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODScreenLryDefault))
     {
-        lry = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934);
+        lry = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODScreenLryDefault);
     }
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
 
@@ -2598,7 +2881,7 @@ void gcDrawCameraMain(Gfx **dls, Camera *cam)
                         break;
 
                     case nOMTransformPerspFastF:
-                        hlMtxPerspFastF
+                        syMatrixPerspFastF
                         (
                             D_80046FA8,
                             &cam->projection.persp.norm,
@@ -2608,12 +2891,12 @@ void gcDrawCameraMain(Gfx **dls, Camera *cam)
                             cam->projection.persp.far,
                             cam->projection.persp.scale
                         );
-                        hlMtxF2L(D_80046FA8, mtx_store.gbi);
+                        syMatrixF2L(D_80046FA8, mtx_store.gbi);
                         D_80046FA0 = mtx_store.gbi;
                         break;
 
                     case nOMTransformPerspF:
-                        hlMtxPerspF
+                        syMatrixPerspF
                         (
                             D_80046FA8,
                             &cam->projection.persp.norm,
@@ -2623,12 +2906,12 @@ void gcDrawCameraMain(Gfx **dls, Camera *cam)
                             cam->projection.persp.far,
                             cam->projection.persp.scale
                         );
-                        hlMtxF2L(D_80046FA8, mtx_store.gbi);
+                        syMatrixF2L(D_80046FA8, mtx_store.gbi);
                         D_80046FA0 = mtx_store.gbi;
                         break;
 
                     case nOMTransformOrtho:
-                        hlMtxOrtho
+                        syMatrixOrtho
                         (
                             mtx_store.gbi,
                             cam->projection.ortho.l,
@@ -2644,7 +2927,7 @@ void gcDrawCameraMain(Gfx **dls, Camera *cam)
 
                     case 6:
                     case 7:
-                        hlMtxLookAt
+                        syMatrixLookAt
                         (
                             mtx_store.gbi,
                             cam->vec.eye.x,
@@ -2662,20 +2945,20 @@ void gcDrawCameraMain(Gfx **dls, Camera *cam)
 
                     case 8:
                     case 9:
-                        hlMtxModLookAt(mtx_store.gbi, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 1.0F, 0.0F);
+                        syMatrixModLookAt(mtx_store.gbi, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 1.0F, 0.0F);
                         var_s3 = 1;
                         break;
 
                     case 10:
                     case 11:
-                        hlMtxModLookAt(mtx_store.gbi, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 0.0F, 1.0F);
+                        syMatrixModLookAt(mtx_store.gbi, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 0.0F, 1.0F);
                         var_s3 = 2;
                         break;
 
                     case 12:
                     case 13:
                         look_at = mlSetBumpAlloc(&gGraphicsHeap, sizeof(LookAt), 0x8);
-                        hlMtxLookAtReflect
+                        syMatrixLookAtReflect
                         (
                             mtx_store.gbi,
                             look_at,
@@ -2696,7 +2979,7 @@ void gcDrawCameraMain(Gfx **dls, Camera *cam)
                     case 15:
                         look_at = mlSetBumpAlloc(&gGraphicsHeap, sizeof(LookAt), 0x8);
                         var_s3 = 1;
-                        hlMtxModLookAtReflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 1.0F, 0.0F);
+                        syMatrixModLookAtReflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 1.0F, 0.0F);
                         break;
 
                     case 16:
@@ -2704,15 +2987,15 @@ void gcDrawCameraMain(Gfx **dls, Camera *cam)
                         look_at = mlSetBumpAlloc(&gGraphicsHeap, sizeof(LookAt), 0x8);
                         var_s3 = 2;
 
-                        hlMtxModLookAtReflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 0.0F, 1.0F);
+                        syMatrixModLookAtReflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 0.0F, 1.0F);
                         break;
 
                     default:
-                        if ((ommtx->kind >= 66) && (D_800470AC != NULL))
+                        if ((ommtx->kind >= 66) && (sODMtxProcess != NULL))
                         {
-                            if (D_800470AC[ommtx->kind - 66].unk00 != NULL)
+                            if (sODMtxProcess[ommtx->kind - 66].proc_diff != NULL)
                             {
-                                D_800470AC[ommtx->kind - 66].unk00(mtx_store.gbi, cam, &dl);
+                                sODMtxProcess[ommtx->kind - 66].proc_diff(mtx_store.gbi, cam, &dl);
                             }
                         }
                         break;
@@ -2764,11 +3047,11 @@ void gcDrawCameraMain(Gfx **dls, Camera *cam)
                     gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
                     break;
                 default:
-                    if ((ommtx->kind >= 66) && (D_800470AC != NULL))
+                    if ((ommtx->kind >= 66) && (sODMtxProcess != NULL))
                     {
-                        if (D_800470AC[ommtx->kind - 66].unk04 != NULL)
+                        if (sODMtxProcess[ommtx->kind - 66].proc_same != NULL)
                         {
-                            D_800470AC[ommtx->kind - 66].unk04(mtx_store.gbi, cam, &dl);
+                            sODMtxProcess[ommtx->kind - 66].proc_same(mtx_store.gbi, cam, &dl);
                         }
                     }
                     break;
@@ -2834,11 +3117,11 @@ void gcDrawCameraMain(Gfx **dls, Camera *cam)
             }
             if (var3 < 0.0001F)
             {
-                hlMtxScaleF(D_80047028, 0.0F, 0.0F, 0.0F);
+                syMatrixScaleF(D_80047028, 0.0F, 0.0F, 0.0F);
             }
             else
             {
-                hlMtxLookAtF(D_80047028, 0.0F, var1, var3, 0.0F, var2, 0.0F, 0.0F, 1.0F, 0.0F);
+                syMatrixLookAtF(D_80047028, 0.0F, var1, var3, 0.0F, var2, 0.0F, 0.0F, 1.0F, 0.0F);
                 guMtxCatF(D_80047028, D_80046FA8, D_80047028);
             }
         }
@@ -2862,11 +3145,11 @@ void gcDrawCameraMain(Gfx **dls, Camera *cam)
             }
             if (var3 < 0.0001F)
             {
-                hlMtxScaleF(D_80047068, 0.0F, 0.0F, 0.0F);
+                syMatrixScaleF(D_80047068, 0.0F, 0.0F, 0.0F);
             }
             else
             {
-                hlMtxLookAtF(D_80047068, var1, 0.0F, var3, var2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+                syMatrixLookAtF(D_80047068, var1, 0.0F, var3, var2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
                 guMtxCatF(D_80047068, D_80046FA8, D_80047068);
             }
         }
@@ -3162,28 +3445,26 @@ void func_80018300(GObj *gobj)
 {
     Camera *cam = CameraGetStruct(gobj);
     Vp_t *viewport = &cam->viewport.vp;
-    s32 xmin, ymin, xmax, ymax;
+    s32 xmin = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
+    s32 ymin = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
+    s32 xmax = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
+    s32 ymax = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-    xmin = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
-    ymin = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
-    xmax = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
-    ymax = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
-
-    if (xmin < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938)
+    if (xmin < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODScreenUlxDefault)
     {
-        xmin = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938;
+        xmin = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODScreenUlxDefault;
     }
-    if (ymin < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930)
+    if (ymin < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODScreenLrxDefault)
     {
-        ymin = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930;
+        ymin = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODScreenLrxDefault;
     }
-    if (xmax > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C))
+    if (xmax > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODScreenUlyDefault))
     {
-        xmax = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C);
+        xmax = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODScreenUlyDefault);
     }
-    if (ymax > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934))
+    if (ymax > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODScreenLryDefault))
     {
-        ymax = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934);
+        ymax = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODScreenLryDefault);
     }
     func_8001663C(gDisplayListHead, cam, 0);
     spInit(gDisplayListHead);

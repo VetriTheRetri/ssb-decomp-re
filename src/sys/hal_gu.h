@@ -21,9 +21,9 @@ extern u16 gSinTable[0x800];
 
 // might take another pointer type for a1 (to convert to RSP matrix?)
 // convert from mtx4f to gbi Mtx
-extern void hlMtxF2L(Mtx4f *src, Mtx *dst);
-extern void hlMtxF2LFixedW(Mtx4f *src, Mtx *dst);
-extern void hlMtxLookAtF(
+extern void syMatrixF2L(Mtx4f *src, Mtx *dst);
+extern void syMatrixF2LFixedW(Mtx4f *src, Mtx *dst);
+extern void syMatrixLookAtF(
     Mtx4f *mf,
     f32 xEye,
     f32 yEye,
@@ -34,7 +34,7 @@ extern void hlMtxLookAtF(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hlMtxLookAt(
+extern void syMatrixLookAt(
     Mtx *m,
     f32 xEye,
     f32 yEye,
@@ -45,7 +45,7 @@ extern void hlMtxLookAt(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hlMtxModLookAt_f(
+extern void syMatrixModLookAt_f(
     Mtx4f *mf,
     f32 xEye,
     f32 yEye,
@@ -57,7 +57,7 @@ extern void hlMtxModLookAt_f(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hlMtxModLookAt(
+extern void syMatrixModLookAt(
     Mtx *m,
     f32 xEye,
     f32 yEye,
@@ -69,7 +69,7 @@ extern void hlMtxModLookAt(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hlMtxLookAtReflectF(
+extern void syMatrixLookAtReflectF(
     Mtx4f *mf,
     LookAt *l,
     f32 xEye,
@@ -81,7 +81,7 @@ extern void hlMtxLookAtReflectF(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hlMtxLookAtReflect(
+extern void syMatrixLookAtReflect(
     Mtx *m,
     LookAt *l,
     f32 xEye,
@@ -93,7 +93,7 @@ extern void hlMtxLookAtReflect(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hlMtxModLookAtReflect_f(
+extern void syMatrixModLookAtReflect_f(
     Mtx4f *mf,
     LookAt *l,
     f32 xEye,
@@ -106,7 +106,7 @@ extern void hlMtxModLookAtReflect_f(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hlMtxModLookAtReflect(
+extern void syMatrixModLookAtReflect(
     Mtx *m,
     LookAt *l,
     f32 xEye,
@@ -119,9 +119,9 @@ extern void hlMtxModLookAtReflect(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void hlMtxOrthoF(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
-extern void hlMtxOrtho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
-extern void hlMtxPerspFastF(
+extern void syMatrixOrthoF(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
+extern void syMatrixOrtho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale);
+extern void syMatrixPerspFastF(
     Mtx4f *mf,
     u16 *perspNorm,
     f32 fovy,
@@ -130,15 +130,15 @@ extern void hlMtxPerspFastF(
     f32 far,
     f32 scale);
 extern void
-hlMtxPerspFast(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
+syMatrixPerspFast(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
 extern void
-hlMtxPerspF(Mtx4f *mf, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
+syMatrixPerspF(Mtx4f *mf, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
 extern void
 hal_perspective(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
-extern void hlMtxScaleF(Mtx4f *mf, f32 x, f32 y, f32 z);
-extern void hlMtxScale(Mtx *m, f32 x, f32 y, f32 z);
-extern void hlMtxTranslate_f(Mtx4f *mf, f32 x, f32 y, f32 z);
-extern void hlMtxTranslate(Mtx *m, f32 x, f32 y, f32 z);
+extern void syMatrixScaleF(Mtx4f *mf, f32 x, f32 y, f32 z);
+extern void syMatrixScale(Mtx *m, f32 x, f32 y, f32 z);
+extern void syMatrixTranslate_f(Mtx4f *mf, f32 x, f32 y, f32 z);
+extern void syMatrixTranslate(Mtx *m, f32 x, f32 y, f32 z);
 extern void hal_rotate_f(Mtx4f *mf, f32 a, f32 x, f32 y, f32 z);
 extern void hal_rotate(Mtx *m, f32 a, f32 x, f32 y, f32 z);
 extern void

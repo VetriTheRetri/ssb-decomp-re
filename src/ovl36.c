@@ -290,7 +290,7 @@ void mvOpeningMarioInitFighterStagePanel()
 		spawn_info.lr_spawn = nGMFacingR;
 		spawn_info.team = gBattleState->players[i].team;
 		spawn_info.player = i;
-		spawn_info.model_lod = nFTPartsDetailHigh;
+		spawn_info.detail = nFTPartsDetailHigh;
 		spawn_info.costume = gBattleState->players[i].costume;
 		spawn_info.handicap = gBattleState->players[i].handicap;
 		spawn_info.cp_level = gBattleState->players[i].level;

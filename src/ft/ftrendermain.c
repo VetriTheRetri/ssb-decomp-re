@@ -986,15 +986,15 @@ void ftRenderMainDrawParts(DObj *dobj)
 
         if ((ft_hurt->hitstatus != nGMHitStatusNone) && (dobj == ft_hurt->joint))
         {
-            hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-            hlMtxTranslate(mtx_store.gbi, ft_hurt->offset.x, ft_hurt->offset.y, ft_hurt->offset.z);
+            syMatrixTranslate(mtx_store.gbi, ft_hurt->offset.x, ft_hurt->offset.y, ft_hurt->offset.z);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-            hlMtxScale(mtx_store.gbi, ft_hurt->size.x / 15.0F, ft_hurt->size.y / 15.0F, ft_hurt->size.z / 15.0F);
+            syMatrixScale(mtx_store.gbi, ft_hurt->size.x / 15.0F, ft_hurt->size.y / 15.0F, ft_hurt->size.z / 15.0F);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1215,9 +1215,9 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
         if (fp->shuffle_timer != 0)
         {
-            hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-            hlMtxTranslate
+            syMatrixTranslate
             (
                 mtx_store.gbi,
                 dFTRenderMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].x,
@@ -1258,9 +1258,9 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
         {
             gDPPipeSync(gDisplayListHead[0]++);
 
-            hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-            hlMtxTranslate
+            syMatrixTranslate
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
@@ -1270,9 +1270,9 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-            hlMtxScale(mtx_store.gbi, attributes->objcoll.width / 30.0F, attributes->objcoll.center / 30.0F, 1.0F);
+            syMatrixScale(mtx_store.gbi, attributes->objcoll.width / 30.0F, attributes->objcoll.center / 30.0F, 1.0F);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1280,9 +1280,9 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
 
-            hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-            hlMtxTranslate
+            syMatrixTranslate
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
@@ -1292,9 +1292,9 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-            hlMtxScale(mtx_store.gbi, attributes->objcoll.width / 30.0F, (attributes->objcoll.top - attributes->objcoll.center) / 30.0F, 1.0F);
+            syMatrixScale(mtx_store.gbi, attributes->objcoll.width / 30.0F, (attributes->objcoll.top - attributes->objcoll.center) / 30.0F, 1.0F);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1302,11 +1302,11 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
 
-            hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
             gDPPipeSync(gDisplayListHead[0]++);
 
-            hlMtxTranslate
+            syMatrixTranslate
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x + (fp->coll_data.cliffcatch_coll.x * fp->lr),
@@ -1316,9 +1316,9 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-            hlMtxScale(mtx_store.gbi, 3.0F, 3.0F, 3.0F);
+            syMatrixScale(mtx_store.gbi, 3.0F, 3.0F, 3.0F);
 
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1371,15 +1371,15 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
                 }
                 if (ft_hit->update_state == nGMHitUpdateInterpolate)
                 {
-                    hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+                    syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-                    hlMtxTranslate(mtx_store.gbi, ft_hit->pos_prev.x, ft_hit->pos_prev.y, ft_hit->pos_prev.z);
+                    syMatrixTranslate(mtx_store.gbi, ft_hit->pos_prev.x, ft_hit->pos_prev.y, ft_hit->pos_prev.z);
 
                     gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                    hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+                    syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-                    hlMtxScale(mtx_store.gbi, ft_hit->size / 15.0F, ft_hit->size / 15.0F, ft_hit->size / 15.0F);
+                    syMatrixScale(mtx_store.gbi, ft_hit->size / 15.0F, ft_hit->size / 15.0F, ft_hit->size / 15.0F);
 
                     gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1387,15 +1387,15 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
                     gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
                 }
-                hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+                syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-                hlMtxTranslate(mtx_store.gbi, ft_hit->pos.x, ft_hit->pos.y, ft_hit->pos.z);
+                syMatrixTranslate(mtx_store.gbi, ft_hit->pos.x, ft_hit->pos.y, ft_hit->pos.z);
 
                 gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                hlMtxStoreGbi(mtx_store, gGraphicsHeap);
+                syMatrixStoreGbi(mtx_store, gGraphicsHeap);
 
-                hlMtxScale(mtx_store.gbi, ft_hit->size / 15.0F, ft_hit->size / 15.0F, ft_hit->size / 15.0F);
+                syMatrixScale(mtx_store.gbi, ft_hit->size / 15.0F, ft_hit->size / 15.0F, ft_hit->size / 15.0F);
 
                 gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 

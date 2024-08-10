@@ -8,7 +8,6 @@
 #include <sys/rdp_reset.h>
 #include <sys/system_00.h>
 #include <sys/system_03_1.h>
-#include <sys/system_04.h>
 #include <sys/thread3.h>
 #include <sys/thread6.h>
 
@@ -1106,7 +1105,7 @@ void gsGTLSceneInit(gsGTLSetupDesc *gtl_desc)
 	omsetup.ommtxes     = gsMemoryAlloc(sizeof(OMMtx) * gtl_desc->num_ommtxes, 0x8);
 	omsetup.num_ommtxes = gtl_desc->num_ommtxes;
 
-	func_80010734(gtl_desc->unk60);
+	gcSetMatrixProcess(gtl_desc->unk60);
 	omsetup.proc_eject = gtl_desc->proc_eject;
 
 	omsetup.aobjs    = gsMemoryAlloc(sizeof(AObj) * gtl_desc->num_aobjs, 0x4);

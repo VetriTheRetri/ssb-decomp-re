@@ -678,7 +678,7 @@ struct ftCreateDesc
     s32 lr_spawn;
     u8 team;
     u8 player;
-    u8 model_lod;
+    u8 detail;
     u8 costume;
     u8 shade;
     u8 handicap;

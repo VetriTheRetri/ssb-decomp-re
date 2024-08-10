@@ -870,7 +870,7 @@ void syErrorReportCPUBreakFault(UNUSED void *arg)
             syErrorFramebufPrintThreadStatus(thread, FALSE);
         }
     }
-    while (TRUE); // {}
+    while (TRUE);
 }
 
 /*

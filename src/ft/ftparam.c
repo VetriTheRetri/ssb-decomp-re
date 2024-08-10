@@ -793,7 +793,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 drawstatus)
             {
                 if (fp->attributes->modelparts_container->modelparts_desc[joint_id - nFTPartsJointCommonStart] != NULL)
                 {
-                    modelpart = &fp->attributes->modelparts_container->modelparts_desc[joint_id - nFTPartsJointCommonStart]->modelparts[drawstatus][fp->detail_current - 1];
+                    modelpart = &fp->attributes->modelparts_container->modelparts_desc[joint_id - nFTPartsJointCommonStart]->modelparts[drawstatus][fp->detail_current - nFTPartsDetailStart];
 
                     joint->display_list = modelpart->display_list;
 
@@ -886,7 +886,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
 
                     if (attributes->modelparts_container->modelparts_desc[i] != NULL)
                     {
-                        modelpart = &attributes->modelparts_container->modelparts_desc[i]->modelparts[modelpart_status->drawstatus_current][fp->detail_current - 1];
+                        modelpart = &attributes->modelparts_container->modelparts_desc[i]->modelparts[modelpart_status->drawstatus_current][fp->detail_current - nFTPartsDetailStart];
 
                         joint->display_list = modelpart->display_list;
 
@@ -1024,7 +1024,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
             {
                 if (attributes->modelparts_container->modelparts_desc[i] != NULL)
                 {
-                    modelpart = &attributes->modelparts_container->modelparts_desc[i]->modelparts[modelpart_status->drawstatus_current][fp->detail_current - 1];
+                    modelpart = &attributes->modelparts_container->modelparts_desc[i]->modelparts[modelpart_status->drawstatus_current][fp->detail_current - nFTPartsDetailStart];
 
                     func_ovl0_800C8CB8(joint, modelpart->mobjsubs, modelpart->costume_matanim_joints, modelpart->main_matanim_joint, costume);
                 }
@@ -1100,7 +1100,7 @@ void ftParamInitTexturePartAll(GObj *fighter_gobj)
         if (texturepart_status->texture_id_current != texturepart_status->texture_id_default)
         {
             joint = fp->joints[texturepart->joint_id];
-            detail = texturepart->detail[fp->detail_current - 1];
+            detail = texturepart->detail[fp->detail_current - nFTPartsDetailStart];
 
             if (joint != NULL)
             {
@@ -1132,7 +1132,7 @@ void ftParamSetTexturePartID(GObj *fighter_gobj, s32 texturepart_id, s32 texture
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftTexturePart *texturepart = &fp->attributes->textureparts_container->textureparts[texturepart_id];
-    s32 detail = texturepart->detail[fp->detail_current - 1];
+    s32 detail = texturepart->detail[fp->detail_current - nFTPartsDetailStart];
     DObj *joint = fp->joints[texturepart->joint_id];
 
     if (joint != NULL)
@@ -1179,7 +1179,7 @@ void ftParamResetTexturePartAll(GObj *fighter_gobj)
             texturepart_status->texture_id_current = texturepart_status->texture_id_default;
 
             joint = fp->joints[texturepart->joint_id];
-            detail = texturepart->detail[fp->detail_current - 1];
+            detail = texturepart->detail[fp->detail_current - nFTPartsDetailStart];
 
             if (joint != NULL)
             {

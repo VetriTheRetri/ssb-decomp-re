@@ -140,7 +140,7 @@ void func_ovl5_8018D1A0()
 		player_spawn.lr_spawn = nGMFacingR;
 		player_spawn.team = gBattleState->players[player].team;
 		player_spawn.player = player;
-		player_spawn.model_lod = nFTPartsDetailHigh;
+		player_spawn.detail = nFTPartsDetailHigh;
 		player_spawn.costume = gBattleState->players[player].costume;
 		player_spawn.handicap = gBattleState->players[player].handicap;
 		player_spawn.cp_level = gBattleState->players[player].level;
@@ -156,7 +156,6 @@ void func_ovl5_8018D1A0()
 
 		ftParamInitPlayerBattleStats(player, fighter_gobj);
 		ftParamSetExplainInputSeq(fighter_gobj, D_ovl5_8018D580);
-
 	}
 	unk_struct = D_ovl5_8018D5B8;
 	func_ovl0_800D4060(0x3FD, 0xD, 0xA, &unk_struct, 0xC, 1, 0);
@@ -172,9 +171,9 @@ void func_ovl5_8018D4BC(Gfx **display_list)
 // 8018D508
 void overlay_set23_entry()
 {
-	D_ovl5_8018D5BC.unk_scdatabounds_0xC = (uintptr_t) ((s32) D_NF_800A5240 - 0x1900);
+	D_ovl5_8018D5BC.unk_scdatabounds_0xC = (uintptr_t) ((s32)D_NF_800A5240 - 0x1900);
 	func_80007024(&D_ovl5_8018D5BC);
-	D_ovl5_8018D5D8.arena_size = (u32)((uintptr_t)&lOverlay5ArenaHi - (uintptr_t)&lOverlay5ArenaLo);
+	D_ovl5_8018D5D8.arena_size = ((uintptr_t)&lOverlay5ArenaHi - (uintptr_t)&lOverlay5ArenaLo);
 	func_800A2698(&D_ovl5_8018D5D8);
 	auStopBGM();
 	gSceneData.scene_previous = gSceneData.scene_current;

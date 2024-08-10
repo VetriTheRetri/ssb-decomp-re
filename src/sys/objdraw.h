@@ -5,22 +5,30 @@
 
 extern Gfx *gDisplayListHead[4];
 
-#define hlMtxStoreGbi(mtx_store, mtx_heap) \
+#define syMatrixStoreGbi(mtx_store, mtx_heap) \
 (mtx_store.gbi = mtx_heap.ptr, mtx_heap.ptr = (Mtx*)mtx_heap.ptr + 1) \
 
 // should be a concrete pointer type
-struct MtxProcTemp
+typedef struct syMtxProcess
 {
-    s32(*unk00)();
-    s32(*unk04)();
-};
+    sb32 (*proc_diff)();    // If GObj's last frame drawn is not the same as... something?
+    sb32 (*proc_same)();    // If it's the same ^
+
+} syMtxProcess;
 
 // gbi Mtx * ? pointer to some sort of matrix
 extern Mtx *D_80046FA0;
-extern f32 gSpriteLayerScale;
+extern f32 sODSpriteRowScale;
 extern Mtx44f D_80046FA8;
-extern struct MtxProcTemp *D_800470AC;
+extern syMtxProcess *sODMtxProcess;
 
+extern void unref_80010710(s32 lrx, s32 lry, s32 ulx, s32 uly);
+extern void gcSetMatrixProcess(syMtxProcess *proc_mtx);
+extern void unref_80010740(void);
+extern void func_80010748(Mtx *mtx_l, DObj *dobj, sb32 is_translate);
+extern void func_80010918(Mtx *mtx_l, DObj *dobj, sb32 is_translate);
+extern void func_80010AE8(Mtx *mtx_l, DObj *dobj, sb32 is_translate);
+extern void func_80010C2C(Mtx *mtx_l, DObj *dobj, sb32 is_translate);
 extern s32 gcDrawDObjMain(Gfx **dl, DObj *dobj);
 extern void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head);
 extern void gcDrawDObjForGObj(GObj *gobj, Gfx **dl_head);
@@ -35,7 +43,7 @@ extern void gcDrawDObjDLLinksForGObj(GObj *gobj);
 extern void func_80014430(void);
 extern void gcDrawDObjTreeDLLinks(DObj *dobj);
 extern void gcDrawDObjTreeDLLinksForGObj(GObj *gobj);
-extern f32 odGetDObjDistFromEye(DObj *dobj);
+extern f32 gcGetDObjDistFromEye(DObj *dobj);
 extern void gcDrawDObjTreeMultiList(DObj *dobj);
 extern void unref_800147E0(GObj *gobj);
 extern void unref_80014A84(GObj *gobj);

@@ -143,7 +143,7 @@ void scBattle_StartStockBattle()
 		player_spawn.team = gBattleState->players[player].player;
 		player_spawn.player = player;
 
-		player_spawn.model_lod = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+		player_spawn.detail = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
 		player_spawn.costume = gBattleState->players[player].costume;
 		player_spawn.shade = gBattleState->players[player].shade;
@@ -406,7 +406,7 @@ void scBattle_StartSDBattle()
 		player_spawn.team = gBattleState->players[player].player;
 		player_spawn.player = player;
 
-		player_spawn.model_lod = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+		player_spawn.detail = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
 		player_spawn.costume = gBattleState->players[player].costume;
 		player_spawn.shade = gBattleState->players[player].shade;

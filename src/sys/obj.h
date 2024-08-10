@@ -26,7 +26,7 @@
  * hypothetical predecessor to HAL's new engine that followed on the GameCube, titled SysDolphin.
  * 
  *  One last thing: "gc" functions generally assume the main argument type is GObj*, so something like
- * "gcAddAnimJointAll" would mean that the function is adding an AnimJoint to all DObjs on a GObj, while
+ * "gcAddAnimJointAll" would mean that the function is adding AnimJoints to each DObj on a GObj, while
  * "gcAddDObjAnimJoint" means that it's adding a single AnimJoint to a single DObj.
  */
 

@@ -4,18 +4,6 @@ extern void hal_interpolation_cubic(Vec3f*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// Belongs to system_05?
-s32 D_8003B930 = 10;
-s32 D_8003B934 = 10;
-s32 D_8003B938 = 10;
-s32 D_8003B93C = 10;
-
-// // // // // // // // // // // //
-//                               //
 //           FUNCTIONS           //
 //                               //
 // // // // // // // // // // // //
@@ -2446,7 +2434,6 @@ void gcAddCameraCamAnimJoint(Camera *cam, AObjAnimJoint *camanim_joint, f32 anim
     cam->anim_frame = anim_frame;
 }
 
-// 0x8000FA74
 void gcParseCameraCamAnimJoint(Camera *cam)
 {
     AObj *track_aobjs[nOMObjAnimTrackCameraEnd - nOMObjAnimTrackCameraStart + 1];
@@ -2988,30 +2975,3 @@ s32 gcGetAnimTotalLength(AObjAnimJoint **anim_joints)
         }
     }
 }
-
-// New file here?
-void unref_80010710(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
-{
-    D_8003B930 = arg0;
-    D_8003B934 = arg1;
-    D_8003B938 = arg2;
-    D_8003B93C = arg3;
-}
-
-void func_80010734(void *arg0)
-{
-    D_800470AC = arg0;
-}
-
-void unref_80010740(void)
-{
-    return;
-}
-
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010748.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010918.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010AE8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010C2C.s")

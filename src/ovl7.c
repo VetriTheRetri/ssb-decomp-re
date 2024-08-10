@@ -1369,7 +1369,7 @@ void scTrainingMode_InitTrainingMode()
 		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? nGMFacingL : nGMFacingR;
 		player_spawn.team = gBattleState->players[player].team;
 		player_spawn.player = player;
-		player_spawn.model_lod
+		player_spawn.detail
 			= ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 		player_spawn.costume = gBattleState->players[player].costume;
 		player_spawn.shade = gBattleState->players[player].shade;

@@ -2873,7 +2873,13 @@ void gcPlayCameraCamAnim(Camera *cam)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010580.s")
+void gcUpdateCameraCamAnim(GObj *gobj)
+{
+    Camera *cam = CameraGetStruct(gobj);
+
+    gcParseCameraCamAnimJoint(cam);
+    gcPlayCameraCamAnim(cam);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/unref_800105AC.s")
 

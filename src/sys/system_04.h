@@ -59,7 +59,7 @@ extern void gcAddMObjAll(struct GObjCommon *, struct MObjSub ***);
 extern void gcSetTransformVectorsAll(struct GObjCommon *, struct UnkEC64Arg3 *);
 */
 extern void gcAddCameraCamAnimJoint(struct DObj *dobj, union AnimCmd *, f32);
-extern void func_80010580(struct GObjCommon *obj);
+extern void gcUpdateCameraCamAnim(struct GObjCommon *obj);
 extern void func_80010734(void *);
 
 // possible real start of system_05

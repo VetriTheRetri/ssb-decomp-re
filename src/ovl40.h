@@ -21,7 +21,7 @@ extern void ftManagerSetupFilesAllKind(s32);
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern func_ovl0_800CCF00();
 extern func_ovl0_800CD2CC();
-extern func_80010580();
+extern gcUpdateCameraCamAnim();
 
 // DATA
 

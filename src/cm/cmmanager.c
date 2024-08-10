@@ -10,7 +10,7 @@ extern mlRegion gGraphicsHeap;
 
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, u64, s32, s32, s32, s32, s32, s32);
 extern void func_ovl0_800CD2CC(GObj*);
-extern void func_8000FA3C(void*, void*, f32);
+extern void gcAddCameraCamAnimJoint(void*, void*, f32);
 extern void func_80007080(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
@@ -936,7 +936,7 @@ void func_ovl2_8010D030(AObjAnimJoint *arg0, f32 arg1, Vec3f *arg2)
     gCMManagerCameraStruct.all_move = *arg2;
 
     // WARNING: This takes DObj* as its first argument, but gCMManagerCameraGObj should have Camera as its GObj render object???
-    func_8000FA3C(DObjGetStruct(gCMManagerCameraGObj), arg0, arg1);
+    gcAddCameraCamAnimJoint(DObjGetStruct(gCMManagerCameraGObj), arg0, arg1);
     func_ovl2_8010CBE4(gCMManagerCameraGObj);
 }
 

@@ -12,7 +12,7 @@ s32 gSYDisplayResWidth;
 s32 gSYDisplayResHeight;
 u32 D_80046680;
 u32 D_80046684;
-void *sFrameBuffers[3];
+void *sSYDisplayFramebufs[3];
 s16 D_80046694;
 s16 D_80046696;
 s16 D_80046698;
@@ -34,7 +34,7 @@ u32 syDisplayGetFillColor(u32 color) {
     u32 packed = ((color >> 16) & 0xF800) | ((color >> 13) & 0x07C0) | ((color >> 10) & 0x003E)
                | ((color >> 7) & 1);
 
-    return gSYDisplayPixelComponentSize == G_IM_SIZ_32b ? color : (packed << 16) | packed;
+    return (gSYDisplayPixelComponentSize == G_IM_SIZ_32b) ? color : (packed << 16) | packed;
 }
 
 void syDisplayUpdateFramebufs(void *fb1, void *fb2, void *fb3) {
@@ -42,9 +42,9 @@ void syDisplayUpdateFramebufs(void *fb1, void *fb2, void *fb3) {
 
     mesg.info.unk00  = 5;
     mesg.info.unk04  = 100;
-    sFrameBuffers[0] = mesg.unk24[0] = fb1;
-    sFrameBuffers[1] = mesg.unk24[1] = fb2;
-    sFrameBuffers[2] = mesg.unk24[2] = fb3;
+    sSYDisplayFramebufs[0] = mesg.unk24[0] = fb1;
+    sSYDisplayFramebufs[1] = mesg.unk24[1] = fb2;
+    sSYDisplayFramebufs[2] = mesg.unk24[2] = fb3;
 
     func_80000970(&mesg.info);
 }

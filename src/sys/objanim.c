@@ -96,7 +96,7 @@ void gcAddDObjAnimJoint(DObj *dobj, AObjAnimJoint *anim_joint, f32 anim_frame)
         aobj = aobj->next;
     }
     dobj->anim_joint = anim_joint;
-    dobj->anim_remain = -F32_HALF;
+    dobj->anim_remain = AOBJ_ANIM_CHANGED;
     dobj->anim_frame = anim_frame;
 }
 
@@ -110,7 +110,7 @@ void gcAddMObjMatAnimJoint(MObj *mobj, AObjAnimJoint *matanim_joint, f32 anim_fr
         aobj = aobj->next;
     }
     mobj->matanim_joint = matanim_joint;
-    mobj->anim_remain = -F32_HALF;
+    mobj->anim_remain = AOBJ_ANIM_CHANGED;
     mobj->anim_frame = anim_frame;
 }
 
@@ -228,7 +228,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
     if (dobj->anim_remain != AOBJ_ANIM_NULL)
     {
-        if (dobj->anim_remain == -F32_HALF)
+        if (dobj->anim_remain == AOBJ_ANIM_CHANGED)
         {
             dobj->anim_remain = -dobj->anim_frame;
         }
@@ -503,7 +503,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 }
                 break;
 
-            case nOMObjAnimCommandSetTranslateInterp:
+            case nOMObjAnimCommandSetInterp:
                 AObjAnimAdvance(dobj->anim_joint);
 
                 if (track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart] == NULL) 
@@ -791,7 +791,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
 
     if (mobj->anim_remain != AOBJ_ANIM_NULL)
     {
-        if (mobj->anim_remain == -F32_HALF)
+        if (mobj->anim_remain == AOBJ_ANIM_CHANGED)
         {
             mobj->anim_remain = -mobj->anim_frame;
         }
@@ -2430,9 +2430,358 @@ void gcSetTransformVectorsAll(GObj *gobj, DObjDesc *dobj_desc)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_8000FA3C.s")
+void gcAddCameraCamAnimJoint(Camera *cam, AObjAnimJoint *camanim_joint, f32 anim_frame)
+{
+    AObj *aobj = cam->aobj;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_8000FA74.s")
+    while (aobj != NULL)
+    {
+        aobj->kind = nOMObjAnimKindNone;
+        aobj = aobj->next;
+    }
+    cam->camanim_joint = camanim_joint;
+    
+    cam->anim_remain = AOBJ_ANIM_CHANGED;
+    cam->anim_frame = anim_frame;
+}
+
+// 0x8000FA74
+void gcParseCameraCamAnimJoint(Camera *cam)
+{
+    AObj *track_aobjs[nOMObjAnimTrackCameraEnd - nOMObjAnimTrackCameraStart + 1];
+    AObj *aobj;
+    s32 i;
+    u32 command_kind;
+    u32 flags;
+    f32 payload;
+
+    if (cam->anim_remain != AOBJ_ANIM_NULL)
+    {
+        if (cam->anim_remain == AOBJ_ANIM_CHANGED)
+        {
+            cam->anim_remain = -cam->anim_frame;
+        }
+        else
+        {
+            cam->anim_remain -= cam->anim_speed;
+            cam->anim_frame += cam->anim_speed;
+            cam->parent_gobj->anim_frame = cam->anim_frame;
+
+            if (cam->anim_remain > 0.0F)
+            {
+                return;
+            }
+        }
+        for (i = 0; i < ARRAY_COUNT(track_aobjs); i++)
+        {
+            track_aobjs[i] = NULL;
+        }
+        aobj = cam->aobj;
+
+        while (aobj != NULL)
+        {
+            if ((aobj->track >= nOMObjAnimTrackCameraStart) && (aobj->track <= nOMObjAnimTrackCameraEnd))
+            {
+                track_aobjs[aobj->track - nOMObjAnimTrackCameraStart] = aobj;
+            }
+            aobj = aobj->next;
+        }
+        do
+        {
+            if (cam->camanim_joint == NULL)
+            {
+                aobj = cam->aobj;
+
+                while (aobj != NULL)
+                {
+                    if (aobj->kind)
+                    {
+                        aobj->length += cam->anim_speed + cam->anim_remain;
+                    }
+                    aobj = aobj->next;
+                }
+                cam->anim_frame = cam->anim_remain;
+                cam->anim_remain = AOBJ_ANIM_END;
+
+                return;
+            }
+            command_kind = cam->camanim_joint->command.opcode;
+
+            switch (command_kind)
+            {
+            case nOMObjAnimCommandSetVal0RateBlock:
+            case nOMObjAnimCommandSetVal0Rate:
+                payload = cam->camanim_joint->command.payload;
+                flags = AObjAnimAdvance(cam->camanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (track_aobjs[i] == NULL)
+                        {
+                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nOMObjAnimTrackCameraStart);
+                        }
+                        track_aobjs[i]->value_base = track_aobjs[i]->value_target;
+                        track_aobjs[i]->value_target = cam->camanim_joint->f;
+
+                        AObjAnimAdvance(cam->camanim_joint);
+
+                        track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
+                        track_aobjs[i]->rate_target = 0.0F;
+                        track_aobjs[i]->kind = 3;
+
+                        if (payload != 0.0F)
+                        {
+                            track_aobjs[i]->length_invert = 1.0F / payload;
+                        }
+                        track_aobjs[i]->length = -cam->anim_remain - cam->anim_speed;
+                    }
+                }
+                if (command_kind == nOMObjAnimCommandSetVal0RateBlock)
+                {
+                    cam->anim_remain += payload;
+                }
+                break;
+
+            case nOMObjAnimCommandSetValBlock:
+            case nOMObjAnimCommandSetVal:
+                payload = cam->camanim_joint->command.payload;
+                flags = AObjAnimAdvance(cam->camanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (track_aobjs[i] == NULL)
+                        {
+                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nOMObjAnimTrackCameraStart);
+                        }
+                        track_aobjs[i]->value_base = track_aobjs[i]->value_target;
+                        track_aobjs[i]->value_target = cam->camanim_joint->f;
+
+                        AObjAnimAdvance(cam->camanim_joint);
+
+                        track_aobjs[i]->kind = 2;
+
+                        if (payload != 0.0F)
+                        {
+                            track_aobjs[i]->rate_base = (track_aobjs[i]->value_target - track_aobjs[i]->value_base) / payload;
+                        }
+                        track_aobjs[i]->length = -cam->anim_remain - cam->anim_speed;
+                        track_aobjs[i]->rate_target = 0.0F;
+                    }
+                }
+                if (command_kind == nOMObjAnimCommandSetValBlock)
+                {
+                    cam->anim_remain += payload;
+                }
+                break;
+
+            case nOMObjAnimCommandSetValRateBlock:
+            case nOMObjAnimCommandSetValRate:
+                payload = cam->camanim_joint->command.payload;
+                flags = AObjAnimAdvance(cam->camanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (track_aobjs[i] == NULL)
+                        {
+                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nOMObjAnimTrackCameraStart);
+                        }
+                        track_aobjs[i]->value_base = track_aobjs[i]->value_target;
+                        track_aobjs[i]->value_target = cam->camanim_joint->f;
+
+                        AObjAnimAdvance(cam->camanim_joint);
+
+                        track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
+                        track_aobjs[i]->rate_target = cam->camanim_joint->f;
+
+                        AObjAnimAdvance(cam->camanim_joint);
+
+                        track_aobjs[i]->kind = 3;
+
+                        if (payload != 0.0F)
+                        {
+                            track_aobjs[i]->length_invert = 1.0F / payload;
+                        }
+                        track_aobjs[i]->length = -cam->anim_remain - cam->anim_speed;
+                    }
+                }
+                if (command_kind == nOMObjAnimCommandSetValRateBlock)
+                {
+                    cam->anim_remain += payload;
+                }
+                break;
+
+            case nOMObjAnimCommandSetTargetRate:
+                flags = AObjAnimAdvance(cam->camanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (track_aobjs[i] == NULL)
+                        {
+                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nOMObjAnimTrackCameraStart);
+                        }
+                        track_aobjs[i]->rate_target = cam->camanim_joint->f;
+
+                        AObjAnimAdvance(cam->camanim_joint);
+                    }
+                }
+                break;
+
+            case nOMObjAnimCommandWait:
+                cam->anim_remain += AObjAnimAdvance(cam->camanim_joint)->command.payload;
+                break;
+
+            case nOMObjAnimCommandSetValAfterBlock:
+            case nOMObjAnimCommandSetValAfter:
+                payload = cam->camanim_joint->command.payload;
+                flags = AObjAnimAdvance(cam->camanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (track_aobjs[i] == NULL)
+                        {
+                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nOMObjAnimTrackCameraStart);
+                        }
+                        track_aobjs[i]->value_base = track_aobjs[i]->value_target;
+                        track_aobjs[i]->value_target = cam->camanim_joint->f;
+
+                        AObjAnimAdvance(cam->camanim_joint);
+
+                        track_aobjs[i]->kind = 1;
+                        track_aobjs[i]->length_invert = payload;
+                        track_aobjs[i]->length = -cam->anim_remain - cam->anim_speed;
+                        track_aobjs[i]->rate_target = 0.0F;
+                    }
+                }
+                if (command_kind == nOMObjAnimCommandSetValAfterBlock)
+                {
+                    cam->anim_remain += payload;
+                }
+                break;
+
+            case nOMObjAnimCommandSetAnim:
+                AObjAnimAdvance(cam->camanim_joint);
+                cam->camanim_joint = cam->camanim_joint->p;
+                cam->anim_frame = -cam->anim_remain;
+                cam->parent_gobj->anim_frame = -cam->anim_remain;
+                break;
+
+            case nOMObjAnimCommandJump:
+                AObjAnimAdvance(cam->camanim_joint);
+                cam->camanim_joint = cam->camanim_joint->p;
+                break;
+
+            case ANIM_CMD_12:
+                payload = cam->camanim_joint->command.payload;
+                flags = AObjAnimAdvance(cam->camanim_joint)->command.flags;
+
+                for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
+                {
+                    if (!(flags))
+                    {
+                        break;
+                    }
+                    if (flags & 1)
+                    {
+                        if (track_aobjs[i] == NULL)
+                        {
+                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nOMObjAnimTrackCameraStart);
+                        }
+                        track_aobjs[i]->length += payload;
+                    }
+                }
+                break;
+
+            case nOMObjAnimCommandSetInterp:
+                flags = AObjAnimAdvance(cam->camanim_joint)->command.flags;
+
+                if (flags & 0x08)
+                {
+                    if (track_aobjs[nOMObjAnimTrackEyeI - nOMObjAnimTrackCameraStart] == NULL)
+                    {
+                        track_aobjs[nOMObjAnimTrackEyeI - nOMObjAnimTrackCameraStart] = gcAddAObjForCamera
+                        (
+                            cam, 
+                            nOMObjAnimTrackEyeI
+                        );
+                    }
+                    track_aobjs[nOMObjAnimTrackEyeI - nOMObjAnimTrackCameraStart]->interpolate = cam->camanim_joint->p;
+
+                    AObjAnimAdvance(cam->camanim_joint);
+                }
+                if (flags & 0x80)
+                {
+                    if (track_aobjs[nOMObjAnimTrackAtI - nOMObjAnimTrackCameraStart] == NULL)
+                    {
+                        track_aobjs[nOMObjAnimTrackAtI - nOMObjAnimTrackCameraStart] = gcAddAObjForCamera
+                        (
+                            cam, 
+                            nOMObjAnimTrackAtI
+                        );
+                    }
+                    track_aobjs[nOMObjAnimTrackAtI - nOMObjAnimTrackCameraStart]->interpolate = cam->camanim_joint->p;
+
+                    AObjAnimAdvance(cam->camanim_joint);
+                }
+                break;
+
+            case nOMObjAnimCommandEnd:
+                aobj = cam->aobj;
+
+                while (aobj != NULL)
+                {
+                    if (aobj->kind != nOMObjAnimKindNone)
+                    {
+                        aobj->length += cam->anim_speed + cam->anim_remain;
+                    }
+                    aobj = aobj->next;
+                }
+                cam->anim_frame = cam->anim_remain;
+                cam->anim_remain = AOBJ_ANIM_END;
+                return;
+
+            case ANIM_CMD_23:
+                cam->anim_remain += AObjAnimAdvance(cam->camanim_joint)->command.payload;
+                cam->camanim_joint += 2;
+                break;
+
+                // empty, but necessary
+            default:
+                break;
+            }
+        }
+        while (cam->anim_remain <= 0.0F);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010344.s")
 

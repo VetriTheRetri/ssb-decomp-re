@@ -15,7 +15,7 @@ extern f32 gMPCollisionLightAngleX;          // 80131390
 extern f32 gMPCollisionLightAngleY;          // 80131394
 
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
-extern void func_8000FA3C(void*, void*, f32);
+extern void gcAddCameraCamAnimJoint(void*, void*, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void ftManagerSetupFilesAllKind(s32);
 extern void func_80007080(void*, f32, f32, f32, f32);

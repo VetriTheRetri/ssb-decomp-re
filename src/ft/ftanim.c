@@ -73,7 +73,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
 
     if (root_dobj->anim_remain != AOBJ_ANIM_NULL)
     {
-        if (root_dobj->anim_remain == -F32_HALF)
+        if (root_dobj->anim_remain == AOBJ_ANIM_CHANGED)
         {
             root_dobj->anim_remain = -root_dobj->anim_frame;
         }

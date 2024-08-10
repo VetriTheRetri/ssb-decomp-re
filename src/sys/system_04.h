@@ -58,7 +58,7 @@ extern void func_8000F364(struct DObj *, u8, u8, u8, s32);
 extern void gcAddMObjAll(struct GObjCommon *, struct MObjSub ***);
 extern void gcSetTransformVectorsAll(struct GObjCommon *, struct UnkEC64Arg3 *);
 */
-extern void func_8000FA3C(struct DObj *dobj, union AnimCmd *, f32);
+extern void gcAddCameraCamAnimJoint(struct DObj *dobj, union AnimCmd *, f32);
 extern void func_80010580(struct GObjCommon *obj);
 extern void func_80010734(void *);
 

@@ -258,7 +258,7 @@ void mvOpeningLinkCreatePosedFighterViewport()
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
 	cam->projection.persp.aspect = 3.75F;
-	func_8000FA3C(cam, GetAddressFromOffset(gMvOpeningLinkFilesArray[1], &FILE_041_LINK_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningLinkFilesArray[1], &FILE_041_LINK_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjCommonProc(camera_gobj, func_80010580, 1, 1);
 }
 

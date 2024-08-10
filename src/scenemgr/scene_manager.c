@@ -263,9 +263,9 @@ void start_scene_manager(u32 set)
 	set_contstatus_delay(60);
 	syErrorSetFuncPrint(scManagerProcPrintGObjStatus);
 	syErrorStartRmonThread5Hang();
-	syLoadOverlay(&D_800A3070[0]);
-	syLoadOverlay(&D_800A3070[2]);
-	syLoadOverlay(&D_800A3070[1]);
+	syDmaLoadOverlay(&D_800A3070[0]);
+	syDmaLoadOverlay(&D_800A3070[2]);
+	syDmaLoadOverlay(&D_800A3070[1]);
 
 	gSaveData  = gDefaultSaveData;
 	gSceneData = gDefaultSceneData;
@@ -301,321 +301,321 @@ void start_scene_manager(u32 set)
 	{
 		switch (gSceneData.scene_current) {
 			case 0:
-				syLoadOverlay(&D_800A3070[11]);
+				syDmaLoadOverlay(&D_800A3070[11]);
 				n64_logo_entry();
 				break;
 			case 1:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[10]);
-				syLoadOverlay(&D_800A3070[8]);
-				syLoadOverlay(&D_800A3070[9]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[10]);
+				syDmaLoadOverlay(&D_800A3070[8]);
+				syDmaLoadOverlay(&D_800A3070[9]);
 				title_screen_entry();
 				break;
 			case 2:
-				syLoadOverlay(&D_800A3070[12]);
-				syLoadOverlay(&D_800A3070[8]);
-				syLoadOverlay(&D_800A3070[9]);
+				syDmaLoadOverlay(&D_800A3070[12]);
+				syDmaLoadOverlay(&D_800A3070[8]);
+				syDmaLoadOverlay(&D_800A3070[9]);
 				debug_sss_entry();
 				break;
 			case 3:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[13]);
-				syLoadOverlay(&D_800A3070[8]);
-				syLoadOverlay(&D_800A3070[9]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[13]);
+				syDmaLoadOverlay(&D_800A3070[8]);
+				syDmaLoadOverlay(&D_800A3070[9]);
 				debug_system_entry();
 				break;
 			case 4:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[14]);
-				syLoadOverlay(&D_800A3070[8]);
-				syLoadOverlay(&D_800A3070[9]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[14]);
+				syDmaLoadOverlay(&D_800A3070[8]);
+				syDmaLoadOverlay(&D_800A3070[9]);
 				debug_battle_entry();
 				break;
 			case 5:
-				syLoadOverlay(&D_800A3070[15]);
+				syDmaLoadOverlay(&D_800A3070[15]);
 				debug_falls_entry();
 				break;
 			case 6:
-				syLoadOverlay(&D_800A3070[16]);
+				syDmaLoadOverlay(&D_800A3070[16]);
 				debug_button_test_entry();
 				break;
 			case 7:
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[17]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[17]);
 				menu_main_entry();
 				break;
 			case 8:
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[18]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[18]);
 				menu_1p_entry();
 				break;
 			case 57:
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[60]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[60]);
 				mnOptionStartScene();
 				break;
 			case 58:
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[61]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[61]);
 				mnDataStartScene();
 				break;
 			case 9:
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[19]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[19]);
 				menu_vs_entry();
 				break;
 			case 10:
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[20]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[20]);
 				options_vs_entry();
 				break;
 			case 11:
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[21]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[21]);
 				overlay_set11_entry();
 				break;
 			case 12:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[22]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[22]);
 				overlay_set12_entry();
 				break;
 			case 13:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[23]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[23]);
 				overlay_set13_entry();
 				break;
 			case 14:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[24]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[24]);
 				classic_map_entry();
 				break;
 			case 15:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[25]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[25]);
 				screen_adjust_entry();
 				break;
 			case 16:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[26]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[26]);
 				vs_css_entry();
 				break;
 			case 21:
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[30]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[30]);
 				mnStageStartScene();
 				break;
 			case 22:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[3]);
-				syLoadOverlay(&D_800A3070[4]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[3]);
+				syDmaLoadOverlay(&D_800A3070[4]);
 				scBattleRoyalStartScene();
 				break;
 			case 23:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[3]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[5]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[3]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[5]);
 				overlay_set23_entry();
 				break;
 			case 52: 
 				func_ovl2_800D67DC();
 				break;
 			case 53:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[3]);
-				syLoadOverlay(&D_800A3070[6]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[3]);
+				syDmaLoadOverlay(&D_800A3070[6]);
 				scManager_BonusGame_InitScene();
 				break;
 			case 54:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[3]);
-				syLoadOverlay(&D_800A3070[7]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[3]);
+				syDmaLoadOverlay(&D_800A3070[7]);
 				scManager_TrainingMode_InitScene();
 				break;
 			case 24:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[31]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[31]);
 				vs_results_entry();
 				break;
 			case 25:
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[32]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[32]);
 				vs_records_entry();
 				break;
 			case 26:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[33]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[33]);
 				char_bkg_info_entry();
 				break;
 			case 27:
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[58]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[58]);
 				mnN64StartScene();
 				break;
 			case 28:
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[34]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[34]);
 				intro_firstscene_entry();
 				break;
 			case 29:
-				syLoadOverlay(&D_800A3070[35]);
+				syDmaLoadOverlay(&D_800A3070[35]);
 				mvPortraitsStartScene();
 				break;
 			case 30:
-				syLoadOverlay(&D_800A3070[3]);
-				syLoadOverlay(&D_800A3070[36]);
+				syDmaLoadOverlay(&D_800A3070[3]);
+				syDmaLoadOverlay(&D_800A3070[36]);
 				intro_focus_mario_entry();
 				break;
 			case 31:
-				syLoadOverlay(&D_800A3070[37]);
+				syDmaLoadOverlay(&D_800A3070[37]);
 				intro_focus_dk_entry();
 				break;
 			case 32:
-				syLoadOverlay(&D_800A3070[38]);
+				syDmaLoadOverlay(&D_800A3070[38]);
 				intro_focus_samus_entry();
 				break;
 			case 33:
-				syLoadOverlay(&D_800A3070[39]);
+				syDmaLoadOverlay(&D_800A3070[39]);
 				intro_focus_fox_entry();
 				break;
 			case 34:
-				syLoadOverlay(&D_800A3070[40]);
+				syDmaLoadOverlay(&D_800A3070[40]);
 				intro_focus_link_entry();
 				break;
 			case 35:
-				syLoadOverlay(&D_800A3070[41]);
+				syDmaLoadOverlay(&D_800A3070[41]);
 				intro_focus_yoshi_entry();
 				break;
 			case 36:
-				syLoadOverlay(&D_800A3070[42]);
+				syDmaLoadOverlay(&D_800A3070[42]);
 				intro_focus_pikachu_entry();
 				break;
 			case 37:
-				syLoadOverlay(&D_800A3070[43]);
+				syDmaLoadOverlay(&D_800A3070[43]);
 				intro_focus_kirby_entry();
 				break;
 			case 38:
-				syLoadOverlay(&D_800A3070[44]);
+				syDmaLoadOverlay(&D_800A3070[44]);
 				intro_chars_running_entry();
 				break;
 			case 39:
-				syLoadOverlay(&D_800A3070[45]);
+				syDmaLoadOverlay(&D_800A3070[45]);
 				intro_yoshi_nest_entry();
 				break;
 			case 40:
-				syLoadOverlay(&D_800A3070[46]);
+				syDmaLoadOverlay(&D_800A3070[46]);
 				intro_link_hill_entry();
 				break;
 			case 41:
-				syLoadOverlay(&D_800A3070[47]);
+				syDmaLoadOverlay(&D_800A3070[47]);
 				intro_mario_vs_kirby_entry();
 				break;
 			case 42:
-				syLoadOverlay(&D_800A3070[48]);
+				syDmaLoadOverlay(&D_800A3070[48]);
 				intro_pika_pokeball_entry();
 				break;
 			case 43:
-				syLoadOverlay(&D_800A3070[49]);
+				syDmaLoadOverlay(&D_800A3070[49]);
 				intro_sex_kicks_entry();
 				break;
 			case 44:
-				syLoadOverlay(&D_800A3070[50]);
+				syDmaLoadOverlay(&D_800A3070[50]);
 				intro_great_fox_entry();
 				break;
 			case 45:
-				syLoadOverlay(&D_800A3070[3]);
-				syLoadOverlay(&D_800A3070[51]);
+				syDmaLoadOverlay(&D_800A3070[3]);
+				syDmaLoadOverlay(&D_800A3070[51]);
 				mvOpeningDKVsSamusStartScene();
 				break;
 			case 46:
-				syLoadOverlay(&D_800A3070[52]);
+				syDmaLoadOverlay(&D_800A3070[52]);
 				intro_hidden_chars_entry();
 				break;
 			case 17:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[27]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[27]);
 				classic_css_entry();
 				break;
 			case 18:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[28]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[28]);
 				training_css_entry();
 				break;
 			case 19:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[29]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[29]);
 				bonus_css_entry();
 				break;
 			case 20:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[29]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[29]);
 				bonus_css_entry();
 				break;
 			case 47:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[53]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[53]);
 				menu_backup_clear_entry();
 				break;
 			case 48:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[54]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[54]);
 				mvEndingStartScene();
 				break;
 			case 49:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[55]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[55]);
 				gmContinueStartScene();
 				break;
 			case 50:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[56]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[56]);
 				gmStageClearStartScene();
 				break;
 			case 51:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[56]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[56]);
 				gmStageClearStartScene();
 				break;
 			case 56:
-				syLoadOverlay(&D_800A3070[59]);
+				syDmaLoadOverlay(&D_800A3070[59]);
 				gmCreditsStartScene();
 				break;
 			case 55:
-				syLoadOverlay(&D_800A3070[57]);
+				syDmaLoadOverlay(&D_800A3070[57]);
 				mnCongraStartScene();
 				break;
 			case 59:
-				syLoadOverlay(&D_800A3070[1]);
-				syLoadOverlay(&D_800A3070[62]);
+				syDmaLoadOverlay(&D_800A3070[1]);
+				syDmaLoadOverlay(&D_800A3070[62]);
 				mnSoundTestStartScene();
 				break;
 			case 60:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[3]);
-				syLoadOverlay(&D_800A3070[63]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[3]);
+				syDmaLoadOverlay(&D_800A3070[63]);
 				scExplainStartScene();
 				break;
 			case 61:
-				syLoadOverlay(&D_800A3070[2]);
-				syLoadOverlay(&D_800A3070[3]);
-				syLoadOverlay(&D_800A3070[64]);
+				syDmaLoadOverlay(&D_800A3070[2]);
+				syDmaLoadOverlay(&D_800A3070[3]);
+				syDmaLoadOverlay(&D_800A3070[64]);
 				scAutoDemoStartScene();
 				break;
 		}
@@ -650,7 +650,7 @@ void func_800A26D8(GObj* arg0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gDisplayListHead)++, syGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
+	gDPSetFillColor((*gDisplayListHead)++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
 	gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
 
 	barY += 2;
@@ -660,7 +660,7 @@ void func_800A26D8(GObj* arg0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gDisplayListHead)++, syGetFillColor(GPACK_RGBA8888(0xFF, 0x40, 0x00, 0xFF)));
+	gDPSetFillColor((*gDisplayListHead)++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x40, 0x00, 0xFF)));
 	gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
 
 	barY += 2;
@@ -670,7 +670,7 @@ void func_800A26D8(GObj* arg0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gDisplayListHead)++, syGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+	gDPSetFillColor((*gDisplayListHead)++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 	gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
 	gDPPipeSync((*gDisplayListHead)++);
 	// this needs to be in its own block to match. macro?
@@ -678,7 +678,7 @@ void func_800A26D8(GObj* arg0)
 	{
 		size_t freeSpace = (uintptr_t)gGeneralHeap.end - (uintptr_t)gGeneralHeap.ptr;
 
-		gDPSetFillColor((*gDisplayListHead)++, syGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+		gDPSetFillColor((*gDisplayListHead)++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 		func_800218E0(0x14, 0x14, freeSpace, 7, 1);
 		gDPPipeSync((*gDisplayListHead)++);
 	}
@@ -690,7 +690,7 @@ void func_800A26D8(GObj* arg0)
 // 800A2B18
 GObj* func_800A2B18(s32 link, u32 arg1, s32 arg2)
 {
-	if (find_gobj_with_id(0xEFFFFFFF) != NULL)
+	if (gcFindGObjID(0xEFFFFFFF) != NULL)
 		return NULL;
 
 	return func_8000B93C(0xEFFFFFFF, NULL, link, arg1, func_800A26D8, arg2, 0, 0, 0, 0, 0, 0, 0);
@@ -701,13 +701,13 @@ void unref_800A2BA8(s32 link, u32 arg1, s32 arg2) // set_up_debug_objs ? somethi
 {
 	GObj* com;
 
-	com = find_gobj_with_id(0xFFFFFFFE);
+	com = gcFindGObjID(0xFFFFFFFE);
 	if (com != NULL)
 		gcEjectGObj(com);
 	else
 		func_80022368(link, arg1, arg2);
 
-	com = find_gobj_with_id(0xEFFFFFFF);
+	com = gcFindGObjID(0xEFFFFFFF);
 	if (com != NULL)
 		gcEjectGObj(com);
 	else

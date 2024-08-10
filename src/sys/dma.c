@@ -19,7 +19,7 @@ void *sVpkBufRamAddr;
 u32 sVpkBufSize;
 u32 sVpkBufRgcAddr;
 
-void syCreateDmaMesgQueue(void) 
+void syDmaCreateMesgQueue(void) 
 {
     osCreateMesgQueue(&sDmaMesgQ, sDmaMesg, OS_MESG_BLOCK);
 }
@@ -66,7 +66,7 @@ void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t
     }
 }
 
-void syLoadOverlay(struct syOverlay *ovl)
+void syDmaLoadOverlay(struct syOverlay *ovl)
 {
     if (((uintptr_t)ovl->ram_text_end - (uintptr_t)ovl->ram_text_start) != 0)
     {
@@ -122,7 +122,7 @@ void syDmaRomWrite(void *ram_src, uintptr_t rom_dst, u32 bytes_num)
     syDmaCopy(gRomPiHandle, rom_dst, (uintptr_t)ram_src, bytes_num, OS_WRITE);
 }
 
-OSPiHandle* sySramPiInit(void)
+OSPiHandle* syDmaSramPiInit(void)
 {
     if (sSramPiHandle.baseAddress == PHYS_TO_K1(PI_DOM2_ADDR2))
     { 
@@ -154,7 +154,7 @@ void syDmaSramWrite(void *ram_src, u32 rom_dst, u32 nbytes)
 }
 
 // 0x80002E18 - vpk0 decoder
-void syDecodeVpk0(u16* data, u32 size, void (*update_stream)(void), u8* out_buf)
+void syDmaDecodeVpk0(u16* data, u32 size, void (*update_stream)(void), u8* out_buf)
 {
 #define VPK0_UPDATE_STREAM()        \
     if ((uintptr_t) csr >= bound)   \
@@ -384,30 +384,30 @@ void syDecodeVpk0(u16* data, u32 size, void (*update_stream)(void), u8* out_buf)
     }
 }
 
-void syInitVpk0DmaStream(u32 dev_addr, void *ram_addr, u32 bytes_num)
+void syDmaInitVpk0Stream(u32 dev_addr, void *ram_addr, u32 bytes_num)
 {
     sVpkBufRgcAddr = dev_addr;
     sVpkBufRamAddr = ram_addr;
     sVpkBufSize    = bytes_num;
 }
 
-void syFillVpk0DmaBuf(void)
+void syDmaFillVpk0Buf(void)
 {
     syDmaRomRead(sVpkBufRgcAddr, sVpkBufRamAddr, sVpkBufSize);
     sVpkBufRgcAddr += sVpkBufSize;
 }
 
-void syReadVpk0DmaBuf(u32 dev_addr, void *ram_dst, void *ram_addr, u32 bytes_num)
+void syDmaReadVpk0Buf(u32 dev_addr, void *ram_dst, void *ram_addr, u32 bytes_num)
 {
-    syInitVpk0DmaStream(dev_addr, ram_addr, bytes_num);
-    syDecodeVpk0(ram_addr, bytes_num, syFillVpk0DmaBuf, ram_dst);
+    syDmaInitVpk0Stream(dev_addr, ram_addr, bytes_num);
+    syDmaDecodeVpk0(ram_addr, bytes_num, syDmaFillVpk0Buf, ram_dst);
 }
 
-void syReadVpk0Dma(u32 dev_addr, void *ram_dst)
+void syDmaReadVpk0(u32 dev_addr, void *ram_dst)
 {
     u8 buf[0x400];
 
-    syReadVpk0DmaBuf(dev_addr, ram_dst, &buf, ARRAY_COUNT(buf));
+    syDmaReadVpk0Buf(dev_addr, ram_dst, &buf, ARRAY_COUNT(buf));
 }
 
 // Best I can do with this is functionally equivalent. Somewhat disappointing, but not a big deal; this function is unreferenced.

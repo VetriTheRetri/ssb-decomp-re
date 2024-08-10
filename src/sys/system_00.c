@@ -28,7 +28,7 @@ s16 D_8004669A;
  * Depends on the state of `gSYDisplayPixelComponentSize`
  * @param color RRGGBBAA
  */
-u32 syGetFillColor(u32 color) {
+u32 syDisplayGetFillColor(u32 color) {
     // GPACK_RGBA5551, but it doesn't seem to match
     // if that macro is used
     u32 packed = ((color >> 16) & 0xF800) | ((color >> 13) & 0x07C0) | ((color >> 10) & 0x003E)
@@ -37,7 +37,7 @@ u32 syGetFillColor(u32 color) {
     return gSYDisplayPixelComponentSize == G_IM_SIZ_32b ? color : (packed << 16) | packed;
 }
 
-void update_framebuffers(void *fb1, void *fb2, void *fb3) {
+void syDisplayUpdateFramebufs(void *fb1, void *fb2, void *fb3) {
     SCTaskType5 mesg;
 
     mesg.info.unk00  = 5;
@@ -58,13 +58,15 @@ void func_80006E18(s32 arg0) {
 }
 
 // set current screen width?
-void set_screen_width(s32 arg0) {
-    gSYDisplayResWidth = arg0;
+void syDisplaySetResWidth(s32 width)
+{
+    gSYDisplayResWidth = width;
     D_80046684       = TRUE;
 }
 
-void set_screen_height(s32 arg0) {
-    gSYDisplayResHeight = arg0;
+void syDisplaySetResHeight(s32 height)
+{
+    gSYDisplayResHeight = height;
     D_80046684        = TRUE;
 }
 
@@ -111,8 +113,8 @@ void func_80006FB8(s32 width, s32 height, u32 arg2)
     D_80046680 = 0;
     gSYDisplayPixelComponentSize = G_IM_SIZ_16b;
     func_80006E18(arg2);
-    set_screen_width(width);
-    set_screen_height(height);
+    syDisplaySetResWidth(width);
+    syDisplaySetResHeight(height);
     task.info.unk00 = 4;
     task.info.unk04 = 100;
     func_80006EF4(&task);
@@ -121,7 +123,7 @@ void func_80006FB8(s32 width, s32 height, u32 arg2)
 
 void func_80007024(syDisplaySetup *display_setup)
 {
-    update_framebuffers(display_setup->framebuf1, display_setup->framebuf2, display_setup->framebuf3);
+    syDisplayUpdateFramebufs(display_setup->framebuf1, display_setup->framebuf2, display_setup->framebuf3);
     gSYDisplayZBuffer = display_setup->zbuffer;
     func_80006FB8(display_setup->width, display_setup->height, display_setup->unk18);
 }

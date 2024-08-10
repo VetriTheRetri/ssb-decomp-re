@@ -832,7 +832,7 @@ void mnVsRecordsRenderTableGrid(GObj* table_border_gobj)
 	gDPPipeSync(gDisplayListHead[0]++);
 	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-	gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(0x62626AFF));
+	gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(0x62626AFF));
 
 	switch (gMNVsRecordsStatsKind)
 	{

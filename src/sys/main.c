@@ -128,9 +128,9 @@ void syMainThread5(UNUSED void *arg)
 {
     osCreateViManager(OS_PRIORITY_VIMGR);
     gRomPiHandle = osCartRgcInit();
-    sySramPiInit();
+    syDmaSramPiInit();
     osCreatePiManager(OS_PRIORITY_PIMGR, &sSYMainPiCmdQueue, sSYMainPiCmdMesg, ARRAY_COUNT(sSYMainPiCmdMesg));
-    syCreateDmaMesgQueue();
+    syDmaCreateMesgQueue();
     // load IP3 font? rsp boot text
     syDmaRomRead(PHYSICAL_TO_ROM(0xB70), gSYMainRspBootCode, sizeof(gSYMainRspBootCode));
     syMainCheckSPImemOK();
@@ -156,7 +156,7 @@ void syMainThread5(UNUSED void *arg)
     osRecvMesg(&sSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 
     func_80006B80();
-    syLoadOverlay(&OverlayManager);
+    syDmaLoadOverlay(&OverlayManager);
     start_scene_manager(0);
 }
 

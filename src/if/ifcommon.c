@@ -2056,11 +2056,11 @@ void ifCommonItemArrowSetAttr(void)
 // 0x80111FF0
 void ifCommonAnnounceThread(GObj *interface_gobj)
 {
-    gsStopCurrentProcess(0x3C);
+    gcStopCurrentProcess(0x3C);
 
     gcEjectGObj(NULL);
 
-    gsStopCurrentProcess(1);
+    gcStopCurrentProcess(1);
 }
 
 // 0x80112024
@@ -2167,7 +2167,7 @@ void ifCommonCountdownThread(GObj *interface_gobj)
 
             sobj = sobj->next;
         }
-        gsStopCurrentProcess(1);
+        gcStopCurrentProcess(1);
     }
     sobj = ifGetSObj(interface_gobj);
 
@@ -2270,7 +2270,7 @@ void ifCommonCountdownThread(GObj *interface_gobj)
         }
         timer++;
 
-        gsStopCurrentProcess(1);
+        gcStopCurrentProcess(1);
 
         main_status = -1;
     }
@@ -2285,10 +2285,10 @@ finish:
 
             sobj = sobj->next;
         }
-        gsStopCurrentProcess(1);
+        gcStopCurrentProcess(1);
     }
     gcEjectGObj(NULL);
-    gsStopCurrentProcess(1);
+    gcStopCurrentProcess(1);
 }
 
 // 0x80112668
@@ -2364,13 +2364,13 @@ void ifCommonEntryFocusThread(GObj *interface_gobj)
 
     if (index == 1)
     {
-        gsStopCurrentProcess(0x5A);
+        gcStopCurrentProcess(0x5A);
     }
     count = gBattleState->pl_count + gBattleState->cp_count;
 
     if (count < 3)
     {
-        gsStopCurrentProcess(process_id);
+        gcStopCurrentProcess(process_id);
     }
     fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
@@ -2380,22 +2380,22 @@ void ifCommonEntryFocusThread(GObj *interface_gobj)
 
         if (index == 2)
         {
-            gsStopCurrentProcess(0x1E);
+            gcStopCurrentProcess(0x1E);
 
             func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom, 0.1F, 28.0F);
-            gsStopCurrentProcess(process_id - 0x1E);
+            gcStopCurrentProcess(process_id - 0x1E);
         }
-        else gsStopCurrentProcess(process_id);
+        else gcStopCurrentProcess(process_id);
 
         fighter_gobj = fighter_gobj->link_next;
     }
     if (index == 2)
     {
-        gsStopCurrentProcess(0x1E);
+        gcStopCurrentProcess(0x1E);
         cmManagerSetCameraStatusDefault();
     }
     gcEjectGObj(NULL);
-    gsStopCurrentProcess(1);
+    gcStopCurrentProcess(1);
 }
 
 // 0x801129DC
@@ -2411,11 +2411,11 @@ void ifCommonEntryFocusMakeInterface(s32 id)
 // 0x80112A34
 void ifCommonEntryAllThread(GObj *interface_gobj)
 {
-    gsStopCurrentProcess(0x5A);
+    gcStopCurrentProcess(0x5A);
     ifCommonCountdownMakeInterface();
     ifCommonEntryFocusMakeInterface(mtTrigGetRandomIntRange(3));
     gcEjectGObj(NULL);
-    gsStopCurrentProcess(1);
+    gcStopCurrentProcess(1);
 }
 
 // 0x80112A80
@@ -2429,13 +2429,13 @@ void ifCommonEntryAllMakeInterface(void)
 // 0x80112AD0
 void ifCommonSuddenDeathThread(GObj *interface_gobj)
 {
-    gsStopCurrentProcess(0x5A);
+    gcStopCurrentProcess(0x5A);
     ifCommonAnnounceGoMakeInterface();
     ifCommonPlayerDamageSetShowInterface();
     ifCommonAnnounceGoSetStatus();
     func_800269C0_275C0(0x1EA);
     gcEjectGObj(NULL);
-    gsStopCurrentProcess(1);
+    gcStopCurrentProcess(1);
 }
 
 // 0x80112B24

@@ -12,11 +12,11 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/get_id_from_gobj_idx.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/find_gobj_with_id.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/gcFindGObjID.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/func_8000B1C4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/gsStopCurrentProcess.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/gcStopCurrentProcess.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/func_8000B284.s")
 

@@ -88,7 +88,7 @@ extern intptr_t lOverlay26ArenaLo; // 0x8013C4C0
 extern intptr_t lOverlay26ArenaHi; // 0x803903E0
 
 extern f32 sqrtf(f32);
-extern void gsStopCurrentProcess(s32);
+extern void gcStopCurrentProcess(s32);
 extern void leoInitUnit_atten();
 // ovl0
 extern void func_ovl0_800CD2CC();

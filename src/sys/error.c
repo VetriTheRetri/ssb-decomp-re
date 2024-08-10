@@ -309,7 +309,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
     func_800218E0(60, 179, controller->stick_range.x, 3, TRUE);
     func_800218E0(92, 179, controller->stick_range.y, 3, TRUE);
 
@@ -340,32 +340,32 @@ void syErrorDrawControllerInputs(GObj *gobj)
     func_80021908(offset_x, 195, D_80044FB8_407C8 * 0.00390625F, 5, 2, TRUE);
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
+    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
     syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_80046610 / 4 > 256) ? 256 : D_80046610 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0xFF, 0xFF)));
+    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0xFF, 0xFF)));
     syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_80046614 / 4 > 256) ? 256 : D_80046614 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0x00, 0xFF)));
+    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0x00, 0xFF)));
     syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_80044FB4_407C4 / 4 > 256) ? 256 : D_80044FB4_407C4 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
+    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
     syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_8009D2D0 / 4 > 256) ? 256 : D_8009D2D0 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0xFF, 0xFF)));
+    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0xFF, 0xFF)));
     syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_80044FB8_407C8 / 4 > 256) ? 256 : D_80044FB8_407C8 / 4) + 30, offset_y + 1);
 
     // controller buttons
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
+    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
 
     for (i = 0; i < 16; i++)
     {
@@ -384,7 +384,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
         -controller->stick_range.y / 4 + 186
     );
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0x10, 0x10, 0x10, 0xFF)));
+    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x10, 0x10, 0x10, 0xFF)));
 
     for (j = 30, i = 350; j != i; j += 64)
     {
@@ -402,7 +402,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
 
 GObj* func_80022368(s32 link, u32 arg1, s32 arg2)
 {
-    if (find_gobj_with_id(-2U) != 0)
+    if (gcFindGObjID(-2U) != 0)
     {
         return NULL;
     }

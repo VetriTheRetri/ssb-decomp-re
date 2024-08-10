@@ -1120,7 +1120,7 @@ void mnStageAdjustStagePreviewY(GObj* stage_preview_cam_gobj)
 
 		deg = (deg + 2.0F > 360.0F) ? deg + 2.0F - 360.0F : deg + 2.0F;
 
-		gsStopCurrentProcess(1);
+		gcStopCurrentProcess(1);
 	}
 }
 

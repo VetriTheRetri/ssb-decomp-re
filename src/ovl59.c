@@ -261,11 +261,11 @@ void gmCreditsHighlightProcUpdate(GObj *gobj)
 		while (gCreditsHighlightSize != 0)
 		{
 			gCreditsHighlightSize--;
-			gsStopCurrentProcess(1);
+			gcStopCurrentProcess(1);
 		}
 	}
 	gcEjectGObj(NULL);
-	gsStopCurrentProcess(1);
+	gcStopCurrentProcess(1);
 }
 
 // 801327A4
@@ -780,7 +780,7 @@ void gmCreditsJobAndNameProcUpdate(GObj *gobj)
 
 	while (gCreditsStatus != 0)
 	{
-		gsStopCurrentProcess(1);
+		gcStopCurrentProcess(1);
 	}
 	gobj->flags = GOBJ_FLAG_NONE;
 
@@ -801,7 +801,7 @@ void gmCreditsJobAndNameProcUpdate(GObj *gobj)
 			cn->interpolation = 1.0F;
 		}
 		gcPlayAnimAll(gobj);
-		gsStopCurrentProcess(1);
+		gcStopCurrentProcess(1);
 	}
 	if (cn->status == -1)
 	{
@@ -809,7 +809,7 @@ void gmCreditsJobAndNameProcUpdate(GObj *gobj)
 	}
 	gmCreditsNameSetPrevAlloc(cn);
 	gcEjectGObj(NULL);
-	gsStopCurrentProcess(1);
+	gcStopCurrentProcess(1);
 }
 
 // 80133854
@@ -1182,7 +1182,7 @@ void gmCreditsCrosshairProcUpdate(GObj *gobj)
 	{
 		sobj->pos.y += 10.5F;
 
-		gsStopCurrentProcess(1);
+		gcStopCurrentProcess(1);
 	} 
 	while (crosshair_center_wait--);
 
@@ -1205,7 +1205,7 @@ void gmCreditsCrosshairProcUpdate(GObj *gobj)
 		gCreditsCrosshairPositionX = sobj->pos.x - base_x;
 		gCreditsCrosshairPositionY = sobj->pos.y - base_y;
 
-		gsStopCurrentProcess(1);
+		gcStopCurrentProcess(1);
 	}
 }
 
@@ -1317,7 +1317,7 @@ void gmCreditsStaffRollProcUpdate(GObj *gobj)
 				is_queued_name = TRUE;
 			}
 		}
-		gsStopCurrentProcess(1);
+		gcStopCurrentProcess(1);
 	}
 	name = name_gobj->user_data.p;
 	name->status = -1;
@@ -1325,7 +1325,7 @@ void gmCreditsStaffRollProcUpdate(GObj *gobj)
 	gCreditsStaffRollGObj = NULL;
 
 	gcEjectGObj(NULL);
-	gsStopCurrentProcess(1);
+	gcStopCurrentProcess(1);
 }
 
 // 8013498C

@@ -13,9 +13,9 @@ extern void func_8000AF58(void (*cb)(struct GObjCommon *, s32), s32 param);
 extern struct GObjCommon *get_id_from_gobj_idx(s32 idx, u32 id);
 extern struct GObjCommon *
 func_8000AFE4(s32, struct GObjCommon *(*)(struct GObjCommon *, void *), void *, s32);
-extern struct GObjCommon *find_gobj_with_id(u32 id);
+extern struct GObjCommon *gcFindGObjID(u32 id);
 extern void func_8000B1C4(UNUSED u32 arg0);
-extern void gsStopCurrentProcess(s32 timesToStop);
+extern void gcStopCurrentProcess(s32 timesToStop);
 extern void func_8000B284(struct GObjCommon *);
 extern void func_8000B2B8(struct GObjCommon *);
 extern void func_8000B39C(struct GObjCommon *);

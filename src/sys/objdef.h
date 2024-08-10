@@ -209,7 +209,7 @@ typedef enum AObjTrackKind
     nOMObjAnimTrackAtY,
     nOMObjAnimTrackAtZ,
     nOMObjAnimTrackAtI,
-    nOMObjAnimTrackRoll,
+    nOMObjAnimTrackUpX,
     nOMObjAnimTrackFovY,
     nOMObjAnimTrackCameraEnd = nOMObjAnimTrackFovY,
     // texture extra

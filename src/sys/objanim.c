@@ -2783,7 +2783,95 @@ void gcParseCameraCamAnimJoint(Camera *cam)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010344.s")
+void gcPlayCameraCamAnim(Camera *cam)
+{
+    if (cam->anim_remain != AOBJ_ANIM_NULL)
+    {
+        AObj *aobj = cam->aobj;
+        f32 value;
+
+        while (aobj != NULL)
+        {
+            if (aobj->kind != nOMObjAnimKindNone)
+            {
+                if (cam->anim_remain != AOBJ_ANIM_END)
+                {
+                    aobj->length += cam->anim_speed;
+                }
+                if (!(cam->parent_gobj->flags & GOBJ_FLAG_NOANIM))
+                {
+                    switch (aobj->track)
+                    {
+                    case nOMObjAnimTrackEyeX:
+                        cam->vec.eye.x = gcGetAObjValue(aobj);
+                        break;
+
+                    case nOMObjAnimTrackEyeY:
+                        cam->vec.eye.y = gcGetAObjValue(aobj);
+                        break;
+
+                    case nOMObjAnimTrackEyeZ:
+                        cam->vec.eye.z = gcGetAObjValue(aobj);
+                        break;
+
+                    case nOMObjAnimTrackEyeI:
+                        value = gcGetAObjValue(aobj);
+
+                        if (value < 0.0F)
+                        {
+                            value = 0.0F;
+                        }
+                        else if (value > 1.0F)
+                        {
+                            value = 1.0F;
+                        }
+                        hal_interpolation_cubic(&cam->vec.eye, aobj->interpolate, value);
+                        break;
+                    
+                    case nOMObjAnimTrackAtX:
+                        cam->vec.at.x = gcGetAObjValue(aobj);
+                        break;
+
+                    case nOMObjAnimTrackAtY:
+                        cam->vec.at.y = gcGetAObjValue(aobj);
+                        break;
+
+                    case nOMObjAnimTrackAtZ:
+                        cam->vec.at.z = gcGetAObjValue(aobj);
+                        break;
+
+                    case nOMObjAnimTrackAtI:
+                        value = gcGetAObjValue(aobj);
+
+                        if (value < 0.0F)
+                        {
+                            value = 0.0F;
+                        }
+                        else if (value > 1.0F)
+                        {
+                            value = 1.0F;
+                        }
+                        hal_interpolation_cubic(&cam->vec.at, aobj->interpolate, value);
+                        break;
+
+                    case nOMObjAnimTrackUpX:
+                        cam->vec.up.x = gcGetAObjValue(aobj);
+                        break;
+
+                    case nOMObjAnimTrackFovY:
+                        cam->projection.persp.fovy = gcGetAObjValue(aobj);
+                        break;
+                    }
+                }
+            }
+            aobj = aobj->next;
+        }
+        if (cam->anim_remain == AOBJ_ANIM_END)
+        {
+            cam->anim_remain = AOBJ_ANIM_NULL;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_80010580.s")
 

@@ -37,9 +37,9 @@
 #define DOBJ_ARRAY_MAX          18
 
 // AObj defines
-#define AOBJ_ANIM_NULL F32_MIN             // Used to mark the lack of frames remaining in an animation
-#define AOBJ_ANIM_CHANGED (F32_MIN / 2.0F) // ???
-#define AOBJ_ANIM_END (F32_MIN / 3.0F)     // Used to mark the end of an animation?
+#define AOBJ_ANIM_NULL     F32_MIN          // Used to mark the lack of frames remaining in an animation
+#define AOBJ_ANIM_CHANGED (F32_MIN / 2.0F)  // ???
+#define AOBJ_ANIM_END     (F32_MIN / 3.0F)  // Used to mark the end of an animation?
 
 // MObj defines
 #define MOBJ_FLAG_PRIMCOLOR     (1 << 9)

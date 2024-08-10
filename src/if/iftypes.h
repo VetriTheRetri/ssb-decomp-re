@@ -84,7 +84,7 @@ struct ifPauseDecal
 {
 	intptr_t offset;
 	Vec2h pos;
-	gsColorRGBPair colors;
+	syColorRGBPair colors;
 };
 
 #endif

@@ -162,7 +162,7 @@ intptr_t dMnBattlePanelOffsets[4] = { // 8013B66C[4];
 intptr_t dMnBattlePanelCPUOffsets[4] = { // 8013B67C[4];
 	0x00011378, 0x000113A0, 0x000113F0, 0x000113C8
 };
-gsColorRGB dMnBattleUnusedColors[4] = { // 8013B68C[4]
+syColorRGB dMnBattleUnusedColors[4] = { // 8013B68C[4]
 	{ 0xFF, 0x7E, 0x7E },
 	{ 0xB3, 0xB3, 0xFF },
 	{ 0xEB, 0xDB, 0x7A },
@@ -198,11 +198,11 @@ s32 dMnBattleNumberColorsStock[6] = { // 8013B744[6];
 intptr_t dMnBattleTitleOffsets[2] = { // 8013B75C[2]; // title offsets
 	0x00000280, 0x000004E0
 };
-gsColorRGB dMnBattleTitleColors[2] = { // 8013B764[2]; // title colors
+syColorRGB dMnBattleTitleColors[2] = { // 8013B764[2]; // title colors
 	{ 0xE3, 0xAC, 0x04 },
 	{ 0x61, 0xAD, 0x49 }
 };
-gsColorRGBPair dMnBattleCursorTypeColors[4] = { // 8013B76C[4]; // cursor
+syColorRGBPair dMnBattleCursorTypeColors[4] = { // 8013B76C[4]; // cursor
 	{ { 0xE0, 0x15, 0x15 }, { 0x5B, 0x00, 0x00 } },
 	{ { 0x00, 0x00, 0xFB }, { 0x00, 0x00, 0x52 } },
 	{ { 0xCA, 0x94, 0x08 }, { 0x62, 0x3C, 0x00 } },
@@ -227,7 +227,7 @@ intptr_t dMnBattleTitleOffsetsDuplicate[2] = {		// 8013B7C8[2]; // ffa/team batt
 	0x280, 0x4e0
 };
 
-gsColorRGB dMnBattleTitleColorsDuplicate[2] = { // 8013B7D0[2]; // ffa/team battle colors
+syColorRGB dMnBattleTitleColorsDuplicate[2] = { // 8013B7D0[2]; // ffa/team battle colors
 	{ 0xe3, 0xac, 0x04 },
 	{ 0x61, 0xad, 0x49 }
 };

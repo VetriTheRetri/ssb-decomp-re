@@ -135,12 +135,12 @@ extern intptr_t lIFCommonBattlePauseDecalControlStick;      // 0x000017A8
 extern intptr_t lIFCommonBattlePauseDecalLTrigger;          // 0x000018C8
 extern intptr_t lIFCommonBattlePauseDecalRetry;             // 0x00000828
 
-extern mlBumpAllocRegion gGeneralHeap;
+extern mlRegion gGeneralHeap;
 
 extern u32 gMPCollisionBGMDefault;
-extern s32 gCurrScreenWidth;
-extern s32 gPixelComponentSize;
-extern s32 gZBuffer;
+extern s32 gSYDisplayResWidth;
+extern s32 gSYDisplayPixelComponentSize;
+extern s32 gSYDisplayZBuffer;
 extern GObj *gOMObjCurrentRendering; // Some kind of camera GObj
 
 extern GObj *D_ovl2_80131A10; // I don't think these belong in this file
@@ -373,7 +373,7 @@ ifACharacter dIFCommonAnnounceSuddenDeathSpriteData[/* */] =
 };
 
 // 0x8012EDDC
-gsColorRGBPair dIFCommonAnnounceSuddenDeathSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } };
+syColorRGBPair dIFCommonAnnounceSuddenDeathSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } };
 
 // 0x8012EDE4
 ifACharacter dIFCommonAnnounceTimeUpSpriteData[/* */] =
@@ -552,7 +552,7 @@ ifPauseDecal dIFCommonBattlePauseDecalsSpriteData[/* */] =
 };
 
 // 0x8012F0A4
-gsRectangle dIFCommonBattlePauseBorderRectangle[/* */] =
+syRectangle dIFCommonBattlePauseBorderRectangle[/* */] =
 {
     {  26,  24, 294,  26 },
     {  26,  24,  28, 199 },
@@ -574,7 +574,7 @@ ifACharacter dIFCommonAnnounceFailureSpriteData[/* */] =
 };
 
 // 0x8012F12C
-gsColorRGBPair dIFCommonAnnounceFailureSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0xFF } };
+syColorRGBPair dIFCommonAnnounceFailureSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0xFF } };
 
 // 0x8012F134
 ifACharacter dIFCommonAnnounceCompleteSpriteData[/* */] =
@@ -591,7 +591,7 @@ ifACharacter dIFCommonAnnounceCompleteSpriteData[/* */] =
 };
 
 // 0x8012F17C
-gsColorRGBPair dIFCommonAnnounceCompleteSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0xFF, 0x00, 0x00 } };
+syColorRGBPair dIFCommonAnnounceCompleteSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0xFF, 0x00, 0x00 } };
 
 // 0x8012F184
 u16 dIFCommonAnnounceDefeatedVoiceIDs[/* */] = { 0x1F7, 0x1F8, 0x1F9, 0x1FA };
@@ -1499,7 +1499,7 @@ void ifCommonPlayerMagnifyGetPosition(f32 player_pos_x, f32 player_pos_y, Vec2f 
 void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly)
 {
     Gfx *dl = dls[0];
-    gsColorRGB *color;
+    syColorRGB *color;
     f32 temp_f0;
     s32 var_uly;
     s32 var_lrx;
@@ -1509,7 +1509,7 @@ void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly
     s32 temp_t1;
 
     gDPPipeSync(dl++);
-    gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gCurrScreenWidth, gZBuffer);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYDisplayResWidth, gSYDisplayZBuffer);
     gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
     gDPSetAlphaCompare(dl++, G_AC_NONE);
@@ -1567,7 +1567,7 @@ void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly
     );
 
     gDPPipeSync(dl++);
-    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gPixelComponentSize, gCurrScreenWidth, 0x0F000000);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, gSYDisplayResWidth, 0x0F000000);
     gDPSetRenderMode(dl++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPSetAlphaCompare(dl++, G_AC_THRESHOLD);
     gDPSetBlendColor(dl++, 0, 0, 0, 0x8);
@@ -2439,7 +2439,7 @@ void ifCommonSuddenDeathThread(GObj *interface_gobj)
 }
 
 // 0x80112B24
-void ifCommonAnnounceSetColors(GObj *interface_gobj, gsColorRGBPair *colors)
+void ifCommonAnnounceSetColors(GObj *interface_gobj, syColorRGBPair *colors)
 {
     SObj *sobj = SObjGetStruct(interface_gobj);
 

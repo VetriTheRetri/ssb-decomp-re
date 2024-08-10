@@ -88,7 +88,7 @@ s32 efAllocGetAddParticleBankID(uintptr_t hdrlo, uintptr_t hdrhi, uintptr_t texl
     {
         while (TRUE)
         {
-            gsFatalPrintf("Particle Bank is over\n");
+            syErrorPrintf("Particle Bank is over\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -107,8 +107,8 @@ s32 efAllocGetAddParticleBankID(uintptr_t hdrlo, uintptr_t hdrhi, uintptr_t texl
     hdrheap = gsMemoryAlloc(hdrsize, 0x8);
     texheap = gsMemoryAlloc(texsize, 0x8);
 
-    gsDmaRomRead(hdrlo, hdrheap, hdrsize);
-    gsDmaRomRead(texlo, texheap, texsize);
+    syDmaRomRead(hdrlo, hdrheap, hdrsize);
+    syDmaRomRead(texlo, texheap, texsize);
 
     func_ovl0_800CE254(sEFParticleBankNum++, hdrheap, texheap);
 

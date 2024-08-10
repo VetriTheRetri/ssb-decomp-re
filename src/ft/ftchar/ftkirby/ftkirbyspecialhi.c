@@ -27,7 +27,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
         default:
             while (TRUE)
             {
-                gsFatalPrintf("gcFighterSpecialHiEffectKirby : Error  Unknown value %d \n", fp->command_vars.flags.flag1);
+                syErrorPrintf("gcFighterSpecialHiEffectKirby : Error  Unknown value %d \n", fp->command_vars.flags.flag1);
                 scManagerRunPrintGObjStatus();
             }
         }
@@ -80,7 +80,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
     default:
         while (TRUE)
         {
-            gsFatalPrintf("gcFighterSpecialHiEffectKirby : Error  Unknown value %d \n", fp->command_vars.flags.flag2);
+            syErrorPrintf("gcFighterSpecialHiEffectKirby : Error  Unknown value %d \n", fp->command_vars.flags.flag2);
             scManagerRunPrintGObjStatus();
         }
     }

@@ -115,7 +115,7 @@ void scBonusGame_InitBonus1Targets()
 	}
 	if (gGRCommonStruct.bonus1.target_count != 10)
 	{
-		gsFatalPrintf("Error : not %d targets!\n", 10);
+		syErrorPrintf("Error : not %d targets!\n", 10);
 		while (TRUE)
 			;
 	}

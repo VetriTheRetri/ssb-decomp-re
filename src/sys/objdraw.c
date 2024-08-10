@@ -2386,25 +2386,25 @@ void func_80016338(Gfx **dls, Camera *cam, s32 arg2)
     lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
     lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-    if (ulx < (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938)
+    if (ulx < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938)
     {
-        ulx = (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938;
+        ulx = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938;
     }
-    if (uly < (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930)
+    if (uly < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930)
     {
-        uly = (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930;
+        uly = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930;
     }
-    if (lrx > gCurrScreenWidth - ((gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C))
+    if (lrx > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C))
     {
-        lrx = gCurrScreenWidth - ((gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C);
+        lrx = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C);
     }
-    if (lry > gCurrScreenHeight - ((gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934))
+    if (lry > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934))
     {
-        lry = gCurrScreenHeight - ((gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934);
+        lry = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934);
     }
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
     gDPPipeSync(dl++);
-    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gPixelComponentSize, gCurrScreenWidth, (void*)0x0F000000);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, gSYDisplayResWidth, (void*)0x0F000000);
     gDPSetCycleType(dl++, G_CYC_1CYCLE);
 
     if ((arg2 == 0) || (arg2 == 2))
@@ -2440,21 +2440,21 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
     lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
     lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-    if (ulx < (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938)
+    if (ulx < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938)
     {
-        ulx = (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938;
+        ulx = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938;
     }
-    if (uly < (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930)
+    if (uly < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930)
     {
-        uly = (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930;
+        uly = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930;
     }
-    if (lrx > gCurrScreenWidth - ((gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C))
+    if (lrx > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C))
     {
-        lrx = gCurrScreenWidth - ((gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C);
+        lrx = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C);
     }
-    if (lry > gCurrScreenHeight - ((gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934))
+    if (lry > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934))
     {
-        lry = gCurrScreenHeight - ((gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934);
+        lry = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934);
     }
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
 
@@ -2465,18 +2465,18 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
         gDPPipeSync(dl++);
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gCurrScreenWidth, gZBuffer);
+        gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYDisplayResWidth, gSYDisplayZBuffer);
         gDPSetFillColor(dl++, GCOMBINE32_RGBA5551(GPACK_ZDZ(G_MAXFBZ, 0)));
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);
-    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gPixelComponentSize, gCurrScreenWidth, (void*)0x0F000000);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, gSYDisplayResWidth, (void*)0x0F000000);
 
     if (cam->flags & 0x2)
     {
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetFillColor(dl++, gsGetFillColor(cam->color));
+        gDPSetFillColor(dl++, syGetFillColor(cam->color));
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);
@@ -2535,14 +2535,14 @@ void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, 
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);
-    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gPixelComponentSize, max_lrx, image);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, max_lrx, image);
     gDPSetDepthImage(dl++, depth);
 
     if (cam->flags & 0x2)
     {
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetFillColor(dl++, gsGetFillColor(cam->color));
+        gDPSetFillColor(dl++, syGetFillColor(cam->color));
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);
@@ -3169,21 +3169,21 @@ void func_80018300(GObj *gobj)
     xmax = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
     ymax = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-    if (xmin < (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938)
+    if (xmin < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938)
     {
-        xmin = (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938;
+        xmin = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B938;
     }
-    if (ymin < (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930)
+    if (ymin < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930)
     {
-        ymin = (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930;
+        ymin = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B930;
     }
-    if (xmax > gCurrScreenWidth - ((gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C))
+    if (xmax > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C))
     {
-        xmax = gCurrScreenWidth - ((gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C);
+        xmax = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * D_8003B93C);
     }
-    if (ymax > gCurrScreenHeight - ((gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934))
+    if (ymax > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934))
     {
-        ymax = gCurrScreenHeight - ((gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934);
+        ymax = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * D_8003B934);
     }
     func_8001663C(gDisplayListHead, cam, 0);
     spInit(gDisplayListHead);

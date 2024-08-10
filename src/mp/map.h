@@ -19,7 +19,7 @@ extern mpVertexPosContainer *gMPCollisionVertexData; // Vertex positions
 extern Vec3f *gMPCollisionDynamics;
 extern mpMapObjContainer *gMPCollisionMapObjs;
 extern s32 gMPCollisionLinesNum;
-extern gsColorRGBA gMPCollisionLightColor;
+extern syColorRGBA gMPCollisionLightColor;
 extern s32 gMPCollisionYakumonosNum;
 extern f32 gMPCollisionLightAngleX;
 extern f32 gMPCollisionLightAngleY;

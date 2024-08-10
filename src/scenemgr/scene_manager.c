@@ -8,7 +8,7 @@
 #include <ovl0/ovl0.h>
 #include "ovl2/ovl2.h"
 #include "scenemgr/entries.h"
-#include <sys/crash.h>
+#include <sys/error.h>
 #include <sys/dma.h>
 #include <sys/gtl.h>
 #include <sys/hal_audio.h>
@@ -43,7 +43,7 @@ u32 D_800A523C;
 extern void scManagerProcPrintGObjStatus();
 
 // DATA
-gsOverlay D_800A3070[65] = {
+syOverlay D_800A3070[65] = {
 	GENERATE_OVERLAY_SECTION_DATA(0),
 	GENERATE_OVERLAY_SECTION_DATA(1),
 	GENERATE_OVERLAY_SECTION_DATA(2),
@@ -261,11 +261,11 @@ void start_scene_manager(u32 set)
 	gmBattleState sp30;
 
 	set_contstatus_delay(60);
-	gsSetCrashPrintfunction(scManagerProcPrintGObjStatus);
-	gsStartRmonThread5Hang();
-	gsLoadOverlay(&D_800A3070[0]);
-	gsLoadOverlay(&D_800A3070[2]);
-	gsLoadOverlay(&D_800A3070[1]);
+	syErrorSetFuncPrint(scManagerProcPrintGObjStatus);
+	syErrorStartRmonThread5Hang();
+	syLoadOverlay(&D_800A3070[0]);
+	syLoadOverlay(&D_800A3070[2]);
+	syLoadOverlay(&D_800A3070[1]);
 
 	gSaveData  = gDefaultSaveData;
 	gSceneData = gDefaultSceneData;
@@ -301,321 +301,321 @@ void start_scene_manager(u32 set)
 	{
 		switch (gSceneData.scene_current) {
 			case 0:
-				gsLoadOverlay(&D_800A3070[11]);
+				syLoadOverlay(&D_800A3070[11]);
 				n64_logo_entry();
 				break;
 			case 1:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[10]);
-				gsLoadOverlay(&D_800A3070[8]);
-				gsLoadOverlay(&D_800A3070[9]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[10]);
+				syLoadOverlay(&D_800A3070[8]);
+				syLoadOverlay(&D_800A3070[9]);
 				title_screen_entry();
 				break;
 			case 2:
-				gsLoadOverlay(&D_800A3070[12]);
-				gsLoadOverlay(&D_800A3070[8]);
-				gsLoadOverlay(&D_800A3070[9]);
+				syLoadOverlay(&D_800A3070[12]);
+				syLoadOverlay(&D_800A3070[8]);
+				syLoadOverlay(&D_800A3070[9]);
 				debug_sss_entry();
 				break;
 			case 3:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[13]);
-				gsLoadOverlay(&D_800A3070[8]);
-				gsLoadOverlay(&D_800A3070[9]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[13]);
+				syLoadOverlay(&D_800A3070[8]);
+				syLoadOverlay(&D_800A3070[9]);
 				debug_system_entry();
 				break;
 			case 4:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[14]);
-				gsLoadOverlay(&D_800A3070[8]);
-				gsLoadOverlay(&D_800A3070[9]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[14]);
+				syLoadOverlay(&D_800A3070[8]);
+				syLoadOverlay(&D_800A3070[9]);
 				debug_battle_entry();
 				break;
 			case 5:
-				gsLoadOverlay(&D_800A3070[15]);
+				syLoadOverlay(&D_800A3070[15]);
 				debug_falls_entry();
 				break;
 			case 6:
-				gsLoadOverlay(&D_800A3070[16]);
+				syLoadOverlay(&D_800A3070[16]);
 				debug_button_test_entry();
 				break;
 			case 7:
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[17]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[17]);
 				menu_main_entry();
 				break;
 			case 8:
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[18]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[18]);
 				menu_1p_entry();
 				break;
 			case 57:
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[60]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[60]);
 				mnOptionStartScene();
 				break;
 			case 58:
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[61]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[61]);
 				mnDataStartScene();
 				break;
 			case 9:
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[19]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[19]);
 				menu_vs_entry();
 				break;
 			case 10:
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[20]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[20]);
 				options_vs_entry();
 				break;
 			case 11:
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[21]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[21]);
 				overlay_set11_entry();
 				break;
 			case 12:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[22]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[22]);
 				overlay_set12_entry();
 				break;
 			case 13:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[23]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[23]);
 				overlay_set13_entry();
 				break;
 			case 14:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[24]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[24]);
 				classic_map_entry();
 				break;
 			case 15:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[25]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[25]);
 				screen_adjust_entry();
 				break;
 			case 16:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[26]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[26]);
 				vs_css_entry();
 				break;
 			case 21:
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[30]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[30]);
 				mnStageStartScene();
 				break;
 			case 22:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[3]);
-				gsLoadOverlay(&D_800A3070[4]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[3]);
+				syLoadOverlay(&D_800A3070[4]);
 				scBattleRoyalStartScene();
 				break;
 			case 23:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[3]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[5]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[3]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[5]);
 				overlay_set23_entry();
 				break;
 			case 52: 
 				func_ovl2_800D67DC();
 				break;
 			case 53:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[3]);
-				gsLoadOverlay(&D_800A3070[6]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[3]);
+				syLoadOverlay(&D_800A3070[6]);
 				scManager_BonusGame_InitScene();
 				break;
 			case 54:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[3]);
-				gsLoadOverlay(&D_800A3070[7]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[3]);
+				syLoadOverlay(&D_800A3070[7]);
 				scManager_TrainingMode_InitScene();
 				break;
 			case 24:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[31]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[31]);
 				vs_results_entry();
 				break;
 			case 25:
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[32]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[32]);
 				vs_records_entry();
 				break;
 			case 26:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[33]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[33]);
 				char_bkg_info_entry();
 				break;
 			case 27:
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[58]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[58]);
 				mnN64StartScene();
 				break;
 			case 28:
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[34]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[34]);
 				intro_firstscene_entry();
 				break;
 			case 29:
-				gsLoadOverlay(&D_800A3070[35]);
+				syLoadOverlay(&D_800A3070[35]);
 				mvPortraitsStartScene();
 				break;
 			case 30:
-				gsLoadOverlay(&D_800A3070[3]);
-				gsLoadOverlay(&D_800A3070[36]);
+				syLoadOverlay(&D_800A3070[3]);
+				syLoadOverlay(&D_800A3070[36]);
 				intro_focus_mario_entry();
 				break;
 			case 31:
-				gsLoadOverlay(&D_800A3070[37]);
+				syLoadOverlay(&D_800A3070[37]);
 				intro_focus_dk_entry();
 				break;
 			case 32:
-				gsLoadOverlay(&D_800A3070[38]);
+				syLoadOverlay(&D_800A3070[38]);
 				intro_focus_samus_entry();
 				break;
 			case 33:
-				gsLoadOverlay(&D_800A3070[39]);
+				syLoadOverlay(&D_800A3070[39]);
 				intro_focus_fox_entry();
 				break;
 			case 34:
-				gsLoadOverlay(&D_800A3070[40]);
+				syLoadOverlay(&D_800A3070[40]);
 				intro_focus_link_entry();
 				break;
 			case 35:
-				gsLoadOverlay(&D_800A3070[41]);
+				syLoadOverlay(&D_800A3070[41]);
 				intro_focus_yoshi_entry();
 				break;
 			case 36:
-				gsLoadOverlay(&D_800A3070[42]);
+				syLoadOverlay(&D_800A3070[42]);
 				intro_focus_pikachu_entry();
 				break;
 			case 37:
-				gsLoadOverlay(&D_800A3070[43]);
+				syLoadOverlay(&D_800A3070[43]);
 				intro_focus_kirby_entry();
 				break;
 			case 38:
-				gsLoadOverlay(&D_800A3070[44]);
+				syLoadOverlay(&D_800A3070[44]);
 				intro_chars_running_entry();
 				break;
 			case 39:
-				gsLoadOverlay(&D_800A3070[45]);
+				syLoadOverlay(&D_800A3070[45]);
 				intro_yoshi_nest_entry();
 				break;
 			case 40:
-				gsLoadOverlay(&D_800A3070[46]);
+				syLoadOverlay(&D_800A3070[46]);
 				intro_link_hill_entry();
 				break;
 			case 41:
-				gsLoadOverlay(&D_800A3070[47]);
+				syLoadOverlay(&D_800A3070[47]);
 				intro_mario_vs_kirby_entry();
 				break;
 			case 42:
-				gsLoadOverlay(&D_800A3070[48]);
+				syLoadOverlay(&D_800A3070[48]);
 				intro_pika_pokeball_entry();
 				break;
 			case 43:
-				gsLoadOverlay(&D_800A3070[49]);
+				syLoadOverlay(&D_800A3070[49]);
 				intro_sex_kicks_entry();
 				break;
 			case 44:
-				gsLoadOverlay(&D_800A3070[50]);
+				syLoadOverlay(&D_800A3070[50]);
 				intro_great_fox_entry();
 				break;
 			case 45:
-				gsLoadOverlay(&D_800A3070[3]);
-				gsLoadOverlay(&D_800A3070[51]);
+				syLoadOverlay(&D_800A3070[3]);
+				syLoadOverlay(&D_800A3070[51]);
 				mvOpeningDKVsSamusStartScene();
 				break;
 			case 46:
-				gsLoadOverlay(&D_800A3070[52]);
+				syLoadOverlay(&D_800A3070[52]);
 				intro_hidden_chars_entry();
 				break;
 			case 17:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[27]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[27]);
 				classic_css_entry();
 				break;
 			case 18:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[28]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[28]);
 				training_css_entry();
 				break;
 			case 19:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[29]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[29]);
 				bonus_css_entry();
 				break;
 			case 20:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[29]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[29]);
 				bonus_css_entry();
 				break;
 			case 47:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[53]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[53]);
 				menu_backup_clear_entry();
 				break;
 			case 48:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[54]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[54]);
 				mvEndingStartScene();
 				break;
 			case 49:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[55]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[55]);
 				gmContinueStartScene();
 				break;
 			case 50:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[56]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[56]);
 				gmStageClearStartScene();
 				break;
 			case 51:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[56]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[56]);
 				gmStageClearStartScene();
 				break;
 			case 56:
-				gsLoadOverlay(&D_800A3070[59]);
+				syLoadOverlay(&D_800A3070[59]);
 				gmCreditsStartScene();
 				break;
 			case 55:
-				gsLoadOverlay(&D_800A3070[57]);
+				syLoadOverlay(&D_800A3070[57]);
 				mnCongraStartScene();
 				break;
 			case 59:
-				gsLoadOverlay(&D_800A3070[1]);
-				gsLoadOverlay(&D_800A3070[62]);
+				syLoadOverlay(&D_800A3070[1]);
+				syLoadOverlay(&D_800A3070[62]);
 				mnSoundTestStartScene();
 				break;
 			case 60:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[3]);
-				gsLoadOverlay(&D_800A3070[63]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[3]);
+				syLoadOverlay(&D_800A3070[63]);
 				scExplainStartScene();
 				break;
 			case 61:
-				gsLoadOverlay(&D_800A3070[2]);
-				gsLoadOverlay(&D_800A3070[3]);
-				gsLoadOverlay(&D_800A3070[64]);
+				syLoadOverlay(&D_800A3070[2]);
+				syLoadOverlay(&D_800A3070[3]);
+				syLoadOverlay(&D_800A3070[64]);
 				scAutoDemoStartScene();
 				break;
 		}
@@ -650,7 +650,7 @@ void func_800A26D8(GObj* arg0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
+	gDPSetFillColor((*gDisplayListHead)++, syGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
 	gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
 
 	barY += 2;
@@ -660,7 +660,7 @@ void func_800A26D8(GObj* arg0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0x40, 0x00, 0xFF)));
+	gDPSetFillColor((*gDisplayListHead)++, syGetFillColor(GPACK_RGBA8888(0xFF, 0x40, 0x00, 0xFF)));
 	gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
 
 	barY += 2;
@@ -670,7 +670,7 @@ void func_800A26D8(GObj* arg0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+	gDPSetFillColor((*gDisplayListHead)++, syGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 	gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
 	gDPPipeSync((*gDisplayListHead)++);
 	// this needs to be in its own block to match. macro?
@@ -678,7 +678,7 @@ void func_800A26D8(GObj* arg0)
 	{
 		size_t freeSpace = (uintptr_t)gGeneralHeap.end - (uintptr_t)gGeneralHeap.ptr;
 
-		gDPSetFillColor((*gDisplayListHead)++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+		gDPSetFillColor((*gDisplayListHead)++, syGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 		func_800218E0(0x14, 0x14, freeSpace, 7, 1);
 		gDPPipeSync((*gDisplayListHead)++);
 	}
@@ -722,43 +722,43 @@ void scManagerInspectGObj(GObj *gobj)
     itStruct *ip;
     efStruct *ep;
 
-    gsDebugPrintf("gobj id:%d:", gobj->gobj_id);
+    syErrorDebugPrintf("gobj id:%d:", gobj->gobj_id);
 
     switch (gobj->gobj_id)
     {
     case nOMObjCommonKindFighter:
         fp = ftGetStruct(gobj);
 
-        gsDebugPrintf("fighter\n");
-        gsDebugPrintf("kind:%d, player:%d, pkind:%d\n", fp->ft_kind, fp->player, fp->status_info.pl_kind);
-        gsDebugPrintf("stat:%d, mstat:%d\n", fp->status_info.status_id, fp->status_info.motion_id);
-        gsDebugPrintf("ga:%d\n", fp->ga);
+        syErrorDebugPrintf("fighter\n");
+        syErrorDebugPrintf("kind:%d, player:%d, pkind:%d\n", fp->ft_kind, fp->player, fp->status_info.pl_kind);
+        syErrorDebugPrintf("stat:%d, mstat:%d\n", fp->status_info.status_id, fp->status_info.motion_id);
+        syErrorDebugPrintf("ga:%d\n", fp->ga);
         break;
 
     case nOMObjCommonKindWeapon:
         wp = wpGetStruct(gobj);
 
-        gsDebugPrintf("weapon\n");
-        gsDebugPrintf("kind:%d, player:%d\n", wp->wp_kind, wp->player);
-        gsDebugPrintf("atk stat:%d\n", wp->weapon_hit.update_state);
-        gsDebugPrintf("ga:%d\n", wp->ga);
+        syErrorDebugPrintf("weapon\n");
+        syErrorDebugPrintf("kind:%d, player:%d\n", wp->wp_kind, wp->player);
+        syErrorDebugPrintf("atk stat:%d\n", wp->weapon_hit.update_state);
+        syErrorDebugPrintf("ga:%d\n", wp->ga);
         break;
 
     case nOMObjCommonKindItem:
         ip = itGetStruct(gobj);
 
-        gsDebugPrintf("item\n");
-        gsDebugPrintf("kind:%d, player:%d\n", ip->it_kind, ip->player);
-        gsDebugPrintf("atk stat:%d\n", ip->item_hit.update_state);
-        gsDebugPrintf("ga:%d\n", ip->ga);
-        gsDebugPrintf("proc update:%x\n", ip->proc_update);
-        gsDebugPrintf("proc map:%x\n", ip->proc_map);
-        gsDebugPrintf("proc hit:%x\n", ip->proc_hit);
-        gsDebugPrintf("proc shield:%x\n", ip->proc_shield);
-        gsDebugPrintf("proc hop:%x\n", ip->proc_hop);
-        gsDebugPrintf("proc setoff:%x\n", ip->proc_setoff);
-        gsDebugPrintf("proc reflector:%x\n", ip->proc_reflector);
-        gsDebugPrintf("proc damage:%x\n", ip->proc_damage);
+        syErrorDebugPrintf("item\n");
+        syErrorDebugPrintf("kind:%d, player:%d\n", ip->it_kind, ip->player);
+        syErrorDebugPrintf("atk stat:%d\n", ip->item_hit.update_state);
+        syErrorDebugPrintf("ga:%d\n", ip->ga);
+        syErrorDebugPrintf("proc update:%x\n", ip->proc_update);
+        syErrorDebugPrintf("proc map:%x\n", ip->proc_map);
+        syErrorDebugPrintf("proc hit:%x\n", ip->proc_hit);
+        syErrorDebugPrintf("proc shield:%x\n", ip->proc_shield);
+        syErrorDebugPrintf("proc hop:%x\n", ip->proc_hop);
+        syErrorDebugPrintf("proc setoff:%x\n", ip->proc_setoff);
+        syErrorDebugPrintf("proc reflector:%x\n", ip->proc_reflector);
+        syErrorDebugPrintf("proc damage:%x\n", ip->proc_damage);
         break;
 
     case nOMObjCommonKindEffect:
@@ -767,15 +767,15 @@ void scManagerInspectGObj(GObj *gobj)
         // Check if address is within base RDRAM + expansion pak bounds
         if (((uintptr_t)ep >= 0x80000000) && ((uintptr_t)ep < 0x80800000))
         {
-            gsDebugPrintf("effect\n");
-            gsDebugPrintf("fgobj:%x", ep->fighter_gobj);
-            gsDebugPrintf("proc func:%x\n", ep->proc_update);
+            syErrorDebugPrintf("effect\n");
+            syErrorDebugPrintf("fgobj:%x", ep->fighter_gobj);
+            syErrorDebugPrintf("proc func:%x\n", ep->proc_update);
         }
-        else gsDebugPrintf("\n");
+        else syErrorDebugPrintf("\n");
         break;
 
     default:
-        gsDebugPrintf("\n");
+        syErrorDebugPrintf("\n");
         break;
     }
 }
@@ -787,22 +787,22 @@ void scManagerProcPrintGObjStatus()
 	{
 		case 0:
 		{
-			gsDebugPrintf("SYS\n");
+			syErrorDebugPrintf("SYS\n");
 			break;
 		}
 		case 1:
 		{
-			gsDebugPrintf("BF\n");
+			syErrorDebugPrintf("BF\n");
 			if (D_80046A54 != NULL)
 			{
-				gsDebugPrintf("addr:%x\n", D_80046A54->proc_run);
+				syErrorDebugPrintf("addr:%x\n", D_80046A54->proc_run);
 				scManagerInspectGObj(D_80046A54);
 			}
 			break;
 		}
 		case 2:
 		{
-			gsDebugPrintf("GP\n");
+			syErrorDebugPrintf("GP\n");
 			if (D_80046A54 != NULL)
 			{
 				if (D_80046A60 != NULL)
@@ -810,10 +810,10 @@ void scManagerProcPrintGObjStatus()
 					switch (D_80046A60->kind)
 					{
 						case 0:
-							gsDebugPrintf("thread:%x\n", D_80046A60->gobjthread->osthread.context.pc);
+							syErrorDebugPrintf("thread:%x\n", D_80046A60->gobjthread->osthread.context.pc);
 							break;
 						case 1:
-							gsDebugPrintf("func:%x\n", D_80046A60->proc_thread);
+							syErrorDebugPrintf("func:%x\n", D_80046A60->proc_thread);
 							break;
 					}
 				}
@@ -823,22 +823,22 @@ void scManagerProcPrintGObjStatus()
 		}
 		case 3:
 		{
-			gsDebugPrintf("DFC\n");
+			syErrorDebugPrintf("DFC\n");
 			if (gOMObjCurrentRendering != NULL)
 			{
-				gsDebugPrintf("addr:%x\n", gOMObjCurrentRendering->proc_render);
+				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentRendering->proc_render);
 				scManagerInspectGObj(gOMObjCurrentRendering);
 			}
 			break;
 		}
 		case 4:
 		{
-			gsDebugPrintf("DFO\n");
+			syErrorDebugPrintf("DFO\n");
 			if (gOMObjCurrentRendering != NULL)
-				gsDebugPrintf("cam addr:%x\n", gOMObjCurrentRendering->proc_render);
+				syErrorDebugPrintf("cam addr:%x\n", gOMObjCurrentRendering->proc_render);
 			if (D_80046A5C_40A7C != NULL)
 			{
-				gsDebugPrintf("disp addr:%x\n", D_80046A5C_40A7C->proc_render);
+				syErrorDebugPrintf("disp addr:%x\n", D_80046A5C_40A7C->proc_render);
 				scManagerInspectGObj(D_80046A5C_40A7C);
 			}
 			break;
@@ -849,5 +849,5 @@ void scManagerProcPrintGObjStatus()
 // 800A3040
 void scManagerRunPrintGObjStatus()
 {
-	gsFatalRunPrintFunc(scManagerProcPrintGObjStatus);
+	syErrorRunFuncPrint(scManagerProcPrintGObjStatus);
 }

@@ -1,7 +1,7 @@
 #include "common.h"
 #include <sys/gtl.h>
 
-#include <sys/crash.h>
+#include <sys/error.h>
 #include <sys/main.h>
 #include <sys/ml.h>
 #include <sys/obj.h>
@@ -108,8 +108,8 @@ Gfx *D_800465C0[4];
 // from smash remix: Writing 1 to this word will load the screen at current_screen (gSceneData).
 u32 D_800465D0;
 s32 D_800465D4;
-mlBumpAllocRegion gGraphicsHeap;  // D_800465D8
-mlBumpAllocRegion gGeneralHeap; // D_800465E8
+mlRegion gGraphicsHeap;  // D_800465D8
+mlRegion gGeneralHeap; // D_800465E8
 FnBundle D_800465F8;
 u32 D_8004660C;
 u32 D_80046610;
@@ -127,7 +127,7 @@ s32 D_80046634;
 s32 D_80046638[2];
 s32 sGSGTLNumTasks;
 UNUSED s32 unref80046644;
-mlBumpAllocRegion sMtxTaskHeaps[2];
+mlRegion sMtxTaskHeaps[2];
 void (*D_80046668)(void *); // takes function bundle struct?
 SCTaskCallback D_8004666C;  // function pointer?
 
@@ -228,14 +228,14 @@ void gsCheckGtlBufferLengths()
 	{
 		if (D_80046570[gGtlTaskId][i].length + (uintptr_t)D_80046570[gGtlTaskId][i].start < (uintptr_t)gDisplayListHead[i])
 		{
-			gsFatalPrintf("gtl : DLBuffer over flow !  kind = %d  vol = %d byte\n", i, (uintptr_t)gDisplayListHead[i] - (uintptr_t)D_80046570[gGtlTaskId][i].start);
+			syErrorPrintf("gtl : DLBuffer over flow !  kind = %d  vol = %d byte\n", i, (uintptr_t)gDisplayListHead[i] - (uintptr_t)D_80046570[gGtlTaskId][i].start);
 			while (TRUE);
 		}
 	}
 
 	if ((uintptr_t)gGraphicsHeap.end < (uintptr_t)gGraphicsHeap.ptr)
 	{
-		gsFatalPrintf("gtl : DynamicBuffer over flow !  %d byte\n", (uintptr_t)gGraphicsHeap.ptr - (uintptr_t)gGraphicsHeap.start);
+		syErrorPrintf("gtl : DynamicBuffer over flow !  %d byte\n", (uintptr_t)gGraphicsHeap.ptr - (uintptr_t)gGraphicsHeap.start);
 		while (TRUE);
 	}
 }
@@ -253,7 +253,7 @@ void func_80004C5C(void *arg0, u32 buffer_size)
 
 	if ((uintptr_t)&D_80044FC0_407D0 & 7)
 	{
-		gsFatalPrintf("bad addr sc_rdp_output_len = %x\n", &D_80044FC0_407D0);
+		syErrorPrintf("bad addr sc_rdp_output_len = %x\n", &D_80044FC0_407D0);
 		while (TRUE);
 	}
 }
@@ -269,7 +269,7 @@ void func_80004CB4(s32 arg0, void *arg1, u32 buffer_size)
 	{
 		if (buffer_size == 0)
 		{
-			gsFatalPrintf("gtl : Buffer size for RDP is zero !!\n");
+			syErrorPrintf("gtl : Buffer size for RDP is zero !!\n");
 			while (TRUE);
 		}
 	}
@@ -287,13 +287,13 @@ DObj* func_80004D2C()
 
 	if (sDObjTasks[gGtlTaskId] == NULL)
 	{
-		gsFatalPrintf("gtl : not defined SCTaskGfx\n");
+		syErrorPrintf("gtl : not defined SCTaskGfx\n");
 		while (TRUE);
 	}
 
 	if (D_80046550[gGtlTaskId] == D_80046558[gGtlTaskId])
 	{
-		gsFatalPrintf("gtl : couldn\'t get SCTaskGfx\n");
+		syErrorPrintf("gtl : couldn\'t get SCTaskGfx\n");
 		while (TRUE);
 	}
 
@@ -339,7 +339,7 @@ void func_80004EFC()
 
 	if (mesg == NULL)
 	{
-		gsFatalPrintf("gtl : not defined SCTaskGfxEnd\n");
+		syErrorPrintf("gtl : not defined SCTaskGfxEnd\n");
 		while (TRUE);
 	}
 
@@ -355,7 +355,7 @@ void func_80004F78()
 
 	if (mesg == NULL)
 	{
-		gsFatalPrintf("gtl : not defined SCTaskGfxEnd\n");
+		syErrorPrintf("gtl : not defined SCTaskGfxEnd\n");
 		while (TRUE);
 	}
 
@@ -404,14 +404,14 @@ void func_80005018(SCTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u
 
 	t->task.t.type            = M_GFXTASK;
 	t->task.t.flags           = OS_TASK_LOADABLE;
-	t->task.t.ucode_boot      = gRspBootCode;
-	t->task.t.ucode_boot_size = sizeof(gRspBootCode);
+	t->task.t.ucode_boot      = gSYMainRspBootCode;
+	t->task.t.ucode_boot_size = sizeof(gSYMainRspBootCode);
 
 	ucode = &D_8003B6EC[ucode_id];
 
 	if (ucode->text == NULL)
 	{
-		gsFatalPrintf("gtl : ucode isn\'t included  kind = %d\n", ucode_id);
+		syErrorPrintf("gtl : ucode isn\'t included  kind = %d\n", ucode_id);
 		while (TRUE);
 	}
 	t->task.t.ucode           = ucode->text;
@@ -867,7 +867,7 @@ void func_80005DA0(FnBundle *arg0)
 		while (TRUE)
 		{
 			func_80005D10();
-			gsVerifyStackProbes();
+			syMainVerifyStackProbes();
 			for (i = 0; i < D_800454B8; i++)
 				osRecvMesg(&D_800454A0, NULL, OS_MESG_BLOCK);
 			while (osRecvMesg(&D_800454A0, NULL, OS_MESG_NOBLOCK) != -1)
@@ -897,7 +897,7 @@ void func_80005DA0(FnBundle *arg0)
 		while (TRUE)
 		{
 			func_80005D10();
-			gsVerifyStackProbes();
+			syMainVerifyStackProbes();
 
 			for (i = 0; i < D_800454B8; i++)
 				osRecvMesg(&D_800454A0, NULL, OS_MESG_BLOCK);
@@ -994,7 +994,7 @@ void unref_8000641C(Temp8000641C *arg0)
 
 	if (task == NULL)
 	{
-		gsFatalPrintf("gtl : not defined SCTaskGfxEnd\n");
+		syErrorPrintf("gtl : not defined SCTaskGfxEnd\n");
 		while (TRUE); // { ; }
 	}
 	gsScheduleGfxEnd(task, NULL, gGtlTaskId, &D_80045500);

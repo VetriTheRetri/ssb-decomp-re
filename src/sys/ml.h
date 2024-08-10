@@ -5,18 +5,18 @@
 
 #define ML_BYTES_TO_KBYTES(q) ((q) * 1024)
 
-// mlBumpAllocRegion?
-typedef struct mlBumpAllocRegion 
+// mlRegion?
+typedef struct mlRegion 
 {
     u32 id;
     void *start;
     void *end;
     void *ptr;
 
-} mlBumpAllocRegion;
+} mlRegion;
 
-extern void mlInitBumpAlloc(struct mlBumpAllocRegion *buf, u32 id, void *start, u32 size);
-extern void* mlSetBumpAlloc(struct mlBumpAllocRegion *buf, u32 size, u32 alignment);
-extern void mlResetBumpAlloc(struct mlBumpAllocRegion *buf);
+extern void mlInitBumpAlloc(mlRegion *buf, u32 id, void *start, size_t size);
+extern void* mlSetBumpAlloc(mlRegion *buf, size_t size, u32 alignment);
+extern void mlResetBumpAlloc(mlRegion *buf);
 
 #endif /* _ML_H_ */

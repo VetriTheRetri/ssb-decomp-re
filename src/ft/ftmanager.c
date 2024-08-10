@@ -272,7 +272,7 @@ ftStruct* ftManagerGetNextStructAlloc(void)
     {
         while (TRUE)
         {
-            gsFatalPrintf("couldn\'t get Fighter struct.\n");
+            syErrorPrintf("couldn\'t get Fighter struct.\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -302,7 +302,7 @@ ftParts* ftManagerGetNextPartsAlloc(void)
     {
         while (TRUE)
         {
-            gsFatalPrintf("couldn\'t get FighterParts struct.\n");
+            syErrorPrintf("couldn\'t get FighterParts struct.\n");
             scManagerRunPrintGObjStatus();
         }
     }

@@ -1204,11 +1204,11 @@ void gcPlayMObjMatAnim(MObj *mobj)
     f32 temp_f14;
     f32 temp_f20;
     f32 temp_f22;
-    gsColorRGBA color; // color
+    syColorRGBA color; // color
     f32 temp_f24;
     s32 interp;
-    gsColorRGBA sp38; // sp38
-    gsColorRGBA sp34; // sp34
+    syColorRGBA sp38; // sp38
+    syColorRGBA sp34; // sp34
 
     if (mobj->anim_remain != AOBJ_ANIM_NULL) 
     {
@@ -1342,7 +1342,7 @@ void gcPlayMObjMatAnim(MObj *mobj)
                         break;
                     
                     case nOMObjAnimKindStep:
-                        color = (aobj->length_invert <= aobj->length) ? *(gsColorRGBA*)&aobj->value_target : *(gsColorRGBA*)&aobj->value_base;
+                        color = (aobj->length_invert <= aobj->length) ? *(syColorRGBA*)&aobj->value_target : *(syColorRGBA*)&aobj->value_base;
                         break;
                     }
                     switch(aobj->track)
@@ -1969,7 +1969,6 @@ f32 func_8000EC64_F864
     
     return length_max;
 }
-
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_8000EC64_F864.s")
 #endif

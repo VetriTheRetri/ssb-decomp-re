@@ -453,7 +453,7 @@ Lights1 dGMStageClearLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xF
 Lights1 dGMStageClearLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 80135100
-gsColorRGBPair dGMStageClearDigitSpriteColors[] =
+syColorRGBPair dGMStageClearDigitSpriteColors[] =
 {
 	{
 		{ 0x00, 0x00, 0x00 },
@@ -506,7 +506,7 @@ intptr_t dGMStageClearDifficultySpriteOffsets[] =
 };
 
 // 801351E4
-gsColorRGBPair dGMStageClearScoreDigitColors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0x00 } };
+syColorRGBPair dGMStageClearScoreDigitColors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0x00 } };
 
 // 801351EC
 scUnkDataBounds D_ovl56_801351EC = {
@@ -557,10 +557,10 @@ s32 func_ovl56_80131B58(s32 arg0, s32 arg1)
 }
 
 // 80131BF8
-void gmStageClearSetDigitSpriteColor(SObj *sobj, s32 file_id, gsColorRGBPair *colors_default)
+void gmStageClearSetDigitSpriteColor(SObj *sobj, s32 file_id, syColorRGBPair *colors_default)
 {
-	gsColorRGBPair colors_all[ARRAY_COUNT(dGMStageClearDigitSpriteColors)] = dGMStageClearDigitSpriteColors;
-	gsColorRGBPair *colors_id = &colors_all[file_id];
+	syColorRGBPair colors_all[ARRAY_COUNT(dGMStageClearDigitSpriteColors)] = dGMStageClearDigitSpriteColors;
+	syColorRGBPair *colors_id = &colors_all[file_id];
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -611,7 +611,7 @@ Sprite* gmStageClearGetScoreDigitSprite(s32 digit_kind, s32 offset_id)
 }
 
 // 80131E10
-void gmStageClearMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, gsColorRGBPair *colors, s32 offset_x, s32 file_id, s32 sub, s32 digit_count_max, sb32 is_fixed_digit_count)
+void gmStageClearMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, syColorRGBPair *colors, s32 offset_x, s32 file_id, s32 sub, s32 digit_count_max, sb32 is_fixed_digit_count)
 {
 	SObj *sobj;
 	f32 calc_x;
@@ -1209,7 +1209,7 @@ s32 gmStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32
 	s32 points;
 
 	intptr_t offsets[5] = dGMStageClearDifficultySpriteOffsets;
-	gsColorRGBPair colors = dGMStageClearScoreDigitColors;
+	syColorRGBPair colors = dGMStageClearScoreDigitColors;
 
 	sGMStageClearBonusStatGObjs[bonus_num] = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 

@@ -6,10 +6,10 @@
 #include <PR/os.h>
 #include <PR/ultratypes.h>
 
-u16 *gZBuffer;
-u32 gPixelComponentSize;
-s32 gCurrScreenWidth;
-s32 gCurrScreenHeight;
+u16 *gSYDisplayZBuffer;
+u32 gSYDisplayPixelComponentSize;
+s32 gSYDisplayResWidth;
+s32 gSYDisplayResHeight;
 u32 D_80046680;
 u32 D_80046684;
 void *sFrameBuffers[3];
@@ -25,16 +25,16 @@ s16 D_8004669A;
  * Convert an RBGA32 color value into a packed set of RBGA5551
  * that can be used with gDPSetFillColor
  *
- * Depends on the state of `gPixelComponentSize`
+ * Depends on the state of `gSYDisplayPixelComponentSize`
  * @param color RRGGBBAA
  */
-u32 gsGetFillColor(u32 color) {
+u32 syGetFillColor(u32 color) {
     // GPACK_RGBA5551, but it doesn't seem to match
     // if that macro is used
     u32 packed = ((color >> 16) & 0xF800) | ((color >> 13) & 0x07C0) | ((color >> 10) & 0x003E)
                | ((color >> 7) & 1);
 
-    return gPixelComponentSize == G_IM_SIZ_32b ? color : (packed << 16) | packed;
+    return gSYDisplayPixelComponentSize == G_IM_SIZ_32b ? color : (packed << 16) | packed;
 }
 
 void update_framebuffers(void *fb1, void *fb2, void *fb3) {
@@ -52,19 +52,19 @@ void update_framebuffers(void *fb1, void *fb2, void *fb3) {
 void func_80006E18(s32 arg0) {
     D_80046680 |= arg0;
 
-    if ((arg0 & 0x20)) { gPixelComponentSize = G_IM_SIZ_32b; }
-    if ((arg0 & 0x10)) { gPixelComponentSize = G_IM_SIZ_16b; }
+    if ((arg0 & 0x20)) { gSYDisplayPixelComponentSize = G_IM_SIZ_32b; }
+    if ((arg0 & 0x10)) { gSYDisplayPixelComponentSize = G_IM_SIZ_16b; }
     D_80046684 = TRUE;
 }
 
 // set current screen width?
 void set_screen_width(s32 arg0) {
-    gCurrScreenWidth = arg0;
+    gSYDisplayResWidth = arg0;
     D_80046684       = TRUE;
 }
 
 void set_screen_height(s32 arg0) {
-    gCurrScreenHeight = arg0;
+    gSYDisplayResHeight = arg0;
     D_80046684        = TRUE;
 }
 
@@ -77,8 +77,8 @@ void func_80006E94(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
 }
 
 void func_80006EF4(SCTaskType4 *task) {
-    task->unk24 = gCurrScreenWidth;
-    task->unk28 = gCurrScreenHeight;
+    task->unk24 = gSYDisplayResWidth;
+    task->unk28 = gSYDisplayResHeight;
     task->unk2C = D_80046680;
     task->unk30 = D_80046694;
     task->unk32 = D_80046696;
@@ -104,11 +104,12 @@ void func_80006F5C(SCTaskType4 *task) {
  * @param arg1 screen height?
  * @param arg2 cycle type?
  */
-void func_80006FB8(s32 width, s32 height, u32 arg2) {
+void func_80006FB8(s32 width, s32 height, u32 arg2)
+{
     SCTaskType4 task;
 
-    D_80046680          = 0;
-    gPixelComponentSize = G_IM_SIZ_16b;
+    D_80046680 = 0;
+    gSYDisplayPixelComponentSize = G_IM_SIZ_16b;
     func_80006E18(arg2);
     set_screen_width(width);
     set_screen_height(height);
@@ -118,8 +119,9 @@ void func_80006FB8(s32 width, s32 height, u32 arg2) {
     func_80000970((void *)&task.info);
 }
 
-void func_80007024(ScreenSettings *arg0) {
-    update_framebuffers(arg0->fb1, arg0->fb2, arg0->fb3);
-    gZBuffer = arg0->zBuffer;
-    func_80006FB8(arg0->screenWidth, arg0->screenHeight, arg0->unk18);
+void func_80007024(syDisplaySetup *display_setup)
+{
+    update_framebuffers(display_setup->framebuf1, display_setup->framebuf2, display_setup->framebuf3);
+    gSYDisplayZBuffer = display_setup->zbuffer;
+    func_80006FB8(display_setup->width, display_setup->height, display_setup->unk18);
 }

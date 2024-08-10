@@ -209,7 +209,7 @@ mpMapObjContainer *gMPCollisionMapObjs;
 s32 gMPCollisionLinesNum;
 
 // 0x80131388
-gsColorRGBA gMPCollisionLightColor;
+syColorRGBA gMPCollisionLightColor;
 
 // 0x8013138C
 s32 gMPCollisionYakumonosNum;
@@ -269,7 +269,7 @@ sb32 mpCollisionGetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flag
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetUUCommon() id = %d\n", line_id); // Since we're exclusively checking ground collision and the line ID passed isn't ground-valid, report the error
+            syErrorPrintf("mpGetUUCommon() id = %d\n", line_id); // Since we're exclusively checking ground collision and the line ID passed isn't ground-valid, report the error
 
             scManagerRunPrintGObjStatus();
         }
@@ -280,7 +280,7 @@ sb32 mpCollisionGetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flag
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetUUCommon() no collsion\n");
+            syErrorPrintf("mpGetUUCommon() no collsion\n");
 
             scManagerRunPrintGObjStatus();
         }
@@ -336,7 +336,7 @@ sb32 mpCollisionGetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flag
             {
                 while (TRUE)
                 {
-                    gsFatalPrintf("same vtx x error mpGetUUCommon\n");
+                    syErrorPrintf("same vtx x error mpGetUUCommon\n");
                     scManagerRunPrintGObjStatus();
                 }
             }
@@ -398,7 +398,7 @@ sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flag
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetLRCommon() id = %d\n", line_id);
+            syErrorPrintf("mpGetLRCommon() id = %d\n", line_id);
 
             scManagerRunPrintGObjStatus();
         }
@@ -409,7 +409,7 @@ sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flag
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetLRCommon() no collision\n");
+            syErrorPrintf("mpGetLRCommon() no collision\n");
 
             scManagerRunPrintGObjStatus();
         }
@@ -465,7 +465,7 @@ sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flag
             {
                 while (TRUE)
                 {
-                    gsFatalPrintf("same vtx y error mpGetLRCommon\n");
+                    syErrorPrintf("same vtx y error mpGetLRCommon\n");
                     scManagerRunPrintGObjStatus();
                 }
             }
@@ -522,7 +522,7 @@ void mpCollisionGetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetLREdge() id = %d\n", line_id);
+            syErrorPrintf("mpGetLREdge() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -532,7 +532,7 @@ void mpCollisionGetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetLREdge() no collision\n");
+            syErrorPrintf("mpGetLREdge() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -606,7 +606,7 @@ void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetUDEdge() id = %d\n", line_id);
+            syErrorPrintf("mpGetUDEdge() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -616,7 +616,7 @@ void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetUDEdge() no collision\n");
+            syErrorPrintf("mpGetUDEdge() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3133,7 +3133,7 @@ s32 mpCollisionGetVertexCountLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetNbVertex() id = %d\n", line_id);
+            syErrorPrintf("mpGetNbVertex() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3143,7 +3143,7 @@ s32 mpCollisionGetVertexCountLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetNbVertex() no collision\n");
+            syErrorPrintf("mpGetNbVertex() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3159,7 +3159,7 @@ void mpCollisionGetVertexPositionID(s32 line_id, s32 vertex_id, Vec3f *pos)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetVertex() id = %d\n", line_id);
+            syErrorPrintf("mpGetVertex() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3169,7 +3169,7 @@ void mpCollisionGetVertexPositionID(s32 line_id, s32 vertex_id, Vec3f *pos)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetVertex() no collision\n");
+            syErrorPrintf("mpGetVertex() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3196,7 +3196,7 @@ void mpCollisionGetSpeedLineID(s32 line_id, Vec3f *speed)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetSpeedId() id = %d\n", line_id);
+            syErrorPrintf("mpGetSpeedId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3208,7 +3208,7 @@ void mpCollisionGetSpeedLineID(s32 line_id, Vec3f *speed)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetSpeedId() no collision\n");
+            syErrorPrintf("mpGetSpeedId() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3226,7 +3226,7 @@ s32 mpCollisionGetLineTypeID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetKindId() id = %d\n", line_id);
+            syErrorPrintf("mpGetKindId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3237,7 +3237,7 @@ s32 mpCollisionGetLineTypeID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetKindId() no collision\n");
+            syErrorPrintf("mpGetKindId() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3254,7 +3254,7 @@ s32 mpCollisionGetEdgeUnderRLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeUnderRId() id = %d\n", line_id);
+            syErrorPrintf("mpGetEdgeUnderRId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3265,7 +3265,7 @@ s32 mpCollisionGetEdgeUnderRLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeUnderRId() no collision\n");
+            syErrorPrintf("mpGetEdgeUnderRId() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3282,7 +3282,7 @@ s32 mpCollisionGetEdgeUnderLLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeUnderLId() id = %d\n", line_id);
+            syErrorPrintf("mpGetEdgeUnderLId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3293,7 +3293,7 @@ s32 mpCollisionGetEdgeUnderLLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeUnderLId() no collision\n");
+            syErrorPrintf("mpGetEdgeUnderLId() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3310,7 +3310,7 @@ s32 mpCollisionGetEdgeUpperRLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeUpperRId() id = %d\n", line_id);
+            syErrorPrintf("mpGetEdgeUpperRId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3321,7 +3321,7 @@ s32 mpCollisionGetEdgeUpperRLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeUpperRId() no collision\n");
+            syErrorPrintf("mpGetEdgeUpperRId() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3338,7 +3338,7 @@ s32 mpCollisionGetEdgeUpperLLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeUpperLId() id = %d\n", line_id);
+            syErrorPrintf("mpGetEdgeUpperLId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3349,7 +3349,7 @@ s32 mpCollisionGetEdgeUpperLLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeUpperLId() no collision\n");
+            syErrorPrintf("mpGetEdgeUpperLId() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3366,7 +3366,7 @@ s32 mpCollisionGetEdgeRightULineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeRightUId() id = %d\n", line_id);
+            syErrorPrintf("mpGetEdgeRightUId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3377,7 +3377,7 @@ s32 mpCollisionGetEdgeRightULineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeRightUId() no collision\n");
+            syErrorPrintf("mpGetEdgeRightUId() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3394,7 +3394,7 @@ s32 mpCollisionGetEdgeRightDLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeRightDId() id = %d\n", line_id);
+            syErrorPrintf("mpGetEdgeRightDId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3405,7 +3405,7 @@ s32 mpCollisionGetEdgeRightDLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeRightDId() no collision\n");
+            syErrorPrintf("mpGetEdgeRightDId() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3422,7 +3422,7 @@ s32 mpCollisionGetEdgeLeftULineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeLeftUId() id = %d\n", line_id);
+            syErrorPrintf("mpGetEdgeLeftUId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3433,7 +3433,7 @@ s32 mpCollisionGetEdgeLeftULineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeLeftUId() no collision\n");
+            syErrorPrintf("mpGetEdgeLeftUId() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3450,7 +3450,7 @@ s32 mpCollisionGetEdgeLeftDLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeLeftDId() id = %d\n", line_id);
+            syErrorPrintf("mpGetEdgeLeftDId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -3461,7 +3461,7 @@ s32 mpCollisionGetEdgeLeftDLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetEdgeLeftDId() no collision\n");
+            syErrorPrintf("mpGetEdgeLeftDId() no collision\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -4054,7 +4054,7 @@ void mpCollisionInitGroundData(void)
     {
         while (TRUE)
         {
-            gsFatalPrintf("not found cll data!\n");
+            syErrorPrintf("not found cll data!\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -4117,7 +4117,7 @@ void mpCollisionSetYakumonoPosID(s32 line_id, Vec3f *yakumono_pos)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpSetYakumonoPosId() id = %d\n", line_id);
+            syErrorPrintf("mpSetYakumonoPosId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -4139,7 +4139,7 @@ void mpCollisionSetYakumonoOnID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpSetYakumonoOnId() id = %d\n", line_id);
+            syErrorPrintf("mpSetYakumonoOnId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -4153,7 +4153,7 @@ void mpCollisionSetYakumonoOffID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpSetYakumonoOffId() id = %d\n", line_id);
+            syErrorPrintf("mpSetYakumonoOffId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -4167,7 +4167,7 @@ sb32 mpCollisionCheckExistLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetExistCollisionId() id = %d\n", line_id);
+            syErrorPrintf("mpGetExistCollisionId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -4189,7 +4189,7 @@ s32 mpCollisionSetDObjNoID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpSetDObjNoId() id = %d\n", line_id);
+            syErrorPrintf("mpSetDObjNoId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -4276,7 +4276,7 @@ sb32 mpCollisionCheckExistPlatformLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetCllFloatId() id = %d\n", line_id);
+            syErrorPrintf("mpGetCllFloatId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -4296,7 +4296,7 @@ u16 mpCollisionGetVertexFlagsLineID(s32 line_id)
     {
         while (TRUE)
         {
-            gsFatalPrintf("mpGetAttrId() id = %d\n", line_id);
+            syErrorPrintf("mpGetAttrId() id = %d\n", line_id);
             scManagerRunPrintGObjStatus();
         }
     }

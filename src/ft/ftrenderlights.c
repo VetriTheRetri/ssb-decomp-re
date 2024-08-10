@@ -10,7 +10,7 @@ extern f32 bitmap_cosf(f32);
 //                               //
 // // // // // // // // // // // //
 
-extern mlBumpAllocRegion gGraphicsHeap;
+extern mlRegion gGraphicsHeap;
 
 // // // // // // // // // // // //
 //                               //

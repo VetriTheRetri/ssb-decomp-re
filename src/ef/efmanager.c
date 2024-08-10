@@ -709,7 +709,7 @@ efCreateDesc dEFManagerFoxReflectorEffectDesc =
 };
 
 // 0x8012E114
-gsColorRGBPair dEFManagerShieldColors[/* */] =
+syColorRGBPair dEFManagerShieldColors[/* */] =
 {
     { { 0xFF, 0xFF, 0xFF }, { 0xFF, 0x00, 0x00 } }, // Player 1
     { { 0xFF, 0xFF, 0xFF }, { 0x00, 0xFF, 0x00 } }, // Player 2
@@ -4400,12 +4400,12 @@ void efManagerYoshiShieldProcRender(GObj *effect_gobj)
     {
         blend = 0.0F;
     }
-    color[gsColorRGBIndexR] = 0xAE * blend;
-    color[gsColorRGBIndexG] = 0xD6 * blend;
-    color[gsColorRGBIndexB] = 0xD6 * blend;
+    color[syColorRGBIndexR] = 0xAE * blend;
+    color[syColorRGBIndexG] = 0xD6 * blend;
+    color[syColorRGBIndexB] = 0xD6 * blend;
 
     gDPPipeSync(gDisplayListHead[1]++);
-    gDPSetEnvColor(gDisplayListHead[1]++, color[gsColorRGBIndexR], color[gsColorRGBIndexG], color[gsColorRGBIndexB], 0x00);
+    gDPSetEnvColor(gDisplayListHead[1]++, color[syColorRGBIndexR], color[syColorRGBIndexG], color[syColorRGBIndexB], 0x00);
 
     gcDrawDObjDLHead1(effect_gobj);
 

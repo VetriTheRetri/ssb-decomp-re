@@ -6,7 +6,7 @@
 #include <sys/ml.h>
 
 extern Mtx44f D_80046FA8;
-extern mlBumpAllocRegion gGraphicsHeap;
+extern mlRegion gGraphicsHeap;
 
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, u64, s32, s32, s32, s32, s32, s32);
 extern void func_ovl0_800CD2CC(GObj*);
@@ -275,7 +275,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
             {
                 while (TRUE)
                 {
-                    gsFatalPrintf("Player Num is Over for Camera!\n");
+                    syErrorPrintf("Player Num is Over for Camera!\n");
                     scManagerRunPrintGObjStatus();
                 }
             }

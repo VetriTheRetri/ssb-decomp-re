@@ -4,10 +4,10 @@
 #include <PR/os.h>
 #include <PR/ultratypes.h>
 
-extern OSMesgQueue gThreadingQueue;
-extern u64 gRspBootCode[0x20];
-extern OSThread gThread5;
+extern OSMesgQueue sSYMainThreadingQueue;
+extern u64 gSYMainRspBootCode[0x20];
+extern OSThread gSYMainThread5;
 
-extern void gsVerifyStackProbes(void);
+extern void syMainVerifyStackProbes(void);
 
 #endif /* SYS_MAIN_H */

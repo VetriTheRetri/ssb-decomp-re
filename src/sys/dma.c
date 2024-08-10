@@ -19,47 +19,46 @@ void *sVpkBufRamAddr;
 u32 sVpkBufSize;
 u32 sVpkBufRgcAddr;
 
-void gsCreateDmaMesgQueue(void) 
+void syCreateDmaMesgQueue(void) 
 {
     osCreateMesgQueue(&sDmaMesgQ, sDmaMesg, OS_MESG_BLOCK);
 }
 
-void gsDmaCopy(OSPiHandle *handle, u32 physAddr, uintptr_t vAddr, u32 size, u8 direction)
+void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t size, u8 direction)
 {
     OSIoMesg mesg;
 
-    if (direction == OS_WRITE) 
+    if (direction == OS_WRITE)
     {
-        osWritebackDCache((void*)vAddr, size);
+        osWritebackDCache((void*)virtual, size);
     } 
-    else osInvalDCache((void*)vAddr, size);
+    else osInvalDCache((void*)virtual, size);
     
     mesg.hdr.pri      = OS_MESG_PRI_NORMAL;
     mesg.hdr.retQueue = &sDmaMesgQ;
     mesg.size         = 0x10000;
 
-    while (size > 0x10000) 
+    while (size > 0x10000)
     {
-        mesg.dramAddr = (void *)vAddr;
+        mesg.dramAddr = (void*)virtual;
         mesg.devAddr  = physAddr;
 
-        if (!D_80045020_40830) 
+        if (!(D_80045020_40830))
         {
             osEPiStartDma(handle, &mesg, direction);
         }
         osRecvMesg(&sDmaMesgQ, NULL, OS_MESG_BLOCK);
         size -= 0x10000;
         physAddr += 0x10000;
-        vAddr += 0x10000;
+        virtual += 0x10000;
     }
-
     if (size != 0) 
     {
-        mesg.dramAddr = (void *)vAddr;
+        mesg.dramAddr = (void*)virtual;
         mesg.devAddr  = physAddr;
         mesg.size     = size;
 
-        if (!D_80045020_40830) 
+        if (!(D_80045020_40830)) 
         { 
             osEPiStartDma(handle, &mesg, direction);
         }
@@ -67,64 +66,63 @@ void gsDmaCopy(OSPiHandle *handle, u32 physAddr, uintptr_t vAddr, u32 size, u8 d
     }
 }
 
-void gsLoadOverlay(struct gsOverlay *ovl)
+void syLoadOverlay(struct syOverlay *ovl)
 {
-    if (((uintptr_t)ovl->ramTextEnd - (uintptr_t)ovl->ramTextStart) != 0)
+    if (((uintptr_t)ovl->ram_text_end - (uintptr_t)ovl->ram_text_start) != 0)
     {
         osInvalICache
         (
-            (void*)(u32)ovl->ramTextStart,
-            (uintptr_t)ovl->ramTextEnd - (uintptr_t)ovl->ramTextStart
+            (void*)(u32)ovl->ram_text_start,
+            (uintptr_t)ovl->ram_text_end - (uintptr_t)ovl->ram_text_start
         );
         osInvalDCache
         (
-            (void*)(u32)ovl->ramTextStart,
-            (uintptr_t)ovl->ramTextEnd - (uintptr_t)ovl->ramTextStart
+            (void*)(u32)ovl->ram_text_start,
+            (uintptr_t)ovl->ram_text_end - (uintptr_t)ovl->ram_text_start
         );
     }
 
-    if (((uintptr_t)ovl->ramDataEnd - (uintptr_t)ovl->ramDataStart) != 0)
+    if (((uintptr_t)ovl->ram_data_end - (uintptr_t)ovl->ram_data_start) != 0)
     {
         osInvalDCache
         (
-            (void*)(u32)ovl->ramDataStart,
-            (uintptr_t)ovl->ramDataEnd - (uintptr_t)ovl->ramDataStart
+            (void*)(u32)ovl->ram_data_start,
+            (uintptr_t)ovl->ram_data_end - (uintptr_t)ovl->ram_data_start
         );
     }
-
-    if ((ovl->romEnd - ovl->romStart) != 0)
+    if ((ovl->rom_end - ovl->rom_start) != 0)
     {
-        gsDmaCopy
+        syDmaCopy
         (
             gRomPiHandle,
-            ovl->romStart,
-            (uintptr_t)ovl->ramLoadStart,
-            ovl->romEnd - ovl->romStart,
+            ovl->rom_start,
+            (uintptr_t)ovl->ram_load_start,
+            ovl->rom_end - ovl->rom_start,
             OS_READ
         );
     }
 
-    if (((uintptr_t)ovl->ramNoloadEnd - (uintptr_t)ovl->ramNoloadStart) != 0)
+    if (((uintptr_t)ovl->ram_bss_end - (uintptr_t)ovl->ram_bss_start) != 0)
     {
         bzero
         (
-            (void *)(u32)ovl->ramNoloadStart,
-            (uintptr_t)ovl->ramNoloadEnd - (uintptr_t)ovl->ramNoloadStart
+            (uintptr_t)ovl->ram_bss_start,
+            (uintptr_t)ovl->ram_bss_end - (uintptr_t)ovl->ram_bss_start
         );
     }
 }
 
-void gsDmaRomRead(u32 rom_src, void *ram_dst, u32 nbytes) 
+void syDmaRomRead(u32 rom_src, void *ram_dst, u32 bytes_num) 
 {
-    gsDmaCopy(gRomPiHandle, rom_src, (uintptr_t)ram_dst, nbytes, OS_READ);
+    syDmaCopy(gRomPiHandle, rom_src, (uintptr_t)ram_dst, bytes_num, OS_READ);
 }
 
-void gsDmaRomWrite(void *ramSrc, u32 romDst, u32 nbytes) 
+void syDmaRomWrite(void *ram_src, uintptr_t rom_dst, u32 bytes_num) 
 {
-    gsDmaCopy(gRomPiHandle, romDst, (uintptr_t)ramSrc, nbytes, OS_WRITE);
+    syDmaCopy(gRomPiHandle, rom_dst, (uintptr_t)ram_src, bytes_num, OS_WRITE);
 }
 
-OSPiHandle* gsSramPiInit(void)
+OSPiHandle* sySramPiInit(void)
 {
     if (sSramPiHandle.baseAddress == PHYS_TO_K1(PI_DOM2_ADDR2))
     { 
@@ -145,396 +143,271 @@ OSPiHandle* gsSramPiInit(void)
     return &sSramPiHandle;
 }
 
-void gsDmaSramRead(u32 rom_src, void *ram_dst, u32 nbytes)
+void syDmaSramRead(u32 rom_src, void *ram_dst, u32 nbytes)
 {
-    gsDmaCopy(&sSramPiHandle, rom_src, (uintptr_t)ram_dst, nbytes, OS_READ);
+    syDmaCopy(&sSramPiHandle, rom_src, (uintptr_t)ram_dst, nbytes, OS_READ);
 }
 
-void gsDmaSramWrite(void *ram_src, u32 rom_dst, u32 nbytes) 
+void syDmaSramWrite(void *ram_src, u32 rom_dst, u32 nbytes)
 {
-    gsDmaCopy(&sSramPiHandle, rom_dst, (uintptr_t)ram_src, nbytes, OS_WRITE);
+    syDmaCopy(&sSramPiHandle, rom_dst, (uintptr_t)ram_src, nbytes, OS_WRITE);
 }
 
-// 0x80002E18 - This code is filthy. Oh, well. At least it matches and does not seem to be forced. vpk0 decompressor?
-void func_80002E18(u16 *arg0, u32 arg1, void (*arg2)(), u8 *arg3)
+// 0x80002E18 - vpk0 decoder
+void syDecodeVpk0(u16* data, u32 size, void (*update_stream)(void), u8* out_buf)
 {
-    uintptr_t bound = (uintptr_t)((uintptr_t)arg0 + arg1);
-    gsVpk0 *other_var_s0;
-    gsVpk0 *var_s3;
-    gsVpk0 sp14C[64];
-    u8 *bytecsr;
-    gsVpk0 *sp144;
-    gsVpk0 *sp140;
-    u8 *byte;
-    void *sp138;
-    u32 sp134;
-    gsVpk0 *spE4[20];
-    s32 i;
-    s32 var_v0;
-    gsVpk0 *var_s0;
-    gsVpk0 *current_vpk0;
-    gsVpk0 *sp84[20];
-    s32 j;
-    s32 unused2;
-    s32 other_var_v0;
-    gsVpk0 *current_vpk0_2;
+#define VPK0_UPDATE_STREAM()        \
+    if ((uintptr_t) csr >= bound)   \
+    {                               \
+        update_stream();            \
+        csr = data;                 \
+    }
+
+#define VPK0_READ_USHORT()  \
+    temp_value <<= 0x10;    \
+    temp_value |= *(csr++); \
+    bits_num += 0x10;
+
+#define VPK0_GET_BITS(var, n) \
+    if (bits_num < n) {       \
+        VPK0_UPDATE_STREAM(); \
+        VPK0_READ_USHORT();   \
+    }                         \
+    bits_num -= n;             \
+    var = ((temp_value << ((32 - n) - bits_num)) >> (32 - (u32) (n)));
+
+#define VPK0_INIT_NODE(node)         \
+    node = lengths_node;        \
+    lengths_node->left = NULL;  \
+    lengths_node->right = NULL; \
+    lengths_node->value = 0;    \
+    lengths_node++;
+
+    uintptr_t bound = (uintptr_t) ((uintptr_t)data + size);
+    syHuffman* sample1_node;
+    syHuffman* lengths_node;
+    syHuffman sp14C[64];
+    u8* out_ptr;
+    syHuffman* offsets_tree;
+    syHuffman* lengthsTree;
+    u8* copy_src;
+    void* out_buf_end;
+    u32 sample_method;
+    syHuffman* off_stack[20];
+    s32 off_stack_size;
+    s32 value;
+    syHuffman* offsets_node;
+    syHuffman* off_node;
+    syHuffman* lengths_stack[20];
+    s32 lengths_stack_size;
+    s32 unused2[2];
+    syHuffman* length_node;
     s32 unused3[3];
     s32 sp64;
     s32 unused;
-    u32 temp_s2;
-    s32 temp_s1;
-    u16 *csr;
+    u32 temp_value;
+    s32 bits_num;
+    u16* csr;
 
-    temp_s1 = 0;
-    temp_s2 = 0;
-    var_s3 = sp14C;
+    bits_num = 0;
+    temp_value = 0;
+    lengths_node = sp14C;
 
-    arg2();
-    csr = arg0;
+    // read "vpk0" magic
+    update_stream();
 
-    temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
+    csr = data;
+    // clang-format off
+    VPK0_READ_USHORT(); VPK0_UPDATE_STREAM(); VPK0_READ_USHORT(); bits_num -= 32;
+    // clang-format on
 
-    if ((uintptr_t)csr >= bound)
+    out_ptr = out_buf;
+
+    // read size of decompressed data
+    // clang-format off
+    VPK0_UPDATE_STREAM(); VPK0_READ_USHORT(); VPK0_UPDATE_STREAM(); VPK0_READ_USHORT(); bits_num -= 32; out_buf_end = ((temp_value << ((32 - 32) - bits_num)) >> (32 - (u32) (32))) + out_buf;
+    // clang-format on
+
+    // read sample method
+    VPK0_GET_BITS(sample_method, 8);
+
+    // read Huffman tree for offsets
+    off_stack_size = 0;
+    off_stack[0] = NULL;
+
+    while (TRUE)
     {
-        arg2();
-        csr = arg0;
-    }
-    temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 -= 0x10;
+        // leaf or node
+        VPK0_GET_BITS(value, 1);
 
-    bytecsr = arg3;
-
-    if ((uintptr_t)csr >= bound)
-    {
-        arg2();
-        csr = arg0;
-    }
-
-    temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10; if ((uintptr_t)csr >= bound) // Newline memes
-    {
-        arg2();
-        csr = arg0;
-    }
-    temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 -= 0x10, sp138 = (temp_s2 << (-temp_s1)) + bytecsr;
-
-    if (temp_s1 < 8)
-    {
-        if ((uintptr_t)csr >= bound)
+        // node, but less than 2 nodes on stack -> end of tree
+        if (value != 0 && off_stack_size < 2)
         {
-            arg2();
-            csr = arg0;
+            break;
         }
-        temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-    }
-    temp_s1 -= 0x8;
-    sp134 = (temp_s2 << (0x18 - temp_s1)) >> 0x18;
-
-    i = 0;
-    spE4[0] = NULL;
-loop_11:
-    {
-        if (temp_s1 <= 0)
+        if (value != 0)
         {
-            if ((uintptr_t)csr >= bound)
-            {
-                arg2();
-                csr = arg0;
-            }
-            temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-        }
-        temp_s1--;
-        var_v0 = ((u32)(temp_s2 << (0x1F - temp_s1))) >> 0x1F;
+            // node
+            VPK0_INIT_NODE(off_node);
 
-        if ((var_v0 == 0) || (i >= 2))
-        {
-            do
-            {
-                if (var_v0 != 0)
-                {
-                    current_vpk0 = var_s3;
-                    current_vpk0->unk_vpk0_0x0 = 0;
-                    current_vpk0->unk_vpk0_0x4 = 0;
-                    current_vpk0->unk_vpk0_0x8 = 0;
+            // combine two nodes from stack
+            off_node->left = off_stack[off_stack_size - 2];
+            off_node->right = off_stack[off_stack_size - 1];
 
-                    var_s3++;
-
-                    current_vpk0->unk_vpk0_0x0 = spE4[i - 2];
-                    current_vpk0->unk_vpk0_0x4 = spE4[i - 1];
-
-                    spE4[i - 2] = current_vpk0;
-                    i--;
-                }
-                else
-                {
-                    current_vpk0 = var_s3, var_s3->unk_vpk0_0x0 = 0, var_s3->unk_vpk0_0x4 = 0, var_s3->unk_vpk0_0x8 = 0, var_s3++;
-
-                    if (temp_s1 < 8)
-                    {
-                        if ((uintptr_t)csr >= bound)
-                        {
-                            arg2();
-                            csr = arg0;
-                        }
-                        temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-                    }
-                    temp_s1 -= 0x8;
-                    current_vpk0->unk_vpk0_0x8 = (temp_s2 << (0x18 - temp_s1)) >> 0x18;
-                    spE4[i] = current_vpk0;
-                    i++;
-                }
-                goto loop_11;
-            }
-            while (i >= 2);
-        }
-    }
-
-    sp144 = spE4[0];
-    j = 0;
-    sp84[0] = 0;
-loop_25:
-    {
-        if (temp_s1 <= 0)
-        {
-            if ((uintptr_t)csr >= bound)
-            {
-                arg2();
-                csr = arg0;
-            }
-            temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-        }
-        temp_s1--;
-        var_v0 = (temp_s2 << (0x1F - temp_s1)) >> 0x1F;
-
-        if ((var_v0 == 0) || (j >= 2))
-        {
-            do
-            {
-                if (var_v0 != 0)
-                {
-                    current_vpk0_2 = var_s3;
-                    current_vpk0_2->unk_vpk0_0x0 = 0;
-                    current_vpk0_2->unk_vpk0_0x4 = 0;
-                    current_vpk0_2->unk_vpk0_0x8 = 0;
-
-                    var_s3++;
-
-                    current_vpk0_2->unk_vpk0_0x0 = sp84[j - 2];
-                    current_vpk0_2->unk_vpk0_0x4 = sp84[j - 1];
-                    sp84[j - 2] = current_vpk0_2;
-
-                    j--;
-                }
-                else
-                {
-                    current_vpk0_2 = var_s3, var_s3->unk_vpk0_0x0 = 0, var_s3->unk_vpk0_0x4 = 0, var_s3->unk_vpk0_0x8 = 0, var_s3++;
-
-                    if (temp_s1 < 8)
-                    {
-                        if ((uintptr_t)csr >= bound)
-                        {
-                            arg2();
-                            csr = arg0;
-                        }
-                        temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-                    }
-                    temp_s1 -= 0x8;
-                    current_vpk0_2->unk_vpk0_0x8 = (temp_s2 << (0x18 - temp_s1)) >> 0x18;
-                    sp84[j] = current_vpk0_2;
-                    j++;
-                }
-                goto loop_25;
-            } 
-            while (j >= 2);
-        }
-    }
-    sp140 = sp84[0];
-
-    while ((uintptr_t)bytecsr < (uintptr_t)sp138)
-    {
-        if (temp_s1 <= 0)
-        {
-            if ((uintptr_t)csr >= bound)
-            {
-                arg2();
-                csr = arg0;
-            }
-            temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-        }
-        temp_s1--;
-
-        if (!((temp_s2 << (0x1F - temp_s1)) >> 0x1F))
-        {
-            if (temp_s1 < 8)
-            {
-                if ((uintptr_t)csr >= bound)
-                {
-                    arg2();
-                    csr = arg0;
-                }
-                temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-            }
-            temp_s1 -= 0x8;
-            *(bytecsr++) = (temp_s2 << (0x18 - temp_s1)) >> 0x18;
+            // write current node on stack
+            off_stack[off_stack_size - 2] = off_node;
+            off_stack_size--;
         }
         else
         {
-            other_var_s0 = sp144;
-            var_s3 = sp140;
+            // leaf
+            VPK0_INIT_NODE(off_node);
 
-            if (sp134 != 0)
+            // read leaf node value
+            VPK0_GET_BITS(off_node->value, 8);
+
+            off_stack[off_stack_size] = off_node;
+            off_stack_size++;
+        }
+    }
+    offsets_tree = off_stack[0];
+
+    // read Huffman tree for lengths
+    lengths_stack_size = 0;
+    lengths_stack[0] = 0;
+
+    while (TRUE)
+    {
+        // leaf or node
+        VPK0_GET_BITS(value, 1);
+
+        // node, but less than 2 nodes on stack -> end of tree
+        if (value != 0 && lengths_stack_size < 2)
+        {
+            break;
+        }
+        if (value != 0)
+        {
+            // node
+            VPK0_INIT_NODE(length_node);
+
+            // combine two nodes from stack
+            length_node->left = lengths_stack[lengths_stack_size - 2];
+            length_node->right = lengths_stack[lengths_stack_size - 1];
+
+            // write current node on stack
+            lengths_stack[lengths_stack_size - 2] = length_node;
+            lengths_stack_size--;
+        }
+        else
+        {
+            // leaf
+            VPK0_INIT_NODE(length_node);
+
+            // read leaf node value
+            VPK0_GET_BITS(length_node->value, 8);
+
+            lengths_stack[lengths_stack_size] = length_node;
+            lengths_stack_size++;
+        }
+    }
+    lengthsTree = lengths_stack[0];
+
+    while ((uintptr_t)out_ptr < (uintptr_t)out_buf_end)
+    {
+        VPK0_GET_BITS(value, 1);
+
+        if (!value)
+        {
+            // byte value
+            VPK0_GET_BITS(*out_ptr++, 8);
+        }
+        else
+        {
+            // encoded data
+            lengths_node = lengthsTree;
+
+            if (sample_method != 0)
             {
+                // two samples
                 sp64 = 0;
-                other_var_s0 = sp144;
+                sample1_node = offsets_tree;
 
-                while (other_var_s0->unk_vpk0_0x0 != (NULL))
+                while (sample1_node->left != NULL)
                 {
-                    if (temp_s1 <= 0)
-                    {
-                        if ((uintptr_t)csr >= bound)
-                        {
-                            arg2();
-                            csr = arg0;
-                        }
-                        temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-                    }
-                    temp_s1--;
-                    other_var_s0 = (!((temp_s2 << (0x1F - temp_s1)) >> 0x1F)) ? (other_var_s0->unk_vpk0_0x0) : (other_var_s0->unk_vpk0_0x4);
+                    VPK0_GET_BITS(value, 1);
+                    sample1_node = !value ? sample1_node->left : sample1_node->right;
                 }
+                VPK0_GET_BITS(value, sample1_node->value);
 
-                if (temp_s1 < other_var_s0->unk_vpk0_0x8)
+                if (value <= 2)
                 {
-                    if ((uintptr_t)csr >= bound)
+                    sp64 = value + 1;
+                    offsets_node = offsets_tree;
+
+                    while (offsets_node->left != NULL)
                     {
-                        arg2();
-                        csr = arg0;
+                        VPK0_GET_BITS(value, 1);
+                        offsets_node = !value ? offsets_node->left : offsets_node->right;
                     }
-                    temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
+                    VPK0_GET_BITS(value, offsets_node->value);
                 }
-                temp_s1 -= other_var_s0->unk_vpk0_0x8;
-                var_v0 = (temp_s2 << ((-other_var_s0->unk_vpk0_0x8) - temp_s1)) >> (-((u32)other_var_s0->unk_vpk0_0x8));
-
-                if (var_v0 <= 2)
-                {
-                    sp64 = var_v0 + 1;
-                    var_s0 = sp144;
-
-                    while (var_s0->unk_vpk0_0x0 != (NULL))
-                    {
-                        if (temp_s1 <= 0)
-                        {
-                            if ((uintptr_t)csr >= bound)
-                            {
-                                arg2();
-                                csr = arg0;
-                            }
-                            temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-                        }
-                        temp_s1--;
-                        var_s0 = (!((temp_s2 << (0x1F - temp_s1)) >> 0x1F)) ? (var_s0->unk_vpk0_0x0) : (var_s0->unk_vpk0_0x4);
-                    }
-
-                    if (temp_s1 < var_s0->unk_vpk0_0x8)
-                    {
-                        if ((uintptr_t)csr >= bound)
-                        {
-                            arg2();
-                            csr = arg0;
-                        }
-                        temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-                    }
-                    temp_s1 -= var_s0->unk_vpk0_0x8;
-                    var_v0 = (temp_s2 << ((-var_s0->unk_vpk0_0x8) - temp_s1)) >> (-((u32)var_s0->unk_vpk0_0x8));
-                }
-                byte = (u8*)(((bytecsr - (var_v0 * 4)) - sp64) + 8);
+                copy_src = out_ptr - value * 4 - sp64 + 8;
             }
             else
             {
-                var_s0 = sp144;
+                // one sample
+                offsets_node = offsets_tree;
+                // get number of bytes to move back
+                while (offsets_node->left != NULL)
+                {
+                    VPK0_GET_BITS(value, 1);
+                    offsets_node = !value ? offsets_node->left : offsets_node->right;
+                }
+                VPK0_GET_BITS(value, offsets_node->value);
+                // move back
+                copy_src = out_ptr - value;
+            }
+            // get number of bytes to copy
+            while (lengths_node->left != NULL)
+            {
+                VPK0_GET_BITS(value, 1);
+                lengths_node = !value ? lengths_node->left : lengths_node->right;
+            }
+            VPK0_GET_BITS(value, lengths_node->value);
 
-                while (var_s0->unk_vpk0_0x0 != (NULL))
-                {
-                    if (temp_s1 <= 0)
-                    {
-                        if ((uintptr_t)csr >= bound)
-                        {
-                            arg2();
-                            csr = arg0;
-                        }
-                        temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-                    }
-                    temp_s1--;
-                    var_s0 = (!((temp_s2 << (0x1F - temp_s1)) >> 0x1F)) ? (var_s0->unk_vpk0_0x0) : (var_s0->unk_vpk0_0x4);
-                }
-                if (temp_s1 < var_s0->unk_vpk0_0x8)
-                {
-                    if ((uintptr_t)csr >= bound)
-                    {
-                        arg2();
-                        csr = arg0;
-                    }
-                    temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-                }
-                temp_s1 -= var_s0->unk_vpk0_0x8;
-                var_v0 = (temp_s2 << ((-var_s0->unk_vpk0_0x8) - temp_s1)) >> (-((u32)var_s0->unk_vpk0_0x8));
-                byte = (u8*)(bytecsr - var_v0);
-            }
-            while (var_s3->unk_vpk0_0x0 != (NULL))
+            while (value-- > 0)
             {
-                if (temp_s1 <= 0)
-                {
-                    if ((uintptr_t)csr >= bound)
-                    {
-                        arg2();
-                        csr = arg0;
-                    }
-                    temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-                }
-                temp_s1--;
-                var_s3 = (!((temp_s2 << (0x1F - temp_s1)) >> 0x1F)) ? (var_s3->unk_vpk0_0x0) : (var_s3->unk_vpk0_0x4);
-            }
-            if (temp_s1 < var_s3->unk_vpk0_0x8)
-            {
-                if ((uintptr_t)csr >= bound)
-                {
-                    arg2();
-                    csr = arg0;
-                }
-                temp_s2 <<= 0x10, temp_s2 |= *(csr++), temp_s1 += 0x10;
-            }
-            temp_s1 -= var_s3->unk_vpk0_0x8;
-            var_v0 = (temp_s2 << ((-var_s3->unk_vpk0_0x8) - temp_s1)) >> (-((u32)var_s3->unk_vpk0_0x8));
-
-            while ((var_v0--) > 0)
-            {
-                *(bytecsr++) = *(byte++);
+                *(out_ptr++) = *(copy_src++);
             }
         }
     }
 }
 
-void gsInitVpkDmaStream(u32 dev_addr, void *ram_addr, u32 nbytes) 
+void syInitVpk0DmaStream(u32 dev_addr, void *ram_addr, u32 bytes_num)
 {
     sVpkBufRgcAddr = dev_addr;
     sVpkBufRamAddr = ram_addr;
-    sVpkBufSize    = nbytes;
+    sVpkBufSize    = bytes_num;
 }
 
-void gsFillVpkDmaBuffer(void)
+void syFillVpk0DmaBuf(void)
 {
-    gsDmaRomRead(sVpkBufRgcAddr, sVpkBufRamAddr, sVpkBufSize);
+    syDmaRomRead(sVpkBufRgcAddr, sVpkBufRamAddr, sVpkBufSize);
     sVpkBufRgcAddr += sVpkBufSize;
 }
 
-void func_80003648(u32 dev_addr, void *ram_dst, void *ram_addr, u32 nbytes) 
+void syReadVpk0DmaBuf(u32 dev_addr, void *ram_dst, void *ram_addr, u32 bytes_num)
 {
-    gsInitVpkDmaStream(dev_addr, ram_addr, nbytes);
-    func_80002E18(ram_addr, nbytes, gsFillVpkDmaBuffer, ram_dst);
+    syInitVpk0DmaStream(dev_addr, ram_addr, bytes_num);
+    syDecodeVpk0(ram_addr, bytes_num, syFillVpk0DmaBuf, ram_dst);
 }
 
-void gsReadVpkDma(u32 dev_addr, void *ram_dst)
+void syReadVpk0Dma(u32 dev_addr, void *ram_dst)
 {
-    u8 buffer[0x400];
+    u8 buf[0x400];
 
-    func_80003648(dev_addr, ram_dst, &buffer, ARRAY_COUNT(buffer));
+    syReadVpk0DmaBuf(dev_addr, ram_dst, &buf, ARRAY_COUNT(buf));
 }
 
 // Best I can do with this is functionally equivalent. Somewhat disappointing, but not a big deal; this function is unreferenced.

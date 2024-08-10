@@ -1,7 +1,7 @@
 #include "common.h"
 #include "thread3.h"
 
-#include <sys/crash.h>
+#include <sys/error.h>
 #include <sys/main.h>
 #include <sys/thread6.h>
 
@@ -1025,14 +1025,14 @@ void func_800020D0(void) {
 
             t6 = 0; // this is to silence clang checks
             if (D_80044FC0_407D0 < t6) {
-                gsFatalPrintf("rdp_output_buff over !! size = %d\n byte", t6);
+                syErrorPrintf("rdp_output_buff over !! size = %d\n byte", t6);
                 while (TRUE) { }
             }
             /*
             if ( sp18 >= (t6 >> 31)) {
                 if (sp18 >= (t6 >> 31)) {
                     if (t6 < sp1C) {
-                        gsFatalPrintf("rdp_output_buff over !! size = %d\n byte", t6);
+                        syErrorPrintf("rdp_output_buff over !! size = %d\n byte", t6);
                         while (TRUE) { }
                     }
 
@@ -1180,7 +1180,7 @@ void thread3_scheduler(UNUSED void *arg) {
     osSetEventMesg(OS_EVENT_DP, &gScheduleTaskQueue, (OSMesg)INTR_DP_FULL_SYNC);
     osSetEventMesg(OS_EVENT_PRENMI, &gScheduleTaskQueue, (OSMesg)INTR_SOFT_RESET);
 
-    osSendMesg(&gThreadingQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+    osSendMesg(&sSYMainThreadingQueue, (OSMesg)1, OS_MESG_NOBLOCK);
 
     while (TRUE) {
         osRecvMesg(&gScheduleTaskQueue, &intrMsg, OS_MESG_BLOCK);

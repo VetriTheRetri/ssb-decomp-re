@@ -69,27 +69,27 @@ typedef u32 ub32; // Unsigned 32-bit boolean
 
 // Gfx color types
 
-enum gsColorRGBIndex
+enum syColorRGBIndex
 {
-    gsColorRGBIndexR,
-    gsColorRGBIndexG,
-    gsColorRGBIndexB,
-    gsColorRGBIndexA
+    syColorRGBIndexR,
+    syColorRGBIndexG,
+    syColorRGBIndexB,
+    syColorRGBIndexA
 };
 
-typedef struct gsColorRGB
+typedef struct syColorRGB
 {
     u8 r, g, b;
 
-} gsColorRGB;
+} syColorRGB;
 
-typedef struct gsColorRGBPair
+typedef struct syColorRGBPair
 {
-    gsColorRGB prim, env;
+    syColorRGB prim, env;
 
-} gsColorRGBPair;
+} syColorRGBPair;
 
-typedef union gsColorRGBA
+typedef union syColorRGBA
 {
     struct
     {
@@ -97,14 +97,14 @@ typedef union gsColorRGBA
     };
     u32 pack;
 
-} gsColorRGBA;
+} syColorRGBA;
 
-typedef struct gsRectangle
+typedef struct syRectangle
 {
     s32 ulx, uly;
     s32 lrx, lry;
 
-} gsRectangle;
+} syRectangle;
 
 typedef struct gsPixelComponent
 {

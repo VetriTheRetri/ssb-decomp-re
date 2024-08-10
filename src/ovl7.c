@@ -729,7 +729,7 @@ void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 		{
 			while (TRUE)
 			{
-				gsFatalPrintf("Error : wrong item! %d\n", ip->it_kind);
+				syErrorPrintf("Error : wrong item! %d\n", ip->it_kind);
 				scManagerRunPrintGObjStatus();
 			}
 		}
@@ -1238,7 +1238,7 @@ void scTrainingMode_RenderCursorUnderline(GObj* interface_gobj)
 	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
 	gDPSetFillColor(gDisplayListHead[0]++,
-					gsGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF), gDisplayListHead));
+					syGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF), gDisplayListHead));
 	gDPFillRectangle(gDisplayListHead[0]++, gTrainingModeStruct.cursor_ulx, gTrainingModeStruct.cursor_uly,
 					 gTrainingModeStruct.cursor_lrx, gTrainingModeStruct.cursor_lry);
 	gDPPipeSync(gDisplayListHead[0]++);

@@ -2,36 +2,47 @@
 #define SYSTEM_DMA_H
 
 #include <ssb_types.h>
-
 #include <PR/os.h>
 #include <PR/ultratypes.h>
 
 // loadovl.h? or a generic overlay header?
 // all ends are exclusive (start..end)
-typedef struct gsOverlay
+typedef struct syOverlay
 {
-    u32 romStart;
-    u32 romEnd;
-    void *ramLoadStart;
-    void *ramTextStart;
-    void *ramTextEnd;
-    void *ramDataStart;
-    void *ramDataEnd;
-    void *ramNoloadStart;
-    void *ramNoloadEnd;
+    uintptr_t rom_start;
+    uintptr_t rom_end;
+    void *ram_load_start;
+    void *ram_text_start;
+    void *ram_text_end;
+    void *ram_data_start;
+    void *ram_data_end;
+    void *ram_bss_start;
+    void *ram_bss_end;
 
-} gsOverlay;
+} syOverlay;
+
+typedef struct syHuffman
+{
+    struct syHuffman *left;
+    struct syHuffman *right;
+    s32 value;
+
+} syHuffman;
 
 extern OSPiHandle *gRomPiHandle;
 
-extern void gsCreateDmaMesgQueue(void);
-extern void gsDmaCopy(OSPiHandle *handle, u32 physAddr, uintptr_t vAddr, u32 size, u8 direction);
-extern void gsLoadOverlay(struct gsOverlay *ovl);
-extern void gsDmaRomRead(u32 romSrc, void *ramDst, u32 nbytes);
-extern void gsDmaRomWrite(void *ramSrc, u32 romDst, u32 nbytes);
-extern OSPiHandle *gsSramPiInit(void);
-extern void gsDmaSramRead(u32 romSrc, void *ramDst, u32 nbytes);
-extern void gsDmaSramWrite(void *ramSrc, u32 romDst, u32 nbytes);
-extern void gsReadVpkDma(u32 devAddr, void *ramDst);
+extern void syCreateDmaMesgQueue(void);
+extern void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t size, u8 direction);
+extern void syLoadOverlay(struct syOverlay *ovl);
+extern void syDmaRomRead(uintptr_t rom_src, void *ram_src, u32 bytes_num);
+extern void syDmaRomWrite(void *ram_src, uintptr_t rom_dst, u32 bytes_num);
+extern OSPiHandle* sySramPiInit(void);
+extern void syDmaSramRead(u32 romSrc, void *ram_dst, u32 bytes_num);
+extern void syDmaSramWrite(void *ram_src, u32 rom_dst, u32 bytes_num);
+extern void syDecodeVpk0(u16* data, u32 size, void (*update_stream)(void), u8* out_buf);
+extern void syInitVpk0DmaStream(u32 dev_addr, void *ram_addr, u32 bytes_num);
+extern void syFillVpk0DmaBuf(void);
+extern void syReadVpk0DmaBuf(u32 dev_addr, void *ram_dst, void *ram_addr, u32 bytes_num);
+extern void syReadVpk0Dma(u32 dev_addr, void *ram_dst);
 
 #endif /* SYSTEM_DMA_H */

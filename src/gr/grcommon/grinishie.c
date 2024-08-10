@@ -525,7 +525,7 @@ void grInishieMakePowerBlock(void)
     {
         while (TRUE)
         {
-            gsFatalPrintf("PowerBlock positions are error!\n");
+            syErrorPrintf("PowerBlock positions are error!\n");
             scManagerRunPrintGObjStatus();
         }
     }

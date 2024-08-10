@@ -77,8 +77,8 @@ void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 void dpSetViewport(Vp *vp)
 {
-    vp->vp.vscale[0] = vp->vp.vtrans[0] = gCurrScreenWidth * 2;
-    vp->vp.vscale[1] = vp->vp.vtrans[1] = gCurrScreenHeight * 2;
+    vp->vp.vscale[0] = vp->vp.vtrans[0] = gSYDisplayResWidth * 2;
+    vp->vp.vscale[1] = vp->vp.vtrans[1] = gSYDisplayResHeight * 2;
     vp->vp.vscale[2] = vp->vp.vtrans[2] = G_MAXZ / 2;
 }
 
@@ -93,7 +93,7 @@ void dpResetSettings(Gfx **dlist)
 
     gSPSegment(dl_head++, G_MWO_SEGMENT_0, 0x00000000);
     func_800048F8(&dl_head);
-    gDPSetDepthImage(dl_head++, gZBuffer);
+    gDPSetDepthImage(dl_head++, gSYDisplayZBuffer);
     dpSetViewport(&sViewport);
     gSPDisplayList(dl_head++, sResetRdp);
 
@@ -101,10 +101,10 @@ void dpResetSettings(Gfx **dlist)
     (
         dl_head++,
         G_SC_NON_INTERLACE,
-        10 * (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT),
-        10 * (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT),
-        gCurrScreenWidth - 10 * (gCurrScreenWidth / GS_SCREEN_WIDTH_DEFAULT),
-        gCurrScreenHeight - 10 * (gCurrScreenHeight / GS_SCREEN_HEIGHT_DEFAULT)
+        10 * (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT),
+        10 * (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT),
+        gSYDisplayResWidth - 10 * (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT),
+        gSYDisplayResHeight - 10 * (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT)
     );
     if (sScissorCallback != NULL)
     { 

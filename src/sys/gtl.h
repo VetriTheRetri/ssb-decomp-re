@@ -75,8 +75,8 @@ extern u32 D_8003B6E4;
 extern union WeirdBytewise D_8003B6E8;
 extern Gfx *gDisplayListHead[4];
 extern Gfx *D_800465C0[4];
-extern mlBumpAllocRegion gGraphicsHeap;
-extern mlBumpAllocRegion gGeneralHeap;
+extern mlRegion gGraphicsHeap;
+extern mlRegion gGeneralHeap;
 // Gfx *? Gfx
 extern u32 D_80046610;
 // Gfx *? Gfx

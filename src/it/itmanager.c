@@ -575,7 +575,7 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     while (TRUE)
                     {
-                        gsFatalPrintf("Item positions are over %d!\n", ARRAY_COUNT(item_mapobj_ids));
+                        syErrorPrintf("Item positions are over %d!\n", ARRAY_COUNT(item_mapobj_ids));
                         scManagerRunPrintGObjStatus();
                     }
                 }

@@ -314,10 +314,10 @@ ftItemSwing dFTCommonDataItemSwingAnimRates[/* */] =
 };
 
 // 0x8012CA78
-gsColorRGBA dFTCommonDataShadowColorDefault = { 0x00, 0x00, 0x00, 0xA0 };
+syColorRGBA dFTCommonDataShadowColorDefault = { 0x00, 0x00, 0x00, 0xA0 };
 
 // 0x8012CA7C
-gsColorRGBA dFTCommonDataShadowColorTeams[/* */] =
+syColorRGBA dFTCommonDataShadowColorTeams[/* */] =
 {   
     { 0x80, 0x00, 0x00, 0xB4 },     // Red Team
     { 0x00, 0x00, 0x80, 0xB4 },     // Blue Team

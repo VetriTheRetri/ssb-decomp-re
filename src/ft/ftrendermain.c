@@ -15,7 +15,7 @@ extern u8 func_ovl1_80390534(Gfx**);
 //                               //
 // // // // // // // // // // // //
 
-extern mlBumpAllocRegion gGraphicsHeap;
+extern mlRegion gGraphicsHeap;
 extern Vec3f D_800D62D0;
 
 // // // // // // // // // // // //
@@ -31,7 +31,7 @@ u8 sFTRenderMainSkyFogAlpha;
 ub8 sFTRenderMainIsShadeFog;
 
 // 0x801312F4
-gsColorRGBA sFTRenderMainFogColor;
+syColorRGBA sFTRenderMainFogColor;
 
 // // // // // // // // // // // //
 //                               //
@@ -380,16 +380,16 @@ Gfx dFTRenderMainAfterImageTriangleDL[/* */] =
 };
 
 // 0x8012C4C8
-gsColorRGBA dFTRenderMainDefaultAfterImageColor1 = { 0x00, 0xFF, 0xFF, 0x00 };
+syColorRGBA dFTRenderMainDefaultAfterImageColor1 = { 0x00, 0xFF, 0xFF, 0x00 };
 
 // 0x8012C4CC
-gsColorRGBA dFTRenderMainDefaultAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
+syColorRGBA dFTRenderMainDefaultAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
 
 // 0x8012C4D0
-gsColorRGBA dFTRenderMainItemAfterImageColor1 = { 0xFF, 0x40, 0xC0, 0x00 };
+syColorRGBA dFTRenderMainItemAfterImageColor1 = { 0xFF, 0x40, 0xC0, 0x00 };
 
 // 0x8012C4D4
-gsColorRGBA dFTRenderMainItemAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
+syColorRGBA dFTRenderMainItemAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
 
 // // // // // // // // // // // //
 //                               //
@@ -411,7 +411,7 @@ void ftRenderMainDrawAfterImage(ftStruct *fp)
     f32 var_f20;
     f32 var_f22;
     f32 rotate;
-    gsColorRGBA *color1, *color2;
+    syColorRGBA *color1, *color2;
     Gfx *vtx_dl, *tri_dl;
     ftAfterImage *afterimage;
     Vec3f spC8;
@@ -620,7 +620,7 @@ void ftRenderMainCalcFogColor(ftStruct *fp)
     }
     else
     {
-        gsColorRGBA *attr_shade_color = &fp->attributes->shade_color[fp->shade - 1];
+        syColorRGBA *attr_shade_color = &fp->attributes->shade_color[fp->shade - 1];
         gmColKeys *ck = &fp->colanim.maincolor;
 
         shade_default = (((0xFF - attr_shade_color->a) * (0xFF - ck->a)) / 0xFF);
@@ -681,7 +681,7 @@ void ftRenderMainDecideFogColor(ftStruct *fp)
     }
     else
     {
-        gsColorRGBA *fog_color = &fp->attributes->shade_color[fp->shade - 1];
+        syColorRGBA *fog_color = &fp->attributes->shade_color[fp->shade - 1];
 
         gDPSetFogColor(gDisplayListHead[0]++, fog_color->r, fog_color->g, fog_color->b, fog_color->a);
     }

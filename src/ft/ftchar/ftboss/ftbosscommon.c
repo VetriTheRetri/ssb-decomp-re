@@ -201,7 +201,7 @@ void ftBossCommonSetDefaultLineID(GObj *fighter_gobj)
     {
         while (TRUE)
         {
-            gsFatalPrintf("nothing under cll id\n");
+            syErrorPrintf("nothing under cll id\n");
             scManagerRunPrintGObjStatus();
         }
     }

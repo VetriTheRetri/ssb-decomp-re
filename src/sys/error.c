@@ -1,5 +1,5 @@
 #include "common.h"
-#include <sys/crash.h>
+#include <sys/error.h>
 
 #include <sys/gtl.h>
 #include <sys/hal_audio.h>
@@ -12,8 +12,6 @@
 
 // #include <macros.h> // (included in obj.h)
 #include <config.h>
-#include <stdarg.h>
-#include <string.h>
 
 /*
 * These should no longer be here as they're included in objtypes.h
@@ -41,7 +39,7 @@
 #define THREAD8_MAIN_HANG_PRI 105
 
 // 0x8003CBB0
-gsRectangle D_8003CBB0[/* */] =
+syRectangle D_8003CBB0[/* */] =
 {
     { 0, 0, 3, 0 },
     { 0, 0, 0, 3 },
@@ -89,9 +87,9 @@ f32 D_8003CE50[/* */] =
     1000000000.0F
 };
 
-u8 dActiveCrashScreen = FALSE;
+ub8 dSYErrorIsScreenActive = FALSE;
 
-u8 dAsciiToGlyphIDs[/* */] = 
+u8 dSYErrorAsciiToGlyphIDs[/* */] = 
 {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -104,7 +102,7 @@ u8 dAsciiToGlyphIDs[/* */] =
 };
 
 // looks to be 7 wide by 6 tall?
-u32 dCrashReportGlyphs[/* */] =
+u32 dSYErrorGlyphs[/* */] =
 {
     0x70871C30, 0x8988A250, 0x88808290, 0x88831C90, 0x888402F8, 0x88882210, 0x71CF9C10, 0xF9CF9C70,
     0x8228A288, 0xF200A288, 0x0BC11C78, 0x0A222208, 0x8A222288, 0x71C21C70, 0x23C738F8, 0x5228A480,
@@ -116,7 +114,7 @@ u32 dCrashReportGlyphs[/* */] =
     0x70800000, 0x88822200, 0x08820400, 0x108F8800, 0x20821000, 0x00022200, 0x20800020, 0x00000000
 };
 
-const char *dCPUExceptionCauses[/* */] = 
+const char *dSYErrorCPUExceptions[/* */] = 
 {
     "Interrupt",
     "TLB modification",
@@ -138,7 +136,7 @@ const char *dCPUExceptionCauses[/* */] =
     "Virtual coherency on data"
 };
 
-const char *dFPUExceptionCauses[/* */] =
+const char *dSYErrorFPUExceptions[/* */] =
 {
     "Unimplemented operation",
     "Invalid operation",
@@ -148,22 +146,22 @@ const char *dFPUExceptionCauses[/* */] =
     "Inexact operation"
 };
 
-s32 dCrashMesgPositionX = 30;
-s32 dCrashMesgPositionY = 25;
+s32 dSYErrorMesgPositionX = 30;
+s32 dSYErrorMesgPositionY = 25;
 
 // bss
 void *D_8009DA00;
-OSThread sSysThread8CPUFault;
-u8 sSysThread8CPUStack[0x800];
-OSMesgQueue sSysMesgQueueCPUFault;
-OSMesg sSysMesgCPUFault[1];
+OSThread sSYErrorThread8CPUFault;
+u8 sSYErrorThread8CPUStack[0x800];
+OSMesgQueue sSYErrorMesgQueueCPUFault;
+OSMesg sSYErrorMesgCPUFault[1];
 u32 sUnref8009E3D4;
-void (*sCrashPrintfunction)(void);
+void (*sSYErrorFuncPrint)(void);
 MqListNode D_8009E3E0;
 OSMesg D_8009E3E8[1];
 OSMesgQueue D_8009E3F0;
-OSThread sSysThread8Hang;
-u8 sSysThread8HangStack[0x800];
+OSThread sSYErrorThread8Hang;
+u8 sSYErrorThread8HangStack[0x800];
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
@@ -174,7 +172,7 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, sb32 arg3)
     if ((arg2 >= 0) && (arg2 < ARRAY_COUNT(D_8003CC30)))
     {
         Gfx *dl = gDisplayListHead[0];
-        gsRectangle *boxsize = D_8003CBB0;
+        syRectangle *boxsize = D_8003CBB0;
         s32 *line = D_8003CC30[arg2];
         s32 i;
 
@@ -189,10 +187,10 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, sb32 arg3)
                 gDPFillRectangle
                 (
                     dl++,
-                    ((arg0 + boxsize->ulx) * gCurrScreenWidth) / GS_SCREEN_WIDTH_DEFAULT,
-                    ((arg1 + boxsize->uly) * gCurrScreenHeight) / GS_SCREEN_HEIGHT_DEFAULT,
-                    ((arg0 + boxsize->lrx) * gCurrScreenWidth) / GS_SCREEN_WIDTH_DEFAULT,
-                    ((arg1 + boxsize->lry) * gCurrScreenHeight) / GS_SCREEN_HEIGHT_DEFAULT
+                    ((arg0 + boxsize->ulx) * gSYDisplayResWidth) / GS_SCREEN_WIDTH_DEFAULT,
+                    ((arg1 + boxsize->uly) * gSYDisplayResHeight) / GS_SCREEN_HEIGHT_DEFAULT,
+                    ((arg0 + boxsize->lrx) * gSYDisplayResWidth) / GS_SCREEN_WIDTH_DEFAULT,
+                    ((arg1 + boxsize->lry) * gSYDisplayResHeight) / GS_SCREEN_HEIGHT_DEFAULT
                 );
             }
         }
@@ -203,10 +201,10 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, sb32 arg3)
             gDPFillRectangle
             (
                 dl++,
-                ((arg0 + boxsize->ulx) * gCurrScreenWidth) / GS_SCREEN_WIDTH_DEFAULT,
-                ((arg1 + boxsize->uly) * gCurrScreenHeight) / GS_SCREEN_HEIGHT_DEFAULT,
-                ((arg0 + boxsize->lrx) * gCurrScreenWidth) / GS_SCREEN_WIDTH_DEFAULT,
-                ((arg1 + boxsize->lry) * gCurrScreenHeight) / GS_SCREEN_HEIGHT_DEFAULT
+                ((arg0 + boxsize->ulx) * gSYDisplayResWidth) / GS_SCREEN_WIDTH_DEFAULT,
+                ((arg1 + boxsize->uly) * gSYDisplayResHeight) / GS_SCREEN_HEIGHT_DEFAULT,
+                ((arg0 + boxsize->lrx) * gSYDisplayResWidth) / GS_SCREEN_WIDTH_DEFAULT,
+                ((arg1 + boxsize->lry) * gSYDisplayResHeight) / GS_SCREEN_HEIGHT_DEFAULT
             );
         }
         D_8009DA00 = boxsize;
@@ -220,7 +218,7 @@ void func_80021734(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5)
     s32 s6 = 0;
     s32 i;
 
-    if ((arg3 > 0) && (arg3 < (gCurrScreenWidth - arg0) / 7))
+    if ((arg3 > 0) && (arg3 < (gSYDisplayResWidth - arg0) / 7))
     {
         arg0 += (arg3 * 7);
         arg0 -= 7;
@@ -254,13 +252,13 @@ void func_80021734(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5)
 }
 
 // 0x800218E0
-void func_800218E0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) 
+void func_800218E0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4)
 {
     func_80021734(arg0, arg1, arg2, arg3, 0, arg4);
 }
 
 // 0x80021908
-void func_80021908(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5) 
+void func_80021908(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5)
 {
     func_80021734(arg0, arg1, D_8003CE50[arg4] * arg2, arg3, arg4, arg5);
 }
@@ -268,7 +266,7 @@ void func_80021908(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5)
 // 0x80021958
 void unref_80021958(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4)
 {
-    if ((arg3 > 0) && (arg3 < (gCurrScreenWidth - arg0) / 7))
+    if ((arg3 > 0) && (arg3 < (gSYDisplayResWidth - arg0) / 7))
     {
         arg0 += (arg3 * 7), arg0 -= 7;
 
@@ -287,20 +285,20 @@ void unref_80021958(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4)
     }
 }
 
-void gsFillRectangleDL(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry)
+void syErrorFillRectangle(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry)
 {
     gDPFillRectangle
     (
         dl,
-        (gCurrScreenWidth * ulx) / GS_SCREEN_WIDTH_DEFAULT,
-        (uly * gCurrScreenHeight) / GS_SCREEN_HEIGHT_DEFAULT,
-        (gCurrScreenWidth * lrx) / GS_SCREEN_WIDTH_DEFAULT,
-        (lry * gCurrScreenHeight) / GS_SCREEN_HEIGHT_DEFAULT
+        (gSYDisplayResWidth * ulx) / GS_SCREEN_WIDTH_DEFAULT,
+        (uly * gSYDisplayResHeight) / GS_SCREEN_HEIGHT_DEFAULT,
+        (gSYDisplayResWidth * lrx) / GS_SCREEN_WIDTH_DEFAULT,
+        (lry * gSYDisplayResHeight) / GS_SCREEN_HEIGHT_DEFAULT
     );
 }
 
 // 0x80021B30
-void gsDrawControllerInputs(GObj *gobj)
+void syErrorDrawControllerInputs(GObj *gobj)
 {
     gsController *controller = &gSysController;
     s32 offset_x = 60;
@@ -311,7 +309,7 @@ void gsDrawControllerInputs(GObj *gobj)
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
     func_800218E0(60, 179, controller->stick_range.x, 3, TRUE);
     func_800218E0(92, 179, controller->stick_range.y, 3, TRUE);
 
@@ -342,42 +340,42 @@ void gsDrawControllerInputs(GObj *gobj)
     func_80021908(offset_x, 195, D_80044FB8_407C8 * 0.00390625F, 5, 2, TRUE);
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
-    gsFillRectangleDL(gDisplayListHead[0]++, 30, offset_y, ((D_80046610 / 4 > 256) ? 256 : D_80046610 / 4) + 30, offset_y + 1);
+    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
+    syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_80046610 / 4 > 256) ? 256 : D_80046610 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0xFF, 0xFF)));
-    gsFillRectangleDL(gDisplayListHead[0]++, 30, offset_y, ((D_80046614 / 4 > 256) ? 256 : D_80046614 / 4) + 30, offset_y + 1);
+    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0xFF, 0xFF)));
+    syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_80046614 / 4 > 256) ? 256 : D_80046614 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0x00, 0xFF)));
-    gsFillRectangleDL(gDisplayListHead[0]++, 30, offset_y, ((D_80044FB4_407C4 / 4 > 256) ? 256 : D_80044FB4_407C4 / 4) + 30, offset_y + 1);
+    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0x00, 0xFF)));
+    syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_80044FB4_407C4 / 4 > 256) ? 256 : D_80044FB4_407C4 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
-    gsFillRectangleDL(gDisplayListHead[0]++, 30, offset_y, ((D_8009D2D0 / 4 > 256) ? 256 : D_8009D2D0 / 4) + 30, offset_y + 1);
+    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
+    syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_8009D2D0 / 4 > 256) ? 256 : D_8009D2D0 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0xFF, 0xFF)));
-    gsFillRectangleDL(gDisplayListHead[0]++, 30, offset_y, ((D_80044FB8_407C8 / 4 > 256) ? 256 : D_80044FB8_407C8 / 4) + 30, offset_y + 1);
+    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0xFF, 0xFF)));
+    syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_80044FB8_407C8 / 4 > 256) ? 256 : D_80044FB8_407C8 / 4) + 30, offset_y + 1);
 
     // controller buttons
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
+    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
 
     for (i = 0; i < 16; i++)
     {
         if (gSysController.button_press & (1 << i))
         {
-            gsFillRectangleDL(gDisplayListHead[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
+            syErrorFillRectangle(gDisplayListHead[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
         }
     }
     // controller stick
-    gsFillRectangleDL
+    syErrorFillRectangle
     (
         gDisplayListHead[0]++,
         controller->stick_range.x / 4 + 39,
@@ -386,23 +384,23 @@ void gsDrawControllerInputs(GObj *gobj)
         -controller->stick_range.y / 4 + 186
     );
     gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, gsGetFillColor(GPACK_RGBA8888(0x10, 0x10, 0x10, 0xFF)));
+    gDPSetFillColor(gDisplayListHead[0]++, syGetFillColor(GPACK_RGBA8888(0x10, 0x10, 0x10, 0xFF)));
 
     for (j = 30, i = 350; j != i; j += 64)
     {
-        gsFillRectangleDL(gDisplayListHead[0]++, j, 210, j, 220);
+        syErrorFillRectangle(gDisplayListHead[0]++, j, 210, j, 220);
 
         if (D_8009D2D0 && D_8009D2D0); // Eww... Oh, well.
     }
-    gsFillRectangleDL(gDisplayListHead[0]++, 40, 165, 40, 205);
-    gsFillRectangleDL(gDisplayListHead[0]++, 20, 185, 60, 185);
+    syErrorFillRectangle(gDisplayListHead[0]++, 40, 165, 40, 205);
+    syErrorFillRectangle(gDisplayListHead[0]++, 20, 185, 60, 185);
 
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-GObj* func_80022368(s32 link, u32 arg1, s32 arg2) 
+GObj* func_80022368(s32 link, u32 arg1, s32 arg2)
 {
     if (find_gobj_with_id(-2U) != 0)
     {
@@ -414,7 +412,7 @@ GObj* func_80022368(s32 link, u32 arg1, s32 arg2)
         (void (*)())func_8000B1C4, 
         link, 
         arg1,
-        gsDrawControllerInputs, 
+        syErrorDrawControllerInputs, 
         arg2,
         0, 
         0, 
@@ -426,9 +424,9 @@ GObj* func_80022368(s32 link, u32 arg1, s32 arg2)
     );
 }
 
-void gsFramebufferDrawBlackRect(s32 ulx, s32 uly, s32 width, s32 height) 
+void syErrorFramebufDrawBlackRectangle(s32 ulx, s32 uly, s32 width, s32 height)
 {
-    u16 *fb = (u16*)osViGetCurrentFramebuffer() + (gCurrScreenWidth * uly) + (ulx);
+    u16 *fb = (u16*)osViGetCurrentFramebuffer() + (gSYDisplayResWidth * uly) + (ulx);
     s32 i;
     s32 j;
 
@@ -436,14 +434,14 @@ void gsFramebufferDrawBlackRect(s32 ulx, s32 uly, s32 width, s32 height)
     {
         for (j = 0; j < width; j++, fb++)
         {
-            *fb = GPACK_RGBA5551(0, 0, 0, 1);
+            *fb = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01);
         }
-        fb += (gCurrScreenWidth - width);
+        fb += (gSYDisplayResWidth - width);
     }
 }
 
 // 0x800224C0 - write glyph to frame buffer?
-void gsFramebufferWriteGlyph(s32 ulx, s32 uly, s32 char_index)
+void syErrorFramebufWriteGlyph(s32 ulx, s32 uly, s32 char_index)
 {
     s32 i;
     s32 j;
@@ -453,11 +451,11 @@ void gsFramebufferWriteGlyph(s32 ulx, s32 uly, s32 char_index)
     u16 *fb;
     u32 el;
 
-    char_offset = &dCrashReportGlyphs[char_index / 5 * 7];
+    char_offset = &dSYErrorGlyphs[char_index / 5 * 7];
     init_mask = 0x80000000 >> ((char_index % 5) * 6);
-    fb = (u16*)osViGetCurrentFramebuffer() + (gCurrScreenWidth * uly) + ulx;
+    fb = (u16*)osViGetCurrentFramebuffer() + (gSYDisplayResWidth * uly) + ulx;
 
-    for (i = 0; i < 7; i++, fb += (gCurrScreenWidth - 6))
+    for (i = 0; i < 7; i++, fb += (gSYDisplayResWidth - 6))
     {
         for (j = 0, el = *char_offset++, current_mask = init_mask; j < 6; j++, fb++, current_mask >>= 1)
         {
@@ -472,7 +470,7 @@ void gsFramebufferWriteGlyph(s32 ulx, s32 uly, s32 char_index)
 
 // memcpy and return pointer to end of copy in `dst`
 // `proutSprintf` in libultra
-char* gsMemcpyAdvance(char *dst, const char *src, size_t count) 
+char* syErrorMemcpyAdvance(char *dst, const char *src, size_t count)
 {
     return (char*)memcpy(dst, src, count) + count;
 }
@@ -481,7 +479,7 @@ char* gsMemcpyAdvance(char *dst, const char *src, size_t count)
 typedef char *outfun(char *, const char *, size_t);
 extern int _Printf(outfun prout, char *arg, const char *fmt, va_list args);
 
-void gsFramebufferPrintf(s32 ulx, s32 ulr, char *fmt, ...) 
+void syErrorFramebufPrintf(s32 ulx, s32 ulr, char *fmt, ...)
 {
     u8 *csr;
     u32 glyph;
@@ -491,7 +489,7 @@ void gsFramebufferPrintf(s32 ulx, s32 ulr, char *fmt, ...)
 
     va_start(ap, fmt);
     VA_LIST_ALIGN(ap, fmt);
-    ans = _Printf(gsMemcpyAdvance, buf, fmt, ap);
+    ans = _Printf(syErrorMemcpyAdvance, buf, fmt, ap);
     va_end(ap);
 
     if (ans > 0) 
@@ -500,11 +498,11 @@ void gsFramebufferPrintf(s32 ulx, s32 ulr, char *fmt, ...)
 
         while (ans > 0) 
         {
-            glyph = dAsciiToGlyphIDs[*csr & 0x7F];
+            glyph = dSYErrorAsciiToGlyphIDs[*csr & 0x7F];
 
             if (glyph != 0xFF)
             { 
-                gsFramebufferWriteGlyph(ulx, ulr, glyph);
+                syErrorFramebufWriteGlyph(ulx, ulr, glyph);
             }
             ans--;
             csr++;
@@ -513,67 +511,67 @@ void gsFramebufferPrintf(s32 ulx, s32 ulr, char *fmt, ...)
     }
 }
 
-void gsWaitMSec(s32 millisec)
+void syErrorWaitMsec(s32 millisec)
 {
     OSTime cycles = OS_USEC_TO_CYCLES(millisec * 1000ULL);
 
     osSetTime(0);
 
-    while (osGetTime() < cycles) // { }
+    while (osGetTime() < cycles)
     {
         continue;
     }
 }
 
-void gsFramebufferPrintfPReg(s32 x, s32 y, s32 regIdx, f32 *fpReg) 
+void syErrorFramebufPrintFloatReg(s32 x, s32 y, s32 reg_id, f32 *fp_reg)
 {
-    u32 byterep = *(u32 *)fpReg;
+    u32 byterep = *(u32*)fp_reg;
     s32 small = ((byterep & 0x7F800000) >> 23) - 127;
 
     if ((small >= -126 && small < 128) || byterep == 0) 
     {
-        gsFramebufferPrintf(x, y, "F%02d:%.3e", regIdx, (f64)*fpReg);
+        syErrorFramebufPrintf(x, y, "F%02d:%.3e", reg_id, (f64)*fp_reg);
     } 
-    else gsFramebufferPrintf(x, y, "F%02d:%08XH", regIdx, byterep);
+    else syErrorFramebufPrintf(x, y, "F%02d:%08XH", reg_id, byterep);
 }
 
-void gsFramebufferPrintfCSR(u32 fcsr)
+void syErrorFramebufPrintFCSR(u32 fcsr)
 {
     s32 i;
     u32 mask = 0x20000;
 
-    gsFramebufferPrintf(30, 155, "FPCSR:%08XH", fcsr);
+    syErrorFramebufPrintf(30, 155, "FPCSR:%08XH", fcsr);
 
-    for (i = 0; i < ARRAY_COUNT(dFPUExceptionCauses); i++)
+    for (i = 0; i < ARRAY_COUNT(dSYErrorFPUExceptions); i++)
     {
         if (fcsr & mask)
         {
-            gsFramebufferPrintf(132, 155, "(%s)", dFPUExceptionCauses[i]);
+            syErrorFramebufPrintf(132, 155, "(%s)", dSYErrorFPUExceptions[i]);
             break;
         }
         else mask >>= 1;
     }
 }
 
-s32 gsWaitForFramebufferOrButtons(s32 buttonInput, void *fb)
+s32 syErrorWaitFramebufOrController(u32 buttons, void *framebuf)
 {
     while (TRUE) 
     {
-        gsWaitMSec(16);
+        syErrorWaitMsec(16);
         update_contdata();
 
-        if (fb != NULL && osViGetCurrentFramebuffer() != fb)
+        if ((framebuf != NULL) && (osViGetCurrentFramebuffer() != framebuf))
         {
             return TRUE;
         }
-        if (buttonInput == gSysController.button_press) 
+        if (buttons == gSysController.button_press) 
         {
             return FALSE; 
         }
     }
 }
 
-void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary) 
+void syErrorFramebufPrintThreadStatus(OSThread *t, sb32 is_show_summary)
 {
     s16 adjusted_cause;
     __OSThreadContext *ctx;
@@ -594,59 +592,59 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
     }
     osWritebackDCacheAll();
 
-    if (showThreadSummary) 
+    if (is_show_summary != FALSE) 
     {
         ctx = &t->context;
-        gsFramebufferDrawBlackRect(25, 20, 270, 25);
-        gsFramebufferPrintf(30, 25, "THREAD:%d  (%s)", t->id, dCPUExceptionCauses[adjusted_cause]);
-        gsFramebufferPrintf(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
+        syErrorFramebufDrawBlackRectangle(25, 20, 270, 25);
+        syErrorFramebufPrintf(30, 25, "THREAD:%d  (%s)", t->id, dSYErrorCPUExceptions[adjusted_cause]);
+        syErrorFramebufPrintf(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
         osWritebackDCacheAll();
-        gsWaitForFramebufferOrButtons(0, NULL);
-        gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+        syErrorWaitFramebufOrController(0, NULL);
+        syErrorWaitFramebufOrController(Z_TRIG | L_TRIG | R_TRIG, NULL);
     }
 
     // register dump
     ctx = &t->context;
-    gsFramebufferDrawBlackRect(25, 20, 270, 210);
-    gsFramebufferPrintf(30, 25, "THREAD:%d  (%s)", t->id, dCPUExceptionCauses[adjusted_cause]);
-    gsFramebufferPrintf(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
-    gsFramebufferPrintf(30, 50, "AT:%08XH   V0:%08XH   V1:%08XH", (u32)ctx->at, (u32)ctx->v0, (u32)ctx->v1);
-    gsFramebufferPrintf(30, 60, "A0:%08XH   A1:%08XH   A2:%08XH", (u32)ctx->a0, (u32)ctx->a1, (u32)ctx->a2);
-    gsFramebufferPrintf(30, 70, "A3:%08XH   T0:%08XH   T1:%08XH", (u32)ctx->a3, (u32)ctx->t0, (u32)ctx->t1);
-    gsFramebufferPrintf(30, 80, "T2:%08XH   T3:%08XH   T4:%08XH", (u32)ctx->t2, (u32)ctx->t3, (u32)ctx->t4);
-    gsFramebufferPrintf(30, 90, "T5:%08XH   T6:%08XH   T7:%08XH", (u32)ctx->t5, (u32)ctx->t6, (u32)ctx->t7);
-    gsFramebufferPrintf(30, 100, "S0:%08XH   S1:%08XH   S2:%08XH", (u32)ctx->s0, (u32)ctx->s1, (u32)ctx->s2);
-    gsFramebufferPrintf(30, 110, "S3:%08XH   S4:%08XH   S5:%08XH", (u32)ctx->s3, (u32)ctx->s4, (u32)ctx->s5);
-    gsFramebufferPrintf(30, 120, "S6:%08XH   S7:%08XH   T8:%08XH", (u32)ctx->s6, (u32)ctx->s7, (u32)ctx->t8);
-    gsFramebufferPrintf(30, 130, "T9:%08XH   GP:%08XH   SP:%08XH", (u32)ctx->t9, (u32)ctx->gp, (u32)ctx->sp);
-    gsFramebufferPrintf(30, 140, "S8:%08XH   RA:%08XH", (u32)ctx->s8, (u32)ctx->ra);
-    gsFramebufferPrintfCSR(ctx->fpcsr);
-    gsFramebufferPrintfPReg(30, 170, 0, &ctx->fp0.f.f_even);
-    gsFramebufferPrintfPReg(120, 170, 2, &ctx->fp2.f.f_even);
-    gsFramebufferPrintfPReg(210, 170, 4, &ctx->fp4.f.f_even);
-    gsFramebufferPrintfPReg(30, 180, 6, &ctx->fp6.f.f_even);
-    gsFramebufferPrintfPReg(120, 180, 8, &ctx->fp8.f.f_even);
-    gsFramebufferPrintfPReg(210, 180, 10, &ctx->fp10.f.f_even);
-    gsFramebufferPrintfPReg(30, 190, 12, &ctx->fp12.f.f_even);
-    gsFramebufferPrintfPReg(120, 190, 14, &ctx->fp14.f.f_even);
-    gsFramebufferPrintfPReg(210, 190, 16, &ctx->fp16.f.f_even);
-    gsFramebufferPrintfPReg(30, 200, 18, &ctx->fp18.f.f_even);
-    gsFramebufferPrintfPReg(120, 200, 20, &ctx->fp20.f.f_even);
-    gsFramebufferPrintfPReg(210, 200, 22, &ctx->fp22.f.f_even);
-    gsFramebufferPrintfPReg(30, 210, 24, &ctx->fp24.f.f_even);
-    gsFramebufferPrintfPReg(120, 210, 26, &ctx->fp26.f.f_even);
-    gsFramebufferPrintfPReg(210, 210, 28, &ctx->fp28.f.f_even);
-    gsFramebufferPrintfPReg(30, 220, 30, &ctx->fp30.f.f_even);
+    syErrorFramebufDrawBlackRectangle(25, 20, 270, 210);
+    syErrorFramebufPrintf(30, 25, "THREAD:%d  (%s)", t->id, dSYErrorCPUExceptions[adjusted_cause]);
+    syErrorFramebufPrintf(30, 35, "PC:%08XH   SR:%08XH   VA:%08XH", ctx->pc, ctx->sr, ctx->badvaddr);
+    syErrorFramebufPrintf(30, 50, "AT:%08XH   V0:%08XH   V1:%08XH", (u32)ctx->at, (u32)ctx->v0, (u32)ctx->v1);
+    syErrorFramebufPrintf(30, 60, "A0:%08XH   A1:%08XH   A2:%08XH", (u32)ctx->a0, (u32)ctx->a1, (u32)ctx->a2);
+    syErrorFramebufPrintf(30, 70, "A3:%08XH   T0:%08XH   T1:%08XH", (u32)ctx->a3, (u32)ctx->t0, (u32)ctx->t1);
+    syErrorFramebufPrintf(30, 80, "T2:%08XH   T3:%08XH   T4:%08XH", (u32)ctx->t2, (u32)ctx->t3, (u32)ctx->t4);
+    syErrorFramebufPrintf(30, 90, "T5:%08XH   T6:%08XH   T7:%08XH", (u32)ctx->t5, (u32)ctx->t6, (u32)ctx->t7);
+    syErrorFramebufPrintf(30, 100, "S0:%08XH   S1:%08XH   S2:%08XH", (u32)ctx->s0, (u32)ctx->s1, (u32)ctx->s2);
+    syErrorFramebufPrintf(30, 110, "S3:%08XH   S4:%08XH   S5:%08XH", (u32)ctx->s3, (u32)ctx->s4, (u32)ctx->s5);
+    syErrorFramebufPrintf(30, 120, "S6:%08XH   S7:%08XH   T8:%08XH", (u32)ctx->s6, (u32)ctx->s7, (u32)ctx->t8);
+    syErrorFramebufPrintf(30, 130, "T9:%08XH   GP:%08XH   SP:%08XH", (u32)ctx->t9, (u32)ctx->gp, (u32)ctx->sp);
+    syErrorFramebufPrintf(30, 140, "S8:%08XH   RA:%08XH", (u32)ctx->s8, (u32)ctx->ra);
+    syErrorFramebufPrintFCSR(ctx->fpcsr);
+    syErrorFramebufPrintFloatReg(30, 170, 0, &ctx->fp0.f.f_even);
+    syErrorFramebufPrintFloatReg(120, 170, 2, &ctx->fp2.f.f_even);
+    syErrorFramebufPrintFloatReg(210, 170, 4, &ctx->fp4.f.f_even);
+    syErrorFramebufPrintFloatReg(30, 180, 6, &ctx->fp6.f.f_even);
+    syErrorFramebufPrintFloatReg(120, 180, 8, &ctx->fp8.f.f_even);
+    syErrorFramebufPrintFloatReg(210, 180, 10, &ctx->fp10.f.f_even);
+    syErrorFramebufPrintFloatReg(30, 190, 12, &ctx->fp12.f.f_even);
+    syErrorFramebufPrintFloatReg(120, 190, 14, &ctx->fp14.f.f_even);
+    syErrorFramebufPrintFloatReg(210, 190, 16, &ctx->fp16.f.f_even);
+    syErrorFramebufPrintFloatReg(30, 200, 18, &ctx->fp18.f.f_even);
+    syErrorFramebufPrintFloatReg(120, 200, 20, &ctx->fp20.f.f_even);
+    syErrorFramebufPrintFloatReg(210, 200, 22, &ctx->fp22.f.f_even);
+    syErrorFramebufPrintFloatReg(30, 210, 24, &ctx->fp24.f.f_even);
+    syErrorFramebufPrintFloatReg(120, 210, 26, &ctx->fp26.f.f_even);
+    syErrorFramebufPrintFloatReg(210, 210, 28, &ctx->fp28.f.f_even);
+    syErrorFramebufPrintFloatReg(30, 220, 30, &ctx->fp30.f.f_even);
     osWritebackDCacheAll();
-    gsWaitForFramebufferOrButtons(0, NULL);
-    gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+    syErrorWaitFramebufOrController(0, NULL);
+    syErrorWaitFramebufOrController(Z_TRIG | L_TRIG | R_TRIG, NULL);
 
     // stack dump
-    gsFramebufferDrawBlackRect(25, 20, 270, 210);
+    syErrorFramebufDrawBlackRectangle(25, 20, 270, 210);
 
     stack_csr = (u8*)(uintptr_t)ctx->sp;
 
-    gsFramebufferPrintf(26, 20, "SP Base %08x", (u32)stack_csr);
+    syErrorFramebufPrintf(26, 20, "SP Base %08x", (u32)stack_csr);
 
     y = 30;
 
@@ -657,7 +655,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
 
         if ((small >= -126 && small < 128) || word == 0) 
         {
-            gsFramebufferPrintf
+            syErrorFramebufPrintf
             (
                 26,
                 y,
@@ -672,7 +670,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
         } 
         else 
         {
-            gsFramebufferPrintf
+            syErrorFramebufPrintf
             (
                 26,
                 y,
@@ -692,7 +690,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
 
         if ((small >= -126 && small < 128) || word == 0) 
         {
-            gsFramebufferPrintf
+            syErrorFramebufPrintf
             (
                 172,
                 y,
@@ -706,7 +704,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
         } 
         else 
         {
-            gsFramebufferPrintf
+            syErrorFramebufPrintf
             (
                 172,
                 y,
@@ -724,7 +722,7 @@ void gsFramebufferPrintThreadStatus(OSThread *t, sb32 showThreadSummary)
     osWritebackDCacheAll();
 }
 
-OSThread* gsGetFaultedThread(void)
+OSThread* syErrorGetFaultThread(void)
 {
     OSThread *thread = __osGetActiveQueue();
 
@@ -745,28 +743,28 @@ OSThread* gsGetFaultedThread(void)
     return NULL;
 }
 
-/**
+/*
  * Set a function to call when a crash screen is displayed
  */
-void gsSetCrashPrintfunction(void (*fn)(void))
+void syErrorSetFuncPrint(void (*func_print)(void))
 {
-    sCrashPrintfunction = fn;
+    sSYErrorFuncPrint = func_print;
 }
 
-void gsResetCrashMesgCursor(s32 x, s32 y) 
+void syErrorResetMesgCursor(s32 x, s32 y)
 {
-    dCrashMesgPositionX = x;
-    dCrashMesgPositionY = y;
+    dSYErrorMesgPositionX = x;
+    dSYErrorMesgPositionY = y;
 }
 
-void gsFramebufferVPrintfNewLine(const char *fmt, va_list args) 
+void syErrorFramebufVPrintfNewLine(const char *fmt, va_list args)
 {
     u32 glyph;
     s32 ans;
     char buf[0x100]; // sp48
     u8 *csr;
 
-    ans = _Printf(gsMemcpyAdvance, buf, fmt, args);
+    ans = _Printf(syErrorMemcpyAdvance, buf, fmt, args);
 
     if (ans > 0) 
     {
@@ -774,25 +772,25 @@ void gsFramebufferVPrintfNewLine(const char *fmt, va_list args)
 
         while (ans > 0) 
         {
-            glyph = dAsciiToGlyphIDs[*csr & 0x7F];
+            glyph = dSYErrorAsciiToGlyphIDs[*csr & 0x7F];
 
             if (*csr == '\n') 
             {
-                dCrashMesgPositionX = 30;
-                dCrashMesgPositionY += 10;
+                dSYErrorMesgPositionX = 30;
+                dSYErrorMesgPositionY += 10;
             } 
             else
             {
                 if (glyph != 0xFF) 
                 { 
-                    gsFramebufferWriteGlyph(dCrashMesgPositionX, dCrashMesgPositionY, glyph);
+                    syErrorFramebufWriteGlyph(dSYErrorMesgPositionX, dSYErrorMesgPositionY, glyph);
                 }
-                dCrashMesgPositionX += 6;
+                dSYErrorMesgPositionX += 6;
 
-                if (gCurrScreenWidth - 30 < dCrashMesgPositionX)
+                if (gSYDisplayResWidth - 30 < dSYErrorMesgPositionX)
                 {
-                    dCrashMesgPositionX = 30;
-                    dCrashMesgPositionY += 10;
+                    dSYErrorMesgPositionX = 30;
+                    dSYErrorMesgPositionY += 10;
                 }
             }
             ans--;
@@ -806,70 +804,70 @@ void gsFramebufferVPrintfNewLine(const char *fmt, va_list args)
  * printf to an active crash/debug screen.
  *
  * You can call this function to print to a debug screen only when
- * a screen is active. Thus, you want to wrap calls to `gsDebugPrintf`
+ * a screen is active. Thus, you want to wrap calls to `syErrorDebugPrintf`
  * in a function and have that wrapper function to be called when a
- * crash occurs. You can do that by passing that wrapper function to `gsSetCrashPrintfunction`,
- * or by calling `gsFatalRunPrintFunc` with the wrapper function.
+ * crash occurs. You can do that by passing that wrapper function to `syErrorSetFuncPrint`,
+ * or by calling `syErrorRunFuncPrint` with the wrapper function.
  */
-void gsDebugPrintf(const char *fmt, ...) 
+void syErrorDebugPrintf(const char *fmt, ...)
 {
     va_list ap;
 
     va_start(ap, fmt);
     VA_LIST_ALIGN(ap, fmt);
 
-    gsFramebufferVPrintfNewLine(fmt, ap);
+    syErrorFramebufVPrintfNewLine(fmt, ap);
 
     va_end(ap);
 }
 
-void gsCrashReportCPUBreakFault(UNUSED void *arg)
+void syErrorReportCPUBreakFault(UNUSED void *arg)
 {
     OSMesg msg[1];
     OSThread *thread;
 
-    osSetEventMesg(OS_EVENT_CPU_BREAK, &sSysMesgQueueCPUFault, HAL_CRASH_MSG_CPU_BREAK);
-    osSetEventMesg(OS_EVENT_FAULT, &sSysMesgQueueCPUFault, HAL_CRASH_MSG_FAULT);
+    osSetEventMesg(OS_EVENT_CPU_BREAK, &sSYErrorMesgQueueCPUFault, HAL_CRASH_MSG_CPU_BREAK);
+    osSetEventMesg(OS_EVENT_FAULT, &sSYErrorMesgQueueCPUFault, HAL_CRASH_MSG_FAULT);
 
     do 
     {
-        osRecvMesg(&sSysMesgQueueCPUFault, msg, OS_MESG_BLOCK);
-        thread = gsGetFaultedThread();
+        osRecvMesg(&sSYErrorMesgQueueCPUFault, msg, OS_MESG_BLOCK);
+        thread = syErrorGetFaultThread();
     }
     while (thread == NULL);
 
-    dActiveCrashScreen = TRUE;
+    dSYErrorIsScreenActive = TRUE;
 
-    gsWaitForFramebufferOrButtons(0, NULL);
-    gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
-    gsWaitForFramebufferOrButtons(0, NULL);
-    gsWaitForFramebufferOrButtons(U_JPAD | U_CBUTTONS, NULL);
-    gsWaitForFramebufferOrButtons(0, NULL);
-    gsWaitForFramebufferOrButtons(A_BUTTON | L_JPAD, NULL);
-    gsWaitForFramebufferOrButtons(0, NULL);
-    gsWaitForFramebufferOrButtons(B_BUTTON | R_JPAD, NULL);
-    gsWaitForFramebufferOrButtons(0, NULL);
-    gsWaitForFramebufferOrButtons(D_JPAD | D_CBUTTONS, NULL);
+    syErrorWaitFramebufOrController(0, NULL);
+    syErrorWaitFramebufOrController(Z_TRIG | L_TRIG | R_TRIG, NULL);
+    syErrorWaitFramebufOrController(0, NULL);
+    syErrorWaitFramebufOrController(U_JPAD | U_CBUTTONS, NULL);
+    syErrorWaitFramebufOrController(0, NULL);
+    syErrorWaitFramebufOrController(A_BUTTON | L_JPAD, NULL);
+    syErrorWaitFramebufOrController(0, NULL);
+    syErrorWaitFramebufOrController(B_BUTTON | R_JPAD, NULL);
+    syErrorWaitFramebufOrController(0, NULL);
+    syErrorWaitFramebufOrController(D_JPAD | D_CBUTTONS, NULL);
 
-    gsFramebufferPrintThreadStatus(thread, TRUE);
+    syErrorFramebufPrintThreadStatus(thread, TRUE);
 
-    if (sCrashPrintfunction != NULL)
+    if (sSYErrorFuncPrint != NULL)
     {
         while (TRUE) 
         {
-            gsWaitForFramebufferOrButtons(0, NULL);
-            gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+            syErrorWaitFramebufOrController(0, NULL);
+            syErrorWaitFramebufOrController(Z_TRIG | L_TRIG | R_TRIG, NULL);
 
-            gsFramebufferDrawBlackRect(25, 20, 270, 210);
+            syErrorFramebufDrawBlackRectangle(25, 20, 270, 210);
 
-            gsResetCrashMesgCursor(30, 25);
+            syErrorResetMesgCursor(30, 25);
 
-            sCrashPrintfunction();
+            sSYErrorFuncPrint();
 
-            gsWaitForFramebufferOrButtons(0, NULL);
-            gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+            syErrorWaitFramebufOrController(0, NULL);
+            syErrorWaitFramebufOrController(Z_TRIG | L_TRIG | R_TRIG, NULL);
 
-            gsFramebufferPrintThreadStatus(thread, FALSE);
+            syErrorFramebufPrintThreadStatus(thread, FALSE);
         }
     }
     while (TRUE); // {}
@@ -878,22 +876,22 @@ void gsCrashReportCPUBreakFault(UNUSED void *arg)
 /*
  * Start a debugging thread will crash on `OS_EVENT_CPU_BREAK` or `OS_EVENT_FAULT`
  */
-void gsStartRmonThread8(void) 
+void syErrorStartRmonThread8(void)
 {
-    osCreateMesgQueue(&sSysMesgQueueCPUFault, sSysMesgCPUFault, ARRAY_COUNT(sSysMesgCPUFault));
+    osCreateMesgQueue(&sSYErrorMesgQueueCPUFault, sSYErrorMesgCPUFault, ARRAY_COUNT(sSYErrorMesgCPUFault));
     osCreateThread
     (
-        &sSysThread8CPUFault,
+        &sSYErrorThread8CPUFault,
         8,
-        gsCrashReportCPUBreakFault,
+        syErrorReportCPUBreakFault,
         NULL,
-        sSysThread8CPUStack + ARRAY_COUNT(sSysThread8CPUStack),
+        sSYErrorThread8CPUStack + ARRAY_COUNT(sSYErrorThread8CPUStack),
         OS_PRIORITY_RMON
     );
-    osStartThread(&sSysThread8CPUFault);
+    osStartThread(&sSYErrorThread8CPUFault);
 }
 
-void gsFileLoaderThread8Crash(void *arg)
+void syErrorFileLoaderThread8(void *arg)
 {
     OSMesg msg;
     u32 sp50;
@@ -910,7 +908,7 @@ void gsFileLoaderThread8Crash(void *arg)
     {
         osRecvMesg(mq, &msg, OS_MESG_BLOCK);
 
-        if (dActiveCrashScreen == FALSE)
+        if (dSYErrorIsScreenActive == FALSE)
         {
             if (sp50 == D_8003B6E4)
             {
@@ -922,35 +920,35 @@ void gsFileLoaderThread8Crash(void *arg)
 
             if (count >= 300)
             {
-                dActiveCrashScreen = TRUE;
+                dSYErrorIsScreenActive = TRUE;
                 origPri = osGetThreadPri(NULL);
                 osSetThreadPri(NULL, OS_PRIORITY_RMON);
 
-                gsWaitForFramebufferOrButtons(0, NULL);
-                gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
-                gsWaitForFramebufferOrButtons(0, NULL);
-                gsWaitForFramebufferOrButtons(U_JPAD | U_CBUTTONS, NULL);
-                gsWaitForFramebufferOrButtons(0, NULL);
-                gsWaitForFramebufferOrButtons(A_BUTTON | L_JPAD, NULL);
-                gsWaitForFramebufferOrButtons(0, NULL);
-                gsWaitForFramebufferOrButtons(B_BUTTON | R_JPAD, NULL);
-                gsWaitForFramebufferOrButtons(0, NULL);
-                gsWaitForFramebufferOrButtons(D_JPAD | D_CBUTTONS, NULL);
-                gsFramebufferPrintThreadStatus(&gThread5, TRUE);
+                syErrorWaitFramebufOrController(0, NULL);
+                syErrorWaitFramebufOrController(Z_TRIG | L_TRIG | R_TRIG, NULL);
+                syErrorWaitFramebufOrController(0, NULL);
+                syErrorWaitFramebufOrController(U_JPAD | U_CBUTTONS, NULL);
+                syErrorWaitFramebufOrController(0, NULL);
+                syErrorWaitFramebufOrController(A_BUTTON | L_JPAD, NULL);
+                syErrorWaitFramebufOrController(0, NULL);
+                syErrorWaitFramebufOrController(B_BUTTON | R_JPAD, NULL);
+                syErrorWaitFramebufOrController(0, NULL);
+                syErrorWaitFramebufOrController(D_JPAD | D_CBUTTONS, NULL);
+                syErrorFramebufPrintThreadStatus(&gSYMainThread5, TRUE);
 
-                if (sCrashPrintfunction != NULL)
+                if (sSYErrorFuncPrint != NULL)
                 {
-                    gsWaitForFramebufferOrButtons(0, NULL);
-                    gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
-                    gsFramebufferDrawBlackRect(25, 20, 270, 210);
-                    gsResetCrashMesgCursor(30, 25);
-                    sCrashPrintfunction();
+                    syErrorWaitFramebufOrController(0, NULL);
+                    syErrorWaitFramebufOrController(Z_TRIG | L_TRIG | R_TRIG, NULL);
+                    syErrorFramebufDrawBlackRectangle(25, 20, 270, 210);
+                    syErrorResetMesgCursor(30, 25);
+                    sSYErrorFuncPrint();
                 }
-                gsWaitForFramebufferOrButtons(0, NULL);
+                syErrorWaitFramebufOrController(0, NULL);
                 count = 0;
-                gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
+                syErrorWaitFramebufOrController(Z_TRIG | L_TRIG | R_TRIG, NULL);
                 osSetThreadPri(NULL, origPri);
-                dActiveCrashScreen = FALSE;
+                dSYErrorIsScreenActive = FALSE;
 }
         }
     }
@@ -959,18 +957,18 @@ void gsFileLoaderThread8Crash(void *arg)
 /*
  * Start a debugging thread that checks for hangs in thread5 (maybe?)
  */
-void gsStartRmonThread5Hang(void) 
+void syErrorStartRmonThread5Hang(void)
 {
     osCreateThread
     (
-        &sSysThread8Hang,
+        &sSYErrorThread8Hang,
         8,
-        gsFileLoaderThread8Crash,
+        syErrorFileLoaderThread8,
         NULL,
-        sSysThread8HangStack + sizeof(sSysThread8HangStack),
+        sSYErrorThread8HangStack + sizeof(sSYErrorThread8HangStack),
         THREAD8_MAIN_HANG_PRI
     );
-    osStartThread(&sSysThread8Hang);
+    osStartThread(&sSYErrorThread8Hang);
 }
 
 /*
@@ -979,7 +977,7 @@ void gsStartRmonThread5Hang(void)
  * This will only show the message if the correct button sequence is entered.
  * This does not loop, so you could recover after printing a message.
  */
-void gsFatalPrintf(const char *fmt, ...) 
+void syErrorPrintf(const char *fmt, ...)
 {
     void *fb;
     OSPri origPri;
@@ -989,62 +987,62 @@ void gsFatalPrintf(const char *fmt, ...)
     va_start(ap, fmt);
     VA_LIST_ALIGN(ap, fmt);
 
-    dActiveCrashScreen = TRUE;
+    dSYErrorIsScreenActive = TRUE;
     origPri            = osGetThreadPri(NULL);
     osSetThreadPri(NULL, OS_PRIORITY_RMON);
 
-    gsWaitForFramebufferOrButtons(0, NULL);
-    gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, NULL);
-    gsWaitForFramebufferOrButtons(0, NULL);
-    gsWaitForFramebufferOrButtons(U_JPAD | U_CBUTTONS, NULL);
-    gsWaitForFramebufferOrButtons(0, NULL);
-    gsWaitForFramebufferOrButtons(A_BUTTON | L_JPAD, NULL);
-    gsWaitForFramebufferOrButtons(0, NULL);
-    gsWaitForFramebufferOrButtons(B_BUTTON | R_JPAD, NULL);
-    gsWaitForFramebufferOrButtons(0, NULL);
-    gsWaitForFramebufferOrButtons(D_JPAD | D_CBUTTONS, NULL);
+    syErrorWaitFramebufOrController(0, NULL);
+    syErrorWaitFramebufOrController(Z_TRIG | L_TRIG | R_TRIG, NULL);
+    syErrorWaitFramebufOrController(0, NULL);
+    syErrorWaitFramebufOrController(U_JPAD | U_CBUTTONS, NULL);
+    syErrorWaitFramebufOrController(0, NULL);
+    syErrorWaitFramebufOrController(A_BUTTON | L_JPAD, NULL);
+    syErrorWaitFramebufOrController(0, NULL);
+    syErrorWaitFramebufOrController(B_BUTTON | R_JPAD, NULL);
+    syErrorWaitFramebufOrController(0, NULL);
+    syErrorWaitFramebufOrController(D_JPAD | D_CBUTTONS, NULL);
 
     do
     {
         fb = osViGetCurrentFramebuffer();
-        gsFramebufferDrawBlackRect(25, 20, 270, 25);
-        gsResetCrashMesgCursor(30, 25);
-        gsFramebufferVPrintfNewLine(fmt, ap);
+        syErrorFramebufDrawBlackRectangle(25, 20, 270, 25);
+        syErrorResetMesgCursor(30, 25);
+        syErrorFramebufVPrintfNewLine(fmt, ap);
     }
-    while (gsWaitForFramebufferOrButtons(0, fb) || gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, fb));
+    while (syErrorWaitFramebufOrController(0, fb) || syErrorWaitFramebufOrController(Z_TRIG | L_TRIG | R_TRIG, fb));
 
     va_end(ap);
     osSetThreadPri(NULL, origPri);
-    dActiveCrashScreen = FALSE;
+    dSYErrorIsScreenActive = FALSE;
 }
 
-/**
- * Show a crash screen and call `printFn` to print to the crash screen
+/*
+ * Show a crash screen and call `func_print` to print to the crash screen
  *
- * `printFn` is a wrapper function with calls to `gsDebugPrintf` for printing.
+ * `func_print` is a wrapper function with calls to `syErrorDebugPrintf` for printing.
  * Note that unlike the other crash screens functions, this will show the crash screen
  * without having to enter a button sequence on a controller
  */
-void gsFatalRunPrintFunc(void (*printFn)(void)) 
+void syErrorRunFuncPrint(void (*func_print)(void))
 {
-    OSPri origPri;
-    void *fb;
+    OSPri pri_bak;
+    void *framebuf;
 
-    dActiveCrashScreen = TRUE;
-    origPri            = osGetThreadPri(NULL);
+    dSYErrorIsScreenActive = TRUE;
+    pri_bak = osGetThreadPri(NULL);
     osSetThreadPri(NULL, OS_PRIORITY_RMON);
 
     do
     {
-        fb = osViGetCurrentFramebuffer();
-        gsFramebufferDrawBlackRect(25, 20, 270, 210);
-        gsResetCrashMesgCursor(30, 25);
-        printFn();
+        framebuf = osViGetCurrentFramebuffer();
+        syErrorFramebufDrawBlackRectangle(25, 20, 270, 210);
+        syErrorResetMesgCursor(30, 25);
+        func_print();
     } 
-    while (gsWaitForFramebufferOrButtons(0, fb) || gsWaitForFramebufferOrButtons(Z_TRIG | L_TRIG | R_TRIG, fb));
+    while (syErrorWaitFramebufOrController(0, framebuf) || syErrorWaitFramebufOrController(Z_TRIG | L_TRIG | R_TRIG, framebuf));
 
-    osSetThreadPri(NULL, origPri);
-    dActiveCrashScreen = FALSE;
+    osSetThreadPri(NULL, pri_bak);
+    dSYErrorIsScreenActive = FALSE;
 }
 
 #pragma GCC diagnostic pop

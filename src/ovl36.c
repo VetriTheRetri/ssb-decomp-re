@@ -266,7 +266,7 @@ void mvOpeningMarioInitFighterStagePanel()
 	{
 		while (TRUE)
 		{
-			gsFatalPrintf("wrong number of mapobject\n");
+			syErrorPrintf("wrong number of mapobject\n");
 			scManagerRunPrintGObjStatus();
 		}
 	}

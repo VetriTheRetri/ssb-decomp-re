@@ -1,17 +1,15 @@
 #include "ml.h"
 
-#include <sys/crash.h>
-
+#include <sys/error.h>
 #include <ssb_types.h>
-
 #include <PR/ultratypes.h>
 
-void mlResetBumpAlloc(mlBumpAllocRegion *bp) 
+void mlResetBumpAlloc(mlRegion *bp) 
 {
     bp->ptr = bp->start;
 }
 
-void* mlSetBumpAlloc(mlBumpAllocRegion *bp, u32 size, u32 alignment) 
+void* mlSetBumpAlloc(mlRegion *bp, size_t size, u32 alignment)
 {
     u8 *aligned;
     u32 offset;
@@ -27,13 +25,14 @@ void* mlSetBumpAlloc(mlBumpAllocRegion *bp, u32 size, u32 alignment)
 
     if (bp->end < bp->ptr) 
     {
-        gsFatalPrintf("ml : alloc overflow #%d\n", bp->id);
-        while (TRUE); // { }
+        syErrorPrintf("ml : alloc overflow #%d\n", bp->id);
+
+        while (TRUE);
     }
     return (void*)aligned;
 }
 
-void mlInitBumpAlloc(mlBumpAllocRegion *bp, u32 id, void *start, u32 size) 
+void mlInitBumpAlloc(mlRegion *bp, u32 id, void *start, size_t size) 
 {
     bp->id    = id;
     bp->ptr   = start;

@@ -1,8 +1,8 @@
 #include <sys/develop.h>
 #include <gm/battle.h>
+#include <sc/scene.h>
 #include <gr/ground.h>
 #include <ovl0/reloc_data_mgr.h>
-#include <ssb_types.h>
 #include <sys/objdraw.h>
 
 #define F_DEG_TO_RAD(x) ((f32)(((x) * PI32) / 180.0F))

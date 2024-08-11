@@ -156,7 +156,7 @@ s32 sc1PManagerGetShuffledKirbyCopy(u16 flags, s32 random)
 }
 
 // 0x800D6590
-void sc1PManagerTryUnlockNewcomers(void)
+void sc1PManagerTrySetChallengers(void)
 {
     if
     (
@@ -488,7 +488,7 @@ void sc1PManagerUpdateScene(void)
 
         gSceneData.spgame_stage--;
 
-        sc1PManagerTryUnlockNewcomers();
+        sc1PManagerTrySetChallengers();
     }
 skip_main_stages:
     if (gSceneData.spgame_stage >= nGM1PGameStageChallengerStart)

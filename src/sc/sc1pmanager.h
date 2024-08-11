@@ -1,6 +1,9 @@
 #ifndef _SC1PMANAGER_H_
 #define _SC1PMANAGER_H_
 
+#include <ssb_types.h>
+#include <sys/obj.h>
+
 // 0x80130D60
 extern u8 sSC1PManagerScenePrev;
 
@@ -24,5 +27,13 @@ extern u8 sSC1PManagerKirbyTeamFinalCopy;
 
 // 0x80130D76
 extern u8 D_ovl2_80130D76;
+
+extern s32 sc1PManagerGetShuffledVariation(u16 flag);
+extern s32 sc1PManagerGetShuffledFighterKind(u16 variation_flags, u16 ft_flags, s32 random);
+extern s32 sc1PManagerGetShuffledKirbyCopy(u16 flags, s32 random);
+extern void sc1PManagerTrySetChallengers(void);
+extern sb32 sc1PManagerCheckUnlockSoundTest(void);
+extern void sc1PManagerTrySaveBackup(sb32 is_complete_spgame);
+extern void sc1PManagerUpdateScene(void);
 
 #endif

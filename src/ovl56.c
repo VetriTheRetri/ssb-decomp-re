@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <gm/battle.h>
+#include <sc/scene.h>
 #include <ovl0/reloc_data_mgr.h>
 
 // Externs

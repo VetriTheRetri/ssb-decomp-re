@@ -2,6 +2,7 @@
 #include <if/interface.h>
 #include <gr/ground.h>
 #include <gm/battle.h>
+#include <sc/scene.h>
 
 extern uintptr_t D_NF_800A5240;
 extern uintptr_t D_NF_8018E7E0;

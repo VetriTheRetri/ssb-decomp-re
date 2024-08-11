@@ -1,6 +1,7 @@
 #include <gr/ground.h>
 #include <cm/camera.h>
 #include <gm/battle.h>
+#include <sc/scene.h>
 
 extern void func_ovl0_800CCF00(GObj*);
 

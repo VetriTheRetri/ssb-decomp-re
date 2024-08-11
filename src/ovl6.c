@@ -3,11 +3,10 @@
 #include <gr/ground.h>
 #include <if/interface.h>
 #include <gm/battle.h>
+#include <sc/scene.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "ovl6.h"
-
-extern s32 gSC1PManagerTotalDamage;
 
 // 8018D0C0
 void func_ovl6_8018D0C0() {}

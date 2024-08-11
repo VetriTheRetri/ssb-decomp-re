@@ -1,4 +1,5 @@
 #include <gm/battle.h>
+#include <sc/scene.h>
 #include <gm/gmsound.h>
 #include <sys/thread6.h>
 #include <sys/objdraw.h>

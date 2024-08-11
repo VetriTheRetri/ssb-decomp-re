@@ -3,7 +3,10 @@
 
 #include <ssb_types.h>
 #include <sys/obj.h>
+#include <sc/scdef.h>
 #include <sc/scoverlay.h>
+
+#include "scfunctions.h"
 
 #define SCMANAGER_OVERLAY_DEFINE(OVL_NUM) 		\
 {												\

@@ -1,7 +1,7 @@
 sc1PManagerGetShuffledVariation = 0x800D6490; // segment:ovl2
 sc1PManagerGetShuffledFighterKind = 0x800D6508; // segment:ovl2
 sc1PManagerGetShuffledKirbyCopy = 0x800D6554; // segment:ovl2
-sc1PManagerTryUnlockNewcomers = 0x800D6590; // segment:ovl2
+sc1PManagerTrySetChallengers = 0x800D6590; // segment:ovl2
 sc1PManagerCheckUnlockSoundTest = 0x800D6630; // segment:ovl2
 sc1PManagerTrySaveBackup = 0x800D6738; // segment:ovl2
 sc1PManagerUpdateScene = 0x800D67DC; // segment:ovl2

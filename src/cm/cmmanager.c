@@ -1056,11 +1056,11 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     gcPrepCameraMatrix(gDisplayListHead, cam);
     gcRunProcCamera(cam, 0);
 
-    gIFPlayerCommonInterface.ifmagnify_mode = 0;
-    gIFPlayerCommonInterface.arrows_flags = 0;
+    gIFCommonPlayerInterface.ifmagnify_mode = 0;
+    gIFCommonPlayerInterface.arrows_flags = 0;
 
-    // gIFPlayerCommonInterface.unk1 = 0;
-    // gIFPlayerCommonInterface.unkE = 0;
+    // gIFCommonPlayerInterface.unk1 = 0;
+    // gIFCommonPlayerInterface.unkE = 0;
 
     gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
@@ -1207,7 +1207,7 @@ void func_ovl2_8010DC24(GObj *camera_gobj)
 {
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    if (gIFPlayerCommonInterface.ifmagnify_mode != 0)
+    if (gIFCommonPlayerInterface.ifmagnify_mode != 0)
     {
         Vp_t *viewport;
         s32 ulx, uly, lrx, lry;
@@ -1266,11 +1266,11 @@ sb32 func_ovl2_8010DE48(Mtx *mtx, s32 arg1, Gfx **dl)
 
     func_ovl2_800EB924(CameraGetStruct(gCMManagerCameraGObj), spA4, &sp50, &var_x, &var_y);
 
-    gIFPlayerCommonInterface.ifmagnify_scale = (var_y / 18.0F);
+    gIFCommonPlayerInterface.ifmagnify_scale = (var_y / 18.0F);
 
-    if (gIFPlayerCommonInterface.ifmagnify_scale > 3.0F)
+    if (gIFCommonPlayerInterface.ifmagnify_scale > 3.0F)
     {
-        gIFPlayerCommonInterface.ifmagnify_scale = 3.0F;
+        gIFCommonPlayerInterface.ifmagnify_scale = 3.0F;
     }
     syMatrixOrthoF(spA4, -450.0F, 450.0F, -450.0F, 450.0F, 256.0F, 39936.0F, 1.0F);
     guMtxCatF(sp64, spA4, spA4);
@@ -1310,7 +1310,7 @@ sb32 func_ovl2_8010E10C(Mtx *mtx, s32 arg1, Gfx **dl)
 // 0x8010E134
 void func_ovl2_8010E134(GObj *camera_gobj)
 {
-    if (gIFPlayerCommonInterface.ifmagnify_mode != 0)
+    if (gIFCommonPlayerInterface.ifmagnify_mode != 0)
     {
         Camera *cam = CameraGetStruct(camera_gobj);
 
@@ -1331,7 +1331,7 @@ void func_ovl2_8010E1A4(void)
 
     cam->flags |= 0x4;
 
-    gIFPlayerCommonInterface.ifmagnify_mode = 0;
+    gIFCommonPlayerInterface.ifmagnify_mode = 0;
 }
 
 // 0x8010E254
@@ -1339,7 +1339,7 @@ void func_ovl2_8010E254(GObj *camera_gobj)
 {
     gcSetCameraMatrixMode(1);
 
-    if (gIFPlayerCommonInterface.arrows_flags != 0)
+    if (gIFCommonPlayerInterface.arrows_flags != 0)
     {
         Camera *cam = CameraGetStruct(camera_gobj);
 
@@ -1359,7 +1359,7 @@ void func_ovl2_8010E2D4(void)
 
     cam->flags |= 0x4;
 
-    gIFPlayerCommonInterface.arrows_flags = 0;
+    gIFCommonPlayerInterface.arrows_flags = 0;
 }
 
 // 0x8010E374

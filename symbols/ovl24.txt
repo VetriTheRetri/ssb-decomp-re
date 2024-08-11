@@ -47,7 +47,7 @@ func_ovl24_801348EC = 0x801348EC; // segment:ovl24
 func_ovl24_801348F4 = 0x801348F4; // segment:ovl24
 func_ovl24_801349F8 = 0x801349F8; // segment:ovl24
 func_ovl24_80134B38 = 0x80134B38; // segment:ovl24
-classic_map_entry = 0x80134D98; // segment:ovl24
+sc1PTitleCardStartScene = 0x80134D98; // segment:ovl24
 
 .L_ovl24_80133B58_ = 0x80133B58; // segment:ovl24
 .L_ovl24_80133C18_ = 0x80133C18; // segment:ovl24

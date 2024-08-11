@@ -519,7 +519,7 @@ typedef struct gmSceneInfo
 	u8 gr_kind;
 	u8 unk10;
 	ub8 is_select_continue;
-	ub8 is_reset; // Player did A + B + R + Z button combination
+	ub8 is_reset; 				// Player did A + B + R + Z button combination
 	u8 spgame_player;
 	u8 ft_kind;
 	u8 costume;
@@ -530,7 +530,7 @@ typedef struct gmSceneInfo
 	u32 spgame_score;
 	u32 continues_used;
 	u32 bonus_count;	   		// Number of bonuses player acquired throughout the game
-	u32 bonus_get_mask[3]; 		// Different bonuses the player has accumulated per match
+	u32 bonus_get_mask[3]; 		// Different bonuses the player has accumulated per match; also includes total Bonus Stage tasks completed in last member
 	u8 bonus_tasks_current;
 	u8 bonus_char_id;
 	u8 bonus_costume_id;

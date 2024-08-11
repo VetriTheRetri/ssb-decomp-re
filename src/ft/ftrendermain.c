@@ -1146,11 +1146,11 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
                     fp->x18D_flag_b5 = TRUE;
 
-                    if (gIFPlayerCommonInterface.is_ifmagnify_display != FALSE)
+                    if (gIFCommonPlayerInterface.is_ifmagnify_display != FALSE)
                     {
                         if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1))
                         {
-                            gIFPlayerCommonInterface.ifmagnify_mode = 1;
+                            gIFCommonPlayerInterface.ifmagnify_mode = 1;
 
                             ifCommonPlayerArrowsUpdateFlags(cam_pos_x, cam_pos_y);
                         }

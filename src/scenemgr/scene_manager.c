@@ -207,7 +207,7 @@ void options_vs_entry();
 void overlay_set11_entry();
 void mnMessageStartScene();
 void scChallengerStartScene();
-void classic_map_entry();
+void sc1PTitleCardStartScene();
 void screen_adjust_entry();
 void vs_css_entry();
 void mnStageStartScene();
@@ -392,7 +392,7 @@ void start_scene_manager(u32 set)
 				syDmaLoadOverlay(&D_800A3070[2]);
 				syDmaLoadOverlay(&D_800A3070[1]);
 				syDmaLoadOverlay(&D_800A3070[24]);
-				classic_map_entry();
+				sc1PTitleCardStartScene();
 				break;
 			case 15:
 				syDmaLoadOverlay(&D_800A3070[2]);

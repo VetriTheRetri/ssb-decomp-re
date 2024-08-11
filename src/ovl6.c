@@ -7,6 +7,8 @@
 
 #include "ovl6.h"
 
+extern s32 gSC1PManagerTotalDamage;
+
 // 8018D0C0
 void func_ovl6_8018D0C0() {}
 
@@ -156,7 +158,7 @@ void func_ovl6_8018D5C8() { scBonusGame_InitBonus1Targets(); }
 // 8018D5E8
 void func_ovl6_8018D5E8()
 {
-	D_ovl2_801313F4 = rdManagerGetFileWithExternHeap(
+	gGRCommonStruct.bonus2.unk_bonus2_0x4 = rdManagerGetFileWithExternHeap(
 		(u32)&D_NF_00000088, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_00000088), 0x10U));
 }
 
@@ -561,8 +563,8 @@ void func_ovl6_8018E344()
 // 8018E5D8
 void scBonusGame_SetPlayerInterfacePositions()
 {
-	gIFPlayerCommonInterface.ifplayers_pos_x = scBonusGame_Player_InterfacePositions;
-	gIFPlayerCommonInterface.ifplayers_pos_y = 210;
+	gIFCommonPlayerInterface.ifplayers_pos_x = scBonusGame_Player_InterfacePositions;
+	gIFCommonPlayerInterface.ifplayers_pos_y = 210;
 }
 
 // 8018E5F8
@@ -651,7 +653,7 @@ void scBonusGame_InitBonusGame()
 // 8018E8D0
 void scBonusGame_SetBonusEndStats(sb32 is_practice)
 {
-	g1PGameTotalDamageTaken += gBattleState->players[gSceneData.spgame_player].total_damage_all;
+	gSC1PManagerTotalDamage += gBattleState->players[gSceneData.spgame_player].total_damage_all;
 
 	if (is_practice != FALSE)
 	{

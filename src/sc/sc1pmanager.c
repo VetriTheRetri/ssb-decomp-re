@@ -4,7 +4,7 @@
 #include <sc/scene.h>
 #include <sys/dma.h>
 
-extern void classic_map_entry();
+extern void sc1PTitleCardStartScene();
 
 // // // // // // // // // // // //
 //                               //
@@ -15,19 +15,19 @@ extern void classic_map_entry();
 // 0x80130D60
 u8 sSC1PManagerScenePrev;
 
-// 0x80130D64 - Total time taken to complete 1P Game
-u32 sSC1PManagerTotalTime;
+// 0x80130D64 - Total time (in frames) taken to complete 1P Game
+u32 gSC1PManagerTotalTimeTics;
 
 // 0x80130D68 - Total times fallen in 1P Game
-s32 sSC1PManagerTotalFalls;
+s32 gSC1PManagerTotalFalls;
 
 // 0x80130D6C - Total damage taken in 1P Game
-s32 sSC1PManagerTotalDamage;
+s32 gSC1PManagerTotalDamage;
 
 // 0x80130D70 - Starts at 0, increments by 1 each time a continue is used; lowers CP difficulty (on current stage?)
-s32 sSC1PManagerLevelDrop;
+s32 gSC1PManagerLevelDrop;
 
-// 0x80130D74 - Starts at 2, each time this reaches 0 it increments sSC1PManagerLevelDrop
+// 0x80130D74 - Starts at 2, each time this reaches 0 it increments gSC1PManagerLevelDrop
 u8 sSC1PManagerLevelGuard;
 
 // 0x80130D75 - Copy ability of final Kirby on Kirby Team in 1P Game
@@ -168,7 +168,7 @@ void sc1PManagerTryUnlockNewcomers(void)
     {
         gSceneData.spgame_stage = nGM1PGameStageNess;
     }
-    else if (!(gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_CAPTAIN) && (sSC1PManagerTotalTime < I_MIN_TO_FRAMES(12)))
+    else if (!(gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_CAPTAIN) && (gSC1PManagerTotalTimeTics < I_MIN_TO_FRAMES(12)))
     {
         // Captain Falcon's unlock criteria is 12 minutes instead of the reported 20???
         gSceneData.spgame_stage = nGM1PGameStageCaptain;
@@ -284,11 +284,11 @@ void sc1PManagerUpdateScene(void)
     gSceneData.continues_used = 0;
     gSceneData.bonus_count = 0;
 
-    sSC1PManagerTotalTime = 0;
+    gSC1PManagerTotalTimeTics = 0;
 
-    sSC1PManagerTotalFalls = 0;
-    sSC1PManagerTotalDamage = 0;
-    sSC1PManagerLevelDrop = 0;
+    gSC1PManagerTotalFalls = 0;
+    gSC1PManagerTotalDamage = 0;
+    gSC1PManagerLevelDrop = 0;
     sSC1PManagerLevelGuard = 2;
 
     player = gSceneData.spgame_player;
@@ -357,7 +357,7 @@ void sc1PManagerUpdateScene(void)
             gSceneData.scene_previous = nSCKind1PGame;
             gSceneData.scene_current = nSCKind1PTitleCard;
 
-            classic_map_entry();
+            sc1PTitleCardStartScene();
 
             switch (gSceneData.spgame_stage)
             {
@@ -408,17 +408,16 @@ void sc1PManagerUpdateScene(void)
                     D_800A4B18.players[gSceneData.spgame_player].stock_count = gSaveData.spgame_stock_count;
 
                     gSceneData.spgame_stage--;
-                    sSC1PManagerLevelGuard--;
 
-                    if (!(sSC1PManagerLevelGuard))
+                    if (--sSC1PManagerLevelGuard == 0)
                     {
                         sSC1PManagerLevelGuard = 2;
 
-                        sSC1PManagerLevelDrop++;
+                        gSC1PManagerLevelDrop++;
 
-                        if (sSC1PManagerLevelDrop > 9)
+                        if (gSC1PManagerLevelDrop > 9)
                         {
-                            sSC1PManagerLevelDrop = 9;
+                            gSC1PManagerLevelDrop = 9;
                         }
                     }
                 }
@@ -434,7 +433,7 @@ void sc1PManagerUpdateScene(void)
             }
             else
             {
-                sSC1PManagerLevelDrop = 0;
+                gSC1PManagerLevelDrop = 0;
                 sSC1PManagerLevelGuard = 2;
 
                 bonus_stat_count = 0;

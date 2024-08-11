@@ -19,7 +19,7 @@ extern void options_vs_entry(void);                 // ovl 20
 extern void overlay_set11_entry(void);              // ovl 21
 extern void mnMessageStartScene(void);              // ovl 22
 extern void scChallengerStartScene(void);              // ovl 23
-extern void classic_map_entry(void);                // ovl 24
+extern void sc1PTitleCardStartScene(void);                // ovl 24
 extern void screen_adjust_entry(void);              // ovl 25
 extern void vs_css_entry(void);                     // ovl 26
 extern void mnStageStartScene(void);               // ovl 30

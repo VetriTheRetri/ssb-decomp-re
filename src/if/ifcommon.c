@@ -162,7 +162,10 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 // // // // // // // // // // // //
 
 // 0x80131570 - Padding?
-s32 sIFCommonPad0x80131570[10];
+s32 sIFCommonPad0x80131570[4];
+
+// 0x80131580
+ifPlayerCommon gIFCommonPlayerInterface;
 
 // 0x80131598
 ifPlayerDamage sIFCommonPlayerDamageInterface[GMBATTLE_PLAYERS_MAX];
@@ -204,7 +207,7 @@ Sprite *sIFCommonItemArrowSprite;
 s32 sIFCommonBattlePlacement;
 
 // 0x801317F8 - Padding?
-// s32 sIFCommonPadding801317F8;
+s32 sIFCommonPad0x801317F8;
 
 // 0x801317FC
 u32 D_ovl2_801317FC;
@@ -213,7 +216,7 @@ u32 D_ovl2_801317FC;
 u32 sIFCommonTimerIsStarted; // Confirmed u32 by ifCommonBattleUpdateInterfaceAll
 
 // 0x80131804 - Padding?
-// s32 sIFCommonPadding80131804;
+s32 sIFCommonPad0x80131804;
 
 // 0x80131808 - Array of sound effect IDs to play on game end
 u16 sIFCommonBattleEndSoundQueue[16];
@@ -231,7 +234,7 @@ void (*sIFCommonBattleInterfaceProcUpdate)();
 void (*sIFCommonBattleInterfaceProcSet)();
 
 // 0x80131834 - Padding?
-// s32 sIFCommonPadding80131834;
+s32 sIFCommonPad0x80131834;
 
 // 0x80131838
 ifPlayerSteal sIFCommonPlayerStealInterface[GMBATTLE_PLAYERS_MAX];
@@ -748,7 +751,7 @@ void ifCommonPlayerDamageUpdateDigits(GObj *interface_gobj)
 
     pos_x = (ifCommonPlayerDamageGetDigitOffset(char_count, digits) * scale * 0.5F);
 
-    pos_x = gIFPlayerCommonInterface.ifplayers_pos_x[player] + pos_x;
+    pos_x = gIFCommonPlayerInterface.ifplayers_pos_x[player] + pos_x;
 
     if ((scale > 1.0F) && (pos_adjust_wait == 0))
     {
@@ -779,7 +782,7 @@ void ifCommonPlayerDamageUpdateDigits(GObj *interface_gobj)
             offset = dIFCommonPlayerDamageDigitWidths[sprite_id] * scale;
 
             ifchar->pos.x = (pos_x - (offset * 0.5F));
-            ifchar->pos.y = gIFPlayerCommonInterface.ifplayers_pos_y;
+            ifchar->pos.y = gIFCommonPlayerInterface.ifplayers_pos_y;
 
             pos_x -= offset;
 
@@ -1006,8 +1009,8 @@ void ifCommonPlayerDamageSetDigitAttr(void)
 // 0x8010F3A0
 void ifCommonPlayerDamageSetDigitPositions(void)
 {
-    gIFPlayerCommonInterface.ifplayers_pos_x = dIFCommonPlayerDamagePositionOffsetsX;
-    gIFPlayerCommonInterface.ifplayers_pos_y = 210;
+    gIFCommonPlayerInterface.ifplayers_pos_x = dIFCommonPlayerDamagePositionOffsetsX;
+    gIFCommonPlayerInterface.ifplayers_pos_y = 210;
 }
 
 // 0x8010F3C0
@@ -1044,8 +1047,8 @@ void ifCommonPlayerDamageInitInterface(void)
             {
                 sobj = gcAppendSObjWithSprite(interface_gobj, ft_sprites->emblem);
 
-                sobj->pos.x = (s32)((gIFPlayerCommonInterface.ifplayers_pos_x[player] - (sobj->sprite.width  * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsX[player]);
-                sobj->pos.y = (s32)((gIFPlayerCommonInterface.ifplayers_pos_y         - (sobj->sprite.height * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsY[player]);
+                sobj->pos.x = (s32)((gIFCommonPlayerInterface.ifplayers_pos_x[player] - (sobj->sprite.width  * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsX[player]);
+                sobj->pos.y = (s32)((gIFCommonPlayerInterface.ifplayers_pos_y         - (sobj->sprite.height * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsY[player]);
 
                 sobj->sprite.scalex = sobj->sprite.scaley = dIFCommonPlayerDamageEmblemScales[player];
 
@@ -1154,8 +1157,8 @@ void ifCommonPlayerStockMultiProcRender(GObj *interface_gobj)
 
                         lt_sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
 
-                        lt_sobj->pos.x = ((gIFPlayerCommonInterface.ifplayers_pos_x[player] + dIFCommonPlayerStocksIconOffsetsX[player] + (stock_order * 10)) - (lt_sobj->sprite.width * 0.5F));
-                        lt_sobj->pos.y = ((gIFPlayerCommonInterface.ifplayers_pos_y - (s32)(lt_sobj->sprite.height * 0.5F)) - 20);
+                        lt_sobj->pos.x = ((gIFCommonPlayerInterface.ifplayers_pos_x[player] + dIFCommonPlayerStocksIconOffsetsX[player] + (stock_order * 10)) - (lt_sobj->sprite.width * 0.5F));
+                        lt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(lt_sobj->sprite.height * 0.5F)) - 20);
 
                         lt_sobj->sprite.attr &= ~SP_HIDDEN;
                     }
@@ -1170,7 +1173,7 @@ void ifCommonPlayerStockMultiProcRender(GObj *interface_gobj)
             {
                 digit_count = ifCommonPlayerDamageGetSpecialArrayID(stock_count, digits);
 
-                trunc_pos_x = gIFPlayerCommonInterface.ifplayers_pos_x[player] + dIFCommonPlayerStocksDigitOffsetsX[player];
+                trunc_pos_x = gIFCommonPlayerInterface.ifplayers_pos_x[player] + dIFCommonPlayerStocksDigitOffsetsX[player];
 
                 gt_sobj = SObjGetStruct(interface_gobj);
 
@@ -1179,7 +1182,7 @@ void ifCommonPlayerStockMultiProcRender(GObj *interface_gobj)
                 gt_sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
 
                 gt_sobj->pos.x = ((trunc_pos_x - 22) - (gt_sobj->sprite.width * 0.5F));
-                gt_sobj->pos.y = ((gIFPlayerCommonInterface.ifplayers_pos_y - (s32)(gt_sobj->sprite.height * 0.5F)) - 20);
+                gt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(gt_sobj->sprite.height * 0.5F)) - 20);
 
                 gt_sobj->sprite.attr &= ~SP_HIDDEN;
 
@@ -1188,7 +1191,7 @@ void ifCommonPlayerStockMultiProcRender(GObj *interface_gobj)
                 gt_sobj->sprite = *spGetSpriteFromFile(gGMCommonFiles[4], dIFCommonPlayerStockDigitSpriteOffsets[10]);
 
                 gt_sobj->pos.x = ((trunc_pos_x + -10.5F) - (gt_sobj->sprite.width * 0.5F));
-                gt_sobj->pos.y = ((gIFPlayerCommonInterface.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
+                gt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
 
                 gt_sobj->sprite.attr &= ~SP_HIDDEN;
 
@@ -1203,7 +1206,7 @@ void ifCommonPlayerStockMultiProcRender(GObj *interface_gobj)
                         gt_sobj->sprite = *spGetSpriteFromFile(gGMCommonFiles[4], dIFCommonPlayerStockDigitSpriteOffsets[digits[digit_order]]);
 
                         gt_sobj->pos.x = ((trunc_pos_x + (digit_order * 8)) - (gt_sobj->sprite.width * 0.5F));
-                        gt_sobj->pos.y = ((gIFPlayerCommonInterface.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
+                        gt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
 
                         gt_sobj->sprite.attr &= ~SP_HIDDEN;
                     }
@@ -1294,8 +1297,8 @@ void ifCommonPlayerStockSingleMakeInterface(s32 player)
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
         sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
 
-        sobj->pos.x = ((gIFPlayerCommonInterface.ifplayers_pos_x[player] + dIFCommonPlayerStocksIconOffsetsX[player]) - (s32)(sobj->sprite.width * 0.5F));
-        sobj->pos.y = ((gIFPlayerCommonInterface.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
+        sobj->pos.x = ((gIFCommonPlayerInterface.ifplayers_pos_x[player] + dIFCommonPlayerStocksIconOffsetsX[player]) - (s32)(sobj->sprite.width * 0.5F));
+        sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
 
         ifSetPlayer(interface_gobj, player);
     }
@@ -1316,9 +1319,9 @@ void ifCommonPlayerStockStealProcUpdate(GObj *interface_gobj)
     {
         func_ovl2_801039B4
         (
-            gIFPlayerCommonInterface.ifplayers_pos_x[ifGetPlayer(interface_gobj)] + 
+            gIFCommonPlayerInterface.ifplayers_pos_x[ifGetPlayer(interface_gobj)] + 
             dIFCommonPlayerStocksIconOffsetsX[ifGetPlayer(interface_gobj)], 
-            gIFPlayerCommonInterface.ifplayers_pos_y - 20
+            gIFCommonPlayerInterface.ifplayers_pos_y - 20
         );
         gcEjectGObj(interface_gobj);
 
@@ -1368,10 +1371,10 @@ void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
             sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
             sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
 
-            sIFCommonPlayerStealInterface[thief].steal_pos_x = ((gIFPlayerCommonInterface.ifplayers_pos_x[stolen] + dIFCommonPlayerStocksIconOffsetsX[stolen]) - (s32)(sobj->sprite.width * 0.5F));
-            sIFCommonPlayerStealInterface[thief].steal_pos_y = ((gIFPlayerCommonInterface.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
+            sIFCommonPlayerStealInterface[thief].steal_pos_x = ((gIFCommonPlayerInterface.ifplayers_pos_x[stolen] + dIFCommonPlayerStocksIconOffsetsX[stolen]) - (s32)(sobj->sprite.width * 0.5F));
+            sIFCommonPlayerStealInterface[thief].steal_pos_y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
 
-            sIFCommonPlayerStealInterface[thief].target_pos_x = ((gIFPlayerCommonInterface.ifplayers_pos_x[thief] + dIFCommonPlayerStocksIconOffsetsX[thief]) - (s32)(sobj->sprite.width * 0.5F));
+            sIFCommonPlayerStealInterface[thief].target_pos_x = ((gIFCommonPlayerInterface.ifplayers_pos_x[thief] + dIFCommonPlayerStocksIconOffsetsX[thief]) - (s32)(sobj->sprite.width * 0.5F));
 
             sobj->pos.x = sIFCommonPlayerStealInterface[thief].steal_pos_x;
             sobj->pos.y = sIFCommonPlayerStealInterface[thief].steal_pos_y;
@@ -1380,7 +1383,7 @@ void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
 
             ifSetPlayer(interface_gobj, thief);
 
-            func_ovl2_80103994(gIFPlayerCommonInterface.ifplayers_pos_x[stolen] + dIFCommonPlayerStocksIconOffsetsX[stolen], gIFPlayerCommonInterface.ifplayers_pos_y - 20);
+            func_ovl2_80103994(gIFCommonPlayerInterface.ifplayers_pos_x[stolen] + dIFCommonPlayerStocksIconOffsetsX[stolen], gIFCommonPlayerInterface.ifplayers_pos_y - 20);
         }
     }
 }
@@ -1423,10 +1426,10 @@ void ifCommonPlayerMagnifyGetPosition(f32 player_pos_x, f32 player_pos_y, Vec2f 
     f32 diag_vt;
     f32 div_xy;
 
-    left = (-gCMManagerCameraStruct.viewport_width / 2) + (20 * gIFPlayerCommonInterface.ifmagnify_scale) + 5;
-    bak_right = right = (+gCMManagerCameraStruct.viewport_width / 2) - (20 * gIFPlayerCommonInterface.ifmagnify_scale) - 5;
-    bak_up = up = (+gCMManagerCameraStruct.viewport_height / 2) - (20 * gIFPlayerCommonInterface.ifmagnify_scale);
-    down = (-gCMManagerCameraStruct.viewport_height / 2) + (20 * gIFPlayerCommonInterface.ifmagnify_scale);
+    left = (-gCMManagerCameraStruct.viewport_width / 2) + (20 * gIFCommonPlayerInterface.ifmagnify_scale) + 5;
+    bak_right = right = (+gCMManagerCameraStruct.viewport_width / 2) - (20 * gIFCommonPlayerInterface.ifmagnify_scale) - 5;
+    bak_up = up = (+gCMManagerCameraStruct.viewport_height / 2) - (20 * gIFCommonPlayerInterface.ifmagnify_scale);
+    down = (-gCMManagerCameraStruct.viewport_height / 2) + (20 * gIFCommonPlayerInterface.ifmagnify_scale);
 
     if (player_pos_x == 0.0F)
     {
@@ -1529,14 +1532,14 @@ void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly
     gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 2, 0x0000, G_TX_RENDERTILE, 0, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD);\
     gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x003C, 0x003C);
 
-    temp_f0 = (s32)((1024.0F / gIFPlayerCommonInterface.ifmagnify_scale) + 0.5F);
+    temp_f0 = (s32)((1024.0F / gIFCommonPlayerInterface.ifmagnify_scale) + 0.5F);
 
     var_ulx = ulx;
     var_uly = uly;
 
-    var_lrx = ((ulx == var_ulx) ? 0 : 1) + (s32)(ulx + (32.0F * gIFPlayerCommonInterface.ifmagnify_scale));
+    var_lrx = ((ulx == var_ulx) ? 0 : 1) + (s32)(ulx + (32.0F * gIFCommonPlayerInterface.ifmagnify_scale));
 
-    var_lry = ((uly == var_uly) ? 0 : 1) + (s32)(uly + (32.0F * gIFPlayerCommonInterface.ifmagnify_scale));
+    var_lry = ((uly == var_uly) ? 0 : 1) + (s32)(uly + (32.0F * gIFCommonPlayerInterface.ifmagnify_scale));
 
     if (var_ulx < gCMManagerCameraStruct.viewport_ulx)
     {
@@ -1607,7 +1610,7 @@ void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, ftStruct *fp)
     s32 lrx;
     s32 lry;
 
-    if (gIFPlayerCommonInterface.is_ifmagnify_display != FALSE)
+    if (gIFCommonPlayerInterface.is_ifmagnify_display != FALSE)
     {
         ifmag = &sIFCommonPlayerMagnifyInterface[fp->player];
 
@@ -1621,7 +1624,7 @@ void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, ftStruct *fp)
 
         gSPMatrix(dls[0]++, &CameraGetStruct(gOMObjCurrentRendering)->ommtx[0]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-        if (gIFPlayerCommonInterface.ifmagnify_mode != 1)
+        if (gIFCommonPlayerInterface.ifmagnify_mode != 1)
         {
             cam = CameraGetStruct(gCMManagerCameraGObj);
 
@@ -1629,15 +1632,15 @@ void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, ftStruct *fp)
 
             gDPSetScissor(dls[0]++, G_SC_NON_INTERLACE, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
         }
-        else gIFPlayerCommonInterface.ifmagnify_mode = 2;
+        else gIFCommonPlayerInterface.ifmagnify_mode = 2;
 
-        scale = (16.0F * gIFPlayerCommonInterface.ifmagnify_scale);
+        scale = (16.0F * gIFCommonPlayerInterface.ifmagnify_scale);
 
         ifCommonPlayerMagnifyUpdateRender(dls, ifmag->color_id, magnify_x - scale, magnify_y - scale);
 
         dl = dls[0];
 
-        scale = (18.0F * gIFPlayerCommonInterface.ifmagnify_scale);
+        scale = (18.0F * gIFCommonPlayerInterface.ifmagnify_scale);
 
         magnify_x -= (scale / 2);
         magnify_y -= (scale / 2);
@@ -1681,7 +1684,7 @@ void ifCommonPlayerMagnifyProcRender(ftStruct *fp)
     ifPlayerMagnify *ifmag;
     Camera *cam;
 
-    if (gIFPlayerCommonInterface.is_ifmagnify_display != FALSE)
+    if (gIFCommonPlayerInterface.is_ifmagnify_display != FALSE)
     {
         ifmag = &sIFCommonPlayerMagnifyInterface[fp->player];
 
@@ -1694,7 +1697,7 @@ void ifCommonPlayerMagnifyProcRender(ftStruct *fp)
 
         dobj->rotate.vec.f.z = atan2f(fp->ifpos_y, fp->ifpos_x) - F_CST_DTOR32(90.0F);
 
-        dobj->scale.vec.f.x = dobj->scale.vec.f.y = gIFPlayerCommonInterface.ifmagnify_scale * 0.5F;
+        dobj->scale.vec.f.x = dobj->scale.vec.f.y = gIFCommonPlayerInterface.ifmagnify_scale * 0.5F;
 
         cam = CameraGetStruct(gCMManagerCameraGObj);
 
@@ -1727,13 +1730,13 @@ void ifCommonPlayerMagnifyMakeInterface(void)
 
         fighter_gobj = fighter_gobj->link_next;
     }
-    gIFPlayerCommonInterface.is_ifmagnify_display = FALSE;
+    gIFCommonPlayerInterface.is_ifmagnify_display = FALSE;
 }
 
 // 0x80111554
 void ifCommonPlayerArrowsLeftProcRender(GObj *interface_gobj)
 {
-    if (gIFPlayerCommonInterface.arrows_flags & 1)
+    if (gIFCommonPlayerInterface.arrows_flags & 1)
     {
         gcDrawDObjTreeForGObj(interface_gobj);
     }
@@ -1742,7 +1745,7 @@ void ifCommonPlayerArrowsLeftProcRender(GObj *interface_gobj)
 // 0x80111588
 void ifCommonPlayerArrowsRightProcRender(GObj *interface_gobj)
 {
-    if (gIFPlayerCommonInterface.arrows_flags & 2)
+    if (gIFCommonPlayerInterface.arrows_flags & 2)
     {
         gcDrawDObjTreeForGObj(interface_gobj);
     }
@@ -1758,7 +1761,7 @@ void ifCommonPlayerArrowsAddAnim(GObj *interface_gobj)
 // 0x801115FC
 void ifCommonPlayerArrowsLeftProcUpdate(GObj *interface_gobj)
 {
-    switch (gIFPlayerCommonInterface.arrows_left_status)
+    switch (gIFCommonPlayerInterface.arrows_left_status)
     {
     case 0:
         break;
@@ -1775,7 +1778,7 @@ void ifCommonPlayerArrowsLeftProcUpdate(GObj *interface_gobj)
 // 0x80111640
 void ifCommonPlayerArrowsRightProcUpdate(GObj *interface_gobj)
 {
-    switch (gIFPlayerCommonInterface.arrows_right_status)
+    switch (gIFCommonPlayerInterface.arrows_right_status)
     {
     case 0:
         break;
@@ -1815,7 +1818,7 @@ void ifCommonPlayerArrowsProcRun(GObj *interface_gobj)
     s32 lr_right = FALSE;
     s32 lr_left = FALSE;
 
-    if (gIFPlayerCommonInterface.is_ifmagnify_display != FALSE)
+    if (gIFCommonPlayerInterface.is_ifmagnify_display != FALSE)
     {
         GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
@@ -1838,23 +1841,23 @@ void ifCommonPlayerArrowsProcRun(GObj *interface_gobj)
         }
         if (lr_left == FALSE)
         {
-            gIFPlayerCommonInterface.arrows_left_status = 0;
+            gIFCommonPlayerInterface.arrows_left_status = 0;
         }
-        else if (gIFPlayerCommonInterface.arrows_left_status == 0)
+        else if (gIFCommonPlayerInterface.arrows_left_status == 0)
         {
-            gIFPlayerCommonInterface.arrows_left_status = 1;
+            gIFCommonPlayerInterface.arrows_left_status = 1;
         }
-        else gIFPlayerCommonInterface.arrows_left_status = 2;
+        else gIFCommonPlayerInterface.arrows_left_status = 2;
 
         if (lr_right == FALSE)
         {
-            gIFPlayerCommonInterface.arrows_right_status = 0;
+            gIFCommonPlayerInterface.arrows_right_status = 0;
         }
-        else if (gIFPlayerCommonInterface.arrows_right_status == 0)
+        else if (gIFCommonPlayerInterface.arrows_right_status == 0)
         {
-            gIFPlayerCommonInterface.arrows_right_status = 1;
+            gIFCommonPlayerInterface.arrows_right_status = 1;
         }
-        else gIFPlayerCommonInterface.arrows_right_status = 2;
+        else gIFCommonPlayerInterface.arrows_right_status = 2;
     }
     if ((lr_left != FALSE) || (lr_right != FALSE))
     {
@@ -1893,7 +1896,7 @@ void ifCommonPlayerArrowsInitInterface(void)
     dobj->translate.vec.f.x = -134.0F;
     dobj->translate.vec.f.y = 0.0F;
 
-    gIFPlayerCommonInterface.arrows_left_status = 0;
+    gIFCommonPlayerInterface.arrows_left_status = 0;
 
     dobj = DObjGetStruct(ifCommonPlayerArrowsMakeInterface(ifCommonPlayerArrowsRightProcRender, ifCommonPlayerArrowsRightProcUpdate));
 
@@ -1901,7 +1904,7 @@ void ifCommonPlayerArrowsInitInterface(void)
     dobj->translate.vec.f.y = 0.0F;
     dobj->rotate.vec.f.z = F_CST_DTOR32(180.0F);
 
-    gIFPlayerCommonInterface.arrows_right_status = 0;
+    gIFCommonPlayerInterface.arrows_right_status = 0;
 
     sIFCommonPlayerMagnifySoundWait = 0;
 }
@@ -1913,9 +1916,9 @@ void ifCommonPlayerArrowsUpdateFlags(f32 x, f32 y)
     {
         if (x > 0.0F)
         {
-            gIFPlayerCommonInterface.arrows_flags |= IFCOMMON_PLAYERARROWS_MASK_RIGHT;
+            gIFCommonPlayerInterface.arrows_flags |= IFCOMMON_PLAYERARROWS_MASK_RIGHT;
         }
-        else gIFPlayerCommonInterface.arrows_flags |= IFCOMMON_PLAYERARROWS_MASK_LEFT;
+        else gIFCommonPlayerInterface.arrows_flags |= IFCOMMON_PLAYERARROWS_MASK_LEFT;
     }
 }
 
@@ -2119,7 +2122,7 @@ void ifCommonAnnounceGoSetStatus(void)
     }
     gBattleState->game_status = nGMBattleGameStatusGo;
 
-    gIFPlayerCommonInterface.is_ifmagnify_display = TRUE;
+    gIFCommonPlayerInterface.is_ifmagnify_display = TRUE;
 }
 
 // 0x80112234
@@ -2982,7 +2985,7 @@ void ifCommonBattlePauseInitInterface(s32 player)
     gmRumbleInitPlayers();
     grWallpaperSetPausePerspUpdate();
 
-    gIFPlayerCommonInterface.is_ifmagnify_display = FALSE;
+    gIFCommonPlayerInterface.is_ifmagnify_display = FALSE;
     gBattleState->game_status = nGMBattleGameStatusPause;
 
     sIFCommonBattlePausePlayer = player;
@@ -3186,7 +3189,7 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
     ifCommonInterfaceSetGObjFlagsAll(0);
     grWallpaperResetPausePerspUpdate();
 
-    gIFPlayerCommonInterface.is_ifmagnify_display = TRUE;
+    gIFCommonPlayerInterface.is_ifmagnify_display = TRUE;
 
     gBattleState->game_status = nGMBattleGameStatusGo;
 
@@ -3316,7 +3319,7 @@ void ifCommonBattleSetGameStatusWait(void)
 // 0x80114968
 void ifCommonPlayerInterfaceAddToViewport(ftStruct *fp)
 {
-    func_ovl2_80103974(gIFPlayerCommonInterface.ifplayers_pos_x[fp->player], gIFPlayerCommonInterface.ifplayers_pos_y);
+    func_ovl2_80103974(gIFCommonPlayerInterface.ifplayers_pos_x[fp->player], gIFCommonPlayerInterface.ifplayers_pos_y);
 }
 
 // 0x801149CC
@@ -3324,8 +3327,8 @@ void ifCommonPlayerScoreMakeEffect(ftStruct *fp, s32 arg1)
 {
     Vec3f pos;
 
-    pos.x = ((gIFPlayerCommonInterface.ifplayers_pos_x[fp->player] + dIFCommonPlayerScorePositionOffsetsX[fp->player]) << 2);
-    pos.y = ((gIFPlayerCommonInterface.ifplayers_pos_y + 13) << 2); // ??? Can't get this one to match unless we do bitwise instead of literal multiplication
+    pos.x = ((gIFCommonPlayerInterface.ifplayers_pos_x[fp->player] + dIFCommonPlayerScorePositionOffsetsX[fp->player]) << 2);
+    pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y + 13) << 2); // ??? Can't get this one to match unless we do bitwise instead of literal multiplication
     pos.z = 0.0F;
 
     efManagerBattleScoreMakeEffect(&pos, arg1);
@@ -3405,7 +3408,7 @@ void ifCommon1PGameInterfaceProcSet(void)
 
     func_ovl65_8018F3AC();
 
-    gIFPlayerCommonInterface.is_ifmagnify_display = FALSE;
+    gIFCommonPlayerInterface.is_ifmagnify_display = FALSE;
 }
 
 // 0x80114C80

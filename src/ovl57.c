@@ -228,7 +228,7 @@ void mnCongraUpdateScene()
 		if (sMNCongraSceneChangeWait == 0)
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current = scMajor_Kind_Title;
+			gSceneData.scene_current = nSCKindTitle;
 			leoInitUnit_atten();
 		}
 	}
@@ -256,11 +256,11 @@ void mnCongraStartScene()
 		sMNCongraFighterKind = nFTKindMario;
 		break;
 
-	case scMajor_Kind_1PGame:
+	case nSCKind1PGame:
 		sMNCongraFighterKind = gSceneData.ft_kind;
 		break;
 
-	case scMajor_Kind_DebugChrSel:
+	case nSCKindDebugChrSel:
 		sMNCongraFighterKind = gTransferBattleState.players[0].ft_kind;
 		break;
 	}

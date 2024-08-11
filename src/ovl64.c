@@ -216,7 +216,7 @@ void scAutoDemoDetectExit()
 		if (button_new & (A_BUTTON | B_BUTTON | START_BUTTON))
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current = scMajor_Kind_Title;
+			gSceneData.scene_current = nSCKindTitle;
 
 			leoInitUnit_atten();
 			break;
@@ -369,7 +369,7 @@ void scAutoDemoSetMagnifyDisplayOn()
 void scAutoDemoExit()
 {
 	gSceneData.scene_previous = gSceneData.scene_current;
-	gSceneData.scene_current = scMajor_Kind_N64;
+	gSceneData.scene_current = nSCKindN64;
 
 	leoInitUnit_atten();
 }
@@ -500,7 +500,7 @@ s32 scAutoDemoGetFighterKind(s32 player)
 	{
 		return gSceneData.demo_ft_kind[player];
 	}
-	character_flag = (gSaveData.character_mask | GMBACKUPINFO_CHARACTER_MASK_STARTER);
+	character_flag = (gSaveData.character_mask | GMBACKUP_CHARACTER_MASK_STARTER);
 
 	character_count1 = func_ovl64_8018D7FC(character_flag), character_count2 = func_ovl64_8018D7FC(sAutoDemoCharacterFlag);
 
@@ -650,7 +650,7 @@ void func_ovl64_8018DCC4()
 
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 
-		gBattleState->players[player].player_color_index = player;
+		gBattleState->players[player].player_color = player;
 		gBattleState->players[player].tag_kind = player;
 
 		ftParamInitPlayerBattleStats(player, fighter_gobj);

@@ -136,7 +136,7 @@ rdFileNode gOverlay7StatusBuf[100];
 // 80190F60
 rdFileNode gOverlay7ForceBuf[7];
 
-extern u32 dCommonFileIDs[8];
+extern u32 dGMCommonFileIDs[8];
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000020;
 extern intptr_t D_NF_000000BC;

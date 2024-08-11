@@ -48,6 +48,9 @@ s32 sFTMainPad0x801311C4;
 // 0x801311C8 - 0x10 bytes of padding after this, for mpcoll .bss
 ftHitlog sFTMainHitlogs[10];
 
+// 0x801312E0
+s32 sFTMainPad0x801312E0;
+
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //

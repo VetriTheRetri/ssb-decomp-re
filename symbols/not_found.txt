@@ -923,8 +923,8 @@ sGMRumblePlayers = 0x801319F0;
 
 D_ovl2_80131A10 = 0x80131A10;
 D_ovl2_80131A14 = 0x80131A14;
-sEFParticleBankNum = 0x80131A18;
-sEFParticleBanks = 0x80131A20;
+sEFAllocParticleBanksNum = 0x80131A18;
+sEFAllocParticleBanks = 0x80131A20;
 
 sIFScreenFlashColAnim = 0x80131A40;
 sIFScreenFlashAlpha = 0x80131AA4;

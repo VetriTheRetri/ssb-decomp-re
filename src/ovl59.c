@@ -1492,7 +1492,7 @@ void func_ovl59_80135118()
 	}
 	if (gCreditsStatus == -1)
 	{
-		gSceneData.scene_current = scMajor_Kind_N64;
+		gSceneData.scene_current = nSCKindN64;
 
 		auStopBGM();
 		func_80006E18(0x100);

@@ -1188,7 +1188,7 @@ void mnStageLoadSceneData()
 			gMNStageIsTrainingMode = TRUE;
 			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.sss_training_gr_kind);
 			break;
-		case scMajor_Kind_VSChrSel:
+		case nSCKindVSChrSel:
 			gMNStageIsTrainingMode = FALSE;
 			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.sss_battle_gr_kind);
 			break;
@@ -1220,7 +1220,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 		if (gMNStageFramesElapsed == gMNStageMaxFramesElapsed)
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current = scMajor_Kind_Title;
+			gSceneData.scene_current = nSCKindTitle;
 
 			mnStageSaveSceneData2();
 			leoInitUnit_atten();
@@ -1251,12 +1251,12 @@ void mnStageHandleButtonPresses(s32 arg0)
 			if (gMNStageIsTrainingMode == TRUE)
 			{
 				gSceneData.scene_previous = gSceneData.scene_current;
-				gSceneData.scene_current = scMajor_Kind_1PTrainingMode;
+				gSceneData.scene_current = nSCKind1PTraining;
 			}
 			else
 			{
 				gSceneData.scene_previous = gSceneData.scene_current;
-				gSceneData.scene_current = scMajor_Kind_VSBattle;
+				gSceneData.scene_current = nSCKindVSBattle;
 			}
 
 			leoInitUnit_atten();
@@ -1269,12 +1269,12 @@ void mnStageHandleButtonPresses(s32 arg0)
 			if (gMNStageIsTrainingMode == TRUE)
 			{
 				gSceneData.scene_previous = gSceneData.scene_current;
-				gSceneData.scene_current = scMajor_Kind_TrainingChrSel;
+				gSceneData.scene_current = nSCKindTrainingChrSel;
 			}
 			else
 			{
 				gSceneData.scene_previous = gSceneData.scene_current;
-				gSceneData.scene_current = scMajor_Kind_VSChrSel;
+				gSceneData.scene_current = nSCKindVSChrSel;
 			}
 
 			leoInitUnit_atten();

@@ -161,8 +161,8 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 //                               //
 // // // // // // // // // // // //
 
-// 0x80131590 - Padding?
-// s32 sIFCommonPadding80131590[2];
+// 0x80131570 - Padding?
+s32 sIFCommonPad0x80131570[10];
 
 // 0x80131598
 ifPlayerDamage sIFCommonPlayerDamageInterface[GMBATTLE_PLAYERS_MAX];
@@ -1049,7 +1049,7 @@ void ifCommonPlayerDamageInitInterface(void)
 
                 sobj->sprite.scalex = sobj->sprite.scaley = dIFCommonPlayerDamageEmblemScales[player];
 
-                emblem = gBattleState->players[player].player_color_index;
+                emblem = gBattleState->players[player].player_color;
 
                 sobj->sprite.red = gMPCollisionGroundData->emblem_colors[emblem].r;
                 sobj->sprite.green = gMPCollisionGroundData->emblem_colors[emblem].g;
@@ -1723,7 +1723,7 @@ void ifCommonPlayerMagnifyMakeInterface(void)
         gcAddOMMtxForDObjFixed(gcAddDObjForGObj(interface_gobj, (Gfx*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerMagnifyDisplayList)), nOMTransformTraRotRpyRSca, 0);
 
         sIFCommonPlayerMagnifyInterface[fp->player].interface_gobj = interface_gobj;
-        sIFCommonPlayerMagnifyInterface[fp->player].color_id = gBattleState->players[fp->player].player_color_index;
+        sIFCommonPlayerMagnifyInterface[fp->player].color_id = gBattleState->players[fp->player].player_color;
 
         fighter_gobj = fighter_gobj->link_next;
     }
@@ -1971,7 +1971,7 @@ void ifCommonPlayerTagMakeInterface(void)
 
             sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
-            color_id = gBattleState->players[player].player_color_index;
+            color_id = gBattleState->players[player].player_color;
 
             sobj->sprite.red   = dIFCommonPlayerTagSpriteColorsR[color_id];
             sobj->sprite.green = dIFCommonPlayerTagSpriteColorsG[color_id];
@@ -2028,7 +2028,7 @@ GObj* ifCommonItemArrowMakeInterface(itStruct *ip)
         {
             interface_gobj->user_data.p = ip; // Give it up for... the GObj with the most flexible user_data assignments ever?
 
-            if ((gSceneData.scene_current == scMajor_Kind_1PTrainingMode) && (gBattleState->game_status == nGMBattleGameStatusPause))
+            if ((gSceneData.scene_current == nSCKind1PTraining) && (gBattleState->game_status == nGMBattleGameStatusPause))
             {
                 interface_gobj->flags = GOBJ_FLAG_NORENDER;
             }
@@ -2918,7 +2918,7 @@ void ifCommonBattlePauseMakeSObjsAll(GObj *interface_gobj)
         ifCommonBattlePauseDecalMakeSObjID(interface_gobj, i);
     }
     // If we're in Bonus Practice, display "L: RETRY" in the bottom left corner
-    if ((gSceneData.scene_current == scMajor_Kind_1PBonusGame) && (gSceneData.scene_previous != scMajor_Kind_1PGame)) 
+    if ((gSceneData.scene_current == nSCKind1PBonusGame) && (gSceneData.scene_previous != nSCKind1PGame)) 
     {
         // WARNING: This needs to be updated in case the pause menu icon array is expanded
         for (i = 12; i < ARRAY_COUNT(dIFCommonBattlePauseDecalsSpriteData); i++)
@@ -3151,7 +3151,7 @@ void ifCommonBattlePauseUpdateInterface(void)
 
             return;
         }
-        if ((button_new & L_TRIG) && (gSceneData.scene_current == scMajor_Kind_1PBonusGame) && (gSceneData.scene_previous != scMajor_Kind_1PGame))
+        if ((button_new & L_TRIG) && (gSceneData.scene_current == nSCKind1PBonusGame) && (gSceneData.scene_previous != nSCKind1PGame))
         {
             func_800266A0_272A0();
             gmRumbleInitPlayers();

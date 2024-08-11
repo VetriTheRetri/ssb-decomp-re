@@ -269,7 +269,7 @@ void grWallpaperBonus3MakeSObj(void)
 // 0x80104BDC
 void grWallpaperMakeGroundWallpaper(void)
 {
-    if (gSceneData.scene_current == scMajor_Kind_1PTrainingMode)
+    if (gSceneData.scene_current == nSCKind1PTraining)
     {
         scTrainingMode_SetBackgroundSprite();
         grWallpaperStaticMakeSObj();

@@ -3493,13 +3493,13 @@ void mnBattleSaveMatchInfo()
 
 		if (gTransferBattleState.players[i].pl_kind == nFTPlayerKindMan)
 		{
-			gTransferBattleState.players[i].player_color_index
+			gTransferBattleState.players[i].player_color
 				= (gTransferBattleState.is_team_battle == FALSE) ? i : D_ovl2_8012EF40[gTransferBattleState.players[i].team];
 		}
 		else if (gTransferBattleState.is_team_battle == FALSE)
-			gTransferBattleState.players[i].player_color_index = 4;
+			gTransferBattleState.players[i].player_color = 4;
 		else
-			gTransferBattleState.players[i].player_color_index = D_ovl2_8012EF40[gTransferBattleState.players[i].team];
+			gTransferBattleState.players[i].player_color = D_ovl2_8012EF40[gTransferBattleState.players[i].team];
 
 		gTransferBattleState.players[i].tag_kind = (gTransferBattleState.players[i].pl_kind == nFTPlayerKindMan) ? i : 4;
 

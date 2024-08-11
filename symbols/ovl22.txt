@@ -12,7 +12,7 @@ func_ovl22_80132168 = 0x80132168; // segment:ovl22
 func_ovl22_801321A4 = 0x801321A4; // segment:ovl22
 func_ovl22_8013223C = 0x8013223C; // segment:ovl22
 func_ovl22_801322D4 = 0x801322D4; // segment:ovl22
-overlay_set12_entry = 0x801323F8; // segment:ovl22
+mnMessageStartScene = 0x801323F8; // segment:ovl22
 
 D_ovl22_80132500 = 0x80132500; // segment:ovl22
 D_ovl22_80132508 = 0x80132508; // segment:ovl22

@@ -102,12 +102,12 @@ void syDmaLoadOverlay(struct syOverlay *ovl)
         );
     }
 
-    if (((uintptr_t)ovl->ram_bss_end - (uintptr_t)ovl->ram_bss_start) != 0)
+    if (((uintptr_t)ovl->ram_noload_end - (uintptr_t)ovl->ram_noload_start) != 0)
     {
         bzero
         (
-            (uintptr_t)ovl->ram_bss_start,
-            (uintptr_t)ovl->ram_bss_end - (uintptr_t)ovl->ram_bss_start
+            (uintptr_t)ovl->ram_noload_start,
+            (uintptr_t)ovl->ram_noload_end - (uintptr_t)ovl->ram_noload_start
         );
     }
 }

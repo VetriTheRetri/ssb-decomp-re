@@ -18,7 +18,7 @@
 #define gmBackupChrMask(kind) (1 << (kind))
 #define gmBackupMapMask(kind) (1 << (kind))
 
-#define GMBACKUPINFO_CHARACTER_MASK_ALL	\
+#define GMBACKUP_CHARACTER_MASK_ALL	\
 (									 	\
 	gmBackupChrMask(nFTKindMario) 	|	\
 	gmBackupChrMask(nFTKindFox) 	|	\
@@ -34,7 +34,7 @@
 	gmBackupChrMask(nFTKindNess)		\
 )
 
-#define GMBACKUPINFO_CHARACTER_MASK_UNLOCK	\
+#define GMBACKUP_CHARACTER_MASK_UNLOCK	\
 (											\
 	gmBackupChrMask(nFTKindNess) 		|	\
 	gmBackupChrMask(nFTKindPurin) 		| 	\
@@ -42,7 +42,7 @@
 	gmBackupChrMask(nFTKindLuigi)			\
 )
 
-#define GMBACKUPINFO_CHARACTER_MASK_STARTER (GMBACKUPINFO_CHARACTER_MASK_ALL & ~GMBACKUPINFO_CHARACTER_MASK_UNLOCK)
+#define GMBACKUP_CHARACTER_MASK_STARTER (GMBACKUP_CHARACTER_MASK_ALL & ~GMBACKUP_CHARACTER_MASK_UNLOCK)
 
 typedef enum gmBackupUnlock
 {
@@ -52,7 +52,8 @@ typedef enum gmBackupUnlock
 	nGMBackupUnlockPurin,	 	// Jigglypuff
 	nGMBackupUnlockInishie,	 	// Mushroom Kingdom
 	nGMBackupUnlockSoundTest, 	// Sound Test menu
-	nGMBackupUnlockItemSwitch 	// Item Switch menu
+	nGMBackupUnlockItemSwitch, 	// Item Switch menu
+	nGMBackupUnlockEnumMax
 
 } gmBackupUnlock;
 
@@ -176,20 +177,22 @@ typedef enum gmMatchGameType
 
 typedef enum gm1PGameStageKind
 {
-	nGM1PGameStageLink,		// VS Link
-	nGM1PGameStageYoshi,	// VS Yoshi Team
-	nGM1PGameStageFox,		// VS Fox
-	nGM1PGameStageBonus1,	// Break the Targets
-	nGM1PGameStageMario,	// VS Mario Bros.
-	nGM1PGameStagePikachu, 	// VS Pikachu
-	nGM1PGameStageDonkey,	// VS Giant Donkey Kong
-	nGM1PGameStageBonus2,	// Board the Platforms
-	nGM1PGameStageKirby,	// VS Kirby Team
-	nGM1PGameStageSamus,	// VS Samus
-	nGM1PGameStageMetal,	// VS Metal Mario
-	nGM1PGameStageBonus3,	// Race to the Finish
-	nGM1PGameStageZako,		// VS Fighting Polygon Team
-	nGM1PGameStageBoss,		// VS Master Hand
+	nGM1PGameStageCommonStart,
+	nGM1PGameStageLink = nGM1PGameStageCommonStart,			// VS Link
+	nGM1PGameStageYoshi,									// VS Yoshi Team
+	nGM1PGameStageFox,										// VS Fox
+	nGM1PGameStageBonus1,									// Break the Targets
+	nGM1PGameStageMario,									// VS Mario Bros.
+	nGM1PGameStagePikachu, 									// VS Pikachu
+	nGM1PGameStageDonkey,									// VS Giant Donkey Kong
+	nGM1PGameStageBonus2,									// Board the Platforms
+	nGM1PGameStageKirby,									// VS Kirby Team
+	nGM1PGameStageSamus,									// VS Samus
+	nGM1PGameStageMetal,									// VS Metal Mario
+	nGM1PGameStageBonus3,									// Race to the Finish
+	nGM1PGameStageZako,										// VS Fighting Polygon Team
+	nGM1PGameStageBoss,										// VS Master Hand
+	nGM1PGameStageCommonEnd = nGM1PGameStageBoss,
 
 	nGM1PGameStageChallengerStart,						   	// Start of unlockable character stages
 	nGM1PGameStageLuigi = nGM1PGameStageChallengerStart, 	// Challenger Approaching: Luigi
@@ -200,50 +203,51 @@ typedef enum gm1PGameStageKind
 
 } gm1PGameStageKind;
 
-typedef enum scMajorScene
+typedef enum scKind
 {
-	scMajor_Kind_NoController,      // "No Controller" screen
-	scMajor_Kind_Title,             // Title screen
-	scMajor_Kind_DebugMPSel,       // Debug stage select
-	scMajor_Kind_DebugSystem,       // Debug main menu?
-	scMajor_Kind_DebugChrSel,       // Debug character select
-	scMajor_Kind_DebugResScreen,    // Debug results screen
-	scMajor_Kind_DebugPadTest,      // Debug joystick test
-	scMajor_Kind_MainMenu,          // Main Menu
-	scMajor_Kind_1PMode,            // 1P mode menu
-	scMajor_Kind_VSMode = 9,        // VS mode
-	scMajor_Kind_VSOptions,         // VS mode options
-	scMajor_Kind_Challenger = 13,   // Challenger approaching
-	scMajor_Kind_1PTitleCard,       // 1P game "[character] VS [opponent(s)]" screen
-	scMajor_Kind_ScreenAdjust,      // Screen adjust
-	scMajor_Kind_VSChrSel,          // VS mode character select
-	scMajor_Kind_TrainingChrSel = 18, // Training mode character select
-	scMajor_Kind_Bonus1ChrSel,      // Bonus 1 character select
-	scMajor_Kind_Bonus2ChrSel,      // Bonus 2 character select
-	scMajor_Kind_VSMapSel = 21,     // VS mode map select
-	scMajor_Kind_VSBattle,          // VS mode in-game
-	scMajor_Kind_VSResults = 24,    // VS mode results
-	scMajor_Kind_VSRecord,          // Records screen
-	scMajor_Kind_Characters,        // Character data screen
-	scMajor_Kind_N64,               // N64 logo
-	scMajor_Kind_OpeningRoom,       // Room with Master Hand and figures coming to life
-	scMajor_Kind_BackupClear = 47,  // Save data clear
-	scMajor_Kind_Ending,            // Ending cutscene
-	scMajor_Kind_1PContinue,        // "Continue?" screen
-	scMajor_Kind_1PScoreUnk = 50,   // Stage clear bonus thing?
-	scMajor_Kind_1PStageClearScore, // Stage clear bonus score page 1?
-	scMajor_Kind_1PGame,            // 1P Game logic loop
-	scMajor_Kind_1PBonusGame,       // Bonus game in-game
-	scMajor_Kind_1PTrainingMode,    // Training mode in-game
-	scMajor_Kind_1PCongratulations, // Congratulations screen
-	scMajor_Kind_Credits,           // Credits scene
-	scMajor_Kind_Options,           // Options menu
-	scMajor_Kind_Data,              // Data menu
-	scMajor_Kind_SoundTest,         // Sound Test
-	scMajor_Kind_HowToPlay,         // How to Play
-	scMajor_Kind_Demo               // Auto-Demo
+	nSCKindNoController,      	// "No Controller" screen
+	nSCKindTitle,             	// Title screen
+	nSCKindDebugMPSel,      	// Debug stage select
+	nSCKindDebugSystem,      	// Debug main menu?
+	nSCKindDebugChrSel,       	// Debug character select
+	nSCKindDebugResScreen,    	// Debug results screen
+	nSCKindDebugPadTest,      	// Debug joystick test
+	nSCKindMainMenu,          	// Main Menu
+	nSCKind1PMode,            	// 1P mode menu
+	nSCKindVSMode,        		// VS mode
+	nSCKindVSOptions,         	// VS mode options
+	nSCKindMessage = 12,		// Unlock message 
+	nSCKindChallenger,   		// Challenger approaching
+	nSCKind1PTitleCard,       	// 1P game "[character] VS [opponent(s)]" screen
+	nSCKindScreenAdjust,      	// Screen adjust
+	nSCKindVSChrSel,          	// VS mode character select
+	nSCKindTrainingChrSel = 18, // Training mode character select
+	nSCKindBonus1ChrSel,      	// Bonus 1 character select
+	nSCKindBonus2ChrSel,      	// Bonus 2 character select
+	nSCKindVSMapSel = 21,     	// VS mode map select
+	nSCKindVSBattle,          	// VS mode in-game
+	nSCKindVSResults = 24,    	// VS mode results
+	nSCKindVSRecord,          	// Records screen
+	nSCKindCharacters,        	// Character data screen
+	nSCKindN64,               	// N64 logo
+	nSCKindOpeningRoom,       	// Room with Master Hand and figures coming to life
+	nSCKindBackupClear = 47,  	// Save data clear
+	nSCKindEnding,            	// Ending cutscene
+	nSCKind1PContinue,        	// "Continue?" screen
+	nSCKind1PScoreUnk = 50,   	// Stage clear bonus thing?
+	nSCKind1PStageClear, 		// Stage clear bonus score page 1?
+	nSCKind1PGame,            	// 1P Game logic loop
+	nSCKind1PBonusGame,       	// Bonus game in-game
+	nSCKind1PTraining,    		// Training mode in-game
+	nSCKind1PCongra,	 		// Congratulations screen
+	nSCKindCredits,           	// Credits scene
+	nSCKindOptions,           	// Options menu
+	nSCKindData,              	// Data menu
+	nSCKindSoundTest,        	// Sound Test
+	nSCKindExplain,         	// How to Play
+	nSCKindDemo              	// Auto-Demo
 
-} scMajorScene;
+} scKind;
 
 typedef struct scAutoDemoProc
 {
@@ -381,12 +385,12 @@ typedef struct gmPlayerBlock
 	u8 costume;
 	u8 shade; 				// Color overlay applied when several players use the same
 							// costume
-	u8 player_color_index;	// Used for emblems, player tags, and possibly more
+	u8 player_color;		// Used for emblems, player tags, and possibly more
 	ub8 is_single_stockicon;// Whether player's stock is permanent or a limited
 							// amount
 	u8 tag_kind;			// Player tag sprite index (i.e. 1P, 2P, 3P, 4P, CP or heart)
 	s8 stock_count;			// -1 = player has no stocks
-	ub8 is_spgame_team;	// Respawn flag of multi-man enemy teams (Yoshi,
+	ub8 is_spgame_team;		// Respawn flag of multi-man enemy teams (Yoshi,
 							// Kirby, Fighting Polygons) in 1P mode
 	u8 placement;			// Player's placement in battle results
 	s32 falls;
@@ -472,33 +476,33 @@ typedef struct gmBackup1PRecord
 typedef struct gmBackupInfo
 {
 	gmBackupVSRecord vs_records[GMCOMMON_CHAR_NUM_PLAYABLE];
-	ub8 is_allow_screenflash; // Toggle for enabling white screen flash when,
-							  // for example, a character takes too much
-							  // damage. Leftover from unused "background
-							  // flash" option? It is always toggled ON, even
-							  // after clearing the save data.
-	u8 unk451;
+	ub8 is_allow_screenflash; 	// Toggle for enabling white screen flash when,
+							  	// for example, a character takes too much
+							  	// damage. Leftover from unused "background
+							  	// flash" option? It is always toggled ON, even
+							  	// after clearing the save data.
+	ub8 sound_mono_or_stereo; 
 	s16 unk452;
 	s16 unk454;
 	u8 unk456;
 	u8 unlock_mask;
-	u16 character_mask; // Mask of unlocked characters?
+	u16 character_mask; 		// Mask of unlocked characters?
 	u8 spgame_difficulty;
 	u8 spgame_stock_count;
 	gmBackup1PRecord spgame_records[GMCOMMON_CHAR_NUM_PLAYABLE];
-	u16 unlock_task_inishie;   // Records mask of unique stages played in VS mode
-	u8 unlock_task_itemswitch; // Records number of VS games played for Item
-							   // Switch unlock
-	u16 vsgame_total;		   // Total amount of VS games played?
-	u8 error_flags;		   // Some kind of anti-piracy measure??? 0x1 results in
-							   // random knockback velocity, 0x2 halves stick range, 0x4
-							   // forces Mario in 1P game, 0x8 forces Peach's Castle
+	u16 unlock_task_inishie;   	// Records mask of unique stages played in VS mode
+	u8 unlock_task_itemswitch; 	// Records number of VS games played for Item
+							   	// Switch unlock
+	u16 vsgame_total;		   	// Total amount of VS games played?
+	u8 error_flags;		   		// Some kind of anti-piracy measure??? 0x1 results in
+							   	// random knockback velocity, 0x2 halves stick range, 0x4
+							   	// forces Mario in 1P game, 0x8 forces Peach's Castle
 	u8 unk5E3;
 	u8 unk5E4;
 	u8 unk5E5;
 	u8 unk5E6;
 	u8 unk5E7;
-	s32 mprotect_hash; // Checksum of save data
+	s32 checksum; 				// Checksum of save data
 
 } gmBackupInfo; // size == 0x5EC
 
@@ -506,9 +510,9 @@ typedef struct gmSceneInfo
 {
 	u8 scene_current;
 	u8 scene_previous;
-	u8 unk02;
-	u8 pad03[0x09 - 0x03];
-	u8 unk09;
+	u8 unlocked_features[2];
+	u8 pad04[0x09 - 0x04];
+	u8 challenger_ft_kind;		// Opponent being fought in "Challenger Approaching" battle
 	u8 unk0A;
 	u8 pad0B[0xD - 0xB];
 	u8 demo_ft_kind[2];
@@ -520,15 +524,13 @@ typedef struct gmSceneInfo
 	u8 ft_kind;
 	u8 costume;
 	u8 spgame_time_limit;
-	u8 spgame_stage; // 1P Game stage (0 = VS Link, 1 = VS Yoshi Team, etc.)
-	u8 cpu_port[3];
-	u32 spgame_time_seconds; // Timer of current match in seconds
+	u8 spgame_stage; 			// 1P Game stage (0 = VS Link, 1 = VS Yoshi Team, etc.)
+	u8 ally_players[2];			// CPU player ports
+	u32 spgame_time_seconds; 	// Timer of current match in seconds
 	u32 spgame_score;
 	u32 continues_used;
-	u32 bonus_count;	   // Number of bonuses player acquired throughout the game
-	u32 bonus_get_mask[2]; // Different bonuses the player has accumulated per
-						   // match
-	u32 bonus_tasks_complete;
+	u32 bonus_count;	   		// Number of bonuses player acquired throughout the game
+	u32 bonus_get_mask[3]; 		// Different bonuses the player has accumulated per match
 	u8 bonus_tasks_current;
 	u8 bonus_char_id;
 	u8 bonus_costume_id;

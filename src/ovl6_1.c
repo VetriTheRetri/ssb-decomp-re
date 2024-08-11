@@ -5,7 +5,7 @@
 #include <gm/gmsound.h>
 #include <it/item.h>
 
-extern u32 dCommonFileIDs[8];
+extern u32 dGMCommonFileIDs[8];
 extern void* gGMCommonFiles[/* */];
 extern void* gBonusGameFileData[/* */];
 
@@ -56,8 +56,8 @@ void func_ovl6_8018ED70()
 	rldm_setup.force_buf_size = ARRAY_COUNT(gOverlay6ForceBuf);
 
 	rdManagerInitSetup(&rldm_setup);
-	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles,
-						 gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
+	rdManagerLoadFiles(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
+						 gsMemoryAlloc(rdManagerGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }
 
 // 8018EE10

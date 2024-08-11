@@ -3,7 +3,7 @@
 #include <ovl0/reloc_data_mgr.h>
 
 extern void *gGMCommonFiles[];
-extern u32 dCommonFileIDs[8];
+extern u32 dGMCommonFileIDs[8];
 extern intptr_t D_NF_80000023;
 extern s32 D_NF_800A5240[];
 extern intptr_t lOverlay5ArenaLo; // 8018D950
@@ -76,7 +76,7 @@ void func_ovl5_8018D0C0()
 	rldm_setup.force_buf_size = ARRAY_COUNT(D_ovl5_8018D718);
 
 	rdManagerInitSetup(&rldm_setup);
-	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
+	rdManagerLoadFiles(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }
 
 // 8018D160

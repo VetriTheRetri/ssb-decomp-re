@@ -381,7 +381,7 @@ void func_ovl7_8018DA98()
 			gBattleState->players[player].ft_kind = gSceneData.training_human_char_id;
 			gBattleState->players[player].costume = gSceneData.training_human_costume_id;
 			gBattleState->players[player].team = 0;
-			gBattleState->players[player].player_color_index = player;
+			gBattleState->players[player].player_color = player;
 		}
 		else
 			gBattleState->players[player].pl_kind = nFTPlayerKindNot;
@@ -395,7 +395,7 @@ void func_ovl7_8018DA98()
 	gBattleState->players[opponent].costume = gSceneData.training_cpu_costume_id;
 	gBattleState->players[opponent].level = 3;
 	gBattleState->players[opponent].team = 1;
-	gBattleState->players[opponent].player_color_index = 4;
+	gBattleState->players[opponent].player_color = 4;
 	gBattleState->pl_count = 1;
 	gBattleState->cp_count = 1;
 
@@ -1458,6 +1458,6 @@ void scTrainingMode_LoadFiles()
 	rldm_setup.force_buf_size = ARRAY_COUNT(gOverlay7ForceBuf);
 
 	rdManagerInitSetup(&rldm_setup);
-	rdManagerLoadFiles(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs), gGMCommonFiles,
-						 gsMemoryAlloc(rdManagerGetAllocSize(dCommonFileIDs, ARRAY_COUNT(dCommonFileIDs)), 0x10));
+	rdManagerLoadFiles(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
+						 gsMemoryAlloc(rdManagerGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }

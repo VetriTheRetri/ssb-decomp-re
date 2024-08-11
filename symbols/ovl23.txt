@@ -9,7 +9,7 @@ func_ovl23_801320E0 = 0x801320E0; // segment:ovl23
 func_ovl23_80132110 = 0x80132110; // segment:ovl23
 func_ovl23_80132118 = 0x80132118; // segment:ovl23
 func_ovl23_801321C0 = 0x801321C0; // segment:ovl23
-overlay_set13_entry = 0x80132310; // segment:ovl23
+scChallengerStartScene = 0x80132310; // segment:ovl23
 
 D_ovl23_80132370 = 0x80132370; // segment:ovl23
 D_ovl23_80132378 = 0x80132378; // segment:ovl23

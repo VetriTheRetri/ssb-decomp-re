@@ -124,8 +124,8 @@ extern void func_ovl0_800C88AC(DObj*, void*, void*, f32);
 //                               //
 // // // // // // // // // // // //
 
-// 0x80131AD0
-u8 sEFGroundPadding[8];
+// 0x80131AB0
+u8 sEFGroundPad0x80131AD0[40];
 
 // 0x80131AD8
 efGroundActor sEFGroundActor;
@@ -1678,7 +1678,7 @@ void efGroundMakeEffectSpawnActor(void)
 {
     GObj *effect_gobj;
 
-    if ((gBattleState->gr_kind <= nGRKindBattleEnd) && (gSceneData.scene_current != scMajor_Kind_1PTrainingMode) && (dEFGroundDatas[gBattleState->gr_kind].effect_param != NULL))
+    if ((gBattleState->gr_kind <= nGRKindBattleEnd) && (gSceneData.scene_current != nSCKind1PTraining) && (dEFGroundDatas[gBattleState->gr_kind].effect_param != NULL))
     {
         effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, 7, GOBJ_LINKORDER_DEFAULT);
 

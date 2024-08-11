@@ -45,7 +45,11 @@ loop: // This makes no sense
         {
             other_fp = ftGetStruct(other_gobj);
 
-            if ((other_fp->status_info.status_id >= nFTCommonStatusRebirthDown) && (other_fp->status_info.status_id <= nFTCommonStatusRebirthWait))
+            if
+            (
+                (other_fp->status_info.status_id >= nFTCommonStatusRebirthDown) && 
+                (other_fp->status_info.status_id <= nFTCommonStatusRebirthWait)
+            )
             {
                 if (halo_number == other_fp->status_vars.common.rebirth.halo_number)
                 {

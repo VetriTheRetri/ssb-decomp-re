@@ -16,8 +16,8 @@ typedef struct syOverlay
     void *ram_text_end;
     void *ram_data_start;
     void *ram_data_end;
-    void *ram_bss_start;
-    void *ram_bss_end;
+    void *ram_noload_start;
+    void *ram_noload_end;
 
 } syOverlay;
 

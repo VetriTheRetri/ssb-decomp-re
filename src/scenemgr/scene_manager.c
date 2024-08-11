@@ -130,20 +130,21 @@ gmBackupInfo gDefaultSaveData = {
 		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0}}, 0, 0, 0, 0, 0, 0x02, 0x9a, 0, 0, 0
 };
 
-gmSceneInfo gDefaultSceneData = {
-	0x1B, 0x1B, 0x07,
-	{0x07, 0x07, 0x07, 0x07, 0x07, 0x07},
+gmSceneInfo gDefaultSceneData = 
+{
+	0x1B, 0x1B,
+	{ nGMBackupUnlockEnumMax, nGMBackupUnlockEnumMax },
+	{ nGMBackupUnlockEnumMax, nGMBackupUnlockEnumMax, nGMBackupUnlockEnumMax, nGMBackupUnlockEnumMax, nGMBackupUnlockEnumMax },
 	0x04, 0x00,
 	{0x00, 0x1C},
 	{0x1C, 0x1C},
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x00, 0x05, 0x00,
-	{0x00, 0x00, 0x00},
+	{0x00, 0x00},
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	{0x00000000, 0x00000000},
-	0,
+	{0x00000000, 0x00000000, 0x00000000},
 	0x00, 0x1C, 0x00, 0x1C, 0x00, 0x1C, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
  };
 
@@ -204,16 +205,16 @@ void mnDataStartScene();
 void menu_vs_entry();
 void options_vs_entry();
 void overlay_set11_entry();
-void overlay_set12_entry();
-void overlay_set13_entry();
+void mnMessageStartScene();
+void scChallengerStartScene();
 void classic_map_entry();
 void screen_adjust_entry();
 void vs_css_entry();
 void mnStageStartScene();
 void scBattleRoyalStartScene();
 void overlay_set23_entry();
-void func_ovl2_800D67DC();
-void scManager_BonusGame_InitScene();
+void sc1PManagerUpdateScene();
+void sc1PBonusGameStartScene();
 void scManager_TrainingMode_InitScene();
 void vs_results_entry();
 void vs_records_entry();
@@ -379,13 +380,13 @@ void start_scene_manager(u32 set)
 				syDmaLoadOverlay(&D_800A3070[2]);
 				syDmaLoadOverlay(&D_800A3070[1]);
 				syDmaLoadOverlay(&D_800A3070[22]);
-				overlay_set12_entry();
+				mnMessageStartScene();
 				break;
 			case 13:
 				syDmaLoadOverlay(&D_800A3070[2]);
 				syDmaLoadOverlay(&D_800A3070[1]);
 				syDmaLoadOverlay(&D_800A3070[23]);
-				overlay_set13_entry();
+				scChallengerStartScene();
 				break;
 			case 14:
 				syDmaLoadOverlay(&D_800A3070[2]);
@@ -424,13 +425,13 @@ void start_scene_manager(u32 set)
 				overlay_set23_entry();
 				break;
 			case 52: 
-				func_ovl2_800D67DC();
+				sc1PManagerUpdateScene();
 				break;
 			case 53:
 				syDmaLoadOverlay(&D_800A3070[2]);
 				syDmaLoadOverlay(&D_800A3070[3]);
 				syDmaLoadOverlay(&D_800A3070[6]);
-				scManager_BonusGame_InitScene();
+				sc1PBonusGameStartScene();
 				break;
 			case 54:
 				syDmaLoadOverlay(&D_800A3070[2]);

@@ -71,7 +71,7 @@ void func_ovl6_8018D0F0()
 			else
 				gBattleState->players[player].costume = gSceneData.bonus_costume_id;
 
-			gBattleState->players[player].player_color_index = player;
+			gBattleState->players[player].player_color = player;
 		}
 		else
 			gBattleState->players[player].pl_kind = nFTPlayerKindNot;
@@ -682,7 +682,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 				{
 					gSaveData.spgame_records[ft_kind].bonus1_task_count = gSceneData.bonus_tasks_current;
 
-					lbMemory_SaveData_WriteSRAM(gBattleState);
+					syBackupWriteSram(gBattleState);
 				}
 			}
 			else
@@ -693,7 +693,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 				{
 					gSaveData.spgame_records[ft_kind].bonus1_time = gBattleState->match_time_current;
 
-					lbMemory_SaveData_WriteSRAM(gBattleState);
+					syBackupWriteSram(gBattleState);
 				}
 			}
 		}
@@ -703,7 +703,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 			{
 				gSaveData.spgame_records[ft_kind].bonus2_task_count = gSceneData.bonus_tasks_current;
 
-				lbMemory_SaveData_WriteSRAM(gBattleState);
+				syBackupWriteSram(gBattleState);
 			}
 		}
 		else
@@ -714,7 +714,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 			{
 				gSaveData.spgame_records[ft_kind].bonus2_time = gBattleState->match_time_current;
 
-				lbMemory_SaveData_WriteSRAM(gBattleState);
+				syBackupWriteSram(gBattleState);
 			}
 		}
 	}
@@ -729,7 +729,7 @@ void scBonusGame_SetGeometryRenderLights(Gfx** display_list)
 }
 
 // 8018EACC
-void scManager_BonusGame_InitScene()
+void sc1PBonusGameStartScene()
 {
 	u16 bonus_complete_chars;
 	s32 task_count;
@@ -790,8 +790,8 @@ void scManager_BonusGame_InitScene()
 							if (gSaveData.spgame_records[i].bonus1_task_count == GMBATTLE_BONUSGAME_TASK_MAX)
 								bonus_complete_chars |= (1 << i);
 						}
-						if ((bonus_complete_chars & GMBACKUPINFO_CHARACTER_MASK_STARTER)
-							== GMBACKUPINFO_CHARACTER_MASK_STARTER)
+						if ((bonus_complete_chars & GMBACKUP_CHARACTER_MASK_STARTER)
+							== GMBACKUP_CHARACTER_MASK_STARTER)
 						{
 							gSceneData.ft_kind = gSceneData.bonus_char_id;
 							gSceneData.costume = gSceneData.bonus_costume_id;
@@ -802,9 +802,9 @@ void scManager_BonusGame_InitScene()
 							break;
 						}
 					}
-					if (func_ovl2_800D6630() != FALSE)
+					if (sc1PManagerCheckUnlockSoundTest() != FALSE)
 					{
-						gSceneData.unk02 = 5;
+						gSceneData.unlocked_features[0] = nGMBackupUnlockSoundTest;
 						gSceneData.scene_current = 0xC;
 					}
 					break;
@@ -815,9 +815,9 @@ void scManager_BonusGame_InitScene()
 			default:
 				gSceneData.scene_current = 0x14;
 
-				if ((tasks_complete == GMBATTLE_BONUSGAME_TASK_MAX) && (func_ovl2_800D6630() != FALSE))
+				if ((tasks_complete == GMBATTLE_BONUSGAME_TASK_MAX) && (sc1PManagerCheckUnlockSoundTest() != FALSE))
 				{
-					gSceneData.unk02 = 5;
+					gSceneData.unlocked_features[0] = nGMBackupUnlockSoundTest;
 					gSceneData.scene_current = 0xC;
 				}
 				break;

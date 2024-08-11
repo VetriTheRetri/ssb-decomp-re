@@ -434,7 +434,7 @@ segments:
     exclusive_ram_id: overlay_800D6490
     subsegments:
     # ovl2 text
-      - [0x051C90, asm, ovl2]
+      - [0x051C90, c, sc/sc1pmanager]
     # Fighter manager
       - [0x0527E0, c, ft/ftmanager]
     # Fighter physics
@@ -505,7 +505,12 @@ segments:
       - [0x091680, c, ef/efground]
 
     # ovl2 data
-      - [0x0923D0, data, ovl2]
+    # General file IDs
+      - [0x0923D0, .data, gm/gmcommon]
+    # 1P Game-exclusive scene manager
+      - [0x0923F0, .data, sc/sc1pmanager]
+    # Fighter manager
+      - [0x0925D0, data, ftmanagertemp]
     # Fighter main file
       - [0x0A4500, .data, ft/ftmain]
     # Parameter manager for (mainly) fighters
@@ -519,7 +524,7 @@ segments:
     # Common fighter data
       - [0x0A8030, .data, ft/ftcommondata]
     # ColAnim scripts
-      - [0x0A8290, data, ovl2temp]
+      - [0x0A8290, data, colanimtemp]
     # Effect manager and common effects
       - [0x0A9680, .data, ef/efmanager]
     # Stage background image setup
@@ -587,6 +592,51 @@ segments:
       - [0x0AC510, .rodata, ef/efalloc]
     # Stage effect manager
       - [0x0AC530, .rodata, ef/efground]
+    # ovl2 bss
+      - { start: auto, type: .bss, name: gm/gmcommon, vram: 0x80130D40 }
+      - { start: auto, type: .bss, name: sc/sc1pmanager, vram: 0x80130D60 }
+      - { start: auto, type: .bss, name: ft/ftmanager, vram: 0x80130D80 }
+      - { start: auto, type: .bss, name: mp/mpprocess, vram: 0x80130DE0 }
+      - { start: auto, type: .bss, name: mp/mpcommon, vram: 0x80130E20 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftmario/ftmario, vram: 0x80130E30 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftmmario/ftmmario, vram: 0x80130E50 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnmario/ftnmario, vram: 0x80130E70 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftfox/ftfox, vram: 0x80130E90 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnfox/ftnfox, vram: 0x80130EB0 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkey, vram: 0x80130ED0 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftndonkey/ftndonkey, vram: 0x80130EF0 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftgdonkey/ftgdonkey, vram: 0x80130F10 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftsamus/ftsamus, vram: 0x80130F30 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnsamus/ftnsamus, vram: 0x80130F50 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftluigi/ftluigi, vram: 0x80130F70 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnluigi/ftnluigi, vram: 0x80130F90 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftlink/ftlink, vram: 0x80130FB0 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnlink/ftnlink, vram: 0x80130FD0 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftyoshi/ftyoshi, vram: 0x80130FF0 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnyoshi/ftnyoshi, vram: 0x80131010 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftcaptain/ftcaptain, vram: 0x80131030 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftncaptain/ftncaptain, vram: 0x80131050 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirby, vram: 0x80131070 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnkirby/ftnkirby, vram: 0x80131090 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftpikachu/ftpikachu, vram: 0x801310B0 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnpikachu/ftnpikachu, vram: 0x801310D0 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftpurin/ftpurin, vram: 0x801310F0 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnpurin/ftnpurin, vram: 0x80131100 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftness/ftness, vram: 0x80131130 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnness/ftnness, vram: 0x80131150 }
+      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftboss, vram: 0x80131170 }
+      - { start: auto, type: .bss, name: ft/ftmain, vram: 0x80131180 }
+      - { start: auto, type: .bss, name: ft/ftrendermain, vram: 0x801312F0 }
+      - { start: auto, type: .bss, name: mp/mpcollision, vram: 0x80131300 }
+      - { start: auto, type: .bss, name: ef/efmanager, vram: 0x801313B0 }
+      - { start: auto, type: .bss, name: gr/grwallpaper, vram: 0x801313D0 }
+      - { start: auto, type: .bss, name: gr/grcommonsetup, vram: 0x801313E0 }
+      - { start: auto, type: .bss, name: cm/cmmanager, vram: 0x80131460 } # 0x801314B0 + 0x118 padded to 0x80131570
+      - { start: auto, type: .bss, name: if/ifcommon, vram: 0x80131570 } # actual start is 0x80131598, padded from 1570?
+      - { start: auto, type: .bss, name: gm/gmrumble, vram: 0x80131870 }
+      - { start: auto, type: .bss, name: ef/efalloc, vram: 0x80131A10 }
+      - { start: auto, type: .bss, name: if/ifscreenflash, vram: 0x80131A10 }
+      - { start: auto, type: .bss, name: ef/efground, vram: 0x80131AB0 }
 
   - name: ovl3
     type: code

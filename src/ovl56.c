@@ -1494,7 +1494,7 @@ void func_ovl56_80133C88()
 
 	sGMStageClearBonusMasks[0] = gSceneData.bonus_get_mask[0];
 	sGMStageClearBonusMasks[1] = gSceneData.bonus_get_mask[1];
-	sGMStageClearBonusMasks[2] = gSceneData.bonus_tasks_complete;
+	sGMStageClearBonusMasks[2] = gSceneData.bonus_get_mask[2];
 
 	D_ovl56_801352D8 = gmStageClearCheckHaveBonusStats();
 
@@ -1856,7 +1856,7 @@ void gmStageClearSceneProcUpdate(GObj *gobj)
 			if (D_ovl56_8013533C != 0)
 			{
 				gSceneData.scene_previous = gSceneData.scene_current;
-				gSceneData.scene_current = scMajor_Kind_Title;
+				gSceneData.scene_current = nSCKindTitle;
 
 				gmStageClearUpdateTotal1PGameScore();
 				leoInitUnit_atten();

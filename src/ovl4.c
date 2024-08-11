@@ -506,5 +506,5 @@ void scBattleRoyalStartScene()
 		gmRumbleInitPlayers();
 	}
 	gSceneData.scene_previous = gSceneData.scene_current;
-	gSceneData.scene_current = scMajor_Kind_VSResults;
+	gSceneData.scene_current = nSCKindVSResults;
 }

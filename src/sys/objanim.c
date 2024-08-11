@@ -1872,8 +1872,7 @@ f32 gcGetDObjTempAnimTimeMax
     return time_max;
 }
 
-#if defined (NON_MATCHING)
-// NON-MATCHING: lwc1 fv0, 0x8C(sp) instruction at the end of the function scheduled too late
+// Thanks, inspect!
 f32 func_8000EC64_F864
 (
     GObj *gobj,
@@ -1888,8 +1887,8 @@ f32 func_8000EC64_F864
     f32 scale
 ) 
 {
-    DObj *dobj; // s2
-    f32 unused;
+    DObj *dobj;
+    f32 temp;
     f32 length_current;
     f32 length_max_old;
 
@@ -1900,17 +1899,15 @@ f32 func_8000EC64_F864
     {
         length_max_old = length_max;
         
-        if(TRUE); if (TRUE); if(TRUE);
-        
-        length_current = 0.0F;
+        length_max = 0.0F;
         
         while (dobj != NULL)
         {
-            length_max = gcGetDObjTempAnimTimeMax(dobj, anim_joints, anim_frame, dobj_desc, rate_kind, length_current, translate, rotate, scale);
+            temp = gcGetDObjTempAnimTimeMax(dobj, anim_joints, anim_frame, dobj_desc, rate_kind, length_max, translate, rotate, scale);
             
-            if (length_current < length_max) 
+            if (length_max < temp) 
             {
-                length_current = length_max;
+                length_max = temp;
             }
             if (anim_joints != NULL)
             {
@@ -1924,21 +1921,20 @@ f32 func_8000EC64_F864
         }
         dobj = DObjGetStruct(gobj);
 
-        if (length_current < length_max_old)
+        if (length_max < length_max_old)
         {
-            length_current = length_max_old;
+            length_max = length_max_old;
         } 
-        else if (length_current > length_min)
+        else if (length_max > length_min)
         {
-            length_current = length_min;
+            length_max = length_min;
         }
         while (dobj != NULL)
         {
-            gcSetDObjAnimLength(dobj, length_current);
+            gcSetDObjAnimLength(dobj, length_max);
 
             dobj = func_8000BAA0(dobj);
         }
-        length_max = length_current;
     } 
     else while (dobj != NULL)
     {
@@ -1958,9 +1954,6 @@ f32 func_8000EC64_F864
     
     return length_max;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objanim/func_8000EC64_F864.s")
-#endif
 
 void func_8000EE40_FA40(GObj *gobj, AObjAnimJoint **anim_joints, f32 anim_frame, DObjDesc *dobj_desc)
 {

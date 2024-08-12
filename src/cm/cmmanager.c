@@ -232,7 +232,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
 {
     s32 player_num;
     s32 cam_num;
-    ftCamera ft_cam[SCBATTLE_PLAYERS_MAX];
+    ftCamera ft_cam[GMCOMMON_PLAYERS_MAX];
     ftStruct *fp;
     wpStruct *wp;
     f32 pos_top;

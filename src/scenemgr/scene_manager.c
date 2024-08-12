@@ -16,7 +16,6 @@
 #include <sys/system_03_1.h>
 #include <sc/sctypes.h> // Temporarily, until ovl defines are fixed
 #include <sys/thread6.h>
-#include <gm/battle.h>
 
 extern intptr_t D_NF_80392A00; // _ovl1SegNoloadEnd
 extern s32 D_8003B874_3C474;
@@ -25,7 +24,7 @@ extern GObj* D_80046A5C_40A7C;
 
 // BSS
 u8 D_800A44D0[16];
-gmBackupInfo gSaveData;
+scBackupData gSaveData;
 // current screen info
 scCommonData gSceneData;
 scBattleState D_800A4B18;
@@ -111,7 +110,7 @@ syOverlay D_800A3070[65] = {
 	GENERATE_OVERLAY_SECTION_DATA(64)
 };
 
-gmBackupInfo gDefaultSaveData = {
+scBackupData gDefaultSaveData = {
 	{{{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 0, 0, 0, 0, 0, 0,
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -133,8 +132,8 @@ gmBackupInfo gDefaultSaveData = {
 scCommonData gDefaultSceneData = 
 {
 	0x1B, 0x1B,
-	{ nGMBackupUnlockEnumMax, nGMBackupUnlockEnumMax },
-	{ nGMBackupUnlockEnumMax, nGMBackupUnlockEnumMax, nGMBackupUnlockEnumMax, nGMBackupUnlockEnumMax, nGMBackupUnlockEnumMax },
+	{ nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax },
+	{ nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax },
 	0x04, 0x00,
 	{0x00, 0x1C},
 	{0x1C, 0x1C},

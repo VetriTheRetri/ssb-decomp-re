@@ -1,7 +1,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 #include <sc/scene.h>
-#include <gm/battle.h>
 #include <ft/ftcommondata.h>
 
 extern f32 func_ovl0_800C7B58();
@@ -1485,7 +1484,7 @@ f32 ftParamGetCommonKnockback(s32 percent_damage, s32 recent_damage, s32 hit_dam
     {
         knockback = 2500.0F;
     }
-    if (gSaveData.error_flags & GMBACKUP_ERROR_RANDOMKNOCKBACK)
+    if (gSaveData.error_flags & SCBACKUP_ERROR_RANDOMKNOCKBACK)
     {
         knockback = mtTrigGetRandomFloat() * 200.0F;
     }
@@ -1511,7 +1510,7 @@ f32 ftParamGetGroundHazardKnockback(s32 percent_damage, s32 recent_damage, s32 h
     {
         knockback = 2500.0F;
     }
-    if (gSaveData.error_flags & GMBACKUP_ERROR_RANDOMKNOCKBACK)
+    if (gSaveData.error_flags & SCBACKUP_ERROR_RANDOMKNOCKBACK)
     {
         knockback = mtTrigGetRandomFloat() * 200.0F;
     }
@@ -1651,7 +1650,7 @@ void ftParamSetMotionID(ftStruct *fp, s32 attack_id)
 // 0x800EA614
 void ftParamUpdateStaleQueue(s32 attack_player, s32 defend_player, s32 attack_id, u16 motion_count)
 {
-    if ((attack_player != SCBATTLE_PLAYERS_MAX) && (attack_player != defend_player))
+    if ((attack_player != GMCOMMON_PLAYERS_MAX) && (attack_player != defend_player))
     {
         s32 i, stale_id = gBattleState->players[attack_player].stale_id;
 
@@ -1752,7 +1751,7 @@ void ftParamSetTimedHitStatusIntangible(ftStruct *fp, s32 intangible_timer)
 // 0x800EA98C
 void ftParamUpdateBattleStats(s32 attack_player, s32 defend_player, s32 attack_damage)
 {
-    if ((attack_player != SCBATTLE_PLAYERS_MAX) && (attack_player != defend_player))
+    if ((attack_player != GMCOMMON_PLAYERS_MAX) && (attack_player != defend_player))
     {
         gBattleState->players[attack_player].total_damage_dealt += attack_damage;
 

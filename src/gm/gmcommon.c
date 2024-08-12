@@ -1,5 +1,4 @@
 #include <sys/obj.h>
-#include <gm/battle.h>
 
 // // // // // // // // // // // //
 //                               //

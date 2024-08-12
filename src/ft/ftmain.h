@@ -1,12 +1,12 @@
 #ifndef _FTMAIN_H_
 #define _FTMAIN_H_
 
-#include "ftdef.h"
+#include <sys/objdef.h>
+#include <ft/ftdef.h>
 #include <wp/wpdef.h>
 #include <it/itdef.h>
 #include <gr/grdef.h>
-#include <sys/objdef.h>
-#include <gm/gmscript.h>
+#include <gm/gmdef.h>
 
 extern void ftMainParseMotionEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionScript *ms, u32 ev_kind);
 extern void ftMainUpdateMotionEventsNoEffect(GObj* fighter_gobj);

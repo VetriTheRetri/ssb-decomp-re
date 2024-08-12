@@ -12,7 +12,7 @@
 sb32 ftCommonSleepCheckIgnorePauseMenu(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    s32 steal_from_player[SCBATTLE_PLAYERS_MAX];
+    s32 steal_from_player[GMCOMMON_PLAYERS_MAX];
     s32 active_teammate_count;
     s32 player;
     s32 stock_count;
@@ -53,7 +53,7 @@ void ftCommonSleepProcUpdate(GObj *fighter_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *steal_gobj;
     s32 active_teammate_count;
-    s32 steal_from_player[SCBATTLE_PLAYERS_MAX];
+    s32 steal_from_player[GMCOMMON_PLAYERS_MAX];
     s32 player;
     s32 random_steal_target;
     s32 stock_count;

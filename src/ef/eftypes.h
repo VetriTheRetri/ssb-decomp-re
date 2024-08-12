@@ -4,17 +4,11 @@
 #include <ssb_types.h>
 #include <sys/obj.h>
 #include <cm/camera.h>
-#include <gm/gmmisc.h>
+#include <gm/generic.h>
 #include <ovl0/halbitmap.h>
 
-#include "efdef.h"
-#include "efvars.h"
-
-#define EFFECT_ALLOC_NUM 38
-#define EFFECT_ALLOC_ALIGN 0x8
-
-#define EFFECT_FLAG_USERDATA 0x2            // Effect GObj has an efStruct user_data and update process
-#define EFFECT_FLAG_SPECIALLINK 0x8         // Effect GObj has CommonLink array ID of 8 rather than the usual 6
+#include <ef/efdef.h>
+#include <ef/efvars.h>
 
 struct efCreateDesc
 {

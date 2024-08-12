@@ -7,5 +7,6 @@
 
 extern scBattleState *gBattleState, gDefaultBattleState, D_800A4B18, gTransferBattleState, D_800A4EF8;
 extern scCommonData gSceneData, gDefaultSceneData;
+extern scBackupData gSaveData, gDefaultSaveData;
 
 #endif

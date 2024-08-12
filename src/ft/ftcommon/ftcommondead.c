@@ -56,7 +56,7 @@ void ftCommonDeadUpdateScore(ftStruct *this_fp)
     {
         ifCommonPlayerScoreMakeEffect(this_fp, -1);
     }
-    if ((this_fp->damage_player != -1) && (this_fp->damage_player != SCBATTLE_PLAYERS_MAX))
+    if ((this_fp->damage_player != -1) && (this_fp->damage_player != GMCOMMON_PLAYERS_MAX))
     {
         gBattleState->players[this_fp->damage_player].score++;
 

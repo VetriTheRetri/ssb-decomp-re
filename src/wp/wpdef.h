@@ -1,6 +1,42 @@
 #ifndef _WPDEF_H_
 #define _WPDEF_H_
 
+// Macros
+#define WEAPON_ALLOC_MAX 32 // Allocate this many weapon user_data structs at once
+#define WEAPON_ALLOC_ALIGN 0x8
+
+#define WEAPON_STALE_DEFAULT 1.0F
+
+#define WEAPON_TEAM_DEFAULT 4
+#define WEAPON_PORT_DEFAULT GMCOMMON_PLAYERS_MAX
+#define WEAPON_HANDICAP_DEFAULT 9
+
+#define WEAPON_FLAG_DOBJSETUP 0x1                   // Weapon has a DObj node tree that needs to be set up
+#define WEAPON_FLAG_DOBJLINKS 0x2                   // Use DObjDLLink renderers or single DisplayList stream?
+#define WEAPON_FLAG_COLLPROJECT (1 << 31)               // Perform initial collision check when spawning weapon?
+
+#define WEAPON_FLAG_PARENT_FIGHTER 0                 // Weapon spawned by fighter
+#define WEAPON_FLAG_PARENT_GROUND 1	                // Weapon spawned by stage
+#define WEAPON_FLAG_PARENT_WEAPON 2	                // Weapon spawned by another weapon
+#define WEAPON_FLAG_PARENT_ITEM 3	                // Weapon spawned by Item
+
+#define WEAPON_FLAG_PARENT_ALL 0xF                   // Mask all GObj classes that can spawn weapons?
+
+#define WEAPON_HITBOX_NUM_MAX 2
+#define WEAPON_REHIT_TIME_DEFAULT                                                                                      \
+	16 // If the weapon is multihit, its hitbox will refresh per victim after
+	   // this many frames have passed
+
+#define WEAPON_REFLECT_TIME_DEFAULT 100	 // Maximum damage cap for reflected weapons
+#define WEAPON_REFLECT_MUL_DEFAULT 1.8F	 // Universal reflect damage multiplier
+#define WEAPON_REFLECT_ADD_DEFAULT 0.99F // Added after multiplying weapon's hitbox damage
+
+#define WEAPON_STALE_ADD_DEFAULT                                                                                       \
+	0.999F // Bonus 1% added after multiplying hitbox damage with staling
+		   // modifier
+
+#define WEAPON_HOP_ANGLE_DEFAULT F_CLC_DTOR32(135.0F) // 2.3561945F - Determines whether weapon bounces off a shield
+
 // Enums
 typedef enum wpKind
 {

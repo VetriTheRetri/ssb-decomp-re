@@ -4,122 +4,8 @@
 #include <ssb_types.h>
 #include <macros.h>
 #include <sys/obj.h>
+#include <gm/generic.h>
 #include <sc/scdef.h>
-#include <gm/gmmisc.h> // Temporary!
-
-#define SCBATTLE_TIMELIMIT_INFINITE 100
-#define SCBATTLE_BONUSGAME_TASK_MAX 10
-#define SCBATTLE_PLAYERS_MAX 4              // Global limit for simultaneous players in a match
-
-#define SC1PGAME_BONUS_MASK_CREATE(kind)    (1 << ((kind) - (((kind) / GS_BITCOUNT(u32, 1)) * GS_BITCOUNT(u32, 1))))
-
-#define SCBATTLE_GAMERULE_TIME 	            (1 << nSCBattleGameRuleTime)	        // 0x1
-#define SCBATTLE_GAMERULE_STOCK	            (1 << nSCBattleGameRuleStock)           // 0x2
-#define SCBATTLE_GAMERULE_BONUS             (1 << nSCBattleGameRuleBonus) 	        // 0x4
-#define SCBATTLE_GAMERULE_1PGAME            (1 << nSCBattleGameRule1PGame)          // 0x8
-
-// First set of bonuses
-#define SC1PGAME_BONUS_MASK0_CHEAPSHOT		(1 << nSC1PGameBonusCheapShot)          // One attack made up >= 35% of all attacks used
-#define SC1PGAME_BONUS_MASK0_STARFINISH		(1 << nSC1PGameBonusStarFinish)	        // KO'd last enemy with a Star KO or Screen KO
-#define SC1PGAME_BONUS_MASK0_NOITEM			(1 << nSC1PGameBonusNoItem)			    // Did not use any items
-#define SC1PGAME_BONUS_MASK0_SHIELDBREAKER	(1 << nSC1PGameBonusShieldBreaker)      // Broke enemy's shield
-#define SC1PGAME_BONUS_MASK0_JUDOWARRIOR	(1 << nSC1PGameBonusJudoWarrior)		// Only used throws
-#define SC1PGAME_BONUS_MASK0_HAWK			(1 << nSC1PGameBonusHawk)		        // Only used aerials
-#define SC1PGAME_BONUS_MASK0_SHOOTER		(1 << nSC1PGameBonusShooter)		    // Only used projectiles
-#define SC1PGAME_BONUS_MASK0_HEAVYDAMAGE	(1 << nSC1PGameBonusHeavyDamage)		// Accumulated over 200% damage
-#define SC1PGAME_BONUS_MASK0_ALLVARIATIONS	(1 << nSC1PGameBonusAllVariations)	    // Used all jabs, tilts, attacks and aerials
-#define SC1PGAME_BONUS_MASK0_ITEMSTRIKE		(1 << nSC1PGameBonusItemStrike)		    // Only used items
-#define SC1PGAME_BONUS_MASK0_DOUBLEKO		(1 << nSC1PGameBonusDoubleKO) 		    // Unused, translated from Japanese
-#define SC1PGAME_BONUS_MASK0_TRICKSTER		(1 << nSC1PGameBonusTrickster)		    // KO'd every enemy of a team with a Star KO or Screen KO
-#define SC1PGAME_BONUS_MASK0_GIANTIMPACT	(1 << nSC1PGameBonusGiantImpact)		// Unused, translated from Japanese
-#define SC1PGAME_BONUS_MASK0_SPEEDSTER		(1 << nSC1PGameBonusSpeedster)		    // Cleared stage in less than 30 seconds
-#define SC1PGAME_BONUS_MASK0_ITEMTHROW		(1 << nSC1PGameBonusItemThrow)		    // Threw or dropped all items, never used them in any other way
-#define SC1PGAME_BONUS_MASK0_TRIPLEKO		(1 << nSC1PGameBonusTripleKO)		    // Unused, translated from Japanese
-#define SC1PGAME_BONUS_MASK0_LASTCHANCE		(1 << nSC1PGameBonusLastChance)		    // Unused, translated from Japanese
-#define SC1PGAME_BONUS_MASK0_PACIFIST		(1 << nSC1PGameBonusPacifist)		    // Cleared stage without dealing any damage
-#define SC1PGAME_BONUS_MASK0_PERFECT		(1 << nSC1PGameBonusPerfect)		    // Cleared Bonus Stage with all targets broken or all platforms boarded
-#define SC1PGAME_BONUS_MASK0_NOMISS			(1 << nSC1PGameBonusNoMiss)		        // Cleared stage without falling once throughout 1P Game progress; multiplied each time it is earned, lost after first fall
-#define SC1PGAME_BONUS_MASK0_NODAMAGE		(1 << nSC1PGameBonusNoDamage)	        // Cleared stage without falling and taking any damage
-#define SC1PGAME_BONUS_MASK0_FULLPOWER		(1 << nSC1PGameBonusFullPower)	        // Cleared stage with 0% damage (does not yield No Damage)
-#define SC1PGAME_BONUS_MASK0_GAMECLEAR		(1 << nSC1PGameBonusGameClear)	        // Cleared Final Stage (number of bonus points depends on difficulty?)
-#define SC1PGAME_BONUS_MASK0_NOMISSCLEAR	(1 << nSC1PGameBonusNoMissClear)	    // Cleared all stages without falling once (except Bonus Stages?)
-#define SC1PGAME_BONUS_MASK0_NODAMAGECLEAR	(1 << nSC1PGameBonusNoDamageClear)	    // Cleared all stages without taking any damage
-#define SC1PGAME_BONUS_MASK0_SPEEDKING		(1 << nSC1PGameBonusSpeedKing)	        // Cleared all stages in under 12 minutes (not earned if Speed Demon criteria is met)
-#define SC1PGAME_BONUS_MASK0_SPEEDDEMON		(1 << nSC1PGameBonusSpeedDemon)	        // Cleared all stages in under 8 minutes
-#define SC1PGAME_BONUS_MASK0_MEWCATCHER		(1 << nSC1PGameBonusMewCatcher)	        // Mew was released from player's Pok� Ball
-#define SC1PGAME_BONUS_MASK0_STARCLEAR		(1 << nSC1PGameBonusStarClear)	        // Cleared stage while under the effect of Star Man
-#define SC1PGAME_BONUS_MASK0_VEGETARIAN		(1 << nSC1PGameBonusVegetarian)	        // Consumed 3 or more Maxim Tomatoes
-#define SC1PGAME_BONUS_MASK0_HEARTTHROB		(1 << nSC1PGameBonusHeartThrob)	        // Consumed 3 or more Hearts
-#define SC1PGAME_BONUS_MASK0_THROWDOWN		(1 << nSC1PGameBonusThrowDown)	        // KO'd last enemy with a throw
-
-// Second set of bonuses
-#define SC1PGAME_BONUS_MASK1_SMASHMANIA		(1 << (nSC1PGameBonusSmashMania-32))    // Only used Smash Attacks
-#define SC1PGAME_BONUS_MASK1_SMASHLESS		(1 << (nSC1PGameBonusSmashless-32))	    // Never used Smash Attacks
-#define SC1PGAME_BONUS_MASK1_SPECIALMOVE	(1 << (nSC1PGameBonusSpecialMove-32))	// Only used Special Attacks
-#define SC1PGAME_BONUS_MASK1_SINGLEMOVE		(1 << (nSC1PGameBonusSingleMove-32))    // Only used the same Special Attack
-#define SC1PGAME_BONUS_MASK1_POKEMONFINISH	(1 << (nSC1PGameBonusPokemonFinish-32))	// KO'd last enemy with a Pok�mon (Saffron City Pok�mon projectiles also count, but not the Pok�mon themselves?)
-#define SC1PGAME_BONUS_MASK1_BOOBYTRAP		(1 << (nSC1PGameBonusBoobyTrap-32))		// KO'd last enemy with a Motion Sensor Bomb
-#define SC1PGAME_BONUS_MASK1_FIGHTERSTANCE	(1 << (nSC1PGameBonusFighterStance-32)) // Player was taunting as stage ended
-#define SC1PGAME_BONUS_MASK1_MYSTIC			(1 << (nSC1PGameBonusMystic-32))		// Player fell as stage ended
-#define SC1PGAME_BONUS_MASK1_COMETMYSTIC	(1 << (nSC1PGameBonusCometMystic-32))   // Player was getting Star KO'd as stage ended (Screen KOs do not count)
-#define SC1PGAME_BONUS_MASK1_ACIDCLEAR		(1 << (nSC1PGameBonusAcidClear-32))		// Last enemy got KO'd by Acid
-#define SC1PGAME_BONUS_MASK1_BUMPERCLEAR	(1 << (nSC1PGameBonusBumperClear-32))	// Last enemy got KO'd by Bumper
-#define SC1PGAME_BONUS_MASK1_TORNADOCLEAR	(1 << (nSC1PGameBonusTornadoClear-32))  // Last enemy got KO'd by Tornado
-#define SC1PGAME_BONUS_MASK1_ARWINGCLEAR	(1 << (nSC1PGameBonusArwingClear-32))	// Last enemy got KO'd by ARWING
-#define SC1PGAME_BONUS_MASK1_COUNTERATTACK	(1 << (nSC1PGameBonusCounterAttack-32)) // Unused, translated from Japanese
-#define SC1PGAME_BONUS_MASK1_METEORSMASH	(1 << (nSC1PGameBonusMeteorSmash-32))	// Unused, translated from Japanese
-#define SC1PGAME_BONUS_MASK1_AERIAL			(1 << (nSC1PGameBonusAerial-32))		// Unused, translated from Japanese
-#define SC1PGAME_BONUS_MASK1_LASTSECOND		(1 << (nSC1PGameBonusLastSecond-32))	// Cleared stage with 1 second left on the timer
-#define SC1PGAME_BONUS_MASK1_LUCKY3			(1 << (nSC1PGameBonusLucky3-32))		// Cleared stage with 3:33 left on the timer
-#define SC1PGAME_BONUS_MASK1_JACKPOT		(1 << (nSC1PGameBonusJackpot-32))		// Cleared stage with a damage % of two or three identical digits (e.g. 44% or 111%)
-#define SC1PGAME_BONUS_MASK1_YOSHIRAINBOW	(1 << (nSC1PGameBonusYoshiRainbow-32))	// KO'd every member of Yoshi Team in the order they appeared
-#define SC1PGAME_BONUS_MASK1_KIRBYRANKS		(1 << (nSC1PGameBonusKirbyRanks-32))	// KO'd every member of Kirby Team in the order they appeared
-#define SC1PGAME_BONUS_MASK1_BROSCALAMITY	(1 << (nSC1PGameBonusBrosCalamity-32))	// KO'd Luigi before damaging Mario on VS Mario Bros. stage
-#define SC1PGAME_BONUS_MASK1_DKDEFENDER		(1 << (nSC1PGameBonusDKDefender-32))	// Allies did not fall on VS. Giant Donkey Kong stage
-#define SC1PGAME_BONUS_MASK1_DKPERFECT		(1 << (nSC1PGameBonusDKPerfect-32))	    // Allies did not fall and took no damage on VS. Giant Donkey Kong stage
-#define SC1PGAME_BONUS_MASK1_GOODFRIEND		(1 << (nSC1PGameBonusGoodFriend-32))	// Ally did not fall on VS Mario Bros. stage
-#define SC1PGAME_BONUS_MASK1_TRUEFRIEND		(1 << (nSC1PGameBonusTrueFriend-32))	// Ally did not fall and took no damage on VS Mario Bros. stage
-
-// "DAMAGE", "COMBO", "ENEMY", "SPEED" text
-#define SCTRAINING_STATDISPLAY_TEXT_COUNT 4
-#define SCTRAINING_STATDISPLAY_CHARACTER_COUNT 39
-
-#define SCTRAINING_DAMAGEDISPLAY_DIGIT_COUNT 3
-
-#define SCTRAINING_COMBODISPLAY_DIGIT_COUNT 2
-
-// Total menu description text sprite count
-#define SCTRAINING_MENULABELS_SPRITE_COUNT 10
-
-// Text describing what each option is for (orange text)
-#define SCTRAINING_MENULABELS_TEXT_COUNT 6
-
-// Wait this many frames before magnifying glass is shown again after changing
-// back from Close-Up view
-#define SCTRAINING_VIEW_MAGNIFY_WAIT 180
-
-#define SCTRAINING_GENERAL_SCROLL_WAIT_NORMAL 30
-#define SCTRAINING_GENERAL_SCROLL_WAIT_FAST 5
-
-#define SCTRAINING_ITEMSPAWN_MAX 4
-#define SCTRAINING_ITEMSPAWN_WAIT 8
-#define SCTRAINING_ITEMSPAWN_VEL_Y 30.0F
-#define SCTRAINING_ITEMSPAWN_OFF_Y 200.0F
-
-#define SCTRAINING_INPUT_STICK_RANGE_MIN (I_CONTROLLER_RANGE_MAX / 2)
-
-#define SCMANAGER_OVERLAY_DEFINE(OVL_NUM) 		\
-{												\
-	(uintptr_t)&_ovl##OVL_NUM##SegRomStart, 	\
-	(uintptr_t)&_ovl##OVL_NUM##SegRomEnd,		\
-	(uintptr_t)&_ovl##OVL_NUM##SegStart, 		\
-	(uintptr_t)&_ovl##OVL_NUM##TextStart, 		\
-	(uintptr_t)&_ovl##OVL_NUM##TextEnd, 		\
-	(uintptr_t)&_ovl##OVL_NUM##DataStart,		\
-	(uintptr_t)&_ovl##OVL_NUM##DataEnd,			\
-	(uintptr_t)&_ovl##OVL_NUM##SegNoloadStart,	\
-	(uintptr_t)&_ovl##OVL_NUM##SegNoloadEnd		\
-}
 
 struct sc1PGameComputer
 {
@@ -279,13 +165,13 @@ struct scPlayerData
 	u8 placement;			                        // Player's placement in battle results
 	s32 falls;
 	s32 score;								        // Caps at positive 999, crashes if way too low in the negatives
-	s32 total_ko_player[SCBATTLE_PLAYERS_MAX];      // KOs scored on other players
+	s32 total_ko_player[GMCOMMON_PLAYERS_MAX];      // KOs scored on other players
 	s32 unk_pblock_0x28;
 	s32 unk_pblock_0x2C;
-	s32 total_self_destruct;					    // Applied when damaging player's ID is -1 or SCBATTLE_PLAYERS_MAX
+	s32 total_self_destruct;					    // Applied when damaging player's ID is -1 or GMCOMMON_PLAYERS_MAX
 	s32 total_damage_dealt;						    // Total damage dealt to all players
 	s32 total_damage_all;						    // Damage received from all hazards
-	s32 total_damage_player[SCBATTLE_PLAYERS_MAX];  // Total damage received from each player present
+	s32 total_damage_player[GMCOMMON_PLAYERS_MAX];  // Total damage received from each player present
 	s32 stock_damage_all;						    // All damage received per current stock, from any hazard
 	s32 combo_damage_foe;						    // Total damage from consecutive hits dealt by foes (Resets when hitstun ends)
 	s32 combo_count_foe;						    // Number of consecutive hits received from foes (Resets when hitstun ends)
@@ -326,7 +212,7 @@ struct scBattleState
 	ub32 is_display_score : 1;						// Displays score when a fighter falls
 	ub32 is_not_teamshadows : 1;					// If FALSE, shadows are colored based on
 													// players' team affiliation, otherwise use default shadow color
-	scPlayerData players[SCBATTLE_PLAYERS_MAX]; 	// Holds data for each player
+	scPlayerData players[GMCOMMON_PLAYERS_MAX]; 	// Holds data for each player
 };
 
 struct scCommonData
@@ -371,6 +257,66 @@ struct scCommonData
 	u8 unk45;
 	u8 unk46;
 	u8 unk47;
+};
+
+struct scBackupBattleRecord
+{
+	/* 0x00 */ u16 ko_count[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
+	/* 0x18 */ u32 time_used; //< in seconds
+	/* 0x1C */ u32 damage_dealt;
+	/* 0x20 */ u32 damage_taken;
+	/* 0x24 */ u16 unk;
+	/* 0x26 */ u16 self_destructs;
+	/* 0x28 */ u16 games_played;
+	/* 0x2A */ u16 player_count_tally;
+	/* 0x2C */ u16 player_count_tallies[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
+	/* 0x44 */ u16 played_against[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
+};
+
+struct scBackup1PRecord
+{
+	u32 spgame_hiscore;
+	u32 spgame_continues;
+	u32 spgame_bonuses;
+	u8 spgame_best_difficulty;
+	u32 bonus1_time;	  // Break the Targets high score
+	u8 bonus1_task_count; // Targets broken
+	u32 bonus2_time;	  // Board the Platforms high score
+	u8 bonus2_task_count; // Platforms boarded
+	u8 spgame_complete;	  // Whether character has completed 1P Game or not
+};
+
+// is this the saved data structure?
+struct scBackupData
+{
+	scBackupBattleRecord battle_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
+	ub8 is_allow_screenflash; 	// Toggle for enabling white screen flash when,
+							  	// for example, a character takes too much
+							  	// damage. Leftover from unused "background
+							  	// flash" option? It is always toggled ON, even
+							  	// after clearing the save data.
+	ub8 sound_mono_or_stereo; 
+	s16 unk452;
+	s16 unk454;
+	u8 unk456;
+	u8 unlock_mask;
+	u16 character_mask; 		// Mask of unlocked characters?
+	u8 spgame_difficulty;
+	u8 spgame_stock_count;
+	scBackup1PRecord spgame_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
+	u16 unlock_task_inishie;   	// Records mask of unique stages played in VS mode
+	u8 unlock_task_itemswitch; 	// Records number of VS games played for Item
+							   	// Switch unlock
+	u16 vsgame_total;		   	// Total amount of VS games played?
+	u8 error_flags;		   		// Some kind of anti-piracy measure??? 0x1 results in
+							   	// random knockback velocity, 0x2 halves stick range, 0x4
+							   	// forces Mario in 1P game, 0x8 forces Peach's Castle
+	u8 unk5E3;
+	u8 unk5E4;
+	u8 unk5E5;
+	u8 unk5E6;
+	u8 unk5E7;
+	s32 checksum; 				// Checksum of save data
 };
 
 // These next three structs are only temporarily placed here!

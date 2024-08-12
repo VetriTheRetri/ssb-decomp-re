@@ -5,11 +5,9 @@
 #include <macros.h>
 #include <sys/obj.h>
 #include <cm/camera.h>
+#include <gm/generic.h>
 
-#include "ifdef.h"
-
-#define IFCOMMON_PLAYERARROWS_MASK_LEFT  	(1 << nIFPlayerArrowKindLeft)
-#define IFCOMMON_PLAYERARROWS_MASK_RIGHT 	(1 << nIFPlayerArrowKindRight)
+#include <if/ifdef.h>
 
 struct ifPlayerCommon
 {

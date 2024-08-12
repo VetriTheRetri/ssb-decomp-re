@@ -5,7 +5,7 @@
 #include <sys/obj.h>
 #include <mp/map.h>
 #include <cm/camera.h>
-#include <gm/gmmisc.h>
+#include <gm/generic.h>
 
 #include <gr/grdef.h>
 #include <gr/grvars.h>
@@ -20,8 +20,7 @@ struct grGeometryDesc
 
 struct grHitbox
 {
-	s32 kind; // Not actually UpdateState, no idea what this is; something
-				  // to do with sound effects?
+	s32 kind;
 	s32 damage;
 	s32 angle;
 	s32 knockback_scale;

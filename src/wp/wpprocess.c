@@ -2,7 +2,6 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <gm/battle.h>
 
 // // // // // // // // // // // //
 //                               //

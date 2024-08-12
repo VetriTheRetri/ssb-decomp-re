@@ -1,6 +1,5 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <gm/battle.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "ovl32.h"
@@ -268,7 +267,7 @@ s32 mnVsRecordsGetKOs(s32 ft_kind)
 	for (i = 0; i < 12; i++)
 	{
 		if (mnVsRecordsIsUnlocked(i) != FALSE)
-			total_kos += gSaveData.vs_records[ft_kind].ko_count[i];
+			total_kos += gSaveData.battle_records[ft_kind].ko_count[i];
 	}
 	return total_kos;
 }
@@ -282,13 +281,13 @@ s32 mnVsRecordsGetTKOs(s32 ft_kind)
 	for (i = 0; i < 12; i++)
 	{
 		if (mnVsRecordsIsUnlocked(i) != FALSE)
-			total_tkos += gSaveData.vs_records[i].ko_count[ft_kind];
+			total_tkos += gSaveData.battle_records[i].ko_count[ft_kind];
 	}
 
-	if (gSaveData.vs_records[ft_kind].self_destructs + total_tkos > 9999)
+	if (gSaveData.battle_records[ft_kind].self_destructs + total_tkos > 9999)
 		return 9999;
 
-	return gSaveData.vs_records[ft_kind].self_destructs + total_tkos;
+	return gSaveData.battle_records[ft_kind].self_destructs + total_tkos;
 }
 
 // 80131CD4
@@ -1091,10 +1090,10 @@ void mnVsRecordsCreatePortraitAndStats(GObj* individual_stats_gobj, s32 ft_kind)
 	mnVsRecordsCreateNumber(individual_stats_gobj, mnVsRecordsGetUsePercentage(ft_kind) * 10, 265, 66, colors, TRUE, TRUE, 3, FALSE);
 
 	mnVsRecordsDrawString(individual_stats_gobj, "ATTACK 3TOTAL", 149, 78, color);
-	mnVsRecordsCreateNumber(individual_stats_gobj, gSaveData.vs_records[ft_kind].damage_dealt, 265, 76, colors, FALSE, TRUE, 6, FALSE);
+	mnVsRecordsCreateNumber(individual_stats_gobj, gSaveData.battle_records[ft_kind].damage_dealt, 265, 76, colors, FALSE, TRUE, 6, FALSE);
 
 	mnVsRecordsDrawString(individual_stats_gobj, "DAMAGE TOTAL", 150, 86, color);
-	mnVsRecordsCreateNumber(individual_stats_gobj, gSaveData.vs_records[ft_kind].damage_taken, 265, 84, colors, FALSE, TRUE, 6, FALSE);
+	mnVsRecordsCreateNumber(individual_stats_gobj, gSaveData.battle_records[ft_kind].damage_taken, 265, 84, colors, FALSE, TRUE, 6, FALSE);
 }
 
 // 80133FE8
@@ -1130,7 +1129,7 @@ void mnVsRecordsSortData(s32 stats_kind)
 						stats[i] = mnVsRecordsGetSDPercentage(i);
 						break;
 					case vsRecordsRankingColumnKindTime:
-						stats[i] = gSaveData.vs_records[i].time_used;
+						stats[i] = gSaveData.battle_records[i].time_used;
 						break;
 					case vsRecordsRankingColumnKindUsePercentage:
 						stats[i] = mnVsRecordsGetUsePercentage(i);
@@ -1205,7 +1204,7 @@ GObj* mnVsRecordsCreateBattleScoreTableValues()
 			{
 				if (mnVsRecordsIsUnlocked(gMNVsRecordsBattleScoreFtKindOrder[j]) != FALSE)
 				{
-					mnVsRecordsCreateNumber(values_gobj, gSaveData.vs_records[gMNVsRecordsBattleScoreFtKindOrder[i]].ko_count[gMNVsRecordsBattleScoreFtKindOrder[j]], x + (j * 0x12), y + 65.0f, colors, FALSE, FALSE, 4, FALSE);
+					mnVsRecordsCreateNumber(values_gobj, gSaveData.battle_records[gMNVsRecordsBattleScoreFtKindOrder[i]].ko_count[gMNVsRecordsBattleScoreFtKindOrder[j]], x + (j * 0x12), y + 65.0f, colors, FALSE, FALSE, 4, FALSE);
 				}
 			}
 
@@ -1269,8 +1268,8 @@ void mnVsRecordsCreateRankingRowHighlight()
 // 801348B4
 f32 mnVsRecordsGetAverage(s32 ft_kind)
 {
-	if (gSaveData.vs_records[ft_kind].games_played != 0)
-		return (f32) gSaveData.vs_records[ft_kind].player_count_tally / gSaveData.vs_records[ft_kind].games_played;
+	if (gSaveData.battle_records[ft_kind].games_played != 0)
+		return (f32) gSaveData.battle_records[ft_kind].player_count_tally / gSaveData.battle_records[ft_kind].games_played;
 	else
 		return 0.0f;
 }
@@ -1282,7 +1281,7 @@ s32 mnVsRecordsGetGamesPlayedSum()
 	s32 total_games_played = 0;
 
 	for (i = 0; i < 12; i++)
-		total_games_played += gSaveData.vs_records[i].games_played;
+		total_games_played += gSaveData.battle_records[i].games_played;
 
 	return total_games_played;
 }
@@ -1293,7 +1292,7 @@ f32 mnVsRecordsGetUsePercentage(s32 ft_kind)
 	f32 use_percentage;
 
 	if (mnVsRecordsGetGamesPlayedSum() != 0.0f)
-		use_percentage = gSaveData.vs_records[ft_kind].games_played / (f32) mnVsRecordsGetGamesPlayedSum();
+		use_percentage = gSaveData.battle_records[ft_kind].games_played / (f32) mnVsRecordsGetGamesPlayedSum();
 	else
 		use_percentage = 0.0f;
 
@@ -1305,7 +1304,7 @@ f32 mnVsRecordsGetSDPercentage(s32 ft_kind)
 {
 	f32 sd_percentage;
 	f32 total_kos = mnVsRecordsGetTKOs(ft_kind);
-	f32 self_destructs = gSaveData.vs_records[ft_kind].self_destructs;
+	f32 self_destructs = gSaveData.battle_records[ft_kind].self_destructs;
 
 	if (total_kos != 0.0f)
 		sd_percentage = self_destructs / total_kos;
@@ -1364,7 +1363,7 @@ GObj* mnVsRecordsCreateRankingTableValues(s32 column)
 						mnVsRecordsCreateNumber(table_values_gobj, mnVsRecordsGetSDPercentage(gMNVsRecordsRankingFtKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x, y, colors, TRUE, FALSE, 3, FALSE);
 						break;
 					case vsRecordsRankingColumnKindTime:
-						mnVsRecordsCreateNumber(table_values_gobj, (gSaveData.vs_records[gMNVsRecordsRankingFtKindOrder[i]].time_used % 3600) / 60, col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 2, TRUE);
+						mnVsRecordsCreateNumber(table_values_gobj, (gSaveData.battle_records[gMNVsRecordsRankingFtKindOrder[i]].time_used % 3600) / 60, col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 2, TRUE);
 
 						table_values_sobj = gcAppendSObjWithSprite(table_values_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_COLON_IMAGE_OFFSET));
 						mnVsRecordsSetTextureColors(table_values_sobj, colors);
@@ -1372,7 +1371,7 @@ GObj* mnVsRecordsCreateRankingTableValues(s32 column)
 						table_values_sobj->pos.x = col_widths[column_order[j]] + x - 11;
 						table_values_sobj->pos.y = y;
 
-						mnVsRecordsCreateNumber(table_values_gobj, gSaveData.vs_records[gMNVsRecordsRankingFtKindOrder[i]].time_used / 3600, col_widths[column_order[j]] + x - 13, y, colors, FALSE, FALSE, 3, FALSE);
+						mnVsRecordsCreateNumber(table_values_gobj, gSaveData.battle_records[gMNVsRecordsRankingFtKindOrder[i]].time_used / 3600, col_widths[column_order[j]] + x - 13, y, colors, FALSE, FALSE, 3, FALSE);
 						break;
 					case vsRecordsRankingColumnKindUsePercentage:
 						mnVsRecordsCreateNumber(table_values_gobj, mnVsRecordsGetUsePercentage(gMNVsRecordsRankingFtKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x, y, colors, TRUE, FALSE, 3, FALSE);
@@ -1436,8 +1435,8 @@ GObj* mnVsRecordsCreateRankingTableHeaders(s32 column)
 // 8013531C
 f32 mnVsRecordsGetWinPercentageAgainst(s32 ft_kind, s32 ft_kind_opponent)
 {
-	f32 kos_for = gSaveData.vs_records[ft_kind].ko_count[ft_kind_opponent];
-	f32 total_kos = kos_for + gSaveData.vs_records[ft_kind_opponent].ko_count[ft_kind];
+	f32 kos_for = gSaveData.battle_records[ft_kind].ko_count[ft_kind_opponent];
+	f32 total_kos = kos_for + gSaveData.battle_records[ft_kind_opponent].ko_count[ft_kind];
 	f32 ko_percentage;
 
 	if (total_kos != 0.0f)
@@ -1451,8 +1450,8 @@ f32 mnVsRecordsGetWinPercentageAgainst(s32 ft_kind, s32 ft_kind_opponent)
 // 801353F4
 f32 mnVsRecordsGetAverageAgainst(s32 ft_kind, s32 ft_kind_opponent)
 {
-	if (gSaveData.vs_records[ft_kind].played_against[ft_kind_opponent] != 0)
-		return (f32) gSaveData.vs_records[ft_kind].player_count_tallies[ft_kind_opponent] / gSaveData.vs_records[ft_kind].played_against[ft_kind_opponent];
+	if (gSaveData.battle_records[ft_kind].played_against[ft_kind_opponent] != 0)
+		return (f32) gSaveData.battle_records[ft_kind].player_count_tallies[ft_kind_opponent] / gSaveData.battle_records[ft_kind].played_against[ft_kind_opponent];
 	else
 		return 0.0f;
 }
@@ -1479,8 +1478,8 @@ s32 mnVsRecordsCreateIndividualTableValues()
 		{
 			x = (i * 19) + 84.0f;
 			mnVsRecordsCreateNumber(table_values_gobj, mnVsRecordsGetWinPercentageAgainst(gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex], gMNVsRecordsIndividualFtKindOrder[i]) * 10.0f, x, y[0], colors, TRUE, FALSE, 3, FALSE);
-			mnVsRecordsCreateNumber(table_values_gobj, gSaveData.vs_records[gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex]].ko_count[gMNVsRecordsIndividualFtKindOrder[i]], x, y[1], colors, FALSE, FALSE, 4, FALSE);
-			mnVsRecordsCreateNumber(table_values_gobj, gSaveData.vs_records[gMNVsRecordsIndividualFtKindOrder[i]].ko_count[gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex]], x, y[2], colors, FALSE, FALSE, 4, FALSE);
+			mnVsRecordsCreateNumber(table_values_gobj, gSaveData.battle_records[gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex]].ko_count[gMNVsRecordsIndividualFtKindOrder[i]], x, y[1], colors, FALSE, FALSE, 4, FALSE);
+			mnVsRecordsCreateNumber(table_values_gobj, gSaveData.battle_records[gMNVsRecordsIndividualFtKindOrder[i]].ko_count[gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex]], x, y[2], colors, FALSE, FALSE, 4, FALSE);
 			mnVsRecordsCreateNumber(table_values_gobj, mnVsRecordsGetAverageAgainst(gMNVsRecordsRankingFtKindOrder[gMNVsRecordsCurrentIndex], gMNVsRecordsIndividualFtKindOrder[i]) * 10.0f, x, y[3], colors, TRUE, FALSE, 3, FALSE);
 		}
 	}

@@ -2,7 +2,6 @@
 #include <if/interface.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <gm/battle.h>
 
 extern uintptr_t D_NF_800A5240;
 extern uintptr_t D_NF_8018E7E0;
@@ -100,7 +99,7 @@ void scBattle_StartStockBattle()
 
 	func_ovl4_8018E330();
 
-	if (!(gSaveData.error_flags & GMBACKUP_ERROR_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
+	if (!(gSaveData.error_flags & SCBACKUP_ERROR_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
 	{
 		base_addr = rdManagerGetFileWithExternHeap((intptr_t)&D_NF_000000C7, gsMemoryAlloc(rdManagerGetFileSize((intptr_t)&D_NF_000000C7), 0x10));
 
@@ -111,7 +110,7 @@ void scBattle_StartStockBattle()
 
 		if (proc_cache() == FALSE)
 		{
-			gSaveData.error_flags |= GMBACKUP_ERROR_1PGAMEMARIO;
+			gSaveData.error_flags |= SCBACKUP_ERROR_1PGAMEMARIO;
 		}
 	}
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
@@ -124,7 +123,7 @@ void scBattle_StartStockBattle()
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(2, SCBATTLE_PLAYERS_MAX);
+	ftManagerAllocFighter(2, GMCOMMON_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
@@ -194,7 +193,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 	s32 tied_players;
 	s32 i, j;
 	scBattleResults winner_results;
-	scBattleResults player_results[SCBATTLE_PLAYERS_MAX];
+	scBattleResults player_results[GMCOMMON_PLAYERS_MAX];
 
 	if (!(gBattleState->game_rules & SCBATTLE_GAMERULE_TIME))
 	{
@@ -388,7 +387,7 @@ void scBattle_StartSDBattle()
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(2, SCBATTLE_PLAYERS_MAX);
+	ftManagerAllocFighter(2, GMCOMMON_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
@@ -472,7 +471,7 @@ void scBattleRoyalStartScene()
 
 	gBattleState->gr_kind = gSceneData.gr_kind;
 
-	if (gSaveData.error_flags & GMBACKUP_ERROR_VSMODECASTLE)
+	if (gSaveData.error_flags & SCBACKUP_ERROR_VSMODECASTLE)
 	{
 		gBattleState->gr_kind = nGRKindCastle;
 	}

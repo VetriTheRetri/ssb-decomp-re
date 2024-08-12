@@ -167,19 +167,19 @@ s32 sIFCommonPad0x80131570[4];
 ifPlayerCommon gIFCommonPlayerInterface;
 
 // 0x80131598
-ifPlayerDamage sIFCommonPlayerDamageInterface[SCBATTLE_PLAYERS_MAX];
+ifPlayerDamage sIFCommonPlayerDamageInterface[GMCOMMON_PLAYERS_MAX];
 
 // 0x80131748
-ifPlayerMagnify sIFCommonPlayerMagnifyInterface[SCBATTLE_PLAYERS_MAX];
+ifPlayerMagnify sIFCommonPlayerMagnifyInterface[GMCOMMON_PLAYERS_MAX];
 
 // 0x801317C8 - Values of digits displayed on the match timer
 u8 sIFCommonTimerDigitsInterface[4];
 
 // 0x801317CC - This might be part of another struct
-s8 sIFCommonPlayerStocksNum[SCBATTLE_PLAYERS_MAX];
+s8 sIFCommonPlayerStocksNum[GMCOMMON_PLAYERS_MAX];
 
 // 0x801317D0
-GObj *sIFCommonPlayerStocksGObj[SCBATTLE_PLAYERS_MAX];
+GObj *sIFCommonPlayerStocksGObj[GMCOMMON_PLAYERS_MAX];
 
 // 0x801317E0 - Identical to gBattleState->battle_time_remain; the countdown timer adds one second once it has begun decrementing; s32 or u32?
 u32 sIFCommonTimerLimit;
@@ -236,7 +236,7 @@ void (*sIFCommonBattleInterfaceProcSet)();
 s32 sIFCommonPad0x80131834;
 
 // 0x80131838
-ifPlayerSteal sIFCommonPlayerStealInterface[SCBATTLE_PLAYERS_MAX];
+ifPlayerSteal sIFCommonPlayerStealInterface[GMCOMMON_PLAYERS_MAX];
 
 // 0x80131858
 u8 sIFCommonPlayerMagnifySoundWait;
@@ -732,7 +732,7 @@ void ifCommonPlayerDamageUpdateDigits(GObj *interface_gobj)
 
     if (flash_reset_wait != 0)
     {
-        color_id = SCBATTLE_PLAYERS_MAX;
+        color_id = GMCOMMON_PLAYERS_MAX;
     }
     else color_id = player;
 
@@ -920,7 +920,7 @@ void ifCommonPlayerDamageProcRender(GObj *interface_gobj)
         color_id = sIFCommonPlayerDamageInterface[player].color_id;
         scale = sIFCommonPlayerDamageInterface[player].scale;
 
-        if (color_id == SCBATTLE_PLAYERS_MAX)
+        if (color_id == GMCOMMON_PLAYERS_MAX)
         {
             color_r = dIFCommonPlayerDamageDigitColorsR[color_id];
             color_g = dIFCommonPlayerDamageDigitColorsG[color_id];
@@ -955,7 +955,7 @@ void ifCommonPlayerDamageProcRender(GObj *interface_gobj)
 
         func_ovl0_800CC118(gDisplayListHead, sobj);
 
-        if (color_id == SCBATTLE_PLAYERS_MAX)
+        if (color_id == GMCOMMON_PLAYERS_MAX)
         {
             gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
         }
@@ -3004,7 +3004,7 @@ void ifCommonBattleGoUpdateInterface(void)
     Vec3f sp68;
     Vec3f sp5C;
 
-    for (player = 0; player < (ARRAY_COUNT(gBattleState->players) + ARRAY_COUNT(gPlayerControllers)) / 2; player++) // WARNING: SCBATTLE_PLAYERS_MAX and MAX_CONTROLLERS should be identical
+    for (player = 0; player < (ARRAY_COUNT(gBattleState->players) + ARRAY_COUNT(gPlayerControllers)) / 2; player++) // WARNING: GMCOMMON_PLAYERS_MAX and MAX_CONTROLLERS should be identical
     {
         if (gPlayerControllers[player].button_new & START_BUTTON)
         {

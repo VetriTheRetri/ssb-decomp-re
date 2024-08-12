@@ -1,6 +1,5 @@
 #include <sys/develop.h>
 #include <sc/scene.h>
-#include <gm/battle.h>
 #include <gr/ground.h>
 #include <ovl0/reloc_data_mgr.h>
 
@@ -347,7 +346,7 @@ sb32 mnStageGetIsLocked(s32 stage_id)
 {
 	if (stage_id == nGRKindInishie)
 	{
-		if (gMNStageUnlockedMask & GMBACKUP_UNLOCK_MASK_INISHIE)
+		if (gMNStageUnlockedMask & SCBACKUP_UNLOCK_MASK_INISHIE)
 			return FALSE;
 
 		return TRUE;

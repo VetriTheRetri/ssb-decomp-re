@@ -2,7 +2,6 @@
 #include <gr/ground.h>
 #include <if/interface.h>
 #include <sc/scene.h>
-#include <gm/battle.h>
 
 extern intptr_t D_NF_0000000C;
 extern intptr_t D_NF_800A5240;
@@ -501,7 +500,7 @@ s32 scAutoDemoGetFighterKind(s32 player)
 	{
 		return gSceneData.demo_ft_kind[player];
 	}
-	character_flag = (gSaveData.character_mask | GMBACKUP_CHARACTER_MASK_STARTER);
+	character_flag = (gSaveData.character_mask | SCBACKUP_CHARACTER_MASK_STARTER);
 
 	character_count1 = func_ovl64_8018D7FC(character_flag), character_count2 = func_ovl64_8018D7FC(sAutoDemoCharacterFlag);
 

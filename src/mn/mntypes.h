@@ -1,8 +1,9 @@
 #ifndef _MNTYPES_H_
 #define _MNTYPES_H_
 
-#include "macros.h"
-#include "ssb_types.h"
+#include <ssb_types.h>
+#include <macros.h>
+#include <gm/generic.h>
 
 typedef enum mnSoundTestOptions
 {

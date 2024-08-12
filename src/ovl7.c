@@ -1348,7 +1348,7 @@ void scTrainingMode_InitTrainingMode()
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(2, SCBATTLE_PLAYERS_MAX);
+	ftManagerAllocFighter(2, GMCOMMON_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);

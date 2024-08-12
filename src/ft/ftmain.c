@@ -3,7 +3,6 @@
 #include <it/item.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <gm/battle.h>
 #include <sys/thread6.h>
 
 extern ub8 gGM1PGameBonusStarCount;
@@ -35,10 +34,10 @@ s32 sFTMainGroundObstaclesNum;
 s32 sFTMainGroundHazardsNum;
 
 // 0x801311A0
-sb32 gFTMainIsHurtDetect[SCBATTLE_PLAYERS_MAX];
+sb32 gFTMainIsHurtDetect[GMCOMMON_PLAYERS_MAX];
 
 // 0x801311B0
-sb32 gFTMainIsHitDetect[SCBATTLE_PLAYERS_MAX];
+sb32 gFTMainIsHitDetect[GMCOMMON_PLAYERS_MAX];
 
 // 0x801311C0
 s32 sFTMainHitlogID;
@@ -986,7 +985,7 @@ sb32 ftMainUpdateColAnim(gmColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
                 break;
 
             case nGMColEventKindWait:
-                colanim->cs[i].color_event_timer = gmColEventCast(colanim->cs[i].p_script, gmColEventDefault)->value1, gmColEventAdvance(colanim->cs[i].p_script, gmColEventDefault);
+                colanim->cs[i].color_event_timer = gmColEventCast(colanim->cs[i].p_script, gmColEventDefault)->value, gmColEventAdvance(colanim->cs[i].p_script, gmColEventDefault);
                 break;
 
             case nGMColEventKindGoto:
@@ -996,8 +995,8 @@ sb32 ftMainUpdateColAnim(gmColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
                 break;
 
             case nGMColEventKindLoopBegin:
-                colanim->cs[i].p_subroutine[colanim->cs[i].script_id++] = (void*) ((uintptr_t)colanim->cs[i].p_script + sizeof(gmColEventLoopBegin));
-                colanim->cs[i].p_subroutine[colanim->cs[i].script_id++] = gmColEventCast(colanim->cs[i].p_script, gmColEventLoopBegin)->loop_count, gmColEventAdvance(colanim->cs[i].p_script, gmColEventLoopBegin);
+                colanim->cs[i].p_subroutine[colanim->cs[i].script_id++] = (void*) ((uintptr_t)colanim->cs[i].p_script + sizeof(gmColEventDefault));
+                colanim->cs[i].p_subroutine[colanim->cs[i].script_id++] = gmColEventCast(colanim->cs[i].p_script, gmColEventDefault)->value, gmColEventAdvance(colanim->cs[i].p_script, gmColEventDefault);
                 break;
 
             case nGMColEventKindLoopEnd:
@@ -1144,13 +1143,13 @@ sb32 ftMainUpdateColAnim(gmColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
             case nGMColEventKindPlaySFX:
                 if (is_playing_sfx == FALSE)
                 {
-                    func_800269C0_275C0(gmColEventCastAdvance(colanim->cs[i].p_script, gmColEventPlaySFX)->sfx_id);
+                    func_800269C0_275C0(gmColEventCastAdvance(colanim->cs[i].p_script, gmColEventDefault)->value);
                 }
                 else gmColEventAdvance(colanim->cs[i].p_script, gmColEventDefault);
                 break;
 
             case nGMColEventKindSetSkeletonID:
-                colanim->skeleton_id = gmColEventCastAdvance(colanim->cs[i].p_script, gmColEventDefault)->value1;
+                colanim->skeleton_id = gmColEventCastAdvance(colanim->cs[i].p_script, gmColEventDefault)->value;
                 break;
 
             default:
@@ -1306,7 +1305,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
         {
             pl->stick_range.y = -I_CONTROLLER_RANGE_MAX;
         }
-        if (gSaveData.error_flags & GMBACKUP_ERROR_HALFSTICKRANGE)
+        if (gSaveData.error_flags & SCBACKUP_ERROR_HALFSTICKRANGE)
         {
             pl->stick_range.x *= 0.5F;
             pl->stick_range.y *= 0.5F;
@@ -2866,7 +2865,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         {
             this_fp->damage_player_number = 0;
 
-            ftParamUpdate1PGameDamageStats(this_fp, SCBATTLE_PLAYERS_MAX, hitlog->attacker_object_class, wp->wp_kind, 0, 0);
+            ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, hitlog->attacker_object_class, wp->wp_kind, 0, 0);
         }
         else
         {
@@ -2902,7 +2901,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         {
             this_fp->damage_player_number = 0;
 
-            ftParamUpdate1PGameDamageStats(this_fp, SCBATTLE_PLAYERS_MAX, hitlog->attacker_object_class, ip->it_kind, 0, 0);
+            ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, hitlog->attacker_object_class, ip->it_kind, 0, 0);
         }
         else
         {
@@ -2930,7 +2929,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
             if (this_fp->damage_player == -1)
             {
-                this_fp->damage_player = SCBATTLE_PLAYERS_MAX;
+                this_fp->damage_player = GMCOMMON_PLAYERS_MAX;
             }
             ftParamUpdate1PGameDamageStats(this_fp, this_fp->damage_player, hitlog->attacker_object_class, gr_hit->kind, 0, 0);
             break;
@@ -2947,7 +2946,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         default:
             this_fp->damage_player_number = 0;
 
-            ftParamUpdate1PGameDamageStats(this_fp, SCBATTLE_PLAYERS_MAX, hitlog->attacker_object_class, gr_hit->kind, 0, 0);
+            ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, hitlog->attacker_object_class, gr_hit->kind, 0, 0);
             break;
         }
         this_fp->damage_joint_id = 0;

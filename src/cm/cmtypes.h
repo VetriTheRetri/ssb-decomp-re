@@ -5,15 +5,11 @@
 #include <sys/obj.h>
 #include <sys/hal_gu.h>
 #include <sys/vec.h>
+#include <gm/generic.h>
 #include <sys/trig_rand.h>
 #include <ovl0/halbitmap.h>
 
 #include <cm/cmdef.h>
-
-#define CAMERA_FLAG_BOUND_LEFT   (1 << nCMDirectionBoundLeft)
-#define CAMERA_FLAG_BOUND_RIGHT  (1 << nCMDirectionBoundRight)
-#define CAMERA_FLAG_BOUND_BOTTOM (1 << nCMDirectionBoundBottom)
-#define CAMERA_FLAG_BOUND_TOP    (1 << nCMDirectionBoundTop)
 
 struct cmStruct
 {

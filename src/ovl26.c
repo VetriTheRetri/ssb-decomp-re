@@ -1,6 +1,5 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <gm/battle.h>
 #include <sys/develop.h>
 #include <ovl0/reloc_data_mgr.h>
 
@@ -17,7 +16,7 @@ void mnBattleSetupDisplayList(Gfx** display_list)
 // 80131B78
 s32 mnBattleGetShade(s32 port_id)
 {
-	sb32 used_shade[SCBATTLE_PLAYERS_MAX];
+	sb32 used_shade[GMCOMMON_PLAYERS_MAX];
 	s32 i;
 
 	if (gMnBattleIsTeamBattle == FALSE)
@@ -184,7 +183,7 @@ s32 mnBattleGetFtKind(s32 portrait_id)
 // 80132168
 s32 mnBattleGetPortraitId(s32 ft_kind)
 {
-	s32 portrait_id_order[GMCOMMON_CHAR_NUM_PLAYABLE] = dMnBattlePortraitOrder;
+	s32 portrait_id_order[GMCOMMON_FIGHTERS_PLAYABLE_NUM] = dMnBattlePortraitOrder;
 	return portrait_id_order[ft_kind];
 }
 
@@ -934,7 +933,7 @@ s32 mnBattleGetAdditionalSelectedCount(s32 ft_kind)
 {
 	s32 count = 0, i;
 
-	for (i = 0; i < SCBATTLE_PLAYERS_MAX; i++)
+	for (i = 0; i < GMCOMMON_PLAYERS_MAX; i++)
 	{
 		if (ft_kind == gMnBattlePanels[i].char_id)
 			count += 1;
@@ -948,7 +947,7 @@ sb32 mnBattleIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id)
 {
 	s32 i;
 
-	for (i = 0; i < SCBATTLE_PLAYERS_MAX; i++)
+	for (i = 0; i < GMCOMMON_PLAYERS_MAX; i++)
 	{
 		if ((port_id != i) && (ft_kind == gMnBattlePanels[i].char_id) && (costume_id == gMnBattlePanels[i].costume_id))
 			return TRUE;

@@ -3,7 +3,6 @@
 #include <gr/ground.h>
 #include <if/interface.h>
 #include <sc/scene.h>
-#include <gm/battle.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "ovl6.h"
@@ -588,7 +587,7 @@ void scBonusGame_InitBonusGame()
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(2, SCBATTLE_PLAYERS_MAX);
+	ftManagerAllocFighter(2, GMCOMMON_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
@@ -784,15 +783,15 @@ void sc1PBonusGameStartScene()
 
 				if (tasks_complete == SCBATTLE_BONUSGAME_TASK_MAX)
 				{
-					if (!(gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_LUIGI))
+					if (!(gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_LUIGI))
 					{
 						for (bonus_complete_chars = i = 0; i < ARRAY_COUNT(gSaveData.spgame_records); i++)
 						{
 							if (gSaveData.spgame_records[i].bonus1_task_count == SCBATTLE_BONUSGAME_TASK_MAX)
 								bonus_complete_chars |= (1 << i);
 						}
-						if ((bonus_complete_chars & GMBACKUP_CHARACTER_MASK_STARTER)
-							== GMBACKUP_CHARACTER_MASK_STARTER)
+						if ((bonus_complete_chars & SCBACKUP_CHARACTER_MASK_STARTER)
+							== SCBACKUP_CHARACTER_MASK_STARTER)
 						{
 							gSceneData.ft_kind = gSceneData.bonus_ft_kind;
 							gSceneData.costume = gSceneData.bonus_costume;
@@ -805,7 +804,7 @@ void sc1PBonusGameStartScene()
 					}
 					if (sc1PManagerCheckUnlockSoundTest() != FALSE)
 					{
-						gSceneData.prize_unlocks[0] = nGMBackupUnlockSoundTest;
+						gSceneData.prize_unlocks[0] = nSCBackupUnlockSoundTest;
 						gSceneData.scene_current = 0xC;
 					}
 					break;
@@ -818,7 +817,7 @@ void sc1PBonusGameStartScene()
 
 				if ((tasks_complete == SCBATTLE_BONUSGAME_TASK_MAX) && (sc1PManagerCheckUnlockSoundTest() != FALSE))
 				{
-					gSceneData.prize_unlocks[0] = nGMBackupUnlockSoundTest;
+					gSceneData.prize_unlocks[0] = nSCBackupUnlockSoundTest;
 					gSceneData.scene_current = 0xC;
 				}
 				break;

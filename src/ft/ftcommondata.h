@@ -6,7 +6,7 @@
 #include <ssb_types.h>
 #include <sys/obj.h>
 #include <ft/fttypes.h>
-#include <gm/gmmisc.h>
+#include <gm/gmtypes.h>
 
 // 0x8012C830
 extern f32 dFTCommonDataHandicapTable[/* */][2];

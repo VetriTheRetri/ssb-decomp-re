@@ -121,7 +121,7 @@ void ftCommonTwisterShootFighter(GObj *fighter_gobj)
     else damage = tornado->damage;
 
     ftCommonDamageInitDamageVars(fighter_gobj, -1, damage, knockback, tornado->angle, fp->lr, 0, tornado->element, 0, TRUE, TRUE, TRUE);
-    ftParamUpdate1PGameDamageStats(fp, SCBATTLE_PLAYERS_MAX, nFTHitlogObjectGround, nGMHitEnvironmentTwister, 0, 0);
+    ftParamUpdate1PGameDamageStats(fp, GMCOMMON_PLAYERS_MAX, nFTHitlogObjectGround, nGMHitEnvironmentTwister, 0, 0);
 
     if (damage != 0)
     {

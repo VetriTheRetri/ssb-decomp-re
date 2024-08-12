@@ -5026,7 +5026,7 @@ GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, s32 type)
     DObj *dobj;
     DObj *child_dobj;
     DObj *sibling_dobj;
-    u8 index = ((type & 1) * SCBATTLE_PLAYERS_MAX) + player; // WARNING: dEFManagerDeadExplodeGenID should be u8[2][SCBATTLE_PLAYERS_MAX], but it will not match this way; UB-risk
+    u8 index = ((type & 1) * GMCOMMON_PLAYERS_MAX) + player; // WARNING: dEFManagerDeadExplodeGenID should be u8[2][GMCOMMON_PLAYERS_MAX], but it will not match this way; UB-risk
 
     efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 0x10, dEFManagerDeadExplodeGenID[index]);
 

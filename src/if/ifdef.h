@@ -1,6 +1,9 @@
 #ifndef _IFDEF_H_
 #define _IFDEF_H_
 
+#define IFCOMMON_PLAYERARROWS_MASK_LEFT  	(1 << nIFPlayerArrowKindLeft)
+#define IFCOMMON_PLAYERARROWS_MASK_RIGHT 	(1 << nIFPlayerArrowKindRight)
+
 // Enums
 typedef enum ifPauseKind
 {

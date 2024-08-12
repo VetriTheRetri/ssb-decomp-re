@@ -1,8 +1,8 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <if/interface.h>
-#include <gm/battle.h>
 #include <sc/scene.h>
+#include <gm/battle.h>
 
 extern intptr_t D_NF_0000000C;
 extern intptr_t D_NF_800A5240;
@@ -38,7 +38,7 @@ void scAutoDemoSetMagnifyDisplayOn();
 
 // BSS
 // 8018E2F0
-gmBattleState sAutoDemoBattleState;
+scBattleState sAutoDemoBattleState;
 
 // 8018E4E0
 s32 sAutoDemoFocusChangeWait;
@@ -202,7 +202,7 @@ void scAutoDemoBeginMatch()
 
 		fighter_gobj = fighter_gobj->link_next;
 	}
-	gBattleState->game_status = nGMBattleGameStatusGo;
+	gBattleState->game_status = nSCBattleGameStatusGo;
 }
 
 // 8018D134
@@ -530,7 +530,7 @@ void func_ovl64_8018D990()
 	sAutoDemoBattleState = gDefaultBattleState;
 	gBattleState = &sAutoDemoBattleState;
 
-	gBattleState->game_type = nGMBattleGameTypeDemo;
+	gBattleState->game_type = nSCBattleGameTypeDemo;
 	gBattleState->gr_kind = dAutoDemoGroundOrder[gSceneData.demo_ground_order];
 
 	gSceneData.demo_ground_order++;

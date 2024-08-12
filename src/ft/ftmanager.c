@@ -1,5 +1,5 @@
 #include <ft/fighter.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 #include <sys/develop.h>
 #include <ovl0/reloc_data_mgr.h>
 

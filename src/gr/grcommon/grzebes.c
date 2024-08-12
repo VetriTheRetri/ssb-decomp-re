@@ -1,6 +1,6 @@
 #include <gr/ground.h>
 #include <ft/fighter.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -122,7 +122,7 @@ GObj* grZebesMakeAcid(void)
 // 0x80108240
 void grZebesAcidUpdateWait(void)
 {
-    if (gBattleState->game_status != nGMBattleGameStatusWait)
+    if (gBattleState->game_status != nSCBattleGameStatusWait)
     {
         gGRCommonStruct.zebes.acid_status = nGRZebesAcidStatusNormal;
     }

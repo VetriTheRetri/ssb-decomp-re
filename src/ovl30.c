@@ -1,9 +1,8 @@
 #include <sys/develop.h>
-#include <gm/battle.h>
 #include <sc/scene.h>
+#include <gm/battle.h>
 #include <gr/ground.h>
 #include <ovl0/reloc_data_mgr.h>
-#include <sys/objdraw.h>
 
 #define F_DEG_TO_RAD(x) ((f32)(((x) * PI32) / 180.0F))
 
@@ -1161,10 +1160,10 @@ void mnStageSaveSceneData()
 		gSceneData.gr_kind = mnStageGetStageID(gMNStageCursorSlotId);
 
 	if (gMNStageIsTrainingMode == FALSE)
-		gSceneData.sss_battle_gr_kind = mnStageGetStageID(gMNStageCursorSlotId);
+		gSceneData.stagesel_battle_gr_kind = mnStageGetStageID(gMNStageCursorSlotId);
 
 	if (gMNStageIsTrainingMode == TRUE)
-		gSceneData.sss_training_gr_kind = mnStageGetStageID(gMNStageCursorSlotId);
+		gSceneData.stagesel_training_gr_kind = mnStageGetStageID(gMNStageCursorSlotId);
 }
 
 // 80133C6C
@@ -1186,11 +1185,11 @@ void mnStageLoadSceneData()
 	{
 		case 0x12:
 			gMNStageIsTrainingMode = TRUE;
-			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.sss_training_gr_kind);
+			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.stagesel_training_gr_kind);
 			break;
 		case nSCKindVSChrSel:
 			gMNStageIsTrainingMode = FALSE;
-			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.sss_battle_gr_kind);
+			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.stagesel_battle_gr_kind);
 			break;
 	}
 

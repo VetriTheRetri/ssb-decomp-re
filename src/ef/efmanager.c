@@ -2,9 +2,8 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 #include <wp/weapon.h>
-#include <gr/ground.h>
 #include <cm/camera.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 #include <ovl0/reloc_data_mgr.h>
 
 extern void func_ovl0_800CB4B0(GObj*);
@@ -5027,7 +5026,7 @@ GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, s32 type)
     DObj *dobj;
     DObj *child_dobj;
     DObj *sibling_dobj;
-    u8 index = ((type & 1) * GMBATTLE_PLAYERS_MAX) + player; // WARNING: dEFManagerDeadExplodeGenID should be u8[2][GMBATTLE_PLAYERS_MAX], but it will not match this way; UB-risk
+    u8 index = ((type & 1) * SCBATTLE_PLAYERS_MAX) + player; // WARNING: dEFManagerDeadExplodeGenID should be u8[2][SCBATTLE_PLAYERS_MAX], but it will not match this way; UB-risk
 
     efpart = func_ovl0_800CE9E8(gEFManagerParticleBankID | 0x10, dEFManagerDeadExplodeGenID[index]);
 

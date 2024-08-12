@@ -1,5 +1,6 @@
 #include <it/item.h>
 #include <ft/fighter.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -104,8 +105,8 @@ itStatusDesc dITMSBombStatusDescs[/* */] =
 
     // Status 5 (Ground Attach)
     {
-        itMSBombAttachedProcUpdate,          // Proc Update
-        itMSBombAttachedProcMap,             // Proc Map
+        itMSBombAttachedProcUpdate,         // Proc Update
+        itMSBombAttachedProcMap,            // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -116,7 +117,7 @@ itStatusDesc dITMSBombStatusDescs[/* */] =
 
     // Status 6 (Air Detach from Surface)
     {
-        itMSBombDetachedProcUpdate,          // Proc Update
+        itMSBombDetachedProcUpdate,         // Proc Update
         itMSBombDroppedProcMap,             // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -342,7 +343,7 @@ void itMSBombAttachedInitItemVars(GObj *item_gobj)
 
     ip->item_hit.update_state = nGMHitUpdateDisable;
 
-    if ((ip->player != -1) && (ip->player != GMBATTLE_PLAYERS_MAX))
+    if ((ip->player != -1) && (ip->player != SCBATTLE_PLAYERS_MAX))
     {
         GObj *fighter_gobj = gBattleState->players[ip->player].fighter_gobj;
 

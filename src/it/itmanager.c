@@ -2,7 +2,7 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 #include <gr/ground.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 #include <ovl0/reloc_data_mgr.h>
 
 // // // // // // // // // // // //
@@ -500,7 +500,7 @@ void itManagerMakeRandomItem(GObj *item_gobj)
     Vec3f pos;
     Vec3f vel;
 
-    if (gBattleState->game_status != nGMBattleGameStatusWait)
+    if (gBattleState->game_status != nSCBattleGameStatusWait)
     {
         if (gITManagerSpawnActor.item_spawn_wait > 0)
         {
@@ -540,7 +540,7 @@ GObj* itManagerMakeItemSpawnActor(void)
     mpItemWeights *item_weight_qty;
     u32 item_num_toggles;
 
-    if (gBattleState->item_switch != nGMBattleItemSwitchNone)
+    if (gBattleState->item_switch != nSCBattleItemSwitchNone)
     {
         if (gBattleState->item_toggles != 0)
         {
@@ -645,7 +645,7 @@ void itManagerSetupContainerDrops(void)
     mpItemWeights *item_weight_qty;
     s32 item_tenth_round;
 
-    if ((gBattleState->item_switch != nGMBattleItemSwitchNone) && (gBattleState->item_toggles != 0) && (gMPCollisionGroundData->item_weights != NULL))
+    if ((gBattleState->item_switch != nSCBattleItemSwitchNone) && (gBattleState->item_toggles != 0) && (gMPCollisionGroundData->item_weights != NULL))
     {
         item_num_toggles = gBattleState->item_toggles >> nITKindUtilityStart;
         item_count_qty = gMPCollisionGroundData->item_weights;

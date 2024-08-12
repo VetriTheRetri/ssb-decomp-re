@@ -1,6 +1,5 @@
-#include <sys/obj.h>
-#include <gm/battle.h>
-#include <sc/scene.h>
+#include <mn/menu.h>
+#include <sc/scene.h> // includes sys/obj.h
 #include <ovl0/reloc_data_mgr.h>
 
 extern intptr_t D_NF_800A5240;

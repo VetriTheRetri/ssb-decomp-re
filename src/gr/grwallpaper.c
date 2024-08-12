@@ -1,6 +1,5 @@
 #include <gr/ground.h>
 #include <cm/camera.h>
-#include <gm/battle.h>
 #include <sc/scene.h>
 
 extern void func_ovl0_800CCF00(GObj*);
@@ -295,7 +294,7 @@ void grWallpaperMakeGroundWallpaper(void)
         break;
 
     case nGRKindLast:
-        gm1PGameBossInitBackgroundMain();
+        sc1PGameBossInitBackgroundMain();
         grWallpaperCommonMakeSObj();
         break;
 

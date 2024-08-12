@@ -1,6 +1,5 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-#include <gm/battle.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -20,14 +19,14 @@ lWPLinkBoomerangWeaponAttributes;           // 0x00000000
 wpCreateDesc dWPLinkBoomerangWeaponDesc =
 {
     0x01,                                   // Render flags?
-    nWPKindBoomerang,                      // Weapon Kind
+    nWPKindBoomerang,                       // Weapon Kind
     &gFTDataLinkSpecial1,                   // Pointer to character's loaded files?
     &lWPLinkBoomerangWeaponAttributes,      // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nOMTransformTraRotRpyRSca,          // Main matrix transformations
+        nOMTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 

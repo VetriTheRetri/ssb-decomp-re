@@ -1,12 +1,6 @@
-#include <sys/develop.h>
-#include <ft/ftdef.h>
 #include <ft/fighter.h>
-#include <gm/battle.h>
-#include <gr/ground.h>
+#include <sc/scene.h>
 #include <ovl0/reloc_data_mgr.h>
-
-#include <ssb_types.h>
-#include <sys/objdraw.h>
 
 // EXTERN
 extern intptr_t D_NF_800A5240;      // 800A5240
@@ -136,7 +130,7 @@ rdFileNode D_ovl36_8018E3E8[7];
 uintptr_t gMvOpeningMarioFilesArray[2];
 
 // 8018E428
-gmBattleState gMvOpeningMarioBattleState;
+scBattleState gMvOpeningMarioBattleState;
 
 
 // 8018D0C0
@@ -450,7 +444,7 @@ void mvOpeningMarioInit()
 	gMvOpeningMarioBattleState = gDefaultBattleState;
 	gBattleState = &gMvOpeningMarioBattleState;
 
-	gBattleState->game_type = nGMBattleGameTypeOpening;
+	gBattleState->game_type = nSCBattleGameTypeOpening;
 
 	gBattleState->gr_kind = nGRKindCastle;
 	gBattleState->pl_count = 1;

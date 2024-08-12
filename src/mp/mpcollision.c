@@ -1,6 +1,6 @@
 #include <mp/map.h>
 #include <gr/ground.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //

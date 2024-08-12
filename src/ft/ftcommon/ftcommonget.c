@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -104,7 +104,7 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
                 ftParamSetHealDamage(fp, ITTOMATO_DAMAGE_HEAL);
                 itMainDestroyItem(item_gobj);
 
-                if ((gBattleState->game_type == nGMBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gGM1PGameBonusTomatoCount < U8_MAX))
+                if ((gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gGM1PGameBonusTomatoCount < U8_MAX))
                 {
                     gGM1PGameBonusTomatoCount++;
                 }
@@ -114,7 +114,7 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
                 ftParamSetHealDamage(fp, ITHEART_DAMAGE_HEAL);
                 itMainDestroyItem(item_gobj);
 
-                if ((gBattleState->game_type == nGMBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gGM1PGameBonusHeartCount < U8_MAX))
+                if ((gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gGM1PGameBonusHeartCount < U8_MAX))
                 {
                     gGM1PGameBonusHeartCount++;
                 }

@@ -1,7 +1,6 @@
 #include <if/interface.h>
 #include <ft/fighter.h>
 #include <it/item.h>
-#include <gm/battle.h>
 #include <sc/scene.h>
 #include <sys/ml.h>
 
@@ -168,21 +167,21 @@ s32 sIFCommonPad0x80131570[4];
 ifPlayerCommon gIFCommonPlayerInterface;
 
 // 0x80131598
-ifPlayerDamage sIFCommonPlayerDamageInterface[GMBATTLE_PLAYERS_MAX];
+ifPlayerDamage sIFCommonPlayerDamageInterface[SCBATTLE_PLAYERS_MAX];
 
 // 0x80131748
-ifPlayerMagnify sIFCommonPlayerMagnifyInterface[GMBATTLE_PLAYERS_MAX];
+ifPlayerMagnify sIFCommonPlayerMagnifyInterface[SCBATTLE_PLAYERS_MAX];
 
 // 0x801317C8 - Values of digits displayed on the match timer
 u8 sIFCommonTimerDigitsInterface[4];
 
 // 0x801317CC - This might be part of another struct
-s8 sIFCommonPlayerStocksNum[GMBATTLE_PLAYERS_MAX];
+s8 sIFCommonPlayerStocksNum[SCBATTLE_PLAYERS_MAX];
 
 // 0x801317D0
-GObj *sIFCommonPlayerStocksGObj[GMBATTLE_PLAYERS_MAX];
+GObj *sIFCommonPlayerStocksGObj[SCBATTLE_PLAYERS_MAX];
 
-// 0x801317E0 - Identical to gBattleState->match_time_remain; the countdown timer adds one second once it has begun decrementing; s32 or u32?
+// 0x801317E0 - Identical to gBattleState->battle_time_remain; the countdown timer adds one second once it has begun decrementing; s32 or u32?
 u32 sIFCommonTimerLimit;
 
 // 0x801317E4 - ID of player who paused
@@ -237,7 +236,7 @@ void (*sIFCommonBattleInterfaceProcSet)();
 s32 sIFCommonPad0x80131834;
 
 // 0x80131838
-ifPlayerSteal sIFCommonPlayerStealInterface[GMBATTLE_PLAYERS_MAX];
+ifPlayerSteal sIFCommonPlayerStealInterface[SCBATTLE_PLAYERS_MAX];
 
 // 0x80131858
 u8 sIFCommonPlayerMagnifySoundWait;
@@ -733,7 +732,7 @@ void ifCommonPlayerDamageUpdateDigits(GObj *interface_gobj)
 
     if (flash_reset_wait != 0)
     {
-        color_id = GMBATTLE_PLAYERS_MAX;
+        color_id = SCBATTLE_PLAYERS_MAX;
     }
     else color_id = player;
 
@@ -921,7 +920,7 @@ void ifCommonPlayerDamageProcRender(GObj *interface_gobj)
         color_id = sIFCommonPlayerDamageInterface[player].color_id;
         scale = sIFCommonPlayerDamageInterface[player].scale;
 
-        if (color_id == GMBATTLE_PLAYERS_MAX)
+        if (color_id == SCBATTLE_PLAYERS_MAX)
         {
             color_r = dIFCommonPlayerDamageDigitColorsR[color_id];
             color_g = dIFCommonPlayerDamageDigitColorsG[color_id];
@@ -956,7 +955,7 @@ void ifCommonPlayerDamageProcRender(GObj *interface_gobj)
 
         func_ovl0_800CC118(gDisplayListHead, sobj);
 
-        if (color_id == GMBATTLE_PLAYERS_MAX)
+        if (color_id == SCBATTLE_PLAYERS_MAX)
         {
             gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
         }
@@ -2031,7 +2030,7 @@ GObj* ifCommonItemArrowMakeInterface(itStruct *ip)
         {
             interface_gobj->user_data.p = ip; // Give it up for... the GObj with the most flexible user_data assignments ever?
 
-            if ((gSceneData.scene_current == nSCKind1PTraining) && (gBattleState->game_status == nGMBattleGameStatusPause))
+            if ((gSceneData.scene_current == nSCKind1PTraining) && (gBattleState->game_status == nSCBattleGameStatusPause))
             {
                 interface_gobj->flags = GOBJ_FLAG_NORENDER;
             }
@@ -2120,7 +2119,7 @@ void ifCommonAnnounceGoSetStatus(void)
 
         fighter_gobj = fighter_gobj->link_next;
     }
-    gBattleState->game_status = nGMBattleGameStatusGo;
+    gBattleState->game_status = nSCBattleGameStatusGo;
 
     gIFCommonPlayerInterface.is_ifmagnify_display = TRUE;
 }
@@ -2426,7 +2425,7 @@ void ifCommonEntryAllMakeInterface(void)
 {
     gcAddGObjCommonProc(gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT), ifCommonEntryAllThread, nOMObjProcessKindOSThread, 5);
 
-    gBattleState->game_status = nGMBattleGameStatusWait;
+    gBattleState->game_status = nSCBattleGameStatusWait;
 }
 
 // 0x80112AD0
@@ -2470,7 +2469,7 @@ void ifCommonSuddenDeathMakeInterface(void)
     ifCommonAnnounceSetColors(interface_gobj, &dIFCommonAnnounceSuddenDeathSpriteColors);
     func_800269C0_275C0(0x202);
 
-    gBattleState->game_status = nGMBattleGameStatusWait;
+    gBattleState->game_status = nSCBattleGameStatusWait;
 }
 
 // 0x80112C18
@@ -2483,7 +2482,7 @@ void ifCommonTimerProcRender(GObj *interface_gobj)
 
     sobj = SObjGetStruct(interface_gobj);
 
-    if (gBattleState->match_time_remain == 0)
+    if (gBattleState->battle_time_remain == 0)
     {
         sobj = sobj->next->next->next;
 
@@ -2494,11 +2493,11 @@ void ifCommonTimerProcRender(GObj *interface_gobj)
     }
     else
     {
-        if (gBattleState->match_time_remain == sIFCommonTimerLimit)
+        if (gBattleState->battle_time_remain == sIFCommonTimerLimit)
         {
-            time = gBattleState->match_time_remain;
+            time = gBattleState->battle_time_remain;
         }
-        else time = gBattleState->match_time_remain + 59;
+        else time = gBattleState->battle_time_remain + 59;
 
         for (i = 0; i < ARRAY_COUNT(sIFCommonTimerDigitsInterface); i++, sobj = sobj->next)
         {
@@ -2548,7 +2547,7 @@ SObj* ifCommonTimerMakeDigitSObjs(void)
     GObj *interface_gobj;
     SObj *sobj;
 
-    if (!(gBattleState->game_rules & GMBATTLE_GAMERULE_TIME) || (gBattleState->time_limit == GMBATTLE_TIMELIMIT_INFINITE))
+    if (!(gBattleState->game_rules & SCBATTLE_GAMERULE_TIME) || (gBattleState->time_limit == SCBATTLE_TIMELIMIT_INFINITE))
     {
         return NULL;
     }
@@ -2590,27 +2589,27 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
         {
             D_ovl2_801317FC = temp;
 
-            gBattleState->match_time_current += time_update;
+            gBattleState->battle_time_current += time_update;
 
-            if ((gBattleState->game_rules & GMBATTLE_GAMERULE_TIME) && (gBattleState->time_limit != GMBATTLE_TIMELIMIT_INFINITE))
+            if ((gBattleState->game_rules & SCBATTLE_GAMERULE_TIME) && (gBattleState->time_limit != SCBATTLE_TIMELIMIT_INFINITE))
             {
-                if (gBattleState->match_time_remain != 0)
+                if (gBattleState->battle_time_remain != 0)
                 {
-                    if (gBattleState->match_time_remain < time_update)
+                    if (gBattleState->battle_time_remain < time_update)
                     {
-                        gBattleState->match_time_remain = 0;
+                        gBattleState->battle_time_remain = 0;
                     }
-                    else gBattleState->match_time_remain -= time_update;
+                    else gBattleState->battle_time_remain -= time_update;
 
-                    if ((gBattleState->gr_kind == nGRKindInishie) && (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(30)) && (gMPCollisionBGMDefault != nGMSoundBGMInishieHurry))
+                    if ((gBattleState->gr_kind == nGRKindInishie) && (gBattleState->battle_time_remain <= I_SEC_TO_FRAMES(30)) && (gMPCollisionBGMDefault != nGMSoundBGMInishieHurry))
                     {
                         gMPCollisionBGMDefault = nGMSoundBGMInishieHurry;
 
                         ftParamTryUpdateItemMusic();
                     }
-                    if (gBattleState->match_time_remain <= I_SEC_TO_FRAMES(5))
+                    if (gBattleState->battle_time_remain <= I_SEC_TO_FRAMES(5))
                     {
-                        if (gBattleState->match_time_remain == 0)
+                        if (gBattleState->battle_time_remain == 0)
                         {
                             ifGetProc(interface_gobj)();
 
@@ -2618,14 +2617,14 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
                         }
                         else for (i = 0; i < ARRAY_COUNT(sIFCommonIsAnnouncedSecond); i++)
                         {
-                            if ((sIFCommonIsAnnouncedSecond[i] == FALSE) && (gBattleState->match_time_remain <= (I_SEC_TO_FRAMES(i) + I_SEC_TO_FRAMES(1))))
+                            if ((sIFCommonIsAnnouncedSecond[i] == FALSE) && (gBattleState->battle_time_remain <= (I_SEC_TO_FRAMES(i) + I_SEC_TO_FRAMES(1))))
                             {
                                 func_800269C0_275C0(dIFCommonAnnounceTimerVoiceIDs[i]);
 
                                 sIFCommonIsAnnouncedSecond[i] = TRUE;
                             }
                         }
-                        auSetBGMVolume(0, ((gBattleState->match_time_remain / F_SEC_TO_FRAMES(5)) * 20480.0F) + 10240.0F);
+                        auSetBGMVolume(0, ((gBattleState->battle_time_remain / F_SEC_TO_FRAMES(5)) * 20480.0F) + 10240.0F);
                     }
                 }
             }
@@ -2636,8 +2635,8 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
 // 0x80113398
 void ifCommonTimerMakeInterface(void (*proc)(void))
 {
-    gBattleState->match_time_remain = sIFCommonTimerLimit = I_MIN_TO_FRAMES(gBattleState->time_limit);
-    gBattleState->match_time_current = 0;
+    gBattleState->battle_time_remain = sIFCommonTimerLimit = I_MIN_TO_FRAMES(gBattleState->time_limit);
+    gBattleState->battle_time_current = 0;
 
     sIFCommonTimerIsStarted = FALSE;
 
@@ -2766,7 +2765,7 @@ void ifCommonBattleEndPlaySoundQueue(void)
 // 0x80113804
 void ifCommonBattleEndAddSoundQueueID(u16 sfx_id)
 {
-    if ((gBattleState->game_status == nGMBattleGameStatusEnd) && (sIFCommonBattleEndSoundNum < ARRAY_COUNT(sIFCommonBattleEndSoundQueue)))
+    if ((gBattleState->game_status == nSCBattleGameStatusEnd) && (sIFCommonBattleEndSoundNum < ARRAY_COUNT(sIFCommonBattleEndSoundQueue)))
     {
         sIFCommonBattleEndSoundQueue[sIFCommonBattleEndSoundNum] = sfx_id;
 
@@ -2779,7 +2778,7 @@ void ifCommonBattleEndSetBossDefeat(void)
 {
     func_ovl65_8018F6DC();
 
-    gBattleState->game_status = nGMBattleGameStatusBossDefeat;
+    gBattleState->game_status = nSCBattleGameStatusBossDefeat;
     sIFCommonBattlePauseCameraRestoreWait = 0;
 }
 
@@ -2986,7 +2985,7 @@ void ifCommonBattlePauseInitInterface(s32 player)
     grWallpaperSetPausePerspUpdate();
 
     gIFCommonPlayerInterface.is_ifmagnify_display = FALSE;
-    gBattleState->game_status = nGMBattleGameStatusPause;
+    gBattleState->game_status = nSCBattleGameStatusPause;
 
     sIFCommonBattlePausePlayer = player;
 
@@ -3005,7 +3004,7 @@ void ifCommonBattleGoUpdateInterface(void)
     Vec3f sp68;
     Vec3f sp5C;
 
-    for (player = 0; player < (ARRAY_COUNT(gBattleState->players) + ARRAY_COUNT(gPlayerControllers)) / 2; player++) // WARNING: GMBATTLE_PLAYERS_MAX and MAX_CONTROLLERS should be identical
+    for (player = 0; player < (ARRAY_COUNT(gBattleState->players) + ARRAY_COUNT(gPlayerControllers)) / 2; player++) // WARNING: SCBATTLE_PLAYERS_MAX and MAX_CONTROLLERS should be identical
     {
         if (gPlayerControllers[player].button_new & START_BUTTON)
         {
@@ -3023,7 +3022,7 @@ void ifCommonBattleGoUpdateInterface(void)
                     }
                     if (!(fp->is_ignore_training_menu))
                     {
-                        if (gBattleState->game_type == nGMBattleGameTypeBonus)
+                        if (gBattleState->game_type == nSCBattleGameTypeBonus)
                         {
                             sp68.x = gMPCollisionGroundData->unk_groundinfo_0x9A.x;
                             sp68.y = gMPCollisionGroundData->unk_groundinfo_0x9A.y;
@@ -3075,7 +3074,7 @@ void ifCommonBattleInterfaceProcSet(void)
 {
     ifCommonInterfaceSetGObjFlagsAll(GOBJ_FLAG_NORENDER);
 
-    gBattleState->game_status = nGMBattleGameStatusSet;
+    gBattleState->game_status = nSCBattleGameStatusSet;
 
     sIFCommonBattlePauseCameraRestoreWait = 3;
 }
@@ -3130,7 +3129,7 @@ void ifCommonBattlePauseUpdateInterface(void)
             }
             else sIFCommonBattlePauseCameraRestoreWait = 0;
 
-            gBattleState->game_status = nGMBattleGameStatusUnpause;
+            gBattleState->game_status = nSCBattleGameStatusUnpause;
 
             return;
         }
@@ -3191,7 +3190,7 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
 
     gIFCommonPlayerInterface.is_ifmagnify_display = TRUE;
 
-    gBattleState->game_status = nGMBattleGameStatusGo;
+    gBattleState->game_status = nSCBattleGameStatusGo;
 
     gCMManagerPauseCameraEyeX = sIFCommonBattlePauseCameraEyeXOrigin;
     gCMManagerPauseCameraEyeY = sIFCommonBattlePauseCameraEyeYOrigin;
@@ -3211,7 +3210,7 @@ void ifCommonBattleEndUpdateInterface(void)
 {
     sIFCommonBattleInterfaceProcUpdate();
 
-    gBattleState->game_status = nGMBattleGameStatusBossDefeat;
+    gBattleState->game_status = nSCBattleGameStatusBossDefeat;
 
     D_ovl2_80131859 = D_ovl2_8013185A = 0;
 }
@@ -3266,7 +3265,7 @@ void ifCommonSetMaxNumGObj(void)
 // 0x8011485C
 void ifCommonBattleUpdateInterfaceAll(void)
 {
-    if (gBattleState->game_status != nGMBattleGameStatusGo)
+    if (gBattleState->game_status != nSCBattleGameStatusGo)
     {
         sIFCommonTimerIsStarted = FALSE;
     }
@@ -3279,31 +3278,31 @@ void ifCommonBattleUpdateInterfaceAll(void)
     }
     switch (gBattleState->game_status)
     {
-    case nGMBattleGameStatusWait:
+    case nSCBattleGameStatusWait:
         func_8000A5E4();
         break;
 
-    case nGMBattleGameStatusGo:
+    case nSCBattleGameStatusGo:
         ifCommonBattleGoUpdateInterface();
         break;
 
-    case nGMBattleGameStatusPause:
+    case nSCBattleGameStatusPause:
         ifCommonBattlePauseUpdateInterface();
         break;
 
-    case nGMBattleGameStatusUnpause:
+    case nSCBattleGameStatusUnpause:
         ifCommonBattlePauseRestoreInterfaceAll();
         break;
 
-    case nGMBattleGameStatusEnd:
+    case nSCBattleGameStatusEnd:
         ifCommonBattleEndUpdateInterface();
         /* fallthrough */
 
-    case nGMBattleGameStatusBossDefeat:
+    case nSCBattleGameStatusBossDefeat:
         ifCommonBattleBossDefeatUpdateInterface();
         break;
 
-    case nGMBattleGameStatusSet:
+    case nSCBattleGameStatusSet:
         ifCommonBattleSetUpdateInterface();
         break;
     }
@@ -3313,7 +3312,7 @@ void ifCommonBattleUpdateInterfaceAll(void)
 // 0x80114958
 void ifCommonBattleSetGameStatusWait(void)
 {
-    gBattleState->game_status = nGMBattleGameStatusWait;
+    gBattleState->game_status = nSCBattleGameStatusWait;
 }
 
 // 0x80114968
@@ -3370,7 +3369,7 @@ void ifCommonBonusInterfaceProcUpdate(void)
 // 0x80114B80
 void ifCommonBattleSetInterface(void (*proc_update)(void), void (*proc_set)(void), u16 sfx_id, u16 restore_wait)
 {
-    gBattleState->game_status = nGMBattleGameStatusEnd;
+    gBattleState->game_status = nSCBattleGameStatusEnd;
     sIFCommonBattlePauseCameraRestoreWait = restore_wait;
 
     sIFCommonBattleInterfaceProcUpdate = proc_update;
@@ -3387,7 +3386,7 @@ void ifCommonBattleSetInterface(void (*proc_update)(void), void (*proc_set)(void
 // 0x80114BE4
 void ifCommonBattleBossDefeatSetGameStatus(void)
 {
-    gBattleState->game_status = nGMBattleGameStatusBossDefeat;
+    gBattleState->game_status = nSCBattleGameStatusBossDefeat;
 
     sIFCommonBattlePauseCameraRestoreWait = -1;
 
@@ -3402,7 +3401,7 @@ void ifCommon1PGameInterfaceProcSet(void)
     func_ovl2_80104D30();
     ifCommonInterfaceSetGObjFlagsAll(GOBJ_FLAG_NORENDER);
 
-    gBattleState->game_status = nGMBattleGameStatusSet;
+    gBattleState->game_status = nSCBattleGameStatusSet;
 
     sIFCommonBattlePauseCameraRestoreWait = 45;
 
@@ -3421,7 +3420,7 @@ void ifCommonAnnounceEndMessage(void)
     }
     else
     {
-        if ((gBattleState->game_type == nGMBattleGameType1PGame) && (gBattleState->players[gSceneData.spgame_player].stock_count != -1))
+        if ((gBattleState->game_type == nSCBattleGameType1PGame) && (gBattleState->players[gSceneData.spgame_player].stock_count != -1))
         {
             ifCommonBattleSetInterface(ifCommonBattleInterfaceProcUpdate, ifCommon1PGameInterfaceProcSet, 0x1E8, 90);
         }
@@ -3448,7 +3447,7 @@ void ifCommonAnnounceTimeUpInitInterface(void)
 // 0x80114DD4
 void ifCommonAnnounceFailureInitInterface(void)
 {
-    if (gBattleState->game_status != nGMBattleGameStatusEnd)
+    if (gBattleState->game_status != nSCBattleGameStatusEnd)
     {
         ifCommonBattleSetInterface(ifCommonBonusInterfaceProcUpdate, ifCommonBattleInterfaceProcSet, 0x1CC, 90);
         ifCommonAnnounceFailureMakeInterface();

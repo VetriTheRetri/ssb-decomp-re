@@ -2,8 +2,8 @@
 #include <it/item.h>
 #include <gr/ground.h>
 #include <if/interface.h>
-#include <gm/battle.h>
 #include <sc/scene.h>
+#include <gm/battle.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "ovl6.h"
@@ -27,8 +27,8 @@ void func_ovl6_8018D0F0()
 	gBonusBattleState = gDefaultBattleState;
 
 	gBattleState = &gBonusBattleState;
-	gBattleState->game_type = nGMBattleGameTypeBonus;
-	gBattleState->game_rules = GMBATTLE_GAMERULE_BONUS | GMBATTLE_GAMERULE_TIME;
+	gBattleState->game_type = nSCBattleGameTypeBonus;
+	gBattleState->game_rules = SCBATTLE_GAMERULE_BONUS | SCBATTLE_GAMERULE_TIME;
 	gBattleState->is_display_score = FALSE;
 	gBattleState->pl_count = 1;
 	gBattleState->cp_count = 0;
@@ -53,7 +53,7 @@ void func_ovl6_8018D0F0()
 	}
 	else
 	{
-		ft_kind = gSceneData.bonus_char_id;
+		ft_kind = gSceneData.bonus_ft_kind;
 		gBattleState->time_limit = 0x64;
 		if (gSceneData.scene_previous == 0x13)
 			gBattleState->gr_kind = ft_kind + nGRKindBonus1Start;
@@ -70,7 +70,7 @@ void func_ovl6_8018D0F0()
 			if (gSceneData.scene_previous == 0x34)
 				gBattleState->players[player].costume = gSceneData.costume;
 			else
-				gBattleState->players[player].costume = gSceneData.bonus_costume_id;
+				gBattleState->players[player].costume = gSceneData.bonus_costume;
 
 			gBattleState->players[player].player_color = player;
 		}
@@ -141,8 +141,8 @@ void scBonusGame_UpdateBonus1TargetCount()
 	if (gGRCommonStruct.bonus1.target_count == 0)
 	{
 		if ((gSceneData.scene_previous != 0x34)
-			&& (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus1_task_count == 10)
-			&& (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.bonus_char_id].bonus1_time))
+			&& (gSaveData.spgame_records[gSceneData.bonus_ft_kind].bonus1_task_count == 10)
+			&& (gBattleState->battle_time_current < gSaveData.spgame_records[gSceneData.bonus_ft_kind].bonus1_time))
 			ifCommonAnnounceCompleteInitInterface(0x1D0);
 		else
 			ifCommonAnnounceCompleteInitInterface(0x1CB);
@@ -267,8 +267,8 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 	if (gGRCommonStruct.bonus2.platform_count == 0)
 	{
 		if ((gSceneData.scene_previous != 0x34)
-			&& (gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_task_count == GMBATTLE_BONUSGAME_TASK_MAX)
-			&& (gBattleState->match_time_current < gSaveData.spgame_records[gSceneData.bonus_char_id].bonus2_time))
+			&& (gSaveData.spgame_records[gSceneData.bonus_ft_kind].bonus2_task_count == SCBATTLE_BONUSGAME_TASK_MAX)
+			&& (gBattleState->battle_time_current < gSaveData.spgame_records[gSceneData.bonus_ft_kind].bonus2_time))
 			ifCommonAnnounceCompleteInitInterface(nGMSoundVoiceAnnounceNewRecord);
 		else
 			ifCommonAnnounceCompleteInitInterface(nGMSoundVoiceAnnounceComplete);
@@ -368,7 +368,7 @@ void scBonusGame_MakeInterface()
 {
 	gcAddGObjCommonProc(gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xAU, 0x80000000U), scBonusGame_InitInterface, 0,
 						5);
-	gBattleState->game_status = nGMBattleGameStatusWait;
+	gBattleState->game_status = nSCBattleGameStatusWait;
 }
 
 // 8018DD14
@@ -465,7 +465,7 @@ void scBonusGame_InitTimer(GObj* interface_gobj)
 	SObj* sobj;
 	s32 i;
 
-	itime = gBattleState->match_time_current;
+	itime = gBattleState->battle_time_current;
 	sobj = SObjGetStruct(interface_gobj);
 
 	if (itime > I_TIME_TO_FRAMES(0, 59, 59, 59))
@@ -588,7 +588,7 @@ void scBonusGame_InitBonusGame()
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(2, GMBATTLE_PLAYERS_MAX);
+	ftManagerAllocFighter(2, SCBATTLE_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
@@ -663,7 +663,7 @@ void scBonusGame_SetBonusEndStats(sb32 is_practice)
 	}
 	else
 	{
-		gSceneData.spgame_time_seconds = (gBattleState->match_time_remain + 59) / GS_TIME_SEC;
+		gSceneData.spgame_time_seconds = (gBattleState->battle_time_remain + 59) / GS_TIME_SEC;
 		gSceneData.bonus_get_mask[0] = 0x40000;
 		gSceneData.bonus_get_mask[1] = 0;
 		gSceneData.bonus_get_mask[2] = 0;
@@ -688,11 +688,11 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 			}
 			else
 			{
-				gSaveData.spgame_records[ft_kind].bonus1_task_count = GMBATTLE_BONUSGAME_TASK_MAX;
+				gSaveData.spgame_records[ft_kind].bonus1_task_count = SCBATTLE_BONUSGAME_TASK_MAX;
 
-				if (gBattleState->match_time_current < gSaveData.spgame_records[ft_kind].bonus1_time)
+				if (gBattleState->battle_time_current < gSaveData.spgame_records[ft_kind].bonus1_time)
 				{
-					gSaveData.spgame_records[ft_kind].bonus1_time = gBattleState->match_time_current;
+					gSaveData.spgame_records[ft_kind].bonus1_time = gBattleState->battle_time_current;
 
 					syBackupWriteSram(gBattleState);
 				}
@@ -709,11 +709,11 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 		}
 		else
 		{
-			gSaveData.spgame_records[ft_kind].bonus2_task_count = GMBATTLE_BONUSGAME_TASK_MAX;
+			gSaveData.spgame_records[ft_kind].bonus2_task_count = SCBATTLE_BONUSGAME_TASK_MAX;
 
-			if (gBattleState->match_time_current < gSaveData.spgame_records[ft_kind].bonus2_time)
+			if (gBattleState->battle_time_current < gSaveData.spgame_records[ft_kind].bonus2_time)
 			{
-				gSaveData.spgame_records[ft_kind].bonus2_time = gBattleState->match_time_current;
+				gSaveData.spgame_records[ft_kind].bonus2_time = gBattleState->battle_time_current;
 
 				syBackupWriteSram(gBattleState);
 			}
@@ -755,12 +755,12 @@ void sc1PBonusGameStartScene()
 	func_800266A0_272A0();
 	gmRumbleInitPlayers();
 
-	if (gBattleState->game_status != nGMBattleGameStatusPause)
+	if (gBattleState->game_status != nSCBattleGameStatusPause)
 	{
 		task_count = (gBattleState->gr_kind <= nGRKindBonus1End) ? gGRCommonStruct.bonus1.target_count
 																  : gGRCommonStruct.bonus2.platform_count;
 
-		tasks_complete = GMBATTLE_BONUSGAME_TASK_MAX - task_count;
+		tasks_complete = SCBATTLE_BONUSGAME_TASK_MAX - task_count;
 
 		if (task_count > 0)
 			; // Needed for match; plausible leftover statement in original code, if (TRUE) and if (task_count) also work
@@ -775,29 +775,29 @@ void sc1PBonusGameStartScene()
 			break;
 
 		default:
-			scBonusGame_SaveBonusRecordSRAM(task_count, gSceneData.bonus_char_id);
+			scBonusGame_SaveBonusRecordSRAM(task_count, gSceneData.bonus_ft_kind);
 
 			switch (gSceneData.scene_previous)
 			{
 			case 0x13:
 				gSceneData.scene_current = 0x13;
 
-				if (tasks_complete == GMBATTLE_BONUSGAME_TASK_MAX)
+				if (tasks_complete == SCBATTLE_BONUSGAME_TASK_MAX)
 				{
 					if (!(gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_LUIGI))
 					{
 						for (bonus_complete_chars = i = 0; i < ARRAY_COUNT(gSaveData.spgame_records); i++)
 						{
-							if (gSaveData.spgame_records[i].bonus1_task_count == GMBATTLE_BONUSGAME_TASK_MAX)
+							if (gSaveData.spgame_records[i].bonus1_task_count == SCBATTLE_BONUSGAME_TASK_MAX)
 								bonus_complete_chars |= (1 << i);
 						}
 						if ((bonus_complete_chars & GMBACKUP_CHARACTER_MASK_STARTER)
 							== GMBACKUP_CHARACTER_MASK_STARTER)
 						{
-							gSceneData.ft_kind = gSceneData.bonus_char_id;
-							gSceneData.costume = gSceneData.bonus_costume_id;
+							gSceneData.ft_kind = gSceneData.bonus_ft_kind;
+							gSceneData.costume = gSceneData.bonus_costume;
 
-							gSceneData.spgame_stage = nGM1PGameStageLuigi;
+							gSceneData.spgame_stage = nSC1PGameStageLuigi;
 							gSceneData.scene_current = 0x34;
 
 							break;
@@ -805,7 +805,7 @@ void sc1PBonusGameStartScene()
 					}
 					if (sc1PManagerCheckUnlockSoundTest() != FALSE)
 					{
-						gSceneData.unlocked_features[0] = nGMBackupUnlockSoundTest;
+						gSceneData.prize_unlocks[0] = nGMBackupUnlockSoundTest;
 						gSceneData.scene_current = 0xC;
 					}
 					break;
@@ -816,9 +816,9 @@ void sc1PBonusGameStartScene()
 			default:
 				gSceneData.scene_current = 0x14;
 
-				if ((tasks_complete == GMBATTLE_BONUSGAME_TASK_MAX) && (sc1PManagerCheckUnlockSoundTest() != FALSE))
+				if ((tasks_complete == SCBATTLE_BONUSGAME_TASK_MAX) && (sc1PManagerCheckUnlockSoundTest() != FALSE))
 				{
-					gSceneData.unlocked_features[0] = nGMBackupUnlockSoundTest;
+					gSceneData.prize_unlocks[0] = nGMBackupUnlockSoundTest;
 					gSceneData.scene_current = 0xC;
 				}
 				break;

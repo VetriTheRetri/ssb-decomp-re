@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
-#include <gm/battle.h>
 #include <sc/scene.h>
+#include <gm/battle.h>
 #include <ovl0/reloc_data_mgr.h>
 
 // Externs
@@ -270,7 +270,7 @@ void *sGMStageClearFiles[7];
 u32 dGMStageClearFileIDs[] = { 0x50, 0x51, 0xA4, 0xA5, 0x24, 0x97, 0x1A };
 
 // 80134EFC
-gmStageClearScore dGMStageClearBonusData[] =
+sc1PStageClearScore dGMStageClearBonusData[] =
 {
 	// Cheap Shot
 	{ &lGMStageClearSpriteBonusCheapShot, -99 },
@@ -529,7 +529,7 @@ scRuntimeInfo D_ovl56_80135208 = {
 };
 
 // Forward declarations
-sb32 gmStageClearCheckHaveTimer();
+sb32 sc1PStageClearCheckHaveTimer();
 
 // 80131B00
 void func_ovl56_80131B00(Gfx **dl)
@@ -558,7 +558,7 @@ s32 func_ovl56_80131B58(s32 arg0, s32 arg1)
 }
 
 // 80131BF8
-void gmStageClearSetDigitSpriteColor(SObj *sobj, s32 file_id, syColorRGBPair *colors_default)
+void sc1PStageClearSetDigitSpriteColor(SObj *sobj, s32 file_id, syColorRGBPair *colors_default)
 {
 	syColorRGBPair colors_all[ARRAY_COUNT(dGMStageClearDigitSpriteColors)] = dGMStageClearDigitSpriteColors;
 	syColorRGBPair *colors_id = &colors_all[file_id];
@@ -587,7 +587,7 @@ void gmStageClearSetDigitSpriteColor(SObj *sobj, s32 file_id, syColorRGBPair *co
 }
 
 // 80131CC4
-s32 gmStageClearGetScoreDigitCount(s32 points, s32 digit_count_max)
+s32 sc1PStageClearGetScoreDigitCount(s32 points, s32 digit_count_max)
 {
 	s32 digit_count_current = digit_count_max;
 
@@ -604,7 +604,7 @@ s32 gmStageClearGetScoreDigitCount(s32 points, s32 digit_count_max)
 }
 
 // 80131D70
-Sprite* gmStageClearGetScoreDigitSprite(s32 digit_kind, s32 offset_id)
+Sprite* sc1PStageClearGetScoreDigitSprite(s32 digit_kind, s32 offset_id)
 {
 	s32 file_array_ids[3] = dGMStageClearDigitSpriteFileArrayIDs;
 	intptr_t offsets[10][3] = dGMStageClearDigitSpriteOffsets;
@@ -612,7 +612,7 @@ Sprite* gmStageClearGetScoreDigitSprite(s32 digit_kind, s32 offset_id)
 }
 
 // 80131E10
-void gmStageClearMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, syColorRGBPair *colors, s32 offset_x, s32 file_id, s32 sub, s32 digit_count_max, sb32 is_fixed_digit_count)
+void sc1PStageClearMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, syColorRGBPair *colors, s32 offset_x, s32 file_id, s32 sub, s32 digit_count_max, sb32 is_fixed_digit_count)
 {
 	SObj *sobj;
 	f32 calc_x;
@@ -632,22 +632,22 @@ void gmStageClearMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, syCol
 			is_negative = TRUE;
 		}
 	}
-	sobj = gcAppendSObjWithSprite(gobj, gmStageClearGetScoreDigitSprite(file_id, points % 10));
+	sobj = gcAppendSObjWithSprite(gobj, sc1PStageClearGetScoreDigitSprite(file_id, points % 10));
 
-	gmStageClearSetDigitSpriteColor(sobj, file_id, colors);
+	sc1PStageClearSetDigitSpriteColor(sobj, file_id, colors);
 
 	calc_x = (sub != 0) ? x - sub : x - (sobj->sprite.width + offset_x);
 
 	sobj->pos.x = calc_x;
 	sobj->pos.y = y;
 
-	for (i = 1; i < ((is_fixed_digit_count != FALSE) ? digit_count_max : gmStageClearGetScoreDigitCount(points, digit_count_max)); i++)
+	for (i = 1; i < ((is_fixed_digit_count != FALSE) ? digit_count_max : sc1PStageClearGetScoreDigitCount(points, digit_count_max)); i++)
 	{
 		digit = (func_ovl56_80131B58(10, i) != 0) ? points / func_ovl56_80131B58(10, i) : 0;
 
-		sobj = gcAppendSObjWithSprite(gobj, gmStageClearGetScoreDigitSprite(file_id, digit % 10));
+		sobj = gcAppendSObjWithSprite(gobj, sc1PStageClearGetScoreDigitSprite(file_id, digit % 10));
 
-		gmStageClearSetDigitSpriteColor(sobj, file_id, colors);
+		sc1PStageClearSetDigitSpriteColor(sobj, file_id, colors);
 
 		calc_x = (sub != 0) ? calc_x - sub : calc_x - (sobj->sprite.width + offset_x);
 
@@ -658,7 +658,7 @@ void gmStageClearMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, syCol
 	{
 		if (file_id == 1)
 			sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[4], &lGMStageClearSpritePointsNSign));
-		gmStageClearSetDigitSpriteColor(sobj, file_id, colors);
+		sc1PStageClearSetDigitSpriteColor(sobj, file_id, colors);
 
 		calc_x = (sub != 0) ? calc_x - sub : calc_x - (sobj->sprite.width + offset_x);
 
@@ -668,7 +668,7 @@ void gmStageClearMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, syCol
 }
 
 // 801320E0
-void gmStageClearTextProcRender(GObj *gobj)
+void sc1PStageClearTextProcRender(GObj *gobj)
 {
 	gDPPipeSync(gDisplayListHead[0]++);
 	func_ovl0_800CCF00(gobj);
@@ -676,14 +676,14 @@ void gmStageClearTextProcRender(GObj *gobj)
 }
 
 // 8013213C
-void gmStageClearMakeTextSObjs()
+void sc1PStageClearMakeTextSObjs()
 {
 	GObj *gobj;
 	SObj *sobj;
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextShadow));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -696,7 +696,7 @@ void gmStageClearMakeTextSObjs()
 	sobj->pos.x = 33.0F;
 	sobj->pos.y = 23.0F;
 
-	if (sGMStageClearKind == gmStageClear_Kind_Result)
+	if (sGMStageClearKind == nSC1PStageClearKindResult)
 	{
 		sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextResult));
 		sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -731,7 +731,7 @@ void gmStageClearMakeTextSObjs()
 		sobj->pos.x = 166.0F;
 		sobj->pos.y = 24.0F;
 
-		if (sGMStageClearKind == gmStageClear_Kind_Stage)
+		if (sGMStageClearKind == nSC1PStageClearKindStage)
 			sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextStage));
 		else
 			sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextGame));
@@ -752,7 +752,7 @@ void gmStageClearMakeTextSObjs()
 	}
 	sGMStageClearBonusTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextBonus));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -767,14 +767,14 @@ void gmStageClearMakeTextSObjs()
 }
 
 // 801323F8
-void gmStageClearMakeScoreSObjs()
+void sc1PStageClearMakeScoreSObjs()
 {
 	GObj *gobj;
 	SObj *sobj;
 
 	sGMStageClearScoreTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[1], &lGMStageClearSpriteTextScore));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -791,18 +791,18 @@ void gmStageClearMakeScoreSObjs()
 	sobj->pos.x = 90.0F;
 	sobj->pos.y = 200.0F;
 
-	gmStageClearMakeScoreDigitSObjs(gobj, sGMStageClearScoreTotal, 295.0F, 197.0F, NULL, 0, 2, 16, 8, TRUE);
+	sc1PStageClearMakeScoreDigitSObjs(gobj, sGMStageClearScoreTotal, 295.0F, 197.0F, NULL, 0, 2, 16, 8, TRUE);
 }
 
 // 801324FC
-void gmStageClearMakeTimerTextSObjs(f32 y)
+void sc1PStageClearMakeTimerTextSObjs(f32 y)
 {
 	GObj *gobj;
 	SObj *sobj;
 
 	sGMStageClearTimerTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextTimer));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -839,7 +839,7 @@ void gmStageClearMakeTimerTextSObjs(f32 y)
 }
 
 // 8013263C
-void gmStageClearMakeTimerDigitSObjs(f32 y)
+void sc1PStageClearMakeTimerDigitSObjs(f32 y)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -849,7 +849,7 @@ void gmStageClearMakeTimerDigitSObjs(f32 y)
 
 	sGMStageClearTimerMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[3], &lGMStageClearSpriteTextMultiplySign));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -868,13 +868,13 @@ void gmStageClearMakeTimerDigitSObjs(f32 y)
 
 	switch (sGMStageClear1PGameStage)
 	{
-	case nGM1PGameStageBonus1:
-	case nGM1PGameStageBonus2:
+	case nSC1PGameStageBonus1:
+	case nSC1PGameStageBonus2:
 		x = 246.0F;
 		multiplier = 200;
 		break;
 
-	case nGM1PGameStageBonus3:
+	case nSC1PGameStageBonus3:
 		x = 246.0F;
 		multiplier = 500;
 		break;
@@ -883,12 +883,12 @@ void gmStageClearMakeTimerDigitSObjs(f32 y)
 		x = 233.0F;
 		multiplier = 50;
 	}
-	gmStageClearMakeScoreDigitSObjs(gobj, multiplier, x, y - 1.0F, NULL, 1, 0, 0, 4, FALSE);
-	gmStageClearMakeScoreDigitSObjs(gobj, sGMStageClearSecondsRemaining, 171.0F, y - 1.0F, NULL, 1, 0, 0, 3, FALSE);
+	sc1PStageClearMakeScoreDigitSObjs(gobj, multiplier, x, y - 1.0F, NULL, 1, 0, 0, 4, FALSE);
+	sc1PStageClearMakeScoreDigitSObjs(gobj, sGMStageClearSecondsRemaining, 171.0F, y - 1.0F, NULL, 1, 0, 0, 3, FALSE);
 }
 
 // 801327D4
-s32 gmStageClearGetAppendTotalTimeScore(f32 y)
+s32 sc1PStageClearGetAppendTotalTimeScore(f32 y)
 {
 	GObj *gobj;
 	s32 unused;
@@ -897,16 +897,16 @@ s32 gmStageClearGetAppendTotalTimeScore(f32 y)
 
 	sGMStageClearTimerMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	switch (sGMStageClear1PGameStage)
 	{
-	case nGM1PGameStageBonus1:
-	case nGM1PGameStageBonus2:
+	case nSC1PGameStageBonus1:
+	case nSC1PGameStageBonus2:
 		multiplier = 200;
 		break;
 
-	case nGM1PGameStageBonus3:
+	case nSC1PGameStageBonus3:
 		multiplier = 500;
 		break;
 
@@ -915,21 +915,21 @@ s32 gmStageClearGetAppendTotalTimeScore(f32 y)
 	}
 	time_score_total = sGMStageClearSecondsRemaining * multiplier;
 
-	gmStageClearMakeScoreDigitSObjs(gobj, time_score_total, 200.0F, y - 1.0F, NULL, 1, 0, 0, 5, FALSE);
+	sc1PStageClearMakeScoreDigitSObjs(gobj, time_score_total, 200.0F, y - 1.0F, NULL, 1, 0, 0, 5, FALSE);
 	func_800269C0_275C0(nGMSoundFGMUnkSoftPing1);
 
 	return time_score_total;
 }
 
 // 801328CC
-void gmStageClearMakeDamageTextSObjs(f32 y)
+void sc1PStageClearMakeDamageTextSObjs(f32 y)
 {
 	GObj *gobj;
 	SObj *sobj;
 	s32 unused;
 
 	sGMStageClearDamageTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextDamage));
 
@@ -967,7 +967,7 @@ void gmStageClearMakeDamageTextSObjs(f32 y)
 }
 
 // 80132A20
-void gmStageClearMakeDamageDigitSObjs(f32 y)
+void sc1PStageClearMakeDamageDigitSObjs(f32 y)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -978,9 +978,9 @@ void gmStageClearMakeDamageDigitSObjs(f32 y)
 
 	sGMStageClearDamageMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-	gmStageClearMakeScoreDigitSObjs(gobj, sGMStageClearDamageDealt, x, (s32)y - 1, NULL, 1, 0, 0, 4, FALSE);
+	sc1PStageClearMakeScoreDigitSObjs(gobj, sGMStageClearDamageDealt, x, (s32)y - 1, NULL, 1, 0, 0, 4, FALSE);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[3], &lGMStageClearSpriteTextMultiplySign));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -997,11 +997,11 @@ void gmStageClearMakeDamageDigitSObjs(f32 y)
 	sobj->sprite.green = 0xFF;
 	sobj->sprite.blue = 0xFF;
 
-	gmStageClearMakeScoreDigitSObjs(gobj, 10, x + 55, (s32)y - 1, NULL, 1, 0, 0, 2, TRUE);
+	sc1PStageClearMakeScoreDigitSObjs(gobj, 10, x + 55, (s32)y - 1, NULL, 1, 0, 0, 2, TRUE);
 }
 
 // 80132BB4
-s32 gmStageClearGetAppendTotalDamageScore(f32 y)
+s32 sc1PStageClearGetAppendTotalDamageScore(f32 y)
 {
 	GObj *gobj;
 	s32 unused;
@@ -1009,17 +1009,17 @@ s32 gmStageClearGetAppendTotalDamageScore(f32 y)
 
 	sGMStageClearDamageMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_LINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_LINKORDER_DEFAULT, -1);
 	damage_score_total = sGMStageClearDamageDealt * 10;
 
-	gmStageClearMakeScoreDigitSObjs(gobj, damage_score_total, 200.0F, (s32)y - 1, NULL, 1, 0, 0, 5, FALSE);
+	sc1PStageClearMakeScoreDigitSObjs(gobj, damage_score_total, 200.0F, (s32)y - 1, NULL, 1, 0, 0, 5, FALSE);
 	func_800269C0_275C0(nGMSoundFGMUnkSoftPing1);
 
 	return damage_score_total;
 }
 
 // 80132C80
-void gmStageClearMakeTargetTextSObjs()
+void sc1PStageClearMakeTargetTextSObjs()
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1027,7 +1027,7 @@ void gmStageClearMakeTargetTextSObjs()
 
 	sGMStageClearTargetGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteTextTarget));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1073,7 +1073,7 @@ void func_ovl56_80132DC0(GObj *gobj)
 		func_800269C0_275C0(nGMSoundFGMUnkSoftPing1);
 		gcEjectGObj(sGMStageClearScoreTextGObj);
 		sGMStageClearScoreTotal += 1000;
-		gmStageClearMakeScoreSObjs();
+		sc1PStageClearMakeScoreSObjs();
 	}
 }
 
@@ -1085,18 +1085,18 @@ void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
 
 	sGMStageClearBonusObjectiveGObjs[objective_num] = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	gcAddGObjCommonProc(gobj, func_ovl56_80132DC0, 1, 1);
 
 	gobj->user_data.u = (objective_num * 10) + D_ovl56_801352CC;
 
 	switch (sGMStageClear1PGameStage)
 	{
-	case nGM1PGameStageBonus1:
+	case nSC1PGameStageBonus1:
 		sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[5], &lGMStageClearSpriteTarget));
 		break;
 
-	case nGM1PGameStageBonus2:
+	case nSC1PGameStageBonus2:
 		sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[5], &lGMStageClearSpritePlatform));
 		break;
 	}
@@ -1126,9 +1126,9 @@ void func_ovl56_80132F78()
 }
 
 // 80132FF8
-gmStageClearStats* gmStageClearSetupBonusStats(gmStageClearStats *bonus_setup, s32 bonus_id)
+sc1PStageClearStats* sc1PStageClearSetupBonusStats(sc1PStageClearStats *bonus_setup, s32 bonus_id)
 {
-	gmStageClearStats bonus;
+	sc1PStageClearStats bonus;
 
 	if (bonus_id < 32)
 	{
@@ -1151,13 +1151,13 @@ gmStageClearStats* gmStageClearSetupBonusStats(gmStageClearStats *bonus_setup, s
 }
 
 // 8013305C
-sb32 gmStageClearCheckHaveBonusStats()
+sb32 sc1PStageClearCheckHaveBonusStats()
 {
 	s32 unused[3];
-	gmStageClearStats bonus;
+	sc1PStageClearStats bonus;
 	s32 i = 0; while (TRUE) // WARNING: Newline memes
 	{
-		gmStageClearSetupBonusStats(&bonus, i);
+		sc1PStageClearSetupBonusStats(&bonus, i);
 
 		i++;
 
@@ -1170,15 +1170,15 @@ sb32 gmStageClearCheckHaveBonusStats()
 }
 
 // 801330F0
-sb32 gmStageClearCheckGameClearBonus(s32 bonus_id)
+sb32 sc1PStageClearCheckGameClearBonus(s32 bonus_id)
 {
 	switch (bonus_id)
 	{
-	case GM1PGAME_BONUS_KIND_GAMECLEAR:
-	case GM1PGAME_BONUS_KIND_NOMISSCLEAR:
-	case GM1PGAME_BONUS_KIND_NODAMAGECLEAR:
-	case GM1PGAME_BONUS_KIND_SPEEDKING:
-	case GM1PGAME_BONUS_KIND_SPEEDDEMON:
+	case nSC1PGameBonusGameClear:
+	case nSC1PGameBonusNoMissClear:
+	case nSC1PGameBonusNoDamageClear:
+	case nSC1PGameBonusSpeedKing:
+	case nSC1PGameBonusSpeedDemon:
 		return TRUE;
 
 	default:
@@ -1187,14 +1187,14 @@ sb32 gmStageClearCheckGameClearBonus(s32 bonus_id)
 }
 
 // 80133128
-s32 gmStageClearGetNoMissMultiplier(s32 stage)
+s32 sc1PStageClearGetNoMissMultiplier(s32 stage)
 {
 	s32 nomiss[14] = dGMStageClearNoMissBonusMultiplierArray;
 	return nomiss[stage];
 }
 
 // 80133188
-void gmStageClearCommonProcUpdate(GObj *gobj)
+void sc1PStageClearCommonProcUpdate(GObj *gobj)
 {
 	if (gobj->user_data.u == D_ovl56_801352CC)
 		func_800269C0_275C0(nGMSoundFGMUnkClick1);
@@ -1203,7 +1203,7 @@ void gmStageClearCommonProcUpdate(GObj *gobj)
 }
 
 // 801331EC
-s32 gmStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32 y)
+s32 sc1PStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32 y)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1214,12 +1214,12 @@ s32 gmStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32
 
 	sGMStageClearBonusStatGObjs[bonus_num] = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjCommonProc(gobj, gmStageClearCommonProcUpdate, 1, 1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjCommonProc(gobj, sc1PStageClearCommonProcUpdate, 1, 1);
 
 	gobj->user_data.u = (bonus_num * 10) + D_ovl56_801352CC;
 
-	if (bonus_id == GM1PGAME_BONUS_KIND_GAMECLEAR)
+	if (bonus_id == nSC1PGameBonusGameClear)
 		sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], offsets[sGMStageClearDifficulty]));
 	else
 		sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], dGMStageClearBonusData[bonus_id].offset));
@@ -1230,7 +1230,7 @@ s32 gmStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32
 	sobj->pos.x = x;
 	sobj->pos.y = y;
 
-	if (gmStageClearCheckGameClearBonus(bonus_id) != FALSE)
+	if (sc1PStageClearCheckGameClearBonus(bonus_id) != FALSE)
 	{
 		sobj->sprite.red = 0xFF;
 		sobj->sprite.green = 0x00;
@@ -1242,7 +1242,7 @@ s32 gmStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32
 		sobj->sprite.green = 0xFF;
 		sobj->sprite.blue = 0x00;
 	}
-	if (bonus_id == GM1PGAME_BONUS_KIND_NOMISS)
+	if (bonus_id == nSC1PGameBonusNoMiss)
 	{
 		sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[4], &lGMStageClearSpriteBonusMultiplySign));
 
@@ -1256,7 +1256,7 @@ s32 gmStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32
 		sobj->sprite.green = 0xFF;
 		sobj->sprite.blue = 0x00;
 
-		gmStageClearMakeScoreDigitSObjs(gobj, gmStageClearGetNoMissMultiplier(sGMStageClear1PGameStage), (x + 40.0F) + 26.0F, y - 1.0F, &colors, 0, 1, 0, 2, FALSE);
+		sc1PStageClearMakeScoreDigitSObjs(gobj, sc1PStageClearGetNoMissMultiplier(sGMStageClear1PGameStage), (x + 40.0F) + 26.0F, y - 1.0F, &colors, 0, 1, 0, 2, FALSE);
 	}
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[4], &lGMStageClearSpriteBonusColon));
 
@@ -1272,32 +1272,32 @@ s32 gmStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32
 
 	switch (bonus_id)
 	{
-	case GM1PGAME_BONUS_KIND_NOMISS:
-		points = dGMStageClearBonusData[bonus_id].points * gmStageClearGetNoMissMultiplier(sGMStageClear1PGameStage);
+	case nSC1PGameBonusNoMiss:
+		points = dGMStageClearBonusData[bonus_id].points * sc1PStageClearGetNoMissMultiplier(sGMStageClear1PGameStage);
 		break;
 
-	case GM1PGAME_BONUS_KIND_GAMECLEAR:
+	case nSC1PGameBonusGameClear:
 		points = dGMStageClearBonusData[bonus_id].points * (sGMStageClearDifficulty + 1);
 		break;
 
 	default:
 		points = dGMStageClearBonusData[bonus_id].points;
 	}
-	gmStageClearMakeScoreDigitSObjs(gobj, points, 241.0F, y - 1.0F, NULL, 0, 1, 0, 6, FALSE);
+	sc1PStageClearMakeScoreDigitSObjs(gobj, points, 241.0F, y - 1.0F, NULL, 0, 1, 0, 6, FALSE);
 
 	return points;
 }
 
 // 801335A0
-void gmStageClearMakeBonusPageArrow()
+void sc1PStageClearMakeBonusPageArrow()
 {
 	GObj *gobj;
 	SObj *sobj;
 
 	sGMStageClearBonusStatGObjs[9] = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjCommonProc(gobj, gmStageClearCommonProcUpdate, 1, 1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjCommonProc(gobj, sc1PStageClearCommonProcUpdate, 1, 1);
 
 	gobj->user_data.u = D_ovl56_801352CC + 90;
 
@@ -1311,13 +1311,13 @@ void gmStageClearMakeBonusPageArrow()
 }
 
 // 80133668
-sb32 gmStageClearCheckHaveBonusID(s32 bonus_id)
+sb32 sc1PStageClearCheckHaveBonusID(s32 bonus_id)
 {
-	gmStageClearStats bonus;
+	sc1PStageClearStats bonus;
 
 	while (bonus_id < GS_BITCOUNT(sGMStageClearBonusMasks))
 	{
-		gmStageClearSetupBonusStats(&bonus, bonus_id);
+		sc1PStageClearSetupBonusStats(&bonus, bonus_id);
 
 		bonus_id++;
 
@@ -1328,12 +1328,12 @@ sb32 gmStageClearCheckHaveBonusID(s32 bonus_id)
 }
 
 // 801336F8
-s32 gmStageClearUpdateGetBonusStatPointsAll()
+s32 sc1PStageClearUpdateGetBonusStatPointsAll()
 {
 	s32 unused[2];
 	s32 i;
 	s32 points;
-	gmStageClearStats bonus;
+	sc1PStageClearStats bonus;
 
 	points = 0;
 
@@ -1352,19 +1352,19 @@ s32 gmStageClearUpdateGetBonusStatPointsAll()
 		}
 		if (sGMStageClearBonusNum == (ARRAY_COUNT(sGMStageClearBonusStatGObjs) - 1))
 		{
-			if (gmStageClearCheckHaveBonusID(sGMStageClearBonusID) == FALSE)
+			if (sc1PStageClearCheckHaveBonusID(sGMStageClearBonusID) == FALSE)
 			{
 				sGMStageClearIsAdvance = TRUE;
 				return points;
 			}
-			gmStageClearMakeBonusPageArrow();
+			sc1PStageClearMakeBonusPageArrow();
 			return points;
 		}
-		gmStageClearSetupBonusStats(&bonus, sGMStageClearBonusID);
+		sc1PStageClearSetupBonusStats(&bonus, sGMStageClearBonusID);
 
 		if (sGMStageClearBonusMasks[bonus.bonus_array_id] & (1 << bonus.bonus_id))
 		{
-			points += gmStageClearAppendBonusStatGetPoints(sGMStageClearBonusID, sGMStageClearBonusNum, 80.0F, (sGMStageClearBonusNum * 11) + 86);
+			points += sc1PStageClearAppendBonusStatGetPoints(sGMStageClearBonusID, sGMStageClearBonusNum, 80.0F, (sGMStageClearBonusNum * 11) + 86);
 			sGMStageClearBonusNum++;
 		}
 		sGMStageClearBonusID++;
@@ -1372,14 +1372,14 @@ s32 gmStageClearUpdateGetBonusStatPointsAll()
 }
 
 // 801338A0
-void gmStageClearMakeBonusTable()
+void sc1PStageClearMakeBonusTable()
 {
 	GObj *gobj;
 	SObj *sobj;
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[0], &lGMStageClearSpriteBonusBorder));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1414,7 +1414,7 @@ void gmStageClearMakeBonusTable()
 }
 
 // 801339C0
-void gmStageClearFrameCopyBackgroundProcRender(GObj *gobj)
+void sc1PStageClearFrameCopyBackgroundProcRender(GObj *gobj)
 {
 	gDPPipeSync(gDisplayListHead[0]++);
 	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
@@ -1431,14 +1431,14 @@ void gmStageClearFrameCopyBackgroundProcRender(GObj *gobj)
 ((Sprite*) ((uintptr_t)(file) + (intptr_t)(offset)))
 
 // 80133AC0
-void gmStageClearMakeFrameCopyBackground()
+void sc1PStageClearMakeFrameCopyBackground()
 {
 	GObj *gobj;
 	SObj *sobj;
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 0x12, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, gmStageClearFrameCopyBackgroundProcRender, 0x1B, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjRenderProc(gobj, sc1PStageClearFrameCopyBackgroundProcRender, 0x1B, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sGMStageClearFiles[6], &D_NF_00020718));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1475,18 +1475,18 @@ void func_ovl56_80133C88()
 	switch (sGMStageClear1PGameStage)
 	{
 	default:
-		sGMStageClearKind = gmStageClear_Kind_Stage;
+		sGMStageClearKind = nSC1PStageClearKindStage;
 		break;
 
-	case nGM1PGameStageBonus1:
-	case nGM1PGameStageBonus2:
-	case nGM1PGameStageBonus3:
-		sGMStageClearKind = gmStageClear_Kind_Result;
+	case nSC1PGameStageBonus1:
+	case nSC1PGameStageBonus2:
+	case nSC1PGameStageBonus3:
+		sGMStageClearKind = nSC1PStageClearKindResult;
 		sGMStageClearBonusObjectivesCleared = gSceneData.bonus_tasks_current;
 		break;
 
-	case nGM1PGameStageBoss:
-		sGMStageClearKind = gmStageClear_Kind_Game;
+	case nSC1PGameStageBoss:
+		sGMStageClearKind = nSC1PStageClearKindGame;
 		break;
 	}
 	sGMStageClearSecondsRemaining = gSceneData.spgame_time_seconds;
@@ -1497,7 +1497,7 @@ void func_ovl56_80133C88()
 	sGMStageClearBonusMasks[1] = gSceneData.bonus_get_mask[1];
 	sGMStageClearBonusMasks[2] = gSceneData.bonus_get_mask[2];
 
-	D_ovl56_801352D8 = gmStageClearCheckHaveBonusStats();
+	D_ovl56_801352D8 = sc1PStageClearCheckHaveBonusStats();
 
 	sGMStageClearBonusID = 0;
 	D_ovl56_801353A0 = 0;
@@ -1516,9 +1516,9 @@ void func_ovl56_80133C88()
 	sGMStageClearIsAdvance = FALSE;
 	D_ovl56_8013533C = 0;
 
-	if ((sGMStageClearKind == gmStageClear_Kind_Stage) || (sGMStageClearKind == gmStageClear_Kind_Game))
+	if ((sGMStageClearKind == nSC1PStageClearKindStage) || (sGMStageClearKind == nSC1PStageClearKindGame))
 	{
-		if (gmStageClearCheckHaveTimer() != FALSE)
+		if (sc1PStageClearCheckHaveTimer() != FALSE)
 		{
 			D_ovl56_801353B8 = 10;
 			D_ovl56_801353BC = 20;
@@ -1540,7 +1540,7 @@ void func_ovl56_80133C88()
 }
 
 // 80133EEC
-void gmStageClearUpdateTotal1PGameScore()
+void sc1PStageClearUpdateTotal1PGameScore()
 {
 	gSceneData.spgame_score = sGMStageClearScoreTotal;
 }
@@ -1548,14 +1548,14 @@ void gmStageClearUpdateTotal1PGameScore()
 // 80133F00
 void func_ovl56_80133F00()
 {
-	gmStageClearMakeScoreSObjs();
+	sc1PStageClearMakeScoreSObjs();
 	func_800269C0_275C0(0xA8);
 }
 
 // 80133F28
-sb32 gmStageClearCheckHaveTimer()
+sb32 sc1PStageClearCheckHaveTimer()
 {
-	if (gSceneData.spgame_time_limit == GMBATTLE_TIMELIMIT_INFINITE)
+	if (gSceneData.spgame_time_limit == SCBATTLE_TIMELIMIT_INFINITE)
 	{
 		return TRUE;
 	}
@@ -1574,7 +1574,7 @@ void func_ovl56_80133F50()
 			if (sGMStageClearBonusStatGObjs[i] != NULL)
 				gcEjectGObj(sGMStageClearBonusStatGObjs[i]);
 		}
-		sGMStageClearScoreTotal += gmStageClearUpdateGetBonusStatPointsAll();
+		sGMStageClearScoreTotal += sc1PStageClearUpdateGetBonusStatPointsAll();
 
 		if (sGMStageClearScoreTotal < 0)
 			sGMStageClearScoreTotal = 0;
@@ -1595,21 +1595,21 @@ void func_ovl56_80133F50()
 }
 
 // 8013407C
-void gmStageClearUpdateGameClearScore()
+void sc1PStageClearUpdateGameClearScore()
 {
 	s32 unused;
 	f32 y;
 
-	if (gmStageClearCheckHaveTimer() == FALSE)
+	if (sc1PStageClearCheckHaveTimer() == FALSE)
 	{
 		if (D_ovl56_801352CC == D_ovl56_801353A8)
-			gmStageClearMakeTimerTextSObjs(94.0F);
+			sc1PStageClearMakeTimerTextSObjs(94.0F);
 		if (D_ovl56_801352CC == D_ovl56_801353AC)
-			gmStageClearMakeTimerDigitSObjs(94.0F);
+			sc1PStageClearMakeTimerDigitSObjs(94.0F);
 		if (D_ovl56_801352CC == D_ovl56_801353B0)
 		{
 			gcEjectGObj(sGMStageClearTimerMultiplierGObj);
-			sGMStageClearScoreTotal += gmStageClearGetAppendTotalTimeScore(94.0F);
+			sGMStageClearScoreTotal += sc1PStageClearGetAppendTotalTimeScore(94.0F);
 		}
 		if (D_ovl56_801352CC == D_ovl56_801353B4)
 		{
@@ -1617,18 +1617,18 @@ void gmStageClearUpdateGameClearScore()
 			func_ovl56_80133F00();
 		}
 	}
-	y = (gmStageClearCheckHaveTimer() == FALSE) ? 126.0F : 94.0F;
+	y = (sc1PStageClearCheckHaveTimer() == FALSE) ? 126.0F : 94.0F;
 
 	if (D_ovl56_801352CC == D_ovl56_801353B8)
-		gmStageClearMakeDamageTextSObjs(y);
+		sc1PStageClearMakeDamageTextSObjs(y);
 
 	if (D_ovl56_801352CC == D_ovl56_801353BC)
-		gmStageClearMakeDamageDigitSObjs(y);
+		sc1PStageClearMakeDamageDigitSObjs(y);
 
 	if (D_ovl56_801352CC == D_ovl56_801353C0)
 	{
 		gcEjectGObj(sGMStageClearDamageMultiplierGObj);
-		sGMStageClearScoreTotal += gmStageClearGetAppendTotalDamageScore(y);
+		sGMStageClearScoreTotal += sc1PStageClearGetAppendTotalDamageScore(y);
 	}
 	if (D_ovl56_801352CC == D_ovl56_801353C4)
 	{
@@ -1660,30 +1660,30 @@ void gmStageClearUpdateGameClearScore()
 		gcEjectGObj(sGMStageClearDamageMultiplierGObj);
 		sGMStageClearDamageMultiplierGObj = NULL;
 
-		gmStageClearMakeBonusTable();
+		sc1PStageClearMakeBonusTable();
 	}
 	if (D_ovl56_801352D8 != 0)
 		func_ovl56_80133F50();
 }
 
 // 80134340 - ??? Exactly the same as the function above ???
-void gmStageClearUpdateStageClearScore()
+void sc1PStageClearUpdateStageClearScore()
 {
 	s32 unused;
 	f32 y;
 
-	if (gmStageClearCheckHaveTimer() == FALSE)
+	if (sc1PStageClearCheckHaveTimer() == FALSE)
 	{
 		if (D_ovl56_801352CC == D_ovl56_801353A8)
-			gmStageClearMakeTimerTextSObjs(94.0F);
+			sc1PStageClearMakeTimerTextSObjs(94.0F);
 
 		if (D_ovl56_801352CC == D_ovl56_801353AC)
-			gmStageClearMakeTimerDigitSObjs(94.0F);
+			sc1PStageClearMakeTimerDigitSObjs(94.0F);
 
 		if (D_ovl56_801352CC == D_ovl56_801353B0)
 		{
 			gcEjectGObj(sGMStageClearTimerMultiplierGObj);
-			sGMStageClearScoreTotal += gmStageClearGetAppendTotalTimeScore(94.0F);
+			sGMStageClearScoreTotal += sc1PStageClearGetAppendTotalTimeScore(94.0F);
 		}
 		if (D_ovl56_801352CC == D_ovl56_801353B4)
 		{
@@ -1691,18 +1691,18 @@ void gmStageClearUpdateStageClearScore()
 			func_ovl56_80133F00();
 		}
 	}
-	y = (gmStageClearCheckHaveTimer() == FALSE) ? 126.0F : 94.0F;
+	y = (sc1PStageClearCheckHaveTimer() == FALSE) ? 126.0F : 94.0F;
 
 	if (D_ovl56_801352CC == D_ovl56_801353B8)
-		gmStageClearMakeDamageTextSObjs(y);
+		sc1PStageClearMakeDamageTextSObjs(y);
 
 	if (D_ovl56_801352CC == D_ovl56_801353BC)
-		gmStageClearMakeDamageDigitSObjs(y);
+		sc1PStageClearMakeDamageDigitSObjs(y);
 
 	if (D_ovl56_801352CC == D_ovl56_801353C0)
 	{
 		gcEjectGObj(sGMStageClearDamageMultiplierGObj);
-		sGMStageClearScoreTotal += gmStageClearGetAppendTotalDamageScore(y);
+		sGMStageClearScoreTotal += sc1PStageClearGetAppendTotalDamageScore(y);
 	}
 	if (D_ovl56_801352CC == D_ovl56_801353C4)
 	{
@@ -1733,21 +1733,21 @@ void gmStageClearUpdateStageClearScore()
 		gcEjectGObj(sGMStageClearDamageMultiplierGObj);
 		sGMStageClearDamageMultiplierGObj = NULL;
 
-		gmStageClearMakeBonusTable();
+		sc1PStageClearMakeBonusTable();
 	}
 	if (D_ovl56_801352D8 != 0)
 		func_ovl56_80133F50();
 }
 
 // 80134604
-void gmStageClearUpdateResultScore()
+void sc1PStageClearUpdateResultScore()
 {
 	s32 i;
 
-	if (sGMStageClear1PGameStage != nGM1PGameStageBonus3)
+	if (sGMStageClear1PGameStage != nSC1PGameStageBonus3)
 	{
 		if (D_ovl56_801352CC == 10)
-			gmStageClearMakeTargetTextSObjs();
+			sc1PStageClearMakeTargetTextSObjs();
 		else if (D_ovl56_801352CC == 20)
 		{
 			func_ovl56_80132F78();
@@ -1759,7 +1759,7 @@ void gmStageClearUpdateResultScore()
 
 	if (D_ovl56_801353A0 != 0)
 	{
-		if ((gmStageClearCheckHaveTimer() != FALSE) && (sGMStageClear1PGameStage != nGM1PGameStageBonus3))
+		if ((sc1PStageClearCheckHaveTimer() != FALSE) && (sGMStageClear1PGameStage != nSC1PGameStageBonus3))
 		{
 			if (D_ovl56_801353A0 == D_ovl56_801352CC)
 			{
@@ -1771,37 +1771,37 @@ void gmStageClearUpdateResultScore()
 		}
 		else if (D_ovl56_801352CC == (D_ovl56_801353A0 + 10))
 		{
-			if (sGMStageClear1PGameStage == nGM1PGameStageBonus3)
-				gmStageClearMakeTimerTextSObjs(94.0F);
+			if (sGMStageClear1PGameStage == nSC1PGameStageBonus3)
+				sc1PStageClearMakeTimerTextSObjs(94.0F);
 
 			else if (sGMStageClearBonusObjectivesCleared == ARRAY_COUNT(sGMStageClearBonusObjectiveGObjs))
-				gmStageClearMakeTimerTextSObjs(126.0F);
+				sc1PStageClearMakeTimerTextSObjs(126.0F);
 		}
 		else if (D_ovl56_801352CC == (D_ovl56_801353A0 + 30))
 		{
-			if (sGMStageClear1PGameStage == nGM1PGameStageBonus3)
-				gmStageClearMakeTimerDigitSObjs(94.0F);
+			if (sGMStageClear1PGameStage == nSC1PGameStageBonus3)
+				sc1PStageClearMakeTimerDigitSObjs(94.0F);
 
 			else if (sGMStageClearBonusObjectivesCleared == 10)
-				gmStageClearMakeTimerDigitSObjs(126.0F);
+				sc1PStageClearMakeTimerDigitSObjs(126.0F);
 		}
 		else if (D_ovl56_801352CC == (D_ovl56_801353A0 + 50))
 		{
-			if (sGMStageClear1PGameStage == nGM1PGameStageBonus3)
+			if (sGMStageClear1PGameStage == nSC1PGameStageBonus3)
 			{
 				gcEjectGObj(sGMStageClearTimerMultiplierGObj);
-				sGMStageClearScoreTotal += gmStageClearGetAppendTotalTimeScore(94.0F);
+				sGMStageClearScoreTotal += sc1PStageClearGetAppendTotalTimeScore(94.0F);
 
 			}
 			else if (sGMStageClearBonusObjectivesCleared == ARRAY_COUNT(sGMStageClearBonusObjectiveGObjs))
 			{
 				gcEjectGObj(sGMStageClearTimerMultiplierGObj);
-				sGMStageClearScoreTotal += gmStageClearGetAppendTotalTimeScore(126.0F);
+				sGMStageClearScoreTotal += sc1PStageClearGetAppendTotalTimeScore(126.0F);
 			}
 		}
 		else if (D_ovl56_801352CC == (D_ovl56_801353A0 + 70))
 		{
-			if ((sGMStageClearBonusObjectivesCleared == ARRAY_COUNT(sGMStageClearBonusObjectiveGObjs)) || (sGMStageClear1PGameStage == nGM1PGameStageBonus3))
+			if ((sGMStageClearBonusObjectivesCleared == ARRAY_COUNT(sGMStageClearBonusObjectiveGObjs)) || (sGMStageClear1PGameStage == nSC1PGameStageBonus3))
 			{
 				gcEjectGObj(sGMStageClearScoreTextGObj);
 				func_ovl56_80133F00();
@@ -1839,14 +1839,14 @@ void gmStageClearUpdateResultScore()
 			gcEjectGObj(sGMStageClearTimerMultiplierGObj);
 			sGMStageClearTimerMultiplierGObj = NULL;
 		}
-		gmStageClearMakeBonusTable();
+		sc1PStageClearMakeBonusTable();
 	}
 	if (D_ovl56_801352D8 != 0)
 		func_ovl56_80133F50();
 }
 
 // 801349F0
-void gmStageClearSceneProcUpdate(GObj *gobj)
+void sc1PStageClearSceneProcUpdate(GObj *gobj)
 {
 	D_ovl56_801352CC++;
 
@@ -1859,7 +1859,7 @@ void gmStageClearSceneProcUpdate(GObj *gobj)
 				gSceneData.scene_previous = gSceneData.scene_current;
 				gSceneData.scene_current = nSCKindTitle;
 
-				gmStageClearUpdateTotal1PGameScore();
+				sc1PStageClearUpdateTotal1PGameScore();
 				leoInitUnit_atten();
 			}
 			else if ((D_ovl56_80135334 != 0) && (sGMStageClearIsAdvance == FALSE))
@@ -1869,16 +1869,16 @@ void gmStageClearSceneProcUpdate(GObj *gobj)
 		}
 		switch (sGMStageClearKind)
 		{
-		case gmStageClear_Kind_Game:
-			gmStageClearUpdateGameClearScore();
+		case nSC1PStageClearKindGame:
+			sc1PStageClearUpdateGameClearScore();
 			break;
 
-		case gmStageClear_Kind_Stage:
-			gmStageClearUpdateStageClearScore();
+		case nSC1PStageClearKindStage:
+			sc1PStageClearUpdateStageClearScore();
 			break;
 
-		case gmStageClear_Kind_Result:
-			gmStageClearUpdateResultScore();
+		case nSC1PStageClearKindResult:
+			sc1PStageClearUpdateResultScore();
 			break;
 		}
 	}
@@ -1930,7 +1930,7 @@ void func_ovl56_80134AF4()
 }
 
 // 80134CC4
-void gmStageClearInitAll()
+void sc1PStageClearInitAll()
 {
 	s32 unused;
 	rdSetup rldm_setup;
@@ -1946,31 +1946,31 @@ void gmStageClearInitAll()
 
 	rdManagerInitSetup(&rldm_setup);
 	rdManagerLoadFiles(dGMStageClearFileIDs, ARRAY_COUNT(dGMStageClearFileIDs), sGMStageClearFiles, gsMemoryAlloc(rdManagerGetAllocSize(dGMStageClearFileIDs, ARRAY_COUNT(dGMStageClearFileIDs)), 0x10));
-	gcMakeGObjSPAfter(0, gmStageClearSceneProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
+	gcMakeGObjSPAfter(0, sc1PStageClearSceneProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
 	func_ovl56_80134AF4();
 	func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
 	func_ovl56_80133C88();
 	func_ovl56_80133B48();
 	func_ovl56_80133BE8();
-	gmStageClearMakeFrameCopyBackground();
-	gmStageClearMakeTextSObjs();
-	gmStageClearMakeScoreSObjs();
+	sc1PStageClearMakeFrameCopyBackground();
+	sc1PStageClearMakeTextSObjs();
+	sc1PStageClearMakeScoreSObjs();
 
 	switch (sGMStageClear1PGameStage)
 	{
-	case nGM1PGameStageBoss:
+	case nSC1PGameStageBoss:
 		auPlaySong(0, 0x1D);
 		break;
 
-	case nGM1PGameStageBonus1:
-	case nGM1PGameStageBonus2:
+	case nSC1PGameStageBonus1:
+	case nSC1PGameStageBonus2:
 		if (D_800A4B08 == 10)
 			auPlaySong(0, 0x1C);
 		else
 			auPlaySong(0, 0x1E);
 		break;
 
-	case nGM1PGameStageBonus3:
+	case nSC1PGameStageBonus3:
 		if (D_800A4AEC != 0)
 			auPlaySong(0, 0x1C);
 		else
@@ -1984,7 +1984,7 @@ void gmStageClearInitAll()
 }
 
 // 80134E84
-void gmStageClearStartScene()
+void sc1PStageClearStartScene()
 {
 	D_ovl56_801351EC.unk_scdatabounds_0xC = ((intptr_t)&D_NF_800A5240 - 0x1900);
 

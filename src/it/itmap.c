@@ -1,5 +1,5 @@
 #include <it/item.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -277,7 +277,7 @@ sb32 itMapCheckDestroyDropped(GObj *item_gobj, f32 common_rebound, f32 ground_re
         {
             if
             (
-                (gBattleState->game_type != nGMBattleGameTypeExplain)   && 
+                (gBattleState->game_type != nSCBattleGameTypeExplain)   && 
                 (ip->times_thrown != 0)                                 && 
                 (
                     (ip->times_thrown == ITEM_THROW_NUM_MAX)            

@@ -1,8 +1,7 @@
 #include <gr/ground.h>
-
 #include <ft/fighter.h>
 #include <ef/effect.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -129,7 +128,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
 // 0x8010A36C
 void grHyruleTwisterUpdateSleep(void)
 {
-    if (gBattleState->game_status != nGMBattleGameStatusWait)
+    if (gBattleState->game_status != nSCBattleGameStatusWait)
     {
         gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusWait;
         gGRCommonStruct.hyrule.twister_wait = mtTrigGetRandomIntRange(1200) + 1600;

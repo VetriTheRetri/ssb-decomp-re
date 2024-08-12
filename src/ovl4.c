@@ -1,8 +1,8 @@
 #include <ft/fighter.h>
 #include <if/interface.h>
 #include <gr/ground.h>
-#include <gm/battle.h>
 #include <sc/scene.h>
+#include <gm/battle.h>
 
 extern uintptr_t D_NF_800A5240;
 extern uintptr_t D_NF_8018E7E0;
@@ -10,8 +10,6 @@ extern uintptr_t D_NF_80392A00;
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000030;
 extern intptr_t D_NF_000000C7;
-extern struct gmBattleState gTransferBattleState;
-extern ftCreateDesc dFTManagerDefaultFighterDesc;
 
 void ifCommonAnnounceTimeUpInitInterface();
 void gmRumbleInitPlayers();
@@ -61,11 +59,15 @@ s32 scBattle_GetPlayerStartLR(s32 target_player)
 
 	for (loop_player = 0; loop_player < ARRAY_COUNT(gBattleState->players); loop_player++)
 	{
-		if (loop_player == target_player) continue;
-
-		if (gBattleState->players[loop_player].pl_kind == nFTPlayerKindNot) continue;
-
-		if (gBattleState->players[loop_player].player != gBattleState->players[target_player].player)
+		if (loop_player == target_player)
+		{
+			continue;
+		}
+		else if (gBattleState->players[loop_player].pl_kind == nFTPlayerKindNot) 
+		{
+			continue;
+		}
+		else if (gBattleState->players[loop_player].player != gBattleState->players[target_player].player)
 		{
 			mpCollisionGetPlayerMapObjPosition(loop_player, &loop_spawn_pos);
 
@@ -122,7 +124,7 @@ void scBattle_StartStockBattle()
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(2, GMBATTLE_PLAYERS_MAX);
+	ftManagerAllocFighter(2, SCBATTLE_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
@@ -133,8 +135,10 @@ void scBattle_StartStockBattle()
 	{
 		player_spawn = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot) continue;
-
+		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
+		{
+			continue;
+		}
 		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
 		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 
@@ -189,10 +193,10 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 	s32 result_count;
 	s32 tied_players;
 	s32 i, j;
-	gmBattleResults winner_results;
-	gmBattleResults player_results[GMBATTLE_PLAYERS_MAX];
+	scBattleResults winner_results;
+	scBattleResults player_results[SCBATTLE_PLAYERS_MAX];
 
-	if (!(gBattleState->game_rules & GMBATTLE_GAMERULE_TIME))
+	if (!(gBattleState->game_rules & SCBATTLE_GAMERULE_TIME))
 	{
 		return FALSE;
 	}
@@ -354,7 +358,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 		}
 		break;
 	}
-	D_800A4EF8.game_rules = GMBATTLE_GAMERULE_STOCK;
+	D_800A4EF8.game_rules = SCBATTLE_GAMERULE_STOCK;
 	D_800A4EF8.is_display_score = FALSE;
 
 	gSceneData.unk10 = 1;
@@ -384,7 +388,7 @@ void scBattle_StartSDBattle()
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(2, GMBATTLE_PLAYERS_MAX);
+	ftManagerAllocFighter(2, SCBATTLE_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
@@ -464,7 +468,7 @@ void scBattleRoyalStartScene()
 {
 	gBattleState = &gTransferBattleState;
 
-	gBattleState->game_type = nGMBattleGameTypeVSMode;
+	gBattleState->game_type = nSCBattleGameTypeRoyal;
 
 	gBattleState->gr_kind = gSceneData.gr_kind;
 
@@ -491,7 +495,7 @@ void scBattleRoyalStartScene()
 	{
 		gBattleState = &D_800A4EF8;
 
-		gBattleState->game_type = nGMBattleGameTypeVSMode;
+		gBattleState->game_type = nSCBattleGameTypeRoyal;
 
 		D_ovl4_8018E3F4.proc_start = scBattle_StartSDBattle;
 

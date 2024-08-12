@@ -1,7 +1,7 @@
 #include <gr/ground.h>
 #include <ft/fighter.h>
 #include <ef/effect.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -262,7 +262,7 @@ void grPupupuWhispySetWindPush(void)
 // 0x80105AF0
 void grPupupuWhispyUpdateSleep(void)
 {
-    if (gBattleState->game_status != nGMBattleGameStatusWait)
+    if (gBattleState->game_status != nSCBattleGameStatusWait)
     {
         gGRCommonStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusWait;
     }

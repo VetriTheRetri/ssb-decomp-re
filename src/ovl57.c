@@ -1,7 +1,6 @@
 #include <ft/fighter.h>
-#include <gm/battle.h>
 #include <mn/menu.h>
-#include <sc/scene.h>
+#include <sc/scene.h> // includes sys/obj.h
 #include <sys/thread6.h>
 #include <ovl0/reloc_data_mgr.h>
 

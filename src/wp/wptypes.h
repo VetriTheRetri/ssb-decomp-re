@@ -7,9 +7,9 @@
 #include <cm/camera.h>
 #include <ef/effect.h>
 #include <mp/map.h>
+#include <sc/sctypes.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
-#include <gm/battle.h>
 #include <sys/develop.h>
 #include <ovl0/halbitmap.h>
 
@@ -23,7 +23,7 @@
 #define WEAPON_STALE_DEFAULT 1.0F
 
 #define WEAPON_TEAM_DEFAULT 4
-#define WEAPON_PORT_DEFAULT GMBATTLE_PLAYERS_MAX
+#define WEAPON_PORT_DEFAULT SCBATTLE_PLAYERS_MAX
 #define WEAPON_HANDICAP_DEFAULT 9
 
 #define WEAPON_FLAG_DOBJSETUP 0x1                   // Weapon has a DObj node tree that needs to be set up

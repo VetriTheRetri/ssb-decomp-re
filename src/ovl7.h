@@ -126,7 +126,7 @@ scRuntimeInfo D_ovl7_8019088C
 		0x00000000, 0x00000000, 0x00000088, 0x00000000, 0x0000006c, 0x00000000, 0x00000090, 0x80190260 };
 
 // 80190968
-gmBattleState gTrainingModeBattleState;
+scBattleState gTrainingModeBattleState;
 
 // 80190B58
 scTrainingMenu gTrainingModeStruct;

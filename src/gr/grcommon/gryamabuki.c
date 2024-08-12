@@ -1,9 +1,7 @@
 #include <gr/ground.h>
-
 #include <ft/fighter.h>
 #include <it/item.h>
-#include <mp/map.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -57,7 +55,7 @@ enum grYamabukiGateStatus
 // 0x8010ACD0
 void grYamabukiGateUpdateSleep(void)
 {
-    if (gBattleState->game_status != nGMBattleGameStatusWait)
+    if (gBattleState->game_status != nSCBattleGameStatusWait)
     {
         gGRCommonStruct.yamabuki.gate_status = nGRYamabukiGateStatusWait;
         gGRCommonStruct.yamabuki.monster_wait = mtTrigGetRandomIntRange(1000) + 1000;

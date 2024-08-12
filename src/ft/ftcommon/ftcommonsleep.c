@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 #include <if/interface.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -12,12 +12,12 @@
 sb32 ftCommonSleepCheckIgnorePauseMenu(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    s32 steal_from_player[GMBATTLE_PLAYERS_MAX];
+    s32 steal_from_player[SCBATTLE_PLAYERS_MAX];
     s32 active_teammate_count;
     s32 player;
     s32 stock_count;
 
-    if ((gBattleState->game_rules & GMBATTLE_GAMERULE_STOCK) && (gBattleState->is_team_battle == TRUE) && (fp->status_info.status_id == nFTCommonStatusSleep))
+    if ((gBattleState->game_rules & SCBATTLE_GAMERULE_STOCK) && (gBattleState->is_team_battle == TRUE) && (fp->status_info.status_id == nFTCommonStatusSleep))
     {
         if (fp->status_vars.common.sleep.stock_steal_wait == 0)
         {
@@ -53,12 +53,12 @@ void ftCommonSleepProcUpdate(GObj *fighter_gobj)
     ftStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *steal_gobj;
     s32 active_teammate_count;
-    s32 steal_from_player[GMBATTLE_PLAYERS_MAX];
+    s32 steal_from_player[SCBATTLE_PLAYERS_MAX];
     s32 player;
     s32 random_steal_target;
     s32 stock_count;
 
-    if ((gBattleState->game_rules & GMBATTLE_GAMERULE_STOCK) && (gBattleState->is_team_battle == TRUE))
+    if ((gBattleState->game_rules & SCBATTLE_GAMERULE_STOCK) && (gBattleState->is_team_battle == TRUE))
     {
         if (this_fp->status_vars.common.sleep.stock_steal_wait != 0)
         {

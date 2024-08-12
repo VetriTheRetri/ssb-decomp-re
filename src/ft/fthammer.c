@@ -1,6 +1,5 @@
 #include <ft/fighter.h>
 #include <it/item.h>
-#include <gm/battle.h>
 
 // // // // // // // // // // // //
 //                               //

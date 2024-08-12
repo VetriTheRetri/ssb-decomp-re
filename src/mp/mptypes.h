@@ -4,8 +4,8 @@
 #include <ssb_types.h>
 #include <macros.h>
 #include <sys/obj.h>
-#include <gm/battle.h>
 #include <gm/gmmisc.h>
+#include <sc/sctypes.h>
 #include <mp/mpdef.h>
 
 #define MPCOLL_KIND_LWALL (1 << 0)		// 0x1
@@ -224,7 +224,7 @@ struct mpGroundData
 	Sprite *wallpaper; 								// Background image?
 	syColorRGB fog_color;
 	u8 fog_alpha;								 	// Unused padding?
-	syColorRGB emblem_colors[GMBATTLE_PLAYERS_MAX]; 	// What's this doing here?
+	syColorRGB emblem_colors[SCBATTLE_PLAYERS_MAX]; 	// What's this doing here?
 	s32 unk_0x5C;
 	Vec3f light_angle;
 	s16 cam_bound_top;				// Normal bounds

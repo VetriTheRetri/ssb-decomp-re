@@ -1,6 +1,7 @@
 #include <gr/ground.h>
 #include <ft/fighter.h>
 #include <wp/weapon.h>
+#include <sc/scene.h>
 #include <gm/battle.h>
 
 // // // // // // // // // // // //
@@ -369,7 +370,7 @@ void func_ovl2_80106A40(DObj *dobj, AObjAnimJoint *anim_joint, f32 arg2)
 // 0x80106A98
 void func_ovl2_80106A98(void)
 {
-    if (gBattleState->game_status != nGMBattleGameStatusWait)
+    if (gBattleState->game_status != nSCBattleGameStatusWait)
     {
         gGRCommonStruct.sector.arwing_status = nGRSectorArwingStatusWait;
     }

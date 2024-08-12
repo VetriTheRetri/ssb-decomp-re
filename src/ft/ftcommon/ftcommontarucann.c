@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 #include <gr/ground.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -123,7 +123,7 @@ void ftCommonTaruCannShootFighter(GObj *fighter_gobj)
     angle -= (angle / 360) * 360;
 
     ftCommonDamageInitDamageVars(fighter_gobj, nFTCommonStatusDamageFlyRoll, tarucann->damage, knockback, angle, fp->lr, 0, tarucann->element, 0, TRUE, TRUE, FALSE);
-    ftParamUpdate1PGameDamageStats(fp, GMBATTLE_PLAYERS_MAX, nFTHitlogObjectGround, nGMHitEnvironmentTaruCann, 0, 0);
+    ftParamUpdate1PGameDamageStats(fp, SCBATTLE_PLAYERS_MAX, nFTHitlogObjectGround, nGMHitEnvironmentTaruCann, 0, 0);
 
     fp->playertag_wait = 0;
     fp->tarucann_wait = FTCOMMON_TARUCANN_PICKUP_WAIT;

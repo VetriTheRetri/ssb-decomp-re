@@ -2,7 +2,8 @@
 #define _SC1PMANAGER_H_
 
 #include <ssb_types.h>
-#include <sys/obj.h>
+#include <sys/objdef.h>
+#include <sc/scdef.h>
 
 // 0x80130D60
 extern u8 sSC1PManagerScenePrev;

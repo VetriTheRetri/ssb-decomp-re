@@ -1,5 +1,5 @@
 #include <it/item.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //

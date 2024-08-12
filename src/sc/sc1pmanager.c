@@ -1,7 +1,7 @@
-#include <gm/battle.h>
 #include <gr/ground.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
+#include <gm/battle.h>
 #include <sys/dma.h>
 
 extern void sc1PTitleCardStartScene();
@@ -161,21 +161,21 @@ void sc1PManagerTrySetChallengers(void)
     if
     (
         !(gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_NESS) && 
-        (gSaveData.spgame_difficulty >= nGM1PGameDifficultyNormal) && 
+        (gSaveData.spgame_difficulty >= nSC1PGameDifficultyNormal) && 
         (gSceneData.continues_used == 0) &&
         (gSaveData.spgame_stock_count < 3)
     )
     {
-        gSceneData.spgame_stage = nGM1PGameStageNess;
+        gSceneData.spgame_stage = nSC1PGameStageNess;
     }
     else if (!(gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_CAPTAIN) && (gSC1PManagerTotalTimeTics < I_MIN_TO_FRAMES(12)))
     {
         // Captain Falcon's unlock criteria is 12 minutes instead of the reported 20???
-        gSceneData.spgame_stage = nGM1PGameStageCaptain;
+        gSceneData.spgame_stage = nSC1PGameStageCaptain;
     }
     else if (!(gSaveData.unlock_mask & GMBACKUP_UNLOCK_MASK_PURIN))
     {
-        gSceneData.spgame_stage = nGM1PGameStagePurin;
+        gSceneData.spgame_stage = nSC1PGameStagePurin;
     }
 }
 
@@ -189,7 +189,7 @@ sb32 sc1PManagerCheckUnlockSoundTest(void)
     {
         for (ft_kind = 0, bonus_record_count = 0; ft_kind < ARRAY_COUNT(gSaveData.spgame_records); ft_kind++)
         {
-            if (gSaveData.spgame_records[ft_kind].bonus1_task_count == GMBATTLE_BONUSGAME_TASK_MAX) // Check if fighter has broken all targets
+            if (gSaveData.spgame_records[ft_kind].bonus1_task_count == SCBATTLE_BONUSGAME_TASK_MAX) // Check if fighter has broken all targets
             {
                 bonus_record_count |= (1 << ft_kind);
             }
@@ -198,7 +198,7 @@ sb32 sc1PManagerCheckUnlockSoundTest(void)
         {
             for (ft_kind = 0, bonus_record_count = 0; ft_kind < ARRAY_COUNT(gSaveData.spgame_records); ft_kind++)
             {
-                if (gSaveData.spgame_records[ft_kind].bonus2_task_count == GMBATTLE_BONUSGAME_TASK_MAX) // Check if fighter has boarded all platforms
+                if (gSaveData.spgame_records[ft_kind].bonus2_task_count == SCBATTLE_BONUSGAME_TASK_MAX) // Check if fighter has boarded all platforms
                 {
                     bonus_record_count |= (1 << ft_kind);
                 }
@@ -259,7 +259,7 @@ void sc1PManagerUpdateScene(void)
     sSC1PManagerScenePrev = gSceneData.scene_previous;
 
     D_800A4B18.is_team_battle = TRUE;
-    D_800A4B18.game_rules = (GMBATTLE_GAMERULE_1PGAME | GMBATTLE_GAMERULE_TIME);
+    D_800A4B18.game_rules = (SCBATTLE_GAMERULE_1PGAME | SCBATTLE_GAMERULE_TIME);
     D_800A4B18.damage_ratio = 100;
     D_800A4B18.is_display_score = FALSE;
     D_800A4B18.is_not_teamshadows = TRUE;
@@ -295,7 +295,7 @@ void sc1PManagerUpdateScene(void)
 
     for (i = 0; i < ARRAY_COUNT(gSceneData.ally_players); i++)
     {
-        if (player == (GMBATTLE_PLAYERS_MAX - 1))
+        if (player == (SCBATTLE_PLAYERS_MAX - 1))
         {
             player = 0;
         }
@@ -303,13 +303,13 @@ void sc1PManagerUpdateScene(void)
 
         gSceneData.ally_players[i] = player;
     }
-    if (gSceneData.spgame_stage >= nGM1PGameStageChallengerStart)
+    if (gSceneData.spgame_stage >= nSC1PGameStageChallengerStart)
     {
         goto skip_main_stages;
     }
     else
     {
-        while (gSceneData.spgame_stage <= nGM1PGameStageCommonEnd)
+        while (gSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
         {
             variation_flags = (gSaveData.character_mask | GMBACKUP_CHARACTER_MASK_STARTER) & ~(1 << gSceneData.ft_kind);
 
@@ -317,7 +317,7 @@ void sc1PManagerUpdateScene(void)
 
             switch (gSceneData.spgame_stage)
             {
-            case nGM1PGameStageMario:
+            case nSC1PGameStageMario:
                 variation_flags &= ~1;
 
                 D_800A4B18.players[gSceneData.ally_players[0]].ft_kind = sc1PManagerGetShuffledFighterKind(variation_flags, 0, mtTrigGetRandomIntRange(sc1PManagerGetShuffledVariation(variation_flags)));
@@ -331,7 +331,7 @@ void sc1PManagerUpdateScene(void)
                 D_800A4B18.players[gSceneData.ally_players[0]].shade = 0;
                 break;
 
-            case nGM1PGameStageDonkey:
+            case nSC1PGameStageDonkey:
                 random = sc1PManagerGetShuffledVariation(variation_flags);
 
                 D_800A4B18.players[gSceneData.ally_players[0]].ft_kind = sc1PManagerGetShuffledFighterKind(variation_flags, 0, mtTrigGetRandomIntRange(random));
@@ -343,7 +343,7 @@ void sc1PManagerUpdateScene(void)
                 D_800A4B18.players[gSceneData.ally_players[1]].shade = 0;
                 break;
 
-            case nGM1PGameStageKirby:
+            case nSC1PGameStageKirby:
                 variation_flags = (gSaveData.character_mask | gmBackupChrMask(nFTKindKirby));
 
                 sSC1PManagerKirbyTeamFinalCopy = sc1PManagerGetShuffledKirbyCopy(variation_flags, mtTrigGetRandomIntRange(sc1PManagerGetShuffledVariation(variation_flags)));
@@ -361,8 +361,8 @@ void sc1PManagerUpdateScene(void)
 
             switch (gSceneData.spgame_stage)
             {
-            case nGM1PGameStageBonus1:
-            case nGM1PGameStageBonus2:
+            case nSC1PGameStageBonus1:
+            case nSC1PGameStageBonus2:
                 syDmaLoadOverlay(&dSC1PManagerObjectsOverlay);
                 syDmaLoadOverlay(&dSC1PManager1PBonusGameOverlay);
 
@@ -378,9 +378,9 @@ void sc1PManagerUpdateScene(void)
 
                 sc1PGameStartScene();
 
-                if (gSceneData.spgame_stage != nGM1PGameStageBonus3)
+                if (gSceneData.spgame_stage != nSC1PGameStageBonus3)
                 {
-                    if((D_800A4B18.players[gSceneData.spgame_player].stock_count == -1) || (D_800A4B18.match_time_remain == 0))
+                    if((D_800A4B18.players[gSceneData.spgame_player].stock_count == -1) || (D_800A4B18.battle_time_remain == 0))
                     {
                         is_player_lose = TRUE;
                     }
@@ -458,7 +458,7 @@ void sc1PManagerUpdateScene(void)
                 gSceneData.scene_previous = nSCKind1PGame;
                 gSceneData.scene_current = nSCKind1PStageClear;
 
-                gmStageClearStartScene();
+                sc1PStageClearStartScene();
             }
             gSceneData.spgame_stage++;
         }
@@ -491,9 +491,9 @@ void sc1PManagerUpdateScene(void)
         sc1PManagerTrySetChallengers();
     }
 skip_main_stages:
-    if (gSceneData.spgame_stage >= nGM1PGameStageChallengerStart)
+    if (gSceneData.spgame_stage >= nSC1PGameStageChallengerStart)
     {
-        gSceneData.challenger_ft_kind = dSC1PManagerChallangerKinds[gSceneData.spgame_stage - nGM1PGameStageChallengerStart];
+        gSceneData.challenger_ft_kind = dSC1PManagerChallangerKinds[gSceneData.spgame_stage - nSC1PGameStageChallengerStart];
 
         syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
         syDmaLoadOverlay(&dSC1PManagerChallengerOverlay);
@@ -517,10 +517,10 @@ skip_main_stages:
 
             return;
         }
-        if ((D_800A4B18.players[gSceneData.spgame_player].stock_count != -1) && (D_800A4B18.match_time_remain != 0))
+        if ((D_800A4B18.players[gSceneData.spgame_player].stock_count != -1) && (D_800A4B18.battle_time_remain != 0))
         {
             gSceneData.unk43 = gDefaultSceneData.unk43;
-            gSceneData.unlocked_features[0] = dSC1PManagerUnlockPrizes[gSceneData.spgame_stage - nGM1PGameStageChallengerStart];
+            gSceneData.prize_unlocks[0] = dSC1PManagerUnlockPrizes[gSceneData.spgame_stage - nSC1PGameStageChallengerStart];
 
             syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
             syDmaLoadOverlay(&dSC1PManagerMessageOverlay);
@@ -534,7 +534,7 @@ skip_main_stages:
         {
             gSceneData.unk43 += 2;
         }
-        if (gSceneData.spgame_stage == nGM1PGameStageLuigi)
+        if (gSceneData.spgame_stage == nSC1PGameStageLuigi)
         {
             gSceneData.scene_previous = nSCKind1PBonusGame;
             gSceneData.scene_current = nSCKindBonus1ChrSel;
@@ -554,7 +554,7 @@ skip_main_stages:
             }
             if ((spgame_characters_complete & GMBACKUP_CHARACTER_MASK_STARTER) == GMBACKUP_CHARACTER_MASK_STARTER)
             {
-                gSceneData.unlocked_features[0] = nGMBackupUnlockInishie;
+                gSceneData.prize_unlocks[0] = nGMBackupUnlockInishie;
 
                 syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
                 syDmaLoadOverlay(&dSC1PManagerMessageOverlay);

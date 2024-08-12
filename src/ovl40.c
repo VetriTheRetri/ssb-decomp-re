@@ -1,8 +1,5 @@
-#include <sys/develop.h>
-#include <ft/ftdef.h>
 #include <ft/fighter.h>
-#include <gm/battle.h>
-#include <gr/ground.h>
+#include <sc/scene.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "ovl40.h"
@@ -313,7 +310,7 @@ void mvOpeningLinkInit()
 	gMvOpeningLinkBattleState = gDefaultBattleState;
 	gBattleState = &gMvOpeningLinkBattleState;
 
-	gBattleState->game_type = nGMBattleGameTypeOpening;
+	gBattleState->game_type = nSCBattleGameTypeOpening;
 
 	gBattleState->gr_kind = nGRKindHyrule;
 	gBattleState->pl_count = 1;

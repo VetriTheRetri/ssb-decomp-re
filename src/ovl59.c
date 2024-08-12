@@ -1,8 +1,7 @@
-#include <gm/battle.h>
 #include <sc/scene.h>
+#include <gm/battle.h>
 #include <gm/gmsound.h>
 #include <sys/thread6.h>
-#include <sys/objdraw.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "ovl59.h"

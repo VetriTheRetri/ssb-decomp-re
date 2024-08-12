@@ -1,6 +1,7 @@
 #include <gr/ground.h>
 #include <ft/fighter.h>
 #include <it/item.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -440,7 +441,7 @@ void grInishieMakePakkun(void)
 // 0x80109838
 void grInishiePowerBlockUpdateWait(void)
 {
-    if (gBattleState->game_status != nGMBattleGameStatusWait)
+    if (gBattleState->game_status != nSCBattleGameStatusWait)
     {
         gGRCommonStruct.inishie.pblock_status = nGRInishiePowerBlockStatusMake;
         gGRCommonStruct.inishie.pblock_appear_wait = 1800;

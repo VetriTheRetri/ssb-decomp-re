@@ -14,7 +14,7 @@
 #include <sys/hal_audio.h>
 #include <sys/system_00.h>
 #include <sys/system_03_1.h>
-
+#include <sc/sctypes.h> // Temporarily, until ovl defines are fixed
 #include <sys/thread6.h>
 #include <gm/battle.h>
 
@@ -27,12 +27,12 @@ extern GObj* D_80046A5C_40A7C;
 u8 D_800A44D0[16];
 gmBackupInfo gSaveData;
 // current screen info
-gmSceneInfo gSceneData;
-gmBattleState D_800A4B18;
-gmBattleState gTransferBattleState;
-gmBattleState D_800A4EF8;
+scCommonData gSceneData;
+scBattleState D_800A4B18;
+scBattleState gTransferBattleState;
+scBattleState D_800A4EF8;
 // pointer to battle settings, probably has to be moved here from battle.h
-gmSceneInfo* _gBattleState;
+scCommonData* _gBattleState;
 u32 D_800A50EC;
 u8 D_800A50F0[8];
 u8 D_800A50F8[324];
@@ -130,7 +130,7 @@ gmBackupInfo gDefaultSaveData = {
 		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0}}, 0, 0, 0, 0, 0, 0x02, 0x9a, 0, 0, 0
 };
 
-gmSceneInfo gDefaultSceneData = 
+scCommonData gDefaultSceneData = 
 {
 	0x1B, 0x1B,
 	{ nGMBackupUnlockEnumMax, nGMBackupUnlockEnumMax },
@@ -148,7 +148,7 @@ gmSceneInfo gDefaultSceneData =
 	0x00, 0x1C, 0x00, 0x1C, 0x00, 0x1C, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
  };
 
-gmBattleState gDefaultBattleState = {
+scBattleState gDefaultBattleState = {
 	0, 0, 0, TIMESTOCK_TIME_ON,
 	0, 0, 3, 2,
 	HANDICAP_MODE_OFF, FALSE, 1, 100,
@@ -246,7 +246,7 @@ void bonus_css_entry();
 void menu_backup_clear_entry();
 void mvEndingStartScene();
 void gmContinueStartScene();
-void gmStageClearStartScene();
+void sc1PStageClearStartScene();
 void gmCreditsStartScene();
 void mnCongraStartScene();
 void mnSoundTestStartScene();
@@ -258,8 +258,8 @@ void start_scene_manager(u32 set)
 {
 	u16* csr;
 	uintptr_t end;
-	gmBattleState sp220;
-	gmBattleState sp30;
+	scBattleState sp220;
+	scBattleState sp30;
 
 	set_contstatus_delay(60);
 	syErrorSetFuncPrint(scManagerProcPrintGObjStatus);
@@ -586,13 +586,13 @@ void start_scene_manager(u32 set)
 				syDmaLoadOverlay(&D_800A3070[2]);
 				syDmaLoadOverlay(&D_800A3070[1]);
 				syDmaLoadOverlay(&D_800A3070[56]);
-				gmStageClearStartScene();
+				sc1PStageClearStartScene();
 				break;
 			case 51:
 				syDmaLoadOverlay(&D_800A3070[2]);
 				syDmaLoadOverlay(&D_800A3070[1]);
 				syDmaLoadOverlay(&D_800A3070[56]);
-				gmStageClearStartScene();
+				sc1PStageClearStartScene();
 				break;
 			case 56:
 				syDmaLoadOverlay(&D_800A3070[59]);

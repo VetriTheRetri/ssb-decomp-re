@@ -1,6 +1,6 @@
 #include <it/item.h>
 #include <ft/fighter.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -395,7 +395,7 @@ void itMBallOpenInitItemVars(GObj *item_gobj)
 
     ip->is_attach_surface = TRUE;
 
-    if ((ip->player != -1) && (ip->player != GMBATTLE_PLAYERS_MAX))
+    if ((ip->player != -1) && (ip->player != SCBATTLE_PLAYERS_MAX))
     {
         GObj *fighter_gobj = gBattleState->players[ip->player].fighter_gobj;
 

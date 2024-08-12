@@ -8,12 +8,11 @@
 #include <mp/map.h>
 #include <gm/gmmisc.h>
 #include <gm/gmsound.h>
+#include <gm/gmscript.h>
 #include <cm/camera.h>
-#include <ef/effect.h>
-#include <gm/battle.h>
 #include <ovl0/halbitmap.h>
 
-#include "itdef.h"
+#include <it/itdef.h>
 #include <it/itvars.h>
 
 // Macros
@@ -30,7 +29,7 @@
 #define ITEM_FLAG_PARENT_ALL 0xF // Mask all GObj classes that can spawn items?
 
 #define ITEM_TEAM_DEFAULT 4 // Item is teamless; deals damage to any eligible target
-#define ITEM_PORT_DEFAULT GMBATTLE_PLAYERS_MAX
+#define ITEM_PORT_DEFAULT SCBATTLE_PLAYERS_MAX
 #define ITEM_HANDICAP_DEFAULT 9 // Handicap?
 #define ITEM_STALE_DEFAULT 1.0F
 #define ITEM_THROW_DEFAULT 1.0F

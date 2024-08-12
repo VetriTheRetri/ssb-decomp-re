@@ -1,5 +1,5 @@
 #include <ft/fighter.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 
@@ -318,7 +318,7 @@ void ftPublicityProcUpdate(GObj *public_gobj)
     {
         ftStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (!(gBattleState->game_rules & GMBATTLE_GAMERULE_STOCK) || (fp->stock_count != -1))
+        if (!(gBattleState->game_rules & SCBATTLE_GAMERULE_STOCK) || (fp->stock_count != -1))
         {
             if (DObjGetStruct(fighter_gobj)->translate.vec.f.y < (gMPCollisionEdgeBounds.d2.bottom - 100.0F)) // 0x80131308 = stage data?
             {

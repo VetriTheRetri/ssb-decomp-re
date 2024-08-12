@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
+#include <sc/scene.h>
 #include <gm/battle.h>
 #include <ft/ftcommondata.h>
 
@@ -1650,7 +1651,7 @@ void ftParamSetMotionID(ftStruct *fp, s32 attack_id)
 // 0x800EA614
 void ftParamUpdateStaleQueue(s32 attack_player, s32 defend_player, s32 attack_id, u16 motion_count)
 {
-    if ((attack_player != GMBATTLE_PLAYERS_MAX) && (attack_player != defend_player))
+    if ((attack_player != SCBATTLE_PLAYERS_MAX) && (attack_player != defend_player))
     {
         s32 i, stale_id = gBattleState->players[attack_player].stale_id;
 
@@ -1696,7 +1697,7 @@ void ftParamUpdate1PGameAttackStats(ftStruct *fp, u16 flags)
 {
     gmStatFlags stat_flags = *(gmStatFlags*)&flags;
 
-    if ((fp->status_info.pl_kind != nFTPlayerKindDemo) && (gBattleState->game_type == nGMBattleGameType1PGame) && (fp->player == gSceneData.spgame_player))
+    if ((fp->status_info.pl_kind != nFTPlayerKindDemo) && (gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player))
     {
         if ((fp->stat_flags.stat_attack_id != nFTStatusAttackIDNone) && (fp->stat_flags.stat_attack_id != stat_flags.stat_attack_id))
         {
@@ -1751,7 +1752,7 @@ void ftParamSetTimedHitStatusIntangible(ftStruct *fp, s32 intangible_timer)
 // 0x800EA98C
 void ftParamUpdateBattleStats(s32 attack_player, s32 defend_player, s32 attack_damage)
 {
-    if ((attack_player != GMBATTLE_PLAYERS_MAX) && (attack_player != defend_player))
+    if ((attack_player != SCBATTLE_PLAYERS_MAX) && (attack_player != defend_player))
     {
         gBattleState->players[attack_player].total_damage_dealt += attack_damage;
 
@@ -1774,7 +1775,7 @@ void ftParamUpdate1PGameDamageStats(ftStruct *fp, s32 damage_player, s32 damage_
         fp->damage_stat_flags = *(gmStatFlags*)&flags;
         fp->damage_stat_count = damage_stat_count;
 
-        if (gBattleState->game_type == nGMBattleGameType1PGame)
+        if (gBattleState->game_type == nSCBattleGameType1PGame)
         {
             if ((gSceneData.spgame_player == damage_player) && (fp->damage_stat_flags.stat_attack_id != nFTStatusAttackIDNone))
             {

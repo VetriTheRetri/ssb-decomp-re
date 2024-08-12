@@ -1,10 +1,8 @@
-#include <ssb_types.h>
-#include <ovl0/reloc_data_mgr.h>
-#include <sys/develop.h>
-#include <sys/objtypes.h>
-#include <ft/ftdef.h>
 #include <ft/fighter.h>
+#include <sc/scene.h>
 #include <gm/battle.h>
+#include <sys/develop.h>
+#include <ovl0/reloc_data_mgr.h>
 
 #include "ovl26.h"
 
@@ -19,7 +17,7 @@ void mnBattleSetupDisplayList(Gfx** display_list)
 // 80131B78
 s32 mnBattleGetShade(s32 port_id)
 {
-	sb32 used_shade[GMBATTLE_PLAYERS_MAX];
+	sb32 used_shade[SCBATTLE_PLAYERS_MAX];
 	s32 i;
 
 	if (gMnBattleIsTeamBattle == FALSE)
@@ -911,7 +909,7 @@ void mnBattleDrawTitleAndBack()
 	SObjGetStruct(title_gobj)->sprite.blue = title_colors[gMnBattleIsTeamBattle].b;
 	gMnBattleTitleGObj = title_gobj;
 
-	(gMnBattleRule == GMBATTLE_GAMERULE_TIME) ? mnDrawTimerPicker(gMnBattleTimerValue)
+	(gMnBattleRule == SCBATTLE_GAMERULE_TIME) ? mnDrawTimerPicker(gMnBattleTimerValue)
 											 : mnDrawStockPicker(gMnBattleStockValue);
 
 	back_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, func_ovl0_800CCF00, 0x1A, 0x80000000, -1,
@@ -936,7 +934,7 @@ s32 mnBattleGetAdditionalSelectedCount(s32 ft_kind)
 {
 	s32 count = 0, i;
 
-	for (i = 0; i < GMBATTLE_PLAYERS_MAX; i++)
+	for (i = 0; i < SCBATTLE_PLAYERS_MAX; i++)
 	{
 		if (ft_kind == gMnBattlePanels[i].char_id)
 			count += 1;
@@ -950,7 +948,7 @@ sb32 mnBattleIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id)
 {
 	s32 i;
 
-	for (i = 0; i < GMBATTLE_PLAYERS_MAX; i++)
+	for (i = 0; i < SCBATTLE_PLAYERS_MAX; i++)
 	{
 		if ((port_id != i) && (ft_kind == gMnBattlePanels[i].char_id) && (costume_id == gMnBattlePanels[i].costume_id))
 			return TRUE;
@@ -2613,7 +2611,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
 	{
 		if (mnCheckPickerRightArrowPress(cursor_gobj) != FALSE)
 		{
-			if (gMnBattleRule == GMBATTLE_GAMERULE_TIME)
+			if (gMnBattleRule == SCBATTLE_GAMERULE_TIME)
 			{
 				gMnBattleTimerValue = mnBattleGetNextTimerValue(gMnBattleTimerValue);
 				mnDrawTimerPicker(gMnBattleTimerValue);
@@ -2630,7 +2628,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
 		}
 		else if (mnCheckPickerLeftArrowPress(cursor_gobj) != FALSE)
 		{
-			if (gMnBattleRule == GMBATTLE_GAMERULE_TIME)
+			if (gMnBattleRule == SCBATTLE_GAMERULE_TIME)
 			{
 				gMnBattleTimerValue = mnBattleGetPrevTimerValue(gMnBattleTimerValue);
 				mnDrawTimerPicker(gMnBattleTimerValue);

@@ -8,7 +8,7 @@ void func_ovl2_8010CFA8(GObj*, f32, f32, f32, f32, f32); /* extern */
 void func_ovl0_800CCF00(GObj*);
 void itManagerInitItems();
 void wpManagerAllocWeapons();
-void syBackupWriteSram(gmBattleState*);
+void syBackupWriteSram(scBattleState*);
 void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 void gmRumbleInitPlayers();
 void func_ovl6_8018ED70();
@@ -25,7 +25,7 @@ typedef struct grBonusDesc
 void* gBonusGameFileData[4];
 
 // 8018F1B0
-gmBattleState gBonusBattleState;
+scBattleState gBonusBattleState;
 
 // 8018F3A0
 u8 gBonusTimerDigits[6];
@@ -187,7 +187,7 @@ extern void* gGMCommonFiles[/* */];
 extern intptr_t dIFCommonTimerDigitSpriteOffsets[/* */];
 extern void* D_ovl2_801313F4;
 extern grStruct gGRCommonStruct;
-extern gmBattleState gDefaultBattleState;
+extern scBattleState gDefaultBattleState;
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 
 #endif

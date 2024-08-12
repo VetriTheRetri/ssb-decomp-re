@@ -7,9 +7,6 @@
 
 // Globals
 
-// 80130D6C
-extern s32 g1PGameTotalDamageTaken; // 1P Game / Bonus damage total?
-
 extern void *gFTManagerCommonFile;
 
 extern sb32 gFTMainIsHurtDetect[4];
@@ -41,9 +38,7 @@ extern ftOpeningDesc D_ovl1_80390BE8;
 #define ftSetupDropItem(fp)                          	\
 {                                                     	\
 	Vec3f vel;                                        	\
-                                                        \
 	vel.x = vel.y = vel.z = 0.0F;                       \
-                                                        \
 	itMainSetFighterDrop((fp)->item_hold, &vel, 1.0F);	\
 }
 
@@ -86,11 +81,5 @@ extern ftOpeningDesc D_ovl1_80390BE8;
 	(ftCommonTurnCheckInterruptCommon(fighter_gobj) != FALSE) 		|| 	\
 	(ftCommonWalkCheckInterruptCommon(fighter_gobj) != FALSE) 			\
 )
-
-#define AttributesGetStruct(fp) ((ftAttributes*)fp->attributes)
-
-#define FighterGetJoint(fp, id) ((DObj*)fp->joints[id])
-
-#define FighterCalcLandingLag(anim_length, target_length) ((f32)anim_length / target_length)
 
 #endif

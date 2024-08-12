@@ -2,6 +2,7 @@
 #include <wp/weapon.h>
 #include <it/item.h>
 #include <gr/ground.h>
+#include <sc/scene.h>
 #include <gm/battle.h>
 #include <sys/thread6.h>
 
@@ -34,10 +35,10 @@ s32 sFTMainGroundObstaclesNum;
 s32 sFTMainGroundHazardsNum;
 
 // 0x801311A0
-sb32 gFTMainIsHurtDetect[GMBATTLE_PLAYERS_MAX];
+sb32 gFTMainIsHurtDetect[SCBATTLE_PLAYERS_MAX];
 
 // 0x801311B0
-sb32 gFTMainIsHitDetect[GMBATTLE_PLAYERS_MAX];
+sb32 gFTMainIsHitDetect[SCBATTLE_PLAYERS_MAX];
 
 // 0x801311C0
 s32 sFTMainHitlogID;
@@ -2025,7 +2026,7 @@ void ftMainUpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftSt
         ftMainSetHitRebound(this_gobj, this_fp, this_hit, other_gobj);
         efManagerSetOffMakeEffect(&impact_pos, this_hit->damage);
 
-        if ((gBattleState->game_type == nGMBattleGameType1PGame) && (this_hit->damage >= 20) && (other_fp->player == gSceneData.spgame_player))
+        if ((gBattleState->game_type == nSCBattleGameType1PGame) && (this_hit->damage >= 20) && (other_fp->player == gSceneData.spgame_player))
         {
             gGM1PGameBonusGiantImpact = TRUE;
         }
@@ -2036,7 +2037,7 @@ void ftMainUpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftSt
         ftMainSetHitRebound(other_gobj, other_fp, other_hit, this_gobj);
         efManagerSetOffMakeEffect(&impact_pos, other_hit->damage);
 
-        if ((gBattleState->game_type == nGMBattleGameType1PGame) && (other_hit->damage >= 20) && (this_fp->player == gSceneData.spgame_player))
+        if ((gBattleState->game_type == nSCBattleGameType1PGame) && (other_hit->damage >= 20) && (this_fp->player == gSceneData.spgame_player))
         {
             gGM1PGameBonusGiantImpact = TRUE;
         }
@@ -2219,7 +2220,7 @@ void ftMainUpdateAttackStatWeapon(wpStruct *ip, wpHitbox *wp_hit, s32 index, ftS
         }
         efManagerSetOffMakeEffect(&impact_pos, damage);
 
-        if ((gBattleState->game_type == nGMBattleGameType1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.spgame_player))
+        if ((gBattleState->game_type == nSCBattleGameType1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.spgame_player))
         {
             gGM1PGameBonusGiantImpact = TRUE;
         }
@@ -2393,7 +2394,7 @@ void ftMainUpdateAttackStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
         }
         efManagerSetOffMakeEffect(&impact_pos, damage);
 
-        if ((gBattleState->game_type == nGMBattleGameType1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.spgame_player))
+        if ((gBattleState->game_type == nSCBattleGameType1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.spgame_player))
         {
             gGM1PGameBonusGiantImpact = TRUE;
         }
@@ -2491,7 +2492,7 @@ void ftMainUpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
             ftParamTryPlayItemMusic(nGMSoundBGMStarman);
             func_800269C0_275C0(nGMSoundFGMStarCollect);
 
-            if ((gBattleState->game_type == nGMBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gGM1PGameBonusStarCount < U8_MAX))
+            if ((gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gGM1PGameBonusStarCount < U8_MAX))
             {
                 gGM1PGameBonusStarCount++;
             }
@@ -2865,7 +2866,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         {
             this_fp->damage_player_number = 0;
 
-            ftParamUpdate1PGameDamageStats(this_fp, GMBATTLE_PLAYERS_MAX, hitlog->attacker_object_class, wp->wp_kind, 0, 0);
+            ftParamUpdate1PGameDamageStats(this_fp, SCBATTLE_PLAYERS_MAX, hitlog->attacker_object_class, wp->wp_kind, 0, 0);
         }
         else
         {
@@ -2901,7 +2902,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         {
             this_fp->damage_player_number = 0;
 
-            ftParamUpdate1PGameDamageStats(this_fp, GMBATTLE_PLAYERS_MAX, hitlog->attacker_object_class, ip->it_kind, 0, 0);
+            ftParamUpdate1PGameDamageStats(this_fp, SCBATTLE_PLAYERS_MAX, hitlog->attacker_object_class, ip->it_kind, 0, 0);
         }
         else
         {
@@ -2929,7 +2930,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
             if (this_fp->damage_player == -1)
             {
-                this_fp->damage_player = GMBATTLE_PLAYERS_MAX;
+                this_fp->damage_player = SCBATTLE_PLAYERS_MAX;
             }
             ftParamUpdate1PGameDamageStats(this_fp, this_fp->damage_player, hitlog->attacker_object_class, gr_hit->kind, 0, 0);
             break;
@@ -2946,7 +2947,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         default:
             this_fp->damage_player_number = 0;
 
-            ftParamUpdate1PGameDamageStats(this_fp, GMBATTLE_PLAYERS_MAX, hitlog->attacker_object_class, gr_hit->kind, 0, 0);
+            ftParamUpdate1PGameDamageStats(this_fp, SCBATTLE_PLAYERS_MAX, hitlog->attacker_object_class, gr_hit->kind, 0, 0);
             break;
         }
         this_fp->damage_joint_id = 0;

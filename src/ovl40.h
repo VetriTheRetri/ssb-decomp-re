@@ -96,6 +96,6 @@ CameraVec7 dMvOpeningLinkCameraSettingsAdjustedEnd; // 8018E208
 rdFileNode D_ovl40_8018E228[48];
 rdFileNode D_ovl40_8018E3A8[7];
 uintptr_t gMvOpeningLinkFilesArray[2]; // 8018E3E0[2]
-gmBattleState gMvOpeningLinkBattleState; // 8018E3E8
+scBattleState gMvOpeningLinkBattleState; // 8018E3E8
 
 #endif

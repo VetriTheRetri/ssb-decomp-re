@@ -2,7 +2,7 @@
 #include <wp/weapon.h>
 #include <it/item.h>
 #include <gr/ground.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -6315,7 +6315,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
     {
         if (ft_com->target_dist < (400.0F * (fp->cp_level + 3)))
         {
-            s32 track_wait = (gBattleState->game_type == nGMBattleGameType1PGame) ? (-fp->cp_level * 35) + 315 : (-fp->cp_level * 25) + 225;
+            s32 track_wait = (gBattleState->game_type == nSCBattleGameType1PGame) ? (-fp->cp_level * 35) + 315 : (-fp->cp_level * 25) + 225;
 
             ft_com->item_track_wait++;
 

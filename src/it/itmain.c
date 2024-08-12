@@ -1,5 +1,6 @@
 #include <it/item.h>
 #include <ft/fighter.h>
+#include <sc/scene.h>
 #include <gm/battle.h>
 
 // // // // // // // // // // // //
@@ -677,7 +678,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
         mp->player_number = ip->player_number;
         mp->display_mode = ip->display_mode;
 
-        if (gBattleState->game_type == nGMBattleGameType1PGame)
+        if (gBattleState->game_type == nSCBattleGameType1PGame)
         {
             if ((mp->player == gSceneData.spgame_player) && (mp->it_kind == nITKindMew))
             {

@@ -1,6 +1,7 @@
 #include <wp/weapon.h>
 #include <it/item.h>
 #include <ft/fighter.h>
+#include <sc/scene.h>
 #include <gm/battle.h>
 
 // // // // // // // // // // // //
@@ -378,10 +379,14 @@ void wpProcessProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision 
             }
             else if (is_check_self != FALSE)
             {
-                if(this_wp->owner_gobj == other_wp->owner_gobj) goto next_gobj;
-
-                if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (this_wp->team == other_wp->team)) goto next_gobj;
-                
+                if(this_wp->owner_gobj == other_wp->owner_gobj)
+                {
+                    goto next_gobj;
+                }
+                if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (this_wp->team == other_wp->team)) 
+                {
+                    goto next_gobj;
+                }
                 if ((other_hit->update_state != nGMHitUpdateDisable) && (other_hit->can_setoff))
                 {
                     if (other_hit->interact_mask & GMHITCOLLISION_FLAG_WEAPON)

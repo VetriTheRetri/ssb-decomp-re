@@ -1,8 +1,6 @@
-#include <sys/develop.h>
-#include <ft/ftdef.h>
 #include <ft/fighter.h>
+#include <sc/scene.h>
 #include <gm/battle.h>
-#include <gr/ground.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "ovl32.h"

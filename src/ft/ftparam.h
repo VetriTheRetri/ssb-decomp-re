@@ -4,7 +4,7 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 #include <ft/ftdef.h>
-#include <gm/battle.h>
+#include <gm/gmscript.h>
 
 extern s32 ftParamGetItemMusicLength(u32 bgm_id);
 extern void ftParamTryPlayItemMusic(u32 bgm_id);

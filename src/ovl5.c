@@ -1,5 +1,5 @@
 #include <ft/fighter.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 #include <ovl0/reloc_data_mgr.h>
 
 extern void *gGMCommonFiles[];
@@ -59,7 +59,7 @@ u32 D_ovl5_8018D674;
 rdFileNode D_ovl5_8018D678[20];
 rdFileNode D_ovl5_8018D718[7];
 GObj *gUnkExplainFighterGObj;
-gmBattleState gUnkExplainBattleState;
+scBattleState gUnkExplainBattleState;
 
 // 8018D0C0
 void func_ovl5_8018D0C0()
@@ -101,7 +101,7 @@ void func_ovl5_8018D1A0()
 	gUnkExplainBattleState = gDefaultBattleState;
 	gBattleState = &gUnkExplainBattleState;
 
-	gBattleState->game_type = nGMBattleGameTypeUnk6;
+	gBattleState->game_type = nSCBattleGameTypeUnk6;
 	gBattleState->gr_kind = nGRKindPupupu;
 	gBattleState->pl_count = 1;
 	gBattleState->players[0].ft_kind = nFTKindMario;

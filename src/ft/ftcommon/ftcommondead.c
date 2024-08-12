@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 #include <if/interface.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 
@@ -34,7 +34,7 @@ void ftCommonDeadUpdateRumble(ftStruct *this_fp)
             {
                 ftStruct *other_fp = ftGetStruct(fighter_gobj);
 
-                if ((!(gBattleState->game_rules & GMBATTLE_GAMERULE_STOCK)) || (other_fp->stock_count != -1))
+                if ((!(gBattleState->game_rules & SCBATTLE_GAMERULE_STOCK)) || (other_fp->stock_count != -1))
                 {
                     ftParamMakeRumble(other_fp, 1, 15);
                 }
@@ -56,7 +56,7 @@ void ftCommonDeadUpdateScore(ftStruct *this_fp)
     {
         ifCommonPlayerScoreMakeEffect(this_fp, -1);
     }
-    if ((this_fp->damage_player != -1) && (this_fp->damage_player != GMBATTLE_PLAYERS_MAX))
+    if ((this_fp->damage_player != -1) && (this_fp->damage_player != SCBATTLE_PLAYERS_MAX))
     {
         gBattleState->players[this_fp->damage_player].score++;
 
@@ -69,7 +69,7 @@ void ftCommonDeadUpdateScore(ftStruct *this_fp)
     }
     else gBattleState->players[this_fp->player].total_self_destruct++;
     
-    if (gBattleState->game_rules & GMBATTLE_GAMERULE_STOCK)
+    if (gBattleState->game_rules & SCBATTLE_GAMERULE_STOCK)
     {
         this_fp->stock_count--;
 
@@ -77,7 +77,7 @@ void ftCommonDeadUpdateScore(ftStruct *this_fp)
 
         ifCommonBattleUpdateScoreStocks(this_fp);
     }
-    if (gBattleState->game_rules & GMBATTLE_GAMERULE_1PGAME)
+    if (gBattleState->game_rules & SCBATTLE_GAMERULE_1PGAME)
     {
         this_fp->stock_count--;
 
@@ -85,7 +85,7 @@ void ftCommonDeadUpdateScore(ftStruct *this_fp)
 
         func_ovl65_8018EFFC(this_fp->player, this_fp->team_order);
     }
-    if (gBattleState->game_rules & GMBATTLE_GAMERULE_BONUS)
+    if (gBattleState->game_rules & SCBATTLE_GAMERULE_BONUS)
     {
         ifCommonAnnounceEndMessage();
     }
@@ -96,7 +96,7 @@ void ftCommonDeadCheckRebirth(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (gBattleState->game_rules & GMBATTLE_GAMERULE_STOCK)
+    if (gBattleState->game_rules & SCBATTLE_GAMERULE_STOCK)
     {
         if (fp->stock_count == -1)
         {
@@ -105,7 +105,7 @@ void ftCommonDeadCheckRebirth(GObj *fighter_gobj)
             return;
         }
     }
-    else if (gBattleState->game_rules & GMBATTLE_GAMERULE_1PGAME)
+    else if (gBattleState->game_rules & SCBATTLE_GAMERULE_1PGAME)
     {
         if (gBattleState->players[fp->player].is_spgame_team != FALSE)
         {
@@ -207,7 +207,7 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
 
     pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    if (gBattleState->game_type != nGMBattleGameTypeBonus)
+    if (gBattleState->game_type != nSCBattleGameTypeBonus)
     {
         if (pos.x > gMPCollisionGroundData->cam_bound_right)
         {
@@ -249,7 +249,7 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
 
     pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    if (gBattleState->game_type != nGMBattleGameTypeBonus)
+    if (gBattleState->game_type != nSCBattleGameTypeBonus)
     {
         if (pos.y > gMPCollisionGroundData->cam_bound_top)
         {
@@ -291,7 +291,7 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
 
     pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    if (gBattleState->game_type != nGMBattleGameTypeBonus)
+    if (gBattleState->game_type != nSCBattleGameTypeBonus)
     {
         if (pos.y > gMPCollisionGroundData->cam_bound_top)
         {
@@ -585,7 +585,7 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
     }
     else if (!(fp->is_nullstatus))
     {
-        if ((gBattleState->game_type == nGMBattleGameType1PGame) && (gBattleState->players[fp->player].is_spgame_team != FALSE))
+        if ((gBattleState->game_type == nSCBattleGameType1PGame) && (gBattleState->players[fp->player].is_spgame_team != FALSE))
         {
             if (pos->y < gMPCollisionGroundData->map_bound_team_bottom)
             {

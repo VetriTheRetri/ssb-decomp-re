@@ -1,6 +1,5 @@
 #include <sys/obj.h>
 #include <mp/map.h>
-#include <gm/battle.h>
 
 // // // // // // // // // // // //
 //                               //

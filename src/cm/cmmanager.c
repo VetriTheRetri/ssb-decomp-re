@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <wp/weapon.h>
 #include <if/interface.h>
-#include <gm/battle.h>
+#include <sc/scene.h>
 #include <sys/ml.h>
 
 extern Mtx44f sODMatrixPerspF;
@@ -193,7 +193,7 @@ f32 cmManagerGetPlayerNumZoomRange(s32 player_num)
 {
     f32 zoom = dCMManagerPlayerZoomRanges[player_num];
 
-    if (gBattleState->game_type == nGMBattleGameTypeExplain)
+    if (gBattleState->game_type == nSCBattleGameTypeExplain)
     {
         zoom *= 0.75F;
     }
@@ -232,7 +232,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
 {
     s32 player_num;
     s32 cam_num;
-    ftCamera ft_cam[GMBATTLE_PLAYERS_MAX];
+    ftCamera ft_cam[SCBATTLE_PLAYERS_MAX];
     ftStruct *fp;
     wpStruct *wp;
     f32 pos_top;
@@ -297,7 +297,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
             }
             ft_cam[player_num].target_pos.y += fp->attributes->cam_offset_y;
 
-            if ((gBattleState->game_type == nGMBattleGameType1PGame) && (gBattleState->players[fp->player].is_spgame_team != FALSE))
+            if ((gBattleState->game_type == nSCBattleGameType1PGame) && (gBattleState->players[fp->player].is_spgame_team != FALSE))
             {
                 switch (fp->camera_mode)
                 {

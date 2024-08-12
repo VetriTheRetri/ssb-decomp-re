@@ -5,11 +5,10 @@
 #include <sys/obj.h>
 #include <mp/map.h>
 #include <cm/camera.h>
-#include <gm/battle.h>
 #include <gm/gmmisc.h>
 
-#include "grdef.h"
-#include "grvars.h"
+#include <gr/grdef.h>
+#include <gr/grvars.h>
 
 struct grGeometryDesc
 {

@@ -877,8 +877,8 @@ typedef struct gmSceneInfo
     u8 unlocked_features[2];
     u8 pad04[0x09 - 0x04];
     u8 unk09;
-    u8 unk0A;
-    u8 pad0B[0xD - 0xB];
+    u16 recently_demoed_mask;
+    u8 first_demo_ft_kind;
     u8 demo_ft_kind[2];
     u8 gr_kind;
     u8 unk10;

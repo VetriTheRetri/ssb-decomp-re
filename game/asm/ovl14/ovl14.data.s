@@ -6,13 +6,13 @@
 #  80132690 -> 80132C20
 
 
-glabel D_ovl14_80132690
+glabel gMNDebugBattleExitInterrupt
   .incbin "ovl14.raw.bin", 0x0B90, 0x4
 
-glabel D_ovl14_80132694
+glabel gMNDebugBattleMenuValueScene
   .incbin "ovl14.raw.bin", 0x0B94, 0x4
 
-glabel D_ovl14_80132698
+glabel gMNDebugBattleCurrentAnimation
   .incbin "ovl14.raw.bin", 0x0B98, 0x4
 
 glabel D_ovl14_8013269C
@@ -80,11 +80,11 @@ glabel D_ovl14_80132738
   /* C78 11C5E8 80132778 */  .4byte D_ovl14_80132BC0
   /* C7C 11C5EC 8013277C */  .4byte D_ovl14_80132BC8
 
-glabel D_ovl14_80132780
+glabel dMNDebugBattleMenuItems
   .incbin "ovl14.raw.bin", 0x0C80, 0x4
-  /* C84 11C5F4 80132784 */  .4byte func_ovl14_80131B58
+  /* C84 11C5F4 80132784 */  .4byte mnDebugBattleStartBattle
   /* C88 11C5F8 80132788 */  .4byte D_ovl14_80132720
-  /* C8C 11C5FC 8013278C */  .4byte D_ovl14_80132694
+  /* C8C 11C5FC 8013278C */  .4byte gMNDebugBattleMenuValueScene
   .incbin "ovl14.raw.bin", 0x0C90, 0x14
   /* CA4 11C614 801327A4 */  .4byte D_ovl14_80132BD4
   /* CA8 11C618 801327A8 */  .4byte (gTransferBattleState + 0x6)
@@ -149,7 +149,7 @@ glabel D_ovl14_80132780
   .balign 4
   .incbin "ovl14.raw.bin", 0x0E20, 0x4
 
-glabel D_ovl14_80132924
+glabel dMNDebugBattleInitialFtKinds
   .incbin "ovl14.raw.bin", 0x0E24, 0x10
 
 glabel D_ovl14_80132934
@@ -164,12 +164,12 @@ glabel D_ovl14_80132950
   /* E58 11C7C8 80132958 */  .4byte func_8000A340
   /* E5C 11C7CC 8013295C */  .4byte D_NF_80133130
   .incbin "ovl14.raw.bin", 0x0E60, 0x28
-  /* E88 11C7F8 80132988 */  .4byte func_ovl14_80131B00
+  /* E88 11C7F8 80132988 */  .4byte mnDebugBattleSetupDisplaylist
   /* E8C 11C7FC 8013298C */  .4byte update_contdata
   .incbin "ovl14.raw.bin", 0x0E90, 0x20
   /* EB0 11C820 801329B0 */  .4byte jtbl_ovl0_800D5CAC
   .incbin "ovl14.raw.bin", 0x0EB4, 0x24
-  /* ED8 11C848 801329D8 */  .4byte func_ovl14_8013239C
+  /* ED8 11C848 801329D8 */  .4byte mnDebugBattleInit
   .incbin "ovl14.raw.bin", 0x0EDC, 0x4
 
 glabel D_ovl14_801329E0

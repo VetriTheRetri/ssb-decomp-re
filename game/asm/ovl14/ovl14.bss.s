@@ -9,7 +9,7 @@ glabel D_ovl14_80132C28
     .space 1200
 glabel D_ovl14_801330D8
     .space 56
-glabel D_ovl14_80133110
+glabel gMNDebugBattleFighters
     .space 12
 glabel D_ovl14_8013311C
     .space 20

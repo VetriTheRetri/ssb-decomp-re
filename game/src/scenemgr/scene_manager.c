@@ -116,7 +116,7 @@ void start_scene_manager(UNUSED u32 set) {
                 load_overlay(&D_800A3070[14]);
                 load_overlay(&D_800A3070[8]);
                 load_overlay(&D_800A3070[9]);
-                debug_battle_entry();
+                mnDebugBattleStartScene();
                 break;
             case 5:
                 load_overlay(&D_800A3070[15]);

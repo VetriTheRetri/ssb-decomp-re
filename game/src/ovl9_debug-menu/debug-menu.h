@@ -7,8 +7,8 @@
 
 // EXTERN
 extern intptr_t D_NF_800A5240;      // 0x800A5240
-extern intptr_t lOverlay14ArenaLo;  // 0x80133130
-extern intptr_t lOverlay14ArenaHi;  // 0x80369240
+extern intptr_t lOverlay15ArenaLo;  // 0x800D6A00
+extern intptr_t lOverlay15ArenaHi;  // 0x80392A00
 
 // DATA
 // TODO!
@@ -41,6 +41,14 @@ typedef struct dbMenuItem
     f32 max;
     s32 unknown18;
 } dbMenuItem;
+
+typedef struct dbMenuPosition
+{
+    s16 x;
+    s16 y;
+    u16 w;
+    u16 h;
+} dbMenuPosition;
 
 typedef struct dbFighter
 {

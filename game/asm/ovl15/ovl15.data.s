@@ -6,7 +6,7 @@
 #  800D66E0 -> 800D69F0
 
 
-glabel D_ovl15_800D66E0
+glabel dMNDebugFallsLights1
   /* 250 150990 800D66E0 */
   .asciz "   "
   .balign 4
@@ -21,14 +21,14 @@ glabel D_ovl15_800D66E8
   .balign 4
   .incbin "ovl15.raw.bin", 0x0264, 0x4
 
-glabel D_ovl15_800D66F8
+glabel dMNDebugFallsDisplayList
   .incbin "ovl15.raw.bin", 0x0268, 0x14
   /* 27C 1509BC 800D670C */  .4byte D_ovl15_800D66E8
   .incbin "ovl15.raw.bin", 0x0280, 0x4
-  /* 284 1509C4 800D6714 */  .4byte D_ovl15_800D66E0
+  /* 284 1509C4 800D6714 */  .4byte dMNDebugFallsLights1
   .incbin "ovl15.raw.bin", 0x0288, 0x8
 
-glabel D_ovl15_800D6720
+glabel gMNDebugFallsExitInterrupt
   .incbin "ovl15.raw.bin", 0x0290, 0x4
 
 glabel D_ovl15_800D6724
@@ -38,9 +38,9 @@ glabel D_ovl15_800D6724
   /* 2A0 1509E0 800D6730 */  .4byte D_ovl15_800D6964
   /* 2A4 1509E4 800D6734 */  .4byte D_ovl15_800D696C
 
-glabel D_ovl15_800D6738
+glabel dMNDebugFallsMenuItems
   .incbin "ovl15.raw.bin", 0x02A8, 0x4
-  /* 2AC 1509EC 800D673C */  .4byte func_ovl15_800D64B4
+  /* 2AC 1509EC 800D673C */  .4byte mnDebugFallsExit
   /* 2B0 1509F0 800D6740 */  .4byte D_ovl15_800D6974
   .incbin "ovl15.raw.bin", 0x02B4, 0x18
   /* 2CC 150A0C 800D675C */  .4byte D_ovl15_800D6724
@@ -92,10 +92,10 @@ glabel D_ovl15_800D68C0
   /* 438 150B78 800D68C8 */  .4byte func_8000A340
   /* 43C 150B7C 800D68CC */  .4byte D_NF_800D6A00
   .incbin "ovl15.raw.bin", 0x0440, 0x28
-  /* 468 150BA8 800D68F8 */  .4byte func_ovl15_800D6490
+  /* 468 150BA8 800D68F8 */  .4byte mnDebugFallsSetLighting
   /* 46C 150BAC 800D68FC */  .4byte update_contdata
   .incbin "ovl15.raw.bin", 0x0470, 0x48
-  /* 4B8 150BF8 800D6948 */  .4byte func_ovl15_800D660C
+  /* 4B8 150BF8 800D6948 */  .4byte mnDebugFallsInit
   .incbin "ovl15.raw.bin", 0x04BC, 0x4
 
 glabel D_ovl15_800D6950

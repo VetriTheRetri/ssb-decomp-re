@@ -18,18 +18,25 @@ typedef enum dbMenuItemKind
 {
     dbMenuItemKindExitLabel,        // Label which exits menu when selected
     dbMenuItemKindNumeric,          // Number, 4 bytes
-    dbMenuItemKindString = 3,       // String
+    dbMenuItemKindDouble,           // Double
+    dbMenuItemKindString,           // String
     dbMenuItemKindLabel,            // Label
-    dbMenuItemKindNumericByte       // Number, 1 byte
+    dbMenuItemKindNumericByte,      // Number, 1 byte
+    dbMenuItemKindStringByte        // String, 1 byte
 
 } dbMenuItemKind;
 
 typedef struct dbMenuItem
 {
-    s32 type_maybe;
+    s32 type;
     void (*proc_a)();
     void* label;
-    s32 *value;
+    union {
+        u32 *w;
+        u8 *b;
+        f32 *f;
+        void **p;
+    } value;
     f32 min;
     f32 max;
     s32 unknown18;

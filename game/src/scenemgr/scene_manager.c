@@ -120,7 +120,7 @@ void start_scene_manager(UNUSED u32 set) {
                 break;
             case 5:
                 load_overlay(&D_800A3070[15]);
-                debug_falls_entry();
+                mnDebugFallsStartScene();
                 break;
             case 6:
                 load_overlay(&D_800A3070[16]);

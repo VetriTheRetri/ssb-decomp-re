@@ -674,7 +674,7 @@ s32 *dSC1PGameInterfaceCountPositions[/* */] =
 };
 
 // 0x80192B0C - Some kind of process ID list?
-u16 D_ovl65_80192B0C[3] = { 0x16, 0xF, 0x3C };
+u16 D_ovl65_80192B0C[/* */] = { 0x16, 0xF, 0x3C };
 
 // 0x80192B14
 Unk800D4060 D_ovl65_80192B14 = { 0 };

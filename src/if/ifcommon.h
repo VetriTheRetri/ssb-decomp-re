@@ -102,7 +102,7 @@ extern void ifCommonSetMaxNumGObj(void);
 extern void ifCommonBattleUpdateInterfaceAll(void);
 extern void ifCommonBattleSetGameStatusWait(void);
 extern void ifCommonPlayerInterfaceAddToViewport(ftStruct *fp);
-extern void ifCommonPlayerScoreMakeEffect(ftStruct *fp, s32 arg1);
+extern void ifCommonPlayerScoreMakeEffect(ftStruct *fp, s32 score);
 extern GObj* ifCommonAnnounceFailureMakeInterface(void);
 extern GObj* ifCommonAnnounceCompleteMakeInterface(void);
 extern void ifCommonBonusInterfaceProcUpdate(void);

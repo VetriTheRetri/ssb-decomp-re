@@ -9,7 +9,7 @@
 // // // // // // // // // // // //
 
 extern intptr_t lITMainContainerVelocitiesY;  // 0x00000000
-extern ub8 gGM1PGameBonusMewCatcher;
+extern ub8 gSC1PGameBonusMewCatcher;
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 extern void gcSetDObjTransformsForGObj();
@@ -681,7 +681,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
         {
             if ((mp->player == gSceneData.spgame_player) && (mp->it_kind == nITKindMew))
             {
-                gGM1PGameBonusMewCatcher = TRUE;
+                gSC1PGameBonusMewCatcher = TRUE;
             }
         }
     }

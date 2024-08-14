@@ -15,12 +15,12 @@ typedef enum ifPauseKind
 
 typedef enum ifPlayerTagKind
 {
-	ifPlayerTag_Kind_1P,
-	ifPlayerTag_Kind_2P,
-	ifPlayerTag_Kind_3P,
-	ifPlayerTag_Kind_4P,
-	ifPlayerTag_Kind_CP,
-	ifPlayerTag_Kind_Heart
+	nIFPlayerTagKind1P,
+	nIFPlayerTagKind2P,
+	nIFPlayerTagKind3P,
+	nIFPlayerTagKind4P,
+	nIFPlayerTagKindCP,
+	nIFPlayerTagKindHeart
 
 } ifPlayerTagKind;
 

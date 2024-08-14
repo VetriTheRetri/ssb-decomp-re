@@ -928,14 +928,13 @@ void cmManagerSetCameraStatusPrev(void)
 }
 
 // 0x8010D030
-void func_ovl2_8010D030(AObjAnimJoint *arg0, f32 arg1, Vec3f *arg2)
+void func_ovl2_8010D030(AObjAnimJoint *camanim_joint, f32 anim_frame, Vec3f *arg2)
 {
     cmManagerSetCameraStatusID(2);
 
     gCMManagerCameraStruct.all_move = *arg2;
 
-    // WARNING: This takes DObj* as its first argument, but gCMManagerCameraGObj should have Camera as its GObj render object???
-    gcAddCameraCamAnimJoint(DObjGetStruct(gCMManagerCameraGObj), arg0, arg1);
+    gcAddCameraCamAnimJoint(CameraGetStruct(gCMManagerCameraGObj), camanim_joint, anim_frame);
     func_ovl2_8010CBE4(gCMManagerCameraGObj);
 }
 

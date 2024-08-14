@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
+#include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
 // Externs
@@ -509,7 +510,7 @@ intptr_t dGMStageClearDifficultySpriteOffsets[] =
 syColorRGBPair dGMStageClearScoreDigitColors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0x00 } };
 
 // 801351EC
-scUnkDataBounds D_ovl56_801351EC = {
+syDisplaySetup D_ovl56_801351EC = {
 	0x80392A00, 0x803B6900, 0x803DA800,
 	0x00000000, 0x00000140, 0x000000F0, 0x00016A99
 };
@@ -834,7 +835,7 @@ void sc1PStageClearMakeTimerTextSObjs(f32 y)
 	sobj->sprite.green = 0xE4;
 	sobj->sprite.blue = 0xFF;
 
-	func_800269C0_275C0(nGMSoundFGMUnkClick1);
+	func_800269C0_275C0(nGMSoundFGMStageClearScoreDisplay);
 }
 
 // 8013263C
@@ -915,7 +916,7 @@ s32 sc1PStageClearGetAppendTotalTimeScore(f32 y)
 	time_score_total = sGMStageClearSecondsRemaining * multiplier;
 
 	sc1PStageClearMakeScoreDigitSObjs(gobj, time_score_total, 200.0F, y - 1.0F, NULL, 1, 0, 0, 5, FALSE);
-	func_800269C0_275C0(nGMSoundFGMUnkSoftPing1);
+	func_800269C0_275C0(nGMSoundFGMStageClearScoreRegister);
 
 	return time_score_total;
 }
@@ -962,7 +963,7 @@ void sc1PStageClearMakeDamageTextSObjs(f32 y)
 	sobj->sprite.green = 0xE4;
 	sobj->sprite.blue = 0xFF;
 
-	func_800269C0_275C0(nGMSoundFGMUnkClick1);
+	func_800269C0_275C0(nGMSoundFGMStageClearScoreDisplay);
 }
 
 // 80132A20
@@ -1012,7 +1013,7 @@ s32 sc1PStageClearGetAppendTotalDamageScore(f32 y)
 	damage_score_total = sGMStageClearDamageDealt * 10;
 
 	sc1PStageClearMakeScoreDigitSObjs(gobj, damage_score_total, 200.0F, (s32)y - 1, NULL, 1, 0, 0, 5, FALSE);
-	func_800269C0_275C0(nGMSoundFGMUnkSoftPing1);
+	func_800269C0_275C0(nGMSoundFGMStageClearScoreRegister);
 
 	return damage_score_total;
 }
@@ -1059,7 +1060,7 @@ void sc1PStageClearMakeTargetTextSObjs()
 	sobj->sprite.green = 0xE4;
 	sobj->sprite.blue = 0xFF;
 
-	func_800269C0_275C0(nGMSoundFGMUnkClick1);
+	func_800269C0_275C0(nGMSoundFGMStageClearScoreDisplay);
 }
 
 // 80132DC0
@@ -1069,7 +1070,7 @@ void func_ovl56_80132DC0(GObj *gobj)
 
 	if (gobj->user_data.u == D_ovl56_801352CC)
 	{
-		func_800269C0_275C0(nGMSoundFGMUnkSoftPing1);
+		func_800269C0_275C0(nGMSoundFGMStageClearScoreRegister);
 		gcEjectGObj(sGMStageClearScoreTextGObj);
 		sGMStageClearScoreTotal += 1000;
 		sc1PStageClearMakeScoreSObjs();
@@ -1196,7 +1197,7 @@ s32 sc1PStageClearGetNoMissMultiplier(s32 stage)
 void sc1PStageClearCommonProcUpdate(GObj *gobj)
 {
 	if (gobj->user_data.u == D_ovl56_801352CC)
-		func_800269C0_275C0(nGMSoundFGMUnkClick1);
+		func_800269C0_275C0(nGMSoundFGMStageClearScoreDisplay);
 
 	gobj->flags = (gobj->user_data.u < D_ovl56_801352CC) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
 }
@@ -1489,7 +1490,7 @@ void func_ovl56_80133C88()
 		break;
 	}
 	sGMStageClearSecondsRemaining = gSceneData.spgame_time_seconds;
-	sGMStageClearDamageDealt = D_800A4B18.players[gSceneData.spgame_player].total_damage_dealt;
+	sGMStageClearDamageDealt = gSCManager1PGameBattleState.players[gSceneData.spgame_player].total_damage_dealt;
 	sGMStageClearScoreTotal = gSceneData.spgame_score;
 
 	sGMStageClearBonusMasks[0] = gSceneData.bonus_get_mask[0];
@@ -1985,7 +1986,7 @@ void sc1PStageClearInitAll()
 // 80134E84
 void sc1PStageClearStartScene()
 {
-	D_ovl56_801351EC.unk_scdatabounds_0xC = ((intptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl56_801351EC.zbuffer = ((intptr_t)&D_NF_800A5240 - 0x1900);
 
 	func_80007024(&D_ovl56_801351EC);
 

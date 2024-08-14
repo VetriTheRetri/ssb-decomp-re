@@ -1,5 +1,6 @@
 #include <mn/menu.h>
 #include <sc/scene.h> // includes sys/obj.h
+#include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
 extern intptr_t D_NF_800A5240;
@@ -48,7 +49,7 @@ Gfx dMNN64DisplayList[] =
 };
 
 // 80131F98
-scUnkDataBounds D_ovl58_80131F98 = {
+syDisplaySetup D_ovl58_80131F98 = {
 	0x80392a00, 0x803b6900,
 	0x803da800, 0x00000000, 0x00000140, 0x000000f0,
 	0x00016a99
@@ -191,7 +192,7 @@ void mnN64AddLightsDisplayList(Gfx **dl)
 void mnN64StartScene()
 {
 	auStopBGM();
-	D_ovl58_80131F98.unk_scdatabounds_0xC = ((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl58_80131F98.zbuffer = ((uintptr_t)&D_NF_800A5240 - 0x1900);
 	func_80007024(&D_ovl58_80131F98);
 	D_ovl58_80131FB4.arena_size = ((uintptr_t)&lMNN64ArenaHi - (uintptr_t)&lMNN64ArenaLo);
 	gsGTLSceneInit(&D_ovl58_80131FB4);

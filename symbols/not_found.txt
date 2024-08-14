@@ -753,24 +753,7 @@ D_8018E1C0 = 0x8018E1C0;
 D_80134E30 = 0x80134E30;
 D_8018E220 = 0x8018E220;
 
-gGM1PGameBonusTomatoCount = 0x801936A8;
-gGM1PGameBonusHeartCount = 0x801936A9;
-gGM1PGameBonusStarCount = 0x801936AA;
-gGM1PGameBonusShieldBreaker = 0x801936AB;
-gGM1PGameBonusGiantImpact = 0x801936AC;
-gGM1PGameBonusMewCatcher = 0x801936AD;
-
 gTransferBattleState = 0x800A4D08;
-
-gGM1PGameBonusAttackIDCount = 0x801936B0;
-gGM1PGameBonusAttackIsSmashCount = 0x80193798;
-gGM1PGameBonusAttackGroundAirCount = 0x801937A0;
-gGM1PGameBonusAttackIsProjectileCount = 0x801937A8;
-
-gGM1PGameBonusDefendIDCount = 0x801937B0;
-gGM1PGameBonusDefendIsSmashCount = 0x80193898;
-gGM1PGameBonusDefendGroundAirCount = 0x801938A0;
-gGM1PGameBonusDefendIsProjectileCount = 0x801938A8;
 
 .L80134E84_AF8C4 = 0x80134E84;
 

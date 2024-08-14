@@ -52,6 +52,55 @@ struct sc1PGameStats
 	u16 damage_stat_count;
 };
 
+struct sc1PGameBossPlan
+{
+    s32 unk_sc1pbossplan_0x0;
+    u8 dl_link;
+    s32 unk_sc1pbossplan_0x8;
+    Vec3f pos;
+};
+
+struct sc1PGameBossAnim
+{
+    intptr_t o_anim_joint;
+    intptr_t o_matanim_joint;
+    f32 anim_speed;
+};
+
+struct sc1PGameBossEffect
+{
+    void (*proc_update)(GObj*);
+    void (*proc_render)(GObj*);
+    intptr_t o_dobj_desc;
+    intptr_t o_mobjsub;
+};
+
+struct sc1PGameBossWallpaper
+{
+    s32 loop_count;
+    s32 effect_count;
+    s32 anim_count;
+    s32 plan_count;
+    s32 dobj_color_id;
+    s32 color_id;
+    s32 change_wait_base;
+    s32 change_damage_min;
+    sb32 is_random_wallpaper;
+    sc1PGameBossEffect *bosseffect;
+    sc1PGameBossAnim *bossanim;
+    sc1PGameBossPlan *bossplan;
+};
+
+struct sc1PGameBossMain
+{
+    sb32 is_skip_wallpaper_change;
+    s32 wallpaper_id;
+    s32 change_wait;
+    void *file_head;
+    sc1PGameBossWallpaper *bosswallpaper;
+    s32 bossplayer;
+};
+
 struct sc1PStageClearStats
 {
 	s32 bonus_array_id;
@@ -252,7 +301,7 @@ struct scCommonData
 	u8 demo_ground_order;
 	u8 stagesel_battle_gr_kind;
 	u8 stagesel_training_gr_kind;
-	u8 unk43;
+	u8 challenger_level_drop;	// Subtract from default CP level?
 	u8 unk44;
 	u8 unk45;
 	u8 unk46;
@@ -319,26 +368,13 @@ struct scBackupData
 	s32 checksum; 				// Checksum of save data
 };
 
-// These next three structs are only temporarily placed here!
-typedef struct scUnkDataBounds
-{
-	uintptr_t unk_scdatabounds_0x0;
-	uintptr_t unk_scdatabounds_0x4;
-	uintptr_t unk_scdatabounds_0x8;
-	uintptr_t unk_scdatabounds_0xC;
-	u32 unk_0x10;
-	u32 unk_0x14;
-	u32 unk_0x18;
-
-} scUnkDataBounds;
-
 typedef struct scRuntimeInfo
 {
 	void* unk_pointer_0x0;
 	void* unk_pointer_0x4;
 	void* unk_pointer_0x8;
 	void* unk_scruntime_0xC;
-	u32 arena_size;
+	size_t arena_size;
 	void* unk_pointer_0x14;
 	void* unk_pointer_0x18;
 	void* unk_pointer_0x1C;

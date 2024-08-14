@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
+#include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "ovl40.h"
@@ -138,7 +139,7 @@ void mvOpeningLinkInitFighterStagePanel()
 	mpCollisionGetMapObjPositionID(pos_ids, &spawn_position);
 	mvOpeningLinkCreateStageViewport(spawn_position);
 	gmRumbleMakeActor();
-	ftPublicitySetup();
+	ftPublicityMakeActor();
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 	{
@@ -323,7 +324,7 @@ void mvOpeningLinkInit()
 	func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
 	mvOpeningLinkInitFramesElapsed();
 	efAllocInitParticleBank();
-	ftParamGameSet();
+	ftParamInitGame();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
@@ -355,7 +356,7 @@ void gMvOpeningLinkSetupDisplayList(Gfx **display_list)
 // 8018E018
 void intro_focus_link_entry()
 {
-	D_ovl40_8018E0DC.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl40_8018E0DC.zbuffer = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
 	func_80007024(&D_ovl40_8018E0DC);
 	D_ovl40_8018E0F8.arena_size = (u32) ((uintptr_t)&lOverlay40ArenaHi - (uintptr_t)&lOverlay40ArenaLo);
 	gsGTLSceneInit(&D_ovl40_8018E0F8);

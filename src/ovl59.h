@@ -631,7 +631,7 @@ Gfx dCreditsDisplayList[] =
 };
 
 // 8013A708
-scUnkDataBounds D_ovl59_8013A708 =
+syDisplaySetup D_ovl59_8013A708 =
 {
 	0x8023E000,
 	0x802D4000,

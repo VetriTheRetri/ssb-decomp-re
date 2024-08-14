@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
+#include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
 extern void *gGMCommonFiles[];
@@ -10,7 +11,6 @@ extern intptr_t lOverlay5ArenaLo; // 8018D950
 extern intptr_t lOverlay5ArenaHi; // 803903E0
 
 void func_ovl1_803903E0();
-void ftRenderLightsDrawReflect(Gfx **display_list, f32 arg1, f32 arg2);
 
 // DATA
 
@@ -35,7 +35,7 @@ ftExplainCommand D_ovl5_8018D580[] =
 
 Unk800D4060 D_ovl5_8018D5B8 = { 0 };
 
-scUnkDataBounds D_ovl5_8018D5BC = {
+syDisplaySetup D_ovl5_8018D5BC = {
 	0x80392a00, 0x803b6900, 0x803da800,
 	0x00000000, 0x00000140, 0x000000f0, 0x00016a99,
 };
@@ -111,7 +111,7 @@ void func_ovl5_8018D1A0()
 	gcMakeGObjSPAfter(0x3F7U, func_ovl5_8018D160, 0xDU, GOBJ_LINKORDER_DEFAULT);
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
-	ftParamGameSet();
+	ftParamInitGame();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
@@ -123,14 +123,16 @@ void func_ovl5_8018D1A0()
 	itManagerInitItems();
 	efManagerInitEffects();
 	gmRumbleMakeActor();
-	ftPublicitySetup();
+	ftPublicityMakeActor();
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
 		player_spawn = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot) continue;
-
+		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
+		{
+			continue;
+		}
 		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
 
 		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
@@ -171,7 +173,7 @@ void func_ovl5_8018D4BC(Gfx **display_list)
 // 8018D508
 void overlay_set23_entry()
 {
-	D_ovl5_8018D5BC.unk_scdatabounds_0xC = (uintptr_t) ((s32)D_NF_800A5240 - 0x1900);
+	D_ovl5_8018D5BC.zbuffer = (u16*) ((uintptr_t)D_NF_800A5240 - 0x1900);
 	func_80007024(&D_ovl5_8018D5BC);
 	D_ovl5_8018D5D8.arena_size = ((uintptr_t)&lOverlay5ArenaHi - (uintptr_t)&lOverlay5ArenaLo);
 	func_800A2698(&D_ovl5_8018D5D8);

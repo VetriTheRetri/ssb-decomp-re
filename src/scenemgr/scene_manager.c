@@ -17,7 +17,6 @@
 #include <sc/sctypes.h> // Temporarily, until ovl defines are fixed
 #include <sys/thread6.h>
 
-extern intptr_t D_NF_80392A00; // _ovl1SegNoloadEnd
 extern s32 D_8003B874_3C474;
 extern GObj* D_80046A54;
 extern GObj* D_80046A5C_40A7C;
@@ -27,11 +26,11 @@ u8 D_800A44D0[16];
 scBackupData gSaveData;
 // current screen info
 scCommonData gSceneData;
-scBattleState D_800A4B18;
+scBattleState gSCManager1PGameBattleState;
 scBattleState gTransferBattleState;
 scBattleState D_800A4EF8;
 // pointer to battle settings, probably has to be moved here from battle.h
-scCommonData* _gBattleState;
+scBattleState *_gBattleState;
 u32 D_800A50EC;
 u8 D_800A50F0[8];
 u8 D_800A50F8[324];
@@ -273,7 +272,7 @@ void start_scene_manager(u32 set)
 	D_800A4EF8 = sp30;
 	sp220      = sp30;
 	gTransferBattleState = sp220;
-	D_800A4B18 = sp220;
+	gSCManager1PGameBattleState = sp220;
 
 	ftManagerSetupFileSize();
 	D_8003CB6D = 72;

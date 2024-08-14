@@ -242,15 +242,15 @@ typedef enum gmFGMVoiceID
 								  // closed on the CSS?
 	nGMSoundFGMPlayerGateWhoosh, // Might be unrelated
 	nGMSoundFGMUnkMetallic2,
-	nGMSoundFGMUnkSoftPing1,
-	nGMSoundFGMUnkClick1, // Samus?
+	nGMSoundFGMStageClearScoreRegister,
+	nGMSoundFGMStageClearScoreDisplay, // Samus?
 	nGMSoundFGMUnkSwoosh1,
-	nGMSoundFGMUnkHeavyLaser,
+	nGMSoundFGMBossDefeatL,
 	nGMSoundFGMUnkGate1,
-	nGMSoundFGMMasterHandYubi,
-	nGMSoundFGMMasterHandSlam,
-	nGMSoundFGMMasterHandUnk1,
-	nGMSoundFGMMasterHandUnk2,
+	nGMSoundFGMBossYubi,
+	nGMSoundFGMBossSlam,
+	nGMSoundFGMBossUnk1,
+	nGMSoundFGMBossUnk2,
 	nGMSoundFGMDonkeySpin,	  // Spinning kong swing sound effect
 	nGMSoundFGMDonkeyCharge, // These two might be swapped
 	nGMSoundFGMCaptainAppearCar1,
@@ -464,7 +464,8 @@ typedef enum gmFGMVoiceID
 	nGMSoundVoicePublicityPurin,		 	// 0x264
 	nGMSoundVoicePublicitySamus,		 	// 0x265
 	nGMSoundVoicePublicityYoshi,		  	// 0x266
-	nGMSoundFGMVoiceEnd = 0x2B7
+	nGMSoundFGMVoiceEnd = 0x2B7,
+	nGMSoundFGMEnumMax = 0x2B7
 
 } gmFGMVoiceID;
 

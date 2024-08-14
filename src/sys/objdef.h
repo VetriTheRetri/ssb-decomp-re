@@ -72,6 +72,7 @@ typedef enum GObjLinkIndex
 
     nOMObjCommonLinkIDRumble = 13,        // ID 13: Rumble object?
     nOMObjCommonLinkIDWallpaper = 13,     // ID 13: Stage background object?
+    nOMObjCommonLinkIDWallpaperEffect=13, // ID 13: Stage background effect
     nOMObjCommonLinkIDFighterParts = 13,  // ID 13: FighterParts
     nOMObjCommonLinkIDShadow = 13,        // ID 13: Fighter shadows
 

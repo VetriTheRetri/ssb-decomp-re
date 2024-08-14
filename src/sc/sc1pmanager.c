@@ -30,7 +30,7 @@ s32 gSC1PManagerLevelDrop;
 u8 sSC1PManagerLevelGuard;
 
 // 0x80130D75 - Copy ability of final Kirby on Kirby Team in 1P Game
-u8 sSC1PManagerKirbyTeamFinalCopy;
+u8 gSC1PManagerKirbyTeamFinalCopy;
 
 // 0x80130D76
 u8 D_ovl2_80130D76;
@@ -257,27 +257,27 @@ void sc1PManagerUpdateScene(void)
 
     sSC1PManagerScenePrev = gSceneData.scene_previous;
 
-    D_800A4B18.is_team_battle = TRUE;
-    D_800A4B18.game_rules = (SCBATTLE_GAMERULE_1PGAME | SCBATTLE_GAMERULE_TIME);
-    D_800A4B18.damage_ratio = 100;
-    D_800A4B18.is_display_score = FALSE;
-    D_800A4B18.is_not_teamshadows = TRUE;
+    gSCManager1PGameBattleState.is_team_battle = TRUE;
+    gSCManager1PGameBattleState.game_rules = (SCBATTLE_GAMERULE_1PGAME | SCBATTLE_GAMERULE_TIME);
+    gSCManager1PGameBattleState.damage_ratio = 100;
+    gSCManager1PGameBattleState.is_display_score = FALSE;
+    gSCManager1PGameBattleState.is_not_teamshadows = TRUE;
 
     if (gSaveData.error_flags & SCBACKUP_ERROR_1PGAMEMARIO)
     {
         gSceneData.ft_kind = nFTKindMario;
         gSceneData.costume = 0;
     }
-    D_800A4B18.players[gSceneData.spgame_player].handicap = FTCOMMON_HANDICAP_DEFAULT;
-    D_800A4B18.players[gSceneData.spgame_player].pl_kind = nFTPlayerKindMan;
-    D_800A4B18.players[gSceneData.spgame_player].team = 0;
-    D_800A4B18.players[gSceneData.spgame_player].shade = 0;
-    D_800A4B18.players[gSceneData.spgame_player].player_color = gSceneData.spgame_player;
-    D_800A4B18.players[gSceneData.spgame_player].tag_kind = gSceneData.spgame_player;
-    D_800A4B18.players[gSceneData.spgame_player].ft_kind = gSceneData.ft_kind;
-    D_800A4B18.players[gSceneData.spgame_player].costume = gSceneData.costume;
-    D_800A4B18.players[gSceneData.spgame_player].stock_count = gSaveData.spgame_stock_count;
-    D_800A4B18.players[gSceneData.spgame_player].is_spgame_team = FALSE;
+    gSCManager1PGameBattleState.players[gSceneData.spgame_player].handicap = FTCOMMON_HANDICAP_DEFAULT;
+    gSCManager1PGameBattleState.players[gSceneData.spgame_player].pl_kind = nFTPlayerKindMan;
+    gSCManager1PGameBattleState.players[gSceneData.spgame_player].team = 0;
+    gSCManager1PGameBattleState.players[gSceneData.spgame_player].shade = 0;
+    gSCManager1PGameBattleState.players[gSceneData.spgame_player].player_color = gSceneData.spgame_player;
+    gSCManager1PGameBattleState.players[gSceneData.spgame_player].tag_kind = gSceneData.spgame_player;
+    gSCManager1PGameBattleState.players[gSceneData.spgame_player].ft_kind = gSceneData.ft_kind;
+    gSCManager1PGameBattleState.players[gSceneData.spgame_player].costume = gSceneData.costume;
+    gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count = gSaveData.spgame_stock_count;
+    gSCManager1PGameBattleState.players[gSceneData.spgame_player].is_spgame_team = FALSE;
 
     gSceneData.spgame_score = 0;
     gSceneData.continues_used = 0;
@@ -319,35 +319,35 @@ void sc1PManagerUpdateScene(void)
             case nSC1PGameStageMario:
                 variation_flags &= ~1;
 
-                D_800A4B18.players[gSceneData.ally_players[0]].ft_kind = sc1PManagerGetShuffledFighterKind(variation_flags, 0, mtTrigGetRandomIntRange(sc1PManagerGetShuffledVariation(variation_flags)));
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind = sc1PManagerGetShuffledFighterKind(variation_flags, 0, mtTrigGetRandomIntRange(sc1PManagerGetShuffledVariation(variation_flags)));
 
-                if (D_800A4B18.players[gSceneData.ally_players[0]].ft_kind == nFTKindLuigi)
+                if (gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind == nFTKindLuigi)
                 {
-                    D_800A4B18.players[gSceneData.ally_players[0]].costume = ftParamGetCostumeRoyalID(nFTKindLuigi, 1);
+                    gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume = ftParamGetCostumeRoyalID(nFTKindLuigi, 1);
                 }
-                else D_800A4B18.players[gSceneData.ally_players[0]].costume = 0;
+                else gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume = 0;
 
-                D_800A4B18.players[gSceneData.ally_players[0]].shade = 0;
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].shade = 0;
                 break;
 
             case nSC1PGameStageDonkey:
                 random = sc1PManagerGetShuffledVariation(variation_flags);
 
-                D_800A4B18.players[gSceneData.ally_players[0]].ft_kind = sc1PManagerGetShuffledFighterKind(variation_flags, 0, mtTrigGetRandomIntRange(random));
-                D_800A4B18.players[gSceneData.ally_players[0]].costume = 0;
-                D_800A4B18.players[gSceneData.ally_players[0]].shade = 0;
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind = sc1PManagerGetShuffledFighterKind(variation_flags, 0, mtTrigGetRandomIntRange(random));
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume = 0;
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].shade = 0;
 
-                D_800A4B18.players[gSceneData.ally_players[1]].ft_kind = sc1PManagerGetShuffledFighterKind(variation_flags, (1 << D_800A4B18.players[gSceneData.ally_players[0]].ft_kind), mtTrigGetRandomIntRange(random - 1));
-                D_800A4B18.players[gSceneData.ally_players[1]].costume = 0;
-                D_800A4B18.players[gSceneData.ally_players[1]].shade = 0;
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].ft_kind = sc1PManagerGetShuffledFighterKind(variation_flags, (1 << gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind), mtTrigGetRandomIntRange(random - 1));
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].costume = 0;
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].shade = 0;
                 break;
 
             case nSC1PGameStageKirby:
                 variation_flags = (gSaveData.character_mask | SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindKirby));
 
-                sSC1PManagerKirbyTeamFinalCopy = sc1PManagerGetShuffledKirbyCopy(variation_flags, mtTrigGetRandomIntRange(sc1PManagerGetShuffledVariation(variation_flags)));
+                gSC1PManagerKirbyTeamFinalCopy = sc1PManagerGetShuffledKirbyCopy(variation_flags, mtTrigGetRandomIntRange(sc1PManagerGetShuffledVariation(variation_flags)));
 
-                D_ovl2_80130D76 = D_ovl2_80116DA0[sSC1PManagerKirbyTeamFinalCopy];
+                D_ovl2_80130D76 = D_ovl2_80116DA0[gSC1PManagerKirbyTeamFinalCopy];
                 break;
             }
             syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
@@ -379,7 +379,7 @@ void sc1PManagerUpdateScene(void)
 
                 if (gSceneData.spgame_stage != nSC1PGameStageBonus3)
                 {
-                    if((D_800A4B18.players[gSceneData.spgame_player].stock_count == -1) || (D_800A4B18.battle_time_remain == 0))
+                    if((gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count == -1) || (gSCManager1PGameBattleState.battle_time_remain == 0))
                     {
                         is_player_lose = TRUE;
                     }
@@ -404,7 +404,7 @@ void sc1PManagerUpdateScene(void)
                 {
                     gSceneData.continues_used++;
 
-                    D_800A4B18.players[gSceneData.spgame_player].stock_count = gSaveData.spgame_stock_count;
+                    gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count = gSaveData.spgame_stock_count;
 
                     gSceneData.spgame_stage--;
 
@@ -502,7 +502,7 @@ skip_main_stages:
 
         scChallengerStartScene();
 
-        D_800A4B18.players[gSceneData.spgame_player].stock_count = 0;
+        gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count = 0;
 
         syDmaLoadOverlay(&dSC1PManagerObjectsOverlay);
         syDmaLoadOverlay(&dSC1PManager1PGameOverlay);
@@ -516,9 +516,9 @@ skip_main_stages:
 
             return;
         }
-        if ((D_800A4B18.players[gSceneData.spgame_player].stock_count != -1) && (D_800A4B18.battle_time_remain != 0))
+        if ((gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count != -1) && (gSCManager1PGameBattleState.battle_time_remain != 0))
         {
-            gSceneData.unk43 = gDefaultSceneData.unk43;
+            gSceneData.challenger_level_drop = gDefaultSceneData.challenger_level_drop;
             gSceneData.prize_unlocks[0] = dSC1PManagerUnlockPrizes[gSceneData.spgame_stage - nSC1PGameStageChallengerStart];
 
             syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
@@ -529,9 +529,9 @@ skip_main_stages:
 
             mnMessageStartScene();
         }
-        else if (gSceneData.unk43 < 9)
+        else if (gSceneData.challenger_level_drop < 9)
         {
-            gSceneData.unk43 += 2;
+            gSceneData.challenger_level_drop += 2;
         }
         if (gSceneData.spgame_stage == nSC1PGameStageLuigi)
         {

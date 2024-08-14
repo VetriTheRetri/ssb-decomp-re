@@ -1,6 +1,7 @@
 #include <ft/fighter.h>
 #include <mn/menu.h>
 #include <sc/scene.h> // includes sys/obj.h
+#include <sys/system_00.h>
 #include <sys/thread6.h>
 #include <ovl0/reloc_data_mgr.h>
 
@@ -50,7 +51,7 @@ Gfx dMNCongraDisplayList[] =
 };
 
 // 80132208
-scUnkDataBounds D_ovl57_80132208 = {
+syDisplaySetup D_ovl57_80132208 = {
 	0x80325400, 0x8036d200, 0x803b5000, 0x00000000, 0x00000140, 0x000000f0, 0x00015aa9
 };
 
@@ -264,7 +265,7 @@ void mnCongraStartScene()
 		sMNCongraFighterKind = gTransferBattleState.players[0].ft_kind;
 		break;
 	}
-	D_ovl57_80132208.unk_scdatabounds_0xC = ((uintptr_t) &D_NF_800A5240 - 0x1900);
+	D_ovl57_80132208.zbuffer = ((uintptr_t) &D_NF_800A5240 - 0x1900);
 	func_80007024(&D_ovl57_80132208);
 	D_ovl57_80132224.arena_size = (0x80325400 - (intptr_t) &lMNCongraArenaLo);
 	gsGTLSceneInit(&D_ovl57_80132224); subsys_arena_lo = (uintptr_t) &lSubSystemArenaLo; // WARNING: Newline memes!

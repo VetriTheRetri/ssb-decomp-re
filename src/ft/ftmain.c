@@ -5,9 +5,6 @@
 #include <sc/scene.h>
 #include <sys/thread6.h>
 
-extern ub8 gGM1PGameBonusStarCount;
-extern ub8 gGM1PGameBonusGiantImpact;
-
 extern alSoundEffect* func_800269C0_275C0(u16);
 extern void gcSetDObjAnimSpeed(GObj*, f32);
 extern void func_ovl0_800C8CB8(void*, void*, void*, void*, f32);
@@ -2027,7 +2024,7 @@ void ftMainUpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftSt
 
         if ((gBattleState->game_type == nSCBattleGameType1PGame) && (this_hit->damage >= 20) && (other_fp->player == gSceneData.spgame_player))
         {
-            gGM1PGameBonusGiantImpact = TRUE;
+            gSC1PGameBonusGiantImpact = TRUE;
         }
     }
     if ((other_hit->damage - 10) < this_hit->damage)
@@ -2038,7 +2035,7 @@ void ftMainUpdateAttackStatFighter(ftStruct *other_fp, ftHitbox *other_hit, ftSt
 
         if ((gBattleState->game_type == nSCBattleGameType1PGame) && (other_hit->damage >= 20) && (this_fp->player == gSceneData.spgame_player))
         {
-            gGM1PGameBonusGiantImpact = TRUE;
+            gSC1PGameBonusGiantImpact = TRUE;
         }
     }
 }
@@ -2177,7 +2174,7 @@ void ftMainUpdateDamageStatFighter(ftStruct *attacker_fp, ftHitbox *attacker_hit
 
                 sFTMainHitlogID++;
             }
-            ftParamUpdateBattleStats(attacker_player, victim_fp->player, damage);
+            ftParamUpdatePlayerBattleStats(attacker_player, victim_fp->player, damage);
             ftParamUpdateStaleQueue(attacker_player, victim_fp->player, attacker_hit->attack_id, attacker_hit->motion_count);
         }
         else
@@ -2221,7 +2218,7 @@ void ftMainUpdateAttackStatWeapon(wpStruct *ip, wpHitbox *wp_hit, s32 index, ftS
 
         if ((gBattleState->game_type == nSCBattleGameType1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.spgame_player))
         {
-            gGM1PGameBonusGiantImpact = TRUE;
+            gSC1PGameBonusGiantImpact = TRUE;
         }
     }
 }
@@ -2363,7 +2360,7 @@ void ftMainUpdateDamageStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id,
 
             sFTMainHitlogID++;
         }
-        ftParamUpdateBattleStats(wp->player, fp->player, damage);
+        ftParamUpdatePlayerBattleStats(wp->player, fp->player, damage);
         ftParamUpdateStaleQueue(wp->player, fp->player, wp_hit->attack_id, wp_hit->motion_count);
     }
     func_800269C0_275C0(wp_hit->hit_sfx);
@@ -2395,7 +2392,7 @@ void ftMainUpdateAttackStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
 
         if ((gBattleState->game_type == nSCBattleGameType1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.spgame_player))
         {
-            gGM1PGameBonusGiantImpact = TRUE;
+            gSC1PGameBonusGiantImpact = TRUE;
         }
     }
 }
@@ -2491,9 +2488,9 @@ void ftMainUpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
             ftParamTryPlayItemMusic(nGMSoundBGMStarman);
             func_800269C0_275C0(nGMSoundFGMStarCollect);
 
-            if ((gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gGM1PGameBonusStarCount < U8_MAX))
+            if ((gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gSC1PGameBonusStarCount < U8_MAX))
             {
-                gGM1PGameBonusStarCount++;
+                gSC1PGameBonusStarCount++;
             }
             break;
 
@@ -2550,7 +2547,7 @@ void ftMainUpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
 
                 sFTMainHitlogID++;
             }
-            ftParamUpdateBattleStats(ip->player, fp->player, damage);
+            ftParamUpdatePlayerBattleStats(ip->player, fp->player, damage);
             ftParamUpdateStaleQueue(ip->player, fp->player, it_hit->attack_id, it_hit->motion_count);
         }
         func_800269C0_275C0(it_hit->hit_sfx);
@@ -2584,7 +2581,7 @@ void ftMainUpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, ftStru
     case nGMHitEnvironmentPowerBlock:
         if (is_take_damage != FALSE)
         {
-            ftParamUpdateBattleStats(itGetStruct(special_gobj)->damage_port, fp->player, damage);
+            ftParamUpdatePlayerBattleStats(itGetStruct(special_gobj)->damage_port, fp->player, damage);
         }
         break;
 

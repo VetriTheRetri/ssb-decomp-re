@@ -24,7 +24,7 @@ extern s32 gSC1PManagerLevelDrop;
 extern u8 sSC1PManagerLevelGuard;
 
 // 0x80130D75 - Copy ability of final Kirby on Kirby Team in 1P Game
-extern u8 sSC1PManagerKirbyTeamFinalCopy;
+extern u8 gSC1PManagerKirbyTeamFinalCopy;
 
 // 0x80130D76
 extern u8 D_ovl2_80130D76;

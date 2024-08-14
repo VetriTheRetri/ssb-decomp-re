@@ -58,7 +58,7 @@ f32 dMvOpeningLinkNameCharXPositions[4] = {
 };
 
 // 8018E0DC
-scUnkDataBounds D_ovl40_8018E0DC = {
+syDisplaySetup D_ovl40_8018E0DC = {
 	0x80392a00,
 	0x803b6900, 0x803da800, 0x00000000,
 	0x00000140,

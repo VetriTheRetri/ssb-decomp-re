@@ -7,7 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern ub8 gGM1PGameBonusShieldBreaker; // Bonus for breaking an enemy's shield in 1P game
+extern ub8 gSC1PGameBonusShieldBreaker; // Bonus for breaking an enemy's shield in 1P game
 
 // // // // // // // // // // // //
 //                               //
@@ -69,7 +69,7 @@ void ftCommonShieldBreakFlyCommonSetStatus(GObj *fighter_gobj)
     {
         if ((fp->shield_player == gSceneData.spgame_player) && (fp->shield_player != fp->player))
         {
-            gGM1PGameBonusShieldBreaker = TRUE;
+            gSC1PGameBonusShieldBreaker = TRUE;
         }
     }
     ftCommonShieldBreakFlySetStatus(fighter_gobj);

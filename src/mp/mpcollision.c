@@ -4059,7 +4059,7 @@ void mpCollisionInitGroundData(void)
         }
     }
     gMPCollisionVertexData  = geometry_info->vertex_data;
-    gMPCollisionVertexIDs    = geometry_info->vertex_id;
+    gMPCollisionVertexIDs   = geometry_info->vertex_id;
     gMPCollisionVertexLinks = geometry_info->vertex_links;
     gMPCollisionMapObjs     = geometry_info->mapobjs;
 
@@ -4080,7 +4080,7 @@ void mpCollisionInitGroundData(void)
 }
 
 // 0x800FC3E8
-void mpCollisionSetPlayMusicID(void)
+void mpCollisionSetPlayBGM(void)
 {
     gMPCollisionBGMDefault = gMPCollisionGroundData->bgm_id;
 
@@ -4090,7 +4090,7 @@ void mpCollisionSetPlayMusicID(void)
 }
 
 // 0x800FC42C
-void mpCollisionSetMusicID(void)
+void mpCollisionSetBGM(void)
 {
     gMPCollisionBGMCurrent = gMPCollisionBGMDefault = gMPCollisionGroundData->bgm_id;
 }

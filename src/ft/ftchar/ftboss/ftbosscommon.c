@@ -220,7 +220,7 @@ void ftBossCommonUpdateDamageStats(GObj *fighter_gobj)
     {
         if (fp->percent_damage >= 300)
         {
-            func_ovl65_8018F75C(fighter_gobj);
+            sc1PGameBossDefeatInitInterface(fighter_gobj);
 
             if (fp->lr == nGMFacingL)
             {

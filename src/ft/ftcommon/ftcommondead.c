@@ -83,7 +83,7 @@ void ftCommonDeadUpdateScore(ftStruct *this_fp)
 
         gBattleState->players[this_fp->player].stock_count--;
 
-        func_ovl65_8018EFFC(this_fp->player, this_fp->team_order);
+        sc1PGameSetPlayerDefeatStats(this_fp->player, this_fp->team_order);
     }
     if (gBattleState->game_rules & SCBATTLE_GAMERULE_BONUS)
     {
@@ -109,7 +109,7 @@ void ftCommonDeadCheckRebirth(GObj *fighter_gobj)
     {
         if (gBattleState->players[fp->player].is_spgame_team != FALSE)
         {
-            func_ovl65_8018E18C(fighter_gobj);
+            sc1PGameSpawnEnemyTeamNext(fighter_gobj);
 
             return;
         }
@@ -547,7 +547,7 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
     {
         return FALSE;
     }
-    if (fp->is_ignore_map_bound)
+    if (fp->is_ignore_map_bounds)
     {
         if (pos->y < gMPCollisionGroundData->map_bound_bottom)
         {

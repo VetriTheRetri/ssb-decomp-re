@@ -165,7 +165,7 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
     if (damage != 0)
     {
         ftParamUpdateDamage(this_fp, damage);
-        ftParamUpdateBattleStats(capture_fp->player, this_fp->player, damage);
+        ftParamUpdatePlayerBattleStats(capture_fp->player, this_fp->player, damage);
         ftParamUpdateStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);
 
         if ((s32) ((damage * 0.75F) + 4.0F) > 0)
@@ -189,7 +189,7 @@ void ftCommonThrownUpdateDamageStats(ftStruct *this_fp)
     s32 damage = ftParamGetStaledDamage(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);
 
     ftParamUpdateDamage(this_fp, damage);
-    ftParamUpdateBattleStats(capture_fp->player, this_fp->player, damage);
+    ftParamUpdatePlayerBattleStats(capture_fp->player, this_fp->player, damage);
     ftParamUpdateStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);
 }
 
@@ -249,7 +249,7 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
     if (damage != 0)
     {
         ftParamUpdateDamage(this_fp, damage);
-        ftParamUpdateBattleStats(capture_fp->player, this_fp->player, damage);
+        ftParamUpdatePlayerBattleStats(capture_fp->player, this_fp->player, damage);
         ftParamUpdateStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);
     }
     this_fp->capture_gobj = NULL;

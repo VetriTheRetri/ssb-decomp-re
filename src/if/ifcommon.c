@@ -2704,7 +2704,7 @@ void func_ovl2_80113638(GObj *interface_gobj, s32 unused)
 {
     func_8000B284(interface_gobj);
 
-    interface_gobj->flags |= 0x40;
+    interface_gobj->flags |= GOBJ_FLAG_NOEJECT;
 }
 
 // 0x8011366C
@@ -2712,7 +2712,7 @@ void func_ovl2_8011366C(GObj *interface_gobj, s32 unused)
 {
     func_8000B2B8(interface_gobj);
 
-    interface_gobj->flags &= ~0x40;
+    interface_gobj->flags &= ~GOBJ_FLAG_NOEJECT;
 }
 
 // 0x801136A4
@@ -3322,7 +3322,7 @@ void ifCommonPlayerInterfaceAddToViewport(ftStruct *fp)
 }
 
 // 0x801149CC
-void ifCommonPlayerScoreMakeEffect(ftStruct *fp, s32 arg1)
+void ifCommonPlayerScoreMakeEffect(ftStruct *fp, s32 score)
 {
     Vec3f pos;
 
@@ -3330,7 +3330,7 @@ void ifCommonPlayerScoreMakeEffect(ftStruct *fp, s32 arg1)
     pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y + 13) << 2); // ??? Can't get this one to match unless we do bitwise instead of literal multiplication
     pos.z = 0.0F;
 
-    efManagerBattleScoreMakeEffect(&pos, arg1);
+    efManagerBattleScoreMakeEffect(&pos, score);
 }
 
 // 0x80114A48

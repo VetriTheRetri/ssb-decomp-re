@@ -396,7 +396,7 @@ void ftPublicityProcUpdate(GObj *public_gobj)
 }
 
 // 0x801653E0
-void ftPublicitySetup(void)
+void ftPublicityMakeActor(void)
 {
     gcAddGObjCommonProc
     (
@@ -405,7 +405,6 @@ void ftPublicitySetup(void)
         nOMObjProcessKindProc, 
         0
     );
-
     sFTPublicityCommonFramesSince = U16_MAX + 1;
     sFTPublicityCommonPlayerNum = -1;
     sFTPublicityCommonKnockback = 0.0F;

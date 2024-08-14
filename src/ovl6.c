@@ -3,6 +3,7 @@
 #include <gr/ground.h>
 #include <if/interface.h>
 #include <sc/scene.h>
+#include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "ovl6.h"
@@ -579,7 +580,7 @@ void scBonusGame_InitBonusGame()
 	func_ovl6_8018D330();
 	func_8000B9FC(9, 0x80000000U, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
-	ftParamGameSet();
+	ftParamInitGame();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
@@ -592,7 +593,7 @@ void scBonusGame_InitBonusGame()
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
-	ftPublicitySetup();
+	ftPublicityMakeActor();
 
 	for (player = 0, player_spawn = dFTManagerDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->players);
 		 player++)
@@ -637,7 +638,7 @@ void scBonusGame_InitBonusGame()
 	ifCommonPlayerStockInitInterface();
 	scBonusGame_InitBonusGameSprites();
 	scBonusGame_MakeInterface();
-	mpCollisionSetPlayMusicID();
+	mpCollisionSetPlayBGM();
 	func_800269C0_275C0(0x272U);
 	func_ovl6_8018E344();
 	scBonusGame_InitCameraVars();
@@ -736,7 +737,7 @@ void sc1PBonusGameStartScene()
 	u32 tasks_complete;
 	s32 i;
 
-	D_ovl6_8018F080.unk_scdatabounds_0xC = (void*)((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl6_8018F080.zbuffer = (void*)((uintptr_t)&D_NF_800A5240 - 0x1900);
 
 	func_80007024(&D_ovl6_8018F080);
 

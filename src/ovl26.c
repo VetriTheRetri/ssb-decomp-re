@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <sys/develop.h>
+#include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "ovl26.h"
@@ -3884,7 +3884,7 @@ void mnBattleInitCSS()
 // 8013B33C
 void vs_css_entry()
 {
-	D_ovl26_8013B980.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl26_8013B980.zbuffer = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
 	func_80007024(&D_ovl26_8013B980);
 	D_ovl26_8013B99C.arena_size = (u32)((uintptr_t)&lOverlay26ArenaHi - (uintptr_t)&lOverlay26ArenaLo);
 	func_800A2698(&D_ovl26_8013B99C);

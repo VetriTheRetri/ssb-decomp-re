@@ -2,6 +2,7 @@
 #include <gr/ground.h>
 #include <if/interface.h>
 #include <sc/scene.h>
+#include <sys/system_00.h>
 
 extern intptr_t D_NF_0000000C;
 extern intptr_t D_NF_800A5240;
@@ -165,7 +166,7 @@ intptr_t dAutoDemoFighterNameSpriteOffsets[] =
 Unk800D4060 D_ovl64_8018E230 = { 0 };
 
 // 8018E234
-scUnkDataBounds D_ovl64_8018E234 = {
+syDisplaySetup D_ovl64_8018E234 = {
 	0x80392a00, 0x803b6900, 0x803da800,
 	0x00000000, 0x00000140, 0x000000f0, 0x00016a99
 };
@@ -595,7 +596,7 @@ void func_ovl64_8018DCC4()
 	func_ovl64_8018E0C0();
 	func_8000B9FC(9, 0x80000000U, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
-	ftParamGameSet();
+	ftParamInitGame();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
@@ -608,7 +609,7 @@ void func_ovl64_8018DCC4()
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
-	ftPublicitySetup();
+	ftPublicityMakeActor();
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
@@ -673,7 +674,7 @@ void func_ovl64_8018DCC4()
 	ifCommonPlayerDamageSetShowInterface();
 	ifCommonPlayerStockInitInterface();
 	func_ovl64_8018DB18();
-	mpCollisionSetPlayMusicID();
+	mpCollisionSetPlayBGM();
 	func_800269C0_275C0(0x272);
 	scAutoDemoMakeFocusInterface();
 }
@@ -689,7 +690,7 @@ void func_ovl64_8018DFC8(Gfx **display_list)
 // 8018E014
 void scAutoDemoStartScene()
 {
-	D_ovl64_8018E234.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl64_8018E234.zbuffer = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
 
 	func_80007024(&D_ovl64_8018E234);
 

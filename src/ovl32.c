@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
+#include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "ovl32.h"
@@ -172,7 +173,7 @@ Vec2f dMNVsRecordsIndividualTableRowHeaderPositions[4] = {
 };
 
 // 801369CC
-scUnkDataBounds D_ovl32_801369CC = {
+syDisplaySetup D_ovl32_801369CC = {
 	0x80392A00, 0x803B6900, 0x803DA800, 0x00000000, 0x00000140, 0x000000F0, 0x16a99
 };
 
@@ -1875,7 +1876,7 @@ void mnVsRecordsInit()
 // 801365D0
 void vs_records_entry()
 {
-	D_ovl32_801369CC.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl32_801369CC.zbuffer = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
 	func_80007024(&D_ovl32_801369CC);
 	D_ovl32_801369E8.arena_size = (u32) ((uintptr_t)&lOverlay32ArenaHi - (uintptr_t)&lOverlay32ArenaLo);
 	gsGTLSceneInit(&D_ovl32_801369E8);

@@ -86,7 +86,7 @@ extern void ftParamUpdate1PGameAttackStats(ftStruct *fp, u16 flags);
 extern void ftParamSetStarHitStatusInvincible(ftStruct *fp, s32 star_invincible_timer);
 extern void ftParamSetTimedHitStatusInvincible(ftStruct *fp, s32 invincible_timer);
 extern void ftParamSetTimedHitStatusIntangible(ftStruct *fp, s32 intangible_timer);
-extern void ftParamUpdateBattleStats(s32 attack_player, s32 defend_player, s32 attack_damage);
+extern void ftParamUpdatePlayerBattleStats(s32 attack_player, s32 defend_player, s32 attack_damage);
 extern void ftParamUpdate1PGameDamageStats(ftStruct *fp, s32 damage_player, s32 damage_object_class, s32 damage_object_kind, u16 flags, u16 damage_stat_count);
 extern void ftParamGetEffectJointPosition(ftStruct *fp, Vec3f *pos);
 extern void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *effect_pos, Vec3f *effect_scatter, s32 lr, sb32 is_scale_pos, u32 arg7);
@@ -103,6 +103,6 @@ extern void func_ovl2_800EBD08(DObj *root_dobj, f32 arg1, Vec3f *vec, f32 arg3);
 extern s32 ftParamGetCostumeRoyalID(s32 ft_kind, s32 color);
 extern s32 ftParamGetCostumeTeamID(s32 ft_kind, s32 color);
 extern s32 ftParamGetCostumeDevelop(s32 ft_kind);
-extern void ftParamGameSet(void);
+extern void ftParamInitGame(void);
 
 #endif

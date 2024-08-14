@@ -1,6 +1,6 @@
-#include <sys/develop.h>
 #include <sc/scene.h>
 #include <gr/ground.h>
+#include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #define F_DEG_TO_RAD(x) ((f32)(((x) * PI32) / 180.0F))
@@ -201,7 +201,7 @@ s32 D_801348E8_150458[9] = {
 };
 
 // 8013490C
-scUnkDataBounds D_ovl30_8013490C = {
+syDisplaySetup D_ovl30_8013490C = {
 	0x80392A00, 0x803B6900,
 	0x803DA800, 0x00000000,
 	0x00000140, 0x000000F0,
@@ -1431,7 +1431,7 @@ void mnStageInitSSS()
 // 8013446C
 void mnStageStartScene()
 {
-	D_ovl30_8013490C.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl30_8013490C.zbuffer = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
 	func_80007024(&D_ovl30_8013490C);
 	D_ovl30_80134928.arena_size = (u32) ((uintptr_t)&lOverlay30ArenaHi - (uintptr_t)&lOverlay30ArenaLo);
 	func_800A2698(&D_ovl30_80134928);

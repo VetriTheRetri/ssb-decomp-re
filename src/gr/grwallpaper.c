@@ -294,7 +294,7 @@ void grWallpaperMakeGroundWallpaper(void)
         break;
 
     case nGRKindLast:
-        sc1PGameBossInitBackgroundMain();
+        sc1PGameBossInitWallpaper();
         grWallpaperCommonMakeSObj();
         break;
 

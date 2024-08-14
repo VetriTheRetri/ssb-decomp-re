@@ -14,6 +14,6 @@ extern void ftPublicityKnockbackDecide(GObj *fighter_gobj, f32 knockback);
 extern void ftPublicityDownDecide(GObj *fighter_gobj);
 extern void ftPublicityDefeatedAddID(u16 sfx_id);
 extern void ftPublicityProcUpdate(GObj *public_gobj);
-extern void ftPublicitySetup(void);
+extern void ftPublicityMakeActor(void);
 
 #endif

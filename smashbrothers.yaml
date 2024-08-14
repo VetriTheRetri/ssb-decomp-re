@@ -1163,9 +1163,21 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x10B920, asm, ovl65]
-      - [0x111060, data, ovl65]
-      - [0x111670, rodata, ovl65]
+    # Main 1P Game scene stuff
+      - [0x10B920, c, sc/sc1pgame]
+    # Final Destination backgrounds
+      - [0x10F910, c, sc/sc1pgameboss]
+    # Main 1P Game scene stuff
+      - [0x111060, .data, sc/sc1pgame]
+    # Final Destination backgrounds
+      - [0x111420, .data, sc/sc1pgameboss]
+    # Main 1P Game scene stuff
+      - [0x111670, .rodata, sc/sc1pgame]
+    # Final Destination backgrounds
+      - [0x1117D0, .rodata, sc/sc1pgameboss]
+    # Main 1P Game scene stuff
+      - { start: auto, type: .bss, name: sc/sc1pgame, vram: 0x80192FA0 }
+      - { start: auto, type: .bss, name: sc/sc1pgameboss, vram: 0x801938D0 }
 
   - name: ovl6
     type: code

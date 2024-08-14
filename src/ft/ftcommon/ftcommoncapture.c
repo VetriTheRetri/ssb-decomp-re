@@ -148,7 +148,7 @@ void ftCommonCaptureShoulderedSetStatus(GObj *fighter_gobj)
     {
         ftCommonDamageUpdateDamageColAnim(fighter_gobj, ftParamGetCommonKnockback(this_fp->percent_damage, damage, damage, 0, 100, 0, this_fp->attributes->weight, capture_fp->handicap, this_fp->handicap), 0);
         ftParamUpdateDamage(this_fp, damage);
-        ftParamUpdateBattleStats(capture_fp->player, this_fp->player, damage);
+        ftParamUpdatePlayerBattleStats(capture_fp->player, this_fp->player, damage);
         ftParamUpdateStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);
     }
     ftParamMakeRumble(this_fp, 7, 0);

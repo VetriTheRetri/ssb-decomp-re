@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
+#include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
 // EXTERN
@@ -61,7 +62,7 @@ f32 dMvOpeningMarioNameCharXPositions[5] = {
 };
 
 // 8018E11C
-scUnkDataBounds D_ovl36_8018E11C = {
+syDisplaySetup D_ovl36_8018E11C = {
 	0x80392a00,
 	0x803b6900, 0x803da800, 0x00000000, 0x00000140,
 	0x000000f0, 0x00016a99
@@ -267,7 +268,7 @@ void mvOpeningMarioInitFighterStagePanel()
 	mpCollisionGetMapObjPositionID(pos_ids, &spawn_position);
 	mvOpeningMarioCreateStageViewport(spawn_position);
 	gmRumbleMakeActor();
-	ftPublicitySetup();
+	ftPublicityMakeActor();
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 	{
@@ -457,7 +458,7 @@ void mvOpeningMarioInit()
 	func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
 	mvOpeningMarioInitFramesElapsed();
 	efAllocInitParticleBank();
-	ftParamGameSet();
+	ftParamInitGame();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
@@ -489,7 +490,7 @@ void mvOpeningMarioSetupDisplayList(Gfx **display_list)
 // 8018E030
 void intro_focus_mario_entry()
 {
-	D_ovl36_8018E11C.unk_scdatabounds_0xC = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl36_8018E11C.zbuffer = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
 	func_80007024(&D_ovl36_8018E11C);
 	D_ovl36_8018E138.arena_size = (u32) ((uintptr_t)&lOverlay36ArenaHi - (uintptr_t)&lOverlay36ArenaLo);
 	gsGTLSceneInit(&D_ovl36_8018E138);

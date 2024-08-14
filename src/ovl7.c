@@ -3,8 +3,8 @@
 #include <gr/ground.h>
 #include <if/interface.h>
 #include <sc/scene.h>
+#include <sys/system_00.h>
 #include <buttons.h>
-#include <sys/objtypes.h>
 #include <ovl0/reloc_data_mgr.h>
 
 #include "ovl7.h"
@@ -1237,7 +1237,7 @@ void scTrainingMode_RenderCursorUnderline(GObj* interface_gobj)
 	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
 	gDPSetFillColor(gDisplayListHead[0]++,
-					syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF), gDisplayListHead));
+					syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
 	gDPFillRectangle(gDisplayListHead[0]++, gTrainingModeStruct.cursor_ulx, gTrainingModeStruct.cursor_uly,
 					 gTrainingModeStruct.cursor_lrx, gTrainingModeStruct.cursor_lry);
 	gDPPipeSync(gDisplayListHead[0]++);
@@ -1340,7 +1340,7 @@ void scTrainingMode_InitTrainingMode()
 	scTrainingMode_LoadSprites();
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
-	ftParamGameSet();
+	ftParamInitGame();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
@@ -1353,7 +1353,7 @@ void scTrainingMode_InitTrainingMode()
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
-	ftPublicitySetup();
+	ftPublicityMakeActor();
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
@@ -1419,7 +1419,7 @@ void scTrainingMode_SetGeometryRenderLights(Gfx** display_list)
 // 801905F4
 void scManager_TrainingMode_InitScene()
 {
-	D_ovl7_80190870.unk_scdatabounds_0xC = (uintptr_t)&D_NF_800A5240 - 6400;
+	D_ovl7_80190870.zbuffer = (uintptr_t)&D_NF_800A5240 - 6400;
 
 	func_80007024(&D_ovl7_80190870);
 

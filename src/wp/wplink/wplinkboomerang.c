@@ -48,12 +48,12 @@ wpCreateDesc dWPLinkBoomerangWeaponDesc =
 
 typedef enum wpLinkBoomerangFlags
 {
-    wpLink_Boomerang_Flags_Return,
-    wpLink_Boomerang_Flags_Destroy,
-    wpLink_Boomerang_Flags_Forward,
-    wpLink_Boomerang_Flags_Unk2,
-    wpLink_Boomerang_Flags_Unk3,
-    wpLink_Boomerang_Flags_Reflect
+    nWPLinkBoomerangFlagReturn,
+    nWPLinkBoomerangFlagDestroy,
+    nWPLinkBoomerangFlagForward,
+    nWPLinkBoomerangFlagUnk2,
+    nWPLinkBoomerangFlagUnk3,
+    nWPLinkBoomerangFlagReflect
 
 } wpLinkBoomerangFlags;
 
@@ -63,12 +63,12 @@ typedef enum wpLinkBoomerangFlags
 //                               //
 // // // // // // // // // // // //
 
-#define WPLINK_BOOMERANG_MASK_RETURN        (1 << wpLink_Boomerang_Flags_Return)
-#define WPLINK_BOOMERANG_MASK_DESTROY       (1 << wpLink_Boomerang_Flags_Destroy)
-#define WPLINK_BOOMERANG_MASK_FORWARD       (1 << wpLink_Boomerang_Flags_Forward)
-#define WPLINK_BOOMERANG_MASK_UNK2          (1 << wpLink_Boomerang_Flags_Unk2)
-#define WPLINK_BOOMERANG_MASK_UNK3          (1 << wpLink_Boomerang_Flags_Unk3)
-#define WPLINK_BOOMERANG_MASK_REFLECT       (1 << wpLink_Boomerang_Flags_Reflect)
+#define WPLINK_BOOMERANG_FLAG_RETURN        (1 << nWPLinkBoomerangFlagReturn)
+#define WPLINK_BOOMERANG_FLAG_DESTROY       (1 << nWPLinkBoomerangFlagDestroy)
+#define WPLINK_BOOMERANG_FLAG_FORWARD       (1 << nWPLinkBoomerangFlagForward)
+#define WPLINK_BOOMERANG_FLAG_UNK2          (1 << nWPLinkBoomerangFlagUnk2)
+#define WPLINK_BOOMERANG_FLAG_UNK3          (1 << nWPLinkBoomerangFlagUnk3)
+#define WPLINK_BOOMERANG_FLAG_REFLECT       (1 << nWPLinkBoomerangFlagReflect)
 
 // // // // // // // // // // // //
 //                               //
@@ -129,7 +129,7 @@ void wpLinkBoomerangSetReturnVars(GObj *weapon_gobj, sb32 angle_max_or_min)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    wp->weapon_vars.boomerang.flags |= WPLINK_BOOMERANG_MASK_RETURN;
+    wp->weapon_vars.boomerang.flags |= WPLINK_BOOMERANG_FLAG_RETURN;
 
     wp->weapon_hit.damage = WPBOOMERANG_RETURN_DAMAGE;
 
@@ -230,7 +230,7 @@ f32 wpLinkBoomerangGetDistUpdateAngle(GObj *weapon_gobj)
 
         sqrt_dist = sqrtf(SQUARE(dist_x) + SQUARE(dist_y));
 
-        if (wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_MASK_FORWARD)
+        if (wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_FLAG_FORWARD)
         {
             if (wp->weapon_vars.boomerang.flyforward_timer > 0)
             {
@@ -241,7 +241,7 @@ f32 wpLinkBoomerangGetDistUpdateAngle(GObj *weapon_gobj)
                 return sqrt_dist;
             }
         }
-        if ((wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_MASK_UNK3) && (((dist_x < 0.0F) && (wp->lr == nGMFacingR)) || ((dist_x > 0.0F) && (wp->lr == nGMFacingL))))
+        if ((wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_FLAG_UNK3) && (((dist_x < 0.0F) && (wp->lr == nGMFacingR)) || ((dist_x > 0.0F) && (wp->lr == nGMFacingL))))
         {
             return sqrt_dist;
         }
@@ -279,7 +279,7 @@ f32 wpLinkBoomerangGetDistUpdateAngle(GObj *weapon_gobj)
 
             wpLinkBoomerangClampAngle360(&wp->weapon_vars.boomerang.default_angle);
 
-            if (wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_MASK_UNK2)
+            if (wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_FLAG_UNK2)
             {
                 wpLinkBoomerangClampAngleForward(&wp->weapon_vars.boomerang.default_angle);
             }
@@ -310,7 +310,7 @@ void wpLinkBoomerangCheckOwnerCatch(GObj *weapon_gobj, f32 distance)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if ((wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_MASK_RETURN) && (distance < 180.0F))
+    if ((wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_FLAG_RETURN) && (distance < 180.0F))
     {
         if (wp->weapon_vars.boomerang.parent_gobj != NULL)
         {
@@ -369,17 +369,17 @@ sb32 wpLinkBoomerangProcUpdate(GObj *weapon_gobj)
 
         return TRUE;
     }
-    if (wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_MASK_DESTROY)
+    if (wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_FLAG_DESTROY)
     {
         wpLinkBoomerangClearGObjs(wp);
 
         return TRUE;
     }
-    if (wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_MASK_REFLECT)
+    if (wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_FLAG_REFLECT)
     {
         return FALSE;
     }
-    else if (wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_MASK_RETURN)
+    else if (wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_FLAG_RETURN)
     {
         wpLinkBoomerangUpdateVelLR(wp, wpLinkBoomerangAddVelSqrt(wp, 1.0F));
 
@@ -406,7 +406,7 @@ sb32 wpLinkBoomerangProcMap(GObj *weapon_gobj)
     sb32 is_collide = FALSE;
     u16 coll_flags;
 
-    if (!(wp->weapon_vars.boomerang.flags & (WPLINK_BOOMERANG_MASK_REFLECT | WPLINK_BOOMERANG_MASK_RETURN)))
+    if (!(wp->weapon_vars.boomerang.flags & (WPLINK_BOOMERANG_FLAG_REFLECT | WPLINK_BOOMERANG_FLAG_RETURN)))
     {
         wpMapTestAll(weapon_gobj);
 
@@ -446,7 +446,7 @@ sb32 wpLinkBoomerangProcHit(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (!(wp->weapon_vars.boomerang.flags & (WPLINK_BOOMERANG_MASK_REFLECT | WPLINK_BOOMERANG_MASK_RETURN)) && (wp->hit_normal_damage != 0))
+    if (!(wp->weapon_vars.boomerang.flags & (WPLINK_BOOMERANG_FLAG_REFLECT | WPLINK_BOOMERANG_FLAG_RETURN)) && (wp->hit_normal_damage != 0))
     {
         wpLinkBoomerangUpdateVelLR(wp, wpLinkBoomerangSubVelSqrt(wp, 5.0F));
         wpLinkBoomerangSetReturnVars(weapon_gobj, 1);
@@ -459,7 +459,7 @@ sb32 wpLinkBoomerangProcSetOff(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (!(wp->weapon_vars.boomerang.flags & (WPLINK_BOOMERANG_MASK_REFLECT | WPLINK_BOOMERANG_MASK_RETURN)))
+    if (!(wp->weapon_vars.boomerang.flags & (WPLINK_BOOMERANG_FLAG_REFLECT | WPLINK_BOOMERANG_FLAG_RETURN)))
     {
         wpLinkBoomerangSetReturnVars(weapon_gobj, 1);
     }
@@ -471,7 +471,7 @@ sb32 wpLinkBoomerangProcShield(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (!(wp->weapon_vars.boomerang.flags & (WPLINK_BOOMERANG_MASK_REFLECT | WPLINK_BOOMERANG_MASK_RETURN)))
+    if (!(wp->weapon_vars.boomerang.flags & (WPLINK_BOOMERANG_FLAG_REFLECT | WPLINK_BOOMERANG_FLAG_RETURN)))
     {
         wpLinkBoomerangSetReturnVars(weapon_gobj, 1);
     }
@@ -500,9 +500,9 @@ sb32 wpLinkBoomerangProcReflector(GObj *weapon_gobj)
     wpStruct *wp = wpGetStruct(weapon_gobj);
     f32 dist_x, dist_y;
 
-    if (!(wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_MASK_REFLECT))
+    if (!(wp->weapon_vars.boomerang.flags & WPLINK_BOOMERANG_FLAG_REFLECT))
     {
-        wp->weapon_vars.boomerang.flags = WPLINK_BOOMERANG_MASK_REFLECT;
+        wp->weapon_vars.boomerang.flags = WPLINK_BOOMERANG_FLAG_REFLECT;
         wp->lifetime = WPBOOMERANG_LIFETIME_REFLECT;
     }
     dist_x = DObjGetStruct(weapon_gobj)->translate.vec.f.x - DObjGetStruct(wp->owner_gobj)->translate.vec.f.x;
@@ -599,7 +599,7 @@ GObj* wpLinkBoomerangMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
     wpMainPlaySFX(wp, nGMSoundFGMLinkSpecialNDraw);
 
     wp->weapon_vars.boomerang.parent_gobj = fighter_gobj;
-    wp->weapon_vars.boomerang.flags = WPLINK_BOOMERANG_MASK_FORWARD;
+    wp->weapon_vars.boomerang.flags = WPLINK_BOOMERANG_FLAG_FORWARD;
     wp->weapon_vars.boomerang.homing_delay = 130;
     wp->weapon_vars.boomerang.adjust_angle_delay = 0;
 

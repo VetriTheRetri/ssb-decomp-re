@@ -2,6 +2,7 @@
 #include <if/interface.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
+#include <sys/system_00.h>
 
 extern uintptr_t D_NF_800A5240;
 extern uintptr_t D_NF_8018E7E0;
@@ -10,14 +11,10 @@ extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000030;
 extern intptr_t D_NF_000000C7;
 
-void ifCommonAnnounceTimeUpInitInterface();
-void gmRumbleInitPlayers();
-void ftRenderLightsDrawReflect(Gfx **display_list, f32 arg1, f32 arg2);
-
 Unk800D4060 D_ovl4_8018E3D0 = { 0 };
 Unk800D4060 D_ovl4_8018E3D4 = { 0 };
 
-scUnkDataBounds D_ovl4_8018E3D8 = {
+syDisplaySetup D_ovl4_8018E3D8 = {
 	0x80392a00, 0x803b6900, 0x803da800, 0x00000000,
 	0x00000140, 0x000000f0, 0x00016a99,
 };
@@ -115,7 +112,7 @@ void scBattle_StartStockBattle()
 	}
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
-	ftParamGameSet();
+	ftParamInitGame();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
@@ -128,7 +125,7 @@ void scBattle_StartStockBattle()
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
-	ftPublicitySetup();
+	ftPublicityMakeActor();
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
@@ -176,7 +173,7 @@ void scBattle_StartStockBattle()
 	ifCommonPlayerDamageInitInterface();
 	ifCommonPlayerStockInitInterface();
 	ifCommonEntryAllMakeInterface();
-	mpCollisionSetPlayMusicID();
+	mpCollisionSetPlayBGM();
 	func_800269C0_275C0(0x272U);
 	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
 	ifCommonTimerMakeDigitSObjs();
@@ -379,7 +376,7 @@ void scBattle_StartSDBattle()
 	func_ovl4_8018E330();
 	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
-	ftParamGameSet();
+	ftParamInitGame();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);
 	cmManagerMakeWallpaperCamera();
@@ -392,7 +389,7 @@ void scBattle_StartSDBattle()
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
-	ftPublicitySetup();
+	ftPublicityMakeActor();
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
@@ -444,7 +441,7 @@ void scBattle_StartSDBattle()
 	ifCommonPlayerDamageInitInterface();
 	ifCommonPlayerStockInitInterface();
 	ifCommonSuddenDeathMakeInterface();
-	mpCollisionSetPlayMusicID();
+	mpCollisionSetPlayBGM();
 	func_800269C0_275C0(0x272U);
 	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
 	ifCommonTimerMakeDigitSObjs();
@@ -471,11 +468,11 @@ void scBattleRoyalStartScene()
 
 	gBattleState->gr_kind = gSceneData.gr_kind;
 
-	if (gSaveData.error_flags & SCBACKUP_ERROR_VSMODECASTLE)
+	if (gSaveData.error_flags & SCBACKUP_ERROR_BATTLECASTLE)
 	{
 		gBattleState->gr_kind = nGRKindCastle;
 	}
-	D_ovl4_8018E3D8.unk_scdatabounds_0xC = (void*)((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl4_8018E3D8.zbuffer = (void*)((uintptr_t)&D_NF_800A5240 - 0x1900);
 	func_80007024(&D_ovl4_8018E3D8);
 	D_ovl4_8018E3F4.arena_size = (uintptr_t)((uintptr_t)&D_NF_80392A00 - (uintptr_t)&D_NF_8018E7E0);
 	D_ovl4_8018E3F4.proc_start = scBattle_StartStockBattle;

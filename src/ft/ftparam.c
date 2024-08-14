@@ -9,24 +9,6 @@ extern f32 bitmap_sinf(f32);
 extern f32 bitmap_cosf(f32);
 extern void func_ovl0_800C8CB8(void*, void*, void*, void*, f32);
 
-// Mostly fighters though
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern u32 gGM1PGameBonusAttackIDCount[/* */];                              // Attack ID
-extern u32 gGM1PGameBonusAttackIsSmashCount[/* */];                         // Index 0 = non-smash attack, index 1 = smash attack
-extern u32 gGM1PGameBonusAttackGroundAirCount[/* */];                       // Index 0 = ground, index 1 = air
-extern u32 gGM1PGameBonusAttackIsProjectileCount[/* */];                    // Index 0 = non-projectile, index 1 = projectile
-
-extern u32 gGM1PGameBonusDefendIDCount[/* */];                              // Attacks successfully landed on opponent
-extern u32 gGM1PGameBonusDefendIsSmashCount[/* */];                         // Smash Attacks successfully landed on opponent
-extern u32 gGM1PGameBonusDefendGroundAirCount[/* */];                       // Grounded / Airborne attacks successfully landed on opponent
-extern u32 gGM1PGameBonusDefendIsProjectileCount[/* */];                    // Special attacks successfully landed on opponent
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //
@@ -1700,13 +1682,13 @@ void ftParamUpdate1PGameAttackStats(ftStruct *fp, u16 flags)
     {
         if ((fp->stat_flags.stat_attack_id != nFTStatusAttackIDNone) && (fp->stat_flags.stat_attack_id != stat_flags.stat_attack_id))
         {
-            gGM1PGameBonusAttackIDCount[fp->stat_flags.stat_attack_id]++;
+            gSC1PGameBonusAttackIDCount[fp->stat_flags.stat_attack_id]++;
 
-            gGM1PGameBonusAttackIsSmashCount[fp->stat_flags.is_smash_attack]++;
+            gSC1PGameBonusAttackIsSmashCount[fp->stat_flags.is_smash_attack]++;
 
-            gGM1PGameBonusAttackGroundAirCount[fp->stat_flags.ga]++;
+            gSC1PGameBonusAttackGroundAirCount[fp->stat_flags.ga]++;
 
-            gGM1PGameBonusAttackIsProjectileCount[fp->stat_flags.is_projectile]++;
+            gSC1PGameBonusAttackIsProjectileCount[fp->stat_flags.is_projectile]++;
         }
     }
 }
@@ -1749,7 +1731,7 @@ void ftParamSetTimedHitStatusIntangible(ftStruct *fp, s32 intangible_timer)
 }
 
 // 0x800EA98C
-void ftParamUpdateBattleStats(s32 attack_player, s32 defend_player, s32 attack_damage)
+void ftParamUpdatePlayerBattleStats(s32 attack_player, s32 defend_player, s32 attack_damage)
 {
     if ((attack_player != GMCOMMON_PLAYERS_MAX) && (attack_player != defend_player))
     {
@@ -1778,10 +1760,10 @@ void ftParamUpdate1PGameDamageStats(ftStruct *fp, s32 damage_player, s32 damage_
         {
             if ((gSceneData.spgame_player == damage_player) && (fp->damage_stat_flags.stat_attack_id != nFTStatusAttackIDNone))
             {
-                gGM1PGameBonusDefendIDCount[fp->damage_stat_flags.stat_attack_id]++;
-                gGM1PGameBonusDefendIsSmashCount[fp->damage_stat_flags.is_smash_attack]++;
-                gGM1PGameBonusDefendGroundAirCount[fp->damage_stat_flags.ga]++;
-                gGM1PGameBonusDefendIsProjectileCount[fp->damage_stat_flags.is_projectile]++;
+                gSC1PGameBonusDefendIDCount[fp->damage_stat_flags.stat_attack_id]++;
+                gSC1PGameBonusDefendIsSmashCount[fp->damage_stat_flags.is_smash_attack]++;
+                gSC1PGameBonusDefendGroundAirCount[fp->damage_stat_flags.ga]++;
+                gSC1PGameBonusDefendIsProjectileCount[fp->damage_stat_flags.is_projectile]++;
             }
         }
     }
@@ -2671,7 +2653,7 @@ s32 ftParamGetCostumeDevelop(s32 ft_kind)
 }
 
 // 0x800EC130
-void ftParamGameSet(void)
+void ftParamInitGame(void)
 {
     ftMainClearGroundElementsAll();
     ifCommonBattleInitPlacement();

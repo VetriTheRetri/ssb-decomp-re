@@ -194,7 +194,7 @@ void title_screen_entry();
 void debug_sss_entry();
 void debug_system_entry();
 void debug_battle_entry();
-void debug_falls_entry();
+void mnDebugFallsStartScene();
 void debug_button_test_entry();
 void menu_main_entry();
 void menu_1p_entry();
@@ -333,7 +333,7 @@ void start_scene_manager(u32 set)
 				break;
 			case 5:
 				syDmaLoadOverlay(&D_800A3070[15]);
-				debug_falls_entry();
+				mnDebugFallsStartScene();
 				break;
 			case 6:
 				syDmaLoadOverlay(&D_800A3070[16]);

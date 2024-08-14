@@ -786,7 +786,7 @@ void gmCreditsJobAndNameProcUpdate(GObj *gobj)
 
 	while (cn->interpolation != 1.0F)
 	{
-		gcAddDObjAnimJoint(dobj, gCreditsNameAObjAnimJoint, cn->interpolation * 99.0F);
+		gcAddDObjAnimJoint(dobj, gCreditsNameAObjStream, cn->interpolation * 99.0F);
 
 		hal_interpolation_cubic(&pos, gCreditsNameInterpolation, cn->interpolation);
 
@@ -1417,7 +1417,7 @@ void gmCreditsInitVars()
 	gCreditsNameAllocFree = NULL;
 	gCreditsIsPaused = FALSE;
 	gCreditsNameInterpolation = (void*) ((uintptr_t)gCreditsFiles[0] + (intptr_t)&lCreditsInterpolation);
-	gCreditsNameAObjAnimJoint = (AObjAnimJoint*) ((uintptr_t)gCreditsFiles[0] + (intptr_t)&lCreditsAObjAnimJoint);
+	gCreditsNameAObjStream = (AObjStream*) ((uintptr_t)gCreditsFiles[0] + (intptr_t)&lCreditsAObjStream);
 	gCreditsDObjDesc = (DObjDesc*) ((uintptr_t)gCreditsFiles[0] + (intptr_t)&lCreditsDObjDesc);
 	gCreditsRollBeginWait = 0;
 	gCreditsPlayer = gSceneData.spgame_player;

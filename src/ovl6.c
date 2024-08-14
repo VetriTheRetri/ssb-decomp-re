@@ -309,7 +309,7 @@ void scBonusGame_InitBonus2Bumpers()
 {
 	grBonus2Bumpers* bonus_desc;
 	DObjDesc* dobj_desc;
-	AObjAnimJoint** anim_joint;
+	AObjStream** anim_joint;
 	Vec3f vel;
 	GObj* item_gobj;
 
@@ -323,7 +323,7 @@ void scBonusGame_InitBonus2Bumpers()
 			= (DObjDesc*)((uintptr_t)bonus_desc
 						  + (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - nGRKindBonus2Start]
 								.o_main);
-		anim_joint = (AObjAnimJoint**)((uintptr_t)bonus_desc
+		anim_joint = (AObjStream**)((uintptr_t)bonus_desc
 							+ (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - nGRKindBonus2Start]
 								  .o_anim);
 		dobj_desc++, anim_joint++;

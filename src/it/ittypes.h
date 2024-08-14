@@ -222,8 +222,8 @@ struct itAttributes
 {
 	void *dobj_setup; 					// Either DObjDesc or displaylist?
 	MObjSub ***p_mobjsubs;				// Array of MObjSubs for each MObj on each DObj
-	AObjAnimJoint **anim_joints;		// Array of AnimJoints for each DObj
-	AObjAnimJoint ***p_matanim_joints;	// Array of MatAnimJoints for each MObj on each DObj
+	AObjStream **anim_joints;		// Array of AnimJoints for each DObj
+	AObjStream ***p_matanim_joints;	// Array of MatAnimJoints for each MObj on each DObj
 	ub32 is_render_xlu : 1;				// If TRUE, use transparency renderer
 	ub32 is_item_dobjs : 1;				// If TRUE, set up special item DObj node tree; otherwise set up common DObj node tree
 	ub32 is_render_colanim : 1;			// If TRUE, use ColAnim renderer

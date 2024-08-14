@@ -9,7 +9,6 @@
 // // // // // // // // // // // //
 
 extern intptr_t lITMainContainerVelocitiesY;  // 0x00000000
-extern ub8 gSC1PGameBonusMewCatcher;
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 extern void gcSetDObjTransformsForGObj();

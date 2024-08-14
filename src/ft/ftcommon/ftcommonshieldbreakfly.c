@@ -3,14 +3,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern ub8 gSC1PGameBonusShieldBreaker; // Bonus for breaking an enemy's shield in 1P game
-
-// // // // // // // // // // // //
-//                               //
 //           FUNCTIONS           //
 //                               //
 // // // // // // // // // // // //

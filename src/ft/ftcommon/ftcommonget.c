@@ -4,15 +4,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern u8 gSC1PGameBonusTomatoCount;
-extern u8 gSC1PGameBonusHeartCount;
-
-// // // // // // // // // // // //
-//                               //
 //           FUNCTIONS           //
 //                               //
 // // // // // // // // // // // //

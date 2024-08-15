@@ -21,7 +21,7 @@ scAutoDemoInitSObjs = 0x8018DB18; // segment:ovl64
 scAutoDemoProcStart = 0x8018DCC4; // segment:ovl64
 scAutoDemoProcLights = 0x8018DFC8; // segment:ovl64
 scAutoDemoStartScene = 0x8018E014; // segment:ovl64
-scAutoDemoFileSetup = 0x8018E0C0; // segment:ovl64
+scAutoDemoSetupFiles = 0x8018E0C0; // segment:ovl64
 
 D_ovl64_8018E160 = 0x8018E160; // segment:ovl64
 dSCAutoDemoGroundOrder = 0x8018E168; // segment:ovl64

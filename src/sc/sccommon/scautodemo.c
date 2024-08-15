@@ -617,7 +617,7 @@ void scAutoDemoProcStart(void)
 	s32 player;
 
 	scAutoDemoInitDemo();
-	scAutoDemoFileSetup();
+	scAutoDemoSetupFiles();
 	func_8000B9FC(9, 0x80000000U, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
 	ftParamInitGame();

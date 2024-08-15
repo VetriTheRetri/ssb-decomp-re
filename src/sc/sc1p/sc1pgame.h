@@ -51,7 +51,7 @@ extern u32 gSC1PGameBonusDefendGroundAirCount[/* */];
 // 0x801938A8
 extern u32 gSC1PGameBonusDefendIsProjectileCount[/* */];
 
-extern void sc1PGameFileSetup(void);
+extern void sc1PGameSetupFiles(void);
 extern void sc1PGameSetGameStart(void);
 extern void sc1PGameSetGameEnd(void);
 extern void sc1PGameProcScene(void);

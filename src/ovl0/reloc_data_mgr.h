@@ -27,6 +27,36 @@ typedef struct rdSetup
 
 #define GetAddressFromOffset(file_ptr, offset) ((int*)((intptr_t)(file_ptr) + (intptr_t)(offset)))
 
+// Can't actually use this in a matching build, newline memes :(
+#define rdManagerSetupCommonFiles(status_buf, force_buf)                    \
+{                                                                           \
+    rdSetup rd_setup;                                                       \
+    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;                  \
+    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;         \
+    rd_setup.file_heap = NULL;                                              \
+    rd_setup.file_heap_size = 0;                                            \
+    rd_setup.status_buf = status_buf;                                       \
+    rd_setup.status_buf_size = (status_buf) ? ARRAY_COUNT(status_buf) : 0;  \
+    rd_setup.force_buf = force_buf;                                         \
+    rd_setup.force_buf_size = (force_buf) ? ARRAY_COUNT(force_buf) : 0;     \
+    rdManagerInitSetup(&rd_setup);                                          \
+    rdManagerLoadFiles                                                      \
+    (                                                                       \
+        dGMCommonFileIDs,                                                   \
+        ARRAY_COUNT(dGMCommonFileIDs),                                      \
+        gGMCommonFiles,                                                     \
+        gsMemoryAlloc                                                       \
+        (                                                                   \
+            rdManagerGetAllocSize                                           \
+            (                                                               \
+                dGMCommonFileIDs,                                           \
+                ARRAY_COUNT(dGMCommonFileIDs)                               \
+            ),                                                              \
+            0x10                                                            \
+        )                                                                   \
+    );                                                                      \
+}
+
 extern uintptr_t lRDManagerTableFilesNum;   // 0x00000854
 extern uintptr_t lRDManagerTableAddr;       // 0x001AC870
 

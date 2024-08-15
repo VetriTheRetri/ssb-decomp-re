@@ -1723,8 +1723,13 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x18A6D0, asm, ovl63]
-      - [0x18BCF0, data, ovl63]
+      - [0x18A6D0, c, sc/sccommon/scexplain]
+      - [0x18BC50, c, sc/sccommon/scexplainfiles]
+      - [0x18BCF0, .data, sc/sccommon/scexplain]
+      - [0x18BDF0, .rodata, sc/sccommon/scexplain]
+      - { start: auto, type: .bss, vram: 0x8018E7F0, name: sc/sccommon/scexplain }
+      - { start: auto, type: .bss, vram: 0x8018EA30, name: sc/sccommon/scexplainfiles }
+
 
   - name: ovl64
     type: code
@@ -1733,11 +1738,11 @@ segments:
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x18BE00, c, sc/sccommon/scautodemo]
-      - [0x18CE00, c, sc/sccommon/scautodemofilesetup]
+      - [0x18CE00, c, sc/sccommon/scautodemofiles]
       - [0x18CEA0, .data, sc/sccommon/scautodemo]
       - [0x18D020, .rodata, sc/sccommon/scautodemo]
       - { start: auto, type: .bss, vram: 0x8018E2F0, name: sc/sccommon/scautodemo }
-      - { start: auto, type: .bss, vram: 0x8018E500, name: sc/sccommon/scautodemofilesetup }
+      - { start: auto, type: .bss, vram: 0x8018E500, name: sc/sccommon/scautodemofiles }
 
   - name: ovl16
     type: code

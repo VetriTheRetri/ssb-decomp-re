@@ -450,7 +450,25 @@ void sc1PGameBossSetChangeWallpaper(void)
 // 0x80191120
 void sc1PGameBossMakeCamera(void)
 {
-    Camera *cam = CameraGetStruct(func_8000B93C(nOMObjCommonKindUnkCamera3, NULL, 9, GOBJ_DLLINKORDER_DEFAULT, func_80017EC0, 0x28, 0x20, 1, 1, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct
+    (
+        func_8000B93C
+        (
+            nOMObjCommonKindUnkCamera3, 
+            NULL,
+            nOMObjCommonLinkIDBattleCamera,
+            GOBJ_LINKORDER_DEFAULT,
+            func_80017EC0,
+            40,
+            CAMERA_MASK_DLLINK(5),
+            1,
+            1,
+            1,
+            0,
+            1,
+            0
+        )
+    );
     func_80007080(&cam->viewport, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
 
     cam->projection.persp.aspect = (f32)(gCMManagerCameraStruct.viewport_lrx - gCMManagerCameraStruct.viewport_ulx) / (f32)(gCMManagerCameraStruct.viewport_lry - gCMManagerCameraStruct.viewport_uly);
@@ -461,7 +479,25 @@ void sc1PGameBossMakeCamera(void)
     cam->vec.eye.x = cam->vec.eye.y = 0.0F;
     cam->vec.eye.z = 2000.0F;
 
-    cam = CameraGetStruct(func_8000B93C(nOMObjCommonKindUnkCamera3, NULL, 9, GOBJ_DLLINKORDER_DEFAULT, func_80017EC0, 0x3C, 0x20, 2, 1, 1, 0, 1, 0));
+    cam = CameraGetStruct
+    (
+        func_8000B93C
+        (
+            nOMObjCommonKindUnkCamera3,
+            NULL,
+            nOMObjCommonLinkIDBattleCamera,
+            GOBJ_DLLINKORDER_DEFAULT,
+            func_80017EC0,
+            60,
+            CAMERA_MASK_DLLINK(5),
+            2,
+            1,
+            1,
+            0,
+            1,
+            0
+        )
+    );
     func_80007080(&cam->viewport, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
 
     cam->projection.persp.aspect = (f32)(gCMManagerCameraStruct.viewport_lrx - gCMManagerCameraStruct.viewport_ulx) / (f32)(gCMManagerCameraStruct.viewport_lry - gCMManagerCameraStruct.viewport_uly);

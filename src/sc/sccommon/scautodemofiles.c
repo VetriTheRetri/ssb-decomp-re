@@ -20,7 +20,7 @@ rdFileNode sSCAutoDemoForceBuf[7];
 // // // // // // // // // // // //
 
 // 0x8018E0C0
-void scAutoDemoFileSetup(void)
+void scAutoDemoSetupFiles(void)
 {
 	rdSetup rd_setup;
 

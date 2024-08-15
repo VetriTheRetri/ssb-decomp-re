@@ -33,6 +33,6 @@ extern void scAutoDemoProcLights(Gfx **dls);
 extern void scAutoDemoStartScene(void);
 
 // Other file but it's not worth making another header for this one function
-extern void scAutoDemoFileSetup(void);
+extern void scAutoDemoSetupFiles(void);
 
 #endif

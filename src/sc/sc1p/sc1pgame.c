@@ -729,7 +729,7 @@ scRuntimeInfo dSC1PGameGtlSetup =
 // // // // // // // // // // // //
 
 // 0x8018D0C0
-void sc1PGameFileSetup(void)
+void sc1PGameSetupFiles(void)
 {
     rdSetup rd_setup;
 
@@ -2009,7 +2009,7 @@ void sc1PGameProcStart(void)
     Unk800D4060 sp58;
 
     sc1PGameSetupStageAll();
-    sc1PGameFileSetup();
+    sc1PGameSetupFiles();
 
     if (!(gSaveData.error_flags & SCBACKUP_ERROR_BATTLECASTLE) && (gSaveData.unk5E3 > 0x5C))
     {

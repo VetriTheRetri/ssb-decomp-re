@@ -5,6 +5,7 @@
                              * grouped together with scene data and battle state
                              */
 // Common scenes
+#include <sc/sccommon/scexplain.h>
 #include <sc/sccommon/scautodemo.h>
 
 // 1P Game scenes

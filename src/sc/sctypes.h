@@ -180,6 +180,48 @@ struct scTrainingStruct
 	ub8 is_read_menu_inputs;                    // Menu navigation inputs are ignored if FALSE
 };
 
+struct scExplainMain
+{
+    SObj *textbox_sobj;
+    GObj *stick_gobj;
+    GObj *spark_gobj;
+    GObj *rgb_gobj;
+    SObj *phase_sobj0;
+    SObj *phase_sobj1;
+    SObj *phase_sobj2;
+    SObj *phase_sobj3;
+    SObj *phase_sobj4;
+    SObj *phase_sobj5;
+    s32 phase_advance_wait;
+    s32 phase;
+    u8 unk_scexplainif_0x30;
+    u8 stick_status;
+};
+
+struct scExplainArgs
+{
+    u16 sprite_pos_x;
+    u8 sprite_pos_y;
+    u8 sprite_status;
+};
+
+struct scExplainPhase
+{
+    u16 phase_time;                     // Time the given explanation phase of the How to Play tutorial should last
+    u16 unused;
+    u8 textbox_pos_x;
+    u8 textbox_pos_y;
+    Sprite *sprite;
+    scExplainArgs control_stick_args;
+    scExplainArgs phase_args0;
+    scExplainArgs phase_args1;
+    scExplainArgs phase_args2;
+    scExplainArgs phase_args3;
+    scExplainArgs phase_args4;
+    scExplainArgs rgb_overlay_args;
+    scExplainArgs phase_args5;
+};
+
 struct scAutoDemoProc
 {
 	u16 focus_end_wait;

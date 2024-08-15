@@ -1,4 +1,4 @@
-sc1PGameFileSetup = 0x8018D0C0; // segment:ovl65
+sc1PGameSetupFiles = 0x8018D0C0; // segment:ovl65
 sc1PGameSetGameStart = 0x8018D160; // segment:ovl65
 sc1PGameSetGameEnd = 0x8018D1A8; // segment:ovl65
 sc1PGameProcScene = 0x8018D200; // segment:ovl65

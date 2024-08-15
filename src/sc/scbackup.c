@@ -1,7 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
-
-extern void syDisplaySetCenterOffsets(s16, s16, s16, s16);
+#include <sys/system_00.h>
 
 // 0x800D4520
 s32 scBackupCreateChecksum(scBackupData *bp)

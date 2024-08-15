@@ -18,279 +18,416 @@ extern void func_ovl8_80386BE0(char*, const char*);                       /* ext
 // // ovl9 stuff
 
 // 0x80369F7C
-extern dbMenuPosition D_ovl9_80369F7C;
+extern dbMenuPosition gMNDebugMenuMenuPosition;
+
+// 0x80369FCC
+extern u16 gMNDebugMenuPreviousInputs;
+
+// 0x80369FD0
+extern u16 gMNDebugMenuNewInputs;
+
+// 0x80369FD4
+extern u16 gMNDebugMenuStickInputs;
+
+// 0x80369FD8
+extern s32 gMNDebugMenuRapidScrollWait;
 
 // 0x8036A3B0
 extern char D_ovl9_8036A3B0[] = ">";
 
+// 0x8037140C
+extern dbMenuItem *gMNDebugMenuMenuItems;
+
+// 0x80371410
+extern s32 gMNDebugMenuMenuItemsCount;
+
+// 0x80371414
+extern s32 gMNDebugMenuCursorIndex;
+
+// 0x8037141C
+extern s32 gMNDebugMenuRedrawInterrupt;
+
+// 0x80371420
+extern sb32 gMNDebugMenuIsMenuOpen;
+
 // 0x80371428
 extern char D_ovl9_80371428[0x38]; // string buffer?
 
-
-// // 0x800D66E0
-// extern Lights1 dMNDebugFallsLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
-
-// // 0x800D66F8
-// extern Gfx dMNDebugFallsDisplayList[/* */] =
-// {
-//     gsSPSetGeometryMode(G_LIGHTING),
-//     gsSPSetLights1(dMNDebugFallsLights1),
-//     gsSPEndDisplayList()
-// };
-
-// // 0x800D6720
-// extern s32 gMNDebugFallsExitInterrupt;
-
-// // 0x800D6724
-// // UB: Menu expects 27 like in debug-battle.c but here only 5 are defined
-// extern char (*dMNDebugFallsFighterKindStrings[5])[] = {
-//     dMNDebugBattleMario,
-//     dMNDebugBattleFox,
-//     dMNDebugBattleDonkey,
-//     dMNDebugBattleSamus,
-//     dMNDebugBattleLuigi
-// };
-
-// // 0x800D6738
-// extern dbMenuItem dMNDebugFallsMenuItems[15] = {
-//     { dbMenuItemKindExitLabel,      mnDebugFallsExit,   dMNDebugFallsExit,                  0,                                                      0.0F, 0.0F,     0 },
-//     { dbMenuItemKindStringByte,     0,                  dMNDebugFallsFighterKindStrings,    &gTransferBattleState.player_block[0].character_kind,   0.0F, 26.0F,    0 },
-//     { dbMenuItemKindNumeric,        0,                  dMNDebugFallsDead,                  &gTransferBattleState.player_block[0].falls,            0.0F, 65536.0F, 0 },
-//     { dbMenuItemKindNumeric,        0,                  dMNDebugFallsFinish,                &gTransferBattleState.player_block[0].score,            0.0F, 65536.0F, 0 },
-//     { dbMenuItemKindStringByte,     0,                  dMNDebugFallsFighterKindStrings,    &gTransferBattleState.player_block[1].character_kind,   0.0F, 26.0F,    0 },
-//     { dbMenuItemKindNumeric,        0,                  dMNDebugFallsDead,                  &gTransferBattleState.player_block[1].falls,            0.0F, 65536.0F, 0 },
-//     { dbMenuItemKindNumeric,        0,                  dMNDebugFallsFinish,                &gTransferBattleState.player_block[1].score,            0.0F, 65536.0F, 0 },
-//     { dbMenuItemKindStringByte,     0,                  dMNDebugFallsFighterKindStrings,    &gTransferBattleState.player_block[2].character_kind,   0.0F, 26.0F,    0 },
-//     { dbMenuItemKindNumeric,        0,                  dMNDebugFallsDead,                  &gTransferBattleState.player_block[2].falls,            0.0F, 65536.0F, 0 },
-//     { dbMenuItemKindNumeric,        0,                  dMNDebugFallsFinish,                &gTransferBattleState.player_block[2].score,            0.0F, 65536.0F, 0 },
-//     { dbMenuItemKindStringByte,     0,                  dMNDebugFallsFighterKindStrings,    &gTransferBattleState.player_block[3].character_kind,   0.0F, 26.0F,    0 },
-//     { dbMenuItemKindNumeric,        0,                  dMNDebugFallsDead,                  &gTransferBattleState.player_block[3].falls,            0.0F, 65536.0F, 0 },
-//     { dbMenuItemKindNumeric,        0,                  dMNDebugFallsFinish,                &gTransferBattleState.player_block[3].score,            0.0F, 65536.0F, 0 }
-// };
-
-// extern scUnkDataBounds D_ovl15_800D68A4;
-// extern scRuntimeInfo D_ovl15_800D68C0;
-
-// // 0x800D6950
-// extern char dMNDebugBattleMario[] = "Mario";
-
-// // 0x800D6958
-// extern char dMNDebugBattleFox[] = "Fox";
-
-// // 0x800D695C
-// extern char dMNDebugBattleDonkey[] = "Donkey";
-
-// // 0x800D6964
-// extern char dMNDebugBattleSamus[] = "Samus";
-
-// // 0x800D696C
-// extern char dMNDebugBattleLuigi[] = "Luigi";
-
-// // 0x800D6974
-// extern char dMNDebugFallsExit[] = "Exit";
-
-// // 0x800D697C
-// extern char dMNDebugFallsDead[] = " Dead : %3d";
-
-// // 0x800D6988
-// extern char dMNDebugFallsFinish[] = " Finish : %3d";
-
 // 0x80369240
-void func_ovl9_80369240()
+void mnDebugMenuUpdateMenuInputs()
 {
+    u16 inputs = 0;
     gsController *controller = &gSysController;
-    u16 var_v0 = 0;
 
-    if (gSysController.stick_range.x >= 0x29)
+    if (gSysController.stick_range.x > 40)
     {
-        var_v0 = 0x100;
+        inputs |= R_JPAD;
     }
 
-    if (gSysController.stick_range.x <= -0x29)
+    if (gSysController.stick_range.x < -40)
     {
-        var_v0 |= 0x200;
+        inputs |= L_JPAD;
     }
 
-    if (controller->stick_range.y >= 0x29)
+    if (controller->stick_range.y > 40)
     {
-        var_v0 |= 0x800;
+        inputs |= U_JPAD;
     }
 
-    if (controller->stick_range.y <= -0x29)
+    if (controller->stick_range.y < -40)
     {
-        var_v0 |= 0x400;
+        inputs |= D_JPAD;
     }
 
-    D_ovl9_80369FD0 = (var_v0 ^ D_ovl9_80369FCC) & var_v0;
+    gMNDebugMenuNewInputs = (inputs ^ gMNDebugMenuPreviousInputs) & inputs;
 
-    if ((var_v0 ^ D_ovl9_80369FCC) != 0)
+    if ((inputs ^ gMNDebugMenuPreviousInputs) != 0)
     {
-        D_ovl9_80369FD4 = D_ovl9_80369FD0;
-        D_ovl9_80369FD8 = 0x1E;
+        gMNDebugMenuStickInputs = gMNDebugMenuNewInputs;
+        gMNDebugMenuRapidScrollWait = 30;
     }
     else
     {
-        D_ovl9_80369FD8--;
+        gMNDebugMenuRapidScrollWait--;
 
-        if (D_ovl9_80369FD8 > 0)
+        if (gMNDebugMenuRapidScrollWait > 0)
         {
-            D_ovl9_80369FD4 = 0;
+            gMNDebugMenuStickInputs = 0;
         }
         else
         {
-            D_ovl9_80369FD4 = var_v0;
-            D_ovl9_80369FD8 = 5;
+            gMNDebugMenuStickInputs = inputs;
+            gMNDebugMenuRapidScrollWait = 5;
         }
     }
 
-    D_ovl9_80369FCC = var_v0;
+    gMNDebugMenuPreviousInputs = inputs;
 }
 
 // 0x80369310
-void func_ovl9_80369310(dbMenuPosition *arg0, const char *str, ...)
+void mnDebugMenuDrawString(dbMenuPosition *arg0, const char *str, ...)
 {
     func_ovl8_80386BE0(D_ovl9_80371428, &str);
     func_ovl8_8037DD60(arg0, D_ovl9_80371428);
 }
 
 // 0x80369358
-void func_ovl9_80369358(s32 arg0, dbMenuPosition* arg1)
+void mnDebugMenuDrawBorder(s32 arg0, dbMenuPosition* arg1)
 {
     dbMenuPosition* temp_s0;
     dbMenuPosition menu_position;
 
     temp_s0 = func_ovl8_803749BC(arg0);
 
-    func_ovl8_80374A54(arg0, &D_ovl9_80369F7C);
+    func_ovl8_80374A54(arg0, &gMNDebugMenuMenuPosition);
 
+    // draw top border
     menu_position.x = 0;
     menu_position.y = 0;
     menu_position.w = 1;
-    menu_position.h = D_ovl9_80369F7C.h;
+    menu_position.h = gMNDebugMenuMenuPosition.h;
     func_ovl8_80377AEC(temp_s0, &menu_position, arg1, 4);
 
-    menu_position.w = D_ovl9_80369F7C.w;
+    // draw left border
+    menu_position.w = gMNDebugMenuMenuPosition.w;
     menu_position.h = 1;
     func_ovl8_80377AEC(temp_s0, &menu_position, arg1, 4);
 
-    menu_position.y = D_ovl9_80369F7C.h - 1;
+    // draw bottom border
+    menu_position.y = gMNDebugMenuMenuPosition.h - 1;
     menu_position.h = 1;
     func_ovl8_80377AEC(temp_s0, &menu_position, arg1, 4);
 
-    menu_position.x = D_ovl9_80369F7C.w - 1;
+    // draw right border
+    menu_position.x = gMNDebugMenuMenuPosition.w - 1;
     menu_position.y = 0;
     menu_position.w = 1;
-    menu_position.h = D_ovl9_80369F7C.h;
+    menu_position.h = gMNDebugMenuMenuPosition.h;
     func_ovl8_80377AEC(temp_s0, &menu_position, arg1, 4);
 }
 
 // 0x8036944C
-void func_ovl9_8036944C(s32 arg0, s32 arg1)
+void mnDebugMenuDrawBackground(s32 arg0, s32 arg1)
 {
     dbMenuPosition *sp24;
     dbMenuPosition sp1C;
 
     sp24 = func_ovl8_803749BC(arg0);
 
-    func_ovl8_80374A54(arg0, &D_ovl9_80369F7C);
+    func_ovl8_80374A54(arg0, &gMNDebugMenuMenuPosition);
 
+    // draw bg
     sp1C.x = 1;
     sp1C.y = 1;
-    sp1C.w = D_ovl9_80369F7C.w - 2;
-    sp1C.h = D_ovl9_80369F7C.h - 2;
+    sp1C.w = gMNDebugMenuMenuPosition.w - 2;
+    sp1C.h = gMNDebugMenuMenuPosition.h - 2;
     func_ovl8_80377AEC(sp24, &sp1C, arg1, 4);
 }
 
 // 0x803694C8
-void func_ovl9_803694C8(void* arg0, dbMenuItem* menu_item)
+void mnDebugMenuDrawMenuItem(void* arg0, dbMenuItem* menu_item)
 {
     switch (menu_item->type)
     {
-        case dbMenuItemKindExitLabel:
-        case dbMenuItemKindLabel:
-            func_ovl9_80369310(func_ovl8_803749BC(arg0), menu_item->label);
+        case nDBMenuItemKindExitLabel:
+        case nDBMenuItemKindLabel:
+            mnDebugMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label);
             break;
-        case dbMenuItemKindNumeric:
-            func_ovl9_80369310(func_ovl8_803749BC(arg0), menu_item->label, *menu_item->value.w);
+        case nDBMenuItemKindNumeric:
+            mnDebugMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label, *menu_item->value.s);
             break;
-        case dbMenuItemKindNumericByte:
-            func_ovl9_80369310(func_ovl8_803749BC(arg0), menu_item->label, *menu_item->value.b);
+        case nDBMenuItemKindNumericByte:
+            mnDebugMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label, *menu_item->value.b);
             break;
-        case dbMenuItemKindDouble:
-            func_ovl9_80369310(func_ovl8_803749BC(arg0), menu_item->label, (f64) *menu_item->value.f);
+        case nDBMenuItemKindDouble:
+            mnDebugMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label, (f64) *menu_item->value.f);
             break;
-        case dbMenuItemKindString:
-            func_ovl9_80369310(func_ovl8_803749BC(arg0), ((uintptr_t*) menu_item->label)[*menu_item->value.w]);
+        case nDBMenuItemKindString:
+            mnDebugMenuDrawString(func_ovl8_803749BC(arg0), ((uintptr_t*) menu_item->label)[*menu_item->value.s]);
             break;
-        case dbMenuItemKindStringByte:
-            func_ovl9_80369310(func_ovl8_803749BC(arg0), ((uintptr_t*) menu_item->label)[*menu_item->value.b]);
+        case nDBMenuItemKindStringByte:
+            mnDebugMenuDrawString(func_ovl8_803749BC(arg0), ((uintptr_t*) menu_item->label)[*menu_item->value.b]);
             break;
     }
 }
 
 // 0x80369600
-void func_ovl9_80369600(void* arg0, dbMenuItem *arg1, s32 arg2)
+void mnDebugMenuDrawMenuItems(void* arg0, dbMenuItem *menu_item, s32 arg2)
 {
     s32 i;
 
-    for (i = 0; i < arg2; i++, arg1++)
+    for (i = 0; i < arg2; i++, menu_item++)
     {
         func_ovl8_8037DFCC(12, 2 + 9 * i);
-        func_ovl9_803694C8(arg0, arg1);
+        mnDebugMenuDrawMenuItem(arg0, menu_item);
     }
 }
 
 // 0x80369680
-void func_ovl9_80369680(void* arg0, s32 arg1)
+void mnDebugMenuDrawCursor(void* arg0, s32 cursor_index)
 {
-    func_ovl8_8037DFCC(3, (arg1 * 9) + 2, arg1);
-    func_ovl9_80369310(func_ovl8_803749BC(arg0), &D_ovl9_8036A3B0);
+    func_ovl8_8037DFCC(3, (cursor_index * 9) + 2, cursor_index);
+    mnDebugMenuDrawString(func_ovl8_803749BC(arg0), &D_ovl9_8036A3B0);
 }
 
 // 0x803696D4
-void func_ovl9_803696D4(s32 arg0)
+void gMNDebugMenuRenderMenu(s32 arg0)
 {
-    if (D_ovl9_8037141C != 0)
+    if (gMNDebugMenuRedrawInterrupt != 0)
     {
-        D_ovl9_8037141C = 0;
-        func_ovl9_8036944C(D_ovl9_80371404, &D_ovl9_80369F64);
-        func_ovl9_80369600(D_ovl9_80371404, D_ovl9_8037140C, D_ovl9_80371410);
-        func_ovl9_80369680(D_ovl9_80371404, D_ovl9_80371414);
+        gMNDebugMenuRedrawInterrupt = 0;
+
+        mnDebugMenuDrawBackground(D_ovl9_80371404, &D_ovl9_80369F64);
+        mnDebugMenuDrawMenuItems(D_ovl9_80371404, gMNDebugMenuMenuItems, gMNDebugMenuMenuItemsCount);
+        mnDebugMenuDrawCursor(D_ovl9_80371404, gMNDebugMenuCursorIndex);
     }
 
     D_ovl9_80371418(arg0);
 }
 
-// func_ovl9_8036975C
+// 0x8036975C
+void mnDebugMenuHandleInputs(GObj *gobj)
+{
+    gsController *controller = &gSysController;
+    s32 stick_x;
+    f32 temp;
+
+    mnDebugMenuUpdateMenuInputs();
+
+    if ((controller->button_update & U_JPAD) || (gMNDebugMenuStickInputs & U_JPAD))
+    {
+        gMNDebugMenuCursorIndex = (gMNDebugMenuCursorIndex > 0) ? gMNDebugMenuCursorIndex - 1 : gMNDebugMenuMenuItemsCount - 1;
+
+        gMNDebugMenuRedrawInterrupt = 1;
+    }
+
+    if ((controller->button_update & D_JPAD) || (gMNDebugMenuStickInputs & D_JPAD))
+    {
+        gMNDebugMenuCursorIndex = (gMNDebugMenuCursorIndex < (gMNDebugMenuMenuItemsCount - 1)) ? gMNDebugMenuCursorIndex + 1 : 0;
+
+        gMNDebugMenuRedrawInterrupt = 1;
+    }
+
+    if ((controller->button_update & L_JPAD) || (gMNDebugMenuStickInputs & L_JPAD))
+    {
+        switch (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].type)
+        {
+            case nDBMenuItemKindNumeric:
+            case nDBMenuItemKindString:
+                if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min < *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.s)
+                {
+                    *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.s -= 1;
+                }
+                else
+                {
+                    *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.s = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max;
+                }
+                gMNDebugMenuRedrawInterrupt = 1;
+                break;
+
+            case nDBMenuItemKindNumericByte:
+            case nDBMenuItemKindStringByte:
+                if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min < *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.b)
+                {
+                    *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.b -= 1;
+                }
+                else
+                {
+                    *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.b = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max;
+                }
+                gMNDebugMenuRedrawInterrupt = 1;
+                break;
+
+            case nDBMenuItemKindDouble:
+                if (controller->button_update & L_JPAD)
+                {
+                    if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min < *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f + -1.0F)
+                    {
+                        *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f += -1.0F;
+                    }
+                    else *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min;
+
+                    gMNDebugMenuRedrawInterrupt = 1;
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    if ((controller->button_update & R_JPAD) || (gMNDebugMenuStickInputs & R_JPAD))
+    {
+        switch (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].type)
+        {
+            case nDBMenuItemKindNumeric:
+            case nDBMenuItemKindString:
+                if (*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.s < gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max)
+                {
+                    *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.s += 1;
+                }
+                else
+                {
+                    *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.s = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min;
+                }
+                gMNDebugMenuRedrawInterrupt = 1;
+                break;
+
+            case nDBMenuItemKindNumericByte:
+            case nDBMenuItemKindStringByte:
+                if (*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.b < gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max)
+                {
+                    *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.b += 1;
+                }
+                else
+                {
+                    *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.b = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min;
+                }
+                gMNDebugMenuRedrawInterrupt = 1;
+                break;
+
+            case nDBMenuItemKindDouble:
+                if (controller->button_update & R_JPAD)
+                {
+                    if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max > *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f + 1.0F)
+                    {
+                        *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f += 1.0F;
+                    }
+                    else
+                    {
+                        *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max;
+                    }
+                    gMNDebugMenuRedrawInterrupt = 1;
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    stick_x = controller->stick_range.x;
+
+    if (ABS(stick_x) > 20)
+    {
+        if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].type == nDBMenuItemKindDouble)
+        {
+            temp = (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].unknown18 * stick_x);
+
+            if (stick_x > 0)
+            {
+                if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max > *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f + temp)
+                {
+                    *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f += temp;
+                }
+                else *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max;
+            }
+            else if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min < *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f + temp)
+            {
+                *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f += temp;
+            }
+            else *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min;
+
+            gMNDebugMenuRedrawInterrupt = 1;
+        }
+    }
+
+    if (controller->button_new & A_BUTTON)
+    {
+        if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].type == nDBMenuItemKindExitLabel)
+        {
+            D_ovl9_80371400 = gMNDebugMenuCursorIndex;
+            func_ovl8_8037488C(D_ovl9_80371404);
+
+            gMNDebugMenuIsMenuOpen = FALSE;
+
+            sGSGTLNumTasks = D_ovl9_80371424;
+        }
+
+        if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].proc_a != NULL)
+        {
+            gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].proc_a();
+
+            gMNDebugMenuRedrawInterrupt = 1;
+        }
+    }
+    if (controller->button_new & B_BUTTON)
+    {
+        func_ovl8_8037488C(D_ovl9_80371404);
+
+        gMNDebugMenuIsMenuOpen = FALSE;
+
+        sGSGTLNumTasks = D_ovl9_80371424;
+    }
+}
 
 // 0x80369D78
-void func_ovl9_80369D78(s32 arg0, s32 arg1, s32 arg2, dbMenuItem *arg3, s32 arg4)
+void mnDebugMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem *menu_items, s32 menu_items_count)
 {
-    if (D_ovl9_80371420 == 0)
+    if (gMNDebugMenuIsMenuOpen == FALSE)
     {
-        D_ovl9_80371420 = 1;
-        D_ovl9_8037140C = arg3;
-        D_ovl9_80371410 = arg4;
-        D_ovl9_8037141C = 0;
-        D_ovl9_80371414 = D_ovl9_8037141C;
+        gMNDebugMenuIsMenuOpen = TRUE;
+        gMNDebugMenuMenuItems = menu_items;
+        gMNDebugMenuMenuItemsCount = menu_items_count;
+        gMNDebugMenuCursorIndex = gMNDebugMenuRedrawInterrupt = 0;
         D_ovl9_80371400 = -1;
 
-        D_ovl9_80369F7C.x = arg0;
-        D_ovl9_80369F7C.y = arg1;
-        D_ovl9_80369F7C.w = arg2;
-        D_ovl9_80369F7C.h = (arg4 * 9) + 3;
+        gMNDebugMenuMenuPosition.x = x;
+        gMNDebugMenuMenuPosition.y = y;
+        gMNDebugMenuMenuPosition.w = w;
+        gMNDebugMenuMenuPosition.h = (menu_items_count * 9) + 3;
 
-        D_ovl9_80371404 = func_ovl8_80381C80(&D_ovl9_80369F7C);
+        D_ovl9_80371404 = func_ovl8_80381C80(&gMNDebugMenuMenuPosition);
         D_ovl9_80371408 = func_ovl8_80374910(D_ovl9_80371404);
 
-        func_ovl9_80369358(D_ovl9_80371404, &D_ovl9_80369F68);
-        func_ovl9_80369600(D_ovl9_80371404, arg3, arg4);
-        func_ovl9_80369680(D_ovl9_80371404, D_ovl9_80371414);
+        mnDebugMenuDrawBorder(D_ovl9_80371404, &D_ovl9_80369F68);
+        mnDebugMenuDrawMenuItems(D_ovl9_80371404, menu_items, menu_items_count);
+        mnDebugMenuDrawCursor(D_ovl9_80371404, gMNDebugMenuCursorIndex);
 
         D_ovl9_80371418 = D_ovl9_80371408->renderer;
-        D_ovl9_80371408->renderer = func_ovl9_803696D4;
+        D_ovl9_80371408->renderer = gMNDebugMenuRenderMenu;
 
-        omAddGObjCommonProc(D_ovl9_80371408, func_ovl9_8036975C, 1, 1);
+        omAddGObjCommonProc(D_ovl9_80371408, mnDebugMenuHandleInputs, 1, 1);
 
         D_ovl9_80371424 = sGSGTLNumTasks;
         sGSGTLNumTasks = 1;
@@ -298,9 +435,32 @@ void func_ovl9_80369D78(s32 arg0, s32 arg1, s32 arg2, dbMenuItem *arg3, s32 arg4
 }
 
 // 0x80369EC0
-void func_ovl9_80369EC0()
+void mnDebugMenuDestroyMenu()
 {
     func_ovl8_8037BB78();
 }
 
-// func_ovl9_80369EE0
+// 0x80369EE0
+void mnDebugMenuInitMenu()
+{
+    dbUnk80369EE0_1 sp2C;
+    s32 sp18[5];
+
+    sp2C.unk_80369EE0_1_0x0 = &D_ovl9_8036A400;
+    sp2C.unk_80369EE0_1_0x4 = 0x7000;
+    sp2C.unk_80369EE0_1_0x8 = 0;
+
+    func_ovl8_8037B98C(&sp2C);
+
+    func_ovl8_8037D6D4(&D_ovl9_8036A398);
+    func_ovl8_8037D9D0(&D_ovl9_80369F6C);
+    func_ovl8_8037D9B4(&D_ovl9_80369F70);
+
+    func_ovl8_8037D95C(sp18);
+
+    sp18[0] = 4;
+
+    func_ovl8_8037D908(sp18);
+
+    gMNDebugMenuIsMenuOpen = FALSE;
+}

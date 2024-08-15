@@ -26,8 +26,8 @@ glabel mnDebugStageSelectMain
   /* 119E10 800D64B0 31CF1000 */      andi $t7, $t6, 0x1000
   /* 119E14 800D64B4 11E00010 */      beqz $t7, .L800D64F8
   /* 119E18 800D64B8 AFA40020 */        sw $a0, 0x20($sp)
-  /* 119E1C 800D64BC 3C188037 */       lui $t8, %hi(D_ovl9_80371420)
-  /* 119E20 800D64C0 8F181420 */        lw $t8, %lo(D_ovl9_80371420)($t8)
+  /* 119E1C 800D64BC 3C188037 */       lui $t8, %hi(gMNDebugMenuIsMenuOpen)
+  /* 119E20 800D64C0 8F181420 */        lw $t8, %lo(gMNDebugMenuIsMenuOpen)($t8)
   /* 119E24 800D64C4 24040032 */     addiu $a0, $zero, 0x32
   /* 119E28 800D64C8 24050032 */     addiu $a1, $zero, 0x32
   /* 119E2C 800D64CC 13000005 */      beqz $t8, .L800D64E4
@@ -40,14 +40,14 @@ glabel mnDebugStageSelectMain
   /* 119E44 800D64E4 3C07800D */       lui $a3, %hi(D_ovl12_800D672C)
   /* 119E48 800D64E8 24190002 */     addiu $t9, $zero, 2
   /* 119E4C 800D64EC AFB90010 */        sw $t9, 0x10($sp)
-  /* 119E50 800D64F0 0C0DA75E */       jal func_ovl9_80369D78
+  /* 119E50 800D64F0 0C0DA75E */       jal mnDebugMenuCreateMenu
   /* 119E54 800D64F4 24E7672C */     addiu $a3, $a3, %lo(D_ovl12_800D672C)
   .L800D64F8:
   /* 119E58 800D64F8 3C08800D */       lui $t0, %hi(dMNDebugStageSelectInterrupt)
   /* 119E5C 800D64FC 8D086680 */        lw $t0, %lo(dMNDebugStageSelectInterrupt)($t0)
   /* 119E60 800D6500 51000027 */      beql $t0, $zero, .L800D65A0
   /* 119E64 800D6504 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 119E68 800D6508 0C0DA7B0 */       jal func_ovl9_80369EC0
+  /* 119E68 800D6508 0C0DA7B0 */       jal mnDebugMenuDestroyMenu
   /* 119E6C 800D650C 00000000 */       nop
   /* 119E70 800D6510 3C09800D */       lui $t1, %hi(dMNDebugStageSelectGrKind)
   /* 119E74 800D6514 8D296684 */        lw $t1, %lo(dMNDebugStageSelectGrKind)($t1)
@@ -109,7 +109,7 @@ glabel mnDebugStageSelectInit
   /* 119F3C 800D65DC 24060064 */     addiu $a2, $zero, 0x64
   /* 119F40 800D65E0 0C002E7F */       jal func_8000B9FC
   /* 119F44 800D65E4 24070002 */     addiu $a3, $zero, 2
-  /* 119F48 800D65E8 0C0DA7B8 */       jal func_ovl9_80369EE0
+  /* 119F48 800D65E8 0C0DA7B8 */       jal mnDebugMenuInitMenu
   /* 119F4C 800D65EC 00000000 */       nop
   /* 119F50 800D65F0 3C07800D */       lui $a3, %hi(D_ovl12_800D672C)
   /* 119F54 800D65F4 240F0002 */     addiu $t7, $zero, 2
@@ -117,7 +117,7 @@ glabel mnDebugStageSelectInit
   /* 119F5C 800D65FC 24E7672C */     addiu $a3, $a3, %lo(D_ovl12_800D672C)
   /* 119F60 800D6600 24040032 */     addiu $a0, $zero, 0x32
   /* 119F64 800D6604 24050032 */     addiu $a1, $zero, 0x32
-  /* 119F68 800D6608 0C0DA75E */       jal func_ovl9_80369D78
+  /* 119F68 800D6608 0C0DA75E */       jal mnDebugMenuCreateMenu
   /* 119F6C 800D660C 24060064 */     addiu $a2, $zero, 0x64
   /* 119F70 800D6610 8FBF001C */        lw $ra, 0x1c($sp)
   /* 119F74 800D6614 27BD0020 */     addiu $sp, $sp, 0x20
@@ -134,11 +134,11 @@ glabel mnDebugStageSelectStartScene
   /* 119F98 800D6638 25CFE700 */     addiu $t7, $t6, -0x1900
   /* 119F9C 800D663C 0C001C09 */       jal func_80007024
   /* 119FA0 800D6640 AC8F000C */        sw $t7, 0xc($a0) # D_ovl12_800D6764 + 12
-  /* 119FA4 800D6644 3C188037 */       lui $t8, %hi(func_ovl9_80369240)
+  /* 119FA4 800D6644 3C188037 */       lui $t8, %hi(mnDebugMenuUpdateMenuInputs)
   /* 119FA8 800D6648 3C19800D */       lui $t9, %hi(D_NF_800D69F0)
   /* 119FAC 800D664C 3C04800D */       lui $a0, %hi(D_ovl12_800D6780)
   /* 119FB0 800D6650 273969F0 */     addiu $t9, $t9, %lo(D_NF_800D69F0)
-  /* 119FB4 800D6654 27189240 */     addiu $t8, $t8, %lo(func_ovl9_80369240)
+  /* 119FB4 800D6654 27189240 */     addiu $t8, $t8, %lo(mnDebugMenuUpdateMenuInputs)
   /* 119FB8 800D6658 24846780 */     addiu $a0, $a0, %lo(D_ovl12_800D6780)
   /* 119FBC 800D665C 03194023 */      subu $t0, $t8, $t9
   /* 119FC0 800D6660 0C001A0F */       jal gsGTLSceneInit

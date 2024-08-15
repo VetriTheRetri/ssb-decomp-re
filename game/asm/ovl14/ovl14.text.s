@@ -334,8 +334,8 @@ glabel mnDebugBattleMain
   /* 11BDD0 80131F60 AFB00020 */        sw $s0, 0x20($sp)
   /* 11BDD4 80131F64 11E00010 */      beqz $t7, .L80131FA8
   /* 11BDD8 80131F68 AFA40098 */        sw $a0, 0x98($sp)
-  /* 11BDDC 80131F6C 3C188037 */       lui $t8, %hi(D_ovl9_80371420)
-  /* 11BDE0 80131F70 8F181420 */        lw $t8, %lo(D_ovl9_80371420)($t8)
+  /* 11BDDC 80131F6C 3C188037 */       lui $t8, %hi(gMNDebugMenuIsMenuOpen)
+  /* 11BDE0 80131F70 8F181420 */        lw $t8, %lo(gMNDebugMenuIsMenuOpen)($t8)
   /* 11BDE4 80131F74 2404001E */     addiu $a0, $zero, 0x1e
   /* 11BDE8 80131F78 24050014 */     addiu $a1, $zero, 0x14
   /* 11BDEC 80131F7C 13000005 */      beqz $t8, .L80131F94
@@ -348,7 +348,7 @@ glabel mnDebugBattleMain
   /* 11BE04 80131F94 3C078013 */       lui $a3, %hi(dMNDebugBattleMenuItems)
   /* 11BE08 80131F98 2419000F */     addiu $t9, $zero, 0xf
   /* 11BE0C 80131F9C AFB90010 */        sw $t9, 0x10($sp)
-  /* 11BE10 80131FA0 0C0DA75E */       jal func_ovl9_80369D78
+  /* 11BE10 80131FA0 0C0DA75E */       jal mnDebugMenuCreateMenu
   /* 11BE14 80131FA4 24E72780 */     addiu $a3, $a3, %lo(dMNDebugBattleMenuItems)
   .L80131FA8:
   /* 11BE18 80131FA8 3C10800A */       lui $s0, %hi(gTransferBattleState)
@@ -464,7 +464,7 @@ glabel mnDebugBattleMain
   /* 11BFB4 80132144 8D8C2690 */        lw $t4, %lo(gMNDebugBattleExitInterrupt)($t4)
   /* 11BFB8 80132148 51800034 */      beql $t4, $zero, .L8013221C
   /* 11BFBC 8013214C 8FBF0034 */        lw $ra, 0x34($sp)
-  /* 11BFC0 80132150 0C0DA7B0 */       jal func_ovl9_80369EC0
+  /* 11BFC0 80132150 0C0DA7B0 */       jal mnDebugMenuDestroyMenu
   /* 11BFC4 80132154 00000000 */       nop
   /* 11BFC8 80132158 3C10800A */       lui $s0, %hi(gSceneData)
   /* 11BFCC 8013215C 26104AD0 */     addiu $s0, $s0, %lo(gSceneData)
@@ -770,7 +770,7 @@ glabel mnDebugBattleInit
   /* 11C41C 801325AC A249FFF8 */        sb $t1, -8($s2) # gMNDebugBattleFighters + -8
   /* 11C420 801325B0 1616FFDB */       bne $s0, $s6, .L80132520
   /* 11C424 801325B4 A24AFFF9 */        sb $t2, -7($s2) # gMNDebugBattleFighters + -7
-  /* 11C428 801325B8 0C0DA7B8 */       jal func_ovl9_80369EE0
+  /* 11C428 801325B8 0C0DA7B8 */       jal mnDebugMenuInitMenu
   /* 11C42C 801325BC 00000000 */       nop
   /* 11C430 801325C0 3C078013 */       lui $a3, %hi(dMNDebugBattleMenuItems)
   /* 11C434 801325C4 240B000F */     addiu $t3, $zero, 0xf
@@ -778,7 +778,7 @@ glabel mnDebugBattleInit
   /* 11C43C 801325CC 24E72780 */     addiu $a3, $a3, %lo(dMNDebugBattleMenuItems)
   /* 11C440 801325D0 2404001E */     addiu $a0, $zero, 0x1e
   /* 11C444 801325D4 24050014 */     addiu $a1, $zero, 0x14
-  /* 11C448 801325D8 0C0DA75E */       jal func_ovl9_80369D78
+  /* 11C448 801325D8 0C0DA75E */       jal mnDebugMenuCreateMenu
   /* 11C44C 801325DC 24060055 */     addiu $a2, $zero, 0x55
   /* 11C450 801325E0 3C014234 */       lui $at, (0x42340000 >> 16) # 45.0
   /* 11C454 801325E4 44816000 */      mtc1 $at, $f12 # 45.0 to cop1
@@ -813,11 +813,11 @@ glabel mnDebugBattleStartScene
   /* 11C4C0 80132650 25CFE700 */     addiu $t7, $t6, -0x1900
   /* 11C4C4 80132654 0C001C09 */       jal func_80007024
   /* 11C4C8 80132658 AC8F000C */        sw $t7, 0xc($a0) # D_ovl14_80132934 + 12
-  /* 11C4CC 8013265C 3C188037 */       lui $t8, %hi(func_ovl9_80369240)
+  /* 11C4CC 8013265C 3C188037 */       lui $t8, %hi(mnDebugMenuUpdateMenuInputs)
   /* 11C4D0 80132660 3C198013 */       lui $t9, %hi(D_NF_80133130)
   /* 11C4D4 80132664 3C048013 */       lui $a0, %hi(D_ovl14_80132950)
   /* 11C4D8 80132668 27393130 */     addiu $t9, $t9, %lo(D_NF_80133130)
-  /* 11C4DC 8013266C 27189240 */     addiu $t8, $t8, %lo(func_ovl9_80369240)
+  /* 11C4DC 8013266C 27189240 */     addiu $t8, $t8, %lo(mnDebugMenuUpdateMenuInputs)
   /* 11C4E0 80132670 24842950 */     addiu $a0, $a0, %lo(D_ovl14_80132950)
   /* 11C4E4 80132674 03194023 */      subu $t0, $t8, $t9
   /* 11C4E8 80132678 0C001A0F */       jal gsGTLSceneInit

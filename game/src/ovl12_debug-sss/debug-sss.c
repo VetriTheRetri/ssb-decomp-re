@@ -4,9 +4,9 @@
 #include <debug-sss.h>
 
 // ovl9
-extern s32 D_ovl9_80371420;
-extern void func_ovl9_80369D78(s32, s32, s32, void*, s32);
-extern func_ovl9_80369EC0();
+extern s32 gMNDebugMenuIsMenuOpen;
+extern void mnDebugMenuCreateMenu(s32, s32, s32, void*, s32);
+extern mnDebugMenuDestroyMenu();
 
 // ovl12 stuff
 extern s32 dMNDebugStageSelectInterrupt; // 0x800D6680
@@ -28,19 +28,19 @@ void mnDebugStageSelectMain(GObj* arg0)
 {
     if (gSysController.button_new & START_BUTTON)
     {
-        if (D_ovl9_80371420 != 0)
+        if (gMNDebugMenuIsMenuOpen != 0)
         {
             mnDebugStageSelectTriggerInterrupt();
         }
         else
         {
-            func_ovl9_80369D78(0x32, 0x32, 0x64, &D_ovl12_800D672C, 2);
+            mnDebugMenuCreateMenu(0x32, 0x32, 0x64, &D_ovl12_800D672C, 2);
         }
     }
 
     if (dMNDebugStageSelectInterrupt != 0)
     {
-        func_ovl9_80369EC0();
+        mnDebugMenuDestroyMenu();
 
         gSceneData.gr_kind = dMNDebugStageSelectGrKind;
         gSceneData.scene_previous = gSceneData.scene_current;
@@ -65,8 +65,8 @@ void mnDebugStageSelectInit()
 {
     omMakeGObjSPAfter(0, mnDebugStageSelectMain, 0, 0x80000000);
     func_8000B9FC(0, 0x80000000, 0x64, 2, 0xFF);
-    func_ovl9_80369EE0();
-    func_ovl9_80369D78(0x32, 0x32, 0x64, &D_ovl12_800D672C, 2);
+    mnDebugMenuInitMenu();
+    mnDebugMenuCreateMenu(0x32, 0x32, 0x64, &D_ovl12_800D672C, 2);
 }
 
 // 0x800D6620

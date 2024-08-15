@@ -9,9 +9,9 @@
 extern void func_8000B1C4();
 
 // ovl9
-extern void func_ovl9_80369D78(s32, s32, s32, void*, s32);
-extern func_ovl9_80369EC0();
-extern sb32 D_ovl9_80371420; // isMenuShown
+extern void mnDebugMenuCreateMenu(s32, s32, s32, void*, s32);
+extern mnDebugMenuDestroyMenu();
+extern sb32 gMNDebugMenuIsMenuOpen; // isMenuShown
 
 // ovl14 stuff
 
@@ -96,21 +96,21 @@ extern char (*dMNDebugBattleStageStrings[18])[] = {
 
 // 0x80132780
 extern dbMenuItem dMNDebugBattleMenuItems[15] = {
-    { dbMenuItemKindStringByte,     mnDebugBattleStartBattle,   dMNDebugBattleSceneStrings,         &gMNDebugBattleMenuValueScene,                          0.0F, 5.0F,  0 },
-    { dbMenuItemKindNumericByte,    0,                          dMNDebugBattleBattleTime,           &gTransferBattleState.time_limit,                       0.0F, 60.0F, 0 },
-    { dbMenuItemKindStringByte,     0,                          dMNDebugBattleStageStrings,         &gSceneData.spgame_stage,                               0.0F, 17.0F, 0 },
-    { dbMenuItemKindStringByte,     0,                          dMNDebugBattlePlayerKindStrings,    &gTransferBattleState.player_block[0].player_kind,      0.0F, 5.0F,  0 },
-    { dbMenuItemKindStringByte,     0,                          dMNDebugBattleFighterKindStrings,   &gTransferBattleState.player_block[0].character_kind,   0.0F, 26.0F, 0 },
-    { dbMenuItemKindNumericByte,    0,                          dMNDebugBattleCostume,              &gTransferBattleState.player_block[0].costume_index,    0.0F, 10.0F, 0 },
-    { dbMenuItemKindStringByte,     0,                          dMNDebugBattlePlayerKindStrings,    &gTransferBattleState.player_block[1].player_kind,      0.0F, 5.0F,  0 },
-    { dbMenuItemKindStringByte,     0,                          dMNDebugBattleFighterKindStrings,   &gTransferBattleState.player_block[1].character_kind,   0.0F, 26.0F, 0 },
-    { dbMenuItemKindNumericByte,    0,                          dMNDebugBattleCostume,              &gTransferBattleState.player_block[1].costume_index,    0.0F, 10.0F, 0 },
-    { dbMenuItemKindStringByte,     0,                          dMNDebugBattlePlayerKindStrings,    &gTransferBattleState.player_block[2].player_kind,      0.0F, 5.0F,  0 },
-    { dbMenuItemKindStringByte,     0,                          dMNDebugBattleFighterKindStrings,   &gTransferBattleState.player_block[2].character_kind,   0.0F, 26.0F, 0 },
-    { dbMenuItemKindNumericByte,    0,                          dMNDebugBattleCostume,              &gTransferBattleState.player_block[2].costume_index,    0.0F, 10.0F, 0 },
-    { dbMenuItemKindStringByte,     0,                          dMNDebugBattlePlayerKindStrings,    &gTransferBattleState.player_block[3].player_kind,      0.0F, 5.0F,  0 },
-    { dbMenuItemKindStringByte,     0,                          dMNDebugBattleFighterKindStrings,   &gTransferBattleState.player_block[3].character_kind,   0.0F, 26.0F, 0 },
-    { dbMenuItemKindNumericByte,    0,                          dMNDebugBattleCostume,              &gTransferBattleState.player_block[3].costume_index,    0.0F, 10.0F, 0 }
+    { nDBMenuItemKindStringByte,     mnDebugBattleStartBattle,   dMNDebugBattleSceneStrings,         &gMNDebugBattleMenuValueScene,                          0.0F, 5.0F,  0 },
+    { nDBMenuItemKindNumericByte,    0,                          dMNDebugBattleBattleTime,           &gTransferBattleState.time_limit,                       0.0F, 60.0F, 0 },
+    { nDBMenuItemKindStringByte,     0,                          dMNDebugBattleStageStrings,         &gSceneData.spgame_stage,                               0.0F, 17.0F, 0 },
+    { nDBMenuItemKindStringByte,     0,                          dMNDebugBattlePlayerKindStrings,    &gTransferBattleState.player_block[0].player_kind,      0.0F, 5.0F,  0 },
+    { nDBMenuItemKindStringByte,     0,                          dMNDebugBattleFighterKindStrings,   &gTransferBattleState.player_block[0].character_kind,   0.0F, 26.0F, 0 },
+    { nDBMenuItemKindNumericByte,    0,                          dMNDebugBattleCostume,              &gTransferBattleState.player_block[0].costume_index,    0.0F, 10.0F, 0 },
+    { nDBMenuItemKindStringByte,     0,                          dMNDebugBattlePlayerKindStrings,    &gTransferBattleState.player_block[1].player_kind,      0.0F, 5.0F,  0 },
+    { nDBMenuItemKindStringByte,     0,                          dMNDebugBattleFighterKindStrings,   &gTransferBattleState.player_block[1].character_kind,   0.0F, 26.0F, 0 },
+    { nDBMenuItemKindNumericByte,    0,                          dMNDebugBattleCostume,              &gTransferBattleState.player_block[1].costume_index,    0.0F, 10.0F, 0 },
+    { nDBMenuItemKindStringByte,     0,                          dMNDebugBattlePlayerKindStrings,    &gTransferBattleState.player_block[2].player_kind,      0.0F, 5.0F,  0 },
+    { nDBMenuItemKindStringByte,     0,                          dMNDebugBattleFighterKindStrings,   &gTransferBattleState.player_block[2].character_kind,   0.0F, 26.0F, 0 },
+    { nDBMenuItemKindNumericByte,    0,                          dMNDebugBattleCostume,              &gTransferBattleState.player_block[2].costume_index,    0.0F, 10.0F, 0 },
+    { nDBMenuItemKindStringByte,     0,                          dMNDebugBattlePlayerKindStrings,    &gTransferBattleState.player_block[3].player_kind,      0.0F, 5.0F,  0 },
+    { nDBMenuItemKindStringByte,     0,                          dMNDebugBattleFighterKindStrings,   &gTransferBattleState.player_block[3].character_kind,   0.0F, 26.0F, 0 },
+    { nDBMenuItemKindNumericByte,    0,                          dMNDebugBattleCostume,              &gTransferBattleState.player_block[3].costume_index,    0.0F, 10.0F, 0 }
 };
 
 // 0x80132924
@@ -456,13 +456,13 @@ void mnDebugBattleMain(GObj* arg0)
 
     if (gSysController.button_new & START_BUTTON)
     {
-        if (D_ovl9_80371420 != FALSE)
+        if (gMNDebugMenuIsMenuOpen != FALSE)
         {
             mnDebugBattleStartBattle();
         }
         else
         {
-            func_ovl9_80369D78(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
+            mnDebugMenuCreateMenu(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
         }
     }
 
@@ -515,7 +515,7 @@ void mnDebugBattleMain(GObj* arg0)
 
     if (gMNDebugBattleExitInterrupt != 0)
     {
-        func_ovl9_80369EC0();
+        mnDebugMenuDestroyMenu();
 
         gSceneData.scene_previous = gSceneData.scene_current;
 
@@ -645,8 +645,8 @@ void mnDebugBattleInit()
         gMNDebugBattleFighters[i].costume_index = gTransferBattleState.player_block[i].costume_index;
     }
 
-    func_ovl9_80369EE0();
-    func_ovl9_80369D78(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
+    mnDebugMenuInitMenu();
+    mnDebugMenuCreateMenu(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
     func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 }
 

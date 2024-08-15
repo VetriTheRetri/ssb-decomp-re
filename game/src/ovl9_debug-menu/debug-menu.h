@@ -16,13 +16,13 @@ extern intptr_t lOverlay15ArenaHi;  // 0x80392A00
 // Stuff - where does it go?!?
 typedef enum dbMenuItemKind
 {
-    dbMenuItemKindExitLabel,        // Label which exits menu when selected
-    dbMenuItemKindNumeric,          // Number, 4 bytes
-    dbMenuItemKindDouble,           // Double
-    dbMenuItemKindString,           // String
-    dbMenuItemKindLabel,            // Label
-    dbMenuItemKindNumericByte,      // Number, 1 byte
-    dbMenuItemKindStringByte        // String, 1 byte
+    nDBMenuItemKindExitLabel,        // Label which exits menu when selected
+    nDBMenuItemKindNumeric,          // Number, 4 bytes
+    nDBMenuItemKindDouble,           // Double
+    nDBMenuItemKindString,           // String
+    nDBMenuItemKindLabel,            // Label
+    nDBMenuItemKindNumericByte,      // Number, 1 byte
+    nDBMenuItemKindStringByte        // String, 1 byte
 
 } dbMenuItemKind;
 
@@ -32,7 +32,7 @@ typedef struct dbMenuItem
     void (*proc_a)();
     void* label;
     union {
-        u32 *w;
+        s32 *s;
         u8 *b;
         f32 *f;
         void **p;
@@ -67,6 +67,14 @@ typedef enum dbBattleScene
     dbBattleSceneCongra
 
 } dbBattleScene;
+
+typedef struct dbUnk80369EE0_1
+{
+    void *unk_80369EE0_1_0x0;
+    u32 unk_80369EE0_1_0x4;
+    u32 unk_80369EE0_1_0x8;
+
+} dbUnk80369EE0_1;
 
 #define GetAddressFromOffset(file_ptr, offset) \
 ((int*)((intptr_t)(file_ptr) + (intptr_t)(offset))) \

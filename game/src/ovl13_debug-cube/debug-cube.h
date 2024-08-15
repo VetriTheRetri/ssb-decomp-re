@@ -16,13 +16,13 @@ extern intptr_t lOverlay13ArenaHi;  // 0x80369240
 // Stuff - where does it go?!?
 typedef enum dbMenuItemKind
 {
-    dbMenuItemKindExitLabel,        // Label which exits menu when selected
-    dbMenuItemKindNumeric,          // Number, 4 bytes
-    dbMenuItemKindDouble,           // Double
-    dbMenuItemKindString,           // String
-    dbMenuItemKindLabel,            // Label
-    dbMenuItemKindNumericByte,      // Number, 1 byte
-    dbMenuItemKindStringByte        // String, 1 byte
+    nDBMenuItemKindExitLabel,        // Label which exits menu when selected
+    nDBMenuItemKindNumeric,          // Number, 4 bytes
+    nDBMenuItemKindDouble,           // Double
+    nDBMenuItemKindString,           // String
+    nDBMenuItemKindLabel,            // Label
+    nDBMenuItemKindNumericByte,      // Number, 1 byte
+    nDBMenuItemKindStringByte        // String, 1 byte
 
 } dbMenuItemKind;
 
@@ -32,7 +32,7 @@ typedef struct dbMenuItem
     void (*proc_a)();
     void* label;
     union {
-        u32 *w;
+        s32 *s;
         u8 *b;
         f32 *f;
         void **p;

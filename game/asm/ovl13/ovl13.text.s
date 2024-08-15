@@ -251,7 +251,7 @@ glabel mnDebugCubeMain
   /* 11A668 80131E28 24E72DC8 */     addiu $a3, $a3, %lo(dMNDebugCubeMenuItems)
   /* 11A66C 80131E2C 24040032 */     addiu $a0, $zero, 0x32
   /* 11A670 80131E30 24050032 */     addiu $a1, $zero, 0x32
-  /* 11A674 80131E34 0C0DA75E */       jal func_ovl9_80369D78
+  /* 11A674 80131E34 0C0DA75E */       jal mnDebugMenuCreateMenu
   /* 11A678 80131E38 24060050 */     addiu $a2, $zero, 0x50
   /* 11A67C 80131E3C 3C028004 */       lui $v0, %hi(gSysController + 2)
   /* 11A680 80131E40 94425472 */       lhu $v0, %lo(gSysController + 2)($v0)
@@ -267,7 +267,7 @@ glabel mnDebugCubeMain
   /* 11A6A0 80131E60 8F393138 */        lw $t9, %lo(dMNDebugCubeExitInterrupt)($t9)
   /* 11A6A4 80131E64 5320000B */      beql $t9, $zero, .L80131E94
   /* 11A6A8 80131E68 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 11A6AC 80131E6C 0C0DA7B0 */       jal func_ovl9_80369EC0
+  /* 11A6AC 80131E6C 0C0DA7B0 */       jal mnDebugMenuDestroyMenu
   /* 11A6B0 80131E70 00000000 */       nop
   /* 11A6B4 80131E74 3C02800A */       lui $v0, %hi(gSceneData)
   /* 11A6B8 80131E78 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
@@ -452,7 +452,7 @@ glabel mnDebugCubeInit
   /* 11A958 80132118 3C053E80 */       lui $a1, 0x3e80
   /* 11A95C 8013211C 0C0455B9 */       jal gmRumble_SetPlayerRumble
   /* 11A960 80132120 00000000 */       nop
-  /* 11A964 80132124 0C0DA7B8 */       jal func_ovl9_80369EE0
+  /* 11A964 80132124 0C0DA7B8 */       jal mnDebugMenuInitMenu
   /* 11A968 80132128 00000000 */       nop
   /* 11A96C 8013212C 3C048013 */       lui $a0, %hi(mnDebugCubeCheckAudioChange)
   /* 11A970 80132130 24841D00 */     addiu $a0, $a0, %lo(mnDebugCubeCheckAudioChange)
@@ -476,11 +476,11 @@ glabel mnDebugCubeStartScene
   /* 11A9B0 80132170 AFB00018 */        sw $s0, 0x18($sp)
   /* 11A9B4 80132174 0C001C09 */       jal func_80007024
   /* 11A9B8 80132178 AC8F000C */        sw $t7, 0xc($a0) # D_ovl13_80132F6C + 12
-  /* 11A9BC 8013217C 3C188037 */       lui $t8, %hi(func_ovl9_80369240)
+  /* 11A9BC 8013217C 3C188037 */       lui $t8, %hi(mnDebugMenuUpdateMenuInputs)
   /* 11A9C0 80132180 3C198013 */       lui $t9, %hi(D_NF_80133170)
   /* 11A9C4 80132184 3C118013 */       lui $s1, %hi(D_ovl13_80132F88)
   /* 11A9C8 80132188 27393170 */     addiu $t9, $t9, %lo(D_NF_80133170)
-  /* 11A9CC 8013218C 27189240 */     addiu $t8, $t8, %lo(func_ovl9_80369240)
+  /* 11A9CC 8013218C 27189240 */     addiu $t8, $t8, %lo(mnDebugMenuUpdateMenuInputs)
   /* 11A9D0 80132190 26312F88 */     addiu $s1, $s1, %lo(D_ovl13_80132F88)
   /* 11A9D4 80132194 03194023 */      subu $t0, $t8, $t9
   /* 11A9D8 80132198 3C128013 */       lui $s2, %hi(dMNDebugCubeExitInterrupt)

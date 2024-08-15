@@ -21,23 +21,23 @@ glabel D_ovl9_80369F6C
 glabel D_ovl9_80369F70
   .incbin "ovl9.raw.bin", 0x0D30, 0xC
 
-glabel D_ovl9_80369F7C
+glabel gMNDebugMenuMenuPosition
   .incbin "ovl9.raw.bin", 0x0D3C, 0x14
   /* D50 1AC400 80369F90 */
   .asciz "BWIN"
   .balign 4
   .incbin "ovl9.raw.bin", 0x0D58, 0x34
 
-glabel D_ovl9_80369FCC
+glabel gMNDebugMenuPreviousInputs
   .incbin "ovl9.raw.bin", 0x0D8C, 0x4
 
-glabel D_ovl9_80369FD0
+glabel gMNDebugMenuNewInputs
   .incbin "ovl9.raw.bin", 0x0D90, 0x4
 
-glabel D_ovl9_80369FD4
+glabel gMNDebugMenuStickInputs
   .incbin "ovl9.raw.bin", 0x0D94, 0x4
 
-glabel D_ovl9_80369FD8
+glabel gMNDebugMenuRapidScrollWait
   .incbin "ovl9.raw.bin", 0x0D98, 0x8
 
 glabel D_ovl9_80369FE0

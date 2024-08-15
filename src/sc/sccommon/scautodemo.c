@@ -628,7 +628,7 @@ void scAutoDemoProcStart(void)
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(2, 4);
+	ftManagerAllocFighter(FTDATA_FLAG_MAINMOTION, 4);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);

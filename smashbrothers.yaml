@@ -434,7 +434,7 @@ segments:
     exclusive_ram_id: overlay_800D6490
     subsegments:
     # ovl2 text
-      - [0x051C90, c, sc/sc1p/sc1pmanager]
+      - [0x051C90, c, sc/sc1pmode/sc1pmanager]
     # Fighter manager
       - [0x0527E0, c, ft/ftmanager]
     # Fighter physics
@@ -508,7 +508,7 @@ segments:
     # General file IDs
       - [0x0923D0, .data, gm/gmcommon]
     # 1P Game-exclusive scene manager
-      - [0x0923F0, .data, sc/sc1p/sc1pmanager]
+      - [0x0923F0, .data, sc/sc1pmode/sc1pmanager]
     # Fighter manager
       - [0x0925D0, data, ftmanagertemp]
     # Fighter main file
@@ -594,7 +594,7 @@ segments:
       - [0x0AC530, .rodata, ef/efground]
     # ovl2 bss
       - { start: auto, type: .bss, name: gm/gmcommon, vram: 0x80130D40 }
-      - { start: auto, type: .bss, name: sc/sc1p/sc1pmanager, vram: 0x80130D60 }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pmanager, vram: 0x80130D60 }
       - { start: auto, type: .bss, name: ft/ftmanager, vram: 0x80130D80 }
       - { start: auto, type: .bss, name: mp/mpprocess, vram: 0x80130DE0 }
       - { start: auto, type: .bss, name: mp/mpcommon, vram: 0x80130E20 }
@@ -1164,20 +1164,20 @@ segments:
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
     # Main 1P Game scene stuff
-      - [0x10B920, c, sc/sc1p/sc1pgame]
+      - [0x10B920, c, sc/sc1pmode/sc1pgame]
     # Final Destination backgrounds
-      - [0x10F910, c, sc/sc1p/sc1pgameboss]
+      - [0x10F910, c, sc/sc1pmode/sc1pgameboss]
     # Main 1P Game scene stuff
-      - [0x111060, .data, sc/sc1p/sc1pgame]
+      - [0x111060, .data, sc/sc1pmode/sc1pgame]
     # Final Destination backgrounds
-      - [0x111420, .data, sc/sc1p/sc1pgameboss]
+      - [0x111420, .data, sc/sc1pmode/sc1pgameboss]
     # Main 1P Game scene stuff
-      - [0x111670, .rodata, sc/sc1p/sc1pgame]
+      - [0x111670, .rodata, sc/sc1pmode/sc1pgame]
     # Final Destination backgrounds
-      - [0x1117D0, .rodata, sc/sc1p/sc1pgameboss]
+      - [0x1117D0, .rodata, sc/sc1pmode/sc1pgameboss]
     # Main 1P Game scene stuff
-      - { start: auto, type: .bss, name: sc/sc1p/sc1pgame, vram: 0x80192FA0 }
-      - { start: auto, type: .bss, name: sc/sc1p/sc1pgameboss, vram: 0x801938D0 }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgame, vram: 0x80192FA0 }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgameboss, vram: 0x801938D0 }
 
   - name: ovl6
     type: code

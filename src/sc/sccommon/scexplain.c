@@ -31,7 +31,7 @@ extern GObj* func_8000B93C
 //                               //
 // // // // // // // // // // // //
 
-extern uintptr_t lOverlay63ArenaLo;                         // 0x8018EC00
+extern uintptr_t ovl63_BSS_END;                             // 0x8018EC00
 extern uintptr_t lOverlay63ArenaHi;                         // 0x80392A00
 
 extern intptr_t D_NF_000000C6;
@@ -132,7 +132,7 @@ scRuntimeInfo dSCExplainGtlSetup =
     0,
     jtgt_ovl63_8018E568,
     jtgt_ovl63_8018E594,
-    &lOverlay63ArenaLo,
+    &ovl63_BSS_END,
     0,
     1,
     2,
@@ -884,7 +884,7 @@ void scExplainStartScene(void)
 
     set_lcg_seed_ptr(&dSCExplainRandomSeed1);
 
-    dSCExplainGtlSetup.arena_size = ((uintptr_t)&lOverlay63ArenaHi - (uintptr_t)&lOverlay63ArenaLo);
+    dSCExplainGtlSetup.arena_size = ((uintptr_t)&lOverlay63ArenaHi - (uintptr_t)&ovl63_BSS_END);
     dSCExplainGtlSetup.proc_start = scExplainProcStart;
 
     func_800A2698(&dSCExplainGtlSetup);

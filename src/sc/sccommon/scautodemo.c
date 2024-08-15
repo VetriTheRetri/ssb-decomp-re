@@ -15,7 +15,7 @@ extern void func_ovl0_800CCF00();
 extern intptr_t D_NF_0000000C;
 extern intptr_t D_NF_800A5240;
 
-extern intptr_t lOverlay64ArenaLo;          	// 0x8018E860
+extern intptr_t ovl64_BSS_END;          	// 0x8018E860
 extern intptr_t lOverlay64ArenaHi;          	// 0x80392A00
 
 extern intptr_t lSCAutoDemoNameSpriteMario;  	// 0x00000138
@@ -178,7 +178,7 @@ syDisplaySetup dSCAutoDemoDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 // 0x8018E250
 scRuntimeInfo dSCAutoDemoGtlSetup = 
 {
-	0x00000000, scAutoDemoProcScene, 0x800a26b8, &lOverlay64ArenaLo,
+	0x00000000, scAutoDemoProcScene, 0x800a26b8, &ovl64_BSS_END,
 	0x00000000, 0x00000001, 0x00000002, 0x00006000,
 	0x00003000, 0x00000000, 0x00000000, 0x00008000,
 	0x00020000, 0x0000c000, scAutoDemoProcLights, 0x80004310,
@@ -718,7 +718,7 @@ void scAutoDemoStartScene(void)
 
 	func_80007024(&dSCAutoDemoDisplaySetup);
 
-	dSCAutoDemoGtlSetup.arena_size = ((uintptr_t)&lOverlay64ArenaHi - (uintptr_t)&lOverlay64ArenaLo);
+	dSCAutoDemoGtlSetup.arena_size = ((uintptr_t)&lOverlay64ArenaHi - (uintptr_t)&ovl64_BSS_END);
 	dSCAutoDemoGtlSetup.proc_start = scAutoDemoProcStart;
 
 	func_800A2698(&dSCAutoDemoGtlSetup);

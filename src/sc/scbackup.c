@@ -2,6 +2,12 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x800D4520
 s32 scBackupCreateChecksum(scBackupData *bp)
 {

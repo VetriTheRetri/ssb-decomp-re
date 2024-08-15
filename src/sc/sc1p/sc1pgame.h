@@ -92,7 +92,7 @@ extern void sc1PGameBossDefeatInitInterface(GObj *fighter_gobj);
 extern void sc1PGameProcStart(void);
 extern void sc1PGameAppendBonusStats(void);
 extern void sc1PGameInitBonusStats(void);
-extern void sc1PGameSetupLights(Gfx **dls);
+extern void sc1PGameProcLights(Gfx **dls);
 extern void sc1PGameStartScene(void);
 
 #endif

@@ -680,10 +680,10 @@ u16 D_ovl65_80192B0C[/* */] = { 0x16, 0xF, 0x3C };
 Unk800D4060 D_ovl65_80192B14 = { 0 };
 
 // 0x80192B18
-syDisplaySetup sSC1PGameDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syDisplaySetup dSC1PGameDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80192B34
-scRuntimeInfo sc1PGameGtlSetup =
+scRuntimeInfo dSC1PGameGtlSetup =
 {
     0,
     sc1PGameProcScene,
@@ -699,7 +699,7 @@ scRuntimeInfo sc1PGameGtlSetup =
     0xD000,
     0x20000,
     0xC000,
-    sc1PGameSetupLights,
+    sc1PGameProcLights,
     update_contdata,
     0,
     0x600,
@@ -2847,7 +2847,7 @@ void sc1PGameInitBonusStats(void)
 }
 
 // 0x80190F8C
-void sc1PGameSetupLights(Gfx **dls)
+void sc1PGameProcLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 
@@ -2860,12 +2860,12 @@ void sc1PGameStartScene(void)
     gBattleState = &gSCManager1PGameBattleState;
     gBattleState->game_type = nSCBattleGameType1PGame;
 
-    sSC1PGameDisplaySetup.zbuffer = (u16*) ((uintptr_t)&D_NF_800A5240 - 0x1900);
-    func_80007024(&sSC1PGameDisplaySetup);
+    dSC1PGameDisplaySetup.zbuffer = (u16*) ((uintptr_t)&D_NF_800A5240 - 0x1900);
+    func_80007024(&dSC1PGameDisplaySetup);
 
-    sc1PGameGtlSetup.arena_size = ((uintptr_t)&lOverlay65ArenaHi - (uintptr_t)&lOverlay65ArenaLo);
-    sc1PGameGtlSetup.proc_start = sc1PGameProcStart;
-    func_800A2698(&sc1PGameGtlSetup);
+    dSC1PGameGtlSetup.arena_size = ((uintptr_t)&lOverlay65ArenaHi - (uintptr_t)&lOverlay65ArenaLo);
+    dSC1PGameGtlSetup.proc_start = sc1PGameProcStart;
+    func_800A2698(&dSC1PGameGtlSetup);
     sc1PGameInitBonusStats();
     auStopBGM();
 

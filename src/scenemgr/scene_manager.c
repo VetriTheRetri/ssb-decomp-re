@@ -125,7 +125,7 @@ scBackupData gDefaultSaveData = {
 		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
 		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
 		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
-		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0}}, 0, 0, 0, 0, 0, 0x02, 0x9a, 0, 0, 0
+		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0}}, 0, 0, 0, 0, 0, 0x029a, 0, 0, 0
 };
 
 scCommonData gDefaultSceneData = 
@@ -283,8 +283,8 @@ void start_scene_manager(u32 set)
 	auSetReverbType(6);
 	while (func_80021048()) { }
 
-	lbMemory_SaveData_CheckSaveDataValid();
-	func_ovl0_800D46F4();
+	scBackupIsSramValid();
+	scBackupApplyOptions();
 
 	// it needs to be something like this to match
 	// csr = (void *)_ovl1SegNoloadEnd; // 0x80392A00

@@ -70,7 +70,7 @@ void syDisplaySetResHeight(s32 height)
     D_80046684        = TRUE;
 }
 
-void func_80006E94(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
+void syDisplaySetCenterOffsets(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     D_80046694 = arg0;
     D_80046696 = arg1;
     D_80046698 = arg2;

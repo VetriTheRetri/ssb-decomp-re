@@ -37,7 +37,7 @@ extern s16 D_80046698;
 extern u32 syDisplayGetFillColor(u32 color);
 extern void func_80007024(syDisplaySetup *arg0);
 extern void func_80006E18(s32 arg0);
-extern void func_80006E94(s16 arg0, s16 arg1, s16 arg2, s16 arg3);
+extern void syDisplaySetCenterOffsets(s16 arg0, s16 arg1, s16 arg2, s16 arg3);
 extern void func_80006F5C(SCTaskType4 *task);
 
 #endif /* SYS_SYSTEM_00_H */

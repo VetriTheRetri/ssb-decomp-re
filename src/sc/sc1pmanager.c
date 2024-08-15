@@ -238,7 +238,7 @@ void sc1PManagerTrySaveBackup(sb32 is_complete_spgame)
     }
     if (is_write_data != FALSE)
     {
-        syBackupWriteSram();
+        scBackupWrite();
     }
 }
 

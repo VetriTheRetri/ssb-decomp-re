@@ -683,7 +683,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 				{
 					gSaveData.spgame_records[ft_kind].bonus1_task_count = gSceneData.bonus_tasks_current;
 
-					syBackupWriteSram(gBattleState);
+					scBackupWrite();
 				}
 			}
 			else
@@ -694,7 +694,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 				{
 					gSaveData.spgame_records[ft_kind].bonus1_time = gBattleState->battle_time_current;
 
-					syBackupWriteSram(gBattleState);
+					scBackupWrite();
 				}
 			}
 		}
@@ -704,7 +704,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 			{
 				gSaveData.spgame_records[ft_kind].bonus2_task_count = gSceneData.bonus_tasks_current;
 
-				syBackupWriteSram(gBattleState);
+				scBackupWrite();
 			}
 		}
 		else
@@ -715,7 +715,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 			{
 				gSaveData.spgame_records[ft_kind].bonus2_time = gBattleState->battle_time_current;
 
-				syBackupWriteSram(gBattleState);
+				scBackupWrite();
 			}
 		}
 	}

@@ -111,6 +111,12 @@
 /// Get the number of elements in a static array
 #define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))
 
+/// Align value to size
+
+#ifndef ALIGN
+#define ALIGN(x, align) (((x) + ((align)-1)) & ~((align)-1))
+#endif
+
 /// Math Functions
 #define SQUARE(x) ((x) * (x))
 #define CUBE(x) ((x) * (x) * (x))

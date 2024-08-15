@@ -338,16 +338,16 @@ struct scBackup1PRecord
 // is this the saved data structure?
 struct scBackupData
 {
-	scBackupBattleRecord battle_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
+	scBackupBattleRecord vs_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
 	ub8 is_allow_screenflash; 	// Toggle for enabling white screen flash when,
 							  	// for example, a character takes too much
 							  	// damage. Leftover from unused "background
 							  	// flash" option? It is always toggled ON, even
 							  	// after clearing the save data.
 	ub8 sound_mono_or_stereo; 
-	s16 unk452;
-	s16 unk454;
-	u8 unk456;
+	s16 screen_adjust_hz;		// Offset from screen center horizontally
+	s16 screen_adjust_vt;		// Offset from screen center vertically
+	u8 bio_ft_kind;				// Last character viewed on Character Data menu
 	u8 unlock_mask;
 	u16 character_mask; 		// Mask of unlocked characters?
 	u8 spgame_difficulty;
@@ -356,13 +356,12 @@ struct scBackupData
 	u16 unlock_task_inishie;   	// Records mask of unique stages played in VS mode
 	u8 unlock_task_itemswitch; 	// Records number of VS games played for Item
 							   	// Switch unlock
-	u16 vsgame_total;		   	// Total amount of VS games played?
+	u16 vs_total_battles;		   	// Total amount of VS games played?
 	u8 error_flags;		   		// Some kind of anti-piracy measure??? 0x1 results in
 							   	// random knockback velocity, 0x2 halves stick range, 0x4
 							   	// forces Mario in 1P game, 0x8 forces Peach's Castle
 	u8 unk5E3;
-	u8 unk5E4;
-	u8 unk5E5;
+	u16 unk5E4;
 	u8 unk5E6;
 	u8 unk5E7;
 	s32 checksum; 				// Checksum of save data

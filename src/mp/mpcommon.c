@@ -269,9 +269,9 @@ sb32 mpCommonProcFighterOnEdge(GObj *fighter_gobj, void (*proc_map)(GObj*))
 }
 
 // 0x800DDEC4
-sb32 mpCommonSetFighterFallOnGroundBreak(GObj *fighter_gobj)
+void mpCommonSetFighterFallOnGroundBreak(GObj *fighter_gobj)
 {
-    return mpCommonProcFighterOnGround(fighter_gobj, ftCommonFallSetStatus);
+    mpCommonProcFighterOnGround(fighter_gobj, ftCommonFallSetStatus);
 }
 
 // 0x800DDEE8

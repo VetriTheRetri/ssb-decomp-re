@@ -98,7 +98,7 @@ void mnDebugFallsMain(GObj* arg0)
 {
 	u8 temp_t0;
 
-	if (gSysController.button_new & START_BUTTON)
+	if (gSysController.button_tap & START_BUTTON)
 		func_ovl9_80369D78(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);
 
 	if (gMNDebugFallsExitInterrupt != 0)

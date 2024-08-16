@@ -1207,8 +1207,8 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
     sb32 is_check_self;
     sb32 is_jostle;
     u16 button_tap_mask;
-    u16 button_press;
-    u16 button_press_com;
+    u16 button_hold;
+    u16 button_hold_com;
     f32 this_jostle;
 
     if (!(this_fp->is_disable_control))
@@ -1230,25 +1230,25 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
             controller = this_fp->input.controller;
             pl = &this_fp->input.pl;
 
-            button_press = controller->button_press;
+            button_hold = controller->button_hold;
 
-            if (button_press & R_TRIG)
+            if (button_hold & R_TRIG)
             {
-                button_press |= (A_BUTTON | Z_TRIG);
+                button_hold |= (A_BUTTON | Z_TRIG);
             }
 
             pl->stick_range.x = controller->stick_range.x;
             pl->stick_range.y = controller->stick_range.y;
 
-            button_tap_mask = (button_press ^ pl->button_hold) & button_press;
+            button_tap_mask = (button_hold ^ pl->button_hold) & button_hold;
 
             pl->button_tap = (this_fp->hitlag_timer != 0) ? pl->button_tap | button_tap_mask : button_tap_mask;
 
-            button_tap_mask = (button_press ^ pl->button_hold) & pl->button_hold;
+            button_tap_mask = (button_hold ^ pl->button_hold) & pl->button_hold;
 
             pl->button_tap_prev = (this_fp->hitlag_timer != 0) ? pl->button_tap_prev | button_tap_mask : button_tap_mask;
 
-            pl->button_hold = button_press;
+            pl->button_hold = button_hold;
 
             break;
 
@@ -1264,25 +1264,25 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
             cp = &this_fp->input.cp;
             pl = &this_fp->input.pl;
 
-            button_press_com = this_fp->input.cp.button_inputs;
+            button_hold_com = this_fp->input.cp.button_inputs;
 
-            if (button_press_com & R_TRIG)
+            if (button_hold_com & R_TRIG)
             {
-                button_press_com |= (A_BUTTON | Z_TRIG);
+                button_hold_com |= (A_BUTTON | Z_TRIG);
             }
 
             pl->stick_range.x = cp->stick_range.x;
             pl->stick_range.y = cp->stick_range.y;
 
-            button_tap_mask = (button_press_com ^ pl->button_hold) & button_press_com;
+            button_tap_mask = (button_hold_com ^ pl->button_hold) & button_hold_com;
 
             pl->button_tap = (this_fp->hitlag_timer != 0) ? pl->button_tap | button_tap_mask : button_tap_mask;
 
-            button_tap_mask = (button_press_com ^ pl->button_hold) & pl->button_hold;
+            button_tap_mask = (button_hold_com ^ pl->button_hold) & pl->button_hold;
 
             pl->button_tap_prev = (this_fp->hitlag_timer != 0) ? pl->button_tap_prev | button_tap_mask : button_tap_mask;
 
-            pl->button_hold = button_press_com;
+            pl->button_hold = button_hold_com;
 
             break;
         }

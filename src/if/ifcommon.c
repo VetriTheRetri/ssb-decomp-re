@@ -3006,7 +3006,7 @@ void ifCommonBattleGoUpdateInterface(void)
 
     for (player = 0; player < (ARRAY_COUNT(gBattleState->players) + ARRAY_COUNT(gPlayerControllers)) / 2; player++) // WARNING: GMCOMMON_PLAYERS_MAX and MAX_CONTROLLERS should be identical
     {
-        if (gPlayerControllers[player].button_new & START_BUTTON)
+        if (gPlayerControllers[player].button_tap & START_BUTTON)
         {
             if (gBattleState->players[player].pl_kind != nFTPlayerKindNot)
             {
@@ -3082,8 +3082,8 @@ void ifCommonBattleInterfaceProcSet(void)
 // 0x801142EC
 void ifCommonBattlePauseUpdateInterface(void)
 {
-    u16 button_new = gPlayerControllers[sIFCommonBattlePausePlayer].button_new;
-    u16 button_press = gPlayerControllers[sIFCommonBattlePausePlayer].button_press;
+    u16 button_tap = gPlayerControllers[sIFCommonBattlePausePlayer].button_tap;
+    u16 button_hold = gPlayerControllers[sIFCommonBattlePausePlayer].button_hold;
 
     if (sIFCommonBattlePauseKindInterface == nIFPauseKindDefault)
     {
@@ -3117,9 +3117,9 @@ void ifCommonBattlePauseUpdateInterface(void)
             }
         }
     }
-    if (button_new)
+    if (button_tap)
     {
-        if (button_new & START_BUTTON)
+        if (button_tap & START_BUTTON)
         {
             if (sIFCommonBattlePauseKindInterface != nIFPauseKindPlayerNA)
             {
@@ -3133,14 +3133,14 @@ void ifCommonBattlePauseUpdateInterface(void)
 
             return;
         }
-        else button_press = gPlayerControllers[sIFCommonBattlePausePlayer].button_press;
+        else button_hold = gPlayerControllers[sIFCommonBattlePausePlayer].button_hold;
 
         if
         (
-            (button_press & A_BUTTON) &&
-            (button_press & B_BUTTON) &&
-            (button_press & R_TRIG) &&
-            (button_press & Z_TRIG)
+            (button_hold & A_BUTTON) &&
+            (button_hold & B_BUTTON) &&
+            (button_hold & R_TRIG) &&
+            (button_hold & Z_TRIG)
         )
         {
             gSceneData.is_reset = TRUE;
@@ -3153,7 +3153,7 @@ void ifCommonBattlePauseUpdateInterface(void)
 
             return;
         }
-        if ((button_new & L_TRIG) && (gSceneData.scene_current == nSCKind1PBonusGame) && (gSceneData.scene_previous != nSCKind1PGame))
+        if ((button_tap & L_TRIG) && (gSceneData.scene_current == nSCKind1PBonusGame) && (gSceneData.scene_previous != nSCKind1PGame))
         {
             func_800266A0_272A0();
             gmRumbleInitPlayers();

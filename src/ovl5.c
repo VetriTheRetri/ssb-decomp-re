@@ -7,10 +7,8 @@ extern void *gGMCommonFiles[];
 extern u32 dGMCommonFileIDs[8];
 extern intptr_t D_NF_80000023;
 extern s32 D_NF_800A5240[];
-extern intptr_t lOverlay5ArenaLo; // 8018D950
-extern intptr_t lOverlay5ArenaHi; // 803903E0
-
-void func_ovl1_803903E0();
+extern uintptr_t ovl5_BSS_END; // 8018D950
+extern uintptr_t ovl1_TEXT_START; // 803903E0
 
 // DATA
 
@@ -175,7 +173,7 @@ void overlay_set23_entry()
 {
 	D_ovl5_8018D5BC.zbuffer = (u16*) ((uintptr_t)D_NF_800A5240 - 0x1900);
 	func_80007024(&D_ovl5_8018D5BC);
-	D_ovl5_8018D5D8.arena_size = ((uintptr_t)&lOverlay5ArenaHi - (uintptr_t)&lOverlay5ArenaLo);
+	D_ovl5_8018D5D8.arena_size = ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl5_BSS_END);
 	func_800A2698(&D_ovl5_8018D5D8);
 	auStopBGM();
 	gSceneData.scene_previous = gSceneData.scene_current;

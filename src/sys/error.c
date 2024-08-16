@@ -369,7 +369,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
 
     for (i = 0; i < 16; i++)
     {
-        if (gSysController.button_press & (1 << i))
+        if (gSysController.button_hold & (1 << i))
         {
             syErrorFillRectangle(gDisplayListHead[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
         }
@@ -564,7 +564,7 @@ s32 syErrorWaitFramebufOrController(u32 buttons, void *framebuf)
         {
             return TRUE;
         }
-        if (buttons == gSysController.button_press) 
+        if (buttons == gSysController.button_hold) 
         {
             return FALSE; 
         }

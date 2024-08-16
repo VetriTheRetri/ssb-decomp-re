@@ -4,7 +4,7 @@
 #include <sys/thread3.h>
 #include <ssb_types.h>
 
-#define SYDISPLAY_DEFINE_DEFAULT() { &D_NF_80392A00, &D_NF_803B6900, &D_NF_803DA800, NULL, 320, 240, 0x16A99 }
+#define SYDISPLAY_DEFINE_DEFAULT() { gSCSubsysFramebuffer1, gSCSubsysFramebuffer2, gSCSubsysFramebuffer3, NULL, 320, 240, 0x16A99 }
 
 /*
  * Seems to deal with setting the screen size and zbuffer?
@@ -22,9 +22,9 @@ typedef struct syDisplaySetup
 
 } syDisplaySetup; // size >= 0x18
 
-extern uintptr_t D_NF_80392A00; // Frame Buffer 1
-extern uintptr_t D_NF_803B6900; // Frame Buffer 2
-extern uintptr_t D_NF_803DA800; // Frame Buffer 3
+extern u16 gSCSubsysFramebuffer1[/* */];
+extern u16 gSCSubsysFramebuffer2[/* */];
+extern u16 gSCSubsysFramebuffer3[/* */];
 
 extern u16 *gSYDisplayZBuffer;
 // zbuffer pixel size?

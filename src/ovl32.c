@@ -1622,10 +1622,10 @@ void mnVsRecordsMain(GObj* arg0)
 	if
 	(
 		(gMNVsRecordsStatsKind == vsRecordsKindIndividual) &&
-		(func_ovl1_80390A04(-0x14, 0x14) != FALSE) &&
-		(func_ovl1_80390AC0(-0x14, 0x14) != FALSE) &&
-		(func_ovl1_80390804(R_JPAD | U_JPAD | R_TRIG | R_CBUTTONS | U_CBUTTONS) == FALSE) &&
-		(func_ovl1_80390804(L_JPAD | D_JPAD | L_TRIG | L_CBUTTONS | D_CBUTTONS) == FALSE)
+		(scSubsysControllerCheckAllStickInRangeLR(-0x14, 0x14) != FALSE) &&
+		(scSubsysControllerCheckAllStickInRangeUD(-0x14, 0x14) != FALSE) &&
+		(scSubsysControllerGetFirstHoldButtons(R_JPAD | U_JPAD | R_TRIG | R_CBUTTONS | U_CBUTTONS) == FALSE) &&
+		(scSubsysControllerGetFirstHoldButtons(L_JPAD | D_JPAD | L_TRIG | L_CBUTTONS | D_CBUTTONS) == FALSE)
 	)
 	{
 		gMNVsRecordsChangeWait = 0;
@@ -1636,7 +1636,7 @@ void mnVsRecordsMain(GObj* arg0)
 		gMNVsRecordsRedrawSubtitle = FALSE;
 	}
 
-	if (func_ovl1_8039076C(B_BUTTON) != FALSE)
+	if (scSubsysControllerGetFirstTapButtons(B_BUTTON) != FALSE)
 	{
 		if (gMNVsRecordsStatsKind == vsRecordsKindBattleScore)
 		{
@@ -1658,8 +1658,8 @@ void mnVsRecordsMain(GObj* arg0)
 
 	if
 	(
-		((func_ovl1_8039076C(A_BUTTON) != FALSE) ||
-		(func_ovl1_8039076C(START_BUTTON) != FALSE)) &&
+		((scSubsysControllerGetFirstTapButtons(A_BUTTON) != FALSE) ||
+		(scSubsysControllerGetFirstTapButtons(START_BUTTON) != FALSE)) &&
 		(gMNVsRecordsStatsKind < 2)
 	)
 	{

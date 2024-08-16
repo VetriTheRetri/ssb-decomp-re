@@ -120,7 +120,7 @@ void mnN64ActorProcUpdate(GObj *gobj)
 	if (sMNN64SkipAllowWait != 0)
 		sMNN64SkipAllowWait--;
 
-	if ((sMNN64SkipAllowWait == 0) && (func_ovl1_8039076C(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE))
+	if ((sMNN64SkipAllowWait == 0) && (scSubsysControllerGetFirstTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE))
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = nSCKindTitle;

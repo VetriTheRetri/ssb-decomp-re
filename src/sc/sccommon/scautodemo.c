@@ -15,8 +15,7 @@ extern void func_ovl0_800CCF00();
 extern intptr_t D_NF_0000000C;
 extern intptr_t D_NF_800A5240;
 
-extern intptr_t ovl64_BSS_END;          	// 0x8018E860
-extern intptr_t lOverlay64ArenaHi;          	// 0x80392A00
+extern intptr_t ovl64_BSS_END;          		// 0x8018E860
 
 extern intptr_t lSCAutoDemoNameSpriteMario;  	// 0x00000138
 extern intptr_t lSCAutoDemoNameSpriteFox;     	// 0x00000258
@@ -222,9 +221,9 @@ void scAutoDemoDetectExit(void)
 
 	for (player = 0; player < ARRAY_COUNT(gPlayerControllers); player++)
 	{
-		u16 button_new = gPlayerControllers[player].button_new;
+		u16 button_tap = gPlayerControllers[player].button_tap;
 
-		if (button_new & (A_BUTTON | B_BUTTON | START_BUTTON))
+		if (button_tap & (A_BUTTON | B_BUTTON | START_BUTTON))
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = nSCKindTitle;
@@ -718,7 +717,7 @@ void scAutoDemoStartScene(void)
 
 	func_80007024(&dSCAutoDemoDisplaySetup);
 
-	dSCAutoDemoGtlSetup.arena_size = ((uintptr_t)&lOverlay64ArenaHi - (uintptr_t)&ovl64_BSS_END);
+	dSCAutoDemoGtlSetup.arena_size = ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl64_BSS_END);
 	dSCAutoDemoGtlSetup.proc_start = scAutoDemoProcStart;
 
 	func_800A2698(&dSCAutoDemoGtlSetup);

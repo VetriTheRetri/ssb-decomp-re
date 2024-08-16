@@ -116,7 +116,7 @@ s32 mnCongraGetPlayerControllerInterrupt(u32 button_mask)
 
 	for (player = 0; player < ARRAY_COUNT(gPlayerControllers); player++)
 	{
-		if ((mnCongraCheckPlayerControllerConnected(player) != FALSE) && (gPlayerControllers[player].button_new & button_mask))
+		if ((mnCongraCheckPlayerControllerConnected(player) != FALSE) && (gPlayerControllers[player].button_tap & button_mask))
 			return player + 1;
 	}
 	return 0;

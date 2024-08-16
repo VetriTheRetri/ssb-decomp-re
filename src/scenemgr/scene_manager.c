@@ -288,7 +288,7 @@ void start_scene_manager(u32 set)
 
 	// it needs to be something like this to match
 	// csr = (void *)_ovl1SegNoloadEnd; // 0x80392A00
-	csr = (u16*) &D_NF_80392A00;//(void *)_ovl1SegNoloadEnd; // 0x80392A00
+	csr = gSCSubsysFramebuffer1;//(void *)_ovl1SegNoloadEnd; // 0x80392A00
 	end = 0x80400000;
 	while ((uintptr_t)csr < end)
 		*(csr++) = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01);

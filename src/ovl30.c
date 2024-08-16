@@ -1225,23 +1225,23 @@ void mnStageHandleButtonPresses(s32 arg0)
 			return;
 		}
 
-		if (func_ovl1_80390B7C() == FALSE)
+		if (scSubsysControllerCheckNoInputAll() == FALSE)
 			gMNStageMaxFramesElapsed = gMNStageFramesElapsed + I_MIN_TO_FRAMES(5);
 
 		if (gMNStageScrollBuffer != 0)
 			gMNStageScrollBuffer -= 1;
 
 		if (
-			(func_ovl1_80390A04(-0x14, 0x14) != FALSE)
-			&& (func_ovl1_80390AC0(-0x14, 0x14) != FALSE)
-			&& (func_ovl1_80390804(U_JPAD | R_JPAD | R_TRIG | U_CBUTTONS | R_CBUTTONS) == FALSE)
-			&& (func_ovl1_80390804(D_JPAD | L_JPAD | L_TRIG | D_CBUTTONS | L_CBUTTONS) == FALSE)
+			(scSubsysControllerCheckAllStickInRangeLR(-0x14, 0x14) != FALSE)
+			&& (scSubsysControllerCheckAllStickInRangeUD(-0x14, 0x14) != FALSE)
+			&& (scSubsysControllerGetFirstHoldButtons(U_JPAD | R_JPAD | R_TRIG | U_CBUTTONS | R_CBUTTONS) == FALSE)
+			&& (scSubsysControllerGetFirstHoldButtons(D_JPAD | L_JPAD | L_TRIG | D_CBUTTONS | L_CBUTTONS) == FALSE)
 		)
 		{
 			gMNStageScrollBuffer = 0;
 		}
 
-		if (func_ovl1_8039076C(A_BUTTON | START_BUTTON) != FALSE)
+		if (scSubsysControllerGetFirstTapButtons(A_BUTTON | START_BUTTON) != FALSE)
 		{
 			mnStageSaveSceneData2();
 			func_800269C0_275C0(0x9FU);
@@ -1260,7 +1260,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 			leoInitUnit_atten();
 		}
 
-		if (func_ovl1_8039076C(B_BUTTON) != FALSE)
+		if (scSubsysControllerGetFirstTapButtons(B_BUTTON) != FALSE)
 		{
 			mnStageSaveSceneData2();
 
@@ -1280,9 +1280,9 @@ void mnStageHandleButtonPresses(s32 arg0)
 
 		if (gMNStageScrollBuffer == 0)
 		{
-			button_input = func_ovl1_80390804(U_JPAD | U_CBUTTONS);
+			button_input = scSubsysControllerGetFirstHoldButtons(U_JPAD | U_CBUTTONS);
 
-			if ((button_input != FALSE) || (stick_input = func_ovl1_80390950(0x14, 1), (stick_input != 0)))
+			if ((button_input != FALSE) || (stick_input = scSubsysControllerGetFirstStickUD(0x14, 1), (stick_input != 0)))
 			{
 				if ((gMNStageCursorSlotId >= 5) && (mnStageGetIsLocked(mnStageGetStageID(gMNStageCursorSlotId - 5)) == FALSE))
 				{
@@ -1303,9 +1303,9 @@ void mnStageHandleButtonPresses(s32 arg0)
 				return;
 			}
 
-			button_input = func_ovl1_80390804(D_JPAD | D_CBUTTONS);
+			button_input = scSubsysControllerGetFirstHoldButtons(D_JPAD | D_CBUTTONS);
 
-			if ((button_input != FALSE) || (stick_input = func_ovl1_80390950(-0x14, 0), (stick_input != 0)))
+			if ((button_input != FALSE) || (stick_input = scSubsysControllerGetFirstStickUD(-0x14, 0), (stick_input != 0)))
 			{
 				if ((gMNStageCursorSlotId < 5) && (mnStageGetIsLocked(mnStageGetStageID(gMNStageCursorSlotId + 5)) == FALSE))
 				{
@@ -1325,9 +1325,9 @@ void mnStageHandleButtonPresses(s32 arg0)
 				return;
 			}
 
-			button_input = func_ovl1_80390804(L_JPAD | L_TRIG | L_CBUTTONS);
+			button_input = scSubsysControllerGetFirstHoldButtons(L_JPAD | L_TRIG | L_CBUTTONS);
 
-			if ((button_input != FALSE) || (stick_input = func_ovl1_8039089C(-0x14, 0), (stick_input != FALSE)))
+			if ((button_input != FALSE) || (stick_input = scSubsysControllerGetFirstStickLR(-0x14, 0), (stick_input != FALSE)))
 			{
 				switch (gMNStageCursorSlotId)
 				{
@@ -1354,9 +1354,9 @@ void mnStageHandleButtonPresses(s32 arg0)
 				return;
 			}
 
-			button_input = func_ovl1_80390804(R_JPAD | R_TRIG | R_CBUTTONS);
+			button_input = scSubsysControllerGetFirstHoldButtons(R_JPAD | R_TRIG | R_CBUTTONS);
 
-			if ((button_input != FALSE) || (stick_input = func_ovl1_8039089C(0x14, 1), (stick_input != FALSE)))
+			if ((button_input != FALSE) || (stick_input = scSubsysControllerGetFirstStickLR(0x14, 1), (stick_input != FALSE)))
 			{
 				switch (gMNStageCursorSlotId)
 				{

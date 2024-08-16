@@ -8,7 +8,6 @@ scManagerInspectGObj = 0x800A2C30;
 scManagerProcPrintGObjStatus = 0x800A2E84;
 scManagerRunPrintGObjStatus = 0x800A3040;
 
-D_803903E0 = 0x803903E0;
 dGMCommonFileIDs = 0x80116BD0;
 D_80116BD0 = 0x80116BD0; // segment:scene_manager
 D_80369240 = 0x80369240;

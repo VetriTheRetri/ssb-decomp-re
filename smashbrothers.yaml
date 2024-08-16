@@ -1133,8 +1133,13 @@ segments:
     vram: 0x803903E0
     exclusive_ram_id: overlay_803903E0
     subsegments:
-      - [0x1079C0, asm, ovl1]
+      - [0x1079C0, c, sc/scsubsys/scsubsysunused]
+      - [0x107AC0, c, sc/scsubsys/scsubsysfighter]
+      - [0x107CE0, c, sc/scsubsys/scsubsyscontroller]
       - [0x1081C0, data, ovl1]
+      - { start: auto, type: .bss, name: sc/scsubsys/scsubsysfighter, vram: 0x803929D0 }
+      - { start: auto, type: .bss, name: sc/scsubsys/scsubsyscontroller, vram: 0x803929F0 }
+      - { start: auto, type: .bss, name: sc/scsubsys/scsubsysframebuffer, vram: 0x80392A00 }
 
   - name: ovl4
     type: code

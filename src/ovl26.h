@@ -376,10 +376,7 @@ extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_1; // AObj? for white circle
 extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2; // DObjDesc for white circle
 
 void ftRenderLightsDrawReflect(Gfx**, f32, f32);	  /* extern */
-extern f32 func_ovl1_8039051C();							  /* extern */
-extern f32 func_ovl1_80390528();							  /* extern */
 extern void func_ovl0_800CCF00(GObj*);						  /* extern */
-extern void func_ovl1_803904E0(f32, f32, s32, s32, s32, s32); /* extern */
 extern void func_ovl0_800CD2CC();
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32); /* extern */
 extern void func_80007080(void*, f32, f32, f32, f32);											 /* extern */

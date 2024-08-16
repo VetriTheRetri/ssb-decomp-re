@@ -9,7 +9,7 @@
 void mnBattleSetupDisplayList(Gfx** display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRenderLightsDrawReflect(display_list, func_ovl1_8039051C(), func_ovl1_80390528());
+	ftRenderLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 	return;
 }
 
@@ -1032,7 +1032,7 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 		{
 			if (panel_info->selected_animation_started == FALSE)
 			{
-				func_ovl1_803905CC(panel_info->player, mnBattleGetSelectedAnimation(panel_info->char_id));
+				scSubsysFighterSetStatus(panel_info->player, mnBattleGetSelectedAnimation(panel_info->char_id));
 				panel_info->selected_animation_started = TRUE;
 			}
 		}
@@ -1043,7 +1043,7 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 			if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > M_DTOR_F(360.0F))
 			{
 				DObjGetStruct(fighter_gobj)->rotate.vec.f.y = 0.0F;
-				func_ovl1_803905CC(panel_info->player, mnBattleGetSelectedAnimation(panel_info->char_id));
+				scSubsysFighterSetStatus(panel_info->player, mnBattleGetSelectedAnimation(panel_info->char_id));
 				panel_info->selected_animation_started = TRUE;
 			}
 		}
@@ -2548,7 +2548,7 @@ void mnExitIfBButtonHeld(s32 port_id)
 
 			if ((panel_info->b_held_frame_count < 41))
 			{
-				if (controller->button_press & B_BUTTON)
+				if (controller->button_hold & B_BUTTON)
 				{
 					if (panel_info->b_held_frame_count == 40)
 						mnGoBackToVSMenu();
@@ -2563,7 +2563,7 @@ void mnExitIfBButtonHeld(s32 port_id)
 	}
 	else
 	{
-		if (controller->button_new & B_BUTTON)
+		if (controller->button_tap & B_BUTTON)
 			panel_info->is_b_held = TRUE;
 		panel_info->b_held_frame_count = 1;
 	}
@@ -2604,7 +2604,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
 	mnBattleAutoPositionCursor(cursor_gobj, port_id);
 	controller = &gPlayerControllers[port_id];
 
-	if ((controller->button_new & A_BUTTON) && (mnCheckAndHandleAnyPlayerTypeButtonPress(cursor_gobj, port_id) == FALSE)
+	if ((controller->button_tap & A_BUTTON) && (mnCheckAndHandleAnyPlayerTypeButtonPress(cursor_gobj, port_id) == FALSE)
 		&& (mnBattleSelectChar(cursor_gobj, port_id, gMnBattlePanels[port_id].held_port_id, 4) == FALSE)
 		&& (mnBattleCheckAndHandleTokenPickup(cursor_gobj, port_id) == FALSE))
 	{
@@ -2657,34 +2657,34 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
 
 	if (gMnBattleIsTeamBattle == FALSE)
 	{
-		if ((controller->button_new & U_CBUTTONS)
+		if ((controller->button_tap & U_CBUTTONS)
 			&& (mnBattleSelectChar(cursor_gobj, port_id, panel_info->held_port_id, 0) == FALSE)
 			&& (panel_info->unk_0x88 != FALSE))
 		{
 			mnTryCostumeChange(port_id, 0);
 		}
-		if ((controller->button_new & R_CBUTTONS)
+		if ((controller->button_tap & R_CBUTTONS)
 			&& (mnBattleSelectChar(cursor_gobj, port_id, panel_info->held_port_id, 1) == FALSE)
 			&& (panel_info->unk_0x88 != FALSE))
 		{
 			mnTryCostumeChange(port_id, 1);
 		}
-		if ((controller->button_new & D_CBUTTONS)
+		if ((controller->button_tap & D_CBUTTONS)
 			&& (mnBattleSelectChar(cursor_gobj, port_id, panel_info->held_port_id, 2) == FALSE)
 			&& (panel_info->unk_0x88 != FALSE))
 		{
 			mnTryCostumeChange(port_id, 2);
 		}
-		if ((controller->button_new & L_CBUTTONS)
+		if ((controller->button_tap & L_CBUTTONS)
 			&& (mnBattleSelectChar(cursor_gobj, port_id, panel_info->held_port_id, 3) == FALSE)
 			&& (panel_info->unk_0x88 != FALSE))
 		{
 			mnTryCostumeChange(port_id, 3);
 		}
 	}
-	else if (controller->button_new & (U_CBUTTONS | R_CBUTTONS | D_CBUTTONS | L_CBUTTONS))
+	else if (controller->button_tap & (U_CBUTTONS | R_CBUTTONS | D_CBUTTONS | L_CBUTTONS))
 		mnBattleSelectChar(cursor_gobj, port_id, panel_info->held_port_id, 4);
-	if ((controller->button_new & B_BUTTON) && (mnIsHumanWithCharacterSelected(port_id) != FALSE))
+	if ((controller->button_tap & B_BUTTON) && (mnIsHumanWithCharacterSelected(port_id) != FALSE))
 		mnRecallToken(port_id);
 	if (panel_info->is_recalling == FALSE)
 		mnExitIfBButtonHeld(port_id);
@@ -3561,7 +3561,7 @@ void mnBattleMain(s32 arg0)
 		return;
 	}
 
-	if (func_ovl1_80390B7C() == 0)
+	if (scSubsysControllerCheckNoInputAll() == 0)
 		gMnBattleMaxFramesElapsed = gMnBattleFramesElapsed + 0x4650;
 
 	if (gMnBattleIsStartTriggered != FALSE)
@@ -3592,7 +3592,7 @@ void mnBattleMain(s32 arg0)
 	}
 	else
 	{
-		if ((func_ovl1_8039076C(START_BUTTON) != FALSE) && (gMnBattleFramesElapsed >= 0x3D))
+		if ((scSubsysControllerGetFirstTapButtons(START_BUTTON) != FALSE) && (gMnBattleFramesElapsed >= 0x3D))
 		{
 			if (mnBattleIsReadyToFight() != FALSE)
 			{
@@ -3870,7 +3870,7 @@ void mnBattleInitCSS()
 	mnBattleCreateWhiteCircles();
 	mnBattleCreateReadyToFightObjects();
 
-	func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
+	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
 	if (gSceneData.scene_previous != 0x15)
 		auPlaySong(0, 0xA);

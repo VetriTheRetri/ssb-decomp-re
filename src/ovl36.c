@@ -365,7 +365,7 @@ void mvOpeningMarioCreatePosedFighter()
 	spawn_info.pos.z = 0.0f;
 
 	fighter_gobj = ftManagerMakeFighter(&spawn_info);
-	func_ovl1_803905CC(fighter_gobj, 0x1000C);
+	scSubsysFighterSetStatus(fighter_gobj, 0x1000C);
 	gcMoveGObjDL(fighter_gobj, 0x1A, -1);
 	gcAddGObjCommonProc(fighter_gobj, mvOpeningMarioAnimatePosedFighter, 1, 1);
 
@@ -410,7 +410,7 @@ void mvOpeningMarioMainProc(GObj* arg0)
 
 	gMvOpeningMarioFramesElapsed += 1;
 
-	if (func_ovl1_8039076C(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
+	if (scSubsysControllerGetFirstTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 1U;

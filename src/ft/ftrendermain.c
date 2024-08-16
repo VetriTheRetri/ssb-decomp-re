@@ -1,13 +1,10 @@
 #include <ft/fighter.h>
 #include <if/interface.h>
 #include <cm/camera.h>
+#include <sc/scene.h>
 #include <sys/ml.h>
 #include <sys/hal_gu.h>
 #include <sys/develop.h>
-
-extern f32 func_ovl1_8039051C();
-extern f32 func_ovl1_80390528();
-extern u8 func_ovl1_80390534(Gfx**);
 
 // // // // // // // // // // // //
 //                               //
@@ -1204,7 +1201,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
         {
             sFTRenderMainSkyFogAlpha = mpCollisionSetLightColorGetAlpha(gDisplayListHead);
         }
-        else sFTRenderMainSkyFogAlpha = func_ovl1_80390534(gDisplayListHead);
+        else sFTRenderMainSkyFogAlpha = scSubsysFighterDrawLightColorGetAlpha(gDisplayListHead);
 
         if (fp->colanim.is_use_maincolor)
         {
@@ -1252,7 +1249,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
         {
             ftRenderLightsDrawReflect(gDisplayListHead, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
         }
-        else ftRenderLightsDrawReflect(gDisplayListHead, func_ovl1_8039051C(), func_ovl1_80390528());
+        else ftRenderLightsDrawReflect(gDisplayListHead, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 
         if (fp->display_mode == nDBDisplayModeMapCollision)
         {

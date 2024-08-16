@@ -32,7 +32,6 @@ extern GObj* func_8000B93C
 // // // // // // // // // // // //
 
 extern uintptr_t ovl63_BSS_END;                             // 0x8018EC00
-extern uintptr_t lOverlay63ArenaHi;                         // 0x80392A00
 
 extern intptr_t D_NF_000000C6;
 extern intptr_t D_NF_000000FC;
@@ -639,9 +638,9 @@ void scExplainDetectExit(void)
 
     for (player = 0; player < ARRAY_COUNT(gPlayerControllers); player++)
     {
-        u16 button_new = gPlayerControllers[player].button_new;
+        u16 button_tap = gPlayerControllers[player].button_tap;
 
-        if (button_new & (A_BUTTON | B_BUTTON | START_BUTTON))
+        if (button_tap & (A_BUTTON | B_BUTTON | START_BUTTON))
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
@@ -884,7 +883,7 @@ void scExplainStartScene(void)
 
     set_lcg_seed_ptr(&dSCExplainRandomSeed1);
 
-    dSCExplainGtlSetup.arena_size = ((uintptr_t)&lOverlay63ArenaHi - (uintptr_t)&ovl63_BSS_END);
+    dSCExplainGtlSetup.arena_size = ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl63_BSS_END);
     dSCExplainGtlSetup.proc_start = scExplainProcStart;
 
     func_800A2698(&dSCExplainGtlSetup);

@@ -187,8 +187,8 @@ void update_global_contdata(void)
     {
         if (sContInfo[i].unk1C == FALSE)
         {
-            gPlayerControllers[i].button_press = sContInfo[i].unk00;
-            gPlayerControllers[i].button_new = sContInfo[i].unk04;
+            gPlayerControllers[i].button_hold = sContInfo[i].unk00;
+            gPlayerControllers[i].button_tap = sContInfo[i].unk04;
             gPlayerControllers[i].button_release = sContInfo[i].unk0C;
             gPlayerControllers[i].button_update = sContInfo[i].unk08;
             gPlayerControllers[i].stick_range.x = sContInfo[i].unk0E;
@@ -201,8 +201,8 @@ void update_global_contdata(void)
 
     players = &gPlayerControllers[gPlayerControllerPortStatuses[0]];
 
-    sys->button_new = players->button_new;
-    sys->button_press = players->button_press;
+    sys->button_tap = players->button_tap;
+    sys->button_hold = players->button_hold;
     sys->button_update = players->button_update;
     sys->button_release = players->button_release;
     sys->stick_range.x = players->stick_range.x;

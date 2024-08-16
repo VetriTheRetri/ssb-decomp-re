@@ -18,8 +18,8 @@ typedef struct ControllerInput
 
 typedef struct gsController
 {
-    /* 0x00 */ u16 button_press; // button
-    /* 0x02 */ u16 button_new; // new button presses?
+    /* 0x00 */ u16 button_hold; // button
+    /* 0x02 */ u16 button_tap; // new button presses?
     /* 0x04 */ u16 button_update; // buttons to handle?
     /* 0x06 */ u16 button_release; // released buttons?
     Vec2b stick_range;

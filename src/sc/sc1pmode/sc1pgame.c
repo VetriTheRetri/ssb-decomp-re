@@ -35,8 +35,7 @@ extern void func_800A26B8();
 extern alSoundEffect D_8009EDD0_406D0;
 
 extern intptr_t D_NF_800A5240;
-extern uintptr_t ovl65_BSS_END;         // 0x80193900
-extern uintptr_t lOverlay65ArenaHi;     // 0x80392A00
+extern uintptr_t ovl65_BSS_END;             // 0x80193900
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000040;
 extern intptr_t D_NF_000000C8;
@@ -2863,7 +2862,7 @@ void sc1PGameStartScene(void)
     dSC1PGameDisplaySetup.zbuffer = (u16*) ((uintptr_t)&D_NF_800A5240 - 0x1900);
     func_80007024(&dSC1PGameDisplaySetup);
 
-    dSC1PGameGtlSetup.arena_size = ((uintptr_t)&lOverlay65ArenaHi - (uintptr_t)&ovl65_BSS_END);
+    dSC1PGameGtlSetup.arena_size = ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl65_BSS_END);
     dSC1PGameGtlSetup.proc_start = sc1PGameProcStart;
     func_800A2698(&dSC1PGameGtlSetup);
     sc1PGameInitBonusStats();

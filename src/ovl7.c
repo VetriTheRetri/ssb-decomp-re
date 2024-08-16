@@ -26,7 +26,7 @@ void scTrainingMode_CheckEnterTrainingMenu()
 {
 	s32 player = gSceneData.spgame_player;
 
-	if (gPlayerControllers[player].button_new & HAL_BUTTON_START)
+	if (gPlayerControllers[player].button_tap & HAL_BUTTON_START)
 	{
 		GObj* fighter_gobj = gBattleState->players[player].fighter_gobj;
 		ftStruct* fp = ftGetStruct(fighter_gobj);
@@ -55,7 +55,7 @@ void scTrainingMode_CheckLeaveTrainingMenu()
 	s32 player = gSceneData.spgame_player;
 	GObj* fighter_gobj;
 
-	if (gPlayerControllers[player].button_new & (HAL_BUTTON_B | HAL_BUTTON_START))
+	if (gPlayerControllers[player].button_tap & (HAL_BUTTON_B | HAL_BUTTON_START))
 	{
 		ifCommonInterfaceSetGObjFlagsAll(0);
 		scTrainingMode_SetPauseGObjRenderFlags(1);
@@ -65,7 +65,7 @@ void scTrainingMode_CheckLeaveTrainingMenu()
 		fighter_gobj = gBattleState->players[player].fighter_gobj;
 		func_ovl2_800E7F68(fighter_gobj);
 
-		if (gPlayerControllers[player].button_new & HAL_BUTTON_B)
+		if (gPlayerControllers[player].button_tap & HAL_BUTTON_B)
 		{
 			ftStruct* fp = ftGetStruct(fighter_gobj);
 			fp->input.pl.button_hold |= HAL_BUTTON_B;
@@ -188,7 +188,7 @@ sb32 scTrainingMode_UpdateItemOption()
 	}
 	if (gTrainingModeStruct.item_spawn_wait == 0)
 	{
-		if ((gPlayerControllers[gSceneData.spgame_player].button_new & HAL_BUTTON_A)
+		if ((gPlayerControllers[gSceneData.spgame_player].button_tap & HAL_BUTTON_A)
 			&& (gTrainingModeStruct.item_menu_option != 0))
 		{
 			if (scTrainingMode_GetSpawnableItemCount() <= 3)
@@ -258,7 +258,7 @@ sb32 scTrainingMode_UpdateViewOption()
 // 8018D7B8
 sb32 scTrainingMode_UpdateResetOption()
 {
-	if (gPlayerControllers[gSceneData.spgame_player].button_new & A_BUTTON)
+	if (gPlayerControllers[gSceneData.spgame_player].button_tap & A_BUTTON)
 	{
 		gTrainingModeStruct.exit_or_reset = 1;
 		func_800266A0_272A0();
@@ -274,7 +274,7 @@ sb32 scTrainingMode_UpdateResetOption()
 // 8018D830
 sb32 scTrainingMode_UpdateExitOption()
 {
-	if (gPlayerControllers[gSceneData.spgame_player].button_new & A_BUTTON)
+	if (gPlayerControllers[gSceneData.spgame_player].button_tap & A_BUTTON)
 	{
 		func_800266A0_272A0();
 		func_800269C0_275C0(0xA2U);

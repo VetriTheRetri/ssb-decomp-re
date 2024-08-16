@@ -10,9 +10,9 @@
 sb32 gmCreditsCheckUnpause()
 {
 	sb32 var_v1 = TRUE;
-	u16 button_new = gPlayerControllers[gCreditsPlayer].button_new;
+	u16 button_tap = gPlayerControllers[gCreditsPlayer].button_tap;
 
-	if (button_new & (A_BUTTON | B_BUTTON | Z_TRIG | START_BUTTON))
+	if (button_tap & (A_BUTTON | B_BUTTON | Z_TRIG | START_BUTTON))
 	{
 		GObj *name_gobj;
 		GObj *job_gobj;
@@ -654,14 +654,14 @@ void func_ovl59_8013330C()
 sb32 gmCreditsCheckPause()
 {
 	GObj *gobj;
-	u16 button_new = gPlayerControllers[gCreditsPlayer].button_new;
+	u16 button_tap = gPlayerControllers[gCreditsPlayer].button_tap;
 	sb32 b = FALSE;
 
-	if (button_new & (A_BUTTON | B_BUTTON))
+	if (button_tap & (A_BUTTON | B_BUTTON))
 	{
 		func_ovl59_8013330C();
 
-		if (button_new & B_BUTTON)
+		if (button_tap & B_BUTTON)
 		{
 			if (gCreditsStaffRollGObj != NULL)
 			{
@@ -693,11 +693,11 @@ sb32 gmCreditsCheckPause()
 void func_ovl59_801334E4(GObj *gobj)
 {
 	sb32 is_paused;
-	u16 button_new;
+	u16 button_tap;
 
 	if ((gCreditsRollEndWait == 0) || (gCreditsStatus != -1) && (gCreditsStatus != -2))
 	{
-		button_new = gPlayerControllers[gCreditsPlayer].button_new;
+		button_tap = gPlayerControllers[gCreditsPlayer].button_tap;
 
 		if (gCreditsStatus == 1)
 		{
@@ -724,7 +724,7 @@ void func_ovl59_801334E4(GObj *gobj)
 		}
 		gCreditsIsPaused = is_paused;
 
-		if (button_new & START_BUTTON)
+		if (button_tap & START_BUTTON)
 		{
 			if (gCreditsRollSpeed == 0.0037500001F)
 			{

@@ -952,7 +952,7 @@ typedef enum ftPlayerKind
     nFTPlayerKindMan,        // Player-controlled
     nFTPlayerKindCom,        // CPU-controlled
     nFTPlayerKindNot,        // N/A
-    nFTPlayerKindDemo,       // Results Screen / Auto-Demo?
+    nFTPlayerKindDemo,       // Results Screen / Character Select Screen?
     nFTPlayerKindKey,        // Intro movie?
     nFTPlayerKindGameKey     // How to Play?
 

@@ -8,11 +8,12 @@ extern u8 D_800A4B08;
 extern s32 D_800A4AEC;
 extern void *D_80044FA8_407B8;
 
-extern void func_ovl1_803903E0();
+extern uintptr_t ovl1_TEXT_START;
+extern uintptr_t ovl56_BSS_END;
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 extern void ftRenderLightsDrawReflect(Gfx **display_list, f32 arg1, f32 arg2);
-extern f32 func_ovl1_8039051C();
-extern f32 func_ovl1_80390528();
+extern f32 scSubsysFighterGetLightAngleX();
+extern f32 scSubsysFighterGetLightAngleY();
 extern void func_ovl0_800CD2CC();
 extern GObj* func_8000B93C(
 	u32 id,
@@ -535,7 +536,7 @@ sb32 sc1PStageClearCheckHaveTimer();
 void func_ovl56_80131B00(Gfx **dl)
 {
 	gSPSetGeometryMode(dl[0]++, G_LIGHTING);
-	ftRenderLightsDrawReflect(dl, func_ovl1_8039051C(), func_ovl1_80390528());
+	ftRenderLightsDrawReflect(dl, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
 // 80131B58
@@ -1852,7 +1853,7 @@ void sc1PStageClearSceneProcUpdate(GObj *gobj)
 
 	if (D_ovl56_801352CC >= 10)
 	{
-		if (func_ovl1_8039076C(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
+		if (scSubsysControllerGetFirstTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 		{
 			if (D_ovl56_8013533C != 0)
 			{
@@ -1990,7 +1991,7 @@ void sc1PStageClearStartScene()
 
 	func_80007024(&D_ovl56_801351EC);
 
-	D_ovl56_80135208.arena_size = ((uintptr_t)&lGMStageClearArenaHi - (uintptr_t)&lGMStageClearArenaLo);
+	D_ovl56_80135208.arena_size = ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl56_BSS_END);
 
 	gsGTLSceneInit(&D_ovl56_80135208);
 }

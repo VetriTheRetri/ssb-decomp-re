@@ -7,13 +7,13 @@
 #include "mntypes.h"
 
 #define mnCommonCheckGetOptionButtonInput(wait, is_button, mask)\
-(((wait) == 0) && ((is_button) = func_ovl1_80390804(mask), (is_button) != FALSE))
+(((wait) == 0) && ((is_button) = scSubsysControllerGetFirstHoldButtons(mask), (is_button) != FALSE))
 
 #define mnCommonCheckGetOptionStickInputUD(wait, stick_range, min, b)\
-(((wait) == 0) && ((stick_range) = func_ovl1_80390950(min, b), (stick_range) != 0))
+(((wait) == 0) && ((stick_range) = scSubsysControllerGetFirstStickUD(min, b), (stick_range) != 0))
 
 #define mnCommonCheckGetOptionStickInputLR(wait, stick_range, min, b)\
-(((wait) == 0) && ((stick_range) = func_ovl1_8039089C(min, b), (stick_range) != 0))
+(((wait) == 0) && ((stick_range) = scSubsysControllerGetFirstStickLR(min, b), (stick_range) != 0))
 
 #define mnCommonGetOptionChangeWaitP(stick_range, div) ((160 - (stick_range)) / (div))
 

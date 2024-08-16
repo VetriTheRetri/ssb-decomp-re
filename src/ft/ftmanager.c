@@ -17,9 +17,6 @@ extern intptr_t D_NF_000000C9;
 extern void func_ovl0_800C8CB8(void*, void*, void*, void*, f32);
 extern void func_ovl0_800C8DB4(void*, void*, u8, void*, s32, s32, s32, s32, f32, s32);
 
-extern void func_ovl1_80390584(GObj*);
-extern void func_ovl1_803904E0(f32, f32, u8, u8, u8, u8);
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
@@ -258,7 +255,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
 
     if (data_flags & FTDATA_FLAG_SUBMOTION)
     {
-        func_ovl1_803904E0(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
+        scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
     }
 }
 
@@ -879,7 +876,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
         gcAddGObjCommonProc(fighter_gobj, ftMainProcSearchAllHit, nOMObjProcessKindProc, 1);
         gcAddGObjCommonProc(fighter_gobj, ftMainProcUpdateMain, nOMObjProcessKindProc, 0);
     }
-    else gcAddGObjCommonProc(fighter_gobj, func_ovl1_80390584, nOMObjProcessKindProc, 5);
+    else gcAddGObjCommonProc(fighter_gobj, scSubsysFighterProcUpdate, nOMObjProcessKindProc, 5);
 
     ftManagerInitFighter(fighter_gobj, ft_desc);
 
@@ -895,7 +892,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
     switch (fp->status_info.pl_kind)
     {
     case nFTPlayerKindDemo:
-        func_ovl1_803905CC(fighter_gobj, 0x10000);
+        scSubsysFighterSetStatus(fighter_gobj, 0x10000);
         break;
 
     case nFTPlayerKindKey:

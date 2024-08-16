@@ -11,7 +11,7 @@ extern s32 sGSGTLNumTasks;
 // ovl8
 dbMenuPosition* func_ovl8_803749BC();                           /* extern */
 void func_ovl8_80374A54(s32, dbMenuPosition*);                      /* extern */
-void func_ovl8_80377AEC(dbMenuPosition*, dbMenuPosition*, dbMenuPosition*, s32);            /* extern */
+void func_ovl8_80377AEC(dbMenuPosition*, dbMenuPosition*, u32, s32);            /* extern */
 extern void func_ovl8_8037DD60(dbMenuPosition*, char*);                      /* extern */
 extern void func_ovl8_80386BE0(char*, const char*);                       /* extern */
 

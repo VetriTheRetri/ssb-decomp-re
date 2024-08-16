@@ -5,10 +5,8 @@
 #include <sys/thread6.h>
 #include <ovl0/reloc_data_mgr.h>
 
-extern intptr_t D_NF_800A5240;
-extern intptr_t lMNCongraArenaLo;       // 80132300
-extern intptr_t lSubSystemArenaLo;
-extern s8 gPlayerControllerPortStatuses[4];
+
+extern uintptr_t ovl57_BSS_END;       // 80132300
 extern void func_ovl0_800CD2CC();
 extern void func_ovl0_800CCF00();
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
@@ -265,9 +263,9 @@ void mnCongraStartScene()
 		sMNCongraFighterKind = gTransferBattleState.players[0].ft_kind;
 		break;
 	}
-	D_ovl57_80132208.zbuffer = ((uintptr_t) &D_NF_800A5240 - 0x1900);
+	D_ovl57_80132208.zbuffer = ((uintptr_t)&scmanager_BSS_END - 6400);
 	func_80007024(&D_ovl57_80132208);
-	D_ovl57_80132224.arena_size = (0x80325400 - (intptr_t) &lMNCongraArenaLo);
-	gsGTLSceneInit(&D_ovl57_80132224); subsys_arena_lo = (uintptr_t) &lSubSystemArenaLo; // WARNING: Newline memes!
-	while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = 0x0001; }
+	D_ovl57_80132224.arena_size = (0x80325400 - (uintptr_t)&ovl57_BSS_END);
+	gsGTLSceneInit(&D_ovl57_80132224); subsys_arena_lo = (uintptr_t)&gSCSubsysFramebuffer1; // WARNING: Newline memes!
+	while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
 }

@@ -34,7 +34,7 @@ extern void func_800A26B8();
 
 extern alSoundEffect D_8009EDD0_406D0;
 
-extern intptr_t D_NF_800A5240;
+
 extern uintptr_t ovl65_BSS_END;             // 0x80193900
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000040;
@@ -2859,7 +2859,7 @@ void sc1PGameStartScene(void)
     gBattleState = &gSCManager1PGameBattleState;
     gBattleState->game_type = nSCBattleGameType1PGame;
 
-    dSC1PGameDisplaySetup.zbuffer = (u16*) ((uintptr_t)&D_NF_800A5240 - 0x1900);
+    dSC1PGameDisplaySetup.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 0x1900);
     func_80007024(&dSC1PGameDisplaySetup);
 
     dSC1PGameGtlSetup.arena_size = ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl65_BSS_END);

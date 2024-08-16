@@ -123,4 +123,123 @@ extern uintptr_t _ovl65DataEnd;
 extern uintptr_t _ovl65SegNoloadStart;
 extern uintptr_t _ovl65SegNoloadEnd;
 
+extern uintptr_t ovl1_ROM_START;
+extern uintptr_t ovl1_ROM_END;
+extern uintptr_t ovl1_VRAM;
+extern uintptr_t ovl1_TEXT_START;
+extern uintptr_t ovl1_TEXT_END;
+extern uintptr_t ovl1_DATA_START;
+extern uintptr_t ovl1_RODATA_END;
+extern uintptr_t ovl1_BSS_START;
+
+extern uintptr_t ovl3_ROM_START;
+extern uintptr_t ovl3_ROM_END;
+extern uintptr_t ovl3_VRAM;
+extern uintptr_t ovl3_TEXT_START;
+extern uintptr_t ovl3_TEXT_END;
+extern uintptr_t ovl3_DATA_START;
+extern uintptr_t ovl3_RODATA_END;
+extern uintptr_t ovl3_BSS_START;
+extern uintptr_t ovl3_BSS_END;
+
+extern uintptr_t ovl6_ROM_START;
+extern uintptr_t ovl6_ROM_END;
+extern uintptr_t ovl6_VRAM;
+extern uintptr_t ovl6_TEXT_START;
+extern uintptr_t ovl6_TEXT_END;
+extern uintptr_t ovl6_DATA_START;
+extern uintptr_t ovl6_RODATA_END;
+extern uintptr_t ovl6_BSS_START;
+extern uintptr_t ovl6_BSS_END;
+
+extern uintptr_t ovl22_ROM_START;
+extern uintptr_t ovl22_ROM_END;
+extern uintptr_t ovl22_VRAM;
+extern uintptr_t ovl22_TEXT_START;
+extern uintptr_t ovl22_TEXT_END;
+extern uintptr_t ovl22_DATA_START;
+extern uintptr_t ovl22_RODATA_END;
+extern uintptr_t ovl22_BSS_START;
+extern uintptr_t ovl22_BSS_END;
+
+extern uintptr_t ovl23_ROM_START;
+extern uintptr_t ovl23_ROM_END;
+extern uintptr_t ovl23_VRAM;
+extern uintptr_t ovl23_TEXT_START;
+extern uintptr_t ovl23_TEXT_END;
+extern uintptr_t ovl23_DATA_START;
+extern uintptr_t ovl23_RODATA_END;
+extern uintptr_t ovl23_BSS_START;
+extern uintptr_t ovl23_BSS_END;
+
+extern uintptr_t ovl24_ROM_START;
+extern uintptr_t ovl24_ROM_END;
+extern uintptr_t ovl24_VRAM;
+extern uintptr_t ovl24_TEXT_START;
+extern uintptr_t ovl24_TEXT_END;
+extern uintptr_t ovl24_DATA_START;
+extern uintptr_t ovl24_RODATA_END;
+extern uintptr_t ovl24_BSS_START;
+extern uintptr_t ovl24_BSS_END;
+
+extern uintptr_t ovl54_ROM_START;
+extern uintptr_t ovl54_ROM_END;
+extern uintptr_t ovl54_VRAM;
+extern uintptr_t ovl54_TEXT_START;
+extern uintptr_t ovl54_TEXT_END;
+extern uintptr_t ovl54_DATA_START;
+extern uintptr_t ovl54_RODATA_END;
+extern uintptr_t ovl54_BSS_START;
+extern uintptr_t ovl54_BSS_END;
+
+extern uintptr_t ovl55_ROM_START;
+extern uintptr_t ovl55_ROM_END;
+extern uintptr_t ovl55_VRAM;
+extern uintptr_t ovl55_TEXT_START;
+extern uintptr_t ovl55_TEXT_END;
+extern uintptr_t ovl55_DATA_START;
+extern uintptr_t ovl55_RODATA_END;
+extern uintptr_t ovl55_BSS_START;
+extern uintptr_t ovl55_BSS_END;
+
+extern uintptr_t ovl56_ROM_START;
+extern uintptr_t ovl56_ROM_END;
+extern uintptr_t ovl56_VRAM;
+extern uintptr_t ovl56_TEXT_START;
+extern uintptr_t ovl56_TEXT_END;
+extern uintptr_t ovl56_DATA_START;
+extern uintptr_t ovl56_RODATA_END;
+extern uintptr_t ovl56_BSS_START;
+extern uintptr_t ovl56_BSS_END;
+
+extern uintptr_t ovl57_ROM_START;
+extern uintptr_t ovl57_ROM_END;
+extern uintptr_t ovl57_VRAM;
+extern uintptr_t ovl57_TEXT_START;
+extern uintptr_t ovl57_TEXT_END;
+extern uintptr_t ovl57_DATA_START;
+extern uintptr_t ovl57_RODATA_END;
+extern uintptr_t ovl57_BSS_START;
+extern uintptr_t ovl57_BSS_END;
+
+extern uintptr_t ovl59_ROM_START;
+extern uintptr_t ovl59_ROM_END;
+extern uintptr_t ovl59_VRAM;
+extern uintptr_t ovl59_TEXT_START;
+extern uintptr_t ovl59_TEXT_END;
+extern uintptr_t ovl59_DATA_START;
+extern uintptr_t ovl59_RODATA_END;
+extern uintptr_t ovl59_BSS_START;
+extern uintptr_t ovl59_BSS_END;
+
+extern uintptr_t ovl65_ROM_START;
+extern uintptr_t ovl65_ROM_END;
+extern uintptr_t ovl65_VRAM;
+extern uintptr_t ovl65_TEXT_START;
+extern uintptr_t ovl65_TEXT_END;
+extern uintptr_t ovl65_DATA_START;
+extern uintptr_t ovl65_RODATA_END;
+extern uintptr_t ovl65_BSS_START;
+extern uintptr_t ovl65_BSS_END;
+
 #endif

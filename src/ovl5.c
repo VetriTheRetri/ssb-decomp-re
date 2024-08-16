@@ -3,12 +3,7 @@
 #include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
-extern void *gGMCommonFiles[];
-extern u32 dGMCommonFileIDs[8];
-extern intptr_t D_NF_80000023;
-extern s32 D_NF_800A5240[];
-extern uintptr_t ovl5_BSS_END; // 8018D950
-extern uintptr_t ovl1_TEXT_START; // 803903E0
+extern uintptr_t ovl5_BSS_END; 	// 8018D950
 
 // DATA
 
@@ -171,11 +166,11 @@ void func_ovl5_8018D4BC(Gfx **display_list)
 // 8018D508
 void overlay_set23_entry()
 {
-	D_ovl5_8018D5BC.zbuffer = (u16*) ((uintptr_t)D_NF_800A5240 - 0x1900);
+	D_ovl5_8018D5BC.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 6400);
 	func_80007024(&D_ovl5_8018D5BC);
 	D_ovl5_8018D5D8.arena_size = ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl5_BSS_END);
 	func_800A2698(&D_ovl5_8018D5D8);
 	auStopBGM();
 	gSceneData.scene_previous = gSceneData.scene_current;
-	gSceneData.scene_current = 1;
+	gSceneData.scene_current = nSCKindTitle;
 }

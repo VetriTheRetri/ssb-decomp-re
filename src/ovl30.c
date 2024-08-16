@@ -6,7 +6,7 @@
 #define F_DEG_TO_RAD(x) ((f32)(((x) * PI32) / 180.0F))
 
 // EXTERN
-extern intptr_t D_NF_800A5240;      // 800A5240
+      // 800A5240
 extern intptr_t lOverlay30ArenaLo;  // 80134E30
 extern intptr_t lOverlay30ArenaHi;  // 803903E0
 // Offsets
@@ -1431,7 +1431,7 @@ void mnStageInitSSS()
 // 8013446C
 void mnStageStartScene()
 {
-	D_ovl30_8013490C.zbuffer = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl30_8013490C.zbuffer = (uintptr_t)((uintptr_t)&scmanager_BSS_END - 0x1900);
 	func_80007024(&D_ovl30_8013490C);
 	D_ovl30_80134928.arena_size = (u32) ((uintptr_t)&lOverlay30ArenaHi - (uintptr_t)&lOverlay30ArenaLo);
 	func_800A2698(&D_ovl30_80134928);

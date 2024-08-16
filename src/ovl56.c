@@ -30,7 +30,7 @@ extern GObj* func_8000B93C(
 	u32 arg12,
 	s32 arg13);
 
-extern intptr_t D_NF_800A5240;
+
 extern intptr_t lGMStageClearArenaLo;                       // 801355B0
 extern intptr_t lGMStageClearArenaHi;                       // 803903E0
 extern intptr_t D_NF_001AC870;
@@ -1987,7 +1987,7 @@ void sc1PStageClearInitAll()
 // 80134E84
 void sc1PStageClearStartScene()
 {
-	D_ovl56_801351EC.zbuffer = ((intptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl56_801351EC.zbuffer = ((uintptr_t)&scmanager_BSS_END - 0x1900);
 
 	func_80007024(&D_ovl56_801351EC);
 

@@ -1509,7 +1509,7 @@ void gmCreditsStartScene()
 
 	while ((uintptr_t)arena32 < 0x80400000) { *arena32++ = 0x00000000; }
 
-	D_ovl59_8013A708.zbuffer = (void*)((uintptr_t)&D_NF_800A5240 - 0x3200);
+	D_ovl59_8013A708.zbuffer = (void*)((uintptr_t)&scmanager_BSS_END - 0x3200);
 	func_80007024(&D_ovl59_8013A708);
 
 	D_ovl59_8013A724.arena_size = ((uintptr_t)0x8023E000 - (uintptr_t)&lCreditsArenaLo);

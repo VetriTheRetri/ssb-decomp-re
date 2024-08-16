@@ -57,7 +57,7 @@ extern intptr_t D_NF_0001D338;
 extern intptr_t D_NF_0001D948;
 extern intptr_t D_NF_0001DF58;
 extern intptr_t D_NF_0001E018;
-extern intptr_t D_NF_800A5240;
+
 
 // // // // // // // // // // // //
 //                               //
@@ -877,7 +877,7 @@ void jtgt_ovl63_8018E594(void)
 // 0x8018E5C0
 void scExplainStartScene(void)
 {
-    dSCExplainDisplaySetup.zbuffer = (u16*) ((uintptr_t)&D_NF_800A5240 - 0x1900);
+    dSCExplainDisplaySetup.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 0x1900);
 
     func_80007024(&dSCExplainDisplaySetup);
 

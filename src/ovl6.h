@@ -178,7 +178,7 @@ extern intptr_t D_NF_00000138;
 extern intptr_t D_NF_000001D0;
 extern intptr_t D_NF_00001140;
 extern intptr_t D_NF_00001238;
-extern uintptr_t D_NF_800A5240;
+
 extern uintptr_t lOverlay6ArenaLo; // 0x8018F710
 extern uintptr_t lOverlay6ArenaHi; // 0x80392A00
 

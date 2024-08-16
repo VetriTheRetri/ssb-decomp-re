@@ -22,6 +22,7 @@ typedef struct syDisplaySetup
 
 } syDisplaySetup; // size >= 0x18
 
+extern uintptr_t scmanager_BSS_END;         // Z-Buffer pointer = this - 6400 (or 12800 in ovl59)
 extern u16 gSCSubsysFramebuffer1[/* */];
 extern u16 gSCSubsysFramebuffer2[/* */];
 extern u16 gSCSubsysFramebuffer3[/* */];

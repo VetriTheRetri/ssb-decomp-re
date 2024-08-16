@@ -1419,7 +1419,7 @@ void scTrainingMode_SetGeometryRenderLights(Gfx** display_list)
 // 801905F4
 void scManager_TrainingMode_InitScene()
 {
-	D_ovl7_80190870.zbuffer = (uintptr_t)&D_NF_800A5240 - 6400;
+	D_ovl7_80190870.zbuffer = (uintptr_t)&scmanager_BSS_END - 6400;
 
 	func_80007024(&D_ovl7_80190870);
 

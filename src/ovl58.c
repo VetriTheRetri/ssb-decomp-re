@@ -3,7 +3,7 @@
 #include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
-extern intptr_t D_NF_800A5240;
+
 extern intptr_t D_NF_000000C2;
 extern intptr_t D_NF_000073C0;
 extern intptr_t lMNN64ArenaLo;          // 80132080
@@ -192,7 +192,7 @@ void mnN64AddLightsDisplayList(Gfx **dl)
 void mnN64StartScene()
 {
 	auStopBGM();
-	D_ovl58_80131F98.zbuffer = ((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl58_80131F98.zbuffer = ((uintptr_t)&scmanager_BSS_END - 0x1900);
 	func_80007024(&D_ovl58_80131F98);
 	D_ovl58_80131FB4.arena_size = ((uintptr_t)&lMNN64ArenaHi - (uintptr_t)&lMNN64ArenaLo);
 	gsGTLSceneInit(&D_ovl58_80131FB4);

@@ -26,7 +26,7 @@ options:
   symbol_addrs_path:
     - symbols/libultra.txt
     - symbols/system.txt
-    - symbols/scene_manager.txt
+    - symbols/scmanager.txt
     - symbols/ovl0.txt
     - symbols/ovl2.txt
     - symbols/ovl3.txt
@@ -401,15 +401,15 @@ segments:
       - { start: auto, type: .bss, name: libultra/io/pfsisplug,    vram: 0x800A0710 }
       - { start: auto, type: .bss, name: libultra/io/vimgr,        vram: 0x800A0750 }
 
-  - name: scene_manager
+  - name: scmanager
     type: code
     start: 0x0406D0
     vram: 0x800A1980
     subsegments:
-      - [0x0406D0, c, scenemgr/scene_manager]
-      - [0x041DC0, .data, scenemgr/scene_manager]
-      - [0x042F30, .rodata, scenemgr/scene_manager]
-      - { start: auto, type: .bss, name: scenemgr/scene_manager, vram: 0x800A44D0 }
+      - [0x0406D0, c, scenemgr/scmanager]
+      - [0x041DC0, .data, scenemgr/scmanager]
+      - [0x042F30, .rodata, scenemgr/scmanager]
+      - { start: auto, type: .bss, name: scenemgr/scmanager, vram: 0x800A44D0 }
 
   - name: ovl0
     type: code

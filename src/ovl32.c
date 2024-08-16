@@ -1876,7 +1876,7 @@ void mnVsRecordsInit()
 // 801365D0
 void vs_records_entry()
 {
-	D_ovl32_801369CC.zbuffer = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl32_801369CC.zbuffer = (uintptr_t)((uintptr_t)&scmanager_BSS_END - 0x1900);
 	func_80007024(&D_ovl32_801369CC);
 	D_ovl32_801369E8.arena_size = (u32) ((uintptr_t)&lOverlay32ArenaHi - (uintptr_t)&lOverlay32ArenaLo);
 	gsGTLSceneInit(&D_ovl32_801369E8);

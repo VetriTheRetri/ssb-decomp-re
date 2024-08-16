@@ -7,7 +7,7 @@
 // EXTERN
 
 extern intptr_t FILE_041_LINK_CAMERA_PARAMS_OFFSET; // 0xC0
-extern intptr_t D_NF_800A5240;      // 800A5240
+      // 800A5240
 extern intptr_t lOverlay40ArenaHi;  // 803903E0
 extern intptr_t lOverlay40ArenaLo;  // 8018E5E0
 extern u32 gFTManagerAnimHeapSize;			// 80130D9C

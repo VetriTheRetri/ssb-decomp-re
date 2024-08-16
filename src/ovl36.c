@@ -4,7 +4,7 @@
 #include <ovl0/reloc_data_mgr.h>
 
 // EXTERN
-extern intptr_t D_NF_800A5240;      // 800A5240
+      // 800A5240
 extern intptr_t lOverlay36ArenaLo;  // 8018E620
 extern intptr_t lOverlay36ArenaHi;  // 803903E0
 extern void func_ovl0_800CCF00();
@@ -490,7 +490,7 @@ void mvOpeningMarioSetupDisplayList(Gfx **display_list)
 // 8018E030
 void intro_focus_mario_entry()
 {
-	D_ovl36_8018E11C.zbuffer = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl36_8018E11C.zbuffer = (uintptr_t)((uintptr_t)&scmanager_BSS_END - 0x1900);
 	func_80007024(&D_ovl36_8018E11C);
 	D_ovl36_8018E138.arena_size = (u32) ((uintptr_t)&lOverlay36ArenaHi - (uintptr_t)&lOverlay36ArenaLo);
 	gsGTLSceneInit(&D_ovl36_8018E138);

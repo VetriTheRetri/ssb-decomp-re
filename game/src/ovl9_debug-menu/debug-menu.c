@@ -6,7 +6,7 @@
 #include <debug-menu.h>
 
 // // ?
-// extern void func_8000B1C4();
+extern s32 sGSGTLNumTasks;
 
 // ovl8
 dbMenuPosition* func_ovl8_803749BC();                           /* extern */
@@ -16,6 +16,18 @@ extern void func_ovl8_8037DD60(dbMenuPosition*, char*);                      /* 
 extern void func_ovl8_80386BE0(char*, const char*);                       /* extern */
 
 // // ovl9 stuff
+
+// 0x80369F64
+extern u32 dMNDebugMenuBGColor;
+
+// 0x80369F68
+extern u32 dMNDebugMenuBorderColor;
+
+// 0x80369F6C
+extern u32 dMNDebugMenuTextColor;
+
+// 0x80369F70
+extern u32 dMNDebugMenuTextBGColor;
 
 // 0x80369F7C
 extern dbMenuPosition gMNDebugMenuMenuPosition;
@@ -32,8 +44,22 @@ extern u16 gMNDebugMenuStickInputs;
 // 0x80369FD8
 extern s32 gMNDebugMenuRapidScrollWait;
 
+extern void *D_ovl9_8036A398; // TODO - some struct, maybe 0x14 size
+
 // 0x8036A3B0
-extern char D_ovl9_8036A3B0[] = ">";
+extern char dMNDebugMenuCursorChr[] = ">";
+
+// 0x8036A400
+extern void *D_ovl9_8036A400; // TODO - ?
+
+// 0x80371400
+extern s32 gMNDebugMenuCursorIndexWhenExited;
+
+// 0x80371404
+extern s32 D_ovl9_80371404; // TODO - some struct, pretty important!
+
+// 0x80371408
+extern GObj* gMNDebugMenuMenuGObj;
 
 // 0x8037140C
 extern dbMenuItem *gMNDebugMenuMenuItems;
@@ -44,14 +70,20 @@ extern s32 gMNDebugMenuMenuItemsCount;
 // 0x80371414
 extern s32 gMNDebugMenuCursorIndex;
 
+// 0x80371418
+extern void (*gMNDebugMenuDefaultMenuRenderProc)(GObj*);
+
 // 0x8037141C
 extern s32 gMNDebugMenuRedrawInterrupt;
 
 // 0x80371420
 extern sb32 gMNDebugMenuIsMenuOpen;
 
+// 0x80371424
+extern s32 gMNDebugMenuOriginalGSGTLNumTasks;
+
 // 0x80371428
-extern char D_ovl9_80371428[0x38]; // string buffer?
+extern char gMNDebugMenuStringBuffer[0x38];
 
 // 0x80369240
 void mnDebugMenuUpdateMenuInputs()
@@ -107,12 +139,12 @@ void mnDebugMenuUpdateMenuInputs()
 // 0x80369310
 void mnDebugMenuDrawString(dbMenuPosition *arg0, const char *str, ...)
 {
-    func_ovl8_80386BE0(D_ovl9_80371428, &str);
-    func_ovl8_8037DD60(arg0, D_ovl9_80371428);
+    func_ovl8_80386BE0(gMNDebugMenuStringBuffer, &str);
+    func_ovl8_8037DD60(arg0, gMNDebugMenuStringBuffer);
 }
 
 // 0x80369358
-void mnDebugMenuDrawBorder(s32 arg0, dbMenuPosition* arg1)
+void mnDebugMenuDrawBorder(s32 arg0, u32 color)
 {
     dbMenuPosition* temp_s0;
     dbMenuPosition menu_position;
@@ -126,28 +158,28 @@ void mnDebugMenuDrawBorder(s32 arg0, dbMenuPosition* arg1)
     menu_position.y = 0;
     menu_position.w = 1;
     menu_position.h = gMNDebugMenuMenuPosition.h;
-    func_ovl8_80377AEC(temp_s0, &menu_position, arg1, 4);
+    func_ovl8_80377AEC(temp_s0, &menu_position, color, 4);
 
     // draw left border
     menu_position.w = gMNDebugMenuMenuPosition.w;
     menu_position.h = 1;
-    func_ovl8_80377AEC(temp_s0, &menu_position, arg1, 4);
+    func_ovl8_80377AEC(temp_s0, &menu_position, color, 4);
 
     // draw bottom border
     menu_position.y = gMNDebugMenuMenuPosition.h - 1;
     menu_position.h = 1;
-    func_ovl8_80377AEC(temp_s0, &menu_position, arg1, 4);
+    func_ovl8_80377AEC(temp_s0, &menu_position, color, 4);
 
     // draw right border
     menu_position.x = gMNDebugMenuMenuPosition.w - 1;
     menu_position.y = 0;
     menu_position.w = 1;
     menu_position.h = gMNDebugMenuMenuPosition.h;
-    func_ovl8_80377AEC(temp_s0, &menu_position, arg1, 4);
+    func_ovl8_80377AEC(temp_s0, &menu_position, color, 4);
 }
 
 // 0x8036944C
-void mnDebugMenuDrawBackground(s32 arg0, s32 arg1)
+void mnDebugMenuDrawBackground(s32 arg0, s32 color)
 {
     dbMenuPosition *sp24;
     dbMenuPosition sp1C;
@@ -161,7 +193,7 @@ void mnDebugMenuDrawBackground(s32 arg0, s32 arg1)
     sp1C.y = 1;
     sp1C.w = gMNDebugMenuMenuPosition.w - 2;
     sp1C.h = gMNDebugMenuMenuPosition.h - 2;
-    func_ovl8_80377AEC(sp24, &sp1C, arg1, 4);
+    func_ovl8_80377AEC(sp24, &sp1C, color, 4);
 }
 
 // 0x803694C8
@@ -207,7 +239,7 @@ void mnDebugMenuDrawMenuItems(void* arg0, dbMenuItem *menu_item, s32 arg2)
 void mnDebugMenuDrawCursor(void* arg0, s32 cursor_index)
 {
     func_ovl8_8037DFCC(3, (cursor_index * 9) + 2, cursor_index);
-    mnDebugMenuDrawString(func_ovl8_803749BC(arg0), &D_ovl9_8036A3B0);
+    mnDebugMenuDrawString(func_ovl8_803749BC(arg0), &dMNDebugMenuCursorChr);
 }
 
 // 0x803696D4
@@ -217,12 +249,12 @@ void gMNDebugMenuRenderMenu(s32 arg0)
     {
         gMNDebugMenuRedrawInterrupt = 0;
 
-        mnDebugMenuDrawBackground(D_ovl9_80371404, &D_ovl9_80369F64);
+        mnDebugMenuDrawBackground(D_ovl9_80371404, dMNDebugMenuBGColor);
         mnDebugMenuDrawMenuItems(D_ovl9_80371404, gMNDebugMenuMenuItems, gMNDebugMenuMenuItemsCount);
         mnDebugMenuDrawCursor(D_ovl9_80371404, gMNDebugMenuCursorIndex);
     }
 
-    D_ovl9_80371418(arg0);
+    gMNDebugMenuDefaultMenuRenderProc(arg0);
 }
 
 // 0x8036975C
@@ -376,12 +408,12 @@ void mnDebugMenuHandleInputs(GObj *gobj)
     {
         if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].type == nDBMenuItemKindExitLabel)
         {
-            D_ovl9_80371400 = gMNDebugMenuCursorIndex;
+            gMNDebugMenuCursorIndexWhenExited = gMNDebugMenuCursorIndex;
             func_ovl8_8037488C(D_ovl9_80371404);
 
             gMNDebugMenuIsMenuOpen = FALSE;
 
-            sGSGTLNumTasks = D_ovl9_80371424;
+            sGSGTLNumTasks = gMNDebugMenuOriginalGSGTLNumTasks;
         }
 
         if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].proc_a != NULL)
@@ -397,7 +429,7 @@ void mnDebugMenuHandleInputs(GObj *gobj)
 
         gMNDebugMenuIsMenuOpen = FALSE;
 
-        sGSGTLNumTasks = D_ovl9_80371424;
+        sGSGTLNumTasks = gMNDebugMenuOriginalGSGTLNumTasks;
     }
 }
 
@@ -410,7 +442,7 @@ void mnDebugMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem *menu_items, s32 menu
         gMNDebugMenuMenuItems = menu_items;
         gMNDebugMenuMenuItemsCount = menu_items_count;
         gMNDebugMenuCursorIndex = gMNDebugMenuRedrawInterrupt = 0;
-        D_ovl9_80371400 = -1;
+        gMNDebugMenuCursorIndexWhenExited = -1;
 
         gMNDebugMenuMenuPosition.x = x;
         gMNDebugMenuMenuPosition.y = y;
@@ -418,18 +450,18 @@ void mnDebugMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem *menu_items, s32 menu
         gMNDebugMenuMenuPosition.h = (menu_items_count * 9) + 3;
 
         D_ovl9_80371404 = func_ovl8_80381C80(&gMNDebugMenuMenuPosition);
-        D_ovl9_80371408 = func_ovl8_80374910(D_ovl9_80371404);
+        gMNDebugMenuMenuGObj = func_ovl8_80374910(D_ovl9_80371404);
 
-        mnDebugMenuDrawBorder(D_ovl9_80371404, &D_ovl9_80369F68);
+        mnDebugMenuDrawBorder(D_ovl9_80371404, dMNDebugMenuBorderColor);
         mnDebugMenuDrawMenuItems(D_ovl9_80371404, menu_items, menu_items_count);
         mnDebugMenuDrawCursor(D_ovl9_80371404, gMNDebugMenuCursorIndex);
 
-        D_ovl9_80371418 = D_ovl9_80371408->renderer;
-        D_ovl9_80371408->renderer = gMNDebugMenuRenderMenu;
+        gMNDebugMenuDefaultMenuRenderProc = gMNDebugMenuMenuGObj->proc_render;
+        gMNDebugMenuMenuGObj->proc_render = gMNDebugMenuRenderMenu;
 
-        omAddGObjCommonProc(D_ovl9_80371408, mnDebugMenuHandleInputs, 1, 1);
+        omAddGObjCommonProc(gMNDebugMenuMenuGObj, mnDebugMenuHandleInputs, 1, 1);
 
-        D_ovl9_80371424 = sGSGTLNumTasks;
+        gMNDebugMenuOriginalGSGTLNumTasks = sGSGTLNumTasks;
         sGSGTLNumTasks = 1;
     }
 }
@@ -453,8 +485,8 @@ void mnDebugMenuInitMenu()
     func_ovl8_8037B98C(&sp2C);
 
     func_ovl8_8037D6D4(&D_ovl9_8036A398);
-    func_ovl8_8037D9D0(&D_ovl9_80369F6C);
-    func_ovl8_8037D9B4(&D_ovl9_80369F70);
+    func_ovl8_8037D9D0(&dMNDebugMenuTextColor);
+    func_ovl8_8037D9B4(&dMNDebugMenuTextBGColor);
 
     func_ovl8_8037D95C(sp18);
 

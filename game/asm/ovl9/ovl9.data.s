@@ -9,16 +9,16 @@
 glabel D_ovl9_80369F60
   .incbin "ovl9.raw.bin", 0x0D20, 0x4
 
-glabel D_ovl9_80369F64
+glabel dMNDebugMenuBGColor
   .incbin "ovl9.raw.bin", 0x0D24, 0x4
 
-glabel D_ovl9_80369F68
+glabel dMNDebugMenuBorderColor
   .incbin "ovl9.raw.bin", 0x0D28, 0x4
 
-glabel D_ovl9_80369F6C
+glabel dMNDebugMenuTextColor
   .incbin "ovl9.raw.bin", 0x0D2C, 0x4
 
-glabel D_ovl9_80369F70
+glabel dMNDebugMenuTextBGColor
   .incbin "ovl9.raw.bin", 0x0D30, 0xC
 
 glabel gMNDebugMenuMenuPosition
@@ -111,7 +111,7 @@ glabel D_ovl9_8036A398
   /* 1168 1AC818 8036A3A8 */  .4byte D_ovl9_8036A0A0
   .incbin "ovl9.raw.bin", 0x116C, 0x4
 
-glabel D_ovl9_8036A3B0
+glabel dMNDebugMenuCursorChr
   /* 1170 1AC820 8036A3B0 */
   .asciz ">"
   .balign 4

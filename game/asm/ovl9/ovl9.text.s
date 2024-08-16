@@ -78,14 +78,14 @@ glabel mnDebugMenuDrawString
   /* 1AB784 80369314 AFA40020 */        sw $a0, 0x20($sp)
   /* 1AB788 80369318 AFBF0014 */        sw $ra, 0x14($sp)
   /* 1AB78C 8036931C AFA50024 */        sw $a1, 0x24($sp)
-  /* 1AB790 80369320 3C048037 */       lui $a0, %hi(D_ovl9_80371428)
+  /* 1AB790 80369320 3C048037 */       lui $a0, %hi(gMNDebugMenuStringBuffer)
   /* 1AB794 80369324 AFA60028 */        sw $a2, 0x28($sp)
   /* 1AB798 80369328 AFA7002C */        sw $a3, 0x2c($sp)
-  /* 1AB79C 8036932C 24841428 */     addiu $a0, $a0, %lo(D_ovl9_80371428)
+  /* 1AB79C 8036932C 24841428 */     addiu $a0, $a0, %lo(gMNDebugMenuStringBuffer)
   /* 1AB7A0 80369330 0C0E1AF8 */       jal func_ovl8_80386BE0
   /* 1AB7A4 80369334 27A50024 */     addiu $a1, $sp, 0x24
-  /* 1AB7A8 80369338 3C058037 */       lui $a1, %hi(D_ovl9_80371428)
-  /* 1AB7AC 8036933C 24A51428 */     addiu $a1, $a1, %lo(D_ovl9_80371428)
+  /* 1AB7A8 80369338 3C058037 */       lui $a1, %hi(gMNDebugMenuStringBuffer)
+  /* 1AB7AC 8036933C 24A51428 */     addiu $a1, $a1, %lo(gMNDebugMenuStringBuffer)
   /* 1AB7B0 80369340 0C0DF758 */       jal func_ovl8_8037DD60
   /* 1AB7B4 80369344 8FA40020 */        lw $a0, 0x20($sp)
   /* 1AB7B8 80369348 8FBF0014 */        lw $ra, 0x14($sp)
@@ -327,8 +327,8 @@ glabel mnDebugMenuDrawCursor
   /* 1ABB18 803696A8 24040003 */     addiu $a0, $zero, 3
   /* 1ABB1C 803696AC 0C0DD26F */       jal func_ovl8_803749BC
   /* 1ABB20 803696B0 8FA40018 */        lw $a0, 0x18($sp)
-  /* 1ABB24 803696B4 3C058037 */       lui $a1, %hi(D_ovl9_8036A3B0)
-  /* 1ABB28 803696B8 24A5A3B0 */     addiu $a1, $a1, %lo(D_ovl9_8036A3B0)
+  /* 1ABB24 803696B4 3C058037 */       lui $a1, %hi(dMNDebugMenuCursorChr)
+  /* 1ABB28 803696B8 24A5A3B0 */     addiu $a1, $a1, %lo(dMNDebugMenuCursorChr)
   /* 1ABB2C 803696BC 0C0DA4C4 */       jal mnDebugMenuDrawString
   /* 1ABB30 803696C0 00402025 */        or $a0, $v0, $zero
   /* 1ABB34 803696C4 8FBF0014 */        lw $ra, 0x14($sp)
@@ -346,8 +346,8 @@ glabel gMNDebugMenuRenderMenu
   /* 1ABB5C 803696EC AFA40018 */        sw $a0, 0x18($sp)
   /* 1ABB60 803696F0 AC400000 */        sw $zero, ($v0) # gMNDebugMenuRedrawInterrupt + 0
   /* 1ABB64 803696F4 3C048037 */       lui $a0, %hi(D_ovl9_80371404)
-  /* 1ABB68 803696F8 3C058037 */       lui $a1, %hi(D_ovl9_80369F64)
-  /* 1ABB6C 803696FC 24A59F64 */     addiu $a1, $a1, %lo(D_ovl9_80369F64)
+  /* 1ABB68 803696F8 3C058037 */       lui $a1, %hi(dMNDebugMenuBGColor)
+  /* 1ABB6C 803696FC 24A59F64 */     addiu $a1, $a1, %lo(dMNDebugMenuBGColor)
   /* 1ABB70 80369700 0C0DA513 */       jal mnDebugMenuDrawBackground
   /* 1ABB74 80369704 8C841404 */        lw $a0, %lo(D_ovl9_80371404)($a0)
   /* 1ABB78 80369708 3C048037 */       lui $a0, %hi(D_ovl9_80371404)
@@ -363,8 +363,8 @@ glabel gMNDebugMenuRenderMenu
   /* 1ABBA0 80369730 0C0DA5A0 */       jal mnDebugMenuDrawCursor
   /* 1ABBA4 80369734 8C841404 */        lw $a0, %lo(D_ovl9_80371404)($a0)
   .L80369738:
-  /* 1ABBA8 80369738 3C198037 */       lui $t9, %hi(D_ovl9_80371418)
-  /* 1ABBAC 8036973C 8F391418 */        lw $t9, %lo(D_ovl9_80371418)($t9)
+  /* 1ABBA8 80369738 3C198037 */       lui $t9, %hi(gMNDebugMenuDefaultMenuRenderProc)
+  /* 1ABBAC 8036973C 8F391418 */        lw $t9, %lo(gMNDebugMenuDefaultMenuRenderProc)($t9)
   /* 1ABBB0 80369740 8FA40018 */        lw $a0, 0x18($sp)
   /* 1ABBB4 80369744 0320F809 */      jalr $t9
   /* 1ABBB8 80369748 00000000 */       nop
@@ -753,7 +753,7 @@ glabel mnDebugMenuHandleInputs
   /* 1AC10C 80369C9C 00000000 */       nop
   /* 1AC110 80369CA0 8CA20000 */        lw $v0, ($a1) # gMNDebugMenuCursorIndex + 0
   /* 1AC114 80369CA4 8D390000 */        lw $t9, ($t1) # gMNDebugMenuMenuItems + 0
-  /* 1AC118 80369CA8 3C018037 */       lui $at, %hi(D_ovl9_80371400)
+  /* 1AC118 80369CA8 3C018037 */       lui $at, %hi(gMNDebugMenuCursorIndexWhenExited)
   /* 1AC11C 80369CAC 004A0019 */     multu $v0, $t2
   /* 1AC120 80369CB0 3C048037 */       lui $a0, %hi(D_ovl9_80371404)
   /* 1AC124 80369CB4 00006012 */      mflo $t4
@@ -761,15 +761,15 @@ glabel mnDebugMenuHandleInputs
   /* 1AC12C 80369CBC 8C6B0000 */        lw $t3, ($v1)
   /* 1AC130 80369CC0 55600013 */      bnel $t3, $zero, .L80369D10
   /* 1AC134 80369CC4 8C620004 */        lw $v0, 4($v1)
-  /* 1AC138 80369CC8 AC221400 */        sw $v0, %lo(D_ovl9_80371400)($at)
+  /* 1AC138 80369CC8 AC221400 */        sw $v0, %lo(gMNDebugMenuCursorIndexWhenExited)($at)
   /* 1AC13C 80369CCC 0C0DD223 */       jal func_ovl8_8037488C
   /* 1AC140 80369CD0 8C841404 */        lw $a0, %lo(D_ovl9_80371404)($a0)
   /* 1AC144 80369CD4 3C0E8037 */       lui $t6, %hi(gMNDebugMenuCursorIndex)
   /* 1AC148 80369CD8 8DCE1414 */        lw $t6, %lo(gMNDebugMenuCursorIndex)($t6)
-  /* 1AC14C 80369CDC 3C0D8037 */       lui $t5, %hi(D_ovl9_80371424)
+  /* 1AC14C 80369CDC 3C0D8037 */       lui $t5, %hi(gMNDebugMenuOriginalGSGTLNumTasks)
   /* 1AC150 80369CE0 3C188037 */       lui $t8, %hi(gMNDebugMenuMenuItems)
   /* 1AC154 80369CE4 8F18140C */        lw $t8, %lo(gMNDebugMenuMenuItems)($t8)
-  /* 1AC158 80369CE8 8DAD1424 */        lw $t5, %lo(D_ovl9_80371424)($t5)
+  /* 1AC158 80369CE8 8DAD1424 */        lw $t5, %lo(gMNDebugMenuOriginalGSGTLNumTasks)($t5)
   /* 1AC15C 80369CEC 3C018037 */       lui $at, %hi(gMNDebugMenuIsMenuOpen)
   /* 1AC160 80369CF0 000E78C0 */       sll $t7, $t6, 3
   /* 1AC164 80369CF4 AC201420 */        sw $zero, %lo(gMNDebugMenuIsMenuOpen)($at)
@@ -797,8 +797,8 @@ glabel mnDebugMenuHandleInputs
   /* 1AC1B4 80369D44 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1AC1B8 80369D48 0C0DD223 */       jal func_ovl8_8037488C
   /* 1AC1BC 80369D4C 8C841404 */        lw $a0, %lo(D_ovl9_80371404)($a0)
-  /* 1AC1C0 80369D50 3C0B8037 */       lui $t3, %hi(D_ovl9_80371424)
-  /* 1AC1C4 80369D54 8D6B1424 */        lw $t3, %lo(D_ovl9_80371424)($t3)
+  /* 1AC1C0 80369D50 3C0B8037 */       lui $t3, %hi(gMNDebugMenuOriginalGSGTLNumTasks)
+  /* 1AC1C4 80369D54 8D6B1424 */        lw $t3, %lo(gMNDebugMenuOriginalGSGTLNumTasks)($t3)
   /* 1AC1C8 80369D58 3C018037 */       lui $at, %hi(gMNDebugMenuIsMenuOpen)
   /* 1AC1CC 80369D5C AC201420 */        sw $zero, %lo(gMNDebugMenuIsMenuOpen)($at)
   /* 1AC1D0 80369D60 3C018004 */       lui $at, %hi(sGSGTLNumTasks)
@@ -831,10 +831,10 @@ glabel mnDebugMenuCreateMenu
   /* 1AC230 80369DC0 3C018037 */       lui $at, %hi(gMNDebugMenuCursorIndex)
   /* 1AC234 80369DC4 AC201414 */        sw $zero, %lo(gMNDebugMenuCursorIndex)($at)
   /* 1AC238 80369DC8 3C048037 */       lui $a0, %hi(gMNDebugMenuMenuPosition)
-  /* 1AC23C 80369DCC 3C018037 */       lui $at, %hi(D_ovl9_80371400)
+  /* 1AC23C 80369DCC 3C018037 */       lui $at, %hi(gMNDebugMenuCursorIndexWhenExited)
   /* 1AC240 80369DD0 2409FFFF */     addiu $t1, $zero, -1
   /* 1AC244 80369DD4 24849F7C */     addiu $a0, $a0, %lo(gMNDebugMenuMenuPosition)
-  /* 1AC248 80369DD8 AC291400 */        sw $t1, %lo(D_ovl9_80371400)($at)
+  /* 1AC248 80369DD8 AC291400 */        sw $t1, %lo(gMNDebugMenuCursorIndexWhenExited)($at)
   /* 1AC24C 80369DDC 000258C0 */       sll $t3, $v0, 3
   /* 1AC250 80369DE0 8FAA0018 */        lw $t2, 0x18($sp)
   /* 1AC254 80369DE4 01625821 */      addu $t3, $t3, $v0
@@ -849,11 +849,11 @@ glabel mnDebugMenuCreateMenu
   /* 1AC278 80369E08 AC620000 */        sw $v0, ($v1) # D_ovl9_80371404 + 0
   /* 1AC27C 80369E0C 0C0DD244 */       jal func_ovl8_80374910
   /* 1AC280 80369E10 00402025 */        or $a0, $v0, $zero
-  /* 1AC284 80369E14 3C018037 */       lui $at, %hi(D_ovl9_80371408)
+  /* 1AC284 80369E14 3C018037 */       lui $at, %hi(gMNDebugMenuMenuGObj)
   /* 1AC288 80369E18 3C048037 */       lui $a0, %hi(D_ovl9_80371404)
-  /* 1AC28C 80369E1C 3C058037 */       lui $a1, %hi(D_ovl9_80369F68)
-  /* 1AC290 80369E20 AC221408 */        sw $v0, %lo(D_ovl9_80371408)($at)
-  /* 1AC294 80369E24 24A59F68 */     addiu $a1, $a1, %lo(D_ovl9_80369F68)
+  /* 1AC28C 80369E1C 3C058037 */       lui $a1, %hi(dMNDebugMenuBorderColor)
+  /* 1AC290 80369E20 AC221408 */        sw $v0, %lo(gMNDebugMenuMenuGObj)($at)
+  /* 1AC294 80369E24 24A59F68 */     addiu $a1, $a1, %lo(dMNDebugMenuBorderColor)
   /* 1AC298 80369E28 0C0DA4D6 */       jal mnDebugMenuDrawBorder
   /* 1AC29C 80369E2C 8C841404 */        lw $a0, %lo(D_ovl9_80371404)($a0)
   /* 1AC2A0 80369E30 3C048037 */       lui $a0, %hi(D_ovl9_80371404)
@@ -866,17 +866,17 @@ glabel mnDebugMenuCreateMenu
   /* 1AC2BC 80369E4C 8CA51414 */        lw $a1, %lo(gMNDebugMenuCursorIndex)($a1)
   /* 1AC2C0 80369E50 0C0DA5A0 */       jal mnDebugMenuDrawCursor
   /* 1AC2C4 80369E54 8C841404 */        lw $a0, %lo(D_ovl9_80371404)($a0)
-  /* 1AC2C8 80369E58 3C038037 */       lui $v1, %hi(D_ovl9_80371408)
-  /* 1AC2CC 80369E5C 24631408 */     addiu $v1, $v1, %lo(D_ovl9_80371408)
-  /* 1AC2D0 80369E60 8C620000 */        lw $v0, ($v1) # D_ovl9_80371408 + 0
-  /* 1AC2D4 80369E64 3C018037 */       lui $at, %hi(D_ovl9_80371418)
+  /* 1AC2C8 80369E58 3C038037 */       lui $v1, %hi(gMNDebugMenuMenuGObj)
+  /* 1AC2CC 80369E5C 24631408 */     addiu $v1, $v1, %lo(gMNDebugMenuMenuGObj)
+  /* 1AC2D0 80369E60 8C620000 */        lw $v0, ($v1) # gMNDebugMenuMenuGObj + 0
+  /* 1AC2D4 80369E64 3C018037 */       lui $at, %hi(gMNDebugMenuDefaultMenuRenderProc)
   /* 1AC2D8 80369E68 3C0E8037 */       lui $t6, %hi(gMNDebugMenuRenderMenu)
   /* 1AC2DC 80369E6C 8C4D002C */        lw $t5, 0x2c($v0)
   /* 1AC2E0 80369E70 25CE96D4 */     addiu $t6, $t6, %lo(gMNDebugMenuRenderMenu)
   /* 1AC2E4 80369E74 3C058037 */       lui $a1, %hi(mnDebugMenuHandleInputs)
-  /* 1AC2E8 80369E78 AC2D1418 */        sw $t5, %lo(D_ovl9_80371418)($at)
+  /* 1AC2E8 80369E78 AC2D1418 */        sw $t5, %lo(gMNDebugMenuDefaultMenuRenderProc)($at)
   /* 1AC2EC 80369E7C AC4E002C */        sw $t6, 0x2c($v0)
-  /* 1AC2F0 80369E80 8C640000 */        lw $a0, ($v1) # D_ovl9_80371408 + 0
+  /* 1AC2F0 80369E80 8C640000 */        lw $a0, ($v1) # gMNDebugMenuMenuGObj + 0
   /* 1AC2F4 80369E84 24A5975C */     addiu $a1, $a1, %lo(mnDebugMenuHandleInputs)
   /* 1AC2F8 80369E88 24060001 */     addiu $a2, $zero, 1
   /* 1AC2FC 80369E8C 0C002062 */       jal omAddGObjCommonProc
@@ -884,9 +884,9 @@ glabel mnDebugMenuCreateMenu
   /* 1AC304 80369E94 3C038004 */       lui $v1, %hi(sGSGTLNumTasks)
   /* 1AC308 80369E98 24636640 */     addiu $v1, $v1, %lo(sGSGTLNumTasks)
   /* 1AC30C 80369E9C 8C6F0000 */        lw $t7, ($v1) # sGSGTLNumTasks + 0
-  /* 1AC310 80369EA0 3C018037 */       lui $at, %hi(D_ovl9_80371424)
+  /* 1AC310 80369EA0 3C018037 */       lui $at, %hi(gMNDebugMenuOriginalGSGTLNumTasks)
   /* 1AC314 80369EA4 24180001 */     addiu $t8, $zero, 1
-  /* 1AC318 80369EA8 AC2F1424 */        sw $t7, %lo(D_ovl9_80371424)($at)
+  /* 1AC318 80369EA8 AC2F1424 */        sw $t7, %lo(gMNDebugMenuOriginalGSGTLNumTasks)($at)
   /* 1AC31C 80369EAC AC780000 */        sw $t8, ($v1) # sGSGTLNumTasks + 0
   .L80369EB0:
   /* 1AC320 80369EB0 8FBF0014 */        lw $ra, 0x14($sp)
@@ -918,12 +918,12 @@ glabel mnDebugMenuInitMenu
   /* 1AC378 80369F08 3C048037 */       lui $a0, %hi(D_ovl9_8036A398)
   /* 1AC37C 80369F0C 0C0DF5B5 */       jal func_ovl8_8037D6D4
   /* 1AC380 80369F10 2484A398 */     addiu $a0, $a0, %lo(D_ovl9_8036A398)
-  /* 1AC384 80369F14 3C048037 */       lui $a0, %hi(D_ovl9_80369F6C)
+  /* 1AC384 80369F14 3C048037 */       lui $a0, %hi(dMNDebugMenuTextColor)
   /* 1AC388 80369F18 0C0DF674 */       jal func_ovl8_8037D9D0
-  /* 1AC38C 80369F1C 24849F6C */     addiu $a0, $a0, %lo(D_ovl9_80369F6C)
-  /* 1AC390 80369F20 3C048037 */       lui $a0, %hi(D_ovl9_80369F70)
+  /* 1AC38C 80369F1C 24849F6C */     addiu $a0, $a0, %lo(dMNDebugMenuTextColor)
+  /* 1AC390 80369F20 3C048037 */       lui $a0, %hi(dMNDebugMenuTextBGColor)
   /* 1AC394 80369F24 0C0DF66D */       jal func_ovl8_8037D9B4
-  /* 1AC398 80369F28 24849F70 */     addiu $a0, $a0, %lo(D_ovl9_80369F70)
+  /* 1AC398 80369F28 24849F70 */     addiu $a0, $a0, %lo(dMNDebugMenuTextBGColor)
   /* 1AC39C 80369F2C 0C0DF657 */       jal func_ovl8_8037D95C
   /* 1AC3A0 80369F30 27A40018 */     addiu $a0, $sp, 0x18
   /* 1AC3A4 80369F34 24180004 */     addiu $t8, $zero, 4
@@ -942,13 +942,13 @@ glabel mnDebugMenuInitMenu
 # Likely start of new file
 #glabel D_ovl9_80369F60   # Routine parsed as data
 #  /* 1AC3D0 80369F60 FFFFFFFF */        sd $ra, -1($ra)
-#glabel D_ovl9_80369F64   # Routine parsed as data
+#glabel dMNDebugMenuBGColor   # Routine parsed as data
 #  /* 1AC3D4 80369F64 0000FFFF */    dsra32 $ra, $zero, 0x1f
-#glabel D_ovl9_80369F68   # Routine parsed as data
+#glabel dMNDebugMenuBorderColor   # Routine parsed as data
 #  /* 1AC3D8 80369F68 80FFFFFF */        lb $ra, -1($a3)
-#glabel D_ovl9_80369F6C   # Routine parsed as data
+#glabel dMNDebugMenuTextColor   # Routine parsed as data
 #  /* 1AC3DC 80369F6C FFFFFFFF */        sd $ra, -1($ra)
-#glabel D_ovl9_80369F70   # Routine parsed as data
+#glabel dMNDebugMenuTextBGColor   # Routine parsed as data
 #  /* 1AC3E0 80369F70 0000FFFF */    dsra32 $ra, $zero, 0x1f
 #  /* 1AC3E4 80369F74 0000FFFF */    dsra32 $ra, $zero, 0x1f
 #  /* 1AC3E8 80369F78 FFFFFFFF */        sd $ra, -1($ra)

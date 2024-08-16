@@ -196,7 +196,7 @@ sb32 itTaruBombFallProcUpdate(GObj *item_gobj)
 // 0x80184DC4
 sb32 itTaruBombCommonProcHit(GObj *item_gobj)
 {
-    func_800269C0_275C0(nGMSoundFGMTaruBombHit);
+    func_800269C0_275C0(nSYAudioFGMTaruBombHit);
     itTaruBombContainerSmashMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
     itTaruBombExplodeMakeEffectGotoSetStatus(item_gobj);
 
@@ -268,7 +268,7 @@ sb32 itTaruBombFallProcMap(GObj *item_gobj)
 
             itMainVelSetRotateStepLR(item_gobj);
         }
-        func_800269C0_275C0(nGMSoundFGMTaruBombMap);
+        func_800269C0_275C0(nSYAudioFGMTaruBombMap);
         itMainClearOwnerStats(item_gobj);
     }
     return FALSE;
@@ -364,7 +364,7 @@ void itTaruBombExplodeInitItemVars(GObj *item_gobj)
     ip->it_multi = 0;
     ip->item_event_id = 0;
 
-    ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
+    ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
 
     ip->item_hit.can_rehit_item = TRUE;
     ip->item_hit.can_reflect = FALSE;

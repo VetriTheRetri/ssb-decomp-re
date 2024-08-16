@@ -65,7 +65,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
             {
                 func_800269C0_275C0(fp->command_vars.flags.flag1);
             }
-            else func_800269C0_275C0(nGMSoundFGMStarRodEmpty);
+            else func_800269C0_275C0(nSYAudioFGMStarRodEmpty);
 
             fp->command_vars.flags.flag1 = 0;
         }

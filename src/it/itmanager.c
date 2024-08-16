@@ -516,7 +516,7 @@ void itManagerMakeRandomItem(GObj *item_gobj)
 
             vel.x = vel.y = vel.z = 0.0F;
 
-            func_800269C0_275C0(nGMSoundFGMItemSpawn1);
+            func_800269C0_275C0(nSYAudioFGMItemSpawn1);
 
             itManagerMakeItemSetupCommon(NULL, index, &pos, &vel, ITEM_FLAG_PARENT_DEFAULT);
         }

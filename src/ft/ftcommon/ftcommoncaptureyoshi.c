@@ -186,7 +186,7 @@ void ftCommonYoshiEggProcUpdate(GObj *fighter_gobj)
 
         efManagerYoshiEggExplodeMakeEffect(&pos);
         efManagerEggBreakMakeEffect(&pos);
-        func_800269C0_275C0(nGMSoundFGMYoshiEggLayShatter);
+        func_800269C0_275C0(nSYAudioFGMYoshiEggLayShatter);
 
         fp->phys_info.vel_air.y = FTCOMMON_YOSHIEGG_ESCAPE_VEL_Y;
         fp->phys_info.vel_air.z = 0.0F;

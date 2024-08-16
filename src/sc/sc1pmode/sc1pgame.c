@@ -34,8 +34,6 @@ extern void func_800A26B8();
 
 extern alSoundEffect D_8009EDD0_406D0;
 
-
-extern uintptr_t ovl65_BSS_END;             // 0x80193900
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000040;
 extern intptr_t D_NF_000000C8;
@@ -175,7 +173,7 @@ ftSprites *sSC1PGameEnemyTeamSprites;
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -1563,7 +1561,7 @@ void sc1PGameWaitStageBossUpdate(void)
 
     ifCommonPlayerDamageSetShowInterface();
 
-    gMPCollisionBGMDefault = nGMSoundBGMLast;
+    gMPCollisionBGMDefault = nSYAudioBGMLast;
 
     ftParamTryUpdateItemMusic();
 }
@@ -1618,7 +1616,7 @@ void sc1PGameSetGameStatusWait(void)
             GOBJ_LINKORDER_DEFAULT
         ),     
         sc1PGameWaitThreadUpdate, 
-        nOMObjProcessKindOSThread, 
+        nOMObjProcessKindThread, 
         5
     );
     gBattleState->game_status = nSCBattleGameStatusWait;
@@ -1932,7 +1930,7 @@ void sc1PGameBossSetIgnorePlayerMapBounds(GObj *fighter_gobj, s32 arg1)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->is_ignore_map_bounds = TRUE;
+    fp->is_limit_map_bounds = TRUE;
 }
 
 // 0x8018F5E4 - Unused?
@@ -1957,9 +1955,9 @@ void sc1PGameBossDefeatInterfaceProcUpdate(void)
     func_800266A0_272A0();
     auStopBGM();
     ifCommonBattleEndPlaySoundQueue();
-    func_800269C0_275C0(nGMSoundFGMExplodeL);
+    func_800269C0_275C0(nSYAudioFGMExplodeL);
     func_800269C0_275C0(0x1EC);
-    func_800269C0_275C0(nGMSoundFGMBossDefeatL);
+    func_800269C0_275C0(nSYAudioFGMBossDefeatL);
 
     sSC1PGameBossDefeatSoundTerminateTemp = D_8009EDD0_406D0.sfx_max;
     D_8009EDD0_406D0.sfx_max = 0;
@@ -1990,7 +1988,7 @@ void sc1PGameBossDefeatInitInterface(GObj *fighter_gobj)
     sc1PGameBossHidePlayerTagAll();
     ifCommonPlayerDamageStartBreakAnim(fp);
     sc1PGameBossSetZoomCamera(fp);
-    ifCommonBattleSetInterface(sc1PGameBossDefeatInterfaceProcUpdate, sc1PGameBossDefeatInterfaceProcSet, nGMSoundFGMEnumMax, 90);
+    ifCommonBattleSetInterface(sc1PGameBossDefeatInterfaceProcUpdate, sc1PGameBossDefeatInterfaceProcSet, nSYAudioFGMEnumMax, 90);
 }
 
 // 0x8018F7B4
@@ -2161,7 +2159,7 @@ void sc1PGameProcStart(void)
     if ((gSceneData.spgame_stage == nSC1PGameStageMetal) || (gSceneData.spgame_stage == nSC1PGameStageZako))
     {
         mpCollisionSetBGM();
-        func_800269C0_275C0(nGMSoundFGMPublicCheer1);
+        func_800269C0_275C0(nSYAudioFGMPublicCheer1);
     }
     else
     {
@@ -2859,10 +2857,10 @@ void sc1PGameStartScene(void)
     gBattleState = &gSCManager1PGameBattleState;
     gBattleState->game_type = nSCBattleGameType1PGame;
 
-    dSC1PGameDisplaySetup.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 0x1900);
+    dSC1PGameDisplaySetup.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 6400);
     func_80007024(&dSC1PGameDisplaySetup);
 
-    dSC1PGameGtlSetup.arena_size = ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl65_BSS_END);
+    dSC1PGameGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl65_BSS_END);
     dSC1PGameGtlSetup.proc_start = sc1PGameProcStart;
     func_800A2698(&dSC1PGameGtlSetup);
     sc1PGameInitBonusStats();

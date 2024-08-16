@@ -61,14 +61,14 @@ s32 sFTMainPad0x801312E0;
 // 0x80128D00
 u16 dFTMainHitCollisionFGMs[/* */][nGMHitLevelEnumMax] =
 {
-    { nGMSoundFGMPunchS,             nGMSoundFGMPunchM,             nGMSoundFGMPunchL             },    // Punch
-    { nGMSoundFGMKickS,              nGMSoundFGMKickM,              nGMSoundFGMKickL              },    // Kick
-    { nGMSoundFGMMarioSpecialHiCoin, nGMSoundFGMMarioSpecialHiCoin, nGMSoundFGMMarioSpecialHiCoin },    // Coin
-    { nGMSoundFGMBurnS,              nGMSoundFGMBurnM,              nGMSoundFGMBurnL              },    // Burn
-    { nGMSoundFGMShockS,             nGMSoundFGMShockM,             nGMSoundFGMShockL             },    // Shock
-    { nGMSoundFGMSlashS,             nGMSoundFGMSlashM,             nGMSoundFGMSlashL             },    // Slash
-    { nGMSoundFGMHarisenHit,         nGMSoundFGMHarisenHit,         nGMSoundFGMHarisenHit         },    // Fan / Slap
-    { nGMSoundFGMPunchM,             nGMSoundFGMPunchL,             nGMSoundFGMBatHit             }     // Bat
+    { nSYAudioFGMPunchS,             nSYAudioFGMPunchM,             nSYAudioFGMPunchL             },    // Punch
+    { nSYAudioFGMKickS,              nSYAudioFGMKickM,              nSYAudioFGMKickL              },    // Kick
+    { nSYAudioFGMMarioSpecialHiCoin, nSYAudioFGMMarioSpecialHiCoin, nSYAudioFGMMarioSpecialHiCoin },    // Coin
+    { nSYAudioFGMBurnS,              nSYAudioFGMBurnM,              nSYAudioFGMBurnL              },    // Burn
+    { nSYAudioFGMShockS,             nSYAudioFGMShockM,             nSYAudioFGMShockL             },    // Shock
+    { nSYAudioFGMSlashS,             nSYAudioFGMSlashM,             nSYAudioFGMSlashL             },    // Slash
+    { nSYAudioFGMHarisenHit,         nSYAudioFGMHarisenHit,         nSYAudioFGMHarisenHit         },    // Fan / Slap
+    { nSYAudioFGMPunchM,             nSYAudioFGMPunchL,             nSYAudioFGMBatHit             }     // Bat
 };
 
 // 0x80128D30
@@ -1444,7 +1444,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
         {
             this_fp->percent_damage--;
 
-            func_800269C0_275C0(nGMSoundFGMPlayerHeal);
+            func_800269C0_275C0(nSYAudioFGMPlayerHeal);
 
             gBattleState->players[this_fp->player].stock_damage_all = this_fp->percent_damage;
         }
@@ -1801,7 +1801,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
     if ((fp->coll_data.pos_curr.y >= gMPCollisionGroundData->alt_warning) && (topn_translate->y < gMPCollisionGroundData->alt_warning) && (fp->ft_kind != nFTKindBoss))
     {
-        func_800269C0_275C0(nGMSoundFGMDeadPortalLw);
+        func_800269C0_275C0(nSYAudioFGMDeadPortalLw);
     }
     if (fp->publicity_knockback != 0)
     {
@@ -2485,8 +2485,8 @@ void ftMainUpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
             ip->hit_normal_damage = 1;
 
             ftParamSetStarHitStatusInvincible(fp, ITSTAR_INVINCIBLE_TIME);
-            ftParamTryPlayItemMusic(nGMSoundBGMStarman);
-            func_800269C0_275C0(nGMSoundFGMStarCollect);
+            ftParamTryPlayItemMusic(nSYAudioBGMStarman);
+            func_800269C0_275C0(nSYAudioFGMStarCollect);
 
             if ((gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gSC1PGameBonusStarCount < U8_MAX))
             {
@@ -2575,7 +2575,7 @@ void ftMainUpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, ftStru
     case nGMHitEnvironmentAcid:
         fp->acid_wait = 30;
 
-        func_800269C0_275C0(nGMSoundFGMFloorDamageBurn);
+        func_800269C0_275C0(nSYAudioFGMFloorDamageBurn);
         break;
 
     case nGMHitEnvironmentPowerBlock:
@@ -2595,9 +2595,9 @@ void ftMainUpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, ftStru
 
         if (target_kind == 7)
         {
-            func_800269C0_275C0(nGMSoundFGMShockML);
+            func_800269C0_275C0(nSYAudioFGMShockML);
         }
-        else func_800269C0_275C0(nGMSoundFGMFloorDamageBurn);
+        else func_800269C0_275C0(nSYAudioFGMFloorDamageBurn);
         break;
 
     default:
@@ -3940,7 +3940,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
             break;
 
         case nFTSpecialHitKindNessReflector:
-            func_800269C0_275C0(nGMSoundFGMBatHit);
+            func_800269C0_275C0(nSYAudioFGMBatHit);
             break;
         }
     }
@@ -4484,7 +4484,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     }
     fp->is_special_interrupt = FALSE;
     fp->is_catchstatus = FALSE;
-    fp->x192_flag_b1 = FALSE;
+    fp->is_ignore_dead = FALSE;
 
     if (!(flags & FTSTATUS_PRESERVE_SHUFFLETIME))
     {

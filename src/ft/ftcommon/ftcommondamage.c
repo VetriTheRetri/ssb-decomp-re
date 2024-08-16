@@ -635,7 +635,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     {
         this_fp->status_vars.common.damage.dust_effect_int = 1;
     }
-    if ((hitstun_timer >= FTCOMMON_DAMAGE_FIGHTER_DAMAGEVOICE_MIN) && (this_fp->attributes->damage_sfx != nGMSoundFGMVoiceEnd) || (is_force_damage_sfx != FALSE))
+    if ((hitstun_timer >= FTCOMMON_DAMAGE_FIGHTER_DAMAGEVOICE_MIN) && (this_fp->attributes->damage_sfx != nSYAudioFGMVoiceEnd) || (is_force_damage_sfx != FALSE))
     {
         func_800269C0_275C0(this_fp->attributes->damage_sfx);
     }

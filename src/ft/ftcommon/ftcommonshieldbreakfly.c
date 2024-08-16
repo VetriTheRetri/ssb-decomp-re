@@ -33,7 +33,7 @@ void ftCommonShieldBreakFlySetStatus(GObj *fighter_gobj)
     fp->phys_info.vel_air.y = attributes->shield_break_vel_y;
 
     ftParamCheckSetFighterColAnimID(fighter_gobj, FTCOMMON_SHIELDBREAK_COLANIM_ID, FTCOMMON_SHIELDBREAK_COLANIM_LENGTH);
-    func_800269C0_275C0(nGMSoundFGMShieldBreak);
+    func_800269C0_275C0(nSYAudioFGMShieldBreak);
 }
 
 // 0x80149510

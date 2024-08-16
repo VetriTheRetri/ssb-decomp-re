@@ -426,7 +426,7 @@ void grSectorArwingUpdateSleep(void)
         gGRCommonStruct.sector.is_arwing_z_collision = FALSE;
         gGRCommonStruct.sector.arwing_laser_ammo = 0;
 
-        func_800269C0_275C0(nGMSoundFGMSectorAmbient1);
+        func_800269C0_275C0(nSYAudioFGMSectorAmbient1);
     }
 }
 
@@ -788,7 +788,7 @@ sb32 grSectorArwingWeaponLaser3DProcMap(GObj *weapon_gobj)
     {
         if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
         {
-            func_800269C0_275C0(nGMSoundFGMExplodeS);
+            func_800269C0_275C0(nSYAudioFGMExplodeS);
             efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
             grSectorArwingWeaponLaserExplodeInitWeaponVars(weapon_gobj);
         }
@@ -799,7 +799,7 @@ sb32 grSectorArwingWeaponLaser3DProcMap(GObj *weapon_gobj)
 // 0x80107670
 sb32 grSectorArwingWeaponLaser3DProcHit(GObj *weapon_gobj)
 {
-    func_800269C0_275C0(nGMSoundFGMExplodeS);
+    func_800269C0_275C0(nSYAudioFGMExplodeS);
     efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
     grSectorArwingWeaponLaserExplodeInitWeaponVars(weapon_gobj);
 
@@ -809,7 +809,7 @@ sb32 grSectorArwingWeaponLaser3DProcHit(GObj *weapon_gobj)
 // 0x801076B0
 sb32 grSectorArwingWeaponLaser3DProcAbsorb(GObj *weapon_gobj)
 {
-    func_800269C0_275C0(nGMSoundFGMExplodeS);
+    func_800269C0_275C0(nSYAudioFGMExplodeS);
     efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;
@@ -913,7 +913,7 @@ void func_ovl2_80107910(void)
     }
     else grSectorArwingWeaponLaser3DMakeWeapon();
 
-    func_800269C0_275C0(nGMSoundFGMSectorArwingLaser);
+    func_800269C0_275C0(nSYAudioFGMSectorArwingLaser);
 }
 
 // 0x80107958
@@ -1005,7 +1005,7 @@ void func_ovl2_80107B30(void)
     {
         func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (AObjStream*)((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
 
-        func_800269C0_275C0(nGMSoundFGMSectorAmbient2);
+        func_800269C0_275C0(nSYAudioFGMSectorAmbient2);
     }
 }
 

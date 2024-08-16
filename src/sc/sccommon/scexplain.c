@@ -31,8 +31,6 @@ extern GObj* func_8000B93C
 //                               //
 // // // // // // // // // // // //
 
-extern uintptr_t ovl63_BSS_END;                             // 0x8018EC00
-
 extern intptr_t D_NF_000000C6;
 extern intptr_t D_NF_000000FC;
 extern intptr_t lSCExplainInputSequence0;                   // 0x00000000
@@ -58,7 +56,6 @@ extern intptr_t D_NF_0001D948;
 extern intptr_t D_NF_0001DF58;
 extern intptr_t D_NF_0001E018;
 
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
@@ -82,7 +79,7 @@ scExplainMain sSCExplainStruct;
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -877,13 +874,13 @@ void jtgt_ovl63_8018E594(void)
 // 0x8018E5C0
 void scExplainStartScene(void)
 {
-    dSCExplainDisplaySetup.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 0x1900);
+    dSCExplainDisplaySetup.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 6400);
 
     func_80007024(&dSCExplainDisplaySetup);
 
     set_lcg_seed_ptr(&dSCExplainRandomSeed1);
 
-    dSCExplainGtlSetup.arena_size = ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl63_BSS_END);
+    dSCExplainGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl63_BSS_END);
     dSCExplainGtlSetup.proc_start = scExplainProcStart;
 
     func_800A2698(&dSCExplainGtlSetup);

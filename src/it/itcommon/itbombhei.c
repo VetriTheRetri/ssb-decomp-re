@@ -211,7 +211,7 @@ void itBombHeiCommonSetExplode(GObj *item_gobj, u8 unused_arg)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
-    ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
+    ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
 
     itMainRefreshHit(item_gobj);
     itMainClearOwnerStats(item_gobj);
@@ -563,7 +563,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
     }
     itMainClearOwnerStats(item_gobj);
 
-    func_800269C0_275C0(nGMSoundFGMBombHeiFuse);
+    func_800269C0_275C0(nSYAudioFGMBombHeiFuse);
 }
 
 // 0x801779A8
@@ -583,7 +583,7 @@ void itBombHeiCommonClearVelSetExplode(GObj *item_gobj, u8 unused)
 
     itBombHeiCommonSetExplode(item_gobj, unused);
 
-    func_800269C0_275C0(nGMSoundFGMExplodeL);
+    func_800269C0_275C0(nSYAudioFGMExplodeL);
 }
 
 // 0x80177A24
@@ -687,7 +687,7 @@ sb32 itBombHeiExplodeWaitProcUpdate(GObj *item_gobj)
     {
         itBombHeiCommonCheckMakeDustEffect(item_gobj, TRUE);
         itBombHeiCommonClearVelSetExplode(item_gobj, 0);
-        func_800269C0_275C0(nGMSoundFGMExplodeL);
+        func_800269C0_275C0(nSYAudioFGMExplodeL);
     }
     ip->it_multi++;
 

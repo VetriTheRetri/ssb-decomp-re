@@ -182,7 +182,7 @@ void grHyruleTwisterUpdateSummon(void)
 
         ftMainCheckAddGroundObstacle(gGRCommonStruct.hyrule.twister_gobj, grHyruleTwisterCheckGetDamageKind);
 
-        func_800269C0_275C0(nGMSoundFGMHyruleTwisterSpawn);
+        func_800269C0_275C0(nSYAudioFGMHyruleTwisterSpawn);
     }
 }
 

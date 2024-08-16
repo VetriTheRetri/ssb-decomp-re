@@ -473,9 +473,9 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     if (ip->weight == nITWeightLight)
     {
-        func_800269C0_275C0(nGMSoundFGMItemPickup);
+        func_800269C0_275C0(nSYAudioFGMItemPickup);
     }
-    else if (fp->attributes->heavyget_sfx != nGMSoundFGMVoiceEnd)
+    else if (fp->attributes->heavyget_sfx != nSYAudioFGMVoiceEnd)
     {
         func_800269C0_275C0(fp->attributes->heavyget_sfx);
     }

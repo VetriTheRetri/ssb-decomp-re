@@ -606,7 +606,7 @@ sb32 gmCreditsCheckCursorHighlightPrompt(GObj *gobj, gmCreditsProjection *proj)
 		(gmCreditsCheckCursorNameOverlap(&sp28) == FALSE)
 	)
 	{
-		func_800269C0_275C0(nGMSoundFGMTModeSel);
+		func_800269C0_275C0(nSYAudioFGMTrainingSel);
 
 		b = FALSE;
 
@@ -1512,7 +1512,7 @@ void gmCreditsStartScene()
 	D_ovl59_8013A708.zbuffer = (void*)((uintptr_t)&scmanager_BSS_END - 0x3200);
 	func_80007024(&D_ovl59_8013A708);
 
-	D_ovl59_8013A724.arena_size = ((uintptr_t)0x8023E000 - (uintptr_t)&lCreditsArenaLo);
+	D_ovl59_8013A724.arena_size = (size_t) ((uintptr_t)0x8023E000 - (uintptr_t)&lCreditsArenaLo);
 	gsGTLSceneInit(&D_ovl59_8013A724);
 
 	arena16 = (u16*)&D_NF_80392A00;

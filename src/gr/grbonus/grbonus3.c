@@ -100,7 +100,7 @@ void grBonus3FinishProcUpdate(GObj *ground_gobj)
     if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
     {
         ifCommonAnnounceCompleteInitInterface(0x1CB);
-        ifCommonBattleEndAddSoundQueueID(nGMSoundFGMBonusComplete);
+        ifCommonBattleEndAddSoundQueueID(nSYAudioFGMBonusComplete);
     }
 }
 

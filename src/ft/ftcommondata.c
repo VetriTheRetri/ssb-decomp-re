@@ -48,65 +48,65 @@ f32 dFTCommonDataHandicapTable[/* */][2] =
 // 0x8012C970
 u16 dFTCommonDataDownBounceSFX[/* */] =
 {
-    nGMSoundFGMDownBounceMario,        // Mario
-    nGMSoundFGMDownBounceFox,          // Fox
-    nGMSoundFGMDownBounceDonkey,       // Donkey Kong
-    nGMSoundFGMDownBounceSamus,        // Samus
-    nGMSoundFGMDownBounceMario,        // Luigi
-    nGMSoundFGMDownBounceLink,         // Link
-    nGMSoundFGMDownBounceYoshi,        // Yoshi
-    nGMSoundFGMDownBounceCaptain,      // Captain Falcon
-    nGMSoundFGMDownBounceKirby,        // Kirby
-    nGMSoundFGMDownBouncePikachu,      // Pikachu
-    nGMSoundFGMDownBouncePurin,        // Jigglypuff
-    nGMSoundFGMDownBounceNess,         // Ness
-    nGMSoundFGMDownBounceMario,        // Master Hand
-    nGMSoundFGMDownBounceMario,        // Metal Mario
-    nGMSoundFGMDownBounceMario,        // Poly Mario
-    nGMSoundFGMDownBounceFox,          // Poly Fox
-    nGMSoundFGMDownBounceDonkey,       // Poly Donkey Kong
-    nGMSoundFGMDownBounceSamus,        // Poly Samus
-    nGMSoundFGMDownBounceMario,        // Poly Luigi
-    nGMSoundFGMDownBounceLink,         // Poly Link
-    nGMSoundFGMDownBounceYoshi,        // Poly Yoshi
-    nGMSoundFGMDownBounceCaptain,      // Poly Captain Falcon
-    nGMSoundFGMDownBounceKirby,        // Poly Kirby
-    nGMSoundFGMDownBouncePikachu,      // Poly Pikachu
-    nGMSoundFGMDownBouncePurin,        // Poly Jigglypuff
-    nGMSoundFGMDownBounceNess,         // Poly Ness
-    nGMSoundFGMDownBounceDonkey        // Giant Donkey Kong
+    nSYAudioFGMMarioDownBounce,        // Mario
+    nSYAudioFGMFoxDownBounce,          // Fox
+    nSYAudioFGMDonkeyDownBounce,       // Donkey Kong
+    nSYAudioFGMSamusDownBounce,        // Samus
+    nSYAudioFGMMarioDownBounce,        // Luigi
+    nSYAudioFGMLinkDownBounce,         // Link
+    nSYAudioFGMYoshiDownBounce,        // Yoshi
+    nSYAudioFGMCaptainDownBounce,      // Captain Falcon
+    nSYAudioFGMKirbyDownBounce,        // Kirby
+    nSYAudioFGMPikachuDownBounce,      // Pikachu
+    nSYAudioFGMPurinDownBounce,        // Jigglypuff
+    nSYAudioFGMNessDownBounce,         // Ness
+    nSYAudioFGMMarioDownBounce,        // Master Hand
+    nSYAudioFGMMarioDownBounce,        // Metal Mario
+    nSYAudioFGMMarioDownBounce,        // Poly Mario
+    nSYAudioFGMFoxDownBounce,          // Poly Fox
+    nSYAudioFGMDonkeyDownBounce,       // Poly Donkey Kong
+    nSYAudioFGMSamusDownBounce,        // Poly Samus
+    nSYAudioFGMMarioDownBounce,        // Poly Luigi
+    nSYAudioFGMLinkDownBounce,         // Poly Link
+    nSYAudioFGMYoshiDownBounce,        // Poly Yoshi
+    nSYAudioFGMCaptainDownBounce,      // Poly Captain Falcon
+    nSYAudioFGMKirbyDownBounce,        // Poly Kirby
+    nSYAudioFGMPikachuDownBounce,      // Poly Pikachu
+    nSYAudioFGMPurinDownBounce,        // Poly Jigglypuff
+    nSYAudioFGMNessDownBounce,         // Poly Ness
+    nSYAudioFGMDonkeyDownBounce        // Giant Donkey Kong
 };
 
 // 0x8012C9A8
 u16 dFTCommonDataPublicityFighterChantFGMs[/* */] =
 {
-    nGMSoundVoicePublicityMario,
-    nGMSoundVoicePublicityFox,
-    nGMSoundVoicePublicityDonkey,
-    nGMSoundVoicePublicitySamus,
-    nGMSoundVoicePublicityLuigi,
-    nGMSoundVoicePublicityLink,
-    nGMSoundVoicePublicityYoshi,
-    nGMSoundVoicePublicityCaptain,
-    nGMSoundVoicePublicityKirby,
-    nGMSoundVoicePublicityPikachu,
-    nGMSoundVoicePublicityPurin,
-    nGMSoundVoicePublicityNess,
-    nGMSoundFGMVoiceEnd,
-    nGMSoundVoicePublicityMario,
-    nGMSoundFGMVoiceEnd,
-    nGMSoundFGMVoiceEnd,
-    nGMSoundFGMVoiceEnd,
-    nGMSoundFGMVoiceEnd,
-    nGMSoundFGMVoiceEnd,
-    nGMSoundFGMVoiceEnd,
-    nGMSoundFGMVoiceEnd,
-    nGMSoundFGMVoiceEnd,
-    nGMSoundFGMVoiceEnd,
-    nGMSoundFGMVoiceEnd,
-    nGMSoundFGMVoiceEnd,
-    nGMSoundFGMVoiceEnd,
-    nGMSoundFGMVoiceEnd
+    nSYAudioVoicePublicityMario,
+    nSYAudioVoicePublicityFox,
+    nSYAudioVoicePublicityDonkey,
+    nSYAudioVoicePublicitySamus,
+    nSYAudioVoicePublicityLuigi,
+    nSYAudioVoicePublicityLink,
+    nSYAudioVoicePublicityYoshi,
+    nSYAudioVoicePublicityCaptain,
+    nSYAudioVoicePublicityKirby,
+    nSYAudioVoicePublicityPikachu,
+    nSYAudioVoicePublicityPurin,
+    nSYAudioVoicePublicityNess,
+    nSYAudioFGMVoiceEnd,
+    nSYAudioVoicePublicityMario,
+    nSYAudioFGMVoiceEnd,
+    nSYAudioFGMVoiceEnd,
+    nSYAudioFGMVoiceEnd,
+    nSYAudioFGMVoiceEnd,
+    nSYAudioFGMVoiceEnd,
+    nSYAudioFGMVoiceEnd,
+    nSYAudioFGMVoiceEnd,
+    nSYAudioFGMVoiceEnd,
+    nSYAudioFGMVoiceEnd,
+    nSYAudioFGMVoiceEnd,
+    nSYAudioFGMVoiceEnd,
+    nSYAudioFGMVoiceEnd,
+    nSYAudioFGMVoiceEnd
 };
 
 // 0x8012C9E0

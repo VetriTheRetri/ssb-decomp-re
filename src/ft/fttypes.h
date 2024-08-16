@@ -1081,8 +1081,6 @@ struct ftStruct
 
         } item_throw;
 
-        // Equivalent to ftcmd flags from Melee?
-
     } command_vars;
 
     ub32 is_hitbox_active : 1;
@@ -1097,7 +1095,8 @@ struct ftStruct
     ub32 is_goto_attack100 : 1;
     ub32 is_fast_fall : 1;
     ub32 x18D_flag_b5 : 1;
-    ub32 is_ignore_map_bounds : 1;       // When Master Hand is defeated, this is set to TRUE so the player cannot die if they are offstage
+    ub32 is_limit_map_bounds : 1;       // When Master Hand is defeated, this is set to TRUE so the player cannot die if they are offstage;
+                                        // Effectively keeps the player at the blast zone and ignores the dead action state
     ub32 is_invisible : 1;
     ub32 x18E_flag_b0 : 1;
     ub32 x18E_flag_b1 : 1;
@@ -1115,7 +1114,7 @@ struct ftStruct
     u32 slope_contour : 3;
     ub32 is_use_animlocks : 1;
     ub32 is_playing_sfx : 1;
-    ub32 x190_flag_b5 : 1;
+    ub32 x190_flag_b5 : 1;              // Never seen this used
     ub32 is_show_item : 1;
     ub32 is_cliff_hold : 1;             // Whether fighter is holding onto a ledge
     ub32 is_effect_interrupt : 1;       // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
@@ -1124,7 +1123,7 @@ struct ftStruct
     ub32 is_ignore_training_menu : 1;   // Can't bring up training menu if TRUE? Might be used for some other things
     u32 camera_mode : 4;
     ub32 is_special_interrupt : 1;      // Whether move can be interrupted by Link's boomerang? Have not seen this used anywhere else
-    ub32 x192_flag_b1 : 1;
+    ub32 is_ignore_dead : 1;            // Ignore dead action states altogether
     ub32 is_catchstatus : 1;
     ub32 x192_flag_b3 : 1;
     ub32 is_use_fogcolor : 1;

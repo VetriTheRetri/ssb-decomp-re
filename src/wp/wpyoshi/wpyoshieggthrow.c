@@ -163,7 +163,7 @@ sb32 wpYoshiEggThrowProcUpdate(GObj *weapon_gobj)
     {
         if (wpMainDecLifeCheckExpire(wp) != FALSE)
         {
-            func_800269C0_275C0(nGMSoundFGMYoshiEggShatter1);
+            func_800269C0_275C0(nSYAudioFGMYoshiEggShatter1);
 
             efManagerYoshiEggExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
             efManagerEggBreakMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -198,7 +198,7 @@ sb32 wpYoshiEggThrowProcMap(GObj *weapon_gobj)
     {
         efManagerQuakeMakeEffect(2);
 
-        func_800269C0_275C0(nGMSoundFGMYoshiEggShatter1);
+        func_800269C0_275C0(nSYAudioFGMYoshiEggShatter1);
 
         efManagerYoshiEggExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
         efManagerEggBreakMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -213,7 +213,7 @@ sb32 wpYoshiEggThrowProcMap(GObj *weapon_gobj)
 // 0x8016C374
 sb32 wpYoshiEggThrowProcHit(GObj *weapon_gobj)
 {
-    func_800269C0_275C0(nGMSoundFGMYoshiEggShatter1);
+    func_800269C0_275C0(nSYAudioFGMYoshiEggShatter1);
 
     efManagerYoshiEggExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
     efManagerEggBreakMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);

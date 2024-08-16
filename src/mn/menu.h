@@ -1,30 +1,18 @@
 #ifndef _MENU_H_
 #define _MENU_H_
 
-#include <PR/os.h>
-#include <PR/sp.h>
-
 #include "mntypes.h"
 
-#define mnCommonCheckGetOptionButtonInput(wait, is_button, mask)\
-(((wait) == 0) && ((is_button) = scSubsysControllerGetFirstHoldButtons(mask), (is_button) != FALSE))
-
-#define mnCommonCheckGetOptionStickInputUD(wait, stick_range, min, b)\
-(((wait) == 0) && ((stick_range) = scSubsysControllerGetFirstStickUD(min, b), (stick_range) != 0))
-
-#define mnCommonCheckGetOptionStickInputLR(wait, stick_range, min, b)\
-(((wait) == 0) && ((stick_range) = scSubsysControllerGetFirstStickLR(min, b), (stick_range) != 0))
-
-#define mnCommonGetOptionChangeWaitP(stick_range, div) ((160 - (stick_range)) / (div))
-
-#define mnCommonGetOptionChangeWaitN(stick_range, div) (((stick_range) + 160) / (div))
-
-#define mnCommonSetOptionChangeWaitP(wait, is_button, stick_range, div)\
-((wait) = (((is_button) != FALSE) ? (12) : mnCommonGetOptionChangeWaitP(stick_range, div)))
-
-#define mnCommonSetOptionChangeWaitN(wait, is_button, stick_range, div)\
-((wait) = (((is_button) != FALSE) ? (12) : mnCommonGetOptionChangeWaitN(stick_range, div)))
-
+extern intptr_t lMNSoundTestDigit0Sprite;            // 0x00000148
+extern intptr_t lMNSoundTestDigit1Sprite;            // 0x000002D8
+extern intptr_t lMNSoundTestDigit2Sprite;            // 0x00000500
+extern intptr_t lMNSoundTestDigit3Sprite;            // 0x00000698
+extern intptr_t lMNSoundTestDigit4Sprite;            // 0x000008C0
+extern intptr_t lMNSoundTestDigit5Sprite;            // 0x00000A58
+extern intptr_t lMNSoundTestDigit6Sprite;            // 0x00000C80
+extern intptr_t lMNSoundTestDigit7Sprite;            // 0x00000E18
+extern intptr_t lMNSoundTestDigit8Sprite;            // 0x00001040
+extern intptr_t lMNSoundTestDigit9Sprite;            // 0x00001270
 extern intptr_t lMNSoundTestMusicTextSprite;         // 0x00000438
 extern intptr_t lMNSoundTestAButtonSprite;           // 0x00000958
 extern intptr_t lMNSoundTestSoundTextSprite;         // 0x000009C0

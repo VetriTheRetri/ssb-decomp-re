@@ -112,7 +112,7 @@ sb32 itTosakintoAppearProcMap(GObj *item_gobj)
 
         itTosakintoBounceSetStatus(item_gobj);
 
-        func_800269C0_275C0(nGMSoundFGMTosakintoSplash);
+        func_800269C0_275C0(nSYAudioFGMTosakintoSplash);
     }
     return FALSE;
 }
@@ -126,7 +126,7 @@ void itTosakintoAppearSetStatus(GObj *item_gobj)
 
     if (ip->it_kind == nITKindTosakinto)
     {
-        func_800269C0_275C0(nGMSoundVoiceMBallTosakintoSpawn);
+        func_800269C0_275C0(nSYAudioVoiceMBallTosakintoAppear);
     }
     itMainSetItemStatus(item_gobj, dITTosakintoStatusDescs, nITTosakintoStatusAppear);
 }
@@ -162,7 +162,7 @@ sb32 itTosakintoBounceProcMap(GObj *item_gobj)
         {
             ip->phys_info.vel_air.x = -ip->phys_info.vel_air.x;
         }
-        func_800269C0_275C0(nGMSoundFGMTosakintoSplash);
+        func_800269C0_275C0(nSYAudioFGMTosakintoSplash);
     }
     return FALSE;
 }

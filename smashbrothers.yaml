@@ -1719,8 +1719,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x187ED0, asm, ovl62]
+      - [0x187ED0, c, mn/mncommon/mnsoundtest]
       - [0x189DB0, data, ovl62]
+      - [0x18A6C0, .rodata, mn/mncommon/mnsoundtest]
+      - { start: auto, type: .bss, name: mn/mncommon/mnsoundtest, vram: 0x80134300 }
 
   - name: ovl63
     type: code

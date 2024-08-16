@@ -194,7 +194,7 @@ void itLinkBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
 	DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
 
-	ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
+	ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
 
 	itMainRefreshHit(item_gobj);
 	itLinkBombExplodeSetStatus(item_gobj);
@@ -517,7 +517,7 @@ void itLinkBombExplodeInitItemVars(GObj *item_gobj)
 
 	itMainClearOwnerStats(item_gobj);
 	itLinkBombExplodeMakeEffectGotoSetStatus(item_gobj);
-	func_800269C0_275C0(nGMSoundFGMExplodeL);
+	func_800269C0_275C0(nSYAudioFGMExplodeL);
 }
 
 // 801863AC

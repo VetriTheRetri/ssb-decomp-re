@@ -149,7 +149,7 @@ sb32 itFushigibanaCommonProcUpdate(GObj *item_gobj)
 
             ip->item_vars.fushigibana.razor_spawn_wait = ITFUSHIGIBANA_RAZOR_SPAWN_WAIT;
 
-            func_800269C0_275C0(nGMSoundFGMMonsterShoot);
+            func_800269C0_275C0(nSYAudioFGMMonsterShoot);
 
             efManagerDustCollideMakeEffect(&pos);
         }
@@ -205,7 +205,7 @@ GObj* itFushigibanaMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags
         }
         dGRYamabukiMonsterAttackKind = ip->item_vars.fushigibana.flags;
 
-        func_800269C0_275C0(nGMSoundVoiceYamabukiFushigibana);
+        func_800269C0_275C0(nSYAudioVoiceYamabukiFushigibana);
     }
     return item_gobj;
 }

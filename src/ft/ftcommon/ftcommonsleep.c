@@ -110,7 +110,7 @@ void ftCommonSleepProcUpdate(GObj *fighter_gobj)
 
                     ifCommonPlayerStockStealMakeInterface(this_fp->player, steal_from_player[random_steal_target]);
 
-                    func_800269C0_275C0(nGMSoundFGMStockSteal);
+                    func_800269C0_275C0(nSYAudioFGMStockSteal);
                 }
             }
         }

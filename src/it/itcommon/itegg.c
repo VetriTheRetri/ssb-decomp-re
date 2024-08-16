@@ -350,10 +350,10 @@ void itEggExplodeInitItemVars(GObj *item_gobj)
 
     ip->item_event_id = 0;
 
-    ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
+    ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
     ip->item_hit.throw_mul = ITEM_THROW_DEFAULT;
 
-    func_800269C0_275C0(nGMSoundFGMExplodeL);
+    func_800269C0_275C0(nSYAudioFGMExplodeL);
 
     ip->item_hit.can_rehit_item = TRUE;
     ip->item_hit.can_hop = FALSE;

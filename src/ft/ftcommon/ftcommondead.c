@@ -183,11 +183,11 @@ void ftCommonDeadInitStatusVars(GObj *fighter_gobj)
     ftCommonDeadUpdateRumble(fp);
     ftCommonDeadUpdateScore(fp);
 
-    if (fp->attributes->dead_sfx[0] != nGMSoundFGMVoiceEnd)
+    if (fp->attributes->dead_sfx[0] != nSYAudioFGMVoiceEnd)
     {
         ftCommonDeadAddDeadSFXSoundQueue(fp->attributes->dead_sfx[0]);
     }
-    if (fp->attributes->dead_sfx[1] != nGMSoundFGMVoiceEnd)
+    if (fp->attributes->dead_sfx[1] != nSYAudioFGMVoiceEnd)
     {
         ftCommonDeadAddDeadSFXSoundQueue(fp->attributes->dead_sfx[1]);
     }
@@ -228,9 +228,9 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
         ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
     )
     {
-        sfx_id = nGMSoundFGMDeadPortalHitS;
+        sfx_id = nSYAudioFGMMapBoundHitS;
     }
-    else sfx_id = nGMSoundFGMDeadPortalHitL;
+    else sfx_id = nSYAudioFGMMapBoundHitL;
 
     ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 }
@@ -270,9 +270,9 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
         ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
     )
     {
-        sfx_id = nGMSoundFGMDeadPortalHitS;
+        sfx_id = nSYAudioFGMMapBoundHitS;
     }
-    else sfx_id = nGMSoundFGMDeadPortalHitL;
+    else sfx_id = nSYAudioFGMMapBoundHitL;
 
     ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 }
@@ -311,9 +311,9 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
         ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
     )
     {
-        sfx_id = nGMSoundFGMDeadPortalHitS;
+        sfx_id = nSYAudioFGMMapBoundHitS;
     }
-    else sfx_id = nGMSoundFGMDeadPortalHitL;
+    else sfx_id = nSYAudioFGMMapBoundHitL;
 
     ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 }
@@ -364,7 +364,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
             fp->is_ignore_training_menu = TRUE;
 
             ftCommonDeadUpdateScore(fp);
-            ftCommonDeadAddDeadSFXSoundQueue(nGMSoundFGMDeadUpStar);
+            ftCommonDeadAddDeadSFXSoundQueue(nSYAudioFGMDeadUpStar);
 
             fp->is_playertag_hide = TRUE;
             fp->colanim.is_use_maincolor = FALSE;
@@ -404,7 +404,7 @@ void ftCommonDeadUpStarSetStatus(GObj *fighter_gobj)
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftParamSetPlayerTagWait(fighter_gobj, 1);
 
-    if (fp->attributes->deadup_sfx != nGMSoundFGMVoiceEnd)
+    if (fp->attributes->deadup_sfx != nSYAudioFGMVoiceEnd)
     {
         func_800269C0_275C0(fp->attributes->deadup_sfx);
     }
@@ -477,17 +477,17 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
                 ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
             )
             {
-                sfx_id = nGMSoundFGMDeadPortalHitS;
+                sfx_id = nSYAudioFGMMapBoundHitS;
             }
-            else sfx_id = nGMSoundFGMDeadPortalHitL;
+            else sfx_id = nSYAudioFGMMapBoundHitL;
 
             ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 
-            if (fp->attributes->dead_sfx[0] != nGMSoundFGMVoiceEnd)
+            if (fp->attributes->dead_sfx[0] != nSYAudioFGMVoiceEnd)
             {
                 ftCommonDeadAddDeadSFXSoundQueue(fp->attributes->dead_sfx[0]);
             }
-            if (fp->attributes->dead_sfx[1] != nGMSoundFGMVoiceEnd)
+            if (fp->attributes->dead_sfx[1] != nSYAudioFGMVoiceEnd)
             {
                 ftCommonDeadAddDeadSFXSoundQueue(fp->attributes->dead_sfx[1]);
             }
@@ -525,12 +525,12 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftParamSetPlayerTagWait(fighter_gobj, 1);
 
-    if (fp->attributes->deadup_sfx != nGMSoundFGMVoiceEnd)
+    if (fp->attributes->deadup_sfx != nSYAudioFGMVoiceEnd)
     {
         func_800269C0_275C0(fp->attributes->deadup_sfx);
     }
     ftParamMoveDLLink(fighter_gobj, 19);
-    ftParamSetModelPartDetailAll(fighter_gobj, 1);
+    ftParamSetModelPartDetailAll(fighter_gobj, nFTPartsDetailHigh);
 }
 
 // 0x8013CB7C
@@ -543,11 +543,11 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
     {
         return FALSE;
     }
-    if (fp->x192_flag_b1)
+    if (fp->is_ignore_dead)
     {
         return FALSE;
     }
-    if (fp->is_ignore_map_bounds)
+    if (fp->is_limit_map_bounds)
     {
         if (pos->y < gMPCollisionGroundData->map_bound_bottom)
         {

@@ -262,18 +262,18 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 	gGRCommonStruct.bonus2.platform_count--;
 
 	scBonusGame_UpdateBonus2PlatformInterface();
-	func_800269C0_275C0(nGMSoundFGMBonus2PlatformLanding);
+	func_800269C0_275C0(nSYAudioFGMBonus2PlatformLanding);
 
 	if (gGRCommonStruct.bonus2.platform_count == 0)
 	{
 		if ((gSceneData.scene_previous != 0x34)
 			&& (gSaveData.spgame_records[gSceneData.bonus_ft_kind].bonus2_task_count == SCBATTLE_BONUSGAME_TASK_MAX)
 			&& (gBattleState->battle_time_current < gSaveData.spgame_records[gSceneData.bonus_ft_kind].bonus2_time))
-			ifCommonAnnounceCompleteInitInterface(nGMSoundVoiceAnnounceNewRecord);
+			ifCommonAnnounceCompleteInitInterface(nSYAudioVoiceAnnounceNewRecord);
 		else
-			ifCommonAnnounceCompleteInitInterface(nGMSoundVoiceAnnounceComplete);
+			ifCommonAnnounceCompleteInitInterface(nSYAudioVoiceAnnounceComplete);
 
-		ifCommonBattleEndAddSoundQueueID(nGMSoundFGMBonus2PlatformLanding);
+		ifCommonBattleEndAddSoundQueueID(nSYAudioFGMBonus2PlatformLanding);
 	}
 }
 
@@ -737,11 +737,11 @@ void sc1PBonusGameStartScene()
 	u32 tasks_complete;
 	s32 i;
 
-	D_ovl6_8018F080.zbuffer = (void*)((uintptr_t)&scmanager_BSS_END - 0x1900);
+	D_ovl6_8018F080.zbuffer = (void*)((uintptr_t)&scmanager_BSS_END - 6400);
 
 	func_80007024(&D_ovl6_8018F080);
 
-	D_ovl6_8018F09C.arena_size = ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
+	D_ovl6_8018F09C.arena_size = (size_t) ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
 	D_ovl6_8018F09C.proc_start = scBonusGame_InitBonusGame;
 
 	gsGTLSceneInit(&D_ovl6_8018F09C);

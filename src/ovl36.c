@@ -490,7 +490,7 @@ void mvOpeningMarioSetupDisplayList(Gfx **display_list)
 // 8018E030
 void intro_focus_mario_entry()
 {
-	D_ovl36_8018E11C.zbuffer = (uintptr_t)((uintptr_t)&scmanager_BSS_END - 0x1900);
+	D_ovl36_8018E11C.zbuffer = (uintptr_t)((uintptr_t)&scmanager_BSS_END - 6400);
 	func_80007024(&D_ovl36_8018E11C);
 	D_ovl36_8018E138.arena_size = (u32) ((uintptr_t)&lOverlay36ArenaHi - (uintptr_t)&lOverlay36ArenaLo);
 	gsGTLSceneInit(&D_ovl36_8018E138);

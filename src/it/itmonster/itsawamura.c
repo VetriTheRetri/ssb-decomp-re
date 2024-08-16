@@ -263,7 +263,7 @@ void itSawamuraAttackInitItemVars(GObj *item_gobj)
 
         dobj->display_list = dl;
 
-        func_800269C0_275C0(nGMSoundVoiceMBallSawamuraKick);
+        func_800269C0_275C0(nSYAudioVoiceMBallSawamuraKick);
     }
     ip->it_multi = ITSAWAMURA_LIFETIME;
 
@@ -330,7 +330,7 @@ GObj* itSawamuraMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITSawamuraDataStart), 0.0F); // Linker thing
 
-        func_800269C0_275C0(nGMSoundVoiceMBallSawamuraSpawn);
+        func_800269C0_275C0(nSYAudioVoiceMBallSawamuraAppear);
 
         gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
     }

@@ -114,11 +114,11 @@ void itMewFlyInitItemVars(GObj *item_gobj)
     
     ip->phys_info.vel_air.y = ITMEW_STARTVEL_Y;
 
-    func_800269C0_275C0(nGMSoundFGMMewFly);
+    func_800269C0_275C0(nSYAudioFGMMewFly);
 
     if (ip->it_kind == nITKindMew)
     {
-        func_800269C0_275C0(nGMSoundVoiceMBallMewSpawn);
+        func_800269C0_275C0(nSYAudioVoiceMBallMewAppear);
     }
     efManagerRippleMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 

@@ -77,7 +77,7 @@ void func_ovl5_8018D160(GObj *gobj)
 {
 	if (ftParamCheckExplainInputSeq(gUnkExplainFighterGObj) == FALSE)
 	{
-		func_800269C0_275C0(nGMSoundFGMTitlePressStart);
+		func_800269C0_275C0(nSYAudioFGMTitlePressStart);
 		leoInitUnit_atten();
 	}
 }
@@ -168,7 +168,7 @@ void overlay_set23_entry()
 {
 	D_ovl5_8018D5BC.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 6400);
 	func_80007024(&D_ovl5_8018D5BC);
-	D_ovl5_8018D5D8.arena_size = ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl5_BSS_END);
+	D_ovl5_8018D5D8.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl5_BSS_END);
 	func_800A2698(&D_ovl5_8018D5D8);
 	auStopBGM();
 	gSceneData.scene_previous = gSceneData.scene_current;

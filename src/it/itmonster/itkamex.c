@@ -148,7 +148,7 @@ void itKamexAttackUpdateHydro(GObj *item_gobj)
 
         itKamexAttackMakeHydro(item_gobj, &pos);
         efManagerDamageSpawnSparksMakeEffect(&pos, ip->lr);
-        func_800269C0_275C0(nGMSoundFGMKamexHydro);
+        func_800269C0_275C0(nSYAudioFGMKamexHydro);
 
         ip->item_vars.kamex.hydro_spawn_wait = mtTrigGetRandomIntRange(ITKAMEX_HYDRO_SPAWN_WAIT_RANDOM) + ITKAMEX_HYDRO_SPAWN_WAIT_CONST;
 
@@ -250,7 +250,7 @@ void itKamexAppearSetStatus(GObj *item_gobj)
 
     if (ip->it_kind == nITKindKamex)
     {
-        func_800269C0_275C0(nGMSoundVoiceMBallKamexSpawn);
+        func_800269C0_275C0(nSYAudioVoiceMBallKamexAppear);
     }
     itMainSetItemStatus(item_gobj, dITKamexStatusDescs, nITKamexStatusAppear);
 }

@@ -472,7 +472,7 @@ void scBattleRoyalStartScene()
 	{
 		gBattleState->gr_kind = nGRKindCastle;
 	}
-	D_ovl4_8018E3D8.zbuffer = (void*)((uintptr_t)&scmanager_BSS_END - 0x1900);
+	D_ovl4_8018E3D8.zbuffer = (void*)((uintptr_t)&scmanager_BSS_END - 6400);
 	func_80007024(&D_ovl4_8018E3D8);
 	D_ovl4_8018E3F4.arena_size = (uintptr_t)((uintptr_t)&D_NF_80392A00 - (uintptr_t)&D_NF_8018E7E0);
 	D_ovl4_8018E3F4.proc_start = scBattle_StartStockBattle;

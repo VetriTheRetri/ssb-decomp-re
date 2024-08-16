@@ -29,7 +29,7 @@ void ftCommonTaruCannProcUpdate(GObj *fighter_gobj)
 
         if (fp->status_vars.common.tarucann.shoot_wait == (FTCOMMON_TARUCANN_SHOOT_WAIT / 2))
         {
-            func_800269C0_275C0(nGMSoundFGMJungleTaruCannShoot);
+            func_800269C0_275C0(nSYAudioFGMJungleTaruCannShoot);
         }
         if (fp->status_vars.common.tarucann.shoot_wait == 0)
         {
@@ -104,7 +104,7 @@ void ftCommonTaruCannSetStatus(GObj *fighter_gobj, GObj *tarucann_gobj)
     fp->is_invisible = TRUE;
 
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
-    func_800269C0_275C0(nGMSoundFGMJungleTaruCannEnter);
+    func_800269C0_275C0(nSYAudioFGMJungleTaruCannEnter);
 }
 
 // 0x80144038

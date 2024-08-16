@@ -836,7 +836,7 @@ void sc1PStageClearMakeTimerTextSObjs(f32 y)
 	sobj->sprite.green = 0xE4;
 	sobj->sprite.blue = 0xFF;
 
-	func_800269C0_275C0(nGMSoundFGMStageClearScoreDisplay);
+	func_800269C0_275C0(nSYAudioFGMStageClearScoreDisplay);
 }
 
 // 8013263C
@@ -917,7 +917,7 @@ s32 sc1PStageClearGetAppendTotalTimeScore(f32 y)
 	time_score_total = sGMStageClearSecondsRemaining * multiplier;
 
 	sc1PStageClearMakeScoreDigitSObjs(gobj, time_score_total, 200.0F, y - 1.0F, NULL, 1, 0, 0, 5, FALSE);
-	func_800269C0_275C0(nGMSoundFGMStageClearScoreRegister);
+	func_800269C0_275C0(nSYAudioFGMStageClearScoreRegister);
 
 	return time_score_total;
 }
@@ -964,7 +964,7 @@ void sc1PStageClearMakeDamageTextSObjs(f32 y)
 	sobj->sprite.green = 0xE4;
 	sobj->sprite.blue = 0xFF;
 
-	func_800269C0_275C0(nGMSoundFGMStageClearScoreDisplay);
+	func_800269C0_275C0(nSYAudioFGMStageClearScoreDisplay);
 }
 
 // 80132A20
@@ -1014,7 +1014,7 @@ s32 sc1PStageClearGetAppendTotalDamageScore(f32 y)
 	damage_score_total = sGMStageClearDamageDealt * 10;
 
 	sc1PStageClearMakeScoreDigitSObjs(gobj, damage_score_total, 200.0F, (s32)y - 1, NULL, 1, 0, 0, 5, FALSE);
-	func_800269C0_275C0(nGMSoundFGMStageClearScoreRegister);
+	func_800269C0_275C0(nSYAudioFGMStageClearScoreRegister);
 
 	return damage_score_total;
 }
@@ -1061,7 +1061,7 @@ void sc1PStageClearMakeTargetTextSObjs()
 	sobj->sprite.green = 0xE4;
 	sobj->sprite.blue = 0xFF;
 
-	func_800269C0_275C0(nGMSoundFGMStageClearScoreDisplay);
+	func_800269C0_275C0(nSYAudioFGMStageClearScoreDisplay);
 }
 
 // 80132DC0
@@ -1071,7 +1071,7 @@ void func_ovl56_80132DC0(GObj *gobj)
 
 	if (gobj->user_data.u == D_ovl56_801352CC)
 	{
-		func_800269C0_275C0(nGMSoundFGMStageClearScoreRegister);
+		func_800269C0_275C0(nSYAudioFGMStageClearScoreRegister);
 		gcEjectGObj(sGMStageClearScoreTextGObj);
 		sGMStageClearScoreTotal += 1000;
 		sc1PStageClearMakeScoreSObjs();
@@ -1198,7 +1198,7 @@ s32 sc1PStageClearGetNoMissMultiplier(s32 stage)
 void sc1PStageClearCommonProcUpdate(GObj *gobj)
 {
 	if (gobj->user_data.u == D_ovl56_801352CC)
-		func_800269C0_275C0(nGMSoundFGMStageClearScoreDisplay);
+		func_800269C0_275C0(nSYAudioFGMStageClearScoreDisplay);
 
 	gobj->flags = (gobj->user_data.u < D_ovl56_801352CC) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
 }
@@ -1987,11 +1987,11 @@ void sc1PStageClearInitAll()
 // 80134E84
 void sc1PStageClearStartScene()
 {
-	D_ovl56_801351EC.zbuffer = ((uintptr_t)&scmanager_BSS_END - 0x1900);
+	D_ovl56_801351EC.zbuffer = ((uintptr_t)&scmanager_BSS_END - 6400);
 
 	func_80007024(&D_ovl56_801351EC);
 
-	D_ovl56_80135208.arena_size = ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl56_BSS_END);
+	D_ovl56_80135208.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl56_BSS_END);
 
 	gsGTLSceneInit(&D_ovl56_80135208);
 }

@@ -412,7 +412,7 @@ void ftCommonGuardOnSetStatus(GObj *fighter_gobj, s32 slide_frames)
     fp->status_vars.common.guard.slide_frames = slide_frames;
     fp->status_vars.common.guard.is_setoff = FALSE;
 
-    func_800269C0_275C0(nGMSoundFGMGuardOn);
+    func_800269C0_275C0(nSYAudioFGMGuardOn);
 }
 
 // 0x80148CBC

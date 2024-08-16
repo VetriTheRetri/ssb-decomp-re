@@ -113,7 +113,7 @@ void grYosterUpdateCloudSolid(s32 cloud_id)
 
             grYosterCloudVaporMakeEffect(&pos);
 
-            func_800269C0_275C0(nGMSoundFGMYosterCloudVapor);
+            func_800269C0_275C0(nSYAudioFGMYosterCloudVapor);
         }
         else
         {

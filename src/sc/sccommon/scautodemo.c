@@ -14,9 +14,6 @@ extern void func_ovl0_800CCF00();
 
 extern intptr_t D_NF_0000000C;
 
-
-extern uintptr_t ovl64_BSS_END;          		// 0x8018E860
-
 extern intptr_t lSCAutoDemoNameSpriteMario;  	// 0x00000138
 extern intptr_t lSCAutoDemoNameSpriteFox;     	// 0x00000258
 extern intptr_t lSCAutoDemoNameSpriteDonkey;  	// 0x00000378
@@ -713,11 +710,11 @@ void scAutoDemoProcLights(Gfx **dls)
 // 0x8018E014
 void scAutoDemoStartScene(void)
 {
-	dSCAutoDemoDisplaySetup.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 0x1900);
+	dSCAutoDemoDisplaySetup.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 6400);
 
 	func_80007024(&dSCAutoDemoDisplaySetup);
 
-	dSCAutoDemoGtlSetup.arena_size = ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl64_BSS_END);
+	dSCAutoDemoGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl64_BSS_END);
 	dSCAutoDemoGtlSetup.proc_start = scAutoDemoProcStart;
 
 	func_800A2698(&dSCAutoDemoGtlSetup);

@@ -358,7 +358,7 @@ void grPupupuWhispyUpdateOpen(void)
 
         grPupupuWhispyLeavesMakeEffect();
 
-        func_800269C0_275C0(nGMSoundFGMPupupuWhispyWind);
+        func_800269C0_275C0(nSYAudioFGMPupupuWhispyWind);
     }
 }
 

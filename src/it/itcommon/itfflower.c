@@ -294,7 +294,7 @@ sb32 itFFlowerWeaponFlameProcMap(GObj *weapon_gobj)
 // 0x80175E4C
 sb32 itFFlowerWeaponFlameProcHit(GObj *weapon_gobj)
 {
-    func_800269C0_275C0(nGMSoundFGMExplodeS);
+    func_800269C0_275C0(nSYAudioFGMExplodeS);
     efManagerSparkleWhiteMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return FALSE;

@@ -131,7 +131,7 @@ sb32 wpMarioFireballProcMap(GObj *weapon_gobj)
 // 0x801686C0
 sb32 wpMarioFireballProcHit(GObj *weapon_gobj)
 {
-    func_800269C0_275C0(nGMSoundFGMExplodeS);
+    func_800269C0_275C0(nSYAudioFGMExplodeS);
     efManagerSparkleWhiteMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
     return TRUE;

@@ -1,16 +1,16 @@
 #include <if/interface.h>
 #include <ft/fighter.h>
 #include <it/item.h>
+#include <cm/camera.h>
 #include <sc/scene.h>
 #include <sys/ml.h>
+#include <sys/system_00.h>
 
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //
 //                               //
 // // // // // // // // // // // //
-
-extern void *gGMCommonFiles[/* */];
 
 extern intptr_t D_NF_00000057;                              // 0x00000057
 extern intptr_t lIFCommonPlayerArrowsDObjDesc;              // 0x00000188
@@ -136,17 +136,9 @@ extern intptr_t lIFCommonBattlePauseDecalRetry;             // 0x00000828
 
 extern mlRegion gSYGtlGeneralHeap;
 
-extern u32 gMPCollisionBGMDefault;
-extern s32 gSYDisplayResWidth;
-extern s32 gSYDisplayPixelComponentSize;
-extern s32 gSYDisplayZBuffer;
-extern GObj *gOMObjCurrentRendering; // Some kind of camera GObj
-
 extern GObj *D_ovl2_80131A10; // I don't think these belong in this file
 extern GObj *D_ovl2_80131A14;
 
-extern sb32 cmManagerCheckTargetInBounds(f32, f32);
-extern void func_ovl2_8010CF44(GObj*, f32, f32, f32, f32, f32);
 extern alSoundEffect* func_800269C0_275C0(u16);
 
 extern void func_ovl0_800CCF00(GObj*);
@@ -479,7 +471,13 @@ Gfx dIFCommonPlayerArrowsGfx[/* */] =
 };
 
 // 0x8012EF38 - Length of time units in order: minute tens, minute ones, second tens, second ones (in frames)
-u16 dIFCommonTimerDigitsUnitLengths[/* */] = { I_MIN_TO_FRAMES(10), I_MIN_TO_FRAMES(1), I_SEC_TO_FRAMES(10), I_SEC_TO_FRAMES(1) };
+u16 dIFCommonTimerDigitsUnitLengths[/* */] = 
+{ 
+    I_MIN_TO_FRAMES(10), 
+    I_MIN_TO_FRAMES(1), 
+    I_SEC_TO_FRAMES(10), 
+    I_SEC_TO_FRAMES(1) 
+};
 
 // 0x8013EF40 - Unused?
 u8 dIFCommonUnused8013EF40[/* */] = { 0x00, 0x01, 0x03, 0x04, 0x00, 0x00, 0x00, 0x00 };
@@ -1862,7 +1860,7 @@ void ifCommonPlayerArrowsProcRun(GObj *interface_gobj)
     {
         if (sIFCommonPlayerMagnifySoundWait == 0)
         {
-            func_800269C0_275C0(nGMSoundFGMMagnify);
+            func_800269C0_275C0(nSYAudioFGMMagnify);
 
             sIFCommonPlayerMagnifySoundWait = 30;
         }
@@ -2091,7 +2089,7 @@ void ifCommonAnnounceGoMakeInterface(void)
     s32 i;
 
     gcAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjCommonProc(interface_gobj, ifCommonAnnounceThread, nOMObjProcessKindOSThread, 5);
+    gcAddGObjCommonProc(interface_gobj, ifCommonAnnounceThread, nOMObjProcessKindThread, 5);
 
     for (i = 0; i < ARRAY_COUNT(dIFCommonAnnounceGoSpriteData); i++)
     {
@@ -2303,7 +2301,7 @@ SObj* ifCommonCountdownMakeInterface(void)
     interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjCommonProc(interface_gobj, ifCommonCountdownThread, nOMObjProcessKindOSThread, 5);
+    gcAddGObjCommonProc(interface_gobj, ifCommonCountdownThread, nOMObjProcessKindThread, 5);
 
     sobj = gcAppendSObjWithSprite(interface_gobj, spGetSpriteFromFile(gGMCommonFiles[1], &lIFCommonTrafficRod));
 
@@ -2405,7 +2403,7 @@ void ifCommonEntryFocusMakeInterface(s32 id)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjCommonProc(interface_gobj, ifCommonEntryFocusThread, nOMObjProcessKindOSThread, 5);
+    gcAddGObjCommonProc(interface_gobj, ifCommonEntryFocusThread, nOMObjProcessKindThread, 5);
 
     interface_gobj->user_data.s = id;
 }
@@ -2423,7 +2421,7 @@ void ifCommonEntryAllThread(GObj *interface_gobj)
 // 0x80112A80
 void ifCommonEntryAllMakeInterface(void)
 {
-    gcAddGObjCommonProc(gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT), ifCommonEntryAllThread, nOMObjProcessKindOSThread, 5);
+    gcAddGObjCommonProc(gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT), ifCommonEntryAllThread, nOMObjProcessKindThread, 5);
 
     gBattleState->game_status = nSCBattleGameStatusWait;
 }
@@ -2464,7 +2462,7 @@ void ifCommonSuddenDeathMakeInterface(void)
     GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjCommonProc(interface_gobj, ifCommonSuddenDeathThread, nOMObjProcessKindOSThread, 5);
+    gcAddGObjCommonProc(interface_gobj, ifCommonSuddenDeathThread, nOMObjProcessKindThread, 5);
     ifCommonAnnounceSetAttr(interface_gobj, 7, dIFCommonAnnounceSuddenDeathSpriteData, ARRAY_COUNT(dIFCommonAnnounceSuddenDeathSpriteData));
     ifCommonAnnounceSetColors(interface_gobj, &dIFCommonAnnounceSuddenDeathSpriteColors);
     func_800269C0_275C0(0x202);
@@ -2601,9 +2599,9 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
                     }
                     else gBattleState->battle_time_remain -= time_update;
 
-                    if ((gBattleState->gr_kind == nGRKindInishie) && (gBattleState->battle_time_remain <= I_SEC_TO_FRAMES(30)) && (gMPCollisionBGMDefault != nGMSoundBGMInishieHurry))
+                    if ((gBattleState->gr_kind == nGRKindInishie) && (gBattleState->battle_time_remain <= I_SEC_TO_FRAMES(30)) && (gMPCollisionBGMDefault != nSYAudioBGMInishieHurry))
                     {
-                        gMPCollisionBGMDefault = nGMSoundBGMInishieHurry;
+                        gMPCollisionBGMDefault = nSYAudioBGMInishieHurry;
 
                         ftParamTryUpdateItemMusic();
                     }
@@ -2990,7 +2988,7 @@ void ifCommonBattlePauseInitInterface(s32 player)
     sIFCommonBattlePausePlayer = player;
 
     func_80026594_27194();
-    func_800269C0_275C0(nGMSoundFGMGamePause);
+    func_800269C0_275C0(nSYAudioFGMGamePause);
     auSetBGMVolume(0, 0x3C00);
     ifCommonBattlePauseMakeInterface(player);
 }
@@ -3377,7 +3375,7 @@ void ifCommonBattleSetInterface(void (*proc_update)(void), void (*proc_set)(void
 
     ifCommonBattleEndInitSoundNum();
 
-    if (sfx_id != nGMSoundFGMVoiceEnd)
+    if (sfx_id != nSYAudioFGMVoiceEnd)
     {
         ifCommonBattleEndAddSoundQueueID(sfx_id);
     }

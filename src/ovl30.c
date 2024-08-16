@@ -1431,7 +1431,7 @@ void mnStageInitSSS()
 // 8013446C
 void mnStageStartScene()
 {
-	D_ovl30_8013490C.zbuffer = (uintptr_t)((uintptr_t)&scmanager_BSS_END - 0x1900);
+	D_ovl30_8013490C.zbuffer = (uintptr_t)((uintptr_t)&scmanager_BSS_END - 6400);
 	func_80007024(&D_ovl30_8013490C);
 	D_ovl30_80134928.arena_size = (u32) ((uintptr_t)&lOverlay30ArenaHi - (uintptr_t)&lOverlay30ArenaLo);
 	func_800A2698(&D_ovl30_80134928);

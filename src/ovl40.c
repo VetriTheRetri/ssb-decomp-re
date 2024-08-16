@@ -356,7 +356,7 @@ void gMvOpeningLinkSetupDisplayList(Gfx **display_list)
 // 8018E018
 void intro_focus_link_entry()
 {
-	D_ovl40_8018E0DC.zbuffer = (uintptr_t)((uintptr_t)&scmanager_BSS_END - 0x1900);
+	D_ovl40_8018E0DC.zbuffer = (uintptr_t)((uintptr_t)&scmanager_BSS_END - 6400);
 	func_80007024(&D_ovl40_8018E0DC);
 	D_ovl40_8018E0F8.arena_size = (u32) ((uintptr_t)&lOverlay40ArenaHi - (uintptr_t)&lOverlay40ArenaLo);
 	gsGTLSceneInit(&D_ovl40_8018E0F8);

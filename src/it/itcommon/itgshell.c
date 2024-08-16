@@ -501,7 +501,7 @@ void itGShellSpinInitItemVars(GObj *item_gobj)
     ip->is_damage_all = FALSE;
 
     itMainRefreshHit(item_gobj);
-    func_800269C0_275C0(nGMSoundFGMBombHeiWalkStart);
+    func_800269C0_275C0(nSYAudioFGMBombHeiWalkStart);
 }
 
 // 0x80178EDC

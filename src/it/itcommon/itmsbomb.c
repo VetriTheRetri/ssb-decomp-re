@@ -352,7 +352,7 @@ void itMSBombAttachedInitItemVars(GObj *item_gobj)
             ftParamMakeRumble(ftGetStruct(fighter_gobj), 6, 0);
         }
     }
-    func_800269C0_275C0(nGMSoundFGMMSBombAttach);
+    func_800269C0_275C0(nSYAudioFGMMSBombAttach);
 
     itMainClearOwnerStats(item_gobj);
 }
@@ -403,7 +403,7 @@ void itMSBombExplodeInitStatusVars(GObj *item_gobj, sb32 is_make_effect)
 // 0x80176A34
 sb32 itMSBombCommonProcDamage(GObj *item_gobj)
 {
-    func_800269C0_275C0(nGMSoundFGMExplodeL);
+    func_800269C0_275C0(nSYAudioFGMExplodeL);
     itMSBombExplodeInitStatusVars(item_gobj, FALSE);
 
     return FALSE;
@@ -573,7 +573,7 @@ void itMSBombExplodeInitItemVars(GObj *item_gobj)
     ip->item_event_id = 0;
 
     ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
-    ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
+    ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
 
     ip->item_hurt.hitstatus = nGMHitStatusNone;
 

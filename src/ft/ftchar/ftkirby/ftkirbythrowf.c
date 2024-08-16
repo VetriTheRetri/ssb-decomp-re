@@ -32,7 +32,7 @@ void ftKirbyThrowFFallSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusThrowFFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_TEXTUREPART);
 
-    catch_fp->x192_flag_b1 = FALSE;
+    catch_fp->is_ignore_dead = FALSE;
 }
 
 // 0x8014A4F8

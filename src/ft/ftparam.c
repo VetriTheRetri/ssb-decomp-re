@@ -99,10 +99,10 @@ s32 ftParamGetItemMusicLength(u32 bgm_id)
 {
     switch (bgm_id)
     {
-    case nGMSoundBGMStarman:
+    case nSYAudioBGMStarman:
         return ITHAMMER_BGM_DURATION;
 
-    case nGMSoundBGMHammer:
+    case nSYAudioBGMHammer:
         return ITSTAR_BGM_DURATION;
 
     default:
@@ -136,11 +136,11 @@ void ftParamTryUpdateItemMusic(void)
 
         if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer))
         {
-            bgm_id = nGMSoundBGMHammer;
+            bgm_id = nSYAudioBGMHammer;
         }
         if (fp->star_invincible_timer > ITSTAR_WARN_BEGIN_FRAME)
         {
-            bgm_id = nGMSoundBGMStarman;
+            bgm_id = nSYAudioBGMStarman;
         }
         length_new = ftParamGetItemMusicLength(bgm_id);
 

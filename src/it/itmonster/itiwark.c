@@ -233,7 +233,7 @@ void itIwarkAttackInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == nITKindIwark)
     {
-        func_800269C0_275C0(nGMSoundVoiceMBallIwarkSpawn);
+        func_800269C0_275C0(nSYAudioVoiceMBallIwarkAppear);
     }
 }
 
@@ -378,7 +378,7 @@ sb32 itIwarkWeaponRockProcMap(GObj *weapon_gobj)
 
             wp->weapon_vars.rock.ground_line_id = coll_data->ground_line_id;
 
-            func_800269C0_275C0(nGMSoundFGMIwarkRockCreate);
+            func_800269C0_275C0(nSYAudioFGMIwarkRockCreate);
 
             pos.y += WPIWARK_ROCK_COLLIDE_ADD_VEL_Y;
 

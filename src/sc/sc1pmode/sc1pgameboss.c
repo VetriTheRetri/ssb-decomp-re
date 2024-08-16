@@ -78,7 +78,7 @@ f32 sSC1PGameBossWallpaperStepRGBA;
 
 // // // // // // // // // // // //
 //                               //
-//        INITALIZED DATA        //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 

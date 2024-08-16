@@ -91,7 +91,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
     );
     mpCollisionGetMapObjPositionID(new_point_id, &fp->status_vars.common.dokan.pos_current);
 
-    func_800269C0_275C0(nGMSoundFGMMarioDokan);
+    func_800269C0_275C0(nSYAudioFGMMarioDokan);
     ftParamSetPlayerTagWait(fighter_gobj, 1);
 
     if
@@ -292,7 +292,7 @@ void ftCommonDokanEndSetStatus(GObj *fighter_gobj)
     }
     else fp->status_vars.common.dokan.turn_stop_wait = 0;
 
-    func_800269C0_275C0(nGMSoundFGMMarioDokan);
+    func_800269C0_275C0(nSYAudioFGMMarioDokan);
 }
 
 // 0x801427CC
@@ -310,5 +310,5 @@ void ftCommonDokanWalkSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.dokan.playertag_wait = FTCOMMON_DOKAN_PLAYERTAG_WAIT;
 
-    func_800269C0_275C0(nGMSoundFGMMarioDokan);
+    func_800269C0_275C0(nSYAudioFGMMarioDokan);
 }

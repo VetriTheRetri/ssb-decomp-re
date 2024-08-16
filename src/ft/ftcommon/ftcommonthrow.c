@@ -101,8 +101,8 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
     {
         if (status_id == nFTKirbyStatusThrowF)
         {
-            this_fp->x192_flag_b1 = TRUE;
-            catch_fp->x192_flag_b1 = TRUE;
+            this_fp->is_ignore_dead = TRUE;
+            catch_fp->is_ignore_dead = TRUE;
         }
     }
 }

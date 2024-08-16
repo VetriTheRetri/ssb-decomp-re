@@ -238,7 +238,7 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
     s32 item_count;
     Vec3f vel_different;
 
-    func_800269C0_275C0(nGMSoundFGMContainerSmash);
+    func_800269C0_275C0(nSYAudioFGMContainerSmash);
 
     itBoxContainerSmashMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
@@ -304,7 +304,7 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
                 gITManagerRandomWeights.item_count++;
                 gITManagerRandomWeights.item_num = bak;
             }
-            func_800269C0_275C0(nGMSoundFGMFireFlowerShoot);
+            func_800269C0_275C0(nSYAudioFGMFireFlowerShoot);
 
             return TRUE;
         }
@@ -479,7 +479,7 @@ void itBoxExplodeInitItemVars(GObj *item_gobj)
     ip->item_event_id = 0;
     ip->it_multi = 0;
 
-    ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
+    ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
 
     ip->item_hit.can_rehit_item = TRUE;
     ip->item_hit.can_hop = FALSE;

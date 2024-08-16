@@ -3,6 +3,8 @@
 
 typedef enum GObjKind
 {
+    nOMObjCommonKindMenuProc,           // 0000
+    nOMObjCommonKindMenuElement,        // 0001
     nOMObjCommonKindFighter = 1000,     // 1000
     nOMObjCommonKindFighterParts,       // 1001
     nOMObjCommonKindMainCamera = 1002,  // 1002
@@ -28,7 +30,7 @@ typedef enum GObjKind
 
 typedef enum GObjProcessKind
 {
-    nOMObjProcessKindOSThread,
+    nOMObjProcessKindThread,
     nOMObjProcessKindProc,
     nOMObjProcessKindEnumMax
 
@@ -61,7 +63,7 @@ typedef enum GObjLinkIndex
     nOMObjCommonLinkIDItem = 4,           // ID 4: Item object
     nOMObjCommonLinkIDCreditsJob = 4,     // ID 4: Credits staff roll job
 
-    nOMObjCommonLinkIDWeapon,             // ID 5: Weapon (projectile) object
+    nOMObjCommonLinkIDWeapon = 5,         // ID 5: Weapon (projectile) object
     nOMObjCommonLinkIDEffect,             // ID 6: Effect type 1 object (other ID is 8 but idk what it does)
     nOMObjCommonLinkIDSpecialEffect = 8,  // ID 8: Effect type 2 object
     nOMObjCommonLinkIDHighlight = 9,      // ID 9: Credits shootout rectangles that zoom in on crosshair

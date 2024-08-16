@@ -86,7 +86,7 @@ void ftCommonGuardOffSetStatus(GObj *fighter_gobj)
     fp->is_shield = flag;
 
     ftCommonGuardUpdateJoints(fighter_gobj);
-    func_800269C0_275C0(nGMSoundFGMGuardOff);
+    func_800269C0_275C0(nSYAudioFGMGuardOff);
 }
 
 // 0x80149074

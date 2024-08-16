@@ -175,7 +175,7 @@ sb32 itTaruWaitProcMap(GObj *item_gobj)
 // 0x80179C20
 sb32 itTaruCommonProcHit(GObj *item_gobj)
 {
-    func_800269C0_275C0(nGMSoundFGMContainerSmash);
+    func_800269C0_275C0(nSYAudioFGMContainerSmash);
 
     itBoxContainerSmashMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
@@ -421,7 +421,7 @@ void itTaruExplodeInitItemVars(GObj *item_gobj)
     ip->it_multi = 0;
     ip->item_event_id = 0;
 
-    ip->item_hit.hit_sfx = nGMSoundFGMExplodeL;
+    ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
 
     ip->item_hit.can_rehit_item = TRUE;
     ip->item_hit.can_reflect = FALSE;

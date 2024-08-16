@@ -205,7 +205,7 @@ void itSpearAppearInitItemVars(GObj *item_gobj)
 
         gcAddMObjMatAnimJoint(dobj->child->mobj, matanim_joint, 0.0F);
         gcPlayAnimAll(item_gobj);
-        func_800269C0_275C0(nGMSoundVoiceMBallSpearSpawn);
+        func_800269C0_275C0(nSYAudioVoiceMBallSpearAppear);
     }
 }
 
@@ -274,7 +274,7 @@ void itSpearFlyInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == nITKindSpear)
     {
-        func_800269C0_275C0(nGMSoundVoiceMBallSpearSwarm);
+        func_800269C0_275C0(nSYAudioVoiceMBallSpearSwarm);
     }
 }
 

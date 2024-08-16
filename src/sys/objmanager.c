@@ -757,7 +757,7 @@ GObjProcess* gcAddGObjCommonProc(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 p
 
 	switch (kind)
 	{
-	case nOMObjProcessKindOSThread: {
+	case nOMObjProcessKindThread: {
 		gobjthread = gcGetGObjThread();
 		gobjproc->gobjthread = gobjthread;
 
@@ -813,7 +813,7 @@ GObjProcess* unref_80008304(GObj* gobj, void (*proc)(GObj*), u32 pri, s32 thread
 	gobjproc->proc_common = proc;
 
 	gobjproc->gobjthread = gobjthread = gcGetGObjThread();
-	gobjproc->kind = nOMObjProcessKindOSThread;
+	gobjproc->kind = nOMObjProcessKindThread;
 
 	stacknode = stack_size == 0 ? gcGetDefaultStack() : gcGetStackOfSize(stack_size);
 	gobjthread->osstack = stacknode->stack;
@@ -841,7 +841,7 @@ void func_8000848C(GObjProcess* gobjproc)
 	{
 		D_80046A64 = 1;
 
-		if (D_80046A60->kind == nOMObjProcessKindOSThread)
+		if (D_80046A60->kind == nOMObjProcessKindThread)
 			gcStopCurrentProcess(1);
 		return;
 	}
@@ -851,7 +851,7 @@ void func_8000848C(GObjProcess* gobjproc)
 
 	switch (gobjproc->kind)
 	{
-	case nOMObjProcessKindOSThread:
+	case nOMObjProcessKindThread:
 		osDestroyThread(&gobjproc->gobjthread->osthread);
 		// cast from stack pointer back to stack node
 		tnode = (OMThreadStackNode*)((uintptr_t)(gobjproc->gobjthread->osstack) - offsetof(OMThreadStackNode, stack));
@@ -2039,7 +2039,7 @@ GObjProcess* func_8000A49C(GObjProcess* gobjproc)
 
 	switch (gobjproc->kind)
 	{
-	case nOMObjProcessKindOSThread:
+	case nOMObjProcessKindThread:
 		osStartThread(&gobjproc->gobjthread->osthread);
 		osRecvMesg(&gOMMesgQueue, NULL, OS_MESG_BLOCK);
 		break;

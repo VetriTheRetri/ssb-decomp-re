@@ -123,11 +123,11 @@ void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
     {
         if (fp->fighter_vars.kirby.copy_id == fp->status_vars.kirby.specialn.copy_id)
         {
-            func_800269C0_275C0(nGMSoundFGMKirbySpecialNCopyUnk); // SFX?
+            func_800269C0_275C0(nSYAudioFGMKirbySpecialNCopyUnk); // SFX?
         }
         else
         {
-            func_800269C0_275C0(nGMSoundFGMKirbySpecialNCopyThrow); // SFX?
+            func_800269C0_275C0(nSYAudioFGMKirbySpecialNCopyThrow); // SFX?
 
             copy_id = fp->status_vars.kirby.specialn.copy_id;
             fp->fighter_vars.kirby.copy_id = copy_id;
@@ -198,7 +198,7 @@ void ftKirbySpecialNCatchProcUpdate(GObj *fighter_gobj)
         }
         else kirby_fp->status_vars.kirby.specialn.copy_id = copy_data[victim_fp->ft_kind].copy_id;
         
-        func_800269C0_275C0(nGMSoundFGMKirbySpecialNCopyEat);
+        func_800269C0_275C0(nSYAudioFGMKirbySpecialNCopyEat);
 
         if (kirby_fp->ga == nMPKineticsGround)
         {
@@ -954,7 +954,7 @@ void ftKirbySpecialNLoseCopy(GObj *fighter_gobj)
 
     ftKirbySpecialNInitFighterVars(fp);
     efManagerLoseKirbyStarMakeEffect(fighter_gobj);
-    func_800269C0_275C0(nGMSoundFGMKirbySpecialNLoseCopy);
+    func_800269C0_275C0(nSYAudioFGMKirbySpecialNLoseCopy);
 
     fp->fighter_vars.kirby.copy_id = nFTKindKirby;
 

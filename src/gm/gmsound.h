@@ -442,14 +442,14 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceCaptainUnkPing3,
 	nSYAudioVoiceFoxDeadUp,
 	nSYAudioVoiceFoxAppeal,
-	nSYAudioVoiceFoxSpecialHiFire,
+	nSYAudioVoiceFoxSpecialHi,
 	nSYAudioVoiceFoxJumpAerial,
 	nSYAudioVoiceFoxEscape,
 	nSYAudioVoiceFoxSelected,
 	nSYAudioVoiceFoxFinalIke,
 	nSYAudioVoiceFoxHeavyGet,			// HeavyGet?
-	nSYAudioVoiceFoxResult, 			// Same as Appeal and Selected
-	nSYAudioVoiceFoxOttotto,
+	nSYAudioVoiceFoxWin, 				// Same as Appeal and Selected
+	nSYAudioVoiceFoxOttotto,			// Hardly any different from JumpAerial
 	nSYAudioVoiceFoxDead,
 	nSYAudioVoiceFoxFuraSleep,
 	nSYAudioVoiceFoxSmash1,
@@ -498,9 +498,100 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceLinkGrunt2,				// ???
 	nSYAudioVoiceLuigiSmash1,
 	nSYAudioVoiceLuigiSmash2,
-	nSYAudioVoiceLuigiSmash3,				
-	nSYAudioVoiceAnnounceComplete = 0x1CB,
-	nSYAudioVoiceAnnounceNewRecord = 0x1D0,
+	nSYAudioVoiceLuigiSmash3,
+	nSYAudioVoiceLuigiSpecialLw,
+	nSYAudioVoiceLuigiDeadUp,
+	nSYAudioVoiceLuigiFuraFura,
+	nSYAudioVoiceLuigiDamage,
+	nSYAudioVoiceLuigiJump,
+	nSYAudioVoiceLuigiJumpAerial,
+	nSYAudioVoiceLuigiLets,					// Let's-a-go, unused
+	nSYAudioVoiceLuigiHeavyGet,
+	nSYAudioVoiceLuigiDead,					// Pretty quiet and obscured by the echo and slam sound effects
+	nSYAudioVoiceLuigiHereWe,				// Here we go, unused
+	nSYAudioVoiceMarioSmash1,
+	nSYAudioVoiceMarioSmash2,
+	nSYAudioVoiceMarioSmash3,
+	nSYAudioVoiceMarioSpecialLw,
+	nSYAudioVoiceMarioDeadUp,
+	nSYAudioVoiceMarioFuraFura,
+	nSYAudioVoiceMarioJump,
+	nSYAudioVoiceMarioJumpAerial,
+	nSYAudioVoiceMarioLets,					// Let's-a-go, unused
+	nSYAudioVoiceMarioHeavyGet,
+	nSYAudioVoiceMarioDead,
+	nSYAudioVoiceMarioDamage,
+	nSYAudioVoiceMarioHereWe,
+	nSYAudioVoiceNessAppeal,				// O K E Y
+	nSYAudioVoiceNessSmash1,
+	nSYAudioVoiceNessSmash2,
+	nSYAudioVoiceNessSmash3,
+	nSYAudioVoiceNessUnkGrunt,				// Unused grunt
+	nSYAudioVoiceNessDeadUp,
+	nSYAudioVoiceNessFuraFura,
+	nSYAudioVoiceNessDamage,
+	nSYAudioVoiceNessUnkPing,				// ???
+	nSYAudioVoiceNessHeavyGet,
+	nSYAudioVoiceNessOttotto,
+	nSYAudioVoiceNessSpecialN,
+	nSYAudioVoiceNessFinalPK,				// Unused
+	nSYAudioVoiceNessFinalStarstorm,		// Unused
+	nSYAudioVoiceNessSpecialHi,
+	nSYAudioVoiceNessDead,
+	nSYAudioVoiceNessFuraSleep,
+	nSYAudioVoiceAnnounceComplete,
+	nSYAudioVoiceAnnounceFailure,
+	nSYAudioVoiceAnnouncePurinUnused,		// ??? Says Jigglypuff, Purin is only for consistency with FTKind names
+	nSYAudioVoiceAnnounceBattleRoyal,
+	nSYAudioVoiceAnnounceTitle,				// ...Super... SMAAAAAAAAAASH Brotheeeeeeeeers!!
+	nSYAudioVoiceAnnounceNewRecord,
+	nSYAudioVoiceAnnounceCongra,			// Congratulations
+	nSYAudioVoiceAnnounceIncredible,
+	nSYAudioVoiceAnnounceOne,
+	nSYAudioVoiceAnnounceDenied1,			// Trying to start a game with not enough players?
+	nSYAudioVoiceAnnounceTwo,
+	nSYAudioVoiceAnnounceThree,
+	nSYAudioVoiceAnnounceFour,
+	nSYAudioVoiceAnnounceFive,
+	nSYAudioVoiceAnnounceDenied2,			// Again?
+	nSYAudioVoiceAnnounceDenied3,			// Seriously?
+	nSYAudioVoiceAnnounceBlueTeam,
+	nSYAudioVoiceAnnounceBoardThePlatforms,
+	nSYAudioVoiceAnnounceBonusStage,
+	nSYAudioVoiceAnnounceBreakTheTargets,
+	nSYAudioVoiceAnnounceSelectPlayer,		// Choose your character
+	nSYAudioVoiceAnnounceComputerPlayer,
+	nSYAudioVoiceAnnounceContinue,
+	nSYAudioVoiceAnnouncePolygonTeam,		// Fighting Polygon Team
+	nSYAudioVoiceAnnounceDonkeyKong,
+	nSYAudioVoiceAnnounceDrawGame,			// Wat
+	nSYAudioVoiceAnnounceCaptain,
+	nSYAudioVoiceAnnounceFox,
+	nSYAudioVoiceAnnounceGameOver,
+	nSYAudioVoiceAnnounceGameSet,
+	nSYAudioVoiceAnnounceGDonkey,			// Giant Donkey Kong
+	nSYAudioVoiceAnnounceGo,
+	nSYAudioVoiceAnnounceGreenTeam,
+	nSYAudioVoiceBossDead,					// Master Hand defeated
+	nSYAudioVoiceBossAppear,				// Master Hand appears
+	nSYAudioVoiceAnnounceHowToPlay,
+	nSYAudioVoiceAnnounceRaceToTheFinish,
+	nSYAudioVoiceAnnounceKirby,
+	nSYAudioVoiceAnnounceLink,
+	nSYAudioVoiceAnnounceLuigi,
+	nSYAudioVoiceAnnounceMario,
+	nSYAudioVoiceAnnounceMarioBros,
+	nSYAudioVoiceAnnounceNess,
+	nSYAudioVoiceAnnounceNoContest,
+	nSYAudioVoiceAnnouncePlayer1,
+	nSYAudioVoiceAnnouncePlayer2,
+	nSYAudioVoiceAnnouncePlayer3,
+	nSYAudioVoiceAnnouncePlayer4,
+	nSYAudioVoiceAnnouncePikachu,
+	nSYAudioVoiceAnnouncePurin,				// Actual Jigglypuff announcer voice
+	nSYAudioVoiceAnnounceAreYouReady,		// Unused
+	nSYAudioVoiceAnnounceRedTeam,
+	nSYAudioVoiceAnnounceDefeated,
 	nSYAudioVoiceYamabukiFushigibana = 0x228,
 	nSYAudioVoiceYamabukiHitokage,
 	nSYAudioVoiceYamabukiLucky,
@@ -510,10 +601,10 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoicePublicityCaptain,		  	// 0x25C
 	nSYAudioVoicePublicityFox,			  	// 0x25D
 	nSYAudioVoicePublicityKirby,		  	// 0x25E
-	nSYAudioVoicePublicityLink,		  	// 0x25F
+	nSYAudioVoicePublicityLink,		  		// 0x25F
 	nSYAudioVoicePublicityLuigi,			// 0x260
 	nSYAudioVoicePublicityMario,		  	// 0x261
-	nSYAudioVoicePublicityNess,			// 0x262
+	nSYAudioVoicePublicityNess,				// 0x262
 	nSYAudioVoicePublicityPikachu,		  	// 0x263
 	nSYAudioVoicePublicityPurin,		 	// 0x264
 	nSYAudioVoicePublicitySamus,		 	// 0x265

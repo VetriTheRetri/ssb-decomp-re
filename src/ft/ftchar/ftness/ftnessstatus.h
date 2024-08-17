@@ -229,8 +229,8 @@ ftStatusDesc dFTNessSpecialStatusDescs[/* */] =
 	// Status 231 (0xE7): SpecialHi (PK Thunder Self-Hit / PK Jibaku)
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTNessMotionSpecialHi,				// Script ID
-		nFTMotionAttackIDSpecialHi,			// Motion attack ID
+		nFTNessMotionSpecialHiJibaku,			// Script ID
+		nFTMotionAttackIDSpecialHi,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// ??? (Might be 3 individual bits?)
@@ -240,10 +240,10 @@ ftStatusDesc dFTNessSpecialStatusDescs[/* */] =
 		nFTStatusAttackIDSpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNessJibakuProcUpdate,				// Proc Update
+		ftNessSpecialHiJibakuProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftNessJibakuProcPhysics,				// Proc Physics
-		ftNessJibakuProcMap					// Proc Map
+		ftNessSpecialHiJibakuProcPhysics,				// Proc Physics
+		ftNessSpecialHiJibakuProcMap					// Proc Map
 	},
 
 	// Status 232 (0xE8): SpecialAirHiStart
@@ -320,16 +320,16 @@ ftStatusDesc dFTNessSpecialStatusDescs[/* */] =
 		nFTStatusAttackIDSpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNessJibakuAirBoundProcUpdate,		// Proc Update
+		ftNessSpecialAirHiJibakuBoundProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysicsApplyAirVelFriction,			// Proc Physics
-		ftNessJibakuAirBoundProcMap			// Proc Map
+		ftNessSpecialAirHiJibakuBoundProcMap			// Proc Map
 	},
 
 	// Status 236 (0xEC): SpecialAirHi (PK Thunder Self-Hit / PK Jibaku)
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTNessMotionSpecialAirHi,				// Script ID
+		nFTNessMotionSpecialAirHiJibaku,	// Script ID
 		nFTMotionAttackIDSpecialHi,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
@@ -340,10 +340,10 @@ ftStatusDesc dFTNessSpecialStatusDescs[/* */] =
 		nFTStatusAttackIDSpecialHi,			// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftNessJibakuAirProcUpdate,			// Proc Update
+		ftNessSpecialAirHiJibakuProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftNessJibakuAirProcPhysics,			// Proc Physics
-		ftNessJibakuAirProcMap				// Proc Map
+		ftNessSpecialAirHiJibakuProcPhysics,			// Proc Physics
+		ftNessSpecialAirHiJibakuProcMap				// Proc Map
 	},
 
 	// Status 237 (0xED): SpecialLwStart

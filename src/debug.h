@@ -1,5 +1,5 @@
-#ifndef _RESULTS_H_
-#define _RESULTS_H_
+#ifndef _DEBUG_H_
+#define _DEBUG_H_
 
 #include <ssb_types.h>
 #include <sys/objdraw.h>
@@ -17,11 +17,12 @@ typedef enum dbMenuItemKind
 
 } dbMenuItemKind;
 
+
 typedef struct dbMenuItem
 {
 	s32 type;
 	void (*proc_a)();
-	void* label;
+	char* label;
 	union {
 		u32 *w;
 		u8 *b;

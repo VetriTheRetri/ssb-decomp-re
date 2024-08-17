@@ -133,7 +133,7 @@ scCommonData gDefaultSceneData =
 	{ nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax },
 	{ nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax },
 	0x04, 0x00,
-	{0x00, 0x1C},
+	0x001C,
 	{0x1C, 0x1C},
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x00, 0x05, 0x00,
 	{0x00, 0x00},
@@ -192,7 +192,7 @@ void n64_logo_entry();
 void title_screen_entry();
 void debug_sss_entry();
 void debug_system_entry();
-void debug_battle_entry();
+void mnDebugBattleStartScene();
 void mnDebugFallsStartScene();
 void debug_button_test_entry();
 void menu_main_entry();
@@ -328,7 +328,7 @@ void start_scene_manager(u32 set)
 				syDmaLoadOverlay(&D_800A3070[14]);
 				syDmaLoadOverlay(&D_800A3070[8]);
 				syDmaLoadOverlay(&D_800A3070[9]);
-				debug_battle_entry();
+				mnDebugBattleStartScene();
 				break;
 			case 5:
 				syDmaLoadOverlay(&D_800A3070[15]);

@@ -49,19 +49,19 @@ char (*dMNDebugFallsFighterKindStrings[5])[] = {
 
 // 800D6738
 dbMenuItem dMNDebugFallsMenuItems[13] = {
-	{ dbMenuItemKindExitLabel,      mnDebugFallsExit,   "Exit",                  0,                                                      0.0F, 0.0F,     0 },
-	{ dbMenuItemKindStringByte,     0,                  dMNDebugFallsFighterKindStrings,    &gTransferBattleState.players[0].ft_kind,   0.0F, 26.0F,    0 },
-	{ dbMenuItemKindNumeric,        0,                  " Dead : %3d",                  &gTransferBattleState.players[0].falls,            0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindNumeric,        0,                  " Finish : %3d",                &gTransferBattleState.players[0].score,            0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindStringByte,     0,                  dMNDebugFallsFighterKindStrings,    &gTransferBattleState.players[1].ft_kind,   0.0F, 26.0F,    0 },
-	{ dbMenuItemKindNumeric,        0,                  " Dead : %3d",                  &gTransferBattleState.players[1].falls,            0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindNumeric,        0,                  " Finish : %3d",                &gTransferBattleState.players[1].score,            0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindStringByte,     0,                  dMNDebugFallsFighterKindStrings,    &gTransferBattleState.players[2].ft_kind,   0.0F, 26.0F,    0 },
-	{ dbMenuItemKindNumeric,        0,                  " Dead : %3d",                  &gTransferBattleState.players[2].falls,            0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindNumeric,        0,                  " Finish : %3d",                &gTransferBattleState.players[2].score,            0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindStringByte,     0,                  dMNDebugFallsFighterKindStrings,    &gTransferBattleState.players[3].ft_kind,   0.0F, 26.0F,    0 },
-	{ dbMenuItemKindNumeric,        0,                  " Dead : %3d",                  &gTransferBattleState.players[3].falls,            0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindNumeric,        0,                  " Finish : %3d",                &gTransferBattleState.players[3].score,            0.0F, 65536.0F, 0 }
+	{ dbMenuItemKindExitLabel,  mnDebugFallsExit, "Exit",                  0,                                                0.0F, 0.0F,     0 },
+	{ dbMenuItemKindStringByte, 0,                dMNDebugFallsFighterKindStrings, &gTransferBattleState.players[0].ft_kind, 0.0F, 26.0F,    0 },
+	{ dbMenuItemKindNumeric,    0,                " Dead : %3d",                   &gTransferBattleState.players[0].falls,   0.0F, 65536.0F, 0 },
+	{ dbMenuItemKindNumeric,    0,                " Finish : %3d",                 &gTransferBattleState.players[0].score,   0.0F, 65536.0F, 0 },
+	{ dbMenuItemKindStringByte, 0,                dMNDebugFallsFighterKindStrings, &gTransferBattleState.players[1].ft_kind, 0.0F, 26.0F,    0 },
+	{ dbMenuItemKindNumeric,    0,                " Dead : %3d",                   &gTransferBattleState.players[1].falls,   0.0F, 65536.0F, 0 },
+	{ dbMenuItemKindNumeric,    0,                " Finish : %3d",                 &gTransferBattleState.players[1].score,   0.0F, 65536.0F, 0 },
+	{ dbMenuItemKindStringByte, 0,                dMNDebugFallsFighterKindStrings, &gTransferBattleState.players[2].ft_kind, 0.0F, 26.0F,    0 },
+	{ dbMenuItemKindNumeric,    0,                " Dead : %3d",                   &gTransferBattleState.players[2].falls,   0.0F, 65536.0F, 0 },
+	{ dbMenuItemKindNumeric,    0,                " Finish : %3d",                 &gTransferBattleState.players[2].score,   0.0F, 65536.0F, 0 },
+	{ dbMenuItemKindStringByte, 0,                dMNDebugFallsFighterKindStrings, &gTransferBattleState.players[3].ft_kind, 0.0F, 26.0F,    0 },
+	{ dbMenuItemKindNumeric,    0,                " Dead : %3d",                   &gTransferBattleState.players[3].falls,   0.0F, 65536.0F, 0 },
+	{ dbMenuItemKindNumeric,    0,                " Finish : %3d",                 &gTransferBattleState.players[3].score,   0.0F, 65536.0F, 0 }
 };
 
 // 800D68A4
@@ -69,6 +69,7 @@ syDisplaySetup D_ovl15_800D68A4 = { 0x80392A00, 0x803B6900, 0x803DA800, 0, 0x001
 
 // 800D68C0
 scRuntimeInfo D_ovl15_800D68C0 = {
+
 	0x00000000, 0x8000a5e4, 0x8000a340, 0x800d6a00,
 	0x00000000, 0x00000001, 0x00000002, 0x00004000,
 	0x00000000, 0x00000000, 0x00000000, 0x00008000,

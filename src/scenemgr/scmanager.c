@@ -6,7 +6,6 @@
 #include <it/item.h>
 #include <ovl0/halsprite.h>
 #include <ovl0/ovl0.h>
-#include "ovl2/ovl2.h"
 #include "scenemgr/entries.h"
 #include <sys/error.h>
 #include <sys/dma.h>

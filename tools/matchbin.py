@@ -27,8 +27,14 @@ def instructionsDiffer(bytesA, bytesB, onlyInstrAndRegisters = True):
 			regsb = re.findall(patternReg, mb.group(2))
 			regssb = re.findall(patternReg, msb.group(2))
 			chunksDiffer = len(regsb) != len(regssb) or any([regsb[i] != regssb[i] for i in range(len(regsb))])
+		if chunksDiffer:
+			print(f"\033[91m{asmb}{' '*(45-len(asmb))} -- {asmsb}\033[0m")
+		else:
+			print(f"\033[92m{asmb}{' '*(45-len(asmb))} -- {asmsb}\033[0m")
 	else:
 		chunksDiffer = bytesA != bytesB
+		if chunksDiffer:
+			print(f"\033[91m{bytesA}{' '*(45-len(bytesA))} -- {bytesB}\033[0m")
 	return chunksDiffer
 
 def findSequence(binFilePath, byteSequence, onlyInstrAndRegisters = True):
@@ -81,9 +87,19 @@ def searchCode(binWithSequenceFilePath, sequenceOffset, binToLookFilePath):
 		return
 
 
+def functionAddressesFromAsmTextFile(asmTextPath):
+	addresses = []
+	with open(asmTextPath, 'r') as asmTextFile:
+		lines = asmTextFile.read().split('\n')
+		for i, line in enumerate(lines[:-1]):
+			if re.match(r"^glabel \w+$", line) is not None:
+				addresses.append(eval("0x" + lines[i + 1][10:18]))
+	return addresses
 
 
-def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, onlyInstrAndRegisters = True, printPercentageOnly = False):
+def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, onlyInstrAndRegisters = True, printPercentageOnly = False, asmTextPath = None):
+	functionAddresses = functionAddressesFromAsmTextFile(asmTextPath) if asmTextPath is not None else None
+
 	curBinOffset = 0x0
 	matchedInstructions = 0
 	differentRanges = []
@@ -104,6 +120,8 @@ def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, onlyInstrAndRegi
 
 			while (binChunk := binFile.read(INSTR_SIZE)):
 				while (subBinChunk := subBinFile.read(INSTR_SIZE)):
+					if functionAddresses is not None and (functionAddresses[0] + curBinOffset) in functionAddresses:
+						print(f"----- {hex(functionAddresses[0] + curBinOffset)}")
 					if instructionsDiffer(binChunk, subBinChunk, onlyInstrAndRegisters):
 						if len(differentRanges) > 0 and differentRanges[-1][1] == hex(curBinOffset - INSTR_SIZE):
 							differentRanges[-1] = (differentRanges[-1][0], hex(curBinOffset))
@@ -132,6 +150,14 @@ def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, onlyInstrAndRegi
 
 
 if __name__ == "__main__":
+	try:
+		asmTextPathArgIndex = ["asmTextPath" in x for x in sys.argv].index(True)
+	except:
+		asmTextPathArgIndex = -1
+	asmTextPath = sys.argv[asmTextPathArgIndex].split('=')[1] if asmTextPathArgIndex > -1 else None
+	if asmTextPath is not None:
+		sys.argv.remove(sys.argv[asmTextPathArgIndex])
+
 	exactMatch = '-x' in sys.argv
 	printPercentageOnly = '-p' in sys.argv
 	if exactMatch:
@@ -148,4 +174,4 @@ if __name__ == "__main__":
 	subBinFilePath = sys.argv[1]
 	binFilePath = sys.argv[2]
 
-	match(subBinFilePath, binFilePath, 0x0 if len(sys.argv) == 3 else eval(sys.argv[3]), not exactMatch, printPercentageOnly)
+	match(subBinFilePath, binFilePath, 0x0 if len(sys.argv) == 3 else eval(sys.argv[3]), not exactMatch, printPercentageOnly, asmTextPath)

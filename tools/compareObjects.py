@@ -18,8 +18,12 @@ compareObjectsOutNonMatchingText = ""
 for filePath in [x for x in filesInFolderRec(buildSrcPath) if x.endswith(".text")]:
 	relPath = filePath[buildSrcPathLength:]
 	asmPath = f"build/asm/{relPath}"
+	asmTextPath = f"asm/{relPath.replace('.text', '.s')}"
 	if os.path.isfile(asmPath):
-		textDiffOut = subprocess.check_output(["python3", "tools/matchbin.py", filePath, asmPath]).decode('utf-8')
+		if os.path.isfile(asmTextPath):
+			textDiffOut = subprocess.check_output(["python3", "tools/matchbin.py", filePath, asmPath, f"asmTextPath={asmTextPath}"]).decode('utf-8')
+		else:
+			textDiffOut = subprocess.check_output(["python3", "tools/matchbin.py", filePath, asmPath]).decode('utf-8')
 		if "100.00%" in textDiffOut:
 			compareObjectsOutGreen += f"{GREEN}Text matches: {filePath} {asmPath} (100.00% matching instructions){ENDCOLOR}\n"
 		else:

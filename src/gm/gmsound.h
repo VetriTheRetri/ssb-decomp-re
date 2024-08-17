@@ -449,7 +449,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceFoxFinalIke,
 	nSYAudioVoiceFoxHeavyGet,			// HeavyGet?
 	nSYAudioVoiceFoxResult, 			// Same as Appeal and Selected
-	nSYAudioVoiceFoxJumpAerial,
+	nSYAudioVoiceFoxOttotto,
 	nSYAudioVoiceFoxDead,
 	nSYAudioVoiceFoxFuraSleep,
 	nSYAudioVoiceFoxSmash1,

@@ -102,7 +102,55 @@ void *sMNSoundTestFiles[5];
 // // // // // // // // // // // //
 
 // 0x801339E0
-extern u32 dMNSoundTestMusicIDs[45];
+extern u32 dMNSoundTestMusicIDs[45] /* =
+{
+    nSYAudioBGMOpening,
+    nSYAudioBGMExplain,
+    nSYAudioBGMData,
+    nSYAudioBGMModeSelect,
+    nSYAudioBGMCastle,
+    nSYAudioBGMJungle,
+    nSYAudioBGMHyrule,
+    nSYAudioBGMZebes,
+    nSYAudioBGMYoster,
+    nSYAudioBGMPupupu,
+    nSYAudioBGMSector,
+    nSYAudioBGMYamabuki,
+    nSYAudioBGMInishie,
+    nSYAudioBGMInishieHurry,
+    nSYAudioBGMWinMario,
+    nSYAudioBGMWinDonkey,
+    nSYAudioBGMWinZelda,
+    nSYAudioBGMWinMetroid,
+    nSYAudioBGMWinYoshi,
+    nSYAudioBGMWinKirby,
+    nSYAudioBGMWinFox,
+    nSYAudioBGMWinMonster,
+    nSYAudioBGMWinFZero,
+    nSYAudioBGMWinMother,
+    nSYAudioBGMResults,
+    nSYAudioBGMHammer,
+    nSYAudioBGMStar,
+    nSYAudioBGMTrainingMode,
+    nSYAudioBGM1PStageCard,
+    nSYAudioBGMBossStage,
+    nSYAudioBGMBossEntry,
+    nSYAudioBGMLast,
+    nSYAudioBGM1PBonusGame,
+    nSYAudioBGM1PStageClear,
+    nSYAudioBGM1PGameClear,
+    nSYAudioBGM1PBonusGameClear,
+    nSYAudioBGM1PBonusGameFailure,
+    nSYAudioBGMZako,
+    nSYAudioBGMMetal,
+    nSYAudioBGMChallenger,
+    nSYAudioBGMMessage,
+    nSYAudioBGMEnding,
+    nSYAudioBGM1PGameEndChoice,
+    nSYAudioBGM1PGameOver,
+    nSYAudioBGMStaffRoll
+}
+*/;
 
 // 0x80133A94
 extern u32 dMNSoundTestSoundIDs[194];

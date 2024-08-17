@@ -1013,7 +1013,7 @@ efGroundSetupRandomWeights = 0x801169CC; // segment:ovl2
 efGroundMakeEffectSpawnActor = 0x80116AD0; // segment:ovl2
 
 dSC1PManagerSubsysOverlay = 0x80116BF0; // segment:ovl2
-dSC1PManager1PTitleCardOverlay = 0x80116C14; // segment:ovl2
+dSC1PManager1PStageCardOverlay = 0x80116C14; // segment:ovl2
 dSC1PManager1PStageClearOverlay = 0x80116C38; // segment:ovl2
 dSC1PManagerChallengerOverlay = 0x80116C5C; // segment:ovl2
 dSC1PManagerEndingOverlay = 0x80116C80; // segment:ovl2

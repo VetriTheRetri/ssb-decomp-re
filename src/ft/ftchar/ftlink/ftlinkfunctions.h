@@ -44,7 +44,7 @@ extern void ftLinkSpecialNEmptySwitchStatusAir(GObj* fighter_gobj);
 extern void ftLinkSpecialAirNEmptySwitchStatusGround(GObj* fighter_gobj);
 extern void ftLinkSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftLinkSpecialAirNSetStatus(GObj* fighter_gobj);
-extern void ftLinkSpecialNReturnSetStatus(GObj* fighter_gobj);
+extern void ftLinkSpecialNGetSetStatus(GObj* fighter_gobj);
 
 // SpecialLw / SpecialAirLw
 extern void ftLinkSpecialLwCreateBomb(GObj* fighter_gobj);

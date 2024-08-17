@@ -93,7 +93,7 @@ void ftCommonFallSpecialSetStatus(GObj *fighter_gobj, f32 drift, sb32 unknown, s
     fp->status_vars.common.fallspecial.is_fall_accelerate = is_fall_accelerate;
 
     ftParamCheckSetFighterColAnimID(fighter_gobj, 7, 0);
-    ftPublicityDownDecide(fighter_gobj);
+    ftPublicityTryPlayFallSpecialReact(fighter_gobj);
 
     fp->is_special_interrupt = TRUE;
 }

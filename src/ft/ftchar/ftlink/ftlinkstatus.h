@@ -206,10 +206,10 @@ ftStatusDesc dFTLinkSpecialStatusDescs[/* */] =
 		ftLinkSpecialNProcMap					// Proc Map
 	},
 
-	// Status 230 (0xE6): SpecialNReturn
+	// Status 230 (0xE6): SpecialNGet
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTLinkMotionSpecialNReturn,			// Script ID
+		nFTLinkMotionSpecialNGet,			// Script ID
 		nFTMotionAttackIDSpecialN,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////

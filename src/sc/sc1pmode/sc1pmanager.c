@@ -3,7 +3,7 @@
 #include <sc/scene.h>
 #include <sys/dma.h>
 
-extern void sc1PTitleCardStartScene();
+extern void sc1PStageCardStartScene();
 
 // // // // // // // // // // // //
 //                               //
@@ -45,7 +45,7 @@ u8 D_ovl2_80130D76;
 syOverlay dSC1PManagerSubsysOverlay = SCMANAGER_OVERLAY_DEFINE(1);
 
 // 0x80116C14
-syOverlay dSC1PManager1PTitleCardOverlay = SCMANAGER_OVERLAY_DEFINE(24);
+syOverlay dSC1PManager1PStageCardOverlay = SCMANAGER_OVERLAY_DEFINE(24);
 
 // 0x80116C38
 syOverlay dSC1PManager1PStageClearOverlay = SCMANAGER_OVERLAY_DEFINE(56);
@@ -351,12 +351,12 @@ void sc1PManagerUpdateScene(void)
                 break;
             }
             syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
-            syDmaLoadOverlay(&dSC1PManager1PTitleCardOverlay);
+            syDmaLoadOverlay(&dSC1PManager1PStageCardOverlay);
 
             gSceneData.scene_previous = nSCKind1PGame;
-            gSceneData.scene_current = nSCKind1PTitleCard;
+            gSceneData.scene_current = nSCKind1PStageCard;
 
-            sc1PTitleCardStartScene();
+            sc1PStageCardStartScene();
 
             switch (gSceneData.spgame_stage)
             {

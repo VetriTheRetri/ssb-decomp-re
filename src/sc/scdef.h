@@ -212,7 +212,7 @@ typedef enum scKind
 	nSCKindVSOptions,         	// VS mode options
 	nSCKindMessage = 12,		// Unlock message 
 	nSCKindChallenger,   		// Challenger approaching
-	nSCKind1PTitleCard,       	// 1P game "[character] VS [opponent(s)]" screen
+	nSCKind1PStageCard,       	// 1P game "[character] VS [opponent(s)]" screen
 	nSCKindScreenAdjust,      	// Screen adjust
 	nSCKindVSChrSel,          	// VS mode character select
 	nSCKindTrainingChrSel = 18, // Training mode character select

@@ -116,7 +116,6 @@ sb32 wpPikachuThunderJoltAirProcMap(GObj *weapon_gobj)
         {
             DObjGetStruct(weapon_gobj)->translate.vec.f.y = pos.y;
         }
-
         mpCollisionGetUDEdgeDown(wp->coll_data.lwall_line_id, &pos);
 
         if (DObjGetStruct(weapon_gobj)->translate.vec.f.y < pos.y)
@@ -207,10 +206,10 @@ void wpPikachuThunderJoltGroundAddAnim(GObj *weapon_gobj)
     gcAddAnimAll
     (
         weapon_gobj, 
-        (uintptr_t)gFTDataPikachuSpecial3 + (intptr_t)&lWPPikachuThunderJoltAnimJoint, 
-        (uintptr_t)gFTDataPikachuSpecial3 + (intptr_t)&lWPPikachuThunderJoltMatAnimJoint, 
+        gcGetDataFromFile(AObjStream**, gFTDataPikachuSpecial3, &lWPPikachuThunderJoltAnimJoint), 
+        gcGetDataFromFile(AObjStream***, gFTDataPikachuSpecial3, &lWPPikachuThunderJoltMatAnimJoint), 
         0.0F
-    ); // Linker thing
+    );
     gcPlayAnimAll(weapon_gobj);
 }
 

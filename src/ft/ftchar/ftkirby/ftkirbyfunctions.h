@@ -260,7 +260,7 @@ extern void ftKirbyCopyLinkSpecialNEmptySwitchStatusAir(GObj* fighter_gobj);
 extern void ftKirbyCopyLinkSpecialAirNEmptySwitchStatusGround(GObj* fighter_gobj);
 extern void ftKirbyCopyLinkSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyLinkSpecialAirNSetStatus(GObj* fighter_gobj);
-extern void ftKirbyCopyLinkSpecialNReturnSetStatus(GObj* fighter_gobj);
+extern void ftKirbyCopyLinkSpecialNGetSetStatus(GObj* fighter_gobj);
 
 // CopyPurinSpecialN
 extern void ftKirbyCopyPurinSpecialNInitStatusVars(GObj* fighter_gobj);

@@ -73,7 +73,7 @@ u16 sFTPublicityDefeatedCurrentOrder;           // Current "<player> defeated" a
 // // // // // // // // // // // //
 
 // 0x80164AB0
-sb32 ftPublicityChantTryStart(GObj *gobj, f32 knockback, s32 player_number)
+sb32 ftPublicityTryStartChant(GObj *gobj, f32 knockback, s32 player_number)
 {
     ftStruct *fp;
     GObj *fighter_gobj = ftParamGetPlayerNumGObj(player_number);
@@ -106,7 +106,7 @@ sb32 ftPublicityChantTryStart(GObj *gobj, f32 knockback, s32 player_number)
             func_80026738_27338(sFTPublicityChantALSound);
         }
     }
-    sFTPublicityChantALSound = func_800269C0_275C0((knockback >= 160.0F) ? 0x26A : 0x26B);
+    sFTPublicityChantALSound = func_800269C0_275C0((knockback >= 160.0F) ? nSYAudioVoicePublicityCheer : nSYAudioVoicePublicityAmazed);
 
     if (sFTPublicityChantALSound != NULL)
     {
@@ -120,7 +120,7 @@ sb32 ftPublicityChantTryStart(GObj *gobj, f32 knockback, s32 player_number)
 }
 
 // 0x80164C18
-void ftPublicityChantTryInterrupt(void)
+void ftPublicityTryInterruptChant(void)
 {
     if ((sFTPublicityChantCount < 9) && (sFTPublicityChantCount >= 3))
     {
@@ -129,7 +129,7 @@ void ftPublicityChantTryInterrupt(void)
 }
 
 // 0x80164C44
-void ftPublicityCommonPlay(u16 new_sfx)
+void ftPublicityPlayCommon(u16 new_sfx)
 {
     if (sFTPublicityCommonALSound != NULL)
     {
@@ -163,60 +163,60 @@ void ftPublicityCommonStop(void)
 }
 
 // 0x80164D08
-void ftPublicityChantDecide(GObj *gobj, s32 player_num, f32 knockback)
+void ftPublicityDecideChant(GObj *gobj, s32 player_num, f32 knockback)
 {
     if (knockback >= 130.0F)
     {
-        if (ftPublicityChantTryStart(gobj, knockback, player_num) != FALSE)
+        if (ftPublicityTryStartChant(gobj, knockback, player_num) != FALSE)
         {
             ftPublicityCommonStop();
             return;
         }
         else if (knockback >= 160.0F)
         {
-            ftPublicityChantTryInterrupt();
-            ftPublicityCommonPlay(0x26A);
+            ftPublicityTryInterruptChant();
+            ftPublicityPlayCommon(nSYAudioVoicePublicityCheer);
             return;
         }
         else if (player_num == sFTPublicityChantPlayerNum)
         {
-            ftPublicityChantTryInterrupt();
+            ftPublicityTryInterruptChant();
         }
-        ftPublicityCommonPlay(0x26B);
+        ftPublicityPlayCommon(nSYAudioVoicePublicityAmazed);
     }
     else if (knockback >= 100.0F)
     {
-        ftPublicityCommonPlay(0x26C);
+        ftPublicityPlayCommon(nSYAudioVoicePublicityGaspClap);
     }
 }
 
 // 0x80164DED4
-void ftPublicityCommonDecide(GObj *fighter_gobj, s32 player_number, f32 knockback, sb32 is_force_current_knockback)
+void ftPublicityDecideCommon(GObj *fighter_gobj, s32 player_number, f32 knockback, sb32 is_force_current_knockback)
 {
     if (is_force_current_knockback != FALSE)
     {
-        ftPublicityChantDecide(fighter_gobj, player_number, knockback);
+        ftPublicityDecideChant(fighter_gobj, player_number, knockback);
     }
     else if ((player_number == sFTPublicityCommonPlayerNum) && (sFTPublicityCommonFramesSince < 60))
     {
-        ftPublicityChantDecide(fighter_gobj, player_number, (knockback > sFTPublicityCommonKnockback) ? knockback : sFTPublicityCommonKnockback);
+        ftPublicityDecideChant(fighter_gobj, player_number, (knockback > sFTPublicityCommonKnockback) ? knockback : sFTPublicityCommonKnockback);
     }
     else if (knockback >= 160.0F)
     {
-        ftPublicityChantTryInterrupt();
-        ftPublicityCommonPlay(0x26E);
+        ftPublicityTryInterruptChant();
+        ftPublicityPlayCommon(nSYAudioVoicePublicityDamageL);
     }
     else if (knockback >= 130.0F)
     {
         if (player_number == sFTPublicityChantPlayerNum)
         {
-            ftPublicityChantTryInterrupt();
+            ftPublicityTryInterruptChant();
         }
-        ftPublicityCommonPlay(0x26F);
+        ftPublicityPlayCommon(nSYAudioVoicePublicityDamageM);
     }
     else if (knockback >= 100.0F)
     {
-        ftPublicityCommonPlay(0x271);
+        ftPublicityPlayCommon(nSYAudioVoicePublicityDamageS);
     }
     sFTPublicityCommonFramesSince = 0;
     sFTPublicityCommonPlayerNum = player_number;
@@ -230,35 +230,35 @@ void ftPublicityCommonCheck(GObj *fighter_gobj, f32 knockback, sb32 is_force_cur
 
     if (knockback >= 100.0F) // Check if knockback is over 100 units
     {
-        ftPublicityCommonDecide(fighter_gobj, fp->damage_player_number, knockback, is_force_current_knockback); // Play crowd SFX
+        ftPublicityDecideCommon(fighter_gobj, fp->damage_player_number, knockback, is_force_current_knockback); // Play crowd SFX
     }
 }
 
-// 0x80164F70
-void ftPublicityKnockbackDecide(GObj *fighter_gobj, f32 knockback)
+// 0x80164F70 - Play audience gasp when fighter successfully recovers
+void ftPublicityPlayCliffReact(GObj *fighter_gobj, f32 knockback)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
     if (sFTPublicityChantPlayerNum == fp->player_number)
     {
-        ftPublicityChantTryInterrupt();
+        ftPublicityTryInterruptChant();
     }
     if (knockback >= 160.0F)
     {
-        ftPublicityCommonPlay(0x267);
+        ftPublicityPlayCommon(nSYAudioVoicePublicityGaspL);
     }
     else if (knockback >= 130.0F)
     {
-        ftPublicityCommonPlay(0x268);
+        ftPublicityPlayCommon(nSYAudioVoicePublicityGaspM);
     }
     else if (knockback >= 100.0F)
     {
-        ftPublicityCommonPlay(0x269);
+        ftPublicityPlayCommon(nSYAudioVoicePublicityGaspS);
     }
 }
 
 // 0x80165024
-void ftPublicityDownDecide(GObj *fighter_gobj)
+void ftPublicityTryPlayFallSpecialReact(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     f32 pos_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
@@ -269,17 +269,17 @@ void ftPublicityDownDecide(GObj *fighter_gobj)
     }
     else if (pos_y >= -300.0F)
     {
-        ftPublicityCommonPlay(0x267);
+        ftPublicityPlayCommon(nSYAudioVoicePublicityGaspL);
     }
     else if (pos_y >= -900.0F)
     {
-        ftPublicityCommonPlay(0x268);
+        ftPublicityPlayCommon(nSYAudioVoicePublicityGaspM);
     }
-    else ftPublicityCommonPlay(0x269);
+    else ftPublicityPlayCommon(nSYAudioVoicePublicityGaspS);
 
     if (sFTPublicityChantPlayerNum == fp->player_number)
     {
-        ftPublicityChantTryInterrupt();
+        ftPublicityTryInterruptChant();
     }
 }
 
@@ -330,11 +330,11 @@ void ftPublicityProcUpdate(GObj *public_gobj)
     }
     if ((players_down_bak < 3) && (sFTPublicityPlayersDown >= 3))
     {
-        ftPublicityCommonPlay(0x267);
+        ftPublicityPlayCommon(nSYAudioVoicePublicityGaspL);
 
         if ((down_gobj != NULL) && (sFTPublicityChantPlayerNum == ftGetStruct(down_gobj)->player_number))
         {
-            ftPublicityChantTryInterrupt();
+            ftPublicityTryInterruptChant();
         }
     }
     if (sFTPublicityChantCount < 9)
@@ -365,7 +365,7 @@ void ftPublicityProcUpdate(GObj *public_gobj)
             {
                 sFTPublicityChantWait = 0;
 
-                ftPublicityCommonPlay(0x26A);
+                ftPublicityPlayCommon(nSYAudioVoicePublicityCheer);
             }
         }
     }

@@ -1366,10 +1366,10 @@ ftStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		ftKirbyCopyLinkSpecialNProcMap				// Proc Map
 	},
 
-	// Status 288 (0x120): CopyLinkSpecialNReturn
+	// Status 288 (0x120): CopyLinkSpecialNGet
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTKirbyMotionCopyLinkSpecialNReturn,			// Script ID
+		nFTKirbyMotionCopyLinkSpecialNGet,			// Script ID
 		nFTMotionAttackIDSpecialNCopyLink,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////

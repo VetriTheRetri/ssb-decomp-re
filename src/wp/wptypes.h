@@ -116,7 +116,7 @@ struct wpHitbox
 // Main weapon struct
 struct wpStruct
 {
-    wpStruct *alloc_next;            // Memory region allocated for next wpStruct
+    wpStruct *alloc_next;               // Memory region allocated for next wpStruct
     GObj *weapon_gobj;                  // Weapon's GObj pointer
     GObj *owner_gobj;                   // Weapon's owner
     wpKind wp_kind;                     // Weapon ID

@@ -1988,7 +1988,7 @@ void sc1PGameBossDefeatInitInterface(GObj *fighter_gobj)
     sc1PGameBossHidePlayerTagAll();
     ifCommonPlayerDamageStartBreakAnim(fp);
     sc1PGameBossSetZoomCamera(fp);
-    ifCommonBattleSetInterface(sc1PGameBossDefeatInterfaceProcUpdate, sc1PGameBossDefeatInterfaceProcSet, nSYAudioFGMEnumMax, 90);
+    ifCommonBattleSetInterface(sc1PGameBossDefeatInterfaceProcUpdate, sc1PGameBossDefeatInterfaceProcSet, nSYAudioFGMVoiceEnd, 90);
 }
 
 // 0x8018F7B4

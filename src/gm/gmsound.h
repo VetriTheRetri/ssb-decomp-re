@@ -40,40 +40,40 @@ typedef enum gmMusicID
 	nSYAudioBGMMenuFGSelect,				// Character / Stage Select
 	nSYAudioBGMUnusedClear,					// Unused fanfare?
 	nSYAudioBGMWinMario,					// Mario Victory
-	nSYAudioBGMWinSamus,					// Samus Victory
+	nSYAudioBGMWinMetroid,					// Samus Victory
 	nSYAudioBGMWinDonkey,					// Donkey Kong Victory
 	nSYAudioBGMWinKirby,					// Kirby Victory
 	nSYAudioBGMWinFox,						// Fox Victory
 	nSYAudioBGMWinMother,					// Ness Victory
 	nSYAudioBGMWinYoshi,					// Yoshi Victory
-	nSYAudioBGMWinCaptain,					// Captain Falcon Victory
+	nSYAudioBGMWinFZero,					// Captain Falcon Victory
 	nSYAudioBGMWinMonster,					// Pokémon Victory
 	nSYAudioBGMWinZelda,					// Link Victory
 	nSYAudioBGMResults,						// VS Mode Results Screen
 	nSYAudioBGMBossStage,					// Final Stage Card (VS. Master Hand)
 	nSYAudioBGMBossEntry,					// Master Hand Appears
 	nSYAudioBGMLast,						// Final Destination
-	nSYAudioBGMBonus,						// Bonus Stage
-	nSYAudioBGMStageClear,					// 1P Game Stage Cleared
-	nSYAudioBGMBonusClear,					// Bonus Stage Cleared
-	nSYAudioBGMGameClear,					// Final Stage Cleared
-	nSYAudioBGMBonusFailure,				// Bonus Stage Failed
+	nSYAudioBGM1PBonusGame,					// Bonus Stage
+	nSYAudioBGM1PStageClear,				// 1P Game Stage Cleared
+	nSYAudioBGM1PBonusGameClear,			// Bonus Stage Cleared
+	nSYAudioBGM1PGameClear,					// Final Stage Cleared
+	nSYAudioBGM1PBonusGameFailure,			// Bonus Stage Failed
 	nSYAudioBGM1PGameEndChoice,				// Continue or Game Over?
 	nSYAudioBGM1PGameOver,					// Game Over
 	nSYAudioBGMOpening,						// Opening Movie
 	nSYAudioBGMExplain,						// How to Play
-	nSYAudioBGM1PGameStage,					// 1P Game Stage Cards
+	nSYAudioBGM1PStageCard,					// 1P Game Stage Cards
 	nSYAudioBGMZako,						// Battlefield
 	nSYAudioBGMMetal,						// Meta Crystal
 	nSYAudioBGMEnding,						// Ending Movie
 	nSYAudioBGMStaffRoll,					// Credits
-	nSYAudioBGMSecret,						// Secret Found
-	nSYAudioBGMChallengerStage,				// Challenger Approaching
+	nSYAudioBGMMessage,						// Secret Found
+	nSYAudioBGMChallenger,					// Challenger Approaching
 	nSYAudioBGMTrainingMode,				// Training Mode
 	nSYAudioBGMData,						// Character Data / VS Records
 	nSYAudioBGMModeSelect,					// Main Menu
 	nSYAudioBGMHammer,            			// Hammer
-    nSYAudioBGMStarman,                   	// Star
+    nSYAudioBGMStar,                   		// Star
 	nSYAudioBGMEnd
 
 } gmMusicID;
@@ -286,9 +286,9 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMKirbySpecialNStart,
 	nSYAudioFGMKirbySpecialNLoseCopy,
 	nSYAudioFGMLinkSpecialLwGet,
-	nSYAudioFGMLinkSpecialNThrow,
-	nSYAudioFGMLinkSpecialNDraw,
 	nSYAudioFGMLinkSpecialNReturn,
+	nSYAudioFGMLinkSpecialNShoot,
+	nSYAudioFGMLinkSpecialNGet,
 	nSYAudioFGMLinkSpecialHi,
 	nSYAudioFGMLinkCatchHookshot,
 	nSYAudioFGMLinkAppear,
@@ -543,7 +543,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceAnnounceFailure,
 	nSYAudioVoiceAnnouncePurinUnused,		// ??? Says Jigglypuff, Purin is only for consistency with FTKind names
 	nSYAudioVoiceAnnounceBattleRoyal,
-	nSYAudioVoiceAnnounceTitle,				// ...Super... SMAAAAAAAAAASH Brotheeeeeeeeers!!
+	nSYAudioVoiceAnnounceTitleWait,			// ...Super... SMAAAAAAAAAASH Brotheeeeeeeeers!! (long wait at beginning?)
 	nSYAudioVoiceAnnounceNewRecord,
 	nSYAudioVoiceAnnounceCongra,			// Congratulations
 	nSYAudioVoiceAnnounceIncredible,
@@ -592,12 +592,98 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceAnnounceAreYouReady,		// Unused
 	nSYAudioVoiceAnnounceRedTeam,
 	nSYAudioVoiceAnnounceDefeated,
-	nSYAudioVoiceYamabukiFushigibana = 0x228,
+	nSYAudioVoiceAnnounceFreeForAll,
+	nSYAudioVoiceAnnounceSamus,
+	nSYAudioVoiceAnnounceSuddenDeath,
+	nSYAudioVoiceUnkRoboEcho1,				// All of these are unused
+	nSYAudioVoiceUnkRoboEcho2,
+	nSYAudioVoiceUnkRoboEcho3,
+	nSYAudioVoiceUnkRoboEcho4,
+	nSYAudioVoiceUnkRoboEcho5,
+	nSYAudioVoiceUnkRoboEcho6,
+	nSYAudioVoiceUnkRoboEcho7,
+	nSYAudioVoiceUnkRoboEcho8,
+	nSYAudioVoiceUnkRoboEcho9,
+	nSYAudioVoiceUnkRoboEcho10,
+	nSYAudioVoiceAnnounceFinalStage,		// Unused
+	nSYAudioVoiceAnnounceTeamBattle,
+	nSYAudioVoiceAnnounceTimeUp,
+	nSYAudioVoiceAnnounceTitle,				// Title announcement that's actually used?
+	nSYAudioVoiceAnnounceKirbyTeam,
+	nSYAudioVoiceAnnounceTrainingMode,
+	nSYAudioVoiceAnnounceYoshiTeam,
+	nSYAudioVoiceAnnounceVersus,
+	nSYAudioVoiceAnnounceWins,
+	nSYAudioVoiceAnnounceGameWinner,		// This game's winner is...
+	nSYAudioVoiceAnnounceYoshi,
+	nSYAudioVoicePikachuAppeal,
+	nSYAudioVoicePikachuSmash1,
+	nSYAudioVoicePikachuSmash2,
+	nSYAudioVoicePikachuSmash3,
+	nSYAudioVoicePikachuSpecialN,
+	nSYAudioVoicePikachuSpecialLw,
+	nSYAudioVoicePikachuDeadUp,
+	nSYAudioVoicePikachuFuraFura,
+	nSYAudioVoicePikachuDamage,
+	nSYAudioVoicePikachuFinalPika,
+	nSYAudioVoicePikachuFinalChu,
+	nSYAudioVoicePikachuSpecialHi,
+	nSYAudioVoicePikachuHeavyGet,
+	nSYAudioVoicePikachuOttotto,
+	nSYAudioVoicePikachuDead,
+	nSYAudioVoicePikachuFuraSleep,
+	nSYAudioVoiceYamabukiFushigibana,
 	nSYAudioVoiceYamabukiHitokage,
 	nSYAudioVoiceYamabukiLucky,
 	nSYAudioVoiceYamabukiMarumine,
 	nSYAudioVoiceYamabukiPorygon,
-	nSYAudioVoicePublicityDonkey = 0x25B,	// 0x25B
+	nSYAudioVoicePurinAppeal,
+	nSYAudioVoicePurinSmash1,
+	nSYAudioVoicePurinSmash2,
+	nSYAudioVoicePurinSmash3,
+	nSYAudioVoicePurinSpecialN,
+	nSYAudioVoicePurinDeadUp,
+	nSYAudioVoicePurinFuraFura,
+	nSYAudioVoicePurinDamage,
+	nSYAudioVoicePurinUnkGrunt1,			// "Jiggly!"
+	nSYAudioVoicePurinUnkGrunt2,			// "Jiggly!" again?
+	nSYAudioVoicePurinUnkGrunt3,			// "Blah!"
+	nSYAudioVoicePurinUnkGrunt4,			// "Jigglyyyy!"
+	nSYAudioVoicePurinFuraSleep,
+	nSYAudioVoicePurinSpecialLwSleep,		// "Hmm... hmm..."
+	nSYAudioVoicePurinSpecialLwWake,		// "Jigglypuff!"
+	nSYAudioVoicePurinSpecialHi,
+	nSYAudioVoiceSamusSmash1,
+	nSYAudioVoiceSamusSmash2,
+	nSYAudioVoiceSamusSmash3,
+	nSYAudioVoiceSamusDeadUp,
+	nSYAudioVoiceSamusFura,					// Both FuraFura and FuraSleep
+	nSYAudioVoiceSamusAttackHi4,			// Beep
+	nSYAudioVoiceSamusUnkSlash,				// ???
+	nSYAudioVoiceSamusAppeal,
+	nSYAudioVoiceSamusDamage,
+	nSYAudioVoiceSamusDead,
+	nSYAudioVoiceYoshiAppeal,
+	nSYAudioVoiceYoshiSmash1,
+	nSYAudioVoiceYoshiSmash2,
+	nSYAudioVoiceYoshiSmash3,
+	nSYAudioVoiceYoshiCatch,				// "Yum!"
+	nSYAudioVoiceYoshiDeadUp,
+	nSYAudioVoiceYoshiFuraFura,
+	nSYAudioVoiceYoshiDamage,
+	nSYAudioVoiceYoshiJump,
+	nSYAudioVoiceYoshiJumpAerial,
+	nSYAudioVoiceYoshiHeavyGet,				// Same as JumpAerial?
+	nSYAudioVoiceYoshiOttotto,
+	nSYAudioVoiceYoshiDead,
+	nSYAudioVoiceYoshiFuraSleep,
+	nSYAudioVoiceYoshiUnkGrunt1,			// "Wah!"
+	nSYAudioVoiceYoshiSpecialLwJump,		// "Prrng..."
+	nSYAudioVoiceYoshiSpecialLwFall,		// "Hah!"
+	nSYAudioVoiceYoshiUnkGrunt2,			// "Yoshi!"
+	nSYAudioVoiceYoshiThrow,				// "Hum!"
+	nSYAudioVoiceYoshiUnkVocalize,			// "Yoshiiiiii!"
+	nSYAudioVoicePublicityDonkey,			// 0x25B
 	nSYAudioVoicePublicityCaptain,		  	// 0x25C
 	nSYAudioVoicePublicityFox,			  	// 0x25D
 	nSYAudioVoicePublicityKirby,		  	// 0x25E
@@ -609,8 +695,45 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoicePublicityPurin,		 	// 0x264
 	nSYAudioVoicePublicitySamus,		 	// 0x265
 	nSYAudioVoicePublicityYoshi,		  	// 0x266
+	nSYAudioVoicePublicityGaspL,			// Loud audience gasp when fighter recovers successfully
+	nSYAudioVoicePublicityGaspM,			// Medium audience gasp when a fighter recovers successfully
+	nSYAudioVoicePublicityGaspS,			// Slight audience gasp when a fighter recovers successfully
+	nSYAudioVoicePublicityCheer,			// Audience cheer (>= 160 knockback) + pressed start on CSS
+	nSYAudioVoicePublicityAmazed,			// Amazed at player performance (< 160 knockback)
+	nSYAudioVoicePublicityGaspClap,			// Audience gasps, then claps
+	nSYAudioVoicePublicityWin,				// "Static" reaction pre-winner announcement
+	nSYAudioVoicePublicityDamageL,			// React to fighter receiving heavy knockback
+	nSYAudioVoicePublicityDamageM,			// React to fighter receiving medium knockback
+	nSYAudioVoicePublicityNoContest,		// No contest?
+	nSYAudioVoicePublicityDamageS,			// React to fighter receiving light knockback
+	nSYAudioVoicePublicityExcited,			// React to winner announcement after game set / match begin
+	nSYAudioVoicePublicityAbsorb,			// React to fighter absorbing projectiles (Ness)
+	nSYAudioVoicePublicityClapL,			// Louder audience clap
+	nSYAudioVoicePublicityClapS,			// Slight audience clap
+	nSYAudioVoicePublicityUnkZip1,			// ??? goes repeats for 10 more instances
+	nSYAudioVoicePublicityUnkZip2,
+	nSYAudioVoicePublicityUnkZip3,
+	nSYAudioVoicePublicityUnkZip4,
+	nSYAudioVoicePublicityUnkZip5,
+	nSYAudioVoicePublicityUnkZip6,
+	nSYAudioVoicePublicityUnkZip7,
+	nSYAudioVoicePublicityUnkZip8,
+	nSYAudioVoicePublicityUnkZip9,
+	nSYAudioVoicePublicityUnkZip10,
+	nSYAudioVoicePublicityUnkZip11,
+	nSYAudioVoiceUnkExplode,				// ???
+	nSYAudioVoiceUnkSpin,					// ???
+	nSYAudioVoiceUnkBurn,					// ???
+	nSYAudioVoiceUnkSlashM,					// ???
+	nSYAudioVoiceUnkSlashL,					// ???
+	nSYAudioVoiceUnkSlashS1,				// ??? lower pitched than the above two
+	nSYAudioVoiceUnkSlashS2,				// Similar to the above
+	nSYAudioVoiceUnkShockL,					// ???
+	nSYAudioVoiceUnkShockM,					// ???
+	nSYAudioVoicePublicityUnkGasp,			// ???
+	// Dood I'm not gonna bother with these unless they're really used somehow
 	nSYAudioFGMVoiceEnd = 0x2B7,
-	nSYAudioFGMEnumMax = 0x2B7
+	nSYAudioFGMVoiceEnumMax = nSYAudioFGMVoiceEnd
 
 } gmFGMVoiceID;
 

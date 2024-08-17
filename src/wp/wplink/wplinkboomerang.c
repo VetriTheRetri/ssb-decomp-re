@@ -147,7 +147,7 @@ void wpLinkBoomerangSetReturnVars(GObj *weapon_gobj, sb32 angle_max_or_min)
 
     DObjGetStruct(weapon_gobj)->child->child->flags = DOBJ_FLAG_NOTEXTURE;
 
-    wpMainPlaySFX(wp, nSYAudioFGMLinkSpecialNThrow);
+    wpMainPlaySFX(wp, nSYAudioFGMLinkSpecialNReturn);
 }
 
 // 0x8016CE90
@@ -320,9 +320,9 @@ void wpLinkBoomerangCheckOwnerCatch(GObj *weapon_gobj, f32 distance)
             {
                 if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindNKirby))
                 {
-                    ftKirbyCopyLinkSpecialNReturnSetStatus(wp->weapon_vars.boomerang.parent_gobj);
+                    ftKirbyCopyLinkSpecialNGetSetStatus(wp->weapon_vars.boomerang.parent_gobj);
                 }
-                else ftLinkSpecialNReturnSetStatus(wp->weapon_vars.boomerang.parent_gobj);          
+                else ftLinkSpecialNGetSetStatus(wp->weapon_vars.boomerang.parent_gobj);          
             }
         }
         wpLinkBoomerangClearGObjs(wp);
@@ -596,7 +596,7 @@ GObj* wpLinkBoomerangMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->is_camera_follow = TRUE;
 
-    wpMainPlaySFX(wp, nSYAudioFGMLinkSpecialNDraw);
+    wpMainPlaySFX(wp, nSYAudioFGMLinkSpecialNShoot);
 
     wp->weapon_vars.boomerang.parent_gobj = fighter_gobj;
     wp->weapon_vars.boomerang.flags = WPLINK_BOOMERANG_FLAG_FORWARD;

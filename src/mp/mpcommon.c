@@ -435,7 +435,7 @@ void mpCommonSetFighterLandingParams(GObj *fighter_gobj)
                 (fp->joints[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.right - 450.0F))
             )
             {
-                ftPublicityKnockbackDecide(fighter_gobj, fp->publicity_knockback);
+                ftPublicityPlayCliffReact(fighter_gobj, fp->publicity_knockback);
             }   
         }
         fp->publicity_knockback = 0.0F;
@@ -795,7 +795,6 @@ sb32 mpCommonProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u32 fl
                 mpProcessRunGroundEdgeAdjust(coll_data);
             }
             else mpProcessSetCollProjectGroundID(coll_data);
-
         }
         else
         {

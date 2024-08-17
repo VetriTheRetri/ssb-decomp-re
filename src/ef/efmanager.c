@@ -5222,7 +5222,7 @@ void efManagerNessPKThunderTrailProcUpdate(GObj *effect_gobj)
     ftStruct *fp;
     s32 index;
 
-    if (ep->effect_vars.pkthunder.status & wpNessPKThunder_Status_Destroy)
+    if (ep->effect_vars.pkthunder.status & nWPNessPKThunderStatusDestroy)
     {
         efManagerSetPrevStructAlloc(ep);
         gcEjectGObj(effect_gobj);
@@ -5284,7 +5284,7 @@ GObj* efManagerNessPKThunderTrailMakeEffect(GObj *fighter_gobj)
     ep = efGetStruct(effect_gobj);
 
     ep->effect_vars.pkthunder.owner_gobj = fighter_gobj;
-    ep->effect_vars.pkthunder.status = wpNessPKThunder_Status_Active;
+    ep->effect_vars.pkthunder.status = nWPNessPKThunderStatusActive;
 
     DObjGetStruct(effect_gobj)->translate.vec.f.z = 0.0F;
 
@@ -5302,7 +5302,7 @@ void efManagerNessPKReflectTrailProcUpdate(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
 
-    if (ep->effect_vars.pkthunder.status & wpNessPKThunder_Status_Destroy)
+    if (ep->effect_vars.pkthunder.status & nWPNessPKThunderStatusDestroy)
     {
         efManagerSetPrevStructAlloc(ep);
         gcEjectGObj(effect_gobj);
@@ -5334,7 +5334,7 @@ GObj* efManagerNessPKReflectTrailMakeEffect(GObj *weapon_gobj)
     ep = efGetStruct(effect_gobj);
 
     ep->effect_vars.pkthunder.owner_gobj = weapon_gobj;
-    ep->effect_vars.pkthunder.status = wpNessPKThunder_Status_Active;
+    ep->effect_vars.pkthunder.status = nWPNessPKThunderStatusActive;
 
     DObjGetStruct(effect_gobj)->translate.vec.f.z = 0.0F;
 

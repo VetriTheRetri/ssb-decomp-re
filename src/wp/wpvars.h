@@ -123,25 +123,25 @@
 
 typedef enum wpPikachuThunderCollide
 {
-	wpPikachuThunder_Status_Active,
-	wpPikachuThunder_Status_Collide,
-	wpPikachuThunder_Status_Destroy
+	nWPPikachuThunderStatusActive,
+	nWPPikachuThunderStatusCollide,
+	nWPPikachuThunderStatusDestroy
 
 } wpPikachuThunderCollide;
 
 typedef enum wpPikachuThunderJoltStatus
 {
-    wpPikachuThunderJolt_Status_Null,
-    wpPikachuThunderJolt_Status_Active,
-    wpPikachuThunderJolt_Status_Destroy
+    nWPPikachuThunderJoltStatusNull,
+    nWPPikachuThunderJoltStatusActive,
+    nWPPikachuThunderJoltStatusDestroy
 
 } wpPikachuThunderJoltStatus;
 
 typedef enum wpNessPKThunderCollide
 {
-	wpNessPKThunder_Status_Active,	// PK Thunder is active
-	wpNessPKThunder_Status_Destroy, // PK Thunder despawns
-	wpNessPKThunder_Status_Collide	// PK Thunder collides with Ness
+	nWPNessPKThunderStatusActive,	// PK Thunder is active
+	nWPNessPKThunderStatusDestroy, // PK Thunder despawns
+	nWPNessPKThunderStatusCollide	// PK Thunder collides with Ness
 
 } wpNessPKThunderCollide;
 

@@ -92,7 +92,7 @@ sb32 ftNessSpecialHiCheckCollidePKThunder(GObj *fighter_gobj)
 
         if (collide_y < FTNESS_PKTHUNDER_COLLIDE_Y)
         {
-            ip->weapon_vars.pkthunder.status = wpNessPKThunder_Status_Collide;
+            ip->weapon_vars.pkthunder.status = nWPNessPKThunderStatusCollide;
 
             fp->status_vars.ness.specialhi.pkthunder_pos = DObjGetStruct(pkthunder_gobj)->translate.vec.f;
 
@@ -284,7 +284,7 @@ void ftNessSpecialHiSetPKThunderDestroy(GObj *fighter_gobj) // Unused
     {
         wpStruct *wp = wpGetStruct(weapon_gobj);
 
-        wp->weapon_vars.pkthunder.status = wpNessPKThunder_Status_Destroy;
+        wp->weapon_vars.pkthunder.status = nWPNessPKThunderStatusDestroy;
     }
 }
 
@@ -512,14 +512,12 @@ void ftNessSpecialAirHiJibakuProcPhysics(GObj *fighter_gobj)
     f32 vel_y_bak = fp->phys_info.vel_air.y;
 
     fp->phys_info.vel_air.x -= (FTNESS_PKJIBAKU_DECELERATE * __cosf(fp->status_vars.ness.specialhi.pkjibaku_angle) * fp->lr);
-
     fp->phys_info.vel_air.y -= (FTNESS_PKJIBAKU_DECELERATE * __sinf(fp->status_vars.ness.specialhi.pkjibaku_angle));
 
     if (ABSF(fp->phys_info.vel_air.x) > ABSF(vel_x_bak))
     {
         fp->phys_info.vel_air.x = vel_x_bak;
     }
-
     if (ABSF(fp->phys_info.vel_air.y) > ABSF(vel_y_bak))
     {
         fp->phys_info.vel_air.y = vel_y_bak;

@@ -77,7 +77,7 @@ void wpPikachuThunderHeadSetDestroy(GObj *weapon_gobj, sb32 is_destroy)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (!(wp->weapon_vars.thunder.thunder_state & wpPikachuThunder_Status_Destroy))
+    if (!(wp->weapon_vars.thunder.thunder_state & nWPPikachuThunderStatusDestroy))
     {
         ftStruct *fp = ftGetStruct(wp->owner_gobj);
 
@@ -114,7 +114,7 @@ sb32 wpPikachuThunderHeadProcUpdate(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wp->weapon_vars.thunder.thunder_state == wpPikachuThunder_Status_Collide)
+    if (wp->weapon_vars.thunder.thunder_state == nWPPikachuThunderStatusCollide)
     {
         wpPikachuThunderHeadMakeTrailEffect(weapon_gobj, 3);
 
@@ -175,7 +175,7 @@ GObj* wpPikachuThunderHeadMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
     wp->phys_info.vel_air = *vel;
 
     wp->weapon_hit.update_state = nGMHitUpdateDisable;
-    wp->weapon_vars.thunder.thunder_state = wpPikachuThunder_Status_Active;
+    wp->weapon_vars.thunder.thunder_state = nWPPikachuThunderStatusActive;
 
     wp->group_id = wpManagerGetGroupID();
 

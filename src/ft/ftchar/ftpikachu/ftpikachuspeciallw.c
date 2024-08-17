@@ -167,7 +167,7 @@ sb32 ftPikachuSpecialLwCheckCollideThunder(GObj *fighter_gobj)
 
         if (dist_y < FTPIKACHU_THUNDER_COLLIDE_Y)
         {
-            wp->weapon_vars.thunder.thunder_state = wpPikachuThunder_Status_Collide;
+            wp->weapon_vars.thunder.thunder_state = nWPPikachuThunderStatusCollide;
 
             return TRUE;
         }
@@ -239,7 +239,7 @@ void ftPikachuSpecialLwProcDamage(GObj *fighter_gobj)
     {
         wpStruct *wp = wpGetStruct(thunder_gobj);
 
-        wp->weapon_vars.thunder.thunder_state = wpPikachuThunder_Status_Destroy;
+        wp->weapon_vars.thunder.thunder_state = nWPPikachuThunderStatusDestroy;
     }
 }
 
